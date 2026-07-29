@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationRecordersStatus" /></td>
+    <td><CopyableCode code="configuration_recorders_status" /></td>
     <td><code>array</code></td>
     <td>A list that contains status of the specified recorders.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the current status of the configuration recorder you specify as well as 
 
 ```sql
 SELECT
-ConfigurationRecordersStatus
+configuration_recorders_status
 FROM aws.config.configuration_recorder_status
 WHERE region = '{{ region }}' -- required
 ;

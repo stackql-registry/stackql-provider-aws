@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdvancedEventSelectors" /></td>
+    <td><CopyableCode code="advanced_event_selectors" /></td>
     <td><code>array</code></td>
     <td>The advanced event selectors used to select events for the data store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingMode" /></td>
+    <td><CopyableCode code="billing_mode" /></td>
     <td><code>string</code></td>
     <td>The billing mode for the event data store. (EXTENDABLE_RETENTION_PRICING, FIXED_RETENTION_PRICING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the event data store's creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventDataStoreArn" /></td>
+    <td><CopyableCode code="event_data_store_arn" /></td>
     <td><code>string</code></td>
     <td>The event data store Amazon Resource Number (ARN). (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederationRoleArn" /></td>
+    <td><CopyableCode code="federation_role_arn" /></td>
     <td><code>string</code></td>
     <td>If Lake query federation is enabled, provides the ARN of the federation role used to access the resources for the federated event data store. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:@=\+,\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederationStatus" /></td>
+    <td><CopyableCode code="federation_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the Lake query federation status. The status is ENABLED if Lake query federation is enabled, or DISABLED if Lake query federation is disabled. You cannot delete an event data store if the FederationStatus is ENABLED. (ENABLING, ENABLED, DISABLING, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the KMS key ID that encrypts the events delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the following format. arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012 (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegionEnabled" /></td>
+    <td><CopyableCode code="multi_region_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the event data store includes events from all Regions, or only from the Region in which it was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event data store. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationEnabled" /></td>
+    <td><CopyableCode code="organization_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether an event data store is collecting logged events for an organization in Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionKeys" /></td>
+    <td><CopyableCode code="partition_keys" /></td>
     <td><code>array</code></td>
     <td>The partition keys for the event data store. To improve query performance and efficiency, CloudTrail Lake organizes event data into partitions based on values derived from partition keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionPeriod" /></td>
+    <td><CopyableCode code="retention_period" /></td>
     <td><code>integer</code></td>
     <td>The retention period of the event data store, in days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of an event data store. (CREATED, ENABLED, PENDING_DELETION, STARTING_INGESTION, STOPPING_INGESTION, STOPPED_INGESTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminationProtectionEnabled" /></td>
+    <td><CopyableCode code="termination_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates that termination protection is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Shows the time that an event data store was updated, if applicable. UpdatedTimestamp is always either the same or newer than the time shown in CreatedTimestamp.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventDataStores" /></td>
+    <td><CopyableCode code="event_data_stores" /></td>
     <td><code>array</code></td>
     <td>Contains information about event data stores in the account, in the current Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token you can use to get the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -257,21 +257,21 @@ Returns information about an event data store specified as either an ARN or the 
 
 ```sql
 SELECT
-AdvancedEventSelectors,
-BillingMode,
-CreatedTimestamp,
-EventDataStoreArn,
-FederationRoleArn,
-FederationStatus,
-KmsKeyId,
-MultiRegionEnabled,
-Name,
-OrganizationEnabled,
-PartitionKeys,
-RetentionPeriod,
-Status,
-TerminationProtectionEnabled,
-UpdatedTimestamp
+advanced_event_selectors,
+billing_mode,
+created_timestamp,
+event_data_store_arn,
+federation_role_arn,
+federation_status,
+kms_key_id,
+multi_region_enabled,
+name,
+organization_enabled,
+partition_keys,
+retention_period,
+status,
+termination_protection_enabled,
+updated_timestamp
 FROM aws.cloudtrail.event_data_stores
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,8 +283,8 @@ Returns information about all event data stores in the account, in the current R
 
 ```sql
 SELECT
-EventDataStores,
-NextToken
+event_data_stores,
+next_token
 FROM aws.cloudtrail.event_data_stores
 WHERE region = '{{ region }}' -- required
 ;
@@ -333,19 +333,19 @@ SELECT
 '{{ BillingMode }}',
 '{{ region }}'
 RETURNING
-AdvancedEventSelectors,
-BillingMode,
-CreatedTimestamp,
-EventDataStoreArn,
-KmsKeyId,
-MultiRegionEnabled,
-Name,
-OrganizationEnabled,
-RetentionPeriod,
-Status,
-TagsList,
-TerminationProtectionEnabled,
-UpdatedTimestamp
+advanced_event_selectors,
+billing_mode,
+created_timestamp,
+event_data_store_arn,
+kms_key_id,
+multi_region_enabled,
+name,
+organization_enabled,
+retention_period,
+status,
+tags_list,
+termination_protection_enabled,
+updated_timestamp
 ;
 ```
 </TabItem>
@@ -436,20 +436,20 @@ WHERE
 region = '{{ region }}' --required
 AND EventDataStore = '{{ EventDataStore }}' --required
 RETURNING
-AdvancedEventSelectors,
-BillingMode,
-CreatedTimestamp,
-EventDataStoreArn,
-FederationRoleArn,
-FederationStatus,
-KmsKeyId,
-MultiRegionEnabled,
-Name,
-OrganizationEnabled,
-RetentionPeriod,
-Status,
-TerminationProtectionEnabled,
-UpdatedTimestamp;
+advanced_event_selectors,
+billing_mode,
+created_timestamp,
+event_data_store_arn,
+federation_role_arn,
+federation_status,
+kms_key_id,
+multi_region_enabled,
+name,
+organization_enabled,
+retention_period,
+status,
+termination_protection_enabled,
+updated_timestamp;
 ```
 </TabItem>
 </Tabs>

@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The content of the channel message. For Amazon Lex V2 bot responses, this field holds a list of messages originating from the bot. For more information, refer to Processing responses from an AppInstanceBot in the Amazon Chime SDK Messaging Developer Guide. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the channel message. For Amazon Lex V2 bot responses, the content type is application/amz-chime-lex-msgs for success responses and application/amz-chime-lex-error for failure responses. For more information, refer to Processing responses from an AppInstanceBot in the Amazon Chime SDK Messaging Developer Guide. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the message was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastEditedTimestamp" /></td>
+    <td><CopyableCode code="last_edited_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a message was edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a message was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageAttributes" /></td>
+    <td><CopyableCode code="message_attributes" /></td>
     <td><code>object</code></td>
     <td>The attributes for the channel message. For Amazon Lex V2 bot responses, the attributes are mapped to specific fields from the bot. For more information, refer to Processing responses from an AppInstanceBot in the Amazon Chime SDK Messaging Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageId" /></td>
+    <td><CopyableCode code="message_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a message. (pattern: &lt;code&gt;&#91;-_a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>string</code></td>
     <td>The message metadata. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Persistence" /></td>
+    <td><CopyableCode code="persistence" /></td>
     <td><code>string</code></td>
     <td>The persistence setting for a channel message. (PERSISTENT, NON_PERSISTENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Redacted" /></td>
+    <td><CopyableCode code="redacted" /></td>
     <td><code>boolean</code></td>
     <td>Hides the content of a message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sender" /></td>
+    <td><CopyableCode code="sender" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The status of the channel message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubChannelId" /></td>
+    <td><CopyableCode code="sub_channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the SubChannel. (pattern: &lt;code&gt;&#91;-_a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>array</code></td>
     <td>The target of a message, a sender, a user, or a bot. Only the target and the sender can view targeted messages. Only users who can see targeted messages can take actions on them. However, administrators can delete targeted messages that they can’t see.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The message type. (STANDARD, CONTROL)</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel containing the requested messages. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelMessages" /></td>
+    <td><CopyableCode code="channel_messages" /></td>
     <td><code>array</code></td>
     <td>The information about, and content of, each requested message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested messages are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubChannelId" /></td>
+    <td><CopyableCode code="sub_channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the SubChannel in the response. (pattern: &lt;code&gt;&#91;-_a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -296,22 +296,22 @@ Gets the full details of a channel message. The x-amz-chime-bearer request heade
 
 ```sql
 SELECT
-ChannelArn,
-Content,
-ContentType,
-CreatedTimestamp,
-LastEditedTimestamp,
-LastUpdatedTimestamp,
-MessageAttributes,
-MessageId,
-Metadata,
-Persistence,
-Redacted,
-Sender,
-Status,
-SubChannelId,
-Target,
-Type
+channel_arn,
+content,
+content_type,
+created_timestamp,
+last_edited_timestamp,
+last_updated_timestamp,
+message_attributes,
+message_id,
+metadata,
+persistence,
+redacted,
+sender,
+status,
+sub_channel_id,
+target,
+type
 FROM aws.chime_sdk_messaging.channel_messages
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND message_id = '{{ message_id }}' -- required
@@ -327,10 +327,10 @@ List all the messages in a channel. Returns a paginated list of ChannelMessages.
 
 ```sql
 SELECT
-ChannelArn,
-ChannelMessages,
-NextToken,
-SubChannelId
+channel_arn,
+channel_messages,
+next_token,
+sub_channel_id
 FROM aws.chime_sdk_messaging.channel_messages
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
@@ -373,10 +373,10 @@ AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' --required
 AND region = '{{ region }}' --required
 AND Content = '{{ Content }}' --required
 RETURNING
-ChannelArn,
-MessageId,
-Status,
-SubChannelId;
+channel_arn,
+message_id,
+status,
+sub_channel_id;
 ```
 </TabItem>
 </Tabs>

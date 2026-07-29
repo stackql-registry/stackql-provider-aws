@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorizedPrincipalList" /></td>
+    <td><CopyableCode code="authorized_principal_list" /></td>
     <td><code>array</code></td>
     <td>A list of IAM principals that can currently access the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -148,8 +148,8 @@ Retrieves information about each Amazon Web Services principal that is allowed t
 
 ```sql
 SELECT
-AuthorizedPrincipalList,
-NextToken
+authorized_principal_list,
+next_token
 FROM aws.opensearch.vpc_endpoint_access
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -182,7 +182,7 @@ WHERE
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AuthorizedPrincipal;
+authorized_principal;
 ```
 </TabItem>
 </Tabs>

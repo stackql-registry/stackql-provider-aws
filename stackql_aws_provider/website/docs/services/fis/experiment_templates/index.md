@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the experiment template. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the experiment template was created.</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the experiment template. (pattern: &lt;code&gt;&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentOptions" /></td>
+    <td><CopyableCode code="experiment_options" /></td>
     <td><code>object</code></td>
     <td>The experiment options for an experiment template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentReportConfiguration" /></td>
+    <td><CopyableCode code="experiment_report_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the report configuration for the experiment template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the experiment template was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for experiment logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopConditions" /></td>
+    <td><CopyableCode code="stop_conditions" /></td>
     <td><code>array</code></td>
     <td>The stop conditions for the experiment.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags for the experiment template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetAccountConfigurationsCount" /></td>
+    <td><CopyableCode code="target_account_configurations_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The count of target account configurations for the experiment template.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the experiment template. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the experiment template was created.</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the experiment template. (pattern: &lt;code&gt;&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the experiment template was last updated.</td>
 </tr>
@@ -276,16 +276,16 @@ SELECT
 id,
 actions,
 arn,
-creationTime,
+creation_time,
 description,
-experimentOptions,
-experimentReportConfiguration,
-lastUpdateTime,
-logConfiguration,
-roleArn,
-stopConditions,
+experiment_options,
+experiment_report_configuration,
+last_update_time,
+log_configuration,
+role_arn,
+stop_conditions,
 tags,
-targetAccountConfigurationsCount,
+target_account_configurations_count,
 targets
 FROM aws.fis.experiment_templates
 WHERE id = '{{ id }}' -- required
@@ -301,9 +301,9 @@ Lists your experiment templates.
 SELECT
 id,
 arn,
-creationTime,
+creation_time,
 description,
-lastUpdateTime,
+last_update_time,
 tags
 FROM aws.fis.experiment_templates
 WHERE region = '{{ region }}' -- required
@@ -355,7 +355,7 @@ SELECT
 '{{ experimentReportConfiguration }}',
 '{{ region }}'
 RETURNING
-experimentTemplate
+experiment_template
 ;
 ```
 </TabItem>
@@ -445,7 +445,7 @@ WHERE
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-experimentTemplate;
+experiment_template;
 ```
 </TabItem>
 </Tabs>

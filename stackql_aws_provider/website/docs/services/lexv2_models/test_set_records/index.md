@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more records to return in a response to the ListTestSetRecords operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListTestSetRecords operation request to get the next page of records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetRecords" /></td>
+    <td><CopyableCode code="test_set_records" /></td>
     <td><code>array</code></td>
     <td>The list of records from the test set.</td>
 </tr>
@@ -129,8 +129,8 @@ The list of test set records.
 
 ```sql
 SELECT
-nextToken,
-testSetRecords
+next_token,
+test_set_records
 FROM aws.lexv2_models.test_set_records
 WHERE test_set_id = '{{ test_set_id }}' -- required
 AND region = '{{ region }}' -- required

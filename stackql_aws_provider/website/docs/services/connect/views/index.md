@@ -52,67 +52,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>object</code></td>
     <td>View content containing all content necessary to render a view except for runtime input data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the view was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the view. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-:\/$&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Latest timestamp of the UpdateViewContent or CreateViewVersion operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the view status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the view resource (not specific to view version).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the view - CUSTOMER_MANAGED. (CUSTOMER_MANAGED, AWS_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>Current version of the view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the version. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ViewContentSha256" /></td>
+    <td><CopyableCode code="view_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>Indicates the checksum value of the latest published view content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
@@ -131,32 +131,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the view. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-:\/$&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the view status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the view. (CUSTOMER_MANAGED, AWS_MANAGED)</td>
 </tr>
@@ -175,67 +175,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>object</code></td>
     <td>View content containing all content necessary to render a view except for runtime input data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the view was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the view. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-:\/$&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Latest timestamp of the UpdateViewContent or CreateViewVersion operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the view status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the view resource (not specific to view version).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the view - CUSTOMER_MANAGED. (CUSTOMER_MANAGED, AWS_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>Current version of the view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the version. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ViewContentSha256" /></td>
+    <td><CopyableCode code="view_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>Indicates the checksum value of the latest published view content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
@@ -373,19 +373,19 @@ Retrieves the view for the specified Amazon Connect instance and view identifier
 
 ```sql
 SELECT
-Arn,
-Content,
-CreatedTime,
-Description,
-Id,
-LastModifiedTime,
-Name,
-Status,
-Tags,
-Type,
-Version,
-VersionDescription,
-ViewContentSha256
+arn,
+content,
+created_time,
+description,
+id,
+last_modified_time,
+name,
+status,
+tags,
+type,
+version,
+version_description,
+view_content_sha_256
 FROM aws.connect.views
 WHERE instance_id = '{{ instance_id }}' -- required
 AND view_id = '{{ view_id }}' -- required
@@ -399,12 +399,12 @@ Returns views in the given instance. Results are sorted primarily by type, and s
 
 ```sql
 SELECT
-Arn,
-Description,
-Id,
-Name,
-Status,
-Type
+arn,
+description,
+id,
+name,
+status,
+type
 FROM aws.connect.views
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -420,19 +420,19 @@ Searches views based on name, description, or tags.
 
 ```sql
 SELECT
-Arn,
-Content,
-CreatedTime,
-Description,
-Id,
-LastModifiedTime,
-Name,
-Status,
-Tags,
-Type,
-Version,
-VersionDescription,
-ViewContentSha256
+arn,
+content,
+created_time,
+description,
+id,
+last_modified_time,
+name,
+status,
+tags,
+type,
+version,
+version_description,
+view_content_sha_256
 FROM aws.connect.views
 WHERE region = '{{ region }}' -- required
 ;
@@ -475,7 +475,7 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-View
+view
 ;
 ```
 </TabItem>
@@ -536,7 +536,7 @@ instance_id = '{{ instance_id }}' --required
 AND view_id = '{{ view_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-View;
+view;
 ```
 </TabItem>
 </Tabs>

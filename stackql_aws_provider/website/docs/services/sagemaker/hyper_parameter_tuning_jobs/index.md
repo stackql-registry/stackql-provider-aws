@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Autotune" /></td>
+    <td><CopyableCode code="autotune" /></td>
     <td><code>object</code></td>
     <td>A flag to indicate if autotune is enabled for the hyperparameter tuning job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BestTrainingJob" /></td>
+    <td><CopyableCode code="best_training_job" /></td>
     <td><code>object</code></td>
     <td>A TrainingJobSummary object that describes the training job that completed with the best current HyperParameterTuningJobObjective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumedResources" /></td>
+    <td><CopyableCode code="consumed_resources" /></td>
     <td><code>object</code></td>
     <td>The total resources consumed by your hyperparameter tuning job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the tuning job started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the tuning job failed, the reason it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningEndTime" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the tuning job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningJobArn" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the tuning job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:hyper-parameter-tuning-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningJobConfig" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_job_config" /></td>
     <td><code>object</code></td>
     <td>The HyperParameterTuningJobConfig object that specifies the configuration of the tuning job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningJobName" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the hyperparameter tuning job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningJobStatus" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the tuning job. (Completed, InProgress, Failed, Stopped, Stopping, Deleting, DeleteFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the status of the tuning job was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectiveStatusCounters" /></td>
+    <td><CopyableCode code="objective_status_counters" /></td>
     <td><code>object</code></td>
     <td>The ObjectiveStatusCounters object that specifies the number of training jobs, categorized by the status of their final objective metric, that this tuning job launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverallBestTrainingJob" /></td>
+    <td><CopyableCode code="overall_best_training_job" /></td>
     <td><code>object</code></td>
     <td>If the hyperparameter tuning job is an warm start tuning job with a WarmStartType of IDENTICAL_DATA_AND_ALGORITHM, this is the TrainingJobSummary for the training job with the best objective metric value of all training jobs launched by this tuning job and all parent jobs specified for the warm start tuning job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobDefinition" /></td>
+    <td><CopyableCode code="training_job_definition" /></td>
     <td><code>object</code></td>
     <td>Defines the training jobs launched by a hyperparameter tuning job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobDefinitions" /></td>
+    <td><CopyableCode code="training_job_definitions" /></td>
     <td><code>array</code></td>
     <td>A list of the HyperParameterTrainingJobDefinition objects launched for this tuning job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobStatusCounters" /></td>
+    <td><CopyableCode code="training_job_status_counters" /></td>
     <td><code>object</code></td>
     <td>The TrainingJobStatusCounters object that specifies the number of training jobs, categorized by status, that this tuning job launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TuningJobCompletionDetails" /></td>
+    <td><CopyableCode code="tuning_job_completion_details" /></td>
     <td><code>object</code></td>
     <td>Tuning job completion information returned as the response from a hyperparameter tuning job. This information tells if your tuning job has or has not converged. It also includes the number of training jobs that have not improved model performance as evaluated against the objective function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmStartConfig" /></td>
+    <td><CopyableCode code="warm_start_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for starting the hyperparameter parameter tuning job using one or more previous tuning jobs as a starting point. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job.</td>
 </tr>
@@ -155,52 +155,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the tuning job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningEndTime" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the tuning job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningJobArn" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the tuning job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:hyper-parameter-tuning-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningJobName" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the tuning job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameterTuningJobStatus" /></td>
+    <td><CopyableCode code="hyper_parameter_tuning_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the tuning job. (Completed, InProgress, Failed, Stopped, Stopping, Deleting, DeleteFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the tuning job was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectiveStatusCounters" /></td>
+    <td><CopyableCode code="objective_status_counters" /></td>
     <td><code>object</code></td>
     <td>The ObjectiveStatusCounters object that specifies the numbers of training jobs, categorized by objective metric status, that this tuning job launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceLimits" /></td>
+    <td><CopyableCode code="resource_limits" /></td>
     <td><code>object</code></td>
     <td>The ResourceLimits object that specifies the maximum number of training jobs and parallel training jobs allowed for this tuning job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Strategy" /></td>
+    <td><CopyableCode code="strategy" /></td>
     <td><code>string</code></td>
     <td>Specifies the search strategy hyperparameter tuning uses to choose which hyperparameters to evaluate at each iteration. (Bayesian, Random, Hyperband, Grid)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobStatusCounters" /></td>
+    <td><CopyableCode code="training_job_status_counters" /></td>
     <td><code>object</code></td>
     <td>The TrainingJobStatusCounters object that specifies the numbers of training jobs, categorized by status, that this tuning job launched.</td>
 </tr>
@@ -298,24 +298,24 @@ Returns a description of a hyperparameter tuning job, depending on the fields se
 
 ```sql
 SELECT
-Autotune,
-BestTrainingJob,
-ConsumedResources,
-CreationTime,
-FailureReason,
-HyperParameterTuningEndTime,
-HyperParameterTuningJobArn,
-HyperParameterTuningJobConfig,
-HyperParameterTuningJobName,
-HyperParameterTuningJobStatus,
-LastModifiedTime,
-ObjectiveStatusCounters,
-OverallBestTrainingJob,
-TrainingJobDefinition,
-TrainingJobDefinitions,
-TrainingJobStatusCounters,
-TuningJobCompletionDetails,
-WarmStartConfig
+autotune,
+best_training_job,
+consumed_resources,
+creation_time,
+failure_reason,
+hyper_parameter_tuning_end_time,
+hyper_parameter_tuning_job_arn,
+hyper_parameter_tuning_job_config,
+hyper_parameter_tuning_job_name,
+hyper_parameter_tuning_job_status,
+last_modified_time,
+objective_status_counters,
+overall_best_training_job,
+training_job_definition,
+training_job_definitions,
+training_job_status_counters,
+tuning_job_completion_details,
+warm_start_config
 FROM aws.sagemaker.hyper_parameter_tuning_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -327,16 +327,16 @@ Gets a list of HyperParameterTuningJobSummary objects that describe the hyperpar
 
 ```sql
 SELECT
-CreationTime,
-HyperParameterTuningEndTime,
-HyperParameterTuningJobArn,
-HyperParameterTuningJobName,
-HyperParameterTuningJobStatus,
-LastModifiedTime,
-ObjectiveStatusCounters,
-ResourceLimits,
-Strategy,
-TrainingJobStatusCounters
+creation_time,
+hyper_parameter_tuning_end_time,
+hyper_parameter_tuning_job_arn,
+hyper_parameter_tuning_job_name,
+hyper_parameter_tuning_job_status,
+last_modified_time,
+objective_status_counters,
+resource_limits,
+strategy,
+training_job_status_counters
 FROM aws.sagemaker.hyper_parameter_tuning_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -379,7 +379,7 @@ SELECT
 '{{ Autotune }}',
 '{{ region }}'
 RETURNING
-HyperParameterTuningJobArn
+hyper_parameter_tuning_job_arn
 ;
 ```
 </TabItem>

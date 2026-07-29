@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see Ensuring idempotency. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;1,256&#125;(-*&#91;a-zA-Z0-9&#93;)&#123;0,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorRecordCount" /></td>
+    <td><CopyableCode code="error_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that failed to process in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>Details about the location of the input to the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the batch inference job. (pattern: &lt;code&gt;(arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-invocation-job/&#91;a-z0-9&#93;&#123;12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobExpirationTime" /></td>
+    <td><CopyableCode code="job_expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job times or timed out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the batch inference job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;1,63&#125;(-*&#91;a-zA-Z0-9\+\-\.&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job was last modified.</td>
 </tr>
@@ -96,27 +96,27 @@ The following fields are returned by `SELECT` queries:
     <td>If the batch inference job failed, this field contains a message describing why the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the foundation model used for model inference. (pattern: &lt;code&gt;(arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-:&#93;&#123;1,63&#125;/&#91;a-z0-9&#93;&#123;12&#125;$)|(:foundation-model/(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;.&#93;?&#91;a-z0-9-&#93;&#123;1,63&#125;)(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)|((&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+)$)|(&#91;0-9&#93;&#123;12&#125;:(inference-profile|application-inference-profile)/&#91;a-zA-Z0-9-:.&#93;+$)))|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;.&#93;?&#91;a-z0-9-&#93;&#123;1,63&#125;)(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)|((&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelInvocationType" /></td>
+    <td><CopyableCode code="model_invocation_type" /></td>
     <td><code>string</code></td>
     <td>The invocation endpoint for ModelInvocationJob (InvokeModel, Converse)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Contains the configuration of the S3 location of the output data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processedRecordCount" /></td>
+    <td><CopyableCode code="processed_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that have been processed in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service role with permissions to carry out and manage batch inference. You can use the console to create a default service role or follow the steps at Create a service role for batch inference. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -126,27 +126,27 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the batch inference job. The following statuses are possible: Submitted – This job has been submitted to a queue for validation. Validating – This job is being validated for the requirements described in Format and upload your batch inference data. The criteria include the following: Your IAM service role has access to the Amazon S3 buckets containing your files. Your files are .jsonl files and each individual record is a JSON object in the correct format. Note that validation doesn't check if the modelInput value matches the request body for the model. Your files fulfill the requirements for file size and number of records. For more information, see Quotas for Amazon Bedrock. Scheduled – This job has been validated and is now in a queue. The job will automatically start when it reaches its turn. Expired – This job timed out because it was scheduled but didn't begin before the set timeout duration. Submit a new job request. InProgress – This job has begun. You can start viewing the results in the output S3 location. Completed – This job has successfully completed. View the output files in the output S3 location. PartiallyCompleted – This job has partially completed. Not all of your records could be processed in time. View the output files in the output S3 location. Failed – This job has failed. Check the failure message for any further details. For further assistance, reach out to the Amazon Web Services Support Center. Stopped – This job was stopped by a user. Stopping – This job is being stopped by a user. (Submitted, InProgress, Completed, Failed, Stopping, Stopped, PartiallyCompleted, Expired, Validating, Scheduled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job was submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="successRecordCount" /></td>
+    <td><CopyableCode code="success_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that were successfully processed in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutDurationInHours" /></td>
+    <td><CopyableCode code="timeout_duration_in_hours" /></td>
     <td><code>integer</code></td>
     <td>The number of hours after which batch inference job was set to time out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalRecordCount" /></td>
+    <td><CopyableCode code="total_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of records in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of a virtual private cloud (VPC). For more information, see Protect your data using Amazon Virtual Private Cloud and Amazon Web Services PrivateLink.</td>
 </tr>
@@ -165,42 +165,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see Ensuring idempotency. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;1,256&#125;(-*&#91;a-zA-Z0-9&#93;)&#123;0,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorRecordCount" /></td>
+    <td><CopyableCode code="error_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that failed to process in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>Details about the location of the input to the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the batch inference job. (pattern: &lt;code&gt;(arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-invocation-job/&#91;a-z0-9&#93;&#123;12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobExpirationTime" /></td>
+    <td><CopyableCode code="job_expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job times or timed out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the batch inference job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;1,63&#125;(-*&#91;a-zA-Z0-9\+\-\.&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job was last modified.</td>
 </tr>
@@ -210,27 +210,27 @@ The following fields are returned by `SELECT` queries:
     <td>If the batch inference job failed, this field contains a message describing why the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the foundation model used for model inference. (pattern: &lt;code&gt;(arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-:&#93;&#123;1,63&#125;/&#91;a-z0-9&#93;&#123;12&#125;$)|(:foundation-model/(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;.&#93;?&#91;a-z0-9-&#93;&#123;1,63&#125;)(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)|((&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+)$)|(&#91;0-9&#93;&#123;12&#125;:(inference-profile|application-inference-profile)/&#91;a-zA-Z0-9-:.&#93;+$)))|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;.&#93;?&#91;a-z0-9-&#93;&#123;1,63&#125;)(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)|((&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelInvocationType" /></td>
+    <td><CopyableCode code="model_invocation_type" /></td>
     <td><code>string</code></td>
     <td>The invocation endpoint for ModelInvocationJob (InvokeModel, Converse)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Contains the configuration of the S3 location of the output data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processedRecordCount" /></td>
+    <td><CopyableCode code="processed_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that have been processed in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service role with permissions to carry out and manage batch inference. You can use the console to create a default service role or follow the steps at Create a service role for batch inference. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -240,27 +240,27 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the batch inference job. The following statuses are possible: Submitted – This job has been submitted to a queue for validation. Validating – This job is being validated for the requirements described in Format and upload your batch inference data. The criteria include the following: Your IAM service role has access to the Amazon S3 buckets containing your files. Your files are .jsonl files and each individual record is a JSON object in the correct format. Note that validation doesn't check if the modelInput value matches the request body for the model. Your files fulfill the requirements for file size and number of records. For more information, see Quotas for Amazon Bedrock. Scheduled – This job has been validated and is now in a queue. The job will automatically start when it reaches its turn. Expired – This job timed out because it was scheduled but didn't begin before the set timeout duration. Submit a new job request. InProgress – This job has begun. You can start viewing the results in the output S3 location. Completed – This job has successfully completed. View the output files in the output S3 location. PartiallyCompleted – This job has partially completed. Not all of your records could be processed in time. View the output files in the output S3 location. Failed – This job has failed. Check the failure message for any further details. For further assistance, reach out to the Amazon Web Services Support Center. Stopped – This job was stopped by a user. Stopping – This job is being stopped by a user. (Submitted, InProgress, Completed, Failed, Stopping, Stopped, PartiallyCompleted, Expired, Validating, Scheduled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the batch inference job was submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="successRecordCount" /></td>
+    <td><CopyableCode code="success_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that were successfully processed in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutDurationInHours" /></td>
+    <td><CopyableCode code="timeout_duration_in_hours" /></td>
     <td><code>integer</code></td>
     <td>The number of hours after which the batch inference job was set to time out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalRecordCount" /></td>
+    <td><CopyableCode code="total_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of records in the batch inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of a virtual private cloud (VPC). For more information, see Protect your data using Amazon Virtual Private Cloud and Amazon Web Services PrivateLink.</td>
 </tr>
@@ -389,26 +389,26 @@ Gets details about a batch inference job. For more information, see Monitor batc
 
 ```sql
 SELECT
-clientRequestToken,
-endTime,
-errorRecordCount,
-inputDataConfig,
-jobArn,
-jobExpirationTime,
-jobName,
-lastModifiedTime,
+client_request_token,
+end_time,
+error_record_count,
+input_data_config,
+job_arn,
+job_expiration_time,
+job_name,
+last_modified_time,
 message,
-modelId,
-modelInvocationType,
-outputDataConfig,
-processedRecordCount,
-roleArn,
+model_id,
+model_invocation_type,
+output_data_config,
+processed_record_count,
+role_arn,
 status,
-submitTime,
-successRecordCount,
-timeoutDurationInHours,
-totalRecordCount,
-vpcConfig
+submit_time,
+success_record_count,
+timeout_duration_in_hours,
+total_record_count,
+vpc_config
 FROM aws.bedrock.model_invocation_jobs
 WHERE job_identifier = '{{ job_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -421,26 +421,26 @@ Lists all batch inference jobs in the account. For more information, see View de
 
 ```sql
 SELECT
-clientRequestToken,
-endTime,
-errorRecordCount,
-inputDataConfig,
-jobArn,
-jobExpirationTime,
-jobName,
-lastModifiedTime,
+client_request_token,
+end_time,
+error_record_count,
+input_data_config,
+job_arn,
+job_expiration_time,
+job_name,
+last_modified_time,
 message,
-modelId,
-modelInvocationType,
-outputDataConfig,
-processedRecordCount,
-roleArn,
+model_id,
+model_invocation_type,
+output_data_config,
+processed_record_count,
+role_arn,
 status,
-submitTime,
-successRecordCount,
-timeoutDurationInHours,
-totalRecordCount,
-vpcConfig
+submit_time,
+success_record_count,
+timeout_duration_in_hours,
+total_record_count,
+vpc_config
 FROM aws.bedrock.model_invocation_jobs
 WHERE region = '{{ region }}' -- required
 AND submitTimeAfter = '{{ submitTimeAfter }}'
@@ -497,7 +497,7 @@ SELECT
 '{{ modelInvocationType }}',
 '{{ region }}'
 RETURNING
-jobArn
+job_arn
 ;
 ```
 </TabItem>

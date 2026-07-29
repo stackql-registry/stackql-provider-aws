@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, Amazon Kendra returns this token, which you can use in a later request to retrieve the next set of users or groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SummaryItems" /></td>
+    <td><CopyableCode code="summary_items" /></td>
     <td><code>array</code></td>
     <td>An array of summary information for one or more users or groups.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists users or groups in your IAM Identity Center identity source that are grant
 
 ```sql
 SELECT
-NextToken,
-SummaryItems
+next_token,
+summary_items
 FROM aws.kendra.experience_entities
 WHERE region = '{{ region }}' -- required
 ;

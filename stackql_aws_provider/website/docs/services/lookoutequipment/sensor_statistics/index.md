@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of sensor statistics. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SensorStatisticsSummaries" /></td>
+    <td><CopyableCode code="sensor_statistics_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides ingestion-based statistics regarding the specified sensor with respect to various validation types, such as whether data exists, the number and percentage of missing values, and the number and percentage of duplicate timestamps.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists statistics about the data collected for each of the sensors that have been
 
 ```sql
 SELECT
-NextToken,
-SensorStatisticsSummaries
+next_token,
+sensor_statistics_summaries
 FROM aws.lookoutequipment.sensor_statistics
 WHERE region = '{{ region }}' -- required
 ;

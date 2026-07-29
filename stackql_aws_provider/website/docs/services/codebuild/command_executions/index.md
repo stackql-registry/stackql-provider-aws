@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commandExecutions" /></td>
+    <td><CopyableCode code="command_executions" /></td>
     <td><code>array</code></td>
     <td>Information about the requested command executions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commandExecutionsNotFound" /></td>
+    <td><CopyableCode code="command_executions_not_found" /></td>
     <td><code>array</code></td>
     <td>The IDs of command executions for which information could not be found.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets information about the command executions.
 
 ```sql
 SELECT
-commandExecutions,
-commandExecutionsNotFound
+command_executions,
+command_executions_not_found
 FROM aws.codebuild.command_executions
 WHERE region = '{{ region }}' -- required
 ;

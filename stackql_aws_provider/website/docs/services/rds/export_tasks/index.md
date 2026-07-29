@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExportOnly" /></td>
+    <td><CopyableCode code="export_only" /></td>
     <td><code>string</code></td>
     <td>The data exported from the snapshot or cluster. Valid Values: database - Export all the data from a specified database. database.table table-name - Export a table of the snapshot or cluster. This format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora MySQL. database.schema schema-name - Export a database schema of the snapshot or cluster. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL. database.schema.table table-name - Export a table of the database schema. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportTaskIdentifier" /></td>
+    <td><CopyableCode code="export_task_identifier" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the snapshot or cluster export task. This ID isn't an identifier for the Amazon S3 bucket where the data is exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureCause" /></td>
+    <td><CopyableCode code="failure_cause" /></td>
     <td><code>string</code></td>
     <td>The reason the export failed, if it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM role that is used to write to Amazon S3 when exporting a snapshot or cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The key identifier of the Amazon Web Services KMS key that is used to encrypt the data when it's exported to Amazon S3. The KMS key identifier is its key ARN, key ID, alias ARN, or alias name. The IAM role used for the export must have encryption and decryption permissions to use this KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>integer</code></td>
     <td>The progress of the snapshot or cluster export task as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Bucket" /></td>
+    <td><CopyableCode code="s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 bucket where the snapshot or cluster is exported to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Prefix" /></td>
+    <td><CopyableCode code="s3_prefix" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 bucket prefix that is the file name and path of the exported data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotTime" /></td>
+    <td><CopyableCode code="snapshot_time" /></td>
     <td><code>string</code></td>
     <td>The time when the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The type of source for the export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The progress status of the export task. The status can be one of the following: CANCELED CANCELING COMPLETE FAILED IN_PROGRESS STARTING</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskEndTime" /></td>
+    <td><CopyableCode code="task_end_time" /></td>
     <td><code>string</code></td>
     <td>The time when the snapshot or cluster export task ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskStartTime" /></td>
+    <td><CopyableCode code="task_start_time" /></td>
     <td><code>string</code></td>
     <td>The time when the snapshot or cluster export task started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalExtractedDataInGB" /></td>
+    <td><CopyableCode code="total_extracted_data_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The total amount of data exported, in gigabytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarningMessage" /></td>
+    <td><CopyableCode code="warning_message" /></td>
     <td><code>string</code></td>
     <td>A warning about the snapshot or cluster export task.</td>
 </tr>
@@ -273,22 +273,22 @@ Returns information about a snapshot or cluster export to Amazon S3. This API op
 
 ```sql
 SELECT
-ExportOnly,
-ExportTaskIdentifier,
-FailureCause,
-IamRoleArn,
-KmsKeyId,
-PercentProgress,
-S3Bucket,
-S3Prefix,
-SnapshotTime,
-SourceArn,
-SourceType,
-Status,
-TaskEndTime,
-TaskStartTime,
-TotalExtractedDataInGB,
-WarningMessage
+export_only,
+export_task_identifier,
+failure_cause,
+iam_role_arn,
+kms_key_id,
+percent_progress,
+s3_bucket,
+s3_prefix,
+snapshot_time,
+source_arn,
+source_type,
+status,
+task_end_time,
+task_start_time,
+total_extracted_data_in_gb,
+warning_message
 FROM aws.rds.export_tasks
 WHERE region = '{{ region }}' -- required
 AND ExportTaskIdentifier = '{{ ExportTaskIdentifier }}'

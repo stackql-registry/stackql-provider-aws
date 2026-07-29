@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MFAOptions" /></td>
+    <td><CopyableCode code="mfa_options" /></td>
     <td><code>array</code></td>
     <td>This response parameter is no longer supported. It provides information only about SMS MFA configurations. It doesn't provide information about time-based one-time password (TOTP) software token MFA configurations. To look up information about either type of MFA configuration, use UserMFASettingList instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMfaSetting" /></td>
+    <td><CopyableCode code="preferred_mfa_setting" /></td>
     <td><code>string</code></td>
     <td>The user's preferred MFA. Users can prefer SMS message, email message, or TOTP MFA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserAttributes" /></td>
+    <td><CopyableCode code="user_attributes" /></td>
     <td><code>array</code></td>
     <td>An array of name-value pairs representing user attributes. Custom attributes are prepended with the custom: prefix.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserMFASettingList" /></td>
+    <td><CopyableCode code="user_mfa_setting_list" /></td>
     <td><code>array</code></td>
     <td>The MFA options that are activated for the user. The possible values in this list are SMS_MFA, EMAIL_OTP, and SOFTWARE_TOKEN_MFA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The name of the user that you requested. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -90,37 +90,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>array</code></td>
     <td>Names and values of a user's attributes, for example email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the user's account is enabled or disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MFAOptions" /></td>
+    <td><CopyableCode code="mfa_options" /></td>
     <td><code>array</code></td>
     <td>The user's MFA configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserCreateDate" /></td>
+    <td><CopyableCode code="user_create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserLastModifiedDate" /></td>
+    <td><CopyableCode code="user_last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserStatus" /></td>
+    <td><CopyableCode code="user_status" /></td>
     <td><code>string</code></td>
     <td>The user status. This can be one of the following: UNCONFIRMED: User has been created but not confirmed. CONFIRMED: User has been confirmed. EXTERNAL_PROVIDER: User signed in with a third-party IdP. RESET_REQUIRED: User is confirmed, but the user must request a code and reset their password before they can sign in. FORCE_CHANGE_PASSWORD: The user is confirmed and the user can sign in using a temporary password, but on first sign-in, the user must change their password to a new value before doing anything else. The statuses ARCHIVED, UNKNOWN, and COMPROMISED are no longer used. (UNCONFIRMED, CONFIRMED, ARCHIVED, COMPROMISED, UNKNOWN, RESET_REQUIRED, FORCE_CHANGE_PASSWORD, EXTERNAL_PROVIDER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The user's username. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -253,11 +253,11 @@ Gets user attributes and and MFA settings for the currently signed-in user. Auth
 
 ```sql
 SELECT
-MFAOptions,
-PreferredMfaSetting,
-UserAttributes,
-UserMFASettingList,
-Username
+mfa_options,
+preferred_mfa_setting,
+user_attributes,
+user_mfa_setting_list,
+username
 FROM aws.cognito_idp.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -269,13 +269,13 @@ Given a user pool ID, returns a list of users and their basic details in a user 
 
 ```sql
 SELECT
-Attributes,
-Enabled,
-MFAOptions,
-UserCreateDate,
-UserLastModifiedDate,
-UserStatus,
-Username
+attributes,
+enabled,
+mfa_options,
+user_create_date,
+user_last_modified_date,
+user_status,
+username
 FROM aws.cognito_idp.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -324,7 +324,7 @@ region = '{{ region }}' --required
 AND UserAttributes = '{{ UserAttributes }}' --required
 AND AccessToken = '{{ AccessToken }}' --required
 RETURNING
-CodeDeliveryDetailsList;
+code_delivery_details_list;
 ```
 </TabItem>
 <TabItem value="set_user_mfa_preference">

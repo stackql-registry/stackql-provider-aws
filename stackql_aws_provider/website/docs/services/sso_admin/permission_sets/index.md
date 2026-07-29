@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the permission set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the PermissionSet. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the permission set. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionSetArn" /></td>
+    <td><CopyableCode code="permission_set_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the permission set. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the Amazon Web Services General Reference. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso:::permissionSet/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/ps-&#91;a-zA-Z0-9-./&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelayState" /></td>
+    <td><CopyableCode code="relay_state" /></td>
     <td><code>string</code></td>
     <td>Used to redirect users within the application during the federation authentication process. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&$@#\\\/%?=~\-_'"|!:,.;*+\&#91;\&#93;\ \(\)\&#123;\&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionDuration" /></td>
+    <td><CopyableCode code="session_duration" /></td>
     <td><code>string</code></td>
     <td>The length of time that the application user sessions are valid for in the ISO-8601 standard. (pattern: &lt;code&gt;(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)(&#91;DW&#93;))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?&lt;/code&gt;)</td>
 </tr>
@@ -256,12 +256,12 @@ Gets the details of the permission set.
 
 ```sql
 SELECT
-CreatedDate,
-Description,
-Name,
-PermissionSetArn,
-RelayState,
-SessionDuration
+created_date,
+description,
+name,
+permission_set_arn,
+relay_state,
+session_duration
 FROM aws.sso_admin.permission_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -314,7 +314,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-PermissionSet
+permission_set
 ;
 ```
 </TabItem>
@@ -420,7 +420,7 @@ AND InstanceArn = '{{ InstanceArn }}' --required
 AND PermissionSetArn = '{{ PermissionSetArn }}' --required
 AND TargetType = '{{ TargetType }}' --required
 RETURNING
-PermissionSetProvisioningStatus;
+permission_set_provisioning_status;
 ```
 </TabItem>
 <TabItem value="update_permission_set">

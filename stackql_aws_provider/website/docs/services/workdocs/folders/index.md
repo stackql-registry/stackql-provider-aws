@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomMetadata" /></td>
+    <td><CopyableCode code="custom_metadata" /></td>
     <td><code>object</code></td>
     <td>The custom metadata on the folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata of the folder.</td>
 </tr>
@@ -160,8 +160,8 @@ Retrieves the metadata of the specified folder.
 
 ```sql
 SELECT
-CustomMetadata,
-Metadata
+custom_metadata,
+metadata
 FROM aws.workdocs.folders
 WHERE folder_id = '{{ folder_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -199,7 +199,7 @@ SELECT
 '{{ region }}',
 '{{ Authentication }}'
 RETURNING
-Metadata
+metadata
 ;
 ```
 </TabItem>

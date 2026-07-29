@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Estimate" /></td>
+    <td><CopyableCode code="estimate" /></td>
     <td><code>string</code></td>
     <td>The estimated number of profiles contained in the segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimateId" /></td>
+    <td><CopyableCode code="estimate_id" /></td>
     <td><code>string</code></td>
     <td>The QueryId which is the same as the value passed in QueryId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The error message if there is any error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the query. (RUNNING, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>integer</code></td>
     <td>The status code of the segment estimate.</td>
 </tr>
@@ -161,12 +161,12 @@ Gets the result of a segment estimate query.
 
 ```sql
 SELECT
-DomainName,
-Estimate,
-EstimateId,
-Message,
-Status,
-StatusCode
+domain_name,
+estimate,
+estimate_id,
+message,
+status,
+status_code
 FROM aws.customer_profiles.segment_estimates
 WHERE domain_name = '{{ domain_name }}' -- required
 AND estimate_id = '{{ estimate_id }}' -- required
@@ -203,9 +203,9 @@ SELECT
 '{{ domain_name }}',
 '{{ region }}'
 RETURNING
-DomainName,
-EstimateId,
-StatusCode
+domain_name,
+estimate_id,
+status_code
 ;
 ```
 </TabItem>

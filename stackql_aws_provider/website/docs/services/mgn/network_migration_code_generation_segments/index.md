@@ -55,47 +55,47 @@ The following fields are returned by `SELECT` queries:
     <td>A list of artifacts generated for this segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the segment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code generation job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logicalID" /></td>
+    <td><CopyableCode code="logical_id" /></td>
     <td><code>string</code></td>
     <td>The logical identifier for the segment. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapperSegmentID" /></td>
+    <td><CopyableCode code="mapper_segment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the mapper segment that this code generation segment was created from. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationDefinitionID" /></td>
+    <td><CopyableCode code="network_migration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration definition. (pattern: &lt;code&gt;nmd-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationExecutionID" /></td>
+    <td><CopyableCode code="network_migration_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="referencedSegments" /></td>
+    <td><CopyableCode code="referenced_segments" /></td>
     <td><code>array</code></td>
     <td>A list of other segments that this segment depends on or references.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="segmentID" /></td>
+    <td><CopyableCode code="segment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the segment. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="segmentType" /></td>
+    <td><CopyableCode code="segment_type" /></td>
     <td><code>string</code></td>
     <td>The type of the segment. (WORKLOAD, APPLIANCE, NETWORK)</td>
 </tr>
@@ -165,15 +165,15 @@ Lists code generation segments, which represent individual infrastructure compon
 ```sql
 SELECT
 artifacts,
-createdAt,
-jobID,
-logicalID,
-mapperSegmentID,
-networkMigrationDefinitionID,
-networkMigrationExecutionID,
-referencedSegments,
-segmentID,
-segmentType
+created_at,
+job_id,
+logical_id,
+mapper_segment_id,
+network_migration_definition_id,
+network_migration_execution_id,
+referenced_segments,
+segment_id,
+segment_type
 FROM aws.mgn.network_migration_code_generation_segments
 WHERE region = '{{ region }}' -- required
 ;

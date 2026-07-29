@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the account pool. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountSource" /></td>
+    <td><CopyableCode code="account_source" /></td>
     <td><code>object</code></td>
     <td>The source of accounts for the account pool. In the current release, it's either a static list of accounts provided by the customer or a custom Amazon Web Services Lambda handler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the account pool was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the account pool.</td>
 </tr>
@@ -81,27 +81,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the account pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain in which the account pool lives whose details are to be displayed. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainUnitId" /></td>
+    <td><CopyableCode code="domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The domain unit ID of the account pool. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the account pool was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolutionStrategy" /></td>
+    <td><CopyableCode code="resolution_strategy" /></td>
     <td><code>string</code></td>
     <td>The mechanism used to resolve the account selection from the account pool. (MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who last updated the account pool.</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the account pool. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the account pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainUnitId" /></td>
+    <td><CopyableCode code="domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain unit. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolutionStrategy" /></td>
+    <td><CopyableCode code="resolution_strategy" /></td>
     <td><code>string</code></td>
     <td>The mechanism used to resolve the account selection from the account pool. (MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who updated the account pool.</td>
 </tr>
@@ -285,15 +285,15 @@ Gets the details of the account pool.
 SELECT
 id,
 name,
-accountSource,
-createdAt,
-createdBy,
+account_source,
+created_at,
+created_by,
 description,
-domainId,
-domainUnitId,
-lastUpdatedAt,
-resolutionStrategy,
-updatedBy
+domain_id,
+domain_unit_id,
+last_updated_at,
+resolution_strategy,
+updated_by
 FROM aws.datazone.account_pools
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -309,11 +309,11 @@ Lists existing account pools.
 SELECT
 id,
 name,
-createdBy,
-domainId,
-domainUnitId,
-resolutionStrategy,
-updatedBy
+created_by,
+domain_id,
+domain_unit_id,
+resolution_strategy,
+updated_by
 FROM aws.datazone.account_pools
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -360,15 +360,15 @@ SELECT
 RETURNING
 id,
 name,
-accountSource,
-createdAt,
-createdBy,
+account_source,
+created_at,
+created_by,
 description,
-domainId,
-domainUnitId,
-lastUpdatedAt,
-resolutionStrategy,
-updatedBy
+domain_id,
+domain_unit_id,
+last_updated_at,
+resolution_strategy,
+updated_by
 ;
 ```
 </TabItem>
@@ -433,15 +433,15 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-accountSource,
-createdAt,
-createdBy,
+account_source,
+created_at,
+created_by,
 description,
-domainId,
-domainUnitId,
-lastUpdatedAt,
-resolutionStrategy,
-updatedBy;
+domain_id,
+domain_unit_id,
+last_updated_at,
+resolution_strategy,
+updated_by;
 ```
 </TabItem>
 </Tabs>

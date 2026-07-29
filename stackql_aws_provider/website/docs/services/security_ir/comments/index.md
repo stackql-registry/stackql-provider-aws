@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="commentId" /></td>
+    <td><CopyableCode code="comment_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;\d&#123;6&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td> (pattern: &lt;code&gt;.*((^AWS Responder)|(^\d&#123;12&#125;$)|(^arn:(&#91;^:&#93;*aws&#91;^:&#93;*):(?:(?:iam)::\d&#123;12&#125;:(?:user|role|group|root)(?:(?:/&#91;^/&#93;+)+)?|(?:sts)::\d&#123;12&#125;:assumed-role/&#91;^/&#93;+/&#91;^/&#93;+)$)|(^security-ir.amazonaws.com)).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;.*((^AWS Responder)|(^\d&#123;12&#125;$)|(^arn:(&#91;^:&#93;*aws&#91;^:&#93;*):(?:(?:iam)::\d&#123;12&#125;:(?:user|role|group|root)(?:(?:/&#91;^/&#93;+)+)?|(?:sts)::\d&#123;12&#125;:assumed-role/&#91;^/&#93;+/&#91;^/&#93;+)$)|(^security-ir.amazonaws.com)).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
@@ -169,11 +169,11 @@ Returns comments for a designated case.
 ```sql
 SELECT
 body,
-commentId,
-createdDate,
+comment_id,
+created_date,
 creator,
-lastUpdatedBy,
-lastUpdatedDate
+last_updated_by,
+last_updated_date
 FROM aws.security_ir.comments
 WHERE case_id = '{{ case_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -209,7 +209,7 @@ SELECT
 '{{ case_id }}',
 '{{ region }}'
 RETURNING
-commentId
+comment_id
 ;
 ```
 </TabItem>
@@ -257,7 +257,7 @@ AND region = '{{ region }}' --required
 AND body = '{{ body }}' --required
 RETURNING
 body,
-commentId;
+comment_id;
 ```
 </TabItem>
 </Tabs>

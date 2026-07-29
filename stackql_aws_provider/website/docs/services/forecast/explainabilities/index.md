@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the Explainability resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>The source of your data, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the data and, optionally, an Key Management Service (KMS) key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableVisualization" /></td>
+    <td><CopyableCode code="enable_visualization" /></td>
     <td><code>boolean</code></td>
     <td>Whether the visualization was enabled for the Explainability resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDateTime" /></td>
+    <td><CopyableCode code="end_date_time" /></td>
     <td><code>string</code></td>
     <td>If TimePointGranularity is set to SPECIFIC, the last time point in the Explainability. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;T\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The estimated time remaining in minutes for the CreateExplainability job to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityArn" /></td>
+    <td><CopyableCode code="explainability_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Explainability. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityConfig" /></td>
+    <td><CopyableCode code="explainability_config" /></td>
     <td><code>object</code></td>
     <td>The configuration settings that define the granularity of time series and time points for the Explainability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityName" /></td>
+    <td><CopyableCode code="explainability_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Explainability. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, a message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Predictor or Forecast used to create the Explainability resource. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>object</code></td>
     <td>Defines the fields of a dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDateTime" /></td>
+    <td><CopyableCode code="start_date_time" /></td>
     <td><code>string</code></td>
     <td>If TimePointGranularity is set to SPECIFIC, the first time point in the Explainability. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;T\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Explainability resource. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
@@ -135,42 +135,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the Explainability was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityArn" /></td>
+    <td><CopyableCode code="explainability_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Explainability. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityConfig" /></td>
+    <td><CopyableCode code="explainability_config" /></td>
     <td><code>object</code></td>
     <td>The configuration settings that define the granularity of time series and time points for the Explainability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityName" /></td>
+    <td><CopyableCode code="explainability_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Explainability. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Information about any errors that may have occurred during the Explainability creation process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Predictor or Forecast used to create the Explainability. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Explainability. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
@@ -261,20 +261,20 @@ Describes an Explainability resource created using the CreateExplainability oper
 
 ```sql
 SELECT
-CreationTime,
-DataSource,
-EnableVisualization,
-EndDateTime,
-EstimatedTimeRemainingInMinutes,
-ExplainabilityArn,
-ExplainabilityConfig,
-ExplainabilityName,
-LastModificationTime,
-Message,
-ResourceArn,
-Schema,
-StartDateTime,
-Status
+creation_time,
+data_source,
+enable_visualization,
+end_date_time,
+estimated_time_remaining_in_minutes,
+explainability_arn,
+explainability_config,
+explainability_name,
+last_modification_time,
+message,
+resource_arn,
+schema,
+start_date_time,
+status
 FROM aws.forecast.explainabilities
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,14 +286,14 @@ Returns a list of Explainability resources created using the CreateExplainabilit
 
 ```sql
 SELECT
-CreationTime,
-ExplainabilityArn,
-ExplainabilityConfig,
-ExplainabilityName,
-LastModificationTime,
-Message,
-ResourceArn,
-Status
+creation_time,
+explainability_arn,
+explainability_config,
+explainability_name,
+last_modification_time,
+message,
+resource_arn,
+status
 FROM aws.forecast.explainabilities
 WHERE region = '{{ region }}' -- required
 ;
@@ -340,7 +340,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ExplainabilityArn
+explainability_arn
 ;
 ```
 </TabItem>

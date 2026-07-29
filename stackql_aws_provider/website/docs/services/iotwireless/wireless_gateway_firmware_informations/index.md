@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>object</code></td>
     <td>The version of the gateways that should receive the update.</td>
 </tr>
@@ -124,7 +124,7 @@ Gets the firmware version and other information about a wireless gateway.
 
 ```sql
 SELECT
-CurrentVersion
+current_version
 FROM aws.iotwireless.wireless_gateway_firmware_informations
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Automated Reasoning policy. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
@@ -134,7 +134,7 @@ Retrieves the next test scenario for validating an Automated Reasoning policy. T
 
 ```sql
 SELECT
-policyArn,
+policy_arn,
 scenario
 FROM aws.bedrock.automated_reasoning_policy_next_scenarios
 WHERE policy_arn = '{{ policy_arn }}' -- required

@@ -52,87 +52,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AfterContactWorkConfigs" /></td>
+    <td><CopyableCode code="after_contact_work_configs" /></td>
     <td><code>array</code></td>
     <td>A list of after contact work (ACW) timeout configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoAcceptConfigs" /></td>
+    <td><CopyableCode code="auto_accept_configs" /></td>
     <td><code>array</code></td>
     <td>A list of auto-accept configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryUserId" /></td>
+    <td><CopyableCode code="directory_user_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user account in the directory used for identity management.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HierarchyGroupId" /></td>
+    <td><CopyableCode code="hierarchy_group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the hierarchy group for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityInfo" /></td>
+    <td><CopyableCode code="identity_info" /></td>
     <td><code>object</code></td>
     <td>Contains information about the identity of a user. For Amazon Connect instances that are created with the EXISTING_DIRECTORY identity management type, FirstName, LastName, and Email cannot be updated from within Amazon Connect because they are managed by the directory. The FirstName and LastName length constraints below apply only to instances using SAML for identity management. If you are using Amazon Connect for identity management, the length constraints are 1-255 for FirstName, and 1-256 for LastName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersistentConnectionConfigs" /></td>
+    <td><CopyableCode code="persistent_connection_configs" /></td>
     <td><code>array</code></td>
     <td>The list of persistent connection configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneConfig" /></td>
+    <td><CopyableCode code="phone_config" /></td>
     <td><code>object</code></td>
     <td>Contains information about the phone configuration settings for a user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberConfigs" /></td>
+    <td><CopyableCode code="phone_number_configs" /></td>
     <td><code>array</code></td>
     <td>The list of phone number configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingProfileId" /></td>
+    <td><CopyableCode code="routing_profile_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the routing profile for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityProfileIds" /></td>
+    <td><CopyableCode code="security_profile_ids" /></td>
     <td><code>array</code></td>
     <td>The identifiers of the security profiles for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The user name assigned to the user account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceEnhancementConfigs" /></td>
+    <td><CopyableCode code="voice_enhancement_configs" /></td>
     <td><code>array</code></td>
     <td>The list of voice enhancement configuration settings for each channel.</td>
 </tr>
@@ -151,27 +151,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The Amazon Connect user name of the user account.</td>
 </tr>
@@ -190,77 +190,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AfterContactWorkConfigs" /></td>
+    <td><CopyableCode code="after_contact_work_configs" /></td>
     <td><code>array</code></td>
     <td>A list of after contact work (ACW) timeout configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoAcceptConfigs" /></td>
+    <td><CopyableCode code="auto_accept_configs" /></td>
     <td><code>array</code></td>
     <td>A list of auto-accept configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryUserId" /></td>
+    <td><CopyableCode code="directory_user_id" /></td>
     <td><code>string</code></td>
     <td>The directory identifier of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HierarchyGroupId" /></td>
+    <td><CopyableCode code="hierarchy_group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user's hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user's summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityInfo" /></td>
+    <td><CopyableCode code="identity_info" /></td>
     <td><code>object</code></td>
     <td>The user's first name and last name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersistentConnectionConfigs" /></td>
+    <td><CopyableCode code="persistent_connection_configs" /></td>
     <td><code>array</code></td>
     <td>The list of persistent connection configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneConfig" /></td>
+    <td><CopyableCode code="phone_config" /></td>
     <td><code>object</code></td>
     <td>Contains information about the phone configuration settings for a user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberConfigs" /></td>
+    <td><CopyableCode code="phone_number_configs" /></td>
     <td><code>array</code></td>
     <td>The list of phone number configuration settings for each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingProfileId" /></td>
+    <td><CopyableCode code="routing_profile_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user's routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityProfileIds" /></td>
+    <td><CopyableCode code="security_profile_ids" /></td>
     <td><code>array</code></td>
     <td>The identifiers of the user's security profiles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceEnhancementConfigs" /></td>
+    <td><CopyableCode code="voice_enhancement_configs" /></td>
     <td><code>array</code></td>
     <td>The list of voice enhancement configuration settings for each channel.</td>
 </tr>
@@ -426,23 +426,23 @@ Describes the specified user. You can find the instance ID in the Amazon Connect
 
 ```sql
 SELECT
-AfterContactWorkConfigs,
-Arn,
-AutoAcceptConfigs,
-DirectoryUserId,
-HierarchyGroupId,
-Id,
-IdentityInfo,
-LastModifiedRegion,
-LastModifiedTime,
-PersistentConnectionConfigs,
-PhoneConfig,
-PhoneNumberConfigs,
-RoutingProfileId,
-SecurityProfileIds,
-Tags,
-Username,
-VoiceEnhancementConfigs
+after_contact_work_configs,
+arn,
+auto_accept_configs,
+directory_user_id,
+hierarchy_group_id,
+id,
+identity_info,
+last_modified_region,
+last_modified_time,
+persistent_connection_configs,
+phone_config,
+phone_number_configs,
+routing_profile_id,
+security_profile_ids,
+tags,
+username,
+voice_enhancement_configs
 FROM aws.connect.users
 WHERE user_id = '{{ user_id }}' -- required
 AND instance_id = '{{ instance_id }}' -- required
@@ -456,11 +456,11 @@ Provides summary information about the users for the specified Amazon Connect in
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Username
+arn,
+id,
+last_modified_region,
+last_modified_time,
+username
 FROM aws.connect.users
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -475,21 +475,21 @@ Searches users in an Amazon Connect instance, with optional filtering. AfterCont
 
 ```sql
 SELECT
-AfterContactWorkConfigs,
-Arn,
-AutoAcceptConfigs,
-DirectoryUserId,
-HierarchyGroupId,
-Id,
-IdentityInfo,
-PersistentConnectionConfigs,
-PhoneConfig,
-PhoneNumberConfigs,
-RoutingProfileId,
-SecurityProfileIds,
-Tags,
-Username,
-VoiceEnhancementConfigs
+after_contact_work_configs,
+arn,
+auto_accept_configs,
+directory_user_id,
+hierarchy_group_id,
+id,
+identity_info,
+persistent_connection_configs,
+phone_config,
+phone_number_configs,
+routing_profile_id,
+security_profile_ids,
+tags,
+username,
+voice_enhancement_configs
 FROM aws.connect.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -548,8 +548,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-UserArn,
-UserId
+user_arn,
+user_id
 ;
 ```
 </TabItem>

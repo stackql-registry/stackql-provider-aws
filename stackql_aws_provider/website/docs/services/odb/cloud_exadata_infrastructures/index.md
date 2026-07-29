@@ -51,147 +51,147 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activatedStorageCount" /></td>
+    <td><CopyableCode code="activated_storage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of storage servers requested for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="additionalStorageCount" /></td>
+    <td><CopyableCode code="additional_storage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of storage servers requested for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone (AZ) where the Exadata infrastructure is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The AZ ID of the AZ where the Exadata infrastructure is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableStorageSizeInGBs" /></td>
+    <td><CopyableCode code="available_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of available storage, in gigabytes (GB), for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureArn" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureId" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Exadata infrastructure. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeCount" /></td>
+    <td><CopyableCode code="compute_count" /></td>
     <td><code>integer</code></td>
     <td>The number of database servers for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeModel" /></td>
+    <td><CopyableCode code="compute_model" /></td>
     <td><code>string</code></td>
     <td>The OCI model compute model used when you create or clone an instance: ECPU or OCPU. An ECPU is an abstracted measure of compute resources. ECPUs are based on the number of cores elastically allocated from a pool of compute and storage servers. An OCPU is a legacy physical measure of compute resources. OCPUs are based on the physical core of a processor with hyper-threading enabled. (ECPU, OCPU)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCount" /></td>
+    <td><CopyableCode code="cpu_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores that are allocated to the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Exadata infrastructure was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerContactsToSendToOCI" /></td>
+    <td><CopyableCode code="customer_contacts_to_send_to_oci" /></td>
     <td><code>array</code></td>
     <td>The email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The size of the Exadata infrastructure's data disk group, in terabytes (TB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databaseServerType" /></td>
+    <td><CopyableCode code="database_server_type" /></td>
     <td><code>string</code></td>
     <td>The database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The size of the Exadata infrastructure's local node storage, in gigabytes (GB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServerVersion" /></td>
+    <td><CopyableCode code="db_server_version" /></td>
     <td><code>string</code></td>
     <td>The software version of the database servers (dom0) in the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastMaintenanceRunId" /></td>
+    <td><CopyableCode code="last_maintenance_run_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle Cloud Identifier (OCID) of the last maintenance run for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>object</code></td>
     <td>The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCpuCount" /></td>
+    <td><CopyableCode code="max_cpu_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDataStorageInTBs" /></td>
+    <td><CopyableCode code="max_data_storage_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The total amount of data disk group storage, in terabytes (TB), that's available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="max_db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of local node storage, in gigabytes (GB), that's available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxMemoryInGBs" /></td>
+    <td><CopyableCode code="max_memory_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of memory, in gigabytes (GB), that's available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeInGBs" /></td>
+    <td><CopyableCode code="memory_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of memory, in gigabytes (GB), that's allocated on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyDbServerVersion" /></td>
+    <td><CopyableCode code="monthly_db_server_version" /></td>
     <td><code>string</code></td>
     <td>The monthly software version of the database servers installed on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyStorageServerVersion" /></td>
+    <td><CopyableCode code="monthly_storage_server_version" /></td>
     <td><code>string</code></td>
     <td>The monthly software version of the storage servers installed on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextMaintenanceRunId" /></td>
+    <td><CopyableCode code="next_maintenance_run_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the next maintenance run for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociUrl" /></td>
+    <td><CopyableCode code="oci_url" /></td>
     <td><code>string</code></td>
     <td>The HTTPS link to the Exadata infrastructure in OCI.</td>
 </tr>
@@ -201,7 +201,7 @@ The following fields are returned by `SELECT` queries:
     <td>The OCID of the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The amount of progress made on the current operation on the Exadata infrastructure, expressed as a percentage.</td>
 </tr>
@@ -216,27 +216,27 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the Exadata infrastructure. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageCount" /></td>
+    <td><CopyableCode code="storage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of storage servers that are activated for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageServerType" /></td>
+    <td><CopyableCode code="storage_server_type" /></td>
     <td><code>string</code></td>
     <td>The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageServerVersion" /></td>
+    <td><CopyableCode code="storage_server_version" /></td>
     <td><code>string</code></td>
     <td>The software version of the storage servers on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStorageSizeInGBs" /></td>
+    <td><CopyableCode code="total_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of storage, in gigabytes (GB), on the the Exadata infrastructure.</td>
 </tr>
@@ -255,147 +255,147 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activatedStorageCount" /></td>
+    <td><CopyableCode code="activated_storage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of storage servers requested for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="additionalStorageCount" /></td>
+    <td><CopyableCode code="additional_storage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of storage servers requested for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone (AZ) where the Exadata infrastructure is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The AZ ID of the AZ where the Exadata infrastructure is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableStorageSizeInGBs" /></td>
+    <td><CopyableCode code="available_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of available storage, in gigabytes (GB), for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureArn" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureId" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Exadata infrastructure. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeCount" /></td>
+    <td><CopyableCode code="compute_count" /></td>
     <td><code>integer</code></td>
     <td>The number of database servers for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeModel" /></td>
+    <td><CopyableCode code="compute_model" /></td>
     <td><code>string</code></td>
     <td>The OCI model compute model used when you create or clone an instance: ECPU or OCPU. An ECPU is an abstracted measure of compute resources. ECPUs are based on the number of cores elastically allocated from a pool of compute and storage servers. An OCPU is a legacy physical measure of compute resources. OCPUs are based on the physical core of a processor with hyper-threading enabled. (ECPU, OCPU)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCount" /></td>
+    <td><CopyableCode code="cpu_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores that are allocated to the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Exadata infrastructure was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerContactsToSendToOCI" /></td>
+    <td><CopyableCode code="customer_contacts_to_send_to_oci" /></td>
     <td><code>array</code></td>
     <td>The email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The size of the Exadata infrastructure's data disk group, in terabytes (TB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databaseServerType" /></td>
+    <td><CopyableCode code="database_server_type" /></td>
     <td><code>string</code></td>
     <td>The database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The size of the Exadata infrastructure's local node storage, in gigabytes (GB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServerVersion" /></td>
+    <td><CopyableCode code="db_server_version" /></td>
     <td><code>string</code></td>
     <td>The software version of the database servers on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastMaintenanceRunId" /></td>
+    <td><CopyableCode code="last_maintenance_run_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle Cloud Identifier (OCID) of the last maintenance run for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>object</code></td>
     <td>The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCpuCount" /></td>
+    <td><CopyableCode code="max_cpu_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDataStorageInTBs" /></td>
+    <td><CopyableCode code="max_data_storage_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The total amount of data disk group storage, in terabytes (TB), that's available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="max_db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of local node storage, in gigabytes (GB), that's available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxMemoryInGBs" /></td>
+    <td><CopyableCode code="max_memory_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of memory, in gigabytes (GB), that's available on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeInGBs" /></td>
+    <td><CopyableCode code="memory_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of memory, in gigabytes (GB), that's allocated on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyDbServerVersion" /></td>
+    <td><CopyableCode code="monthly_db_server_version" /></td>
     <td><code>string</code></td>
     <td>The monthly software version of the database servers (dom0) installed on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyStorageServerVersion" /></td>
+    <td><CopyableCode code="monthly_storage_server_version" /></td>
     <td><code>string</code></td>
     <td>The monthly software version of the storage servers installed on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextMaintenanceRunId" /></td>
+    <td><CopyableCode code="next_maintenance_run_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the next maintenance run for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociUrl" /></td>
+    <td><CopyableCode code="oci_url" /></td>
     <td><code>string</code></td>
     <td>The HTTPS link to the Exadata infrastructure in OCI.</td>
 </tr>
@@ -405,7 +405,7 @@ The following fields are returned by `SELECT` queries:
     <td>The OCID of the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The amount of progress made on the current operation on the Exadata infrastructure, expressed as a percentage.</td>
 </tr>
@@ -420,27 +420,27 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the Exadata infrastructure. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageCount" /></td>
+    <td><CopyableCode code="storage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of storage servers that are activated for the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageServerType" /></td>
+    <td><CopyableCode code="storage_server_type" /></td>
     <td><code>string</code></td>
     <td>The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageServerVersion" /></td>
+    <td><CopyableCode code="storage_server_version" /></td>
     <td><code>string</code></td>
     <td>The software version of the storage servers on the Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStorageSizeInGBs" /></td>
+    <td><CopyableCode code="total_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of storage, in gigabytes (GB), on the the Exadata infrastructure.</td>
 </tr>
@@ -538,44 +538,44 @@ Returns information about the specified Exadata infrastructure.
 
 ```sql
 SELECT
-activatedStorageCount,
-additionalStorageCount,
-availabilityZone,
-availabilityZoneId,
-availableStorageSizeInGBs,
-cloudExadataInfrastructureArn,
-cloudExadataInfrastructureId,
-computeCount,
-computeModel,
-cpuCount,
-createdAt,
-customerContactsToSendToOCI,
-dataStorageSizeInTBs,
-databaseServerType,
-dbNodeStorageSizeInGBs,
-dbServerVersion,
-displayName,
-lastMaintenanceRunId,
-maintenanceWindow,
-maxCpuCount,
-maxDataStorageInTBs,
-maxDbNodeStorageSizeInGBs,
-maxMemoryInGBs,
-memorySizeInGBs,
-monthlyDbServerVersion,
-monthlyStorageServerVersion,
-nextMaintenanceRunId,
-ociResourceAnchorName,
-ociUrl,
+activated_storage_count,
+additional_storage_count,
+availability_zone,
+availability_zone_id,
+available_storage_size_in_gbs,
+cloud_exadata_infrastructure_arn,
+cloud_exadata_infrastructure_id,
+compute_count,
+compute_model,
+cpu_count,
+created_at,
+customer_contacts_to_send_to_oci,
+data_storage_size_in_tbs,
+database_server_type,
+db_node_storage_size_in_gbs,
+db_server_version,
+display_name,
+last_maintenance_run_id,
+maintenance_window,
+max_cpu_count,
+max_data_storage_in_tbs,
+max_db_node_storage_size_in_gbs,
+max_memory_in_gbs,
+memory_size_in_gbs,
+monthly_db_server_version,
+monthly_storage_server_version,
+next_maintenance_run_id,
+oci_resource_anchor_name,
+oci_url,
 ocid,
-percentProgress,
+percent_progress,
 shape,
 status,
-statusReason,
-storageCount,
-storageServerType,
-storageServerVersion,
-totalStorageSizeInGBs
+status_reason,
+storage_count,
+storage_server_type,
+storage_server_version,
+total_storage_size_in_gbs
 FROM aws.odb.cloud_exadata_infrastructures
 WHERE region = '{{ region }}' -- required
 ;
@@ -587,44 +587,44 @@ Returns information about the Exadata infrastructures owned by your Amazon Web S
 
 ```sql
 SELECT
-activatedStorageCount,
-additionalStorageCount,
-availabilityZone,
-availabilityZoneId,
-availableStorageSizeInGBs,
-cloudExadataInfrastructureArn,
-cloudExadataInfrastructureId,
-computeCount,
-computeModel,
-cpuCount,
-createdAt,
-customerContactsToSendToOCI,
-dataStorageSizeInTBs,
-databaseServerType,
-dbNodeStorageSizeInGBs,
-dbServerVersion,
-displayName,
-lastMaintenanceRunId,
-maintenanceWindow,
-maxCpuCount,
-maxDataStorageInTBs,
-maxDbNodeStorageSizeInGBs,
-maxMemoryInGBs,
-memorySizeInGBs,
-monthlyDbServerVersion,
-monthlyStorageServerVersion,
-nextMaintenanceRunId,
-ociResourceAnchorName,
-ociUrl,
+activated_storage_count,
+additional_storage_count,
+availability_zone,
+availability_zone_id,
+available_storage_size_in_gbs,
+cloud_exadata_infrastructure_arn,
+cloud_exadata_infrastructure_id,
+compute_count,
+compute_model,
+cpu_count,
+created_at,
+customer_contacts_to_send_to_oci,
+data_storage_size_in_tbs,
+database_server_type,
+db_node_storage_size_in_gbs,
+db_server_version,
+display_name,
+last_maintenance_run_id,
+maintenance_window,
+max_cpu_count,
+max_data_storage_in_tbs,
+max_db_node_storage_size_in_gbs,
+max_memory_in_gbs,
+memory_size_in_gbs,
+monthly_db_server_version,
+monthly_storage_server_version,
+next_maintenance_run_id,
+oci_resource_anchor_name,
+oci_url,
 ocid,
-percentProgress,
+percent_progress,
 shape,
 status,
-statusReason,
-storageCount,
-storageServerType,
-storageServerVersion,
-totalStorageSizeInGBs
+status_reason,
+storage_count,
+storage_server_type,
+storage_server_version,
+total_storage_size_in_gbs
 FROM aws.odb.cloud_exadata_infrastructures
 WHERE region = '{{ region }}' -- required
 ;
@@ -677,10 +677,10 @@ SELECT
 '{{ storageServerType }}',
 '{{ region }}'
 RETURNING
-cloudExadataInfrastructureId,
-displayName,
+cloud_exadata_infrastructure_id,
+display_name,
 status,
-statusReason
+status_reason
 ;
 ```
 </TabItem>
@@ -782,10 +782,10 @@ WHERE
 region = '{{ region }}' --required
 AND cloudExadataInfrastructureId = '{{ cloudExadataInfrastructureId }}' --required
 RETURNING
-cloudExadataInfrastructureId,
-displayName,
+cloud_exadata_infrastructure_id,
+display_name,
 status,
-statusReason;
+status_reason;
 ```
 </TabItem>
 </Tabs>

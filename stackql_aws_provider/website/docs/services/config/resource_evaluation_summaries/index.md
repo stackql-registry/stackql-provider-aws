@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Compliance" /></td>
+    <td><CopyableCode code="compliance" /></td>
     <td><code>string</code></td>
     <td>The compliance status of the resource evaluation summary. (COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationContext" /></td>
+    <td><CopyableCode code="evaluation_context" /></td>
     <td><code>object</code></td>
     <td>Returns an EvaluationContext object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationMode" /></td>
+    <td><CopyableCode code="evaluation_mode" /></td>
     <td><code>string</code></td>
     <td>Lists results of the mode that you requested to retrieve the resource evaluation summary. The valid values are Detective or Proactive. (DETECTIVE, PROACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationStartTimestamp" /></td>
+    <td><CopyableCode code="evaluation_start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start timestamp when Config rule starts evaluating compliance for the provided resource details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationStatus" /></td>
+    <td><CopyableCode code="evaluation_status" /></td>
     <td><code>object</code></td>
     <td>Returns an EvaluationStatus object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceDetails" /></td>
+    <td><CopyableCode code="resource_details" /></td>
     <td><code>object</code></td>
     <td>Returns a ResourceDetails object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceEvaluationId" /></td>
+    <td><CopyableCode code="resource_evaluation_id" /></td>
     <td><code>string</code></td>
     <td>The unique ResourceEvaluationId of Amazon Web Services resource execution for which you want to retrieve the evaluation summary.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns a summary of resource evaluation for the specified resource evaluation I
 
 ```sql
 SELECT
-Compliance,
-EvaluationContext,
-EvaluationMode,
-EvaluationStartTimestamp,
-EvaluationStatus,
-ResourceDetails,
-ResourceEvaluationId
+compliance,
+evaluation_context,
+evaluation_mode,
+evaluation_start_timestamp,
+evaluation_status,
+resource_details,
+resource_evaluation_id
 FROM aws.config.resource_evaluation_summaries
 WHERE region = '{{ region }}' -- required
 ;

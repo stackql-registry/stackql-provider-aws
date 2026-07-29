@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the project. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the project.</td>
 </tr>
@@ -76,57 +76,57 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the project exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainUnitId" /></td>
+    <td><CopyableCode code="domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain unit. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentDeploymentDetails" /></td>
+    <td><CopyableCode code="environment_deployment_details" /></td>
     <td><code>object</code></td>
     <td>The environment deployment status of a project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>Specifies the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="glossaryTerms" /></td>
+    <td><CopyableCode code="glossary_terms" /></td>
     <td><code>array</code></td>
     <td>The business glossary terms that can be used in the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the project was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectCategory" /></td>
+    <td><CopyableCode code="project_category" /></td>
     <td><code>string</code></td>
     <td>The category of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectProfileId" /></td>
+    <td><CopyableCode code="project_profile_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project profile of a project. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectStatus" /></td>
+    <td><CopyableCode code="project_status" /></td>
     <td><code>string</code></td>
     <td>The status of the project. (ACTIVE, DELETING, DELETE_FAILED, UPDATING, UPDATE_FAILED, MOVING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>The resource tags of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userParameters" /></td>
+    <td><CopyableCode code="user_parameters" /></td>
     <td><code>array</code></td>
     <td>The user parameters of a project.</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of a project. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when a project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the project.</td>
 </tr>
@@ -170,32 +170,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a Amazon DataZone domain where the project exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainUnitId" /></td>
+    <td><CopyableCode code="domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain unit. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>Specifies the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectCategory" /></td>
+    <td><CopyableCode code="project_category" /></td>
     <td><code>string</code></td>
     <td>The category of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectStatus" /></td>
+    <td><CopyableCode code="project_status" /></td>
     <td><code>string</code></td>
     <td>The status of the project. (ACTIVE, DELETING, DELETE_FAILED, UPDATING, UPDATE_FAILED, MOVING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the project was updated.</td>
 </tr>
@@ -340,20 +340,20 @@ Gets a project in Amazon DataZone.
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-domainUnitId,
-environmentDeploymentDetails,
-failureReasons,
-glossaryTerms,
-lastUpdatedAt,
-projectCategory,
-projectProfileId,
-projectStatus,
-resourceTags,
-userParameters
+domain_id,
+domain_unit_id,
+environment_deployment_details,
+failure_reasons,
+glossary_terms,
+last_updated_at,
+project_category,
+project_profile_id,
+project_status,
+resource_tags,
+user_parameters
 FROM aws.datazone.projects
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -369,15 +369,15 @@ Lists Amazon DataZone projects.
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-domainUnitId,
-failureReasons,
-projectCategory,
-projectStatus,
-updatedAt
+domain_id,
+domain_unit_id,
+failure_reasons,
+project_category,
+project_status,
+updated_at
 FROM aws.datazone.projects
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -437,20 +437,20 @@ SELECT
 RETURNING
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-domainUnitId,
-environmentDeploymentDetails,
-failureReasons,
-glossaryTerms,
-lastUpdatedAt,
-projectCategory,
-projectProfileId,
-projectStatus,
-resourceTags,
-userParameters
+domain_id,
+domain_unit_id,
+environment_deployment_details,
+failure_reasons,
+glossary_terms,
+last_updated_at,
+project_category,
+project_profile_id,
+project_status,
+resource_tags,
+user_parameters
 ;
 ```
 </TabItem>
@@ -533,20 +533,20 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-domainUnitId,
-environmentDeploymentDetails,
-failureReasons,
-glossaryTerms,
-lastUpdatedAt,
-projectCategory,
-projectProfileId,
-projectStatus,
-resourceTags,
-userParameters;
+domain_id,
+domain_unit_id,
+environment_deployment_details,
+failure_reasons,
+glossary_terms,
+last_updated_at,
+project_category,
+project_profile_id,
+project_status,
+resource_tags,
+user_parameters;
 ```
 </TabItem>
 </Tabs>

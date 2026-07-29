@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Aliases" /></td>
+    <td><CopyableCode code="aliases" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains information about CNAMEs (alternate domain names), if any, for this streaming distribution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>A unique value (for example, a date-time stamp) that ensures that the request can't be replayed. If the value of CallerReference is new (regardless of the content of the StreamingDistributionConfig object), CloudFront creates a new distribution. If CallerReference is a value that you already sent in a previous request to create a distribution, CloudFront returns a DistributionAlreadyExists error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>Any comments you want to include about the streaming distribution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether the streaming distribution is enabled to accept user requests for content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Logging" /></td>
+    <td><CopyableCode code="logging" /></td>
     <td><code>string</code></td>
     <td>A complex type that controls whether access logs are written for the streaming distribution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriceClass" /></td>
+    <td><CopyableCode code="price_class" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains information about price class for this streaming distribution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Origin" /></td>
+    <td><CopyableCode code="s3_origin" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedSigners" /></td>
+    <td><CopyableCode code="trusted_signers" /></td>
     <td><code>string</code></td>
     <td>A complex type that specifies any Amazon Web Services accounts that you want to permit to create signed URLs for private content. If you want the distribution to use signed URLs, include this element; if you want the distribution to use public URLs, remove this element. For more information, see Serving Private Content through CloudFront in the Amazon CloudFront Developer Guide.</td>
 </tr>
@@ -159,14 +159,14 @@ Get the configuration information about a streaming distribution.
 
 ```sql
 SELECT
-Aliases,
-CallerReference,
-Comment,
-Enabled,
-Logging,
-PriceClass,
-S3Origin,
-TrustedSigners
+aliases,
+caller_reference,
+comment,
+enabled,
+logging,
+price_class,
+s3_origin,
+trusted_signers
 FROM aws.cloudfront.streaming_distribution_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

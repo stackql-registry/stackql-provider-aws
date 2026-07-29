@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustSubscriptionId" /></td>
+    <td><CopyableCode code="cust_subscription_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon DocumentDB event notification subscription ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerAwsId" /></td>
+    <td><CopyableCode code="customer_aws_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services customer account that is associated with the Amazon DocumentDB event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the subscription is enabled. A value of true indicates that the subscription is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventCategoriesList" /></td>
+    <td><CopyableCode code="event_categories_list" /></td>
     <td><code>string</code></td>
     <td>A list of event categories for the Amazon DocumentDB event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSubscriptionArn" /></td>
+    <td><CopyableCode code="event_subscription_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the event subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The topic ARN of the Amazon DocumentDB event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIdsList" /></td>
+    <td><CopyableCode code="source_ids_list" /></td>
     <td><code>string</code></td>
     <td>A list of source IDs for the Amazon DocumentDB event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source type for the Amazon DocumentDB event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Amazon DocumentDB event notification subscription. Constraints: Can be one of the following: creating, modifying, deleting, active, no-permission, topic-not-exist The no-permission status indicates that Amazon DocumentDB no longer has permission to post to the SNS topic. The topic-not-exist status indicates that the topic was deleted after the subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionCreationTime" /></td>
+    <td><CopyableCode code="subscription_creation_time" /></td>
     <td><code>string</code></td>
     <td>The time at which the Amazon DocumentDB event notification subscription was created.</td>
 </tr>
@@ -245,16 +245,16 @@ Lists all the subscription descriptions for a customer account. The description 
 
 ```sql
 SELECT
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-EventSubscriptionArn,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+event_subscription_arn,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time
 FROM aws.docdb.event_subscriptions
 WHERE region = '{{ region }}' -- required
 AND SubscriptionName = '{{ SubscriptionName }}'
@@ -301,16 +301,16 @@ SELECT
 '{{ Enabled }}',
 '{{ Tags }}'
 RETURNING
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-EventSubscriptionArn,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+event_subscription_arn,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time
 ;
 ```
 </TabItem>
@@ -378,16 +378,16 @@ AND SourceType = '{{ SourceType}}'
 AND EventCategories = '{{ EventCategories}}'
 AND Enabled = {{ Enabled}}
 RETURNING
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-EventSubscriptionArn,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime;
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+event_subscription_arn,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time;
 ```
 </TabItem>
 </Tabs>

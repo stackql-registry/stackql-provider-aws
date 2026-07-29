@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedResource" /></td>
+    <td><CopyableCode code="associated_resource" /></td>
     <td><code>string</code></td>
     <td>The resource that's associated with the IPv6 CIDR block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Cidr" /></td>
+    <td><CopyableCode code="ipv_6_cidr" /></td>
     <td><code>string</code></td>
     <td>The IPv6 CIDR block.</td>
 </tr>
@@ -144,8 +144,8 @@ Gets information about the IPv6 CIDR block associations for a specified IPv6 add
 
 ```sql
 SELECT
-AssociatedResource,
-Ipv6Cidr
+associated_resource,
+ipv_6_cidr
 FROM aws.ec2.associated_ipv6_pool_cidrs
 WHERE PoolId = '{{ PoolId }}' -- required
 AND region = '{{ region }}' -- required

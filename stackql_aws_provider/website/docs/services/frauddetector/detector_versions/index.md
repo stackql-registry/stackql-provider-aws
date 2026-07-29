@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The detector version ARN. (pattern: &lt;code&gt;^arn\:aws&#91;a-z-&#93;&#123;0,15&#125;\:frauddetector\:&#91;a-z0-9-&#93;&#123;3,20&#125;\:&#91;0-9&#93;&#123;12&#125;\:&#91;^\s&#93;&#123;2,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the detector version was created.</td>
 </tr>
@@ -65,32 +65,32 @@ The following fields are returned by `SELECT` queries:
     <td>The detector version description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorId" /></td>
+    <td><CopyableCode code="detector_id" /></td>
     <td><code>string</code></td>
     <td>The detector ID. (pattern: &lt;code&gt;^&#91;0-9a-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorVersionId" /></td>
+    <td><CopyableCode code="detector_version_id" /></td>
     <td><code>string</code></td>
     <td>The detector version ID. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalModelEndpoints" /></td>
+    <td><CopyableCode code="external_model_endpoints" /></td>
     <td><code>array</code></td>
     <td>The Amazon SageMaker model endpoints included in the detector version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the detector version was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelVersions" /></td>
+    <td><CopyableCode code="model_versions" /></td>
     <td><code>array</code></td>
     <td>The model versions included in the detector version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleExecutionMode" /></td>
+    <td><CopyableCode code="rule_execution_mode" /></td>
     <td><code>string</code></td>
     <td>The execution mode of the rule in the dectector FIRST_MATCHED indicates that Amazon Fraud Detector evaluates rules sequentially, first to last, stopping at the first matched rule. Amazon Fraud dectector then provides the outcomes for that single rule. ALL_MATCHED indicates that Amazon Fraud Detector evaluates all rules and returns the outcomes for all matched rules. You can define and edit the rule mode at the detector version level, when it is in draft status. (ALL_MATCHED, FIRST_MATCHED)</td>
 </tr>
@@ -205,14 +205,14 @@ Gets a particular detector version.
 ```sql
 SELECT
 arn,
-createdTime,
+created_time,
 description,
-detectorId,
-detectorVersionId,
-externalModelEndpoints,
-lastUpdatedTime,
-modelVersions,
-ruleExecutionMode,
+detector_id,
+detector_version_id,
+external_model_endpoints,
+last_updated_time,
+model_versions,
+rule_execution_mode,
 rules,
 status
 FROM aws.frauddetector.detector_versions
@@ -257,8 +257,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-detectorId,
-detectorVersionId,
+detector_id,
+detector_version_id,
 status
 ;
 ```

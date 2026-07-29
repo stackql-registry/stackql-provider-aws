@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The local date and time when the lifecycle policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateModified" /></td>
+    <td><CopyableCode code="date_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The local date and time when the lifecycle policy was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultPolicy" /></td>
+    <td><CopyableCode code="default_policy" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the policy is a default lifecycle policy or a custom lifecycle policy. true - the policy is a default policy. false - the policy is a custom policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the lifecycle policy. (pattern: &lt;code&gt;&#91;0-9A-Za-z _-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,3&#125;)&#123;0,2&#125;:iam::\d+:role/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy. (pattern: &lt;code&gt;^arn:aws(-&#91;a-z&#93;&#123;1,3&#125;)&#123;0,2&#125;:dlm:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:\d+:policy/&#91;0-9A-Za-z_-&#93;&#123;1,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyDetails" /></td>
+    <td><CopyableCode code="policy_details" /></td>
     <td><code>object</code></td>
     <td>Specifies the configuration of a lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the lifecycle policy. (pattern: &lt;code&gt;policy-&#91;a-f0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The activation state of the lifecycle policy. (ENABLED, DISABLED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The description of the status. (pattern: &lt;code&gt;&#91;\p&#123;all&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>array</code></td>
     <td>Summary information about the lifecycle policies.</td>
 </tr>
@@ -253,17 +253,17 @@ Gets detailed information about the specified lifecycle policy.
 
 ```sql
 SELECT
-DateCreated,
-DateModified,
-DefaultPolicy,
-Description,
-ExecutionRoleArn,
-PolicyArn,
-PolicyDetails,
-PolicyId,
-State,
-StatusMessage,
-Tags
+date_created,
+date_modified,
+default_policy,
+description,
+execution_role_arn,
+policy_arn,
+policy_details,
+policy_id,
+state,
+status_message,
+tags
 FROM aws.dlm.lifecycle_policies
 WHERE policy_id = '{{ policy_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -276,7 +276,7 @@ Gets summary information about all or the specified data lifecycle policies. To 
 
 ```sql
 SELECT
-Policies
+policies
 FROM aws.dlm.lifecycle_policies
 WHERE region = '{{ region }}' -- required
 AND policyIds = '{{ policyIds }}'
@@ -335,7 +335,7 @@ SELECT
 '{{ Exclusions }}',
 '{{ region }}'
 RETURNING
-PolicyId
+policy_id
 ;
 ```
 </TabItem>

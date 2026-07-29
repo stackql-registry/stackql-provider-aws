@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Amazon Inspector delegated administrator for your organization. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Amazon Inspector delegated administrator. (CREATED, INVITED, DISABLED, ENABLED, REMOVED, RESIGNED, DELETED, EMAIL_VERIFICATION_IN_PROGRESS, EMAIL_VERIFICATION_FAILED, REGION_DISABLED, ACCOUNT_SUSPENDED, CANNOT_CREATE_DETECTOR_IN_ORG_MASTER)</td>
 </tr>
@@ -145,8 +145,8 @@ Retrieves information about the Amazon Inspector delegated administrator for you
 
 ```sql
 SELECT
-accountId,
-relationshipStatus
+account_id,
+relationship_status
 FROM aws.inspector2.delegated_admin_accounts
 WHERE region = '{{ region }}' -- required
 ;

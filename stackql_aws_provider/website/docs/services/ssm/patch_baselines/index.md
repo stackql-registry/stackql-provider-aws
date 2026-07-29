@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApprovalRules" /></td>
+    <td><CopyableCode code="approval_rules" /></td>
     <td><code>object</code></td>
     <td>A set of rules defining the approval rules for a patch baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovedPatches" /></td>
+    <td><CopyableCode code="approved_patches" /></td>
     <td><code>array</code></td>
     <td>A list of explicitly approved patches for the baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovedPatchesComplianceLevel" /></td>
+    <td><CopyableCode code="approved_patches_compliance_level" /></td>
     <td><code>string</code></td>
     <td>Returns the specified compliance severity level for approved patches in the patch baseline. (CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovedPatchesEnableNonSecurity" /></td>
+    <td><CopyableCode code="approved_patches_enable_non_security" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the list of approved patches includes non-security updates that should be applied to the managed nodes. The default value is false. Applies to Linux managed nodes only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableSecurityUpdatesComplianceStatus" /></td>
+    <td><CopyableCode code="available_security_updates_compliance_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the compliance status of managed nodes for which security-related patches are available but were not approved. This preference is specified when the CreatePatchBaseline or UpdatePatchBaseline commands are run. Applies to Windows Server managed nodes only. (COMPLIANT, NON_COMPLIANT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BaselineId" /></td>
+    <td><CopyableCode code="baseline_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the retrieved patch baseline. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-:/&#93;&#123;20,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the patch baseline was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the patch baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalFilters" /></td>
+    <td><CopyableCode code="global_filters" /></td>
     <td><code>object</code></td>
     <td>A set of patch filters, typically used for approval rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedDate" /></td>
+    <td><CopyableCode code="modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the patch baseline was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the patch baseline. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>Returns the operating system specified for the patch baseline. (WINDOWS, AMAZON_LINUX, AMAZON_LINUX_2, AMAZON_LINUX_2022, UBUNTU, REDHAT_ENTERPRISE_LINUX, SUSE, CENTOS, ORACLE_LINUX, DEBIAN, MACOS, RASPBIAN, ROCKY_LINUX, ALMA_LINUX, AMAZON_LINUX_2023)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PatchGroups" /></td>
+    <td><CopyableCode code="patch_groups" /></td>
     <td><code>array</code></td>
     <td>Patch groups included in the patch baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RejectedPatches" /></td>
+    <td><CopyableCode code="rejected_patches" /></td>
     <td><code>array</code></td>
     <td>A list of explicitly rejected patches for the baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RejectedPatchesAction" /></td>
+    <td><CopyableCode code="rejected_patches_action" /></td>
     <td><code>string</code></td>
     <td>The action specified to take on patches included in the RejectedPatches list. A patch can be allowed only if it is a dependency of another package, or blocked entirely along with packages that include it as a dependency. (ALLOW_AS_DEPENDENCY, BLOCK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sources" /></td>
+    <td><CopyableCode code="sources" /></td>
     <td><code>array</code></td>
     <td>Information about the patches to use to update the managed nodes, including target operating systems and source repositories. Applies to Linux managed nodes only.</td>
 </tr>
@@ -145,27 +145,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaselineDescription" /></td>
+    <td><CopyableCode code="baseline_description" /></td>
     <td><code>string</code></td>
     <td>The description of the patch baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BaselineId" /></td>
+    <td><CopyableCode code="baseline_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the patch baseline. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-:/&#93;&#123;20,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BaselineName" /></td>
+    <td><CopyableCode code="baseline_name" /></td>
     <td><code>string</code></td>
     <td>The name of the patch baseline. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultBaseline" /></td>
+    <td><CopyableCode code="default_baseline" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default baseline. Amazon Web Services Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>Defines the operating system the patch baseline applies to. The default value is WINDOWS. (WINDOWS, AMAZON_LINUX, AMAZON_LINUX_2, AMAZON_LINUX_2022, UBUNTU, REDHAT_ENTERPRISE_LINUX, SUSE, CENTOS, ORACLE_LINUX, DEBIAN, MACOS, RASPBIAN, ROCKY_LINUX, ALMA_LINUX, AMAZON_LINUX_2023)</td>
 </tr>
@@ -263,22 +263,22 @@ Retrieves information about a patch baseline.
 
 ```sql
 SELECT
-ApprovalRules,
-ApprovedPatches,
-ApprovedPatchesComplianceLevel,
-ApprovedPatchesEnableNonSecurity,
-AvailableSecurityUpdatesComplianceStatus,
-BaselineId,
-CreatedDate,
-Description,
-GlobalFilters,
-ModifiedDate,
-Name,
-OperatingSystem,
-PatchGroups,
-RejectedPatches,
-RejectedPatchesAction,
-Sources
+approval_rules,
+approved_patches,
+approved_patches_compliance_level,
+approved_patches_enable_non_security,
+available_security_updates_compliance_status,
+baseline_id,
+created_date,
+description,
+global_filters,
+modified_date,
+name,
+operating_system,
+patch_groups,
+rejected_patches,
+rejected_patches_action,
+sources
 FROM aws.ssm.patch_baselines
 WHERE region = '{{ region }}' -- required
 ;
@@ -290,11 +290,11 @@ Lists the patch baselines in your Amazon Web Services account.
 
 ```sql
 SELECT
-BaselineDescription,
-BaselineId,
-BaselineName,
-DefaultBaseline,
-OperatingSystem
+baseline_description,
+baseline_id,
+baseline_name,
+default_baseline,
+operating_system
 FROM aws.ssm.patch_baselines
 WHERE region = '{{ region }}' -- required
 ;
@@ -351,7 +351,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-BaselineId
+baseline_id
 ;
 ```
 </TabItem>
@@ -480,21 +480,21 @@ WHERE
 region = '{{ region }}' --required
 AND BaselineId = '{{ BaselineId }}' --required
 RETURNING
-ApprovalRules,
-ApprovedPatches,
-ApprovedPatchesComplianceLevel,
-ApprovedPatchesEnableNonSecurity,
-AvailableSecurityUpdatesComplianceStatus,
-BaselineId,
-CreatedDate,
-Description,
-GlobalFilters,
-ModifiedDate,
-Name,
-OperatingSystem,
-RejectedPatches,
-RejectedPatchesAction,
-Sources;
+approval_rules,
+approved_patches,
+approved_patches_compliance_level,
+approved_patches_enable_non_security,
+available_security_updates_compliance_status,
+baseline_id,
+created_date,
+description,
+global_filters,
+modified_date,
+name,
+operating_system,
+rejected_patches,
+rejected_patches_action,
+sources;
 ```
 </TabItem>
 </Tabs>

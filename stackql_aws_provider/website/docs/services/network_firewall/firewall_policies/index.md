@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FirewallPolicy" /></td>
+    <td><CopyableCode code="firewall_policy" /></td>
     <td><code>object</code></td>
     <td>The policy for the specified firewall policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallPolicyResponse" /></td>
+    <td><CopyableCode code="firewall_policy_response" /></td>
     <td><code>object</code></td>
     <td>The high-level properties of a firewall policy. This, along with the FirewallPolicy, define the policy. You can retrieve all objects for a firewall policy by calling DescribeFirewallPolicy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateToken" /></td>
+    <td><CopyableCode code="update_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the firewall policy. The token marks the state of the policy resource at the time of the request. To make changes to the policy, you provide the token in your request. Network Firewall uses the token to ensure that the policy hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the firewall policy again to get a current copy of it with current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall policy. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the firewall policy. You can't change the name of a firewall policy after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -197,9 +197,9 @@ Returns the data objects for the specified firewall policy.
 
 ```sql
 SELECT
-FirewallPolicy,
-FirewallPolicyResponse,
-UpdateToken
+firewall_policy,
+firewall_policy_response,
+update_token
 FROM aws.network_firewall.firewall_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -211,8 +211,8 @@ Retrieves the metadata for the firewall policies that you have defined. Dependin
 
 ```sql
 SELECT
-Arn,
-Name
+arn,
+name
 FROM aws.network_firewall.firewall_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,8 +253,8 @@ SELECT
 '{{ EncryptionConfiguration }}',
 '{{ region }}'
 RETURNING
-FirewallPolicyResponse,
-UpdateToken
+firewall_policy_response,
+update_token
 ;
 ```
 </TabItem>
@@ -359,8 +359,8 @@ region = '{{ region }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 AND FirewallPolicy = '{{ FirewallPolicy }}' --required
 RETURNING
-FirewallPolicyResponse,
-UpdateToken;
+firewall_policy_response,
+update_token;
 ```
 </TabItem>
 <TabItem value="associate_firewall_policy">
@@ -378,10 +378,10 @@ WHERE
 region = '{{ region }}' --required
 AND FirewallPolicyArn = '{{ FirewallPolicyArn }}' --required
 RETURNING
-FirewallArn,
-FirewallName,
-FirewallPolicyArn,
-UpdateToken;
+firewall_arn,
+firewall_name,
+firewall_policy_arn,
+update_token;
 ```
 </TabItem>
 <TabItem value="update_firewall_policy_change_protection">
@@ -399,10 +399,10 @@ WHERE
 region = '{{ region }}' --required
 AND FirewallPolicyChangeProtection = {{ FirewallPolicyChangeProtection }} --required
 RETURNING
-FirewallArn,
-FirewallName,
-FirewallPolicyChangeProtection,
-UpdateToken;
+firewall_arn,
+firewall_name,
+firewall_policy_change_protection,
+update_token;
 ```
 </TabItem>
 </Tabs>

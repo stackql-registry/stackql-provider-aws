@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags that are assigned to the user pool.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the tags that are assigned to an Amazon Cognito user pool. For more inform
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.cognito_idp.tags
 WHERE region = '{{ region }}' -- required
 ;

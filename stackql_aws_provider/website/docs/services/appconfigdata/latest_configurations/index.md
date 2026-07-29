@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>string (byte)</code></td>
     <td>The data of the configuration. This may be empty if the client already has the latest version of configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>A standard MIME type describing the format of the configuration content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPollConfigurationToken" /></td>
+    <td><CopyableCode code="next_poll_configuration_token" /></td>
     <td><code>string</code></td>
     <td>The latest token describing the current state of the configuration session. This must be provided to the next call to GetLatestConfiguration. This token should only be used once. To support long poll use cases, the token is valid for up to 24 hours. If a GetLatestConfiguration call uses an expired token, the system returns BadRequestException. (pattern: &lt;code&gt;\S&#123;1,8192&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPollIntervalInSeconds" /></td>
+    <td><CopyableCode code="next_poll_interval_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The amount of time the client should wait before polling for configuration updates again. Use RequiredMinimumPollIntervalInSeconds to set the desired poll interval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>The user-defined label for the AppConfig hosted configuration version. This attribute doesn't apply if the configuration is not from an AppConfig hosted configuration version. If the client already has the latest version of the configuration data, this value is empty.</td>
 </tr>
@@ -144,11 +144,11 @@ Retrieves the latest deployed configuration. This API may return empty configura
 
 ```sql
 SELECT
-Configuration,
-ContentType,
-NextPollConfigurationToken,
-NextPollIntervalInSeconds,
-VersionLabel
+configuration,
+content_type,
+next_poll_configuration_token,
+next_poll_interval_in_seconds,
+version_label
 FROM aws.appconfigdata.latest_configurations
 WHERE configuration_token = '{{ configuration_token }}' -- required
 AND region = '{{ region }}' -- required

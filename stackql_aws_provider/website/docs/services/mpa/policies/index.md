@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the policy. (pattern: &lt;code&gt;arn:.&#123;1,63&#125;:mpa:::aws:policy/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultVersion" /></td>
+    <td><CopyableCode code="default_version" /></td>
     <td><code>integer</code></td>
     <td>Determines if the specified policy is the default for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The type of policy. (AWS_MANAGED, AWS_RAM)</td>
 </tr>
@@ -144,10 +144,10 @@ Returns a list of policies. Policies define the permissions for team resources.
 
 ```sql
 SELECT
-Arn,
-DefaultVersion,
-Name,
-PolicyType
+arn,
+default_version,
+name,
+policy_type
 FROM aws.mpa.policies
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The assets for which the subscription grant is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription grant is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the subscription grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the subscription grant exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The environment ID of the subscription grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grantedEntity" /></td>
+    <td><CopyableCode code="granted_entity" /></td>
     <td><code>object</code></td>
     <td>The entity to which the subscription is granted.</td>
 </tr>
@@ -91,22 +91,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the subscription grant. (PENDING, IN_PROGRESS, GRANT_FAILED, REVOKE_FAILED, GRANT_AND_REVOKE_FAILED, COMPLETED, INACCESSIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the subscription. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionTargetId" /></td>
+    <td><CopyableCode code="subscription_target_id" /></td>
     <td><code>string</code></td>
     <td>The subscription target ID associated with the subscription grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription grant was upated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the subscription grant.</td>
 </tr>
@@ -135,27 +135,27 @@ The following fields are returned by `SELECT` queries:
     <td>The assets included in the subscription grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when a subscription grant was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The datazone user who created the subscription grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone domain in which a subscription grant exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The environment ID of the subscription grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grantedEntity" /></td>
+    <td><CopyableCode code="granted_entity" /></td>
     <td><code>object</code></td>
     <td>The entity to which the subscription is granted.</td>
 </tr>
@@ -165,22 +165,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the subscription grant. (PENDING, IN_PROGRESS, GRANT_FAILED, REVOKE_FAILED, GRANT_AND_REVOKE_FAILED, COMPLETED, INACCESSIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subscription. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionTargetId" /></td>
+    <td><CopyableCode code="subscription_target_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the target of the subscription grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription grant was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the subscription grant.</td>
 </tr>
@@ -355,16 +355,16 @@ Gets the subscription grant in Amazon DataZone.
 SELECT
 id,
 assets,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-grantedEntity,
+created_at,
+created_by,
+domain_id,
+environment_id,
+granted_entity,
 status,
-subscriptionId,
-subscriptionTargetId,
-updatedAt,
-updatedBy
+subscription_id,
+subscription_target_id,
+updated_at,
+updated_by
 FROM aws.datazone.subscription_grants
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -380,16 +380,16 @@ Lists subscription grants.
 SELECT
 id,
 assets,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-grantedEntity,
+created_at,
+created_by,
+domain_id,
+environment_id,
+granted_entity,
 status,
-subscriptionId,
-subscriptionTargetId,
-updatedAt,
-updatedBy
+subscription_id,
+subscription_target_id,
+updated_at,
+updated_by
 FROM aws.datazone.subscription_grants
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -445,16 +445,16 @@ SELECT
 RETURNING
 id,
 assets,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-grantedEntity,
+created_at,
+created_by,
+domain_id,
+environment_id,
+granted_entity,
 status,
-subscriptionId,
-subscriptionTargetId,
-updatedAt,
-updatedBy
+subscription_id,
+subscription_target_id,
+updated_at,
+updated_by
 ;
 ```
 </TabItem>
@@ -519,16 +519,16 @@ AND status = '{{ status }}' --required
 RETURNING
 id,
 assets,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-grantedEntity,
+created_at,
+created_by,
+domain_id,
+environment_id,
+granted_entity,
 status,
-subscriptionId,
-subscriptionTargetId,
-updatedAt,
-updatedBy;
+subscription_id,
+subscription_target_id,
+updated_at,
+updated_by;
 ```
 </TabItem>
 </Tabs>

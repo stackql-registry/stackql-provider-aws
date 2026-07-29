@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blackhole" /></td>
+    <td><CopyableCode code="blackhole" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether traffic that matches this route is dropped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListId" /></td>
+    <td><CopyableCode code="prefix_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListOwnerId" /></td>
+    <td><CopyableCode code="prefix_list_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the prefix list owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the prefix list reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachment" /></td>
+    <td><CopyableCode code="transit_gateway_attachment" /></td>
     <td><code>string</code></td>
     <td>Information about the transit gateway attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableId" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway route table.</td>
 </tr>
@@ -205,12 +205,12 @@ Gets information about the prefix list references in a specified transit gateway
 
 ```sql
 SELECT
-Blackhole,
-PrefixListId,
-PrefixListOwnerId,
-State,
-TransitGatewayAttachment,
-TransitGatewayRouteTableId
+blackhole,
+prefix_list_id,
+prefix_list_owner_id,
+state,
+transit_gateway_attachment,
+transit_gateway_route_table_id
 FROM aws.ec2.transit_gateway_prefix_list_references
 WHERE TransitGatewayRouteTableId = '{{ TransitGatewayRouteTableId }}' -- required
 AND region = '{{ region }}' -- required
@@ -254,12 +254,12 @@ SELECT
 '{{ Blackhole }}',
 '{{ DryRun }}'
 RETURNING
-Blackhole,
-PrefixListId,
-PrefixListOwnerId,
-State,
-TransitGatewayAttachment,
-TransitGatewayRouteTableId
+blackhole,
+prefix_list_id,
+prefix_list_owner_id,
+state,
+transit_gateway_attachment,
+transit_gateway_route_table_id
 ;
 ```
 </TabItem>
@@ -319,12 +319,12 @@ AND TransitGatewayAttachmentId = '{{ TransitGatewayAttachmentId}}'
 AND Blackhole = {{ Blackhole}}
 AND DryRun = {{ DryRun}}
 RETURNING
-Blackhole,
-PrefixListId,
-PrefixListOwnerId,
-State,
-TransitGatewayAttachment,
-TransitGatewayRouteTableId;
+blackhole,
+prefix_list_id,
+prefix_list_owner_id,
+state,
+transit_gateway_attachment,
+transit_gateway_route_table_id;
 ```
 </TabItem>
 </Tabs>

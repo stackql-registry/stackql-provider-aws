@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessToken" /></td>
+    <td><CopyableCode code="access_token" /></td>
     <td><code>string</code></td>
     <td>Temporary access token. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Gets a temporary access token to use with AssumeRoleWithWebIdentity. Access toke
 
 ```sql
 SELECT
-AccessToken
+access_token
 FROM aws.license_manager.access_tokens
 WHERE region = '{{ region }}' -- required
 ;

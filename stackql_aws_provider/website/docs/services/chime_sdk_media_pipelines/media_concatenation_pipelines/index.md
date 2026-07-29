@@ -109,7 +109,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MediaConcatenationPipeline
+media_concatenation_pipeline
 ;
 ```
 </TabItem>

@@ -52,62 +52,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The JSON string that represents the content of the test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntryPoint" /></td>
+    <td><CopyableCode code="entry_point" /></td>
     <td><code>object</code></td>
     <td>Defines the starting point for a test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitializationData" /></td>
+    <td><CopyableCode code="initialization_data" /></td>
     <td><code>string</code></td>
     <td>Defines the test attributes for precise data representation. The value must be a valid JSON string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The region in which the test case was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the test case was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a test case. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestCaseSha256" /></td>
+    <td><CopyableCode code="test_case_sha_256" /></td>
     <td><code>string</code></td>
     <td>The SHA256 hash of the test case content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -126,32 +126,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The region in which the test case was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the test case was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a test case. (PUBLISHED, SAVED)</td>
 </tr>
@@ -170,62 +170,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The JSON string that represents the content of the test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntryPoint" /></td>
+    <td><CopyableCode code="entry_point" /></td>
     <td><code>object</code></td>
     <td>Defines the starting point for a test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitializationData" /></td>
+    <td><CopyableCode code="initialization_data" /></td>
     <td><code>string</code></td>
     <td>Defines the test attributes for precise data representation. The value must be a valid JSON string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The region in which the test case was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the test case was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a test case. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestCaseSha256" /></td>
+    <td><CopyableCode code="test_case_sha_256" /></td>
     <td><code>string</code></td>
     <td>The SHA256 hash of the test case content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -390,18 +390,18 @@ Describes the specified test case and allows you to get the content and metadata
 
 ```sql
 SELECT
-Arn,
-Content,
-Description,
-EntryPoint,
-Id,
-InitializationData,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Status,
-Tags,
-TestCaseSha256
+arn,
+content,
+description,
+entry_point,
+id,
+initialization_data,
+last_modified_region,
+last_modified_time,
+name,
+status,
+tags,
+test_case_sha_256
 FROM aws.connect.test_cases
 WHERE instance_id = '{{ instance_id }}' -- required
 AND test_case_id = '{{ test_case_id }}' -- required
@@ -416,12 +416,12 @@ Lists the test cases present in the specific Amazon Connect instance.
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Status
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name,
+status
 FROM aws.connect.test_cases
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -436,18 +436,18 @@ Searches for test cases in the specified Amazon Connect instance, with optional 
 
 ```sql
 SELECT
-Arn,
-Content,
-Description,
-EntryPoint,
-Id,
-InitializationData,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Status,
-Tags,
-TestCaseSha256
+arn,
+content,
+description,
+entry_point,
+id,
+initialization_data,
+last_modified_region,
+last_modified_time,
+name,
+status,
+tags,
+test_case_sha_256
 FROM aws.connect.test_cases
 WHERE region = '{{ region }}' -- required
 ;
@@ -498,8 +498,8 @@ SELECT
 '{{ x-amz-last-modified-time }}',
 '{{ x-amz-last-modified-region }}'
 RETURNING
-TestCaseArn,
-TestCaseId
+test_case_arn,
+test_case_id
 ;
 ```
 </TabItem>

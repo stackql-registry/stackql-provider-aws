@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>Specifies the catalog in which the settings are defined. Acceptable values include AWS for production and Sandbox for testing environments. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSnapshotJobRoleArn" /></td>
+    <td><CopyableCode code="resource_snapshot_job_role_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the ARN of the IAM Role used for resource snapshot job executions. (pattern: &lt;code&gt;(?=.&#123;0,2048&#125;$)arn:aws:iam::\d&#123;12&#125;:role/(&#91;-+=,.@_a-zA-Z0-9&#93;+/)*&#91;-+=,.@_a-zA-Z0-9&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the currently set system settings, which include the IAM Role used for
 
 ```sql
 SELECT
-Catalog,
-ResourceSnapshotJobRoleArn
+catalog,
+resource_snapshot_job_role_arn
 FROM aws.partnercentral_selling.selling_system_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -161,8 +161,8 @@ ResourceSnapshotJobRoleIdentifier = '{{ ResourceSnapshotJobRoleIdentifier }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Catalog,
-ResourceSnapshotJobRoleArn;
+catalog,
+resource_snapshot_job_role_arn;
 ```
 </TabItem>
 </Tabs>

@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the activity. A name must not contain: white space brackets &lt; &gt; &#123; &#125; &#91; &#93; wildcard characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityArn" /></td>
+    <td><CopyableCode code="activity_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the activity is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>Settings for configured server-side encryption.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the activity. A name must not contain: white space brackets &lt; &gt; &#123; &#125; &#91; &#93; wildcard characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityArn" /></td>
+    <td><CopyableCode code="activity_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the activity is created.</td>
 </tr>
@@ -187,9 +187,9 @@ Describes an activity. This operation is eventually consistent. The results are 
 ```sql
 SELECT
 name,
-activityArn,
-creationDate,
-encryptionConfiguration
+activity_arn,
+creation_date,
+encryption_configuration
 FROM aws.stepfunctions.activities
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,8 +202,8 @@ Lists the existing activities. If nextToken is returned, there are more results 
 ```sql
 SELECT
 name,
-activityArn,
-creationDate
+activity_arn,
+creation_date
 FROM aws.stepfunctions.activities
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,8 +238,8 @@ SELECT
 '{{ encryptionConfiguration }}',
 '{{ region }}'
 RETURNING
-activityArn,
-creationDate
+activity_arn,
+creation_date
 ;
 ```
 </TabItem>

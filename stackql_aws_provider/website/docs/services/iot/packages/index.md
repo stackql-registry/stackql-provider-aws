@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the package was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultVersionName" /></td>
+    <td><CopyableCode code="default_version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the default package version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The package description. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the package was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageArn" /></td>
+    <td><CopyableCode code="package_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The name of the software package. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the package was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultVersionName" /></td>
+    <td><CopyableCode code="default_version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the default package version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the package was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The name for the target software package. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -228,12 +228,12 @@ Gets information about the specified software package. Requires permission to ac
 
 ```sql
 SELECT
-creationDate,
-defaultVersionName,
+creation_date,
+default_version_name,
 description,
-lastModifiedDate,
-packageArn,
-packageName
+last_modified_date,
+package_arn,
+package_name
 FROM aws.iot.packages
 WHERE package_name = '{{ package_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -246,10 +246,10 @@ Lists the software packages associated to the account. Requires permission to ac
 
 ```sql
 SELECT
-creationDate,
-defaultVersionName,
-lastModifiedDate,
-packageName
+creation_date,
+default_version_name,
+last_modified_date,
+package_name
 FROM aws.iot.packages
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -289,8 +289,8 @@ SELECT
 '{{ clientToken }}'
 RETURNING
 description,
-packageArn,
-packageName
+package_arn,
+package_name
 ;
 ```
 </TabItem>

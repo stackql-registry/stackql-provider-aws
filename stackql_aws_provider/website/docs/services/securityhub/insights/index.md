@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filters" /></td>
+    <td><CopyableCode code="filters" /></td>
     <td><code>object</code></td>
     <td>A collection of filters that are applied to all active findings aggregated by Security Hub CSPM. You can filter by up to ten finding attributes. For each attribute, you can provide up to 20 filter values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupByAttribute" /></td>
+    <td><CopyableCode code="group_by_attribute" /></td>
     <td><code>string</code></td>
     <td>The grouping attribute for the insight's findings. Indicates how to group the matching findings, and identifies the type of item that the insight applies to. For example, if an insight is grouped by resource identifier, then the insight produces a list of resource identifiers. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightArn" /></td>
+    <td><CopyableCode code="insight_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a Security Hub CSPM insight. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of a Security Hub CSPM insight. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -160,10 +160,10 @@ Lists and describes insights for the specified insight ARNs.
 
 ```sql
 SELECT
-Filters,
-GroupByAttribute,
-InsightArn,
-Name
+filters,
+group_by_attribute,
+insight_arn,
+name
 FROM aws.securityhub.insights
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,7 +198,7 @@ SELECT
 '{{ GroupByAttribute }}' /* required */,
 '{{ region }}'
 RETURNING
-InsightArn
+insight_arn
 ;
 ```
 </TabItem>

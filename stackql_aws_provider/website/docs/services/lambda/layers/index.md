@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LatestMatchingVersion" /></td>
+    <td><CopyableCode code="latest_matching_version" /></td>
     <td><code>object</code></td>
     <td>Details about a version of an Lambda layer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayerArn" /></td>
+    <td><CopyableCode code="layer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the function layer. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayerName" /></td>
+    <td><CopyableCode code="layer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the layer. (pattern: &lt;code&gt;(arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+)|&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -161,9 +161,9 @@ Lists Lambda layers and shows information about the latest version of each. Spec
 
 ```sql
 SELECT
-LatestMatchingVersion,
-LayerArn,
-LayerName
+latest_matching_version,
+layer_arn,
+layer_name
 FROM aws.lambda.layers
 WHERE region = '{{ region }}' -- required
 AND CompatibleRuntime = '{{ CompatibleRuntime }}'

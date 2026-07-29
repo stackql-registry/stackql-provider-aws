@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstanceRetentionSettings" /></td>
+    <td><CopyableCode code="app_instance_retention_settings" /></td>
     <td><code>object</code></td>
     <td>The retention settings for the AppInstance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiateDeletionTimestamp" /></td>
+    <td><CopyableCode code="initiate_deletion_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp representing the time at which the specified items are retained, in Epoch Seconds.</td>
 </tr>
@@ -136,8 +136,8 @@ Gets the retention settings for an AppInstance.
 
 ```sql
 SELECT
-AppInstanceRetentionSettings,
-InitiateDeletionTimestamp
+app_instance_retention_settings,
+initiate_deletion_timestamp
 FROM aws.chime_sdk_identity.app_instance_retention_settings
 WHERE app_instance_arn = '{{ app_instance_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -168,8 +168,8 @@ app_instance_arn = '{{ app_instance_arn }}' --required
 AND region = '{{ region }}' --required
 AND AppInstanceRetentionSettings = '{{ AppInstanceRetentionSettings }}' --required
 RETURNING
-AppInstanceRetentionSettings,
-InitiateDeletionTimestamp;
+app_instance_retention_settings,
+initiate_deletion_timestamp;
 ```
 </TabItem>
 </Tabs>

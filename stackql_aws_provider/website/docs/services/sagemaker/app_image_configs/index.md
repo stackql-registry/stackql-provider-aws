@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppImageConfigArn" /></td>
+    <td><CopyableCode code="app_image_config_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AppImageConfig. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:app-image-config/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppImageConfigName" /></td>
+    <td><CopyableCode code="app_image_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AppImageConfig. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeEditorAppImageConfig" /></td>
+    <td><CopyableCode code="code_editor_app_image_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Code Editor app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the AppImageConfig was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JupyterLabAppImageConfig" /></td>
+    <td><CopyableCode code="jupyter_lab_app_image_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the JupyterLab app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KernelGatewayImageConfig" /></td>
+    <td><CopyableCode code="kernel_gateway_image_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of a KernelGateway app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the AppImageConfig was last modified.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppImageConfigArn" /></td>
+    <td><CopyableCode code="app_image_config_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AppImageConfig. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:app-image-config/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppImageConfigName" /></td>
+    <td><CopyableCode code="app_image_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AppImageConfig. Must be unique to your account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeEditorAppImageConfig" /></td>
+    <td><CopyableCode code="code_editor_app_image_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for the file system and the runtime, such as the environment variables and entry point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the AppImageConfig was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JupyterLabAppImageConfig" /></td>
+    <td><CopyableCode code="jupyter_lab_app_image_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for the file system and the runtime, such as the environment variables and entry point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KernelGatewayImageConfig" /></td>
+    <td><CopyableCode code="kernel_gateway_image_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for the file system and kernels in the SageMaker AI image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the AppImageConfig was last modified.</td>
 </tr>
@@ -228,13 +228,13 @@ Describes an AppImageConfig.
 
 ```sql
 SELECT
-AppImageConfigArn,
-AppImageConfigName,
-CodeEditorAppImageConfig,
-CreationTime,
-JupyterLabAppImageConfig,
-KernelGatewayImageConfig,
-LastModifiedTime
+app_image_config_arn,
+app_image_config_name,
+code_editor_app_image_config,
+creation_time,
+jupyter_lab_app_image_config,
+kernel_gateway_image_config,
+last_modified_time
 FROM aws.sagemaker.app_image_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,13 +246,13 @@ Lists the AppImageConfigs in your account and their properties. The list can be 
 
 ```sql
 SELECT
-AppImageConfigArn,
-AppImageConfigName,
-CodeEditorAppImageConfig,
-CreationTime,
-JupyterLabAppImageConfig,
-KernelGatewayImageConfig,
-LastModifiedTime
+app_image_config_arn,
+app_image_config_name,
+code_editor_app_image_config,
+creation_time,
+jupyter_lab_app_image_config,
+kernel_gateway_image_config,
+last_modified_time
 FROM aws.sagemaker.app_image_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,7 +291,7 @@ SELECT
 '{{ CodeEditorAppImageConfig }}',
 '{{ region }}'
 RETURNING
-AppImageConfigArn
+app_image_config_arn
 ;
 ```
 </TabItem>
@@ -381,7 +381,7 @@ WHERE
 region = '{{ region }}' --required
 AND AppImageConfigName = '{{ AppImageConfigName }}' --required
 RETURNING
-AppImageConfigArn;
+app_image_config_arn;
 ```
 </TabItem>
 </Tabs>

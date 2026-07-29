@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type.</td>
 </tr>
@@ -151,7 +151,7 @@ Returns a list of the Amazon Web Services resources available for a device. Curr
 SELECT
 id,
 arn,
-resourceType
+resource_type
 FROM aws.snow_device_management.device_resources
 WHERE managed_device_id = '{{ managed_device_id }}' -- required
 AND region = '{{ region }}' -- required

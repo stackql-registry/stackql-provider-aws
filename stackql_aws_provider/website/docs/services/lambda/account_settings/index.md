@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountLimit" /></td>
+    <td><CopyableCode code="account_limit" /></td>
     <td><code>object</code></td>
     <td>Limits that are related to concurrency and code storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountUsage" /></td>
+    <td><CopyableCode code="account_usage" /></td>
     <td><code>object</code></td>
     <td>The number of functions and amount of storage in use.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves details about your account's limits and usage in an Amazon Web Service
 
 ```sql
 SELECT
-AccountLimit,
-AccountUsage
+account_limit,
+account_usage
 FROM aws.lambda.account_settings
 WHERE region = '{{ region }}' -- required
 ;

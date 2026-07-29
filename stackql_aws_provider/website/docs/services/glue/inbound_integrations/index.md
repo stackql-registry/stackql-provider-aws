@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InboundIntegrations" /></td>
+    <td><CopyableCode code="inbound_integrations" /></td>
     <td><code>array</code></td>
     <td>A list of inbound integrations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the starting point for the next set of response records in a subsequent request.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of inbound integrations for the specified integration.
 
 ```sql
 SELECT
-InboundIntegrations,
-Marker
+inbound_integrations,
+marker
 FROM aws.glue.inbound_integrations
 WHERE region = '{{ region }}' -- required
 ;

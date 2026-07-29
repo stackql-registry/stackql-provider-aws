@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive key supplied by the client to ensure that the request is idempotent. For more information, see Ensuring Idempotency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The time when the modification request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveDate" /></td>
+    <td><CopyableCode code="effective_date" /></td>
     <td><code>string</code></td>
     <td>The time for the modification to become effective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationResults" /></td>
+    <td><CopyableCode code="modification_results" /></td>
     <td><code>string</code></td>
     <td>Contains target configurations along with their corresponding new Reserved Instance IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstancesIds" /></td>
+    <td><CopyableCode code="reserved_instances_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of one or more Reserved Instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstancesModificationId" /></td>
+    <td><CopyableCode code="reserved_instances_modification_id" /></td>
     <td><code>string</code></td>
     <td>A unique ID for the Reserved Instance modification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Reserved Instances modification request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The reason for the status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDate" /></td>
+    <td><CopyableCode code="update_date" /></td>
     <td><code>string</code></td>
     <td>The time when the modification request was last updated.</td>
 </tr>
@@ -174,15 +174,15 @@ Describes the modifications made to your Reserved Instances. If no parameter is 
 
 ```sql
 SELECT
-ClientToken,
-CreateDate,
-EffectiveDate,
-ModificationResults,
-ReservedInstancesIds,
-ReservedInstancesModificationId,
-Status,
-StatusMessage,
-UpdateDate
+client_token,
+create_date,
+effective_date,
+modification_results,
+reserved_instances_ids,
+reserved_instances_modification_id,
+status,
+status_message,
+update_date
 FROM aws.ec2.reserved_instances_modifications
 WHERE region = '{{ region }}' -- required
 AND ReservedInstancesModificationId = '{{ ReservedInstancesModificationId }}'

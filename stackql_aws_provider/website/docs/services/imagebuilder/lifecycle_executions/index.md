@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the lifecycle runtime instance completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleExecutionId" /></td>
+    <td><CopyableCode code="lifecycle_execution_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the lifecycle policy runtime instance. (pattern: &lt;code&gt;^lce-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecyclePolicyArn" /></td>
+    <td><CopyableCode code="lifecycle_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the lifecycle policy that ran. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws):lifecycle-policy/&#91;a-z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourcesImpactedSummary" /></td>
+    <td><CopyableCode code="resources_impacted_summary" /></td>
     <td><code>object</code></td>
     <td>Contains information about associated resources that are identified for action by the runtime instance of the lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the lifecycle runtime instance started.</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the lifecycle runtime instance completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleExecutionId" /></td>
+    <td><CopyableCode code="lifecycle_execution_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the lifecycle policy runtime instance. (pattern: &lt;code&gt;^lce-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecyclePolicyArn" /></td>
+    <td><CopyableCode code="lifecycle_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the lifecycle policy that ran. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws):lifecycle-policy/&#91;a-z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourcesImpactedSummary" /></td>
+    <td><CopyableCode code="resources_impacted_summary" /></td>
     <td><code>object</code></td>
     <td>Contains information about associated resources that are identified for action by the runtime instance of the lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the lifecycle runtime instance started.</td>
 </tr>
@@ -209,11 +209,11 @@ Get the runtime information that was logged for a specific runtime instance of t
 
 ```sql
 SELECT
-endTime,
-lifecycleExecutionId,
-lifecyclePolicyArn,
-resourcesImpactedSummary,
-startTime,
+end_time,
+lifecycle_execution_id,
+lifecycle_policy_arn,
+resources_impacted_summary,
+start_time,
 state
 FROM aws.imagebuilder.lifecycle_executions
 WHERE lifecycleExecutionId = '{{ lifecycleExecutionId }}' -- required
@@ -227,11 +227,11 @@ Get the lifecycle runtime history for the specified resource.
 
 ```sql
 SELECT
-endTime,
-lifecycleExecutionId,
-lifecyclePolicyArn,
-resourcesImpactedSummary,
-startTime,
+end_time,
+lifecycle_execution_id,
+lifecycle_policy_arn,
+resources_impacted_summary,
+start_time,
 state
 FROM aws.imagebuilder.lifecycle_executions
 WHERE region = '{{ region }}' -- required

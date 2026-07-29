@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="frontOfQueue" /></td>
+    <td><CopyableCode code="front_of_queue" /></td>
     <td><code>object</code></td>
     <td>The list of the first 100 RUNNABLE jobs in each job queue. For first-in-first-out (FIFO) job queues, jobs are ordered based on their submission time. For job queues with an attached fair-share scheduling (FSS) or quota-share policy, jobs are ordered based on their job priority and share usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="frontOfQuotaShares" /></td>
+    <td><CopyableCode code="front_of_quota_shares" /></td>
     <td><code>object</code></td>
     <td>The first RUNNABLE job in each quota share. Jobs are ordered based on their job priority and share usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueUtilization" /></td>
+    <td><CopyableCode code="queue_utilization" /></td>
     <td><code>object</code></td>
     <td>The job queue's capacity utilization, including total usage and breakdown per given share.</td>
 </tr>
@@ -129,9 +129,9 @@ Provides a snapshot of job queue state, including ordering of RUNNABLE jobs, as 
 
 ```sql
 SELECT
-frontOfQueue,
-frontOfQuotaShares,
-queueUtilization
+front_of_queue,
+front_of_quota_shares,
+queue_utilization
 FROM aws.batch.job_queue_snapshots
 WHERE region = '{{ region }}' -- required
 ;

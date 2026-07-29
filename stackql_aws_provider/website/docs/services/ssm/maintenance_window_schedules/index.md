@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExecutionTime" /></td>
+    <td><CopyableCode code="execution_time" /></td>
     <td><code>string</code></td>
     <td>The time, in ISO-8601 Extended format, that the maintenance window is scheduled to be run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the maintenance window to be run. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowId" /></td>
+    <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window to be run. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves information about upcoming executions of a maintenance window.
 
 ```sql
 SELECT
-ExecutionTime,
-Name,
-WindowId
+execution_time,
+name,
+window_id
 FROM aws.ssm.maintenance_window_schedules
 WHERE region = '{{ region }}' -- required
 ;

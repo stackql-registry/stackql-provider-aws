@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>A Boolean that indicates the connectivity status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disconnectReason" /></td>
+    <td><CopyableCode code="disconnect_reason" /></td>
     <td><code>string</code></td>
     <td>The reason why the client is disconnecting. (AUTH_ERROR, CLIENT_INITIATED_DISCONNECT, CLIENT_ERROR, CONNECTION_LOST, DUPLICATE_CLIENTID, FORBIDDEN_ACCESS, MQTT_KEEP_ALIVE_TIMEOUT, SERVER_ERROR, SERVER_INITIATED_DISCONNECT, THROTTLED, WEBSOCKET_TTL_EXPIRATION, CUSTOMAUTH_TTL_EXPIRATION, UNKNOWN, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of your IoT thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -140,8 +140,8 @@ Retrieves the live connectivity status per device.
 ```sql
 SELECT
 connected,
-disconnectReason,
-thingName,
+disconnect_reason,
+thing_name,
 timestamp
 FROM aws.iot.thing_connectivity_datas
 WHERE thing_name = '{{ thing_name }}' -- required

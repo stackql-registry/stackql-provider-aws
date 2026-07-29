@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForwardPath" /></td>
+    <td><CopyableCode code="forward_path" /></td>
     <td><code>object</code></td>
     <td>The forward path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeReturnPath" /></td>
+    <td><CopyableCode code="include_return_path" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether to analyze the return path. The return path is not analyzed if the forward path analysis does not succeed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AWS account that created the route analysis. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReturnPath" /></td>
+    <td><CopyableCode code="return_path" /></td>
     <td><code>object</code></td>
     <td>The return path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteAnalysisId" /></td>
+    <td><CopyableCode code="route_analysis_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the route analysis. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>The source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the analysis started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the route analysis. (RUNNING, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseMiddleboxes" /></td>
+    <td><CopyableCode code="use_middleboxes" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether to include the location of middlebox appliances in the route analysis.</td>
 </tr>
@@ -186,17 +186,17 @@ Gets information about the specified route analysis.
 
 ```sql
 SELECT
-Destination,
-ForwardPath,
-GlobalNetworkId,
-IncludeReturnPath,
-OwnerAccountId,
-ReturnPath,
-RouteAnalysisId,
-Source,
-StartTimestamp,
-Status,
-UseMiddleboxes
+destination,
+forward_path,
+global_network_id,
+include_return_path,
+owner_account_id,
+return_path,
+route_analysis_id,
+source,
+start_timestamp,
+status,
+use_middleboxes
 FROM aws.networkmanager.route_analysis
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND route_analysis_id = '{{ route_analysis_id }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description that can be free-form text to record additional detail about the resource for clarity or later reference. (pattern: &lt;code&gt;^.&#123;0,500&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>This is the name that you want to use to identify the resource. If the resource is an AWS resource, we recommend that you set this parameter to the ARN of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetail" /></td>
+    <td><CopyableCode code="status_detail" /></td>
     <td><code>string</code></td>
     <td>A free-form description of the status of the resource. (pattern: &lt;code&gt;^.&#123;0,2500&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -143,9 +143,9 @@ Lists all the source resource that are associated with the specified MigrationTa
 
 ```sql
 SELECT
-Description,
-Name,
-StatusDetail
+description,
+name,
+status_detail
 FROM aws.mgh.source_resources
 WHERE region = '{{ region }}' -- required
 ;

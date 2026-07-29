@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the attribute. The name must contain between 1 and 128 characters. The name may contain letters (uppercase and lowercase), numbers, hyphens (-), underscores (_), forward slashes (/), back slashes (\), or periods (.).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the target. You can specify the short form ID for a resource or the full Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The type of the target to attach the attribute with. This parameter is required if you use the short form ID for a resource instead of the full ARN. (container-instance)</td>
 </tr>
@@ -149,8 +149,8 @@ Lists the attributes for Amazon ECS resources within a specified target type and
 ```sql
 SELECT
 name,
-targetId,
-targetType,
+target_id,
+target_type,
 value
 FROM aws.ecs.attributes
 WHERE region = '{{ region }}' -- required

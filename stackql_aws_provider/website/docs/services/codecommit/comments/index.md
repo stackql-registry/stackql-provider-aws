@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authorArn" /></td>
+    <td><CopyableCode code="author_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the person who posted the comment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="callerReactions" /></td>
+    <td><CopyableCode code="caller_reactions" /></td>
     <td><code>array</code></td>
     <td>The emoji reactions to a comment, if any, submitted by the user whose credentials are associated with the call to the API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commentId" /></td>
+    <td><CopyableCode code="comment_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated comment ID.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the comment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the comment was created, in timestamp format.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
     <td>A Boolean value indicating whether the comment has been deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inReplyTo" /></td>
+    <td><CopyableCode code="in_reply_to" /></td>
     <td><code>string</code></td>
     <td>The ID of the comment for which this comment is a reply, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the comment was most recently modified, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reactionCounts" /></td>
+    <td><CopyableCode code="reaction_counts" /></td>
     <td><code>object</code></td>
     <td>A string to integer map that represents the number of individual users who have responded to a comment with the specified reactions.</td>
 </tr>
@@ -178,16 +178,16 @@ Returns the content of a comment made on a change, file, or commit in a reposito
 
 ```sql
 SELECT
-authorArn,
-callerReactions,
-clientRequestToken,
-commentId,
+author_arn,
+caller_reactions,
+client_request_token,
+comment_id,
 content,
-creationDate,
+creation_date,
 deleted,
-inReplyTo,
-lastModifiedDate,
-reactionCounts
+in_reply_to,
+last_modified_date,
+reaction_counts
 FROM aws.codecommit.comments
 WHERE region = '{{ region }}' -- required
 ;

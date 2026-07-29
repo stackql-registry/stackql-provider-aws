@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Partitions" /></td>
+    <td><CopyableCode code="partitions" /></td>
     <td><code>array</code></td>
     <td>A list of the requested partitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedKeys" /></td>
+    <td><CopyableCode code="unprocessed_keys" /></td>
     <td><code>array</code></td>
     <td>A list of the partition values in the request for which partitions were not returned.</td>
 </tr>
@@ -76,47 +76,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog in which the partition resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the partition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the catalog database in which to create the partition. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessTime" /></td>
+    <td><CopyableCode code="last_access_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time at which the partition was accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAnalyzedTime" /></td>
+    <td><CopyableCode code="last_analyzed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time at which column statistics were computed for this partition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>These key-value pairs define partition parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageDescriptor" /></td>
+    <td><CopyableCode code="storage_descriptor" /></td>
     <td><code>object</code></td>
     <td>Provides information about the physical location where the partition is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database table in which to create the partition. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>array</code></td>
     <td>The values of the partition.</td>
 </tr>
@@ -135,47 +135,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog in which the partition resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the partition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the catalog database in which to create the partition. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessTime" /></td>
+    <td><CopyableCode code="last_access_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time at which the partition was accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAnalyzedTime" /></td>
+    <td><CopyableCode code="last_analyzed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time at which column statistics were computed for this partition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>These key-value pairs define partition parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageDescriptor" /></td>
+    <td><CopyableCode code="storage_descriptor" /></td>
     <td><code>object</code></td>
     <td>Provides information about the physical location where the partition is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database table in which to create the partition. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>array</code></td>
     <td>The values of the partition.</td>
 </tr>
@@ -281,8 +281,8 @@ Retrieves partitions in a batch request.
 
 ```sql
 SELECT
-Partitions,
-UnprocessedKeys
+partitions,
+unprocessed_keys
 FROM aws.glue.partitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -294,15 +294,15 @@ Retrieves information about a specified partition.
 
 ```sql
 SELECT
-CatalogId,
-CreationTime,
-DatabaseName,
-LastAccessTime,
-LastAnalyzedTime,
-Parameters,
-StorageDescriptor,
-TableName,
-Values
+catalog_id,
+creation_time,
+database_name,
+last_access_time,
+last_analyzed_time,
+parameters,
+storage_descriptor,
+table_name,
+values
 FROM aws.glue.partitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -314,15 +314,15 @@ Retrieves information about the partitions in a table.
 
 ```sql
 SELECT
-CatalogId,
-CreationTime,
-DatabaseName,
-LastAccessTime,
-LastAnalyzedTime,
-Parameters,
-StorageDescriptor,
-TableName,
-Values
+catalog_id,
+creation_time,
+database_name,
+last_access_time,
+last_analyzed_time,
+parameters,
+storage_descriptor,
+table_name,
+values
 FROM aws.glue.partitions
 WHERE region = '{{ region }}' -- required
 ;

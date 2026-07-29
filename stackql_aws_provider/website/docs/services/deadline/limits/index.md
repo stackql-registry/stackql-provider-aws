@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="amountRequirementName" /></td>
+    <td><CopyableCode code="amount_requirement_name" /></td>
     <td><code>string</code></td>
     <td>The value that you specify as the name in the amounts field of the hostRequirements in a step of a job template to declare the limit requirement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the limit was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that created the limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentCount" /></td>
+    <td><CopyableCode code="current_count" /></td>
     <td><code>integer</code></td>
     <td>The number of resources from the limit that are being used by jobs. The result is delayed and may not be the count at the time that you called the operation.</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the limit that helps identify what the limit is used for. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the limit. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the farm that contains the limit. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="limitId" /></td>
+    <td><CopyableCode code="limit_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the limit. (pattern: &lt;code&gt;limit-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCount" /></td>
+    <td><CopyableCode code="max_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of resources constrained by this limit. When all of the resources are in use, steps that require the limit won't be scheduled until the resource is available. The maxValue must not be 0. If the value is -1, there is no restriction on the number of resources that can be acquired for this limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the limit was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that last updated the limit.</td>
 </tr>
@@ -120,52 +120,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="amountRequirementName" /></td>
+    <td><CopyableCode code="amount_requirement_name" /></td>
     <td><code>string</code></td>
     <td>The value that you specify as the name in the amounts field of the hostRequirements in a step of a job template to declare the limit requirement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the limit was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that created the limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentCount" /></td>
+    <td><CopyableCode code="current_count" /></td>
     <td><code>integer</code></td>
     <td>The number of resources from the limit that are being used by jobs. The result is delayed and may not be the count at the time that you called the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the limit used in lists to identify the limit. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the farm that contains the limit. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="limitId" /></td>
+    <td><CopyableCode code="limit_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the limit. (pattern: &lt;code&gt;limit-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCount" /></td>
+    <td><CopyableCode code="max_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of resources constrained by this limit. When all of the resources are in use, steps that require the limit won't be scheduled until the resource is available. The maxValue must not be 0. If the value is -1, there is no restriction on the number of resources that can be acquired for this limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the limit was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that last updated the limit.</td>
 </tr>
@@ -288,17 +288,17 @@ Gets information about a specific limit.
 
 ```sql
 SELECT
-amountRequirementName,
-createdAt,
-createdBy,
-currentCount,
+amount_requirement_name,
+created_at,
+created_by,
+current_count,
 description,
-displayName,
-farmId,
-limitId,
-maxCount,
-updatedAt,
-updatedBy
+display_name,
+farm_id,
+limit_id,
+max_count,
+updated_at,
+updated_by
 FROM aws.deadline.limits
 WHERE farm_id = '{{ farm_id }}' -- required
 AND limit_id = '{{ limit_id }}' -- required
@@ -312,16 +312,16 @@ Gets a list of limits defined in the specified farm.
 
 ```sql
 SELECT
-amountRequirementName,
-createdAt,
-createdBy,
-currentCount,
-displayName,
-farmId,
-limitId,
-maxCount,
-updatedAt,
-updatedBy
+amount_requirement_name,
+created_at,
+created_by,
+current_count,
+display_name,
+farm_id,
+limit_id,
+max_count,
+updated_at,
+updated_by
 FROM aws.deadline.limits
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -365,7 +365,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-limitId
+limit_id
 ;
 ```
 </TabItem>

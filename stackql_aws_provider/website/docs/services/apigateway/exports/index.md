@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The binary blob response to GetExport, which contains the export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentDisposition" /></td>
+    <td><CopyableCode code="content_disposition" /></td>
     <td><code>string</code></td>
     <td>The content-disposition header value in the HTTP response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content-type header value in the HTTP response. This will correspond to a valid 'accept' type in the request.</td>
 </tr>
@@ -155,8 +155,8 @@ Exports a deployed version of a RestApi in a specified format.
 ```sql
 SELECT
 body,
-contentDisposition,
-contentType
+content_disposition,
+content_type
 FROM aws.apigateway.exports
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND stage_name = '{{ stage_name }}' -- required

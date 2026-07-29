@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionGroup" /></td>
+    <td><CopyableCode code="connection_group" /></td>
     <td><code>string</code></td>
     <td>The connection group for your distribution tenants. When you first create a distribution tenant and you don't specify a connection group, CloudFront will automatically create a default connection group for you. When you create a new distribution tenant and don't specify a connection group, the default one will be associated with your distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current version of the connection group.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets information about a connection group by using the endpoint that you specify
 
 ```sql
 SELECT
-ConnectionGroup,
-ETag
+connection_group,
+e_tag
 FROM aws.cloudfront.connection_group_by_routing_endpoints
 WHERE RoutingEndpoint = '{{ RoutingEndpoint }}' -- required
 AND region = '{{ region }}' -- required

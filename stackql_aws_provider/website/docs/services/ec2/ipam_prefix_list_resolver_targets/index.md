@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DesiredVersion" /></td>
+    <td><CopyableCode code="desired_version" /></td>
     <td><code>integer</code></td>
     <td>The desired version of the prefix list that this target should synchronize with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPrefixListResolverId" /></td>
+    <td><CopyableCode code="ipam_prefix_list_resolver_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM prefix list resolver associated with this target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPrefixListResolverTargetArn" /></td>
+    <td><CopyableCode code="ipam_prefix_list_resolver_target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IPAM prefix list resolver target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPrefixListResolverTargetId" /></td>
+    <td><CopyableCode code="ipam_prefix_list_resolver_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM prefix list resolver target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSyncedVersion" /></td>
+    <td><CopyableCode code="last_synced_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the prefix list that was last successfully synchronized by this target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the IPAM prefix list resolver target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListId" /></td>
+    <td><CopyableCode code="prefix_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the managed prefix list associated with this target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListRegion" /></td>
+    <td><CopyableCode code="prefix_list_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the prefix list associated with this target is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the IPAM prefix list resolver target. Valid values include create-in-progress, create-complete, create-failed, modify-in-progress, modify-complete, modify-failed, delete-in-progress, delete-complete, and delete-failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>A message describing the current state of the IPAM prefix list resolver target, including any error information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the IPAM prefix list resolver target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackLatestVersion" /></td>
+    <td><CopyableCode code="track_latest_version" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this target automatically tracks the latest version of the prefix list.</td>
 </tr>
@@ -270,18 +270,18 @@ Describes one or more IPAM prefix list resolver Targets. Use this operation to v
 
 ```sql
 SELECT
-DesiredVersion,
-IpamPrefixListResolverId,
-IpamPrefixListResolverTargetArn,
-IpamPrefixListResolverTargetId,
-LastSyncedVersion,
-OwnerId,
-PrefixListId,
-PrefixListRegion,
-State,
-StateMessage,
-Tags,
-TrackLatestVersion
+desired_version,
+ipam_prefix_list_resolver_id,
+ipam_prefix_list_resolver_target_arn,
+ipam_prefix_list_resolver_target_id,
+last_synced_version,
+owner_id,
+prefix_list_id,
+prefix_list_region,
+state,
+state_message,
+tags,
+track_latest_version
 FROM aws.ec2.ipam_prefix_list_resolver_targets
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -332,18 +332,18 @@ SELECT
 '{{ TagSpecification }}',
 '{{ ClientToken }}'
 RETURNING
-DesiredVersion,
-IpamPrefixListResolverId,
-IpamPrefixListResolverTargetArn,
-IpamPrefixListResolverTargetId,
-LastSyncedVersion,
-OwnerId,
-PrefixListId,
-PrefixListRegion,
-State,
-StateMessage,
-Tags,
-TrackLatestVersion
+desired_version,
+ipam_prefix_list_resolver_id,
+ipam_prefix_list_resolver_target_arn,
+ipam_prefix_list_resolver_target_id,
+last_synced_version,
+owner_id,
+prefix_list_id,
+prefix_list_region,
+state,
+state_message,
+tags,
+track_latest_version
 ;
 ```
 </TabItem>
@@ -413,18 +413,18 @@ AND DesiredVersion = '{{ DesiredVersion}}'
 AND TrackLatestVersion = {{ TrackLatestVersion}}
 AND ClientToken = '{{ ClientToken}}'
 RETURNING
-DesiredVersion,
-IpamPrefixListResolverId,
-IpamPrefixListResolverTargetArn,
-IpamPrefixListResolverTargetId,
-LastSyncedVersion,
-OwnerId,
-PrefixListId,
-PrefixListRegion,
-State,
-StateMessage,
-Tags,
-TrackLatestVersion;
+desired_version,
+ipam_prefix_list_resolver_id,
+ipam_prefix_list_resolver_target_arn,
+ipam_prefix_list_resolver_target_id,
+last_synced_version,
+owner_id,
+prefix_list_id,
+prefix_list_region,
+state,
+state_message,
+tags,
+track_latest_version;
 ```
 </TabItem>
 </Tabs>

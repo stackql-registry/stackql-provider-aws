@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeStatistics" /></td>
+    <td><CopyableCode code="compute_statistics" /></td>
     <td><code>boolean</code></td>
     <td>The parameter is true if statistics need to be generated from the observation data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account from which the DataSource was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataLocationS3" /></td>
+    <td><CopyableCode code="data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3). (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataRearrangement" /></td>
+    <td><CopyableCode code="data_rearrangement" /></td>
     <td><code>string</code></td>
     <td>A JSON string that represents the splitting and rearrangement requirement used when this DataSource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSizeInBytes" /></td>
+    <td><CopyableCode code="data_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the DataSource at creation. This value should be identical to the value of the DataSourceId in the request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceSchema" /></td>
+    <td><CopyableCode code="data_source_schema" /></td>
     <td><code>string</code></td>
     <td>The schema used by all of the data files of this DataSource. Note: This parameter is provided as part of the verbose format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>A link to the file containing logs of CreateDataSourceFrom* operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The user-supplied description of the most recent details about creating the DataSource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the DataSource. (pattern: &lt;code&gt;.*\S.*|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfFiles" /></td>
+    <td><CopyableCode code="number_of_files" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RDSMetadata" /></td>
+    <td><CopyableCode code="rds_metadata" /></td>
     <td><code>object</code></td>
     <td>The datasource details that are specific to Amazon RDS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedshiftMetadata" /></td>
+    <td><CopyableCode code="redshift_metadata" /></td>
     <td><code>object</code></td>
     <td>Describes the DataSource details specific to Amazon Redshift.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleARN" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an AWS IAM Role, such as the following: arn:aws:iam::account:role/rolename.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the DataSource. This element can have one of the following values: PENDING - Amazon ML submitted a request to create a DataSource. INPROGRESS - The creation process is underway. FAILED - The request to create a DataSource did not run to completion. It is not usable. COMPLETED - The creation process completed successfully. DELETED - The DataSource is marked as deleted. It is not usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
@@ -165,92 +165,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeStatistics" /></td>
+    <td><CopyableCode code="compute_statistics" /></td>
     <td><code>boolean</code></td>
     <td>The parameter is true if statistics need to be generated from the observation data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account from which the DataSource was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataLocationS3" /></td>
+    <td><CopyableCode code="data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location and name of the data in Amazon Simple Storage Service (Amazon S3) that is used by a DataSource. (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataRearrangement" /></td>
+    <td><CopyableCode code="data_rearrangement" /></td>
     <td><code>string</code></td>
     <td>A JSON string that represents the splitting and rearrangement requirement used when this DataSource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSizeInBytes" /></td>
+    <td><CopyableCode code="data_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID that is assigned to the DataSource during creation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the most recent details about creating the DataSource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the DataSource. (pattern: &lt;code&gt;.*\S.*|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfFiles" /></td>
+    <td><CopyableCode code="number_of_files" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RDSMetadata" /></td>
+    <td><CopyableCode code="rds_metadata" /></td>
     <td><code>object</code></td>
     <td>The datasource details that are specific to Amazon RDS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedshiftMetadata" /></td>
+    <td><CopyableCode code="redshift_metadata" /></td>
     <td><code>object</code></td>
     <td>Describes the DataSource details specific to Amazon Redshift.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleARN" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an AWS IAM Role, such as the following: arn:aws:iam::account:role/rolename.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the DataSource. This element can have one of the following values: PENDING - Amazon Machine Learning (Amazon ML) submitted a request to create a DataSource. INPROGRESS - The creation process is underway. FAILED - The request to create a DataSource did not run to completion. It is not usable. COMPLETED - The creation process completed successfully. DELETED - The DataSource is marked as deleted. It is not usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
@@ -362,26 +362,26 @@ Returns a DataSource that includes metadata and data file information, as well a
 
 ```sql
 SELECT
-ComputeStatistics,
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-DataLocationS3,
-DataRearrangement,
-DataSizeInBytes,
-DataSourceId,
-DataSourceSchema,
-FinishedAt,
-LastUpdatedAt,
-LogUri,
-Message,
-Name,
-NumberOfFiles,
-RDSMetadata,
-RedshiftMetadata,
-RoleARN,
-StartedAt,
-Status
+compute_statistics,
+compute_time,
+created_at,
+created_by_iam_user,
+data_location_s3,
+data_rearrangement,
+data_size_in_bytes,
+data_source_id,
+data_source_schema,
+finished_at,
+last_updated_at,
+log_uri,
+message,
+name,
+number_of_files,
+rds_metadata,
+redshift_metadata,
+role_arn,
+started_at,
+status
 FROM aws.machinelearning.data_sources
 WHERE region = '{{ region }}' -- required
 ;
@@ -393,24 +393,24 @@ Returns a list of DataSource that match the search criteria in the request.
 
 ```sql
 SELECT
-ComputeStatistics,
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-DataLocationS3,
-DataRearrangement,
-DataSizeInBytes,
-DataSourceId,
-FinishedAt,
-LastUpdatedAt,
-Message,
-Name,
-NumberOfFiles,
-RDSMetadata,
-RedshiftMetadata,
-RoleARN,
-StartedAt,
-Status
+compute_statistics,
+compute_time,
+created_at,
+created_by_iam_user,
+data_location_s3,
+data_rearrangement,
+data_size_in_bytes,
+data_source_id,
+finished_at,
+last_updated_at,
+message,
+name,
+number_of_files,
+rds_metadata,
+redshift_metadata,
+role_arn,
+started_at,
+status
 FROM aws.machinelearning.data_sources
 WHERE region = '{{ region }}' -- required
 ;
@@ -451,7 +451,7 @@ SELECT
 {{ ComputeStatistics }},
 '{{ region }}'
 RETURNING
-DataSourceId
+data_source_id
 ;
 ```
 </TabItem>
@@ -476,7 +476,7 @@ SELECT
 {{ ComputeStatistics }},
 '{{ region }}'
 RETURNING
-DataSourceId
+data_source_id
 ;
 ```
 </TabItem>
@@ -499,7 +499,7 @@ SELECT
 {{ ComputeStatistics }},
 '{{ region }}'
 RETURNING
-DataSourceId
+data_source_id
 ;
 ```
 </TabItem>
@@ -583,7 +583,7 @@ region = '{{ region }}' --required
 AND DataSourceId = '{{ DataSourceId }}' --required
 AND DataSourceName = '{{ DataSourceName }}' --required
 RETURNING
-DataSourceId;
+data_source_id;
 ```
 </TabItem>
 </Tabs>

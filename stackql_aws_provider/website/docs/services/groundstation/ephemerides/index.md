@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A name that you can use to identify the ephemeris. (pattern: &lt;code&gt;&#91; a-zA-Z0-9_:-&#93;&#123;1,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the ephemeris was uploaded in UTC.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>Whether or not the ephemeris is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ephemerisId" /></td>
+    <td><CopyableCode code="ephemeris_id" /></td>
     <td><code>string</code></td>
     <td>The AWS Ground Station ephemeris ID. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ephemerisType" /></td>
+    <td><CopyableCode code="ephemeris_type" /></td>
     <td><code>string</code></td>
     <td>The type of ephemeris. (TLE, OEM, AZ_EL, SERVICE_MANAGED)</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>A priority score that determines which ephemeris to use when multiple ephemerides overlap. Higher numbers take precedence. The default is 1. Must be 1 or greater.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceS3Object" /></td>
+    <td><CopyableCode code="source_s3_object" /></td>
     <td><code>object</code></td>
     <td>Source Amazon S3 object used for the ephemeris.</td>
 </tr>
@@ -165,12 +165,12 @@ List your existing ephemerides.
 ```sql
 SELECT
 name,
-creationTime,
+creation_time,
 enabled,
-ephemerisId,
-ephemerisType,
+ephemeris_id,
+ephemeris_type,
 priority,
-sourceS3Object,
+source_s3_object,
 status
 FROM aws.groundstation.ephemerides
 WHERE region = '{{ region }}' -- required

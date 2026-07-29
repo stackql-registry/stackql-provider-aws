@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyRule" /></td>
+    <td><CopyableCode code="policy_rule" /></td>
     <td><code>string</code></td>
     <td>The policy rule associated with the transit gateway policy table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyRuleNumber" /></td>
+    <td><CopyableCode code="policy_rule_number" /></td>
     <td><code>string</code></td>
     <td>The rule number for the transit gateway policy table entry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetRouteTableId" /></td>
+    <td><CopyableCode code="target_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the target route table.</td>
 </tr>
@@ -154,9 +154,9 @@ Returns a list of transit gateway policy table entries.
 
 ```sql
 SELECT
-PolicyRule,
-PolicyRuleNumber,
-TargetRouteTableId
+policy_rule,
+policy_rule_number,
+target_route_table_id
 FROM aws.ec2.transit_gateway_policy_table_entries
 WHERE TransitGatewayPolicyTableId = '{{ TransitGatewayPolicyTableId }}' -- required
 AND region = '{{ region }}' -- required

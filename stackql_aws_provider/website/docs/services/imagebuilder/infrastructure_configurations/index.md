@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="infrastructureConfiguration" /></td>
+    <td><CopyableCode code="infrastructure_configuration" /></td>
     <td><code>object</code></td>
     <td>The infrastructure configuration object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the infrastructure configuration. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date on which the infrastructure configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The date on which the infrastructure configuration was last updated.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the infrastructure configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceProfileName" /></td>
+    <td><CopyableCode code="instance_profile_name" /></td>
     <td><code>string</code></td>
     <td>The instance profile of the infrastructure configuration. (pattern: &lt;code&gt;^&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceTypes" /></td>
+    <td><CopyableCode code="instance_types" /></td>
     <td><code>array</code></td>
     <td>The instance types of the infrastructure configuration.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>By default, EC2 instances run on shared tenancy hardware. This means that multiple Amazon Web Services accounts might share the same physical hardware. When you use dedicated hardware, the physical server that hosts your instances is dedicated to your Amazon Web Services account. Instance placement settings contain the details for the physical hardware where instances that Image Builder launches during image creation will run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>object</code></td>
     <td>The tags attached to the image created by Image Builder.</td>
 </tr>
@@ -230,8 +230,8 @@ Gets an infrastructure configuration.
 
 ```sql
 SELECT
-infrastructureConfiguration,
-requestId
+infrastructure_configuration,
+request_id
 FROM aws.imagebuilder.infrastructure_configurations
 WHERE infrastructureConfigurationArn = '{{ infrastructureConfigurationArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -246,13 +246,13 @@ Returns a list of infrastructure configurations.
 SELECT
 name,
 arn,
-dateCreated,
-dateUpdated,
+date_created,
+date_updated,
 description,
-instanceProfileName,
-instanceTypes,
+instance_profile_name,
+instance_types,
 placement,
-resourceTags,
+resource_tags,
 tags
 FROM aws.imagebuilder.infrastructure_configurations
 WHERE region = '{{ region }}' -- required
@@ -312,9 +312,9 @@ SELECT
 '{{ clientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-clientToken,
-infrastructureConfigurationArn,
-requestId
+client_token,
+infrastructure_configuration_arn,
+request_id
 ;
 ```
 </TabItem>
@@ -414,9 +414,9 @@ AND infrastructureConfigurationArn = '{{ infrastructureConfigurationArn }}' --re
 AND instanceProfileName = '{{ instanceProfileName }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-clientToken,
-infrastructureConfigurationArn,
-requestId;
+client_token,
+infrastructure_configuration_arn,
+request_id;
 ```
 </TabItem>
 </Tabs>

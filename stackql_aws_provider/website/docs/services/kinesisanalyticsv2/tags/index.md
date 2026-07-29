@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The key-value tags assigned to the application.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the list of key-value tags assigned to the application. For more infor
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.kinesisanalyticsv2.tags
 WHERE region = '{{ region }}' -- required
 ;

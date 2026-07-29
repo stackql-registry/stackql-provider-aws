@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InvocationTime" /></td>
+    <td><CopyableCode code="invocation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time when the remediation was executed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the remediation execution was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceKey" /></td>
+    <td><CopyableCode code="resource_key" /></td>
     <td><code>object</code></td>
     <td>The details that identify a resource within Config, including the resource type and resource ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>ENUM of the values. (QUEUED, IN_PROGRESS, SUCCEEDED, FAILED, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepDetails" /></td>
+    <td><CopyableCode code="step_details" /></td>
     <td><code>array</code></td>
     <td>Details of every step.</td>
 </tr>
@@ -139,11 +139,11 @@ Provides a detailed view of a Remediation Execution for a set of resources inclu
 
 ```sql
 SELECT
-InvocationTime,
-LastUpdatedTime,
-ResourceKey,
-State,
-StepDetails
+invocation_time,
+last_updated_time,
+resource_key,
+state,
+step_details
 FROM aws.config.remediation_execution_status
 WHERE region = '{{ region }}' -- required
 ;

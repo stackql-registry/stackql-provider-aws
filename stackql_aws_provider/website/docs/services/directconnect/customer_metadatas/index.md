@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of customer agreements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nniPartnerType" /></td>
+    <td><CopyableCode code="nni_partner_type" /></td>
     <td><code>string</code></td>
     <td>The type of network-to-network interface (NNI) partner. The partner type will be one of the following: V1: This partner can only allocate 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps subgigabit connections. V2: This partner can only allocate 1GB, 2GB, 5GB, or 10GB hosted connections. nonPartner: The customer is not a partner. (v1, v2, nonPartner)</td>
 </tr>
@@ -125,7 +125,7 @@ Get and view a list of customer agreements, along with their signed status and w
 ```sql
 SELECT
 agreements,
-nniPartnerType
+nni_partner_type
 FROM aws.directconnect.customer_metadatas
 WHERE region = '{{ region }}' -- required
 ;

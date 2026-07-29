@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationType" /></td>
+    <td><CopyableCode code="application_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the evaluation job is for evaluating a model or evaluating a knowledge base (retrieval and response generation). (ModelEvaluation, RagEvaluation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the evaluation job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerEncryptionKeyId" /></td>
+    <td><CopyableCode code="customer_encryption_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customer managed encryption key specified when the evaluation job was created. (pattern: &lt;code&gt;(arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:((key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;)|(alias/&#91;a-zA-Z0-9-_/&#93;+)))|(&#91;a-zA-Z0-9-&#93;&#123;36&#125;)|(alias/&#91;a-zA-Z0-9-_/&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationConfig" /></td>
+    <td><CopyableCode code="evaluation_config" /></td>
     <td><code>object</code></td>
     <td>The configuration details of either an automated or human-based evaluation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessages" /></td>
+    <td><CopyableCode code="failure_messages" /></td>
     <td><code>array</code></td>
     <td>A list of strings that specify why the evaluation job failed to create.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceConfig" /></td>
+    <td><CopyableCode code="inference_config" /></td>
     <td><code>object</code></td>
     <td>Contains the configuration details of the inference model used for the evaluation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the evaluation job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:evaluation-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDescription" /></td>
+    <td><CopyableCode code="job_description" /></td>
     <td><code>string</code></td>
     <td>The description of the evaluation job. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name for the evaluation job. (pattern: &lt;code&gt;&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the evaluation job is automated or human-based. (Human, Automated)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the evaluation job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location where the results of your evaluation job are saved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role used in the evaluation job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -135,57 +135,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationType" /></td>
+    <td><CopyableCode code="application_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the evaluation job is for evaluating a model or evaluating a knowledge base (retrieval and response generation). (ModelEvaluation, RagEvaluation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the evaluation job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customMetricsEvaluatorModelIdentifiers" /></td>
+    <td><CopyableCode code="custom_metrics_evaluator_model_identifiers" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the models used to compute custom metrics in an Amazon Bedrock evaluation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationTaskTypes" /></td>
+    <td><CopyableCode code="evaluation_task_types" /></td>
     <td><code>array</code></td>
     <td>The type of task for model evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorModelIdentifiers" /></td>
+    <td><CopyableCode code="evaluator_model_identifiers" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the models used to compute the metrics for a knowledge base evaluation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceConfigSummary" /></td>
+    <td><CopyableCode code="inference_config_summary" /></td>
     <td><code>object</code></td>
     <td>Identifies the models, Knowledge Bases, or other RAG sources evaluated in a model or Knowledge Base evaluation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the evaluation job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:evaluation-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name for the evaluation job. (pattern: &lt;code&gt;&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the evaluation job is automated or human-based. (Human, Automated)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelIdentifiers" /></td>
+    <td><CopyableCode code="model_identifiers" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the model(s) used for the evaluation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ragIdentifiers" /></td>
+    <td><CopyableCode code="rag_identifiers" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the knowledge base resources used for a knowledge base evaluation job.</td>
 </tr>
@@ -324,19 +324,19 @@ Gets information about an evaluation job, such as the status of the job.
 
 ```sql
 SELECT
-applicationType,
-creationTime,
-customerEncryptionKeyId,
-evaluationConfig,
-failureMessages,
-inferenceConfig,
-jobArn,
-jobDescription,
-jobName,
-jobType,
-lastModifiedTime,
-outputDataConfig,
-roleArn,
+application_type,
+creation_time,
+customer_encryption_key_id,
+evaluation_config,
+failure_messages,
+inference_config,
+job_arn,
+job_description,
+job_name,
+job_type,
+last_modified_time,
+output_data_config,
+role_arn,
 status
 FROM aws.bedrock.evaluation_jobs
 WHERE job_identifier = '{{ job_identifier }}' -- required
@@ -350,17 +350,17 @@ Lists all existing evaluation jobs.
 
 ```sql
 SELECT
-applicationType,
-creationTime,
-customMetricsEvaluatorModelIdentifiers,
-evaluationTaskTypes,
-evaluatorModelIdentifiers,
-inferenceConfigSummary,
-jobArn,
-jobName,
-jobType,
-modelIdentifiers,
-ragIdentifiers,
+application_type,
+creation_time,
+custom_metrics_evaluator_model_identifiers,
+evaluation_task_types,
+evaluator_model_identifiers,
+inference_config_summary,
+job_arn,
+job_name,
+job_type,
+model_identifiers,
+rag_identifiers,
 status
 FROM aws.bedrock.evaluation_jobs
 WHERE region = '{{ region }}' -- required
@@ -419,7 +419,7 @@ SELECT
 '{{ outputDataConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-jobArn
+job_arn
 ;
 ```
 </TabItem>

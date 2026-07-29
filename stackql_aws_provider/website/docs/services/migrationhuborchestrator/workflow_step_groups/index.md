@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the step group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the step group was created.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the step group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the step group ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the step group was last modified.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>List of AWS services utilized in a migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the migration workflow.</td>
 </tr>
@@ -270,16 +270,16 @@ Get the step group of a migration workflow.
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
-endTime,
-lastModifiedTime,
+end_time,
+last_modified_time,
 next,
 owner,
 previous,
 status,
 tools,
-workflowId
+workflow_id
 FROM aws.migrationhuborchestrator.workflow_step_groups
 WHERE id = '{{ id }}' -- required
 AND workflowId = '{{ workflowId }}' -- required
@@ -342,12 +342,12 @@ SELECT
 RETURNING
 id,
 name,
-creationTime,
+creation_time,
 description,
 next,
 previous,
 tools,
-workflowId
+workflow_id
 ;
 ```
 </TabItem>
@@ -404,11 +404,11 @@ RETURNING
 id,
 name,
 description,
-lastModifiedTime,
+last_modified_time,
 next,
 previous,
 tools,
-workflowId;
+workflow_id;
 ```
 </TabItem>
 </Tabs>

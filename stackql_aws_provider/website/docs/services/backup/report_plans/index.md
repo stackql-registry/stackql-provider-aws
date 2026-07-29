@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a report plan is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The deployment status of a report plan. The statuses are: CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS | COMPLETED</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAttemptedExecutionTime" /></td>
+    <td><CopyableCode code="last_attempted_execution_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a report job associated with this report plan last attempted to run, in Unix format and Coordinated Universal Time (UTC). The value of LastAttemptedExecutionTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulExecutionTime" /></td>
+    <td><CopyableCode code="last_successful_execution_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a report job associated with this report plan last successfully ran, in Unix format and Coordinated Universal Time (UTC). The value of LastSuccessfulExecutionTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportDeliveryChannel" /></td>
+    <td><CopyableCode code="report_delivery_channel" /></td>
     <td><code>object</code></td>
     <td>Contains information from your report plan about where to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportPlanArn" /></td>
+    <td><CopyableCode code="report_plan_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format of the ARN depends on the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportPlanDescription" /></td>
+    <td><CopyableCode code="report_plan_description" /></td>
     <td><code>string</code></td>
     <td>An optional description of the report plan with a maximum 1,024 characters. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportPlanName" /></td>
+    <td><CopyableCode code="report_plan_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the report plan. This name is between 1 and 256 characters starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_). (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;_a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportSetting" /></td>
+    <td><CopyableCode code="report_setting" /></td>
     <td><code>object</code></td>
     <td>Contains detailed information about a report setting.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportPlans" /></td>
+    <td><CopyableCode code="report_plans" /></td>
     <td><code>array</code></td>
     <td>The report plans with detailed information for each plan. This information includes the Amazon Resource Name (ARN), report plan name, description, settings, delivery channel, deployment status, creation time, and last times the report plan attempted to and successfully ran.</td>
 </tr>
@@ -235,15 +235,15 @@ Returns a list of all report plans for an Amazon Web Services account and Amazon
 
 ```sql
 SELECT
-CreationTime,
-DeploymentStatus,
-LastAttemptedExecutionTime,
-LastSuccessfulExecutionTime,
-ReportDeliveryChannel,
-ReportPlanArn,
-ReportPlanDescription,
-ReportPlanName,
-ReportSetting
+creation_time,
+deployment_status,
+last_attempted_execution_time,
+last_successful_execution_time,
+report_delivery_channel,
+report_plan_arn,
+report_plan_description,
+report_plan_name,
+report_setting
 FROM aws.backup.report_plans
 WHERE report_plan_name = '{{ report_plan_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -256,8 +256,8 @@ Returns a list of your report plans. For detailed information about a single rep
 
 ```sql
 SELECT
-NextToken,
-ReportPlans
+next_token,
+report_plans
 FROM aws.backup.report_plans
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -300,9 +300,9 @@ SELECT
 '{{ IdempotencyToken }}',
 '{{ region }}'
 RETURNING
-CreationTime,
-ReportPlanArn,
-ReportPlanName
+creation_time,
+report_plan_arn,
+report_plan_name
 ;
 ```
 </TabItem>
@@ -373,9 +373,9 @@ WHERE
 report_plan_name = '{{ report_plan_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreationTime,
-ReportPlanArn,
-ReportPlanName;
+creation_time,
+report_plan_arn,
+report_plan_name;
 ```
 </TabItem>
 </Tabs>

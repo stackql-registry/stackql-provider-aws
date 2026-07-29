@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>Specifies the action that is to be applied to the findings that match the filter. (NOOP, ARCHIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingCriteria" /></td>
+    <td><CopyableCode code="finding_criteria" /></td>
     <td><code>object</code></td>
     <td>Contains information about the criteria used for querying findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rank" /></td>
+    <td><CopyableCode code="rank" /></td>
     <td><code>integer</code></td>
     <td>Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of the filter resource.</td>
 </tr>
@@ -213,12 +213,12 @@ Returns the details of the filter specified by the filter name.
 
 ```sql
 SELECT
-Action,
-Description,
-FindingCriteria,
-Name,
-Rank,
-Tags
+action,
+description,
+finding_criteria,
+name,
+rank,
+tags
 FROM aws.guardduty.filters
 WHERE detector_id = '{{ detector_id }}' -- required
 AND filter_name = '{{ filter_name }}' -- required
@@ -280,7 +280,7 @@ SELECT
 '{{ detector_id }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -343,7 +343,7 @@ detector_id = '{{ detector_id }}' --required
 AND filter_name = '{{ filter_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

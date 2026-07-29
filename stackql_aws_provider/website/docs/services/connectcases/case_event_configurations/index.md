@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the to broadcast case event data to the customer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="includedData" /></td>
+    <td><CopyableCode code="included_data" /></td>
     <td><code>object</code></td>
     <td>Details of what case and related item data is published through the case event stream.</td>
 </tr>
@@ -137,7 +137,7 @@ Returns the case event publishing configuration.
 ```sql
 SELECT
 enabled,
-includedData
+included_data
 FROM aws.connectcases.case_event_configurations
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required

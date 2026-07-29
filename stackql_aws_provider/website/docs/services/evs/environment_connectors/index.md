@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applianceFqdn" /></td>
+    <td><CopyableCode code="appliance_fqdn" /></td>
     <td><code>string</code></td>
     <td>The fully qualified domain name (FQDN) of the VCF appliance that the connector connects to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9-&#93;&#123;0,61&#125;&#91;a-zA-Z0-9&#93;)?(\.&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9-&#93;&#123;0,61&#125;&#91;a-zA-Z0-9&#93;)?)*&lt;/code&gt;)</td>
 </tr>
@@ -60,27 +60,27 @@ The following fields are returned by `SELECT` queries:
     <td>A list of checks that are run on the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorId" /></td>
+    <td><CopyableCode code="connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the connector. (pattern: &lt;code&gt;(cnctr-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the environment that the connector belongs to. (pattern: &lt;code&gt;(env-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="secretArn" /></td>
+    <td><CopyableCode code="secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that stores the credentials for the VCF appliance. (pattern: &lt;code&gt;(arn:aws:secretsmanager:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:secret:&#91;a-zA-Z0-9/_+=.@!-&#93;+|&#91;a-zA-Z0-9/_+=.@!-&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the connector. (CREATING, CREATE_FAILED, ACTIVE, UPDATING, UPDATE_FAILED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the connector state.</td>
 </tr>
@@ -190,15 +190,15 @@ Lists the connectors within an environment. Returns the status of each connector
 
 ```sql
 SELECT
-applianceFqdn,
+appliance_fqdn,
 checks,
-connectorId,
-createdAt,
-environmentId,
-modifiedAt,
-secretArn,
+connector_id,
+created_at,
+environment_id,
+modified_at,
+secret_arn,
 state,
-stateDetails,
+state_details,
 status,
 type_
 FROM aws.evs.environment_connectors

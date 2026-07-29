@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The snapshot description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurrenceInHours" /></td>
+    <td><CopyableCode code="recurrence_in_hours" /></td>
     <td><code>integer</code></td>
     <td>The number of hours between snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartAt" /></td>
+    <td><CopyableCode code="start_at" /></td>
     <td><code>integer</code></td>
     <td>The hour of the day at which the snapshot schedule begins represented as hh, where hh is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of up to 50 tags assigned to the snapshot schedule, sorted alphabetically by key name. Each tag is a key-value pair. For a gateway with more than 10 tags assigned, you can view all tags using the ListTagsForResource API operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timezone" /></td>
+    <td><CopyableCode code="timezone" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the time zone of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeARN" /></td>
+    <td><CopyableCode code="volume_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the volume that was specified in the request. (pattern: &lt;code&gt;arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):storagegateway:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;+:gateway\/(.+)\/volume\/vol-(\S+)&lt;/code&gt;)</td>
 </tr>
@@ -158,12 +158,12 @@ Describes the snapshot schedule for the specified gateway volume. The snapshot s
 
 ```sql
 SELECT
-Description,
-RecurrenceInHours,
-StartAt,
-Tags,
-Timezone,
-VolumeARN
+description,
+recurrence_in_hours,
+start_at,
+tags,
+timezone,
+volume_arn
 FROM aws.storagegateway.snapshot_schedules
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,7 +198,7 @@ AND VolumeARN = '{{ VolumeARN }}' --required
 AND StartAt = '{{ StartAt }}' --required
 AND RecurrenceInHours = '{{ RecurrenceInHours }}' --required
 RETURNING
-VolumeARN;
+volume_arn;
 ```
 </TabItem>
 </Tabs>

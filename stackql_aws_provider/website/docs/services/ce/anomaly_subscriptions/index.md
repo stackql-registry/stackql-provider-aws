@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>Your unique account identifier. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Frequency" /></td>
+    <td><CopyableCode code="frequency" /></td>
     <td><code>string</code></td>
     <td>The frequency that anomaly notifications are sent. Notifications are sent either over email (for DAILY and WEEKLY frequencies) or SNS (for IMMEDIATE frequency). For more information, see Creating an Amazon SNS topic for anomaly notifications. (DAILY, IMMEDIATE, WEEKLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorArnList" /></td>
+    <td><CopyableCode code="monitor_arn_list" /></td>
     <td><code>array</code></td>
     <td>A list of cost anomaly monitors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subscribers" /></td>
+    <td><CopyableCode code="subscribers" /></td>
     <td><code>array</code></td>
     <td>A list of subscribers to notify.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionArn" /></td>
+    <td><CopyableCode code="subscription_arn" /></td>
     <td><code>string</code></td>
     <td>The AnomalySubscription Amazon Resource Name (ARN). (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionName" /></td>
+    <td><CopyableCode code="subscription_name" /></td>
     <td><code>string</code></td>
     <td>The name for the subscription. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Threshold" /></td>
+    <td><CopyableCode code="threshold" /></td>
     <td><code>number (double)</code></td>
     <td>(deprecated) An absolute dollar value that must be exceeded by the anomaly's total impact (see Impact for more details) for an anomaly notification to be generated. This field has been deprecated. To specify a threshold, use ThresholdExpression. Continued use of Threshold will be treated as shorthand syntax for a ThresholdExpression. One of Threshold or ThresholdExpression is required for this resource. You cannot specify both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThresholdExpression" /></td>
+    <td><CopyableCode code="threshold_expression" /></td>
     <td><code>object</code></td>
     <td>Use Expression to filter in various Cost Explorer APIs. Not all Expression types are supported in each API. Refer to the documentation for each specific API to see what is supported. There are two patterns: Simple dimension values. There are three types of simple dimension values: CostCategories, Tags, and Dimensions. Specify the CostCategories field to define a filter that acts on Cost Categories. Specify the Tags field to define a filter that acts on Cost Allocation Tags. Specify the Dimensions field to define a filter that acts on the DimensionValues . For each filter type, you can set the dimension name and values for the filters that you plan to use. For example, you can filter for REGION==us-east-1 OR REGION==us-west-1. For GetRightsizingRecommendation, the Region is a full name (for example, REGION==US East (N. Virginia). The corresponding Expression for this example is as follows: &#123; "Dimensions": &#123; "Key": "REGION", "Values": &#91; "us-east-1", "us-west-1" &#93; &#125; &#125; As shown in the previous example, lists of dimension values are combined with OR when applying the filter. You can also set different match options to further control how the filter behaves. Not all APIs support match options. Refer to the documentation for each specific API to see what is supported. For example, you can filter for linked account names that start with "a". The corresponding Expression for this example is as follows: &#123; "Dimensions": &#123; "Key": "LINKED_ACCOUNT_NAME", "MatchOptions": &#91; "STARTS_WITH" &#93;, "Values": &#91; "a" &#93; &#125; &#125; Compound Expression types with logical operations. You can use multiple Expression types and the logical operators AND/OR/NOT to create a list of one or more Expression objects. By doing this, you can filter by more advanced options. For example, you can filter by ((REGION == us-east-1 OR REGION == us-west-1) OR (TAG.Type == Type1)) AND (USAGE_TYPE != DataTransfer). The corresponding Expression for this example is as follows: &#123; "And": &#91; &#123;"Or": &#91; &#123;"Dimensions": &#123; "Key": "REGION", "Values": &#91; "us-east-1", "us-west-1" &#93; &#125;&#125;, &#123;"Tags": &#123; "Key": "TagName", "Values": &#91;"Value1"&#93; &#125; &#125; &#93;&#125;, &#123;"Not": &#123;"Dimensions": &#123; "Key": "USAGE_TYPE", "Values": &#91;"DataTransfer"&#93; &#125;&#125;&#125; &#93; &#125; Because each Expression can have only one operator, the service returns an error if more than one is specified. The following example shows an Expression object that creates an error: &#123; "And": &#91; ... &#93;, "Dimensions": &#123; "Key": "USAGE_TYPE", "Values": &#91; "DataTransfer" &#93; &#125; &#125; The following is an example of the corresponding error message: "Expression has more than one roots. Only one root operator is allowed for each expression: And, Or, Not, Dimensions, Tags, CostCategories" For the GetRightsizingRecommendation action, a combination of OR and NOT isn't supported. OR isn't supported between different dimensions, or dimensions and tags. NOT operators aren't supported. Dimensions are also limited to LINKED_ACCOUNT, REGION, or RIGHTSIZING_TYPE. For the GetReservationPurchaseRecommendation action, only NOT is supported. AND and OR aren't supported. Dimensions are limited to LINKED_ACCOUNT.</td>
 </tr>
@@ -175,14 +175,14 @@ Retrieves the cost anomaly subscription objects for your account. You can filter
 
 ```sql
 SELECT
-AccountId,
-Frequency,
-MonitorArnList,
-Subscribers,
-SubscriptionArn,
-SubscriptionName,
-Threshold,
-ThresholdExpression
+account_id,
+frequency,
+monitor_arn_list,
+subscribers,
+subscription_arn,
+subscription_name,
+threshold,
+threshold_expression
 FROM aws.ce.anomaly_subscriptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -215,7 +215,7 @@ SELECT
 '{{ ResourceTags }}',
 '{{ region }}'
 RETURNING
-SubscriptionArn
+subscription_arn
 ;
 ```
 </TabItem>
@@ -596,7 +596,7 @@ WHERE
 region = '{{ region }}' --required
 AND SubscriptionArn = '{{ SubscriptionArn }}' --required
 RETURNING
-SubscriptionArn;
+subscription_arn;
 ```
 </TabItem>
 </Tabs>

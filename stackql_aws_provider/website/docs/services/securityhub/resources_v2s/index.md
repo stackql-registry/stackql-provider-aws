@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that owns the resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingsSummary" /></td>
+    <td><CopyableCode code="findings_summary" /></td>
     <td><code>array</code></td>
     <td>An aggregated view of security findings associated with a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the resource is located. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCategory" /></td>
+    <td><CopyableCode code="resource_category" /></td>
     <td><code>string</code></td>
     <td>The grouping where the resource belongs. (Compute, Database, Storage, Code, AI/ML, Identity, Network, Other)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceConfig" /></td>
+    <td><CopyableCode code="resource_config" /></td>
     <td><code>object</code></td>
     <td>The configuration details of a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCreationTimeDt" /></td>
+    <td><CopyableCode code="resource_creation_time_dt" /></td>
     <td><code>string</code></td>
     <td>The time when the resource was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceDetailCaptureTimeDt" /></td>
+    <td><CopyableCode code="resource_detail_capture_time_dt" /></td>
     <td><code>string</code></td>
     <td>The timestamp when information about the resource was captured. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceGuid" /></td>
+    <td><CopyableCode code="resource_guid" /></td>
     <td><code>string</code></td>
     <td>The global identifier used to identify a resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for a resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>The key-value pairs associated with a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -174,18 +174,18 @@ Returns a list of resources. You can use the Scopes parameter to define the data
 
 ```sql
 SELECT
-AccountId,
-FindingsSummary,
-Region,
-ResourceCategory,
-ResourceConfig,
-ResourceCreationTimeDt,
-ResourceDetailCaptureTimeDt,
-ResourceGuid,
-ResourceId,
-ResourceName,
-ResourceTags,
-ResourceType
+account_id,
+findings_summary,
+region,
+resource_category,
+resource_config,
+resource_creation_time_dt,
+resource_detail_capture_time_dt,
+resource_guid,
+resource_id,
+resource_name,
+resource_tags,
+resource_type
 FROM aws.securityhub.resources_v2s
 WHERE region = '{{ region }}' -- required
 ;

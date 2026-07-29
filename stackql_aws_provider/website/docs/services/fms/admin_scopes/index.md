@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdminScope" /></td>
+    <td><CopyableCode code="admin_scope" /></td>
     <td><code>object</code></td>
     <td>Contains details about the administrative scope of the requested account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the request to onboard a member account as an Firewall Manager administrator. ONBOARDING - The account is onboarding to Firewall Manager as an administrator. ONBOARDING_COMPLETE - Firewall Manager The account is onboarded to Firewall Manager as an administrator, and can perform actions on the resources defined in their AdminScope. OFFBOARDING - The account is being removed as an Firewall Manager administrator. OFFBOARDING_COMPLETE - The account has been removed as an Firewall Manager administrator. (ONBOARDING, ONBOARDING_COMPLETE, OFFBOARDING, OFFBOARDING_COMPLETE)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns information about the specified account's administrative scope. The admi
 
 ```sql
 SELECT
-AdminScope,
-Status
+admin_scope,
+status
 FROM aws.fms.admin_scopes
 WHERE region = '{{ region }}' -- required
 ;

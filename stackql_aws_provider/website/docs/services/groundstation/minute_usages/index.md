@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="estimatedMinutesRemaining" /></td>
+    <td><CopyableCode code="estimated_minutes_remaining" /></td>
     <td><code>integer</code></td>
     <td>Estimated number of minutes remaining for an account, specific to the month being requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isReservedMinutesCustomer" /></td>
+    <td><CopyableCode code="is_reserved_minutes_customer" /></td>
     <td><code>boolean</code></td>
     <td>Returns whether or not an account has signed up for the reserved minutes pricing plan, specific to the month being requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalReservedMinuteAllocation" /></td>
+    <td><CopyableCode code="total_reserved_minute_allocation" /></td>
     <td><code>integer</code></td>
     <td>Total number of reserved minutes allocated, specific to the month being requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalScheduledMinutes" /></td>
+    <td><CopyableCode code="total_scheduled_minutes" /></td>
     <td><code>integer</code></td>
     <td>Total scheduled minutes for an account, specific to the month being requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upcomingMinutesScheduled" /></td>
+    <td><CopyableCode code="upcoming_minutes_scheduled" /></td>
     <td><code>integer</code></td>
     <td>Upcoming minutes scheduled for an account, specific to the month being requested.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns the number of reserved minutes used by account.
 
 ```sql
 SELECT
-estimatedMinutesRemaining,
-isReservedMinutesCustomer,
-totalReservedMinuteAllocation,
-totalScheduledMinutes,
-upcomingMinutesScheduled
+estimated_minutes_remaining,
+is_reserved_minutes_customer,
+total_reserved_minute_allocation,
+total_scheduled_minutes,
+upcoming_minutes_scheduled
 FROM aws.groundstation.minute_usages
 WHERE region = '{{ region }}' -- required
 ;

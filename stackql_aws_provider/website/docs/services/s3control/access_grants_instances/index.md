@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessGrantsInstanceArn" /></td>
+    <td><CopyableCode code="access_grants_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the S3 Access Grants instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsInstanceId" /></td>
+    <td><CopyableCode code="access_grants_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the S3 Access Grants instance. The ID is default. You can have one S3 Access Grants instance per Region per account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when you created the S3 Access Grants instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityCenterApplicationArn" /></td>
+    <td><CopyableCode code="identity_center_application_arn" /></td>
     <td><code>string</code></td>
     <td>If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance, this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource of the original Identity Center instance. S3 Access Grants creates this Identity Center application for the specific S3 Access Grants instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityCenterArn" /></td>
+    <td><CopyableCode code="identity_center_arn" /></td>
     <td><code>string</code></td>
     <td>If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance, this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource of the original Identity Center instance. S3 Access Grants creates this Identity Center application for the specific S3 Access Grants instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityCenterInstanceArn" /></td>
+    <td><CopyableCode code="identity_center_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity Center instance that you are associating with your S3 Access Grants instance. An IAM Identity Center instance is your corporate identity directory that you added to the IAM Identity Center. You can use the ListInstances API operation to retrieve a list of your Identity Center instances and their ARNs.</td>
 </tr>
@@ -180,12 +180,12 @@ Retrieves the S3 Access Grants instance for a Region in your account. Permission
 
 ```sql
 SELECT
-AccessGrantsInstanceArn,
-AccessGrantsInstanceId,
-CreatedAt,
-IdentityCenterApplicationArn,
-IdentityCenterArn,
-IdentityCenterInstanceArn
+access_grants_instance_arn,
+access_grants_instance_id,
+created_at,
+identity_center_application_arn,
+identity_center_arn,
+identity_center_instance_arn
 FROM aws.s3control.access_grants_instances
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -221,12 +221,12 @@ SELECT
 '{{ x-amz-account-id }}',
 '{{ region }}'
 RETURNING
-AccessGrantsInstanceArn,
-AccessGrantsInstanceId,
-CreatedAt,
-IdentityCenterApplicationArn,
-IdentityCenterArn,
-IdentityCenterInstanceArn
+access_grants_instance_arn,
+access_grants_instance_id,
+created_at,
+identity_center_application_arn,
+identity_center_arn,
+identity_center_instance_arn
 ;
 ```
 </TabItem>

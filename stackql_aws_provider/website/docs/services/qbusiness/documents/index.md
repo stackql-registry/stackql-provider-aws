@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the document was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentId" /></td>
+    <td><CopyableCode code="document_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the document. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the document. (RECEIVED, PROCESSING, INDEXED, UPDATED, FAILED, DELETING, DELETED, DOCUMENT_FAILED_TO_INDEX)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the document was last updated.</td>
 </tr>
@@ -164,11 +164,11 @@ A list of documents attached to an index.
 
 ```sql
 SELECT
-createdAt,
-documentId,
+created_at,
+document_id,
 error,
 status,
-updatedAt
+updated_at
 FROM aws.qbusiness.documents
 WHERE application_id = '{{ application_id }}' -- required
 AND index_id = '{{ index_id }}' -- required

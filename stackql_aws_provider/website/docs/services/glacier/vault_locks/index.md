@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The UTC date and time at which the vault lock was put into the InProgress state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string</code></td>
     <td>The UTC date and time at which the lock ID expires. This value can be null if the vault lock is in a Locked state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The vault lock policy as a JSON string, which uses "\" as an escape character.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the vault lock. InProgress or Locked.</td>
 </tr>
@@ -144,10 +144,10 @@ This operation retrieves the following attributes from the lock-policy subresour
 
 ```sql
 SELECT
-CreationDate,
-ExpirationDate,
-Policy,
-State
+creation_date,
+expiration_date,
+policy,
+state
 FROM aws.glacier.vault_locks
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required

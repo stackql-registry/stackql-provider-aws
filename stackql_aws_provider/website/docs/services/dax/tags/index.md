@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the tag. Tag values are case-sensitive and can be null.</td>
 </tr>
@@ -138,8 +138,8 @@ List all of the tags for a DAX cluster. You can call ListTags up to 10 times per
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.dax.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,7 +171,7 @@ region = '{{ region }}' --required
 AND ResourceName = '{{ ResourceName }}' --required
 AND TagKeys = '{{ TagKeys }}' --required
 RETURNING
-Tags;
+tags;
 ```
 </TabItem>
 <TabItem value="tag_resource">
@@ -187,7 +187,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceName = '{{ ResourceName }}' --required
 RETURNING
-Tags;
+tags;
 ```
 </TabItem>
 </Tabs>

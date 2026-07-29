@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propertyValues" /></td>
+    <td><CopyableCode code="property_values" /></td>
     <td><code>array</code></td>
     <td>An object that maps strings to the property definitions in the component type. Each string in the mapping must be unique to this object.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves information about the history of a time series property value for a co
 
 ```sql
 SELECT
-nextToken,
-propertyValues
+next_token,
+property_values
 FROM aws.iottwinmaker.property_value_histories
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required

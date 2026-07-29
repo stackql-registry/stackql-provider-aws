@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agreementAvailability" /></td>
+    <td><CopyableCode code="agreement_availability" /></td>
     <td><code>object</code></td>
     <td>Agreement availability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizationStatus" /></td>
+    <td><CopyableCode code="authorization_status" /></td>
     <td><code>string</code></td>
     <td>Authorization status. (AUTHORIZED, NOT_AUTHORIZED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entitlementAvailability" /></td>
+    <td><CopyableCode code="entitlement_availability" /></td>
     <td><code>string</code></td>
     <td>Entitlement availability. (AVAILABLE, NOT_AVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The model Id of the foundation model. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;(/&#91;a-z0-9&#93;&#123;12&#125;|)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionAvailability" /></td>
+    <td><CopyableCode code="region_availability" /></td>
     <td><code>string</code></td>
     <td>Region availability. (AVAILABLE, NOT_AVAILABLE)</td>
 </tr>
@@ -144,11 +144,11 @@ Get information about the Foundation model availability.
 
 ```sql
 SELECT
-agreementAvailability,
-authorizationStatus,
-entitlementAvailability,
-modelId,
-regionAvailability
+agreement_availability,
+authorization_status,
+entitlement_availability,
+model_id,
+region_availability
 FROM aws.bedrock.foundation_model_availabilities
 WHERE model_id = '{{ model_id }}' -- required
 AND region = '{{ region }}' -- required

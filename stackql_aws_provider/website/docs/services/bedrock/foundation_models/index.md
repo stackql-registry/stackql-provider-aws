@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="customizationsSupported" /></td>
+    <td><CopyableCode code="customizations_supported" /></td>
     <td><code>array</code></td>
     <td>The customization that the model supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceTypesSupported" /></td>
+    <td><CopyableCode code="inference_types_supported" /></td>
     <td><code>array</code></td>
     <td>The inference types that the model supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputModalities" /></td>
+    <td><CopyableCode code="input_modalities" /></td>
     <td><code>array</code></td>
     <td>The input modalities that the model supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The model Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;::foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The model identifier. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;(/&#91;a-z0-9&#93;&#123;12&#125;|)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelLifecycle" /></td>
+    <td><CopyableCode code="model_lifecycle" /></td>
     <td><code>object</code></td>
     <td>Contains details about whether a model version is available or deprecated</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The model name. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputModalities" /></td>
+    <td><CopyableCode code="output_modalities" /></td>
     <td><code>array</code></td>
     <td>The output modalities that the model supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>The model's provider name. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseStreamingSupported" /></td>
+    <td><CopyableCode code="response_streaming_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the model supports streaming.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="modelSummaries" /></td>
+    <td><CopyableCode code="model_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon Bedrock foundation models.</td>
 </tr>
@@ -231,16 +231,16 @@ Get details about a Amazon Bedrock foundation model.
 
 ```sql
 SELECT
-customizationsSupported,
-inferenceTypesSupported,
-inputModalities,
-modelArn,
-modelId,
-modelLifecycle,
-modelName,
-outputModalities,
-providerName,
-responseStreamingSupported
+customizations_supported,
+inference_types_supported,
+input_modalities,
+model_arn,
+model_id,
+model_lifecycle,
+model_name,
+output_modalities,
+provider_name,
+response_streaming_supported
 FROM aws.bedrock.foundation_models
 WHERE model_identifier = '{{ model_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,7 +253,7 @@ Lists Amazon Bedrock foundation models that you can use. You can filter the resu
 
 ```sql
 SELECT
-modelSummaries
+model_summaries
 FROM aws.bedrock.foundation_models
 WHERE region = '{{ region }}' -- required
 AND byProvider = '{{ byProvider }}'
@@ -290,7 +290,7 @@ SELECT
 '{{ modelId }}' /* required */,
 '{{ region }}'
 RETURNING
-modelId
+model_id
 ;
 ```
 </TabItem>

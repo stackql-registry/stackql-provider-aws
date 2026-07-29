@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationTagResult" /></td>
+    <td><CopyableCode code="application_tag_result" /></td>
     <td><code>object</code></td>
     <td>The result of the application that's tag applied to a resource.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>Determines whether an application tag is applied or skipped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceDetails" /></td>
+    <td><CopyableCode code="resource_details" /></td>
     <td><code>object</code></td>
     <td>The details related to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Provides information about the Service Catalog App Registry resource type. (CFN_STACK, RESOURCE_TAG_VALUE)</td>
 </tr>
@@ -207,7 +207,7 @@ Gets the resource associated with the application.
 
 ```sql
 SELECT
-applicationTagResult,
+application_tag_result,
 options,
 resource
 FROM aws.servicecatalog_appregistry.associated_resources
@@ -230,8 +230,8 @@ SELECT
 name,
 arn,
 options,
-resourceDetails,
-resourceType
+resource_details,
+resource_type
 FROM aws.servicecatalog_appregistry.associated_resources
 WHERE application = '{{ application }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstances" /></td>
+    <td><CopyableCode code="reserved_instances" /></td>
     <td><code>array</code></td>
     <td>List of Reserved Instances in the current Region.</td>
 </tr>
@@ -139,8 +139,8 @@ Describes the Amazon OpenSearch Service instances that you have reserved in a gi
 
 ```sql
 SELECT
-NextToken,
-ReservedInstances
+next_token,
+reserved_instances
 FROM aws.opensearch.reserved_instances
 WHERE region = '{{ region }}' -- required
 AND reservationId = '{{ reservationId }}'

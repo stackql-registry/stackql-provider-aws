@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>A message explaining the reason the Worker was blocked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Worker who accepted the HIT. (pattern: &lt;code&gt;^A&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ The ListWorkersBlocks operation retrieves a list of Workers who are blocked from
 
 ```sql
 SELECT
-Reason,
-WorkerId
+reason,
+worker_id
 FROM aws.mturk.worker_blocks
 WHERE region = '{{ region }}' -- required
 ;

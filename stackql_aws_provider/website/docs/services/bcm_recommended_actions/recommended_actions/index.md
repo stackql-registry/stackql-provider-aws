@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID for the recommended action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account that the recommended action is for. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The feature associated with the recommended action. (ACCOUNT, BUDGETS, COST_ANOMALY_DETECTION, COST_OPTIMIZATION_HUB, FREE_TIER, IAM, PAYMENTS, RESERVATIONS, SAVINGS_PLANS, TAX_SETTINGS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimeStamp" /></td>
+    <td><CopyableCode code="last_updated_time_stamp" /></td>
     <td><code>string</code></td>
     <td>The time when the recommended action status was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextSteps" /></td>
+    <td><CopyableCode code="next_steps" /></td>
     <td><code>array</code></td>
     <td>The possible next steps to execute the recommended action.</td>
 </tr>
@@ -155,11 +155,11 @@ Returns a list of recommended actions that match the filter criteria.
 ```sql
 SELECT
 id,
-accountId,
+account_id,
 context,
 feature,
-lastUpdatedTimeStamp,
-nextSteps,
+last_updated_time_stamp,
+next_steps,
 severity,
 type_
 FROM aws.bcm_recommended_actions.recommended_actions

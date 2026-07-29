@@ -61,42 +61,42 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the retrieved bill estimate. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billInterval" /></td>
+    <td><CopyableCode code="bill_interval" /></td>
     <td><code>object</code></td>
     <td>The time period covered by the bill estimate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="costCategoryGroupSharingPreferenceArn" /></td>
+    <td><CopyableCode code="cost_category_group_sharing_preference_arn" /></td>
     <td><code>string</code></td>
     <td>The arn of the cost category used in the reserved and prioritized group sharing. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:ce::&#91;0-9&#93;&#123;12&#125;:costcategory/&#91;a-f0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="costCategoryGroupSharingPreferenceEffectiveDate" /></td>
+    <td><CopyableCode code="cost_category_group_sharing_preference_effective_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of the effective date of the cost category used in the group sharing settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="costSummary" /></td>
+    <td><CopyableCode code="cost_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the estimated costs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the bill estimate was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the bill estimate will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>An error message if the bill estimate retrieval failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupSharingPreference" /></td>
+    <td><CopyableCode code="group_sharing_preference" /></td>
     <td><code>string</code></td>
     <td>The setting for the reserved instance and savings plan group sharing used in this estimate. (OPEN, PRIORITIZED, RESTRICTED)</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the bill estimate. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billInterval" /></td>
+    <td><CopyableCode code="bill_interval" /></td>
     <td><code>object</code></td>
     <td>The time period covered by the bill estimate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the bill estimate was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the bill estimate will expire.</td>
 </tr>
@@ -245,14 +245,14 @@ Retrieves details of a specific bill estimate.
 SELECT
 id,
 name,
-billInterval,
-costCategoryGroupSharingPreferenceArn,
-costCategoryGroupSharingPreferenceEffectiveDate,
-costSummary,
-createdAt,
-expiresAt,
-failureMessage,
-groupSharingPreference,
+bill_interval,
+cost_category_group_sharing_preference_arn,
+cost_category_group_sharing_preference_effective_date,
+cost_summary,
+created_at,
+expires_at,
+failure_message,
+group_sharing_preference,
 status
 FROM aws.bcm_pricing_calculator.bill_estimates
 WHERE region = '{{ region }}' -- required
@@ -267,9 +267,9 @@ Lists all bill estimates for the account.
 SELECT
 id,
 name,
-billInterval,
-createdAt,
-expiresAt,
+bill_interval,
+created_at,
+expires_at,
 status
 FROM aws.bcm_pricing_calculator.bill_estimates
 WHERE region = '{{ region }}' -- required
@@ -309,14 +309,14 @@ SELECT
 RETURNING
 id,
 name,
-billInterval,
-costCategoryGroupSharingPreferenceArn,
-costCategoryGroupSharingPreferenceEffectiveDate,
-costSummary,
-createdAt,
-expiresAt,
-failureMessage,
-groupSharingPreference,
+bill_interval,
+cost_category_group_sharing_preference_arn,
+cost_category_group_sharing_preference_effective_date,
+cost_summary,
+created_at,
+expires_at,
+failure_message,
+group_sharing_preference,
 status
 ;
 ```
@@ -375,14 +375,14 @@ AND identifier = '{{ identifier }}' --required
 RETURNING
 id,
 name,
-billInterval,
-costCategoryGroupSharingPreferenceArn,
-costCategoryGroupSharingPreferenceEffectiveDate,
-costSummary,
-createdAt,
-expiresAt,
-failureMessage,
-groupSharingPreference,
+bill_interval,
+cost_category_group_sharing_preference_arn,
+cost_category_group_sharing_preference_effective_date,
+cost_summary,
+created_at,
+expires_at,
+failure_message,
+group_sharing_preference,
 status;
 ```
 </TabItem>

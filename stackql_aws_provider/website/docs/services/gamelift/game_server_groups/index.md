@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupArn" /></td>
+    <td><CopyableCode code="auto_scaling_group_arn" /></td>
     <td><code>string</code></td>
     <td>A generated unique ID for the Amazon EC2 Auto Scaling group that is associated with this game server group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BalancingStrategy" /></td>
+    <td><CopyableCode code="balancing_strategy" /></td>
     <td><code>string</code></td>
     <td>Indicates how Amazon GameLift Servers FleetIQ balances the use of Spot Instances and On-Demand Instances in the game server group. Method options include the following: SPOT_ONLY - Only Spot Instances are used in the game server group. If Spot Instances are unavailable or not viable for game hosting, the game server group provides no hosting capacity until Spot Instances can again be used. Until then, no new instances are started, and the existing nonviable Spot Instances are terminated (after current gameplay ends) and are not replaced. SPOT_PREFERRED - (default value) Spot Instances are used whenever available in the game server group. If Spot Instances are unavailable, the game server group continues to provide hosting capacity by falling back to On-Demand Instances. Existing nonviable Spot Instances are terminated (after current gameplay ends) and are replaced with new On-Demand Instances. ON_DEMAND_ONLY - Only On-Demand Instances are used in the game server group. No Spot Instances are used, even when available, while this balancing strategy is in force. (SPOT_ONLY, SPOT_PREFERRED, ON_DEMAND_ONLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupArn" /></td>
+    <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
     <td>A generated unique ID for the game server group. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupName" /></td>
+    <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
     <td>A developer-defined identifier for the game server group. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerProtectionPolicy" /></td>
+    <td><CopyableCode code="game_server_protection_policy" /></td>
     <td><code>string</code></td>
     <td>A flag that indicates whether instances in the game server group are protected from early termination. Unprotected instances that have active game servers running might be terminated during a scale-down event, causing players to be dropped from the game. Protected instances cannot be terminated while there are active game servers running except in the event of a forced game server group deletion (see ). An exception to this is with Spot Instances, which can be terminated by Amazon Web Services regardless of protection status. (NO_PROTECTION, FULL_PROTECTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceDefinitions" /></td>
+    <td><CopyableCode code="instance_definitions" /></td>
     <td><code>array</code></td>
     <td>The set of Amazon EC2 instance types that Amazon GameLift Servers FleetIQ can use when balancing and automatically scaling instances in the corresponding Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this game server group was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for an IAM role that allows Amazon GameLift Servers to access your Amazon EC2 Auto Scaling groups. (pattern: &lt;code&gt;^arn:.*:role\/&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the game server group. Possible statuses include: NEW - Amazon GameLift Servers FleetIQ has validated the CreateGameServerGroup() request. ACTIVATING - Amazon GameLift Servers FleetIQ is setting up a game server group, which includes creating an Auto Scaling group in your Amazon Web Services account. ACTIVE - The game server group has been successfully created. DELETE_SCHEDULED - A request to delete the game server group has been received. DELETING - Amazon GameLift Servers FleetIQ has received a valid DeleteGameServerGroup() request and is processing it. Amazon GameLift Servers FleetIQ must first complete and release hosts before it deletes the Auto Scaling group and the game server group. DELETED - The game server group has been successfully deleted. ERROR - The asynchronous processes of activating or deleting a game server group has failed, resulting in an error state. (NEW, ACTIVATING, ACTIVE, DELETE_SCHEDULED, DELETING, DELETED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the current game server group status. This information might provide additional insight on groups that are in ERROR status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuspendedActions" /></td>
+    <td><CopyableCode code="suspended_actions" /></td>
     <td><code>array</code></td>
     <td>A list of activities that are currently suspended for this game server group. If this property is empty, all activities are occurring.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupArn" /></td>
+    <td><CopyableCode code="auto_scaling_group_arn" /></td>
     <td><code>string</code></td>
     <td>A generated unique ID for the Amazon EC2 Auto Scaling group that is associated with this game server group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BalancingStrategy" /></td>
+    <td><CopyableCode code="balancing_strategy" /></td>
     <td><code>string</code></td>
     <td>Indicates how Amazon GameLift Servers FleetIQ balances the use of Spot Instances and On-Demand Instances in the game server group. Method options include the following: SPOT_ONLY - Only Spot Instances are used in the game server group. If Spot Instances are unavailable or not viable for game hosting, the game server group provides no hosting capacity until Spot Instances can again be used. Until then, no new instances are started, and the existing nonviable Spot Instances are terminated (after current gameplay ends) and are not replaced. SPOT_PREFERRED - (default value) Spot Instances are used whenever available in the game server group. If Spot Instances are unavailable, the game server group continues to provide hosting capacity by falling back to On-Demand Instances. Existing nonviable Spot Instances are terminated (after current gameplay ends) and are replaced with new On-Demand Instances. ON_DEMAND_ONLY - Only On-Demand Instances are used in the game server group. No Spot Instances are used, even when available, while this balancing strategy is in force. (SPOT_ONLY, SPOT_PREFERRED, ON_DEMAND_ONLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupArn" /></td>
+    <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
     <td>A generated unique ID for the game server group. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupName" /></td>
+    <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
     <td>A developer-defined identifier for the game server group. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerProtectionPolicy" /></td>
+    <td><CopyableCode code="game_server_protection_policy" /></td>
     <td><code>string</code></td>
     <td>A flag that indicates whether instances in the game server group are protected from early termination. Unprotected instances that have active game servers running might be terminated during a scale-down event, causing players to be dropped from the game. Protected instances cannot be terminated while there are active game servers running except in the event of a forced game server group deletion (see ). An exception to this is with Spot Instances, which can be terminated by Amazon Web Services regardless of protection status. (NO_PROTECTION, FULL_PROTECTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceDefinitions" /></td>
+    <td><CopyableCode code="instance_definitions" /></td>
     <td><code>array</code></td>
     <td>The set of Amazon EC2 instance types that Amazon GameLift Servers FleetIQ can use when balancing and automatically scaling instances in the corresponding Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this game server group was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for an IAM role that allows Amazon GameLift Servers to access your Amazon EC2 Auto Scaling groups. (pattern: &lt;code&gt;^arn:.*:role\/&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the game server group. Possible statuses include: NEW - Amazon GameLift Servers FleetIQ has validated the CreateGameServerGroup() request. ACTIVATING - Amazon GameLift Servers FleetIQ is setting up a game server group, which includes creating an Auto Scaling group in your Amazon Web Services account. ACTIVE - The game server group has been successfully created. DELETE_SCHEDULED - A request to delete the game server group has been received. DELETING - Amazon GameLift Servers FleetIQ has received a valid DeleteGameServerGroup() request and is processing it. Amazon GameLift Servers FleetIQ must first complete and release hosts before it deletes the Auto Scaling group and the game server group. DELETED - The game server group has been successfully deleted. ERROR - The asynchronous processes of activating or deleting a game server group has failed, resulting in an error state. (NEW, ACTIVATING, ACTIVE, DELETE_SCHEDULED, DELETING, DELETED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the current game server group status. This information might provide additional insight on groups that are in ERROR status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuspendedActions" /></td>
+    <td><CopyableCode code="suspended_actions" /></td>
     <td><code>array</code></td>
     <td>A list of activities that are currently suspended for this game server group. If this property is empty, all activities are occurring.</td>
 </tr>
@@ -292,18 +292,18 @@ This API works with the following fleet types: EC2 (FleetIQ) Retrieves informati
 
 ```sql
 SELECT
-AutoScalingGroupArn,
-BalancingStrategy,
-CreationTime,
-GameServerGroupArn,
-GameServerGroupName,
-GameServerProtectionPolicy,
-InstanceDefinitions,
-LastUpdatedTime,
-RoleArn,
-Status,
-StatusReason,
-SuspendedActions
+auto_scaling_group_arn,
+balancing_strategy,
+creation_time,
+game_server_group_arn,
+game_server_group_name,
+game_server_protection_policy,
+instance_definitions,
+last_updated_time,
+role_arn,
+status,
+status_reason,
+suspended_actions
 FROM aws.gamelift.game_server_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -315,18 +315,18 @@ This API works with the following fleet types: EC2 (FleetIQ) Lists a game server
 
 ```sql
 SELECT
-AutoScalingGroupArn,
-BalancingStrategy,
-CreationTime,
-GameServerGroupArn,
-GameServerGroupName,
-GameServerProtectionPolicy,
-InstanceDefinitions,
-LastUpdatedTime,
-RoleArn,
-Status,
-StatusReason,
-SuspendedActions
+auto_scaling_group_arn,
+balancing_strategy,
+creation_time,
+game_server_group_arn,
+game_server_group_name,
+game_server_protection_policy,
+instance_definitions,
+last_updated_time,
+role_arn,
+status,
+status_reason,
+suspended_actions
 FROM aws.gamelift.game_server_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -377,7 +377,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-GameServerGroup
+game_server_group
 ;
 ```
 </TabItem>
@@ -476,7 +476,7 @@ WHERE
 region = '{{ region }}' --required
 AND GameServerGroupName = '{{ GameServerGroupName }}' --required
 RETURNING
-GameServerGroup;
+game_server_group;
 ```
 </TabItem>
 </Tabs>

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of action exectued. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionEndTime" /></td>
+    <td><CopyableCode code="execution_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the process ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionEntityVersion" /></td>
+    <td><CopyableCode code="execution_entity_version" /></td>
     <td><code>string</code></td>
     <td>The execution entity version associated with the summary. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the execution. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStartTime" /></td>
+    <td><CopyableCode code="execution_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the process started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>object</code></td>
     <td>The status of the execution process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolveTo" /></td>
+    <td><CopyableCode code="resolve_to" /></td>
     <td><code>object</code></td>
     <td>The detailed resource this execution summary resolves to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResource" /></td>
+    <td><CopyableCode code="target_resource" /></td>
     <td><code>object</code></td>
     <td>The resource the action will be taken on. This can include asset-based resources and computation model resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResourceVersion" /></td>
+    <td><CopyableCode code="target_resource_version" /></td>
     <td><code>string</code></td>
     <td>The version of the target resource. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -110,57 +110,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of action exectued. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionDetails" /></td>
+    <td><CopyableCode code="execution_details" /></td>
     <td><code>object</code></td>
     <td>Provides detailed information about the execution of your anomaly detection models. This includes model metrics and training timestamps for both training and inference actions. The training action (Amazon Web Services/ANOMALY_DETECTION_TRAINING), includes performance metrics that help you compare different versions of your anomaly detection models. These metrics provide insights into the model's performance during the training process. The inference action (Amazon Web Services/ANOMALY_DETECTION_INFERENCE), includes information about the results of executing your anomaly detection models. This helps you understand the output of your models and assess their performance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionEndTime" /></td>
+    <td><CopyableCode code="execution_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the process ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionEntityVersion" /></td>
+    <td><CopyableCode code="execution_entity_version" /></td>
     <td><code>string</code></td>
     <td>Entity version used for the execution. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the execution. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionResult" /></td>
+    <td><CopyableCode code="execution_result" /></td>
     <td><code>object</code></td>
     <td>The result of the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStartTime" /></td>
+    <td><CopyableCode code="execution_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the process started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>object</code></td>
     <td>The status of the execution process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolveTo" /></td>
+    <td><CopyableCode code="resolve_to" /></td>
     <td><code>object</code></td>
     <td>The detailed resource this execution resolves to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResource" /></td>
+    <td><CopyableCode code="target_resource" /></td>
     <td><code>object</code></td>
     <td>The resource the action will be taken on. This can include asset-based resources and computation model resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResourceVersion" /></td>
+    <td><CopyableCode code="target_resource_version" /></td>
     <td><code>string</code></td>
     <td>The version of the target resource. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -277,15 +277,15 @@ Retrieves a paginated list of summaries of all executions.
 
 ```sql
 SELECT
-actionType,
-executionEndTime,
-executionEntityVersion,
-executionId,
-executionStartTime,
-executionStatus,
-resolveTo,
-targetResource,
-targetResourceVersion
+action_type,
+execution_end_time,
+execution_entity_version,
+execution_id,
+execution_start_time,
+execution_status,
+resolve_to,
+target_resource,
+target_resource_version
 FROM aws.iotsitewise.executions
 WHERE targetResourceType = '{{ targetResourceType }}' -- required
 AND targetResourceId = '{{ targetResourceId }}' -- required
@@ -304,17 +304,17 @@ Retrieves information about the execution.
 
 ```sql
 SELECT
-actionType,
-executionDetails,
-executionEndTime,
-executionEntityVersion,
-executionId,
-executionResult,
-executionStartTime,
-executionStatus,
-resolveTo,
-targetResource,
-targetResourceVersion
+action_type,
+execution_details,
+execution_end_time,
+execution_entity_version,
+execution_id,
+execution_result,
+execution_start_time,
+execution_status,
+resolve_to,
+target_resource,
+target_resource_version
 FROM aws.iotsitewise.executions
 WHERE execution_id = '{{ execution_id }}' -- required
 AND region = '{{ region }}' -- required

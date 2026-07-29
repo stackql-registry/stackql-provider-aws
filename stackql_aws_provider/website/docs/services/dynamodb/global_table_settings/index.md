@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GlobalTableName" /></td>
+    <td><CopyableCode code="global_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the global table. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicaSettings" /></td>
+    <td><CopyableCode code="replica_settings" /></td>
     <td><code>array</code></td>
     <td>The Region-specific settings for the global table.</td>
 </tr>
@@ -131,8 +131,8 @@ Describes Region-specific settings for a global table. This documentation is for
 
 ```sql
 SELECT
-GlobalTableName,
-ReplicaSettings
+global_table_name,
+replica_settings
 FROM aws.dynamodb.global_table_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -166,8 +166,8 @@ WHERE
 region = '{{ region }}' --required
 AND GlobalTableName = '{{ GlobalTableName }}' --required
 RETURNING
-GlobalTableName,
-ReplicaSettings;
+global_table_name,
+replica_settings;
 ```
 </TabItem>
 </Tabs>

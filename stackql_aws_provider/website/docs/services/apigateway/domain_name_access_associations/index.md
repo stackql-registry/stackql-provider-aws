@@ -199,10 +199,10 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-accessAssociationSource,
-accessAssociationSourceType,
-domainNameAccessAssociationArn,
-domainNameArn,
+access_association_source,
+access_association_source_type,
+domain_name_access_association_arn,
+domain_name_arn,
 tags
 ;
 ```

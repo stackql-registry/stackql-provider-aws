@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>Model Id of the foundation model. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;(/&#91;a-z0-9&#93;&#123;12&#125;|)&lt;/code&gt;)</td>
 </tr>
@@ -134,7 +134,7 @@ Get the offers associated with the specified model.
 
 ```sql
 SELECT
-modelId,
+model_id,
 offers
 FROM aws.bedrock.foundation_model_agreement_offers
 WHERE model_id = '{{ model_id }}' -- required

@@ -55,37 +55,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the log stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstEventTimestamp" /></td>
+    <td><CopyableCode code="first_event_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastEventTimestamp" /></td>
+    <td><CopyableCode code="last_event_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. The lastEventTime value updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but in rare situations might take longer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastIngestionTime" /></td>
+    <td><CopyableCode code="last_ingestion_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC The lastIngestionTime value updates on an eventual consistency basis. It typically updates in less than an hour after ingestion, but in rare situations might take longer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logStreamName" /></td>
+    <td><CopyableCode code="log_stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log stream. (pattern: &lt;code&gt;&#91;^:*&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storedBytes" /></td>
+    <td><CopyableCode code="stored_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of bytes stored. Important: As of June 17, 2019, this parameter is no longer supported for log streams, and is always reported as zero. This change applies only to log streams. The storedBytes parameter for log groups is not affected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadSequenceToken" /></td>
+    <td><CopyableCode code="upload_sequence_token" /></td>
     <td><code>string</code></td>
     <td>The sequence token. The sequence token is now ignored in PutLogEvents actions. PutLogEvents actions are always accepted regardless of receiving an invalid sequence token. You don't need to obtain uploadSequenceToken to use a PutLogEvents action.</td>
 </tr>
@@ -169,13 +169,13 @@ Lists the log streams for the specified log group. You can list all the log stre
 ```sql
 SELECT
 arn,
-creationTime,
-firstEventTimestamp,
-lastEventTimestamp,
-lastIngestionTime,
-logStreamName,
-storedBytes,
-uploadSequenceToken
+creation_time,
+first_event_timestamp,
+last_event_timestamp,
+last_ingestion_time,
+log_stream_name,
+stored_bytes,
+upload_sequence_token
 FROM aws.logs.log_streams
 WHERE region = '{{ region }}' -- required
 ;

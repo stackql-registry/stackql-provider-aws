@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmMuteRuleArn" /></td>
+    <td><CopyableCode code="alarm_mute_rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the alarm mute rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the alarm mute rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpireDate" /></td>
+    <td><CopyableCode code="expire_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the mute rule expires and is no longer evaluated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the mute rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MuteTargets" /></td>
+    <td><CopyableCode code="mute_targets" /></td>
     <td><code>object</code></td>
     <td>Specifies which alarms this rule applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MuteType" /></td>
+    <td><CopyableCode code="mute_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the mute rule is one-time or recurring. Valid values are ONE_TIME or RECURRING.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the alarm mute rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rule" /></td>
+    <td><CopyableCode code="rule" /></td>
     <td><code>object</code></td>
     <td>The configuration that defines when and how long alarms are muted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the mute rule becomes active. If not set, the rule is active immediately.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the alarm mute rule. Valid values are SCHEDULED, ACTIVE, or EXPIRED. (SCHEDULED, ACTIVE, EXPIRED)</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmMuteRuleArn" /></td>
+    <td><CopyableCode code="alarm_mute_rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the alarm mute rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpireDate" /></td>
+    <td><CopyableCode code="expire_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the mute rule expires and is no longer evaluated. This field is only present if an expiration date was configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the mute rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MuteType" /></td>
+    <td><CopyableCode code="mute_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the mute rule is one-time or recurring. Valid values are ONE_TIME or RECURRING.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the alarm mute rule. Valid values are SCHEDULED, ACTIVE, or EXPIRED. (SCHEDULED, ACTIVE, EXPIRED)</td>
 </tr>
@@ -226,16 +226,16 @@ Retrieves details for a specific alarm mute rule. This operation returns complet
 
 ```sql
 SELECT
-AlarmMuteRuleArn,
-Description,
-ExpireDate,
-LastUpdatedTimestamp,
-MuteTargets,
-MuteType,
-Name,
-Rule,
-StartDate,
-Status
+alarm_mute_rule_arn,
+description,
+expire_date,
+last_updated_timestamp,
+mute_targets,
+mute_type,
+name,
+rule,
+start_date,
+status
 FROM aws.cloudwatch.alarm_mute_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,11 +247,11 @@ Lists alarm mute rules in your Amazon Web Services account and region. You can f
 
 ```sql
 SELECT
-AlarmMuteRuleArn,
-ExpireDate,
-LastUpdatedTimestamp,
-MuteType,
-Status
+alarm_mute_rule_arn,
+expire_date,
+last_updated_timestamp,
+mute_type,
+status
 FROM aws.cloudwatch.alarm_mute_rules
 WHERE region = '{{ region }}' -- required
 ;

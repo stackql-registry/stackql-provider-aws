@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the recommendation summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregatedSavingsOpportunity" /></td>
+    <td><CopyableCode code="aggregated_savings_opportunity" /></td>
     <td><code>object</code></td>
     <td>Describes the savings opportunity for recommendations of a given resource type or for the recommendation option of an individual resource. Savings opportunity represents the estimated monthly savings you can achieve by implementing a given Compute Optimizer recommendation. Savings opportunity data requires that you opt in to Cost Explorer, as well as activate Receive Amazon EC2 resource recommendations in the Cost Explorer preferences page. That creates a connection between Cost Explorer and Compute Optimizer. With this connection, Cost Explorer generates savings estimates considering the price of existing resources, the price of recommended resources, and historical usage data. Estimated monthly savings reflects the projected dollar savings associated with each of the recommendations generated. For more information, see Enabling Cost Explorer and Optimizing your cost with Rightsizing Recommendations in the Cost Management User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentPerformanceRiskRatings" /></td>
+    <td><CopyableCode code="current_performance_risk_ratings" /></td>
     <td><code>object</code></td>
     <td>An object that describes the performance risk ratings for a given resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleSavingsOpportunity" /></td>
+    <td><CopyableCode code="idle_savings_opportunity" /></td>
     <td><code>object</code></td>
     <td>Describes the savings opportunity for recommendations of a given resource type or for the recommendation option of an individual resource. Savings opportunity represents the estimated monthly savings you can achieve by implementing a given Compute Optimizer recommendation. Savings opportunity data requires that you opt in to Cost Explorer, as well as activate Receive Amazon EC2 resource recommendations in the Cost Explorer preferences page. That creates a connection between Cost Explorer and Compute Optimizer. With this connection, Cost Explorer generates savings estimates considering the price of existing resources, the price of recommended resources, and historical usage data. Estimated monthly savings reflects the projected dollar savings associated with each of the recommendations generated. For more information, see Enabling Cost Explorer and Optimizing your cost with Rightsizing Recommendations in the Cost Management User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleSummaries" /></td>
+    <td><CopyableCode code="idle_summaries" /></td>
     <td><code>array</code></td>
     <td>Describes the findings summary of the idle resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferredWorkloadSavings" /></td>
+    <td><CopyableCode code="inferred_workload_savings" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describes the estimated monthly saving amounts for the instances running on the specified inferredWorkloadTypes. The array contains the top five savings opportunites for the instances that run inferred workload types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationResourceType" /></td>
+    <td><CopyableCode code="recommendation_resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type that the recommendation summary applies to. (Ec2Instance, AutoScalingGroup, EbsVolume, LambdaFunction, EcsService, License, RdsDBInstance, RdsDBInstanceStorage, AuroraDBClusterStorage, NatGateway)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="savingsOpportunity" /></td>
+    <td><CopyableCode code="savings_opportunity" /></td>
     <td><code>object</code></td>
     <td>Describes the savings opportunity for recommendations of a given resource type or for the recommendation option of an individual resource. Savings opportunity represents the estimated monthly savings you can achieve by implementing a given Compute Optimizer recommendation. Savings opportunity data requires that you opt in to Cost Explorer, as well as activate Receive Amazon EC2 resource recommendations in the Cost Explorer preferences page. That creates a connection between Cost Explorer and Compute Optimizer. With this connection, Cost Explorer generates savings estimates considering the price of existing resources, the price of recommended resources, and historical usage data. Estimated monthly savings reflects the projected dollar savings associated with each of the recommendations generated. For more information, see Enabling Cost Explorer and Optimizing your cost with Rightsizing Recommendations in the Cost Management User Guide.</td>
 </tr>
@@ -159,14 +159,14 @@ Returns the optimization findings for an account. It returns the number of: Amaz
 
 ```sql
 SELECT
-accountId,
-aggregatedSavingsOpportunity,
-currentPerformanceRiskRatings,
-idleSavingsOpportunity,
-idleSummaries,
-inferredWorkloadSavings,
-recommendationResourceType,
-savingsOpportunity,
+account_id,
+aggregated_savings_opportunity,
+current_performance_risk_ratings,
+idle_savings_opportunity,
+idle_summaries,
+inferred_workload_savings,
+recommendation_resource_type,
+savings_opportunity,
 summaries
 FROM aws.compute_optimizer.recommendation_summaries
 WHERE region = '{{ region }}' -- required

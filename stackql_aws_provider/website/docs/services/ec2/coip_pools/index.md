@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableId" /></td>
+    <td><CopyableCode code="local_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolArn" /></td>
+    <td><CopyableCode code="pool_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolCidrs" /></td>
+    <td><CopyableCode code="pool_cidrs" /></td>
     <td><code>string</code></td>
     <td>The address ranges of the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
@@ -212,11 +212,11 @@ Describes the specified customer-owned address pools or all of your customer-own
 
 ```sql
 SELECT
-LocalGatewayRouteTableId,
-PoolArn,
-PoolCidrs,
-PoolId,
-Tags
+local_gateway_route_table_id,
+pool_arn,
+pool_cidrs,
+pool_id,
+tags
 FROM aws.ec2.coip_pools
 WHERE region = '{{ region }}' -- required
 AND PoolId = '{{ PoolId }}'
@@ -257,9 +257,9 @@ SELECT
 '{{ Cidr }}',
 '{{ DryRun }}'
 RETURNING
-Cidr,
-CoipPoolId,
-LocalGatewayRouteTableId
+cidr,
+coip_pool_id,
+local_gateway_route_table_id
 ;
 ```
 </TabItem>
@@ -280,11 +280,11 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-LocalGatewayRouteTableId,
-PoolArn,
-PoolCidrs,
-PoolId,
-Tags
+local_gateway_route_table_id,
+pool_arn,
+pool_cidrs,
+pool_id,
+tags
 ;
 ```
 </TabItem>

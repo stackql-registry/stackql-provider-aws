@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveDirectoryConfiguration" /></td>
+    <td><CopyableCode code="active_directory_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the resource was created, in seconds (since 1970-01-01T00:00:00Z), also known as Unix time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>object</code></td>
     <td>The endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They are the Iscsi, Management, Nfs, and Smb endpoints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique ID of the file system, assigned by Amazon FSx. (pattern: &lt;code&gt;^(fs-&#91;0-9a-f&#93;&#123;8,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lifecycle" /></td>
+    <td><CopyableCode code="lifecycle" /></td>
     <td><code>string</code></td>
     <td>Describes the SVM's lifecycle status. CREATED - The SVM is fully available for use. CREATING - Amazon FSx is creating the new SVM. DELETING - Amazon FSx is deleting an existing SVM. FAILED - Amazon FSx was unable to create the SVM. MISCONFIGURED - The SVM is in a failed but recoverable state. PENDING - Amazon FSx has not started creating the SVM. (CREATED, CREATING, DELETING, FAILED, MISCONFIGURED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleTransitionReason" /></td>
+    <td><CopyableCode code="lifecycle_transition_reason" /></td>
     <td><code>object</code></td>
     <td>Describes why a resource lifecycle state changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the SVM, if provisioned. (pattern: &lt;code&gt;^&#91;^\u0000\u0085\u2028\u2029\r\n&#93;&#123;1,47&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceARN" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:(?=&#91;^:&#93;+:fsx:&#91;^:&#93;+:\d&#123;12&#125;:)((|(?=&#91;a-z0-9-.&#93;&#123;1,63&#125;)(?!\d&#123;1,3&#125;(\.\d&#123;1,3&#125;)&#123;3&#125;)(?!&#91;^:&#93;*-&#123;2&#125;)(?!&#91;^:&#93;*-\.)(?!&#91;^:&#93;*\.-)&#91;a-z0-9&#93;.*(?&lt;!-)):)&#123;4&#125;(?!/).&#123;0,1024&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootVolumeSecurityStyle" /></td>
+    <td><CopyableCode code="root_volume_security_style" /></td>
     <td><code>string</code></td>
     <td>The security style of the root volume of the SVM. (UNIX, NTFS, MIXED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageVirtualMachineId" /></td>
+    <td><CopyableCode code="storage_virtual_machine_id" /></td>
     <td><code>string</code></td>
     <td>The SVM's system generated unique ID. (pattern: &lt;code&gt;^(svm-&#91;0-9a-f&#93;&#123;17,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subtype" /></td>
+    <td><CopyableCode code="subtype" /></td>
     <td><code>string</code></td>
     <td>Describes the SVM's subtype. (DEFAULT, DP_DESTINATION, SYNC_DESTINATION, SYNC_SOURCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of Tag values, with a maximum of 50 elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UUID" /></td>
+    <td><CopyableCode code="uuid" /></td>
     <td><code>string</code></td>
     <td>The SVM's UUID (universally unique identifier). (pattern: &lt;code&gt;^&#91;^\u0000\u0085\u2028\u2029\r\n&#93;&#123;1,36&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -200,19 +200,19 @@ Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs
 
 ```sql
 SELECT
-ActiveDirectoryConfiguration,
-CreationTime,
-Endpoints,
-FileSystemId,
-Lifecycle,
-LifecycleTransitionReason,
-Name,
-ResourceARN,
-RootVolumeSecurityStyle,
-StorageVirtualMachineId,
-Subtype,
-Tags,
-UUID
+active_directory_configuration,
+creation_time,
+endpoints,
+file_system_id,
+lifecycle,
+lifecycle_transition_reason,
+name,
+resource_arn,
+root_volume_security_style,
+storage_virtual_machine_id,
+subtype,
+tags,
+uuid
 FROM aws.fsx.storage_virtual_machines
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,7 +255,7 @@ SELECT
 '{{ RootVolumeSecurityStyle }}',
 '{{ region }}'
 RETURNING
-StorageVirtualMachine
+storage_virtual_machine
 ;
 ```
 </TabItem>
@@ -337,7 +337,7 @@ WHERE
 region = '{{ region }}' --required
 AND StorageVirtualMachineId = '{{ StorageVirtualMachineId }}' --required
 RETURNING
-StorageVirtualMachine;
+storage_virtual_machine;
 ```
 </TabItem>
 </Tabs>

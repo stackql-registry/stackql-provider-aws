@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The page token to use to retrieve the next set of results. If there are no additional results, this value is null. (pattern: &lt;code&gt;&#91;\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackInstances" /></td>
+    <td><CopyableCode code="stack_instances" /></td>
     <td><code>array</code></td>
     <td>List of stack instances.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns summary information about stack instances that are associated with the s
 
 ```sql
 SELECT
-NextPageToken,
-StackInstances
+next_page_token,
+stack_instances
 FROM aws.servicecatalog.stack_instances_for_provisioned_products
 WHERE region = '{{ region }}' -- required
 ;

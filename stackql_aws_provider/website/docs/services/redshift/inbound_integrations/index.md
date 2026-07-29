@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The creation time of an inbound integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>string</code></td>
     <td>The outstanding errors of an inbound integration. Each item is an "IntegrationError". This is null if there is no error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationArn" /></td>
+    <td><CopyableCode code="integration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an inbound integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source of an inbound integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of an inbound integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target of an inbound integration.</td>
 </tr>
@@ -164,12 +164,12 @@ Returns a list of inbound integrations.
 
 ```sql
 SELECT
-CreateTime,
-Errors,
-IntegrationArn,
-SourceArn,
-Status,
-TargetArn
+create_time,
+errors,
+integration_arn,
+source_arn,
+status,
+target_arn
 FROM aws.redshift.inbound_integrations
 WHERE region = '{{ region }}' -- required
 AND IntegrationArn = '{{ IntegrationArn }}'

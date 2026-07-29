@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date when the instance profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceProfileId" /></td>
+    <td><CopyableCode code="instance_profile_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the instance profile. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceProfileName" /></td>
+    <td><CopyableCode code="instance_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name identifying the instance profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the instance profile. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Roles" /></td>
+    <td><CopyableCode code="roles" /></td>
     <td><code>string</code></td>
     <td>The role associated with the instance profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the instance profile. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date when the instance profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceProfileId" /></td>
+    <td><CopyableCode code="instance_profile_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the instance profile. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceProfileName" /></td>
+    <td><CopyableCode code="instance_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name identifying the instance profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the instance profile. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Roles" /></td>
+    <td><CopyableCode code="roles" /></td>
     <td><code>string</code></td>
     <td>The role associated with the instance profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the instance profile. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
@@ -270,13 +270,13 @@ Retrieves information about the specified instance profile, including the instan
 
 ```sql
 SELECT
-Arn,
-CreateDate,
-InstanceProfileId,
-InstanceProfileName,
-Path,
-Roles,
-Tags
+arn,
+create_date,
+instance_profile_id,
+instance_profile_name,
+path,
+roles,
+tags
 FROM aws.iam.instance_profiles
 WHERE InstanceProfileName = '{{ InstanceProfileName }}' -- required
 AND region = '{{ region }}' -- required
@@ -289,13 +289,13 @@ Lists the instance profiles that have the specified path prefix. If there are no
 
 ```sql
 SELECT
-Arn,
-CreateDate,
-InstanceProfileId,
-InstanceProfileName,
-Path,
-Roles,
-Tags
+arn,
+create_date,
+instance_profile_id,
+instance_profile_name,
+path,
+roles,
+tags
 FROM aws.iam.instance_profiles
 WHERE region = '{{ region }}' -- required
 AND PathPrefix = '{{ PathPrefix }}'
@@ -333,13 +333,13 @@ SELECT
 '{{ Path }}',
 '{{ Tags }}'
 RETURNING
-Arn,
-CreateDate,
-InstanceProfileId,
-InstanceProfileName,
-Path,
-Roles,
-Tags
+arn,
+create_date,
+instance_profile_id,
+instance_profile_name,
+path,
+roles,
+tags
 ;
 ```
 </TabItem>

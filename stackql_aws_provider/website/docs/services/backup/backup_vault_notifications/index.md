@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupVaultArn" /></td>
+    <td><CopyableCode code="backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupVaultEvents" /></td>
+    <td><CopyableCode code="backup_vault_events" /></td>
     <td><code>array</code></td>
     <td>An array of events that indicate the status of jobs to back up resources to the backup vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupVaultName" /></td>
+    <td><CopyableCode code="backup_vault_name" /></td>
     <td><code>string</code></td>
     <td>The name of a logical container where backups are stored. Backup vaults are identified by names that are unique to the account used to create them and the Region where they are created. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;&#123;2,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SNSTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon SNS) topic; for example, arn:aws:sns:us-west-2:111122223333:MyTopic.</td>
 </tr>
@@ -153,10 +153,10 @@ Returns event notifications for the specified backup vault.
 
 ```sql
 SELECT
-BackupVaultArn,
-BackupVaultEvents,
-BackupVaultName,
-SNSTopicArn
+backup_vault_arn,
+backup_vault_events,
+backup_vault_name,
+sns_topic_arn
 FROM aws.backup.backup_vault_notifications
 WHERE backup_vault_name = '{{ backup_vault_name }}' -- required
 AND region = '{{ region }}' -- required

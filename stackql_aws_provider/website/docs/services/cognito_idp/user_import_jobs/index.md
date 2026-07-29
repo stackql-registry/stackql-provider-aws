@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudWatchLogsRoleArn" /></td>
+    <td><CopyableCode code="cloud_watch_logs_role_arn" /></td>
     <td><code>string</code></td>
     <td>The role Amazon Resource Name (ARN) for the Amazon CloudWatch Logging role for the user import job. For more information, see "Creating the CloudWatch Logs IAM Role" in the Amazon Cognito Developer Guide. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:&#91;\w+=/,.@-&#93;+:(&#91;\w+=/,.@-&#93;*)?:&#91;0-9&#93;+:&#91;\w+=/,.@-&#93;+(:&#91;\w+=/,.@-&#93;+)?(:&#91;\w+=/,.@-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the user import job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionMessage" /></td>
+    <td><CopyableCode code="completion_message" /></td>
     <td><code>string</code></td>
     <td>The message returned when the user import job is completed. (pattern: &lt;code&gt;&#91;\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedUsers" /></td>
+    <td><CopyableCode code="failed_users" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of users that couldn't be imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportedUsers" /></td>
+    <td><CopyableCode code="imported_users" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of users that were successfully imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user import job. (pattern: &lt;code&gt;import-&#91;0-9a-zA-Z-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the user import job. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreSignedUrl" /></td>
+    <td><CopyableCode code="pre_signed_url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed URL target for uploading the CSV file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SkippedUsers" /></td>
+    <td><CopyableCode code="skipped_users" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of users that were skipped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the user import job was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the user import job. One of the following: Created - The job was created but not started. Pending - A transition state. You have started the job, but it has not begun importing users yet. InProgress - The job has started, and users are being imported. Stopping - You have stopped the job, but the job has not stopped importing users yet. Stopped - You have stopped the job, and the job has stopped importing users. Succeeded - The job has completed successfully. Failed - The job has stopped due to an error. Expired - You created a job, but did not start the job within 24-48 hours. All data associated with the job was deleted, and the job can't be started. (Created, Pending, InProgress, Stopping, Expired, Stopped, Failed, Succeeded)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool that the users are being imported into. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PaginationToken" /></td>
+    <td><CopyableCode code="pagination_token" /></td>
     <td><code>string</code></td>
     <td>The identifier that Amazon Cognito returned with the previous request to this operation. When you include a pagination token in your request, Amazon Cognito returns the next set of items in the list. By use of this token, you can paginate through the full list of items. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserImportJobs" /></td>
+    <td><CopyableCode code="user_import_jobs" /></td>
     <td><code>array</code></td>
     <td>An array of user import jobs from the requested user pool. For each, the response includes logging destination, status, and the Amazon S3 pre-signed URL for CSV upload.</td>
 </tr>
@@ -219,19 +219,19 @@ Describes a user import job. For more information about user CSV import, see Imp
 
 ```sql
 SELECT
-CloudWatchLogsRoleArn,
-CompletionDate,
-CompletionMessage,
-CreationDate,
-FailedUsers,
-ImportedUsers,
-JobId,
-JobName,
-PreSignedUrl,
-SkippedUsers,
-StartDate,
-Status,
-UserPoolId
+cloud_watch_logs_role_arn,
+completion_date,
+completion_message,
+creation_date,
+failed_users,
+imported_users,
+job_id,
+job_name,
+pre_signed_url,
+skipped_users,
+start_date,
+status,
+user_pool_id
 FROM aws.cognito_idp.user_import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -243,8 +243,8 @@ Given a user pool ID, returns user import jobs and their details. Import jobs ar
 
 ```sql
 SELECT
-PaginationToken,
-UserImportJobs
+pagination_token,
+user_import_jobs
 FROM aws.cognito_idp.user_import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -279,7 +279,7 @@ SELECT
 '{{ CloudWatchLogsRoleArn }}' /* required */,
 '{{ region }}'
 RETURNING
-UserImportJob
+user_import_job
 ;
 ```
 </TabItem>

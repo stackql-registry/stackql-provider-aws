@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The content of the model card. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the model card was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the model card was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardArn" /></td>
+    <td><CopyableCode code="model_card_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model card. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-card/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardName" /></td>
+    <td><CopyableCode code="model_card_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model card. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardProcessingStatus" /></td>
+    <td><CopyableCode code="model_card_processing_status" /></td>
     <td><code>string</code></td>
     <td>The processing status of model card deletion. The ModelCardProcessingStatus updates throughout the different deletion steps. DeletePending: Model card deletion request received. DeleteInProgress: Model card deletion is in progress. ContentDeleted: Deleted model card content. ExportJobsDeleted: Deleted all export jobs associated with the model card. DeleteCompleted: Successfully deleted the model card. DeleteFailed: The model card failed to delete. (DeleteInProgress, DeletePending, ContentDeleted, ExportJobsDeleted, DeleteCompleted, DeleteFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardStatus" /></td>
+    <td><CopyableCode code="model_card_status" /></td>
     <td><code>string</code></td>
     <td>The approval status of the model card within your organization. Different organizations might have different criteria for model card review and approval. Draft: The model card is a work in progress. PendingReview: The model card is pending review. Approved: The model card is approved. Archived: The model card is archived. No more updates should be made to the model card, but it can still be exported. (Draft, PendingReview, Approved, Archived)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardVersion" /></td>
+    <td><CopyableCode code="model_card_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the model card.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfig" /></td>
+    <td><CopyableCode code="security_config" /></td>
     <td><code>object</code></td>
     <td>The security configuration used to protect model card content.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the model card was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the model card was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardArn" /></td>
+    <td><CopyableCode code="model_card_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model card. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-card/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardName" /></td>
+    <td><CopyableCode code="model_card_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model card. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardStatus" /></td>
+    <td><CopyableCode code="model_card_status" /></td>
     <td><code>string</code></td>
     <td>The approval status of the model card within your organization. Different organizations might have different criteria for model card review and approval. Draft: The model card is a work in progress. PendingReview: The model card is pending review. Approved: The model card is approved. Archived: The model card is archived. No more updates should be made to the model card, but it can still be exported. (Draft, PendingReview, Approved, Archived)</td>
 </tr>
@@ -238,17 +238,17 @@ Describes the content, creation time, and security configuration of an Amazon Sa
 
 ```sql
 SELECT
-Content,
-CreatedBy,
-CreationTime,
-LastModifiedBy,
-LastModifiedTime,
-ModelCardArn,
-ModelCardName,
-ModelCardProcessingStatus,
-ModelCardStatus,
-ModelCardVersion,
-SecurityConfig
+content,
+created_by,
+creation_time,
+last_modified_by,
+last_modified_time,
+model_card_arn,
+model_card_name,
+model_card_processing_status,
+model_card_status,
+model_card_version,
+security_config
 FROM aws.sagemaker.model_cards
 WHERE region = '{{ region }}' -- required
 ;
@@ -260,11 +260,11 @@ List existing model cards.
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-ModelCardArn,
-ModelCardName,
-ModelCardStatus
+creation_time,
+last_modified_time,
+model_card_arn,
+model_card_name,
+model_card_status
 FROM aws.sagemaker.model_cards
 WHERE region = '{{ region }}' -- required
 ;
@@ -303,7 +303,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ModelCardArn
+model_card_arn
 ;
 ```
 </TabItem>
@@ -367,7 +367,7 @@ WHERE
 region = '{{ region }}' --required
 AND ModelCardName = '{{ ModelCardName }}' --required
 RETURNING
-ModelCardArn;
+model_card_arn;
 ```
 </TabItem>
 </Tabs>

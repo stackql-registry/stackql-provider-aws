@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastWritten" /></td>
+    <td><CopyableCode code="last_written" /></td>
     <td><code>integer</code></td>
     <td>A POSIX timestamp when the last log entry was written.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogFileName" /></td>
+    <td><CopyableCode code="log_file_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log file for the specified DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer</code></td>
     <td>The size, in bytes, of the log file for the specified DB instance.</td>
 </tr>
@@ -164,9 +164,9 @@ Returns a list of DB log files for the DB instance. This command doesn't apply t
 
 ```sql
 SELECT
-LastWritten,
-LogFileName,
-Size
+last_written,
+log_file_name,
+size
 FROM aws.rds.db_log_files
 WHERE DBInstanceIdentifier = '{{ DBInstanceIdentifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The table description. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>array</code></td>
     <td>The schema of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableProperties" /></td>
+    <td><CopyableCode code="table_properties" /></td>
     <td><code>object</code></td>
     <td>TableProperties are additional configurations you can provide to change the data and schema of a table. Each table can have different TableProperties. Tables are not required to have any TableProperties. Each table property has a default value that it assumes if not specified.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the table. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableProperties" /></td>
+    <td><CopyableCode code="table_properties" /></td>
     <td><code>array</code></td>
     <td>The properties for the table.</td>
 </tr>
@@ -172,10 +172,10 @@ Returns the metadata for the specified table and table properties. This includes
 
 ```sql
 SELECT
-Description,
-Schema,
-TableName,
-TableProperties
+description,
+schema,
+table_name,
+table_properties
 FROM aws.bcm_data_exports.tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -187,9 +187,9 @@ Lists all available tables in data exports.
 
 ```sql
 SELECT
-Description,
-TableName,
-TableProperties
+description,
+table_name,
+table_properties
 FROM aws.bcm_data_exports.tables
 WHERE region = '{{ region }}' -- required
 ;

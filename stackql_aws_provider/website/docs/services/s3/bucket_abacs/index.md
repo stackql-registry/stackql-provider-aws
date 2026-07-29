@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The ABAC status of the general purpose bucket.</td>
 </tr>
@@ -146,7 +146,7 @@ Returns the attribute-based access control (ABAC) property of the general purpos
 
 ```sql
 SELECT
-Status
+status
 FROM aws.s3.bucket_abacs
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

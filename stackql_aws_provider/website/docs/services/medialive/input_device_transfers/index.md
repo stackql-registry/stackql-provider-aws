@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetCustomerId" /></td>
+    <td><CopyableCode code="target_customer_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransferType" /></td>
+    <td><CopyableCode code="transfer_type" /></td>
     <td><code>string</code></td>
     <td>The type (direction) of the input device transfer. (OUTGOING, INCOMING)</td>
 </tr>
@@ -149,10 +149,10 @@ List input devices that are currently being transferred. List input devices that
 
 ```sql
 SELECT
-Id,
-Message,
-TargetCustomerId,
-TransferType
+id,
+message,
+target_customer_id,
+transfer_type
 FROM aws.medialive.input_device_transfers
 WHERE transferType = '{{ transferType }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityManagerStatus" /></td>
+    <td><CopyableCode code="capacity_manager_status" /></td>
     <td><code>string</code></td>
     <td>The current status of Capacity Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataExportCount" /></td>
+    <td><CopyableCode code="data_export_count" /></td>
     <td><code>integer</code></td>
     <td>The number of active data export configurations for this account. This count includes all data exports regardless of their current delivery status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EarliestDatapointTimestamp" /></td>
+    <td><CopyableCode code="earliest_datapoint_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the earliest data point available in Capacity Manager, in milliseconds since epoch. This indicates how far back historical data is available for queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionStatus" /></td>
+    <td><CopyableCode code="ingestion_status" /></td>
     <td><code>string</code></td>
     <td>The current data ingestion status. Initial ingestion may take several hours after enabling Capacity Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionStatusMessage" /></td>
+    <td><CopyableCode code="ingestion_status_message" /></td>
     <td><code>string</code></td>
     <td>A descriptive message providing additional details about the current ingestion status. This may include error information if ingestion has failed or progress details during initial setup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDatapointTimestamp" /></td>
+    <td><CopyableCode code="latest_datapoint_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the most recent data point ingested by Capacity Manager, in milliseconds since epoch. This indicates how current your capacity data is.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationsAccess" /></td>
+    <td><CopyableCode code="organizations_access" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Organizations access is enabled for cross-account data aggregation.</td>
 </tr>
@@ -154,13 +154,13 @@ Retrieves the current configuration and status of EC2 Capacity Manager for your 
 
 ```sql
 SELECT
-CapacityManagerStatus,
-DataExportCount,
-EarliestDatapointTimestamp,
-IngestionStatus,
-IngestionStatusMessage,
-LatestDatapointTimestamp,
-OrganizationsAccess
+capacity_manager_status,
+data_export_count,
+earliest_datapoint_timestamp,
+ingestion_status,
+ingestion_status_message,
+latest_datapoint_timestamp,
+organizations_access
 FROM aws.ec2.capacity_manager_attributes
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

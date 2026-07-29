@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EbsEncryptionByDefault" /></td>
+    <td><CopyableCode code="ebs_encryption_by_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether encryption by default is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseType" /></td>
+    <td><CopyableCode code="sse_type" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
@@ -129,8 +129,8 @@ Describes whether EBS encryption by default is enabled for your account in the c
 
 ```sql
 SELECT
-EbsEncryptionByDefault,
-SseType
+ebs_encryption_by_default,
+sse_type
 FROM aws.ec2.ebs_encryption_by_defaults
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

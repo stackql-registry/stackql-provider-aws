@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations. Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeARN" /></td>
+    <td><CopyableCode code="volume_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN: arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-). (pattern: &lt;code&gt;arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):storagegateway:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;+:gateway\/(.+)\/volume\/vol-(\S+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeAttachmentStatus" /></td>
+    <td><CopyableCode code="volume_attachment_status" /></td>
     <td><code>string</code></td>
     <td>One of the VolumeStatus values that indicates the state of the storage volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned to the volume. This ID becomes part of the volume Amazon Resource Name (ARN), which you use as input for other operations. Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeSizeInBytes" /></td>
+    <td><CopyableCode code="volume_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the volume in bytes. Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeType" /></td>
+    <td><CopyableCode code="volume_type" /></td>
     <td><code>string</code></td>
     <td>One of the VolumeType enumeration values describing the type of the volume.</td>
 </tr>
@@ -177,13 +177,13 @@ Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. T
 
 ```sql
 SELECT
-GatewayARN,
-GatewayId,
-VolumeARN,
-VolumeAttachmentStatus,
-VolumeId,
-VolumeSizeInBytes,
-VolumeType
+gateway_arn,
+gateway_id,
+volume_arn,
+volume_attachment_status,
+volume_id,
+volume_size_in_bytes,
+volume_type
 FROM aws.storagegateway.volumes
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,8 +218,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-SnapshotId,
-VolumeARN
+snapshot_id,
+volume_arn
 ;
 ```
 </TabItem>
@@ -278,8 +278,8 @@ AND GatewayARN = '{{ GatewayARN }}' --required
 AND VolumeARN = '{{ VolumeARN }}' --required
 AND NetworkInterfaceId = '{{ NetworkInterfaceId }}' --required
 RETURNING
-TargetARN,
-VolumeARN;
+target_arn,
+volume_arn;
 ```
 </TabItem>
 <TabItem value="detach_volume">
@@ -295,7 +295,7 @@ WHERE
 region = '{{ region }}' --required
 AND VolumeARN = '{{ VolumeARN }}' --required
 RETURNING
-VolumeARN;
+volume_arn;
 ```
 </TabItem>
 </Tabs>

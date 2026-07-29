@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of flow event . (EXECUTION_STARTED, EXECUTION_FAILED, EXECUTION_ABORTED, EXECUTION_SUCCEEDED, STEP_STARTED, STEP_FAILED, STEP_SUCCEEDED, ACTIVITY_SCHEDULED, ACTIVITY_STARTED, ACTIVITY_FAILED, ACTIVITY_SUCCEEDED, START_FLOW_EXECUTION_TASK, SCHEDULE_NEXT_READY_STEPS_TASK, THING_ACTION_TASK, THING_ACTION_TASK_FAILED, THING_ACTION_TASK_SUCCEEDED, ACKNOWLEDGE_TASK_MESSAGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageId" /></td>
+    <td><CopyableCode code="message_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the message.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns a list of objects that contain information about events in a flow execut
 
 ```sql
 SELECT
-eventType,
-messageId,
+event_type,
+message_id,
 payload,
 timestamp
 FROM aws.iotthingsgraph.flow_execution_messages

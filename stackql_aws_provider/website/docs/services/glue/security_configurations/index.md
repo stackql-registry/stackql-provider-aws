@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which this security configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration associated with this security configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the security configuration. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -150,9 +150,9 @@ Retrieves a specified security configuration.
 
 ```sql
 SELECT
-CreatedTimeStamp,
-EncryptionConfiguration,
-Name
+created_time_stamp,
+encryption_configuration,
+name
 FROM aws.glue.security_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -185,8 +185,8 @@ SELECT
 '{{ EncryptionConfiguration }}' /* required */,
 '{{ region }}'
 RETURNING
-CreatedTimestamp,
-Name
+created_timestamp,
+name
 ;
 ```
 </TabItem>

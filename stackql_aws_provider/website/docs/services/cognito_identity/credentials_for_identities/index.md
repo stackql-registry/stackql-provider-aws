@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>object</code></td>
     <td>Credentials for the provided identity ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns credentials for the provided identity ID. Any provided logins will be va
 
 ```sql
 SELECT
-Credentials,
-IdentityId
+credentials,
+identity_id
 FROM aws.cognito_identity.credentials_for_identities
 WHERE region = '{{ region }}' -- required
 ;

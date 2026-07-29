@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FragmentLengthInMilliseconds" /></td>
+    <td><CopyableCode code="fragment_length_in_milliseconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The playback duration or other time value associated with the fragment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FragmentNumber" /></td>
+    <td><CopyableCode code="fragment_number" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the fragment. This value monotonically increases based on the ingestion order. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FragmentSizeInBytes" /></td>
+    <td><CopyableCode code="fragment_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total fragment size, including information about the fragment and contained media data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProducerTimestamp" /></td>
+    <td><CopyableCode code="producer_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp from the producer corresponding to the fragment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerTimestamp" /></td>
+    <td><CopyableCode code="server_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp from the Amazon Web Services server corresponding to the fragment.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns a list of Fragment objects from the specified stream and timestamp range
 
 ```sql
 SELECT
-FragmentLengthInMilliseconds,
-FragmentNumber,
-FragmentSizeInBytes,
-ProducerTimestamp,
-ServerTimestamp
+fragment_length_in_milliseconds,
+fragment_number,
+fragment_size_in_bytes,
+producer_timestamp,
+server_timestamp
 FROM aws.kinesis_video_archived_media.fragments
 WHERE region = '{{ region }}' -- required
 ;

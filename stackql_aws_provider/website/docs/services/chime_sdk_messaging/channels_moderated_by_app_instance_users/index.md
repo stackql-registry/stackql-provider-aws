@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>The moderated channels in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token returned from previous API requests until the number of channels moderated by the user is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ A list of the channels moderated by an AppInstanceUser. The x-amz-chime-bearer r
 
 ```sql
 SELECT
-Channels,
-NextToken
+channels,
+next_token
 FROM aws.chime_sdk_messaging.channels_moderated_by_app_instance_users
 WHERE `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
 AND region = '{{ region }}' -- required

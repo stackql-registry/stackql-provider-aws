@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ruleTypes" /></td>
+    <td><CopyableCode code="rule_types" /></td>
     <td><code>array</code></td>
     <td>Lists the rules that are configured for the condition.</td>
 </tr>
@@ -119,7 +119,7 @@ Lists the rules for the condition. For more information about conditions, see St
 
 ```sql
 SELECT
-ruleTypes
+rule_types
 FROM aws.codepipeline.rule_types
 WHERE region = '{{ region }}' -- required
 ;

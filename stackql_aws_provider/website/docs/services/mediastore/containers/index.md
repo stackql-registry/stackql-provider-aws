@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the container. The ARN has the following format: arn:aws:<code>&lt;region&gt;</code>:&lt;account that owns this container&gt;:container/&lt;name of container&gt; For example: arn:aws:mediastore:us-west-2:111122223333:container/movies (pattern: &lt;code&gt;arn:aws:mediastore:&#91;a-z&#93;+-&#91;a-z&#93;+-\d:\d&#123;12&#125;:container/&#91;\w-&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessLoggingEnabled" /></td>
+    <td><CopyableCode code="access_logging_enabled" /></td>
     <td><code>boolean</code></td>
     <td>The state of access logging on the container. This value is false by default, indicating that AWS Elemental MediaStore does not send access logs to Amazon CloudWatch Logs. When you enable access logging on the container, MediaStore changes this value to true, indicating that the service delivers access logs for objects stored in that container to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Unix timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The DNS endpoint of the container. Use the endpoint to identify the specific container when sending requests to the data plane. The service assigns this value when the container is created. Once the value has been assigned, it does not change. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the container. (pattern: &lt;code&gt;&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of container creation or deletion. The status is one of the following: CREATING, ACTIVE, or DELETING. While the service is creating the container, the status is CREATING. When the endpoint is available, the status changes to ACTIVE. (ACTIVE, CREATING, DELETING)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the container. The ARN has the following format: arn:aws:<code>&lt;region&gt;</code>:&lt;account that owns this container&gt;:container/&lt;name of container&gt; For example: arn:aws:mediastore:us-west-2:111122223333:container/movies (pattern: &lt;code&gt;arn:aws:mediastore:&#91;a-z&#93;+-&#91;a-z&#93;+-\d:\d&#123;12&#125;:container/&#91;\w-&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessLoggingEnabled" /></td>
+    <td><CopyableCode code="access_logging_enabled" /></td>
     <td><code>boolean</code></td>
     <td>The state of access logging on the container. This value is false by default, indicating that AWS Elemental MediaStore does not send access logs to Amazon CloudWatch Logs. When you enable access logging on the container, MediaStore changes this value to true, indicating that the service delivers access logs for objects stored in that container to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Unix timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The DNS endpoint of the container. Use the endpoint to identify the specific container when sending requests to the data plane. The service assigns this value when the container is created. Once the value has been assigned, it does not change. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the container. (pattern: &lt;code&gt;&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of container creation or deletion. The status is one of the following: CREATING, ACTIVE, or DELETING. While the service is creating the container, the status is CREATING. When the endpoint is available, the status changes to ACTIVE. (ACTIVE, CREATING, DELETING)</td>
 </tr>
@@ -225,12 +225,12 @@ Retrieves the properties of the requested container. This request is commonly us
 
 ```sql
 SELECT
-ARN,
-AccessLoggingEnabled,
-CreationTime,
-Endpoint,
-Name,
-Status
+arn,
+access_logging_enabled,
+creation_time,
+endpoint,
+name,
+status
 FROM aws.mediastore.containers
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,12 +242,12 @@ Lists the properties of all containers in AWS Elemental MediaStore. You can quer
 
 ```sql
 SELECT
-ARN,
-AccessLoggingEnabled,
-CreationTime,
-Endpoint,
-Name,
-Status
+arn,
+access_logging_enabled,
+creation_time,
+endpoint,
+name,
+status
 FROM aws.mediastore.containers
 WHERE region = '{{ region }}' -- required
 ;
@@ -280,7 +280,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Container
+container
 ;
 ```
 </TabItem>

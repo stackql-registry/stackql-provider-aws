@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CaptureTime" /></td>
+    <td><CopyableCode code="capture_time" /></td>
     <td><code>string</code></td>
     <td>The time that inventory information was collected for the managed nodes. (pattern: &lt;code&gt;^(20)&#91;0-9&#93;&#91;0-9&#93;-(0&#91;1-9&#93;|1&#91;012&#93;)-(&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;|0&#91;1-9&#93;)(T)(2&#91;0-3&#93;|&#91;0-1&#93;&#91;0-9&#93;)(:&#91;0-5&#93;&#91;0-9&#93;)(:&#91;0-5&#93;&#91;0-9&#93;)(Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Entries" /></td>
+    <td><CopyableCode code="entries" /></td>
     <td><code>array</code></td>
     <td>A list of inventory items on the managed nodes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The managed node ID targeted by the request to query inventory information. (pattern: &lt;code&gt;(^i-(\w&#123;8&#125;|\w&#123;17&#125;)$)|(^mi-\w&#123;17&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>string</code></td>
     <td>The inventory schema version used by the managed nodes. (pattern: &lt;code&gt;^(&#91;0-9&#93;&#123;1,6&#125;)(\.&#91;0-9&#93;&#123;1,6&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The type of inventory item returned by the request. (pattern: &lt;code&gt;^(AWS|Custom):.*$&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ A list of inventory items returned by the request.
 
 ```sql
 SELECT
-CaptureTime,
-Entries,
-InstanceId,
-NextToken,
-SchemaVersion,
-TypeName
+capture_time,
+entries,
+instance_id,
+next_token,
+schema_version,
+type_name
 FROM aws.ssm.inventory_entries
 WHERE region = '{{ region }}' -- required
 ;

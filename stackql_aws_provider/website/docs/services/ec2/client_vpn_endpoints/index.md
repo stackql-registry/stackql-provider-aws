@@ -50,142 +50,142 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedTargetNetworks" /></td>
+    <td><CopyableCode code="associated_target_networks" /></td>
     <td><code>string</code></td>
     <td>Information about the associated target networks. A target network is a subnet in a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationOptions" /></td>
+    <td><CopyableCode code="authentication_options" /></td>
     <td><code>string</code></td>
     <td>Information about the authentication method used by the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientCidrBlock" /></td>
+    <td><CopyableCode code="client_cidr_block" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address range, in CIDR notation, from which client IP addresses are assigned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientConnectOptions" /></td>
+    <td><CopyableCode code="client_connect_options" /></td>
     <td><code>string</code></td>
     <td>The options for managing connection authorization for new client connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientLoginBannerOptions" /></td>
+    <td><CopyableCode code="client_login_banner_options" /></td>
     <td><code>string</code></td>
     <td>Options for enabling a customizable text banner that will be displayed on Amazon Web Services provided clients when a VPN session is established.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientRouteEnforcementOptions" /></td>
+    <td><CopyableCode code="client_route_enforcement_options" /></td>
     <td><code>string</code></td>
     <td>Client route enforcement is a feature of the Client VPN service that helps enforce administrator defined routes on devices connected through the VPN. T his feature helps improve your security posture by ensuring that network traffic originating from a connected client is not inadvertently sent outside the VPN tunnel. Client route enforcement works by monitoring the route table of a connected device for routing policy changes to the VPN connection. If the feature detects any VPN routing policy modifications, it will automatically force an update to the route table, reverting it back to the expected route configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientVpnEndpointId" /></td>
+    <td><CopyableCode code="client_vpn_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionLogOptions" /></td>
+    <td><CopyableCode code="connection_log_options" /></td>
     <td><code>string</code></td>
     <td>Information about the client connection logging options for the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the Client VPN endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionTime" /></td>
+    <td><CopyableCode code="deletion_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the Client VPN endpoint was deleted, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A brief description of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisconnectOnSessionTimeout" /></td>
+    <td><CopyableCode code="disconnect_on_session_timeout" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the client VPN session is disconnected after the maximum sessionTimeoutHours is reached. If true, users are prompted to reconnect client VPN. If false, client VPN attempts to reconnect automatically. The default value is true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name to be used by clients when connecting to the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsServers" /></td>
+    <td><CopyableCode code="dns_servers" /></td>
     <td><code>string</code></td>
     <td>Information about the DNS servers to be used for DNS resolution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointIpAddressType" /></td>
+    <td><CopyableCode code="endpoint_ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the Client VPN endpoint. Possible values are ipv4 for IPv4 addressing only, ipv6 for IPv6 addressing only, or dual-stack for both IPv4 and IPv6 addressing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the security groups for the target network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfServicePortalUrl" /></td>
+    <td><CopyableCode code="self_service_portal_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the self-service portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerCertificateArn" /></td>
+    <td><CopyableCode code="server_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the server certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionTimeoutHours" /></td>
+    <td><CopyableCode code="session_timeout_hours" /></td>
     <td><code>integer</code></td>
     <td>The maximum VPN session duration time in hours. Valid values: 8 | 10 | 12 | 24 Default value: 24</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SplitTunnel" /></td>
+    <td><CopyableCode code="split_tunnel" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether split-tunnel is enabled in the Client VPN endpoint. For information about split-tunnel VPN endpoints, see Split-Tunnel Client VPN endpoint in the Client VPN Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficIpAddressType" /></td>
+    <td><CopyableCode code="traffic_ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the Client VPN endpoint. Possible values are either ipv4 for IPv4 addressing only, ipv6 for IPv6 addressing only, or dual-stack for both IPv4 and IPv6 addressing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayConfiguration" /></td>
+    <td><CopyableCode code="transit_gateway_configuration" /></td>
     <td><code>string</code></td>
     <td>The Transit Gateway configuration for the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransportProtocol" /></td>
+    <td><CopyableCode code="transport_protocol" /></td>
     <td><code>string</code></td>
     <td>The transport protocol used by the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnPort" /></td>
+    <td><CopyableCode code="vpn_port" /></td>
     <td><code>integer</code></td>
     <td>The port number for the Client VPN endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnProtocol" /></td>
+    <td><CopyableCode code="vpn_protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol used by the VPN session.</td>
 </tr>
@@ -502,34 +502,34 @@ Describes one or more Client VPN endpoints in the account.
 
 ```sql
 SELECT
-AssociatedTargetNetworks,
-AuthenticationOptions,
-ClientCidrBlock,
-ClientConnectOptions,
-ClientLoginBannerOptions,
-ClientRouteEnforcementOptions,
-ClientVpnEndpointId,
-ConnectionLogOptions,
-CreationTime,
-DeletionTime,
-Description,
-DisconnectOnSessionTimeout,
-DnsName,
-DnsServers,
-EndpointIpAddressType,
-SecurityGroupIds,
-SelfServicePortalUrl,
-ServerCertificateArn,
-SessionTimeoutHours,
-SplitTunnel,
-Status,
-Tags,
-TrafficIpAddressType,
-TransitGatewayConfiguration,
-TransportProtocol,
-VpcId,
-VpnPort,
-VpnProtocol
+associated_target_networks,
+authentication_options,
+client_cidr_block,
+client_connect_options,
+client_login_banner_options,
+client_route_enforcement_options,
+client_vpn_endpoint_id,
+connection_log_options,
+creation_time,
+deletion_time,
+description,
+disconnect_on_session_timeout,
+dns_name,
+dns_servers,
+endpoint_ip_address_type,
+security_group_ids,
+self_service_portal_url,
+server_certificate_arn,
+session_timeout_hours,
+split_tunnel,
+status,
+tags,
+traffic_ip_address_type,
+transit_gateway_configuration,
+transport_protocol,
+vpc_id,
+vpn_port,
+vpn_protocol
 FROM aws.ec2.client_vpn_endpoints
 WHERE region = '{{ region }}' -- required
 AND ClientVpnEndpointId = '{{ ClientVpnEndpointId }}'
@@ -609,9 +609,9 @@ SELECT
 '{{ TrafficIpAddressType }}',
 '{{ TransitGatewayConfiguration }}'
 RETURNING
-ClientVpnEndpointId,
-DnsName,
-Status
+client_vpn_endpoint_id,
+dns_name,
+status
 ;
 ```
 </TabItem>
@@ -745,8 +745,8 @@ AND Description = '{{ Description}}'
 AND ClientToken = '{{ ClientToken}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-Code,
-Message;
+code,
+message;
 ```
 </TabItem>
 <TabItem value="modify_client_vpn_endpoint">
@@ -777,7 +777,7 @@ AND ClientRouteEnforcementOptions = '{{ ClientRouteEnforcementOptions}}'
 AND DisconnectOnSessionTimeout = {{ DisconnectOnSessionTimeout}}
 AND TransitGatewayConfiguration = '{{ TransitGatewayConfiguration}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

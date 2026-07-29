@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The AWS Region in which the Voice Connector is created. Default: us-east-1. (us-east-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, ap-northeast-2, ap-northeast-1, ap-southeast-1, ap-southeast-2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Voice Connector's creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationType" /></td>
+    <td><CopyableCode code="integration_type" /></td>
     <td><code>string</code></td>
     <td>The connectors for use with Amazon Connect. (CONNECT_CALL_TRANSFER_CONNECTOR, CONNECT_ANALYTICS_CONNECTOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The Voice Connector's name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9 _.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The type of network of the Voice Connector. Either IPv4 only or dual-stack (IPv4 and IPv6). (IPV4_ONLY, DUAL_STACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundHostName" /></td>
+    <td><CopyableCode code="outbound_host_name" /></td>
     <td><code>string</code></td>
     <td>The outbound host name for the Voice Connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequireEncryption" /></td>
+    <td><CopyableCode code="require_encryption" /></td>
     <td><code>boolean</code></td>
     <td>Enables or disables encryption for the Voice Connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Voice Connector's updated timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectorArn" /></td>
+    <td><CopyableCode code="voice_connector_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Voice Connector. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectorId" /></td>
+    <td><CopyableCode code="voice_connector_id" /></td>
     <td><code>string</code></td>
     <td>The Voice Connector's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to return the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectors" /></td>
+    <td><CopyableCode code="voice_connectors" /></td>
     <td><code>array</code></td>
     <td>The details of the Voice Connectors.</td>
 </tr>
@@ -285,16 +285,16 @@ Retrieves details for the specified Amazon Chime SDK Voice Connector, such as ti
 
 ```sql
 SELECT
-AwsRegion,
-CreatedTimestamp,
-IntegrationType,
-Name,
-NetworkType,
-OutboundHostName,
-RequireEncryption,
-UpdatedTimestamp,
-VoiceConnectorArn,
-VoiceConnectorId
+aws_region,
+created_timestamp,
+integration_type,
+name,
+network_type,
+outbound_host_name,
+require_encryption,
+updated_timestamp,
+voice_connector_arn,
+voice_connector_id
 FROM aws.chime_sdk_voice.voice_connectors
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -307,8 +307,8 @@ Lists the Amazon Chime SDK Voice Connectors in the administrators AWS account.
 
 ```sql
 SELECT
-NextToken,
-VoiceConnectors
+next_token,
+voice_connectors
 FROM aws.chime_sdk_voice.voice_connectors
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -351,7 +351,7 @@ SELECT
 '{{ NetworkType }}',
 '{{ region }}'
 RETURNING
-VoiceConnector
+voice_connector
 ;
 ```
 </TabItem>
@@ -410,7 +410,7 @@ AND region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 AND RequireEncryption = {{ RequireEncryption }} --required
 RETURNING
-VoiceConnector;
+voice_connector;
 ```
 </TabItem>
 <TabItem value="associate_phone_numbers_with_voice_connector">
@@ -427,7 +427,7 @@ voice_connector_id = '{{ voice_connector_id }}' --required
 AND region = '{{ region }}' --required
 AND E164PhoneNumbers = '{{ E164PhoneNumbers }}' --required
 RETURNING
-PhoneNumberErrors;
+phone_number_errors;
 ```
 </TabItem>
 </Tabs>

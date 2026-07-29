@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon resource name (ARN) that specifies the attribute group. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:servicecatalog:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:/attribute-groups/&#91;-.\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The service principal that created the attribute group. (pattern: &lt;code&gt;^(?!-)(&#91;a-z0-9-&#93;+\.)+(aws\.internal|amazonaws\.com(\.cn)?)$&lt;/code&gt;)</td>
 </tr>
@@ -152,7 +152,7 @@ SELECT
 id,
 name,
 arn,
-createdBy
+created_by
 FROM aws.servicecatalog_appregistry.attribute_groups_for_applications
 WHERE application = '{{ application }}' -- required
 AND region = '{{ region }}' -- required

@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the knowledge base. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the knowledge base was created.</td>
 </tr>
@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the knowledge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>A list of reasons that the API operation on the knowledge base failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:knowledge-base/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseConfiguration" /></td>
+    <td><CopyableCode code="knowledge_base_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains details about the vector embeddings configuration of the knowledge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the knowledge base. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role with permissions to invoke API operations on the knowledge base. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the knowledge base. The following statuses are possible: CREATING – The knowledge base is being created. ACTIVE – The knowledge base is ready to be queried. DELETING – The knowledge base is being deleted. UPDATING – The knowledge base is being updated. FAILED – The knowledge base API operation failed. (CREATING, ACTIVE, DELETING, UPDATING, FAILED, DELETE_UNSUCCESSFUL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageConfiguration" /></td>
+    <td><CopyableCode code="storage_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains the storage configuration of the knowledge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the knowledge base was last updated.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the knowledge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the knowledge base. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the knowledge base. (CREATING, ACTIVE, DELETING, UPDATING, FAILED, DELETE_UNSUCCESSFUL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the knowledge base was last updated.</td>
 </tr>
@@ -268,16 +268,16 @@ Gets information about a knowledge base.
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-failureReasons,
-knowledgeBaseArn,
-knowledgeBaseConfiguration,
-knowledgeBaseId,
-roleArn,
+failure_reasons,
+knowledge_base_arn,
+knowledge_base_configuration,
+knowledge_base_id,
+role_arn,
 status,
-storageConfiguration,
-updatedAt
+storage_configuration,
+updated_at
 FROM aws.bedrock_agent.knowledge_bases
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -292,9 +292,9 @@ Lists the knowledge bases in an account. The list also includesinformation about
 SELECT
 name,
 description,
-knowledgeBaseId,
+knowledge_base_id,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agent.knowledge_bases
 WHERE region = '{{ region }}' -- required
 ;
@@ -337,7 +337,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-knowledgeBase
+knowledge_base
 ;
 ```
 </TabItem>
@@ -505,7 +505,7 @@ AND name = '{{ name }}' --required
 AND roleArn = '{{ roleArn }}' --required
 AND knowledgeBaseConfiguration = '{{ knowledgeBaseConfiguration }}' --required
 RETURNING
-knowledgeBase;
+knowledge_base;
 ```
 </TabItem>
 </Tabs>

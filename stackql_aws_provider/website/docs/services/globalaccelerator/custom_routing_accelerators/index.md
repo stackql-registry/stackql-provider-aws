@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceleratorArn" /></td>
+    <td><CopyableCode code="accelerator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom routing accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the accelerator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The Domain Name System (DNS) name that Global Accelerator creates that points to an accelerator's static IPv4 addresses. The naming convention for the DNS name is the following: A lowercase letter a, followed by a 16-bit random hex string, followed by .awsglobalaccelerator.com. For example: a1234567890abcdef.awsglobalaccelerator.com. If you have a dual-stack accelerator, you also have a second DNS name, DualStackDnsName, that points to both the A record and the AAAA record for all four static addresses for the accelerator: two IPv4 addresses and two IPv6 addresses. For more information about the default DNS name, see Support for DNS addressing in Global Accelerator in the Global Accelerator Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the accelerator is enabled. The value is true or false. The default value is true. If the value is set to true, the accelerator cannot be deleted. If set to false, accelerator can be deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type that an accelerator supports. For a custom routing accelerator, the value must be IPV4. (IPV4, DUAL_STACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpSets" /></td>
+    <td><CopyableCode code="ip_sets" /></td>
     <td><code>array</code></td>
     <td>The static IP addresses that Global Accelerator associates with the accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the accelerator was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the accelerator. The name must contain only alphanumeric characters or hyphens (-), and must not begin or end with a hyphen.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Describes the deployment status of the accelerator. (DEPLOYED, IN_PROGRESS)</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceleratorArn" /></td>
+    <td><CopyableCode code="accelerator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom routing accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the accelerator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The Domain Name System (DNS) name that Global Accelerator creates that points to an accelerator's static IPv4 addresses. The naming convention for the DNS name is the following: A lowercase letter a, followed by a 16-bit random hex string, followed by .awsglobalaccelerator.com. For example: a1234567890abcdef.awsglobalaccelerator.com. If you have a dual-stack accelerator, you also have a second DNS name, DualStackDnsName, that points to both the A record and the AAAA record for all four static addresses for the accelerator: two IPv4 addresses and two IPv6 addresses. For more information about the default DNS name, see Support for DNS addressing in Global Accelerator in the Global Accelerator Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the accelerator is enabled. The value is true or false. The default value is true. If the value is set to true, the accelerator cannot be deleted. If set to false, accelerator can be deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type that an accelerator supports. For a custom routing accelerator, the value must be IPV4. (IPV4, DUAL_STACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpSets" /></td>
+    <td><CopyableCode code="ip_sets" /></td>
     <td><code>array</code></td>
     <td>The static IP addresses that Global Accelerator associates with the accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the accelerator was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the accelerator. The name must contain only alphanumeric characters or hyphens (-), and must not begin or end with a hyphen.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Describes the deployment status of the accelerator. (DEPLOYED, IN_PROGRESS)</td>
 </tr>
@@ -248,15 +248,15 @@ Describe a custom routing accelerator.
 
 ```sql
 SELECT
-AcceleratorArn,
-CreatedTime,
-DnsName,
-Enabled,
-IpAddressType,
-IpSets,
-LastModifiedTime,
-Name,
-Status
+accelerator_arn,
+created_time,
+dns_name,
+enabled,
+ip_address_type,
+ip_sets,
+last_modified_time,
+name,
+status
 FROM aws.globalaccelerator.custom_routing_accelerators
 WHERE region = '{{ region }}' -- required
 ;
@@ -268,15 +268,15 @@ List the custom routing accelerators for an Amazon Web Services account.
 
 ```sql
 SELECT
-AcceleratorArn,
-CreatedTime,
-DnsName,
-Enabled,
-IpAddressType,
-IpSets,
-LastModifiedTime,
-Name,
-Status
+accelerator_arn,
+created_time,
+dns_name,
+enabled,
+ip_address_type,
+ip_sets,
+last_modified_time,
+name,
+status
 FROM aws.globalaccelerator.custom_routing_accelerators
 WHERE region = '{{ region }}' -- required
 ;
@@ -317,7 +317,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Accelerator
+accelerator
 ;
 ```
 </TabItem>
@@ -387,7 +387,7 @@ WHERE
 region = '{{ region }}' --required
 AND AcceleratorArn = '{{ AcceleratorArn }}' --required
 RETURNING
-Accelerator;
+accelerator;
 ```
 </TabItem>
 </Tabs>

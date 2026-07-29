@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>An object that contains summary information about a system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validatedNamespaceVersion" /></td>
+    <td><CopyableCode code="validated_namespace_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The namespace version against which the system was validated. Use this value in your system instance.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the system was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionNumber" /></td>
+    <td><CopyableCode code="revision_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number of the system.</td>
 </tr>
@@ -195,7 +195,7 @@ Gets a system.
 SELECT
 definition,
 summary,
-validatedNamespaceVersion
+validated_namespace_version
 FROM aws.iotthingsgraph.system_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,8 +209,8 @@ Searches for summary information about systems in the user's account. You can fi
 SELECT
 id,
 arn,
-createdAt,
-revisionNumber
+created_at,
+revision_number
 FROM aws.iotthingsgraph.system_templates
 WHERE region = '{{ region }}' -- required
 ;

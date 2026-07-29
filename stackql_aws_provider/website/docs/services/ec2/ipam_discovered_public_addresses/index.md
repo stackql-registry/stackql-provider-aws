@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Address" /></td>
+    <td><CopyableCode code="address" /></td>
     <td><code>string</code></td>
     <td>The IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressAllocationId" /></td>
+    <td><CopyableCode code="address_allocation_id" /></td>
     <td><code>string</code></td>
     <td>The allocation ID of the resource the IP address is assigned to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressOwnerId" /></td>
+    <td><CopyableCode code="address_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the owner of the resource the IP address is assigned to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressRegion" /></td>
+    <td><CopyableCode code="address_region" /></td>
     <td><code>string</code></td>
     <td>The Region of the resource the IP address is assigned to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressType" /></td>
+    <td><CopyableCode code="address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationStatus" /></td>
+    <td><CopyableCode code="association_status" /></td>
     <td><code>string</code></td>
     <td>The association status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The instance ID of the instance the assigned IP address is assigned to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryId" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_id" /></td>
     <td><code>string</code></td>
     <td>The resource discovery ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkBorderGroup" /></td>
+    <td><CopyableCode code="network_border_group" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone (AZ) or Local Zone (LZ) network border group that the resource that the IP address is assigned to is in. Defaults to an AZ network border group. For more information on available Local Zones, see Local Zone availability in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceDescription" /></td>
+    <td><CopyableCode code="network_interface_description" /></td>
     <td><code>string</code></td>
     <td>The description of the network interface that IP address is assigned to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The network interface ID of the resource with the assigned IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIpv4PoolId" /></td>
+    <td><CopyableCode code="public_ipv_4_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the public IPv4 pool that the resource with the assigned IP address is from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampleTime" /></td>
+    <td><CopyableCode code="sample_time" /></td>
     <td><code>string</code></td>
     <td>The last successful resource discovery time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>string</code></td>
     <td>Security groups associated with the resource that the IP address is assigned to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Service" /></td>
+    <td><CopyableCode code="service" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service associated with the IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceResource" /></td>
+    <td><CopyableCode code="service_resource" /></td>
     <td><code>string</code></td>
     <td>The resource ARN or ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet that the resource with the assigned IP address is in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Tags associated with the IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC that the resource with the assigned IP address is in.</td>
 </tr>
@@ -239,25 +239,25 @@ Gets the public IP addresses that have been discovered by IPAM.
 
 ```sql
 SELECT
-Address,
-AddressAllocationId,
-AddressOwnerId,
-AddressRegion,
-AddressType,
-AssociationStatus,
-InstanceId,
-IpamResourceDiscoveryId,
-NetworkBorderGroup,
-NetworkInterfaceDescription,
-NetworkInterfaceId,
-PublicIpv4PoolId,
-SampleTime,
-SecurityGroups,
-Service,
-ServiceResource,
-SubnetId,
-Tags,
-VpcId
+address,
+address_allocation_id,
+address_owner_id,
+address_region,
+address_type,
+association_status,
+instance_id,
+ipam_resource_discovery_id,
+network_border_group,
+network_interface_description,
+network_interface_id,
+public_ipv_4_pool_id,
+sample_time,
+security_groups,
+service,
+service_resource,
+subnet_id,
+tags,
+vpc_id
 FROM aws.ec2.ipam_discovered_public_addresses
 WHERE IpamResourceDiscoveryId = '{{ IpamResourceDiscoveryId }}' -- required
 AND AddressRegion = '{{ AddressRegion }}' -- required

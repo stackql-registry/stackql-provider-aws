@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adjustmentAmount" /></td>
+    <td><CopyableCode code="adjustment_amount" /></td>
     <td><code>string</code></td>
     <td>The adjustment amount as a string representation of a decimal number. (pattern: &lt;code&gt;&#91;0-9&#93;*(\.&#91;0-9&#93;&#123;0,8&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adjustmentReasonCode" /></td>
+    <td><CopyableCode code="adjustment_reason_code" /></td>
     <td><code>string</code></td>
     <td>The reason code for the billing adjustment. (INCORRECT_TERMS_ACCEPTED, INCORRECT_METERING, TEST_ENVIRONMENT_CHARGES, ALTERNATIVE_PROCUREMENT_CHANNEL, UNINTENDED_RENEWAL, BUYER_DISSATISFACTION, OTHER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement associated with this billing adjustment request. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingAdjustmentRequestId" /></td>
+    <td><CopyableCode code="billing_adjustment_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the billing adjustment request. (pattern: &lt;code&gt;ba-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the billing adjustment request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the adjustment amount (e.g., USD). (pattern: &lt;code&gt;&#91;A-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The detailed description of the billing adjustment reason, if provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originalInvoiceId" /></td>
+    <td><CopyableCode code="original_invoice_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the original invoice being adjusted.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the billing adjustment request. (PENDING, VALIDATION_FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message providing additional context about the billing adjustment request status. This field is populated only when the status is VALIDATION_FAILED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the billing adjustment request was last updated.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adjustmentAmount" /></td>
+    <td><CopyableCode code="adjustment_amount" /></td>
     <td><code>string</code></td>
     <td>The adjustment amount as a string representation of a decimal number. (pattern: &lt;code&gt;&#91;0-9&#93;*(\.&#91;0-9&#93;&#123;0,8&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement associated with this billing adjustment request. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementType" /></td>
+    <td><CopyableCode code="agreement_type" /></td>
     <td><code>string</code></td>
     <td>The type of agreement. (pattern: &lt;code&gt;&#91;A-Za-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingAdjustmentRequestId" /></td>
+    <td><CopyableCode code="billing_adjustment_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the billing adjustment request. (pattern: &lt;code&gt;ba-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -145,17 +145,17 @@ The following fields are returned by `SELECT` queries:
     <td>The catalog in which the agreement was created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the billing adjustment request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the adjustment amount. (pattern: &lt;code&gt;&#91;A-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originalInvoiceId" /></td>
+    <td><CopyableCode code="original_invoice_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the original invoice being adjusted.</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the billing adjustment request. (PENDING, VALIDATION_FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the billing adjustment request was last updated.</td>
 </tr>
@@ -242,17 +242,17 @@ Retrieves detailed information about a specific billing adjustment request. Sell
 
 ```sql
 SELECT
-adjustmentAmount,
-adjustmentReasonCode,
-agreementId,
-billingAdjustmentRequestId,
-createdAt,
-currencyCode,
+adjustment_amount,
+adjustment_reason_code,
+agreement_id,
+billing_adjustment_request_id,
+created_at,
+currency_code,
 description,
-originalInvoiceId,
+original_invoice_id,
 status,
-statusMessage,
-updatedAt
+status_message,
+updated_at
 FROM aws.marketplace_agreement.billing_adjustment_requests
 WHERE region = '{{ region }}' -- required
 ;
@@ -264,16 +264,16 @@ Lists billing adjustment requests for a specific agreement. Sellers (proposers) 
 
 ```sql
 SELECT
-adjustmentAmount,
-agreementId,
-agreementType,
-billingAdjustmentRequestId,
+adjustment_amount,
+agreement_id,
+agreement_type,
+billing_adjustment_request_id,
 catalog,
-createdAt,
-currencyCode,
-originalInvoiceId,
+created_at,
+currency_code,
+original_invoice_id,
 status,
-updatedAt
+updated_at
 FROM aws.marketplace_agreement.billing_adjustment_requests
 WHERE region = '{{ region }}' -- required
 ;

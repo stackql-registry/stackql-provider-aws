@@ -112,9 +112,9 @@ SELECT
 '{{ X-Amz-Bearer }}',
 '{{ region }}'
 RETURNING
-ConnectionCredentials,
-WebRTCConnection,
-Websocket
+connection_credentials,
+web_rtc_connection,
+websocket
 ;
 ```
 </TabItem>

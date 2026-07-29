@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SuggestionsList" /></td>
+    <td><CopyableCode code="suggestions_list" /></td>
     <td><code>array</code></td>
     <td>A list of possible domain names. If you specified true for OnlyAvailable in the request, the list contains only domains that are available for registration.</td>
 </tr>
@@ -119,7 +119,7 @@ The GetDomainSuggestions operation returns a list of suggested domain names.
 
 ```sql
 SELECT
-SuggestionsList
+suggestions_list
 FROM aws.route53domains.domain_suggestions
 WHERE region = '{{ region }}' -- required
 ;

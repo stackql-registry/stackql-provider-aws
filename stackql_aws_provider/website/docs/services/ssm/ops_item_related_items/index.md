@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The association ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The association type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user or resource that created an OpsItem event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the related-item association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user or resource that created an OpsItem event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the related-item association was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemId" /></td>
+    <td><CopyableCode code="ops_item_id" /></td>
     <td><code>string</code></td>
     <td>The OpsItem ID. (pattern: &lt;code&gt;^(oi)-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceUri" /></td>
+    <td><CopyableCode code="resource_uri" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the related-item resource.</td>
 </tr>
@@ -173,15 +173,15 @@ Lists all related-item resources associated with a Systems Manager OpsCenter Ops
 
 ```sql
 SELECT
-AssociationId,
-AssociationType,
-CreatedBy,
-CreatedTime,
-LastModifiedBy,
-LastModifiedTime,
-OpsItemId,
-ResourceType,
-ResourceUri
+association_id,
+association_type,
+created_by,
+created_time,
+last_modified_by,
+last_modified_time,
+ops_item_id,
+resource_type,
+resource_uri
 FROM aws.ssm.ops_item_related_items
 WHERE region = '{{ region }}' -- required
 ;
@@ -217,7 +217,7 @@ AND AssociationType = '{{ AssociationType }}' --required
 AND ResourceType = '{{ ResourceType }}' --required
 AND ResourceUri = '{{ ResourceUri }}' --required
 RETURNING
-AssociationId;
+association_id;
 ```
 </TabItem>
 <TabItem value="disassociate_ops_item_related_item">

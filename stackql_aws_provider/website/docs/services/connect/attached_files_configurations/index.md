@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachmentScope" /></td>
+    <td><CopyableCode code="attachment_scope" /></td>
     <td><code>string</code></td>
     <td>The scope of the attachment. Valid values are: EMAIL - Attachments for email messages. CHAT - Attachments for chat conversations. CASE - Attachments for cases. TASK - Attachments for tasks. (EMAIL, CHAT, CASE, TASK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtensionConfiguration" /></td>
+    <td><CopyableCode code="extension_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for allowed file extensions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the configuration was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumSizeLimitInBytes" /></td>
+    <td><CopyableCode code="maximum_size_limit_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum size limit for attached files in bytes.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachmentScope" /></td>
+    <td><CopyableCode code="attachment_scope" /></td>
     <td><code>string</code></td>
     <td>The scope of the attachment. Valid values are: EMAIL - Attachments for email messages. CHAT - Attachments for chat conversations. CASE - Attachments for cases. TASK - Attachments for tasks. (EMAIL, CHAT, CASE, TASK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtensionConfiguration" /></td>
+    <td><CopyableCode code="extension_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for allowed file extensions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumSizeLimitInBytes" /></td>
+    <td><CopyableCode code="maximum_size_limit_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum size limit for attached files in bytes. The minimum value is 1 and the maximum value is 104857600 (100 MB).</td>
 </tr>
@@ -209,11 +209,11 @@ Describes the attached files configuration for the specified Amazon Connect inst
 
 ```sql
 SELECT
-AttachmentScope,
-ExtensionConfiguration,
-InstanceId,
-LastModifiedTime,
-MaximumSizeLimitInBytes
+attachment_scope,
+extension_configuration,
+instance_id,
+last_modified_time,
+maximum_size_limit_in_bytes
 FROM aws.connect.attached_files_configurations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND attachment_scope = '{{ attachment_scope }}' -- required
@@ -227,10 +227,10 @@ Provides summary information about the attached files configurations for the spe
 
 ```sql
 SELECT
-AttachmentScope,
-ExtensionConfiguration,
-InstanceId,
-MaximumSizeLimitInBytes
+attachment_scope,
+extension_configuration,
+instance_id,
+maximum_size_limit_in_bytes
 FROM aws.connect.attached_files_configurations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -264,11 +264,11 @@ instance_id = '{{ instance_id }}' --required
 AND attachment_scope = '{{ attachment_scope }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AttachmentScope,
-ExtensionConfiguration,
-InstanceId,
-LastModifiedTime,
-MaximumSizeLimitInBytes;
+attachment_scope,
+extension_configuration,
+instance_id,
+last_modified_time,
+maximum_size_limit_in_bytes;
 ```
 </TabItem>
 </Tabs>

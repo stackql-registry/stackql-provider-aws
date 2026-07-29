@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certKey" /></td>
+    <td><CopyableCode code="cert_key" /></td>
     <td><code>string</code></td>
     <td>For SSH access, the public key to use when accessing your instance For OpenSSH clients (command line SSH), you should save this value to tempkey-cert.pub.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>For SSH access, the date on which the temporary keys expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostKeys" /></td>
+    <td><CopyableCode code="host_keys" /></td>
     <td><code>array</code></td>
     <td>Describes the public SSH host keys or the RDP certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceName" /></td>
+    <td><CopyableCode code="instance_name" /></td>
     <td><code>string</code></td>
     <td>The name of this Amazon Lightsail instance. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The public IP address of the Amazon Lightsail instance. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;1,3&#125;\.)&#123;3&#125;&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv6Addresses" /></td>
+    <td><CopyableCode code="ipv_6_addresses" /></td>
     <td><code>array</code></td>
     <td>The IPv6 address of the Amazon Lightsail instance.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>For RDP access, the password for your Amazon Lightsail instance. Password will be an empty string if the password for your new instance is not ready yet. When you create an instance, it can take up to 15 minutes for the instance to be ready. If you create an instance using any key pair other than the default (LightsailDefaultKeyPair), password will always be an empty string. If you change the Administrator password on the instance, Lightsail will continue to return the original password value. When accessing the instance using RDP, you need to manually enter the Administrator password after changing it from the default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="passwordData" /></td>
+    <td><CopyableCode code="password_data" /></td>
     <td><code>object</code></td>
     <td>For a Windows Server-based instance, an object with the data you can use to retrieve your password. This is only needed if password is empty and the instance is not new (and therefore the password is not ready yet). When you create an instance, it can take up to 15 minutes for the instance to be ready.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateKey" /></td>
+    <td><CopyableCode code="private_key" /></td>
     <td><code>string</code></td>
     <td>For SSH access, the temporary private key. For OpenSSH clients (command line SSH), you should save this value to tempkey).</td>
 </tr>
@@ -169,15 +169,15 @@ Returns temporary SSH keys you can use to connect to a specific virtual private 
 
 ```sql
 SELECT
-certKey,
-expiresAt,
-hostKeys,
-instanceName,
-ipAddress,
-ipv6Addresses,
+cert_key,
+expires_at,
+host_keys,
+instance_name,
+ip_address,
+ipv_6_addresses,
 password,
-passwordData,
-privateKey,
+password_data,
+private_key,
 protocol,
 username
 FROM aws.lightsail.instance_access_details

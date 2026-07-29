@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventBridgeConfiguration" /></td>
+    <td><CopyableCode code="event_bridge_configuration" /></td>
     <td><code>string</code></td>
     <td>Enables delivery of events to Amazon EventBridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LambdaFunctionConfigurations" /></td>
+    <td><CopyableCode code="lambda_function_configurations" /></td>
     <td><code>string</code></td>
     <td>Describes the Lambda functions to invoke and the events for which to invoke them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueConfigurations" /></td>
+    <td><CopyableCode code="queue_configurations" /></td>
     <td><code>string</code></td>
     <td>The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicConfigurations" /></td>
+    <td><CopyableCode code="topic_configurations" /></td>
     <td><code>string</code></td>
     <td>The topic to which notifications are sent and the events for which notifications are generated.</td>
 </tr>
@@ -156,10 +156,10 @@ This operation is not supported for directory buckets. Returns the notification 
 
 ```sql
 SELECT
-EventBridgeConfiguration,
-LambdaFunctionConfigurations,
-QueueConfigurations,
-TopicConfigurations
+event_bridge_configuration,
+lambda_function_configurations,
+queue_configurations,
+topic_configurations
 FROM aws.s3.bucket_notification_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

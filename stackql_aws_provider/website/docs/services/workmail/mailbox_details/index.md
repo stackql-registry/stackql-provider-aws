@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MailboxQuota" /></td>
+    <td><CopyableCode code="mailbox_quota" /></td>
     <td><code>integer</code></td>
     <td>The maximum allowed mailbox size, in MB, for the specified user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MailboxSize" /></td>
+    <td><CopyableCode code="mailbox_size" /></td>
     <td><code>number (double)</code></td>
     <td>The current mailbox size, in MB, for the specified user.</td>
 </tr>
@@ -124,8 +124,8 @@ Requests a user's mailbox details for a specified organization and user.
 
 ```sql
 SELECT
-MailboxQuota,
-MailboxSize
+mailbox_quota,
+mailbox_size
 FROM aws.workmail.mailbox_details
 WHERE region = '{{ region }}' -- required
 ;

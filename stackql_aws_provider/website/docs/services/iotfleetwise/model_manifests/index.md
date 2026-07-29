@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the vehicle model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the vehicle model was created, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the vehicle model. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the vehicle model was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the signal catalog associated with the vehicle model.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the vehicle model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the vehicle model was created, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the vehicle model. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the vehicle model was last updated, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the signal catalog associated with the vehicle model.</td>
 </tr>
@@ -230,10 +230,10 @@ Retrieves information about a vehicle model (model manifest).
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
-signalCatalogArn,
+last_modification_time,
+signal_catalog_arn,
 status
 FROM aws.iotfleetwise.model_manifests
 WHERE region = '{{ region }}' -- required
@@ -248,10 +248,10 @@ Retrieves a list of vehicle models (model manifests). This API operation uses pa
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
-signalCatalogArn,
+last_modification_time,
+signal_catalog_arn,
 status
 FROM aws.iotfleetwise.model_manifests
 WHERE region = '{{ region }}' -- required

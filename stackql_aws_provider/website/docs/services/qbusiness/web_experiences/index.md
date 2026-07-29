@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business application linked to the web experience. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authenticationConfiguration" /></td>
+    <td><CopyableCode code="authentication_configuration" /></td>
     <td><code>object</code></td>
     <td>The authentication configuration information for your Amazon Q Business web experience.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserExtensionConfiguration" /></td>
+    <td><CopyableCode code="browser_extension_configuration" /></td>
     <td><code>object</code></td>
     <td>The container for browser extension configuration for an Amazon Q Business web experience.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business web experience was last created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customizationConfiguration" /></td>
+    <td><CopyableCode code="customization_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains the configuration information to customize the logo, font, and color of an Amazon Q Business web experience with individual files for each property or a CSS file for them all.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultEndpoint" /></td>
+    <td><CopyableCode code="default_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint of your Amazon Q Business web experience. (pattern: &lt;code&gt;(https?|ftp|file):​//(&#91;^\s&#93;*)&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>Provides information about a Amazon Q Business request error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityProviderConfiguration" /></td>
+    <td><CopyableCode code="identity_provider_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides information about the identity provider (IdP) used to authenticate end users of an Amazon Q Business web experience.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>Gets the website domain origins that are allowed to embed the Amazon Q Business web experience. The domain origin refers to the base URL for accessing a website including the protocol (http/https), the domain name, and the port number (if specified).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service role attached to your web experience. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="samplePromptsControlMode" /></td>
+    <td><CopyableCode code="sample_prompts_control_mode" /></td>
     <td><code>string</code></td>
     <td>Determines whether sample prompts are enabled in the web experience for an end user. (ENABLED, DISABLED)</td>
 </tr>
@@ -121,22 +121,22 @@ The following fields are returned by `SELECT` queries:
     <td>The title for your Amazon Q Business web experience. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business web experience was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webExperienceArn" /></td>
+    <td><CopyableCode code="web_experience_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role with the permission to access the Amazon Q Business web experience and required resources. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webExperienceId" /></td>
+    <td><CopyableCode code="web_experience_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business web experience. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="welcomeMessage" /></td>
+    <td><CopyableCode code="welcome_message" /></td>
     <td><code>string</code></td>
     <td>The customized welcome message for end users of an Amazon Q Business web experience.</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business application was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultEndpoint" /></td>
+    <td><CopyableCode code="default_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint URLs for your Amazon Q Business web experience. The URLs are unique and fully hosted by Amazon Web Services. (pattern: &lt;code&gt;(https?|ftp|file):​//(&#91;^\s&#93;*)&lt;/code&gt;)</td>
 </tr>
@@ -170,12 +170,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of your Amazon Q Business web experience. (CREATING, ACTIVE, DELETING, FAILED, PENDING_AUTH_CONFIG)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when your Amazon Q Business web experience was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webExperienceId" /></td>
+    <td><CopyableCode code="web_experience_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of your Amazon Q Business web experience. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -300,24 +300,24 @@ Gets information about an existing Amazon Q Business web experience.
 
 ```sql
 SELECT
-applicationId,
-authenticationConfiguration,
-browserExtensionConfiguration,
-createdAt,
-customizationConfiguration,
-defaultEndpoint,
+application_id,
+authentication_configuration,
+browser_extension_configuration,
+created_at,
+customization_configuration,
+default_endpoint,
 error,
-identityProviderConfiguration,
+identity_provider_configuration,
 origins,
-roleArn,
-samplePromptsControlMode,
+role_arn,
+sample_prompts_control_mode,
 status,
 subtitle,
 title_,
-updatedAt,
-webExperienceArn,
-webExperienceId,
-welcomeMessage
+updated_at,
+web_experience_arn,
+web_experience_id,
+welcome_message
 FROM aws.qbusiness.web_experiences
 WHERE application_id = '{{ application_id }}' -- required
 AND web_experience_id = '{{ web_experience_id }}' -- required
@@ -331,11 +331,11 @@ Lists one or more Amazon Q Business Web Experiences.
 
 ```sql
 SELECT
-createdAt,
-defaultEndpoint,
+created_at,
+default_endpoint,
 status,
-updatedAt,
-webExperienceId
+updated_at,
+web_experience_id
 FROM aws.qbusiness.web_experiences
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -374,7 +374,7 @@ SELECT
 '{{ web_experience_id }}',
 '{{ region }}'
 RETURNING
-anonymousUrl
+anonymous_url
 ;
 ```
 </TabItem>
@@ -413,8 +413,8 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-webExperienceArn,
-webExperienceId
+web_experience_arn,
+web_experience_id
 ;
 ```
 </TabItem>

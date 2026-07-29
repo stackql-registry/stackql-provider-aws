@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionAfterCompletion" /></td>
+    <td><CopyableCode code="action_after_completion" /></td>
     <td><code>string</code></td>
     <td>Indicates the action that EventBridge Scheduler applies to the schedule after the schedule completes invoking the target. (NONE, DELETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schedule. (pattern: &lt;code&gt;^arn:aws(-&#91;a-z&#93;+)?:scheduler:&#91;a-z0-9\-&#93;+:\d&#123;12&#125;:schedule\/&#91;0-9a-zA-Z-_.&#93;+\/&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date, in UTC, before which the schedule can invoke its target. Depending on the schedule's recurrence expression, invocations might stop on, or before, the EndDate you specify. EventBridge Scheduler ignores EndDate for one-time schedules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlexibleTimeWindow" /></td>
+    <td><CopyableCode code="flexible_time_window" /></td>
     <td><code>object</code></td>
     <td>Allows you to configure a time window during which EventBridge Scheduler invokes the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule group associated with this schedule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for a customer managed KMS Key that is be used to encrypt and decrypt your data. (pattern: &lt;code&gt;^arn:aws(-&#91;a-z&#93;+)?:kms:&#91;a-z0-9\-&#93;+:\d&#123;12&#125;:(key|alias)\/&#91;0-9a-zA-Z-_&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationDate" /></td>
+    <td><CopyableCode code="last_modification_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>The expression that defines when the schedule runs. The following formats are supported. at expression - at(yyyy-mm-ddThh:mm:ss) rate expression - rate(value unit) cron expression - cron(fields) You can use at expressions to create one-time schedules that invoke a target once, at the time and in the time zone, that you specify. You can use rate and cron expressions to create recurring schedules. Rate-based schedules are useful when you want to invoke a target at regular intervals, such as every 15 minutes or every five days. Cron-based schedules are useful when you want to invoke a target periodically at a specific time, such as at 8:00 am (UTC+0) every 1st day of the month. A cron expression consists of six fields separated by white spaces: (minutes hours day_of_month month day_of_week year). A rate expression consists of a value as a positive integer, and a unit with the following options: minute | minutes | hour | hours | day | days For more information and examples, see Schedule types on EventBridge Scheduler in the EventBridge Scheduler User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpressionTimezone" /></td>
+    <td><CopyableCode code="schedule_expression_timezone" /></td>
     <td><code>string</code></td>
     <td>The timezone in which the scheduling expression is evaluated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date, in UTC, after which the schedule can begin invoking its target. Depending on the schedule's recurrence expression, invocations might occur on, or after, the StartDate you specify. EventBridge Scheduler ignores StartDate for one-time schedules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the schedule is enabled or disabled. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>object</code></td>
     <td>The schedule's target. EventBridge Scheduler supports templated target that invoke common API operations, as well as universal targets that you can customize to invoke over 6,000 API operations across more than 270 services. You can only specify one templated or universal target for a schedule.</td>
 </tr>
@@ -140,37 +140,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schedule. (pattern: &lt;code&gt;^arn:aws(-&#91;a-z&#93;+)?:scheduler:&#91;a-z0-9\-&#93;+:\d&#123;12&#125;:schedule\/&#91;0-9a-zA-Z-_.&#93;+\/&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule group associated with this schedule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationDate" /></td>
+    <td><CopyableCode code="last_modification_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the schedule is enabled or disabled. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>object</code></td>
     <td>The schedule's target details.</td>
 </tr>
@@ -308,21 +308,21 @@ Retrieves the specified schedule.
 
 ```sql
 SELECT
-ActionAfterCompletion,
-Arn,
-CreationDate,
-Description,
-EndDate,
-FlexibleTimeWindow,
-GroupName,
-KmsKeyArn,
-LastModificationDate,
-Name,
-ScheduleExpression,
-ScheduleExpressionTimezone,
-StartDate,
-State,
-Target
+action_after_completion,
+arn,
+creation_date,
+description,
+end_date,
+flexible_time_window,
+group_name,
+kms_key_arn,
+last_modification_date,
+name,
+schedule_expression,
+schedule_expression_timezone,
+start_date,
+state,
+target
 FROM aws.scheduler.schedules
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -336,13 +336,13 @@ Returns a paginated list of your EventBridge Scheduler schedules.
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-GroupName,
-LastModificationDate,
-Name,
-State,
-Target
+arn,
+creation_date,
+group_name,
+last_modification_date,
+name,
+state,
+target
 FROM aws.scheduler.schedules
 WHERE region = '{{ region }}' -- required
 AND ScheduleGroup = '{{ ScheduleGroup }}'
@@ -402,7 +402,7 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-ScheduleArn
+schedule_arn
 ;
 ```
 </TabItem>
@@ -535,7 +535,7 @@ AND region = '{{ region }}' --required
 AND FlexibleTimeWindow = '{{ FlexibleTimeWindow }}' --required
 AND ScheduleExpression = '{{ ScheduleExpression }}' --required
 RETURNING
-ScheduleArn;
+schedule_arn;
 ```
 </TabItem>
 </Tabs>

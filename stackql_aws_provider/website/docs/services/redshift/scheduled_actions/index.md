@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The end time in UTC when the schedule is no longer active. After this time, the scheduled action does not trigger.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRole" /></td>
+    <td><CopyableCode code="iam_role" /></td>
     <td><code>string</code></td>
     <td>The IAM role to assume to run the scheduled action. This IAM role must have permission to run the Amazon Redshift API operation in the scheduled action. This IAM role must allow the Amazon Redshift scheduler (Principal scheduler.redshift.amazonaws.com) to assume permissions on your behalf. For more information about the IAM role to use with the Amazon Redshift scheduler, see Using Identity-Based Policies for Amazon Redshift in the Amazon Redshift Cluster Management Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextInvocations" /></td>
+    <td><CopyableCode code="next_invocations" /></td>
     <td><code>string</code></td>
     <td>List of times when the scheduled action will run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>The schedule for a one-time (at format) or recurring (cron format) scheduled action. Schedule invocations must be separated by at least one hour. Format of at expressions is "at(yyyy-mm-ddThh:mm:ss)". For example, "at(2016-03-04T17:27:00)". Format of cron expressions is "cron(Minutes Hours Day-of-month Month Day-of-week Year)". For example, "cron(0 10 ? * MON *)". For more information, see Cron Expressions in the Amazon CloudWatch Events User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledActionDescription" /></td>
+    <td><CopyableCode code="scheduled_action_description" /></td>
     <td><code>string</code></td>
     <td>The description of the scheduled action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledActionName" /></td>
+    <td><CopyableCode code="scheduled_action_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scheduled action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The start time in UTC when the schedule is active. Before this time, the scheduled action does not trigger.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the scheduled action. For example, DISABLED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetAction" /></td>
+    <td><CopyableCode code="target_action" /></td>
     <td><code>string</code></td>
     <td>A JSON format string of the Amazon Redshift API operation with input parameters. "&#123;\"ResizeCluster\":&#123;\"NodeType\":\"ra3.4xlarge\",\"ClusterIdentifier\":\"my-test-cluster\",\"NumberOfNodes\":3&#125;&#125;".</td>
 </tr>
@@ -260,15 +260,15 @@ Describes properties of scheduled actions.
 
 ```sql
 SELECT
-EndTime,
-IamRole,
-NextInvocations,
-Schedule,
-ScheduledActionDescription,
-ScheduledActionName,
-StartTime,
-State,
-TargetAction
+end_time,
+iam_role,
+next_invocations,
+schedule,
+scheduled_action_description,
+scheduled_action_name,
+start_time,
+state,
+target_action
 FROM aws.redshift.scheduled_actions
 WHERE region = '{{ region }}' -- required
 AND ScheduledActionName = '{{ ScheduledActionName }}'
@@ -321,15 +321,15 @@ SELECT
 '{{ EndTime }}',
 '{{ Enable }}'
 RETURNING
-EndTime,
-IamRole,
-NextInvocations,
-Schedule,
-ScheduledActionDescription,
-ScheduledActionName,
-StartTime,
-State,
-TargetAction
+end_time,
+iam_role,
+next_invocations,
+schedule,
+scheduled_action_description,
+scheduled_action_name,
+start_time,
+state,
+target_action
 ;
 ```
 </TabItem>
@@ -403,15 +403,15 @@ AND StartTime = '{{ StartTime}}'
 AND EndTime = '{{ EndTime}}'
 AND Enable = {{ Enable}}
 RETURNING
-EndTime,
-IamRole,
-NextInvocations,
-Schedule,
-ScheduledActionDescription,
-ScheduledActionName,
-StartTime,
-State,
-TargetAction;
+end_time,
+iam_role,
+next_invocations,
+schedule,
+scheduled_action_description,
+scheduled_action_name,
+start_time,
+state,
+target_action;
 ```
 </TabItem>
 </Tabs>

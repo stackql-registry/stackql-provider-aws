@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="coreDeviceExecutionStatus" /></td>
+    <td><CopyableCode code="core_device_execution_status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment job on the Greengrass core device. IN_PROGRESS – The deployment job is running. QUEUED – The deployment job is in the job queue and waiting to run. FAILED – The deployment failed. For more information, see the statusDetails field. COMPLETED – The deployment to an IoT thing was completed successfully. TIMED_OUT – The deployment didn't complete in the allotted time. CANCELED – The deployment was canceled by the user. REJECTED – The deployment was rejected. For more information, see the statusDetails field. SUCCEEDED – The deployment to an IoT thing group was completed successfully. (IN_PROGRESS, QUEUED, FAILED, COMPLETED, TIMED_OUT, CANCELED, REJECTED, SUCCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the deployment was created, expressed in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentName" /></td>
+    <td><CopyableCode code="deployment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the deployment job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iotJobArn" /></td>
+    <td><CopyableCode code="iot_job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IoT job that applies the deployment to target devices. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iot:&#91;^:&#93;+:&#91;0-9&#93;+:job/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iotJobId" /></td>
+    <td><CopyableCode code="iot_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IoT job that applies the deployment to target devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedTimestamp" /></td>
+    <td><CopyableCode code="modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the deployment job was last modified, expressed in ISO 8601 format.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>The reason code for the update, if the job was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>The status details that explain why a deployment has an error. This response will be null if the deployment is in a success state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the target IoT thing or thing group. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iot:&#91;^:&#93;*:&#91;0-9&#93;+:(thing|thinggroup)/.+&lt;/code&gt;)</td>
 </tr>
@@ -184,17 +184,17 @@ Retrieves a paginated list of deployment jobs that IoT Greengrass sends to Green
 
 ```sql
 SELECT
-coreDeviceExecutionStatus,
-creationTimestamp,
-deploymentId,
-deploymentName,
+core_device_execution_status,
+creation_timestamp,
+deployment_id,
+deployment_name,
 description,
-iotJobArn,
-iotJobId,
-modifiedTimestamp,
+iot_job_arn,
+iot_job_id,
+modified_timestamp,
 reason,
-statusDetails,
-targetArn
+status_details,
+target_arn
 FROM aws.greengrassv2.effective_deployments
 WHERE core_device_thing_name = '{{ core_device_thing_name }}' -- required
 AND region = '{{ region }}' -- required

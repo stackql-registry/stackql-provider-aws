@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroupFamily" /></td>
+    <td><CopyableCode code="parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster parameter group family that this cluster parameter group is compatible with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroupName" /></td>
+    <td><CopyableCode code="parameter_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the cluster parameter group.</td>
 </tr>
@@ -205,10 +205,10 @@ Returns a list of Amazon Redshift parameter groups, including parameter groups y
 
 ```sql
 SELECT
-Description,
-ParameterGroupFamily,
-ParameterGroupName,
-Tags
+description,
+parameter_group_family,
+parameter_group_name,
+tags
 FROM aws.redshift.cluster_parameter_groups
 WHERE region = '{{ region }}' -- required
 AND ParameterGroupName = '{{ ParameterGroupName }}'
@@ -250,10 +250,10 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-Description,
-ParameterGroupFamily,
-ParameterGroupName,
-Tags
+description,
+parameter_group_family,
+parameter_group_name,
+tags
 ;
 ```
 </TabItem>
@@ -306,8 +306,8 @@ ParameterGroupName = '{{ ParameterGroupName }}' --required
 AND region = '{{ region }}' --required
 AND Parameters = '{{ Parameters}}'
 RETURNING
-ParameterGroupName,
-ParameterGroupStatus;
+parameter_group_name,
+parameter_group_status;
 ```
 </TabItem>
 </Tabs>

@@ -56,32 +56,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the access point. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPointArn" /></td>
+    <td><CopyableCode code="access_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the access point. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;/access-point/fsap-&#91;0-9a-f&#93;&#123;17,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPointId" /></td>
+    <td><CopyableCode code="access_point_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the access point. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;/access-point/fsap-&#91;0-9a-f&#93;&#123;17,40&#125;|fsap-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the S3 File System. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;|fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the access point owner. (pattern: &lt;code&gt;(\d&#123;12&#125;)|(\d&#123;4&#125;-&#123;4&#125;-\d&#123;4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="posixUser" /></td>
+    <td><CopyableCode code="posix_user" /></td>
     <td><code>object</code></td>
     <td>Specifies the POSIX identity with uid, gid, and secondary group IDs for user enforcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rootDirectory" /></td>
+    <td><CopyableCode code="root_directory" /></td>
     <td><code>object</code></td>
     <td>Specifies the root directory path and optional creation permissions for newly created directories.</td>
 </tr>
@@ -110,37 +110,37 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the access point. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPointArn" /></td>
+    <td><CopyableCode code="access_point_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the access point. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;/access-point/fsap-&#91;0-9a-f&#93;&#123;17,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPointId" /></td>
+    <td><CopyableCode code="access_point_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the access point. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;/access-point/fsap-&#91;0-9a-f&#93;&#123;17,40&#125;|fsap-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The client token used for idempotency when the access point was created. (pattern: &lt;code&gt;(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the S3 File System. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;|fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the access point owner. (pattern: &lt;code&gt;(\d&#123;12&#125;)|(\d&#123;4&#125;-&#123;4&#125;-\d&#123;4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="posixUser" /></td>
+    <td><CopyableCode code="posix_user" /></td>
     <td><code>object</code></td>
     <td>Specifies the POSIX identity with uid, gid, and secondary group IDs for user enforcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rootDirectory" /></td>
+    <td><CopyableCode code="root_directory" /></td>
     <td><code>object</code></td>
     <td>Specifies the root directory path and optional creation permissions for newly created directories.</td>
 </tr>
@@ -262,12 +262,12 @@ Returns resource information for all S3 File System Access Points associated wit
 ```sql
 SELECT
 name,
-accessPointArn,
-accessPointId,
-fileSystemId,
-ownerId,
-posixUser,
-rootDirectory,
+access_point_arn,
+access_point_id,
+file_system_id,
+owner_id,
+posix_user,
+root_directory,
 status
 FROM aws.s3files.access_points
 WHERE fileSystemId = '{{ fileSystemId }}' -- required
@@ -284,13 +284,13 @@ Returns resource information for an S3 File System Access Point.
 ```sql
 SELECT
 name,
-accessPointArn,
-accessPointId,
-clientToken,
-fileSystemId,
-ownerId,
-posixUser,
-rootDirectory,
+access_point_arn,
+access_point_id,
+client_token,
+file_system_id,
+owner_id,
+posix_user,
+root_directory,
 status,
 tags
 FROM aws.s3files.access_points
@@ -333,13 +333,13 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-accessPointArn,
-accessPointId,
-clientToken,
-fileSystemId,
-ownerId,
-posixUser,
-rootDirectory,
+access_point_arn,
+access_point_id,
+client_token,
+file_system_id,
+owner_id,
+posix_user,
+root_directory,
 status,
 tags
 ;

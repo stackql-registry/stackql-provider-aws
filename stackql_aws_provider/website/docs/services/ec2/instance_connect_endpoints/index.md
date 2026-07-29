@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone of the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time that the EC2 Instance Connect Endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name of the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FipsDnsName" /></td>
+    <td><CopyableCode code="fips_dns_name" /></td>
     <td><code>string</code></td>
     <td>The Federal Information Processing Standards (FIPS) compliant DNS name of the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceConnectEndpointArn" /></td>
+    <td><CopyableCode code="instance_connect_endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceConnectEndpointId" /></td>
+    <td><CopyableCode code="instance_connect_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceIds" /></td>
+    <td><CopyableCode code="network_interface_ids" /></td>
     <td><code>string</code></td>
     <td>The ID of the elastic network interface that Amazon EC2 automatically created when creating the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that created the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreserveClientIp" /></td>
+    <td><CopyableCode code="preserve_client_ip" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether your client's IP address is preserved as the source when you connect to a resource. The following are the possible values. true - Use the IP address of the client. Your instance must have an IPv4 address. false - Use the IP address of the network interface. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicDnsNames" /></td>
+    <td><CopyableCode code="public_dns_names" /></td>
     <td><code>string</code></td>
     <td>The public DNS names of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>string</code></td>
     <td>The security groups associated with the endpoint. If you didn't specify a security group, the default security group for your VPC is associated with the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>The message for the current state of the EC2 Instance Connect Endpoint. Can include a failure message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet in which the EC2 Instance Connect Endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the EC2 Instance Connect Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC in which the EC2 Instance Connect Endpoint was created.</td>
 </tr>
@@ -285,24 +285,24 @@ Describes the specified EC2 Instance Connect Endpoints or all EC2 Instance Conne
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CreatedAt,
-DnsName,
-FipsDnsName,
-InstanceConnectEndpointArn,
-InstanceConnectEndpointId,
-IpAddressType,
-NetworkInterfaceIds,
-OwnerId,
-PreserveClientIp,
-PublicDnsNames,
-SecurityGroupIds,
-State,
-StateMessage,
-SubnetId,
-Tags,
-VpcId
+availability_zone,
+availability_zone_id,
+created_at,
+dns_name,
+fips_dns_name,
+instance_connect_endpoint_arn,
+instance_connect_endpoint_id,
+ip_address_type,
+network_interface_ids,
+owner_id,
+preserve_client_ip,
+public_dns_names,
+security_group_ids,
+state,
+state_message,
+subnet_id,
+tags,
+vpc_id
 FROM aws.ec2.instance_connect_endpoints
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -350,24 +350,24 @@ SELECT
 '{{ TagSpecification }}',
 '{{ IpAddressType }}'
 RETURNING
-AvailabilityZone,
-AvailabilityZoneId,
-CreatedAt,
-DnsName,
-FipsDnsName,
-InstanceConnectEndpointArn,
-InstanceConnectEndpointId,
-IpAddressType,
-NetworkInterfaceIds,
-OwnerId,
-PreserveClientIp,
-PublicDnsNames,
-SecurityGroupIds,
-State,
-StateMessage,
-SubnetId,
-Tags,
-VpcId
+availability_zone,
+availability_zone_id,
+created_at,
+dns_name,
+fips_dns_name,
+instance_connect_endpoint_arn,
+instance_connect_endpoint_id,
+ip_address_type,
+network_interface_ids,
+owner_id,
+preserve_client_ip,
+public_dns_names,
+security_group_ids,
+state,
+state_message,
+subnet_id,
+tags,
+vpc_id
 ;
 ```
 </TabItem>
@@ -436,7 +436,7 @@ AND IpAddressType = '{{ IpAddressType}}'
 AND SecurityGroupId = '{{ SecurityGroupId}}'
 AND PreserveClientIp = {{ PreserveClientIp}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

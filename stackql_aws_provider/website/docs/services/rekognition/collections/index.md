@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CollectionARN" /></td>
+    <td><CopyableCode code="collection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The number of milliseconds since the Unix epoch time until the creation of the collection. The Unix epoch time is 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaceCount" /></td>
+    <td><CopyableCode code="face_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of faces that are indexed into the collection. To index faces into a collection, use IndexFaces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaceModelVersion" /></td>
+    <td><CopyableCode code="face_model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the face model that's used by the collection for face detection. For more information, see Model versioning in the Amazon Rekognition Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of UserIDs assigned to the specified colleciton.</td>
 </tr>
@@ -181,11 +181,11 @@ Describes the specified collection. You can use DescribeCollection to get inform
 
 ```sql
 SELECT
-CollectionARN,
-CreationTimestamp,
-FaceCount,
-FaceModelVersion,
-UserCount
+collection_arn,
+creation_timestamp,
+face_count,
+face_model_version,
+user_count
 FROM aws.rekognition.collections
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,9 +230,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CollectionArn,
-FaceModelVersion,
-StatusCode
+collection_arn,
+face_model_version,
+status_code
 ;
 ```
 </TabItem>

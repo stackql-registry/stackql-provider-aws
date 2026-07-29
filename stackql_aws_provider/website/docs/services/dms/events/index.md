@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Date" /></td>
+    <td><CopyableCode code="date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventCategories" /></td>
+    <td><CopyableCode code="event_categories" /></td>
     <td><code>array</code></td>
     <td>The event categories available for the specified source type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The event message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIdentifier" /></td>
+    <td><CopyableCode code="source_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of an event source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The type of DMS resource that generates events. Valid values: replication-instance | endpoint | replication-task (replication-instance)</td>
 </tr>
@@ -139,11 +139,11 @@ Lists events for a given source identifier and source type. You can also specify
 
 ```sql
 SELECT
-Date,
-EventCategories,
-Message,
-SourceIdentifier,
-SourceType
+date,
+event_categories,
+message,
+source_identifier,
+source_type
 FROM aws.dms.events
 WHERE region = '{{ region }}' -- required
 ;

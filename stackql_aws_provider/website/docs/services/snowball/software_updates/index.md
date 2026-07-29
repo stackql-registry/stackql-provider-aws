@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="UpdatesURI" /></td>
+    <td><CopyableCode code="updates_uri" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 presigned URL for the update file associated with the specified JobId value. The software update will be available for 2 days after this request is made. To access an update after the 2 days have passed, you'll have to make another call to GetSoftwareUpdates. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Returns an Amazon S3 presigned URL for an update file associated with a specifie
 
 ```sql
 SELECT
-UpdatesURI
+updates_uri
 FROM aws.snowball.software_updates
 WHERE region = '{{ region }}' -- required
 ;

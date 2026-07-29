@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Containers" /></td>
+    <td><CopyableCode code="containers" /></td>
     <td><code>array</code></td>
     <td>The containers in the inference pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the model was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentRecommendation" /></td>
+    <td><CopyableCode code="deployment_recommendation" /></td>
     <td><code>object</code></td>
     <td>A set of recommended deployment configurations for the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableNetworkIsolation" /></td>
+    <td><CopyableCode code="enable_network_isolation" /></td>
     <td><code>boolean</code></td>
     <td>If True, no inbound or outbound network calls can be made to or from the model container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that you specified for the model. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceExecutionConfig" /></td>
+    <td><CopyableCode code="inference_execution_config" /></td>
     <td><code>object</code></td>
     <td>Specifies details of how containers in a multi-container endpoint are called.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>Name of the SageMaker model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;\-a-zA-Z0-9&#93;*&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryContainer" /></td>
+    <td><CopyableCode code="primary_container" /></td>
     <td><code>object</code></td>
     <td>Describes the container, as part of model definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC. For more information, see Give SageMaker Access to Resources in your Amazon VPC.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the model was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model that you want a summary for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;\-a-zA-Z0-9&#93;*&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
@@ -216,16 +216,16 @@ Describes a model that you created using the CreateModel API.
 
 ```sql
 SELECT
-Containers,
-CreationTime,
-DeploymentRecommendation,
-EnableNetworkIsolation,
-ExecutionRoleArn,
-InferenceExecutionConfig,
-ModelArn,
-ModelName,
-PrimaryContainer,
-VpcConfig
+containers,
+creation_time,
+deployment_recommendation,
+enable_network_isolation,
+execution_role_arn,
+inference_execution_config,
+model_arn,
+model_name,
+primary_container,
+vpc_config
 FROM aws.sagemaker.models
 WHERE region = '{{ region }}' -- required
 ;
@@ -237,9 +237,9 @@ Lists models created with the CreateModel API.
 
 ```sql
 SELECT
-CreationTime,
-ModelArn,
-ModelName
+creation_time,
+model_arn,
+model_name
 FROM aws.sagemaker.models
 WHERE region = '{{ region }}' -- required
 ;
@@ -284,7 +284,7 @@ SELECT
 {{ EnableNetworkIsolation }},
 '{{ region }}'
 RETURNING
-ModelArn
+model_arn
 ;
 ```
 </TabItem>

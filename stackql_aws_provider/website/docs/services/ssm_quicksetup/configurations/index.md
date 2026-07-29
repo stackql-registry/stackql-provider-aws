@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Account" /></td>
+    <td><CopyableCode code="account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account where the configuration was deployed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationDefinitionId" /></td>
+    <td><CopyableCode code="configuration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the configuration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The datetime stamp when the configuration manager was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A service generated identifier for the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The datetime stamp when the configuration manager was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagerArn" /></td>
+    <td><CopyableCode code="manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the configuration manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters for the configuration definition type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the configuration was deployed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusSummaries" /></td>
+    <td><CopyableCode code="status_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of the state of the configuration manager. This includes deployment statuses, association statuses, drift statuses, health checks, and more.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the Quick Setup configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeVersion" /></td>
+    <td><CopyableCode code="type_version" /></td>
     <td><code>string</code></td>
     <td>The version of the Quick Setup type used.</td>
 </tr>
@@ -120,52 +120,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Account" /></td>
+    <td><CopyableCode code="account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account where the configuration was deployed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationDefinitionId" /></td>
+    <td><CopyableCode code="configuration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the configuration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The datetime stamp when the configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstClassParameters" /></td>
+    <td><CopyableCode code="first_class_parameters" /></td>
     <td><code>object</code></td>
     <td>The common parameters and values for the configuration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A service generated identifier for the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagerArn" /></td>
+    <td><CopyableCode code="manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the configuration manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the configuration was deployed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusSummaries" /></td>
+    <td><CopyableCode code="status_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of the state of the configuration manager. This includes deployment statuses, association statuses, drift statuses, health checks, and more.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the Quick Setup configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeVersion" /></td>
+    <td><CopyableCode code="type_version" /></td>
     <td><code>string</code></td>
     <td>The version of the Quick Setup type used.</td>
 </tr>
@@ -264,17 +264,17 @@ Returns details about the specified configuration.
 
 ```sql
 SELECT
-Account,
-ConfigurationDefinitionId,
-CreatedAt,
-Id,
-LastModifiedAt,
-ManagerArn,
-Parameters,
-Region,
-StatusSummaries,
-Type,
-TypeVersion
+account,
+configuration_definition_id,
+created_at,
+id,
+last_modified_at,
+manager_arn,
+parameters,
+region,
+status_summaries,
+type,
+type_version
 FROM aws.ssm_quicksetup.configurations
 WHERE configuration_id = '{{ configuration_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -287,16 +287,16 @@ Returns configurations deployed by Quick Setup in the requesting Amazon Web Serv
 
 ```sql
 SELECT
-Account,
-ConfigurationDefinitionId,
-CreatedAt,
-FirstClassParameters,
-Id,
-ManagerArn,
-Region,
-StatusSummaries,
-Type,
-TypeVersion
+account,
+configuration_definition_id,
+created_at,
+first_class_parameters,
+id,
+manager_arn,
+region,
+status_summaries,
+type,
+type_version
 FROM aws.ssm_quicksetup.configurations
 WHERE region = '{{ region }}' -- required
 ;

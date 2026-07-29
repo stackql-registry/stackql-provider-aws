@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>Filename of the Amazon Q Business attachment. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachmentId" /></td>
+    <td><CopyableCode code="attachment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business attachment. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conversationId" /></td>
+    <td><CopyableCode code="conversation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business conversation the attachment is associated with. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyFrom" /></td>
+    <td><CopyableCode code="copy_from" /></td>
     <td><code>object</code></td>
     <td>A CopyFromSource containing a reference to the original source of the Amazon Q Business attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business attachment was created.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>Provides information about a Amazon Q Business request error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSize" /></td>
+    <td><CopyableCode code="file_size" /></td>
     <td><code>integer</code></td>
     <td>Size in bytes of the Amazon Q Business attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileType" /></td>
+    <td><CopyableCode code="file_type" /></td>
     <td><code>string</code></td>
     <td>Filetype of the Amazon Q Business attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="md5chksum" /></td>
+    <td><CopyableCode code="md_5chksum" /></td>
     <td><code>string</code></td>
     <td>MD5 checksum of the Amazon Q Business attachment contents.</td>
 </tr>
@@ -207,14 +207,14 @@ Gets a list of attachments associated with an Amazon Q Business web experience o
 ```sql
 SELECT
 name,
-attachmentId,
-conversationId,
-copyFrom,
-createdAt,
+attachment_id,
+conversation_id,
+copy_from,
+created_at,
 error,
-fileSize,
-fileType,
-md5chksum,
+file_size,
+file_type,
+md_5chksum,
 status
 FROM aws.qbusiness.attachments
 WHERE application_id = '{{ application_id }}' -- required

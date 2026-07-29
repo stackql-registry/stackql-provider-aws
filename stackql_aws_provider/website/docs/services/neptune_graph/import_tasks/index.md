@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="attemptNumber" /></td>
+    <td><CopyableCode code="attempt_number" /></td>
     <td><code>integer</code></td>
     <td>The number of the current attempts to execute the import task.</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the format of S3 data to be imported. Valid values are CSV, which identifies the Gremlin CSV format or OPENCYPHER, which identifies the openCypher load format. (CSV, OPEN_CYPHER, PARQUET, NTRIPLES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="graphId" /></td>
+    <td><CopyableCode code="graph_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Neptune Analytics graph. (pattern: &lt;code&gt;g-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importOptions" /></td>
+    <td><CopyableCode code="import_options" /></td>
     <td><code>object</code></td>
     <td>Contains options for controlling the import process. For example, if the failOnError key is set to false, the import skips problem data and attempts to continue (whereas if set to true, the default, or if omitted, the import operation halts immediately when an error is encountered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importTaskDetails" /></td>
+    <td><CopyableCode code="import_task_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the specified import task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parquetType" /></td>
+    <td><CopyableCode code="parquet_type" /></td>
     <td><code>string</code></td>
     <td>The parquet type of the import task. (COLUMNAR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that will allow access to the data that is to be imported. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:(role|role/service-role)(/&#91;\w+=,.@-&#93;+)+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the import task: INITIALIZING – The necessary resources needed to create the graph are being prepared. ANALYZING_DATA – The data is being analyzed to determine the optimal infrastructure configuration for the new graph. RE_PROVISIONING – The data did not fit into the provisioned graph, so it is being re-provisioned with more capacity. IMPORTING – The data is being loaded. ERROR_ENCOUNTERED – An error has been encountered while trying to create the graph and import the data. ERROR_ENCOUNTERED_ROLLING_BACK – Because of the error that was encountered, the graph is being rolled back and all its resources released. SUCCEEDED – Graph creation and data loading succeeded. FAILED – Graph creation or data loading failed. When the status is FAILED, you can use get-graphs to get more information about the state of the graph. CANCELLING – Because you cancelled the import task, cancellation is in progress. CANCELLED – You have successfully cancelled the import task. (INITIALIZING, EXPORTING, ANALYZING_DATA, IMPORTING, REPROVISIONING, ROLLING_BACK, SUCCEEDED, FAILED, CANCELLING, CANCELLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the import task has this status value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the import task. (pattern: &lt;code&gt;t-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -125,17 +125,17 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the format of S3 data to be imported. Valid values are CSV, which identifies the Gremlin CSV format or OPENCYPHER, which identies the openCypher load format. (CSV, OPEN_CYPHER, PARQUET, NTRIPLES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="graphId" /></td>
+    <td><CopyableCode code="graph_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Neptune Analytics graph. (pattern: &lt;code&gt;g-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parquetType" /></td>
+    <td><CopyableCode code="parquet_type" /></td>
     <td><code>string</code></td>
     <td>The parquet type of the import task. (COLUMNAR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that will allow access to the data that is to be imported. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:(role|role/service-role)(/&#91;\w+=,.@-&#93;+)+&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>Status of the import task. (INITIALIZING, EXPORTING, ANALYZING_DATA, IMPORTING, REPROVISIONING, ROLLING_BACK, SUCCEEDED, FAILED, CANCELLING, CANCELLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the import task. (pattern: &lt;code&gt;t-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -249,17 +249,17 @@ Retrieves a specified import task.
 
 ```sql
 SELECT
-attemptNumber,
+attempt_number,
 format_,
-graphId,
-importOptions,
-importTaskDetails,
-parquetType,
-roleArn,
+graph_id,
+import_options,
+import_task_details,
+parquet_type,
+role_arn,
 source,
 status,
-statusReason,
-taskId
+status_reason,
+task_id
 FROM aws.neptune_graph.import_tasks
 WHERE task_identifier = '{{ task_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,12 +273,12 @@ Lists import tasks.
 ```sql
 SELECT
 format_,
-graphId,
-parquetType,
-roleArn,
+graph_id,
+parquet_type,
+role_arn,
 source,
 status,
-taskId
+task_id
 FROM aws.neptune_graph.import_tasks
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -342,13 +342,13 @@ SELECT
 '{{ region }}'
 RETURNING
 format_,
-graphId,
-importOptions,
-parquetType,
-roleArn,
+graph_id,
+import_options,
+parquet_type,
+role_arn,
 source,
 status,
-taskId
+task_id
 ;
 ```
 </TabItem>

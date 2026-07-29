@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the simulation. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:(?:aws|aws-cn|aws-us-gov):simspaceweaver:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-\d&#123;1&#125;):(\d&#123;12&#125;)?:(&#91;a-z&#93;+)\/(.+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the simulation was created, expressed as the number of seconds and milliseconds in UTC since the Unix epoch (0:0:0.000, January 1, 1970).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the simulation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>A universally unique identifier (UUID) for this simulation. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LiveSimulationState" /></td>
+    <td><CopyableCode code="live_simulation_state" /></td>
     <td><code>object</code></td>
     <td>A collection of additional state information, such as domain and clock configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingConfiguration" /></td>
+    <td><CopyableCode code="logging_configuration" /></td>
     <td><code>object</code></td>
     <td>Settings that control how SimSpace Weaver handles your simulation log data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumDuration" /></td>
+    <td><CopyableCode code="maximum_duration" /></td>
     <td><code>string</code></td>
     <td>The maximum running time of the simulation, specified as a number of minutes (m or M), hours (h or H), or days (d or D). The simulation stops when it reaches this limit. The maximum value is 14D, or its equivalent in the other units. The default value is 14D. A value equivalent to 0 makes the simulation immediately transition to Stopping as soon as it reaches Started. (pattern: &lt;code&gt;^\d&#123;1,5&#125;&#91;mhdMHD&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the simulation. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_.-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that the simulation assumes to perform actions. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. For more information about IAM roles, see IAM roles in the Identity and Access Management User Guide. (pattern: &lt;code&gt;^arn:(?:aws|aws-cn|aws-us-gov):iam::(\d&#123;12&#125;)?:role\/(.+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaError" /></td>
+    <td><CopyableCode code="schema_error" /></td>
     <td><code>string</code></td>
     <td>An error message that SimSpace Weaver returns only if there is a problem with the simulation schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaS3Location" /></td>
+    <td><CopyableCode code="schema_s3_location" /></td>
     <td><code>object</code></td>
     <td>The location of the simulation schema in Amazon Simple Storage Service (Amazon S3). For more information about Amazon S3, see the Amazon Simple Storage Service User Guide .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotS3Location" /></td>
+    <td><CopyableCode code="snapshot_s3_location" /></td>
     <td><code>object</code></td>
     <td>A location in Amazon Simple Storage Service (Amazon S3) where SimSpace Weaver stores simulation data, such as your app .zip files and schema file. For more information about Amazon S3, see the Amazon Simple Storage Service User Guide .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartError" /></td>
+    <td><CopyableCode code="start_error" /></td>
     <td><code>string</code></td>
     <td>An error message that SimSpace Weaver returns only if a problem occurs when the simulation is in the STARTING state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current lifecycle state of the simulation. (UNKNOWN, STARTING, STARTED, STOPPING, STOPPED, FAILED, DELETING, DELETED, SNAPSHOT_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetStatus" /></td>
+    <td><CopyableCode code="target_status" /></td>
     <td><code>string</code></td>
     <td>The desired lifecycle state of the simulation. (UNKNOWN, STARTED, STOPPED, DELETED)</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If SimSpace Weaver returns nextToken, then there are more results available. The value of nextToken is a unique pagination token for each page. To retrieve the next page, call the operation again using the returned token. Keep all other arguments unchanged. If no results remain, then nextToken is set to null. Each pagination token expires after 24 hours. If you provide a token that isn't valid, then you receive an HTTP 400 ValidationException error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Simulations" /></td>
+    <td><CopyableCode code="simulations" /></td>
     <td><code>array</code></td>
     <td>The list of simulations.</td>
 </tr>
@@ -244,21 +244,21 @@ Returns the current state of the given simulation.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-Description,
-ExecutionId,
-LiveSimulationState,
-LoggingConfiguration,
-MaximumDuration,
-Name,
-RoleArn,
-SchemaError,
-SchemaS3Location,
-SnapshotS3Location,
-StartError,
-Status,
-TargetStatus
+arn,
+creation_time,
+description,
+execution_id,
+live_simulation_state,
+logging_configuration,
+maximum_duration,
+name,
+role_arn,
+schema_error,
+schema_s3_location,
+snapshot_s3_location,
+start_error,
+status,
+target_status
 FROM aws.simspaceweaver.simulations
 WHERE simulation = '{{ simulation }}' -- required
 AND region = '{{ region }}' -- required
@@ -271,8 +271,8 @@ Lists the SimSpace Weaver simulations in the Amazon Web Services account used to
 
 ```sql
 SELECT
-NextToken,
-Simulations
+next_token,
+simulations
 FROM aws.simspaceweaver.simulations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

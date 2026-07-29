@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdvancedBackupSettings" /></td>
+    <td><CopyableCode code="advanced_backup_settings" /></td>
     <td><code>array</code></td>
     <td>Contains a list of BackupOptions for a resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupPlanArn" /></td>
+    <td><CopyableCode code="backup_plan_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for example, arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupPlanId" /></td>
+    <td><CopyableCode code="backup_plan_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies a backup plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupPlanName" /></td>
+    <td><CopyableCode code="backup_plan_name" /></td>
     <td><code>string</code></td>
     <td>The display name of a saved backup plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a resource backup plan is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request and allows failed requests to be retried without the risk of running the operation twice. This parameter is optional. If used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionDate" /></td>
+    <td><CopyableCode code="deletion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a backup plan is deleted, in Unix format and Coordinated Universal Time (UTC). The value of DeletionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionDate" /></td>
+    <td><CopyableCode code="last_execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time this backup plan was run. A date and time, in Unix format and Coordinated Universal Time (UTC). The value of LastExecutionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most 1,024 bytes long. Version IDs cannot be edited.</td>
 </tr>
@@ -174,15 +174,15 @@ Returns version metadata of your backup plans, including Amazon Resource Names (
 
 ```sql
 SELECT
-AdvancedBackupSettings,
-BackupPlanArn,
-BackupPlanId,
-BackupPlanName,
-CreationDate,
-CreatorRequestId,
-DeletionDate,
-LastExecutionDate,
-VersionId
+advanced_backup_settings,
+backup_plan_arn,
+backup_plan_id,
+backup_plan_name,
+creation_date,
+creator_request_id,
+deletion_date,
+last_execution_date,
+version_id
 FROM aws.backup.backup_plan_versions
 WHERE backup_plan_id = '{{ backup_plan_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeOwnershipPrice" /></td>
+    <td><CopyableCode code="change_ownership_price" /></td>
     <td><code>object</code></td>
     <td>The price for changing domain ownership.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the TLD for which the prices apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationPrice" /></td>
+    <td><CopyableCode code="registration_price" /></td>
     <td><code>object</code></td>
     <td>The price for domain registration with Route 53.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RenewalPrice" /></td>
+    <td><CopyableCode code="renewal_price" /></td>
     <td><code>object</code></td>
     <td>The price for renewing domain registration with Route 53.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestorationPrice" /></td>
+    <td><CopyableCode code="restoration_price" /></td>
     <td><code>object</code></td>
     <td>The price for restoring the domain with Route 53.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransferPrice" /></td>
+    <td><CopyableCode code="transfer_price" /></td>
     <td><code>object</code></td>
     <td>The price for transferring the domain registration to Route 53.</td>
 </tr>
@@ -144,12 +144,12 @@ Lists the following prices for either all the TLDs supported by Route 53, or the
 
 ```sql
 SELECT
-ChangeOwnershipPrice,
-Name,
-RegistrationPrice,
-RenewalPrice,
-RestorationPrice,
-TransferPrice
+change_ownership_price,
+name,
+registration_price,
+renewal_price,
+restoration_price,
+transfer_price
 FROM aws.route53domains.prices
 WHERE region = '{{ region }}' -- required
 ;

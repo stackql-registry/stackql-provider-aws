@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogicalResourceId" /></td>
+    <td><CopyableCode code="logical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The logical name of the resource specified in the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceId" /></td>
+    <td><CopyableCode code="physical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique identifier that corresponds to a physical instance ID of a resource supported by CloudFormation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceIdContext" /></td>
+    <td><CopyableCode code="physical_resource_id_context" /></td>
     <td><code>string</code></td>
     <td>Context information that enables CloudFormation to uniquely identify a resource. CloudFormation uses context key-value pairs in cases where a resource's logical and physical IDs aren't enough to uniquely identify that resource. Each context key-value pair specifies a unique resource that contains the targeted resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PropertyDifferences" /></td>
+    <td><CopyableCode code="property_differences" /></td>
     <td><code>string</code></td>
     <td>Status of the actual configuration of the resource compared to its expected configuration. These will be present only for resources whose StackInstanceResourceDriftStatus is MODIFIED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Type of resource. For more information, see Amazon Web Services resource and property types reference in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackResourceDriftStatus" /></td>
+    <td><CopyableCode code="stack_resource_drift_status" /></td>
     <td><code>string</code></td>
     <td>The drift status of the resource in a stack instance. DELETED: The resource differs from its expected template configuration in that the resource has been deleted. MODIFIED: One or more resource properties differ from their expected template values. IN_SYNC: The resource's actual configuration matches its expected template configuration. NOT_CHECKED: CloudFormation doesn't currently return this value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>Time at which the stack instance drift detection operation was initiated.</td>
 </tr>
@@ -194,14 +194,14 @@ Returns drift information for resources in a stack instance. ListStackInstanceRe
 
 ```sql
 SELECT
-LogicalResourceId,
-PhysicalResourceId,
-PhysicalResourceIdContext,
-PropertyDifferences,
-ResourceType,
-StackId,
-StackResourceDriftStatus,
-Timestamp
+logical_resource_id,
+physical_resource_id,
+physical_resource_id_context,
+property_differences,
+resource_type,
+stack_id,
+stack_resource_drift_status,
+timestamp
 FROM aws.cloudformation.stack_instance_resource_drifts
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND StackInstanceAccount = '{{ StackInstanceAccount }}' -- required

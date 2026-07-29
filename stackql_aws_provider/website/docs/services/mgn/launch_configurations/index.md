@@ -55,32 +55,32 @@ The following fields are returned by `SELECT` queries:
     <td>Launch configuration name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bootMode" /></td>
+    <td><CopyableCode code="boot_mode" /></td>
     <td><code>string</code></td>
     <td>Launch configuration boot mode. (LEGACY_BIOS, UEFI, USE_SOURCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyPrivateIp" /></td>
+    <td><CopyableCode code="copy_private_ip" /></td>
     <td><code>boolean</code></td>
     <td>Copy Private IP during Launch Configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyTags" /></td>
+    <td><CopyableCode code="copy_tags" /></td>
     <td><code>boolean</code></td>
     <td>Copy Tags during Launch Configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2LaunchTemplateID" /></td>
+    <td><CopyableCode code="ec_2_launch_template_id" /></td>
     <td><code>string</code></td>
     <td>Launch configuration EC2 Launch template ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableMapAutoTagging" /></td>
+    <td><CopyableCode code="enable_map_auto_tagging" /></td>
     <td><code>boolean</code></td>
     <td>Enable map auto tagging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchDisposition" /></td>
+    <td><CopyableCode code="launch_disposition" /></td>
     <td><code>string</code></td>
     <td>Launch disposition for launch configuration. (STOPPED, STARTED)</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
     <td>Configure Licensing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapAutoTaggingMpeID" /></td>
+    <td><CopyableCode code="map_auto_tagging_mpe_id" /></td>
     <td><code>string</code></td>
     <td>Map auto tagging MPE ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postLaunchActions" /></td>
+    <td><CopyableCode code="post_launch_actions" /></td>
     <td><code>object</code></td>
     <td>Post Launch Actions to executed on the Test or Cutover instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerID" /></td>
+    <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>Launch configuration Source Server ID. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetInstanceTypeRightSizingMethod" /></td>
+    <td><CopyableCode code="target_instance_type_right_sizing_method" /></td>
     <td><code>string</code></td>
     <td>Launch configuration Target instance type right sizing method. (NONE, BASIC)</td>
 </tr>
@@ -182,17 +182,17 @@ Lists all LaunchConfigurations available, filtered by Source Server IDs.
 ```sql
 SELECT
 name,
-bootMode,
-copyPrivateIp,
-copyTags,
-ec2LaunchTemplateID,
-enableMapAutoTagging,
-launchDisposition,
+boot_mode,
+copy_private_ip,
+copy_tags,
+ec_2_launch_template_id,
+enable_map_auto_tagging,
+launch_disposition,
 licensing,
-mapAutoTaggingMpeID,
-postLaunchActions,
-sourceServerID,
-targetInstanceTypeRightSizingMethod
+map_auto_tagging_mpe_id,
+post_launch_actions,
+source_server_id,
+target_instance_type_right_sizing_method
 FROM aws.mgn.launch_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,17 +233,17 @@ region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required
 RETURNING
 name,
-bootMode,
-copyPrivateIp,
-copyTags,
-ec2LaunchTemplateID,
-enableMapAutoTagging,
-launchDisposition,
+boot_mode,
+copy_private_ip,
+copy_tags,
+ec_2_launch_template_id,
+enable_map_auto_tagging,
+launch_disposition,
 licensing,
-mapAutoTaggingMpeID,
-postLaunchActions,
-sourceServerID,
-targetInstanceTypeRightSizingMethod;
+map_auto_tagging_mpe_id,
+post_launch_actions,
+source_server_id,
+target_instance_type_right_sizing_method;
 ```
 </TabItem>
 </Tabs>

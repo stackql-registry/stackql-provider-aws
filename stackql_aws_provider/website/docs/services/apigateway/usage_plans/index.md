@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of a usage plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiStages" /></td>
+    <td><CopyableCode code="api_stages" /></td>
     <td><code>array</code></td>
     <td>The associated API stages of a usage plan.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a usage plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productCode" /></td>
+    <td><CopyableCode code="product_code" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Marketplace product identifier to associate with the usage plan as a SaaS product on the Amazon Web Services Marketplace.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of a usage plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiStages" /></td>
+    <td><CopyableCode code="api_stages" /></td>
     <td><code>array</code></td>
     <td>The associated API stages of a usage plan.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a usage plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productCode" /></td>
+    <td><CopyableCode code="product_code" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Marketplace product identifier to associate with the usage plan as a SaaS product on the Amazon Web Services Marketplace.</td>
 </tr>
@@ -260,9 +260,9 @@ Gets a usage plan of a given plan identifier.
 SELECT
 id,
 name,
-apiStages,
+api_stages,
 description,
-productCode,
+product_code,
 quota,
 tags,
 throttle
@@ -280,9 +280,9 @@ Gets all the usage plans of the caller's account.
 SELECT
 id,
 name,
-apiStages,
+api_stages,
 description,
-productCode,
+product_code,
 quota,
 tags,
 throttle
@@ -331,9 +331,9 @@ SELECT
 RETURNING
 id,
 name,
-apiStages,
+api_stages,
 description,
-productCode,
+product_code,
 quota,
 tags,
 throttle
@@ -400,9 +400,9 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-apiStages,
+api_stages,
 description,
-productCode,
+product_code,
 quota,
 tags,
 throttle;

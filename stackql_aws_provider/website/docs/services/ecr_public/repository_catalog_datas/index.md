@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aboutText" /></td>
+    <td><CopyableCode code="about_text" /></td>
     <td><code>string</code></td>
     <td>The longform description of the contents of the repository. This text appears in the repository details on the Amazon ECR Public Gallery.</td>
 </tr>
@@ -65,22 +65,22 @@ The following fields are returned by `SELECT` queries:
     <td>The short description of the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logoUrl" /></td>
+    <td><CopyableCode code="logo_url" /></td>
     <td><code>string</code></td>
     <td>The URL that contains the logo that's associated with the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="marketplaceCertified" /></td>
+    <td><CopyableCode code="marketplace_certified" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the repository is certified by Amazon Web Services Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operatingSystems" /></td>
+    <td><CopyableCode code="operating_systems" /></td>
     <td><code>array</code></td>
     <td>The operating system tags that are associated with the repository. Only supported operating system tags appear publicly in the Amazon ECR Public Gallery. For more information, see RepositoryCatalogDataInput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageText" /></td>
+    <td><CopyableCode code="usage_text" /></td>
     <td><code>string</code></td>
     <td>The longform usage details of the contents of the repository. The usage text provides context for users of the repository.</td>
 </tr>
@@ -156,13 +156,13 @@ Retrieve catalog metadata for a repository in a public registry. This metadata i
 
 ```sql
 SELECT
-aboutText,
+about_text,
 architectures,
 description,
-logoUrl,
-marketplaceCertified,
-operatingSystems,
-usageText
+logo_url,
+marketplace_certified,
+operating_systems,
+usage_text
 FROM aws.ecr_public.repository_catalog_datas
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,7 +194,7 @@ region = '{{ region }}' --required
 AND repositoryName = '{{ repositoryName }}' --required
 AND catalogData = '{{ catalogData }}' --required
 RETURNING
-catalogData;
+catalog_data;
 ```
 </TabItem>
 </Tabs>

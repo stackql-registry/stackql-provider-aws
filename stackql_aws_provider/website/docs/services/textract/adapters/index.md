@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdapterId" /></td>
+    <td><CopyableCode code="adapter_id" /></td>
     <td><code>string</code></td>
     <td>A string identifying the adapter that information has been retrieved for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdapterName" /></td>
+    <td><CopyableCode code="adapter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the requested adapter. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoUpdate" /></td>
+    <td><CopyableCode code="auto_update" /></td>
     <td><code>string</code></td>
     <td>Binary value indicating if the adapter is being automatically updated or not. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the requested adapter was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the requested adapter. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s!"\#\$%'&\(\)\*\+\,\-\./:;=\?@\&#91;\\\&#93;\^_`\&#123;\|\&#125;~&gt;&lt;&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureTypes" /></td>
+    <td><CopyableCode code="feature_types" /></td>
     <td><code>array</code></td>
     <td>List of the targeted feature types for the requested adapter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of tags (key-value pairs) associated with the adapter that has been retrieved.</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdapterId" /></td>
+    <td><CopyableCode code="adapter_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the adapter resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdapterName" /></td>
+    <td><CopyableCode code="adapter_name" /></td>
     <td><code>string</code></td>
     <td>A string naming the adapter resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the adapter was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureTypes" /></td>
+    <td><CopyableCode code="feature_types" /></td>
     <td><code>array</code></td>
     <td>The feature types that the adapter is operating on.</td>
 </tr>
@@ -213,13 +213,13 @@ Gets configuration information for an adapter specified by an AdapterId, returni
 
 ```sql
 SELECT
-AdapterId,
-AdapterName,
-AutoUpdate,
-CreationTime,
-Description,
-FeatureTypes,
-Tags
+adapter_id,
+adapter_name,
+auto_update,
+creation_time,
+description,
+feature_types,
+tags
 FROM aws.textract.adapters
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,10 +231,10 @@ Lists all adapters that match the specified filtration criteria.
 
 ```sql
 SELECT
-AdapterId,
-AdapterName,
-CreationTime,
-FeatureTypes
+adapter_id,
+adapter_name,
+creation_time,
+feature_types
 FROM aws.textract.adapters
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,7 +275,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AdapterId
+adapter_id
 ;
 ```
 </TabItem>
@@ -342,12 +342,12 @@ WHERE
 region = '{{ region }}' --required
 AND AdapterId = '{{ AdapterId }}' --required
 RETURNING
-AdapterId,
-AdapterName,
-AutoUpdate,
-CreationTime,
-Description,
-FeatureTypes;
+adapter_id,
+adapter_name,
+auto_update,
+creation_time,
+description,
+feature_types;
 ```
 </TabItem>
 </Tabs>

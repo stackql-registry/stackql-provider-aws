@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the application which contains the plugin. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authConfiguration" /></td>
+    <td><CopyableCode code="auth_configuration" /></td>
     <td><code>object</code></td>
     <td>Authentication configuration information for an Amazon Q Business plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildStatus" /></td>
+    <td><CopyableCode code="build_status" /></td>
     <td><code>string</code></td>
     <td>The current status of a plugin. A plugin is modified asynchronously. (READY, CREATE_IN_PROGRESS, CREATE_FAILED, UPDATE_IN_PROGRESS, UPDATE_FAILED, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the plugin was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customPluginConfiguration" /></td>
+    <td><CopyableCode code="custom_plugin_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information required to create a custom plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the plugin. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pluginArn" /></td>
+    <td><CopyableCode code="plugin_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role with permission to access resources needed to create the plugin. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pluginId" /></td>
+    <td><CopyableCode code="plugin_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the plugin. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverUrl" /></td>
+    <td><CopyableCode code="server_url" /></td>
     <td><code>string</code></td>
     <td>The source URL used for plugin configuration. (pattern: &lt;code&gt;(https?|ftp|file):​//(&#91;^\s&#93;*)&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the plugin. (SERVICE_NOW, SALESFORCE, JIRA, ZENDESK, CUSTOM, QUICKSIGHT, SERVICENOW_NOW_PLATFORM, JIRA_CLOUD, SALESFORCE_CRM, ZENDESK_SUITE, ATLASSIAN_CONFLUENCE, GOOGLE_CALENDAR, MICROSOFT_TEAMS, MICROSOFT_EXCHANGE, PAGERDUTY_ADVANCE, SMARTSHEET, ASANA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the plugin was last updated.</td>
 </tr>
@@ -125,27 +125,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="buildStatus" /></td>
+    <td><CopyableCode code="build_status" /></td>
     <td><code>string</code></td>
     <td>The status of the plugin. (READY, CREATE_IN_PROGRESS, CREATE_FAILED, UPDATE_IN_PROGRESS, UPDATE_FAILED, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the plugin was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the plugin. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pluginId" /></td>
+    <td><CopyableCode code="plugin_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the plugin. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverUrl" /></td>
+    <td><CopyableCode code="server_url" /></td>
     <td><code>string</code></td>
     <td>The plugin server URL used for configuration. (pattern: &lt;code&gt;(https?|ftp|file):​//(&#91;^\s&#93;*)&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the plugin. (SERVICE_NOW, SALESFORCE, JIRA, ZENDESK, CUSTOM, QUICKSIGHT, SERVICENOW_NOW_PLATFORM, JIRA_CLOUD, SALESFORCE_CRM, ZENDESK_SUITE, ATLASSIAN_CONFLUENCE, GOOGLE_CALENDAR, MICROSOFT_TEAMS, MICROSOFT_EXCHANGE, PAGERDUTY_ADVANCE, SMARTSHEET, ASANA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the plugin was last updated.</td>
 </tr>
@@ -278,18 +278,18 @@ Gets information about an existing Amazon Q Business plugin.
 
 ```sql
 SELECT
-applicationId,
-authConfiguration,
-buildStatus,
-createdAt,
-customPluginConfiguration,
-displayName,
-pluginArn,
-pluginId,
-serverUrl,
+application_id,
+auth_configuration,
+build_status,
+created_at,
+custom_plugin_configuration,
+display_name,
+plugin_arn,
+plugin_id,
+server_url,
 state,
 type_,
-updatedAt
+updated_at
 FROM aws.qbusiness.plugins
 WHERE application_id = '{{ application_id }}' -- required
 AND plugin_id = '{{ plugin_id }}' -- required
@@ -303,14 +303,14 @@ Lists configured Amazon Q Business plugins.
 
 ```sql
 SELECT
-buildStatus,
-createdAt,
-displayName,
-pluginId,
-serverUrl,
+build_status,
+created_at,
+display_name,
+plugin_id,
+server_url,
 state,
 type_,
-updatedAt
+updated_at
 FROM aws.qbusiness.plugins
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -358,9 +358,9 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-buildStatus,
-pluginArn,
-pluginId
+build_status,
+plugin_arn,
+plugin_id
 ;
 ```
 </TabItem>

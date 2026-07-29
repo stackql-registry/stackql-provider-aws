@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TicketList" /></td>
+    <td><CopyableCode code="ticket_list" /></td>
     <td><code>array</code></td>
     <td>A collection of existing matchmaking ticket objects matching the request.</td>
 </tr>
@@ -126,7 +126,7 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-TicketList
+ticket_list
 FROM aws.gamelift.matchmakings
 WHERE region = '{{ region }}' -- required
 ;

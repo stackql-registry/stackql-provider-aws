@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configurationDetails" /></td>
+    <td><CopyableCode code="configuration_details" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration details that include the status information of the KMS key and the KMS access role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionType" /></td>
+    <td><CopyableCode code="encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of the KMS key. (CUSTOMER_MANAGED_KMS_KEY, AWS_OWNED_KMS_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsAccessRoleArn" /></td>
+    <td><CopyableCode code="kms_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role assumed by Amazon Web Services IoT Core to call KMS on behalf of the customer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the customer managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when encryption configuration is last updated.</td>
 </tr>
@@ -146,11 +146,11 @@ Retrieves the encryption configuration for resources and data of your Amazon Web
 
 ```sql
 SELECT
-configurationDetails,
-encryptionType,
-kmsAccessRoleArn,
-kmsKeyArn,
-lastModifiedDate
+configuration_details,
+encryption_type,
+kms_access_role_arn,
+kms_key_arn,
+last_modified_date
 FROM aws.iot.encryption_configurations
 WHERE region = '{{ region }}' -- required
 ;

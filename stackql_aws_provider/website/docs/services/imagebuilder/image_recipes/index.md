@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="imageRecipe" /></td>
+    <td><CopyableCode code="image_recipe" /></td>
     <td><code>object</code></td>
     <td>The image recipe object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersionReferences" /></td>
+    <td><CopyableCode code="latest_version_references" /></td>
     <td><code>object</code></td>
     <td>The resource ARNs with different wildcard variations of semantic versioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the image recipe. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date on which this image recipe was created.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The owner of the image recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentImage" /></td>
+    <td><CopyableCode code="parent_image" /></td>
     <td><code>string</code></td>
     <td>The base image of the image recipe.</td>
 </tr>
@@ -206,9 +206,9 @@ Gets an image recipe.
 
 ```sql
 SELECT
-imageRecipe,
-latestVersionReferences,
-requestId
+image_recipe,
+latest_version_references,
+request_id
 FROM aws.imagebuilder.image_recipes
 WHERE imageRecipeArn = '{{ imageRecipeArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -223,9 +223,9 @@ Returns a list of image recipes.
 SELECT
 name,
 arn,
-dateCreated,
+date_created,
 owner,
-parentImage,
+parent_image,
 platform,
 tags
 FROM aws.imagebuilder.image_recipes
@@ -278,10 +278,10 @@ SELECT
 '{{ clientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-clientToken,
-imageRecipeArn,
-latestVersionReferences,
-requestId
+client_token,
+image_recipe_arn,
+latest_version_references,
+request_id
 ;
 ```
 </TabItem>

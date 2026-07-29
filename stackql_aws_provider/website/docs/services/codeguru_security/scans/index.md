@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="analysisType" /></td>
+    <td><CopyableCode code="analysis_type" /></td>
     <td><code>string</code></td>
     <td>The type of analysis CodeGuru Security performed in the scan, either Security or All. The Security type only generates findings related to security. The All type generates both security findings and quality findings. (Security, All)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the scan was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Details about the error that causes a scan to fail to be retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfRevisions" /></td>
+    <td><CopyableCode code="number_of_revisions" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of times a scan has been re-run on a revised resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>UUID that identifies the individual scan run. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanName" /></td>
+    <td><CopyableCode code="scan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$:.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanNameArn" /></td>
+    <td><CopyableCode code="scan_name_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the scan name. (pattern: &lt;code&gt;arn:aws:codeguru-security:&#91;\S&#93;+:&#91;\d&#93;&#123;12&#125;:scans\/&#91;a-zA-Z0-9-_$:.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanState" /></td>
+    <td><CopyableCode code="scan_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the scan. Returns either InProgress, Successful, or Failed. (InProgress, Successful, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the scan was last updated. Only available for STANDARD scan types.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the scan was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the scan run. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanName" /></td>
+    <td><CopyableCode code="scan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$:.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanNameArn" /></td>
+    <td><CopyableCode code="scan_name_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the scan name. (pattern: &lt;code&gt;arn:aws:codeguru-security:&#91;\S&#93;+:&#91;\d&#93;&#123;12&#125;:scans\/&#91;a-zA-Z0-9-_$:.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanState" /></td>
+    <td><CopyableCode code="scan_state" /></td>
     <td><code>string</code></td>
     <td>The state of the scan. A scan can be In Progress, Complete, or Failed. (InProgress, Successful, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the scan was last updated. A scan is updated when it is re-run.</td>
 </tr>
@@ -246,15 +246,15 @@ Returns details about a scan, including whether or not a scan has completed.
 
 ```sql
 SELECT
-analysisType,
-createdAt,
-errorMessage,
-numberOfRevisions,
-runId,
-scanName,
-scanNameArn,
-scanState,
-updatedAt
+analysis_type,
+created_at,
+error_message,
+number_of_revisions,
+run_id,
+scan_name,
+scan_name_arn,
+scan_state,
+updated_at
 FROM aws.codeguru_security.scans
 WHERE scan_name = '{{ scan_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,12 +268,12 @@ Returns a list of all scans in an account. Does not return EXPRESS scans.
 
 ```sql
 SELECT
-createdAt,
-runId,
-scanName,
-scanNameArn,
-scanState,
-updatedAt
+created_at,
+run_id,
+scan_name,
+scan_name_arn,
+scan_state,
+updated_at
 FROM aws.codeguru_security.scans
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -317,11 +317,11 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-resourceId,
-runId,
-scanName,
-scanNameArn,
-scanState
+resource_id,
+run_id,
+scan_name,
+scan_name_arn,
+scan_state
 ;
 ```
 </TabItem>
@@ -338,9 +338,9 @@ SELECT
 '{{ scanName }}' /* required */,
 '{{ region }}'
 RETURNING
-codeArtifactId,
-requestHeaders,
-s3Url
+code_artifact_id,
+request_headers,
+s_3_url
 ;
 ```
 </TabItem>

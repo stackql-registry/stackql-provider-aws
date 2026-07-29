@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EgressCidrBlocks" /></td>
+    <td><CopyableCode code="egress_cidr_blocks" /></td>
     <td><code>array</code></td>
     <td>The range of IP addresses that contribute content or initiate output requests for flows communicating with this gateway. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayMessages" /></td>
+    <td><CopyableCode code="gateway_messages" /></td>
     <td><code>array</code></td>
     <td>Messages with information about the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayState" /></td>
+    <td><CopyableCode code="gateway_state" /></td>
     <td><code>string</code></td>
     <td>The current status of the gateway. (CREATING, ACTIVE, UPDATING, ERROR, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the gateway. This name can not be modified after the gateway is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Networks" /></td>
+    <td><CopyableCode code="networks" /></td>
     <td><code>array</code></td>
     <td>The list of networks in the gateway.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayState" /></td>
+    <td><CopyableCode code="gateway_state" /></td>
     <td><code>string</code></td>
     <td>The status of the gateway. (CREATING, ACTIVE, UPDATING, ERROR, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the gateway.</td>
 </tr>
@@ -211,12 +211,12 @@ Displays the details of a gateway. The response includes the gateway Amazon Reso
 
 ```sql
 SELECT
-EgressCidrBlocks,
-GatewayArn,
-GatewayMessages,
-GatewayState,
-Name,
-Networks
+egress_cidr_blocks,
+gateway_arn,
+gateway_messages,
+gateway_state,
+name,
+networks
 FROM aws.mediaconnect.gateways
 WHERE gateway_arn = '{{ gateway_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,9 +229,9 @@ Displays a list of gateways that are associated with this account. This request 
 
 ```sql
 SELECT
-GatewayArn,
-GatewayState,
-Name
+gateway_arn,
+gateway_state,
+name
 FROM aws.mediaconnect.gateways
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -268,7 +268,7 @@ SELECT
 '{{ Networks }}' /* required */,
 '{{ region }}'
 RETURNING
-Gateway
+gateway
 ;
 ```
 </TabItem>

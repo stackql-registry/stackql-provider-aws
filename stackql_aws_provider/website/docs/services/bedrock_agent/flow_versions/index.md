@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the flow. (pattern: &lt;code&gt;arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the flow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerEncryptionKeyArn" /></td>
+    <td><CopyableCode code="customer_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key that the version of the flow is encrypted with. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service role with permissions to create a flow. For more information, see Create a service role for flows in Amazon Bedrock in the Amazon Bedrock User Guide. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/(service-role/)?.+&lt;/code&gt;)</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the flow that the version belongs to. (pattern: &lt;code&gt;arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at the version was created.</td>
 </tr>
@@ -254,11 +254,11 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-customerEncryptionKeyArn,
+created_at,
+customer_encryption_key_arn,
 definition,
 description,
-executionRoleArn,
+execution_role_arn,
 status,
 version
 FROM aws.bedrock_agent.flow_versions
@@ -276,7 +276,7 @@ Returns a list of information about each flow. For more information, see Deploy 
 SELECT
 id,
 arn,
-createdAt,
+created_at,
 status,
 version
 FROM aws.bedrock_agent.flow_versions
@@ -319,11 +319,11 @@ RETURNING
 id,
 name,
 arn,
-createdAt,
-customerEncryptionKeyArn,
+created_at,
+customer_encryption_key_arn,
 definition,
 description,
-executionRoleArn,
+execution_role_arn,
 status,
 version
 ;

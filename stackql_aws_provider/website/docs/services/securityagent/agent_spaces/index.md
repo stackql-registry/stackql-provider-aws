@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaces" /></td>
+    <td><CopyableCode code="agent_spaces" /></td>
     <td><code>array</code></td>
     <td>The list of agent spaces that were found.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notFound" /></td>
+    <td><CopyableCode code="not_found" /></td>
     <td><code>array</code></td>
     <td>The list of agent space identifiers that were not found.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the agent space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the agent space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the agent space was created, in UTC format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the agent space was last updated, in UTC format.</td>
 </tr>
@@ -195,8 +195,8 @@ Retrieves information about one or more agent spaces.
 
 ```sql
 SELECT
-agentSpaces,
-notFound
+agent_spaces,
+not_found
 FROM aws.securityagent.agent_spaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,9 +209,9 @@ Returns a paginated list of agent space summaries in your account.
 ```sql
 SELECT
 name,
-agentSpaceId,
-createdAt,
-updatedAt
+agent_space_id,
+created_at,
+updated_at
 FROM aws.securityagent.agent_spaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,14 +255,14 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-agentSpaceId,
-awsResources,
-codeReviewSettings,
-createdAt,
+agent_space_id,
+aws_resources,
+code_review_settings,
+created_at,
 description,
-kmsKeyId,
-targetDomainIds,
-updatedAt
+kms_key_id,
+target_domain_ids,
+updated_at
 ;
 ```
 </TabItem>
@@ -349,13 +349,13 @@ region = '{{ region }}' --required
 AND agentSpaceId = '{{ agentSpaceId }}' --required
 RETURNING
 name,
-agentSpaceId,
-awsResources,
-codeReviewSettings,
-createdAt,
+agent_space_id,
+aws_resources,
+code_review_settings,
+created_at,
 description,
-targetDomainIds,
-updatedAt;
+target_domain_ids,
+updated_at;
 ```
 </TabItem>
 </Tabs>

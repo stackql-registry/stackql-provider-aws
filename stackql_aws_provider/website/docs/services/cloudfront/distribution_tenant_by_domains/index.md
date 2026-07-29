@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DistributionTenant" /></td>
+    <td><CopyableCode code="distribution_tenant" /></td>
     <td><code>string</code></td>
     <td>The distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current version of the distribution tenant.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets information about a distribution tenant by the associated domain.
 
 ```sql
 SELECT
-DistributionTenant,
-ETag
+distribution_tenant,
+e_tag
 FROM aws.cloudfront.distribution_tenant_by_domains
 WHERE domain = '{{ domain }}' -- required
 AND region = '{{ region }}' -- required

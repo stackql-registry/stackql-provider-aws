@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>The name of the attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttributeValues" /></td>
+    <td><CopyableCode code="attribute_values" /></td>
     <td><code>string</code></td>
     <td>A list of attribute values.</td>
 </tr>
@@ -129,8 +129,8 @@ Returns a list of attributes attached to an account
 
 ```sql
 SELECT
-AttributeName,
-AttributeValues
+attribute_name,
+attribute_values
 FROM aws.redshift.account_attributes
 WHERE region = '{{ region }}' -- required
 AND AttributeNames = '{{ AttributeNames }}'

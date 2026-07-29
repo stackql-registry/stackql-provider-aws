@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the destination phone number was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationPhoneNumber" /></td>
+    <td><CopyableCode code="destination_phone_number" /></td>
     <td><code>string</code></td>
     <td>The verified destination phone number, in E.164 format. (pattern: &lt;code&gt;\+?&#91;1-9&#93;&#91;0-9&#93;&#123;1,18&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RcsAgentId" /></td>
+    <td><CopyableCode code="rcs_agent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the RCS agent associated with the verified destination number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the verified destination phone number. PENDING: The phone number hasn't been verified yet. VERIFIED: The phone number is verified and can receive messages. (PENDING, VERIFIED, UNSUPPORTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedDestinationNumberArn" /></td>
+    <td><CopyableCode code="verified_destination_number_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the verified destination phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedDestinationNumberId" /></td>
+    <td><CopyableCode code="verified_destination_number_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the verified destination phone number.</td>
 </tr>
@@ -172,12 +172,12 @@ Retrieves the specified verified destination numbers.
 
 ```sql
 SELECT
-CreatedTimestamp,
-DestinationPhoneNumber,
-RcsAgentId,
-Status,
-VerifiedDestinationNumberArn,
-VerifiedDestinationNumberId
+created_timestamp,
+destination_phone_number,
+rcs_agent_id,
+status,
+verified_destination_number_arn,
+verified_destination_number_id
 FROM aws.pinpoint_sms_voice_v2.verified_destination_numbers
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,13 +214,13 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-CreatedTimestamp,
-DestinationPhoneNumber,
-RcsAgentId,
-Status,
-Tags,
-VerifiedDestinationNumberArn,
-VerifiedDestinationNumberId
+created_timestamp,
+destination_phone_number,
+rcs_agent_id,
+status,
+tags,
+verified_destination_number_arn,
+verified_destination_number_id
 ;
 ```
 </TabItem>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>object</code></td>
     <td>View content containing all content necessary to render a view except for runtime input data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the view. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-:\/$&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The current version of the view.</td>
 </tr>
@@ -149,11 +149,11 @@ Retrieves the view for the specified view token. For security recommendations, s
 
 ```sql
 SELECT
-Arn,
-Content,
-Id,
-Name,
-Version
+arn,
+content,
+id,
+name,
+version
 FROM aws.connectparticipant.views
 WHERE view_token = '{{ view_token }}' -- required
 AND `X-Amz-Bearer` = '{{ X-Amz-Bearer }}' -- required

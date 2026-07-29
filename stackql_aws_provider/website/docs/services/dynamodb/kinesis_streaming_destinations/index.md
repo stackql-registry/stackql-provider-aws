@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KinesisDataStreamDestinations" /></td>
+    <td><CopyableCode code="kinesis_data_stream_destinations" /></td>
     <td><code>array</code></td>
     <td>The list of replica structures for the table being described.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table being described. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Returns information about the status of Kinesis streaming.
 
 ```sql
 SELECT
-KinesisDataStreamDestinations,
-TableName
+kinesis_data_stream_destinations,
+table_name
 FROM aws.dynamodb.kinesis_streaming_destinations
 WHERE region = '{{ region }}' -- required
 ;
@@ -164,10 +164,10 @@ region = '{{ region }}' --required
 AND TableName = '{{ TableName }}' --required
 AND StreamArn = '{{ StreamArn }}' --required
 RETURNING
-DestinationStatus,
-StreamArn,
-TableName,
-UpdateKinesisStreamingConfiguration;
+destination_status,
+stream_arn,
+table_name,
+update_kinesis_streaming_configuration;
 ```
 </TabItem>
 </Tabs>

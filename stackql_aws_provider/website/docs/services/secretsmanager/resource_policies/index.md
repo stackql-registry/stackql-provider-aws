@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the secret that the resource-based policy was retrieved for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the secret that the resource-based policy was retrieved for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>A JSON-formatted string that contains the permissions policy attached to the secret. For more information about permissions policies, see Authentication and access control for Secrets Manager.</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves the JSON text of the resource-based policy document attached to the se
 
 ```sql
 SELECT
-ARN,
-Name,
-ResourcePolicy
+arn,
+name,
+resource_policy
 FROM aws.secretsmanager.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,8 +177,8 @@ region = '{{ region }}' --required
 AND SecretId = '{{ SecretId }}' --required
 AND ResourcePolicy = '{{ ResourcePolicy }}' --required
 RETURNING
-ARN,
-Name;
+arn,
+name;
 ```
 </TabItem>
 </Tabs>

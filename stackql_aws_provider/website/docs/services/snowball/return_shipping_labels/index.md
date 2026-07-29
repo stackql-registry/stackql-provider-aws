@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExpirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date of the current return shipping label.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReturnShippingLabelURI" /></td>
+    <td><CopyableCode code="return_shipping_label_uri" /></td>
     <td><code>string</code></td>
     <td>The pre-signed Amazon S3 URI used to download the return shipping label. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status information of the task on a Snow device that is being returned to Amazon Web Services. (InProgress, TimedOut, Succeeded, Failed)</td>
 </tr>
@@ -136,9 +136,9 @@ Information on the shipping label of a Snow device that is being returned to Ama
 
 ```sql
 SELECT
-ExpirationDate,
-ReturnShippingLabelURI,
-Status
+expiration_date,
+return_shipping_label_uri,
+status
 FROM aws.snowball.return_shipping_labels
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,7 +171,7 @@ SELECT
 '{{ ShippingOption }}',
 '{{ region }}'
 RETURNING
-Status
+status
 ;
 ```
 </TabItem>

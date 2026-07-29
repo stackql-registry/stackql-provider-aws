@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token indicating whether additional data is available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Objects" /></td>
+    <td><CopyableCode code="objects" /></td>
     <td><code>array</code></td>
     <td>A list of objects organized by partition keys.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the set of Amazon S3 objects that make up the specified governed table. 
 
 ```sql
 SELECT
-NextToken,
-Objects
+next_token,
+objects
 FROM aws.lakeformation.table_objects
 WHERE region = '{{ region }}' -- required
 ;

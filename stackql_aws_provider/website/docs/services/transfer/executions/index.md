@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Execution" /></td>
+    <td><CopyableCode code="execution" /></td>
     <td><code>object</code></td>
     <td>The structure that contains the details of the workflow' execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the workflow. (pattern: &lt;code&gt;w-(&#91;a-z0-9&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the execution of a workflow. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitialFileLocation" /></td>
+    <td><CopyableCode code="initial_file_location" /></td>
     <td><code>object</code></td>
     <td>A structure that describes the Amazon S3 or EFS file location. This is the file location when the execution begins: if the file is being copied, this is the initial (as opposed to destination) file location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceMetadata" /></td>
+    <td><CopyableCode code="service_metadata" /></td>
     <td><code>object</code></td>
     <td>A container object for the session details that are associated with a workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status is one of the execution. Can be in progress, completed, exception encountered, or handling the exception. (IN_PROGRESS, COMPLETED, EXCEPTION, HANDLING_EXCEPTION)</td>
 </tr>
@@ -167,8 +167,8 @@ You can use DescribeExecution to check the details of the execution of the speci
 
 ```sql
 SELECT
-Execution,
-WorkflowId
+execution,
+workflow_id
 FROM aws.transfer.executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -180,10 +180,10 @@ Lists all in-progress executions for the specified workflow. If the specified wo
 
 ```sql
 SELECT
-ExecutionId,
-InitialFileLocation,
-ServiceMetadata,
-Status
+execution_id,
+initial_file_location,
+service_metadata,
+status
 FROM aws.transfer.executions
 WHERE region = '{{ region }}' -- required
 ;

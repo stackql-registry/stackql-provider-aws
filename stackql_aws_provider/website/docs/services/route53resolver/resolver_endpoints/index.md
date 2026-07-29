@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) for the Resolver endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the endpoint was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request that created the Resolver endpoint. The CreatorRequestId allows failed requests to be retried without the risk of running the operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Direction" /></td>
+    <td><CopyableCode code="direction" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the Resolver endpoint allows inbound or outbound DNS queries: INBOUND: allows DNS queries to your VPC from your network OUTBOUND: allows DNS queries from your VPC to your network INBOUND_DELEGATION: Resolver delegates queries to Route 53 private hosted zones from your network. (INBOUND, OUTBOUND, INBOUND_DELEGATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Dns64Enabled" /></td>
+    <td><CopyableCode code="dns_64_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether DNS64 is enabled for the inbound Resolver endpoint. When true, Route 53 Resolver synthesizes AAAA (IPv6) records for IPv4-only services by prepending the 64:ff9b::/96 prefix to the IPv4 address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostVPCId" /></td>
+    <td><CopyableCode code="host_vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC that you want to create the Resolver endpoint in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Resolver endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressCount" /></td>
+    <td><CopyableCode code="ip_address_count" /></td>
     <td><code>integer</code></td>
     <td>The number of IP addresses that the Resolver endpoint can use for DNS queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6InternetAccessEnabled" /></td>
+    <td><CopyableCode code="ipv_6_internet_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether IPv6 internet access is enabled for the outbound Resolver endpoint. When true, the endpoint elastic network interfaces (ENIs) can forward DNS queries to public IPv6 targets through an internet gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the endpoint was last modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name that you assigned to the Resolver endpoint when you submitted a CreateResolverEndpoint request. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) for the Outpost. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredInstanceType" /></td>
+    <td><CopyableCode code="preferred_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocols" /></td>
+    <td><CopyableCode code="protocols" /></td>
     <td><code>array</code></td>
     <td>Protocols used for the endpoint. DoH-FIPS is applicable for a default inbound endpoints only. For an inbound endpoint you can apply the protocols as follows: Do53 and DoH in combination. Do53 and DoH-FIPS in combination. Do53 alone. DoH alone. DoH-FIPS alone. None, which is treated as Do53. For a delegation inbound endpoint you can use Do53 only. For an outbound endpoint you can apply the protocols as follows: Do53 and DoH in combination. Do53 alone. DoH alone. None, which is treated as Do53.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolverEndpointType" /></td>
+    <td><CopyableCode code="resolver_endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The Resolver endpoint IP address type. (IPV6, IPV4, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RniEnhancedMetricsEnabled" /></td>
+    <td><CopyableCode code="rni_enhanced_metrics_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether RNI enhanced metrics are enabled for the Resolver endpoint. When enabled, one-minute granular metrics are published in CloudWatch for each RNI associated with this endpoint. When disabled, these metrics are not published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules (for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A code that specifies the current status of the Resolver endpoint. Valid values include the following: CREATING: Resolver is creating and configuring one or more Amazon VPC network interfaces for this endpoint. OPERATIONAL: The Amazon VPC network interfaces for this endpoint are correctly configured and able to pass inbound or outbound DNS queries between your network and Resolver. UPDATING: Resolver is associating or disassociating one or more network interfaces with this endpoint. AUTO_RECOVERING: Resolver is trying to recover one or more of the network interfaces that are associated with this endpoint. During the recovery process, the endpoint functions with limited capacity because of the limit on the number of DNS queries per IP address (per network interface). For the current limit, see Limits on Route 53 Resolver. ACTION_NEEDED: This endpoint is unhealthy, and Resolver can't automatically recover it. To resolve the problem, we recommend that you check each IP address that you associated with the endpoint. For each IP address that isn't available, add another IP address and then delete the IP address that isn't available. (An endpoint must always include at least two IP addresses.) A status of ACTION_NEEDED can have a variety of causes. Here are two common causes: One or more of the network interfaces that are associated with the endpoint were deleted using Amazon VPC. The network interface couldn't be created for some reason that's outside the control of Resolver. DELETING: Resolver is deleting this endpoint and the associated network interfaces. (CREATING, OPERATIONAL, UPDATING, AUTO_RECOVERING, ACTION_NEEDED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the status of the Resolver endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetNameServerMetricsEnabled" /></td>
+    <td><CopyableCode code="target_name_server_metrics_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether target name server metrics are enabled for the outbound Resolver endpoint. When enabled, one-minute granular metrics are published in CloudWatch for each target name server associated with this endpoint. When disabled, these metrics are not published. This feature is not supported for inbound Resolver endpoint.</td>
 </tr>
@@ -165,102 +165,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) for the Resolver endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the endpoint was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request that created the Resolver endpoint. The CreatorRequestId allows failed requests to be retried without the risk of running the operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Direction" /></td>
+    <td><CopyableCode code="direction" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the Resolver endpoint allows inbound or outbound DNS queries: INBOUND: allows DNS queries to your VPC from your network OUTBOUND: allows DNS queries from your VPC to your network INBOUND_DELEGATION: Resolver delegates queries to Route 53 private hosted zones from your network. (INBOUND, OUTBOUND, INBOUND_DELEGATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Dns64Enabled" /></td>
+    <td><CopyableCode code="dns_64_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether DNS64 is enabled for the inbound Resolver endpoint. When true, Route 53 Resolver synthesizes AAAA (IPv6) records for IPv4-only services by prepending the 64:ff9b::/96 prefix to the IPv4 address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostVPCId" /></td>
+    <td><CopyableCode code="host_vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC that you want to create the Resolver endpoint in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Resolver endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressCount" /></td>
+    <td><CopyableCode code="ip_address_count" /></td>
     <td><code>integer</code></td>
     <td>The number of IP addresses that the Resolver endpoint can use for DNS queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6InternetAccessEnabled" /></td>
+    <td><CopyableCode code="ipv_6_internet_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether IPv6 internet access is enabled for the outbound Resolver endpoint. When true, the endpoint elastic network interfaces (ENIs) can forward DNS queries to public IPv6 targets through an internet gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the endpoint was last modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name that you assigned to the Resolver endpoint when you submitted a CreateResolverEndpoint request. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) for the Outpost. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredInstanceType" /></td>
+    <td><CopyableCode code="preferred_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocols" /></td>
+    <td><CopyableCode code="protocols" /></td>
     <td><code>array</code></td>
     <td>Protocols used for the endpoint. DoH-FIPS is applicable for a default inbound endpoints only. For an inbound endpoint you can apply the protocols as follows: Do53 and DoH in combination. Do53 and DoH-FIPS in combination. Do53 alone. DoH alone. DoH-FIPS alone. None, which is treated as Do53. For a delegation inbound endpoint you can use Do53 only. For an outbound endpoint you can apply the protocols as follows: Do53 and DoH in combination. Do53 alone. DoH alone. None, which is treated as Do53.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolverEndpointType" /></td>
+    <td><CopyableCode code="resolver_endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The Resolver endpoint IP address type. (IPV6, IPV4, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RniEnhancedMetricsEnabled" /></td>
+    <td><CopyableCode code="rni_enhanced_metrics_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether RNI enhanced metrics are enabled for the Resolver endpoint. When enabled, one-minute granular metrics are published in CloudWatch for each RNI associated with this endpoint. When disabled, these metrics are not published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules (for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A code that specifies the current status of the Resolver endpoint. Valid values include the following: CREATING: Resolver is creating and configuring one or more Amazon VPC network interfaces for this endpoint. OPERATIONAL: The Amazon VPC network interfaces for this endpoint are correctly configured and able to pass inbound or outbound DNS queries between your network and Resolver. UPDATING: Resolver is associating or disassociating one or more network interfaces with this endpoint. AUTO_RECOVERING: Resolver is trying to recover one or more of the network interfaces that are associated with this endpoint. During the recovery process, the endpoint functions with limited capacity because of the limit on the number of DNS queries per IP address (per network interface). For the current limit, see Limits on Route 53 Resolver. ACTION_NEEDED: This endpoint is unhealthy, and Resolver can't automatically recover it. To resolve the problem, we recommend that you check each IP address that you associated with the endpoint. For each IP address that isn't available, add another IP address and then delete the IP address that isn't available. (An endpoint must always include at least two IP addresses.) A status of ACTION_NEEDED can have a variety of causes. Here are two common causes: One or more of the network interfaces that are associated with the endpoint were deleted using Amazon VPC. The network interface couldn't be created for some reason that's outside the control of Resolver. DELETING: Resolver is deleting this endpoint and the associated network interfaces. (CREATING, OPERATIONAL, UPDATING, AUTO_RECOVERING, ACTION_NEEDED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the status of the Resolver endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetNameServerMetricsEnabled" /></td>
+    <td><CopyableCode code="target_name_server_metrics_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether target name server metrics are enabled for the outbound Resolver endpoint. When enabled, one-minute granular metrics are published in CloudWatch for each target name server associated with this endpoint. When disabled, these metrics are not published. This feature is not supported for inbound Resolver endpoint.</td>
 </tr>
@@ -372,26 +372,26 @@ Gets information about a specified Resolver endpoint, such as whether it's an in
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CreatorRequestId,
-Direction,
-Dns64Enabled,
-HostVPCId,
-Id,
-IpAddressCount,
-Ipv6InternetAccessEnabled,
-ModificationTime,
-Name,
-OutpostArn,
-PreferredInstanceType,
-Protocols,
-ResolverEndpointType,
-RniEnhancedMetricsEnabled,
-SecurityGroupIds,
-Status,
-StatusMessage,
-TargetNameServerMetricsEnabled
+arn,
+creation_time,
+creator_request_id,
+direction,
+dns_64_enabled,
+host_vpc_id,
+id,
+ip_address_count,
+ipv_6_internet_access_enabled,
+modification_time,
+name,
+outpost_arn,
+preferred_instance_type,
+protocols,
+resolver_endpoint_type,
+rni_enhanced_metrics_enabled,
+security_group_ids,
+status,
+status_message,
+target_name_server_metrics_enabled
 FROM aws.route53resolver.resolver_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -403,26 +403,26 @@ Lists all the Resolver endpoints that were created using the current Amazon Web 
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CreatorRequestId,
-Direction,
-Dns64Enabled,
-HostVPCId,
-Id,
-IpAddressCount,
-Ipv6InternetAccessEnabled,
-ModificationTime,
-Name,
-OutpostArn,
-PreferredInstanceType,
-Protocols,
-ResolverEndpointType,
-RniEnhancedMetricsEnabled,
-SecurityGroupIds,
-Status,
-StatusMessage,
-TargetNameServerMetricsEnabled
+arn,
+creation_time,
+creator_request_id,
+direction,
+dns_64_enabled,
+host_vpc_id,
+id,
+ip_address_count,
+ipv_6_internet_access_enabled,
+modification_time,
+name,
+outpost_arn,
+preferred_instance_type,
+protocols,
+resolver_endpoint_type,
+rni_enhanced_metrics_enabled,
+security_group_ids,
+status,
+status_message,
+target_name_server_metrics_enabled
 FROM aws.route53resolver.resolver_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -479,7 +479,7 @@ SELECT
 {{ Ipv6InternetAccessEnabled }},
 '{{ region }}'
 RETURNING
-ResolverEndpoint
+resolver_endpoint
 ;
 ```
 </TabItem>
@@ -585,7 +585,7 @@ region = '{{ region }}' --required
 AND ResolverEndpointId = '{{ ResolverEndpointId }}' --required
 AND IpAddress = '{{ IpAddress }}' --required
 RETURNING
-ResolverEndpoint;
+resolver_endpoint;
 ```
 </TabItem>
 <TabItem value="update_resolver_endpoint">
@@ -608,7 +608,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResolverEndpointId = '{{ ResolverEndpointId }}' --required
 RETURNING
-ResolverEndpoint;
+resolver_endpoint;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedEntity" /></td>
+    <td><CopyableCode code="associated_entity" /></td>
     <td><code>string</code></td>
     <td>The associated entity. This can be either of the following: For a resource association, this is the Amazon Resource Name (ARN) of the resource. For principal associations, this is one of the following: The ID of an Amazon Web Services account The Amazon Resource Name (ARN) of an organization in Organizations The ARN of an organizational unit (OU) in Organizations The ARN of an IAM role The ARN of an IAM user</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of entity included in this association. (PRINCIPAL, RESOURCE, SOURCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the association was created.</td>
 </tr>
@@ -70,17 +70,17 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the principal belongs to the same organization in Organizations as the Amazon Web Services account that owns the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the association was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareName" /></td>
+    <td><CopyableCode code="resource_share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource share.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the association. (ASSOCIATING, ASSOCIATED, FAILED, DISASSOCIATING, DISASSOCIATED, SUSPENDED, SUSPENDING, RESTORING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message about the status of the association.</td>
 </tr>
@@ -159,15 +159,15 @@ Retrieves the lists of resources and principals that associated for resource sha
 
 ```sql
 SELECT
-associatedEntity,
-associationType,
-creationTime,
+associated_entity,
+association_type,
+creation_time,
 external,
-lastUpdatedTime,
-resourceShareArn,
-resourceShareName,
+last_updated_time,
+resource_share_arn,
+resource_share_name,
 status,
-statusMessage
+status_message
 FROM aws.ram.resource_share_associations
 WHERE region = '{{ region }}' -- required
 ;

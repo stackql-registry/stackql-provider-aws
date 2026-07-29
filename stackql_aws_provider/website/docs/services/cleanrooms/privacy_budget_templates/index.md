@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the privacy budget template. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:privacybudgettemplate/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoRefresh" /></td>
+    <td><CopyableCode code="auto_refresh" /></td>
     <td><code>string</code></td>
     <td>How often the privacy budget refreshes. If you plan to regularly bring new data into the collaboration, use CALENDAR_MONTH to automatically get a new privacy budget for the collaboration every calendar month. Choosing this option allows arbitrary amounts of information to be revealed about rows of the data when repeatedly queried across refreshes. Avoid choosing this if the same rows will be repeatedly queried between privacy budget refreshes. (CALENDAR_MONTH, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the collaboration that contains this privacy budget template. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the collaboration that contains this privacy budget template. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the privacy budget template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the member who created the privacy budget template. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a membership resource. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the epsilon and noise parameters for the privacy budget template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privacyBudgetType" /></td>
+    <td><CopyableCode code="privacy_budget_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the type of the privacy budget template. (DIFFERENTIAL_PRIVACY, ACCESS_BUDGET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the privacy budget template was updated.</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the privacy budget template. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:privacybudgettemplate/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the collaboration that contains this privacy budget template. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the collaboration that contains this privacy budget template. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the privacy budget template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the member who created the privacy budget template. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a membership resource. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privacyBudgetType" /></td>
+    <td><CopyableCode code="privacy_budget_type" /></td>
     <td><code>string</code></td>
     <td>The type of the privacy budget template. (DIFFERENTIAL_PRIVACY, ACCESS_BUDGET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the privacy budget template was updated.</td>
 </tr>
@@ -280,15 +280,15 @@ Returns details for a specified privacy budget template.
 SELECT
 id,
 arn,
-autoRefresh,
-collaborationArn,
-collaborationId,
-createTime,
-membershipArn,
-membershipId,
+auto_refresh,
+collaboration_arn,
+collaboration_id,
+create_time,
+membership_arn,
+membership_id,
 parameters,
-privacyBudgetType,
-updateTime
+privacy_budget_type,
+update_time
 FROM aws.cleanrooms.privacy_budget_templates
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND privacy_budget_template_identifier = '{{ privacy_budget_template_identifier }}' -- required
@@ -304,13 +304,13 @@ Returns detailed information about the privacy budget templates in a specified m
 SELECT
 id,
 arn,
-collaborationArn,
-collaborationId,
-createTime,
-membershipArn,
-membershipId,
-privacyBudgetType,
-updateTime
+collaboration_arn,
+collaboration_id,
+create_time,
+membership_arn,
+membership_id,
+privacy_budget_type,
+update_time
 FROM aws.cleanrooms.privacy_budget_templates
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -352,7 +352,7 @@ SELECT
 '{{ membership_identifier }}',
 '{{ region }}'
 RETURNING
-privacyBudgetTemplate
+privacy_budget_template
 ;
 ```
 </TabItem>
@@ -419,7 +419,7 @@ AND privacy_budget_template_identifier = '{{ privacy_budget_template_identifier 
 AND region = '{{ region }}' --required
 AND privacyBudgetType = '{{ privacyBudgetType }}' --required
 RETURNING
-privacyBudgetTemplate;
+privacy_budget_template;
 ```
 </TabItem>
 </Tabs>

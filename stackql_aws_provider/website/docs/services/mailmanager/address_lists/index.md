@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressListArn" /></td>
+    <td><CopyableCode code="address_list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the address list resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressListId" /></td>
+    <td><CopyableCode code="address_list_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the address list resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressListName" /></td>
+    <td><CopyableCode code="address_list_name" /></td>
     <td><code>string</code></td>
     <td>A user-friendly name for the address list resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of when then address list was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of when the address list was last updated.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressListArn" /></td>
+    <td><CopyableCode code="address_list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressListId" /></td>
+    <td><CopyableCode code="address_list_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the address list. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressListName" /></td>
+    <td><CopyableCode code="address_list_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name of the address list. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the address list was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the address list was last updated.</td>
 </tr>
@@ -229,11 +229,11 @@ Fetch attributes of an address list.
 
 ```sql
 SELECT
-AddressListArn,
-AddressListId,
-AddressListName,
-CreatedTimestamp,
-LastUpdatedTimestamp
+address_list_arn,
+address_list_id,
+address_list_name,
+created_timestamp,
+last_updated_timestamp
 FROM aws.mailmanager.address_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,11 +245,11 @@ Lists address lists for this account.
 
 ```sql
 SELECT
-AddressListArn,
-AddressListId,
-AddressListName,
-CreatedTimestamp,
-LastUpdatedTimestamp
+address_list_arn,
+address_list_id,
+address_list_name,
+created_timestamp,
+last_updated_timestamp
 FROM aws.mailmanager.address_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -302,7 +302,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AddressListId
+address_list_id
 ;
 ```
 </TabItem>

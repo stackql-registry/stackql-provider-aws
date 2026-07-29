@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="behaviorName" /></td>
+    <td><CopyableCode code="behavior_name" /></td>
     <td><code>string</code></td>
     <td>The name of the behavior. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datapointsCollectionPercentage" /></td>
+    <td><CopyableCode code="datapoints_collection_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of datapoints collected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModelRefreshDate" /></td>
+    <td><CopyableCode code="last_model_refresh_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the model was last refreshed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelStatus" /></td>
+    <td><CopyableCode code="model_status" /></td>
     <td><code>string</code></td>
     <td>The status of the behavior model. (PENDING_BUILD, ACTIVE, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityProfileName" /></td>
+    <td><CopyableCode code="security_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the security profile. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDataCollectionStartDate" /></td>
+    <td><CopyableCode code="training_data_collection_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date a training model started collecting data.</td>
 </tr>
@@ -159,12 +159,12 @@ Returns a Device Defender's ML Detect Security Profile training model's status. 
 
 ```sql
 SELECT
-behaviorName,
-datapointsCollectionPercentage,
-lastModelRefreshDate,
-modelStatus,
-securityProfileName,
-trainingDataCollectionStartDate
+behavior_name,
+datapoints_collection_percentage,
+last_model_refresh_date,
+model_status,
+security_profile_name,
+training_data_collection_start_date
 FROM aws.iot.behavior_model_training_summaries
 WHERE region = '{{ region }}' -- required
 AND securityProfileName = '{{ securityProfileName }}'

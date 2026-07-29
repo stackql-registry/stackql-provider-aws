@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when you created the S3 Access Grants instance resource policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Organization" /></td>
+    <td><CopyableCode code="organization" /></td>
     <td><code>string</code></td>
     <td>The Organization of the resource policy of the S3 Access Grants instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The resource policy of the S3 Access Grants instance.</td>
 </tr>
@@ -148,9 +148,9 @@ Returns the resource policy of the S3 Access Grants instance. Permissions You mu
 
 ```sql
 SELECT
-CreatedAt,
-Organization,
-Policy
+created_at,
+organization,
+policy
 FROM aws.s3control.access_grants_instance_resource_policies
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -181,9 +181,9 @@ WHERE
 `x-amz-account-id` = '{{ x-amz-account-id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreatedAt,
-Organization,
-Policy;
+created_at,
+organization,
+policy;
 ```
 </TabItem>
 </Tabs>

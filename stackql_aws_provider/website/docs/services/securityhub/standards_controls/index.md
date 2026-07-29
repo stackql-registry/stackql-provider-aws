@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ControlId" /></td>
+    <td><CopyableCode code="control_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the security standard control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ControlStatus" /></td>
+    <td><CopyableCode code="control_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the security standard control. Indicates whether the control is enabled or disabled. Security Hub CSPM does not check against disabled controls. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ControlStatusUpdatedAt" /></td>
+    <td><CopyableCode code="control_status_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the status of the security standard control was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The longer description of the security standard control. Provides information about what the control is checking for. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisabledReason" /></td>
+    <td><CopyableCode code="disabled_reason" /></td>
     <td><code>string</code></td>
     <td>The reason provided for the most recent change in status for the control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedRequirements" /></td>
+    <td><CopyableCode code="related_requirements" /></td>
     <td><code>array</code></td>
     <td>The list of requirements that are related to this control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemediationUrl" /></td>
+    <td><CopyableCode code="remediation_url" /></td>
     <td><code>string</code></td>
     <td>A link to remediation information for the control in the Security Hub CSPM user documentation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SeverityRating" /></td>
+    <td><CopyableCode code="severity_rating" /></td>
     <td><code>string</code></td>
     <td>The severity of findings generated from this security standard control. The finding severity is based on an assessment of how easy it would be to compromise Amazon Web Services resources if the issue is detected. (LOW, MEDIUM, HIGH, CRITICAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsControlArn" /></td>
+    <td><CopyableCode code="standards_control_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the security standard control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of the security standard control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -191,16 +191,16 @@ Returns a list of security standards controls. For each control, the results inc
 
 ```sql
 SELECT
-ControlId,
-ControlStatus,
-ControlStatusUpdatedAt,
-Description,
-DisabledReason,
-RelatedRequirements,
-RemediationUrl,
-SeverityRating,
-StandardsControlArn,
-Title
+control_id,
+control_status,
+control_status_updated_at,
+description,
+disabled_reason,
+related_requirements,
+remediation_url,
+severity_rating,
+standards_control_arn,
+title
 FROM aws.securityhub.standards_controls
 WHERE standards_subscription_arn = '{{ standards_subscription_arn }}' -- required
 AND region = '{{ region }}' -- required

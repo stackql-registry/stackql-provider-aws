@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointDescriptions" /></td>
+    <td><CopyableCode code="endpoint_descriptions" /></td>
     <td><code>array</code></td>
     <td>The list of endpoint objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupArn" /></td>
+    <td><CopyableCode code="endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupRegion" /></td>
+    <td><CopyableCode code="endpoint_group_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the endpoint group is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckIntervalSeconds" /></td>
+    <td><CopyableCode code="health_check_interval_seconds" /></td>
     <td><code>integer</code></td>
     <td>The time—10 seconds or 30 seconds—between health checks for each endpoint. The default value is 30.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckPath" /></td>
+    <td><CopyableCode code="health_check_path" /></td>
     <td><code>string</code></td>
     <td>If the protocol is HTTP/S, then this value provides the ping path that Global Accelerator uses for the destination on the endpoints for health checks. The default is slash (/). (pattern: &lt;code&gt;^/&#91;-a-zA-Z0-9@:%_\\+.~#?&/=&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckPort" /></td>
+    <td><CopyableCode code="health_check_port" /></td>
     <td><code>integer</code></td>
     <td>The port that Global Accelerator uses to perform health checks on endpoints that are part of this endpoint group. The default port is the port for the listener that this endpoint group is associated with. If the listener port is a list, Global Accelerator uses the first specified port in the list of ports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckProtocol" /></td>
+    <td><CopyableCode code="health_check_protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol that Global Accelerator uses to perform health checks on endpoints that are part of this endpoint group. The default value is TCP. (TCP, HTTP, HTTPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortOverrides" /></td>
+    <td><CopyableCode code="port_overrides" /></td>
     <td><code>array</code></td>
     <td>Allows you to override the destination ports used to route traffic to an endpoint. Using a port override lets you map a list of external destination ports (that your users send traffic to) to a list of internal destination ports that you want an application endpoint to receive traffic on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThresholdCount" /></td>
+    <td><CopyableCode code="threshold_count" /></td>
     <td><code>integer</code></td>
     <td>The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficDialPercentage" /></td>
+    <td><CopyableCode code="traffic_dial_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of traffic to send to an Amazon Web Services Region. Additional traffic is distributed to other endpoint groups for this listener. Use this action to increase (dial up) or decrease (dial down) traffic to a specific Region. The percentage is applied to the traffic that would otherwise have been routed to the Region based on optimal routing. The default value is 100.</td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointDescriptions" /></td>
+    <td><CopyableCode code="endpoint_descriptions" /></td>
     <td><code>array</code></td>
     <td>The list of endpoint objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupArn" /></td>
+    <td><CopyableCode code="endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupRegion" /></td>
+    <td><CopyableCode code="endpoint_group_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the endpoint group is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckIntervalSeconds" /></td>
+    <td><CopyableCode code="health_check_interval_seconds" /></td>
     <td><code>integer</code></td>
     <td>The time—10 seconds or 30 seconds—between health checks for each endpoint. The default value is 30.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckPath" /></td>
+    <td><CopyableCode code="health_check_path" /></td>
     <td><code>string</code></td>
     <td>If the protocol is HTTP/S, then this value provides the ping path that Global Accelerator uses for the destination on the endpoints for health checks. The default is slash (/). (pattern: &lt;code&gt;^/&#91;-a-zA-Z0-9@:%_\\+.~#?&/=&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckPort" /></td>
+    <td><CopyableCode code="health_check_port" /></td>
     <td><code>integer</code></td>
     <td>The port that Global Accelerator uses to perform health checks on endpoints that are part of this endpoint group. The default port is the port for the listener that this endpoint group is associated with. If the listener port is a list, Global Accelerator uses the first specified port in the list of ports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckProtocol" /></td>
+    <td><CopyableCode code="health_check_protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol that Global Accelerator uses to perform health checks on endpoints that are part of this endpoint group. The default value is TCP. (TCP, HTTP, HTTPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortOverrides" /></td>
+    <td><CopyableCode code="port_overrides" /></td>
     <td><code>array</code></td>
     <td>Allows you to override the destination ports used to route traffic to an endpoint. Using a port override lets you map a list of external destination ports (that your users send traffic to) to a list of internal destination ports that you want an application endpoint to receive traffic on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThresholdCount" /></td>
+    <td><CopyableCode code="threshold_count" /></td>
     <td><code>integer</code></td>
     <td>The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficDialPercentage" /></td>
+    <td><CopyableCode code="traffic_dial_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of traffic to send to an Amazon Web Services Region. Additional traffic is distributed to other endpoint groups for this listener. Use this action to increase (dial up) or decrease (dial down) traffic to a specific Region. The percentage is applied to the traffic that would otherwise have been routed to the Region based on optimal routing. The default value is 100.</td>
 </tr>
@@ -300,16 +300,16 @@ Describe an endpoint group.
 
 ```sql
 SELECT
-EndpointDescriptions,
-EndpointGroupArn,
-EndpointGroupRegion,
-HealthCheckIntervalSeconds,
-HealthCheckPath,
-HealthCheckPort,
-HealthCheckProtocol,
-PortOverrides,
-ThresholdCount,
-TrafficDialPercentage
+endpoint_descriptions,
+endpoint_group_arn,
+endpoint_group_region,
+health_check_interval_seconds,
+health_check_path,
+health_check_port,
+health_check_protocol,
+port_overrides,
+threshold_count,
+traffic_dial_percentage
 FROM aws.globalaccelerator.endpoint_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -321,16 +321,16 @@ List the endpoint groups that are associated with a listener.
 
 ```sql
 SELECT
-EndpointDescriptions,
-EndpointGroupArn,
-EndpointGroupRegion,
-HealthCheckIntervalSeconds,
-HealthCheckPath,
-HealthCheckPort,
-HealthCheckProtocol,
-PortOverrides,
-ThresholdCount,
-TrafficDialPercentage
+endpoint_descriptions,
+endpoint_group_arn,
+endpoint_group_region,
+health_check_interval_seconds,
+health_check_path,
+health_check_port,
+health_check_protocol,
+port_overrides,
+threshold_count,
+traffic_dial_percentage
 FROM aws.globalaccelerator.endpoint_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -381,7 +381,7 @@ SELECT
 '{{ PortOverrides }}',
 '{{ region }}'
 RETURNING
-EndpointGroup
+endpoint_group
 ;
 ```
 </TabItem>
@@ -475,8 +475,8 @@ region = '{{ region }}' --required
 AND EndpointConfigurations = '{{ EndpointConfigurations }}' --required
 AND EndpointGroupArn = '{{ EndpointGroupArn }}' --required
 RETURNING
-EndpointDescriptions,
-EndpointGroupArn;
+endpoint_descriptions,
+endpoint_group_arn;
 ```
 </TabItem>
 <TabItem value="remove_custom_routing_endpoints">
@@ -529,7 +529,7 @@ WHERE
 region = '{{ region }}' --required
 AND EndpointGroupArn = '{{ EndpointGroupArn }}' --required
 RETURNING
-EndpointGroup;
+endpoint_group;
 ```
 </TabItem>
 </Tabs>

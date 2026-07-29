@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the harness. (pattern: &lt;code&gt;arn:(&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:harness/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the harness was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="harnessId" /></td>
+    <td><CopyableCode code="harness_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="harnessName" /></td>
+    <td><CopyableCode code="harness_name" /></td>
     <td><code>string</code></td>
     <td>The name of the harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;&lt;/code&gt;)</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the harness. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the harness was last updated.</td>
 </tr>
@@ -155,11 +155,11 @@ Operation to list Harnesses.
 ```sql
 SELECT
 arn,
-createdAt,
-harnessId,
-harnessName,
+created_at,
+harness_id,
+harness_name,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.harnesses
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

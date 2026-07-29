@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MoveStatus" /></td>
+    <td><CopyableCode code="move_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Elastic IP address that's being moved or restored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIp" /></td>
+    <td><CopyableCode code="public_ip" /></td>
     <td><code>string</code></td>
     <td>The Elastic IP address.</td>
 </tr>
@@ -149,8 +149,8 @@ This action is deprecated. Describes your Elastic IP addresses that are being mo
 
 ```sql
 SELECT
-MoveStatus,
-PublicIp
+move_status,
+public_ip
 FROM aws.ec2.moving_addresses
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

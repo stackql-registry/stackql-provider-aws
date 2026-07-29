@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="inProgressJobs" /></td>
+    <td><CopyableCode code="in_progress_jobs" /></td>
     <td><code>array</code></td>
     <td>A list of JobExecutionSummary objects with status IN_PROGRESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queuedJobs" /></td>
+    <td><CopyableCode code="queued_jobs" /></td>
     <td><code>array</code></td>
     <td>A list of JobExecutionSummary objects with status QUEUED.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets the list of all jobs for a thing that are not in a terminal status. Require
 
 ```sql
 SELECT
-inProgressJobs,
-queuedJobs
+in_progress_jobs,
+queued_jobs
 FROM aws.iot_jobs_data.pending_job_executions
 WHERE thing_name = '{{ thing_name }}' -- required
 AND region = '{{ region }}' -- required

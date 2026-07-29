@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoRaWAN" /></td>
+    <td><CopyableCode code="lo_ra_wan" /></td>
     <td><code>object</code></td>
     <td>Information about the service profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceProfileList" /></td>
+    <td><CopyableCode code="service_profile_list" /></td>
     <td><code>array</code></td>
     <td>The list of service profiles.</td>
 </tr>
@@ -196,10 +196,10 @@ Gets information about a service profile.
 
 ```sql
 SELECT
-Arn,
-Id,
-LoRaWAN,
-Name
+arn,
+id,
+lo_ra_wan,
+name
 FROM aws.iotwireless.service_profiles
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -212,8 +212,8 @@ Lists the service profiles registered to your AWS account.
 
 ```sql
 SELECT
-NextToken,
-ServiceProfileList
+next_token,
+service_profile_list
 FROM aws.iotwireless.service_profiles
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -252,8 +252,8 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

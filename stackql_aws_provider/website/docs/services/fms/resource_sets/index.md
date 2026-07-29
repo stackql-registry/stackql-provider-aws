@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceSet" /></td>
+    <td><CopyableCode code="resource_set" /></td>
     <td><code>object</code></td>
     <td>Information about the specified resource set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSetArn" /></td>
+    <td><CopyableCode code="resource_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource set. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a MaxResults setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a NextToken value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSets" /></td>
+    <td><CopyableCode code="resource_sets" /></td>
     <td><code>array</code></td>
     <td>An array of ResourceSetSummary objects.</td>
 </tr>
@@ -185,8 +185,8 @@ Gets information about a specific resource set.
 
 ```sql
 SELECT
-ResourceSet,
-ResourceSetArn
+resource_set,
+resource_set_arn
 FROM aws.fms.resource_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,8 +198,8 @@ Returns an array of ResourceSetSummary objects.
 
 ```sql
 SELECT
-NextToken,
-ResourceSets
+next_token,
+resource_sets
 FROM aws.fms.resource_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -229,8 +229,8 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceSet = '{{ ResourceSet }}' --required
 RETURNING
-ResourceSet,
-ResourceSetArn;
+resource_set,
+resource_set_arn;
 ```
 </TabItem>
 </Tabs>

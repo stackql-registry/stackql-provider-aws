@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="backendEnvironmentArn" /></td>
+    <td><CopyableCode code="backend_environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a backend environment that is part of an Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time for a backend environment that is part of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentArtifacts" /></td>
+    <td><CopyableCode code="deployment_artifacts" /></td>
     <td><code>string</code></td>
     <td>The name of deployment artifacts. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name for a backend environment that is part of an Amplify app. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The AWS CloudFormation stack name of a backend environment. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last updated date and time for a backend environment that is part of an Amplify app.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="backendEnvironments" /></td>
+    <td><CopyableCode code="backend_environments" /></td>
     <td><code>array</code></td>
     <td>The list of backend environments for an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token. If a non-null pagination token is returned in a result, pass its value in another request to retrieve more entries. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
@@ -216,12 +216,12 @@ Returns a backend environment for an Amplify app. This API is available only to 
 
 ```sql
 SELECT
-backendEnvironmentArn,
-createTime,
-deploymentArtifacts,
-environmentName,
-stackName,
-updateTime
+backend_environment_arn,
+create_time,
+deployment_artifacts,
+environment_name,
+stack_name,
+update_time
 FROM aws.amplify.backend_environments
 WHERE app_id = '{{ app_id }}' -- required
 AND environment_name = '{{ environment_name }}' -- required
@@ -235,8 +235,8 @@ Lists the backend environments for an Amplify app. This API is available only to
 
 ```sql
 SELECT
-backendEnvironments,
-nextToken
+backend_environments,
+next_token
 FROM aws.amplify.backend_environments
 WHERE app_id = '{{ app_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,7 +277,7 @@ SELECT
 '{{ app_id }}',
 '{{ region }}'
 RETURNING
-backendEnvironment
+backend_environment
 ;
 ```
 </TabItem>

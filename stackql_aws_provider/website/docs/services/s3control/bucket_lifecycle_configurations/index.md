@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>string</code></td>
     <td>Container for the lifecycle rule of the Outposts bucket.</td>
 </tr>
@@ -143,7 +143,7 @@ This action gets an Amazon S3 on Outposts bucket's lifecycle configuration. To g
 
 ```sql
 SELECT
-Rules
+rules
 FROM aws.s3control.bucket_lifecycle_configurations
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the agent space containing this execution</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentSubTask" /></td>
+    <td><CopyableCode code="agent_sub_task" /></td>
     <td><code>string</code></td>
     <td>The specific subtask being executed by the agent</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentType" /></td>
+    <td><CopyableCode code="agent_type" /></td>
     <td><code>string</code></td>
     <td>The type of agent that performed this execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this execution was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this execution</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The current status of this execution (FAILED, RUNNING, STOPPED, CANCELED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentExecutionId" /></td>
+    <td><CopyableCode code="parent_execution_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the parent execution, if this is a child execution</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier for the user session associated with this execution</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this execution was last updated</td>
 </tr>
@@ -164,15 +164,15 @@ List executions
 
 ```sql
 SELECT
-agentSpaceId,
-agentSubTask,
-agentType,
-createdAt,
-executionId,
-executionStatus,
-parentExecutionId,
+agent_space_id,
+agent_sub_task,
+agent_type,
+created_at,
+execution_id,
+execution_status,
+parent_execution_id,
 uid,
-updatedAt
+updated_at
 FROM aws.devops_agent.executions
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
 AND region = '{{ region }}' -- required

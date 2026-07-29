@@ -108,10 +108,10 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-AirflowIdentity,
-IamIdentity,
-WebServerHostname,
-WebToken
+airflow_identity,
+iam_identity,
+web_server_hostname,
+web_token
 ;
 ```
 </TabItem>

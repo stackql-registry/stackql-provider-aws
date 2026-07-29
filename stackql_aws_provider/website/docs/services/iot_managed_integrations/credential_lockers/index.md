@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the credential locker. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:credential-locker/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the credential locker requset occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the credential locker. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the credential locker. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of key/value pairs that are used to manage the credential locker.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the credential locker. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:credential-locker/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestampe value of when the credential locker was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The id of the credential locker. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the credential locker. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
@@ -211,11 +211,11 @@ Get information on an existing credential locker
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Id,
-Name,
-Tags
+arn,
+created_at,
+id,
+name,
+tags
 FROM aws.iot_managed_integrations.credential_lockers
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,10 +228,10 @@ List information on an existing credential locker.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Id,
-Name
+arn,
+created_at,
+id,
+name
 FROM aws.iot_managed_integrations.credential_lockers
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -268,9 +268,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedAt,
-Id
+arn,
+created_at,
+id
 ;
 ```
 </TabItem>

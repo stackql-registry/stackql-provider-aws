@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="pipelineDescriptionList" /></td>
+    <td><CopyableCode code="pipeline_description_list" /></td>
     <td><code>array</code></td>
     <td>An array of descriptions for the specified pipelines.</td>
 </tr>
@@ -201,7 +201,7 @@ Retrieves metadata about one or more pipelines. The information retrieved includ
 
 ```sql
 SELECT
-pipelineDescriptionList
+pipeline_description_list
 FROM aws.datapipeline.pipelines
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,7 +251,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-pipelineId
+pipeline_id
 ;
 ```
 </TabItem>

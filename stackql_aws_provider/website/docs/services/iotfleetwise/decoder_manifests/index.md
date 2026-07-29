@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the decoder manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the decoder manifest was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the decoder manifest. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the decoder manifest was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The detailed message for the decoder manifest. When a decoder manifest is in an INVALID status, the message contains detailed reason and help information. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelManifestArn" /></td>
+    <td><CopyableCode code="model_manifest_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a vehicle model (model manifest) associated with the decoder manifest.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of a vehicle model (model manifest) associated with the decoder manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the decoder manifest was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the decoder manifest. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the decoder manifest was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The detailed message for the decoder manifest. When a decoder manifest is in an INVALID status, the message contains detailed reason and help information. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelManifestArn" /></td>
+    <td><CopyableCode code="model_manifest_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a vehicle model (model manifest) associated with the decoder manifest.</td>
 </tr>
@@ -240,11 +240,11 @@ Retrieves information about a created decoder manifest.
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
+last_modification_time,
 message,
-modelManifestArn,
+model_manifest_arn,
 status
 FROM aws.iotfleetwise.decoder_manifests
 WHERE region = '{{ region }}' -- required
@@ -259,11 +259,11 @@ Lists decoder manifests. This API operation uses pagination. Specify the nextTok
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
+last_modification_time,
 message,
-modelManifestArn,
+model_manifest_arn,
 status
 FROM aws.iotfleetwise.decoder_manifests
 WHERE region = '{{ region }}' -- required

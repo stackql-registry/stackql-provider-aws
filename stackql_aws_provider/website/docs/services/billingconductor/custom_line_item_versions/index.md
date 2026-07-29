@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account in which this custom line item will be applied to. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A list of custom line item Amazon Resource Names (ARNs) to retrieve information. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:customlineitem/)?&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationSize" /></td>
+    <td><CopyableCode code="association_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of resources that are associated with the custom line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingGroupArn" /></td>
+    <td><CopyableCode code="billing_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the billing group that the custom line item applies to. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:billinggroup/)?&#91;a-zA-Z0-9&#93;&#123;10,12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChargeDetails" /></td>
+    <td><CopyableCode code="charge_details" /></td>
     <td><code>object</code></td>
     <td>A representation of the charge details of a custom line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputationRule" /></td>
+    <td><CopyableCode code="computation_rule" /></td>
     <td><code>string</code></td>
     <td>The display settings of the custom line item (ITEMIZED, CONSOLIDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time when the custom line item version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The charge value currency of the custom line item. (USD, CNY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the custom line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndBillingPeriod" /></td>
+    <td><CopyableCode code="end_billing_period" /></td>
     <td><code>string</code></td>
     <td>The end billing period of the custom line item version. (pattern: &lt;code&gt;\d&#123;4&#125;-(0?&#91;1-9&#93;|1&#91;012&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The most recent time that the custom line item version was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom line item. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\+=\.\-@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PresentationDetails" /></td>
+    <td><CopyableCode code="presentation_details" /></td>
     <td><code>object</code></td>
     <td>An object that defines how custom line item charges are presented in the bill, containing specifications for service presentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCode" /></td>
+    <td><CopyableCode code="product_code" /></td>
     <td><code>string</code></td>
     <td>The product code that’s associated with the custom line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartBillingPeriod" /></td>
+    <td><CopyableCode code="start_billing_period" /></td>
     <td><code>string</code></td>
     <td>The start billing period of the custom line item version. (pattern: &lt;code&gt;\d&#123;4&#125;-(0?&#91;1-9&#93;|1&#91;012&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The inclusive start time.</td>
 </tr>
@@ -194,22 +194,22 @@ A paginated call to get a list of all custom line item versions.
 
 ```sql
 SELECT
-AccountId,
-Arn,
-AssociationSize,
-BillingGroupArn,
-ChargeDetails,
-ComputationRule,
-CreationTime,
-CurrencyCode,
-Description,
-EndBillingPeriod,
-LastModifiedTime,
-Name,
-PresentationDetails,
-ProductCode,
-StartBillingPeriod,
-StartTime
+account_id,
+arn,
+association_size,
+billing_group_arn,
+charge_details,
+computation_rule,
+creation_time,
+currency_code,
+description,
+end_billing_period,
+last_modified_time,
+name,
+presentation_details,
+product_code,
+start_billing_period,
+start_time
 FROM aws.billingconductor.custom_line_item_versions
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Crawlers" /></td>
+    <td><CopyableCode code="crawlers" /></td>
     <td><code>array</code></td>
     <td>A list of crawler definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CrawlersNotFound" /></td>
+    <td><CopyableCode code="crawlers_not_found" /></td>
     <td><code>array</code></td>
     <td>A list of names of crawlers that were not found.</td>
 </tr>
@@ -75,102 +75,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Classifiers" /></td>
+    <td><CopyableCode code="classifiers" /></td>
     <td><code>array</code></td>
     <td>A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>string</code></td>
     <td>Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see Setting crawler configuration options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CrawlElapsedTime" /></td>
+    <td><CopyableCode code="crawl_elapsed_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>If the crawler is running, contains the total time elapsed since the last crawl began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CrawlerSecurityConfiguration" /></td>
+    <td><CopyableCode code="crawler_security_configuration" /></td>
     <td><code>string</code></td>
     <td>The name of the SecurityConfiguration structure to be used by this crawler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the crawler was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database in which the crawler's output is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the crawler. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LakeFormationConfiguration" /></td>
+    <td><CopyableCode code="lake_formation_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies whether the crawler should use Lake Formation credentials for the crawler instead of the IAM role credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastCrawl" /></td>
+    <td><CopyableCode code="last_crawl" /></td>
     <td><code>object</code></td>
     <td>The status of the last crawl, and potentially error information if an error occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the crawler was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LineageConfiguration" /></td>
+    <td><CopyableCode code="lineage_configuration" /></td>
     <td><code>object</code></td>
     <td>A configuration that specifies whether data lineage is enabled for the crawler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the crawler. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecrawlPolicy" /></td>
+    <td><CopyableCode code="recrawl_policy" /></td>
     <td><code>object</code></td>
     <td>A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>object</code></td>
     <td>For scheduled crawlers, the schedule when the crawler runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaChangePolicy" /></td>
+    <td><CopyableCode code="schema_change_policy" /></td>
     <td><code>object</code></td>
     <td>The policy that specifies update and delete behaviors for the crawler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the crawler is running, or whether a run is pending. (READY, RUNNING, STOPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TablePrefix" /></td>
+    <td><CopyableCode code="table_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix added to the names of tables that are created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>object</code></td>
     <td>A collection of targets to crawl.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the crawler.</td>
 </tr>
@@ -303,8 +303,8 @@ Returns a list of resource metadata for a given list of crawler names. After cal
 
 ```sql
 SELECT
-Crawlers,
-CrawlersNotFound
+crawlers,
+crawlers_not_found
 FROM aws.glue.crawlers
 WHERE region = '{{ region }}' -- required
 ;
@@ -316,26 +316,26 @@ Retrieves metadata for a specified crawler.
 
 ```sql
 SELECT
-Classifiers,
-Configuration,
-CrawlElapsedTime,
-CrawlerSecurityConfiguration,
-CreationTime,
-DatabaseName,
-Description,
-LakeFormationConfiguration,
-LastCrawl,
-LastUpdated,
-LineageConfiguration,
-Name,
-RecrawlPolicy,
-Role,
-Schedule,
-SchemaChangePolicy,
-State,
-TablePrefix,
-Targets,
-Version
+classifiers,
+configuration,
+crawl_elapsed_time,
+crawler_security_configuration,
+creation_time,
+database_name,
+description,
+lake_formation_configuration,
+last_crawl,
+last_updated,
+lineage_configuration,
+name,
+recrawl_policy,
+role,
+schedule,
+schema_change_policy,
+state,
+table_prefix,
+targets,
+version
 FROM aws.glue.crawlers
 WHERE region = '{{ region }}' -- required
 ;

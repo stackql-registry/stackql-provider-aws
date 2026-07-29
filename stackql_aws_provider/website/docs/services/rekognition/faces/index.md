@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FaceMatches" /></td>
+    <td><CopyableCode code="face_matches" /></td>
     <td><code>array</code></td>
     <td>An array of faces that matched the input face, along with the confidence in the match.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaceModelVersion" /></td>
+    <td><CopyableCode code="face_model_version" /></td>
     <td><code>string</code></td>
     <td>Version number of the face detection model associated with the input collection (CollectionId).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchedFaceId" /></td>
+    <td><CopyableCode code="searched_face_id" /></td>
     <td><code>string</code></td>
     <td>ID of the face that was searched for matches in a collection. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,37 +80,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BoundingBox" /></td>
+    <td><CopyableCode code="bounding_box" /></td>
     <td><code>object</code></td>
     <td>Identifies the bounding box around the label, face, text, object of interest, or personal protective equipment. The left (x-coordinate) and top (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). The top and left values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a left value of 0.5 (350/700) and a top value of 0.25 (50/200). The width and height values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the left or top values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Confidence" /></td>
+    <td><CopyableCode code="confidence" /></td>
     <td><code>number (float)</code></td>
     <td>Confidence level that the bounding box contains a face (and not a different object such as a tree).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalImageId" /></td>
+    <td><CopyableCode code="external_image_id" /></td>
     <td><code>string</code></td>
     <td>Identifier that you assign to all the faces in the input image. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.\-:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaceId" /></td>
+    <td><CopyableCode code="face_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier that Amazon Rekognition assigns to the face. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier that Amazon Rekognition assigns to the input image. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexFacesModelVersion" /></td>
+    <td><CopyableCode code="index_faces_model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the face detect and storage model that was used when indexing the face vector. (pattern: &lt;code&gt;&#91;0-9\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier assigned to the user. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.\-:&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -250,9 +250,9 @@ For a given input face ID, searches for matching faces in the collection the fac
 
 ```sql
 SELECT
-FaceMatches,
-FaceModelVersion,
-SearchedFaceId
+face_matches,
+face_model_version,
+searched_face_id
 FROM aws.rekognition.faces
 WHERE region = '{{ region }}' -- required
 ;
@@ -264,13 +264,13 @@ Returns metadata for faces in the specified collection. This metadata includes i
 
 ```sql
 SELECT
-BoundingBox,
-Confidence,
-ExternalImageId,
-FaceId,
-ImageId,
-IndexFacesModelVersion,
-UserId
+bounding_box,
+confidence,
+external_image_id,
+face_id,
+image_id,
+index_faces_model_version,
+user_id
 FROM aws.rekognition.faces
 WHERE region = '{{ region }}' -- required
 ;
@@ -305,7 +305,7 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-SessionId
+session_id
 ;
 ```
 </TabItem>
@@ -370,9 +370,9 @@ AND CollectionId = '{{ CollectionId }}' --required
 AND UserId = '{{ UserId }}' --required
 AND FaceIds = '{{ FaceIds }}' --required
 RETURNING
-AssociatedFaces,
-UnsuccessfulFaceAssociations,
-UserStatus;
+associated_faces,
+unsuccessful_face_associations,
+user_status;
 ```
 </TabItem>
 </Tabs>

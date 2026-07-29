@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the bot being exported. (pattern: &lt;code&gt;&#91;a-zA-Z_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportStatus" /></td>
+    <td><CopyableCode code="export_status" /></td>
     <td><code>string</code></td>
     <td>The status of the export. IN_PROGRESS - The export is in progress. READY - The export is complete. FAILED - The export could not be completed. (IN_PROGRESS, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportType" /></td>
+    <td><CopyableCode code="export_type" /></td>
     <td><code>string</code></td>
     <td>The format of the exported data. (ALEXA_SKILLS_KIT, LEX)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If status is FAILED, Amazon Lex provides the reason that it failed to export the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the exported resource. (BOT, INTENT, SLOT_TYPE)</td>
 </tr>
@@ -170,10 +170,10 @@ Exports the contents of a Amazon Lex resource in a specified format.
 ```sql
 SELECT
 name,
-exportStatus,
-exportType,
-failureReason,
-resourceType,
+export_status,
+export_type,
+failure_reason,
+resource_type,
 url,
 version
 FROM aws.lex_models.exports

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProductViewSummary" /></td>
+    <td><CopyableCode code="product_view_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information about a product view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifact" /></td>
+    <td><CopyableCode code="provisioning_artifact" /></td>
     <td><code>object</code></td>
     <td>Information about a provisioning artifact. A provisioning artifact is also known as a product version.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all provisioning artifacts (also known as versions) for the specified self
 
 ```sql
 SELECT
-ProductViewSummary,
-ProvisioningArtifact
+product_view_summary,
+provisioning_artifact
 FROM aws.servicecatalog.provisioning_artifacts_for_service_actions
 WHERE region = '{{ region }}' -- required
 ;

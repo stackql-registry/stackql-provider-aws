@@ -61,47 +61,47 @@ The following fields are returned by `SELECT` queries:
     <td>The description. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestionFailureReasons" /></td>
+    <td><CopyableCode code="ingestion_failure_reasons" /></td>
     <td><code>array</code></td>
     <td>List of failure reasons on ingestion per file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestionStatus" /></td>
+    <td><CopyableCode code="ingestion_status" /></td>
     <td><code>string</code></td>
     <td>Status of ingestion on data source. (SYNC_FAILED, SYNCING_IN_PROGRESS, SYNC_SUCCESS, CREATE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseType" /></td>
+    <td><CopyableCode code="knowledge_base_type" /></td>
     <td><code>string</code></td>
     <td>The type of knowledge base. (EXTERNAL, CUSTOM, QUICK_RESPONSES, MESSAGE_TEMPLATES, MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastContentModificationTime" /></td>
+    <td><CopyableCode code="last_content_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>An epoch timestamp indicating the most recent content modification inside the knowledge base. If no content exists in a knowledge base, this value is unset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="renderingConfiguration" /></td>
+    <td><CopyableCode code="rendering_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about how to render the content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the customer managed key used for encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceConfiguration" /></td>
+    <td><CopyableCode code="source_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information about the external data source.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorIngestionConfiguration" /></td>
+    <td><CopyableCode code="vector_ingestion_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains details about how to ingest the documents in a data source.</td>
 </tr>
@@ -145,32 +145,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the knowledge base. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseType" /></td>
+    <td><CopyableCode code="knowledge_base_type" /></td>
     <td><code>string</code></td>
     <td>The type of knowledge base. (EXTERNAL, CUSTOM, QUICK_RESPONSES, MESSAGE_TEMPLATES, MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="renderingConfiguration" /></td>
+    <td><CopyableCode code="rendering_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about how to render the content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the customer managed key used for encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceConfiguration" /></td>
+    <td><CopyableCode code="source_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information about the external data source.</td>
 </tr>
@@ -185,7 +185,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorIngestionConfiguration" /></td>
+    <td><CopyableCode code="vector_ingestion_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains details about how to ingest the documents in a data source.</td>
 </tr>
@@ -314,18 +314,18 @@ Retrieves information about the knowledge base.
 SELECT
 name,
 description,
-ingestionFailureReasons,
-ingestionStatus,
-knowledgeBaseArn,
-knowledgeBaseId,
-knowledgeBaseType,
-lastContentModificationTime,
-renderingConfiguration,
-serverSideEncryptionConfiguration,
-sourceConfiguration,
+ingestion_failure_reasons,
+ingestion_status,
+knowledge_base_arn,
+knowledge_base_id,
+knowledge_base_type,
+last_content_modification_time,
+rendering_configuration,
+server_side_encryption_configuration,
+source_configuration,
 status,
 tags,
-vectorIngestionConfiguration
+vector_ingestion_configuration
 FROM aws.qconnect.knowledge_bases
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -340,15 +340,15 @@ Lists the knowledge bases.
 SELECT
 name,
 description,
-knowledgeBaseArn,
-knowledgeBaseId,
-knowledgeBaseType,
-renderingConfiguration,
-serverSideEncryptionConfiguration,
-sourceConfiguration,
+knowledge_base_arn,
+knowledge_base_id,
+knowledge_base_type,
+rendering_configuration,
+server_side_encryption_configuration,
+source_configuration,
 status,
 tags,
-vectorIngestionConfiguration
+vector_ingestion_configuration
 FROM aws.qconnect.knowledge_bases
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -397,7 +397,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-knowledgeBase
+knowledge_base
 ;
 ```
 </TabItem>
@@ -501,7 +501,7 @@ knowledge_base_id = '{{ knowledge_base_id }}' --required
 AND region = '{{ region }}' --required
 AND templateUri = '{{ templateUri }}' --required
 RETURNING
-knowledgeBase;
+knowledge_base;
 ```
 </TabItem>
 <TabItem value="remove_knowledge_base_template_uri">

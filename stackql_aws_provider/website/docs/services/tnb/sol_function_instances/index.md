@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>Network function instance ARN. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-b|aws-us-gov):tnb:(&#91;a-z&#93;&#123;2&#125;(-(gov|isob|iso))?-(east|west|north|south|central)&#123;1,2&#125;-&#91;0-9&#93;):\d&#123;12&#125;:(function-instance/fi-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instantiatedVnfInfo" /></td>
+    <td><CopyableCode code="instantiated_vnf_info" /></td>
     <td><code>object</code></td>
     <td>Information about the network function. A network function instance is a function in a function package .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instantiationState" /></td>
+    <td><CopyableCode code="instantiation_state" /></td>
     <td><code>string</code></td>
     <td>Network function instantiation state. (INSTANTIATED, NOT_INSTANTIATED)</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of a network function instance. A network function instance is a function in a function package .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceId" /></td>
+    <td><CopyableCode code="ns_instance_id" /></td>
     <td><code>string</code></td>
     <td>Network instance ID. (pattern: &lt;code&gt;^ni-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -86,27 +86,27 @@ The following fields are returned by `SELECT` queries:
     <td>A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your Amazon Web Services costs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfPkgId" /></td>
+    <td><CopyableCode code="vnf_pkg_id" /></td>
     <td><code>string</code></td>
     <td>Function package ID. (pattern: &lt;code&gt;^fp-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfProductName" /></td>
+    <td><CopyableCode code="vnf_product_name" /></td>
     <td><code>string</code></td>
     <td>Network function product name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfProvider" /></td>
+    <td><CopyableCode code="vnf_provider" /></td>
     <td><code>string</code></td>
     <td>Network function provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfdId" /></td>
+    <td><CopyableCode code="vnfd_id" /></td>
     <td><code>string</code></td>
     <td>Function package descriptor ID. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfdVersion" /></td>
+    <td><CopyableCode code="vnfd_version" /></td>
     <td><code>string</code></td>
     <td>Function package descriptor version.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
     <td>Network function instance ARN. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-b|aws-us-gov):tnb:(&#91;a-z&#93;&#123;2&#125;(-(gov|isob|iso))?-(east|west|north|south|central)&#123;1,2&#125;-&#91;0-9&#93;):\d&#123;12&#125;:(function-instance/fi-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instantiatedVnfInfo" /></td>
+    <td><CopyableCode code="instantiated_vnf_info" /></td>
     <td><code>object</code></td>
     <td>Information about a network function. A network instance is a single network created in Amazon Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instantiationState" /></td>
+    <td><CopyableCode code="instantiation_state" /></td>
     <td><code>string</code></td>
     <td>Network function instance instantiation state. (INSTANTIATED, NOT_INSTANTIATED)</td>
 </tr>
@@ -150,17 +150,17 @@ The following fields are returned by `SELECT` queries:
     <td>Network function instance metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceId" /></td>
+    <td><CopyableCode code="ns_instance_id" /></td>
     <td><code>string</code></td>
     <td>Network instance ID. (pattern: &lt;code&gt;^ni-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfPkgId" /></td>
+    <td><CopyableCode code="vnf_pkg_id" /></td>
     <td><code>string</code></td>
     <td>Function package ID. (pattern: &lt;code&gt;^fp-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfPkgName" /></td>
+    <td><CopyableCode code="vnf_pkg_name" /></td>
     <td><code>string</code></td>
     <td>Function package name.</td>
 </tr>
@@ -254,16 +254,16 @@ Gets the details of a network function instance, including the instantiation sta
 SELECT
 id,
 arn,
-instantiatedVnfInfo,
-instantiationState,
+instantiated_vnf_info,
+instantiation_state,
 metadata,
-nsInstanceId,
+ns_instance_id,
 tags,
-vnfPkgId,
-vnfProductName,
-vnfProvider,
-vnfdId,
-vnfdVersion
+vnf_pkg_id,
+vnf_product_name,
+vnf_provider,
+vnfd_id,
+vnfd_version
 FROM aws.tnb.sol_function_instances
 WHERE vnf_instance_id = '{{ vnf_instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,12 +278,12 @@ Lists network function instances. A network function instance is a function in a
 SELECT
 id,
 arn,
-instantiatedVnfInfo,
-instantiationState,
+instantiated_vnf_info,
+instantiation_state,
 metadata,
-nsInstanceId,
-vnfPkgId,
-vnfPkgName
+ns_instance_id,
+vnf_pkg_id,
+vnf_pkg_name
 FROM aws.tnb.sol_function_instances
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'

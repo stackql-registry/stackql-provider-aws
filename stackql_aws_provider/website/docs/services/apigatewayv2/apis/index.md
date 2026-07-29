@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiEndpoint" /></td>
+    <td><CopyableCode code="api_endpoint" /></td>
     <td><code>string</code></td>
     <td>The URI of the API, of the form &#123;api-id&#125;.execute-api.&#123;region&#125;.amazonaws.com. The stage name is typically appended to this URI to form a complete path to a deployed API stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether an API is managed by API Gateway. You can't update or delete a managed API by using API Gateway. A managed API can be deleted only through the tooling or service that created it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiKeySelectionExpression" /></td>
+    <td><CopyableCode code="api_key_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CorsConfiguration" /></td>
+    <td><CopyableCode code="cors_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents a CORS configuration. Supported only for HTTP APIs. See Configuring CORS for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableExecuteApiEndpoint" /></td>
+    <td><CopyableCode code="disable_execute_api_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether clients can invoke your API by using the default execute-api endpoint. By default, clients can invoke your API with the default https:​//&#123;api_id&#125;.execute-api.&#123;region&#125;.amazonaws.com endpoint. To require that clients use a custom domain name to invoke your API, disable the default endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableSchemaValidation" /></td>
+    <td><CopyableCode code="disable_schema_validation" /></td>
     <td><code>boolean</code></td>
     <td>Avoid validating models when creating a deployment. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportInfo" /></td>
+    <td><CopyableCode code="import_info" /></td>
     <td><code>array</code></td>
     <td>The validation information during API import. This may include particular properties of your OpenAPI definition which are ignored during import. Supported only for HTTP APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address types that can invoke your API or domain name. (ipv4, dualstack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtocolType" /></td>
+    <td><CopyableCode code="protocol_type" /></td>
     <td><code>string</code></td>
     <td>Represents a protocol type. (WEBSOCKET, HTTP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteSelectionExpression" /></td>
+    <td><CopyableCode code="route_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of tags associated with the API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>The warning messages reported when failonwarnings is turned on during API import.</td>
 </tr>
@@ -150,87 +150,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiEndpoint" /></td>
+    <td><CopyableCode code="api_endpoint" /></td>
     <td><code>string</code></td>
     <td>The URI of the API, of the form &#123;api-id&#125;.execute-api.&#123;region&#125;.amazonaws.com. The stage name is typically appended to this URI to form a complete path to a deployed API stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether an API is managed by API Gateway. You can't update or delete a managed API by using API Gateway. A managed API can be deleted only through the tooling or service that created it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The API ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiKeySelectionExpression" /></td>
+    <td><CopyableCode code="api_key_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CorsConfiguration" /></td>
+    <td><CopyableCode code="cors_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents a CORS configuration. Supported only for HTTP APIs. See Configuring CORS for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableExecuteApiEndpoint" /></td>
+    <td><CopyableCode code="disable_execute_api_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether clients can invoke your API by using the default execute-api endpoint. By default, clients can invoke your API with the default https:​//&#123;api_id&#125;.execute-api.&#123;region&#125;.amazonaws.com endpoint. To require that clients use a custom domain name to invoke your API, disable the default endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableSchemaValidation" /></td>
+    <td><CopyableCode code="disable_schema_validation" /></td>
     <td><code>boolean</code></td>
     <td>Avoid validating models when creating a deployment. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportInfo" /></td>
+    <td><CopyableCode code="import_info" /></td>
     <td><code>array</code></td>
     <td>The validation information during API import. This may include particular properties of your OpenAPI definition which are ignored during import. Supported only for HTTP APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address types that can invoke your API or domain name. (ipv4, dualstack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtocolType" /></td>
+    <td><CopyableCode code="protocol_type" /></td>
     <td><code>string</code></td>
     <td>Represents a protocol type. (WEBSOCKET, HTTP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteSelectionExpression" /></td>
+    <td><CopyableCode code="route_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of tags associated with the API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>The warning messages reported when failonwarnings is turned on during API import.</td>
 </tr>
@@ -367,23 +367,23 @@ Gets an Api resource.
 
 ```sql
 SELECT
-ApiEndpoint,
-ApiGatewayManaged,
-ApiId,
-ApiKeySelectionExpression,
-CorsConfiguration,
-CreatedDate,
-Description,
-DisableExecuteApiEndpoint,
-DisableSchemaValidation,
-ImportInfo,
-IpAddressType,
-Name,
-ProtocolType,
-RouteSelectionExpression,
-Tags,
-Version,
-Warnings
+api_endpoint,
+api_gateway_managed,
+api_id,
+api_key_selection_expression,
+cors_configuration,
+created_date,
+description,
+disable_execute_api_endpoint,
+disable_schema_validation,
+import_info,
+ip_address_type,
+name,
+protocol_type,
+route_selection_expression,
+tags,
+version,
+warnings
 FROM aws.apigatewayv2.apis
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -396,23 +396,23 @@ Gets a collection of Api resources.
 
 ```sql
 SELECT
-ApiEndpoint,
-ApiGatewayManaged,
-ApiId,
-ApiKeySelectionExpression,
-CorsConfiguration,
-CreatedDate,
-Description,
-DisableExecuteApiEndpoint,
-DisableSchemaValidation,
-ImportInfo,
-IpAddressType,
-Name,
-ProtocolType,
-RouteSelectionExpression,
-Tags,
-Version,
-Warnings
+api_endpoint,
+api_gateway_managed,
+api_id,
+api_key_selection_expression,
+cors_configuration,
+created_date,
+description,
+disable_execute_api_endpoint,
+disable_schema_validation,
+import_info,
+ip_address_type,
+name,
+protocol_type,
+route_selection_expression,
+tags,
+version,
+warnings
 FROM aws.apigatewayv2.apis
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -471,23 +471,23 @@ SELECT
 '{{ Version }}',
 '{{ region }}'
 RETURNING
-ApiEndpoint,
-ApiGatewayManaged,
-ApiId,
-ApiKeySelectionExpression,
-CorsConfiguration,
-CreatedDate,
-Description,
-DisableExecuteApiEndpoint,
-DisableSchemaValidation,
-ImportInfo,
-IpAddressType,
-Name,
-ProtocolType,
-RouteSelectionExpression,
-Tags,
-Version,
-Warnings
+api_endpoint,
+api_gateway_managed,
+api_id,
+api_key_selection_expression,
+cors_configuration,
+created_date,
+description,
+disable_execute_api_endpoint,
+disable_schema_validation,
+import_info,
+ip_address_type,
+name,
+protocol_type,
+route_selection_expression,
+tags,
+version,
+warnings
 ;
 ```
 </TabItem>
@@ -600,23 +600,23 @@ WHERE
 api_id = '{{ api_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApiEndpoint,
-ApiGatewayManaged,
-ApiId,
-ApiKeySelectionExpression,
-CorsConfiguration,
-CreatedDate,
-Description,
-DisableExecuteApiEndpoint,
-DisableSchemaValidation,
-ImportInfo,
-IpAddressType,
-Name,
-ProtocolType,
-RouteSelectionExpression,
-Tags,
-Version,
-Warnings;
+api_endpoint,
+api_gateway_managed,
+api_id,
+api_key_selection_expression,
+cors_configuration,
+created_date,
+description,
+disable_execute_api_endpoint,
+disable_schema_validation,
+import_info,
+ip_address_type,
+name,
+protocol_type,
+route_selection_expression,
+tags,
+version,
+warnings;
 ```
 </TabItem>
 </Tabs>

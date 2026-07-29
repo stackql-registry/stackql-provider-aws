@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectInstanceId" /></td>
+    <td><CopyableCode code="connect_instance_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Connect Instance Id (pattern: &lt;code&gt;&#91;-_.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfig" /></td>
+    <td><CopyableCode code="encryption_config" /></td>
     <td><code>object</code></td>
     <td>Encryption config for Connect Instance. Note that sensitive data will always be encrypted. If disabled, service will perform encryption with its own key. If enabled, a KMS key id needs to be provided and KMS charges will apply. KMS is only type supported</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceLinkedRoleArn" /></td>
+    <td><CopyableCode code="service_linked_role_arn" /></td>
     <td><code>string</code></td>
     <td>Service linked role arn</td>
 </tr>
@@ -146,9 +146,9 @@ Get the specific Connect instance config.
 
 ```sql
 SELECT
-connectInstanceId,
-encryptionConfig,
-serviceLinkedRoleArn
+connect_instance_id,
+encryption_config,
+service_linked_role_arn
 FROM aws.connectcampaignsv2.connect_instance_configs
 WHERE connect_instance_id = '{{ connect_instance_id }}' -- required
 AND region = '{{ region }}' -- required

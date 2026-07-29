@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationInstanceId" /></td>
+    <td><CopyableCode code="application_instance_id" /></td>
     <td><code>string</code></td>
     <td>The application instance's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationInstanceIdToReplace" /></td>
+    <td><CopyableCode code="application_instance_id_to_replace" /></td>
     <td><code>string</code></td>
     <td>The ID of the application instance that this instance replaced. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the application instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultRuntimeContextDevice" /></td>
+    <td><CopyableCode code="default_runtime_context_device" /></td>
     <td><code>string</code></td>
     <td>The application instance's default runtime context device. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The application instance's description. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestOverridesPayload" /></td>
+    <td><CopyableCode code="manifest_overrides_payload" /></td>
     <td><code>object</code></td>
     <td>Parameter overrides for an application instance. This is a JSON document that has a single key (PayloadData) where the value is an escaped string representation of the overrides document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestPayload" /></td>
+    <td><CopyableCode code="manifest_payload" /></td>
     <td><code>object</code></td>
     <td>A application verion's manifest file. This is a JSON document that has a single key (PayloadData) where the value is an escaped string representation of the application manifest (graph.json). This file is located in the graphs folder in your application source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The application instance's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -159,14 +159,14 @@ Returns information about an application instance's configuration manifest.
 
 ```sql
 SELECT
-ApplicationInstanceId,
-ApplicationInstanceIdToReplace,
-CreatedTime,
-DefaultRuntimeContextDevice,
-Description,
-ManifestOverridesPayload,
-ManifestPayload,
-Name
+application_instance_id,
+application_instance_id_to_replace,
+created_time,
+default_runtime_context_device,
+description,
+manifest_overrides_payload,
+manifest_payload,
+name
 FROM aws.panorama.application_instance_details
 WHERE application_instance_id = '{{ application_instance_id }}' -- required
 AND region = '{{ region }}' -- required

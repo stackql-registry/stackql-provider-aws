@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The image policy object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -137,7 +137,7 @@ Gets an image policy.
 ```sql
 SELECT
 policy,
-requestId
+request_id
 FROM aws.imagebuilder.image_policies
 WHERE imageArn = '{{ imageArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -169,8 +169,8 @@ region = '{{ region }}' --required
 AND imageArn = '{{ imageArn }}' --required
 AND policy = '{{ policy }}' --required
 RETURNING
-imageArn,
-requestId;
+image_arn,
+request_id;
 ```
 </TabItem>
 </Tabs>

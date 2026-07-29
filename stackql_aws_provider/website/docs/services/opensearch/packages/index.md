@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageDetailsList" /></td>
+    <td><CopyableCode code="package_details_list" /></td>
     <td><code>array</code></td>
     <td>Basic information about a package.</td>
 </tr>
@@ -190,8 +190,8 @@ Describes all packages available to OpenSearch Service. For more information, se
 
 ```sql
 SELECT
-NextToken,
-PackageDetailsList
+next_token,
+package_details_list
 FROM aws.opensearch.packages
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,7 +236,7 @@ SELECT
 '{{ PackageEncryptionOptions }}',
 '{{ region }}'
 RETURNING
-PackageDetails
+package_details
 ;
 ```
 </TabItem>
@@ -313,7 +313,7 @@ package_id = '{{ package_id }}' --required
 AND domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DomainPackageDetails;
+domain_package_details;
 ```
 </TabItem>
 <TabItem value="associate_packages">
@@ -330,7 +330,7 @@ region = '{{ region }}' --required
 AND PackageList = '{{ PackageList }}' --required
 AND DomainName = '{{ DomainName }}' --required
 RETURNING
-DomainPackageDetailsList;
+domain_package_details_list;
 ```
 </TabItem>
 <TabItem value="update_package">
@@ -351,7 +351,7 @@ region = '{{ region }}' --required
 AND PackageID = '{{ PackageID }}' --required
 AND PackageSource = '{{ PackageSource }}' --required
 RETURNING
-PackageDetails;
+package_details;
 ```
 </TabItem>
 <TabItem value="update_package_scope">
@@ -369,9 +369,9 @@ region = '{{ region }}' --required
 AND PackageID = '{{ PackageID }}' --required
 AND PackageUserList = '{{ PackageUserList }}' --required
 RETURNING
-Operation,
-PackageID,
-PackageUserList;
+operation,
+package_id,
+package_user_list;
 ```
 </TabItem>
 </Tabs>

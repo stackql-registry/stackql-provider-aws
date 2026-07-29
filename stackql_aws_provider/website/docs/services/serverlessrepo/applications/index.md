@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Author" /></td>
+    <td><CopyableCode code="author" /></td>
     <td><code>string</code></td>
     <td>The name of the author publishing the app. Minimum length=1. Maximum length=127. Pattern "^&#91;a-z0-9&#93;((&#91;a-z0-9&#93;|-(?!-))*&#91;a-z0-9&#93;)?$";</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time this resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application. Minimum length=1. Maximum length=256</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomePageUrl" /></td>
+    <td><CopyableCode code="home_page_url" /></td>
     <td><code>string</code></td>
     <td>A URL with more information about the application, for example the location of your GitHub repository for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsVerifiedAuthor" /></td>
+    <td><CopyableCode code="is_verified_author" /></td>
     <td><code>boolean</code></td>
     <td>Whether the author of this application has been verified. This means means that AWS has made a good faith review, as a reasonable and prudent service provider, of the information provided by the requester and has confirmed that the requester's identity is as claimed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Labels" /></td>
+    <td><CopyableCode code="labels" /></td>
     <td><code>array</code></td>
     <td>Labels to improve discovery of apps in search results. Minimum length=1. Maximum length=127. Maximum number of labels: 10 Pattern: "^&#91;a-zA-Z0-9+\\-_:\\/@&#93;+$";</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseUrl" /></td>
+    <td><CopyableCode code="license_url" /></td>
     <td><code>string</code></td>
     <td>A link to a license file of the app that matches the spdxLicenseID value of your application. Maximum size 5 MB</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. Minimum length=1. Maximum length=140 Pattern: "&#91;a-zA-Z0-9\\-&#93;+";</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadmeUrl" /></td>
+    <td><CopyableCode code="readme_url" /></td>
     <td><code>string</code></td>
     <td>A link to the readme file in Markdown language that contains a more detailed description of the application and how it works. Maximum size 5 MB</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpdxLicenseId" /></td>
+    <td><CopyableCode code="spdx_license_id" /></td>
     <td><code>string</code></td>
     <td>A valid identifier from https:​//spdx.org/licenses/.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAuthorUrl" /></td>
+    <td><CopyableCode code="verified_author_url" /></td>
     <td><code>string</code></td>
     <td>The URL to the public profile of a verified author. This URL is submitted by the author.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>object</code></td>
     <td>Version information about the application.</td>
 </tr>
@@ -130,42 +130,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Author" /></td>
+    <td><CopyableCode code="author" /></td>
     <td><code>string</code></td>
     <td>The name of the author publishing the app. Minimum length=1. Maximum length=127. Pattern "^&#91;a-z0-9&#93;((&#91;a-z0-9&#93;|-(?!-))*&#91;a-z0-9&#93;)?$";</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time this resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application. Minimum length=1. Maximum length=256</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomePageUrl" /></td>
+    <td><CopyableCode code="home_page_url" /></td>
     <td><code>string</code></td>
     <td>A URL with more information about the application, for example the location of your GitHub repository for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Labels" /></td>
+    <td><CopyableCode code="labels" /></td>
     <td><code>array</code></td>
     <td>Labels to improve discovery of apps in search results. Minimum length=1. Maximum length=127. Maximum number of labels: 10 Pattern: "^&#91;a-zA-Z0-9+\\-_:\\/@&#93;+$";</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. Minimum length=1. Maximum length=140 Pattern: "&#91;a-zA-Z0-9\\-&#93;+";</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpdxLicenseId" /></td>
+    <td><CopyableCode code="spdx_license_id" /></td>
     <td><code>string</code></td>
     <td>A valid identifier from https:​//spdx.org/licenses/.</td>
 </tr>
@@ -297,19 +297,19 @@ Gets the specified application.
 
 ```sql
 SELECT
-ApplicationId,
-Author,
-CreationTime,
-Description,
-HomePageUrl,
-IsVerifiedAuthor,
-Labels,
-LicenseUrl,
-Name,
-ReadmeUrl,
-SpdxLicenseId,
-VerifiedAuthorUrl,
-Version
+application_id,
+author,
+creation_time,
+description,
+home_page_url,
+is_verified_author,
+labels,
+license_url,
+name,
+readme_url,
+spdx_license_id,
+verified_author_url,
+version
 FROM aws.serverlessrepo.applications
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -323,14 +323,14 @@ Lists applications owned by the requester.
 
 ```sql
 SELECT
-ApplicationId,
-Author,
-CreationTime,
-Description,
-HomePageUrl,
-Labels,
-Name,
-SpdxLicenseId
+application_id,
+author,
+creation_time,
+description,
+home_page_url,
+labels,
+name,
+spdx_license_id
 FROM aws.serverlessrepo.applications
 WHERE region = '{{ region }}' -- required
 AND maxItems = '{{ maxItems }}'
@@ -388,10 +388,10 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-ChangeSetId,
-SemanticVersion,
-StackId
+application_id,
+change_set_id,
+semantic_version,
+stack_id
 ;
 ```
 </TabItem>
@@ -436,19 +436,19 @@ SELECT
 '{{ TemplateUrl }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-Author,
-CreationTime,
-Description,
-HomePageUrl,
-IsVerifiedAuthor,
-Labels,
-LicenseUrl,
-Name,
-ReadmeUrl,
-SpdxLicenseId,
-VerifiedAuthorUrl,
-Version
+application_id,
+author,
+creation_time,
+description,
+home_page_url,
+is_verified_author,
+labels,
+license_url,
+name,
+readme_url,
+spdx_license_id,
+verified_author_url,
+version
 ;
 ```
 </TabItem>
@@ -558,19 +558,19 @@ WHERE
 application_id = '{{ application_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApplicationId,
-Author,
-CreationTime,
-Description,
-HomePageUrl,
-IsVerifiedAuthor,
-Labels,
-LicenseUrl,
-Name,
-ReadmeUrl,
-SpdxLicenseId,
-VerifiedAuthorUrl,
-Version;
+application_id,
+author,
+creation_time,
+description,
+home_page_url,
+is_verified_author,
+labels,
+license_url,
+name,
+readme_url,
+spdx_license_id,
+verified_author_url,
+version;
 ```
 </TabItem>
 </Tabs>

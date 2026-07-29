@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccelerationSettings" /></td>
+    <td><CopyableCode code="acceleration_settings" /></td>
     <td><code>object</code></td>
     <td>Accelerated transcoding can significantly speed up jobs with long, visually complex content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>An optional category you create to organize your job templates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for Job template creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description you create for each job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HopDestinations" /></td>
+    <td><CopyableCode code="hop_destinations" /></td>
     <td><code>array</code></td>
     <td>Optional list of hop destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds when the Job template was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name you create for each job template. Each name must be unique within your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>Relative priority on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Queue" /></td>
+    <td><CopyableCode code="queue" /></td>
     <td><code>string</code></td>
     <td>Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusUpdateInterval" /></td>
+    <td><CopyableCode code="status_update_interval" /></td>
     <td><code>string</code></td>
     <td>Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error. (SECONDS_10, SECONDS_12, SECONDS_15, SECONDS_20, SECONDS_30, SECONDS_60, SECONDS_120, SECONDS_180, SECONDS_240, SECONDS_300, SECONDS_360, SECONDS_420, SECONDS_480, SECONDS_540, SECONDS_600)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>A job template can be of two types: system or custom. System or built-in job templates can't be modified or deleted by the user. (SYSTEM, CUSTOM)</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccelerationSettings" /></td>
+    <td><CopyableCode code="acceleration_settings" /></td>
     <td><code>object</code></td>
     <td>Accelerated transcoding can significantly speed up jobs with long, visually complex content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>An optional category you create to organize your job templates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for Job template creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description you create for each job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HopDestinations" /></td>
+    <td><CopyableCode code="hop_destinations" /></td>
     <td><code>array</code></td>
     <td>Optional list of hop destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds when the Job template was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name you create for each job template. Each name must be unique within your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>Relative priority on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Queue" /></td>
+    <td><CopyableCode code="queue" /></td>
     <td><code>string</code></td>
     <td>Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusUpdateInterval" /></td>
+    <td><CopyableCode code="status_update_interval" /></td>
     <td><code>string</code></td>
     <td>Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error. (SECONDS_10, SECONDS_12, SECONDS_15, SECONDS_20, SECONDS_30, SECONDS_60, SECONDS_120, SECONDS_180, SECONDS_240, SECONDS_300, SECONDS_360, SECONDS_420, SECONDS_480, SECONDS_540, SECONDS_600)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>A job template can be of two types: system or custom. System or built-in job templates can't be modified or deleted by the user. (SYSTEM, CUSTOM)</td>
 </tr>
@@ -318,19 +318,19 @@ Retrieve the JSON for a specific job template.
 
 ```sql
 SELECT
-AccelerationSettings,
-Arn,
-Category,
-CreatedAt,
-Description,
-HopDestinations,
-LastUpdated,
-Name,
-Priority,
-Queue,
-Settings,
-StatusUpdateInterval,
-Type
+acceleration_settings,
+arn,
+category,
+created_at,
+description,
+hop_destinations,
+last_updated,
+name,
+priority,
+queue,
+settings,
+status_update_interval,
+type
 FROM aws.mediaconvert.job_templates
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -343,19 +343,19 @@ Retrieve a JSON array of up to twenty of your job templates. This will return th
 
 ```sql
 SELECT
-AccelerationSettings,
-Arn,
-Category,
-CreatedAt,
-Description,
-HopDestinations,
-LastUpdated,
-Name,
-Priority,
-Queue,
-Settings,
-StatusUpdateInterval,
-Type
+acceleration_settings,
+arn,
+category,
+created_at,
+description,
+hop_destinations,
+last_updated,
+name,
+priority,
+queue,
+settings,
+status_update_interval,
+type
 FROM aws.mediaconvert.job_templates
 WHERE region = '{{ region }}' -- required
 AND category = '{{ category }}'
@@ -409,7 +409,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-JobTemplate
+job_template
 ;
 ```
 </TabItem>
@@ -800,7 +800,7 @@ WHERE
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-JobTemplate;
+job_template;
 ```
 </TabItem>
 </Tabs>

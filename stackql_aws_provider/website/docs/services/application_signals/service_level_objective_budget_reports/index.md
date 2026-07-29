@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>An array of structures, where each structure includes an error indicating that one of the requests in the array was not valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reports" /></td>
+    <td><CopyableCode code="reports" /></td>
     <td><code>array</code></td>
     <td>An array of structures, where each structure is one budget report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the report is for. It is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
@@ -129,9 +129,9 @@ Use this operation to retrieve one or more service level objective (SLO) budget 
 
 ```sql
 SELECT
-Errors,
-Reports,
-Timestamp
+errors,
+reports,
+timestamp
 FROM aws.application_signals.service_level_objective_budget_reports
 WHERE region = '{{ region }}' -- required
 ;

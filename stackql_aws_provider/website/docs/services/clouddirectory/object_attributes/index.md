@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>array</code></td>
     <td>The attributes that are associated with the object.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>object</code></td>
     <td>The key of the attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>object</code></td>
     <td>The value of the attribute.</td>
 </tr>
@@ -169,7 +169,7 @@ Retrieves attributes within a facet that are associated with an object.
 
 ```sql
 SELECT
-Attributes
+attributes
 FROM aws.clouddirectory.object_attributes
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required
@@ -183,8 +183,8 @@ Lists all attributes that are associated with an object.
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.clouddirectory.object_attributes
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required
@@ -218,7 +218,7 @@ AND region = '{{ region }}' --required
 AND ObjectReference = '{{ ObjectReference }}' --required
 AND AttributeUpdates = '{{ AttributeUpdates }}' --required
 RETURNING
-ObjectIdentifier;
+object_identifier;
 ```
 </TabItem>
 </Tabs>

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The name of the domain of the app. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_.-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointInfo" /></td>
+    <td><CopyableCode code="endpoint_info" /></td>
     <td><code>object</code></td>
     <td>Information about the network endpoint for the custom app. You can use the endpoint to connect to the custom app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchOverrides" /></td>
+    <td><CopyableCode code="launch_overrides" /></td>
     <td><code>object</code></td>
     <td>Options that apply when the app starts. These options override default behavior.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the app. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_.-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Simulation" /></td>
+    <td><CopyableCode code="simulation" /></td>
     <td><code>string</code></td>
     <td>The name of the simulation of the app. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_.-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current lifecycle state of the custom app. (STARTING, STARTED, STOPPING, STOPPED, ERROR, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetStatus" /></td>
+    <td><CopyableCode code="target_status" /></td>
     <td><code>string</code></td>
     <td>The desired lifecycle state of the custom app. (UNKNOWN, STARTED, STOPPED)</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Apps" /></td>
+    <td><CopyableCode code="apps" /></td>
     <td><code>array</code></td>
     <td>The list of apps for the given simulation and domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If SimSpace Weaver returns nextToken, then there are more results available. The value of nextToken is a unique pagination token for each page. To retrieve the next page, call the operation again using the returned token. Keep all other arguments unchanged. If no results remain, then nextToken is set to null. Each pagination token expires after 24 hours. If you provide a token that isn't valid, then you receive an HTTP 400 ValidationException error.</td>
 </tr>
@@ -224,14 +224,14 @@ Returns the state of the given custom app.
 
 ```sql
 SELECT
-Description,
-Domain,
-EndpointInfo,
-LaunchOverrides,
-Name,
-Simulation,
-Status,
-TargetStatus
+description,
+domain,
+endpoint_info,
+launch_overrides,
+name,
+simulation,
+status,
+target_status
 FROM aws.simspaceweaver.apps
 WHERE app = '{{ app }}' -- required
 AND domain = '{{ domain }}' -- required
@@ -246,8 +246,8 @@ Lists all custom apps or service apps for the given simulation and domain.
 
 ```sql
 SELECT
-Apps,
-NextToken
+apps,
+next_token
 FROM aws.simspaceweaver.apps
 WHERE simulation = '{{ simulation }}' -- required
 AND region = '{{ region }}' -- required

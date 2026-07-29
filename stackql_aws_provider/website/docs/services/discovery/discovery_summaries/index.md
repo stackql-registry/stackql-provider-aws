@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSummary" /></td>
+    <td><CopyableCode code="agent_summary" /></td>
     <td><code>object</code></td>
     <td>Details about discovered agents, including agent status and health.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentlessCollectorSummary" /></td>
+    <td><CopyableCode code="agentless_collector_summary" /></td>
     <td><code>object</code></td>
     <td>Details about Agentless Collector collectors, including status.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>The number of applications discovered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorSummary" /></td>
+    <td><CopyableCode code="connector_summary" /></td>
     <td><code>object</code></td>
     <td>Details about discovered connectors, including connector status and health.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="meCollectorSummary" /></td>
+    <td><CopyableCode code="me_collector_summary" /></td>
     <td><code>object</code></td>
     <td>Details about Migration Evaluator collectors, including collector status and health.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>The number of servers discovered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serversMappedToApplications" /></td>
+    <td><CopyableCode code="servers_mapped_to_applications" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of servers mapped to applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serversMappedtoTags" /></td>
+    <td><CopyableCode code="servers_mappedto_tags" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of servers mapped to tags.</td>
 </tr>
@@ -154,14 +154,14 @@ Retrieves a short summary of discovered assets. This API operation takes no requ
 
 ```sql
 SELECT
-agentSummary,
-agentlessCollectorSummary,
+agent_summary,
+agentless_collector_summary,
 applications,
-connectorSummary,
-meCollectorSummary,
+connector_summary,
+me_collector_summary,
 servers,
-serversMappedToApplications,
-serversMappedtoTags
+servers_mapped_to_applications,
+servers_mappedto_tags
 FROM aws.discovery.discovery_summaries
 WHERE region = '{{ region }}' -- required
 ;

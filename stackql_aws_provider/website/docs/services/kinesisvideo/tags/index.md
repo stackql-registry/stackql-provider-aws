@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If you specify this parameter and the result of a ListTagsForResource call is truncated, the response includes a token that you can use in the next request to fetch the next set of tags. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A map of tag keys and values associated with the specified signaling channel.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If you specify this parameter and the result of a ListTags call is truncated, the response includes a token that you can use in the next request to fetch the next set of tags. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A map of tag keys and values associated with the specified stream.</td>
 </tr>
@@ -185,8 +185,8 @@ Returns a list of tags associated with the specified signaling channel.
 
 ```sql
 SELECT
-NextToken,
-Tags
+next_token,
+tags
 FROM aws.kinesisvideo.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,8 +198,8 @@ Returns a list of tags associated with the specified stream. In the request, you
 
 ```sql
 SELECT
-NextToken,
-Tags
+next_token,
+tags
 FROM aws.kinesisvideo.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The review template ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-iso(-&#91;a-z&#93;)?|-cn)?:wellarchitected:&#91;a-z&#93;&#123;2&#125;(-gov|-iso(&#91;a-z&#93;)?)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:(review-template)/&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateShareSummaries" /></td>
+    <td><CopyableCode code="template_share_summaries" /></td>
     <td><code>array</code></td>
     <td>A review template share summary return object.</td>
 </tr>
@@ -178,9 +178,9 @@ List review template shares.
 
 ```sql
 SELECT
-NextToken,
-TemplateArn,
-TemplateShareSummaries
+next_token,
+template_arn,
+template_share_summaries
 FROM aws.wellarchitected.template_shares
 WHERE template_arn = '{{ template_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -220,8 +220,8 @@ SELECT
 '{{ template_arn }}',
 '{{ region }}'
 RETURNING
-ShareId,
-TemplateArn
+share_id,
+template_arn
 ;
 ```
 </TabItem>

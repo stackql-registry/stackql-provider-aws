@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdministrativeActions" /></td>
+    <td><CopyableCode code="administrative_actions" /></td>
     <td><code>array</code></td>
     <td>A list of administrative actions for the file system that are in process or waiting to be processed. Administrative actions describe changes to the Amazon FSx system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the resource was created, in seconds (since 1970-01-01T00:00:00Z), also known as Unix time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lifecycle" /></td>
+    <td><CopyableCode code="lifecycle" /></td>
     <td><code>string</code></td>
     <td>The lifecycle status of the snapshot. PENDING - Amazon FSx hasn't started creating the snapshot. CREATING - Amazon FSx is creating the snapshot. DELETING - Amazon FSx is deleting the snapshot. AVAILABLE - The snapshot is fully available. (PENDING, CREATING, DELETING, AVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleTransitionReason" /></td>
+    <td><CopyableCode code="lifecycle_transition_reason" /></td>
     <td><code>object</code></td>
     <td>Describes why a resource lifecycle state changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the snapshot. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_:.-&#93;&#123;1,203&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceARN" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:(?=&#91;^:&#93;+:fsx:&#91;^:&#93;+:\d&#123;12&#125;:)((|(?=&#91;a-z0-9-.&#93;&#123;1,63&#125;)(?!\d&#123;1,3&#125;(\.\d&#123;1,3&#125;)&#123;3&#125;)(?!&#91;^:&#93;*-&#123;2&#125;)(?!&#91;^:&#93;*-\.)(?!&#91;^:&#93;*\.-)&#91;a-z0-9&#93;.*(?&lt;!-)):)&#123;4&#125;(?!/).&#123;0,1024&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot. (pattern: &lt;code&gt;^((fs)?volsnap-&#91;0-9a-f&#93;&#123;8,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of Tag values, with a maximum of 50 elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the volume that the snapshot is of. (pattern: &lt;code&gt;^(fsvol-&#91;0-9a-f&#93;&#123;17,&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -187,15 +187,15 @@ Returns the description of specific Amazon FSx for OpenZFS snapshots, if a Snaps
 
 ```sql
 SELECT
-AdministrativeActions,
-CreationTime,
-Lifecycle,
-LifecycleTransitionReason,
-Name,
-ResourceARN,
-SnapshotId,
-Tags,
-VolumeId
+administrative_actions,
+creation_time,
+lifecycle,
+lifecycle_transition_reason,
+name,
+resource_arn,
+snapshot_id,
+tags,
+volume_id
 FROM aws.fsx.snapshots
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,7 +232,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Snapshot
+snapshot
 ;
 ```
 </TabItem>
@@ -290,7 +290,7 @@ WHERE
 region = '{{ region }}' --required
 AND SnapshotId = '{{ SnapshotId }}' --required
 RETURNING
-Snapshot;
+snapshot;
 ```
 </TabItem>
 </Tabs>

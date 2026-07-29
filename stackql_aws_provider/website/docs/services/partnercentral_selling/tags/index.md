@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A map of the key-value pairs for the tag or tags assigned to the specified resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a list of tags for a resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.partnercentral_selling.tags
 WHERE region = '{{ region }}' -- required
 ;

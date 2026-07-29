@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GetRequestMetadata" /></td>
+    <td><CopyableCode code="get_request_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the paramters used when getting a response. Includes information on aggregation and sorting methods.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>Job identifier for the label detection operation for which you want to obtain results. The job identifer is returned by an initial call to StartLabelDetection. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the label detection job. (IN_PROGRESS, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobTag" /></td>
+    <td><CopyableCode code="job_tag" /></td>
     <td><code>string</code></td>
     <td>A job identifier specified in the call to StartLabelDetection and returned in the job completion notification sent to your Amazon Simple Notification Service topic. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.\-:+=\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelModelVersion" /></td>
+    <td><CopyableCode code="label_model_version" /></td>
     <td><code>string</code></td>
     <td>Version number of the label detection model that was used to detect labels.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Labels" /></td>
+    <td><CopyableCode code="labels" /></td>
     <td><code>array</code></td>
     <td>An array of labels detected in the video. Each element contains the detected label and the time, in milliseconds from the start of the video, that the label was detected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, Amazon Rekognition Video returns this token that you can use in the subsequent request to retrieve the next set of labels.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>If the job fails, StatusMessage provides a descriptive error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Video" /></td>
+    <td><CopyableCode code="video" /></td>
     <td><code>object</code></td>
     <td>Video file stored in an Amazon S3 bucket. Amazon Rekognition video start operations such as StartLabelDetection use Video to specify a video for analysis. The supported file formats are .mp4, .mov and .avi.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VideoMetadata" /></td>
+    <td><CopyableCode code="video_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about a video that Amazon Rekognition Video analyzed. Videometadata is returned in every page of paginated responses from a Amazon Rekognition video operation.</td>
 </tr>
@@ -164,16 +164,16 @@ Gets the label detection results of a Amazon Rekognition Video analysis started 
 
 ```sql
 SELECT
-GetRequestMetadata,
-JobId,
-JobStatus,
-JobTag,
-LabelModelVersion,
-Labels,
-NextToken,
-StatusMessage,
-Video,
-VideoMetadata
+get_request_metadata,
+job_id,
+job_status,
+job_tag,
+label_model_version,
+labels,
+next_token,
+status_message,
+video,
+video_metadata
 FROM aws.rekognition.label_detections
 WHERE region = '{{ region }}' -- required
 ;

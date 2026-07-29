@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the origin request policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the origin request policy was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginRequestPolicyConfig" /></td>
+    <td><CopyableCode code="origin_request_policy_config" /></td>
     <td><code>string</code></td>
     <td>The origin request policy configuration.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>Contains the origin request policies in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of origin request policies requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more items in the list than are in this response, this element is present. It contains the value that you should use in the Marker field of a subsequent request to continue listing origin request policies where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The total number of origin request policies returned in the response.</td>
 </tr>
@@ -218,9 +218,9 @@ Gets an origin request policy, including the following metadata: The policy's id
 
 ```sql
 SELECT
-Id,
-LastModifiedTime,
-OriginRequestPolicyConfig
+id,
+last_modified_time,
+origin_request_policy_config
 FROM aws.cloudfront.origin_request_policies
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -233,10 +233,10 @@ Gets a list of origin request policies. You can optionally apply a filter to ret
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.origin_request_policies
 WHERE region = '{{ region }}' -- required
 AND Type = '{{ Type }}'
@@ -270,9 +270,9 @@ SELECT
 '{{ OriginRequestPolicyConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-Id,
-LastModifiedTime,
-OriginRequestPolicyConfig
+id,
+last_modified_time,
+origin_request_policy_config
 ;
 ```
 </TabItem>
@@ -336,9 +336,9 @@ AND region = '{{ region }}' --required
 AND OriginRequestPolicyConfig = '{{ OriginRequestPolicyConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-Id,
-LastModifiedTime,
-OriginRequestPolicyConfig;
+id,
+last_modified_time,
+origin_request_policy_config;
 ```
 </TabItem>
 </Tabs>

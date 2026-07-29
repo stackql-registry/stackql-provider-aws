@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LDAPSStatus" /></td>
+    <td><CopyableCode code="ldaps_status" /></td>
     <td><code>string</code></td>
     <td>The state of the LDAPS settings. (Enabling, Enabled, EnableFailed, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LDAPSStatusReason" /></td>
+    <td><CopyableCode code="ldaps_status_reason" /></td>
     <td><code>string</code></td>
     <td>Describes a state change for LDAPS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the LDAPS settings were last updated.</td>
 </tr>
@@ -129,9 +129,9 @@ Describes the status of LDAP security for the specified directory.
 
 ```sql
 SELECT
-LDAPSStatus,
-LDAPSStatusReason,
-LastUpdatedDateTime
+ldaps_status,
+ldaps_status_reason,
+last_updated_date_time
 FROM aws.ds.ldaps_settings
 WHERE region = '{{ region }}' -- required
 ;

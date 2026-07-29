@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>object</code></td>
     <td>The tags for a resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the tags attached to a Region switch resource.
 
 ```sql
 SELECT
-resourceTags
+resource_tags
 FROM aws.arc_region_switch.tags
 WHERE region = '{{ region }}' -- required
 ;

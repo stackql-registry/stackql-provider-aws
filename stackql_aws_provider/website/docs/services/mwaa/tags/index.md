@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The key-value tag pairs associated to your environment. For more information, refer to Tagging Amazon Web Services resources.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apa
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.mwaa.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

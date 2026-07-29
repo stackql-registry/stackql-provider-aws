@@ -55,72 +55,72 @@ The following fields are returned by `SELECT` queries:
     <td>Replication Configuration template ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associateDefaultSecurityGroup" /></td>
+    <td><CopyableCode code="associate_default_security_group" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration template associate default Application Migration Service Security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bandwidthThrottling" /></td>
+    <td><CopyableCode code="bandwidth_throttling" /></td>
     <td><code>integer (int64)</code></td>
     <td>Replication Configuration template bandwidth throttling.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createPublicIP" /></td>
+    <td><CopyableCode code="create_public_ip" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration template create Public IP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataPlaneRouting" /></td>
+    <td><CopyableCode code="data_plane_routing" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template data plane routing. (PRIVATE_IP, PUBLIC_IP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultLargeStagingDiskType" /></td>
+    <td><CopyableCode code="default_large_staging_disk_type" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template use default large Staging Disk type. (GP2, ST1, GP3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ebsEncryption" /></td>
+    <td><CopyableCode code="ebs_encryption" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template EBS encryption. (DEFAULT, CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ebsEncryptionKeyArn" /></td>
+    <td><CopyableCode code="ebs_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template EBS encryption key ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="internetProtocol" /></td>
+    <td><CopyableCode code="internet_protocol" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template internet protocol. (IPV4, IPV6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationConfigurationTemplateID" /></td>
+    <td><CopyableCode code="replication_configuration_template_id" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template ID. (pattern: &lt;code&gt;rct-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationServerInstanceType" /></td>
+    <td><CopyableCode code="replication_server_instance_type" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template server instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationServersSecurityGroupsIDs" /></td>
+    <td><CopyableCode code="replication_servers_security_groups_ids" /></td>
     <td><code>array</code></td>
     <td>Replication Configuration template server Security Groups IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stagingAreaSubnetId" /></td>
+    <td><CopyableCode code="staging_area_subnet_id" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration template Staging Area subnet ID. (pattern: &lt;code&gt;subnet-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stagingAreaTags" /></td>
+    <td><CopyableCode code="staging_area_tags" /></td>
     <td><code>object</code></td>
     <td>Replication Configuration template Staging Area Tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeSnapshotOnLocalZone" /></td>
+    <td><CopyableCode code="store_snapshot_on_local_zone" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration template store snapshot on local zone.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>Replication Configuration template Tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="useDedicatedReplicationServer" /></td>
+    <td><CopyableCode code="use_dedicated_replication_server" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration template use Dedicated Replication Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="useFipsEndpoint" /></td>
+    <td><CopyableCode code="use_fips_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration template use Fips Endpoint.</td>
 </tr>
@@ -226,23 +226,23 @@ Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
 ```sql
 SELECT
 arn,
-associateDefaultSecurityGroup,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-replicationConfigurationTemplateID,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-stagingAreaSubnetId,
-stagingAreaTags,
-storeSnapshotOnLocalZone,
+associate_default_security_group,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+replication_configuration_template_id,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+staging_area_subnet_id,
+staging_area_tags,
+store_snapshot_on_local_zone,
 tags,
-useDedicatedReplicationServer,
-useFipsEndpoint
+use_dedicated_replication_server,
+use_fips_endpoint
 FROM aws.mgn.replication_configuration_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -304,23 +304,23 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-associateDefaultSecurityGroup,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-replicationConfigurationTemplateID,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-stagingAreaSubnetId,
-stagingAreaTags,
-storeSnapshotOnLocalZone,
+associate_default_security_group,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+replication_configuration_template_id,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+staging_area_subnet_id,
+staging_area_tags,
+store_snapshot_on_local_zone,
 tags,
-useDedicatedReplicationServer,
-useFipsEndpoint
+use_dedicated_replication_server,
+use_fips_endpoint
 ;
 ```
 </TabItem>
@@ -412,23 +412,23 @@ region = '{{ region }}' --required
 AND replicationConfigurationTemplateID = '{{ replicationConfigurationTemplateID }}' --required
 RETURNING
 arn,
-associateDefaultSecurityGroup,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-replicationConfigurationTemplateID,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-stagingAreaSubnetId,
-stagingAreaTags,
-storeSnapshotOnLocalZone,
+associate_default_security_group,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+replication_configuration_template_id,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+staging_area_subnet_id,
+staging_area_tags,
+store_snapshot_on_local_zone,
 tags,
-useDedicatedReplicationServer,
-useFipsEndpoint;
+use_dedicated_replication_server,
+use_fips_endpoint;
 ```
 </TabItem>
 </Tabs>

@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompilationEndTime" /></td>
+    <td><CopyableCode code="compilation_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the model compilation job on a compilation job instance ended. For a successful or stopped job, this is when the job's model artifacts have finished uploading. For a failed job, this is when Amazon SageMaker AI detected that the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationJobArn" /></td>
+    <td><CopyableCode code="compilation_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model compilation job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:compilation-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationJobName" /></td>
+    <td><CopyableCode code="compilation_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model compilation job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationJobStatus" /></td>
+    <td><CopyableCode code="compilation_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the model compilation job. (INPROGRESS, COMPLETED, FAILED, STARTING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationStartTime" /></td>
+    <td><CopyableCode code="compilation_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the model compilation job started the CompilationJob instances. You are billed for the time between this timestamp and the timestamp in the CompilationEndTime field. In Amazon CloudWatch Logs, the start time might be later than this time. That's because it takes time to download the compilation job, which depends on the size of the compilation job container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the model compilation job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DerivedInformation" /></td>
+    <td><CopyableCode code="derived_information" /></td>
     <td><code>object</code></td>
     <td>Information that SageMaker Neo automatically derived about the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a model compilation job failed, the reason it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceImage" /></td>
+    <td><CopyableCode code="inference_image" /></td>
     <td><code>string</code></td>
     <td>The inference image to use when compiling a model. Specify an image only if the target device is a cloud instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputConfig" /></td>
+    <td><CopyableCode code="input_config" /></td>
     <td><code>object</code></td>
     <td>Information about the location in Amazon S3 of the input model artifacts, the name and shape of the expected data inputs, and the framework in which the model was trained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the status of the model compilation job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArtifacts" /></td>
+    <td><CopyableCode code="model_artifacts" /></td>
     <td><code>object</code></td>
     <td>Information about the location in Amazon S3 that has been configured for storing the model artifacts used in the compilation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelDigests" /></td>
+    <td><CopyableCode code="model_digests" /></td>
     <td><code>object</code></td>
     <td>Provides a BLAKE2 hash value that identifies the compiled model artifacts in Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageVersionArn" /></td>
+    <td><CopyableCode code="model_package_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the versioned model package that was provided to SageMaker Neo when you initiated a compilation job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-package/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>Information about the output location for the compiled model and the target device that the model runs on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI assumes to perform the model compilation job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>Specifies a limit to how long a job can run. When the job reaches the time limit, SageMaker ends the job. Use this API to cap costs. To stop a training job, SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. The training algorithms provided by SageMaker automatically save the intermediate results of a model training job when possible. This attempt to save artifacts is only a best effort case as model might not be in a state from which it can be saved. For example, if training has just started, the model might not be ready to save. When saved, this intermediate data is a valid model artifact. You can use it to create a model with CreateModel. The Neural Topic Model (NTM) currently does not support saving intermediate model artifacts. When training NTMs, make sure that the maximum runtime is sufficient for the training job to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>A VpcConfig object that specifies the VPC that you want your compilation job to connect to. Control access to your models by configuring the VPC. For more information, see Protect Compilation Jobs by Using an Amazon Virtual Private Cloud.</td>
 </tr>
@@ -155,57 +155,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompilationEndTime" /></td>
+    <td><CopyableCode code="compilation_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the model compilation job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationJobArn" /></td>
+    <td><CopyableCode code="compilation_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model compilation job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:compilation-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationJobName" /></td>
+    <td><CopyableCode code="compilation_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model compilation job that you want a summary for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationJobStatus" /></td>
+    <td><CopyableCode code="compilation_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the model compilation job. (INPROGRESS, COMPLETED, FAILED, STARTING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationStartTime" /></td>
+    <td><CopyableCode code="compilation_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the model compilation job started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationTargetDevice" /></td>
+    <td><CopyableCode code="compilation_target_device" /></td>
     <td><code>string</code></td>
     <td>The type of device that the model will run on after the compilation job has completed. (lambda, ml_m4, ml_m5, ml_m6g, ml_c4, ml_c5, ml_c6g, ml_p2, ml_p3, ml_g4dn, ml_inf1, ml_inf2, ml_trn1, ml_eia2, jetson_tx1, jetson_tx2, jetson_nano, jetson_xavier, rasp3b, rasp4b, imx8qm, deeplens, rk3399, rk3288, aisage, sbe_c, qcs605, qcs603, sitara_am57x, amba_cv2, amba_cv22, amba_cv25, x86_win32, x86_win64, coreml, jacinto_tda4vm, imx8mplus)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationTargetPlatformAccelerator" /></td>
+    <td><CopyableCode code="compilation_target_platform_accelerator" /></td>
     <td><code>string</code></td>
     <td>The type of accelerator that the model will run on after the compilation job has completed. (INTEL_GRAPHICS, MALI, NVIDIA, NNA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationTargetPlatformArch" /></td>
+    <td><CopyableCode code="compilation_target_platform_arch" /></td>
     <td><code>string</code></td>
     <td>The type of architecture that the model will run on after the compilation job has completed. (X86_64, X86, ARM64, ARM_EABI, ARM_EABIHF)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompilationTargetPlatformOs" /></td>
+    <td><CopyableCode code="compilation_target_platform_os" /></td>
     <td><code>string</code></td>
     <td>The type of OS that the model will run on after the compilation job has completed. (ANDROID, LINUX)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the model compilation job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the model compilation job was last modified.</td>
 </tr>
@@ -303,24 +303,24 @@ Returns information about a model compilation job. To create a model compilation
 
 ```sql
 SELECT
-CompilationEndTime,
-CompilationJobArn,
-CompilationJobName,
-CompilationJobStatus,
-CompilationStartTime,
-CreationTime,
-DerivedInformation,
-FailureReason,
-InferenceImage,
-InputConfig,
-LastModifiedTime,
-ModelArtifacts,
-ModelDigests,
-ModelPackageVersionArn,
-OutputConfig,
-RoleArn,
-StoppingCondition,
-VpcConfig
+compilation_end_time,
+compilation_job_arn,
+compilation_job_name,
+compilation_job_status,
+compilation_start_time,
+creation_time,
+derived_information,
+failure_reason,
+inference_image,
+input_config,
+last_modified_time,
+model_artifacts,
+model_digests,
+model_package_version_arn,
+output_config,
+role_arn,
+stopping_condition,
+vpc_config
 FROM aws.sagemaker.compilation_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -332,17 +332,17 @@ Lists model compilation jobs that satisfy various filters. To create a model com
 
 ```sql
 SELECT
-CompilationEndTime,
-CompilationJobArn,
-CompilationJobName,
-CompilationJobStatus,
-CompilationStartTime,
-CompilationTargetDevice,
-CompilationTargetPlatformAccelerator,
-CompilationTargetPlatformArch,
-CompilationTargetPlatformOs,
-CreationTime,
-LastModifiedTime
+compilation_end_time,
+compilation_job_arn,
+compilation_job_name,
+compilation_job_status,
+compilation_start_time,
+compilation_target_device,
+compilation_target_platform_accelerator,
+compilation_target_platform_arch,
+compilation_target_platform_os,
+creation_time,
+last_modified_time
 FROM aws.sagemaker.compilation_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -387,7 +387,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CompilationJobArn
+compilation_job_arn
 ;
 ```
 </TabItem>

@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The connection ID that's part of the data source summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -76,37 +76,37 @@ The following fields are returned by `SELECT` queries:
     <td>The data source description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the data source exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableSetting" /></td>
+    <td><CopyableCode code="enable_setting" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the data source is enabled. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment in which the data source exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunAssetCount" /></td>
+    <td><CopyableCode code="last_run_asset_count" /></td>
     <td><code>integer</code></td>
     <td>The count of the assets created during the last data source run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunAt" /></td>
+    <td><CopyableCode code="last_run_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data source run was last performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunErrorMessage" /></td>
+    <td><CopyableCode code="last_run_error_message" /></td>
     <td><code>object</code></td>
     <td>The details of the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunStatus" /></td>
+    <td><CopyableCode code="last_run_status" /></td>
     <td><code>string</code></td>
     <td>The status of the last data source run. (REQUESTED, RUNNING, FAILED, PARTIALLY_SUCCEEDED, SUCCESS)</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data source was updated.</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetFormsOutput" /></td>
+    <td><CopyableCode code="asset_forms_output" /></td>
     <td><code>array</code></td>
     <td>The metadata forms attached to the assets created by this data source.</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data source was created.</td>
 </tr>
@@ -180,52 +180,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the data source exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableSetting" /></td>
+    <td><CopyableCode code="enable_setting" /></td>
     <td><code>string</code></td>
     <td>Specifies whether this data source is enabled or not. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment where this data source creates and publishes assets, (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>object</code></td>
     <td>The details of the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunAssetCount" /></td>
+    <td><CopyableCode code="last_run_asset_count" /></td>
     <td><code>integer</code></td>
     <td>The number of assets created by the data source during its last run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunAt" /></td>
+    <td><CopyableCode code="last_run_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last run of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunErrorMessage" /></td>
+    <td><CopyableCode code="last_run_error_message" /></td>
     <td><code>object</code></td>
     <td>The details of the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunStatus" /></td>
+    <td><CopyableCode code="last_run_status" /></td>
     <td><code>string</code></td>
     <td>The status of the last run of the data source. (REQUESTED, RUNNING, FAILED, PARTIALLY_SUCCEEDED, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project where the data source creates and publishes assets. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publishOnImport" /></td>
+    <td><CopyableCode code="publish_on_import" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the assets that this data source creates in the inventory are to be also automatically published to the catalog.</td>
 </tr>
@@ -240,7 +240,7 @@ The following fields are returned by `SELECT` queries:
     <td>The details of the schedule of the data source runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="selfGrantStatus" /></td>
+    <td><CopyableCode code="self_grant_status" /></td>
     <td><code>object</code></td>
     <td>Specifies the status of the self-granting functionality.</td>
 </tr>
@@ -255,7 +255,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data source was updated.</td>
 </tr>
@@ -426,21 +426,21 @@ Lists data sources in Amazon DataZone.
 ```sql
 SELECT
 name,
-connectionId,
-createdAt,
-dataSourceId,
+connection_id,
+created_at,
+data_source_id,
 description,
-domainId,
-enableSetting,
-environmentId,
-lastRunAssetCount,
-lastRunAt,
-lastRunErrorMessage,
-lastRunStatus,
+domain_id,
+enable_setting,
+environment_id,
+last_run_asset_count,
+last_run_at,
+last_run_error_message,
+last_run_status,
 schedule,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.datazone.data_sources
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND projectIdentifier = '{{ projectIdentifier }}' -- required
@@ -463,27 +463,27 @@ Gets an Amazon DataZone data source.
 SELECT
 id,
 name,
-assetFormsOutput,
+asset_forms_output,
 configuration,
-connectionId,
-createdAt,
+connection_id,
+created_at,
 description,
-domainId,
-enableSetting,
-environmentId,
-errorMessage,
-lastRunAssetCount,
-lastRunAt,
-lastRunErrorMessage,
-lastRunStatus,
-projectId,
-publishOnImport,
+domain_id,
+enable_setting,
+environment_id,
+error_message,
+last_run_asset_count,
+last_run_at,
+last_run_error_message,
+last_run_status,
+project_id,
+publish_on_import,
 recommendation,
 schedule,
-selfGrantStatus,
+self_grant_status,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.datazone.data_sources
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -544,25 +544,25 @@ SELECT
 RETURNING
 id,
 name,
-assetFormsOutput,
+asset_forms_output,
 configuration,
-connectionId,
-createdAt,
+connection_id,
+created_at,
 description,
-domainId,
-enableSetting,
-environmentId,
-errorMessage,
-lastRunAt,
-lastRunErrorMessage,
-lastRunStatus,
-projectId,
-publishOnImport,
+domain_id,
+enable_setting,
+environment_id,
+error_message,
+last_run_at,
+last_run_error_message,
+last_run_status,
+project_id,
+publish_on_import,
 recommendation,
 schedule,
 status,
 type_,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -677,27 +677,27 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-assetFormsOutput,
+asset_forms_output,
 configuration,
-connectionId,
-createdAt,
+connection_id,
+created_at,
 description,
-domainId,
-enableSetting,
-environmentId,
-errorMessage,
-lastRunAt,
-lastRunErrorMessage,
-lastRunStatus,
-projectId,
-publishOnImport,
+domain_id,
+enable_setting,
+environment_id,
+error_message,
+last_run_at,
+last_run_error_message,
+last_run_status,
+project_id,
+publish_on_import,
 recommendation,
-retainPermissionsOnRevokeFailure,
+retain_permissions_on_revoke_failure,
 schedule,
-selfGrantStatus,
+self_grant_status,
 status,
 type_,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

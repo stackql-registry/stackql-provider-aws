@@ -56,42 +56,42 @@ The following fields are returned by `SELECT` queries:
     <td>Application-provided attributes to encode into the token and attach to a stage. Map keys and values can contain UTF-8 encoded text. The maximum length of this field is 1 KB total. This field is exposed to all stage participants and should not be used for personally identifying, confidential, or sensitive information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserName" /></td>
+    <td><CopyableCode code="browser_name" /></td>
     <td><code>string</code></td>
     <td>The participant’s browser. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.,:;\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserVersion" /></td>
+    <td><CopyableCode code="browser_version" /></td>
     <td><code>string</code></td>
     <td>The participant’s browser version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.,:;\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstJoinTime" /></td>
+    <td><CopyableCode code="first_join_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>ISO 8601 timestamp (returned as a string) when the participant first joined the stage session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestConfigurationArn" /></td>
+    <td><CopyableCode code="ingest_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The participant’s ingest configuration. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:ingest-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ispName" /></td>
+    <td><CopyableCode code="isp_name" /></td>
     <td><code>string</code></td>
     <td>The participant’s Internet Service Provider. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.,:;\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osName" /></td>
+    <td><CopyableCode code="os_name" /></td>
     <td><code>string</code></td>
     <td>The participant’s operating system. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.,:;\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osVersion" /></td>
+    <td><CopyableCode code="os_version" /></td>
     <td><code>string</code></td>
     <td>The participant’s operating system version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.,:;\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="participantId" /></td>
+    <td><CopyableCode code="participant_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for this participant, assigned by IVS. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -106,47 +106,47 @@ The following fields are returned by `SELECT` queries:
     <td>Whether the participant ever published to the stage session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordingS3BucketName" /></td>
+    <td><CopyableCode code="recording_s3_bucket_name" /></td>
     <td><code>string</code></td>
     <td>Name of the S3 bucket to where the participant is being recorded, if individual participant recording is enabled, or "" (empty string), if recording is not enabled. (pattern: &lt;code&gt;&#91;a-z0-9-.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordingS3Prefix" /></td>
+    <td><CopyableCode code="recording_s3_prefix" /></td>
     <td><code>string</code></td>
     <td>S3 prefix of the S3 bucket where the participant is being recorded, if individual participant recording is enabled, or "" (empty string), if recording is not enabled. If individual participant recording merge is enabled, and if a stage publisher disconnects from a stage and then reconnects, IVS tries to record to the same S3 prefix as the previous session. See Merge Fragmented Individual Participant Recordings. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordingState" /></td>
+    <td><CopyableCode code="recording_state" /></td>
     <td><code>string</code></td>
     <td>The participant’s recording state. (STARTING, ACTIVE, STOPPING, STOPPED, FAILED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redundantIngest" /></td>
+    <td><CopyableCode code="redundant_ingest" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether redundant ingest is enabled for the participant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationState" /></td>
+    <td><CopyableCode code="replication_state" /></td>
     <td><code>string</code></td>
     <td>The participant's replication state. (ACTIVE, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationType" /></td>
+    <td><CopyableCode code="replication_type" /></td>
     <td><code>string</code></td>
     <td>Indicates if the participant has been replicated to another stage or is a replica from another stage. Default: NONE. (SOURCE, REPLICA, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sdkVersion" /></td>
+    <td><CopyableCode code="sdk_version" /></td>
     <td><code>string</code></td>
     <td>The participant’s SDK version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.,:;\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceSessionId" /></td>
+    <td><CopyableCode code="source_session_id" /></td>
     <td><code>string</code></td>
     <td>ID of the session within the source stage, if replicationType is REPLICA. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceStageArn" /></td>
+    <td><CopyableCode code="source_stage_arn" /></td>
     <td><code>string</code></td>
     <td>Source stage ARN from which this participant is replicated, if replicationType is REPLICA. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stage/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -156,7 +156,7 @@ The following fields are returned by `SELECT` queries:
     <td>Whether the participant is connected to or disconnected from the stage. (CONNECTED, DISCONNECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>Customer-assigned name to help identify the token; this can be used to link a participant to a user in the customer’s own systems. This can be any UTF-8 encoded text. This field is exposed to all stage participants and should not be used for personally identifying, confidential, or sensitive information.</td>
 </tr>
@@ -175,7 +175,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more participants than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -286,27 +286,27 @@ Gets information about the specified participant token.
 ```sql
 SELECT
 attributes,
-browserName,
-browserVersion,
-firstJoinTime,
-ingestConfigurationArn,
-ispName,
-osName,
-osVersion,
-participantId,
+browser_name,
+browser_version,
+first_join_time,
+ingest_configuration_arn,
+isp_name,
+os_name,
+os_version,
+participant_id,
 protocol,
 published,
-recordingS3BucketName,
-recordingS3Prefix,
-recordingState,
-redundantIngest,
-replicationState,
-replicationType,
-sdkVersion,
-sourceSessionId,
-sourceStageArn,
+recording_s3_bucket_name,
+recording_s3_prefix,
+recording_state,
+redundant_ingest,
+replication_state,
+replication_type,
+sdk_version,
+source_session_id,
+source_stage_arn,
 state,
-userId
+user_id
 FROM aws.ivs_realtime.participants
 WHERE region = '{{ region }}' -- required
 ;
@@ -318,7 +318,7 @@ Lists all participants in a specified stage session.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 participants
 FROM aws.ivs_realtime.participants
 WHERE region = '{{ region }}' -- required
@@ -358,7 +358,7 @@ SELECT
 '{{ capabilities }}',
 '{{ region }}'
 RETURNING
-participantToken
+participant_token
 ;
 ```
 </TabItem>

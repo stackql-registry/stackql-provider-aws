@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the label was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the requested label.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Equipment" /></td>
+    <td><CopyableCode code="equipment" /></td>
     <td><code>string</code></td>
     <td>Indicates that a label pertains to a particular piece of equipment. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;1,200&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaultCode" /></td>
+    <td><CopyableCode code="fault_code" /></td>
     <td><code>string</code></td>
     <td>Indicates the type of anomaly associated with the label. Data in this field will be retained for service usage. Follow best practices for the security of your data. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelGroupArn" /></td>
+    <td><CopyableCode code="label_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the requested label group. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:label-group\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelGroupName" /></td>
+    <td><CopyableCode code="label_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the requested label group. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelId" /></td>
+    <td><CopyableCode code="label_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the requested label. (pattern: &lt;code&gt;&#91;A-Fa-f0-9&#93;&#123;0,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notes" /></td>
+    <td><CopyableCode code="notes" /></td>
     <td><code>string</code></td>
     <td>Metadata providing additional information about the label. Data in this field will be retained for service usage. Follow best practices for the security of your data. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;1,2560&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rating" /></td>
+    <td><CopyableCode code="rating" /></td>
     <td><code>string</code></td>
     <td>Indicates whether a labeled event represents an anomaly. (ANOMALY, NO_ANOMALY, NEUTRAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the requested label.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LabelSummaries" /></td>
+    <td><CopyableCode code="label_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of the items in the label group. If you don't supply the LabelGroupName request parameter, or if you supply the name of a label group that doesn't exist, ListLabels returns an empty array in LabelSummaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of datasets. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -211,16 +211,16 @@ Returns the name of the label.
 
 ```sql
 SELECT
-CreatedAt,
-EndTime,
-Equipment,
-FaultCode,
-LabelGroupArn,
-LabelGroupName,
-LabelId,
-Notes,
-Rating,
-StartTime
+created_at,
+end_time,
+equipment,
+fault_code,
+label_group_arn,
+label_group_name,
+label_id,
+notes,
+rating,
+start_time
 FROM aws.lookoutequipment.labels
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,8 +232,8 @@ Provides a list of labels.
 
 ```sql
 SELECT
-LabelSummaries,
-NextToken
+label_summaries,
+next_token
 FROM aws.lookoutequipment.labels
 WHERE region = '{{ region }}' -- required
 ;
@@ -278,7 +278,7 @@ SELECT
 '{{ ClientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-LabelId
+label_id
 ;
 ```
 </TabItem>

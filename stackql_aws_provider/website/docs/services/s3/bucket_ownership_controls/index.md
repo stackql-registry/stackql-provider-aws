@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>string</code></td>
     <td>The container element for an ownership control rule.</td>
 </tr>
@@ -153,7 +153,7 @@ This operation is not supported for directory buckets. Retrieves OwnershipContro
 
 ```sql
 SELECT
-Rules
+rules
 FROM aws.s3.bucket_ownership_controls
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessControlList" /></td>
+    <td><CopyableCode code="access_control_list" /></td>
     <td><code>array</code></td>
     <td>Information on principals (users and/or groups) and which documents they should have access to. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the access control configuration. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message containing details if there are issues processing the access control configuration. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HierarchicalAccessControlList" /></td>
+    <td><CopyableCode code="hierarchical_access_control_list" /></td>
     <td><code>array</code></td>
     <td>The list of principal lists that define the hierarchy for which documents users should have access to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the access control configuration. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -167,11 +167,11 @@ Gets information about an access control configuration that you created for your
 
 ```sql
 SELECT
-AccessControlList,
-Description,
-ErrorMessage,
-HierarchicalAccessControlList,
-Name
+access_control_list,
+description,
+error_message,
+hierarchical_access_control_list,
+name
 FROM aws.kendra.access_control_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -212,7 +212,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time for the test set generation.</td>
 </tr>
@@ -60,47 +60,47 @@ The following fields are returned by `SELECT` queries:
     <td>The test set description for the test set generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>The reasons the test set generation failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generationDataSource" /></td>
+    <td><CopyableCode code="generation_data_source" /></td>
     <td><code>object</code></td>
     <td>The data source of the test set used for the test set generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the last update for the test set generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The roleARN of the test set used for the test set generation. (pattern: &lt;code&gt;^arn:aws:iam::&#91;0-9&#93;&#123;12&#125;:role/.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageLocation" /></td>
+    <td><CopyableCode code="storage_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 storage location for the test set generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetGenerationId" /></td>
+    <td><CopyableCode code="test_set_generation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the test set generation. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetGenerationStatus" /></td>
+    <td><CopyableCode code="test_set_generation_status" /></td>
     <td><code>string</code></td>
     <td>The status for the test set generation. (Generating, Ready, Failed, Pending)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetId" /></td>
+    <td><CopyableCode code="test_set_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the test set created for the generated test set. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetName" /></td>
+    <td><CopyableCode code="test_set_name" /></td>
     <td><code>string</code></td>
     <td>The test set name for the generated test set. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -174,17 +174,17 @@ Gets metadata information about the test set generation.
 
 ```sql
 SELECT
-creationDateTime,
+creation_date_time,
 description,
-failureReasons,
-generationDataSource,
-lastUpdatedDateTime,
-roleArn,
-storageLocation,
-testSetGenerationId,
-testSetGenerationStatus,
-testSetId,
-testSetName
+failure_reasons,
+generation_data_source,
+last_updated_date_time,
+role_arn,
+storage_location,
+test_set_generation_id,
+test_set_generation_status,
+test_set_id,
+test_set_name
 FROM aws.lexv2_models.test_set_generations
 WHERE test_set_generation_id = '{{ test_set_generation_id }}' -- required
 AND region = '{{ region }}' -- required

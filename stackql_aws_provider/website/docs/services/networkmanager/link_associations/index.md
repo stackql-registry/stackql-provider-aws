@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The device ID for the link association. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkAssociationState" /></td>
+    <td><CopyableCode code="link_association_state" /></td>
     <td><code>string</code></td>
     <td>The state of the association. (PENDING, AVAILABLE, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the link. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -159,10 +159,10 @@ Gets the link associations for a device or a link. Either the device ID or the l
 
 ```sql
 SELECT
-DeviceId,
-GlobalNetworkId,
-LinkAssociationState,
-LinkId
+device_id,
+global_network_id,
+link_association_state,
+link_id
 FROM aws.networkmanager.link_associations
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required

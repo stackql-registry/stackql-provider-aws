@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DependentKeyAttributes" /></td>
+    <td><CopyableCode code="dependent_key_attributes" /></td>
     <td><code>object</code></td>
     <td>This is a string-to-string map. It can include the following fields. Type designates the type of object this is. ResourceType specifies the type of the resource. This field is used only when the value of the Type field is Resource or AWS::Resource. Name specifies the name of the object. This is used only if the value of the Type field is Service, RemoteService, or AWS::Service. Identifier identifies the resource objects of this resource. This is used only if the value of the Type field is Resource or AWS::Resource. Environment specifies the location where this object is hosted, or what it belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DependentOperationName" /></td>
+    <td><CopyableCode code="dependent_operation_name" /></td>
     <td><code>string</code></td>
     <td>If the dependent invoker was a service that invoked it from an operation, the name of that dependent operation is displayed here.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricReferences" /></td>
+    <td><CopyableCode code="metric_references" /></td>
     <td><code>array</code></td>
     <td>An array of structures that each contain information about one metric associated with this service dependent that was discovered by Application Signals.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationName" /></td>
+    <td><CopyableCode code="operation_name" /></td>
     <td><code>string</code></td>
     <td>If the invoked entity is an operation on an entity, the name of that dependent operation is displayed here.</td>
 </tr>
@@ -154,10 +154,10 @@ Returns the list of dependents that invoked the specified service during the pro
 
 ```sql
 SELECT
-DependentKeyAttributes,
-DependentOperationName,
-MetricReferences,
-OperationName
+dependent_key_attributes,
+dependent_operation_name,
+metric_references,
+operation_name
 FROM aws.application_signals.service_dependents
 WHERE StartTime = '{{ StartTime }}' -- required
 AND EndTime = '{{ EndTime }}' -- required

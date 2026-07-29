@@ -56,32 +56,32 @@ The following fields are returned by `SELECT` queries:
     <td>The metric attribution's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The metric attribution's creation date time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The metric attribution's dataset group Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The metric attribution's failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The metric attribution's last updated date time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricAttributionArn" /></td>
+    <td><CopyableCode code="metric_attribution_arn" /></td>
     <td><code>string</code></td>
     <td>The metric attribution's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsOutputConfig" /></td>
+    <td><CopyableCode code="metrics_output_config" /></td>
     <td><code>object</code></td>
     <td>The metric attribution's output configuration.</td>
 </tr>
@@ -110,22 +110,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the metric attribution. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The metric attribution's creation date time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The metric attribution's failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The metric attribution's last updated date time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricAttributionArn" /></td>
+    <td><CopyableCode code="metric_attribution_arn" /></td>
     <td><code>string</code></td>
     <td>The metric attribution's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -229,12 +229,12 @@ Describes a metric attribution.
 ```sql
 SELECT
 name,
-creationDateTime,
-datasetGroupArn,
-failureReason,
-lastUpdatedDateTime,
-metricAttributionArn,
-metricsOutputConfig,
+creation_date_time,
+dataset_group_arn,
+failure_reason,
+last_updated_date_time,
+metric_attribution_arn,
+metrics_output_config,
 status
 FROM aws.personalize.metric_attributions
 WHERE region = '{{ region }}' -- required
@@ -248,10 +248,10 @@ Lists metric attributions.
 ```sql
 SELECT
 name,
-creationDateTime,
-failureReason,
-lastUpdatedDateTime,
-metricAttributionArn,
+creation_date_time,
+failure_reason,
+last_updated_date_time,
+metric_attribution_arn,
 status
 FROM aws.personalize.metric_attributions
 WHERE region = '{{ region }}' -- required
@@ -289,7 +289,7 @@ SELECT
 '{{ metricsOutputConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-metricAttributionArn
+metric_attribution_arn
 ;
 ```
 </TabItem>
@@ -352,7 +352,7 @@ metricAttributionArn = '{{ metricAttributionArn }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-metricAttributionArn;
+metric_attribution_arn;
 ```
 </TabItem>
 </Tabs>

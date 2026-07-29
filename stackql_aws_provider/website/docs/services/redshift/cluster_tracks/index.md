@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatabaseVersion" /></td>
+    <td><CopyableCode code="database_version" /></td>
     <td><code>string</code></td>
     <td>The version number for the cluster release.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceTrackName" /></td>
+    <td><CopyableCode code="maintenance_track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the maintenance track. Possible values are current and trailing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTargets" /></td>
+    <td><CopyableCode code="update_targets" /></td>
     <td><code>string</code></td>
     <td>An array of UpdateTarget objects to update with the maintenance track.</td>
 </tr>
@@ -144,9 +144,9 @@ Returns a list of all the available maintenance tracks.
 
 ```sql
 SELECT
-DatabaseVersion,
-MaintenanceTrackName,
-UpdateTargets
+database_version,
+maintenance_track_name,
+update_targets
 FROM aws.redshift.cluster_tracks
 WHERE region = '{{ region }}' -- required
 AND MaintenanceTrackName = '{{ MaintenanceTrackName }}'

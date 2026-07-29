@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description for the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the maintenance window target. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerInformation" /></td>
+    <td><CopyableCode code="owner_information" /></td>
     <td><code>string</code></td>
     <td>A user-provided value that will be included in any Amazon CloudWatch Events events that are raised while running tasks for these targets in this maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of target that is being registered with the maintenance window. (INSTANCE, RESOURCE_GROUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>The targets, either managed nodes or tags. Specify managed nodes using the following format: Key=instanceids,Values=<code>&lt;instanceid1&gt;</code>,<code>&lt;instanceid2&gt;</code> Tags are specified using the following format: Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowId" /></td>
+    <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window to register the target with. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowTargetId" /></td>
+    <td><CopyableCode code="window_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the target. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -156,13 +156,13 @@ Lists the targets registered with the maintenance window.
 
 ```sql
 SELECT
-Description,
-Name,
-OwnerInformation,
-ResourceType,
-Targets,
-WindowId,
-WindowTargetId
+description,
+name,
+owner_information,
+resource_type,
+targets,
+window_id,
+window_target_id
 FROM aws.ssm.maintenance_window_targets
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,12 +198,12 @@ region = '{{ region }}' --required
 AND WindowId = '{{ WindowId }}' --required
 AND WindowTargetId = '{{ WindowTargetId }}' --required
 RETURNING
-Description,
-Name,
-OwnerInformation,
-Targets,
-WindowId,
-WindowTargetId;
+description,
+name,
+owner_information,
+targets,
+window_id,
+window_target_id;
 ```
 </TabItem>
 </Tabs>

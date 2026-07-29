@@ -50,207 +50,207 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupARN" /></td>
+    <td><CopyableCode code="auto_scaling_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneDistribution" /></td>
+    <td><CopyableCode code="availability_zone_distribution" /></td>
     <td><code>string</code></td>
     <td>The EC2 instance capacity distribution across Availability Zones for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneIds" /></td>
+    <td><CopyableCode code="availability_zone_ids" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone IDs where the Auto Scaling group can launch instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneImpairmentPolicy" /></td>
+    <td><CopyableCode code="availability_zone_impairment_policy" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone impairment policy for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>One or more Availability Zones for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityRebalance" /></td>
+    <td><CopyableCode code="capacity_rebalance" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Capacity Rebalancing is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationSpecification" /></td>
+    <td><CopyableCode code="capacity_reservation_specification" /></td>
     <td><code>string</code></td>
     <td>The capacity reservation specification for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Context" /></td>
+    <td><CopyableCode code="context" /></td>
     <td><code>string</code></td>
     <td>Reserved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the Auto Scaling group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultCooldown" /></td>
+    <td><CopyableCode code="default_cooldown" /></td>
     <td><code>integer</code></td>
     <td>The duration of the default cooldown period, in seconds, for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultInstanceWarmup" /></td>
+    <td><CopyableCode code="default_instance_warmup" /></td>
     <td><code>integer</code></td>
     <td>The duration of the default EC2 instance warmup time, in seconds, for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>string</code></td>
     <td>The deletion protection setting for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredCapacity" /></td>
+    <td><CopyableCode code="desired_capacity" /></td>
     <td><code>integer</code></td>
     <td>The desired size of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredCapacityType" /></td>
+    <td><CopyableCode code="desired_capacity_type" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement for the value specified for desired capacity. Amazon EC2 Auto Scaling supports DesiredCapacityType for attribute-based instance type selection only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledMetrics" /></td>
+    <td><CopyableCode code="enabled_metrics" /></td>
     <td><code>string</code></td>
     <td>The metrics enabled for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckGracePeriod" /></td>
+    <td><CopyableCode code="health_check_grace_period" /></td>
     <td><code>integer</code></td>
     <td>The duration of the health check grace period, in seconds, for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckType" /></td>
+    <td><CopyableCode code="health_check_type" /></td>
     <td><code>string</code></td>
     <td>One or more comma-separated health check types for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceLifecyclePolicy" /></td>
+    <td><CopyableCode code="instance_lifecycle_policy" /></td>
     <td><code>string</code></td>
     <td>The instance lifecycle policy for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceMaintenancePolicy" /></td>
+    <td><CopyableCode code="instance_maintenance_policy" /></td>
     <td><code>string</code></td>
     <td>An instance maintenance policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Instances" /></td>
+    <td><CopyableCode code="instances" /></td>
     <td><code>string</code></td>
     <td>The EC2 instances associated with the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchConfigurationName" /></td>
+    <td><CopyableCode code="launch_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the associated launch configuration for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplate" /></td>
+    <td><CopyableCode code="launch_template" /></td>
     <td><code>string</code></td>
     <td>The launch template for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancerNames" /></td>
+    <td><CopyableCode code="load_balancer_names" /></td>
     <td><code>string</code></td>
     <td>One or more load balancers associated with the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxInstanceLifetime" /></td>
+    <td><CopyableCode code="max_instance_lifetime" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of time, in seconds, that an EC2 instance can be in service for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSize" /></td>
+    <td><CopyableCode code="max_size" /></td>
     <td><code>integer</code></td>
     <td>The maximum size of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinSize" /></td>
+    <td><CopyableCode code="min_size" /></td>
     <td><code>integer</code></td>
     <td>The minimum size of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MixedInstancesPolicy" /></td>
+    <td><CopyableCode code="mixed_instances_policy" /></td>
     <td><code>string</code></td>
     <td>The mixed instances policy for the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NewInstancesProtectedFromScaleIn" /></td>
+    <td><CopyableCode code="new_instances_protected_from_scale_in" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether newly launched EC2 instances are protected from termination when scaling in for the Auto Scaling group. For more information about preventing instances from terminating on scale in, see Use instance scale-in protection in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlacementGroup" /></td>
+    <td><CopyableCode code="placement_group" /></td>
     <td><code>string</code></td>
     <td>The name of the placement group into which to launch EC2 instances for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictedCapacity" /></td>
+    <td><CopyableCode code="predicted_capacity" /></td>
     <td><code>integer</code></td>
     <td>The predicted capacity of the group when it has a predictive scaling policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceLinkedRoleARN" /></td>
+    <td><CopyableCode code="service_linked_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other Amazon Web Services on your behalf.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the Auto Scaling group when the DeleteAutoScalingGroup operation is in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuspendedProcesses" /></td>
+    <td><CopyableCode code="suspended_processes" /></td>
     <td><code>string</code></td>
     <td>The suspended processes associated with the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetGroupARNs" /></td>
+    <td><CopyableCode code="target_group_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARN) of the target groups for your load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminationPolicies" /></td>
+    <td><CopyableCode code="termination_policies" /></td>
     <td><code>string</code></td>
     <td>The termination policies for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficSources" /></td>
+    <td><CopyableCode code="traffic_sources" /></td>
     <td><code>string</code></td>
     <td>The traffic sources associated with this Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCZoneIdentifier" /></td>
+    <td><CopyableCode code="vpc_zone_identifier" /></td>
     <td><code>string</code></td>
     <td>One or more comma-separated subnet IDs for the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmPoolConfiguration" /></td>
+    <td><CopyableCode code="warm_pool_configuration" /></td>
     <td><code>string</code></td>
     <td>The warm pool for the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmPoolSize" /></td>
+    <td><CopyableCode code="warm_pool_size" /></td>
     <td><code>integer</code></td>
     <td>The current size of the warm pool.</td>
 </tr>
@@ -840,47 +840,47 @@ Gets information about the Auto Scaling groups in the account and Region. If you
 
 ```sql
 SELECT
-AutoScalingGroupARN,
-AutoScalingGroupName,
-AvailabilityZoneDistribution,
-AvailabilityZoneIds,
-AvailabilityZoneImpairmentPolicy,
-AvailabilityZones,
-CapacityRebalance,
-CapacityReservationSpecification,
-Context,
-CreatedTime,
-DefaultCooldown,
-DefaultInstanceWarmup,
-DeletionProtection,
-DesiredCapacity,
-DesiredCapacityType,
-EnabledMetrics,
-HealthCheckGracePeriod,
-HealthCheckType,
-InstanceLifecyclePolicy,
-InstanceMaintenancePolicy,
-Instances,
-LaunchConfigurationName,
-LaunchTemplate,
-LoadBalancerNames,
-MaxInstanceLifetime,
-MaxSize,
-MinSize,
-MixedInstancesPolicy,
-NewInstancesProtectedFromScaleIn,
-PlacementGroup,
-PredictedCapacity,
-ServiceLinkedRoleARN,
-Status,
-SuspendedProcesses,
-Tags,
-TargetGroupARNs,
-TerminationPolicies,
-TrafficSources,
-VPCZoneIdentifier,
-WarmPoolConfiguration,
-WarmPoolSize
+auto_scaling_group_arn,
+auto_scaling_group_name,
+availability_zone_distribution,
+availability_zone_ids,
+availability_zone_impairment_policy,
+availability_zones,
+capacity_rebalance,
+capacity_reservation_specification,
+context,
+created_time,
+default_cooldown,
+default_instance_warmup,
+deletion_protection,
+desired_capacity,
+desired_capacity_type,
+enabled_metrics,
+health_check_grace_period,
+health_check_type,
+instance_lifecycle_policy,
+instance_maintenance_policy,
+instances,
+launch_configuration_name,
+launch_template,
+load_balancer_names,
+max_instance_lifetime,
+max_size,
+min_size,
+mixed_instances_policy,
+new_instances_protected_from_scale_in,
+placement_group,
+predicted_capacity,
+service_linked_role_arn,
+status,
+suspended_processes,
+tags,
+target_group_arns,
+termination_policies,
+traffic_sources,
+vpc_zone_identifier,
+warm_pool_configuration,
+warm_pool_size
 FROM aws.autoscaling.auto_scaling_groups
 WHERE region = '{{ region }}' -- required
 AND AutoScalingGroupNames = '{{ AutoScalingGroupNames }}'
@@ -1177,7 +1177,7 @@ AND ShouldDecrementDesiredCapacity = '{{ ShouldDecrementDesiredCapacity }}' --re
 AND region = '{{ region }}' --required
 AND InstanceIds = '{{ InstanceIds}}'
 RETURNING
-Activities;
+activities;
 ```
 </TabItem>
 <TabItem value="set_desired_capacity">

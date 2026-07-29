@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the channel namespace. This name must be unique within the Api. (pattern: &lt;code&gt;(&#91;A-Za-z0-9&#93;(?:&#91;A-Za-z0-9\-&#93;&#123;0,48&#125;&#91;A-Za-z0-9&#93;)?)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The Api ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelNamespaceArn" /></td>
+    <td><CopyableCode code="channel_namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the ChannelNamespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeHandlers" /></td>
+    <td><CopyableCode code="code_handlers" /></td>
     <td><code>string</code></td>
     <td>The event handler functions that run custom business logic to process published events and subscribe requests.</td>
 </tr>
@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time that the ChannelNamespace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="handlerConfigs" /></td>
+    <td><CopyableCode code="handler_configs" /></td>
     <td><code>object</code></td>
     <td>The configuration for the OnPublish and OnSubscribe handlers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the ChannelNamespace was last changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publishAuthModes" /></td>
+    <td><CopyableCode code="publish_auth_modes" /></td>
     <td><code>array</code></td>
     <td>The authorization mode to use for publishing messages on the channel namespace. This configuration overrides the default Apiauthorization configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribeAuthModes" /></td>
+    <td><CopyableCode code="subscribe_auth_modes" /></td>
     <td><code>array</code></td>
     <td>The authorization mode to use for subscribing to messages on the channel namespace. This configuration overrides the default Apiauthorization configuration.</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the channel namespace. This name must be unique within the Api. (pattern: &lt;code&gt;(&#91;A-Za-z0-9&#93;(?:&#91;A-Za-z0-9\-&#93;&#123;0,48&#125;&#91;A-Za-z0-9&#93;)?)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The Api ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelNamespaceArn" /></td>
+    <td><CopyableCode code="channel_namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the ChannelNamespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeHandlers" /></td>
+    <td><CopyableCode code="code_handlers" /></td>
     <td><code>string</code></td>
     <td>The event handler functions that run custom business logic to process published events and subscribe requests.</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time that the ChannelNamespace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="handlerConfigs" /></td>
+    <td><CopyableCode code="handler_configs" /></td>
     <td><code>object</code></td>
     <td>The configuration for the OnPublish and OnSubscribe handlers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the ChannelNamespace was last changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publishAuthModes" /></td>
+    <td><CopyableCode code="publish_auth_modes" /></td>
     <td><code>array</code></td>
     <td>The authorization mode to use for publishing messages on the channel namespace. This configuration overrides the default Apiauthorization configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribeAuthModes" /></td>
+    <td><CopyableCode code="subscribe_auth_modes" /></td>
     <td><code>array</code></td>
     <td>The authorization mode to use for subscribing to messages on the channel namespace. This configuration overrides the default Apiauthorization configuration.</td>
 </tr>
@@ -279,14 +279,14 @@ Retrieves the channel namespace for a specified Api.
 ```sql
 SELECT
 name,
-apiId,
-channelNamespaceArn,
-codeHandlers,
+api_id,
+channel_namespace_arn,
+code_handlers,
 created,
-handlerConfigs,
-lastModified,
-publishAuthModes,
-subscribeAuthModes,
+handler_configs,
+last_modified,
+publish_auth_modes,
+subscribe_auth_modes,
 tags
 FROM aws.appsync.channel_namespaces
 WHERE api_id = '{{ api_id }}' -- required
@@ -302,14 +302,14 @@ Lists the channel namespaces for a specified Api. ListChannelNamespaces returns 
 ```sql
 SELECT
 name,
-apiId,
-channelNamespaceArn,
-codeHandlers,
+api_id,
+channel_namespace_arn,
+code_handlers,
 created,
-handlerConfigs,
-lastModified,
-publishAuthModes,
-subscribeAuthModes,
+handler_configs,
+last_modified,
+publish_auth_modes,
+subscribe_auth_modes,
 tags
 FROM aws.appsync.channel_namespaces
 WHERE api_id = '{{ api_id }}' -- required
@@ -356,7 +356,7 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-channelNamespace
+channel_namespace
 ;
 ```
 </TabItem>
@@ -431,7 +431,7 @@ api_id = '{{ api_id }}' --required
 AND name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-channelNamespace;
+channel_namespace;
 ```
 </TabItem>
 </Tabs>

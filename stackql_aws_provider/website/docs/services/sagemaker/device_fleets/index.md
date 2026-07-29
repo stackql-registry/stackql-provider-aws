@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of when the device fleet was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the fleet. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.,;:! &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetArn" /></td>
+    <td><CopyableCode code="device_fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The The Amazon Resource Name (ARN) of the fleet. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:device-fleet/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IotRoleAlias" /></td>
+    <td><CopyableCode code="iot_role_alias" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) alias created in Amazon Web Services Internet of Things (IoT). (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:rolealias/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of when the device fleet was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration for storing sampled data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that has access to Amazon Web Services Internet of Things (IoT). (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of when the device fleet was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetArn" /></td>
+    <td><CopyableCode code="device_fleet_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the device fleet. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:device-fleet/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>Name of the device fleet. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of when the device fleet was last updated.</td>
 </tr>
@@ -218,14 +218,14 @@ A description of the fleet the device belongs to.
 
 ```sql
 SELECT
-CreationTime,
-Description,
-DeviceFleetArn,
-DeviceFleetName,
-IotRoleAlias,
-LastModifiedTime,
-OutputConfig,
-RoleArn
+creation_time,
+description,
+device_fleet_arn,
+device_fleet_name,
+iot_role_alias,
+last_modified_time,
+output_config,
+role_arn
 FROM aws.sagemaker.device_fleets
 WHERE region = '{{ region }}' -- required
 ;
@@ -237,10 +237,10 @@ Returns a list of devices in the fleet.
 
 ```sql
 SELECT
-CreationTime,
-DeviceFleetArn,
-DeviceFleetName,
-LastModifiedTime
+creation_time,
+device_fleet_arn,
+device_fleet_name,
+last_modified_time
 FROM aws.sagemaker.device_fleets
 WHERE region = '{{ region }}' -- required
 ;

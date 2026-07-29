@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The run's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchId" /></td>
+    <td><CopyableCode code="batch_id" /></td>
     <td><code>string</code></td>
     <td>The run's batch ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheBehavior" /></td>
+    <td><CopyableCode code="cache_behavior" /></td>
     <td><code>string</code></td>
     <td>The run cache behavior for the run. (CACHE_ON_FAILURE, CACHE_ALWAYS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheId" /></td>
+    <td><CopyableCode code="cache_id" /></td>
     <td><code>string</code></td>
     <td>The run cache associated with the run. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration details for the workflow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the run was created.</td>
 </tr>
@@ -106,32 +106,32 @@ The following fields are returned by `SELECT` queries:
     <td>The run's digest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The actual Nextflow engine version that Amazon Web Services HealthOmics used for the run. The other workflow definition languages don't provide a value for this field. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;2&#125;.&#91;0-9&#93;&#123;2&#125;.&#91;0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason a run has failed. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logLevel" /></td>
+    <td><CopyableCode code="log_level" /></td>
     <td><code>string</code></td>
     <td>The run's log level. (OFF, FATAL, ERROR, ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logLocation" /></td>
+    <td><CopyableCode code="log_location" /></td>
     <td><code>object</code></td>
     <td>The location of the run log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkingMode" /></td>
+    <td><CopyableCode code="networking_mode" /></td>
     <td><code>string</code></td>
     <td>Configuration for run networking behavior. If absent, this will default to RESTRICTED. (RESTRICTED, VPC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputUri" /></td>
+    <td><CopyableCode code="output_uri" /></td>
     <td><code>string</code></td>
     <td>The run's output URI. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -146,42 +146,42 @@ The following fields are returned by `SELECT` queries:
     <td>The run's priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceDigests" /></td>
+    <td><CopyableCode code="resource_digests" /></td>
     <td><code>object</code></td>
     <td>The run's resource digests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retentionMode" /></td>
+    <td><CopyableCode code="retention_mode" /></td>
     <td><code>string</code></td>
     <td>The run's retention mode. (RETAIN, REMOVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The run's service role ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runGroupId" /></td>
+    <td><CopyableCode code="run_group_id" /></td>
     <td><code>string</code></td>
     <td>The run's group ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The run's ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runOutputUri" /></td>
+    <td><CopyableCode code="run_output_uri" /></td>
     <td><code>string</code></td>
     <td>The destination for workflow outputs. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the run started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedBy" /></td>
+    <td><CopyableCode code="started_by" /></td>
     <td><code>string</code></td>
     <td>Who started the run.</td>
 </tr>
@@ -191,22 +191,22 @@ The following fields are returned by `SELECT` queries:
     <td>The run's status. (PENDING, STARTING, RUNNING, STOPPING, COMPLETED, DELETED, CANCELLED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The run's status message. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopTime" /></td>
+    <td><CopyableCode code="stop_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The run's stop time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageCapacity" /></td>
+    <td><CopyableCode code="storage_capacity" /></td>
     <td><code>integer</code></td>
     <td>The run's storage capacity in gibibytes. For dynamic storage, after the run has completed, this value is the maximum amount of storage used during the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The run's storage type. (STATIC, DYNAMIC)</td>
 </tr>
@@ -221,32 +221,32 @@ The following fields are returned by `SELECT` queries:
     <td>The universally unique identifier for a run. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>VPC configuration for the workflow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The run's workflow ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowOwnerId" /></td>
+    <td><CopyableCode code="workflow_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workflow owner. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowType" /></td>
+    <td><CopyableCode code="workflow_type" /></td>
     <td><code>string</code></td>
     <td>The run's workflow type. (PRIVATE, READY2RUN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowUuid" /></td>
+    <td><CopyableCode code="workflow_uuid" /></td>
     <td><code>string</code></td>
     <td>The universally unique identifier (UUID) value for the workflow. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowVersionName" /></td>
+    <td><CopyableCode code="workflow_version_name" /></td>
     <td><code>string</code></td>
     <td>The workflow version name. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-\._&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -280,12 +280,12 @@ The following fields are returned by `SELECT` queries:
     <td>The run's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchId" /></td>
+    <td><CopyableCode code="batch_id" /></td>
     <td><code>string</code></td>
     <td>The run's batch ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the run was created.</td>
 </tr>
@@ -295,7 +295,7 @@ The following fields are returned by `SELECT` queries:
     <td>The run's priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the run started.</td>
 </tr>
@@ -305,27 +305,27 @@ The following fields are returned by `SELECT` queries:
     <td>The run's status. (PENDING, STARTING, RUNNING, STOPPING, COMPLETED, DELETED, CANCELLED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopTime" /></td>
+    <td><CopyableCode code="stop_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the run stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageCapacity" /></td>
+    <td><CopyableCode code="storage_capacity" /></td>
     <td><code>integer</code></td>
     <td>The run's storage capacity in gibibytes. For dynamic storage, after the run has completed, this value is the maximum amount of storage used during the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The run's storage type. (STATIC, DYNAMIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The run's workflow ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowVersionName" /></td>
+    <td><CopyableCode code="workflow_version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow version. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-\._&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -467,42 +467,42 @@ id,
 name,
 accelerators,
 arn,
-batchId,
-cacheBehavior,
-cacheId,
+batch_id,
+cache_behavior,
+cache_id,
 configuration,
-creationTime,
+creation_time,
 definition,
 digest,
-engineVersion,
-failureReason,
-logLevel,
-logLocation,
-networkingMode,
-outputUri,
+engine_version,
+failure_reason,
+log_level,
+log_location,
+networking_mode,
+output_uri,
 parameters,
 priority,
-resourceDigests,
-retentionMode,
-roleArn,
-runGroupId,
-runId,
-runOutputUri,
-startTime,
-startedBy,
+resource_digests,
+retention_mode,
+role_arn,
+run_group_id,
+run_id,
+run_output_uri,
+start_time,
+started_by,
 status,
-statusMessage,
-stopTime,
-storageCapacity,
-storageType,
+status_message,
+stop_time,
+storage_capacity,
+storage_type,
 tags,
 uuid,
-vpcConfig,
-workflowId,
-workflowOwnerId,
-workflowType,
-workflowUuid,
-workflowVersionName
+vpc_config,
+workflow_id,
+workflow_owner_id,
+workflow_type,
+workflow_uuid,
+workflow_version_name
 FROM aws.omics.runs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -519,16 +519,16 @@ SELECT
 id,
 name,
 arn,
-batchId,
-creationTime,
+batch_id,
+creation_time,
 priority,
-startTime,
+start_time,
 status,
-stopTime,
-storageCapacity,
-storageType,
-workflowId,
-workflowVersionName
+stop_time,
+storage_capacity,
+storage_type,
+workflow_id,
+workflow_version_name
 FROM aws.omics.runs
 WHERE region = '{{ region }}' -- required
 AND name = '{{ name }}'

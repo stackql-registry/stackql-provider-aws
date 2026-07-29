@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configuredTableAssociationArn" /></td>
+    <td><CopyableCode code="configured_table_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured table association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtableassociation/&#91;\d\w-&#93;+/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredTableAssociationId" /></td>
+    <td><CopyableCode code="configured_table_association_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the configured table association. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the configured table association analysis rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership identifier for the configured table association analysis rule. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the configured table association analysis rule. (AGGREGATION, LIST, CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The update time of the configured table association analysis rule.</td>
 </tr>
@@ -185,13 +185,13 @@ Retrieves the analysis rule for a configured table association.
 
 ```sql
 SELECT
-configuredTableAssociationArn,
-configuredTableAssociationId,
-createTime,
-membershipIdentifier,
+configured_table_association_arn,
+configured_table_association_id,
+create_time,
+membership_identifier,
 policy,
 type_,
-updateTime
+update_time
 FROM aws.cleanrooms.configured_table_association_analysis_rules
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND configured_table_association_identifier = '{{ configured_table_association_identifier }}' -- required
@@ -231,7 +231,7 @@ SELECT
 '{{ configured_table_association_identifier }}',
 '{{ region }}'
 RETURNING
-analysisRule
+analysis_rule
 ;
 ```
 </TabItem>
@@ -301,7 +301,7 @@ AND analysis_rule_type = '{{ analysis_rule_type }}' --required
 AND region = '{{ region }}' --required
 AND analysisRulePolicy = '{{ analysisRulePolicy }}' --required
 RETURNING
-analysisRule;
+analysis_rule;
 ```
 </TabItem>
 </Tabs>

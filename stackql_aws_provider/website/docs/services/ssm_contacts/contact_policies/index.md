@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the contact or escalation plan. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>Details about the resource policy attached to the contact or escalation plan. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the resource policies attached to the specified contact or escalation 
 
 ```sql
 SELECT
-ContactArn,
-Policy
+contact_arn,
+policy
 FROM aws.ssm_contacts.contact_policies
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time and date at which the retraining scheduler was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LookbackWindow" /></td>
+    <td><CopyableCode code="lookback_window" /></td>
     <td><code>string</code></td>
     <td>The number of past days of data used for retraining. (pattern: &lt;code&gt;^P180D$|^P360D$|^P540D$|^P720D$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the model that the retraining scheduler is attached to. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model that the retraining scheduler is attached to. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromoteMode" /></td>
+    <td><CopyableCode code="promote_mode" /></td>
     <td><code>string</code></td>
     <td>Indicates how the service uses new models. In MANAGED mode, new models are used for inference if they have better performance than the current model. In MANUAL mode, the new models are not used until they are manually activated. (MANAGED, MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrainingFrequency" /></td>
+    <td><CopyableCode code="retraining_frequency" /></td>
     <td><code>string</code></td>
     <td>The frequency at which the model retraining is set. This follows the ISO 8601 guidelines. (pattern: &lt;code&gt;^P(\dY)?(\d&#123;1,2&#125;M)?(\d&#123;1,3&#125;D)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrainingStartDate" /></td>
+    <td><CopyableCode code="retraining_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date for the retraining scheduler. Lookout for Equipment truncates the time you provide to the nearest UTC day.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the retraining scheduler. (PENDING, RUNNING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time and date at which the retraining scheduler was updated.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the number of results exceeds the maximum, this pagination token is returned. Use this token in the request to show the next page of retraining schedulers. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrainingSchedulerSummaries" /></td>
+    <td><CopyableCode code="retraining_scheduler_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides information on the specified retraining scheduler, including the model name, model ARN, status, and start date.</td>
 </tr>
@@ -213,15 +213,15 @@ Provides a description of the retraining scheduler, including information such a
 
 ```sql
 SELECT
-CreatedAt,
-LookbackWindow,
-ModelArn,
-ModelName,
-PromoteMode,
-RetrainingFrequency,
-RetrainingStartDate,
-Status,
-UpdatedAt
+created_at,
+lookback_window,
+model_arn,
+model_name,
+promote_mode,
+retraining_frequency,
+retraining_start_date,
+status,
+updated_at
 FROM aws.lookoutequipment.retraining_schedulers
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,8 +233,8 @@ Lists all retraining schedulers in your account, filtering by model name prefix 
 
 ```sql
 SELECT
-NextToken,
-RetrainingSchedulerSummaries
+next_token,
+retraining_scheduler_summaries
 FROM aws.lookoutequipment.retraining_schedulers
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,9 +275,9 @@ SELECT
 '{{ ClientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ModelArn,
-ModelName,
-Status
+model_arn,
+model_name,
+status
 ;
 ```
 </TabItem>

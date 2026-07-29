@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the service account token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the service account token was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the service account token will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUsedAt" /></td>
+    <td><CopyableCode code="last_used_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the token was used to authorize a Grafana HTTP API.</td>
 </tr>
@@ -180,9 +180,9 @@ Returns a list of tokens for a workspace service account. This does not return t
 SELECT
 id,
 name,
-createdAt,
-expiresAt,
-lastUsedAt
+created_at,
+expires_at,
+last_used_at
 FROM aws.grafana.workspace_service_account_tokens
 WHERE service_account_id = '{{ service_account_id }}' -- required
 AND workspace_id = '{{ workspace_id }}' -- required
@@ -223,9 +223,9 @@ SELECT
 '{{ workspace_id }}',
 '{{ region }}'
 RETURNING
-serviceAccountId,
-serviceAccountToken,
-workspaceId
+service_account_id,
+service_account_token,
+workspace_id
 ;
 ```
 </TabItem>

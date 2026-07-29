@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TokenDomains" /></td>
+    <td><CopyableCode code="token_domains" /></td>
     <td><code>array</code></td>
     <td>The token domains that are defined in this API key.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns your API key in decrypted form. Use this to check the token domains that
 
 ```sql
 SELECT
-CreationTimestamp,
-TokenDomains
+creation_timestamp,
+token_domains
 FROM aws.wafv2.decrypted_api_keys
 WHERE region = '{{ region }}' -- required
 ;

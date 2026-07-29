@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account.</td>
 </tr>
@@ -134,7 +134,7 @@ Retrieves information about the delegated Amazon Macie administrator account for
 
 ```sql
 SELECT
-accountId,
+account_id,
 status
 FROM aws.macie2.organization_admin_accounts
 WHERE region = '{{ region }}' -- required

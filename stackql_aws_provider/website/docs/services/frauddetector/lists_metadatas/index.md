@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of the specified list or all lists under the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -125,7 +125,7 @@ Gets the metadata of either all the lists under the account or the specified lis
 ```sql
 SELECT
 lists,
-nextToken
+next_token
 FROM aws.frauddetector.lists_metadatas
 WHERE region = '{{ region }}' -- required
 ;

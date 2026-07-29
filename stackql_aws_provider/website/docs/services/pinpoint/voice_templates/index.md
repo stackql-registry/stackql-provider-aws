@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Body" /></td>
+    <td><CopyableCode code="body" /></td>
     <td><code>string</code></td>
     <td>The text of the script that's used in messages that are based on the message template, in plain text format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the message template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultSubstitutions" /></td>
+    <td><CopyableCode code="default_substitutions" /></td>
     <td><code>string</code></td>
     <td>The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The code for the language that's used when synthesizing the text of the script in messages that are based on the message template. For a list of supported languages and the code for each one, see the Amazon Polly Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the message template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateDescription" /></td>
+    <td><CopyableCode code="template_description" /></td>
     <td><code>string</code></td>
     <td>The custom description of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The type of channel that the message template is designed for. For a voice template, this value is VOICE. (EMAIL, SMS, VOICE, PUSH, INAPP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceId" /></td>
+    <td><CopyableCode code="voice_id" /></td>
     <td><code>string</code></td>
     <td>The name of the voice that's used when delivering messages that are based on the message template. For a list of supported voices, see the Amazon Polly Developer Guide.</td>
 </tr>
@@ -210,17 +210,17 @@ Retrieves the content and settings of a message template for messages that are s
 
 ```sql
 SELECT
-Arn,
-Body,
-CreationDate,
-DefaultSubstitutions,
-LanguageCode,
-LastModifiedDate,
-TemplateDescription,
-TemplateName,
-TemplateType,
-Version,
-VoiceId,
+arn,
+body,
+creation_date,
+default_substitutions,
+language_code,
+last_modified_date,
+template_description,
+template_name,
+template_type,
+version,
+voice_id,
 tags
 FROM aws.pinpoint.voice_templates
 WHERE `template-name` = '{{ template-name }}' -- required
@@ -256,7 +256,7 @@ SELECT
 '{{ template-name }}',
 '{{ region }}'
 RETURNING
-CreateTemplateMessageBody
+create_template_message_body
 ;
 ```
 </TabItem>
@@ -310,7 +310,7 @@ AND VoiceTemplateRequest = '{{ VoiceTemplateRequest }}' --required
 AND `create-new-version` = {{ create-new-version}}
 AND version = '{{ version}}'
 RETURNING
-MessageBody;
+message_body;
 ```
 </TabItem>
 </Tabs>

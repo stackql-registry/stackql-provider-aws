@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="expirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Identity Center authentication token expires. After this time, a new token must be requested for continued access.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns an Identity Center authentication token for accessing Amazon Redshift Se
 
 ```sql
 SELECT
-expirationTime,
+expiration_time,
 token
 FROM aws.redshift_serverless.identity_center_auth_tokens
 WHERE region = '{{ region }}' -- required

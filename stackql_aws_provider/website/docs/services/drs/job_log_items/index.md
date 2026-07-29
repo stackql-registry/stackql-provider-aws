@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The event represents the type of a log. (JOB_START, SERVER_SKIPPED, CLEANUP_START, CLEANUP_END, CLEANUP_FAIL, SNAPSHOT_START, SNAPSHOT_END, SNAPSHOT_FAIL, USING_PREVIOUS_SNAPSHOT, USING_PREVIOUS_SNAPSHOT_FAILED, CONVERSION_START, CONVERSION_END, CONVERSION_FAIL, LAUNCH_START, LAUNCH_FAILED, JOB_CANCEL, JOB_END, DEPLOY_NETWORK_CONFIGURATION_START, DEPLOY_NETWORK_CONFIGURATION_END, DEPLOY_NETWORK_CONFIGURATION_FAILED, UPDATE_NETWORK_CONFIGURATION_START, UPDATE_NETWORK_CONFIGURATION_END, UPDATE_NETWORK_CONFIGURATION_FAILED, UPDATE_LAUNCH_TEMPLATE_START, UPDATE_LAUNCH_TEMPLATE_END, UPDATE_LAUNCH_TEMPLATE_FAILED, NETWORK_RECOVERY_FAIL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventData" /></td>
+    <td><CopyableCode code="event_data" /></td>
     <td><code>object</code></td>
     <td>Metadata associated with a Job log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logDateTime" /></td>
+    <td><CopyableCode code="log_date_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the log was taken. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
@@ -130,8 +130,8 @@ Retrieves a detailed Job log with pagination.
 ```sql
 SELECT
 event,
-eventData,
-logDateTime
+event_data,
+log_date_time
 FROM aws.drs.job_log_items
 WHERE region = '{{ region }}' -- required
 ;

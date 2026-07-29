@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdministrativeActions" /></td>
+    <td><CopyableCode code="administrative_actions" /></td>
     <td><code>array</code></td>
     <td>A list of administrative actions for the volume that are in process or waiting to be processed. Administrative actions describe changes to the volume that you have initiated using the UpdateVolume action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the resource was created, in seconds (since 1970-01-01T00:00:00Z), also known as Unix time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique ID of the file system, assigned by Amazon FSx. (pattern: &lt;code&gt;^(fs-&#91;0-9a-f&#93;&#123;8,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lifecycle" /></td>
+    <td><CopyableCode code="lifecycle" /></td>
     <td><code>string</code></td>
     <td>The lifecycle status of the volume. AVAILABLE - The volume is fully available for use. CREATED - The volume has been created. CREATING - Amazon FSx is creating the new volume. DELETING - Amazon FSx is deleting an existing volume. FAILED - Amazon FSx was unable to create the volume. MISCONFIGURED - The volume is in a failed but recoverable state. PENDING - Amazon FSx hasn't started creating the volume. (CREATING, CREATED, DELETING, FAILED, MISCONFIGURED, PENDING, AVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleTransitionReason" /></td>
+    <td><CopyableCode code="lifecycle_transition_reason" /></td>
     <td><code>object</code></td>
     <td>The reason why the volume lifecycle status changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the volume. (pattern: &lt;code&gt;^&#91;^\u0000\u0085\u2028\u2029\r\n&#93;&#123;1,203&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OntapConfiguration" /></td>
+    <td><CopyableCode code="ontap_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of an Amazon FSx for NetApp ONTAP volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenZFSConfiguration" /></td>
+    <td><CopyableCode code="open_zfs_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of an Amazon FSx for OpenZFS volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceARN" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:(?=&#91;^:&#93;+:fsx:&#91;^:&#93;+:\d&#123;12&#125;:)((|(?=&#91;a-z0-9-.&#93;&#123;1,63&#125;)(?!\d&#123;1,3&#125;(\.\d&#123;1,3&#125;)&#123;3&#125;)(?!&#91;^:&#93;*-&#123;2&#125;)(?!&#91;^:&#93;*-\.)(?!&#91;^:&#93;*\.-)&#91;a-z0-9&#93;.*(?&lt;!-)):)&#123;4&#125;(?!/).&#123;0,1024&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of Tag values, with a maximum of 50 elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated, unique ID of the volume. (pattern: &lt;code&gt;^(fsvol-&#91;0-9a-f&#93;&#123;17,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeType" /></td>
+    <td><CopyableCode code="volume_type" /></td>
     <td><code>string</code></td>
     <td>The type of the volume. (ONTAP, OPENZFS)</td>
 </tr>
@@ -202,18 +202,18 @@ Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volu
 
 ```sql
 SELECT
-AdministrativeActions,
-CreationTime,
-FileSystemId,
-Lifecycle,
-LifecycleTransitionReason,
-Name,
-OntapConfiguration,
-OpenZFSConfiguration,
-ResourceARN,
-Tags,
-VolumeId,
-VolumeType
+administrative_actions,
+creation_time,
+file_system_id,
+lifecycle,
+lifecycle_transition_reason,
+name,
+ontap_configuration,
+open_zfs_configuration,
+resource_arn,
+tags,
+volume_id,
+volume_type
 FROM aws.fsx.volumes
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,7 +254,7 @@ SELECT
 '{{ OpenZFSConfiguration }}',
 '{{ region }}'
 RETURNING
-Volume
+volume
 ;
 ```
 </TabItem>
@@ -374,7 +374,7 @@ WHERE
 region = '{{ region }}' --required
 AND VolumeId = '{{ VolumeId }}' --required
 RETURNING
-Volume;
+volume;
 ```
 </TabItem>
 </Tabs>

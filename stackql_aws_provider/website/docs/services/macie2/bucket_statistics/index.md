@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="bucketCount" /></td>
+    <td><CopyableCode code="bucket_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketCountByEffectivePermission" /></td>
+    <td><CopyableCode code="bucket_count_by_effective_permission" /></td>
     <td><code>object</code></td>
     <td>The total number of buckets that are publicly accessible due to a combination of permissions settings for each bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketCountByEncryptionType" /></td>
+    <td><CopyableCode code="bucket_count_by_encryption_type" /></td>
     <td><code>object</code></td>
     <td>The total number of buckets whose settings do or don't specify default server-side encryption behavior for objects that are added to the buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketCountByObjectEncryptionRequirement" /></td>
+    <td><CopyableCode code="bucket_count_by_object_encryption_requirement" /></td>
     <td><code>object</code></td>
     <td>The total number of buckets whose bucket policies do or don't require server-side encryption of objects when objects are added to the buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketCountBySharedAccessType" /></td>
+    <td><CopyableCode code="bucket_count_by_shared_access_type" /></td>
     <td><code>object</code></td>
     <td>The total number of buckets that are or aren't shared with other Amazon Web Services accounts, Amazon CloudFront origin access identities (OAIs), or CloudFront origin access controls (OACs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketStatisticsBySensitivity" /></td>
+    <td><CopyableCode code="bucket_statistics_by_sensitivity" /></td>
     <td><code>object</code></td>
     <td>The aggregated sensitive data discovery statistics for the buckets. If automated sensitive data discovery is currently disabled for your account, the value for most statistics is 0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="classifiableObjectCount" /></td>
+    <td><CopyableCode code="classifiable_object_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of objects that Amazon Macie can analyze in the buckets. These objects use a supported storage class and have a file name extension for a supported file or storage format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="classifiableSizeInBytes" /></td>
+    <td><CopyableCode code="classifiable_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total storage size, in bytes, of all the objects that Amazon Macie can analyze in the buckets. These objects use a supported storage class and have a file name extension for a supported file or storage format. If versioning is enabled for any of the buckets, this value is based on the size of the latest version of each applicable object in the buckets. This value doesn't reflect the storage size of all versions of all applicable objects in the buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently retrieved bucket or object metadata from Amazon S3 for the buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="objectCount" /></td>
+    <td><CopyableCode code="object_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of objects in the buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total storage size, in bytes, of the buckets. If versioning is enabled for any of the buckets, this value is based on the size of the latest version of each object in the buckets. This value doesn't reflect the storage size of all versions of the objects in the buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInBytesCompressed" /></td>
+    <td><CopyableCode code="size_in_bytes_compressed" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total storage size, in bytes, of the objects that are compressed (.gz, .gzip, .zip) files in the buckets. If versioning is enabled for any of the buckets, this value is based on the size of the latest version of each applicable object in the buckets. This value doesn't reflect the storage size of all versions of the applicable objects in the buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unclassifiableObjectCount" /></td>
+    <td><CopyableCode code="unclassifiable_object_count" /></td>
     <td><code>object</code></td>
     <td>The total number of objects that Amazon Macie can't analyze in the buckets. These objects don't use a supported storage class or don't have a file name extension for a supported file or storage format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unclassifiableObjectSizeInBytes" /></td>
+    <td><CopyableCode code="unclassifiable_object_size_in_bytes" /></td>
     <td><code>object</code></td>
     <td>The total storage size, in bytes, of the objects that Amazon Macie can't analyze in the buckets. These objects don't use a supported storage class or don't have a file name extension for a supported file or storage format.</td>
 </tr>
@@ -184,20 +184,20 @@ Retrieves (queries) aggregated statistical data about all the S3 buckets that Am
 
 ```sql
 SELECT
-bucketCount,
-bucketCountByEffectivePermission,
-bucketCountByEncryptionType,
-bucketCountByObjectEncryptionRequirement,
-bucketCountBySharedAccessType,
-bucketStatisticsBySensitivity,
-classifiableObjectCount,
-classifiableSizeInBytes,
-lastUpdated,
-objectCount,
-sizeInBytes,
-sizeInBytesCompressed,
-unclassifiableObjectCount,
-unclassifiableObjectSizeInBytes
+bucket_count,
+bucket_count_by_effective_permission,
+bucket_count_by_encryption_type,
+bucket_count_by_object_encryption_requirement,
+bucket_count_by_shared_access_type,
+bucket_statistics_by_sensitivity,
+classifiable_object_count,
+classifiable_size_in_bytes,
+last_updated,
+object_count,
+size_in_bytes,
+size_in_bytes_compressed,
+unclassifiable_object_count,
+unclassifiable_object_size_in_bytes
 FROM aws.macie2.bucket_statistics
 WHERE region = '{{ region }}' -- required
 ;

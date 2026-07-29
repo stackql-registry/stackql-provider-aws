@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="findingsReportSummaries" /></td>
+    <td><CopyableCode code="findings_report_summaries" /></td>
     <td><code>array</code></td>
     <td>The list of analysis results summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future ListFindingsReports request. When the results of a ListFindingsReports request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;^&#91;\w-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -154,8 +154,8 @@ List the available reports for a given profiling group and time range.
 
 ```sql
 SELECT
-findingsReportSummaries,
-nextToken
+findings_report_summaries,
+next_token
 FROM aws.codeguruprofiler.findings_reports
 WHERE endTime = '{{ endTime }}' -- required
 AND profiling_group_name = '{{ profiling_group_name }}' -- required

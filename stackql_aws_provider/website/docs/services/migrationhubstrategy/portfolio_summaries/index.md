@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="antipatternReportS3Object" /></td>
+    <td><CopyableCode code="antipattern_report_s3_object" /></td>
     <td><code>object</code></td>
     <td>Contains the S3 bucket name and the Amazon S3 key name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportStatus" /></td>
+    <td><CopyableCode code="antipattern_report_status" /></td>
     <td><code>string</code></td>
     <td>The status of the anti-pattern report. (FAILED, IN_PROGRESS, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportStatusMessage" /></td>
+    <td><CopyableCode code="antipattern_report_status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the anti-pattern report. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAnalyzedTimestamp" /></td>
+    <td><CopyableCode code="last_analyzed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the assessment was performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listAntipatternSeveritySummary" /></td>
+    <td><CopyableCode code="list_antipattern_severity_summary" /></td>
     <td><code>array</code></td>
     <td>List of AntipatternSeveritySummary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listApplicationComponentStatusSummary" /></td>
+    <td><CopyableCode code="list_application_component_status_summary" /></td>
     <td><code>array</code></td>
     <td>List of status summaries of the analyzed application components.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listApplicationComponentStrategySummary" /></td>
+    <td><CopyableCode code="list_application_component_strategy_summary" /></td>
     <td><code>array</code></td>
     <td>List of ApplicationComponentStrategySummary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listApplicationComponentSummary" /></td>
+    <td><CopyableCode code="list_application_component_summary" /></td>
     <td><code>array</code></td>
     <td>List of ApplicationComponentSummary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listServerStatusSummary" /></td>
+    <td><CopyableCode code="list_server_status_summary" /></td>
     <td><code>array</code></td>
     <td>List of status summaries of the analyzed servers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listServerStrategySummary" /></td>
+    <td><CopyableCode code="list_server_strategy_summary" /></td>
     <td><code>array</code></td>
     <td>List of ServerStrategySummary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listServerSummary" /></td>
+    <td><CopyableCode code="list_server_summary" /></td>
     <td><code>array</code></td>
     <td>List of ServerSummary.</td>
 </tr>
@@ -169,17 +169,17 @@ Retrieves overall summary including the number of servers to rehost and the over
 
 ```sql
 SELECT
-antipatternReportS3Object,
-antipatternReportStatus,
-antipatternReportStatusMessage,
-lastAnalyzedTimestamp,
-listAntipatternSeveritySummary,
-listApplicationComponentStatusSummary,
-listApplicationComponentStrategySummary,
-listApplicationComponentSummary,
-listServerStatusSummary,
-listServerStrategySummary,
-listServerSummary
+antipattern_report_s3_object,
+antipattern_report_status,
+antipattern_report_status_message,
+last_analyzed_timestamp,
+list_antipattern_severity_summary,
+list_application_component_status_summary,
+list_application_component_strategy_summary,
+list_application_component_summary,
+list_server_status_summary,
+list_server_strategy_summary,
+list_server_summary
 FROM aws.migrationhubstrategy.portfolio_summaries
 WHERE region = '{{ region }}' -- required
 ;

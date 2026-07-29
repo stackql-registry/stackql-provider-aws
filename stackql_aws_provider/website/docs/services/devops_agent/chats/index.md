@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>List of recent chat executions</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for retrieving the next page of results</td>
 </tr>
@@ -157,7 +157,7 @@ Retrieves a paginated list of the user's recent chat executions
 ```sql
 SELECT
 executions,
-nextToken
+next_token
 FROM aws.devops_agent.chats
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -196,8 +196,8 @@ SELECT
 '{{ userId }}',
 '{{ userType }}'
 RETURNING
-createdAt,
-executionId
+created_at,
+execution_id
 ;
 ```
 </TabItem>

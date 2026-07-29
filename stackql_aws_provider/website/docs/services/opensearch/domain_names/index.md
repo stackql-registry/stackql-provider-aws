@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainNames" /></td>
+    <td><CopyableCode code="domain_names" /></td>
     <td><code>array</code></td>
     <td>The names of all OpenSearch Service domains owned by the current user and their respective engine types.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the names of all Amazon OpenSearch Service domains owned by the current 
 
 ```sql
 SELECT
-DomainNames
+domain_names
 FROM aws.opensearch.domain_names
 WHERE region = '{{ region }}' -- required
 AND engineType = '{{ engineType }}'

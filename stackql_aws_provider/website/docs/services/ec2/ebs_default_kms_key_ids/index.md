@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the default KMS key for encryption by default.</td>
 </tr>
@@ -136,7 +136,7 @@ Describes the default KMS key for EBS encryption by default for your account in 
 
 ```sql
 SELECT
-KmsKeyId
+kms_key_id
 FROM aws.ec2.ebs_default_kms_key_ids
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -167,7 +167,7 @@ KmsKeyId = '{{ KmsKeyId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-KmsKeyId;
+kms_key_id;
 ```
 </TabItem>
 </Tabs>

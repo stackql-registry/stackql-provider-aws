@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseModelArn" /></td>
+    <td><CopyableCode code="base_model_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the base model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;::foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>The token that you specified in the CreateCustomizationJob request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-a-zA-Z0-9&#93;&#123;0,254&#125;&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time that the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customizationConfig" /></td>
+    <td><CopyableCode code="customization_config" /></td>
     <td><code>object</code></td>
     <td>A model customization configuration</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customizationType" /></td>
+    <td><CopyableCode code="customization_type" /></td>
     <td><code>string</code></td>
     <td>The type of model customization. (FINE_TUNING, CONTINUED_PRE_TRAINING, DISTILLATION, REINFORCEMENT_FINE_TUNING, IMPORTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time that the resource transitioned to terminal state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>Information about why the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hyperParameters" /></td>
+    <td><CopyableCode code="hyper_parameters" /></td>
     <td><code>object</code></td>
     <td>The hyperparameter values for the job. For details on the format for different models, see Custom model hyperparameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customization job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-customization-job/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the customization job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9\+\-\.&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time that the resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>S3 Location of the output data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputModelArn" /></td>
+    <td><CopyableCode code="output_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the output model. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model/(imported|&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputModelKmsKeyArn" /></td>
+    <td><CopyableCode code="output_model_kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The custom model is encrypted at rest using this key. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputModelName" /></td>
+    <td><CopyableCode code="output_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the output model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -136,32 +136,32 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the job. A successful job transitions from in-progress to completed when the output model is ready to use. If the job failed, the failure message contains information about why the job failed. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>For a Distillation job, the details about the statuses of the sub-tasks of the customization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDataConfig" /></td>
+    <td><CopyableCode code="training_data_config" /></td>
     <td><code>object</code></td>
     <td>S3 Location of the training data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingMetrics" /></td>
+    <td><CopyableCode code="training_metrics" /></td>
     <td><code>object</code></td>
     <td>Contains training metrics from the job creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationDataConfig" /></td>
+    <td><CopyableCode code="validation_data_config" /></td>
     <td><code>object</code></td>
     <td>Array of up to 10 validators.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationMetrics" /></td>
+    <td><CopyableCode code="validation_metrics" /></td>
     <td><code>array</code></td>
     <td>The loss metric for each validator that you provided in the createjob request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of a virtual private cloud (VPC). For more information, see Protect your data using Amazon Virtual Private Cloud and Amazon Web Services PrivateLink.</td>
 </tr>
@@ -180,47 +180,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseModelArn" /></td>
+    <td><CopyableCode code="base_model_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the base model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the custom model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customModelArn" /></td>
+    <td><CopyableCode code="custom_model_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the custom model. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model/(imported|&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customModelName" /></td>
+    <td><CopyableCode code="custom_model_name" /></td>
     <td><code>string</code></td>
     <td>Name of the custom model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customizationType" /></td>
+    <td><CopyableCode code="customization_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether to carry out continued pre-training of a model or whether to fine-tune it. For more information, see Custom models. (FINE_TUNING, CONTINUED_PRE_TRAINING, DISTILLATION, REINFORCEMENT_FINE_TUNING, IMPORTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time that the customization job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the customization job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-customization-job/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>Name of the customization job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9\+\-\.&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time that the customization job was last modified.</td>
 </tr>
@@ -230,7 +230,7 @@ The following fields are returned by `SELECT` queries:
     <td>Status of the customization job. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the status of the data processing sub-task of the job.</td>
 </tr>
@@ -359,29 +359,29 @@ Retrieves the properties associated with a model-customization job, including th
 
 ```sql
 SELECT
-baseModelArn,
-clientRequestToken,
-creationTime,
-customizationConfig,
-customizationType,
-endTime,
-failureMessage,
-hyperParameters,
-jobArn,
-jobName,
-lastModifiedTime,
-outputDataConfig,
-outputModelArn,
-outputModelKmsKeyArn,
-outputModelName,
-roleArn,
+base_model_arn,
+client_request_token,
+creation_time,
+customization_config,
+customization_type,
+end_time,
+failure_message,
+hyper_parameters,
+job_arn,
+job_name,
+last_modified_time,
+output_data_config,
+output_model_arn,
+output_model_kms_key_arn,
+output_model_name,
+role_arn,
 status,
-statusDetails,
-trainingDataConfig,
-trainingMetrics,
-validationDataConfig,
-validationMetrics,
-vpcConfig
+status_details,
+training_data_config,
+training_metrics,
+validation_data_config,
+validation_metrics,
+vpc_config
 FROM aws.bedrock.model_customization_jobs
 WHERE job_identifier = '{{ job_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -394,17 +394,17 @@ Returns a list of model customization jobs that you have submitted. You can filt
 
 ```sql
 SELECT
-baseModelArn,
-creationTime,
-customModelArn,
-customModelName,
-customizationType,
-endTime,
-jobArn,
-jobName,
-lastModifiedTime,
+base_model_arn,
+creation_time,
+custom_model_arn,
+custom_model_name,
+customization_type,
+end_time,
+job_arn,
+job_name,
+last_modified_time,
 status,
-statusDetails
+status_details
 FROM aws.bedrock.model_customization_jobs
 WHERE region = '{{ region }}' -- required
 AND creationTimeAfter = '{{ creationTimeAfter }}'
@@ -471,7 +471,7 @@ SELECT
 '{{ customizationConfig }}',
 '{{ region }}'
 RETURNING
-jobArn
+job_arn
 ;
 ```
 </TabItem>

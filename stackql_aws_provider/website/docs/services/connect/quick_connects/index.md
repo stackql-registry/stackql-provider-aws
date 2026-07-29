@@ -52,42 +52,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuickConnectARN" /></td>
+    <td><CopyableCode code="quick_connect_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuickConnectConfig" /></td>
+    <td><CopyableCode code="quick_connect_config" /></td>
     <td><code>object</code></td>
     <td>Contains configuration settings for a quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuickConnectId" /></td>
+    <td><CopyableCode code="quick_connect_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -106,32 +106,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuickConnectType" /></td>
+    <td><CopyableCode code="quick_connect_type" /></td>
     <td><code>string</code></td>
     <td>The type of quick connect. In the Amazon Connect admin website, when you create a quick connect, you are prompted to assign one of the following types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE). (USER, QUEUE, PHONE_NUMBER, FLOW)</td>
 </tr>
@@ -150,42 +150,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuickConnectARN" /></td>
+    <td><CopyableCode code="quick_connect_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuickConnectConfig" /></td>
+    <td><CopyableCode code="quick_connect_config" /></td>
     <td><code>object</code></td>
     <td>Contains configuration settings for a quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuickConnectId" /></td>
+    <td><CopyableCode code="quick_connect_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the quick connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -323,14 +323,14 @@ Describes the quick connect.
 
 ```sql
 SELECT
-Description,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-QuickConnectARN,
-QuickConnectConfig,
-QuickConnectId,
-Tags
+description,
+last_modified_region,
+last_modified_time,
+name,
+quick_connect_arn,
+quick_connect_config,
+quick_connect_id,
+tags
 FROM aws.connect.quick_connects
 WHERE instance_id = '{{ instance_id }}' -- required
 AND quick_connect_id = '{{ quick_connect_id }}' -- required
@@ -344,12 +344,12 @@ Provides information about the quick connects for the specified Amazon Connect i
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-QuickConnectType
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name,
+quick_connect_type
 FROM aws.connect.quick_connects
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -365,14 +365,14 @@ Searches quick connects in an Amazon Connect instance, with optional filtering.
 
 ```sql
 SELECT
-Description,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-QuickConnectARN,
-QuickConnectConfig,
-QuickConnectId,
-Tags
+description,
+last_modified_region,
+last_modified_time,
+name,
+quick_connect_arn,
+quick_connect_config,
+quick_connect_id,
+tags
 FROM aws.connect.quick_connects
 WHERE region = '{{ region }}' -- required
 ;
@@ -411,8 +411,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-QuickConnectARN,
-QuickConnectId
+quick_connect_arn,
+quick_connect_id
 ;
 ```
 </TabItem>

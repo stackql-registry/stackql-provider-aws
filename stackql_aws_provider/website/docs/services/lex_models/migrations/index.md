@@ -56,47 +56,47 @@ The following fields are returned by `SELECT` queries:
     <td>A list of alerts and warnings that indicate issues with the migration for the Amazon Lex V1 bot to Amazon Lex V2. You receive a warning when an Amazon Lex V1 feature has a different implementation if Amazon Lex V2. For more information, see Migrating a bot in the Amazon Lex V2 developer guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="migrationId" /></td>
+    <td><CopyableCode code="migration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the migration. This is the same as the identifier used when calling the GetMigration operation. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="migrationStatus" /></td>
+    <td><CopyableCode code="migration_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the migration. When the status is COMPLETE the migration is finished and the bot is available in Amazon Lex V2. There may be alerts and warnings that need to be resolved to complete the migration. (IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="migrationStrategy" /></td>
+    <td><CopyableCode code="migration_strategy" /></td>
     <td><code>string</code></td>
     <td>The strategy used to conduct the migration. CREATE_NEW - Creates a new Amazon Lex V2 bot and migrates the Amazon Lex V1 bot to the new bot. UPDATE_EXISTING - Overwrites the existing Amazon Lex V2 bot metadata and the locale being migrated. It doesn't change any other locales in the Amazon Lex V2 bot. If the locale doesn't exist, a new locale is created in the Amazon Lex V2 bot. (CREATE_NEW, UPDATE_EXISTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="migrationTimestamp" /></td>
+    <td><CopyableCode code="migration_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the migration started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="v1BotLocale" /></td>
+    <td><CopyableCode code="v_1_bot_locale" /></td>
     <td><code>string</code></td>
     <td>The locale of the Amazon Lex V1 bot migrated to Amazon Lex V2. (de-DE, en-AU, en-GB, en-IN, en-US, es-419, es-ES, es-US, fr-FR, fr-CA, it-IT, ja-JP, ko-KR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="v1BotName" /></td>
+    <td><CopyableCode code="v_1_bot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Lex V1 bot migrated to Amazon Lex V2. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="v1BotVersion" /></td>
+    <td><CopyableCode code="v_1_bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the Amazon Lex V1 bot migrated to Amazon Lex V2. (pattern: &lt;code&gt;\$LATEST|&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="v2BotId" /></td>
+    <td><CopyableCode code="v_2_bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Amazon Lex V2 bot that the Amazon Lex V1 is being migrated to. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="v2BotRole" /></td>
+    <td><CopyableCode code="v_2_bot_role" /></td>
     <td><code>string</code></td>
     <td>The IAM role that Amazon Lex uses to run the Amazon Lex V2 bot. (pattern: &lt;code&gt;^arn:&#91;\w\-&#93;+:iam::&#91;\d&#93;&#123;12&#125;:role/.+$&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="migrationSummaries" /></td>
+    <td><CopyableCode code="migration_summaries" /></td>
     <td><code>array</code></td>
     <td>An array of summaries for migrations from Amazon Lex V1 to Amazon Lex V2. To see details of the migration, use the migrationId from the summary in a call to the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of migrations.</td>
 </tr>
@@ -233,15 +233,15 @@ Provides details about an ongoing or complete migration from an Amazon Lex V1 bo
 ```sql
 SELECT
 alerts,
-migrationId,
-migrationStatus,
-migrationStrategy,
-migrationTimestamp,
-v1BotLocale,
-v1BotName,
-v1BotVersion,
-v2BotId,
-v2BotRole
+migration_id,
+migration_status,
+migration_strategy,
+migration_timestamp,
+v_1_bot_locale,
+v_1_bot_name,
+v_1_bot_version,
+v_2_bot_id,
+v_2_bot_role
 FROM aws.lex_models.migrations
 WHERE migration_id = '{{ migration_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -254,8 +254,8 @@ Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
 
 ```sql
 SELECT
-migrationSummaries,
-nextToken
+migration_summaries,
+next_token
 FROM aws.lex_models.migrations
 WHERE region = '{{ region }}' -- required
 AND sortByAttribute = '{{ sortByAttribute }}'

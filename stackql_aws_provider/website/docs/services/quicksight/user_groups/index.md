@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The group description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group. (pattern: &lt;code&gt;&#91;\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalId" /></td>
+    <td><CopyableCode code="principal_id" /></td>
     <td><code>string</code></td>
     <td>The principal ID of the group.</td>
 </tr>
@@ -159,10 +159,10 @@ Lists the Amazon Quick Sight groups that an Amazon Quick Sight user is a member 
 
 ```sql
 SELECT
-Arn,
-Description,
-GroupName,
-PrincipalId
+arn,
+description,
+group_name,
+principal_id
 FROM aws.quicksight.user_groups
 WHERE user_name = '{{ user_name }}' -- required
 AND aws_account_id = '{{ aws_account_id }}' -- required

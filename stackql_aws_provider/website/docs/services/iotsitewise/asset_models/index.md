@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assetModelArn" /></td>
+    <td><CopyableCode code="asset_model_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the asset model, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:asset-model/$&#123;AssetModelId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelSummaries" /></td>
+    <td><CopyableCode code="asset_model_composite_model_summaries" /></td>
     <td><code>array</code></td>
     <td>The list of the immediate child custom composite model summaries for the asset model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModels" /></td>
+    <td><CopyableCode code="asset_model_composite_models" /></td>
     <td><code>array</code></td>
     <td>The list of built-in composite models for the asset model, such as those with those of type AWS/ALARMS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCreationDate" /></td>
+    <td><CopyableCode code="asset_model_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the asset model was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelDescription" /></td>
+    <td><CopyableCode code="asset_model_description" /></td>
     <td><code>string</code></td>
     <td>The asset model's description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelExternalId" /></td>
+    <td><CopyableCode code="asset_model_external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of the asset model, if any. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelHierarchies" /></td>
+    <td><CopyableCode code="asset_model_hierarchies" /></td>
     <td><code>array</code></td>
     <td>A list of asset model hierarchies that each contain a childAssetModelId and a hierarchyId (named id). A hierarchy specifies allowed parent/child asset relationships for an asset model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelId" /></td>
+    <td><CopyableCode code="asset_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset model, in UUID format. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelLastUpdateDate" /></td>
+    <td><CopyableCode code="asset_model_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the asset model was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelName" /></td>
+    <td><CopyableCode code="asset_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the asset model. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelProperties" /></td>
+    <td><CopyableCode code="asset_model_properties" /></td>
     <td><code>array</code></td>
     <td>The list of asset properties for the asset model. This object doesn't include properties that you define in composite models. You can find composite model properties in the assetModelCompositeModels object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelStatus" /></td>
+    <td><CopyableCode code="asset_model_status" /></td>
     <td><code>object</code></td>
     <td>Contains current status information for an asset model. For more information, see Asset and model states in the IoT SiteWise User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelType" /></td>
+    <td><CopyableCode code="asset_model_type" /></td>
     <td><code>string</code></td>
     <td>The type of asset model. ASSET_MODEL – (default) An asset model that you can use to create assets. Can't be included as a component in another asset model. COMPONENT_MODEL – A reusable component that you can include in the composite models of other asset models. You can't create assets directly from this type of asset model. (ASSET_MODEL, COMPONENT_MODEL, INTERFACE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelVersion" /></td>
+    <td><CopyableCode code="asset_model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the asset model. See Asset model versions in the IoT SiteWise User Guide. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eTag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The entity tag (ETag) is a hash of the retrieved version of the asset model. It's used to make concurrent updates safely to the resource. See Optimistic locking for asset model writes in the IoT SiteWise User Guide. See Optimistic locking for asset model writes in the IoT SiteWise User Guide. (pattern: &lt;code&gt;^&#91;\w-&#93;&#123;43&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interfaceDetails" /></td>
+    <td><CopyableCode code="interface_details" /></td>
     <td><code>array</code></td>
     <td>A list of interface details that describe the interfaces implemented by this asset model, including interface asset model IDs and property mappings.</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the asset model, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:asset-model/$&#123;AssetModelId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelType" /></td>
+    <td><CopyableCode code="asset_model_type" /></td>
     <td><code>string</code></td>
     <td>The type of asset model. ASSET_MODEL – (default) An asset model that you can use to create assets. Can't be included as a component in another asset model. COMPONENT_MODEL – A reusable component that you can include in the composite models of other asset models. You can't create assets directly from this type of asset model. (ASSET_MODEL, COMPONENT_MODEL, INTERFACE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the asset model was created, in Unix epoch time.</td>
 </tr>
@@ -175,12 +175,12 @@ The following fields are returned by `SELECT` queries:
     <td>The asset model description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of the asset model. For more information, see Using external IDs in the IoT SiteWise User Guide. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the asset model was last updated, in Unix epoch time.</td>
 </tr>
@@ -338,22 +338,22 @@ Retrieves information about an asset model. This includes details about the asse
 
 ```sql
 SELECT
-assetModelArn,
-assetModelCompositeModelSummaries,
-assetModelCompositeModels,
-assetModelCreationDate,
-assetModelDescription,
-assetModelExternalId,
-assetModelHierarchies,
-assetModelId,
-assetModelLastUpdateDate,
-assetModelName,
-assetModelProperties,
-assetModelStatus,
-assetModelType,
-assetModelVersion,
-eTag,
-interfaceDetails
+asset_model_arn,
+asset_model_composite_model_summaries,
+asset_model_composite_models,
+asset_model_creation_date,
+asset_model_description,
+asset_model_external_id,
+asset_model_hierarchies,
+asset_model_id,
+asset_model_last_update_date,
+asset_model_name,
+asset_model_properties,
+asset_model_status,
+asset_model_type,
+asset_model_version,
+e_tag,
+interface_details
 FROM aws.iotsitewise.asset_models
 WHERE asset_model_id = '{{ asset_model_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -371,11 +371,11 @@ SELECT
 id,
 name,
 arn,
-assetModelType,
-creationDate,
+asset_model_type,
+creation_date,
 description,
-externalId,
-lastUpdateDate,
+external_id,
+last_update_date,
 status,
 version
 FROM aws.iotsitewise.asset_models
@@ -430,9 +430,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-assetModelArn,
-assetModelId,
-assetModelStatus
+asset_model_arn,
+asset_model_id,
+asset_model_status
 ;
 ```
 </TabItem>
@@ -550,7 +550,7 @@ AND `If-Match` = '{{ If-Match}}'
 AND `If-None-Match` = '{{ If-None-Match}}'
 AND `Match-For-Version-Type` = '{{ Match-For-Version-Type}}'
 RETURNING
-assetModelStatus;
+asset_model_status;
 ```
 </TabItem>
 </Tabs>

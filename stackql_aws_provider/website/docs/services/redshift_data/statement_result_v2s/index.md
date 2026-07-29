@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CSVRecords" /></td>
+    <td><CopyableCode code="csv_records" /></td>
     <td><code>string</code></td>
     <td>The results of the SQL statement in CSV format.</td>
 </tr>
@@ -119,7 +119,7 @@ Fetches the temporarily cached result of an SQL statement in CSV format. The Exe
 
 ```sql
 SELECT
-CSVRecords
+csv_records
 FROM aws.redshift_data.statement_result_v2s
 WHERE region = '{{ region }}' -- required
 ;

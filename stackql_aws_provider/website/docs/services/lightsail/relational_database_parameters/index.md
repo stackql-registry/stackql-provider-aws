@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="allowedValues" /></td>
+    <td><CopyableCode code="allowed_values" /></td>
     <td><code>string</code></td>
     <td>Specifies the valid range of values for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applyMethod" /></td>
+    <td><CopyableCode code="apply_method" /></td>
     <td><code>string</code></td>
     <td>Indicates when parameter updates are applied. Can be immediate or pending-reboot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applyType" /></td>
+    <td><CopyableCode code="apply_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the engine-specific parameter type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the valid data type for the parameter.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
     <td>Provides a description of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isModifiable" /></td>
+    <td><CopyableCode code="is_modifiable" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the parameter can be modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterName" /></td>
+    <td><CopyableCode code="parameter_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterValue" /></td>
+    <td><CopyableCode code="parameter_value" /></td>
     <td><code>string</code></td>
     <td>Specifies the value of the parameter.</td>
 </tr>
@@ -161,14 +161,14 @@ Returns all of the runtime parameters offered by the underlying database softwar
 
 ```sql
 SELECT
-allowedValues,
-applyMethod,
-applyType,
-dataType,
+allowed_values,
+apply_method,
+apply_type,
+data_type,
 description,
-isModifiable,
-parameterName,
-parameterValue
+is_modifiable,
+parameter_name,
+parameter_value
 FROM aws.lightsail.relational_database_parameters
 WHERE region = '{{ region }}' -- required
 ;

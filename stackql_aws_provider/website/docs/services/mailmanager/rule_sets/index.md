@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of when then rule set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationDate" /></td>
+    <td><CopyableCode code="last_modification_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of when the rule set was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetArn" /></td>
+    <td><CopyableCode code="rule_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the rule set resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetId" /></td>
+    <td><CopyableCode code="rule_set_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the rule set resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetName" /></td>
+    <td><CopyableCode code="rule_set_name" /></td>
     <td><code>string</code></td>
     <td>A user-friendly name for the rule set resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>The rules contained in the rule set.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastModificationDate" /></td>
+    <td><CopyableCode code="last_modification_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modification date of the rule set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetId" /></td>
+    <td><CopyableCode code="rule_set_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the rule set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetName" /></td>
+    <td><CopyableCode code="rule_set_name" /></td>
     <td><code>string</code></td>
     <td>A user-friendly name for the rule set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -203,12 +203,12 @@ Fetch attributes of a rule set.
 
 ```sql
 SELECT
-CreatedDate,
-LastModificationDate,
-RuleSetArn,
-RuleSetId,
-RuleSetName,
-Rules
+created_date,
+last_modification_date,
+rule_set_arn,
+rule_set_id,
+rule_set_name,
+rules
 FROM aws.mailmanager.rule_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,9 +220,9 @@ List rule sets for this account.
 
 ```sql
 SELECT
-LastModificationDate,
-RuleSetId,
-RuleSetName
+last_modification_date,
+rule_set_id,
+rule_set_name
 FROM aws.mailmanager.rule_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,7 +259,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-RuleSetId
+rule_set_id
 ;
 ```
 </TabItem>

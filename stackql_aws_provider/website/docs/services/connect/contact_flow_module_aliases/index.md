@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasDescription" /></td>
+    <td><CopyableCode code="alias_description" /></td>
     <td><code>string</code></td>
     <td>The description of the alias. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AliasId" /></td>
+    <td><CopyableCode code="alias_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AliasName" /></td>
+    <td><CopyableCode code="alias_name" /></td>
     <td><code>string</code></td>
     <td>The name of the alias. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow module alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the flow module.</td>
 </tr>
@@ -164,12 +164,12 @@ Lists all aliases associated with a contact flow module, showing their current v
 
 ```sql
 SELECT
-AliasDescription,
-AliasId,
-AliasName,
-Arn,
-LastModifiedTime,
-Version
+alias_description,
+alias_id,
+alias_name,
+arn,
+last_modified_time,
+version
 FROM aws.connect.contact_flow_module_aliases
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_flow_module_id = '{{ contact_flow_module_id }}' -- required

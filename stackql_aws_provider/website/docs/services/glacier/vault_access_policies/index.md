@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The vault access policy.</td>
 </tr>
@@ -143,7 +143,7 @@ This operation retrieves the access-policy subresource set on the vault; for mor
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.glacier.vault_access_policies
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the import's creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>The ARN of the destination event data store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndEventTime" /></td>
+    <td><CopyableCode code="end_event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Used with StartEventTime to bound a StartImport request, and limit imported trail events to only those events logged within a specified time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportId" /></td>
+    <td><CopyableCode code="import_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the import. (pattern: &lt;code&gt;^&#91;a-f0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportSource" /></td>
+    <td><CopyableCode code="import_source" /></td>
     <td><code>object</code></td>
     <td>The source S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportStatistics" /></td>
+    <td><CopyableCode code="import_statistics" /></td>
     <td><code>object</code></td>
     <td>Provides statistics for the import. CloudTrail does not update import statistics in real-time. Returned values for parameters such as EventsCompleted may be lower than the actual value, because CloudTrail updates statistics incrementally over the course of the import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportStatus" /></td>
+    <td><CopyableCode code="import_status" /></td>
     <td><code>string</code></td>
     <td>The status of the import. (INITIALIZING, IN_PROGRESS, FAILED, STOPPED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartEventTime" /></td>
+    <td><CopyableCode code="start_event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Used with EndEventTime to bound a StartImport request, and limit imported trail events to only those events logged within a specified time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the import was updated.</td>
 </tr>
@@ -110,27 +110,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the import's creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>The ARN of the destination event data store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportId" /></td>
+    <td><CopyableCode code="import_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the import. (pattern: &lt;code&gt;^&#91;a-f0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportStatus" /></td>
+    <td><CopyableCode code="import_status" /></td>
     <td><code>string</code></td>
     <td>The status of the import. (INITIALIZING, IN_PROGRESS, FAILED, STOPPED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the import's last update.</td>
 </tr>
@@ -207,15 +207,15 @@ Returns information about a specific import.
 
 ```sql
 SELECT
-CreatedTimestamp,
-Destinations,
-EndEventTime,
-ImportId,
-ImportSource,
-ImportStatistics,
-ImportStatus,
-StartEventTime,
-UpdatedTimestamp
+created_timestamp,
+destinations,
+end_event_time,
+import_id,
+import_source,
+import_statistics,
+import_status,
+start_event_time,
+updated_timestamp
 FROM aws.cloudtrail.imports
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,11 +227,11 @@ Returns information on all imports, or a select set of imports by ImportStatus o
 
 ```sql
 SELECT
-CreatedTimestamp,
-Destinations,
-ImportId,
-ImportStatus,
-UpdatedTimestamp
+created_timestamp,
+destinations,
+import_id,
+import_status,
+updated_timestamp
 FROM aws.cloudtrail.imports
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddonName" /></td>
+    <td><CopyableCode code="addon_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Add On for the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonSubscriptionArn" /></td>
+    <td><CopyableCode code="addon_subscription_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the Add On subscription was created.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddonName" /></td>
+    <td><CopyableCode code="addon_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Add On.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonSubscriptionArn" /></td>
+    <td><CopyableCode code="addon_subscription_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Add On subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonSubscriptionId" /></td>
+    <td><CopyableCode code="addon_subscription_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Add On subscription. (pattern: &lt;code&gt;as-&#91;a-zA-Z0-9&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the Add On subscription was created.</td>
 </tr>
@@ -186,9 +186,9 @@ Gets detailed information about an Add On subscription.
 
 ```sql
 SELECT
-AddonName,
-AddonSubscriptionArn,
-CreatedTimestamp
+addon_name,
+addon_subscription_arn,
+created_timestamp
 FROM aws.mailmanager.addon_subscriptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -200,10 +200,10 @@ Lists all Add On subscriptions in your account.
 
 ```sql
 SELECT
-AddonName,
-AddonSubscriptionArn,
-AddonSubscriptionId,
-CreatedTimestamp
+addon_name,
+addon_subscription_arn,
+addon_subscription_id,
+created_timestamp
 FROM aws.mailmanager.addon_subscriptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,7 +238,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AddonSubscriptionId
+addon_subscription_id
 ;
 ```
 </TabItem>

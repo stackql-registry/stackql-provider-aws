@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeId" /></td>
+    <td><CopyableCode code="attribute_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the attribute within the data table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTableArn" /></td>
+    <td><CopyableCode code="data_table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data table that contains this attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTableId" /></td>
+    <td><CopyableCode code="data_table_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data table that contains this attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description explaining the purpose and usage of this attribute. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this attribute was last modified, used for region replication. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this attribute was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockVersion" /></td>
+    <td><CopyableCode code="lock_version" /></td>
     <td><code>object</code></td>
     <td>The lock version for this attribute, used for optimistic locking to prevent concurrent modification conflicts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the attribute. Must be unique within the data table and conform to Connect naming standards. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Primary" /></td>
+    <td><CopyableCode code="primary" /></td>
     <td><code>boolean</code></td>
     <td>Boolean indicating whether this attribute is used as a primary key for record identification. Primary attributes must have unique value combinations and cannot contain expressions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Validation" /></td>
+    <td><CopyableCode code="validation" /></td>
     <td><code>object</code></td>
     <td>Defines validation rules for data table attribute values. Based on JSON Schema Draft 2020-12 with additional Connect-specific validations. Validation rules ensure data integrity and consistency across the data table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueType" /></td>
+    <td><CopyableCode code="value_type" /></td>
     <td><code>string</code></td>
     <td>The type of value allowed for this attribute. Must be one of TEXT, TEXT_LIST, NUMBER, NUMBER_LIST, or BOOLEAN. Determines how values are validated and processed. (TEXT, NUMBER, BOOLEAN, TEXT_LIST, NUMBER_LIST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version identifier for this attribute, used for versioning and change tracking.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeId" /></td>
+    <td><CopyableCode code="attribute_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the attribute within the data table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTableArn" /></td>
+    <td><CopyableCode code="data_table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data table that contains this attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTableId" /></td>
+    <td><CopyableCode code="data_table_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data table that contains this attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description explaining the purpose and usage of this attribute. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this attribute was last modified, used for region replication. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this attribute was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockVersion" /></td>
+    <td><CopyableCode code="lock_version" /></td>
     <td><code>object</code></td>
     <td>The lock version for this attribute, used for optimistic locking to prevent concurrent modification conflicts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the attribute. Must be unique within the data table and conform to Connect naming standards. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Primary" /></td>
+    <td><CopyableCode code="primary" /></td>
     <td><code>boolean</code></td>
     <td>Boolean indicating whether this attribute is used as a primary key for record identification. Primary attributes must have unique value combinations and cannot contain expressions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Validation" /></td>
+    <td><CopyableCode code="validation" /></td>
     <td><code>object</code></td>
     <td>Defines validation rules for data table attribute values. Based on JSON Schema Draft 2020-12 with additional Connect-specific validations. Validation rules ensure data integrity and consistency across the data table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueType" /></td>
+    <td><CopyableCode code="value_type" /></td>
     <td><code>string</code></td>
     <td>The type of value allowed for this attribute. Must be one of TEXT, TEXT_LIST, NUMBER, NUMBER_LIST, or BOOLEAN. Determines how values are validated and processed. (TEXT, NUMBER, BOOLEAN, TEXT_LIST, NUMBER_LIST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version identifier for this attribute, used for versioning and change tracking.</td>
 </tr>
@@ -303,18 +303,18 @@ Returns detailed information for a specific data table attribute including its c
 
 ```sql
 SELECT
-AttributeId,
-DataTableArn,
-DataTableId,
-Description,
-LastModifiedRegion,
-LastModifiedTime,
-LockVersion,
-Name,
-Primary,
-Validation,
-ValueType,
-Version
+attribute_id,
+data_table_arn,
+data_table_id,
+description,
+last_modified_region,
+last_modified_time,
+lock_version,
+name,
+primary,
+validation,
+value_type,
+version
 FROM aws.connect.data_table_attributes
 WHERE instance_id = '{{ instance_id }}' -- required
 AND data_table_id = '{{ data_table_id }}' -- required
@@ -329,18 +329,18 @@ Returns all attributes for a specified data table. A maximum of 100 attributes p
 
 ```sql
 SELECT
-AttributeId,
-DataTableArn,
-DataTableId,
-Description,
-LastModifiedRegion,
-LastModifiedTime,
-LockVersion,
-Name,
-Primary,
-Validation,
-ValueType,
-Version
+attribute_id,
+data_table_arn,
+data_table_id,
+description,
+last_modified_region,
+last_modified_time,
+lock_version,
+name,
+primary,
+validation,
+value_type,
+version
 FROM aws.connect.data_table_attributes
 WHERE instance_id = '{{ instance_id }}' -- required
 AND data_table_id = '{{ data_table_id }}' -- required
@@ -387,9 +387,9 @@ SELECT
 '{{ data_table_id }}',
 '{{ region }}'
 RETURNING
-AttributeId,
-LockVersion,
-Name
+attribute_id,
+lock_version,
+name
 ;
 ```
 </TabItem>
@@ -467,8 +467,8 @@ AND attribute_name = '{{ attribute_name }}' --required
 AND region = '{{ region }}' --required
 AND ValueType = '{{ ValueType }}' --required
 RETURNING
-LockVersion,
-Name;
+lock_version,
+name;
 ```
 </TabItem>
 </Tabs>

@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the opportunity. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>Specifies the catalog associated with the request. This field takes a string value from a predefined list: AWS or Sandbox. The catalog determines which environment the opportunity information is retrieved from. Use AWS to retrieve opportunities in the Amazon Web Services catalog, and Sandbox to retrieve opportunities in a secure and isolated testing environment. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>DateTime when the Opportunity was last created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Customer" /></td>
+    <td><CopyableCode code="customer" /></td>
     <td><code>object</code></td>
     <td>Specifies details of the customer associated with the Opportunity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Read-only, system generated Opportunity unique identifier. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>DateTime when the opportunity was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycle" /></td>
+    <td><CopyableCode code="life_cycle" /></td>
     <td><code>object</code></td>
     <td>An object that contains lifecycle details for the Opportunity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marketing" /></td>
+    <td><CopyableCode code="marketing" /></td>
     <td><code>object</code></td>
     <td>An object that contains marketing details for the Opportunity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NationalSecurity" /></td>
+    <td><CopyableCode code="national_security" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the Opportunity pertains to a national security project. This field must be set to true only when the customer's industry is Government. Additional privacy and security measures apply during the review and management process for opportunities marked as NationalSecurity. (Yes, No)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpportunityTeam" /></td>
+    <td><CopyableCode code="opportunity_team" /></td>
     <td><code>array</code></td>
     <td>Represents the internal team handling the opportunity. Specify the members involved in collaborating on this opportunity within the partner's organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpportunityType" /></td>
+    <td><CopyableCode code="opportunity_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the opportunity type as renewal, new, or expansion. Opportunity types: New opportunity: Represents a new business opportunity with a potential customer that's not previously engaged with your solutions or services. Renewal opportunity: Represents an opportunity to renew an existing contract or subscription with a current customer, which helps to ensure service continuity. Expansion opportunity: Represents an opportunity to expand the scope of a customer's contract or subscription, either by adding new services or increasing the volume of existing services. (Net New Business, Flat Renewal, Expansion)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartnerOpportunityIdentifier" /></td>
+    <td><CopyableCode code="partner_opportunity_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the opportunity's unique identifier in the partner's CRM system. This value is essential to track and reconcile because it's included in the outbound payload sent back to the partner. (pattern: &lt;code&gt;(?s).&#123;0,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryNeedsFromAws" /></td>
+    <td><CopyableCode code="primary_needs_from_aws" /></td>
     <td><code>array</code></td>
     <td>Identifies the type of support the partner needs from Amazon Web Services. Valid values: Cosell—Architectural Validation: Confirmation from Amazon Web Services that the partner's proposed solution architecture is aligned with Amazon Web Services best practices and poses minimal architectural risks. Cosell—Business Presentation: Request Amazon Web Services seller's participation in a joint customer presentation. Cosell—Competitive Information: Access to Amazon Web Services competitive resources and support for the partner's proposed solution. Cosell—Pricing Assistance: Connect with an Amazon Web Services seller for support situations where a partner may be receiving an upfront discount on a service (for example: EDP deals). Cosell—Technical Consultation: Connect with an Amazon Web Services Solutions Architect to address the partner's questions about the proposed solution. Cosell—Total Cost of Ownership Evaluation: Assistance with quoting different cost savings of proposed solutions on Amazon Web Services versus on-premises or a traditional hosting environment. Cosell—Deal Support: Request Amazon Web Services seller's support to progress the opportunity (for example: joint customer call, strategic positioning). Cosell—Support for Public Tender/RFx: Opportunity related to the public sector where the partner needs Amazon Web Services RFx support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Project" /></td>
+    <td><CopyableCode code="project" /></td>
     <td><code>object</code></td>
     <td>An object that contains project details summary for the Opportunity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedEntityIdentifiers" /></td>
+    <td><CopyableCode code="related_entity_identifiers" /></td>
     <td><code>object</code></td>
     <td>Provides information about the associations of other entities with the opportunity. These entities include identifiers for AWSProducts, Partner Solutions, and AWSMarketplaceOffers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareRevenue" /></td>
+    <td><CopyableCode code="software_revenue" /></td>
     <td><code>object</code></td>
     <td>Specifies details of a customer's procurement terms. Required only for partners in eligible programs.</td>
 </tr>
@@ -145,52 +145,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the opportunity. This globally unique identifier can be used for IAM policies and cross-service references. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>Specifies the catalog associated with the opportunity, either AWS or Sandbox. This indicates the environment in which the opportunity is managed. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>DateTime when the Opportunity was last created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Customer" /></td>
+    <td><CopyableCode code="customer" /></td>
     <td><code>object</code></td>
     <td>An object that contains the Opportunity's customer details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Read-only, system-generated Opportunity unique identifier. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>DateTime when the Opportunity was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycle" /></td>
+    <td><CopyableCode code="life_cycle" /></td>
     <td><code>object</code></td>
     <td>An object that contains the Opportunity's lifecycle details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpportunityType" /></td>
+    <td><CopyableCode code="opportunity_type" /></td>
     <td><code>string</code></td>
     <td>Specifies opportunity type as a renewal, new, or expansion. Opportunity types: New Opportunity: Represents a new business opportunity with a potential customer that's not previously engaged with your solutions or services. Renewal Opportunity: Represents an opportunity to renew an existing contract or subscription with a current customer, ensuring continuity of service. Expansion Opportunity: Represents an opportunity to expand the scope of an existing contract or subscription, either by adding new services or increasing the volume of existing services for a current customer. (Net New Business, Flat Renewal, Expansion)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartnerOpportunityIdentifier" /></td>
+    <td><CopyableCode code="partner_opportunity_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the Opportunity's unique identifier in the partner's CRM system. This value is essential to track and reconcile because it's included in the outbound payload sent back to the partner. It allows partners to link an opportunity to their CRM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Project" /></td>
+    <td><CopyableCode code="project" /></td>
     <td><code>object</code></td>
     <td>An object that contains the Opportunity's project details summary.</td>
 </tr>
@@ -309,22 +309,22 @@ Fetches the Opportunity record from Partner Central by a given Identifier. Use t
 
 ```sql
 SELECT
-Arn,
-Catalog,
-CreatedDate,
-Customer,
-Id,
-LastModifiedDate,
-LifeCycle,
-Marketing,
-NationalSecurity,
-OpportunityTeam,
-OpportunityType,
-PartnerOpportunityIdentifier,
-PrimaryNeedsFromAws,
-Project,
-RelatedEntityIdentifiers,
-SoftwareRevenue
+arn,
+catalog,
+created_date,
+customer,
+id,
+last_modified_date,
+life_cycle,
+marketing,
+national_security,
+opportunity_team,
+opportunity_type,
+partner_opportunity_identifier,
+primary_needs_from_aws,
+project,
+related_entity_identifiers,
+software_revenue
 FROM aws.partnercentral_selling.opportunities
 WHERE region = '{{ region }}' -- required
 ;
@@ -336,16 +336,16 @@ This request accepts a list of filters that retrieve opportunity subsets as well
 
 ```sql
 SELECT
-Arn,
-Catalog,
-CreatedDate,
-Customer,
-Id,
-LastModifiedDate,
-LifeCycle,
-OpportunityType,
-PartnerOpportunityIdentifier,
-Project
+arn,
+catalog,
+created_date,
+customer,
+id,
+last_modified_date,
+life_cycle,
+opportunity_type,
+partner_opportunity_identifier,
+project
 FROM aws.partnercentral_selling.opportunities
 WHERE region = '{{ region }}' -- required
 ;
@@ -402,9 +402,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Id,
-LastModifiedDate,
-PartnerOpportunityIdentifier
+id,
+last_modified_date,
+partner_opportunity_identifier
 ;
 ```
 </TabItem>
@@ -623,8 +623,8 @@ region = '{{ region }}' --required
 AND LastModifiedDate = '{{ LastModifiedDate }}' --required
 AND Identifier = '{{ Identifier }}' --required
 RETURNING
-Id,
-LastModifiedDate;
+id,
+last_modified_date;
 ```
 </TabItem>
 </Tabs>

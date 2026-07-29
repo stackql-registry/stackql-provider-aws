@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>A summary of the status of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The task identifier. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -148,7 +148,7 @@ Gets the status of a data set import task initiated with the CreateDataSetImport
 SELECT
 status,
 summary,
-taskId
+task_id
 FROM aws.m2.data_set_import_tasks
 WHERE application_id = '{{ application_id }}' -- required
 AND task_id = '{{ task_id }}' -- required
@@ -185,7 +185,7 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-taskId
+task_id
 ;
 ```
 </TabItem>

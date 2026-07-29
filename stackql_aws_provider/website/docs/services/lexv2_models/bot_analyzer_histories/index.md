@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botAnalyzerRequestId" /></td>
+    <td><CopyableCode code="bot_analyzer_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the analysis request. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAnalyzerStatus" /></td>
+    <td><CopyableCode code="bot_analyzer_status" /></td>
     <td><code>string</code></td>
     <td>The status of the historical analysis execution. Valid Values: Processing | Available | Failed | Stopping | Stopped (Processing, Available, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the analysis was initiated.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves a list of historical bot analysis executions for a specific bot. You c
 
 ```sql
 SELECT
-botAnalyzerRequestId,
-botAnalyzerStatus,
-creationDateTime
+bot_analyzer_request_id,
+bot_analyzer_status,
+creation_date_time
 FROM aws.lexv2_models.bot_analyzer_histories
 WHERE bot_id = '{{ bot_id }}' -- required
 AND region = '{{ region }}' -- required

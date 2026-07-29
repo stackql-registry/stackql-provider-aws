@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PendingMaintenanceActionDetails" /></td>
+    <td><CopyableCode code="pending_maintenance_action_details" /></td>
     <td><code>string</code></td>
     <td>A list that provides details about the pending maintenance actions for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource that has pending maintenance actions.</td>
 </tr>
@@ -144,8 +144,8 @@ Returns a list of resources (for example, DB instances) that have at least one p
 
 ```sql
 SELECT
-PendingMaintenanceActionDetails,
-ResourceIdentifier
+pending_maintenance_action_details,
+resource_identifier
 FROM aws.rds.pending_maintenance_actions
 WHERE region = '{{ region }}' -- required
 AND ResourceIdentifier = '{{ ResourceIdentifier }}'

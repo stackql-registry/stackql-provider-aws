@@ -109,7 +109,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MediaStreamPipeline
+media_stream_pipeline
 ;
 ```
 </TabItem>

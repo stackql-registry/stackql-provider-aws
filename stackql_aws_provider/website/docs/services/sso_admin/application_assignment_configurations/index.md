@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssignmentRequired" /></td>
+    <td><CopyableCode code="assignment_required" /></td>
     <td><code>boolean</code></td>
     <td>If AssignmentsRequired is true (default value), users don’t have access to the application unless an assignment is created using the CreateApplicationAssignment API. If false, all users have access to the application.</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves the configuration of PutApplicationAssignmentConfiguration.
 
 ```sql
 SELECT
-AssignmentRequired
+assignment_required
 FROM aws.sso_admin.application_assignment_configurations
 WHERE region = '{{ region }}' -- required
 ;

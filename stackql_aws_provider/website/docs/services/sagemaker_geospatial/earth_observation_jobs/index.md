@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Earth Observation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the initiated Earth Observation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationInSeconds" /></td>
+    <td><CopyableCode code="duration_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The duration of Earth Observation job, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>object</code></td>
     <td>Details about the errors generated during the Earth Observation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that you specified for the job. (pattern: &lt;code&gt;^arn:(aws&#91;a-z-&#93;*):iam::(&#91;0-9&#93;&#123;12&#125;):role/&#91;a-zA-Z0-9+=,.@_/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportErrorDetails" /></td>
+    <td><CopyableCode code="export_error_details" /></td>
     <td><code>object</code></td>
     <td>Details about the errors generated during ExportEarthObservationJob.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportStatus" /></td>
+    <td><CopyableCode code="export_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Earth Observation job. (IN_PROGRESS, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputConfig" /></td>
+    <td><CopyableCode code="input_config" /></td>
     <td><code>object</code></td>
     <td>Input data for the Earth Observation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobConfig" /></td>
+    <td><CopyableCode code="job_config" /></td>
     <td><code>object</code></td>
     <td>An object containing information about the job configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Key Management Service key ID for server-side encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Earth Observation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputBands" /></td>
+    <td><CopyableCode code="output_bands" /></td>
     <td><code>array</code></td>
     <td>Bands available in the output of an operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a previously initiated Earth Observation job. (INITIALIZING, IN_PROGRESS, STOPPING, COMPLETED, STOPPED, FAILED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Each tag consists of a key and a value.</td>
 </tr>
@@ -135,37 +135,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the list of the Earth Observation jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationInSeconds" /></td>
+    <td><CopyableCode code="duration_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The duration of the session, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The names of the Earth Observation jobs in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The operation type for an Earth Observation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the list of the Earth Observation jobs. (INITIALIZING, IN_PROGRESS, STOPPING, COMPLETED, STOPPED, FAILED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Each tag consists of a key and a value.</td>
 </tr>
@@ -254,20 +254,20 @@ Get the details for a previously initiated Earth Observation job.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-DurationInSeconds,
-ErrorDetails,
-ExecutionRoleArn,
-ExportErrorDetails,
-ExportStatus,
-InputConfig,
-JobConfig,
-KmsKeyId,
-Name,
-OutputBands,
-Status,
-Tags
+arn,
+creation_time,
+duration_in_seconds,
+error_details,
+execution_role_arn,
+export_error_details,
+export_status,
+input_config,
+job_config,
+kms_key_id,
+name,
+output_bands,
+status,
+tags
 FROM aws.sagemaker_geospatial.earth_observation_jobs
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -280,13 +280,13 @@ Use this operation to get a list of the Earth Observation jobs associated with t
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-DurationInSeconds,
-Name,
-OperationType,
-Status,
-Tags
+arn,
+creation_time,
+duration_in_seconds,
+name,
+operation_type,
+status,
+tags
 FROM aws.sagemaker_geospatial.earth_observation_jobs
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID where the mount target is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file system. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;|fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv4Address" /></td>
+    <td><CopyableCode code="ipv_4_address" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address of the mount target. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv6Address" /></td>
+    <td><CopyableCode code="ipv_6_address" /></td>
     <td><code>string</code></td>
     <td>The IPv6 address of the mount target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mountTargetId" /></td>
+    <td><CopyableCode code="mount_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the mount target. (pattern: &lt;code&gt;fsmt-&#91;0-9a-f&#93;&#123;17,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface associated with the mount target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the mount target owner. (pattern: &lt;code&gt;(\d&#123;12&#125;)|(\d&#123;4&#125;-&#123;4&#125;-\d&#123;4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>The security groups associated with the mount target.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the mount target. (available, creating, deleting, deleted, error, updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the mount target status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet where the mount target is located. (pattern: &lt;code&gt;subnet-&#91;0-9a-f&#93;&#123;8,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC where the mount target is located.</td>
 </tr>
@@ -125,37 +125,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID where the mount target is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the S3 File System. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;|fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv4Address" /></td>
+    <td><CopyableCode code="ipv_4_address" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address of the mount target. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv6Address" /></td>
+    <td><CopyableCode code="ipv_6_address" /></td>
     <td><code>string</code></td>
     <td>The IPv6 address of the mount target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mountTargetId" /></td>
+    <td><CopyableCode code="mount_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the mount target. (pattern: &lt;code&gt;fsmt-&#91;0-9a-f&#93;&#123;17,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface associated with the mount target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the mount target owner. (pattern: &lt;code&gt;(\d&#123;12&#125;)|(\d&#123;4&#125;-&#123;4&#125;-\d&#123;4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -165,17 +165,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the mount target. (available, creating, deleting, deleted, error, updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the mount target status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet where the mount target is located. (pattern: &lt;code&gt;subnet-&#91;0-9a-f&#93;&#123;8,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC where the mount target is located.</td>
 </tr>
@@ -298,18 +298,18 @@ Returns detailed resource information for the specified mount target including n
 
 ```sql
 SELECT
-availabilityZoneId,
-fileSystemId,
-ipv4Address,
-ipv6Address,
-mountTargetId,
-networkInterfaceId,
-ownerId,
-securityGroups,
+availability_zone_id,
+file_system_id,
+ipv_4_address,
+ipv_6_address,
+mount_target_id,
+network_interface_id,
+owner_id,
+security_groups,
 status,
-statusMessage,
-subnetId,
-vpcId
+status_message,
+subnet_id,
+vpc_id
 FROM aws.s3files.mount_targets
 WHERE mount_target_id = '{{ mount_target_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -322,17 +322,17 @@ Returns resource information for all mount targets with optional filtering by fi
 
 ```sql
 SELECT
-availabilityZoneId,
-fileSystemId,
-ipv4Address,
-ipv6Address,
-mountTargetId,
-networkInterfaceId,
-ownerId,
+availability_zone_id,
+file_system_id,
+ipv_4_address,
+ipv_6_address,
+mount_target_id,
+network_interface_id,
+owner_id,
 status,
-statusMessage,
-subnetId,
-vpcId
+status_message,
+subnet_id,
+vpc_id
 FROM aws.s3files.mount_targets
 WHERE region = '{{ region }}' -- required
 AND fileSystemId = '{{ fileSystemId }}'
@@ -377,18 +377,18 @@ SELECT
 '{{ securityGroups }}',
 '{{ region }}'
 RETURNING
-availabilityZoneId,
-fileSystemId,
-ipv4Address,
-ipv6Address,
-mountTargetId,
-networkInterfaceId,
-ownerId,
-securityGroups,
+availability_zone_id,
+file_system_id,
+ipv_4_address,
+ipv_6_address,
+mount_target_id,
+network_interface_id,
+owner_id,
+security_groups,
 status,
-statusMessage,
-subnetId,
-vpcId
+status_message,
+subnet_id,
+vpc_id
 ;
 ```
 </TabItem>
@@ -441,18 +441,18 @@ mount_target_id = '{{ mount_target_id }}' --required
 AND region = '{{ region }}' --required
 AND securityGroups = '{{ securityGroups }}' --required
 RETURNING
-availabilityZoneId,
-fileSystemId,
-ipv4Address,
-ipv6Address,
-mountTargetId,
-networkInterfaceId,
-ownerId,
-securityGroups,
+availability_zone_id,
+file_system_id,
+ipv_4_address,
+ipv_6_address,
+mount_target_id,
+network_interface_id,
+owner_id,
+security_groups,
 status,
-statusMessage,
-subnetId,
-vpcId;
+status_message,
+subnet_id,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

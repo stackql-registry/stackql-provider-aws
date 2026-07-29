@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Firewall" /></td>
+    <td><CopyableCode code="firewall" /></td>
     <td><code>object</code></td>
     <td>A firewall defines the behavior of a firewall, the main VPC where the firewall is used, the Availability Zones where the firewall can be used, and one subnet to use for a firewall endpoint within each of the Availability Zones. The Availability Zones are defined implicitly in the subnet specifications. In addition to the firewall endpoints that you define in this Firewall specification, you can create firewall endpoints in VpcEndpointAssociation resources for any VPC, in any Availability Zone where the firewall is already in use. The status of the firewall, for example whether it's ready to filter network traffic, is provided in the corresponding FirewallStatus. You can retrieve both the firewall and firewall status by calling DescribeFirewall.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallStatus" /></td>
+    <td><CopyableCode code="firewall_status" /></td>
     <td><code>object</code></td>
     <td>Detailed information about the current status of a Firewall. You can retrieve this for a firewall by calling DescribeFirewall and providing the firewall name and ARN. The firewall status indicates a combined status. It indicates whether all subnets are up-to-date with the latest firewall configurations, which is based on the sync states config values, and also whether all subnets have their endpoints fully enabled, based on their sync states attachment values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateToken" /></td>
+    <td><CopyableCode code="update_token" /></td>
     <td><code>string</code></td>
     <td>An optional token that you can use for optimistic locking. Network Firewall returns a token to your requests that access the firewall. The token marks the state of the firewall resource at the time of the request. To make an unconditional change to the firewall, omit the token in your update request. Without the token, Network Firewall performs your updates regardless of whether the firewall has changed since you last retrieved it. To make a conditional change to the firewall, provide the token in your update request. Network Firewall uses the token to ensure that the firewall hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FirewallArn" /></td>
+    <td><CopyableCode code="firewall_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallName" /></td>
+    <td><CopyableCode code="firewall_name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the firewall. You can't change the name of a firewall after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the transit gateway attachment associated with this firewall. This field is only present for transit gateway-attached firewalls. (pattern: &lt;code&gt;^tgw-attach-&#91;0-9a-z&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -223,9 +223,9 @@ Returns the data objects for the specified firewall.
 
 ```sql
 SELECT
-Firewall,
-FirewallStatus,
-UpdateToken
+firewall,
+firewall_status,
+update_token
 FROM aws.network_firewall.firewalls
 WHERE region = '{{ region }}' -- required
 ;
@@ -237,9 +237,9 @@ Retrieves the metadata for the firewalls that you have defined. If you provide V
 
 ```sql
 SELECT
-FirewallArn,
-FirewallName,
-TransitGatewayAttachmentId
+firewall_arn,
+firewall_name,
+transit_gateway_attachment_id
 FROM aws.network_firewall.firewalls
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,8 +296,8 @@ SELECT
 {{ AvailabilityZoneChangeProtection }},
 '{{ region }}'
 RETURNING
-Firewall,
-FirewallStatus
+firewall,
+firewall_status
 ;
 ```
 </TabItem>
@@ -403,10 +403,10 @@ WHERE
 region = '{{ region }}' --required
 AND DeleteProtection = {{ DeleteProtection }} --required
 RETURNING
-DeleteProtection,
-FirewallArn,
-FirewallName,
-UpdateToken;
+delete_protection,
+firewall_arn,
+firewall_name,
+update_token;
 ```
 </TabItem>
 <TabItem value="update_firewall_analysis_settings">
@@ -423,10 +423,10 @@ UpdateToken = '{{ UpdateToken }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-EnabledAnalysisTypes,
-FirewallArn,
-FirewallName,
-UpdateToken;
+enabled_analysis_types,
+firewall_arn,
+firewall_name,
+update_token;
 ```
 </TabItem>
 </Tabs>

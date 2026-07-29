@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Args" /></td>
+    <td><CopyableCode code="args" /></td>
     <td><code>array</code></td>
     <td>Arguments for Amazon EMR to pass to the command for execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScriptPath" /></td>
+    <td><CopyableCode code="script_path" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 location of the command script.</td>
 </tr>
@@ -129,9 +129,9 @@ Provides information about the bootstrap actions associated with a cluster.
 
 ```sql
 SELECT
-Args,
-Name,
-ScriptPath
+args,
+name,
+script_path
 FROM aws.emr.bootstrap_actions
 WHERE region = '{{ region }}' -- required
 ;

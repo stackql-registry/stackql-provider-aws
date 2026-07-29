@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the resource.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists tags for a resource. Tagging is currently supported for detectors, finding
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.guardduty.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

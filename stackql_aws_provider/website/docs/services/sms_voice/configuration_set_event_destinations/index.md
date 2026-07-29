@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventDestinations" /></td>
+    <td><CopyableCode code="event_destinations" /></td>
     <td><code>array</code></td>
     <td>An array of EventDestination objects. Each EventDestination object includes ARNs and other information that define an event destination.</td>
 </tr>
@@ -150,7 +150,7 @@ Obtain information about an event destination, including the types of events it 
 
 ```sql
 SELECT
-EventDestinations
+event_destinations
 FROM aws.sms_voice.configuration_set_event_destinations
 WHERE configuration_set_name = '{{ configuration_set_name }}' -- required
 AND region = '{{ region }}' -- required

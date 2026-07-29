@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that shows when the dashboard was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardArn" /></td>
+    <td><CopyableCode code="dashboard_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the dashboard. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRefreshFailureReason" /></td>
+    <td><CopyableCode code="last_refresh_failure_reason" /></td>
     <td><code>string</code></td>
     <td>Provides information about failures for the last scheduled refresh. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRefreshId" /></td>
+    <td><CopyableCode code="last_refresh_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last dashboard refresh. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshSchedule" /></td>
+    <td><CopyableCode code="refresh_schedule" /></td>
     <td><code>object</code></td>
     <td>The refresh schedule for the dashboard, if configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the dashboard. (CREATING, CREATED, UPDATING, UPDATED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminationProtectionEnabled" /></td>
+    <td><CopyableCode code="termination_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether termination protection is enabled for the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of dashboard. (MANAGED, CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that shows when the dashboard was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Widgets" /></td>
+    <td><CopyableCode code="widgets" /></td>
     <td><code>array</code></td>
     <td>An array of widgets for the dashboard.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Dashboards" /></td>
+    <td><CopyableCode code="dashboards" /></td>
     <td><code>array</code></td>
     <td>Contains information about dashboards in the account, in the current Region that match the applied filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token you can use to get the next page of dashboard results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -225,16 +225,16 @@ Returns the specified dashboard.
 
 ```sql
 SELECT
-CreatedTimestamp,
-DashboardArn,
-LastRefreshFailureReason,
-LastRefreshId,
-RefreshSchedule,
-Status,
-TerminationProtectionEnabled,
-Type,
-UpdatedTimestamp,
-Widgets
+created_timestamp,
+dashboard_arn,
+last_refresh_failure_reason,
+last_refresh_id,
+refresh_schedule,
+status,
+termination_protection_enabled,
+type,
+updated_timestamp,
+widgets
 FROM aws.cloudtrail.dashboards
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,8 +246,8 @@ Returns information about all dashboards in the account, in the current Region.
 
 ```sql
 SELECT
-Dashboards,
-NextToken
+dashboards,
+next_token
 FROM aws.cloudtrail.dashboards
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,13 +286,13 @@ SELECT
 '{{ Widgets }}',
 '{{ region }}'
 RETURNING
-DashboardArn,
-Name,
-RefreshSchedule,
-TagsList,
-TerminationProtectionEnabled,
-Type,
-Widgets
+dashboard_arn,
+name,
+refresh_schedule,
+tags_list,
+termination_protection_enabled,
+type,
+widgets
 ;
 ```
 </TabItem>
@@ -363,14 +363,14 @@ WHERE
 region = '{{ region }}' --required
 AND DashboardId = '{{ DashboardId }}' --required
 RETURNING
-CreatedTimestamp,
-DashboardArn,
-Name,
-RefreshSchedule,
-TerminationProtectionEnabled,
-Type,
-UpdatedTimestamp,
-Widgets;
+created_timestamp,
+dashboard_arn,
+name,
+refresh_schedule,
+termination_protection_enabled,
+type,
+updated_timestamp,
+widgets;
 ```
 </TabItem>
 </Tabs>

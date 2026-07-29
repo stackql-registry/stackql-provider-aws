@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="fileSize" /></td>
+    <td><CopyableCode code="file_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the media file, in KB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mimeType" /></td>
+    <td><CopyableCode code="mime_type" /></td>
     <td><code>string</code></td>
     <td>The MIME type of the media.</td>
 </tr>
@@ -141,8 +141,8 @@ Get a media file from the WhatsApp service. On successful completion the media f
 
 ```sql
 SELECT
-fileSize,
-mimeType
+file_size,
+mime_type
 FROM aws.socialmessaging.whats_app_message_medias
 WHERE region = '{{ region }}' -- required
 ;

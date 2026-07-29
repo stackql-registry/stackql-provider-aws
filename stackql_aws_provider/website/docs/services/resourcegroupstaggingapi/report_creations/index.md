@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Details of the common errors that all operations return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Location" /></td>
+    <td><CopyableCode code="s3_location" /></td>
     <td><code>string</code></td>
     <td>The path to the Amazon S3 bucket where the report was stored on creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Reports the status of the operation. The operation status can be one of the following: RUNNING - Report creation is in progress. SUCCEEDED - Report creation is complete. You can open the report from the Amazon S3 bucket that you specified when you ran StartReportCreation. FAILED - Report creation timed out or the Amazon S3 bucket is not accessible. NO REPORT - No report was generated in the last 90 days.</td>
 </tr>
@@ -129,9 +129,9 @@ Describes the status of the StartReportCreation operation. You can call this ope
 
 ```sql
 SELECT
-ErrorMessage,
-S3Location,
-Status
+error_message,
+s3_location,
+status
 FROM aws.resourcegroupstaggingapi.report_creations
 WHERE region = '{{ region }}' -- required
 ;

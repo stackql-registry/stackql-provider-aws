@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuditImages" /></td>
+    <td><CopyableCode code="audit_images" /></td>
     <td><code>array</code></td>
     <td>A set of images from the Face Liveness video that can be used for audit purposes. It includes a bounding box of the face and the Base64-encoded bytes that return an image. If the CreateFaceLivenessSession request included an OutputConfig argument, the image will be uploaded to an S3Object specified in the output configuration. If no Amazon S3 bucket is defined, raw bytes are sent instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Challenge" /></td>
+    <td><CopyableCode code="challenge" /></td>
     <td><code>object</code></td>
     <td>Contains information regarding the challenge type used for the Face Liveness check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Confidence" /></td>
+    <td><CopyableCode code="confidence" /></td>
     <td><code>number (float)</code></td>
     <td>Probabalistic confidence score for if the person in the given video was live, represented as a float value between 0 to 100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferenceImage" /></td>
+    <td><CopyableCode code="reference_image" /></td>
     <td><code>object</code></td>
     <td>A high-quality image from the Face Liveness video that can be used for face comparison or search. It includes a bounding box of the face and the Base64-encoded bytes that return an image. If the CreateFaceLivenessSession request included an OutputConfig argument, the image will be uploaded to an S3Object specified in the output configuration. In case the reference image is not returned, it's recommended to retry the Liveness check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The sessionId for which this request was called. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Represents a status corresponding to the state of the session. Possible statuses are: CREATED, IN_PROGRESS, SUCCEEDED, FAILED, EXPIRED. (CREATED, IN_PROGRESS, SUCCEEDED, FAILED, EXPIRED)</td>
 </tr>
@@ -144,12 +144,12 @@ Retrieves the results of a specific Face Liveness session. It requires the sessi
 
 ```sql
 SELECT
-AuditImages,
-Challenge,
-Confidence,
-ReferenceImage,
-SessionId,
-Status
+audit_images,
+challenge,
+confidence,
+reference_image,
+session_id,
+status
 FROM aws.rekognition.face_liveness_session_results
 WHERE region = '{{ region }}' -- required
 ;

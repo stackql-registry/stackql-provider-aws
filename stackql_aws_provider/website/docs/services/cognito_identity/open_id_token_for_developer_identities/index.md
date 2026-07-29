@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Token" /></td>
+    <td><CopyableCode code="token" /></td>
     <td><code>string</code></td>
     <td>An OpenID token.</td>
 </tr>
@@ -124,8 +124,8 @@ Registers (or retrieves) a Cognito IdentityId and an OpenID Connect token for a 
 
 ```sql
 SELECT
-IdentityId,
-Token
+identity_id,
+token
 FROM aws.cognito_identity.open_id_token_for_developer_identities
 WHERE region = '{{ region }}' -- required
 ;

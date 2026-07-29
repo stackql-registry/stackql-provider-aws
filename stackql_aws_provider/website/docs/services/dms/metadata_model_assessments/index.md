@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique pagination token that makes it possible to display the next page of results. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords. If Marker is returned by a previous response, there are more results available. The value of Marker is a unique pagination token for each page. To retrieve the next page, make the call again using the returned token and keeping all other arguments unchanged.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Requests" /></td>
+    <td><CopyableCode code="requests" /></td>
     <td><code>array</code></td>
     <td>A paginated list of metadata model assessments for the specified migration project.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a paginated list of metadata model assessments for your account in the c
 
 ```sql
 SELECT
-Marker,
-Requests
+marker,
+requests
 FROM aws.dms.metadata_model_assessments
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachmentArn" /></td>
+    <td><CopyableCode code="attachment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cross-account attachment that specifies the resources (endpoints or CIDR range) that can be added to accelerators and principals that have permission to add them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Cidr" /></td>
+    <td><CopyableCode code="cidr" /></td>
     <td><code>string</code></td>
     <td>An IP address range, in CIDR format, that is specified as an Amazon Web Services resource. The address must be provisioned and advertised in Global Accelerator by following the bring your own IP address (BYOIP) process for Global Accelerator. For more information, see Bring your own IP addresses (BYOIP) in the Global Accelerator Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The endpoint ID for the endpoint that is listed in a cross-account attachment and can be added to an accelerator by specified principals.</td>
 </tr>
@@ -129,9 +129,9 @@ List the cross-account resources available to work with.
 
 ```sql
 SELECT
-AttachmentArn,
-Cidr,
-EndpointId
+attachment_arn,
+cidr,
+endpoint_id
 FROM aws.globalaccelerator.cross_account_resources
 WHERE region = '{{ region }}' -- required
 ;

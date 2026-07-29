@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account for the domain conflict.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain used to find existing conflicts for domain configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource that has a domain conflict.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The CloudFront resource type that has a domain conflict.</td>
 </tr>
@@ -134,10 +134,10 @@ We recommend that you use the ListDomainConflicts API operation to check for dom
 
 ```sql
 SELECT
-AccountId,
-Domain,
-ResourceId,
-ResourceType
+account_id,
+domain,
+resource_id,
+resource_type
 FROM aws.cloudfront.domain_conflicts
 WHERE region = '{{ region }}' -- required
 ;

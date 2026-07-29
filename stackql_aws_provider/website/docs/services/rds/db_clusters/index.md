@@ -50,442 +50,442 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivityStreamKinesisStreamName" /></td>
+    <td><CopyableCode code="activity_stream_kinesis_stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Kinesis data stream used for the database activity stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamKmsKeyId" /></td>
+    <td><CopyableCode code="activity_stream_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key identifier used for encrypting messages in the database activity stream. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamMode" /></td>
+    <td><CopyableCode code="activity_stream_mode" /></td>
     <td><code>string</code></td>
     <td>The mode of the database activity stream. Database events such as a change or access generate an activity stream event. The database session can handle these events either synchronously or asynchronously.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamStatus" /></td>
+    <td><CopyableCode code="activity_stream_status" /></td>
     <td><code>string</code></td>
     <td>The status of the database activity stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>AllocatedStorage specifies the allocated storage size in gibibytes (GiB). For Aurora, AllocatedStorage can vary because Aurora DB cluster storage size adjusts as needed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedRoles" /></td>
+    <td><CopyableCode code="associated_roles" /></td>
     <td><code>string</code></td>
     <td>A list of the Amazon Web Services Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other Amazon Web Services on your behalf.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether minor version patches are applied automatically. This setting is for Aurora DB clusters and Multi-AZ DB clusters. For more information about automatic minor version upgrades, see Automatically upgrading the minor engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomaticRestartTime" /></td>
+    <td><CopyableCode code="automatic_restart_time" /></td>
     <td><code>string</code></td>
     <td>The time when a stopped DB cluster is restarted automatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>The list of Availability Zones (AZs) where instances in the DB cluster can be created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsBackupRecoveryPointArn" /></td>
+    <td><CopyableCode code="aws_backup_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BacktrackConsumedChangeRecords" /></td>
+    <td><CopyableCode code="backtrack_consumed_change_records" /></td>
     <td><code>integer</code></td>
     <td>The number of change records stored for Backtrack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BacktrackWindow" /></td>
+    <td><CopyableCode code="backtrack_window" /></td>
     <td><code>integer</code></td>
     <td>The target backtrack window, in seconds. If this value is set to 0, backtracking is disabled for the DB cluster. Otherwise, backtracking is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which automatic DB snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Capacity" /></td>
+    <td><CopyableCode code="capacity" /></td>
     <td><code>integer</code></td>
     <td>The current capacity of an Aurora Serverless v1 DB cluster. The capacity is 0 (zero) when the cluster is paused. For more information about Aurora Serverless v1, see Using Amazon Aurora Serverless v1 in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateDetails" /></td>
+    <td><CopyableCode code="certificate_details" /></td>
     <td><code>string</code></td>
     <td>The details of the DB instance’s server certificate. For more information, see Using SSL/TLS to encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CharacterSetName" /></td>
+    <td><CopyableCode code="character_set_name" /></td>
     <td><code>string</code></td>
     <td>If present, specifies the name of the character set that this cluster is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloneGroupId" /></td>
+    <td><CopyableCode code="clone_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the clone group with which the DB cluster is associated. For newly created clusters, the ID is typically null. If you clone a DB cluster when the ID is null, the operation populates the ID value for the source cluster and the clone because both clusters become part of the same clone group. Even if you delete the clone cluster, the clone group ID remains for the lifetime of the source cluster to show that it was used in a cloning operation. For PITR, the clone group ID is inherited from the source cluster. For snapshot restore operations, the clone group ID isn't inherited from the source cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the DB cluster was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterScalabilityType" /></td>
+    <td><CopyableCode code="cluster_scalability_type" /></td>
     <td><code>string</code></td>
     <td>The scalability mode of the Aurora DB cluster. When set to limitless, the cluster operates as an Aurora Limitless Database. When set to standard (the default), the cluster uses normal DB instance creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyTagsToSnapshot" /></td>
+    <td><CopyableCode code="copy_tags_to_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether tags are copied from the DB cluster to snapshots of the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CrossAccountClone" /></td>
+    <td><CopyableCode code="cross_account_clone" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster is a clone of a DB cluster owned by a different Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomEndpoints" /></td>
+    <td><CopyableCode code="custom_endpoints" /></td>
     <td><code>string</code></td>
     <td>The custom endpoints associated with the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterArn" /></td>
+    <td><CopyableCode code="db_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The user-supplied identifier for the DB cluster. This identifier is the unique key that identifies a DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterInstanceClass" /></td>
+    <td><CopyableCode code="db_cluster_instance_class" /></td>
     <td><code>string</code></td>
     <td>The name of the compute and memory capacity class of the DB instance. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterMembers" /></td>
+    <td><CopyableCode code="db_cluster_members" /></td>
     <td><code>string</code></td>
     <td>The list of DB instances that make up the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterOptionGroupMemberships" /></td>
+    <td><CopyableCode code="db_cluster_option_group_memberships" /></td>
     <td><code>string</code></td>
     <td>The list of option group memberships for this DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterParameterGroup" /></td>
+    <td><CopyableCode code="db_cluster_parameter_group" /></td>
     <td><code>string</code></td>
     <td>The name of the DB cluster parameter group for the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroup" /></td>
+    <td><CopyableCode code="db_subnet_group" /></td>
     <td><code>string</code></td>
     <td>Information about the subnet group associated with the DB cluster, including the name, description, and subnets in the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSystemId" /></td>
+    <td><CopyableCode code="db_system_id" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseInsightsMode" /></td>
+    <td><CopyableCode code="database_insights_mode" /></td>
     <td><code>string</code></td>
     <td>The mode of Database Insights that is enabled for the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the initial database that was specified for the DB cluster when it was created, if one was provided. This same name is returned for the life of the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbClusterResourceId" /></td>
+    <td><CopyableCode code="db_cluster_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region-unique, immutable identifier for the DB cluster. This identifier is found in Amazon Web Services CloudTrail log entries whenever the KMS key for the DB cluster is accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainMemberships" /></td>
+    <td><CopyableCode code="domain_memberships" /></td>
     <td><code>string</code></td>
     <td>The Active Directory Domain membership records associated with the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EarliestBacktrackTime" /></td>
+    <td><CopyableCode code="earliest_backtrack_time" /></td>
     <td><code>string</code></td>
     <td>The earliest time to which a DB cluster can be backtracked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EarliestRestorableTime" /></td>
+    <td><CopyableCode code="earliest_restorable_time" /></td>
     <td><code>string</code></td>
     <td>The earliest time to which a database can be restored with point-in-time restore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledCloudwatchLogsExports" /></td>
+    <td><CopyableCode code="enabled_cloudwatch_logs_exports" /></td>
     <td><code>string</code></td>
     <td>A list of log types that this DB cluster is configured to export to CloudWatch Logs. Log types vary by DB engine. For information about the log types for each DB engine, see Amazon RDS Database Log Files in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The connection endpoint for the primary instance of the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The database engine used for this DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineLifecycleSupport" /></td>
+    <td><CopyableCode code="engine_lifecycle_support" /></td>
     <td><code>string</code></td>
     <td>The lifecycle type for the DB cluster. For more information, see CreateDBCluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineMode" /></td>
+    <td><CopyableCode code="engine_mode" /></td>
     <td><code>string</code></td>
     <td>The DB engine mode of the DB cluster, either provisioned or serverless. For more information, see CreateDBCluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterIdentifier" /></td>
+    <td><CopyableCode code="global_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains a user-supplied global database cluster identifier. This identifier is the unique key that identifies a global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalWriteForwardingRequested" /></td>
+    <td><CopyableCode code="global_write_forwarding_requested" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether write forwarding is enabled for a secondary cluster in an Aurora global database. Because write forwarding takes time to enable, check the value of GlobalWriteForwardingStatus to confirm that the request has completed before using the write forwarding feature for this cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalWriteForwardingStatus" /></td>
+    <td><CopyableCode code="global_write_forwarding_status" /></td>
     <td><code>string</code></td>
     <td>The status of write forwarding for a secondary cluster in an Aurora global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID that Amazon Route 53 assigns when you create a hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpEndpointEnabled" /></td>
+    <td><CopyableCode code="http_endpoint_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the HTTP endpoint is enabled for an Aurora DB cluster. When enabled, the HTTP endpoint provides a connectionless web service API (RDS Data API) for running SQL queries on the DB cluster. You can also query your database from inside the RDS console with the RDS query editor. For more information, see Using RDS Data API in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IOOptimizedNextAllowedModificationTime" /></td>
+    <td><CopyableCode code="io_optimized_next_allowed_modification_time" /></td>
     <td><code>string</code></td>
     <td>The next time you can modify the DB cluster to use the aurora-iopt1 storage type. This setting is only for Aurora DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InternetAccessGatewayEnabled" /></td>
+    <td><CopyableCode code="internet_access_gateway_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster has internet-based connectivity enabled through an internet access gateway. This setting is applicable only for Aurora PostgreSQL clusters created through express configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iops" /></td>
+    <td><CopyableCode code="iops" /></td>
     <td><code>integer</code></td>
     <td>The Provisioned IOPS (I/O operations per second) value. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If StorageEncrypted is enabled, the Amazon Web Services KMS key identifier for the encrypted DB cluster. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRestorableTime" /></td>
+    <td><CopyableCode code="latest_restorable_time" /></td>
     <td><code>string</code></td>
     <td>The latest time to which a database can be restored with point-in-time restore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LimitlessDatabase" /></td>
+    <td><CopyableCode code="limitless_database" /></td>
     <td><code>string</code></td>
     <td>The details for Aurora Limitless Database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalWriteForwardingStatus" /></td>
+    <td><CopyableCode code="local_write_forwarding_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether an Aurora DB cluster has in-cluster write forwarding enabled, not enabled, requested, or is in the process of enabling it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUserSecret" /></td>
+    <td><CopyableCode code="master_user_secret" /></td>
     <td><code>string</code></td>
     <td>The secret managed by RDS in Amazon Web Services Secrets Manager for the master user password. For more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS User Guide and Password management with Amazon Web Services Secrets Manager in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master username for the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringInterval" /></td>
+    <td><CopyableCode code="monitoring_interval" /></td>
     <td><code>integer</code></td>
     <td>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB cluster. This setting is only for -Aurora DB clusters and Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringRoleArn" /></td>
+    <td><CopyableCode code="monitoring_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs. This setting is only for Aurora DB clusters and Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZ" /></td>
+    <td><CopyableCode code="multi_az" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster has instances in multiple Availability Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of the DB instance. The network type is determined by the DBSubnetGroup specified for the DB cluster. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6 protocols (DUAL). For more information, see Working with a DB instance in a VPC in the Amazon Aurora User Guide. This setting is only for Aurora DB clusters. Valid Values: IPV4 | DUAL</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>Information about pending changes to the DB cluster. This information is returned only when there are pending changes. Specific changes are identified by subelements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>string</code></td>
     <td>The progress of the operation as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsEnabled" /></td>
+    <td><CopyableCode code="performance_insights_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Performance Insights is enabled for the DB cluster. This setting is only for Aurora DB clusters and Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsKMSKeyId" /></td>
+    <td><CopyableCode code="performance_insights_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key identifier for encryption of Performance Insights data. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. This setting is only for Aurora DB clusters and Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsRetentionPeriod" /></td>
+    <td><CopyableCode code="performance_insights_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days to retain Performance Insights data. This setting is only for Aurora DB clusters and Multi-AZ DB clusters. Valid Values: 7 month * 31, where month is a number of months from 1-23. Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port that the database engine is listening on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster is publicly accessible. When the DB cluster is publicly accessible and you connect from outside of the DB cluster's virtual private cloud (VPC), its Domain Name System (DNS) endpoint resolves to the public IP address. When you connect from within the same VPC as the DB cluster, the endpoint resolves to the private IP address. Access to the DB cluster is ultimately controlled by the security group it uses. That public access isn't permitted if the security group assigned to the DB cluster doesn't permit it. When the DB cluster isn't publicly accessible, it is an internal DB cluster with a DNS name that resolves to a private IP address. For more information, see CreateDBCluster. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RdsCustomClusterConfiguration" /></td>
+    <td><CopyableCode code="rds_custom_cluster_configuration" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaIdentifiers" /></td>
+    <td><CopyableCode code="read_replica_identifiers" /></td>
     <td><code>string</code></td>
     <td>Contains one or more identifiers of the read replicas associated with this DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReaderEndpoint" /></td>
+    <td><CopyableCode code="reader_endpoint" /></td>
     <td><code>string</code></td>
     <td>The reader endpoint for the DB cluster. The reader endpoint for a DB cluster load-balances connections across the Aurora Replicas that are available in a DB cluster. As clients request new connections to the reader endpoint, Aurora distributes the connection requests among the Aurora Replicas in the DB cluster. This functionality can help balance your read workload across multiple Aurora Replicas in your DB cluster. If a failover occurs, and the Aurora Replica that you are connected to is promoted to be the primary instance, your connection is dropped. To continue sending your read workload to other Aurora Replicas in the cluster, you can then reconnect to the reader endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationSourceIdentifier" /></td>
+    <td><CopyableCode code="replication_source_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the source DB cluster if this DB cluster is a read replica.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingConfigurationInfo" /></td>
+    <td><CopyableCode code="scaling_configuration_info" /></td>
     <td><code>string</code></td>
     <td>The scaling configuration for an Aurora DB cluster in serverless DB engine mode. For more information, see Using Amazon Aurora Serverless v1 in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2PlatformVersion" /></td>
+    <td><CopyableCode code="serverless_v2_platform_version" /></td>
     <td><code>string</code></td>
     <td>The version of the Aurora Serverless V2 platform used by the DB cluster. For more information, see Using Aurora Serverless v2 in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2ScalingConfiguration" /></td>
+    <td><CopyableCode code="serverless_v2_scaling_configuration" /></td>
     <td><code>string</code></td>
     <td>The scaling configuration for an Aurora Serverless v2 DB cluster. For more information, see Using Amazon Aurora Serverless v2 in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of this DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusInfos" /></td>
+    <td><CopyableCode code="status_infos" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncryptionType" /></td>
+    <td><CopyableCode code="storage_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used to protect data at rest in the DB cluster. Possible values: none - The DB cluster is not encrypted. sse-rds - The DB cluster is encrypted using an Amazon Web Services owned KMS key. sse-kms - The DB cluster is encrypted using a customer managed KMS key or Amazon Web Services managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageThroughput" /></td>
+    <td><CopyableCode code="storage_throughput" /></td>
     <td><code>integer</code></td>
     <td>The storage throughput for the DB cluster. The throughput is automatically set based on the IOPS that you provision, and is not configurable. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type associated with the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeRolloutOrder" /></td>
+    <td><CopyableCode code="upgrade_rollout_order" /></td>
     <td><code>string</code></td>
     <td>This data type represents the order in which the clusters are upgraded. &#91;first&#93; - Typically used for development or testing environments. &#91;second&#93; - Default order for resources not specifically configured. &#91;last&#93; - Usually reserved for production environments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCNetworkingEnabled" /></td>
+    <td><CopyableCode code="vpc_networking_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster uses VPC-based networking. This setting is applicable only for Aurora PostgreSQL clusters created through express configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>string</code></td>
     <td>The list of VPC security groups that the DB cluster belongs to.</td>
 </tr>
@@ -1171,94 +1171,94 @@ Describes existing Amazon Aurora DB clusters and Multi-AZ DB clusters. This API 
 
 ```sql
 SELECT
-ActivityStreamKinesisStreamName,
-ActivityStreamKmsKeyId,
-ActivityStreamMode,
-ActivityStreamStatus,
-AllocatedStorage,
-AssociatedRoles,
-AutoMinorVersionUpgrade,
-AutomaticRestartTime,
-AvailabilityZones,
-AwsBackupRecoveryPointArn,
-BacktrackConsumedChangeRecords,
-BacktrackWindow,
-BackupRetentionPeriod,
-Capacity,
-CertificateDetails,
-CharacterSetName,
-CloneGroupId,
-ClusterCreateTime,
-ClusterScalabilityType,
-CopyTagsToSnapshot,
-CrossAccountClone,
-CustomEndpoints,
-DBClusterArn,
-DBClusterIdentifier,
-DBClusterInstanceClass,
-DBClusterMembers,
-DBClusterOptionGroupMemberships,
-DBClusterParameterGroup,
-DBSubnetGroup,
-DBSystemId,
-DatabaseInsightsMode,
-DatabaseName,
-DbClusterResourceId,
-DeletionProtection,
-DomainMemberships,
-EarliestBacktrackTime,
-EarliestRestorableTime,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineMode,
-EngineVersion,
-GlobalClusterIdentifier,
-GlobalWriteForwardingRequested,
-GlobalWriteForwardingStatus,
-HostedZoneId,
-HttpEndpointEnabled,
-IAMDatabaseAuthenticationEnabled,
-IOOptimizedNextAllowedModificationTime,
-InternetAccessGatewayEnabled,
-Iops,
-KmsKeyId,
-LatestRestorableTime,
-LimitlessDatabase,
-LocalWriteForwardingStatus,
-MasterUserSecret,
-MasterUsername,
-MonitoringInterval,
-MonitoringRoleArn,
-MultiAZ,
-NetworkType,
-PendingModifiedValues,
-PercentProgress,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PerformanceInsightsRetentionPeriod,
-Port,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-RdsCustomClusterConfiguration,
-ReadReplicaIdentifiers,
-ReaderEndpoint,
-ReplicationSourceIdentifier,
-ScalingConfigurationInfo,
-ServerlessV2PlatformVersion,
-ServerlessV2ScalingConfiguration,
-Status,
-StatusInfos,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-UpgradeRolloutOrder,
-VPCNetworkingEnabled,
-VpcSecurityGroups
+activity_stream_kinesis_stream_name,
+activity_stream_kms_key_id,
+activity_stream_mode,
+activity_stream_status,
+allocated_storage,
+associated_roles,
+auto_minor_version_upgrade,
+automatic_restart_time,
+availability_zones,
+aws_backup_recovery_point_arn,
+backtrack_consumed_change_records,
+backtrack_window,
+backup_retention_period,
+capacity,
+certificate_details,
+character_set_name,
+clone_group_id,
+cluster_create_time,
+cluster_scalability_type,
+copy_tags_to_snapshot,
+cross_account_clone,
+custom_endpoints,
+db_cluster_arn,
+db_cluster_identifier,
+db_cluster_instance_class,
+db_cluster_members,
+db_cluster_option_group_memberships,
+db_cluster_parameter_group,
+db_subnet_group,
+db_system_id,
+database_insights_mode,
+database_name,
+db_cluster_resource_id,
+deletion_protection,
+domain_memberships,
+earliest_backtrack_time,
+earliest_restorable_time,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_mode,
+engine_version,
+global_cluster_identifier,
+global_write_forwarding_requested,
+global_write_forwarding_status,
+hosted_zone_id,
+http_endpoint_enabled,
+iam_database_authentication_enabled,
+io_optimized_next_allowed_modification_time,
+internet_access_gateway_enabled,
+iops,
+kms_key_id,
+latest_restorable_time,
+limitless_database,
+local_write_forwarding_status,
+master_user_secret,
+master_username,
+monitoring_interval,
+monitoring_role_arn,
+multi_az,
+network_type,
+pending_modified_values,
+percent_progress,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+performance_insights_retention_period,
+port,
+preferred_backup_window,
+preferred_maintenance_window,
+publicly_accessible,
+rds_custom_cluster_configuration,
+read_replica_identifiers,
+reader_endpoint,
+replication_source_identifier,
+scaling_configuration_info,
+serverless_v2_platform_version,
+serverless_v2_scaling_configuration,
+status,
+status_infos,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+upgrade_rollout_order,
+vpc_networking_enabled,
+vpc_security_groups
 FROM aws.rds.db_clusters
 WHERE region = '{{ region }}' -- required
 AND DBClusterIdentifier = '{{ DBClusterIdentifier }}'
@@ -1410,94 +1410,94 @@ SELECT
 '{{ MasterUserAuthenticationType }}',
 '{{ WithExpressConfiguration }}'
 RETURNING
-ActivityStreamKinesisStreamName,
-ActivityStreamKmsKeyId,
-ActivityStreamMode,
-ActivityStreamStatus,
-AllocatedStorage,
-AssociatedRoles,
-AutoMinorVersionUpgrade,
-AutomaticRestartTime,
-AvailabilityZones,
-AwsBackupRecoveryPointArn,
-BacktrackConsumedChangeRecords,
-BacktrackWindow,
-BackupRetentionPeriod,
-Capacity,
-CertificateDetails,
-CharacterSetName,
-CloneGroupId,
-ClusterCreateTime,
-ClusterScalabilityType,
-CopyTagsToSnapshot,
-CrossAccountClone,
-CustomEndpoints,
-DBClusterArn,
-DBClusterIdentifier,
-DBClusterInstanceClass,
-DBClusterMembers,
-DBClusterOptionGroupMemberships,
-DBClusterParameterGroup,
-DBSubnetGroup,
-DBSystemId,
-DatabaseInsightsMode,
-DatabaseName,
-DbClusterResourceId,
-DeletionProtection,
-DomainMemberships,
-EarliestBacktrackTime,
-EarliestRestorableTime,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineMode,
-EngineVersion,
-GlobalClusterIdentifier,
-GlobalWriteForwardingRequested,
-GlobalWriteForwardingStatus,
-HostedZoneId,
-HttpEndpointEnabled,
-IAMDatabaseAuthenticationEnabled,
-IOOptimizedNextAllowedModificationTime,
-InternetAccessGatewayEnabled,
-Iops,
-KmsKeyId,
-LatestRestorableTime,
-LimitlessDatabase,
-LocalWriteForwardingStatus,
-MasterUserSecret,
-MasterUsername,
-MonitoringInterval,
-MonitoringRoleArn,
-MultiAZ,
-NetworkType,
-PendingModifiedValues,
-PercentProgress,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PerformanceInsightsRetentionPeriod,
-Port,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-RdsCustomClusterConfiguration,
-ReadReplicaIdentifiers,
-ReaderEndpoint,
-ReplicationSourceIdentifier,
-ScalingConfigurationInfo,
-ServerlessV2PlatformVersion,
-ServerlessV2ScalingConfiguration,
-Status,
-StatusInfos,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-UpgradeRolloutOrder,
-VPCNetworkingEnabled,
-VpcSecurityGroups
+activity_stream_kinesis_stream_name,
+activity_stream_kms_key_id,
+activity_stream_mode,
+activity_stream_status,
+allocated_storage,
+associated_roles,
+auto_minor_version_upgrade,
+automatic_restart_time,
+availability_zones,
+aws_backup_recovery_point_arn,
+backtrack_consumed_change_records,
+backtrack_window,
+backup_retention_period,
+capacity,
+certificate_details,
+character_set_name,
+clone_group_id,
+cluster_create_time,
+cluster_scalability_type,
+copy_tags_to_snapshot,
+cross_account_clone,
+custom_endpoints,
+db_cluster_arn,
+db_cluster_identifier,
+db_cluster_instance_class,
+db_cluster_members,
+db_cluster_option_group_memberships,
+db_cluster_parameter_group,
+db_subnet_group,
+db_system_id,
+database_insights_mode,
+database_name,
+db_cluster_resource_id,
+deletion_protection,
+domain_memberships,
+earliest_backtrack_time,
+earliest_restorable_time,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_mode,
+engine_version,
+global_cluster_identifier,
+global_write_forwarding_requested,
+global_write_forwarding_status,
+hosted_zone_id,
+http_endpoint_enabled,
+iam_database_authentication_enabled,
+io_optimized_next_allowed_modification_time,
+internet_access_gateway_enabled,
+iops,
+kms_key_id,
+latest_restorable_time,
+limitless_database,
+local_write_forwarding_status,
+master_user_secret,
+master_username,
+monitoring_interval,
+monitoring_role_arn,
+multi_az,
+network_type,
+pending_modified_values,
+percent_progress,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+performance_insights_retention_period,
+port,
+preferred_backup_window,
+preferred_maintenance_window,
+publicly_accessible,
+rds_custom_cluster_configuration,
+read_replica_identifiers,
+reader_endpoint,
+replication_source_identifier,
+scaling_configuration_info,
+serverless_v2_platform_version,
+serverless_v2_scaling_configuration,
+status,
+status_infos,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+upgrade_rollout_order,
+vpc_networking_enabled,
+vpc_security_groups
 ;
 ```
 </TabItem>
@@ -1830,94 +1830,94 @@ AND EnableLimitlessDatabase = {{ EnableLimitlessDatabase}}
 AND CACertificateIdentifier = '{{ CACertificateIdentifier}}'
 AND MasterUserAuthenticationType = '{{ MasterUserAuthenticationType}}'
 RETURNING
-ActivityStreamKinesisStreamName,
-ActivityStreamKmsKeyId,
-ActivityStreamMode,
-ActivityStreamStatus,
-AllocatedStorage,
-AssociatedRoles,
-AutoMinorVersionUpgrade,
-AutomaticRestartTime,
-AvailabilityZones,
-AwsBackupRecoveryPointArn,
-BacktrackConsumedChangeRecords,
-BacktrackWindow,
-BackupRetentionPeriod,
-Capacity,
-CertificateDetails,
-CharacterSetName,
-CloneGroupId,
-ClusterCreateTime,
-ClusterScalabilityType,
-CopyTagsToSnapshot,
-CrossAccountClone,
-CustomEndpoints,
-DBClusterArn,
-DBClusterIdentifier,
-DBClusterInstanceClass,
-DBClusterMembers,
-DBClusterOptionGroupMemberships,
-DBClusterParameterGroup,
-DBSubnetGroup,
-DBSystemId,
-DatabaseInsightsMode,
-DatabaseName,
-DbClusterResourceId,
-DeletionProtection,
-DomainMemberships,
-EarliestBacktrackTime,
-EarliestRestorableTime,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineMode,
-EngineVersion,
-GlobalClusterIdentifier,
-GlobalWriteForwardingRequested,
-GlobalWriteForwardingStatus,
-HostedZoneId,
-HttpEndpointEnabled,
-IAMDatabaseAuthenticationEnabled,
-IOOptimizedNextAllowedModificationTime,
-InternetAccessGatewayEnabled,
-Iops,
-KmsKeyId,
-LatestRestorableTime,
-LimitlessDatabase,
-LocalWriteForwardingStatus,
-MasterUserSecret,
-MasterUsername,
-MonitoringInterval,
-MonitoringRoleArn,
-MultiAZ,
-NetworkType,
-PendingModifiedValues,
-PercentProgress,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PerformanceInsightsRetentionPeriod,
-Port,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-RdsCustomClusterConfiguration,
-ReadReplicaIdentifiers,
-ReaderEndpoint,
-ReplicationSourceIdentifier,
-ScalingConfigurationInfo,
-ServerlessV2PlatformVersion,
-ServerlessV2ScalingConfiguration,
-Status,
-StatusInfos,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-UpgradeRolloutOrder,
-VPCNetworkingEnabled,
-VpcSecurityGroups;
+activity_stream_kinesis_stream_name,
+activity_stream_kms_key_id,
+activity_stream_mode,
+activity_stream_status,
+allocated_storage,
+associated_roles,
+auto_minor_version_upgrade,
+automatic_restart_time,
+availability_zones,
+aws_backup_recovery_point_arn,
+backtrack_consumed_change_records,
+backtrack_window,
+backup_retention_period,
+capacity,
+certificate_details,
+character_set_name,
+clone_group_id,
+cluster_create_time,
+cluster_scalability_type,
+copy_tags_to_snapshot,
+cross_account_clone,
+custom_endpoints,
+db_cluster_arn,
+db_cluster_identifier,
+db_cluster_instance_class,
+db_cluster_members,
+db_cluster_option_group_memberships,
+db_cluster_parameter_group,
+db_subnet_group,
+db_system_id,
+database_insights_mode,
+database_name,
+db_cluster_resource_id,
+deletion_protection,
+domain_memberships,
+earliest_backtrack_time,
+earliest_restorable_time,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_mode,
+engine_version,
+global_cluster_identifier,
+global_write_forwarding_requested,
+global_write_forwarding_status,
+hosted_zone_id,
+http_endpoint_enabled,
+iam_database_authentication_enabled,
+io_optimized_next_allowed_modification_time,
+internet_access_gateway_enabled,
+iops,
+kms_key_id,
+latest_restorable_time,
+limitless_database,
+local_write_forwarding_status,
+master_user_secret,
+master_username,
+monitoring_interval,
+monitoring_role_arn,
+multi_az,
+network_type,
+pending_modified_values,
+percent_progress,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+performance_insights_retention_period,
+port,
+preferred_backup_window,
+preferred_maintenance_window,
+publicly_accessible,
+rds_custom_cluster_configuration,
+read_replica_identifiers,
+reader_endpoint,
+replication_source_identifier,
+scaling_configuration_info,
+serverless_v2_platform_version,
+serverless_v2_scaling_configuration,
+status,
+status_infos,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+upgrade_rollout_order,
+vpc_networking_enabled,
+vpc_security_groups;
 ```
 </TabItem>
 </Tabs>

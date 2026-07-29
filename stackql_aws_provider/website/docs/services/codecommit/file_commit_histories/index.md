@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An enumeration token that can be used to return the next batch of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionDag" /></td>
+    <td><CopyableCode code="revision_dag" /></td>
     <td><code>array</code></td>
     <td>An array of FileVersion objects that form a directed acyclic graph (DAG) of the changes to the file made by the commits that changed the file.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list of commits and changes to a specified file.
 
 ```sql
 SELECT
-nextToken,
-revisionDag
+next_token,
+revision_dag
 FROM aws.codecommit.file_commit_histories
 WHERE region = '{{ region }}' -- required
 ;

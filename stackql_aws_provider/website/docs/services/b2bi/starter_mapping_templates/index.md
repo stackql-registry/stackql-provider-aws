@@ -107,7 +107,7 @@ SELECT
 '{{ templateDetails }}' /* required */,
 '{{ region }}'
 RETURNING
-mappingTemplate
+mapping_template
 ;
 ```
 </TabItem>

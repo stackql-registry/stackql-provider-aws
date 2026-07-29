@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The provisioned resource identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningEngine" /></td>
+    <td><CopyableCode code="provisioning_engine" /></td>
     <td><code>string</code></td>
     <td>The resource provisioning engine. At this time, CLOUDFORMATION can be used for Amazon Web Services-managed provisioning, and TERRAFORM can be used for self-managed provisioning. For more information, see Self-managed provisioning in the Proton User Guide. (CLOUDFORMATION, TERRAFORM)</td>
 </tr>
@@ -131,7 +131,7 @@ List the provisioned resources for your environment.
 SELECT
 name,
 identifier,
-provisioningEngine
+provisioning_engine
 FROM aws.proton.environment_provisioned_resources
 WHERE region = '{{ region }}' -- required
 ;

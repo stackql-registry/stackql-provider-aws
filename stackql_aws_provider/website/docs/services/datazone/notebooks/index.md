@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the notebook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who created the notebook.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the notebook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon SageMaker Unified Studio domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the project that owns the notebook. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a notebook in Amazon SageMaker Unified Studio. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who last updated the notebook.</td>
 </tr>
@@ -125,22 +125,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the notebook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cellOrder" /></td>
+    <td><CopyableCode code="cell_order" /></td>
     <td><code>array</code></td>
     <td>The ordered list of cells in the notebook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeId" /></td>
+    <td><CopyableCode code="compute_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the compute associated with the notebook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who created the notebook.</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the notebook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon SageMaker Unified Studio domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentConfiguration" /></td>
+    <td><CopyableCode code="environment_configuration" /></td>
     <td><code>object</code></td>
     <td>The environment configuration of the notebook.</td>
 </tr>
@@ -165,17 +165,17 @@ The following fields are returned by `SELECT` queries:
     <td>The error details if the notebook is in a failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lockExpiresAt" /></td>
+    <td><CopyableCode code="lock_expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook lock expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lockedAt" /></td>
+    <td><CopyableCode code="locked_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook was locked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lockedBy" /></td>
+    <td><CopyableCode code="locked_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who locked the notebook.</td>
 </tr>
@@ -185,7 +185,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of the notebook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the project that owns the notebook. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -200,12 +200,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a notebook in Amazon SageMaker Unified Studio. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who last updated the notebook.</td>
 </tr>
@@ -373,14 +373,14 @@ Lists notebooks in Amazon SageMaker Unified Studio.
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-owningProjectId,
+domain_id,
+owning_project_id,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.datazone.notebooks
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND owningProjectIdentifier = '{{ owningProjectIdentifier }}' -- required
@@ -401,23 +401,23 @@ Gets the details of a notebook in Amazon SageMaker Unified Studio.
 SELECT
 id,
 name,
-cellOrder,
-computeId,
-createdAt,
-createdBy,
+cell_order,
+compute_id,
+created_at,
+created_by,
 description,
-domainId,
-environmentConfiguration,
+domain_id,
+environment_configuration,
 error,
-lockExpiresAt,
-lockedAt,
-lockedBy,
+lock_expires_at,
+locked_at,
+locked_by,
 metadata,
-owningProjectId,
+owning_project_id,
 parameters,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.datazone.notebooks
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -464,23 +464,23 @@ SELECT
 RETURNING
 id,
 name,
-cellOrder,
-computeId,
-createdAt,
-createdBy,
+cell_order,
+compute_id,
+created_at,
+created_by,
 description,
-domainId,
-environmentConfiguration,
+domain_id,
+environment_configuration,
 error,
-lockExpiresAt,
-lockedAt,
-lockedBy,
+lock_expires_at,
+locked_at,
+locked_by,
 metadata,
-owningProjectId,
+owning_project_id,
 parameters,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 ;
 ```
 </TabItem>
@@ -543,23 +543,23 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-cellOrder,
-computeId,
-createdAt,
-createdBy,
+cell_order,
+compute_id,
+created_at,
+created_by,
 description,
-domainId,
-environmentConfiguration,
+domain_id,
+environment_configuration,
 error,
-lockExpiresAt,
-lockedAt,
-lockedBy,
+lock_expires_at,
+locked_at,
+locked_by,
 metadata,
-owningProjectId,
+owning_project_id,
 parameters,
 status,
-updatedAt,
-updatedBy;
+updated_at,
+updated_by;
 ```
 </TabItem>
 </Tabs>

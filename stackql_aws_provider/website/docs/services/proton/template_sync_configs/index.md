@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The repository branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The repository name (for example, myrepos/myrepo). (pattern: &lt;code&gt;&#91;A-Za-z0-9_.-&#93;.*/&#91;A-Za-z0-9_.-&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryProvider" /></td>
+    <td><CopyableCode code="repository_provider" /></td>
     <td><code>string</code></td>
     <td>The repository provider. (GITHUB, GITHUB_ENTERPRISE, BITBUCKET)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>A subdirectory path to your template bundle version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The template name. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The template type. (ENVIRONMENT, SERVICE)</td>
 </tr>
@@ -166,11 +166,11 @@ Get detail data for a template sync configuration.
 ```sql
 SELECT
 branch,
-repositoryName,
-repositoryProvider,
+repository_name,
+repository_provider,
 subdirectory,
-templateName,
-templateType
+template_name,
+template_type
 FROM aws.proton.template_sync_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -211,7 +211,7 @@ SELECT
 '{{ templateType }}' /* required */,
 '{{ region }}'
 RETURNING
-templateSyncConfig
+template_sync_config
 ;
 ```
 </TabItem>
@@ -284,7 +284,7 @@ AND repositoryProvider = '{{ repositoryProvider }}' --required
 AND templateName = '{{ templateName }}' --required
 AND templateType = '{{ templateType }}' --required
 RETURNING
-templateSyncConfig;
+template_sync_config;
 ```
 </TabItem>
 </Tabs>

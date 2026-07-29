@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="capacityLimits" /></td>
+    <td><CopyableCode code="capacity_limits" /></td>
     <td><code>array</code></td>
     <td>The capacity limits for the service environment. This defines the maximum resources that can be used by service jobs in this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceEnvironmentArn" /></td>
+    <td><CopyableCode code="service_environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceEnvironmentName" /></td>
+    <td><CopyableCode code="service_environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceEnvironmentType" /></td>
+    <td><CopyableCode code="service_environment_type" /></td>
     <td><code>string</code></td>
     <td>The type of service environment. For SageMaker Training jobs, this value is SAGEMAKER_TRAINING. (SAGEMAKER_TRAINING)</td>
 </tr>
@@ -170,10 +170,10 @@ Describes one or more of your service environments.
 
 ```sql
 SELECT
-capacityLimits,
-serviceEnvironmentArn,
-serviceEnvironmentName,
-serviceEnvironmentType,
+capacity_limits,
+service_environment_arn,
+service_environment_name,
+service_environment_type,
 state,
 status,
 tags
@@ -215,8 +215,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-serviceEnvironmentArn,
-serviceEnvironmentName
+service_environment_arn,
+service_environment_name
 ;
 ```
 </TabItem>
@@ -270,8 +270,8 @@ WHERE
 region = '{{ region }}' --required
 AND serviceEnvironment = '{{ serviceEnvironment }}' --required
 RETURNING
-serviceEnvironmentArn,
-serviceEnvironmentName;
+service_environment_arn,
+service_environment_name;
 ```
 </TabItem>
 </Tabs>

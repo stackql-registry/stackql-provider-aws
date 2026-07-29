@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The creation time of the transformer, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time when this transformer was most recently modified, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupIdentifier" /></td>
+    <td><CopyableCode code="log_group_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the log group that you specified in your request. (pattern: &lt;code&gt;&#91;\w#+=/:,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transformerConfig" /></td>
+    <td><CopyableCode code="transformer_config" /></td>
     <td><code>array</code></td>
     <td>This sructure contains the configuration of the requested transformer.</td>
 </tr>
@@ -148,10 +148,10 @@ Returns the information about the log transformer associated with this log group
 
 ```sql
 SELECT
-creationTime,
-lastModifiedTime,
-logGroupIdentifier,
-transformerConfig
+creation_time,
+last_modified_time,
+log_group_identifier,
+transformer_config
 FROM aws.logs.transformers
 WHERE region = '{{ region }}' -- required
 ;

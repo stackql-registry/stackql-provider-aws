@@ -21,3 +21,6 @@ yarn-error.log*
 
 # vendored shared docusaurus config (cloned at build time)
 .shared-config
+
+# netlify cli project link + deploy state
+.netlify/

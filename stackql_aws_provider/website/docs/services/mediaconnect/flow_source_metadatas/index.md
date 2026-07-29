@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlowArn" /></td>
+    <td><CopyableCode code="flow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the flow that DescribeFlowSourceMetadata was performed on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>array</code></td>
     <td>Provides a status code and message regarding issues found with the flow source metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NdiInfo" /></td>
+    <td><CopyableCode code="ndi_info" /></td>
     <td><code>object</code></td>
     <td>The NDI® specific information about the flow's source. This includes the current active NDI sender, a list of all discovered NDI senders, the associated media streams for the active NDI sender, and any relevant status messages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the most recent change in metadata for this flow’s source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransportMediaInfo" /></td>
+    <td><CopyableCode code="transport_media_info" /></td>
     <td><code>object</code></td>
     <td>Information about the flow's transport media.</td>
 </tr>
@@ -144,11 +144,11 @@ The DescribeFlowSourceMetadata API is used to view information about the flow's 
 
 ```sql
 SELECT
-FlowArn,
-Messages,
-NdiInfo,
-Timestamp,
-TransportMediaInfo
+flow_arn,
+messages,
+ndi_info,
+timestamp,
+transport_media_info
 FROM aws.mediaconnect.flow_source_metadatas
 WHERE flow_arn = '{{ flow_arn }}' -- required
 AND region = '{{ region }}' -- required

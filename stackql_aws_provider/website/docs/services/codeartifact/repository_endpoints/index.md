@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="repositoryEndpoint" /></td>
+    <td><CopyableCode code="repository_endpoint" /></td>
     <td><code>string</code></td>
     <td>A string that specifies the URL of the returned endpoint.</td>
 </tr>
@@ -144,7 +144,7 @@ Returns the endpoint of a repository for a specific package format. A repository
 
 ```sql
 SELECT
-repositoryEndpoint
+repository_endpoint
 FROM aws.codeartifact.repository_endpoints
 WHERE domain = '{{ domain }}' -- required
 AND repository = '{{ repository }}' -- required

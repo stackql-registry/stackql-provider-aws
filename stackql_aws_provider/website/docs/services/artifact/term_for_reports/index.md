@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="documentPresignedUrl" /></td>
+    <td><CopyableCode code="document_presigned_url" /></td>
     <td><code>string</code></td>
     <td>Presigned S3 url to access the term content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="termToken" /></td>
+    <td><CopyableCode code="term_token" /></td>
     <td><code>string</code></td>
     <td>Unique token representing this request event.</td>
 </tr>
@@ -134,8 +134,8 @@ Get the Term content associated with a single report.
 
 ```sql
 SELECT
-documentPresignedUrl,
-termToken
+document_presigned_url,
+term_token
 FROM aws.artifact.term_for_reports
 WHERE reportId = '{{ reportId }}' -- required
 AND region = '{{ region }}' -- required

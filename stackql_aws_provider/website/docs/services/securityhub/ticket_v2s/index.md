@@ -109,8 +109,8 @@ SELECT
 '{{ Mode }}',
 '{{ region }}'
 RETURNING
-TicketId,
-TicketSrcUrl
+ticket_id,
+ticket_src_url
 ;
 ```
 </TabItem>

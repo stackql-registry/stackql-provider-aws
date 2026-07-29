@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of evidence that the GetEvidenceByEvidenceFolder API returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ Gets all evidence from a specified evidence folder in Audit Manager.
 ```sql
 SELECT
 evidence,
-nextToken
+next_token
 FROM aws.auditmanager.evidence_by_evidence_folders
 WHERE assessment_id = '{{ assessment_id }}' -- required
 AND control_set_id = '{{ control_set_id }}' -- required

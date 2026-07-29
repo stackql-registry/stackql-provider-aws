@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="changeLogs" /></td>
+    <td><CopyableCode code="change_logs" /></td>
     <td><code>array</code></td>
     <td>The list of user activity for the control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -149,8 +149,8 @@ Gets a list of changelogs from Audit Manager.
 
 ```sql
 SELECT
-changeLogs,
-nextToken
+change_logs,
+next_token
 FROM aws.auditmanager.change_logs
 WHERE assessment_id = '{{ assessment_id }}' -- required
 AND region = '{{ region }}' -- required

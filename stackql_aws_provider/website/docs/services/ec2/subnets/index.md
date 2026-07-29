@@ -50,117 +50,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssignIpv6AddressOnCreation" /></td>
+    <td><CopyableCode code="assign_ipv_6_address_on_creation" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a network interface created in this subnet (including a network interface created by RunInstances) receives an IPv6 address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The AZ ID of the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableIpAddressCount" /></td>
+    <td><CopyableCode code="available_ip_address_count" /></td>
     <td><code>integer</code></td>
     <td>The number of unused private IPv4 addresses in the subnet. The IPv4 addresses for any stopped instances are considered unavailable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockPublicAccessStates" /></td>
+    <td><CopyableCode code="block_public_access_states" /></td>
     <td><code>string</code></td>
     <td>The state of VPC Block Public Access (BPA).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrBlock" /></td>
+    <td><CopyableCode code="cidr_block" /></td>
     <td><code>string</code></td>
     <td>The IPv4 CIDR block assigned to the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOwnedIpv4Pool" /></td>
+    <td><CopyableCode code="customer_owned_ipv_4_pool" /></td>
     <td><code>string</code></td>
     <td>The customer-owned IPv4 address pool associated with the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultForAz" /></td>
+    <td><CopyableCode code="default_for_az" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default subnet for the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableDns64" /></td>
+    <td><CopyableCode code="enable_dns_64" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableLniAtDeviceIndex" /></td>
+    <td><CopyableCode code="enable_lni_at_device_index" /></td>
     <td><code>integer</code></td>
     <td>Indicates the device position for local network interfaces in this subnet. For example, 1 indicates local network interfaces in this subnet are the secondary network interface (eth1).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6CidrBlockAssociationSet" /></td>
+    <td><CopyableCode code="ipv_6_cidr_block_association_set" /></td>
     <td><code>string</code></td>
     <td>Information about the IPv6 CIDR blocks associated with the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Native" /></td>
+    <td><CopyableCode code="ipv_6_native" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is an IPv6 only subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MapCustomerOwnedIpOnLaunch" /></td>
+    <td><CopyableCode code="map_customer_owned_ip_on_launch" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a network interface created in this subnet (including a network interface created by RunInstances) receives a customer-owned IPv4 address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MapPublicIpOnLaunch" /></td>
+    <td><CopyableCode code="map_public_ip_on_launch" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether instances launched in this subnet receive a public IPv4 address. Amazon Web Services charges for all public IPv4 addresses, including public IPv4 addresses associated with running instances and Elastic IP addresses. For more information, see the Public IPv4 Address tab on the Amazon VPC pricing page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsNameOptionsOnLaunch" /></td>
+    <td><CopyableCode code="private_dns_name_options_on_launch" /></td>
     <td><code>string</code></td>
     <td>The type of hostnames to assign to instances in the subnet at launch. An instance hostname is based on the IPv4 address or ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the subnet. failed: The underlying infrastructure to support the subnet failed to provision as expected. failed-insufficient-capacity: The underlying infrastructure to support the subnet failed to provision due to a shortage of EC2 instance capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetArn" /></td>
+    <td><CopyableCode code="subnet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Indicates if this is a subnet used with Amazon Elastic VMware Service (EVS). Possible values are Elastic VMware Service or no value. For more information about Amazon EVS, see Amazon Elastic VMware Service API Reference .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC the subnet is in.</td>
 </tr>
@@ -416,29 +416,29 @@ Describes your subnets. The default is to describe all your subnets. Alternative
 
 ```sql
 SELECT
-AssignIpv6AddressOnCreation,
-AvailabilityZone,
-AvailabilityZoneId,
-AvailableIpAddressCount,
-BlockPublicAccessStates,
-CidrBlock,
-CustomerOwnedIpv4Pool,
-DefaultForAz,
-EnableDns64,
-EnableLniAtDeviceIndex,
-Ipv6CidrBlockAssociationSet,
-Ipv6Native,
-MapCustomerOwnedIpOnLaunch,
-MapPublicIpOnLaunch,
-OutpostArn,
-OwnerId,
-PrivateDnsNameOptionsOnLaunch,
-State,
-SubnetArn,
-SubnetId,
-Tags,
-Type,
-VpcId
+assign_ipv_6_address_on_creation,
+availability_zone,
+availability_zone_id,
+available_ip_address_count,
+block_public_access_states,
+cidr_block,
+customer_owned_ipv_4_pool,
+default_for_az,
+enable_dns_64,
+enable_lni_at_device_index,
+ipv_6_cidr_block_association_set,
+ipv_6_native,
+map_customer_owned_ip_on_launch,
+map_public_ip_on_launch,
+outpost_arn,
+owner_id,
+private_dns_name_options_on_launch,
+state,
+subnet_arn,
+subnet_id,
+tags,
+type,
+vpc_id
 FROM aws.ec2.subnets
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'
@@ -499,29 +499,29 @@ SELECT
 '{{ Ipv6NetmaskLength }}',
 '{{ DryRun }}'
 RETURNING
-AssignIpv6AddressOnCreation,
-AvailabilityZone,
-AvailabilityZoneId,
-AvailableIpAddressCount,
-BlockPublicAccessStates,
-CidrBlock,
-CustomerOwnedIpv4Pool,
-DefaultForAz,
-EnableDns64,
-EnableLniAtDeviceIndex,
-Ipv6CidrBlockAssociationSet,
-Ipv6Native,
-MapCustomerOwnedIpOnLaunch,
-MapPublicIpOnLaunch,
-OutpostArn,
-OwnerId,
-PrivateDnsNameOptionsOnLaunch,
-State,
-SubnetArn,
-SubnetId,
-Tags,
-Type,
-VpcId
+assign_ipv_6_address_on_creation,
+availability_zone,
+availability_zone_id,
+available_ip_address_count,
+block_public_access_states,
+cidr_block,
+customer_owned_ipv_4_pool,
+default_for_az,
+enable_dns_64,
+enable_lni_at_device_index,
+ipv_6_cidr_block_association_set,
+ipv_6_native,
+map_customer_owned_ip_on_launch,
+map_public_ip_on_launch,
+outpost_arn,
+owner_id,
+private_dns_name_options_on_launch,
+state,
+subnet_arn,
+subnet_id,
+tags,
+type,
+vpc_id
 ;
 ```
 </TabItem>
@@ -544,29 +544,29 @@ SELECT
 '{{ Ipv6Native }}',
 '{{ AvailabilityZoneId }}'
 RETURNING
-AssignIpv6AddressOnCreation,
-AvailabilityZone,
-AvailabilityZoneId,
-AvailableIpAddressCount,
-BlockPublicAccessStates,
-CidrBlock,
-CustomerOwnedIpv4Pool,
-DefaultForAz,
-EnableDns64,
-EnableLniAtDeviceIndex,
-Ipv6CidrBlockAssociationSet,
-Ipv6Native,
-MapCustomerOwnedIpOnLaunch,
-MapPublicIpOnLaunch,
-OutpostArn,
-OwnerId,
-PrivateDnsNameOptionsOnLaunch,
-State,
-SubnetArn,
-SubnetId,
-Tags,
-Type,
-VpcId
+assign_ipv_6_address_on_creation,
+availability_zone,
+availability_zone_id,
+available_ip_address_count,
+block_public_access_states,
+cidr_block,
+customer_owned_ipv_4_pool,
+default_for_az,
+enable_dns_64,
+enable_lni_at_device_index,
+ipv_6_cidr_block_association_set,
+ipv_6_native,
+map_customer_owned_ip_on_launch,
+map_public_ip_on_launch,
+outpost_arn,
+owner_id,
+private_dns_name_options_on_launch,
+state,
+subnet_arn,
+subnet_id,
+tags,
+type,
+vpc_id
 ;
 ```
 </TabItem>
@@ -659,8 +659,8 @@ AND Ipv6IpamPoolId = '{{ Ipv6IpamPoolId}}'
 AND Ipv6NetmaskLength = '{{ Ipv6NetmaskLength}}'
 AND Ipv6CidrBlock = '{{ Ipv6CidrBlock}}'
 RETURNING
-Ipv6CidrBlockAssociation,
-SubnetId;
+ipv_6_cidr_block_association,
+subnet_id;
 ```
 </TabItem>
 <TabItem value="disassociate_subnet_cidr_block">
@@ -675,8 +675,8 @@ WHERE
 AssociationId = '{{ AssociationId }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Ipv6CidrBlockAssociation,
-SubnetId;
+ipv_6_cidr_block_association,
+subnet_id;
 ```
 </TabItem>
 </Tabs>

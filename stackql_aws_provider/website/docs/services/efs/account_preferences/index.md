@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceIdType" /></td>
+    <td><CopyableCode code="resource_id_type" /></td>
     <td><code>string</code></td>
     <td>Identifies the EFS resource ID preference, either LONG_ID (17 characters) or SHORT_ID (8 characters). (LONG_ID, SHORT_ID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>Identifies the Amazon EFS resources to which the ID preference setting applies, FILE_SYSTEM and MOUNT_TARGET.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the account preferences settings for the Amazon Web Services account ass
 
 ```sql
 SELECT
-ResourceIdType,
-Resources
+resource_id_type,
+resources
 FROM aws.efs.account_preferences
 WHERE region = '{{ region }}' -- required
 ;
@@ -161,7 +161,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceIdType = '{{ ResourceIdType }}' --required
 RETURNING
-ResourceIdPreference;
+resource_id_preference;
 ```
 </TabItem>
 </Tabs>

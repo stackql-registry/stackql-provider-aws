@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DependentServices" /></td>
+    <td><CopyableCode code="dependent_services" /></td>
     <td><code>array</code></td>
     <td>A list of names and versions of dependant services of the service for which the system provided supported versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Because HTTP requests are stateless, this is the starting point of the next list of returned ListServiceVersionsResult results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service for which the system provided supported versions. (KUBERNETES, EKS_ANYWHERE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceVersions" /></td>
+    <td><CopyableCode code="service_versions" /></td>
     <td><code>array</code></td>
     <td>A list of supported versions.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists all supported versions for Snow on-device services. Returns an array of Se
 
 ```sql
 SELECT
-DependentServices,
-NextToken,
-ServiceName,
-ServiceVersions
+dependent_services,
+next_token,
+service_name,
+service_versions
 FROM aws.snowball.service_versions
 WHERE region = '{{ region }}' -- required
 ;

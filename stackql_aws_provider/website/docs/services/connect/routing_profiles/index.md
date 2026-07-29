@@ -52,87 +52,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentAvailabilityTimer" /></td>
+    <td><CopyableCode code="agent_availability_timer" /></td>
     <td><code>string</code></td>
     <td>Whether agents with this routing profile will have their routing order calculated based on time since their last inbound contact or longest idle time. (TIME_SINCE_LAST_ACTIVITY, TIME_SINCE_LAST_INBOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedManualAssignmentQueueIds" /></td>
+    <td><CopyableCode code="associated_manual_assignment_queue_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the associated manual assignment queues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedQueueIds" /></td>
+    <td><CopyableCode code="associated_queue_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the associated queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultOutboundQueueId" /></td>
+    <td><CopyableCode code="default_outbound_queue_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the default outbound queue for this routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Whether this a default routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaConcurrencies" /></td>
+    <td><CopyableCode code="media_concurrencies" /></td>
     <td><code>array</code></td>
     <td>The channels agents can handle in the Contact Control Panel (CCP) for this routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAssociatedManualAssignmentQueues" /></td>
+    <td><CopyableCode code="number_of_associated_manual_assignment_queues" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of associated manual assignment queues in routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAssociatedQueues" /></td>
+    <td><CopyableCode code="number_of_associated_queues" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of associated queues in routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAssociatedUsers" /></td>
+    <td><CopyableCode code="number_of_associated_users" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of associated users in routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingProfileArn" /></td>
+    <td><CopyableCode code="routing_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingProfileId" /></td>
+    <td><CopyableCode code="routing_profile_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -151,27 +151,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the routing profile.</td>
 </tr>
@@ -190,87 +190,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentAvailabilityTimer" /></td>
+    <td><CopyableCode code="agent_availability_timer" /></td>
     <td><code>string</code></td>
     <td>Whether agents with this routing profile will have their routing order calculated based on time since their last inbound contact or longest idle time. (TIME_SINCE_LAST_ACTIVITY, TIME_SINCE_LAST_INBOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedManualAssignmentQueueIds" /></td>
+    <td><CopyableCode code="associated_manual_assignment_queue_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the associated manual assignment queues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedQueueIds" /></td>
+    <td><CopyableCode code="associated_queue_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the associated queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultOutboundQueueId" /></td>
+    <td><CopyableCode code="default_outbound_queue_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the default outbound queue for this routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Whether this a default routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaConcurrencies" /></td>
+    <td><CopyableCode code="media_concurrencies" /></td>
     <td><code>array</code></td>
     <td>The channels agents can handle in the Contact Control Panel (CCP) for this routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAssociatedManualAssignmentQueues" /></td>
+    <td><CopyableCode code="number_of_associated_manual_assignment_queues" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of associated manual assignment queues in routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAssociatedQueues" /></td>
+    <td><CopyableCode code="number_of_associated_queues" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of associated queues in routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAssociatedUsers" /></td>
+    <td><CopyableCode code="number_of_associated_users" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of associated users in routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingProfileArn" /></td>
+    <td><CopyableCode code="routing_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingProfileId" /></td>
+    <td><CopyableCode code="routing_profile_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the routing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -422,23 +422,23 @@ Describes the specified routing profile. DescribeRoutingProfile does not populat
 
 ```sql
 SELECT
-AgentAvailabilityTimer,
-AssociatedManualAssignmentQueueIds,
-AssociatedQueueIds,
-DefaultOutboundQueueId,
-Description,
-InstanceId,
-IsDefault,
-LastModifiedRegion,
-LastModifiedTime,
-MediaConcurrencies,
-Name,
-NumberOfAssociatedManualAssignmentQueues,
-NumberOfAssociatedQueues,
-NumberOfAssociatedUsers,
-RoutingProfileArn,
-RoutingProfileId,
-Tags
+agent_availability_timer,
+associated_manual_assignment_queue_ids,
+associated_queue_ids,
+default_outbound_queue_id,
+description,
+instance_id,
+is_default,
+last_modified_region,
+last_modified_time,
+media_concurrencies,
+name,
+number_of_associated_manual_assignment_queues,
+number_of_associated_queues,
+number_of_associated_users,
+routing_profile_arn,
+routing_profile_id,
+tags
 FROM aws.connect.routing_profiles
 WHERE instance_id = '{{ instance_id }}' -- required
 AND routing_profile_id = '{{ routing_profile_id }}' -- required
@@ -452,11 +452,11 @@ Provides summary information about the routing profiles for the specified Amazon
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.routing_profiles
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -471,23 +471,23 @@ Searches routing profiles in an Amazon Connect instance, with optional filtering
 
 ```sql
 SELECT
-AgentAvailabilityTimer,
-AssociatedManualAssignmentQueueIds,
-AssociatedQueueIds,
-DefaultOutboundQueueId,
-Description,
-InstanceId,
-IsDefault,
-LastModifiedRegion,
-LastModifiedTime,
-MediaConcurrencies,
-Name,
-NumberOfAssociatedManualAssignmentQueues,
-NumberOfAssociatedQueues,
-NumberOfAssociatedUsers,
-RoutingProfileArn,
-RoutingProfileId,
-Tags
+agent_availability_timer,
+associated_manual_assignment_queue_ids,
+associated_queue_ids,
+default_outbound_queue_id,
+description,
+instance_id,
+is_default,
+last_modified_region,
+last_modified_time,
+media_concurrencies,
+name,
+number_of_associated_manual_assignment_queues,
+number_of_associated_queues,
+number_of_associated_users,
+routing_profile_arn,
+routing_profile_id,
+tags
 FROM aws.connect.routing_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -534,8 +534,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-RoutingProfileArn,
-RoutingProfileId
+routing_profile_arn,
+routing_profile_id
 ;
 ```
 </TabItem>

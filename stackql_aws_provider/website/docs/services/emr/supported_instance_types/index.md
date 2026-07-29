@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>The pagination token that marks the next set of results to retrieve.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedInstanceTypes" /></td>
+    <td><CopyableCode code="supported_instance_types" /></td>
     <td><code>array</code></td>
     <td>The list of instance types that the release specified in ListSupportedInstanceTypesInput$ReleaseLabel supports, filtered by Amazon Web Services Region.</td>
 </tr>
@@ -124,8 +124,8 @@ A list of the instance types that Amazon EMR supports. You can filter the list b
 
 ```sql
 SELECT
-Marker,
-SupportedInstanceTypes
+marker,
+supported_instance_types
 FROM aws.emr.supported_instance_types
 WHERE region = '{{ region }}' -- required
 ;

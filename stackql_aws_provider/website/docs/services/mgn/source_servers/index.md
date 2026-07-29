@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationID" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>Source server application ID. (pattern: &lt;code&gt;app-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -60,47 +60,47 @@ The following fields are returned by `SELECT` queries:
     <td>Source server ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorAction" /></td>
+    <td><CopyableCode code="connector_action" /></td>
     <td><code>object</code></td>
     <td>Source Server connector action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataReplicationInfo" /></td>
+    <td><CopyableCode code="data_replication_info" /></td>
     <td><code>object</code></td>
     <td>Source server data replication info.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fqdnForActionFramework" /></td>
+    <td><CopyableCode code="fqdn_for_action_framework" /></td>
     <td><code>string</code></td>
     <td>Source server fqdn for action framework.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Source server archived status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchedInstance" /></td>
+    <td><CopyableCode code="launched_instance" /></td>
     <td><code>object</code></td>
     <td>Source server launched instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifeCycle" /></td>
+    <td><CopyableCode code="life_cycle" /></td>
     <td><code>object</code></td>
     <td>Source server lifecycle state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationType" /></td>
+    <td><CopyableCode code="replication_type" /></td>
     <td><code>string</code></td>
     <td>Source server replication type. (AGENT_BASED, SNAPSHOT_SHIPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceProperties" /></td>
+    <td><CopyableCode code="source_properties" /></td>
     <td><code>object</code></td>
     <td>Source server properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerID" /></td>
+    <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>Source server ID. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>Source server Tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userProvidedID" /></td>
+    <td><CopyableCode code="user_provided_id" /></td>
     <td><code>string</code></td>
     <td>Source server user provided ID. (pattern: &lt;code&gt;&#91;^\s\x00&#93;( *&#91;^\s\x00&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vcenterClientID" /></td>
+    <td><CopyableCode code="vcenter_client_id" /></td>
     <td><code>string</code></td>
     <td>Source server vCenter client id. (pattern: &lt;code&gt;vcc-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -282,20 +282,20 @@ Retrieves all SourceServers or multiple SourceServers by ID.
 
 ```sql
 SELECT
-applicationID,
+application_id,
 arn,
-connectorAction,
-dataReplicationInfo,
-fqdnForActionFramework,
-isArchived,
-launchedInstance,
-lifeCycle,
-replicationType,
-sourceProperties,
-sourceServerID,
+connector_action,
+data_replication_info,
+fqdn_for_action_framework,
+is_archived,
+launched_instance,
+life_cycle,
+replication_type,
+source_properties,
+source_server_id,
 tags,
-userProvidedID,
-vcenterClientID
+user_provided_id,
+vcenter_client_id
 FROM aws.mgn.source_servers
 WHERE region = '{{ region }}' -- required
 ;
@@ -345,20 +345,20 @@ region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required
 AND replicationType = '{{ replicationType }}' --required
 RETURNING
-applicationID,
+application_id,
 arn,
-connectorAction,
-dataReplicationInfo,
-fqdnForActionFramework,
-isArchived,
-launchedInstance,
-lifeCycle,
-replicationType,
-sourceProperties,
-sourceServerID,
+connector_action,
+data_replication_info,
+fqdn_for_action_framework,
+is_archived,
+launched_instance,
+life_cycle,
+replication_type,
+source_properties,
+source_server_id,
 tags,
-userProvidedID,
-vcenterClientID;
+user_provided_id,
+vcenter_client_id;
 ```
 </TabItem>
 <TabItem value="update_source_server">
@@ -375,20 +375,20 @@ WHERE
 region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required
 RETURNING
-applicationID,
+application_id,
 arn,
-connectorAction,
-dataReplicationInfo,
-fqdnForActionFramework,
-isArchived,
-launchedInstance,
-lifeCycle,
-replicationType,
-sourceProperties,
-sourceServerID,
+connector_action,
+data_replication_info,
+fqdn_for_action_framework,
+is_archived,
+launched_instance,
+life_cycle,
+replication_type,
+source_properties,
+source_server_id,
 tags,
-userProvidedID,
-vcenterClientID;
+user_provided_id,
+vcenter_client_id;
 ```
 </TabItem>
 </Tabs>

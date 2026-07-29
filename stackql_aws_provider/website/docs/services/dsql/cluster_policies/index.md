@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A resource-based policy document in JSON format. Length constraints: Minimum length of 1. Maximum length of 20480 characters (approximately 20KB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyVersion" /></td>
+    <td><CopyableCode code="policy_version" /></td>
     <td><code>string</code></td>
     <td>The version of the policy document. This version number is incremented each time the policy is updated.</td>
 </tr>
@@ -154,7 +154,7 @@ Retrieves the resource-based policy document attached to a cluster. This policy 
 ```sql
 SELECT
 policy,
-policyVersion
+policy_version
 FROM aws.dsql.cluster_policies
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -188,7 +188,7 @@ identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 AND policy = '{{ policy }}' --required
 RETURNING
-policyVersion;
+policy_version;
 ```
 </TabItem>
 </Tabs>

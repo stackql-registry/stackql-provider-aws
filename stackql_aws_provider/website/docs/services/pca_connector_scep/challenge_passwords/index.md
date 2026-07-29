@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Password" /></td>
+    <td><CopyableCode code="password" /></td>
     <td><code>string</code></td>
     <td>The SCEP challenge password.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves the challenge password for the specified Challenge.
 
 ```sql
 SELECT
-Password
+password
 FROM aws.pca_connector_scep.challenge_passwords
 WHERE challenge_arn = '{{ challenge_arn }}' -- required
 AND region = '{{ region }}' -- required

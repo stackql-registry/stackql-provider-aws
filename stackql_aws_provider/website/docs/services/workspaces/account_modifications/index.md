@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DedicatedTenancyManagementCidrRange" /></td>
+    <td><CopyableCode code="dedicated_tenancy_management_cidr_range" /></td>
     <td><code>string</code></td>
     <td>The IP address range, specified as an IPv4 CIDR block, for the management network interface used for the account. (pattern: &lt;code&gt;(^(&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#91;0-9&#93;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)\.(&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#91;0-9&#93;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)\.0\.0)(\/(16$))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedTenancySupport" /></td>
+    <td><CopyableCode code="dedicated_tenancy_support" /></td>
     <td><code>string</code></td>
     <td>The status of BYOL (whether BYOL is being enabled or disabled). (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code that is returned if the configuration of BYOL cannot be modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The text of the error message that is returned if the configuration of BYOL cannot be modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationState" /></td>
+    <td><CopyableCode code="modification_state" /></td>
     <td><code>string</code></td>
     <td>The state of the modification to the configuration of BYOL. (PENDING, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the modification of the BYOL configuration was started.</td>
 </tr>
@@ -144,12 +144,12 @@ Retrieves a list that describes modifications to the configuration of Bring Your
 
 ```sql
 SELECT
-DedicatedTenancyManagementCidrRange,
-DedicatedTenancySupport,
-ErrorCode,
-ErrorMessage,
-ModificationState,
-StartTime
+dedicated_tenancy_management_cidr_range,
+dedicated_tenancy_support,
+error_code,
+error_message,
+modification_state,
+start_time
 FROM aws.workspaces.account_modifications
 WHERE region = '{{ region }}' -- required
 ;

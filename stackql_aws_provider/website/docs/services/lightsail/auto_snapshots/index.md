@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoSnapshots" /></td>
+    <td><CopyableCode code="auto_snapshots" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the automatic snapshots that are available for the specified source instance or disk.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source instance or disk for the automatic snapshots. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the automatic snapshot. The possible values are Instance, and Disk. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
@@ -136,9 +136,9 @@ Returns the available automatic snapshots for an instance or disk. For more info
 
 ```sql
 SELECT
-autoSnapshots,
-resourceName,
-resourceType
+auto_snapshots,
+resource_name,
+resource_type
 FROM aws.lightsail.auto_snapshots
 WHERE region = '{{ region }}' -- required
 ;

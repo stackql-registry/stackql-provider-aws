@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Instance" /></td>
+    <td><CopyableCode code="instance" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains information about a specified instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that created the namespace that contains the service that the instance is associated with. If this isn't your account ID, it's the ID of the account that shared the namespace with your account.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>A string map that contains the following information: The attributes that are associated with the instance. For each attribute, the applicable value. Supported attribute keys include the following: AWS_ALIAS_DNS_NAME For an alias record that routes traffic to an Elastic Load Balancing load balancer, the DNS name that's associated with the load balancer. AWS_EC2_INSTANCE_ID (HTTP namespaces only) The Amazon EC2 instance ID for the instance. When the AWS_EC2_INSTANCE_ID attribute is specified, then the AWS_INSTANCE_IPV4 attribute contains the primary private IPv4 address. AWS_INIT_HEALTH_STATUS If the service configuration includes HealthCheckCustomConfig, you can optionally use AWS_INIT_HEALTH_STATUS to specify the initial status of the custom health check, HEALTHY or UNHEALTHY. If you don't specify a value for AWS_INIT_HEALTH_STATUS, the initial status is HEALTHY. AWS_INSTANCE_CNAME For a CNAME record, the domain name that Route 53 returns in response to DNS queries (for example, example.com). AWS_INSTANCE_IPV4 For an A record, the IPv4 address that Route 53 returns in response to DNS queries (for example, 192.0.2.44). AWS_INSTANCE_IPV6 For an AAAA record, the IPv6 address that Route 53 returns in response to DNS queries (for example, 2001:0db8:85a3:0000:0000:abcd:0001:2345). AWS_INSTANCE_PORT For an SRV record, the value that Route 53 returns for the port. In addition, if the service includes HealthCheckConfig, the port on the endpoint that Route 53 sends requests to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccount" /></td>
+    <td><CopyableCode code="created_by_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that registered the instance. If this isn't your account ID, it's the ID of the account that shared the namespace with your account or the ID of another account with which the namespace has been shared. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for an instance that you created by using a specified service.</td>
 </tr>
@@ -190,8 +190,8 @@ Gets information about a specified instance.
 
 ```sql
 SELECT
-Instance,
-ResourceOwner
+instance,
+resource_owner
 FROM aws.servicediscovery.instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,9 +203,9 @@ Lists summary information about the instances that you registered by using a spe
 
 ```sql
 SELECT
-Attributes,
-CreatedByAccount,
-Id
+attributes,
+created_by_account,
+id
 FROM aws.servicediscovery.instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,7 +242,7 @@ SELECT
 '{{ Attributes }}',
 '{{ region }}'
 RETURNING
-OperationId
+operation_id
 ;
 ```
 </TabItem>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MiddleboxAttachmentIds" /></td>
+    <td><CopyableCode code="middlebox_attachment_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the middlebox attachments associated with the metering policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway metering policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the transit gateway metering policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway associated with the metering policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayMeteringPolicyId" /></td>
+    <td><CopyableCode code="transit_gateway_metering_policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway metering policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateEffectiveAt" /></td>
+    <td><CopyableCode code="update_effective_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when the metering policy update becomes effective.</td>
 </tr>
@@ -220,12 +220,12 @@ Describes one or more transit gateway metering policies.
 
 ```sql
 SELECT
-MiddleboxAttachmentIds,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayMeteringPolicyId,
-UpdateEffectiveAt
+middlebox_attachment_ids,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_metering_policy_id,
+update_effective_at
 FROM aws.ec2.transit_gateway_metering_policies
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayMeteringPolicyIds = '{{ TransitGatewayMeteringPolicyIds }}'
@@ -267,12 +267,12 @@ SELECT
 '{{ TagSpecifications }}',
 '{{ DryRun }}'
 RETURNING
-MiddleboxAttachmentIds,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayMeteringPolicyId,
-UpdateEffectiveAt
+middlebox_attachment_ids,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_metering_policy_id,
+update_effective_at
 ;
 ```
 </TabItem>
@@ -328,12 +328,12 @@ AND AddMiddleboxAttachmentId = '{{ AddMiddleboxAttachmentId}}'
 AND RemoveMiddleboxAttachmentId = '{{ RemoveMiddleboxAttachmentId}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-MiddleboxAttachmentIds,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayMeteringPolicyId,
-UpdateEffectiveAt;
+middlebox_attachment_ids,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_metering_policy_id,
+update_effective_at;
 ```
 </TabItem>
 </Tabs>

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the new resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the wireless gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoRaWAN" /></td>
+    <td><CopyableCode code="lo_ra_wan" /></td>
     <td><code>object</code></td>
     <td>LoRaWANGateway object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThingArn" /></td>
+    <td><CopyableCode code="thing_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the thing associated with the wireless gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing associated with the wireless gateway. The value is empty if a thing isn't associated with the gateway.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessGatewayList" /></td>
+    <td><CopyableCode code="wireless_gateway_list" /></td>
     <td><code>array</code></td>
     <td>The ID of the wireless gateway.</td>
 </tr>
@@ -256,13 +256,13 @@ Gets information about a wireless gateway.
 
 ```sql
 SELECT
-Arn,
-Description,
-Id,
-LoRaWAN,
-Name,
-ThingArn,
-ThingName
+arn,
+description,
+id,
+lo_ra_wan,
+name,
+thing_arn,
+thing_name
 FROM aws.iotwireless.wireless_gateways
 WHERE identifier = '{{ identifier }}' -- required
 AND identifierType = '{{ identifierType }}' -- required
@@ -276,8 +276,8 @@ Lists the wireless gateways registered to your AWS account.
 
 ```sql
 SELECT
-NextToken,
-WirelessGatewayList
+next_token,
+wireless_gateway_list
 FROM aws.iotwireless.wireless_gateways
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -318,8 +318,8 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>
@@ -393,7 +393,7 @@ id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 AND IotCertificateId = '{{ IotCertificateId }}' --required
 RETURNING
-IotCertificateId;
+iot_certificate_id;
 ```
 </TabItem>
 <TabItem value="associate_wireless_gateway_with_thing">

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the API documentation snapshot is created.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the API documentation snapshot is created.</td>
 </tr>
@@ -208,7 +208,7 @@ Gets a documentation version.
 
 ```sql
 SELECT
-createdDate,
+created_date,
 description,
 version
 FROM aws.apigateway.documentation_versions
@@ -224,7 +224,7 @@ Gets documentation versions.
 
 ```sql
 SELECT
-createdDate,
+created_date,
 description,
 version
 FROM aws.apigateway.documentation_versions
@@ -266,7 +266,7 @@ SELECT
 '{{ restapi_id }}',
 '{{ region }}'
 RETURNING
-createdDate,
+created_date,
 description,
 version
 ;
@@ -316,7 +316,7 @@ restapi_id = '{{ restapi_id }}' --required
 AND doc_version = '{{ doc_version }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-createdDate,
+created_date,
 description,
 version;
 ```

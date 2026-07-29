@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="sourceCredentialsInfos" /></td>
+    <td><CopyableCode code="source_credentials_infos" /></td>
     <td><code>array</code></td>
     <td>A list of SourceCredentialsInfo objects. Each SourceCredentialsInfo object includes the authentication type, token ARN, and type of source provider for one set of credentials.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a list of SourceCredentialsInfo objects.
 
 ```sql
 SELECT
-sourceCredentialsInfos
+source_credentials_infos
 FROM aws.codebuild.source_credentials
 WHERE region = '{{ region }}' -- required
 ;

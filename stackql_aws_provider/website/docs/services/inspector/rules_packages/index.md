@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedItems" /></td>
+    <td><CopyableCode code="failed_items" /></td>
     <td><code>object</code></td>
     <td>Rules package details that cannot be described. An error code is provided for each failed item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rulesPackages" /></td>
+    <td><CopyableCode code="rules_packages" /></td>
     <td><code>array</code></td>
     <td>Information about the rules package.</td>
 </tr>
@@ -152,8 +152,8 @@ Describes the rules packages that are specified by the ARNs of the rules package
 
 ```sql
 SELECT
-failedItems,
-rulesPackages
+failed_items,
+rules_packages
 FROM aws.inspector.rules_packages
 WHERE region = '{{ region }}' -- required
 ;

@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The action in the analyzed policy statement that an external principal has permission to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyzedAt" /></td>
+    <td><CopyableCode code="analyzed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the resource was analyzed.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The condition in the analyzed policy statement that resulted in a finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the finding was generated.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>An error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPublic" /></td>
+    <td><CopyableCode code="is_public" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the policy that generated the finding allows public access to the resource.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
     <td>The resource that an external principal has access to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceControlPolicyRestriction" /></td>
+    <td><CopyableCode code="resource_control_policy_restriction" /></td>
     <td><code>string</code></td>
     <td>The type of restriction applied to the finding by the resource owner with an Organizations resource control policy (RCP). (APPLICABLE, FAILED_TO_EVALUATE_RCP, NOT_APPLICABLE, APPLIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceOwnerAccount" /></td>
+    <td><CopyableCode code="resource_owner_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource identified in the finding. (AWS::S3::Bucket, AWS::IAM::Role, AWS::SQS::Queue, AWS::Lambda::Function, AWS::Lambda::LayerVersion, AWS::KMS::Key, AWS::SecretsManager::Secret, AWS::EFS::FileSystem, AWS::EC2::Snapshot, AWS::ECR::Repository, AWS::RDS::DBSnapshot, AWS::RDS::DBClusterSnapshot, AWS::SNS::Topic, AWS::S3Express::DirectoryBucket, AWS::DynamoDB::Table, AWS::DynamoDB::Stream, AWS::IAM::User)</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the finding. (ACTIVE, ARCHIVED, RESOLVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the finding was updated.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The action in the analyzed policy statement that an external principal has permission to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyzedAt" /></td>
+    <td><CopyableCode code="analyzed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the resource-based policy that generated the finding was analyzed.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The condition in the analyzed policy statement that resulted in a finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the finding was created.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The error that resulted in an Error finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPublic" /></td>
+    <td><CopyableCode code="is_public" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the finding reports a resource that has a policy that allows public access.</td>
 </tr>
@@ -185,17 +185,17 @@ The following fields are returned by `SELECT` queries:
     <td>The resource that the external principal has access to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceControlPolicyRestriction" /></td>
+    <td><CopyableCode code="resource_control_policy_restriction" /></td>
     <td><code>string</code></td>
     <td>The type of restriction applied to the finding by the resource owner with an Organizations resource control policy (RCP). (APPLICABLE, FAILED_TO_EVALUATE_RCP, NOT_APPLICABLE, APPLIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceOwnerAccount" /></td>
+    <td><CopyableCode code="resource_owner_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource that the external principal has access to. (AWS::S3::Bucket, AWS::IAM::Role, AWS::SQS::Queue, AWS::Lambda::Function, AWS::Lambda::LayerVersion, AWS::KMS::Key, AWS::SecretsManager::Secret, AWS::EFS::FileSystem, AWS::EC2::Snapshot, AWS::ECR::Repository, AWS::RDS::DBSnapshot, AWS::RDS::DBClusterSnapshot, AWS::SNS::Topic, AWS::S3Express::DirectoryBucket, AWS::DynamoDB::Table, AWS::DynamoDB::Stream, AWS::IAM::User)</td>
 </tr>
@@ -210,7 +210,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the finding. (ACTIVE, ARCHIVED, RESOLVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the finding was most recently updated.</td>
 </tr>
@@ -313,19 +313,19 @@ Retrieves information about the specified finding. GetFinding and GetFindingV2 b
 SELECT
 id,
 action,
-analyzedAt,
+analyzed_at,
 condition,
-createdAt,
+created_at,
 error,
-isPublic,
+is_public,
 principal,
 resource,
-resourceControlPolicyRestriction,
-resourceOwnerAccount,
-resourceType,
+resource_control_policy_restriction,
+resource_owner_account,
+resource_type,
 sources,
 status,
-updatedAt
+updated_at
 FROM aws.accessanalyzer.findings
 WHERE analyzerArn = '{{ analyzerArn }}' -- required
 AND id = '{{ id }}' -- required
@@ -341,19 +341,19 @@ Retrieves a list of findings generated by the specified analyzer. ListFindings a
 SELECT
 id,
 action,
-analyzedAt,
+analyzed_at,
 condition,
-createdAt,
+created_at,
 error,
-isPublic,
+is_public,
 principal,
 resource,
-resourceControlPolicyRestriction,
-resourceOwnerAccount,
-resourceType,
+resource_control_policy_restriction,
+resource_owner_account,
+resource_type,
 sources,
 status,
-updatedAt
+updated_at
 FROM aws.accessanalyzer.findings
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>object</code></td>
     <td>A map of policy names to policies.</td>
 </tr>
@@ -150,7 +150,7 @@ Returns the requested sending authorization policies for the given identity (an 
 
 ```sql
 SELECT
-Policies
+policies
 FROM aws.sesv2.email_identity_policies
 WHERE email_identity = '{{ email_identity }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Limitations" /></td>
+    <td><CopyableCode code="limitations" /></td>
     <td><code>array</code></td>
     <td>The list of limitations for recommendations of target Amazon Web Services engines.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The unique pagination token returned for you to pass to a subsequent request. Fleet Advisor returns this token when the number of records in the response is greater than the MaxRecords value. To retrieve the next page, make the call again using the returned token and keeping all other arguments unchanged.</td>
 </tr>
@@ -124,8 +124,8 @@ End of support notice: On May 20, 2026, Amazon Web Services will end support for
 
 ```sql
 SELECT
-Limitations,
-NextToken
+limitations,
+next_token
 FROM aws.dms.recommendation_limitations
 WHERE region = '{{ region }}' -- required
 ;

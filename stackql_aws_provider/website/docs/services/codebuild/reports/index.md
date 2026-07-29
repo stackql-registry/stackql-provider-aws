@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The array of Report objects returned by BatchGetReports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportsNotFound" /></td>
+    <td><CopyableCode code="reports_not_found" /></td>
     <td><code>array</code></td>
     <td>An array of ARNs passed to BatchGetReportGroups that are not associated with a Report.</td>
 </tr>
@@ -160,7 +160,7 @@ Returns an array of reports.
 ```sql
 SELECT
 reports,
-reportsNotFound
+reports_not_found
 FROM aws.codebuild.reports
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>The Connect attachment options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Connect attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransportTransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transport_transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the attachment from which the Connect attachment was created.</td>
 </tr>
@@ -208,13 +208,13 @@ Describes one or more Connect attachments.
 
 ```sql
 SELECT
-CreationTime,
-Options,
-State,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-TransportTransitGatewayAttachmentId
+creation_time,
+options,
+state,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+transport_transit_gateway_attachment_id
 FROM aws.ec2.transit_gateway_connects
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayAttachmentIds = '{{ TransitGatewayAttachmentIds }}'
@@ -256,13 +256,13 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-CreationTime,
-Options,
-State,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-TransportTransitGatewayAttachmentId
+creation_time,
+options,
+state,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+transport_transit_gateway_attachment_id
 ;
 ```
 </TabItem>

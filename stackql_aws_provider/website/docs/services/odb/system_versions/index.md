@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="giVersion" /></td>
+    <td><CopyableCode code="gi_version" /></td>
     <td><code>string</code></td>
     <td>The version of GI software.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Exadata hardware model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="systemVersions" /></td>
+    <td><CopyableCode code="system_versions" /></td>
     <td><code>array</code></td>
     <td>The Exadata system versions that are compatible with the specified Exadata shape and GI version.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns information about the system versions that are available for a VM cluste
 
 ```sql
 SELECT
-giVersion,
+gi_version,
 shape,
-systemVersions
+system_versions
 FROM aws.odb.system_versions
 WHERE region = '{{ region }}' -- required
 ;

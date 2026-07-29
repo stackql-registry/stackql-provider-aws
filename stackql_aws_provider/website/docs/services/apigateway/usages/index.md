@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The ending date of the usage data.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The starting date of the usage data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usagePlanId" /></td>
+    <td><CopyableCode code="usage_plan_id" /></td>
     <td><code>string</code></td>
     <td>The plan Id associated with this usage data.</td>
 </tr>
@@ -181,11 +181,11 @@ Gets the usage data of a usage plan in a specified time interval.
 
 ```sql
 SELECT
-endDate,
+end_date,
 items_,
 position,
-startDate,
-usagePlanId
+start_date,
+usage_plan_id
 FROM aws.apigateway.usages
 WHERE usageplan_id = '{{ usageplan_id }}' -- required
 AND startDate = '{{ startDate }}' -- required
@@ -221,11 +221,11 @@ usageplan_id = '{{ usageplan_id }}' --required
 AND key_id = '{{ key_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-endDate,
+end_date,
 items_,
 position,
-startDate,
-usagePlanId;
+start_date,
+usage_plan_id;
 ```
 </TabItem>
 </Tabs>

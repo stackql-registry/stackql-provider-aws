@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessPolicy" /></td>
+    <td><CopyableCode code="access_policy" /></td>
     <td><code>string</code></td>
     <td>An IAM policy document that governs which Amazon Web Services accounts can create subscription filters against this destination.</td>
 </tr>
@@ -60,22 +60,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of this destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The creation time of the destination, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationName" /></td>
+    <td><CopyableCode code="destination_name" /></td>
     <td><code>string</code></td>
     <td>The name of the destination. (pattern: &lt;code&gt;&#91;^:*&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>A role for impersonation, used when delivering log events to the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for example, a Kinesis stream).</td>
 </tr>
@@ -165,12 +165,12 @@ Lists all your destinations. The results are ASCII-sorted by destination name.
 
 ```sql
 SELECT
-accessPolicy,
+access_policy,
 arn,
-creationTime,
-destinationName,
-roleArn,
-targetArn
+creation_time,
+destination_name,
+role_arn,
+target_arn
 FROM aws.logs.destinations
 WHERE region = '{{ region }}' -- required
 ;

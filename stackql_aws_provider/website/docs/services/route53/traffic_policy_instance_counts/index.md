@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TrafficPolicyInstanceCount" /></td>
+    <td><CopyableCode code="traffic_policy_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of traffic policy instances that are associated with the current Amazon Web Services account.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets the number of traffic policy instances that are associated with the current
 
 ```sql
 SELECT
-TrafficPolicyInstanceCount
+traffic_policy_instance_count
 FROM aws.route53.traffic_policy_instance_counts
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregatedTestFindingsResult" /></td>
+    <td><CopyableCode code="aggregated_test_findings_result" /></td>
     <td><code>string</code></td>
     <td>A summary of all test findings, aggregated to provide an overall assessment of policy quality and correctness. (VALID, INVALID, SATISFIABLE, IMPOSSIBLE, TRANSLATION_AMBIGUOUS, TOO_COMPLEX, NO_TRANSLATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Automated Reasoning policy that was tested. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testCase" /></td>
+    <td><CopyableCode code="test_case" /></td>
     <td><code>object</code></td>
     <td>Represents a test for validating an Automated Reasoning policy. tests contain sample inputs and expected outcomes to verify policy behavior.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testFindings" /></td>
+    <td><CopyableCode code="test_findings" /></td>
     <td><code>array</code></td>
     <td>Detailed findings from the test run, including any issues, violations, or unexpected behaviors discovered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testRunResult" /></td>
+    <td><CopyableCode code="test_run_result" /></td>
     <td><code>string</code></td>
     <td>The overall result of the test run, indicating whether the policy passed or failed validation. (PASSED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testRunStatus" /></td>
+    <td><CopyableCode code="test_run_status" /></td>
     <td><code>string</code></td>
     <td>The overall status of the test run (e.g., COMPLETED, FAILED, IN_PROGRESS). (NOT_STARTED, SCHEDULED, IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the test results were last updated.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregatedTestFindingsResult" /></td>
+    <td><CopyableCode code="aggregated_test_findings_result" /></td>
     <td><code>string</code></td>
     <td>A summary of all test findings, aggregated to provide an overall assessment of policy quality and correctness. (VALID, INVALID, SATISFIABLE, IMPOSSIBLE, TRANSLATION_AMBIGUOUS, TOO_COMPLEX, NO_TRANSLATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Automated Reasoning policy that was tested. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testCase" /></td>
+    <td><CopyableCode code="test_case" /></td>
     <td><code>object</code></td>
     <td>Represents a test for validating an Automated Reasoning policy. tests contain sample inputs and expected outcomes to verify policy behavior.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testFindings" /></td>
+    <td><CopyableCode code="test_findings" /></td>
     <td><code>array</code></td>
     <td>Detailed findings from the test run, including any issues, violations, or unexpected behaviors discovered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testRunResult" /></td>
+    <td><CopyableCode code="test_run_result" /></td>
     <td><code>string</code></td>
     <td>The overall result of the test run, indicating whether the policy passed or failed validation. (PASSED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testRunStatus" /></td>
+    <td><CopyableCode code="test_run_status" /></td>
     <td><code>string</code></td>
     <td>The overall status of the test run (e.g., COMPLETED, FAILED, IN_PROGRESS). (NOT_STARTED, SCHEDULED, IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the test results were last updated.</td>
 </tr>
@@ -232,13 +232,13 @@ Retrieves the test result for a specific Automated Reasoning policy test. Return
 
 ```sql
 SELECT
-aggregatedTestFindingsResult,
-policyArn,
-testCase,
-testFindings,
-testRunResult,
-testRunStatus,
-updatedAt
+aggregated_test_findings_result,
+policy_arn,
+test_case,
+test_findings,
+test_run_result,
+test_run_status,
+updated_at
 FROM aws.bedrock.automated_reasoning_policy_test_results
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND build_workflow_id = '{{ build_workflow_id }}' -- required
@@ -253,13 +253,13 @@ Lists test results for an Automated Reasoning policy, showing how the policy per
 
 ```sql
 SELECT
-aggregatedTestFindingsResult,
-policyArn,
-testCase,
-testFindings,
-testRunResult,
-testRunStatus,
-updatedAt
+aggregated_test_findings_result,
+policy_arn,
+test_case,
+test_findings,
+test_run_result,
+test_run_status,
+updated_at
 FROM aws.bedrock.automated_reasoning_policy_test_results
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND build_workflow_id = '{{ build_workflow_id }}' -- required

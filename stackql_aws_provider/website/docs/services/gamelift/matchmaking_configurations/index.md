@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceptanceRequired" /></td>
+    <td><CopyableCode code="acceptance_required" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE. When this option is enabled, matchmaking tickets use the status REQUIRES_ACCEPTANCE to indicate when a completed potential match is waiting for player acceptance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AcceptanceTimeoutSeconds" /></td>
+    <td><CopyableCode code="acceptance_timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The length of time (in seconds) to wait for players to accept a proposed match, if acceptance is required. If any player rejects the match or fails to accept before the timeout, the ticket continues to look for an acceptable match.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdditionalPlayerCount" /></td>
+    <td><CopyableCode code="additional_player_count" /></td>
     <td><code>integer</code></td>
     <td>The number of player slots in a match to keep open for future players. For example, if the configuration's rule set specifies a match for a single 12-person team, and the additional player count is set to 2, only 10 players are selected for the match. This parameter is not used when FlexMatchMode is set to STANDALONE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackfillMode" /></td>
+    <td><CopyableCode code="backfill_mode" /></td>
     <td><code>string</code></td>
     <td>The method used to backfill game sessions created with this matchmaking configuration. MANUAL indicates that the game makes backfill requests or does not use the match backfill feature. AUTOMATIC indicates that GameLift creates backfill requests whenever a game session has one or more open slots. Learn more about manual and automatic backfill in Backfill existing games with FlexMatch. Automatic backfill is not available when FlexMatchMode is set to STANDALONE. (AUTOMATIC, MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationArn" /></td>
+    <td><CopyableCode code="configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers matchmaking configuration resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::matchmakingconfiguration/&lt;matchmaking configuration name&gt;. In a Amazon GameLift Servers configuration ARN, the resource ID matches the Name value. (pattern: &lt;code&gt;^arn:.*:matchmakingconfiguration\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomEventData" /></td>
+    <td><CopyableCode code="custom_event_data" /></td>
     <td><code>string</code></td>
     <td>Information to attach to all events related to the matchmaking configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with matchmaking configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlexMatchMode" /></td>
+    <td><CopyableCode code="flex_match_mode" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this matchmaking configuration is being used with Amazon GameLift Servers hosting or as a standalone matchmaking solution. STANDALONE - FlexMatch forms matches and returns match information, including players and team assignments, in a MatchmakingSucceeded event. WITH_QUEUE - FlexMatch forms matches and uses the specified Amazon GameLift Servers queue to start a game session for the match. (STANDALONE, WITH_QUEUE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameProperties" /></td>
+    <td><CopyableCode code="game_properties" /></td>
     <td><code>array</code></td>
     <td>A set of key-value pairs that can store custom data in a game session. For example: &#123;"Key": "difficulty", "Value": "novice"&#125;. This information is added to the new GameSession object that is created for a successful match. This parameter is not used when FlexMatchMode is set to STANDALONE. Avoid using periods (".") in property keys if you plan to search for game sessions by properties. Property keys containing periods cannot be searched and will be filtered out from search results due to search index limitations. If you use SearchGameSessions API, there is a limit of 500 game property keys across all game sessions and all fleets per region. If the limit is exceeded, there will potentially be game session entries missing from SearchGameSessions API results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameSessionData" /></td>
+    <td><CopyableCode code="game_session_data" /></td>
     <td><code>string</code></td>
     <td>A set of custom game session properties, formatted as a single string value. This data is passed to a game server process with a request to start a new game session. For more information, see Start a game session. This information is added to the new GameSession object that is created for a successful match. This parameter is not used when FlexMatchMode is set to STANDALONE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameSessionQueueArns" /></td>
+    <td><CopyableCode code="game_session_queue_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers game session queue resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::gamesessionqueue/&lt;queue name&gt;. Queues can be located in any Region. Queues are used to start new Amazon GameLift Servers-hosted game sessions for matches that are created with this matchmaking configuration. This property is not set when FlexMatchMode is set to STANDALONE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationTarget" /></td>
+    <td><CopyableCode code="notification_target" /></td>
     <td><code>string</code></td>
     <td>An SNS topic ARN that is set up to receive matchmaking notifications. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_/-&#93;*(.fifo)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestTimeoutSeconds" /></td>
+    <td><CopyableCode code="request_timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that fail due to timing out can be resubmitted as needed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetArn" /></td>
+    <td><CopyableCode code="rule_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the GameLift matchmaking rule set resource that this configuration uses. (pattern: &lt;code&gt;^arn:.*:matchmakingruleset\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetName" /></td>
+    <td><CopyableCode code="rule_set_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -220,23 +220,23 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-AcceptanceRequired,
-AcceptanceTimeoutSeconds,
-AdditionalPlayerCount,
-BackfillMode,
-ConfigurationArn,
-CreationTime,
-CustomEventData,
-Description,
-FlexMatchMode,
-GameProperties,
-GameSessionData,
-GameSessionQueueArns,
-Name,
-NotificationTarget,
-RequestTimeoutSeconds,
-RuleSetArn,
-RuleSetName
+acceptance_required,
+acceptance_timeout_seconds,
+additional_player_count,
+backfill_mode,
+configuration_arn,
+creation_time,
+custom_event_data,
+description,
+flex_match_mode,
+game_properties,
+game_session_data,
+game_session_queue_arns,
+name,
+notification_target,
+request_timeout_seconds,
+rule_set_arn,
+rule_set_name
 FROM aws.gamelift.matchmaking_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -295,7 +295,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Configuration
+configuration
 ;
 ```
 </TabItem>
@@ -412,7 +412,7 @@ FlexMatchMode = '{{ FlexMatchMode }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Configuration;
+configuration;
 ```
 </TabItem>
 </Tabs>

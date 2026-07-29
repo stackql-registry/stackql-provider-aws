@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cluster. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterEndpoints" /></td>
+    <td><CopyableCode code="cluster_endpoints" /></td>
     <td><code>array</code></td>
     <td>Endpoints for a cluster. Specify one of these endpoints when you want to set or retrieve a routing control state in the cluster. To get or update the routing control state, see the Amazon Route 53 Application Recovery Controller Routing Control Actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of a cluster. NetworkType can be one of the following: IPV4: Cluster endpoints support IPv4 only. DUALSTACK: Cluster endpoints support both IPv4 and IPv6. (IPV4, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the cluster owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Deployment status of a resource. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION. (PENDING, DEPLOYED, PENDING_DELETION)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cluster. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterEndpoints" /></td>
+    <td><CopyableCode code="cluster_endpoints" /></td>
     <td><code>array</code></td>
     <td>Endpoints for a cluster. Specify one of these endpoints when you want to set or retrieve a routing control state in the cluster. To get or update the routing control state, see the Amazon Route 53 Application Recovery Controller Routing Control Actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of a cluster. NetworkType can be one of the following: IPV4: Cluster endpoints support IPv4 only. DUALSTACK: Cluster endpoints support both IPv4 and IPv6. (IPV4, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the cluster owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Deployment status of a resource. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION. (PENDING, DEPLOYED, PENDING_DELETION)</td>
 </tr>
@@ -233,12 +233,12 @@ Display the details about a cluster. The response includes the cluster name, end
 
 ```sql
 SELECT
-ClusterArn,
-ClusterEndpoints,
-Name,
-NetworkType,
-Owner,
-Status
+cluster_arn,
+cluster_endpoints,
+name,
+network_type,
+owner,
+status
 FROM aws.route53_recovery_control_config.clusters
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -251,12 +251,12 @@ Returns an array of all the clusters in an account.
 
 ```sql
 SELECT
-ClusterArn,
-ClusterEndpoints,
-Name,
-NetworkType,
-Owner,
-Status
+cluster_arn,
+cluster_endpoints,
+name,
+network_type,
+owner,
+status
 FROM aws.route53_recovery_control_config.clusters
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -295,7 +295,7 @@ SELECT
 '{{ NetworkType }}',
 '{{ region }}'
 RETURNING
-Cluster
+cluster
 ;
 ```
 </TabItem>
@@ -346,7 +346,7 @@ region = '{{ region }}' --required
 AND ClusterArn = '{{ ClusterArn }}' --required
 AND NetworkType = '{{ NetworkType }}' --required
 RETURNING
-Cluster;
+cluster;
 ```
 </TabItem>
 </Tabs>

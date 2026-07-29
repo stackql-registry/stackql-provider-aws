@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupVaultArn" /></td>
+    <td><CopyableCode code="backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a backup vault; for example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryPointArn" /></td>
+    <td><CopyableCode code="recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the recovery point. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreMetadata" /></td>
+    <td><CopyableCode code="restore_metadata" /></td>
     <td><code>object</code></td>
     <td>The set of metadata key-value pairs that describe the original configuration of the backed-up resource. These values vary depending on the service that is being restored.</td>
 </tr>
@@ -149,10 +149,10 @@ Returns a set of metadata key-value pairs that were used to create the backup.
 
 ```sql
 SELECT
-BackupVaultArn,
-RecoveryPointArn,
-ResourceType,
-RestoreMetadata
+backup_vault_arn,
+recovery_point_arn,
+resource_type,
+restore_metadata
 FROM aws.backup.recovery_point_restore_metadatas
 WHERE backup_vault_name = '{{ backup_vault_name }}' -- required
 AND recovery_point_arn = '{{ recovery_point_arn }}' -- required

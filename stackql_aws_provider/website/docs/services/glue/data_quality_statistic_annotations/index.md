@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Annotations" /></td>
+    <td><CopyableCode code="annotations" /></td>
     <td><code>array</code></td>
     <td>A list of StatisticAnnotation applied to the Statistic</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token to retrieve the next set of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieve annotations for a data quality statistic.
 
 ```sql
 SELECT
-Annotations,
-NextToken
+annotations,
+next_token
 FROM aws.glue.data_quality_statistic_annotations
 WHERE region = '{{ region }}' -- required
 ;

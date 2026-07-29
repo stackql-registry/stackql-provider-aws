@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the bot alias. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botName" /></td>
+    <td><CopyableCode code="bot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the bot that the alias points to. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that the alias points to. (pattern: &lt;code&gt;\$LATEST|&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>Checksum of the bot alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conversationLogs" /></td>
+    <td><CopyableCode code="conversation_logs" /></td>
     <td><code>object</code></td>
     <td>The settings that determine how Amazon Lex uses conversation logs for the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot alias was created.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the bot alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.</td>
 </tr>
@@ -179,13 +179,13 @@ Returns information about an Amazon Lex bot alias. For more information about al
 ```sql
 SELECT
 name,
-botName,
-botVersion,
+bot_name,
+bot_version,
 checksum,
-conversationLogs,
-createdDate,
+conversation_logs,
+created_date,
 description,
-lastUpdatedDate
+last_updated_date
 FROM aws.lex_models.bot_alias
 WHERE name = '{{ name }}' -- required
 AND bot_name = '{{ bot_name }}' -- required
@@ -223,13 +223,13 @@ AND region = '{{ region }}' --required
 AND botVersion = '{{ botVersion }}' --required
 RETURNING
 name,
-botName,
-botVersion,
+bot_name,
+bot_version,
 checksum,
-conversationLogs,
-createdDate,
+conversation_logs,
+created_date,
 description,
-lastUpdatedDate,
+last_updated_date,
 tags;
 ```
 </TabItem>

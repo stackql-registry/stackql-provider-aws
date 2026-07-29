@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The tag key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The tag value.</td>
 </tr>
@@ -183,10 +183,10 @@ Describes the specified tags for your EC2 resources. For more information about 
 
 ```sql
 SELECT
-Key,
-ResourceId,
-ResourceType,
-Value
+key,
+resource_id,
+resource_type,
+value
 FROM aws.ec2.tags
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

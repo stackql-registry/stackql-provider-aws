@@ -51,122 +51,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user associated with the creation of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataCatalogOutputs" /></td>
+    <td><CopyableCode code="data_catalog_outputs" /></td>
     <td><code>array</code></td>
     <td>One or more artifacts that represent the Glue Data Catalog output from running the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseOutputs" /></td>
+    <td><CopyableCode code="database_outputs" /></td>
     <td><code>array</code></td>
     <td>Represents a list of JDBC database output objects which defines the output destination for a DataBrew recipe job to write into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The dataset that the job acts upon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionMode" /></td>
+    <td><CopyableCode code="encryption_mode" /></td>
     <td><code>string</code></td>
     <td>The encryption mode for the job, which can be one of the following: SSE-KMS - Server-side encryption with keys managed by KMS. SSE-S3 - Server-side encryption with keys managed by Amazon S3. (SSE-KMS, SSE-S3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobSample" /></td>
+    <td><CopyableCode code="job_sample" /></td>
     <td><code>object</code></td>
     <td>A sample configuration for profile jobs only, which determines the number of rows on which the profile job is run. If a JobSample value isn't provided, the default is used. The default value is CUSTOM_ROWS for the mode parameter and 20,000 for the size parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who last modified the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogSubscription" /></td>
+    <td><CopyableCode code="log_subscription" /></td>
     <td><code>string</code></td>
     <td>Indicates whether Amazon CloudWatch logging is enabled for this job. (ENABLE, DISABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of compute nodes that DataBrew can consume when the job processes data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxRetries" /></td>
+    <td><CopyableCode code="max_retries" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of times to retry the job after a job run fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
     <td>One or more artifacts that represent the output from running the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileConfiguration" /></td>
+    <td><CopyableCode code="profile_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for profile jobs. Configuration can be used to select columns, do evaluations, and override default parameters of evaluations. When configuration is undefined, the profile job will apply default settings to all supported columns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The DataBrew project associated with this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeReference" /></td>
+    <td><CopyableCode code="recipe_reference" /></td>
     <td><code>object</code></td>
     <td>Represents the name and version of a DataBrew recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Identity and Access Management (IAM) role to be assumed when DataBrew runs the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags associated with this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeout" /></td>
+    <td><CopyableCode code="timeout" /></td>
     <td><code>integer</code></td>
     <td>The job's timeout in minutes. A job that attempts to run longer than this timeout period ends with a status of TIMEOUT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The job type, which must be one of the following: PROFILE - The job analyzes the dataset to determine its size, data types, data distribution, and more. RECIPE - The job applies one or more transformations to a dataset. (PROFILE, RECIPE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationConfigurations" /></td>
+    <td><CopyableCode code="validation_configurations" /></td>
     <td><code>array</code></td>
     <td>List of validation configurations that are applied to the profile job.</td>
 </tr>
@@ -185,122 +185,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataCatalogOutputs" /></td>
+    <td><CopyableCode code="data_catalog_outputs" /></td>
     <td><code>array</code></td>
     <td>One or more artifacts that represent the Glue Data Catalog output from running the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseOutputs" /></td>
+    <td><CopyableCode code="database_outputs" /></td>
     <td><code>array</code></td>
     <td>Represents a list of JDBC database output objects which defines the output destination for a DataBrew recipe job to write into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>A dataset that the job is to process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an encryption key that is used to protect the job output. For more information, see Encrypting data written by DataBrew jobs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionMode" /></td>
+    <td><CopyableCode code="encryption_mode" /></td>
     <td><code>string</code></td>
     <td>The encryption mode for the job, which can be one of the following: SSE-KMS - Server-side encryption with keys managed by KMS. SSE-S3 - Server-side encryption with keys managed by Amazon S3. (SSE-KMS, SSE-S3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobSample" /></td>
+    <td><CopyableCode code="job_sample" /></td>
     <td><code>object</code></td>
     <td>A sample configuration for profile jobs only, which determines the number of rows on which the profile job is run. If a JobSample value isn't provided, the default is used. The default value is CUSTOM_ROWS for the mode parameter and 20,000 for the size parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last modified the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The modification date and time of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogSubscription" /></td>
+    <td><CopyableCode code="log_subscription" /></td>
     <td><code>string</code></td>
     <td>The current status of Amazon CloudWatch logging for the job. (ENABLE, DISABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of nodes that can be consumed when the job processes data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxRetries" /></td>
+    <td><CopyableCode code="max_retries" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of times to retry the job after a job run fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
     <td>One or more artifacts that represent output from running the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project that the job is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeReference" /></td>
+    <td><CopyableCode code="recipe_reference" /></td>
     <td><code>object</code></td>
     <td>Represents the name and version of a DataBrew recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role to be assumed for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags that have been applied to the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeout" /></td>
+    <td><CopyableCode code="timeout" /></td>
     <td><code>integer</code></td>
     <td>The job's timeout in minutes. A job that attempts to run longer than this timeout period ends with a status of TIMEOUT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The job type of the job, which must be one of the following: PROFILE - A job to analyze a dataset, to determine its size, data types, data distribution, and more. RECIPE - A job to apply one or more transformations to a dataset. (PROFILE, RECIPE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationConfigurations" /></td>
+    <td><CopyableCode code="validation_configurations" /></td>
     <td><code>array</code></td>
     <td>List of validation configurations that are applied to the profile job.</td>
 </tr>
@@ -456,30 +456,30 @@ Returns the definition of a specific DataBrew job.
 
 ```sql
 SELECT
-CreateDate,
-CreatedBy,
-DataCatalogOutputs,
-DatabaseOutputs,
-DatasetName,
-EncryptionKeyArn,
-EncryptionMode,
-JobSample,
-LastModifiedBy,
-LastModifiedDate,
-LogSubscription,
-MaxCapacity,
-MaxRetries,
-Name,
-Outputs,
-ProfileConfiguration,
-ProjectName,
-RecipeReference,
-ResourceArn,
-RoleArn,
-Tags,
-Timeout,
-Type,
-ValidationConfigurations
+create_date,
+created_by,
+data_catalog_outputs,
+database_outputs,
+dataset_name,
+encryption_key_arn,
+encryption_mode,
+job_sample,
+last_modified_by,
+last_modified_date,
+log_subscription,
+max_capacity,
+max_retries,
+name,
+outputs,
+profile_configuration,
+project_name,
+recipe_reference,
+resource_arn,
+role_arn,
+tags,
+timeout,
+type,
+validation_configurations
 FROM aws.databrew.jobs
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -492,30 +492,30 @@ Lists all of the DataBrew jobs that are defined.
 
 ```sql
 SELECT
-AccountId,
-CreateDate,
-CreatedBy,
-DataCatalogOutputs,
-DatabaseOutputs,
-DatasetName,
-EncryptionKeyArn,
-EncryptionMode,
-JobSample,
-LastModifiedBy,
-LastModifiedDate,
-LogSubscription,
-MaxCapacity,
-MaxRetries,
-Name,
-Outputs,
-ProjectName,
-RecipeReference,
-ResourceArn,
-RoleArn,
-Tags,
-Timeout,
-Type,
-ValidationConfigurations
+account_id,
+create_date,
+created_by,
+data_catalog_outputs,
+database_outputs,
+dataset_name,
+encryption_key_arn,
+encryption_mode,
+job_sample,
+last_modified_by,
+last_modified_date,
+log_subscription,
+max_capacity,
+max_retries,
+name,
+outputs,
+project_name,
+recipe_reference,
+resource_arn,
+role_arn,
+tags,
+timeout,
+type,
+validation_configurations
 FROM aws.databrew.jobs
 WHERE region = '{{ region }}' -- required
 AND datasetName = '{{ datasetName }}'
@@ -577,7 +577,7 @@ SELECT
 '{{ JobSample }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -622,7 +622,7 @@ SELECT
 {{ Timeout }},
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -787,7 +787,7 @@ AND region = '{{ region }}' --required
 AND OutputLocation = '{{ OutputLocation }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 <TabItem value="update_recipe_job">
@@ -812,7 +812,7 @@ name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

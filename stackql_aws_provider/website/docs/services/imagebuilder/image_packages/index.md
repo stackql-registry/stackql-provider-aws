@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="packageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The name of the package that's reported to the operating system package manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageVersion" /></td>
+    <td><CopyableCode code="package_version" /></td>
     <td><code>string</code></td>
     <td>The version of the package that's reported to the operating system package manager.</td>
 </tr>
@@ -124,8 +124,8 @@ List the Packages that are associated with an Image Build Version, as determined
 
 ```sql
 SELECT
-packageName,
-packageVersion
+package_name,
+package_version
 FROM aws.imagebuilder.image_packages
 WHERE region = '{{ region }}' -- required
 ;

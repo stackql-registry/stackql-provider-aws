@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>A list of MetricDataError encountered while processing your metric data batch request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>A list of successfully retrieved MetricDataResult.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves batches of metric data collected based on your sending activity. You c
 
 ```sql
 SELECT
-Errors,
-Results
+errors,
+results
 FROM aws.sesv2.metric_datas
 WHERE region = '{{ region }}' -- required
 ;

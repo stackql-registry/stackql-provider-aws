@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the root. For more information about ARNs in Organizations, see ARN Formats Supported by Organizations in the Amazon Web Services Service Authorization Reference. (pattern: &lt;code&gt;^arn:aws:organizations::\d&#123;12&#125;:root\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/r-&#91;0-9a-z&#93;&#123;4,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) for the root. The ID is unique to the organization only. The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits. (pattern: &lt;code&gt;^r-&#91;0-9a-z&#93;&#123;4,32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the root. The regex pattern that is used to validate this parameter is a string of any of the characters in the ASCII character range.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyTypes" /></td>
+    <td><CopyableCode code="policy_types" /></td>
     <td><code>array</code></td>
     <td>The types of policies that are currently enabled for the root and therefore can be attached to the root or to its OUs or accounts. Even if a policy type is shown as available in the organization, you can separately enable and disable them at the root level by using EnablePolicyType and DisablePolicyType. Use DescribeOrganization to see the availability of the policy types in that organization.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists the roots that are defined in the current organization. When calling List*
 
 ```sql
 SELECT
-Arn,
-Id,
-Name,
-PolicyTypes
+arn,
+id,
+name,
+policy_types
 FROM aws.organizations.roots
 WHERE region = '{{ region }}' -- required
 ;

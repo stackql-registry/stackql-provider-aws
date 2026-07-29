@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the workspace. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-._~&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountAccessType" /></td>
+    <td><CopyableCode code="account_access_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the workspace can access Amazon Web Services resources in this Amazon Web Services account only, or whether it can also access Amazon Web Services resources in other accounts in the same organization. If this is ORGANIZATION, the workspaceOrganizationalUnits parameter specifies which organizational units the workspace can access. (CURRENT_ACCOUNT, ORGANIZATION)</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The date that the workspace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSources" /></td>
+    <td><CopyableCode code="data_sources" /></td>
     <td><code>array</code></td>
     <td>Specifies the Amazon Web Services data sources that have been configured to have IAM roles and permissions created to allow Amazon Managed Grafana to read data from these sources. This list is only used when the workspace was created through the Amazon Web Services console, and the permissionType is SERVICE_MANAGED.</td>
 </tr>
@@ -91,42 +91,42 @@ The following fields are returned by `SELECT` queries:
     <td>The URL that users can use to access the Grafana console in the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="freeTrialConsumed" /></td>
+    <td><CopyableCode code="free_trial_consumed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether this workspace has already fully used its free trial for Grafana Enterprise. Amazon Managed Grafana workspaces no longer support Grafana Enterprise free trials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="freeTrialExpiration" /></td>
+    <td><CopyableCode code="free_trial_expiration" /></td>
     <td><code>string (date-time)</code></td>
     <td>If this workspace is currently in the free trial period for Grafana Enterprise, this value specifies when that free trial ends. Amazon Managed Grafana workspaces no longer support Grafana Enterprise free trials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grafanaToken" /></td>
+    <td><CopyableCode code="grafana_token" /></td>
     <td><code>string</code></td>
     <td>The token that ties this workspace to a Grafana Labs account. For more information, see Link your account with Grafana Labs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grafanaVersion" /></td>
+    <td><CopyableCode code="grafana_version" /></td>
     <td><code>string</code></td>
     <td>The version of Grafana supported in this workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP addresses supported for connection to the workspace. Valid values are IPv4 and DualStack. (IPv4, DualStack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID or ARN of the Key Management Service key used for encrypting workspace data. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseExpiration" /></td>
+    <td><CopyableCode code="license_expiration" /></td>
     <td><code>string (date-time)</code></td>
     <td>If this workspace has a full Grafana Enterprise license purchased through Amazon Web Services Marketplace, this specifies when the license ends and will need to be renewed. Purchasing the Enterprise plugins option through Amazon Managed Grafana does not have an expiration. It is valid until the license is removed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseType" /></td>
+    <td><CopyableCode code="license_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether this workspace has a full Grafana Enterprise license. Amazon Managed Grafana workspaces no longer support Grafana Enterprise free trials. (ENTERPRISE, ENTERPRISE_FREE_TRIAL)</td>
 </tr>
@@ -136,32 +136,32 @@ The following fields are returned by `SELECT` queries:
     <td>The most recent date that the workspace was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkAccessControl" /></td>
+    <td><CopyableCode code="network_access_control" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for network access to your workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationDestinations" /></td>
+    <td><CopyableCode code="notification_destinations" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services notification channels that Amazon Managed Grafana can automatically create IAM roles and permissions for, to allow Amazon Managed Grafana to use these channels.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationRoleName" /></td>
+    <td><CopyableCode code="organization_role_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM role that is used to access resources through Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationalUnits" /></td>
+    <td><CopyableCode code="organizational_units" /></td>
     <td><code>array</code></td>
     <td>Specifies the organizational units that this workspace is allowed to use data sources from, if this workspace is in an account that is part of an organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="permissionType" /></td>
+    <td><CopyableCode code="permission_type" /></td>
     <td><code>string</code></td>
     <td>If this is SERVICE_MANAGED, and the workplace was created through the Amazon Managed Grafana console, then Amazon Managed Grafana automatically creates the IAM roles and provisions the permissions that the workspace needs to use Amazon Web Services data sources and notification channels. If this is CUSTOMER_MANAGED, you must manage those roles and permissions yourself. If you are working with a workspace in a member account of an organization and that account is not a delegated administrator account, and you want the workspace to access data sources in other Amazon Web Services accounts in the organization, this parameter must be set to CUSTOMER_MANAGED. For more information about converting between customer and service managed, see Managing permissions for data sources and notification channels. For more information about the roles and permissions that must be managed for customer managed workspaces, see Amazon Managed Grafana permissions and policies for Amazon Web Services data sources and notification channels (CUSTOMER_MANAGED, SERVICE_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stackSetName" /></td>
+    <td><CopyableCode code="stack_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the CloudFormation stack set that is used to generate IAM roles to be used for this workspace.</td>
 </tr>
@@ -176,12 +176,12 @@ The following fields are returned by `SELECT` queries:
     <td>The list of tags associated with the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfiguration" /></td>
+    <td><CopyableCode code="vpc_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for connecting to data sources in a private VPC (Amazon Virtual Private Cloud).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceRoleArn" /></td>
+    <td><CopyableCode code="workspace_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role that grants permissions to the Amazon Web Services resources that the workspace will view data from. This role must already exist.</td>
 </tr>
@@ -230,17 +230,17 @@ The following fields are returned by `SELECT` queries:
     <td>The URL endpoint to use to access the Grafana console in the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grafanaToken" /></td>
+    <td><CopyableCode code="grafana_token" /></td>
     <td><code>string</code></td>
     <td>The token that ties this workspace to a Grafana Labs account. For more information, see Link your account with Grafana Labs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grafanaVersion" /></td>
+    <td><CopyableCode code="grafana_version" /></td>
     <td><code>string</code></td>
     <td>The Grafana version that the workspace is running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseType" /></td>
+    <td><CopyableCode code="license_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether this workspace has a full Grafana Enterprise license. Amazon Managed Grafana workspaces no longer support Grafana Enterprise free trials. (ENTERPRISE, ENTERPRISE_FREE_TRIAL)</td>
 </tr>
@@ -250,7 +250,7 @@ The following fields are returned by `SELECT` queries:
     <td>The most recent date that the workspace was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationDestinations" /></td>
+    <td><CopyableCode code="notification_destinations" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services notification channels that Amazon Managed Grafana can automatically create IAM roles and permissions for, which allows Amazon Managed Grafana to use these channels.</td>
 </tr>
@@ -418,31 +418,31 @@ Displays information about one Amazon Managed Grafana workspace.
 SELECT
 id,
 name,
-accountAccessType,
+account_access_type,
 authentication,
 created,
-dataSources,
+data_sources,
 description,
 endpoint,
-freeTrialConsumed,
-freeTrialExpiration,
-grafanaToken,
-grafanaVersion,
-ipAddressType,
-kmsKeyId,
-licenseExpiration,
-licenseType,
+free_trial_consumed,
+free_trial_expiration,
+grafana_token,
+grafana_version,
+ip_address_type,
+kms_key_id,
+license_expiration,
+license_type,
 modified,
-networkAccessControl,
-notificationDestinations,
-organizationRoleName,
-organizationalUnits,
-permissionType,
-stackSetName,
+network_access_control,
+notification_destinations,
+organization_role_name,
+organizational_units,
+permission_type,
+stack_set_name,
 status,
 tags,
-vpcConfiguration,
-workspaceRoleArn
+vpc_configuration,
+workspace_role_arn
 FROM aws.grafana.workspaces
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -461,11 +461,11 @@ authentication,
 created,
 description,
 endpoint,
-grafanaToken,
-grafanaVersion,
-licenseType,
+grafana_token,
+grafana_version,
+license_type,
 modified,
-notificationDestinations,
+notification_destinations,
 status,
 tags
 FROM aws.grafana.workspaces
@@ -508,8 +508,8 @@ SELECT
 '{{ region }}'
 RETURNING
 key,
-keyName,
-workspaceId
+key_name,
+workspace_id
 ;
 ```
 </TabItem>

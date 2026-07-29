@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MultiRegionParameterGroups" /></td>
+    <td><CopyableCode code="multi_region_parameter_groups" /></td>
     <td><code>array</code></td>
     <td>A list of multi-region parameter groups. Each element in the list contains detailed information about one parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An optional token to include in the response. If this token is provided, the response includes only results beyond the token, up to the value specified by MaxResults.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of multi-region parameter groups.
 
 ```sql
 SELECT
-MultiRegionParameterGroups,
-NextToken
+multi_region_parameter_groups,
+next_token
 FROM aws.memorydb.multi_region_parameter_groups
 WHERE region = '{{ region }}' -- required
 ;

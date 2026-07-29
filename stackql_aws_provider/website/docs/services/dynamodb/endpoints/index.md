@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>array</code></td>
     <td>List of endpoints.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the regional endpoint information. For more information on policy permis
 
 ```sql
 SELECT
-Endpoints
+endpoints
 FROM aws.dynamodb.endpoints
 WHERE region = '{{ region }}' -- required
 ;

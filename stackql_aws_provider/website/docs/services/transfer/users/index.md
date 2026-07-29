@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ServerId" /></td>
+    <td><CopyableCode code="server_id" /></td>
     <td><code>string</code></td>
     <td>A system-assigned unique identifier for a server that has this user assigned. (pattern: &lt;code&gt;s-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="User" /></td>
+    <td><CopyableCode code="user" /></td>
     <td><code>object</code></td>
     <td>An array containing the properties of the Transfer Family user for the ServerID value that you specified.</td>
 </tr>
@@ -75,32 +75,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Provides the unique Amazon Resource Name (ARN) for the user that you want to learn about. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeDirectory" /></td>
+    <td><CopyableCode code="home_directory" /></td>
     <td><code>string</code></td>
     <td>The landing directory (folder) for a user when they log in to the server using the client. A HomeDirectory example is /bucket_name/home/mydirectory. You can use the HomeDirectory parameter for HomeDirectoryType when it is set to either PATH or LOGICAL. (pattern: &lt;code&gt;(|/.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeDirectoryType" /></td>
+    <td><CopyableCode code="home_directory_type" /></td>
     <td><code>string</code></td>
     <td>The type of landing directory (folder) that you want your users' home directory to be when they log in to the server. If you set it to PATH, the user will see the absolute Amazon S3 bucket or Amazon EFS path as is in their file transfer protocol clients. If you set it to LOGICAL, you need to provide mappings in the HomeDirectoryMappings for how you want to make Amazon S3 or Amazon EFS paths visible to your users. If HomeDirectoryType is LOGICAL, you must provide mappings, using the HomeDirectoryMappings parameter. If, on the other hand, HomeDirectoryType is PATH, you provide an absolute path using the HomeDirectory parameter. You cannot have both HomeDirectory and HomeDirectoryMappings in your template. (PATH, LOGICAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that controls your users' access to your Amazon S3 bucket or Amazon EFS file system. The policies attached to this role determine the level of access that you want to provide your users when transferring files into and out of your Amazon S3 bucket or Amazon EFS file system. The IAM role should also contain a trust relationship that allows the server to access your resources when servicing your users' transfer requests. The IAM role that controls your users' access to your Amazon S3 bucket for servers with Domain=S3, or your EFS file system for servers with Domain=EFS. The policies attached to this role determine the level of access you want to provide your users when transferring files into and out of your S3 buckets or EFS file systems. (pattern: &lt;code&gt;arn:.*role/\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SshPublicKeyCount" /></td>
+    <td><CopyableCode code="ssh_public_key_count" /></td>
     <td><code>integer</code></td>
     <td>Specifies the number of SSH public keys stored for the user you specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the user whose ARN was specified. User names are used for authentication purposes. (pattern: &lt;code&gt;&#91;\w&#93;&#91;\w@.-&#93;&#123;2,99&#125;&lt;/code&gt;)</td>
 </tr>
@@ -198,8 +198,8 @@ Describes the user assigned to the specific file transfer protocol-enabled serve
 
 ```sql
 SELECT
-ServerId,
-User
+server_id,
+user
 FROM aws.transfer.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -211,12 +211,12 @@ Lists the users for a file transfer protocol-enabled server that you specify by 
 
 ```sql
 SELECT
-Arn,
-HomeDirectory,
-HomeDirectoryType,
-Role,
-SshPublicKeyCount,
-UserName
+arn,
+home_directory,
+home_directory_type,
+role,
+ssh_public_key_count,
+user_name
 FROM aws.transfer.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,8 +265,8 @@ SELECT
 '{{ UserName }}' /* required */,
 '{{ region }}'
 RETURNING
-ServerId,
-UserName
+server_id,
+user_name
 ;
 ```
 </TabItem>
@@ -362,8 +362,8 @@ region = '{{ region }}' --required
 AND ServerId = '{{ ServerId }}' --required
 AND UserName = '{{ UserName }}' --required
 RETURNING
-ServerId,
-UserName;
+server_id,
+user_name;
 ```
 </TabItem>
 </Tabs>

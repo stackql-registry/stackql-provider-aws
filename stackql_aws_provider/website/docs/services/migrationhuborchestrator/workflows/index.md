@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adsApplicationConfigurationId" /></td>
+    <td><CopyableCode code="ads_application_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The configuration ID of the application configured in Application Discovery Service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adsApplicationName" /></td>
+    <td><CopyableCode code="ads_application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application configured in Application Discovery Service.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedSteps" /></td>
+    <td><CopyableCode code="completed_steps" /></td>
     <td><code>integer</code></td>
     <td>Get a list of completed steps in the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the migration workflow was created.</td>
 </tr>
@@ -91,22 +91,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the migration workflow ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the migration workflow was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStartTime" /></td>
+    <td><CopyableCode code="last_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the migration workflow was last started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStopTime" /></td>
+    <td><CopyableCode code="last_stop_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the migration workflow was last stopped.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the migration workflow. (CREATING, NOT_STARTED, CREATION_FAILED, STARTING, IN_PROGRESS, WORKFLOW_FAILED, PAUSED, PAUSING, PAUSING_FAILED, USER_ATTENTION_REQUIRED, DELETING, DELETION_FAILED, DELETED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the migration workflow.</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags added to the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the template.</td>
 </tr>
@@ -136,17 +136,17 @@ The following fields are returned by `SELECT` queries:
     <td>List of AWS services utilized in a migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalSteps" /></td>
+    <td><CopyableCode code="total_steps" /></td>
     <td><code>integer</code></td>
     <td>The total number of steps in the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowBucket" /></td>
+    <td><CopyableCode code="workflow_bucket" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 bucket where the migration logs are stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowInputs" /></td>
+    <td><CopyableCode code="workflow_inputs" /></td>
     <td><code>object</code></td>
     <td>The inputs required for creating the migration workflow.</td>
 </tr>
@@ -175,22 +175,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adsApplicationConfigurationName" /></td>
+    <td><CopyableCode code="ads_application_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application configured in Application Discovery Service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedSteps" /></td>
+    <td><CopyableCode code="completed_steps" /></td>
     <td><code>integer</code></td>
     <td>The steps completed in the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the migration workflow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the migration workflow ended.</td>
 </tr>
@@ -200,17 +200,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the migration workflow. (CREATING, NOT_STARTED, CREATION_FAILED, STARTING, IN_PROGRESS, WORKFLOW_FAILED, PAUSED, PAUSING, PAUSING_FAILED, USER_ATTENTION_REQUIRED, DELETING, DELETION_FAILED, DELETED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalSteps" /></td>
+    <td><CopyableCode code="total_steps" /></td>
     <td><code>integer</code></td>
     <td>All the steps in a migration workflow.</td>
 </tr>
@@ -362,24 +362,24 @@ Get migration workflow.
 SELECT
 id,
 name,
-adsApplicationConfigurationId,
-adsApplicationName,
+ads_application_configuration_id,
+ads_application_name,
 arn,
-completedSteps,
-creationTime,
+completed_steps,
+creation_time,
 description,
-endTime,
-lastModifiedTime,
-lastStartTime,
-lastStopTime,
+end_time,
+last_modified_time,
+last_start_time,
+last_stop_time,
 status,
-statusMessage,
+status_message,
 tags,
-templateId,
+template_id,
 tools,
-totalSteps,
-workflowBucket,
-workflowInputs
+total_steps,
+workflow_bucket,
+workflow_inputs
 FROM aws.migrationhuborchestrator.workflows
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -394,14 +394,14 @@ List the migration workflows.
 SELECT
 id,
 name,
-adsApplicationConfigurationName,
-completedSteps,
-creationTime,
-endTime,
+ads_application_configuration_name,
+completed_steps,
+creation_time,
+end_time,
 status,
-statusMessage,
-templateId,
-totalSteps
+status_message,
+template_id,
+total_steps
 FROM aws.migrationhuborchestrator.workflows
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -452,15 +452,15 @@ SELECT
 RETURNING
 id,
 name,
-adsApplicationConfigurationId,
+ads_application_configuration_id,
 arn,
-creationTime,
+creation_time,
 description,
 status,
-stepTargets,
+step_targets,
 tags,
-templateId,
-workflowInputs
+template_id,
+workflow_inputs
 ;
 ```
 </TabItem>
@@ -518,16 +518,16 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-adsApplicationConfigurationId,
+ads_application_configuration_id,
 arn,
-creationTime,
+creation_time,
 description,
-lastModifiedTime,
+last_modified_time,
 status,
-stepTargets,
+step_targets,
 tags,
-templateId,
-workflowInputs;
+template_id,
+workflow_inputs;
 ```
 </TabItem>
 </Tabs>

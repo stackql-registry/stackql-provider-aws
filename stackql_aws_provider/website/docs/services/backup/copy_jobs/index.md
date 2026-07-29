@@ -51,137 +51,137 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID that owns the copy job. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupSizeInBytes" /></td>
+    <td><CopyableCode code="backup_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of a copy job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChildJobsInState" /></td>
+    <td><CopyableCode code="child_jobs_in_state" /></td>
     <td><code>object</code></td>
     <td>This returns the statistics of the included child (nested) copy jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a copy job is completed, in Unix format and Coordinated Universal Time (UTC). The value of CompletionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompositeMemberIdentifier" /></td>
+    <td><CopyableCode code="composite_member_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of a resource within a composite group, such as nested (child) recovery point belonging to a composite (parent) stack. The ID is transferred from the logical ID within a stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyJobId" /></td>
+    <td><CopyableCode code="copy_job_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies a copy job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Contains information about the backup plan and rule that Backup used to initiate the recovery point backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByBackupJobId" /></td>
+    <td><CopyableCode code="created_by_backup_job_id" /></td>
     <td><code>string</code></td>
     <td>The backup job ID that initiated this copy job. Only applicable to scheduled copy jobs and automatic copy jobs to logically air-gapped vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a copy job is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationBackupVaultArn" /></td>
+    <td><CopyableCode code="destination_backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a destination copy vault; for example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationEncryptionKeyArn" /></td>
+    <td><CopyableCode code="destination_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the copied backup in the destination vault. This can be a customer-managed key or an Amazon Web Services managed key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationRecoveryPointArn" /></td>
+    <td><CopyableCode code="destination_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a destination recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationRecoveryPointLifecycle" /></td>
+    <td><CopyableCode code="destination_recovery_point_lifecycle" /></td>
     <td><code>object</code></td>
     <td>Specifies the time period, in days, before a recovery point transitions to cold storage or is deleted. Backups transitioned to cold storage must be stored in cold storage for a minimum of 90 days. Therefore, on the console, the retention setting must be 90 days greater than the transition to cold after days setting. The transition to cold after days setting can't be changed after a backup has been transitioned to cold. Resource types that can transition to cold storage are listed in the Feature availability by resource table. Backup ignores this expression for other resource types. To remove the existing lifecycle and retention periods and keep your recovery points indefinitely, specify -1 for MoveToColdStorageAfterDays and DeleteAfterDays.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationVaultLockState" /></td>
+    <td><CopyableCode code="destination_vault_lock_state" /></td>
     <td><code>string</code></td>
     <td>The lock state of the destination backup vault. For logically air-gapped vaults, this indicates whether the vault is locked in compliance mode. Valid values include LOCKED and UNLOCKED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationVaultType" /></td>
+    <td><CopyableCode code="destination_vault_type" /></td>
     <td><code>string</code></td>
     <td>The type of destination backup vault where the copied recovery point is stored. Valid values are BACKUP_VAULT for standard backup vaults and LOGICALLY_AIR_GAPPED_BACKUP_VAULT for logically air-gapped vaults.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the IAM role ARN used to copy the target recovery point; for example, arn:aws:iam::123456789012:role/S3Access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsParent" /></td>
+    <td><CopyableCode code="is_parent" /></td>
     <td><code>boolean</code></td>
     <td>This is a boolean value indicating this is a parent (composite) copy job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageCategory" /></td>
+    <td><CopyableCode code="message_category" /></td>
     <td><code>string</code></td>
     <td>This parameter is the job count for the specified message category. Example strings may include AccessDenied, SUCCESS, AGGREGATE_ALL, and InvalidParameters. See Monitoring for a list of MessageCategory strings. The the value ANY returns count of all message categories. AGGREGATE_ALL aggregates job counts for all message categories and returns the sum</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfChildJobs" /></td>
+    <td><CopyableCode code="number_of_child_jobs" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of child (nested) copy jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentJobId" /></td>
+    <td><CopyableCode code="parent_job_id" /></td>
     <td><code>string</code></td>
     <td>This uniquely identifies a request to Backup to copy a resource. The return will be the parent (composite) job ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services resource to be copied; for example, an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The non-unique name of the resource that belongs to the specified backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource to be copied; for example, an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBackupVaultArn" /></td>
+    <td><CopyableCode code="source_backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a source copy vault; for example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceRecoveryPointArn" /></td>
+    <td><CopyableCode code="source_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a source recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of a copy job. (CREATED, RUNNING, COMPLETED, FAILED, PARTIAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed message explaining the status of the job to copy a resource.</td>
 </tr>
@@ -200,137 +200,137 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID that owns the copy job. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupSizeInBytes" /></td>
+    <td><CopyableCode code="backup_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of a copy job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChildJobsInState" /></td>
+    <td><CopyableCode code="child_jobs_in_state" /></td>
     <td><code>object</code></td>
     <td>This returns the statistics of the included child (nested) copy jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a copy job is completed, in Unix format and Coordinated Universal Time (UTC). The value of CompletionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompositeMemberIdentifier" /></td>
+    <td><CopyableCode code="composite_member_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of a resource within a composite group, such as nested (child) recovery point belonging to a composite (parent) stack. The ID is transferred from the logical ID within a stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyJobId" /></td>
+    <td><CopyableCode code="copy_job_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies a copy job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Contains information about the backup plan and rule that Backup used to initiate the recovery point backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByBackupJobId" /></td>
+    <td><CopyableCode code="created_by_backup_job_id" /></td>
     <td><code>string</code></td>
     <td>The backup job ID that initiated this copy job. Only applicable to scheduled copy jobs and automatic copy jobs to logically air-gapped vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a copy job is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationBackupVaultArn" /></td>
+    <td><CopyableCode code="destination_backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a destination copy vault; for example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationEncryptionKeyArn" /></td>
+    <td><CopyableCode code="destination_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the copied backup in the destination vault. This can be a customer-managed key or an Amazon Web Services managed key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationRecoveryPointArn" /></td>
+    <td><CopyableCode code="destination_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a destination recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationRecoveryPointLifecycle" /></td>
+    <td><CopyableCode code="destination_recovery_point_lifecycle" /></td>
     <td><code>object</code></td>
     <td>Specifies the time period, in days, before a recovery point transitions to cold storage or is deleted. Backups transitioned to cold storage must be stored in cold storage for a minimum of 90 days. Therefore, on the console, the retention setting must be 90 days greater than the transition to cold after days setting. The transition to cold after days setting can't be changed after a backup has been transitioned to cold. Resource types that can transition to cold storage are listed in the Feature availability by resource table. Backup ignores this expression for other resource types. To remove the existing lifecycle and retention periods and keep your recovery points indefinitely, specify -1 for MoveToColdStorageAfterDays and DeleteAfterDays.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationVaultLockState" /></td>
+    <td><CopyableCode code="destination_vault_lock_state" /></td>
     <td><code>string</code></td>
     <td>The lock state of the destination backup vault. For logically air-gapped vaults, this indicates whether the vault is locked in compliance mode. Valid values include LOCKED and UNLOCKED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationVaultType" /></td>
+    <td><CopyableCode code="destination_vault_type" /></td>
     <td><code>string</code></td>
     <td>The type of destination backup vault where the copied recovery point is stored. Valid values are BACKUP_VAULT for standard backup vaults and LOGICALLY_AIR_GAPPED_BACKUP_VAULT for logically air-gapped vaults.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the IAM role ARN used to copy the target recovery point; for example, arn:aws:iam::123456789012:role/S3Access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsParent" /></td>
+    <td><CopyableCode code="is_parent" /></td>
     <td><code>boolean</code></td>
     <td>This is a boolean value indicating this is a parent (composite) copy job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageCategory" /></td>
+    <td><CopyableCode code="message_category" /></td>
     <td><code>string</code></td>
     <td>This parameter is the job count for the specified message category. Example strings may include AccessDenied, SUCCESS, AGGREGATE_ALL, and InvalidParameters. See Monitoring for a list of MessageCategory strings. The the value ANY returns count of all message categories. AGGREGATE_ALL aggregates job counts for all message categories and returns the sum</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfChildJobs" /></td>
+    <td><CopyableCode code="number_of_child_jobs" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of child (nested) copy jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentJobId" /></td>
+    <td><CopyableCode code="parent_job_id" /></td>
     <td><code>string</code></td>
     <td>This uniquely identifies a request to Backup to copy a resource. The return will be the parent (composite) job ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services resource to be copied; for example, an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The non-unique name of the resource that belongs to the specified backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource to be copied; for example, an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBackupVaultArn" /></td>
+    <td><CopyableCode code="source_backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a source copy vault; for example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceRecoveryPointArn" /></td>
+    <td><CopyableCode code="source_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a source recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of a copy job. (CREATED, RUNNING, COMPLETED, FAILED, PARTIAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed message explaining the status of the job to copy a resource.</td>
 </tr>
@@ -482,33 +482,33 @@ Returns metadata associated with creating a copy of a resource.
 
 ```sql
 SELECT
-AccountId,
-BackupSizeInBytes,
-ChildJobsInState,
-CompletionDate,
-CompositeMemberIdentifier,
-CopyJobId,
-CreatedBy,
-CreatedByBackupJobId,
-CreationDate,
-DestinationBackupVaultArn,
-DestinationEncryptionKeyArn,
-DestinationRecoveryPointArn,
-DestinationRecoveryPointLifecycle,
-DestinationVaultLockState,
-DestinationVaultType,
-IamRoleArn,
-IsParent,
-MessageCategory,
-NumberOfChildJobs,
-ParentJobId,
-ResourceArn,
-ResourceName,
-ResourceType,
-SourceBackupVaultArn,
-SourceRecoveryPointArn,
-State,
-StatusMessage
+account_id,
+backup_size_in_bytes,
+child_jobs_in_state,
+completion_date,
+composite_member_identifier,
+copy_job_id,
+created_by,
+created_by_backup_job_id,
+creation_date,
+destination_backup_vault_arn,
+destination_encryption_key_arn,
+destination_recovery_point_arn,
+destination_recovery_point_lifecycle,
+destination_vault_lock_state,
+destination_vault_type,
+iam_role_arn,
+is_parent,
+message_category,
+number_of_child_jobs,
+parent_job_id,
+resource_arn,
+resource_name,
+resource_type,
+source_backup_vault_arn,
+source_recovery_point_arn,
+state,
+status_message
 FROM aws.backup.copy_jobs
 WHERE copy_job_id = '{{ copy_job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -521,33 +521,33 @@ Returns metadata about your copy jobs.
 
 ```sql
 SELECT
-AccountId,
-BackupSizeInBytes,
-ChildJobsInState,
-CompletionDate,
-CompositeMemberIdentifier,
-CopyJobId,
-CreatedBy,
-CreatedByBackupJobId,
-CreationDate,
-DestinationBackupVaultArn,
-DestinationEncryptionKeyArn,
-DestinationRecoveryPointArn,
-DestinationRecoveryPointLifecycle,
-DestinationVaultLockState,
-DestinationVaultType,
-IamRoleArn,
-IsParent,
-MessageCategory,
-NumberOfChildJobs,
-ParentJobId,
-ResourceArn,
-ResourceName,
-ResourceType,
-SourceBackupVaultArn,
-SourceRecoveryPointArn,
-State,
-StatusMessage
+account_id,
+backup_size_in_bytes,
+child_jobs_in_state,
+completion_date,
+composite_member_identifier,
+copy_job_id,
+created_by,
+created_by_backup_job_id,
+creation_date,
+destination_backup_vault_arn,
+destination_encryption_key_arn,
+destination_recovery_point_arn,
+destination_recovery_point_lifecycle,
+destination_vault_lock_state,
+destination_vault_type,
+iam_role_arn,
+is_parent,
+message_category,
+number_of_child_jobs,
+parent_job_id,
+resource_arn,
+resource_name,
+resource_type,
+source_backup_vault_arn,
+source_recovery_point_arn,
+state,
+status_message
 FROM aws.backup.copy_jobs
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

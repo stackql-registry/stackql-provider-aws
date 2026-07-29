@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComponentConfiguration" /></td>
+    <td><CopyableCode code="component_configuration" /></td>
     <td><code>string</code></td>
     <td>The recommended configuration settings of the component. The value is the escaped JSON of the configuration. (pattern: &lt;code&gt;&#91;\S\s&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Describes the recommended monitoring configuration of the component.
 
 ```sql
 SELECT
-ComponentConfiguration
+component_configuration
 FROM aws.application_insights.component_configuration_recommendations
 WHERE region = '{{ region }}' -- required
 ;

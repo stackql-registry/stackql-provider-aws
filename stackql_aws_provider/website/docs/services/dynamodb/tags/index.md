@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the tag. Tag keys are case sensitive. Each DynamoDB table can only have up to one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the tag. Tag values are case-sensitive and can be null.</td>
 </tr>
@@ -138,8 +138,8 @@ List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.dynamodb.tags
 WHERE region = '{{ region }}' -- required
 ;

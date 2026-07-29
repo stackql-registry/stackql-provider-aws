@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="currentLabel" /></td>
+    <td><CopyableCode code="current_label" /></td>
     <td><code>string</code></td>
     <td>The label associated with the event.</td>
 </tr>
@@ -60,27 +60,27 @@ The following fields are returned by `SELECT` queries:
     <td>The event entities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The event ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp that defines when the event under evaluation occurred. The timestamp must be specified using ISO 8601 standard in UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTypeName" /></td>
+    <td><CopyableCode code="event_type_name" /></td>
     <td><code>string</code></td>
     <td>The event type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventVariables" /></td>
+    <td><CopyableCode code="event_variables" /></td>
     <td><code>object</code></td>
     <td>Names of the event type's variables you defined in Amazon Fraud Detector to represent data elements and their corresponding values for the event you are sending for evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="labelTimestamp" /></td>
+    <td><CopyableCode code="label_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp associated with the label to update. The timestamp must be specified using ISO 8601 standard in UTC.</td>
 </tr>
@@ -156,13 +156,13 @@ Retrieves details of events stored with Amazon Fraud Detector. This action does 
 
 ```sql
 SELECT
-currentLabel,
+current_label,
 entities,
-eventId,
-eventTimestamp,
-eventTypeName,
-eventVariables,
-labelTimestamp
+event_id,
+event_timestamp,
+event_type_name,
+event_variables,
+label_timestamp
 FROM aws.frauddetector.events
 WHERE region = '{{ region }}' -- required
 ;

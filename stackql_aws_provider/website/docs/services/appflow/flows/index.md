@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies when the flow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user who created the flow. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -66,67 +66,67 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the flow. (pattern: &lt;code&gt;&#91;\w!@#\-.?,\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationFlowConfigList" /></td>
+    <td><CopyableCode code="destination_flow_config_list" /></td>
     <td><code>array</code></td>
     <td>The configuration that controls how Amazon AppFlow transfers data to the destination connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowArn" /></td>
+    <td><CopyableCode code="flow_arn" /></td>
     <td><code>string</code></td>
     <td>The flow's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:aws:appflow:.*:&#91;0-9&#93;+:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowName" /></td>
+    <td><CopyableCode code="flow_name" /></td>
     <td><code>string</code></td>
     <td>The specified name of the flow. Spaces are not allowed. Use underscores (_) or hyphens (-) only. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;\w!@#.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowStatus" /></td>
+    <td><CopyableCode code="flow_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the current status of the flow. (Active, Deprecated, Deleted, Draft, Errored, Suspended)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowStatusMessage" /></td>
+    <td><CopyableCode code="flow_status_message" /></td>
     <td><code>string</code></td>
     <td>Contains an error message if the flow status is in a suspended or error state. This applies only to scheduled or event-triggered flows. (pattern: &lt;code&gt;&#91;\s\w/!@#+=.-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsArn" /></td>
+    <td><CopyableCode code="kms_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the Key Management Service (KMS) key you provide for encryption. This is required if you do not want to use the Amazon AppFlow-managed KMS key. If you don't provide anything here, Amazon AppFlow uses the Amazon AppFlow-managed KMS key. (pattern: &lt;code&gt;arn:aws:kms:.*:&#91;0-9&#93;+:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunExecutionDetails" /></td>
+    <td><CopyableCode code="last_run_execution_details" /></td>
     <td><code>object</code></td>
     <td>Describes the details of the most recent flow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunMetadataCatalogDetails" /></td>
+    <td><CopyableCode code="last_run_metadata_catalog_details" /></td>
     <td><code>array</code></td>
     <td>Describes the metadata catalog, metadata table, and data partitions that Amazon AppFlow used for the associated flow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies when the flow was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>Specifies the user name of the account that performed the most recent update. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataCatalogConfig" /></td>
+    <td><CopyableCode code="metadata_catalog_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the configuration that Amazon AppFlow uses when it catalogs your data. When Amazon AppFlow catalogs your data, it stores metadata in a data catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of your data schema. Amazon AppFlow assigns this version number. The version number increases by one when you change any of the following settings in your flow configuration: Source-to-destination field mappings Field data types Partition keys</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceFlowConfig" /></td>
+    <td><CopyableCode code="source_flow_config" /></td>
     <td><code>object</code></td>
     <td>Contains information about the configuration of the source connector used in the flow.</td>
 </tr>
@@ -141,7 +141,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of tasks that Amazon AppFlow performs while transferring the data in the flow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="triggerConfig" /></td>
+    <td><CopyableCode code="trigger_config" /></td>
     <td><code>object</code></td>
     <td>The trigger settings that determine how and when Amazon AppFlow runs the specified flow.</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of flows associated with your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token for next page of data. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -284,25 +284,25 @@ Provides a description of the specified flow.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-destinationFlowConfigList,
-flowArn,
-flowName,
-flowStatus,
-flowStatusMessage,
-kmsArn,
-lastRunExecutionDetails,
-lastRunMetadataCatalogDetails,
-lastUpdatedAt,
-lastUpdatedBy,
-metadataCatalogConfig,
-schemaVersion,
-sourceFlowConfig,
+destination_flow_config_list,
+flow_arn,
+flow_name,
+flow_status,
+flow_status_message,
+kms_arn,
+last_run_execution_details,
+last_run_metadata_catalog_details,
+last_updated_at,
+last_updated_by,
+metadata_catalog_config,
+schema_version,
+source_flow_config,
 tags,
 tasks,
-triggerConfig
+trigger_config
 FROM aws.appflow.flows
 WHERE region = '{{ region }}' -- required
 ;
@@ -315,7 +315,7 @@ Lists all of the flows associated with your account.
 ```sql
 SELECT
 flows,
-nextToken
+next_token
 FROM aws.appflow.flows
 WHERE region = '{{ region }}' -- required
 ;
@@ -364,8 +364,8 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-flowArn,
-flowStatus
+flow_arn,
+flow_status
 ;
 ```
 </TabItem>
@@ -643,7 +643,7 @@ AND sourceFlowConfig = '{{ sourceFlowConfig }}' --required
 AND destinationFlowConfigList = '{{ destinationFlowConfigList }}' --required
 AND tasks = '{{ tasks }}' --required
 RETURNING
-flowStatus;
+flow_status;
 ```
 </TabItem>
 </Tabs>

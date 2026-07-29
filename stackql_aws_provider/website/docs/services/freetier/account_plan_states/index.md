@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier that identifies the account. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountPlanExpirationDate" /></td>
+    <td><CopyableCode code="account_plan_expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the current account plan expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountPlanRemainingCredits" /></td>
+    <td><CopyableCode code="account_plan_remaining_credits" /></td>
     <td><code>object</code></td>
     <td>The amount of credits remaining for the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountPlanStatus" /></td>
+    <td><CopyableCode code="account_plan_status" /></td>
     <td><code>string</code></td>
     <td>The current status for the account plan. (NOT_STARTED, ACTIVE, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountPlanType" /></td>
+    <td><CopyableCode code="account_plan_type" /></td>
     <td><code>string</code></td>
     <td>The plan type for the account. (FREE, PAID)</td>
 </tr>
@@ -139,11 +139,11 @@ This returns all of the information related to the state of the account plan rel
 
 ```sql
 SELECT
-accountId,
-accountPlanExpirationDate,
-accountPlanRemainingCredits,
-accountPlanStatus,
-accountPlanType
+account_id,
+account_plan_expiration_date,
+account_plan_remaining_credits,
+account_plan_status,
+account_plan_type
 FROM aws.freetier.account_plan_states
 WHERE region = '{{ region }}' -- required
 ;

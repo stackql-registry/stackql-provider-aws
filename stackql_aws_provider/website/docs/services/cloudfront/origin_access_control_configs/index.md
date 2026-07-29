@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the origin access control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name to identify the origin access control. You can specify up to 64 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginAccessControlOriginType" /></td>
+    <td><CopyableCode code="origin_access_control_origin_type" /></td>
     <td><code>string</code></td>
     <td>The type of origin that this origin access control is for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningBehavior" /></td>
+    <td><CopyableCode code="signing_behavior" /></td>
     <td><code>string</code></td>
     <td>Specifies which requests CloudFront signs (adds authentication information to). Specify always for the most common use case. For more information, see origin access control advanced settings in the Amazon CloudFront Developer Guide. This field can have one of the following values: always – CloudFront signs all origin requests, overwriting the Authorization header from the viewer request if one exists. never – CloudFront doesn't sign any origin requests. This value turns off origin access control for all origins in all distributions that use this origin access control. no-override – If the viewer request doesn't contain the Authorization header, then CloudFront signs the origin request. If the viewer request contains the Authorization header, then CloudFront doesn't sign the origin request and instead passes along the Authorization header from the viewer request. WARNING: To pass along the Authorization header from the viewer request, you must add the Authorization header to a cache policy for all cache behaviors that use origins associated with this origin access control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningProtocol" /></td>
+    <td><CopyableCode code="signing_protocol" /></td>
     <td><code>string</code></td>
     <td>The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests. The only valid value is sigv4.</td>
 </tr>
@@ -144,11 +144,11 @@ Gets a CloudFront origin access control configuration.
 
 ```sql
 SELECT
-Description,
-Name,
-OriginAccessControlOriginType,
-SigningBehavior,
-SigningProtocol
+description,
+name,
+origin_access_control_origin_type,
+signing_behavior,
+signing_protocol
 FROM aws.cloudfront.origin_access_control_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customOutputConfiguration" /></td>
+    <td><CopyableCode code="custom_output_configuration" /></td>
     <td><code>object</code></td>
     <td>Custom output configuration</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataAutomationLibraryConfiguration" /></td>
+    <td><CopyableCode code="data_automation_library_configuration" /></td>
     <td><code>object</code></td>
     <td>DataAutomation Library configuration</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsEncryptionContext" /></td>
+    <td><CopyableCode code="kms_encryption_context" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>KMS Key Identifier (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="overrideConfiguration" /></td>
+    <td><CopyableCode code="override_configuration" /></td>
     <td><code>object</code></td>
     <td>Override configuration</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectArn" /></td>
+    <td><CopyableCode code="project_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a DataAutomationProject (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:(aws|&#91;0-9&#93;&#123;12&#125;):data-automation-project/&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectDescription" /></td>
+    <td><CopyableCode code="project_description" /></td>
     <td><code>string</code></td>
     <td>Description of the DataAutomationProject</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>Name of the DataAutomationProject (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectStage" /></td>
+    <td><CopyableCode code="project_stage" /></td>
     <td><code>string</code></td>
     <td>Stage of the Project (DEVELOPMENT, LIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectType" /></td>
+    <td><CopyableCode code="project_type" /></td>
     <td><code>string</code></td>
     <td>Type of the DataAutomationProject (ASYNC, SYNC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="standardOutputConfiguration" /></td>
+    <td><CopyableCode code="standard_output_configuration" /></td>
     <td><code>object</code></td>
     <td>Standard output configuration</td>
 </tr>
@@ -135,27 +135,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectArn" /></td>
+    <td><CopyableCode code="project_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a DataAutomationProject (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:(aws|&#91;0-9&#93;&#123;12&#125;):data-automation-project/&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>Name of the DataAutomationProject (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectStage" /></td>
+    <td><CopyableCode code="project_stage" /></td>
     <td><code>string</code></td>
     <td>Stage of the Project (DEVELOPMENT, LIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectType" /></td>
+    <td><CopyableCode code="project_type" /></td>
     <td><code>string</code></td>
     <td>Type of the DataAutomationProject (ASYNC, SYNC)</td>
 </tr>
@@ -258,19 +258,19 @@ Gets an existing Amazon Bedrock Data Automation Project
 
 ```sql
 SELECT
-creationTime,
-customOutputConfiguration,
-dataAutomationLibraryConfiguration,
-kmsEncryptionContext,
-kmsKeyId,
-lastModifiedTime,
-overrideConfiguration,
-projectArn,
-projectDescription,
-projectName,
-projectStage,
-projectType,
-standardOutputConfiguration,
+creation_time,
+custom_output_configuration,
+data_automation_library_configuration,
+kms_encryption_context,
+kms_key_id,
+last_modified_time,
+override_configuration,
+project_arn,
+project_description,
+project_name,
+project_stage,
+project_type,
+standard_output_configuration,
 status
 FROM aws.bedrock_data_automation.data_automation_projects
 WHERE project_arn = '{{ project_arn }}' -- required
@@ -284,11 +284,11 @@ Lists all existing Amazon Bedrock Data Automation Projects
 
 ```sql
 SELECT
-creationTime,
-projectArn,
-projectName,
-projectStage,
-projectType
+creation_time,
+project_arn,
+project_name,
+project_stage,
+project_type
 FROM aws.bedrock_data_automation.data_automation_projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -339,8 +339,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-projectArn,
-projectStage,
+project_arn,
+project_stage,
 status
 ;
 ```
@@ -549,8 +549,8 @@ project_arn = '{{ project_arn }}' --required
 AND region = '{{ region }}' --required
 AND standardOutputConfiguration = '{{ standardOutputConfiguration }}' --required
 RETURNING
-projectArn,
-projectStage,
+project_arn,
+project_stage,
 status;
 ```
 </TabItem>

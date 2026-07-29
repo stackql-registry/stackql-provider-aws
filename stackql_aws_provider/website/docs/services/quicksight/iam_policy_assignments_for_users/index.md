@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssignmentName" /></td>
+    <td><CopyableCode code="assignment_name" /></td>
     <td><code>string</code></td>
     <td>A name for the IAM policy assignment. (pattern: &lt;code&gt;(?=^.&#123;2,256&#125;$)(?!.*\s)&#91;0-9a-zA-Z-_.:=+@&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
@@ -149,8 +149,8 @@ Lists all of the IAM policy assignments, including the Amazon Resource Names (AR
 
 ```sql
 SELECT
-AssignmentName,
-PolicyArn
+assignment_name,
+policy_arn
 FROM aws.quicksight.iam_policy_assignments_for_users
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND user_name = '{{ user_name }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>A parameter that indicates if deletion protection is enabled or not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectionPeriodInMinutes" /></td>
+    <td><CopyableCode code="protection_period_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The time interval during which AppConfig monitors for calls to GetLatestConfiguration or for a configuration profile or from an environment. AppConfig returns an error if a user calls or for the designated configuration profile or environment. To bypass the error and delete a configuration profile or an environment, specify BYPASS for the DeletionProtectionCheck parameter for either or .</td>
 </tr>
@@ -131,8 +131,8 @@ Returns information about the status of the DeletionProtection parameter.
 
 ```sql
 SELECT
-Enabled,
-ProtectionPeriodInMinutes
+enabled,
+protection_period_in_minutes
 FROM aws.appconfig.account_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -160,7 +160,7 @@ DeletionProtection = '{{ DeletionProtection }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-DeletionProtection;
+deletion_protection;
 ```
 </TabItem>
 </Tabs>

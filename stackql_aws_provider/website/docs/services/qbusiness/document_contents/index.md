@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="mimeType" /></td>
+    <td><CopyableCode code="mime_type" /></td>
     <td><code>string</code></td>
     <td>The MIME type of the document content. When outputFormat is RAW, this corresponds to the original document's MIME type (e.g., application/pdf, text/plain, application/vnd.openxmlformats-officedocument.wordprocessingml.document). When outputFormat is EXTRACTED, the MIME type is always application/json.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="presignedUrl" /></td>
+    <td><CopyableCode code="presigned_url" /></td>
     <td><code>string</code></td>
     <td>A pre-signed URL that provides temporary access to download the document content directly from Amazon Q Business. The URL expires after 5 minutes for security purposes. This URL is generated only after successful ACL validation.</td>
 </tr>
@@ -149,8 +149,8 @@ Retrieves the content of a document that was ingested into Amazon Q Business. Th
 
 ```sql
 SELECT
-mimeType,
-presignedUrl
+mime_type,
+presigned_url
 FROM aws.qbusiness.document_contents
 WHERE application_id = '{{ application_id }}' -- required
 AND index_id = '{{ index_id }}' -- required

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="cloudAutonomousVmClusters" /></td>
+    <td><CopyableCode code="cloud_autonomous_vm_clusters" /></td>
     <td><code>array</code></td>
     <td>A list of Autonomous VM clusters associated with this Cloud Exadata Infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureDisplayName" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the Cloud Exadata infrastructure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureId" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Cloud Exadata infrastructure. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exadataStorageInTBs" /></td>
+    <td><CopyableCode code="exadata_storage_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The amount of unallocated Exadata storage available, in terabytes (TB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localStorageInGBs" /></td>
+    <td><CopyableCode code="local_storage_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of unallocated local storage available, in gigabytes (GB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryInGBs" /></td>
+    <td><CopyableCode code="memory_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of unallocated memory available, in gigabytes (GB).</td>
 </tr>
@@ -149,12 +149,12 @@ Retrieves information about unallocated resources in a specified Cloud Exadata I
 
 ```sql
 SELECT
-cloudAutonomousVmClusters,
-cloudExadataInfrastructureDisplayName,
-cloudExadataInfrastructureId,
-exadataStorageInTBs,
-localStorageInGBs,
-memoryInGBs,
+cloud_autonomous_vm_clusters,
+cloud_exadata_infrastructure_display_name,
+cloud_exadata_infrastructure_id,
+exadata_storage_in_tbs,
+local_storage_in_gbs,
+memory_in_gbs,
 ocpus
 FROM aws.odb.cloud_exadata_infrastructure_unallocated_resources
 WHERE region = '{{ region }}' -- required

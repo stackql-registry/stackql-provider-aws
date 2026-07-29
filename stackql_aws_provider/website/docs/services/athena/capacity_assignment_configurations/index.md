@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityAssignments" /></td>
+    <td><CopyableCode code="capacity_assignments" /></td>
     <td><code>array</code></td>
     <td>The list of assignments that make up the capacity assignment configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationName" /></td>
+    <td><CopyableCode code="capacity_reservation_name" /></td>
     <td><code>string</code></td>
     <td>The name of the reservation that the capacity assignment configuration is for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Gets the capacity assignment configuration for a capacity reservation, if one ex
 
 ```sql
 SELECT
-CapacityAssignments,
-CapacityReservationName
+capacity_assignments,
+capacity_reservation_name
 FROM aws.athena.capacity_assignment_configurations
 WHERE region = '{{ region }}' -- required
 ;

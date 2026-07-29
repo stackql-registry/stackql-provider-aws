@@ -108,7 +108,7 @@ WHERE
 region = '{{ region }}' --required
 AND MonthlyLimit = '{{ MonthlyLimit }}' --required
 RETURNING
-MonthlyLimit;
+monthly_limit;
 ```
 </TabItem>
 </Tabs>

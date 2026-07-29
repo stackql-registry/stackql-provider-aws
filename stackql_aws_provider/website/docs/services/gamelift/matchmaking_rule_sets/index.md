@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetArn" /></td>
+    <td><CopyableCode code="rule_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers matchmaking rule set resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::matchmakingruleset/&lt;ruleset name&gt;. In a GameLift rule set ARN, the resource ID matches the RuleSetName value. (pattern: &lt;code&gt;^arn:.*:matchmakingruleset\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetBody" /></td>
+    <td><CopyableCode code="rule_set_body" /></td>
     <td><code>string</code></td>
     <td>A collection of matchmaking rules, formatted as a JSON string. Comments are not allowed in JSON, but most elements support a description field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetName" /></td>
+    <td><CopyableCode code="rule_set_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the matchmaking rule set (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -148,10 +148,10 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-CreationTime,
-RuleSetArn,
-RuleSetBody,
-RuleSetName
+creation_time,
+rule_set_arn,
+rule_set_body,
+rule_set_name
 FROM aws.gamelift.matchmaking_rule_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -186,7 +186,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-RuleSet
+rule_set
 ;
 ```
 </TabItem>

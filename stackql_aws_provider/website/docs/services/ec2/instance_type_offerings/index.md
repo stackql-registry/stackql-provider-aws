@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type. For more information, see Instance types in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
     <td>The identifier for the location. This depends on the location type. For example, if the location type is region, the location is the Region code (for example, us-east-2.)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationType" /></td>
+    <td><CopyableCode code="location_type" /></td>
     <td><code>string</code></td>
     <td>The location type.</td>
 </tr>
@@ -154,9 +154,9 @@ Lists the instance types that are offered for the specified location. If no loca
 
 ```sql
 SELECT
-InstanceType,
-Location,
-LocationType
+instance_type,
+location,
+location_type
 FROM aws.ec2.instance_type_offerings
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

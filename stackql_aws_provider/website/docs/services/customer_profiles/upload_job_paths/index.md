@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The plaintext data key used to encrypt the upload file. To persist to the pre-signed url, use the client token and MD5 client token as header. The required headers are as follows: x-amz-server-side-encryption-customer-key: Client Token x-amz-server-side-encryption-customer-key-MD5: MD5 Client Token x-amz-server-side-encryption-customer-algorithm: AES256</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed S3 URL for uploading the CSV file associated with the upload job. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidUntil" /></td>
+    <td><CopyableCode code="valid_until" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiry timestamp for the pre-signed URL, after which the URL will no longer be valid.</td>
 </tr>
@@ -139,9 +139,9 @@ This API retrieves the pre-signed URL and client token for uploading the file as
 
 ```sql
 SELECT
-ClientToken,
-Url,
-ValidUntil
+client_token,
+url,
+valid_until
 FROM aws.customer_profiles.upload_job_paths
 WHERE domain_name = '{{ domain_name }}' -- required
 AND job_id = '{{ job_id }}' -- required

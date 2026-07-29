@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>Sets the criteria for the Storage Lens group data that is displayed. For multiple filter conditions, the AND or OR logical operator is used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Contains the name of the Storage Lens group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageLensGroupArn" /></td>
+    <td><CopyableCode code="storage_lens_group_arn" /></td>
     <td><code>string</code></td>
     <td>Contains the Amazon Resource Name (ARN) of the Storage Lens group. This property is read-only.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HomeRegion" /></td>
+    <td><CopyableCode code="home_region" /></td>
     <td><code>string</code></td>
     <td>Contains the Amazon Web Services Region where the Storage Lens group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Contains the name of the Storage Lens group that exists in the specified home Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageLensGroupArn" /></td>
+    <td><CopyableCode code="storage_lens_group_arn" /></td>
     <td><code>string</code></td>
     <td>Contains the Amazon Resource Name (ARN) of the Storage Lens group. This property is read-only.</td>
 </tr>
@@ -203,9 +203,9 @@ Retrieves the Storage Lens group configuration details. To use this operation, y
 
 ```sql
 SELECT
-Filter,
-Name,
-StorageLensGroupArn
+filter,
+name,
+storage_lens_group_arn
 FROM aws.s3control.storage_lens_groups
 WHERE name = '{{ name }}' -- required
 AND `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
@@ -219,9 +219,9 @@ Lists all the Storage Lens groups in the specified home Region. To use this oper
 
 ```sql
 SELECT
-HomeRegion,
-Name,
-StorageLensGroupArn
+home_region,
+name,
+storage_lens_group_arn
 FROM aws.s3control.storage_lens_groups
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The collection of tags assigned to the resource.</td>
 </tr>
@@ -133,7 +133,7 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.gamelift.tags
 WHERE region = '{{ region }}' -- required
 ;

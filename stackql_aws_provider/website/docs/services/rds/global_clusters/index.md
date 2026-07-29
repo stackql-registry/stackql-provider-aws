@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The default database name within the new global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>The deletion protection setting for the new global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The writer endpoint for the new global database cluster. This endpoint always points to the writer DB instance in the current primary cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The Aurora database engine used by the global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineLifecycleSupport" /></td>
+    <td><CopyableCode code="engine_lifecycle_support" /></td>
     <td><code>string</code></td>
     <td>The lifecycle type for the global cluster. For more information, see CreateGlobalCluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Indicates the database engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailoverState" /></td>
+    <td><CopyableCode code="failover_state" /></td>
     <td><code>string</code></td>
     <td>A data object containing all properties for the current state of an in-process or pending switchover or failover process for this global cluster (Aurora global database). This object is empty unless the SwitchoverGlobalCluster or FailoverGlobalCluster operation was called on this global cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterArn" /></td>
+    <td><CopyableCode code="global_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterIdentifier" /></td>
+    <td><CopyableCode code="global_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains a user-supplied global database cluster identifier. This identifier is the unique key that identifies a global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterMembers" /></td>
+    <td><CopyableCode code="global_cluster_members" /></td>
     <td><code>string</code></td>
     <td>The list of primary and secondary clusters within the global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterResourceId" /></td>
+    <td><CopyableCode code="global_cluster_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services partition-unique, immutable identifier for the global database cluster. This identifier is found in Amazon Web Services CloudTrail log entries whenever the Amazon Web Services KMS key for the DB cluster is accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the current state of this global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>The storage encryption setting for the global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncryptionType" /></td>
+    <td><CopyableCode code="storage_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used to protect data at rest in the global database cluster. Possible values: none - The global database cluster is not encrypted. sse-rds - The global database cluster is encrypted using an Amazon Web Services owned KMS key. sse-kms - The global database cluster is encrypted using a customer managed KMS key or Amazon Web Services managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
@@ -326,21 +326,21 @@ Returns information about Aurora global database clusters. This API supports pag
 
 ```sql
 SELECT
-DatabaseName,
-DeletionProtection,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-StorageEncryptionType,
-TagList
+database_name,
+deletion_protection,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+storage_encryption_type,
+tag_list
 FROM aws.rds.global_clusters
 WHERE region = '{{ region }}' -- required
 AND GlobalClusterIdentifier = '{{ GlobalClusterIdentifier }}'
@@ -391,21 +391,21 @@ SELECT
 '{{ StorageEncrypted }}',
 '{{ Tags }}'
 RETURNING
-DatabaseName,
-DeletionProtection,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-StorageEncryptionType,
-TagList
+database_name,
+deletion_protection,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+storage_encryption_type,
+tag_list
 ;
 ```
 </TabItem>
@@ -480,21 +480,21 @@ GlobalClusterIdentifier = '{{ GlobalClusterIdentifier }}' --required
 AND DbClusterIdentifier = '{{ DbClusterIdentifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DatabaseName,
-DeletionProtection,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-StorageEncryptionType,
-TagList;
+database_name,
+deletion_protection,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+storage_encryption_type,
+tag_list;
 ```
 </TabItem>
 <TabItem value="modify_global_cluster">
@@ -513,21 +513,21 @@ AND DeletionProtection = {{ DeletionProtection}}
 AND EngineVersion = '{{ EngineVersion}}'
 AND AllowMajorVersionUpgrade = {{ AllowMajorVersionUpgrade}}
 RETURNING
-DatabaseName,
-DeletionProtection,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-StorageEncryptionType,
-TagList;
+database_name,
+deletion_protection,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+storage_encryption_type,
+tag_list;
 ```
 </TabItem>
 </Tabs>

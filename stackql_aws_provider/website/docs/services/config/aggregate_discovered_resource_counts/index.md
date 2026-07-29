@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupByKey" /></td>
+    <td><CopyableCode code="group_by_key" /></td>
     <td><code>string</code></td>
     <td>The key passed into the request object. If GroupByKey is not provided, the result will be empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupedResourceCounts" /></td>
+    <td><CopyableCode code="grouped_resource_counts" /></td>
     <td><code>array</code></td>
     <td>Returns a list of GroupedResourceCount objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalDiscoveredResources" /></td>
+    <td><CopyableCode code="total_discovered_resources" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of resources that are present in an aggregator with the filters that you provide.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the resource counts across accounts and regions that are present in your
 
 ```sql
 SELECT
-GroupByKey,
-GroupedResourceCounts,
-NextToken,
-TotalDiscoveredResources
+group_by_key,
+grouped_resource_counts,
+next_token,
+total_discovered_resources
 FROM aws.config.aggregate_discovered_resource_counts
 WHERE region = '{{ region }}' -- required
 ;

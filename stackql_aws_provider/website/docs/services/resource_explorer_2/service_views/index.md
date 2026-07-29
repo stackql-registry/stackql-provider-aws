@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filters" /></td>
+    <td><CopyableCode code="filters" /></td>
     <td><code>object</code></td>
     <td>A search filter defines which resources can be part of a search query result set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludedProperties" /></td>
+    <td><CopyableCode code="included_properties" /></td>
     <td><code>array</code></td>
     <td>A list of additional resource properties that are included in this view for search and filtering purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScopeType" /></td>
+    <td><CopyableCode code="scope_type" /></td>
     <td><code>string</code></td>
     <td>The scope type of the service view, which determines what resources are included.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceViewArn" /></td>
+    <td><CopyableCode code="service_view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceViewName" /></td>
+    <td><CopyableCode code="service_view_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service view. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamingAccessForService" /></td>
+    <td><CopyableCode code="streaming_access_for_service" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service that has streaming access to this view's data.</td>
 </tr>
@@ -172,12 +172,12 @@ Retrieves details about a specific Resource Explorer service view. This operatio
 
 ```sql
 SELECT
-Filters,
-IncludedProperties,
-ScopeType,
-ServiceViewArn,
-ServiceViewName,
-StreamingAccessForService
+filters,
+included_properties,
+scope_type,
+service_view_arn,
+service_view_name,
+streaming_access_for_service
 FROM aws.resource_explorer_2.service_views
 WHERE region = '{{ region }}' -- required
 ;

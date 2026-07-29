@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EngineVersions" /></td>
+    <td><CopyableCode code="engine_versions" /></td>
     <td><code>array</code></td>
     <td>Returned EngineVersion objects that describe the replication instance engine versions used in the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns information about the replication instance versions used in the project.
 
 ```sql
 SELECT
-EngineVersions,
-Marker
+engine_versions,
+marker
 FROM aws.dms.engine_versions
 WHERE region = '{{ region }}' -- required
 ;

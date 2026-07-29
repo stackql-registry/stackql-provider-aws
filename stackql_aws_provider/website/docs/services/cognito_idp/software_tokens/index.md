@@ -101,8 +101,8 @@ Session = '{{ Session }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-SecretCode,
-Session;
+secret_code,
+session;
 ```
 </TabItem>
 </Tabs>

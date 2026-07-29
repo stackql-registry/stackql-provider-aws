@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>The Availability Zones for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackendServerDescriptions" /></td>
+    <td><CopyableCode code="backend_server_descriptions" /></td>
     <td><code>string</code></td>
     <td>Information about your EC2 instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CanonicalHostedZoneName" /></td>
+    <td><CopyableCode code="canonical_hosted_zone_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name of the load balancer. For more information, see Configure a Custom Domain Name in the Classic Load Balancers Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CanonicalHostedZoneNameID" /></td>
+    <td><CopyableCode code="canonical_hosted_zone_name_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Route 53 hosted zone for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the load balancer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DNSName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheck" /></td>
+    <td><CopyableCode code="health_check" /></td>
     <td><code>string</code></td>
     <td>Information about the health checks conducted on the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Instances" /></td>
+    <td><CopyableCode code="instances" /></td>
     <td><code>string</code></td>
     <td>The IDs of the instances for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListenerDescriptions" /></td>
+    <td><CopyableCode code="listener_descriptions" /></td>
     <td><code>string</code></td>
     <td>The listeners for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancerName" /></td>
+    <td><CopyableCode code="load_balancer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>string</code></td>
     <td>The policies defined for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scheme" /></td>
+    <td><CopyableCode code="scheme" /></td>
     <td><code>string</code></td>
     <td>The type of load balancer. Valid only for load balancers in a VPC. If Scheme is internet-facing, the load balancer has a public DNS name that resolves to a public IP address. If Scheme is internal, the load balancer has a public DNS name that resolves to a private IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>string</code></td>
     <td>The security groups for the load balancer. Valid only for load balancers in a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceSecurityGroup" /></td>
+    <td><CopyableCode code="source_security_group" /></td>
     <td><code>string</code></td>
     <td>The security group for the load balancer, which you can use as part of your inbound rules for your registered instances. To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>string</code></td>
     <td>The IDs of the subnets for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the load balancer.</td>
 </tr>
@@ -399,22 +399,22 @@ Describes the specified the load balancers. If no load balancers are specified, 
 
 ```sql
 SELECT
-AvailabilityZones,
-BackendServerDescriptions,
-CanonicalHostedZoneName,
-CanonicalHostedZoneNameID,
-CreatedTime,
-DNSName,
-HealthCheck,
-Instances,
-ListenerDescriptions,
-LoadBalancerName,
-Policies,
-Scheme,
-SecurityGroups,
-SourceSecurityGroup,
-Subnets,
-VPCId
+availability_zones,
+backend_server_descriptions,
+canonical_hosted_zone_name,
+canonical_hosted_zone_name_id,
+created_time,
+dns_name,
+health_check,
+instances,
+listener_descriptions,
+load_balancer_name,
+policies,
+scheme,
+security_groups,
+source_security_group,
+subnets,
+vpc_id
 FROM aws.elb.load_balancers
 WHERE region = '{{ region }}' -- required
 AND LoadBalancerNames = '{{ LoadBalancerNames }}'
@@ -505,7 +505,7 @@ SELECT
 '{{ Scheme }}',
 '{{ Tags }}'
 RETURNING
-DNSName
+dns_name
 ;
 ```
 </TabItem>
@@ -524,7 +524,7 @@ SELECT
 '{{ region }}',
 '{{ Instances }}'
 RETURNING
-Instances
+instances
 ;
 ```
 </TabItem>

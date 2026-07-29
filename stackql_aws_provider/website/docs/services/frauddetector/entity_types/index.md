@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="entityTypes" /></td>
+    <td><CopyableCode code="entity_types" /></td>
     <td><code>array</code></td>
     <td>An array of entity types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token.</td>
 </tr>
@@ -138,8 +138,8 @@ Gets all entity types or a specific entity type if a name is specified. This is 
 
 ```sql
 SELECT
-entityTypes,
-nextToken
+entity_types,
+next_token
 FROM aws.frauddetector.entity_types
 WHERE region = '{{ region }}' -- required
 ;

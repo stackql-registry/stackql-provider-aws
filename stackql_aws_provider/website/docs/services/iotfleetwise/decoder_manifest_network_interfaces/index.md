@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="canInterface" /></td>
+    <td><CopyableCode code="can_interface" /></td>
     <td><code>object</code></td>
     <td>Information about a network interface specified by the Controller Area Network (CAN) protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDecodingInterface" /></td>
+    <td><CopyableCode code="custom_decoding_interface" /></td>
     <td><code>object</code></td>
     <td>Information about a custom network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interfaceId" /></td>
+    <td><CopyableCode code="interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="obdInterface" /></td>
+    <td><CopyableCode code="obd_interface" /></td>
     <td><code>object</code></td>
     <td>Information about a network interface specified by the on-board diagnostic (OBD) II protocol.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The network protocol for the vehicle. For example, CAN_SIGNAL specifies a protocol that defines how data is communicated between electronic control units (ECUs). OBD_SIGNAL specifies a protocol that defines how self-diagnostic data is communicated between ECUs. (CAN_INTERFACE, OBD_INTERFACE, VEHICLE_MIDDLEWARE, CUSTOM_DECODING_INTERFACE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vehicleMiddleware" /></td>
+    <td><CopyableCode code="vehicle_middleware" /></td>
     <td><code>object</code></td>
     <td>The vehicle middleware defined as a type of network interface. Examples of vehicle middleware include ROS2 and SOME/IP.</td>
 </tr>
@@ -144,12 +144,12 @@ Lists the network interfaces specified in a decoder manifest. This API operation
 
 ```sql
 SELECT
-canInterface,
-customDecodingInterface,
-interfaceId,
-obdInterface,
+can_interface,
+custom_decoding_interface,
+interface_id,
+obd_interface,
 type_,
-vehicleMiddleware
+vehicle_middleware
 FROM aws.iotfleetwise.decoder_manifest_network_interfaces
 WHERE region = '{{ region }}' -- required
 ;

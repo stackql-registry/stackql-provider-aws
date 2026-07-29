@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainPackageDetailsList" /></td>
+    <td><CopyableCode code="domain_package_details_list" /></td>
     <td><code>array</code></td>
     <td>Information about all domains associated with a package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -139,8 +139,8 @@ Lists all Amazon OpenSearch Service domains associated with a given package. For
 
 ```sql
 SELECT
-DomainPackageDetailsList,
-NextToken
+domain_package_details_list,
+next_token
 FROM aws.opensearch.domains_for_packages
 WHERE package_id = '{{ package_id }}' -- required
 AND region = '{{ region }}' -- required

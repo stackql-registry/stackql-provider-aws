@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowUsersToChangePassword" /></td>
+    <td><CopyableCode code="allow_users_to_change_password" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether IAM users are allowed to change their own password. Gives IAM users permissions to iam:ChangePassword for only their user and to the iam:GetAccountPasswordPolicy action. This option does not attach a permissions policy to each user, rather the permissions are applied at the account-level for all users by IAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirePasswords" /></td>
+    <td><CopyableCode code="expire_passwords" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether passwords in the account expire. Returns true if MaxPasswordAge contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HardExpiry" /></td>
+    <td><CopyableCode code="hard_expiry" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether IAM users are prevented from setting a new password via the Amazon Web Services Management Console after their password has expired. The IAM user cannot access the console until an administrator resets the password. IAM users with iam:ChangePassword permission and active access keys can reset their own expired console password using the CLI or API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxPasswordAge" /></td>
+    <td><CopyableCode code="max_password_age" /></td>
     <td><code>integer</code></td>
     <td>The number of days that an IAM user password is valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumPasswordLength" /></td>
+    <td><CopyableCode code="minimum_password_length" /></td>
     <td><code>integer</code></td>
     <td>Minimum length to require for IAM user passwords.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PasswordReusePrevention" /></td>
+    <td><CopyableCode code="password_reuse_prevention" /></td>
     <td><code>integer</code></td>
     <td>Specifies the number of previous passwords that IAM users are prevented from reusing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequireLowercaseCharacters" /></td>
+    <td><CopyableCode code="require_lowercase_characters" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether IAM user passwords must contain at least one lowercase character (a to z).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequireNumbers" /></td>
+    <td><CopyableCode code="require_numbers" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequireSymbols" /></td>
+    <td><CopyableCode code="require_symbols" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether IAM user passwords must contain at least one of the following symbols: ! @ # $ % ^ & * ( ) _ + - = &#91; &#93; &#123; &#125; | '</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequireUppercaseCharacters" /></td>
+    <td><CopyableCode code="require_uppercase_characters" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether IAM user passwords must contain at least one uppercase character (A to Z).</td>
 </tr>
@@ -223,16 +223,16 @@ Retrieves the password policy for the Amazon Web Services account. This tells yo
 
 ```sql
 SELECT
-AllowUsersToChangePassword,
-ExpirePasswords,
-HardExpiry,
-MaxPasswordAge,
-MinimumPasswordLength,
-PasswordReusePrevention,
-RequireLowercaseCharacters,
-RequireNumbers,
-RequireSymbols,
-RequireUppercaseCharacters
+allow_users_to_change_password,
+expire_passwords,
+hard_expiry,
+max_password_age,
+minimum_password_length,
+password_reuse_prevention,
+require_lowercase_characters,
+require_numbers,
+require_symbols,
+require_uppercase_characters
 FROM aws.iam.account_password_policies
 WHERE region = '{{ region }}' -- required
 ;

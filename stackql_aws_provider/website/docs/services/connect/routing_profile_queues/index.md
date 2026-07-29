@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channel" /></td>
+    <td><CopyableCode code="channel" /></td>
     <td><code>string</code></td>
     <td>The channels this queue supports. (VOICE, CHAT, TASK, EMAIL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Delay" /></td>
+    <td><CopyableCode code="delay" /></td>
     <td><code>integer</code></td>
     <td>The delay, in seconds, that a contact should be in the queue before they are routed to an available agent. For more information, see Queues: priority and delay in the Amazon Connect Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The order in which contacts are to be handled for the queue. For more information, see Queues: priority and delay.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueArn" /></td>
+    <td><CopyableCode code="queue_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueName" /></td>
+    <td><CopyableCode code="queue_name" /></td>
     <td><code>string</code></td>
     <td>The name of the queue.</td>
 </tr>
@@ -185,12 +185,12 @@ Lists the queues associated with a routing profile.
 
 ```sql
 SELECT
-Channel,
-Delay,
-Priority,
-QueueArn,
-QueueId,
-QueueName
+channel,
+delay,
+priority,
+queue_arn,
+queue_id,
+queue_name
 FROM aws.connect.routing_profile_queues
 WHERE instance_id = '{{ instance_id }}' -- required
 AND routing_profile_id = '{{ routing_profile_id }}' -- required

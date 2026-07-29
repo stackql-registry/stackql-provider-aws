@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeArn" /></td>
+    <td><CopyableCode code="compute_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to an Amazon GameLift Servers compute resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::compute/compute-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeName" /></td>
+    <td><CopyableCode code="compute_name" /></td>
     <td><code>string</code></td>
     <td>The identifier of the compute resource to be accessed. This value might be either a compute name or an instance ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?$|^arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerIdentifiers" /></td>
+    <td><CopyableCode code="container_identifiers" /></td>
     <td><code>array</code></td>
     <td>For a managed container fleet, a list of containers on the compute. Use the container runtime ID with Docker commands to connect to a specific container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>object</code></td>
     <td>A set of temporary Amazon Web Services credentials for use when connecting to the compute resource with Amazon EC2 Systems Manager (SSM).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetArn" /></td>
+    <td><CopyableCode code="fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers fleet resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the fleet that holds the compute resource to be accessed. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$|^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>The instance ID where the compute resource is running.</td>
 </tr>
@@ -149,13 +149,13 @@ This API works with the following fleet types: EC2, Container Requests authoriza
 
 ```sql
 SELECT
-ComputeArn,
-ComputeName,
-ContainerIdentifiers,
-Credentials,
-FleetArn,
-FleetId,
-Target
+compute_arn,
+compute_name,
+container_identifiers,
+credentials,
+fleet_arn,
+fleet_id,
+target
 FROM aws.gamelift.compute_access
 WHERE region = '{{ region }}' -- required
 ;

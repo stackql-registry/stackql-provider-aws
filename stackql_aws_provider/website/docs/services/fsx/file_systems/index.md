@@ -50,112 +50,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdministrativeActions" /></td>
+    <td><CopyableCode code="administrative_actions" /></td>
     <td><code>array</code></td>
     <td>A list of administrative actions for the file system that are in process or waiting to be processed. Administrative actions describe changes to the Amazon FSx system that you have initiated using the UpdateFileSystem operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the file system was created, in seconds (since 1970-01-01T00:00:00Z), also known as Unix time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DNSName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The Domain Name System (DNS) name for the file system. (pattern: &lt;code&gt;^((fs|fc)i?-&#91;0-9a-f&#93;&#123;8,&#125;\..&#123;4,253&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureDetails" /></td>
+    <td><CopyableCode code="failure_details" /></td>
     <td><code>object</code></td>
     <td>A structure providing details of any failures that occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated, unique 17-digit ID of the file system. (pattern: &lt;code&gt;^(fs-&#91;0-9a-f&#93;&#123;8,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemType" /></td>
+    <td><CopyableCode code="file_system_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon FSx file system, which can be LUSTRE, WINDOWS, ONTAP, or OPENZFS. (WINDOWS, LUSTRE, ONTAP, OPENZFS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemTypeVersion" /></td>
+    <td><CopyableCode code="file_system_type_version" /></td>
     <td><code>string</code></td>
     <td>The Lustre version of the Amazon FSx for Lustre file system, which can be 2.10, 2.12, or 2.15. (pattern: &lt;code&gt;^&#91;0-9&#93;(.&#91;0-9&#93;*)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the ID of the Key Management Service (KMS) key to use for encrypting data on Amazon FSx file systems, as follows: Amazon FSx for Lustre PERSISTENT_1 and PERSISTENT_2 deployment types only. SCRATCH_1 and SCRATCH_2 types are encrypted using the Amazon FSx service KMS key for your account. Amazon FSx for NetApp ONTAP Amazon FSx for OpenZFS Amazon FSx for Windows File Server If a KmsKeyId isn't specified, the Amazon FSx-managed KMS key for your account is used. For more information, see Encrypt in the Key Management Service API Reference. (pattern: &lt;code&gt;^.&#123;1,2048&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lifecycle" /></td>
+    <td><CopyableCode code="lifecycle" /></td>
     <td><code>string</code></td>
     <td>The lifecycle status of the file system. The following are the possible values and what they mean: AVAILABLE - The file system is in a healthy state, and is reachable and available for use. CREATING - Amazon FSx is creating the new file system. DELETING - Amazon FSx is deleting an existing file system. FAILED - An existing file system has experienced an unrecoverable failure. When creating a new file system, Amazon FSx was unable to create the file system. MISCONFIGURED - The file system is in a failed but recoverable state. MISCONFIGURED_UNAVAILABLE - (Amazon FSx for Windows File Server only) The file system is currently unavailable due to a change in your Active Directory configuration. UPDATING - The file system is undergoing a customer-initiated update. (AVAILABLE, CREATING, FAILED, DELETING, MISCONFIGURED, UPDATING, MISCONFIGURED_UNAVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LustreConfiguration" /></td>
+    <td><CopyableCode code="lustre_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for the Amazon FSx for Lustre file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceIds" /></td>
+    <td><CopyableCode code="network_interface_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the elastic network interfaces from which a specific file system is accessible. The elastic network interface is automatically created in the same virtual private cloud (VPC) that the Amazon FSx file system was created in. For more information, see Elastic Network Interfaces in the Amazon EC2 User Guide. For an Amazon FSx for Windows File Server file system, you can have one network interface ID. For an Amazon FSx for Lustre file system, you can have more than one.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of the file system. (IPV4, DUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OntapConfiguration" /></td>
+    <td><CopyableCode code="ontap_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for this Amazon FSx for NetApp ONTAP file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenZFSConfiguration" /></td>
+    <td><CopyableCode code="open_zfs_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for this Amazon FSx for OpenZFS file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that created the file system. If the file system was created by a user in IAM Identity Center, the Amazon Web Services account to which the IAM user belongs is the owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceARN" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the file system resource. (pattern: &lt;code&gt;^arn:(?=&#91;^:&#93;+:fsx:&#91;^:&#93;+:\d&#123;12&#125;:)((|(?=&#91;a-z0-9-.&#93;&#123;1,63&#125;)(?!\d&#123;1,3&#125;(\.\d&#123;1,3&#125;)&#123;3&#125;)(?!&#91;^:&#93;*-&#123;2&#125;)(?!&#91;^:&#93;*-\.)(?!&#91;^:&#93;*\.-)&#91;a-z0-9&#93;.*(?&lt;!-)):)&#123;4&#125;(?!/).&#123;0,1024&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageCapacity" /></td>
+    <td><CopyableCode code="storage_capacity" /></td>
     <td><code>integer</code></td>
     <td>The storage capacity of the file system in gibibytes (GiB). Amazon FSx responds with an HTTP status code 400 (Bad Request) if the value of StorageCapacity is outside of the minimum or maximum values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The type of storage the file system is using. If set to SSD, the file system uses solid state drive storage. If set to HDD, the file system uses hard disk drive storage. If set to INTELLIGENT_TIERING, the file system uses fully elastic, intelligently-tiered storage. (SSD, HDD, INTELLIGENT_TIERING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>Specifies the IDs of the subnets that the file system is accessible from. For the Amazon FSx Windows and ONTAP MULTI_AZ_1 file system deployment type, there are two subnet IDs, one for the preferred file server and one for the standby file server. The preferred file server subnet identified in the PreferredSubnetID property. All other file systems have only one subnet ID. For FSx for Lustre file systems, and Single-AZ Windows file systems, this is the ID of the subnet that contains the file system's endpoint. For MULTI_AZ_1 Windows and ONTAP file systems, the file system endpoint is available in the PreferredSubnetID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of Tag values, with a maximum of 50 elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the primary virtual private cloud (VPC) for the file system. (pattern: &lt;code&gt;^(vpc-&#91;0-9a-f&#93;&#123;8,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowsConfiguration" /></td>
+    <td><CopyableCode code="windows_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for this Amazon FSx for Windows File Server file system.</td>
 </tr>
@@ -259,28 +259,28 @@ Returns the description of specific Amazon FSx file systems, if a FileSystemIds 
 
 ```sql
 SELECT
-AdministrativeActions,
-CreationTime,
-DNSName,
-FailureDetails,
-FileSystemId,
-FileSystemType,
-FileSystemTypeVersion,
-KmsKeyId,
-Lifecycle,
-LustreConfiguration,
-NetworkInterfaceIds,
-NetworkType,
-OntapConfiguration,
-OpenZFSConfiguration,
-OwnerId,
-ResourceARN,
-StorageCapacity,
-StorageType,
-SubnetIds,
-Tags,
-VpcId,
-WindowsConfiguration
+administrative_actions,
+creation_time,
+dns_name,
+failure_details,
+file_system_id,
+file_system_type,
+file_system_type_version,
+kms_key_id,
+lifecycle,
+lustre_configuration,
+network_interface_ids,
+network_type,
+ontap_configuration,
+open_zfs_configuration,
+owner_id,
+resource_arn,
+storage_capacity,
+storage_type,
+subnet_ids,
+tags,
+vpc_id,
+windows_configuration
 FROM aws.fsx.file_systems
 WHERE region = '{{ region }}' -- required
 ;
@@ -337,7 +337,7 @@ SELECT
 '{{ NetworkType }}',
 '{{ region }}'
 RETURNING
-FileSystem
+file_system
 ;
 ```
 </TabItem>
@@ -548,7 +548,7 @@ WHERE
 region = '{{ region }}' --required
 AND FileSystemId = '{{ FileSystemId }}' --required
 RETURNING
-FileSystem;
+file_system;
 ```
 </TabItem>
 </Tabs>

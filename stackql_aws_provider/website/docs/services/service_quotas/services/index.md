@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ServiceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the ListServices operation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the service name.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the names and codes for the Amazon Web Services services integrated with S
 
 ```sql
 SELECT
-ServiceCode,
-ServiceName
+service_code,
+service_name
 FROM aws.service_quotas.services
 WHERE region = '{{ region }}' -- required
 ;

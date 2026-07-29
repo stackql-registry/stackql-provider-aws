@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="registryRecords" /></td>
+    <td><CopyableCode code="registry_records" /></td>
     <td><code>array</code></td>
     <td>The list of registry records that match the search query, ordered by relevance.</td>
 </tr>
@@ -119,7 +119,7 @@ Searches for registry records using semantic, lexical, or hybrid queries. Return
 
 ```sql
 SELECT
-registryRecords
+registry_records
 FROM aws.bedrock_agentcore.registry_records
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationState" /></td>
+    <td><CopyableCode code="configuration_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the local gateway virtual interface group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalBgpAsn" /></td>
+    <td><CopyableCode code="local_bgp_asn" /></td>
     <td><code>integer</code></td>
     <td>The Autonomous System Number(ASN) for the local Border Gateway Protocol (BGP).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalBgpAsnExtended" /></td>
+    <td><CopyableCode code="local_bgp_asn_extended" /></td>
     <td><code>integer</code></td>
     <td>The extended 32-bit ASN for the local BGP configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayId" /></td>
+    <td><CopyableCode code="local_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceGroupArn" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the local gateway virtual interface group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceGroupId" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual interface group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceIds" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the virtual interfaces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the local gateway virtual interface group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the virtual interface group.</td>
 </tr>
@@ -223,15 +223,15 @@ Describes the specified local gateway virtual interface groups.
 
 ```sql
 SELECT
-ConfigurationState,
-LocalBgpAsn,
-LocalBgpAsnExtended,
-LocalGatewayId,
-LocalGatewayVirtualInterfaceGroupArn,
-LocalGatewayVirtualInterfaceGroupId,
-LocalGatewayVirtualInterfaceIds,
-OwnerId,
-Tags
+configuration_state,
+local_bgp_asn,
+local_bgp_asn_extended,
+local_gateway_id,
+local_gateway_virtual_interface_group_arn,
+local_gateway_virtual_interface_group_id,
+local_gateway_virtual_interface_ids,
+owner_id,
+tags
 FROM aws.ec2.local_gateway_virtual_interface_groups
 WHERE region = '{{ region }}' -- required
 AND LocalGatewayVirtualInterfaceGroupId = '{{ LocalGatewayVirtualInterfaceGroupId }}'
@@ -275,15 +275,15 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-ConfigurationState,
-LocalBgpAsn,
-LocalBgpAsnExtended,
-LocalGatewayId,
-LocalGatewayVirtualInterfaceGroupArn,
-LocalGatewayVirtualInterfaceGroupId,
-LocalGatewayVirtualInterfaceIds,
-OwnerId,
-Tags
+configuration_state,
+local_bgp_asn,
+local_bgp_asn_extended,
+local_gateway_id,
+local_gateway_virtual_interface_group_arn,
+local_gateway_virtual_interface_group_id,
+local_gateway_virtual_interface_ids,
+owner_id,
+tags
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>An identity pool ID in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleMappings" /></td>
+    <td><CopyableCode code="role_mappings" /></td>
     <td><code>object</code></td>
     <td>How users for a specific identity provider are to mapped to roles. This is a String-to-RoleMapping object map. The string identifies the identity provider, for example, graph.facebook.com or cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Roles" /></td>
+    <td><CopyableCode code="roles" /></td>
     <td><code>object</code></td>
     <td>The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.</td>
 </tr>
@@ -136,9 +136,9 @@ Gets the roles for an identity pool. You must use Amazon Web Services developer 
 
 ```sql
 SELECT
-IdentityPoolId,
-RoleMappings,
-Roles
+identity_pool_id,
+role_mappings,
+roles
 FROM aws.cognito_identity.identity_pool_roles
 WHERE region = '{{ region }}' -- required
 ;

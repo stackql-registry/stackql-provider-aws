@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BinaryFile" /></td>
+    <td><CopyableCode code="binary_file" /></td>
     <td><code>string (byte)</code></td>
     <td>The output binary file.</td>
 </tr>
@@ -179,7 +179,7 @@ Gets a web mercator tile for the given Earth Observation job.
 
 ```sql
 SELECT
-BinaryFile
+binary_file
 FROM aws.sagemaker_geospatial.tiles
 WHERE Arn = '{{ Arn }}' -- required
 AND ImageAssets = '{{ ImageAssets }}' -- required

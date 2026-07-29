@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the browser. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserArn" /></td>
+    <td><CopyableCode code="browser_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the browser. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:(aws|&#91;0-9&#93;&#123;12&#125;):browser(-custom)?/(aws\.browser\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserId" /></td>
+    <td><CopyableCode code="browser_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the browser. (pattern: &lt;code&gt;(aws\.browser\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserSigning" /></td>
+    <td><CopyableCode code="browser_signing" /></td>
     <td><code>object</code></td>
     <td>The browser signing configuration that shows whether cryptographic agent identification is enabled for web bot authentication.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of certificates configured for the browser.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser was created.</td>
 </tr>
@@ -86,27 +86,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the browser.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enterprisePolicies" /></td>
+    <td><CopyableCode code="enterprise_policies" /></td>
     <td><code>array</code></td>
     <td>The list of enterprise policy files configured for the browser.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN that provides permissions for the browser. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the browser is in a failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration for a browser. This structure defines how the browser connects to the network.</td>
 </tr>
@@ -140,17 +140,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the browser. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserArn" /></td>
+    <td><CopyableCode code="browser_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the browser. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:(aws|&#91;0-9&#93;&#123;12&#125;):browser(-custom)?/(aws\.browser\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserId" /></td>
+    <td><CopyableCode code="browser_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the browser. (pattern: &lt;code&gt;(aws\.browser\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser was created.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the browser.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser was last updated.</td>
 </tr>
@@ -282,17 +282,17 @@ Gets information about a custom browser.
 ```sql
 SELECT
 name,
-browserArn,
-browserId,
-browserSigning,
+browser_arn,
+browser_id,
+browser_signing,
 certificates,
-createdAt,
+created_at,
 description,
-enterprisePolicies,
-executionRoleArn,
-failureReason,
-lastUpdatedAt,
-networkConfiguration,
+enterprise_policies,
+execution_role_arn,
+failure_reason,
+last_updated_at,
+network_configuration,
 recording,
 status
 FROM aws.bedrock_agentcore_control.browsers
@@ -308,11 +308,11 @@ Lists all custom browsers in your account.
 ```sql
 SELECT
 name,
-browserArn,
-browserId,
-createdAt,
+browser_arn,
+browser_id,
+created_at,
 description,
-lastUpdatedAt,
+last_updated_at,
 status
 FROM aws.bedrock_agentcore_control.browsers
 WHERE region = '{{ region }}' -- required
@@ -365,9 +365,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-browserArn,
-browserId,
-createdAt,
+browser_arn,
+browser_id,
+created_at,
 status
 ;
 ```

@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedResourceAccessibility" /></td>
+    <td><CopyableCode code="associated_resource_accessibility" /></td>
     <td><code>string</code></td>
     <td>The connectivity status of the resources associated to a VPC endpoint. The resource is accessible if the associated resource configuration is AVAILABLE, otherwise the resource is inaccessible.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedResourceArn" /></td>
+    <td><CopyableCode code="associated_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the associated resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsEntry" /></td>
+    <td><CopyableCode code="dns_entry" /></td>
     <td><code>string</code></td>
     <td>The DNS entry of the VPC endpoint association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>An error code related to why an VPC endpoint association failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>A message related to why an VPC endpoint association failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsEntry" /></td>
+    <td><CopyableCode code="private_dns_entry" /></td>
     <td><code>string</code></td>
     <td>The private DNS entry of the VPC endpoint association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceConfigurationGroupArn" /></td>
+    <td><CopyableCode code="resource_configuration_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource configuration group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceNetworkName" /></td>
+    <td><CopyableCode code="service_network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags to apply to the VPC endpoint association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint.</td>
 </tr>
@@ -199,18 +199,18 @@ Describes the VPC resources, VPC endpoint services, Amazon Lattice services, or 
 
 ```sql
 SELECT
-AssociatedResourceAccessibility,
-AssociatedResourceArn,
-DnsEntry,
-FailureCode,
-FailureReason,
-Id,
-PrivateDnsEntry,
-ResourceConfigurationGroupArn,
-ServiceNetworkArn,
-ServiceNetworkName,
-Tags,
-VpcEndpointId
+associated_resource_accessibility,
+associated_resource_arn,
+dns_entry,
+failure_code,
+failure_reason,
+id,
+private_dns_entry,
+resource_configuration_group_arn,
+service_network_arn,
+service_network_name,
+tags,
+vpc_endpoint_id
 FROM aws.ec2.vpc_endpoint_associations
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

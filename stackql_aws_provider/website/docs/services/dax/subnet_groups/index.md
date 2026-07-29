@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroupName" /></td>
+    <td><CopyableCode code="subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>array</code></td>
     <td>A list of subnets associated with the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedNetworkTypes" /></td>
+    <td><CopyableCode code="supported_network_types" /></td>
     <td><code>array</code></td>
     <td>The network types supported by this subnet. Returns an array of strings that can include ipv4, ipv6, or both, indicating whether the subnet group supports IPv4 only, IPv6 only, or dual-stack deployments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.</td>
 </tr>
@@ -160,11 +160,11 @@ Returns a list of subnet group descriptions. If a subnet group name is specified
 
 ```sql
 SELECT
-Description,
-SubnetGroupName,
-Subnets,
-SupportedNetworkTypes,
-VpcId
+description,
+subnet_group_name,
+subnets,
+supported_network_types,
+vpc_id
 FROM aws.dax.subnet_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,7 +199,7 @@ SELECT
 '{{ SubnetIds }}' /* required */,
 '{{ region }}'
 RETURNING
-SubnetGroup
+subnet_group
 ;
 ```
 </TabItem>
@@ -252,7 +252,7 @@ WHERE
 region = '{{ region }}' --required
 AND SubnetGroupName = '{{ SubnetGroupName }}' --required
 RETURNING
-SubnetGroup;
+subnet_group;
 ```
 </TabItem>
 </Tabs>

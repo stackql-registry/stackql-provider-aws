@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageReportSubscriptions" /></td>
+    <td><CopyableCode code="usage_report_subscriptions" /></td>
     <td><code>array</code></td>
     <td>Information about the usage report subscription.</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves a list that describes one or more usage report subscriptions.
 
 ```sql
 SELECT
-NextToken,
-UsageReportSubscriptions
+next_token,
+usage_report_subscriptions
 FROM aws.appstream.usage_report_subscriptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,8 +168,8 @@ region
 SELECT 
 '{{ region }}'
 RETURNING
-S3BucketName,
-Schedule
+s3_bucket_name,
+schedule
 ;
 ```
 </TabItem>

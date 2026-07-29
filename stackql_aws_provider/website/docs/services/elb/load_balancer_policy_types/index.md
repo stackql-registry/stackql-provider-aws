@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the policy type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyAttributeTypeDescriptions" /></td>
+    <td><CopyableCode code="policy_attribute_type_descriptions" /></td>
     <td><code>string</code></td>
     <td>The description of the policy attributes associated with the policies defined by Elastic Load Balancing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyTypeName" /></td>
+    <td><CopyableCode code="policy_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the policy type.</td>
 </tr>
@@ -134,9 +134,9 @@ Describes the specified load balancer policy types or all load balancer policy t
 
 ```sql
 SELECT
-Description,
-PolicyAttributeTypeDescriptions,
-PolicyTypeName
+description,
+policy_attribute_type_descriptions,
+policy_type_name
 FROM aws.elb.load_balancer_policy_types
 WHERE region = '{{ region }}' -- required
 AND PolicyTypeNames = '{{ PolicyTypeNames }}'

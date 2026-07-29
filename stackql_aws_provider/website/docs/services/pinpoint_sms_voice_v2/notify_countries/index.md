@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CountryName" /></td>
+    <td><CopyableCode code="country_name" /></td>
     <td><code>string</code></td>
     <td>The name of the country.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOwnedIdentityRequired" /></td>
+    <td><CopyableCode code="customer_owned_identity_required" /></td>
     <td><code>boolean</code></td>
     <td>Whether a customer-owned identity is required to send notify messages to this country.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsoCountryCode" /></td>
+    <td><CopyableCode code="iso_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code, in ISO 3166-1 alpha-2 format, for the country or region. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedChannels" /></td>
+    <td><CopyableCode code="supported_channels" /></td>
     <td><code>array</code></td>
     <td>An array of supported channels for the country. Supported values include SMS and VOICE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedTiers" /></td>
+    <td><CopyableCode code="supported_tiers" /></td>
     <td><code>array</code></td>
     <td>An array of supported tiers for the country.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedUseCases" /></td>
+    <td><CopyableCode code="supported_use_cases" /></td>
     <td><code>array</code></td>
     <td>An array of supported use cases for the country.</td>
 </tr>
@@ -144,12 +144,12 @@ Lists countries that support notify messaging. You can optionally filter by chan
 
 ```sql
 SELECT
-CountryName,
-CustomerOwnedIdentityRequired,
-IsoCountryCode,
-SupportedChannels,
-SupportedTiers,
-SupportedUseCases
+country_name,
+customer_owned_identity_required,
+iso_country_code,
+supported_channels,
+supported_tiers,
+supported_use_cases
 FROM aws.pinpoint_sms_voice_v2.notify_countries
 WHERE region = '{{ region }}' -- required
 ;

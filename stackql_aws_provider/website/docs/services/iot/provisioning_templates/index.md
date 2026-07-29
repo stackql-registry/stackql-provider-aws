@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the provisioning template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultVersionId" /></td>
+    <td><CopyableCode code="default_version_id" /></td>
     <td><code>integer</code></td>
     <td>The default fleet template version ID.</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>True if the provisioning template is enabled, otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the provisioning template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preProvisioningHook" /></td>
+    <td><CopyableCode code="pre_provisioning_hook" /></td>
     <td><code>object</code></td>
     <td>Structure that contains payloadVersion and targetArn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningRoleArn" /></td>
+    <td><CopyableCode code="provisioning_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role associated with the provisioning template. This IoT role grants permission to provision a device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the provisioning template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateBody" /></td>
+    <td><CopyableCode code="template_body" /></td>
     <td><code>string</code></td>
     <td>The JSON formatted contents of the provisioning template. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the provisioning template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the provisioning template summary was created.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>True if the fleet provision template is enabled, otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the provisioning template summary was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the provisioning template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the provisioning template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -263,16 +263,16 @@ Returns information about a provisioning template. Requires permission to access
 
 ```sql
 SELECT
-creationDate,
-defaultVersionId,
+creation_date,
+default_version_id,
 description,
 enabled,
-lastModifiedDate,
-preProvisioningHook,
-provisioningRoleArn,
-templateArn,
-templateBody,
-templateName,
+last_modified_date,
+pre_provisioning_hook,
+provisioning_role_arn,
+template_arn,
+template_body,
+template_name,
 type_
 FROM aws.iot.provisioning_templates
 WHERE template_name = '{{ template_name }}' -- required
@@ -286,12 +286,12 @@ Lists the provisioning templates in your Amazon Web Services account. Requires p
 
 ```sql
 SELECT
-creationDate,
+creation_date,
 description,
 enabled,
-lastModifiedDate,
-templateArn,
-templateName,
+last_modified_date,
+template_arn,
+template_name,
 type_
 FROM aws.iot.provisioning_templates
 WHERE region = '{{ region }}' -- required
@@ -339,9 +339,9 @@ SELECT
 '{{ type }}',
 '{{ region }}'
 RETURNING
-defaultVersionId,
-templateArn,
-templateName
+default_version_id,
+template_arn,
+template_name
 ;
 ```
 </TabItem>

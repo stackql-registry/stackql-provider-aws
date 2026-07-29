@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountCreatedDate" /></td>
+    <td><CopyableCode code="account_created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the account was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. To use this parameter, the caller must be an identity in the organization's management account or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have all features enabled, and the organization must have trusted access enabled for the Account Management service, and optionally a delegated admin account assigned. This operation can only be called from the management account or the delegated administrator account of an organization for a member account. The management account can't specify its own AccountId. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountName" /></td>
+    <td><CopyableCode code="account_name" /></td>
     <td><code>string</code></td>
     <td>The name of the account. (pattern: &lt;code&gt;&#91; -;=?-~&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountState" /></td>
+    <td><CopyableCode code="account_state" /></td>
     <td><code>string</code></td>
     <td>The state of the account. Each account state represents a specific phase in the account lifecycle. Use this information to manage account access, automate workflows, or trigger actions based on account state changes. Valid values: PENDING_ACTIVATION | ACTIVE | SUSPENDED | CLOSED (PENDING_ACTIVATION, ACTIVE, SUSPENDED, CLOSED)</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieves information about the specified account including its account name, ac
 
 ```sql
 SELECT
-AccountCreatedDate,
-AccountId,
-AccountName,
-AccountState
+account_created_date,
+account_id,
+account_name,
+account_state
 FROM aws.account.account_informations
 WHERE region = '{{ region }}' -- required
 ;

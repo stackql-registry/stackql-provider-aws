@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>An optional value that can contain additional information about the reasons that the address was added to the suppression list for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address that is on the suppression list for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the suppressed destination was last updated, shown in Unix time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the address was added to the suppression list for your account. The value can be one of the following: COMPLAINT – Amazon SES added an email address to the suppression list for your account because a message sent to that address results in a complaint. BOUNCE – Amazon SES added an email address to the suppression list for your account because a message sent to that address results in a hard bounce. (BOUNCE, COMPLAINT)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there are additional email addresses on the suppression list for your account. To view additional suppressed addresses, issue another request to ListSuppressedDestinations, and pass this token in the NextToken parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuppressedDestinationSummaries" /></td>
+    <td><CopyableCode code="suppressed_destination_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of summaries, each containing a summary for a suppressed email destination.</td>
 </tr>
@@ -211,10 +211,10 @@ Retrieves information about a specific email address that's on the suppression l
 
 ```sql
 SELECT
-Attributes,
-EmailAddress,
-LastUpdateTime,
-Reason
+attributes,
+email_address,
+last_update_time,
+reason
 FROM aws.sesv2.suppressed_destinations
 WHERE email_address = '{{ email_address }}' -- required
 AND region = '{{ region }}' -- required
@@ -227,8 +227,8 @@ Retrieves a list of email addresses that are on the suppression list for your ac
 
 ```sql
 SELECT
-NextToken,
-SuppressedDestinationSummaries
+next_token,
+suppressed_destination_summaries
 FROM aws.sesv2.suppressed_destinations
 WHERE region = '{{ region }}' -- required
 AND Reason = '{{ Reason }}'

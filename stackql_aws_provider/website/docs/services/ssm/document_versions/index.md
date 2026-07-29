@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the document was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the SSM document. This value can differ for each version of the document. If you want to update this value, see UpdateDocument. (pattern: &lt;code&gt;^&#91;\w\.\-\:\/ &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentFormat" /></td>
+    <td><CopyableCode code="document_format" /></td>
     <td><code>string</code></td>
     <td>The document format, either JSON or YAML. (YAML, JSON, TEXT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>The document version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefaultVersion" /></td>
+    <td><CopyableCode code="is_default_version" /></td>
     <td><code>boolean</code></td>
     <td>An identifier for the default version of the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The document name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReviewStatus" /></td>
+    <td><CopyableCode code="review_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the approval review for the latest version of the document. (APPROVED, NOT_REVIEWED, PENDING, REJECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the SSM document, such as Creating, Active, Failed, and Deleting. (Creating, Active, Updating, Deleting, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusInformation" /></td>
+    <td><CopyableCode code="status_information" /></td>
     <td><code>string</code></td>
     <td>A message returned by Amazon Web Services Systems Manager that explains the Status value. For example, a Failed status might be explained by the StatusInformation message, "The specified S3 bucket doesn't exist. Verify that the URL of the S3 bucket is correct."</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The version of the artifact associated with the document. For example, 12.6. This value is unique across all versions of a document, and can't be changed. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;1,128&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -164,16 +164,16 @@ List all versions for a document.
 
 ```sql
 SELECT
-CreatedDate,
-DisplayName,
-DocumentFormat,
-DocumentVersion,
-IsDefaultVersion,
-Name,
-ReviewStatus,
-Status,
-StatusInformation,
-VersionName
+created_date,
+display_name,
+document_format,
+document_version,
+is_default_version,
+name,
+review_status,
+status,
+status_information,
+version_name
 FROM aws.ssm.document_versions
 WHERE region = '{{ region }}' -- required
 ;

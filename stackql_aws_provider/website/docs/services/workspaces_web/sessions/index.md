@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientIpAddresses" /></td>
+    <td><CopyableCode code="client_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>The IP address of the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalArn" /></td>
+    <td><CopyableCode code="portal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the session. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the session.</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalArn" /></td>
+    <td><CopyableCode code="portal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the session. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the session.</td>
 </tr>
@@ -249,11 +249,11 @@ Gets information for a secure browser session.
 
 ```sql
 SELECT
-clientIpAddresses,
-endTime,
-portalArn,
-sessionId,
-startTime,
+client_ip_addresses,
+end_time,
+portal_arn,
+session_id,
+start_time,
 status,
 username
 FROM aws.workspaces_web.sessions
@@ -269,10 +269,10 @@ Lists information for multiple secure browser sessions from a specific portal.
 
 ```sql
 SELECT
-endTime,
-portalArn,
-sessionId,
-startTime,
+end_time,
+portal_arn,
+session_id,
+start_time,
 status,
 username
 FROM aws.workspaces_web.sessions

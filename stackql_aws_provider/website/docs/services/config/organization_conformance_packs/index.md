@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConformancePackInputParameters" /></td>
+    <td><CopyableCode code="conformance_pack_input_parameters" /></td>
     <td><code>array</code></td>
     <td>A list of ConformancePackInputParameter objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryS3Bucket" /></td>
+    <td><CopyableCode code="delivery_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket where Config stores conformance pack templates. This field is optional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryS3KeyPrefix" /></td>
+    <td><CopyableCode code="delivery_s3_key_prefix" /></td>
     <td><code>string</code></td>
     <td>Any folder structure you want to add to an Amazon S3 bucket. This field is optional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExcludedAccounts" /></td>
+    <td><CopyableCode code="excluded_accounts" /></td>
     <td><code>array</code></td>
     <td>A comma-separated list of accounts excluded from organization conformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last time when organization conformation pack was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConformancePackArn" /></td>
+    <td><CopyableCode code="organization_conformance_pack_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of organization conformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConformancePackName" /></td>
+    <td><CopyableCode code="organization_conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>The name you assign to an organization conformance pack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -163,13 +163,13 @@ Returns a list of organization conformance packs. When you specify the limit and
 
 ```sql
 SELECT
-ConformancePackInputParameters,
-DeliveryS3Bucket,
-DeliveryS3KeyPrefix,
-ExcludedAccounts,
-LastUpdateTime,
-OrganizationConformancePackArn,
-OrganizationConformancePackName
+conformance_pack_input_parameters,
+delivery_s3_bucket,
+delivery_s3_key_prefix,
+excluded_accounts,
+last_update_time,
+organization_conformance_pack_arn,
+organization_conformance_pack_name
 FROM aws.config.organization_conformance_packs
 WHERE region = '{{ region }}' -- required
 ;
@@ -204,7 +204,7 @@ WHERE
 region = '{{ region }}' --required
 AND OrganizationConformancePackName = '{{ OrganizationConformancePackName }}' --required
 RETURNING
-OrganizationConformancePackArn;
+organization_conformance_pack_arn;
 ```
 </TabItem>
 </Tabs>

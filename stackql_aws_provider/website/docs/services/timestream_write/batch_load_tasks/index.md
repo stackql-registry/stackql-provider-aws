@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Timestream batch load task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataModelConfiguration" /></td>
+    <td><CopyableCode code="data_model_configuration" /></td>
     <td><code>object</code></td>
     <td>Data model configuration for a batch load task. This contains details about where a data model for a batch load task is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceConfiguration" /></td>
+    <td><CopyableCode code="data_source_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration details about the data source for a batch load task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Timestream batch load task was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressReport" /></td>
+    <td><CopyableCode code="progress_report" /></td>
     <td><code>object</code></td>
     <td>Details about the progress of a batch load task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecordVersion" /></td>
+    <td><CopyableCode code="record_version" /></td>
     <td><code>integer (int64)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportConfiguration" /></td>
+    <td><CopyableCode code="report_configuration" /></td>
     <td><code>object</code></td>
     <td>Report configuration for a batch load task. This contains details about where error reports are stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResumableUntil" /></td>
+    <td><CopyableCode code="resumable_until" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetDatabaseName" /></td>
+    <td><CopyableCode code="target_database_name" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetTableName" /></td>
+    <td><CopyableCode code="target_table_name" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the batch load task. (pattern: &lt;code&gt;&#91;A-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>Status of the batch load task. (CREATED, IN_PROGRESS, FAILED, SUCCEEDED, PROGRESS_STOPPED, PENDING_RESUME)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BatchLoadTasks" /></td>
+    <td><CopyableCode code="batch_load_tasks" /></td>
     <td><code>array</code></td>
     <td>A list of batch load task details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to specify where to start paginating. Provide the next ListBatchLoadTasksRequest.</td>
 </tr>
@@ -219,19 +219,19 @@ Returns information about the batch load task, including configurations, mapping
 
 ```sql
 SELECT
-CreationTime,
-DataModelConfiguration,
-DataSourceConfiguration,
-ErrorMessage,
-LastUpdatedTime,
-ProgressReport,
-RecordVersion,
-ReportConfiguration,
-ResumableUntil,
-TargetDatabaseName,
-TargetTableName,
-TaskId,
-TaskStatus
+creation_time,
+data_model_configuration,
+data_source_configuration,
+error_message,
+last_updated_time,
+progress_report,
+record_version,
+report_configuration,
+resumable_until,
+target_database_name,
+target_table_name,
+task_id,
+task_status
 FROM aws.timestream_write.batch_load_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -243,8 +243,8 @@ Provides a list of batch load tasks, along with the name, status, when the task 
 
 ```sql
 SELECT
-BatchLoadTasks,
-NextToken
+batch_load_tasks,
+next_token
 FROM aws.timestream_write.batch_load_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -287,7 +287,7 @@ SELECT
 {{ RecordVersion }},
 '{{ region }}'
 RETURNING
-TaskId
+task_id
 ;
 ```
 </TabItem>

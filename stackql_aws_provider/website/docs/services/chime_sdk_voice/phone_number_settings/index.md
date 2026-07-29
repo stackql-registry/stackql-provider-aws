@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallingName" /></td>
+    <td><CopyableCode code="calling_name" /></td>
     <td><code>string</code></td>
     <td>The default outbound calling name for the account. (pattern: &lt;code&gt;^$|^&#91;a-zA-Z0-9 &#93;&#123;2,15&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CallingNameUpdatedTimestamp" /></td>
+    <td><CopyableCode code="calling_name_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The updated outbound calling name timestamp, in ISO 8601 format.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the phone number settings for the administrator's AWS account, such as
 
 ```sql
 SELECT
-CallingName,
-CallingNameUpdatedTimestamp
+calling_name,
+calling_name_updated_timestamp
 FROM aws.chime_sdk_voice.phone_number_settings
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedKeysIPV4" /></td>
+    <td><CopyableCode code="managed_keys_ipv4" /></td>
     <td><code>object</code></td>
     <td>The keys that are of Internet Protocol version 4 (IPv4).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedKeysIPV6" /></td>
+    <td><CopyableCode code="managed_keys_ipv6" /></td>
     <td><code>object</code></td>
     <td>The keys that are of Internet Protocol version 6 (IPv6).</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the IP addresses that are currently blocked by a rate-based rule insta
 
 ```sql
 SELECT
-ManagedKeysIPV4,
-ManagedKeysIPV6
+managed_keys_ipv4,
+managed_keys_ipv6
 FROM aws.wafv2.rate_based_statement_managed_keys
 WHERE region = '{{ region }}' -- required
 ;

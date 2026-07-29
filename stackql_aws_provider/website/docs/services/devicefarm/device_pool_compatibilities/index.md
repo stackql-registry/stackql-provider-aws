@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="compatibleDevices" /></td>
+    <td><CopyableCode code="compatible_devices" /></td>
     <td><code>array</code></td>
     <td>Information about compatible devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incompatibleDevices" /></td>
+    <td><CopyableCode code="incompatible_devices" /></td>
     <td><code>array</code></td>
     <td>Information about incompatible devices.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets information about compatibility with a device pool.
 
 ```sql
 SELECT
-compatibleDevices,
-incompatibleDevices
+compatible_devices,
+incompatible_devices
 FROM aws.devicefarm.device_pool_compatibilities
 WHERE region = '{{ region }}' -- required
 ;

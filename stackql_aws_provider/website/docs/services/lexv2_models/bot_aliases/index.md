@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botAliasSummaries" /></td>
+    <td><CopyableCode code="bot_alias_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the bot aliases that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter of the request. If there are more aliases available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with the aliases. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListBotAliases operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListBotAliases operation request to get the next page of results.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets a list of aliases for the specified bot.
 
 ```sql
 SELECT
-botAliasSummaries,
-botId,
-nextToken
+bot_alias_summaries,
+bot_id,
+next_token
 FROM aws.lexv2_models.bot_aliases
 WHERE bot_id = '{{ bot_id }}' -- required
 AND region = '{{ region }}' -- required

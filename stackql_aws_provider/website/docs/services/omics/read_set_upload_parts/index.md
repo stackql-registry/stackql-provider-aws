@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>A unique identifier used to confirm that parts are being added to the correct upload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for when a direct upload was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for the most recent update to an uploaded part.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partNumber" /></td>
+    <td><CopyableCode code="part_number" /></td>
     <td><code>integer</code></td>
     <td>The number identifying the part in an upload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partSize" /></td>
+    <td><CopyableCode code="part_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the the part in an upload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partSource" /></td>
+    <td><CopyableCode code="part_source" /></td>
     <td><code>string</code></td>
     <td>The origin of the part being direct uploaded. (SOURCE1, SOURCE2)</td>
 </tr>
@@ -165,11 +165,11 @@ Lists all parts in a multipart read set upload for a sequence store and returns 
 ```sql
 SELECT
 checksum,
-creationTime,
-lastUpdatedTime,
-partNumber,
-partSize,
-partSource
+creation_time,
+last_updated_time,
+part_number,
+part_size,
+part_source
 FROM aws.omics.read_set_upload_parts
 WHERE sequence_store_id = '{{ sequence_store_id }}' -- required
 AND upload_id = '{{ upload_id }}' -- required

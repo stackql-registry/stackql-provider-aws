@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the over-the-air (OTA) task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the over-the-air (OTA) task. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the over-the-air (OTA) task was last updated at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtaMechanism" /></td>
+    <td><CopyableCode code="ota_mechanism" /></td>
     <td><code>string</code></td>
     <td>The deployment mechanism for the over-the-air (OTA) task. (PUSH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtaSchedulingConfig" /></td>
+    <td><CopyableCode code="ota_scheduling_config" /></td>
     <td><code>object</code></td>
     <td>Over-the-air (OTA) task scheduling config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtaTargetQueryString" /></td>
+    <td><CopyableCode code="ota_target_query_string" /></td>
     <td><code>string</code></td>
     <td>The query string to add things to the thing group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtaTaskExecutionRetryConfig" /></td>
+    <td><CopyableCode code="ota_task_execution_retry_config" /></td>
     <td><code>object</code></td>
     <td>Over-the-air (OTA) task retry config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtaType" /></td>
+    <td><CopyableCode code="ota_type" /></td>
     <td><code>string</code></td>
     <td>The frequency type for the over-the-air (OTA) task. (ONE_TIME, CONTINUOUS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The connection protocol the over-the-air (OTA) task uses to update the device. (HTTP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Url" /></td>
+    <td><CopyableCode code="s3_url" /></td>
     <td><code>string</code></td>
     <td>The URL to the Amazon S3 bucket where the over-the-air (OTA) task is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the over-the-air (OTA) task. (IN_PROGRESS, CANCELED, COMPLETED, DELETION_IN_PROGRESS, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of key/value pairs that are used to manage the over-the-air (OTA) task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>array</code></td>
     <td>The device targeted for the over-the-air (OTA) task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the over-the-air (OTA) task (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:ota-task/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskConfigurationId" /></td>
+    <td><CopyableCode code="task_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the over-the-air (OTA) task configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The id of the over-the-air (OTA) task. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskProcessingDetails" /></td>
+    <td><CopyableCode code="task_processing_details" /></td>
     <td><code>object</code></td>
     <td>The processing details of all over-the-air (OTA) tasks.</td>
 </tr>
@@ -150,32 +150,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the over-the-air (OTA) task was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the over-the-air (OTA) task was last updated at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the over-the-air (OTA) task summary. (IN_PROGRESS, CANCELED, COMPLETED, DELETION_IN_PROGRESS, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the over-the-air (OTA) task. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:ota-task/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskConfigurationId" /></td>
+    <td><CopyableCode code="task_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the over-the-air (OTA) task configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The id of the over-the-air (OTA) task. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -288,23 +288,23 @@ Get details of the over-the-air (OTA) task by its task id.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-LastUpdatedAt,
-OtaMechanism,
-OtaSchedulingConfig,
-OtaTargetQueryString,
-OtaTaskExecutionRetryConfig,
-OtaType,
-Protocol,
-S3Url,
-Status,
-Tags,
-Target,
-TaskArn,
-TaskConfigurationId,
-TaskId,
-TaskProcessingDetails
+created_at,
+description,
+last_updated_at,
+ota_mechanism,
+ota_scheduling_config,
+ota_target_query_string,
+ota_task_execution_retry_config,
+ota_type,
+protocol,
+s3_url,
+status,
+tags,
+target,
+task_arn,
+task_configuration_id,
+task_id,
+task_processing_details
 FROM aws.iot_managed_integrations.ota_tasks
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -317,12 +317,12 @@ List all of the over-the-air (OTA) tasks.
 
 ```sql
 SELECT
-CreatedAt,
-LastUpdatedAt,
-Status,
-TaskArn,
-TaskConfigurationId,
-TaskId
+created_at,
+last_updated_at,
+status,
+task_arn,
+task_configuration_id,
+task_id
 FROM aws.iot_managed_integrations.ota_tasks
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -377,9 +377,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Description,
-TaskArn,
-TaskId
+description,
+task_arn,
+task_id
 ;
 ```
 </TabItem>

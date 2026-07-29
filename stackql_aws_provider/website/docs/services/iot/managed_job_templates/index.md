@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The document schema for a managed job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentParameters" /></td>
+    <td><CopyableCode code="document_parameters" /></td>
     <td><code>array</code></td>
     <td>A map of key-value pairs that you can use as guidance to specify the inputs for creating a job from a managed template. documentParameters can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>A list of environments that are supported with the managed job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) of the managed template. (pattern: &lt;code&gt;^arn:&#91;!-~&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of a managed template, such as AWS-Reboot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateVersion" /></td>
+    <td><CopyableCode code="template_version" /></td>
     <td><code>string</code></td>
     <td>The version for a managed template. (pattern: &lt;code&gt;^&#91;1-9&#93;+.&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>A list of environments that are supported with the managed job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a managed template. (pattern: &lt;code&gt;^arn:&#91;!-~&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The unique Name for a managed template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateVersion" /></td>
+    <td><CopyableCode code="template_version" /></td>
     <td><code>string</code></td>
     <td>The version for a managed template. (pattern: &lt;code&gt;^&#91;1-9&#93;+.&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -224,11 +224,11 @@ View details of a managed job template.
 SELECT
 description,
 document,
-documentParameters,
+document_parameters,
 environments,
-templateArn,
-templateName,
-templateVersion
+template_arn,
+template_name,
+template_version
 FROM aws.iot.managed_job_templates
 WHERE template_name = '{{ template_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -244,9 +244,9 @@ Returns a list of managed job templates.
 SELECT
 description,
 environments,
-templateArn,
-templateName,
-templateVersion
+template_arn,
+template_name,
+template_version
 FROM aws.iot.managed_job_templates
 WHERE region = '{{ region }}' -- required
 AND templateName = '{{ templateName }}'

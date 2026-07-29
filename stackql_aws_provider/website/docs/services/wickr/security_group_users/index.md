@@ -55,62 +55,62 @@ The following fields are returned by `SELECT` queries:
     <td>The phone number minus country code, used for cloud deployments. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="challengeFailures" /></td>
+    <td><CopyableCode code="challenge_failures" /></td>
     <td><code>integer</code></td>
     <td>The number of failed password attempts for enterprise deployments, used for account lockout policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeValidation" /></td>
+    <td><CopyableCode code="code_validation" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the user can be verified through a custom invite code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="countryCode" /></td>
+    <td><CopyableCode code="country_code" /></td>
     <td><code>string</code></td>
     <td>The country code for the user's phone number, used for cloud deployments. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstName" /></td>
+    <td><CopyableCode code="first_name" /></td>
     <td><code>string</code></td>
     <td>The first name of the user. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inviteCode" /></td>
+    <td><CopyableCode code="invite_code" /></td>
     <td><code>string</code></td>
     <td>The invitation code for this user, used during registration to join the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAdmin" /></td>
+    <td><CopyableCode code="is_admin" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the user has administrator privileges in the network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isInviteExpired" /></td>
+    <td><CopyableCode code="is_invite_expired" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the user's email invitation code has expired, applicable to cloud deployments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isUser" /></td>
+    <td><CopyableCode code="is_user" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this account is a user (as opposed to a bot or other account type).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastName" /></td>
+    <td><CopyableCode code="last_name" /></td>
     <td><code>string</code></td>
     <td>The last name of the user. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="otpEnabled" /></td>
+    <td><CopyableCode code="otp_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether one-time password (OTP) authentication is enabled for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scimId" /></td>
+    <td><CopyableCode code="scim_id" /></td>
     <td><code>string</code></td>
     <td>The SCIM (System for Cross-domain Identity Management) identifier for the user, used for identity synchronization. Currently not used. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>A list of security group IDs to which the user is assigned, determining their permissions and feature access.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier for the user. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the user within the network. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -240,23 +240,23 @@ Retrieves a paginated list of users who belong to a specific security group in a
 ```sql
 SELECT
 cell,
-challengeFailures,
-codeValidation,
-countryCode,
-firstName,
-inviteCode,
-isAdmin,
-isInviteExpired,
-isUser,
-lastName,
-otpEnabled,
-scimId,
-securityGroups,
+challenge_failures,
+code_validation,
+country_code,
+first_name,
+invite_code,
+is_admin,
+is_invite_expired,
+is_user,
+last_name,
+otp_enabled,
+scim_id,
+security_groups,
 status,
 suspended,
 type_,
 uname,
-userId,
+user_id,
 username
 FROM aws.wickr.security_group_users
 WHERE network_id = '{{ network_id }}' -- required

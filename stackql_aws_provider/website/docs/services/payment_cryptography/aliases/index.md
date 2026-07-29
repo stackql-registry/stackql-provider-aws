@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasName" /></td>
+    <td><CopyableCode code="alias_name" /></td>
     <td><code>string</code></td>
     <td>A friendly name that you can use to refer to a key. The value must begin with alias/. Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output. (pattern: &lt;code&gt;alias/&#91;a-zA-Z0-9/_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyArn" /></td>
+    <td><CopyableCode code="key_arn" /></td>
     <td><code>string</code></td>
     <td>The KeyARN of the key associated with the alias. (pattern: &lt;code&gt;arn:aws:payment-cryptography:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,16&#125;-&#91;0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;0-9a-zA-Z&#93;&#123;16,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the aliases for all keys in the caller's Amazon Web Services account and A
 
 ```sql
 SELECT
-AliasName,
-KeyArn
+alias_name,
+key_arn
 FROM aws.payment_cryptography.aliases
 WHERE region = '{{ region }}' -- required
 ;

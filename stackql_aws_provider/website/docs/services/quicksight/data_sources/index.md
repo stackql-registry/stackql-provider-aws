@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>The structure of a data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -81,32 +81,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The arn of the datasource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the data source was created. This value is expressed in MM-DD-YYYY HH:MM:SS format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the data source was last updated. This value is expressed in MM-DD-YYYY HH:MM:SS format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the data source. (ADOBE_ANALYTICS, AMAZON_ELASTICSEARCH, ATHENA, AURORA, AURORA_POSTGRESQL, AWS_IOT_ANALYTICS, GITHUB, JIRA, MARIADB, MYSQL, ORACLE, POSTGRESQL, PRESTO, REDSHIFT, S3, S3_TABLES, SALESFORCE, SERVICENOW, SNOWFLAKE, SPARK, SQLSERVER, TERADATA, TWITTER, TIMESTREAM, AMAZON_OPENSEARCH, EXASOL, DATABRICKS, STARBURST, TRINO, BIGQUERY, GOOGLESHEETS, GOOGLE_DRIVE, CONFLUENCE, SHAREPOINT, ONE_DRIVE, WEB_CRAWLER, S3_KNOWLEDGE_BASE, QBUSINESS)</td>
 </tr>
@@ -125,67 +125,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlternateDataSourceParameters" /></td>
+    <td><CopyableCode code="alternate_data_source_parameters" /></td>
     <td><code>array</code></td>
     <td>A set of alternate data source parameters that you want to share for the credentials stored with this data source. The credentials are applied in tandem with the data source parameters when you copy a data source by using a create or update request. The API operation compares the DataSourceParameters structure that's in the request with the structures in the AlternateDataSourceParameters allow list. If the structures are an exact match, the request is allowed to use the credentials from this existing data source. If the AlternateDataSourceParameters list is null, the Credentials originally used with this DataSourceParameters are automatically allowed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this data source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data source. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceParameters" /></td>
+    <td><CopyableCode code="data_source_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters that Quick Sight uses to connect to your underlying data source. This is a variant type structure. For this structure to be valid, only one of the attributes can be non-null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Error information from the last update or the creation of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this data source was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A display name for the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretArn" /></td>
+    <td><CopyableCode code="secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the secret associated with the data source in Amazon Secrets Manager. (pattern: &lt;code&gt;^arn:&#91;-a-z0-9&#93;*:secretsmanager:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:secret:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SslProperties" /></td>
+    <td><CopyableCode code="ssl_properties" /></td>
     <td><code>object</code></td>
     <td>Secure Socket Layer (SSL) properties that apply when Quick Sight connects to your underlying data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The HTTP status of the request. (CREATION_IN_PROGRESS, CREATION_SUCCESSFUL, CREATION_FAILED, UPDATE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the data source. This type indicates which database engine the data source connects to. (ADOBE_ANALYTICS, AMAZON_ELASTICSEARCH, ATHENA, AURORA, AURORA_POSTGRESQL, AWS_IOT_ANALYTICS, GITHUB, JIRA, MARIADB, MYSQL, ORACLE, POSTGRESQL, PRESTO, REDSHIFT, S3, S3_TABLES, SALESFORCE, SERVICENOW, SNOWFLAKE, SPARK, SQLSERVER, TERADATA, TWITTER, TIMESTREAM, AMAZON_OPENSEARCH, EXASOL, DATABRICKS, STARBURST, TRINO, BIGQUERY, GOOGLESHEETS, GOOGLE_DRIVE, CONFLUENCE, SHAREPOINT, ONE_DRIVE, WEB_CRAWLER, S3_KNOWLEDGE_BASE, QBUSINESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectionProperties" /></td>
+    <td><CopyableCode code="vpc_connection_properties" /></td>
     <td><code>object</code></td>
     <td>VPC connection properties.</td>
 </tr>
@@ -311,9 +311,9 @@ Describes a data source.
 
 ```sql
 SELECT
-DataSource,
-RequestId,
-Status
+data_source,
+request_id,
+status
 FROM aws.quicksight.data_sources
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND data_source_id = '{{ data_source_id }}' -- required
@@ -327,12 +327,12 @@ Use the SearchDataSources operation to search for data sources that belong to an
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-DataSourceId,
-LastUpdatedTime,
-Name,
-Type
+arn,
+created_time,
+data_source_id,
+last_updated_time,
+name,
+type
 FROM aws.quicksight.data_sources
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -345,19 +345,19 @@ Lists data sources in current Amazon Web Services Region that belong to this Ama
 
 ```sql
 SELECT
-AlternateDataSourceParameters,
-Arn,
-CreatedTime,
-DataSourceId,
-DataSourceParameters,
-ErrorInfo,
-LastUpdatedTime,
-Name,
-SecretArn,
-SslProperties,
-Status,
-Type,
-VpcConnectionProperties
+alternate_data_source_parameters,
+arn,
+created_time,
+data_source_id,
+data_source_parameters,
+error_info,
+last_updated_time,
+name,
+secret_arn,
+ssl_properties,
+status,
+type,
+vpc_connection_properties
 FROM aws.quicksight.data_sources
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -411,11 +411,11 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationStatus,
-DataSourceId,
-RequestId,
-Status
+arn,
+creation_status,
+data_source_id,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -805,11 +805,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND data_source_id = '{{ data_source_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-DataSourceId,
-RequestId,
-Status,
-UpdateStatus;
+arn,
+data_source_id,
+request_id,
+status,
+update_status;
 ```
 </TabItem>
 </Tabs>

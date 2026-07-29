@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the user was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address of the user. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._%+-&#93;+@&#91;a-zA-Z0-9.-&#93;+\.&#91;a-zA-Z&#93;&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GivenName" /></td>
+    <td><CopyableCode code="given_name" /></td>
     <td><code>string</code></td>
     <td>The given name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Locale" /></td>
+    <td><CopyableCode code="locale" /></td>
     <td><code>string</code></td>
     <td>The locale of the user. (en, fr, ko, de, es, ja, ru, zh_CN, zh_TW, pt_BR, default)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedTimestamp" /></td>
+    <td><CopyableCode code="modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the user was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationId" /></td>
+    <td><CopyableCode code="organization_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the organization. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecycleBinFolderId" /></td>
+    <td><CopyableCode code="recycle_bin_folder_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recycle bin folder. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootFolderId" /></td>
+    <td><CopyableCode code="root_folder_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the root folder. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the user. (ACTIVE, INACTIVE, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Storage" /></td>
+    <td><CopyableCode code="storage" /></td>
     <td><code>object</code></td>
     <td>The storage for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Surname" /></td>
+    <td><CopyableCode code="surname" /></td>
     <td><code>string</code></td>
     <td>The surname of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZoneId" /></td>
+    <td><CopyableCode code="time_zone_id" /></td>
     <td><code>string</code></td>
     <td>The time zone ID of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of user. (USER, ADMIN, POWERUSER, MINIMALUSER, WORKSPACESUSER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The login name of the user. (pattern: &lt;code&gt;&#91;\w\-+.&#93;+(@&#91;a-zA-Z0-9.\-&#93;+\.&#91;a-zA-Z&#93;+)?&lt;/code&gt;)</td>
 </tr>
@@ -279,21 +279,21 @@ Describes the specified users. You can describe all users or filter the results 
 
 ```sql
 SELECT
-CreatedTimestamp,
-EmailAddress,
-GivenName,
-Id,
-Locale,
-ModifiedTimestamp,
-OrganizationId,
-RecycleBinFolderId,
-RootFolderId,
-Status,
-Storage,
-Surname,
-TimeZoneId,
-Type,
-Username
+created_timestamp,
+email_address,
+given_name,
+id,
+locale,
+modified_timestamp,
+organization_id,
+recycle_bin_folder_id,
+root_folder_id,
+status,
+storage,
+surname,
+time_zone_id,
+type,
+username
 FROM aws.workdocs.users
 WHERE region = '{{ region }}' -- required
 AND Authentication = '{{ Authentication }}'
@@ -350,7 +350,7 @@ SELECT
 '{{ region }}',
 '{{ Authentication }}'
 RETURNING
-User
+user
 ;
 ```
 </TabItem>
@@ -419,7 +419,7 @@ user_id = '{{ user_id }}' --required
 AND region = '{{ region }}' --required
 AND Authentication = '{{ Authentication}}'
 RETURNING
-User;
+user;
 ```
 </TabItem>
 </Tabs>

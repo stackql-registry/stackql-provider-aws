@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Number (ARN) associated with this filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time this filter was created at.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the account that created the filter. (pattern: &lt;code&gt;.*(^\d&#123;12&#125;$)|(^o-&#91;a-z0-9&#93;&#123;10,32&#125;$).*&lt;/code&gt;)</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags attached to the filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the filter was last updated at.</td>
 </tr>
@@ -188,13 +188,13 @@ SELECT
 name,
 action,
 arn,
-createdAt,
+created_at,
 criteria,
 description,
-ownerId,
+owner_id,
 reason,
 tags,
-updatedAt
+updated_at
 FROM aws.inspector2.filters
 WHERE region = '{{ region }}' -- required
 ;

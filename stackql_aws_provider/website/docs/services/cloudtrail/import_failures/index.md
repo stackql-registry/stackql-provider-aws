@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Provides the reason the import failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorType" /></td>
+    <td><CopyableCode code="error_type" /></td>
     <td><code>string</code></td>
     <td>The type of import error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the import was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
     <td>The location of the failure in the S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the import. (FAILED, RETRY, SUCCEEDED)</td>
 </tr>
@@ -139,11 +139,11 @@ Returns a list of failures for the specified import.
 
 ```sql
 SELECT
-ErrorMessage,
-ErrorType,
-LastUpdatedTime,
-Location,
-Status
+error_message,
+error_type,
+last_updated_time,
+location,
+status
 FROM aws.cloudtrail.import_failures
 WHERE region = '{{ region }}' -- required
 ;

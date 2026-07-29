@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow run completed execution, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The CloudWatch log group name for this workflow run's logs. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_/.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AI model being used for this workflow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow run started execution.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current execution status of the workflow run. (RUNNING, SUCCEEDED, FAILED, TIMED_OUT, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowRunArn" /></td>
+    <td><CopyableCode code="workflow_run_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow run. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):nova-act:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:workflow-definition/&#91;a-zA-Z0-9_-&#93;&#123;1,40&#125;/workflow-run/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowRunId" /></td>
+    <td><CopyableCode code="workflow_run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workflow run. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow run completed execution, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow run started execution.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current execution status of the workflow run. (RUNNING, SUCCEEDED, FAILED, TIMED_OUT, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="traceLocation" /></td>
+    <td><CopyableCode code="trace_location" /></td>
     <td><code>object</code></td>
     <td>The location where trace information for this workflow run is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowRunArn" /></td>
+    <td><CopyableCode code="workflow_run_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow run. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):nova-act:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:workflow-definition/&#91;a-zA-Z0-9_-&#93;&#123;1,40&#125;/workflow-run/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowRunId" /></td>
+    <td><CopyableCode code="workflow_run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workflow run. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -243,13 +243,13 @@ Retrieves the current state, configuration, and execution details of a workflow 
 
 ```sql
 SELECT
-endedAt,
-logGroupName,
-modelId,
-startedAt,
+ended_at,
+log_group_name,
+model_id,
+started_at,
 status,
-workflowRunArn,
-workflowRunId
+workflow_run_arn,
+workflow_run_id
 FROM aws.nova_act.workflow_runs
 WHERE workflow_definition_name = '{{ workflow_definition_name }}' -- required
 AND workflow_run_id = '{{ workflow_run_id }}' -- required
@@ -263,12 +263,12 @@ Lists all workflow runs for a specific workflow definition with optional filteri
 
 ```sql
 SELECT
-endedAt,
-startedAt,
+ended_at,
+started_at,
 status,
-traceLocation,
-workflowRunArn,
-workflowRunId
+trace_location,
+workflow_run_arn,
+workflow_run_id
 FROM aws.nova_act.workflow_runs
 WHERE workflow_definition_name = '{{ workflow_definition_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -311,7 +311,7 @@ SELECT
 '{{ region }}'
 RETURNING
 status,
-workflowRunId
+workflow_run_id
 ;
 ```
 </TabItem>

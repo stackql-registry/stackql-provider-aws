@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lifecyclePolicyDetails" /></td>
+    <td><CopyableCode code="lifecycle_policy_details" /></td>
     <td><code>array</code></td>
     <td>A list of lifecycle policies matched to the input policy name and policy type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecyclePolicyErrorDetails" /></td>
+    <td><CopyableCode code="lifecycle_policy_error_details" /></td>
     <td><code>array</code></td>
     <td>A list of lifecycle policy names and policy types for which retrieval failed.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lifecyclePolicySummaries" /></td>
+    <td><CopyableCode code="lifecycle_policy_summaries" /></td>
     <td><code>array</code></td>
     <td>Details about the requested lifecycle policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page.</td>
 </tr>
@@ -178,8 +178,8 @@ Returns one or more configured OpenSearch Serverless lifecycle policies. For mor
 
 ```sql
 SELECT
-lifecyclePolicyDetails,
-lifecyclePolicyErrorDetails
+lifecycle_policy_details,
+lifecycle_policy_error_details
 FROM aws.opensearchserverless.lifecycle_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,8 +191,8 @@ Returns a list of OpenSearch Serverless lifecycle policies. For more information
 
 ```sql
 SELECT
-lifecyclePolicySummaries,
-nextToken
+lifecycle_policy_summaries,
+next_token
 FROM aws.opensearchserverless.lifecycle_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,7 +231,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-lifecyclePolicyDetail
+lifecycle_policy_detail
 ;
 ```
 </TabItem>
@@ -297,7 +297,7 @@ AND type = '{{ type }}' --required
 AND name = '{{ name }}' --required
 AND policyVersion = '{{ policyVersion }}' --required
 RETURNING
-lifecyclePolicyDetail;
+lifecycle_policy_detail;
 ```
 </TabItem>
 </Tabs>

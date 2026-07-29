@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalEncryptionContext" /></td>
+    <td><CopyableCode code="additional_encryption_context" /></td>
     <td><code>string</code></td>
     <td>The encryption context for the integration. For more information, see Encryption context in the Amazon Web Services Key Management Service Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the integration was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataFilter" /></td>
+    <td><CopyableCode code="data_filter" /></td>
     <td><code>string</code></td>
     <td>Data filters for the integration. These filters determine which tables from the source database are sent to the target Amazon Redshift data warehouse.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>string</code></td>
     <td>Any errors associated with the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationArn" /></td>
+    <td><CopyableCode code="integration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationName" /></td>
+    <td><CopyableCode code="integration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KMSKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Key Management System (Amazon Web Services KMS) key identifier for the key used to to encrypt the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the database used as the source for replication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Redshift data warehouse used as the target for replication.</td>
 </tr>
@@ -265,18 +265,18 @@ Describe one or more zero-ETL integrations with Amazon Redshift.
 
 ```sql
 SELECT
-AdditionalEncryptionContext,
-CreateTime,
-DataFilter,
-Description,
-Errors,
-IntegrationArn,
-IntegrationName,
-KMSKeyId,
-SourceArn,
-Status,
-Tags,
-TargetArn
+additional_encryption_context,
+create_time,
+data_filter,
+description,
+errors,
+integration_arn,
+integration_name,
+kms_key_id,
+source_arn,
+status,
+tags,
+target_arn
 FROM aws.rds.integrations
 WHERE region = '{{ region }}' -- required
 AND IntegrationIdentifier = '{{ IntegrationIdentifier }}'
@@ -325,18 +325,18 @@ SELECT
 '{{ DataFilter }}',
 '{{ Description }}'
 RETURNING
-AdditionalEncryptionContext,
-CreateTime,
-DataFilter,
-Description,
-Errors,
-IntegrationArn,
-IntegrationName,
-KMSKeyId,
-SourceArn,
-Status,
-Tags,
-TargetArn
+additional_encryption_context,
+create_time,
+data_filter,
+description,
+errors,
+integration_arn,
+integration_name,
+kms_key_id,
+source_arn,
+status,
+tags,
+target_arn
 ;
 ```
 </TabItem>
@@ -404,18 +404,18 @@ AND IntegrationName = '{{ IntegrationName}}'
 AND DataFilter = '{{ DataFilter}}'
 AND Description = '{{ Description}}'
 RETURNING
-AdditionalEncryptionContext,
-CreateTime,
-DataFilter,
-Description,
-Errors,
-IntegrationArn,
-IntegrationName,
-KMSKeyId,
-SourceArn,
-Status,
-Tags,
-TargetArn;
+additional_encryption_context,
+create_time,
+data_filter,
+description,
+errors,
+integration_arn,
+integration_name,
+kms_key_id,
+source_arn,
+status,
+tags,
+target_arn;
 ```
 </TabItem>
 </Tabs>

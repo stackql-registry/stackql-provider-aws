@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the pipeline version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionPipelineExecutionArn" /></td>
+    <td><CopyableCode code="last_execution_pipeline_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the most recent pipeline execution created from this pipeline version. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:pipeline\/.*\/execution\/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineArn" /></td>
+    <td><CopyableCode code="pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:(&#91;0-9&#93;&#123;12&#125;|aws):pipeline/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineVersionDescription" /></td>
+    <td><CopyableCode code="pipeline_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the pipeline version. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineVersionDisplayName" /></td>
+    <td><CopyableCode code="pipeline_version_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the pipeline version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,81&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineVersionId" /></td>
+    <td><CopyableCode code="pipeline_version_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>The ID of the pipeline version.</td>
 </tr>
@@ -151,12 +151,12 @@ Gets a list of all versions of the pipeline.
 
 ```sql
 SELECT
-CreationTime,
-LastExecutionPipelineExecutionArn,
-PipelineArn,
-PipelineVersionDescription,
-PipelineVersionDisplayName,
-PipelineVersionId
+creation_time,
+last_execution_pipeline_execution_arn,
+pipeline_arn,
+pipeline_version_description,
+pipeline_version_display_name,
+pipeline_version_id
 FROM aws.sagemaker.pipeline_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -189,8 +189,8 @@ region = '{{ region }}' --required
 AND PipelineArn = '{{ PipelineArn }}' --required
 AND PipelineVersionId = '{{ PipelineVersionId }}' --required
 RETURNING
-PipelineArn,
-PipelineVersionId;
+pipeline_arn,
+pipeline_version_id;
 ```
 </TabItem>
 </Tabs>

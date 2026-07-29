@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the imported model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customModelUnits" /></td>
+    <td><CopyableCode code="custom_model_units" /></td>
     <td><code>object</code></td>
     <td>Information about the hardware utilization for a single copy of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instructSupported" /></td>
+    <td><CopyableCode code="instruct_supported" /></td>
     <td><code>boolean</code></td>
     <td>Specifies if the imported model supports converse.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>Job Amazon Resource Name (ARN) associated with the imported model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-import-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>Job name associated with the imported model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9\+\-\.&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArchitecture" /></td>
+    <td><CopyableCode code="model_architecture" /></td>
     <td><code>string</code></td>
     <td>The architecture of the imported model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with this imported model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:imported-model/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelDataSource" /></td>
+    <td><CopyableCode code="model_data_source" /></td>
     <td><code>object</code></td>
     <td>The data source of the model to import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelKmsKeyArn" /></td>
+    <td><CopyableCode code="model_kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The imported model is encrypted at rest using this key. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the imported model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+&lt;/code&gt;)</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the imported model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instructSupported" /></td>
+    <td><CopyableCode code="instruct_supported" /></td>
     <td><code>boolean</code></td>
     <td>Specifies if the imported model supports converse.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArchitecture" /></td>
+    <td><CopyableCode code="model_architecture" /></td>
     <td><code>string</code></td>
     <td>The architecture of the imported model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the imported model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:imported-model/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>Name of the imported model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+&lt;/code&gt;)</td>
 </tr>
@@ -259,16 +259,16 @@ Gets properties associated with a customized model you imported.
 
 ```sql
 SELECT
-creationTime,
-customModelUnits,
-instructSupported,
-jobArn,
-jobName,
-modelArchitecture,
-modelArn,
-modelDataSource,
-modelKmsKeyArn,
-modelName
+creation_time,
+custom_model_units,
+instruct_supported,
+job_arn,
+job_name,
+model_architecture,
+model_arn,
+model_data_source,
+model_kms_key_arn,
+model_name
 FROM aws.bedrock.imported_models
 WHERE model_identifier = '{{ model_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -281,11 +281,11 @@ Returns a list of models you've imported. You can filter the results to return b
 
 ```sql
 SELECT
-creationTime,
-instructSupported,
-modelArchitecture,
-modelArn,
-modelName
+creation_time,
+instruct_supported,
+model_architecture,
+model_arn,
+model_name
 FROM aws.bedrock.imported_models
 WHERE region = '{{ region }}' -- required
 AND creationTimeBefore = '{{ creationTimeBefore }}'

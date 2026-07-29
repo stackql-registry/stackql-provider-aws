@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The optional name of the session. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application that the session belongs to. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -66,62 +66,62 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the session. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-serverless:.+:(\d&#123;12&#125;):\/applications\/&#91;0-9a-zA-Z&#93;+\/sessions\/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billedResourceUtilization" /></td>
+    <td><CopyableCode code="billed_resource_utilization" /></td>
     <td><code>object</code></td>
     <td>The aggregate vCPU, memory, and storage that Amazon Web Services has billed for the session. The billed resources include a 1-minute minimum usage for workers, plus additional storage over 20 GB per worker. Note that billed resources do not include usage for idle pre-initialized workers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationOverrides" /></td>
+    <td><CopyableCode code="configuration_overrides" /></td>
     <td><code>object</code></td>
     <td>The configuration overrides for the session, including runtime configuration properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The IAM principal that created the session. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the session was terminated or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the execution role for the session. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):iam::(&#91;0-9&#93;&#123;12&#125;):(role((\u002F)|(\u002F&#91;\u0021-\u007F&#93;+\u002F))&#91;\w+=,.@-&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleSince" /></td>
+    <td><CopyableCode code="idle_since" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the session became idle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleTimeoutMinutes" /></td>
+    <td><CopyableCode code="idle_timeout_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The idle timeout in minutes for the session. After the session remains idle for this duration, it is automatically terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration for customer VPC connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The Amazon EMR release label associated with the session. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the session. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the session moved to a running state.</td>
 </tr>
@@ -131,7 +131,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the session. (SUBMITTED, STARTING, STARTED, IDLE, BUSY, FAILED, TERMINATING, TERMINATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>Additional details about the current state of the session. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -141,17 +141,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tags assigned to the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalExecutionDurationSeconds" /></td>
+    <td><CopyableCode code="total_execution_duration_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total execution duration of the session in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResourceUtilization" /></td>
+    <td><CopyableCode code="total_resource_utilization" /></td>
     <td><code>object</code></td>
     <td>The aggregate vCPU, memory, and storage resources used from the time the session starts to execute, until the time the session terminates, rounded up to the nearest second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the session was last updated.</td>
 </tr>
@@ -175,7 +175,7 @@ The following fields are returned by `SELECT` queries:
     <td>The optional name of the session. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application that the session belongs to. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -185,27 +185,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the session. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-serverless:.+:(\d&#123;12&#125;):\/applications\/&#91;0-9a-zA-Z&#93;+\/sessions\/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The IAM principal that created the session. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the execution role for the session. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):iam::(&#91;0-9&#93;&#123;12&#125;):(role((\u002F)|(\u002F&#91;\u0021-\u007F&#93;+\u002F))&#91;\w+=,.@-&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The Amazon EMR release label associated with the session. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the session. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -215,12 +215,12 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the session. (SUBMITTED, STARTING, STARTED, IDLE, BUSY, FAILED, TERMINATING, TERMINATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>Additional details about the current state of the session. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the session was last updated.</td>
 </tr>
@@ -340,26 +340,26 @@ Displays detailed information about a session.
 ```sql
 SELECT
 name,
-applicationId,
+application_id,
 arn,
-billedResourceUtilization,
-configurationOverrides,
-createdAt,
-createdBy,
-endedAt,
-executionRoleArn,
-idleSince,
-idleTimeoutMinutes,
-networkConfiguration,
-releaseLabel,
-sessionId,
-startedAt,
+billed_resource_utilization,
+configuration_overrides,
+created_at,
+created_by,
+ended_at,
+execution_role_arn,
+idle_since,
+idle_timeout_minutes,
+network_configuration,
+release_label,
+session_id,
+started_at,
 state,
-stateDetails,
+state_details,
 tags,
-totalExecutionDurationSeconds,
-totalResourceUtilization,
-updatedAt
+total_execution_duration_seconds,
+total_resource_utilization,
+updated_at
 FROM aws.emr_serverless.sessions
 WHERE application_id = '{{ application_id }}' -- required
 AND session_id = '{{ session_id }}' -- required
@@ -374,16 +374,16 @@ Lists sessions for the specified application. You can filter sessions by state a
 ```sql
 SELECT
 name,
-applicationId,
+application_id,
 arn,
-createdAt,
-createdBy,
-executionRoleArn,
-releaseLabel,
-sessionId,
+created_at,
+created_by,
+execution_role_arn,
+release_label,
+session_id,
 state,
-stateDetails,
-updatedAt
+state_details,
+updated_at
 FROM aws.emr_serverless.sessions
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

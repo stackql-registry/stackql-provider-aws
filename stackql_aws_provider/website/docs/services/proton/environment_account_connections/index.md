@@ -61,42 +61,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment account connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codebuildRoleArn" /></td>
+    <td><CopyableCode code="codebuild_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM service role in the environment account. Proton uses this role to provision infrastructure resources using CodeBuild-based provisioning in the associated environment account. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):iam::\d&#123;12&#125;:role/(&#91;\w+=,.@-&#93;&#123;1,512&#125;&#91;/:&#93;)*(&#91;\w+=,.@-&#93;&#123;1,64&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentRoleArn" /></td>
+    <td><CopyableCode code="component_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role that Proton uses when provisioning directly defined components in the associated environment account. It determines the scope of infrastructure that a component can provision in the account. The environment account connection must have a componentRoleArn to allow directly defined components to be associated with any environments running in the account. For more information about components, see Proton components in the Proton User Guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):iam::\d&#123;12&#125;:role/(&#91;\w+=,.@-&#93;&#123;1,512&#125;&#91;/:&#93;)*(&#91;\w+=,.@-&#93;&#123;1,64&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentAccountId" /></td>
+    <td><CopyableCode code="environment_account_id" /></td>
     <td><code>string</code></td>
     <td>The environment account that's connected to the environment account connection. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment that's associated with the environment account connection. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment account connection was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managementAccountId" /></td>
+    <td><CopyableCode code="management_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the management account that's connected to the environment account connection. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestedAt" /></td>
+    <td><CopyableCode code="requested_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment account connection request was made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM service role that's associated with the environment account connection. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment account connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentRoleArn" /></td>
+    <td><CopyableCode code="component_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role that Proton uses when provisioning directly defined components in the associated environment account. It determines the scope of infrastructure that a component can provision in the account. The environment account connection must have a componentRoleArn to allow directly defined components to be associated with any environments running in the account. For more information about components, see Proton components in the Proton User Guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentAccountId" /></td>
+    <td><CopyableCode code="environment_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment account that's connected to the environment account connection. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment that's associated with the environment account connection. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment account connection was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managementAccountId" /></td>
+    <td><CopyableCode code="management_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the management account that's connected to the environment account connection. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestedAt" /></td>
+    <td><CopyableCode code="requested_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment account connection request was made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM service role that's associated with the environment account connection. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -265,14 +265,14 @@ In an environment account, get the detailed data for an environment account conn
 SELECT
 id,
 arn,
-codebuildRoleArn,
-componentRoleArn,
-environmentAccountId,
-environmentName,
-lastModifiedAt,
-managementAccountId,
-requestedAt,
-roleArn,
+codebuild_role_arn,
+component_role_arn,
+environment_account_id,
+environment_name,
+last_modified_at,
+management_account_id,
+requested_at,
+role_arn,
 status
 FROM aws.proton.environment_account_connections
 WHERE region = '{{ region }}' -- required
@@ -287,13 +287,13 @@ View a list of environment account connections. For more information, see Enviro
 SELECT
 id,
 arn,
-componentRoleArn,
-environmentAccountId,
-environmentName,
-lastModifiedAt,
-managementAccountId,
-requestedAt,
-roleArn,
+component_role_arn,
+environment_account_id,
+environment_name,
+last_modified_at,
+management_account_id,
+requested_at,
+role_arn,
 status
 FROM aws.proton.environment_account_connections
 WHERE region = '{{ region }}' -- required
@@ -337,7 +337,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-environmentAccountConnection
+environment_account_connection
 ;
 ```
 </TabItem>
@@ -408,7 +408,7 @@ WHERE
 region = '{{ region }}' --required
 AND id = '{{ id }}' --required
 RETURNING
-environmentAccountConnection;
+environment_account_connection;
 ```
 </TabItem>
 </Tabs>

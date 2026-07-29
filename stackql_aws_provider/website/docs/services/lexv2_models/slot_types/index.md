@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with the slot type. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot associated with the slot type. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compositeSlotTypeSetting" /></td>
+    <td><CopyableCode code="composite_slot_type_setting" /></td>
     <td><code>object</code></td>
     <td>A composite slot is a combination of two or more slots that capture multiple pieces of information in a single user input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the slot type was created.</td>
 </tr>
@@ -76,42 +76,42 @@ The following fields are returned by `SELECT` queries:
     <td>The description specified for the slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalSourceSetting" /></td>
+    <td><CopyableCode code="external_source_setting" /></td>
     <td><code>object</code></td>
     <td>Provides information about the external source of the slot type's definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the slot type was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The language and locale specified for the slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentSlotTypeSignature" /></td>
+    <td><CopyableCode code="parent_slot_type_signature" /></td>
     <td><code>string</code></td>
     <td>The built in slot type used as a parent to this slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotTypeId" /></td>
+    <td><CopyableCode code="slot_type_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the slot type. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotTypeName" /></td>
+    <td><CopyableCode code="slot_type_name" /></td>
     <td><code>string</code></td>
     <td>The name specified for the slot type. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotTypeValues" /></td>
+    <td><CopyableCode code="slot_type_values" /></td>
     <td><code>array</code></td>
     <td>The values that the slot type can take. Includes any synonyms for the slot type values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="valueSelectionSetting" /></td>
+    <td><CopyableCode code="value_selection_setting" /></td>
     <td><code>object</code></td>
     <td>Contains settings used by Amazon Lex to select a slot value.</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot that contains the slot types. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that contains the slot types. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The language and local of the slot types in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListSlotTypes operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListSlotTypes operation request to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotTypeSummaries" /></td>
+    <td><CopyableCode code="slot_type_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the slot types that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter of the request. If there are more slot types available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
@@ -273,19 +273,19 @@ Gets metadata information about a slot type.
 
 ```sql
 SELECT
-botId,
-botVersion,
-compositeSlotTypeSetting,
-creationDateTime,
+bot_id,
+bot_version,
+composite_slot_type_setting,
+creation_date_time,
 description,
-externalSourceSetting,
-lastUpdatedDateTime,
-localeId,
-parentSlotTypeSignature,
-slotTypeId,
-slotTypeName,
-slotTypeValues,
-valueSelectionSetting
+external_source_setting,
+last_updated_date_time,
+locale_id,
+parent_slot_type_signature,
+slot_type_id,
+slot_type_name,
+slot_type_values,
+value_selection_setting
 FROM aws.lexv2_models.slot_types
 WHERE slot_type_id = '{{ slot_type_id }}' -- required
 AND bot_id = '{{ bot_id }}' -- required
@@ -301,11 +301,11 @@ Gets a list of slot types that match the specified criteria.
 
 ```sql
 SELECT
-botId,
-botVersion,
-localeId,
-nextToken,
-slotTypeSummaries
+bot_id,
+bot_version,
+locale_id,
+next_token,
+slot_type_summaries
 FROM aws.lexv2_models.slot_types
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -357,18 +357,18 @@ SELECT
 '{{ locale_id }}',
 '{{ region }}'
 RETURNING
-botId,
-botVersion,
-compositeSlotTypeSetting,
-creationDateTime,
+bot_id,
+bot_version,
+composite_slot_type_setting,
+creation_date_time,
 description,
-externalSourceSetting,
-localeId,
-parentSlotTypeSignature,
-slotTypeId,
-slotTypeName,
-slotTypeValues,
-valueSelectionSetting
+external_source_setting,
+locale_id,
+parent_slot_type_signature,
+slot_type_id,
+slot_type_name,
+slot_type_values,
+value_selection_setting
 ;
 ```
 </TabItem>
@@ -461,19 +461,19 @@ AND locale_id = '{{ locale_id }}' --required
 AND region = '{{ region }}' --required
 AND slotTypeName = '{{ slotTypeName }}' --required
 RETURNING
-botId,
-botVersion,
-compositeSlotTypeSetting,
-creationDateTime,
+bot_id,
+bot_version,
+composite_slot_type_setting,
+creation_date_time,
 description,
-externalSourceSetting,
-lastUpdatedDateTime,
-localeId,
-parentSlotTypeSignature,
-slotTypeId,
-slotTypeName,
-slotTypeValues,
-valueSelectionSetting;
+external_source_setting,
+last_updated_date_time,
+locale_id,
+parent_slot_type_signature,
+slot_type_id,
+slot_type_name,
+slot_type_values,
+value_selection_setting;
 ```
 </TabItem>
 </Tabs>

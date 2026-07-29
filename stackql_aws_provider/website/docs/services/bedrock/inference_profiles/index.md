@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the inference profile was created.</td>
 </tr>
@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the inference profile. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z:.&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceProfileArn" /></td>
+    <td><CopyableCode code="inference_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the inference profile. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:(|&#91;0-9a-z-&#93;&#123;0,20&#125;):(|&#91;0-9&#93;&#123;12&#125;):(inference-profile|application-inference-profile)/&#91;a-zA-Z0-9-:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceProfileId" /></td>
+    <td><CopyableCode code="inference_profile_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the inference profile. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceProfileName" /></td>
+    <td><CopyableCode code="inference_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the inference profile. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the inference profile. The following types are possible: SYSTEM_DEFINED – The inference profile is defined by Amazon Bedrock. You can route inference requests across regions with these inference profiles. APPLICATION – The inference profile was created by a user. This type of inference profile can track metrics and costs when invoking the model in it. The inference profile may route requests to one or multiple regions. (SYSTEM_DEFINED, APPLICATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the inference profile was last updated.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the inference profile was created.</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the inference profile. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z:.&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceProfileArn" /></td>
+    <td><CopyableCode code="inference_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the inference profile. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:(|&#91;0-9a-z-&#93;&#123;0,20&#125;):(|&#91;0-9&#93;&#123;12&#125;):(inference-profile|application-inference-profile)/&#91;a-zA-Z0-9-:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceProfileId" /></td>
+    <td><CopyableCode code="inference_profile_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the inference profile. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceProfileName" /></td>
+    <td><CopyableCode code="inference_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the inference profile. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the inference profile. The following types are possible: SYSTEM_DEFINED – The inference profile is defined by Amazon Bedrock. You can route inference requests across regions with these inference profiles. APPLICATION – The inference profile was created by a user. This type of inference profile can track metrics and costs when invoking the model in it. The inference profile may route requests to one or multiple regions. (SYSTEM_DEFINED, APPLICATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the inference profile was last updated.</td>
 </tr>
@@ -261,15 +261,15 @@ Gets information about an inference profile. For more information, see Increase 
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-inferenceProfileArn,
-inferenceProfileId,
-inferenceProfileName,
+inference_profile_arn,
+inference_profile_id,
+inference_profile_name,
 models,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.bedrock.inference_profiles
 WHERE inference_profile_identifier = '{{ inference_profile_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -282,15 +282,15 @@ Returns a list of inference profiles that you can use. For more information, see
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-inferenceProfileArn,
-inferenceProfileId,
-inferenceProfileName,
+inference_profile_arn,
+inference_profile_id,
+inference_profile_name,
 models,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.bedrock.inference_profiles
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -332,7 +332,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-inferenceProfileArn,
+inference_profile_arn,
 status
 ;
 ```

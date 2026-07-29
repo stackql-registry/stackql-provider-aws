@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>Shows the identifier of the data source to see information on the processing of PUT and DELETE actions for mapping users to their groups. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>Shows the identifier of the group to see information on the processing of PUT and DELETE actions for mapping users to their groups. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupOrderingIdSummaries" /></td>
+    <td><CopyableCode code="group_ordering_id_summaries" /></td>
     <td><code>array</code></td>
     <td>Shows the following information on the processing of PUT and DELETE actions for mapping users to their groups: Status—the status can be either PROCESSING, SUCCEEDED, DELETING, DELETED, or FAILED. Last updated—the last date-time an action was updated. Received—the last date-time an action was received or submitted. Ordering ID—the latest action that should process and apply after other actions. Failure reason—the reason an action could not be processed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexId" /></td>
+    <td><CopyableCode code="index_id" /></td>
     <td><code>string</code></td>
     <td>Shows the identifier of the index to see information on the processing of PUT and DELETE actions for mapping users to their groups. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -148,10 +148,10 @@ Describes the processing of PUT and DELETE actions for mapping users to their gr
 
 ```sql
 SELECT
-DataSourceId,
-GroupId,
-GroupOrderingIdSummaries,
-IndexId
+data_source_id,
+group_id,
+group_ordering_id_summaries,
+index_id
 FROM aws.kendra.principal_mappings
 WHERE region = '{{ region }}' -- required
 ;

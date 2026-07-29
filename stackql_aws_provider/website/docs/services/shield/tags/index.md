@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tag key and value pairs associated with the specified resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Gets information about Amazon Web Services tags for a specified Amazon Resource 
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.shield.tags
 WHERE region = '{{ region }}' -- required
 ;

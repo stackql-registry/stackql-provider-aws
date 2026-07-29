@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain object type was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the domain object type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>The customer provided KMS key used to encrypt this type of domain object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>object</code></td>
     <td>A map of field names to their corresponding domain object type field definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain object type was most recently edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectTypeName" /></td>
+    <td><CopyableCode code="object_type_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the domain object type. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain object type was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description explaining the purpose and characteristics of this object type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain object type was most recently edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectTypeName" /></td>
+    <td><CopyableCode code="object_type_name" /></td>
     <td><code>string</code></td>
     <td>The name that identifies the object type within the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -231,13 +231,13 @@ Return a DomainObjectType for the input Domain and ObjectType names.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-EncryptionKey,
-Fields,
-LastUpdatedAt,
-ObjectTypeName,
-Tags
+created_at,
+description,
+encryption_key,
+fields,
+last_updated_at,
+object_type_name,
+tags
 FROM aws.customer_profiles.domain_object_types
 WHERE domain_name = '{{ domain_name }}' -- required
 AND object_type_name = '{{ object_type_name }}' -- required
@@ -251,11 +251,11 @@ List all DomainObjectType(s) in a Customer Profiles domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-LastUpdatedAt,
-ObjectTypeName,
-Tags
+created_at,
+description,
+last_updated_at,
+object_type_name,
+tags
 FROM aws.customer_profiles.domain_object_types
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -291,13 +291,13 @@ domain_name = '{{ domain_name }}' --required
 AND object_type_name = '{{ object_type_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreatedAt,
-Description,
-EncryptionKey,
-Fields,
-LastUpdatedAt,
-ObjectTypeName,
-Tags;
+created_at,
+description,
+encryption_key,
+fields,
+last_updated_at,
+object_type_name,
+tags;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the endpoint in the connection. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineArn" /></td>
+    <td><CopyableCode code="pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline in the endpoint connection. (pattern: &lt;code&gt;^arn:(aws|aws\-cn|aws\-us\-gov|aws\-iso|aws\-iso\-b):osis:.+:pipeline\/.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the pipeline endpoint connection. (CREATING, ACTIVE, CREATE_FAILED, DELETING, REVOKING, REVOKED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointOwner" /></td>
+    <td><CopyableCode code="vpc_endpoint_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the VPC endpoint used in this connection. (pattern: &lt;code&gt;^\\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -151,10 +151,10 @@ Lists the pipeline endpoints connected to pipelines in your account.
 
 ```sql
 SELECT
-EndpointId,
-PipelineArn,
-Status,
-VpcEndpointOwner
+endpoint_id,
+pipeline_arn,
+status,
+vpc_endpoint_owner
 FROM aws.osis.pipeline_endpoint_connections
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -187,7 +187,7 @@ region = '{{ region }}' --required
 AND PipelineArn = '{{ PipelineArn }}' --required
 AND EndpointIds = '{{ EndpointIds }}' --required
 RETURNING
-PipelineArn;
+pipeline_arn;
 ```
 </TabItem>
 </Tabs>

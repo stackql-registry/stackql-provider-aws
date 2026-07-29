@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationState" /></td>
+    <td><CopyableCode code="configuration_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the local gateway virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalAddress" /></td>
+    <td><CopyableCode code="local_address" /></td>
     <td><code>string</code></td>
     <td>The local address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalBgpAsn" /></td>
+    <td><CopyableCode code="local_bgp_asn" /></td>
     <td><code>integer</code></td>
     <td>The Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayId" /></td>
+    <td><CopyableCode code="local_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceArn" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the local gateway virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceGroupId" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway virtual interface group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceId" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostLagId" /></td>
+    <td><CopyableCode code="outpost_lag_id" /></td>
     <td><code>string</code></td>
     <td>The Outpost LAG ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the local gateway virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerAddress" /></td>
+    <td><CopyableCode code="peer_address" /></td>
     <td><code>string</code></td>
     <td>The peer address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerBgpAsn" /></td>
+    <td><CopyableCode code="peer_bgp_asn" /></td>
     <td><code>integer</code></td>
     <td>The peer BGP ASN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerBgpAsnExtended" /></td>
+    <td><CopyableCode code="peer_bgp_asn_extended" /></td>
     <td><code>integer</code></td>
     <td>The extended 32-bit ASN of the BGP peer for use with larger ASN values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vlan" /></td>
+    <td><CopyableCode code="vlan" /></td>
     <td><code>integer</code></td>
     <td>The ID of the VLAN.</td>
 </tr>
@@ -268,20 +268,20 @@ Describes the specified local gateway virtual interfaces.
 
 ```sql
 SELECT
-ConfigurationState,
-LocalAddress,
-LocalBgpAsn,
-LocalGatewayId,
-LocalGatewayVirtualInterfaceArn,
-LocalGatewayVirtualInterfaceGroupId,
-LocalGatewayVirtualInterfaceId,
-OutpostLagId,
-OwnerId,
-PeerAddress,
-PeerBgpAsn,
-PeerBgpAsnExtended,
-Tags,
-Vlan
+configuration_state,
+local_address,
+local_bgp_asn,
+local_gateway_id,
+local_gateway_virtual_interface_arn,
+local_gateway_virtual_interface_group_id,
+local_gateway_virtual_interface_id,
+outpost_lag_id,
+owner_id,
+peer_address,
+peer_bgp_asn,
+peer_bgp_asn_extended,
+tags,
+vlan
 FROM aws.ec2.local_gateway_virtual_interfaces
 WHERE region = '{{ region }}' -- required
 AND LocalGatewayVirtualInterfaceId = '{{ LocalGatewayVirtualInterfaceId }}'
@@ -333,20 +333,20 @@ SELECT
 '{{ DryRun }}',
 '{{ PeerBgpAsnExtended }}'
 RETURNING
-ConfigurationState,
-LocalAddress,
-LocalBgpAsn,
-LocalGatewayId,
-LocalGatewayVirtualInterfaceArn,
-LocalGatewayVirtualInterfaceGroupId,
-LocalGatewayVirtualInterfaceId,
-OutpostLagId,
-OwnerId,
-PeerAddress,
-PeerBgpAsn,
-PeerBgpAsnExtended,
-Tags,
-Vlan
+configuration_state,
+local_address,
+local_bgp_asn,
+local_gateway_id,
+local_gateway_virtual_interface_arn,
+local_gateway_virtual_interface_group_id,
+local_gateway_virtual_interface_id,
+outpost_lag_id,
+owner_id,
+peer_address,
+peer_bgp_asn,
+peer_bgp_asn_extended,
+tags,
+vlan
 ;
 ```
 </TabItem>

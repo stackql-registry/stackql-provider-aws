@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateBasedAuthProperties" /></td>
+    <td><CopyableCode code="certificate_based_auth_properties" /></td>
     <td><code>object</code></td>
     <td>The certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances. Fallback is turned on by default when certificate-based authentication is Enabled . Fallback allows users to log in using their AD domain password if certificate-based authentication is unsuccessful, or to unlock a desktop lock screen. Enabled_no_directory_login_fallback enables certificate-based authentication, but does not allow users to log in using their AD domain password. Users will be disconnected to re-authenticate using certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the directory configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryName" /></td>
+    <td><CopyableCode code="directory_name" /></td>
     <td><code>string</code></td>
     <td>The fully qualified name of the directory (for example, corp.example.com).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitDistinguishedNames" /></td>
+    <td><CopyableCode code="organizational_unit_distinguished_names" /></td>
     <td><code>array</code></td>
     <td>The distinguished names of the organizational units for computer accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceAccountCredentials" /></td>
+    <td><CopyableCode code="service_account_credentials" /></td>
     <td><code>object</code></td>
     <td>The credentials for the service account used by the fleet or image builder to connect to the directory.</td>
 </tr>
@@ -160,11 +160,11 @@ Retrieves a list that describes one or more specified Directory Config objects f
 
 ```sql
 SELECT
-CertificateBasedAuthProperties,
-CreatedTime,
-DirectoryName,
-OrganizationalUnitDistinguishedNames,
-ServiceAccountCredentials
+certificate_based_auth_properties,
+created_time,
+directory_name,
+organizational_unit_distinguished_names,
+service_account_credentials
 FROM aws.appstream.directory_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,7 +201,7 @@ SELECT
 '{{ CertificateBasedAuthProperties }}',
 '{{ region }}'
 RETURNING
-DirectoryConfig
+directory_config
 ;
 ```
 </TabItem>
@@ -263,7 +263,7 @@ WHERE
 region = '{{ region }}' --required
 AND DirectoryName = '{{ DirectoryName }}' --required
 RETURNING
-DirectoryConfig;
+directory_config;
 ```
 </TabItem>
 </Tabs>

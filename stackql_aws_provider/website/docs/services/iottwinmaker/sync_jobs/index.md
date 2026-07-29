@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The sync job ARN. (pattern: &lt;code&gt;arn:((aws)|(aws-cn)|(aws-us-gov)):iottwinmaker:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:&#91;\/a-zA-Z0-9_\-\.:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>supports epoch seconds value</td>
 </tr>
@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>The SyncJob response status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncRole" /></td>
+    <td><CopyableCode code="sync_role" /></td>
     <td><code>string</code></td>
     <td>The sync IAM role. (pattern: &lt;code&gt;arn:((aws)|(aws-cn)|(aws-us-gov)):iam::&#91;0-9&#93;&#123;12&#125;:role/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncSource" /></td>
+    <td><CopyableCode code="sync_source" /></td>
     <td><code>string</code></td>
     <td>The sync soucre. Currently the only supported syncSource is SITEWISE . (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>supports epoch seconds value</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workspace that contains the sync job. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncJobSummaries" /></td>
+    <td><CopyableCode code="sync_job_summaries" /></td>
     <td><code>array</code></td>
     <td>The listed SyncJob summaries.</td>
 </tr>
@@ -212,12 +212,12 @@ Gets the SyncJob.
 ```sql
 SELECT
 arn,
-creationDateTime,
+creation_date_time,
 status,
-syncRole,
-syncSource,
-updateDateTime,
-workspaceId
+sync_role,
+sync_source,
+update_date_time,
+workspace_id
 FROM aws.iottwinmaker.sync_jobs
 WHERE sync_source = '{{ sync_source }}' -- required
 AND region = '{{ region }}' -- required
@@ -231,8 +231,8 @@ List all SyncJobs.
 
 ```sql
 SELECT
-nextToken,
-syncJobSummaries
+next_token,
+sync_job_summaries
 FROM aws.iottwinmaker.sync_jobs
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -271,7 +271,7 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-creationDateTime,
+creation_date_time,
 state
 ;
 ```

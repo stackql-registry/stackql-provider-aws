@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Account Id you use to create the VPC Ingress Connection resource. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the VPC Ingress Connection was created. It's in the Unix time stamp format. Type: Timestamp Required: Yes</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the App Runner service was deleted. It's in the Unix time stamp format. Type: Timestamp Required: No</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name associated with the VPC Ingress Connection resource. (pattern: &lt;code&gt;&#91;A-Za-z0-9*.-&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressVpcConfiguration" /></td>
+    <td><CopyableCode code="ingress_vpc_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifications for the customer’s VPC and related PrivateLink VPC endpoint that are used to associate with the VPC Ingress Connection resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress Connection. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:(\w|\/|-)&#123;1,1011&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the VPC Ingress Connection. The VPC Ingress Connection displays one of the following statuses: AVAILABLE, PENDING_CREATION, PENDING_UPDATE, PENDING_DELETION,FAILED_CREATION, FAILED_UPDATE, FAILED_DELETION, and DELETED.. (AVAILABLE, PENDING_CREATION, PENDING_UPDATE, PENDING_DELETION, FAILED_CREATION, FAILED_UPDATE, FAILED_DELETION, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcIngressConnectionArn" /></td>
+    <td><CopyableCode code="vpc_ingress_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the VPC Ingress Connection. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:(\w|\/|-)&#123;1,1011&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcIngressConnectionName" /></td>
+    <td><CopyableCode code="vpc_ingress_connection_name" /></td>
     <td><code>string</code></td>
     <td>The customer-provided VPC Ingress Connection name. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-_&#93;&#123;3,39&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcIngressConnectionSummaryList" /></td>
+    <td><CopyableCode code="vpc_ingress_connection_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of summary information records for VPC Ingress Connections. In a paginated request, the request returns up to MaxResults records for each call.</td>
 </tr>
@@ -213,15 +213,15 @@ Return a full description of an App Runner VPC Ingress Connection resource.
 
 ```sql
 SELECT
-AccountId,
-CreatedAt,
-DeletedAt,
-DomainName,
-IngressVpcConfiguration,
-ServiceArn,
-Status,
-VpcIngressConnectionArn,
-VpcIngressConnectionName
+account_id,
+created_at,
+deleted_at,
+domain_name,
+ingress_vpc_configuration,
+service_arn,
+status,
+vpc_ingress_connection_arn,
+vpc_ingress_connection_name
 FROM aws.apprunner.vpc_ingress_connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,8 +233,8 @@ Return a list of App Runner VPC Ingress Connections in your Amazon Web Services 
 
 ```sql
 SELECT
-NextToken,
-VpcIngressConnectionSummaryList
+next_token,
+vpc_ingress_connection_summary_list
 FROM aws.apprunner.vpc_ingress_connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -271,7 +271,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-VpcIngressConnection
+vpc_ingress_connection
 ;
 ```
 </TabItem>
@@ -331,7 +331,7 @@ region = '{{ region }}' --required
 AND VpcIngressConnectionArn = '{{ VpcIngressConnectionArn }}' --required
 AND IngressVpcConfiguration = '{{ IngressVpcConfiguration }}' --required
 RETURNING
-VpcIngressConnection;
+vpc_ingress_connection;
 ```
 </TabItem>
 </Tabs>

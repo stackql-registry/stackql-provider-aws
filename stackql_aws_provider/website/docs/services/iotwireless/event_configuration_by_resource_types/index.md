@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionStatus" /></td>
+    <td><CopyableCode code="connection_status" /></td>
     <td><code>object</code></td>
     <td>Resource type event configuration for the connection status event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceRegistrationState" /></td>
+    <td><CopyableCode code="device_registration_state" /></td>
     <td><code>object</code></td>
     <td>Resource type event configuration for the device registration state event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Join" /></td>
+    <td><CopyableCode code="join" /></td>
     <td><code>object</code></td>
     <td>Resource type event configuration for the join event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageDeliveryStatus" /></td>
+    <td><CopyableCode code="message_delivery_status" /></td>
     <td><code>object</code></td>
     <td>Resource type event configuration object for the message delivery status event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Proximity" /></td>
+    <td><CopyableCode code="proximity" /></td>
     <td><code>object</code></td>
     <td>Resource type event configuration for the proximity event.</td>
 </tr>
@@ -146,11 +146,11 @@ Get the event configuration based on resource types.
 
 ```sql
 SELECT
-ConnectionStatus,
-DeviceRegistrationState,
-Join,
-MessageDeliveryStatus,
-Proximity
+connection_status,
+device_registration_state,
+join,
+message_delivery_status,
+proximity
 FROM aws.iotwireless.event_configuration_by_resource_types
 WHERE region = '{{ region }}' -- required
 ;

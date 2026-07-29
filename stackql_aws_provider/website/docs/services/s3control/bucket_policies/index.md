@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy of the Outposts bucket.</td>
 </tr>
@@ -148,7 +148,7 @@ This action gets a bucket policy for an Amazon S3 on Outposts bucket. To get a p
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.s3control.bucket_policies
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

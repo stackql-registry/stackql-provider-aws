@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationDescriptions" /></td>
+    <td><CopyableCode code="destination_descriptions" /></td>
     <td><code>array</code></td>
     <td>For a custom routing accelerator, describes the port range and protocol for all endpoints (virtual private cloud subnets) in an endpoint group to accept client traffic on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointDescriptions" /></td>
+    <td><CopyableCode code="endpoint_descriptions" /></td>
     <td><code>array</code></td>
     <td>For a custom routing accelerator, describes the endpoints (virtual private cloud subnets) in an endpoint group to accept client traffic on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupArn" /></td>
+    <td><CopyableCode code="endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupRegion" /></td>
+    <td><CopyableCode code="endpoint_group_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the endpoint group is located.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationDescriptions" /></td>
+    <td><CopyableCode code="destination_descriptions" /></td>
     <td><code>array</code></td>
     <td>For a custom routing accelerator, describes the port range and protocol for all endpoints (virtual private cloud subnets) in an endpoint group to accept client traffic on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointDescriptions" /></td>
+    <td><CopyableCode code="endpoint_descriptions" /></td>
     <td><code>array</code></td>
     <td>For a custom routing accelerator, describes the endpoints (virtual private cloud subnets) in an endpoint group to accept client traffic on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupArn" /></td>
+    <td><CopyableCode code="endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupRegion" /></td>
+    <td><CopyableCode code="endpoint_group_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the endpoint group is located.</td>
 </tr>
@@ -191,10 +191,10 @@ Describe an endpoint group for a custom routing accelerator.
 
 ```sql
 SELECT
-DestinationDescriptions,
-EndpointDescriptions,
-EndpointGroupArn,
-EndpointGroupRegion
+destination_descriptions,
+endpoint_descriptions,
+endpoint_group_arn,
+endpoint_group_region
 FROM aws.globalaccelerator.custom_routing_endpoint_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -206,10 +206,10 @@ List the endpoint groups that are associated with a listener for a custom routin
 
 ```sql
 SELECT
-DestinationDescriptions,
-EndpointDescriptions,
-EndpointGroupArn,
-EndpointGroupRegion
+destination_descriptions,
+endpoint_descriptions,
+endpoint_group_arn,
+endpoint_group_region
 FROM aws.globalaccelerator.custom_routing_endpoint_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,7 +246,7 @@ SELECT
 '{{ IdempotencyToken }}' /* required */,
 '{{ region }}'
 RETURNING
-EndpointGroup
+endpoint_group
 ;
 ```
 </TabItem>

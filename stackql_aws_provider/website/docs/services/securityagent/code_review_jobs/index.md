@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="codeReviewJobs" /></td>
+    <td><CopyableCode code="code_review_jobs" /></td>
     <td><code>array</code></td>
     <td>The list of code review jobs that were found.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notFound" /></td>
+    <td><CopyableCode code="not_found" /></td>
     <td><code>array</code></td>
     <td>List of code review job IDs.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves information about one or more code review jobs in an agent space.
 
 ```sql
 SELECT
-codeReviewJobs,
-notFound
+code_review_jobs,
+not_found
 FROM aws.securityagent.code_review_jobs
 WHERE region = '{{ region }}' -- required
 ;

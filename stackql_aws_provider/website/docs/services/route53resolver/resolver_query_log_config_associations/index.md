@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the VPC was associated with the query logging configuration, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>If the value of Status is FAILED, the value of Error indicates the cause: DESTINATION_NOT_FOUND: The specified destination (for example, an Amazon S3 bucket) was deleted. ACCESS_DENIED: Permissions don't allow sending logs to the destination. If the value of Status is a value other than FAILED, Error is null. (NONE, DESTINATION_NOT_FOUND, ACCESS_DENIED, INTERNAL_SERVICE_ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Contains additional information about the error. If the value or Error is null, the value of ErrorMessage also is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the query logging association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolverQueryLogConfigId" /></td>
+    <td><CopyableCode code="resolver_query_log_config_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the query logging configuration that a VPC is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon VPC that is associated with the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the specified query logging association. Valid values include the following: CREATING: Resolver is creating an association between an Amazon VPC and a query logging configuration. ACTIVE: The association between an Amazon VPC and a query logging configuration was successfully created. Resolver is logging queries that originate in the specified VPC. DELETING: Resolver is deleting this query logging association. FAILED: Resolver either couldn't create or couldn't delete the query logging association. (CREATING, ACTIVE, ACTION_NEEDED, DELETING, FAILED)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the VPC was associated with the query logging configuration, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>If the value of Status is FAILED, the value of Error indicates the cause: DESTINATION_NOT_FOUND: The specified destination (for example, an Amazon S3 bucket) was deleted. ACCESS_DENIED: Permissions don't allow sending logs to the destination. If the value of Status is a value other than FAILED, Error is null. (NONE, DESTINATION_NOT_FOUND, ACCESS_DENIED, INTERNAL_SERVICE_ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Contains additional information about the error. If the value or Error is null, the value of ErrorMessage also is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the query logging association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolverQueryLogConfigId" /></td>
+    <td><CopyableCode code="resolver_query_log_config_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the query logging configuration that a VPC is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon VPC that is associated with the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the specified query logging association. Valid values include the following: CREATING: Resolver is creating an association between an Amazon VPC and a query logging configuration. ACTIVE: The association between an Amazon VPC and a query logging configuration was successfully created. Resolver is logging queries that originate in the specified VPC. DELETING: Resolver is deleting this query logging association. FAILED: Resolver either couldn't create or couldn't delete the query logging association. (CREATING, ACTIVE, ACTION_NEEDED, DELETING, FAILED)</td>
 </tr>
@@ -207,13 +207,13 @@ Gets information about a specified association between a Resolver query logging 
 
 ```sql
 SELECT
-CreationTime,
-Error,
-ErrorMessage,
-Id,
-ResolverQueryLogConfigId,
-ResourceId,
-Status
+creation_time,
+error,
+error_message,
+id,
+resolver_query_log_config_id,
+resource_id,
+status
 FROM aws.route53resolver.resolver_query_log_config_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,13 +225,13 @@ Lists information about associations between Amazon VPCs and query logging confi
 
 ```sql
 SELECT
-CreationTime,
-Error,
-ErrorMessage,
-Id,
-ResolverQueryLogConfigId,
-ResourceId,
-Status
+creation_time,
+error,
+error_message,
+id,
+resolver_query_log_config_id,
+resource_id,
+status
 FROM aws.route53resolver.resolver_query_log_config_associations
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationArn" /></td>
+    <td><CopyableCode code="association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster that the association is in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that the association was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disableSessionTags" /></td>
+    <td><CopyableCode code="disable_session_tags" /></td>
     <td><code>boolean</code></td>
     <td>The state of the automatic sessions tags. The value of true disables these tags. EKS Pod Identity adds a pre-defined set of session tags when it assumes the role. You can use these tags to author a single role that can work across resources by allowing access to Amazon Web Services resources based on matching tags. By default, EKS Pod Identity attaches six tags, including tags for cluster name, namespace, and service account name. For the list of tags added by EKS Pod Identity, see List of session tags added by EKS Pod Identity in the Amazon EKS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this EKS Pod Identity association for a target IAM role. You put this value in the trust policy of the target role, in a Condition to match the sts.ExternalId. This ensures that the target role can only be assumed by this association. This prevents the confused deputy problem. For more information about the confused deputy problem, see The confused deputy problem in the IAM User Guide. If you want to use the same target role with multiple associations or other roles, use independent statements in the trust policy to allow sts:AssumeRole access from each role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent timestamp that the association was modified at.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the Kubernetes namespace inside the cluster to create the association in. The service account and the Pods that use the service account must be in this namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerArn" /></td>
+    <td><CopyableCode code="owner_arn" /></td>
     <td><code>string</code></td>
     <td>If defined, the EKS Pod Identity association is owned by an Amazon EKS add-on.</td>
 </tr>
@@ -101,12 +101,12 @@ The following fields are returned by `SELECT` queries:
     <td>An optional IAM policy in JSON format (as an escaped string) that applies additional restrictions to this pod identity association beyond the IAM policies attached to the IAM role. This policy is applied as the intersection of the role's policies and this policy, allowing you to reduce the permissions that applications in the pods can use. Use this policy to enforce least privilege access while still leveraging a shared IAM role across multiple applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role to associate with the service account. The EKS Pod Identity agent manages credentials to assume this role for applications in the containers in the Pods that use this service account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceAccount" /></td>
+    <td><CopyableCode code="service_account" /></td>
     <td><code>string</code></td>
     <td>The name of the Kubernetes service account inside the cluster to associate the IAM credentials with.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata that assists with categorization and organization. Each tag consists of a key and an optional value. You define both. Tags don't propagate to any other cluster or Amazon Web Services resources. The following basic restrictions apply to tags: Maximum number of tags per resource – 50 For each resource, each tag key must be unique, and each tag key can have only one value. Maximum key length – 128 Unicode characters in UTF-8 Maximum value length – 256 Unicode characters in UTF-8 If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys and values are case-sensitive. Do not use aws:, AWS:, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for Amazon Web Services use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetRoleArn" /></td>
+    <td><CopyableCode code="target_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target IAM role to associate with the service account. This role is assumed by using the EKS Pod Identity association role, then the credentials for this role are injected into the Pod.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationArn" /></td>
+    <td><CopyableCode code="association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster that the association is in.</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the Kubernetes namespace inside the cluster to create the association in. The service account and the Pods that use the service account must be in this namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerArn" /></td>
+    <td><CopyableCode code="owner_arn" /></td>
     <td><code>string</code></td>
     <td>If defined, the association is owned by an Amazon EKS add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceAccount" /></td>
+    <td><CopyableCode code="service_account" /></td>
     <td><code>string</code></td>
     <td>The name of the Kubernetes service account inside the cluster to associate the IAM credentials with.</td>
 </tr>
@@ -288,20 +288,20 @@ Returns descriptive information about an EKS Pod Identity association. This acti
 
 ```sql
 SELECT
-associationArn,
-associationId,
-clusterName,
-createdAt,
-disableSessionTags,
-externalId,
-modifiedAt,
+association_arn,
+association_id,
+cluster_name,
+created_at,
+disable_session_tags,
+external_id,
+modified_at,
 namespace,
-ownerArn,
+owner_arn,
 policy,
-roleArn,
-serviceAccount,
+role_arn,
+service_account,
 tags,
-targetRoleArn
+target_role_arn
 FROM aws.eks.pod_identity_associations
 WHERE name = '{{ name }}' -- required
 AND association_id = '{{ association_id }}' -- required
@@ -315,12 +315,12 @@ List the EKS Pod Identity associations in a cluster. You can filter the list by 
 
 ```sql
 SELECT
-associationArn,
-associationId,
-clusterName,
+association_arn,
+association_id,
+cluster_name,
 namespace,
-ownerArn,
-serviceAccount
+owner_arn,
+service_account
 FROM aws.eks.pod_identity_associations
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required

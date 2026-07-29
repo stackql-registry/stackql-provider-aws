@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>The ID for the specific vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="atigData" /></td>
+    <td><CopyableCode code="atig_data" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the Amazon Web Services Threat Intel Group (ATIG) details for the vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cisaData" /></td>
+    <td><CopyableCode code="cisa_data" /></td>
     <td><code>object</code></td>
     <td>An object that contains the Cybersecurity and Infrastructure Security Agency (CISA) details for the vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cvss2" /></td>
+    <td><CopyableCode code="cvss_2" /></td>
     <td><code>object</code></td>
     <td>An object that contains the Common Vulnerability Scoring System (CVSS) Version 2 details for the vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cvss3" /></td>
+    <td><CopyableCode code="cvss_3" /></td>
     <td><code>object</code></td>
     <td>An object that contains the Common Vulnerability Scoring System (CVSS) Version 3 details for the vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cvss4" /></td>
+    <td><CopyableCode code="cvss_4" /></td>
     <td><code>object</code></td>
     <td>An object that contains the Common Vulnerability Scoring System (CVSS) Version 4 details for the vulnerability.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectionPlatforms" /></td>
+    <td><CopyableCode code="detection_platforms" /></td>
     <td><code>array</code></td>
     <td>Platforms that the vulnerability can be detected on.</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
     <td>An object that contains the Exploit Prediction Scoring System (EPSS) score for a vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exploitObserved" /></td>
+    <td><CopyableCode code="exploit_observed" /></td>
     <td><code>object</code></td>
     <td>An object that contains details on when the exploit was observed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="referenceUrls" /></td>
+    <td><CopyableCode code="reference_urls" /></td>
     <td><code>array</code></td>
     <td>Links to various resources with more information on this vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedVulnerabilities" /></td>
+    <td><CopyableCode code="related_vulnerabilities" /></td>
     <td><code>array</code></td>
     <td>A list of related vulnerabilities.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>The source of the vulnerability information. Possible results are RHEL, AMAZON_CVE, DEBIAN or NVD. (NVD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceUrl" /></td>
+    <td><CopyableCode code="source_url" /></td>
     <td><code>string</code></td>
     <td>A link to the official source material for this vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vendorCreatedAt" /></td>
+    <td><CopyableCode code="vendor_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the vendor created this vulnerability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vendorSeverity" /></td>
+    <td><CopyableCode code="vendor_severity" /></td>
     <td><code>string</code></td>
     <td>The severity assigned by the vendor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vendorUpdatedAt" /></td>
+    <td><CopyableCode code="vendor_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the vendor last updated this vulnerability.</td>
 </tr>
@@ -205,23 +205,23 @@ Lists Amazon Inspector coverage details for a specific vulnerability.
 ```sql
 SELECT
 id,
-atigData,
-cisaData,
-cvss2,
-cvss3,
-cvss4,
+atig_data,
+cisa_data,
+cvss_2,
+cvss_3,
+cvss_4,
 cwes,
 description,
-detectionPlatforms,
+detection_platforms,
 epss,
-exploitObserved,
-referenceUrls,
-relatedVulnerabilities,
+exploit_observed,
+reference_urls,
+related_vulnerabilities,
 source,
-sourceUrl,
-vendorCreatedAt,
-vendorSeverity,
-vendorUpdatedAt
+source_url,
+vendor_created_at,
+vendor_severity,
+vendor_updated_at
 FROM aws.inspector2.vulnerabilities
 WHERE region = '{{ region }}' -- required
 ;

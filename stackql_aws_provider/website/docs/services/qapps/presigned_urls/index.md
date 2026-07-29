@@ -120,10 +120,10 @@ SELECT
 '{{ instance-id }}',
 '{{ region }}'
 RETURNING
-fileId,
-presignedUrl,
-presignedUrlExpiration,
-presignedUrlFields
+file_id,
+presigned_url,
+presigned_url_expiration,
+presigned_url_fields
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Statistics" /></td>
+    <td><CopyableCode code="statistics" /></td>
     <td><code>object</code></td>
     <td>Contains information about the DPU execution time and progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>Contains information about the calculation execution status.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets the status of a current calculation.
 
 ```sql
 SELECT
-Statistics,
-Status
+statistics,
+status
 FROM aws.athena.calculation_execution_status
 WHERE region = '{{ region }}' -- required
 ;

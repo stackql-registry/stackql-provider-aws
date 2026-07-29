@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeEfsFileSystemUid" /></td>
+    <td><CopyableCode code="home_efs_file_system_uid" /></td>
     <td><code>string</code></td>
     <td>The ID of the space's profile in the Amazon EFS volume. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnershipSettings" /></td>
+    <td><CopyableCode code="ownership_settings" /></td>
     <td><code>object</code></td>
     <td>The collection of ownership settings for a space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceArn" /></td>
+    <td><CopyableCode code="space_arn" /></td>
     <td><code>string</code></td>
     <td>The space's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:space/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceDisplayName" /></td>
+    <td><CopyableCode code="space_display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space that appears in the Amazon SageMaker Studio UI. (pattern: &lt;code&gt;(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceSettings" /></td>
+    <td><CopyableCode code="space_settings" /></td>
     <td><code>object</code></td>
     <td>A collection of space settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceSharingSettings" /></td>
+    <td><CopyableCode code="space_sharing_settings" /></td>
     <td><code>object</code></td>
     <td>The collection of space sharing settings for a space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleting, Failed, InService, Pending, Updating, Update_Failed, Delete_Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>Returns the URL of the space. If the space is created with Amazon Web Services IAM Identity Center (Successor to Amazon Web Services Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through Amazon Web Services IAM Identity Center. The following application types are supported: Studio Classic: &redirect=JupyterServer JupyterLab: &redirect=JupyterLab Code Editor, based on Code-OSS, Visual Studio Code - Open Source: &redirect=CodeEditor</td>
 </tr>
@@ -130,47 +130,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnershipSettingsSummary" /></td>
+    <td><CopyableCode code="ownership_settings_summary" /></td>
     <td><code>object</code></td>
     <td>Specifies summary information about the ownership settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceDisplayName" /></td>
+    <td><CopyableCode code="space_display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space that appears in the Studio UI. (pattern: &lt;code&gt;(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceSettingsSummary" /></td>
+    <td><CopyableCode code="space_settings_summary" /></td>
     <td><code>object</code></td>
     <td>Specifies summary information about the space settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceSharingSettingsSummary" /></td>
+    <td><CopyableCode code="space_sharing_settings_summary" /></td>
     <td><code>object</code></td>
     <td>Specifies summary information about the space sharing settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleting, Failed, InService, Pending, Updating, Update_Failed, Delete_Failed)</td>
 </tr>
@@ -268,19 +268,19 @@ Describes the space.
 
 ```sql
 SELECT
-CreationTime,
-DomainId,
-FailureReason,
-HomeEfsFileSystemUid,
-LastModifiedTime,
-OwnershipSettings,
-SpaceArn,
-SpaceDisplayName,
-SpaceName,
-SpaceSettings,
-SpaceSharingSettings,
-Status,
-Url
+creation_time,
+domain_id,
+failure_reason,
+home_efs_file_system_uid,
+last_modified_time,
+ownership_settings,
+space_arn,
+space_display_name,
+space_name,
+space_settings,
+space_sharing_settings,
+status,
+url
 FROM aws.sagemaker.spaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -292,15 +292,15 @@ Lists spaces.
 
 ```sql
 SELECT
-CreationTime,
-DomainId,
-LastModifiedTime,
-OwnershipSettingsSummary,
-SpaceDisplayName,
-SpaceName,
-SpaceSettingsSummary,
-SpaceSharingSettingsSummary,
-Status
+creation_time,
+domain_id,
+last_modified_time,
+ownership_settings_summary,
+space_display_name,
+space_name,
+space_settings_summary,
+space_sharing_settings_summary,
+status
 FROM aws.sagemaker.spaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -343,7 +343,7 @@ SELECT
 '{{ SpaceDisplayName }}',
 '{{ region }}'
 RETURNING
-SpaceArn
+space_arn
 ;
 ```
 </TabItem>
@@ -480,7 +480,7 @@ region = '{{ region }}' --required
 AND DomainId = '{{ DomainId }}' --required
 AND SpaceName = '{{ SpaceName }}' --required
 RETURNING
-SpaceArn;
+space_arn;
 ```
 </TabItem>
 </Tabs>

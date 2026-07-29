@@ -125,11 +125,11 @@ IamInstanceProfile = '{{ IamInstanceProfile }}' --required
 AND InstanceId = '{{ InstanceId }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AssociationId,
-IamInstanceProfile,
-InstanceId,
-State,
-Timestamp;
+association_id,
+iam_instance_profile,
+instance_id,
+state,
+timestamp;
 ```
 </TabItem>
 <TabItem value="disassociate_iam_instance_profile">
@@ -144,11 +144,11 @@ WHERE
 AssociationId = '{{ AssociationId }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AssociationId,
-IamInstanceProfile,
-InstanceId,
-State,
-Timestamp;
+association_id,
+iam_instance_profile,
+instance_id,
+state,
+timestamp;
 ```
 </TabItem>
 </Tabs>

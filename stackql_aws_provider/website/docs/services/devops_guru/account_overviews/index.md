@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MeanTimeToRecoverInMilliseconds" /></td>
+    <td><CopyableCode code="mean_time_to_recover_in_milliseconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Mean Time to Recover (MTTR) for all closed insights that were created during the time range passed in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProactiveInsights" /></td>
+    <td><CopyableCode code="proactive_insights" /></td>
     <td><code>integer</code></td>
     <td>An integer that specifies the number of open proactive insights in your Amazon Web Services account that were created during the time range passed in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReactiveInsights" /></td>
+    <td><CopyableCode code="reactive_insights" /></td>
     <td><code>integer</code></td>
     <td>An integer that specifies the number of open reactive insights in your Amazon Web Services account that were created during the time range passed in.</td>
 </tr>
@@ -129,9 +129,9 @@ For the time range passed in, returns the number of open reactive insight that w
 
 ```sql
 SELECT
-MeanTimeToRecoverInMilliseconds,
-ProactiveInsights,
-ReactiveInsights
+mean_time_to_recover_in_milliseconds,
+proactive_insights,
+reactive_insights
 FROM aws.devops_guru.account_overviews
 WHERE region = '{{ region }}' -- required
 ;

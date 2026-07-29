@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent with which the knowledge base is associated. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>The version of the agent with which the knowledge base is associated. (pattern: &lt;code&gt;(DRAFT|&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the association between the agent and the knowledge base was created.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the association between the agent and the knowledge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the association between the agent and the knowledge base. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseState" /></td>
+    <td><CopyableCode code="knowledge_base_state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether to use the knowledge base or not when sending an InvokeAgent request. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the association between the agent and the knowledge base was last updated.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the knowledge base associated with an agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the knowledge base associated with an agent. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseState" /></td>
+    <td><CopyableCode code="knowledge_base_state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the agent uses the knowledge base or not when sending an InvokeAgent request. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the knowledge base associated with an agent was last updated.</td>
 </tr>
@@ -228,13 +228,13 @@ Gets information about a knowledge base associated with an agent.
 
 ```sql
 SELECT
-agentId,
-agentVersion,
-createdAt,
+agent_id,
+agent_version,
+created_at,
 description,
-knowledgeBaseId,
-knowledgeBaseState,
-updatedAt
+knowledge_base_id,
+knowledge_base_state,
+updated_at
 FROM aws.bedrock_agent.agent_knowledge_bases
 WHERE agent_id = '{{ agent_id }}' -- required
 AND agent_version = '{{ agent_version }}' -- required
@@ -250,9 +250,9 @@ Lists knowledge bases associated with an agent and information about each one.
 ```sql
 SELECT
 description,
-knowledgeBaseId,
-knowledgeBaseState,
-updatedAt
+knowledge_base_id,
+knowledge_base_state,
+updated_at
 FROM aws.bedrock_agent.agent_knowledge_bases
 WHERE agent_id = '{{ agent_id }}' -- required
 AND agent_version = '{{ agent_version }}' -- required
@@ -289,7 +289,7 @@ AND region = '{{ region }}' --required
 AND knowledgeBaseId = '{{ knowledgeBaseId }}' --required
 AND description = '{{ description }}' --required
 RETURNING
-agentKnowledgeBase;
+agent_knowledge_base;
 ```
 </TabItem>
 <TabItem value="disassociate_agent_knowledge_base">

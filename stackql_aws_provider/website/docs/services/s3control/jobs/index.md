@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfirmationRequired" /></td>
+    <td><CopyableCode code="confirmation_required" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether confirmation is required before Amazon S3 begins running the specified job. Confirmation is required only for jobs created through the Amazon S3 console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>A timestamp indicating when this job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for this job, if one was provided in this job's Create Job request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>string</code></td>
     <td>If the specified job failed, this field contains information describing the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedManifestDescriptor" /></td>
+    <td><CopyableCode code="generated_manifest_descriptor" /></td>
     <td><code>string</code></td>
     <td>The attribute of the JobDescriptor containing details about the job's generated manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the specified job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Manifest" /></td>
+    <td><CopyableCode code="manifest" /></td>
     <td><code>string</code></td>
     <td>The configuration information for the specified job's manifest object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestGenerator" /></td>
+    <td><CopyableCode code="manifest_generator" /></td>
     <td><code>string</code></td>
     <td>The manifest generator that was used to generate a job manifest for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>The operation that the specified job is configured to run on the objects listed in the manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The priority of the specified job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressSummary" /></td>
+    <td><CopyableCode code="progress_summary" /></td>
     <td><code>string</code></td>
     <td>Describes the total number of tasks that the specified job has run, the number of tasks that succeeded, and the number of tasks that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Report" /></td>
+    <td><CopyableCode code="report" /></td>
     <td><code>string</code></td>
     <td>Contains the configuration information for the job-completion report if you requested one in the Create Job request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Identity and Access Management (IAM) role assigned to run the tasks for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the specified job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusUpdateReason" /></td>
+    <td><CopyableCode code="status_update_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for updating the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuspendedCause" /></td>
+    <td><CopyableCode code="suspended_cause" /></td>
     <td><code>string</code></td>
     <td>The reason why the specified job was suspended. A job is only suspended if you create it through the Amazon S3 console. When you create the job, it enters the Suspended state to await confirmation before running. After you confirm the job, it automatically exits the Suspended state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuspendedDate" /></td>
+    <td><CopyableCode code="suspended_date" /></td>
     <td><code>string</code></td>
     <td>The timestamp when this job was suspended, if it has been suspended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminationDate" /></td>
+    <td><CopyableCode code="termination_date" /></td>
     <td><code>string</code></td>
     <td>A timestamp indicating when this job terminated. A job's termination date is the date and time when it succeeded, failed, or was canceled.</td>
 </tr>
@@ -160,42 +160,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>A timestamp indicating when the specified job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The user-specified description that was included in the specified job's Create Job request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the specified job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>The operation that the specified job is configured to run on every object listed in the manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The current priority for the specified job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressSummary" /></td>
+    <td><CopyableCode code="progress_summary" /></td>
     <td><code>string</code></td>
     <td>Describes the total number of tasks that the specified job has run, the number of tasks that succeeded, and the number of tasks that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The specified job's current status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminationDate" /></td>
+    <td><CopyableCode code="termination_date" /></td>
     <td><code>string</code></td>
     <td>A timestamp indicating when the specified job terminated. A job's termination date is the date and time when it succeeded, failed, or was canceled.</td>
 </tr>
@@ -333,25 +333,25 @@ Retrieves the configuration parameters and status for a Batch Operations job. Fo
 
 ```sql
 SELECT
-ConfirmationRequired,
-CreationTime,
-Description,
-FailureReasons,
-GeneratedManifestDescriptor,
-JobArn,
-JobId,
-Manifest,
-ManifestGenerator,
-Operation,
-Priority,
-ProgressSummary,
-Report,
-RoleArn,
-Status,
-StatusUpdateReason,
-SuspendedCause,
-SuspendedDate,
-TerminationDate
+confirmation_required,
+creation_time,
+description,
+failure_reasons,
+generated_manifest_descriptor,
+job_arn,
+job_id,
+manifest,
+manifest_generator,
+operation,
+priority,
+progress_summary,
+report,
+role_arn,
+status,
+status_update_reason,
+suspended_cause,
+suspended_date,
+termination_date
 FROM aws.s3control.jobs
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND id = '{{ id }}' -- required
@@ -365,14 +365,14 @@ Lists current S3 Batch Operations jobs as well as the jobs that have ended withi
 
 ```sql
 SELECT
-CreationTime,
-Description,
-JobId,
-Operation,
-Priority,
-ProgressSummary,
-Status,
-TerminationDate
+creation_time,
+description,
+job_id,
+operation,
+priority,
+progress_summary,
+status,
+termination_date
 FROM aws.s3control.jobs
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -427,7 +427,7 @@ SELECT
 '{{ x-amz-account-id }}',
 '{{ region }}'
 RETURNING
-JobId
+job_id
 ;
 ```
 </TabItem>
@@ -633,8 +633,8 @@ AND id = '{{ id }}' --required
 AND priority = '{{ priority }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-JobId,
-Priority;
+job_id,
+priority;
 ```
 </TabItem>
 <TabItem value="update_job_status">
@@ -652,9 +652,9 @@ AND requestedJobStatus = '{{ requestedJobStatus }}' --required
 AND region = '{{ region }}' --required
 AND statusUpdateReason = '{{ statusUpdateReason}}'
 RETURNING
-JobId,
-Status,
-StatusUpdateReason;
+job_id,
+status,
+status_update_reason;
 ```
 </TabItem>
 </Tabs>

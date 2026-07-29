@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the human task user interface was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanTaskUiArn" /></td>
+    <td><CopyableCode code="human_task_ui_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the human task user interface (worker task template). (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:human-task-ui/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanTaskUiName" /></td>
+    <td><CopyableCode code="human_task_ui_name" /></td>
     <td><code>string</code></td>
     <td>The name of the human task user interface (worker task template). (pattern: &lt;code&gt;&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanTaskUiStatus" /></td>
+    <td><CopyableCode code="human_task_ui_status" /></td>
     <td><code>string</code></td>
     <td>The status of the human task user interface (worker task template). Valid values are listed below. (Active, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UiTemplate" /></td>
+    <td><CopyableCode code="ui_template" /></td>
     <td><code>object</code></td>
     <td>Container for user interface template information.</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp when SageMaker created the human task user interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanTaskUiArn" /></td>
+    <td><CopyableCode code="human_task_ui_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the human task user interface. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:human-task-ui/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanTaskUiName" /></td>
+    <td><CopyableCode code="human_task_ui_name" /></td>
     <td><code>string</code></td>
     <td>The name of the human task user interface. (pattern: &lt;code&gt;&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
@@ -191,11 +191,11 @@ Returns information about the requested human task user interface (worker task t
 
 ```sql
 SELECT
-CreationTime,
-HumanTaskUiArn,
-HumanTaskUiName,
-HumanTaskUiStatus,
-UiTemplate
+creation_time,
+human_task_ui_arn,
+human_task_ui_name,
+human_task_ui_status,
+ui_template
 FROM aws.sagemaker.human_task_uis
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,9 +207,9 @@ Returns information about the human task user interfaces in your account.
 
 ```sql
 SELECT
-CreationTime,
-HumanTaskUiArn,
-HumanTaskUiName
+creation_time,
+human_task_ui_arn,
+human_task_ui_name
 FROM aws.sagemaker.human_task_uis
 WHERE region = '{{ region }}' -- required
 ;
@@ -244,7 +244,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-HumanTaskUiArn
+human_task_ui_arn
 ;
 ```
 </TabItem>

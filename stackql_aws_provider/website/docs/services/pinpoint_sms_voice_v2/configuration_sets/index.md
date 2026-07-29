@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationSetArn" /></td>
+    <td><CopyableCode code="configuration_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Resource Name (ARN) of the ConfigurationSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationSetName" /></td>
+    <td><CopyableCode code="configuration_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the ConfigurationSet. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the ConfigurationSet was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultMessageFeedbackEnabled" /></td>
+    <td><CopyableCode code="default_message_feedback_enabled" /></td>
     <td><code>boolean</code></td>
     <td>True if message feedback is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultMessageType" /></td>
+    <td><CopyableCode code="default_message_type" /></td>
     <td><code>string</code></td>
     <td>The type of message. Valid values are TRANSACTIONAL for messages that are critical or time-sensitive and PROMOTIONAL for messages that aren't critical or time-sensitive. (TRANSACTIONAL, PROMOTIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultSenderId" /></td>
+    <td><CopyableCode code="default_sender_id" /></td>
     <td><code>string</code></td>
     <td>The default sender ID used by the ConfigurationSet. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventDestinations" /></td>
+    <td><CopyableCode code="event_destinations" /></td>
     <td><code>array</code></td>
     <td>An array of EventDestination objects that describe any events to log and where to log them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectConfigurationId" /></td>
+    <td><CopyableCode code="protect_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the protect configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9_:/-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -210,14 +210,14 @@ Describes the specified configuration sets or all in your account. If you specif
 
 ```sql
 SELECT
-ConfigurationSetArn,
-ConfigurationSetName,
-CreatedTimestamp,
-DefaultMessageFeedbackEnabled,
-DefaultMessageType,
-DefaultSenderId,
-EventDestinations,
-ProtectConfigurationId
+configuration_set_arn,
+configuration_set_name,
+created_timestamp,
+default_message_feedback_enabled,
+default_message_type,
+default_sender_id,
+event_destinations,
+protect_configuration_id
 FROM aws.pinpoint_sms_voice_v2.configuration_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -261,9 +261,9 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ConfigurationSetArn,
-ConfigurationSetName,
-EventDestination
+configuration_set_arn,
+configuration_set_name,
+event_destination
 ;
 ```
 </TabItem>
@@ -284,10 +284,10 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ConfigurationSetArn,
-ConfigurationSetName,
-CreatedTimestamp,
-Tags
+configuration_set_arn,
+configuration_set_name,
+created_timestamp,
+tags
 ;
 ```
 </TabItem>
@@ -369,9 +369,9 @@ region = '{{ region }}' --required
 AND ConfigurationSetName = '{{ ConfigurationSetName }}' --required
 AND MessageFeedbackEnabled = {{ MessageFeedbackEnabled }} --required
 RETURNING
-ConfigurationSetArn,
-ConfigurationSetName,
-MessageFeedbackEnabled;
+configuration_set_arn,
+configuration_set_name,
+message_feedback_enabled;
 ```
 </TabItem>
 <TabItem value="set_default_message_type">
@@ -388,9 +388,9 @@ region = '{{ region }}' --required
 AND ConfigurationSetName = '{{ ConfigurationSetName }}' --required
 AND MessageType = '{{ MessageType }}' --required
 RETURNING
-ConfigurationSetArn,
-ConfigurationSetName,
-MessageType;
+configuration_set_arn,
+configuration_set_name,
+message_type;
 ```
 </TabItem>
 <TabItem value="update_event_destination">
@@ -412,9 +412,9 @@ region = '{{ region }}' --required
 AND ConfigurationSetName = '{{ ConfigurationSetName }}' --required
 AND EventDestinationName = '{{ EventDestinationName }}' --required
 RETURNING
-ConfigurationSetArn,
-ConfigurationSetName,
-EventDestination;
+configuration_set_arn,
+configuration_set_name,
+event_destination;
 ```
 </TabItem>
 </Tabs>

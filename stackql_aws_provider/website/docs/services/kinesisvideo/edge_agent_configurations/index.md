@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stream first created the edge config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeConfig" /></td>
+    <td><CopyableCode code="edge_config" /></td>
     <td><code>object</code></td>
     <td>A description of the stream's edge configuration that will be used to sync with the Edge Agent IoT Greengrass component. The Edge Agent component will run on an IoT Hub Device setup at your premise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedStatusDetails" /></td>
+    <td><CopyableCode code="failed_status_details" /></td>
     <td><code>string</code></td>
     <td>A description of the generated failure status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stream last updated the edge config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamARN" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the stream. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamName" /></td>
+    <td><CopyableCode code="stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncStatus" /></td>
+    <td><CopyableCode code="sync_status" /></td>
     <td><code>string</code></td>
     <td>The current sync status of the stream's edge configuration. (SYNCING, ACKNOWLEDGED, IN_SYNC, SYNC_FAILED, DELETING, DELETE_FAILED, DELETING_ACKNOWLEDGED)</td>
 </tr>
@@ -149,13 +149,13 @@ Returns an array of edge configurations associated with the specified Edge Agent
 
 ```sql
 SELECT
-CreationTime,
-EdgeConfig,
-FailedStatusDetails,
-LastUpdatedTime,
-StreamARN,
-StreamName,
-SyncStatus
+creation_time,
+edge_config,
+failed_status_details,
+last_updated_time,
+stream_arn,
+stream_name,
+sync_status
 FROM aws.kinesisvideo.edge_agent_configurations
 WHERE region = '{{ region }}' -- required
 ;

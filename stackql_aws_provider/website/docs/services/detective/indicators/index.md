@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GraphArn" /></td>
+    <td><CopyableCode code="graph_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the behavior graph. (pattern: &lt;code&gt;^arn:aws&#91;-\w&#93;&#123;0,10&#125;?:detective:&#91;-\w&#93;&#123;2,20&#125;?:\d&#123;12&#125;?:graph:&#91;abcdef\d&#93;&#123;32&#125;?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Indicators" /></td>
+    <td><CopyableCode code="indicators" /></td>
     <td><code>array</code></td>
     <td>Lists the indicators of compromise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvestigationId" /></td>
+    <td><CopyableCode code="investigation_id" /></td>
     <td><code>string</code></td>
     <td>The investigation ID of the investigation report. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Lists if there are more results available. The value of nextToken is a unique pagination token for each page. Repeat the call using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return a Validation Exception error.</td>
 </tr>
@@ -134,10 +134,10 @@ Gets the indicators from an investigation. You can use the information from the 
 
 ```sql
 SELECT
-GraphArn,
-Indicators,
-InvestigationId,
-NextToken
+graph_arn,
+indicators,
+investigation_id,
+next_token
 FROM aws.detective.indicators
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompleteTime" /></td>
+    <td><CopyableCode code="complete_time" /></td>
     <td><code>string</code></td>
     <td>The time the task completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeleteReplacedRootVolume" /></td>
+    <td><CopyableCode code="delete_replaced_root_volume" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the original root volume is to be deleted after the root volume replacement task completes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AMI used to create the replacement root volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance for which the root volume replacement task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplaceRootVolumeTaskId" /></td>
+    <td><CopyableCode code="replace_root_volume_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the root volume replacement task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot used to create the replacement root volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time the task was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskState" /></td>
+    <td><CopyableCode code="task_state" /></td>
     <td><code>string</code></td>
     <td>The state of the task. The task can be in one of the following states: pending - the replacement volume is being created. in-progress - the original volume is being detached and the replacement volume is being attached. succeeded - the replacement volume has been successfully attached to the instance and the instance is available. failing - the replacement task is in the process of failing. failed - the replacement task has failed but the original root volume is still attached. failing-detached - the replacement task is in the process of failing. The instance might have no root volume attached. failed-detached - the replacement task has failed and the instance has no root volume attached.</td>
 </tr>
@@ -226,15 +226,15 @@ Describes a root volume replacement task. For more information, see Replace a ro
 
 ```sql
 SELECT
-CompleteTime,
-DeleteReplacedRootVolume,
-ImageId,
-InstanceId,
-ReplaceRootVolumeTaskId,
-SnapshotId,
-StartTime,
-Tags,
-TaskState
+complete_time,
+delete_replaced_root_volume,
+image_id,
+instance_id,
+replace_root_volume_task_id,
+snapshot_id,
+start_time,
+tags,
+task_state
 FROM aws.ec2.replace_root_volume_tasks
 WHERE region = '{{ region }}' -- required
 AND ReplaceRootVolumeTaskId = '{{ ReplaceRootVolumeTaskId }}'
@@ -284,15 +284,15 @@ SELECT
 '{{ DeleteReplacedRootVolume }}',
 '{{ VolumeInitializationRate }}'
 RETURNING
-CompleteTime,
-DeleteReplacedRootVolume,
-ImageId,
-InstanceId,
-ReplaceRootVolumeTaskId,
-SnapshotId,
-StartTime,
-Tags,
-TaskState
+complete_time,
+delete_replaced_root_volume,
+image_id,
+instance_id,
+replace_root_volume_task_id,
+snapshot_id,
+start_time,
+tags,
+task_state
 ;
 ```
 </TabItem>

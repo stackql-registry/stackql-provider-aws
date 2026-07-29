@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Assessment" /></td>
+    <td><CopyableCode code="assessment" /></td>
     <td><code>object</code></td>
     <td>Detailed information about the self-managed instance settings (IDs and DNS IPs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssessmentReports" /></td>
+    <td><CopyableCode code="assessment_reports" /></td>
     <td><code>array</code></td>
     <td>A list of assessment reports containing validation results for each domain controller and test category. Each report includes specific validation details and outcomes.</td>
 </tr>
@@ -75,42 +75,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssessmentId" /></td>
+    <td><CopyableCode code="assessment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the directory assessment. (pattern: &lt;code&gt;^da-&#91;0-9a-f&#93;&#123;18&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerDnsIps" /></td>
+    <td><CopyableCode code="customer_dns_ips" /></td>
     <td><code>array</code></td>
     <td>The IP addresses of the DNS servers or domain controllers in your self-managed AD environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the directory associated with this assessment. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The fully qualified domain name (FQDN) of the Active Directory domain being assessed. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9&#93;+&#91;\\.-&#93;)+(&#91;a-zA-Z0-9&#93;)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateDateTime" /></td>
+    <td><CopyableCode code="last_update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the assessment status was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportType" /></td>
+    <td><CopyableCode code="report_type" /></td>
     <td><code>string</code></td>
     <td>The type of assessment report generated. Valid values include CUSTOMER and SYSTEM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the assessment was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the assessment. Valid values include SUCCESS, FAILED, PENDING, and IN_PROGRESS.</td>
 </tr>
@@ -194,8 +194,8 @@ Retrieves detailed information about a directory assessment, including its curre
 
 ```sql
 SELECT
-Assessment,
-AssessmentReports
+assessment,
+assessment_reports
 FROM aws.ds.ad_assessments
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,14 +207,14 @@ Retrieves a list of directory assessments for the specified directory or all ass
 
 ```sql
 SELECT
-AssessmentId,
-CustomerDnsIps,
-DirectoryId,
-DnsName,
-LastUpdateDateTime,
-ReportType,
-StartTime,
-Status
+assessment_id,
+customer_dns_ips,
+directory_id,
+dns_name,
+last_update_date_time,
+report_type,
+start_time,
+status
 FROM aws.ds.ad_assessments
 WHERE region = '{{ region }}' -- required
 ;

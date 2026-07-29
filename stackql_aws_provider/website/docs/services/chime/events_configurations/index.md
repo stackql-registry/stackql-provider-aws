@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BotId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The bot ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LambdaFunctionArn" /></td>
+    <td><CopyableCode code="lambda_function_arn" /></td>
     <td><code>string</code></td>
     <td>Lambda function ARN that allows a bot to receive outgoing events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundEventsHTTPSEndpoint" /></td>
+    <td><CopyableCode code="outbound_events_https_endpoint" /></td>
     <td><code>string</code></td>
     <td>HTTPS endpoint that allows a bot to receive outgoing events.</td>
 </tr>
@@ -153,9 +153,9 @@ Gets details for an events configuration that allows a bot to receive outgoing e
 
 ```sql
 SELECT
-BotId,
-LambdaFunctionArn,
-OutboundEventsHTTPSEndpoint
+bot_id,
+lambda_function_arn,
+outbound_events_https_endpoint
 FROM aws.chime.events_configurations
 WHERE account_id = '{{ account_id }}' -- required
 AND bot_id = '{{ bot_id }}' -- required
@@ -188,7 +188,7 @@ account_id = '{{ account_id }}' --required
 AND bot_id = '{{ bot_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-EventsConfiguration;
+events_configuration;
 ```
 </TabItem>
 </Tabs>

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>A set of custom key/value pairs.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>A set of custom key/value pairs.</td>
 </tr>
@@ -167,9 +167,9 @@ Returns a database object for the specified database and data catalog.
 
 ```sql
 SELECT
-Description,
-Name,
-Parameters
+description,
+name,
+parameters
 FROM aws.athena.databases
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,9 +181,9 @@ Lists the databases in the specified data catalog.
 
 ```sql
 SELECT
-Description,
-Name,
-Parameters
+description,
+name,
+parameters
 FROM aws.athena.databases
 WHERE region = '{{ region }}' -- required
 ;

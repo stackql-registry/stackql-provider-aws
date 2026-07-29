@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The policy document. IAM stores policies in JSON format. However, resources that were created using CloudFormation templates can be formatted in YAML. CloudFormation always converts a YAML policy to JSON format before submitting it to IAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The user the policy is associated with.</td>
 </tr>
@@ -215,9 +215,9 @@ Retrieves the specified inline policy document that is embedded in the specified
 
 ```sql
 SELECT
-PolicyDocument,
-PolicyName,
-UserName
+policy_document,
+policy_name,
+user_name
 FROM aws.iam.user_policies
 WHERE UserName = '{{ UserName }}' -- required
 AND PolicyName = '{{ PolicyName }}' -- required

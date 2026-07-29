@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="groundStationId" /></td>
+    <td><CopyableCode code="ground_station_id" /></td>
     <td><code>string</code></td>
     <td>ID of a ground station. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-._:=&#93;&#123;4,97&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groundStationName" /></td>
+    <td><CopyableCode code="ground_station_name" /></td>
     <td><code>string</code></td>
     <td>Name of a ground station. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-._:=&#93;&#123;4,97&#125;&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ Returns a list of ground stations.
 
 ```sql
 SELECT
-groundStationId,
-groundStationName,
+ground_station_id,
+ground_station_name,
 region
 FROM aws.groundstation.ground_stations
 WHERE region = '{{ region }}' -- required

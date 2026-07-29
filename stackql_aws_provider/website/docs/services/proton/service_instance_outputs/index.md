@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The output key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="valueString" /></td>
+    <td><CopyableCode code="value_string" /></td>
     <td><code>string</code></td>
     <td>The output value.</td>
 </tr>
@@ -125,7 +125,7 @@ Get a list service of instance Infrastructure as Code (IaC) outputs.
 ```sql
 SELECT
 key,
-valueString
+value_string
 FROM aws.proton.service_instance_outputs
 WHERE region = '{{ region }}' -- required
 ;

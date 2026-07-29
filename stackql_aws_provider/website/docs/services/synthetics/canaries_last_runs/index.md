@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CanariesLastRun" /></td>
+    <td><CopyableCode code="canaries_last_run" /></td>
     <td><code>array</code></td>
     <td>An array that contains the information from the most recent run of each canary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there is more data available. You can use this token in a subsequent DescribeCanariesLastRun operation to retrieve the next set of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Use this operation to see information from the most recent run of each canary th
 
 ```sql
 SELECT
-CanariesLastRun,
-NextToken
+canaries_last_run,
+next_token
 FROM aws.synthetics.canaries_last_runs
 WHERE region = '{{ region }}' -- required
 ;

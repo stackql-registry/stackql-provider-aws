@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy that contains the test. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testCase" /></td>
+    <td><CopyableCode code="test_case" /></td>
     <td><code>object</code></td>
     <td>Represents a test for validating an Automated Reasoning policy. tests contain sample inputs and expected outcomes to verify policy behavior.</td>
 </tr>
@@ -75,37 +75,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="confidenceThreshold" /></td>
+    <td><CopyableCode code="confidence_threshold" /></td>
     <td><code>number (double)</code></td>
     <td>The minimum confidence level for logic validation. Content meeting this threshold is considered high-confidence and can be validated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the test was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expectedAggregatedFindingsResult" /></td>
+    <td><CopyableCode code="expected_aggregated_findings_result" /></td>
     <td><code>string</code></td>
     <td>The expected result of the Automated Reasoning check for this test. (VALID, INVALID, SATISFIABLE, IMPOSSIBLE, TRANSLATION_AMBIGUOUS, TOO_COMPLEX, NO_TRANSLATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardContent" /></td>
+    <td><CopyableCode code="guard_content" /></td>
     <td><code>string</code></td>
     <td>The output content to be validated by the policy, typically representing a foundation model response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryContent" /></td>
+    <td><CopyableCode code="query_content" /></td>
     <td><code>string</code></td>
     <td>The input query or prompt that generated the content. This provides context for the validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testCaseId" /></td>
+    <td><CopyableCode code="test_case_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the test. (pattern: &lt;code&gt;&#91;0-9A-Z&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the test was last updated.</td>
 </tr>
@@ -228,8 +228,8 @@ Retrieves details about a specific Automated Reasoning policy test.
 
 ```sql
 SELECT
-policyArn,
-testCase
+policy_arn,
+test_case
 FROM aws.bedrock.automated_reasoning_policy_test_cases
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND test_case_id = '{{ test_case_id }}' -- required
@@ -243,13 +243,13 @@ Lists tests for an Automated Reasoning policy. We recommend using pagination to 
 
 ```sql
 SELECT
-confidenceThreshold,
-createdAt,
-expectedAggregatedFindingsResult,
-guardContent,
-queryContent,
-testCaseId,
-updatedAt
+confidence_threshold,
+created_at,
+expected_aggregated_findings_result,
+guard_content,
+query_content,
+test_case_id,
+updated_at
 FROM aws.bedrock.automated_reasoning_policy_test_cases
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -293,8 +293,8 @@ SELECT
 '{{ policy_arn }}',
 '{{ region }}'
 RETURNING
-policyArn,
-testCaseId
+policy_arn,
+test_case_id
 ;
 ```
 </TabItem>
@@ -355,8 +355,8 @@ AND guardContent = '{{ guardContent }}' --required
 AND lastUpdatedAt = '{{ lastUpdatedAt }}' --required
 AND expectedAggregatedFindingsResult = '{{ expectedAggregatedFindingsResult }}' --required
 RETURNING
-policyArn,
-testCaseId;
+policy_arn,
+test_case_id;
 ```
 </TabItem>
 </Tabs>

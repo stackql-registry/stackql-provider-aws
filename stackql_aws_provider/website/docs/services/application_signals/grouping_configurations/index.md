@@ -108,7 +108,7 @@ WHERE
 region = '{{ region }}' --required
 AND GroupingAttributeDefinitions = '{{ GroupingAttributeDefinitions }}' --required
 RETURNING
-GroupingConfiguration;
+grouping_configuration;
 ```
 </TabItem>
 </Tabs>

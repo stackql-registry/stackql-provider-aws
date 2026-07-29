@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ScaleDownNodeTypes" /></td>
+    <td><CopyableCode code="scale_down_node_types" /></td>
     <td><code>array</code></td>
     <td>The node types that the cluster can be scaled down to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScaleUpNodeTypes" /></td>
+    <td><CopyableCode code="scale_up_node_types" /></td>
     <td><code>array</code></td>
     <td>The node types that the cluster can be scaled up to.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the allowed updates for a multi-Region cluster.
 
 ```sql
 SELECT
-ScaleDownNodeTypes,
-ScaleUpNodeTypes
+scale_down_node_types,
+scale_up_node_types
 FROM aws.memorydb.allowed_multi_region_cluster_updates
 WHERE region = '{{ region }}' -- required
 ;

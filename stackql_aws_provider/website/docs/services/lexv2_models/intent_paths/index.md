@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nodeSummaries" /></td>
+    <td><CopyableCode code="node_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects, each of which contains information about a node in the intent path for which you requested metrics.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves summary statistics for a path of intents that users take over sessions
 
 ```sql
 SELECT
-nodeSummaries
+node_summaries
 FROM aws.lexv2_models.intent_paths
 WHERE bot_id = '{{ bot_id }}' -- required
 AND region = '{{ region }}' -- required

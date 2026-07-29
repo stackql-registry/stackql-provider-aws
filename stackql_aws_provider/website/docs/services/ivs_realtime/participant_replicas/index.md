@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="destinationSessionId" /></td>
+    <td><CopyableCode code="destination_session_id" /></td>
     <td><code>string</code></td>
     <td>ID of the session within the destination stage. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationStageArn" /></td>
+    <td><CopyableCode code="destination_stage_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the stage where the participant is replicated. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stage/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="participantId" /></td>
+    <td><CopyableCode code="participant_id" /></td>
     <td><code>string</code></td>
     <td>Participant ID of the publisher that will be replicated. This is assigned by IVS and returned by CreateParticipantToken or the jti (JWT ID) used to create a self signed token. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationState" /></td>
+    <td><CopyableCode code="replication_state" /></td>
     <td><code>string</code></td>
     <td>Replica’s current replication state. (ACTIVE, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceSessionId" /></td>
+    <td><CopyableCode code="source_session_id" /></td>
     <td><code>string</code></td>
     <td>ID of the session within the source stage. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceStageArn" /></td>
+    <td><CopyableCode code="source_stage_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the stage from which this participant is replicated. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stage/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ Lists all the replicas for a participant from a source stage.
 
 ```sql
 SELECT
-destinationSessionId,
-destinationStageArn,
-participantId,
-replicationState,
-sourceSessionId,
-sourceStageArn
+destination_session_id,
+destination_stage_arn,
+participant_id,
+replication_state,
+source_session_id,
+source_stage_arn
 FROM aws.ivs_realtime.participant_replicas
 WHERE region = '{{ region }}' -- required
 ;

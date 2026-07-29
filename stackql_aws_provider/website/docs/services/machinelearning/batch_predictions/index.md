@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BatchPredictionDataSourceId" /></td>
+    <td><CopyableCode code="batch_prediction_data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the DataSource that was used to create the BatchPrediction. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BatchPredictionId" /></td>
+    <td><CopyableCode code="batch_prediction_id" /></td>
     <td><code>string</code></td>
     <td>An ID assigned to the BatchPrediction at creation. This value should be identical to the value of the BatchPredictionID in the request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account that invoked the BatchPrediction. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataLocationS3" /></td>
+    <td><CopyableCode code="input_data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3). (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvalidRecordCount" /></td>
+    <td><CopyableCode code="invalid_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>A link to the file that contains logs of the CreateBatchPrediction operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelId" /></td>
+    <td><CopyableCode code="ml_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the MLModel that generated predictions for the BatchPrediction request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the most recent details about processing the batch prediction request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the BatchPrediction. (pattern: &lt;code&gt;.*\S.*|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputUri" /></td>
+    <td><CopyableCode code="output_uri" /></td>
     <td><code>string</code></td>
     <td>The location of an Amazon S3 bucket or directory to receive the operation results. (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the BatchPrediction, which can be one of the following values: PENDING - Amazon Machine Learning (Amazon ML) submitted a request to generate batch predictions. INPROGRESS - The batch predictions are in progress. FAILED - The request to perform a batch prediction did not run to completion. It is not usable. COMPLETED - The batch prediction process completed successfully. DELETED - The BatchPrediction is marked as deleted. It is not usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalRecordCount" /></td>
+    <td><CopyableCode code="total_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
@@ -150,82 +150,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BatchPredictionDataSourceId" /></td>
+    <td><CopyableCode code="batch_prediction_data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the DataSource that points to the group of observations to predict. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BatchPredictionId" /></td>
+    <td><CopyableCode code="batch_prediction_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the BatchPrediction at creation. This value should be identical to the value of the BatchPredictionID in the request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the BatchPrediction was created. The time is expressed in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account that invoked the BatchPrediction. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataLocationS3" /></td>
+    <td><CopyableCode code="input_data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3). (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvalidRecordCount" /></td>
+    <td><CopyableCode code="invalid_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time of the most recent edit to the BatchPrediction. The time is expressed in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelId" /></td>
+    <td><CopyableCode code="ml_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the MLModel that generated predictions for the BatchPrediction request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the most recent details about processing the batch prediction request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the BatchPrediction. (pattern: &lt;code&gt;.*\S.*|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputUri" /></td>
+    <td><CopyableCode code="output_uri" /></td>
     <td><code>string</code></td>
     <td>The location of an Amazon S3 bucket or directory to receive the operation results. The following substrings are not allowed in the s3 key portion of the outputURI field: ':', '//', '/./', '/../'. (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the BatchPrediction. This element can have one of the following values: PENDING - Amazon Machine Learning (Amazon ML) submitted a request to generate predictions for a batch of observations. INPROGRESS - The process is underway. FAILED - The request to perform a batch prediction did not run to completion. It is not usable. COMPLETED - The batch prediction process completed successfully. DELETED - The BatchPrediction is marked as deleted. It is not usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalRecordCount" /></td>
+    <td><CopyableCode code="total_record_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
@@ -323,23 +323,23 @@ Returns a BatchPrediction that includes detailed metadata, status, and data file
 
 ```sql
 SELECT
-BatchPredictionDataSourceId,
-BatchPredictionId,
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-FinishedAt,
-InputDataLocationS3,
-InvalidRecordCount,
-LastUpdatedAt,
-LogUri,
-MLModelId,
-Message,
-Name,
-OutputUri,
-StartedAt,
-Status,
-TotalRecordCount
+batch_prediction_data_source_id,
+batch_prediction_id,
+compute_time,
+created_at,
+created_by_iam_user,
+finished_at,
+input_data_location_s3,
+invalid_record_count,
+last_updated_at,
+log_uri,
+ml_model_id,
+message,
+name,
+output_uri,
+started_at,
+status,
+total_record_count
 FROM aws.machinelearning.batch_predictions
 WHERE region = '{{ region }}' -- required
 ;
@@ -351,22 +351,22 @@ Returns a list of BatchPrediction operations that match the search criteria in t
 
 ```sql
 SELECT
-BatchPredictionDataSourceId,
-BatchPredictionId,
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-FinishedAt,
-InputDataLocationS3,
-InvalidRecordCount,
-LastUpdatedAt,
-MLModelId,
-Message,
-Name,
-OutputUri,
-StartedAt,
-Status,
-TotalRecordCount
+batch_prediction_data_source_id,
+batch_prediction_id,
+compute_time,
+created_at,
+created_by_iam_user,
+finished_at,
+input_data_location_s3,
+invalid_record_count,
+last_updated_at,
+ml_model_id,
+message,
+name,
+output_uri,
+started_at,
+status,
+total_record_count
 FROM aws.machinelearning.batch_predictions
 WHERE region = '{{ region }}' -- required
 ;
@@ -405,7 +405,7 @@ SELECT
 '{{ OutputUri }}' /* required */,
 '{{ region }}'
 RETURNING
-BatchPredictionId
+batch_prediction_id
 ;
 ```
 </TabItem>
@@ -465,7 +465,7 @@ region = '{{ region }}' --required
 AND BatchPredictionId = '{{ BatchPredictionId }}' --required
 AND BatchPredictionName = '{{ BatchPredictionName }}' --required
 RETURNING
-BatchPredictionId;
+batch_prediction_id;
 ```
 </TabItem>
 </Tabs>

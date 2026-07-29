@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="meshName" /></td>
+    <td><CopyableCode code="mesh_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service mesh that the virtual gateway resides in.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the virtual gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualGatewayName" /></td>
+    <td><CopyableCode code="virtual_gateway_name" /></td>
     <td><code>string</code></td>
     <td>The name of the virtual gateway.</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
     <td>The full Amazon Resource Name (ARN) for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp in seconds for when the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp in seconds for when the resource was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="meshName" /></td>
+    <td><CopyableCode code="mesh_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service mesh that the resource resides in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="meshOwner" /></td>
+    <td><CopyableCode code="mesh_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of the account that shared the mesh with your account. For more information about mesh sharing, see Working with shared meshes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the mesh owner or of another account that the mesh is shared with. For more information about mesh sharing, see Working with shared meshes.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The version of the resource. Resources are created at version 1, and this version is incremented each time that they're updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualGatewayName" /></td>
+    <td><CopyableCode code="virtual_gateway_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource.</td>
 </tr>
@@ -248,11 +248,11 @@ Describes an existing virtual gateway.
 
 ```sql
 SELECT
-meshName,
+mesh_name,
 metadata,
 spec,
 status,
-virtualGatewayName
+virtual_gateway_name
 FROM aws.appmesh.virtual_gateways
 WHERE mesh_name = '{{ mesh_name }}' -- required
 AND virtual_gateway_name = '{{ virtual_gateway_name }}' -- required
@@ -268,13 +268,13 @@ Returns a list of existing virtual gateways in a service mesh.
 ```sql
 SELECT
 arn,
-createdAt,
-lastUpdatedAt,
-meshName,
-meshOwner,
-resourceOwner,
+created_at,
+last_updated_at,
+mesh_name,
+mesh_owner,
+resource_owner,
 version,
-virtualGatewayName
+virtual_gateway_name
 FROM aws.appmesh.virtual_gateways
 WHERE mesh_name = '{{ mesh_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -319,7 +319,7 @@ SELECT
 '{{ region }}',
 '{{ meshOwner }}'
 RETURNING
-virtualGateway
+virtual_gateway
 ;
 ```
 </TabItem>
@@ -435,7 +435,7 @@ AND region = '{{ region }}' --required
 AND spec = '{{ spec }}' --required
 AND meshOwner = '{{ meshOwner}}'
 RETURNING
-virtualGateway;
+virtual_gateway;
 ```
 </TabItem>
 </Tabs>

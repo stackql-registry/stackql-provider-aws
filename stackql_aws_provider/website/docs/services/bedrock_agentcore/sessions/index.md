@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actorId" /></td>
+    <td><CopyableCode code="actor_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the actor associated with the session. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_/&#93;*(?::&#91;a-zA-Z0-9-_/&#93;+)*&#91;a-zA-Z0-9-_/&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the session. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -178,9 +178,9 @@ Lists sessions in an AgentCore Memory resource based on specified criteria. We r
 
 ```sql
 SELECT
-actorId,
-createdAt,
-sessionId
+actor_id,
+created_at,
+session_id
 FROM aws.bedrock_agentcore.sessions
 WHERE memory_id = '{{ memory_id }}' -- required
 AND actor_id = '{{ actor_id }}' -- required
@@ -214,10 +214,10 @@ AND sessionId = '{{ sessionId }}' --required
 AND region = '{{ region }}' --required
 AND streamUpdate = '{{ streamUpdate }}' --required
 RETURNING
-browserIdentifier,
-sessionId,
+browser_identifier,
+session_id,
 streams,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The namespace of the package. The package component that specifies its namespace depends on its type. For example: The namespace of a Maven package version is its groupId. The namespace of an npm or Swift package version is its scope. The namespace of a generic package is its namespace. Python, NuGet, Ruby, and Cargo package versions do not contain a corresponding component, package versions of those formats do not have a namespace. (pattern: &lt;code&gt;&#91;^#/\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originConfiguration" /></td>
+    <td><CopyableCode code="origin_configuration" /></td>
     <td><code>object</code></td>
     <td>The package origin configuration for the package.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The namespace of the package. The package component that specifies its namespace depends on its type. For example: The namespace of a Maven package version is its groupId. The namespace of an npm or Swift package version is its scope. The namespace of a generic package is its namespace. Python, NuGet, Ruby, and Cargo package versions do not contain a corresponding component, package versions of those formats do not have a namespace. (pattern: &lt;code&gt;&#91;^#/\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originConfiguration" /></td>
+    <td><CopyableCode code="origin_configuration" /></td>
     <td><code>object</code></td>
     <td>A PackageOriginConfiguration object that contains a PackageOriginRestrictions object that contains information about the upstream and publish package origin restrictions.</td>
 </tr>
@@ -281,7 +281,7 @@ SELECT
 name,
 format_,
 namespace,
-originConfiguration
+origin_configuration
 FROM aws.codeartifact.packages
 WHERE domain = '{{ domain }}' -- required
 AND repository = '{{ repository }}' -- required
@@ -301,7 +301,7 @@ Returns a list of PackageSummary objects for packages in a repository that match
 SELECT
 format_,
 namespace,
-originConfiguration,
+origin_configuration,
 package
 FROM aws.codeartifact.packages
 WHERE domain = '{{ domain }}' -- required
@@ -347,7 +347,7 @@ AND restrictions = '{{ restrictions }}' --required
 AND `domain-owner` = '{{ domain-owner}}'
 AND namespace = '{{ namespace}}'
 RETURNING
-originConfiguration;
+origin_configuration;
 ```
 </TabItem>
 </Tabs>

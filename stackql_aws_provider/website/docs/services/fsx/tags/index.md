@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>A value that specifies the TagKey, the name of the tag. Tag keys must be unique for the resource to which they are attached. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>A value that specifies the TagValue, the value assigned to the corresponding tag key. Tag values can be null and don't have to be unique in a tag set. For example, you can have a key-value pair in a tag set of finances : April and also of payroll : April. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Lists tags for Amazon FSx resources. When retrieving all tags, you can optionall
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.fsx.tags
 WHERE region = '{{ region }}' -- required
 ;

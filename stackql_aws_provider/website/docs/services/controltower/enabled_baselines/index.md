@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the EnabledBaseline resource. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="baselineIdentifier" /></td>
+    <td><CopyableCode code="baseline_identifier" /></td>
     <td><code>string</code></td>
     <td>The specific Baseline enabled as part of the EnabledBaseline resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="baselineVersion" /></td>
+    <td><CopyableCode code="baseline_version" /></td>
     <td><code>string</code></td>
     <td>The enabled version of the Baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="driftStatusSummary" /></td>
+    <td><CopyableCode code="drift_status_summary" /></td>
     <td><code>object</code></td>
     <td>The drift status of the enabled baseline.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>Shows the parameters that are applied when enabling this Baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentIdentifier" /></td>
+    <td><CopyableCode code="parent_identifier" /></td>
     <td><code>string</code></td>
     <td>An ARN that represents the parent EnabledBaseline at the Organizational Unit (OU) level, from which the child EnabledBaseline inherits its configuration. The value is returned by GetEnabledBaseline. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummary" /></td>
+    <td><CopyableCode code="status_summary" /></td>
     <td><code>object</code></td>
     <td>The deployment summary of an EnabledControl or EnabledBaseline resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetIdentifier" /></td>
+    <td><CopyableCode code="target_identifier" /></td>
     <td><code>string</code></td>
     <td>The target on which to enable the Baseline.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the EnabledBaseline resource (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="baselineIdentifier" /></td>
+    <td><CopyableCode code="baseline_identifier" /></td>
     <td><code>string</code></td>
     <td>The specific baseline that is enabled as part of the EnabledBaseline resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="baselineVersion" /></td>
+    <td><CopyableCode code="baseline_version" /></td>
     <td><code>string</code></td>
     <td>The enabled version of the baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="driftStatusSummary" /></td>
+    <td><CopyableCode code="drift_status_summary" /></td>
     <td><code>object</code></td>
     <td>The drift status of the enabled baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentIdentifier" /></td>
+    <td><CopyableCode code="parent_identifier" /></td>
     <td><code>string</code></td>
     <td>An ARN that represents an object returned by ListEnabledBaseline, to describe an enabled baseline. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummary" /></td>
+    <td><CopyableCode code="status_summary" /></td>
     <td><code>object</code></td>
     <td>The deployment summary of an EnabledControl or EnabledBaseline resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetIdentifier" /></td>
+    <td><CopyableCode code="target_identifier" /></td>
     <td><code>string</code></td>
     <td>The target upon which the baseline is enabled.</td>
 </tr>
@@ -227,13 +227,13 @@ Retrieve details of an EnabledBaseline resource by specifying its identifier.
 ```sql
 SELECT
 arn,
-baselineIdentifier,
-baselineVersion,
-driftStatusSummary,
+baseline_identifier,
+baseline_version,
+drift_status_summary,
 parameters,
-parentIdentifier,
-statusSummary,
-targetIdentifier
+parent_identifier,
+status_summary,
+target_identifier
 FROM aws.controltower.enabled_baselines
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,12 +246,12 @@ Returns a list of summaries describing EnabledBaseline resources. You can filter
 ```sql
 SELECT
 arn,
-baselineIdentifier,
-baselineVersion,
-driftStatusSummary,
-parentIdentifier,
-statusSummary,
-targetIdentifier
+baseline_identifier,
+baseline_version,
+drift_status_summary,
+parent_identifier,
+status_summary,
+target_identifier
 FROM aws.controltower.enabled_baselines
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,7 +283,7 @@ region = '{{ region }}' --required
 AND baselineVersion = '{{ baselineVersion }}' --required
 AND enabledBaselineIdentifier = '{{ enabledBaselineIdentifier }}' --required
 RETURNING
-operationIdentifier;
+operation_identifier;
 ```
 </TabItem>
 </Tabs>

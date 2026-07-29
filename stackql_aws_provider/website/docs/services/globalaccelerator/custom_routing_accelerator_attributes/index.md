@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlowLogsEnabled" /></td>
+    <td><CopyableCode code="flow_logs_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether flow logs are enabled. The default value is false. If the value is true, FlowLogsS3Bucket and FlowLogsS3Prefix must be specified. For more information, see Flow logs in the Global Accelerator Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowLogsS3Bucket" /></td>
+    <td><CopyableCode code="flow_logs_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket for the flow logs. Attribute is required if FlowLogsEnabled is true. The bucket must exist and have a bucket policy that grants Global Accelerator permission to write to the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowLogsS3Prefix" /></td>
+    <td><CopyableCode code="flow_logs_s3_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix for the location in the Amazon S3 bucket for the flow logs. Attribute is required if FlowLogsEnabled is true. If you don’t specify a prefix, the flow logs are stored in the root of the bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket folder structure will include a double slash (//), like the following: DOC-EXAMPLE-BUCKET//AWSLogs/aws_account_id</td>
 </tr>
@@ -136,9 +136,9 @@ Describe the attributes of a custom routing accelerator.
 
 ```sql
 SELECT
-FlowLogsEnabled,
-FlowLogsS3Bucket,
-FlowLogsS3Prefix
+flow_logs_enabled,
+flow_logs_s3_bucket,
+flow_logs_s3_prefix
 FROM aws.globalaccelerator.custom_routing_accelerator_attributes
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,7 +170,7 @@ WHERE
 region = '{{ region }}' --required
 AND AcceleratorArn = '{{ AcceleratorArn }}' --required
 RETURNING
-AcceleratorAttributes;
+accelerator_attributes;
 ```
 </TabItem>
 </Tabs>

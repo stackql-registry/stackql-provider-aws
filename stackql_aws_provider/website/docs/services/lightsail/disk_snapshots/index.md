@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the disk snapshot. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the disk snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromDiskArn" /></td>
+    <td><CopyableCode code="from_disk_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source disk from which the disk snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromDiskName" /></td>
+    <td><CopyableCode code="from_disk_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the source disk from which the disk snapshot was created. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceArn" /></td>
+    <td><CopyableCode code="from_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source instance from which the disk (system volume) snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceName" /></td>
+    <td><CopyableCode code="from_instance_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the source instance from which the disk (system volume) snapshot was created. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isFromAutoSnapshot" /></td>
+    <td><CopyableCode code="is_from_auto_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the snapshot was created from an automatic snapshot.</td>
 </tr>
@@ -101,12 +101,12 @@ The following fields are returned by `SELECT` queries:
     <td>The progress of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type (DiskSnapshot). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the disk in GB.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the disk snapshot operation. (pending, completed, error, unknown)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -150,32 +150,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the disk snapshot. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the disk snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromDiskArn" /></td>
+    <td><CopyableCode code="from_disk_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source disk from which the disk snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromDiskName" /></td>
+    <td><CopyableCode code="from_disk_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the source disk from which the disk snapshot was created. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceArn" /></td>
+    <td><CopyableCode code="from_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source instance from which the disk (system volume) snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceName" /></td>
+    <td><CopyableCode code="from_instance_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the source instance from which the disk (system volume) snapshot was created. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isFromAutoSnapshot" /></td>
+    <td><CopyableCode code="is_from_auto_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the snapshot was created from an automatic snapshot.</td>
 </tr>
@@ -190,12 +190,12 @@ The following fields are returned by `SELECT` queries:
     <td>The progress of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type (DiskSnapshot). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the disk in GB.</td>
 </tr>
@@ -205,7 +205,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the disk snapshot operation. (pending, completed, error, unknown)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -303,18 +303,18 @@ Returns information about a specific block storage disk snapshot.
 SELECT
 name,
 arn,
-createdAt,
-fromDiskArn,
-fromDiskName,
-fromInstanceArn,
-fromInstanceName,
-isFromAutoSnapshot,
+created_at,
+from_disk_arn,
+from_disk_name,
+from_instance_arn,
+from_instance_name,
+is_from_auto_snapshot,
 location,
 progress,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.disk_snapshots
 WHERE region = '{{ region }}' -- required
@@ -329,18 +329,18 @@ Returns information about all block storage disk snapshots in your AWS account a
 SELECT
 name,
 arn,
-createdAt,
-fromDiskArn,
-fromDiskName,
-fromInstanceArn,
-fromInstanceName,
-isFromAutoSnapshot,
+created_at,
+from_disk_arn,
+from_disk_name,
+from_instance_arn,
+from_instance_name,
+is_from_auto_snapshot,
 location,
 progress,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.disk_snapshots
 WHERE region = '{{ region }}' -- required

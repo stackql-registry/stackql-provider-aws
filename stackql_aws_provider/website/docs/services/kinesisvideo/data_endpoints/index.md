@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataEndpoint" /></td>
+    <td><CopyableCode code="data_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint value. To read data from the stream or to write data to it, specify this endpoint in your application.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets an endpoint for a specified stream for either reading or writing. Use this 
 
 ```sql
 SELECT
-DataEndpoint
+data_endpoint
 FROM aws.kinesisvideo.data_endpoints
 WHERE region = '{{ region }}' -- required
 ;

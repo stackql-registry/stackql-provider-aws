@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkBorderGroup" /></td>
+    <td><CopyableCode code="network_border_group" /></td>
     <td><code>string</code></td>
     <td>The name of the location from which the address pool is advertised. A network border group is a unique set of Availability Zones or Local Zones from where Amazon Web Services advertises public IP addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolAddressRanges" /></td>
+    <td><CopyableCode code="pool_address_ranges" /></td>
     <td><code>string</code></td>
     <td>The address ranges.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags for the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalAddressCount" /></td>
+    <td><CopyableCode code="total_address_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalAvailableAddressCount" /></td>
+    <td><CopyableCode code="total_available_address_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of available addresses.</td>
 </tr>
@@ -232,13 +232,13 @@ Describes the specified IPv4 address pools.
 
 ```sql
 SELECT
-Description,
-NetworkBorderGroup,
-PoolAddressRanges,
-PoolId,
-Tags,
-TotalAddressCount,
-TotalAvailableAddressCount
+description,
+network_border_group,
+pool_address_ranges,
+pool_id,
+tags,
+total_address_count,
+total_available_address_count
 FROM aws.ec2.public_ipv4_pools
 WHERE region = '{{ region }}' -- required
 AND PoolId = '{{ PoolId }}'
@@ -277,7 +277,7 @@ SELECT
 '{{ TagSpecification }}',
 '{{ NetworkBorderGroup }}'
 RETURNING
-PoolId
+pool_id
 ;
 ```
 </TabItem>
@@ -332,8 +332,8 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND NetworkBorderGroup = '{{ NetworkBorderGroup}}'
 RETURNING
-PoolAddressRange,
-PoolId;
+pool_address_range,
+pool_id;
 ```
 </TabItem>
 <TabItem value="deprovision_public_ipv4_pool_cidr">
@@ -350,8 +350,8 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND Cidr = '{{ Cidr}}'
 RETURNING
-DeprovisionedAddresses,
-PoolId;
+deprovisioned_addresses,
+pool_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Profiles" /></td>
+    <td><CopyableCode code="profiles" /></td>
     <td><code>array</code></td>
     <td>A list of invoice profiles corresponding to the requested accounts.</td>
 </tr>
@@ -119,7 +119,7 @@ This gets the invoice profile associated with a set of accounts. The accounts mu
 
 ```sql
 SELECT
-Profiles
+profiles
 FROM aws.invoicing.invoice_profiles
 WHERE region = '{{ region }}' -- required
 ;

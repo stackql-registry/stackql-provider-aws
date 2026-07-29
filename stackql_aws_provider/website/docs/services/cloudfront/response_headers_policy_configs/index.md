@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>A comment to describe the response headers policy. The comment cannot be longer than 128 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CorsConfig" /></td>
+    <td><CopyableCode code="cors_config" /></td>
     <td><code>string</code></td>
     <td>A configuration for a set of HTTP response headers that are used for cross-origin resource sharing (CORS).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomHeadersConfig" /></td>
+    <td><CopyableCode code="custom_headers_config" /></td>
     <td><code>string</code></td>
     <td>A configuration for a set of custom HTTP response headers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name to identify the response headers policy. The name must be unique for response headers policies in this Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemoveHeadersConfig" /></td>
+    <td><CopyableCode code="remove_headers_config" /></td>
     <td><code>string</code></td>
     <td>A configuration for a set of HTTP headers to remove from the HTTP response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityHeadersConfig" /></td>
+    <td><CopyableCode code="security_headers_config" /></td>
     <td><code>string</code></td>
     <td>A configuration for a set of security-related HTTP response headers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerTimingHeadersConfig" /></td>
+    <td><CopyableCode code="server_timing_headers_config" /></td>
     <td><code>string</code></td>
     <td>A configuration for enabling the Server-Timing header in HTTP responses sent from CloudFront.</td>
 </tr>
@@ -154,13 +154,13 @@ Gets a response headers policy configuration. To get a response headers policy c
 
 ```sql
 SELECT
-Comment,
-CorsConfig,
-CustomHeadersConfig,
-Name,
-RemoveHeadersConfig,
-SecurityHeadersConfig,
-ServerTimingHeadersConfig
+comment,
+cors_config,
+custom_headers_config,
+name,
+remove_headers_config,
+security_headers_config,
+server_timing_headers_config
 FROM aws.cloudfront.response_headers_policy_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

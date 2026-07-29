@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="controlMetadataList" /></td>
+    <td><CopyableCode code="control_metadata_list" /></td>
     <td><code>array</code></td>
     <td>A list of metadata that the ListControls API returns for each control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the control. (pattern: &lt;code&gt;^&#91;^\\&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionPlanInstructions" /></td>
+    <td><CopyableCode code="action_plan_instructions" /></td>
     <td><code>string</code></td>
     <td>The recommended actions to carry out if the control isn't fulfilled. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionPlanTitle" /></td>
+    <td><CopyableCode code="action_plan_title" /></td>
     <td><code>string</code></td>
     <td>The title of the action plan for remediating the control. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the control. (pattern: &lt;code&gt;^arn:.*:auditmanager:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlMappingSources" /></td>
+    <td><CopyableCode code="control_mapping_sources" /></td>
     <td><code>array</code></td>
     <td>The data mapping sources for the control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlSources" /></td>
+    <td><CopyableCode code="control_sources" /></td>
     <td><code>string</code></td>
     <td>The data source types that determine where Audit Manager collects evidence from for the control. (pattern: &lt;code&gt;^&#91;a-zA-Z_0-9-\s.,&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the control was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or role that created the control. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s-_()\&#91;\&#93;&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the control. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the control was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or role that most recently updated the control. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s-_()\&#91;\&#93;&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags associated with the control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testingInformation" /></td>
+    <td><CopyableCode code="testing_information" /></td>
     <td><code>string</code></td>
     <td>The steps that you should follow to determine if the control has been satisfied. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -290,8 +290,8 @@ Returns a list of controls from Audit Manager.
 
 ```sql
 SELECT
-controlMetadataList,
-nextToken
+control_metadata_list,
+next_token
 FROM aws.auditmanager.controls
 WHERE controlType = '{{ controlType }}' -- required
 AND region = '{{ region }}' -- required
@@ -309,19 +309,19 @@ Gets information about a specified control.
 SELECT
 id,
 name,
-actionPlanInstructions,
-actionPlanTitle,
+action_plan_instructions,
+action_plan_title,
 arn,
-controlMappingSources,
-controlSources,
-createdAt,
-createdBy,
+control_mapping_sources,
+control_sources,
+created_at,
+created_by,
 description,
-lastUpdatedAt,
-lastUpdatedBy,
+last_updated_at,
+last_updated_by,
 state,
 tags,
-testingInformation,
+testing_information,
 type_
 FROM aws.auditmanager.controls
 WHERE control_id = '{{ control_id }}' -- required

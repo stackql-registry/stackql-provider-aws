@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigRuleArn" /></td>
+    <td><CopyableCode code="config_rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleId" /></td>
+    <td><CopyableCode code="config_rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleName" /></td>
+    <td><CopyableCode code="config_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assign to the Config rule. The name is required if you are adding a new rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleState" /></td>
+    <td><CopyableCode code="config_rule_state" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the Config rule is active or is currently being deleted by Config. It can also indicate the evaluation status for the Config rule. Config sets the state of the rule to EVALUATING temporarily after you use the StartConfigRulesEvaluation request to evaluate your resources against the Config rule. Config sets the state of the rule to DELETING_RESULTS temporarily after you use the DeleteEvaluationResults request to delete the current evaluation results for the Config rule. Config temporarily sets the state of a rule to DELETING after you use the DeleteConfigRule request to delete the rule. After Config deletes the rule, the rule and all of its evaluations are erased and are no longer available. (ACTIVE, DELETING, DELETING_RESULTS, EVALUATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>Service principal name of the service that created the rule. The field is populated only if the service-linked rule is created by a service. The field is empty if you create your own rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description that you provide for the Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationModes" /></td>
+    <td><CopyableCode code="evaluation_modes" /></td>
     <td><code>array</code></td>
     <td>The modes the Config rule can be evaluated in. The valid values are distinct objects. By default, the value is Detective evaluation mode only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputParameters" /></td>
+    <td><CopyableCode code="input_parameters" /></td>
     <td><code>string</code></td>
     <td>A string, in JSON format, that is passed to the Config rule Lambda function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumExecutionFrequency" /></td>
+    <td><CopyableCode code="maximum_execution_frequency" /></td>
     <td><code>string</code></td>
     <td>The maximum frequency with which Config runs evaluations for a rule. You can specify a value for MaximumExecutionFrequency when: This is for an Config managed rule that is triggered at a periodic frequency. Your custom rule is triggered when Config delivers the configuration snapshot. For more information, see ConfigSnapshotDeliveryProperties. By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the MaximumExecutionFrequency parameter. (One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scope" /></td>
+    <td><CopyableCode code="scope" /></td>
     <td><code>object</code></td>
     <td>Defines which resources can trigger an evaluation for the rule. The scope can include one or more resource types, a combination of one resource type and one resource ID, or a combination of a tag key and value. Specify a scope to constrain the resources that can trigger an evaluation for the rule. If you do not specify a scope, evaluations are triggered when any resource in the recording group changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>Provides the rule owner (Amazon Web Services for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule identifier, and the notifications that cause the function to evaluate your Amazon Web Services resources.</td>
 </tr>
@@ -211,17 +211,17 @@ Returns details about your Config rules.
 
 ```sql
 SELECT
-ConfigRuleArn,
-ConfigRuleId,
-ConfigRuleName,
-ConfigRuleState,
-CreatedBy,
-Description,
-EvaluationModes,
-InputParameters,
-MaximumExecutionFrequency,
-Scope,
-Source
+config_rule_arn,
+config_rule_id,
+config_rule_name,
+config_rule_state,
+created_by,
+description,
+evaluation_modes,
+input_parameters,
+maximum_execution_frequency,
+scope,
+source
 FROM aws.config.config_rules
 WHERE region = '{{ region }}' -- required
 ;

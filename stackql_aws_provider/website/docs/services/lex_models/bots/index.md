@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the bot. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="abortStatement" /></td>
+    <td><CopyableCode code="abort_statement" /></td>
     <td><code>object</code></td>
     <td>The message that Amazon Lex returns when the user elects to end the conversation without completing it. For more information, see PutBot.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>Checksum of the bot used to identify a specific revision of the bot's $LATEST version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childDirected" /></td>
+    <td><CopyableCode code="child_directed" /></td>
     <td><code>boolean</code></td>
     <td>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying true or false in the childDirected field. By specifying true in the childDirected field, you confirm that your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying false in the childDirected field, you confirm that your use of Amazon Lex is not related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the childDirected field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the Amazon Lex FAQ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clarificationPrompt" /></td>
+    <td><CopyableCode code="clarification_prompt" /></td>
     <td><code>object</code></td>
     <td>The message Amazon Lex uses when it doesn't understand the user's request. For more information, see PutBot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot was created.</td>
 </tr>
@@ -86,22 +86,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectSentiment" /></td>
+    <td><CopyableCode code="detect_sentiment" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether user utterances should be sent to Amazon Comprehend for sentiment analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableModelImprovements" /></td>
+    <td><CopyableCode code="enable_model_improvements" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the bot uses accuracy improvements. true indicates that the bot is using the improvements, otherwise, false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If status is FAILED, Amazon Lex explains why it failed to build the bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleSessionTTLInSeconds" /></td>
+    <td><CopyableCode code="idle_session_ttl_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see PutBot.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of intent objects. For more information, see PutBot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot was updated. When you create a resource, the creation date and last updated date are the same.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The target locale for the bot. (de-DE, en-AU, en-GB, en-IN, en-US, es-419, es-ES, es-US, fr-FR, fr-CA, it-IT, ja-JP, ko-KR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nluIntentConfidenceThreshold" /></td>
+    <td><CopyableCode code="nlu_intent_confidence_threshold" /></td>
     <td><code>number (double)</code></td>
     <td>The score that determines where Amazon Lex inserts the AMAZON.FallbackIntent, AMAZON.KendraSearchIntent, or both when returning alternative intents in a PostContent or PostText response. AMAZON.FallbackIntent is inserted if the confidence score for all intents is below this value. AMAZON.KendraSearchIntent is only inserted if it is configured for the bot.</td>
 </tr>
@@ -136,7 +136,7 @@ The following fields are returned by `SELECT` queries:
     <td>The version of the bot. For a new bot, the version is always $LATEST. (pattern: &lt;code&gt;\$LATEST|&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="voiceId" /></td>
+    <td><CopyableCode code="voice_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see PutBot.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the bot. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot was created.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot was updated. When you create a bot, the creation date and last updated date are the same.</td>
 </tr>
@@ -314,23 +314,23 @@ Returns metadata information for a specific bot. You must provide the bot name a
 ```sql
 SELECT
 name,
-abortStatement,
+abort_statement,
 checksum,
-childDirected,
-clarificationPrompt,
-createdDate,
+child_directed,
+clarification_prompt,
+created_date,
 description,
-detectSentiment,
-enableModelImprovements,
-failureReason,
-idleSessionTTLInSeconds,
+detect_sentiment,
+enable_model_improvements,
+failure_reason,
+idle_session_ttl_in_seconds,
 intents,
-lastUpdatedDate,
+last_updated_date,
 locale,
-nluIntentConfidenceThreshold,
+nlu_intent_confidence_threshold,
 status,
 version,
-voiceId
+voice_id
 FROM aws.lex_models.bots
 WHERE name = '{{ name }}' -- required
 AND versionoralias = '{{ versionoralias }}' -- required
@@ -345,9 +345,9 @@ Returns bot information as follows: If you provide the nameContains field, the r
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
+last_updated_date,
 status,
 version
 FROM aws.lex_models.bots
@@ -398,25 +398,25 @@ AND locale = '{{ locale }}' --required
 AND childDirected = {{ childDirected }} --required
 RETURNING
 name,
-abortStatement,
+abort_statement,
 checksum,
-childDirected,
-clarificationPrompt,
-createVersion,
-createdDate,
+child_directed,
+clarification_prompt,
+create_version,
+created_date,
 description,
-detectSentiment,
-enableModelImprovements,
-failureReason,
-idleSessionTTLInSeconds,
+detect_sentiment,
+enable_model_improvements,
+failure_reason,
+idle_session_ttl_in_seconds,
 intents,
-lastUpdatedDate,
+last_updated_date,
 locale,
-nluIntentConfidenceThreshold,
+nlu_intent_confidence_threshold,
 status,
 tags,
 version,
-voiceId;
+voice_id;
 ```
 </TabItem>
 </Tabs>

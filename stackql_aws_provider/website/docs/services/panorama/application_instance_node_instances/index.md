@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeInstances" /></td>
+    <td><CopyableCode code="node_instances" /></td>
     <td><code>array</code></td>
     <td>A list of node instances.</td>
 </tr>
@@ -146,8 +146,8 @@ Returns a list of application node instances.
 
 ```sql
 SELECT
-NextToken,
-NodeInstances
+next_token,
+node_instances
 FROM aws.panorama.application_instance_node_instances
 WHERE application_instance_id = '{{ application_instance_id }}' -- required
 AND region = '{{ region }}' -- required

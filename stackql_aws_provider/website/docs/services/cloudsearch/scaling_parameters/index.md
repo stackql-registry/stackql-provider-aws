@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>The desired instance type and desired number of replicas of each index partition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of domain configuration option.</td>
 </tr>
@@ -141,8 +141,8 @@ Gets the scaling parameters configured for a domain. A domain's scaling paramete
 
 ```sql
 SELECT
-Options,
-Status
+options,
+status
 FROM aws.cloudsearch.scaling_parameters
 WHERE DomainName = '{{ DomainName }}' -- required
 AND region = '{{ region }}' -- required
@@ -173,8 +173,8 @@ DomainName = '{{ DomainName }}' --required
 AND ScalingParameters = '{{ ScalingParameters }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Options,
-Status;
+options,
+status;
 ```
 </TabItem>
 </Tabs>

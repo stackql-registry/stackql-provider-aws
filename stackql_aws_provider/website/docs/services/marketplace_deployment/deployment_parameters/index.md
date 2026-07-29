@@ -118,9 +118,9 @@ AND region = '{{ region }}' --required
 AND agreementId = '{{ agreementId }}' --required
 AND deploymentParameter = '{{ deploymentParameter }}' --required
 RETURNING
-agreementId,
-deploymentParameterId,
-resourceArn,
+agreement_id,
+deployment_parameter_id,
+resource_arn,
 tags;
 ```
 </TabItem>

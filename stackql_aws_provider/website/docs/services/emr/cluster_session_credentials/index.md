@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>object</code></td>
     <td>The credentials that you can use to connect to cluster endpoints that support username and password authentication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the credentials that are returned by the GetClusterSessionCredentials API expire.</td>
 </tr>
@@ -124,8 +124,8 @@ Provides temporary, HTTP basic credentials that are associated with a given runt
 
 ```sql
 SELECT
-Credentials,
-ExpiresAt
+credentials,
+expires_at
 FROM aws.emr.cluster_session_credentials
 WHERE region = '{{ region }}' -- required
 ;

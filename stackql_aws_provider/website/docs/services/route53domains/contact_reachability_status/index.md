@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name for which you requested the reachability status.</td>
 </tr>
@@ -124,7 +124,7 @@ For operations that require confirmation that the email address for the registra
 
 ```sql
 SELECT
-domainName,
+domain_name,
 status
 FROM aws.route53domains.contact_reachability_status
 WHERE region = '{{ region }}' -- required

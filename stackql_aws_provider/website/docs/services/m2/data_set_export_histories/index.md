@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the data set export task. (Creating, Running, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>If dataset exports failed, the failure reason will show here.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>A summary of the data set export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the data set export task. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -150,9 +150,9 @@ Lists the data set exports for the specified application.
 ```sql
 SELECT
 status,
-statusReason,
+status_reason,
 summary,
-taskId
+task_id
 FROM aws.m2.data_set_export_histories
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisableRemoteControl" /></td>
+    <td><CopyableCode code="disable_remote_control" /></td>
     <td><code>boolean</code></td>
     <td>Setting that stops or starts remote control of shared screens during meetings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableDialOut" /></td>
+    <td><CopyableCode code="enable_dial_out" /></td>
     <td><code>boolean</code></td>
     <td>Setting that allows meeting participants to choose the Call me at a phone number option. For more information, see Join a Meeting without the Amazon Chime App.</td>
 </tr>
@@ -136,8 +136,8 @@ Retrieves account settings for the specified Amazon Chime account ID, such as re
 
 ```sql
 SELECT
-DisableRemoteControl,
-EnableDialOut
+disable_remote_control,
+enable_dial_out
 FROM aws.chime.account_settings
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required

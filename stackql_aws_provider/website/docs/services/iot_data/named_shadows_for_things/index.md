@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
@@ -144,7 +144,7 @@ Lists the shadows for the specified thing. Requires permission to access the Lis
 
 ```sql
 SELECT
-nextToken,
+next_token,
 results,
 timestamp
 FROM aws.iot_data.named_shadows_for_things

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataStorage" /></td>
+    <td><CopyableCode code="data_storage" /></td>
     <td><code>integer (int64)</code></td>
     <td>Data storage information for the identity pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date on which the identity pool was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncSessionsCount" /></td>
+    <td><CopyableCode code="sync_sessions_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of sync sessions for the identity pool.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>Total number of identities for the identity pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolUsages" /></td>
+    <td><CopyableCode code="identity_pool_usages" /></td>
     <td><code>array</code></td>
     <td>Usage information for the identity pools.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxResults" /></td>
+    <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of results to be returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token for obtaining the next page of results.</td>
 </tr>
@@ -192,10 +192,10 @@ Gets usage details (for example, data storage) about a particular identity pool.
 
 ```sql
 SELECT
-DataStorage,
-IdentityPoolId,
-LastModifiedDate,
-SyncSessionsCount
+data_storage,
+identity_pool_id,
+last_modified_date,
+sync_sessions_count
 FROM aws.cognito_sync.identity_pool_usages
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -208,10 +208,10 @@ Gets a list of identity pools registered with Cognito. ListIdentityPoolUsage can
 
 ```sql
 SELECT
-Count,
-IdentityPoolUsages,
-MaxResults,
-NextToken
+count,
+identity_pool_usages,
+max_results,
+next_token
 FROM aws.cognito_sync.identity_pool_usages
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

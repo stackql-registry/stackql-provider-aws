@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentLinks" /></td>
+    <td><CopyableCode code="parent_links" /></td>
     <td><code>array</code></td>
     <td>Returns a list of parent reference and LinkName Tuples.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parents" /></td>
+    <td><CopyableCode code="parents" /></td>
     <td><code>object</code></td>
     <td>The parent structure, which is a map with key as the ObjectIdentifier and LinkName as the value.</td>
 </tr>
@@ -139,9 +139,9 @@ Lists parent objects that are associated with a given object in pagination fashi
 
 ```sql
 SELECT
-NextToken,
-ParentLinks,
-Parents
+next_token,
+parent_links,
+parents
 FROM aws.clouddirectory.object_parents
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

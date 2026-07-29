@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the common control. (pattern: &lt;code&gt;arn:(aws(?:&#91;-a-z&#93;*)?):controlcatalog:::common-control/&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the common control was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the common control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>object</code></td>
     <td>The domain that the common control belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the common control was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the common control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Objective" /></td>
+    <td><CopyableCode code="objective" /></td>
     <td><code>object</code></td>
     <td>The objective that the common control belongs to.</td>
 </tr>
@@ -159,13 +159,13 @@ Returns a paginated list of common controls from the Amazon Web Services Control
 
 ```sql
 SELECT
-Arn,
-CreateTime,
-Description,
-Domain,
-LastUpdateTime,
-Name,
-Objective
+arn,
+create_time,
+description,
+domain,
+last_update_time,
+name,
+objective
 FROM aws.controlcatalog.common_controls
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

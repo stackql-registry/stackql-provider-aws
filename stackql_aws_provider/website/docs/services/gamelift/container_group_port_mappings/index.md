@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeName" /></td>
+    <td><CopyableCode code="compute_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the compute resource running the game server container group. Returned when ContainerGroupType is GAME_SERVER. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerGroupDefinitionArn" /></td>
+    <td><CopyableCode code="container_group_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to the container group definition. The ARN value also identifies the specific container group definition version in use. (pattern: &lt;code&gt;^arn:.*:containergroupdefinition\/&#91;a-zA-Z0-9\-&#93;+(:&#91;0-9&#93;+)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerGroupPortMappings" /></td>
+    <td><CopyableCode code="container_group_port_mappings" /></td>
     <td><code>array</code></td>
     <td>A list of ContainerGroupPortMapping objects that describe the port mappings for each container in the container group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerGroupType" /></td>
+    <td><CopyableCode code="container_group_type" /></td>
     <td><code>string</code></td>
     <td>The type of container group that was specified in the request. Valid values are GAME_SERVER or PER_INSTANCE. (GAME_SERVER, PER_INSTANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the container fleet. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the fleet instance. For GAME_SERVER requests, this is the instance running the specified compute. For PER_INSTANCE requests, this is the instance specified in the request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
     <td>The location of the fleet instance, expressed as an Amazon Web Services Region code, such as us-west-2. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -149,13 +149,13 @@ This API works with the following fleet types: Container Retrieves the port mapp
 
 ```sql
 SELECT
-ComputeName,
-ContainerGroupDefinitionArn,
-ContainerGroupPortMappings,
-ContainerGroupType,
-FleetId,
-InstanceId,
-Location
+compute_name,
+container_group_definition_arn,
+container_group_port_mappings,
+container_group_type,
+fleet_id,
+instance_id,
+location
 FROM aws.gamelift.container_group_port_mappings
 WHERE region = '{{ region }}' -- required
 ;

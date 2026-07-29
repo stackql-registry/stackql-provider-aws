@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the live source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the live source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpPackageConfigurations" /></td>
+    <td><CopyableCode code="http_package_configurations" /></td>
     <td><code>array</code></td>
     <td>The VOD source's HTTP package configuration settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the live source was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LiveSourceName" /></td>
+    <td><CopyableCode code="live_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the live source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source location associated with the live source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the live source. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the live source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the live source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpPackageConfigurations" /></td>
+    <td><CopyableCode code="http_package_configurations" /></td>
     <td><code>array</code></td>
     <td>The VOD source's HTTP package configuration settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the live source was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LiveSourceName" /></td>
+    <td><CopyableCode code="live_source_name" /></td>
     <td><code>string</code></td>
     <td>The name that's used to refer to a live source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the live source. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -248,13 +248,13 @@ The live source to describe.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-LiveSourceName,
-SourceLocationName,
-Tags
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+live_source_name,
+source_location_name,
+tags
 FROM aws.mediatailor.live_sources
 WHERE live_source_name = '{{ live_source_name }}' -- required
 AND source_location_name = '{{ source_location_name }}' -- required
@@ -268,13 +268,13 @@ Lists the live sources contained in a source location. A source represents a pie
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-LiveSourceName,
-SourceLocationName,
-Tags
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+live_source_name,
+source_location_name,
+tags
 FROM aws.mediatailor.live_sources
 WHERE source_location_name = '{{ source_location_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -314,13 +314,13 @@ SELECT
 '{{ source_location_name }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-LiveSourceName,
-SourceLocationName,
-Tags
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+live_source_name,
+source_location_name,
+tags
 ;
 ```
 </TabItem>
@@ -375,13 +375,13 @@ AND source_location_name = '{{ source_location_name }}' --required
 AND region = '{{ region }}' --required
 AND HttpPackageConfigurations = '{{ HttpPackageConfigurations }}' --required
 RETURNING
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-LiveSourceName,
-SourceLocationName,
-Tags;
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+live_source_name,
+source_location_name,
+tags;
 ```
 </TabItem>
 </Tabs>

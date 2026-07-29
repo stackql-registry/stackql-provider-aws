@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InAppMessageCampaigns" /></td>
+    <td><CopyableCode code="in_app_message_campaigns" /></td>
     <td><code>array</code></td>
     <td>List of targeted in-app message campaigns.</td>
 </tr>
@@ -129,7 +129,7 @@ Retrieves the in-app messages targeted for the provided endpoint ID.
 
 ```sql
 SELECT
-InAppMessageCampaigns
+in_app_message_campaigns
 FROM aws.pinpoint.in_app_messages
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `endpoint-id` = '{{ endpoint-id }}' -- required

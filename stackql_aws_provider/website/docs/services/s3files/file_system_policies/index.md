@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="fileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file system. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;|fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -143,7 +143,7 @@ Returns the IAM resource policy of an S3 File System.
 
 ```sql
 SELECT
-fileSystemId,
+file_system_id,
 policy
 FROM aws.s3files.file_system_policies
 WHERE file_system_id = '{{ file_system_id }}' -- required

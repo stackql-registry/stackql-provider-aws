@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataStorage" /></td>
+    <td><CopyableCode code="data_storage" /></td>
     <td><code>integer (int64)</code></td>
     <td>Total data storage for this identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetCount" /></td>
+    <td><CopyableCode code="dataset_count" /></td>
     <td><code>integer</code></td>
     <td>Number of datasets for the identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date on which the identity was last modified.</td>
 </tr>
@@ -149,11 +149,11 @@ Gets usage information for an identity, including number of datasets and data us
 
 ```sql
 SELECT
-DataStorage,
-DatasetCount,
-IdentityId,
-IdentityPoolId,
-LastModifiedDate
+data_storage,
+dataset_count,
+identity_id,
+identity_pool_id,
+last_modified_date
 FROM aws.cognito_sync.identity_usages
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND identity_id = '{{ identity_id }}' -- required

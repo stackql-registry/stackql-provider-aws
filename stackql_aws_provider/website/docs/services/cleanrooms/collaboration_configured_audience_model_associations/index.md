@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the configured audience model association. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/configuredaudiencemodelassociation/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the configured audience model's associated collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the collaboration that the configured audience model associations belong to. Accepts collaboration ID. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configure audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured audience model association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured audience model association. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured audience model association was updated.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the configured audience model association. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/configuredaudiencemodelassociation/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the configured audience model's associated collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the collaboration that the configured audience model associations belong to. Accepts collaboration ID. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured audience model association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured audience model association. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured audience model association was updated.</td>
 </tr>
@@ -255,13 +255,13 @@ SELECT
 id,
 name,
 arn,
-collaborationArn,
-collaborationId,
-configuredAudienceModelArn,
-createTime,
-creatorAccountId,
+collaboration_arn,
+collaboration_id,
+configured_audience_model_arn,
+create_time,
+creator_account_id,
 description,
-updateTime
+update_time
 FROM aws.cleanrooms.collaboration_configured_audience_model_associations
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND configured_audience_model_association_identifier = '{{ configured_audience_model_association_identifier }}' -- required
@@ -278,12 +278,12 @@ SELECT
 id,
 name,
 arn,
-collaborationArn,
-collaborationId,
-createTime,
-creatorAccountId,
+collaboration_arn,
+collaboration_id,
+create_time,
+creator_account_id,
 description,
-updateTime
+update_time
 FROM aws.cleanrooms.collaboration_configured_audience_model_associations
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required

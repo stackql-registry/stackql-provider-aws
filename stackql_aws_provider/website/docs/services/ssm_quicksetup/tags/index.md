@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs of metadata assigned to the resource.</td>
 </tr>
@@ -143,7 +143,7 @@ Returns tags assigned to the resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.ssm_quicksetup.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

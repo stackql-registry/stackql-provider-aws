@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionConnector" /></td>
+    <td><CopyableCode code="action_connector" /></td>
     <td><code>object</code></td>
     <td>The detailed information about the action connector, including its configuration and current state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status code of the request.</td>
 </tr>
@@ -81,42 +81,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionConnectorId" /></td>
+    <td><CopyableCode code="action_connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the action connector. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the action connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the action connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Error information if the action connector is in an error state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the action connector was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the action connector. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;(?:&#91;\w- &#93;*&#91;A-Za-z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the action connector. (CREATION_IN_PROGRESS, CREATION_SUCCESSFUL, CREATION_FAILED, UPDATE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of action connector (e.g., SALESFORCE, JIRA, CUSTOM, BEDROCK). (GENERIC_HTTP, SERVICENOW_NOW_PLATFORM, SALESFORCE_CRM, MICROSOFT_OUTLOOK, PAGERDUTY_ADVANCE, JIRA_CLOUD, ATLASSIAN_CONFLUENCE, AMAZON_S3, AMAZON_BEDROCK_AGENT_RUNTIME, AMAZON_BEDROCK_RUNTIME, AMAZON_BEDROCK_DATA_AUTOMATION_RUNTIME, AMAZON_TEXTRACT, AMAZON_COMPREHEND, AMAZON_COMPREHEND_MEDICAL, MICROSOFT_ONEDRIVE, MICROSOFT_SHAREPOINT, MICROSOFT_TEAMS, SAP_BUSINESSPARTNER, SAP_PRODUCTMASTERDATA, SAP_PHYSICALINVENTORY, SAP_BILLOFMATERIALS, SAP_MATERIALSTOCK, ZENDESK_SUITE, SMARTSHEET, SLACK, ASANA, BAMBOO_HR)</td>
 </tr>
@@ -135,42 +135,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionConnectorId" /></td>
+    <td><CopyableCode code="action_connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the action connector. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the action connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the action connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Error information if the action connector is in an error state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the action connector was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the action connector. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;(?:&#91;\w- &#93;*&#91;A-Za-z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the action connector. (CREATION_IN_PROGRESS, CREATION_SUCCESSFUL, CREATION_FAILED, UPDATE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of action connector (e.g., SALESFORCE, JIRA, CUSTOM, BEDROCK). (GENERIC_HTTP, SERVICENOW_NOW_PLATFORM, SALESFORCE_CRM, MICROSOFT_OUTLOOK, PAGERDUTY_ADVANCE, JIRA_CLOUD, ATLASSIAN_CONFLUENCE, AMAZON_S3, AMAZON_BEDROCK_AGENT_RUNTIME, AMAZON_BEDROCK_RUNTIME, AMAZON_BEDROCK_DATA_AUTOMATION_RUNTIME, AMAZON_TEXTRACT, AMAZON_COMPREHEND, AMAZON_COMPREHEND_MEDICAL, MICROSOFT_ONEDRIVE, MICROSOFT_SHAREPOINT, MICROSOFT_TEAMS, SAP_BUSINESSPARTNER, SAP_PRODUCTMASTERDATA, SAP_PHYSICALINVENTORY, SAP_BILLOFMATERIALS, SAP_MATERIALSTOCK, ZENDESK_SUITE, SMARTSHEET, SLACK, ASANA, BAMBOO_HR)</td>
 </tr>
@@ -296,9 +296,9 @@ Retrieves detailed information about an action connector, including its configur
 
 ```sql
 SELECT
-ActionConnector,
-RequestId,
-Status
+action_connector,
+request_id,
+status
 FROM aws.quicksight.action_connectors
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND action_connector_id = '{{ action_connector_id }}' -- required
@@ -312,14 +312,14 @@ Searches for action connectors in the specified Amazon Web Services account usin
 
 ```sql
 SELECT
-ActionConnectorId,
-Arn,
-CreatedTime,
-Error,
-LastUpdatedTime,
-Name,
-Status,
-Type
+action_connector_id,
+arn,
+created_time,
+error,
+last_updated_time,
+name,
+status,
+type
 FROM aws.quicksight.action_connectors
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -334,14 +334,14 @@ Lists all action connectors in the specified Amazon Web Services account. Return
 
 ```sql
 SELECT
-ActionConnectorId,
-Arn,
-CreatedTime,
-Error,
-LastUpdatedTime,
-Name,
-Status,
-Type
+action_connector_id,
+arn,
+created_time,
+error,
+last_updated_time,
+name,
+status,
+type
 FROM aws.quicksight.action_connectors
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -391,11 +391,11 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-ActionConnectorId,
-Arn,
-CreationStatus,
-RequestId,
-Status
+action_connector_id,
+arn,
+creation_status,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -496,11 +496,11 @@ AND action_connector_id = '{{ action_connector_id }}' --required
 AND region = '{{ region }}' --required
 AND AuthenticationConfig = '{{ AuthenticationConfig }}' --required
 RETURNING
-ActionConnectorId,
-Arn,
-RequestId,
-Status,
-UpdateStatus;
+action_connector_id,
+arn,
+request_id,
+status,
+update_status;
 ```
 </TabItem>
 </Tabs>

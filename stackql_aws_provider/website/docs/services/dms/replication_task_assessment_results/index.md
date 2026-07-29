@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssessmentResults" /></td>
+    <td><CopyableCode code="assessment_results" /></td>
     <td><code>string</code></td>
     <td>The task assessment results in JSON format. The response object only contains this field if you provide DescribeReplicationTaskAssessmentResultsMessage$ReplicationTaskArn in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssessmentResultsFile" /></td>
+    <td><CopyableCode code="assessment_results_file" /></td>
     <td><code>string</code></td>
     <td>The file containing the results of the task assessment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssessmentStatus" /></td>
+    <td><CopyableCode code="assessment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the task assessment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationTaskArn" /></td>
+    <td><CopyableCode code="replication_task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replication task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationTaskIdentifier" /></td>
+    <td><CopyableCode code="replication_task_identifier" /></td>
     <td><code>string</code></td>
     <td>The replication task identifier of the task on which the task assessment was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationTaskLastAssessmentDate" /></td>
+    <td><CopyableCode code="replication_task_last_assessment_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the task assessment was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3ObjectUrl" /></td>
+    <td><CopyableCode code="s3_object_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the S3 object containing the task assessment results. The response object only contains this field if you provide DescribeReplicationTaskAssessmentResultsMessage$ReplicationTaskArn in the request.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns the task assessment results from the Amazon S3 bucket that DMS creates i
 
 ```sql
 SELECT
-AssessmentResults,
-AssessmentResultsFile,
-AssessmentStatus,
-ReplicationTaskArn,
-ReplicationTaskIdentifier,
-ReplicationTaskLastAssessmentDate,
-S3ObjectUrl
+assessment_results,
+assessment_results_file,
+assessment_status,
+replication_task_arn,
+replication_task_identifier,
+replication_task_last_assessment_date,
+s3_object_url
 FROM aws.dms.replication_task_assessment_results
 WHERE region = '{{ region }}' -- required
 ;

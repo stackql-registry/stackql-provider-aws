@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompilationJobName" /></td>
+    <td><CopyableCode code="compilation_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SageMaker Neo compilation job that is used to locate model artifacts that are being packaged. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the packaging job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgePackagingJobArn" /></td>
+    <td><CopyableCode code="edge_packaging_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the edge packaging job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z\-&#93;*:\d&#123;12&#125;:edge-packaging-job/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgePackagingJobName" /></td>
+    <td><CopyableCode code="edge_packaging_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the edge packaging job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgePackagingJobStatus" /></td>
+    <td><CopyableCode code="edge_packaging_job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the packaging job. (STARTING, INPROGRESS, COMPLETED, FAILED, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgePackagingJobStatusMessage" /></td>
+    <td><CopyableCode code="edge_packaging_job_status_message" /></td>
     <td><code>string</code></td>
     <td>Returns a message describing the job status and error messages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArtifact" /></td>
+    <td><CopyableCode code="model_artifact" /></td>
     <td><code>string</code></td>
     <td>The Amazon Simple Storage (S3) URI where model artifacts ares stored. (pattern: &lt;code&gt;(https|s3):​//(&#91;^/&#93;+)/?(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelSignature" /></td>
+    <td><CopyableCode code="model_signature" /></td>
     <td><code>string</code></td>
     <td>The signature document of files in the model artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelVersion" /></td>
+    <td><CopyableCode code="model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\ \_\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration for the edge packaging job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PresetDeploymentOutput" /></td>
+    <td><CopyableCode code="preset_deployment_output" /></td>
     <td><code>object</code></td>
     <td>The output of a SageMaker Edge Manager deployable resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceKey" /></td>
+    <td><CopyableCode code="resource_key" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key to use when encrypting the EBS volume the job run on. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to download and upload the model, and to contact Neo. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -140,42 +140,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompilationJobName" /></td>
+    <td><CopyableCode code="compilation_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SageMaker Neo compilation job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgePackagingJobArn" /></td>
+    <td><CopyableCode code="edge_packaging_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the edge packaging job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z\-&#93;*:\d&#123;12&#125;:edge-packaging-job/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgePackagingJobName" /></td>
+    <td><CopyableCode code="edge_packaging_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the edge packaging job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgePackagingJobStatus" /></td>
+    <td><CopyableCode code="edge_packaging_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the edge packaging job. (STARTING, INPROGRESS, COMPLETED, FAILED, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the edge packaging job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelVersion" /></td>
+    <td><CopyableCode code="model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\ \_\.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -266,21 +266,21 @@ A description of edge packaging jobs.
 
 ```sql
 SELECT
-CompilationJobName,
-CreationTime,
-EdgePackagingJobArn,
-EdgePackagingJobName,
-EdgePackagingJobStatus,
-EdgePackagingJobStatusMessage,
-LastModifiedTime,
-ModelArtifact,
-ModelName,
-ModelSignature,
-ModelVersion,
-OutputConfig,
-PresetDeploymentOutput,
-ResourceKey,
-RoleArn
+compilation_job_name,
+creation_time,
+edge_packaging_job_arn,
+edge_packaging_job_name,
+edge_packaging_job_status,
+edge_packaging_job_status_message,
+last_modified_time,
+model_artifact,
+model_name,
+model_signature,
+model_version,
+output_config,
+preset_deployment_output,
+resource_key,
+role_arn
 FROM aws.sagemaker.edge_packaging_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -292,14 +292,14 @@ Returns a list of edge packaging jobs.
 
 ```sql
 SELECT
-CompilationJobName,
-CreationTime,
-EdgePackagingJobArn,
-EdgePackagingJobName,
-EdgePackagingJobStatus,
-LastModifiedTime,
-ModelName,
-ModelVersion
+compilation_job_name,
+creation_time,
+edge_packaging_job_arn,
+edge_packaging_job_name,
+edge_packaging_job_status,
+last_modified_time,
+model_name,
+model_version
 FROM aws.sagemaker.edge_packaging_jobs
 WHERE region = '{{ region }}' -- required
 ;

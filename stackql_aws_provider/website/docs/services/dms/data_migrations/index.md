@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataMigrationArn" /></td>
+    <td><CopyableCode code="data_migration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies this replication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationCidrBlocks" /></td>
+    <td><CopyableCode code="data_migration_cidr_blocks" /></td>
     <td><code>array</code></td>
     <td>The CIDR blocks of the endpoints for the data migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationCreateTime" /></td>
+    <td><CopyableCode code="data_migration_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC time when DMS created the data migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationEndTime" /></td>
+    <td><CopyableCode code="data_migration_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC time when data migration ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationName" /></td>
+    <td><CopyableCode code="data_migration_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name for the data migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationSettings" /></td>
+    <td><CopyableCode code="data_migration_settings" /></td>
     <td><code>object</code></td>
     <td>Specifies CloudWatch settings and selection rules for the data migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationStartTime" /></td>
+    <td><CopyableCode code="data_migration_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC time when DMS started the data migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationStatistics" /></td>
+    <td><CopyableCode code="data_migration_statistics" /></td>
     <td><code>object</code></td>
     <td>Provides information about the data migration's run, including start and stop time, latency, and data migration progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationStatus" /></td>
+    <td><CopyableCode code="data_migration_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the data migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataMigrationType" /></td>
+    <td><CopyableCode code="data_migration_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the data migration is full-load only, change data capture (CDC) only, or full-load and CDC. (full-load, cdc, full-load-and-cdc)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailureMessage" /></td>
+    <td><CopyableCode code="last_failure_message" /></td>
     <td><code>string</code></td>
     <td>Information about the data migration's most recent error or failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MigrationProjectArn" /></td>
+    <td><CopyableCode code="migration_project_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data migration's associated migration project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIpAddresses" /></td>
+    <td><CopyableCode code="public_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>The IP addresses of the endpoints for the data migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceAccessRoleArn" /></td>
+    <td><CopyableCode code="service_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role that the data migration uses to access Amazon Web Services resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDataSettings" /></td>
+    <td><CopyableCode code="source_data_settings" /></td>
     <td><code>array</code></td>
     <td>Specifies information about the data migration's source data provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StopReason" /></td>
+    <td><CopyableCode code="stop_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the data migration last stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetDataSettings" /></td>
+    <td><CopyableCode code="target_data_settings" /></td>
     <td><code>array</code></td>
     <td>Specifies information about the data migration's target data provider.</td>
 </tr>
@@ -234,23 +234,23 @@ Returns information about data migrations.
 
 ```sql
 SELECT
-DataMigrationArn,
-DataMigrationCidrBlocks,
-DataMigrationCreateTime,
-DataMigrationEndTime,
-DataMigrationName,
-DataMigrationSettings,
-DataMigrationStartTime,
-DataMigrationStatistics,
-DataMigrationStatus,
-DataMigrationType,
-LastFailureMessage,
-MigrationProjectArn,
-PublicIpAddresses,
-ServiceAccessRoleArn,
-SourceDataSettings,
-StopReason,
-TargetDataSettings
+data_migration_arn,
+data_migration_cidr_blocks,
+data_migration_create_time,
+data_migration_end_time,
+data_migration_name,
+data_migration_settings,
+data_migration_start_time,
+data_migration_statistics,
+data_migration_status,
+data_migration_type,
+last_failure_message,
+migration_project_arn,
+public_ip_addresses,
+service_access_role_arn,
+source_data_settings,
+stop_reason,
+target_data_settings
 FROM aws.dms.data_migrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -299,7 +299,7 @@ SELECT
 '{{ SelectionRules }}',
 '{{ region }}'
 RETURNING
-DataMigration
+data_migration
 ;
 ```
 </TabItem>
@@ -394,7 +394,7 @@ WHERE
 region = '{{ region }}' --required
 AND DataMigrationIdentifier = '{{ DataMigrationIdentifier }}' --required
 RETURNING
-DataMigration;
+data_migration;
 ```
 </TabItem>
 </Tabs>

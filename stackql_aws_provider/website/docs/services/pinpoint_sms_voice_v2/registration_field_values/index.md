@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeniedReason" /></td>
+    <td><CopyableCode code="denied_reason" /></td>
     <td><code>string</code></td>
     <td>A description of why the registration was denied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Feedback" /></td>
+    <td><CopyableCode code="feedback" /></td>
     <td><code>string</code></td>
     <td>Generative AI feedback information provided for this specific field during the registration review process. This may include validation errors, suggestions for improvement, or additional requirements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FieldPath" /></td>
+    <td><CopyableCode code="field_path" /></td>
     <td><code>string</code></td>
     <td>The path to the registration form field. You can use DescribeRegistrationFieldDefinitions for a list of FieldPaths. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationAttachmentId" /></td>
+    <td><CopyableCode code="registration_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the registration attachment. (pattern: &lt;code&gt;&#91;A-Za-z0-9_:/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectChoices" /></td>
+    <td><CopyableCode code="select_choices" /></td>
     <td><code>array</code></td>
     <td>An array of values for the form field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TextValue" /></td>
+    <td><CopyableCode code="text_value" /></td>
     <td><code>string</code></td>
     <td>The text data for a free form field.</td>
 </tr>
@@ -158,12 +158,12 @@ Retrieves the specified registration field values.
 
 ```sql
 SELECT
-DeniedReason,
-Feedback,
-FieldPath,
-RegistrationAttachmentId,
-SelectChoices,
-TextValue
+denied_reason,
+feedback,
+field_path,
+registration_attachment_id,
+select_choices,
+text_value
 FROM aws.pinpoint_sms_voice_v2.registration_field_values
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,13 +197,13 @@ region = '{{ region }}' --required
 AND RegistrationId = '{{ RegistrationId }}' --required
 AND FieldPath = '{{ FieldPath }}' --required
 RETURNING
-FieldPath,
-RegistrationArn,
-RegistrationAttachmentId,
-RegistrationId,
-SelectChoices,
-TextValue,
-VersionNumber;
+field_path,
+registration_arn,
+registration_attachment_id,
+registration_id,
+select_choices,
+text_value,
+version_number;
 ```
 </TabItem>
 </Tabs>

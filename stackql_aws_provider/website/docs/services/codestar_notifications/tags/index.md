@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the notification rule.</td>
 </tr>
@@ -143,7 +143,7 @@ Returns a list of the tags associated with a notification rule.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.codestar_notifications.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -188,7 +188,7 @@ WHERE
 region = '{{ region }}' --required
 AND Arn = '{{ Arn }}' --required
 RETURNING
-Tags;
+tags;
 ```
 </TabItem>
 </Tabs>

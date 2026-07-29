@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConsumerARN" /></td>
+    <td><CopyableCode code="consumer_arn" /></td>
     <td><code>string</code></td>
     <td>When you register a consumer, Kinesis Data Streams generates an ARN for it. You need this ARN to be able to call SubscribeToShard. If you delete a consumer and then create a new one with the same name, it won't have the same ARN. That's because consumer ARNs contain the creation timestamp. This is important to keep in mind if you have IAM policies that reference consumer ARNs. (pattern: &lt;code&gt;^(arn):aws.*:kinesis:.*:\d&#123;12&#125;:.*stream\/&#91;a-zA-Z0-9_.-&#93;+\/consumer\/&#91;a-zA-Z0-9_.-&#93;+:&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumerCreationTimestamp" /></td>
+    <td><CopyableCode code="consumer_creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumerName" /></td>
+    <td><CopyableCode code="consumer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the consumer is something you choose when you register the consumer. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumerStatus" /></td>
+    <td><CopyableCode code="consumer_status" /></td>
     <td><code>string</code></td>
     <td>A consumer can't read data while in the CREATING or DELETING states. (CREATING, DELETING, ACTIVE)</td>
 </tr>
@@ -85,27 +85,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConsumerARN" /></td>
+    <td><CopyableCode code="consumer_arn" /></td>
     <td><code>string</code></td>
     <td>When you register a consumer, Kinesis Data Streams generates an ARN for it. You need this ARN to be able to call SubscribeToShard. If you delete a consumer and then create a new one with the same name, it won't have the same ARN. That's because consumer ARNs contain the creation timestamp. This is important to keep in mind if you have IAM policies that reference consumer ARNs. (pattern: &lt;code&gt;^(arn):aws.*:kinesis:.*:\d&#123;12&#125;:.*stream\/&#91;a-zA-Z0-9_.-&#93;+\/consumer\/&#91;a-zA-Z0-9_.-&#93;+:&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumerCreationTimestamp" /></td>
+    <td><CopyableCode code="consumer_creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumerName" /></td>
+    <td><CopyableCode code="consumer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the consumer is something you choose when you register the consumer. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumerStatus" /></td>
+    <td><CopyableCode code="consumer_status" /></td>
     <td><code>string</code></td>
     <td>A consumer can't read data while in the CREATING or DELETING states. (CREATING, DELETING, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamARN" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the stream with which you registered the consumer. (pattern: &lt;code&gt;arn:aws.*:kinesis:.*:\d&#123;12&#125;:stream/\S+&lt;/code&gt;)</td>
 </tr>
@@ -196,10 +196,10 @@ Lists the consumers registered to receive data from a stream using enhanced fan-
 
 ```sql
 SELECT
-ConsumerARN,
-ConsumerCreationTimestamp,
-ConsumerName,
-ConsumerStatus
+consumer_arn,
+consumer_creation_timestamp,
+consumer_name,
+consumer_status
 FROM aws.kinesis.stream_consumers
 WHERE region = '{{ region }}' -- required
 ;
@@ -211,11 +211,11 @@ To get the description of a registered consumer, provide the ARN of the consumer
 
 ```sql
 SELECT
-ConsumerARN,
-ConsumerCreationTimestamp,
-ConsumerName,
-ConsumerStatus,
-StreamARN
+consumer_arn,
+consumer_creation_timestamp,
+consumer_name,
+consumer_status,
+stream_arn
 FROM aws.kinesis.stream_consumers
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,7 +252,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Consumer
+consumer
 ;
 ```
 </TabItem>

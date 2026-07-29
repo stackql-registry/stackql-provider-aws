@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>Whether a core network policy is the current LIVE policy or the most recently submitted policy. (LIVE, LATEST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetState" /></td>
+    <td><CopyableCode code="change_set_state" /></td>
     <td><code>string</code></td>
     <td>The state of a core network policy. (PENDING_GENERATION, FAILED_GENERATION, READY_TO_EXECUTE, EXECUTING, EXECUTION_SUCCEEDED, OUT_OF_DATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a core network. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when a core network policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a core network policy. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>Describes a core network policy. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyErrors" /></td>
+    <td><CopyableCode code="policy_errors" /></td>
     <td><code>array</code></td>
     <td>Describes any errors in a core network policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyVersionId" /></td>
+    <td><CopyableCode code="policy_version_id" /></td>
     <td><code>integer</code></td>
     <td>The ID of the policy version.</td>
 </tr>
@@ -188,14 +188,14 @@ Returns details about a core network policy. You can get details about your curr
 
 ```sql
 SELECT
-Alias,
-ChangeSetState,
-CoreNetworkId,
-CreatedAt,
-Description,
-PolicyDocument,
-PolicyErrors,
-PolicyVersionId
+alias,
+change_set_state,
+core_network_id,
+created_at,
+description,
+policy_document,
+policy_errors,
+policy_version_id
 FROM aws.networkmanager.core_network_policies
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -231,7 +231,7 @@ core_network_id = '{{ core_network_id }}' --required
 AND region = '{{ region }}' --required
 AND PolicyDocument = '{{ PolicyDocument }}' --required
 RETURNING
-CoreNetworkPolicy;
+core_network_policy;
 ```
 </TabItem>
 </Tabs>

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the team. (pattern: &lt;code&gt;arn:.&#123;1,63&#125;:mpa:::aws:policy/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;/(?:&#91;\d&#93;+|\$DEFAULT)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Document" /></td>
+    <td><CopyableCode code="document" /></td>
     <td><code>string</code></td>
     <td>Document that contains the policy contents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Determines if the specified policy is the default for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the policy was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the policy. (pattern: &lt;code&gt;arn:.&#123;1,63&#125;:mpa:::aws:policy/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The type of policy. (AWS_MANAGED, AWS_RAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the policy. For example, if the policy is attachable or deprecated. (ATTACHABLE, DEPRECATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>integer</code></td>
     <td>Verison ID</td>
 </tr>
@@ -115,47 +115,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the team. (pattern: &lt;code&gt;arn:.&#123;1,63&#125;:mpa:::aws:policy/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;/(?:&#91;\d&#93;+|\$DEFAULT)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Determines if the specified policy is the default for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the policy was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the policy</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the policy. (pattern: &lt;code&gt;arn:.&#123;1,63&#125;:mpa:::aws:policy/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;/&#91;a-zA-Z0-9_\.-&#93;&#123;1,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The type of policy. (AWS_MANAGED, AWS_RAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the policy. For example, if the policy is attachable or deprecated. (ATTACHABLE, DEPRECATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>integer</code></td>
     <td>Version ID for the policy.</td>
 </tr>
@@ -252,16 +252,16 @@ Returns details for the version of a policy. Policies define the permissions for
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-Document,
-IsDefault,
-LastUpdatedTime,
-Name,
-PolicyArn,
-PolicyType,
-Status,
-VersionId
+arn,
+creation_time,
+document,
+is_default,
+last_updated_time,
+name,
+policy_arn,
+policy_type,
+status,
+version_id
 FROM aws.mpa.policy_versions
 WHERE policy_version_arn = '{{ policy_version_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -274,15 +274,15 @@ Returns a list of the versions for policies. Policies define the permissions for
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-IsDefault,
-LastUpdatedTime,
-Name,
-PolicyArn,
-PolicyType,
-Status,
-VersionId
+arn,
+creation_time,
+is_default,
+last_updated_time,
+name,
+policy_arn,
+policy_type,
+status,
+version_id
 FROM aws.mpa.policy_versions
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND region = '{{ region }}' -- required

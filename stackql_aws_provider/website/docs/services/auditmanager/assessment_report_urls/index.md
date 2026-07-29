@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="hyperlinkName" /></td>
+    <td><CopyableCode code="hyperlink_name" /></td>
     <td><code>string</code></td>
     <td>The name or word that's used as a hyperlink to the URL. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -134,7 +134,7 @@ Gets the URL of an assessment report in Audit Manager.
 
 ```sql
 SELECT
-hyperlinkName,
+hyperlink_name,
 link
 FROM aws.auditmanager.assessment_report_urls
 WHERE assessment_report_id = '{{ assessment_report_id }}' -- required

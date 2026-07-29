@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HubTokenTimerExpirySettingInSeconds" /></td>
+    <td><CopyableCode code="hub_token_timer_expiry_setting_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>A user-defined integer value that represents the hub token timer expiry setting in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the hub configuration was updated.</td>
 </tr>
@@ -131,8 +131,8 @@ Get a hub configuration.
 
 ```sql
 SELECT
-HubTokenTimerExpirySettingInSeconds,
-UpdatedAt
+hub_token_timer_expiry_setting_in_seconds,
+updated_at
 FROM aws.iot_managed_integrations.hub_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -161,7 +161,7 @@ WHERE
 region = '{{ region }}' --required
 AND HubTokenTimerExpirySettingInSeconds = '{{ HubTokenTimerExpirySettingInSeconds }}' --required
 RETURNING
-HubTokenTimerExpirySettingInSeconds;
+hub_token_timer_expiry_setting_in_seconds;
 ```
 </TabItem>
 </Tabs>

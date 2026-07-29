@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the test case execution ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObservationSummary" /></td>
+    <td><CopyableCode code="observation_summary" /></td>
     <td><code>object</code></td>
     <td>Summary statistics for the test case execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the test case execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the test case execution. (INITIATED, PASSED, FAILED, IN_PROGRESS, STOPPED)</td>
 </tr>
@@ -149,10 +149,10 @@ Retrieves an overview of a test execution that includes the status of the execut
 
 ```sql
 SELECT
-EndTime,
-ObservationSummary,
-StartTime,
-Status
+end_time,
+observation_summary,
+start_time,
+status
 FROM aws.connect.test_case_execution_summaries
 WHERE instance_id = '{{ instance_id }}' -- required
 AND test_case_id = '{{ test_case_id }}' -- required

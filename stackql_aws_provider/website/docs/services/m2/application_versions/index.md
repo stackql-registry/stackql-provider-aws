@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the application version. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationVersion" /></td>
+    <td><CopyableCode code="application_version" /></td>
     <td><code>integer</code></td>
     <td>The specific version of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the application version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="definitionContent" /></td>
+    <td><CopyableCode code="definition_content" /></td>
     <td><code>string</code></td>
     <td>The content of the application definition. This is a JSON object that contains the resource configuration and definitions that identify an application.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the application version. (Creating, Available, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the reported status.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationVersion" /></td>
+    <td><CopyableCode code="application_version" /></td>
     <td><code>integer</code></td>
     <td>The application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the application version was created.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the application. (Creating, Available, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the reported status.</td>
 </tr>
@@ -213,12 +213,12 @@ Returns details about a specific version of a specific application.
 ```sql
 SELECT
 name,
-applicationVersion,
-creationTime,
-definitionContent,
+application_version,
+creation_time,
+definition_content,
 description,
 status,
-statusReason
+status_reason
 FROM aws.m2.application_versions
 WHERE application_id = '{{ application_id }}' -- required
 AND application_version = '{{ application_version }}' -- required
@@ -232,10 +232,10 @@ Returns a list of the application versions for a specific application.
 
 ```sql
 SELECT
-applicationVersion,
-creationTime,
+application_version,
+creation_time,
 status,
-statusReason
+status_reason
 FROM aws.m2.application_versions
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

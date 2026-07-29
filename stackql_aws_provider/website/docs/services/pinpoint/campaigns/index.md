@@ -51,122 +51,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalTreatments" /></td>
+    <td><CopyableCode code="additional_treatments" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each treatment that you defined for the campaign, in addition to the default treatment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the campaign applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the campaign was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDeliveryConfiguration" /></td>
+    <td><CopyableCode code="custom_delivery_configuration" /></td>
     <td><code>object</code></td>
     <td>The delivery configuration settings for sending the campaign through a custom channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultState" /></td>
+    <td><CopyableCode code="default_state" /></td>
     <td><code>object</code></td>
     <td>The current status of the campaign's default treatment. This value exists only for campaigns that have more than one treatment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The custom description of the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoldoutPercent" /></td>
+    <td><CopyableCode code="holdout_percent" /></td>
     <td><code>integer</code></td>
     <td>The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hook" /></td>
+    <td><CopyableCode code="hook" /></td>
     <td><code>object</code></td>
     <td>The settings for the AWS Lambda function to use as a code hook for the campaign. You can use this hook to customize the segment that's used by the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsPaused" /></td>
+    <td><CopyableCode code="is_paused" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the campaign is paused. A paused campaign doesn't run unless you resume it by changing this value to false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the campaign was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Limits" /></td>
+    <td><CopyableCode code="limits" /></td>
     <td><code>object</code></td>
     <td>The messaging limits for the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageConfiguration" /></td>
+    <td><CopyableCode code="message_configuration" /></td>
     <td><code>object</code></td>
     <td>The message configuration settings for the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>Defines the priority of the campaign, used to decide the order of messages displayed to user if there are multiple messages scheduled to be displayed at the same moment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>object</code></td>
     <td>The schedule settings for the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentId" /></td>
+    <td><CopyableCode code="segment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the segment that's associated with the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentVersion" /></td>
+    <td><CopyableCode code="segment_version" /></td>
     <td><code>integer</code></td>
     <td>The version number of the segment that's associated with the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>object</code></td>
     <td>The current status of the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateConfiguration" /></td>
+    <td><CopyableCode code="template_configuration" /></td>
     <td><code>object</code></td>
     <td>The message template that’s used for the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TreatmentDescription" /></td>
+    <td><CopyableCode code="treatment_description" /></td>
     <td><code>string</code></td>
     <td>The custom description of the default treatment for the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TreatmentName" /></td>
+    <td><CopyableCode code="treatment_name" /></td>
     <td><code>string</code></td>
     <td>The custom name of the default treatment for the campaign, if the campaign has multiple treatments. A treatment is a variation of a campaign that's used for A/B testing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version number of the campaign.</td>
 </tr>
@@ -190,12 +190,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each campaign that's associated with the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -313,30 +313,30 @@ Retrieves information about the status, configuration, and other settings for a 
 
 ```sql
 SELECT
-AdditionalTreatments,
-ApplicationId,
-Arn,
-CreationDate,
-CustomDeliveryConfiguration,
-DefaultState,
-Description,
-HoldoutPercent,
-Hook,
-Id,
-IsPaused,
-LastModifiedDate,
-Limits,
-MessageConfiguration,
-Name,
-Priority,
-Schedule,
-SegmentId,
-SegmentVersion,
-State,
-TemplateConfiguration,
-TreatmentDescription,
-TreatmentName,
-Version,
+additional_treatments,
+application_id,
+arn,
+creation_date,
+custom_delivery_configuration,
+default_state,
+description,
+holdout_percent,
+hook,
+id,
+is_paused,
+last_modified_date,
+limits,
+message_configuration,
+name,
+priority,
+schedule,
+segment_id,
+segment_version,
+state,
+template_configuration,
+treatment_description,
+treatment_name,
+version,
 tags
 FROM aws.pinpoint.campaigns
 WHERE `application-id` = '{{ application-id }}' -- required
@@ -351,8 +351,8 @@ Retrieves information about the status, configuration, and other settings for al
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.campaigns
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -388,7 +388,7 @@ SELECT
 '{{ application-id }}',
 '{{ region }}'
 RETURNING
-CampaignResponse
+campaign_response
 ;
 ```
 </TabItem>
@@ -747,7 +747,7 @@ AND `campaign-id` = '{{ campaign-id }}' --required
 AND region = '{{ region }}' --required
 AND WriteCampaignRequest = '{{ WriteCampaignRequest }}' --required
 RETURNING
-CampaignResponse;
+campaign_response;
 ```
 </TabItem>
 </Tabs>

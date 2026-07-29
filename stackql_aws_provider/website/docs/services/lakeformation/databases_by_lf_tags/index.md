@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Database" /></td>
+    <td><CopyableCode code="database" /></td>
     <td><code>object</code></td>
     <td>A database that has LF-tags attached to it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LFTags" /></td>
+    <td><CopyableCode code="lf_tags" /></td>
     <td><code>array</code></td>
     <td>A list of LF-tags attached to the database.</td>
 </tr>
@@ -124,8 +124,8 @@ This operation allows a search on DATABASE resources by TagCondition. This opera
 
 ```sql
 SELECT
-Database,
-LFTags
+database,
+lf_tags
 FROM aws.lakeformation.databases_by_lf_tags
 WHERE region = '{{ region }}' -- required
 ;

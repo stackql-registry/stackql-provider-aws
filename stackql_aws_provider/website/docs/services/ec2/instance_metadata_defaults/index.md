@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HttpEndpoint" /></td>
+    <td><CopyableCode code="http_endpoint" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the IMDS endpoint for an instance is enabled or disabled. When disabled, the instance metadata can't be accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpPutResponseHopLimit" /></td>
+    <td><CopyableCode code="http_put_response_hop_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of hops that the metadata token can travel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpTokens" /></td>
+    <td><CopyableCode code="http_tokens" /></td>
     <td><code>string</code></td>
     <td>Indicates whether IMDSv2 is required. optional – IMDSv2 is optional, which means that you can use either IMDSv2 or IMDSv1. required – IMDSv2 is required, which means that IMDSv1 is disabled, and you must use IMDSv2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpTokensEnforced" /></td>
+    <td><CopyableCode code="http_tokens_enforced" /></td>
     <td><code>string</code></td>
     <td>Indicates whether to enforce the requirement of IMDSv2 on an instance at the time of launch. When enforcement is enabled, the instance can't launch unless IMDSv2 (HttpTokens) is set to required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceMetadataTags" /></td>
+    <td><CopyableCode code="instance_metadata_tags" /></td>
     <td><code>string</code></td>
     <td>Indicates whether access to instance tags from the instance metadata is enabled or disabled. For more information, see View tags for your EC2 instances using instance metadata in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the IMDS default settings. Possible values include: account - The IMDS default settings are managed by the account. declarative-policy - The IMDS default settings are managed by a declarative policy and can't be modified by the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedExceptionMessage" /></td>
+    <td><CopyableCode code="managed_exception_message" /></td>
     <td><code>string</code></td>
     <td>The customized exception message that is specified in the declarative policy.</td>
 </tr>
@@ -186,13 +186,13 @@ Gets the default instance metadata service (IMDS) settings that are set at the a
 
 ```sql
 SELECT
-HttpEndpoint,
-HttpPutResponseHopLimit,
-HttpTokens,
-HttpTokensEnforced,
-InstanceMetadataTags,
-ManagedBy,
-ManagedExceptionMessage
+http_endpoint,
+http_put_response_hop_limit,
+http_tokens,
+http_tokens_enforced,
+instance_metadata_tags,
+managed_by,
+managed_exception_message
 FROM aws.ec2.instance_metadata_defaults
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -227,7 +227,7 @@ AND InstanceMetadataTags = '{{ InstanceMetadataTags}}'
 AND DryRun = {{ DryRun}}
 AND HttpTokensEnforced = '{{ HttpTokensEnforced}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

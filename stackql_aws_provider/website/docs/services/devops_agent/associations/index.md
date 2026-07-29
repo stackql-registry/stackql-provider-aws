@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for an agent space (allows alphanumeric characters and hyphens; 1-64 characters) (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the given association. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Union of all supported service configuration types. Each service has its own specific configuration structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a registered service (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>Validation status (valid, invalid, pending-confirmation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the resource was last updated.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for an agent space (allows alphanumeric characters and hyphens; 1-64 characters) (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the given association. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>Union of all supported service configuration types. Each service has its own specific configuration structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a registered service (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>Validation status (valid, invalid, pending-confirmation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the resource was last updated.</td>
 </tr>
@@ -246,13 +246,13 @@ Retrieves given associations configured for a specific AgentSpace.
 
 ```sql
 SELECT
-agentSpaceId,
-associationId,
+agent_space_id,
+association_id,
 configuration,
-createdAt,
-serviceId,
+created_at,
+service_id,
 status,
-updatedAt
+updated_at
 FROM aws.devops_agent.associations
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
 AND association_id = '{{ association_id }}' -- required
@@ -266,13 +266,13 @@ List all associations for given AgentSpace
 
 ```sql
 SELECT
-agentSpaceId,
-associationId,
+agent_space_id,
+association_id,
 configuration,
-createdAt,
-serviceId,
+created_at,
+service_id,
 status,
-updatedAt
+updated_at
 FROM aws.devops_agent.associations
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
 AND region = '{{ region }}' -- required

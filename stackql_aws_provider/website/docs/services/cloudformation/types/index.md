@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OriginalTypeName" /></td>
+    <td><CopyableCode code="original_type_name" /></td>
     <td><code>string</code></td>
     <td>The type name of the public extension. If you specified a TypeNameAlias when enabling the extension in this account and Region, CloudFormation treats that alias as the extension's type name within the account and Region, not the type name of the public extension. For more information, see Use aliases to refer to extensions in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublisherId" /></td>
+    <td><CopyableCode code="publisher_id" /></td>
     <td><code>string</code></td>
     <td>The publisher ID of the extension publisher.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedMajorVersions" /></td>
+    <td><CopyableCode code="supported_major_versions" /></td>
     <td><code>string</code></td>
     <td>A list of the major versions of the extension type that the macro supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeNameAlias" /></td>
+    <td><CopyableCode code="type_name_alias" /></td>
     <td><code>string</code></td>
     <td>An alias assigned to the public extension, in this account and Region. If you specify an alias for the extension, CloudFormation treats the alias as the extension type name within this account and Region. You must use the alias to refer to the extension in your templates, API calls, and CloudFormation console.</td>
 </tr>
@@ -85,67 +85,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultVersionId" /></td>
+    <td><CopyableCode code="default_version_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the default version of the extension. The default version is used when the extension version isn't specified. This applies only to private extensions you have registered in your account. For public extensions, both those provided by Amazon and published by third parties, CloudFormation returns null. For more information, see RegisterType. To set the default version of an extension, use SetTypeDefaultVersion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsActivated" /></td>
+    <td><CopyableCode code="is_activated" /></td>
     <td><code>boolean</code></td>
     <td>Whether the extension is activated for this account and Region. This applies only to third-party public extensions. Extensions published by Amazon are activated by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string</code></td>
     <td>When the specified extension version was registered. This applies only to: Private extensions you have registered in your account. For more information, see RegisterType. Public extensions you have activated in your account with auto-update specified. For more information, see ActivateType. For all other extension types, CloudFormation returns null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestPublicVersion" /></td>
+    <td><CopyableCode code="latest_public_version" /></td>
     <td><code>string</code></td>
     <td>For public extensions that have been activated for this account and Region, the latest version of the public extension that is available. For any extensions other than activated third-party extensions, CloudFormation returns null. How you specified AutoUpdate when enabling the extension affects whether CloudFormation automatically updates the extension in this account and Region when a new version is released. For more information, see Automatically use new versions of extensions in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalTypeName" /></td>
+    <td><CopyableCode code="original_type_name" /></td>
     <td><code>string</code></td>
     <td>For public extensions that have been activated for this account and Region, the type name of the public extension. If you specified a TypeNameAlias when enabling the extension in this account and Region, CloudFormation treats that alias as the extension's type name within the account and Region, not the type name of the public extension. For more information, see Use aliases to refer to extensions in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicVersionNumber" /></td>
+    <td><CopyableCode code="public_version_number" /></td>
     <td><code>string</code></td>
     <td>For public extensions that have been activated for this account and Region, the version of the public extension to be used for CloudFormation operations in this account and Region. How you specified AutoUpdate when enabling the extension affects whether CloudFormation automatically updates the extension in this account and Region when a new version is released. For more information, see Automatically use new versions of extensions in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublisherId" /></td>
+    <td><CopyableCode code="publisher_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the extension publisher, if the extension is published by a third party. Extensions published by Amazon don't return a publisher ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublisherIdentity" /></td>
+    <td><CopyableCode code="publisher_identity" /></td>
     <td><code>string</code></td>
     <td>The service used to verify the publisher identity. For more information, see Publishing extensions to make them available for public use in the CloudFormation Command Line Interface (CLI) User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublisherName" /></td>
+    <td><CopyableCode code="publisher_name" /></td>
     <td><code>string</code></td>
     <td>The publisher name, as defined in the public profile for that publisher in the service used to verify the publisher identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The kind of extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeArn" /></td>
+    <td><CopyableCode code="type_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the extension. If you specified a TypeNameAlias when you call the ActivateType API operation in your account and Region, CloudFormation considers that alias as the type name.</td>
 </tr>
@@ -350,10 +350,10 @@ Returns detailed information about an extension from the CloudFormation registry
 
 ```sql
 SELECT
-OriginalTypeName,
-PublisherId,
-SupportedMajorVersions,
-TypeNameAlias
+original_type_name,
+publisher_id,
+supported_major_versions,
+type_name_alias
 FROM aws.cloudformation.types
 WHERE TypeName = '{{ TypeName }}' -- required
 AND region = '{{ region }}' -- required
@@ -371,19 +371,19 @@ Returns summary information about all extensions, including your private resourc
 
 ```sql
 SELECT
-DefaultVersionId,
-Description,
-IsActivated,
-LastUpdated,
-LatestPublicVersion,
-OriginalTypeName,
-PublicVersionNumber,
-PublisherId,
-PublisherIdentity,
-PublisherName,
-Type,
-TypeArn,
-TypeName
+default_version_id,
+description,
+is_activated,
+last_updated,
+latest_public_version,
+original_type_name,
+public_version_number,
+publisher_id,
+publisher_identity,
+publisher_name,
+type,
+type_arn,
+type_name
 FROM aws.cloudformation.types
 WHERE region = '{{ region }}' -- required
 AND Visibility = '{{ Visibility }}'

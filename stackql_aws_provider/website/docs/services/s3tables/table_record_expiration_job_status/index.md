@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>If the job failed, this field contains an error message describing the failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunTimestamp" /></td>
+    <td><CopyableCode code="last_run_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the expiration job was last executed.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieves the status, metrics, and details of the latest record expiration job f
 
 ```sql
 SELECT
-failureMessage,
-lastRunTimestamp,
+failure_message,
+last_run_timestamp,
 metrics,
 status
 FROM aws.s3tables.table_record_expiration_job_status

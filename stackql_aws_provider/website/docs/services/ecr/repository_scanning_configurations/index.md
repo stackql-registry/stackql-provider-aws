@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Any failures associated with the call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanningConfigurations" /></td>
+    <td><CopyableCode code="scanning_configurations" /></td>
     <td><code>array</code></td>
     <td>The scanning configuration for the requested repositories.</td>
 </tr>
@@ -125,7 +125,7 @@ Gets the scanning configuration for one or more repositories.
 ```sql
 SELECT
 failures,
-scanningConfigurations
+scanning_configurations
 FROM aws.ecr.repository_scanning_configurations
 WHERE region = '{{ region }}' -- required
 ;

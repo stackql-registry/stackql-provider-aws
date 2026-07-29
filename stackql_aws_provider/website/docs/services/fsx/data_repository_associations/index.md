@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Associations" /></td>
+    <td><CopyableCode code="associations" /></td>
     <td><code>array</code></td>
     <td>An array of one or more data repository association descriptions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>(Optional) Opaque pagination token returned from a previous operation (String). If present, this token indicates from what point you can continue processing the request, where the previous NextToken value left off. (pattern: &lt;code&gt;^(?:&#91;A-Za-z0-9+\/&#93;&#123;4&#125;)*(?:&#91;A-Za-z0-9+\/&#93;&#123;2&#125;==|&#91;A-Za-z0-9+\/&#93;&#123;3&#125;=)?$&lt;/code&gt;)</td>
 </tr>
@@ -145,8 +145,8 @@ Returns the description of specific Amazon FSx for Lustre or Amazon File Cache d
 
 ```sql
 SELECT
-Associations,
-NextToken
+associations,
+next_token
 FROM aws.fsx.data_repository_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,7 +191,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Association
+association
 ;
 ```
 </TabItem>
@@ -272,7 +272,7 @@ WHERE
 region = '{{ region }}' --required
 AND AssociationId = '{{ AssociationId }}' --required
 RETURNING
-Association;
+association;
 ```
 </TabItem>
 </Tabs>

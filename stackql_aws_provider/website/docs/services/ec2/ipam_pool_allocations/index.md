@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cidr" /></td>
+    <td><CopyableCode code="cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR for the allocation. A CIDR is a representation of an IP address and its associated network mask (or netmask) and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the pool allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPoolAllocationId" /></td>
+    <td><CopyableCode code="ipam_pool_allocation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of an allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceRegion" /></td>
+    <td><CopyableCode code="resource_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource.</td>
 </tr>
@@ -196,13 +196,13 @@ Get a list of all the CIDR allocations in an IPAM pool. The Region you use shoul
 
 ```sql
 SELECT
-Cidr,
-Description,
-IpamPoolAllocationId,
-ResourceId,
-ResourceOwner,
-ResourceRegion,
-ResourceType
+cidr,
+description,
+ipam_pool_allocation_id,
+resource_id,
+resource_owner,
+resource_region,
+resource_type
 FROM aws.ec2.ipam_pool_allocations
 WHERE IpamPoolId = '{{ IpamPoolId }}' -- required
 AND region = '{{ region }}' -- required
@@ -240,7 +240,7 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND Cidr = '{{ Cidr}}'
 RETURNING
-Success;
+success;
 ```
 </TabItem>
 </Tabs>

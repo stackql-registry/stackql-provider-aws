@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the snapshot job. This globally unique identifier can be used for resource-specific operations across AWS services. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog in which the snapshot job was created. This will match the Catalog specified in the request. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the snapshot job was created in ISO 8601 format (UTC). Example: "2023-05-01T20:37:46Z"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementId" /></td>
+    <td><CopyableCode code="engagement_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the engagement associated with this snapshot job. This links the job to a specific engagement context. (pattern: &lt;code&gt;eng-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the snapshot job. This matches the ResourceSnapshotJobIdentifier provided in the request. (pattern: &lt;code&gt;job-&#91;0-9a-z&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailure" /></td>
+    <td><CopyableCode code="last_failure" /></td>
     <td><code>string</code></td>
     <td>If the job has encountered any failures, this field contains the error message from the most recent failure. This can be useful for troubleshooting issues with the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulExecutionDate" /></td>
+    <td><CopyableCode code="last_successful_execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the last successful execution of the job, in ISO 8601 format (UTC). Example: "2023-05-01T20:37:46Z"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource being snapshotted. This provides a globally unique identifier for the resource across AWS. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the specific resource being snapshotted. The format might vary depending on the ResourceType. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSnapshotTemplateName" /></td>
+    <td><CopyableCode code="resource_snapshot_template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the template used for creating the snapshot. This is the same as the template name. It defines the structure and content of the snapshot. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;3,80&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource being snapshotted. This would have "Opportunity" as a value as it is dependent on the supported resource type. (Opportunity)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the snapshot job. Valid values: STOPPED: The job is not currently running. RUNNING: The job is actively executing. (Running, Stopped)</td>
 </tr>
@@ -125,22 +125,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the resource snapshot job. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementId" /></td>
+    <td><CopyableCode code="engagement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Engagement. (pattern: &lt;code&gt;eng-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the resource snapshot job within the AWS Partner Central system. This ID is used for direct references to the job within the service. (pattern: &lt;code&gt;job-&#91;0-9a-z&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the snapshot job. Valid values: STOPPED: The job is not currently running. RUNNING: The job is actively executing. (Running, Stopped)</td>
 </tr>
@@ -231,18 +231,18 @@ Use this action to retrieves information about a specific resource snapshot job.
 
 ```sql
 SELECT
-Arn,
-Catalog,
-CreatedAt,
-EngagementId,
-Id,
-LastFailure,
-LastSuccessfulExecutionDate,
-ResourceArn,
-ResourceId,
-ResourceSnapshotTemplateName,
-ResourceType,
-Status
+arn,
+catalog,
+created_at,
+engagement_id,
+id,
+last_failure,
+last_successful_execution_date,
+resource_arn,
+resource_id,
+resource_snapshot_template_name,
+resource_type,
+status
 FROM aws.partnercentral_selling.resource_snapshot_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,10 +254,10 @@ Lists resource snapshot jobs owned by the customer. This operation supports vari
 
 ```sql
 SELECT
-Arn,
-EngagementId,
-Id,
-Status
+arn,
+engagement_id,
+id,
+status
 FROM aws.partnercentral_selling.resource_snapshot_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,8 +300,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

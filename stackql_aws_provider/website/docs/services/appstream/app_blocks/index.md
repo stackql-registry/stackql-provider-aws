@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppBlocks" /></td>
+    <td><CopyableCode code="app_blocks" /></td>
     <td><code>array</code></td>
     <td>The app blocks in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation.</td>
 </tr>
@@ -166,8 +166,8 @@ Retrieves a list that describes one or more app blocks.
 
 ```sql
 SELECT
-AppBlocks,
-NextToken
+app_blocks,
+next_token
 FROM aws.appstream.app_blocks
 WHERE region = '{{ region }}' -- required
 ;
@@ -212,7 +212,7 @@ SELECT
 '{{ PackagingType }}',
 '{{ region }}'
 RETURNING
-AppBlock
+app_block
 ;
 ```
 </TabItem>
@@ -299,7 +299,7 @@ region = '{{ region }}' --required
 AND AppBlockArn = '{{ AppBlockArn }}' --required
 AND AppBlockBuilderName = '{{ AppBlockBuilderName }}' --required
 RETURNING
-AppBlockBuilderAppBlockAssociation;
+app_block_builder_app_block_association;
 ```
 </TabItem>
 </Tabs>

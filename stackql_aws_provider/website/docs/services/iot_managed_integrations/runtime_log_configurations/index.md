@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The id for a managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeLogConfigurations" /></td>
+    <td><CopyableCode code="runtime_log_configurations" /></td>
     <td><code>object</code></td>
     <td>The runtime log configuration for a managed thing.</td>
 </tr>
@@ -136,8 +136,8 @@ Get the runtime log configuration for a specific managed thing.
 
 ```sql
 SELECT
-ManagedThingId,
-RuntimeLogConfigurations
+managed_thing_id,
+runtime_log_configurations
 FROM aws.iot_managed_integrations.runtime_log_configurations
 WHERE managed_thing_id = '{{ managed_thing_id }}' -- required
 AND region = '{{ region }}' -- required

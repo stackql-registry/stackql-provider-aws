@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the pipeline was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the pipeline was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRunTime" /></td>
+    <td><CopyableCode code="last_run_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the pipeline was last run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParallelismConfiguration" /></td>
+    <td><CopyableCode code="parallelism_configuration" /></td>
     <td><code>object</code></td>
     <td>Lists the parallelism configuration applied to the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineArn" /></td>
+    <td><CopyableCode code="pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:(&#91;0-9&#93;&#123;12&#125;|aws):pipeline/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDefinition" /></td>
+    <td><CopyableCode code="pipeline_definition" /></td>
     <td><code>string</code></td>
     <td>The JSON pipeline definition. (pattern: &lt;code&gt;.*(?:&#91; \r\n\t&#93;.*)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDescription" /></td>
+    <td><CopyableCode code="pipeline_description" /></td>
     <td><code>string</code></td>
     <td>The description of the pipeline. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDisplayName" /></td>
+    <td><CopyableCode code="pipeline_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the pipeline. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineName" /></td>
+    <td><CopyableCode code="pipeline_name" /></td>
     <td><code>string</code></td>
     <td>The name of the pipeline. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineStatus" /></td>
+    <td><CopyableCode code="pipeline_status" /></td>
     <td><code>string</code></td>
     <td>The status of the pipeline execution. (Active, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineVersionDescription" /></td>
+    <td><CopyableCode code="pipeline_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the pipeline version. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineVersionDisplayName" /></td>
+    <td><CopyableCode code="pipeline_version_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the pipeline version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,81&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that the pipeline uses to execute. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -140,42 +140,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionTime" /></td>
+    <td><CopyableCode code="last_execution_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that a pipeline execution began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the pipeline was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineArn" /></td>
+    <td><CopyableCode code="pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:(&#91;0-9&#93;&#123;12&#125;|aws):pipeline/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDescription" /></td>
+    <td><CopyableCode code="pipeline_description" /></td>
     <td><code>string</code></td>
     <td>The description of the pipeline. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDisplayName" /></td>
+    <td><CopyableCode code="pipeline_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the pipeline. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineName" /></td>
+    <td><CopyableCode code="pipeline_name" /></td>
     <td><code>string</code></td>
     <td>The name of the pipeline. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that the pipeline used to execute. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -287,21 +287,21 @@ Describes the details of a pipeline.
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-LastModifiedBy,
-LastModifiedTime,
-LastRunTime,
-ParallelismConfiguration,
-PipelineArn,
-PipelineDefinition,
-PipelineDescription,
-PipelineDisplayName,
-PipelineName,
-PipelineStatus,
-PipelineVersionDescription,
-PipelineVersionDisplayName,
-RoleArn
+created_by,
+creation_time,
+last_modified_by,
+last_modified_time,
+last_run_time,
+parallelism_configuration,
+pipeline_arn,
+pipeline_definition,
+pipeline_description,
+pipeline_display_name,
+pipeline_name,
+pipeline_status,
+pipeline_version_description,
+pipeline_version_display_name,
+role_arn
 FROM aws.sagemaker.pipelines
 WHERE region = '{{ region }}' -- required
 ;
@@ -313,14 +313,14 @@ Gets a list of pipelines.
 
 ```sql
 SELECT
-CreationTime,
-LastExecutionTime,
-LastModifiedTime,
-PipelineArn,
-PipelineDescription,
-PipelineDisplayName,
-PipelineName,
-RoleArn
+creation_time,
+last_execution_time,
+last_modified_time,
+pipeline_arn,
+pipeline_description,
+pipeline_display_name,
+pipeline_name,
+role_arn
 FROM aws.sagemaker.pipelines
 WHERE region = '{{ region }}' -- required
 ;
@@ -367,7 +367,7 @@ SELECT
 '{{ ParallelismConfiguration }}',
 '{{ region }}'
 RETURNING
-PipelineArn
+pipeline_arn
 ;
 ```
 </TabItem>
@@ -453,8 +453,8 @@ WHERE
 region = '{{ region }}' --required
 AND PipelineName = '{{ PipelineName }}' --required
 RETURNING
-PipelineArn,
-PipelineVersionId;
+pipeline_arn,
+pipeline_version_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Amazon Web Services account that owns the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowsUnencryptedObjectUploads" /></td>
+    <td><CopyableCode code="allows_unencrypted_object_uploads" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the bucket policy for the bucket requires server-side encryption of objects when objects are added to the bucket. Possible values are: FALSE - The bucket policy requires server-side encryption of new objects. PutObject requests must include a valid server-side encryption header. TRUE - The bucket doesn't have a bucket policy or it has a bucket policy that doesn't require server-side encryption of new objects. If a bucket policy exists, it doesn't require PutObject requests to include a valid server-side encryption header. UNKNOWN - Amazon Macie can't determine whether the bucket policy requires server-side encryption of new objects. Valid server-side encryption headers are: x-amz-server-side-encryption with a value of AES256 or aws:kms, and x-amz-server-side-encryption-customer-algorithm with a value of AES256. (TRUE, FALSE, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="automatedDiscoveryMonitoringStatus" /></td>
+    <td><CopyableCode code="automated_discovery_monitoring_status" /></td>
     <td><code>string</code></td>
     <td>Specifies whether automated sensitive data discovery is currently configured to analyze objects in the bucket. Possible values are: MONITORED, the bucket is included in analyses; and, NOT_MONITORED, the bucket is excluded from analyses. If automated sensitive data discovery is disabled for your account, this value is NOT_MONITORED. (MONITORED, NOT_MONITORED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketArn" /></td>
+    <td><CopyableCode code="bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketCreatedAt" /></td>
+    <td><CopyableCode code="bucket_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the bucket was created. This value can also indicate when changes such as edits to the bucket's policy were most recently made to the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bucketName" /></td>
+    <td><CopyableCode code="bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="classifiableObjectCount" /></td>
+    <td><CopyableCode code="classifiable_object_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of objects that Amazon Macie can analyze in the bucket. These objects use a supported storage class and have a file name extension for a supported file or storage format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="classifiableSizeInBytes" /></td>
+    <td><CopyableCode code="classifiable_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total storage size, in bytes, of the objects that Amazon Macie can analyze in the bucket. These objects use a supported storage class and have a file name extension for a supported file or storage format. If versioning is enabled for the bucket, Macie calculates this value based on the size of the latest version of each applicable object in the bucket. This value doesn't reflect the storage size of all versions of each applicable object in the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The code for an error or issue that prevented Amazon Macie from retrieving and processing information about the bucket and the bucket's objects. Possible values are: ACCESS_DENIED - Macie doesn't have permission to retrieve the information. For example, the bucket has a restrictive bucket policy and Amazon S3 denied the request. BUCKET_COUNT_EXCEEDS_QUOTA - Retrieving and processing the information would exceed the quota for the number of buckets that Macie monitors for an account (10,000). If this value is null, Macie was able to retrieve and process the information. (ACCESS_DENIED, BUCKET_COUNT_EXCEEDS_QUOTA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>A brief description of the error or issue (errorCode) that prevented Amazon Macie from retrieving and processing information about the bucket and the bucket's objects. This value is null if Macie was able to retrieve and process the information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDetails" /></td>
+    <td><CopyableCode code="job_details" /></td>
     <td><code>object</code></td>
     <td>Specifies whether any one-time or recurring classification jobs are configured to analyze objects in the bucket, and, if so, the details of the job that ran most recently.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAutomatedDiscoveryTime" /></td>
+    <td><CopyableCode code="last_automated_discovery_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently analyzed objects in the bucket while performing automated sensitive data discovery. This value is null if this analysis hasn't occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently retrieved bucket or object metadata from Amazon S3 for the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="objectCount" /></td>
+    <td><CopyableCode code="object_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of objects in the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="objectCountByEncryptionType" /></td>
+    <td><CopyableCode code="object_count_by_encryption_type" /></td>
     <td><code>object</code></td>
     <td>The total number of objects in the bucket, grouped by server-side encryption type. This includes a grouping that reports the total number of objects that aren't encrypted or use client-side encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicAccess" /></td>
+    <td><CopyableCode code="public_access" /></td>
     <td><code>object</code></td>
     <td>Specifies whether the bucket is publicly accessible due to the combination of permissions settings that apply to the bucket, and provides information about those settings.</td>
 </tr>
@@ -135,32 +135,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region that hosts the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationDetails" /></td>
+    <td><CopyableCode code="replication_details" /></td>
     <td><code>object</code></td>
     <td>Specifies whether the bucket is configured to replicate one or more objects to buckets for other Amazon Web Services accounts and, if so, which accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sensitivityScore" /></td>
+    <td><CopyableCode code="sensitivity_score" /></td>
     <td><code>integer</code></td>
     <td>The sensitivity score for the bucket, ranging from -1 (classification error) to 100 (sensitive). If automated sensitive data discovery has never been enabled for your account or it's been disabled for your organization or standalone account for more than 30 days, possible values are: 1, the bucket is empty; or, 50, the bucket stores objects but it's been excluded from recent analyses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryption" /></td>
+    <td><CopyableCode code="server_side_encryption" /></td>
     <td><code>object</code></td>
     <td>The default server-side encryption settings for the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sharedAccess" /></td>
+    <td><CopyableCode code="shared_access" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the bucket is shared with another Amazon Web Services account, an Amazon CloudFront origin access identity (OAI), or a CloudFront origin access control (OAC). Possible values are: EXTERNAL - The bucket is shared with one or more of the following or any combination of the following: a CloudFront OAI, a CloudFront OAC, or an Amazon Web Services account that isn't part of your Amazon Macie organization. INTERNAL - The bucket is shared with one or more Amazon Web Services accounts that are part of your Amazon Macie organization. It isn't shared with a CloudFront OAI or OAC. NOT_SHARED - The bucket isn't shared with another Amazon Web Services account, a CloudFront OAI, or a CloudFront OAC. UNKNOWN - Amazon Macie wasn't able to evaluate the shared access settings for the bucket. An Amazon Macie organization is a set of Macie accounts that are centrally managed as a group of related accounts through Organizations or by Macie invitation. (EXTERNAL, INTERNAL, NOT_SHARED, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total storage size, in bytes, of the bucket. If versioning is enabled for the bucket, Amazon Macie calculates this value based on the size of the latest version of each object in the bucket. This value doesn't reflect the storage size of all versions of each object in the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInBytesCompressed" /></td>
+    <td><CopyableCode code="size_in_bytes_compressed" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total storage size, in bytes, of the objects that are compressed (.gz, .gzip, .zip) files in the bucket. If versioning is enabled for the bucket, Amazon Macie calculates this value based on the size of the latest version of each applicable object in the bucket. This value doesn't reflect the storage size of all versions of each applicable object in the bucket.</td>
 </tr>
@@ -170,12 +170,12 @@ The following fields are returned by `SELECT` queries:
     <td>An array that specifies the tags (keys and values) that are associated with the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unclassifiableObjectCount" /></td>
+    <td><CopyableCode code="unclassifiable_object_count" /></td>
     <td><code>object</code></td>
     <td>The total number of objects that Amazon Macie can't analyze in the bucket. These objects don't use a supported storage class or don't have a file name extension for a supported file or storage format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unclassifiableObjectSizeInBytes" /></td>
+    <td><CopyableCode code="unclassifiable_object_size_in_bytes" /></td>
     <td><code>object</code></td>
     <td>The total storage size, in bytes, of the objects that Amazon Macie can't analyze in the bucket. These objects don't use a supported storage class or don't have a file name extension for a supported file or storage format.</td>
 </tr>
@@ -249,32 +249,32 @@ Retrieves (queries) statistical data and other information about one or more S3 
 
 ```sql
 SELECT
-accountId,
-allowsUnencryptedObjectUploads,
-automatedDiscoveryMonitoringStatus,
-bucketArn,
-bucketCreatedAt,
-bucketName,
-classifiableObjectCount,
-classifiableSizeInBytes,
-errorCode,
-errorMessage,
-jobDetails,
-lastAutomatedDiscoveryTime,
-lastUpdated,
-objectCount,
-objectCountByEncryptionType,
-publicAccess,
+account_id,
+allows_unencrypted_object_uploads,
+automated_discovery_monitoring_status,
+bucket_arn,
+bucket_created_at,
+bucket_name,
+classifiable_object_count,
+classifiable_size_in_bytes,
+error_code,
+error_message,
+job_details,
+last_automated_discovery_time,
+last_updated,
+object_count,
+object_count_by_encryption_type,
+public_access,
 region,
-replicationDetails,
-sensitivityScore,
-serverSideEncryption,
-sharedAccess,
-sizeInBytes,
-sizeInBytesCompressed,
+replication_details,
+sensitivity_score,
+server_side_encryption,
+shared_access,
+size_in_bytes,
+size_in_bytes_compressed,
 tags,
-unclassifiableObjectCount,
-unclassifiableObjectSizeInBytes,
+unclassifiable_object_count,
+unclassifiable_object_size_in_bytes,
 versioning
 FROM aws.macie2.buckets
 WHERE region = '{{ region }}' -- required

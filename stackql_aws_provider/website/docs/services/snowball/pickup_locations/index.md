@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Addresses" /></td>
+    <td><CopyableCode code="addresses" /></td>
     <td><code>array</code></td>
     <td>Information about the address of pickup locations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>HTTP requests are stateless. To identify what object comes "next" in the list of ListPickupLocationsResult objects, you have the option of specifying NextToken as the starting point for your returned list. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ A list of locations from which the customer can choose to pickup a device.
 
 ```sql
 SELECT
-Addresses,
-NextToken
+addresses,
+next_token
 FROM aws.snowball.pickup_locations
 WHERE region = '{{ region }}' -- required
 ;

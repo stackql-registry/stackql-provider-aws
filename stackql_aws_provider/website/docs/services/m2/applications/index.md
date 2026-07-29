@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;|):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the application. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deployedVersion" /></td>
+    <td><CopyableCode code="deployed_version" /></td>
     <td><code>object</code></td>
     <td>The version of the application that is deployed.</td>
 </tr>
@@ -81,52 +81,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The type of the target platform for the application. (microfocus, bluage)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the runtime environment where you want to deploy the application. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a customer managed key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStartTime" /></td>
+    <td><CopyableCode code="last_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when you last started the application. Null until the application runs for the first time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersion" /></td>
+    <td><CopyableCode code="latest_version" /></td>
     <td><code>object</code></td>
     <td>The latest version of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listenerArns" /></td>
+    <td><CopyableCode code="listener_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Name (ARN) for the network load balancer listener created in your Amazon Web Services account. Amazon Web Services Mainframe Modernization creates this listener for you the first time you deploy an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listenerPorts" /></td>
+    <td><CopyableCode code="listener_ports" /></td>
     <td><code>array</code></td>
     <td>The port associated with the network load balancer listener created in your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loadBalancerDnsName" /></td>
+    <td><CopyableCode code="load_balancer_dns_name" /></td>
     <td><code>string</code></td>
     <td>The public DNS name of the load balancer created in your Amazon Web Services account. (pattern: &lt;code&gt;^\S&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroups" /></td>
+    <td><CopyableCode code="log_groups" /></td>
     <td><code>array</code></td>
     <td>The list of log summaries. Each log summary includes the log type as well as the log group identifier. These are CloudWatch logs. Amazon Web Services Mainframe Modernization pushes the application log to CloudWatch under the customer's account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role associated with the application. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;|):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -136,7 +136,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the application. (Creating, Created, Available, Ready, Starting, Running, Stopping, Stopped, Failed, Deleting, Deleting From Environment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the reported status.</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of tags associated with the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetGroupArns" /></td>
+    <td><CopyableCode code="target_group_arns" /></td>
     <td><code>array</code></td>
     <td>Returns the Amazon Resource Names (ARNs) of the target groups that are attached to the network load balancer.</td>
 </tr>
@@ -170,27 +170,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the application. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;|):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationVersion" /></td>
+    <td><CopyableCode code="application_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>Indicates either an ongoing deployment or if the application has ever deployed successfully. (Deploying, Deployed)</td>
 </tr>
@@ -200,22 +200,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The type of the target platform for this application. (microfocus, bluage)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the runtime environment that hosts this application. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStartTime" /></td>
+    <td><CopyableCode code="last_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when you last started the application. Null until the application runs for the first time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role associated with the application. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;|):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -225,7 +225,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the application. (Creating, Created, Available, Ready, Starting, Running, Stopping, Stopped, Failed, Deleting, Deleting From Environment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionStatus" /></td>
+    <td><CopyableCode code="version_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the latest version of the application. (Creating, Available, Failed)</td>
 </tr>
@@ -382,25 +382,25 @@ Describes the details of a specific application.
 ```sql
 SELECT
 name,
-applicationArn,
-applicationId,
-creationTime,
-deployedVersion,
+application_arn,
+application_id,
+creation_time,
+deployed_version,
 description,
-engineType,
-environmentId,
-kmsKeyId,
-lastStartTime,
-latestVersion,
-listenerArns,
-listenerPorts,
-loadBalancerDnsName,
-logGroups,
-roleArn,
+engine_type,
+environment_id,
+kms_key_id,
+last_start_time,
+latest_version,
+listener_arns,
+listener_ports,
+load_balancer_dns_name,
+log_groups,
+role_arn,
 status,
-statusReason,
+status_reason,
 tags,
-targetGroupArns
+target_group_arns
 FROM aws.m2.applications
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -414,18 +414,18 @@ Lists the applications associated with a specific Amazon Web Services account. Y
 ```sql
 SELECT
 name,
-applicationArn,
-applicationId,
-applicationVersion,
-creationTime,
-deploymentStatus,
+application_arn,
+application_id,
+application_version,
+creation_time,
+deployment_status,
 description,
-engineType,
-environmentId,
-lastStartTime,
-roleArn,
+engine_type,
+environment_id,
+last_start_time,
+role_arn,
 status,
-versionStatus
+version_status
 FROM aws.m2.applications
 WHERE region = '{{ region }}' -- required
 AND environmentId = '{{ environmentId }}'
@@ -474,9 +474,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-applicationArn,
-applicationId,
-applicationVersion
+application_arn,
+application_id,
+application_version
 ;
 ```
 </TabItem>
@@ -540,7 +540,7 @@ application_id = '{{ application_id }}' --required
 AND region = '{{ region }}' --required
 AND currentApplicationVersion = '{{ currentApplicationVersion }}' --required
 RETURNING
-applicationVersion;
+application_version;
 ```
 </TabItem>
 </Tabs>

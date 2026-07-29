@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientId" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
     <td>The Identity Center identifier for the Application Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationStatus" /></td>
+    <td><CopyableCode code="configuration_status" /></td>
     <td><code>string</code></td>
     <td>The configuration status of the private re:Post. (CONFIGURED, UNCONFIGURED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentSize" /></td>
+    <td><CopyableCode code="content_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The content size of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createDateTime" /></td>
+    <td><CopyableCode code="create_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the private re:Post was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerRoleArn" /></td>
+    <td><CopyableCode code="customer_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role that grants permissions to the private re:Post to convert unanswered questions into AWS support tickets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deleteDateTime" /></td>
+    <td><CopyableCode code="delete_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the private re:Post was deleted.</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupAdmins" /></td>
+    <td><CopyableCode code="group_admins" /></td>
     <td><code>array</code></td>
     <td>The list of groups that are administrators of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="randomDomain" /></td>
+    <td><CopyableCode code="random_domain" /></td>
     <td><code>string</code></td>
     <td>The AWS generated subdomain of the private re:Post</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of accessor identifiers and their roles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceId" /></td>
+    <td><CopyableCode code="space_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the private re:Post.</td>
 </tr>
@@ -131,12 +131,12 @@ The following fields are returned by `SELECT` queries:
     <td>The creation or deletion status of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageLimit" /></td>
+    <td><CopyableCode code="storage_limit" /></td>
     <td><code>integer (int64)</code></td>
     <td>The storage limit of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedEmailDomains" /></td>
+    <td><CopyableCode code="supported_email_domains" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -146,27 +146,27 @@ The following fields are returned by `SELECT` queries:
     <td>The pricing tier of the private re:Post. (BASIC, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userAdmins" /></td>
+    <td><CopyableCode code="user_admins" /></td>
     <td><code>array</code></td>
     <td>The list of users that are administrators of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of users that have onboarded to the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userKMSKey" /></td>
+    <td><CopyableCode code="user_kms_key" /></td>
     <td><code>string</code></td>
     <td>The custom AWS KMS key ARN that’s used for the AWS KMS encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vanityDomain" /></td>
+    <td><CopyableCode code="vanity_domain" /></td>
     <td><code>string</code></td>
     <td>The custom subdomain that you use to access your private re:Post. All custom subdomains must be approved by AWS before use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vanityDomainStatus" /></td>
+    <td><CopyableCode code="vanity_domain_status" /></td>
     <td><code>string</code></td>
     <td>The approval status of the custom subdomain. (PENDING, APPROVED, UNAPPROVED)</td>
 </tr>
@@ -195,22 +195,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationStatus" /></td>
+    <td><CopyableCode code="configuration_status" /></td>
     <td><code>string</code></td>
     <td>The configuration status of the private re:Post. (CONFIGURED, UNCONFIGURED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentSize" /></td>
+    <td><CopyableCode code="content_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The content size of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createDateTime" /></td>
+    <td><CopyableCode code="create_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the private re:Post was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deleteDateTime" /></td>
+    <td><CopyableCode code="delete_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the private re:Post was deleted.</td>
 </tr>
@@ -220,12 +220,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the private re:Post. This is used only to help you identify this private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="randomDomain" /></td>
+    <td><CopyableCode code="random_domain" /></td>
     <td><code>string</code></td>
     <td>The AWS generated subdomain of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceId" /></td>
+    <td><CopyableCode code="space_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the private re:Post.</td>
 </tr>
@@ -235,12 +235,12 @@ The following fields are returned by `SELECT` queries:
     <td>The creation/deletion status of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageLimit" /></td>
+    <td><CopyableCode code="storage_limit" /></td>
     <td><code>integer (int64)</code></td>
     <td>The storage limit of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedEmailDomains" /></td>
+    <td><CopyableCode code="supported_email_domains" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -250,22 +250,22 @@ The following fields are returned by `SELECT` queries:
     <td>The pricing tier of the private re:Post. (BASIC, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of onboarded users to the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userKMSKey" /></td>
+    <td><CopyableCode code="user_kms_key" /></td>
     <td><code>string</code></td>
     <td>The custom AWS KMS key ARN that’s used for the AWS KMS encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vanityDomain" /></td>
+    <td><CopyableCode code="vanity_domain" /></td>
     <td><code>string</code></td>
     <td>This custom subdomain that you use to access your private re:Post. All custom subdomains must be approved by AWS before use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vanityDomainStatus" /></td>
+    <td><CopyableCode code="vanity_domain_status" /></td>
     <td><code>string</code></td>
     <td>This approval status of the custom subdomain. (PENDING, APPROVED, UNAPPROVED)</td>
 </tr>
@@ -419,29 +419,29 @@ Displays information about the AWS re:Post Private private re:Post.
 ```sql
 SELECT
 name,
-applicationArn,
+application_arn,
 arn,
-clientId,
-configurationStatus,
-contentSize,
-createDateTime,
-customerRoleArn,
-deleteDateTime,
+client_id,
+configuration_status,
+content_size,
+create_date_time,
+customer_role_arn,
+delete_date_time,
 description,
-groupAdmins,
-identityStoreId,
-randomDomain,
+group_admins,
+identity_store_id,
+random_domain,
 roles,
-spaceId,
+space_id,
 status,
-storageLimit,
-supportedEmailDomains,
+storage_limit,
+supported_email_domains,
 tier,
-userAdmins,
-userCount,
-userKMSKey,
-vanityDomain,
-vanityDomainStatus
+user_admins,
+user_count,
+user_kms_key,
+vanity_domain,
+vanity_domain_status
 FROM aws.repostspace.spaces
 WHERE space_id = '{{ space_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -456,21 +456,21 @@ Returns a list of AWS re:Post Private private re:Posts in the account with some 
 SELECT
 name,
 arn,
-configurationStatus,
-contentSize,
-createDateTime,
-deleteDateTime,
+configuration_status,
+content_size,
+create_date_time,
+delete_date_time,
 description,
-randomDomain,
-spaceId,
+random_domain,
+space_id,
 status,
-storageLimit,
-supportedEmailDomains,
+storage_limit,
+supported_email_domains,
 tier,
-userCount,
-userKMSKey,
-vanityDomain,
-vanityDomainStatus
+user_count,
+user_kms_key,
+vanity_domain,
+vanity_domain_status
 FROM aws.repostspace.spaces
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -518,7 +518,7 @@ SELECT
 '{{ supportedEmailDomains }}',
 '{{ region }}'
 RETURNING
-spaceId
+space_id
 ;
 ```
 </TabItem>

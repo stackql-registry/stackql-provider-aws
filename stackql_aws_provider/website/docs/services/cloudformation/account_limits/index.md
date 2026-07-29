@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the account limit. Values: ConcurrentResourcesLimit | StackLimit | StackOutputsLimit</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>integer</code></td>
     <td>The value that's associated with the account limit name.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves your account's CloudFormation limits, such as the maximum number of st
 
 ```sql
 SELECT
-Name,
-Value
+name,
+value
 FROM aws.cloudformation.account_limits
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

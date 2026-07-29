@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoEnable" /></td>
+    <td><CopyableCode code="auto_enable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether GuardDuty is automatically enabled for accounts added to the organization. Even though this is still supported, we recommend using AutoEnableOrganizationMembers to achieve the similar results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoEnableOrganizationMembers" /></td>
+    <td><CopyableCode code="auto_enable_organization_members" /></td>
     <td><code>string</code></td>
     <td>Indicates the auto-enablement configuration of GuardDuty or any of the corresponding protection plans for the member accounts in the organization. NEW: Indicates that when a new account joins the organization, they will have GuardDuty or any of the corresponding protection plans enabled automatically. ALL: Indicates that all accounts in the organization have GuardDuty and any of the corresponding protection plans enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty. NONE: Indicates that GuardDuty or any of the corresponding protection plans will not be automatically enabled for any account in the organization. The administrator must manage GuardDuty for each account in the organization individually. When you update the auto-enable setting from ALL or NEW to NONE, this action doesn't disable the corresponding option for your existing accounts. This configuration will apply to the new accounts that join the organization. After you update the auto-enable settings, no new account will have the corresponding option as enabled. (NEW, ALL, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSources" /></td>
+    <td><CopyableCode code="data_sources" /></td>
     <td><code>object</code></td>
     <td>Describes which data sources are enabled automatically for member accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Features" /></td>
+    <td><CopyableCode code="features" /></td>
     <td><code>array</code></td>
     <td>A list of features that are configured for this organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberAccountLimitReached" /></td>
+    <td><CopyableCode code="member_account_limit_reached" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the maximum number of allowed member accounts are already associated with the delegated administrator account for your organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination parameter to be used on the next list operation to retrieve more items.</td>
 </tr>
@@ -166,12 +166,12 @@ Returns information about the account selected as the delegated administrator fo
 
 ```sql
 SELECT
-AutoEnable,
-AutoEnableOrganizationMembers,
-DataSources,
-Features,
-MemberAccountLimitReached,
-NextToken
+auto_enable,
+auto_enable_organization_members,
+data_sources,
+features,
+member_account_limit_reached,
+next_token
 FROM aws.guardduty.organization_configurations
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required

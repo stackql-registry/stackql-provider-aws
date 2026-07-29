@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventBuses" /></td>
+    <td><CopyableCode code="event_buses" /></td>
     <td><code>array</code></td>
     <td>This list of event buses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token indicating there are more results available. If there are no more results, no token is included in the response. The value of nextToken is a unique pagination token for each page. To retrieve the next page of results, make the call again using the returned token. Keep all other arguments unchanged. Using an expired pagination token results in an HTTP 400 InvalidToken error.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all the event buses in your account, including the default event bus, cust
 
 ```sql
 SELECT
-EventBuses,
-NextToken
+event_buses,
+next_token
 FROM aws.events.event_buses
 WHERE region = '{{ region }}' -- required
 ;

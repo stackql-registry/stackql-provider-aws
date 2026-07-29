@@ -58,17 +58,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dependencyCounts" /></td>
+    <td><CopyableCode code="dependency_counts" /></td>
     <td><code>object</code></td>
     <td>The number of dependencies in the step.</td>
 </tr>
@@ -78,67 +78,67 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the step. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatus" /></td>
+    <td><CopyableCode code="lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status of the step. (CREATE_COMPLETE, UPDATE_IN_PROGRESS, UPDATE_FAILED, UPDATE_SUCCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatusMessage" /></td>
+    <td><CopyableCode code="lifecycle_status_message" /></td>
     <td><code>string</code></td>
     <td>A message that describes the lifecycle status of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterSpace" /></td>
+    <td><CopyableCode code="parameter_space" /></td>
     <td><code>object</code></td>
     <td>A list of step parameters and the combination expression for the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requiredCapabilities" /></td>
+    <td><CopyableCode code="required_capabilities" /></td>
     <td><code>object</code></td>
     <td>The required capabilities of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepId" /></td>
+    <td><CopyableCode code="step_id" /></td>
     <td><code>string</code></td>
     <td>The step ID. (pattern: &lt;code&gt;step-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetTaskRunStatus" /></td>
+    <td><CopyableCode code="target_task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task status with which the job started. (READY, FAILED, SUCCEEDED, CANCELED, SUSPENDED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskFailureRetryCount" /></td>
+    <td><CopyableCode code="task_failure_retry_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of times tasks from the step failed and were retried.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatus" /></td>
+    <td><CopyableCode code="task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task run status for the job. (PENDING, READY, ASSIGNED, STARTING, SCHEDULED, INTERRUPTING, RUNNING, SUSPENDED, CANCELED, FAILED, SUCCEEDED, NOT_COMPATIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatusCounts" /></td>
+    <td><CopyableCode code="task_run_status_counts" /></td>
     <td><code>object</code></td>
     <td>The number of tasks running on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -162,72 +162,72 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dependencyCounts" /></td>
+    <td><CopyableCode code="dependency_counts" /></td>
     <td><code>object</code></td>
     <td>The number of dependencies for the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatus" /></td>
+    <td><CopyableCode code="lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status. (CREATE_COMPLETE, UPDATE_IN_PROGRESS, UPDATE_FAILED, UPDATE_SUCCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatusMessage" /></td>
+    <td><CopyableCode code="lifecycle_status_message" /></td>
     <td><code>string</code></td>
     <td>A message that describes the lifecycle of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepId" /></td>
+    <td><CopyableCode code="step_id" /></td>
     <td><code>string</code></td>
     <td>The step ID. (pattern: &lt;code&gt;step-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetTaskRunStatus" /></td>
+    <td><CopyableCode code="target_task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task status to update the job's tasks to. (READY, FAILED, SUCCEEDED, CANCELED, SUSPENDED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskFailureRetryCount" /></td>
+    <td><CopyableCode code="task_failure_retry_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of times tasks from the step failed and were retried.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatus" /></td>
+    <td><CopyableCode code="task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task run status for the job. PENDING–pending and waiting for resources. READY–ready to process. ASSIGNED–assigned and will run next on a worker. SCHEDULED–scheduled to run on a worker. INTERRUPTING–being interrupted. RUNNING–running on a worker. SUSPENDED–the task is suspended. CANCELED–the task has been canceled. FAILED–the task has failed. SUCCEEDED–the task has succeeded. (PENDING, READY, ASSIGNED, STARTING, SCHEDULED, INTERRUPTING, RUNNING, SUSPENDED, CANCELED, FAILED, SUCCEEDED, NOT_COMPATIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatusCounts" /></td>
+    <td><CopyableCode code="task_run_status_counts" /></td>
     <td><code>object</code></td>
     <td>The number of tasks running on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -246,7 +246,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextItemOffset" /></td>
+    <td><CopyableCode code="next_item_offset" /></td>
     <td><code>integer</code></td>
     <td>The next item offset for the search results.</td>
 </tr>
@@ -256,7 +256,7 @@ The following fields are returned by `SELECT` queries:
     <td>The steps in the search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResults" /></td>
+    <td><CopyableCode code="total_results" /></td>
     <td><code>integer</code></td>
     <td>The total number of results in the search.</td>
 </tr>
@@ -416,23 +416,23 @@ Gets a step.
 ```sql
 SELECT
 name,
-createdAt,
-createdBy,
-dependencyCounts,
+created_at,
+created_by,
+dependency_counts,
 description,
-endedAt,
-lifecycleStatus,
-lifecycleStatusMessage,
-parameterSpace,
-requiredCapabilities,
-startedAt,
-stepId,
-targetTaskRunStatus,
-taskFailureRetryCount,
-taskRunStatus,
-taskRunStatusCounts,
-updatedAt,
-updatedBy
+ended_at,
+lifecycle_status,
+lifecycle_status_message,
+parameter_space,
+required_capabilities,
+started_at,
+step_id,
+target_task_run_status,
+task_failure_retry_count,
+task_run_status,
+task_run_status_counts,
+updated_at,
+updated_by
 FROM aws.deadline.steps
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -449,20 +449,20 @@ Lists steps for a job.
 ```sql
 SELECT
 name,
-createdAt,
-createdBy,
-dependencyCounts,
-endedAt,
-lifecycleStatus,
-lifecycleStatusMessage,
-startedAt,
-stepId,
-targetTaskRunStatus,
-taskFailureRetryCount,
-taskRunStatus,
-taskRunStatusCounts,
-updatedAt,
-updatedBy
+created_at,
+created_by,
+dependency_counts,
+ended_at,
+lifecycle_status,
+lifecycle_status_message,
+started_at,
+step_id,
+target_task_run_status,
+task_failure_retry_count,
+task_run_status,
+task_run_status_counts,
+updated_at,
+updated_by
 FROM aws.deadline.steps
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -479,9 +479,9 @@ Searches for steps.
 
 ```sql
 SELECT
-nextItemOffset,
+next_item_offset,
 steps,
-totalResults
+total_results
 FROM aws.deadline.steps
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required

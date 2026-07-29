@@ -50,157 +50,157 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the capacity is reserved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone in which the capacity is reserved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableInstanceCount" /></td>
+    <td><CopyableCode code="available_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The remaining capacity. Indicates the number of instances that can be launched in the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityAllocations" /></td>
+    <td><CopyableCode code="capacity_allocations" /></td>
     <td><code>string</code></td>
     <td>Information about instance capacity usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockId" /></td>
+    <td><CopyableCode code="capacity_block_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationArn" /></td>
+    <td><CopyableCode code="capacity_reservation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationFleetId" /></td>
+    <td><CopyableCode code="capacity_reservation_fleet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation Fleet to which the Capacity Reservation belongs. Only valid for Capacity Reservations that were created by a Capacity Reservation Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationId" /></td>
+    <td><CopyableCode code="capacity_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CommitmentInfo" /></td>
+    <td><CopyableCode code="commitment_info" /></td>
     <td><code>string</code></td>
     <td>Information about your commitment for a future-dated Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time the Capacity Reservation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryPreference" /></td>
+    <td><CopyableCode code="delivery_preference" /></td>
     <td><code>string</code></td>
     <td>The delivery method for a future-dated Capacity Reservation. incremental indicates that the requested capacity is delivered in addition to any running instances and reserved capacity that you have in your account at the requested date and time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EbsOptimized" /></td>
+    <td><CopyableCode code="ebs_optimized" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the Capacity Reservation supports EBS-optimized instances. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS- optimized instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The date and time the Capacity Reservation expires. When a Capacity Reservation expires, the reserved capacity is released and you can no longer launch instances into it. The Capacity Reservation's state changes to expired when it reaches its end date and time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDateType" /></td>
+    <td><CopyableCode code="end_date_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the way in which the Capacity Reservation ends. A Capacity Reservation can have one of the following end types: unlimited - The Capacity Reservation remains active until you explicitly cancel it. limited - The Capacity Reservation expires automatically at a specified date and time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EphemeralStorage" /></td>
+    <td><CopyableCode code="ephemeral_storage" /></td>
     <td><code>boolean</code></td>
     <td>Deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceMatchCriteria" /></td>
+    <td><CopyableCode code="instance_match_criteria" /></td>
     <td><code>string</code></td>
     <td>Indicates the type of instance launches that the Capacity Reservation accepts. The options include: open - The Capacity Reservation accepts all instances that have matching attributes (instance type, platform, and Availability Zone). Instances that have matching attributes launch into the Capacity Reservation automatically without specifying any additional parameters. targeted - The Capacity Reservation only accepts instances that have matching attributes (instance type, platform, and Availability Zone), and explicitly target the Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstancePlatform" /></td>
+    <td><CopyableCode code="instance_platform" /></td>
     <td><code>string</code></td>
     <td>The type of operating system for which the Capacity Reservation reserves capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of instance for which the Capacity Reservation reserves capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Interruptible" /></td>
+    <td><CopyableCode code="interruptible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this Capacity Reservation is interruptible, meaning instances may be terminated when the owner reclaims capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InterruptibleCapacityAllocation" /></td>
+    <td><CopyableCode code="interruptible_capacity_allocation" /></td>
     <td><code>string</code></td>
     <td>Contains allocation details for interruptible reservations, including current allocated instances and target instance counts within the interruptibleCapacityAllocation object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InterruptionInfo" /></td>
+    <td><CopyableCode code="interruption_info" /></td>
     <td><code>string</code></td>
     <td>Information about the interruption configuration and association with the source reservation for interruptible Capacity Reservations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost on which the Capacity Reservation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlacementGroupArn" /></td>
+    <td><CopyableCode code="placement_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cluster placement group in which the Capacity Reservation was created. For more information, see Capacity Reservations for cluster placement groups in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationType" /></td>
+    <td><CopyableCode code="reservation_type" /></td>
     <td><code>string</code></td>
     <td>The type of Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The date and time the Capacity Reservation was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Capacity Reservation. A Capacity Reservation can be in one of the following states: active - The capacity is available for use. expired - The Capacity Reservation expired automatically at the date and time specified in your reservation request. The reserved capacity is no longer available for your use. cancelled - The Capacity Reservation was canceled. The reserved capacity is no longer available for your use. pending - The Capacity Reservation request was successful but the capacity provisioning is still pending. failed - The Capacity Reservation request has failed. A request can fail due to request parameters that are not valid, capacity constraints, or instance limit constraints. You can view a failed request for 60 minutes. scheduled - (Future-dated Capacity Reservations) The future-dated Capacity Reservation request was approved and the Capacity Reservation is scheduled for delivery on the requested start date. payment-pending - (Capacity Blocks) The upfront payment has not been processed yet. payment-failed - (Capacity Blocks) The upfront payment was not processed in the 12-hour time frame. Your Capacity Block was released. assessing - (Future-dated Capacity Reservations) Amazon EC2 is assessing your request for a future-dated Capacity Reservation. delayed - (Future-dated Capacity Reservations) Amazon EC2 encountered a delay in provisioning the requested future-dated Capacity Reservation. Amazon EC2 is unable to deliver the requested capacity by the requested start date and time. unsupported - (Future-dated Capacity Reservations) Amazon EC2 can't support the future-dated Capacity Reservation request due to capacity constraints. You can view unsupported requests for 30 days. The Capacity Reservation will not be delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tenancy" /></td>
+    <td><CopyableCode code="tenancy" /></td>
     <td><code>string</code></td>
     <td>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy settings: default - The Capacity Reservation is created on hardware that is shared with other Amazon Web Services accounts. dedicated - The Capacity Reservation is created on single-tenant hardware that is dedicated to a single Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalInstanceCount" /></td>
+    <td><CopyableCode code="total_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of instances for which the Capacity Reservation reserves capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnusedReservationBillingOwnerId" /></td>
+    <td><CopyableCode code="unused_reservation_billing_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account to which billing of the unused capacity of the Capacity Reservation is assigned.</td>
 </tr>
@@ -494,37 +494,37 @@ Describes one or more of your Capacity Reservations. The results describe only t
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-AvailableInstanceCount,
-CapacityAllocations,
-CapacityBlockId,
-CapacityReservationArn,
-CapacityReservationFleetId,
-CapacityReservationId,
-CommitmentInfo,
-CreateDate,
-DeliveryPreference,
-EbsOptimized,
-EndDate,
-EndDateType,
-EphemeralStorage,
-InstanceMatchCriteria,
-InstancePlatform,
-InstanceType,
-Interruptible,
-InterruptibleCapacityAllocation,
-InterruptionInfo,
-OutpostArn,
-OwnerId,
-PlacementGroupArn,
-ReservationType,
-StartDate,
-State,
-Tags,
-Tenancy,
-TotalInstanceCount,
-UnusedReservationBillingOwnerId
+availability_zone,
+availability_zone_id,
+available_instance_count,
+capacity_allocations,
+capacity_block_id,
+capacity_reservation_arn,
+capacity_reservation_fleet_id,
+capacity_reservation_id,
+commitment_info,
+create_date,
+delivery_preference,
+ebs_optimized,
+end_date,
+end_date_type,
+ephemeral_storage,
+instance_match_criteria,
+instance_platform,
+instance_type,
+interruptible,
+interruptible_capacity_allocation,
+interruption_info,
+outpost_arn,
+owner_id,
+placement_group_arn,
+reservation_type,
+start_date,
+state,
+tags,
+tenancy,
+total_instance_count,
+unused_reservation_billing_owner_id
 FROM aws.ec2.capacity_reservations
 WHERE region = '{{ region }}' -- required
 AND CapacityReservationId = '{{ CapacityReservationId }}'
@@ -598,37 +598,37 @@ SELECT
 '{{ CommitmentDuration }}',
 '{{ DeliveryPreference }}'
 RETURNING
-AvailabilityZone,
-AvailabilityZoneId,
-AvailableInstanceCount,
-CapacityAllocations,
-CapacityBlockId,
-CapacityReservationArn,
-CapacityReservationFleetId,
-CapacityReservationId,
-CommitmentInfo,
-CreateDate,
-DeliveryPreference,
-EbsOptimized,
-EndDate,
-EndDateType,
-EphemeralStorage,
-InstanceMatchCriteria,
-InstancePlatform,
-InstanceType,
-Interruptible,
-InterruptibleCapacityAllocation,
-InterruptionInfo,
-OutpostArn,
-OwnerId,
-PlacementGroupArn,
-ReservationType,
-StartDate,
-State,
-Tags,
-Tenancy,
-TotalInstanceCount,
-UnusedReservationBillingOwnerId
+availability_zone,
+availability_zone_id,
+available_instance_count,
+capacity_allocations,
+capacity_block_id,
+capacity_reservation_arn,
+capacity_reservation_fleet_id,
+capacity_reservation_id,
+commitment_info,
+create_date,
+delivery_preference,
+ebs_optimized,
+end_date,
+end_date_type,
+ephemeral_storage,
+instance_match_criteria,
+instance_platform,
+instance_type,
+interruptible,
+interruptible_capacity_allocation,
+interruption_info,
+outpost_arn,
+owner_id,
+placement_group_arn,
+reservation_type,
+start_date,
+state,
+tags,
+tenancy,
+total_instance_count,
+unused_reservation_billing_owner_id
 ;
 ```
 </TabItem>
@@ -653,9 +653,9 @@ SELECT
 '{{ ClientToken }}',
 '{{ TagSpecification }}'
 RETURNING
-DestinationCapacityReservation,
-InstanceCount,
-SourceCapacityReservation
+destination_capacity_reservation,
+instance_count,
+source_capacity_reservation
 ;
 ```
 </TabItem>
@@ -680,10 +680,10 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-InterruptionType,
-SourceCapacityReservationId,
-Status,
-TargetInstanceCount
+interruption_type,
+source_capacity_reservation_id,
+status,
+target_instance_count
 ;
 ```
 </TabItem>
@@ -808,7 +808,7 @@ AND UnusedReservationBillingOwnerId = '{{ UnusedReservationBillingOwnerId }}' --
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 <TabItem value="update_interruptible_capacity_reservation_allocation">
@@ -825,12 +825,12 @@ AND TargetInstanceCount = '{{ TargetInstanceCount }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-InstanceCount,
-InterruptibleCapacityReservationId,
-InterruptionType,
-SourceCapacityReservationId,
-Status,
-TargetInstanceCount;
+instance_count,
+interruptible_capacity_reservation_id,
+interruption_type,
+source_capacity_reservation_id,
+status,
+target_instance_count;
 ```
 </TabItem>
 <TabItem value="modify_capacity_reservation">
@@ -852,7 +852,7 @@ AND DryRun = {{ DryRun}}
 AND AdditionalInfo = '{{ AdditionalInfo}}'
 AND InstanceMatchCriteria = '{{ InstanceMatchCriteria}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

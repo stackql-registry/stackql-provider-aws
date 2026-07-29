@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token to request the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistics" /></td>
+    <td><CopyableCode code="statistics" /></td>
     <td><code>array</code></td>
     <td>A StatisticSummaryList.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list of data quality statistics.
 
 ```sql
 SELECT
-NextToken,
-Statistics
+next_token,
+statistics
 FROM aws.glue.data_quality_statistics
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Payload for an RDF graph summary response</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>integer</code></td>
     <td>The HTTP return code of the request. If the request succeeded, the code is 200.</td>
 </tr>
@@ -130,7 +130,7 @@ Gets a graph summary for an RDF graph. When invoking this operation in a Neptune
 ```sql
 SELECT
 payload,
-statusCode
+status_code
 FROM aws.neptunedata.rdf_graph_summaries
 WHERE region = '{{ region }}' -- required
 AND mode = '{{ mode }}'

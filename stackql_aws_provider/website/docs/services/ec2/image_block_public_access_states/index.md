@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImageBlockPublicAccessState" /></td>
+    <td><CopyableCode code="image_block_public_access_state" /></td>
     <td><code>string</code></td>
     <td>The current state of block public access for AMIs at the account level in the specified Amazon Web Services Region. Possible values: block-new-sharing - Any attempt to publicly share your AMIs in the specified Region is blocked. unblocked - Your AMIs in the specified Region can be publicly shared.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the state for block public access for AMIs. Possible values include: account - The state is managed by the account. declarative-policy - The state is managed by a declarative policy and can't be modified by the account.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets the current state of block public access for AMIs at the account level in t
 
 ```sql
 SELECT
-ImageBlockPublicAccessState,
-ManagedBy
+image_block_public_access_state,
+managed_by
 FROM aws.ec2.image_block_public_access_states
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

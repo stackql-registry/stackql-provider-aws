@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="serverStrategies" /></td>
+    <td><CopyableCode code="server_strategies" /></td>
     <td><code>array</code></td>
     <td>A list of strategy recommendations for the server.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves recommended strategies and tools for the specified server.
 
 ```sql
 SELECT
-serverStrategies
+server_strategies
 FROM aws.migrationhubstrategy.server_strategies
 WHERE server_id = '{{ server_id }}' -- required
 AND region = '{{ region }}' -- required

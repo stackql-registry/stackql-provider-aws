@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationArn" /></td>
+    <td><CopyableCode code="integration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the AppIntegration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationAssociationArn" /></td>
+    <td><CopyableCode code="integration_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the AppIntegration association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationAssociationId" /></td>
+    <td><CopyableCode code="integration_association_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the AppIntegration association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationType" /></td>
+    <td><CopyableCode code="integration_type" /></td>
     <td><code>string</code></td>
     <td>The integration type. (EVENT, VOICE_ID, PINPOINT_APP, WISDOM_ASSISTANT, WISDOM_KNOWLEDGE_BASE, WISDOM_QUICK_RESPONSES, Q_MESSAGE_TEMPLATES, CASES_DOMAIN, APPLICATION, FILE_SCANNER, SES_IDENTITY, ANALYTICS_CONNECTOR, CALL_TRANSFER_CONNECTOR, COGNITO_USER_POOL, MESSAGE_PROCESSOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceApplicationName" /></td>
+    <td><CopyableCode code="source_application_name" /></td>
     <td><code>string</code></td>
     <td>The user-provided, friendly name for the external application. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_ -&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceApplicationUrl" /></td>
+    <td><CopyableCode code="source_application_url" /></td>
     <td><code>string</code></td>
     <td>The URL for the external application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The name of the source. (SALESFORCE, ZENDESK, CASES)</td>
 </tr>
@@ -198,14 +198,14 @@ Provides summary information about the Amazon Web Services resource associations
 
 ```sql
 SELECT
-InstanceId,
-IntegrationArn,
-IntegrationAssociationArn,
-IntegrationAssociationId,
-IntegrationType,
-SourceApplicationName,
-SourceApplicationUrl,
-SourceType
+instance_id,
+integration_arn,
+integration_association_arn,
+integration_association_id,
+integration_type,
+source_application_name,
+source_application_url,
+source_type
 FROM aws.connect.integration_associations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,8 +253,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-IntegrationAssociationArn,
-IntegrationAssociationId
+integration_association_arn,
+integration_association_id
 ;
 ```
 </TabItem>

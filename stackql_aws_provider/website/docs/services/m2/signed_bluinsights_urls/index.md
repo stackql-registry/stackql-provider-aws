@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="signedBiUrl" /></td>
+    <td><CopyableCode code="signed_bi_url" /></td>
     <td><code>string</code></td>
     <td>Single sign-on AWS Blu Insights URL.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets a single sign-on URL that can be used to connect to AWS Blu Insights.
 
 ```sql
 SELECT
-signedBiUrl
+signed_bi_url
 FROM aws.m2.signed_bluinsights_urls
 WHERE region = '{{ region }}' -- required
 ;

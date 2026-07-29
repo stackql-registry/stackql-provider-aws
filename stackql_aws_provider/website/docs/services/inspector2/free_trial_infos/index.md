@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that provide Amazon Inspector free trial details for each of the requested accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedAccounts" /></td>
+    <td><CopyableCode code="failed_accounts" /></td>
     <td><code>array</code></td>
     <td>An array of objects detailing any accounts that free trial data could not be returned for.</td>
 </tr>
@@ -125,7 +125,7 @@ Gets free trial status for multiple Amazon Web Services accounts.
 ```sql
 SELECT
 accounts,
-failedAccounts
+failed_accounts
 FROM aws.inspector2.free_trial_infos
 WHERE region = '{{ region }}' -- required
 ;

@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The list of changes specified in this change request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the collaboration being modified. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the change request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAutoApproved" /></td>
+    <td><CopyableCode code="is_auto_approved" /></td>
     <td><code>boolean</code></td>
     <td>Whether the change request was automatically approved based on the collaboration's auto-approval settings.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the change request. Valid values are PENDING, APPROVED, DENIED, COMMITTED, and CANCELLED. (PENDING, APPROVED, CANCELLED, DENIED, COMMITTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the change request was last updated.</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>Summary of the changes in this change request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the collaboration. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the change request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAutoApproved" /></td>
+    <td><CopyableCode code="is_auto_approved" /></td>
     <td><code>boolean</code></td>
     <td>Whether the change request was automatically approved.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the change request. (PENDING, APPROVED, CANCELLED, DENIED, COMMITTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the change request was last updated.</td>
 </tr>
@@ -259,11 +259,11 @@ SELECT
 id,
 approvals,
 changes,
-collaborationId,
-createTime,
-isAutoApproved,
+collaboration_id,
+create_time,
+is_auto_approved,
 status,
-updateTime
+update_time
 FROM aws.cleanrooms.collaboration_change_requests
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND change_request_identifier = '{{ change_request_identifier }}' -- required
@@ -280,11 +280,11 @@ SELECT
 id,
 approvals,
 changes,
-collaborationId,
-createTime,
-isAutoApproved,
+collaboration_id,
+create_time,
+is_auto_approved,
 status,
-updateTime
+update_time
 FROM aws.cleanrooms.collaboration_change_requests
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -321,7 +321,7 @@ SELECT
 '{{ collaboration_identifier }}',
 '{{ region }}'
 RETURNING
-collaborationChangeRequest
+collaboration_change_request
 ;
 ```
 </TabItem>
@@ -376,7 +376,7 @@ AND change_request_identifier = '{{ change_request_identifier }}' --required
 AND region = '{{ region }}' --required
 AND action = '{{ action }}' --required
 RETURNING
-collaborationChangeRequest;
+collaboration_change_request;
 ```
 </TabItem>
 </Tabs>

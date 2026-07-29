@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bundle. (pattern: &lt;code&gt;^wsb-&#91;0-9a-z&#93;&#123;8,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BundleType" /></td>
+    <td><CopyableCode code="bundle_type" /></td>
     <td><code>string</code></td>
     <td>The type of WorkSpace bundle. (REGULAR, STANDBY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeType" /></td>
+    <td><CopyableCode code="compute_type" /></td>
     <td><code>object</code></td>
     <td>Describes the compute type of the bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the bundle was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the image that was used to create the bundle. (pattern: &lt;code&gt;wsi-&#91;0-9a-z&#93;&#123;9,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the bundle was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the bundle. This is the account identifier of the owner, or AMAZON if the bundle is provided by Amazon Web Services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootStorage" /></td>
+    <td><CopyableCode code="root_storage" /></td>
     <td><code>object</code></td>
     <td>Describes the root volume for a WorkSpace bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the WorkSpace bundle. (AVAILABLE, PENDING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserStorage" /></td>
+    <td><CopyableCode code="user_storage" /></td>
     <td><code>object</code></td>
     <td>Describes the user volume for a WorkSpace bundle.</td>
 </tr>
@@ -195,18 +195,18 @@ Retrieves a list that describes the available WorkSpace bundles. You can filter 
 
 ```sql
 SELECT
-BundleId,
-BundleType,
-ComputeType,
-CreationTime,
-Description,
-ImageId,
-LastUpdatedTime,
-Name,
-Owner,
-RootStorage,
-State,
-UserStorage
+bundle_id,
+bundle_type,
+compute_type,
+creation_time,
+description,
+image_id,
+last_updated_time,
+name,
+owner,
+root_storage,
+state,
+user_storage
 FROM aws.workspaces.workspace_bundles
 WHERE region = '{{ region }}' -- required
 ;
@@ -249,7 +249,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-WorkspaceBundle
+workspace_bundle
 ;
 ```
 </TabItem>

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in JavaScript date format, when the repository was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration for the repository. This determines how the contents of your repository are encrypted at rest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageScanningConfiguration" /></td>
+    <td><CopyableCode code="image_scanning_configuration" /></td>
     <td><code>object</code></td>
     <td>The image scanning configuration for a repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTagMutability" /></td>
+    <td><CopyableCode code="image_tag_mutability" /></td>
     <td><code>string</code></td>
     <td>The tag mutability setting for the repository. (MUTABLE, IMMUTABLE, IMMUTABLE_WITH_EXCLUSION, MUTABLE_WITH_EXCLUSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTagMutabilityExclusionFilters" /></td>
+    <td><CopyableCode code="image_tag_mutability_exclusion_filters" /></td>
     <td><code>array</code></td>
     <td>A list of filters that specify which image tags are excluded from the repository's image tag mutability setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the registry that contains the repository. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryArn" /></td>
+    <td><CopyableCode code="repository_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the arn:aws:ecr namespace, followed by the region of the repository, Amazon Web Services account ID of the repository owner, repository namespace, and repository name. For example, arn:aws:ecr:region:012345678910:repository-namespace/repository-name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryUri" /></td>
+    <td><CopyableCode code="repository_uri" /></td>
     <td><code>string</code></td>
     <td>The URI for the repository. You can use this URI for container image push and pull operations.</td>
 </tr>
@@ -208,15 +208,15 @@ Describes image repositories in a registry.
 
 ```sql
 SELECT
-createdAt,
-encryptionConfiguration,
-imageScanningConfiguration,
-imageTagMutability,
-imageTagMutabilityExclusionFilters,
-registryId,
-repositoryArn,
-repositoryName,
-repositoryUri
+created_at,
+encryption_configuration,
+image_scanning_configuration,
+image_tag_mutability,
+image_tag_mutability_exclusion_filters,
+registry_id,
+repository_arn,
+repository_name,
+repository_uri
 FROM aws.ecr.repositories
 WHERE region = '{{ region }}' -- required
 ;

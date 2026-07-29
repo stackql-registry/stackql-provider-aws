@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="severityLevels" /></td>
+    <td><CopyableCode code="severity_levels" /></td>
     <td><code>array</code></td>
     <td>The available severity levels for the support case. Available severity levels are defined by your service level agreement with Amazon Web Services.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the list of severity levels that you can assign to a support case. The s
 
 ```sql
 SELECT
-severityLevels
+severity_levels
 FROM aws.support.severity_levels
 WHERE region = '{{ region }}' -- required
 ;

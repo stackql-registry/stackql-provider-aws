@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="controlIdentifier" /></td>
+    <td><CopyableCode code="control_identifier" /></td>
     <td><code>string</code></td>
     <td>The controlIdentifier of the control for the operation. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enabledControlIdentifier" /></td>
+    <td><CopyableCode code="enabled_control_identifier" /></td>
     <td><code>string</code></td>
     <td>The controlIdentifier of the enabled control. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the operation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationIdentifier" /></td>
+    <td><CopyableCode code="operation_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the specified operation. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>One of ENABLE_CONTROL or DISABLE_CONTROL. (ENABLE_CONTROL, DISABLE_CONTROL, UPDATE_ENABLED_CONTROL, RESET_ENABLED_CONTROL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the operation began.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>One of IN_PROGRESS, SUCEEDED, or FAILED. (SUCCEEDED, FAILED, IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>If the operation result is FAILED, this string contains a message explaining why the operation failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetIdentifier" /></td>
+    <td><CopyableCode code="target_identifier" /></td>
     <td><code>string</code></td>
     <td>The target upon which the control operation is working. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="controlIdentifier" /></td>
+    <td><CopyableCode code="control_identifier" /></td>
     <td><code>string</code></td>
     <td>The controlIdentifier of a control. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enabledControlIdentifier" /></td>
+    <td><CopyableCode code="enabled_control_identifier" /></td>
     <td><code>string</code></td>
     <td>The controlIdentifier of an enabled control. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the control operation was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationIdentifier" /></td>
+    <td><CopyableCode code="operation_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a control operation. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The type of operation. (ENABLE_CONTROL, DISABLE_CONTROL, UPDATE_ENABLED_CONTROL, RESET_ENABLED_CONTROL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a control operation began.</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the specified control operation. (SUCCEEDED, FAILED, IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A speficic message displayed as part of the control status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetIdentifier" /></td>
+    <td><CopyableCode code="target_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the target of a control operation. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -227,15 +227,15 @@ Returns the status of a particular EnableControl or DisableControl operation. Di
 
 ```sql
 SELECT
-controlIdentifier,
-enabledControlIdentifier,
-endTime,
-operationIdentifier,
-operationType,
-startTime,
+control_identifier,
+enabled_control_identifier,
+end_time,
+operation_identifier,
+operation_type,
+start_time,
 status,
-statusMessage,
-targetIdentifier
+status_message,
+target_identifier
 FROM aws.controltower.control_operations
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,15 +247,15 @@ Provides a list of operations in progress or queued. For usage examples, see Lis
 
 ```sql
 SELECT
-controlIdentifier,
-enabledControlIdentifier,
-endTime,
-operationIdentifier,
-operationType,
-startTime,
+control_identifier,
+enabled_control_identifier,
+end_time,
+operation_identifier,
+operation_type,
+start_time,
 status,
-statusMessage,
-targetIdentifier
+status_message,
+target_identifier
 FROM aws.controltower.control_operations
 WHERE region = '{{ region }}' -- required
 ;

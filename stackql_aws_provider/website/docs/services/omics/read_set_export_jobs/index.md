@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The job's ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job was created.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The job's destination in Amazon S3. (pattern: &lt;code&gt;s3:​//(&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;)/?((.&#123;1,1024&#125;)/)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readSets" /></td>
+    <td><CopyableCode code="read_sets" /></td>
     <td><code>array</code></td>
     <td>The job's read sets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sequenceStoreId" /></td>
+    <td><CopyableCode code="sequence_store_id" /></td>
     <td><code>string</code></td>
     <td>The job's sequence store ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The job's status. (SUBMITTED, IN_PROGRESS, CANCELLING, CANCELLED, FAILED, COMPLETED, COMPLETED_WITH_FAILURES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The job's status message. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The job's ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job was created.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The job's destination in Amazon S3. (pattern: &lt;code&gt;s3:​//(&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;)/?((.&#123;1,1024&#125;)/)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sequenceStoreId" /></td>
+    <td><CopyableCode code="sequence_store_id" /></td>
     <td><code>string</code></td>
     <td>The job's sequence store ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -228,13 +228,13 @@ Retrieves status information about a read set export job and returns the data in
 ```sql
 SELECT
 id,
-completionTime,
-creationTime,
+completion_time,
+creation_time,
 destination,
-readSets,
-sequenceStoreId,
+read_sets,
+sequence_store_id,
 status,
-statusMessage
+status_message
 FROM aws.omics.read_set_export_jobs
 WHERE sequence_store_id = '{{ sequence_store_id }}' -- required
 AND id = '{{ id }}' -- required
@@ -249,10 +249,10 @@ Retrieves a list of read set export jobs in a JSON formatted response. This API 
 ```sql
 SELECT
 id,
-completionTime,
-creationTime,
+completion_time,
+creation_time,
 destination,
-sequenceStoreId,
+sequence_store_id,
 status
 FROM aws.omics.read_set_export_jobs
 WHERE sequence_store_id = '{{ sequence_store_id }}' -- required

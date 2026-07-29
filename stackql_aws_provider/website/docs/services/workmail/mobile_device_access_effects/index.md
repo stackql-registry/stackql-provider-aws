@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Effect" /></td>
+    <td><CopyableCode code="effect" /></td>
     <td><code>string</code></td>
     <td>The effect of the simulated access, ALLOW or DENY, after evaluating mobile device access rules in the WorkMail organization for the simulated user parameters. (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchedRules" /></td>
+    <td><CopyableCode code="matched_rules" /></td>
     <td><code>array</code></td>
     <td>A list of the rules which matched the simulated user input and produced the effect.</td>
 </tr>
@@ -124,8 +124,8 @@ Simulates the effect of the mobile device access rules for the given attributes 
 
 ```sql
 SELECT
-Effect,
-MatchedRules
+effect,
+matched_rules
 FROM aws.workmail.mobile_device_access_effects
 WHERE region = '{{ region }}' -- required
 ;

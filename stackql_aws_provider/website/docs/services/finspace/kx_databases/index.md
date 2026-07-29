@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the database is created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databaseArn" /></td>
+    <td><CopyableCode code="database_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the kdb database for which the information is retrieved. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the database. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb environment. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastCompletedChangesetId" /></td>
+    <td><CopyableCode code="last_completed_changeset_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the changeset. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the database was modified. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numBytes" /></td>
+    <td><CopyableCode code="num_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of bytes in the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numChangesets" /></td>
+    <td><CopyableCode code="num_changesets" /></td>
     <td><code>integer</code></td>
     <td>The total number of changesets in the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numFiles" /></td>
+    <td><CopyableCode code="num_files" /></td>
     <td><code>integer</code></td>
     <td>The total number of files in the database.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kxDatabases" /></td>
+    <td><CopyableCode code="kx_databases" /></td>
     <td><code>array</code></td>
     <td>A list of databases in the kdb environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -243,16 +243,16 @@ Returns database information for the specified environment ID.
 
 ```sql
 SELECT
-createdTimestamp,
-databaseArn,
-databaseName,
+created_timestamp,
+database_arn,
+database_name,
 description,
-environmentId,
-lastCompletedChangesetId,
-lastModifiedTimestamp,
-numBytes,
-numChangesets,
-numFiles
+environment_id,
+last_completed_changeset_id,
+last_modified_timestamp,
+num_bytes,
+num_changesets,
+num_files
 FROM aws.finspace.kx_databases
 WHERE environment_id = '{{ environment_id }}' -- required
 AND database_name = '{{ database_name }}' -- required
@@ -266,8 +266,8 @@ Returns a list of all the databases in the kdb environment.
 
 ```sql
 SELECT
-kxDatabases,
-nextToken
+kx_databases,
+next_token
 FROM aws.finspace.kx_databases
 WHERE environment_id = '{{ environment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -309,12 +309,12 @@ SELECT
 '{{ environment_id }}',
 '{{ region }}'
 RETURNING
-createdTimestamp,
-databaseArn,
-databaseName,
+created_timestamp,
+database_arn,
+database_name,
 description,
-environmentId,
-lastModifiedTimestamp
+environment_id,
+last_modified_timestamp
 ;
 ```
 </TabItem>
@@ -366,10 +366,10 @@ AND database_name = '{{ database_name }}' --required
 AND region = '{{ region }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-databaseName,
+database_name,
 description,
-environmentId,
-lastModifiedTimestamp;
+environment_id,
+last_modified_timestamp;
 ```
 </TabItem>
 </Tabs>

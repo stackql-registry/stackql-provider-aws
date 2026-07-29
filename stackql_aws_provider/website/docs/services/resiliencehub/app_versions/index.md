@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalInfo" /></td>
+    <td><CopyableCode code="additional_info" /></td>
     <td><code>object</code></td>
     <td>Additional configuration parameters for an Resilience Hub application. If you want to implement additionalInfo through the Resilience Hub console rather than using an API call, see Configure the application configuration parameters. Currently, this parameter supports only failover region and account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:partition:resiliencehub:region:account:app/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>string</code></td>
     <td>Resilience Hub application version. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appVersions" /></td>
+    <td><CopyableCode code="app_versions" /></td>
     <td><code>array</code></td>
     <td>The version of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -169,9 +169,9 @@ Describes the Resilience Hub application version.
 
 ```sql
 SELECT
-additionalInfo,
-appArn,
-appVersion
+additional_info,
+app_arn,
+app_version
 FROM aws.resiliencehub.app_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -183,8 +183,8 @@ Lists the different versions for the Resilience Hub applications.
 
 ```sql
 SELECT
-appVersions,
-nextToken
+app_versions,
+next_token
 FROM aws.resiliencehub.app_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,9 +214,9 @@ WHERE
 region = '{{ region }}' --required
 AND appArn = '{{ appArn }}' --required
 RETURNING
-additionalInfo,
-appArn,
-appVersion;
+additional_info,
+app_arn,
+app_version;
 ```
 </TabItem>
 </Tabs>

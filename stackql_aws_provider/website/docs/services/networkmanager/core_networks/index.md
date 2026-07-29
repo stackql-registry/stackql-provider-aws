@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoreNetworkArn" /></td>
+    <td><CopyableCode code="core_network_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a core network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a core network. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when a core network was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a core network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Edges" /></td>
+    <td><CopyableCode code="edges" /></td>
     <td><code>array</code></td>
     <td>The edges within a core network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network that your core network is a part of. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkFunctionGroups" /></td>
+    <td><CopyableCode code="network_function_groups" /></td>
     <td><code>array</code></td>
     <td>The network function groups associated with a core network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Segments" /></td>
+    <td><CopyableCode code="segments" /></td>
     <td><code>array</code></td>
     <td>The segments within a core network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of a core network. (CREATING, UPDATING, AVAILABLE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of key-value tags associated with a core network.</td>
 </tr>
@@ -115,37 +115,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoreNetworkArn" /></td>
+    <td><CopyableCode code="core_network_arn" /></td>
     <td><code>string</code></td>
     <td>a core network ARN. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a core network. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a core network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The global network ID. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account owner. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of a core network. (CREATING, UPDATING, AVAILABLE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The key-value tags associated with a core network summary.</td>
 </tr>
@@ -270,16 +270,16 @@ Returns information about the LIVE policy for a core network.
 
 ```sql
 SELECT
-CoreNetworkArn,
-CoreNetworkId,
-CreatedAt,
-Description,
-Edges,
-GlobalNetworkId,
-NetworkFunctionGroups,
-Segments,
-State,
-Tags
+core_network_arn,
+core_network_id,
+created_at,
+description,
+edges,
+global_network_id,
+network_function_groups,
+segments,
+state,
+tags
 FROM aws.networkmanager.core_networks
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -292,13 +292,13 @@ Returns a list of owned and shared core networks.
 
 ```sql
 SELECT
-CoreNetworkArn,
-CoreNetworkId,
-Description,
-GlobalNetworkId,
-OwnerAccountId,
-State,
-Tags
+core_network_arn,
+core_network_id,
+description,
+global_network_id,
+owner_account_id,
+state,
+tags
 FROM aws.networkmanager.core_networks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -339,7 +339,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-CoreNetwork
+core_network
 ;
 ```
 </TabItem>
@@ -389,7 +389,7 @@ WHERE
 core_network_id = '{{ core_network_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CoreNetwork;
+core_network;
 ```
 </TabItem>
 </Tabs>

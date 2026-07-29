@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationCount" /></td>
+    <td><CopyableCode code="association_count" /></td>
     <td><code>integer</code></td>
     <td>The number of VPCs that are associated with the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the query logging configuration was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request that created the query logging configuration. The CreatorRequestId allows failed requests to be retried without the risk of running the operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or a Kinesis Data Firehose delivery stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the query logging configuration. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account that created the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>An indication of whether the query logging configuration is shared with other Amazon Web Services accounts, or was shared with the current account by another Amazon Web Services account. Sharing is configured through Resource Access Manager (RAM). (NOT_SHARED, SHARED_WITH_ME, SHARED_BY_ME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the specified query logging configuration. Valid values include the following: CREATING: Resolver is creating the query logging configuration. CREATED: The query logging configuration was successfully created. Resolver is logging queries that originate in the specified VPC. DELETING: Resolver is deleting this query logging configuration. FAILED: Resolver can't deliver logs to the location that is specified in the query logging configuration. Here are two common causes: The specified destination (for example, an Amazon S3 bucket) was deleted. Permissions don't allow sending logs to the destination. (CREATING, CREATED, DELETING, FAILED)</td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationCount" /></td>
+    <td><CopyableCode code="association_count" /></td>
     <td><code>integer</code></td>
     <td>The number of VPCs that are associated with the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the query logging configuration was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request that created the query logging configuration. The CreatorRequestId allows failed requests to be retried without the risk of running the operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or a Kinesis Data Firehose delivery stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the query logging configuration. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account that created the query logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>An indication of whether the query logging configuration is shared with other Amazon Web Services accounts, or was shared with the current account by another Amazon Web Services account. Sharing is configured through Resource Access Manager (RAM). (NOT_SHARED, SHARED_WITH_ME, SHARED_BY_ME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the specified query logging configuration. Valid values include the following: CREATING: Resolver is creating the query logging configuration. CREATED: The query logging configuration was successfully created. Resolver is logging queries that originate in the specified VPC. DELETING: Resolver is deleting this query logging configuration. FAILED: Resolver can't deliver logs to the location that is specified in the query logging configuration. Here are two common causes: The specified destination (for example, an Amazon S3 bucket) was deleted. Permissions don't allow sending logs to the destination. (CREATING, CREATED, DELETING, FAILED)</td>
 </tr>
@@ -265,16 +265,16 @@ Gets information about a specified Resolver query logging configuration, such as
 
 ```sql
 SELECT
-Arn,
-AssociationCount,
-CreationTime,
-CreatorRequestId,
-DestinationArn,
-Id,
-Name,
-OwnerId,
-ShareStatus,
-Status
+arn,
+association_count,
+creation_time,
+creator_request_id,
+destination_arn,
+id,
+name,
+owner_id,
+share_status,
+status
 FROM aws.route53resolver.resolver_query_log_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,16 +286,16 @@ Lists information about the specified query logging configurations. Each configu
 
 ```sql
 SELECT
-Arn,
-AssociationCount,
-CreationTime,
-CreatorRequestId,
-DestinationArn,
-Id,
-Name,
-OwnerId,
-ShareStatus,
-Status
+arn,
+association_count,
+creation_time,
+creator_request_id,
+destination_arn,
+id,
+name,
+owner_id,
+share_status,
+status
 FROM aws.route53resolver.resolver_query_log_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -332,7 +332,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ResolverQueryLogConfig
+resolver_query_log_config
 ;
 ```
 </TabItem>
@@ -390,7 +390,7 @@ region = '{{ region }}' --required
 AND ResolverQueryLogConfigId = '{{ ResolverQueryLogConfigId }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
 RETURNING
-ResolverQueryLogConfigAssociation;
+resolver_query_log_config_association;
 ```
 </TabItem>
 </Tabs>

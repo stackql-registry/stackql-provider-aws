@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>The name of user's proficiency. You must use name of predefined attribute present in the Amazon Connect instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttributeValue" /></td>
+    <td><CopyableCode code="attribute_value" /></td>
     <td><code>string</code></td>
     <td>The value of user's proficiency. You must use value of predefined attribute present in the Amazon Connect instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Level" /></td>
+    <td><CopyableCode code="level" /></td>
     <td><code>number (float)</code></td>
     <td>The level of the proficiency. The valid values are 1, 2, 3, 4 and 5.</td>
 </tr>
@@ -170,9 +170,9 @@ Lists proficiencies associated with a user.
 
 ```sql
 SELECT
-AttributeName,
-AttributeValue,
-Level
+attribute_name,
+attribute_value,
+level
 FROM aws.connect.user_proficiencies
 WHERE instance_id = '{{ instance_id }}' -- required
 AND user_id = '{{ user_id }}' -- required

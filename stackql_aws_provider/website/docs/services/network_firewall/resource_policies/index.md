@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The IAM policy for the resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves a resource policy that you created in a PutResourcePolicy request.
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.network_firewall.resource_policies
 WHERE region = '{{ region }}' -- required
 ;

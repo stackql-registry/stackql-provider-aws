@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the state machine. A name must not contain: white space brackets &lt; &gt; &#123; &#125; &#91; &#93; wildcard characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the state machine is created. For a state machine version, creationDate is the date the version was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the state machine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>Settings to configure server-side encryption.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>A user-defined or an auto-generated string that identifies a Map state. This parameter is present only if the stateMachineArn specified in input is a qualified state machine ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loggingConfiguration" /></td>
+    <td><CopyableCode code="logging_configuration" /></td>
     <td><code>object</code></td>
     <td>The LoggingConfiguration data type is used to set CloudWatch Logs options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision identifier for the state machine. Use the revisionId parameter to compare between versions of a state machine configuration used for executions without performing a diff of the properties, such as definition and roleArn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role maintains security by granting Step Functions access to Amazon Web Services resources.)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineArn" /></td>
+    <td><CopyableCode code="state_machine_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the state machine. If you specified a state machine version ARN in your request, the API returns the version ARN. The version ARN is a combination of state machine ARN and the version number separated by a colon (:). For example, stateMachineARN:1.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the state machine. (ACTIVE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tracingConfiguration" /></td>
+    <td><CopyableCode code="tracing_configuration" /></td>
     <td><code>object</code></td>
     <td>Selects whether X-Ray tracing is enabled.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the state machine (STANDARD or EXPRESS). (STANDARD, EXPRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="variableReferences" /></td>
+    <td><CopyableCode code="variable_references" /></td>
     <td><code>object</code></td>
     <td>A map of state name to a list of variables referenced by that state. States that do not use variable references will not be shown in the response.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the state machine. A name must not contain: white space brackets &lt; &gt; &#123; &#125; &#91; &#93; wildcard characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the state machine is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineArn" /></td>
+    <td><CopyableCode code="state_machine_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the state machine.</td>
 </tr>
@@ -270,19 +270,19 @@ Provides information about a state machine's definition, its IAM role Amazon Res
 ```sql
 SELECT
 name,
-creationDate,
+creation_date,
 definition,
 description,
-encryptionConfiguration,
+encryption_configuration,
 label,
-loggingConfiguration,
-revisionId,
-roleArn,
-stateMachineArn,
+logging_configuration,
+revision_id,
+role_arn,
+state_machine_arn,
 status,
-tracingConfiguration,
+tracing_configuration,
 type_,
-variableReferences
+variable_references
 FROM aws.stepfunctions.state_machines
 WHERE region = '{{ region }}' -- required
 ;
@@ -295,8 +295,8 @@ Lists the existing state machines. If nextToken is returned, there are more resu
 ```sql
 SELECT
 name,
-creationDate,
-stateMachineArn,
+creation_date,
+state_machine_arn,
 type_
 FROM aws.stepfunctions.state_machines
 WHERE region = '{{ region }}' -- required
@@ -346,9 +346,9 @@ SELECT
 '{{ encryptionConfiguration }}',
 '{{ region }}'
 RETURNING
-creationDate,
-stateMachineArn,
-stateMachineVersionArn
+creation_date,
+state_machine_arn,
+state_machine_version_arn
 ;
 ```
 </TabItem>
@@ -445,9 +445,9 @@ WHERE
 region = '{{ region }}' --required
 AND stateMachineArn = '{{ stateMachineArn }}' --required
 RETURNING
-revisionId,
-stateMachineVersionArn,
-updateDate;
+revision_id,
+state_machine_version_arn,
+update_date;
 ```
 </TabItem>
 </Tabs>

@@ -114,7 +114,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ApplicationArn
+application_arn
 ;
 ```
 </TabItem>

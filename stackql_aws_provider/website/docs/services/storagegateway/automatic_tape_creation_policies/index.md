@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutomaticTapeCreationPolicyInfos" /></td>
+    <td><CopyableCode code="automatic_tape_creation_policy_infos" /></td>
     <td><code>array</code></td>
     <td>Gets a listing of information about the gateway's automatic tape creation policies, including the automatic tape creation rules and the gateway that is using the policies.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the automatic tape creation policies for a gateway. If there are no automa
 
 ```sql
 SELECT
-AutomaticTapeCreationPolicyInfos
+automatic_tape_creation_policy_infos
 FROM aws.storagegateway.automatic_tape_creation_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -164,7 +164,7 @@ region = '{{ region }}' --required
 AND AutomaticTapeCreationRules = '{{ AutomaticTapeCreationRules }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="communicationTypes" /></td>
+    <td><CopyableCode code="communication_types" /></td>
     <td><code>array</code></td>
     <td>A JSON-formatted array that contains the available communication type options, along with the available support timeframes for the given inputs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="languageAvailability" /></td>
+    <td><CopyableCode code="language_availability" /></td>
     <td><code>string</code></td>
     <td>Language availability can be any of the following: available best_effort unavailable</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of CreateCaseOption types along with the corresponding supported 
 
 ```sql
 SELECT
-communicationTypes,
-languageAvailability
+communication_types,
+language_availability
 FROM aws.support.create_case_options
 WHERE region = '{{ region }}' -- required
 ;

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the domain recordset (arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the domain recordset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainEntries" /></td>
+    <td><CopyableCode code="domain_entries" /></td>
     <td><code>array</code></td>
     <td>An array of key-value pairs containing information about the domain entries.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>The AWS Region and Availability Zones where the domain recordset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredDomainDelegationInfo" /></td>
+    <td><CopyableCode code="registered_domain_delegation_info" /></td>
     <td><code>object</code></td>
     <td>An object that describes the state of the Route 53 domain delegation to a Lightsail DNS zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the domain recordset (arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the domain recordset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainEntries" /></td>
+    <td><CopyableCode code="domain_entries" /></td>
     <td><code>array</code></td>
     <td>An array of key-value pairs containing information about the domain entries.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The AWS Region and Availability Zones where the domain recordset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredDomainDelegationInfo" /></td>
+    <td><CopyableCode code="registered_domain_delegation_info" /></td>
     <td><code>object</code></td>
     <td>An object that describes the state of the Route 53 domain delegation to a Lightsail DNS zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -264,12 +264,12 @@ Returns information about a specific domain recordset.
 SELECT
 name,
 arn,
-createdAt,
-domainEntries,
+created_at,
+domain_entries,
 location,
-registeredDomainDelegationInfo,
-resourceType,
-supportCode,
+registered_domain_delegation_info,
+resource_type,
+support_code,
 tags
 FROM aws.lightsail.domains
 WHERE region = '{{ region }}' -- required
@@ -284,12 +284,12 @@ Returns a list of all domains in the user's account.
 SELECT
 name,
 arn,
-createdAt,
-domainEntries,
+created_at,
+domain_entries,
 location,
-registeredDomainDelegationInfo,
-resourceType,
-supportCode,
+registered_domain_delegation_info,
+resource_type,
+support_code,
 tags
 FROM aws.lightsail.domains
 WHERE region = '{{ region }}' -- required

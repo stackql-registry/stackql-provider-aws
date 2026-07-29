@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The errorCode representing the validation failure error if the SBOM validation failed. (INCOMPATIBLE_FORMAT, FILE_SIZE_LIMIT_EXCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The errorMessage representing the validation failure error if the SBOM validation failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileName" /></td>
+    <td><CopyableCode code="file_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SBOM file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationResult" /></td>
+    <td><CopyableCode code="validation_result" /></td>
     <td><code>string</code></td>
     <td>The end result of the SBOM validation. (FAILED, SUCCEEDED)</td>
 </tr>
@@ -159,10 +159,10 @@ The validation results for all software bill of materials (SBOM) attached to a s
 
 ```sql
 SELECT
-errorCode,
-errorMessage,
-fileName,
-validationResult
+error_code,
+error_message,
+file_name,
+validation_result
 FROM aws.iot.sbom_validation_results
 WHERE package_name = '{{ package_name }}' -- required
 AND version_name = '{{ version_name }}' -- required

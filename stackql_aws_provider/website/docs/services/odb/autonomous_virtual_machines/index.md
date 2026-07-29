@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autonomousVirtualMachineId" /></td>
+    <td><CopyableCode code="autonomous_virtual_machine_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Autonomous VM. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientIpAddress" /></td>
+    <td><CopyableCode code="client_ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address used by clients to connect to this Autonomous VM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudAutonomousVmClusterId" /></td>
+    <td><CopyableCode code="cloud_autonomous_vm_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Autonomous VM cluster containing this Autonomous VM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCoreCount" /></td>
+    <td><CopyableCode code="cpu_core_count" /></td>
     <td><code>integer</code></td>
     <td>The number of CPU cores allocated to this Autonomous VM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage allocated to this Autonomous Virtual Machine, in gigabytes (GB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServerDisplayName" /></td>
+    <td><CopyableCode code="db_server_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the database server hosting this Autonomous VM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServerId" /></td>
+    <td><CopyableCode code="db_server_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the database server hosting this Autonomous VM. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeInGBs" /></td>
+    <td><CopyableCode code="memory_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of memory allocated to this Autonomous VM, in gigabytes (GB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Oracle Cloud Infrastructure (OCI) resource anchor associated with this Autonomous VM.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the Autonomous VM. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the current status of the Autonomous VM, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vmName" /></td>
+    <td><CopyableCode code="vm_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Autonomous VM.</td>
 </tr>
@@ -179,19 +179,19 @@ Lists all Autonomous VMs in an Autonomous VM cluster.
 
 ```sql
 SELECT
-autonomousVirtualMachineId,
-clientIpAddress,
-cloudAutonomousVmClusterId,
-cpuCoreCount,
-dbNodeStorageSizeInGBs,
-dbServerDisplayName,
-dbServerId,
-memorySizeInGBs,
-ociResourceAnchorName,
+autonomous_virtual_machine_id,
+client_ip_address,
+cloud_autonomous_vm_cluster_id,
+cpu_core_count,
+db_node_storage_size_in_gbs,
+db_server_display_name,
+db_server_id,
+memory_size_in_gbs,
+oci_resource_anchor_name,
 ocid,
 status,
-statusReason,
-vmName
+status_reason,
+vm_name
 FROM aws.odb.autonomous_virtual_machines
 WHERE region = '{{ region }}' -- required
 ;

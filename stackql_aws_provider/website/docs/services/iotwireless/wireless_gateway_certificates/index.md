@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IotCertificateId" /></td>
+    <td><CopyableCode code="iot_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the certificate associated with the wireless gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoRaWANNetworkServerCertificateId" /></td>
+    <td><CopyableCode code="lo_ra_wan_network_server_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the certificate that is associated with the wireless gateway and used for the LoRaWANNetworkServer endpoint.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets the ID of the certificate that is currently associated with a wireless gate
 
 ```sql
 SELECT
-IotCertificateId,
-LoRaWANNetworkServerCertificateId
+iot_certificate_id,
+lo_ra_wan_network_server_certificate_id
 FROM aws.iotwireless.wireless_gateway_certificates
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobTags" /></td>
+    <td><CopyableCode code="job_tags" /></td>
     <td><code>array</code></td>
     <td>The job's tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeDescription" /></td>
+    <td><CopyableCode code="node_description" /></td>
     <td><code>string</code></td>
     <td>The node's description. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeName" /></td>
+    <td><CopyableCode code="node_name" /></td>
     <td><code>string</code></td>
     <td>The node's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputPackageName" /></td>
+    <td><CopyableCode code="output_package_name" /></td>
     <td><code>string</code></td>
     <td>The job's output package name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputPackageVersion" /></td>
+    <td><CopyableCode code="output_package_version" /></td>
     <td><code>string</code></td>
     <td>The job's output package version. (pattern: &lt;code&gt;^(&#91;0-9&#93;+)\.(&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The job's status. (PENDING, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The job's status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateParameters" /></td>
+    <td><CopyableCode code="template_parameters" /></td>
     <td><code>object</code></td>
     <td>The job's template parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The job's template type. (RTSP_CAMERA_STREAM)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeFromTemplateJobs" /></td>
+    <td><CopyableCode code="node_from_template_jobs" /></td>
     <td><code>array</code></td>
     <td>A list of jobs.</td>
 </tr>
@@ -229,18 +229,18 @@ Returns information about a job to create a camera stream node.
 
 ```sql
 SELECT
-CreatedTime,
-JobId,
-JobTags,
-LastUpdatedTime,
-NodeDescription,
-NodeName,
-OutputPackageName,
-OutputPackageVersion,
-Status,
-StatusMessage,
-TemplateParameters,
-TemplateType
+created_time,
+job_id,
+job_tags,
+last_updated_time,
+node_description,
+node_name,
+output_package_name,
+output_package_version,
+status,
+status_message,
+template_parameters,
+template_type
 FROM aws.panorama.node_from_template_jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,8 +253,8 @@ Returns a list of camera stream node jobs.
 
 ```sql
 SELECT
-NextToken,
-NodeFromTemplateJobs
+next_token,
+node_from_template_jobs
 FROM aws.panorama.node_from_template_jobs
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -299,7 +299,7 @@ SELECT
 '{{ TemplateType }}' /* required */,
 '{{ region }}'
 RETURNING
-JobId
+job_id
 ;
 ```
 </TabItem>

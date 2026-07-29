@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="virtualGateways" /></td>
+    <td><CopyableCode code="virtual_gateways" /></td>
     <td><code>array</code></td>
     <td>The virtual private gateways.</td>
 </tr>
@@ -119,7 +119,7 @@ Deprecated. Use DescribeVpnGateways instead. See DescribeVPNGateways in the Amaz
 
 ```sql
 SELECT
-virtualGateways
+virtual_gateways
 FROM aws.directconnect.virtual_gateways
 WHERE region = '{{ region }}' -- required
 ;

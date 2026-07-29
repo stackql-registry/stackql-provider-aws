@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CidrIpv4" /></td>
+    <td><CopyableCode code="cidr_ipv_4" /></td>
     <td><code>string</code></td>
     <td>The IPv4 CIDR range.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrIpv6" /></td>
+    <td><CopyableCode code="cidr_ipv_6" /></td>
     <td><code>string</code></td>
     <td>The IPv6 CIDR range.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The security group rule description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FromPort" /></td>
+    <td><CopyableCode code="from_port" /></td>
     <td><code>integer</code></td>
     <td>If the protocol is TCP or UDP, this is the start of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupOwnerId" /></td>
+    <td><CopyableCode code="group_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpProtocol" /></td>
+    <td><CopyableCode code="ip_protocol" /></td>
     <td><code>string</code></td>
     <td>The IP protocol name (tcp, udp, icmp, icmpv6) or number (see Protocol Numbers). Use -1 to specify all protocols.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsEgress" /></td>
+    <td><CopyableCode code="is_egress" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the security group rule is an outbound rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListId" /></td>
+    <td><CopyableCode code="prefix_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferencedGroupInfo" /></td>
+    <td><CopyableCode code="referenced_group_info" /></td>
     <td><code>string</code></td>
     <td>Describes the security group that is referenced in the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupRuleArn" /></td>
+    <td><CopyableCode code="security_group_rule_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the security group rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupRuleId" /></td>
+    <td><CopyableCode code="security_group_rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags applied to the security group rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ToPort" /></td>
+    <td><CopyableCode code="to_port" /></td>
     <td><code>integer</code></td>
     <td>If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the start port is -1 (all ICMP types), then the end port must be -1 (all ICMP codes).</td>
 </tr>
@@ -260,20 +260,20 @@ Describes one or more of your security group rules.
 
 ```sql
 SELECT
-CidrIpv4,
-CidrIpv6,
-Description,
-FromPort,
-GroupId,
-GroupOwnerId,
-IpProtocol,
-IsEgress,
-PrefixListId,
-ReferencedGroupInfo,
-SecurityGroupRuleArn,
-SecurityGroupRuleId,
-Tags,
-ToPort
+cidr_ipv_4,
+cidr_ipv_6,
+description,
+from_port,
+group_id,
+group_owner_id,
+ip_protocol,
+is_egress,
+prefix_list_id,
+referenced_group_info,
+security_group_rule_arn,
+security_group_rule_id,
+tags,
+to_port
 FROM aws.ec2.security_group_rules
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'
@@ -310,7 +310,7 @@ AND SecurityGroupRule = '{{ SecurityGroupRule }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 <TabItem value="update_security_group_rule_descriptions_egress">
@@ -329,7 +329,7 @@ AND GroupName = '{{ GroupName}}'
 AND IpPermissions = '{{ IpPermissions}}'
 AND SecurityGroupRuleDescription = '{{ SecurityGroupRuleDescription}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

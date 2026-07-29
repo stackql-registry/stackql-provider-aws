@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoTunes" /></td>
+    <td><CopyableCode code="auto_tunes" /></td>
     <td><code>array</code></td>
     <td>Specifies the list of setting adjustments that Auto-Tune has made to the domain. See the Developer Guide for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results.</td>
 </tr>
@@ -139,8 +139,8 @@ Provides scheduled Auto-Tune action details for the Elasticsearch domain, such a
 
 ```sql
 SELECT
-AutoTunes,
-NextToken
+auto_tunes,
+next_token
 FROM aws.es.domain_auto_tunes
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

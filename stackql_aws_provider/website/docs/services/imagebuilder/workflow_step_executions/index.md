@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the specified workflow step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the specified runtime instance of the workflow step finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageBuildVersionArn" /></td>
+    <td><CopyableCode code="image_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the image resource build version that the specified runtime instance of the workflow step creates. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):image/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The output message from the specified runtime instance of the workflow step, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onFailure" /></td>
+    <td><CopyableCode code="on_failure" /></td>
     <td><code>string</code></td>
     <td>The action to perform if the workflow step fails.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
     <td>The file names that the specified runtime version of the workflow step created as output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollbackStatus" /></td>
+    <td><CopyableCode code="rollback_status" /></td>
     <td><code>string</code></td>
     <td>Reports on the rollback status of the specified runtime version of the workflow step, if applicable. (RUNNING, COMPLETED, SKIPPED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the specified runtime version of the workflow step started.</td>
 </tr>
@@ -116,22 +116,22 @@ The following fields are returned by `SELECT` queries:
     <td>The current status for the specified runtime version of the workflow step. (PENDING, SKIPPED, RUNNING, COMPLETED, FAILED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepExecutionId" /></td>
+    <td><CopyableCode code="step_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the runtime version of the workflow step that you specified in the request. (pattern: &lt;code&gt;^step-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutSeconds" /></td>
+    <td><CopyableCode code="timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum duration in seconds for this step to complete its action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowBuildVersionArn" /></td>
+    <td><CopyableCode code="workflow_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the build version for the Image Builder workflow resource that defines this workflow step. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):workflow/(build|test|distribution)/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionId" /></td>
+    <td><CopyableCode code="workflow_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier that Image Builder assigned to keep track of runtime details when it ran the workflow. (pattern: &lt;code&gt;^wf-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
     <td>Description of the workflow step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the workflow step finished.</td>
 </tr>
@@ -185,12 +185,12 @@ The following fields are returned by `SELECT` queries:
     <td>The file names that the workflow step created as output for this runtime instance of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollbackStatus" /></td>
+    <td><CopyableCode code="rollback_status" /></td>
     <td><code>string</code></td>
     <td>Reports on the rollback status of the step, if applicable. (RUNNING, COMPLETED, SKIPPED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the workflow step started.</td>
 </tr>
@@ -200,7 +200,7 @@ The following fields are returned by `SELECT` queries:
     <td>Runtime status for the workflow step. (PENDING, SKIPPED, RUNNING, COMPLETED, FAILED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepExecutionId" /></td>
+    <td><CopyableCode code="step_execution_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the workflow step, assigned at runtime. (pattern: &lt;code&gt;^step-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -285,20 +285,20 @@ SELECT
 name,
 action,
 description,
-endTime,
-imageBuildVersionArn,
+end_time,
+image_build_version_arn,
 inputs,
 message,
-onFailure,
+on_failure,
 outputs,
-requestId,
-rollbackStatus,
-startTime,
+request_id,
+rollback_status,
+start_time,
 status,
-stepExecutionId,
-timeoutSeconds,
-workflowBuildVersionArn,
-workflowExecutionId
+step_execution_id,
+timeout_seconds,
+workflow_build_version_arn,
+workflow_execution_id
 FROM aws.imagebuilder.workflow_step_executions
 WHERE stepExecutionId = '{{ stepExecutionId }}' -- required
 AND region = '{{ region }}' -- required
@@ -314,14 +314,14 @@ SELECT
 name,
 action,
 description,
-endTime,
+end_time,
 inputs,
 message,
 outputs,
-rollbackStatus,
-startTime,
+rollback_status,
+start_time,
 status,
-stepExecutionId
+step_execution_id
 FROM aws.imagebuilder.workflow_step_executions
 WHERE region = '{{ region }}' -- required
 ;

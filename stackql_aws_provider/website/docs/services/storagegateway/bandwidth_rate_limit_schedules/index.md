@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BandwidthRateLimitIntervals" /></td>
+    <td><CopyableCode code="bandwidth_rate_limit_intervals" /></td>
     <td><code>array</code></td>
     <td>An array that contains the bandwidth rate limit intervals for a tape or volume gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns information about the bandwidth rate limit schedule of a gateway. By def
 
 ```sql
 SELECT
-BandwidthRateLimitIntervals,
-GatewayARN
+bandwidth_rate_limit_intervals,
+gateway_arn
 FROM aws.storagegateway.bandwidth_rate_limit_schedules
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND BandwidthRateLimitIntervals = '{{ BandwidthRateLimitIntervals }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

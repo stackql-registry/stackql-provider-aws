@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list application revisions call to return the next set of application revisions in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags returned by ListTagsForResource. The tags are associated with the resource identified by the input ResourceArn parameter.</td>
 </tr>
@@ -152,8 +152,8 @@ Returns a list of tags for the resource identified by a specified Amazon Resourc
 
 ```sql
 SELECT
-NextToken,
-Tags
+next_token,
+tags
 FROM aws.codedeploy.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CharacterSetName" /></td>
+    <td><CopyableCode code="character_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the character set of a tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceIdentifier" /></td>
+    <td><CopyableCode code="db_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID for the DB instance that contains the tenant databases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSnapshotIdentifier" /></td>
+    <td><CopyableCode code="db_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier for the snapshot of the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSnapshotTenantDatabaseARN" /></td>
+    <td><CopyableCode code="db_snapshot_tenant_database_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the snapshot tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbiResourceId" /></td>
+    <td><CopyableCode code="dbi_resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource identifier of the source CDB instance. This identifier can't be changed and is unique to an Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineName" /></td>
+    <td><CopyableCode code="engine_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master username of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NcharCharacterSetName" /></td>
+    <td><CopyableCode code="nchar_character_set_name" /></td>
     <td><code>string</code></td>
     <td>The NCHAR character set name of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>The type of DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantDBName" /></td>
+    <td><CopyableCode code="tenant_db_name" /></td>
     <td><code>string</code></td>
     <td>The name of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantDatabaseCreateTime" /></td>
+    <td><CopyableCode code="tenant_database_create_time" /></td>
     <td><code>string</code></td>
     <td>The time the DB snapshot was taken, specified in Coordinated Universal Time (UTC). If you copy the snapshot, the creation time changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantDatabaseResourceId" /></td>
+    <td><CopyableCode code="tenant_database_resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID of the tenant database.</td>
 </tr>
@@ -214,19 +214,19 @@ Describes the tenant databases that exist in a DB snapshot. This command only ap
 
 ```sql
 SELECT
-CharacterSetName,
-DBInstanceIdentifier,
-DBSnapshotIdentifier,
-DBSnapshotTenantDatabaseARN,
-DbiResourceId,
-EngineName,
-MasterUsername,
-NcharCharacterSetName,
-SnapshotType,
-TagList,
-TenantDBName,
-TenantDatabaseCreateTime,
-TenantDatabaseResourceId
+character_set_name,
+db_instance_identifier,
+db_snapshot_identifier,
+db_snapshot_tenant_database_arn,
+dbi_resource_id,
+engine_name,
+master_username,
+nchar_character_set_name,
+snapshot_type,
+tag_list,
+tenant_db_name,
+tenant_database_create_time,
+tenant_database_resource_id
 FROM aws.rds.db_snapshot_tenant_databases
 WHERE region = '{{ region }}' -- required
 AND DBInstanceIdentifier = '{{ DBInstanceIdentifier }}'

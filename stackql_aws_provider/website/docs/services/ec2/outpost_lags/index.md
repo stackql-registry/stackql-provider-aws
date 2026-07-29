@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceIds" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the local gateway virtual interfaces associated with the Outpost LAG.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the Outpost LAG.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostLagId" /></td>
+    <td><CopyableCode code="outpost_lag_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost LAG.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost LAG owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceLinkVirtualInterfaceIds" /></td>
+    <td><CopyableCode code="service_link_virtual_interface_ids" /></td>
     <td><code>string</code></td>
     <td>The service link virtual interface IDs associated with the Outpost LAG.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Outpost LAG.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags associated with the Outpost LAG.</td>
 </tr>
@@ -174,13 +174,13 @@ Describes the Outposts link aggregation groups (LAGs). LAGs are only available f
 
 ```sql
 SELECT
-LocalGatewayVirtualInterfaceIds,
-OutpostArn,
-OutpostLagId,
-OwnerId,
-ServiceLinkVirtualInterfaceIds,
-State,
-Tags
+local_gateway_virtual_interface_ids,
+outpost_arn,
+outpost_lag_id,
+owner_id,
+service_link_virtual_interface_ids,
+state,
+tags
 FROM aws.ec2.outpost_lags
 WHERE region = '{{ region }}' -- required
 AND OutpostLagId = '{{ OutpostLagId }}'

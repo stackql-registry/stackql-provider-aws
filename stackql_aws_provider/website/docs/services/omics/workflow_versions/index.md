@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>ARN of the workflow version. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerRegistryMap" /></td>
+    <td><CopyableCode code="container_registry_map" /></td>
     <td><code>object</code></td>
     <td>Use a container registry map to specify mappings between the ECR private repository and one or more upstream registries. For more information, see Container images in the Amazon Web Services HealthOmics User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the workflow version was created.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>Definition of the workflow version. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="definitionRepositoryDetails" /></td>
+    <td><CopyableCode code="definition_repository_details" /></td>
     <td><code>object</code></td>
     <td>Details about the source code repository that hosts the workflow version definition files.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata for the workflow version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterTemplate" /></td>
+    <td><CopyableCode code="parameter_template" /></td>
     <td><code>object</code></td>
     <td>The parameter template for the workflow version.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The README content for the workflow version, providing documentation and usage information specific to this version. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readmePath" /></td>
+    <td><CopyableCode code="readme_path" /></td>
     <td><code>string</code></td>
     <td>The path to the workflow version README markdown file within the repository. This file provides documentation and usage information for the workflow. If not specified, the README.md file from the root directory of the repository will be used. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -126,17 +126,17 @@ The following fields are returned by `SELECT` queries:
     <td>The workflow version status (CREATING, ACTIVE, UPDATING, DELETED, FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The workflow version status message (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageCapacity" /></td>
+    <td><CopyableCode code="storage_capacity" /></td>
     <td><code>integer</code></td>
     <td>The default run storage capacity for static storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The default storage type for the run. (STATIC, DYNAMIC)</td>
 </tr>
@@ -156,17 +156,17 @@ The following fields are returned by `SELECT` queries:
     <td>The universally unique identifier (UUID) value for this workflow version (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The workflow version name. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-\._&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowBucketOwnerId" /></td>
+    <td><CopyableCode code="workflow_bucket_owner_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services Id of the owner of the bucket. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The workflow's ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -190,7 +190,7 @@ The following fields are returned by `SELECT` queries:
     <td>ARN of the workflow version. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the workflow version.</td>
 </tr>
@@ -220,12 +220,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the workflow version. (PRIVATE, READY2RUN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow version. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-\._&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The workflow's ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -360,28 +360,28 @@ Gets information about a workflow version. For more information, see Workflow ve
 SELECT
 accelerators,
 arn,
-containerRegistryMap,
-creationTime,
+container_registry_map,
+creation_time,
 definition,
-definitionRepositoryDetails,
+definition_repository_details,
 description,
 digest,
 engine,
 main,
 metadata,
-parameterTemplate,
+parameter_template,
 readme,
-readmePath,
+readme_path,
 status,
-statusMessage,
-storageCapacity,
-storageType,
+status_message,
+storage_capacity,
+storage_type,
 tags,
 type_,
 uuid,
-versionName,
-workflowBucketOwnerId,
-workflowId
+version_name,
+workflow_bucket_owner_id,
+workflow_id
 FROM aws.omics.workflow_versions
 WHERE workflow_id = '{{ workflow_id }}' -- required
 AND version_name = '{{ version_name }}' -- required
@@ -399,14 +399,14 @@ Lists the workflow versions for the specified workflow. For more information, se
 ```sql
 SELECT
 arn,
-creationTime,
+creation_time,
 description,
 digest,
 metadata,
 status,
 type_,
-versionName,
-workflowId
+version_name,
+workflow_id
 FROM aws.omics.workflow_versions
 WHERE workflow_id = '{{ workflow_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -486,8 +486,8 @@ arn,
 status,
 tags,
 uuid,
-versionName,
-workflowId
+version_name,
+workflow_id
 ;
 ```
 </TabItem>

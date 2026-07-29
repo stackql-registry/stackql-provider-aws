@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Iam" /></td>
+    <td><CopyableCode code="iam" /></td>
     <td><code>object</code></td>
     <td>A structure that describes details for IAM authentication.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthenticationMethod" /></td>
+    <td><CopyableCode code="authentication_method" /></td>
     <td><code>object</code></td>
     <td>A structure that describes an authentication method. The contents of this structure is determined by the AuthenticationMethodType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationMethodType" /></td>
+    <td><CopyableCode code="authentication_method_type" /></td>
     <td><code>string</code></td>
     <td>The type of authentication that is used by this method. (IAM)</td>
 </tr>
@@ -166,7 +166,7 @@ Retrieves details about an authentication method used by an application.
 
 ```sql
 SELECT
-Iam
+iam
 FROM aws.sso_admin.application_authentication_methods
 WHERE region = '{{ region }}' -- required
 ;
@@ -178,8 +178,8 @@ Lists all of the authentication methods supported by the specified application.
 
 ```sql
 SELECT
-AuthenticationMethod,
-AuthenticationMethodType
+authentication_method,
+authentication_method_type
 FROM aws.sso_admin.application_authentication_methods
 WHERE region = '{{ region }}' -- required
 ;

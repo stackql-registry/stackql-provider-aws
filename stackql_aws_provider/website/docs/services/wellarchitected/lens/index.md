@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LensArn" /></td>
+    <td><CopyableCode code="lens_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LensVersion" /></td>
+    <td><CopyableCode code="lens_version" /></td>
     <td><code>string</code></td>
     <td>The version of a lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The full name of the lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareInvitationId" /></td>
+    <td><CopyableCode code="share_invitation_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the share invitation. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the lens.</td>
 </tr>
@@ -197,13 +197,13 @@ Get an existing lens.
 
 ```sql
 SELECT
-Description,
-LensArn,
-LensVersion,
-Name,
-Owner,
-ShareInvitationId,
-Tags
+description,
+lens_arn,
+lens_version,
+name,
+owner,
+share_invitation_id,
+tags
 FROM aws.wellarchitected.lens
 WHERE lens_alias = '{{ lens_alias }}' -- required
 AND region = '{{ region }}' -- required
@@ -242,8 +242,8 @@ SELECT
 '{{ lens_alias }}',
 '{{ region }}'
 RETURNING
-LensArn,
-LensVersion
+lens_arn,
+lens_version
 ;
 ```
 </TabItem>

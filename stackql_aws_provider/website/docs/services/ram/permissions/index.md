@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of this RAM managed permission.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the permission was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultVersion" /></td>
+    <td><CopyableCode code="default_version" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the version of the permission represented in this response is the default version for this permission.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="featureSet" /></td>
+    <td><CopyableCode code="feature_set" /></td>
     <td><code>string</code></td>
     <td>Indicates what features are available for this resource share. This parameter can have one of the following values: STANDARD – A resource share that supports all functionality. These resource shares are visible to all principals you share the resource share with. You can modify these resource shares in RAM using the console or APIs. This resource share might have been created by RAM, or it might have been CREATED_FROM_POLICY and then promoted. CREATED_FROM_POLICY – The customer manually shared a resource by attaching a resource-based policy. That policy did not match any existing managed permissions, so RAM created this customer managed permission automatically on the customer's behalf based on the attached policy document. This type of resource share is visible only to the Amazon Web Services account that created it. You can't modify it in RAM unless you promote it. For more information, see PromoteResourceShareCreatedFromPolicy. PROMOTING_TO_STANDARD – This resource share was originally CREATED_FROM_POLICY, but the customer ran the PromoteResourceShareCreatedFromPolicy and that operation is still in progress. This value changes to STANDARD when complete. (CREATED_FROM_POLICY, PROMOTING_TO_STANDARD, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isResourceTypeDefault" /></td>
+    <td><CopyableCode code="is_resource_type_default" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the version of the permission represented in this response is the default version for all resources of this resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the permission was last updated.</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>The permission's effect and actions in JSON format. The effect indicates whether the specified actions are allowed or denied. The actions list the operations to which the principal is granted or denied access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="permissionType" /></td>
+    <td><CopyableCode code="permission_type" /></td>
     <td><code>string</code></td>
     <td>The type of managed permission. This can be one of the following values: AWS_MANAGED – Amazon Web Services created and manages this managed permission. You can associate it with your resource shares, but you can't modify it. CUSTOMER_MANAGED – You, or another principal in your account created this managed permission. You can associate it with your resource shares and create new versions that have different permissions. (CUSTOMER_MANAGED, AWS_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type to which this permission applies.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If present, this value indicates that more output is available than is included in the current response. Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the NextToken response element comes back as null. This indicates that this is the last page of results.</td>
 </tr>
@@ -245,14 +245,14 @@ Retrieves the contents of a managed permission in JSON format.
 SELECT
 name,
 arn,
-creationTime,
-defaultVersion,
-featureSet,
-isResourceTypeDefault,
-lastUpdatedTime,
+creation_time,
+default_version,
+feature_set,
+is_resource_type_default,
+last_updated_time,
 permission,
-permissionType,
-resourceType,
+permission_type,
+resource_type,
 status,
 tags,
 version
@@ -267,7 +267,7 @@ Retrieves a list of available RAM permissions that you can use for the supported
 
 ```sql
 SELECT
-nextToken,
+next_token,
 permissions
 FROM aws.ram.permissions
 WHERE region = '{{ region }}' -- required
@@ -307,7 +307,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-clientToken,
+client_token,
 permission
 ;
 ```

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnnouncementDirection" /></td>
+    <td><CopyableCode code="announcement_direction" /></td>
     <td><code>string</code></td>
     <td>The direction for the route table announcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the core network for the transit gateway route table announcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the transit gateway route table announcement was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerCoreNetworkId" /></td>
+    <td><CopyableCode code="peer_core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the core network ID for the peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerTransitGatewayId" /></td>
+    <td><CopyableCode code="peer_transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the peer transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeeringAttachmentId" /></td>
+    <td><CopyableCode code="peering_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the peering attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway announcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The key-value pairs associated with the route table announcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableAnnouncementId" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_announcement_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway route table announcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableId" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway route table.</td>
 </tr>
@@ -228,17 +228,17 @@ Describes one or more transit gateway route table advertisements.
 
 ```sql
 SELECT
-AnnouncementDirection,
-CoreNetworkId,
-CreationTime,
-PeerCoreNetworkId,
-PeerTransitGatewayId,
-PeeringAttachmentId,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayRouteTableAnnouncementId,
-TransitGatewayRouteTableId
+announcement_direction,
+core_network_id,
+creation_time,
+peer_core_network_id,
+peer_transit_gateway_id,
+peering_attachment_id,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_route_table_announcement_id,
+transit_gateway_route_table_id
 FROM aws.ec2.transit_gateway_route_table_announcements
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayRouteTableAnnouncementIds = '{{ TransitGatewayRouteTableAnnouncementIds }}'
@@ -280,17 +280,17 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-AnnouncementDirection,
-CoreNetworkId,
-CreationTime,
-PeerCoreNetworkId,
-PeerTransitGatewayId,
-PeeringAttachmentId,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayRouteTableAnnouncementId,
-TransitGatewayRouteTableId
+announcement_direction,
+core_network_id,
+creation_time,
+peer_core_network_id,
+peer_transit_gateway_id,
+peering_attachment_id,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_route_table_announcement_id,
+transit_gateway_route_table_id
 ;
 ```
 </TabItem>

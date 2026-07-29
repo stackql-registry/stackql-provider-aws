@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiDestinationArn" /></td>
+    <td><CopyableCode code="api_destination_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the API destination retrieved. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:api-destination\/&#91;\.\-_A-Za-z0-9&#93;+\/&#91;\-A-Za-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiDestinationState" /></td>
+    <td><CopyableCode code="api_destination_state" /></td>
     <td><code>string</code></td>
     <td>The state of the API destination retrieved. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionArn" /></td>
+    <td><CopyableCode code="connection_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the connection specified for the API destination retrieved. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:connection\/&#91;\.\-_A-Za-z0-9&#93;+\/&#91;\-A-Za-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp for the time that the API destination was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the API destination retrieved. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpMethod" /></td>
+    <td><CopyableCode code="http_method" /></td>
     <td><code>string</code></td>
     <td>The method to use to connect to the HTTP endpoint. (POST, GET, HEAD, OPTIONS, PUT, PATCH, DELETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationEndpoint" /></td>
+    <td><CopyableCode code="invocation_endpoint" /></td>
     <td><code>string</code></td>
     <td>The URL to use to connect to the HTTP endpoint. (pattern: &lt;code&gt;^((%&#91;0-9A-Fa-f&#93;&#123;2&#125;|&#91;-()_.!~*';/?:@\x26=+$,A-Za-z0-9&#93;)+)(&#91;).!';/?:,&#93;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationRateLimitPerSecond" /></td>
+    <td><CopyableCode code="invocation_rate_limit_per_second" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of invocations per second to specified for the API destination. Note that if you set the invocation rate maximum to a value lower the rate necessary to send all events received on to the destination HTTP endpoint, some events may not be delivered within the 24-hour retry window. If you plan to set the rate lower than the rate necessary to deliver all events, consider using a dead-letter queue to catch events that are not delivered within 24 hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp for the time that the API destination was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the API destination retrieved. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -192,16 +192,16 @@ Retrieves details about an API destination.
 
 ```sql
 SELECT
-ApiDestinationArn,
-ApiDestinationState,
-ConnectionArn,
-CreationTime,
-Description,
-HttpMethod,
-InvocationEndpoint,
-InvocationRateLimitPerSecond,
-LastModifiedTime,
-Name
+api_destination_arn,
+api_destination_state,
+connection_arn,
+creation_time,
+description,
+http_method,
+invocation_endpoint,
+invocation_rate_limit_per_second,
+last_modified_time,
+name
 FROM aws.events.api_destinations
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,10 +242,10 @@ SELECT
 {{ InvocationRateLimitPerSecond }},
 '{{ region }}'
 RETURNING
-ApiDestinationArn,
-ApiDestinationState,
-CreationTime,
-LastModifiedTime
+api_destination_arn,
+api_destination_state,
+creation_time,
+last_modified_time
 ;
 ```
 </TabItem>
@@ -312,10 +312,10 @@ InvocationRateLimitPerSecond = {{ InvocationRateLimitPerSecond }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-ApiDestinationArn,
-ApiDestinationState,
-CreationTime,
-LastModifiedTime;
+api_destination_arn,
+api_destination_state,
+creation_time,
+last_modified_time;
 ```
 </TabItem>
 </Tabs>

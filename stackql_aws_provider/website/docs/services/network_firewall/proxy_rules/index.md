@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProxyRule" /></td>
+    <td><CopyableCode code="proxy_rule" /></td>
     <td><code>object</code></td>
     <td>Individual rules that define match conditions and actions for application-layer traffic. Rules specify what to inspect (domains, headers, methods) and what action to take (allow, deny, alert).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateToken" /></td>
+    <td><CopyableCode code="update_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the proxy rule. The token marks the state of the proxy rule resource at the time of the request. To make changes to the proxy rule, you provide the token in your request. Network Firewall uses the token to ensure that the proxy rule hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the proxy rule again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -152,8 +152,8 @@ Returns the data objects for the specified proxy configuration for the specified
 
 ```sql
 SELECT
-ProxyRule,
-UpdateToken
+proxy_rule,
+update_token
 FROM aws.network_firewall.proxy_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -188,8 +188,8 @@ SELECT
 '{{ Rules }}',
 '{{ region }}'
 RETURNING
-ProxyRuleGroup,
-UpdateToken
+proxy_rule_group,
+update_token
 ;
 ```
 </TabItem>
@@ -266,9 +266,9 @@ region = '{{ region }}' --required
 AND ProxyRuleName = '{{ ProxyRuleName }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-ProxyRule,
-RemovedConditions,
-UpdateToken;
+proxy_rule,
+removed_conditions,
+update_token;
 ```
 </TabItem>
 <TabItem value="update_proxy_rule_priorities">
@@ -288,11 +288,11 @@ region = '{{ region }}' --required
 AND RuleGroupRequestPhase = '{{ RuleGroupRequestPhase }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-ProxyRuleGroupArn,
-ProxyRuleGroupName,
-RuleGroupRequestPhase,
-Rules,
-UpdateToken;
+proxy_rule_group_arn,
+proxy_rule_group_name,
+rule_group_request_phase,
+rules,
+update_token;
 ```
 </TabItem>
 </Tabs>

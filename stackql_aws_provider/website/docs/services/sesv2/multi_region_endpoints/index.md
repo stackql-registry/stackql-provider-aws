@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of when the multi-region endpoint (global-endpoint) was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the multi-region endpoint (global-endpoint).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the multi-region endpoint (global-endpoint). (pattern: &lt;code&gt;^&#91;\w\-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of when the multi-region endpoint (global-endpoint) was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>array</code></td>
     <td>Contains routes information for the multi-region endpoint (global-endpoint).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the multi-region endpoint (global-endpoint). CREATING – The resource is being provisioned. READY – The resource is ready to use. FAILED – The resource failed to be provisioned. DELETING – The resource is being deleted as requested. (CREATING, READY, FAILED, DELETING)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of when the multi-region endpoint (global-endpoint) was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the multi-region endpoint (global-endpoint).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the multi-region endpoint (global-endpoint). (pattern: &lt;code&gt;^&#91;\w\-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of when the multi-region endpoint (global-endpoint) was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Regions" /></td>
+    <td><CopyableCode code="regions" /></td>
     <td><code>array</code></td>
     <td>Primary and secondary regions between which multi-region endpoint splits sending traffic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the multi-region endpoint (global-endpoint). CREATING – The resource is being provisioned. READY – The resource is ready to use. FAILED – The resource failed to be provisioned. DELETING – The resource is being deleted as requested. (CREATING, READY, FAILED, DELETING)</td>
 </tr>
@@ -226,12 +226,12 @@ Displays the multi-region endpoint (global-endpoint) configuration. Only multi-r
 
 ```sql
 SELECT
-CreatedTimestamp,
-EndpointId,
-EndpointName,
-LastUpdatedTimestamp,
-Routes,
-Status
+created_timestamp,
+endpoint_id,
+endpoint_name,
+last_updated_timestamp,
+routes,
+status
 FROM aws.sesv2.multi_region_endpoints
 WHERE endpoint_name = '{{ endpoint_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -244,12 +244,12 @@ List the multi-region endpoints (global-endpoints). Only multi-region endpoints 
 
 ```sql
 SELECT
-CreatedTimestamp,
-EndpointId,
-EndpointName,
-LastUpdatedTimestamp,
-Regions,
-Status
+created_timestamp,
+endpoint_id,
+endpoint_name,
+last_updated_timestamp,
+regions,
+status
 FROM aws.sesv2.multi_region_endpoints
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -286,8 +286,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-EndpointId,
-Status
+endpoint_id,
+status
 ;
 ```
 </TabItem>

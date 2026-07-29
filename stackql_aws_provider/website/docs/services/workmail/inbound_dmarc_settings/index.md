@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Enforced" /></td>
+    <td><CopyableCode code="enforced" /></td>
     <td><code>boolean</code></td>
     <td>Lists the enforcement setting of the applied policy.</td>
 </tr>
@@ -126,7 +126,7 @@ Lists the settings in a DMARC policy for a specified organization.
 
 ```sql
 SELECT
-Enforced
+enforced
 FROM aws.workmail.inbound_dmarc_settings
 WHERE region = '{{ region }}' -- required
 ;

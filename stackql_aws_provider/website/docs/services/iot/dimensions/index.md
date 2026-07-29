@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) for the dimension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dimension was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dimension was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stringValues" /></td>
+    <td><CopyableCode code="string_values" /></td>
     <td><code>array</code></td>
     <td>The value or list of values used to scope the dimension. For example, for topic filters, this is the pattern used to match the MQTT topic name.</td>
 </tr>
@@ -210,9 +210,9 @@ Provides details about a dimension that is defined in your Amazon Web Services a
 SELECT
 name,
 arn,
-creationDate,
-lastModifiedDate,
-stringValues,
+creation_date,
+last_modified_date,
+string_values,
 type_
 FROM aws.iot.dimensions
 WHERE name = '{{ name }}' -- required
@@ -324,9 +324,9 @@ AND stringValues = '{{ stringValues }}' --required
 RETURNING
 name,
 arn,
-creationDate,
-lastModifiedDate,
-stringValues,
+creation_date,
+last_modified_date,
+string_values,
 type_;
 ```
 </TabItem>

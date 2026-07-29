@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the model. Must be an alphanumeric string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content-type for the model.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the model. Must be an alphanumeric string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content-type for the model.</td>
 </tr>
@@ -235,7 +235,7 @@ Describes an existing model defined for a RestApi resource.
 SELECT
 id,
 name,
-contentType,
+content_type,
 description,
 schema
 FROM aws.apigateway.models
@@ -254,7 +254,7 @@ Describes existing Models defined for a RestApi resource.
 SELECT
 id,
 name,
-contentType,
+content_type,
 description,
 schema
 FROM aws.apigateway.models
@@ -300,7 +300,7 @@ SELECT
 RETURNING
 id,
 name,
-contentType,
+content_type,
 description,
 schema
 ;
@@ -354,7 +354,7 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-contentType,
+content_type,
 description,
 schema;
 ```

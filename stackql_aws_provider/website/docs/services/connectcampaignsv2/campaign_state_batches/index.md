@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedRequests" /></td>
+    <td><CopyableCode code="failed_requests" /></td>
     <td><code>array</code></td>
     <td>List of failed requests of campaign state</td>
 </tr>
 <tr>
-    <td><CopyableCode code="successfulRequests" /></td>
+    <td><CopyableCode code="successful_requests" /></td>
     <td><code>array</code></td>
     <td>List of successful response of campaign state</td>
 </tr>
@@ -124,8 +124,8 @@ Get state of campaigns for the specified Amazon Connect account.
 
 ```sql
 SELECT
-failedRequests,
-successfulRequests
+failed_requests,
+successful_requests
 FROM aws.connectcampaignsv2.campaign_state_batches
 WHERE region = '{{ region }}' -- required
 ;

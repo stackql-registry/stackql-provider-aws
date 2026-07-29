@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoEnable" /></td>
+    <td><CopyableCode code="auto_enable" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether Amazon Macie is enabled automatically for accounts that are added to the organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxAccountLimitReached" /></td>
+    <td><CopyableCode code="max_account_limit_reached" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the maximum number of Amazon Macie member accounts are part of the organization.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the Amazon Macie configuration settings for an organization in Organiz
 
 ```sql
 SELECT
-autoEnable,
-maxAccountLimitReached
+auto_enable,
+max_account_limit_reached
 FROM aws.macie2.organization_configurations
 WHERE region = '{{ region }}' -- required
 ;

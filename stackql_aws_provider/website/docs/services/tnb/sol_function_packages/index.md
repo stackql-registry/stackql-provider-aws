@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata related to the function package. A function package is a .zip file in CSAR (Cloud Service Archive) format that contains a network function (an ETSI standard telecommunication application) and function package descriptor that uses the TOSCA standard to describe how the network functions should run on your network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onboardingState" /></td>
+    <td><CopyableCode code="onboarding_state" /></td>
     <td><code>string</code></td>
     <td>Function package onboarding state. (CREATED, ONBOARDED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationalState" /></td>
+    <td><CopyableCode code="operational_state" /></td>
     <td><code>string</code></td>
     <td>Function package operational state. (ENABLED, DISABLED)</td>
 </tr>
@@ -81,27 +81,27 @@ The following fields are returned by `SELECT` queries:
     <td>A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your Amazon Web Services costs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageState" /></td>
+    <td><CopyableCode code="usage_state" /></td>
     <td><code>string</code></td>
     <td>Function package usage state. (IN_USE, NOT_IN_USE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfProductName" /></td>
+    <td><CopyableCode code="vnf_product_name" /></td>
     <td><code>string</code></td>
     <td>Network function product name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfProvider" /></td>
+    <td><CopyableCode code="vnf_provider" /></td>
     <td><code>string</code></td>
     <td>Network function provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfdId" /></td>
+    <td><CopyableCode code="vnfd_id" /></td>
     <td><code>string</code></td>
     <td>Function package descriptor ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfdVersion" /></td>
+    <td><CopyableCode code="vnfd_version" /></td>
     <td><code>string</code></td>
     <td>Function package descriptor version.</td>
 </tr>
@@ -135,37 +135,37 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of the function package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onboardingState" /></td>
+    <td><CopyableCode code="onboarding_state" /></td>
     <td><code>string</code></td>
     <td>Onboarding state of the function package. (CREATED, ONBOARDED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationalState" /></td>
+    <td><CopyableCode code="operational_state" /></td>
     <td><code>string</code></td>
     <td>Operational state of the function package. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageState" /></td>
+    <td><CopyableCode code="usage_state" /></td>
     <td><code>string</code></td>
     <td>Usage state of the function package. (IN_USE, NOT_IN_USE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfProductName" /></td>
+    <td><CopyableCode code="vnf_product_name" /></td>
     <td><code>string</code></td>
     <td>The product name for the network function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfProvider" /></td>
+    <td><CopyableCode code="vnf_provider" /></td>
     <td><code>string</code></td>
     <td>Provider of the function package and the function package descriptor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfdId" /></td>
+    <td><CopyableCode code="vnfd_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the function package and the function package descriptor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfdVersion" /></td>
+    <td><CopyableCode code="vnfd_version" /></td>
     <td><code>string</code></td>
     <td>Identifies the version of the function package descriptor.</td>
 </tr>
@@ -293,14 +293,14 @@ SELECT
 id,
 arn,
 metadata,
-onboardingState,
-operationalState,
+onboarding_state,
+operational_state,
 tags,
-usageState,
-vnfProductName,
-vnfProvider,
-vnfdId,
-vnfdVersion
+usage_state,
+vnf_product_name,
+vnf_provider,
+vnfd_id,
+vnfd_version
 FROM aws.tnb.sol_function_packages
 WHERE vnf_pkg_id = '{{ vnf_pkg_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -316,13 +316,13 @@ SELECT
 id,
 arn,
 metadata,
-onboardingState,
-operationalState,
-usageState,
-vnfProductName,
-vnfProvider,
-vnfdId,
-vnfdVersion
+onboarding_state,
+operational_state,
+usage_state,
+vnf_product_name,
+vnf_provider,
+vnfd_id,
+vnfd_version
 FROM aws.tnb.sol_function_packages
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -357,10 +357,10 @@ SELECT
 RETURNING
 id,
 arn,
-onboardingState,
-operationalState,
+onboarding_state,
+operational_state,
 tags,
-usageState
+usage_state
 ;
 ```
 </TabItem>
@@ -401,7 +401,7 @@ vnf_pkg_id = '{{ vnf_pkg_id }}' --required
 AND region = '{{ region }}' --required
 AND operationalState = '{{ operationalState }}' --required
 RETURNING
-operationalState;
+operational_state;
 ```
 </TabItem>
 </Tabs>

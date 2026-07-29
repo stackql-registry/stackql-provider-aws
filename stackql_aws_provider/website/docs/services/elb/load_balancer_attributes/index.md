@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessLog" /></td>
+    <td><CopyableCode code="access_log" /></td>
     <td><code>string</code></td>
     <td>If enabled, the load balancer captures detailed information of all requests and delivers the information to the Amazon S3 bucket that you specify. For more information, see Enable Access Logs in the Classic Load Balancers Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdditionalAttributes" /></td>
+    <td><CopyableCode code="additional_attributes" /></td>
     <td><code>string</code></td>
     <td>Any additional attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionDraining" /></td>
+    <td><CopyableCode code="connection_draining" /></td>
     <td><code>string</code></td>
     <td>If enabled, the load balancer allows existing requests to complete before the load balancer shifts traffic away from a deregistered or unhealthy instance. For more information, see Configure Connection Draining in the Classic Load Balancers Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionSettings" /></td>
+    <td><CopyableCode code="connection_settings" /></td>
     <td><code>string</code></td>
     <td>If enabled, the load balancer allows the connections to remain idle (no data is sent over the connection) for the specified duration. By default, Elastic Load Balancing maintains a 60-second idle connection timeout for both front-end and back-end connections of your load balancer. For more information, see Configure Idle Connection Timeout in the Classic Load Balancers Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CrossZoneLoadBalancing" /></td>
+    <td><CopyableCode code="cross_zone_load_balancing" /></td>
     <td><code>string</code></td>
     <td>If enabled, the load balancer routes the request traffic evenly across all instances regardless of the Availability Zones. For more information, see Configure Cross-Zone Load Balancing in the Classic Load Balancers Guide.</td>
 </tr>
@@ -156,11 +156,11 @@ Describes the attributes for the specified load balancer.
 
 ```sql
 SELECT
-AccessLog,
-AdditionalAttributes,
-ConnectionDraining,
-ConnectionSettings,
-CrossZoneLoadBalancing
+access_log,
+additional_attributes,
+connection_draining,
+connection_settings,
+cross_zone_load_balancing
 FROM aws.elb.load_balancer_attributes
 WHERE LoadBalancerName = '{{ LoadBalancerName }}' -- required
 AND region = '{{ region }}' -- required
@@ -191,11 +191,11 @@ LoadBalancerName = '{{ LoadBalancerName }}' --required
 AND LoadBalancerAttributes = '{{ LoadBalancerAttributes }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AccessLog,
-AdditionalAttributes,
-ConnectionDraining,
-ConnectionSettings,
-CrossZoneLoadBalancing;
+access_log,
+additional_attributes,
+connection_draining,
+connection_settings,
+cross_zone_load_balancing;
 ```
 </TabItem>
 </Tabs>

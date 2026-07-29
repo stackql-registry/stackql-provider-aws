@@ -149,8 +149,8 @@ AND GreKey = '{{ GreKey}}'
 AND ClientToken = '{{ ClientToken}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-ClientToken,
-InterfaceAssociation;
+client_token,
+interface_association;
 ```
 </TabItem>
 <TabItem value="disassociate_trunk_interface">
@@ -167,8 +167,8 @@ AND region = '{{ region }}' --required
 AND ClientToken = '{{ ClientToken}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-ClientToken,
-Return;
+client_token,
+return;
 ```
 </TabItem>
 </Tabs>

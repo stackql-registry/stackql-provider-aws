@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupsSummaries" /></td>
+    <td><CopyableCode code="groups_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for list of groups that are mapped to users before a given ordering or timestamp identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, Amazon Kendra returns this token that you can use in the subsequent request to retrieve the next set of groups that are mapped to users before a given ordering or timestamp identifier.</td>
 </tr>
@@ -124,8 +124,8 @@ Provides a list of groups that are mapped to users before a given ordering or ti
 
 ```sql
 SELECT
-GroupsSummaries,
-NextToken
+groups_summaries,
+next_token
 FROM aws.kendra.groups_older_than_ordering_ids
 WHERE region = '{{ region }}' -- required
 ;

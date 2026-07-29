@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="timeRange" /></td>
+    <td><CopyableCode code="time_range" /></td>
     <td><code>string</code></td>
     <td>An inclusive time period that Amazon Macie usage data applies to. Possible values are: (MONTH_TO_DATE, PAST_30_DAYS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageTotals" /></td>
+    <td><CopyableCode code="usage_totals" /></td>
     <td><code>array</code></td>
     <td>An array of objects that contains the results of the query. Each object contains the data for a specific usage metric.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves (queries) aggregated usage data for an account.
 
 ```sql
 SELECT
-timeRange,
-usageTotals
+time_range,
+usage_totals
 FROM aws.macie2.usage_totals
 WHERE region = '{{ region }}' -- required
 AND timeRange = '{{ timeRange }}'

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="reportGroups" /></td>
+    <td><CopyableCode code="report_groups" /></td>
     <td><code>array</code></td>
     <td>The array of report groups returned by BatchGetReportGroups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportGroupsNotFound" /></td>
+    <td><CopyableCode code="report_groups_not_found" /></td>
     <td><code>array</code></td>
     <td>An array of ARNs passed to BatchGetReportGroups that are not associated with a ReportGroup.</td>
 </tr>
@@ -173,8 +173,8 @@ Returns an array of report groups.
 
 ```sql
 SELECT
-reportGroups,
-reportGroupsNotFound
+report_groups,
+report_groups_not_found
 FROM aws.codebuild.report_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -223,7 +223,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-reportGroup
+report_group
 ;
 ```
 </TabItem>
@@ -290,7 +290,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-reportGroup;
+report_group;
 ```
 </TabItem>
 </Tabs>

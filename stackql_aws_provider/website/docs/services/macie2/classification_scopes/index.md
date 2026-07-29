@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the classification scope: automated-sensitive-data-discovery. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_\\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3" /></td>
+    <td><CopyableCode code="s_3" /></td>
     <td><code>object</code></td>
     <td>The S3 buckets that are excluded from automated sensitive data discovery.</td>
 </tr>
@@ -186,7 +186,7 @@ Retrieves the classification scope settings for an account.
 SELECT
 id,
 name,
-s3
+s_3
 FROM aws.macie2.classification_scopes
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

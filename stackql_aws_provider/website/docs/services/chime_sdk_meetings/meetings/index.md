@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExternalMeetingId" /></td>
+    <td><CopyableCode code="external_meeting_id" /></td>
     <td><code>string</code></td>
     <td>The external meeting ID. Pattern: &#91;-_&@+=,()&#123;&#125;\&#91;\&#93;\/«».:|'"#a-zA-Z0-9À-ÿ\s&#93;* Values that begin with aws: are reserved. You can't configure a value that uses this prefix. Case insensitive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaPlacement" /></td>
+    <td><CopyableCode code="media_placement" /></td>
     <td><code>object</code></td>
     <td>The media placement for the meeting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaRegion" /></td>
+    <td><CopyableCode code="media_region" /></td>
     <td><code>string</code></td>
     <td>The Region in which you create the meeting. Available values: af-south-1, ap-northeast-1, ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2, ca-central-1, eu-central-1, eu-north-1, eu-south-1, eu-west-1, eu-west-2, eu-west-3, sa-east-1, us-east-1, us-east-2, us-west-1, us-west-2. Available values in Amazon Web Services GovCloud (US) Regions: us-gov-east-1, us-gov-west-1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MeetingArn" /></td>
+    <td><CopyableCode code="meeting_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the meeting. (pattern: &lt;code&gt;^arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MeetingFeatures" /></td>
+    <td><CopyableCode code="meeting_features" /></td>
     <td><code>object</code></td>
     <td>The configuration settings of the features available to a meeting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MeetingHostId" /></td>
+    <td><CopyableCode code="meeting_host_id" /></td>
     <td><code>string</code></td>
     <td>Reserved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MeetingId" /></td>
+    <td><CopyableCode code="meeting_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime SDK meeting ID. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryMeetingId" /></td>
+    <td><CopyableCode code="primary_meeting_id" /></td>
     <td><code>string</code></td>
     <td>When specified, replicates the media from the primary meeting to this meeting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantIds" /></td>
+    <td><CopyableCode code="tenant_ids" /></td>
     <td><code>array</code></td>
     <td>Array of strings.</td>
 </tr>
@@ -206,15 +206,15 @@ Gets the Amazon Chime SDK meeting details for the specified meeting ID. For more
 
 ```sql
 SELECT
-ExternalMeetingId,
-MediaPlacement,
-MediaRegion,
-MeetingArn,
-MeetingFeatures,
-MeetingHostId,
-MeetingId,
-PrimaryMeetingId,
-TenantIds
+external_meeting_id,
+media_placement,
+media_region,
+meeting_arn,
+meeting_features,
+meeting_host_id,
+meeting_id,
+primary_meeting_id,
+tenant_ids
 FROM aws.chime_sdk_meetings.meetings
 WHERE meeting_id = '{{ meeting_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -264,7 +264,7 @@ SELECT
 '{{ MediaPlacementNetworkType }}',
 '{{ region }}'
 RETURNING
-Meeting
+meeting
 ;
 ```
 </TabItem>

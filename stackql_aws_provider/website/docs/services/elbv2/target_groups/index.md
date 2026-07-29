@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HealthCheckEnabled" /></td>
+    <td><CopyableCode code="health_check_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether health checks are enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckIntervalSeconds" /></td>
+    <td><CopyableCode code="health_check_interval_seconds" /></td>
     <td><code>integer</code></td>
     <td>The approximate amount of time, in seconds, between health checks of an individual target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckPath" /></td>
+    <td><CopyableCode code="health_check_path" /></td>
     <td><code>string</code></td>
     <td>The destination for health checks on the targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckPort" /></td>
+    <td><CopyableCode code="health_check_port" /></td>
     <td><code>string</code></td>
     <td>The port to use to connect with the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckProtocol" /></td>
+    <td><CopyableCode code="health_check_protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol to use to connect with the target. The GENEVE, TLS, UDP, and TCP_UDP protocols are not supported for health checks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckTimeoutSeconds" /></td>
+    <td><CopyableCode code="health_check_timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The amount of time, in seconds, during which no response means a failed health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthyThresholdCount" /></td>
+    <td><CopyableCode code="healthy_threshold_count" /></td>
     <td><code>integer</code></td>
     <td>The number of consecutive health checks successes required before considering an unhealthy target healthy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type. The default value is ipv4.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancerArns" /></td>
+    <td><CopyableCode code="load_balancer_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the load balancer that routes traffic to this target group. You can use each target group with only one load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Matcher" /></td>
+    <td><CopyableCode code="matcher" /></td>
     <td><code>string</code></td>
     <td>The HTTP or gRPC codes to use when checking for a successful response from a target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port on which the targets are listening. This parameter is not used if the target is a Lambda function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol to use for routing traffic to the targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtocolVersion" /></td>
+    <td><CopyableCode code="protocol_version" /></td>
     <td><code>string</code></td>
     <td>&#91;HTTP/HTTPS protocol&#93; The protocol version. The possible values are GRPC, HTTP1, and HTTP2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetControlPort" /></td>
+    <td><CopyableCode code="target_control_port" /></td>
     <td><code>integer</code></td>
     <td>The port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetGroupArn" /></td>
+    <td><CopyableCode code="target_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetGroupName" /></td>
+    <td><CopyableCode code="target_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the target group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The type of target that you must specify when registering targets with this target group. The possible values are instance (register targets by instance ID), ip (register targets by IP address), lambda (register a single Lambda function as a target), or alb (register a single Application Load Balancer as a target).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnhealthyThresholdCount" /></td>
+    <td><CopyableCode code="unhealthy_threshold_count" /></td>
     <td><code>integer</code></td>
     <td>The number of consecutive health check failures required before considering the target unhealthy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the targets.</td>
 </tr>
@@ -369,25 +369,25 @@ Describes the specified target groups or all of your target groups. By default, 
 
 ```sql
 SELECT
-HealthCheckEnabled,
-HealthCheckIntervalSeconds,
-HealthCheckPath,
-HealthCheckPort,
-HealthCheckProtocol,
-HealthCheckTimeoutSeconds,
-HealthyThresholdCount,
-IpAddressType,
-LoadBalancerArns,
-Matcher,
-Port,
-Protocol,
-ProtocolVersion,
-TargetControlPort,
-TargetGroupArn,
-TargetGroupName,
-TargetType,
-UnhealthyThresholdCount,
-VpcId
+health_check_enabled,
+health_check_interval_seconds,
+health_check_path,
+health_check_port,
+health_check_protocol,
+health_check_timeout_seconds,
+healthy_threshold_count,
+ip_address_type,
+load_balancer_arns,
+matcher,
+port,
+protocol,
+protocol_version,
+target_control_port,
+target_group_arn,
+target_group_name,
+target_type,
+unhealthy_threshold_count,
+vpc_id
 FROM aws.elbv2.target_groups
 WHERE region = '{{ region }}' -- required
 AND LoadBalancerArn = '{{ LoadBalancerArn }}'

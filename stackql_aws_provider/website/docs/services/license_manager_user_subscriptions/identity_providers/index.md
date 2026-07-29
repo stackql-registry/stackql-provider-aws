@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FailureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>The failure message associated with an identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProvider" /></td>
+    <td><CopyableCode code="identity_provider" /></td>
     <td><code>object</code></td>
     <td>Refers to an identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderArn" /></td>
+    <td><CopyableCode code="identity_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the identity provider. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;/&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS Account ID of the owner of this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Product" /></td>
+    <td><CopyableCode code="product" /></td>
     <td><code>string</code></td>
     <td>The name of the user-based subscription product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>The Settings resource contains details about the registered identity provider’s product related configuration settings, such as the subnets to provision VPC endpoints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the identity provider.</td>
 </tr>
@@ -170,13 +170,13 @@ Lists the Active Directory identity providers for user-based subscriptions.
 
 ```sql
 SELECT
-FailureMessage,
-IdentityProvider,
-IdentityProviderArn,
-OwnerAccountId,
-Product,
-Settings,
-Status
+failure_message,
+identity_provider,
+identity_provider_arn,
+owner_account_id,
+product,
+settings,
+status
 FROM aws.license_manager_user_subscriptions.identity_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,7 +213,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-IdentityProviderSummary
+identity_provider_summary
 ;
 ```
 </TabItem>
@@ -285,7 +285,7 @@ WHERE
 region = '{{ region }}' --required
 AND UpdateSettings = '{{ UpdateSettings }}' --required
 RETURNING
-IdentityProviderSummary;
+identity_provider_summary;
 ```
 </TabItem>
 </Tabs>

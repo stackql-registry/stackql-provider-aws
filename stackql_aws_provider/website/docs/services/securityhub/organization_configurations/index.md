@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoEnable" /></td>
+    <td><CopyableCode code="auto_enable" /></td>
     <td><code>boolean</code></td>
     <td>Whether to automatically enable Security Hub CSPM in new member accounts when they join the organization. If set to true, then Security Hub CSPM is automatically enabled in new accounts. If set to false, then Security Hub CSPM isn't enabled in new accounts automatically. The default value is false. If the ConfigurationType of your organization is set to CENTRAL, then this field is set to false and can't be changed in the home Region and linked Regions. However, in that case, the delegated administrator can create a configuration policy in which Security Hub CSPM is enabled and associate the policy with new organization accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoEnableStandards" /></td>
+    <td><CopyableCode code="auto_enable_standards" /></td>
     <td><code>string</code></td>
     <td>Whether to automatically enable Security Hub CSPM default standards in new member accounts when they join the organization. If equal to DEFAULT, then Security Hub CSPM default standards are automatically enabled for new member accounts. If equal to NONE, then default standards are not automatically enabled for new member accounts. The default value of this parameter is equal to DEFAULT. If the ConfigurationType of your organization is set to CENTRAL, then this field is set to NONE and can't be changed in the home Region and linked Regions. However, in that case, the delegated administrator can create a configuration policy in which specific security standards are enabled and associate the policy with new organization accounts. (NONE, DEFAULT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberAccountLimitReached" /></td>
+    <td><CopyableCode code="member_account_limit_reached" /></td>
     <td><code>boolean</code></td>
     <td>Whether the maximum number of allowed member accounts are already associated with the Security Hub CSPM administrator account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConfiguration" /></td>
+    <td><CopyableCode code="organization_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides information about the way an organization is configured in Security Hub CSPM.</td>
 </tr>
@@ -141,10 +141,10 @@ Returns information about the way your organization is configured in Security Hu
 
 ```sql
 SELECT
-AutoEnable,
-AutoEnableStandards,
-MemberAccountLimitReached,
-OrganizationConfiguration
+auto_enable,
+auto_enable_standards,
+member_account_limit_reached,
+organization_configuration
 FROM aws.securityhub.organization_configurations
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeFromTimestamp" /></td>
+    <td><CopyableCode code="active_from_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeUntilTimestamp" /></td>
+    <td><CopyableCode code="active_until_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changeType" /></td>
+    <td><CopyableCode code="change_type" /></td>
     <td><code>string</code></td>
     <td>Indicates how the given change will be applied to the dataset. (REPLACE, APPEND, MODIFY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changesetArn" /></td>
+    <td><CopyableCode code="changeset_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the Changeset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changesetId" /></td>
+    <td><CopyableCode code="changeset_id" /></td>
     <td><code>string</code></td>
     <td>ID used to identify a Changeset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetId" /></td>
+    <td><CopyableCode code="dataset_id" /></td>
     <td><code>string</code></td>
     <td>ID for a given Dataset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>The structure with error messages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formatParams" /></td>
+    <td><CopyableCode code="format_params" /></td>
     <td><code>object</code></td>
     <td>Structure of the source file(s).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceParams" /></td>
+    <td><CopyableCode code="source_params" /></td>
     <td><code>object</code></td>
     <td>Options that define the location of the data being ingested.</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of Changeset creation operation. (PENDING, FAILED, SUCCESS, RUNNING, STOP_REQUESTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedByChangesetId" /></td>
+    <td><CopyableCode code="updated_by_changeset_id" /></td>
     <td><code>string</code></td>
     <td>ID used to identify a Changeset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatesChangesetId" /></td>
+    <td><CopyableCode code="updates_changeset_id" /></td>
     <td><code>string</code></td>
     <td>ID used to identify a Changeset</td>
 </tr>
@@ -130,52 +130,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeFromTimestamp" /></td>
+    <td><CopyableCode code="active_from_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>Beginning time from which the Changeset is active. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeUntilTimestamp" /></td>
+    <td><CopyableCode code="active_until_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>Time until which the Changeset is active. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changeType" /></td>
+    <td><CopyableCode code="change_type" /></td>
     <td><code>string</code></td>
     <td>Indicates how the given change will be applied to the dataset. (REPLACE, APPEND, MODIFY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changesetArn" /></td>
+    <td><CopyableCode code="changeset_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the Changeset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changesetId" /></td>
+    <td><CopyableCode code="changeset_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for a Changeset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp at which the Changeset was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetId" /></td>
+    <td><CopyableCode code="dataset_id" /></td>
     <td><code>string</code></td>
     <td>ID for a given Dataset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>The structure with error messages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formatParams" /></td>
+    <td><CopyableCode code="format_params" /></td>
     <td><code>object</code></td>
     <td>Options that define the structure of the source file(s).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceParams" /></td>
+    <td><CopyableCode code="source_params" /></td>
     <td><code>object</code></td>
     <td>Options that define the location of the data being ingested.</td>
 </tr>
@@ -185,12 +185,12 @@ The following fields are returned by `SELECT` queries:
     <td>Status of the Changeset ingestion. PENDING – Changeset is pending creation. FAILED – Changeset creation has failed. SUCCESS – Changeset creation has succeeded. RUNNING – Changeset creation is running. STOP_REQUESTED – User requested Changeset creation to stop. (PENDING, FAILED, SUCCESS, RUNNING, STOP_REQUESTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedByChangesetId" /></td>
+    <td><CopyableCode code="updated_by_changeset_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the updated Changeset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatesChangesetId" /></td>
+    <td><CopyableCode code="updates_changeset_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Changeset that is updated.</td>
 </tr>
@@ -301,19 +301,19 @@ Get information about a Changeset.
 
 ```sql
 SELECT
-activeFromTimestamp,
-activeUntilTimestamp,
-changeType,
-changesetArn,
-changesetId,
-createTime,
-datasetId,
-errorInfo,
-formatParams,
-sourceParams,
+active_from_timestamp,
+active_until_timestamp,
+change_type,
+changeset_arn,
+changeset_id,
+create_time,
+dataset_id,
+error_info,
+format_params,
+source_params,
 status,
-updatedByChangesetId,
-updatesChangesetId
+updated_by_changeset_id,
+updates_changeset_id
 FROM aws.finspace_data.changesets
 WHERE dataset_id = '{{ dataset_id }}' -- required
 AND changeset_id = '{{ changeset_id }}' -- required
@@ -327,19 +327,19 @@ Lists the FinSpace Changesets for a Dataset.
 
 ```sql
 SELECT
-activeFromTimestamp,
-activeUntilTimestamp,
-changeType,
-changesetArn,
-changesetId,
-createTime,
-datasetId,
-errorInfo,
-formatParams,
-sourceParams,
+active_from_timestamp,
+active_until_timestamp,
+change_type,
+changeset_arn,
+changeset_id,
+create_time,
+dataset_id,
+error_info,
+format_params,
+source_params,
 status,
-updatedByChangesetId,
-updatesChangesetId
+updated_by_changeset_id,
+updates_changeset_id
 FROM aws.finspace_data.changesets
 WHERE dataset_id = '{{ dataset_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -381,8 +381,8 @@ SELECT
 '{{ dataset_id }}',
 '{{ region }}'
 RETURNING
-changesetId,
-datasetId
+changeset_id,
+dataset_id
 ;
 ```
 </TabItem>
@@ -445,8 +445,8 @@ AND region = '{{ region }}' --required
 AND sourceParams = '{{ sourceParams }}' --required
 AND formatParams = '{{ formatParams }}' --required
 RETURNING
-changesetId,
-datasetId;
+changeset_id,
+dataset_id;
 ```
 </TabItem>
 </Tabs>

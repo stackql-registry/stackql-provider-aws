@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The association ID. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationName" /></td>
+    <td><CopyableCode code="association_name" /></td>
     <td><code>string</code></td>
     <td>The name of the association applied to the managed node. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationVersion" /></td>
+    <td><CopyableCode code="association_version" /></td>
     <td><code>string</code></td>
     <td>The version of the association applied to the managed node. (pattern: &lt;code&gt;(&#91;$&#93;LATEST)|(&#91;1-9&#93;&#91;0-9&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetailedStatus" /></td>
+    <td><CopyableCode code="detailed_status" /></td>
     <td><code>string</code></td>
     <td>Detailed status information about the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>The association document versions. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code returned by the request to create the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionDate" /></td>
+    <td><CopyableCode code="execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the association ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionSummary" /></td>
+    <td><CopyableCode code="execution_summary" /></td>
     <td><code>string</code></td>
     <td>Summary information about association execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The managed node ID where the association was created. (pattern: &lt;code&gt;(^i-(\w&#123;8&#125;|\w&#123;17&#125;)$)|(^mi-\w&#123;17&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the association. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.:/&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputUrl" /></td>
+    <td><CopyableCode code="output_url" /></td>
     <td><code>object</code></td>
     <td>A URL for an S3 bucket where you want to store the results of this request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status information about the association.</td>
 </tr>
@@ -174,18 +174,18 @@ The status of the associations for the managed nodes.
 
 ```sql
 SELECT
-AssociationId,
-AssociationName,
-AssociationVersion,
-DetailedStatus,
-DocumentVersion,
-ErrorCode,
-ExecutionDate,
-ExecutionSummary,
-InstanceId,
-Name,
-OutputUrl,
-Status
+association_id,
+association_name,
+association_version,
+detailed_status,
+document_version,
+error_code,
+execution_date,
+execution_summary,
+instance_id,
+name,
+output_url,
+status
 FROM aws.ssm.instance_associations_status
 WHERE region = '{{ region }}' -- required
 ;

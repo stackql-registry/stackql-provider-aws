@@ -50,157 +50,157 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionsEnabled" /></td>
+    <td><CopyableCode code="actions_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether actions should be executed during any changes to the alarm state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmActions" /></td>
+    <td><CopyableCode code="alarm_actions" /></td>
     <td><code>array</code></td>
     <td>The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmArn" /></td>
+    <td><CopyableCode code="alarm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmConfigurationUpdatedTimestamp" /></td>
+    <td><CopyableCode code="alarm_configuration_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of the last update to the alarm configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmDescription" /></td>
+    <td><CopyableCode code="alarm_description" /></td>
     <td><code>string</code></td>
     <td>The description of the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmName" /></td>
+    <td><CopyableCode code="alarm_name" /></td>
     <td><code>string</code></td>
     <td>The name of the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComparisonOperator" /></td>
+    <td><CopyableCode code="comparison_operator" /></td>
     <td><code>string</code></td>
     <td>The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand. (GreaterThanOrEqualToThreshold, GreaterThanThreshold, LessThanThreshold, LessThanOrEqualToThreshold, LessThanLowerOrGreaterThanUpperThreshold, LessThanLowerThreshold, GreaterThanUpperThreshold)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatapointsToAlarm" /></td>
+    <td><CopyableCode code="datapoints_to_alarm" /></td>
     <td><code>integer</code></td>
     <td>The number of data points that must be breaching to trigger the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Dimensions" /></td>
+    <td><CopyableCode code="dimensions" /></td>
     <td><code>array</code></td>
     <td>The dimensions for the metric associated with the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluateLowSampleCountPercentile" /></td>
+    <td><CopyableCode code="evaluate_low_sample_count_percentile" /></td>
     <td><code>string</code></td>
     <td>Used only for alarms based on percentiles. If ignore, the alarm state does not change during periods with too few data points to be statistically significant. If evaluate or this parameter is not used, the alarm is always evaluated and possibly changes state no matter how many data points are available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationCriteria" /></td>
+    <td><CopyableCode code="evaluation_criteria" /></td>
     <td><code>object</code></td>
     <td>The evaluation criteria for the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationInterval" /></td>
+    <td><CopyableCode code="evaluation_interval" /></td>
     <td><code>integer</code></td>
     <td>The frequency, in seconds, at which the alarm is evaluated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationPeriods" /></td>
+    <td><CopyableCode code="evaluation_periods" /></td>
     <td><code>integer</code></td>
     <td>The number of periods over which data is compared to the specified threshold.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationState" /></td>
+    <td><CopyableCode code="evaluation_state" /></td>
     <td><code>string</code></td>
     <td>If the value of this field is PARTIAL_DATA, it indicates that not all the available data was able to be retrieved due to quota limitations. For more information, see Create alarms on Metrics Insights queries. If the value of this field is EVALUATION_ERROR, it indicates configuration errors in alarm setup that require review and correction. Refer to StateReason field of the alarm for more details. If the value of this field is EVALUATION_FAILURE, it indicates temporary CloudWatch issues. We recommend manual monitoring until the issue is resolved (PARTIAL_DATA, EVALUATION_FAILURE, EVALUATION_ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtendedStatistic" /></td>
+    <td><CopyableCode code="extended_statistic" /></td>
     <td><code>string</code></td>
     <td>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsufficientDataActions" /></td>
+    <td><CopyableCode code="insufficient_data_actions" /></td>
     <td><code>array</code></td>
     <td>The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric associated with the alarm, if this is an alarm based on a single metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>array</code></td>
     <td>An array of MetricDataQuery structures, used in an alarm based on a metric math expression. Each structure either retrieves a metric or performs a math expression. One item in the Metrics array is the math expression that the alarm watches. This expression by designated by having ReturnData set to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The namespace of the metric associated with the alarm. (pattern: &lt;code&gt;&#91;^:&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OKActions" /></td>
+    <td><CopyableCode code="ok_actions" /></td>
     <td><code>array</code></td>
     <td>The actions to execute when this alarm transitions to the OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>integer</code></td>
     <td>The period, in seconds, over which the statistic is applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>An explanation for the alarm state, in text format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReasonData" /></td>
+    <td><CopyableCode code="state_reason_data" /></td>
     <td><code>string</code></td>
     <td>An explanation for the alarm state, in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateTransitionedTimestamp" /></td>
+    <td><CopyableCode code="state_transitioned_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the alarm's StateValue most recently changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateUpdatedTimestamp" /></td>
+    <td><CopyableCode code="state_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of the last update to the value of either the StateValue or EvaluationState parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateValue" /></td>
+    <td><CopyableCode code="state_value" /></td>
     <td><code>string</code></td>
     <td>The state value for the alarm. (OK, ALARM, INSUFFICIENT_DATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistic" /></td>
+    <td><CopyableCode code="statistic" /></td>
     <td><code>string</code></td>
     <td>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use ExtendedStatistic. (SampleCount, Average, Sum, Minimum, Maximum)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Threshold" /></td>
+    <td><CopyableCode code="threshold" /></td>
     <td><code>number (double)</code></td>
     <td>The value to compare with the specified statistic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThresholdMetricId" /></td>
+    <td><CopyableCode code="threshold_metric_id" /></td>
     <td><code>string</code></td>
     <td>In an alarm based on an anomaly detection model, this is the ID of the ANOMALY_DETECTION_BAND function used as the threshold for the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TreatMissingData" /></td>
+    <td><CopyableCode code="treat_missing_data" /></td>
     <td><code>string</code></td>
     <td>Sets how this alarm is to handle missing data points. The valid values are breaching, notBreaching, ignore, and missing. For more information, see Configuring how CloudWatch alarms treat missing data. If this parameter is omitted, the default behavior of missing is used. This parameter is not applicable to PromQL alarms.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Unit" /></td>
+    <td><CopyableCode code="unit" /></td>
     <td><code>string</code></td>
     <td>The unit of the metric associated with the alarm. (Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None)</td>
 </tr>
@@ -311,37 +311,37 @@ Retrieves the specified alarms. You can filter the results by specifying a prefi
 
 ```sql
 SELECT
-ActionsEnabled,
-AlarmActions,
-AlarmArn,
-AlarmConfigurationUpdatedTimestamp,
-AlarmDescription,
-AlarmName,
-ComparisonOperator,
-DatapointsToAlarm,
-Dimensions,
-EvaluateLowSampleCountPercentile,
-EvaluationCriteria,
-EvaluationInterval,
-EvaluationPeriods,
-EvaluationState,
-ExtendedStatistic,
-InsufficientDataActions,
-MetricName,
-Metrics,
-Namespace,
-OKActions,
-Period,
-StateReason,
-StateReasonData,
-StateTransitionedTimestamp,
-StateUpdatedTimestamp,
-StateValue,
-Statistic,
-Threshold,
-ThresholdMetricId,
-TreatMissingData,
-Unit
+actions_enabled,
+alarm_actions,
+alarm_arn,
+alarm_configuration_updated_timestamp,
+alarm_description,
+alarm_name,
+comparison_operator,
+datapoints_to_alarm,
+dimensions,
+evaluate_low_sample_count_percentile,
+evaluation_criteria,
+evaluation_interval,
+evaluation_periods,
+evaluation_state,
+extended_statistic,
+insufficient_data_actions,
+metric_name,
+metrics,
+namespace,
+ok_actions,
+period,
+state_reason,
+state_reason_data,
+state_transitioned_timestamp,
+state_updated_timestamp,
+state_value,
+statistic,
+threshold,
+threshold_metric_id,
+treat_missing_data,
+unit
 FROM aws.cloudwatch.alarms
 WHERE region = '{{ region }}' -- required
 ;

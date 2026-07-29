@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicableBenefitIds" /></td>
+    <td><CopyableCode code="applicable_benefit_ids" /></td>
     <td><code>array</code></td>
     <td>A list of benefit identifiers that this allocation can be applied to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the benefit allocation. (pattern: &lt;code&gt;(arn:.+benalloc-&#91;0-9a-z&#93;&#123;14&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitApplicationId" /></td>
+    <td><CopyableCode code="benefit_application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the benefit application that resulted in this allocation. (pattern: &lt;code&gt;benappl-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitId" /></td>
+    <td><CopyableCode code="benefit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the benefit that this allocation is based on. (pattern: &lt;code&gt;(arn:.+|ben-&#91;0-9a-z&#93;&#123;14&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier that the benefit allocation belongs to. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit allocation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the benefit allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit allocation expires and is no longer usable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfillmentDetail" /></td>
+    <td><CopyableCode code="fulfillment_detail" /></td>
     <td><code>object</code></td>
     <td>Detailed information about how the benefit allocation is fulfilled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfillmentType" /></td>
+    <td><CopyableCode code="fulfillment_type" /></td>
     <td><code>string</code></td>
     <td>The fulfillment type used for this benefit allocation. (CREDITS, CASH, ACCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the benefit allocation. (pattern: &lt;code&gt;benalloc-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the benefit allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartsAt" /></td>
+    <td><CopyableCode code="starts_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit allocation becomes active and usable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the benefit allocation (e.g., active, expired, consumed). (ACTIVE, INACTIVE, FULFILLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information explaining the current status of the benefit allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit allocation was last updated.</td>
 </tr>
@@ -145,62 +145,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicableBenefitIds" /></td>
+    <td><CopyableCode code="applicable_benefit_ids" /></td>
     <td><code>array</code></td>
     <td>The identifiers of the benefits applicable for this allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the benefit allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitApplicationId" /></td>
+    <td><CopyableCode code="benefit_application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the benefit application that resulted in this allocation. (pattern: &lt;code&gt;benappl-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitId" /></td>
+    <td><CopyableCode code="benefit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the benefit that this allocation is based on. (pattern: &lt;code&gt;(arn:.+|ben-&#91;0-9a-z&#93;&#123;14&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier that the benefit allocation belongs to. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit allocation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit allocation expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfillmentTypes" /></td>
+    <td><CopyableCode code="fulfillment_types" /></td>
     <td><code>array</code></td>
     <td>The fulfillment types used for this benefit allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the benefit allocation. (pattern: &lt;code&gt;benalloc-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the benefit allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the benefit allocation. (ACTIVE, INACTIVE, FULFILLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information explaining the current status of the benefit allocation.</td>
 </tr>
@@ -277,22 +277,22 @@ Retrieves detailed information about a specific benefit allocation that has been
 
 ```sql
 SELECT
-ApplicableBenefitIds,
-Arn,
-BenefitApplicationId,
-BenefitId,
-Catalog,
-CreatedAt,
-Description,
-ExpiresAt,
-FulfillmentDetail,
-FulfillmentType,
-Id,
-Name,
-StartsAt,
-Status,
-StatusReason,
-UpdatedAt
+applicable_benefit_ids,
+arn,
+benefit_application_id,
+benefit_id,
+catalog,
+created_at,
+description,
+expires_at,
+fulfillment_detail,
+fulfillment_type,
+id,
+name,
+starts_at,
+status,
+status_reason,
+updated_at
 FROM aws.partnercentral_benefits.benefit_allocations
 WHERE region = '{{ region }}' -- required
 ;
@@ -304,18 +304,18 @@ Retrieves a paginated list of benefit allocations based on specified filter crit
 
 ```sql
 SELECT
-ApplicableBenefitIds,
-Arn,
-BenefitApplicationId,
-BenefitId,
-Catalog,
-CreatedAt,
-ExpiresAt,
-FulfillmentTypes,
-Id,
-Name,
-Status,
-StatusReason
+applicable_benefit_ids,
+arn,
+benefit_application_id,
+benefit_id,
+catalog,
+created_at,
+expires_at,
+fulfillment_types,
+id,
+name,
+status,
+status_reason
 FROM aws.partnercentral_benefits.benefit_allocations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EngagementId" /></td>
+    <td><CopyableCode code="engagement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the engagement created as a result of the task. This field is populated when the task is completed successfully. (pattern: &lt;code&gt;eng-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementInvitationId" /></td>
+    <td><CopyableCode code="engagement_invitation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Engagement Invitation. (pattern: &lt;code&gt;engi-&#91;0-9,a-z&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A detailed message providing additional information about the task, especially useful in case of failures. This field may contain error details or other relevant information about the task's execution</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpportunityId" /></td>
+    <td><CopyableCode code="opportunity_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the original Opportunity from which the Engagement is being created. This field helps track the source of the Engagement creation task. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReasonCode" /></td>
+    <td><CopyableCode code="reason_code" /></td>
     <td><code>string</code></td>
     <td>A code indicating the specific reason for a task failure. This field is populated when the task status is FAILED and provides a categorized reason for the failure. (InvitationAccessDenied, InvitationValidationFailed, EngagementAccessDenied, OpportunityAccessDenied, ResourceSnapshotJobAccessDenied, ResourceSnapshotJobValidationFailed, ResourceSnapshotJobConflict, EngagementValidationFailed, EngagementConflict, OpportunitySubmissionFailed, EngagementInvitationConflict, InternalError, OpportunityValidationFailed, OpportunityConflict, ResourceSnapshotAccessDenied, ResourceSnapshotValidationFailed, ResourceSnapshotConflict, ServiceQuotaExceeded, RequestThrottled, ContextNotFound, CustomerProjectContextNotPermitted, DisqualifiedLeadNotPermitted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSnapshotJobId" /></td>
+    <td><CopyableCode code="resource_snapshot_job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource snapshot job associated with this task, if a snapshot was created as part of the Engagement creation process. (pattern: &lt;code&gt;job-&#91;0-9a-z&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the task was initiated, in RFC 3339 5.6 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) uniquely identifying this task within AWS. This ARN can be used for referencing the task in other AWS services or APIs. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a specific task. (pattern: &lt;code&gt;.*task-&#91;0-9a-z&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the task. (IN_PROGRESS, COMPLETE, FAILED)</td>
 </tr>
@@ -164,16 +164,16 @@ Lists all in-progress, completed, or failed EngagementFromOpportunity tasks that
 
 ```sql
 SELECT
-EngagementId,
-EngagementInvitationId,
-Message,
-OpportunityId,
-ReasonCode,
-ResourceSnapshotJobId,
-StartTime,
-TaskArn,
-TaskId,
-TaskStatus
+engagement_id,
+engagement_invitation_id,
+message,
+opportunity_id,
+reason_code,
+resource_snapshot_job_id,
+start_time,
+task_arn,
+task_id,
+task_status
 FROM aws.partnercentral_selling.engagement_from_opportunity_tasks
 WHERE region = '{{ region }}' -- required
 ;

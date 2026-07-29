@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustSubscriptionId" /></td>
+    <td><CopyableCode code="cust_subscription_id" /></td>
     <td><code>string</code></td>
     <td>The DMS event notification subscription Id.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerAwsId" /></td>
+    <td><CopyableCode code="customer_aws_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services customer account associated with the DMS event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Boolean value that indicates if the event subscription is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventCategoriesList" /></td>
+    <td><CopyableCode code="event_categories_list" /></td>
     <td><code>array</code></td>
     <td>A lists of event categories.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The topic ARN of the DMS event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIdsList" /></td>
+    <td><CopyableCode code="source_ids_list" /></td>
     <td><code>array</code></td>
     <td>A list of source Ids for the event subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The type of DMS resource that generates events. Valid values: replication-instance | replication-server | security-group | replication-task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the DMS event notification subscription. Constraints: Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist The status "no-permission" indicates that DMS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionCreationTime" /></td>
+    <td><CopyableCode code="subscription_creation_time" /></td>
     <td><code>string</code></td>
     <td>The time the DMS event notification subscription was created.</td>
 </tr>
@@ -180,15 +180,15 @@ Lists all the event subscriptions for a customer account. The description of a s
 
 ```sql
 SELECT
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time
 FROM aws.dms.event_subscriptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,7 +231,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-EventSubscription
+event_subscription
 ;
 ```
 </TabItem>
@@ -306,7 +306,7 @@ WHERE
 region = '{{ region }}' --required
 AND SubscriptionName = '{{ SubscriptionName }}' --required
 RETURNING
-EventSubscription;
+event_subscription;
 ```
 </TabItem>
 </Tabs>

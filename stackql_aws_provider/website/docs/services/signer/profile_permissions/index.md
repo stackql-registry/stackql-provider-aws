@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>String for specifying the next set of paginated results.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>List of permissions associated with the Signing Profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policySizeBytes" /></td>
+    <td><CopyableCode code="policy_size_bytes" /></td>
     <td><code>integer</code></td>
     <td>Total size of the policy associated with the Signing Profile in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the current revision of profile permissions.</td>
 </tr>
@@ -168,10 +168,10 @@ Lists the cross-account permissions associated with a signing profile.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 permissions,
-policySizeBytes,
-revisionId
+policy_size_bytes,
+revision_id
 FROM aws.signer.profile_permissions
 WHERE profile_name = '{{ profile_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -210,7 +210,7 @@ AND action = '{{ action }}' --required
 AND principal = '{{ principal }}' --required
 AND statementId = '{{ statementId }}' --required
 RETURNING
-revisionId;
+revision_id;
 ```
 </TabItem>
 <TabItem value="remove_profile_permission">
@@ -227,7 +227,7 @@ AND revisionId = '{{ revisionId }}' --required
 AND statement_id = '{{ statement_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-revisionId;
+revision_id;
 ```
 </TabItem>
 </Tabs>

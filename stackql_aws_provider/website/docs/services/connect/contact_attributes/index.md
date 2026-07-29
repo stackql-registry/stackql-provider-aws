@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>Information about the attributes.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves the contact attributes for the specified contact.
 
 ```sql
 SELECT
-Attributes
+attributes
 FROM aws.connect.contact_attributes
 WHERE instance_id = '{{ instance_id }}' -- required
 AND initial_contact_id = '{{ initial_contact_id }}' -- required

@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the profile. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="acceptRoleSessionName" /></td>
+    <td><CopyableCode code="accept_role_session_name" /></td>
     <td><code>boolean</code></td>
     <td>Used to determine if a custom role session name will be accepted in a temporary credential request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attributeMappings" /></td>
+    <td><CopyableCode code="attribute_mappings" /></td>
     <td><code>array</code></td>
     <td>A mapping applied to the authenticating end-entity certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that created the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="durationSeconds" /></td>
+    <td><CopyableCode code="duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>Used to determine how long sessions vended using this profile are valid for. See the Expiration section of the CreateSession API documentation page for more details. In requests, if this value is not provided, the default value will be 3600.</td>
 </tr>
@@ -86,37 +86,37 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the profile is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedPolicyArns" /></td>
+    <td><CopyableCode code="managed_policy_arns" /></td>
     <td><code>array</code></td>
     <td>A list of managed policy ARNs that apply to the vended session credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileArn" /></td>
+    <td><CopyableCode code="profile_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the profile. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:rolesanywhere(:.*)&#123;2&#125;(:profile.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the profile. (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requireInstanceProperties" /></td>
+    <td><CopyableCode code="require_instance_properties" /></td>
     <td><code>boolean</code></td>
     <td>Unused, saved for future use. Will likely specify whether instance properties are required in temporary credential requests with this profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArns" /></td>
+    <td><CopyableCode code="role_arns" /></td>
     <td><code>array</code></td>
     <td>A list of IAM roles that this profile can assume in a temporary credential request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionPolicy" /></td>
+    <td><CopyableCode code="session_policy" /></td>
     <td><code>string</code></td>
     <td>A session policy that applies to the trust boundary of the vended session credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the profile was last updated.</td>
 </tr>
@@ -140,27 +140,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the profile. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="acceptRoleSessionName" /></td>
+    <td><CopyableCode code="accept_role_session_name" /></td>
     <td><code>boolean</code></td>
     <td>Used to determine if a custom role session name will be accepted in a temporary credential request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attributeMappings" /></td>
+    <td><CopyableCode code="attribute_mappings" /></td>
     <td><code>array</code></td>
     <td>A mapping applied to the authenticating end-entity certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that created the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="durationSeconds" /></td>
+    <td><CopyableCode code="duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>Used to determine how long sessions vended using this profile are valid for. See the Expiration section of the CreateSession API documentation page for more details. In requests, if this value is not provided, the default value will be 3600.</td>
 </tr>
@@ -170,37 +170,37 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the profile is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedPolicyArns" /></td>
+    <td><CopyableCode code="managed_policy_arns" /></td>
     <td><code>array</code></td>
     <td>A list of managed policy ARNs that apply to the vended session credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileArn" /></td>
+    <td><CopyableCode code="profile_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the profile. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:rolesanywhere(:.*)&#123;2&#125;(:profile.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the profile. (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requireInstanceProperties" /></td>
+    <td><CopyableCode code="require_instance_properties" /></td>
     <td><code>boolean</code></td>
     <td>Unused, saved for future use. Will likely specify whether instance properties are required in temporary credential requests with this profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArns" /></td>
+    <td><CopyableCode code="role_arns" /></td>
     <td><code>array</code></td>
     <td>A list of IAM roles that this profile can assume in a temporary credential request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionPolicy" /></td>
+    <td><CopyableCode code="session_policy" /></td>
     <td><code>string</code></td>
     <td>A session policy that applies to the trust boundary of the vended session credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the profile was last updated.</td>
 </tr>
@@ -352,19 +352,19 @@ Gets a profile. Required permissions: rolesanywhere:GetProfile.
 ```sql
 SELECT
 name,
-acceptRoleSessionName,
-attributeMappings,
-createdAt,
-createdBy,
-durationSeconds,
+accept_role_session_name,
+attribute_mappings,
+created_at,
+created_by,
+duration_seconds,
 enabled,
-managedPolicyArns,
-profileArn,
-profileId,
-requireInstanceProperties,
-roleArns,
-sessionPolicy,
-updatedAt
+managed_policy_arns,
+profile_arn,
+profile_id,
+require_instance_properties,
+role_arns,
+session_policy,
+updated_at
 FROM aws.rolesanywhere.profiles
 WHERE profile_id = '{{ profile_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -378,19 +378,19 @@ Lists all profiles in the authenticated account and Amazon Web Services Region. 
 ```sql
 SELECT
 name,
-acceptRoleSessionName,
-attributeMappings,
-createdAt,
-createdBy,
-durationSeconds,
+accept_role_session_name,
+attribute_mappings,
+created_at,
+created_by,
+duration_seconds,
 enabled,
-managedPolicyArns,
-profileArn,
-profileId,
-requireInstanceProperties,
-roleArns,
-sessionPolicy,
-updatedAt
+managed_policy_arns,
+profile_arn,
+profile_id,
+require_instance_properties,
+role_arns,
+session_policy,
+updated_at
 FROM aws.rolesanywhere.profiles
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

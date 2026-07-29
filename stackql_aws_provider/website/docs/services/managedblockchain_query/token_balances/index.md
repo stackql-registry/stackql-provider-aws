@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="atBlockchainInstant" /></td>
+    <td><CopyableCode code="at_blockchain_instant" /></td>
     <td><code>object</code></td>
     <td>The container for time.</td>
 </tr>
@@ -62,17 +62,17 @@ The following fields are returned by `SELECT` queries:
     <td>The container for the token balance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>object</code></td>
     <td>The container for time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerIdentifier" /></td>
+    <td><CopyableCode code="owner_identifier" /></td>
     <td><code>object</code></td>
     <td>The container for the owner identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenIdentifier" /></td>
+    <td><CopyableCode code="token_identifier" /></td>
     <td><code>object</code></td>
     <td>The container for the identifier for the token including the unique token ID and its blockchain network. Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155 token standards are supported.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="atBlockchainInstant" /></td>
+    <td><CopyableCode code="at_blockchain_instant" /></td>
     <td><code>object</code></td>
     <td>The container for time.</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The container of the token balance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>object</code></td>
     <td>The container for time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerIdentifier" /></td>
+    <td><CopyableCode code="owner_identifier" /></td>
     <td><code>object</code></td>
     <td>The container for the owner identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenIdentifier" /></td>
+    <td><CopyableCode code="token_identifier" /></td>
     <td><code>object</code></td>
     <td>The container for the identifier for the token including the unique token ID and its blockchain network. Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155 token standards are supported.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of BatchGetTokenBalanceErrorItem objects returned from the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenBalances" /></td>
+    <td><CopyableCode code="token_balances" /></td>
     <td><code>array</code></td>
     <td>An array of BatchGetTokenBalanceOutputItem objects returned by the response.</td>
 </tr>
@@ -220,11 +220,11 @@ Gets the balance of a specific token, including native tokens, for a given addre
 
 ```sql
 SELECT
-atBlockchainInstant,
+at_blockchain_instant,
 balance,
-lastUpdatedTime,
-ownerIdentifier,
-tokenIdentifier
+last_updated_time,
+owner_identifier,
+token_identifier
 FROM aws.managedblockchain_query.token_balances
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,11 +236,11 @@ This action returns the following for a given blockchain network: Lists all toke
 
 ```sql
 SELECT
-atBlockchainInstant,
+at_blockchain_instant,
 balance,
-lastUpdatedTime,
-ownerIdentifier,
-tokenIdentifier
+last_updated_time,
+owner_identifier,
+token_identifier
 FROM aws.managedblockchain_query.token_balances
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,7 +253,7 @@ Gets the token balance for a batch of tokens by using the BatchGetTokenBalance a
 ```sql
 SELECT
 errors,
-tokenBalances
+token_balances
 FROM aws.managedblockchain_query.token_balances
 WHERE region = '{{ region }}' -- required
 ;

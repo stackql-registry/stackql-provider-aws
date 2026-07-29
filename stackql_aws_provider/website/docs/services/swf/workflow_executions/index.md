@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="executionConfiguration" /></td>
+    <td><CopyableCode code="execution_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for this workflow execution including timeout values, tasklist etc.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionInfo" /></td>
+    <td><CopyableCode code="execution_info" /></td>
     <td><code>object</code></td>
     <td>Information about the workflow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestActivityTaskTimestamp" /></td>
+    <td><CopyableCode code="latest_activity_task_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the last activity task was scheduled for this workflow execution. You can use this information to determine if the workflow has not made progress for an unusually long period of time and might require a corrective action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestExecutionContext" /></td>
+    <td><CopyableCode code="latest_execution_context" /></td>
     <td><code>string</code></td>
     <td>The latest executionContext provided by the decider for this workflow execution. A decider can provide an executionContext (a free-form string) when closing a decision task using RespondDecisionTaskCompleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="openCounts" /></td>
+    <td><CopyableCode code="open_counts" /></td>
     <td><code>object</code></td>
     <td>The number of tasks for this workflow execution. This includes open and closed tasks of all types.</td>
 </tr>
@@ -146,11 +146,11 @@ Returns information about the specified workflow execution including its type an
 
 ```sql
 SELECT
-executionConfiguration,
-executionInfo,
-latestActivityTaskTimestamp,
-latestExecutionContext,
-openCounts
+execution_configuration,
+execution_info,
+latest_activity_task_timestamp,
+latest_execution_context,
+open_counts
 FROM aws.swf.workflow_executions
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DailyVolumes" /></td>
+    <td><CopyableCode code="daily_volumes" /></td>
     <td><code>array</code></td>
     <td>An object that contains deliverability metrics for the domain that you specified. This object contains data for each day, starting on the StartDate and ending on the EndDate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverallVolume" /></td>
+    <td><CopyableCode code="overall_volume" /></td>
     <td><code>object</code></td>
     <td>An object that contains deliverability metrics for the domain that you specified. The data in this object is a summary of all of the data that was collected from the StartDate to the EndDate.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieve inbox placement and engagement rates for the domains that you use to se
 
 ```sql
 SELECT
-DailyVolumes,
-OverallVolume
+daily_volumes,
+overall_volume
 FROM aws.sesv2.domain_statistics_reports
 WHERE domain = '{{ domain }}' -- required
 AND StartDate = '{{ StartDate }}' -- required

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The subscription's endpoint (format depends on the protocol).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The subscription's owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The subscription's protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionArn" /></td>
+    <td><CopyableCode code="subscription_arn" /></td>
     <td><code>string</code></td>
     <td>The subscription's ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the subscription's topic.</td>
 </tr>
@@ -156,11 +156,11 @@ Returns a list of the requester's subscriptions. Each call returns a limited lis
 
 ```sql
 SELECT
-Endpoint,
-Owner,
-Protocol,
-SubscriptionArn,
-TopicArn
+endpoint,
+owner,
+protocol,
+subscription_arn,
+topic_arn
 FROM aws.sns.subscriptions
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

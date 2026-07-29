@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="crossRegionStatus" /></td>
+    <td><CopyableCode code="cross_region_status" /></td>
     <td><code>string</code></td>
     <td>The cross-region availability status of the model. NONE indicates the model is only available in a single region, REGIONAL indicates the model is available through regional inference, and GLOBAL indicates the model is available through global cross-region inference. (NONE, REGIONAL, GLOBAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endOfLifeTimestamp" /></td>
+    <td><CopyableCode code="end_of_life_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the model will reach end of life and no longer be available for use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="legacyTimestamp" /></td>
+    <td><CopyableCode code="legacy_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the model lifecycle will transition from ACTIVE to LEGACY.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelLifecycle" /></td>
+    <td><CopyableCode code="model_lifecycle" /></td>
     <td><code>string</code></td>
     <td>The current lifecycle of the model. ACTIVE indicates the model is recommended for use and LEGACY indicates the model is still usable but is deprecated. (ACTIVE, LEGACY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedAIPromptTypes" /></td>
+    <td><CopyableCode code="supported_ai_prompt_types" /></td>
     <td><code>array</code></td>
     <td>The list of AI Prompt types that the model supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportsPromptCaching" /></td>
+    <td><CopyableCode code="supports_prompt_caching" /></td>
     <td><code>boolean</code></td>
     <td>Whether the model supports prompt caching.</td>
 </tr>
@@ -179,14 +179,14 @@ Lists the models available to an Amazon Q in Connect assistant in the assistant'
 
 ```sql
 SELECT
-crossRegionStatus,
-displayName,
-endOfLifeTimestamp,
-legacyTimestamp,
-modelId,
-modelLifecycle,
-supportedAIPromptTypes,
-supportsPromptCaching
+cross_region_status,
+display_name,
+end_of_life_timestamp,
+legacy_timestamp,
+model_id,
+model_lifecycle,
+supported_ai_prompt_types,
+supports_prompt_caching
 FROM aws.qconnect.models
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND region = '{{ region }}' -- required

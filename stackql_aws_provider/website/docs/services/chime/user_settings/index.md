@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Telephony" /></td>
+    <td><CopyableCode code="telephony" /></td>
     <td><code>object</code></td>
     <td>The telephony settings associated with the user.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves settings for the specified user ID, such as any associated phone numbe
 
 ```sql
 SELECT
-Telephony
+telephony
 FROM aws.chime.user_settings
 WHERE account_id = '{{ account_id }}' -- required
 AND user_id = '{{ user_id }}' -- required

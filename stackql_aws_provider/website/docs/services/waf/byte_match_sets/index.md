@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ByteMatchSetId" /></td>
+    <td><CopyableCode code="byte_match_set_id" /></td>
     <td><code>string</code></td>
     <td>The ByteMatchSetId for a ByteMatchSet. You use ByteMatchSetId to get information about a ByteMatchSet (see GetByteMatchSet), update a ByteMatchSet (see UpdateByteMatchSet), insert a ByteMatchSet into a Rule or delete one from a Rule (see UpdateRule), and delete a ByteMatchSet from AWS WAF (see DeleteByteMatchSet). ByteMatchSetId is returned by CreateByteMatchSet and by ListByteMatchSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ByteMatchTuples" /></td>
+    <td><CopyableCode code="byte_match_tuples" /></td>
     <td><code>array</code></td>
     <td>Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the ByteMatchSet. You can't change Name after you create a ByteMatchSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ByteMatchSetId" /></td>
+    <td><CopyableCode code="byte_match_set_id" /></td>
     <td><code>string</code></td>
     <td>The ByteMatchSetId for a ByteMatchSet. You use ByteMatchSetId to get information about a ByteMatchSet, update a ByteMatchSet, remove a ByteMatchSet from a Rule, and delete a ByteMatchSet from AWS WAF. ByteMatchSetId is returned by CreateByteMatchSet and by ListByteMatchSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the ByteMatchSet. You can't change Name after you create a ByteMatchSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -183,9 +183,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-ByteMatchSetId,
-ByteMatchTuples,
-Name
+byte_match_set_id,
+byte_match_tuples,
+name
 FROM aws.waf.byte_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-ByteMatchSetId,
-Name
+byte_match_set_id,
+name
 FROM aws.waf.byte_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,8 +231,8 @@ SELECT
 '{{ ChangeToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ByteMatchSet,
-ChangeToken
+byte_match_set,
+change_token
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ AND ByteMatchSetId = '{{ ByteMatchSetId }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 AND Updates = '{{ Updates }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

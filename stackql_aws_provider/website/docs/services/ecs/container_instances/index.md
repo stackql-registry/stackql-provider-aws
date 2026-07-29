@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="containerInstances" /></td>
+    <td><CopyableCode code="container_instances" /></td>
     <td><code>array</code></td>
     <td>The list of container instances.</td>
 </tr>
@@ -173,7 +173,7 @@ Describes one or more container instances. Returns metadata about each container
 
 ```sql
 SELECT
-containerInstances,
+container_instances,
 failures
 FROM aws.ecs.container_instances
 WHERE region = '{{ region }}' -- required
@@ -233,7 +233,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-containerInstance
+container_instance
 ;
 ```
 </TabItem>
@@ -327,7 +327,7 @@ region = '{{ region }}' --required
 AND containerInstances = '{{ containerInstances }}' --required
 AND status = '{{ status }}' --required
 RETURNING
-containerInstances,
+container_instances,
 failures;
 ```
 </TabItem>

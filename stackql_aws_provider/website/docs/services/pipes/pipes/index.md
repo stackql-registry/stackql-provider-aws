@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the pipe. (pattern: &lt;code&gt;arn:aws(&#91;a-z&#93;|\-)*:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the pipe was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentState" /></td>
+    <td><CopyableCode code="current_state" /></td>
     <td><code>string</code></td>
     <td>The state the pipe is in. (RUNNING, STOPPED, CREATING, UPDATING, DELETING, STARTING, STOPPING, CREATE_FAILED, UPDATE_FAILED, START_FAILED, STOP_FAILED, DELETE_FAILED, CREATE_ROLLBACK_FAILED, DELETE_ROLLBACK_FAILED, UPDATE_ROLLBACK_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the pipe. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredState" /></td>
+    <td><CopyableCode code="desired_state" /></td>
     <td><code>string</code></td>
     <td>The state the pipe should be in. (RUNNING, STOPPED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enrichment" /></td>
+    <td><CopyableCode code="enrichment" /></td>
     <td><code>string</code></td>
     <td>The ARN of the enrichment resource. (pattern: &lt;code&gt;$|arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;&#123;2,4&#125;((-gov)|(-de)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+(-\d&#123;1&#125;)?)?:(\d&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnrichmentParameters" /></td>
+    <td><CopyableCode code="enrichment_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters required to set up enrichment on your pipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the KMS customer managed key for EventBridge to use to encrypt pipe data, if one has been specified. For more information, see Data encryption in EventBridge in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-/:&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The logging configuration settings for the pipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the pipe. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role that allows the pipe to send data to the target. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The ARN of the source resource. (pattern: &lt;code&gt;smk:​//((&#91;a-zA-Z0-9&#93;|&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-&#93;*&#91;a-zA-Z0-9&#93;)\.)*(&#91;A-Za-z0-9&#93;|&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-&#93;*&#91;A-Za-z0-9&#93;):&#91;0-9&#93;&#123;1,5&#125;|arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;&#123;2,4&#125;((-gov)|(-de)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+(-\d&#123;1&#125;)?)?:(\d&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceParameters" /></td>
+    <td><CopyableCode code="source_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters required to set up a source for your pipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the pipe is in its current state. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of key-value pairs to associate with the pipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>The ARN of the target resource. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;&#123;2,4&#125;((-gov)|(-de)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+(-\d&#123;1&#125;)?)?:(\d&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetParameters" /></td>
+    <td><CopyableCode code="target_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters required to set up a target for your pipe. For more information about pipe target parameters, including how to use dynamic path parameters, see Target parameters in the Amazon EventBridge User Guide.</td>
 </tr>
@@ -155,52 +155,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the pipe. (pattern: &lt;code&gt;arn:aws(&#91;a-z&#93;|\-)*:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the pipe was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentState" /></td>
+    <td><CopyableCode code="current_state" /></td>
     <td><code>string</code></td>
     <td>The state the pipe is in. (RUNNING, STOPPED, CREATING, UPDATING, DELETING, STARTING, STOPPING, CREATE_FAILED, UPDATE_FAILED, START_FAILED, STOP_FAILED, DELETE_FAILED, CREATE_ROLLBACK_FAILED, DELETE_ROLLBACK_FAILED, UPDATE_ROLLBACK_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredState" /></td>
+    <td><CopyableCode code="desired_state" /></td>
     <td><code>string</code></td>
     <td>The state the pipe should be in. (RUNNING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enrichment" /></td>
+    <td><CopyableCode code="enrichment" /></td>
     <td><code>string</code></td>
     <td>The ARN of the enrichment resource. (pattern: &lt;code&gt;$|arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;&#123;2,4&#125;((-gov)|(-de)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+(-\d&#123;1&#125;)?)?:(\d&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the pipe. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The ARN of the source resource. (pattern: &lt;code&gt;smk:​//((&#91;a-zA-Z0-9&#93;|&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-&#93;*&#91;a-zA-Z0-9&#93;)\.)*(&#91;A-Za-z0-9&#93;|&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-&#93;*&#91;A-Za-z0-9&#93;):&#91;0-9&#93;&#123;1,5&#125;|arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;&#123;2,4&#125;((-gov)|(-de)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+(-\d&#123;1&#125;)?)?:(\d&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the pipe is in its current state. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>The ARN of the target resource. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z&#93;&#123;2,4&#125;((-gov)|(-de)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+(-\d&#123;1&#125;)?)?:(\d&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
@@ -338,24 +338,24 @@ Get the information about an existing pipe. For more information about pipes, se
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CurrentState,
-Description,
-DesiredState,
-Enrichment,
-EnrichmentParameters,
-KmsKeyIdentifier,
-LastModifiedTime,
-LogConfiguration,
-Name,
-RoleArn,
-Source,
-SourceParameters,
-StateReason,
-Tags,
-Target,
-TargetParameters
+arn,
+creation_time,
+current_state,
+description,
+desired_state,
+enrichment,
+enrichment_parameters,
+kms_key_identifier,
+last_modified_time,
+log_configuration,
+name,
+role_arn,
+source,
+source_parameters,
+state_reason,
+tags,
+target,
+target_parameters
 FROM aws.pipes.pipes
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -368,16 +368,16 @@ Get the pipes associated with this account. For more information about pipes, se
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CurrentState,
-DesiredState,
-Enrichment,
-LastModifiedTime,
-Name,
-Source,
-StateReason,
-Target
+arn,
+creation_time,
+current_state,
+desired_state,
+enrichment,
+last_modified_time,
+name,
+source,
+state_reason,
+target
 FROM aws.pipes.pipes
 WHERE region = '{{ region }}' -- required
 AND NamePrefix = '{{ NamePrefix }}'
@@ -439,12 +439,12 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationTime,
-CurrentState,
-DesiredState,
-LastModifiedTime,
-Name
+arn,
+creation_time,
+current_state,
+desired_state,
+last_modified_time,
+name
 ;
 ```
 </TabItem>
@@ -738,12 +738,12 @@ name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 RETURNING
-Arn,
-CreationTime,
-CurrentState,
-DesiredState,
-LastModifiedTime,
-Name;
+arn,
+creation_time,
+current_state,
+desired_state,
+last_modified_time,
+name;
 ```
 </TabItem>
 </Tabs>

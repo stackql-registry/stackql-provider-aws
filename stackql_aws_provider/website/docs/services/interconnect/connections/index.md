@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The short identifier of the connection object. (pattern: &lt;code&gt;(mcc|lmcc)-&#91;a-z0-9&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activationKey" /></td>
+    <td><CopyableCode code="activation_key" /></td>
     <td><code>string</code></td>
     <td>The Activation Key associated to this connection.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>An ARN of a Connection object. (pattern: &lt;code&gt;arn:aws&#91;a-z-&#93;*:interconnect:&#91;^:&#93;+:&#91;0-9&#93;&#123;12&#125;:connection/(mcc|lmcc)-&#91;a-z0-9&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachPoint" /></td>
+    <td><CopyableCode code="attach_point" /></td>
     <td><code>object</code></td>
     <td>The Attach Point to which the connection should be associated."</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The specific selected bandwidth of this connection. (pattern: &lt;code&gt;\d+&#91;MG&#93;bps&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingTier" /></td>
+    <td><CopyableCode code="billing_tier" /></td>
     <td><code>integer</code></td>
     <td>The billing tier this connection is currently assigned.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>A descriptive name for the connection. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The specific Environment this connection is placed upon.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The provider specific location on the remote side of this Connection</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The account that owns this Connection (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The provider on the remote side of this Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sharedId" /></td>
+    <td><CopyableCode code="shared_id" /></td>
     <td><code>string</code></td>
     <td>An identifier used by both AWS and the remote partner to identify the specific connection. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the Connection (pattern: &lt;code&gt;arn:aws&#91;a-z-&#93;*:interconnect:&#91;^:&#93;+:&#91;0-9&#93;&#123;12&#125;:connection/(mcc|lmcc)-&#91;a-z0-9&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachPoint" /></td>
+    <td><CopyableCode code="attach_point" /></td>
     <td><code>object</code></td>
     <td>The Attach Point to which the connection should be associated.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The bandwidth of the Connection (pattern: &lt;code&gt;\d+&#91;MG&#93;bps&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingTier" /></td>
+    <td><CopyableCode code="billing_tier" /></td>
     <td><code>integer</code></td>
     <td>The billing tier this connection is currently assigned.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>A descriptive name of the Connection (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The Environment that this Connection is created on.</td>
 </tr>
@@ -185,7 +185,7 @@ The following fields are returned by `SELECT` queries:
     <td>The provider on the remote end of this Connection</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sharedId" /></td>
+    <td><CopyableCode code="shared_id" /></td>
     <td><code>string</code></td>
     <td>An identifier used by both AWS and the remote partner to identify the specific connection. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -301,17 +301,17 @@ Describes the current state of a Connection resource as specified by the identif
 ```sql
 SELECT
 id,
-activationKey,
+activation_key,
 arn,
-attachPoint,
+attach_point,
 bandwidth,
-billingTier,
+billing_tier,
 description,
-environmentId,
+environment_id,
 location,
-ownerAccount,
+owner_account,
 provider,
-sharedId,
+shared_id,
 state,
 tags,
 type_
@@ -328,14 +328,14 @@ Lists all connection objects to which the caller has access. Allows for optional
 SELECT
 id,
 arn,
-attachPoint,
+attach_point,
 bandwidth,
-billingTier,
+billing_tier,
 description,
-environmentId,
+environment_id,
 location,
 provider,
-sharedId,
+shared_id,
 state,
 type_
 FROM aws.interconnect.connections

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The job's client token. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputConfig" /></td>
+    <td><CopyableCode code="input_config" /></td>
     <td><code>object</code></td>
     <td>A configuration for a package import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobTags" /></td>
+    <td><CopyableCode code="job_tags" /></td>
     <td><code>array</code></td>
     <td>The job's tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The job's type. (NODE_PACKAGE_VERSION, MARKETPLACE_NODE_PACKAGE_VERSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Output" /></td>
+    <td><CopyableCode code="output" /></td>
     <td><code>object</code></td>
     <td>The job's output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>An output configuration for a package import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The job's status. (PENDING, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The job's status message.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageImportJobs" /></td>
+    <td><CopyableCode code="package_import_jobs" /></td>
     <td><code>array</code></td>
     <td>A list of package import jobs.</td>
 </tr>
@@ -224,17 +224,17 @@ Returns information about a package import job.
 
 ```sql
 SELECT
-ClientToken,
-CreatedTime,
-InputConfig,
-JobId,
-JobTags,
-JobType,
-LastUpdatedTime,
-Output,
-OutputConfig,
-Status,
-StatusMessage
+client_token,
+created_time,
+input_config,
+job_id,
+job_tags,
+job_type,
+last_updated_time,
+output,
+output_config,
+status,
+status_message
 FROM aws.panorama.package_import_jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,8 +247,8 @@ Returns a list of package import jobs.
 
 ```sql
 SELECT
-NextToken,
-PackageImportJobs
+next_token,
+package_import_jobs
 FROM aws.panorama.package_import_jobs
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -289,7 +289,7 @@ SELECT
 '{{ OutputConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-JobId
+job_id
 ;
 ```
 </TabItem>

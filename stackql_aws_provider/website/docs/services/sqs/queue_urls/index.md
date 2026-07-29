@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="QueueUrl" /></td>
+    <td><CopyableCode code="queue_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the queue.</td>
 </tr>
@@ -119,7 +119,7 @@ The GetQueueUrl API returns the URL of an existing Amazon SQS queue. This is use
 
 ```sql
 SELECT
-QueueUrl
+queue_url
 FROM aws.sqs.queue_urls
 WHERE region = '{{ region }}' -- required
 ;

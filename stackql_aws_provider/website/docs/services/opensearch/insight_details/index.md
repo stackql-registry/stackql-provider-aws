@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>array</code></td>
     <td>The list of fields that contain detailed information about the insight.</td>
 </tr>
@@ -119,7 +119,7 @@ Describes the details of an existing insight for an Amazon OpenSearch Service do
 
 ```sql
 SELECT
-Fields
+fields
 FROM aws.opensearch.insight_details
 WHERE region = '{{ region }}' -- required
 ;

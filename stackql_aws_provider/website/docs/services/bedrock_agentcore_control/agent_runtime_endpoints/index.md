@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the AgentCore Runtime endpoint. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeArn" /></td>
+    <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AgentCore Runtime. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeEndpointArn" /></td>
+    <td><CopyableCode code="agent_runtime_endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AgentCore Runtime endpoint. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agentEndpoint/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the AgentCore Runtime endpoint was created.</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the AgentCore Runtime endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the AgentCore Runtime endpoint is in a failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the AgentCore Runtime endpoint was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="liveVersion" /></td>
+    <td><CopyableCode code="live_version" /></td>
     <td><code>string</code></td>
     <td>The currently deployed version of the AgentCore Runtime on the endpoint. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the AgentCore Runtime endpoint. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetVersion" /></td>
+    <td><CopyableCode code="target_version" /></td>
     <td><code>string</code></td>
     <td>The target version of the AgentCore Runtime for the endpoint. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the agent runtime endpoint. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeArn" /></td>
+    <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the agent runtime associated with the endpoint. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeEndpointArn" /></td>
+    <td><CopyableCode code="agent_runtime_endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the agent runtime endpoint. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agentEndpoint/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the agent runtime endpoint was created.</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the agent runtime endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the agent runtime endpoint was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="liveVersion" /></td>
+    <td><CopyableCode code="live_version" /></td>
     <td><code>string</code></td>
     <td>The live version of the agent runtime endpoint. This is the version that is currently serving requests. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the agent runtime endpoint. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetVersion" /></td>
+    <td><CopyableCode code="target_version" /></td>
     <td><code>string</code></td>
     <td>The target version of the agent runtime endpoint. This is the version that the endpoint is being updated to. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -290,15 +290,15 @@ Gets information about an Amazon Secure AgentEndpoint.
 SELECT
 id,
 name,
-agentRuntimeArn,
-agentRuntimeEndpointArn,
-createdAt,
+agent_runtime_arn,
+agent_runtime_endpoint_arn,
+created_at,
 description,
-failureReason,
-lastUpdatedAt,
-liveVersion,
+failure_reason,
+last_updated_at,
+live_version,
 status,
-targetVersion
+target_version
 FROM aws.bedrock_agentcore_control.agent_runtime_endpoints
 WHERE agent_runtime_id = '{{ agent_runtime_id }}' -- required
 AND endpoint_name = '{{ endpoint_name }}' -- required
@@ -314,14 +314,14 @@ Lists all endpoints for a specific Amazon Secure Agent.
 SELECT
 id,
 name,
-agentRuntimeArn,
-agentRuntimeEndpointArn,
-createdAt,
+agent_runtime_arn,
+agent_runtime_endpoint_arn,
+created_at,
 description,
-lastUpdatedAt,
-liveVersion,
+last_updated_at,
+live_version,
 status,
-targetVersion
+target_version
 FROM aws.bedrock_agentcore_control.agent_runtime_endpoints
 WHERE agent_runtime_id = '{{ agent_runtime_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -365,13 +365,13 @@ SELECT
 '{{ agent_runtime_id }}',
 '{{ region }}'
 RETURNING
-agentRuntimeArn,
-agentRuntimeEndpointArn,
-agentRuntimeId,
-createdAt,
-endpointName,
+agent_runtime_arn,
+agent_runtime_endpoint_arn,
+agent_runtime_id,
+created_at,
+endpoint_name,
 status,
-targetVersion
+target_version
 ;
 ```
 </TabItem>
@@ -425,13 +425,13 @@ agent_runtime_id = '{{ agent_runtime_id }}' --required
 AND endpoint_name = '{{ endpoint_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-agentRuntimeArn,
-agentRuntimeEndpointArn,
-createdAt,
-lastUpdatedAt,
-liveVersion,
+agent_runtime_arn,
+agent_runtime_endpoint_arn,
+created_at,
+last_updated_at,
+live_version,
 status,
-targetVersion;
+target_version;
 ```
 </TabItem>
 </Tabs>

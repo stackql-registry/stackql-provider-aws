@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeLinksCount" /></td>
+    <td><CopyableCode code="active_links_count" /></td>
     <td><code>integer</code></td>
     <td>The count of active links for the requester gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the requester gateway was created.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the requester gateway. (pattern: &lt;code&gt;&#91;A-Za-z0-9 &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name of the requester gateway. (pattern: &lt;code&gt;(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?)(?:\.(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?))+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifiers of the security groups.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the request. (PENDING_CREATION, ACTIVE, PENDING_DELETION, DELETED, ERROR, PENDING_UPDATE, ISOLATED, PENDING_ISOLATION, PENDING_RESTORATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifiers of the subnets.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
     <td>A map of the key-value pairs for the tag or tags assigned to the specified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalLinksCount" /></td>
+    <td><CopyableCode code="total_links_count" /></td>
     <td><code>integer</code></td>
     <td>The total count of links for the requester gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the requester gateway was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Virtual Private Cloud (VPC). (pattern: &lt;code&gt;vpc-&#91;a-f0-9&#93;&#123;8,17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -238,18 +238,18 @@ Retrieves information about a requester gateway.
 
 ```sql
 SELECT
-activeLinksCount,
-createdAt,
+active_links_count,
+created_at,
 description,
-domainName,
-gatewayId,
-securityGroupIds,
+domain_name,
+gateway_id,
+security_group_ids,
 status,
-subnetIds,
+subnet_ids,
 tags,
-totalLinksCount,
-updatedAt,
-vpcId
+total_links_count,
+updated_at,
+vpc_id
 FROM aws.rtbfabric.requester_gateways
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -305,8 +305,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-domainName,
-gatewayId,
+domain_name,
+gateway_id,
 status
 ;
 ```
@@ -361,7 +361,7 @@ gateway_id = '{{ gateway_id }}' --required
 AND region = '{{ region }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-gatewayId,
+gateway_id,
 status;
 ```
 </TabItem>

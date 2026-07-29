@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="artifactMetadataList" /></td>
+    <td><CopyableCode code="artifact_metadata_list" /></td>
     <td><code>array</code></td>
     <td>The list of artifact metadata items that were found.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves metadata for one or more artifacts in an agent space.
 
 ```sql
 SELECT
-artifactMetadataList
+artifact_metadata_list
 FROM aws.securityagent.artifact_metadatas
 WHERE region = '{{ region }}' -- required
 ;

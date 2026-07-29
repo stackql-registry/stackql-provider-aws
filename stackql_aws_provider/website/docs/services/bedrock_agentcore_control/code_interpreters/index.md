@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The list of certificates configured for the code interpreter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeInterpreterArn" /></td>
+    <td><CopyableCode code="code_interpreter_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the code interpreter. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:(aws|&#91;0-9&#93;&#123;12&#125;):code-interpreter(-custom)?/(aws\.codeinterpreter\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeInterpreterId" /></td>
+    <td><CopyableCode code="code_interpreter_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code interpreter. (pattern: &lt;code&gt;(aws\.codeinterpreter\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the code interpreter was created.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the code interpreter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN that provides permissions for the code interpreter. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the code interpreter is in a failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the code interpreter was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration for a code interpreter. This structure defines how the code interpreter connects to the network.</td>
 </tr>
@@ -125,17 +125,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the code interpreter. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeInterpreterArn" /></td>
+    <td><CopyableCode code="code_interpreter_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the code interpreter. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:(aws|&#91;0-9&#93;&#123;12&#125;):code-interpreter(-custom)?/(aws\.codeinterpreter\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeInterpreterId" /></td>
+    <td><CopyableCode code="code_interpreter_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code interpreter. (pattern: &lt;code&gt;(aws\.codeinterpreter\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the code interpreter was created.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the code interpreter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the code interpreter was last updated.</td>
 </tr>
@@ -268,14 +268,14 @@ Gets information about a custom code interpreter.
 SELECT
 name,
 certificates,
-codeInterpreterArn,
-codeInterpreterId,
-createdAt,
+code_interpreter_arn,
+code_interpreter_id,
+created_at,
 description,
-executionRoleArn,
-failureReason,
-lastUpdatedAt,
-networkConfiguration,
+execution_role_arn,
+failure_reason,
+last_updated_at,
+network_configuration,
 status
 FROM aws.bedrock_agentcore_control.code_interpreters
 WHERE code_interpreter_id = '{{ code_interpreter_id }}' -- required
@@ -290,11 +290,11 @@ Lists all custom code interpreters in your account.
 ```sql
 SELECT
 name,
-codeInterpreterArn,
-codeInterpreterId,
-createdAt,
+code_interpreter_arn,
+code_interpreter_id,
+created_at,
 description,
-lastUpdatedAt,
+last_updated_at,
 status
 FROM aws.bedrock_agentcore_control.code_interpreters
 WHERE region = '{{ region }}' -- required
@@ -341,9 +341,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-codeInterpreterArn,
-codeInterpreterId,
-createdAt,
+code_interpreter_arn,
+code_interpreter_id,
+created_at,
 status
 ;
 ```

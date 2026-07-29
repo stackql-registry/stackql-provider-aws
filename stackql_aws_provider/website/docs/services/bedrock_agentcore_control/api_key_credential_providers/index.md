@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the API key credential provider. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiKeySecretArn" /></td>
+    <td><CopyableCode code="api_key_secret_arn" /></td>
     <td><code>object</code></td>
     <td>Contains information about a secret in AWS Secrets Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API key credential provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderArn" /></td>
+    <td><CopyableCode code="credential_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the API key credential provider. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):acps:&#91;A-Za-z0-9-&#93;&#123;1,64&#125;:&#91;0-9&#93;&#123;12&#125;:token-vault/&#91;a-zA-Z0-9-.&#93;+/apikeycredentialprovider/&#91;a-zA-Z0-9-.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API key credential provider was last updated.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the API key credential provider. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API key credential provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderArn" /></td>
+    <td><CopyableCode code="credential_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the API key credential provider. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):acps:&#91;A-Za-z0-9-&#93;&#123;1,64&#125;:&#91;0-9&#93;&#123;12&#125;:token-vault/&#91;a-zA-Z0-9-.&#93;+/apikeycredentialprovider/&#91;a-zA-Z0-9-.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API key credential provider was last updated.</td>
 </tr>
@@ -204,10 +204,10 @@ Retrieves information about an API key credential provider.
 ```sql
 SELECT
 name,
-apiKeySecretArn,
-createdTime,
-credentialProviderArn,
-lastUpdatedTime
+api_key_secret_arn,
+created_time,
+credential_provider_arn,
+last_updated_time
 FROM aws.bedrock_agentcore_control.api_key_credential_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,9 +220,9 @@ Lists all API key credential providers in your account.
 ```sql
 SELECT
 name,
-createdTime,
-credentialProviderArn,
-lastUpdatedTime
+created_time,
+credential_provider_arn,
+last_updated_time
 FROM aws.bedrock_agentcore_control.api_key_credential_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,8 +258,8 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-apiKeySecretArn,
-credentialProviderArn
+api_key_secret_arn,
+credential_provider_arn
 ;
 ```
 </TabItem>
@@ -306,10 +306,10 @@ AND name = '{{ name }}' --required
 AND apiKey = '{{ apiKey }}' --required
 RETURNING
 name,
-apiKeySecretArn,
-createdTime,
-credentialProviderArn,
-lastUpdatedTime;
+api_key_secret_arn,
+created_time,
+credential_provider_arn,
+last_updated_time;
 ```
 </TabItem>
 </Tabs>

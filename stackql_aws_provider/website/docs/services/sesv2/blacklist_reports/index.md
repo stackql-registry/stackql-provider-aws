@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlacklistReport" /></td>
+    <td><CopyableCode code="blacklist_report" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about a blacklist that one of your dedicated IP addresses appears on.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieve a list of the blacklists that your dedicated IP addresses appear on.
 
 ```sql
 SELECT
-BlacklistReport
+blacklist_report
 FROM aws.sesv2.blacklist_reports
 WHERE BlacklistItemNames = '{{ BlacklistItemNames }}' -- required
 AND region = '{{ region }}' -- required

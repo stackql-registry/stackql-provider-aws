@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The component object specified in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersionReferences" /></td>
+    <td><CopyableCode code="latest_version_references" /></td>
     <td><code>object</code></td>
     <td>The resource ARNs with different wildcard variations of semantic versioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the component. Semantic versioning is included in each object's Amazon Resource Name (ARN), at the level that applies to that object as follows: Versionless ARNs and Name ARNs do not include specific values in any of the nodes. The nodes are either left off entirely, or they are specified as wildcards, for example: x.x.x. Version ARNs have only the first three nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code> Build version ARNs have all four nodes, and point to a specific build for a specific version of an object. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date that the component was created.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The platform of the component. (Windows, Linux, macOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productCodes" /></td>
+    <td><CopyableCode code="product_codes" /></td>
     <td><code>array</code></td>
     <td>Contains product codes that are used for billing purposes for Amazon Web Services Marketplace components.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the current status of the component version. (DEPRECATED, DISABLED, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedOsVersions" /></td>
+    <td><CopyableCode code="supported_os_versions" /></td>
     <td><code>array</code></td>
     <td>he operating system (OS) version supported by the component. If the OS information is available, a prefix match is performed against the base image OS version during image recipe creation.</td>
 </tr>
@@ -227,8 +227,8 @@ Gets a component object.
 ```sql
 SELECT
 component,
-latestVersionReferences,
-requestId
+latest_version_references,
+request_id
 FROM aws.imagebuilder.components
 WHERE componentBuildVersionArn = '{{ componentBuildVersionArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -243,13 +243,13 @@ Returns the list of components that can be filtered by name, or by using the lis
 SELECT
 name,
 arn,
-dateCreated,
+date_created,
 description,
 owner,
 platform,
-productCodes,
+product_codes,
 status,
-supportedOsVersions,
+supported_os_versions,
 type_,
 version
 FROM aws.imagebuilder.components
@@ -304,10 +304,10 @@ SELECT
 {{ dryRun }},
 '{{ region }}'
 RETURNING
-clientToken,
-componentBuildVersionArn,
-latestVersionReferences,
-requestId
+client_token,
+component_build_version_arn,
+latest_version_references,
+request_id
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BusinessCalling" /></td>
+    <td><CopyableCode code="business_calling" /></td>
     <td><code>object</code></td>
     <td>The Amazon Chime Business Calling settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnector" /></td>
+    <td><CopyableCode code="voice_connector" /></td>
     <td><code>object</code></td>
     <td>The Amazon Chime Voice Connector settings.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves global settings for the administrator's AWS account, such as Amazon Ch
 
 ```sql
 SELECT
-BusinessCalling,
-VoiceConnector
+business_calling,
+voice_connector
 FROM aws.chime.global_settings
 WHERE region = '{{ region }}' -- required
 ;

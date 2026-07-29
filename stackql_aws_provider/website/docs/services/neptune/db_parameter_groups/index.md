@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBParameterGroupArn" /></td>
+    <td><CopyableCode code="db_parameter_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBParameterGroupFamily" /></td>
+    <td><CopyableCode code="db_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>Provides the name of the DB parameter group family that this DB parameter group is compatible with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBParameterGroupName" /></td>
+    <td><CopyableCode code="db_parameter_group_name" /></td>
     <td><code>string</code></td>
     <td>Provides the name of the DB parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Provides the customer-specified description for this DB parameter group.</td>
 </tr>
@@ -200,10 +200,10 @@ Returns a list of DBParameterGroup descriptions. If a DBParameterGroupName is sp
 
 ```sql
 SELECT
-DBParameterGroupArn,
-DBParameterGroupFamily,
-DBParameterGroupName,
-Description
+db_parameter_group_arn,
+db_parameter_group_family,
+db_parameter_group_name,
+description
 FROM aws.neptune.db_parameter_groups
 WHERE region = '{{ region }}' -- required
 AND DBParameterGroupName = '{{ DBParameterGroupName }}'
@@ -244,10 +244,10 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-DBParameterGroupArn,
-DBParameterGroupFamily,
-DBParameterGroupName,
-Description
+db_parameter_group_arn,
+db_parameter_group_family,
+db_parameter_group_name,
+description
 ;
 ```
 </TabItem>
@@ -300,7 +300,7 @@ DBParameterGroupName = '{{ DBParameterGroupName }}' --required
 AND region = '{{ region }}' --required
 AND Parameters = '{{ Parameters}}'
 RETURNING
-DBParameterGroupName;
+db_parameter_group_name;
 ```
 </TabItem>
 </Tabs>

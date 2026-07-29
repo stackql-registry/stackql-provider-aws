@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service template was created.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The service template name as displayed in the developer interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>The customer provided service template encryption key that's used to encrypt data. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineProvisioning" /></td>
+    <td><CopyableCode code="pipeline_provisioning" /></td>
     <td><code>string</code></td>
     <td>If pipelineProvisioning is true, a service pipeline is included in the service template. Otherwise, a service pipeline isn't included in the service template. (CUSTOMER_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedVersion" /></td>
+    <td><CopyableCode code="recommended_version" /></td>
     <td><code>string</code></td>
     <td>The recommended version of the service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*)).(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service template was created.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The service template name as displayed in the developer interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineProvisioning" /></td>
+    <td><CopyableCode code="pipeline_provisioning" /></td>
     <td><code>string</code></td>
     <td>If pipelineProvisioning is true, a service pipeline is included in the service template, otherwise a service pipeline isn't included in the service template. (CUSTOMER_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedVersion" /></td>
+    <td><CopyableCode code="recommended_version" /></td>
     <td><code>string</code></td>
     <td>The recommended version of the service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*)).(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -245,13 +245,13 @@ Get detailed data for a service template.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
-displayName,
-encryptionKey,
-lastModifiedAt,
-pipelineProvisioning,
-recommendedVersion
+display_name,
+encryption_key,
+last_modified_at,
+pipeline_provisioning,
+recommended_version
 FROM aws.proton.service_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,12 +265,12 @@ List service templates with detail data.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
-displayName,
-lastModifiedAt,
-pipelineProvisioning,
-recommendedVersion
+display_name,
+last_modified_at,
+pipeline_provisioning,
+recommended_version
 FROM aws.proton.service_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -311,7 +311,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-serviceTemplate
+service_template
 ;
 ```
 </TabItem>
@@ -378,7 +378,7 @@ WHERE
 region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 RETURNING
-serviceTemplate;
+service_template;
 ```
 </TabItem>
 </Tabs>

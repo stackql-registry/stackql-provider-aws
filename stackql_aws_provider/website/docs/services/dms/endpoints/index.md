@@ -50,192 +50,192 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) used for SSL connection to the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database at the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DmsTransferSettings" /></td>
+    <td><CopyableCode code="dms_transfer_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the DMS Transfer type source. For more information, see the DmsTransferSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocDbSettings" /></td>
+    <td><CopyableCode code="doc_db_settings" /></td>
     <td><code>object</code></td>
     <td>Provides information that defines a DocumentDB endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DynamoDbSettings" /></td>
+    <td><CopyableCode code="dynamo_db_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the DynamoDB target endpoint. For more information, see the DynamoDBSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticsearchSettings" /></td>
+    <td><CopyableCode code="elasticsearch_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the OpenSearch source endpoint. For more information, see the ElasticsearchSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointIdentifier" /></td>
+    <td><CopyableCode code="endpoint_identifier" /></td>
     <td><code>string</code></td>
     <td>The database endpoint identifier. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint. Valid values are source and target. (source, target)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineDisplayName" /></td>
+    <td><CopyableCode code="engine_display_name" /></td>
     <td><code>string</code></td>
     <td>The expanded name for the engine name. For example, if the EngineName parameter is "aurora", this value would be "Amazon Aurora MySQL".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineName" /></td>
+    <td><CopyableCode code="engine_name" /></td>
     <td><code>string</code></td>
     <td>The database engine name. Valid values, depending on the EndpointType, include "mysql", "oracle", "postgres", "mariadb", "aurora", "aurora-postgresql", "redshift", "redshift-serverless", "s3", "db2", "db2-zos", "azuredb", "sybase", "dynamodb", "mongodb", "kinesis", "kafka", "elasticsearch", "documentdb", "sqlserver", "neptune", and "babelfish".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalTableDefinition" /></td>
+    <td><CopyableCode code="external_table_definition" /></td>
     <td><code>string</code></td>
     <td>The external table definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtraConnectionAttributes" /></td>
+    <td><CopyableCode code="extra_connection_attributes" /></td>
     <td><code>string</code></td>
     <td>Additional connection attributes used to connect to the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GcpMySQLSettings" /></td>
+    <td><CopyableCode code="gcp_my_sql_settings" /></td>
     <td><code>object</code></td>
     <td>Settings in JSON format for the source GCP MySQL endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IBMDb2Settings" /></td>
+    <td><CopyableCode code="ibm_db_2_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the IBM Db2 LUW source endpoint. For more information, see the IBMDb2Settings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsReadOnly" /></td>
+    <td><CopyableCode code="is_read_only" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the endpoint is read-only. When set to true, this endpoint is managed by DMS as part of a zero-ETL integration and cannot be modified or deleted directly. You can only modify or delete read-only endpoints through their associated zero-ETL integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KafkaSettings" /></td>
+    <td><CopyableCode code="kafka_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the Apache Kafka target endpoint. For more information, see the KafkaSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisSettings" /></td>
+    <td><CopyableCode code="kinesis_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the Amazon Kinesis target endpoint. For more information, see the KinesisSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>An KMS key identifier that is used to encrypt the connection parameters for the endpoint. If you don't specify a value for the KmsKeyId parameter, then DMS uses your default encryption key. KMS creates the default encryption key for your Amazon Web Services account. Your Amazon Web Services account has a different default encryption key for each Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LakehouseSettings" /></td>
+    <td><CopyableCode code="lakehouse_settings" /></td>
     <td><code>object</code></td>
     <td>Settings in JSON format for the target Lakehouse endpoint. This parameter applies to endpoints that are automatically created by DMS for a Lakehouse data warehouse as part of a zero-ETL integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MicrosoftSQLServerSettings" /></td>
+    <td><CopyableCode code="microsoft_sql_server_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the Microsoft SQL Server source and target endpoint. For more information, see the MicrosoftSQLServerSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MongoDbSettings" /></td>
+    <td><CopyableCode code="mongo_db_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the MongoDB source endpoint. For more information, see the MongoDbSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MySQLSettings" /></td>
+    <td><CopyableCode code="my_sql_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the MySQL source and target endpoint. For more information, see the MySQLSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NeptuneSettings" /></td>
+    <td><CopyableCode code="neptune_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the Amazon Neptune target endpoint. For more information, see the NeptuneSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OracleSettings" /></td>
+    <td><CopyableCode code="oracle_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the Oracle source and target endpoint. For more information, see the OracleSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port value used to access the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PostgreSQLSettings" /></td>
+    <td><CopyableCode code="postgre_sql_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the PostgreSQL source and target endpoint. For more information, see the PostgreSQLSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedisSettings" /></td>
+    <td><CopyableCode code="redis_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the Redis target endpoint. For more information, see the RedisSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedshiftSettings" /></td>
+    <td><CopyableCode code="redshift_settings" /></td>
     <td><code>object</code></td>
     <td>Provides information that defines an Amazon Redshift endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Settings" /></td>
+    <td><CopyableCode code="s3_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the S3 target endpoint. For more information, see the S3Settings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerName" /></td>
+    <td><CopyableCode code="server_name" /></td>
     <td><code>string</code></td>
     <td>The name of the server at the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceAccessRoleArn" /></td>
+    <td><CopyableCode code="service_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) used by the service to access the IAM role. The role must allow the iam:PassRole action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SslMode" /></td>
+    <td><CopyableCode code="ssl_mode" /></td>
     <td><code>string</code></td>
     <td>The SSL mode used to connect to the endpoint. The default value is none. (none, require, verify-ca, verify-full)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SybaseSettings" /></td>
+    <td><CopyableCode code="sybase_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the SAP ASE source and target endpoint. For more information, see the SybaseSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimestreamSettings" /></td>
+    <td><CopyableCode code="timestream_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for the Amazon Timestream target endpoint. For more information, see the TimestreamSettings structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The user name used to connect to the endpoint.</td>
 </tr>
@@ -325,44 +325,44 @@ Returns information about the endpoints for your account in the current region.
 
 ```sql
 SELECT
-CertificateArn,
-DatabaseName,
-DmsTransferSettings,
-DocDbSettings,
-DynamoDbSettings,
-ElasticsearchSettings,
-EndpointArn,
-EndpointIdentifier,
-EndpointType,
-EngineDisplayName,
-EngineName,
-ExternalId,
-ExternalTableDefinition,
-ExtraConnectionAttributes,
-GcpMySQLSettings,
-IBMDb2Settings,
-IsReadOnly,
-KafkaSettings,
-KinesisSettings,
-KmsKeyId,
-LakehouseSettings,
-MicrosoftSQLServerSettings,
-MongoDbSettings,
-MySQLSettings,
-NeptuneSettings,
-OracleSettings,
-Port,
-PostgreSQLSettings,
-RedisSettings,
-RedshiftSettings,
-S3Settings,
-ServerName,
-ServiceAccessRoleArn,
-SslMode,
-Status,
-SybaseSettings,
-TimestreamSettings,
-Username
+certificate_arn,
+database_name,
+dms_transfer_settings,
+doc_db_settings,
+dynamo_db_settings,
+elasticsearch_settings,
+endpoint_arn,
+endpoint_identifier,
+endpoint_type,
+engine_display_name,
+engine_name,
+external_id,
+external_table_definition,
+extra_connection_attributes,
+gcp_my_sql_settings,
+ibm_db_2_settings,
+is_read_only,
+kafka_settings,
+kinesis_settings,
+kms_key_id,
+lakehouse_settings,
+microsoft_sql_server_settings,
+mongo_db_settings,
+my_sql_settings,
+neptune_settings,
+oracle_settings,
+port,
+postgre_sql_settings,
+redis_settings,
+redshift_settings,
+s3_settings,
+server_name,
+service_access_role_arn,
+ssl_mode,
+status,
+sybase_settings,
+timestream_settings,
+username
 FROM aws.dms.endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -461,7 +461,7 @@ SELECT
 '{{ TimestreamSettings }}',
 '{{ region }}'
 RETURNING
-Endpoint
+endpoint
 ;
 ```
 </TabItem>
@@ -979,7 +979,7 @@ WHERE
 region = '{{ region }}' --required
 AND EndpointArn = '{{ EndpointArn }}' --required
 RETURNING
-Endpoint;
+endpoint;
 ```
 </TabItem>
 </Tabs>

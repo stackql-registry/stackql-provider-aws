@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Account" /></td>
+    <td><CopyableCode code="account" /></td>
     <td><code>string</code></td>
     <td>&#91;Self-managed permissions&#93; The name of the Amazon Web Services account that the stack instance is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftStatus" /></td>
+    <td><CopyableCode code="drift_status" /></td>
     <td><code>string</code></td>
     <td>Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the StackSet it belongs to. DRIFTED: The stack differs from the expected template and parameter configuration of the StackSet it belongs to. A stack instance is considered to have drifted if one or more of the resources in the associated stack have drifted. NOT_CHECKED: CloudFormation hasn't checked if the stack instance differs from its expected StackSet configuration. IN_SYNC: The stack instance's actual configuration matches its expected StackSset configuration. UNKNOWN: This value is reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDriftCheckTimestamp" /></td>
+    <td><CopyableCode code="last_drift_check_timestamp" /></td>
     <td><code>string</code></td>
     <td>Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will be NULL for any stack instance that drift detection hasn't yet been performed on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastOperationId" /></td>
+    <td><CopyableCode code="last_operation_id" /></td>
     <td><code>string</code></td>
     <td>The last unique ID of a StackSet operation performed on a stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>&#91;Service-managed permissions&#93; The organization root ID or organizational unit (OU) IDs that you specified for DeploymentTargets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterOverrides" /></td>
+    <td><CopyableCode code="parameter_overrides" /></td>
     <td><code>string</code></td>
     <td>A list of parameters from the StackSet template whose values have been overridden in this stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services Region that the stack instance is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackInstanceStatus" /></td>
+    <td><CopyableCode code="stack_instance_status" /></td>
     <td><code>string</code></td>
     <td>The detailed status of the stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetId" /></td>
+    <td><CopyableCode code="stack_set_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique ID of the StackSet that the stack instance is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the stack instance, in terms of its synchronization with its associated stack set. INOPERABLE: A DeleteStackInstances operation has failed and left the stack in an unstable state. Stacks in this state are excluded from further UpdateStackSet operations. You might need to perform a DeleteStackInstances operation, with RetainStacks set to true, to delete the stack instance, and then delete the stack manually. INOPERABLE can be returned here when the cause is a failed import. If it's due to a failed import, the operation can be retried once the failures are fixed. To see if this is due to a failed import, look at the DetailedStatus member in the StackInstanceSummary member that is a peer to this Status member. OUTDATED: The stack isn't currently up to date with the StackSet because: The associated stack failed during a CreateStackSet or UpdateStackSet operation. The stack was part of a CreateStackSet or UpdateStackSet operation that failed or was stopped before the stack was created or updated. CURRENT: The stack is currently up to date with the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The explanation for the specific status code that's assigned to this stack instance.</td>
 </tr>
@@ -125,57 +125,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Account" /></td>
+    <td><CopyableCode code="account" /></td>
     <td><code>string</code></td>
     <td>&#91;Self-managed permissions&#93; The name of the Amazon Web Services account that the stack instance is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftStatus" /></td>
+    <td><CopyableCode code="drift_status" /></td>
     <td><code>string</code></td>
     <td>Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the StackSet it belongs to. DRIFTED: The stack differs from the expected template and parameter configuration of the StackSet it belongs to. A stack instance is considered to have drifted if one or more of the resources in the associated stack have drifted. NOT_CHECKED: CloudFormation hasn't checked if the stack instance differs from its expected StackSet configuration. IN_SYNC: The stack instance's actual configuration matches its expected StackSet configuration. UNKNOWN: This value is reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDriftCheckTimestamp" /></td>
+    <td><CopyableCode code="last_drift_check_timestamp" /></td>
     <td><code>string</code></td>
     <td>Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will be NULL for any stack instance that drift detection hasn't yet been performed on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastOperationId" /></td>
+    <td><CopyableCode code="last_operation_id" /></td>
     <td><code>string</code></td>
     <td>The last unique ID of a StackSet operation performed on a stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>&#91;Service-managed permissions&#93; The organization root ID or organizational unit (OU) IDs that you specified for DeploymentTargets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services Region that the stack instance is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackInstanceStatus" /></td>
+    <td><CopyableCode code="stack_instance_status" /></td>
     <td><code>string</code></td>
     <td>The detailed status of the stack instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetId" /></td>
+    <td><CopyableCode code="stack_set_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique ID of the StackSet that the stack instance is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the stack instance, in terms of its synchronization with its associated stack set. INOPERABLE: A DeleteStackInstances operation has failed and left the stack in an unstable state. Stacks in this state are excluded from further UpdateStackSet operations. You might need to perform a DeleteStackInstances operation, with RetainStacks set to true, to delete the stack instance, and then delete the stack manually. INOPERABLE can be returned here when the cause is a failed import. If it's due to a failed import, the operation can be retried once the failures are fixed. To see if this is due to a failed import, call the DescribeStackInstance API operation, look at the DetailedStatus member returned in the StackInstanceSummary member. OUTDATED: The stack isn't currently up to date with the StackSet because: The associated stack failed during a CreateStackSet or UpdateStackSet operation. The stack was part of a CreateStackSet or UpdateStackSet operation that failed or was stopped before the stack was created or updated. CURRENT: The stack is currently up to date with the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The explanation for the specific status code assigned to this stack instance.</td>
 </tr>
@@ -353,18 +353,18 @@ Returns the stack instance that's associated with the specified StackSet, Amazon
 
 ```sql
 SELECT
-Account,
-DriftStatus,
-LastDriftCheckTimestamp,
-LastOperationId,
-OrganizationalUnitId,
-ParameterOverrides,
-Region,
-StackId,
-StackInstanceStatus,
-StackSetId,
-Status,
-StatusReason
+account,
+drift_status,
+last_drift_check_timestamp,
+last_operation_id,
+organizational_unit_id,
+parameter_overrides,
+region,
+stack_id,
+stack_instance_status,
+stack_set_id,
+status,
+status_reason
 FROM aws.cloudformation.stack_instances
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND StackInstanceAccount = '{{ StackInstanceAccount }}' -- required
@@ -380,17 +380,17 @@ Returns summary information about stack instances that are associated with the s
 
 ```sql
 SELECT
-Account,
-DriftStatus,
-LastDriftCheckTimestamp,
-LastOperationId,
-OrganizationalUnitId,
-Region,
-StackId,
-StackInstanceStatus,
-StackSetId,
-Status,
-StatusReason
+account,
+drift_status,
+last_drift_check_timestamp,
+last_operation_id,
+organizational_unit_id,
+region,
+stack_id,
+stack_instance_status,
+stack_set_id,
+status,
+status_reason
 FROM aws.cloudformation.stack_instances
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND region = '{{ region }}' -- required

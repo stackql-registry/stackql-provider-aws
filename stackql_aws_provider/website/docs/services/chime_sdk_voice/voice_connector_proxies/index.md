@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultSessionExpiryMinutes" /></td>
+    <td><CopyableCode code="default_session_expiry_minutes" /></td>
     <td><code>integer</code></td>
     <td>The default number of minutes allowed for proxy sessions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Disabled" /></td>
+    <td><CopyableCode code="disabled" /></td>
     <td><code>boolean</code></td>
     <td>When true, stops proxy sessions from being created on the specified Amazon Chime SDK Voice Connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FallBackPhoneNumber" /></td>
+    <td><CopyableCode code="fall_back_phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number to route calls to after a proxy session expires. (pattern: &lt;code&gt;^\+?&#91;1-9&#93;\d&#123;1,14&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberCountries" /></td>
+    <td><CopyableCode code="phone_number_countries" /></td>
     <td><code>array</code></td>
     <td>The countries for proxy phone numbers to be selected from.</td>
 </tr>
@@ -153,10 +153,10 @@ Retrieves the proxy configuration details for the specified Amazon Chime SDK Voi
 
 ```sql
 SELECT
-DefaultSessionExpiryMinutes,
-Disabled,
-FallBackPhoneNumber,
-PhoneNumberCountries
+default_session_expiry_minutes,
+disabled,
+fall_back_phone_number,
+phone_number_countries
 FROM aws.chime_sdk_voice.voice_connector_proxies
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -191,7 +191,7 @@ AND region = '{{ region }}' --required
 AND DefaultSessionExpiryMinutes = '{{ DefaultSessionExpiryMinutes }}' --required
 AND PhoneNumberPoolCountries = '{{ PhoneNumberPoolCountries }}' --required
 RETURNING
-Proxy;
+proxy;
 ```
 </TabItem>
 </Tabs>

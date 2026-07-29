@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the contact for which metrics were retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the contact for which metrics were retrieved. This matches the ContactId provided in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricResults" /></td>
+    <td><CopyableCode code="metric_results" /></td>
     <td><code>array</code></td>
     <td>A list of metric results containing the calculated values for each requested metric. Each result includes the metric name and its corresponding value. For example, POSITION_IN_QUEUE returns a numeric value representing the contact's position in queue, and ESTIMATED_WAIT_TIME returns the predicted wait time in seconds.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves contact metric data for a specified contact. Use cases Following are c
 
 ```sql
 SELECT
-Arn,
-Id,
-MetricResults
+arn,
+id,
+metric_results
 FROM aws.connect.contact_metrics
 WHERE region = '{{ region }}' -- required
 ;

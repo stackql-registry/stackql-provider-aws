@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>A JSON-formatted string for an Amazon Web Services resource-based policy. (pattern: &lt;code&gt;^.*\S.*$&lt;/code&gt;)</td>
 </tr>
@@ -138,7 +138,7 @@ Gets the resource-based permission policy that is set for the given environment.
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.migration_hub_refactor_spaces.resource_policies
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

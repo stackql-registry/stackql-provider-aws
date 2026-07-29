@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID that owns the scan jobs included in this summary. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>The number of scan jobs that match the specified criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The value of time in number format of a job end time. This value is the time in Unix format, Coordinated Universal Time (UTC), and accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MalwareScanner" /></td>
+    <td><CopyableCode code="malware_scanner" /></td>
     <td><code>string</code></td>
     <td>Specifies the malware scanner used during the scan job. Currently only supports GUARDDUTY. (GUARDDUTY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the scan jobs were executed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource for the scan jobs included in this summary. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScanResultStatus" /></td>
+    <td><CopyableCode code="scan_result_status" /></td>
     <td><code>string</code></td>
     <td>The scan result status for the scan jobs included in this summary. Valid values: THREATS_FOUND | NO_THREATS_FOUND. (NO_THREATS_FOUND, THREATS_FOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The value of time in number format of a job start time. This value is the time in Unix format, Coordinated Universal Time (UTC), and accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the scan jobs included in this summary. Valid values: CREATED | RUNNING | COMPLETED | COMPLETED_WITH_ISSUES | FAILED | CANCELED. (CREATED, COMPLETED, COMPLETED_WITH_ISSUES, RUNNING, FAILED, CANCELED, AGGREGATE_ALL, ANY)</td>
 </tr>
@@ -199,15 +199,15 @@ This is a request for a summary of scan jobs created or running within the most 
 
 ```sql
 SELECT
-AccountId,
-Count,
-EndTime,
-MalwareScanner,
-Region,
-ResourceType,
-ScanResultStatus,
-StartTime,
-State
+account_id,
+count,
+end_time,
+malware_scanner,
+region,
+resource_type,
+scan_result_status,
+start_time,
+state
 FROM aws.backup.scan_job_summaries
 WHERE region = '{{ region }}' -- required
 AND AccountId = '{{ AccountId }}'

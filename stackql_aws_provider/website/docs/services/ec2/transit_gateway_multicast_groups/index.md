@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupIpAddress" /></td>
+    <td><CopyableCode code="group_ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address assigned to the transit gateway multicast group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupMember" /></td>
+    <td><CopyableCode code="group_member" /></td>
     <td><code>boolean</code></td>
     <td>Indicates that the resource is a transit gateway multicast group member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupSource" /></td>
+    <td><CopyableCode code="group_source" /></td>
     <td><code>boolean</code></td>
     <td>Indicates that the resource is a transit gateway multicast group member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberType" /></td>
+    <td><CopyableCode code="member_type" /></td>
     <td><code>string</code></td>
     <td>The member type (for example, static).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the transit gateway multicast domain group resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource, for example a VPC attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway attachment.</td>
 </tr>
@@ -242,17 +242,17 @@ Searches one or more transit gateway multicast groups and returns the group memb
 
 ```sql
 SELECT
-GroupIpAddress,
-GroupMember,
-GroupSource,
-MemberType,
-NetworkInterfaceId,
-ResourceId,
-ResourceOwnerId,
-ResourceType,
-SourceType,
-SubnetId,
-TransitGatewayAttachmentId
+group_ip_address,
+group_member,
+group_source,
+member_type,
+network_interface_id,
+resource_id,
+resource_owner_id,
+resource_type,
+source_type,
+subnet_id,
+transit_gateway_attachment_id
 FROM aws.ec2.transit_gateway_multicast_groups
 WHERE TransitGatewayMulticastDomainId = '{{ TransitGatewayMulticastDomainId }}' -- required
 AND region = '{{ region }}' -- required
@@ -294,9 +294,9 @@ SELECT
 '{{ GroupIpAddress }}',
 '{{ DryRun }}'
 RETURNING
-GroupIpAddress,
-RegisteredNetworkInterfaceIds,
-TransitGatewayMulticastDomainId
+group_ip_address,
+registered_network_interface_ids,
+transit_gateway_multicast_domain_id
 ;
 ```
 </TabItem>

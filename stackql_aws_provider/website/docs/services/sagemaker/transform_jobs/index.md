@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoMLJobArn" /></td>
+    <td><CopyableCode code="auto_ml_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AutoML transform job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:automl-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BatchStrategy" /></td>
+    <td><CopyableCode code="batch_strategy" /></td>
     <td><code>string</code></td>
     <td>Specifies the number of records to include in a mini-batch for an HTTP inference request. A record is a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record. To enable the batch strategy, you must set SplitType to Line, RecordIO, or TFRecord. (MultiRecord, SingleRecord)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the transform Job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataCaptureConfig" /></td>
+    <td><CopyableCode code="data_capture_config" /></td>
     <td><code>object</code></td>
     <td>Configuration to control how SageMaker captures inference data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataProcessing" /></td>
+    <td><CopyableCode code="data_processing" /></td>
     <td><code>object</code></td>
     <td>The data structure used to specify the data to be used for inference in a batch transform job and to associate the data that is relevant to the prediction results in the output. The input filter provided allows you to exclude input data that is not needed for inference in a batch transform job. The output filter provided allows you to include input data relevant to interpreting the predictions in the output from the job. For more information, see Associate Prediction Results with their Corresponding Input Records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Environment" /></td>
+    <td><CopyableCode code="environment" /></td>
     <td><code>object</code></td>
     <td>The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentConfig" /></td>
+    <td><CopyableCode code="experiment_config" /></td>
     <td><code>object</code></td>
     <td>Associates a SageMaker job as a trial component with an experiment and trial. Specified when you call the following APIs: CreateProcessingJob CreateTrainingJob CreateTransformJob</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the transform job failed, FailureReason describes why it failed. A transform job creates a log file, which includes error messages, and stores it as an Amazon S3 object. For more information, see Log Amazon SageMaker Events with Amazon CloudWatch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobArn" /></td>
+    <td><CopyableCode code="labeling_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon SageMaker Ground Truth labeling job that created the transform or training job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:labeling-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrentTransforms" /></td>
+    <td><CopyableCode code="max_concurrent_transforms" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of parallel requests on each instance node that can be launched in a transform job. The default value is 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxPayloadInMB" /></td>
+    <td><CopyableCode code="max_payload_in_mb" /></td>
     <td><code>integer</code></td>
     <td>The maximum payload size, in MB, used in the transform job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelClientConfig" /></td>
+    <td><CopyableCode code="model_client_config" /></td>
     <td><code>object</code></td>
     <td>The timeout and maximum number of retries for processing a transform job invocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model used in the transform job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;\-a-zA-Z0-9&#93;*&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformEndTime" /></td>
+    <td><CopyableCode code="transform_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates when the transform job has been completed, or has stopped or failed. You are billed for the time interval between this time and the value of TransformStartTime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformInput" /></td>
+    <td><CopyableCode code="transform_input" /></td>
     <td><code>object</code></td>
     <td>Describes the dataset to be transformed and the Amazon S3 location where it is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformJobArn" /></td>
+    <td><CopyableCode code="transform_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the transform job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:transform-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformJobName" /></td>
+    <td><CopyableCode code="transform_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the transform job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformJobStatus" /></td>
+    <td><CopyableCode code="transform_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the transform job. If the transform job failed, the reason is returned in the FailureReason field. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformOutput" /></td>
+    <td><CopyableCode code="transform_output" /></td>
     <td><code>object</code></td>
     <td>Identifies the Amazon S3 location where you want Amazon SageMaker to save the results from the transform job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformResources" /></td>
+    <td><CopyableCode code="transform_resources" /></td>
     <td><code>object</code></td>
     <td>Describes the resources, including ML instance types and ML instance count, to use for the transform job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformStartTime" /></td>
+    <td><CopyableCode code="transform_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates when the transform job starts on ML instances. You are billed for the time interval between this time and the value of TransformEndTime.</td>
 </tr>
@@ -170,37 +170,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the transform Job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the transform job failed, the reason it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates when the transform job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformEndTime" /></td>
+    <td><CopyableCode code="transform_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates when the transform job ends on compute instances. For successful jobs and stopped jobs, this is the exact time recorded after the results are uploaded. For failed jobs, this is when Amazon SageMaker detected that the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformJobArn" /></td>
+    <td><CopyableCode code="transform_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the transform job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:transform-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformJobName" /></td>
+    <td><CopyableCode code="transform_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the transform job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformJobStatus" /></td>
+    <td><CopyableCode code="transform_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the transform job. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
@@ -291,27 +291,27 @@ Returns information about a transform job.
 
 ```sql
 SELECT
-AutoMLJobArn,
-BatchStrategy,
-CreationTime,
-DataCaptureConfig,
-DataProcessing,
-Environment,
-ExperimentConfig,
-FailureReason,
-LabelingJobArn,
-MaxConcurrentTransforms,
-MaxPayloadInMB,
-ModelClientConfig,
-ModelName,
-TransformEndTime,
-TransformInput,
-TransformJobArn,
-TransformJobName,
-TransformJobStatus,
-TransformOutput,
-TransformResources,
-TransformStartTime
+auto_ml_job_arn,
+batch_strategy,
+creation_time,
+data_capture_config,
+data_processing,
+environment,
+experiment_config,
+failure_reason,
+labeling_job_arn,
+max_concurrent_transforms,
+max_payload_in_mb,
+model_client_config,
+model_name,
+transform_end_time,
+transform_input,
+transform_job_arn,
+transform_job_name,
+transform_job_status,
+transform_output,
+transform_resources,
+transform_start_time
 FROM aws.sagemaker.transform_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -323,13 +323,13 @@ Lists transform jobs.
 
 ```sql
 SELECT
-CreationTime,
-FailureReason,
-LastModifiedTime,
-TransformEndTime,
-TransformJobArn,
-TransformJobName,
-TransformJobStatus
+creation_time,
+failure_reason,
+last_modified_time,
+transform_end_time,
+transform_job_arn,
+transform_job_name,
+transform_job_status
 FROM aws.sagemaker.transform_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -386,7 +386,7 @@ SELECT
 '{{ ExperimentConfig }}',
 '{{ region }}'
 RETURNING
-TransformJobArn
+transform_job_arn
 ;
 ```
 </TabItem>

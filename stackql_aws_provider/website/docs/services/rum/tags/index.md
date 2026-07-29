@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource that you are viewing. (pattern: &lt;code&gt;.*arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of tag keys and values associated with the resource you specified.</td>
 </tr>
@@ -148,8 +148,8 @@ Displays the tags associated with a CloudWatch RUM resource.
 
 ```sql
 SELECT
-ResourceArn,
-Tags
+resource_arn,
+tags
 FROM aws.rum.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

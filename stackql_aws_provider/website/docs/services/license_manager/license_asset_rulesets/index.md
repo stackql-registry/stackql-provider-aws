@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>License asset ruleset description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseAssetRulesetArn" /></td>
+    <td><CopyableCode code="license_asset_ruleset_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the license asset ruleset. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>License asset ruleset name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>License asset rules.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LicenseAssetRulesets" /></td>
+    <td><CopyableCode code="license_asset_rulesets" /></td>
     <td><code>array</code></td>
     <td>License asset rulesets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -188,10 +188,10 @@ Gets a license asset ruleset.
 
 ```sql
 SELECT
-Description,
-LicenseAssetRulesetArn,
-Name,
-Rules
+description,
+license_asset_ruleset_arn,
+name,
+rules
 FROM aws.license_manager.license_asset_rulesets
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,8 +203,8 @@ Lists license asset rulesets.
 
 ```sql
 SELECT
-LicenseAssetRulesets,
-NextToken
+license_asset_rulesets,
+next_token
 FROM aws.license_manager.license_asset_rulesets
 WHERE region = '{{ region }}' -- required
 ;
@@ -243,7 +243,7 @@ SELECT
 '{{ ClientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-LicenseAssetRulesetArn
+license_asset_ruleset_arn
 ;
 ```
 </TabItem>
@@ -379,7 +379,7 @@ AND Rules = '{{ Rules }}' --required
 AND LicenseAssetRulesetArn = '{{ LicenseAssetRulesetArn }}' --required
 AND ClientToken = '{{ ClientToken }}' --required
 RETURNING
-LicenseAssetRulesetArn;
+license_asset_ruleset_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EmailAddressMetadataList" /></td>
+    <td><CopyableCode code="email_address_metadata_list" /></td>
     <td><code>array</code></td>
     <td>List of email address summary information for all email addresses associated with the queue. Each item contains the email address identifier, ARN, and configuration details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -168,10 +168,10 @@ Lists all email addresses that are currently associated with a specific queue, p
 
 ```sql
 SELECT
-EmailAddressMetadataList,
-LastModifiedRegion,
-LastModifiedTime,
-NextToken
+email_address_metadata_list,
+last_modified_region,
+last_modified_time,
+next_token
 FROM aws.connect.queue_email_addresses
 WHERE instance_id = '{{ instance_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required

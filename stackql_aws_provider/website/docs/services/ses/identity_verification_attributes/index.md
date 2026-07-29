@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VerificationAttributes" /></td>
+    <td><CopyableCode code="verification_attributes" /></td>
     <td><code>string</code></td>
     <td>A map of Identities to IdentityVerificationAttributes objects.</td>
 </tr>
@@ -124,7 +124,7 @@ Given a list of identities (email addresses and/or domains), returns the verific
 
 ```sql
 SELECT
-VerificationAttributes
+verification_attributes
 FROM aws.ses.identity_verification_attributes
 WHERE Identities = '{{ Identities }}' -- required
 AND region = '{{ region }}' -- required

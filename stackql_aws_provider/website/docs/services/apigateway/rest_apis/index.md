@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The API's name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiKeySource" /></td>
+    <td><CopyableCode code="api_key_source" /></td>
     <td><code>string</code></td>
     <td>The source of the API key for metering requests according to a usage plan. Valid values are: &gt;HEADER to read the API key from the X-API-Key header of a request. AUTHORIZER to read the API key from the UsageIdentifierKey from a custom authorizer. (HEADER, AUTHORIZER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiStatus" /></td>
+    <td><CopyableCode code="api_status" /></td>
     <td><code>string</code></td>
     <td>The ApiStatus of the RestApi. (UPDATING, AVAILABLE, PENDING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiStatusMessage" /></td>
+    <td><CopyableCode code="api_status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the RestApi. When the status message is UPDATING you can still invoke it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="binaryMediaTypes" /></td>
+    <td><CopyableCode code="binary_media_types" /></td>
     <td><code>array</code></td>
     <td>The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API was created.</td>
 </tr>
@@ -91,22 +91,22 @@ The following fields are returned by `SELECT` queries:
     <td>The API's description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disableExecuteApiEndpoint" /></td>
+    <td><CopyableCode code="disable_execute_api_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether clients can invoke your API by using the default execute-api endpoint. By default, clients can invoke your API with the default https:​//&#123;api_id&#125;.execute-api.&#123;region&#125;.amazonaws.com endpoint. To require that clients use a custom domain name to invoke your API, disable the default endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointAccessMode" /></td>
+    <td><CopyableCode code="endpoint_access_mode" /></td>
     <td><code>string</code></td>
     <td>The endpoint access mode of the RestApi. (BASIC, STRICT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointConfiguration" /></td>
+    <td><CopyableCode code="endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>The endpoint configuration to indicate the types of endpoints an API (RestApi) or its custom domain name (DomainName) has and the IP address types that can invoke it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minimumCompressionSize" /></td>
+    <td><CopyableCode code="minimum_compression_size" /></td>
     <td><code>integer</code></td>
     <td>A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.</td>
 </tr>
@@ -116,12 +116,12 @@ The following fields are returned by `SELECT` queries:
     <td>A stringified JSON policy document that applies to this RestApi regardless of the caller and Method configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rootResourceId" /></td>
+    <td><CopyableCode code="root_resource_id" /></td>
     <td><code>string</code></td>
     <td>The API's root resource ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityPolicy" /></td>
+    <td><CopyableCode code="security_policy" /></td>
     <td><code>string</code></td>
     <td>The Transport Layer Security (TLS) version + cipher suite for this RestApi. (TLS_1_0, TLS_1_2, SecurityPolicy_TLS13_1_3_2025_09, SecurityPolicy_TLS13_1_3_FIPS_2025_09, SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_PQ_2025_09, SecurityPolicy_TLS13_1_2_2021_06, SecurityPolicy_TLS13_2025_EDGE, SecurityPolicy_TLS12_PFS_2025_EDGE, SecurityPolicy_TLS12_2018_EDGE)</td>
 </tr>
@@ -165,27 +165,27 @@ The following fields are returned by `SELECT` queries:
     <td>The API's name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiKeySource" /></td>
+    <td><CopyableCode code="api_key_source" /></td>
     <td><code>string</code></td>
     <td>The source of the API key for metering requests according to a usage plan. Valid values are: &gt;HEADER to read the API key from the X-API-Key header of a request. AUTHORIZER to read the API key from the UsageIdentifierKey from a custom authorizer. (HEADER, AUTHORIZER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiStatus" /></td>
+    <td><CopyableCode code="api_status" /></td>
     <td><code>string</code></td>
     <td>The ApiStatus of the RestApi. (UPDATING, AVAILABLE, PENDING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiStatusMessage" /></td>
+    <td><CopyableCode code="api_status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the RestApi. When the status message is UPDATING you can still invoke it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="binaryMediaTypes" /></td>
+    <td><CopyableCode code="binary_media_types" /></td>
     <td><code>array</code></td>
     <td>The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API was created.</td>
 </tr>
@@ -195,22 +195,22 @@ The following fields are returned by `SELECT` queries:
     <td>The API's description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disableExecuteApiEndpoint" /></td>
+    <td><CopyableCode code="disable_execute_api_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether clients can invoke your API by using the default execute-api endpoint. By default, clients can invoke your API with the default https:​//&#123;api_id&#125;.execute-api.&#123;region&#125;.amazonaws.com endpoint. To require that clients use a custom domain name to invoke your API, disable the default endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointAccessMode" /></td>
+    <td><CopyableCode code="endpoint_access_mode" /></td>
     <td><code>string</code></td>
     <td>The endpoint access mode of the RestApi. (BASIC, STRICT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointConfiguration" /></td>
+    <td><CopyableCode code="endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>The endpoint configuration to indicate the types of endpoints an API (RestApi) or its custom domain name (DomainName) has and the IP address types that can invoke it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minimumCompressionSize" /></td>
+    <td><CopyableCode code="minimum_compression_size" /></td>
     <td><code>integer</code></td>
     <td>A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.</td>
 </tr>
@@ -220,12 +220,12 @@ The following fields are returned by `SELECT` queries:
     <td>A stringified JSON policy document that applies to this RestApi regardless of the caller and Method configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rootResourceId" /></td>
+    <td><CopyableCode code="root_resource_id" /></td>
     <td><code>string</code></td>
     <td>The API's root resource ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityPolicy" /></td>
+    <td><CopyableCode code="security_policy" /></td>
     <td><code>string</code></td>
     <td>The Transport Layer Security (TLS) version + cipher suite for this RestApi. (TLS_1_0, TLS_1_2, SecurityPolicy_TLS13_1_3_2025_09, SecurityPolicy_TLS13_1_3_FIPS_2025_09, SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_PQ_2025_09, SecurityPolicy_TLS13_1_2_2021_06, SecurityPolicy_TLS13_2025_EDGE, SecurityPolicy_TLS12_PFS_2025_EDGE, SecurityPolicy_TLS12_2018_EDGE)</td>
 </tr>
@@ -377,19 +377,19 @@ Lists the RestApi resource in the collection.
 SELECT
 id,
 name,
-apiKeySource,
-apiStatus,
-apiStatusMessage,
-binaryMediaTypes,
-createdDate,
+api_key_source,
+api_status,
+api_status_message,
+binary_media_types,
+created_date,
 description,
-disableExecuteApiEndpoint,
-endpointAccessMode,
-endpointConfiguration,
-minimumCompressionSize,
+disable_execute_api_endpoint,
+endpoint_access_mode,
+endpoint_configuration,
+minimum_compression_size,
 policy,
-rootResourceId,
-securityPolicy,
+root_resource_id,
+security_policy,
 tags,
 version,
 warnings
@@ -407,19 +407,19 @@ Lists the RestApis resources for your collection.
 SELECT
 id,
 name,
-apiKeySource,
-apiStatus,
-apiStatusMessage,
-binaryMediaTypes,
-createdDate,
+api_key_source,
+api_status,
+api_status_message,
+binary_media_types,
+created_date,
 description,
-disableExecuteApiEndpoint,
-endpointAccessMode,
-endpointConfiguration,
-minimumCompressionSize,
+disable_execute_api_endpoint,
+endpoint_access_mode,
+endpoint_configuration,
+minimum_compression_size,
 policy,
-rootResourceId,
-securityPolicy,
+root_resource_id,
+security_policy,
 tags,
 version,
 warnings
@@ -481,19 +481,19 @@ SELECT
 RETURNING
 id,
 name,
-apiKeySource,
-apiStatus,
-apiStatusMessage,
-binaryMediaTypes,
-createdDate,
+api_key_source,
+api_status,
+api_status_message,
+binary_media_types,
+created_date,
 description,
-disableExecuteApiEndpoint,
-endpointAccessMode,
-endpointConfiguration,
-minimumCompressionSize,
+disable_execute_api_endpoint,
+endpoint_access_mode,
+endpoint_configuration,
+minimum_compression_size,
 policy,
-rootResourceId,
-securityPolicy,
+root_resource_id,
+security_policy,
 tags,
 version,
 warnings
@@ -573,19 +573,19 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-apiKeySource,
-apiStatus,
-apiStatusMessage,
-binaryMediaTypes,
-createdDate,
+api_key_source,
+api_status,
+api_status_message,
+binary_media_types,
+created_date,
 description,
-disableExecuteApiEndpoint,
-endpointAccessMode,
-endpointConfiguration,
-minimumCompressionSize,
+disable_execute_api_endpoint,
+endpoint_access_mode,
+endpoint_configuration,
+minimum_compression_size,
 policy,
-rootResourceId,
-securityPolicy,
+root_resource_id,
+security_policy,
 tags,
 version,
 warnings;
@@ -620,19 +620,19 @@ AND parameters = '{{ parameters}}'
 RETURNING
 id,
 name,
-apiKeySource,
-apiStatus,
-apiStatusMessage,
-binaryMediaTypes,
-createdDate,
+api_key_source,
+api_status,
+api_status_message,
+binary_media_types,
+created_date,
 description,
-disableExecuteApiEndpoint,
-endpointAccessMode,
-endpointConfiguration,
-minimumCompressionSize,
+disable_execute_api_endpoint,
+endpoint_access_mode,
+endpoint_configuration,
+minimum_compression_size,
 policy,
-rootResourceId,
-securityPolicy,
+root_resource_id,
+security_policy,
 tags,
 version,
 warnings;

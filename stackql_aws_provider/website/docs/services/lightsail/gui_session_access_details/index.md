@@ -103,9 +103,9 @@ SELECT
 '{{ resourceName }}' /* required */,
 '{{ region }}'
 RETURNING
-failureReason,
-percentageComplete,
-resourceName,
+failure_reason,
+percentage_complete,
+resource_name,
 sessions,
 status
 ;

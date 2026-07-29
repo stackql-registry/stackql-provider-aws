@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the key-value pair of a tag added to your Amazon Web Services resource. A tag key can be up to 128 Unicode characters in length and is case-sensitive. System created tags that begin with aws: aren’t supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the key-value pair of a tag added to your Amazon Web Services resource. A tag value can be up to 256 Unicode characters in length and is case-sensitive.</td>
 </tr>
@@ -153,8 +153,8 @@ This operation allows you to list all of the tags for a specified resource. Each
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.s3control.tags
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND resource_arn = '{{ resource_arn }}' -- required

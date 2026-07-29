@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN string that uniquely identifies the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointIdentifier" /></td>
+    <td><CopyableCode code="endpoint_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the endpoint. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailureMessage" /></td>
+    <td><CopyableCode code="last_failure_message" /></td>
     <td><code>string</code></td>
     <td>The error message when the connection last failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceArn" /></td>
+    <td><CopyableCode code="replication_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceIdentifier" /></td>
+    <td><CopyableCode code="replication_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>The replication instance identifier. This parameter is stored as a lowercase string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The connection status. This parameter can return one of the following values: "successful" "testing" "failed" "deleting"</td>
 </tr>
@@ -151,12 +151,12 @@ Describes the status of the connections that have been made between the replicat
 
 ```sql
 SELECT
-EndpointArn,
-EndpointIdentifier,
-LastFailureMessage,
-ReplicationInstanceArn,
-ReplicationInstanceIdentifier,
-Status
+endpoint_arn,
+endpoint_identifier,
+last_failure_message,
+replication_instance_arn,
+replication_instance_identifier,
+status
 FROM aws.dms.connections
 WHERE region = '{{ region }}' -- required
 ;

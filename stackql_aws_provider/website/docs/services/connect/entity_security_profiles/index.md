@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Id of a security profile item.</td>
 </tr>
@@ -124,7 +124,7 @@ Lists all security profiles attached to a Q in Connect AIAgent Entity in an Amaz
 
 ```sql
 SELECT
-Id
+id
 FROM aws.connect.entity_security_profiles
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CrossAccount" /></td>
+    <td><CopyableCode code="cross_account" /></td>
     <td><code>boolean</code></td>
     <td>The Status if the discoverer will discover schemas from events sent from another account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the discoverer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscovererArn" /></td>
+    <td><CopyableCode code="discoverer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the discoverer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscovererId" /></td>
+    <td><CopyableCode code="discoverer_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the discoverer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the event bus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the discoverer. (STARTED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the resource.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CrossAccount" /></td>
+    <td><CopyableCode code="cross_account" /></td>
     <td><code>boolean</code></td>
     <td>The Status if the discoverer will discover schemas from events sent from another account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscovererArn" /></td>
+    <td><CopyableCode code="discoverer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the discoverer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscovererId" /></td>
+    <td><CopyableCode code="discoverer_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the discoverer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the event bus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the discoverer. (STARTED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the resource.</td>
 </tr>
@@ -262,13 +262,13 @@ Describes the discoverer.
 
 ```sql
 SELECT
-CrossAccount,
-Description,
-DiscovererArn,
-DiscovererId,
-SourceArn,
-State,
-Tags
+cross_account,
+description,
+discoverer_arn,
+discoverer_id,
+source_arn,
+state,
+tags
 FROM aws.schemas.discoverers
 WHERE discoverer_id = '{{ discoverer_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -281,12 +281,12 @@ List the discoverers.
 
 ```sql
 SELECT
-CrossAccount,
-DiscovererArn,
-DiscovererId,
-SourceArn,
-State,
-Tags
+cross_account,
+discoverer_arn,
+discoverer_id,
+source_arn,
+state,
+tags
 FROM aws.schemas.discoverers
 WHERE region = '{{ region }}' -- required
 AND discovererIdPrefix = '{{ discovererIdPrefix }}'
@@ -327,13 +327,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CrossAccount,
-Description,
-DiscovererArn,
-DiscovererId,
-SourceArn,
-State,
-Tags
+cross_account,
+description,
+discoverer_arn,
+discoverer_id,
+source_arn,
+state,
+tags
 ;
 ```
 </TabItem>
@@ -382,13 +382,13 @@ WHERE
 discoverer_id = '{{ discoverer_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CrossAccount,
-Description,
-DiscovererArn,
-DiscovererId,
-SourceArn,
-State,
-Tags;
+cross_account,
+description,
+discoverer_arn,
+discoverer_id,
+source_arn,
+state,
+tags;
 ```
 </TabItem>
 </Tabs>

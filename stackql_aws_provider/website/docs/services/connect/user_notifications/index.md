@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. If present, there are more results available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserNotifications" /></td>
+    <td><CopyableCode code="user_notifications" /></td>
     <td><code>array</code></td>
     <td>A list of notifications sent to the specified user.</td>
 </tr>
@@ -166,8 +166,8 @@ Retrieves a paginated list of notifications for a specific user, including the n
 
 ```sql
 SELECT
-NextToken,
-UserNotifications
+next_token,
+user_notifications
 FROM aws.connect.user_notifications
 WHERE instance_id = '{{ instance_id }}' -- required
 AND user_id = '{{ user_id }}' -- required

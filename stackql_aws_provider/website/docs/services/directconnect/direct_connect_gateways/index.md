@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="amazonSideAsn" /></td>
+    <td><CopyableCode code="amazon_side_asn" /></td>
     <td><code>integer (int64)</code></td>
     <td>The autonomous system number (AS) for the Amazon side of the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="directConnectGatewayId" /></td>
+    <td><CopyableCode code="direct_connect_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Direct Connect gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="directConnectGatewayName" /></td>
+    <td><CopyableCode code="direct_connect_gateway_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Direct Connect gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="directConnectGatewayState" /></td>
+    <td><CopyableCode code="direct_connect_gateway_state" /></td>
     <td><code>string</code></td>
     <td>The state of the Direct Connect gateway. The following are the possible values: pending: The initial state after calling CreateDirectConnectGateway. available: The Direct Connect gateway is ready for use. deleting: The initial state after calling DeleteDirectConnectGateway. deleted: The Direct Connect gateway is deleted and cannot pass traffic. (pending, available, deleting, deleted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the Direct Connect gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateChangeError" /></td>
+    <td><CopyableCode code="state_change_error" /></td>
     <td><code>string</code></td>
     <td>The error message if the state of an object failed to advance.</td>
 </tr>
@@ -177,12 +177,12 @@ Lists all your Direct Connect gateways or only the specified Direct Connect gate
 
 ```sql
 SELECT
-amazonSideAsn,
-directConnectGatewayId,
-directConnectGatewayName,
-directConnectGatewayState,
-ownerAccount,
-stateChangeError,
+amazon_side_asn,
+direct_connect_gateway_id,
+direct_connect_gateway_name,
+direct_connect_gateway_state,
+owner_account,
+state_change_error,
 tags
 FROM aws.directconnect.direct_connect_gateways
 WHERE region = '{{ region }}' -- required
@@ -218,7 +218,7 @@ SELECT
 {{ amazonSideAsn }},
 '{{ region }}'
 RETURNING
-directConnectGateway
+direct_connect_gateway
 ;
 ```
 </TabItem>
@@ -272,7 +272,7 @@ region = '{{ region }}' --required
 AND directConnectGatewayId = '{{ directConnectGatewayId }}' --required
 AND newDirectConnectGatewayName = '{{ newDirectConnectGatewayName }}' --required
 RETURNING
-directConnectGateway;
+direct_connect_gateway;
 ```
 </TabItem>
 </Tabs>

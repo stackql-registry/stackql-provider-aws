@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Availability Zone (AZ) where the ODB network is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The AZ ID of the AZ where the ODB network is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupSubnetCidr" /></td>
+    <td><CopyableCode code="backup_subnet_cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR range of the backup subnet in the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientSubnetCidr" /></td>
+    <td><CopyableCode code="client_subnet_cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR range of the client subnet in the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the ODB network was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name for the resources in the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultDnsPrefix" /></td>
+    <td><CopyableCode code="default_dns_prefix" /></td>
     <td><code>string</code></td>
     <td>The DNS prefix to the default DNS domain name. The default DNS domain name is oraclevcn.com.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name of the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2PlacementGroupIds" /></td>
+    <td><CopyableCode code="ec_2_placement_group_ids" /></td>
     <td><code>array</code></td>
     <td>The list of EC2 Placement Group IDs associated with your ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedServices" /></td>
+    <td><CopyableCode code="managed_services" /></td>
     <td><code>object</code></td>
     <td>The managed services configuration for the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociDnsForwardingConfigs" /></td>
+    <td><CopyableCode code="oci_dns_forwarding_configs" /></td>
     <td><code>array</code></td>
     <td>The DNS resolver endpoint in OCI for forwarding DNS queries for the ociPrivateZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociNetworkAnchorId" /></td>
+    <td><CopyableCode code="oci_network_anchor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the OCI network anchor for the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociNetworkAnchorUrl" /></td>
+    <td><CopyableCode code="oci_network_anchor_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the OCI network anchor for the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor that's associated with the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociVcnId" /></td>
+    <td><CopyableCode code="oci_vcn_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle Cloud ID (OCID) for the Virtual Cloud Network (VCN) that's associated with the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociVcnUrl" /></td>
+    <td><CopyableCode code="oci_vcn_url" /></td>
     <td><code>string</code></td>
     <td>The URL for the VCN that's associated with the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkArn" /></td>
+    <td><CopyableCode code="odb_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkId" /></td>
+    <td><CopyableCode code="odb_network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the ODB network. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peeredCidrs" /></td>
+    <td><CopyableCode code="peered_cidrs" /></td>
     <td><code>array</code></td>
     <td>The list of CIDR ranges from the peered VPC that are allowed access to the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The amount of progress made on the current operation on the ODB network, expressed as a percentage.</td>
 </tr>
@@ -156,7 +156,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the ODB network. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the current status of the ODB network.</td>
 </tr>
@@ -175,102 +175,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Availability Zone (AZ) where the ODB network is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The AZ ID of the AZ where the ODB network is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupSubnetCidr" /></td>
+    <td><CopyableCode code="backup_subnet_cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR range of the backup subnet in the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientSubnetCidr" /></td>
+    <td><CopyableCode code="client_subnet_cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR range of the client subnet in the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the ODB network was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name for the resources in the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultDnsPrefix" /></td>
+    <td><CopyableCode code="default_dns_prefix" /></td>
     <td><code>string</code></td>
     <td>The DNS prefix to the default DNS domain name. The default DNS domain name is oraclevcn.com.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name of the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2PlacementGroupIds" /></td>
+    <td><CopyableCode code="ec_2_placement_group_ids" /></td>
     <td><code>array</code></td>
     <td>The list of EC2 Placement Group IDs associated with your ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedServices" /></td>
+    <td><CopyableCode code="managed_services" /></td>
     <td><code>object</code></td>
     <td>The managed services configuration for the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociDnsForwardingConfigs" /></td>
+    <td><CopyableCode code="oci_dns_forwarding_configs" /></td>
     <td><code>array</code></td>
     <td>The DNS resolver endpoint in OCI for forwarding DNS queries for the ociPrivateZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociNetworkAnchorId" /></td>
+    <td><CopyableCode code="oci_network_anchor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the OCI network anchor for the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociNetworkAnchorUrl" /></td>
+    <td><CopyableCode code="oci_network_anchor_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the OCI network anchor for the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor associated with the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociVcnId" /></td>
+    <td><CopyableCode code="oci_vcn_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle Cloud ID (OCID) for the Virtual Cloud Network (VCN) associated with the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociVcnUrl" /></td>
+    <td><CopyableCode code="oci_vcn_url" /></td>
     <td><code>string</code></td>
     <td>The URL for the VCN that's associated with the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkArn" /></td>
+    <td><CopyableCode code="odb_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkId" /></td>
+    <td><CopyableCode code="odb_network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the ODB network. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peeredCidrs" /></td>
+    <td><CopyableCode code="peered_cidrs" /></td>
     <td><code>array</code></td>
     <td>The list of CIDR ranges from the peered VPC that are allowed access to the ODB network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The amount of progress made on the current operation on the ODB network, expressed as a percentage.</td>
 </tr>
@@ -280,7 +280,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the ODB network. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the current status of the ODB network.</td>
 </tr>
@@ -378,28 +378,28 @@ Returns information about the specified ODB network.
 
 ```sql
 SELECT
-availabilityZone,
-availabilityZoneId,
-backupSubnetCidr,
-clientSubnetCidr,
-createdAt,
-customDomainName,
-defaultDnsPrefix,
-displayName,
-ec2PlacementGroupIds,
-managedServices,
-ociDnsForwardingConfigs,
-ociNetworkAnchorId,
-ociNetworkAnchorUrl,
-ociResourceAnchorName,
-ociVcnId,
-ociVcnUrl,
-odbNetworkArn,
-odbNetworkId,
-peeredCidrs,
-percentProgress,
+availability_zone,
+availability_zone_id,
+backup_subnet_cidr,
+client_subnet_cidr,
+created_at,
+custom_domain_name,
+default_dns_prefix,
+display_name,
+ec_2_placement_group_ids,
+managed_services,
+oci_dns_forwarding_configs,
+oci_network_anchor_id,
+oci_network_anchor_url,
+oci_resource_anchor_name,
+oci_vcn_id,
+oci_vcn_url,
+odb_network_arn,
+odb_network_id,
+peered_cidrs,
+percent_progress,
 status,
-statusReason
+status_reason
 FROM aws.odb.odb_networks
 WHERE region = '{{ region }}' -- required
 ;
@@ -411,28 +411,28 @@ Returns information about the ODB networks owned by your Amazon Web Services acc
 
 ```sql
 SELECT
-availabilityZone,
-availabilityZoneId,
-backupSubnetCidr,
-clientSubnetCidr,
-createdAt,
-customDomainName,
-defaultDnsPrefix,
-displayName,
-ec2PlacementGroupIds,
-managedServices,
-ociDnsForwardingConfigs,
-ociNetworkAnchorId,
-ociNetworkAnchorUrl,
-ociResourceAnchorName,
-ociVcnId,
-ociVcnUrl,
-odbNetworkArn,
-odbNetworkId,
-peeredCidrs,
-percentProgress,
+availability_zone,
+availability_zone_id,
+backup_subnet_cidr,
+client_subnet_cidr,
+created_at,
+custom_domain_name,
+default_dns_prefix,
+display_name,
+ec_2_placement_group_ids,
+managed_services,
+oci_dns_forwarding_configs,
+oci_network_anchor_id,
+oci_network_anchor_url,
+oci_resource_anchor_name,
+oci_vcn_id,
+oci_vcn_url,
+odb_network_arn,
+odb_network_id,
+peered_cidrs,
+percent_progress,
 status,
-statusReason
+status_reason
 FROM aws.odb.odb_networks
 WHERE region = '{{ region }}' -- required
 ;
@@ -495,10 +495,10 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-displayName,
-odbNetworkId,
+display_name,
+odb_network_id,
 status,
-statusReason
+status_reason
 ;
 ```
 </TabItem>
@@ -621,10 +621,10 @@ WHERE
 region = '{{ region }}' --required
 AND odbNetworkId = '{{ odbNetworkId }}' --required
 RETURNING
-displayName,
-odbNetworkId,
+display_name,
+odb_network_id,
 status,
-statusReason;
+status_reason;
 ```
 </TabItem>
 </Tabs>

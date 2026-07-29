@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Each tag consists of a key and a value.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags attached to the resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.sagemaker_geospatial.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

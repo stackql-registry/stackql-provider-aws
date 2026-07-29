@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time the patient insights job was submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encounterContext" /></td>
+    <td><CopyableCode code="encounter_context" /></td>
     <td><code>object</code></td>
     <td>Details for an encounter</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>Configuration details for input patient data</td>
 </tr>
 <tr>
-    <td><CopyableCode code="insightsContext" /></td>
+    <td><CopyableCode code="insights_context" /></td>
     <td><code>object</code></td>
     <td>Details for insights that user wants to generate</td>
 </tr>
 <tr>
-    <td><CopyableCode code="insightsOutput" /></td>
+    <td><CopyableCode code="insights_output" /></td>
     <td><code>object</code></td>
     <td>Output of patient insights job</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:health-agent:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:domain/&#91;-a-zA-Z0-9-&#93;+/patient-insights-job/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td> (SUBMITTED, IN_PROGRESS, FAILED, SUCCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Configuration details for insights output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="patientContext" /></td>
+    <td><CopyableCode code="patient_context" /></td>
     <td><code>object</code></td>
     <td>Details for a patient</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>Contains information about the status of a job. (pattern: &lt;code&gt;.*&#91;\s\S&#93;*\S&#91;\s\S&#93;*.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time the patient insights job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userContext" /></td>
+    <td><CopyableCode code="user_context" /></td>
     <td><code>object</code></td>
     <td>Details for user initiating insights job</td>
 </tr>
@@ -189,19 +189,19 @@ Get details of a started patient insights job.
 
 ```sql
 SELECT
-creationTime,
-encounterContext,
-inputDataConfig,
-insightsContext,
-insightsOutput,
-jobArn,
-jobId,
-jobStatus,
-outputDataConfig,
-patientContext,
-statusDetails,
-updatedTime,
-userContext
+creation_time,
+encounter_context,
+input_data_config,
+insights_context,
+insights_output,
+job_arn,
+job_id,
+job_status,
+output_data_config,
+patient_context,
+status_details,
+updated_time,
+user_context
 FROM aws.connecthealth.patient_insights_jobs
 WHERE domain_id = '{{ domain_id }}' -- required
 AND job_id = '{{ job_id }}' -- required

@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the asset, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:asset/$&#123;AssetId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelId" /></td>
+    <td><CopyableCode code="asset_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset model used to create the asset. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the asset was created, in Unix epoch time.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description for the asset. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of the asset. For more information, see Using external IDs in the IoT SiteWise User Guide. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of asset hierarchies that each contain a hierarchyId. A hierarchy specifies allowed parent/child asset relationships.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the asset was last updated, in Unix epoch time.</td>
 </tr>
@@ -192,12 +192,12 @@ SELECT
 id,
 name,
 arn,
-assetModelId,
-creationDate,
+asset_model_id,
+creation_date,
 description,
-externalId,
+external_id,
 hierarchies,
-lastUpdateDate,
+last_update_date,
 status
 FROM aws.iotsitewise.associated_assets
 WHERE asset_id = '{{ asset_id }}' -- required

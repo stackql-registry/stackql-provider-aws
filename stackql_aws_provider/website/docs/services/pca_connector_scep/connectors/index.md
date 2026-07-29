@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:pca-connector-scep:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityArn" /></td>
+    <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate authority associated with the connector. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:acm-pca:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:certificate-authority\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The connector's HTTPS public SCEP URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MobileDeviceManagement" /></td>
+    <td><CopyableCode code="mobile_device_management" /></td>
     <td><code>object</code></td>
     <td>If you don't supply a value, by default Connector for SCEP creates a connector for general-purpose use. A general-purpose connector is designed to work with clients or endpoints that support the SCEP protocol, except Connector for SCEP for Microsoft Intune. For information about considerations and limitations with using Connector for SCEP, see Considerations and Limitations. If you provide an IntuneConfiguration, Connector for SCEP creates a connector for use with Microsoft Intune, and you manage the challenge passwords using Microsoft Intune. For more information, see Using Connector for SCEP for Microsoft Intune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenIdConfiguration" /></td>
+    <td><CopyableCode code="open_id_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains OpenID Connect (OIDC) parameters for use with Connector for SCEP for Microsoft Intune. For more information about using Connector for SCEP for Microsoft Intune, see Using Connector for SCEP for Microsoft Intune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The connector's status. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Information about why connector creation failed, if status is FAILED. (INTERNAL_FAILURE, PRIVATECA_ACCESS_DENIED, PRIVATECA_INVALID_STATE, PRIVATECA_RESOURCE_NOT_FOUND, VPC_ENDPOINT_RESOURCE_NOT_FOUND, VPC_ENDPOINT_DNS_ENTRIES_NOT_FOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The connector type. (GENERAL_PURPOSE, INTUNE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was updated.</td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:pca-connector-scep:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityArn" /></td>
+    <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector's associated certificate authority. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:acm-pca:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:certificate-authority\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the challenge was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The connector's HTTPS public SCEP URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MobileDeviceManagement" /></td>
+    <td><CopyableCode code="mobile_device_management" /></td>
     <td><code>object</code></td>
     <td>If you don't supply a value, by default Connector for SCEP creates a connector for general-purpose use. A general-purpose connector is designed to work with clients or endpoints that support the SCEP protocol, except Connector for SCEP for Microsoft Intune. For information about considerations and limitations with using Connector for SCEP, see Considerations and Limitations. If you provide an IntuneConfiguration, Connector for SCEP creates a connector for use with Microsoft Intune, and you manage the challenge passwords using Microsoft Intune. For more information, see Using Connector for SCEP for Microsoft Intune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenIdConfiguration" /></td>
+    <td><CopyableCode code="open_id_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains OpenID Connect (OIDC) parameters for use with Microsoft Intune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The connector's status. Status can be creating, active, deleting, or failed. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Information about why connector creation failed, if status is FAILED. (INTERNAL_FAILURE, PRIVATECA_ACCESS_DENIED, PRIVATECA_INVALID_STATE, PRIVATECA_RESOURCE_NOT_FOUND, VPC_ENDPOINT_RESOURCE_NOT_FOUND, VPC_ENDPOINT_DNS_ENTRIES_NOT_FOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The connector type. (GENERAL_PURPOSE, INTUNE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the challenge was updated.</td>
 </tr>
@@ -266,16 +266,16 @@ Retrieves details about the specified Connector. Calling this action returns imp
 
 ```sql
 SELECT
-Arn,
-CertificateAuthorityArn,
-CreatedAt,
-Endpoint,
-MobileDeviceManagement,
-OpenIdConfiguration,
-Status,
-StatusReason,
-Type,
-UpdatedAt
+arn,
+certificate_authority_arn,
+created_at,
+endpoint,
+mobile_device_management,
+open_id_configuration,
+status,
+status_reason,
+type,
+updated_at
 FROM aws.pca_connector_scep.connectors
 WHERE connector_arn = '{{ connector_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,16 +288,16 @@ Lists the connectors belonging to your Amazon Web Services account.
 
 ```sql
 SELECT
-Arn,
-CertificateAuthorityArn,
-CreatedAt,
-Endpoint,
-MobileDeviceManagement,
-OpenIdConfiguration,
-Status,
-StatusReason,
-Type,
-UpdatedAt
+arn,
+certificate_authority_arn,
+created_at,
+endpoint,
+mobile_device_management,
+open_id_configuration,
+status,
+status_reason,
+type,
+updated_at
 FROM aws.pca_connector_scep.connectors
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -338,7 +338,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ConnectorArn
+connector_arn
 ;
 ```
 </TabItem>

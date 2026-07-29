@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MediaCapturePipeline" /></td>
+    <td><CopyableCode code="media_capture_pipeline" /></td>
     <td><code>object</code></td>
     <td>A pipeline that enables users to capture audio and video.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaConcatenationPipeline" /></td>
+    <td><CopyableCode code="media_concatenation_pipeline" /></td>
     <td><code>object</code></td>
     <td>The media concatenation pipeline in a media pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaInsightsPipeline" /></td>
+    <td><CopyableCode code="media_insights_pipeline" /></td>
     <td><code>object</code></td>
     <td>The media insights pipeline of a media pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaLiveConnectorPipeline" /></td>
+    <td><CopyableCode code="media_live_connector_pipeline" /></td>
     <td><code>object</code></td>
     <td>The connector pipeline of the media pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaStreamPipeline" /></td>
+    <td><CopyableCode code="media_stream_pipeline" /></td>
     <td><code>object</code></td>
     <td>Designates a media pipeline as a media stream pipeline.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MediaPipelines" /></td>
+    <td><CopyableCode code="media_pipelines" /></td>
     <td><code>array</code></td>
     <td>The media pipeline objects in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -194,11 +194,11 @@ Gets an existing media pipeline.
 
 ```sql
 SELECT
-MediaCapturePipeline,
-MediaConcatenationPipeline,
-MediaInsightsPipeline,
-MediaLiveConnectorPipeline,
-MediaStreamPipeline
+media_capture_pipeline,
+media_concatenation_pipeline,
+media_insights_pipeline,
+media_live_connector_pipeline,
+media_stream_pipeline
 FROM aws.chime_sdk_media_pipelines.media_pipelines
 WHERE media_pipeline_id = '{{ media_pipeline_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -211,8 +211,8 @@ Returns a list of media pipelines.
 
 ```sql
 SELECT
-MediaPipelines,
-NextToken
+media_pipelines,
+next_token
 FROM aws.chime_sdk_media_pipelines.media_pipelines
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'

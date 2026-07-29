@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>array</code></td>
     <td>List of Availability Zones for this replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultAllocatedStorage" /></td>
+    <td><CopyableCode code="default_allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The default amount of storage (in gigabytes) that is allocated for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the replication engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludedAllocatedStorage" /></td>
+    <td><CopyableCode code="included_allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage (in gigabytes) that is allocated for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxAllocatedStorage" /></td>
+    <td><CopyableCode code="max_allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinAllocatedStorage" /></td>
+    <td><CopyableCode code="min_allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReleaseStatus" /></td>
+    <td><CopyableCode code="release_status" /></td>
     <td><code>string</code></td>
     <td>The value returned when the specified EngineVersion of the replication instance is in Beta or test mode. This indicates some features might not work as expected. DMS supports the ReleaseStatus parameter in versions 3.1.4 and later. (beta, prod)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceClass" /></td>
+    <td><CopyableCode code="replication_instance_class" /></td>
     <td><code>string</code></td>
     <td>The compute and memory capacity of the replication instance as defined for the specified replication instance class. For example to specify the instance class dms.c4.large, set this parameter to "dms.c4.large". For more information on the settings and capacities for the available replication instance classes, see Selecting the right DMS replication instance for your migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The type of storage used by the replication instance.</td>
 </tr>
@@ -159,15 +159,15 @@ Returns information about the replication instance types that can be created in 
 
 ```sql
 SELECT
-AvailabilityZones,
-DefaultAllocatedStorage,
-EngineVersion,
-IncludedAllocatedStorage,
-MaxAllocatedStorage,
-MinAllocatedStorage,
-ReleaseStatus,
-ReplicationInstanceClass,
-StorageType
+availability_zones,
+default_allocated_storage,
+engine_version,
+included_allocated_storage,
+max_allocated_storage,
+min_allocated_storage,
+release_status,
+replication_instance_class,
+storage_type
 FROM aws.dms.orderable_replication_instances
 WHERE region = '{{ region }}' -- required
 ;

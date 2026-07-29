@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GameSessionActivationTimeoutSeconds" /></td>
+    <td><CopyableCode code="game_session_activation_timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of time (in seconds) allowed to launch a new game session and have it report ready to host players. During this time, the game session is in status ACTIVATING. If the game session does not become active before the timeout, it is ended and the game session status is changed to TERMINATED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrentGameSessionActivations" /></td>
+    <td><CopyableCode code="max_concurrent_game_session_activations" /></td>
     <td><code>integer</code></td>
     <td>The number of game sessions in status ACTIVATING to allow on an instance or compute. This setting limits the instance resources that can be used for new game activations at any one time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerProcesses" /></td>
+    <td><CopyableCode code="server_processes" /></td>
     <td><code>array</code></td>
     <td>A collection of server process configurations that identify what server processes to run on fleet computes.</td>
 </tr>
@@ -136,9 +136,9 @@ This API works with the following fleet types: EC2 Retrieves a fleet's runtime c
 
 ```sql
 SELECT
-GameSessionActivationTimeoutSeconds,
-MaxConcurrentGameSessionActivations,
-ServerProcesses
+game_session_activation_timeout_seconds,
+max_concurrent_game_session_activations,
+server_processes
 FROM aws.gamelift.runtime_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,7 +169,7 @@ region = '{{ region }}' --required
 AND FleetId = '{{ FleetId }}' --required
 AND RuntimeConfiguration = '{{ RuntimeConfiguration }}' --required
 RETURNING
-RuntimeConfiguration;
+runtime_configuration;
 ```
 </TabItem>
 </Tabs>

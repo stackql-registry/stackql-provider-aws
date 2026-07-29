@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data source for the data ingestion job. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>A list of reasons that the data ingestion job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestionJobId" /></td>
+    <td><CopyableCode code="ingestion_job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data ingestion job. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the knowledge for the data ingestion job. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the data ingestion job started. If you stop a data ingestion job, the startedAt time is the time the job was started before the job was stopped.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the data ingestion job. (STARTING, IN_PROGRESS, COMPLETE, FAILED, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the data ingestion job was last updated. If you stop a data ingestion job, the updatedAt time is the time the job was stopped.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data source for the data ingestion job. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestionJobId" /></td>
+    <td><CopyableCode code="ingestion_job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data ingestion job. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the knowledge base for the data ingestion job. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the data ingestion job started.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the data ingestion job. (STARTING, IN_PROGRESS, COMPLETE, FAILED, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the data ingestion job was last updated.</td>
 </tr>
@@ -237,15 +237,15 @@ Gets information about a data ingestion job. Data sources are ingested into your
 
 ```sql
 SELECT
-dataSourceId,
+data_source_id,
 description,
-failureReasons,
-ingestionJobId,
-knowledgeBaseId,
-startedAt,
+failure_reasons,
+ingestion_job_id,
+knowledge_base_id,
+started_at,
 statistics,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agent.ingestion_jobs
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND data_source_id = '{{ data_source_id }}' -- required
@@ -260,14 +260,14 @@ Lists the data ingestion jobs for a data source. The list also includes informat
 
 ```sql
 SELECT
-dataSourceId,
+data_source_id,
 description,
-ingestionJobId,
-knowledgeBaseId,
-startedAt,
+ingestion_job_id,
+knowledge_base_id,
+started_at,
 statistics,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agent.ingestion_jobs
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND data_source_id = '{{ data_source_id }}' -- required

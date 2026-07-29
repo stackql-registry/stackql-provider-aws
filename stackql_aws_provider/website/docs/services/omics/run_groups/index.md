@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>The group's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCpus" /></td>
+    <td><CopyableCode code="max_cpus" /></td>
     <td><code>integer</code></td>
     <td>The group's maximum number of CPUs to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDuration" /></td>
+    <td><CopyableCode code="max_duration" /></td>
     <td><code>integer</code></td>
     <td>The group's maximum run time in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxGpus" /></td>
+    <td><CopyableCode code="max_gpus" /></td>
     <td><code>integer</code></td>
     <td>The maximum GPUs that can be used by a run group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxRuns" /></td>
+    <td><CopyableCode code="max_runs" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of concurrent runs for the group.</td>
 </tr>
@@ -125,27 +125,27 @@ The following fields are returned by `SELECT` queries:
     <td>The group's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCpus" /></td>
+    <td><CopyableCode code="max_cpus" /></td>
     <td><code>integer</code></td>
     <td>The group's maximum CPU count setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDuration" /></td>
+    <td><CopyableCode code="max_duration" /></td>
     <td><code>integer</code></td>
     <td>The group's maximum duration setting in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxGpus" /></td>
+    <td><CopyableCode code="max_gpus" /></td>
     <td><code>integer</code></td>
     <td>The maximum GPUs that can be used by a run group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxRuns" /></td>
+    <td><CopyableCode code="max_runs" /></td>
     <td><code>integer</code></td>
     <td>The group's maximum concurrent run setting.</td>
 </tr>
@@ -266,11 +266,11 @@ SELECT
 id,
 name,
 arn,
-creationTime,
-maxCpus,
-maxDuration,
-maxGpus,
-maxRuns,
+creation_time,
+max_cpus,
+max_duration,
+max_gpus,
+max_runs,
 tags
 FROM aws.omics.run_groups
 WHERE id = '{{ id }}' -- required
@@ -287,11 +287,11 @@ SELECT
 id,
 name,
 arn,
-creationTime,
-maxCpus,
-maxDuration,
-maxGpus,
-maxRuns
+creation_time,
+max_cpus,
+max_duration,
+max_gpus,
+max_runs
 FROM aws.omics.run_groups
 WHERE region = '{{ region }}' -- required
 AND name = '{{ name }}'

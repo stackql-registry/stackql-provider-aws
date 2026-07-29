@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the label group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaultCodes" /></td>
+    <td><CopyableCode code="fault_codes" /></td>
     <td><code>array</code></td>
     <td>Codes indicating the type of anomaly associated with the labels in the lagbel group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelGroupArn" /></td>
+    <td><CopyableCode code="label_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the label group. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:label-group\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelGroupName" /></td>
+    <td><CopyableCode code="label_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the label group. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the label group was updated.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LabelGroupSummaries" /></td>
+    <td><CopyableCode code="label_group_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of the label groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of label groups. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -193,11 +193,11 @@ Returns information about the label group.
 
 ```sql
 SELECT
-CreatedAt,
-FaultCodes,
-LabelGroupArn,
-LabelGroupName,
-UpdatedAt
+created_at,
+fault_codes,
+label_group_arn,
+label_group_name,
+updated_at
 FROM aws.lookoutequipment.label_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,8 +209,8 @@ Returns a list of the label groups.
 
 ```sql
 SELECT
-LabelGroupSummaries,
-NextToken
+label_group_summaries,
+next_token
 FROM aws.lookoutequipment.label_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,8 +247,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LabelGroupArn,
-LabelGroupName
+label_group_arn,
+label_group_name
 ;
 ```
 </TabItem>

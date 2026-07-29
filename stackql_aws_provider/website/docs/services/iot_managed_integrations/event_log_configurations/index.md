@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventLogLevel" /></td>
+    <td><CopyableCode code="event_log_level" /></td>
     <td><code>string</code></td>
     <td>The logging level for the event log configuration. (DEBUG, ERROR, INFO, WARN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the event log configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource for the event log configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+*&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource for the event log configuration. (pattern: &lt;code&gt;&#91;*&#93;$|^(managed-thing|credential-locker|provisioning-profile|ota-task|account-association)&lt;/code&gt;)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventLogLevel" /></td>
+    <td><CopyableCode code="event_log_level" /></td>
     <td><code>string</code></td>
     <td>The logging level for the event log configuration. (DEBUG, ERROR, INFO, WARN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the event log configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource for the event log configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+*&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource for the event log configuration. (pattern: &lt;code&gt;&#91;*&#93;$|^(managed-thing|credential-locker|provisioning-profile|ota-task|account-association)&lt;/code&gt;)</td>
 </tr>
@@ -213,10 +213,10 @@ Get an event log configuration.
 
 ```sql
 SELECT
-EventLogLevel,
-Id,
-ResourceId,
-ResourceType
+event_log_level,
+id,
+resource_id,
+resource_type
 FROM aws.iot_managed_integrations.event_log_configurations
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,10 +229,10 @@ List all event log configurations for an account.
 
 ```sql
 SELECT
-EventLogLevel,
-Id,
-ResourceId,
-ResourceType
+event_log_level,
+id,
+resource_id,
+resource_type
 FROM aws.iot_managed_integrations.event_log_configurations
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -271,7 +271,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

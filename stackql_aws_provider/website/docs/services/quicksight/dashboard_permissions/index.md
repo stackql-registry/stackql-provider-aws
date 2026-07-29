@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DashboardArn" /></td>
+    <td><CopyableCode code="dashboard_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardId" /></td>
+    <td><CopyableCode code="dashboard_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the dashboard. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkSharingConfiguration" /></td>
+    <td><CopyableCode code="link_sharing_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the configuration of a shareable link to the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A structure that contains the permissions for the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -161,12 +161,12 @@ Describes read and write permissions for a dashboard.
 
 ```sql
 SELECT
-DashboardArn,
-DashboardId,
-LinkSharingConfiguration,
-Permissions,
-RequestId,
-Status
+dashboard_arn,
+dashboard_id,
+link_sharing_configuration,
+permissions,
+request_id,
+status
 FROM aws.quicksight.dashboard_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND dashboard_id = '{{ dashboard_id }}' -- required
@@ -201,12 +201,12 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND dashboard_id = '{{ dashboard_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DashboardArn,
-DashboardId,
-LinkSharingConfiguration,
-Permissions,
-RequestId,
-Status;
+dashboard_arn,
+dashboard_id,
+link_sharing_configuration,
+permissions,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

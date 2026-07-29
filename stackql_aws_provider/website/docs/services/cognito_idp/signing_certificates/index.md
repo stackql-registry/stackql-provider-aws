@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Certificate" /></td>
+    <td><CopyableCode code="certificate" /></td>
     <td><code>string</code></td>
     <td>The x.509 certificate that signs SAML 2.0 authentication requests for your user pool.</td>
 </tr>
@@ -119,7 +119,7 @@ Given a user pool ID, returns the signing certificate for SAML 2.0 federation. I
 
 ```sql
 SELECT
-Certificate
+certificate
 FROM aws.cognito_idp.signing_certificates
 WHERE region = '{{ region }}' -- required
 ;

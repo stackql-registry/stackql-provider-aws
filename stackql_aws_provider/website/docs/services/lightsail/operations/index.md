@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the operation was initialized (1479816991.349).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>string</code></td>
     <td>The error details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isTerminal" /></td>
+    <td><CopyableCode code="is_terminal" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the operation is terminal.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region and Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationDetails" /></td>
+    <td><CopyableCode code="operation_details" /></td>
     <td><code>string</code></td>
     <td>Details about the operation (Debian-1GB-Ohio-1).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The type of operation. (DeleteKnownHostKeys, DeleteInstance, CreateInstance, StopInstance, StartInstance, RebootInstance, OpenInstancePublicPorts, PutInstancePublicPorts, CloseInstancePublicPorts, AllocateStaticIp, ReleaseStaticIp, AttachStaticIp, DetachStaticIp, UpdateDomainEntry, DeleteDomainEntry, CreateDomain, DeleteDomain, CreateInstanceSnapshot, DeleteInstanceSnapshot, CreateInstancesFromSnapshot, CreateLoadBalancer, DeleteLoadBalancer, AttachInstancesToLoadBalancer, DetachInstancesFromLoadBalancer, UpdateLoadBalancerAttribute, CreateLoadBalancerTlsCertificate, DeleteLoadBalancerTlsCertificate, AttachLoadBalancerTlsCertificate, CreateDisk, DeleteDisk, AttachDisk, DetachDisk, CreateDiskSnapshot, DeleteDiskSnapshot, CreateDiskFromSnapshot, CreateRelationalDatabase, UpdateRelationalDatabase, DeleteRelationalDatabase, CreateRelationalDatabaseFromSnapshot, CreateRelationalDatabaseSnapshot, DeleteRelationalDatabaseSnapshot, UpdateRelationalDatabaseParameters, StartRelationalDatabase, RebootRelationalDatabase, StopRelationalDatabase, EnableAddOn, DisableAddOn, PutAlarm, GetAlarms, DeleteAlarm, TestAlarm, CreateContactMethod, GetContactMethods, SendContactMethodVerification, DeleteContactMethod, CreateDistribution, UpdateDistribution, DeleteDistribution, ResetDistributionCache, AttachCertificateToDistribution, DetachCertificateFromDistribution, UpdateDistributionBundle, SetIpAddressType, CreateCertificate, DeleteCertificate, CreateContainerService, UpdateContainerService, DeleteContainerService, CreateContainerServiceDeployment, CreateContainerServiceRegistryLogin, RegisterContainerImage, DeleteContainerImage, CreateBucket, DeleteBucket, CreateBucketAccessKey, DeleteBucketAccessKey, UpdateBucketBundle, UpdateBucket, SetResourceAccessForBucket, UpdateInstanceMetadataOptions, StartGUISession, StopGUISession, SetupInstanceHttps)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The resource name. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the operation. (NotStarted, Started, Failed, Completed, Succeeded)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusChangedAt" /></td>
+    <td><CopyableCode code="status_changed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the status was changed (1479816991.349).</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the operation was initialized (1479816991.349).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>string</code></td>
     <td>The error details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isTerminal" /></td>
+    <td><CopyableCode code="is_terminal" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the operation is terminal.</td>
 </tr>
@@ -155,22 +155,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region and Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationDetails" /></td>
+    <td><CopyableCode code="operation_details" /></td>
     <td><code>string</code></td>
     <td>Details about the operation (Debian-1GB-Ohio-1).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The type of operation. (DeleteKnownHostKeys, DeleteInstance, CreateInstance, StopInstance, StartInstance, RebootInstance, OpenInstancePublicPorts, PutInstancePublicPorts, CloseInstancePublicPorts, AllocateStaticIp, ReleaseStaticIp, AttachStaticIp, DetachStaticIp, UpdateDomainEntry, DeleteDomainEntry, CreateDomain, DeleteDomain, CreateInstanceSnapshot, DeleteInstanceSnapshot, CreateInstancesFromSnapshot, CreateLoadBalancer, DeleteLoadBalancer, AttachInstancesToLoadBalancer, DetachInstancesFromLoadBalancer, UpdateLoadBalancerAttribute, CreateLoadBalancerTlsCertificate, DeleteLoadBalancerTlsCertificate, AttachLoadBalancerTlsCertificate, CreateDisk, DeleteDisk, AttachDisk, DetachDisk, CreateDiskSnapshot, DeleteDiskSnapshot, CreateDiskFromSnapshot, CreateRelationalDatabase, UpdateRelationalDatabase, DeleteRelationalDatabase, CreateRelationalDatabaseFromSnapshot, CreateRelationalDatabaseSnapshot, DeleteRelationalDatabaseSnapshot, UpdateRelationalDatabaseParameters, StartRelationalDatabase, RebootRelationalDatabase, StopRelationalDatabase, EnableAddOn, DisableAddOn, PutAlarm, GetAlarms, DeleteAlarm, TestAlarm, CreateContactMethod, GetContactMethods, SendContactMethodVerification, DeleteContactMethod, CreateDistribution, UpdateDistribution, DeleteDistribution, ResetDistributionCache, AttachCertificateToDistribution, DetachCertificateFromDistribution, UpdateDistributionBundle, SetIpAddressType, CreateCertificate, DeleteCertificate, CreateContainerService, UpdateContainerService, DeleteContainerService, CreateContainerServiceDeployment, CreateContainerServiceRegistryLogin, RegisterContainerImage, DeleteContainerImage, CreateBucket, DeleteBucket, CreateBucketAccessKey, DeleteBucketAccessKey, UpdateBucketBundle, UpdateBucket, SetResourceAccessForBucket, UpdateInstanceMetadataOptions, StartGUISession, StopGUISession, SetupInstanceHttps)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The resource name. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the operation. (NotStarted, Started, Failed, Completed, Succeeded)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusChangedAt" /></td>
+    <td><CopyableCode code="status_changed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the status was changed (1479816991.349).</td>
 </tr>
@@ -258,17 +258,17 @@ Returns information about a specific operation. Operations include events such a
 ```sql
 SELECT
 id,
-createdAt,
-errorCode,
-errorDetails,
-isTerminal,
+created_at,
+error_code,
+error_details,
+is_terminal,
 location,
-operationDetails,
-operationType,
-resourceName,
-resourceType,
+operation_details,
+operation_type,
+resource_name,
+resource_type,
 status,
-statusChangedAt
+status_changed_at
 FROM aws.lightsail.operations
 WHERE region = '{{ region }}' -- required
 ;
@@ -281,17 +281,17 @@ Returns information about all operations. Results are returned from oldest to ne
 ```sql
 SELECT
 id,
-createdAt,
-errorCode,
-errorDetails,
-isTerminal,
+created_at,
+error_code,
+error_details,
+is_terminal,
 location,
-operationDetails,
-operationType,
-resourceName,
-resourceType,
+operation_details,
+operation_type,
+resource_name,
+resource_type,
 status,
-statusChangedAt
+status_changed_at
 FROM aws.lightsail.operations
 WHERE region = '{{ region }}' -- required
 ;

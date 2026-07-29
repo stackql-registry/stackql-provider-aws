@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection invitation. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:partnercentral:&#91;a-z0-9\-&#93;*::catalog/&#91;a-zA-Z&#93;+/connection-invitation/pacinv-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier where the connection invitation exists. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the connection associated with this invitation. (pattern: &lt;code&gt;pac-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionType" /></td>
+    <td><CopyableCode code="connection_type" /></td>
     <td><code>string</code></td>
     <td>The type of connection being requested in the invitation. (OPPORTUNITY_COLLABORATION, SUBSIDIARY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection invitation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection invitation will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the connection invitation. (pattern: &lt;code&gt;pacinv-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitationMessage" /></td>
+    <td><CopyableCode code="invitation_message" /></td>
     <td><code>string</code></td>
     <td>The custom message included with the connection invitation. (pattern: &lt;code&gt;&#91;\u0020-\u007E\u00A0-\uD7FF\uE000-\uFFFD\n&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InviterEmail" /></td>
+    <td><CopyableCode code="inviter_email" /></td>
     <td><code>string</code></td>
     <td>The email address of the person who sent the connection invitation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.!#$%&'*+/=?^_`&#123;|&#125;~-&#93;+@&#91;a-zA-Z0-9&#93;(?:&#91;a-zA-Z0-9-&#93;&#123;0,61&#125;&#91;a-zA-Z0-9&#93;)?(?:\.&#91;a-zA-Z0-9&#93;(?:&#91;a-zA-Z0-9-&#93;&#123;0,61&#125;&#91;a-zA-Z0-9&#93;)?)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InviterName" /></td>
+    <td><CopyableCode code="inviter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the person who sent the connection invitation. (pattern: &lt;code&gt;&#91;\u0020-\u007E\u00A0-\uD7FF\uE000-\uFFFD&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtherParticipantIdentifier" /></td>
+    <td><CopyableCode code="other_participant_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the other participant in the connection invitation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParticipantType" /></td>
+    <td><CopyableCode code="participant_type" /></td>
     <td><code>string</code></td>
     <td>The type of participant (inviter or invitee) in the connection invitation. (SENDER, RECEIVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the connection invitation. (PENDING, ACCEPTED, REJECTED, CANCELED, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection invitation was last updated.</td>
 </tr>
@@ -135,57 +135,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection invitation. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:partnercentral:&#91;a-z0-9\-&#93;*::catalog/&#91;a-zA-Z&#93;+/connection-invitation/pacinv-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier where the connection invitation exists. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the connection associated with this invitation. (pattern: &lt;code&gt;pac-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionType" /></td>
+    <td><CopyableCode code="connection_type" /></td>
     <td><code>string</code></td>
     <td>The type of connection being requested in the invitation. (OPPORTUNITY_COLLABORATION, SUBSIDIARY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection invitation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection invitation will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the connection invitation. (pattern: &lt;code&gt;pacinv-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtherParticipantIdentifier" /></td>
+    <td><CopyableCode code="other_participant_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the other participant in the connection invitation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParticipantType" /></td>
+    <td><CopyableCode code="participant_type" /></td>
     <td><code>string</code></td>
     <td>The type of participant (inviter or invitee) in the connection invitation. (SENDER, RECEIVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the connection invitation. (PENDING, ACCEPTED, REJECTED, CANCELED, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection invitation was last updated.</td>
 </tr>
@@ -269,20 +269,20 @@ Retrieves detailed information about a specific connection invitation.
 
 ```sql
 SELECT
-Arn,
-Catalog,
-ConnectionId,
-ConnectionType,
-CreatedAt,
-ExpiresAt,
-Id,
-InvitationMessage,
-InviterEmail,
-InviterName,
-OtherParticipantIdentifier,
-ParticipantType,
-Status,
-UpdatedAt
+arn,
+catalog,
+connection_id,
+connection_type,
+created_at,
+expires_at,
+id,
+invitation_message,
+inviter_email,
+inviter_name,
+other_participant_identifier,
+participant_type,
+status,
+updated_at
 FROM aws.partnercentral_account.connection_invitations
 WHERE region = '{{ region }}' -- required
 ;
@@ -294,17 +294,17 @@ Lists connection invitations for the partner account, with optional filtering by
 
 ```sql
 SELECT
-Arn,
-Catalog,
-ConnectionId,
-ConnectionType,
-CreatedAt,
-ExpiresAt,
-Id,
-OtherParticipantIdentifier,
-ParticipantType,
-Status,
-UpdatedAt
+arn,
+catalog,
+connection_id,
+connection_type,
+created_at,
+expires_at,
+id,
+other_participant_identifier,
+participant_type,
+status,
+updated_at
 FROM aws.partnercentral_account.connection_invitations
 WHERE region = '{{ region }}' -- required
 ;
@@ -347,20 +347,20 @@ SELECT
 '{{ ReceiverIdentifier }}' /* required */,
 '{{ region }}'
 RETURNING
-Arn,
-Catalog,
-ConnectionId,
-ConnectionType,
-CreatedAt,
-ExpiresAt,
-Id,
-InvitationMessage,
-InviterEmail,
-InviterName,
-OtherParticipantIdentifier,
-ParticipantType,
-Status,
-UpdatedAt
+arn,
+catalog,
+connection_id,
+connection_type,
+created_at,
+expires_at,
+id,
+invitation_message,
+inviter_email,
+inviter_name,
+other_participant_identifier,
+participant_type,
+status,
+updated_at
 ;
 ```
 </TabItem>

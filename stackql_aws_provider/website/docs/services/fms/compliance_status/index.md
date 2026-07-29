@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EvaluationResults" /></td>
+    <td><CopyableCode code="evaluation_results" /></td>
     <td><code>array</code></td>
     <td>An array of EvaluationResult objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IssueInfoMap" /></td>
+    <td><CopyableCode code="issue_info_map" /></td>
     <td><code>object</code></td>
     <td>Details about problems with dependent services, such as WAF or Config, and the error message received that indicates the problem with the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of the last update to the EvaluationResult objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberAccount" /></td>
+    <td><CopyableCode code="member_account" /></td>
     <td><code>string</code></td>
     <td>The member account ID. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Firewall Manager policy. (pattern: &lt;code&gt;^&#91;a-z0-9A-Z-&#93;&#123;36&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Firewall Manager policy. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyOwner" /></td>
+    <td><CopyableCode code="policy_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that created the Firewall Manager policy. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -149,13 +149,13 @@ Returns an array of PolicyComplianceStatus objects. Use PolicyComplianceStatus t
 
 ```sql
 SELECT
-EvaluationResults,
-IssueInfoMap,
-LastUpdated,
-MemberAccount,
-PolicyId,
-PolicyName,
-PolicyOwner
+evaluation_results,
+issue_info_map,
+last_updated,
+member_account,
+policy_id,
+policy_name,
+policy_owner
 FROM aws.fms.compliance_status
 WHERE region = '{{ region }}' -- required
 ;

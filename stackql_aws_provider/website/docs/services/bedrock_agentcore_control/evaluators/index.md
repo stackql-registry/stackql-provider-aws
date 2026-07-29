@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the evaluator was created.</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the evaluator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorArn" /></td>
+    <td><CopyableCode code="evaluator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the evaluator. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:evaluator\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;$|^arn:aws:bedrock-agentcore:::evaluator/Builtin.&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorConfig" /></td>
+    <td><CopyableCode code="evaluator_config" /></td>
     <td><code>object</code></td>
     <td>The configuration that defines how an evaluator assesses agent performance, including the evaluation method and parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorId" /></td>
+    <td><CopyableCode code="evaluator_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorName" /></td>
+    <td><CopyableCode code="evaluator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customer managed KMS key used to encrypt the evaluator's sensitive data. This field is only present for evaluators encrypted with a customer managed key. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The evaluation level (TOOL_CALL, TRACE, or SESSION) that determines the scope of evaluation. (TOOL_CALL, TRACE, SESSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lockedForModification" /></td>
+    <td><CopyableCode code="locked_for_modification" /></td>
     <td><code>boolean</code></td>
     <td>Whether the evaluator is locked for modification due to being referenced by active online evaluation configurations.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the evaluator. (ACTIVE, CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the evaluator was last updated.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the evaluator was created.</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the evaluator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorArn" /></td>
+    <td><CopyableCode code="evaluator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the evaluator. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:evaluator\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;$|^arn:aws:bedrock-agentcore:::evaluator/Builtin.&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorId" /></td>
+    <td><CopyableCode code="evaluator_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorName" /></td>
+    <td><CopyableCode code="evaluator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatorType" /></td>
+    <td><CopyableCode code="evaluator_type" /></td>
     <td><code>string</code></td>
     <td>The type of evaluator, indicating whether it is a built-in evaluator provided by the service or a custom evaluator created by the user. (Builtin, Custom, CustomCode)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customer managed KMS key used to encrypt the evaluator's sensitive data. This field is only present for evaluators encrypted with a customer managed key. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The evaluation level (TOOL_CALL, TRACE, or SESSION) that determines the scope of evaluation. (TOOL_CALL, TRACE, SESSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lockedForModification" /></td>
+    <td><CopyableCode code="locked_for_modification" /></td>
     <td><code>boolean</code></td>
     <td>Whether the evaluator is locked for modification due to being referenced by active online evaluation configurations.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the evaluator. (ACTIVE, CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the evaluator was last updated.</td>
 </tr>
@@ -288,17 +288,17 @@ Retrieves detailed information about an evaluator, including its configuration, 
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-evaluatorArn,
-evaluatorConfig,
-evaluatorId,
-evaluatorName,
-kmsKeyArn,
+evaluator_arn,
+evaluator_config,
+evaluator_id,
+evaluator_name,
+kms_key_arn,
 level,
-lockedForModification,
+locked_for_modification,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.evaluators
 WHERE evaluator_id = '{{ evaluator_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -312,17 +312,17 @@ Lists all available evaluators, including both builtin evaluators provided by th
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-evaluatorArn,
-evaluatorId,
-evaluatorName,
-evaluatorType,
-kmsKeyArn,
+evaluator_arn,
+evaluator_id,
+evaluator_name,
+evaluator_type,
+kms_key_arn,
 level,
-lockedForModification,
+locked_for_modification,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.evaluators
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -367,9 +367,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
-evaluatorArn,
-evaluatorId,
+created_at,
+evaluator_arn,
+evaluator_id,
 status
 ;
 ```
@@ -452,10 +452,10 @@ WHERE
 evaluator_id = '{{ evaluator_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-evaluatorArn,
-evaluatorId,
+evaluator_arn,
+evaluator_id,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

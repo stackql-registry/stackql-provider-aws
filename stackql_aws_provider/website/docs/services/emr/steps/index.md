@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionOnFailure" /></td>
+    <td><CopyableCode code="action_on_failure" /></td>
     <td><code>string</code></td>
     <td>The action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is provided for backward compatibility. We recommend using TERMINATE_CLUSTER instead. If a cluster's StepConcurrencyLevel is greater than 1, do not use AddJobFlowSteps to submit a step with this parameter set to CANCEL_AND_WAIT or TERMINATE_CLUSTER. The step is not submitted and the action fails with a message that the ActionOnFailure setting is not valid. If you change a cluster's StepConcurrencyLevel to be greater than 1 while a step is running, the ActionOnFailure parameter may not behave as you expect. In this case, for a step that fails with this parameter set to CANCEL_AND_WAIT, pending steps and the running step are not canceled; for a step that fails with this parameter set to TERMINATE_CLUSTER, the cluster does not terminate. (TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>object</code></td>
     <td>The Hadoop job configuration of the cluster step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN to encrypt the logs published to the given Amazon S3 destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster. The runtime role can be a cross-account IAM role. The runtime role ARN is a combination of account ID, role name, and role type using the following format: arn:partition:service:region:account:resource. For example, arn:aws:IAM::1234567890:role/ReadOnly is a correctly formatted runtime role ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the cluster step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 destination URI for log publishing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current execution status details of the cluster step.</td>
 </tr>
@@ -105,37 +105,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionOnFailure" /></td>
+    <td><CopyableCode code="action_on_failure" /></td>
     <td><code>string</code></td>
     <td>The action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is available for backward compatibility. (TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>object</code></td>
     <td>The Hadoop job configuration of the cluster step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN to encrypt the logs published to the given Amazon S3 destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the cluster step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 destination URI for log publishing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current execution status details of the cluster step.</td>
 </tr>
@@ -233,14 +233,14 @@ Provides more detail about the cluster step.
 
 ```sql
 SELECT
-ActionOnFailure,
-Config,
-EncryptionKeyArn,
-ExecutionRoleArn,
-Id,
-LogUri,
-Name,
-Status
+action_on_failure,
+config,
+encryption_key_arn,
+execution_role_arn,
+id,
+log_uri,
+name,
+status
 FROM aws.emr.steps
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,13 +252,13 @@ Provides a list of steps for the cluster in reverse order unless you specify ste
 
 ```sql
 SELECT
-ActionOnFailure,
-Config,
-EncryptionKeyArn,
-Id,
-LogUri,
-Name,
-Status
+action_on_failure,
+config,
+encryption_key_arn,
+id,
+log_uri,
+name,
+status
 FROM aws.emr.steps
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,7 +291,7 @@ region = '{{ region }}' --required
 AND JobFlowId = '{{ JobFlowId }}' --required
 AND Steps = '{{ Steps }}' --required
 RETURNING
-StepIds;
+step_ids;
 ```
 </TabItem>
 <TabItem value="set_keep_job_flow_alive_when_no_steps">

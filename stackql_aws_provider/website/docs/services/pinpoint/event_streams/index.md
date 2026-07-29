@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application to publish event data for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationStreamArn" /></td>
+    <td><CopyableCode code="destination_stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Kinesis data stream or Amazon Kinesis Data Firehose delivery stream to publish event data to. For a Kinesis data stream, the ARN format is: arn:aws:kinesis:region:account-id:stream/stream_name For a Kinesis Data Firehose delivery stream, the ARN format is: arn:aws:firehose:region:account-id:deliverystream/stream_name</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon Pinpoint previously used this value to assume an IAM role when publishing event data, but we removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the event stream was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The IAM user who last modified the event stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The AWS Identity and Access Management (IAM) role that authorizes Amazon Pinpoint to publish event data to the stream in your AWS account.</td>
 </tr>
@@ -163,12 +163,12 @@ Retrieves information about the event stream settings for an application.
 
 ```sql
 SELECT
-ApplicationId,
-DestinationStreamArn,
-ExternalId,
-LastModifiedDate,
-LastUpdatedBy,
-RoleArn
+application_id,
+destination_stream_arn,
+external_id,
+last_modified_date,
+last_updated_by,
+role_arn
 FROM aws.pinpoint.event_streams
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -199,7 +199,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND WriteEventStream = '{{ WriteEventStream }}' --required
 RETURNING
-EventStream;
+event_stream;
 ```
 </TabItem>
 </Tabs>

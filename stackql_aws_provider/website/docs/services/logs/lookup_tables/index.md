@@ -56,32 +56,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the lookup table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key used to encrypt the lookup table data, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time when the lookup table was last updated, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lookupTableArn" /></td>
+    <td><CopyableCode code="lookup_table_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the lookup table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lookupTableName" /></td>
+    <td><CopyableCode code="lookup_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the lookup table. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeBytes" /></td>
+    <td><CopyableCode code="size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the lookup table in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBody" /></td>
+    <td><CopyableCode code="table_body" /></td>
     <td><code>string</code></td>
     <td>The full CSV content of the lookup table.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lookupTables" /></td>
+    <td><CopyableCode code="lookup_tables" /></td>
     <td><code>array</code></td>
     <td>An array of structures, where each structure contains metadata about one lookup table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
@@ -204,12 +204,12 @@ Retrieves the full content of a lookup table, including the CSV data.
 ```sql
 SELECT
 description,
-kmsKeyId,
-lastUpdatedTime,
-lookupTableArn,
-lookupTableName,
-sizeBytes,
-tableBody
+kms_key_id,
+last_updated_time,
+lookup_table_arn,
+lookup_table_name,
+size_bytes,
+table_body
 FROM aws.logs.lookup_tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -221,8 +221,8 @@ Retrieves metadata about lookup tables in your account. You can optionally filte
 
 ```sql
 SELECT
-lookupTables,
-nextToken
+lookup_tables,
+next_token
 FROM aws.logs.lookup_tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -261,8 +261,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
-lookupTableArn
+created_at,
+lookup_table_arn
 ;
 ```
 </TabItem>
@@ -324,8 +324,8 @@ region = '{{ region }}' --required
 AND lookupTableArn = '{{ lookupTableArn }}' --required
 AND tableBody = '{{ tableBody }}' --required
 RETURNING
-lastUpdatedTime,
-lookupTableArn;
+last_updated_time,
+lookup_table_arn;
 ```
 </TabItem>
 </Tabs>

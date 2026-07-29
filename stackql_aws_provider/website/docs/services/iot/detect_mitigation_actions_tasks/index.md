@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionsDefinition" /></td>
+    <td><CopyableCode code="actions_definition" /></td>
     <td><code>array</code></td>
     <td>The definition of the actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlyActiveViolationsIncluded" /></td>
+    <td><CopyableCode code="only_active_violations_included" /></td>
     <td><code>boolean</code></td>
     <td>Includes only active violations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suppressedAlertsIncluded" /></td>
+    <td><CopyableCode code="suppressed_alerts_included" /></td>
     <td><code>boolean</code></td>
     <td>Includes suppressed alerts.</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the ML Detect findings to which the mitigation actions are applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskEndTime" /></td>
+    <td><CopyableCode code="task_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the task ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the task. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStartTime" /></td>
+    <td><CopyableCode code="task_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the task started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatistics" /></td>
+    <td><CopyableCode code="task_statistics" /></td>
     <td><code>object</code></td>
     <td>The statistics of a mitigation action task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>The status of the task. (IN_PROGRESS, SUCCESSFUL, FAILED, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="violationEventOccurrenceRange" /></td>
+    <td><CopyableCode code="violation_event_occurrence_range" /></td>
     <td><code>object</code></td>
     <td>Specifies the time period of which violation events occurred between.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionsDefinition" /></td>
+    <td><CopyableCode code="actions_definition" /></td>
     <td><code>array</code></td>
     <td>The definition of the actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlyActiveViolationsIncluded" /></td>
+    <td><CopyableCode code="only_active_violations_included" /></td>
     <td><code>boolean</code></td>
     <td>Includes only active violations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suppressedAlertsIncluded" /></td>
+    <td><CopyableCode code="suppressed_alerts_included" /></td>
     <td><code>boolean</code></td>
     <td>Includes suppressed alerts.</td>
 </tr>
@@ -135,32 +135,32 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the ML Detect findings to which the mitigation actions are applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskEndTime" /></td>
+    <td><CopyableCode code="task_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the task ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the task. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStartTime" /></td>
+    <td><CopyableCode code="task_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the task started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatistics" /></td>
+    <td><CopyableCode code="task_statistics" /></td>
     <td><code>object</code></td>
     <td>The statistics of a mitigation action task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>The status of the task. (IN_PROGRESS, SUCCESSFUL, FAILED, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="violationEventOccurrenceRange" /></td>
+    <td><CopyableCode code="violation_event_occurrence_range" /></td>
     <td><code>object</code></td>
     <td>Specifies the time period of which violation events occurred between.</td>
 </tr>
@@ -262,16 +262,16 @@ List of Device Defender ML Detect mitigation actions tasks. Requires permission 
 
 ```sql
 SELECT
-actionsDefinition,
-onlyActiveViolationsIncluded,
-suppressedAlertsIncluded,
+actions_definition,
+only_active_violations_included,
+suppressed_alerts_included,
 target,
-taskEndTime,
-taskId,
-taskStartTime,
-taskStatistics,
-taskStatus,
-violationEventOccurrenceRange
+task_end_time,
+task_id,
+task_start_time,
+task_statistics,
+task_status,
+violation_event_occurrence_range
 FROM aws.iot.detect_mitigation_actions_tasks
 WHERE startTime = '{{ startTime }}' -- required
 AND endTime = '{{ endTime }}' -- required
@@ -287,16 +287,16 @@ Gets information about a Device Defender ML Detect mitigation action. Requires p
 
 ```sql
 SELECT
-actionsDefinition,
-onlyActiveViolationsIncluded,
-suppressedAlertsIncluded,
+actions_definition,
+only_active_violations_included,
+suppressed_alerts_included,
 target,
-taskEndTime,
-taskId,
-taskStartTime,
-taskStatistics,
-taskStatus,
-violationEventOccurrenceRange
+task_end_time,
+task_id,
+task_start_time,
+task_statistics,
+task_status,
+violation_event_occurrence_range
 FROM aws.iot.detect_mitigation_actions_tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required

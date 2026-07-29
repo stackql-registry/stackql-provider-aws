@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the payment credential provider. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment credential provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderArn" /></td>
+    <td><CopyableCode code="credential_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the payment credential provider. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):acps:&#91;A-Za-z0-9-&#93;&#123;1,64&#125;:&#91;0-9&#93;&#123;12&#125;:token-vault/&#91;a-zA-Z0-9-.&#93;+/paymentcredentialprovider/&#91;a-zA-Z0-9-.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderVendor" /></td>
+    <td><CopyableCode code="credential_provider_vendor" /></td>
     <td><code>string</code></td>
     <td>Supported vendor types for payment providers using non-standard auth protocols. (CoinbaseCDP, StripePrivy)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment credential provider was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerConfigurationOutput" /></td>
+    <td><CopyableCode code="provider_configuration_output" /></td>
     <td><code>object</code></td>
     <td>Output configuration (contains secret ARNs, excludes actual secret values).</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the payment credential provider. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment credential provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderArn" /></td>
+    <td><CopyableCode code="credential_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the payment credential provider. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):acps:&#91;A-Za-z0-9-&#93;&#123;1,64&#125;:&#91;0-9&#93;&#123;12&#125;:token-vault/&#91;a-zA-Z0-9-.&#93;+/paymentcredentialprovider/&#91;a-zA-Z0-9-.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderVendor" /></td>
+    <td><CopyableCode code="credential_provider_vendor" /></td>
     <td><code>string</code></td>
     <td>Supported vendor types for payment providers using non-standard auth protocols. (CoinbaseCDP, StripePrivy)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment credential provider was last updated.</td>
 </tr>
@@ -219,11 +219,11 @@ Retrieves information about a specific payment credential provider.
 ```sql
 SELECT
 name,
-createdTime,
-credentialProviderArn,
-credentialProviderVendor,
-lastUpdatedTime,
-providerConfigurationOutput,
+created_time,
+credential_provider_arn,
+credential_provider_vendor,
+last_updated_time,
+provider_configuration_output,
 tags
 FROM aws.bedrock_agentcore_control.payment_credential_providers
 WHERE region = '{{ region }}' -- required
@@ -237,10 +237,10 @@ Lists all payment credential providers in the account.
 ```sql
 SELECT
 name,
-createdTime,
-credentialProviderArn,
-credentialProviderVendor,
-lastUpdatedTime
+created_time,
+credential_provider_arn,
+credential_provider_vendor,
+last_updated_time
 FROM aws.bedrock_agentcore_control.payment_credential_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -278,9 +278,9 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-credentialProviderArn,
-credentialProviderVendor,
-providerConfigurationOutput
+credential_provider_arn,
+credential_provider_vendor,
+provider_configuration_output
 ;
 ```
 </TabItem>
@@ -345,11 +345,11 @@ AND credentialProviderVendor = '{{ credentialProviderVendor }}' --required
 AND providerConfigurationInput = '{{ providerConfigurationInput }}' --required
 RETURNING
 name,
-createdTime,
-credentialProviderArn,
-credentialProviderVendor,
-lastUpdatedTime,
-providerConfigurationOutput;
+created_time,
+credential_provider_arn,
+credential_provider_vendor,
+last_updated_time,
+provider_configuration_output;
 ```
 </TabItem>
 </Tabs>

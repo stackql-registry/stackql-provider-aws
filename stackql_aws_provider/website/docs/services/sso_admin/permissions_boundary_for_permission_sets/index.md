@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomerManagedPolicyReference" /></td>
+    <td><CopyableCode code="customer_managed_policy_reference" /></td>
     <td><code>object</code></td>
     <td>Specifies the name and path of a customer managed policy. You must have an IAM policy that matches the name and path in each Amazon Web Services account where you want to deploy your permission set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedPolicyArn" /></td>
+    <td><CopyableCode code="managed_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services managed policy ARN that you want to attach to a permission set as a permissions boundary. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:iam::aws:policy((/&#91;A-Za-z0-9\.,\+@=_-&#93;+)*)/(&#91;A-Za-z0-9\.,\+=@_-&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Obtains the permissions boundary for a specified PermissionSet.
 
 ```sql
 SELECT
-CustomerManagedPolicyReference,
-ManagedPolicyArn
+customer_managed_policy_reference,
+managed_policy_arn
 FROM aws.sso_admin.permissions_boundary_for_permission_sets
 WHERE region = '{{ region }}' -- required
 ;

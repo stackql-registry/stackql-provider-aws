@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedPortalArns" /></td>
+    <td><CopyableCode code="associated_portal_arns" /></td>
     <td><code>array</code></td>
     <td>A list of web portal ARNs that this trust store is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustStoreArn" /></td>
+    <td><CopyableCode code="trust_store_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trust store. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustStores" /></td>
+    <td><CopyableCode code="trust_stores" /></td>
     <td><code>array</code></td>
     <td>The trust stores.</td>
 </tr>
@@ -217,8 +217,8 @@ Gets the trust store.
 
 ```sql
 SELECT
-associatedPortalArns,
-trustStoreArn
+associated_portal_arns,
+trust_store_arn
 FROM aws.workspaces_web.trust_stores
 WHERE trust_store_arn = '{{ trust_store_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -231,8 +231,8 @@ Retrieves a list of trust stores.
 
 ```sql
 SELECT
-nextToken,
-trustStores
+next_token,
+trust_stores
 FROM aws.workspaces_web.trust_stores
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -269,7 +269,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-trustStoreArn
+trust_store_arn
 ;
 ```
 </TabItem>
@@ -319,8 +319,8 @@ portal_arn = '{{ portal_arn }}' --required
 AND trustStoreArn = '{{ trustStoreArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-portalArn,
-trustStoreArn;
+portal_arn,
+trust_store_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_trust_store">
@@ -350,7 +350,7 @@ WHERE
 trust_store_arn = '{{ trust_store_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-trustStoreArn;
+trust_store_arn;
 ```
 </TabItem>
 </Tabs>

@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the evidence folder. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentId" /></td>
+    <td><CopyableCode code="assessment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the assessment. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentReportSelectionCount" /></td>
+    <td><CopyableCode code="assessment_report_selection_count" /></td>
     <td><code>integer</code></td>
     <td>The total count of evidence that's included in the assessment report.</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the user who created the evidence folder. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlId" /></td>
+    <td><CopyableCode code="control_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the control. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlName" /></td>
+    <td><CopyableCode code="control_name" /></td>
     <td><code>string</code></td>
     <td>The name of the control. (pattern: &lt;code&gt;^&#91;^\\&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlSetId" /></td>
+    <td><CopyableCode code="control_set_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the control set. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service that the evidence was collected from. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -100,42 +100,42 @@ The following fields are returned by `SELECT` queries:
     <td>The date when the first evidence was added to the evidence folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceAwsServiceSourceCount" /></td>
+    <td><CopyableCode code="evidence_aws_service_source_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of Amazon Web Services resources that were assessed to generate the evidence.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceByTypeComplianceCheckCount" /></td>
+    <td><CopyableCode code="evidence_by_type_compliance_check_count" /></td>
     <td><code>integer</code></td>
     <td>The number of evidence that falls under the compliance check category. This evidence is collected from Config or Security Hub.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceByTypeComplianceCheckIssuesCount" /></td>
+    <td><CopyableCode code="evidence_by_type_compliance_check_issues_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of issues that were reported directly from Security Hub, Config, or both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceByTypeConfigurationDataCount" /></td>
+    <td><CopyableCode code="evidence_by_type_configuration_data_count" /></td>
     <td><code>integer</code></td>
     <td>The number of evidence that falls under the configuration data category. This evidence is collected from configuration snapshots of other Amazon Web Services services such as Amazon EC2, Amazon S3, or IAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceByTypeManualCount" /></td>
+    <td><CopyableCode code="evidence_by_type_manual_count" /></td>
     <td><code>integer</code></td>
     <td>The number of evidence that falls under the manual category. This evidence is imported manually.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceByTypeUserActivityCount" /></td>
+    <td><CopyableCode code="evidence_by_type_user_activity_count" /></td>
     <td><code>integer</code></td>
     <td>The number of evidence that falls under the user activity category. This evidence is collected from CloudTrail logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceResourcesIncludedCount" /></td>
+    <td><CopyableCode code="evidence_resources_included_count" /></td>
     <td><code>integer</code></td>
     <td>The amount of evidence that's included in the evidence folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalEvidence" /></td>
+    <td><CopyableCode code="total_evidence" /></td>
     <td><code>integer</code></td>
     <td>The total amount of evidence in the evidence folder.</td>
 </tr>
@@ -249,22 +249,22 @@ Gets an evidence folder from a specified assessment in Audit Manager.
 SELECT
 id,
 name,
-assessmentId,
-assessmentReportSelectionCount,
+assessment_id,
+assessment_report_selection_count,
 author,
-controlId,
-controlName,
-controlSetId,
-dataSource,
+control_id,
+control_name,
+control_set_id,
+data_source,
 date,
-evidenceAwsServiceSourceCount,
-evidenceByTypeComplianceCheckCount,
-evidenceByTypeComplianceCheckIssuesCount,
-evidenceByTypeConfigurationDataCount,
-evidenceByTypeManualCount,
-evidenceByTypeUserActivityCount,
-evidenceResourcesIncludedCount,
-totalEvidence
+evidence_aws_service_source_count,
+evidence_by_type_compliance_check_count,
+evidence_by_type_compliance_check_issues_count,
+evidence_by_type_configuration_data_count,
+evidence_by_type_manual_count,
+evidence_by_type_user_activity_count,
+evidence_resources_included_count,
+total_evidence
 FROM aws.auditmanager.evidence_folders
 WHERE assessment_id = '{{ assessment_id }}' -- required
 AND control_set_id = '{{ control_set_id }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoEnable" /></td>
+    <td><CopyableCode code="auto_enable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether to automatically enable new organization accounts as member accounts in the organization behavior graph.</td>
 </tr>
@@ -126,7 +126,7 @@ Returns information about the configuration for the organization behavior graph.
 
 ```sql
 SELECT
-AutoEnable
+auto_enable
 FROM aws.detective.organization_configurations
 WHERE region = '{{ region }}' -- required
 ;

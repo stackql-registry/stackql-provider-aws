@@ -52,42 +52,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HierarchyPath" /></td>
+    <td><CopyableCode code="hierarchy_path" /></td>
     <td><code>object</code></td>
     <td>Information about the levels in the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LevelId" /></td>
+    <td><CopyableCode code="level_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the level in the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -106,27 +106,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hierarchy group.</td>
 </tr>
@@ -145,42 +145,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HierarchyPath" /></td>
+    <td><CopyableCode code="hierarchy_path" /></td>
     <td><code>object</code></td>
     <td>Information about the levels in the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LevelId" /></td>
+    <td><CopyableCode code="level_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the level in the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hierarchy group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -306,14 +306,14 @@ Describes the specified hierarchy group.
 
 ```sql
 SELECT
-Arn,
-HierarchyPath,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-LevelId,
-Name,
-Tags
+arn,
+hierarchy_path,
+id,
+last_modified_region,
+last_modified_time,
+level_id,
+name,
+tags
 FROM aws.connect.user_hierarchy_groups
 WHERE hierarchy_group_id = '{{ hierarchy_group_id }}' -- required
 AND instance_id = '{{ instance_id }}' -- required
@@ -327,11 +327,11 @@ Provides summary information about the hierarchy groups for the specified Amazon
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.user_hierarchy_groups
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -346,14 +346,14 @@ Searches UserHierarchyGroups in an Amazon Connect instance, with optional filter
 
 ```sql
 SELECT
-Arn,
-HierarchyPath,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-LevelId,
-Name,
-Tags
+arn,
+hierarchy_path,
+id,
+last_modified_region,
+last_modified_time,
+level_id,
+name,
+tags
 FROM aws.connect.user_hierarchy_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -390,8 +390,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-HierarchyGroupArn,
-HierarchyGroupId
+hierarchy_group_arn,
+hierarchy_group_id
 ;
 ```
 </TabItem>

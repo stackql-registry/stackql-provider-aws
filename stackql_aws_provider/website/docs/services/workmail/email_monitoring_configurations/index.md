@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogGroupArn" /></td>
+    <td><CopyableCode code="log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with the email monitoring configuration. (pattern: &lt;code&gt;arn:aws:logs:&#91;a-z\-0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:log-group:(&#91;\.\-_/#A-Za-z0-9&#93;+):\*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM Role associated with the email monitoring configuration. (pattern: &lt;code&gt;arn:aws:iam:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;+:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Describes the current email monitoring configuration for a specified organizatio
 
 ```sql
 SELECT
-LogGroupArn,
-RoleArn
+log_group_arn,
+role_arn
 FROM aws.workmail.email_monitoring_configurations
 WHERE region = '{{ region }}' -- required
 ;

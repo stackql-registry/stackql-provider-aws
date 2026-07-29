@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availableQuantity" /></td>
+    <td><CopyableCode code="available_quantity" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of the consumable resource that is currently available to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="consumableResourceArn" /></td>
+    <td><CopyableCode code="consumable_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the consumable resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="consumableResourceName" /></td>
+    <td><CopyableCode code="consumable_resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the consumable resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp (in milliseconds) for when the consumable resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inUseQuantity" /></td>
+    <td><CopyableCode code="in_use_quantity" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of the consumable resource that is currently in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the resource is available to be re-used after a job completes. Can be one of: REPLENISHABLE NON_REPLENISHABLE</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags that you apply to the consumable resource to help you categorize and organize your resources. Each tag consists of a key and an optional value. For more information, see Tagging your Batch resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalQuantity" /></td>
+    <td><CopyableCode code="total_quantity" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total amount of the consumable resource that is available.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="consumableResourceArn" /></td>
+    <td><CopyableCode code="consumable_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the consumable resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="consumableResourceName" /></td>
+    <td><CopyableCode code="consumable_resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the consumable resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inUseQuantity" /></td>
+    <td><CopyableCode code="in_use_quantity" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of the consumable resource that is currently in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the resource is available to be re-used after a job completes. Can be one of: REPLENISHABLE NON_REPLENISHABLE</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalQuantity" /></td>
+    <td><CopyableCode code="total_quantity" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total amount of the consumable resource that is available.</td>
 </tr>
@@ -223,14 +223,14 @@ Returns a description of the specified consumable resource.
 
 ```sql
 SELECT
-availableQuantity,
-consumableResourceArn,
-consumableResourceName,
-createdAt,
-inUseQuantity,
-resourceType,
+available_quantity,
+consumable_resource_arn,
+consumable_resource_name,
+created_at,
+in_use_quantity,
+resource_type,
 tags,
-totalQuantity
+total_quantity
 FROM aws.batch.consumable_resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,11 +242,11 @@ Returns a list of Batch consumable resources.
 
 ```sql
 SELECT
-consumableResourceArn,
-consumableResourceName,
-inUseQuantity,
-resourceType,
-totalQuantity
+consumable_resource_arn,
+consumable_resource_name,
+in_use_quantity,
+resource_type,
+total_quantity
 FROM aws.batch.consumable_resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,8 +283,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-consumableResourceArn,
-consumableResourceName
+consumable_resource_arn,
+consumable_resource_name
 ;
 ```
 </TabItem>
@@ -333,9 +333,9 @@ WHERE
 region = '{{ region }}' --required
 AND consumableResource = '{{ consumableResource }}' --required
 RETURNING
-consumableResourceArn,
-consumableResourceName,
-totalQuantity;
+consumable_resource_arn,
+consumable_resource_name,
+total_quantity;
 ```
 </TabItem>
 </Tabs>

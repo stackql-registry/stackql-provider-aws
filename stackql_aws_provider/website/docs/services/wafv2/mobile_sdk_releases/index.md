@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ReleaseNotes" /></td>
+    <td><CopyableCode code="release_notes" /></td>
     <td><code>string</code></td>
     <td>Notes describing the release.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReleaseVersion" /></td>
+    <td><CopyableCode code="release_version" /></td>
     <td><code>string</code></td>
     <td>The release version. (pattern: &lt;code&gt;^&#91;\w#:\.\-/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Tags that are associated with the release.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the release.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReleaseSummaries" /></td>
+    <td><CopyableCode code="release_summaries" /></td>
     <td><code>array</code></td>
     <td>The high level information for the available SDK releases. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
@@ -174,10 +174,10 @@ Retrieves information for the specified mobile SDK release, including release no
 
 ```sql
 SELECT
-ReleaseNotes,
-ReleaseVersion,
-Tags,
-Timestamp
+release_notes,
+release_version,
+tags,
+timestamp
 FROM aws.wafv2.mobile_sdk_releases
 WHERE region = '{{ region }}' -- required
 ;
@@ -189,8 +189,8 @@ Retrieves a list of the available releases for the mobile SDK and the specified 
 
 ```sql
 SELECT
-NextMarker,
-ReleaseSummaries
+next_marker,
+release_summaries
 FROM aws.wafv2.mobile_sdk_releases
 WHERE region = '{{ region }}' -- required
 ;

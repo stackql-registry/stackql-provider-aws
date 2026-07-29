@@ -55,77 +55,77 @@ The following fields are returned by `SELECT` queries:
     <td>The Replication Configuration Template ARN. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associateDefaultSecurityGroup" /></td>
+    <td><CopyableCode code="associate_default_security_group" /></td>
     <td><code>boolean</code></td>
     <td>Whether to associate the default Elastic Disaster Recovery Security group with the Replication Configuration Template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoReplicateNewDisks" /></td>
+    <td><CopyableCode code="auto_replicate_new_disks" /></td>
     <td><code>boolean</code></td>
     <td>Whether to allow the AWS replication agent to automatically replicate newly added disks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bandwidthThrottling" /></td>
+    <td><CopyableCode code="bandwidth_throttling" /></td>
     <td><code>integer (int64)</code></td>
     <td>Configure bandwidth throttling for the outbound data transfer rate of the Source Server in Mbps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createPublicIP" /></td>
+    <td><CopyableCode code="create_public_ip" /></td>
     <td><code>boolean</code></td>
     <td>Whether to create a Public IP for the Recovery Instance by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataPlaneRouting" /></td>
+    <td><CopyableCode code="data_plane_routing" /></td>
     <td><code>string</code></td>
     <td>The data plane routing mechanism that will be used for replication. (PRIVATE_IP, PUBLIC_IP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultLargeStagingDiskType" /></td>
+    <td><CopyableCode code="default_large_staging_disk_type" /></td>
     <td><code>string</code></td>
     <td>The Staging Disk EBS volume type to be used during replication. (GP2, GP3, ST1, AUTO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ebsEncryption" /></td>
+    <td><CopyableCode code="ebs_encryption" /></td>
     <td><code>string</code></td>
     <td>The type of EBS encryption to be used during replication. (DEFAULT, CUSTOM, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ebsEncryptionKeyArn" /></td>
+    <td><CopyableCode code="ebs_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the EBS encryption key to be used during replication. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="internetProtocol" /></td>
+    <td><CopyableCode code="internet_protocol" /></td>
     <td><code>string</code></td>
     <td>Which version of the Internet Protocol to use for replication of data. (IPv4 or IPv6) (IPV4, IPV6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pitPolicy" /></td>
+    <td><CopyableCode code="pit_policy" /></td>
     <td><code>array</code></td>
     <td>The Point in time (PIT) policy to manage snapshots taken during replication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationConfigurationTemplateID" /></td>
+    <td><CopyableCode code="replication_configuration_template_id" /></td>
     <td><code>string</code></td>
     <td>The Replication Configuration Template ID. (pattern: &lt;code&gt;rct-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationServerInstanceType" /></td>
+    <td><CopyableCode code="replication_server_instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type to be used for the replication server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationServersSecurityGroupsIDs" /></td>
+    <td><CopyableCode code="replication_servers_security_groups_ids" /></td>
     <td><code>array</code></td>
     <td>The security group IDs that will be used by the replication server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stagingAreaSubnetId" /></td>
+    <td><CopyableCode code="staging_area_subnet_id" /></td>
     <td><code>string</code></td>
     <td>The subnet to be used by the replication staging area. (pattern: &lt;code&gt;subnet-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stagingAreaTags" /></td>
+    <td><CopyableCode code="staging_area_tags" /></td>
     <td><code>object</code></td>
     <td>A set of tags to be associated with all resources created in the replication staging area: EC2 replication server, EBS volumes, EBS snapshots, etc.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>A set of tags to be associated with the Replication Configuration Template resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="useDedicatedReplicationServer" /></td>
+    <td><CopyableCode code="use_dedicated_replication_server" /></td>
     <td><code>boolean</code></td>
     <td>Whether to use a dedicated Replication Server in the replication staging area.</td>
 </tr>
@@ -226,23 +226,23 @@ Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
 ```sql
 SELECT
 arn,
-associateDefaultSecurityGroup,
-autoReplicateNewDisks,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-pitPolicy,
-replicationConfigurationTemplateID,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-stagingAreaSubnetId,
-stagingAreaTags,
+associate_default_security_group,
+auto_replicate_new_disks,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+pit_policy,
+replication_configuration_template_id,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+staging_area_subnet_id,
+staging_area_tags,
 tags,
-useDedicatedReplicationServer
+use_dedicated_replication_server
 FROM aws.drs.replication_configuration_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -304,23 +304,23 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-associateDefaultSecurityGroup,
-autoReplicateNewDisks,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-pitPolicy,
-replicationConfigurationTemplateID,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-stagingAreaSubnetId,
-stagingAreaTags,
+associate_default_security_group,
+auto_replicate_new_disks,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+pit_policy,
+replication_configuration_template_id,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+staging_area_subnet_id,
+staging_area_tags,
 tags,
-useDedicatedReplicationServer
+use_dedicated_replication_server
 ;
 ```
 </TabItem>
@@ -417,23 +417,23 @@ region = '{{ region }}' --required
 AND replicationConfigurationTemplateID = '{{ replicationConfigurationTemplateID }}' --required
 RETURNING
 arn,
-associateDefaultSecurityGroup,
-autoReplicateNewDisks,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-pitPolicy,
-replicationConfigurationTemplateID,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-stagingAreaSubnetId,
-stagingAreaTags,
+associate_default_security_group,
+auto_replicate_new_disks,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+pit_policy,
+replication_configuration_template_id,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+staging_area_subnet_id,
+staging_area_tags,
 tags,
-useDedicatedReplicationServer;
+use_dedicated_replication_server;
 ```
 </TabItem>
 </Tabs>

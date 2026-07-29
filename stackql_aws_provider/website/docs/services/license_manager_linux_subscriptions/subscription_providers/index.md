@@ -114,9 +114,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-SubscriptionProviderArn,
-SubscriptionProviderSource,
-SubscriptionProviderStatus
+subscription_provider_arn,
+subscription_provider_source,
+subscription_provider_status
 ;
 ```
 </TabItem>

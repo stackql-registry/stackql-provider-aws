@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>The category type of the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the problem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Link" /></td>
+    <td><CopyableCode code="link" /></td>
     <td><code>string</code></td>
     <td>A hyperlink to information to help you address the problem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The reason DevOps Guru flagged the anomalous behavior as a problem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedAnomalies" /></td>
+    <td><CopyableCode code="related_anomalies" /></td>
     <td><code>array</code></td>
     <td>Anomalies that are related to the problem. Use these Anomalies to learn more about what's happening and to help address the issue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedEvents" /></td>
+    <td><CopyableCode code="related_events" /></td>
     <td><code>array</code></td>
     <td>Events that are related to the problem. Use these events to learn more about what's happening and to help address the issue.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns a list of a specified insight's recommendations. Each recommendation inc
 
 ```sql
 SELECT
-Category,
-Description,
-Link,
-Name,
-Reason,
-RelatedAnomalies,
-RelatedEvents
+category,
+description,
+link,
+name,
+reason,
+related_anomalies,
+related_events
 FROM aws.devops_guru.recommendations
 WHERE region = '{{ region }}' -- required
 ;

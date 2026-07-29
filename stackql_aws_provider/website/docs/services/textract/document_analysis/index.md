@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalyzeDocumentModelVersion" /></td>
+    <td><CopyableCode code="analyze_document_model_version" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="Blocks" /></td>
+    <td><CopyableCode code="blocks" /></td>
     <td><code>array</code></td>
     <td>The results of the text-analysis operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentMetadata" /></td>
+    <td><CopyableCode code="document_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the input document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the text detection job. (IN_PROGRESS, SUCCEEDED, FAILED, PARTIAL_SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, Amazon Textract returns this token. You can use this token in the subsequent request to retrieve the next set of text detection results. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Returns if the detection job could not be completed. Contains explanation for what error occured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>A list of warnings that occurred during the document-analysis operation.</td>
 </tr>
@@ -156,13 +156,13 @@ Gets the results for an Amazon Textract asynchronous operation that analyzes tex
 
 ```sql
 SELECT
-AnalyzeDocumentModelVersion,
-Blocks,
-DocumentMetadata,
-JobStatus,
-NextToken,
-StatusMessage,
-Warnings
+analyze_document_model_version,
+blocks,
+document_metadata,
+job_status,
+next_token,
+status_message,
+warnings
 FROM aws.textract.document_analysis
 WHERE region = '{{ region }}' -- required
 ;

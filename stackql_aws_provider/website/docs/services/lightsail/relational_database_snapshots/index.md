@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the database snapshot. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the database snapshot was created.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>The software of the database snapshot (for example, MySQL) (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The database engine version for the database snapshot (for example, 5.7.23). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseArn" /></td>
+    <td><CopyableCode code="from_relational_database_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the database from which the database snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseBlueprintId" /></td>
+    <td><CopyableCode code="from_relational_database_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID of the database from which the database snapshot was created. A blueprint describes the major engine version of a database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseBundleId" /></td>
+    <td><CopyableCode code="from_relational_database_bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle ID of the database from which the database snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseName" /></td>
+    <td><CopyableCode code="from_relational_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source database from which the database snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -101,12 +101,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Region name and Availability Zone where the database snapshot is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the disk in GB (for example, 32) for the database snapshot.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the database snapshot. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code for the database snapshot. Include this code in your email to support when you have questions about a database snapshot in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the database snapshot. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the database snapshot was created.</td>
 </tr>
@@ -160,27 +160,27 @@ The following fields are returned by `SELECT` queries:
     <td>The software of the database snapshot (for example, MySQL) (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The database engine version for the database snapshot (for example, 5.7.23). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseArn" /></td>
+    <td><CopyableCode code="from_relational_database_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the database from which the database snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseBlueprintId" /></td>
+    <td><CopyableCode code="from_relational_database_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID of the database from which the database snapshot was created. A blueprint describes the major engine version of a database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseBundleId" /></td>
+    <td><CopyableCode code="from_relational_database_bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle ID of the database from which the database snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromRelationalDatabaseName" /></td>
+    <td><CopyableCode code="from_relational_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source database from which the database snapshot was created. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -190,12 +190,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Region name and Availability Zone where the database snapshot is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the disk in GB (for example, 32) for the database snapshot.</td>
 </tr>
@@ -205,7 +205,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the database snapshot. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code for the database snapshot. Include this code in your email to support when you have questions about a database snapshot in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -303,18 +303,18 @@ Returns information about a specific database snapshot in Amazon Lightsail.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 engine,
-engineVersion,
-fromRelationalDatabaseArn,
-fromRelationalDatabaseBlueprintId,
-fromRelationalDatabaseBundleId,
-fromRelationalDatabaseName,
+engine_version,
+from_relational_database_arn,
+from_relational_database_blueprint_id,
+from_relational_database_bundle_id,
+from_relational_database_name,
 location,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.relational_database_snapshots
 WHERE region = '{{ region }}' -- required
@@ -329,18 +329,18 @@ Returns information about all of your database snapshots in Amazon Lightsail.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 engine,
-engineVersion,
-fromRelationalDatabaseArn,
-fromRelationalDatabaseBlueprintId,
-fromRelationalDatabaseBundleId,
-fromRelationalDatabaseName,
+engine_version,
+from_relational_database_arn,
+from_relational_database_blueprint_id,
+from_relational_database_bundle_id,
+from_relational_database_name,
 location,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.relational_database_snapshots
 WHERE region = '{{ region }}' -- required

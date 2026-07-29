@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The modification completion or failure time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationState" /></td>
+    <td><CopyableCode code="modification_state" /></td>
     <td><code>string</code></td>
     <td>The current modification state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalIops" /></td>
+    <td><CopyableCode code="original_iops" /></td>
     <td><code>integer</code></td>
     <td>The original IOPS rate of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalMultiAttachEnabled" /></td>
+    <td><CopyableCode code="original_multi_attach_enabled" /></td>
     <td><code>boolean</code></td>
     <td>The original setting for Amazon EBS Multi-Attach.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalSize" /></td>
+    <td><CopyableCode code="original_size" /></td>
     <td><code>integer</code></td>
     <td>The original size of the volume, in GiB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalThroughput" /></td>
+    <td><CopyableCode code="original_throughput" /></td>
     <td><code>integer</code></td>
     <td>The original throughput of the volume, in MiB/s.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalVolumeType" /></td>
+    <td><CopyableCode code="original_volume_type" /></td>
     <td><code>string</code></td>
     <td>The original EBS volume type of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>integer</code></td>
     <td>The modification progress, from 0 to 100 percent complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The modification start time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A status message about the modification progress or failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetIops" /></td>
+    <td><CopyableCode code="target_iops" /></td>
     <td><code>integer</code></td>
     <td>The target IOPS rate of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetMultiAttachEnabled" /></td>
+    <td><CopyableCode code="target_multi_attach_enabled" /></td>
     <td><code>boolean</code></td>
     <td>The target setting for Amazon EBS Multi-Attach.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetSize" /></td>
+    <td><CopyableCode code="target_size" /></td>
     <td><code>integer</code></td>
     <td>The target size of the volume, in GiB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetThroughput" /></td>
+    <td><CopyableCode code="target_throughput" /></td>
     <td><code>integer</code></td>
     <td>The target throughput of the volume, in MiB/s.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetVolumeType" /></td>
+    <td><CopyableCode code="target_volume_type" /></td>
     <td><code>string</code></td>
     <td>The target EBS volume type of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the volume.</td>
 </tr>
@@ -219,22 +219,22 @@ Describes the most recent volume modification request for the specified EBS volu
 
 ```sql
 SELECT
-EndTime,
-ModificationState,
-OriginalIops,
-OriginalMultiAttachEnabled,
-OriginalSize,
-OriginalThroughput,
-OriginalVolumeType,
-Progress,
-StartTime,
-StatusMessage,
-TargetIops,
-TargetMultiAttachEnabled,
-TargetSize,
-TargetThroughput,
-TargetVolumeType,
-VolumeId
+end_time,
+modification_state,
+original_iops,
+original_multi_attach_enabled,
+original_size,
+original_throughput,
+original_volume_type,
+progress,
+start_time,
+status_message,
+target_iops,
+target_multi_attach_enabled,
+target_size,
+target_throughput,
+target_volume_type,
+volume_id
 FROM aws.ec2.volumes_modifications
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

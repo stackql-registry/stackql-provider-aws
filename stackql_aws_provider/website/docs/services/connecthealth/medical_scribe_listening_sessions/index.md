@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="channelDefinitions" /></td>
+    <td><CopyableCode code="channel_definitions" /></td>
     <td><code>array</code></td>
     <td>Channel definitions for the audio stream</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The Domain identifier (pattern: &lt;code&gt;(hai-|dom-)&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encounterContextProvided" /></td>
+    <td><CopyableCode code="encounter_context_provided" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether encounter context was provided</td>
 </tr>
 <tr>
-    <td><CopyableCode code="languageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The Language Code for the audio in the session (en-US)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mediaEncoding" /></td>
+    <td><CopyableCode code="media_encoding" /></td>
     <td><code>string</code></td>
     <td>The encoding for the input audio (pcm, flac)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mediaSampleRateHertz" /></td>
+    <td><CopyableCode code="media_sample_rate_hertz" /></td>
     <td><code>integer</code></td>
     <td>The sample rate of the input audio</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postStreamActionResult" /></td>
+    <td><CopyableCode code="post_stream_action_result" /></td>
     <td><code>object</code></td>
     <td>Results of post-stream actions</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postStreamActionSettings" /></td>
+    <td><CopyableCode code="post_stream_action_settings" /></td>
     <td><code>object</code></td>
     <td>Settings for post-stream actions</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The Session identifier (pattern: &lt;code&gt;.*&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamCreationTime" /></td>
+    <td><CopyableCode code="stream_creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stream was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamEndTime" /></td>
+    <td><CopyableCode code="stream_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stream ended</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamStatus" /></td>
+    <td><CopyableCode code="stream_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the stream (IN_PROGRESS, PAUSED, FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td>The Subscription identifier (pattern: &lt;code&gt;sub-&#91;a-zA-Z0-9&#93;&#123;21&#125;&lt;/code&gt;)</td>
 </tr>
@@ -194,19 +194,19 @@ Retrieves details about an existing Medical Scribe listening session
 
 ```sql
 SELECT
-channelDefinitions,
-domainId,
-encounterContextProvided,
-languageCode,
-mediaEncoding,
-mediaSampleRateHertz,
-postStreamActionResult,
-postStreamActionSettings,
-sessionId,
-streamCreationTime,
-streamEndTime,
-streamStatus,
-subscriptionId
+channel_definitions,
+domain_id,
+encounter_context_provided,
+language_code,
+media_encoding,
+media_sample_rate_hertz,
+post_stream_action_result,
+post_stream_action_settings,
+session_id,
+stream_creation_time,
+stream_end_time,
+stream_status,
+subscription_id
 FROM aws.connecthealth.medical_scribe_listening_sessions
 WHERE session_id = '{{ session_id }}' -- required
 AND domain_id = '{{ domain_id }}' -- required

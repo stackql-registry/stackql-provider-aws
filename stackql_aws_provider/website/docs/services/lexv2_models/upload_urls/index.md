@@ -101,8 +101,8 @@ region
 SELECT 
 '{{ region }}'
 RETURNING
-importId,
-uploadUrl
+import_id,
+upload_url
 ;
 ```
 </TabItem>

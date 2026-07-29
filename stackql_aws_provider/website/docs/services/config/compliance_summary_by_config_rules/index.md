@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComplianceSummaryTimestamp" /></td>
+    <td><CopyableCode code="compliance_summary_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that Config created the compliance summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompliantResourceCount" /></td>
+    <td><CopyableCode code="compliant_resource_count" /></td>
     <td><code>object</code></td>
     <td>The number of Config rules or Amazon Web Services resources that are compliant, up to a maximum of 25 for rules and 100 for resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonCompliantResourceCount" /></td>
+    <td><CopyableCode code="non_compliant_resource_count" /></td>
     <td><code>object</code></td>
     <td>The number of Config rules or Amazon Web Services resources that are noncompliant, up to a maximum of 25 for rules and 100 for resources.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the number of Config rules that are compliant and noncompliant, up to a 
 
 ```sql
 SELECT
-ComplianceSummaryTimestamp,
-CompliantResourceCount,
-NonCompliantResourceCount
+compliance_summary_timestamp,
+compliant_resource_count,
+non_compliant_resource_count
 FROM aws.config.compliance_summary_by_config_rules
 WHERE region = '{{ region }}' -- required
 ;

@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the workflow run. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow run ended, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow run status was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project in the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow run began, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the workflow run. (SUCCEEDED, FAILED, STOPPED, SUPERSEDED, CANCELLED, NOT_RUN, VALIDATING, PROVISIONING, IN_PROGRESS, STOPPING, ABANDONED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasons" /></td>
+    <td><CopyableCode code="status_reasons" /></td>
     <td><code>array</code></td>
     <td>Information about the reasons for the status of the workflow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workflow. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The system-generated unique ID of the workflow run. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow run ended, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow run began, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the workflow run. (SUCCEEDED, FAILED, STOPPED, SUPERSEDED, CANCELLED, NOT_RUN, VALIDATING, PROVISIONING, IN_PROGRESS, STOPPING, ABANDONED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasons" /></td>
+    <td><CopyableCode code="status_reasons" /></td>
     <td><code>array</code></td>
     <td>The reasons for the workflow run status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated unique ID of the workflow. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowName" /></td>
+    <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow.</td>
 </tr>
@@ -253,14 +253,14 @@ Returns information about a specified run of a workflow.
 ```sql
 SELECT
 id,
-endTime,
-lastUpdatedTime,
-projectName,
-spaceName,
-startTime,
+end_time,
+last_updated_time,
+project_name,
+space_name,
+start_time,
 status,
-statusReasons,
-workflowId
+status_reasons,
+workflow_id
 FROM aws.codecatalyst.workflow_runs
 WHERE space_name = '{{ space_name }}' -- required
 AND id = '{{ id }}' -- required
@@ -276,13 +276,13 @@ Retrieves a list of workflow runs of a specified workflow.
 ```sql
 SELECT
 id,
-endTime,
-lastUpdatedTime,
-startTime,
+end_time,
+last_updated_time,
+start_time,
 status,
-statusReasons,
-workflowId,
-workflowName
+status_reasons,
+workflow_id,
+workflow_name
 FROM aws.codecatalyst.workflow_runs
 WHERE space_name = '{{ space_name }}' -- required
 AND project_name = '{{ project_name }}' -- required

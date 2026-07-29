@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code that is returned when organization conformance pack creation or deletion has failed in a member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message indicating that organization conformance pack creation or deletion failed due to an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConformancePackName" /></td>
+    <td><CopyableCode code="organization_conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assign to organization conformance pack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates deployment status of an organization conformance pack. When management account calls PutOrganizationConformancePack for the first time, conformance pack status is created in all the member accounts. When management account calls PutOrganizationConformancePack for the second time, conformance pack status is updated in all the member accounts. Additionally, conformance pack status is updated when one or more member accounts join or leave an organization. Conformance pack status is deleted when the management account deletes OrganizationConformancePack in all the member accounts and disables service access for config-multiaccountsetup.amazonaws.com. Config sets the state of the conformance pack to: CREATE_SUCCESSFUL when an organization conformance pack has been successfully created in all the member accounts. CREATE_IN_PROGRESS when an organization conformance pack creation is in progress. CREATE_FAILED when an organization conformance pack creation failed in one or more member accounts within that organization. DELETE_FAILED when an organization conformance pack deletion failed in one or more member accounts within that organization. DELETE_IN_PROGRESS when an organization conformance pack deletion is in progress. DELETE_SUCCESSFUL when an organization conformance pack has been successfully deleted from all the member accounts. UPDATE_SUCCESSFUL when an organization conformance pack has been successfully updated in all the member accounts. UPDATE_IN_PROGRESS when an organization conformance pack update is in progress. UPDATE_FAILED when an organization conformance pack update failed in one or more member accounts within that organization. (CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_IN_PROGRESS, UPDATE_FAILED)</td>
 </tr>
@@ -139,11 +139,11 @@ Provides organization conformance pack deployment status for an organization. Th
 
 ```sql
 SELECT
-ErrorCode,
-ErrorMessage,
-LastUpdateTime,
-OrganizationConformancePackName,
-Status
+error_code,
+error_message,
+last_update_time,
+organization_conformance_pack_name,
+status
 FROM aws.config.organization_conformance_pack_statuses
 WHERE region = '{{ region }}' -- required
 ;

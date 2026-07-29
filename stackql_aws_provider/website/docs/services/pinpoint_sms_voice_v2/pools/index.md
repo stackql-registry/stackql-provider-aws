@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the pool was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true the pool can't be deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageType" /></td>
+    <td><CopyableCode code="message_type" /></td>
     <td><code>string</code></td>
     <td>The type of message. Valid values are TRANSACTIONAL for messages that are critical or time-sensitive and PROMOTIONAL for messages that aren't critical or time-sensitive. (TRANSACTIONAL, PROMOTIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptOutListName" /></td>
+    <td><CopyableCode code="opt_out_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OptOutList associated with the pool. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolArn" /></td>
+    <td><CopyableCode code="pool_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfManagedOptOutsEnabled" /></td>
+    <td><CopyableCode code="self_managed_opt_outs_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to false, an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, End User Messaging SMS automatically replies with a customizable message and adds the end recipient to the OptOutList. When set to true you're responsible for responding to HELP and STOP requests. You're also responsible for tracking and honoring opt-out requests. For more information see Self-managed opt-outs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SharedRoutesEnabled" /></td>
+    <td><CopyableCode code="shared_routes_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Allows you to enable shared routes on your pool. By default, this is set to False. If you set this value to True, your messages are sent using phone numbers or sender IDs (depending on the country) that are shared with other users. In some countries, such as the United States, senders aren't allowed to use shared routes and must use a dedicated phone number or short code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the pool. (CREATING, ACTIVE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayChannelArn" /></td>
+    <td><CopyableCode code="two_way_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the two way channel. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayChannelRole" /></td>
+    <td><CopyableCode code="two_way_channel_role" /></td>
     <td><code>string</code></td>
     <td>An optional IAM Role Arn for a service to assume, to be able to post inbound SMS messages. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayEnabled" /></td>
+    <td><CopyableCode code="two_way_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true you can receive incoming text messages from your end recipients using the TwoWayChannelArn.</td>
 </tr>
@@ -209,18 +209,18 @@ Retrieves the specified pools or all pools associated with your Amazon Web Servi
 
 ```sql
 SELECT
-CreatedTimestamp,
-DeletionProtectionEnabled,
-MessageType,
-OptOutListName,
-PoolArn,
-PoolId,
-SelfManagedOptOutsEnabled,
-SharedRoutesEnabled,
-Status,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled
+created_timestamp,
+deletion_protection_enabled,
+message_type,
+opt_out_list_name,
+pool_arn,
+pool_id,
+self_managed_opt_outs_enabled,
+shared_routes_enabled,
+status,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled
 FROM aws.pinpoint_sms_voice_v2.pools
 WHERE region = '{{ region }}' -- required
 ;
@@ -261,19 +261,19 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-CreatedTimestamp,
-DeletionProtectionEnabled,
-MessageType,
-OptOutListName,
-PoolArn,
-PoolId,
-SelfManagedOptOutsEnabled,
-SharedRoutesEnabled,
-Status,
-Tags,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled
+created_timestamp,
+deletion_protection_enabled,
+message_type,
+opt_out_list_name,
+pool_arn,
+pool_id,
+self_managed_opt_outs_enabled,
+shared_routes_enabled,
+status,
+tags,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled
 ;
 ```
 </TabItem>
@@ -343,11 +343,11 @@ region = '{{ region }}' --required
 AND PoolId = '{{ PoolId }}' --required
 AND OriginationIdentity = '{{ OriginationIdentity }}' --required
 RETURNING
-IsoCountryCode,
-OriginationIdentity,
-OriginationIdentityArn,
-PoolArn,
-PoolId;
+iso_country_code,
+origination_identity,
+origination_identity_arn,
+pool_arn,
+pool_id;
 ```
 </TabItem>
 <TabItem value="update_pool">
@@ -369,18 +369,18 @@ WHERE
 region = '{{ region }}' --required
 AND PoolId = '{{ PoolId }}' --required
 RETURNING
-CreatedTimestamp,
-DeletionProtectionEnabled,
-MessageType,
-OptOutListName,
-PoolArn,
-PoolId,
-SelfManagedOptOutsEnabled,
-SharedRoutesEnabled,
-Status,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled;
+created_timestamp,
+deletion_protection_enabled,
+message_type,
+opt_out_list_name,
+pool_arn,
+pool_id,
+self_managed_opt_outs_enabled,
+shared_routes_enabled,
+status,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled;
 ```
 </TabItem>
 </Tabs>

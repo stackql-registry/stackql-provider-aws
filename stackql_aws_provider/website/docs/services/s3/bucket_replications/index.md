@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that Amazon S3 assumes when replicating objects. For more information, see How to Set Up Replication in the Amazon S3 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>string</code></td>
     <td>A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.</td>
 </tr>
@@ -163,8 +163,8 @@ This operation is not supported for directory buckets. Returns the replication c
 
 ```sql
 SELECT
-Role,
-Rules
+role,
+rules
 FROM aws.s3.bucket_replications
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

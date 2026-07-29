@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generationId" /></td>
+    <td><CopyableCode code="generation_id" /></td>
     <td><code>string</code></td>
     <td>The generation ID of the policy version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDefaultVersion" /></td>
+    <td><CopyableCode code="is_default_version" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the policy version is the default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the policy was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The policy ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The JSON document that describes the policy. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The policy name. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyVersionId" /></td>
+    <td><CopyableCode code="policy_version_id" /></td>
     <td><code>string</code></td>
     <td>The policy version ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyVersions" /></td>
+    <td><CopyableCode code="policy_versions" /></td>
     <td><code>array</code></td>
     <td>The policy versions.</td>
 </tr>
@@ -218,14 +218,14 @@ Gets information about the specified policy version. Requires permission to acce
 
 ```sql
 SELECT
-creationDate,
-generationId,
-isDefaultVersion,
-lastModifiedDate,
-policyArn,
-policyDocument,
-policyName,
-policyVersionId
+creation_date,
+generation_id,
+is_default_version,
+last_modified_date,
+policy_arn,
+policy_document,
+policy_name,
+policy_version_id
 FROM aws.iot.policy_versions
 WHERE policy_name = '{{ policy_name }}' -- required
 AND policy_version_id = '{{ policy_version_id }}' -- required
@@ -239,7 +239,7 @@ Lists the versions of the specified policy and identifies the default version. R
 
 ```sql
 SELECT
-policyVersions
+policy_versions
 FROM aws.iot.policy_versions
 WHERE policy_name = '{{ policy_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -275,10 +275,10 @@ SELECT
 '{{ region }}',
 '{{ setAsDefault }}'
 RETURNING
-isDefaultVersion,
-policyArn,
-policyDocument,
-policyVersionId
+is_default_version,
+policy_arn,
+policy_document,
+policy_version_id
 ;
 ```
 </TabItem>

@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentArns" /></td>
+    <td><CopyableCode code="agent_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the DataSync agents that can connect with your HDFS cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The type of authentication used to determine the identity of the user. (SIMPLE, KERBEROS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockSize" /></td>
+    <td><CopyableCode code="block_size" /></td>
     <td><code>integer</code></td>
     <td>The size of the data blocks to write into the HDFS cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmkSecretConfig" /></td>
+    <td><CopyableCode code="cmk_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as a KerberosKeytab that DataSync uses to access a specific storage location, with a customer-managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the HDFS location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomSecretConfig" /></td>
+    <td><CopyableCode code="custom_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a customer-managed secret, such as a KerberosKeytab that DataSync uses to access a specific storage location, with a customer-managed Identity and Access Management (IAM) role that provides access to the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KerberosPrincipal" /></td>
+    <td><CopyableCode code="kerberos_principal" /></td>
     <td><code>string</code></td>
     <td>The Kerberos principal with access to the files and folders on the HDFS cluster. This parameter is used if the AuthenticationType is defined as KERBEROS. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyProviderUri" /></td>
+    <td><CopyableCode code="kms_key_provider_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the HDFS cluster's Key Management Server (KMS). (pattern: &lt;code&gt;^kms:\/\/http&#91;s&#93;?@((&#91;a-zA-Z0-9\-&#93;*&#91;a-zA-Z0-9&#93;)\.)*(&#91;A-Za-z0-9\-&#93;*&#91;A-Za-z0-9&#93;)(;((&#91;a-zA-Z0-9\-&#93;*&#91;a-zA-Z0-9&#93;)\.)*(&#91;A-Za-z0-9\-&#93;*&#91;A-Za-z0-9&#93;))*:&#91;0-9&#93;&#123;1,5&#125;\/kms$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the HDFS location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the HDFS location. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedSecretConfig" /></td>
+    <td><CopyableCode code="managed_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as a KerberosKeytab that DataSync uses to access a specific storage location. DataSync uses the default Amazon Web Services-managed KMS key to encrypt this secret in Secrets Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NameNodes" /></td>
+    <td><CopyableCode code="name_nodes" /></td>
     <td><code>array</code></td>
     <td>The NameNode that manages the HDFS namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QopConfiguration" /></td>
+    <td><CopyableCode code="qop_configuration" /></td>
     <td><code>object</code></td>
     <td>The Quality of Protection (QOP) configuration, which specifies the Remote Procedure Call (RPC) and data transfer protection settings configured on the HDFS cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationFactor" /></td>
+    <td><CopyableCode code="replication_factor" /></td>
     <td><code>integer</code></td>
     <td>The number of DataNodes to replicate the data to when writing to the HDFS cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SimpleUser" /></td>
+    <td><CopyableCode code="simple_user" /></td>
     <td><code>string</code></td>
     <td>The user name to identify the client on the host operating system. This parameter is used if the AuthenticationType is defined as SIMPLE. (pattern: &lt;code&gt;^&#91;_.A-Za-z0-9&#93;&#91;-_.A-Za-z0-9&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -203,21 +203,21 @@ Provides details about how an DataSync transfer location for a Hadoop Distribute
 
 ```sql
 SELECT
-AgentArns,
-AuthenticationType,
-BlockSize,
-CmkSecretConfig,
-CreationTime,
-CustomSecretConfig,
-KerberosPrincipal,
-KmsKeyProviderUri,
-LocationArn,
-LocationUri,
-ManagedSecretConfig,
-NameNodes,
-QopConfiguration,
-ReplicationFactor,
-SimpleUser
+agent_arns,
+authentication_type,
+block_size,
+cmk_secret_config,
+creation_time,
+custom_secret_config,
+kerberos_principal,
+kms_key_provider_uri,
+location_arn,
+location_uri,
+managed_secret_config,
+name_nodes,
+qop_configuration,
+replication_factor,
+simple_user
 FROM aws.datasync.location_hdfs
 WHERE region = '{{ region }}' -- required
 ;
@@ -276,7 +276,7 @@ SELECT
 '{{ CustomSecretConfig }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

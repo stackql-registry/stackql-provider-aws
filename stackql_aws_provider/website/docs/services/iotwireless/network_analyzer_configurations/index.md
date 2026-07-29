@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the new resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the new resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MulticastGroups" /></td>
+    <td><CopyableCode code="multicast_groups" /></td>
     <td><code>array</code></td>
     <td>List of multicast group resources that have been added to the network analyzer configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the network analyzer configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TraceContent" /></td>
+    <td><CopyableCode code="trace_content" /></td>
     <td><code>object</code></td>
     <td>Trace content for your wireless devices, gateways, and multicast groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessDevices" /></td>
+    <td><CopyableCode code="wireless_devices" /></td>
     <td><code>array</code></td>
     <td>List of wireless device resources that have been added to the network analyzer configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessGateways" /></td>
+    <td><CopyableCode code="wireless_gateways" /></td>
     <td><code>array</code></td>
     <td>List of wireless gateway resources that have been added to the network analyzer configuration.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NetworkAnalyzerConfigurationList" /></td>
+    <td><CopyableCode code="network_analyzer_configuration_list" /></td>
     <td><code>array</code></td>
     <td>The list of network analyzer configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
@@ -218,13 +218,13 @@ Get network analyzer configuration.
 
 ```sql
 SELECT
-Arn,
-Description,
-MulticastGroups,
-Name,
-TraceContent,
-WirelessDevices,
-WirelessGateways
+arn,
+description,
+multicast_groups,
+name,
+trace_content,
+wireless_devices,
+wireless_gateways
 FROM aws.iotwireless.network_analyzer_configurations
 WHERE configuration_name = '{{ configuration_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -237,8 +237,8 @@ Lists the network analyzer configurations.
 
 ```sql
 SELECT
-NetworkAnalyzerConfigurationList,
-NextToken
+network_analyzer_configuration_list,
+next_token
 FROM aws.iotwireless.network_analyzer_configurations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -285,8 +285,8 @@ SELECT
 '{{ MulticastGroups }}',
 '{{ region }}'
 RETURNING
-Arn,
-Name
+arn,
+name
 ;
 ```
 </TabItem>

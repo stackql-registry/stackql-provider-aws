@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationData" /></td>
+    <td><CopyableCode code="association_data" /></td>
     <td><code>object</code></td>
     <td>The contents of a content association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of association. (AMAZON_CONNECT_GUIDE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentArn" /></td>
+    <td><CopyableCode code="content_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the content. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentAssociationArn" /></td>
+    <td><CopyableCode code="content_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the content association. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentAssociationId" /></td>
+    <td><CopyableCode code="content_association_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the content association. Can be either the ID or the ARN. URLs cannot contain the ARN. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentId" /></td>
+    <td><CopyableCode code="content_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the content. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,42 +110,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationData" /></td>
+    <td><CopyableCode code="association_data" /></td>
     <td><code>object</code></td>
     <td>The contents of a content association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of association. (AMAZON_CONNECT_GUIDE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentArn" /></td>
+    <td><CopyableCode code="content_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the content. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentAssociationArn" /></td>
+    <td><CopyableCode code="content_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the content association. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentAssociationId" /></td>
+    <td><CopyableCode code="content_association_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the content association. Can be either the ID or the ARN. URLs cannot contain the ARN. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentId" /></td>
+    <td><CopyableCode code="content_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the content. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -266,14 +266,14 @@ Returns the content association. For more information about content associations
 
 ```sql
 SELECT
-associationData,
-associationType,
-contentArn,
-contentAssociationArn,
-contentAssociationId,
-contentId,
-knowledgeBaseArn,
-knowledgeBaseId,
+association_data,
+association_type,
+content_arn,
+content_association_arn,
+content_association_id,
+content_id,
+knowledge_base_arn,
+knowledge_base_id,
 tags
 FROM aws.qconnect.content_associations
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
@@ -289,14 +289,14 @@ Lists the content associations. For more information about content associations-
 
 ```sql
 SELECT
-associationData,
-associationType,
-contentArn,
-contentAssociationArn,
-contentAssociationId,
-contentId,
-knowledgeBaseArn,
-knowledgeBaseId,
+association_data,
+association_type,
+content_arn,
+content_association_arn,
+content_association_id,
+content_id,
+knowledge_base_arn,
+knowledge_base_id,
 tags
 FROM aws.qconnect.content_associations
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
@@ -342,7 +342,7 @@ SELECT
 '{{ content_id }}',
 '{{ region }}'
 RETURNING
-contentAssociation
+content_association
 ;
 ```
 </TabItem>

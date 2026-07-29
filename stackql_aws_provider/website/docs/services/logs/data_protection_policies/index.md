@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time that this policy was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupIdentifier" /></td>
+    <td><CopyableCode code="log_group_identifier" /></td>
     <td><code>string</code></td>
     <td>The log group name or ARN that you specified in your request. (pattern: &lt;code&gt;&#91;\w#+=/:,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The data protection policy document for this log group.</td>
 </tr>
@@ -143,9 +143,9 @@ Returns information about a log group data protection policy.
 
 ```sql
 SELECT
-lastUpdatedTime,
-logGroupIdentifier,
-policyDocument
+last_updated_time,
+log_group_identifier,
+policy_document
 FROM aws.logs.data_protection_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,9 +176,9 @@ region = '{{ region }}' --required
 AND logGroupIdentifier = '{{ logGroupIdentifier }}' --required
 AND policyDocument = '{{ policyDocument }}' --required
 RETURNING
-lastUpdatedTime,
-logGroupIdentifier,
-policyDocument;
+last_updated_time,
+log_group_identifier,
+policy_document;
 ```
 </TabItem>
 </Tabs>

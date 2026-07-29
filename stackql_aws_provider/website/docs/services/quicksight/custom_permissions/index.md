@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomPermissions" /></td>
+    <td><CopyableCode code="custom_permissions" /></td>
     <td><code>object</code></td>
     <td>The custom permissions profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom permissions profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>object</code></td>
     <td>A set of actions that correspond to Amazon Quick Sight permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomPermissionsName" /></td>
+    <td><CopyableCode code="custom_permissions_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom permissions profile. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9+=,.@_-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -232,9 +232,9 @@ Describes a custom permissions profile.
 
 ```sql
 SELECT
-CustomPermissions,
-RequestId,
-Status
+custom_permissions,
+request_id,
+status
 FROM aws.quicksight.custom_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND custom_permissions_name = '{{ custom_permissions_name }}' -- required
@@ -248,9 +248,9 @@ Returns a list of all the custom permissions profiles.
 
 ```sql
 SELECT
-Arn,
-Capabilities,
-CustomPermissionsName
+arn,
+capabilities,
+custom_permissions_name
 FROM aws.quicksight.custom_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -290,9 +290,9 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-RequestId,
-Status
+arn,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -575,8 +575,8 @@ AND namespace = '{{ namespace }}' --required
 AND region = '{{ region }}' --required
 AND CustomPermissionsName = '{{ CustomPermissionsName }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 <TabItem value="update_custom_permissions">
@@ -592,9 +592,9 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND custom_permissions_name = '{{ custom_permissions_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-RequestId,
-Status;
+arn,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

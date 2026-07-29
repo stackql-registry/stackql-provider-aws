@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>The details for the CloudWatch alarm you want to apply to an automation or command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CutoffBehavior" /></td>
+    <td><CopyableCode code="cutoff_behavior" /></td>
     <td><code>string</code></td>
     <td>The action to take on tasks when the maintenance window cutoff time is reached. CONTINUE_TASK means that tasks continue to run. For Automation, Lambda, Step Functions tasks, CANCEL_TASK means that currently running task invocations continue, but no new task invocations are started. For Run Command tasks, CANCEL_TASK means the system attempts to stop the task by sending a CancelCommand operation. (CONTINUE_TASK, CANCEL_TASK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The retrieved task description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingInfo" /></td>
+    <td><CopyableCode code="logging_info" /></td>
     <td><code>object</code></td>
     <td>The location in Amazon Simple Storage Service (Amazon S3) where the task results are logged. LoggingInfo has been deprecated. To specify an Amazon Simple Storage Service (Amazon S3) bucket to contain logs, instead use the OutputS3BucketName and OutputS3KeyPrefix options in the TaskInvocationParameters structure. For information about how Amazon Web Services Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrency" /></td>
+    <td><CopyableCode code="max_concurrency" /></td>
     <td><code>string</code></td>
     <td>The maximum number of targets allowed to run this task in parallel. For maintenance window tasks without a target specified, you can't supply a value for this option. Instead, the system inserts a placeholder value of 1, which may be reported in the response to this command. This value doesn't affect the running of your task and can be ignored. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;1-9&#93;&#91;0-9&#93;%|&#91;1-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxErrors" /></td>
+    <td><CopyableCode code="max_errors" /></td>
     <td><code>string</code></td>
     <td>The maximum number of errors allowed before the task stops being scheduled. For maintenance window tasks without a target specified, you can't supply a value for this option. Instead, the system inserts a placeholder value of 1, which may be reported in the response to this command. This value doesn't affect the running of your task and can be ignored. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;0&#93;|&#91;1-9&#93;&#91;0-9&#93;%|&#91;0-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The retrieved task name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The priority of the task when it runs. The lower the number, the higher the priority. Tasks that have the same priority are scheduled in parallel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRoleArn" /></td>
+    <td><CopyableCode code="service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role for Amazon Web Services Systems Manager to assume when running a maintenance window task. If you do not specify a service role ARN, Systems Manager uses a service-linked role in your account. If no appropriate service-linked role for Systems Manager exists in your account, it is created when you run RegisterTaskWithMaintenanceWindow. However, for an improved security posture, we strongly recommend creating a custom policy and custom service role for running your maintenance window tasks. The policy can be crafted to provide only the permissions needed for your particular maintenance window tasks. For more information, see Setting up Maintenance Windows in the in the Amazon Web Services Systems Manager User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>The targets where the task should run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The resource that the task used during execution. For RUN_COMMAND and AUTOMATION task types, the value of TaskArn is the SSM document name/ARN. For LAMBDA tasks, the value is the function name/ARN. For STEP_FUNCTIONS tasks, the value is the state machine ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskInvocationParameters" /></td>
+    <td><CopyableCode code="task_invocation_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters to pass to the task when it runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskParameters" /></td>
+    <td><CopyableCode code="task_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters to pass to the task when it runs. TaskParameters has been deprecated. To specify parameters to pass to a task when it runs, instead use the Parameters option in the TaskInvocationParameters structure. For information about how Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>The type of task to run. (RUN_COMMAND, AUTOMATION, STEP_FUNCTIONS, LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowId" /></td>
+    <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The retrieved maintenance window ID. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowTaskId" /></td>
+    <td><CopyableCode code="window_task_id" /></td>
     <td><code>string</code></td>
     <td>The retrieved maintenance window task ID. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -145,77 +145,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>The details for the CloudWatch alarm you want to apply to an automation or command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CutoffBehavior" /></td>
+    <td><CopyableCode code="cutoff_behavior" /></td>
     <td><code>string</code></td>
     <td>The specification for whether tasks should continue to run after the cutoff time specified in the maintenance windows is reached. (CONTINUE_TASK, CANCEL_TASK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingInfo" /></td>
+    <td><CopyableCode code="logging_info" /></td>
     <td><code>object</code></td>
     <td>Information about an S3 bucket to write task-level logs to. LoggingInfo has been deprecated. To specify an Amazon Simple Storage Service (Amazon S3) bucket to contain logs, instead use the OutputS3BucketName and OutputS3KeyPrefix options in the TaskInvocationParameters structure. For information about how Amazon Web Services Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrency" /></td>
+    <td><CopyableCode code="max_concurrency" /></td>
     <td><code>string</code></td>
     <td>The maximum number of targets this task can be run for, in parallel. Although this element is listed as "Required: No", a value can be omitted only when you are registering or updating a targetless task You must provide a value in all other cases. For maintenance window tasks without a target specified, you can't supply a value for this option. Instead, the system inserts a placeholder value of 1. This value doesn't affect the running of your task. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;1-9&#93;&#91;0-9&#93;%|&#91;1-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxErrors" /></td>
+    <td><CopyableCode code="max_errors" /></td>
     <td><code>string</code></td>
     <td>The maximum number of errors allowed before this task stops being scheduled. Although this element is listed as "Required: No", a value can be omitted only when you are registering or updating a targetless task You must provide a value in all other cases. For maintenance window tasks without a target specified, you can't supply a value for this option. Instead, the system inserts a placeholder value of 1. This value doesn't affect the running of your task. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;0&#93;|&#91;1-9&#93;&#91;0-9&#93;%|&#91;0-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The task name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The priority of the task in the maintenance window. The lower the number, the higher the priority. Tasks that have the same priority are scheduled in parallel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRoleArn" /></td>
+    <td><CopyableCode code="service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role for Amazon Web Services Systems Manager to assume when running a maintenance window task. If you do not specify a service role ARN, Systems Manager uses a service-linked role in your account. If no appropriate service-linked role for Systems Manager exists in your account, it is created when you run RegisterTaskWithMaintenanceWindow. However, for an improved security posture, we strongly recommend creating a custom policy and custom service role for running your maintenance window tasks. The policy can be crafted to provide only the permissions needed for your particular maintenance window tasks. For more information, see Setting up Maintenance Windows in the in the Amazon Web Services Systems Manager User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>The targets (either managed nodes or tags). Managed nodes are specified using Key=instanceids,Values=<code>&lt;instanceid1&gt;</code>,<code>&lt;instanceid2&gt;</code>. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The resource that the task uses during execution. For RUN_COMMAND and AUTOMATION task types, TaskArn is the Amazon Web Services Systems Manager (SSM document) name or ARN. For LAMBDA tasks, it's the function name or ARN. For STEP_FUNCTIONS tasks, it's the state machine ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskParameters" /></td>
+    <td><CopyableCode code="task_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters that should be passed to the task when it is run. TaskParameters has been deprecated. To specify parameters to pass to a task when it runs, instead use the Parameters option in the TaskInvocationParameters structure. For information about how Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of task. (RUN_COMMAND, AUTOMATION, STEP_FUNCTIONS, LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowId" /></td>
+    <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window where the task is registered. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowTaskId" /></td>
+    <td><CopyableCode code="window_task_id" /></td>
     <td><code>string</code></td>
     <td>The task ID. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -299,22 +299,22 @@ Retrieves the details of a maintenance window task. For maintenance window tasks
 
 ```sql
 SELECT
-AlarmConfiguration,
-CutoffBehavior,
-Description,
-LoggingInfo,
-MaxConcurrency,
-MaxErrors,
-Name,
-Priority,
-ServiceRoleArn,
-Targets,
-TaskArn,
-TaskInvocationParameters,
-TaskParameters,
-TaskType,
-WindowId,
-WindowTaskId
+alarm_configuration,
+cutoff_behavior,
+description,
+logging_info,
+max_concurrency,
+max_errors,
+name,
+priority,
+service_role_arn,
+targets,
+task_arn,
+task_invocation_parameters,
+task_parameters,
+task_type,
+window_id,
+window_task_id
 FROM aws.ssm.maintenance_window_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -326,21 +326,21 @@ Lists the tasks in a maintenance window. For maintenance window tasks without a 
 
 ```sql
 SELECT
-AlarmConfiguration,
-CutoffBehavior,
-Description,
-LoggingInfo,
-MaxConcurrency,
-MaxErrors,
-Name,
-Priority,
-ServiceRoleArn,
-Targets,
-TaskArn,
-TaskParameters,
-Type,
-WindowId,
-WindowTaskId
+alarm_configuration,
+cutoff_behavior,
+description,
+logging_info,
+max_concurrency,
+max_errors,
+name,
+priority,
+service_role_arn,
+targets,
+task_arn,
+task_parameters,
+type,
+window_id,
+window_task_id
 FROM aws.ssm.maintenance_window_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -385,21 +385,21 @@ region = '{{ region }}' --required
 AND WindowId = '{{ WindowId }}' --required
 AND WindowTaskId = '{{ WindowTaskId }}' --required
 RETURNING
-AlarmConfiguration,
-CutoffBehavior,
-Description,
-LoggingInfo,
-MaxConcurrency,
-MaxErrors,
-Name,
-Priority,
-ServiceRoleArn,
-Targets,
-TaskArn,
-TaskInvocationParameters,
-TaskParameters,
-WindowId,
-WindowTaskId;
+alarm_configuration,
+cutoff_behavior,
+description,
+logging_info,
+max_concurrency,
+max_errors,
+name,
+priority,
+service_role_arn,
+targets,
+task_arn,
+task_invocation_parameters,
+task_parameters,
+window_id,
+window_task_id;
 ```
 </TabItem>
 </Tabs>

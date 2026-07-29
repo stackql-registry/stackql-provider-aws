@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>List of detailed field information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
@@ -213,7 +213,7 @@ Lists all fields in a Cases domain.
 ```sql
 SELECT
 fields,
-nextToken
+next_token
 FROM aws.connectcases.fields
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -255,8 +255,8 @@ SELECT
 '{{ domain_id }}',
 '{{ region }}'
 RETURNING
-fieldArn,
-fieldId
+field_arn,
+field_id
 ;
 ```
 </TabItem>

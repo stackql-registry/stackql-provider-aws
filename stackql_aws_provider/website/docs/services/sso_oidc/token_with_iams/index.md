@@ -123,14 +123,14 @@ SELECT
 '{{ codeVerifier }}',
 '{{ region }}'
 RETURNING
-accessToken,
-awsAdditionalDetails,
-expiresIn,
-idToken,
-issuedTokenType,
-refreshToken,
+access_token,
+aws_additional_details,
+expires_in,
+id_token,
+issued_token_type,
+refresh_token,
 scope,
-tokenType
+token_type
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Assignment" /></td>
+    <td><CopyableCode code="assignment" /></td>
     <td><code>object</code></td>
     <td>The assignment. The response includes one Assignment element.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HIT" /></td>
+    <td><CopyableCode code="hit" /></td>
     <td><code>object</code></td>
     <td>The HIT associated with this assignment. The response includes one HIT element.</td>
 </tr>
@@ -145,8 +145,8 @@ The GetAssignment operation retrieves the details of the specified Assignment.
 
 ```sql
 SELECT
-Assignment,
-HIT
+assignment,
+hit
 FROM aws.mturk.assignments
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Result" /></td>
+    <td><CopyableCode code="result" /></td>
     <td><code>string</code></td>
     <td>The generated CloudFormation template.</td>
 </tr>
@@ -139,7 +139,7 @@ Generates a CloudFormation template that streamlines and automates the integrati
 
 ```sql
 SELECT
-Result
+result
 FROM aws.ec2.flow_logs_integration_templates
 WHERE FlowLogId = '{{ FlowLogId }}' -- required
 AND ConfigDeliveryS3DestinationArn = '{{ ConfigDeliveryS3DestinationArn }}' -- required

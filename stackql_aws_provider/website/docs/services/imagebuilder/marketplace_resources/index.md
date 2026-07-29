@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Returns obfuscated data that contains the YAML content of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Amazon Web Services Marketplace resource that was requested. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ Verify the subscription and perform resource dependency checks on the requested 
 ```sql
 SELECT
 data,
-resourceArn,
+resource_arn,
 url
 FROM aws.imagebuilder.marketplace_resources
 WHERE region = '{{ region }}' -- required

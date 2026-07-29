@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DiscoveryIntegrationStatus" /></td>
+    <td><CopyableCode code="discovery_integration_status" /></td>
     <td><code>string</code></td>
     <td>Discovery integration status. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JiraConfiguration" /></td>
+    <td><CopyableCode code="jira_configuration" /></td>
     <td><code>object</code></td>
     <td>Jira configuration status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationSharingStatus" /></td>
+    <td><CopyableCode code="organization_sharing_status" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services Organizations sharing status. (ENABLED, DISABLED)</td>
 </tr>
@@ -136,9 +136,9 @@ Global settings for all workloads.
 
 ```sql
 SELECT
-DiscoveryIntegrationStatus,
-JiraConfiguration,
-OrganizationSharingStatus
+discovery_integration_status,
+jira_configuration,
+organization_sharing_status
 FROM aws.wellarchitected.global_settings
 WHERE region = '{{ region }}' -- required
 ;

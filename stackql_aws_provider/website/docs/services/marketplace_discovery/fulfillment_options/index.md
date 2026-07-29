@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="amazonMachineImageFulfillmentOption" /></td>
+    <td><CopyableCode code="amazon_machine_image_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An Amazon Machine Image (AMI) fulfillment option for EC2 deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiFulfillmentOption" /></td>
+    <td><CopyableCode code="api_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An API-based fulfillment option for programmatic integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudFormationFulfillmentOption" /></td>
+    <td><CopyableCode code="cloud_formation_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An AWS CloudFormation template fulfillment option for infrastructure deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerFulfillmentOption" /></td>
+    <td><CopyableCode code="container_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>A container image fulfillment option for container-based deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataExchangeFulfillmentOption" /></td>
+    <td><CopyableCode code="data_exchange_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An AWS Data Exchange fulfillment option for data set delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2ImageBuilderComponentFulfillmentOption" /></td>
+    <td><CopyableCode code="ec_2_image_builder_component_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An EC2 Image Builder component fulfillment option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eksAddOnFulfillmentOption" /></td>
+    <td><CopyableCode code="eks_add_on_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An Amazon EKS add-on fulfillment option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="helmFulfillmentOption" /></td>
+    <td><CopyableCode code="helm_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>A Helm chart fulfillment option for Kubernetes deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="professionalServicesFulfillmentOption" /></td>
+    <td><CopyableCode code="professional_services_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>A professional services fulfillment option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="saasFulfillmentOption" /></td>
+    <td><CopyableCode code="saas_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>A Software as a Service (SaaS) fulfillment option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sageMakerAlgorithmFulfillmentOption" /></td>
+    <td><CopyableCode code="sage_maker_algorithm_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An Amazon SageMaker algorithm fulfillment option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sageMakerModelFulfillmentOption" /></td>
+    <td><CopyableCode code="sage_maker_model_fulfillment_option" /></td>
     <td><code>object</code></td>
     <td>An Amazon SageMaker model fulfillment option.</td>
 </tr>
@@ -174,18 +174,18 @@ Returns the fulfillment options available for a product, including deployment de
 
 ```sql
 SELECT
-amazonMachineImageFulfillmentOption,
-apiFulfillmentOption,
-cloudFormationFulfillmentOption,
-containerFulfillmentOption,
-dataExchangeFulfillmentOption,
-ec2ImageBuilderComponentFulfillmentOption,
-eksAddOnFulfillmentOption,
-helmFulfillmentOption,
-professionalServicesFulfillmentOption,
-saasFulfillmentOption,
-sageMakerAlgorithmFulfillmentOption,
-sageMakerModelFulfillmentOption
+amazon_machine_image_fulfillment_option,
+api_fulfillment_option,
+cloud_formation_fulfillment_option,
+container_fulfillment_option,
+data_exchange_fulfillment_option,
+ec_2_image_builder_component_fulfillment_option,
+eks_add_on_fulfillment_option,
+helm_fulfillment_option,
+professional_services_fulfillment_option,
+saas_fulfillment_option,
+sage_maker_algorithm_fulfillment_option,
+sage_maker_model_fulfillment_option
 FROM aws.marketplace_discovery.fulfillment_options
 WHERE region = '{{ region }}' -- required
 ;

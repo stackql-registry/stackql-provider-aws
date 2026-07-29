@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>The reference's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the reference was created.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>The reference's description. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="md5" /></td>
+    <td><CopyableCode code="md_5" /></td>
     <td><code>string</code></td>
     <td>The reference's MD5 checksum. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;N&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="referenceStoreId" /></td>
+    <td><CopyableCode code="reference_store_id" /></td>
     <td><code>string</code></td>
     <td>The reference's store ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The reference's status. (ACTIVE, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the reference was updated.</td>
 </tr>
@@ -256,12 +256,12 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-md5,
-referenceStoreId,
+md_5,
+reference_store_id,
 status,
-updateTime
+update_time
 FROM aws.omics.references
 WHERE reference_store_id = '{{ reference_store_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the user or group associated as the resource's delegate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the delegate: user or group. (GROUP, USER)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the delegates associated with a resource. Users and groups can be resource
 
 ```sql
 SELECT
-Id,
-Type
+id,
+type
 FROM aws.workmail.resource_delegates
 WHERE region = '{{ region }}' -- required
 ;

@@ -103,9 +103,9 @@ SELECT
 '{{ teamId }}' /* required */,
 '{{ region }}'
 RETURNING
-accountType,
-teamId,
-teamName
+account_type,
+team_id,
+team_name
 ;
 ```
 </TabItem>

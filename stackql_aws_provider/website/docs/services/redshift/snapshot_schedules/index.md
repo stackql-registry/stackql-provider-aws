@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedClusterCount" /></td>
+    <td><CopyableCode code="associated_cluster_count" /></td>
     <td><code>integer</code></td>
     <td>The number of clusters associated with the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedClusters" /></td>
+    <td><CopyableCode code="associated_clusters" /></td>
     <td><code>string</code></td>
     <td>A list of clusters associated with the schedule. A maximum of 100 clusters is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextInvocations" /></td>
+    <td><CopyableCode code="next_invocations" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleDefinitions" /></td>
+    <td><CopyableCode code="schedule_definitions" /></td>
     <td><code>string</code></td>
     <td>A list of ScheduleDefinitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleDescription" /></td>
+    <td><CopyableCode code="schedule_description" /></td>
     <td><code>string</code></td>
     <td>The description of the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleIdentifier" /></td>
+    <td><CopyableCode code="schedule_identifier" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>An optional set of tags describing the schedule.</td>
 </tr>
@@ -252,13 +252,13 @@ Returns a list of snapshot schedules.
 
 ```sql
 SELECT
-AssociatedClusterCount,
-AssociatedClusters,
-NextInvocations,
-ScheduleDefinitions,
-ScheduleDescription,
-ScheduleIdentifier,
-Tags
+associated_cluster_count,
+associated_clusters,
+next_invocations,
+schedule_definitions,
+schedule_description,
+schedule_identifier,
+tags
 FROM aws.redshift.snapshot_schedules
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'
@@ -305,13 +305,13 @@ SELECT
 '{{ DryRun }}',
 '{{ NextInvocations }}'
 RETURNING
-AssociatedClusterCount,
-AssociatedClusters,
-NextInvocations,
-ScheduleDefinitions,
-ScheduleDescription,
-ScheduleIdentifier,
-Tags
+associated_cluster_count,
+associated_clusters,
+next_invocations,
+schedule_definitions,
+schedule_description,
+schedule_identifier,
+tags
 ;
 ```
 </TabItem>
@@ -371,13 +371,13 @@ ScheduleIdentifier = '{{ ScheduleIdentifier }}' --required
 AND ScheduleDefinitions = '{{ ScheduleDefinitions }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AssociatedClusterCount,
-AssociatedClusters,
-NextInvocations,
-ScheduleDefinitions,
-ScheduleDescription,
-ScheduleIdentifier,
-Tags;
+associated_cluster_count,
+associated_clusters,
+next_invocations,
+schedule_definitions,
+schedule_description,
+schedule_identifier,
+tags;
 ```
 </TabItem>
 <TabItem value="modify_cluster_snapshot_schedule">

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The KMS key that's used to encrypt the sensitive data, and the status of the configuration for the Amazon Macie account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retrievalConfiguration" /></td>
+    <td><CopyableCode code="retrieval_configuration" /></td>
     <td><code>object</code></td>
     <td>The access method and settings that are used to retrieve the sensitive data.</td>
 </tr>
@@ -132,7 +132,7 @@ Retrieves the status and configuration settings for retrieving occurrences of se
 ```sql
 SELECT
 configuration,
-retrievalConfiguration
+retrieval_configuration
 FROM aws.macie2.reveal_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND configuration = '{{ configuration }}' --required
 RETURNING
 configuration,
-retrievalConfiguration;
+retrieval_configuration;
 ```
 </TabItem>
 </Tabs>

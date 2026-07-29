@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the device instance. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceProfile" /></td>
+    <td><CopyableCode code="instance_profile" /></td>
     <td><code>object</code></td>
     <td>A object that contains information about the instance profile.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the device instance. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceProfile" /></td>
+    <td><CopyableCode code="instance_profile" /></td>
     <td><code>object</code></td>
     <td>A object that contains information about the instance profile.</td>
 </tr>
@@ -205,8 +205,8 @@ Returns information about a device instance that belongs to a private device fle
 ```sql
 SELECT
 arn,
-deviceArn,
-instanceProfile,
+device_arn,
+instance_profile,
 labels,
 status,
 udid
@@ -222,8 +222,8 @@ Returns information about the private device instances associated with one or mo
 ```sql
 SELECT
 arn,
-deviceArn,
-instanceProfile,
+device_arn,
+instance_profile,
 labels,
 status,
 udid
@@ -257,7 +257,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-deviceInstance;
+device_instance;
 ```
 </TabItem>
 </Tabs>

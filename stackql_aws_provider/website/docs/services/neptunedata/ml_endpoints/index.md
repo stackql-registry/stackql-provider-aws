@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointConfig" /></td>
+    <td><CopyableCode code="endpoint_config" /></td>
     <td><code>object</code></td>
     <td>Contains a Neptune ML configuration.</td>
 </tr>
@@ -198,7 +198,7 @@ Retrieves details about an inference endpoint. See Managing inference endpoints 
 SELECT
 id,
 endpoint,
-endpointConfig,
+endpoint_config,
 status
 FROM aws.neptunedata.ml_endpoints
 WHERE id = '{{ id }}' -- required
@@ -264,7 +264,7 @@ SELECT
 RETURNING
 id,
 arn,
-creationTimeInMillis
+creation_time_in_millis
 ;
 ```
 </TabItem>

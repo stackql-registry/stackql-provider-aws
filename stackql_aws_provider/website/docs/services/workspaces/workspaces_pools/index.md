@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If you received a NextToken from a previous call that was paginated, provide this token to receive the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspacesPools" /></td>
+    <td><CopyableCode code="workspaces_pools" /></td>
     <td><code>array</code></td>
     <td>Information about the WorkSpaces Pools.</td>
 </tr>
@@ -145,8 +145,8 @@ Describes the specified WorkSpaces Pools.
 
 ```sql
 SELECT
-NextToken,
-WorkspacesPools
+next_token,
+workspaces_pools
 FROM aws.workspaces.workspaces_pools
 WHERE region = '{{ region }}' -- required
 ;
@@ -193,7 +193,7 @@ SELECT
 '{{ RunningMode }}',
 '{{ region }}'
 RETURNING
-WorkspacesPool
+workspaces_pool
 ;
 ```
 </TabItem>
@@ -283,7 +283,7 @@ WHERE
 region = '{{ region }}' --required
 AND PoolId = '{{ PoolId }}' --required
 RETURNING
-WorkspacesPool;
+workspaces_pool;
 ```
 </TabItem>
 </Tabs>

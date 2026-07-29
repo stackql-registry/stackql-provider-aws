@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the public key was uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKeyConfig" /></td>
+    <td><CopyableCode code="public_key_config" /></td>
     <td><code>string</code></td>
     <td>Configuration information about a public key that you can use with signed URLs and signed cookies, or with field-level encryption.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A list of public keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of public keys you want in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more elements to be listed, this element is present and contains the value that you can use for the Marker request parameter to continue listing your public keys where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of public keys in the list.</td>
 </tr>
@@ -213,9 +213,9 @@ Gets a public key.
 
 ```sql
 SELECT
-CreatedTime,
-Id,
-PublicKeyConfig
+created_time,
+id,
+public_key_config
 FROM aws.cloudfront.public_keys
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,10 +228,10 @@ List all public keys that have been added to CloudFront for this account.
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.public_keys
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -264,9 +264,9 @@ SELECT
 '{{ PublicKeyConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-CreatedTime,
-Id,
-PublicKeyConfig
+created_time,
+id,
+public_key_config
 ;
 ```
 </TabItem>
@@ -314,9 +314,9 @@ AND region = '{{ region }}' --required
 AND PublicKeyConfig = '{{ PublicKeyConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-CreatedTime,
-Id,
-PublicKeyConfig;
+created_time,
+id,
+public_key_config;
 ```
 </TabItem>
 </Tabs>

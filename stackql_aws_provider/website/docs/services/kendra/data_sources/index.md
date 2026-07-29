@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration details for the data source connector. This shows how the data source is configured. The configuration options for a data source depend on the data source provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the data source connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDocumentEnrichmentConfiguration" /></td>
+    <td><CopyableCode code="custom_document_enrichment_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information for altering document metadata and content during the document ingestion process when you describe a data source. For more information on how to create, modify and delete document metadata, or make other content alterations when you ingest documents into Amazon Kendra, see Customizing document metadata during the ingestion process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the data source connector. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>When the Status field value is FAILED, the ErrorMessage field contains a description of the error that caused the data source to fail. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the data source connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexId" /></td>
+    <td><CopyableCode code="index_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the index used with the data source connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The code for a language. This shows a supported language for all documents in the data source. English is supported by default. For more information on supported languages, including their codes, see Adding documents in languages other than English. (pattern: &lt;code&gt;&#91;a-zA-Z-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the data source connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role with permission to access the data source and required resources. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>The schedule for Amazon Kendra to update the index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the data source connector. When the status is ACTIVE the data source is ready to use. When the status is FAILED, the ErrorMessage field contains the reason that the data source failed. (CREATING, DELETING, FAILED, UPDATING, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the data source. For example, SHAREPOINT. (S3, SHAREPOINT, DATABASE, SALESFORCE, ONEDRIVE, SERVICENOW, CUSTOM, CONFLUENCE, GOOGLEDRIVE, WEBCRAWLER, WORKDOCS, FSX, SLACK, BOX, QUIP, JIRA, GITHUB, ALFRESCO, TEMPLATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the data source connector was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfiguration" /></td>
+    <td><CopyableCode code="vpc_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides the configuration information to connect to an Amazon VPC.</td>
 </tr>
@@ -231,21 +231,21 @@ Gets information about an Amazon Kendra data source connector.
 
 ```sql
 SELECT
-Configuration,
-CreatedAt,
-CustomDocumentEnrichmentConfiguration,
-Description,
-ErrorMessage,
-Id,
-IndexId,
-LanguageCode,
-Name,
-RoleArn,
-Schedule,
-Status,
-Type,
-UpdatedAt,
-VpcConfiguration
+configuration,
+created_at,
+custom_document_enrichment_configuration,
+description,
+error_message,
+id,
+index_id,
+language_code,
+name,
+role_arn,
+schedule,
+status,
+type,
+updated_at,
+vpc_configuration
 FROM aws.kendra.data_sources
 WHERE region = '{{ region }}' -- required
 ;
@@ -298,7 +298,7 @@ SELECT
 '{{ CustomDocumentEnrichmentConfiguration }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

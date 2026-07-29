@@ -125,9 +125,9 @@ AND resource_type = '{{ resource_type }}' --required
 AND resource = '{{ resource }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-applicationArn,
+application_arn,
 options,
-resourceArn;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

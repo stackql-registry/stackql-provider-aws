@@ -56,67 +56,67 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the capacity of the connector, whether it is auto scaled or provisioned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorConfiguration" /></td>
+    <td><CopyableCode code="connector_configuration" /></td>
     <td><code>object</code></td>
     <td>A map of keys to values that represent the configuration for the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorDescription" /></td>
+    <td><CopyableCode code="connector_description" /></td>
     <td><code>string</code></td>
     <td>A summary description of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorName" /></td>
+    <td><CopyableCode code="connector_name" /></td>
     <td><code>string</code></td>
     <td>The name of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorState" /></td>
+    <td><CopyableCode code="connector_state" /></td>
     <td><code>string</code></td>
     <td>The state of the connector. (RUNNING, CREATING, UPDATING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The current version of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaCluster" /></td>
+    <td><CopyableCode code="kafka_cluster" /></td>
     <td><code>object</code></td>
     <td>The Apache Kafka cluster that the connector is connected to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaClusterClientAuthentication" /></td>
+    <td><CopyableCode code="kafka_cluster_client_authentication" /></td>
     <td><code>object</code></td>
     <td>The type of client authentication used to connect to the Apache Kafka cluster. The value is NONE when no client authentication is used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaClusterEncryptionInTransit" /></td>
+    <td><CopyableCode code="kafka_cluster_encryption_in_transit" /></td>
     <td><code>object</code></td>
     <td>Details of encryption in transit to the Apache Kafka cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaConnectVersion" /></td>
+    <td><CopyableCode code="kafka_connect_version" /></td>
     <td><code>string</code></td>
     <td>The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logDelivery" /></td>
+    <td><CopyableCode code="log_delivery" /></td>
     <td><code>object</code></td>
     <td>Details about delivering logs to Amazon CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of a connector. (IPV4, DUAL)</td>
 </tr>
@@ -126,17 +126,17 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies which plugins were used for this connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceExecutionRoleArn" /></td>
+    <td><CopyableCode code="service_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used by the connector to access Amazon Web Services resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDescription" /></td>
+    <td><CopyableCode code="state_description" /></td>
     <td><code>object</code></td>
     <td>Details about the state of a connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerConfiguration" /></td>
+    <td><CopyableCode code="worker_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies which worker configuration was used for the connector.</td>
 </tr>
@@ -160,62 +160,62 @@ The following fields are returned by `SELECT` queries:
     <td>The connector's compute capacity settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorDescription" /></td>
+    <td><CopyableCode code="connector_description" /></td>
     <td><code>string</code></td>
     <td>The description of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorName" /></td>
+    <td><CopyableCode code="connector_name" /></td>
     <td><code>string</code></td>
     <td>The name of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorState" /></td>
+    <td><CopyableCode code="connector_state" /></td>
     <td><code>string</code></td>
     <td>The state of the connector. (RUNNING, CREATING, UPDATING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The current version of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaCluster" /></td>
+    <td><CopyableCode code="kafka_cluster" /></td>
     <td><code>object</code></td>
     <td>The details of the Apache Kafka cluster to which the connector is connected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaClusterClientAuthentication" /></td>
+    <td><CopyableCode code="kafka_cluster_client_authentication" /></td>
     <td><code>object</code></td>
     <td>The type of client authentication used to connect to the Apache Kafka cluster. The value is NONE when no client authentication is used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaClusterEncryptionInTransit" /></td>
+    <td><CopyableCode code="kafka_cluster_encryption_in_transit" /></td>
     <td><code>object</code></td>
     <td>Details of encryption in transit to the Apache Kafka cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kafkaConnectVersion" /></td>
+    <td><CopyableCode code="kafka_connect_version" /></td>
     <td><code>string</code></td>
     <td>The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logDelivery" /></td>
+    <td><CopyableCode code="log_delivery" /></td>
     <td><code>object</code></td>
     <td>The settings for delivering connector logs to Amazon CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of a connector. (IPV4, DUAL)</td>
 </tr>
@@ -225,12 +225,12 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies which plugins were used for this connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceExecutionRoleArn" /></td>
+    <td><CopyableCode code="service_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used by the connector to access Amazon Web Services resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerConfiguration" /></td>
+    <td><CopyableCode code="worker_configuration" /></td>
     <td><code>object</code></td>
     <td>The worker configurations that are in use with the connector.</td>
 </tr>
@@ -359,23 +359,23 @@ Returns summary information about the connector.
 ```sql
 SELECT
 capacity,
-connectorArn,
-connectorConfiguration,
-connectorDescription,
-connectorName,
-connectorState,
-creationTime,
-currentVersion,
-kafkaCluster,
-kafkaClusterClientAuthentication,
-kafkaClusterEncryptionInTransit,
-kafkaConnectVersion,
-logDelivery,
-networkType,
+connector_arn,
+connector_configuration,
+connector_description,
+connector_name,
+connector_state,
+creation_time,
+current_version,
+kafka_cluster,
+kafka_cluster_client_authentication,
+kafka_cluster_encryption_in_transit,
+kafka_connect_version,
+log_delivery,
+network_type,
 plugins,
-serviceExecutionRoleArn,
-stateDescription,
-workerConfiguration
+service_execution_role_arn,
+state_description,
+worker_configuration
 FROM aws.kafkaconnect.connectors
 WHERE connector_arn = '{{ connector_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -389,21 +389,21 @@ Returns a list of all the connectors in this account and Region. The list is lim
 ```sql
 SELECT
 capacity,
-connectorArn,
-connectorDescription,
-connectorName,
-connectorState,
-creationTime,
-currentVersion,
-kafkaCluster,
-kafkaClusterClientAuthentication,
-kafkaClusterEncryptionInTransit,
-kafkaConnectVersion,
-logDelivery,
-networkType,
+connector_arn,
+connector_description,
+connector_name,
+connector_state,
+creation_time,
+current_version,
+kafka_cluster,
+kafka_cluster_client_authentication,
+kafka_cluster_encryption_in_transit,
+kafka_connect_version,
+log_delivery,
+network_type,
 plugins,
-serviceExecutionRoleArn,
-workerConfiguration
+service_execution_role_arn,
+worker_configuration
 FROM aws.kafkaconnect.connectors
 WHERE region = '{{ region }}' -- required
 AND connectorNamePrefix = '{{ connectorNamePrefix }}'
@@ -463,9 +463,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-connectorArn,
-connectorName,
-connectorState
+connector_arn,
+connector_name,
+connector_state
 ;
 ```
 </TabItem>
@@ -585,9 +585,9 @@ connector_arn = '{{ connector_arn }}' --required
 AND currentVersion = '{{ currentVersion }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-connectorArn,
-connectorOperationArn,
-connectorState;
+connector_arn,
+connector_operation_arn,
+connector_state;
 ```
 </TabItem>
 </Tabs>

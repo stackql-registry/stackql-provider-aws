@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="directConnectGatewayAssociationProposals" /></td>
+    <td><CopyableCode code="direct_connect_gateway_association_proposals" /></td>
     <td><code>array</code></td>
     <td>Describes the Direct Connect gateway association proposals.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -138,8 +138,8 @@ Describes one or more association proposals for connection between a virtual pri
 
 ```sql
 SELECT
-directConnectGatewayAssociationProposals,
-nextToken
+direct_connect_gateway_association_proposals,
+next_token
 FROM aws.directconnect.direct_connect_gateway_association_proposals
 WHERE region = '{{ region }}' -- required
 ;
@@ -178,7 +178,7 @@ SELECT
 '{{ removeAllowedPrefixesToDirectConnectGateway }}',
 '{{ region }}'
 RETURNING
-directConnectGatewayAssociationProposal
+direct_connect_gateway_association_proposal
 ;
 ```
 </TabItem>

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>Response element for GetMembership that provides the account configured to manage the membership. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerType" /></td>
+    <td><CopyableCode code="customer_type" /></td>
     <td><code>string</code></td>
     <td>Response element for GetMembership that provides the configured membership type. Options include Standalone | Organizations. (Standalone, Organization)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incidentResponseTeam" /></td>
+    <td><CopyableCode code="incident_response_team" /></td>
     <td><code>array</code></td>
     <td>Response element for GetMembership that provides the configured membership incident response team members.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipAccountsConfigurations" /></td>
+    <td><CopyableCode code="membership_accounts_configurations" /></td>
     <td><code>object</code></td>
     <td>The membershipAccountsConfigurations field contains the configuration details for member accounts within the Amazon Web Services Organizations membership structure. This field returns a structure containing information about: Account configurations for member accounts Membership settings and preferences Account-level permissions and roles</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipActivationTimestamp" /></td>
+    <td><CopyableCode code="membership_activation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Response element for GetMembership that provides the configured membership activation timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>Response element for GetMembership that provides the membership ARN. (pattern: &lt;code&gt;arn:aws:security-ir:\w+?-\w+?-\d+:&#91;0-9&#93;&#123;12&#125;:membership/m-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipDeactivationTimestamp" /></td>
+    <td><CopyableCode code="membership_deactivation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Response element for GetMembership that provides the configured membership name deactivation timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>Response element for GetMembership that provides the queried membership ID. (pattern: &lt;code&gt;m-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipName" /></td>
+    <td><CopyableCode code="membership_name" /></td>
     <td><code>string</code></td>
     <td>Response element for GetMembership that provides the configured membership name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipStatus" /></td>
+    <td><CopyableCode code="membership_status" /></td>
     <td><code>string</code></td>
     <td>Response element for GetMembership that provides the current membership status. (Active, Cancelled, Terminated)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfAccountsCovered" /></td>
+    <td><CopyableCode code="number_of_accounts_covered" /></td>
     <td><code>integer (int64)</code></td>
     <td>Response element for GetMembership that provides the number of accounts in the membership.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="optInFeatures" /></td>
+    <td><CopyableCode code="opt_in_features" /></td>
     <td><code>array</code></td>
     <td>Response element for GetMembership that provides the if opt-in features have been enabled.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;arn:aws:security-ir:\w+?-\w+?-\d+:&#91;0-9&#93;&#123;12&#125;:membership/m-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;m-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipStatus" /></td>
+    <td><CopyableCode code="membership_status" /></td>
     <td><code>string</code></td>
     <td> (Active, Cancelled, Terminated)</td>
 </tr>
@@ -253,18 +253,18 @@ Returns the attributes of a membership.
 
 ```sql
 SELECT
-accountId,
-customerType,
-incidentResponseTeam,
-membershipAccountsConfigurations,
-membershipActivationTimestamp,
-membershipArn,
-membershipDeactivationTimestamp,
-membershipId,
-membershipName,
-membershipStatus,
-numberOfAccountsCovered,
-optInFeatures,
+account_id,
+customer_type,
+incident_response_team,
+membership_accounts_configurations,
+membership_activation_timestamp,
+membership_arn,
+membership_deactivation_timestamp,
+membership_id,
+membership_name,
+membership_status,
+number_of_accounts_covered,
+opt_in_features,
 region
 FROM aws.security_ir.memberships
 WHERE membership_id = '{{ membership_id }}' -- required
@@ -278,10 +278,10 @@ Returns the memberships that the calling principal can access.
 
 ```sql
 SELECT
-accountId,
-membershipArn,
-membershipId,
-membershipStatus,
+account_id,
+membership_arn,
+membership_id,
+membership_status,
 region
 FROM aws.security_ir.memberships
 WHERE region = '{{ region }}' -- required
@@ -323,7 +323,7 @@ SELECT
 {{ coverEntireOrganization }},
 '{{ region }}'
 RETURNING
-membershipId
+membership_id
 ;
 ```
 </TabItem>

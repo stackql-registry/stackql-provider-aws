@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that contains the IP rules. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>A value that specifies whether IP rules are turned on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpRestrictionRuleMap" /></td>
+    <td><CopyableCode code="ip_restriction_rule_map" /></td>
     <td><code>object</code></td>
     <td>A map that describes the IP rules with CIDR range and description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointIdRestrictionRuleMap" /></td>
+    <td><CopyableCode code="vpc_endpoint_id_restriction_rule_map" /></td>
     <td><code>object</code></td>
     <td>A map of allowed VPC endpoint IDs and their rule descriptions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcIdRestrictionRuleMap" /></td>
+    <td><CopyableCode code="vpc_id_restriction_rule_map" /></td>
     <td><code>object</code></td>
     <td>A map of allowed VPC IDs and their rule descriptions.</td>
 </tr>
@@ -161,13 +161,13 @@ Provides a summary and status of IP rules.
 
 ```sql
 SELECT
-AwsAccountId,
-Enabled,
-IpRestrictionRuleMap,
-RequestId,
-Status,
-VpcEndpointIdRestrictionRuleMap,
-VpcIdRestrictionRuleMap
+aws_account_id,
+enabled,
+ip_restriction_rule_map,
+request_id,
+status,
+vpc_endpoint_id_restriction_rule_map,
+vpc_id_restriction_rule_map
 FROM aws.quicksight.ip_restrictions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -200,9 +200,9 @@ WHERE
 aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AwsAccountId,
-RequestId,
-Status;
+aws_account_id,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

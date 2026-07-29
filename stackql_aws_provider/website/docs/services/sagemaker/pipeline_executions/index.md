@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the pipeline execution was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the execution failed, a message describing why. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the pipeline execution was modified last.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLflowConfig" /></td>
+    <td><CopyableCode code="m_lflow_config" /></td>
     <td><code>object</code></td>
     <td>The MLflow configuration of the pipeline execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParallelismConfiguration" /></td>
+    <td><CopyableCode code="parallelism_configuration" /></td>
     <td><code>object</code></td>
     <td>The parallelism configuration applied to the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineArn" /></td>
+    <td><CopyableCode code="pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:(&#91;0-9&#93;&#123;12&#125;|aws):pipeline/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionArn" /></td>
+    <td><CopyableCode code="pipeline_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline execution. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:pipeline\/.*\/execution\/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionDescription" /></td>
+    <td><CopyableCode code="pipeline_execution_description" /></td>
     <td><code>string</code></td>
     <td>The description of the pipeline execution. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionDisplayName" /></td>
+    <td><CopyableCode code="pipeline_execution_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the pipeline execution. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,81&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionStatus" /></td>
+    <td><CopyableCode code="pipeline_execution_status" /></td>
     <td><code>string</code></td>
     <td>The status of the pipeline execution. (Executing, Stopping, Stopped, Failed, Succeeded)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExperimentConfig" /></td>
+    <td><CopyableCode code="pipeline_experiment_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the names of the experiment and trial created by a pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineVersionId" /></td>
+    <td><CopyableCode code="pipeline_version_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>The ID of the pipeline version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectiveExecutionConfig" /></td>
+    <td><CopyableCode code="selective_execution_config" /></td>
     <td><code>object</code></td>
     <td>The selective execution configuration applied to the pipeline run.</td>
 </tr>
@@ -140,32 +140,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PipelineExecutionArn" /></td>
+    <td><CopyableCode code="pipeline_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline execution. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:pipeline\/.*\/execution\/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionDescription" /></td>
+    <td><CopyableCode code="pipeline_execution_description" /></td>
     <td><code>string</code></td>
     <td>The description of the pipeline execution. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionDisplayName" /></td>
+    <td><CopyableCode code="pipeline_execution_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the pipeline execution. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,81&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionFailureReason" /></td>
+    <td><CopyableCode code="pipeline_execution_failure_reason" /></td>
     <td><code>string</code></td>
     <td>A message generated by SageMaker Pipelines describing why the pipeline execution failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineExecutionStatus" /></td>
+    <td><CopyableCode code="pipeline_execution_status" /></td>
     <td><code>string</code></td>
     <td>The status of the pipeline execution. (Executing, Stopping, Stopped, Failed, Succeeded)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the pipeline execution.</td>
 </tr>
@@ -256,21 +256,21 @@ Describes the details of a pipeline execution.
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-FailureReason,
-LastModifiedBy,
-LastModifiedTime,
-MLflowConfig,
-ParallelismConfiguration,
-PipelineArn,
-PipelineExecutionArn,
-PipelineExecutionDescription,
-PipelineExecutionDisplayName,
-PipelineExecutionStatus,
-PipelineExperimentConfig,
-PipelineVersionId,
-SelectiveExecutionConfig
+created_by,
+creation_time,
+failure_reason,
+last_modified_by,
+last_modified_time,
+m_lflow_config,
+parallelism_configuration,
+pipeline_arn,
+pipeline_execution_arn,
+pipeline_execution_description,
+pipeline_execution_display_name,
+pipeline_execution_status,
+pipeline_experiment_config,
+pipeline_version_id,
+selective_execution_config
 FROM aws.sagemaker.pipeline_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -282,12 +282,12 @@ Gets a list of the pipeline executions.
 
 ```sql
 SELECT
-PipelineExecutionArn,
-PipelineExecutionDescription,
-PipelineExecutionDisplayName,
-PipelineExecutionFailureReason,
-PipelineExecutionStatus,
-StartTime
+pipeline_execution_arn,
+pipeline_execution_description,
+pipeline_execution_display_name,
+pipeline_execution_failure_reason,
+pipeline_execution_status,
+start_time
 FROM aws.sagemaker.pipeline_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -319,7 +319,7 @@ WHERE
 region = '{{ region }}' --required
 AND PipelineExecutionArn = '{{ PipelineExecutionArn }}' --required
 RETURNING
-PipelineExecutionArn;
+pipeline_execution_arn;
 ```
 </TabItem>
 </Tabs>

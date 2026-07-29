@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the image was created. If the image has been shared, the Amazon Web Services account that the image has been shared with sees the original creation date of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the image. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_./() -&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code that is returned for the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>Additional details of the error returned for the image, including the possible causes of the errors and troubleshooting information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The text of the error message that is returned for the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the image. (pattern: &lt;code&gt;wsi-&#91;0-9a-z&#93;&#123;9,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the image. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_./()\\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>object</code></td>
     <td>The operating system that the image is running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Web Services account that owns the image. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequiredTenancy" /></td>
+    <td><CopyableCode code="required_tenancy" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this value is set to DEDICATED. For more information, see Bring Your Own Windows Desktop Images. (DEFAULT, DEDICATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The status of the image. (AVAILABLE, PENDING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Updates" /></td>
+    <td><CopyableCode code="updates" /></td>
     <td><code>object</code></td>
     <td>The updates (if any) that are available for the specified image.</td>
 </tr>
@@ -195,18 +195,18 @@ Retrieves a list that describes one or more specified images, if the image ident
 
 ```sql
 SELECT
-Created,
-Description,
-ErrorCode,
-ErrorDetails,
-ErrorMessage,
-ImageId,
-Name,
-OperatingSystem,
-OwnerAccountId,
-RequiredTenancy,
-State,
-Updates
+created,
+description,
+error_code,
+error_details,
+error_message,
+image_id,
+name,
+operating_system,
+owner_account_id,
+required_tenancy,
+state,
+updates
 FROM aws.workspaces.workspace_images
 WHERE region = '{{ region }}' -- required
 ;
@@ -244,7 +244,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ImageId
+image_id
 ;
 ```
 </TabItem>
@@ -267,14 +267,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Created,
-Description,
-ImageId,
-Name,
-OperatingSystem,
-OwnerAccountId,
-RequiredTenancy,
-State
+created,
+description,
+image_id,
+name,
+operating_system,
+owner_account_id,
+required_tenancy,
+state
 ;
 ```
 </TabItem>

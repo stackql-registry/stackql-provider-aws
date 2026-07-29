@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association between a Resolver rule and a VPC. Resolver assigns this value when you submit an AssociateResolverRule request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of an association between a Resolver rule and a VPC. The name can be up to 64 characters long and can contain letters (a-z, A-Z), numbers (0-9), hyphens (-), underscores (_), and spaces. The name cannot consist of only numbers. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolverRuleId" /></td>
+    <td><CopyableCode code="resolver_rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Resolver rule that you associated with the VPC that is specified by VPCId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A code that specifies the current status of the association between a Resolver rule and a VPC. (CREATING, COMPLETE, DELETING, FAILED, OVERRIDDEN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the status of the association between a Resolver rule and a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC that you associated the Resolver rule with.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association between a Resolver rule and a VPC. Resolver assigns this value when you submit an AssociateResolverRule request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of an association between a Resolver rule and a VPC. The name can be up to 64 characters long and can contain letters (a-z, A-Z), numbers (0-9), hyphens (-), underscores (_), and spaces. The name cannot consist of only numbers. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolverRuleId" /></td>
+    <td><CopyableCode code="resolver_rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Resolver rule that you associated with the VPC that is specified by VPCId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A code that specifies the current status of the association between a Resolver rule and a VPC. (CREATING, COMPLETE, DELETING, FAILED, OVERRIDDEN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the status of the association between a Resolver rule and a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC that you associated the Resolver rule with.</td>
 </tr>
@@ -197,12 +197,12 @@ Gets information about an association between a specified Resolver rule and a VP
 
 ```sql
 SELECT
-Id,
-Name,
-ResolverRuleId,
-Status,
-StatusMessage,
-VPCId
+id,
+name,
+resolver_rule_id,
+status,
+status_message,
+vpc_id
 FROM aws.route53resolver.resolver_rule_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,12 +214,12 @@ Lists the associations that were created between Resolver rules and VPCs using t
 
 ```sql
 SELECT
-Id,
-Name,
-ResolverRuleId,
-Status,
-StatusMessage,
-VPCId
+id,
+name,
+resolver_rule_id,
+status,
+status_message,
+vpc_id
 FROM aws.route53resolver.resolver_rule_associations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProductCodeId" /></td>
+    <td><CopyableCode code="product_code_id" /></td>
     <td><code>string</code></td>
     <td>The product code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCodeType" /></td>
+    <td><CopyableCode code="product_code_type" /></td>
     <td><code>string</code></td>
     <td>The type of product code.</td>
 </tr>
@@ -171,8 +171,8 @@ Describes the specified attribute of the specified snapshot. You can specify onl
 
 ```sql
 SELECT
-ProductCodeId,
-ProductCodeType
+product_code_id,
+product_code_type
 FROM aws.ec2.snapshot_attributes
 WHERE Attribute = '{{ Attribute }}' -- required
 AND SnapshotId = '{{ SnapshotId }}' -- required

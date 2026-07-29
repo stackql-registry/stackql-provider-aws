@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>A map that defines the self-service action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceActionSummary" /></td>
+    <td><CopyableCode code="service_action_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information about the self-service action.</td>
 </tr>
@@ -152,8 +152,8 @@ Describes a self-service action.
 
 ```sql
 SELECT
-Definition,
-ServiceActionSummary
+definition,
+service_action_summary
 FROM aws.servicecatalog.service_actions
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,7 +194,7 @@ SELECT
 '{{ IdempotencyToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ServiceActionDetail
+service_action_detail
 ;
 ```
 </TabItem>
@@ -260,7 +260,7 @@ AcceptLanguage = '{{ AcceptLanguage }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-ServiceActionDetail;
+service_action_detail;
 ```
 </TabItem>
 </Tabs>

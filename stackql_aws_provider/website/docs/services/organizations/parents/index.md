@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the parent entity. The regex pattern for a parent ID string requires one of the following: Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or digits. Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits. (pattern: &lt;code&gt;^(r-&#91;0-9a-z&#93;&#123;4,32&#125;)|(ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the parent entity. (ROOT, ORGANIZATIONAL_UNIT)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the root or organizational units (OUs) that serve as the immediate parent 
 
 ```sql
 SELECT
-Id,
-Type
+id,
+type
 FROM aws.organizations.parents
 WHERE region = '{{ region }}' -- required
 ;

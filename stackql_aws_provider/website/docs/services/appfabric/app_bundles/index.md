@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the app bundle. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerManagedKeyArn" /></td>
+    <td><CopyableCode code="customer_managed_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Key Management Service (KMS) key used to encrypt the application data. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
@@ -201,7 +201,7 @@ Returns information about an app bundle.
 ```sql
 SELECT
 arn,
-customerManagedKeyArn
+customer_managed_key_arn
 FROM aws.appfabric.app_bundles
 WHERE app_bundle_identifier = '{{ app_bundle_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -251,7 +251,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-appBundle
+app_bundle
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key name that can be used to look up or retrieve the associated value. For example, Department or Cost Center are common choices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value associated with this tag. For example, tags with a key name of Department could have values such as Human Resources, Accounting, and Support. Tags with a key name of Cost Center might have values that consist of the number associated with the different cost centers in your company. Typically, many resources have tags with the same key name but with different values.</td>
 </tr>
@@ -139,8 +139,8 @@ Lists the tags that are attached to the specified IAM virtual multi-factor authe
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.iam.mfa_device_tags
 WHERE SerialNumber = '{{ SerialNumber }}' -- required
 AND region = '{{ region }}' -- required

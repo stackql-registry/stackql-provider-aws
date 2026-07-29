@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>The value that you specified for CallerReference when you created the hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>string</code></td>
     <td>A complex type that includes the Comment and PrivateZone elements. If you omitted the HostedZoneConfig and Comment elements from the request, the Config and Comment elements don't appear in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Features" /></td>
+    <td><CopyableCode code="features" /></td>
     <td><code>string</code></td>
     <td>The features configuration for the hosted zone, including accelerated recovery settings and status information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID that Amazon Route 53 assigned to the hosted zone when you created it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkedService" /></td>
+    <td><CopyableCode code="linked_service" /></td>
     <td><code>string</code></td>
     <td>If the hosted zone was created by another service, the service that created the hosted zone. When a hosted zone is created by another service, you can't edit or delete it using Route 53.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar. For information about how to specify characters other than a-z, 0-9, and - (hyphen) and how to specify internationalized domain names, see CreateHostedZone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceRecordSetCount" /></td>
+    <td><CopyableCode code="resource_record_set_count" /></td>
     <td><code>integer</code></td>
     <td>The number of resource record sets in the hosted zone.</td>
 </tr>
@@ -164,13 +164,13 @@ Retrieves a list of your hosted zones in lexicographic order. The response inclu
 
 ```sql
 SELECT
-CallerReference,
-Config,
-Features,
-Id,
-LinkedService,
-Name,
-ResourceRecordSetCount
+caller_reference,
+config,
+features,
+id,
+linked_service,
+name,
+resource_record_set_count
 FROM aws.route53.hosted_zones_by_names
 WHERE region = '{{ region }}' -- required
 AND dnsname = '{{ dnsname }}'

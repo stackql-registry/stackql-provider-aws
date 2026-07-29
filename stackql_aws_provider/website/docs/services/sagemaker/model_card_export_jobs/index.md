@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the model export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportArtifacts" /></td>
+    <td><CopyableCode code="export_artifacts" /></td>
     <td><code>object</code></td>
     <td>The exported model card artifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason if the model export job fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the model export job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardExportJobArn" /></td>
+    <td><CopyableCode code="model_card_export_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model card export job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-card/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;/export-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardExportJobName" /></td>
+    <td><CopyableCode code="model_card_export_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model card export job to describe. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardName" /></td>
+    <td><CopyableCode code="model_card_name" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the model card that the model export job exports. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardVersion" /></td>
+    <td><CopyableCode code="model_card_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the model card that the model export job exports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The export output details for the model card.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The completion status of the model card export job. InProgress: The model card export job is in progress. Completed: The model card export job is complete. Failed: The model card export job failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeModelCardExportJob call. (InProgress, Completed, Failed)</td>
 </tr>
@@ -115,37 +115,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the model card export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the model card export job was last modified..</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardExportJobArn" /></td>
+    <td><CopyableCode code="model_card_export_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model card export job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-card/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;/export-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardExportJobName" /></td>
+    <td><CopyableCode code="model_card_export_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model card export job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardName" /></td>
+    <td><CopyableCode code="model_card_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model card that the export job exports. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardVersion" /></td>
+    <td><CopyableCode code="model_card_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the model card that the export job exports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The completion status of the model card export job. (InProgress, Completed, Failed)</td>
 </tr>
@@ -229,16 +229,16 @@ Describes an Amazon SageMaker Model Card export job.
 
 ```sql
 SELECT
-CreatedAt,
-ExportArtifacts,
-FailureReason,
-LastModifiedAt,
-ModelCardExportJobArn,
-ModelCardExportJobName,
-ModelCardName,
-ModelCardVersion,
-OutputConfig,
-Status
+created_at,
+export_artifacts,
+failure_reason,
+last_modified_at,
+model_card_export_job_arn,
+model_card_export_job_name,
+model_card_name,
+model_card_version,
+output_config,
+status
 FROM aws.sagemaker.model_card_export_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -250,13 +250,13 @@ List the export jobs for the Amazon SageMaker Model Card.
 
 ```sql
 SELECT
-CreatedAt,
-LastModifiedAt,
-ModelCardExportJobArn,
-ModelCardExportJobName,
-ModelCardName,
-ModelCardVersion,
-Status
+created_at,
+last_modified_at,
+model_card_export_job_arn,
+model_card_export_job_name,
+model_card_name,
+model_card_version,
+status
 FROM aws.sagemaker.model_card_export_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -293,7 +293,7 @@ SELECT
 '{{ OutputConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-ModelCardExportJobArn
+model_card_export_job_arn
 ;
 ```
 </TabItem>

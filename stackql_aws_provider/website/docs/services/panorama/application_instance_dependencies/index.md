@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageObjects" /></td>
+    <td><CopyableCode code="package_objects" /></td>
     <td><code>array</code></td>
     <td>A list of package objects.</td>
 </tr>
@@ -139,8 +139,8 @@ Returns a list of application instance dependencies.
 
 ```sql
 SELECT
-NextToken,
-PackageObjects
+next_token,
+package_objects
 FROM aws.panorama.application_instance_dependencies
 WHERE application_instance_id = '{{ application_instance_id }}' -- required
 AND region = '{{ region }}' -- required

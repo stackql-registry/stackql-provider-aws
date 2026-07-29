@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The app ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackendEnvironmentName" /></td>
+    <td><CopyableCode code="backend_environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>If the request fails, this error is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>The name of the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string</code></td>
     <td>The time when the job was last updated.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The app ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackendEnvironmentName" /></td>
+    <td><CopyableCode code="backend_environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>If the request fails, this error is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>The name of the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string</code></td>
     <td>The time when the job was last updated.</td>
 </tr>
@@ -239,14 +239,14 @@ Returns information about a specific job.
 
 ```sql
 SELECT
-AppId,
-BackendEnvironmentName,
-CreateTime,
-Error,
-JobId,
-Operation,
-Status,
-UpdateTime
+app_id,
+backend_environment_name,
+create_time,
+error,
+job_id,
+operation,
+status,
+update_time
 FROM aws.amplifybackend.backend_jobs
 WHERE app_id = '{{ app_id }}' -- required
 AND backend_environment_name = '{{ backend_environment_name }}' -- required
@@ -261,14 +261,14 @@ Lists the jobs for the backend of an Amplify app.
 
 ```sql
 SELECT
-AppId,
-BackendEnvironmentName,
-CreateTime,
-Error,
-JobId,
-Operation,
-Status,
-UpdateTime
+app_id,
+backend_environment_name,
+create_time,
+error,
+job_id,
+operation,
+status,
+update_time
 FROM aws.amplifybackend.backend_jobs
 WHERE app_id = '{{ app_id }}' -- required
 AND backend_environment_name = '{{ backend_environment_name }}' -- required
@@ -302,14 +302,14 @@ AND backend_environment_name = '{{ backend_environment_name }}' --required
 AND job_id = '{{ job_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AppId,
-BackendEnvironmentName,
-CreateTime,
-Error,
-JobId,
-Operation,
-Status,
-UpdateTime;
+app_id,
+backend_environment_name,
+create_time,
+error,
+job_id,
+operation,
+status,
+update_time;
 ```
 </TabItem>
 </Tabs>

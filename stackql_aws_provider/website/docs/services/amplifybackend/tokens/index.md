@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The app ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChallengeCode" /></td>
+    <td><CopyableCode code="challenge_code" /></td>
     <td><code>string</code></td>
     <td>The one-time challenge code for authenticating into the Amplify Admin UI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>A unique ID provided when creating a new challenge token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ttl" /></td>
+    <td><CopyableCode code="ttl" /></td>
     <td><code>string</code></td>
     <td>The expiry time for the one-time generated token code.</td>
 </tr>
@@ -158,10 +158,10 @@ Gets the challenge token based on the given appId and sessionId.
 
 ```sql
 SELECT
-AppId,
-ChallengeCode,
-SessionId,
-Ttl
+app_id,
+challenge_code,
+session_id,
+ttl
 FROM aws.amplifybackend.tokens
 WHERE app_id = '{{ app_id }}' -- required
 AND session_id = '{{ session_id }}' -- required
@@ -194,10 +194,10 @@ SELECT
 '{{ app_id }}',
 '{{ region }}'
 RETURNING
-AppId,
-ChallengeCode,
-SessionId,
-Ttl
+app_id,
+challenge_code,
+session_id,
+ttl
 ;
 ```
 </TabItem>

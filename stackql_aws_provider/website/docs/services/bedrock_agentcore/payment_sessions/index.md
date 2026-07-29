@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availableLimits" /></td>
+    <td><CopyableCode code="available_limits" /></td>
     <td><code>object</code></td>
     <td>The available limits for this session after accounting for processed payments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiryTimeInMinutes" /></td>
+    <td><CopyableCode code="expiry_time_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The session expiry time in minutes.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>Session spending limits</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerArn" /></td>
+    <td><CopyableCode code="payment_manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the payment manager that owns this session. (pattern: &lt;code&gt;arn:(aws|aws-&#91;a-z0-9-&#93;+):bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:payment-manager/&#91;a-z0-9&#93;(&#91;a-z0-9-&#93;&#123;0,47&#125;&#91;a-z0-9&#93;)?-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentSessionId" /></td>
+    <td><CopyableCode code="payment_session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this payment session. (pattern: &lt;code&gt;payment-session-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment session was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID associated with this payment session.</td>
 </tr>
@@ -105,32 +105,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiryTimeInMinutes" /></td>
+    <td><CopyableCode code="expiry_time_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The session expiry time in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerArn" /></td>
+    <td><CopyableCode code="payment_manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the payment manager that owns this session. (pattern: &lt;code&gt;arn:(aws|aws-&#91;a-z0-9-&#93;+):bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:payment-manager/&#91;a-z0-9&#93;(&#91;a-z0-9-&#93;&#123;0,47&#125;&#91;a-z0-9&#93;)?-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentSessionId" /></td>
+    <td><CopyableCode code="payment_session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this payment session. (pattern: &lt;code&gt;payment-session-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment session was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID associated with this payment session.</td>
 </tr>
@@ -231,14 +231,14 @@ Get a payment session
 
 ```sql
 SELECT
-availableLimits,
-createdAt,
-expiryTimeInMinutes,
+available_limits,
+created_at,
+expiry_time_in_minutes,
 limits,
-paymentManagerArn,
-paymentSessionId,
-updatedAt,
-userId
+payment_manager_arn,
+payment_session_id,
+updated_at,
+user_id
 FROM aws.bedrock_agentcore.payment_sessions
 WHERE region = '{{ region }}' -- required
 AND `X-Amzn-Bedrock-AgentCore-Payments-User-Id` = '{{ X-Amzn-Bedrock-AgentCore-Payments-User-Id }}'
@@ -252,12 +252,12 @@ List payment manager sessions
 
 ```sql
 SELECT
-createdAt,
-expiryTimeInMinutes,
-paymentManagerArn,
-paymentSessionId,
-updatedAt,
-userId
+created_at,
+expiry_time_in_minutes,
+payment_manager_arn,
+payment_session_id,
+updated_at,
+user_id
 FROM aws.bedrock_agentcore.payment_sessions
 WHERE region = '{{ region }}' -- required
 AND `X-Amzn-Bedrock-AgentCore-Payments-User-Id` = '{{ X-Amzn-Bedrock-AgentCore-Payments-User-Id }}'
@@ -300,7 +300,7 @@ SELECT
 '{{ X-Amzn-Bedrock-AgentCore-Payments-User-Id }}',
 '{{ X-Amzn-Bedrock-AgentCore-Payments-Agent-Name }}'
 RETURNING
-paymentSession
+payment_session
 ;
 ```
 </TabItem>

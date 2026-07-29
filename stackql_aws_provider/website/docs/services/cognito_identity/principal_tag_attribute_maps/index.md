@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>You can use this operation to get the ID of the Identity Pool you setup attribute mappings for. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderName" /></td>
+    <td><CopyableCode code="identity_provider_name" /></td>
     <td><code>string</code></td>
     <td>You can use this operation to get the provider name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalTags" /></td>
+    <td><CopyableCode code="principal_tags" /></td>
     <td><code>object</code></td>
     <td>You can use this operation to add principal tags. The PrincipalTagsoperation enables you to reference user attributes in your IAM permissions policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseDefaults" /></td>
+    <td><CopyableCode code="use_defaults" /></td>
     <td><code>boolean</code></td>
     <td>You can use this operation to list</td>
 </tr>
@@ -141,10 +141,10 @@ Use GetPrincipalTagAttributeMap to list all mappings between PrincipalTags and u
 
 ```sql
 SELECT
-IdentityPoolId,
-IdentityProviderName,
-PrincipalTags,
-UseDefaults
+identity_pool_id,
+identity_provider_name,
+principal_tags,
+use_defaults
 FROM aws.cognito_identity.principal_tag_attribute_maps
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,10 +177,10 @@ region = '{{ region }}' --required
 AND IdentityPoolId = '{{ IdentityPoolId }}' --required
 AND IdentityProviderName = '{{ IdentityProviderName }}' --required
 RETURNING
-IdentityPoolId,
-IdentityProviderName,
-PrincipalTags,
-UseDefaults;
+identity_pool_id,
+identity_provider_name,
+principal_tags,
+use_defaults;
 ```
 </TabItem>
 </Tabs>

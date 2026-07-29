@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the parameter group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the parameter group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Family" /></td>
+    <td><CopyableCode code="family" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter group family that this parameter group is compatible with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter group</td>
 </tr>
@@ -155,10 +155,10 @@ Returns a list of parameter group descriptions. If a parameter group name is spe
 
 ```sql
 SELECT
-ARN,
-Description,
-Family,
-Name
+arn,
+description,
+family,
+name
 FROM aws.memorydb.parameter_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -195,7 +195,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ParameterGroup
+parameter_group
 ;
 ```
 </TabItem>
@@ -253,7 +253,7 @@ region = '{{ region }}' --required
 AND ParameterGroupName = '{{ ParameterGroupName }}' --required
 AND ParameterNameValues = '{{ ParameterNameValues }}' --required
 RETURNING
-ParameterGroup;
+parameter_group;
 ```
 </TabItem>
 </Tabs>

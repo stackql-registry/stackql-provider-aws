@@ -51,167 +51,167 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionsRequired" /></td>
+    <td><CopyableCode code="actions_required" /></td>
     <td><code>array</code></td>
     <td>Actions required for a broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationStrategy" /></td>
+    <td><CopyableCode code="authentication_strategy" /></td>
     <td><code>string</code></td>
     <td>Optional. The authentication strategy used to secure the broker. The default is SIMPLE. (SIMPLE, LDAP, CONFIG_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>Enables automatic upgrades to new patch versions for brokers as new versions are released and supported by Amazon MQ. Automatic upgrades occur during the scheduled maintenance window or after a manual broker reboot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerArn" /></td>
+    <td><CopyableCode code="broker_arn" /></td>
     <td><code>string</code></td>
     <td>The broker's Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerId" /></td>
+    <td><CopyableCode code="broker_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID that Amazon MQ generates for the broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerInstances" /></td>
+    <td><CopyableCode code="broker_instances" /></td>
     <td><code>array</code></td>
     <td>A list of information about allocated brokers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerName" /></td>
+    <td><CopyableCode code="broker_name" /></td>
     <td><code>string</code></td>
     <td>The broker's name. This value must be unique in your Amazon Web Services account account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain white spaces, brackets, wildcard characters, or special characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerState" /></td>
+    <td><CopyableCode code="broker_state" /></td>
     <td><code>string</code></td>
     <td>The broker's status. (CREATION_IN_PROGRESS, CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS, CRITICAL_ACTION_REQUIRED, REPLICA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Configurations" /></td>
+    <td><CopyableCode code="configurations" /></td>
     <td><code>object</code></td>
     <td>The list of all revisions for the specified configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the broker was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataReplicationMetadata" /></td>
+    <td><CopyableCode code="data_replication_metadata" /></td>
     <td><code>object</code></td>
     <td>The replication details of the data replication-enabled broker. Only returned if dataReplicationMode is set to CRDR.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataReplicationMode" /></td>
+    <td><CopyableCode code="data_replication_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether a broker is a part of a data replication pair. (NONE, CRDR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentMode" /></td>
+    <td><CopyableCode code="deployment_mode" /></td>
     <td><code>string</code></td>
     <td>The broker's deployment mode. (SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ, CLUSTER_MULTI_AZ)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionOptions" /></td>
+    <td><CopyableCode code="encryption_options" /></td>
     <td><code>object</code></td>
     <td>Encryption options for the broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ. (ACTIVEMQ, RABBITMQ)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The broker engine version. For more information, see the ActiveMQ version management and the RabbitMQ version management sections in the Amazon MQ Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostInstanceType" /></td>
+    <td><CopyableCode code="host_instance_type" /></td>
     <td><code>string</code></td>
     <td>The broker's instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LdapServerMetadata" /></td>
+    <td><CopyableCode code="ldap_server_metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata of the LDAP server used to authenticate and authorize connections to the broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Logs" /></td>
+    <td><CopyableCode code="logs" /></td>
     <td><code>object</code></td>
     <td>The list of information about logs currently enabled and pending to be deployed for the specified broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceWindowStartTime" /></td>
+    <td><CopyableCode code="maintenance_window_start_time" /></td>
     <td><code>object</code></td>
     <td>The scheduled time period relative to UTC during which Amazon MQ begins to apply pending updates or patches to the broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingAuthenticationStrategy" /></td>
+    <td><CopyableCode code="pending_authentication_strategy" /></td>
     <td><code>string</code></td>
     <td>Optional. The authentication strategy used to secure the broker. The default is SIMPLE. (SIMPLE, LDAP, CONFIG_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingDataReplicationMetadata" /></td>
+    <td><CopyableCode code="pending_data_replication_metadata" /></td>
     <td><code>object</code></td>
     <td>The pending replication details of the data replication-enabled broker. Only returned if pendingDataReplicationMode is set to CRDR.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingDataReplicationMode" /></td>
+    <td><CopyableCode code="pending_data_replication_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether a broker is a part of a data replication pair. (NONE, CRDR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingEngineVersion" /></td>
+    <td><CopyableCode code="pending_engine_version" /></td>
     <td><code>string</code></td>
     <td>The broker engine version to upgrade to. For more information, see the ActiveMQ version management and the RabbitMQ version management sections in the Amazon MQ Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingHostInstanceType" /></td>
+    <td><CopyableCode code="pending_host_instance_type" /></td>
     <td><code>string</code></td>
     <td>The broker's host instance type to upgrade to. For a list of supported instance types, see Broker instance types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingLdapServerMetadata" /></td>
+    <td><CopyableCode code="pending_ldap_server_metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata of the LDAP server that will be used to authenticate and authorize connections to the broker after it is rebooted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingSecurityGroups" /></td>
+    <td><CopyableCode code="pending_security_groups" /></td>
     <td><code>array</code></td>
     <td>The list of pending security groups to authorize connections to brokers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Enables connections from applications outside of the VPC that hosts the broker's subnets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The broker's storage type. EFS is not supported for RabbitMQ engine type. (EBS, EFS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of all tags associated with this broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Users" /></td>
+    <td><CopyableCode code="users" /></td>
     <td><code>array</code></td>
     <td>The list of all broker usernames for the specified broker.</td>
 </tr>
@@ -230,42 +230,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BrokerArn" /></td>
+    <td><CopyableCode code="broker_arn" /></td>
     <td><code>string</code></td>
     <td>The broker's Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerId" /></td>
+    <td><CopyableCode code="broker_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID that Amazon MQ generates for the broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerName" /></td>
+    <td><CopyableCode code="broker_name" /></td>
     <td><code>string</code></td>
     <td>The broker's name. This value is unique in your Amazon Web Services account, 1-50 characters long, and containing only letters, numbers, dashes, and underscores, and must not contain white spaces, brackets, wildcard characters, or special characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerState" /></td>
+    <td><CopyableCode code="broker_state" /></td>
     <td><code>string</code></td>
     <td>The broker's status. (CREATION_IN_PROGRESS, CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS, CRITICAL_ACTION_REQUIRED, REPLICA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the broker was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentMode" /></td>
+    <td><CopyableCode code="deployment_mode" /></td>
     <td><code>string</code></td>
     <td>The broker's deployment mode. (SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ, CLUSTER_MULTI_AZ)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ. (ACTIVEMQ, RABBITMQ)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostInstanceType" /></td>
+    <td><CopyableCode code="host_instance_type" /></td>
     <td><code>string</code></td>
     <td>The broker's instance type.</td>
 </tr>
@@ -378,39 +378,39 @@ Returns information about the specified broker.
 
 ```sql
 SELECT
-ActionsRequired,
-AuthenticationStrategy,
-AutoMinorVersionUpgrade,
-BrokerArn,
-BrokerId,
-BrokerInstances,
-BrokerName,
-BrokerState,
-Configurations,
-Created,
-DataReplicationMetadata,
-DataReplicationMode,
-DeploymentMode,
-EncryptionOptions,
-EngineType,
-EngineVersion,
-HostInstanceType,
-LdapServerMetadata,
-Logs,
-MaintenanceWindowStartTime,
-PendingAuthenticationStrategy,
-PendingDataReplicationMetadata,
-PendingDataReplicationMode,
-PendingEngineVersion,
-PendingHostInstanceType,
-PendingLdapServerMetadata,
-PendingSecurityGroups,
-PubliclyAccessible,
-SecurityGroups,
-StorageType,
-SubnetIds,
-Tags,
-Users
+actions_required,
+authentication_strategy,
+auto_minor_version_upgrade,
+broker_arn,
+broker_id,
+broker_instances,
+broker_name,
+broker_state,
+configurations,
+created,
+data_replication_metadata,
+data_replication_mode,
+deployment_mode,
+encryption_options,
+engine_type,
+engine_version,
+host_instance_type,
+ldap_server_metadata,
+logs,
+maintenance_window_start_time,
+pending_authentication_strategy,
+pending_data_replication_metadata,
+pending_data_replication_mode,
+pending_engine_version,
+pending_host_instance_type,
+pending_ldap_server_metadata,
+pending_security_groups,
+publicly_accessible,
+security_groups,
+storage_type,
+subnet_ids,
+tags,
+users
 FROM aws.mq.brokers
 WHERE `broker-id` = '{{ broker-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -423,14 +423,14 @@ Returns a list of all brokers.
 
 ```sql
 SELECT
-BrokerArn,
-BrokerId,
-BrokerName,
-BrokerState,
-Created,
-DeploymentMode,
-EngineType,
-HostInstanceType
+broker_arn,
+broker_id,
+broker_name,
+broker_state,
+created,
+deployment_mode,
+engine_type,
+host_instance_type
 FROM aws.mq.brokers
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -503,8 +503,8 @@ SELECT
 '{{ DataReplicationPrimaryBrokerArn }}',
 '{{ region }}'
 RETURNING
-BrokerArn,
-BrokerId
+broker_arn,
+broker_id
 ;
 ```
 </TabItem>
@@ -646,20 +646,20 @@ WHERE
 `broker-id` = '{{ broker-id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AuthenticationStrategy,
-AutoMinorVersionUpgrade,
-BrokerId,
-Configuration,
-DataReplicationMetadata,
-DataReplicationMode,
-EngineVersion,
-HostInstanceType,
-LdapServerMetadata,
-Logs,
-MaintenanceWindowStartTime,
-PendingDataReplicationMetadata,
-PendingDataReplicationMode,
-SecurityGroups;
+authentication_strategy,
+auto_minor_version_upgrade,
+broker_id,
+configuration,
+data_replication_metadata,
+data_replication_mode,
+engine_version,
+host_instance_type,
+ldap_server_metadata,
+logs,
+maintenance_window_start_time,
+pending_data_replication_metadata,
+pending_data_replication_mode,
+security_groups;
 ```
 </TabItem>
 </Tabs>

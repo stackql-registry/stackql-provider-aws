@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Associations" /></td>
+    <td><CopyableCode code="associations" /></td>
     <td><code>array</code></td>
     <td>List of information about the specified associations.</td>
 </tr>
@@ -119,7 +119,7 @@ Describes the associations between the applications and the specified bundle.
 
 ```sql
 SELECT
-Associations
+associations
 FROM aws.workspaces.bundle_associations
 WHERE region = '{{ region }}' -- required
 ;

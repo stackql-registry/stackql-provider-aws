@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountIds" /></td>
+    <td><CopyableCode code="account_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the Amazon Web Services accounts that were specified when the report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when Amazon EC2 will delete the report (30 days after the report was created).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the image that was specified when the report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTypes" /></td>
+    <td><CopyableCode code="resource_types" /></td>
     <td><code>string</code></td>
     <td>The resource types that were specified when the report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the report. Possible values: available - The report is available to view. pending - The report is being created and not available to view. error - The report could not be created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Provides additional details when the report is in an error state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the report.</td>
 </tr>
@@ -233,15 +233,15 @@ Describes the configuration and status of image usage reports, filtered by repor
 
 ```sql
 SELECT
-AccountIds,
-CreationTime,
-ExpirationTime,
-ImageId,
-ReportId,
-ResourceTypes,
-State,
-StateReason,
-Tags
+account_ids,
+creation_time,
+expiration_time,
+image_id,
+report_id,
+resource_types,
+state,
+state_reason,
+tags
 FROM aws.ec2.image_usage_reports
 WHERE region = '{{ region }}' -- required
 AND ImageId = '{{ ImageId }}'
@@ -288,7 +288,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ TagSpecification }}'
 RETURNING
-ReportId
+report_id
 ;
 ```
 </TabItem>

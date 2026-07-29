@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the destination creation requset occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryDestinationArn" /></td>
+    <td><CopyableCode code="delivery_destination_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customer-managed destination. (pattern: &lt;code&gt;arn:aws:&#91;0-9a-zA-Z&#93;+:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:&#91;0-9a-zA-Z&#93;+/&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryDestinationType" /></td>
+    <td><CopyableCode code="delivery_destination_type" /></td>
     <td><code>string</code></td>
     <td>The destination type for the customer-managed destination. (KINESIS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the customer-managed destination. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the customer-managed destination. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125; ._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the delivery destination role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of key/value pairs that are used to manage the customer-managed destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the destination update requset occurred.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeliveryDestinationArn" /></td>
+    <td><CopyableCode code="delivery_destination_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customer-managed destination. (pattern: &lt;code&gt;arn:aws:&#91;0-9a-zA-Z&#93;+:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:&#91;0-9a-zA-Z&#93;+/&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryDestinationType" /></td>
+    <td><CopyableCode code="delivery_destination_type" /></td>
     <td><code>string</code></td>
     <td>The destination type for the customer-managed destination. (KINESIS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the customer-managed destination. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the customer-managed destination. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125; ._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the delivery destination.</td>
 </tr>
@@ -238,14 +238,14 @@ Gets a destination by name.
 
 ```sql
 SELECT
-CreatedAt,
-DeliveryDestinationArn,
-DeliveryDestinationType,
-Description,
-Name,
-RoleArn,
-Tags,
-UpdatedAt
+created_at,
+delivery_destination_arn,
+delivery_destination_type,
+description,
+name,
+role_arn,
+tags,
+updated_at
 FROM aws.iot_managed_integrations.destinations
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -258,11 +258,11 @@ List all notification destinations.
 
 ```sql
 SELECT
-DeliveryDestinationArn,
-DeliveryDestinationType,
-Description,
-Name,
-RoleArn
+delivery_destination_arn,
+delivery_destination_type,
+description,
+name,
+role_arn
 FROM aws.iot_managed_integrations.destinations
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -307,7 +307,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateAssociations" /></td>
+    <td><CopyableCode code="certificate_associations" /></td>
     <td><code>string</code></td>
     <td>A list of all associated clusters and domain names tied to a specific certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDomainCertificateArn" /></td>
+    <td><CopyableCode code="custom_domain_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the certificate associated with the custom domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDomainCertificateExpiryDate" /></td>
+    <td><CopyableCode code="custom_domain_certificate_expiry_date" /></td>
     <td><code>string</code></td>
     <td>The expiration date for the certificate.</td>
 </tr>
@@ -185,9 +185,9 @@ Contains information about custom domain associations for a cluster.
 
 ```sql
 SELECT
-CertificateAssociations,
-CustomDomainCertificateArn,
-CustomDomainCertificateExpiryDate
+certificate_associations,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_date
 FROM aws.redshift.custom_domain_associations
 WHERE region = '{{ region }}' -- required
 AND CustomDomainName = '{{ CustomDomainName }}'
@@ -226,10 +226,10 @@ SELECT
 '{{ ClusterIdentifier }}',
 '{{ region }}'
 RETURNING
-ClusterIdentifier,
-CustomDomainCertExpiryTime,
-CustomDomainCertificateArn,
-CustomDomainName
+cluster_identifier,
+custom_domain_cert_expiry_time,
+custom_domain_certificate_arn,
+custom_domain_name
 ;
 ```
 </TabItem>
@@ -278,10 +278,10 @@ AND CustomDomainCertificateArn = '{{ CustomDomainCertificateArn }}' --required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ClusterIdentifier,
-CustomDomainCertExpiryTime,
-CustomDomainCertificateArn,
-CustomDomainName;
+cluster_identifier,
+custom_domain_cert_expiry_time,
+custom_domain_certificate_arn,
+custom_domain_name;
 ```
 </TabItem>
 </Tabs>

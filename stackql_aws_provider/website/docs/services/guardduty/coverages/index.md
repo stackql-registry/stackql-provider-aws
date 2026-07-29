@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoverageStatus" /></td>
+    <td><CopyableCode code="coverage_status" /></td>
     <td><code>string</code></td>
     <td>Represents the status of the EKS cluster coverage. (HEALTHY, UNHEALTHY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetectorId" /></td>
+    <td><CopyableCode code="detector_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the GuardDuty detector associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Issue" /></td>
+    <td><CopyableCode code="issue" /></td>
     <td><code>string</code></td>
     <td>Represents the reason why a coverage status was UNHEALTHY for the EKS cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceDetails" /></td>
+    <td><CopyableCode code="resource_details" /></td>
     <td><code>object</code></td>
     <td>Information about the resource for which the coverage statistics are retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the coverage details for the resource were last updated. This is in UTC format.</td>
 </tr>
@@ -154,13 +154,13 @@ Lists coverage details for your GuardDuty account. If you're a GuardDuty adminis
 
 ```sql
 SELECT
-AccountId,
-CoverageStatus,
-DetectorId,
-Issue,
-ResourceDetails,
-ResourceId,
-UpdatedAt
+account_id,
+coverage_status,
+detector_id,
+issue,
+resource_details,
+resource_id,
+updated_at
 FROM aws.guardduty.coverages
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required

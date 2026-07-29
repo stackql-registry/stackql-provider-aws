@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of Case summary information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
@@ -130,7 +130,7 @@ Lists cases for a given contact.
 ```sql
 SELECT
 cases,
-nextToken
+next_token
 FROM aws.connectcases.cases_for_contacts
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required

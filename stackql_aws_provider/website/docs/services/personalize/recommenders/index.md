@@ -56,47 +56,47 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the recommender. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the recommender was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Domain dataset group that contains the recommender. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a recommender fails, the reason behind the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the recommender was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestRecommenderUpdate" /></td>
+    <td><CopyableCode code="latest_recommender_update" /></td>
     <td><code>object</code></td>
     <td>Provides a summary of the latest updates to the recommender.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelMetrics" /></td>
+    <td><CopyableCode code="model_metrics" /></td>
     <td><code>object</code></td>
     <td>Provides evaluation metrics that help you determine the performance of a recommender. For more information, see Evaluating a recommender.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeArn" /></td>
+    <td><CopyableCode code="recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recipe (Domain dataset group use case) that the recommender was created for. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommenderArn" /></td>
+    <td><CopyableCode code="recommender_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recommender. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommenderConfig" /></td>
+    <td><CopyableCode code="recommender_config" /></td>
     <td><code>object</code></td>
     <td>The configuration details of the recommender.</td>
 </tr>
@@ -125,32 +125,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the recommender. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the recommender was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Domain dataset group that contains the recommender. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the recommender was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeArn" /></td>
+    <td><CopyableCode code="recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recipe (Domain dataset group use case) that the recommender was created for. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommenderArn" /></td>
+    <td><CopyableCode code="recommender_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recommender. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommenderConfig" /></td>
+    <td><CopyableCode code="recommender_config" /></td>
     <td><code>object</code></td>
     <td>The configuration details of the recommender.</td>
 </tr>
@@ -268,15 +268,15 @@ Describes the given recommender, including its status. A recommender can be in o
 ```sql
 SELECT
 name,
-creationDateTime,
-datasetGroupArn,
-failureReason,
-lastUpdatedDateTime,
-latestRecommenderUpdate,
-modelMetrics,
-recipeArn,
-recommenderArn,
-recommenderConfig,
+creation_date_time,
+dataset_group_arn,
+failure_reason,
+last_updated_date_time,
+latest_recommender_update,
+model_metrics,
+recipe_arn,
+recommender_arn,
+recommender_config,
 status
 FROM aws.personalize.recommenders
 WHERE region = '{{ region }}' -- required
@@ -290,12 +290,12 @@ Returns a list of recommenders in a given Domain dataset group. When a Domain da
 ```sql
 SELECT
 name,
-creationDateTime,
-datasetGroupArn,
-lastUpdatedDateTime,
-recipeArn,
-recommenderArn,
-recommenderConfig,
+creation_date_time,
+dataset_group_arn,
+last_updated_date_time,
+recipe_arn,
+recommender_arn,
+recommender_config,
 status
 FROM aws.personalize.recommenders
 WHERE region = '{{ region }}' -- required
@@ -335,7 +335,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-recommenderArn
+recommender_arn
 ;
 ```
 </TabItem>
@@ -403,7 +403,7 @@ region = '{{ region }}' --required
 AND recommenderArn = '{{ recommenderArn }}' --required
 AND recommenderConfig = '{{ recommenderConfig }}' --required
 RETURNING
-recommenderArn;
+recommender_arn;
 ```
 </TabItem>
 </Tabs>

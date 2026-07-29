@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actorId" /></td>
+    <td><CopyableCode code="actor_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the actor for this extraction job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The cause of failure, if the job did not complete successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the extraction job.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The messages associated with the extraction job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the session for this extraction job.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the extraction job. (FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="strategyId" /></td>
+    <td><CopyableCode code="strategy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the memory strategy for this extraction job.</td>
 </tr>
@@ -154,13 +154,13 @@ Lists all long-term memory extraction jobs that are eligible to be started with 
 
 ```sql
 SELECT
-actorId,
-failureReason,
-jobID,
+actor_id,
+failure_reason,
+job_id,
 messages,
-sessionId,
+session_id,
 status,
-strategyId
+strategy_id
 FROM aws.bedrock_agentcore.memory_extraction_jobs
 WHERE memory_id = '{{ memory_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactCenterSystemTypes" /></td>
+    <td><CopyableCode code="contact_center_system_types" /></td>
     <td><code>array</code></td>
     <td>The contact center system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionBorderControllerTypes" /></td>
+    <td><CopyableCode code="session_border_controller_types" /></td>
     <td><code>array</code></td>
     <td>The session border controllers.</td>
 </tr>
@@ -143,8 +143,8 @@ Gets information about an external systems configuration for a Voice Connector.
 
 ```sql
 SELECT
-ContactCenterSystemTypes,
-SessionBorderControllerTypes
+contact_center_system_types,
+session_border_controller_types
 FROM aws.chime_sdk_voice.voice_connector_external_systems_configurations
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -175,7 +175,7 @@ WHERE
 voice_connector_id = '{{ voice_connector_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ExternalSystemsConfiguration;
+external_systems_configuration;
 ```
 </TabItem>
 </Tabs>

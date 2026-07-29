@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheTTL" /></td>
+    <td><CopyableCode code="cache_ttl" /></td>
     <td><code>string</code></td>
     <td>The amount of time, in seconds, that the registration status is stored on the device’s cache before it is refreshed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceRegistration" /></td>
+    <td><CopyableCode code="device_registration" /></td>
     <td><code>string</code></td>
     <td>Describes if the device is currently registered with SageMaker Edge Manager.</td>
 </tr>
@@ -124,8 +124,8 @@ Use to check if a device is registered with SageMaker Edge Manager.
 
 ```sql
 SELECT
-CacheTTL,
-DeviceRegistration
+cache_ttl,
+device_registration
 FROM aws.sagemaker_edge.device_registrations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregationEndTime" /></td>
+    <td><CopyableCode code="aggregation_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time for the aggregation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationStartTime" /></td>
+    <td><CopyableCode code="aggregation_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time for the aggregation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="costInUsd" /></td>
+    <td><CopyableCode code="cost_in_usd" /></td>
     <td><code>object</code></td>
     <td>How the statistics should appear in USD. Options include: minimum, maximum, average or sum.</td>
 </tr>
@@ -70,47 +70,47 @@ The following fields are returned by `SELECT` queries:
     <td>The number of instances in a list of statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID. (pattern: &lt;code&gt;job-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The job name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseProduct" /></td>
+    <td><CopyableCode code="license_product" /></td>
     <td><code>string</code></td>
     <td>The licensed product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The queue ID. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runtimeInSeconds" /></td>
+    <td><CopyableCode code="runtime_in_seconds" /></td>
     <td><code>object</code></td>
     <td>The total aggregated runtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>The type of usage for the statistics. (COMPUTE, LICENSE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID.</td>
 </tr>
@@ -199,19 +199,19 @@ Gets a set of statistics for queues or farms. Before you can call the GetSession
 
 ```sql
 SELECT
-aggregationEndTime,
-aggregationStartTime,
-costInUsd,
+aggregation_end_time,
+aggregation_start_time,
+cost_in_usd,
 count,
-fleetId,
-instanceType,
-jobId,
-jobName,
-licenseProduct,
-queueId,
-runtimeInSeconds,
-usageType,
-userId
+fleet_id,
+instance_type,
+job_id,
+job_name,
+license_product,
+queue_id,
+runtime_in_seconds,
+usage_type,
+user_id
 FROM aws.deadline.sessions_statistics_aggregations
 WHERE farm_id = '{{ farm_id }}' -- required
 AND aggregationId = '{{ aggregationId }}' -- required

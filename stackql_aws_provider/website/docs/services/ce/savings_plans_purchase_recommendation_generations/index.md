@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EstimatedCompletionTime" /></td>
+    <td><CopyableCode code="estimated_completion_time" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GenerationCompletionTime" /></td>
+    <td><CopyableCode code="generation_completion_time" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GenerationStartedTime" /></td>
+    <td><CopyableCode code="generation_started_time" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GenerationStatus" /></td>
+    <td><CopyableCode code="generation_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the recommendation generation succeeded, is processing, or failed. (SUCCEEDED, PROCESSING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>Indicates the ID for this specific recommendation. (pattern: &lt;code&gt;^&#91;\S\s&#93;&#123;8&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves a list of your historical recommendation generations within the past 3
 
 ```sql
 SELECT
-EstimatedCompletionTime,
-GenerationCompletionTime,
-GenerationStartedTime,
-GenerationStatus,
-RecommendationId
+estimated_completion_time,
+generation_completion_time,
+generation_started_time,
+generation_status,
+recommendation_id
 FROM aws.ce.savings_plans_purchase_recommendation_generations
 WHERE region = '{{ region }}' -- required
 ;

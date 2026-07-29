@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelIds" /></td>
+    <td><CopyableCode code="channel_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>Used in CreateClusterSummary, DescribeClusterSummary, DescribeClusterResult, UpdateClusterResult. (ON_PREMISES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceRoleArn" /></td>
+    <td><CopyableCode code="instance_role_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkSettings" /></td>
+    <td><CopyableCode code="network_settings" /></td>
     <td><code>object</code></td>
     <td>Network settings that connect the Nodes in the Cluster to one or more of the Networks that the Cluster is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Cluster. (CREATING, CREATE_FAILED, ACTIVE, DELETING, DELETE_FAILED, DELETED)</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelIds" /></td>
+    <td><CopyableCode code="channel_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>Used in CreateClusterSummary, DescribeClusterSummary, DescribeClusterResult, UpdateClusterResult. (ON_PREMISES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceRoleArn" /></td>
+    <td><CopyableCode code="instance_role_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkSettings" /></td>
+    <td><CopyableCode code="network_settings" /></td>
     <td><code>object</code></td>
     <td>Network settings that connect the Nodes in the Cluster to one or more of the Networks that the Cluster is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Cluster. (CREATING, CREATE_FAILED, ACTIVE, DELETING, DELETE_FAILED, DELETED)</td>
 </tr>
@@ -253,14 +253,14 @@ Get details about a Cluster.
 
 ```sql
 SELECT
-Arn,
-ChannelIds,
-ClusterType,
-Id,
-InstanceRoleArn,
-Name,
-NetworkSettings,
-State
+arn,
+channel_ids,
+cluster_type,
+id,
+instance_role_arn,
+name,
+network_settings,
+state
 FROM aws.medialive.clusters
 WHERE cluster_id = '{{ cluster_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,14 +273,14 @@ Retrieve the list of Clusters.
 
 ```sql
 SELECT
-Arn,
-ChannelIds,
-ClusterType,
-Id,
-InstanceRoleArn,
-Name,
-NetworkSettings,
-State
+arn,
+channel_ids,
+cluster_type,
+id,
+instance_role_arn,
+name,
+network_settings,
+state
 FROM aws.medialive.clusters
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -323,14 +323,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-ChannelIds,
-ClusterType,
-Id,
-InstanceRoleArn,
-Name,
-NetworkSettings,
-State
+arn,
+channel_ids,
+cluster_type,
+id,
+instance_role_arn,
+name,
+network_settings,
+state
 ;
 ```
 </TabItem>
@@ -398,13 +398,13 @@ WHERE
 cluster_id = '{{ cluster_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-ChannelIds,
-ClusterType,
-Id,
-Name,
-NetworkSettings,
-State;
+arn,
+channel_ids,
+cluster_type,
+id,
+name,
+network_settings,
+state;
 ```
 </TabItem>
 </Tabs>

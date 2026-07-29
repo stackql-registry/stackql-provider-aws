@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used for encryption, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The encryption status. While the status is UPDATING, X-Ray may encrypt data with a combination of the new and old settings. (UPDATING, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption. Set to KMS for encryption with KMS keys. Set to NONE for default encryption. (NONE, KMS)</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves the current encryption configuration for X-Ray data.
 
 ```sql
 SELECT
-KeyId,
-Status,
-Type
+key_id,
+status,
+type
 FROM aws.xray.encryption_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,7 +168,7 @@ WHERE
 region = '{{ region }}' --required
 AND Type = '{{ Type }}' --required
 RETURNING
-EncryptionConfig;
+encryption_config;
 ```
 </TabItem>
 </Tabs>

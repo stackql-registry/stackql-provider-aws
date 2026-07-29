@@ -52,52 +52,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>object</code></td>
     <td>The localized content of the notification. A map where keys are locale codes and values are the notification text in that locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the notification was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the notification expires and is no longer displayed to users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for a notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The AWS Region where the notification was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the notification was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>string</code></td>
     <td>The priority level of the notification. Valid values are URGENT, HIGH, and LOW. (URGENT, HIGH, LOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recipients" /></td>
+    <td><CopyableCode code="recipients" /></td>
     <td><code>array</code></td>
     <td>A list of recipient Amazon Resource Names (ARNs). Maximum of 200 recipients.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -116,12 +116,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. If present, there are more results available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationSummaryList" /></td>
+    <td><CopyableCode code="notification_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of notification summaries.</td>
 </tr>
@@ -140,17 +140,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateTotalCount" /></td>
+    <td><CopyableCode code="approximate_total_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The approximate total number of notifications matching the search criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. If present, there are more results available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notifications" /></td>
+    <td><CopyableCode code="notifications" /></td>
     <td><code>array</code></td>
     <td>A list of notifications matching the search criteria.</td>
 </tr>
@@ -276,16 +276,16 @@ Retrieves detailed information about a specific notification, including its cont
 
 ```sql
 SELECT
-Arn,
-Content,
-CreatedAt,
-ExpiresAt,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Priority,
-Recipients,
-Tags
+arn,
+content,
+created_at,
+expires_at,
+id,
+last_modified_region,
+last_modified_time,
+priority,
+recipients,
+tags
 FROM aws.connect.notifications
 WHERE instance_id = '{{ instance_id }}' -- required
 AND notification_id = '{{ notification_id }}' -- required
@@ -299,8 +299,8 @@ Retrieves a paginated list of all notifications in the Amazon Connect instance.
 
 ```sql
 SELECT
-NextToken,
-NotificationSummaryList
+next_token,
+notification_summary_list
 FROM aws.connect.notifications
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -315,9 +315,9 @@ Searches for notifications based on specified criteria and filters. Returns a pa
 
 ```sql
 SELECT
-ApproximateTotalCount,
-NextToken,
-Notifications
+approximate_total_count,
+next_token,
+notifications
 FROM aws.connect.notifications
 WHERE region = '{{ region }}' -- required
 ;
@@ -362,8 +362,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-NotificationArn,
-NotificationId
+notification_arn,
+notification_id
 ;
 ```
 </TabItem>

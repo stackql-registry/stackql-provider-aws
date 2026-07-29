@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="publishClassificationFindings" /></td>
+    <td><CopyableCode code="publish_classification_findings" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether to publish sensitive data findings to Security Hub. If you set this value to true, Amazon Macie automatically publishes all sensitive data findings that weren't suppressed by a findings filter. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publishPolicyFindings" /></td>
+    <td><CopyableCode code="publish_policy_findings" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether to publish policy findings to Security Hub. If you set this value to true, Amazon Macie automatically publishes all new and updated policy findings that weren't suppressed by a findings filter. The default value is true.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the configuration settings for publishing findings to Security Hub.
 
 ```sql
 SELECT
-publishClassificationFindings,
-publishPolicyFindings
+publish_classification_findings,
+publish_policy_findings
 FROM aws.macie2.findings_publication_configurations
 WHERE region = '{{ region }}' -- required
 ;

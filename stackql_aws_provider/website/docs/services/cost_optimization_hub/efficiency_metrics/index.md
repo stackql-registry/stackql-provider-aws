@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>An explanation of why efficiency metrics could not be calculated for this group when the metricsByTime field is null. Common reasons include insufficient or inconclusive cost and usage data during the specified time period. This field is null or empty when metrics are successfully calculated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsByTime" /></td>
+    <td><CopyableCode code="metrics_by_time" /></td>
     <td><code>array</code></td>
     <td>A list of time-series data points containing efficiency metrics for this group. Each data point includes an efficiency score, estimated savings, spending, and a timestamp corresponding to the specified granularity. This field is null when efficiency metrics cannot be calculated for the group, in which case the message field provides an explanation.</td>
 </tr>
@@ -131,7 +131,7 @@ Returns cost efficiency metrics aggregated over time and optionally grouped by a
 SELECT
 group,
 message,
-metricsByTime
+metrics_by_time
 FROM aws.cost_optimization_hub.efficiency_metrics
 WHERE region = '{{ region }}' -- required
 ;

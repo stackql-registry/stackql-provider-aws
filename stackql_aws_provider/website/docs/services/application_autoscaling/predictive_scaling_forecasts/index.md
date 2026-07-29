@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityForecast" /></td>
+    <td><CopyableCode code="capacity_forecast" /></td>
     <td><code>object</code></td>
     <td>The capacity forecast.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadForecast" /></td>
+    <td><CopyableCode code="load_forecast" /></td>
     <td><code>array</code></td>
     <td>The load forecast.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the forecast was made.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves the forecast data for a predictive scaling policy. Load forecasts are 
 
 ```sql
 SELECT
-CapacityForecast,
-LoadForecast,
-UpdateTime
+capacity_forecast,
+load_forecast,
+update_time
 FROM aws.application_autoscaling.predictive_scaling_forecasts
 WHERE region = '{{ region }}' -- required
 ;

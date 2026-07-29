@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Tags associated with the Amazon Translate resource being queried. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Translate. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists all tags associated with a given Amazon Translate resource. For more infor
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.translate.tags
 WHERE region = '{{ region }}' -- required
 ;

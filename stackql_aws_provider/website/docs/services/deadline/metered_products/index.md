@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The port on which the metered product should run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productId" /></td>
+    <td><CopyableCode code="product_id" /></td>
     <td><code>string</code></td>
     <td>The product ID. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;1,32&#125;-&#91;.0-9a-z&#93;&#123;1,32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -170,7 +170,7 @@ Lists metered products.
 SELECT
 family,
 port,
-productId,
+product_id,
 vendor
 FROM aws.deadline.metered_products
 WHERE license_endpoint_id = '{{ license_endpoint_id }}' -- required

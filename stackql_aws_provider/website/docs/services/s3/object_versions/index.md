@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChecksumAlgorithm" /></td>
+    <td><CopyableCode code="checksum_algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm that was used to create a checksum of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChecksumType" /></td>
+    <td><CopyableCode code="checksum_type" /></td>
     <td><code>string</code></td>
     <td>The checksum type that is used to calculate the object’s checksum value. For more information, see Checking object integrity in the Amazon S3 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The entity tag is an MD5 hash of that version of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsLatest" /></td>
+    <td><CopyableCode code="is_latest" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the object is (true) or is not (false) the latest version of an object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The object key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>Date and time when the object was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>Specifies the owner of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreStatus" /></td>
+    <td><CopyableCode code="restore_status" /></td>
     <td><code>string</code></td>
     <td>Specifies the restoration status of an object. Objects in certain storage classes must be restored before they can be retrieved. For more information about these storage classes and how to work with archived objects, see Working with archived objects in the Amazon S3 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer</code></td>
     <td>Size in bytes of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageClass" /></td>
+    <td><CopyableCode code="storage_class" /></td>
     <td><code>string</code></td>
     <td>The class of storage used to store the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>Version ID of an object.</td>
 </tr>
@@ -219,17 +219,17 @@ This operation is not supported for directory buckets. Returns metadata about al
 
 ```sql
 SELECT
-ChecksumAlgorithm,
-ChecksumType,
-ETag,
-IsLatest,
-Key,
-LastModified,
-Owner,
-RestoreStatus,
-Size,
-StorageClass,
-VersionId
+checksum_algorithm,
+checksum_type,
+e_tag,
+is_latest,
+key,
+last_modified,
+owner,
+restore_status,
+size,
+storage_class,
+version_id
 FROM aws.s3.object_versions
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

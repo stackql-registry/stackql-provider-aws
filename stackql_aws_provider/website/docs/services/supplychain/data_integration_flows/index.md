@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The DataIntegrationFlow name. (pattern: &lt;code&gt;&#91;A-Za-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The DataIntegrationFlow creation timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The DataIntegrationFlow instance ID. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The DataIntegrationFlow last modified timestamp.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
     <td>The DataIntegrationFlow name. (pattern: &lt;code&gt;&#91;A-Za-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The DataIntegrationFlow creation timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The DataIntegrationFlow instance ID. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The DataIntegrationFlow last modified timestamp.</td>
 </tr>
@@ -249,9 +249,9 @@ Enables you to programmatically view a specific data pipeline for the provided A
 ```sql
 SELECT
 name,
-createdTime,
-instanceId,
-lastModifiedTime,
+created_time,
+instance_id,
+last_modified_time,
 sources,
 target,
 transformation
@@ -269,9 +269,9 @@ Enables you to programmatically list all data pipelines for the provided Amazon 
 ```sql
 SELECT
 name,
-createdTime,
-instanceId,
-lastModifiedTime,
+created_time,
+instance_id,
+last_modified_time,
 sources,
 target,
 transformation
@@ -319,7 +319,7 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-instanceId
+instance_id
 ;
 ```
 </TabItem>

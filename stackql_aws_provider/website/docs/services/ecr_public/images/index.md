@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="artifactMediaType" /></td>
+    <td><CopyableCode code="artifact_media_type" /></td>
     <td><code>string</code></td>
     <td>The artifact media type of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageDigest" /></td>
+    <td><CopyableCode code="image_digest" /></td>
     <td><code>string</code></td>
     <td>The sha256 digest of the image manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageManifestMediaType" /></td>
+    <td><CopyableCode code="image_manifest_media_type" /></td>
     <td><code>string</code></td>
     <td>The media type of the image manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imagePushedAt" /></td>
+    <td><CopyableCode code="image_pushed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, expressed in standard JavaScript date format, that the current image was pushed to the repository at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSizeInBytes" /></td>
+    <td><CopyableCode code="image_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of the image in the repository. If the image is a manifest list, this is the max size of all manifests in the list. Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the docker images command shows the uncompressed image size, so it might return a larger image size than the image sizes that are returned by DescribeImages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTags" /></td>
+    <td><CopyableCode code="image_tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags that's associated with this image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that's associated with the public registry where this image belongs. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository where this image belongs. (pattern: &lt;code&gt;(?:&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*/)*&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -161,14 +161,14 @@ Returns metadata that's related to the images in a repository in a public regist
 
 ```sql
 SELECT
-artifactMediaType,
-imageDigest,
-imageManifestMediaType,
-imagePushedAt,
-imageSizeInBytes,
-imageTags,
-registryId,
-repositoryName
+artifact_media_type,
+image_digest,
+image_manifest_media_type,
+image_pushed_at,
+image_size_in_bytes,
+image_tags,
+registry_id,
+repository_name
 FROM aws.ecr_public.images
 WHERE region = '{{ region }}' -- required
 ;

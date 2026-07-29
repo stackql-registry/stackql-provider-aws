@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="batchEvaluationArn" /></td>
+    <td><CopyableCode code="batch_evaluation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the batch evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchEvaluationId" /></td>
+    <td><CopyableCode code="batch_evaluation_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a batch evaluation (name-prefixed format) (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchEvaluationName" /></td>
+    <td><CopyableCode code="batch_evaluation_name" /></td>
     <td><code>string</code></td>
     <td>The name of the batch evaluation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch evaluation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceConfig" /></td>
+    <td><CopyableCode code="data_source_config" /></td>
     <td><code>object</code></td>
     <td>The data source configuration specifying where agent traces are pulled from.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the batch evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>The error details if the batch evaluation encountered failures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationResults" /></td>
+    <td><CopyableCode code="evaluation_results" /></td>
     <td><code>object</code></td>
     <td>The aggregated evaluation results, including session completion counts and evaluator score summaries.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of evaluators applied during the batch evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration specifying where evaluation results are written.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the batch evaluation. (PENDING, IN_PROGRESS, COMPLETED, COMPLETED_WITH_ERRORS, FAILED, STOPPING, STOPPED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch evaluation was last updated.</td>
 </tr>
@@ -125,22 +125,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="batchEvaluationArn" /></td>
+    <td><CopyableCode code="batch_evaluation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the batch evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchEvaluationId" /></td>
+    <td><CopyableCode code="batch_evaluation_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a batch evaluation (name-prefixed format) (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchEvaluationName" /></td>
+    <td><CopyableCode code="batch_evaluation_name" /></td>
     <td><code>string</code></td>
     <td>The name of the batch evaluation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch evaluation was created.</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the batch evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>The error details if the batch evaluation encountered failures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationResults" /></td>
+    <td><CopyableCode code="evaluation_results" /></td>
     <td><code>object</code></td>
     <td>The aggregated evaluation results.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the batch evaluation. (PENDING, IN_PROGRESS, COMPLETED, COMPLETED_WITH_ERRORS, FAILED, STOPPING, STOPPED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch evaluation was last updated.</td>
 </tr>
@@ -283,18 +283,18 @@ Retrieves detailed information about a batch evaluation, including its status, c
 
 ```sql
 SELECT
-batchEvaluationArn,
-batchEvaluationId,
-batchEvaluationName,
-createdAt,
-dataSourceConfig,
+batch_evaluation_arn,
+batch_evaluation_id,
+batch_evaluation_name,
+created_at,
+data_source_config,
 description,
-errorDetails,
-evaluationResults,
+error_details,
+evaluation_results,
 evaluators,
-outputConfig,
+output_config,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore.batch_evaluations
 WHERE batch_evaluation_id = '{{ batch_evaluation_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -307,16 +307,16 @@ Lists all batch evaluations in the account, providing summary information about 
 
 ```sql
 SELECT
-batchEvaluationArn,
-batchEvaluationId,
-batchEvaluationName,
-createdAt,
+batch_evaluation_arn,
+batch_evaluation_id,
+batch_evaluation_name,
+created_at,
 description,
-errorDetails,
-evaluationResults,
+error_details,
+evaluation_results,
 evaluators,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore.batch_evaluations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

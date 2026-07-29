@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectPeerConfiguration" /></td>
+    <td><CopyableCode code="connect_peer_configuration" /></td>
     <td><code>string</code></td>
     <td>The Connect peer details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Connect peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the Connect peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Connect attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayConnectPeerId" /></td>
+    <td><CopyableCode code="transit_gateway_connect_peer_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Connect peer.</td>
 </tr>
@@ -218,12 +218,12 @@ Describes one or more Connect peers.
 
 ```sql
 SELECT
-ConnectPeerConfiguration,
-CreationTime,
-State,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayConnectPeerId
+connect_peer_configuration,
+creation_time,
+state,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_connect_peer_id
 FROM aws.ec2.transit_gateway_connect_peers
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayConnectPeerIds = '{{ TransitGatewayConnectPeerIds }}'
@@ -271,12 +271,12 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-ConnectPeerConfiguration,
-CreationTime,
-State,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayConnectPeerId
+connect_peer_configuration,
+creation_time,
+state,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_connect_peer_id
 ;
 ```
 </TabItem>

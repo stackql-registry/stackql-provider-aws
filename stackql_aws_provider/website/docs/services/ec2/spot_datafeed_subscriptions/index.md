@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Bucket" /></td>
+    <td><CopyableCode code="bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket where the Spot Instance data feed is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fault" /></td>
+    <td><CopyableCode code="fault" /></td>
     <td><code>string</code></td>
     <td>The fault codes for the Spot Instance request, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Prefix" /></td>
+    <td><CopyableCode code="prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix for the data feed files.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Spot Instance data feed subscription.</td>
 </tr>
@@ -168,11 +168,11 @@ Describes the data feed for Spot Instances. For more information, see Spot Insta
 
 ```sql
 SELECT
-Bucket,
-Fault,
-OwnerId,
-Prefix,
-State
+bucket,
+fault,
+owner_id,
+prefix,
+state
 FROM aws.ec2.spot_datafeed_subscriptions
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -208,11 +208,11 @@ SELECT
 '{{ Bucket }}',
 '{{ Prefix }}'
 RETURNING
-Bucket,
-Fault,
-OwnerId,
-Prefix,
-State
+bucket,
+fault,
+owner_id,
+prefix,
+state
 ;
 ```
 </TabItem>

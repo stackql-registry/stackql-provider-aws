@@ -56,57 +56,57 @@ The following fields are returned by `SELECT` queries:
     <td>The components to deploy. This is a dictionary, where each key is the name of a component, and each key's value is the version and configuration to deploy for that component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the deployment was created, expressed in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentName" /></td>
+    <td><CopyableCode code="deployment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentPolicies" /></td>
+    <td><CopyableCode code="deployment_policies" /></td>
     <td><code>object</code></td>
     <td>Contains information about policies that define how a deployment updates components and handles failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment. (ACTIVE, COMPLETED, CANCELED, FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iotJobArn" /></td>
+    <td><CopyableCode code="iot_job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IoT job that applies the deployment to target devices. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iot:&#91;^:&#93;+:&#91;0-9&#93;+:job/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iotJobConfiguration" /></td>
+    <td><CopyableCode code="iot_job_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains information about an IoT job configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iotJobId" /></td>
+    <td><CopyableCode code="iot_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IoT job that applies the deployment to target devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isLatestForTarget" /></td>
+    <td><CopyableCode code="is_latest_for_target" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not the deployment is the latest revision for its target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentTargetArn" /></td>
+    <td><CopyableCode code="parent_target_arn" /></td>
     <td><code>string</code></td>
     <td>The parent deployment's target ARN within a subdeployment. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iot:&#91;^:&#93;*:&#91;0-9&#93;+:thinggroup/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision number of the deployment.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of key-value pairs that contain metadata for the resource. For more information, see Tag your resources in the IoT Greengrass V2 Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the target IoT thing or thing group. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iot:&#91;^:&#93;*:&#91;0-9&#93;+:(thing|thinggroup)/.+&lt;/code&gt;)</td>
 </tr>
@@ -135,42 +135,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the deployment was created, expressed in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentName" /></td>
+    <td><CopyableCode code="deployment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment. (ACTIVE, COMPLETED, CANCELED, FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isLatestForTarget" /></td>
+    <td><CopyableCode code="is_latest_for_target" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not the deployment is the latest revision for its target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentTargetArn" /></td>
+    <td><CopyableCode code="parent_target_arn" /></td>
     <td><code>string</code></td>
     <td>The parent deployment's target ARN within a subdeployment. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iot:&#91;^:&#93;*:&#91;0-9&#93;+:thinggroup/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision number of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the target IoT thing or thing group. When creating a subdeployment, the targetARN can only be a thing group. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iot:&#91;^:&#93;*:&#91;0-9&#93;+:(thing|thinggroup)/.+&lt;/code&gt;)</td>
 </tr>
@@ -299,19 +299,19 @@ Gets a deployment. Deployments define the components that run on Greengrass core
 ```sql
 SELECT
 components,
-creationTimestamp,
-deploymentId,
-deploymentName,
-deploymentPolicies,
-deploymentStatus,
-iotJobArn,
-iotJobConfiguration,
-iotJobId,
-isLatestForTarget,
-parentTargetArn,
-revisionId,
+creation_timestamp,
+deployment_id,
+deployment_name,
+deployment_policies,
+deployment_status,
+iot_job_arn,
+iot_job_configuration,
+iot_job_id,
+is_latest_for_target,
+parent_target_arn,
+revision_id,
 tags,
-targetArn
+target_arn
 FROM aws.greengrassv2.deployments
 WHERE deployment_id = '{{ deployment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -324,14 +324,14 @@ Retrieves a paginated list of deployments.
 
 ```sql
 SELECT
-creationTimestamp,
-deploymentId,
-deploymentName,
-deploymentStatus,
-isLatestForTarget,
-parentTargetArn,
-revisionId,
-targetArn
+creation_timestamp,
+deployment_id,
+deployment_name,
+deployment_status,
+is_latest_for_target,
+parent_target_arn,
+revision_id,
+target_arn
 FROM aws.greengrassv2.deployments
 WHERE region = '{{ region }}' -- required
 AND targetArn = '{{ targetArn }}'
@@ -381,9 +381,9 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-deploymentId,
-iotJobArn,
-iotJobId
+deployment_id,
+iot_job_arn,
+iot_job_id
 ;
 ```
 </TabItem>

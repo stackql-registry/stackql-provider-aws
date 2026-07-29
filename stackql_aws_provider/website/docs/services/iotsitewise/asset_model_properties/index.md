@@ -60,27 +60,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the property. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelId" /></td>
+    <td><CopyableCode code="asset_model_composite_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the composite model that contains the asset model property. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the property. (STRING, INTEGER, DOUBLE, BOOLEAN, STRUCT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataTypeSpec" /></td>
+    <td><CopyableCode code="data_type_spec" /></td>
     <td><code>string</code></td>
     <td>The data type of the structure for this property. This parameter exists on properties that have the STRUCT data type. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of the property. For more information, see Using external IDs in the IoT SiteWise User Guide. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interfaceSummaries" /></td>
+    <td><CopyableCode code="interface_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of interface summaries that describe which interfaces this property belongs to, including the interface asset model ID and the corresponding property ID in the interface.</td>
 </tr>
@@ -191,11 +191,11 @@ Retrieves a paginated list of properties associated with an asset model. If you 
 SELECT
 id,
 name,
-assetModelCompositeModelId,
-dataType,
-dataTypeSpec,
-externalId,
-interfaceSummaries,
+asset_model_composite_model_id,
+data_type,
+data_type_spec,
+external_id,
+interface_summaries,
 path,
 type_,
 unit

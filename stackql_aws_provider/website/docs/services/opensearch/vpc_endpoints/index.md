@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VpcEndpointErrors" /></td>
+    <td><CopyableCode code="vpc_endpoint_errors" /></td>
     <td><code>array</code></td>
     <td>Any errors associated with the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpoints" /></td>
+    <td><CopyableCode code="vpc_endpoints" /></td>
     <td><code>array</code></td>
     <td>Information about each requested VPC endpoint.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointSummaryList" /></td>
+    <td><CopyableCode code="vpc_endpoint_summary_list" /></td>
     <td><code>array</code></td>
     <td>Information about each endpoint.</td>
 </tr>
@@ -188,8 +188,8 @@ Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
 
 ```sql
 SELECT
-VpcEndpointErrors,
-VpcEndpoints
+vpc_endpoint_errors,
+vpc_endpoints
 FROM aws.opensearch.vpc_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,8 +201,8 @@ Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current Ama
 
 ```sql
 SELECT
-NextToken,
-VpcEndpointSummaryList
+next_token,
+vpc_endpoint_summary_list
 FROM aws.opensearch.vpc_endpoints
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -238,7 +238,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-VpcEndpoint
+vpc_endpoint
 ;
 ```
 </TabItem>
@@ -291,7 +291,7 @@ region = '{{ region }}' --required
 AND VpcEndpointId = '{{ VpcEndpointId }}' --required
 AND VpcOptions = '{{ VpcOptions }}' --required
 RETURNING
-VpcEndpoint;
+vpc_endpoint;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionAliases" /></td>
+    <td><CopyableCode code="connection_aliases" /></td>
     <td><code>array</code></td>
     <td>Information about the specified connection aliases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list that describes the connection aliases used for cross-Region red
 
 ```sql
 SELECT
-ConnectionAliases,
-NextToken
+connection_aliases,
+next_token
 FROM aws.workspaces.connection_aliases
 WHERE region = '{{ region }}' -- required
 ;

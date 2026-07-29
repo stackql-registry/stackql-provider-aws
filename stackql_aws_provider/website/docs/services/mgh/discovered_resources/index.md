@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationId" /></td>
+    <td><CopyableCode code="configuration_id" /></td>
     <td><code>string</code></td>
     <td>The configurationId in Application Discovery Service that uniquely identifies the on-premise resource. (pattern: &lt;code&gt;^.&#123;1,1600&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description that can be free-form text to record additional detail about the discovered resource for clarity or later reference. (pattern: &lt;code&gt;^.&#123;0,500&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Lists discovered resources associated with the given MigrationTask.
 
 ```sql
 SELECT
-ConfigurationId,
-Description
+configuration_id,
+description
 FROM aws.mgh.discovered_resources
 WHERE region = '{{ region }}' -- required
 ;

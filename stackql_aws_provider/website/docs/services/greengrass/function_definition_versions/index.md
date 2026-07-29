@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the function definition version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the function definition version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>Information about a function definition version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the function definition version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or ''null'' if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of the function definition version.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the parent definition that the version is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The ID of the version.</td>
 </tr>
@@ -219,12 +219,12 @@ Retrieves information about a Lambda function definition version, including whic
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Definition,
-Id,
-NextToken,
-Version
+arn,
+creation_timestamp,
+definition,
+id,
+next_token,
+version
 FROM aws.greengrass.function_definition_versions
 WHERE function_definition_id = '{{ function_definition_id }}' -- required
 AND function_definition_version_id = '{{ function_definition_version_id }}' -- required
@@ -239,10 +239,10 @@ Lists the versions of a Lambda function definition.
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Id,
-Version
+arn,
+creation_timestamp,
+id,
+version
 FROM aws.greengrass.function_definition_versions
 WHERE function_definition_id = '{{ function_definition_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -282,10 +282,10 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn,
-CreationTimestamp,
-Id,
-Version
+arn,
+creation_timestamp,
+id,
+version
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="capacityProviders" /></td>
+    <td><CopyableCode code="capacity_providers" /></td>
     <td><code>array</code></td>
     <td>The list of capacity providers.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>Any failures associated with the call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future DescribeCapacityProviders request. When the results of a DescribeCapacityProviders request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -157,9 +157,9 @@ Describes one or more of your capacity providers.
 
 ```sql
 SELECT
-capacityProviders,
+capacity_providers,
 failures,
-nextToken
+next_token
 FROM aws.ecs.capacity_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,7 +198,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-capacityProvider
+capacity_provider
 ;
 ```
 </TabItem>
@@ -345,7 +345,7 @@ WHERE
 region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 RETURNING
-capacityProvider;
+capacity_provider;
 ```
 </TabItem>
 </Tabs>

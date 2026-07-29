@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID where this change event occurred. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeEventType" /></td>
+    <td><CopyableCode code="change_event_type" /></td>
     <td><code>string</code></td>
     <td>The type of change event that occurred, such as DEPLOYMENT. (DEPLOYMENT, CONFIGURATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Entity" /></td>
+    <td><CopyableCode code="entity" /></td>
     <td><code>object</code></td>
     <td>The entity (service or resource) that was affected by this change event, including its key attributes. This is a string-to-string map. It can include the following fields. Type designates the type of object this is. ResourceType specifies the type of the resource. This field is used only when the value of the Type field is Resource or AWS::Resource. Name specifies the name of the object. This is used only if the value of the Type field is Service, RemoteService, or AWS::Service. Identifier identifies the resource objects of this resource. This is used only if the value of the Type field is Resource or AWS::Resource. Environment specifies the location where this object is hosted, or what it belongs to. AwsAccountId specifies the account where this object is in. Below is an example of a service. &#123; "Type": "Service", "Name": "visits-service", "Environment": "petclinic-test" &#125; Below is an example of a resource. &#123; "Type": "AWS::Resource", "ResourceType": "AWS::DynamoDB::Table", "Identifier": "Customers" &#125;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for this change event. For CloudTrail-based events, this is the CloudTrail event id. For other events, this will be Unknown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventName" /></td>
+    <td><CopyableCode code="event_name" /></td>
     <td><code>string</code></td>
     <td>The name or description of this change event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services region where this change event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this change event occurred. When used in a raw HTTP Query API, it is formatted as epoch time in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user who initiated this change event, if available.</td>
 </tr>
@@ -164,14 +164,14 @@ Returns a list of change events for a specific entity, such as deployments, conf
 
 ```sql
 SELECT
-AccountId,
-ChangeEventType,
-Entity,
-EventId,
-EventName,
-Region,
-Timestamp,
-UserName
+account_id,
+change_event_type,
+entity,
+event_id,
+event_name,
+region,
+timestamp,
+user_name
 FROM aws.application_signals.entity_events
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

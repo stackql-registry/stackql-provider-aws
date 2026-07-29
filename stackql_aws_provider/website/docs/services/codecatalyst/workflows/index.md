@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow was created, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the workflow definition file for the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project in the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runMode" /></td>
+    <td><CopyableCode code="run_mode" /></td>
     <td><code>string</code></td>
     <td>The behavior to use when multiple workflows occur at the same time. For more information, see https:​//docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-configure-runs.html in the Amazon CodeCatalyst User Guide. (QUEUED, PARALLEL, SUPERSEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceBranchName" /></td>
+    <td><CopyableCode code="source_branch_name" /></td>
     <td><code>string</code></td>
     <td>The name of the branch that contains the workflow YAML.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceRepositoryName" /></td>
+    <td><CopyableCode code="source_repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source repository where the workflow YAML is stored. (pattern: &lt;code&gt;(?!.*&#91;.&#93;git$)&#91;\w\-.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow was created, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the workflow definition file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the workflow was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runMode" /></td>
+    <td><CopyableCode code="run_mode" /></td>
     <td><code>string</code></td>
     <td>The run mode of the workflow. (QUEUED, PARALLEL, SUPERSEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceBranchName" /></td>
+    <td><CopyableCode code="source_branch_name" /></td>
     <td><code>string</code></td>
     <td>The name of the branch of the source repository where the workflow definition file is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceRepositoryName" /></td>
+    <td><CopyableCode code="source_repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source repository where the workflow definition file is stored. (pattern: &lt;code&gt;(?!.*&#91;.&#93;git$)&#91;\w\-.&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -276,14 +276,14 @@ Returns information about a workflow.
 SELECT
 id,
 name,
-createdTime,
+created_time,
 definition,
-lastUpdatedTime,
-projectName,
-runMode,
-sourceBranchName,
-sourceRepositoryName,
-spaceName,
+last_updated_time,
+project_name,
+run_mode,
+source_branch_name,
+source_repository_name,
+space_name,
 status
 FROM aws.codecatalyst.workflows
 WHERE space_name = '{{ space_name }}' -- required
@@ -301,12 +301,12 @@ Retrieves a list of workflows in a specified project.
 SELECT
 id,
 name,
-createdTime,
+created_time,
 definition,
-lastUpdatedTime,
-runMode,
-sourceBranchName,
-sourceRepositoryName,
+last_updated_time,
+run_mode,
+source_branch_name,
+source_repository_name,
 status
 FROM aws.codecatalyst.workflows
 WHERE space_name = '{{ space_name }}' -- required

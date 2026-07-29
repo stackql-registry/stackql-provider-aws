@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="attachmentSet" /></td>
+    <td><CopyableCode code="attachment_set" /></td>
     <td><code>array</code></td>
     <td>Information about the attachments to the case communication.</td>
 </tr>
@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>The text of the communication between the customer and Amazon Web Services Support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseId" /></td>
+    <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
     <td>The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-12345678910-2013-c4c1d2bf33c5cf47</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submittedBy" /></td>
+    <td><CopyableCode code="submitted_by" /></td>
     <td><code>string</code></td>
     <td>The identity of the account that submitted, or responded to, the support case. Customer entries include the IAM role as well as the email address (for example, "AdminRole (Role) &lt;janedoe@example.com&gt;). Entries from the Amazon Web Services Support team display "Amazon Web Services," and don't show an email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeCreated" /></td>
+    <td><CopyableCode code="time_created" /></td>
     <td><code>string</code></td>
     <td>The time the communication was created.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns communications and attachments for one or more support cases. Use the af
 
 ```sql
 SELECT
-attachmentSet,
+attachment_set,
 body,
-caseId,
-submittedBy,
-timeCreated
+case_id,
+submitted_by,
+time_created
 FROM aws.support.communications
 WHERE region = '{{ region }}' -- required
 ;

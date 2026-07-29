@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>OpsMetadata for an Application Manager application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. Use this token to get the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID of the Application Manager application. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
@@ -80,27 +80,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the OpsMetadata objects was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the OpsMetadata object was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedUser" /></td>
+    <td><CopyableCode code="last_modified_user" /></td>
     <td><code>string</code></td>
     <td>The user name who last updated the OpsMetadata object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsMetadataArn" /></td>
+    <td><CopyableCode code="ops_metadata_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the OpsMetadata Object or blob. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:ssm:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:opsmetadata\/(&#91;a-zA-Z0-9-_\.\/&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Application Manager application. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
@@ -198,9 +198,9 @@ View operational metadata related to an application in Application Manager.
 
 ```sql
 SELECT
-Metadata,
-NextToken,
-ResourceId
+metadata,
+next_token,
+resource_id
 FROM aws.ssm.ops_metadatas
 WHERE region = '{{ region }}' -- required
 ;
@@ -212,11 +212,11 @@ Amazon Web Services Systems Manager calls this API operation when displaying all
 
 ```sql
 SELECT
-CreationDate,
-LastModifiedDate,
-LastModifiedUser,
-OpsMetadataArn,
-ResourceId
+creation_date,
+last_modified_date,
+last_modified_user,
+ops_metadata_arn,
+resource_id
 FROM aws.ssm.ops_metadatas
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,7 +251,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-OpsMetadataArn
+ops_metadata_arn
 ;
 ```
 </TabItem>
@@ -305,7 +305,7 @@ WHERE
 region = '{{ region }}' --required
 AND OpsMetadataArn = '{{ OpsMetadataArn }}' --required
 RETURNING
-OpsMetadataArn;
+ops_metadata_arn;
 ```
 </TabItem>
 </Tabs>

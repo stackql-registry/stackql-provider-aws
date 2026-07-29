@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the asset type. (pattern: &lt;code&gt;&#91;^\.&#93;*.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the asset type was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the asset type.</td>
 </tr>
@@ -70,27 +70,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the asset type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the asset type exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formsOutput" /></td>
+    <td><CopyableCode code="forms_output" /></td>
     <td><code>object</code></td>
     <td>The metadata forms attached to the asset type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originDomainId" /></td>
+    <td><CopyableCode code="origin_domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the asset type was originally created. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originProjectId" /></td>
+    <td><CopyableCode code="origin_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone project in which the asset type was originally created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone project that owns the asset type. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
     <td>The revision of the asset type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the asset type was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user that updated the asset type.</td>
 </tr>
@@ -204,17 +204,17 @@ Gets an Amazon DataZone asset type. Asset types define the categories and charac
 ```sql
 SELECT
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-formsOutput,
-originDomainId,
-originProjectId,
-owningProjectId,
+domain_id,
+forms_output,
+origin_domain_id,
+origin_project_id,
+owning_project_id,
 revision,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.datazone.asset_types
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -257,17 +257,17 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-formsOutput,
-originDomainId,
-originProjectId,
-owningProjectId,
+domain_id,
+forms_output,
+origin_domain_id,
+origin_project_id,
+owning_project_id,
 revision,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 ;
 ```
 </TabItem>

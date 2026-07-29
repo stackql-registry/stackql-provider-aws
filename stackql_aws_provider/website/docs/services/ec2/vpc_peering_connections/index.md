@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccepterVpcInfo" /></td>
+    <td><CopyableCode code="accepter_vpc_info" /></td>
     <td><code>string</code></td>
     <td>Information about the accepter VPC. CIDR block information is only returned when describing an active VPC peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string</code></td>
     <td>The time that an unaccepted VPC peering connection will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterVpcInfo" /></td>
+    <td><CopyableCode code="requester_vpc_info" /></td>
     <td><code>string</code></td>
     <td>Information about the requester VPC. CIDR block information is only returned when describing an active VPC peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the VPC peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcPeeringConnectionId" /></td>
+    <td><CopyableCode code="vpc_peering_connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC peering connection.</td>
 </tr>
@@ -230,12 +230,12 @@ Describes your VPC peering connections. The default is to describe all your VPC 
 
 ```sql
 SELECT
-AccepterVpcInfo,
-ExpirationTime,
-RequesterVpcInfo,
-Status,
-Tags,
-VpcPeeringConnectionId
+accepter_vpc_info,
+expiration_time,
+requester_vpc_info,
+status,
+tags,
+vpc_peering_connection_id
 FROM aws.ec2.vpc_peering_connections
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -281,12 +281,12 @@ SELECT
 '{{ PeerVpcId }}',
 '{{ PeerOwnerId }}'
 RETURNING
-AccepterVpcInfo,
-ExpirationTime,
-RequesterVpcInfo,
-Status,
-Tags,
-VpcPeeringConnectionId
+accepter_vpc_info,
+expiration_time,
+requester_vpc_info,
+status,
+tags,
+vpc_peering_connection_id
 ;
 ```
 </TabItem>
@@ -350,8 +350,8 @@ AND AccepterPeeringConnectionOptions = '{{ AccepterPeeringConnectionOptions}}'
 AND DryRun = {{ DryRun}}
 AND RequesterPeeringConnectionOptions = '{{ RequesterPeeringConnectionOptions}}'
 RETURNING
-AccepterPeeringConnectionOptions,
-RequesterPeeringConnectionOptions;
+accepter_peering_connection_options,
+requester_peering_connection_options;
 ```
 </TabItem>
 </Tabs>

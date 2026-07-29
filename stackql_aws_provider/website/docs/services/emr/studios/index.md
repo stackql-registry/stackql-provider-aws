@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthMode" /></td>
+    <td><CopyableCode code="auth_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the Amazon EMR Studio authenticates users with IAM or IAM Identity Center. (SSO, IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the Amazon EMR Studio was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultS3Location" /></td>
+    <td><CopyableCode code="default_s3_location" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 location to back up Amazon EMR Studio Workspaces and notebook files. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The detailed description of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineSecurityGroupId" /></td>
+    <td><CopyableCode code="engine_security_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Engine security group associated with the Amazon EMR Studio. The Engine security group allows inbound network traffic from resources in the Workspace security group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdcInstanceArn" /></td>
+    <td><CopyableCode code="idc_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM Identity Center instance the Studio application belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdcUserAssignment" /></td>
+    <td><CopyableCode code="idc_user_assignment" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the Studio has REQUIRED or OPTIONAL IAM Identity Center user assignment. If the value is set to REQUIRED, users must be explicitly assigned to the Studio application to access the Studio. (REQUIRED, OPTIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdpAuthUrl" /></td>
+    <td><CopyableCode code="idp_auth_url" /></td>
     <td><code>string</code></td>
     <td>Your identity provider's authentication endpoint. Amazon EMR Studio redirects federated users to this endpoint for authentication when logging in to a Studio with the Studio URL. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdpRelayStateParameterName" /></td>
+    <td><CopyableCode code="idp_relay_state_parameter_name" /></td>
     <td><code>string</code></td>
     <td>The name of your identity provider's RelayState parameter. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM role assumed by the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioArn" /></td>
+    <td><CopyableCode code="studio_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioId" /></td>
+    <td><CopyableCode code="studio_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The list of IDs of the subnets associated with the Amazon EMR Studio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with the Amazon EMR Studio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedIdentityPropagationEnabled" /></td>
+    <td><CopyableCode code="trusted_identity_propagation_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the Studio has Trusted identity propagation enabled. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The unique access URL of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserRole" /></td>
+    <td><CopyableCode code="user_role" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM role assumed by users logged in to the Amazon EMR Studio. A Studio only requires a UserRole when you use IAM authentication. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC associated with the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceSecurityGroupId" /></td>
+    <td><CopyableCode code="workspace_security_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Workspace security group associated with the Amazon EMR Studio. The Workspace security group allows outbound network traffic to resources in the Engine security group and to the internet. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -170,37 +170,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthMode" /></td>
+    <td><CopyableCode code="auth_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the Studio authenticates users using IAM or IAM Identity Center. (SSO, IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Amazon EMR Studio was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The detailed description of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioId" /></td>
+    <td><CopyableCode code="studio_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The unique access URL of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Virtual Private Cloud (Amazon VPC) associated with the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -298,27 +298,27 @@ Returns details for the specified Amazon EMR Studio including ID, Name, VPC, Stu
 
 ```sql
 SELECT
-AuthMode,
-CreationTime,
-DefaultS3Location,
-Description,
-EncryptionKeyArn,
-EngineSecurityGroupId,
-IdcInstanceArn,
-IdcUserAssignment,
-IdpAuthUrl,
-IdpRelayStateParameterName,
-Name,
-ServiceRole,
-StudioArn,
-StudioId,
-SubnetIds,
-Tags,
-TrustedIdentityPropagationEnabled,
-Url,
-UserRole,
-VpcId,
-WorkspaceSecurityGroupId
+auth_mode,
+creation_time,
+default_s3_location,
+description,
+encryption_key_arn,
+engine_security_group_id,
+idc_instance_arn,
+idc_user_assignment,
+idp_auth_url,
+idp_relay_state_parameter_name,
+name,
+service_role,
+studio_arn,
+studio_id,
+subnet_ids,
+tags,
+trusted_identity_propagation_enabled,
+url,
+user_role,
+vpc_id,
+workspace_security_group_id
 FROM aws.emr.studios
 WHERE region = '{{ region }}' -- required
 ;
@@ -330,13 +330,13 @@ Returns a list of all Amazon EMR Studios associated with the Amazon Web Services
 
 ```sql
 SELECT
-AuthMode,
-CreationTime,
-Description,
-Name,
-StudioId,
-Url,
-VpcId
+auth_mode,
+creation_time,
+description,
+name,
+studio_id,
+url,
+vpc_id
 FROM aws.emr.studios
 WHERE region = '{{ region }}' -- required
 ;
@@ -399,8 +399,8 @@ SELECT
 '{{ EncryptionKeyArn }}',
 '{{ region }}'
 RETURNING
-StudioId,
-Url
+studio_id,
+url
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationTime" /></td>
+    <td><CopyableCode code="association_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time at which a related item was associated with a case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseId" /></td>
+    <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the case.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>Represents the content of a particular type of related item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performedBy" /></td>
+    <td><CopyableCode code="performed_by" /></td>
     <td><code>object</code></td>
     <td>Represents the entity that performed the action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedItemId" /></td>
+    <td><CopyableCode code="related_item_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of a related item.</td>
 </tr>
@@ -154,11 +154,11 @@ Searches for related items across all cases within a domain. This is a global se
 
 ```sql
 SELECT
-associationTime,
-caseId,
+association_time,
+case_id,
 content,
-performedBy,
-relatedItemId,
+performed_by,
+related_item_id,
 tags,
 type_
 FROM aws.connectcases.all_related_items

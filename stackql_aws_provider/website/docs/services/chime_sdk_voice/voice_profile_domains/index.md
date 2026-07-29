@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the voice profile domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the voice profile domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the voice profile domain. (pattern: &lt;code&gt;&#91;a-zA-Z0-9 _.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the configuration settings for server-side encryption. We only support symmetric keys. Do not use asymmetric or HMAC keys, or KMS aliases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the voice profile was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceProfileDomainArn" /></td>
+    <td><CopyableCode code="voice_profile_domain_arn" /></td>
     <td><code>string</code></td>
     <td>The voice profile domain's Amazon Resource Number (ARN). (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceProfileDomainId" /></td>
+    <td><CopyableCode code="voice_profile_domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the voice profile domain. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to return the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceProfileDomains" /></td>
+    <td><CopyableCode code="voice_profile_domains" /></td>
     <td><code>array</code></td>
     <td>The list of voice profile domains.</td>
 </tr>
@@ -218,13 +218,13 @@ Retrieves the details of the specified voice profile domain.
 
 ```sql
 SELECT
-CreatedTimestamp,
-Description,
-Name,
-ServerSideEncryptionConfiguration,
-UpdatedTimestamp,
-VoiceProfileDomainArn,
-VoiceProfileDomainId
+created_timestamp,
+description,
+name,
+server_side_encryption_configuration,
+updated_timestamp,
+voice_profile_domain_arn,
+voice_profile_domain_id
 FROM aws.chime_sdk_voice.voice_profile_domains
 WHERE voice_profile_domain_id = '{{ voice_profile_domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -237,8 +237,8 @@ Lists the specified voice profile domains in the administrator's AWS account.
 
 ```sql
 SELECT
-NextToken,
-VoiceProfileDomains
+next_token,
+voice_profile_domains
 FROM aws.chime_sdk_voice.voice_profile_domains
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -279,7 +279,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-VoiceProfileDomain
+voice_profile_domain
 ;
 ```
 </TabItem>
@@ -333,7 +333,7 @@ WHERE
 voice_profile_domain_id = '{{ voice_profile_domain_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-VoiceProfileDomain;
+voice_profile_domain;
 ```
 </TabItem>
 </Tabs>

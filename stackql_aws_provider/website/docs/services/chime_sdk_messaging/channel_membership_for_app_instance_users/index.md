@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstanceUserMembershipSummary" /></td>
+    <td><CopyableCode code="app_instance_user_membership_summary" /></td>
     <td><code>object</code></td>
     <td>Returns the channel membership data for an AppInstance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelSummary" /></td>
+    <td><CopyableCode code="channel_summary" /></td>
     <td><code>object</code></td>
     <td>Summary of the details of a Channel.</td>
 </tr>
@@ -139,8 +139,8 @@ Returns the details of a channel based on the membership of the specified AppIns
 
 ```sql
 SELECT
-AppInstanceUserMembershipSummary,
-ChannelSummary
+app_instance_user_membership_summary,
+channel_summary
 FROM aws.chime_sdk_messaging.channel_membership_for_app_instance_users
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `app-instance-user-arn` = '{{ app-instance-user-arn }}' -- required

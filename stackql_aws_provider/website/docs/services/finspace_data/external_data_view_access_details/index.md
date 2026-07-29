@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The credentials required to access the external Dataview from the S3 location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Location" /></td>
+    <td><CopyableCode code="s_3_location" /></td>
     <td><code>object</code></td>
     <td>The location where the external Dataview is stored.</td>
 </tr>
@@ -135,7 +135,7 @@ Returns the credentials to access the external Dataview from an S3 location. To 
 ```sql
 SELECT
 credentials,
-s3Location
+s_3_location
 FROM aws.finspace_data.external_data_view_access_details
 WHERE dataview_id = '{{ dataview_id }}' -- required
 AND dataset_id = '{{ dataset_id }}' -- required

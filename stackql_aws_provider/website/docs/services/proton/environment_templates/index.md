@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment template was created.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the environment template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment template as displayed in the developer interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>The customer provided encryption key for the environment template. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment template was last modified.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>When included, indicates that the environment template is for customer provisioned and managed infrastructure. (CUSTOMER_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedVersion" /></td>
+    <td><CopyableCode code="recommended_version" /></td>
     <td><code>string</code></td>
     <td>The ID of the recommended version of the environment template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*)).(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment template was created.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the environment template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment template as displayed in the developer interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment template was last modified.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>When included, indicates that the environment template is for customer provisioned and managed infrastructure. (CUSTOMER_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedVersion" /></td>
+    <td><CopyableCode code="recommended_version" /></td>
     <td><code>string</code></td>
     <td>The recommended version of the environment template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*)).(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -245,13 +245,13 @@ Get detailed data for an environment template.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
-displayName,
-encryptionKey,
-lastModifiedAt,
+display_name,
+encryption_key,
+last_modified_at,
 provisioning,
-recommendedVersion
+recommended_version
 FROM aws.proton.environment_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,12 +265,12 @@ List environment templates.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
-displayName,
-lastModifiedAt,
+display_name,
+last_modified_at,
 provisioning,
-recommendedVersion
+recommended_version
 FROM aws.proton.environment_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -311,7 +311,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-environmentTemplate
+environment_template
 ;
 ```
 </TabItem>
@@ -378,7 +378,7 @@ WHERE
 region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 RETURNING
-environmentTemplate;
+environment_template;
 ```
 </TabItem>
 </Tabs>

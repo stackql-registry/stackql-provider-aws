@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityReservationId" /></td>
+    <td><CopyableCode code="capacity_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationInfo" /></td>
+    <td><CopyableCode code="capacity_reservation_info" /></td>
     <td><code>string</code></td>
     <td>Information about the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string</code></td>
     <td>The date and time, in UTC time format, at which the request was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedBy" /></td>
+    <td><CopyableCode code="requested_by" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that initiated the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the request. For more information, see View billing assignment requests for a shared Amazon EC2 Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Information about the status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnusedReservationBillingOwnerId" /></td>
+    <td><CopyableCode code="unused_reservation_billing_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account to which the request was sent.</td>
 </tr>
@@ -179,13 +179,13 @@ Describes a request to assign the billing of the unused capacity of a Capacity R
 
 ```sql
 SELECT
-CapacityReservationId,
-CapacityReservationInfo,
-LastUpdateTime,
-RequestedBy,
-Status,
-StatusMessage,
-UnusedReservationBillingOwnerId
+capacity_reservation_id,
+capacity_reservation_info,
+last_update_time,
+requested_by,
+status,
+status_message,
+unused_reservation_billing_owner_id
 FROM aws.ec2.capacity_reservation_billing_requests
 WHERE Role = '{{ Role }}' -- required
 AND region = '{{ region }}' -- required

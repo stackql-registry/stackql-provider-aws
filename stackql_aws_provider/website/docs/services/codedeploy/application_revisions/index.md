@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application that corresponds to the revisions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Information about errors that might have occurred during the API call.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application that corresponds to the revision.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the location of an application revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionInfo" /></td>
+    <td><CopyableCode code="revision_info" /></td>
     <td><code>object</code></td>
     <td>General information about the revision.</td>
 </tr>
@@ -110,22 +110,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appSpecContent" /></td>
+    <td><CopyableCode code="app_spec_content" /></td>
     <td><code>object</code></td>
     <td>The content of an AppSpec file for an Lambda or Amazon ECS deployment. The content is formatted as JSON or YAML and stored as a RawString.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gitHubLocation" /></td>
+    <td><CopyableCode code="git_hub_location" /></td>
     <td><code>object</code></td>
     <td>Information about the location of application artifacts stored in GitHub.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionType" /></td>
+    <td><CopyableCode code="revision_type" /></td>
     <td><code>string</code></td>
     <td>The type of application revision: S3: An application revision stored in Amazon S3. GitHub: An application revision stored in GitHub (EC2/On-premises deployments only). String: A YAML-formatted or JSON-formatted string (Lambda deployments only). AppSpecContent: An AppSpecContent object that contains the contents of an AppSpec file for an Lambda or Amazon ECS deployment. The content is formatted as JSON or YAML stored as a RawString. (S3, GitHub, String, AppSpecContent)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Location" /></td>
+    <td><CopyableCode code="s_3_location" /></td>
     <td><code>object</code></td>
     <td>Information about the location of a revision stored in Amazon S3.</td>
 </tr>
@@ -222,8 +222,8 @@ Gets information about one or more application revisions. The maximum number of 
 
 ```sql
 SELECT
-applicationName,
-errorMessage,
+application_name,
+error_message,
 revisions
 FROM aws.codedeploy.application_revisions
 WHERE region = '{{ region }}' -- required
@@ -236,9 +236,9 @@ Gets information about an application revision.
 
 ```sql
 SELECT
-applicationName,
+application_name,
 revision,
-revisionInfo
+revision_info
 FROM aws.codedeploy.application_revisions
 WHERE region = '{{ region }}' -- required
 ;
@@ -250,10 +250,10 @@ Lists information about revisions for an application.
 
 ```sql
 SELECT
-appSpecContent,
-gitHubLocation,
-revisionType,
-s3Location,
+app_spec_content,
+git_hub_location,
+revision_type,
+s_3_location,
 string
 FROM aws.codedeploy.application_revisions
 WHERE region = '{{ region }}' -- required

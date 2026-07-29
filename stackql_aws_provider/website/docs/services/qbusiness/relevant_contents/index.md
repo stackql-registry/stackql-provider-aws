@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>The actual content of the relevant item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentAttributes" /></td>
+    <td><CopyableCode code="document_attributes" /></td>
     <td><code>array</code></td>
     <td>Additional attributes of the document containing the relevant content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentId" /></td>
+    <td><CopyableCode code="document_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the document containing the relevant content. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentTitle" /></td>
+    <td><CopyableCode code="document_title" /></td>
     <td><code>string</code></td>
     <td>The title of the document containing the relevant content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentUri" /></td>
+    <td><CopyableCode code="document_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the document containing the relevant content. (pattern: &lt;code&gt;(https?|ftp|file):​//(&#91;^\s&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scoreAttributes" /></td>
+    <td><CopyableCode code="score_attributes" /></td>
     <td><code>object</code></td>
     <td>Attributes related to the relevance score of the content.</td>
 </tr>
@@ -150,11 +150,11 @@ Searches for relevant content in a Amazon Q Business application based on a quer
 ```sql
 SELECT
 content,
-documentAttributes,
-documentId,
-documentTitle,
-documentUri,
-scoreAttributes
+document_attributes,
+document_id,
+document_title,
+document_uri,
+score_attributes
 FROM aws.qbusiness.relevant_contents
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

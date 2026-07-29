@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AtTime" /></td>
+    <td><CopyableCode code="at_time" /></td>
     <td><code>string</code></td>
     <td>The time, as an ISO 8601 string, that you specified in your command. If you don't specify a time, GetCalendarState uses the current time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextTransitionTime" /></td>
+    <td><CopyableCode code="next_transition_time" /></td>
     <td><code>string</code></td>
     <td>The time, as an ISO 8601 string, that the calendar state will change. If the current calendar state is OPEN, NextTransitionTime indicates when the calendar state changes to CLOSED, and vice-versa.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the calendar. An OPEN calendar indicates that actions are allowed to proceed, and a CLOSED calendar indicates that actions aren't allowed to proceed. (OPEN, CLOSED)</td>
 </tr>
@@ -129,9 +129,9 @@ Gets the state of a Amazon Web Services Systems Manager change calendar at the c
 
 ```sql
 SELECT
-AtTime,
-NextTransitionTime,
-State
+at_time,
+next_transition_time,
+state
 FROM aws.ssm.calendar_states
 WHERE region = '{{ region }}' -- required
 ;

@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that uniquely identifies this delivery destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationConfiguration" /></td>
+    <td><CopyableCode code="delivery_destination_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the ARN of the Amazon Web Services resource that will receive the logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationType" /></td>
+    <td><CopyableCode code="delivery_destination_type" /></td>
     <td><code>string</code></td>
     <td>Displays whether this delivery destination is CloudWatch Logs, Amazon S3, Firehose, or X-Ray. (S3, CWL, FH, XRAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputFormat" /></td>
+    <td><CopyableCode code="output_format" /></td>
     <td><code>string</code></td>
     <td>The format of the logs that are sent to this delivery destination. (json, plain, w3c, raw, parquet)</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that uniquely identifies this delivery destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationConfiguration" /></td>
+    <td><CopyableCode code="delivery_destination_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the ARN of the Amazon Web Services resource that will receive the logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationType" /></td>
+    <td><CopyableCode code="delivery_destination_type" /></td>
     <td><code>string</code></td>
     <td>Displays whether this delivery destination is CloudWatch Logs, Amazon S3, Firehose, or X-Ray. (S3, CWL, FH, XRAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputFormat" /></td>
+    <td><CopyableCode code="output_format" /></td>
     <td><code>string</code></td>
     <td>The format of the logs that are sent to this delivery destination. (json, plain, w3c, raw, parquet)</td>
 </tr>
@@ -213,9 +213,9 @@ Retrieves complete information about one delivery destination.
 SELECT
 name,
 arn,
-deliveryDestinationConfiguration,
-deliveryDestinationType,
-outputFormat,
+delivery_destination_configuration,
+delivery_destination_type,
+output_format,
 tags
 FROM aws.logs.delivery_destinations
 WHERE region = '{{ region }}' -- required
@@ -230,9 +230,9 @@ Retrieves a list of the delivery destinations that have been created in the acco
 SELECT
 name,
 arn,
-deliveryDestinationConfiguration,
-deliveryDestinationType,
-outputFormat,
+delivery_destination_configuration,
+delivery_destination_type,
+output_format,
 tags
 FROM aws.logs.delivery_destinations
 WHERE region = '{{ region }}' -- required
@@ -266,7 +266,7 @@ WHERE
 region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 RETURNING
-deliveryDestination;
+delivery_destination;
 ```
 </TabItem>
 </Tabs>

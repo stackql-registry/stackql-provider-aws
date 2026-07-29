@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowsVpcAndNonVpcInstanceMemberships" /></td>
+    <td><CopyableCode code="allows_vpc_and_non_vpc_instance_memberships" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this option group can be applied to both VPC and non-VPC instances. The value true indicates the option group can be applied to both VPC and non-VPC instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyTimestamp" /></td>
+    <td><CopyableCode code="copy_timestamp" /></td>
     <td><code>string</code></td>
     <td>Indicates when the option group was copied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineName" /></td>
+    <td><CopyableCode code="engine_name" /></td>
     <td><code>string</code></td>
     <td>Indicates the name of the engine that this option group can be applied to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MajorEngineVersion" /></td>
+    <td><CopyableCode code="major_engine_version" /></td>
     <td><code>string</code></td>
     <td>Indicates the major engine version associated with this option group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupArn" /></td>
+    <td><CopyableCode code="option_group_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the Amazon Resource Name (ARN) for the option group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupDescription" /></td>
+    <td><CopyableCode code="option_group_description" /></td>
     <td><code>string</code></td>
     <td>Provides a description of the option group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupName" /></td>
+    <td><CopyableCode code="option_group_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the option group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>Indicates what options are available in the option group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceAccountId" /></td>
+    <td><CopyableCode code="source_account_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the Amazon Web Services account ID for the option group from which this option group is copied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceOptionGroup" /></td>
+    <td><CopyableCode code="source_option_group" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the option group from which this option group is copied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>If AllowsVpcAndNonVpcInstanceMemberships is false, this field is blank. If AllowsVpcAndNonVpcInstanceMemberships is true and this field is blank, then this option group can be applied to both VPC and non-VPC instances. If this field contains a value, then this option group can only be applied to instances that are in the VPC indicated by this field.</td>
 </tr>
@@ -260,17 +260,17 @@ Describes the available option groups.
 
 ```sql
 SELECT
-AllowsVpcAndNonVpcInstanceMemberships,
-CopyTimestamp,
-EngineName,
-MajorEngineVersion,
-OptionGroupArn,
-OptionGroupDescription,
-OptionGroupName,
-Options,
-SourceAccountId,
-SourceOptionGroup,
-VpcId
+allows_vpc_and_non_vpc_instance_memberships,
+copy_timestamp,
+engine_name,
+major_engine_version,
+option_group_arn,
+option_group_description,
+option_group_name,
+options,
+source_account_id,
+source_option_group,
+vpc_id
 FROM aws.rds.option_groups
 WHERE region = '{{ region }}' -- required
 AND OptionGroupName = '{{ OptionGroupName }}'
@@ -315,17 +315,17 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-AllowsVpcAndNonVpcInstanceMemberships,
-CopyTimestamp,
-EngineName,
-MajorEngineVersion,
-OptionGroupArn,
-OptionGroupDescription,
-OptionGroupName,
-Options,
-SourceAccountId,
-SourceOptionGroup,
-VpcId
+allows_vpc_and_non_vpc_instance_memberships,
+copy_timestamp,
+engine_name,
+major_engine_version,
+option_group_arn,
+option_group_description,
+option_group_name,
+options,
+source_account_id,
+source_option_group,
+vpc_id
 ;
 ```
 </TabItem>
@@ -382,17 +382,17 @@ AND OptionsToInclude = '{{ OptionsToInclude}}'
 AND OptionsToRemove = '{{ OptionsToRemove}}'
 AND ApplyImmediately = {{ ApplyImmediately}}
 RETURNING
-AllowsVpcAndNonVpcInstanceMemberships,
-CopyTimestamp,
-EngineName,
-MajorEngineVersion,
-OptionGroupArn,
-OptionGroupDescription,
-OptionGroupName,
-Options,
-SourceAccountId,
-SourceOptionGroup,
-VpcId;
+allows_vpc_and_non_vpc_instance_memberships,
+copy_timestamp,
+engine_name,
+major_engine_version,
+option_group_arn,
+option_group_description,
+option_group_name,
+options,
+source_account_id,
+source_option_group,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

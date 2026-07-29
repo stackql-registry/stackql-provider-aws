@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tag to attach to the specified resource. Tags are metadata that you can use to manage a resource.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags (metadata) you have assigned to the resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.iotwireless.tags
 WHERE resourceArn = '{{ resourceArn }}' -- required
 AND region = '{{ region }}' -- required

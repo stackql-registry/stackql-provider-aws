@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the monitor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthEventsConfig" /></td>
+    <td><CopyableCode code="health_events_config" /></td>
     <td><code>object</code></td>
     <td>A complex type with the configuration information that determines the threshold and other conditions for when Internet Monitor creates a health event for an overall performance or availability issue, across an application's geographies. Defines the percentages, for overall performance scores and availability scores for an application, that are the thresholds for when Amazon CloudWatch Internet Monitor creates a health event. You can override the defaults to set a custom threshold for overall performance or availability scores, or both. You can also set thresholds for local health scores,, where Internet Monitor creates a health event when scores cross a threshold for one or more city-networks, in addition to creating an event when an overall score crosses a threshold. If you don't set a health event threshold, the default value is 95%. For local thresholds, you also set a minimum percentage of overall traffic that is impacted by an issue before Internet Monitor creates an event. In addition, you can disable local thresholds, for performance scores, availability scores, or both. For more information, see Change health event thresholds in the Internet Monitor section of the CloudWatch User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InternetMeasurementsLogDelivery" /></td>
+    <td><CopyableCode code="internet_measurements_log_delivery" /></td>
     <td><code>object</code></td>
     <td>Publish internet measurements to an Amazon S3 bucket in addition to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxCityNetworksToMonitor" /></td>
+    <td><CopyableCode code="max_city_networks_to_monitor" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of city-networks to monitor for your resources. A city-network is the location (city) where clients access your application resources from and the ASN or network provider, such as an internet service provider (ISP), that clients access the resources through. This limit can help control billing costs. To learn more, see Choosing a city-network maximum value in the Amazon CloudWatch Internet Monitor section of the CloudWatch User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the monitor was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitor. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingStatus" /></td>
+    <td><CopyableCode code="processing_status" /></td>
     <td><code>string</code></td>
     <td>The health of the data processing for the monitor. (OK, INACTIVE, COLLECTING_DATA, INSUFFICIENT_DATA, FAULT_SERVICE, FAULT_ACCESS_CLOUDWATCH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingStatusInfo" /></td>
+    <td><CopyableCode code="processing_status_info" /></td>
     <td><code>string</code></td>
     <td>Additional information about the health of the data processing for the monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>The resources monitored by the monitor. Resources are listed by their Amazon Resource Names (ARNs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the monitor. (PENDING, ACTIVE, INACTIVE, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags that have been added to monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficPercentageToMonitor" /></td>
+    <td><CopyableCode code="traffic_percentage_to_monitor" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the internet-facing traffic for your application to monitor with this monitor. If you set a city-networks maximum, that limit overrides the traffic percentage that you set. To learn more, see Choosing an application traffic percentage to monitor in the Amazon CloudWatch Internet Monitor section of the CloudWatch User Guide.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MonitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitor. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingStatus" /></td>
+    <td><CopyableCode code="processing_status" /></td>
     <td><code>string</code></td>
     <td>The health of data processing for the monitor. (OK, INACTIVE, COLLECTING_DATA, INSUFFICIENT_DATA, FAULT_SERVICE, FAULT_ACCESS_CLOUDWATCH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a monitor. (PENDING, ACTIVE, INACTIVE, ERROR)</td>
 </tr>
@@ -292,19 +292,19 @@ Gets information about a monitor in Amazon CloudWatch Internet Monitor based on 
 
 ```sql
 SELECT
-CreatedAt,
-HealthEventsConfig,
-InternetMeasurementsLogDelivery,
-MaxCityNetworksToMonitor,
-ModifiedAt,
-MonitorArn,
-MonitorName,
-ProcessingStatus,
-ProcessingStatusInfo,
-Resources,
-Status,
-Tags,
-TrafficPercentageToMonitor
+created_at,
+health_events_config,
+internet_measurements_log_delivery,
+max_city_networks_to_monitor,
+modified_at,
+monitor_arn,
+monitor_name,
+processing_status,
+processing_status_info,
+resources,
+status,
+tags,
+traffic_percentage_to_monitor
 FROM aws.internetmonitor.monitors
 WHERE monitor_name = '{{ monitor_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -318,10 +318,10 @@ Lists all of your monitors for Amazon CloudWatch Internet Monitor and their stat
 
 ```sql
 SELECT
-MonitorArn,
-MonitorName,
-ProcessingStatus,
-Status
+monitor_arn,
+monitor_name,
+processing_status,
+status
 FROM aws.internetmonitor.monitors
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -370,8 +370,8 @@ SELECT
 '{{ HealthEventsConfig }}',
 '{{ region }}'
 RETURNING
-Arn,
-Status
+arn,
+status
 ;
 ```
 </TabItem>
@@ -451,8 +451,8 @@ WHERE
 monitor_name = '{{ monitor_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-MonitorArn,
-Status;
+monitor_arn,
+status;
 ```
 </TabItem>
 </Tabs>

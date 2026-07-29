@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="auditEvents" /></td>
+    <td><CopyableCode code="audit_events" /></td>
     <td><code>array</code></td>
     <td>A list of case audits where each represents a particular edit of the case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns the audit history about a specific case if it exists.
 
 ```sql
 SELECT
-auditEvents,
-nextToken
+audit_events,
+next_token
 FROM aws.connectcases.case_audit_events
 WHERE case_id = '{{ case_id }}' -- required
 AND domain_id = '{{ domain_id }}' -- required

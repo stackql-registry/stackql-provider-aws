@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The resource arn of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>array</code></td>
     <td>The content of the message, can include up to 5 modals. Each modal must contain a message, a header, and background color. ImageUrl and buttons are optional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The creation date of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomConfig" /></td>
+    <td><CopyableCode code="custom_config" /></td>
     <td><code>object</code></td>
     <td>Custom config to be sent to client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The last modified date of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Layout" /></td>
+    <td><CopyableCode code="layout" /></td>
     <td><code>string</code></td>
     <td>The layout of the message. (BOTTOM_BANNER, TOP_BANNER, OVERLAYS, MOBILE_FEED, MIDDLE_BANNER, CAROUSEL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateDescription" /></td>
+    <td><CopyableCode code="template_description" /></td>
     <td><code>string</code></td>
     <td>The description of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The type of the template. (EMAIL, SMS, VOICE, PUSH, INAPP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version id of the template.</td>
 </tr>
@@ -205,16 +205,16 @@ Retrieves the content and settings of a message template for messages sent throu
 
 ```sql
 SELECT
-Arn,
-Content,
-CreationDate,
-CustomConfig,
-LastModifiedDate,
-Layout,
-TemplateDescription,
-TemplateName,
-TemplateType,
-Version,
+arn,
+content,
+creation_date,
+custom_config,
+last_modified_date,
+layout,
+template_description,
+template_name,
+template_type,
+version,
 tags
 FROM aws.pinpoint.in_app_templates
 WHERE `template-name` = '{{ template-name }}' -- required
@@ -250,7 +250,7 @@ SELECT
 '{{ template-name }}',
 '{{ region }}'
 RETURNING
-TemplateCreateMessageBody
+template_create_message_body
 ;
 ```
 </TabItem>
@@ -347,7 +347,7 @@ AND InAppTemplateRequest = '{{ InAppTemplateRequest }}' --required
 AND `create-new-version` = {{ create-new-version}}
 AND version = '{{ version}}'
 RETURNING
-MessageBody;
+message_body;
 ```
 </TabItem>
 </Tabs>

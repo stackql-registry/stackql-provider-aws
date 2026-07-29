@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the requested compute fleets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetsNotFound" /></td>
+    <td><CopyableCode code="fleets_not_found" /></td>
     <td><code>array</code></td>
     <td>The names of compute fleets for which information could not be found.</td>
 </tr>
@@ -174,7 +174,7 @@ Gets information about one or more compute fleets.
 ```sql
 SELECT
 fleets,
-fleetsNotFound
+fleets_not_found
 FROM aws.codebuild.fleets
 WHERE region = '{{ region }}' -- required
 ;

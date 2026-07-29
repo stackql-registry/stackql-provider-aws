@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="taxExemptionTypes" /></td>
+    <td><CopyableCode code="tax_exemption_types" /></td>
     <td><code>array</code></td>
     <td>The supported types of tax exemptions.</td>
 </tr>
@@ -119,7 +119,7 @@ Get supported tax exemption types. The IAM action is tax:GetExemptions.
 
 ```sql
 SELECT
-taxExemptionTypes
+tax_exemption_types
 FROM aws.taxsettings.tax_exemption_types
 WHERE region = '{{ region }}' -- required
 ;

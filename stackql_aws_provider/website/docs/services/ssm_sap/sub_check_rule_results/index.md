@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of what the rule validates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the rule result. (pattern: &lt;code&gt;&#91;&#123;&#93;?&#91;0-9a-fA-F&#93;&#123;8&#125;-(&#91;0-9a-fA-F&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-fA-F&#93;&#123;12&#125;&#91;&#125;&#93;?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A message providing details about the rule result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>Additional metadata associated with the rule result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the rule result. (PASSED, FAILED, WARNING, INFO, UNKNOWN)</td>
 </tr>
@@ -139,11 +139,11 @@ Lists the rules of a specified sub-check belonging to a configuration check oper
 
 ```sql
 SELECT
-Description,
-Id,
-Message,
-Metadata,
-Status
+description,
+id,
+message,
+metadata,
+status
 FROM aws.ssm_sap.sub_check_rule_results
 WHERE region = '{{ region }}' -- required
 ;

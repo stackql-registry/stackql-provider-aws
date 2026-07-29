@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnomalousLogGroups" /></td>
+    <td><CopyableCode code="anomalous_log_groups" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon CloudWatch log groups that are related to an insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightId" /></td>
+    <td><CopyableCode code="insight_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the insight containing the log groups. (pattern: &lt;code&gt;^&#91;\w-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the list of log groups that contain log anomalies.
 
 ```sql
 SELECT
-AnomalousLogGroups,
-InsightId,
-NextToken
+anomalous_log_groups,
+insight_id,
+next_token
 FROM aws.devops_guru.anomalous_log_groups
 WHERE region = '{{ region }}' -- required
 ;

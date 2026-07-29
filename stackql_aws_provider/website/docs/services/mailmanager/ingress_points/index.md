@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARecord" /></td>
+    <td><CopyableCode code="a_record" /></td>
     <td><code>string</code></td>
     <td>The DNS A Record that identifies your ingress endpoint. Configure your DNS Mail Exchange (MX) record with this value to route emails to Mail Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ingress endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressPointArn" /></td>
+    <td><CopyableCode code="ingress_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ingress endpoint resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressPointAuthConfiguration" /></td>
+    <td><CopyableCode code="ingress_point_auth_configuration" /></td>
     <td><code>object</code></td>
     <td>The authentication configuration of the ingress endpoint resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressPointId" /></td>
+    <td><CopyableCode code="ingress_point_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of an ingress endpoint resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressPointName" /></td>
+    <td><CopyableCode code="ingress_point_name" /></td>
     <td><code>string</code></td>
     <td>A user friendly name for the ingress endpoint. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ingress endpoint was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration for the ingress point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleSetId" /></td>
+    <td><CopyableCode code="rule_set_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a rule set resource associated with the ingress endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the ingress endpoint resource. (PROVISIONING, DEPROVISIONING, UPDATING, ACTIVE, CLOSED, FAILED, ASSOCIATED_VPC_ENDPOINT_DOES_NOT_EXIST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TlsPolicy" /></td>
+    <td><CopyableCode code="tls_policy" /></td>
     <td><code>string</code></td>
     <td>The selected Transport Layer Security (TLS) policy of the ingress point. (REQUIRED, OPTIONAL, FIPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficPolicyId" /></td>
+    <td><CopyableCode code="traffic_policy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the traffic policy resource associated with the ingress endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of ingress endpoint. (OPEN, AUTH, MTLS)</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARecord" /></td>
+    <td><CopyableCode code="a_record" /></td>
     <td><code>string</code></td>
     <td>The DNS A Record that identifies your ingress endpoint. Configure your DNS Mail Exchange (MX) record with this value to route emails to Mail Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressPointId" /></td>
+    <td><CopyableCode code="ingress_point_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the ingress endpoint resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressPointName" /></td>
+    <td><CopyableCode code="ingress_point_name" /></td>
     <td><code>string</code></td>
     <td>A user friendly name for the ingress endpoint resource. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the ingress endpoint resource. (PROVISIONING, DEPROVISIONING, UPDATING, ACTIVE, CLOSED, FAILED, ASSOCIATED_VPC_ENDPOINT_DOES_NOT_EXIST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of ingress endpoint resource. (OPEN, AUTH, MTLS)</td>
 </tr>
@@ -248,19 +248,19 @@ Fetch ingress endpoint resource attributes.
 
 ```sql
 SELECT
-ARecord,
-CreatedTimestamp,
-IngressPointArn,
-IngressPointAuthConfiguration,
-IngressPointId,
-IngressPointName,
-LastUpdatedTimestamp,
-NetworkConfiguration,
-RuleSetId,
-Status,
-TlsPolicy,
-TrafficPolicyId,
-Type
+a_record,
+created_timestamp,
+ingress_point_arn,
+ingress_point_auth_configuration,
+ingress_point_id,
+ingress_point_name,
+last_updated_timestamp,
+network_configuration,
+rule_set_id,
+status,
+tls_policy,
+traffic_policy_id,
+type
 FROM aws.mailmanager.ingress_points
 WHERE region = '{{ region }}' -- required
 ;
@@ -272,11 +272,11 @@ List all ingress endpoint resources.
 
 ```sql
 SELECT
-ARecord,
-IngressPointId,
-IngressPointName,
-Status,
-Type
+a_record,
+ingress_point_id,
+ingress_point_name,
+status,
+type
 FROM aws.mailmanager.ingress_points
 WHERE region = '{{ region }}' -- required
 ;
@@ -323,7 +323,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-IngressPointId
+ingress_point_id
 ;
 ```
 </TabItem>

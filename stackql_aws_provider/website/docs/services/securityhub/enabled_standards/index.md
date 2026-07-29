@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="StandardsArn" /></td>
+    <td><CopyableCode code="standards_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsControlsUpdatable" /></td>
+    <td><CopyableCode code="standards_controls_updatable" /></td>
     <td><code>string</code></td>
     <td>Specifies whether you can retrieve information about and configure individual controls that apply to the standard. Possible values are: READY_FOR_UPDATES - Controls in the standard can be retrieved and configured. NOT_READY_FOR_UPDATES - Controls in the standard cannot be retrieved or configured. (READY_FOR_UPDATES, NOT_READY_FOR_UPDATES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsInput" /></td>
+    <td><CopyableCode code="standards_input" /></td>
     <td><code>object</code></td>
     <td>A key-value pair of input for the standard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsStatus" /></td>
+    <td><CopyableCode code="standards_status" /></td>
     <td><code>string</code></td>
     <td>The status of your subscription to the standard. Possible values are: PENDING - The standard is in the process of being enabled. Or the standard is already enabled and Security Hub CSPM is adding new controls to the standard. READY - The standard is enabled. INCOMPLETE - The standard could not be enabled completely. One or more errors (StandardsStatusReason) occurred when Security Hub CSPM attempted to enable the standard. DELETING - The standard is in the process of being disabled. FAILED - The standard could not be disabled. One or more errors (StandardsStatusReason) occurred when Security Hub CSPM attempted to disable the standard. (PENDING, READY, FAILED, DELETING, INCOMPLETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsStatusReason" /></td>
+    <td><CopyableCode code="standards_status_reason" /></td>
     <td><code>object</code></td>
     <td>The reason for the current status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsSubscriptionArn" /></td>
+    <td><CopyableCode code="standards_subscription_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource that represents your subscription to the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ Returns a list of the standards that are currently enabled.
 
 ```sql
 SELECT
-StandardsArn,
-StandardsControlsUpdatable,
-StandardsInput,
-StandardsStatus,
-StandardsStatusReason,
-StandardsSubscriptionArn
+standards_arn,
+standards_controls_updatable,
+standards_input,
+standards_status,
+standards_status_reason,
+standards_subscription_arn
 FROM aws.securityhub.enabled_standards
 WHERE region = '{{ region }}' -- required
 ;

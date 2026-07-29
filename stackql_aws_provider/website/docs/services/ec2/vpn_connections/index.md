@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>The category of the VPN connection. A value of VPN indicates an Amazon Web Services VPN connection. A value of VPN-Classic indicates an Amazon Web Services Classic VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkArn" /></td>
+    <td><CopyableCode code="core_network_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the core network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkAttachmentArn" /></td>
+    <td><CopyableCode code="core_network_attachment_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the core network attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerGatewayConfiguration" /></td>
+    <td><CopyableCode code="customer_gateway_configuration" /></td>
     <td><code>string</code></td>
     <td>The configuration information for the VPN connection's customer gateway (in the native XML format). This element is always present in the CreateVpnConnection response; however, it's present in the DescribeVpnConnections response only if the VPN connection is in the pending or available state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerGatewayId" /></td>
+    <td><CopyableCode code="customer_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the customer gateway at your end of the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayAssociationState" /></td>
+    <td><CopyableCode code="gateway_association_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the gateway association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>The VPN connection options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreSharedKeyArn" /></td>
+    <td><CopyableCode code="pre_shared_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>string</code></td>
     <td>The static routes associated with the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway associated with the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VgwTelemetry" /></td>
+    <td><CopyableCode code="vgw_telemetry" /></td>
     <td><code>string</code></td>
     <td>Information about the VPN tunnel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnConcentratorId" /></td>
+    <td><CopyableCode code="vpn_concentrator_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPN concentrator associated with the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnConnectionId" /></td>
+    <td><CopyableCode code="vpn_connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnGatewayId" /></td>
+    <td><CopyableCode code="vpn_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private gateway at the Amazon Web Services side of the VPN connection.</td>
 </tr>
@@ -377,23 +377,23 @@ Describes one or more of your VPN connections. For more information, see Amazon 
 
 ```sql
 SELECT
-Category,
-CoreNetworkArn,
-CoreNetworkAttachmentArn,
-CustomerGatewayConfiguration,
-CustomerGatewayId,
-GatewayAssociationState,
-Options,
-PreSharedKeyArn,
-Routes,
-State,
-Tags,
-TransitGatewayId,
-Type,
-VgwTelemetry,
-VpnConcentratorId,
-VpnConnectionId,
-VpnGatewayId
+category,
+core_network_arn,
+core_network_attachment_arn,
+customer_gateway_configuration,
+customer_gateway_id,
+gateway_association_state,
+options,
+pre_shared_key_arn,
+routes,
+state,
+tags,
+transit_gateway_id,
+type,
+vgw_telemetry,
+vpn_concentrator_id,
+vpn_connection_id,
+vpn_gateway_id
 FROM aws.ec2.vpn_connections
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'
@@ -461,23 +461,23 @@ SELECT
 '{{ DryRun }}',
 '{{ Options }}'
 RETURNING
-Category,
-CoreNetworkArn,
-CoreNetworkAttachmentArn,
-CustomerGatewayConfiguration,
-CustomerGatewayId,
-GatewayAssociationState,
-Options,
-PreSharedKeyArn,
-Routes,
-State,
-Tags,
-TransitGatewayId,
-Type,
-VgwTelemetry,
-VpnConcentratorId,
-VpnConnectionId,
-VpnGatewayId
+category,
+core_network_arn,
+core_network_attachment_arn,
+customer_gateway_configuration,
+customer_gateway_id,
+gateway_association_state,
+options,
+pre_shared_key_arn,
+routes,
+state,
+tags,
+transit_gateway_id,
+type,
+vgw_telemetry,
+vpn_concentrator_id,
+vpn_connection_id,
+vpn_gateway_id
 ;
 ```
 </TabItem>
@@ -563,23 +563,23 @@ AND DryRun = {{ DryRun}}
 AND SkipTunnelReplacement = {{ SkipTunnelReplacement}}
 AND PreSharedKeyStorage = '{{ PreSharedKeyStorage}}'
 RETURNING
-Category,
-CoreNetworkArn,
-CoreNetworkAttachmentArn,
-CustomerGatewayConfiguration,
-CustomerGatewayId,
-GatewayAssociationState,
-Options,
-PreSharedKeyArn,
-Routes,
-State,
-Tags,
-TransitGatewayId,
-Type,
-VgwTelemetry,
-VpnConcentratorId,
-VpnConnectionId,
-VpnGatewayId;
+category,
+core_network_arn,
+core_network_attachment_arn,
+customer_gateway_configuration,
+customer_gateway_id,
+gateway_association_state,
+options,
+pre_shared_key_arn,
+routes,
+state,
+tags,
+transit_gateway_id,
+type,
+vgw_telemetry,
+vpn_concentrator_id,
+vpn_connection_id,
+vpn_gateway_id;
 ```
 </TabItem>
 <TabItem value="modify_vpn_tunnel_certificate">
@@ -596,23 +596,23 @@ AND VpnTunnelOutsideIpAddress = '{{ VpnTunnelOutsideIpAddress }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Category,
-CoreNetworkArn,
-CoreNetworkAttachmentArn,
-CustomerGatewayConfiguration,
-CustomerGatewayId,
-GatewayAssociationState,
-Options,
-PreSharedKeyArn,
-Routes,
-State,
-Tags,
-TransitGatewayId,
-Type,
-VgwTelemetry,
-VpnConcentratorId,
-VpnConnectionId,
-VpnGatewayId;
+category,
+core_network_arn,
+core_network_attachment_arn,
+customer_gateway_configuration,
+customer_gateway_id,
+gateway_association_state,
+options,
+pre_shared_key_arn,
+routes,
+state,
+tags,
+transit_gateway_id,
+type,
+vgw_telemetry,
+vpn_concentrator_id,
+vpn_connection_id,
+vpn_gateway_id;
 ```
 </TabItem>
 <TabItem value="modify_vpn_connection">
@@ -631,23 +631,23 @@ AND CustomerGatewayId = '{{ CustomerGatewayId}}'
 AND VpnGatewayId = '{{ VpnGatewayId}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-Category,
-CoreNetworkArn,
-CoreNetworkAttachmentArn,
-CustomerGatewayConfiguration,
-CustomerGatewayId,
-GatewayAssociationState,
-Options,
-PreSharedKeyArn,
-Routes,
-State,
-Tags,
-TransitGatewayId,
-Type,
-VgwTelemetry,
-VpnConcentratorId,
-VpnConnectionId,
-VpnGatewayId;
+category,
+core_network_arn,
+core_network_attachment_arn,
+customer_gateway_configuration,
+customer_gateway_id,
+gateway_association_state,
+options,
+pre_shared_key_arn,
+routes,
+state,
+tags,
+transit_gateway_id,
+type,
+vgw_telemetry,
+vpn_concentrator_id,
+vpn_connection_id,
+vpn_gateway_id;
 ```
 </TabItem>
 </Tabs>
@@ -676,7 +676,7 @@ AND region = '{{ region }}' --required
 AND ApplyPendingMaintenance = {{ ApplyPendingMaintenance}}
 AND DryRun = {{ DryRun}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetSetupHistory request and specify the next page token using the pageToken parameter. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+/=&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="setupHistory" /></td>
+    <td><CopyableCode code="setup_history" /></td>
     <td><code>array</code></td>
     <td>The historical information that's returned.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns detailed information for five of the most recent SetupInstanceHttps requ
 
 ```sql
 SELECT
-nextPageToken,
-setupHistory
+next_page_token,
+setup_history
 FROM aws.lightsail.setup_histories
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the origin access control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginAccessControlConfig" /></td>
+    <td><CopyableCode code="origin_access_control_config" /></td>
     <td><code>string</code></td>
     <td>The origin access control.</td>
 </tr>
@@ -75,32 +75,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>If there are more items in the list than are in this response, this value is true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>Contains the origin access controls in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>The value of the Marker field that was provided in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of origin access controls requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more items in the list than are in this response, this element is present. It contains the value to use in the Marker field of another request to continue listing origin access controls.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of origin access controls returned in the response.</td>
 </tr>
@@ -218,8 +218,8 @@ Gets a CloudFront origin access control, including its unique identifier.
 
 ```sql
 SELECT
-Id,
-OriginAccessControlConfig
+id,
+origin_access_control_config
 FROM aws.cloudfront.origin_access_controls
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -232,12 +232,12 @@ Gets the list of CloudFront origin access controls (OACs) in this Amazon Web Ser
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.origin_access_controls
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -270,8 +270,8 @@ SELECT
 '{{ OriginAccessControlConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-Id,
-OriginAccessControlConfig
+id,
+origin_access_control_config
 ;
 ```
 </TabItem>
@@ -320,8 +320,8 @@ AND region = '{{ region }}' --required
 AND OriginAccessControlConfig = '{{ OriginAccessControlConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-Id,
-OriginAccessControlConfig;
+id,
+origin_access_control_config;
 ```
 </TabItem>
 </Tabs>

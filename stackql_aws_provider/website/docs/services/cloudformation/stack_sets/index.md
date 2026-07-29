@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdministrationRoleARN" /></td>
+    <td><CopyableCode code="administration_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used to create or update the stack set. Use customized administrator roles to control which users or groups can manage specific StackSets within the same administrator account. For more information, see Prerequisites for using CloudFormation StackSets in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoDeployment" /></td>
+    <td><CopyableCode code="auto_deployment" /></td>
     <td><code>string</code></td>
     <td>Describes whether StackSets automatically deploys to Organizations accounts that are added to a target organization or organizational unit (OU). Valid only if the StackSet uses service-managed permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>string</code></td>
     <td>The capabilities that are allowed in the StackSet. Some StackSet templates might include resources that can affect permissions in your Amazon Web Services account—for example, by creating new Identity and Access Management (IAM) users. For more information, see Acknowledging IAM resources in CloudFormation templates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the StackSet that you specify when the StackSet is created or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleName" /></td>
+    <td><CopyableCode code="execution_role_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM execution role used to create or update the StackSet. Use customized execution roles to control which stack resources users and groups can include in their StackSets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedExecution" /></td>
+    <td><CopyableCode code="managed_execution" /></td>
     <td><code>string</code></td>
     <td>Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitIds" /></td>
+    <td><CopyableCode code="organizational_unit_ids" /></td>
     <td><code>string</code></td>
     <td>&#91;Service-managed permissions&#93; The organization root ID or organizational unit (OU) IDs that you specified for DeploymentTargets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>A list of input parameters for a StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionModel" /></td>
+    <td><CopyableCode code="permission_model" /></td>
     <td><code>string</code></td>
     <td>Describes how the IAM roles required for StackSet operations are created. With self-managed permissions, you must create the administrator and execution roles required to deploy to target accounts. For more information, see Grant self-managed permissions. With service-managed permissions, StackSets automatically creates the IAM roles required to deploy to accounts managed by Organizations. For more information, see Activate trusted access for StackSets with Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Regions" /></td>
+    <td><CopyableCode code="regions" /></td>
     <td><code>string</code></td>
     <td>Returns a list of all Amazon Web Services Regions the given StackSet has stack instances deployed in. The Amazon Web Services Regions list output is in no particular order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetARN" /></td>
+    <td><CopyableCode code="stack_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetDriftDetectionDetails" /></td>
+    <td><CopyableCode code="stack_set_drift_detection_details" /></td>
     <td><code>string</code></td>
     <td>Detailed information about the drift status of the StackSet. For StackSets, contains information about the last completed drift operation performed on the StackSet. Information about drift operations currently in progress isn't included.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetId" /></td>
+    <td><CopyableCode code="stack_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetName" /></td>
+    <td><CopyableCode code="stack_set_name" /></td>
     <td><code>string</code></td>
     <td>The name that's associated with the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that specify information about the StackSet. A maximum number of 50 tags can be specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateBody" /></td>
+    <td><CopyableCode code="template_body" /></td>
     <td><code>string</code></td>
     <td>The structure that contains the body of the template that was used to create or update the StackSet.</td>
 </tr>
@@ -150,47 +150,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoDeployment" /></td>
+    <td><CopyableCode code="auto_deployment" /></td>
     <td><code>string</code></td>
     <td>&#91;Service-managed permissions&#93; Describes whether StackSets automatically deploys to Organizations accounts that are added to a target organizational unit (OU).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the StackSet that you specify when the StackSet is created or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftStatus" /></td>
+    <td><CopyableCode code="drift_status" /></td>
     <td><code>string</code></td>
     <td>Status of the StackSet's actual configuration compared to its expected template and parameter configuration. DRIFTED: One or more of the stack instances belonging to the StackSet differs from the expected template and parameter configuration. A stack instance is considered to have drifted if one or more of the resources in the associated stack have drifted. NOT_CHECKED: CloudFormation hasn't checked the StackSet for drift. IN_SYNC: All the stack instances belonging to the StackSet match the expected template and parameter configuration. UNKNOWN: This value is reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDriftCheckTimestamp" /></td>
+    <td><CopyableCode code="last_drift_check_timestamp" /></td>
     <td><code>string</code></td>
     <td>Most recent time when CloudFormation performed a drift detection operation on the StackSet. This value will be NULL for any StackSet that drift detection hasn't yet been performed on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedExecution" /></td>
+    <td><CopyableCode code="managed_execution" /></td>
     <td><code>string</code></td>
     <td>Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionModel" /></td>
+    <td><CopyableCode code="permission_model" /></td>
     <td><code>string</code></td>
     <td>Describes how the IAM roles required for StackSet operations are created. With self-managed permissions, you must create the administrator and execution roles required to deploy to target accounts. For more information, see Grant self-managed permissions. With service-managed permissions, StackSets automatically creates the IAM roles required to deploy to accounts managed by Organizations. For more information, see Activate trusted access for StackSets with Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetId" /></td>
+    <td><CopyableCode code="stack_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetName" /></td>
+    <td><CopyableCode code="stack_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the StackSet.</td>
 </tr>
@@ -427,23 +427,23 @@ Returns the description of the specified StackSet. This API provides strongly co
 
 ```sql
 SELECT
-AdministrationRoleARN,
-AutoDeployment,
-Capabilities,
-Description,
-ExecutionRoleName,
-ManagedExecution,
-OrganizationalUnitIds,
-Parameters,
-PermissionModel,
-Regions,
-StackSetARN,
-StackSetDriftDetectionDetails,
-StackSetId,
-StackSetName,
-Status,
-Tags,
-TemplateBody
+administration_role_arn,
+auto_deployment,
+capabilities,
+description,
+execution_role_name,
+managed_execution,
+organizational_unit_ids,
+parameters,
+permission_model,
+regions,
+stack_set_arn,
+stack_set_drift_detection_details,
+stack_set_id,
+stack_set_name,
+status,
+tags,
+template_body
 FROM aws.cloudformation.stack_sets
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND region = '{{ region }}' -- required
@@ -457,15 +457,15 @@ Returns summary information about StackSets that are associated with the user. T
 
 ```sql
 SELECT
-AutoDeployment,
-Description,
-DriftStatus,
-LastDriftCheckTimestamp,
-ManagedExecution,
-PermissionModel,
-StackSetId,
-StackSetName,
-Status
+auto_deployment,
+description,
+drift_status,
+last_drift_check_timestamp,
+managed_execution,
+permission_model,
+stack_set_id,
+stack_set_name,
+status
 FROM aws.cloudformation.stack_sets
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

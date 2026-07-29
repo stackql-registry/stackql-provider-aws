@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the launch configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyPrivateIp" /></td>
+    <td><CopyableCode code="copy_private_ip" /></td>
     <td><code>boolean</code></td>
     <td>Whether we should copy the Private IP of the Source Server to the Recovery Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyTags" /></td>
+    <td><CopyableCode code="copy_tags" /></td>
     <td><code>boolean</code></td>
     <td>Whether we want to copy the tags of the Source Server to the EC2 machine of the Recovery Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2LaunchTemplateID" /></td>
+    <td><CopyableCode code="ec_2_launch_template_id" /></td>
     <td><code>string</code></td>
     <td>The EC2 launch template ID of this launch configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchDisposition" /></td>
+    <td><CopyableCode code="launch_disposition" /></td>
     <td><code>string</code></td>
     <td>The state of the Recovery Instance in EC2 after the recovery operation. (STOPPED, STARTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchIntoInstanceProperties" /></td>
+    <td><CopyableCode code="launch_into_instance_properties" /></td>
     <td><code>object</code></td>
     <td>Launch into existing instance properties.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration of a machine's license.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postLaunchEnabled" /></td>
+    <td><CopyableCode code="post_launch_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether we want to activate post-launch actions for the Source Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerID" /></td>
+    <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Source Server for this launch configuration. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetInstanceTypeRightSizingMethod" /></td>
+    <td><CopyableCode code="target_instance_type_right_sizing_method" /></td>
     <td><code>string</code></td>
     <td>Whether Elastic Disaster Recovery should try to automatically choose the instance type that best matches the OS, CPU, and RAM of your Source Server. (NONE, BASIC, IN_AWS)</td>
 </tr>
@@ -172,15 +172,15 @@ Gets a LaunchConfiguration, filtered by Source Server IDs.
 ```sql
 SELECT
 name,
-copyPrivateIp,
-copyTags,
-ec2LaunchTemplateID,
-launchDisposition,
-launchIntoInstanceProperties,
+copy_private_ip,
+copy_tags,
+ec_2_launch_template_id,
+launch_disposition,
+launch_into_instance_properties,
 licensing,
-postLaunchEnabled,
-sourceServerID,
-targetInstanceTypeRightSizingMethod
+post_launch_enabled,
+source_server_id,
+target_instance_type_right_sizing_method
 FROM aws.drs.launch_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,15 +218,15 @@ region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required
 RETURNING
 name,
-copyPrivateIp,
-copyTags,
-ec2LaunchTemplateID,
-launchDisposition,
-launchIntoInstanceProperties,
+copy_private_ip,
+copy_tags,
+ec_2_launch_template_id,
+launch_disposition,
+launch_into_instance_properties,
 licensing,
-postLaunchEnabled,
-sourceServerID,
-targetInstanceTypeRightSizingMethod;
+post_launch_enabled,
+source_server_id,
+target_instance_type_right_sizing_method;
 ```
 </TabItem>
 </Tabs>

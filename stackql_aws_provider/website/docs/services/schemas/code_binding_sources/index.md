@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Body" /></td>
+    <td><CopyableCode code="body" /></td>
     <td><code>string (byte)</code></td>
     <td></td>
 </tr>
@@ -139,7 +139,7 @@ Get the code binding source URI.
 
 ```sql
 SELECT
-Body
+body
 FROM aws.schemas.code_binding_sources
 WHERE language = '{{ language }}' -- required
 AND registry_name = '{{ registry_name }}' -- required

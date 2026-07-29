@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="headCommitId" /></td>
+    <td><CopyableCode code="head_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the tip of the branch at the time of the request, also known as the head commit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the branch was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
@@ -162,8 +162,8 @@ Retrieves a list of branches in a specified source repository.
 ```sql
 SELECT
 name,
-headCommitId,
-lastUpdatedTime,
+head_commit_id,
+last_updated_time,
 ref
 FROM aws.codecatalyst.source_repository_branches
 WHERE space_name = '{{ space_name }}' -- required
@@ -207,8 +207,8 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-headCommitId,
-lastUpdatedTime,
+head_commit_id,
+last_updated_time,
 ref
 ;
 ```

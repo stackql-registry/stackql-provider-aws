@@ -121,7 +121,7 @@ SELECT
 '{{ wave }}',
 '{{ region }}'
 RETURNING
-configurationId
+configuration_id
 ;
 ```
 </TabItem>

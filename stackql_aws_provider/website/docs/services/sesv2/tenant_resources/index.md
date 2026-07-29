@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource associated with the tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource associated with the tenant. Valid values are EMAIL_IDENTITY, CONFIGURATION_SET, or EMAIL_TEMPLATE. (EMAIL_IDENTITY, CONFIGURATION_SET, EMAIL_TEMPLATE)</td>
 </tr>
@@ -138,8 +138,8 @@ List all resources associated with a specific tenant. This operation returns a l
 
 ```sql
 SELECT
-ResourceArn,
-ResourceType
+resource_arn,
+resource_type
 FROM aws.sesv2.tenant_resources
 WHERE region = '{{ region }}' -- required
 ;

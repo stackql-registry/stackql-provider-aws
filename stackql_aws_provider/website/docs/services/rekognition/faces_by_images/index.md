@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FaceMatches" /></td>
+    <td><CopyableCode code="face_matches" /></td>
     <td><code>array</code></td>
     <td>An array of faces that match the input face, along with the confidence in the match.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaceModelVersion" /></td>
+    <td><CopyableCode code="face_model_version" /></td>
     <td><code>string</code></td>
     <td>Version number of the face detection model associated with the input collection (CollectionId).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchedFaceBoundingBox" /></td>
+    <td><CopyableCode code="searched_face_bounding_box" /></td>
     <td><code>object</code></td>
     <td>Identifies the bounding box around the label, face, text, object of interest, or personal protective equipment. The left (x-coordinate) and top (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). The top and left values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a left value of 0.5 (350/700) and a top value of 0.25 (50/200). The width and height values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the left or top values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchedFaceConfidence" /></td>
+    <td><CopyableCode code="searched_face_confidence" /></td>
     <td><code>number (float)</code></td>
     <td>The level of confidence that the searchedFaceBoundingBox, contains a face.</td>
 </tr>
@@ -134,10 +134,10 @@ For a given input image, first detects the largest face in the image, and then s
 
 ```sql
 SELECT
-FaceMatches,
-FaceModelVersion,
-SearchedFaceBoundingBox,
-SearchedFaceConfidence
+face_matches,
+face_model_version,
+searched_face_bounding_box,
+searched_face_confidence
 FROM aws.rekognition.faces_by_images
 WHERE region = '{{ region }}' -- required
 ;

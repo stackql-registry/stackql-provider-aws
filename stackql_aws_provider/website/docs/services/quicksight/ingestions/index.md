@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Ingestion" /></td>
+    <td><CopyableCode code="ingestion" /></td>
     <td><code>object</code></td>
     <td>Information about the ingestion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -80,57 +80,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this ingestion started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Error information for this ingestion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionId" /></td>
+    <td><CopyableCode code="ingestion_id" /></td>
     <td><code>string</code></td>
     <td>Ingestion ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionSizeInBytes" /></td>
+    <td><CopyableCode code="ingestion_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the data ingested, in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionStatus" /></td>
+    <td><CopyableCode code="ingestion_status" /></td>
     <td><code>string</code></td>
     <td>Ingestion status. (INITIALIZED, QUEUED, RUNNING, FAILED, COMPLETED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionTimeInSeconds" /></td>
+    <td><CopyableCode code="ingestion_time_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time that this ingestion took, measured in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueInfo" /></td>
+    <td><CopyableCode code="queue_info" /></td>
     <td><code>object</code></td>
     <td>Information about a queued dataset SPICE ingestion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestSource" /></td>
+    <td><CopyableCode code="request_source" /></td>
     <td><code>string</code></td>
     <td>Event source for this ingestion. (MANUAL, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestType" /></td>
+    <td><CopyableCode code="request_type" /></td>
     <td><code>string</code></td>
     <td>Type of this ingestion. (INITIAL_INGESTION, EDIT, INCREMENTAL_REFRESH, FULL_REFRESH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowInfo" /></td>
+    <td><CopyableCode code="row_info" /></td>
     <td><code>object</code></td>
     <td>Information about rows for a data set SPICE ingestion.</td>
 </tr>
@@ -246,9 +246,9 @@ Describes a SPICE ingestion.
 
 ```sql
 SELECT
-Ingestion,
-RequestId,
-Status
+ingestion,
+request_id,
+status
 FROM aws.quicksight.ingestions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND data_set_id = '{{ data_set_id }}' -- required
@@ -263,17 +263,17 @@ Lists the history of SPICE ingestions for a dataset. Limited to 5 TPS per user a
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-ErrorInfo,
-IngestionId,
-IngestionSizeInBytes,
-IngestionStatus,
-IngestionTimeInSeconds,
-QueueInfo,
-RequestSource,
-RequestType,
-RowInfo
+arn,
+created_time,
+error_info,
+ingestion_id,
+ingestion_size_in_bytes,
+ingestion_status,
+ingestion_time_in_seconds,
+queue_info,
+request_source,
+request_type,
+row_info
 FROM aws.quicksight.ingestions
 WHERE data_set_id = '{{ data_set_id }}' -- required
 AND aws_account_id = '{{ aws_account_id }}' -- required
@@ -314,11 +314,11 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-IngestionId,
-IngestionStatus,
-RequestId,
-Status
+arn,
+ingestion_id,
+ingestion_status,
+request_id,
+status
 ;
 ```
 </TabItem>

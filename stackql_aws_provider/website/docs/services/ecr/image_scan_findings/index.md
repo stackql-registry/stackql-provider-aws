@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="imageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>object</code></td>
     <td>An object with identifying information for an image in an Amazon ECR repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageScanFindings" /></td>
+    <td><CopyableCode code="image_scan_findings" /></td>
     <td><code>object</code></td>
     <td>The information contained in the image scan findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageScanStatus" /></td>
+    <td><CopyableCode code="image_scan_status" /></td>
     <td><code>object</code></td>
     <td>The current state of the scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future DescribeImageScanFindings request. When the results of a DescribeImageScanFindings request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The registry ID associated with the request. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The repository name associated with the request. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ Returns the scan findings for the specified image.
 
 ```sql
 SELECT
-imageId,
-imageScanFindings,
-imageScanStatus,
-nextToken,
-registryId,
-repositoryName
+image_id,
+image_scan_findings,
+image_scan_status,
+next_token,
+registry_id,
+repository_name
 FROM aws.ecr.image_scan_findings
 WHERE region = '{{ region }}' -- required
 ;

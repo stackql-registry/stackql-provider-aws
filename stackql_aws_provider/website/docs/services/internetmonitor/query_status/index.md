@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status for a query. (QUEUED, RUNNING, SUCCEEDED, FAILED, CANCELED)</td>
 </tr>
@@ -129,7 +129,7 @@ Returns the current status of a query for the Amazon CloudWatch Internet Monitor
 
 ```sql
 SELECT
-Status
+status
 FROM aws.internetmonitor.query_status
 WHERE monitor_name = '{{ monitor_name }}' -- required
 AND query_id = '{{ query_id }}' -- required

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to the stream group resource and that uniquely identifies the group across all Amazon Web Services Regions. Format is arn:aws:gameliftstreams:&#91;AWS Region&#93;:&#91;AWS account&#93;:streamgroup/&#91;resource ID&#93;. (pattern: &lt;code&gt;(^&#91;a-zA-Z0-9-&#93;+$)|(^arn:aws:gameliftstreams:(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedApplications" /></td>
+    <td><CopyableCode code="associated_applications" /></td>
     <td><code>array</code></td>
     <td>A set of applications that this stream group is associated to. You can stream any of these applications by using this stream group. This value is a set of Amazon Resource Names (ARNs) that uniquely identify application resources. Example ARN: arn:aws:gameliftstreams:us-west-2:111122223333:application/a-9ZY8X7Wv6.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was created. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultApplication" /></td>
+    <td><CopyableCode code="default_application" /></td>
     <td><code>object</code></td>
     <td>The default Amazon GameLift Streams application that is associated with this stream group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A descriptive label for the stream group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.!+@/&#93;&#91;a-zA-Z0-9-_.!+@/ &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which this stream group expires. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC). After this time, you will no longer be able to update this stream group or use it to start stream sessions. Only Get and Delete operations will work on an expired stream group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique ID value that is assigned to the resource when it's created. Format example: sg-1AB2C3De4. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was last updated. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationStates" /></td>
+    <td><CopyableCode code="location_states" /></td>
     <td><code>array</code></td>
     <td>This value is the set of locations, including their name, current status, and capacities. A location can be in one of the following states: ACTIVATING: Amazon GameLift Streams is preparing the location. You cannot stream from, scale the capacity of, or remove this location yet. ACTIVE: The location is provisioned with initial capacity. You can now stream from, scale the capacity of, or remove this location. ERROR: Amazon GameLift Streams failed to set up this location. The StatusReason field describes the error. You can remove this location and try to add it again. REMOVING: Amazon GameLift Streams is working to remove this location. This will release all provisioned capacity for this location in this stream group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the stream group resource. Possible statuses include the following: ACTIVATING: The stream group is deploying and isn't ready to host streams. ACTIVE: The stream group is ready to host streams. ACTIVE_WITH_ERRORS: One or more locations in the stream group are in an error state. Verify the details of individual locations and remove any locations which are in error. DELETING: Amazon GameLift Streams is in the process of deleting the stream group. ERROR: An error occurred when the stream group deployed. See StatusReason (returned by CreateStreamGroup, GetStreamGroup, and UpdateStreamGroup) for more information. EXPIRED: The stream group is expired and can no longer host streams. This typically occurs when a stream group is 365 days old, as indicated by the value of ExpiresAt. Create a new stream group to resume streaming capabilities. UPDATING_LOCATIONS: One or more locations in the stream group are in the process of updating (either activating or deleting). (ACTIVATING, UPDATING_LOCATIONS, ACTIVE, ACTIVE_WITH_ERRORS, ERROR, DELETING, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A short description of the reason that the stream group is in ERROR status. The possible reasons can be one of the following: internalError: The request can't process right now because of an issue with the server. Try again later. noAvailableInstances: Amazon GameLift Streams does not currently have enough available capacity to fulfill your request. Wait a few minutes and retry the request as capacity can shift frequently. You can also try to make the request using a different stream class or in another region. (internalError, noAvailableInstances)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamClass" /></td>
+    <td><CopyableCode code="stream_class" /></td>
     <td><code>string</code></td>
     <td>The target stream quality for the stream group. A stream class can be one of the following: gen6n_pro_win2022 (NVIDIA, pro) Supports applications with extremely high 3D scene complexity which require maximum resources. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 16 vCPUs, 64 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_pro (NVIDIA, pro) Supports applications with extremely high 3D scene complexity which require maximum resources. Uses dedicated NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 16 vCPUs, 64 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_ultra_win2022 (NVIDIA, ultra) Supports applications with high 3D scene complexity. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_ultra (NVIDIA, ultra) Supports applications with high 3D scene complexity. Uses dedicated NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_high (NVIDIA, high) Supports applications with moderate to high 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 4 vCPUs, 16 GB RAM, 12 GB VRAM Tenancy: Supports up to 2 concurrent stream sessions gen6n_medium (NVIDIA, medium) Supports applications with moderate 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 2 vCPUs, 8 GB RAM, 6 GB VRAM Tenancy: Supports up to 4 concurrent stream sessions gen6n_small (NVIDIA, small) Supports applications with lightweight 3D scene complexity and low CPU usage. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 1 vCPUs, 4 GB RAM, 2 GB VRAM Tenancy: Supports up to 12 concurrent stream sessions gen6n_medium_win2022 (NVIDIA, medium) Supports applications with low 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 6 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_small_win2022 (NVIDIA, small) Supports applications with low 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 2 vCPUs, 8 GB RAM, 3 GB VRAM Tenancy: Supports 1 concurrent stream session gen5n_win2022 (NVIDIA, ultra) Supports applications with extremely high 3D scene complexity. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA A10G Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen5n_high (NVIDIA, high) Supports applications with moderate to high 3D scene complexity. Uses NVIDIA A10G Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 4 vCPUs, 16 GB RAM, 12 GB VRAM Tenancy: Supports up to 2 concurrent stream sessions gen5n_ultra (NVIDIA, ultra) Supports applications with extremely high 3D scene complexity. Uses dedicated NVIDIA A10G Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen4n_win2022 (NVIDIA, ultra) Supports applications with extremely high 3D scene complexity. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA T4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 16 GB VRAM Tenancy: Supports 1 concurrent stream session gen4n_high (NVIDIA, high) Supports applications with moderate to high 3D scene complexity. Uses NVIDIA T4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 4 vCPUs, 16 GB RAM, 8 GB VRAM Tenancy: Supports up to 2 concurrent stream sessions gen4n_ultra (NVIDIA, ultra) Supports applications with high 3D scene complexity. Uses dedicated NVIDIA T4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 16 GB VRAM Tenancy: Supports 1 concurrent stream session (gen4n_high, gen4n_ultra, gen4n_win2022, gen5n_high, gen5n_ultra, gen5n_win2022, gen6n_small, gen6n_medium, gen6n_high, gen6n_ultra, gen6n_ultra_win2022, gen6n_pro, gen6n_pro_win2022, gen6n_small_win2022, gen6n_medium_win2022, gen6e_pro, gen6e_pro_win2022)</td>
 </tr>
@@ -125,47 +125,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies the stream group resource. Example ARN: arn:aws:gameliftstreams:us-west-2:111122223333:streamgroup/sg-1AB2C3De4. (pattern: &lt;code&gt;(^&#91;a-zA-Z0-9-&#93;+$)|(^arn:aws:gameliftstreams:(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was created. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultApplication" /></td>
+    <td><CopyableCode code="default_application" /></td>
     <td><code>object</code></td>
     <td>Object that identifies the Amazon GameLift Streams application to stream with this stream group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A descriptive label for the stream group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.!+@/&#93;&#91;a-zA-Z0-9-_.!+@/ &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which this stream group expires. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC). After this time, you will no longer be able to update this stream group or use it to start stream sessions. Only Get and Delete operations will work on an expired stream group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>An ID that uniquely identifies the stream group resource. Example ID: sg-1AB2C3De4. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was last updated. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the stream group resource. Possible statuses include the following: ACTIVATING: The stream group is deploying and isn't ready to host streams. ACTIVE: The stream group is ready to host streams. ACTIVE_WITH_ERRORS: One or more locations in the stream group are in an error state. Verify the details of individual locations and remove any locations which are in error. DELETING: Amazon GameLift Streams is in the process of deleting the stream group. ERROR: An error occurred when the stream group deployed. See StatusReason (returned by CreateStreamGroup, GetStreamGroup, and UpdateStreamGroup) for more information. EXPIRED: The stream group is expired and can no longer host streams. This typically occurs when a stream group is 365 days old, as indicated by the value of ExpiresAt. Create a new stream group to resume streaming capabilities. UPDATING_LOCATIONS: One or more locations in the stream group are in the process of updating (either activating or deleting). (ACTIVATING, UPDATING_LOCATIONS, ACTIVE, ACTIVE_WITH_ERRORS, ERROR, DELETING, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamClass" /></td>
+    <td><CopyableCode code="stream_class" /></td>
     <td><code>string</code></td>
     <td>The target stream quality for the stream group. A stream class can be one of the following: gen6n_pro_win2022 (NVIDIA, pro) Supports applications with extremely high 3D scene complexity which require maximum resources. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 16 vCPUs, 64 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_pro (NVIDIA, pro) Supports applications with extremely high 3D scene complexity which require maximum resources. Uses dedicated NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 16 vCPUs, 64 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_ultra_win2022 (NVIDIA, ultra) Supports applications with high 3D scene complexity. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_ultra (NVIDIA, ultra) Supports applications with high 3D scene complexity. Uses dedicated NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_high (NVIDIA, high) Supports applications with moderate to high 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 4 vCPUs, 16 GB RAM, 12 GB VRAM Tenancy: Supports up to 2 concurrent stream sessions gen6n_medium (NVIDIA, medium) Supports applications with moderate 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 2 vCPUs, 8 GB RAM, 6 GB VRAM Tenancy: Supports up to 4 concurrent stream sessions gen6n_small (NVIDIA, small) Supports applications with lightweight 3D scene complexity and low CPU usage. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 1 vCPUs, 4 GB RAM, 2 GB VRAM Tenancy: Supports up to 12 concurrent stream sessions gen6n_medium_win2022 (NVIDIA, medium) Supports applications with low 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 6 GB VRAM Tenancy: Supports 1 concurrent stream session gen6n_small_win2022 (NVIDIA, small) Supports applications with low 3D scene complexity. Uses NVIDIA L4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 2 vCPUs, 8 GB RAM, 3 GB VRAM Tenancy: Supports 1 concurrent stream session gen5n_win2022 (NVIDIA, ultra) Supports applications with extremely high 3D scene complexity. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA A10G Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen5n_high (NVIDIA, high) Supports applications with moderate to high 3D scene complexity. Uses NVIDIA A10G Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 4 vCPUs, 16 GB RAM, 12 GB VRAM Tenancy: Supports up to 2 concurrent stream sessions gen5n_ultra (NVIDIA, ultra) Supports applications with extremely high 3D scene complexity. Uses dedicated NVIDIA A10G Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 24 GB VRAM Tenancy: Supports 1 concurrent stream session gen4n_win2022 (NVIDIA, ultra) Supports applications with extremely high 3D scene complexity. Runs applications on Microsoft Windows Server 2022 Base and supports DirectX 12. Compatible with Unreal Engine versions up through 5.6, 32 and 64-bit applications, and anti-cheat technology. Uses NVIDIA T4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 16 GB VRAM Tenancy: Supports 1 concurrent stream session gen4n_high (NVIDIA, high) Supports applications with moderate to high 3D scene complexity. Uses NVIDIA T4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 4 vCPUs, 16 GB RAM, 8 GB VRAM Tenancy: Supports up to 2 concurrent stream sessions gen4n_ultra (NVIDIA, ultra) Supports applications with high 3D scene complexity. Uses dedicated NVIDIA T4 Tensor Core GPU. Reference resolution: 1080p Reference frame rate: 60 fps Workload specifications: 8 vCPUs, 32 GB RAM, 16 GB VRAM Tenancy: Supports 1 concurrent stream session (gen4n_high, gen4n_ultra, gen4n_win2022, gen5n_high, gen5n_ultra, gen5n_win2022, gen6n_small, gen6n_medium, gen6n_high, gen6n_ultra, gen6n_ultra_win2022, gen6n_pro, gen6n_pro_win2022, gen6n_small_win2022, gen6n_medium_win2022, gen6e_pro, gen6e_pro_win2022)</td>
 </tr>
@@ -297,18 +297,18 @@ Retrieves properties for a Amazon GameLift Streams stream group resource. Specif
 
 ```sql
 SELECT
-Arn,
-AssociatedApplications,
-CreatedAt,
-DefaultApplication,
-Description,
-ExpiresAt,
-Id,
-LastUpdatedAt,
-LocationStates,
-Status,
-StatusReason,
-StreamClass
+arn,
+associated_applications,
+created_at,
+default_application,
+description,
+expires_at,
+id,
+last_updated_at,
+location_states,
+status,
+status_reason,
+stream_class
 FROM aws.gameliftstreams.stream_groups
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -321,15 +321,15 @@ Retrieves a list of all Amazon GameLift Streams stream groups that are associate
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-DefaultApplication,
-Description,
-ExpiresAt,
-Id,
-LastUpdatedAt,
-Status,
-StreamClass
+arn,
+created_at,
+default_application,
+description,
+expires_at,
+id,
+last_updated_at,
+status,
+stream_class
 FROM aws.gameliftstreams.stream_groups
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -372,18 +372,18 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-Arn,
-AssociatedApplications,
-CreatedAt,
-DefaultApplication,
-Description,
-ExpiresAt,
-Id,
-LastUpdatedAt,
-LocationStates,
-Status,
-StatusReason,
-StreamClass
+arn,
+associated_applications,
+created_at,
+default_application,
+description,
+expires_at,
+id,
+last_updated_at,
+location_states,
+status,
+status_reason,
+stream_class
 ;
 ```
 </TabItem>
@@ -446,8 +446,8 @@ identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 AND LocationConfigurations = '{{ LocationConfigurations }}' --required
 RETURNING
-Identifier,
-Locations;
+identifier,
+locations;
 ```
 </TabItem>
 <TabItem value="remove_stream_group_locations">
@@ -478,18 +478,18 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-AssociatedApplications,
-CreatedAt,
-DefaultApplication,
-Description,
-ExpiresAt,
-Id,
-LastUpdatedAt,
-LocationStates,
-Status,
-StatusReason,
-StreamClass;
+arn,
+associated_applications,
+created_at,
+default_application,
+description,
+expires_at,
+id,
+last_updated_at,
+location_states,
+status,
+status_reason,
+stream_class;
 ```
 </TabItem>
 </Tabs>

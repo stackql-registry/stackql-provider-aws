@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="closedFindings" /></td>
+    <td><CopyableCode code="closed_findings" /></td>
     <td><code>object</code></td>
     <td>The number of closed findings of each severity on the specified date.</td>
 </tr>
@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>The date from which the findings metrics were retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="meanTimeToClose" /></td>
+    <td><CopyableCode code="mean_time_to_close" /></td>
     <td><code>object</code></td>
     <td>The average time in days it takes to close findings of each severity as of a specified date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="newFindings" /></td>
+    <td><CopyableCode code="new_findings" /></td>
     <td><code>object</code></td>
     <td>The number of new findings of each severity on the specified date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="openFindings" /></td>
+    <td><CopyableCode code="open_findings" /></td>
     <td><code>object</code></td>
     <td>The number of open findings of each severity as of the specified date.</td>
 </tr>
@@ -159,11 +159,11 @@ Returns metrics about all findings in an account within a specified time range.
 
 ```sql
 SELECT
-closedFindings,
+closed_findings,
 date,
-meanTimeToClose,
-newFindings,
-openFindings
+mean_time_to_close,
+new_findings,
+open_findings
 FROM aws.codeguru_security.findings_metrics
 WHERE startDate = '{{ startDate }}' -- required
 AND endDate = '{{ endDate }}' -- required

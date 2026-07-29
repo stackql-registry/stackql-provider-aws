@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupCertificateAuthorityArn" /></td>
+    <td><CopyableCode code="group_certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the certificate authority for the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupCertificateAuthorityId" /></td>
+    <td><CopyableCode code="group_certificate_authority_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the certificate authority for the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PemEncodedCertificate" /></td>
+    <td><CopyableCode code="pem_encoded_certificate" /></td>
     <td><code>string</code></td>
     <td>The PEM encoded certificate for the group.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupCertificateAuthorities" /></td>
+    <td><CopyableCode code="group_certificate_authorities" /></td>
     <td><code>array</code></td>
     <td>A list of certificate authorities associated with the group.</td>
 </tr>
@@ -179,9 +179,9 @@ Retreives the CA associated with a group. Returns the public key of the CA.
 
 ```sql
 SELECT
-GroupCertificateAuthorityArn,
-GroupCertificateAuthorityId,
-PemEncodedCertificate
+group_certificate_authority_arn,
+group_certificate_authority_id,
+pem_encoded_certificate
 FROM aws.greengrass.group_certificate_authorities
 WHERE certificate_authority_id = '{{ certificate_authority_id }}' -- required
 AND group_id = '{{ group_id }}' -- required
@@ -195,7 +195,7 @@ Retrieves the current CAs for a group.
 
 ```sql
 SELECT
-GroupCertificateAuthorities
+group_certificate_authorities
 FROM aws.greengrass.group_certificate_authorities
 WHERE group_id = '{{ group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,7 +229,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-GroupCertificateAuthorityArn
+group_certificate_authority_arn
 ;
 ```
 </TabItem>

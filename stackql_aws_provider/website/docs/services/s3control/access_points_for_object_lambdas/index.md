@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the Object Lambda Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Object Lambda Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectLambdaAccessPointArn" /></td>
+    <td><CopyableCode code="object_lambda_access_point_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the ARN for the Object Lambda Access Point.</td>
 </tr>
@@ -144,9 +144,9 @@ This operation is not supported by directory buckets. Returns some or all (up to
 
 ```sql
 SELECT
-Alias,
-Name,
-ObjectLambdaAccessPointArn
+alias,
+name,
+object_lambda_access_point_arn
 FROM aws.s3control.access_points_for_object_lambdas
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Failures" /></td>
+    <td><CopyableCode code="failures" /></td>
     <td><code>array</code></td>
     <td>An array of maps where each contains a response per profile failed for the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastComputedAt" /></td>
+    <td><CopyableCode code="last_computed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the segment membership was last computed or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Profiles" /></td>
+    <td><CopyableCode code="profiles" /></td>
     <td><code>array</code></td>
     <td>An array of maps where each contains a response per profile requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentDefinitionName" /></td>
+    <td><CopyableCode code="segment_definition_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the segment definition. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -144,10 +144,10 @@ Determines if the given profiles are within a segment.
 
 ```sql
 SELECT
-Failures,
-LastComputedAt,
-Profiles,
-SegmentDefinitionName
+failures,
+last_computed_at,
+profiles,
+segment_definition_name
 FROM aws.customer_profiles.segment_memberships
 WHERE domain_name = '{{ domain_name }}' -- required
 AND segment_definition_name = '{{ segment_definition_name }}' -- required

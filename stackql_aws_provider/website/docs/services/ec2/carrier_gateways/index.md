@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CarrierGatewayId" /></td>
+    <td><CopyableCode code="carrier_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the carrier gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the carrier gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the carrier gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the carrier gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC associated with the carrier gateway.</td>
 </tr>
@@ -198,11 +198,11 @@ Describes one or more of your carrier gateways.
 
 ```sql
 SELECT
-CarrierGatewayId,
-OwnerId,
-State,
-Tags,
-VpcId
+carrier_gateway_id,
+owner_id,
+state,
+tags,
+vpc_id
 FROM aws.ec2.carrier_gateways
 WHERE region = '{{ region }}' -- required
 AND CarrierGatewayId = '{{ CarrierGatewayId }}'
@@ -244,11 +244,11 @@ SELECT
 '{{ DryRun }}',
 '{{ ClientToken }}'
 RETURNING
-CarrierGatewayId,
-OwnerId,
-State,
-Tags,
-VpcId
+carrier_gateway_id,
+owner_id,
+state,
+tags,
+vpc_id
 ;
 ```
 </TabItem>

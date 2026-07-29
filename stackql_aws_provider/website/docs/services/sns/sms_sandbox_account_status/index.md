@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsInSandbox" /></td>
+    <td><CopyableCode code="is_in_sandbox" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the calling Amazon Web Services account is in the SMS sandbox.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the SMS sandbox status for the calling Amazon Web Services account in 
 
 ```sql
 SELECT
-IsInSandbox
+is_in_sandbox
 FROM aws.sns.sms_sandbox_account_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NotificationAttributes" /></td>
+    <td><CopyableCode code="notification_attributes" /></td>
     <td><code>string</code></td>
     <td>A map of Identity to IdentityNotificationAttributes.</td>
 </tr>
@@ -124,7 +124,7 @@ Given a list of verified identities (email addresses and/or domains), returns a 
 
 ```sql
 SELECT
-NotificationAttributes
+notification_attributes
 FROM aws.ses.identity_notification_attributes
 WHERE Identities = '{{ Identities }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupByResults" /></td>
+    <td><CopyableCode code="group_by_results" /></td>
     <td><code>array</code></td>
     <td>The aggregated statistics about resources based on the specified grouping rule.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves statistical information about Amazon Web Services resources and their 
 
 ```sql
 SELECT
-GroupByResults
+group_by_results
 FROM aws.securityhub.resources_statistics_v2s
 WHERE region = '{{ region }}' -- required
 ;

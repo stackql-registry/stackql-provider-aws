@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockSize" /></td>
+    <td><CopyableCode code="block_size" /></td>
     <td><code>integer</code></td>
     <td>The size of the blocks in the snapshot, in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangedBlocks" /></td>
+    <td><CopyableCode code="changed_blocks" /></td>
     <td><code>array</code></td>
     <td>An array of objects containing information about the changed blocks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiryTime" /></td>
+    <td><CopyableCode code="expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the BlockToken expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+/=&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeSize" /></td>
+    <td><CopyableCode code="volume_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the volume in GB.</td>
 </tr>
@@ -164,11 +164,11 @@ Returns information about the blocks that are different between two Amazon Elast
 
 ```sql
 SELECT
-BlockSize,
-ChangedBlocks,
-ExpiryTime,
-NextToken,
-VolumeSize
+block_size,
+changed_blocks,
+expiry_time,
+next_token,
+volume_size
 FROM aws.ebs.changed_blocks
 WHERE second_snapshot_id = '{{ second_snapshot_id }}' -- required
 AND region = '{{ region }}' -- required

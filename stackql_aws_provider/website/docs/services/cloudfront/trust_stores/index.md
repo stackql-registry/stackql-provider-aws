@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The trust store's Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The trust store's ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The trust store's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The trust store's name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfCaCertificates" /></td>
+    <td><CopyableCode code="number_of_ca_certificates" /></td>
     <td><code>integer</code></td>
     <td>The trust store's number of CA certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The trust store's reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The trust store's status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseClientCertificateOCSPEndpoint" /></td>
+    <td><CopyableCode code="use_client_certificate_ocsp_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean that determines whether the trust store uses the CA certificate's OCSP endpoint to check certificate revocation status.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The trust store's Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The version identifier for the current version of the trust store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The trust store's ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The trust store's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The trust store's name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfCaCertificates" /></td>
+    <td><CopyableCode code="number_of_ca_certificates" /></td>
     <td><code>integer</code></td>
     <td>The trust store's number of CA certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The trust store's reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The trust store's status.</td>
 </tr>
@@ -258,14 +258,14 @@ Gets a trust store.
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedTime,
-Name,
-NumberOfCaCertificates,
-Reason,
-Status,
-UseClientCertificateOCSPEndpoint
+arn,
+id,
+last_modified_time,
+name,
+number_of_ca_certificates,
+reason,
+status,
+use_client_certificate_ocsp_endpoint
 FROM aws.cloudfront.trust_stores
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,14 +278,14 @@ Lists trust stores.
 
 ```sql
 SELECT
-Arn,
-ETag,
-Id,
-LastModifiedTime,
-Name,
-NumberOfCaCertificates,
-Reason,
-Status
+arn,
+e_tag,
+id,
+last_modified_time,
+name,
+number_of_ca_certificates,
+reason,
+status
 FROM aws.cloudfront.trust_stores
 WHERE region = '{{ region }}' -- required
 ;
@@ -322,14 +322,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id,
-LastModifiedTime,
-Name,
-NumberOfCaCertificates,
-Reason,
-Status,
-UseClientCertificateOCSPEndpoint
+arn,
+id,
+last_modified_time,
+name,
+number_of_ca_certificates,
+reason,
+status,
+use_client_certificate_ocsp_endpoint
 ;
 ```
 </TabItem>
@@ -389,14 +389,14 @@ AND `If-Match` = '{{ If-Match }}' --required
 AND region = '{{ region }}' --required
 AND UseClientCertificateOCSPEndpoint = {{ UseClientCertificateOCSPEndpoint}}
 RETURNING
-Arn,
-Id,
-LastModifiedTime,
-Name,
-NumberOfCaCertificates,
-Reason,
-Status,
-UseClientCertificateOCSPEndpoint;
+arn,
+id,
+last_modified_time,
+name,
+number_of_ca_certificates,
+reason,
+status,
+use_client_certificate_ocsp_endpoint;
 ```
 </TabItem>
 </Tabs>

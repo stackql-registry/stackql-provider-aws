@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the code repository branch that holds the service code Proton will sync with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filePath" /></td>
+    <td><CopyableCode code="file_path" /></td>
     <td><code>string</code></td>
     <td>The file path to the service sync configuration file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the code repository that holds the service code Proton will sync with. (pattern: &lt;code&gt;&#91;A-Za-z0-9_.-&#93;.*/&#91;A-Za-z0-9_.-&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryProvider" /></td>
+    <td><CopyableCode code="repository_provider" /></td>
     <td><code>string</code></td>
     <td>The name of the repository provider that holds the repository Proton will sync with. (GITHUB, GITHUB_ENTERPRISE, BITBUCKET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service that the service instance is added to. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -161,10 +161,10 @@ Get detailed information for the service sync configuration.
 ```sql
 SELECT
 branch,
-filePath,
-repositoryName,
-repositoryProvider,
-serviceName
+file_path,
+repository_name,
+repository_provider,
+service_name
 FROM aws.proton.service_sync_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,7 +203,7 @@ SELECT
 '{{ serviceName }}' /* required */,
 '{{ region }}'
 RETURNING
-serviceSyncConfig
+service_sync_config
 ;
 ```
 </TabItem>
@@ -270,7 +270,7 @@ AND repositoryName = '{{ repositoryName }}' --required
 AND repositoryProvider = '{{ repositoryProvider }}' --required
 AND serviceName = '{{ serviceName }}' --required
 RETURNING
-serviceSyncConfig;
+service_sync_config;
 ```
 </TabItem>
 </Tabs>

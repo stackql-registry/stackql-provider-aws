@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="channelIdentifier" /></td>
+    <td><CopyableCode code="channel_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the notification channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelType" /></td>
+    <td><CopyableCode code="channel_type" /></td>
     <td><code>string</code></td>
     <td>The type of notification channel used for message delivery. Values: ACCOUNT_CONTACT Delivers notifications to Account Managed contacts through the User Notification Service. MOBILE Delivers notifications through the Amazon Web Services Console Mobile Application to mobile devices. CHATBOT Delivers notifications through Amazon Q Developer in chat applications to collaboration platforms (Slack, Chime). EMAIL Delivers notifications to email addresses. (MOBILE, CHATBOT, EMAIL, ACCOUNT_CONTACT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="overrideOption" /></td>
+    <td><CopyableCode code="override_option" /></td>
     <td><code>string</code></td>
     <td>Controls whether users can modify channel associations for a notification configuration. Values: ENABLED Users can associate or disassociate channels with the notification configuration. DISABLED Users cannot associate or disassociate channels with the notification configuration. (ENABLED, DISABLED)</td>
 </tr>
@@ -144,9 +144,9 @@ Returns a list of Account contacts and Channels associated with a ManagedNotific
 
 ```sql
 SELECT
-channelIdentifier,
-channelType,
-overrideOption
+channel_identifier,
+channel_type,
+override_option
 FROM aws.notifications.managed_notification_channel_associations
 WHERE managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Provides error information about a project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportSqlDetails" /></td>
+    <td><CopyableCode code="export_sql_details" /></td>
     <td><code>object</code></td>
     <td>Provides information about a metadata model assessment exported to SQL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MigrationProjectArn" /></td>
+    <td><CopyableCode code="migration_project_arn" /></td>
     <td><code>string</code></td>
     <td>The migration project ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>object</code></td>
     <td>Provides information about the progress of the schema conversion operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestIdentifier" /></td>
+    <td><CopyableCode code="request_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier for the schema conversion action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The schema conversion action status.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns a paginated list of metadata model creation requests for a migration pro
 
 ```sql
 SELECT
-Error,
-ExportSqlDetails,
-MigrationProjectArn,
-Progress,
-RequestIdentifier,
-Status
+error,
+export_sql_details,
+migration_project_arn,
+progress,
+request_identifier,
+status
 FROM aws.dms.metadata_model_creations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConformancePackName" /></td>
+    <td><CopyableCode code="conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>Name of the conformance pack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackRuleEvaluationResults" /></td>
+    <td><CopyableCode code="conformance_pack_rule_evaluation_results" /></td>
     <td><code>array</code></td>
     <td>Returns a list of ConformancePackEvaluationResult objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns compliance details of a conformance pack for all Amazon Web Services res
 
 ```sql
 SELECT
-ConformancePackName,
-ConformancePackRuleEvaluationResults,
-NextToken
+conformance_pack_name,
+conformance_pack_rule_evaluation_results,
+next_token
 FROM aws.config.conformance_pack_compliance_details
 WHERE region = '{{ region }}' -- required
 ;

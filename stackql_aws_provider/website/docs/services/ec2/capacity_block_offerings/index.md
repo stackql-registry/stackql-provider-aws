@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the Capacity Block offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockDurationHours" /></td>
+    <td><CopyableCode code="capacity_block_duration_hours" /></td>
     <td><code>integer</code></td>
     <td>The number of hours (in addition to capacityBlockDurationMinutes) for the duration of the Capacity Block reservation. For example, if a Capacity Block starts at 04:55 and ends at 11:30, the hours field would be 6.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockDurationMinutes" /></td>
+    <td><CopyableCode code="capacity_block_duration_minutes" /></td>
     <td><code>integer</code></td>
     <td>The number of minutes (in addition to capacityBlockDurationHours) for the duration of the Capacity Block reservation. For example, if a Capacity Block starts at 08:55 and ends at 11:30, the minutes field would be 35.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockOfferingId" /></td>
+    <td><CopyableCode code="capacity_block_offering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency of the payment for the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The end date of the Capacity Block offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances in the Capacity Block offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type of the Capacity Block offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The start date of the Capacity Block offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tenancy" /></td>
+    <td><CopyableCode code="tenancy" /></td>
     <td><code>string</code></td>
     <td>The tenancy of the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UltraserverCount" /></td>
+    <td><CopyableCode code="ultraserver_count" /></td>
     <td><code>integer</code></td>
     <td>The number of EC2 UltraServers in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UltraserverType" /></td>
+    <td><CopyableCode code="ultraserver_type" /></td>
     <td><code>string</code></td>
     <td>The EC2 UltraServer type of the Capacity Block offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpfrontFee" /></td>
+    <td><CopyableCode code="upfront_fee" /></td>
     <td><code>string</code></td>
     <td>The total price to be paid up front.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZoneType" /></td>
+    <td><CopyableCode code="zone_type" /></td>
     <td><code>string</code></td>
     <td>The type of zone where the Capacity Block offering is available.</td>
 </tr>
@@ -261,20 +261,20 @@ Describes Capacity Block offerings available for purchase in the Amazon Web Serv
 
 ```sql
 SELECT
-AvailabilityZone,
-CapacityBlockDurationHours,
-CapacityBlockDurationMinutes,
-CapacityBlockOfferingId,
-CurrencyCode,
-EndDate,
-InstanceCount,
-InstanceType,
-StartDate,
-Tenancy,
-UltraserverCount,
-UltraserverType,
-UpfrontFee,
-ZoneType
+availability_zone,
+capacity_block_duration_hours,
+capacity_block_duration_minutes,
+capacity_block_offering_id,
+currency_code,
+end_date,
+instance_count,
+instance_type,
+start_date,
+tenancy,
+ultraserver_count,
+ultraserver_type,
+upfront_fee,
+zone_type
 FROM aws.ec2.capacity_block_offerings
 WHERE CapacityDurationHours = '{{ CapacityDurationHours }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Account" /></td>
+    <td><CopyableCode code="account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID number of the account that owns or contains the calling entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services ARN associated with the calling entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the calling entity. The exact value depends on the type of entity that is making the call. The values returned are those listed in the aws:userid column in the Principal table found on the Policy Variables reference page in the IAM User Guide.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns details about the IAM user or role whose credentials are used to call th
 
 ```sql
 SELECT
-Account,
-Arn,
-UserId
+account,
+arn,
+user_id
 FROM aws.sts.caller_identities
 WHERE region = '{{ region }}' -- required
 ;

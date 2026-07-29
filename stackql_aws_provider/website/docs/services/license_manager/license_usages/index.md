@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EntitlementUsages" /></td>
+    <td><CopyableCode code="entitlement_usages" /></td>
     <td><code>array</code></td>
     <td>License entitlement usages.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets detailed information about the usage of the specified license.
 
 ```sql
 SELECT
-EntitlementUsages
+entitlement_usages
 FROM aws.license_manager.license_usages
 WHERE region = '{{ region }}' -- required
 ;

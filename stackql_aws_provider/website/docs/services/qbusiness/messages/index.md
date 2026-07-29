@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionExecution" /></td>
+    <td><CopyableCode code="action_execution" /></td>
     <td><code>object</code></td>
     <td>Performs an Amazon Q Business plugin action during a non-streaming chat conversation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionReview" /></td>
+    <td><CopyableCode code="action_review" /></td>
     <td><code>object</code></td>
     <td>An output event that Amazon Q Business returns to an user who wants to perform a plugin action during a non-streaming chat conversation. It contains information about the selected action with a list of possible user input fields, some pre-populated by Amazon Q Business.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the Amazon Q Business web experience message. (pattern: &lt;code&gt;\P&#123;C&#125;*$&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageId" /></td>
+    <td><CopyableCode code="message_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business web experience message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceAttribution" /></td>
+    <td><CopyableCode code="source_attribution" /></td>
     <td><code>array</code></td>
     <td>The source documents used to generate Amazon Q Business web experience message.</td>
 </tr>
@@ -179,12 +179,12 @@ Gets a list of messages associated with an Amazon Q Business web experience.
 
 ```sql
 SELECT
-actionExecution,
-actionReview,
+action_execution,
+action_review,
 attachments,
 body,
-messageId,
-sourceAttribution,
+message_id,
+source_attribution,
 time,
 type_
 FROM aws.qbusiness.messages

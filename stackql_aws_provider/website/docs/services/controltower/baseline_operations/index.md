@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the operation (if applicable), in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationIdentifier" /></td>
+    <td><CopyableCode code="operation_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the specified operation. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>An enumerated type (enum) with possible values of ENABLE_BASELINE, DISABLE_BASELINE, UPDATE_ENABLED_BASELINE, or RESET_ENABLED_BASELINE. (ENABLE_BASELINE, DISABLE_BASELINE, UPDATE_ENABLED_BASELINE, RESET_ENABLED_BASELINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the operation, in ISO 8601 format.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>An enumerated type (enum) with possible values of SUCCEEDED, FAILED, or IN_PROGRESS. (SUCCEEDED, FAILED, IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A status message that gives more information about the operation's status, if applicable.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns the details of an asynchronous baseline operation, as initiated by any o
 
 ```sql
 SELECT
-endTime,
-operationIdentifier,
-operationType,
-startTime,
+end_time,
+operation_identifier,
+operation_type,
+start_time,
 status,
-statusMessage
+status_message
 FROM aws.controltower.baseline_operations
 WHERE region = '{{ region }}' -- required
 ;

@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the payment connector. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderConfigurations" /></td>
+    <td><CopyableCode code="credential_provider_configurations" /></td>
     <td><code>array</code></td>
     <td>The credential provider configurations for the payment connector.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the payment connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment connector was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentConnectorId" /></td>
+    <td><CopyableCode code="payment_connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the payment connector. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the payment connector. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment connector was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentConnectorId" /></td>
+    <td><CopyableCode code="payment_connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the payment connector. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -249,11 +249,11 @@ Retrieves information about a specific payment connector.
 ```sql
 SELECT
 name,
-createdAt,
-credentialProviderConfigurations,
+created_at,
+credential_provider_configurations,
 description,
-lastUpdatedAt,
-paymentConnectorId,
+last_updated_at,
+payment_connector_id,
 status,
 type_
 FROM aws.bedrock_agentcore_control.payment_connectors
@@ -270,8 +270,8 @@ Lists all payment connectors for a specified payment manager.
 ```sql
 SELECT
 name,
-lastUpdatedAt,
-paymentConnectorId,
+last_updated_at,
+payment_connector_id,
 status,
 type_
 FROM aws.bedrock_agentcore_control.payment_connectors
@@ -318,10 +318,10 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-createdAt,
-credentialProviderConfigurations,
-paymentConnectorId,
-paymentManagerId,
+created_at,
+credential_provider_configurations,
+payment_connector_id,
+payment_manager_id,
 status,
 type_
 ;
@@ -384,10 +384,10 @@ AND payment_connector_id = '{{ payment_connector_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
-credentialProviderConfigurations,
-lastUpdatedAt,
-paymentConnectorId,
-paymentManagerId,
+credential_provider_configurations,
+last_updated_at,
+payment_connector_id,
+payment_manager_id,
 status,
 type_;
 ```

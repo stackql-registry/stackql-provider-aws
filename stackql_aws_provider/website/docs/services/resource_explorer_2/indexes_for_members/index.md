@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID for the index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region in which the index exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of index. It can be one of the following values: LOCAL – The index contains information about resources from only the same Amazon Web Services Region. AGGREGATOR – Resource Explorer replicates copies of the indexed information about resources in all other Amazon Web Services Regions to the aggregator index. This lets search results in the Region with the aggregator index to include resources from all Regions in the account where Resource Explorer is turned on. (LOCAL, AGGREGATOR)</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieves a list of a member's indexes in all Amazon Web Services Regions that a
 
 ```sql
 SELECT
-AccountId,
-Arn,
-Region,
-Type
+account_id,
+arn,
+region,
+type
 FROM aws.resource_explorer_2.indexes_for_members
 WHERE region = '{{ region }}' -- required
 ;

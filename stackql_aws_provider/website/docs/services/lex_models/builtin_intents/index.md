@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of BuiltinIntentSlot objects, one entry for each slot type in the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedLocales" /></td>
+    <td><CopyableCode code="supported_locales" /></td>
     <td><code>array</code></td>
     <td>A list of locales that the intent supports.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>A unique identifier for the built-in intent. To find the signature for an intent, see Standard Built-in Intents in the Alexa Skills Kit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedLocales" /></td>
+    <td><CopyableCode code="supported_locales" /></td>
     <td><code>array</code></td>
     <td>A list of identifiers for the locales that the intent supports.</td>
 </tr>
@@ -189,7 +189,7 @@ Returns information about a built-in intent. This operation requires permission 
 SELECT
 signature,
 slots,
-supportedLocales
+supported_locales
 FROM aws.lex_models.builtin_intents
 WHERE signature = '{{ signature }}' -- required
 AND region = '{{ region }}' -- required
@@ -203,7 +203,7 @@ Gets a list of built-in intents that meet the specified criteria. This operation
 ```sql
 SELECT
 signature,
-supportedLocales
+supported_locales
 FROM aws.lex_models.builtin_intents
 WHERE region = '{{ region }}' -- required
 AND locale = '{{ locale }}'

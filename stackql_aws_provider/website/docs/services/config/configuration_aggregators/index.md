@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountAggregationSources" /></td>
+    <td><CopyableCode code="account_aggregation_sources" /></td>
     <td><code>array</code></td>
     <td>Provides a list of source accounts and regions to be aggregated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AggregatorFilters" /></td>
+    <td><CopyableCode code="aggregator_filters" /></td>
     <td><code>object</code></td>
     <td>An object to filter the data you specify for an aggregator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationAggregatorArn" /></td>
+    <td><CopyableCode code="configuration_aggregator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the aggregator. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:config:&#91;a-z\-\d&#93;+:\d+:config-aggregator/config-aggregator-&#91;a-z\d&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationAggregatorName" /></td>
+    <td><CopyableCode code="configuration_aggregator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the aggregator. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services service that created the configuration aggregator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp when the configuration aggregator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time of the last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationAggregationSource" /></td>
+    <td><CopyableCode code="organization_aggregation_source" /></td>
     <td><code>object</code></td>
     <td>Provides an organization and list of regions to be aggregated.</td>
 </tr>
@@ -175,14 +175,14 @@ Returns the details of one or more configuration aggregators. If the configurati
 
 ```sql
 SELECT
-AccountAggregationSources,
-AggregatorFilters,
-ConfigurationAggregatorArn,
-ConfigurationAggregatorName,
-CreatedBy,
-CreationTime,
-LastUpdatedTime,
-OrganizationAggregationSource
+account_aggregation_sources,
+aggregator_filters,
+configuration_aggregator_arn,
+configuration_aggregator_name,
+created_by,
+creation_time,
+last_updated_time,
+organization_aggregation_source
 FROM aws.config.configuration_aggregators
 WHERE region = '{{ region }}' -- required
 ;
@@ -215,7 +215,7 @@ WHERE
 region = '{{ region }}' --required
 AND ConfigurationAggregatorName = '{{ ConfigurationAggregatorName }}' --required
 RETURNING
-ConfigurationAggregator;
+configuration_aggregator;
 ```
 </TabItem>
 </Tabs>

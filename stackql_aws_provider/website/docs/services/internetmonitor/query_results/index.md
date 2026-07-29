@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Data" /></td>
+    <td><CopyableCode code="data" /></td>
     <td><code>array</code></td>
     <td>The data results that the query returns. Data is returned in arrays, aligned with the Fields for the query, which creates a repository of Amazon CloudWatch Internet Monitor information for your application. Then, you can filter the information in the repository by using FilterParameters that you define.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>array</code></td>
     <td>The fields that the query returns data for. Fields are name-data type pairs, such as availability_score-float.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. You receive this token from a previous call.</td>
 </tr>
@@ -149,9 +149,9 @@ Return the data for a query with the Amazon CloudWatch Internet Monitor query in
 
 ```sql
 SELECT
-Data,
-Fields,
-NextToken
+data,
+fields,
+next_token
 FROM aws.internetmonitor.query_results
 WHERE monitor_name = '{{ monitor_name }}' -- required
 AND query_id = '{{ query_id }}' -- required

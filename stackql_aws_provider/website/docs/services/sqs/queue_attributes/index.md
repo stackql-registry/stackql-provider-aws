@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>A map of attributes to their respective values.</td>
 </tr>
@@ -126,7 +126,7 @@ Gets attributes for the specified queue. To determine whether a queue is FIFO, y
 
 ```sql
 SELECT
-Attributes
+attributes
 FROM aws.sqs.queue_attributes
 WHERE region = '{{ region }}' -- required
 ;

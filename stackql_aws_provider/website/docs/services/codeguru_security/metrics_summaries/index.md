@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="categoriesWithMostFindings" /></td>
+    <td><CopyableCode code="categories_with_most_findings" /></td>
     <td><code>array</code></td>
     <td>A list of CategoryWithFindingNum objects for the top 5 finding categories with the most findings.</td>
 </tr>
@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>The date from which the metrics summary information was retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="openFindings" /></td>
+    <td><CopyableCode code="open_findings" /></td>
     <td><code>object</code></td>
     <td>The number of open findings of each severity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scansWithMostOpenCriticalFindings" /></td>
+    <td><CopyableCode code="scans_with_most_open_critical_findings" /></td>
     <td><code>array</code></td>
     <td>A list of ScanNameWithFindingNum objects for the top 3 scans with the most number of open critical findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scansWithMostOpenFindings" /></td>
+    <td><CopyableCode code="scans_with_most_open_findings" /></td>
     <td><code>array</code></td>
     <td>A list of ScanNameWithFindingNum objects for the top 3 scans with the most number of open findings.</td>
 </tr>
@@ -144,11 +144,11 @@ Returns a summary of metrics for an account from a specified date, including num
 
 ```sql
 SELECT
-categoriesWithMostFindings,
+categories_with_most_findings,
 date,
-openFindings,
-scansWithMostOpenCriticalFindings,
-scansWithMostOpenFindings
+open_findings,
+scans_with_most_open_critical_findings,
+scans_with_most_open_findings
 FROM aws.codeguru_security.metrics_summaries
 WHERE date = '{{ date }}' -- required
 AND region = '{{ region }}' -- required

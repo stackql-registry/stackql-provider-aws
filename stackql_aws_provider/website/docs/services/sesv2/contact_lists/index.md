@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactListName" /></td>
+    <td><CopyableCode code="contact_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the contact list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp noting when the contact list was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of what the contact list is about.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp noting the last time the contact list was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with a contact list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Topics" /></td>
+    <td><CopyableCode code="topics" /></td>
     <td><code>array</code></td>
     <td>An interest group, theme, or label within a list. A contact list can have multiple topics.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactLists" /></td>
+    <td><CopyableCode code="contact_lists" /></td>
     <td><code>array</code></td>
     <td>The available contact lists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A string token indicating that there might be additional contact lists available to be listed. Copy this token to a subsequent call to ListContactLists with the same parameters to retrieve the next page of contact lists.</td>
 </tr>
@@ -213,12 +213,12 @@ Returns contact list metadata. It does not return any information about the cont
 
 ```sql
 SELECT
-ContactListName,
-CreatedTimestamp,
-Description,
-LastUpdatedTimestamp,
-Tags,
-Topics
+contact_list_name,
+created_timestamp,
+description,
+last_updated_timestamp,
+tags,
+topics
 FROM aws.sesv2.contact_lists
 WHERE contact_list_name = '{{ contact_list_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -231,8 +231,8 @@ Lists all of the contact lists available. If your output includes a "NextToken" 
 
 ```sql
 SELECT
-ContactLists,
-NextToken
+contact_lists,
+next_token
 FROM aws.sesv2.contact_lists
 WHERE region = '{{ region }}' -- required
 AND PageSize = '{{ PageSize }}'

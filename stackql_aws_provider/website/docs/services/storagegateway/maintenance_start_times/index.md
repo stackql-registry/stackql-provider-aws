@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DayOfMonth" /></td>
+    <td><CopyableCode code="day_of_month" /></td>
     <td><code>integer</code></td>
     <td>The day of the month component of the maintenance start time represented as an ordinal number from 1 to 28, where 1 represents the first day of the month. It is not possible to set the maintenance schedule to start on days 29 through 31.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DayOfWeek" /></td>
+    <td><CopyableCode code="day_of_week" /></td>
     <td><code>integer</code></td>
     <td>An ordinal number between 0 and 6 that represents the day of the week, where 0 represents Sunday and 6 represents Saturday. The day of week is in the time zone of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HourOfDay" /></td>
+    <td><CopyableCode code="hour_of_day" /></td>
     <td><code>integer</code></td>
     <td>The hour component of the maintenance start time represented as hh, where hh is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinuteOfHour" /></td>
+    <td><CopyableCode code="minute_of_hour" /></td>
     <td><code>integer</code></td>
     <td>The minute component of the maintenance start time represented as mm, where mm is the minute (0 to 59). The minute of the hour is in the time zone of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareUpdatePreferences" /></td>
+    <td><CopyableCode code="software_update_preferences" /></td>
     <td><code>object</code></td>
     <td>A set of variables indicating the software update preferences for the gateway. Includes AutomaticUpdatePolicy parameter with the following inputs: ALL_VERSIONS - Enables regular gateway maintenance updates. EMERGENCY_VERSIONS_ONLY - Disables regular gateway maintenance updates. The gateway will still receive emergency version updates on rare occasions if necessary to remedy highly critical security or durability issues. You will be notified before an emergency version update is applied. These updates are applied during your gateway's scheduled maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timezone" /></td>
+    <td><CopyableCode code="timezone" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the time zone that is set for the gateway. The start time and day of week specified should be in the time zone of the gateway.</td>
 </tr>
@@ -156,13 +156,13 @@ Returns your gateway's maintenance window schedule information, with values for 
 
 ```sql
 SELECT
-DayOfMonth,
-DayOfWeek,
-GatewayARN,
-HourOfDay,
-MinuteOfHour,
-SoftwareUpdatePreferences,
-Timezone
+day_of_month,
+day_of_week,
+gateway_arn,
+hour_of_day,
+minute_of_hour,
+software_update_preferences,
+timezone
 FROM aws.storagegateway.maintenance_start_times
 WHERE region = '{{ region }}' -- required
 ;
@@ -196,7 +196,7 @@ WHERE
 region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The system-generated unique ID of the Dev Environment session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="devEnvironmentId" /></td>
+    <td><CopyableCode code="dev_environment_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated unique ID of the Dev Environment. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project in the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedTime" /></td>
+    <td><CopyableCode code="started_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the session started, in coordinated universal time (UTC) timestamp format as specified in RFC 3339</td>
 </tr>
@@ -155,10 +155,10 @@ Retrieves a list of active sessions for a Dev Environment in a project.
 ```sql
 SELECT
 id,
-devEnvironmentId,
-projectName,
-spaceName,
-startedTime
+dev_environment_id,
+project_name,
+space_name,
+started_time
 FROM aws.codecatalyst.dev_environment_sessions
 WHERE space_name = '{{ space_name }}' -- required
 AND project_name = '{{ project_name }}' -- required

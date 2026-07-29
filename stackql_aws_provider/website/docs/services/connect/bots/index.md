@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LexBot" /></td>
+    <td><CopyableCode code="lex_bot" /></td>
     <td><code>object</code></td>
     <td>Configuration information of an Amazon Lex bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LexV2Bot" /></td>
+    <td><CopyableCode code="lex_v2_bot" /></td>
     <td><code>object</code></td>
     <td>Configuration information of an Amazon Lex V2 bot.</td>
 </tr>
@@ -158,8 +158,8 @@ This API is in preview release for Amazon Connect and is subject to change. For 
 
 ```sql
 SELECT
-LexBot,
-LexV2Bot
+lex_bot,
+lex_v2_bot
 FROM aws.connect.bots
 WHERE instance_id = '{{ instance_id }}' -- required
 AND lexVersion = '{{ lexVersion }}' -- required

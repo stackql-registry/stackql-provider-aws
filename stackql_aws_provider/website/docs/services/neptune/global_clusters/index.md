@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The default database name within the new global database cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>The deletion protection setting for the global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The Neptune database engine used by the global database ("neptune").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The Neptune engine version used by the global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailoverState" /></td>
+    <td><CopyableCode code="failover_state" /></td>
     <td><code>string</code></td>
     <td>A data object containing all properties for the current state of an in-process or pending switchover or failover process for this global cluster (Neptune global database). This object is empty unless the SwitchoverGlobalCluster or FailoverGlobalCluster operation was called on this global cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterArn" /></td>
+    <td><CopyableCode code="global_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterIdentifier" /></td>
+    <td><CopyableCode code="global_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains a user-supplied global database cluster identifier. This identifier is the unique key that identifies a global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterMembers" /></td>
+    <td><CopyableCode code="global_cluster_members" /></td>
     <td><code>string</code></td>
     <td>A list of cluster ARNs and instance ARNs for all the DB clusters that are part of the global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterResourceId" /></td>
+    <td><CopyableCode code="global_cluster_resource_id" /></td>
     <td><code>string</code></td>
     <td>An immutable identifier for the global database that is unique within all regions. This identifier is found in CloudTrail log entries whenever the KMS key for the DB cluster is accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the current state of this global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>The storage encryption setting for the global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of global cluster tags.</td>
 </tr>
@@ -301,18 +301,18 @@ Returns information about Neptune global database clusters. This API supports pa
 
 ```sql
 SELECT
-DatabaseName,
-DeletionProtection,
-Engine,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-TagList
+database_name,
+deletion_protection,
+engine,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+tag_list
 FROM aws.neptune.global_clusters
 WHERE region = '{{ region }}' -- required
 AND GlobalClusterIdentifier = '{{ GlobalClusterIdentifier }}'
@@ -360,18 +360,18 @@ SELECT
 '{{ Tags }}',
 '{{ StorageEncrypted }}'
 RETURNING
-DatabaseName,
-DeletionProtection,
-Engine,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-TagList
+database_name,
+deletion_protection,
+engine,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+tag_list
 ;
 ```
 </TabItem>
@@ -442,18 +442,18 @@ GlobalClusterIdentifier = '{{ GlobalClusterIdentifier }}' --required
 AND DbClusterIdentifier = '{{ DbClusterIdentifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DatabaseName,
-DeletionProtection,
-Engine,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-TagList;
+database_name,
+deletion_protection,
+engine,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+tag_list;
 ```
 </TabItem>
 <TabItem value="modify_global_cluster">
@@ -472,18 +472,18 @@ AND DeletionProtection = {{ DeletionProtection}}
 AND EngineVersion = '{{ EngineVersion}}'
 AND AllowMajorVersionUpgrade = {{ AllowMajorVersionUpgrade}}
 RETURNING
-DatabaseName,
-DeletionProtection,
-Engine,
-EngineVersion,
-FailoverState,
-GlobalClusterArn,
-GlobalClusterIdentifier,
-GlobalClusterMembers,
-GlobalClusterResourceId,
-Status,
-StorageEncrypted,
-TagList;
+database_name,
+deletion_protection,
+engine,
+engine_version,
+failover_state,
+global_cluster_arn,
+global_cluster_identifier,
+global_cluster_members,
+global_cluster_resource_id,
+status,
+storage_encrypted,
+tag_list;
 ```
 </TabItem>
 </Tabs>

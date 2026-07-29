@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessRights" /></td>
+    <td><CopyableCode code="access_rights" /></td>
     <td><code>object</code></td>
     <td>Allow or deny permissions for an Active Directory group to enroll or autoenroll certificates for a template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Access Control Entry was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupDisplayName" /></td>
+    <td><CopyableCode code="group_display_name" /></td>
     <td><code>string</code></td>
     <td>Name of the Active Directory group. This name does not need to match the group name in Active Directory. (pattern: &lt;code&gt;^&#91;\x20-\x7E&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupSecurityIdentifier" /></td>
+    <td><CopyableCode code="group_security_identifier" /></td>
     <td><code>string</code></td>
     <td>Security identifier (SID) of the group object from Active Directory. The SID starts with "S-". (pattern: &lt;code&gt;^S-&#91;0-9&#93;-(&#91;0-9&#93;+-)&#123;1,14&#125;&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateTemplate. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;\/template\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Access Control Entry was updated.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessRights" /></td>
+    <td><CopyableCode code="access_rights" /></td>
     <td><code>object</code></td>
     <td>Allow or deny permissions for an Active Directory group to enroll or autoenroll certificates for a template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Access Control Entry was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupDisplayName" /></td>
+    <td><CopyableCode code="group_display_name" /></td>
     <td><code>string</code></td>
     <td>Name of the Active Directory group. This name does not need to match the group name in Active Directory. (pattern: &lt;code&gt;^&#91;\x20-\x7E&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupSecurityIdentifier" /></td>
+    <td><CopyableCode code="group_security_identifier" /></td>
     <td><code>string</code></td>
     <td>Security identifier (SID) of the group object from Active Directory. The SID starts with "S-". (pattern: &lt;code&gt;^S-&#91;0-9&#93;-(&#91;0-9&#93;+-)&#123;1,14&#125;&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateTemplate. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;\/template\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Access Control Entry was updated.</td>
 </tr>
@@ -238,12 +238,12 @@ Retrieves the group access control entries for a template.
 
 ```sql
 SELECT
-AccessRights,
-CreatedAt,
-GroupDisplayName,
-GroupSecurityIdentifier,
-TemplateArn,
-UpdatedAt
+access_rights,
+created_at,
+group_display_name,
+group_security_identifier,
+template_arn,
+updated_at
 FROM aws.pca_connector_ad.template_group_access_control_entries
 WHERE group_security_identifier = '{{ group_security_identifier }}' -- required
 AND template_arn = '{{ template_arn }}' -- required
@@ -257,12 +257,12 @@ Lists group access control entries you created.
 
 ```sql
 SELECT
-AccessRights,
-CreatedAt,
-GroupDisplayName,
-GroupSecurityIdentifier,
-TemplateArn,
-UpdatedAt
+access_rights,
+created_at,
+group_display_name,
+group_security_identifier,
+template_arn,
+updated_at
 FROM aws.pca_connector_ad.template_group_access_control_entries
 WHERE template_arn = '{{ template_arn }}' -- required
 AND region = '{{ region }}' -- required

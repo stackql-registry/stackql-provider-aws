@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of this model-training job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hpoJob" /></td>
+    <td><CopyableCode code="hpo_job" /></td>
     <td><code>object</code></td>
     <td>The HPO job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mlModels" /></td>
+    <td><CopyableCode code="ml_models" /></td>
     <td><code>array</code></td>
     <td>A list of the configurations of the ML models being used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelTransformJob" /></td>
+    <td><CopyableCode code="model_transform_job" /></td>
     <td><code>object</code></td>
     <td>The model transform job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processingJob" /></td>
+    <td><CopyableCode code="processing_job" /></td>
     <td><code>object</code></td>
     <td>The data processing job.</td>
 </tr>
@@ -188,10 +188,10 @@ Retrieves information about a Neptune ML model training job. See Model training 
 ```sql
 SELECT
 id,
-hpoJob,
-mlModels,
-modelTransformJob,
-processingJob,
+hpo_job,
+ml_models,
+model_transform_job,
+processing_job,
 status
 FROM aws.neptunedata.ml_model_training_jobs
 WHERE id = '{{ id }}' -- required

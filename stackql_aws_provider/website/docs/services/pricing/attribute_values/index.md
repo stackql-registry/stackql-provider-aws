@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The specific value of an attributeName.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns a list of attribute values. Attributes are similar to the details in a P
 
 ```sql
 SELECT
-Value
+value
 FROM aws.pricing.attribute_values
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The name assigned to the tag that you create.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>Contains one or more values that you assigned to the key name you create.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists all of the tags associated with the Amazon Resource Name (ARN) that you sp
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.transfer.tags
 WHERE region = '{{ region }}' -- required
 ;

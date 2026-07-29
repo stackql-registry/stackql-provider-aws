@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the VPC endpoint configuration. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceDnsName" /></td>
+    <td><CopyableCode code="service_dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name that maps to the private IP address of the service you want to access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpceConfigurationDescription" /></td>
+    <td><CopyableCode code="vpce_configuration_description" /></td>
     <td><code>string</code></td>
     <td>An optional description that provides details about your VPC endpoint configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpceConfigurationName" /></td>
+    <td><CopyableCode code="vpce_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name you give to your VPC endpoint configuration to manage your configurations more easily.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpceServiceName" /></td>
+    <td><CopyableCode code="vpce_service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VPC endpoint service running in your AWS account that you want Device Farm to test.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the VPC endpoint configuration. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceDnsName" /></td>
+    <td><CopyableCode code="service_dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name that maps to the private IP address of the service you want to access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpceConfigurationDescription" /></td>
+    <td><CopyableCode code="vpce_configuration_description" /></td>
     <td><code>string</code></td>
     <td>An optional description that provides details about your VPC endpoint configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpceConfigurationName" /></td>
+    <td><CopyableCode code="vpce_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name you give to your VPC endpoint configuration to manage your configurations more easily.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpceServiceName" /></td>
+    <td><CopyableCode code="vpce_service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VPC endpoint service running in your AWS account that you want Device Farm to test.</td>
 </tr>
@@ -209,10 +209,10 @@ Returns information about the configuration settings for your Amazon Virtual Pri
 ```sql
 SELECT
 arn,
-serviceDnsName,
-vpceConfigurationDescription,
-vpceConfigurationName,
-vpceServiceName
+service_dns_name,
+vpce_configuration_description,
+vpce_configuration_name,
+vpce_service_name
 FROM aws.devicefarm.vpce_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,10 +225,10 @@ Returns information about all Amazon Virtual Private Cloud (VPC) endpoint config
 ```sql
 SELECT
 arn,
-serviceDnsName,
-vpceConfigurationDescription,
-vpceConfigurationName,
-vpceServiceName
+service_dns_name,
+vpce_configuration_description,
+vpce_configuration_name,
+vpce_service_name
 FROM aws.devicefarm.vpce_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,7 +265,7 @@ SELECT
 '{{ vpceConfigurationDescription }}',
 '{{ region }}'
 RETURNING
-vpceConfiguration
+vpce_configuration
 ;
 ```
 </TabItem>
@@ -323,7 +323,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-vpceConfiguration;
+vpce_configuration;
 ```
 </TabItem>
 </Tabs>

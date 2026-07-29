@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the experiment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the experiment. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the experiment as displayed. If DisplayName isn't specified, ExperimentName is displayed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentArn" /></td>
+    <td><CopyableCode code="experiment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the experiment. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:experiment/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentName" /></td>
+    <td><CopyableCode code="experiment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the experiment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the experiment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>The Amazon Resource Name (ARN) of the source and, optionally, the type.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the experiment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the experiment as displayed. If DisplayName isn't specified, ExperimentName is displayed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentArn" /></td>
+    <td><CopyableCode code="experiment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the experiment. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:experiment/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentName" /></td>
+    <td><CopyableCode code="experiment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the experiment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentSource" /></td>
+    <td><CopyableCode code="experiment_source" /></td>
     <td><code>object</code></td>
     <td>The source of the experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the experiment was last modified.</td>
 </tr>
@@ -233,15 +233,15 @@ Provides a list of an experiment's properties.
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-Description,
-DisplayName,
-ExperimentArn,
-ExperimentName,
-LastModifiedBy,
-LastModifiedTime,
-Source
+created_by,
+creation_time,
+description,
+display_name,
+experiment_arn,
+experiment_name,
+last_modified_by,
+last_modified_time,
+source
 FROM aws.sagemaker.experiments
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,12 +253,12 @@ Lists all the experiments in your account. The list can be filtered to show only
 
 ```sql
 SELECT
-CreationTime,
-DisplayName,
-ExperimentArn,
-ExperimentName,
-ExperimentSource,
-LastModifiedTime
+creation_time,
+display_name,
+experiment_arn,
+experiment_name,
+experiment_source,
+last_modified_time
 FROM aws.sagemaker.experiments
 WHERE region = '{{ region }}' -- required
 ;
@@ -295,7 +295,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ExperimentArn
+experiment_arn
 ;
 ```
 </TabItem>
@@ -353,7 +353,7 @@ WHERE
 region = '{{ region }}' --required
 AND ExperimentName = '{{ ExperimentName }}' --required
 RETURNING
-ExperimentArn;
+experiment_arn;
 ```
 </TabItem>
 </Tabs>

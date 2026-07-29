@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the graph snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used to encrypt and decrypt the snapshot. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceGraphId" /></td>
+    <td><CopyableCode code="source_graph_id" /></td>
     <td><code>string</code></td>
     <td>The graph identifier for the graph for which a snapshot is to be created. (pattern: &lt;code&gt;g-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the graph snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used to encrypt and decrypt the snapshot. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceGraphId" /></td>
+    <td><CopyableCode code="source_graph_id" /></td>
     <td><code>string</code></td>
     <td>The graph identifier for the graph for which a snapshot is to be created. (pattern: &lt;code&gt;g-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -244,9 +244,9 @@ SELECT
 id,
 name,
 arn,
-kmsKeyIdentifier,
-snapshotCreateTime,
-sourceGraphId,
+kms_key_identifier,
+snapshot_create_time,
+source_graph_id,
 status
 FROM aws.neptune_graph.graph_snapshots
 WHERE snapshot_identifier = '{{ snapshot_identifier }}' -- required
@@ -263,9 +263,9 @@ SELECT
 id,
 name,
 arn,
-kmsKeyIdentifier,
-snapshotCreateTime,
-sourceGraphId,
+kms_key_identifier,
+snapshot_create_time,
+source_graph_id,
 status
 FROM aws.neptune_graph.graph_snapshots
 WHERE region = '{{ region }}' -- required
@@ -307,9 +307,9 @@ RETURNING
 id,
 name,
 arn,
-kmsKeyIdentifier,
-snapshotCreateTime,
-sourceGraphId,
+kms_key_identifier,
+snapshot_create_time,
+source_graph_id,
 status
 ;
 ```

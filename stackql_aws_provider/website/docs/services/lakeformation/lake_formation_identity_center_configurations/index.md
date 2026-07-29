@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Lake Formation application integrated with IAM Identity Center.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalFiltering" /></td>
+    <td><CopyableCode code="external_filtering" /></td>
     <td><code>object</code></td>
     <td>Configuration for enabling external data filtering for third-party applications to access data managed by Lake Formation .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceShare" /></td>
+    <td><CopyableCode code="resource_share" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the RAM share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceIntegrations" /></td>
+    <td><CopyableCode code="service_integrations" /></td>
     <td><code>array</code></td>
     <td>A list of service integrations for trusted identity propagation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareRecipients" /></td>
+    <td><CopyableCode code="share_recipients" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon Web Services account IDs or Amazon Web Services organization/organizational unit ARNs that are allowed to access data managed by Lake Formation. If the ShareRecipients list includes valid values, a resource share is created with the principals you want to have access to the resources as the ShareRecipients. If the ShareRecipients value is null or the list is empty, no resource share is created.</td>
 </tr>
@@ -170,13 +170,13 @@ Retrieves the instance ARN and application ARN for the connection.
 
 ```sql
 SELECT
-ApplicationArn,
-CatalogId,
-ExternalFiltering,
-InstanceArn,
-ResourceShare,
-ServiceIntegrations,
-ShareRecipients
+application_arn,
+catalog_id,
+external_filtering,
+instance_arn,
+resource_share,
+service_integrations,
+share_recipients
 FROM aws.lakeformation.lake_formation_identity_center_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -215,7 +215,7 @@ SELECT
 '{{ ServiceIntegrations }}',
 '{{ region }}'
 RETURNING
-ApplicationArn
+application_arn
 ;
 ```
 </TabItem>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientAssociationMetadata" /></td>
+    <td><CopyableCode code="client_association_metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata associated with the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientId" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the client that is associated with the event integration. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBridgeRuleName" /></td>
+    <td><CopyableCode code="event_bridge_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the EventBridge rule. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventIntegrationAssociationArn" /></td>
+    <td><CopyableCode code="event_integration_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the event integration association. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventIntegrationAssociationId" /></td>
+    <td><CopyableCode code="event_integration_association_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the event integration association. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventIntegrationName" /></td>
+    <td><CopyableCode code="event_integration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event integration. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -159,12 +159,12 @@ Returns a paginated list of event integration associations in the account.
 
 ```sql
 SELECT
-ClientAssociationMetadata,
-ClientId,
-EventBridgeRuleName,
-EventIntegrationAssociationArn,
-EventIntegrationAssociationId,
-EventIntegrationName
+client_association_metadata,
+client_id,
+event_bridge_rule_name,
+event_integration_association_arn,
+event_integration_association_id,
+event_integration_name
 FROM aws.appintegrations.event_integration_associations
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required

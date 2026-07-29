@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComplianceType" /></td>
+    <td><CopyableCode code="compliance_type" /></td>
     <td><code>string</code></td>
     <td>The type of compliance item. For example, the compliance type can be Association, Patch, or Custom:string. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;\w+|Custom:&#91;a-zA-Z0-9_\-&#93;\w+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompliantSummary" /></td>
+    <td><CopyableCode code="compliant_summary" /></td>
     <td><code>object</code></td>
     <td>A list of COMPLIANT items for the specified compliance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonCompliantSummary" /></td>
+    <td><CopyableCode code="non_compliant_summary" /></td>
     <td><code>object</code></td>
     <td>A list of NON_COMPLIANT items for the specified compliance type.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a summary count of compliant and non-compliant resources for a complianc
 
 ```sql
 SELECT
-ComplianceType,
-CompliantSummary,
-NonCompliantSummary
+compliance_type,
+compliant_summary,
+non_compliant_summary
 FROM aws.ssm.compliance_summaries
 WHERE region = '{{ region }}' -- required
 ;

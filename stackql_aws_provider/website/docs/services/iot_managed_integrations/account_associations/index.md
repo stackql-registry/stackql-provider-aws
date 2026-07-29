@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountAssociationId" /></td>
+    <td><CopyableCode code="account_association_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the retrieved account association. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the account association. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:account-association/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationState" /></td>
+    <td><CopyableCode code="association_state" /></td>
     <td><code>string</code></td>
     <td>The current status state for the account association. (ASSOCIATION_IN_PROGRESS, ASSOCIATION_FAILED, ASSOCIATION_SUCCEEDED, ASSOCIATION_DELETING, REFRESH_TOKEN_EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDestinationId" /></td>
+    <td><CopyableCode code="connector_destination_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the connector destination associated with this account association. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the account association. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message explaining the current account association error. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneralAuthorization" /></td>
+    <td><CopyableCode code="general_authorization" /></td>
     <td><code>object</code></td>
     <td>The General Authorization reference by authorization material name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the account association. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OAuthAuthorizationUrl" /></td>
+    <td><CopyableCode code="o_auth_authorization_url" /></td>
     <td><code>string</code></td>
     <td>Third party IoT platform OAuth authorization server URL backed with all the required parameters to perform end-user authentication. This field will be empty when using General Authorization flows that do not require OAuth. (pattern: &lt;code&gt;$|^(https):\/\/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of key/value pairs that are used to manage the account association.</td>
 </tr>
@@ -115,37 +115,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountAssociationId" /></td>
+    <td><CopyableCode code="account_association_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the account association. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the account association. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:account-association/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationState" /></td>
+    <td><CopyableCode code="association_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the account association, indicating its status in the association lifecycle. (ASSOCIATION_IN_PROGRESS, ASSOCIATION_FAILED, ASSOCIATION_SUCCEEDED, ASSOCIATION_DELETING, REFRESH_TOKEN_EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDestinationId" /></td>
+    <td><CopyableCode code="connector_destination_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the connector destination associated with this account association. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the account association. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message explaining any issues with the account association, if applicable. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the account association. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
@@ -284,16 +284,16 @@ Get an account association for an Amazon Web Services account linked to a custom
 
 ```sql
 SELECT
-AccountAssociationId,
-Arn,
-AssociationState,
-ConnectorDestinationId,
-Description,
-ErrorMessage,
-GeneralAuthorization,
-Name,
-OAuthAuthorizationUrl,
-Tags
+account_association_id,
+arn,
+association_state,
+connector_destination_id,
+description,
+error_message,
+general_authorization,
+name,
+o_auth_authorization_url,
+tags
 FROM aws.iot_managed_integrations.account_associations
 WHERE account_association_id = '{{ account_association_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -306,13 +306,13 @@ Lists all account associations, with optional filtering by connector destination
 
 ```sql
 SELECT
-AccountAssociationId,
-Arn,
-AssociationState,
-ConnectorDestinationId,
-Description,
-ErrorMessage,
-Name
+account_association_id,
+arn,
+association_state,
+connector_destination_id,
+description,
+error_message,
+name
 FROM aws.iot_managed_integrations.account_associations
 WHERE region = '{{ region }}' -- required
 AND ConnectorDestinationId = '{{ ConnectorDestinationId }}'
@@ -351,9 +351,9 @@ SELECT
 '{{ DeviceDiscoveryId }}' /* required */,
 '{{ region }}'
 RETURNING
-AccountAssociationId,
-DeviceDiscoveryId,
-ManagedThingId
+account_association_id,
+device_discovery_id,
+managed_thing_id
 ;
 ```
 </TabItem>
@@ -380,10 +380,10 @@ SELECT
 '{{ GeneralAuthorization }}',
 '{{ region }}'
 RETURNING
-AccountAssociationId,
-Arn,
-AssociationState,
-OAuthAuthorizationUrl
+account_association_id,
+arn,
+association_state,
+o_auth_authorization_url
 ;
 ```
 </TabItem>

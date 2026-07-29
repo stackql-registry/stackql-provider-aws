@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of import tasks that match the request filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
@@ -132,7 +132,7 @@ Lists and describes import tasks, with optional filtering by import status and s
 ```sql
 SELECT
 imports,
-nextToken
+next_token
 FROM aws.logs.import_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -167,9 +167,9 @@ SELECT
 '{{ importFilter }}',
 '{{ region }}'
 RETURNING
-creationTime,
-importDestinationArn,
-importId
+creation_time,
+import_destination_arn,
+import_id
 ;
 ```
 </TabItem>

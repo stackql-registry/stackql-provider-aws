@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configured audience model. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceModelArn" /></td>
+    <td><CopyableCode code="audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the audience model used for this configured audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceSizeConfig" /></td>
+    <td><CopyableCode code="audience_size_config" /></td>
     <td><code>object</code></td>
     <td>Returns the relevance scores at these audience sizes when used in the GetAudienceGenerationJob for a specified audience generation job and configured audience model. Specifies the list of allowed audienceSize values when used in the StartAudienceExportJob for an audience generation job. You can use the ABSOLUTE AudienceSize to configure out audience sizes using the count of identifiers in the output. You can use the Percentage AudienceSize to configure sizes in the range 1-100 percent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childResourceTagOnCreatePolicy" /></td>
+    <td><CopyableCode code="child_resource_tag_on_create_policy" /></td>
     <td><code>string</code></td>
     <td>Provides the childResourceTagOnCreatePolicy that was used for this configured audience model. (FROM_PARENT_RESOURCE, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured audience model was created.</td>
 </tr>
@@ -86,17 +86,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured audience model. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minMatchingSeedSize" /></td>
+    <td><CopyableCode code="min_matching_seed_size" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of users from the seed audience that must match with users in the training data of the audience model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information necessary for the configure audience model output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sharedAudienceMetrics" /></td>
+    <td><CopyableCode code="shared_audience_metrics" /></td>
     <td><code>array</code></td>
     <td>Whether audience metrics are shared.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags that are associated to this configured audience model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured audience model was updated.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configured audience model. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceModelArn" /></td>
+    <td><CopyableCode code="audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the audience model that was used to create the configured audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured audience model that you are interested in. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured audience model was created.</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured audience model. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information necessary for the configure audience model output.</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the configured audience model. (ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured audience model was updated.</td>
 </tr>
@@ -286,18 +286,18 @@ Returns information about a specified configured audience model.
 ```sql
 SELECT
 name,
-audienceModelArn,
-audienceSizeConfig,
-childResourceTagOnCreatePolicy,
-configuredAudienceModelArn,
-createTime,
+audience_model_arn,
+audience_size_config,
+child_resource_tag_on_create_policy,
+configured_audience_model_arn,
+create_time,
 description,
-minMatchingSeedSize,
-outputConfig,
-sharedAudienceMetrics,
+min_matching_seed_size,
+output_config,
+shared_audience_metrics,
 status,
 tags,
-updateTime
+update_time
 FROM aws.cleanroomsml.configured_audience_models
 WHERE configured_audience_model_arn = '{{ configured_audience_model_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -311,13 +311,13 @@ Returns a list of the configured audience models.
 ```sql
 SELECT
 name,
-audienceModelArn,
-configuredAudienceModelArn,
-createTime,
+audience_model_arn,
+configured_audience_model_arn,
+create_time,
 description,
-outputConfig,
+output_config,
 status,
-updateTime
+update_time
 FROM aws.cleanroomsml.configured_audience_models
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -366,7 +366,7 @@ SELECT
 '{{ childResourceTagOnCreatePolicy }}',
 '{{ region }}'
 RETURNING
-configuredAudienceModelArn
+configured_audience_model_arn
 ;
 ```
 </TabItem>
@@ -440,7 +440,7 @@ WHERE
 configured_audience_model_arn = '{{ configured_audience_model_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-configuredAudienceModelArn;
+configured_audience_model_arn;
 ```
 </TabItem>
 </Tabs>

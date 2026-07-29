@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedRoutingPolicies" /></td>
+    <td><CopyableCode code="associated_routing_policies" /></td>
     <td><code>array</code></td>
     <td>The list of routing policies currently associated with the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentId" /></td>
+    <td><CopyableCode code="attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the attachment associated with the routing policy. (pattern: &lt;code&gt;^attachment-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingRoutingPolicies" /></td>
+    <td><CopyableCode code="pending_routing_policies" /></td>
     <td><code>array</code></td>
     <td>The list of routing policies that are pending association with the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingPolicyLabel" /></td>
+    <td><CopyableCode code="routing_policy_label" /></td>
     <td><code>string</code></td>
     <td>The routing policy label associated with the attachment. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -154,10 +154,10 @@ Lists the routing policy associations for attachments in a core network.
 
 ```sql
 SELECT
-AssociatedRoutingPolicies,
-AttachmentId,
-PendingRoutingPolicies,
-RoutingPolicyLabel
+associated_routing_policies,
+attachment_id,
+pending_routing_policies,
+routing_policy_label
 FROM aws.networkmanager.attachment_routing_policy_associations
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND region = '{{ region }}' -- required

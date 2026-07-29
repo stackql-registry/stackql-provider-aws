@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adminUserName" /></td>
+    <td><CopyableCode code="admin_user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the elastic cluster administrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterCreationTime" /></td>
+    <td><CopyableCode code="cluster_creation_time" /></td>
     <td><code>string</code></td>
     <td>The time when the elastic cluster was created in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a cluster using the same Amazon account that owns this KMS encryption key, you can use the KMS key alias instead of the ARN as the KMS encryption key. If an encryption key is not specified here, Amazon DocumentDB uses the default encryption key that KMS creates for your account. Your account has a different default encryption key for each Amazon Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotArn" /></td>
+    <td><CopyableCode code="snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the elastic cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCreationTime" /></td>
+    <td><CopyableCode code="snapshot_creation_time" /></td>
     <td><code>string</code></td>
     <td>The time when the elastic cluster snapshot was created in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the elastic cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>The type of cluster snapshots to be returned. You can specify one of the following values: automated - Return all cluster snapshots that Amazon DocumentDB has automatically created for your Amazon Web Services account. manual - Return all cluster snapshots that you have manually created for your Amazon Web Services account. (MANUAL, AUTOMATED)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the elastic cluster snapshot. (CREATING, ACTIVE, DELETING, UPDATING, VPC_ENDPOINT_LIMIT_EXCEEDED, IP_ADDRESS_LIMIT_EXCEEDED, INVALID_SECURITY_GROUP_ID, INVALID_SUBNET_ID, INACCESSIBLE_ENCRYPTION_CREDS, INACCESSIBLE_SECRET_ARN, INACCESSIBLE_VPC_ENDPOINT, INCOMPATIBLE_NETWORK, MERGING, MODIFYING, SPLITTING, COPYING, STARTING, STOPPING, STOPPED, MAINTENANCE, INACCESSIBLE_ENCRYPTION_CREDENTIALS_RECOVERABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon EC2 subnet IDs for the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSecurityGroupIds" /></td>
+    <td><CopyableCode code="vpc_security_group_ids" /></td>
     <td><code>array</code></td>
     <td>A list of EC2 VPC security groups to associate with the elastic cluster.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotArn" /></td>
+    <td><CopyableCode code="snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the elastic cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCreationTime" /></td>
+    <td><CopyableCode code="snapshot_creation_time" /></td>
     <td><code>string</code></td>
     <td>The time when the elastic cluster snapshot was created in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the elastic cluster snapshot.</td>
 </tr>
@@ -256,17 +256,17 @@ Returns information about a specific elastic cluster snapshot
 
 ```sql
 SELECT
-adminUserName,
-clusterArn,
-clusterCreationTime,
-kmsKeyId,
-snapshotArn,
-snapshotCreationTime,
-snapshotName,
-snapshotType,
+admin_user_name,
+cluster_arn,
+cluster_creation_time,
+kms_key_id,
+snapshot_arn,
+snapshot_creation_time,
+snapshot_name,
+snapshot_type,
 status,
-subnetIds,
-vpcSecurityGroupIds
+subnet_ids,
+vpc_security_group_ids
 FROM aws.docdb_elastic.cluster_snapshots
 WHERE snapshot_arn = '{{ snapshot_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -279,10 +279,10 @@ Returns information about snapshots for a specified elastic cluster.
 
 ```sql
 SELECT
-clusterArn,
-snapshotArn,
-snapshotCreationTime,
-snapshotName,
+cluster_arn,
+snapshot_arn,
+snapshot_creation_time,
+snapshot_name,
 status
 FROM aws.docdb_elastic.cluster_snapshots
 WHERE region = '{{ region }}' -- required

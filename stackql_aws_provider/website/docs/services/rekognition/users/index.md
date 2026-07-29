@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FaceModelVersion" /></td>
+    <td><CopyableCode code="face_model_version" /></td>
     <td><code>string</code></td>
     <td>Version number of the face detection model associated with the input CollectionId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchedFace" /></td>
+    <td><CopyableCode code="searched_face" /></td>
     <td><code>object</code></td>
     <td>Contains the ID of a face that was used to search for matches in a collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchedUser" /></td>
+    <td><CopyableCode code="searched_user" /></td>
     <td><code>object</code></td>
     <td>Contains the ID of the UserID that was used to search for matches in a collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserMatches" /></td>
+    <td><CopyableCode code="user_matches" /></td>
     <td><code>array</code></td>
     <td>An array of UserMatch objects that matched the input face along with the confidence in the match. Array will be empty if there are no matches.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>A provided ID for the User. Unique within the collection. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.\-:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserStatus" /></td>
+    <td><CopyableCode code="user_status" /></td>
     <td><code>string</code></td>
     <td>Communicates if the UserID has been updated with latest set of faces to be associated with the UserID. (ACTIVE, UPDATING, CREATING, CREATED)</td>
 </tr>
@@ -181,10 +181,10 @@ Searches for UserIDs within a collection based on a FaceId or UserId. This API c
 
 ```sql
 SELECT
-FaceModelVersion,
-SearchedFace,
-SearchedUser,
-UserMatches
+face_model_version,
+searched_face,
+searched_user,
+user_matches
 FROM aws.rekognition.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -196,8 +196,8 @@ Returns metadata of the User such as UserID in the specified collection. Anonymo
 
 ```sql
 SELECT
-UserId,
-UserStatus
+user_id,
+user_status
 FROM aws.rekognition.users
 WHERE region = '{{ region }}' -- required
 ;

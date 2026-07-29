@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentTargets" /></td>
+    <td><CopyableCode code="deployment_targets" /></td>
     <td><code>array</code></td>
     <td>A list of target objects for a deployment. Each target object contains details about the target, such as its status and lifecycle events. The type of the target objects depends on the deployment' compute platform. EC2/On-premises: Each target object is an Amazon EC2 or on-premises instance. Lambda: The target object is a specific version of an Lambda function. Amazon ECS: The target object is an Amazon ECS service. CloudFormation: The target object is an CloudFormation blue/green deployment.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="cloudFormationTarget" /></td>
+    <td><CopyableCode code="cloud_formation_target" /></td>
     <td><code>object</code></td>
     <td>Information about the target to be updated by an CloudFormation blue/green deployment. This target type is used for all deployments initiated by a CloudFormation stack update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentTargetType" /></td>
+    <td><CopyableCode code="deployment_target_type" /></td>
     <td><code>string</code></td>
     <td>The deployment type that is specific to the deployment's compute platform or deployments initiated by a CloudFormation stack update. (InstanceTarget, LambdaTarget, ECSTarget, CloudFormationTarget)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ecsTarget" /></td>
+    <td><CopyableCode code="ecs_target" /></td>
     <td><code>object</code></td>
     <td>Information about the target for a deployment that uses the Amazon ECS compute platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceTarget" /></td>
+    <td><CopyableCode code="instance_target" /></td>
     <td><code>object</code></td>
     <td>Information about the target for a deployment that uses the EC2/On-premises compute platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaTarget" /></td>
+    <td><CopyableCode code="lambda_target" /></td>
     <td><code>object</code></td>
     <td>Information about the target for a deployment that uses the Lambda compute platform.</td>
 </tr>
@@ -195,7 +195,7 @@ Returns an array of one or more targets associated with a deployment. This metho
 
 ```sql
 SELECT
-deploymentTargets
+deployment_targets
 FROM aws.codedeploy.deployment_targets
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,11 +207,11 @@ Returns information about a deployment target.
 
 ```sql
 SELECT
-cloudFormationTarget,
-deploymentTargetType,
-ecsTarget,
-instanceTarget,
-lambdaTarget
+cloud_formation_target,
+deployment_target_type,
+ecs_target,
+instance_target,
+lambda_target
 FROM aws.codedeploy.deployment_targets
 WHERE region = '{{ region }}' -- required
 ;

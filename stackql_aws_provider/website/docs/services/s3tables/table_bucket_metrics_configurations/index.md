@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the metrics configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBucketARN" /></td>
+    <td><CopyableCode code="table_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the table bucket. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9_-&#93;&#123;3,63&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -144,7 +144,7 @@ Gets the metrics configuration for a table bucket. Permissions You must have the
 ```sql
 SELECT
 id,
-tableBucketARN
+table_bucket_arn
 FROM aws.s3tables.table_bucket_metrics_configurations
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND region = '{{ region }}' -- required

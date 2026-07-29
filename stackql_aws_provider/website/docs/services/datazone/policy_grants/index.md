@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the timestamp at which policy grant member was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>Specifies the user who created the policy grant member.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The details of the policy grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grantId" /></td>
+    <td><CopyableCode code="grant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy grant. (pattern: &lt;code&gt;&#91;A-Za-z0-9+/&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -183,10 +183,10 @@ Lists policy grants.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
+created_at,
+created_by,
 detail,
-grantId,
+grant_id,
 principal
 FROM aws.datazone.policy_grants
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -231,7 +231,7 @@ AND policyType = '{{ policyType }}' --required
 AND principal = '{{ principal }}' --required
 AND detail = '{{ detail }}' --required
 RETURNING
-grantId;
+grant_id;
 ```
 </TabItem>
 <TabItem value="remove_policy_grant">

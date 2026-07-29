@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockPublicAccessConfiguration" /></td>
+    <td><CopyableCode code="block_public_access_configuration" /></td>
     <td><code>object</code></td>
     <td>A configuration for Amazon EMR block public access. The configuration applies to all clusters created in your account for the current Region. The configuration specifies whether block public access is enabled. If block public access is enabled, security groups associated with the cluster cannot have rules that allow inbound traffic from 0.0.0.0/0 or ::/0 on a port, unless the port is specified as an exception using PermittedPublicSecurityGroupRuleRanges in the BlockPublicAccessConfiguration. By default, Port 22 (SSH) is an exception, and public access is allowed on this port. You can change this by updating the block public access configuration to remove the exception. For accounts that created clusters in a Region before November 25, 2019, block public access is disabled by default in that Region. To use this feature, you must manually enable and configure it. For accounts that did not create an Amazon EMR cluster in a Region before this date, block public access is enabled by default in that Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockPublicAccessConfigurationMetadata" /></td>
+    <td><CopyableCode code="block_public_access_configuration_metadata" /></td>
     <td><code>object</code></td>
     <td>Properties that describe the Amazon Web Services principal that created the BlockPublicAccessConfiguration using the PutBlockPublicAccessConfiguration action as well as the date and time that the configuration was created. Each time a configuration for block public access is updated, Amazon EMR updates this metadata.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the Amazon EMR block public access configuration for your Amazon Web Ser
 
 ```sql
 SELECT
-BlockPublicAccessConfiguration,
-BlockPublicAccessConfigurationMetadata
+block_public_access_configuration,
+block_public_access_configuration_metadata
 FROM aws.emr.block_public_access_configurations
 WHERE region = '{{ region }}' -- required
 ;

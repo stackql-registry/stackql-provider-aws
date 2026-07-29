@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="codeSnippetResults" /></td>
+    <td><CopyableCode code="code_snippet_results" /></td>
     <td><code>array</code></td>
     <td>The retrieved code snippets associated with the provided finding ARNs.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves code snippets from findings that Amazon Inspector detected code vulner
 
 ```sql
 SELECT
-codeSnippetResults,
+code_snippet_results,
 errors
 FROM aws.inspector2.code_snippets
 WHERE region = '{{ region }}' -- required

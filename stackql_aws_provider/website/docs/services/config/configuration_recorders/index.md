@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationRecorders" /></td>
+    <td><CopyableCode code="configuration_recorders" /></td>
     <td><code>array</code></td>
     <td>A list that contains the descriptions of the specified configuration recorders.</td>
 </tr>
@@ -182,7 +182,7 @@ Returns details for the configuration recorder you specify. If a configuration r
 
 ```sql
 SELECT
-ConfigurationRecorders
+configuration_recorders
 FROM aws.config.configuration_recorders
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,7 +213,7 @@ region = '{{ region }}' --required
 AND ConfigurationRecorderArn = '{{ ConfigurationRecorderArn }}' --required
 AND ResourceTypes = '{{ ResourceTypes }}' --required
 RETURNING
-ConfigurationRecorder;
+configuration_recorder;
 ```
 </TabItem>
 </Tabs>
@@ -255,8 +255,8 @@ WHERE
 region = '{{ region }}' --required
 AND ServicePrincipal = '{{ ServicePrincipal }}' --required
 RETURNING
-Arn,
-Name;
+arn,
+name;
 ```
 </TabItem>
 </Tabs>

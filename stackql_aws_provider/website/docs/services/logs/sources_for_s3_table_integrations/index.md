@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the data source association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>The data source associated with the S3 Table Integration.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier for this data source association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentSourceIdentifier" /></td>
+    <td><CopyableCode code="parent_source_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the parent data source for this association.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the data source association. (ACTIVE, UNHEALTHY, FAILED, DATA_SOURCE_DELETE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the data source association.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns a list of data source associations for a specified S3 Table Integration,
 
 ```sql
 SELECT
-createdTimeStamp,
-dataSource,
+created_time_stamp,
+data_source,
 identifier,
-parentSourceIdentifier,
+parent_source_identifier,
 status,
-statusReason
+status_reason
 FROM aws.logs.sources_for_s3_table_integrations
 WHERE region = '{{ region }}' -- required
 ;

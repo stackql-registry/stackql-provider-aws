@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>Retrieves the current destination. (XRay, CloudWatchLogs)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the retrieval. (PENDING, ACTIVE)</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the current destination of data sent to PutTraceSegments and OpenTelem
 
 ```sql
 SELECT
-Destination,
-Status
+destination,
+status
 FROM aws.xray.trace_segment_destinations
 WHERE region = '{{ region }}' -- required
 ;
@@ -160,8 +160,8 @@ Destination = '{{ Destination }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Destination,
-Status;
+destination,
+status;
 ```
 </TabItem>
 </Tabs>

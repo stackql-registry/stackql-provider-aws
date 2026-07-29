@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags that are associated with the resource that you specified in the ListTagsForResource request.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags that you associated with the specified resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.route53profiles.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>The type of action to be taken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appliedRulePriority" /></td>
+    <td><CopyableCode code="applied_rule_priority" /></td>
     <td><code>integer</code></td>
     <td>The priority of the applied rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageDigest" /></td>
+    <td><CopyableCode code="image_digest" /></td>
     <td><code>string</code></td>
     <td>The sha256 digest of the image manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imagePushedAt" /></td>
+    <td><CopyableCode code="image_pushed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTags" /></td>
+    <td><CopyableCode code="image_tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags associated with this image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageClass" /></td>
+    <td><CopyableCode code="storage_class" /></td>
     <td><code>string</code></td>
     <td>The storage class of the image. (ARCHIVE, STANDARD)</td>
 </tr>
@@ -145,11 +145,11 @@ Retrieves the results of the lifecycle policy preview request for the specified 
 ```sql
 SELECT
 action,
-appliedRulePriority,
-imageDigest,
-imagePushedAt,
-imageTags,
-storageClass
+applied_rule_priority,
+image_digest,
+image_pushed_at,
+image_tags,
+storage_class
 FROM aws.ecr.lifecycle_policy_previews
 WHERE region = '{{ region }}' -- required
 ;

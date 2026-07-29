@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationName" /></td>
+    <td><CopyableCode code="destination_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Sidewalk destination that describes the IoT rule to route messages received from devices in an import task that are onboarded to AWS IoT Wireless. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportedWirelessDeviceList" /></td>
+    <td><CopyableCode code="imported_wireless_device_list" /></td>
     <td><code>array</code></td>
     <td>List of wireless devices in an import task and their onboarding status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Positioning" /></td>
+    <td><CopyableCode code="positioning" /></td>
     <td><code>string</code></td>
     <td>The integration status of the Device Location feature for Sidewalk devices. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sidewalk" /></td>
+    <td><CopyableCode code="sidewalk" /></td>
     <td><code>object</code></td>
     <td>The Sidewalk object containing Sidewalk-related device information.</td>
 </tr>
@@ -159,11 +159,11 @@ List the Sidewalk devices in an import task and their onboarding status.
 
 ```sql
 SELECT
-DestinationName,
-ImportedWirelessDeviceList,
-NextToken,
-Positioning,
-Sidewalk
+destination_name,
+imported_wireless_device_list,
+next_token,
+positioning,
+sidewalk
 FROM aws.iotwireless.devices_for_wireless_device_import_tasks
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

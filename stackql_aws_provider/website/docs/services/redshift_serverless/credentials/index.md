@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dbPassword" /></td>
+    <td><CopyableCode code="db_password" /></td>
     <td><code>string</code></td>
     <td>A temporary password that authorizes the user name returned by DbUser to log on to the database DbName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbUser" /></td>
+    <td><CopyableCode code="db_user" /></td>
     <td><code>string</code></td>
     <td>A database user name that is authorized to log on to the database DbName using the password DbPassword. If the specified DbUser exists in the database, the new user name has the same database privileges as the the user named in DbUser. By default, the user is added to PUBLIC.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time the password in DbPassword expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextRefreshTime" /></td>
+    <td><CopyableCode code="next_refresh_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the DbUser and DbPassword authorization refreshes.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a database user name and temporary password with temporary authorization
 
 ```sql
 SELECT
-dbPassword,
-dbUser,
+db_password,
+db_user,
 expiration,
-nextRefreshTime
+next_refresh_time
 FROM aws.redshift_serverless.credentials
 WHERE region = '{{ region }}' -- required
 ;

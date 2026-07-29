@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CdrBucket" /></td>
+    <td><CopyableCode code="cdr_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket that stores the Voice Connector's call detail records.</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves the global settings for the Amazon Chime SDK Voice Connectors in an AW
 
 ```sql
 SELECT
-CdrBucket
+cdr_bucket
 FROM aws.chime_sdk_voice.global_settings
 WHERE region = '{{ region }}' -- required
 ;

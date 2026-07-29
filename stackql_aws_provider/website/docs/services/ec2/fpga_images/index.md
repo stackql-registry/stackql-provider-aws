@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the AFI was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataRetentionSupport" /></td>
+    <td><CopyableCode code="data_retention_support" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether data retention support is enabled for the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FpgaImageGlobalId" /></td>
+    <td><CopyableCode code="fpga_image_global_id" /></td>
     <td><code>string</code></td>
     <td>The global FPGA image identifier (AGFI ID).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FpgaImageId" /></td>
+    <td><CopyableCode code="fpga_image_id" /></td>
     <td><code>string</code></td>
     <td>The FPGA image identifier (AFI ID).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceTypes" /></td>
+    <td><CopyableCode code="instance_types" /></td>
     <td><code>string</code></td>
     <td>The instance types supported by the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAlias" /></td>
+    <td><CopyableCode code="owner_alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the AFI owner. Possible values include self, amazon, and aws-marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PciId" /></td>
+    <td><CopyableCode code="pci_id" /></td>
     <td><code>string</code></td>
     <td>Information about the PCI bus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCodes" /></td>
+    <td><CopyableCode code="product_codes" /></td>
     <td><code>string</code></td>
     <td>The product codes for the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Public" /></td>
+    <td><CopyableCode code="public" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the AFI is public.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShellVersion" /></td>
+    <td><CopyableCode code="shell_version" /></td>
     <td><code>string</code></td>
     <td>The version of the Amazon Web Services Shell that was used to create the bitstream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Information about the state of the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string</code></td>
     <td>The time of the most recent update to the AFI.</td>
 </tr>
@@ -285,22 +285,22 @@ Describes the Amazon FPGA Images (AFIs) available to you. These include public A
 
 ```sql
 SELECT
-CreateTime,
-DataRetentionSupport,
-Description,
-FpgaImageGlobalId,
-FpgaImageId,
-InstanceTypes,
-Name,
-OwnerAlias,
-OwnerId,
-PciId,
-ProductCodes,
-Public,
-ShellVersion,
-State,
-Tags,
-UpdateTime
+create_time,
+data_retention_support,
+description,
+fpga_image_global_id,
+fpga_image_id,
+instance_types,
+name,
+owner_alias,
+owner_id,
+pci_id,
+product_codes,
+public,
+shell_version,
+state,
+tags,
+update_time
 FROM aws.ec2.fpga_images
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -349,8 +349,8 @@ SELECT
 '{{ ClientToken }}',
 '{{ TagSpecification }}'
 RETURNING
-FpgaImageGlobalId,
-FpgaImageId
+fpga_image_global_id,
+fpga_image_id
 ;
 ```
 </TabItem>

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeRedundancy" /></td>
+    <td><CopyableCode code="compute_redundancy" /></td>
     <td><code>integer</code></td>
     <td>Specifies whether to create standby DB shard groups for the DB shard group. Valid values are the following: 0 - Creates a DB shard group without a standby DB shard group. This is the default value. 1 - Creates a DB shard group with a standby DB shard group in a different Availability Zone (AZ). 2 - Creates a DB shard group with two standby DB shard groups in two different AZs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The name of the primary DB cluster for the DB shard group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBShardGroupArn" /></td>
+    <td><CopyableCode code="db_shard_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB shard group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBShardGroupIdentifier" /></td>
+    <td><CopyableCode code="db_shard_group_identifier" /></td>
     <td><code>string</code></td>
     <td>The name of the DB shard group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBShardGroupResourceId" /></td>
+    <td><CopyableCode code="db_shard_group_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region-unique, immutable identifier for the DB shard group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The connection endpoint for the DB shard group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxACU" /></td>
+    <td><CopyableCode code="max_acu" /></td>
     <td><code>number</code></td>
     <td>The maximum capacity of the DB shard group in Aurora capacity units (ACUs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinACU" /></td>
+    <td><CopyableCode code="min_acu" /></td>
     <td><code>number</code></td>
     <td>The minimum capacity of the DB shard group in Aurora capacity units (ACUs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB shard group is publicly accessible. When the DB shard group is publicly accessible, its Domain Name System (DNS) endpoint resolves to the private IP address from within the DB shard group's virtual private cloud (VPC). It resolves to the public IP address from outside of the DB shard group's VPC. Access to the DB shard group is ultimately controlled by the security group it uses. That public access isn't permitted if the security group assigned to the DB shard group doesn't permit it. When the DB shard group isn't publicly accessible, it is an internal DB shard group with a DNS name that resolves to a private IP address. For more information, see CreateDBShardGroup. This setting is only for Aurora Limitless Database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the DB shard group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
@@ -257,17 +257,17 @@ Describes existing Aurora Limitless Database DB shard groups.
 
 ```sql
 SELECT
-ComputeRedundancy,
-DBClusterIdentifier,
-DBShardGroupArn,
-DBShardGroupIdentifier,
-DBShardGroupResourceId,
-Endpoint,
-MaxACU,
-MinACU,
-PubliclyAccessible,
-Status,
-TagList
+compute_redundancy,
+db_cluster_identifier,
+db_shard_group_arn,
+db_shard_group_identifier,
+db_shard_group_resource_id,
+endpoint,
+max_acu,
+min_acu,
+publicly_accessible,
+status,
+tag_list
 FROM aws.rds.db_shard_groups
 WHERE region = '{{ region }}' -- required
 AND DBShardGroupIdentifier = '{{ DBShardGroupIdentifier }}'
@@ -314,17 +314,17 @@ SELECT
 '{{ PubliclyAccessible }}',
 '{{ Tags }}'
 RETURNING
-ComputeRedundancy,
-DBClusterIdentifier,
-DBShardGroupArn,
-DBShardGroupIdentifier,
-DBShardGroupResourceId,
-Endpoint,
-MaxACU,
-MinACU,
-PubliclyAccessible,
-Status,
-TagList
+compute_redundancy,
+db_cluster_identifier,
+db_shard_group_arn,
+db_shard_group_identifier,
+db_shard_group_resource_id,
+endpoint,
+max_acu,
+min_acu,
+publicly_accessible,
+status,
+tag_list
 ;
 ```
 </TabItem>
@@ -388,17 +388,17 @@ AND MaxACU = '{{ MaxACU}}'
 AND MinACU = '{{ MinACU}}'
 AND ComputeRedundancy = '{{ ComputeRedundancy}}'
 RETURNING
-ComputeRedundancy,
-DBClusterIdentifier,
-DBShardGroupArn,
-DBShardGroupIdentifier,
-DBShardGroupResourceId,
-Endpoint,
-MaxACU,
-MinACU,
-PubliclyAccessible,
-Status,
-TagList;
+compute_redundancy,
+db_cluster_identifier,
+db_shard_group_arn,
+db_shard_group_identifier,
+db_shard_group_resource_id,
+endpoint,
+max_acu,
+min_acu,
+publicly_accessible,
+status,
+tag_list;
 ```
 </TabItem>
 </Tabs>

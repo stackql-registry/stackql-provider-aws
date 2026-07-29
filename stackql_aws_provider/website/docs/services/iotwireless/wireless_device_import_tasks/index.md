@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the import task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the import task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationName" /></td>
+    <td><CopyableCode code="destination_name" /></td>
     <td><code>string</code></td>
     <td>The name of the destination that's assigned to the wireless devices in the import task. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedImportedDeviceCount" /></td>
+    <td><CopyableCode code="failed_imported_device_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of devices in the import task that failed to onboard to the import task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the import task for which information is retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitializedImportedDeviceCount" /></td>
+    <td><CopyableCode code="initialized_imported_device_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of devices in the import task that are waiting for the control log to start processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnboardedImportedDeviceCount" /></td>
+    <td><CopyableCode code="onboarded_imported_device_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of devices in the import task that have been onboarded to the import task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingImportedDeviceCount" /></td>
+    <td><CopyableCode code="pending_imported_device_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of devices in the import task that are waiting in the import task queue to be onboarded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Positioning" /></td>
+    <td><CopyableCode code="positioning" /></td>
     <td><code>string</code></td>
     <td>The integration status of the Device Location feature for LoRaWAN and Sidewalk devices. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sidewalk" /></td>
+    <td><CopyableCode code="sidewalk" /></td>
     <td><code>object</code></td>
     <td>The Sidewalk-related information about an import task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The import task status. (INITIALIZING, INITIALIZED, PENDING, COMPLETE, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the provided status information, such as a validation error that causes the import task to fail.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessDeviceImportTaskList" /></td>
+    <td><CopyableCode code="wireless_device_import_task_list" /></td>
     <td><code>array</code></td>
     <td>List of import tasks and summary information of onboarding status of devices in each import task.</td>
 </tr>
@@ -236,18 +236,18 @@ Get information about an import task and count of device onboarding summary info
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-DestinationName,
-FailedImportedDeviceCount,
-Id,
-InitializedImportedDeviceCount,
-OnboardedImportedDeviceCount,
-PendingImportedDeviceCount,
-Positioning,
-Sidewalk,
-Status,
-StatusReason
+arn,
+creation_time,
+destination_name,
+failed_imported_device_count,
+id,
+initialized_imported_device_count,
+onboarded_imported_device_count,
+pending_imported_device_count,
+positioning,
+sidewalk,
+status,
+status_reason
 FROM aws.iotwireless.wireless_device_import_tasks
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -260,8 +260,8 @@ List of import tasks and summary information of onboarding status of devices in 
 
 ```sql
 SELECT
-NextToken,
-WirelessDeviceImportTaskList
+next_token,
+wireless_device_import_task_list
 FROM aws.iotwireless.wireless_device_import_tasks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

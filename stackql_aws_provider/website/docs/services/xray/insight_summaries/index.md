@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InsightSummaries" /></td>
+    <td><CopyableCode code="insight_summaries" /></td>
     <td><code>array</code></td>
     <td>The summary of each insight within the group matching the provided filters. The summary contains the InsightID, start and end time, the root cause service, the root cause and client impact statistics, the top anomalous services, and the status of the insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the summaries of all insights in the specified group matching the prov
 
 ```sql
 SELECT
-InsightSummaries,
-NextToken
+insight_summaries,
+next_token
 FROM aws.xray.insight_summaries
 WHERE region = '{{ region }}' -- required
 ;

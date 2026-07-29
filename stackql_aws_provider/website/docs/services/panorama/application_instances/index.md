@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationInstanceId" /></td>
+    <td><CopyableCode code="application_instance_id" /></td>
     <td><code>string</code></td>
     <td>The application instance's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationInstanceIdToReplace" /></td>
+    <td><CopyableCode code="application_instance_id_to_replace" /></td>
     <td><code>string</code></td>
     <td>The ID of the application instance that this instance replaced. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The application instance's ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the application instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultRuntimeContextDevice" /></td>
+    <td><CopyableCode code="default_runtime_context_device" /></td>
     <td><code>string</code></td>
     <td>The device's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultRuntimeContextDeviceName" /></td>
+    <td><CopyableCode code="default_runtime_context_device_name" /></td>
     <td><code>string</code></td>
     <td>The device's bane. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The application instance's description. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>string</code></td>
     <td>The application instance's health status. (RUNNING, ERROR, NOT_AVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The application instance was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The application instance's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeContextStates" /></td>
+    <td><CopyableCode code="runtime_context_states" /></td>
     <td><code>array</code></td>
     <td>The application instance's state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeRoleArn" /></td>
+    <td><CopyableCode code="runtime_role_arn" /></td>
     <td><code>string</code></td>
     <td>The application instance's runtime role ARN. (pattern: &lt;code&gt;^arn:&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;:iam::&#91;0-9&#93;&#123;12&#125;:role/.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The application instance's status. (DEPLOYMENT_PENDING, DEPLOYMENT_REQUESTED, DEPLOYMENT_IN_PROGRESS, DEPLOYMENT_ERROR, DEPLOYMENT_SUCCEEDED, REMOVAL_PENDING, REMOVAL_REQUESTED, REMOVAL_IN_PROGRESS, REMOVAL_FAILED, REMOVAL_SUCCEEDED, DEPLOYMENT_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDescription" /></td>
+    <td><CopyableCode code="status_description" /></td>
     <td><code>string</code></td>
     <td>The application instance's status description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The application instance's tags.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationInstances" /></td>
+    <td><CopyableCode code="application_instances" /></td>
     <td><code>array</code></td>
     <td>A list of application instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
@@ -261,21 +261,21 @@ Returns information about an application instance on a device.
 
 ```sql
 SELECT
-ApplicationInstanceId,
-ApplicationInstanceIdToReplace,
-Arn,
-CreatedTime,
-DefaultRuntimeContextDevice,
-DefaultRuntimeContextDeviceName,
-Description,
-HealthStatus,
-LastUpdatedTime,
-Name,
-RuntimeContextStates,
-RuntimeRoleArn,
-Status,
-StatusDescription,
-Tags
+application_instance_id,
+application_instance_id_to_replace,
+arn,
+created_time,
+default_runtime_context_device,
+default_runtime_context_device_name,
+description,
+health_status,
+last_updated_time,
+name,
+runtime_context_states,
+runtime_role_arn,
+status,
+status_description,
+tags
 FROM aws.panorama.application_instances
 WHERE application_instance_id = '{{ application_instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,8 +288,8 @@ Returns a list of application instances.
 
 ```sql
 SELECT
-ApplicationInstances,
-NextToken
+application_instances,
+next_token
 FROM aws.panorama.application_instances
 WHERE region = '{{ region }}' -- required
 AND deviceId = '{{ deviceId }}'
@@ -338,7 +338,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ApplicationInstanceId
+application_instance_id
 ;
 ```
 </TabItem>

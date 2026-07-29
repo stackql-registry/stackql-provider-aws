@@ -51,112 +51,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalEncryptionContext" /></td>
+    <td><CopyableCode code="additional_encryption_context" /></td>
     <td><code>object</code></td>
     <td>The additional encryption context of the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The type of authentication integration points used when signing into the web portal. Defaults to Standard. Standard web portals are authenticated directly through your identity provider. You need to call CreateIdentityProvider to integrate your identity provider with your web portal. User and group access to your web portal is controlled through your identity provider. IAM Identity Center web portals are authenticated through IAM Identity Center. Identity sources (including external identity provider integration), plus user and group access to your web portal, can be configured in the IAM Identity Center. (Standard, IAM_Identity_Center)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserSettingsArn" /></td>
+    <td><CopyableCode code="browser_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the browser settings that is associated with this web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserType" /></td>
+    <td><CopyableCode code="browser_type" /></td>
     <td><code>string</code></td>
     <td>The browser that users see when using a streaming session. (Chrome)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date of the web portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerManagedKey" /></td>
+    <td><CopyableCode code="customer_managed_key" /></td>
     <td><code>string</code></td>
     <td>The customer managed key used to encrypt sensitive information in the portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:kms:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:key\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataProtectionSettingsArn" /></td>
+    <td><CopyableCode code="data_protection_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the data protection settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the web portal. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The type and resources of the underlying instance. (standard.regular, standard.large, standard.xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAccessSettingsArn" /></td>
+    <td><CopyableCode code="ip_access_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IP access settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxConcurrentSessions" /></td>
+    <td><CopyableCode code="max_concurrent_sessions" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of concurrent sessions for the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkSettingsArn" /></td>
+    <td><CopyableCode code="network_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the network settings that is associated with the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalArn" /></td>
+    <td><CopyableCode code="portal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalCustomDomain" /></td>
+    <td><CopyableCode code="portal_custom_domain" /></td>
     <td><code>string</code></td>
     <td>The custom domain of the web portal that users access in order to start streaming sessions. (pattern: &lt;code&gt;(|&#91;a-zA-Z0-9&#93;?((?!-)(&#91;A-Za-z0-9-&#93;*&#91;A-Za-z0-9&#93;)\.)+&#91;a-zA-Z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalEndpoint" /></td>
+    <td><CopyableCode code="portal_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint URL of the web portal that users access in order to start streaming sessions. (pattern: &lt;code&gt;(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?\.)+&#91;a-z0-9&#93;&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalStatus" /></td>
+    <td><CopyableCode code="portal_status" /></td>
     <td><code>string</code></td>
     <td>The status of the web portal. (Incomplete, Pending, Active)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rendererType" /></td>
+    <td><CopyableCode code="renderer_type" /></td>
     <td><code>string</code></td>
     <td>The renderer that is used in streaming sessions. (AppStream)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionLoggerArn" /></td>
+    <td><CopyableCode code="session_logger_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the session logger that is assocaited with the portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A message that explains why the web portal is in its current status. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustStoreArn" /></td>
+    <td><CopyableCode code="trust_store_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trust store that is associated with the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userAccessLoggingSettingsArn" /></td>
+    <td><CopyableCode code="user_access_logging_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user access logging settings that is associated with the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userSettingsArn" /></td>
+    <td><CopyableCode code="user_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user settings that is associated with the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -175,7 +175,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -293,28 +293,28 @@ Gets the web portal.
 
 ```sql
 SELECT
-additionalEncryptionContext,
-authenticationType,
-browserSettingsArn,
-browserType,
-creationDate,
-customerManagedKey,
-dataProtectionSettingsArn,
-displayName,
-instanceType,
-ipAccessSettingsArn,
-maxConcurrentSessions,
-networkSettingsArn,
-portalArn,
-portalCustomDomain,
-portalEndpoint,
-portalStatus,
-rendererType,
-sessionLoggerArn,
-statusReason,
-trustStoreArn,
-userAccessLoggingSettingsArn,
-userSettingsArn
+additional_encryption_context,
+authentication_type,
+browser_settings_arn,
+browser_type,
+creation_date,
+customer_managed_key,
+data_protection_settings_arn,
+display_name,
+instance_type,
+ip_access_settings_arn,
+max_concurrent_sessions,
+network_settings_arn,
+portal_arn,
+portal_custom_domain,
+portal_endpoint,
+portal_status,
+renderer_type,
+session_logger_arn,
+status_reason,
+trust_store_arn,
+user_access_logging_settings_arn,
+user_settings_arn
 FROM aws.workspaces_web.portals
 WHERE portal_arn = '{{ portal_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -327,7 +327,7 @@ Retrieves a list or web portals.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 portals
 FROM aws.workspaces_web.portals
 WHERE region = '{{ region }}' -- required
@@ -377,8 +377,8 @@ SELECT
 '{{ portalCustomDomain }}',
 '{{ region }}'
 RETURNING
-portalArn,
-portalEndpoint
+portal_arn,
+portal_endpoint
 ;
 ```
 </TabItem>

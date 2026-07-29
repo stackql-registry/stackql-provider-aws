@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the export snapshot record. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the export snapshot record was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationInfo" /></td>
+    <td><CopyableCode code="destination_info" /></td>
     <td><code>object</code></td>
     <td>A list of objects describing the destination of the export snapshot record.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The AWS Region and Availability Zone where the export snapshot record is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type (ExportSnapshotRecord). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceInfo" /></td>
+    <td><CopyableCode code="source_info" /></td>
     <td><code>object</code></td>
     <td>A list of objects describing the source of the export snapshot record.</td>
 </tr>
@@ -156,11 +156,11 @@ Returns all export snapshot records created as a result of the export snapshot o
 SELECT
 name,
 arn,
-createdAt,
-destinationInfo,
+created_at,
+destination_info,
 location,
-resourceType,
-sourceInfo,
+resource_type,
+source_info,
 state
 FROM aws.lightsail.export_snapshot_records
 WHERE region = '{{ region }}' -- required

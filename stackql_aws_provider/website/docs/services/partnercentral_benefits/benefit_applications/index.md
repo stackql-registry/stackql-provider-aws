@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the benefit application. (pattern: &lt;code&gt;arn:aws:(&#91;a-zA-Z0-9\-&#93;)+:(&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedResources" /></td>
+    <td><CopyableCode code="associated_resources" /></td>
     <td><code>array</code></td>
     <td>AWS resources that are associated with this benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitApplicationDetails" /></td>
+    <td><CopyableCode code="benefit_application_details" /></td>
     <td><code>object</code></td>
     <td>Detailed information and requirements specific to the benefit being requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitId" /></td>
+    <td><CopyableCode code="benefit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the benefit being requested in this application. (pattern: &lt;code&gt;(arn:.+|ben-&#91;0-9a-z&#93;&#123;14&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier that the benefit application belongs to. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileDetails" /></td>
+    <td><CopyableCode code="file_details" /></td>
     <td><code>array</code></td>
     <td>Supporting documents and files attached to the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfillmentTypes" /></td>
+    <td><CopyableCode code="fulfillment_types" /></td>
     <td><code>array</code></td>
     <td>The fulfillment types requested for this benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the benefit application. (pattern: &lt;code&gt;benappl-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartnerContacts" /></td>
+    <td><CopyableCode code="partner_contacts" /></td>
     <td><code>array</code></td>
     <td>Contact information for partner representatives responsible for this benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Programs" /></td>
+    <td><CopyableCode code="programs" /></td>
     <td><code>array</code></td>
     <td>The AWS partner programs associated with this benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>string</code></td>
     <td>The current revision number of the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Stage" /></td>
+    <td><CopyableCode code="stage" /></td>
     <td><code>string</code></td>
     <td>The current stage in the benefit application processing workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current processing status of the benefit application. (PENDING_SUBMISSION, IN_REVIEW, ACTION_REQUIRED, APPROVED, REJECTED, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information explaining the current status of the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReasonCode" /></td>
+    <td><CopyableCode code="status_reason_code" /></td>
     <td><code>string</code></td>
     <td>A standardized code representing the reason for the current status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReasonCodes" /></td>
+    <td><CopyableCode code="status_reason_codes" /></td>
     <td><code>array</code></td>
     <td>The list of standardized codes representing the reason for the current status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit application was last updated.</td>
 </tr>
@@ -165,67 +165,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedResources" /></td>
+    <td><CopyableCode code="associated_resources" /></td>
     <td><code>array</code></td>
     <td>AWS resources that are associated with this benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitApplicationDetails" /></td>
+    <td><CopyableCode code="benefit_application_details" /></td>
     <td><code>object</code></td>
     <td>Additional attributes and metadata associated with the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitId" /></td>
+    <td><CopyableCode code="benefit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the benefit being requested in this application. (pattern: &lt;code&gt;(arn:.+|ben-&#91;0-9a-z&#93;&#123;14&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier that the benefit application belongs to. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfillmentTypes" /></td>
+    <td><CopyableCode code="fulfillment_types" /></td>
     <td><code>array</code></td>
     <td>The fulfillment types requested for this benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the benefit application. (pattern: &lt;code&gt;benappl-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Programs" /></td>
+    <td><CopyableCode code="programs" /></td>
     <td><code>array</code></td>
     <td>The AWS partner programs associated with this benefit application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Stage" /></td>
+    <td><CopyableCode code="stage" /></td>
     <td><code>string</code></td>
     <td>The current stage in the benefit application processing workflow..</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current processing status of the benefit application. (PENDING_SUBMISSION, IN_REVIEW, ACTION_REQUIRED, APPROVED, REJECTED, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the benefit application was last updated.</td>
 </tr>
@@ -330,26 +330,26 @@ Retrieves detailed information about a specific benefit application.
 
 ```sql
 SELECT
-Arn,
-AssociatedResources,
-BenefitApplicationDetails,
-BenefitId,
-Catalog,
-CreatedAt,
-Description,
-FileDetails,
-FulfillmentTypes,
-Id,
-Name,
-PartnerContacts,
-Programs,
-Revision,
-Stage,
-Status,
-StatusReason,
-StatusReasonCode,
-StatusReasonCodes,
-UpdatedAt
+arn,
+associated_resources,
+benefit_application_details,
+benefit_id,
+catalog,
+created_at,
+description,
+file_details,
+fulfillment_types,
+id,
+name,
+partner_contacts,
+programs,
+revision,
+stage,
+status,
+status_reason,
+status_reason_code,
+status_reason_codes,
+updated_at
 FROM aws.partnercentral_benefits.benefit_applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -361,19 +361,19 @@ Retrieves a paginated list of benefit applications based on specified filter cri
 
 ```sql
 SELECT
-Arn,
-AssociatedResources,
-BenefitApplicationDetails,
-BenefitId,
-Catalog,
-CreatedAt,
-FulfillmentTypes,
-Id,
-Name,
-Programs,
-Stage,
-Status,
-UpdatedAt
+arn,
+associated_resources,
+benefit_application_details,
+benefit_id,
+catalog,
+created_at,
+fulfillment_types,
+id,
+name,
+programs,
+stage,
+status,
+updated_at
 FROM aws.partnercentral_benefits.benefit_applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -424,9 +424,9 @@ SELECT
 '{{ FileDetails }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id,
-Revision
+arn,
+id,
+revision
 ;
 ```
 </TabItem>
@@ -523,9 +523,9 @@ region = '{{ region }}' --required
 AND BenefitApplicationIdentifier = '{{ BenefitApplicationIdentifier }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-Arn,
-Id,
-Revision;
+arn,
+id,
+revision;
 ```
 </TabItem>
 <TabItem value="update_benefit_application">
@@ -549,9 +549,9 @@ region = '{{ region }}' --required
 AND ClientToken = '{{ ClientToken }}' --required
 AND Identifier = '{{ Identifier }}' --required
 RETURNING
-Arn,
-Id,
-Revision;
+arn,
+id,
+revision;
 ```
 </TabItem>
 </Tabs>

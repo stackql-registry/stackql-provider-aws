@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PropertyNameSuggestions" /></td>
+    <td><CopyableCode code="property_name_suggestions" /></td>
     <td><code>array</code></td>
     <td>A list of property names for a Resource that match a SuggestionQuery.</td>
 </tr>
@@ -119,7 +119,7 @@ An auto-complete API for the search functionality in the SageMaker console. It r
 
 ```sql
 SELECT
-PropertyNameSuggestions
+property_name_suggestions
 FROM aws.sagemaker.search_suggestions
 WHERE region = '{{ region }}' -- required
 ;

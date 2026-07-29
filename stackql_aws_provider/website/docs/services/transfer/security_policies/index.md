@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Fips" /></td>
+    <td><CopyableCode code="fips" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether this policy enables Federal Information Processing Standards (FIPS). This parameter applies to both server and connector security policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocols" /></td>
+    <td><CopyableCode code="protocols" /></td>
     <td><code>array</code></td>
     <td>Lists the file transfer protocols that the security policy applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityPolicyName" /></td>
+    <td><CopyableCode code="security_policy_name" /></td>
     <td><code>string</code></td>
     <td>The text name of the specified security policy. (pattern: &lt;code&gt;Transfer&#91;A-Za-z0-9&#93;*SecurityPolicy-&#91;A-Za-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SshCiphers" /></td>
+    <td><CopyableCode code="ssh_ciphers" /></td>
     <td><code>array</code></td>
     <td>Lists the enabled Secure Shell (SSH) cipher encryption algorithms in the security policy that is attached to the server or connector. This parameter applies to both server and connector security policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SshHostKeyAlgorithms" /></td>
+    <td><CopyableCode code="ssh_host_key_algorithms" /></td>
     <td><code>array</code></td>
     <td>Lists the host key algorithms for the security policy. This parameter only applies to security policies for connectors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SshKexs" /></td>
+    <td><CopyableCode code="ssh_kexs" /></td>
     <td><code>array</code></td>
     <td>Lists the enabled SSH key exchange (KEX) encryption algorithms in the security policy that is attached to the server or connector. This parameter applies to both server and connector security policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SshMacs" /></td>
+    <td><CopyableCode code="ssh_macs" /></td>
     <td><code>array</code></td>
     <td>Lists the enabled SSH message authentication code (MAC) encryption algorithms in the security policy that is attached to the server or connector. This parameter applies to both server and connector security policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TlsCiphers" /></td>
+    <td><CopyableCode code="tls_ciphers" /></td>
     <td><code>array</code></td>
     <td>Lists the enabled Transport Layer Security (TLS) cipher encryption algorithms in the security policy that is attached to the server. This parameter only applies to security policies for servers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The resource type to which the security policy applies, either server or connector. (SERVER, CONNECTOR)</td>
 </tr>
@@ -187,15 +187,15 @@ Describes the security policy that is attached to your server or SFTP connector.
 
 ```sql
 SELECT
-Fips,
-Protocols,
-SecurityPolicyName,
-SshCiphers,
-SshHostKeyAlgorithms,
-SshKexs,
-SshMacs,
-TlsCiphers,
-Type
+fips,
+protocols,
+security_policy_name,
+ssh_ciphers,
+ssh_host_key_algorithms,
+ssh_kexs,
+ssh_macs,
+tls_ciphers,
+type
 FROM aws.transfer.security_policies
 WHERE region = '{{ region }}' -- required
 ;

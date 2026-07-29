@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="branchName" /></td>
+    <td><CopyableCode code="branch_name" /></td>
     <td><code>string</code></td>
     <td>The name of the branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitId" /></td>
+    <td><CopyableCode code="commit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last commit made to the branch.</td>
 </tr>
@@ -185,8 +185,8 @@ Returns information about a repository branch, including its name and the last c
 
 ```sql
 SELECT
-branchName,
-commitId
+branch_name,
+commit_id
 FROM aws.codecommit.branches
 WHERE region = '{{ region }}' -- required
 ;

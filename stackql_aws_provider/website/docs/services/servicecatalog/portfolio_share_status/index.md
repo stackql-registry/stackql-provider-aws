@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OrganizationNodeValue" /></td>
+    <td><CopyableCode code="organization_node_value" /></td>
     <td><code>string</code></td>
     <td>Organization node identifier. It can be either account id, organizational unit id or organization id. (pattern: &lt;code&gt;(^&#91;0-9&#93;&#123;12&#125;$)|(^arn:aws:organizations::\d&#123;12&#125;:organization\/o-&#91;a-z0-9&#93;&#123;10,32&#125;)|(^o-&#91;a-z0-9&#93;&#123;10,32&#125;$)|(^arn:aws:organizations::\d&#123;12&#125;:ou\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;0-9a-z&#93;&#123;8,32&#125;$)|(^ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortfolioId" /></td>
+    <td><CopyableCode code="portfolio_id" /></td>
     <td><code>string</code></td>
     <td>The portfolio identifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortfolioShareToken" /></td>
+    <td><CopyableCode code="portfolio_share_token" /></td>
     <td><code>string</code></td>
     <td>The token for the portfolio share operation. For example, share-6v24abcdefghi. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareDetails" /></td>
+    <td><CopyableCode code="share_details" /></td>
     <td><code>object</code></td>
     <td>Information about the portfolio share operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the portfolio share operation. (NOT_STARTED, IN_PROGRESS, COMPLETED, COMPLETED_WITH_ERRORS, ERROR)</td>
 </tr>
@@ -139,11 +139,11 @@ Gets the status of the specified portfolio share operation. This API can only be
 
 ```sql
 SELECT
-OrganizationNodeValue,
-PortfolioId,
-PortfolioShareToken,
-ShareDetails,
-Status
+organization_node_value,
+portfolio_id,
+portfolio_share_token,
+share_details,
+status
 FROM aws.servicecatalog.portfolio_share_status
 WHERE region = '{{ region }}' -- required
 ;

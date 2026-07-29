@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lastEvaluatedAt" /></td>
+    <td><CopyableCode code="last_evaluated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of the last time that the lifecycle policy was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecyclePolicyText" /></td>
+    <td><CopyableCode code="lifecycle_policy_text" /></td>
     <td><code>string</code></td>
     <td>The JSON lifecycle policy text.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The registry ID associated with the request. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The repository name associated with the request. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*&lt;/code&gt;)</td>
 </tr>
@@ -155,10 +155,10 @@ Retrieves the lifecycle policy for the specified repository.
 
 ```sql
 SELECT
-lastEvaluatedAt,
-lifecyclePolicyText,
-registryId,
-repositoryName
+last_evaluated_at,
+lifecycle_policy_text,
+registry_id,
+repository_name
 FROM aws.ecr.lifecycle_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -190,9 +190,9 @@ region = '{{ region }}' --required
 AND repositoryName = '{{ repositoryName }}' --required
 AND lifecyclePolicyText = '{{ lifecyclePolicyText }}' --required
 RETURNING
-lifecyclePolicyText,
-registryId,
-repositoryName;
+lifecycle_policy_text,
+registry_id,
+repository_name;
 ```
 </TabItem>
 </Tabs>

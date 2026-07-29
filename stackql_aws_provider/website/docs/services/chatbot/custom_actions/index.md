@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom action that is included in the ARN. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AliasName" /></td>
+    <td><CopyableCode code="alias_name" /></td>
     <td><code>string</code></td>
     <td>The name used to invoke this action in the chat channel. For example, @aws run my-alias. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Attachments" /></td>
+    <td><CopyableCode code="attachments" /></td>
     <td><code>array</code></td>
     <td>Defines when this custom action button should be attached to a notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomActionArn" /></td>
+    <td><CopyableCode code="custom_action_arn" /></td>
     <td><code>string</code></td>
     <td>The fully defined Amazon Resource Name (ARN) of the custom action. (pattern: &lt;code&gt;arn:aws:chatbot:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:custom-action/&#91;a-zA-Z0-9_-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>The definition of the command to run when invoked as an alias or as an action button.</td>
 </tr>
@@ -188,11 +188,11 @@ Returns a custom action.
 
 ```sql
 SELECT
-ActionName,
-AliasName,
-Attachments,
-CustomActionArn,
-Definition
+action_name,
+alias_name,
+attachments,
+custom_action_arn,
+definition
 FROM aws.chatbot.custom_actions
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,7 +245,7 @@ SELECT
 '{{ ActionName }}' /* required */,
 '{{ region }}'
 RETURNING
-CustomActionArn
+custom_action_arn
 ;
 ```
 </TabItem>
@@ -308,7 +308,7 @@ region = '{{ region }}' --required
 AND CustomActionArn = '{{ CustomActionArn }}' --required
 AND Definition = '{{ Definition }}' --required
 RETURNING
-CustomActionArn;
+custom_action_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationComponentStrategies" /></td>
+    <td><CopyableCode code="application_component_strategies" /></td>
     <td><code>array</code></td>
     <td>A list of application component strategy recommendations.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves a list of all the recommended strategies and tools for an application 
 
 ```sql
 SELECT
-applicationComponentStrategies
+application_component_strategies
 FROM aws.migrationhubstrategy.application_component_strategies
 WHERE application_component_id = '{{ application_component_id }}' -- required
 AND region = '{{ region }}' -- required

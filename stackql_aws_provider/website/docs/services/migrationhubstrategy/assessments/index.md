@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ID for the specific assessment task. (pattern: &lt;code&gt;&#91;0-9a-z-:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentTargets" /></td>
+    <td><CopyableCode code="assessment_targets" /></td>
     <td><code>array</code></td>
     <td>List of criteria for assessment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataCollectionDetails" /></td>
+    <td><CopyableCode code="data_collection_details" /></td>
     <td><code>object</code></td>
     <td>Detailed information about the assessment.</td>
 </tr>
@@ -135,8 +135,8 @@ Retrieves the status of an on-going assessment.
 ```sql
 SELECT
 id,
-assessmentTargets,
-dataCollectionDetails
+assessment_targets,
+data_collection_details
 FROM aws.migrationhubstrategy.assessments
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

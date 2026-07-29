@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the scan was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastCommitId" /></td>
+    <td><CopyableCode code="last_commit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the last commit that was scanned. This is only returned if the scan was successful or skipped.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>Identifies a specific resource in a code repository that will be scanned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanId" /></td>
+    <td><CopyableCode code="scan_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the scan. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the scan. (IN_PROGRESS, SUCCESSFUL, FAILED, SKIPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the scan was last updated.</td>
 </tr>
@@ -154,14 +154,14 @@ Retrieves information about a specific code security scan.
 
 ```sql
 SELECT
-accountId,
-createdAt,
-lastCommitId,
+account_id,
+created_at,
+last_commit_id,
 resource,
-scanId,
+scan_id,
 status,
-statusReason,
-updatedAt
+status_reason,
+updated_at
 FROM aws.inspector2.code_security_scans
 WHERE region = '{{ region }}' -- required
 ;

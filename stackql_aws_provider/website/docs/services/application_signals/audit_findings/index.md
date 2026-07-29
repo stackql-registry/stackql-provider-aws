@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuditFindings" /></td>
+    <td><CopyableCode code="audit_findings" /></td>
     <td><code>array</code></td>
     <td>An array of structures, where each structure contains information about one audit finding, including the auditor results, severity, and associated metric and dependency graphs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end of the time period that the returned audit findings apply to. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example, 1698778057</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Include this value in your next use of this API to get the next set of audit findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start of the time period that the returned audit findings apply to. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example, 1698778057</td>
 </tr>
@@ -144,10 +144,10 @@ Returns a list of audit findings that provide automated analysis of service beha
 
 ```sql
 SELECT
-AuditFindings,
-EndTime,
-NextToken,
-StartTime
+audit_findings,
+end_time,
+next_token,
+start_time
 FROM aws.application_signals.audit_findings
 WHERE StartTime = '{{ StartTime }}' -- required
 AND EndTime = '{{ EndTime }}' -- required

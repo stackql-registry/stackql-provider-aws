@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The registry ID associated with the request. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanningConfiguration" /></td>
+    <td><CopyableCode code="scanning_configuration" /></td>
     <td><code>object</code></td>
     <td>The scanning configuration for the registry.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the scanning configuration for a registry.
 
 ```sql
 SELECT
-registryId,
-scanningConfiguration
+registry_id,
+scanning_configuration
 FROM aws.ecr.registry_scanning_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -161,7 +161,7 @@ rules = '{{ rules }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-registryScanningConfiguration;
+registry_scanning_configuration;
 ```
 </TabItem>
 </Tabs>

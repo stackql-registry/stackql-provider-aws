@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasId" /></td>
+    <td><CopyableCode code="alias_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the alias. (pattern: &lt;code&gt;^(&#91;$0-9a-zA-Z&#93;&#91;_-&#93;?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactFlowModuleArn" /></td>
+    <td><CopyableCode code="contact_flow_module_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactFlowModuleId" /></td>
+    <td><CopyableCode code="contact_flow_module_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the alias. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the alias. (pattern: &lt;code&gt;^(&#91;$0-9a-zA-Z&#93;&#91;_-&#93;?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the flow module.</td>
 </tr>
@@ -190,14 +190,14 @@ Retrieves detailed information about a specific alias, including which version i
 
 ```sql
 SELECT
-AliasId,
-ContactFlowModuleArn,
-ContactFlowModuleId,
-Description,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Version
+alias_id,
+contact_flow_module_arn,
+contact_flow_module_id,
+description,
+last_modified_region,
+last_modified_time,
+name,
+version
 FROM aws.connect.contact_flow_module_alias
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_flow_module_id = '{{ contact_flow_module_id }}' -- required
@@ -239,8 +239,8 @@ SELECT
 '{{ contact_flow_module_id }}',
 '{{ region }}'
 RETURNING
-ContactFlowModuleArn,
-Id
+contact_flow_module_arn,
+id
 ;
 ```
 </TabItem>

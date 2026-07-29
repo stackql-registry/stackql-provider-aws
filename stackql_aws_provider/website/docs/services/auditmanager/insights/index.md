@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeAssessmentsCount" /></td>
+    <td><CopyableCode code="active_assessments_count" /></td>
     <td><code>integer</code></td>
     <td>The number of active assessments in Audit Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentControlsCountByNoncompliantEvidence" /></td>
+    <td><CopyableCode code="assessment_controls_count_by_noncompliant_evidence" /></td>
     <td><code>integer</code></td>
     <td>The number of assessment controls that collected non-compliant evidence on the lastUpdated date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compliantEvidenceCount" /></td>
+    <td><CopyableCode code="compliant_evidence_count" /></td>
     <td><code>integer</code></td>
     <td>The number of compliance check evidence that Audit Manager classified as compliant on the lastUpdated date. This includes evidence that was collected from Security Hub with a Pass ruling, or collected from Config with a Compliant ruling.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inconclusiveEvidenceCount" /></td>
+    <td><CopyableCode code="inconclusive_evidence_count" /></td>
     <td><code>integer</code></td>
     <td>The number of evidence without a compliance check ruling. Evidence is inconclusive when the associated control uses Security Hub or Config as a data source but you didn't enable those services. This is also the case when a control uses a data source that doesn’t support compliance checks (for example: manual evidence, API calls, or CloudTrail). If evidence has a compliance check status of not applicable, it's classed as inconclusive in Insights data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the cross-assessment insights were last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noncompliantEvidenceCount" /></td>
+    <td><CopyableCode code="noncompliant_evidence_count" /></td>
     <td><code>integer</code></td>
     <td>The number of compliance check evidence that Audit Manager classified as non-compliant on the lastUpdated date. This includes evidence that was collected from Security Hub with a Fail ruling, or collected from Config with a Non-compliant ruling.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalAssessmentControlsCount" /></td>
+    <td><CopyableCode code="total_assessment_controls_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of controls across all active assessments.</td>
 </tr>
@@ -149,13 +149,13 @@ Gets the latest analytics data for all your current active assessments.
 
 ```sql
 SELECT
-activeAssessmentsCount,
-assessmentControlsCountByNoncompliantEvidence,
-compliantEvidenceCount,
-inconclusiveEvidenceCount,
-lastUpdated,
-noncompliantEvidenceCount,
-totalAssessmentControlsCount
+active_assessments_count,
+assessment_controls_count_by_noncompliant_evidence,
+compliant_evidence_count,
+inconclusive_evidence_count,
+last_updated,
+noncompliant_evidence_count,
+total_assessment_controls_count
 FROM aws.auditmanager.insights
 WHERE region = '{{ region }}' -- required
 ;

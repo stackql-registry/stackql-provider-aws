@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnomalyReportedTimeRange" /></td>
+    <td><CopyableCode code="anomaly_reported_time_range" /></td>
     <td><code>object</code></td>
     <td>An AnomalyReportedTimeRange object that specifies the time range between when the anomaly is opened and the time when it is closed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnomalyResources" /></td>
+    <td><CopyableCode code="anomaly_resources" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services resources in which anomalous behavior was detected by DevOps Guru.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnomalyTimeRange" /></td>
+    <td><CopyableCode code="anomaly_time_range" /></td>
     <td><code>object</code></td>
     <td>A time range that specifies when the observed unusual behavior in an anomaly started and ended. This is different from AnomalyReportedTimeRange, which specifies the time range when DevOps Guru opens and then closes an anomaly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedInsightId" /></td>
+    <td><CopyableCode code="associated_insight_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the insight that contains this anomaly. An insight is composed of related anomalies. (pattern: &lt;code&gt;^&#91;\w-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CausalAnomalyId" /></td>
+    <td><CopyableCode code="causal_anomaly_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the causal anomaly that is associated with this reactive anomaly. The ID of a `CAUSAL` anomaly is always `NULL`. (pattern: &lt;code&gt;^&#91;\w~.-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the reactive anomaly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the reactive anomaly. (pattern: &lt;code&gt;^&#91;\w~.-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the reactive anomaly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCollection" /></td>
+    <td><CopyableCode code="resource_collection" /></td>
     <td><code>object</code></td>
     <td>A collection of Amazon Web Services resources supported by DevOps Guru. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag key. You can specify up to 500 Amazon Web Services CloudFormation stacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the anomaly. The severity of anomalies that generate an insight determine that insight's severity. For more information, see Understanding insight severities in the Amazon DevOps Guru User Guide. (LOW, MEDIUM, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDetails" /></td>
+    <td><CopyableCode code="source_details" /></td>
     <td><code>object</code></td>
     <td>Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the reactive anomaly. (ONGOING, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the reactive anomaly. It can be one of the following types. CAUSAL - the anomaly can cause a new insight. CONTEXTUAL - the anomaly contains additional information about an insight or its causal anomaly. (CAUSAL, CONTEXTUAL)</td>
 </tr>
@@ -184,19 +184,19 @@ Returns a list of the anomalies that belong to an insight that you specify using
 
 ```sql
 SELECT
-AnomalyReportedTimeRange,
-AnomalyResources,
-AnomalyTimeRange,
-AssociatedInsightId,
-CausalAnomalyId,
-Description,
-Id,
-Name,
-ResourceCollection,
-Severity,
-SourceDetails,
-Status,
-Type
+anomaly_reported_time_range,
+anomaly_resources,
+anomaly_time_range,
+associated_insight_id,
+causal_anomaly_id,
+description,
+id,
+name,
+resource_collection,
+severity,
+source_details,
+status,
+type
 FROM aws.devops_guru.anomalies_for_insights
 WHERE insight_id = '{{ insight_id }}' -- required
 AND region = '{{ region }}' -- required

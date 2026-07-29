@@ -61,62 +61,62 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetworkserviceassociation/snsa-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsEntry" /></td>
+    <td><CopyableCode code="dns_entry" /></td>
     <td><code>object</code></td>
     <td>The DNS name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>The failure code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>The failure message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service. (pattern: &lt;code&gt;svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service. (pattern: &lt;code&gt;(?!svc-)(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetwork/sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkId" /></td>
+    <td><CopyableCode code="service_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service network. (pattern: &lt;code&gt;sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkName" /></td>
+    <td><CopyableCode code="service_network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service network. (pattern: &lt;code&gt;(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -150,52 +150,52 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetworkserviceassociation/snsa-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsEntry" /></td>
+    <td><CopyableCode code="dns_entry" /></td>
     <td><code>object</code></td>
     <td>The DNS information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service. (pattern: &lt;code&gt;svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service. (pattern: &lt;code&gt;(?!svc-)(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetwork/sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkId" /></td>
+    <td><CopyableCode code="service_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service network. (pattern: &lt;code&gt;sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkName" /></td>
+    <td><CopyableCode code="service_network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service network. (pattern: &lt;code&gt;(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -318,18 +318,18 @@ Retrieves information about the specified association between a service network 
 SELECT
 id,
 arn,
-createdAt,
-createdBy,
-customDomainName,
-dnsEntry,
-failureCode,
-failureMessage,
-serviceArn,
-serviceId,
-serviceName,
-serviceNetworkArn,
-serviceNetworkId,
-serviceNetworkName,
+created_at,
+created_by,
+custom_domain_name,
+dns_entry,
+failure_code,
+failure_message,
+service_arn,
+service_id,
+service_name,
+service_network_arn,
+service_network_id,
+service_network_name,
 status
 FROM aws.vpc_lattice.service_network_service_associations
 WHERE service_network_service_association_identifier = '{{ service_network_service_association_identifier }}' -- required
@@ -345,16 +345,16 @@ Lists the associations between a service network and a service. You can filter t
 SELECT
 id,
 arn,
-createdAt,
-createdBy,
-customDomainName,
-dnsEntry,
-serviceArn,
-serviceId,
-serviceName,
-serviceNetworkArn,
-serviceNetworkId,
-serviceNetworkName,
+created_at,
+created_by,
+custom_domain_name,
+dns_entry,
+service_arn,
+service_id,
+service_name,
+service_network_arn,
+service_network_id,
+service_network_name,
 status
 FROM aws.vpc_lattice.service_network_service_associations
 WHERE region = '{{ region }}' -- required
@@ -398,9 +398,9 @@ SELECT
 RETURNING
 id,
 arn,
-createdBy,
-customDomainName,
-dnsEntry,
+created_by,
+custom_domain_name,
+dns_entry,
 status
 ;
 ```

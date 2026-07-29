@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectInstanceId" /></td>
+    <td><CopyableCode code="connect_instance_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Connect Instance Id (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>Enumeration of the possible failure codes for instance onboarding job (EVENT_BRIDGE_ACCESS_DENIED, EVENT_BRIDGE_MANAGED_RULE_LIMIT_EXCEEDED, IAM_ACCESS_DENIED, KMS_ACCESS_DENIED, KMS_KEY_NOT_FOUND, INTERNAL_FAILURE)</td>
 </tr>
@@ -134,8 +134,8 @@ Get the specific instance onboarding job status.
 
 ```sql
 SELECT
-connectInstanceId,
-failureCode,
+connect_instance_id,
+failure_code,
 status
 FROM aws.connectcampaigns.instance_onboarding_job_status
 WHERE connect_instance_id = '{{ connect_instance_id }}' -- required

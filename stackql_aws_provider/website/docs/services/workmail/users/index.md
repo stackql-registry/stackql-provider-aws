@@ -51,127 +51,127 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="City" /></td>
+    <td><CopyableCode code="city" /></td>
     <td><code>string</code></td>
     <td>City where the user is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Company" /></td>
+    <td><CopyableCode code="company" /></td>
     <td><code>string</code></td>
     <td>Company of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Country" /></td>
+    <td><CopyableCode code="country" /></td>
     <td><code>string</code></td>
     <td>Country where the user is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Department" /></td>
+    <td><CopyableCode code="department" /></td>
     <td><code>string</code></td>
     <td>Department of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisabledDate" /></td>
+    <td><CopyableCode code="disabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the user was disabled for WorkMail usage, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email of the user. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._%+-&#93;&#123;1,64&#125;@&#91;a-zA-Z0-9.-&#93;+\.&#91;a-zA-Z-&#93;&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledDate" /></td>
+    <td><CopyableCode code="enabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the user was enabled for WorkMailusage, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstName" /></td>
+    <td><CopyableCode code="first_name" /></td>
     <td><code>string</code></td>
     <td>First name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HiddenFromGlobalAddressList" /></td>
+    <td><CopyableCode code="hidden_from_global_address_list" /></td>
     <td><code>boolean</code></td>
     <td>If enabled, the user is hidden from the global address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderIdentityStoreId" /></td>
+    <td><CopyableCode code="identity_provider_identity_store_id" /></td>
     <td><code>string</code></td>
     <td>Identity Store ID from the IAM Identity Center. If this parameter is empty it will be updated automatically when the user logs in for the first time to the mailbox associated with WorkMail. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;\\b-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-\\b&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderUserId" /></td>
+    <td><CopyableCode code="identity_provider_user_id" /></td>
     <td><code>string</code></td>
     <td>User ID from the IAM Identity Center. If this parameter is empty it will be updated automatically when the user logs in for the first time to the mailbox associated with WorkMail. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Initials" /></td>
+    <td><CopyableCode code="initials" /></td>
     <td><code>string</code></td>
     <td>Initials of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobTitle" /></td>
+    <td><CopyableCode code="job_title" /></td>
     <td><code>string</code></td>
     <td>Job title of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastName" /></td>
+    <td><CopyableCode code="last_name" /></td>
     <td><code>string</code></td>
     <td>Last name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MailboxDeprovisionedDate" /></td>
+    <td><CopyableCode code="mailbox_deprovisioned_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the mailbox was removed for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MailboxProvisionedDate" /></td>
+    <td><CopyableCode code="mailbox_provisioned_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the mailbox was created for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the user. (pattern: &lt;code&gt;&#91;\w\-.&#93;+(@&#91;a-zA-Z0-9.\-&#93;+\.&#91;a-zA-Z0-9-&#93;&#123;2,&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Office" /></td>
+    <td><CopyableCode code="office" /></td>
     <td><code>string</code></td>
     <td>Office where the user is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of a user: enabled (registered to WorkMail) or disabled (deregistered or never registered to WorkMail). (ENABLED, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Street" /></td>
+    <td><CopyableCode code="street" /></td>
     <td><code>string</code></td>
     <td>Street where the user is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Telephone" /></td>
+    <td><CopyableCode code="telephone" /></td>
     <td><code>string</code></td>
     <td>User's contact number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the described user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserRole" /></td>
+    <td><CopyableCode code="user_role" /></td>
     <td><code>string</code></td>
     <td>In certain cases, other entities are modeled as users. If interoperability is enabled, resources are imported into WorkMail as users. Because different WorkMail organizations rely on different directory types, administrators can distinguish between an unregistered user (account is disabled and has a user role) and the directory administrators. The values are USER, RESOURCE, SYSTEM_USER, and REMOTE_USER. (USER, RESOURCE, SYSTEM_USER, REMOTE_USER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZipCode" /></td>
+    <td><CopyableCode code="zip_code" /></td>
     <td><code>string</code></td>
     <td>Zip code of the user.</td>
 </tr>
@@ -190,52 +190,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisabledDate" /></td>
+    <td><CopyableCode code="disabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date indicating when the user was disabled from WorkMail use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email of the user. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._%+-&#93;&#123;1,64&#125;@&#91;a-zA-Z0-9.-&#93;+\.&#91;a-zA-Z-&#93;&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledDate" /></td>
+    <td><CopyableCode code="enabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date indicating when the user was enabled for WorkMail use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderIdentityStoreId" /></td>
+    <td><CopyableCode code="identity_provider_identity_store_id" /></td>
     <td><code>string</code></td>
     <td>Identity store ID from the IAM Identity Center. If this parameter is empty it will be updated automatically when the user logs in for the first time to the mailbox associated with WorkMail. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;\\b-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-\\b&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderUserId" /></td>
+    <td><CopyableCode code="identity_provider_user_id" /></td>
     <td><code>string</code></td>
     <td>User ID from the IAM Identity Center. If this parameter is empty it will be updated automatically when the user logs in for the first time to the mailbox associated with WorkMail. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the user. (pattern: &lt;code&gt;&#91;\w\-.&#93;+(@&#91;a-zA-Z0-9.\-&#93;+\.&#91;a-zA-Z0-9-&#93;&#123;2,&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the user, which can be ENABLED, DISABLED, or DELETED. (ENABLED, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserRole" /></td>
+    <td><CopyableCode code="user_role" /></td>
     <td><code>string</code></td>
     <td>The role of the user. (USER, RESOURCE, SYSTEM_USER, REMOTE_USER)</td>
 </tr>
@@ -333,31 +333,31 @@ Provides information regarding the user.
 
 ```sql
 SELECT
-City,
-Company,
-Country,
-Department,
-DisabledDate,
-DisplayName,
-Email,
-EnabledDate,
-FirstName,
-HiddenFromGlobalAddressList,
-IdentityProviderIdentityStoreId,
-IdentityProviderUserId,
-Initials,
-JobTitle,
-LastName,
-MailboxDeprovisionedDate,
-MailboxProvisionedDate,
-Name,
-Office,
-State,
-Street,
-Telephone,
-UserId,
-UserRole,
-ZipCode
+city,
+company,
+country,
+department,
+disabled_date,
+display_name,
+email,
+enabled_date,
+first_name,
+hidden_from_global_address_list,
+identity_provider_identity_store_id,
+identity_provider_user_id,
+initials,
+job_title,
+last_name,
+mailbox_deprovisioned_date,
+mailbox_provisioned_date,
+name,
+office,
+state,
+street,
+telephone,
+user_id,
+user_role,
+zip_code
 FROM aws.workmail.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -369,16 +369,16 @@ Returns summaries of the organization's users.
 
 ```sql
 SELECT
-DisabledDate,
-DisplayName,
-Email,
-EnabledDate,
-Id,
-IdentityProviderIdentityStoreId,
-IdentityProviderUserId,
-Name,
-State,
-UserRole
+disabled_date,
+display_name,
+email,
+enabled_date,
+id,
+identity_provider_identity_store_id,
+identity_provider_user_id,
+name,
+state,
+user_role
 FROM aws.workmail.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -425,7 +425,7 @@ SELECT
 '{{ IdentityProviderUserId }}',
 '{{ region }}'
 RETURNING
-UserId
+user_id
 ;
 ```
 </TabItem>

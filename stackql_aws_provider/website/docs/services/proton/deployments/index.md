@@ -61,82 +61,82 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the deployment was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentName" /></td>
+    <td><CopyableCode code="component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the component associated with this deployment. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>The deployment status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment associated with this deployment. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="initialState" /></td>
+    <td><CopyableCode code="initial_state" /></td>
     <td><code>object</code></td>
     <td>The initial state of the target resource at the time of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the deployment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceInstanceName" /></td>
+    <td><CopyableCode code="service_instance_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment's service instance. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service in this deployment. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target of the deployment. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResourceCreatedAt" /></td>
+    <td><CopyableCode code="target_resource_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the depoyment target was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResourceType" /></td>
+    <td><CopyableCode code="target_resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the deployment target. It can be an environment, service, service instance, or component. (ENVIRONMENT, SERVICE_PIPELINE, SERVICE_INSTANCE, COMPONENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetState" /></td>
+    <td><CopyableCode code="target_state" /></td>
     <td><code>object</code></td>
     <td>The target state of the target resource at the time of the deployment.</td>
 </tr>
@@ -165,67 +165,67 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the deployment was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentName" /></td>
+    <td><CopyableCode code="component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the component associated with the deployment. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the deployment. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment associated with the deployment. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the deployment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceInstanceName" /></td>
+    <td><CopyableCode code="service_instance_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service instance associated with the deployment. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service associated with the deployment. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target of the deployment. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResourceCreatedAt" /></td>
+    <td><CopyableCode code="target_resource_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the target resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResourceType" /></td>
+    <td><CopyableCode code="target_resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the deployment target. It can be an environment, service, service instance, or component. (ENVIRONMENT, SERVICE_PIPELINE, SERVICE_INSTANCE, COMPONENT)</td>
 </tr>
@@ -311,22 +311,22 @@ Get detailed data for a deployment.
 SELECT
 id,
 arn,
-completedAt,
-componentName,
-createdAt,
-deploymentStatus,
-deploymentStatusMessage,
-environmentName,
-initialState,
-lastAttemptedDeploymentId,
-lastModifiedAt,
-lastSucceededDeploymentId,
-serviceInstanceName,
-serviceName,
-targetArn,
-targetResourceCreatedAt,
-targetResourceType,
-targetState
+completed_at,
+component_name,
+created_at,
+deployment_status,
+deployment_status_message,
+environment_name,
+initial_state,
+last_attempted_deployment_id,
+last_modified_at,
+last_succeeded_deployment_id,
+service_instance_name,
+service_name,
+target_arn,
+target_resource_created_at,
+target_resource_type,
+target_state
 FROM aws.proton.deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -340,19 +340,19 @@ List deployments. You can filter the result list by environment, service, or a s
 SELECT
 id,
 arn,
-completedAt,
-componentName,
-createdAt,
-deploymentStatus,
-environmentName,
-lastAttemptedDeploymentId,
-lastModifiedAt,
-lastSucceededDeploymentId,
-serviceInstanceName,
-serviceName,
-targetArn,
-targetResourceCreatedAt,
-targetResourceType
+completed_at,
+component_name,
+created_at,
+deployment_status,
+environment_name,
+last_attempted_deployment_id,
+last_modified_at,
+last_succeeded_deployment_id,
+service_instance_name,
+service_name,
+target_arn,
+target_resource_created_at,
+target_resource_type
 FROM aws.proton.deployments
 WHERE region = '{{ region }}' -- required
 ;

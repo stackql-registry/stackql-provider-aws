@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rows" /></td>
+    <td><CopyableCode code="rows" /></td>
     <td><code>array</code></td>
     <td>The list of email result objects matching the search criteria.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the results of a completed email archive search job.
 
 ```sql
 SELECT
-Rows
+rows
 FROM aws.mailmanager.archive_search_results
 WHERE region = '{{ region }}' -- required
 ;

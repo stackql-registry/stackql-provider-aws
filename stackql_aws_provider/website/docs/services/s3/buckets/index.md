@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BucketArn" /></td>
+    <td><CopyableCode code="bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the S3 bucket. ARNs uniquely identify Amazon Web Services resources across all of Amazon Web Services. This parameter is only supported for S3 directory buckets. For more information, see Using tags with directory buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BucketRegion" /></td>
+    <td><CopyableCode code="bucket_region" /></td>
     <td><code>string</code></td>
     <td>BucketRegion indicates the Amazon Web Services region where the bucket is located. If the request contains at least one valid parameter, it is included in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>Date the bucket was created. This date can change when making changes to your bucket, such as editing its bucket policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the bucket.</td>
 </tr>
@@ -247,10 +247,10 @@ This operation is not supported for directory buckets. Returns a list of all buc
 
 ```sql
 SELECT
-BucketArn,
-BucketRegion,
-CreationDate,
-Name
+bucket_arn,
+bucket_region,
+creation_date,
+name
 FROM aws.s3.buckets
 WHERE region = '{{ region }}' -- required
 AND `max-buckets` = '{{ max-buckets }}'

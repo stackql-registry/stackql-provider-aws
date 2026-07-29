@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the event tracker. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that owns the event tracker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the event tracker was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset group that receives the event data. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTrackerArn" /></td>
+    <td><CopyableCode code="event_tracker_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the event tracker. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the event tracker was last updated.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the event tracker. An event tracker can be in one of the following states: CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED DELETE PENDING &gt; DELETE IN_PROGRESS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackingId" /></td>
+    <td><CopyableCode code="tracking_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the event tracker. Include this ID in requests to the PutEvents API.</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the event tracker. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the event tracker was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTrackerArn" /></td>
+    <td><CopyableCode code="event_tracker_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the event tracker. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the event tracker was last updated.</td>
 </tr>
@@ -217,13 +217,13 @@ Describes an event tracker. The response includes the trackingId and status of t
 ```sql
 SELECT
 name,
-accountId,
-creationDateTime,
-datasetGroupArn,
-eventTrackerArn,
-lastUpdatedDateTime,
+account_id,
+creation_date_time,
+dataset_group_arn,
+event_tracker_arn,
+last_updated_date_time,
 status,
-trackingId
+tracking_id
 FROM aws.personalize.event_trackers
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,9 +236,9 @@ Returns the list of event trackers associated with the account. The response pro
 ```sql
 SELECT
 name,
-creationDateTime,
-eventTrackerArn,
-lastUpdatedDateTime,
+creation_date_time,
+event_tracker_arn,
+last_updated_date_time,
 status
 FROM aws.personalize.event_trackers
 WHERE region = '{{ region }}' -- required
@@ -274,8 +274,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-eventTrackerArn,
-trackingId
+event_tracker_arn,
+tracking_id
 ;
 ```
 </TabItem>

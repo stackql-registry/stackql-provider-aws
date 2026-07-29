@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LoadBalancerName" /></td>
+    <td><CopyableCode code="load_balancer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>One of the following load balancer states: Adding - The Auto Scaling instances are being registered with the load balancer. Added - All Auto Scaling instances are registered with the load balancer. InService - At least one Auto Scaling instance passed an ELB health check. Removing - The Auto Scaling instances are being deregistered from the load balancer. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances. Removed - All Auto Scaling instances are deregistered from the load balancer.</td>
 </tr>
@@ -158,8 +158,8 @@ This API operation is superseded by DescribeTrafficSources, which can describe m
 
 ```sql
 SELECT
-LoadBalancerName,
-State
+load_balancer_name,
+state
 FROM aws.autoscaling.load_balancers
 WHERE AutoScalingGroupName = '{{ AutoScalingGroupName }}' -- required
 AND region = '{{ region }}' -- required

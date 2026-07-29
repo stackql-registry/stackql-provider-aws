@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BeginDate" /></td>
+    <td><CopyableCode code="begin_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date your subscription starts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date your subscription ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonthlyRecurringPrice" /></td>
+    <td><CopyableCode code="monthly_recurring_price" /></td>
     <td><code>number (double)</code></td>
     <td>The amount you are billed each month in the subscription period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderIds" /></td>
+    <td><CopyableCode code="order_ids" /></td>
     <td><code>array</code></td>
     <td>The order ID for your subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subscription that appears on the Amazon Web Services Billing Center console. (pattern: &lt;code&gt;^&#91;\S \n&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionStatus" /></td>
+    <td><CopyableCode code="subscription_status" /></td>
     <td><code>string</code></td>
     <td>The status of subscription which can be one of the following: INACTIVE - Subscription requests that are inactive. ACTIVE - Subscription requests that are in progress and have an end date in the future. PENDING - Subscription has been created but billing has not yet commenced because the subscription begin date has not been reached. CANCELLED - Subscription requests that are cancelled. (ACTIVE, PENDING, INACTIVE, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionType" /></td>
+    <td><CopyableCode code="subscription_type" /></td>
     <td><code>string</code></td>
     <td>The type of subscription which can be one of the following: ORIGINAL - The first order on the Amazon Web Services Outposts. RENEWAL - Renewal requests, both month to month and longer term. CAPACITY_INCREASE - Capacity scaling orders. (ORIGINAL, RENEWAL, CAPACITY_INCREASE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpfrontPrice" /></td>
+    <td><CopyableCode code="upfront_price" /></td>
     <td><code>number (double)</code></td>
     <td>The amount billed when the subscription is created. This is a one-time charge.</td>
 </tr>
@@ -169,14 +169,14 @@ Gets current and historical billing information about the specified Outpost.
 
 ```sql
 SELECT
-BeginDate,
-EndDate,
-MonthlyRecurringPrice,
-OrderIds,
-SubscriptionId,
-SubscriptionStatus,
-SubscriptionType,
-UpfrontPrice
+begin_date,
+end_date,
+monthly_recurring_price,
+order_ids,
+subscription_id,
+subscription_status,
+subscription_type,
+upfront_price
 FROM aws.outposts.outpost_billing_informations
 WHERE outpost_identifier = '{{ outpost_identifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupPlanTemplateId" /></td>
+    <td><CopyableCode code="backup_plan_template_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies a stored backup plan template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupPlanTemplateName" /></td>
+    <td><CopyableCode code="backup_plan_template_name" /></td>
     <td><code>string</code></td>
     <td>The optional display name of a backup plan template.</td>
 </tr>
@@ -134,8 +134,8 @@ Lists the backup plan templates.
 
 ```sql
 SELECT
-BackupPlanTemplateId,
-BackupPlanTemplateName
+backup_plan_template_id,
+backup_plan_template_name
 FROM aws.backup.backup_plan_templates
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

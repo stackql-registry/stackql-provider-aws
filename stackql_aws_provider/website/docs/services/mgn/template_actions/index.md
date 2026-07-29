@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionID" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>Template post migration custom action ID. (pattern: &lt;code&gt;.*&#91;0-9a-zA-Z&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>Template post migration custom action name.</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
     <td>Template post migration custom action description. (pattern: &lt;code&gt;&#91;0-9a-zA-Z ():/.,'-_#*; &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentIdentifier" /></td>
+    <td><CopyableCode code="document_identifier" /></td>
     <td><code>string</code></td>
     <td>Template post migration custom action document identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>Template post migration custom action document version. (pattern: &lt;code&gt;(\$DEFAULT|\$LATEST|&#91;0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalParameters" /></td>
+    <td><CopyableCode code="external_parameters" /></td>
     <td><code>object</code></td>
     <td>Template post migration custom action external parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mustSucceedForCutover" /></td>
+    <td><CopyableCode code="must_succeed_for_cutover" /></td>
     <td><code>boolean</code></td>
     <td>Template post migration custom action must succeed for cutover.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>Operating system eligible for this template post migration custom action. (pattern: &lt;code&gt;(linux|windows)&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>Template post migration custom action parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutSeconds" /></td>
+    <td><CopyableCode code="timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>Template post migration custom action timeout in seconds.</td>
 </tr>
@@ -193,19 +193,19 @@ List template post migration custom actions.
 
 ```sql
 SELECT
-actionID,
-actionName,
+action_id,
+action_name,
 active,
 category,
 description,
-documentIdentifier,
-documentVersion,
-externalParameters,
-mustSucceedForCutover,
-operatingSystem,
+document_identifier,
+document_version,
+external_parameters,
+must_succeed_for_cutover,
+operating_system,
 order,
 parameters,
-timeoutSeconds
+timeout_seconds
 FROM aws.mgn.template_actions
 WHERE region = '{{ region }}' -- required
 ;
@@ -277,19 +277,19 @@ AND documentIdentifier = '{{ documentIdentifier }}' --required
 AND order = '{{ order }}' --required
 AND actionID = '{{ actionID }}' --required
 RETURNING
-actionID,
-actionName,
+action_id,
+action_name,
 active,
 category,
 description,
-documentIdentifier,
-documentVersion,
-externalParameters,
-mustSucceedForCutover,
-operatingSystem,
+document_identifier,
+document_version,
+external_parameters,
+must_succeed_for_cutover,
+operating_system,
 order,
 parameters,
-timeoutSeconds;
+timeout_seconds;
 ```
 </TabItem>
 </Tabs>

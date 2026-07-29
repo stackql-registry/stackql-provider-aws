@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetConfiguration" /></td>
+    <td><CopyableCode code="asset_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for the asset, including tags applied to assets created by the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Details" /></td>
+    <td><CopyableCode code="details" /></td>
     <td><code>object</code></td>
     <td>Details about the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>The errors associated with jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the job. (WAITING, IN_PROGRESS, ERROR, COMPLETED, CANCELLED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The job type. (IMPORT_ASSETS_FROM_S3, IMPORT_ASSET_FROM_SIGNED_URL, EXPORT_ASSETS_TO_S3, EXPORT_ASSET_TO_SIGNED_URL, EXPORT_REVISIONS_TO_S3, IMPORT_ASSETS_FROM_REDSHIFT_DATA_SHARES, IMPORT_ASSET_FROM_API_GATEWAY_API, CREATE_S3_DATA_ACCESS_FROM_S3_BUCKET, IMPORT_ASSETS_FROM_LAKE_FORMATION_TAG_POLICY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was last updated, in ISO 8601 format.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetConfiguration" /></td>
+    <td><CopyableCode code="asset_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for the asset, which can include tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Details" /></td>
+    <td><CopyableCode code="details" /></td>
     <td><code>object</code></td>
     <td>Details of the operation to be performed by the job, such as export destination details or import source details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>Errors for jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the job. (WAITING, IN_PROGRESS, ERROR, COMPLETED, CANCELLED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The job type. (IMPORT_ASSETS_FROM_S3, IMPORT_ASSET_FROM_SIGNED_URL, EXPORT_ASSETS_TO_S3, EXPORT_ASSET_TO_SIGNED_URL, EXPORT_REVISIONS_TO_S3, IMPORT_ASSETS_FROM_REDSHIFT_DATA_SHARES, IMPORT_ASSET_FROM_API_GATEWAY_API, CREATE_S3_DATA_ACCESS_FROM_S3_BUCKET, IMPORT_ASSETS_FROM_LAKE_FORMATION_TAG_POLICY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was last updated, in ISO 8601 format.</td>
 </tr>
@@ -273,15 +273,15 @@ This operation returns information about a job.
 
 ```sql
 SELECT
-Arn,
-AssetConfiguration,
-CreatedAt,
-Details,
-Errors,
-Id,
-State,
-Type,
-UpdatedAt
+arn,
+asset_configuration,
+created_at,
+details,
+errors,
+id,
+state,
+type,
+updated_at
 FROM aws.dataexchange.jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -294,15 +294,15 @@ This operation lists your jobs sorted by CreatedAt in descending order.
 
 ```sql
 SELECT
-Arn,
-AssetConfiguration,
-CreatedAt,
-Details,
-Errors,
-Id,
-State,
-Type,
-UpdatedAt
+arn,
+asset_configuration,
+created_at,
+details,
+errors,
+id,
+state,
+type,
+updated_at
 FROM aws.dataexchange.jobs
 WHERE region = '{{ region }}' -- required
 AND dataSetId = '{{ dataSetId }}'
@@ -341,15 +341,15 @@ SELECT
 '{{ Type }}',
 '{{ region }}'
 RETURNING
-Arn,
-AssetConfiguration,
-CreatedAt,
-Details,
-Errors,
-Id,
-State,
-Type,
-UpdatedAt
+arn,
+asset_configuration,
+created_at,
+details,
+errors,
+id,
+state,
+type,
+updated_at
 ;
 ```
 </TabItem>

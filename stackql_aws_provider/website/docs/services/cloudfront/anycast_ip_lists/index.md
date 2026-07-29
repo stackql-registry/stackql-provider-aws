@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnycastIps" /></td>
+    <td><CopyableCode code="anycast_ips" /></td>
     <td><code>string</code></td>
     <td>The static IP addresses that are allocated to the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type for the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpCount" /></td>
+    <td><CopyableCode code="ip_count" /></td>
     <td><code>integer</code></td>
     <td>The number of IP addresses in the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamConfig" /></td>
+    <td><CopyableCode code="ipam_config" /></td>
     <td><code>string</code></td>
     <td>The IPAM configuration for the Anycast static IP list, that contains the quantity and list of IPAM CIDR configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The last time the Anycast static IP list was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Anycast static IP list. Valid values: Deployed, Deploying, or Failed.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>If there are more items in the list collection than are in this response, this value is true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>Items in the Anycast static IP list collection. Each item is of the AnycastIpListSummary structure type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Use this field when paginating results to indicate where to begin in your list. The response includes items in the list that occur after the marker. To get the next page of the list, set this field's value to the value of NextMarker from the current page's response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of Anycast static IP list collections that you want returned in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>Indicates the next page of the Anycast static IP list collection. To get the next page of the list, use this value in the Marker field of your request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The quantity of Anycast static IP lists in the collection.</td>
 </tr>
@@ -253,15 +253,15 @@ Gets an Anycast static IP list.
 
 ```sql
 SELECT
-AnycastIps,
-Arn,
-Id,
-IpAddressType,
-IpCount,
-IpamConfig,
-LastModifiedTime,
-Name,
-Status
+anycast_ips,
+arn,
+id,
+ip_address_type,
+ip_count,
+ipam_config,
+last_modified_time,
+name,
+status
 FROM aws.cloudfront.anycast_ip_lists
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -274,12 +274,12 @@ Lists your Anycast static IP lists.
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.anycast_ip_lists
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -320,15 +320,15 @@ SELECT
 '{{ IpamCidrConfigs }}',
 '{{ region }}'
 RETURNING
-AnycastIps,
-Arn,
-Id,
-IpAddressType,
-IpCount,
-IpamConfig,
-LastModifiedTime,
-Name,
-Status
+anycast_ips,
+arn,
+id,
+ip_address_type,
+ip_count,
+ipam_config,
+last_modified_time,
+name,
+status
 ;
 ```
 </TabItem>
@@ -388,15 +388,15 @@ id = '{{ id }}' --required
 AND `If-Match` = '{{ If-Match }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AnycastIps,
-Arn,
-Id,
-IpAddressType,
-IpCount,
-IpamConfig,
-LastModifiedTime,
-Name,
-Status;
+anycast_ips,
+arn,
+id,
+ip_address_type,
+ip_count,
+ipam_config,
+last_modified_time,
+name,
+status;
 ```
 </TabItem>
 </Tabs>

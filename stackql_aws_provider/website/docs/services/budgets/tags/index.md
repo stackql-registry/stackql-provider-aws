@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists tags associated with a budget or budget action resource.
 
 ```sql
 SELECT
-ResourceTags
+resource_tags
 FROM aws.budgets.tags
 WHERE region = '{{ region }}' -- required
 ;

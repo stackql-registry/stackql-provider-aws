@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>object</code></td>
     <td>The information about the namespace that you're describing. The response includes the namespace ARN, name, Amazon Web Services Region, creation status, and identity store. DescribeNamespace also works for namespaces that are in the process of being created. For incomplete namespaces, this API operation lists the namespace error types and messages associated with the creation process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -80,42 +80,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The namespace ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityRegion" /></td>
+    <td><CopyableCode code="capacity_region" /></td>
     <td><code>string</code></td>
     <td>The namespace Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationStatus" /></td>
+    <td><CopyableCode code="creation_status" /></td>
     <td><code>string</code></td>
     <td>The creation status of a namespace that is not yet completely created. (CREATED, CREATING, DELETING, RETRYABLE_FAILURE, NON_RETRYABLE_FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamIdentityCenterApplicationArn" /></td>
+    <td><CopyableCode code="iam_identity_center_application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the IAM Identity Center application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamIdentityCenterInstanceArn" /></td>
+    <td><CopyableCode code="iam_identity_center_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the IAM Identity Center instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStore" /></td>
+    <td><CopyableCode code="identity_store" /></td>
     <td><code>string</code></td>
     <td>The identity store used for the namespace. (QUICKSIGHT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the error. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NamespaceError" /></td>
+    <td><CopyableCode code="namespace_error" /></td>
     <td><code>object</code></td>
     <td>An error that occurred when the namespace was created.</td>
 </tr>
@@ -226,9 +226,9 @@ Describes the current namespace.
 
 ```sql
 SELECT
-Namespace,
-RequestId,
-Status
+namespace,
+request_id,
+status
 FROM aws.quicksight.namespaces
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -242,14 +242,14 @@ Lists the namespaces for the specified Amazon Web Services account. This operati
 
 ```sql
 SELECT
-Arn,
-CapacityRegion,
-CreationStatus,
-IamIdentityCenterApplicationArn,
-IamIdentityCenterInstanceArn,
-IdentityStore,
-Name,
-NamespaceError
+arn,
+capacity_region,
+creation_status,
+iam_identity_center_application_arn,
+iam_identity_center_instance_arn,
+identity_store,
+name,
+namespace_error
 FROM aws.quicksight.namespaces
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -289,13 +289,13 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-CapacityRegion,
-CreationStatus,
-IdentityStore,
-Name,
-RequestId,
-Status
+arn,
+capacity_region,
+creation_status,
+identity_store,
+name,
+request_id,
+status
 ;
 ```
 </TabItem>

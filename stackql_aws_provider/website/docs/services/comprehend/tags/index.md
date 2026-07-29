@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the given Amazon Comprehend resource you are querying. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;a-zA-Z0-9-&#93;&#123;1,64&#125;/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*((/dataset/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)|(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Tags associated with the Amazon Comprehend resource being queried. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists all tags associated with a given Amazon Comprehend resource.
 
 ```sql
 SELECT
-ResourceArn,
-Tags
+resource_arn,
+tags
 FROM aws.comprehend.tags
 WHERE region = '{{ region }}' -- required
 ;

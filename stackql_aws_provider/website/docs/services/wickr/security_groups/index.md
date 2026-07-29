@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The human-readable name of the security group. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeDirectoryGuid" /></td>
+    <td><CopyableCode code="active_directory_guid" /></td>
     <td><code>string</code></td>
     <td>The GUID of the Active Directory group associated with this security group, if synchronized with LDAP. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeMembers" /></td>
+    <td><CopyableCode code="active_members" /></td>
     <td><code>integer</code></td>
     <td>The number of active user members currently in the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botMembers" /></td>
+    <td><CopyableCode code="bot_members" /></td>
     <td><code>integer</code></td>
     <td>The number of bot members currently in the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default security group for the network. Each network has only one default group.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the security group was last modified, specified in epoch seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupSettings" /></td>
+    <td><CopyableCode code="security_group_settings" /></td>
     <td><code>object</code></td>
     <td>The comprehensive configuration settings that define capabilities and restrictions for members of this security group.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>The human-readable name of the security group. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeDirectoryGuid" /></td>
+    <td><CopyableCode code="active_directory_guid" /></td>
     <td><code>string</code></td>
     <td>The GUID of the Active Directory group associated with this security group, if synchronized with LDAP. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeMembers" /></td>
+    <td><CopyableCode code="active_members" /></td>
     <td><code>integer</code></td>
     <td>The number of active user members currently in the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botMembers" /></td>
+    <td><CopyableCode code="bot_members" /></td>
     <td><code>integer</code></td>
     <td>The number of bot members currently in the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default security group for the network. Each network has only one default group.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the security group was last modified, specified in epoch seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupSettings" /></td>
+    <td><CopyableCode code="security_group_settings" /></td>
     <td><code>object</code></td>
     <td>The comprehensive configuration settings that define capabilities and restrictions for members of this security group.</td>
 </tr>
@@ -275,12 +275,12 @@ Retrieves detailed information about a specific security group in a Wickr networ
 SELECT
 id,
 name,
-activeDirectoryGuid,
-activeMembers,
-botMembers,
-isDefault,
+active_directory_guid,
+active_members,
+bot_members,
+is_default,
 modified,
-securityGroupSettings
+security_group_settings
 FROM aws.wickr.security_groups
 WHERE network_id = '{{ network_id }}' -- required
 AND group_id = '{{ group_id }}' -- required
@@ -296,12 +296,12 @@ Retrieves a paginated list of security groups in a specified Wickr network. You 
 SELECT
 id,
 name,
-activeDirectoryGuid,
-activeMembers,
-botMembers,
-isDefault,
+active_directory_guid,
+active_members,
+bot_members,
+is_default,
 modified,
-securityGroupSettings
+security_group_settings
 FROM aws.wickr.security_groups
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -343,7 +343,7 @@ SELECT
 '{{ region }}',
 '{{ X-Client-Token }}'
 RETURNING
-securityGroup
+security_group
 ;
 ```
 </TabItem>
@@ -409,7 +409,7 @@ network_id = '{{ network_id }}' --required
 AND group_id = '{{ group_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-securityGroup;
+security_group;
 ```
 </TabItem>
 </Tabs>

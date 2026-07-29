@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the reserved DB instance offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceClass" /></td>
+    <td><CopyableCode code="db_instance_class" /></td>
     <td><code>string</code></td>
     <td>The DB instance class for the reserved DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the offering in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number</code></td>
     <td>The fixed price charged for this offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZ" /></td>
+    <td><CopyableCode code="multi_az" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the offering applies to Multi-AZ deployments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>The offering type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductDescription" /></td>
+    <td><CopyableCode code="product_description" /></td>
     <td><code>string</code></td>
     <td>The database engine used by the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringCharges" /></td>
+    <td><CopyableCode code="recurring_charges" /></td>
     <td><code>string</code></td>
     <td>The recurring price charged to run this reserved DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedDBInstancesOfferingId" /></td>
+    <td><CopyableCode code="reserved_db_instances_offering_id" /></td>
     <td><code>string</code></td>
     <td>The offering identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number</code></td>
     <td>The hourly price charged for this offering.</td>
 </tr>
@@ -236,16 +236,16 @@ Lists available reserved DB instance offerings.
 
 ```sql
 SELECT
-CurrencyCode,
-DBInstanceClass,
-Duration,
-FixedPrice,
-MultiAZ,
-OfferingType,
-ProductDescription,
-RecurringCharges,
-ReservedDBInstancesOfferingId,
-UsagePrice
+currency_code,
+db_instance_class,
+duration,
+fixed_price,
+multi_az,
+offering_type,
+product_description,
+recurring_charges,
+reserved_db_instances_offering_id,
+usage_price
 FROM aws.rds.reserved_db_instances_offerings
 WHERE region = '{{ region }}' -- required
 AND ReservedDBInstancesOfferingId = '{{ ReservedDBInstancesOfferingId }}'

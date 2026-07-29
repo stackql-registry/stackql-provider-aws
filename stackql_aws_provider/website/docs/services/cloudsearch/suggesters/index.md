@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: FuzzyMatching, SortExpression.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of domain configuration option.</td>
 </tr>
@@ -158,8 +158,8 @@ Gets the suggesters configured for a domain. A suggester enables you to display 
 
 ```sql
 SELECT
-Options,
-Status
+options,
+status
 FROM aws.cloudsearch.suggesters
 WHERE DomainName = '{{ DomainName }}' -- required
 AND region = '{{ region }}' -- required

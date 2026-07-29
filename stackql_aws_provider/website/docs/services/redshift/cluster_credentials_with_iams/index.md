@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DbPassword" /></td>
+    <td><CopyableCode code="db_password" /></td>
     <td><code>string</code></td>
     <td>A temporary password that you provide when you connect to a database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbUser" /></td>
+    <td><CopyableCode code="db_user" /></td>
     <td><code>string</code></td>
     <td>A database user name that you provide when you connect to a database. The database user is mapped 1:1 to the source IAM identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expiration" /></td>
+    <td><CopyableCode code="expiration" /></td>
     <td><code>string</code></td>
     <td>The time (UTC) when the temporary password expires. After this timestamp, a log in with the temporary password fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextRefreshTime" /></td>
+    <td><CopyableCode code="next_refresh_time" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
@@ -154,10 +154,10 @@ Returns a database user name and temporary password with temporary authorization
 
 ```sql
 SELECT
-DbPassword,
-DbUser,
-Expiration,
-NextRefreshTime
+db_password,
+db_user,
+expiration,
+next_refresh_time
 FROM aws.redshift.cluster_credentials_with_iams
 WHERE region = '{{ region }}' -- required
 AND DbName = '{{ DbName }}'

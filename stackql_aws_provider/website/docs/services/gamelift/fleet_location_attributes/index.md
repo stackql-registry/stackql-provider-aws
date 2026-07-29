@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FleetArn" /></td>
+    <td><CopyableCode code="fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers fleet resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the fleet that location attributes were requested for. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$|^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationAttributes" /></td>
+    <td><CopyableCode code="location_attributes" /></td>
     <td><code>array</code></td>
     <td>Location-specific information on the requested fleet's remote locations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where to resume retrieving results on the next call to this operation. If no token is returned, these results represent the end of the list.</td>
 </tr>
@@ -134,10 +134,10 @@ This API works with the following fleet types: EC2, Container Retrieves informat
 
 ```sql
 SELECT
-FleetArn,
-FleetId,
-LocationAttributes,
-NextToken
+fleet_arn,
+fleet_id,
+location_attributes,
+next_token
 FROM aws.gamelift.fleet_location_attributes
 WHERE region = '{{ region }}' -- required
 ;

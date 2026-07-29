@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedResourceArn" /></td>
+    <td><CopyableCode code="associated_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The resource to which the attached file is (being) uploaded to. Cases are the only current supported resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information on the identity that created the file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time of Creation of the file resource as an ISO timestamp. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2024-05-03T02:41:28.172Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DownloadUrlMetadata" /></td>
+    <td><CopyableCode code="download_url_metadata" /></td>
     <td><code>object</code></td>
     <td>URL and expiry to be used when downloading the attached file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileArn" /></td>
+    <td><CopyableCode code="file_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the attached file resource (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileId" /></td>
+    <td><CopyableCode code="file_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the attached file resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileName" /></td>
+    <td><CopyableCode code="file_name" /></td>
     <td><code>string</code></td>
     <td>A case-sensitive name of the attached file being uploaded. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSizeInBytes" /></td>
+    <td><CopyableCode code="file_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the attached file in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileStatus" /></td>
+    <td><CopyableCode code="file_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the attached file. (APPROVED, REJECTED, PROCESSING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileUseCaseType" /></td>
+    <td><CopyableCode code="file_use_case_type" /></td>
     <td><code>string</code></td>
     <td>The use case for the file. (CONTACT_ANALYSIS, EMAIL_MESSAGE, EMAIL_MESSAGE_PLAIN_TEXT, EMAIL_MESSAGE_REDACTED, EMAIL_MESSAGE_PLAIN_TEXT_REDACTED, ATTACHMENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -203,17 +203,17 @@ Provides a pre-signed URL for download of an approved attached file. This API al
 
 ```sql
 SELECT
-AssociatedResourceArn,
-CreatedBy,
-CreationTime,
-DownloadUrlMetadata,
-FileArn,
-FileId,
-FileName,
-FileSizeInBytes,
-FileStatus,
-FileUseCaseType,
-Tags
+associated_resource_arn,
+created_by,
+creation_time,
+download_url_metadata,
+file_arn,
+file_id,
+file_name,
+file_size_in_bytes,
+file_status,
+file_use_case_type,
+tags
 FROM aws.connect.attached_files
 WHERE instance_id = '{{ instance_id }}' -- required
 AND file_id = '{{ file_id }}' -- required

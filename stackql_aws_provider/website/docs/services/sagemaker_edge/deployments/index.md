@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Deployments" /></td>
+    <td><CopyableCode code="deployments" /></td>
     <td><code>array</code></td>
     <td>Returns a list of the configurations of the active deployments on the device.</td>
 </tr>
@@ -119,7 +119,7 @@ Use to get the active deployments from a device.
 
 ```sql
 SELECT
-Deployments
+deployments
 FROM aws.sagemaker_edge.deployments
 WHERE region = '{{ region }}' -- required
 ;

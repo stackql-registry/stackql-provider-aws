@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog in which the database resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTableDefaultPermissions" /></td>
+    <td><CopyableCode code="create_table_default_permissions" /></td>
     <td><code>array</code></td>
     <td>Creates a set of default permissions on the table for principals. Used by Lake Formation. Not used in the normal course of Glue operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the metadata database was created in the catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the database. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederatedDatabase" /></td>
+    <td><CopyableCode code="federated_database" /></td>
     <td><code>object</code></td>
     <td>A FederatedDatabase structure that references an entity outside the Glue Data Catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The location of the database (for example, an HDFS path). (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the database. For Hive compatibility, this is folded to lowercase when it is stored. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>These key-value pairs define parameters and properties of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetDatabase" /></td>
+    <td><CopyableCode code="target_database" /></td>
     <td><code>object</code></td>
     <td>A DatabaseIdentifier structure that describes a target database for resource linking.</td>
 </tr>
@@ -250,15 +250,15 @@ Retrieves the definition of a specified database.
 
 ```sql
 SELECT
-CatalogId,
-CreateTableDefaultPermissions,
-CreateTime,
-Description,
-FederatedDatabase,
-LocationUri,
-Name,
-Parameters,
-TargetDatabase
+catalog_id,
+create_table_default_permissions,
+create_time,
+description,
+federated_database,
+location_uri,
+name,
+parameters,
+target_database
 FROM aws.glue.databases
 WHERE region = '{{ region }}' -- required
 ;

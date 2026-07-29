@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Locale" /></td>
+    <td><CopyableCode code="locale" /></td>
     <td><code>string</code></td>
     <td>The locale that this response was generated for. This maps to the input locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SummaryContent" /></td>
+    <td><CopyableCode code="summary_content" /></td>
     <td><code>string</code></td>
     <td>Summary content in the specified locale. Summary content is non-empty only if the SummaryState is AVAILABLE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SummaryState" /></td>
+    <td><CopyableCode code="summary_state" /></td>
     <td><code>string</code></td>
     <td>State of summary generation. This generation process is asynchronous and this attribute indicates the state of the generation process.</td>
 </tr>
@@ -139,9 +139,9 @@ Retrieves a human readable summary for a given entity. At this time, the only su
 
 ```sql
 SELECT
-Locale,
-SummaryContent,
-SummaryState
+locale,
+summary_content,
+summary_state
 FROM aws.iam.human_readable_summaries
 WHERE EntityArn = '{{ EntityArn }}' -- required
 AND region = '{{ region }}' -- required

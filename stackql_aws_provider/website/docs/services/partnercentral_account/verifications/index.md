@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the verification process was completed. This field is null if the verification is still in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the verification process was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationResponseDetails" /></td>
+    <td><CopyableCode code="verification_response_details" /></td>
     <td><code>object</code></td>
     <td>Detailed response information specific to the type of verification performed, including any verification-specific data or results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationStatus" /></td>
+    <td><CopyableCode code="verification_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the verification process. Possible values include pending, in-progress, completed, failed, or expired. (PENDING_CUSTOMER_ACTION, IN_PROGRESS, FAILED, SUCCEEDED, REJECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationStatusReason" /></td>
+    <td><CopyableCode code="verification_status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information explaining the current verification status, particularly useful when the status indicates a failure or requires additional action. (pattern: &lt;code&gt;&#91;\u0020-\u007E\u00A0-\uD7FF\uE000-\uFFFD&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationType" /></td>
+    <td><CopyableCode code="verification_type" /></td>
     <td><code>string</code></td>
     <td>The type of verification that was requested and processed. (BUSINESS_VERIFICATION, REGISTRANT_VERIFICATION)</td>
 </tr>
@@ -144,12 +144,12 @@ Retrieves the current status and details of a verification process for a partner
 
 ```sql
 SELECT
-CompletedAt,
-StartedAt,
-VerificationResponseDetails,
-VerificationStatus,
-VerificationStatusReason,
-VerificationType
+completed_at,
+started_at,
+verification_response_details,
+verification_status,
+verification_status_reason,
+verification_type
 FROM aws.partnercentral_account.verifications
 WHERE region = '{{ region }}' -- required
 ;

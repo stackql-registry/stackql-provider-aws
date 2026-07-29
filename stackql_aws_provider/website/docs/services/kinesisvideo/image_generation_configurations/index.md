@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationConfig" /></td>
+    <td><CopyableCode code="destination_config" /></td>
     <td><code>object</code></td>
     <td>The structure that contains the information required to deliver images to a customer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The accepted image format. (JPEG, PNG)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FormatConfig" /></td>
+    <td><CopyableCode code="format_config" /></td>
     <td><code>object</code></td>
     <td>The list of a key-value pair structure that contains extra parameters that can be applied when the image is generated. The FormatConfig key is the JPEGQuality, which indicates the JPEG quality key to be used to generate the image. The FormatConfig value accepts ints from 1 to 100. If the value is 1, the image will be generated with less quality and the best compression. If the value is 100, the image will be generated with the best quality and less compression. If no value is provided, the default value of the JPEGQuality key will be set to 80.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HeightPixels" /></td>
+    <td><CopyableCode code="height_pixels" /></td>
     <td><code>integer</code></td>
     <td>The height of the output image that is used in conjunction with the WidthPixels parameter. When both HeightPixels and WidthPixels parameters are provided, the image will be stretched to fit the specified aspect ratio. If only the HeightPixels parameter is provided, its original aspect ratio will be used to calculate the WidthPixels ratio. If neither parameter is provided, the original image size will be returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageSelectorType" /></td>
+    <td><CopyableCode code="image_selector_type" /></td>
     <td><code>string</code></td>
     <td>The origin of the Server or Producer timestamps to use to generate the images. (SERVER_TIMESTAMP, PRODUCER_TIMESTAMP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SamplingInterval" /></td>
+    <td><CopyableCode code="sampling_interval" /></td>
     <td><code>integer</code></td>
     <td>The time interval in milliseconds (ms) at which the images need to be generated from the stream. The minimum value that can be provided is 200 ms. If the timestamp range is less than the sampling interval, the Image from the StartTimestamp will be returned if available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the ContinuousImageGenerationConfigurations API is enabled or disabled. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WidthPixels" /></td>
+    <td><CopyableCode code="width_pixels" /></td>
     <td><code>integer</code></td>
     <td>The width of the output image that is used in conjunction with the HeightPixels parameter. When both WidthPixels and HeightPixels parameters are provided, the image will be stretched to fit the specified aspect ratio. If only the WidthPixels parameter is provided, its original aspect ratio will be used to calculate the HeightPixels ratio. If neither parameter is provided, the original image size will be returned.</td>
 </tr>
@@ -161,14 +161,14 @@ Gets the ImageGenerationConfiguration for a given Kinesis video stream.
 
 ```sql
 SELECT
-DestinationConfig,
-Format,
-FormatConfig,
-HeightPixels,
-ImageSelectorType,
-SamplingInterval,
-Status,
-WidthPixels
+destination_config,
+format,
+format_config,
+height_pixels,
+image_selector_type,
+sampling_interval,
+status,
+width_pixels
 FROM aws.kinesisvideo.image_generation_configurations
 WHERE region = '{{ region }}' -- required
 ;

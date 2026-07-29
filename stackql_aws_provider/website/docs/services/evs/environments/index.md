@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>A check on the environment to identify instance health and VMware VCF licensing issues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectivityInfo" /></td>
+    <td><CopyableCode code="connectivity_info" /></td>
     <td><code>object</code></td>
     <td>The connectivity configuration for the environment. Amazon EVS requires that you specify two route server peer IDs. During environment creation, the route server endpoints peer with the NSX uplink VLAN for connectivity to the NSX overlay network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the environment was created.</td>
 </tr>
@@ -71,82 +71,82 @@ The following fields are returned by `SELECT` queries:
     <td>The VCF credentials that are stored as Amazon EVS managed secrets in Amazon Web Services Secrets Manager. Amazon EVS stores credentials that are needed to install vCenter Server, NSX, and SDDC Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is associated with the environment. (pattern: &lt;code&gt;arn:aws:evs:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:environment/&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the environment. (pattern: &lt;code&gt;(env-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentState" /></td>
+    <td><CopyableCode code="environment_state" /></td>
     <td><code>string</code></td>
     <td>The state of an environment. (CREATING, CREATED, DELETING, DELETED, CREATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentStatus" /></td>
+    <td><CopyableCode code="environment_status" /></td>
     <td><code>string</code></td>
     <td>Reports impaired functionality that stems from issues internal to the environment, such as impaired reachability. (PASSED, FAILED, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key ID that Amazon Web Services Secrets Manager uses to encrypt secrets that are associated with the environment. These secrets contain the VCF credentials that are needed to install vCenter Server, NSX, and SDDC Manager. By default, Amazon EVS use the Amazon Web Services Secrets Manager managed key aws/secretsmanager. You can also specify a customer managed key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseInfo" /></td>
+    <td><CopyableCode code="license_info" /></td>
     <td><code>array</code></td>
     <td>The license information that Amazon EVS requires to create an environment. Amazon EVS requires two license keys: a VCF solution key and a vSAN license key. The VCF solution key must meet minimum core requirements, and the vSAN license key must meet minimum capacity requirements for your selected instance type. For information about minimum license requirements, see the VCF subscriptions section in the Amazon EVS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the environment was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceAccessSecurityGroups" /></td>
+    <td><CopyableCode code="service_access_security_groups" /></td>
     <td><code>object</code></td>
     <td>The security groups that allow traffic between the Amazon EVS control plane and your VPC for service access. If a security group is not specified, Amazon EVS uses the default security group in your account for service access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceAccessSubnetId" /></td>
+    <td><CopyableCode code="service_access_subnet_id" /></td>
     <td><code>string</code></td>
     <td>The subnet that is used to establish connectivity between the Amazon EVS control plane and VPC. Amazon EVS uses this subnet to perform validations and create the environment. (pattern: &lt;code&gt;subnet-&#91;a-f0-9&#93;&#123;8&#125;(&#91;a-f0-9&#93;&#123;9&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="siteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The Broadcom Site ID that is associated with your Amazon EVS environment. Amazon EVS uses the Broadcom Site ID that you provide to meet Broadcom VCF license usage reporting requirements for Amazon EVS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the environmentState of an environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="termsAccepted" /></td>
+    <td><CopyableCode code="terms_accepted" /></td>
     <td><code>boolean</code></td>
     <td>Customer confirmation that the customer has purchased and will continue to maintain the required number of VCF software licenses to cover all physical processor cores in the Amazon EVS environment. Information about your VCF software in Amazon EVS will be shared with Broadcom to verify license compliance. Amazon EVS does not validate license keys. To validate license keys, visit the Broadcom support portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vcfHostnames" /></td>
+    <td><CopyableCode code="vcf_hostnames" /></td>
     <td><code>object</code></td>
     <td>The DNS hostnames to be used by the VCF management appliances in your environment. For environment creation to be successful, each hostname entry must resolve to a domain name that you've registered in your DNS service of choice and configured in the DHCP option set of your VPC. DNS hostnames cannot be changed after environment creation has started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vcfVersion" /></td>
+    <td><CopyableCode code="vcf_version" /></td>
     <td><code>string</code></td>
     <td>The VCF version of the environment. (VCF-5.2.1, VCF-5.2.2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC associated with the environment. (pattern: &lt;code&gt;vpc-&#91;a-f0-9&#93;&#123;8&#125;(&#91;a-f0-9&#93;&#123;9&#125;)?&lt;/code&gt;)</td>
 </tr>
@@ -165,42 +165,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is associated with the environment. (pattern: &lt;code&gt;arn:aws:evs:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:environment/&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique ID for the environment. (pattern: &lt;code&gt;(env-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentState" /></td>
+    <td><CopyableCode code="environment_state" /></td>
     <td><code>string</code></td>
     <td>The state of an environment. (CREATING, CREATED, DELETING, DELETED, CREATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentStatus" /></td>
+    <td><CopyableCode code="environment_status" /></td>
     <td><code>string</code></td>
     <td>Reports impaired functionality that stems from issues internal to the environment, such as impaired reachability. (PASSED, FAILED, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the environment was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vcfVersion" /></td>
+    <td><CopyableCode code="vcf_version" /></td>
     <td><code>string</code></td>
     <td>The VCF version of the environment. (VCF-5.2.1, VCF-5.2.2)</td>
 </tr>
@@ -320,25 +320,25 @@ Returns a description of the specified environment.
 ```sql
 SELECT
 checks,
-connectivityInfo,
-createdAt,
+connectivity_info,
+created_at,
 credentials,
-environmentArn,
-environmentId,
-environmentName,
-environmentState,
-environmentStatus,
-kmsKeyId,
-licenseInfo,
-modifiedAt,
-serviceAccessSecurityGroups,
-serviceAccessSubnetId,
-siteId,
-stateDetails,
-termsAccepted,
-vcfHostnames,
-vcfVersion,
-vpcId
+environment_arn,
+environment_id,
+environment_name,
+environment_state,
+environment_status,
+kms_key_id,
+license_info,
+modified_at,
+service_access_security_groups,
+service_access_subnet_id,
+site_id,
+state_details,
+terms_accepted,
+vcf_hostnames,
+vcf_version,
+vpc_id
 FROM aws.evs.environments
 WHERE region = '{{ region }}' -- required
 ;
@@ -350,14 +350,14 @@ Lists the Amazon EVS environments in your Amazon Web Services account in the spe
 
 ```sql
 SELECT
-createdAt,
-environmentArn,
-environmentId,
-environmentName,
-environmentState,
-environmentStatus,
-modifiedAt,
-vcfVersion
+created_at,
+environment_arn,
+environment_id,
+environment_name,
+environment_state,
+environment_status,
+modified_at,
+vcf_version
 FROM aws.evs.environments
 WHERE region = '{{ region }}' -- required
 ;

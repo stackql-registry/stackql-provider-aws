@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="bundleArn" /></td>
+    <td><CopyableCode code="bundle_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configuration bundle. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:configuration-bundle/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the configuration bundle. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bundleName" /></td>
+    <td><CopyableCode code="bundle_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration bundle. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,99&#125;&lt;/code&gt;)</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of component identifiers to their configurations for this version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the configuration bundle was created.</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configuration bundle. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineageMetadata" /></td>
+    <td><CopyableCode code="lineage_metadata" /></td>
     <td><code>object</code></td>
     <td>The version lineage metadata, including parent versions, branch name, and creation source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionCreatedAt" /></td>
+    <td><CopyableCode code="version_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this specific version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The version identifier of this configuration bundle version. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,27 +110,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="bundleArn" /></td>
+    <td><CopyableCode code="bundle_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configuration bundle. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:configuration-bundle/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the configuration bundle. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineageMetadata" /></td>
+    <td><CopyableCode code="lineage_metadata" /></td>
     <td><code>object</code></td>
     <td>The version lineage metadata, including parent versions, branch name, and creation source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionCreatedAt" /></td>
+    <td><CopyableCode code="version_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The version identifier of this configuration bundle version. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -227,15 +227,15 @@ Gets a specific version of a configuration bundle by its version identifier.
 
 ```sql
 SELECT
-bundleArn,
-bundleId,
-bundleName,
+bundle_arn,
+bundle_id,
+bundle_name,
 components,
-createdAt,
+created_at,
 description,
-lineageMetadata,
-versionCreatedAt,
-versionId
+lineage_metadata,
+version_created_at,
+version_id
 FROM aws.bedrock_agentcore_control.configuration_bundle_versions
 WHERE bundle_id = '{{ bundle_id }}' -- required
 AND version_id = '{{ version_id }}' -- required
@@ -249,11 +249,11 @@ Lists all versions of a configuration bundle, with optional filtering by branch 
 
 ```sql
 SELECT
-bundleArn,
-bundleId,
-lineageMetadata,
-versionCreatedAt,
-versionId
+bundle_arn,
+bundle_id,
+lineage_metadata,
+version_created_at,
+version_id
 FROM aws.bedrock_agentcore_control.configuration_bundle_versions
 WHERE bundle_id = '{{ bundle_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The list of certificates installed in the code interpreter session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeInterpreterIdentifier" /></td>
+    <td><CopyableCode code="code_interpreter_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the code interpreter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the code interpreter session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the code interpreter session. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionTimeoutSeconds" /></td>
+    <td><CopyableCode code="session_timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The timeout period for the code interpreter session in seconds.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of code interpreter sessions that match the specified criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use in a subsequent ListCodeInterpreterSessions request to get the next set of results. (pattern: &lt;code&gt;\S*&lt;/code&gt;)</td>
 </tr>
@@ -194,10 +194,10 @@ Retrieves detailed information about a specific code interpreter session in Amaz
 SELECT
 name,
 certificates,
-codeInterpreterIdentifier,
-createdAt,
-sessionId,
-sessionTimeoutSeconds,
+code_interpreter_identifier,
+created_at,
+session_id,
+session_timeout_seconds,
 status
 FROM aws.bedrock_agentcore.code_interpreter_sessions
 WHERE code_interpreter_identifier = '{{ code_interpreter_identifier }}' -- required
@@ -213,7 +213,7 @@ Retrieves a list of code interpreter sessions in Amazon Bedrock AgentCore that m
 ```sql
 SELECT
 items_,
-nextToken
+next_token
 FROM aws.bedrock_agentcore.code_interpreter_sessions
 WHERE code_interpreter_identifier = '{{ code_interpreter_identifier }}' -- required
 AND region = '{{ region }}' -- required

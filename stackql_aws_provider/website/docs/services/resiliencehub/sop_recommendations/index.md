@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sopRecommendations" /></td>
+    <td><CopyableCode code="sop_recommendations" /></td>
     <td><code>array</code></td>
     <td>The standard operating procedure (SOP) recommendations for the Resilience Hub applications.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the standard operating procedure (SOP) recommendations for the Resilience 
 
 ```sql
 SELECT
-nextToken,
-sopRecommendations
+next_token,
+sop_recommendations
 FROM aws.resiliencehub.sop_recommendations
 WHERE region = '{{ region }}' -- required
 ;

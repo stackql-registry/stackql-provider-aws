@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LFTagOnDatabase" /></td>
+    <td><CopyableCode code="lf_tag_on_database" /></td>
     <td><code>array</code></td>
     <td>A list of LF-tags attached to the database where the table resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LFTagsOnColumns" /></td>
+    <td><CopyableCode code="lf_tags_on_columns" /></td>
     <td><code>array</code></td>
     <td>A list of LF-tags attached to columns in the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LFTagsOnTable" /></td>
+    <td><CopyableCode code="lf_tags_on_table" /></td>
     <td><code>array</code></td>
     <td>A list of LF-tags attached to the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Table" /></td>
+    <td><CopyableCode code="table" /></td>
     <td><code>object</code></td>
     <td>A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.</td>
 </tr>
@@ -134,10 +134,10 @@ This operation allows a search on TABLE resources by LFTags. This will be used b
 
 ```sql
 SELECT
-LFTagOnDatabase,
-LFTagsOnColumns,
-LFTagsOnTable,
-Table
+lf_tag_on_database,
+lf_tags_on_columns,
+lf_tags_on_table,
+table
 FROM aws.lakeformation.tables_by_lf_tags
 WHERE region = '{{ region }}' -- required
 ;

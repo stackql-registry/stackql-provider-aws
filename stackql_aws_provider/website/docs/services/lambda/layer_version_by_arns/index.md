@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompatibleArchitectures" /></td>
+    <td><CopyableCode code="compatible_architectures" /></td>
     <td><code>array</code></td>
     <td>A list of compatible instruction set architectures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompatibleRuntimes" /></td>
+    <td><CopyableCode code="compatible_runtimes" /></td>
     <td><code>array</code></td>
     <td>The layer's compatible runtimes. The following list includes deprecated runtimes. For more information, see Runtime use after deprecation. For a list of all currently supported runtimes, see Supported runtimes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>object</code></td>
     <td>Details about the layer version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
     <td>The date that the layer version was created, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayerArn" /></td>
+    <td><CopyableCode code="layer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the layer. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayerVersionArn" /></td>
+    <td><CopyableCode code="layer_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the layer version. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseInfo" /></td>
+    <td><CopyableCode code="license_info" /></td>
     <td><code>string</code></td>
     <td>The layer's software license.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number.</td>
 </tr>
@@ -164,15 +164,15 @@ Returns information about a version of an Lambda layer, with a link to download 
 
 ```sql
 SELECT
-CompatibleArchitectures,
-CompatibleRuntimes,
-Content,
-CreatedDate,
-Description,
-LayerArn,
-LayerVersionArn,
-LicenseInfo,
-Version
+compatible_architectures,
+compatible_runtimes,
+content,
+created_date,
+description,
+layer_arn,
+layer_version_arn,
+license_info,
+version
 FROM aws.lambda.layer_version_by_arns
 WHERE Arn = '{{ Arn }}' -- required
 AND region = '{{ region }}' -- required

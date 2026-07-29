@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedChecks" /></td>
+    <td><CopyableCode code="failed_checks" /></td>
     <td><code>integer</code></td>
     <td>The CIS scan's failed checks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanArn" /></td>
+    <td><CopyableCode code="scan_arn" /></td>
     <td><code>string</code></td>
     <td>The CIS scan's ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-cn)?:inspector2:&#91;-.a-z0-9&#93;&#123;0,20&#125;:\d&#123;12&#125;:owner/(\d&#123;12&#125;|o-&#91;a-z0-9&#93;&#123;10,32&#125;)/cis-scan/&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanConfigurationArn" /></td>
+    <td><CopyableCode code="scan_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The CIS scan's configuration ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-cn)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;:&#91;0-9&#93;&#123;12&#125;:owner/(o-&#91;a-z0-9&#93;+|&#91;0-9&#93;&#123;12&#125;)/cis-configuration/&#91;0-9a-fA-F-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanDate" /></td>
+    <td><CopyableCode code="scan_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The CIS scan's date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanName" /></td>
+    <td><CopyableCode code="scan_name" /></td>
     <td><code>string</code></td>
     <td>The the name of the scan configuration that's associated with this scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledBy" /></td>
+    <td><CopyableCode code="scheduled_by" /></td>
     <td><code>string</code></td>
     <td>The account or organization that schedules the CIS scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityLevel" /></td>
+    <td><CopyableCode code="security_level" /></td>
     <td><code>string</code></td>
     <td>The security level for the CIS scan. Security level refers to the Benchmark levels that CIS assigns to a profile. (LEVEL_1, LEVEL_2)</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The CIS scan's targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalChecks" /></td>
+    <td><CopyableCode code="total_checks" /></td>
     <td><code>integer</code></td>
     <td>The CIS scan's total checks.</td>
 </tr>
@@ -164,16 +164,16 @@ Returns a CIS scan list.
 
 ```sql
 SELECT
-failedChecks,
-scanArn,
-scanConfigurationArn,
-scanDate,
-scanName,
-scheduledBy,
-securityLevel,
+failed_checks,
+scan_arn,
+scan_configuration_arn,
+scan_date,
+scan_name,
+scheduled_by,
+security_level,
 status,
 targets,
-totalChecks
+total_checks
 FROM aws.inspector2.cis_scans
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Columns" /></td>
+    <td><CopyableCode code="columns" /></td>
     <td><code>array</code></td>
     <td>A list of the columns in the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the table was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessTime" /></td>
+    <td><CopyableCode code="last_access_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the table was accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>A set of custom key/value pairs for table properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionKeys" /></td>
+    <td><CopyableCode code="partition_keys" /></td>
     <td><code>array</code></td>
     <td>A list of the partition keys in the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableType" /></td>
+    <td><CopyableCode code="table_type" /></td>
     <td><code>string</code></td>
     <td>The type of table. In Athena, only EXTERNAL_TABLE is supported.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Columns" /></td>
+    <td><CopyableCode code="columns" /></td>
     <td><code>array</code></td>
     <td>A list of the columns in the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the table was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessTime" /></td>
+    <td><CopyableCode code="last_access_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the table was accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>A set of custom key/value pairs for table properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionKeys" /></td>
+    <td><CopyableCode code="partition_keys" /></td>
     <td><code>array</code></td>
     <td>A list of the partition keys in the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableType" /></td>
+    <td><CopyableCode code="table_type" /></td>
     <td><code>string</code></td>
     <td>The type of table. In Athena, only EXTERNAL_TABLE is supported.</td>
 </tr>
@@ -207,13 +207,13 @@ Returns table metadata for the specified catalog, database, and table.
 
 ```sql
 SELECT
-Columns,
-CreateTime,
-LastAccessTime,
-Name,
-Parameters,
-PartitionKeys,
-TableType
+columns,
+create_time,
+last_access_time,
+name,
+parameters,
+partition_keys,
+table_type
 FROM aws.athena.table_metadatas
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,13 +225,13 @@ Lists the metadata for the tables in the specified data catalog database.
 
 ```sql
 SELECT
-Columns,
-CreateTime,
-LastAccessTime,
-Name,
-Parameters,
-PartitionKeys,
-TableType
+columns,
+create_time,
+last_access_time,
+name,
+parameters,
+partition_keys,
+table_type
 FROM aws.athena.table_metadatas
 WHERE region = '{{ region }}' -- required
 ;

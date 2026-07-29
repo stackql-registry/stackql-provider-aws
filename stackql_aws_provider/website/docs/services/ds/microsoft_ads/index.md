@@ -117,7 +117,7 @@ SELECT
 '{{ NetworkType }}',
 '{{ region }}'
 RETURNING
-DirectoryId
+directory_id
 ;
 ```
 </TabItem>

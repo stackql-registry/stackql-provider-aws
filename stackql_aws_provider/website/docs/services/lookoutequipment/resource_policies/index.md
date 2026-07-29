@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the resource policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the resource policy was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyRevisionId" /></td>
+    <td><CopyableCode code="policy_revision_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a revision of the resource policy. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>The resource policy in a JSON-formatted string. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -148,10 +148,10 @@ Provides the details of a resource policy attached to a resource.
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-PolicyRevisionId,
-ResourcePolicy
+creation_time,
+last_modified_time,
+policy_revision_id,
+resource_policy
 FROM aws.lookoutequipment.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -185,8 +185,8 @@ AND ResourceArn = '{{ ResourceArn }}' --required
 AND ResourcePolicy = '{{ ResourcePolicy }}' --required
 AND ClientToken = '{{ ClientToken }}' --required
 RETURNING
-PolicyRevisionId,
-ResourceArn;
+policy_revision_id,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

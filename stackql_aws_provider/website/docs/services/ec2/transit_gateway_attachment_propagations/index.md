@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the propagation route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableId" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the propagation route table.</td>
 </tr>
@@ -149,8 +149,8 @@ Lists the route tables to which the specified resource attachment propagates rou
 
 ```sql
 SELECT
-State,
-TransitGatewayRouteTableId
+state,
+transit_gateway_route_table_id
 FROM aws.ec2.transit_gateway_attachment_propagations
 WHERE TransitGatewayAttachmentId = '{{ TransitGatewayAttachmentId }}' -- required
 AND region = '{{ region }}' -- required

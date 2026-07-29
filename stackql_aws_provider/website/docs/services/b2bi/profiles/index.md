@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the name of the profile, used to identify it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="businessName" /></td>
+    <td><CopyableCode code="business_name" /></td>
     <td><code>string</code></td>
     <td>Returns the name for the business associated with this profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for creation date and time of the transformer.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the email address associated with this customer profile. (pattern: &lt;code&gt;&#91;\w\.\-&#93;+@&#91;\w\.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>Returns the name of the logging group.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>Returns whether or not logging is enabled for this profile. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for last time the profile was modified.</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the phone number associated with the profile. (pattern: &lt;code&gt;\+?(&#91;0-9 \t\-()\/&#93;&#123;7,&#125;)(?:\s*(?:#|x\.?|ext\.?|extension) \t*(\d+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileArn" /></td>
+    <td><CopyableCode code="profile_arn" /></td>
     <td><code>string</code></td>
     <td>Returns an Amazon Resource Name (ARN) for a specific Amazon Web Services resource, such as a capability, partnership, profile, or transformer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique, system-generated identifier for the profile. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the display name for profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="businessName" /></td>
+    <td><CopyableCode code="business_name" /></td>
     <td><code>string</code></td>
     <td>Returns the name for the business associated with this profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the timestamp for creation date and time of the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>Returns the name of the logging group.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies whether or not logging is enabled for this profile. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the timestamp that identifies the most recent date and time that the profile was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique, system-generated identifier for the profile. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -244,15 +244,15 @@ Retrieves the details for the profile specified by the profile ID. A profile is 
 ```sql
 SELECT
 name,
-businessName,
-createdAt,
+business_name,
+created_at,
 email,
-logGroupName,
+log_group_name,
 logging,
-modifiedAt,
+modified_at,
 phone,
-profileArn,
-profileId
+profile_arn,
+profile_id
 FROM aws.b2bi.profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,12 +265,12 @@ Lists the profiles associated with your Amazon Web Services account for your cur
 ```sql
 SELECT
 name,
-businessName,
-createdAt,
-logGroupName,
+business_name,
+created_at,
+log_group_name,
 logging,
-modifiedAt,
-profileId
+modified_at,
+profile_id
 FROM aws.b2bi.profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -314,14 +314,14 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-businessName,
-createdAt,
+business_name,
+created_at,
 email,
-logGroupName,
+log_group_name,
 logging,
 phone,
-profileArn,
-profileId
+profile_arn,
+profile_id
 ;
 ```
 </TabItem>
@@ -395,15 +395,15 @@ region = '{{ region }}' --required
 AND profileId = '{{ profileId }}' --required
 RETURNING
 name,
-businessName,
-createdAt,
+business_name,
+created_at,
 email,
-logGroupName,
+log_group_name,
 logging,
-modifiedAt,
+modified_at,
 phone,
-profileArn,
-profileId;
+profile_arn,
+profile_id;
 ```
 </TabItem>
 </Tabs>

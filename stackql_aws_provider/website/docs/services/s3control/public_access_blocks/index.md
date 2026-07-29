@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockPublicAcls" /></td>
+    <td><CopyableCode code="block_public_acls" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether Amazon S3 should block public access control lists (ACLs) for buckets in this account. Setting this element to TRUE causes the following behavior: PutBucketAcl and PutObjectAcl calls fail if the specified ACL is public. PUT Object calls fail if the request includes a public ACL. PUT Bucket calls fail if the request includes a public ACL. Enabling this setting doesn't affect existing policies or ACLs. This property is not supported for Amazon S3 on Outposts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockPublicPolicy" /></td>
+    <td><CopyableCode code="block_public_policy" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether Amazon S3 should block public bucket policies for buckets in this account. Setting this element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the specified bucket policy allows public access. Enabling this setting doesn't affect existing bucket policies. This property is not supported for Amazon S3 on Outposts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IgnorePublicAcls" /></td>
+    <td><CopyableCode code="ignore_public_acls" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether Amazon S3 should ignore public ACLs for buckets in this account. Setting this element to TRUE causes Amazon S3 to ignore all public ACLs on buckets in this account and any objects that they contain. Enabling this setting doesn't affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. This property is not supported for Amazon S3 on Outposts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestrictPublicBuckets" /></td>
+    <td><CopyableCode code="restrict_public_buckets" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether Amazon S3 should restrict public bucket policies for buckets in this account. Setting this element to TRUE restricts access to buckets with public policies to only Amazon Web Services service principals and authorized users within this account. Enabling this setting doesn't affect previously stored bucket policies, except that public and cross-account access within any public bucket policy, including non-public delegation to specific accounts, is blocked. This property is not supported for Amazon S3 on Outposts.</td>
 </tr>
@@ -153,10 +153,10 @@ This operation is not supported by directory buckets. Retrieves the PublicAccess
 
 ```sql
 SELECT
-BlockPublicAcls,
-BlockPublicPolicy,
-IgnorePublicAcls,
-RestrictPublicBuckets
+block_public_acls,
+block_public_policy,
+ignore_public_acls,
+restrict_public_buckets
 FROM aws.s3control.public_access_blocks
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required

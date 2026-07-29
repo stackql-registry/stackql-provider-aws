@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsUserIdentity" /></td>
+    <td><CopyableCode code="aws_user_identity" /></td>
     <td><code>string</code></td>
     <td>The AWS user identity ARN used to associate a Microsoft Teams user Identity with an IAM Role. (pattern: &lt;code&gt;arn:aws:(iam|sts)::&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChatConfigurationArn" /></td>
+    <td><CopyableCode code="chat_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the MicrosoftTeamsChannelConfiguration associated with the user identity to delete. (pattern: &lt;code&gt;arn:aws:(wheatley|chatbot):&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>A user-defined role that AWS Chatbot assumes. This is not the service-linked role. For more information, see IAM policies for AWS Chatbot in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamId" /></td>
+    <td><CopyableCode code="team_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console. For more information, see Step 1: Configure a Microsoft Teams client in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamsChannelId" /></td>
+    <td><CopyableCode code="teams_channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams channel. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9-_=+\/.,&#93;)*%3&#91;aA&#93;(&#91;a-zA-Z0-9-_=+\/.,&#93;)*%40(&#91;a-zA-Z0-9-_=+\/.,&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamsTenantId" /></td>
+    <td><CopyableCode code="teams_tenant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams tenant. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The Microsoft Teams user ID. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -156,13 +156,13 @@ A list all Microsoft Teams user identities with a mapped role.
 
 ```sql
 SELECT
-AwsUserIdentity,
-ChatConfigurationArn,
-IamRoleArn,
-TeamId,
-TeamsChannelId,
-TeamsTenantId,
-UserId
+aws_user_identity,
+chat_configuration_arn,
+iam_role_arn,
+team_id,
+teams_channel_id,
+teams_tenant_id,
+user_id
 FROM aws.chatbot.microsoft_teams_user_identities
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: Synonyms, Stopwords, StemmingDictionary, JapaneseTokenizationDictionary and AlgorithmicStemming.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of domain configuration option.</td>
 </tr>
@@ -151,8 +151,8 @@ Gets the analysis schemes configured for a domain. An analysis scheme defines la
 
 ```sql
 SELECT
-Options,
-Status
+options,
+status
 FROM aws.cloudsearch.analysis_schemes
 WHERE DomainName = '{{ DomainName }}' -- required
 AND region = '{{ region }}' -- required

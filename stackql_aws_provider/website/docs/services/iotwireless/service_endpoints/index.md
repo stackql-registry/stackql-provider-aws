@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ServerTrust" /></td>
+    <td><CopyableCode code="server_trust" /></td>
     <td><code>string</code></td>
     <td>The Root CA of the server trust certificate. (pattern: &lt;code&gt;&#91;^-A-Za-z0-9+/=&#93;|=&#91;^=&#93;|=&#123;3,&#125;$&#123;1,4096&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceEndpoint" /></td>
+    <td><CopyableCode code="service_endpoint" /></td>
     <td><code>string</code></td>
     <td>The service endpoint value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceType" /></td>
+    <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>The endpoint's service type. (CUPS, LNS)</td>
 </tr>
@@ -134,9 +134,9 @@ Gets the account-specific endpoint for Configuration and Update Server (CUPS) pr
 
 ```sql
 SELECT
-ServerTrust,
-ServiceEndpoint,
-ServiceType
+server_trust,
+service_endpoint,
+service_type
 FROM aws.iotwireless.service_endpoints
 WHERE region = '{{ region }}' -- required
 AND serviceType = '{{ serviceType }}'

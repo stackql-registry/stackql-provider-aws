@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this task run was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorString" /></td>
+    <td><CopyableCode code="error_string" /></td>
     <td><code>string</code></td>
     <td>The error strings that are associated with the task run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionTime" /></td>
+    <td><CopyableCode code="execution_time" /></td>
     <td><code>integer</code></td>
     <td>The amount of time (in seconds) that the task run consumed resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this task run was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The names of the log groups that are associated with the task run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Properties" /></td>
+    <td><CopyableCode code="properties" /></td>
     <td><code>object</code></td>
     <td>The list of properties that are associated with the task run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this task run started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status for this task run. (STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskRunId" /></td>
+    <td><CopyableCode code="task_run_id" /></td>
     <td><code>string</code></td>
     <td>The unique run identifier associated with this run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformId" /></td>
+    <td><CopyableCode code="transform_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the task run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token, if more results are available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskRuns" /></td>
+    <td><CopyableCode code="task_runs" /></td>
     <td><code>array</code></td>
     <td>A list of task runs that are associated with the transform.</td>
 </tr>
@@ -197,16 +197,16 @@ Gets details for a specific task run on a machine learning transform. Machine le
 
 ```sql
 SELECT
-CompletedOn,
-ErrorString,
-ExecutionTime,
-LastModifiedOn,
-LogGroupName,
-Properties,
-StartedOn,
-Status,
-TaskRunId,
-TransformId
+completed_on,
+error_string,
+execution_time,
+last_modified_on,
+log_group_name,
+properties,
+started_on,
+status,
+task_run_id,
+transform_id
 FROM aws.glue.ml_task_runs
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,8 +218,8 @@ Gets a list of runs for a machine learning transform. Machine learning task runs
 
 ```sql
 SELECT
-NextToken,
-TaskRuns
+next_token,
+task_runs
 FROM aws.glue.ml_task_runs
 WHERE region = '{{ region }}' -- required
 ;

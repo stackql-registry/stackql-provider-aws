@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>Information that regards this specific recommendation set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of retrievable results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SavingsPlansPurchaseRecommendation" /></td>
+    <td><CopyableCode code="savings_plans_purchase_recommendation" /></td>
     <td><code>object</code></td>
     <td>Contains your request parameters, Savings Plan Recommendations Summary, and Details.</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves the Savings Plans recommendations for your account. First use StartSav
 
 ```sql
 SELECT
-Metadata,
-NextPageToken,
-SavingsPlansPurchaseRecommendation
+metadata,
+next_page_token,
+savings_plans_purchase_recommendation
 FROM aws.ce.savings_plans_purchase_recommendations
 WHERE region = '{{ region }}' -- required
 ;

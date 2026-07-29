@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service network. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetwork/sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authType" /></td>
+    <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
     <td>The type of IAM policy. (NONE, AWS_IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service network was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the last update, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfAssociatedServices" /></td>
+    <td><CopyableCode code="number_of_associated_services" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of services associated with the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfAssociatedVPCs" /></td>
+    <td><CopyableCode code="number_of_associated_vpcs" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of VPCs associated with the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sharingConfig" /></td>
+    <td><CopyableCode code="sharing_config" /></td>
     <td><code>object</code></td>
     <td>Specifies if the service network should be enabled for sharing.</td>
 </tr>
@@ -125,27 +125,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service network. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetwork/sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service network was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service network was last updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfAssociatedResourceConfigurations" /></td>
+    <td><CopyableCode code="number_of_associated_resource_configurations" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of resource configurations associated with a service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfAssociatedServices" /></td>
+    <td><CopyableCode code="number_of_associated_services" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of services associated with the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfAssociatedVPCs" /></td>
+    <td><CopyableCode code="number_of_associated_vpcs" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of VPCs associated with the service network.</td>
 </tr>
@@ -261,12 +261,12 @@ SELECT
 id,
 name,
 arn,
-authType,
-createdAt,
-lastUpdatedAt,
-numberOfAssociatedServices,
-numberOfAssociatedVPCs,
-sharingConfig
+auth_type,
+created_at,
+last_updated_at,
+number_of_associated_services,
+number_of_associated_vpcs,
+sharing_config
 FROM aws.vpc_lattice.service_networks
 WHERE service_network_identifier = '{{ service_network_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -282,11 +282,11 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-lastUpdatedAt,
-numberOfAssociatedResourceConfigurations,
-numberOfAssociatedServices,
-numberOfAssociatedVPCs
+created_at,
+last_updated_at,
+number_of_associated_resource_configurations,
+number_of_associated_services,
+number_of_associated_vpcs
 FROM aws.vpc_lattice.service_networks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -330,8 +330,8 @@ RETURNING
 id,
 name,
 arn,
-authType,
-sharingConfig
+auth_type,
+sharing_config
 ;
 ```
 </TabItem>
@@ -387,7 +387,7 @@ RETURNING
 id,
 name,
 arn,
-authType;
+auth_type;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="afterBlobId" /></td>
+    <td><CopyableCode code="after_blob_id" /></td>
     <td><code>string</code></td>
     <td>The full blob ID of the file on which you want to comment on the source commit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="afterCommitId" /></td>
+    <td><CopyableCode code="after_commit_id" /></td>
     <td><code>string</code></td>
     <td>The full commit ID of the commit that was the tip of the source branch at the time the comment was made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="beforeBlobId" /></td>
+    <td><CopyableCode code="before_blob_id" /></td>
     <td><code>string</code></td>
     <td>The full blob ID of the file on which you want to comment on the destination commit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="beforeCommitId" /></td>
+    <td><CopyableCode code="before_commit_id" /></td>
     <td><code>string</code></td>
     <td>The full commit ID of the commit that was the tip of the destination branch when the pull request was created. This commit is superceded by the after commit in the source branch when and if you merge the source branch into the destination branch.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>Location information about the comment on the pull request, including the file name, line number, and whether the version of the file where the comment was made is BEFORE (destination branch) or AFTER (source branch).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestId" /></td>
+    <td><CopyableCode code="pull_request_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID of the pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository that contains the pull request. (pattern: &lt;code&gt;&#91;\w\.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -154,14 +154,14 @@ Returns comments made on a pull request. Reaction counts might include numbers f
 
 ```sql
 SELECT
-afterBlobId,
-afterCommitId,
-beforeBlobId,
-beforeCommitId,
+after_blob_id,
+after_commit_id,
+before_blob_id,
+before_commit_id,
 comments,
 location,
-pullRequestId,
-repositoryName
+pull_request_id,
+repository_name
 FROM aws.codecommit.comments_for_pull_requests
 WHERE region = '{{ region }}' -- required
 ;

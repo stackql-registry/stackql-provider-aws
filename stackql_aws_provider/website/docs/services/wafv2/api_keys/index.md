@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="APIKeySummaries" /></td>
+    <td><CopyableCode code="api_key_summaries" /></td>
     <td><code>array</code></td>
     <td>The array of key summaries. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationIntegrationURL" /></td>
+    <td><CopyableCode code="application_integration_url" /></td>
     <td><code>string</code></td>
     <td>The CAPTCHA application integration URL, for use in your JavaScript implementation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves a list of the API keys that you've defined for the specified scope. AP
 
 ```sql
 SELECT
-APIKeySummaries,
-ApplicationIntegrationURL,
-NextMarker
+api_key_summaries,
+application_integration_url,
+next_marker
 FROM aws.wafv2.api_keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -178,7 +178,7 @@ SELECT
 '{{ TokenDomains }}' /* required */,
 '{{ region }}'
 RETURNING
-APIKey
+api_key
 ;
 ```
 </TabItem>

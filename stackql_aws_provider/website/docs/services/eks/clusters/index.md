@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessConfig" /></td>
+    <td><CopyableCode code="access_config" /></td>
     <td><code>object</code></td>
     <td>The access configuration for the cluster.</td>
 </tr>
@@ -71,42 +71,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateAuthority" /></td>
+    <td><CopyableCode code="certificate_authority" /></td>
     <td><code>object</code></td>
     <td>The certificate-authority-data for your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeConfig" /></td>
+    <td><CopyableCode code="compute_config" /></td>
     <td><code>object</code></td>
     <td>Indicates the current configuration of the compute capability on your EKS Auto Mode cluster. For example, if the capability is enabled or disabled. If the compute capability is enabled, EKS Auto Mode will create and delete EC2 Managed Instances in your Amazon Web Services account. For more information, see EKS Auto Mode compute capability in the Amazon EKS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorConfig" /></td>
+    <td><CopyableCode code="connector_config" /></td>
     <td><code>object</code></td>
     <td>The configuration used to connect to a cluster for registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlPlaneScalingConfig" /></td>
+    <td><CopyableCode code="control_plane_scaling_config" /></td>
     <td><code>object</code></td>
     <td>The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp at object creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>The current deletion protection setting for the cluster. When true, deletion protection is enabled and the cluster cannot be deleted until protection is disabled. When false, the cluster can be deleted normally. This setting only applies to clusters in an active state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfig" /></td>
+    <td><CopyableCode code="encryption_config" /></td>
     <td><code>array</code></td>
     <td>The encryption configuration for the cluster.</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The identity provider information for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kubernetesNetworkConfig" /></td>
+    <td><CopyableCode code="kubernetes_network_config" /></td>
     <td><code>object</code></td>
     <td>The Kubernetes network configuration for the cluster.</td>
 </tr>
@@ -136,27 +136,27 @@ The following fields are returned by `SELECT` queries:
     <td>An object representing the logging configuration for resources in your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outpostConfig" /></td>
+    <td><CopyableCode code="outpost_config" /></td>
     <td><code>object</code></td>
     <td>An object representing the configuration of your local Amazon EKS cluster on an Amazon Web Services Outpost. This object isn't available for clusters on the Amazon Web Services cloud.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformVersion" /></td>
+    <td><CopyableCode code="platform_version" /></td>
     <td><code>string</code></td>
     <td>The platform version of your Amazon EKS cluster. For more information about clusters deployed on the Amazon Web Services Cloud, see Platform versions in the Amazon EKS User Guide . For more information about local clusters deployed on an Outpost, see Amazon EKS local cluster platform versions in the Amazon EKS User Guide .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteNetworkConfig" /></td>
+    <td><CopyableCode code="remote_network_config" /></td>
     <td><code>object</code></td>
     <td>The configuration in the cluster for EKS Hybrid Nodes. You can add, change, or remove this configuration after the cluster is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourcesVpcConfig" /></td>
+    <td><CopyableCode code="resources_vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC configuration used by the cluster control plane. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see Cluster VPC considerations and Cluster security group considerations in the Amazon EKS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to Amazon Web Services API operations on your behalf.</td>
 </tr>
@@ -166,7 +166,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the cluster. (CREATING, ACTIVE, DELETING, FAILED, UPDATING, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageConfig" /></td>
+    <td><CopyableCode code="storage_config" /></td>
     <td><code>object</code></td>
     <td>Indicates the current configuration of the block storage capability on your EKS Auto Mode cluster. For example, if the capability is enabled or disabled. If the block storage capability is enabled, EKS Auto Mode will create and delete EBS volumes in your Amazon Web Services account. For more information, see EKS Auto Mode block storage capability in the Amazon EKS User Guide.</td>
 </tr>
@@ -176,7 +176,7 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata that assists with categorization and organization. Each tag consists of a key and an optional value. You define both. Tags don't propagate to any other cluster or Amazon Web Services resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upgradePolicy" /></td>
+    <td><CopyableCode code="upgrade_policy" /></td>
     <td><code>object</code></td>
     <td>This value indicates if extended support is enabled or disabled for the cluster. Learn more about EKS Extended Support in the Amazon EKS User Guide.</td>
 </tr>
@@ -186,7 +186,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Kubernetes server version for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="zonalShiftConfig" /></td>
+    <td><CopyableCode code="zonal_shift_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for zonal shift for the cluster.</td>
 </tr>
@@ -339,32 +339,32 @@ Describes an Amazon EKS cluster. The API server endpoint and certificate authori
 SELECT
 id,
 name,
-accessConfig,
+access_config,
 arn,
-certificateAuthority,
-clientRequestToken,
-computeConfig,
-connectorConfig,
-controlPlaneScalingConfig,
-createdAt,
-deletionProtection,
-encryptionConfig,
+certificate_authority,
+client_request_token,
+compute_config,
+connector_config,
+control_plane_scaling_config,
+created_at,
+deletion_protection,
+encryption_config,
 endpoint,
 health,
 identity,
-kubernetesNetworkConfig,
+kubernetes_network_config,
 logging,
-outpostConfig,
-platformVersion,
-remoteNetworkConfig,
-resourcesVpcConfig,
-roleArn,
+outpost_config,
+platform_version,
+remote_network_config,
+resources_vpc_config,
+role_arn,
 status,
-storageConfig,
+storage_config,
 tags,
-upgradePolicy,
+upgrade_policy,
 version,
-zonalShiftConfig
+zonal_shift_config
 FROM aws.eks.clusters
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required

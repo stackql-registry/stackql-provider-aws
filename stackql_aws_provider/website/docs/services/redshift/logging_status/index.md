@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BucketName" /></td>
+    <td><CopyableCode code="bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the S3 bucket where the log files are stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailureMessage" /></td>
+    <td><CopyableCode code="last_failure_message" /></td>
     <td><code>string</code></td>
     <td>The message indicating that logs failed to be delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailureTime" /></td>
+    <td><CopyableCode code="last_failure_time" /></td>
     <td><code>string</code></td>
     <td>The last time when logs failed to be delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulDeliveryTime" /></td>
+    <td><CopyableCode code="last_successful_delivery_time" /></td>
     <td><code>string</code></td>
     <td>The last time that logs were delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogDestinationType" /></td>
+    <td><CopyableCode code="log_destination_type" /></td>
     <td><code>string</code></td>
     <td>The log destination type. An enum with possible values of s3 and cloudwatch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogExports" /></td>
+    <td><CopyableCode code="log_exports" /></td>
     <td><code>string</code></td>
     <td>The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingEnabled" /></td>
+    <td><CopyableCode code="logging_enabled" /></td>
     <td><code>boolean</code></td>
     <td>true if logging is on, false if logging is off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3KeyPrefix" /></td>
+    <td><CopyableCode code="s3_key_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix applied to the log file names.</td>
 </tr>
@@ -159,14 +159,14 @@ Describes whether information, such as queries and connection attempts, is being
 
 ```sql
 SELECT
-BucketName,
-LastFailureMessage,
-LastFailureTime,
-LastSuccessfulDeliveryTime,
-LogDestinationType,
-LogExports,
-LoggingEnabled,
-S3KeyPrefix
+bucket_name,
+last_failure_message,
+last_failure_time,
+last_successful_delivery_time,
+log_destination_type,
+log_exports,
+logging_enabled,
+s3_key_prefix
 FROM aws.redshift.logging_status
 WHERE ClusterIdentifier = '{{ ClusterIdentifier }}' -- required
 AND region = '{{ region }}' -- required

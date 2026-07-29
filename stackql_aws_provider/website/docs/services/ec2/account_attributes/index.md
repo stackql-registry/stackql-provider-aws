@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>The name of the account attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttributeValues" /></td>
+    <td><CopyableCode code="attribute_values" /></td>
     <td><code>string</code></td>
     <td>The values for the account attribute.</td>
 </tr>
@@ -134,8 +134,8 @@ Describes attributes of your Amazon Web Services account. The following are the 
 
 ```sql
 SELECT
-AttributeName,
-AttributeValues
+attribute_name,
+attribute_values
 FROM aws.ec2.account_attributes
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

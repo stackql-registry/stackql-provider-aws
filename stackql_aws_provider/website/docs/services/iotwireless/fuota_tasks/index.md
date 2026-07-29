@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The arn of a FUOTA task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Created at timestamp for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the new resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Descriptor" /></td>
+    <td><CopyableCode code="descriptor" /></td>
     <td><code>string</code></td>
     <td>The descriptor is the metadata about the file that is transferred to the device using FUOTA, such as the software version. It is a binary field encoded in base64. (pattern: &lt;code&gt;^(?:&#91;A-Za-z0-9+/&#93;&#123;4&#125;)*(?:&#91;A-Za-z0-9+/&#93;&#123;2&#125;==|&#91;A-Za-z0-9+/&#93;&#123;3&#125;=)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirmwareUpdateImage" /></td>
+    <td><CopyableCode code="firmware_update_image" /></td>
     <td><code>string</code></td>
     <td>The S3 URI points to a firmware update image that is to be used with a FUOTA task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirmwareUpdateRole" /></td>
+    <td><CopyableCode code="firmware_update_role" /></td>
     <td><code>string</code></td>
     <td>The firmware update role that is to be used with a FUOTA task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FragmentIntervalMS" /></td>
+    <td><CopyableCode code="fragment_interval_ms" /></td>
     <td><code>integer</code></td>
     <td>The interval for sending fragments in milliseconds, rounded to the nearest second. This interval only determines the timing for when the Cloud sends down the fragments to yor device. There can be a delay for when your device will receive these fragments. This delay depends on the device's class and the communication delay with the cloud.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FragmentSizeBytes" /></td>
+    <td><CopyableCode code="fragment_size_bytes" /></td>
     <td><code>integer</code></td>
     <td>The size of each fragment in bytes. This parameter is supported only for FUOTA tasks with multicast groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of a FUOTA task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoRaWAN" /></td>
+    <td><CopyableCode code="lo_ra_wan" /></td>
     <td><code>object</code></td>
     <td>The LoRaWAN information returned from getting a FUOTA task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of a FUOTA task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedundancyPercent" /></td>
+    <td><CopyableCode code="redundancy_percent" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the added fragments that are redundant. For example, if the size of the firmware image file is 100 bytes and the fragment size is 10 bytes, with RedundancyPercent set to 50(%), the final number of encoded fragments is (100 / 10) + (100 / 10 * 50%) = 15.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a FUOTA task. (Pending, FuotaSession_Waiting, In_FuotaSession, FuotaDone, Delete_Waiting)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FuotaTaskList" /></td>
+    <td><CopyableCode code="fuota_task_list" /></td>
     <td><code>array</code></td>
     <td>Lists the FUOTA tasks registered to your AWS account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>To retrieve the next set of results, the nextToken value from a previous response; otherwise null to receive the first set of results.</td>
 </tr>
@@ -286,19 +286,19 @@ Gets information about a FUOTA task.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-Descriptor,
-FirmwareUpdateImage,
-FirmwareUpdateRole,
-FragmentIntervalMS,
-FragmentSizeBytes,
-Id,
-LoRaWAN,
-Name,
-RedundancyPercent,
-Status
+arn,
+created_at,
+description,
+descriptor,
+firmware_update_image,
+firmware_update_role,
+fragment_interval_ms,
+fragment_size_bytes,
+id,
+lo_ra_wan,
+name,
+redundancy_percent,
+status
 FROM aws.iotwireless.fuota_tasks
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -311,8 +311,8 @@ Lists the FUOTA tasks registered to your AWS account.
 
 ```sql
 SELECT
-FuotaTaskList,
-NextToken
+fuota_task_list,
+next_token
 FROM aws.iotwireless.fuota_tasks
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -365,8 +365,8 @@ SELECT
 '{{ Descriptor }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

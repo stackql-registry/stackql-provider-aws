@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Theme" /></td>
+    <td><CopyableCode code="theme" /></td>
     <td><code>object</code></td>
     <td>The information about the theme that you are describing.</td>
 </tr>
@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that this theme was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date and time that this theme was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersionNumber" /></td>
+    <td><CopyableCode code="latest_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The latest version number for the theme.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>the display name for the theme.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeId" /></td>
+    <td><CopyableCode code="theme_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the theme. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -238,9 +238,9 @@ Describes a theme.
 
 ```sql
 SELECT
-RequestId,
-Status,
-Theme
+request_id,
+status,
+theme
 FROM aws.quicksight.themes
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND theme_id = '{{ theme_id }}' -- required
@@ -256,12 +256,12 @@ Lists all the themes in the current Amazon Web Services account.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-LastUpdatedTime,
-LatestVersionNumber,
-Name,
-ThemeId
+arn,
+created_time,
+last_updated_time,
+latest_version_number,
+name,
+theme_id
 FROM aws.quicksight.themes
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -310,12 +310,12 @@ SELECT
 '{{ theme_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationStatus,
-RequestId,
-Status,
-ThemeId,
-VersionArn
+arn,
+creation_status,
+request_id,
+status,
+theme_id,
+version_arn
 ;
 ```
 </TabItem>
@@ -513,12 +513,12 @@ AND theme_id = '{{ theme_id }}' --required
 AND region = '{{ region }}' --required
 AND BaseThemeId = '{{ BaseThemeId }}' --required
 RETURNING
-Arn,
-CreationStatus,
-RequestId,
-Status,
-ThemeId,
-VersionArn;
+arn,
+creation_status,
+request_id,
+status,
+theme_id,
+version_arn;
 ```
 </TabItem>
 </Tabs>

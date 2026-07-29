@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Budgets" /></td>
+    <td><CopyableCode code="budgets" /></td>
     <td><code>array</code></td>
     <td>Information about the associated budgets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The page token to use to retrieve the next set of results. If there are no additional results, this value is null. (pattern: &lt;code&gt;&#91;\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all the budgets associated to the specified resource.
 
 ```sql
 SELECT
-Budgets,
-NextPageToken
+budgets,
+next_page_token
 FROM aws.servicecatalog.budgets_for_resources
 WHERE region = '{{ region }}' -- required
 ;

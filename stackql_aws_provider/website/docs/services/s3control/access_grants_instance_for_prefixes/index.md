@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessGrantsInstanceArn" /></td>
+    <td><CopyableCode code="access_grants_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the S3 Access Grants instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsInstanceId" /></td>
+    <td><CopyableCode code="access_grants_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the S3 Access Grants instance. The ID is default. You can have one S3 Access Grants instance per Region per account.</td>
 </tr>
@@ -134,8 +134,8 @@ Retrieve the S3 Access Grants instance that contains a particular prefix. Permis
 
 ```sql
 SELECT
-AccessGrantsInstanceArn,
-AccessGrantsInstanceId
+access_grants_instance_arn,
+access_grants_instance_id
 FROM aws.s3control.access_grants_instance_for_prefixes
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND s3prefix = '{{ s3prefix }}' -- required

@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time the stream processor was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSharingPreference" /></td>
+    <td><CopyableCode code="data_sharing_preference" /></td>
     <td><code>object</code></td>
     <td>Shows whether you are sharing data with Rekognition to improve model performance. You can choose this option at the account level or on a per-stream basis. Note that if you opt out at the account level this setting is ignored on individual streams.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Input" /></td>
+    <td><CopyableCode code="input" /></td>
     <td><code>object</code></td>
     <td>Kinesis video stream that provides the source streaming video.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for your AWS Key Management Service key (AWS KMS key). This is an optional parameter for label detection stream processors. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,2048&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in Unix format, the stream processor was last updated. For example, when the stream processor moves from a running state to a failed state, or when the user starts or stops the stream processor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the stream processor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationChannel" /></td>
+    <td><CopyableCode code="notification_channel" /></td>
     <td><code>object</code></td>
     <td>The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the object detection results and completion status of a video analysis operation. Amazon Rekognition publishes a notification the first time an object of interest or a person is detected in the video stream. For example, if Amazon Rekognition detects a person at second 2, a pet at second 4, and a person again at second 5, Amazon Rekognition sends 2 object class detected notifications, one for a person at second 2 and one for a pet at second 4. Amazon Rekognition also publishes an an end-of-session notification with a summary when the stream processing session is complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Output" /></td>
+    <td><CopyableCode code="output" /></td>
     <td><code>object</code></td>
     <td>Kinesis data stream to which Amazon Rekognition Video puts the analysis results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionsOfInterest" /></td>
+    <td><CopyableCode code="regions_of_interest" /></td>
     <td><code>array</code></td>
     <td>Specifies locations in the frames where Amazon Rekognition checks for objects or people. This is an optional parameter for label detection stream processors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the IAM role that allows access to the stream processor. (pattern: &lt;code&gt;arn:aws:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>Input parameters used in a streaming video analyzed by a stream processor. You can use FaceSearch to recognize faces in a streaming video, or you can use ConnectedHome to detect labels.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current status of the stream processor. (STOPPED, STARTING, RUNNING, FAILED, STOPPING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Detailed status message about the stream processor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamProcessorArn" /></td>
+    <td><CopyableCode code="stream_processor_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the stream processor. (pattern: &lt;code&gt;(^arn:&#91;a-z\d-&#93;+:rekognition:&#91;a-z\d-&#93;+:\d&#123;12&#125;:streamprocessor\/.+$)&lt;/code&gt;)</td>
 </tr>
@@ -212,20 +212,20 @@ Provides information about a stream processor created by CreateStreamProcessor. 
 
 ```sql
 SELECT
-CreationTimestamp,
-DataSharingPreference,
-Input,
-KmsKeyId,
-LastUpdateTimestamp,
-Name,
-NotificationChannel,
-Output,
-RegionsOfInterest,
-RoleArn,
-Settings,
-Status,
-StatusMessage,
-StreamProcessorArn
+creation_timestamp,
+data_sharing_preference,
+input,
+kms_key_id,
+last_update_timestamp,
+name,
+notification_channel,
+output,
+regions_of_interest,
+role_arn,
+settings,
+status,
+status_message,
+stream_processor_arn
 FROM aws.rekognition.stream_processors
 WHERE region = '{{ region }}' -- required
 ;
@@ -274,7 +274,7 @@ SELECT
 '{{ DataSharingPreference }}',
 '{{ region }}'
 RETURNING
-StreamProcessorArn
+stream_processor_arn
 ;
 ```
 </TabItem>

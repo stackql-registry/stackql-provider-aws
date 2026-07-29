@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="alarmCapabilities" /></td>
+    <td><CopyableCode code="alarm_capabilities" /></td>
     <td><code>object</code></td>
     <td>Contains the configuration information of alarm state changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmEventActions" /></td>
+    <td><CopyableCode code="alarm_event_actions" /></td>
     <td><code>object</code></td>
     <td>Contains information about one or more alarm actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmModelArn" /></td>
+    <td><CopyableCode code="alarm_model_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the alarm model. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmModelDescription" /></td>
+    <td><CopyableCode code="alarm_model_description" /></td>
     <td><code>string</code></td>
     <td>The description of the alarm model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmModelName" /></td>
+    <td><CopyableCode code="alarm_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the alarm model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmModelVersion" /></td>
+    <td><CopyableCode code="alarm_model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the alarm model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmNotification" /></td>
+    <td><CopyableCode code="alarm_notification" /></td>
     <td><code>object</code></td>
     <td>Contains information about one or more notification actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmRule" /></td>
+    <td><CopyableCode code="alarm_rule" /></td>
     <td><code>object</code></td>
     <td>Defines when your alarm is invoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the alarm model was created, in the Unix epoch format.</td>
 </tr>
@@ -101,12 +101,12 @@ The following fields are returned by `SELECT` queries:
     <td>An input attribute used as a key to create an alarm. AWS IoT Events routes inputs associated with this key to the alarm. (pattern: &lt;code&gt;^((`&#91;\w\- &#93;+`)|(&#91;\w\-&#93;+))(\.((`&#91;\w- &#93;+`)|(&#91;\w\-&#93;+)))*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the alarm model was last updated, in the Unix epoch format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that allows the alarm to perform actions and access AWS resources. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the alarm model. The status can be one of the following values: ACTIVE - The alarm model is active and it's ready to evaluate data. ACTIVATING - AWS IoT Events is activating your alarm model. Activating an alarm model can take up to a few minutes. INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data. Check your alarm model information and update the alarm model. FAILED - You couldn't create or update the alarm model. Check your alarm model information and try again. (ACTIVE, ACTIVATING, INACTIVE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Contains information about the status of the alarm model.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="alarmModelSummaries" /></td>
+    <td><CopyableCode code="alarm_model_summaries" /></td>
     <td><code>array</code></td>
     <td>A list that summarizes each alarm model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can use to return the next set of results, or null if there are no more results.</td>
 </tr>
@@ -263,21 +263,21 @@ Retrieves information about an alarm model. If you don't specify a value for the
 
 ```sql
 SELECT
-alarmCapabilities,
-alarmEventActions,
-alarmModelArn,
-alarmModelDescription,
-alarmModelName,
-alarmModelVersion,
-alarmNotification,
-alarmRule,
-creationTime,
+alarm_capabilities,
+alarm_event_actions,
+alarm_model_arn,
+alarm_model_description,
+alarm_model_name,
+alarm_model_version,
+alarm_notification,
+alarm_rule,
+creation_time,
 key,
-lastUpdateTime,
-roleArn,
+last_update_time,
+role_arn,
 severity,
 status,
-statusMessage
+status_message
 FROM aws.iotevents.alarm_models
 WHERE alarm_model_name = '{{ alarm_model_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -291,8 +291,8 @@ Lists the alarm models that you created. The operation returns only the metadata
 
 ```sql
 SELECT
-alarmModelSummaries,
-nextToken
+alarm_model_summaries,
+next_token
 FROM aws.iotevents.alarm_models
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -343,10 +343,10 @@ SELECT
 '{{ alarmCapabilities }}',
 '{{ region }}'
 RETURNING
-alarmModelArn,
-alarmModelVersion,
-creationTime,
-lastUpdateTime,
+alarm_model_arn,
+alarm_model_version,
+creation_time,
+last_update_time,
 status
 ;
 ```
@@ -506,10 +506,10 @@ AND region = '{{ region }}' --required
 AND roleArn = '{{ roleArn }}' --required
 AND alarmRule = '{{ alarmRule }}' --required
 RETURNING
-alarmModelArn,
-alarmModelVersion,
-creationTime,
-lastUpdateTime,
+alarm_model_arn,
+alarm_model_version,
+creation_time,
+last_update_time,
 status;
 ```
 </TabItem>

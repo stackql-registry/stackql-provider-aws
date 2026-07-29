@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="parentShardIds" /></td>
+    <td><CopyableCode code="parent_shard_ids" /></td>
     <td><code>array</code></td>
     <td>The identifiers of parent shards that this shard evolved from, if this shard was created through resharding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sequenceNumberRange" /></td>
+    <td><CopyableCode code="sequence_number_range" /></td>
     <td><code>object</code></td>
     <td>The range of sequence numbers contained within this shard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shardId" /></td>
+    <td><CopyableCode code="shard_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for this shard within the stream.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="keyspaceName" /></td>
+    <td><CopyableCode code="keyspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the keyspace containing the table associated with this stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamArn" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies this stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamLabel" /></td>
+    <td><CopyableCode code="stream_label" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for this stream that can be used in stream operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table associated with this stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
@@ -172,9 +172,9 @@ Returns detailed information about a specific data capture stream for an Amazon 
 
 ```sql
 SELECT
-parentShardIds,
-sequenceNumberRange,
-shardId
+parent_shard_ids,
+sequence_number_range,
+shard_id
 FROM aws.keyspacesstreams.streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -186,10 +186,10 @@ Returns a list of all data capture streams associated with your Amazon Keyspaces
 
 ```sql
 SELECT
-keyspaceName,
-streamArn,
-streamLabel,
-tableName
+keyspace_name,
+stream_arn,
+stream_label,
+table_name
 FROM aws.keyspacesstreams.streams
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,132 +50,132 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>The details for the CloudWatch alarm you want to apply to an automation or command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchOutputConfig" /></td>
+    <td><CopyableCode code="cloud_watch_output_config" /></td>
     <td><code>object</code></td>
     <td>Configuration options for sending command output to Amazon CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CommandId" /></td>
+    <td><CopyableCode code="command_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for this command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>User-specified information about the command, such as a brief description of what the command should do.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedCount" /></td>
+    <td><CopyableCode code="completed_count" /></td>
     <td><code>integer</code></td>
     <td>The number of targets for which the command invocation reached a terminal state. Terminal states include the following: Success, Failed, Execution Timed Out, Delivery Timed Out, Cancelled, Terminated, or Undeliverable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryTimedOutCount" /></td>
+    <td><CopyableCode code="delivery_timed_out_count" /></td>
     <td><code>integer</code></td>
     <td>The number of targets for which the status is Delivery Timed Out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentName" /></td>
+    <td><CopyableCode code="document_name" /></td>
     <td><code>string</code></td>
     <td>The name of the document requested for execution. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>The Systems Manager document (SSM document) version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCount" /></td>
+    <td><CopyableCode code="error_count" /></td>
     <td><code>integer</code></td>
     <td>The number of targets for which the status is Failed or Execution Timed Out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresAfter" /></td>
+    <td><CopyableCode code="expires_after" /></td>
     <td><code>string (date-time)</code></td>
     <td>If a command expires, it changes status to DeliveryTimedOut for all invocations that have the status InProgress, Pending, or Delayed. ExpiresAfter is calculated based on the total timeout for the overall command. For more information, see Understanding command timeout values in the Amazon Web Services Systems Manager User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceIds" /></td>
+    <td><CopyableCode code="instance_ids" /></td>
     <td><code>array</code></td>
     <td>The managed node IDs against which this command was requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrency" /></td>
+    <td><CopyableCode code="max_concurrency" /></td>
     <td><code>string</code></td>
     <td>The maximum number of managed nodes that are allowed to run the command at the same time. You can specify a number of managed nodes, such as 10, or a percentage of nodes, such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see Amazon Web Services Systems Manager Run Command in the Amazon Web Services Systems Manager User Guide. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;1-9&#93;&#91;0-9&#93;%|&#91;1-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxErrors" /></td>
+    <td><CopyableCode code="max_errors" /></td>
     <td><code>string</code></td>
     <td>The maximum number of errors allowed before the system stops sending the command to additional targets. You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 0. For more information about how to use MaxErrors, see Amazon Web Services Systems Manager Run Command in the Amazon Web Services Systems Manager User Guide. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;0&#93;|&#91;1-9&#93;&#91;0-9&#93;%|&#91;0-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationConfig" /></td>
+    <td><CopyableCode code="notification_config" /></td>
     <td><code>object</code></td>
     <td>Configurations for sending notifications about command status changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputS3BucketName" /></td>
+    <td><CopyableCode code="output_s3_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputS3KeyPrefix" /></td>
+    <td><CopyableCode code="output_s3_key_prefix" /></td>
     <td><code>string</code></td>
     <td>The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputS3Region" /></td>
+    <td><CopyableCode code="output_s3_region" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon Web Services Region of the S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>The parameter values to be inserted in the document when running the command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedDateTime" /></td>
+    <td><CopyableCode code="requested_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the command was requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management (IAM) service role that Run Command, a tool in Amazon Web Services Systems Manager, uses to act on your behalf when sending notifications about command status changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the command. (Pending, InProgress, Success, Cancelled, Failed, TimedOut, Cancelling)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>A detailed status of the command execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see Understanding command statuses in the Amazon Web Services Systems Manager User Guide. StatusDetails can be one of the following values: Pending: The command hasn't been sent to any managed nodes. In Progress: The command has been sent to at least one managed node but hasn't reached a final state on all managed nodes. Success: The command successfully ran on all invocations. This is a terminal state. Delivery Timed Out: The value of MaxErrors or more command invocations shows a status of Delivery Timed Out. This is a terminal state. Execution Timed Out: The value of MaxErrors or more command invocations shows a status of Execution Timed Out. This is a terminal state. Failed: The value of MaxErrors or more command invocations shows a status of Failed. This is a terminal state. Incomplete: The command was attempted on all managed nodes and one or more invocations doesn't have a value of Success but not enough invocations failed for the status to be Failed. This is a terminal state. Cancelled: The command was terminated before it was completed. This is a terminal state. Rate Exceeded: The number of managed nodes targeted by the command exceeded the account limit for pending invocations. The system has canceled the command before running it on any managed node. This is a terminal state. Delayed: The system attempted to send the command to the managed node but wasn't successful. The system retries again.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetCount" /></td>
+    <td><CopyableCode code="target_count" /></td>
     <td><code>integer</code></td>
     <td>The number of targets for the command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>An array of search criteria that targets managed nodes using a Key,Value combination that you specify. Targets is required if you don't provide one or more managed node IDs in the call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeoutSeconds" /></td>
+    <td><CopyableCode code="timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The TimeoutSeconds value specified for a command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggeredAlarms" /></td>
+    <td><CopyableCode code="triggered_alarms" /></td>
     <td><code>array</code></td>
     <td>The CloudWatch alarm that was invoked by the command.</td>
 </tr>
@@ -244,32 +244,32 @@ Lists the commands requested by users of the Amazon Web Services account.
 
 ```sql
 SELECT
-AlarmConfiguration,
-CloudWatchOutputConfig,
-CommandId,
-Comment,
-CompletedCount,
-DeliveryTimedOutCount,
-DocumentName,
-DocumentVersion,
-ErrorCount,
-ExpiresAfter,
-InstanceIds,
-MaxConcurrency,
-MaxErrors,
-NotificationConfig,
-OutputS3BucketName,
-OutputS3KeyPrefix,
-OutputS3Region,
-Parameters,
-RequestedDateTime,
-ServiceRole,
-Status,
-StatusDetails,
-TargetCount,
-Targets,
-TimeoutSeconds,
-TriggeredAlarms
+alarm_configuration,
+cloud_watch_output_config,
+command_id,
+comment,
+completed_count,
+delivery_timed_out_count,
+document_name,
+document_version,
+error_count,
+expires_after,
+instance_ids,
+max_concurrency,
+max_errors,
+notification_config,
+output_s3_bucket_name,
+output_s3_key_prefix,
+output_s3_region,
+parameters,
+requested_date_time,
+service_role,
+status,
+status_details,
+target_count,
+targets,
+timeout_seconds,
+triggered_alarms
 FROM aws.ssm.commands
 WHERE region = '{{ region }}' -- required
 ;

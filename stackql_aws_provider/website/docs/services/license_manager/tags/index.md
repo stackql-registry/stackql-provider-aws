@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Information about the tags.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the tags for the specified resource. For more information about tagging su
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.license_manager.tags
 WHERE region = '{{ region }}' -- required
 ;

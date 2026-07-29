@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Collections" /></td>
+    <td><CopyableCode code="collections" /></td>
     <td><code>array</code></td>
     <td>The set of metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Dimensions" /></td>
+    <td><CopyableCode code="dimensions" /></td>
     <td><code>object</code></td>
     <td>The dimension for the metrics.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets historical metric data from the specified Amazon Connect instance. For a de
 
 ```sql
 SELECT
-Collections,
-Dimensions
+collections,
+dimensions
 FROM aws.connect.metric_datas
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

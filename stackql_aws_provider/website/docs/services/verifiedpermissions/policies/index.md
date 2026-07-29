@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
     <td>The action that a policy permits or forbids. For example, &#123;"actions": &#91;&#123;"actionId": "ViewPhoto", "actionType": "PhotoFlash::Action"&#125;, &#123;"entityID": "SharePhoto", "entityType": "PhotoFlash::Action"&#125;&#93;&#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy was originally created.</td>
 </tr>
@@ -77,22 +77,22 @@ The following fields are returned by `SELECT` queries:
     <td>The effect of the decision that a policy returns to an authorization request. For example, "effect": "Permit". (Permit, Forbid)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the policy that you want information about. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy store that contains the policy that you want information about. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The type of the policy. (STATIC, TEMPLATE_LINKED)</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The action that a policy permits or forbids. For example, &#123;"actions": &#91;&#123;"actionId": "ViewPhoto", "actionType": "PhotoFlash::Action"&#125;, &#123;"entityID": "SharePhoto", "entityType": "PhotoFlash::Action"&#125;&#93;&#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the policy was created.</td>
 </tr>
@@ -170,22 +170,22 @@ The following fields are returned by `SELECT` queries:
     <td>The effect of the decision that a policy returns to an authorization request. For example, "effect": "Permit". (Permit, Forbid)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the policy was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the policy you want information about. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the policy store where the policy you want information about is stored. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The type of the policy. This is one of the following values: STATIC TEMPLATE_LINKED (STATIC, TEMPLATE_LINKED)</td>
 </tr>
@@ -303,13 +303,13 @@ Retrieves information about the specified policy.
 SELECT
 name,
 actions,
-createdDate,
+created_date,
 definition,
 effect,
-lastUpdatedDate,
-policyId,
-policyStoreId,
-policyType,
+last_updated_date,
+policy_id,
+policy_store_id,
+policy_type,
 principal,
 resource
 FROM aws.verifiedpermissions.policies
@@ -338,13 +338,13 @@ Returns a paginated list of all policies stored in the specified policy store.
 SELECT
 name,
 actions,
-createdDate,
+created_date,
 definition,
 effect,
-lastUpdatedDate,
-policyId,
-policyStoreId,
-policyType,
+last_updated_date,
+policy_id,
+policy_store_id,
+policy_type,
 principal,
 resource
 FROM aws.verifiedpermissions.policies
@@ -384,12 +384,12 @@ SELECT
 '{{ region }}'
 RETURNING
 actions,
-createdDate,
+created_date,
 effect,
-lastUpdatedDate,
-policyId,
-policyStoreId,
-policyType,
+last_updated_date,
+policy_id,
+policy_store_id,
+policy_type,
 principal,
 resource
 ;
@@ -461,12 +461,12 @@ AND policyStoreId = '{{ policyStoreId }}' --required
 AND policyId = '{{ policyId }}' --required
 RETURNING
 actions,
-createdDate,
+created_date,
 effect,
-lastUpdatedDate,
-policyId,
-policyStoreId,
-policyType,
+last_updated_date,
+policy_id,
+policy_store_id,
+policy_type,
 principal,
 resource;
 ```

@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>Description of the Managed Domain List.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedListType" /></td>
+    <td><CopyableCode code="managed_list_type" /></td>
     <td><code>string</code></td>
     <td>Type of the managed category. This is either THREAT or CONTENT.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the managed firewall domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedListType" /></td>
+    <td><CopyableCode code="managed_list_type" /></td>
     <td><code>string</code></td>
     <td>The type of the managed firewall domain list.</td>
 </tr>
@@ -200,7 +200,7 @@ SELECT
 id,
 name,
 description,
-managedListType
+managed_list_type
 FROM aws.route53globalresolver.managed_firewall_domain_lists
 WHERE managed_firewall_domain_list_id = '{{ managed_firewall_domain_list_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -216,7 +216,7 @@ SELECT
 id,
 name,
 description,
-managedListType
+managed_list_type
 FROM aws.route53globalresolver.managed_firewall_domain_lists
 WHERE managed_firewall_domain_list_type = '{{ managed_firewall_domain_list_type }}' -- required
 AND region = '{{ region }}' -- required

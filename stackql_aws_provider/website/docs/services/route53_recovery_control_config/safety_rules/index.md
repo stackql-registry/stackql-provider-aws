@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssertionRule" /></td>
+    <td><CopyableCode code="assertion_rule" /></td>
     <td><code>object</code></td>
     <td>The assertion rule in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatingRule" /></td>
+    <td><CopyableCode code="gating_rule" /></td>
     <td><code>object</code></td>
     <td>The gating rule in the response.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ASSERTION" /></td>
+    <td><CopyableCode code="assertion" /></td>
     <td><code>object</code></td>
     <td>An assertion rule enforces that, when a routing control state is changed, the criteria set by the rule configuration is met. Otherwise, the change to the routing control state is not accepted. For example, the criteria might be that at least one routing control state is On after the transaction so that traffic continues to flow to at least one cell for the application. This ensures that you avoid a fail-open scenario.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GATING" /></td>
+    <td><CopyableCode code="gating" /></td>
     <td><code>object</code></td>
     <td>A gating rule verifies that a gating routing control or set of gating routing controls, evaluates as true, based on a rule configuration that you specify, which allows a set of routing control state changes to complete. For example, if you specify one gating routing control and you set the Type in the rule configuration to OR, that indicates that you must set the gating routing control to On for the rule to evaluate as true; that is, for the gating control "switch" to be "On". When you do that, then you can update the routing control states for the target routing controls that you specify in the gating rule.</td>
 </tr>
@@ -198,8 +198,8 @@ Returns information about a safety rule.
 
 ```sql
 SELECT
-AssertionRule,
-GatingRule
+assertion_rule,
+gating_rule
 FROM aws.route53_recovery_control_config.safety_rules
 WHERE safety_rule_arn = '{{ safety_rule_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -212,8 +212,8 @@ List the safety rules (the assertion rules and gating rules) that you've defined
 
 ```sql
 SELECT
-ASSERTION,
-GATING
+assertion,
+gating
 FROM aws.route53_recovery_control_config.safety_rules
 WHERE control_panel_arn = '{{ control_panel_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,8 +253,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AssertionRule,
-GatingRule
+assertion_rule,
+gating_rule
 ;
 ```
 </TabItem>
@@ -324,8 +324,8 @@ GatingRuleUpdate = '{{ GatingRuleUpdate }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-AssertionRule,
-GatingRule;
+assertion_rule,
+gating_rule;
 ```
 </TabItem>
 </Tabs>

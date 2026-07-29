@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the RCS agent was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true the RCS agent can't be deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptOutListName" /></td>
+    <td><CopyableCode code="opt_out_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OptOutList associated with the RCS agent. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the pool associated with the RCS agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RcsAgentArn" /></td>
+    <td><CopyableCode code="rcs_agent_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the RCS agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RcsAgentId" /></td>
+    <td><CopyableCode code="rcs_agent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the RCS agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfManagedOptOutsEnabled" /></td>
+    <td><CopyableCode code="self_managed_opt_outs_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true you're responsible for responding to HELP and STOP requests. You're also responsible for tracking and honoring opt-out requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the RCS agent. (CREATED, PENDING, TESTING, PARTIAL, ACTIVE, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestingAgent" /></td>
+    <td><CopyableCode code="testing_agent" /></td>
     <td><code>object</code></td>
     <td>The testing agent information associated with the RCS agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayChannelArn" /></td>
+    <td><CopyableCode code="two_way_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the two way channel. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayChannelRole" /></td>
+    <td><CopyableCode code="two_way_channel_role" /></td>
     <td><code>string</code></td>
     <td>An optional IAM Role Arn for a service to assume, to be able to post inbound SMS messages. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayEnabled" /></td>
+    <td><CopyableCode code="two_way_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true you can receive incoming text messages from your end recipients using the TwoWayChannelArn.</td>
 </tr>
@@ -195,18 +195,18 @@ Retrieves the specified RCS agents or all RCS agents associated with your Amazon
 
 ```sql
 SELECT
-CreatedTimestamp,
-DeletionProtectionEnabled,
-OptOutListName,
-PoolId,
-RcsAgentArn,
-RcsAgentId,
-SelfManagedOptOutsEnabled,
-Status,
-TestingAgent,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled
+created_timestamp,
+deletion_protection_enabled,
+opt_out_list_name,
+pool_id,
+rcs_agent_arn,
+rcs_agent_id,
+self_managed_opt_outs_enabled,
+status,
+testing_agent,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled
 FROM aws.pinpoint_sms_voice_v2.rcs_agents
 WHERE region = '{{ region }}' -- required
 ;
@@ -243,17 +243,17 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-CreatedTimestamp,
-DeletionProtectionEnabled,
-OptOutListName,
-RcsAgentArn,
-RcsAgentId,
-SelfManagedOptOutsEnabled,
-Status,
-Tags,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled
+created_timestamp,
+deletion_protection_enabled,
+opt_out_list_name,
+rcs_agent_arn,
+rcs_agent_id,
+self_managed_opt_outs_enabled,
+status,
+tags,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled
 ;
 ```
 </TabItem>
@@ -315,16 +315,16 @@ WHERE
 region = '{{ region }}' --required
 AND RcsAgentId = '{{ RcsAgentId }}' --required
 RETURNING
-CreatedTimestamp,
-DeletionProtectionEnabled,
-OptOutListName,
-RcsAgentArn,
-RcsAgentId,
-SelfManagedOptOutsEnabled,
-Status,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled;
+created_timestamp,
+deletion_protection_enabled,
+opt_out_list_name,
+rcs_agent_arn,
+rcs_agent_id,
+self_managed_opt_outs_enabled,
+status,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled;
 ```
 </TabItem>
 </Tabs>

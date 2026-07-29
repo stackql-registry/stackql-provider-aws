@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Patch" /></td>
+    <td><CopyableCode code="patch" /></td>
     <td><code>object</code></td>
     <td>Represents metadata about a patch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PatchStatus" /></td>
+    <td><CopyableCode code="patch_status" /></td>
     <td><code>object</code></td>
     <td>The status of the patch in a patch baseline. This includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the current effective patches (the patch and the approval state) for t
 
 ```sql
 SELECT
-Patch,
-PatchStatus
+patch,
+patch_status
 FROM aws.ssm.effective_patches_for_patch_baselines
 WHERE region = '{{ region }}' -- required
 ;

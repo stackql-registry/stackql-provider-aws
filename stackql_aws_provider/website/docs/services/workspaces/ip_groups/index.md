@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="groupDesc" /></td>
+    <td><CopyableCode code="group_desc" /></td>
     <td><code>string</code></td>
     <td>The description of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the group. (pattern: &lt;code&gt;wsipg-&#91;0-9a-z&#93;&#123;8,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userRules" /></td>
+    <td><CopyableCode code="user_rules" /></td>
     <td><code>array</code></td>
     <td>The rules.</td>
 </tr>
@@ -169,10 +169,10 @@ Describes one or more of your IP access control groups.
 
 ```sql
 SELECT
-groupDesc,
-groupId,
-groupName,
-userRules
+group_desc,
+group_id,
+group_name,
+user_rules
 FROM aws.workspaces.ip_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,7 +209,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-GroupId
+group_id
 ;
 ```
 </TabItem>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A UTC timestamp indicating when the execution preview operation ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionPreview" /></td>
+    <td><CopyableCode code="execution_preview" /></td>
     <td><code>object</code></td>
     <td>Information about the changes that would be made if an execution were run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionPreviewId" /></td>
+    <td><CopyableCode code="execution_preview_id" /></td>
     <td><code>string</code></td>
     <td>The generated ID for the existing execution preview. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the execution preview operation. (Pending, InProgress, Success, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Supplemental information about the current status of the execution preview.</td>
 </tr>
@@ -139,11 +139,11 @@ Initiates the process of retrieving an existing preview that shows the effects t
 
 ```sql
 SELECT
-EndedAt,
-ExecutionPreview,
-ExecutionPreviewId,
-Status,
-StatusMessage
+ended_at,
+execution_preview,
+execution_preview_id,
+status,
+status_message
 FROM aws.ssm.execution_previews
 WHERE region = '{{ region }}' -- required
 ;

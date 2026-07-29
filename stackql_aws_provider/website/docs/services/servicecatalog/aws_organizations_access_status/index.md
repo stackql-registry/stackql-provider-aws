@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessStatus" /></td>
+    <td><CopyableCode code="access_status" /></td>
     <td><code>string</code></td>
     <td>The status of the portfolio share feature. (ENABLED, UNDER_CHANGE, DISABLED)</td>
 </tr>
@@ -119,7 +119,7 @@ Get the Access Status for Organizations portfolio share feature. This API can on
 
 ```sql
 SELECT
-AccessStatus
+access_status
 FROM aws.servicecatalog.aws_organizations_access_status
 WHERE region = '{{ region }}' -- required
 ;

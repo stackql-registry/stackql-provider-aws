@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBEngineDescription" /></td>
+    <td><CopyableCode code="db_engine_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBEngineVersionDescription" /></td>
+    <td><CopyableCode code="db_engine_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBParameterGroupFamily" /></td>
+    <td><CopyableCode code="db_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the DB parameter group family for the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultCharacterSet" /></td>
+    <td><CopyableCode code="default_character_set" /></td>
     <td><code>string</code></td>
     <td>(Not supported by Neptune)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportableLogTypes" /></td>
+    <td><CopyableCode code="exportable_log_types" /></td>
     <td><code>string</code></td>
     <td>The types of logs that the database engine has available for export to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedCharacterSets" /></td>
+    <td><CopyableCode code="supported_character_sets" /></td>
     <td><code>string</code></td>
     <td>(Not supported by Neptune)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedTimezones" /></td>
+    <td><CopyableCode code="supported_timezones" /></td>
     <td><code>string</code></td>
     <td>A list of the time zones supported by this engine for the Timezone parameter of the CreateDBInstance action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsGlobalDatabases" /></td>
+    <td><CopyableCode code="supports_global_databases" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether you can use Aurora global databases with a specific DB engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsLogExportsToCloudwatchLogs" /></td>
+    <td><CopyableCode code="supports_log_exports_to_cloudwatch_logs" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether the engine version supports exporting the log types specified by ExportableLogTypes to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsReadReplica" /></td>
+    <td><CopyableCode code="supports_read_replica" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the database engine version supports read replicas.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidUpgradeTarget" /></td>
+    <td><CopyableCode code="valid_upgrade_target" /></td>
     <td><code>string</code></td>
     <td>A list of engine versions that this database engine version can be upgraded to.</td>
 </tr>
@@ -224,19 +224,19 @@ Returns a list of the available DB engines.
 
 ```sql
 SELECT
-DBEngineDescription,
-DBEngineVersionDescription,
-DBParameterGroupFamily,
-DefaultCharacterSet,
-Engine,
-EngineVersion,
-ExportableLogTypes,
-SupportedCharacterSets,
-SupportedTimezones,
-SupportsGlobalDatabases,
-SupportsLogExportsToCloudwatchLogs,
-SupportsReadReplica,
-ValidUpgradeTarget
+db_engine_description,
+db_engine_version_description,
+db_parameter_group_family,
+default_character_set,
+engine,
+engine_version,
+exportable_log_types,
+supported_character_sets,
+supported_timezones,
+supports_global_databases,
+supports_log_exports_to_cloudwatch_logs,
+supports_read_replica,
+valid_upgrade_target
 FROM aws.neptune.db_engine_versions
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdminAccount" /></td>
+    <td><CopyableCode code="admin_account" /></td>
     <td><code>string</code></td>
     <td>The account that is set as the Firewall Manager default administrator. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleStatus" /></td>
+    <td><CopyableCode code="role_status" /></td>
     <td><code>string</code></td>
     <td>The status of the account that you set as the Firewall Manager default administrator. (READY, CREATING, PENDING_DELETION, DELETING, DELETED)</td>
 </tr>
@@ -145,8 +145,8 @@ Returns the Organizations account that is associated with Firewall Manager as th
 
 ```sql
 SELECT
-AdminAccount,
-RoleStatus
+admin_account,
+role_status
 FROM aws.fms.admin_accounts
 WHERE region = '{{ region }}' -- required
 ;

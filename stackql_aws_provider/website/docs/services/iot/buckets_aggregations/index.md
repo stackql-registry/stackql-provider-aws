@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The main part of the response with a list of buckets. Each bucket contains a keyValue and a count. keyValue: The aggregation field value counted for the particular bucket. count: The number of documents that have that value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalCount" /></td>
+    <td><CopyableCode code="total_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of things that fit the query string criteria.</td>
 </tr>
@@ -125,7 +125,7 @@ Aggregates on indexed data with search queries pertaining to particular fields. 
 ```sql
 SELECT
 buckets,
-totalCount
+total_count
 FROM aws.iot.buckets_aggregations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the high availability monitoring test was started. If a test hasn't been performed, the value of this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the high availability monitoring test. If a test hasn't been performed, the value of this field is null. (COMPLETE, FAILED, PENDING)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns information about the most recent high availability monitoring test that
 
 ```sql
 SELECT
-GatewayARN,
-StartTime,
-Status
+gateway_arn,
+start_time,
+status
 FROM aws.storagegateway.availability_monitor_tests
 WHERE region = '{{ region }}' -- required
 ;

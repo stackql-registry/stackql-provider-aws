@@ -50,317 +50,317 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowVersionUpgrade" /></td>
+    <td><CopyableCode code="allow_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value that, if true, indicates that major version upgrades will be applied automatically to the cluster during the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AquaConfiguration" /></td>
+    <td><CopyableCode code="aqua_configuration" /></td>
     <td><code>string</code></td>
     <td>This field is retired. Amazon Redshift automatically determines whether to use AQUA (Advanced Query Accelerator).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomatedSnapshotRetentionPeriod" /></td>
+    <td><CopyableCode code="automated_snapshot_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days that automatic cluster snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone in which the cluster is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneRelocationStatus" /></td>
+    <td><CopyableCode code="availability_zone_relocation_status" /></td>
     <td><code>string</code></td>
     <td>Describes the status of the Availability Zone relocation operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CatalogArn" /></td>
+    <td><CopyableCode code="catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Glue data catalog associated with the cluster enabled with Amazon Redshift federated permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterAvailabilityStatus" /></td>
+    <td><CopyableCode code="cluster_availability_status" /></td>
     <td><code>string</code></td>
     <td>The availability status of the cluster for queries. Possible values are the following: Available - The cluster is available for queries. Unavailable - The cluster is not available for queries. Maintenance - The cluster is intermittently available for queries due to maintenance activities. Modifying - The cluster is intermittently available for queries due to changes that modify the cluster. Failed - The cluster failed and is not available for queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterNamespaceArn" /></td>
+    <td><CopyableCode code="cluster_namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The namespace Amazon Resource Name (ARN) of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterNodes" /></td>
+    <td><CopyableCode code="cluster_nodes" /></td>
     <td><code>string</code></td>
     <td>The nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterParameterGroups" /></td>
+    <td><CopyableCode code="cluster_parameter_groups" /></td>
     <td><code>string</code></td>
     <td>The list of cluster parameter groups that are associated with this cluster. Each parameter group in the list is returned with its status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterPublicKey" /></td>
+    <td><CopyableCode code="cluster_public_key" /></td>
     <td><code>string</code></td>
     <td>The public key for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterRevisionNumber" /></td>
+    <td><CopyableCode code="cluster_revision_number" /></td>
     <td><code>string</code></td>
     <td>The specific revision number of the database in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSecurityGroups" /></td>
+    <td><CopyableCode code="cluster_security_groups" /></td>
     <td><code>string</code></td>
     <td>A list of cluster security group that are associated with the cluster. Each security group is represented by an element that contains ClusterSecurityGroup.Name and ClusterSecurityGroup.Status subelements. Cluster security groups are used when the cluster is not created in an Amazon Virtual Private Cloud (VPC). Clusters that are created in a VPC use VPC security groups, which are listed by the VpcSecurityGroups parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSnapshotCopyStatus" /></td>
+    <td><CopyableCode code="cluster_snapshot_copy_status" /></td>
     <td><code>string</code></td>
     <td>A value that returns the destination region and retention period that are configured for cross-region snapshot copy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterStatus" /></td>
+    <td><CopyableCode code="cluster_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the cluster. Possible values are the following: available available, prep-for-resize available, resize-cleanup cancelling-resize creating deleting final-snapshot hardware-failure incompatible-hsm incompatible-network incompatible-parameters incompatible-restore modifying paused rebooting renaming resizing rotating-keys storage-full updating-hsm</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSubnetGroupName" /></td>
+    <td><CopyableCode code="cluster_subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the subnet group that is associated with the cluster. This parameter is valid only when the cluster is in a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterVersion" /></td>
+    <td><CopyableCode code="cluster_version" /></td>
     <td><code>string</code></td>
     <td>The version ID of the Amazon Redshift engine that is running on the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDomainCertificateArn" /></td>
+    <td><CopyableCode code="custom_domain_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The certificate Amazon Resource Name (ARN) for the custom domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDomainCertificateExpiryDate" /></td>
+    <td><CopyableCode code="custom_domain_certificate_expiry_date" /></td>
     <td><code>string</code></td>
     <td>The expiration date for the certificate associated with the custom domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name associated with the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBName" /></td>
+    <td><CopyableCode code="db_name" /></td>
     <td><code>string</code></td>
     <td>The name of the initial database that was created when the cluster was created. This same name is returned for the life of the cluster. If an initial database was not specified, a database named devdev was created by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTransferProgress" /></td>
+    <td><CopyableCode code="data_transfer_progress" /></td>
     <td><code>string</code></td>
     <td>Describes the status of a cluster while it is in the process of resizing with an incremental resize.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultIamRoleArn" /></td>
+    <td><CopyableCode code="default_iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the IAM role set as default for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeferredMaintenanceWindows" /></td>
+    <td><CopyableCode code="deferred_maintenance_windows" /></td>
     <td><code>string</code></td>
     <td>Describes a group of DeferredMaintenanceWindow objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticIpStatus" /></td>
+    <td><CopyableCode code="elastic_ip_status" /></td>
     <td><code>string</code></td>
     <td>The status of the elastic IP (EIP) address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticResizeNumberOfNodeOptions" /></td>
+    <td><CopyableCode code="elastic_resize_number_of_node_options" /></td>
     <td><code>string</code></td>
     <td>The number of nodes that you can resize the cluster to with the elastic resize method.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value that, if true, indicates that data in the cluster is encrypted at rest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The connection endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnhancedVpcRouting" /></td>
+    <td><CopyableCode code="enhanced_vpc_routing" /></td>
     <td><code>boolean</code></td>
     <td>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide. If this option is true, enhanced VPC routing is enabled. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpectedNextSnapshotScheduleTime" /></td>
+    <td><CopyableCode code="expected_next_snapshot_schedule_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot schedule and backups enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpectedNextSnapshotScheduleTimeStatus" /></td>
+    <td><CopyableCode code="expected_next_snapshot_schedule_time_status" /></td>
     <td><code>string</code></td>
     <td>The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled. Possible values are the following: OnTrack - The next snapshot is expected to be taken on time. Pending - The next snapshot is pending to be taken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtraComputeForAutomaticOptimization" /></td>
+    <td><CopyableCode code="extra_compute_for_automatic_optimization" /></td>
     <td><code>string</code></td>
     <td>A boolean value that, if true, indicates that the cluster allocates additional compute resources to run automatic optimization operations. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmStatus" /></td>
+    <td><CopyableCode code="hsm_status" /></td>
     <td><code>string</code></td>
     <td>A value that reports whether the Amazon Redshift cluster has finished applying any hardware security module (HSM) settings changes specified in a modify cluster command. Values: active, applying</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoles" /></td>
+    <td><CopyableCode code="iam_roles" /></td>
     <td><code>string</code></td>
     <td>A list of Identity and Access Management (IAM) roles that can be used by the cluster to access other Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type for the cluster. Possible values are ipv4 and dualstack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Key Management Service (KMS) key ID of the encryption key used to encrypt data in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LakehouseRegistrationStatus" /></td>
+    <td><CopyableCode code="lakehouse_registration_status" /></td>
     <td><code>string</code></td>
     <td>The status of the lakehouse registration for the cluster. Indicates whether the cluster is successfully registered with Amazon Redshift federated permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceTrackName" /></td>
+    <td><CopyableCode code="maintenance_track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the maintenance track for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManualSnapshotRetentionPeriod" /></td>
+    <td><CopyableCode code="manual_snapshot_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. The value must be either -1 or an integer between 1 and 3,653.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterPasswordSecretArn" /></td>
+    <td><CopyableCode code="master_password_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the cluster's admin user credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterPasswordSecretKmsKeyId" /></td>
+    <td><CopyableCode code="master_password_secret_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key used to encrypt and store the cluster's admin credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The admin user name for the cluster. This name is used to connect to the database that is specified in the DBName parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifyStatus" /></td>
+    <td><CopyableCode code="modify_status" /></td>
     <td><code>string</code></td>
     <td>The status of a modify operation, if any, initiated for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZ" /></td>
+    <td><CopyableCode code="multi_az" /></td>
     <td><code>string</code></td>
     <td>A boolean value that, if true, indicates that the cluster is deployed in two Availability Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZSecondary" /></td>
+    <td><CopyableCode code="multi_az_secondary" /></td>
     <td><code>string</code></td>
     <td>The secondary compute unit of a cluster, if Multi-AZ deployment is turned on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMaintenanceWindowStartTime" /></td>
+    <td><CopyableCode code="next_maintenance_window_start_time" /></td>
     <td><code>string</code></td>
     <td>The date and time in UTC when system maintenance can begin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type for the nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfNodes" /></td>
+    <td><CopyableCode code="number_of_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of compute nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingActions" /></td>
+    <td><CopyableCode code="pending_actions" /></td>
     <td><code>string</code></td>
     <td>Cluster operations that are waiting to be started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>A value that, if present, indicates that changes to the cluster are pending. Specific pending changes are identified by subelements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The weekly time range, in Universal Coordinated Time (UTC), during which system maintenance can occur.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value that, if true, indicates that the cluster can be accessed from a public network. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodeExchangeStatus" /></td>
+    <td><CopyableCode code="reserved_node_exchange_status" /></td>
     <td><code>string</code></td>
     <td>The status of the reserved-node exchange request. Statuses include in-progress and requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResizeInfo" /></td>
+    <td><CopyableCode code="resize_info" /></td>
     <td><code>string</code></td>
     <td>Returns the following: AllowCancelResize: a boolean value indicating if the resize operation can be cancelled. ResizeType: Returns ClassicResize</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreStatus" /></td>
+    <td><CopyableCode code="restore_status" /></td>
     <td><code>string</code></td>
     <td>A value that describes the status of a cluster restore action. This parameter returns null if the cluster was not created by restoring a snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotScheduleIdentifier" /></td>
+    <td><CopyableCode code="snapshot_schedule_identifier" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the cluster snapshot schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotScheduleState" /></td>
+    <td><CopyableCode code="snapshot_schedule_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the cluster snapshot schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalStorageCapacityInMegaBytes" /></td>
+    <td><CopyableCode code="total_storage_capacity_in_mega_bytes" /></td>
     <td><code>integer</code></td>
     <td>The total storage capacity of the cluster in megabytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the VPC the cluster is in, if the cluster is in a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>string</code></td>
     <td>A list of Amazon Virtual Private Cloud (Amazon VPC) security groups that are associated with the cluster. This parameter is returned only if the cluster is in a VPC.</td>
 </tr>
@@ -1028,69 +1028,69 @@ Returns properties of provisioned clusters including general cluster properties,
 
 ```sql
 SELECT
-AllowVersionUpgrade,
-AquaConfiguration,
-AutomatedSnapshotRetentionPeriod,
-AvailabilityZone,
-AvailabilityZoneRelocationStatus,
-CatalogArn,
-ClusterAvailabilityStatus,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterNamespaceArn,
-ClusterNodes,
-ClusterParameterGroups,
-ClusterPublicKey,
-ClusterRevisionNumber,
-ClusterSecurityGroups,
-ClusterSnapshotCopyStatus,
-ClusterStatus,
-ClusterSubnetGroupName,
-ClusterVersion,
-CustomDomainCertificateArn,
-CustomDomainCertificateExpiryDate,
-CustomDomainName,
-DBName,
-DataTransferProgress,
-DefaultIamRoleArn,
-DeferredMaintenanceWindows,
-ElasticIpStatus,
-ElasticResizeNumberOfNodeOptions,
-Encrypted,
-Endpoint,
-EnhancedVpcRouting,
-ExpectedNextSnapshotScheduleTime,
-ExpectedNextSnapshotScheduleTimeStatus,
-ExtraComputeForAutomaticOptimization,
-HsmStatus,
-IamRoles,
-IpAddressType,
-KmsKeyId,
-LakehouseRegistrationStatus,
-MaintenanceTrackName,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-ModifyStatus,
-MultiAZ,
-MultiAZSecondary,
-NextMaintenanceWindowStartTime,
-NodeType,
-NumberOfNodes,
-PendingActions,
-PendingModifiedValues,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-ReservedNodeExchangeStatus,
-ResizeInfo,
-RestoreStatus,
-SnapshotScheduleIdentifier,
-SnapshotScheduleState,
-Tags,
-TotalStorageCapacityInMegaBytes,
-VpcId,
-VpcSecurityGroups
+allow_version_upgrade,
+aqua_configuration,
+automated_snapshot_retention_period,
+availability_zone,
+availability_zone_relocation_status,
+catalog_arn,
+cluster_availability_status,
+cluster_create_time,
+cluster_identifier,
+cluster_namespace_arn,
+cluster_nodes,
+cluster_parameter_groups,
+cluster_public_key,
+cluster_revision_number,
+cluster_security_groups,
+cluster_snapshot_copy_status,
+cluster_status,
+cluster_subnet_group_name,
+cluster_version,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_date,
+custom_domain_name,
+db_name,
+data_transfer_progress,
+default_iam_role_arn,
+deferred_maintenance_windows,
+elastic_ip_status,
+elastic_resize_number_of_node_options,
+encrypted,
+endpoint,
+enhanced_vpc_routing,
+expected_next_snapshot_schedule_time,
+expected_next_snapshot_schedule_time_status,
+extra_compute_for_automatic_optimization,
+hsm_status,
+iam_roles,
+ip_address_type,
+kms_key_id,
+lakehouse_registration_status,
+maintenance_track_name,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+modify_status,
+multi_az,
+multi_az_secondary,
+next_maintenance_window_start_time,
+node_type,
+number_of_nodes,
+pending_actions,
+pending_modified_values,
+preferred_maintenance_window,
+publicly_accessible,
+reserved_node_exchange_status,
+resize_info,
+restore_status,
+snapshot_schedule_identifier,
+snapshot_schedule_state,
+tags,
+total_storage_capacity_in_mega_bytes,
+vpc_id,
+vpc_security_groups
 FROM aws.redshift.clusters
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'
@@ -1206,69 +1206,69 @@ SELECT
 '{{ CatalogName }}',
 '{{ ExtraComputeForAutomaticOptimization }}'
 RETURNING
-AllowVersionUpgrade,
-AquaConfiguration,
-AutomatedSnapshotRetentionPeriod,
-AvailabilityZone,
-AvailabilityZoneRelocationStatus,
-CatalogArn,
-ClusterAvailabilityStatus,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterNamespaceArn,
-ClusterNodes,
-ClusterParameterGroups,
-ClusterPublicKey,
-ClusterRevisionNumber,
-ClusterSecurityGroups,
-ClusterSnapshotCopyStatus,
-ClusterStatus,
-ClusterSubnetGroupName,
-ClusterVersion,
-CustomDomainCertificateArn,
-CustomDomainCertificateExpiryDate,
-CustomDomainName,
-DBName,
-DataTransferProgress,
-DefaultIamRoleArn,
-DeferredMaintenanceWindows,
-ElasticIpStatus,
-ElasticResizeNumberOfNodeOptions,
-Encrypted,
-Endpoint,
-EnhancedVpcRouting,
-ExpectedNextSnapshotScheduleTime,
-ExpectedNextSnapshotScheduleTimeStatus,
-ExtraComputeForAutomaticOptimization,
-HsmStatus,
-IamRoles,
-IpAddressType,
-KmsKeyId,
-LakehouseRegistrationStatus,
-MaintenanceTrackName,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-ModifyStatus,
-MultiAZ,
-MultiAZSecondary,
-NextMaintenanceWindowStartTime,
-NodeType,
-NumberOfNodes,
-PendingActions,
-PendingModifiedValues,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-ReservedNodeExchangeStatus,
-ResizeInfo,
-RestoreStatus,
-SnapshotScheduleIdentifier,
-SnapshotScheduleState,
-Tags,
-TotalStorageCapacityInMegaBytes,
-VpcId,
-VpcSecurityGroups
+allow_version_upgrade,
+aqua_configuration,
+automated_snapshot_retention_period,
+availability_zone,
+availability_zone_relocation_status,
+catalog_arn,
+cluster_availability_status,
+cluster_create_time,
+cluster_identifier,
+cluster_namespace_arn,
+cluster_nodes,
+cluster_parameter_groups,
+cluster_public_key,
+cluster_revision_number,
+cluster_security_groups,
+cluster_snapshot_copy_status,
+cluster_status,
+cluster_subnet_group_name,
+cluster_version,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_date,
+custom_domain_name,
+db_name,
+data_transfer_progress,
+default_iam_role_arn,
+deferred_maintenance_windows,
+elastic_ip_status,
+elastic_resize_number_of_node_options,
+encrypted,
+endpoint,
+enhanced_vpc_routing,
+expected_next_snapshot_schedule_time,
+expected_next_snapshot_schedule_time_status,
+extra_compute_for_automatic_optimization,
+hsm_status,
+iam_roles,
+ip_address_type,
+kms_key_id,
+lakehouse_registration_status,
+maintenance_track_name,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+modify_status,
+multi_az,
+multi_az_secondary,
+next_maintenance_window_start_time,
+node_type,
+number_of_nodes,
+pending_actions,
+pending_modified_values,
+preferred_maintenance_window,
+publicly_accessible,
+reserved_node_exchange_status,
+resize_info,
+restore_status,
+snapshot_schedule_identifier,
+snapshot_schedule_state,
+tags,
+total_storage_capacity_in_mega_bytes,
+vpc_id,
+vpc_security_groups
 ;
 ```
 </TabItem>
@@ -1470,69 +1470,69 @@ AND RetentionPeriod = '{{ RetentionPeriod }}' --required
 AND region = '{{ region }}' --required
 AND Manual = {{ Manual}}
 RETURNING
-AllowVersionUpgrade,
-AquaConfiguration,
-AutomatedSnapshotRetentionPeriod,
-AvailabilityZone,
-AvailabilityZoneRelocationStatus,
-CatalogArn,
-ClusterAvailabilityStatus,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterNamespaceArn,
-ClusterNodes,
-ClusterParameterGroups,
-ClusterPublicKey,
-ClusterRevisionNumber,
-ClusterSecurityGroups,
-ClusterSnapshotCopyStatus,
-ClusterStatus,
-ClusterSubnetGroupName,
-ClusterVersion,
-CustomDomainCertificateArn,
-CustomDomainCertificateExpiryDate,
-CustomDomainName,
-DBName,
-DataTransferProgress,
-DefaultIamRoleArn,
-DeferredMaintenanceWindows,
-ElasticIpStatus,
-ElasticResizeNumberOfNodeOptions,
-Encrypted,
-Endpoint,
-EnhancedVpcRouting,
-ExpectedNextSnapshotScheduleTime,
-ExpectedNextSnapshotScheduleTimeStatus,
-ExtraComputeForAutomaticOptimization,
-HsmStatus,
-IamRoles,
-IpAddressType,
-KmsKeyId,
-LakehouseRegistrationStatus,
-MaintenanceTrackName,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-ModifyStatus,
-MultiAZ,
-MultiAZSecondary,
-NextMaintenanceWindowStartTime,
-NodeType,
-NumberOfNodes,
-PendingActions,
-PendingModifiedValues,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-ReservedNodeExchangeStatus,
-ResizeInfo,
-RestoreStatus,
-SnapshotScheduleIdentifier,
-SnapshotScheduleState,
-Tags,
-TotalStorageCapacityInMegaBytes,
-VpcId,
-VpcSecurityGroups;
+allow_version_upgrade,
+aqua_configuration,
+automated_snapshot_retention_period,
+availability_zone,
+availability_zone_relocation_status,
+catalog_arn,
+cluster_availability_status,
+cluster_create_time,
+cluster_identifier,
+cluster_namespace_arn,
+cluster_nodes,
+cluster_parameter_groups,
+cluster_public_key,
+cluster_revision_number,
+cluster_security_groups,
+cluster_snapshot_copy_status,
+cluster_status,
+cluster_subnet_group_name,
+cluster_version,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_date,
+custom_domain_name,
+db_name,
+data_transfer_progress,
+default_iam_role_arn,
+deferred_maintenance_windows,
+elastic_ip_status,
+elastic_resize_number_of_node_options,
+encrypted,
+endpoint,
+enhanced_vpc_routing,
+expected_next_snapshot_schedule_time,
+expected_next_snapshot_schedule_time_status,
+extra_compute_for_automatic_optimization,
+hsm_status,
+iam_roles,
+ip_address_type,
+kms_key_id,
+lakehouse_registration_status,
+maintenance_track_name,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+modify_status,
+multi_az,
+multi_az_secondary,
+next_maintenance_window_start_time,
+node_type,
+number_of_nodes,
+pending_actions,
+pending_modified_values,
+preferred_maintenance_window,
+publicly_accessible,
+reserved_node_exchange_status,
+resize_info,
+restore_status,
+snapshot_schedule_identifier,
+snapshot_schedule_state,
+tags,
+total_storage_capacity_in_mega_bytes,
+vpc_id,
+vpc_security_groups;
 ```
 </TabItem>
 <TabItem value="modify_cluster">
@@ -1576,69 +1576,69 @@ AND IpAddressType = '{{ IpAddressType}}'
 AND MultiAZ = {{ MultiAZ}}
 AND ExtraComputeForAutomaticOptimization = {{ ExtraComputeForAutomaticOptimization}}
 RETURNING
-AllowVersionUpgrade,
-AquaConfiguration,
-AutomatedSnapshotRetentionPeriod,
-AvailabilityZone,
-AvailabilityZoneRelocationStatus,
-CatalogArn,
-ClusterAvailabilityStatus,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterNamespaceArn,
-ClusterNodes,
-ClusterParameterGroups,
-ClusterPublicKey,
-ClusterRevisionNumber,
-ClusterSecurityGroups,
-ClusterSnapshotCopyStatus,
-ClusterStatus,
-ClusterSubnetGroupName,
-ClusterVersion,
-CustomDomainCertificateArn,
-CustomDomainCertificateExpiryDate,
-CustomDomainName,
-DBName,
-DataTransferProgress,
-DefaultIamRoleArn,
-DeferredMaintenanceWindows,
-ElasticIpStatus,
-ElasticResizeNumberOfNodeOptions,
-Encrypted,
-Endpoint,
-EnhancedVpcRouting,
-ExpectedNextSnapshotScheduleTime,
-ExpectedNextSnapshotScheduleTimeStatus,
-ExtraComputeForAutomaticOptimization,
-HsmStatus,
-IamRoles,
-IpAddressType,
-KmsKeyId,
-LakehouseRegistrationStatus,
-MaintenanceTrackName,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-ModifyStatus,
-MultiAZ,
-MultiAZSecondary,
-NextMaintenanceWindowStartTime,
-NodeType,
-NumberOfNodes,
-PendingActions,
-PendingModifiedValues,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-ReservedNodeExchangeStatus,
-ResizeInfo,
-RestoreStatus,
-SnapshotScheduleIdentifier,
-SnapshotScheduleState,
-Tags,
-TotalStorageCapacityInMegaBytes,
-VpcId,
-VpcSecurityGroups;
+allow_version_upgrade,
+aqua_configuration,
+automated_snapshot_retention_period,
+availability_zone,
+availability_zone_relocation_status,
+catalog_arn,
+cluster_availability_status,
+cluster_create_time,
+cluster_identifier,
+cluster_namespace_arn,
+cluster_nodes,
+cluster_parameter_groups,
+cluster_public_key,
+cluster_revision_number,
+cluster_security_groups,
+cluster_snapshot_copy_status,
+cluster_status,
+cluster_subnet_group_name,
+cluster_version,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_date,
+custom_domain_name,
+db_name,
+data_transfer_progress,
+default_iam_role_arn,
+deferred_maintenance_windows,
+elastic_ip_status,
+elastic_resize_number_of_node_options,
+encrypted,
+endpoint,
+enhanced_vpc_routing,
+expected_next_snapshot_schedule_time,
+expected_next_snapshot_schedule_time_status,
+extra_compute_for_automatic_optimization,
+hsm_status,
+iam_roles,
+ip_address_type,
+kms_key_id,
+lakehouse_registration_status,
+maintenance_track_name,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+modify_status,
+multi_az,
+multi_az_secondary,
+next_maintenance_window_start_time,
+node_type,
+number_of_nodes,
+pending_actions,
+pending_modified_values,
+preferred_maintenance_window,
+publicly_accessible,
+reserved_node_exchange_status,
+resize_info,
+restore_status,
+snapshot_schedule_identifier,
+snapshot_schedule_state,
+tags,
+total_storage_capacity_in_mega_bytes,
+vpc_id,
+vpc_security_groups;
 ```
 </TabItem>
 </Tabs>

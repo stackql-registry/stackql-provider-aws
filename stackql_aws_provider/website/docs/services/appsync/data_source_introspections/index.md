@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="introspectionId" /></td>
+    <td><CopyableCode code="introspection_id" /></td>
     <td><code>string</code></td>
     <td>The introspection ID. Each introspection contains a unique ID that can be used to reference the instrospection record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="introspectionResult" /></td>
+    <td><CopyableCode code="introspection_result" /></td>
     <td><code>object</code></td>
     <td>The DataSourceIntrospectionResult object data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="introspectionStatus" /></td>
+    <td><CopyableCode code="introspection_status" /></td>
     <td><code>string</code></td>
     <td>The status of the introspection during retrieval. By default, when a new instrospection is being retrieved, the status will be set to PROCESSING. Once the operation has been completed, the status will change to SUCCESS or FAILED depending on how the data was parsed. A FAILED operation will return an error and its details as an introspectionStatusDetail. (PROCESSING, FAILED, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="introspectionStatusDetail" /></td>
+    <td><CopyableCode code="introspection_status_detail" /></td>
     <td><code>string</code></td>
     <td>The error detail field. When a FAILED introspectionStatus is returned, the introspectionStatusDetail will also return the exact error that was generated during the operation.</td>
 </tr>
@@ -154,10 +154,10 @@ Retrieves the record of an existing introspection. If the retrieval is successfu
 
 ```sql
 SELECT
-introspectionId,
-introspectionResult,
-introspectionStatus,
-introspectionStatusDetail
+introspection_id,
+introspection_result,
+introspection_status,
+introspection_status_detail
 FROM aws.appsync.data_source_introspections
 WHERE introspection_id = '{{ introspection_id }}' -- required
 AND region = '{{ region }}' -- required

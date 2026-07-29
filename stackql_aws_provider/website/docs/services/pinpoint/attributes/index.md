@@ -113,7 +113,7 @@ AND `attribute-type` = '{{ attribute-type }}' --required
 AND region = '{{ region }}' --required
 AND UpdateAttributesRequest = '{{ UpdateAttributesRequest }}' --required
 RETURNING
-AttributesResource;
+attributes_resource;
 ```
 </TabItem>
 </Tabs>

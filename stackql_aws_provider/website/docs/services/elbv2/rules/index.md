@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>string</code></td>
     <td>The actions. Each rule must include exactly one of the following types of actions: forward, redirect, or fixed-response, and it must be the last action to be performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Conditions" /></td>
+    <td><CopyableCode code="conditions" /></td>
     <td><code>string</code></td>
     <td>The conditions. Each rule can include zero or one of the following conditions: http-request-method, host-header, path-pattern, and source-ip, and zero or more of the following conditions: http-header and query-string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>string</code></td>
     <td>The priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Transforms" /></td>
+    <td><CopyableCode code="transforms" /></td>
     <td><code>string</code></td>
     <td>The transforms for the rule.</td>
 </tr>
@@ -237,12 +237,12 @@ Describes the specified rules or the rules for the specified listener. You must 
 
 ```sql
 SELECT
-Actions,
-Conditions,
-IsDefault,
-Priority,
-RuleArn,
-Transforms
+actions,
+conditions,
+is_default,
+priority,
+rule_arn,
+transforms
 FROM aws.elbv2.rules
 WHERE region = '{{ region }}' -- required
 AND ListenerArn = '{{ ListenerArn }}'

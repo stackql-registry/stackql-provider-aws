@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Insights" /></td>
+    <td><CopyableCode code="insights" /></td>
     <td><code>array</code></td>
     <td>The list of insights returned for the specified entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists insights for an Amazon OpenSearch Service domain or Amazon Web Services ac
 
 ```sql
 SELECT
-Insights,
-NextToken
+insights,
+next_token
 FROM aws.opensearch.insights
 WHERE region = '{{ region }}' -- required
 ;

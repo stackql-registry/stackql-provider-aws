@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientSecrets" /></td>
+    <td><CopyableCode code="client_secrets" /></td>
     <td><code>array</code></td>
     <td>A list of client secret descriptors containing the identifier and creation date for each secret. For security reasons, the response never reveals the actual secret value in ClientSecretValue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The identifier that Amazon Cognito returned with the previous request to this operation. When you include a pagination token in your request, Amazon Cognito returns the next set of items in the list. By use of this token, you can paginate through the full list of items. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Lists all client secrets associated with a user pool app client. Returns metadat
 
 ```sql
 SELECT
-ClientSecrets,
-NextToken
+client_secrets,
+next_token
 FROM aws.cognito_idp.user_pool_client_secrets
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,7 +171,7 @@ region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 AND ClientId = '{{ ClientId }}' --required
 RETURNING
-ClientSecretDescriptor;
+client_secret_descriptor;
 ```
 </TabItem>
 </Tabs>

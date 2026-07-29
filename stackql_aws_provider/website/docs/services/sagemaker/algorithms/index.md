@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlgorithmArn" /></td>
+    <td><CopyableCode code="algorithm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the algorithm. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:algorithm/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlgorithmDescription" /></td>
+    <td><CopyableCode code="algorithm_description" /></td>
     <td><code>string</code></td>
     <td>A brief summary about the algorithm. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlgorithmName" /></td>
+    <td><CopyableCode code="algorithm_name" /></td>
     <td><code>string</code></td>
     <td>The name of the algorithm being described. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlgorithmStatus" /></td>
+    <td><CopyableCode code="algorithm_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the algorithm. (Pending, InProgress, Completed, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlgorithmStatusDetails" /></td>
+    <td><CopyableCode code="algorithm_status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the current status of the algorithm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertifyForMarketplace" /></td>
+    <td><CopyableCode code="certify_for_marketplace" /></td>
     <td><code>boolean</code></td>
     <td>Whether the algorithm is certified to be listed in Amazon Web Services Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp specifying when the algorithm was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceSpecification" /></td>
+    <td><CopyableCode code="inference_specification" /></td>
     <td><code>object</code></td>
     <td>Details about inference jobs that the algorithm runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductId" /></td>
+    <td><CopyableCode code="product_id" /></td>
     <td><code>string</code></td>
     <td>The product identifier of the algorithm. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingSpecification" /></td>
+    <td><CopyableCode code="training_specification" /></td>
     <td><code>object</code></td>
     <td>Details about training jobs run by this algorithm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationSpecification" /></td>
+    <td><CopyableCode code="validation_specification" /></td>
     <td><code>object</code></td>
     <td>Details about configurations for one or more training jobs that SageMaker runs to test the algorithm.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlgorithmArn" /></td>
+    <td><CopyableCode code="algorithm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the algorithm. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:algorithm/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlgorithmDescription" /></td>
+    <td><CopyableCode code="algorithm_description" /></td>
     <td><code>string</code></td>
     <td>A brief description of the algorithm. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlgorithmName" /></td>
+    <td><CopyableCode code="algorithm_name" /></td>
     <td><code>string</code></td>
     <td>The name of the algorithm that is described by the summary. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlgorithmStatus" /></td>
+    <td><CopyableCode code="algorithm_status" /></td>
     <td><code>string</code></td>
     <td>The overall status of the algorithm. (Pending, InProgress, Completed, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the algorithm was created.</td>
 </tr>
@@ -231,17 +231,17 @@ Returns a description of the specified algorithm that is in your account.
 
 ```sql
 SELECT
-AlgorithmArn,
-AlgorithmDescription,
-AlgorithmName,
-AlgorithmStatus,
-AlgorithmStatusDetails,
-CertifyForMarketplace,
-CreationTime,
-InferenceSpecification,
-ProductId,
-TrainingSpecification,
-ValidationSpecification
+algorithm_arn,
+algorithm_description,
+algorithm_name,
+algorithm_status,
+algorithm_status_details,
+certify_for_marketplace,
+creation_time,
+inference_specification,
+product_id,
+training_specification,
+validation_specification
 FROM aws.sagemaker.algorithms
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,11 +253,11 @@ Lists the machine learning algorithms that have been created.
 
 ```sql
 SELECT
-AlgorithmArn,
-AlgorithmDescription,
-AlgorithmName,
-AlgorithmStatus,
-CreationTime
+algorithm_arn,
+algorithm_description,
+algorithm_name,
+algorithm_status,
+creation_time
 FROM aws.sagemaker.algorithms
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,7 +300,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AlgorithmArn
+algorithm_arn
 ;
 ```
 </TabItem>

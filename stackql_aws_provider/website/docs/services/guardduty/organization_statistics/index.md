@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OrganizationStatistics" /></td>
+    <td><CopyableCode code="organization_statistics" /></td>
     <td><code>object</code></td>
     <td>Information about the GuardDuty coverage statistics for members in your Amazon Web Services organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the organization statistics was last updated. This is in UTC format.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves how many active member accounts have each feature enabled within Guard
 
 ```sql
 SELECT
-OrganizationStatistics,
-UpdatedAt
+organization_statistics,
+updated_at
 FROM aws.guardduty.organization_statistics
 WHERE region = '{{ region }}' -- required
 ;

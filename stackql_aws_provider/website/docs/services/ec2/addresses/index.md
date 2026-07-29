@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocationId" /></td>
+    <td><CopyableCode code="allocation_id" /></td>
     <td><code>string</code></td>
     <td>The ID representing the allocation of the address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID representing the association of the address with an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CarrierIp" /></td>
+    <td><CopyableCode code="carrier_ip" /></td>
     <td><code>string</code></td>
     <td>The carrier IP address associated. This option is only available for network interfaces which reside in a subnet in a Wavelength Zone (for example an EC2 instance).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOwnedIp" /></td>
+    <td><CopyableCode code="customer_owned_ip" /></td>
     <td><code>string</code></td>
     <td>The customer-owned IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOwnedIpv4Pool" /></td>
+    <td><CopyableCode code="customer_owned_ipv_4_pool" /></td>
     <td><code>string</code></td>
     <td>The ID of the customer-owned address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The network (vpc).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance that the address is associated with (if any).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkBorderGroup" /></td>
+    <td><CopyableCode code="network_border_group" /></td>
     <td><code>string</code></td>
     <td>The name of the unique set of Availability Zones, Local Zones, or Wavelength Zones from which Amazon Web Services advertises IP addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceOwnerId" /></td>
+    <td><CopyableCode code="network_interface_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateIpAddress" /></td>
+    <td><CopyableCode code="private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The private IP address associated with the Elastic IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIp" /></td>
+    <td><CopyableCode code="public_ip" /></td>
     <td><code>string</code></td>
     <td>The Elastic IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIpv4Pool" /></td>
+    <td><CopyableCode code="public_ipv_4_pool" /></td>
     <td><code>string</code></td>
     <td>The ID of an address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceManaged" /></td>
+    <td><CopyableCode code="service_managed" /></td>
     <td><code>string</code></td>
     <td>The service that manages the elastic IP address. The only option supported today is alb.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet where the IP address is allocated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the Elastic IP address.</td>
 </tr>
@@ -292,22 +292,22 @@ Describes the specified Elastic IP addresses or all of your Elastic IP addresses
 
 ```sql
 SELECT
-AllocationId,
-AssociationId,
-CarrierIp,
-CustomerOwnedIp,
-CustomerOwnedIpv4Pool,
-Domain,
-InstanceId,
-NetworkBorderGroup,
-NetworkInterfaceId,
-NetworkInterfaceOwnerId,
-PrivateIpAddress,
-PublicIp,
-PublicIpv4Pool,
-ServiceManaged,
-SubnetId,
-Tags
+allocation_id,
+association_id,
+carrier_ip,
+customer_owned_ip,
+customer_owned_ipv_4_pool,
+domain,
+instance_id,
+network_border_group,
+network_interface_id,
+network_interface_owner_id,
+private_ip_address,
+public_ip,
+public_ipv_4_pool,
+service_managed,
+subnet_id,
+tags
 FROM aws.ec2.addresses
 WHERE region = '{{ region }}' -- required
 AND PublicIp = '{{ PublicIp }}'
@@ -344,9 +344,9 @@ AND Ipv6Prefix = '{{ Ipv6Prefix}}'
 AND Ipv6Addresses = '{{ Ipv6Addresses}}'
 AND Ipv6AddressCount = '{{ Ipv6AddressCount}}'
 RETURNING
-AssignedIpv6Addresses,
-AssignedIpv6Prefixes,
-NetworkInterfaceId;
+assigned_ipv_6_addresses,
+assigned_ipv_6_prefixes,
+network_interface_id;
 ```
 </TabItem>
 </Tabs>

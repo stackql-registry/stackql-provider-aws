@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether more distribution IDs remain to be listed. If your results were truncated, you can make a subsequent request using the Marker request field to retrieve more distribution IDs in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>Contains the distribution IDs in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>The value provided in the Marker request field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of distribution IDs requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>Contains the value that you should use in the Marker field of a subsequent request to continue listing distribution IDs where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The total number of distribution IDs returned in the response.</td>
 </tr>
@@ -159,12 +159,12 @@ List CloudFront distributions by their VPC origin ID.
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.distributions_by_vpc_origin_ids
 WHERE vpc_origin_id = '{{ vpc_origin_id }}' -- required
 AND region = '{{ region }}' -- required

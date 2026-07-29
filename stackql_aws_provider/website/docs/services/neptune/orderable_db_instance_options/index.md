@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>A list of Availability Zones for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceClass" /></td>
+    <td><CopyableCode code="db_instance_class" /></td>
     <td><code>string</code></td>
     <td>The DB instance class for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The engine type of a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The engine version of a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The license model for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxIopsPerDbInstance" /></td>
+    <td><CopyableCode code="max_iops_per_db_instance" /></td>
     <td><code>integer</code></td>
     <td>Maximum total provisioned IOPS for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxIopsPerGib" /></td>
+    <td><CopyableCode code="max_iops_per_gib" /></td>
     <td><code>number</code></td>
     <td>Maximum provisioned IOPS per GiB for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxStorageSize" /></td>
+    <td><CopyableCode code="max_storage_size" /></td>
     <td><code>integer</code></td>
     <td>Maximum storage size for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinIopsPerDbInstance" /></td>
+    <td><CopyableCode code="min_iops_per_db_instance" /></td>
     <td><code>integer</code></td>
     <td>Minimum total provisioned IOPS for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinIopsPerGib" /></td>
+    <td><CopyableCode code="min_iops_per_gib" /></td>
     <td><code>number</code></td>
     <td>Minimum provisioned IOPS per GiB for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinStorageSize" /></td>
+    <td><CopyableCode code="min_storage_size" /></td>
     <td><code>integer</code></td>
     <td>Minimum storage size for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZCapable" /></td>
+    <td><CopyableCode code="multi_az_capable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance is Multi-AZ capable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaCapable" /></td>
+    <td><CopyableCode code="read_replica_capable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance can have a Read Replica.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>Not applicable. In Neptune the storage type is managed at the DB Cluster level.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsEnhancedMonitoring" /></td>
+    <td><CopyableCode code="supports_enhanced_monitoring" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports Enhanced Monitoring at intervals from 1 to 60 seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsGlobalDatabases" /></td>
+    <td><CopyableCode code="supports_global_databases" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether you can use Neptune global databases with a specific combination of other DB engine attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsIAMDatabaseAuthentication" /></td>
+    <td><CopyableCode code="supports_iam_database_authentication" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports IAM database authentication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsIops" /></td>
+    <td><CopyableCode code="supports_iops" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports provisioned IOPS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsPerformanceInsights" /></td>
+    <td><CopyableCode code="supports_performance_insights" /></td>
     <td><code>boolean</code></td>
     <td>(Not supported by Neptune)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsStorageEncryption" /></td>
+    <td><CopyableCode code="supports_storage_encryption" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports encrypted storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vpc" /></td>
+    <td><CopyableCode code="vpc" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance is in a VPC.</td>
 </tr>
@@ -259,27 +259,27 @@ Returns a list of orderable DB instance options for the specified engine.
 
 ```sql
 SELECT
-AvailabilityZones,
-DBInstanceClass,
-Engine,
-EngineVersion,
-LicenseModel,
-MaxIopsPerDbInstance,
-MaxIopsPerGib,
-MaxStorageSize,
-MinIopsPerDbInstance,
-MinIopsPerGib,
-MinStorageSize,
-MultiAZCapable,
-ReadReplicaCapable,
-StorageType,
-SupportsEnhancedMonitoring,
-SupportsGlobalDatabases,
-SupportsIAMDatabaseAuthentication,
-SupportsIops,
-SupportsPerformanceInsights,
-SupportsStorageEncryption,
-Vpc
+availability_zones,
+db_instance_class,
+engine,
+engine_version,
+license_model,
+max_iops_per_db_instance,
+max_iops_per_gib,
+max_storage_size,
+min_iops_per_db_instance,
+min_iops_per_gib,
+min_storage_size,
+multi_az_capable,
+read_replica_capable,
+storage_type,
+supports_enhanced_monitoring,
+supports_global_databases,
+supports_iam_database_authentication,
+supports_iops,
+supports_performance_insights,
+supports_storage_encryption,
+vpc
 FROM aws.neptune.orderable_db_instance_options
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

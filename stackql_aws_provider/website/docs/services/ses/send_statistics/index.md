@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SendDataPoints" /></td>
+    <td><CopyableCode code="send_data_points" /></td>
     <td><code>string</code></td>
     <td>A list of data points, each of which represents 15 minutes of activity.</td>
 </tr>
@@ -119,7 +119,7 @@ Provides sending statistics for the current Amazon Web Services Region. The resu
 
 ```sql
 SELECT
-SendDataPoints
+send_data_points
 FROM aws.ses.send_statistics
 WHERE region = '{{ region }}' -- required
 ;

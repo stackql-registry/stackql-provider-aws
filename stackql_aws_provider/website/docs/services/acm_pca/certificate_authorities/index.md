@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for your private certificate authority (CA). The format is 12345678-1234-1234-1234-123456789012 . (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm-pca:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;*:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityConfiguration" /></td>
+    <td><CopyableCode code="certificate_authority_configuration" /></td>
     <td><code>object</code></td>
     <td>Your private CA configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time at which your private CA was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Reason the request to create your private CA failed. (REQUEST_TIMED_OUT, UNSUPPORTED_ALGORITHM, OTHER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyStorageSecurityStandard" /></td>
+    <td><CopyableCode code="key_storage_security_standard" /></td>
     <td><code>string</code></td>
     <td>Defines a cryptographic key management compliance standard for handling and protecting CA keys. Default: FIPS_140_2_LEVEL_3_OR_HIGHER Starting January 26, 2023, Amazon Web Services Private CA protects all CA private keys in non-China regions using hardware security modules (HSMs) that comply with FIPS PUB 140-2 Level 3. For information about security standard support in different Amazon Web Services Regions, see Storage and security compliance of Amazon Web Services Private CA private keys. (FIPS_140_2_LEVEL_2_OR_HIGHER, FIPS_140_2_LEVEL_3_OR_HIGHER, CCPC_LEVEL_1_OR_HIGHER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStateChangeAt" /></td>
+    <td><CopyableCode code="last_state_change_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time at which your private CA was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotAfter" /></td>
+    <td><CopyableCode code="not_after" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time after which your private CA certificate is not valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotBefore" /></td>
+    <td><CopyableCode code="not_before" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time before which your private CA certificate is not valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the certificate authority. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestorableUntil" /></td>
+    <td><CopyableCode code="restorable_until" /></td>
     <td><code>string (date-time)</code></td>
     <td>The period during which a deleted CA can be restored. For more information, see the PermanentDeletionTimeInDays parameter of the DeleteCertificateAuthorityRequest action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevocationConfiguration" /></td>
+    <td><CopyableCode code="revocation_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the Online Certificate Status Protocol (OCSP) configuration or certificate revocation list (CRL) created and maintained by your private CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Serial" /></td>
+    <td><CopyableCode code="serial" /></td>
     <td><code>string</code></td>
     <td>Serial number of your private CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of your private CA. (CREATING, PENDING_CERTIFICATE, ACTIVE, DELETED, DISABLED, EXPIRED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Type of your private CA. (ROOT, SUBORDINATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageMode" /></td>
+    <td><CopyableCode code="usage_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days. The default value is GENERAL_PURPOSE. (GENERAL_PURPOSE, SHORT_LIVED_CERTIFICATE)</td>
 </tr>
@@ -140,77 +140,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for your private certificate authority (CA). The format is 12345678-1234-1234-1234-123456789012 . (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm-pca:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;*:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityConfiguration" /></td>
+    <td><CopyableCode code="certificate_authority_configuration" /></td>
     <td><code>object</code></td>
     <td>Your private CA configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time at which your private CA was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Reason the request to create your private CA failed. (REQUEST_TIMED_OUT, UNSUPPORTED_ALGORITHM, OTHER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyStorageSecurityStandard" /></td>
+    <td><CopyableCode code="key_storage_security_standard" /></td>
     <td><code>string</code></td>
     <td>Defines a cryptographic key management compliance standard for handling and protecting CA keys. Default: FIPS_140_2_LEVEL_3_OR_HIGHER Starting January 26, 2023, Amazon Web Services Private CA protects all CA private keys in non-China regions using hardware security modules (HSMs) that comply with FIPS PUB 140-2 Level 3. For information about security standard support in different Amazon Web Services Regions, see Storage and security compliance of Amazon Web Services Private CA private keys. (FIPS_140_2_LEVEL_2_OR_HIGHER, FIPS_140_2_LEVEL_3_OR_HIGHER, CCPC_LEVEL_1_OR_HIGHER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStateChangeAt" /></td>
+    <td><CopyableCode code="last_state_change_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time at which your private CA was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotAfter" /></td>
+    <td><CopyableCode code="not_after" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time after which your private CA certificate is not valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotBefore" /></td>
+    <td><CopyableCode code="not_before" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time before which your private CA certificate is not valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the certificate authority. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestorableUntil" /></td>
+    <td><CopyableCode code="restorable_until" /></td>
     <td><code>string (date-time)</code></td>
     <td>The period during which a deleted CA can be restored. For more information, see the PermanentDeletionTimeInDays parameter of the DeleteCertificateAuthorityRequest action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevocationConfiguration" /></td>
+    <td><CopyableCode code="revocation_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the Online Certificate Status Protocol (OCSP) configuration or certificate revocation list (CRL) created and maintained by your private CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Serial" /></td>
+    <td><CopyableCode code="serial" /></td>
     <td><code>string</code></td>
     <td>Serial number of your private CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of your private CA. (CREATING, PENDING_CERTIFICATE, ACTIVE, DELETED, DISABLED, EXPIRED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Type of your private CA. (ROOT, SUBORDINATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageMode" /></td>
+    <td><CopyableCode code="usage_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days. The default value is GENERAL_PURPOSE. (GENERAL_PURPOSE, SHORT_LIVED_CERTIFICATE)</td>
 </tr>
@@ -322,21 +322,21 @@ Lists information about your private certificate authority (CA) or one that has 
 
 ```sql
 SELECT
-Arn,
-CertificateAuthorityConfiguration,
-CreatedAt,
-FailureReason,
-KeyStorageSecurityStandard,
-LastStateChangeAt,
-NotAfter,
-NotBefore,
-OwnerAccount,
-RestorableUntil,
-RevocationConfiguration,
-Serial,
-Status,
-Type,
-UsageMode
+arn,
+certificate_authority_configuration,
+created_at,
+failure_reason,
+key_storage_security_standard,
+last_state_change_at,
+not_after,
+not_before,
+owner_account,
+restorable_until,
+revocation_configuration,
+serial,
+status,
+type,
+usage_mode
 FROM aws.acm_pca.certificate_authorities
 WHERE region = '{{ region }}' -- required
 ;
@@ -348,21 +348,21 @@ Lists the private certificate authorities that you created by using the CreateCe
 
 ```sql
 SELECT
-Arn,
-CertificateAuthorityConfiguration,
-CreatedAt,
-FailureReason,
-KeyStorageSecurityStandard,
-LastStateChangeAt,
-NotAfter,
-NotBefore,
-OwnerAccount,
-RestorableUntil,
-RevocationConfiguration,
-Serial,
-Status,
-Type,
-UsageMode
+arn,
+certificate_authority_configuration,
+created_at,
+failure_reason,
+key_storage_security_standard,
+last_state_change_at,
+not_after,
+not_before,
+owner_account,
+restorable_until,
+revocation_configuration,
+serial,
+status,
+type,
+usage_mode
 FROM aws.acm_pca.certificate_authorities
 WHERE region = '{{ region }}' -- required
 ;
@@ -405,7 +405,7 @@ SELECT
 '{{ UsageMode }}',
 '{{ region }}'
 RETURNING
-CertificateAuthorityArn
+certificate_authority_arn
 ;
 ```
 </TabItem>

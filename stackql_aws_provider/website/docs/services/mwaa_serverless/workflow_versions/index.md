@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow version was created, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefinitionS3Location" /></td>
+    <td><CopyableCode code="definition_s3_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location of the workflow definition file for this version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsLatestVersion" /></td>
+    <td><CopyableCode code="is_latest_version" /></td>
     <td><code>boolean</code></td>
     <td>Boolean flag that indicates whether this is the latest version of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow version was last modified, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleConfiguration" /></td>
+    <td><CopyableCode code="schedule_configuration" /></td>
     <td><code>object</code></td>
     <td>The schedule configuration for this workflow version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerMode" /></td>
+    <td><CopyableCode code="trigger_mode" /></td>
     <td><code>string</code></td>
     <td>The trigger mode for the workflow execution. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow that contains this version. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:airflow-serverless:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;):(&#91;0-9&#93;&#123;12&#125;):workflow/(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\.\-_&#93;&#123;0,254&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowVersion" /></td>
+    <td><CopyableCode code="workflow_version" /></td>
     <td><code>string</code></td>
     <td>The version identifier of the workflow version. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -154,14 +154,14 @@ Lists all versions of a specified workflow, with optional pagination support.
 
 ```sql
 SELECT
-CreatedAt,
-DefinitionS3Location,
-IsLatestVersion,
-ModifiedAt,
-ScheduleConfiguration,
-TriggerMode,
-WorkflowArn,
-WorkflowVersion
+created_at,
+definition_s3_location,
+is_latest_version,
+modified_at,
+schedule_configuration,
+trigger_mode,
+workflow_arn,
+workflow_version
 FROM aws.mwaa_serverless.workflow_versions
 WHERE region = '{{ region }}' -- required
 ;

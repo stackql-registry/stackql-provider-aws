@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExcludedAccounts" /></td>
+    <td><CopyableCode code="excluded_accounts" /></td>
     <td><code>array</code></td>
     <td>A comma-separated list of accounts excluded from organization Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConfigRuleArn" /></td>
+    <td><CopyableCode code="organization_config_rule_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of organization Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConfigRuleName" /></td>
+    <td><CopyableCode code="organization_config_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assign to organization Config rule. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationCustomPolicyRuleMetadata" /></td>
+    <td><CopyableCode code="organization_custom_policy_rule_metadata" /></td>
     <td><code>object</code></td>
     <td>An object that specifies metadata for your organization's Config Custom Policy rule. The metadata includes the runtime system in use, which accounts have debug logging enabled, and other custom rule metadata, such as resource type, resource ID of Amazon Web Services resource, and organization trigger types that initiate Config to evaluate Amazon Web Services resources against a rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationCustomRuleMetadata" /></td>
+    <td><CopyableCode code="organization_custom_rule_metadata" /></td>
     <td><code>object</code></td>
     <td>An OrganizationCustomRuleMetadata object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationManagedRuleMetadata" /></td>
+    <td><CopyableCode code="organization_managed_rule_metadata" /></td>
     <td><code>object</code></td>
     <td>An OrganizationManagedRuleMetadata object.</td>
 </tr>
@@ -163,13 +163,13 @@ Returns a list of organization Config rules. When you specify the limit and the 
 
 ```sql
 SELECT
-ExcludedAccounts,
-LastUpdateTime,
-OrganizationConfigRuleArn,
-OrganizationConfigRuleName,
-OrganizationCustomPolicyRuleMetadata,
-OrganizationCustomRuleMetadata,
-OrganizationManagedRuleMetadata
+excluded_accounts,
+last_update_time,
+organization_config_rule_arn,
+organization_config_rule_name,
+organization_custom_policy_rule_metadata,
+organization_custom_rule_metadata,
+organization_managed_rule_metadata
 FROM aws.config.organization_config_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,7 +202,7 @@ WHERE
 region = '{{ region }}' --required
 AND OrganizationConfigRuleName = '{{ OrganizationConfigRuleName }}' --required
 RETURNING
-OrganizationConfigRuleArn;
+organization_config_rule_arn;
 ```
 </TabItem>
 </Tabs>

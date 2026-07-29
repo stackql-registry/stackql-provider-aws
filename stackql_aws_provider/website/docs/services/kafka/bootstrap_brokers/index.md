@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerString" /></td>
+    <td><CopyableCode code="bootstrap_broker_string" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more hostname:port pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringIpv6" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_ipv_6" /></td>
     <td><code>string</code></td>
     <td>A string that contains one or more DNS names (or IP) and port pairs for IPv6 connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringPublicSaslIam" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_public_sasl_iam" /></td>
     <td><code>string</code></td>
     <td>A string that contains one or more DNS names (or IP addresses) and SASL IAM port pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringPublicSaslScram" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_public_sasl_scram" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more DNS names (or IP) and Sasl Scram port pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringPublicTls" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_public_tls" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more DNS names (or IP) and TLS port pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringSaslIam" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_sasl_iam" /></td>
     <td><code>string</code></td>
     <td>A string that contains one or more DNS names (or IP addresses) and SASL IAM port pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringSaslIamIpv6" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_sasl_iam_ipv_6" /></td>
     <td><code>string</code></td>
     <td>A string that contains one or more DNS names (or IP) and SASL IAM port pairs for IPv6 connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringSaslScram" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_sasl_scram" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more DNS names (or IP) and Sasl Scram port pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringSaslScramIpv6" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_sasl_scram_ipv_6" /></td>
     <td><code>string</code></td>
     <td>A string that contains one or more DNS names (or IP) and SASL SCRAM port pairs for IPv6 connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringTls" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_tls" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more DNS names (or IP) and TLS port pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringTlsIpv6" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_tls_ipv_6" /></td>
     <td><code>string</code></td>
     <td>A string that contains one or more DNS names (or IP) and TLS port pairs for IPv6 connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringVpcConnectivitySaslIam" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_vpc_connectivity_sasl_iam" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more DNS names (or IP) and SASL/IAM port pairs for VPC connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringVpcConnectivitySaslScram" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_vpc_connectivity_sasl_scram" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more DNS names (or IP) and SASL/SCRAM port pairs for VPC connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootstrapBrokerStringVpcConnectivityTls" /></td>
+    <td><CopyableCode code="bootstrap_broker_string_vpc_connectivity_tls" /></td>
     <td><code>string</code></td>
     <td>A string containing one or more DNS names (or IP) and TLS port pairs for VPC connectivity.</td>
 </tr>
@@ -189,20 +189,20 @@ A list of brokers that a client application can use to bootstrap. This list does
 
 ```sql
 SELECT
-BootstrapBrokerString,
-BootstrapBrokerStringIpv6,
-BootstrapBrokerStringPublicSaslIam,
-BootstrapBrokerStringPublicSaslScram,
-BootstrapBrokerStringPublicTls,
-BootstrapBrokerStringSaslIam,
-BootstrapBrokerStringSaslIamIpv6,
-BootstrapBrokerStringSaslScram,
-BootstrapBrokerStringSaslScramIpv6,
-BootstrapBrokerStringTls,
-BootstrapBrokerStringTlsIpv6,
-BootstrapBrokerStringVpcConnectivitySaslIam,
-BootstrapBrokerStringVpcConnectivitySaslScram,
-BootstrapBrokerStringVpcConnectivityTls
+bootstrap_broker_string,
+bootstrap_broker_string_ipv_6,
+bootstrap_broker_string_public_sasl_iam,
+bootstrap_broker_string_public_sasl_scram,
+bootstrap_broker_string_public_tls,
+bootstrap_broker_string_sasl_iam,
+bootstrap_broker_string_sasl_iam_ipv_6,
+bootstrap_broker_string_sasl_scram,
+bootstrap_broker_string_sasl_scram_ipv_6,
+bootstrap_broker_string_tls,
+bootstrap_broker_string_tls_ipv_6,
+bootstrap_broker_string_vpc_connectivity_sasl_iam,
+bootstrap_broker_string_vpc_connectivity_sasl_scram,
+bootstrap_broker_string_vpc_connectivity_tls
 FROM aws.kafka.bootstrap_brokers
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required

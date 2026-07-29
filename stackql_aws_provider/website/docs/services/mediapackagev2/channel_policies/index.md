@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel. The name is the primary identifier for the channel, and must be unique for your account in the AWS Region and channel group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy assigned to the channel.</td>
 </tr>
@@ -153,9 +153,9 @@ Retrieves the specified channel policy that's configured in AWS Elemental MediaP
 
 ```sql
 SELECT
-ChannelGroupName,
-ChannelName,
-Policy
+channel_group_name,
+channel_name,
+policy
 FROM aws.mediapackagev2.channel_policies
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND channel_name = '{{ channel_name }}' -- required

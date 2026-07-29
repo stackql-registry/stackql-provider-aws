@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
@@ -133,7 +133,7 @@ Gets permissions associated with the target database.
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.ssm_sap.resource_permissions
 WHERE region = '{{ region }}' -- required
 ;
@@ -166,7 +166,7 @@ AND ActionType = '{{ ActionType }}' --required
 AND SourceResourceArn = '{{ SourceResourceArn }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-Policy;
+policy;
 ```
 </TabItem>
 </Tabs>

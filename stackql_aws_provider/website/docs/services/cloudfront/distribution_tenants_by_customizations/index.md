@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionGroupId" /></td>
+    <td><CopyableCode code="connection_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connection group ID for the distribution tenant. If you don't specify a connection group, CloudFront uses the default connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the distribution tenant was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Customizations" /></td>
+    <td><CopyableCode code="customizations" /></td>
     <td><code>string</code></td>
     <td>Customizations for the distribution tenant. For each distribution tenant, you can specify the geographic restrictions, and the Amazon Resource Names (ARNs) for the ACM certificate and WAF web ACL. These are specific values that you can override or disable from the multi-tenant distribution that was used to create the distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DistributionId" /></td>
+    <td><CopyableCode code="distribution_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the multi-tenant distribution. For example: EDFDVBD632BHDS5.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domains" /></td>
+    <td><CopyableCode code="domains" /></td>
     <td><code>string</code></td>
     <td>The domains associated with the distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current version of the distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the distribution tenants are in an enabled state. If disabled, the distribution tenant won't service traffic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the distribution tenant was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the distribution tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the distribution tenant.</td>
 </tr>
@@ -174,18 +174,18 @@ Lists distribution tenants by the customization that you specify. You must speci
 
 ```sql
 SELECT
-Arn,
-ConnectionGroupId,
-CreatedTime,
-Customizations,
-DistributionId,
-Domains,
-ETag,
-Enabled,
-Id,
-LastModifiedTime,
-Name,
-Status
+arn,
+connection_group_id,
+created_time,
+customizations,
+distribution_id,
+domains,
+e_tag,
+enabled,
+id,
+last_modified_time,
+name,
+status
 FROM aws.cloudfront.distribution_tenants_by_customizations
 WHERE region = '{{ region }}' -- required
 ;

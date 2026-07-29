@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel from which a member is being banned. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the ban was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Member" /></td>
+    <td><CopyableCode code="member" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelBans" /></td>
+    <td><CopyableCode code="channel_bans" /></td>
     <td><code>array</code></td>
     <td>The information for each requested ban.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested bans are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -211,10 +211,10 @@ Returns the full details of a channel ban. The x-amz-chime-bearer request header
 
 ```sql
 SELECT
-ChannelArn,
-CreatedBy,
-CreatedTimestamp,
-Member
+channel_arn,
+created_by,
+created_timestamp,
+member
 FROM aws.chime_sdk_messaging.channel_bans
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND member_arn = '{{ member_arn }}' -- required
@@ -229,9 +229,9 @@ Lists all the users and bots banned from a particular channel. The x-amz-chime-b
 
 ```sql
 SELECT
-ChannelArn,
-ChannelBans,
-NextToken
+channel_arn,
+channel_bans,
+next_token
 FROM aws.chime_sdk_messaging.channel_bans
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
@@ -270,8 +270,8 @@ SELECT
 '{{ x-amz-chime-bearer }}',
 '{{ region }}'
 RETURNING
-ChannelArn,
-Member
+channel_arn,
+member
 ;
 ```
 </TabItem>

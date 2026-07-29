@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the subnet group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the subnet group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>array</code></td>
     <td>A list of subnets associated with the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedNetworkTypes" /></td>
+    <td><CopyableCode code="supported_network_types" /></td>
     <td><code>array</code></td>
     <td>The network types supported by this subnet group. Returns an array of strings that can include 'ipv4', 'ipv6', or both, indicating the IP address types that can be used for clusters deployed in this subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.</td>
 </tr>
@@ -165,12 +165,12 @@ Returns a list of subnet group descriptions. If a subnet group name is specified
 
 ```sql
 SELECT
-ARN,
-Description,
-Name,
-Subnets,
-SupportedNetworkTypes,
-VpcId
+arn,
+description,
+name,
+subnets,
+supported_network_types,
+vpc_id
 FROM aws.memorydb.subnet_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,7 +207,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-SubnetGroup
+subnet_group
 ;
 ```
 </TabItem>
@@ -266,7 +266,7 @@ WHERE
 region = '{{ region }}' --required
 AND SubnetGroupName = '{{ SubnetGroupName }}' --required
 RETURNING
-SubnetGroup;
+subnet_group;
 ```
 </TabItem>
 </Tabs>

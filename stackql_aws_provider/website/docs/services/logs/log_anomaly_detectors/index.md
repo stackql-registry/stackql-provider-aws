@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="anomalyDetectorStatus" /></td>
+    <td><CopyableCode code="anomaly_detector_status" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the anomaly detector is currently active. To change its status, use the enabled parameter in the UpdateLogAnomalyDetector operation. (INITIALIZING, TRAINING, ANALYZING, FAILED, DELETED, PAUSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="anomalyVisibilityTime" /></td>
+    <td><CopyableCode code="anomaly_visibility_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of days used as the life cycle of anomalies. After this time, anomalies are automatically baselined and the anomaly detector model will treat new occurrences of similar event as normal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimeStamp" /></td>
+    <td><CopyableCode code="creation_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time when this anomaly detector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorName" /></td>
+    <td><CopyableCode code="detector_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log anomaly detector</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationFrequency" /></td>
+    <td><CopyableCode code="evaluation_frequency" /></td>
     <td><code>string</code></td>
     <td>Specifies how often the anomaly detector runs and look for anomalies. Set this value according to the frequency that the log group receives new logs. For example, if the log group receives new log events every 10 minutes, then setting evaluationFrequency to FIFTEEN_MIN might be appropriate. (ONE_MIN, FIVE_MIN, TEN_MIN, FIFTEEN_MIN, THIRTY_MIN, ONE_HOUR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterPattern" /></td>
+    <td><CopyableCode code="filter_pattern" /></td>
     <td><code>string</code></td>
     <td>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key assigned to this anomaly detector, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimeStamp" /></td>
+    <td><CopyableCode code="last_modified_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time when this anomaly detector was most recently modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupArnList" /></td>
+    <td><CopyableCode code="log_group_arn_list" /></td>
     <td><code>array</code></td>
     <td>An array of structures, where each structure contains the ARN of a log group associated with this anomaly detector.</td>
 </tr>
@@ -110,52 +110,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="anomalyDetectorArn" /></td>
+    <td><CopyableCode code="anomaly_detector_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the anomaly detector. (pattern: &lt;code&gt;&#91;\w#+=/:,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="anomalyDetectorStatus" /></td>
+    <td><CopyableCode code="anomaly_detector_status" /></td>
     <td><code>string</code></td>
     <td>Specifies the current status of the anomaly detector. To pause an anomaly detector, use the enabled parameter in the UpdateLogAnomalyDetector operation. (INITIALIZING, TRAINING, ANALYZING, FAILED, DELETED, PAUSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="anomalyVisibilityTime" /></td>
+    <td><CopyableCode code="anomaly_visibility_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of days used as the life cycle of anomalies. After this time, anomalies are automatically baselined and the anomaly detector model will treat new occurrences of similar event as normal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimeStamp" /></td>
+    <td><CopyableCode code="creation_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time when this anomaly detector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorName" /></td>
+    <td><CopyableCode code="detector_name" /></td>
     <td><code>string</code></td>
     <td>The name of the anomaly detector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationFrequency" /></td>
+    <td><CopyableCode code="evaluation_frequency" /></td>
     <td><code>string</code></td>
     <td>Specifies how often the anomaly detector runs and look for anomalies. (ONE_MIN, FIVE_MIN, TEN_MIN, FIFTEEN_MIN, THIRTY_MIN, ONE_HOUR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterPattern" /></td>
+    <td><CopyableCode code="filter_pattern" /></td>
     <td><code>string</code></td>
     <td>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key assigned to this anomaly detector, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimeStamp" /></td>
+    <td><CopyableCode code="last_modified_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time when this anomaly detector was most recently modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupArnList" /></td>
+    <td><CopyableCode code="log_group_arn_list" /></td>
     <td><code>array</code></td>
     <td>A list of the ARNs of the log groups that this anomaly detector watches.</td>
 </tr>
@@ -253,15 +253,15 @@ Retrieves information about the log anomaly detector that you specify. The KMS k
 
 ```sql
 SELECT
-anomalyDetectorStatus,
-anomalyVisibilityTime,
-creationTimeStamp,
-detectorName,
-evaluationFrequency,
-filterPattern,
-kmsKeyId,
-lastModifiedTimeStamp,
-logGroupArnList
+anomaly_detector_status,
+anomaly_visibility_time,
+creation_time_stamp,
+detector_name,
+evaluation_frequency,
+filter_pattern,
+kms_key_id,
+last_modified_time_stamp,
+log_group_arn_list
 FROM aws.logs.log_anomaly_detectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -273,16 +273,16 @@ Retrieves a list of the log anomaly detectors in the account.
 
 ```sql
 SELECT
-anomalyDetectorArn,
-anomalyDetectorStatus,
-anomalyVisibilityTime,
-creationTimeStamp,
-detectorName,
-evaluationFrequency,
-filterPattern,
-kmsKeyId,
-lastModifiedTimeStamp,
-logGroupArnList
+anomaly_detector_arn,
+anomaly_detector_status,
+anomaly_visibility_time,
+creation_time_stamp,
+detector_name,
+evaluation_frequency,
+filter_pattern,
+kms_key_id,
+last_modified_time_stamp,
+log_group_arn_list
 FROM aws.logs.log_anomaly_detectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -325,7 +325,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-anomalyDetectorArn
+anomaly_detector_arn
 ;
 ```
 </TabItem>

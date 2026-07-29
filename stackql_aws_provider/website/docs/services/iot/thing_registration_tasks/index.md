@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The task creation date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCount" /></td>
+    <td><CopyableCode code="failure_count" /></td>
     <td><code>integer</code></td>
     <td>The number of things that failed to be provisioned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputFileBucket" /></td>
+    <td><CopyableCode code="input_file_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket that contains the input file. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputFileKey" /></td>
+    <td><CopyableCode code="input_file_key" /></td>
     <td><code>string</code></td>
     <td>The input file key. (pattern: &lt;code&gt;&#91;a-zA-Z0-9!_.*'()-\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the task was last modified.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentageProgress" /></td>
+    <td><CopyableCode code="percentage_progress" /></td>
     <td><code>integer</code></td>
     <td>The progress of the bulk provisioning task expressed as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The role ARN that grants access to the input file bucket.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the bulk thing provisioning task. (InProgress, Completed, Failed, Cancelled, Cancelling)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="successCount" /></td>
+    <td><CopyableCode code="success_count" /></td>
     <td><code>integer</code></td>
     <td>The number of things successfully provisioned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The task ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateBody" /></td>
+    <td><CopyableCode code="template_body" /></td>
     <td><code>string</code></td>
     <td>The task's template. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -222,18 +222,18 @@ Describes a bulk thing provisioning task. Requires permission to access the Desc
 
 ```sql
 SELECT
-creationDate,
-failureCount,
-inputFileBucket,
-inputFileKey,
-lastModifiedDate,
+creation_date,
+failure_count,
+input_file_bucket,
+input_file_key,
+last_modified_date,
 message,
-percentageProgress,
-roleArn,
+percentage_progress,
+role_arn,
 status,
-successCount,
-taskId,
-templateBody
+success_count,
+task_id,
+template_body
 FROM aws.iot.thing_registration_tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required

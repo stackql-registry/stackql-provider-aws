@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>Name of the attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the attribute was last updated.</td>
 </tr>
@@ -144,8 +144,8 @@ Fetch the possible attribute values given the attribute name.
 
 ```sql
 SELECT
-AttributeName,
-LastUpdatedAt
+attribute_name,
+last_updated_at
 FROM aws.customer_profiles.object_type_attributes
 WHERE domain_name = '{{ domain_name }}' -- required
 AND object_type_name = '{{ object_type_name }}' -- required

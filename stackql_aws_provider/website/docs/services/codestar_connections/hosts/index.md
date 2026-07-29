@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the requested host. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderEndpoint" /></td>
+    <td><CopyableCode code="provider_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint of the infrastructure represented by the requested host. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The provider type of the requested host, such as GitHub Enterprise Server. (Bitbucket, GitHub, GitHubEnterpriseServer, GitLab, GitLabSelfManaged)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the requested host. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfiguration" /></td>
+    <td><CopyableCode code="vpc_configuration" /></td>
     <td><code>object</code></td>
     <td>The VPC configuration of the requested host.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Hosts" /></td>
+    <td><CopyableCode code="hosts" /></td>
     <td><code>array</code></td>
     <td>A list of hosts and the details for each host, such as status, endpoint, and provider type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that can be used in the next ListHosts call. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -193,11 +193,11 @@ Returns the host ARN and details such as status, provider type, endpoint, and, i
 
 ```sql
 SELECT
-Name,
-ProviderEndpoint,
-ProviderType,
-Status,
-VpcConfiguration
+name,
+provider_endpoint,
+provider_type,
+status,
+vpc_configuration
 FROM aws.codestar_connections.hosts
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,8 +209,8 @@ Lists the hosts associated with your account.
 
 ```sql
 SELECT
-Hosts,
-NextToken
+hosts,
+next_token
 FROM aws.codestar_connections.hosts
 WHERE region = '{{ region }}' -- required
 ;
@@ -249,8 +249,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-HostArn,
-Tags
+host_arn,
+tags
 ;
 ```
 </TabItem>

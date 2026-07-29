@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the domain unit. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp at which the domain unit was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the domain unit.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the domain unit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain in which the domain unit lives. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the domain unit was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who last updated the domain unit.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The owners of the domain unit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentDomainUnitId" /></td>
+    <td><CopyableCode code="parent_domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the parent domain unit. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -197,14 +197,14 @@ Gets the details of the specified domain unit.
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-lastUpdatedAt,
-lastUpdatedBy,
+domain_id,
+last_updated_at,
+last_updated_by,
 owners,
-parentDomainUnitId
+parent_domain_unit_id
 FROM aws.datazone.domain_units
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -247,13 +247,13 @@ SELECT
 RETURNING
 id,
 name,
-ancestorDomainUnitIds,
-createdAt,
-createdBy,
+ancestor_domain_unit_ids,
+created_at,
+created_by,
 description,
-domainId,
+domain_id,
 owners,
-parentDomainUnitId
+parent_domain_unit_id
 ;
 ```
 </TabItem>
@@ -306,14 +306,14 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-lastUpdatedAt,
-lastUpdatedBy,
+domain_id,
+last_updated_at,
+last_updated_by,
 owners,
-parentDomainUnitId;
+parent_domain_unit_id;
 ```
 </TabItem>
 </Tabs>

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the recommender was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the recommender providing information about its purpose and functionality.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the recommender fails, provides the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the recommender was edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRecommenderUpdate" /></td>
+    <td><CopyableCode code="latest_recommender_update" /></td>
     <td><code>object</code></td>
     <td>Information about the most recent update performed on the recommender, including status and timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderConfig" /></td>
+    <td><CopyableCode code="recommender_config" /></td>
     <td><code>object</code></td>
     <td>Configuration settings that define the behavior and parameters of a recommender.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderName" /></td>
+    <td><CopyableCode code="recommender_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderRecipeName" /></td>
+    <td><CopyableCode code="recommender_recipe_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recipe used by the recommender to generate recommendations. (recommended-for-you, similar-items, frequently-paired-items, popular-items, trending-now, personalized-ranking)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderSchemaName" /></td>
+    <td><CopyableCode code="recommender_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender schema associated with this recommender. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the recommender, indicating whether it is active, creating, updating, or in another state. (PENDING, IN_PROGRESS, ACTIVE, FAILED, STOPPING, INACTIVE, STARTING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingMetrics" /></td>
+    <td><CopyableCode code="training_metrics" /></td>
     <td><code>array</code></td>
     <td>A set of metrics that provide information about the recommender's training performance and accuracy.</td>
 </tr>
@@ -125,57 +125,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the recommender was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the recommender's purpose and characteristics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the recommender is in a failed state, provides the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the recommender was edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRecommenderUpdate" /></td>
+    <td><CopyableCode code="latest_recommender_update" /></td>
     <td><code>object</code></td>
     <td>Information about the most recent update performed on the recommender, including its status and timing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeName" /></td>
+    <td><CopyableCode code="recipe_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recipe used by this recommender. (recommended-for-you, similar-items, frequently-paired-items, popular-items, trending-now, personalized-ranking)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderConfig" /></td>
+    <td><CopyableCode code="recommender_config" /></td>
     <td><code>object</code></td>
     <td>Configuration settings that define the behavior and parameters of a recommender.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderName" /></td>
+    <td><CopyableCode code="recommender_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderSchemaName" /></td>
+    <td><CopyableCode code="recommender_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender schema associated with this recommender. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current operational status of the recommender. (PENDING, IN_PROGRESS, ACTIVE, FAILED, STOPPING, INACTIVE, STARTING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -312,18 +312,18 @@ Retrieves a recommender.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-FailureReason,
-LastUpdatedAt,
-LatestRecommenderUpdate,
-RecommenderConfig,
-RecommenderName,
-RecommenderRecipeName,
-RecommenderSchemaName,
-Status,
-Tags,
-TrainingMetrics
+created_at,
+description,
+failure_reason,
+last_updated_at,
+latest_recommender_update,
+recommender_config,
+recommender_name,
+recommender_recipe_name,
+recommender_schema_name,
+status,
+tags,
+training_metrics
 FROM aws.customer_profiles.recommenders
 WHERE domain_name = '{{ domain_name }}' -- required
 AND recommender_name = '{{ recommender_name }}' -- required
@@ -338,17 +338,17 @@ Returns a list of recommenders in the specified domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-FailureReason,
-LastUpdatedAt,
-LatestRecommenderUpdate,
-RecipeName,
-RecommenderConfig,
-RecommenderName,
-RecommenderSchemaName,
-Status,
-Tags
+created_at,
+description,
+failure_reason,
+last_updated_at,
+latest_recommender_update,
+recipe_name,
+recommender_config,
+recommender_name,
+recommender_schema_name,
+status,
+tags
 FROM aws.customer_profiles.recommenders
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -394,8 +394,8 @@ SELECT
 '{{ recommender_name }}',
 '{{ region }}'
 RETURNING
-RecommenderArn,
-Tags
+recommender_arn,
+tags
 ;
 ```
 </TabItem>
@@ -463,7 +463,7 @@ domain_name = '{{ domain_name }}' --required
 AND recommender_name = '{{ recommender_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RecommenderName;
+recommender_name;
 ```
 </TabItem>
 </Tabs>

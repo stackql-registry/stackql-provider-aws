@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmContributors" /></td>
+    <td><CopyableCode code="alarm_contributors" /></td>
     <td><code>array</code></td>
     <td>A list of alarm contributors that provide details about the individual time series contributing to the alarm's state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that marks the start of the next batch of returned results.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the information of the current alarm contributors that are in ALARM stat
 
 ```sql
 SELECT
-AlarmContributors,
-NextToken
+alarm_contributors,
+next_token
 FROM aws.cloudwatch.alarm_contributors
 WHERE region = '{{ region }}' -- required
 ;

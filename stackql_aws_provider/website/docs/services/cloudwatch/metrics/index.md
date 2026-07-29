@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Dimensions" /></td>
+    <td><CopyableCode code="dimensions" /></td>
     <td><code>array</code></td>
     <td>The dimensions for the metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric. This is a required field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The namespace of the metric. (pattern: &lt;code&gt;&#91;^:&#93;.*&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ List the specified metrics. You can use the returned metrics with GetMetricData 
 
 ```sql
 SELECT
-Dimensions,
-MetricName,
-Namespace
+dimensions,
+metric_name,
+namespace
 FROM aws.cloudwatch.metrics
 WHERE region = '{{ region }}' -- required
 ;

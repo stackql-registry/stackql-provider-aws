@@ -51,252 +51,252 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlgorithmSpecification" /></td>
+    <td><CopyableCode code="algorithm_specification" /></td>
     <td><code>object</code></td>
     <td>Information about the algorithm used for training, and algorithm metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobArn" /></td>
+    <td><CopyableCode code="auto_ml_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an AutoML job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:automl-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillableTimeInSeconds" /></td>
+    <td><CopyableCode code="billable_time_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The billable time in seconds. Billable time refers to the absolute wall-clock time. Multiply BillableTimeInSeconds by the number of instances (InstanceCount) in your training cluster to get the total compute time SageMaker bills you if you run distributed training. The formula is as follows: BillableTimeInSeconds * InstanceCount . You can calculate the savings from using managed spot training using the formula (1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100. For example, if BillableTimeInSeconds is 100 and TrainingTimeInSeconds is 500, the savings is 80%.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillableTokenCount" /></td>
+    <td><CopyableCode code="billable_token_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The billable token count for eligible serverless training jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CheckpointConfig" /></td>
+    <td><CopyableCode code="checkpoint_config" /></td>
     <td><code>object</code></td>
     <td>Contains information about the output location for managed spot training checkpoint data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the training job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DebugHookConfig" /></td>
+    <td><CopyableCode code="debug_hook_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information for the Amazon SageMaker Debugger hook parameters, metric and tensor collections, and storage paths. To learn more about how to configure the DebugHookConfig parameter, see Use the SageMaker and Debugger Configuration API Operations to Create, Update, and Debug Your Training Job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DebugRuleConfigurations" /></td>
+    <td><CopyableCode code="debug_rule_configurations" /></td>
     <td><code>array</code></td>
     <td>Configuration information for Amazon SageMaker Debugger rules for debugging output tensors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DebugRuleEvaluationStatuses" /></td>
+    <td><CopyableCode code="debug_rule_evaluation_statuses" /></td>
     <td><code>array</code></td>
     <td>Evaluation status of Amazon SageMaker Debugger rules for debugging on a training job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableInterContainerTrafficEncryption" /></td>
+    <td><CopyableCode code="enable_inter_container_traffic_encryption" /></td>
     <td><code>boolean</code></td>
     <td>To encrypt all communications between ML compute instances in distributed training, choose True. Encryption provides greater security for distributed training, but training might take longer. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithms in distributed training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableManagedSpotTraining" /></td>
+    <td><CopyableCode code="enable_managed_spot_training" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean indicating whether managed spot training is enabled (True) or not (False).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableNetworkIsolation" /></td>
+    <td><CopyableCode code="enable_network_isolation" /></td>
     <td><code>boolean</code></td>
     <td>If you want to allow inbound or outbound network calls, except for calls between peers within a training cluster for distributed training, choose True. If you enable network isolation for training jobs that are configured to use a VPC, SageMaker downloads and uploads customer data and model artifacts through the specified VPC, but the training container does not have network access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Environment" /></td>
+    <td><CopyableCode code="environment" /></td>
     <td><code>object</code></td>
     <td>The environment variables to set in the Docker container. Do not include any security-sensitive information including account access IDs, secrets, or tokens in any environment fields. As part of the shared responsibility model, you are responsible for any potential exposure, unauthorized access, or compromise of your sensitive data if caused by security-sensitive information included in the request environment variable or plain text fields.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentConfig" /></td>
+    <td><CopyableCode code="experiment_config" /></td>
     <td><code>object</code></td>
     <td>Associates a SageMaker job as a trial component with an experiment and trial. Specified when you call the following APIs: CreateProcessingJob CreateTrainingJob CreateTransformJob</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the training job failed, the reason it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinalMetricDataList" /></td>
+    <td><CopyableCode code="final_metric_data_list" /></td>
     <td><code>array</code></td>
     <td>A collection of MetricData objects that specify the names, values, and dates and times that the training algorithm emitted to Amazon CloudWatch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HyperParameters" /></td>
+    <td><CopyableCode code="hyper_parameters" /></td>
     <td><code>object</code></td>
     <td>Algorithm-specific parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InfraCheckConfig" /></td>
+    <td><CopyableCode code="infra_check_config" /></td>
     <td><code>object</code></td>
     <td>Contains information about the infrastructure health check configuration for the training job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>array</code></td>
     <td>An array of Channel objects that describes each data input channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobArn" /></td>
+    <td><CopyableCode code="labeling_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the SageMaker Ground Truth labeling job that created the transform or training job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:labeling-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the status of the training job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MlflowConfig" /></td>
+    <td><CopyableCode code="mlflow_config" /></td>
     <td><code>object</code></td>
     <td>The MLflow configuration using SageMaker managed MLflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MlflowDetails" /></td>
+    <td><CopyableCode code="mlflow_details" /></td>
     <td><code>object</code></td>
     <td>The MLflow details of this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArtifacts" /></td>
+    <td><CopyableCode code="model_artifacts" /></td>
     <td><code>object</code></td>
     <td>Information about the Amazon S3 location that is configured for storing model artifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageConfig" /></td>
+    <td><CopyableCode code="model_package_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for the model package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>The S3 path where model artifacts that you configured when creating the job are stored. SageMaker creates subfolders for model artifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputModelPackageArn" /></td>
+    <td><CopyableCode code="output_model_package_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the output model package containing model weights or checkpoints. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-package/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfilerConfig" /></td>
+    <td><CopyableCode code="profiler_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information for Amazon SageMaker Debugger system monitoring, framework profiling, and storage paths.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfilerRuleConfigurations" /></td>
+    <td><CopyableCode code="profiler_rule_configurations" /></td>
     <td><code>array</code></td>
     <td>Configuration information for Amazon SageMaker Debugger rules for profiling system and framework metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfilerRuleEvaluationStatuses" /></td>
+    <td><CopyableCode code="profiler_rule_evaluation_statuses" /></td>
     <td><code>array</code></td>
     <td>Evaluation status of Amazon SageMaker Debugger rules for profiling on a training job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfilingStatus" /></td>
+    <td><CopyableCode code="profiling_status" /></td>
     <td><code>string</code></td>
     <td>Profiling status of a training job. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressInfo" /></td>
+    <td><CopyableCode code="progress_info" /></td>
     <td><code>object</code></td>
     <td>The Serverless training job progress information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemoteDebugConfig" /></td>
+    <td><CopyableCode code="remote_debug_config" /></td>
     <td><code>object</code></td>
     <td>Configuration for remote debugging. To learn more about the remote debugging functionality of SageMaker, see Access a training container through Amazon Web Services Systems Manager (SSM) for remote debugging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceConfig" /></td>
+    <td><CopyableCode code="resource_config" /></td>
     <td><code>object</code></td>
     <td>Resources, including ML compute instances and ML storage volumes, that are configured for model training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetryStrategy" /></td>
+    <td><CopyableCode code="retry_strategy" /></td>
     <td><code>object</code></td>
     <td>The number of times to retry the job when the job fails due to an InternalServerError.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Identity and Access Management (IAM) role configured for the training job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryStatus" /></td>
+    <td><CopyableCode code="secondary_status" /></td>
     <td><code>string</code></td>
     <td>Provides detailed information about the state of the training job. For detailed information on the secondary status of the training job, see StatusMessage under SecondaryStatusTransition. SageMaker provides primary statuses and secondary statuses that apply to each of them: InProgress Starting - Starting the training job. Pending - The training job is waiting for compute capacity or compute resource provision. Downloading - An optional stage for algorithms that support File training input mode. It indicates that data is being downloaded to the ML storage volumes. Training - Training is in progress. Interrupted - The job stopped because the managed spot training instances were interrupted. Uploading - Training is complete and the model artifacts are being uploaded to the S3 location. Completed Completed - The training job has completed. Failed Failed - The training job has failed. The reason for the failure is returned in the FailureReason field of DescribeTrainingJobResponse. Stopped MaxRuntimeExceeded - The job stopped because it exceeded the maximum allowed runtime. MaxWaitTimeExceeded - The job stopped because it exceeded the maximum allowed wait time. Stopped - The training job has stopped. Stopping Stopping - Stopping the training job. Valid values for SecondaryStatus are subject to change. We no longer support the following secondary statuses: LaunchingMLInstances PreparingTraining DownloadingTrainingImage (Starting, LaunchingMLInstances, PreparingTrainingStack, Downloading, DownloadingTrainingImage, Training, Uploading, Stopping, Stopped, MaxRuntimeExceeded, Completed, Failed, Interrupted, MaxWaitTimeExceeded, Updating, Restarting, Pending)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryStatusTransitions" /></td>
+    <td><CopyableCode code="secondary_status_transitions" /></td>
     <td><code>array</code></td>
     <td>A history of all of the secondary statuses that the training job has transitioned through.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessJobConfig" /></td>
+    <td><CopyableCode code="serverless_job_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for serverless training jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>Specifies a limit to how long a job can run. When the job reaches the time limit, SageMaker ends the job. Use this API to cap costs. To stop a training job, SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. The training algorithms provided by SageMaker automatically save the intermediate results of a model training job when possible. This attempt to save artifacts is only a best effort case as model might not be in a state from which it can be saved. For example, if training has just started, the model might not be ready to save. When saved, this intermediate data is a valid model artifact. You can use it to create a model with CreateModel. The Neural Topic Model (NTM) currently does not support saving intermediate model artifacts. When training NTMs, make sure that the maximum runtime is sufficient for the training job to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TensorBoardOutputConfig" /></td>
+    <td><CopyableCode code="tensor_board_output_config" /></td>
     <td><code>object</code></td>
     <td>Configuration of storage locations for the Amazon SageMaker Debugger TensorBoard output data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingEndTime" /></td>
+    <td><CopyableCode code="training_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time when the training job ends on training instances. You are billed for the time interval between the value of TrainingStartTime and this time. For successful jobs and stopped jobs, this is the time after model artifacts are uploaded. For failed jobs, this is the time when SageMaker detects a job failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobArn" /></td>
+    <td><CopyableCode code="training_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the training job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:training-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobName" /></td>
+    <td><CopyableCode code="training_job_name" /></td>
     <td><code>string</code></td>
     <td>Name of the model training job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobStatus" /></td>
+    <td><CopyableCode code="training_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the training job. SageMaker provides the following training job statuses: InProgress - The training is in progress. Completed - The training job has completed. Failed - The training job has failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeTrainingJobResponse call. Stopping - The training job is stopping. Stopped - The training job has stopped. For more detailed information, see SecondaryStatus. (InProgress, Completed, Failed, Stopping, Stopped, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingStartTime" /></td>
+    <td><CopyableCode code="training_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time when the training job starts on training instances. You are billed for the time interval between this time and the value of TrainingEndTime. The start time in CloudWatch Logs might be later than this time. The difference is due to the time it takes to download the training data and to the size of the training container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingTimeInSeconds" /></td>
+    <td><CopyableCode code="training_time_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The training time in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TuningJobArn" /></td>
+    <td><CopyableCode code="tuning_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the associated hyperparameter tuning job if the training job was launched by a hyperparameter tuning job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:hyper-parameter-tuning-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC. For more information, see Give SageMaker Access to Resources in your Amazon VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmPoolStatus" /></td>
+    <td><CopyableCode code="warm_pool_status" /></td>
     <td><code>object</code></td>
     <td>The status of the warm pool associated with the training job.</td>
 </tr>
@@ -315,47 +315,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the training job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the training job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryStatus" /></td>
+    <td><CopyableCode code="secondary_status" /></td>
     <td><code>string</code></td>
     <td>The secondary status of the training job. (Starting, LaunchingMLInstances, PreparingTrainingStack, Downloading, DownloadingTrainingImage, Training, Uploading, Stopping, Stopped, MaxRuntimeExceeded, Completed, Failed, Interrupted, MaxWaitTimeExceeded, Updating, Restarting, Pending)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingEndTime" /></td>
+    <td><CopyableCode code="training_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the training job ended. This field is set only if the training job has one of the terminal statuses (Completed, Failed, or Stopped).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobArn" /></td>
+    <td><CopyableCode code="training_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the training job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:training-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobName" /></td>
+    <td><CopyableCode code="training_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the training job that you want a summary for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobStatus" /></td>
+    <td><CopyableCode code="training_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the training job. (InProgress, Completed, Failed, Stopping, Stopped, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingPlanArn" /></td>
+    <td><CopyableCode code="training_plan_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN); of the training plan associated with this training job. For more information about how to reserve GPU capacity for your SageMaker HyperPod clusters using Amazon SageMaker Training Plan, see CreateTrainingPlan . (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:training-plan/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmPoolStatus" /></td>
+    <td><CopyableCode code="warm_pool_status" /></td>
     <td><code>object</code></td>
     <td>The status of the warm pool associated with the training job.</td>
 </tr>
@@ -460,56 +460,56 @@ Returns information about a training job. Some of the attributes below only appe
 
 ```sql
 SELECT
-AlgorithmSpecification,
-AutoMLJobArn,
-BillableTimeInSeconds,
-BillableTokenCount,
-CheckpointConfig,
-CreationTime,
-DebugHookConfig,
-DebugRuleConfigurations,
-DebugRuleEvaluationStatuses,
-EnableInterContainerTrafficEncryption,
-EnableManagedSpotTraining,
-EnableNetworkIsolation,
-Environment,
-ExperimentConfig,
-FailureReason,
-FinalMetricDataList,
-HyperParameters,
-InfraCheckConfig,
-InputDataConfig,
-LabelingJobArn,
-LastModifiedTime,
-MlflowConfig,
-MlflowDetails,
-ModelArtifacts,
-ModelPackageConfig,
-OutputDataConfig,
-OutputModelPackageArn,
-ProfilerConfig,
-ProfilerRuleConfigurations,
-ProfilerRuleEvaluationStatuses,
-ProfilingStatus,
-ProgressInfo,
-RemoteDebugConfig,
-ResourceConfig,
-RetryStrategy,
-RoleArn,
-SecondaryStatus,
-SecondaryStatusTransitions,
-ServerlessJobConfig,
-StoppingCondition,
-TensorBoardOutputConfig,
-TrainingEndTime,
-TrainingJobArn,
-TrainingJobName,
-TrainingJobStatus,
-TrainingStartTime,
-TrainingTimeInSeconds,
-TuningJobArn,
-VpcConfig,
-WarmPoolStatus
+algorithm_specification,
+auto_ml_job_arn,
+billable_time_in_seconds,
+billable_token_count,
+checkpoint_config,
+creation_time,
+debug_hook_config,
+debug_rule_configurations,
+debug_rule_evaluation_statuses,
+enable_inter_container_traffic_encryption,
+enable_managed_spot_training,
+enable_network_isolation,
+environment,
+experiment_config,
+failure_reason,
+final_metric_data_list,
+hyper_parameters,
+infra_check_config,
+input_data_config,
+labeling_job_arn,
+last_modified_time,
+mlflow_config,
+mlflow_details,
+model_artifacts,
+model_package_config,
+output_data_config,
+output_model_package_arn,
+profiler_config,
+profiler_rule_configurations,
+profiler_rule_evaluation_statuses,
+profiling_status,
+progress_info,
+remote_debug_config,
+resource_config,
+retry_strategy,
+role_arn,
+secondary_status,
+secondary_status_transitions,
+serverless_job_config,
+stopping_condition,
+tensor_board_output_config,
+training_end_time,
+training_job_arn,
+training_job_name,
+training_job_status,
+training_start_time,
+training_time_in_seconds,
+tuning_job_arn,
+vpc_config,
+warm_pool_status
 FROM aws.sagemaker.training_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -521,15 +521,15 @@ Lists training jobs. When StatusEquals and MaxResults are set at the same time, 
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-SecondaryStatus,
-TrainingEndTime,
-TrainingJobArn,
-TrainingJobName,
-TrainingJobStatus,
-TrainingPlanArn,
-WarmPoolStatus
+creation_time,
+last_modified_time,
+secondary_status,
+training_end_time,
+training_job_arn,
+training_job_name,
+training_job_status,
+training_plan_arn,
+warm_pool_status
 FROM aws.sagemaker.training_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -614,7 +614,7 @@ SELECT
 '{{ ModelPackageConfig }}',
 '{{ region }}'
 RETURNING
-TrainingJobArn
+training_job_arn
 ;
 ```
 </TabItem>
@@ -885,7 +885,7 @@ WHERE
 region = '{{ region }}' --required
 AND TrainingJobName = '{{ TrainingJobName }}' --required
 RETURNING
-TrainingJobArn;
+training_job_arn;
 ```
 </TabItem>
 </Tabs>

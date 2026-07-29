@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether more DistributionIdOwner objects remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more results in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>The number of DistributionIdOwner objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Use this field when paginating results to indicate where to begin in your list of DistributionIdOwner objects. The response includes distributions in the list that occur after the marker. To get the next page of the list, set this field's value to the value of NextMarker from the current page's response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of DistributionIdOwner objects to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>A token used for pagination of results returned in the response. You can use the token from the previous request to define where the current request should begin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>Specifies the actual number of DistributionIdOwner objects included in the list for the current page.</td>
 </tr>
@@ -159,12 +159,12 @@ Lists the CloudFront distributions that are associated with the specified resour
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.distributions_by_owned_resources
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedValues" /></td>
+    <td><CopyableCode code="allowed_values" /></td>
     <td><code>string</code></td>
     <td>The valid range of values for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplyType" /></td>
+    <td><CopyableCode code="apply_type" /></td>
     <td><code>string</code></td>
     <td>Specifies how to apply the WLM configuration parameter. Some properties can be applied dynamically, while other properties require that any associated clusters be rebooted for the configuration changes to be applied. For more information about parameters and parameter groups, go to Amazon Redshift Parameter Groups in the Amazon Redshift Cluster Management Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsModifiable" /></td>
+    <td><CopyableCode code="is_modifiable" /></td>
     <td><code>boolean</code></td>
     <td>If true, the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The earliest engine version to which the parameter can apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterName" /></td>
+    <td><CopyableCode code="parameter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterValue" /></td>
+    <td><CopyableCode code="parameter_value" /></td>
     <td><code>string</code></td>
     <td>The value of the parameter. If ParameterName is wlm_json_configuration, then the maximum size of ParameterValue is 8000 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The source of the parameter value, such as "engine-default" or "user".</td>
 </tr>
@@ -196,15 +196,15 @@ Returns a detailed list of parameters contained within the specified Amazon Reds
 
 ```sql
 SELECT
-AllowedValues,
-ApplyType,
-DataType,
-Description,
-IsModifiable,
-MinimumEngineVersion,
-ParameterName,
-ParameterValue,
-Source
+allowed_values,
+apply_type,
+data_type,
+description,
+is_modifiable,
+minimum_engine_version,
+parameter_name,
+parameter_value,
+source
 FROM aws.redshift.cluster_parameters
 WHERE ParameterGroupName = '{{ ParameterGroupName }}' -- required
 AND region = '{{ region }}' -- required

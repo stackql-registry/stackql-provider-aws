@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationTemplates" /></td>
+    <td><CopyableCode code="configuration_templates" /></td>
     <td><code>string</code></td>
     <td>The names of the configuration templates associated with this application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date when the application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The date when the application was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>User-defined description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceLifecycleConfig" /></td>
+    <td><CopyableCode code="resource_lifecycle_config" /></td>
     <td><code>string</code></td>
     <td>The lifecycle settings for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Versions" /></td>
+    <td><CopyableCode code="versions" /></td>
     <td><code>string</code></td>
     <td>The names of the versions for this application.</td>
 </tr>
@@ -273,14 +273,14 @@ Returns the descriptions of existing applications.
 
 ```sql
 SELECT
-ApplicationArn,
-ApplicationName,
-ConfigurationTemplates,
-DateCreated,
-DateUpdated,
-Description,
-ResourceLifecycleConfig,
-Versions
+application_arn,
+application_name,
+configuration_templates,
+date_created,
+date_updated,
+description,
+resource_lifecycle_config,
+versions
 FROM aws.elasticbeanstalk.applications
 WHERE region = '{{ region }}' -- required
 AND ApplicationNames = '{{ ApplicationNames }}'
@@ -329,16 +329,16 @@ SELECT
 '{{ OptionSettings }}',
 '{{ Tags }}'
 RETURNING
-ApplicationName,
-DateCreated,
-DateUpdated,
-DeploymentStatus,
-Description,
-EnvironmentName,
-OptionSettings,
-PlatformArn,
-SolutionStackName,
-TemplateName
+application_name,
+date_created,
+date_updated,
+deployment_status,
+description,
+environment_name,
+option_settings,
+platform_arn,
+solution_stack_name,
+template_name
 ;
 ```
 </TabItem>
@@ -361,14 +361,14 @@ SELECT
 '{{ ResourceLifecycleConfig }}',
 '{{ Tags }}'
 RETURNING
-ApplicationArn,
-ApplicationName,
-ConfigurationTemplates,
-DateCreated,
-DateUpdated,
-Description,
-ResourceLifecycleConfig,
-Versions
+application_arn,
+application_name,
+configuration_templates,
+date_created,
+date_updated,
+description,
+resource_lifecycle_config,
+versions
 ;
 ```
 </TabItem>
@@ -447,8 +447,8 @@ ApplicationName = '{{ ApplicationName }}' --required
 AND ResourceLifecycleConfig = '{{ ResourceLifecycleConfig }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApplicationName,
-ResourceLifecycleConfig;
+application_name,
+resource_lifecycle_config;
 ```
 </TabItem>
 <TabItem value="update_configuration_template">
@@ -467,16 +467,16 @@ AND Description = '{{ Description}}'
 AND OptionSettings = '{{ OptionSettings}}'
 AND OptionsToRemove = '{{ OptionsToRemove}}'
 RETURNING
-ApplicationName,
-DateCreated,
-DateUpdated,
-DeploymentStatus,
-Description,
-EnvironmentName,
-OptionSettings,
-PlatformArn,
-SolutionStackName,
-TemplateName;
+application_name,
+date_created,
+date_updated,
+deployment_status,
+description,
+environment_name,
+option_settings,
+platform_arn,
+solution_stack_name,
+template_name;
 ```
 </TabItem>
 <TabItem value="update_application">
@@ -492,14 +492,14 @@ ApplicationName = '{{ ApplicationName }}' --required
 AND region = '{{ region }}' --required
 AND Description = '{{ Description}}'
 RETURNING
-ApplicationArn,
-ApplicationName,
-ConfigurationTemplates,
-DateCreated,
-DateUpdated,
-Description,
-ResourceLifecycleConfig,
-Versions;
+application_arn,
+application_name,
+configuration_templates,
+date_created,
+date_updated,
+description,
+resource_lifecycle_config,
+versions;
 ```
 </TabItem>
 </Tabs>

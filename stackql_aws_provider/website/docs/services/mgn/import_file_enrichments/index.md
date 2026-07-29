@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The checksum of the enriched file for integrity verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the enrichment job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the enrichment job completed or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the import file enrichment job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3BucketTarget" /></td>
+    <td><CopyableCode code="s_3_bucket_target" /></td>
     <td><code>object</code></td>
     <td>The target S3 configuration for the enriched import file.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the import file enrichment job. (PENDING, STARTED, FAILED, SUCCEEDED, SUCCEEDED_WITH_WARNINGS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>Detailed status information about the enrichment job.</td>
 </tr>
@@ -150,12 +150,12 @@ Lists import file enrichment jobs with optional filtering by job IDs.
 ```sql
 SELECT
 checksum,
-createdAt,
-endedAt,
-jobID,
-s3BucketTarget,
+created_at,
+ended_at,
+job_id,
+s_3_bucket_target,
 status,
-statusDetails
+status_details
 FROM aws.mgn.import_file_enrichments
 WHERE region = '{{ region }}' -- required
 ;

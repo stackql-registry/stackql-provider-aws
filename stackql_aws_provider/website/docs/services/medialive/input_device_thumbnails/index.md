@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Body" /></td>
+    <td><CopyableCode code="body" /></td>
     <td><code>string (byte)</code></td>
     <td>The binary data for the thumbnail that the Link device has most recently sent to MediaLive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentLength" /></td>
+    <td><CopyableCode code="content_length" /></td>
     <td><code>integer (int64)</code></td>
     <td>The length of the content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the media type of the thumbnail. (image/jpeg)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the thumbnail was last updated at the device.</td>
 </tr>
@@ -149,11 +149,11 @@ Get the latest thumbnail data for the input device.
 
 ```sql
 SELECT
-Body,
-ContentLength,
-ContentType,
-ETag,
-LastModified
+body,
+content_length,
+content_type,
+e_tag,
+last_modified
 FROM aws.medialive.input_device_thumbnails
 WHERE input_device_id = '{{ input_device_id }}' -- required
 AND accept = '{{ accept }}' -- required

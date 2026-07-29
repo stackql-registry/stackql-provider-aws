@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the labeling job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobReferenceCode" /></td>
+    <td><CopyableCode code="job_reference_code" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a labeling job. You can use this to refer to a specific labeling job. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelCounters" /></td>
+    <td><CopyableCode code="label_counters" /></td>
     <td><code>object</code></td>
     <td>Provides information about the progress of a labeling job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobName" /></td>
+    <td><CopyableCode code="labeling_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the labeling job that the work team is assigned to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfHumanWorkersPerDataObject" /></td>
+    <td><CopyableCode code="number_of_human_workers_per_data_object" /></td>
     <td><code>integer</code></td>
     <td>The configured number of workers per data object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkRequesterAccountId" /></td>
+    <td><CopyableCode code="work_requester_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the account used to start the labeling job. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ Gets a list of labeling jobs assigned to a specified work team.
 
 ```sql
 SELECT
-CreationTime,
-JobReferenceCode,
-LabelCounters,
-LabelingJobName,
-NumberOfHumanWorkersPerDataObject,
-WorkRequesterAccountId
+creation_time,
+job_reference_code,
+label_counters,
+labeling_job_name,
+number_of_human_workers_per_data_object,
+work_requester_account_id
 FROM aws.sagemaker.labeling_jobs_for_workteams
 WHERE region = '{{ region }}' -- required
 ;

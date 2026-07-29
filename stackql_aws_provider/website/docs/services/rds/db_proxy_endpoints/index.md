@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the DB proxy endpoint was first created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBProxyEndpointArn" /></td>
+    <td><CopyableCode code="db_proxy_endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB proxy endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBProxyEndpointName" /></td>
+    <td><CopyableCode code="db_proxy_endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name for the DB proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBProxyName" /></td>
+    <td><CopyableCode code="db_proxy_name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the DB proxy that is associated with this DB proxy endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint that you can use to connect to the DB proxy. You include the endpoint value in the connection string for a database client application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointNetworkType" /></td>
+    <td><CopyableCode code="endpoint_network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of the DB proxy endpoint. The network type determines the IP version that the proxy endpoint supports. Valid values: IPV4 - The proxy endpoint supports IPv4 only. IPV6 - The proxy endpoint supports IPv6 only. DUAL - The proxy endpoint supports both IPv4 and IPv6.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this endpoint is the default endpoint for the associated DB proxy. Default DB proxy endpoints always have read/write capability. Other endpoints that you associate with the DB proxy can be either read/write or read-only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of this DB proxy endpoint. A status of available means the endpoint is ready to handle requests. Other values indicate that you must wait for the endpoint to be ready, or take some action to resolve an issue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetRole" /></td>
+    <td><CopyableCode code="target_role" /></td>
     <td><code>string</code></td>
     <td>A value that indicates whether the DB proxy endpoint can be used for read/write or read-only operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VPC ID of the DB proxy endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroupIds" /></td>
+    <td><CopyableCode code="vpc_security_group_ids" /></td>
     <td><code>string</code></td>
     <td>Provides a list of VPC security groups that the DB proxy endpoint belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSubnetIds" /></td>
+    <td><CopyableCode code="vpc_subnet_ids" /></td>
     <td><code>string</code></td>
     <td>The EC2 subnet IDs for the DB proxy endpoint.</td>
 </tr>
@@ -260,18 +260,18 @@ Returns information about DB proxy endpoints.
 
 ```sql
 SELECT
-CreatedDate,
-DBProxyEndpointArn,
-DBProxyEndpointName,
-DBProxyName,
-Endpoint,
-EndpointNetworkType,
-IsDefault,
-Status,
-TargetRole,
-VpcId,
-VpcSecurityGroupIds,
-VpcSubnetIds
+created_date,
+db_proxy_endpoint_arn,
+db_proxy_endpoint_name,
+db_proxy_name,
+endpoint,
+endpoint_network_type,
+is_default,
+status,
+target_role,
+vpc_id,
+vpc_security_group_ids,
+vpc_subnet_ids
 FROM aws.rds.db_proxy_endpoints
 WHERE region = '{{ region }}' -- required
 AND DBProxyName = '{{ DBProxyName }}'
@@ -319,18 +319,18 @@ SELECT
 '{{ Tags }}',
 '{{ EndpointNetworkType }}'
 RETURNING
-CreatedDate,
-DBProxyEndpointArn,
-DBProxyEndpointName,
-DBProxyName,
-Endpoint,
-EndpointNetworkType,
-IsDefault,
-Status,
-TargetRole,
-VpcId,
-VpcSecurityGroupIds,
-VpcSubnetIds
+created_date,
+db_proxy_endpoint_arn,
+db_proxy_endpoint_name,
+db_proxy_name,
+endpoint,
+endpoint_network_type,
+is_default,
+status,
+target_role,
+vpc_id,
+vpc_security_group_ids,
+vpc_subnet_ids
 ;
 ```
 </TabItem>
@@ -393,18 +393,18 @@ AND region = '{{ region }}' --required
 AND NewDBProxyEndpointName = '{{ NewDBProxyEndpointName}}'
 AND VpcSecurityGroupIds = '{{ VpcSecurityGroupIds}}'
 RETURNING
-CreatedDate,
-DBProxyEndpointArn,
-DBProxyEndpointName,
-DBProxyName,
-Endpoint,
-EndpointNetworkType,
-IsDefault,
-Status,
-TargetRole,
-VpcId,
-VpcSecurityGroupIds,
-VpcSubnetIds;
+created_date,
+db_proxy_endpoint_arn,
+db_proxy_endpoint_name,
+db_proxy_name,
+endpoint,
+endpoint_network_type,
+is_default,
+status,
+target_role,
+vpc_id,
+vpc_security_group_ids,
+vpc_subnet_ids;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key to use for encryption. This field is required only when sseAlgorithm is set to aws:kms. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:kms:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:key/.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sseAlgorithm" /></td>
+    <td><CopyableCode code="sse_algorithm" /></td>
     <td><code>string</code></td>
     <td>The server-side encryption algorithm to use. Valid values are AES256 for S3-managed encryption keys, or aws:kms for Amazon Web Services KMS-managed encryption keys. If you choose SSE-KMS encryption you must grant the S3 Tables maintenance principal access to your KMS key. For more information, see Permissions requirements for S3 Tables SSE-KMS encryption. (AES256, aws:kms)</td>
 </tr>
@@ -143,8 +143,8 @@ Gets the encryption configuration for a table bucket. Permissions You must have 
 
 ```sql
 SELECT
-kmsKeyArn,
-sseAlgorithm
+kms_key_arn,
+sse_algorithm
 FROM aws.s3tables.table_bucket_encryptions
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND region = '{{ region }}' -- required

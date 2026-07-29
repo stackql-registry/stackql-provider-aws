@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionPoolConfig" /></td>
+    <td><CopyableCode code="connection_pool_config" /></td>
     <td><code>string</code></td>
     <td>The settings that determine the size and behavior of the connection pool for the target group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the target group was first created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBProxyName" /></td>
+    <td><CopyableCode code="db_proxy_name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the RDS proxy associated with this target group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this target group is the first one used for connection requests by the associated proxy. Because each proxy is currently associated with a single target group, currently this setting is always true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of this target group. A status of available means the target group is correctly associated with a database. Other values indicate that you must wait for the target group to be ready, or take some action to resolve an issue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetGroupArn" /></td>
+    <td><CopyableCode code="target_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) representing the target group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetGroupName" /></td>
+    <td><CopyableCode code="target_group_name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the target group. This name must be unique for all target groups owned by your Amazon Web Services account in the specified Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedDate" /></td>
+    <td><CopyableCode code="updated_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the target group was last updated.</td>
 </tr>
@@ -201,14 +201,14 @@ Returns information about DB proxy target groups, represented by DBProxyTargetGr
 
 ```sql
 SELECT
-ConnectionPoolConfig,
-CreatedDate,
-DBProxyName,
-IsDefault,
-Status,
-TargetGroupArn,
-TargetGroupName,
-UpdatedDate
+connection_pool_config,
+created_date,
+db_proxy_name,
+is_default,
+status,
+target_group_arn,
+target_group_name,
+updated_date
 FROM aws.rds.db_proxy_target_groups
 WHERE DBProxyName = '{{ DBProxyName }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,14 +245,14 @@ AND region = '{{ region }}' --required
 AND ConnectionPoolConfig = '{{ ConnectionPoolConfig}}'
 AND NewName = '{{ NewName}}'
 RETURNING
-ConnectionPoolConfig,
-CreatedDate,
-DBProxyName,
-IsDefault,
-Status,
-TargetGroupArn,
-TargetGroupName,
-UpdatedDate;
+connection_pool_config,
+created_date,
+db_proxy_name,
+is_default,
+status,
+target_group_arn,
+target_group_name,
+updated_date;
 ```
 </TabItem>
 </Tabs>

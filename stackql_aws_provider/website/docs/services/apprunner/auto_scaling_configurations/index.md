@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingConfigurationArn" /></td>
+    <td><CopyableCode code="auto_scaling_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of this auto scaling configuration. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:(\w|\/|-)&#123;1,1011&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingConfigurationName" /></td>
+    <td><CopyableCode code="auto_scaling_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The customer-provided auto scaling configuration name. It can be used in multiple revisions of a configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-_&#93;&#123;3,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingConfigurationRevision" /></td>
+    <td><CopyableCode code="auto_scaling_configuration_revision" /></td>
     <td><code>integer</code></td>
     <td>The revision of this auto scaling configuration. It's unique among all the active configurations ("Status": "ACTIVE") that share the same AutoScalingConfigurationName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the auto scaling configuration was created. It's in Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the auto scaling configuration was deleted. It's in Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasAssociatedService" /></td>
+    <td><CopyableCode code="has_associated_service" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if this auto scaling configuration has an App Runner service associated with it. A value of true indicates one or more services are associated. A value of false indicates no services are associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if this auto scaling configuration should be used as the default for a new App Runner service that does not have an auto scaling configuration ARN specified during creation. Each account can have only one default AutoScalingConfiguration per region. The default AutoScalingConfiguration can be any revision under the same AutoScalingConfigurationName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Latest" /></td>
+    <td><CopyableCode code="latest" /></td>
     <td><code>boolean</code></td>
     <td>It's set to true for the configuration with the highest Revision among all configurations that share the same AutoScalingConfigurationName. It's set to false otherwise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrency" /></td>
+    <td><CopyableCode code="max_concurrency" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of concurrent requests that an instance processes. If the number of concurrent requests exceeds this limit, App Runner scales the service up.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSize" /></td>
+    <td><CopyableCode code="max_size" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of instances that a service scales up to. At most MaxSize instances actively serve traffic for your service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinSize" /></td>
+    <td><CopyableCode code="min_size" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of instances that App Runner provisions for a service. The service always has at least MinSize provisioned instances. Some of them actively serve traffic. The rest of them (provisioned and inactive instances) are a cost-effective compute capacity reserve and are ready to be quickly activated. You pay for memory usage of all the provisioned instances. You pay for CPU usage of only the active subset. App Runner temporarily doubles the number of provisioned instances during deployments, to maintain the same capacity for both old and new code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the auto scaling configuration. If the status of a configuration revision is INACTIVE, it was deleted and can't be used. Inactive configuration revisions are permanently removed some time after they are deleted. (ACTIVE, INACTIVE)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingConfigurationSummaryList" /></td>
+    <td><CopyableCode code="auto_scaling_configuration_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of summary information records for auto scaling configurations. In a paginated request, the request returns up to MaxResults records for each call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -228,18 +228,18 @@ Return a full description of an App Runner automatic scaling configuration resou
 
 ```sql
 SELECT
-AutoScalingConfigurationArn,
-AutoScalingConfigurationName,
-AutoScalingConfigurationRevision,
-CreatedAt,
-DeletedAt,
-HasAssociatedService,
-IsDefault,
-Latest,
-MaxConcurrency,
-MaxSize,
-MinSize,
-Status
+auto_scaling_configuration_arn,
+auto_scaling_configuration_name,
+auto_scaling_configuration_revision,
+created_at,
+deleted_at,
+has_associated_service,
+is_default,
+latest,
+max_concurrency,
+max_size,
+min_size,
+status
 FROM aws.apprunner.auto_scaling_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,8 +251,8 @@ Returns a list of active App Runner automatic scaling configurations in your Ama
 
 ```sql
 SELECT
-AutoScalingConfigurationSummaryList,
-NextToken
+auto_scaling_configuration_summary_list,
+next_token
 FROM aws.apprunner.auto_scaling_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,7 +291,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AutoScalingConfiguration
+auto_scaling_configuration
 ;
 ```
 </TabItem>
@@ -351,7 +351,7 @@ WHERE
 region = '{{ region }}' --required
 AND AutoScalingConfigurationArn = '{{ AutoScalingConfigurationArn }}' --required
 RETURNING
-AutoScalingConfiguration;
+auto_scaling_configuration;
 ```
 </TabItem>
 </Tabs>

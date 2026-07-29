@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="userAliases" /></td>
+    <td><CopyableCode code="user_aliases" /></td>
     <td><code>array</code></td>
     <td>A list of user aliases attached to a user.</td>
 </tr>
@@ -150,7 +150,7 @@ Describes the universally unique identifier (UUID) associated with a local user 
 
 ```sql
 SELECT
-userAliases
+user_aliases
 FROM aws.qbusiness.users
 WHERE application_id = '{{ application_id }}' -- required
 AND user_id = '{{ user_id }}' -- required
@@ -239,9 +239,9 @@ application_id = '{{ application_id }}' --required
 AND user_id = '{{ user_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-userAliasesAdded,
-userAliasesDeleted,
-userAliasesUpdated;
+user_aliases_added,
+user_aliases_deleted,
+user_aliases_updated;
 ```
 </TabItem>
 </Tabs>

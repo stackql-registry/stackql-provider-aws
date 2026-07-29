@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultLogLevel" /></td>
+    <td><CopyableCode code="default_log_level" /></td>
     <td><code>string</code></td>
     <td>The log level for a log message. The log levels can be disabled, or set to ERROR to display less verbose logs containing only error information, or to INFO for more detailed logs. (INFO, ERROR, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FuotaTaskLogOptions" /></td>
+    <td><CopyableCode code="fuota_task_log_options" /></td>
     <td><code>array</code></td>
     <td>The list of FUOTA task log options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessDeviceLogOptions" /></td>
+    <td><CopyableCode code="wireless_device_log_options" /></td>
     <td><code>array</code></td>
     <td>The list of wireless device log options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessGatewayLogOptions" /></td>
+    <td><CopyableCode code="wireless_gateway_log_options" /></td>
     <td><code>array</code></td>
     <td>The list of wireless gateway log options.</td>
 </tr>
@@ -141,10 +141,10 @@ Returns current default log levels or log levels by resource types. Based on the
 
 ```sql
 SELECT
-DefaultLogLevel,
-FuotaTaskLogOptions,
-WirelessDeviceLogOptions,
-WirelessGatewayLogOptions
+default_log_level,
+fuota_task_log_options,
+wireless_device_log_options,
+wireless_gateway_log_options
 FROM aws.iotwireless.log_levels_by_resource_types
 WHERE region = '{{ region }}' -- required
 ;

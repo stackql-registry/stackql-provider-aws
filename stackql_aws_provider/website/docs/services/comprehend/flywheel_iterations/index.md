@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation start time of the flywheel iteration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The completion time of this flywheel iteration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluatedModelArn" /></td>
+    <td><CopyableCode code="evaluated_model_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the evaluated model associated with this flywheel iteration. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier|entity-recognizer)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluatedModelMetrics" /></td>
+    <td><CopyableCode code="evaluated_model_metrics" /></td>
     <td><code>object</code></td>
     <td>The evaluation metrics associated with the evaluated model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationManifestS3Prefix" /></td>
+    <td><CopyableCode code="evaluation_manifest_s3_prefix" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;s3:​//&#91;a-z0-9&#93;&#91;\.\-a-z0-9&#93;&#123;1,61&#125;&#91;a-z0-9&#93;(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelIterationId" /></td>
+    <td><CopyableCode code="flywheel_iteration_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;&#91;0-9&#93;&#123;8&#125;T&#91;0-9&#93;&#123;6&#125;Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the status of the flywheel iteration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the flywheel iteration. (TRAINING, EVALUATING, COMPLETED, FAILED, STOP_REQUESTED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainedModelArn" /></td>
+    <td><CopyableCode code="trained_model_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trained model associated with this flywheel iteration. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier|entity-recognizer)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainedModelMetrics" /></td>
+    <td><CopyableCode code="trained_model_metrics" /></td>
     <td><code>object</code></td>
     <td>The evaluation metrics associated with the evaluated model.</td>
 </tr>
@@ -169,17 +169,17 @@ Retrieve the configuration properties of a flywheel iteration. For more informat
 
 ```sql
 SELECT
-CreationTime,
-EndTime,
-EvaluatedModelArn,
-EvaluatedModelMetrics,
-EvaluationManifestS3Prefix,
-FlywheelArn,
-FlywheelIterationId,
-Message,
-Status,
-TrainedModelArn,
-TrainedModelMetrics
+creation_time,
+end_time,
+evaluated_model_arn,
+evaluated_model_metrics,
+evaluation_manifest_s3_prefix,
+flywheel_arn,
+flywheel_iteration_id,
+message,
+status,
+trained_model_arn,
+trained_model_metrics
 FROM aws.comprehend.flywheel_iterations
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was created.</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idMappingTechniques" /></td>
+    <td><CopyableCode code="id_mapping_techniques" /></td>
     <td><code>object</code></td>
     <td>An object which defines the ID mapping technique and any additional configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incrementalRunConfig" /></td>
+    <td><CopyableCode code="incremental_run_config" /></td>
     <td><code>object</code></td>
     <td>Incremental run configuration for an ID mapping workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputSourceConfig" /></td>
+    <td><CopyableCode code="input_source_config" /></td>
     <td><code>array</code></td>
     <td>A list of InputSource objects, which have the fields InputSourceARN and SchemaName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputSourceConfig" /></td>
+    <td><CopyableCode code="output_source_config" /></td>
     <td><code>array</code></td>
     <td>A list of OutputSource objects, each of which contains fields outputS3Path and KMSArn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role. Entity Resolution assumes this role to access Amazon Web Services resources on your behalf. (pattern: &lt;code&gt;$|^arn:aws:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -91,17 +91,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the IdMappingWorkflow . (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(idmappingworkflow/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowName" /></td>
+    <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the IdMappingWorkflow. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(idmappingworkflow/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowName" /></td>
+    <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -248,17 +248,17 @@ Returns the IdMappingWorkflow with a given name, if it exists.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-idMappingTechniques,
-incrementalRunConfig,
-inputSourceConfig,
-outputSourceConfig,
-roleArn,
+id_mapping_techniques,
+incremental_run_config,
+input_source_config,
+output_source_config,
+role_arn,
 tags,
-updatedAt,
-workflowArn,
-workflowName
+updated_at,
+workflow_arn,
+workflow_name
 FROM aws.entityresolution.id_mapping_workflows
 WHERE workflow_name = '{{ workflow_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -271,10 +271,10 @@ Returns a list of all the IdMappingWorkflows that have been created for an Amazo
 
 ```sql
 SELECT
-createdAt,
-updatedAt,
-workflowArn,
-workflowName
+created_at,
+updated_at,
+workflow_arn,
+workflow_name
 FROM aws.entityresolution.id_mapping_workflows
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -322,13 +322,13 @@ SELECT
 '{{ region }}'
 RETURNING
 description,
-idMappingTechniques,
-incrementalRunConfig,
-inputSourceConfig,
-outputSourceConfig,
-roleArn,
-workflowArn,
-workflowName
+id_mapping_techniques,
+incremental_run_config,
+input_source_config,
+output_source_config,
+role_arn,
+workflow_arn,
+workflow_name
 ;
 ```
 </TabItem>
@@ -413,13 +413,13 @@ AND inputSourceConfig = '{{ inputSourceConfig }}' --required
 AND idMappingTechniques = '{{ idMappingTechniques }}' --required
 RETURNING
 description,
-idMappingTechniques,
-incrementalRunConfig,
-inputSourceConfig,
-outputSourceConfig,
-roleArn,
-workflowArn,
-workflowName;
+id_mapping_techniques,
+incremental_run_config,
+input_source_config,
+output_source_config,
+role_arn,
+workflow_arn,
+workflow_name;
 ```
 </TabItem>
 </Tabs>

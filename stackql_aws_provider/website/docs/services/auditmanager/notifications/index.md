@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -134,7 +134,7 @@ Returns a list of all Audit Manager notifications.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 notifications
 FROM aws.auditmanager.notifications
 WHERE region = '{{ region }}' -- required

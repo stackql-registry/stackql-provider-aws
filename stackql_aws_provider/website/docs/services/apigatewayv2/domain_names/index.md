@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiMappingSelectionExpression" /></td>
+    <td><CopyableCode code="api_mapping_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-512&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainNameArn" /></td>
+    <td><CopyableCode code="domain_name_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainNameConfigurations" /></td>
+    <td><CopyableCode code="domain_name_configurations" /></td>
     <td><code>array</code></td>
     <td>The domain name configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MutualTlsAuthentication" /></td>
+    <td><CopyableCode code="mutual_tls_authentication" /></td>
     <td><code>object</code></td>
     <td>The mutual TLS authentication configuration for a custom domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingMode" /></td>
+    <td><CopyableCode code="routing_mode" /></td>
     <td><code>string</code></td>
     <td>The routing mode. (API_MAPPING_ONLY, ROUTING_RULE_ONLY, ROUTING_RULE_THEN_API_MAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags associated with a domain name.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiMappingSelectionExpression" /></td>
+    <td><CopyableCode code="api_mapping_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-512&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainNameArn" /></td>
+    <td><CopyableCode code="domain_name_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainNameConfigurations" /></td>
+    <td><CopyableCode code="domain_name_configurations" /></td>
     <td><code>array</code></td>
     <td>The domain name configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MutualTlsAuthentication" /></td>
+    <td><CopyableCode code="mutual_tls_authentication" /></td>
     <td><code>object</code></td>
     <td>The mutual TLS authentication configuration for a custom domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingMode" /></td>
+    <td><CopyableCode code="routing_mode" /></td>
     <td><code>string</code></td>
     <td>The routing mode. (API_MAPPING_ONLY, ROUTING_RULE_ONLY, ROUTING_RULE_THEN_API_MAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags associated with a domain name.</td>
 </tr>
@@ -243,13 +243,13 @@ Gets a domain name.
 
 ```sql
 SELECT
-ApiMappingSelectionExpression,
-DomainName,
-DomainNameArn,
-DomainNameConfigurations,
-MutualTlsAuthentication,
-RoutingMode,
-Tags
+api_mapping_selection_expression,
+domain_name,
+domain_name_arn,
+domain_name_configurations,
+mutual_tls_authentication,
+routing_mode,
+tags
 FROM aws.apigatewayv2.domain_names
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,13 +262,13 @@ Gets the domain names for an AWS account.
 
 ```sql
 SELECT
-ApiMappingSelectionExpression,
-DomainName,
-DomainNameArn,
-DomainNameConfigurations,
-MutualTlsAuthentication,
-RoutingMode,
-Tags
+api_mapping_selection_expression,
+domain_name,
+domain_name_arn,
+domain_name_configurations,
+mutual_tls_authentication,
+routing_mode,
+tags
 FROM aws.apigatewayv2.domain_names
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -309,13 +309,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ApiMappingSelectionExpression,
-DomainName,
-DomainNameArn,
-DomainNameConfigurations,
-MutualTlsAuthentication,
-RoutingMode,
-Tags
+api_mapping_selection_expression,
+domain_name,
+domain_name_arn,
+domain_name_configurations,
+mutual_tls_authentication,
+routing_mode,
+tags
 ;
 ```
 </TabItem>
@@ -385,13 +385,13 @@ WHERE
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApiMappingSelectionExpression,
-DomainName,
-DomainNameArn,
-DomainNameConfigurations,
-MutualTlsAuthentication,
-RoutingMode,
-Tags;
+api_mapping_selection_expression,
+domain_name,
+domain_name_arn,
+domain_name_configurations,
+mutual_tls_authentication,
+routing_mode,
+tags;
 ```
 </TabItem>
 </Tabs>

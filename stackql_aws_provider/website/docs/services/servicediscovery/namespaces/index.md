@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that Cloud Map assigns to the namespace when you create it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the namespace was created, in Unix date/time format and Coordinated Universal Time (UTC). The value of CreateDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request and that allows failed requests to be retried without the risk of running an operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description that you specify for the namespace when you create it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of a namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace, such as example.com. (pattern: &lt;code&gt;^&#91;!-~&#93;&#123;1,1024&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Properties" /></td>
+    <td><CopyableCode code="properties" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains information that's specific to the type of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that created the namespace. If this isn't your account ID, it's the ID of the account that shared the namespace with your account. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCount" /></td>
+    <td><CopyableCode code="service_count" /></td>
     <td><code>integer</code></td>
     <td>The number of services that are associated with the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the namespace. The methods for discovering instances depends on the value that you specify: HTTP Instances can be discovered only programmatically, using the Cloud Map DiscoverInstances API. DNS_PUBLIC Instances can be discovered using public DNS queries and using the DiscoverInstances API. DNS_PRIVATE Instances can be discovered using DNS queries in VPCs and using the DiscoverInstances API. (DNS_PUBLIC, DNS_PRIVATE, HTTP)</td>
 </tr>
@@ -227,16 +227,16 @@ Gets information about a namespace.
 
 ```sql
 SELECT
-Arn,
-CreateDate,
-CreatorRequestId,
-Description,
-Id,
-Name,
-Properties,
-ResourceOwner,
-ServiceCount,
-Type
+arn,
+create_date,
+creator_request_id,
+description,
+id,
+name,
+properties,
+resource_owner,
+service_count,
+type
 FROM aws.servicediscovery.namespaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -278,7 +278,7 @@ SELECT
 '{{ Properties }}',
 '{{ region }}'
 RETURNING
-OperationId
+operation_id
 ;
 ```
 </TabItem>
@@ -301,7 +301,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-OperationId
+operation_id
 ;
 ```
 </TabItem>
@@ -369,7 +369,7 @@ Namespace = '{{ Namespace }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-OperationId;
+operation_id;
 ```
 </TabItem>
 </Tabs>

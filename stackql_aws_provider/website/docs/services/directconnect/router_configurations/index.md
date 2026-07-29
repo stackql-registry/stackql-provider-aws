@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="customerRouterConfig" /></td>
+    <td><CopyableCode code="customer_router_config" /></td>
     <td><code>string</code></td>
     <td>The customer router configuration.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The details about the router.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualInterfaceId" /></td>
+    <td><CopyableCode code="virtual_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualInterfaceName" /></td>
+    <td><CopyableCode code="virtual_interface_name" /></td>
     <td><code>string</code></td>
     <td>Provides the details about a virtual interface's router.</td>
 </tr>
@@ -134,10 +134,10 @@ Details about the router.
 
 ```sql
 SELECT
-customerRouterConfig,
+customer_router_config,
 router,
-virtualInterfaceId,
-virtualInterfaceName
+virtual_interface_id,
+virtual_interface_name
 FROM aws.directconnect.router_configurations
 WHERE region = '{{ region }}' -- required
 ;

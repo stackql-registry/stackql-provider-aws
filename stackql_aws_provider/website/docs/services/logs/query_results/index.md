@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="encryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>If you associated an KMS key with the CloudWatch Logs Insights query results in this account, this field displays the ARN of the key that's used to encrypt the query results when StartQuery stores them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more log events remaining in the results, the response includes a nextToken. You can use this token in a subsequent GetQueryResults request to get the next set of results. You can retrieve up to 100,000 log event results from a query by paginating with this token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryLanguage" /></td>
+    <td><CopyableCode code="query_language" /></td>
     <td><code>string</code></td>
     <td>The query language used for this query. For more information about the query languages that CloudWatch Logs supports, see Supported query languages. (CWLI, SQL, PPL)</td>
 </tr>
@@ -144,9 +144,9 @@ Returns the results from the specified query. Only the fields requested in the q
 
 ```sql
 SELECT
-encryptionKey,
-nextToken,
-queryLanguage,
+encryption_key,
+next_token,
+query_language,
 results,
 statistics,
 status

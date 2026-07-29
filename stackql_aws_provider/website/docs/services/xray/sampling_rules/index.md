@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the rule was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SamplingRule" /></td>
+    <td><CopyableCode code="sampling_rule" /></td>
     <td><code>object</code></td>
     <td>A sampling rule that services use to decide whether to instrument a request. Rule fields can match properties of the service, or properties of a request. The service can ignore rules that don't match its properties.</td>
 </tr>
@@ -150,9 +150,9 @@ Retrieves all sampling rules.
 
 ```sql
 SELECT
-CreatedAt,
-ModifiedAt,
-SamplingRule
+created_at,
+modified_at,
+sampling_rule
 FROM aws.xray.sampling_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -185,7 +185,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-SamplingRuleRecord
+sampling_rule_record
 ;
 ```
 </TabItem>
@@ -247,7 +247,7 @@ WHERE
 region = '{{ region }}' --required
 AND SamplingRuleUpdate = '{{ SamplingRuleUpdate }}' --required
 RETURNING
-SamplingRuleRecord;
+sampling_rule_record;
 ```
 </TabItem>
 </Tabs>

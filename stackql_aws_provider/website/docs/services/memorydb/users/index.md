@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ACLNames" /></td>
+    <td><CopyableCode code="acl_names" /></td>
     <td><code>array</code></td>
     <td>The names of the Access Control Lists to which the user belongs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessString" /></td>
+    <td><CopyableCode code="access_string" /></td>
     <td><code>string</code></td>
     <td>Access permissions string used for this user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Authentication" /></td>
+    <td><CopyableCode code="authentication" /></td>
     <td><code>object</code></td>
     <td>Denotes whether the user requires a password to authenticate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The minimum engine version supported for the user</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the user</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the user status. Can be "active", "modifying" or "deleting".</td>
 </tr>
@@ -170,13 +170,13 @@ Returns a list of users.
 
 ```sql
 SELECT
-ACLNames,
-ARN,
-AccessString,
-Authentication,
-MinimumEngineVersion,
-Name,
-Status
+acl_names,
+arn,
+access_string,
+authentication,
+minimum_engine_version,
+name,
+status
 FROM aws.memorydb.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,7 +213,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-User
+user
 ;
 ```
 </TabItem>
@@ -274,7 +274,7 @@ WHERE
 region = '{{ region }}' --required
 AND UserName = '{{ UserName }}' --required
 RETURNING
-User;
+user;
 ```
 </TabItem>
 </Tabs>

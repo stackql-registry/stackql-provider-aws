@@ -50,102 +50,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BaseCurrencyAmount" /></td>
+    <td><CopyableCode code="base_currency_amount" /></td>
     <td><code>object</code></td>
     <td>The summary with the product and service currency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillSourceAccounts" /></td>
+    <td><CopyableCode code="bill_source_accounts" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon Web Services account IDs that are the bill source of the invoice. Currently, only a single bill source account is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillSourceAccountsTotalCount" /></td>
+    <td><CopyableCode code="bill_source_accounts_total_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of accounts that are the bill source of the invoice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillType" /></td>
+    <td><CopyableCode code="bill_type" /></td>
     <td><code>string</code></td>
     <td>The type of the bill. (ANNIVERSARY, PURCHASE, REFUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingPeriod" /></td>
+    <td><CopyableCode code="billing_period" /></td>
     <td><code>object</code></td>
     <td>The billing period of the invoice-related document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CommercialInvoiceId" /></td>
+    <td><CopyableCode code="commercial_invoice_id" /></td>
     <td><code>string</code></td>
     <td>The commercial invoice ID. This is only applicable for tax invoices and identifies the associated commercial invoice. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DueDate" /></td>
+    <td><CopyableCode code="due_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The invoice due date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryStatus" /></td>
+    <td><CopyableCode code="einvoice_delivery_status" /></td>
     <td><code>string</code></td>
     <td>The e-invoice delivery status. (DELIVERED, NOT_DELIVERED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Entity" /></td>
+    <td><CopyableCode code="entity" /></td>
     <td><code>object</code></td>
     <td>The organization name providing Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceFrequency" /></td>
+    <td><CopyableCode code="invoice_frequency" /></td>
     <td><code>string</code></td>
     <td>The frequency of the invoice. (ONE_TIME, RECURRING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceId" /></td>
+    <td><CopyableCode code="invoice_id" /></td>
     <td><code>string</code></td>
     <td>The invoice ID. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceType" /></td>
+    <td><CopyableCode code="invoice_type" /></td>
     <td><code>string</code></td>
     <td>The type of invoice. (INVOICE, CREDIT_MEMO, PAYMENT_RECEIPT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IssuedDate" /></td>
+    <td><CopyableCode code="issued_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The issued date of the invoice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalInvoiceId" /></td>
+    <td><CopyableCode code="original_invoice_id" /></td>
     <td><code>string</code></td>
     <td>The initial or original invoice ID. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentCurrencyAmount" /></td>
+    <td><CopyableCode code="payment_currency_amount" /></td>
     <td><code>object</code></td>
     <td>The summary with the customer configured currency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderNumber" /></td>
+    <td><CopyableCode code="purchase_order_number" /></td>
     <td><code>string</code></td>
     <td>The purchase order number associated to the invoice. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceiverRole" /></td>
+    <td><CopyableCode code="receiver_role" /></td>
     <td><code>string</code></td>
     <td>The role of the invoice receiver. (SELLER, RESELLER, BUYER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaxAuthorityStatus" /></td>
+    <td><CopyableCode code="tax_authority_status" /></td>
     <td><code>string</code></td>
     <td>The current status of an invoice as reported to the tax authority. This captures scenarios where an invoice may be cancelled after issuance. (ISSUED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaxCurrencyAmount" /></td>
+    <td><CopyableCode code="tax_currency_amount" /></td>
     <td><code>object</code></td>
     <td>The summary with the tax currency.</td>
 </tr>
@@ -214,26 +214,26 @@ Retrieves your invoice details programmatically, without line item details.
 
 ```sql
 SELECT
-AccountId,
-BaseCurrencyAmount,
-BillSourceAccounts,
-BillSourceAccountsTotalCount,
-BillType,
-BillingPeriod,
-CommercialInvoiceId,
-DueDate,
-EinvoiceDeliveryStatus,
-Entity,
-InvoiceFrequency,
-InvoiceId,
-InvoiceType,
-IssuedDate,
-OriginalInvoiceId,
-PaymentCurrencyAmount,
-PurchaseOrderNumber,
-ReceiverRole,
-TaxAuthorityStatus,
-TaxCurrencyAmount
+account_id,
+base_currency_amount,
+bill_source_accounts,
+bill_source_accounts_total_count,
+bill_type,
+billing_period,
+commercial_invoice_id,
+due_date,
+einvoice_delivery_status,
+entity,
+invoice_frequency,
+invoice_id,
+invoice_type,
+issued_date,
+original_invoice_id,
+payment_currency_amount,
+purchase_order_number,
+receiver_role,
+tax_authority_status,
+tax_currency_amount
 FROM aws.invoicing.invoice_summaries
 WHERE region = '{{ region }}' -- required
 ;

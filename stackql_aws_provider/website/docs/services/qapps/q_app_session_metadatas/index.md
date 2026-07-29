@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="sessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Q App session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Q App session. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionName" /></td>
+    <td><CopyableCode code="session_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Q App session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionOwner" /></td>
+    <td><CopyableCode code="session_owner" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the current user is the owner of the Q App session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sharingConfiguration" /></td>
+    <td><CopyableCode code="sharing_configuration" /></td>
     <td><code>object</code></td>
     <td>The sharing configuration of the Q App data collection session.</td>
 </tr>
@@ -156,11 +156,11 @@ Retrieves the current configuration of a Q App session.
 
 ```sql
 SELECT
-sessionArn,
-sessionId,
-sessionName,
-sessionOwner,
-sharingConfiguration
+session_arn,
+session_id,
+session_name,
+session_owner,
+sharing_configuration
 FROM aws.qapps.q_app_session_metadatas
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND sessionId = '{{ sessionId }}' -- required
@@ -195,10 +195,10 @@ AND region = '{{ region }}' --required
 AND sessionId = '{{ sessionId }}' --required
 AND sharingConfiguration = '{{ sharingConfiguration }}' --required
 RETURNING
-sessionArn,
-sessionId,
-sessionName,
-sharingConfiguration;
+session_arn,
+session_id,
+session_name,
+sharing_configuration;
 ```
 </TabItem>
 </Tabs>

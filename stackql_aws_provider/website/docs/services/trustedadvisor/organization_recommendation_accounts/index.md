@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountRecommendationArn" /></td>
+    <td><CopyableCode code="account_recommendation_arn" /></td>
     <td><code>string</code></td>
     <td>The Recommendation ARN (pattern: &lt;code&gt;arn:&#91;\w-&#93;+:trustedadvisor::\d&#123;12&#125;:recommendation\/&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the Recommendation was last updated</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStage" /></td>
+    <td><CopyableCode code="lifecycle_stage" /></td>
     <td><code>string</code></td>
     <td>The lifecycle stage from AWS Trusted Advisor Priority (in_progress, pending_response, dismissed, resolved)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateReason" /></td>
+    <td><CopyableCode code="update_reason" /></td>
     <td><code>string</code></td>
     <td>Reason for the lifecycle stage change (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateReasonCode" /></td>
+    <td><CopyableCode code="update_reason_code" /></td>
     <td><code>string</code></td>
     <td>Reason code for the lifecycle state change (non_critical_account, temporary_account, valid_business_case, other_methods_available, low_priority, not_applicable, other)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedOnBehalfOf" /></td>
+    <td><CopyableCode code="updated_on_behalf_of" /></td>
     <td><code>string</code></td>
     <td>The person on whose behalf a Technical Account Manager (TAM) updated the recommendation. This information is only available when a Technical Account Manager takes an action on a recommendation managed by AWS Trusted Advisor Priority</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedOnBehalfOfJobTitle" /></td>
+    <td><CopyableCode code="updated_on_behalf_of_job_title" /></td>
     <td><code>string</code></td>
     <td>The job title of the person on whose behalf a Technical Account Manager (TAM) updated the recommendation. This information is only available when a Technical Account Manager takes an action on a recommendation managed by AWS Trusted Advisor Priority</td>
 </tr>
@@ -174,14 +174,14 @@ Lists the accounts that own the resources for an organization aggregate recommen
 
 ```sql
 SELECT
-accountId,
-accountRecommendationArn,
-lastUpdatedAt,
-lifecycleStage,
-updateReason,
-updateReasonCode,
-updatedOnBehalfOf,
-updatedOnBehalfOfJobTitle
+account_id,
+account_recommendation_arn,
+last_updated_at,
+lifecycle_stage,
+update_reason,
+update_reason_code,
+updated_on_behalf_of,
+updated_on_behalf_of_job_title
 FROM aws.trustedadvisor.organization_recommendation_accounts
 WHERE organization_recommendation_identifier = '{{ organization_recommendation_identifier }}' -- required
 AND region = '{{ region }}' -- required

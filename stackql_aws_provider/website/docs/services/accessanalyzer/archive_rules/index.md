@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the archive rule was created.</td>
 </tr>
@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>A filter used to define the archive rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the archive rule. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_.-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the archive rule was last updated.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the archive rule was created.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>A filter used to define the archive rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the archive rule. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_.-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the archive rule was last updated.</td>
 </tr>
@@ -223,10 +223,10 @@ Retrieves information about an archive rule. To learn about filter keys that you
 
 ```sql
 SELECT
-createdAt,
+created_at,
 filter,
-ruleName,
-updatedAt
+rule_name,
+updated_at
 FROM aws.accessanalyzer.archive_rules
 WHERE analyzer_name = '{{ analyzer_name }}' -- required
 AND rule_name = '{{ rule_name }}' -- required
@@ -240,10 +240,10 @@ Retrieves a list of archive rules created for the specified analyzer.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 filter,
-ruleName,
-updatedAt
+rule_name,
+updated_at
 FROM aws.accessanalyzer.archive_rules
 WHERE analyzer_name = '{{ analyzer_name }}' -- required
 AND region = '{{ region }}' -- required

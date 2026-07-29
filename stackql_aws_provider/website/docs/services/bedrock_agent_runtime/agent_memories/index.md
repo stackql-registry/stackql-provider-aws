@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="sessionSummary" /></td>
+    <td><CopyableCode code="session_summary" /></td>
     <td><code>object</code></td>
     <td>Contains summary of a session.</td>
 </tr>
@@ -166,7 +166,7 @@ Gets the sessions stored in the memory of the agent.
 
 ```sql
 SELECT
-sessionSummary
+session_summary
 FROM aws.bedrock_agent_runtime.agent_memories
 WHERE agent_alias_id = '{{ agent_alias_id }}' -- required
 AND agent_id = '{{ agent_id }}' -- required

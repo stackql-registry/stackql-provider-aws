@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Members" /></td>
+    <td><CopyableCode code="members" /></td>
     <td><code>array</code></td>
     <td>The list of details about the Security Hub CSPM member accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedAccounts" /></td>
+    <td><CopyableCode code="unprocessed_accounts" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon Web Services accounts that could not be processed. For each account, the list includes the account ID and the email address.</td>
 </tr>
@@ -75,37 +75,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdministratorId" /></td>
+    <td><CopyableCode code="administrator_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Security Hub CSPM administrator account associated with this member account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email address of the member account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitedAt" /></td>
+    <td><CopyableCode code="invited_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp for the date and time when the invitation was sent to the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterId" /></td>
+    <td><CopyableCode code="master_id" /></td>
     <td><code>string</code></td>
     <td>This is replaced by AdministratorID. The Amazon Web Services account ID of the Security Hub CSPM administrator account associated with this member account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberStatus" /></td>
+    <td><CopyableCode code="member_status" /></td>
     <td><code>string</code></td>
     <td>The status of the relationship between the member account and its administrator account. The status can have one of the following values: Created - Indicates that the administrator account added the member account, but has not yet invited the member account. Invited - Indicates that the administrator account invited the member account. The member account has not yet responded to the invitation. Enabled - Indicates that the member account is currently active. For manually invited member accounts, indicates that the member account accepted the invitation. Removed - Indicates that the administrator account disassociated the member account. Resigned - Indicates that the member account disassociated themselves from the administrator account. Deleted - Indicates that the administrator account deleted the member account. AccountSuspended - Indicates that an organization account was suspended from Amazon Web Services at the same time that the administrator account tried to enable the organization account as a member account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for the date and time when the member account was updated.</td>
 </tr>
@@ -225,8 +225,8 @@ Returns the details for the Security Hub CSPM member accounts for the specified 
 
 ```sql
 SELECT
-Members,
-UnprocessedAccounts
+members,
+unprocessed_accounts
 FROM aws.securityhub.members
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,13 +238,13 @@ Lists details about all member accounts for the current Security Hub CSPM admini
 
 ```sql
 SELECT
-AccountId,
-AdministratorId,
-Email,
-InvitedAt,
-MasterId,
-MemberStatus,
-UpdatedAt
+account_id,
+administrator_id,
+email,
+invited_at,
+master_id,
+member_status,
+updated_at
 FROM aws.securityhub.members
 WHERE region = '{{ region }}' -- required
 AND OnlyAssociated = '{{ OnlyAssociated }}'
@@ -278,7 +278,7 @@ SELECT
 '{{ AccountDetails }}' /* required */,
 '{{ region }}'
 RETURNING
-UnprocessedAccounts
+unprocessed_accounts
 ;
 ```
 </TabItem>

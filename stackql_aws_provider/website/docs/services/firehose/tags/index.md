@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HasMoreTags" /></td>
+    <td><CopyableCode code="has_more_tags" /></td>
     <td><code>boolean</code></td>
     <td>If this is true in the response, more tags are available. To list the remaining tags, set ExclusiveStartTagKey to the key of the last tag returned and call ListTagsForDeliveryStream again.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with DeliveryStreamName, starting with the first tag after ExclusiveStartTagKey and up to the specified Limit.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the tags for the specified Firehose stream. This operation has a limit of 
 
 ```sql
 SELECT
-HasMoreTags,
-Tags
+has_more_tags,
+tags
 FROM aws.firehose.tags
 WHERE region = '{{ region }}' -- required
 ;

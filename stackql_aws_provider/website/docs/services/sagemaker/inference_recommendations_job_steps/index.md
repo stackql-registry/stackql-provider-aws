@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InferenceBenchmark" /></td>
+    <td><CopyableCode code="inference_benchmark" /></td>
     <td><code>object</code></td>
     <td>The details for a specific benchmark.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Inference Recommender job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the benchmark. (PENDING, IN_PROGRESS, COMPLETED, FAILED, STOPPING, STOPPED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepType" /></td>
+    <td><CopyableCode code="step_type" /></td>
     <td><code>string</code></td>
     <td>The type of the subtask. BENCHMARK: Evaluate the performance of your model on different instance types. (BENCHMARK)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a list of the subtasks for an Inference Recommender job. The supported s
 
 ```sql
 SELECT
-InferenceBenchmark,
-JobName,
-Status,
-StepType
+inference_benchmark,
+job_name,
+status,
+step_type
 FROM aws.sagemaker.inference_recommendations_job_steps
 WHERE region = '{{ region }}' -- required
 ;

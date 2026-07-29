@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ControlArn" /></td>
+    <td><CopyableCode code="control_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the control in the mapping. (pattern: &lt;code&gt;arn:(aws(?:&#91;-a-z&#93;*)?):(controlcatalog|controltower):&#91;a-zA-Z0-9-&#93;*::control/&#91;0-9a-zA-Z_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mapping" /></td>
+    <td><CopyableCode code="mapping" /></td>
     <td><code>object</code></td>
     <td>The details of the mapping relationship, for example, containing framework, common control, or related control information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MappingType" /></td>
+    <td><CopyableCode code="mapping_type" /></td>
     <td><code>string</code></td>
     <td>The type of mapping relationship between the control and other entities. (FRAMEWORK, COMMON_CONTROL, RELATED_CONTROL)</td>
 </tr>
@@ -139,9 +139,9 @@ Returns a paginated list of control mappings from the Control Catalog. Control m
 
 ```sql
 SELECT
-ControlArn,
-Mapping,
-MappingType
+control_arn,
+mapping,
+mapping_type
 FROM aws.controlcatalog.control_mappings
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

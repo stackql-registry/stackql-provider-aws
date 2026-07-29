@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="attachmentState" /></td>
+    <td><CopyableCode code="attachment_state" /></td>
     <td><code>string</code></td>
     <td>The state of the attachment. The following are the possible values: attaching: The initial state after a virtual interface is created using the Direct Connect gateway. attached: The Direct Connect gateway and virtual interface are attached and ready to pass traffic. detaching: The initial state after calling DeleteVirtualInterface. detached: The virtual interface is detached from the Direct Connect gateway. Traffic flow between the Direct Connect gateway and virtual interface is stopped. (attaching, attached, detaching, detached)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachmentType" /></td>
+    <td><CopyableCode code="attachment_type" /></td>
     <td><code>string</code></td>
     <td>The type of attachment. (TransitVirtualInterface, PrivateVirtualInterface)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="directConnectGatewayId" /></td>
+    <td><CopyableCode code="direct_connect_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Direct Connect gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateChangeError" /></td>
+    <td><CopyableCode code="state_change_error" /></td>
     <td><code>string</code></td>
     <td>The error message if the state of an object failed to advance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualInterfaceId" /></td>
+    <td><CopyableCode code="virtual_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualInterfaceOwnerAccount" /></td>
+    <td><CopyableCode code="virtual_interface_owner_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualInterfaceRegion" /></td>
+    <td><CopyableCode code="virtual_interface_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the virtual interface is located.</td>
 </tr>
@@ -149,13 +149,13 @@ Lists the attachments between your Direct Connect gateways and virtual interface
 
 ```sql
 SELECT
-attachmentState,
-attachmentType,
-directConnectGatewayId,
-stateChangeError,
-virtualInterfaceId,
-virtualInterfaceOwnerAccount,
-virtualInterfaceRegion
+attachment_state,
+attachment_type,
+direct_connect_gateway_id,
+state_change_error,
+virtual_interface_id,
+virtual_interface_owner_account,
+virtual_interface_region
 FROM aws.directconnect.direct_connect_gateway_attachments
 WHERE region = '{{ region }}' -- required
 ;

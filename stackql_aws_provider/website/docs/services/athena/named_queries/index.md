@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NamedQueries" /></td>
+    <td><CopyableCode code="named_queries" /></td>
     <td><code>array</code></td>
     <td>Information about the named query IDs submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedNamedQueryIds" /></td>
+    <td><CopyableCode code="unprocessed_named_query_ids" /></td>
     <td><code>array</code></td>
     <td>Information about provided query IDs.</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Database" /></td>
+    <td><CopyableCode code="database" /></td>
     <td><code>string</code></td>
     <td>The database to which the query belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The query description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The query name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NamedQueryId" /></td>
+    <td><CopyableCode code="named_query_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the query. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The SQL statements that make up the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkGroup" /></td>
+    <td><CopyableCode code="work_group" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup that contains the named query. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
@@ -226,8 +226,8 @@ Returns the details of a single named query or a list of up to 50 queries, which
 
 ```sql
 SELECT
-NamedQueries,
-UnprocessedNamedQueryIds
+named_queries,
+unprocessed_named_query_ids
 FROM aws.athena.named_queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -239,12 +239,12 @@ Returns information about a single query. Requires that you have access to the w
 
 ```sql
 SELECT
-Database,
-Description,
-Name,
-NamedQueryId,
-QueryString,
-WorkGroup
+database,
+description,
+name,
+named_query_id,
+query_string,
+work_group
 FROM aws.athena.named_queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -297,7 +297,7 @@ SELECT
 '{{ WorkGroup }}',
 '{{ region }}'
 RETURNING
-NamedQueryId
+named_query_id
 ;
 ```
 </TabItem>

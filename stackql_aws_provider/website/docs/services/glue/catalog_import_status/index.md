@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImportCompleted" /></td>
+    <td><CopyableCode code="import_completed" /></td>
     <td><code>boolean</code></td>
     <td>True if the migration has completed, or False otherwise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportTime" /></td>
+    <td><CopyableCode code="import_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the migration was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportedBy" /></td>
+    <td><CopyableCode code="imported_by" /></td>
     <td><code>string</code></td>
     <td>The name of the person who initiated the migration. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves the status of a migration operation.
 
 ```sql
 SELECT
-ImportCompleted,
-ImportTime,
-ImportedBy
+import_completed,
+import_time,
+imported_by
 FROM aws.glue.catalog_import_status
 WHERE region = '{{ region }}' -- required
 ;

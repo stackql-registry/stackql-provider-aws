@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that grants permissions to access medical imaging resources. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreId" /></td>
+    <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
     <td>The data store identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the import job was ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importConfiguration" /></td>
+    <td><CopyableCode code="import_configuration" /></td>
     <td><code>object</code></td>
     <td>The object containing DicomJsonMetadataImportConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputS3Uri" /></td>
+    <td><CopyableCode code="input_s3_uri" /></td>
     <td><code>string</code></td>
     <td>The input prefix path for the S3 bucket that contains the DICOM P10 files to be imported. (pattern: &lt;code&gt;s3:​//&#91;a-z0-9&#93;&#91;\.\-a-z0-9&#93;&#123;1,61&#125;&#91;a-z0-9&#93;(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The import job identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The import job name. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/#-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The filters for listing import jobs based on status. (SUBMITTED, IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The error message thrown if an import job fails. (pattern: &lt;code&gt;&#91;\w -:`&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputS3Uri" /></td>
+    <td><CopyableCode code="output_s3_uri" /></td>
     <td><code>string</code></td>
     <td>The output prefix of the S3 bucket to upload the results of the DICOM import job. (pattern: &lt;code&gt;s3:​//&#91;a-z0-9&#93;&#91;\.\-a-z0-9&#93;&#123;1,61&#125;&#91;a-z0-9&#93;(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submittedAt" /></td>
+    <td><CopyableCode code="submitted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the import job was submitted.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that grants permissions to access medical imaging resources. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreId" /></td>
+    <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
     <td>The data store identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when an import job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The import job identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The import job name. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/#-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The filters for listing import jobs based on status. (SUBMITTED, IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The error message thrown if an import job fails. (pattern: &lt;code&gt;&#91;\w -:`&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submittedAt" /></td>
+    <td><CopyableCode code="submitted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when an import job was submitted.</td>
 </tr>
@@ -257,17 +257,17 @@ Get the import job properties to learn more about the job or job progress. The j
 
 ```sql
 SELECT
-dataAccessRoleArn,
-datastoreId,
-endedAt,
-importConfiguration,
-inputS3Uri,
-jobId,
-jobName,
-jobStatus,
+data_access_role_arn,
+datastore_id,
+ended_at,
+import_configuration,
+input_s3_uri,
+job_id,
+job_name,
+job_status,
 message,
-outputS3Uri,
-submittedAt
+output_s3_uri,
+submitted_at
 FROM aws.medical_imaging.dicom_import_jobs
 WHERE datastore_id = '{{ datastore_id }}' -- required
 AND job_id = '{{ job_id }}' -- required
@@ -281,14 +281,14 @@ List import jobs created for a specific data store.
 
 ```sql
 SELECT
-dataAccessRoleArn,
-datastoreId,
-endedAt,
-jobId,
-jobName,
-jobStatus,
+data_access_role_arn,
+datastore_id,
+ended_at,
+job_id,
+job_name,
+job_status,
 message,
-submittedAt
+submitted_at
 FROM aws.medical_imaging.dicom_import_jobs
 WHERE datastore_id = '{{ datastore_id }}' -- required
 AND region = '{{ region }}' -- required

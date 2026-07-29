@@ -50,112 +50,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivityStatus" /></td>
+    <td><CopyableCode code="activity_status" /></td>
     <td><code>string</code></td>
     <td>The progress of the EC2 Fleet. For fleets of type instant, the status is fulfilled after all requests are placed, regardless of whether target capacity is met (this is the only possible status for instant fleets). For fleets of type request or maintain, the status is pending_fulfillment after all requests are placed, fulfilled when the fleet size meets or exceeds target capacity, pending_termination while instances are terminating when fleet size is decreased, and error if there's an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency. Constraints: Maximum 64 ASCII characters</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Context" /></td>
+    <td><CopyableCode code="context" /></td>
     <td><code>string</code></td>
     <td>Reserved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The creation date and time of the EC2 Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>string</code></td>
     <td>Information about the instances that could not be launched by the fleet. Valid only when Type is set to instant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExcessCapacityTerminationPolicy" /></td>
+    <td><CopyableCode code="excess_capacity_termination_policy" /></td>
     <td><code>string</code></td>
     <td>Indicates whether running instances should be terminated if the target capacity of the EC2 Fleet is decreased below the current size of the EC2 Fleet. Supported only for fleets of type maintain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the EC2 Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetState" /></td>
+    <td><CopyableCode code="fleet_state" /></td>
     <td><code>string</code></td>
     <td>The state of the EC2 Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfilledCapacity" /></td>
+    <td><CopyableCode code="fulfilled_capacity" /></td>
     <td><code>number</code></td>
     <td>The number of units fulfilled by this request compared to the set target capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfilledOnDemandCapacity" /></td>
+    <td><CopyableCode code="fulfilled_on_demand_capacity" /></td>
     <td><code>number</code></td>
     <td>The number of units fulfilled by this request compared to the set target On-Demand capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Instances" /></td>
+    <td><CopyableCode code="instances" /></td>
     <td><code>string</code></td>
     <td>Information about the instances that were launched by the fleet. Valid only when Type is set to instant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplateConfigs" /></td>
+    <td><CopyableCode code="launch_template_configs" /></td>
     <td><code>string</code></td>
     <td>The launch template and overrides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnDemandOptions" /></td>
+    <td><CopyableCode code="on_demand_options" /></td>
     <td><code>string</code></td>
     <td>The allocation strategy of On-Demand Instances in an EC2 Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplaceUnhealthyInstances" /></td>
+    <td><CopyableCode code="replace_unhealthy_instances" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether EC2 Fleet should replace unhealthy Spot Instances. Supported only for fleets of type maintain. For more information, see EC2 Fleet health checks in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedCapacityOptions" /></td>
+    <td><CopyableCode code="reserved_capacity_options" /></td>
     <td><code>string</code></td>
     <td>Defines EC2 Fleet preferences for utilizing reserved capacity when DefaultTargetCapacityType is set to reserved-capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotOptions" /></td>
+    <td><CopyableCode code="spot_options" /></td>
     <td><code>string</code></td>
     <td>The configuration of Spot Instances in an EC2 Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for an EC2 Fleet resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetCapacitySpecification" /></td>
+    <td><CopyableCode code="target_capacity_specification" /></td>
     <td><code>string</code></td>
     <td>The number of units to request. You can choose to set the target capacity in terms of instances or a performance characteristic that is important to your application workload, such as vCPUs, memory, or I/O. If the request type is maintain, you can specify a target capacity of 0 and add capacity later.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminateInstancesWithExpiration" /></td>
+    <td><CopyableCode code="terminate_instances_with_expiration" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether running instances should be terminated when the EC2 Fleet expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of request. Indicates whether the EC2 Fleet only requests the target capacity, or also attempts to maintain it. If you request a certain target capacity, EC2 Fleet only places the required requests; it does not attempt to replenish instances if capacity is diminished, and it does not submit requests in alternative capacity pools if capacity is unavailable. To maintain a certain target capacity, EC2 Fleet places the required requests to meet this target capacity. It also automatically replenishes any interrupted Spot Instances. Default: maintain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidFrom" /></td>
+    <td><CopyableCode code="valid_from" /></td>
     <td><code>string</code></td>
     <td>The start date and time of the request, in UTC format (for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidUntil" /></td>
+    <td><CopyableCode code="valid_until" /></td>
     <td><code>string</code></td>
     <td>The end date and time of the request, in UTC format (for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new instance requests are placed or able to fulfill the request. The default end date is 7 days from the current date.</td>
 </tr>
@@ -360,28 +360,28 @@ Describes the specified EC2 Fleet or all of your EC2 Fleets. If a fleet is of ty
 
 ```sql
 SELECT
-ActivityStatus,
-ClientToken,
-Context,
-CreateTime,
-Errors,
-ExcessCapacityTerminationPolicy,
-FleetId,
-FleetState,
-FulfilledCapacity,
-FulfilledOnDemandCapacity,
-Instances,
-LaunchTemplateConfigs,
-OnDemandOptions,
-ReplaceUnhealthyInstances,
-ReservedCapacityOptions,
-SpotOptions,
-Tags,
-TargetCapacitySpecification,
-TerminateInstancesWithExpiration,
-Type,
-ValidFrom,
-ValidUntil
+activity_status,
+client_token,
+context,
+create_time,
+errors,
+excess_capacity_termination_policy,
+fleet_id,
+fleet_state,
+fulfilled_capacity,
+fulfilled_on_demand_capacity,
+instances,
+launch_template_configs,
+on_demand_options,
+replace_unhealthy_instances,
+reserved_capacity_options,
+spot_options,
+tags,
+target_capacity_specification,
+terminate_instances_with_expiration,
+type,
+valid_from,
+valid_until
 FROM aws.ec2.fleets
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -445,9 +445,9 @@ SELECT
 '{{ TagSpecification }}',
 '{{ Context }}'
 RETURNING
-Errors,
-FleetId,
-Instances
+errors,
+fleet_id,
+instances
 ;
 ```
 </TabItem>
@@ -548,7 +548,7 @@ AND LaunchTemplateConfig = '{{ LaunchTemplateConfig}}'
 AND TargetCapacitySpecification = '{{ TargetCapacitySpecification}}'
 AND Context = '{{ Context}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

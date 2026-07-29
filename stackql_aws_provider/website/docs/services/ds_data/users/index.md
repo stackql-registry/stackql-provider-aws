@@ -52,47 +52,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DistinguishedName" /></td>
+    <td><CopyableCode code="distinguished_name" /></td>
     <td><code>string</code></td>
     <td>The distinguished name of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the user account is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GivenName" /></td>
+    <td><CopyableCode code="given_name" /></td>
     <td><code>string</code></td>
     <td>The first name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtherAttributes" /></td>
+    <td><CopyableCode code="other_attributes" /></td>
     <td><code>object</code></td>
     <td>An expression that includes one or more attributes, data types, and values of a user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SAMAccountName" /></td>
+    <td><CopyableCode code="sam_account_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user. (pattern: &lt;code&gt;^&#91;\w\-.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SID" /></td>
+    <td><CopyableCode code="sid" /></td>
     <td><code>string</code></td>
     <td>The unique security identifier (SID) of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Surname" /></td>
+    <td><CopyableCode code="surname" /></td>
     <td><code>string</code></td>
     <td>The last name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPrincipalName" /></td>
+    <td><CopyableCode code="user_principal_name" /></td>
     <td><code>string</code></td>
     <td>The UPN that is an internet-style login name for a user and based on the internet standard RFC 822. The UPN is shorter than the distinguished name and easier to remember.</td>
 </tr>
@@ -111,57 +111,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the directory that's associated with the user. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DistinguishedName" /></td>
+    <td><CopyableCode code="distinguished_name" /></td>
     <td><code>string</code></td>
     <td>The distinguished name of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the user account is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GivenName" /></td>
+    <td><CopyableCode code="given_name" /></td>
     <td><code>string</code></td>
     <td>The first name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtherAttributes" /></td>
+    <td><CopyableCode code="other_attributes" /></td>
     <td><code>object</code></td>
     <td>The attribute values that are returned for the attribute names that are included in the request. Attribute names are case insensitive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Realm" /></td>
+    <td><CopyableCode code="realm" /></td>
     <td><code>string</code></td>
     <td>The domain name that's associated with the user. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9&#93;+&#91;\\.-&#93;)+(&#91;a-zA-Z0-9&#93;)+&#91;.&#93;?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SAMAccountName" /></td>
+    <td><CopyableCode code="sam_account_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user. (pattern: &lt;code&gt;^&#91;\w\-.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SID" /></td>
+    <td><CopyableCode code="sid" /></td>
     <td><code>string</code></td>
     <td>The unique security identifier (SID) of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Surname" /></td>
+    <td><CopyableCode code="surname" /></td>
     <td><code>string</code></td>
     <td>The last name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPrincipalName" /></td>
+    <td><CopyableCode code="user_principal_name" /></td>
     <td><code>string</code></td>
     <td>The UPN that is an Internet-style login name for a user and is based on the Internet standard RFC 822. The UPN is shorter than the distinguished name and easier to remember.</td>
 </tr>
@@ -180,27 +180,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the user account is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GivenName" /></td>
+    <td><CopyableCode code="given_name" /></td>
     <td><code>string</code></td>
     <td>The first name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SAMAccountName" /></td>
+    <td><CopyableCode code="sam_account_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user. (pattern: &lt;code&gt;^&#91;\w\-.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SID" /></td>
+    <td><CopyableCode code="sid" /></td>
     <td><code>string</code></td>
     <td>The unique security identifier (SID) of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Surname" /></td>
+    <td><CopyableCode code="surname" /></td>
     <td><code>string</code></td>
     <td>The last name of the user.</td>
 </tr>
@@ -311,15 +311,15 @@ Searches the specified directory for a user. You can find users that match the S
 
 ```sql
 SELECT
-DistinguishedName,
-EmailAddress,
-Enabled,
-GivenName,
-OtherAttributes,
-SAMAccountName,
-SID,
-Surname,
-UserPrincipalName
+distinguished_name,
+email_address,
+enabled,
+given_name,
+other_attributes,
+sam_account_name,
+sid,
+surname,
+user_principal_name
 FROM aws.ds_data.users
 WHERE DirectoryId = '{{ DirectoryId }}' -- required
 AND region = '{{ region }}' -- required
@@ -332,17 +332,17 @@ Returns information about a specific user.
 
 ```sql
 SELECT
-DirectoryId,
-DistinguishedName,
-EmailAddress,
-Enabled,
-GivenName,
-OtherAttributes,
-Realm,
-SAMAccountName,
-SID,
-Surname,
-UserPrincipalName
+directory_id,
+distinguished_name,
+email_address,
+enabled,
+given_name,
+other_attributes,
+realm,
+sam_account_name,
+sid,
+surname,
+user_principal_name
 FROM aws.ds_data.users
 WHERE DirectoryId = '{{ DirectoryId }}' -- required
 AND region = '{{ region }}' -- required
@@ -355,11 +355,11 @@ Returns user information for the specified directory. This operation supports pa
 
 ```sql
 SELECT
-Enabled,
-GivenName,
-SAMAccountName,
-SID,
-Surname
+enabled,
+given_name,
+sam_account_name,
+sid,
+surname
 FROM aws.ds_data.users
 WHERE DirectoryId = '{{ DirectoryId }}' -- required
 AND region = '{{ region }}' -- required
@@ -403,9 +403,9 @@ SELECT
 '{{ DirectoryId }}',
 '{{ region }}'
 RETURNING
-DirectoryId,
-SAMAccountName,
-SID
+directory_id,
+sam_account_name,
+sid
 ;
 ```
 </TabItem>

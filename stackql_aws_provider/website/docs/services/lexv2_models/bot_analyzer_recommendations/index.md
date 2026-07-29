@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="issueDescription" /></td>
+    <td><CopyableCode code="issue_description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the identified configuration issue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="issueLocation" /></td>
+    <td><CopyableCode code="issue_location" /></td>
     <td><code>object</code></td>
     <td>The location information for the identified issue within the bot configuration.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The priority level of the recommendation. Valid Values: High | Medium | Low (High, Medium, Low)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="proposedFix" /></td>
+    <td><CopyableCode code="proposed_fix" /></td>
     <td><code>string</code></td>
     <td>The recommended solution to address the identified issue.</td>
 </tr>
@@ -151,10 +151,10 @@ Retrieves the analysis results and recommendations for bot optimization. The ana
 
 ```sql
 SELECT
-issueDescription,
-issueLocation,
+issue_description,
+issue_location,
 priority,
-proposedFix
+proposed_fix
 FROM aws.lexv2_models.bot_analyzer_recommendations
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_analyzer_request_id = '{{ bot_analyzer_request_id }}' -- required

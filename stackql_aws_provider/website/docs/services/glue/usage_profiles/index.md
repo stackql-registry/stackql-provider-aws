@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>A ProfileConfiguration object specifying the job and session values for the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the usage profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the usage profile. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the usage profile was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the usage profile. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -167,11 +167,11 @@ Retrieves information about the specified Glue usage profile.
 
 ```sql
 SELECT
-Configuration,
-CreatedOn,
-Description,
-LastModifiedOn,
-Name
+configuration,
+created_on,
+description,
+last_modified_on,
+name
 FROM aws.glue.usage_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -208,7 +208,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -265,7 +265,7 @@ Configuration = '{{ Configuration }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LocalGatewayId" /></td>
+    <td><CopyableCode code="local_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableArn" /></td>
+    <td><CopyableCode code="local_gateway_route_table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the local gateway route table for the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableId" /></td>
+    <td><CopyableCode code="local_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableVpcAssociationId" /></td>
+    <td><CopyableCode code="local_gateway_route_table_vpc_association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the local gateway route table for the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -213,14 +213,14 @@ Describes the specified associations between VPCs and local gateway route tables
 
 ```sql
 SELECT
-LocalGatewayId,
-LocalGatewayRouteTableArn,
-LocalGatewayRouteTableId,
-LocalGatewayRouteTableVpcAssociationId,
-OwnerId,
-State,
-Tags,
-VpcId
+local_gateway_id,
+local_gateway_route_table_arn,
+local_gateway_route_table_id,
+local_gateway_route_table_vpc_association_id,
+owner_id,
+state,
+tags,
+vpc_id
 FROM aws.ec2.local_gateway_route_table_vpc_associations
 WHERE region = '{{ region }}' -- required
 AND LocalGatewayRouteTableVpcAssociationId = '{{ LocalGatewayRouteTableVpcAssociationId }}'
@@ -262,14 +262,14 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-LocalGatewayId,
-LocalGatewayRouteTableArn,
-LocalGatewayRouteTableId,
-LocalGatewayRouteTableVpcAssociationId,
-OwnerId,
-State,
-Tags,
-VpcId
+local_gateway_id,
+local_gateway_route_table_arn,
+local_gateway_route_table_id,
+local_gateway_route_table_vpc_association_id,
+owner_id,
+state,
+tags,
+vpc_id
 ;
 ```
 </TabItem>

@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The IP range for the rule's parameters in CIDR notation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsViewId" /></td>
+    <td><CopyableCode code="dns_view_id" /></td>
     <td><code>string</code></td>
     <td>ID for the DNS view that the rule is associated to. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type. (IPV4, IPV6)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the status of the rule. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the access source was updated.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The CIDR block that defines the IP address range for the access source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the access source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsViewId" /></td>
+    <td><CopyableCode code="dns_view_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the DNS view that the access source is associated with. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the access source. (IPV4, IPV6)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the access source. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the access source was last updated.</td>
 </tr>
@@ -282,12 +282,12 @@ id,
 name,
 arn,
 cidr,
-createdAt,
-dnsViewId,
-ipAddressType,
+created_at,
+dns_view_id,
+ip_address_type,
 protocol,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.access_sources
 WHERE access_source_id = '{{ access_source_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -304,12 +304,12 @@ id,
 name,
 arn,
 cidr,
-createdAt,
-dnsViewId,
-ipAddressType,
+created_at,
+dns_view_id,
+ip_address_type,
 protocol,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.access_sources
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -359,12 +359,12 @@ id,
 name,
 arn,
 cidr,
-createdAt,
-dnsViewId,
-ipAddressType,
+created_at,
+dns_view_id,
+ip_address_type,
 protocol,
 status,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -425,12 +425,12 @@ id,
 name,
 arn,
 cidr,
-createdAt,
-dnsViewId,
-ipAddressType,
+created_at,
+dns_view_id,
+ip_address_type,
 protocol,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

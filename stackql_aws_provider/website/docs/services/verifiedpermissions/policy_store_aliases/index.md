@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aliasArn" /></td>
+    <td><CopyableCode code="alias_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy store alias. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aliasName" /></td>
+    <td><CopyableCode code="alias_name" /></td>
     <td><code>string</code></td>
     <td>The name of the policy store alias. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the policy store alias was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy store associated with the alias. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -139,10 +139,10 @@ Returns a paginated list of all policy store aliases in the calling Amazon Web S
 
 ```sql
 SELECT
-aliasArn,
-aliasName,
-createdAt,
-policyStoreId,
+alias_arn,
+alias_name,
+created_at,
+policy_store_id,
 state
 FROM aws.verifiedpermissions.policy_store_aliases
 WHERE region = '{{ region }}' -- required

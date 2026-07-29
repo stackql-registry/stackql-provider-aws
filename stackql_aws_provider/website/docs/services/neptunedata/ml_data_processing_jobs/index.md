@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of this data-processing job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processingJob" /></td>
+    <td><CopyableCode code="processing_job" /></td>
     <td><code>object</code></td>
     <td>Definition of the data processing job.</td>
 </tr>
@@ -173,7 +173,7 @@ Retrieves information about a specified data processing job. See The dataprocess
 ```sql
 SELECT
 id,
-processingJob,
+processing_job,
 status
 FROM aws.neptunedata.ml_data_processing_jobs
 WHERE id = '{{ id }}' -- required

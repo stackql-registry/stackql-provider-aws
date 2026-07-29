@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetDetails" /></td>
+    <td><CopyableCode code="asset_details" /></td>
     <td><code>object</code></td>
     <td>Details about the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetType" /></td>
+    <td><CopyableCode code="asset_type" /></td>
     <td><code>string</code></td>
     <td>The type of asset that is added to a data set. (S3_SNAPSHOT, REDSHIFT_DATA_SHARE, API_GATEWAY_API, S3_DATA_ACCESS, LAKE_FORMATION_DATA_PERMISSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the asset was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSetId" /></td>
+    <td><CopyableCode code="data_set_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data set associated with this asset. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the asset. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the asset. When importing from Amazon S3, the Amazon S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target Amazon S3 object key. When importing from Amazon API Gateway API, the API name is used as the asset name. When importing from Amazon Redshift, the datashare name is used as the asset name. When importing from AWS Lake Formation, the static values of "Database(s) included in the LF-tag policy" or "Table(s) included in the LF-tag policy" are used as the asset name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the revision associated with this asset. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceId" /></td>
+    <td><CopyableCode code="source_id" /></td>
     <td><code>string</code></td>
     <td>The asset ID of the owned asset corresponding to the entitled asset being viewed. This parameter is returned when an asset owner is viewing the entitled copy of its owned asset. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags for the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the asset was last updated, in ISO 8601 format.</td>
 </tr>
@@ -198,17 +198,17 @@ This operation returns information about an asset.
 
 ```sql
 SELECT
-Arn,
-AssetDetails,
-AssetType,
-CreatedAt,
-DataSetId,
-Id,
-Name,
-RevisionId,
-SourceId,
-Tags,
-UpdatedAt
+arn,
+asset_details,
+asset_type,
+created_at,
+data_set_id,
+id,
+name,
+revision_id,
+source_id,
+tags,
+updated_at
 FROM aws.dataexchange.assets
 WHERE asset_id = '{{ asset_id }}' -- required
 AND data_set_id = '{{ data_set_id }}' -- required
@@ -242,16 +242,16 @@ AND data_set_id = '{{ data_set_id }}' --required
 AND revision_id = '{{ revision_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-AssetDetails,
-AssetType,
-CreatedAt,
-DataSetId,
-Id,
-Name,
-RevisionId,
-SourceId,
-UpdatedAt;
+arn,
+asset_details,
+asset_type,
+created_at,
+data_set_id,
+id,
+name,
+revision_id,
+source_id,
+updated_at;
 ```
 </TabItem>
 </Tabs>

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Details" /></td>
+    <td><CopyableCode code="details" /></td>
     <td><code>string</code></td>
     <td>This stringified JSON object includes the details of the entity. (pattern: &lt;code&gt;^&#91;\s&#93;*\&#123;&#91;\s\S&#93;*\&#125;&#91;\s&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetailsDocument" /></td>
+    <td><CopyableCode code="details_document" /></td>
     <td><code>object</code></td>
     <td>The JSON value of the details specific to the entity. To download "DetailsDocument" shapes, see the Python and Java shapes on GitHub.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityArn" /></td>
+    <td><CopyableCode code="entity_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN associated to the unique identifier for the entity referenced in this request. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:*/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityIdentifier" /></td>
+    <td><CopyableCode code="entity_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the entity, in the format of EntityId@RevisionId. (pattern: &lt;code&gt;^&#91;\w\-@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityType" /></td>
+    <td><CopyableCode code="entity_type" /></td>
     <td><code>string</code></td>
     <td>The named type of the entity, in the format of EntityType@Version. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The last modified date of the entity, in ISO 8601 format (2018-02-27T13:45:22Z). (pattern: &lt;code&gt;^(&#91;\d&#93;&#123;4&#125;)\-(1&#91;0-2&#93;|0&#91;1-9&#93;)\-(3&#91;01&#93;|0&#91;1-9&#93;|&#91;12&#93;&#91;\d&#93;)T(2&#91;0-3&#93;|&#91;01&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;)Z$&lt;/code&gt;)</td>
 </tr>
@@ -95,72 +95,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiProductSummary" /></td>
+    <td><CopyableCode code="ami_product_summary" /></td>
     <td><code>object</code></td>
     <td>An object that contains summary information about the AMI product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerProductSummary" /></td>
+    <td><CopyableCode code="container_product_summary" /></td>
     <td><code>object</code></td>
     <td>An object that contains summary information about the container product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataProductSummary" /></td>
+    <td><CopyableCode code="data_product_summary" /></td>
     <td><code>object</code></td>
     <td>An object that contains summary information about the data product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityArn" /></td>
+    <td><CopyableCode code="entity_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN associated with the unique identifier for the entity. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:*/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityId" /></td>
+    <td><CopyableCode code="entity_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the entity. (pattern: &lt;code&gt;^&#91;\w\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityType" /></td>
+    <td><CopyableCode code="entity_type" /></td>
     <td><code>string</code></td>
     <td>The type of the entity. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The last time the entity was published, using ISO 8601 format (2018-02-27T13:45:22Z). (pattern: &lt;code&gt;^(&#91;\d&#93;&#123;4&#125;)\-(1&#91;0-2&#93;|0&#91;1-9&#93;)\-(3&#91;01&#93;|0&#91;1-9&#93;|&#91;12&#93;&#91;\d&#93;)T(2&#91;0-3&#93;|&#91;01&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;)Z$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MachineLearningProductSummary" /></td>
+    <td><CopyableCode code="machine_learning_product_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of a machine learning product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the entity. This value is not unique. It is defined by the seller. (pattern: &lt;code&gt;^\\S+&#91;\\S\\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferSetSummary" /></td>
+    <td><CopyableCode code="offer_set_summary" /></td>
     <td><code>object</code></td>
     <td>An object that contains summary information about the offer set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferSummary" /></td>
+    <td><CopyableCode code="offer_summary" /></td>
     <td><code>object</code></td>
     <td>An object that contains summary information about the offer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResaleAuthorizationSummary" /></td>
+    <td><CopyableCode code="resale_authorization_summary" /></td>
     <td><code>object</code></td>
     <td>An object that contains summary information about the Resale Authorization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SaaSProductSummary" /></td>
+    <td><CopyableCode code="saa_s_product_summary" /></td>
     <td><code>object</code></td>
     <td>An object that contains summary information about the SaaS product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>The visibility status of the entity to buyers. This value can be Public (everyone can view the entity), Limited (the entity is visible to limited accounts only), or Restricted (the entity was published and then unpublished and only existing buyers can view it). (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -254,12 +254,12 @@ Returns the metadata and content of the entity.
 
 ```sql
 SELECT
-Details,
-DetailsDocument,
-EntityArn,
-EntityIdentifier,
-EntityType,
-LastModifiedDate
+details,
+details_document,
+entity_arn,
+entity_identifier,
+entity_type,
+last_modified_date
 FROM aws.marketplace_catalog.entities
 WHERE catalog = '{{ catalog }}' -- required
 AND entityId = '{{ entityId }}' -- required
@@ -273,20 +273,20 @@ Provides the list of entities of a given type.
 
 ```sql
 SELECT
-AmiProductSummary,
-ContainerProductSummary,
-DataProductSummary,
-EntityArn,
-EntityId,
-EntityType,
-LastModifiedDate,
-MachineLearningProductSummary,
-Name,
-OfferSetSummary,
-OfferSummary,
-ResaleAuthorizationSummary,
-SaaSProductSummary,
-Visibility
+ami_product_summary,
+container_product_summary,
+data_product_summary,
+entity_arn,
+entity_id,
+entity_type,
+last_modified_date,
+machine_learning_product_summary,
+name,
+offer_set_summary,
+offer_summary,
+resale_authorization_summary,
+saa_s_product_summary,
+visibility
 FROM aws.marketplace_catalog.entities
 WHERE region = '{{ region }}' -- required
 ;

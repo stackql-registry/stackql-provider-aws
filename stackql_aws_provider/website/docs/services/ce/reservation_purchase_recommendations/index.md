@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountScope" /></td>
+    <td><CopyableCode code="account_scope" /></td>
     <td><code>string</code></td>
     <td>The account scope that Amazon Web Services recommends that you purchase this instance for. For example, you can purchase this reservation for an entire organization in Amazon Web Services Organizations. (PAYER, LINKED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LookbackPeriodInDays" /></td>
+    <td><CopyableCode code="lookback_period_in_days" /></td>
     <td><code>string</code></td>
     <td>How many days of previous usage that Amazon Web Services considers when making this recommendation. (SEVEN_DAYS, THIRTY_DAYS, SIXTY_DAYS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentOption" /></td>
+    <td><CopyableCode code="payment_option" /></td>
     <td><code>string</code></td>
     <td>The payment option for the reservation (for example, AllUpfront or NoUpfront). (NO_UPFRONT, PARTIAL_UPFRONT, ALL_UPFRONT, LIGHT_UTILIZATION, MEDIUM_UTILIZATION, HEAVY_UTILIZATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationDetails" /></td>
+    <td><CopyableCode code="recommendation_details" /></td>
     <td><code>array</code></td>
     <td>Details about the recommended purchases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationSummary" /></td>
+    <td><CopyableCode code="recommendation_summary" /></td>
     <td><code>object</code></td>
     <td>A summary about the recommended purchase.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceSpecification" /></td>
+    <td><CopyableCode code="service_specification" /></td>
     <td><code>object</code></td>
     <td>Hardware specifications for the service that you want recommendations for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TermInYears" /></td>
+    <td><CopyableCode code="term_in_years" /></td>
     <td><code>string</code></td>
     <td>The term of the reservation that you want recommendations for, in years. (ONE_YEAR, THREE_YEARS)</td>
 </tr>
@@ -149,13 +149,13 @@ Gets recommendations for reservation purchases. These recommendations might help
 
 ```sql
 SELECT
-AccountScope,
-LookbackPeriodInDays,
-PaymentOption,
-RecommendationDetails,
-RecommendationSummary,
-ServiceSpecification,
-TermInYears
+account_scope,
+lookback_period_in_days,
+payment_option,
+recommendation_details,
+recommendation_summary,
+service_specification,
+term_in_years
 FROM aws.ce.reservation_purchase_recommendations
 WHERE region = '{{ region }}' -- required
 ;

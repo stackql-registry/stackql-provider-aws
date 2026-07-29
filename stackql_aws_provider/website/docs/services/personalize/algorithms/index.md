@@ -55,47 +55,47 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the algorithm. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="algorithmArn" /></td>
+    <td><CopyableCode code="algorithm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the algorithm. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="algorithmImage" /></td>
+    <td><CopyableCode code="algorithm_image" /></td>
     <td><code>object</code></td>
     <td>The URI of the Docker container for the algorithm image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the algorithm was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultHyperParameterRanges" /></td>
+    <td><CopyableCode code="default_hyper_parameter_ranges" /></td>
     <td><code>object</code></td>
     <td>Specifies the default hyperparameters, their ranges, and whether they are tunable. A tunable hyperparameter can have its value determined during hyperparameter optimization (HPO).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultHyperParameters" /></td>
+    <td><CopyableCode code="default_hyper_parameters" /></td>
     <td><code>object</code></td>
     <td>Specifies the default hyperparameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultResourceConfig" /></td>
+    <td><CopyableCode code="default_resource_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the default maximum number of training jobs and parallel training jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the algorithm was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingInputMode" /></td>
+    <td><CopyableCode code="training_input_mode" /></td>
     <td><code>string</code></td>
     <td>The training input mode.</td>
 </tr>
@@ -165,15 +165,15 @@ Describes the given algorithm.
 ```sql
 SELECT
 name,
-algorithmArn,
-algorithmImage,
-creationDateTime,
-defaultHyperParameterRanges,
-defaultHyperParameters,
-defaultResourceConfig,
-lastUpdatedDateTime,
-roleArn,
-trainingInputMode
+algorithm_arn,
+algorithm_image,
+creation_date_time,
+default_hyper_parameter_ranges,
+default_hyper_parameters,
+default_resource_config,
+last_updated_date_time,
+role_arn,
+training_input_mode
 FROM aws.personalize.algorithms
 WHERE region = '{{ region }}' -- required
 ;

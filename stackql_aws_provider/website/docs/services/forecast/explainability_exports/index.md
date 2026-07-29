@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the Explainability export was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The destination for an export job. Provide an S3 path, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the location, and an Key Management Service (KMS) key (optional).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityArn" /></td>
+    <td><CopyableCode code="explainability_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Explainability export. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityExportArn" /></td>
+    <td><CopyableCode code="explainability_export_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Explainability export. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityExportName" /></td>
+    <td><CopyableCode code="explainability_export_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Explainability export. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format of the exported data, CSV or PARQUET. (pattern: &lt;code&gt;^CSV|PARQUET$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Information about any errors that occurred during the export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Explainability export. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
@@ -110,37 +110,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the Explainability was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The destination for an export job. Provide an S3 path, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the location, and an Key Management Service (KMS) key (optional).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityExportArn" /></td>
+    <td><CopyableCode code="explainability_export_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Explainability export. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityExportName" /></td>
+    <td><CopyableCode code="explainability_export_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Explainability export (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Information about any errors that may have occurred during the Explainability export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Explainability export. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
@@ -231,15 +231,15 @@ Describes an Explainability export created using the CreateExplainabilityExport 
 
 ```sql
 SELECT
-CreationTime,
-Destination,
-ExplainabilityArn,
-ExplainabilityExportArn,
-ExplainabilityExportName,
-Format,
-LastModificationTime,
-Message,
-Status
+creation_time,
+destination,
+explainability_arn,
+explainability_export_arn,
+explainability_export_name,
+format,
+last_modification_time,
+message,
+status
 FROM aws.forecast.explainability_exports
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,13 +251,13 @@ Returns a list of Explainability exports created using the CreateExplainabilityE
 
 ```sql
 SELECT
-CreationTime,
-Destination,
-ExplainabilityExportArn,
-ExplainabilityExportName,
-LastModificationTime,
-Message,
-Status
+creation_time,
+destination,
+explainability_export_arn,
+explainability_export_name,
+last_modification_time,
+message,
+status
 FROM aws.forecast.explainability_exports
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,7 +296,7 @@ SELECT
 '{{ Format }}',
 '{{ region }}'
 RETURNING
-ExplainabilityExportArn
+explainability_export_arn
 ;
 ```
 </TabItem>

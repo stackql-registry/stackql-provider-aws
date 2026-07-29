@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time for the deploy action.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The lifecycle events for the deploy action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time for the deploy action.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the deploy action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the target for the deploy action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The type of target for the deploy action.</td>
 </tr>
@@ -144,12 +144,12 @@ Lists the targets for the deploy action.
 
 ```sql
 SELECT
-endTime,
+end_time,
 events,
-startTime,
+start_time,
 status,
-targetId,
-targetType
+target_id,
+target_type
 FROM aws.codepipeline.deploy_action_execution_targets
 WHERE region = '{{ region }}' -- required
 ;

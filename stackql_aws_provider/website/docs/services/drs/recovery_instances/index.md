@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>The version of the DRS agent installed on the recovery instance (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,5&#125;.&#91;0-9&#93;&#123;1,5&#125;.&#91;0-9&#93;&#123;1,5&#125;(.&#91;0-9&#93;&#123;4&#125;.&#91;0-9&#93;&#123;3&#125;.&#91;0-9&#93;&#123;4&#125;)?&lt;/code&gt;)</td>
 </tr>
@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the Recovery Instance. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataReplicationInfo" /></td>
+    <td><CopyableCode code="data_replication_info" /></td>
     <td><code>object</code></td>
     <td>The Data Replication Info of the Recovery Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2InstanceID" /></td>
+    <td><CopyableCode code="ec_2_instance_id" /></td>
     <td><code>string</code></td>
     <td>The EC2 instance ID of the Recovery Instance. (pattern: &lt;code&gt;i-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2InstanceState" /></td>
+    <td><CopyableCode code="ec_2_instance_state" /></td>
     <td><code>string</code></td>
     <td>The state of the EC2 instance for this Recovery Instance. (PENDING, RUNNING, STOPPING, STOPPED, SHUTTING-DOWN, TERMINATED, NOT_FOUND)</td>
 </tr>
@@ -80,47 +80,47 @@ The following fields are returned by `SELECT` queries:
     <td>An object representing failback related information of the Recovery Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDrill" /></td>
+    <td><CopyableCode code="is_drill" /></td>
     <td><code>boolean</code></td>
     <td>Whether this Recovery Instance was created for a drill or for an actual Recovery event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Job that created the Recovery Instance. (pattern: &lt;code&gt;drsjob-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originAvailabilityZone" /></td>
+    <td><CopyableCode code="origin_availability_zone" /></td>
     <td><code>string</code></td>
     <td>AWS availability zone associated with the recovery instance. (pattern: &lt;code&gt;(us(-gov)?|ap|ca|cn|eu|eusc|sa|af|me|il)-(&#91;a-z&#93;&#123;2&#125;-)?(central|north|(north(?:east|west))|south|south(?:east|west)|east|west)-&#91;0-9&#93;&#91;a-z&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originEnvironment" /></td>
+    <td><CopyableCode code="origin_environment" /></td>
     <td><code>string</code></td>
     <td>Environment (On Premises / AWS) of the instance that the recovery instance originated from. (ON_PREMISES, AWS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pointInTimeSnapshotDateTime" /></td>
+    <td><CopyableCode code="point_in_time_snapshot_date_time" /></td>
     <td><code>string</code></td>
     <td>The date and time of the Point in Time (PIT) snapshot that this Recovery Instance was launched from. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryInstanceID" /></td>
+    <td><CopyableCode code="recovery_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Recovery Instance. (pattern: &lt;code&gt;i-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryInstanceProperties" /></td>
+    <td><CopyableCode code="recovery_instance_properties" /></td>
     <td><code>object</code></td>
     <td>Properties of the Recovery Instance machine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceOutpostArn" /></td>
+    <td><CopyableCode code="source_outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the source Outpost (pattern: &lt;code&gt;arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/op-&#91;a-f0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerID" /></td>
+    <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>The Source Server ID that this Recovery Instance is associated with. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -229,21 +229,21 @@ Lists all Recovery Instances or multiple Recovery Instances by ID.
 
 ```sql
 SELECT
-agentVersion,
+agent_version,
 arn,
-dataReplicationInfo,
-ec2InstanceID,
-ec2InstanceState,
+data_replication_info,
+ec_2_instance_id,
+ec_2_instance_state,
 failback,
-isDrill,
-jobID,
-originAvailabilityZone,
-originEnvironment,
-pointInTimeSnapshotDateTime,
-recoveryInstanceID,
-recoveryInstanceProperties,
-sourceOutpostArn,
-sourceServerID,
+is_drill,
+job_id,
+origin_availability_zone,
+origin_environment,
+point_in_time_snapshot_date_time,
+recovery_instance_id,
+recovery_instance_properties,
+source_outpost_arn,
+source_server_id,
 tags
 FROM aws.drs.recovery_instances
 WHERE region = '{{ region }}' -- required

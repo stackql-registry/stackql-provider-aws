@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DimensionValueAttributes" /></td>
+    <td><CopyableCode code="dimension_value_attributes" /></td>
     <td><code>array</code></td>
     <td>The attributes that apply to a specific dimension value. For example, if the value is a linked account, the attribute is that account name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupDefinitions" /></td>
+    <td><CopyableCode code="group_definitions" /></td>
     <td><code>array</code></td>
     <td>The groups that are specified by the Filter or GroupBy parameters in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of retrievable results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultsByTime" /></td>
+    <td><CopyableCode code="results_by_time" /></td>
     <td><code>array</code></td>
     <td>The time period that's covered by the results in the response.</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieves cost and usage metrics with resources for your account. You can specif
 
 ```sql
 SELECT
-DimensionValueAttributes,
-GroupDefinitions,
-NextPageToken,
-ResultsByTime
+dimension_value_attributes,
+group_definitions,
+next_page_token,
+results_by_time
 FROM aws.ce.cost_and_usage_with_resources
 WHERE region = '{{ region }}' -- required
 ;

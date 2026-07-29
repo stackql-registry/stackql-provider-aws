@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the HyperPod cluster associated with the event. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the HyperPod cluster associated with the event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A human-readable description of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventDetails" /></td>
+    <td><CopyableCode code="event_details" /></td>
     <td><code>object</code></td>
     <td>Additional details about the event, including event-specific metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (UUID) of the event. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventLevel" /></td>
+    <td><CopyableCode code="event_level" /></td>
     <td><code>string</code></td>
     <td>The severity level of the event. Valid values are Info, Warn, and Error. (Info, Warn, Error)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceGroupName" /></td>
+    <td><CopyableCode code="instance_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the instance group associated with the event, if applicable. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The EC2 instance ID associated with the event, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource associated with the event. Valid values are Cluster, InstanceGroup, or Instance. (Cluster, InstanceGroup, Instance)</td>
 </tr>
@@ -115,47 +115,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the HyperPod cluster associated with the event. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the HyperPod cluster associated with the event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A brief, human-readable description of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (UUID) of the event. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventLevel" /></td>
+    <td><CopyableCode code="event_level" /></td>
     <td><code>string</code></td>
     <td>The severity level of the event. Valid values are Info, Warn, and Error. (Info, Warn, Error)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceGroupName" /></td>
+    <td><CopyableCode code="instance_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the instance group associated with the event, if applicable. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Elastic Compute Cloud (EC2) instance ID associated with the event, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource associated with the event. Valid values are Cluster, InstanceGroup, or Instance. (Cluster, InstanceGroup, Instance)</td>
 </tr>
@@ -232,16 +232,16 @@ Retrieves detailed information about a specific event for a given HyperPod clust
 
 ```sql
 SELECT
-ClusterArn,
-ClusterName,
-Description,
-EventDetails,
-EventId,
-EventLevel,
-EventTime,
-InstanceGroupName,
-InstanceId,
-ResourceType
+cluster_arn,
+cluster_name,
+description,
+event_details,
+event_id,
+event_level,
+event_time,
+instance_group_name,
+instance_id,
+resource_type
 FROM aws.sagemaker.cluster_events
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,15 +253,15 @@ Retrieves a list of event summaries for a specified HyperPod cluster. The operat
 
 ```sql
 SELECT
-ClusterArn,
-ClusterName,
-Description,
-EventId,
-EventLevel,
-EventTime,
-InstanceGroupName,
-InstanceId,
-ResourceType
+cluster_arn,
+cluster_name,
+description,
+event_id,
+event_level,
+event_time,
+instance_group_name,
+instance_id,
+resource_type
 FROM aws.sagemaker.cluster_events
 WHERE region = '{{ region }}' -- required
 ;

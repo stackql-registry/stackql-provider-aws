@@ -55,42 +55,42 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the subscription request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the specified subscription request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the subscription request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decisionComment" /></td>
+    <td><CopyableCode code="decision_comment" /></td>
     <td><code>string</code></td>
     <td>The decision comment of the subscription request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone domain of the subscription request. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="existingSubscriptionId" /></td>
+    <td><CopyableCode code="existing_subscription_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the existing subscription. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataForms" /></td>
+    <td><CopyableCode code="metadata_forms" /></td>
     <td><code>array</code></td>
     <td>The metadata forms included in the subscription request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestReason" /></td>
+    <td><CopyableCode code="request_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the subscription request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reviewerId" /></td>
+    <td><CopyableCode code="reviewer_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone user who reviewed the subscription request.</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the subscription request. (PENDING, ACCEPTED, REJECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribedListings" /></td>
+    <td><CopyableCode code="subscribed_listings" /></td>
     <td><code>array</code></td>
     <td>The subscribed listings in the subscription request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribedPrincipals" /></td>
+    <td><CopyableCode code="subscribed_principals" /></td>
     <td><code>array</code></td>
     <td>The subscribed principals in the subscription request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription request was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the subscription request.</td>
 </tr>
@@ -195,19 +195,19 @@ Gets the details of the specified subscription request.
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-decisionComment,
-domainId,
-existingSubscriptionId,
-metadataForms,
-requestReason,
-reviewerId,
+created_at,
+created_by,
+decision_comment,
+domain_id,
+existing_subscription_id,
+metadata_forms,
+request_reason,
+reviewer_id,
 status,
-subscribedListings,
-subscribedPrincipals,
-updatedAt,
-updatedBy
+subscribed_listings,
+subscribed_principals,
+updated_at,
+updated_by
 FROM aws.datazone.subscription_request_details
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required

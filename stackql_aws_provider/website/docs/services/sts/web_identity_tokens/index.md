@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Expiration" /></td>
+    <td><CopyableCode code="expiration" /></td>
     <td><code>string</code></td>
     <td>The date and time when the web identity token expires, in UTC. The expiration is determined by adding the DurationSeconds value to the time the token was issued. After this time, the token should no longer be considered valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebIdentityToken" /></td>
+    <td><CopyableCode code="web_identity_token" /></td>
     <td><code>string</code></td>
     <td>A signed JSON Web Token (JWT) that represents the caller's Amazon Web Services identity. The token contains standard JWT claims such as subject, audience, expiration time, and additional identity attributes added by STS as custom claims. You can also add your own custom claims to the token by passing tags as request parameters to the GetWebIdentityToken API. The token is signed using the specified signing algorithm and can be verified using the verification keys available at the issuer's JWKS endpoint.</td>
 </tr>
@@ -144,8 +144,8 @@ Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Ser
 
 ```sql
 SELECT
-Expiration,
-WebIdentityToken
+expiration,
+web_identity_token
 FROM aws.sts.web_identity_tokens
 WHERE SigningAlgorithm = '{{ SigningAlgorithm }}' -- required
 AND region = '{{ region }}' -- required

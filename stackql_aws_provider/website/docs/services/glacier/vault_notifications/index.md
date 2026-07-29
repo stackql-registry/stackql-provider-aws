@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Events" /></td>
+    <td><CopyableCode code="events" /></td>
     <td><code>array</code></td>
     <td>A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SNSTopic" /></td>
+    <td><CopyableCode code="sns_topic" /></td>
     <td><code>string</code></td>
     <td>The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).</td>
 </tr>
@@ -148,8 +148,8 @@ This operation retrieves the notification-configuration subresource of the speci
 
 ```sql
 SELECT
-Events,
-SNSTopic
+events,
+sns_topic
 FROM aws.glacier.vault_notifications
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required

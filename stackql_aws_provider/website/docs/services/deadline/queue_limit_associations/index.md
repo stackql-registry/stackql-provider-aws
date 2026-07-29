@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that created the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="limitId" /></td>
+    <td><CopyableCode code="limit_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the limit associated with the queue. (pattern: &lt;code&gt;limit-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the queue associated with the limit. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the limit. (ACTIVE, STOP_LIMIT_USAGE_AND_COMPLETE_TASKS, STOP_LIMIT_USAGE_AND_CANCEL_TASKS, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the association was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that last updated the association.</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that created the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="limitId" /></td>
+    <td><CopyableCode code="limit_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the limit in the association. (pattern: &lt;code&gt;limit-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the queue in the association. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of task scheduling in the queue-limit association. ACTIVE - Association is active. STOP_LIMIT_USAGE_AND_COMPLETE_TASKS - Association has stopped scheduling new tasks and is completing current tasks. STOP_LIMIT_USAGE_AND_CANCEL_TASKS - Association has stopped scheduling new tasks and is canceling current tasks. STOPPED - Association has been stopped. (ACTIVE, STOP_LIMIT_USAGE_AND_COMPLETE_TASKS, STOP_LIMIT_USAGE_AND_CANCEL_TASKS, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp of the date and time that the association was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user identifier of the person that updated the association.</td>
 </tr>
@@ -263,13 +263,13 @@ Gets information about a specific association between a queue and a limit.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-limitId,
-queueId,
+created_at,
+created_by,
+limit_id,
+queue_id,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.deadline.queue_limit_associations
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -284,13 +284,13 @@ Gets a list of the associations between queues and limits defined in a farm.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-limitId,
-queueId,
+created_at,
+created_by,
+limit_id,
+queue_id,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.deadline.queue_limit_associations
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FailureRedirectionURL" /></td>
+    <td><CopyableCode code="failure_redirection_url" /></td>
     <td><code>string</code></td>
     <td>The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FromEmailAddress" /></td>
+    <td><CopyableCode code="from_email_address" /></td>
     <td><code>string</code></td>
     <td>The email address that the custom verification email is sent from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuccessRedirectionURL" /></td>
+    <td><CopyableCode code="success_redirection_url" /></td>
     <td><code>string</code></td>
     <td>The URL that the recipient of the verification email is sent to if his or her address is successfully verified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) that are associated with the custom verification email template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateContent" /></td>
+    <td><CopyableCode code="template_content" /></td>
     <td><code>string</code></td>
     <td>The content of the custom verification email template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the template. You will refer to this name when you send email using the SendEmail or SendBulkEmail operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateSubject" /></td>
+    <td><CopyableCode code="template_subject" /></td>
     <td><code>string</code></td>
     <td>The subject line of the email.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomVerificationEmailTemplates" /></td>
+    <td><CopyableCode code="custom_verification_email_templates" /></td>
     <td><code>array</code></td>
     <td>A list of the custom verification email templates that exist in your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token indicating that there are additional custom verification email templates available to be listed. Pass this token to a subsequent call to ListCustomVerificationEmailTemplates to retrieve the next 50 custom verification email templates.</td>
 </tr>
@@ -218,13 +218,13 @@ Returns the custom email verification template for the template name you specify
 
 ```sql
 SELECT
-FailureRedirectionURL,
-FromEmailAddress,
-SuccessRedirectionURL,
-Tags,
-TemplateContent,
-TemplateName,
-TemplateSubject
+failure_redirection_url,
+from_email_address,
+success_redirection_url,
+tags,
+template_content,
+template_name,
+template_subject
 FROM aws.sesv2.custom_verification_email_templates
 WHERE template_name = '{{ template_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -237,8 +237,8 @@ Lists the existing custom verification email templates for your account in the c
 
 ```sql
 SELECT
-CustomVerificationEmailTemplates,
-NextToken
+custom_verification_email_templates,
+next_token
 FROM aws.sesv2.custom_verification_email_templates
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

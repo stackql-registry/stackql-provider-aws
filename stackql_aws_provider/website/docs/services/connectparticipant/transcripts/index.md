@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InitialContactId" /></td>
+    <td><CopyableCode code="initial_contact_id" /></td>
     <td><code>string</code></td>
     <td>The initial contact ID for the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token. Use the value returned previously in the next subsequent request to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Transcript" /></td>
+    <td><CopyableCode code="transcript" /></td>
     <td><code>array</code></td>
     <td>The list of messages in the session.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves a transcript of the session, including details about any attachments. 
 
 ```sql
 SELECT
-InitialContactId,
-NextToken,
-Transcript
+initial_contact_id,
+next_token,
+transcript
 FROM aws.connectparticipant.transcripts
 WHERE `X-Amz-Bearer` = '{{ X-Amz-Bearer }}' -- required
 AND region = '{{ region }}' -- required

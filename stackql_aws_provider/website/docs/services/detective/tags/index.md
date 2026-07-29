@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tag values that are assigned to the behavior graph. The request returns up to 50 tag values.</td>
 </tr>
@@ -143,7 +143,7 @@ Returns the tag values that are assigned to a behavior graph.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.detective.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

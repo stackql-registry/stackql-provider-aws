@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) for the Resolver on an Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the Outpost Resolver was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request that created the Resolver endpoint. The CreatorRequestId allows failed requests to be retried without the risk of running the operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Resolver on Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer</code></td>
     <td>Amazon EC2 instance count for the Resolver on the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the Outpost Resolver was modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the Resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) for the Outpost. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredInstanceType" /></td>
+    <td><CopyableCode code="preferred_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the Resolver. (CREATING, OPERATIONAL, UPDATING, DELETING, ACTION_NEEDED, FAILED_CREATION, FAILED_DELETION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the Resolver.</td>
 </tr>
@@ -197,17 +197,17 @@ Gets information about a specified Resolver on the Outpost, such as its instance
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CreatorRequestId,
-Id,
-InstanceCount,
-ModificationTime,
-Name,
-OutpostArn,
-PreferredInstanceType,
-Status,
-StatusMessage
+arn,
+creation_time,
+creator_request_id,
+id,
+instance_count,
+modification_time,
+name,
+outpost_arn,
+preferred_instance_type,
+status,
+status_message
 FROM aws.route53resolver.outpost_resolvers
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,7 +248,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-OutpostResolver
+outpost_resolver
 ;
 ```
 </TabItem>
@@ -314,7 +314,7 @@ PreferredInstanceType = '{{ PreferredInstanceType }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-OutpostResolver;
+outpost_resolver;
 ```
 </TabItem>
 </Tabs>

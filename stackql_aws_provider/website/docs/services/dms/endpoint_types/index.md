@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint. Valid values are source and target. (source, target)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineDisplayName" /></td>
+    <td><CopyableCode code="engine_display_name" /></td>
     <td><code>string</code></td>
     <td>The expanded name for the engine name. For example, if the EngineName parameter is "aurora", this value would be "Amazon Aurora MySQL".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineName" /></td>
+    <td><CopyableCode code="engine_name" /></td>
     <td><code>string</code></td>
     <td>The database engine name. Valid values, depending on the EndpointType, include "mysql", "oracle", "postgres", "mariadb", "aurora", "aurora-postgresql", "redshift", "s3", "db2", "db2-zos", "azuredb", "sybase", "dynamodb", "mongodb", "kinesis", "kafka", "elasticsearch", "documentdb", "sqlserver", "neptune", and "babelfish".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceEngineMinimumVersion" /></td>
+    <td><CopyableCode code="replication_instance_engine_minimum_version" /></td>
     <td><code>string</code></td>
     <td>The earliest DMS engine version that supports this endpoint engine. Note that endpoint engines released with DMS versions earlier than 3.1.1 do not return a value for this parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsCDC" /></td>
+    <td><CopyableCode code="supports_cdc" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if change data capture (CDC) is supported.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns information about the type of endpoints available.
 
 ```sql
 SELECT
-EndpointType,
-EngineDisplayName,
-EngineName,
-ReplicationInstanceEngineMinimumVersion,
-SupportsCDC
+endpoint_type,
+engine_display_name,
+engine_name,
+replication_instance_engine_minimum_version,
+supports_cdc
 FROM aws.dms.endpoint_types
 WHERE region = '{{ region }}' -- required
 ;

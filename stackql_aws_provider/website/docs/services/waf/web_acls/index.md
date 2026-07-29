@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultAction" /></td>
+    <td><CopyableCode code="default_action" /></td>
     <td><code>object</code></td>
     <td>The action to perform if none of the Rules contained in the WebACL match. The action is specified by the WafAction object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description for the metrics for this WebACL. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the WebACL. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>An array that contains the action for each Rule in a WebACL, the priority of the Rule, and the ID of the Rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebACLArn" /></td>
+    <td><CopyableCode code="web_acl_arn" /></td>
     <td><code>string</code></td>
     <td>Tha Amazon Resource Name (ARN) of the web ACL. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebACLId" /></td>
+    <td><CopyableCode code="web_acl_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a WebACL. You use WebACLId to get information about a WebACL (see GetWebACL), update a WebACL (see UpdateWebACL), and delete a WebACL from AWS WAF (see DeleteWebACL). WebACLId is returned by CreateWebACL and by ListWebACLs. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -172,12 +172,12 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-DefaultAction,
-MetricName,
-Name,
-Rules,
-WebACLArn,
-WebACLId
+default_action,
+metric_name,
+name,
+rules,
+web_acl_arn,
+web_acl_id
 FROM aws.waf.web_acls
 WHERE region = '{{ region }}' -- required
 ;
@@ -217,8 +217,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ChangeToken,
-WebACL
+change_token,
+web_acl
 ;
 ```
 </TabItem>
@@ -239,7 +239,7 @@ SELECT
 {{ IgnoreUnsupportedType }} /* required */,
 '{{ region }}'
 RETURNING
-S3ObjectUrl
+s3_object_url
 ;
 ```
 </TabItem>
@@ -314,7 +314,7 @@ region = '{{ region }}' --required
 AND WebACLId = '{{ WebACLId }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

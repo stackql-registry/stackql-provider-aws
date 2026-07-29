@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The topic rule destination URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the topic rule destination was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpUrlProperties" /></td>
+    <td><CopyableCode code="http_url_properties" /></td>
     <td><code>object</code></td>
     <td>Properties of the HTTP URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the topic rule destination was last updated.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the topic rule destination. Valid values are: IN_PROGRESS A topic rule destination was created but has not been confirmed. You can set status to IN_PROGRESS by calling UpdateTopicRuleDestination. Calling UpdateTopicRuleDestination causes a new confirmation challenge to be sent to your confirmation endpoint. ENABLED Confirmation was completed, and traffic to this destination is allowed. You can set status to DISABLED by calling UpdateTopicRuleDestination. DISABLED Confirmation was completed, and traffic to this destination is not allowed. You can set status to ENABLED by calling UpdateTopicRuleDestination. ERROR Confirmation could not be completed, for example if the confirmation timed out. You can call GetTopicRuleDestination for details about the error. You can set status to IN_PROGRESS by calling UpdateTopicRuleDestination. Calling UpdateTopicRuleDestination causes a new confirmation challenge to be sent to your confirmation endpoint. (ENABLED, IN_PROGRESS, DISABLED, ERROR, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional details or reason why the topic rule destination is in the current status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcProperties" /></td>
+    <td><CopyableCode code="vpc_properties" /></td>
     <td><code>object</code></td>
     <td>Properties of the virtual private cloud (VPC) connection.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
     <td>The topic rule destination ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the topic rule destination was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpUrlSummary" /></td>
+    <td><CopyableCode code="http_url_summary" /></td>
     <td><code>object</code></td>
     <td>Information about the HTTP URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the topic rule destination was last updated.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the topic rule destination. Valid values are: IN_PROGRESS A topic rule destination was created but has not been confirmed. You can set status to IN_PROGRESS by calling UpdateTopicRuleDestination. Calling UpdateTopicRuleDestination causes a new confirmation challenge to be sent to your confirmation endpoint. ENABLED Confirmation was completed, and traffic to this destination is allowed. You can set status to DISABLED by calling UpdateTopicRuleDestination. DISABLED Confirmation was completed, and traffic to this destination is not allowed. You can set status to ENABLED by calling UpdateTopicRuleDestination. ERROR Confirmation could not be completed, for example if the confirmation timed out. You can call GetTopicRuleDestination for details about the error. You can set status to IN_PROGRESS by calling UpdateTopicRuleDestination. Calling UpdateTopicRuleDestination causes a new confirmation challenge to be sent to your confirmation endpoint. (ENABLED, IN_PROGRESS, DISABLED, ERROR, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the topic rule destination is in the current status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcDestinationSummary" /></td>
+    <td><CopyableCode code="vpc_destination_summary" /></td>
     <td><code>object</code></td>
     <td>Information about the virtual private cloud (VPC) connection.</td>
 </tr>
@@ -244,12 +244,12 @@ Gets information about a topic rule destination. Requires permission to access t
 ```sql
 SELECT
 arn,
-createdAt,
-httpUrlProperties,
-lastUpdatedAt,
+created_at,
+http_url_properties,
+last_updated_at,
 status,
-statusReason,
-vpcProperties
+status_reason,
+vpc_properties
 FROM aws.iot.topic_rule_destinations
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -263,12 +263,12 @@ Lists all the topic rule destinations in your Amazon Web Services account. Requi
 ```sql
 SELECT
 arn,
-createdAt,
-httpUrlSummary,
-lastUpdatedAt,
+created_at,
+http_url_summary,
+last_updated_at,
 status,
-statusReason,
-vpcDestinationSummary
+status_reason,
+vpc_destination_summary
 FROM aws.iot.topic_rule_destinations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -301,7 +301,7 @@ SELECT
 '{{ destinationConfiguration }}' /* required */,
 '{{ region }}'
 RETURNING
-topicRuleDestination
+topic_rule_destination
 ;
 ```
 </TabItem>

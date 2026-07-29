@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImportToken" /></td>
+    <td><CopyableCode code="import_token" /></td>
     <td><code>string</code></td>
     <td>The import token to initiate key import into Amazon Web Services Payment Cryptography. The import token expires after 30 days. You can use the same import token to import multiple keys to the same service account. (pattern: &lt;code&gt;(import-token-&#91;0-9a-zA-Z&#93;&#123;16,64&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParametersValidUntilTimestamp" /></td>
+    <td><CopyableCode code="parameters_valid_until_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The validity period of the import token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WrappingKeyAlgorithm" /></td>
+    <td><CopyableCode code="wrapping_key_algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm of the wrapping key for use within TR-34 WrappedKeyBlock or RSA WrappedKeyCryptogram. (TDES_2KEY, TDES_3KEY, AES_128, AES_192, AES_256, HMAC_SHA256, HMAC_SHA384, HMAC_SHA512, HMAC_SHA224, RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WrappingKeyCertificate" /></td>
+    <td><CopyableCode code="wrapping_key_certificate" /></td>
     <td><code>string</code></td>
     <td>The wrapping key certificate in PEM format (base64 encoded) of the wrapping key for use within the TR-34 key block. The certificate expires in 30 days. (pattern: &lt;code&gt;&#91;^\&#91;;\&#93;&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WrappingKeyCertificateChain" /></td>
+    <td><CopyableCode code="wrapping_key_certificate_chain" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Payment Cryptography root certificate authority (CA) that signed the wrapping key certificate in PEM format (base64 encoded). (pattern: &lt;code&gt;&#91;^\&#91;;\&#93;&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Gets the import token and the wrapping key certificate in PEM format (base64 enc
 
 ```sql
 SELECT
-ImportToken,
-ParametersValidUntilTimestamp,
-WrappingKeyAlgorithm,
-WrappingKeyCertificate,
-WrappingKeyCertificateChain
+import_token,
+parameters_valid_until_timestamp,
+wrapping_key_algorithm,
+wrapping_key_certificate,
+wrapping_key_certificate_chain
 FROM aws.payment_cryptography.parameters_for_imports
 WHERE region = '{{ region }}' -- required
 ;

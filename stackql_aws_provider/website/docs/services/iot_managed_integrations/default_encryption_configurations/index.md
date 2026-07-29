@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configurationStatus" /></td>
+    <td><CopyableCode code="configuration_status" /></td>
     <td><code>object</code></td>
     <td>Provides the status of the default encryption configuration for an Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionType" /></td>
+    <td><CopyableCode code="encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used for the encryption configuration. (MANAGED_INTEGRATIONS_DEFAULT_ENCRYPTION, CUSTOMER_KEY_ENCRYPTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Key Amazon Resource Name (ARN) of the AWS KMS key used for KMS encryption if you use KMS_BASED_ENCRYPTION. (pattern: &lt;code&gt;arn:aws:kms:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:key/&#91;0-9a-zA-Z-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves information about the default encryption configuration for the Amazon 
 
 ```sql
 SELECT
-configurationStatus,
-encryptionType,
-kmsKeyArn
+configuration_status,
+encryption_type,
+kms_key_arn
 FROM aws.iot_managed_integrations.default_encryption_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,9 +168,9 @@ WHERE
 region = '{{ region }}' --required
 AND encryptionType = '{{ encryptionType }}' --required
 RETURNING
-configurationStatus,
-encryptionType,
-kmsKeyArn;
+configuration_status,
+encryption_type,
+kms_key_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceArn" /></td>
+    <td><CopyableCode code="replication_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceTaskLogs" /></td>
+    <td><CopyableCode code="replication_instance_task_logs" /></td>
     <td><code>array</code></td>
     <td>An array of replication task log metadata. Each member of the array contains the replication task name, ARN, and task log size (in bytes).</td>
 </tr>
@@ -129,9 +129,9 @@ Returns information about the task logs for the specified task.
 
 ```sql
 SELECT
-Marker,
-ReplicationInstanceArn,
-ReplicationInstanceTaskLogs
+marker,
+replication_instance_arn,
+replication_instance_task_logs
 FROM aws.dms.replication_instance_task_logs
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The component policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -137,7 +137,7 @@ Gets a component policy.
 ```sql
 SELECT
 policy,
-requestId
+request_id
 FROM aws.imagebuilder.component_policies
 WHERE componentArn = '{{ componentArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -169,8 +169,8 @@ region = '{{ region }}' --required
 AND componentArn = '{{ componentArn }}' --required
 AND policy = '{{ policy }}' --required
 RETURNING
-componentArn,
-requestId;
+component_arn,
+request_id;
 ```
 </TabItem>
 </Tabs>

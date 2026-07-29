@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name, if any, of the SizeConstraintSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeConstraintSetId" /></td>
+    <td><CopyableCode code="size_constraint_set_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a SizeConstraintSet. You use SizeConstraintSetId to get information about a SizeConstraintSet (see GetSizeConstraintSet), update a SizeConstraintSet (see UpdateSizeConstraintSet), insert a SizeConstraintSet into a Rule or delete one from a Rule (see UpdateRule), and delete a SizeConstraintSet from AWS WAF (see DeleteSizeConstraintSet). SizeConstraintSetId is returned by CreateSizeConstraintSet and by ListSizeConstraintSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeConstraints" /></td>
+    <td><CopyableCode code="size_constraints" /></td>
     <td><code>array</code></td>
     <td>Specifies the parts of web requests that you want to inspect the size of.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the SizeConstraintSet, if any. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeConstraintSetId" /></td>
+    <td><CopyableCode code="size_constraint_set_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a SizeConstraintSet. You use SizeConstraintSetId to get information about a SizeConstraintSet (see GetSizeConstraintSet), update a SizeConstraintSet (see UpdateSizeConstraintSet), insert a SizeConstraintSet into a Rule or delete one from a Rule (see UpdateRule), and delete a SizeConstraintSet from AWS WAF (see DeleteSizeConstraintSet). SizeConstraintSetId is returned by CreateSizeConstraintSet and by ListSizeConstraintSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -183,9 +183,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-Name,
-SizeConstraintSetId,
-SizeConstraints
+name,
+size_constraint_set_id,
+size_constraints
 FROM aws.waf.size_constraint_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-Name,
-SizeConstraintSetId
+name,
+size_constraint_set_id
 FROM aws.waf.size_constraint_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,8 +231,8 @@ SELECT
 '{{ ChangeToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ChangeToken,
-SizeConstraintSet
+change_token,
+size_constraint_set
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ AND SizeConstraintSetId = '{{ SizeConstraintSetId }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 AND Updates = '{{ Updates }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the workspace. For example, arn:aws:aps:<code>&lt;region&gt;</code>:123456789012:workspace/ws-example1-1234-abcd-5678-ef90abcd1234. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:aps:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:workspace/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the workspace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>A KMS Key ARN. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:kms:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;-a-f0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="prometheusEndpoint" /></td>
+    <td><CopyableCode code="prometheus_endpoint" /></td>
     <td><code>string</code></td>
     <td>The Prometheus endpoint available for this workspace. For example, https:​//aps-workspaces.<code>&lt;region&gt;</code>.amazonaws.com/workspaces/ws-example1-1234-abcd-5678-ef90abcd1234/api/v1/.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of tag keys and values that are associated with the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>A workspace ID. (pattern: &lt;code&gt;.*&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*.*&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the workspace. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:aps:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:workspace/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the workspace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>A KMS Key ARN. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:kms:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;-a-f0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of tag keys and values that are associated with the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>A workspace ID. (pattern: &lt;code&gt;.*&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*.*&lt;/code&gt;)</td>
 </tr>
@@ -260,12 +260,12 @@ Returns information about an existing workspace.
 SELECT
 alias,
 arn,
-createdAt,
-kmsKeyArn,
-prometheusEndpoint,
+created_at,
+kms_key_arn,
+prometheus_endpoint,
 status,
 tags,
-workspaceId
+workspace_id
 FROM aws.amp.workspaces
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -280,11 +280,11 @@ Lists all of the Amazon Managed Service for Prometheus workspaces in your accoun
 SELECT
 alias,
 arn,
-createdAt,
-kmsKeyArn,
+created_at,
+kms_key_arn,
 status,
 tags,
-workspaceId
+workspace_id
 FROM aws.amp.workspaces
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -325,10 +325,10 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-kmsKeyArn,
+kms_key_arn,
 status,
 tags,
-workspaceId
+workspace_id
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogConfigurations" /></td>
+    <td><CopyableCode code="log_configurations" /></td>
     <td><code>array</code></td>
     <td>A logging destination of a user pool. User pools can have multiple logging destinations for message-delivery and user-activity logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool where you configured logging. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Given a user pool ID, returns the logging configuration. User pools can export m
 
 ```sql
 SELECT
-LogConfigurations,
-UserPoolId
+log_configurations,
+user_pool_id
 FROM aws.cognito_idp.log_delivery_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 AND LogConfigurations = '{{ LogConfigurations }}' --required
 RETURNING
-LogDeliveryConfiguration;
+log_delivery_configuration;
 ```
 </TabItem>
 </Tabs>

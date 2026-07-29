@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The device's ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The device's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The device's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceType" /></td>
+    <td><CopyableCode code="device_type" /></td>
     <td><code>string</code></td>
     <td>The device's type. (PANORAMA_APPLIANCE_DEVELOPER_KIT, PANORAMA_APPLIANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageVersion" /></td>
+    <td><CopyableCode code="image_version" /></td>
     <td><code>string</code></td>
     <td>For an OTA job, the target version of the device software. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The job's type. (OTA, REBOOT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The job's status. (PENDING, IN_PROGRESS, VERIFYING, REBOOTING, DOWNLOADING, COMPLETED, FAILED)</td>
 </tr>
@@ -164,15 +164,15 @@ Returns information about a device job.
 
 ```sql
 SELECT
-CreatedTime,
-DeviceArn,
-DeviceId,
-DeviceName,
-DeviceType,
-ImageVersion,
-JobId,
-JobType,
-Status
+created_time,
+device_arn,
+device_id,
+device_name,
+device_type,
+image_version,
+job_id,
+job_type,
+status
 FROM aws.panorama.device_jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogID" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog in which the database resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ColumnNameList" /></td>
+    <td><CopyableCode code="column_name_list" /></td>
     <td><code>array</code></td>
     <td>A list of column names for which to run statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database where the table resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionAttempt" /></td>
+    <td><CopyableCode code="last_execution_attempt" /></td>
     <td><code>object</code></td>
     <td>The last ExecutionAttempt for the column statistics task run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The role used for running the column statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampleSize" /></td>
+    <td><CopyableCode code="sample_size" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of data to sample.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>object</code></td>
     <td>A schedule for running the column statistics, specified in CRON syntax.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleType" /></td>
+    <td><CopyableCode code="schedule_type" /></td>
     <td><code>string</code></td>
     <td>The type of schedule for a column statistics task. Possible values may be CRON or AUTO. (CRON, AUTO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>Name of the security configuration that is used to encrypt CloudWatch logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SettingSource" /></td>
+    <td><CopyableCode code="setting_source" /></td>
     <td><code>string</code></td>
     <td>The source of setting the column statistics task. Possible values may be CATALOG or TABLE. (CATALOG, TABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table for which to generate column statistics.</td>
 </tr>
@@ -190,17 +190,17 @@ Gets settings for a column statistics task.
 
 ```sql
 SELECT
-CatalogID,
-ColumnNameList,
-DatabaseName,
-LastExecutionAttempt,
-Role,
-SampleSize,
-Schedule,
-ScheduleType,
-SecurityConfiguration,
-SettingSource,
-TableName
+catalog_id,
+column_name_list,
+database_name,
+last_execution_attempt,
+role,
+sample_size,
+schedule,
+schedule_type,
+security_configuration,
+setting_source,
+table_name
 FROM aws.glue.column_statistics_task_settings
 WHERE region = '{{ region }}' -- required
 ;

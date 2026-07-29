@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the benefit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenefitRequestSchema" /></td>
+    <td><CopyableCode code="benefit_request_schema" /></td>
     <td><code>object</code></td>
     <td>The schema definition that describes the required fields for requesting this benefit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier that the benefit belongs to. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the benefit and its purpose.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfillmentTypes" /></td>
+    <td><CopyableCode code="fulfillment_types" /></td>
     <td><code>array</code></td>
     <td>The available fulfillment types for this benefit (e.g., credits, access, disbursement).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the benefit. (pattern: &lt;code&gt;ben-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the benefit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Programs" /></td>
+    <td><CopyableCode code="programs" /></td>
     <td><code>array</code></td>
     <td>The AWS partner programs that this benefit is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the benefit (e.g., active, inactive, deprecated). (ACTIVE, INACTIVE)</td>
 </tr>
@@ -110,42 +110,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the benefit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier that the benefit belongs to. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A brief description of the benefit and its purpose.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FulfillmentTypes" /></td>
+    <td><CopyableCode code="fulfillment_types" /></td>
     <td><code>array</code></td>
     <td>The available fulfillment types for this benefit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the benefit. (pattern: &lt;code&gt;ben-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the benefit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Programs" /></td>
+    <td><CopyableCode code="programs" /></td>
     <td><code>array</code></td>
     <td>The AWS partner programs that this benefit is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the benefit. (ACTIVE, INACTIVE)</td>
 </tr>
@@ -236,15 +236,15 @@ Retrieves detailed information about a specific benefit available in the partner
 
 ```sql
 SELECT
-Arn,
-BenefitRequestSchema,
-Catalog,
-Description,
-FulfillmentTypes,
-Id,
-Name,
-Programs,
-Status
+arn,
+benefit_request_schema,
+catalog,
+description,
+fulfillment_types,
+id,
+name,
+programs,
+status
 FROM aws.partnercentral_benefits.benefits
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,14 +256,14 @@ Retrieves a paginated list of available benefits based on specified filter crite
 
 ```sql
 SELECT
-Arn,
-Catalog,
-Description,
-FulfillmentTypes,
-Id,
-Name,
-Programs,
-Status
+arn,
+catalog,
+description,
+fulfillment_types,
+id,
+name,
+programs,
+status
 FROM aws.partnercentral_benefits.benefits
 WHERE region = '{{ region }}' -- required
 ;

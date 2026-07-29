@@ -52,52 +52,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>array</code></td>
     <td>Configuration information for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationArn" /></td>
+    <td><CopyableCode code="hours_of_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationId" /></td>
+    <td><CopyableCode code="hours_of_operation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentHoursOfOperations" /></td>
+    <td><CopyableCode code="parent_hours_of_operations" /></td>
     <td><code>array</code></td>
     <td>Information about parent hours of operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The time zone for the hours of operation.</td>
 </tr>
@@ -116,27 +116,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hours of operation.</td>
 </tr>
@@ -155,52 +155,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>array</code></td>
     <td>Configuration information for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationArn" /></td>
+    <td><CopyableCode code="hours_of_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationId" /></td>
+    <td><CopyableCode code="hours_of_operation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentHoursOfOperations" /></td>
+    <td><CopyableCode code="parent_hours_of_operations" /></td>
     <td><code>array</code></td>
     <td>Information about parent hours of operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The time zone for the hours of operation.</td>
 </tr>
@@ -352,16 +352,16 @@ Describes the hours of operation.
 
 ```sql
 SELECT
-Config,
-Description,
-HoursOfOperationArn,
-HoursOfOperationId,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-ParentHoursOfOperations,
-Tags,
-TimeZone
+config,
+description,
+hours_of_operation_arn,
+hours_of_operation_id,
+last_modified_region,
+last_modified_time,
+name,
+parent_hours_of_operations,
+tags,
+time_zone
 FROM aws.connect.hours_of_operations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND hours_of_operation_id = '{{ hours_of_operation_id }}' -- required
@@ -375,11 +375,11 @@ Provides information about the hours of operation for the specified Amazon Conne
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.hours_of_operations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -394,16 +394,16 @@ Searches the hours of operation in an Amazon Connect instance, with optional fil
 
 ```sql
 SELECT
-Config,
-Description,
-HoursOfOperationArn,
-HoursOfOperationId,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-ParentHoursOfOperations,
-Tags,
-TimeZone
+config,
+description,
+hours_of_operation_arn,
+hours_of_operation_id,
+last_modified_region,
+last_modified_time,
+name,
+parent_hours_of_operations,
+tags,
+time_zone
 FROM aws.connect.hours_of_operations
 WHERE region = '{{ region }}' -- required
 ;
@@ -446,8 +446,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-HoursOfOperationArn,
-HoursOfOperationId
+hours_of_operation_arn,
+hours_of_operation_id
 ;
 ```
 </TabItem>

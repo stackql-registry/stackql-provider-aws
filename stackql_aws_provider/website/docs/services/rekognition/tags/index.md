@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A list of key-value tags assigned to the resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a list of tags in an Amazon Rekognition collection, stream processor, or
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.rekognition.tags
 WHERE region = '{{ region }}' -- required
 ;

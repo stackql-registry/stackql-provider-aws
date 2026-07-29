@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>The resource count.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ Gets the count of network resources, by resource type, for the specified global 
 
 ```sql
 SELECT
-Count,
-ResourceType
+count,
+resource_type
 FROM aws.networkmanager.network_resource_counts
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The page token to use to retrieve the next set of results. If there are no additional results, this value is null. (pattern: &lt;code&gt;&#91;\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactDetails" /></td>
+    <td><CopyableCode code="provisioning_artifact_details" /></td>
     <td><code>array</code></td>
     <td>Information about the provisioning artifacts.</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Info" /></td>
+    <td><CopyableCode code="info" /></td>
     <td><code>object</code></td>
     <td>The URL of the CloudFormation template in Amazon S3 or GitHub in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactDetail" /></td>
+    <td><CopyableCode code="provisioning_artifact_detail" /></td>
     <td><code>object</code></td>
     <td>Information about the provisioning artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactParameters" /></td>
+    <td><CopyableCode code="provisioning_artifact_parameters" /></td>
     <td><code>array</code></td>
     <td>Information about the parameters used to provision the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the current request. (AVAILABLE, CREATING, FAILED)</td>
 </tr>
@@ -209,8 +209,8 @@ Lists all provisioning artifacts (also known as versions) for the specified prod
 
 ```sql
 SELECT
-NextPageToken,
-ProvisioningArtifactDetails
+next_page_token,
+provisioning_artifact_details
 FROM aws.servicecatalog.provisioning_artifacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -222,10 +222,10 @@ Gets information about the specified provisioning artifact (also known as a vers
 
 ```sql
 SELECT
-Info,
-ProvisioningArtifactDetail,
-ProvisioningArtifactParameters,
-Status
+info,
+provisioning_artifact_detail,
+provisioning_artifact_parameters,
+status
 FROM aws.servicecatalog.provisioning_artifacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -262,9 +262,9 @@ SELECT
 '{{ IdempotencyToken }}' /* required */,
 '{{ region }}'
 RETURNING
-Info,
-ProvisioningArtifactDetail,
-Status
+info,
+provisioning_artifact_detail,
+status
 ;
 ```
 </TabItem>
@@ -350,9 +350,9 @@ region = '{{ region }}' --required
 AND ProductId = '{{ ProductId }}' --required
 AND ProvisioningArtifactId = '{{ ProvisioningArtifactId }}' --required
 RETURNING
-Info,
-ProvisioningArtifactDetail,
-Status;
+info,
+provisioning_artifact_detail,
+status;
 ```
 </TabItem>
 </Tabs>

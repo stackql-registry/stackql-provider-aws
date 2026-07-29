@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LoadBalancerName" /></td>
+    <td><CopyableCode code="load_balancer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
@@ -148,8 +148,8 @@ Describes the tags associated with the specified load balancers.
 
 ```sql
 SELECT
-LoadBalancerName,
-Tags
+load_balancer_name,
+tags
 FROM aws.elb.tags
 WHERE LoadBalancerNames = '{{ LoadBalancerNames }}' -- required
 AND region = '{{ region }}' -- required

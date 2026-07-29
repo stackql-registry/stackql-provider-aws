@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the retrieved workload estimate. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="costCurrency" /></td>
+    <td><CopyableCode code="cost_currency" /></td>
     <td><code>string</code></td>
     <td>The currency of the estimated cost. (USD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workload estimate was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workload estimate will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>An error message if the workload estimate retrieval failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rateTimestamp" /></td>
+    <td><CopyableCode code="rate_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the pricing rates used for the estimate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rateType" /></td>
+    <td><CopyableCode code="rate_type" /></td>
     <td><code>string</code></td>
     <td>The type of pricing rates used for the estimate. (BEFORE_DISCOUNTS, AFTER_DISCOUNTS, AFTER_DISCOUNTS_AND_COMMITMENTS)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the workload estimate. (UPDATING, VALID, INVALID, ACTION_NEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalCost" /></td>
+    <td><CopyableCode code="total_cost" /></td>
     <td><code>number (double)</code></td>
     <td>The total estimated cost for the workload.</td>
 </tr>
@@ -125,32 +125,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the workload estimate. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="costCurrency" /></td>
+    <td><CopyableCode code="cost_currency" /></td>
     <td><code>string</code></td>
     <td>The currency of the estimated cost. (USD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workload estimate was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workload estimate will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>An error message if the workload estimate creation or processing failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rateTimestamp" /></td>
+    <td><CopyableCode code="rate_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the pricing rates used for the estimate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rateType" /></td>
+    <td><CopyableCode code="rate_type" /></td>
     <td><code>string</code></td>
     <td>The type of pricing rates used for the estimate. (BEFORE_DISCOUNTS, AFTER_DISCOUNTS, AFTER_DISCOUNTS_AND_COMMITMENTS)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the workload estimate. (UPDATING, VALID, INVALID, ACTION_NEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalCost" /></td>
+    <td><CopyableCode code="total_cost" /></td>
     <td><code>number (double)</code></td>
     <td>The total estimated cost for the workload.</td>
 </tr>
@@ -281,14 +281,14 @@ Retrieves details of a specific workload estimate.
 SELECT
 id,
 name,
-costCurrency,
-createdAt,
-expiresAt,
-failureMessage,
-rateTimestamp,
-rateType,
+cost_currency,
+created_at,
+expires_at,
+failure_message,
+rate_timestamp,
+rate_type,
 status,
-totalCost
+total_cost
 FROM aws.bcm_pricing_calculator.workload_estimates
 WHERE region = '{{ region }}' -- required
 ;
@@ -302,14 +302,14 @@ Lists all workload estimates for the account.
 SELECT
 id,
 name,
-costCurrency,
-createdAt,
-expiresAt,
-failureMessage,
-rateTimestamp,
-rateType,
+cost_currency,
+created_at,
+expires_at,
+failure_message,
+rate_timestamp,
+rate_type,
 status,
-totalCost
+total_cost
 FROM aws.bcm_pricing_calculator.workload_estimates
 WHERE region = '{{ region }}' -- required
 ;
@@ -348,14 +348,14 @@ SELECT
 RETURNING
 id,
 name,
-costCurrency,
-createdAt,
-expiresAt,
-failureMessage,
-rateTimestamp,
-rateType,
+cost_currency,
+created_at,
+expires_at,
+failure_message,
+rate_timestamp,
+rate_type,
 status,
-totalCost
+total_cost
 ;
 ```
 </TabItem>
@@ -414,14 +414,14 @@ AND identifier = '{{ identifier }}' --required
 RETURNING
 id,
 name,
-costCurrency,
-createdAt,
-expiresAt,
-failureMessage,
-rateTimestamp,
-rateType,
+cost_currency,
+created_at,
+expires_at,
+failure_message,
+rate_timestamp,
+rate_type,
 status,
-totalCost;
+total_cost;
 ```
 </TabItem>
 </Tabs>

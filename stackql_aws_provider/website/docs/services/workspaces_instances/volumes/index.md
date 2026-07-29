@@ -142,7 +142,7 @@ SELECT
 '{{ VolumeType }}',
 '{{ region }}'
 RETURNING
-VolumeId
+volume_id
 ;
 ```
 </TabItem>

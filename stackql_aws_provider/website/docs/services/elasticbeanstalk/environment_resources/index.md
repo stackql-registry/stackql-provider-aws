@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroups" /></td>
+    <td><CopyableCode code="auto_scaling_groups" /></td>
     <td><code>string</code></td>
     <td>The AutoScalingGroups used by this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Instances" /></td>
+    <td><CopyableCode code="instances" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instances used by this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchConfigurations" /></td>
+    <td><CopyableCode code="launch_configurations" /></td>
     <td><code>string</code></td>
     <td>The Auto Scaling launch configurations in use by this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplates" /></td>
+    <td><CopyableCode code="launch_templates" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 launch templates in use by this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancers" /></td>
+    <td><CopyableCode code="load_balancers" /></td>
     <td><code>string</code></td>
     <td>The LoadBalancers in use by this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Queues" /></td>
+    <td><CopyableCode code="queues" /></td>
     <td><code>string</code></td>
     <td>The queues used by this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Triggers" /></td>
+    <td><CopyableCode code="triggers" /></td>
     <td><code>string</code></td>
     <td>The AutoScaling triggers in use by this environment.</td>
 </tr>
@@ -164,14 +164,14 @@ Returns AWS resources for this environment.
 
 ```sql
 SELECT
-AutoScalingGroups,
-EnvironmentName,
-Instances,
-LaunchConfigurations,
-LaunchTemplates,
-LoadBalancers,
-Queues,
-Triggers
+auto_scaling_groups,
+environment_name,
+instances,
+launch_configurations,
+launch_templates,
+load_balancers,
+queues,
+triggers
 FROM aws.elasticbeanstalk.environment_resources
 WHERE region = '{{ region }}' -- required
 AND EnvironmentId = '{{ EnvironmentId }}'

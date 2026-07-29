@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the invalidation request was first made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the invalidation request. For example: IDFDVBD632BHDS5.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvalidationBatch" /></td>
+    <td><CopyableCode code="invalidation_batch" /></td>
     <td><code>string</code></td>
     <td>The current invalidation information for the batch request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the invalidation request. When the invalidation batch is finished, the status is Completed.</td>
 </tr>
@@ -151,10 +151,10 @@ Gets information about a specific invalidation for a distribution tenant.
 
 ```sql
 SELECT
-CreateTime,
-Id,
-InvalidationBatch,
-Status
+create_time,
+id,
+invalidation_batch,
+status
 FROM aws.cloudfront.invalidation_for_distribution_tenants
 WHERE distribution_tenant_id = '{{ distribution_tenant_id }}' -- required
 AND id = '{{ id }}' -- required
@@ -189,8 +189,8 @@ SELECT
 '{{ id }}',
 '{{ region }}'
 RETURNING
-Invalidation,
-Location
+invalidation,
+location
 ;
 ```
 </TabItem>

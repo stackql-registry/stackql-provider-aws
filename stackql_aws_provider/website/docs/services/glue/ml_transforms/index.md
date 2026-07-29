@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the transform was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the transform. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationMetrics" /></td>
+    <td><CopyableCode code="evaluation_metrics" /></td>
     <td><code>object</code></td>
     <td>The latest evaluation metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlueVersion" /></td>
+    <td><CopyableCode code="glue_version" /></td>
     <td><code>string</code></td>
     <td>This value determines which version of Glue this machine learning transform is compatible with. Glue 1.0 is recommended for most customers. If the value is not set, the Glue compatibility defaults to Glue 0.9. For more information, see Glue Versions in the developer guide. (pattern: &lt;code&gt;^(\w+\.)+\w+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputRecordTables" /></td>
+    <td><CopyableCode code="input_record_tables" /></td>
     <td><code>array</code></td>
     <td>A list of Glue table definitions used by the transform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelCount" /></td>
+    <td><CopyableCode code="label_count" /></td>
     <td><code>integer</code></td>
     <td>The number of labels available for this transform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the transform was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>number (double)</code></td>
     <td>The number of Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from 2 to 100 DPUs; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the Glue pricing page. When the WorkerType field is set to a value other than Standard, the MaxCapacity field is set automatically and becomes read-only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxRetries" /></td>
+    <td><CopyableCode code="max_retries" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of times to retry a task for this transform after a task run fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name given to the transform when it was created. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of workers of a defined workerType that are allocated when this task runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>The configuration parameters that are specific to the algorithm used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the IAM role with the required permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>array</code></td>
     <td>The Map&lt;Column, Type&gt; object that represents the schema that this transform accepts. Has an upper bound of 100 columns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The last known status of the transform (to indicate whether it can be used or not). One of "NOT_READY", "READY", or "DELETING". (NOT_READY, READY, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeout" /></td>
+    <td><CopyableCode code="timeout" /></td>
     <td><code>integer</code></td>
     <td>The timeout for a task run for this transform in minutes. This is the maximum time that a task run for this transform can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformEncryption" /></td>
+    <td><CopyableCode code="transform_encryption" /></td>
     <td><code>object</code></td>
     <td>The encryption-at-rest settings of the transform that apply to accessing user data. Machine learning transforms can access user data encrypted in Amazon S3 using KMS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformId" /></td>
+    <td><CopyableCode code="transform_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the transform, generated at the time that the transform was created. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerType" /></td>
+    <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of predefined worker that is allocated when this task runs. Accepts a value of Standard, G.1X, or G.2X. For the Standard worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2 executors per worker. For the G.1X worker type, each worker provides 4 vCPU, 16 GB of memory and a 64GB disk, and 1 executor per worker. For the G.2X worker type, each worker provides 8 vCPU, 32 GB of memory and a 128GB disk, and 1 executor per worker. (Standard, G.1X, G.2X, G.025X, G.4X, G.8X, Z.2X)</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token, if more results are available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Transforms" /></td>
+    <td><CopyableCode code="transforms" /></td>
     <td><code>array</code></td>
     <td>A list of machine learning transforms.</td>
 </tr>
@@ -270,25 +270,25 @@ Gets an Glue machine learning transform artifact and all its corresponding metad
 
 ```sql
 SELECT
-CreatedOn,
-Description,
-EvaluationMetrics,
-GlueVersion,
-InputRecordTables,
-LabelCount,
-LastModifiedOn,
-MaxCapacity,
-MaxRetries,
-Name,
-NumberOfWorkers,
-Parameters,
-Role,
-Schema,
-Status,
-Timeout,
-TransformEncryption,
-TransformId,
-WorkerType
+created_on,
+description,
+evaluation_metrics,
+glue_version,
+input_record_tables,
+label_count,
+last_modified_on,
+max_capacity,
+max_retries,
+name,
+number_of_workers,
+parameters,
+role,
+schema,
+status,
+timeout,
+transform_encryption,
+transform_id,
+worker_type
 FROM aws.glue.ml_transforms
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,8 +300,8 @@ Gets a sortable, filterable list of existing Glue machine learning transforms. M
 
 ```sql
 SELECT
-NextToken,
-Transforms
+next_token,
+transforms
 FROM aws.glue.ml_transforms
 WHERE region = '{{ region }}' -- required
 ;
@@ -356,7 +356,7 @@ SELECT
 '{{ TransformEncryption }}',
 '{{ region }}'
 RETURNING
-TransformId
+transform_id
 ;
 ```
 </TabItem>
@@ -472,7 +472,7 @@ WHERE
 region = '{{ region }}' --required
 AND TransformId = '{{ TransformId }}' --required
 RETURNING
-TransformId;
+transform_id;
 ```
 </TabItem>
 </Tabs>

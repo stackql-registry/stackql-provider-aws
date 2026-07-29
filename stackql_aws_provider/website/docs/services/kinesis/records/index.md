@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChildShards" /></td>
+    <td><CopyableCode code="child_shards" /></td>
     <td><code>array</code></td>
     <td>The list of the current shard's child shards, returned in the GetRecords API's response only when the end of the current shard is reached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MillisBehindLatest" /></td>
+    <td><CopyableCode code="millis_behind_latest" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of milliseconds the GetRecords response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates that record processing is caught up, and there are no new records to process at this moment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextShardIterator" /></td>
+    <td><CopyableCode code="next_shard_iterator" /></td>
     <td><code>string</code></td>
     <td>The next position in the shard from which to start sequentially reading data records. If set to null, the shard has been closed and the requested iterator does not return any more data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Records" /></td>
+    <td><CopyableCode code="records" /></td>
     <td><code>array</code></td>
     <td>The data records retrieved from the shard.</td>
 </tr>
@@ -148,10 +148,10 @@ Gets data records from a Kinesis data stream's shard. When invoking this API, yo
 
 ```sql
 SELECT
-ChildShards,
-MillisBehindLatest,
-NextShardIterator,
-Records
+child_shards,
+millis_behind_latest,
+next_shard_iterator,
+records
 FROM aws.kinesis.records
 WHERE region = '{{ region }}' -- required
 ;
@@ -188,9 +188,9 @@ region = '{{ region }}' --required
 AND Data = '{{ Data }}' --required
 AND PartitionKey = '{{ PartitionKey }}' --required
 RETURNING
-EncryptionType,
-SequenceNumber,
-ShardId;
+encryption_type,
+sequence_number,
+shard_id;
 ```
 </TabItem>
 <TabItem value="put_records">
@@ -207,9 +207,9 @@ StreamId = '{{ StreamId }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-EncryptionType,
-FailedRecordCount,
-Records;
+encryption_type,
+failed_record_count,
+records;
 ```
 </TabItem>
 </Tabs>

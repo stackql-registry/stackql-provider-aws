@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationType" /></td>
+    <td><CopyableCode code="notification_type" /></td>
     <td><code>string</code></td>
     <td>One of the following event notification types: autoscaling:EC2_INSTANCE_LAUNCH autoscaling:EC2_INSTANCE_LAUNCH_ERROR autoscaling:EC2_INSTANCE_TERMINATE autoscaling:EC2_INSTANCE_TERMINATE_ERROR autoscaling:TEST_NOTIFICATION</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicARN" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon SNS topic.</td>
 </tr>
@@ -173,9 +173,9 @@ Gets information about the Amazon SNS notifications that are configured for one 
 
 ```sql
 SELECT
-AutoScalingGroupName,
-NotificationType,
-TopicARN
+auto_scaling_group_name,
+notification_type,
+topic_arn
 FROM aws.autoscaling.notification_configurations
 WHERE region = '{{ region }}' -- required
 AND AutoScalingGroupNames = '{{ AutoScalingGroupNames }}'

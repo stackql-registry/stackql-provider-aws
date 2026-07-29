@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileShareSummaries" /></td>
+    <td><CopyableCode code="profile_share_summaries" /></td>
     <td><code>array</code></td>
     <td>Profile share summaries.</td>
 </tr>
@@ -173,8 +173,8 @@ List profile shares.
 
 ```sql
 SELECT
-NextToken,
-ProfileShareSummaries
+next_token,
+profile_share_summaries
 FROM aws.wellarchitected.profile_shares
 WHERE profile_arn = '{{ profile_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -214,8 +214,8 @@ SELECT
 '{{ profile_arn }}',
 '{{ region }}'
 RETURNING
-ProfileArn,
-ShareId
+profile_arn,
+share_id
 ;
 ```
 </TabItem>

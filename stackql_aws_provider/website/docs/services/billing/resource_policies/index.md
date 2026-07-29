@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resource-based policy document attached to the resource in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the billing view resource to which the policy is attached to. (pattern: &lt;code&gt;arn:aws&#91;a-z-&#93;*:(billing)::&#91;0-9&#93;&#123;12&#125;:&#91;a-zA-Z0-9/:_\+=\.\@-&#93;&#123;0,70&#125;&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
@@ -125,7 +125,7 @@ Returns the resource-based policy document attached to the resource in JSON form
 ```sql
 SELECT
 policy,
-resourceArn
+resource_arn
 FROM aws.billing.resource_policies
 WHERE region = '{{ region }}' -- required
 ;

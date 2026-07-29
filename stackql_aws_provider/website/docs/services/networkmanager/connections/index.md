@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectedDeviceId" /></td>
+    <td><CopyableCode code="connected_device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the second device in the connection. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectedLinkId" /></td>
+    <td><CopyableCode code="connected_link_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the link for the second device in the connection. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionArn" /></td>
+    <td><CopyableCode code="connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connection. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connection was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the connection. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the first device in the connection. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the link for the first device in the connection. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the connection. (PENDING, AVAILABLE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags for the connection.</td>
 </tr>
@@ -220,17 +220,17 @@ Gets information about one or more of your connections in a global network.
 
 ```sql
 SELECT
-ConnectedDeviceId,
-ConnectedLinkId,
-ConnectionArn,
-ConnectionId,
-CreatedAt,
-Description,
-DeviceId,
-GlobalNetworkId,
-LinkId,
-State,
-Tags
+connected_device_id,
+connected_link_id,
+connection_arn,
+connection_id,
+created_at,
+description,
+device_id,
+global_network_id,
+link_id,
+state,
+tags
 FROM aws.networkmanager.connections
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,7 +278,7 @@ SELECT
 '{{ global_network_id }}',
 '{{ region }}'
 RETURNING
-Connection
+connection
 ;
 ```
 </TabItem>
@@ -336,7 +336,7 @@ global_network_id = '{{ global_network_id }}' --required
 AND connection_id = '{{ connection_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Connection;
+connection;
 ```
 </TabItem>
 </Tabs>

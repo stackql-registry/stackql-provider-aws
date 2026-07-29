@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Information about the tags.</td>
 </tr>
@@ -153,8 +153,8 @@ Describes the tags for the specified Elastic Load Balancing resources. You can d
 
 ```sql
 SELECT
-ResourceArn,
-Tags
+resource_arn,
+tags
 FROM aws.elbv2.tags
 WHERE ResourceArns = '{{ ResourceArns }}' -- required
 AND region = '{{ region }}' -- required

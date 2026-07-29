@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The resource-based policy attached to the key, in JSON format. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The KeyARN of the key. (pattern: &lt;code&gt;arn:aws:payment-cryptography:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,16&#125;-&#91;0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;0-9a-zA-Z&#93;&#123;16,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the resource-based policy attached to an Amazon Web Services Payment Cry
 
 ```sql
 SELECT
-Policy,
-ResourceArn
+policy,
+resource_arn
 FROM aws.payment_cryptography.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,8 +169,8 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-Policy,
-ResourceArn;
+policy,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

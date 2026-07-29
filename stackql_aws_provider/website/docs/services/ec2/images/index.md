@@ -50,187 +50,187 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Architecture" /></td>
+    <td><CopyableCode code="architecture" /></td>
     <td><code>string</code></td>
     <td>The architecture of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockDeviceMappings" /></td>
+    <td><CopyableCode code="block_device_mappings" /></td>
     <td><code>string</code></td>
     <td>Any block device mapping entries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootMode" /></td>
+    <td><CopyableCode code="boot_mode" /></td>
     <td><code>string</code></td>
     <td>The boot mode of the image. For more information, see Instance launch behavior with Amazon EC2 boot modes in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time the image was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeprecationTime" /></td>
+    <td><CopyableCode code="deprecation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time to deprecate the AMI, in UTC, in the following format: YYYY-MM-DDTHH:MM:SSZ. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeregistrationProtection" /></td>
+    <td><CopyableCode code="deregistration_protection" /></td>
     <td><code>string</code></td>
     <td>Indicates whether deregistration protection is enabled for the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the AMI that was provided during image creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnaSupport" /></td>
+    <td><CopyableCode code="ena_support" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether enhanced networking with ENA is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FreeTierEligible" /></td>
+    <td><CopyableCode code="free_tier_eligible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the image is eligible for Amazon Web Services Free Tier. If true, the AMI is eligible for Free Tier and can be used to launch instances under the Free Tier limits. If false, the AMI is not eligible for Free Tier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hypervisor" /></td>
+    <td><CopyableCode code="hypervisor" /></td>
     <td><code>string</code></td>
     <td>The hypervisor type of the image. Only xen is supported. ovm is not supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageAllowed" /></td>
+    <td><CopyableCode code="image_allowed" /></td>
     <td><code>boolean</code></td>
     <td>If true, the AMI satisfies the criteria for Allowed AMIs and can be discovered and used in the account. If false and Allowed AMIs is set to enabled, the AMI can't be discovered or used in the account. If false and Allowed AMIs is set to audit-mode, the AMI can be discovered and used in the account. For more information, see Control the discovery and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageLocation" /></td>
+    <td><CopyableCode code="image_location" /></td>
     <td><code>string</code></td>
     <td>The location of the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageOwnerAlias" /></td>
+    <td><CopyableCode code="image_owner_alias" /></td>
     <td><code>string</code></td>
     <td>The owner alias (amazon | aws-backup-vault | aws-marketplace).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageType" /></td>
+    <td><CopyableCode code="image_type" /></td>
     <td><code>string</code></td>
     <td>The type of image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImdsSupport" /></td>
+    <td><CopyableCode code="imds_support" /></td>
     <td><code>string</code></td>
     <td>If v2.0, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have HttpTokens automatically set to required so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, HttpPutResponseHopLimit is set to 2. For more information, see Configure the AMI in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KernelId" /></td>
+    <td><CopyableCode code="kernel_id" /></td>
     <td><code>string</code></td>
     <td>The kernel associated with the image, if any. Only applicable for machine images.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastLaunchedTime" /></td>
+    <td><CopyableCode code="last_launched_time" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. lastLaunchedTime data is available starting April 2017.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the AMI that was provided during image creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>This value is set to windows for Windows AMIs; otherwise, it is blank.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformDetails" /></td>
+    <td><CopyableCode code="platform_details" /></td>
     <td><code>string</code></td>
     <td>The platform details associated with the billing code of the AMI. For more information, see Understand AMI billing information in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCodes" /></td>
+    <td><CopyableCode code="product_codes" /></td>
     <td><code>string</code></td>
     <td>Any product codes associated with the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Public" /></td>
+    <td><CopyableCode code="public" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the image has public launch permissions. The value is true if this image has public launch permissions or false if it has only implicit and explicit launch permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RamdiskId" /></td>
+    <td><CopyableCode code="ramdisk_id" /></td>
     <td><code>string</code></td>
     <td>The RAM disk associated with the image, if any. Only applicable for machine images.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootDeviceName" /></td>
+    <td><CopyableCode code="root_device_name" /></td>
     <td><code>string</code></td>
     <td>The device name of the root device volume (for example, /dev/sda1).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootDeviceType" /></td>
+    <td><CopyableCode code="root_device_type" /></td>
     <td><code>string</code></td>
     <td>The type of root device used by the AMI. The AMI can use an Amazon EBS volume or an instance store volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceImageId" /></td>
+    <td><CopyableCode code="source_image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source AMI from which the AMI was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceImageRegion" /></td>
+    <td><CopyableCode code="source_image_region" /></td>
     <td><code>string</code></td>
     <td>The Region of the source AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceInstanceId" /></td>
+    <td><CopyableCode code="source_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This field only appears if the AMI was created using CreateImage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SriovNetSupport" /></td>
+    <td><CopyableCode code="sriov_net_support" /></td>
     <td><code>string</code></td>
     <td>Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the AMI. If the state is available, the image is successfully registered and can be used to launch an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the state change.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TpmSupport" /></td>
+    <td><CopyableCode code="tpm_support" /></td>
     <td><code>string</code></td>
     <td>If the image is configured for NitroTPM support, the value is v2.0. For more information, see NitroTPM in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageOperation" /></td>
+    <td><CopyableCode code="usage_operation" /></td>
     <td><code>string</code></td>
     <td>The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. usageOperation corresponds to the lineitem/Operation column on your Amazon Web Services Cost and Usage Report and in the Amazon Web Services Price List API. You can view these fields on the Instances or AMIs pages in the Amazon EC2 console, or in the responses that are returned by the DescribeImages command in the Amazon EC2 API, or the describe-images command in the CLI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VirtualizationType" /></td>
+    <td><CopyableCode code="virtualization_type" /></td>
     <td><code>string</code></td>
     <td>The type of virtualization of the AMI.</td>
 </tr>
@@ -597,43 +597,43 @@ Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of
 
 ```sql
 SELECT
-Architecture,
-BlockDeviceMappings,
-BootMode,
-CreationDate,
-DeprecationTime,
-DeregistrationProtection,
-Description,
-EnaSupport,
-FreeTierEligible,
-Hypervisor,
-ImageAllowed,
-ImageId,
-ImageLocation,
-ImageOwnerAlias,
-ImageType,
-ImdsSupport,
-KernelId,
-LastLaunchedTime,
-Name,
-OwnerId,
-Platform,
-PlatformDetails,
-ProductCodes,
-Public,
-RamdiskId,
-RootDeviceName,
-RootDeviceType,
-SourceImageId,
-SourceImageRegion,
-SourceInstanceId,
-SriovNetSupport,
-State,
-StateReason,
-Tags,
-TpmSupport,
-UsageOperation,
-VirtualizationType
+architecture,
+block_device_mappings,
+boot_mode,
+creation_date,
+deprecation_time,
+deregistration_protection,
+description,
+ena_support,
+free_tier_eligible,
+hypervisor,
+image_allowed,
+image_id,
+image_location,
+image_owner_alias,
+image_type,
+imds_support,
+kernel_id,
+last_launched_time,
+name,
+owner_id,
+platform,
+platform_details,
+product_codes,
+public,
+ramdisk_id,
+root_device_name,
+root_device_type,
+source_image_id,
+source_image_region,
+source_instance_id,
+sriov_net_support,
+state,
+state_reason,
+tags,
+tpm_support,
+usage_operation,
+virtualization_type
 FROM aws.ec2.images
 WHERE region = '{{ region }}' -- required
 AND ExecutableBy = '{{ ExecutableBy }}'
@@ -688,7 +688,7 @@ SELECT
 '{{ NoReboot }}',
 '{{ BlockDeviceMapping }}'
 RETURNING
-ImageId
+image_id
 ;
 ```
 </TabItem>
@@ -739,7 +739,7 @@ SELECT
 '{{ SriovNetSupport }}',
 '{{ EnaSupport }}'
 RETURNING
-ImageId
+image_id
 ;
 ```
 </TabItem>

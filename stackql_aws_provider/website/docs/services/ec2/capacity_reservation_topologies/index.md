@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone or Local Zone that the Capacity Reservation is in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone or Local Zone that the Capacity Reservation is in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockId" /></td>
+    <td><CopyableCode code="capacity_block_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block. This parameter is only supported for UltraServer instances and identifies instances within the UltraServer domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationId" /></td>
+    <td><CopyableCode code="capacity_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the placement group that the Capacity Reservation is in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkNodes" /></td>
+    <td><CopyableCode code="network_nodes" /></td>
     <td><code>string</code></td>
     <td>The network nodes. The nodes are hashed based on your account. Capacity Reservations from different accounts running under the same server will return a different hashed list of strings. The value is null or empty if: The instance type is not supported. The Capacity Reservation is in a state other than active or pending.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Capacity Reservation. For the list of possible states, see DescribeCapacityReservations.</td>
 </tr>
@@ -179,14 +179,14 @@ Describes a tree-based hierarchy that represents the physical host placement of 
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CapacityBlockId,
-CapacityReservationId,
-GroupName,
-InstanceType,
-NetworkNodes,
-State
+availability_zone,
+availability_zone_id,
+capacity_block_id,
+capacity_reservation_id,
+group_name,
+instance_type,
+network_nodes,
+state
 FROM aws.ec2.capacity_reservation_topologies
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

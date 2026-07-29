@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountMaxReadCapacityUnits" /></td>
+    <td><CopyableCode code="account_max_read_capacity_units" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum total read capacity units that your account allows you to provision across all of your tables in this Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountMaxWriteCapacityUnits" /></td>
+    <td><CopyableCode code="account_max_write_capacity_units" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum total write capacity units that your account allows you to provision across all of your tables in this Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableMaxReadCapacityUnits" /></td>
+    <td><CopyableCode code="table_max_read_capacity_units" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum read capacity units that your account allows you to provision for a new table that you are creating in this Region, including the read capacity units provisioned for its global secondary indexes (GSIs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableMaxWriteCapacityUnits" /></td>
+    <td><CopyableCode code="table_max_write_capacity_units" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum write capacity units that your account allows you to provision for a new table that you are creating in this Region, including the write capacity units provisioned for its global secondary indexes (GSIs).</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the current provisioned-capacity quotas for your Amazon Web Services acc
 
 ```sql
 SELECT
-AccountMaxReadCapacityUnits,
-AccountMaxWriteCapacityUnits,
-TableMaxReadCapacityUnits,
-TableMaxWriteCapacityUnits
+account_max_read_capacity_units,
+account_max_write_capacity_units,
+table_max_read_capacity_units,
+table_max_write_capacity_units
 FROM aws.dynamodb.limits
 WHERE region = '{{ region }}' -- required
 ;

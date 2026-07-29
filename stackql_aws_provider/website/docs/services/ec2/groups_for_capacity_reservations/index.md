@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the resource group.</td>
 </tr>
@@ -144,8 +144,8 @@ Lists the resource groups to which a Capacity Reservation has been added.
 
 ```sql
 SELECT
-GroupArn,
-OwnerId
+group_arn,
+owner_id
 FROM aws.ec2.groups_for_capacity_reservations
 WHERE CapacityReservationId = '{{ CapacityReservationId }}' -- required
 AND region = '{{ region }}' -- required

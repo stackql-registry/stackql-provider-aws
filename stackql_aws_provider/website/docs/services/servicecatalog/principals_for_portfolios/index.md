@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PrincipalARN" /></td>
+    <td><CopyableCode code="principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the principal (user, role, or group). This field allows for an ARN with no accountID, with or without wildcard characters if the PrincipalType is an IAM_PATTERN. For more information, review associate-principal-with-portfolio in the Amazon Web Services CLI Command Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalType" /></td>
+    <td><CopyableCode code="principal_type" /></td>
     <td><code>string</code></td>
     <td>The principal type. The supported value is IAM if you use a fully defined ARN, or IAM_PATTERN if you use an ARN with no accountID, with or without wildcard characters. (IAM, IAM_PATTERN)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all PrincipalARNs and corresponding PrincipalTypes associated with the spe
 
 ```sql
 SELECT
-PrincipalARN,
-PrincipalType
+principal_arn,
+principal_type
 FROM aws.servicecatalog.principals_for_portfolios
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DkimAttributes" /></td>
+    <td><CopyableCode code="dkim_attributes" /></td>
     <td><code>string</code></td>
     <td>The DKIM attributes for an email address or a domain.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the current status of Easy DKIM signing for an entity. For domain name i
 
 ```sql
 SELECT
-DkimAttributes
+dkim_attributes
 FROM aws.ses.identity_dkim_attributes
 WHERE Identities = '{{ Identities }}' -- required
 AND region = '{{ region }}' -- required

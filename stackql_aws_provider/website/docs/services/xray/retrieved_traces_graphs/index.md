@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Specify the pagination token returned by a previous request to retrieve the next page of indexes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrievalStatus" /></td>
+    <td><CopyableCode code="retrieval_status" /></td>
     <td><code>string</code></td>
     <td>Status of the retrieval. (SCHEDULED, RUNNING, COMPLETE, FAILED, CANCELLED, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Services" /></td>
+    <td><CopyableCode code="services" /></td>
     <td><code>array</code></td>
     <td>Retrieved services.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves a service graph for traces based on the specified RetrievalToken from 
 
 ```sql
 SELECT
-NextToken,
-RetrievalStatus,
-Services
+next_token,
+retrieval_status,
+services
 FROM aws.xray.retrieved_traces_graphs
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConstraintDetail" /></td>
+    <td><CopyableCode code="constraint_detail" /></td>
     <td><code>object</code></td>
     <td>Information about the constraint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConstraintParameters" /></td>
+    <td><CopyableCode code="constraint_parameters" /></td>
     <td><code>string</code></td>
     <td>The constraint parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the current request. (AVAILABLE, CREATING, FAILED)</td>
 </tr>
@@ -150,9 +150,9 @@ Gets information about the specified constraint.
 
 ```sql
 SELECT
-ConstraintDetail,
-ConstraintParameters,
-Status
+constraint_detail,
+constraint_parameters,
+status
 FROM aws.servicecatalog.constraints
 WHERE region = '{{ region }}' -- required
 ;
@@ -195,9 +195,9 @@ SELECT
 '{{ IdempotencyToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ConstraintDetail,
-ConstraintParameters,
-Status
+constraint_detail,
+constraint_parameters,
+status
 ;
 ```
 </TabItem>
@@ -266,9 +266,9 @@ WHERE
 region = '{{ region }}' --required
 AND Id = '{{ Id }}' --required
 RETURNING
-ConstraintDetail,
-ConstraintParameters,
-Status;
+constraint_detail,
+constraint_parameters,
+status;
 ```
 </TabItem>
 </Tabs>

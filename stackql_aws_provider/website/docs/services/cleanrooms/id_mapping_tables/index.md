@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the ID mapping table. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/idmappingtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the collaboration that contains this ID mapping table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the collaboration that contains this ID mapping table. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the ID mapping table was created.</td>
 </tr>
@@ -86,32 +86,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the ID mapping table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputReferenceConfig" /></td>
+    <td><CopyableCode code="input_reference_config" /></td>
     <td><code>object</code></td>
     <td>Provides the input reference configuration for the ID mapping table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputReferenceProperties" /></td>
+    <td><CopyableCode code="input_reference_properties" /></td>
     <td><code>object</code></td>
     <td>The input reference properties for the ID mapping table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services KMS key. (pattern: &lt;code&gt;arn:aws:kms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the membership resource for the ID mapping table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the membership resource for the ID mapping table. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the ID mapping table was updated.</td>
 </tr>
@@ -145,17 +145,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of this ID mapping table. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/idmappingtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the collaboration that contains this ID mapping table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the collaboration that contains this ID mapping table. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which this ID mapping table was created.</td>
 </tr>
@@ -165,22 +165,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of this ID mapping table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputReferenceConfig" /></td>
+    <td><CopyableCode code="input_reference_config" /></td>
     <td><code>object</code></td>
     <td>Provides the input reference configuration for the ID mapping table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the membership resource for this ID mapping table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the membership resource for this ID mapping table. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which this ID mapping table was updated.</td>
 </tr>
@@ -308,16 +308,16 @@ SELECT
 id,
 name,
 arn,
-collaborationArn,
-collaborationId,
-createTime,
+collaboration_arn,
+collaboration_id,
+create_time,
 description,
-inputReferenceConfig,
-inputReferenceProperties,
-kmsKeyArn,
-membershipArn,
-membershipId,
-updateTime
+input_reference_config,
+input_reference_properties,
+kms_key_arn,
+membership_arn,
+membership_id,
+update_time
 FROM aws.cleanrooms.id_mapping_tables
 WHERE id_mapping_table_identifier = '{{ id_mapping_table_identifier }}' -- required
 AND membership_identifier = '{{ membership_identifier }}' -- required
@@ -334,14 +334,14 @@ SELECT
 id,
 name,
 arn,
-collaborationArn,
-collaborationId,
-createTime,
+collaboration_arn,
+collaboration_id,
+create_time,
 description,
-inputReferenceConfig,
-membershipArn,
-membershipId,
-updateTime
+input_reference_config,
+membership_arn,
+membership_id,
+update_time
 FROM aws.cleanrooms.id_mapping_tables
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -385,7 +385,7 @@ SELECT
 '{{ membership_identifier }}',
 '{{ region }}'
 RETURNING
-idMappingTable
+id_mapping_table
 ;
 ```
 </TabItem>
@@ -444,7 +444,7 @@ id_mapping_table_identifier = '{{ id_mapping_table_identifier }}' --required
 AND membership_identifier = '{{ membership_identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-idMappingTable;
+id_mapping_table;
 ```
 </TabItem>
 </Tabs>

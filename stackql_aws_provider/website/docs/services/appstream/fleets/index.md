@@ -50,137 +50,137 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the fleet. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeCapacityStatus" /></td>
+    <td><CopyableCode code="compute_capacity_status" /></td>
     <td><code>object</code></td>
     <td>The capacity status for the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the fleet was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableIMDSV1" /></td>
+    <td><CopyableCode code="disable_imdsv1" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Instance Metadata Service Version 1 (IMDSv1) is disabled for the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisconnectTimeoutInSeconds" /></td>
+    <td><CopyableCode code="disconnect_timeout_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that a streaming session remains active after users disconnect. If they try to reconnect to the streaming session after a disconnection or network interruption within this time interval, they are connected to their previous session. Otherwise, they are connected to a new session with a new streaming instance. Specify a value between 60 and 36000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The fleet name to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainJoinInfo" /></td>
+    <td><CopyableCode code="domain_join_info" /></td>
     <td><code>object</code></td>
     <td>The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableDefaultInternetAccess" /></td>
+    <td><CopyableCode code="enable_default_internet_access" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether default internet access is enabled for the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetErrors" /></td>
+    <td><CopyableCode code="fleet_errors" /></td>
     <td><code>array</code></td>
     <td>The fleet errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetType" /></td>
+    <td><CopyableCode code="fleet_type" /></td>
     <td><code>string</code></td>
     <td>The fleet type. ALWAYS_ON Provides users with instant-on access to their apps. You are charged for all running instances in your fleet, even if no users are streaming apps. ON_DEMAND Provide users with access to applications after they connect, which takes one to two minutes. You are charged for instance streaming when users are connected and a small hourly fee for instances that are not streaming apps. (ALWAYS_ON, ON_DEMAND, ELASTIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security Token Service (STS) AssumeRole API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. WorkSpaces Applications retrieves the temporary credentials and creates the appstream_machine_role credential profile on the instance. For more information, see Using an IAM Role to Grant Permissions to Applications and Scripts Running on WorkSpaces Applications Streaming Instances in the Amazon WorkSpaces Applications Administration Guide. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdleDisconnectTimeoutInSeconds" /></td>
+    <td><CopyableCode code="idle_disconnect_timeout_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the DisconnectTimeoutInSeconds time interval begins. Users are notified before they are disconnected due to inactivity. If users try to reconnect to the streaming session before the time interval specified in DisconnectTimeoutInSeconds elapses, they are connected to their previous session. Users are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be idle after the time interval in IdleDisconnectTimeoutInSeconds elapses, they are disconnected. To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value between 60 and 36000. The default value is 0. If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of inactivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageArn" /></td>
+    <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the public, private, or shared image. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageName" /></td>
+    <td><CopyableCode code="image_name" /></td>
     <td><code>string</code></td>
     <td>The name of the image used to create the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type to use when launching fleet instances. The following instance types are available: stream.standard.small stream.standard.medium stream.standard.large stream.compute.large stream.compute.xlarge stream.compute.2xlarge stream.compute.4xlarge stream.compute.8xlarge stream.memory.large stream.memory.xlarge stream.memory.2xlarge stream.memory.4xlarge stream.memory.8xlarge stream.memory.z1d.large stream.memory.z1d.xlarge stream.memory.z1d.2xlarge stream.memory.z1d.3xlarge stream.memory.z1d.6xlarge stream.memory.z1d.12xlarge stream.graphics.g4dn.xlarge stream.graphics.g4dn.2xlarge stream.graphics.g4dn.4xlarge stream.graphics.g4dn.8xlarge stream.graphics.g4dn.12xlarge stream.graphics.g4dn.16xlarge stream.graphics.g5.xlarge stream.graphics.g5.2xlarge stream.graphics.g5.4xlarge stream.graphics.g5.8xlarge stream.graphics.g5.16xlarge stream.graphics.g5.12xlarge stream.graphics.g5.24xlarge stream.graphics.g6.xlarge stream.graphics.g6.2xlarge stream.graphics.g6.4xlarge stream.graphics.g6.8xlarge stream.graphics.g6.16xlarge stream.graphics.g6.12xlarge stream.graphics.g6.24xlarge stream.graphics.gr6.4xlarge stream.graphics.gr6.8xlarge stream.graphics.g6f.large stream.graphics.g6f.xlarge stream.graphics.g6f.2xlarge stream.graphics.g6f.4xlarge stream.graphics.gr6f.4xlarge</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrentSessions" /></td>
+    <td><CopyableCode code="max_concurrent_sessions" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of concurrent sessions for the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSessionsPerInstance" /></td>
+    <td><CopyableCode code="max_sessions_per_instance" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of user sessions on an instance. This only applies to multi-session fleets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxUserDurationInSeconds" /></td>
+    <td><CopyableCode code="max_user_duration_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance. Specify a value between 600 and 360000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The platform of the fleet. (WINDOWS, WINDOWS_SERVER_2016, WINDOWS_SERVER_2019, WINDOWS_SERVER_2022, WINDOWS_SERVER_2025, AMAZON_LINUX2, RHEL8, ROCKY_LINUX8, UBUNTU_PRO_2404)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootVolumeConfig" /></td>
+    <td><CopyableCode code="root_volume_config" /></td>
     <td><code>object</code></td>
     <td>The current configuration of the root volume for fleet instances, including the storage size in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionScriptS3Location" /></td>
+    <td><CopyableCode code="session_script_s3_location" /></td>
     <td><code>object</code></td>
     <td>The S3 location of the session scripts configuration zip file. This only applies to Elastic fleets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state for the fleet. (STARTING, RUNNING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamView" /></td>
+    <td><CopyableCode code="stream_view" /></td>
     <td><code>string</code></td>
     <td>The WorkSpaces Applications view that is displayed to your users when they stream from the fleet. When APP is specified, only the windows of applications opened by users display. When DESKTOP is specified, the standard desktop that is provided by the operating system displays. The default value is APP. (APP, DESKTOP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsbDeviceFilterStrings" /></td>
+    <td><CopyableCode code="usb_device_filter_strings" /></td>
     <td><code>array</code></td>
     <td>The USB device filter strings associated with the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC configuration for the fleet.</td>
 </tr>
@@ -305,33 +305,33 @@ Retrieves a list that describes one or more specified fleets, if the fleet names
 
 ```sql
 SELECT
-Arn,
-ComputeCapacityStatus,
-CreatedTime,
-Description,
-DisableIMDSV1,
-DisconnectTimeoutInSeconds,
-DisplayName,
-DomainJoinInfo,
-EnableDefaultInternetAccess,
-FleetErrors,
-FleetType,
-IamRoleArn,
-IdleDisconnectTimeoutInSeconds,
-ImageArn,
-ImageName,
-InstanceType,
-MaxConcurrentSessions,
-MaxSessionsPerInstance,
-MaxUserDurationInSeconds,
-Name,
-Platform,
-RootVolumeConfig,
-SessionScriptS3Location,
-State,
-StreamView,
-UsbDeviceFilterStrings,
-VpcConfig
+arn,
+compute_capacity_status,
+created_time,
+description,
+disable_imdsv1,
+disconnect_timeout_in_seconds,
+display_name,
+domain_join_info,
+enable_default_internet_access,
+fleet_errors,
+fleet_type,
+iam_role_arn,
+idle_disconnect_timeout_in_seconds,
+image_arn,
+image_name,
+instance_type,
+max_concurrent_sessions,
+max_sessions_per_instance,
+max_user_duration_in_seconds,
+name,
+platform,
+root_volume_config,
+session_script_s3_location,
+state,
+stream_view,
+usb_device_filter_strings,
+vpc_config
 FROM aws.appstream.fleets
 WHERE region = '{{ region }}' -- required
 ;
@@ -373,8 +373,8 @@ SELECT
 '{{ SessionContext }}',
 '{{ region }}'
 RETURNING
-Expires,
-StreamingURL
+expires,
+streaming_url
 ;
 ```
 </TabItem>
@@ -437,7 +437,7 @@ SELECT
 {{ DisableIMDSV1 }},
 '{{ region }}'
 RETURNING
-Fleet
+fleet
 ;
 ```
 </TabItem>
@@ -614,7 +614,7 @@ region = '{{ region }}' --required
 AND FleetName = '{{ FleetName }}' --required
 AND ApplicationArn = '{{ ApplicationArn }}' --required
 RETURNING
-ApplicationFleetAssociation;
+application_fleet_association;
 ```
 </TabItem>
 <TabItem value="associate_fleet">
@@ -666,7 +666,7 @@ DisableIMDSV1 = {{ DisableIMDSV1 }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Fleet;
+fleet;
 ```
 </TabItem>
 </Tabs>

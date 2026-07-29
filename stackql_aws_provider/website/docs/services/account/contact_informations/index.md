@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressLine1" /></td>
+    <td><CopyableCode code="address_line_1" /></td>
     <td><code>string</code></td>
     <td>The first line of the primary contact address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressLine2" /></td>
+    <td><CopyableCode code="address_line_2" /></td>
     <td><code>string</code></td>
     <td>The second line of the primary contact address, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressLine3" /></td>
+    <td><CopyableCode code="address_line_3" /></td>
     <td><code>string</code></td>
     <td>The third line of the primary contact address, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="City" /></td>
+    <td><CopyableCode code="city" /></td>
     <td><code>string</code></td>
     <td>The city of the primary contact address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompanyName" /></td>
+    <td><CopyableCode code="company_name" /></td>
     <td><code>string</code></td>
     <td>The name of the company associated with the primary contact information, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CountryCode" /></td>
+    <td><CopyableCode code="country_code" /></td>
     <td><code>string</code></td>
     <td>The ISO-3166 two-letter country code for the primary contact address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DistrictOrCounty" /></td>
+    <td><CopyableCode code="district_or_county" /></td>
     <td><code>string</code></td>
     <td>The district or county of the primary contact address, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullName" /></td>
+    <td><CopyableCode code="full_name" /></td>
     <td><code>string</code></td>
     <td>The full name of the primary contact address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number of the primary contact information. The number will be validated and, in some countries, checked for activation. (pattern: &lt;code&gt;&#91;+&#93;&#91;\s0-9()-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PostalCode" /></td>
+    <td><CopyableCode code="postal_code" /></td>
     <td><code>string</code></td>
     <td>The postal code of the primary contact address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateOrRegion" /></td>
+    <td><CopyableCode code="state_or_region" /></td>
     <td><code>string</code></td>
     <td>The state or region of the primary contact address. If the mailing address is within the United States (US), the value in this field can be either a two character state code (for example, NJ) or the full state name (for example, New Jersey). This field is required in the following countries: US, CA, GB, DE, JP, IN, and BR.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebsiteUrl" /></td>
+    <td><CopyableCode code="website_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the website associated with the primary contact information, if any.</td>
 </tr>
@@ -181,18 +181,18 @@ Retrieves the primary contact information of an Amazon Web Services account. For
 
 ```sql
 SELECT
-AddressLine1,
-AddressLine2,
-AddressLine3,
-City,
-CompanyName,
-CountryCode,
-DistrictOrCounty,
-FullName,
-PhoneNumber,
-PostalCode,
-StateOrRegion,
-WebsiteUrl
+address_line_1,
+address_line_2,
+address_line_3,
+city,
+company_name,
+country_code,
+district_or_county,
+full_name,
+phone_number,
+postal_code,
+state_or_region,
+website_url
 FROM aws.account.contact_informations
 WHERE region = '{{ region }}' -- required
 ;

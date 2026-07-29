@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="directParentTypes" /></td>
+    <td><CopyableCode code="direct_parent_types" /></td>
     <td><code>array</code></td>
     <td>The types that use this type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="directReferringTables" /></td>
+    <td><CopyableCode code="direct_referring_tables" /></td>
     <td><code>array</code></td>
     <td>The tables that use this type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fieldDefinitions" /></td>
+    <td><CopyableCode code="field_definitions" /></td>
     <td><code>array</code></td>
     <td>The names and types that define this type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="keyspaceArn" /></td>
+    <td><CopyableCode code="keyspace_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the keyspace that contains this type in the format of an Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):cassandra:.+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="keyspaceName" /></td>
+    <td><CopyableCode code="keyspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the keyspace that contains this type. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that shows when this type was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxNestingDepth" /></td>
+    <td><CopyableCode code="max_nesting_depth" /></td>
     <td><code>integer</code></td>
     <td>The level of nesting implemented for this type.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of this type. (ACTIVE, CREATING, DELETING, RESTORING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the type.</td>
 </tr>
@@ -201,15 +201,15 @@ The GetType operation returns information about the type, for example the field 
 
 ```sql
 SELECT
-directParentTypes,
-directReferringTables,
-fieldDefinitions,
-keyspaceArn,
-keyspaceName,
-lastModifiedTimestamp,
-maxNestingDepth,
+direct_parent_types,
+direct_referring_tables,
+field_definitions,
+keyspace_arn,
+keyspace_name,
+last_modified_timestamp,
+max_nesting_depth,
 status,
-typeName
+type_name
 FROM aws.keyspaces.types
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,8 +256,8 @@ SELECT
 '{{ fieldDefinitions }}' /* required */,
 '{{ region }}'
 RETURNING
-keyspaceArn,
-typeName
+keyspace_arn,
+type_name
 ;
 ```
 </TabItem>

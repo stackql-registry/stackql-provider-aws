@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with a script. Script names do not need to be unique.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeJsVersion" /></td>
+    <td><CopyableCode code="node_js_version" /></td>
     <td><code>string</code></td>
     <td>The Node.js version used for execution of your Realtime script. The valid values are 10.x | 24.x. By default, NodeJsVersion is 10.x. This value cannot be updated later. Node.js 10 will reach end of support on September 30, 2026. See more details in the Node.js 10 FAQs. For migration guidance, see Migrating from Node.js 10 to 24. (pattern: &lt;code&gt;^&#91;0-9&#93;+\.(?:x|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScriptArn" /></td>
+    <td><CopyableCode code="script_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers script resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift script ARN, the resource ID matches the ScriptId value. (pattern: &lt;code&gt;^arn:.*:script\/script-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScriptId" /></td>
+    <td><CopyableCode code="script_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the Realtime script (pattern: &lt;code&gt;^script-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeOnDisk" /></td>
+    <td><CopyableCode code="size_on_disk" /></td>
     <td><code>integer (int64)</code></td>
     <td>The file size of the uploaded Realtime script, expressed in bytes. When files are uploaded from an S3 location, this value remains at "0".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageLocation" /></td>
+    <td><CopyableCode code="storage_location" /></td>
     <td><code>object</code></td>
     <td>The location of the Amazon S3 bucket where a zipped file containing your Realtime scripts is stored. The storage location must specify the Amazon S3 bucket name, the zip file name (the "key"), and a role ARN that allows Amazon GameLift Servers to access the Amazon S3 storage location. The S3 bucket must be in the same Region where you want to create a new script. By default, Amazon GameLift Servers uploads the latest version of the zip file; if you have S3 object versioning turned on, you can use the ObjectVersion parameter to specify an earlier version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>Version information that is associated with a build or script. Version strings do not need to be unique.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with a script. Script names do not need to be unique.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeJsVersion" /></td>
+    <td><CopyableCode code="node_js_version" /></td>
     <td><code>string</code></td>
     <td>The Node.js version used for execution of your Realtime script. The valid values are 10.x | 24.x. By default, NodeJsVersion is 10.x. This value cannot be updated later. Node.js 10 will reach end of support on September 30, 2026. See more details in the Node.js 10 FAQs. For migration guidance, see Migrating from Node.js 10 to 24. (pattern: &lt;code&gt;^&#91;0-9&#93;+\.(?:x|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScriptArn" /></td>
+    <td><CopyableCode code="script_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers script resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift script ARN, the resource ID matches the ScriptId value. (pattern: &lt;code&gt;^arn:.*:script\/script-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScriptId" /></td>
+    <td><CopyableCode code="script_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the Realtime script (pattern: &lt;code&gt;^script-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeOnDisk" /></td>
+    <td><CopyableCode code="size_on_disk" /></td>
     <td><code>integer (int64)</code></td>
     <td>The file size of the uploaded Realtime script, expressed in bytes. When files are uploaded from an S3 location, this value remains at "0".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageLocation" /></td>
+    <td><CopyableCode code="storage_location" /></td>
     <td><code>object</code></td>
     <td>The location of the Amazon S3 bucket where a zipped file containing your Realtime scripts is stored. The storage location must specify the Amazon S3 bucket name, the zip file name (the "key"), and a role ARN that allows Amazon GameLift Servers to access the Amazon S3 storage location. The S3 bucket must be in the same Region where you want to create a new script. By default, Amazon GameLift Servers uploads the latest version of the zip file; if you have S3 object versioning turned on, you can use the ObjectVersion parameter to specify an earlier version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>Version information that is associated with a build or script. Version strings do not need to be unique.</td>
 </tr>
@@ -238,14 +238,14 @@ This API works with the following fleet types: EC2 Retrieves properties for a Re
 
 ```sql
 SELECT
-CreationTime,
-Name,
-NodeJsVersion,
-ScriptArn,
-ScriptId,
-SizeOnDisk,
-StorageLocation,
-Version
+creation_time,
+name,
+node_js_version,
+script_arn,
+script_id,
+size_on_disk,
+storage_location,
+version
 FROM aws.gamelift.scripts
 WHERE region = '{{ region }}' -- required
 ;
@@ -257,14 +257,14 @@ This API works with the following fleet types: EC2 Retrieves script records for 
 
 ```sql
 SELECT
-CreationTime,
-Name,
-NodeJsVersion,
-ScriptArn,
-ScriptId,
-SizeOnDisk,
-StorageLocation,
-Version
+creation_time,
+name,
+node_js_version,
+script_arn,
+script_id,
+size_on_disk,
+storage_location,
+version
 FROM aws.gamelift.scripts
 WHERE region = '{{ region }}' -- required
 ;
@@ -305,7 +305,7 @@ SELECT
 '{{ NodeJsVersion }}',
 '{{ region }}'
 RETURNING
-Script
+script
 ;
 ```
 </TabItem>
@@ -377,7 +377,7 @@ WHERE
 region = '{{ region }}' --required
 AND ScriptId = '{{ ScriptId }}' --required
 RETURNING
-Script;
+script;
 ```
 </TabItem>
 </Tabs>

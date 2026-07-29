@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArchiveId" /></td>
+    <td><CopyableCode code="archive_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the archive the email search was performed in. (pattern: &lt;code&gt;a-&#91;\w&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Filters" /></td>
+    <td><CopyableCode code="filters" /></td>
     <td><code>object</code></td>
     <td>The criteria used to filter emails included in the search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FromTimestamp" /></td>
+    <td><CopyableCode code="from_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start timestamp of the range the searched emails cover.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxResults" /></td>
+    <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of search results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current status of the search job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ToTimestamp" /></td>
+    <td><CopyableCode code="to_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end timestamp of the range the searched emails cover.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SearchId" /></td>
+    <td><CopyableCode code="search_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the search job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current status of the search job.</td>
 </tr>
@@ -177,12 +177,12 @@ Retrieves the details and current status of a specific email archive search job.
 
 ```sql
 SELECT
-ArchiveId,
-Filters,
-FromTimestamp,
-MaxResults,
-Status,
-ToTimestamp
+archive_id,
+filters,
+from_timestamp,
+max_results,
+status,
+to_timestamp
 FROM aws.mailmanager.archive_searches
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,8 +194,8 @@ Returns a list of email archive search jobs.
 
 ```sql
 SELECT
-SearchId,
-Status
+search_id,
+status
 FROM aws.mailmanager.archive_searches
 WHERE region = '{{ region }}' -- required
 ;

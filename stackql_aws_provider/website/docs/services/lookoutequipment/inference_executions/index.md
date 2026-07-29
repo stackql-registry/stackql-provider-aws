@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InferenceExecutionSummaries" /></td>
+    <td><CopyableCode code="inference_execution_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides an array of information about the individual inference executions returned from the ListInferenceExecutions operation, including model used, inference scheduler, data configuration, and so on. If you don't supply the InferenceSchedulerName request parameter, or if you supply the name of an inference scheduler that doesn't exist, ListInferenceExecutions returns an empty array in InferenceExecutionSummaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of inference executions. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all inference executions that have been performed by the specified inferen
 
 ```sql
 SELECT
-InferenceExecutionSummaries,
-NextToken
+inference_execution_summaries,
+next_token
 FROM aws.lookoutequipment.inference_executions
 WHERE region = '{{ region }}' -- required
 ;

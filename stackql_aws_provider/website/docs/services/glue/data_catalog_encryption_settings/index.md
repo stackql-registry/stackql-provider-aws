@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionPasswordEncryption" /></td>
+    <td><CopyableCode code="connection_password_encryption" /></td>
     <td><code>object</code></td>
     <td>When connection password protection is enabled, the Data Catalog uses a customer-provided key to encrypt the password as part of CreateConnection or UpdateConnection and store it in the ENCRYPTED_PASSWORD field in the connection properties. You can enable catalog encryption or only password encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionAtRest" /></td>
+    <td><CopyableCode code="encryption_at_rest" /></td>
     <td><code>object</code></td>
     <td>Specifies the encryption-at-rest configuration for the Data Catalog.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the security configuration for a specified catalog.
 
 ```sql
 SELECT
-ConnectionPasswordEncryption,
-EncryptionAtRest
+connection_password_encryption,
+encryption_at_rest
 FROM aws.glue.data_catalog_encryption_settings
 WHERE region = '{{ region }}' -- required
 ;

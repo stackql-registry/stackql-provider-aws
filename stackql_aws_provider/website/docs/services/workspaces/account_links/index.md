@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountLinkId" /></td>
+    <td><CopyableCode code="account_link_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the account link. (pattern: &lt;code&gt;^link-.&#123;8,24&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountLinkStatus" /></td>
+    <td><CopyableCode code="account_link_status" /></td>
     <td><code>string</code></td>
     <td>The status of the account link. (LINKED, LINKING_FAILED, LINK_NOT_FOUND, PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT, REJECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceAccountId" /></td>
+    <td><CopyableCode code="source_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the source account. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetAccountId" /></td>
+    <td><CopyableCode code="target_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the target account. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -169,10 +169,10 @@ Retrieves account link information.
 
 ```sql
 SELECT
-AccountLinkId,
-AccountLinkStatus,
-SourceAccountId,
-TargetAccountId
+account_link_id,
+account_link_status,
+source_account_id,
+target_account_id
 FROM aws.workspaces.account_links
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,7 +205,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-AccountLink
+account_link
 ;
 ```
 </TabItem>

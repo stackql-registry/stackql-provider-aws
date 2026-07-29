@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the requested sandboxes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sandboxesNotFound" /></td>
+    <td><CopyableCode code="sandboxes_not_found" /></td>
     <td><code>array</code></td>
     <td>The IDs of sandboxes for which information could not be found.</td>
 </tr>
@@ -167,7 +167,7 @@ Gets information about the sandbox status.
 ```sql
 SELECT
 sandboxes,
-sandboxesNotFound
+sandboxes_not_found
 FROM aws.codebuild.sandboxes
 WHERE region = '{{ region }}' -- required
 ;

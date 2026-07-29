@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="parameterObjects" /></td>
+    <td><CopyableCode code="parameter_objects" /></td>
     <td><code>array</code></td>
     <td>The parameter objects used in the pipeline definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterValues" /></td>
+    <td><CopyableCode code="parameter_values" /></td>
     <td><code>array</code></td>
     <td>The parameter values used in the pipeline definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineObjects" /></td>
+    <td><CopyableCode code="pipeline_objects" /></td>
     <td><code>array</code></td>
     <td>The objects defined in the pipeline.</td>
 </tr>
@@ -136,9 +136,9 @@ Gets the definition of the specified pipeline. You can call GetPipelineDefinitio
 
 ```sql
 SELECT
-parameterObjects,
-parameterValues,
-pipelineObjects
+parameter_objects,
+parameter_values,
+pipeline_objects
 FROM aws.datapipeline.pipeline_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -172,8 +172,8 @@ AND pipelineId = '{{ pipelineId }}' --required
 AND pipelineObjects = '{{ pipelineObjects }}' --required
 RETURNING
 errored,
-validationErrors,
-validationWarnings;
+validation_errors,
+validation_warnings;
 ```
 </TabItem>
 </Tabs>

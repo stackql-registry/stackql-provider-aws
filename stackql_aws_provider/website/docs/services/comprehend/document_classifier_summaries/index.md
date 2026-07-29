@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DocumentClassifierSummariesList" /></td>
+    <td><CopyableCode code="document_classifier_summaries_list" /></td>
     <td><code>array</code></td>
     <td>The list of summaries of document classifiers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Identifies the next page of results to return.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets a list of summaries of the document classifiers that you have created
 
 ```sql
 SELECT
-DocumentClassifierSummariesList,
-NextToken
+document_classifier_summaries_list,
+next_token
 FROM aws.comprehend.document_classifier_summaries
 WHERE region = '{{ region }}' -- required
 ;

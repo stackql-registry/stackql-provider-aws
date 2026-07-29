@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DimensionsValues" /></td>
+    <td><CopyableCode code="dimensions_values" /></td>
     <td><code>object</code></td>
     <td>The dimensions used to group emissions values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmissionsValues" /></td>
+    <td><CopyableCode code="emissions_values" /></td>
     <td><code>object</code></td>
     <td>The emissions values for the requested emissions types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelVersion" /></td>
+    <td><CopyableCode code="model_version" /></td>
     <td><code>string</code></td>
     <td>The semantic version-formatted string that indicates the methodology version used to calculate the emission values. The AWS Sustainability service reflects the most recent model version for every month. You will not see two entries for the same month with different ModelVersion values. To track the evolution of the methodology and compare emission values from previous versions, we recommend creating a Data Export. (pattern: &lt;code&gt;v(0|&#91;1-9&#93;\d*)\.(0|&#91;1-9&#93;\d*)\.(0|&#91;1-9&#93;\d*)(?:-((?:0|&#91;1-9&#93;\d*|\d*&#91;a-zA-Z-&#93;&#91;0-9a-zA-Z-&#93;*)(?:\.(?:0|&#91;1-9&#93;\d*|\d*&#91;a-zA-Z-&#93;&#91;0-9a-zA-Z-&#93;*))*))?(?:\+(&#91;0-9a-zA-Z-&#93;+(?:\.&#91;0-9a-zA-Z-&#93;+)*))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimePeriod" /></td>
+    <td><CopyableCode code="time_period" /></td>
     <td><code>object</code></td>
     <td>Represents a duration of time defined by start and end timestamps.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns estimated carbon emission values based on customer grouping and filterin
 
 ```sql
 SELECT
-DimensionsValues,
-EmissionsValues,
-ModelVersion,
-TimePeriod
+dimensions_values,
+emissions_values,
+model_version,
+time_period
 FROM aws.sustainability.estimated_carbon_emissions
 WHERE region = '{{ region }}' -- required
 ;

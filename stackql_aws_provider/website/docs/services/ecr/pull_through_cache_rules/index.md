@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the pull through cache was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialArn" /></td>
+    <td><CopyableCode code="credential_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Secrets Manager secret associated with the pull through cache rule. (pattern: &lt;code&gt;^arn:aws(-\w+)*:secretsmanager:&#91;a-zA-Z0-9-:&#93;+:secret:ecr\-pullthroughcache\/&#91;a-zA-Z0-9\/_+=.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customRoleArn" /></td>
+    <td><CopyableCode code="custom_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role associated with the pull through cache rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ecrRepositoryPrefix" /></td>
+    <td><CopyableCode code="ecr_repository_prefix" /></td>
     <td><code>string</code></td>
     <td>The Amazon ECR repository prefix associated with the pull through cache rule. (pattern: &lt;code&gt;^(&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*\/?|ROOT)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the registry the pull through cache rule is associated with. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in JavaScript date format, when the pull through cache rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upstreamRegistry" /></td>
+    <td><CopyableCode code="upstream_registry" /></td>
     <td><code>string</code></td>
     <td>The name of the upstream source registry associated with the pull through cache rule. (ecr, ecr-public, quay, k8s, docker-hub, github-container-registry, azure-container-registry, gitlab-container-registry, chainguard)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upstreamRegistryUrl" /></td>
+    <td><CopyableCode code="upstream_registry_url" /></td>
     <td><code>string</code></td>
     <td>The upstream registry URL associated with the pull through cache rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upstreamRepositoryPrefix" /></td>
+    <td><CopyableCode code="upstream_repository_prefix" /></td>
     <td><code>string</code></td>
     <td>The upstream repository prefix associated with the pull through cache rule. (pattern: &lt;code&gt;^(&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*\/?|ROOT)$&lt;/code&gt;)</td>
 </tr>
@@ -180,15 +180,15 @@ Returns the pull through cache rules for a registry.
 
 ```sql
 SELECT
-createdAt,
-credentialArn,
-customRoleArn,
-ecrRepositoryPrefix,
-registryId,
-updatedAt,
-upstreamRegistry,
-upstreamRegistryUrl,
-upstreamRepositoryPrefix
+created_at,
+credential_arn,
+custom_role_arn,
+ecr_repository_prefix,
+registry_id,
+updated_at,
+upstream_registry,
+upstream_registry_url,
+upstream_repository_prefix
 FROM aws.ecr.pull_through_cache_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,14 +231,14 @@ SELECT
 '{{ upstreamRepositoryPrefix }}',
 '{{ region }}'
 RETURNING
-createdAt,
-credentialArn,
-customRoleArn,
-ecrRepositoryPrefix,
-registryId,
-upstreamRegistry,
-upstreamRegistryUrl,
-upstreamRepositoryPrefix
+created_at,
+credential_arn,
+custom_role_arn,
+ecr_repository_prefix,
+registry_id,
+upstream_registry,
+upstream_registry_url,
+upstream_repository_prefix
 ;
 ```
 </TabItem>
@@ -308,12 +308,12 @@ WHERE
 region = '{{ region }}' --required
 AND ecrRepositoryPrefix = '{{ ecrRepositoryPrefix }}' --required
 RETURNING
-credentialArn,
-customRoleArn,
-ecrRepositoryPrefix,
-registryId,
-updatedAt,
-upstreamRepositoryPrefix;
+credential_arn,
+custom_role_arn,
+ecr_repository_prefix,
+registry_id,
+updated_at,
+upstream_repository_prefix;
 ```
 </TabItem>
 </Tabs>

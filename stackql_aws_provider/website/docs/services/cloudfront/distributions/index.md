@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The distribution's Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActiveTrustedKeyGroups" /></td>
+    <td><CopyableCode code="active_trusted_key_groups" /></td>
     <td><code>string</code></td>
     <td>This field contains a list of key groups and the public keys in each key group that CloudFront can use to verify the signatures of signed URLs or signed cookies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActiveTrustedSigners" /></td>
+    <td><CopyableCode code="active_trusted_signers" /></td>
     <td><code>string</code></td>
     <td>We recommend using TrustedKeyGroups instead of TrustedSigners. This field contains a list of Amazon Web Services account IDs and the active CloudFront key pairs in each account that CloudFront can use to verify the signatures of signed URLs or signed cookies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AliasICPRecordals" /></td>
+    <td><CopyableCode code="alias_icp_recordals" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services services in China customers must file for an Internet Content Provider (ICP) recordal if they want to serve content publicly on an alternate domain name, also known as a CNAME, that they've added to CloudFront. AliasICPRecordal provides the ICP recordal status for CNAMEs associated with distributions. For more information about ICP recordals, see Signup, Accounts, and Credentials in Getting Started with Amazon Web Services services in China.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DistributionConfig" /></td>
+    <td><CopyableCode code="distribution_config" /></td>
     <td><code>string</code></td>
     <td>The distribution's configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The distribution's CloudFront domain name. For example: d111111abcdef8.cloudfront.net.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The distribution's identifier. For example: E1U5RQF7T870K0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InProgressInvalidationBatches" /></td>
+    <td><CopyableCode code="in_progress_invalidation_batches" /></td>
     <td><code>integer</code></td>
     <td>The number of invalidation batches currently in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the distribution was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The distribution's status. When the status is Deployed, the distribution's information is fully propagated to all CloudFront edge locations.</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains one DistributionSummary element for each distribution that was created by the current Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>The value you provided for the Marker request parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The value you provided for the MaxItems request parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your distributions where they left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of distributions that were created by the current Amazon Web Services account.</td>
 </tr>
@@ -284,16 +284,16 @@ Get the information about a distribution.
 
 ```sql
 SELECT
-ARN,
-ActiveTrustedKeyGroups,
-ActiveTrustedSigners,
-AliasICPRecordals,
-DistributionConfig,
-DomainName,
-Id,
-InProgressInvalidationBatches,
-LastModifiedTime,
-Status
+arn,
+active_trusted_key_groups,
+active_trusted_signers,
+alias_icp_recordals,
+distribution_config,
+domain_name,
+id,
+in_progress_invalidation_batches,
+last_modified_time,
+status
 FROM aws.cloudfront.distributions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -306,12 +306,12 @@ List CloudFront distributions.
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.distributions
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -344,16 +344,16 @@ SELECT
 '{{ DistributionConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-ARN,
-ActiveTrustedKeyGroups,
-ActiveTrustedSigners,
-AliasICPRecordals,
-DistributionConfig,
-DomainName,
-Id,
-InProgressInvalidationBatches,
-LastModifiedTime,
-Status
+arn,
+active_trusted_key_groups,
+active_trusted_signers,
+alias_icp_recordals,
+distribution_config,
+domain_name,
+id,
+in_progress_invalidation_batches,
+last_modified_time,
+status
 ;
 ```
 </TabItem>
@@ -626,9 +626,9 @@ AND region = '{{ region }}' --required
 AND WebACLArn = '{{ WebACLArn }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-ETag,
-Id,
-WebACLArn;
+e_tag,
+id,
+web_acl_arn;
 ```
 </TabItem>
 <TabItem value="update_distribution">
@@ -645,16 +645,16 @@ AND region = '{{ region }}' --required
 AND DistributionConfig = '{{ DistributionConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-ARN,
-ActiveTrustedKeyGroups,
-ActiveTrustedSigners,
-AliasICPRecordals,
-DistributionConfig,
-DomainName,
-Id,
-InProgressInvalidationBatches,
-LastModifiedTime,
-Status;
+arn,
+active_trusted_key_groups,
+active_trusted_signers,
+alias_icp_recordals,
+distribution_config,
+domain_name,
+id,
+in_progress_invalidation_batches,
+last_modified_time,
+status;
 ```
 </TabItem>
 <TabItem value="disassociate_distribution_web_acl">
@@ -670,8 +670,8 @@ id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-ETag,
-Id;
+e_tag,
+id;
 ```
 </TabItem>
 </Tabs>

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedValues" /></td>
+    <td><CopyableCode code="allowed_values" /></td>
     <td><code>string</code></td>
     <td>Specifies the valid range of values for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplyMethod" /></td>
+    <td><CopyableCode code="apply_method" /></td>
     <td><code>string</code></td>
     <td>Indicates when to apply parameter updates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplyType" /></td>
+    <td><CopyableCode code="apply_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the engine-specific parameters type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the valid data type for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Provides a description of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsModifiable" /></td>
+    <td><CopyableCode code="is_modifiable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether (true) or not (false) the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The earliest engine version to which the parameter can apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterName" /></td>
+    <td><CopyableCode code="parameter_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterValue" /></td>
+    <td><CopyableCode code="parameter_value" /></td>
     <td><code>string</code></td>
     <td>Specifies the value of the parameter. Must be one or more of the cluster parameter's AllowedValues in CSV format: Valid values are: enabled: The cluster accepts secure connections using TLS version 1.0 through 1.3. disabled: The cluster does not accept secure connections using TLS. fips-140-3: The cluster only accepts secure connections per the requirements of the Federal Information Processing Standards (FIPS) publication 140-3. Only supported starting with Amazon DocumentDB 5.0 (engine version 3.0.3727) clusters in these regions: ca-central-1, us-west-2, us-east-1, us-east-2, us-gov-east-1, us-gov-west-1. tls1.2+: The cluster accepts secure connections using TLS version 1.2 and above. Only supported starting with Amazon DocumentDB 4.0 (engine version 2.0.10980) and Amazon DocumentDB 5.0 (engine version 3.0.11051). tls1.3+: The cluster accepts secure connections using TLS version 1.3 and above. Only supported starting with Amazon DocumentDB 4.0 (engine version 2.0.10980) and Amazon DocumentDB 5.0 (engine version 3.0.11051).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>Indicates the source of the parameter value.</td>
 </tr>
@@ -233,16 +233,16 @@ Returns the detailed parameter list for a particular cluster parameter group.
 
 ```sql
 SELECT
-AllowedValues,
-ApplyMethod,
-ApplyType,
-DataType,
-Description,
-IsModifiable,
-MinimumEngineVersion,
-ParameterName,
-ParameterValue,
-Source
+allowed_values,
+apply_method,
+apply_type,
+data_type,
+description,
+is_modifiable,
+minimum_engine_version,
+parameter_name,
+parameter_value,
+source
 FROM aws.docdb.db_cluster_parameters
 WHERE DBClusterParameterGroupName = '{{ DBClusterParameterGroupName }}' -- required
 AND region = '{{ region }}' -- required

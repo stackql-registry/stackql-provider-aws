@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EffectiveHoursOfOperationList" /></td>
+    <td><CopyableCode code="effective_hours_of_operation_list" /></td>
     <td><code>array</code></td>
     <td>Information about the effective hours of operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveOverrideHoursList" /></td>
+    <td><CopyableCode code="effective_override_hours_list" /></td>
     <td><code>array</code></td>
     <td>Information about override configurations applied to the base hours of operation to calculate the effective hours. For more information about how override types are applied, see Build your list of overrides in the Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The time zone for the hours of operation.</td>
 </tr>
@@ -149,9 +149,9 @@ Get the hours of operations with the effective override applied.
 
 ```sql
 SELECT
-EffectiveHoursOfOperationList,
-EffectiveOverrideHoursList,
-TimeZone
+effective_hours_of_operation_list,
+effective_override_hours_list,
+time_zone
 FROM aws.connect.effective_hours_of_operations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND hours_of_operation_id = '{{ hours_of_operation_id }}' -- required

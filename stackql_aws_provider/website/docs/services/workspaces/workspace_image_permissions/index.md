@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the image. (pattern: &lt;code&gt;wsi-&#91;0-9a-z&#93;&#123;9,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImagePermissions" /></td>
+    <td><CopyableCode code="image_permissions" /></td>
     <td><code>array</code></td>
     <td>The identifiers of the Amazon Web Services accounts that the image has been shared with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -136,9 +136,9 @@ Describes the permissions that the owner of an image has granted to other Amazon
 
 ```sql
 SELECT
-ImageId,
-ImagePermissions,
-NextToken
+image_id,
+image_permissions,
+next_token
 FROM aws.workspaces.workspace_image_permissions
 WHERE region = '{{ region }}' -- required
 ;

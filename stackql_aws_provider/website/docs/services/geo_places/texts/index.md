@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingBucket" /></td>
+    <td><CopyableCode code="pricing_bucket" /></td>
     <td><code>string</code></td>
     <td>The pricing bucket for which the query is charged at. For more information on pricing, please visit Amazon Location Service Pricing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultItems" /></td>
+    <td><CopyableCode code="result_items" /></td>
     <td><code>array</code></td>
     <td>List of places or results returned for a query.</td>
 </tr>
@@ -134,9 +134,9 @@ SearchText searches for geocode and place information. You can then complete a f
 
 ```sql
 SELECT
-NextToken,
-PricingBucket,
-ResultItems
+next_token,
+pricing_bucket,
+result_items
 FROM aws.geo_places.texts
 WHERE region = '{{ region }}' -- required
 AND key = '{{ key }}'

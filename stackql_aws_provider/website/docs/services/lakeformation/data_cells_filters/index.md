@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ColumnNames" /></td>
+    <td><CopyableCode code="column_names" /></td>
     <td><code>array</code></td>
     <td>A list of column names and/or nested column attributes. When specifying nested attributes, use a qualified dot (.) delimited format such as "address"."zip". Nested attributes within this list may not exceed a depth of 5.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ColumnWildcard" /></td>
+    <td><CopyableCode code="column_wildcard" /></td>
     <td><code>object</code></td>
     <td>A wildcard with exclusions. You must specify either a ColumnNames list or the ColumnWildCard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>A database in the Glue Data Catalog. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name given by the user to the data filter cell. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowFilter" /></td>
+    <td><CopyableCode code="row_filter" /></td>
     <td><code>object</code></td>
     <td>A PartiQL predicate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableCatalogId" /></td>
+    <td><CopyableCode code="table_catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the catalog to which the table belongs. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>A table in the database. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data cells filter version. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ColumnNames" /></td>
+    <td><CopyableCode code="column_names" /></td>
     <td><code>array</code></td>
     <td>A list of column names and/or nested column attributes. When specifying nested attributes, use a qualified dot (.) delimited format such as "address"."zip". Nested attributes within this list may not exceed a depth of 5.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ColumnWildcard" /></td>
+    <td><CopyableCode code="column_wildcard" /></td>
     <td><code>object</code></td>
     <td>A wildcard with exclusions. You must specify either a ColumnNames list or the ColumnWildCard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>A database in the Glue Data Catalog. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name given by the user to the data filter cell. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowFilter" /></td>
+    <td><CopyableCode code="row_filter" /></td>
     <td><code>object</code></td>
     <td>A PartiQL predicate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableCatalogId" /></td>
+    <td><CopyableCode code="table_catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the catalog to which the table belongs. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>A table in the database. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data cells filter version. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -238,14 +238,14 @@ Returns a data cells filter.
 
 ```sql
 SELECT
-ColumnNames,
-ColumnWildcard,
-DatabaseName,
-Name,
-RowFilter,
-TableCatalogId,
-TableName,
-VersionId
+column_names,
+column_wildcard,
+database_name,
+name,
+row_filter,
+table_catalog_id,
+table_name,
+version_id
 FROM aws.lakeformation.data_cells_filters
 WHERE region = '{{ region }}' -- required
 ;
@@ -257,14 +257,14 @@ Lists all the data cell filters on a table.
 
 ```sql
 SELECT
-ColumnNames,
-ColumnWildcard,
-DatabaseName,
-Name,
-RowFilter,
-TableCatalogId,
-TableName,
-VersionId
+column_names,
+column_wildcard,
+database_name,
+name,
+row_filter,
+table_catalog_id,
+table_name,
+version_id
 FROM aws.lakeformation.data_cells_filters
 WHERE region = '{{ region }}' -- required
 ;

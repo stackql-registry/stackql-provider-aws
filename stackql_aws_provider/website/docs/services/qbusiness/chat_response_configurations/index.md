@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="chatResponseConfigurationArn" /></td>
+    <td><CopyableCode code="chat_response_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the retrieved chat response configuration, which uniquely identifies the resource across all Amazon Web Services services. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chatResponseConfigurationId" /></td>
+    <td><CopyableCode code="chat_response_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the retrieved chat response configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the chat response configuration was initially created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the retrieved chat response configuration, making it easier to identify among multiple configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inUseConfiguration" /></td>
+    <td><CopyableCode code="in_use_configuration" /></td>
     <td><code>object</code></td>
     <td>The currently active configuration settings that are being used to generate responses in the Amazon Q Business application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateConfiguration" /></td>
+    <td><CopyableCode code="last_update_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the most recent update to the configuration, including timestamp and modification details.</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="chatResponseConfigurationArn" /></td>
+    <td><CopyableCode code="chat_response_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the chat response configuration, which uniquely identifies the resource across all Amazon Web Services services and accounts. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chatResponseConfigurationId" /></td>
+    <td><CopyableCode code="chat_response_configuration_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for your chat response configuration settings, used to reference and manage the configuration within the Amazon Q Business service. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the chat response configuration was initially created, useful for tracking the lifecycle of configuration resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>A human-readable name for the chat response configuration, making it easier to identify and manage multiple configurations within an organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseConfigurationSummary" /></td>
+    <td><CopyableCode code="response_configuration_summary" /></td>
     <td><code>string</code></td>
     <td>A summary of the response configuration settings, providing a concise overview of the key parameters that define how responses are generated and formatted.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the chat response configuration, indicating whether it is active, pending, or in another state that affects its availability for use in chat interactions. (CREATING, UPDATING, FAILED, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the chat response configuration was last modified, helping administrators track changes and maintain version awareness.</td>
 </tr>
@@ -243,12 +243,12 @@ Retrieves detailed information about a specific chat response configuration from
 
 ```sql
 SELECT
-chatResponseConfigurationArn,
-chatResponseConfigurationId,
-createdAt,
-displayName,
-inUseConfiguration,
-lastUpdateConfiguration
+chat_response_configuration_arn,
+chat_response_configuration_id,
+created_at,
+display_name,
+in_use_configuration,
+last_update_configuration
 FROM aws.qbusiness.chat_response_configurations
 WHERE application_id = '{{ application_id }}' -- required
 AND chat_response_configuration_id = '{{ chat_response_configuration_id }}' -- required
@@ -262,13 +262,13 @@ Retrieves a list of all chat response configurations available in a specified Am
 
 ```sql
 SELECT
-chatResponseConfigurationArn,
-chatResponseConfigurationId,
-createdAt,
-displayName,
-responseConfigurationSummary,
+chat_response_configuration_arn,
+chat_response_configuration_id,
+created_at,
+display_name,
+response_configuration_summary,
 status,
-updatedAt
+updated_at
 FROM aws.qbusiness.chat_response_configurations
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -310,8 +310,8 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-chatResponseConfigurationArn,
-chatResponseConfigurationId
+chat_response_configuration_arn,
+chat_response_configuration_id
 ;
 ```
 </TabItem>

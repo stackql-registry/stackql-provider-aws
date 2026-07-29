@@ -168,7 +168,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-QueueUrl
+queue_url
 ;
 ```
 </TabItem>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this platform version is the default version for the engine. The default platform version is the version used for new DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2FeaturesSupport" /></td>
+    <td><CopyableCode code="serverless_v2_features_support" /></td>
     <td><code>string</code></td>
     <td>Specifies any Aurora Serverless v2 properties or limits that differ between Aurora Serverless v2 platform versions. You can retrieve the platform version of an existing DB cluster and check whether that version supports certain Aurora Serverless v2 features before you attempt to use those features.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2PlatformVersion" /></td>
+    <td><CopyableCode code="serverless_v2_platform_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the serverless platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2PlatformVersionDescription" /></td>
+    <td><CopyableCode code="serverless_v2_platform_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the serverless platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the serverless platform. Valid statuses are the following: enabled - The platform version is in use. disabled - The platform version is not in use.</td>
 </tr>
@@ -179,12 +179,12 @@ Describes the properties of specific platform versions for Aurora Serverless v2.
 
 ```sql
 SELECT
-Engine,
-IsDefault,
-ServerlessV2FeaturesSupport,
-ServerlessV2PlatformVersion,
-ServerlessV2PlatformVersionDescription,
-Status
+engine,
+is_default,
+serverless_v2_features_support,
+serverless_v2_platform_version,
+serverless_v2_platform_version_description,
+status
 FROM aws.rds.serverless_v2_platform_versions
 WHERE region = '{{ region }}' -- required
 AND ServerlessV2PlatformVersion = '{{ ServerlessV2PlatformVersion }}'

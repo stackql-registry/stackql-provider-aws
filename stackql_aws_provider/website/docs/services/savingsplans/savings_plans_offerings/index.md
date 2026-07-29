@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;^&#91;A-Za-z0-9/=\+&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="searchResults" /></td>
+    <td><CopyableCode code="search_results" /></td>
     <td><code>array</code></td>
     <td>Information about the Savings Plans offerings.</td>
 </tr>
@@ -124,8 +124,8 @@ Describes the offerings for the specified Savings Plans.
 
 ```sql
 SELECT
-nextToken,
-searchResults
+next_token,
+search_results
 FROM aws.savingsplans.savings_plans_offerings
 WHERE region = '{{ region }}' -- required
 ;

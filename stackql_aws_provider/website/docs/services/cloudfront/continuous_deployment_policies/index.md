@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContinuousDeploymentPolicyConfig" /></td>
+    <td><CopyableCode code="continuous_deployment_policy_config" /></td>
     <td><code>string</code></td>
     <td>Contains the configuration for a continuous deployment policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the continuous deployment policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the continuous deployment policy was last modified.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A list of continuous deployment policy items.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of continuous deployment policies that were specified in your request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>Indicates the next page of continuous deployment policies. To get the next page of the list, use this value in the Marker field of your request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The total number of continuous deployment policies in your Amazon Web Services account, regardless of the MaxItems value.</td>
 </tr>
@@ -213,9 +213,9 @@ Gets a continuous deployment policy, including metadata (the policy's identifier
 
 ```sql
 SELECT
-ContinuousDeploymentPolicyConfig,
-Id,
-LastModifiedTime
+continuous_deployment_policy_config,
+id,
+last_modified_time
 FROM aws.cloudfront.continuous_deployment_policies
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,10 +228,10 @@ Gets a list of the continuous deployment policies in your Amazon Web Services ac
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.continuous_deployment_policies
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -264,9 +264,9 @@ SELECT
 '{{ ContinuousDeploymentPolicyConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-ContinuousDeploymentPolicyConfig,
-Id,
-LastModifiedTime
+continuous_deployment_policy_config,
+id,
+last_modified_time
 ;
 ```
 </TabItem>
@@ -325,9 +325,9 @@ AND region = '{{ region }}' --required
 AND ContinuousDeploymentPolicyConfig = '{{ ContinuousDeploymentPolicyConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-ContinuousDeploymentPolicyConfig,
-Id,
-LastModifiedTime;
+continuous_deployment_policy_config,
+id,
+last_modified_time;
 ```
 </TabItem>
 </Tabs>

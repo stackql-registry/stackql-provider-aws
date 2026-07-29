@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Analysis" /></td>
+    <td><CopyableCode code="analysis" /></td>
     <td><code>array</code></td>
     <td>A list of FleetAdvisorLsaAnalysisResponse objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If NextToken is returned, there are more results available. The value of NextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged.</td>
 </tr>
@@ -131,8 +131,8 @@ End of support notice: On May 20, 2026, Amazon Web Services will end support for
 
 ```sql
 SELECT
-Analysis,
-NextToken
+analysis,
+next_token
 FROM aws.dms.fleet_advisor_lsa_analysis
 WHERE region = '{{ region }}' -- required
 ;

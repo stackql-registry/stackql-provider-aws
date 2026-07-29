@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The managed node ID. (pattern: &lt;code&gt;(^i-(\w&#123;8&#125;|\w&#123;17&#125;)$)|(^mi-\w&#123;17&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Product" /></td>
+    <td><CopyableCode code="product" /></td>
     <td><code>string</code></td>
     <td>Returns the specific operating system (for example Windows Server 2012 or Amazon Linux 2015.09) on the managed node for the specified patch snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotDownloadUrl" /></td>
+    <td><CopyableCode code="snapshot_download_url" /></td>
     <td><code>string</code></td>
     <td>A pre-signed Amazon Simple Storage Service (Amazon S3) URL that can be used to download the patch snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The user-defined snapshot ID. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieves the current snapshot for the patch baseline the managed node uses. Thi
 
 ```sql
 SELECT
-InstanceId,
-Product,
-SnapshotDownloadUrl,
-SnapshotId
+instance_id,
+product,
+snapshot_download_url,
+snapshot_id
 FROM aws.ssm.deployable_patch_snapshot_for_instances
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthConfig" /></td>
+    <td><CopyableCode code="auth_config" /></td>
     <td><code>object</code></td>
     <td>The authentication configuration details for a connector destination, including OAuth settings and other authentication parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthType" /></td>
+    <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type used for the connector destination, which determines how credentials and access are managed. (OAUTH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudConnectorId" /></td>
+    <td><CopyableCode code="cloud_connector_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the C2C connector. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the connector destination. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the connector destination. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the connector destination. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OAuthCompleteRedirectUrl" /></td>
+    <td><CopyableCode code="o_auth_complete_redirect_url" /></td>
     <td><code>string</code></td>
     <td>The URL where users are redirected after completing the OAuth authorization process for the connector destination. (pattern: &lt;code&gt;(http|https):​//.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretsManager" /></td>
+    <td><CopyableCode code="secrets_manager" /></td>
     <td><code>object</code></td>
     <td>Configuration for AWS Secrets Manager, used to securely store and manage sensitive information for connector destinations.</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudConnectorId" /></td>
+    <td><CopyableCode code="cloud_connector_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the cloud connector associated with this connector destination. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the connector destination. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the connector destination. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the connector destination. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
@@ -238,14 +238,14 @@ Get connector destination details linked to a cloud-to-cloud (C2C) connector.
 
 ```sql
 SELECT
-AuthConfig,
-AuthType,
-CloudConnectorId,
-Description,
-Id,
-Name,
-OAuthCompleteRedirectUrl,
-SecretsManager
+auth_config,
+auth_type,
+cloud_connector_id,
+description,
+id,
+name,
+o_auth_complete_redirect_url,
+secrets_manager
 FROM aws.iot_managed_integrations.connector_destinations
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -258,10 +258,10 @@ Lists all connector destinations, with optional filtering by cloud connector ID.
 
 ```sql
 SELECT
-CloudConnectorId,
-Description,
-Id,
-Name
+cloud_connector_id,
+description,
+id,
+name
 FROM aws.iot_managed_integrations.connector_destinations
 WHERE region = '{{ region }}' -- required
 AND CloudConnectorId = '{{ CloudConnectorId }}'
@@ -307,7 +307,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the firewall. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallArn" /></td>
+    <td><CopyableCode code="firewall_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallPolicyArn" /></td>
+    <td><CopyableCode code="firewall_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall policy. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The readiness of the configured firewall to handle network traffic across all of the Availability Zones where you have it configured. This setting is READY only when the ConfigurationSyncStateSummary value is IN_SYNC and the Attachment Status values for all of the configured subnets are READY. (PROVISIONING, DELETING, READY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedAvailabilityZones" /></td>
+    <td><CopyableCode code="supported_availability_zones" /></td>
     <td><code>object</code></td>
     <td>The Availability Zones that the firewall currently supports. This includes all Availability Zones for which the firewall has a subnet defined.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the transit gateway attachment associated with this firewall. This field is only present for transit gateway-attached firewalls. (pattern: &lt;code&gt;^tgw-attach-&#91;0-9a-z&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ Returns the high-level information about a firewall, including the Availability 
 
 ```sql
 SELECT
-Description,
-FirewallArn,
-FirewallPolicyArn,
-Status,
-SupportedAvailabilityZones,
-TransitGatewayAttachmentId
+description,
+firewall_arn,
+firewall_policy_arn,
+status,
+supported_availability_zones,
+transit_gateway_attachment_id
 FROM aws.network_firewall.firewall_metadatas
 WHERE region = '{{ region }}' -- required
 ;

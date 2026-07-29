@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupId" /></td>
+    <td><CopyableCode code="backup_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the backup. (pattern: &lt;code&gt;^(backup-&#91;0-9a-f&#93;&#123;8,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a particular backup was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryInformation" /></td>
+    <td><CopyableCode code="directory_information" /></td>
     <td><code>object</code></td>
     <td>The configuration of the self-managed Microsoft Active Directory directory to which the Windows File Server instance is joined.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureDetails" /></td>
+    <td><CopyableCode code="failure_details" /></td>
     <td><code>object</code></td>
     <td>Details explaining any failures that occurred when creating a backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystem" /></td>
+    <td><CopyableCode code="file_system" /></td>
     <td><code>object</code></td>
     <td>The metadata of the file system associated with the backup. This metadata is persisted even if the file system is deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the ID of the Key Management Service (KMS) key to use for encrypting data on Amazon FSx file systems, as follows: Amazon FSx for Lustre PERSISTENT_1 and PERSISTENT_2 deployment types only. SCRATCH_1 and SCRATCH_2 types are encrypted using the Amazon FSx service KMS key for your account. Amazon FSx for NetApp ONTAP Amazon FSx for OpenZFS Amazon FSx for Windows File Server If a KmsKeyId isn't specified, the Amazon FSx-managed KMS key for your account is used. For more information, see Encrypt in the Key Management Service API Reference. (pattern: &lt;code&gt;^.&#123;1,2048&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lifecycle" /></td>
+    <td><CopyableCode code="lifecycle" /></td>
     <td><code>string</code></td>
     <td>The lifecycle status of the backup. AVAILABLE - The backup is fully available. PENDING - For user-initiated backups on Lustre file systems only; Amazon FSx hasn't started creating the backup. CREATING - Amazon FSx is creating the backup. TRANSFERRING - For user-initiated backups on Lustre file systems only; Amazon FSx is transferring the backup to Amazon S3. COPYING - Amazon FSx is copying the backup. DELETED - Amazon FSx deleted the backup and it's no longer available. FAILED - Amazon FSx couldn't finish the backup. (AVAILABLE, CREATING, TRANSFERRING, DELETED, FAILED, PENDING, COPYING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services account ID. This ID is a 12-digit number that you use to construct Amazon Resource Names (ARNs) for resources. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressPercent" /></td>
+    <td><CopyableCode code="progress_percent" /></td>
     <td><code>integer</code></td>
     <td>Displays the current percent of progress of an asynchronous task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceARN" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the backup resource. (pattern: &lt;code&gt;^arn:(?=&#91;^:&#93;+:fsx:&#91;^:&#93;+:\d&#123;12&#125;:)((|(?=&#91;a-z0-9-.&#93;&#123;1,63&#125;)(?!\d&#123;1,3&#125;(\.\d&#123;1,3&#125;)&#123;3&#125;)(?!&#91;^:&#93;*-&#123;2&#125;)(?!&#91;^:&#93;*-\.)(?!&#91;^:&#93;*\.-)&#91;a-z0-9&#93;.*(?&lt;!-)):)&#123;4&#125;(?!/).&#123;0,1024&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the resource type that's backed up. (FILE_SYSTEM, VOLUME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the backup in bytes. This represents the amount of data that the file system would contain if you restore this backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBackupId" /></td>
+    <td><CopyableCode code="source_backup_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source backup. Specifies the backup that you are copying. (pattern: &lt;code&gt;^(backup-&#91;0-9a-f&#93;&#123;8,&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBackupRegion" /></td>
+    <td><CopyableCode code="source_backup_region" /></td>
     <td><code>string</code></td>
     <td>The source Region of the backup. Specifies the Region from where this backup is copied. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;&#123;1,20&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of Tag values, with a maximum of 50 elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the file-system backup. (AUTOMATIC, USER_INITIATED, AWS_BACKUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Volume" /></td>
+    <td><CopyableCode code="volume" /></td>
     <td><code>object</code></td>
     <td>Describes an Amazon FSx volume.</td>
 </tr>
@@ -227,23 +227,23 @@ Returns the description of a specific Amazon FSx backup, if a BackupIds value is
 
 ```sql
 SELECT
-BackupId,
-CreationTime,
-DirectoryInformation,
-FailureDetails,
-FileSystem,
-KmsKeyId,
-Lifecycle,
-OwnerId,
-ProgressPercent,
-ResourceARN,
-ResourceType,
-SizeInBytes,
-SourceBackupId,
-SourceBackupRegion,
-Tags,
-Type,
-Volume
+backup_id,
+creation_time,
+directory_information,
+failure_details,
+file_system,
+kms_key_id,
+lifecycle,
+owner_id,
+progress_percent,
+resource_arn,
+resource_type,
+size_in_bytes,
+source_backup_id,
+source_backup_region,
+tags,
+type,
+volume
 FROM aws.fsx.backups
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,7 +300,7 @@ SELECT
 '{{ NetworkType }}',
 '{{ region }}'
 RETURNING
-FileSystem
+file_system
 ;
 ```
 </TabItem>
@@ -325,7 +325,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Volume
+volume
 ;
 ```
 </TabItem>
@@ -348,7 +348,7 @@ SELECT
 '{{ VolumeId }}',
 '{{ region }}'
 RETURNING
-Backup
+backup
 ;
 ```
 </TabItem>

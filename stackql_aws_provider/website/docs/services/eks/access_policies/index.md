@@ -200,9 +200,9 @@ AND region = '{{ region }}' --required
 AND policyArn = '{{ policyArn }}' --required
 AND accessScope = '{{ accessScope }}' --required
 RETURNING
-associatedAccessPolicy,
-clusterName,
-principalArn;
+associated_access_policy,
+cluster_name,
+principal_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_access_policy">

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency in which the totalUpfrontPrice and totalHourlyPrice amounts are specified. At this time, the only supported currency is USD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Purchase" /></td>
+    <td><CopyableCode code="purchase" /></td>
     <td><code>string</code></td>
     <td>The purchase information of the Dedicated Host reservation and the Dedicated Hosts associated with it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalHourlyPrice" /></td>
+    <td><CopyableCode code="total_hourly_price" /></td>
     <td><code>string</code></td>
     <td>The potential total hourly price of the reservation per hour.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalUpfrontPrice" /></td>
+    <td><CopyableCode code="total_upfront_price" /></td>
     <td><code>string</code></td>
     <td>The potential total upfront price. This is billed immediately.</td>
 </tr>
@@ -144,10 +144,10 @@ Preview a reservation purchase with configurations that match those of your Dedi
 
 ```sql
 SELECT
-CurrencyCode,
-Purchase,
-TotalHourlyPrice,
-TotalUpfrontPrice
+currency_code,
+purchase,
+total_hourly_price,
+total_upfront_price
 FROM aws.ec2.host_reservation_purchase_previews
 WHERE HostIdSet = '{{ HostIdSet }}' -- required
 AND OfferingId = '{{ OfferingId }}' -- required

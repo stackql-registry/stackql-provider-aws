@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the telemetry rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimeStamp" /></td>
+    <td><CopyableCode code="last_update_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the telemetry rule was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource the rule applies to. (AWS::EC2::Instance, AWS::EC2::VPC, AWS::Lambda::Function, AWS::CloudTrail, AWS::EKS::Cluster, AWS::WAFv2::WebACL, AWS::ElasticLoadBalancingV2::LoadBalancer, AWS::Route53Resolver::ResolverEndpoint, AWS::BedrockAgentCore::Runtime, AWS::BedrockAgentCore::Browser, AWS::BedrockAgentCore::CodeInterpreter, AWS::BedrockAgentCore::Gateway, AWS::BedrockAgentCore::Memory, AWS::BedrockAgentCore::WorkloadIdentity, AWS::SecurityHub::Hub, AWS::CloudFront::Distribution, AWS::SecurityHub::HubV2, AWS::CloudWatch::OTelEnrichment, AWS::MSK::Cluster)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the telemetry rule. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the telemetry rule. (pattern: &lt;code&gt;&#91;0-9A-Za-z-_.#/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TelemetrySourceTypes" /></td>
+    <td><CopyableCode code="telemetry_source_types" /></td>
     <td><code>array</code></td>
     <td>The types of telemetry sources configured for this rule, such as VPC Flow Logs or EKS audit logs. TelemetrySourceTypes must be correlated with the specific resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TelemetryType" /></td>
+    <td><CopyableCode code="telemetry_type" /></td>
     <td><code>string</code></td>
     <td>The type of telemetry (Logs, Metrics, or Traces) the rule configures. (Logs, Metrics, Traces)</td>
 </tr>
@@ -149,13 +149,13 @@ Lists all telemetry rules in your organization. This operation can only be calle
 
 ```sql
 SELECT
-CreatedTimeStamp,
-LastUpdateTimeStamp,
-ResourceType,
-RuleArn,
-RuleName,
-TelemetrySourceTypes,
-TelemetryType
+created_time_stamp,
+last_update_time_stamp,
+resource_type,
+rule_arn,
+rule_name,
+telemetry_source_types,
+telemetry_type
 FROM aws.observabilityadmin.telemetry_rules_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

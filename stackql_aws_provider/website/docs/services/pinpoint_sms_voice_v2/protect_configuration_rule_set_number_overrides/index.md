@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The action for the rule to perform of either blocking or allowing messages to the destination phone number. (ALLOW, BLOCK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the rule was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationPhoneNumber" /></td>
+    <td><CopyableCode code="destination_phone_number" /></td>
     <td><code>string</code></td>
     <td>The destination phone number in E.164 format. (pattern: &lt;code&gt;\+?&#91;1-9&#93;&#91;0-9&#93;&#123;1,18&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTimestamp" /></td>
+    <td><CopyableCode code="expiration_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the rule will expire at. If ExpirationTimestamp is not set then the rule will not expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsoCountryCode" /></td>
+    <td><CopyableCode code="iso_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code, in ISO 3166-1 alpha-2 format, for the country or region. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
@@ -153,11 +153,11 @@ Retrieve all of the protect configuration rule set number overrides that match t
 
 ```sql
 SELECT
-Action,
-CreatedTimestamp,
-DestinationPhoneNumber,
-ExpirationTimestamp,
-IsoCountryCode
+action,
+created_timestamp,
+destination_phone_number,
+expiration_timestamp,
+iso_country_code
 FROM aws.pinpoint_sms_voice_v2.protect_configuration_rule_set_number_overrides
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,13 +191,13 @@ region = '{{ region }}' --required
 AND ProtectConfigurationId = '{{ ProtectConfigurationId }}' --required
 AND DestinationPhoneNumber = '{{ DestinationPhoneNumber }}' --required
 RETURNING
-Action,
-CreatedTimestamp,
-DestinationPhoneNumber,
-ExpirationTimestamp,
-IsoCountryCode,
-ProtectConfigurationArn,
-ProtectConfigurationId;
+action,
+created_timestamp,
+destination_phone_number,
+expiration_timestamp,
+iso_country_code,
+protect_configuration_arn,
+protect_configuration_id;
 ```
 </TabItem>
 </Tabs>

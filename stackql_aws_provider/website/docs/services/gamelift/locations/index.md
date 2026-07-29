@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a custom location resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::location/location-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:location\/custom-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationName" /></td>
+    <td><CopyableCode code="location_name" /></td>
     <td><code>string</code></td>
     <td>The location's name. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PingBeacon" /></td>
+    <td><CopyableCode code="ping_beacon" /></td>
     <td><code>object</code></td>
     <td>Information about the UDP ping beacon for this location. Ping beacons are fixed endpoints that you can use to measure network latency between a player device and an Amazon GameLift Servers hosting location.</td>
 </tr>
@@ -157,9 +157,9 @@ This API works with the following fleet types: EC2, Anywhere, Container Lists al
 
 ```sql
 SELECT
-LocationArn,
-LocationName,
-PingBeacon
+location_arn,
+location_name,
+ping_beacon
 FROM aws.gamelift.locations
 WHERE region = '{{ region }}' -- required
 ;
@@ -193,9 +193,9 @@ SELECT
 '{{ Locations }}' /* required */,
 '{{ region }}'
 RETURNING
-FleetArn,
-FleetId,
-LocationStates
+fleet_arn,
+fleet_id,
+location_states
 ;
 ```
 </TabItem>
@@ -214,7 +214,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Location
+location
 ;
 ```
 </TabItem>

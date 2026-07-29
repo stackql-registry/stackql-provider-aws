@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallDetails" /></td>
+    <td><CopyableCode code="call_details" /></td>
     <td><code>object</code></td>
     <td>The call details of a speaker search task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a speaker search task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpeakerSearchDetails" /></td>
+    <td><CopyableCode code="speaker_search_details" /></td>
     <td><code>object</code></td>
     <td>The details of a speaker search task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpeakerSearchTaskId" /></td>
+    <td><CopyableCode code="speaker_search_task_id" /></td>
     <td><code>string</code></td>
     <td>The speaker search task ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpeakerSearchTaskStatus" /></td>
+    <td><CopyableCode code="speaker_search_task_status" /></td>
     <td><code>string</code></td>
     <td>The status of the speaker search task, IN_QUEUE, IN_PROGRESS, PARTIAL_SUCCESS, SUCCEEDED, FAILED, or STOPPED. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedTimestamp" /></td>
+    <td><CopyableCode code="started_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the speaker search task began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed message about the status of a speaker search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a speaker search task was updated.</td>
 </tr>
@@ -164,14 +164,14 @@ Retrieves the details of the specified speaker search task.
 
 ```sql
 SELECT
-CallDetails,
-CreatedTimestamp,
-SpeakerSearchDetails,
-SpeakerSearchTaskId,
-SpeakerSearchTaskStatus,
-StartedTimestamp,
-StatusMessage,
-UpdatedTimestamp
+call_details,
+created_timestamp,
+speaker_search_details,
+speaker_search_task_id,
+speaker_search_task_status,
+started_timestamp,
+status_message,
+updated_timestamp
 FROM aws.chime_sdk_voice.speaker_search_tasks
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND speaker_search_task_id = '{{ speaker_search_task_id }}' -- required

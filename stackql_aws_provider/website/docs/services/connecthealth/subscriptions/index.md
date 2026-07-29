@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activatedAt" /></td>
+    <td><CopyableCode code="activated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td> (pattern: &lt;code&gt;arn:aws:health-agent:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:domain/(hai-|dom-)&#91;a-z0-9&#93;+/subscription/sub-&#91;a-zA-Z0-9&#93;&#123;21&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="deactivatedAt" /></td>
+    <td><CopyableCode code="deactivated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;(hai-|dom-)&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td> (ACTIVE, INACTIVE, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;sub-&#91;a-zA-Z0-9&#93;&#123;21&#125;&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activatedAt" /></td>
+    <td><CopyableCode code="activated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td> (pattern: &lt;code&gt;arn:aws:health-agent:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:domain/(hai-|dom-)&#91;a-z0-9&#93;+/subscription/sub-&#91;a-zA-Z0-9&#93;&#123;21&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="deactivatedAt" /></td>
+    <td><CopyableCode code="deactivated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;(hai-|dom-)&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td> (ACTIVE, INACTIVE, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;sub-&#91;a-zA-Z0-9&#93;&#123;21&#125;&lt;/code&gt;)</td>
 </tr>
@@ -258,14 +258,14 @@ Retrieves information about a Subscription.
 
 ```sql
 SELECT
-activatedAt,
+activated_at,
 arn,
-createdAt,
-deactivatedAt,
-domainId,
-lastUpdatedAt,
+created_at,
+deactivated_at,
+domain_id,
+last_updated_at,
 status,
-subscriptionId
+subscription_id
 FROM aws.connecthealth.subscriptions
 WHERE domain_id = '{{ domain_id }}' -- required
 AND subscription_id = '{{ subscription_id }}' -- required
@@ -279,14 +279,14 @@ Lists all Subscriptions within a Domain.
 
 ```sql
 SELECT
-activatedAt,
+activated_at,
 arn,
-createdAt,
-deactivatedAt,
-domainId,
-lastUpdatedAt,
+created_at,
+deactivated_at,
+domain_id,
+last_updated_at,
 status,
-subscriptionId
+subscription_id
 FROM aws.connecthealth.subscriptions
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -320,14 +320,14 @@ SELECT
 '{{ domain_id }}',
 '{{ region }}'
 RETURNING
-activatedAt,
+activated_at,
 arn,
-createdAt,
-deactivatedAt,
-domainId,
-lastUpdatedAt,
+created_at,
+deactivated_at,
+domain_id,
+last_updated_at,
 status,
-subscriptionId
+subscription_id
 ;
 ```
 </TabItem>

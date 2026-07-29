@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdjustmentType" /></td>
+    <td><CopyableCode code="adjustment_type" /></td>
     <td><code>string</code></td>
     <td>The policy adjustment type. The valid values are ChangeInCapacity, ExactCapacity, and PercentChangeInCapacity.</td>
 </tr>
@@ -119,7 +119,7 @@ Describes the available adjustment types for step scaling and simple scaling pol
 
 ```sql
 SELECT
-AdjustmentType
+adjustment_type
 FROM aws.autoscaling.adjustment_types
 WHERE region = '{{ region }}' -- required
 ;

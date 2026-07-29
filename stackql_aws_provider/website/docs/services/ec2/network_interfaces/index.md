@@ -50,162 +50,162 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedSubnets" /></td>
+    <td><CopyableCode code="associated_subnets" /></td>
     <td><code>string</code></td>
     <td>The subnets associated with this network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Association" /></td>
+    <td><CopyableCode code="association" /></td>
     <td><code>string</code></td>
     <td>The association information for an Elastic IP address (IPv4) associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>string</code></td>
     <td>The network interface attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionTrackingConfiguration" /></td>
+    <td><CopyableCode code="connection_tracking_configuration" /></td>
     <td><code>string</code></td>
     <td>A security group connection tracking configuration that enables you to set the timeout for connection tracking on an Elastic network interface. For more information, see Connection tracking timeouts in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DenyAllIgwTraffic" /></td>
+    <td><CopyableCode code="deny_all_igw_traffic" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a network interface with an IPv6 address is unreachable from the public internet. If the value is true, inbound traffic from the internet is dropped and you cannot assign an elastic IP address to the network interface. The network interface is reachable from peered VPCs and resources connected through a transit gateway, including on-premises networks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>string</code></td>
     <td>Any security groups for the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InterfaceType" /></td>
+    <td><CopyableCode code="interface_type" /></td>
     <td><code>string</code></td>
     <td>The type of network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv4Prefixes" /></td>
+    <td><CopyableCode code="ipv_4_prefixes" /></td>
     <td><code>string</code></td>
     <td>The IPv4 prefixes that are assigned to the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Address" /></td>
+    <td><CopyableCode code="ipv_6_address" /></td>
     <td><code>string</code></td>
     <td>The IPv6 globally unique address associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Addresses" /></td>
+    <td><CopyableCode code="ipv_6_addresses" /></td>
     <td><code>string</code></td>
     <td>The IPv6 addresses associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Native" /></td>
+    <td><CopyableCode code="ipv_6_native" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is an IPv6 only network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Prefixes" /></td>
+    <td><CopyableCode code="ipv_6_prefixes" /></td>
     <td><code>string</code></td>
     <td>The IPv6 prefixes that are assigned to the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacAddress" /></td>
+    <td><CopyableCode code="mac_address" /></td>
     <td><code>string</code></td>
     <td>The MAC address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The service provider that manages the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsName" /></td>
+    <td><CopyableCode code="private_dns_name" /></td>
     <td><code>string</code></td>
     <td>The private hostname. For more information, see EC2 instance hostnames, DNS names, and domains in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateIpAddress" /></td>
+    <td><CopyableCode code="private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address of the network interface within the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateIpAddresses" /></td>
+    <td><CopyableCode code="private_ip_addresses" /></td>
     <td><code>string</code></td>
     <td>The private IPv4 addresses associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicDnsName" /></td>
+    <td><CopyableCode code="public_dns_name" /></td>
     <td><code>string</code></td>
     <td>A public hostname. For more information, see EC2 instance hostnames, DNS names, and domains in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIpDnsNameOptions" /></td>
+    <td><CopyableCode code="public_ip_dns_name_options" /></td>
     <td><code>string</code></td>
     <td>Public hostname type options. For more information, see EC2 instance hostnames, DNS names, and domains in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterId" /></td>
+    <td><CopyableCode code="requester_id" /></td>
     <td><code>string</code></td>
     <td>The alias or Amazon Web Services account ID of the principal or service that created the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterManaged" /></td>
+    <td><CopyableCode code="requester_managed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the network interface is being managed by Amazon Web Services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDestCheck" /></td>
+    <td><CopyableCode code="source_dest_check" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether source/destination checking is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagSet" /></td>
+    <td><CopyableCode code="tag_set" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -486,38 +486,38 @@ Describes the specified network interfaces or all your network interfaces. If yo
 
 ```sql
 SELECT
-AssociatedSubnets,
-Association,
-Attachment,
-AvailabilityZone,
-AvailabilityZoneId,
-ConnectionTrackingConfiguration,
-DenyAllIgwTraffic,
-Description,
-Groups,
-InterfaceType,
-Ipv4Prefixes,
-Ipv6Address,
-Ipv6Addresses,
-Ipv6Native,
-Ipv6Prefixes,
-MacAddress,
-NetworkInterfaceId,
-Operator,
-OutpostArn,
-OwnerId,
-PrivateDnsName,
-PrivateIpAddress,
-PrivateIpAddresses,
-PublicDnsName,
-PublicIpDnsNameOptions,
-RequesterId,
-RequesterManaged,
-SourceDestCheck,
-Status,
-SubnetId,
-TagSet,
-VpcId
+associated_subnets,
+association,
+attachment,
+availability_zone,
+availability_zone_id,
+connection_tracking_configuration,
+deny_all_igw_traffic,
+description,
+groups,
+interface_type,
+ipv_4_prefixes,
+ipv_6_address,
+ipv_6_addresses,
+ipv_6_native,
+ipv_6_prefixes,
+mac_address,
+network_interface_id,
+operator,
+outpost_arn,
+owner_id,
+private_dns_name,
+private_ip_address,
+private_ip_addresses,
+public_dns_name,
+public_ip_dns_name_options,
+requester_id,
+requester_managed,
+source_dest_check,
+status,
+subnet_id,
+tag_set,
+vpc_id
 FROM aws.ec2.network_interfaces
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -590,38 +590,38 @@ SELECT
 '{{ Ipv6AddressCount }}',
 '{{ DryRun }}'
 RETURNING
-AssociatedSubnets,
-Association,
-Attachment,
-AvailabilityZone,
-AvailabilityZoneId,
-ConnectionTrackingConfiguration,
-DenyAllIgwTraffic,
-Description,
-Groups,
-InterfaceType,
-Ipv4Prefixes,
-Ipv6Address,
-Ipv6Addresses,
-Ipv6Native,
-Ipv6Prefixes,
-MacAddress,
-NetworkInterfaceId,
-Operator,
-OutpostArn,
-OwnerId,
-PrivateDnsName,
-PrivateIpAddress,
-PrivateIpAddresses,
-PublicDnsName,
-PublicIpDnsNameOptions,
-RequesterId,
-RequesterManaged,
-SourceDestCheck,
-Status,
-SubnetId,
-TagSet,
-VpcId
+associated_subnets,
+association,
+attachment,
+availability_zone,
+availability_zone_id,
+connection_tracking_configuration,
+deny_all_igw_traffic,
+description,
+groups,
+interface_type,
+ipv_4_prefixes,
+ipv_6_address,
+ipv_6_addresses,
+ipv_6_native,
+ipv_6_prefixes,
+mac_address,
+network_interface_id,
+operator,
+outpost_arn,
+owner_id,
+private_dns_name,
+private_ip_address,
+private_ip_addresses,
+public_dns_name,
+public_ip_dns_name_options,
+requester_id,
+requester_managed,
+source_dest_check,
+status,
+subnet_id,
+tag_set,
+vpc_id
 ;
 ```
 </TabItem>
@@ -742,8 +742,8 @@ AND EnaSrdSpecification = '{{ EnaSrdSpecification}}'
 AND EnaQueueCount = '{{ EnaQueueCount}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-AttachmentId,
-NetworkCardIndex;
+attachment_id,
+network_card_index;
 ```
 </TabItem>
 <TabItem value="modify_public_ip_dns_name_options">
@@ -760,7 +760,7 @@ AND HostnameType = '{{ HostnameType }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Successful;
+successful;
 ```
 </TabItem>
 <TabItem value="detach_network_interface">

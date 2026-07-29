@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the alias. (pattern: &lt;code&gt;arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;/alias/(TSTALIASID|&#91;0-9a-zA-Z&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="concurrencyConfiguration" /></td>
+    <td><CopyableCode code="concurrency_configuration" /></td>
     <td><code>object</code></td>
     <td>Determines how multiple nodes in a flow can run in parallel. Running nodes concurrently can improve your flow's performance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the alias was created.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowId" /></td>
+    <td><CopyableCode code="flow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routingConfiguration" /></td>
+    <td><CopyableCode code="routing_configuration" /></td>
     <td><code>array</code></td>
     <td>A list of configurations about the versions that the alias maps to. Currently, you can only specify one.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the alias was last updated.</td>
 </tr>
@@ -177,12 +177,12 @@ SELECT
 id,
 name,
 arn,
-concurrencyConfiguration,
-createdAt,
+concurrency_configuration,
+created_at,
 description,
-flowId,
-routingConfiguration,
-updatedAt
+flow_id,
+routing_configuration,
+updated_at
 FROM aws.bedrock_agent.flow_aliases
 WHERE flow_identifier = '{{ flow_identifier }}' -- required
 AND region = '{{ region }}' -- required

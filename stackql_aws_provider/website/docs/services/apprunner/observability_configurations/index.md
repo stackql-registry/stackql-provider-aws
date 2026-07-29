@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the observability configuration was created. It's in Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the observability configuration was deleted. It's in Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Latest" /></td>
+    <td><CopyableCode code="latest" /></td>
     <td><code>boolean</code></td>
     <td>It's set to true for the configuration with the highest Revision among all configurations that share the same ObservabilityConfigurationName. It's set to false otherwise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObservabilityConfigurationArn" /></td>
+    <td><CopyableCode code="observability_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of this observability configuration. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:(\w|\/|-)&#123;1,1011&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObservabilityConfigurationName" /></td>
+    <td><CopyableCode code="observability_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The customer-provided observability configuration name. It can be used in multiple revisions of a configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-_&#93;&#123;3,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObservabilityConfigurationRevision" /></td>
+    <td><CopyableCode code="observability_configuration_revision" /></td>
     <td><code>integer</code></td>
     <td>The revision of this observability configuration. It's unique among all the active configurations ("Status": "ACTIVE") that share the same ObservabilityConfigurationName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the observability configuration. If the status of a configuration revision is INACTIVE, it was deleted and can't be used. Inactive configuration revisions are permanently removed some time after they are deleted. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TraceConfiguration" /></td>
+    <td><CopyableCode code="trace_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the tracing feature within this observability configuration. If not specified, tracing isn't enabled.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObservabilityConfigurationSummaryList" /></td>
+    <td><CopyableCode code="observability_configuration_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of summary information records for observability configurations. In a paginated request, the request returns up to MaxResults records for each call.</td>
 </tr>
@@ -201,14 +201,14 @@ Return a full description of an App Runner observability configuration resource.
 
 ```sql
 SELECT
-CreatedAt,
-DeletedAt,
-Latest,
-ObservabilityConfigurationArn,
-ObservabilityConfigurationName,
-ObservabilityConfigurationRevision,
-Status,
-TraceConfiguration
+created_at,
+deleted_at,
+latest,
+observability_configuration_arn,
+observability_configuration_name,
+observability_configuration_revision,
+status,
+trace_configuration
 FROM aws.apprunner.observability_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,8 +220,8 @@ Returns a list of active App Runner observability configurations in your Amazon 
 
 ```sql
 SELECT
-NextToken,
-ObservabilityConfigurationSummaryList
+next_token,
+observability_configuration_summary_list
 FROM aws.apprunner.observability_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,7 +256,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ObservabilityConfiguration
+observability_configuration
 ;
 ```
 </TabItem>

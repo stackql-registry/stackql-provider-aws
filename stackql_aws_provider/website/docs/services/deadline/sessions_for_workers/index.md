@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID for the job associated with the worker's session. (pattern: &lt;code&gt;job-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatus" /></td>
+    <td><CopyableCode code="lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status for the worker's session. (STARTED, UPDATE_IN_PROGRESS, UPDATE_SUCCEEDED, UPDATE_FAILED, ENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The queue ID for the queue associated to the worker. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The session ID for the session action. (pattern: &lt;code&gt;session-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetLifecycleStatus" /></td>
+    <td><CopyableCode code="target_lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status (ENDED)</td>
 </tr>
@@ -174,13 +174,13 @@ Lists sessions for a worker.
 
 ```sql
 SELECT
-endedAt,
-jobId,
-lifecycleStatus,
-queueId,
-sessionId,
-startedAt,
-targetLifecycleStatus
+ended_at,
+job_id,
+lifecycle_status,
+queue_id,
+session_id,
+started_at,
+target_lifecycle_status
 FROM aws.deadline.sessions_for_workers
 WHERE farm_id = '{{ farm_id }}' -- required
 AND fleet_id = '{{ fleet_id }}' -- required

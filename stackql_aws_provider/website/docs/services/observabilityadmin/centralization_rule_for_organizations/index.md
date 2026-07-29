@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CentralizationRule" /></td>
+    <td><CopyableCode code="centralization_rule" /></td>
     <td><code>object</code></td>
     <td>Defines how telemetry data should be centralized across an Amazon Web Services Organization, including source and destination configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedRegion" /></td>
+    <td><CopyableCode code="created_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services region where the organization centralization rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the organization centralization rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Account that created the organization centralization rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason why an organization centralization rule is marked UNHEALTHY. (TRUSTED_ACCESS_NOT_ENABLED, DESTINATION_ACCOUNT_NOT_IN_ORGANIZATION, INTERNAL_SERVER_ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimeStamp" /></td>
+    <td><CopyableCode code="last_update_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the organization centralization rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the organization centralization rule. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleHealth" /></td>
+    <td><CopyableCode code="rule_health" /></td>
     <td><code>string</code></td>
     <td>The health status of the organization centralization rule. (Healthy, Unhealthy, Provisioning)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the organization centralization rule. (pattern: &lt;code&gt;&#91;0-9A-Za-z-_.#/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -180,15 +180,15 @@ Retrieves the details of a specific organization centralization rule. This opera
 
 ```sql
 SELECT
-CentralizationRule,
-CreatedRegion,
-CreatedTimeStamp,
-CreatorAccountId,
-FailureReason,
-LastUpdateTimeStamp,
-RuleArn,
-RuleHealth,
-RuleName
+centralization_rule,
+created_region,
+created_time_stamp,
+creator_account_id,
+failure_reason,
+last_update_time_stamp,
+rule_arn,
+rule_health,
+rule_name
 FROM aws.observabilityadmin.centralization_rule_for_organizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -223,7 +223,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-RuleArn
+rule_arn
 ;
 ```
 </TabItem>
@@ -292,7 +292,7 @@ region = '{{ region }}' --required
 AND RuleIdentifier = '{{ RuleIdentifier }}' --required
 AND Rule = '{{ Rule }}' --required
 RETURNING
-RuleArn;
+rule_arn;
 ```
 </TabItem>
 </Tabs>

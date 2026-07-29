@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>A unique string that you specified when you created the health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchAlarmConfiguration" /></td>
+    <td><CopyableCode code="cloud_watch_alarm_configuration" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckConfig" /></td>
+    <td><CopyableCode code="health_check_config" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains detailed information about one health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckVersion" /></td>
+    <td><CopyableCode code="health_check_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the health check. You can optionally pass this value in a call to UpdateHealthCheck to prevent overwriting another change to the health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkedService" /></td>
+    <td><CopyableCode code="linked_service" /></td>
     <td><code>string</code></td>
     <td>If the health check was created by another service, the service that created the health check. When a health check is created by another service, you can't edit or delete it using Amazon Route 53.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>A unique string that you specified when you created the health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchAlarmConfiguration" /></td>
+    <td><CopyableCode code="cloud_watch_alarm_configuration" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckConfig" /></td>
+    <td><CopyableCode code="health_check_config" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains detailed information about one health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckVersion" /></td>
+    <td><CopyableCode code="health_check_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the health check. You can optionally pass this value in a call to UpdateHealthCheck to prevent overwriting another change to the health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkedService" /></td>
+    <td><CopyableCode code="linked_service" /></td>
     <td><code>string</code></td>
     <td>If the health check was created by another service, the service that created the health check. When a health check is created by another service, you can't edit or delete it using Amazon Route 53.</td>
 </tr>
@@ -233,12 +233,12 @@ Gets information about a specified health check.
 
 ```sql
 SELECT
-CallerReference,
-CloudWatchAlarmConfiguration,
-HealthCheckConfig,
-HealthCheckVersion,
-Id,
-LinkedService
+caller_reference,
+cloud_watch_alarm_configuration,
+health_check_config,
+health_check_version,
+id,
+linked_service
 FROM aws.route53.health_checks
 WHERE health_check_id = '{{ health_check_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -251,12 +251,12 @@ Retrieve a list of the health checks that are associated with the current Amazon
 
 ```sql
 SELECT
-CallerReference,
-CloudWatchAlarmConfiguration,
-HealthCheckConfig,
-HealthCheckVersion,
-Id,
-LinkedService
+caller_reference,
+cloud_watch_alarm_configuration,
+health_check_config,
+health_check_version,
+id,
+linked_service
 FROM aws.route53.health_checks
 WHERE region = '{{ region }}' -- required
 AND marker = '{{ marker }}'
@@ -291,12 +291,12 @@ SELECT
 '{{ HealthCheckConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-CallerReference,
-CloudWatchAlarmConfiguration,
-HealthCheckConfig,
-HealthCheckVersion,
-Id,
-LinkedService
+caller_reference,
+cloud_watch_alarm_configuration,
+health_check_config,
+health_check_version,
+id,
+linked_service
 ;
 ```
 </TabItem>
@@ -377,12 +377,12 @@ WHERE
 health_check_id = '{{ health_check_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CallerReference,
-CloudWatchAlarmConfiguration,
-HealthCheckConfig,
-HealthCheckVersion,
-Id,
-LinkedService;
+caller_reference,
+cloud_watch_alarm_configuration,
+health_check_config,
+health_check_version,
+id,
+linked_service;
 ```
 </TabItem>
 </Tabs>

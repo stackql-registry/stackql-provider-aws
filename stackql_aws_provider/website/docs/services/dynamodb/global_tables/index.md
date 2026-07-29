@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the global table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalTableArn" /></td>
+    <td><CopyableCode code="global_table_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the global table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalTableName" /></td>
+    <td><CopyableCode code="global_table_name" /></td>
     <td><code>string</code></td>
     <td>The global table name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalTableStatus" /></td>
+    <td><CopyableCode code="global_table_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the global table: CREATING - The global table is being created. UPDATING - The global table is being updated. DELETING - The global table is being deleted. ACTIVE - The global table is ready for use. (CREATING, ACTIVE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationGroup" /></td>
+    <td><CopyableCode code="replication_group" /></td>
     <td><code>array</code></td>
     <td>The Regions where the global table has replicas.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GlobalTables" /></td>
+    <td><CopyableCode code="global_tables" /></td>
     <td><code>array</code></td>
     <td>List of global table names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastEvaluatedGlobalTableName" /></td>
+    <td><CopyableCode code="last_evaluated_global_table_name" /></td>
     <td><code>string</code></td>
     <td>Last evaluated global table name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -186,11 +186,11 @@ Returns information about the specified global table. This documentation is for 
 
 ```sql
 SELECT
-CreationDateTime,
-GlobalTableArn,
-GlobalTableName,
-GlobalTableStatus,
-ReplicationGroup
+creation_date_time,
+global_table_arn,
+global_table_name,
+global_table_status,
+replication_group
 FROM aws.dynamodb.global_tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,8 +202,8 @@ Lists all global tables that have a replica in the specified Region. This docume
 
 ```sql
 SELECT
-GlobalTables,
-LastEvaluatedGlobalTableName
+global_tables,
+last_evaluated_global_table_name
 FROM aws.dynamodb.global_tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,7 +236,7 @@ SELECT
 '{{ ReplicationGroup }}' /* required */,
 '{{ region }}'
 RETURNING
-GlobalTableDescription
+global_table_description
 ;
 ```
 </TabItem>
@@ -285,7 +285,7 @@ region = '{{ region }}' --required
 AND GlobalTableName = '{{ GlobalTableName }}' --required
 AND ReplicaUpdates = '{{ ReplicaUpdates }}' --required
 RETURNING
-GlobalTableDescription;
+global_table_description;
 ```
 </TabItem>
 </Tabs>

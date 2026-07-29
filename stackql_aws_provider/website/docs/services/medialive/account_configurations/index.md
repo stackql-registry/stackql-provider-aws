@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
@@ -126,7 +126,7 @@ Describe account configuration
 
 ```sql
 SELECT
-KmsKeyId
+kms_key_id
 FROM aws.medialive.account_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -154,7 +154,7 @@ AccountConfiguration = '{{ AccountConfiguration }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-AccountConfiguration;
+account_configuration;
 ```
 </TabItem>
 </Tabs>

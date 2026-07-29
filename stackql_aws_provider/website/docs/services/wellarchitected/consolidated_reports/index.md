@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Base64String" /></td>
+    <td><CopyableCode code="base_64_string" /></td>
     <td><code>string</code></td>
     <td>The Base64-encoded string representation of a lens review report. This data can be used to create a PDF file. Only returned by GetConsolidatedReport when PDF format is requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>array</code></td>
     <td>The metrics that make up the consolidated report. Only returned when JSON format is requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
@@ -149,9 +149,9 @@ Get a consolidated report of your workloads. You can optionally choose to includ
 
 ```sql
 SELECT
-Base64String,
-Metrics,
-NextToken
+base_64_string,
+metrics,
+next_token
 FROM aws.wellarchitected.consolidated_reports
 WHERE Format = '{{ Format }}' -- required
 AND region = '{{ region }}' -- required

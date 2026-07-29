@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTimestamp" /></td>
+    <td><CopyableCode code="completion_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix date and time when the job finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix date and time when the job was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureDetails" /></td>
+    <td><CopyableCode code="failure_details" /></td>
     <td><code>object</code></td>
     <td>Details about the error that resulted in failure of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Input" /></td>
+    <td><CopyableCode code="input" /></td>
     <td><code>object</code></td>
     <td>Reference to the input manifest that was provided in the job creation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the media analysis job. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the media analysis job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>KMS Key that was provided in the creation request. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,2048&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestSummary" /></td>
+    <td><CopyableCode code="manifest_summary" /></td>
     <td><code>object</code></td>
     <td>The summary manifest provides statistics on input manifest and errors identified in the input manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationsConfig" /></td>
+    <td><CopyableCode code="operations_config" /></td>
     <td><code>object</code></td>
     <td>Operation configurations that were provided during job creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>Output configuration that was provided in the creation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>object</code></td>
     <td>Output manifest that contains prediction results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the media analysis job. (CREATED, QUEUED, IN_PROGRESS, SUCCEEDED, FAILED)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MediaAnalysisJobs" /></td>
+    <td><CopyableCode code="media_analysis_jobs" /></td>
     <td><code>array</code></td>
     <td>Contains a list of all media analysis jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token, if the previous response was incomplete.</td>
 </tr>
@@ -207,18 +207,18 @@ Retrieves the results for a given media analysis job. Takes a JobId returned by 
 
 ```sql
 SELECT
-CompletionTimestamp,
-CreationTimestamp,
-FailureDetails,
-Input,
-JobId,
-JobName,
-KmsKeyId,
-ManifestSummary,
-OperationsConfig,
-OutputConfig,
-Results,
-Status
+completion_timestamp,
+creation_timestamp,
+failure_details,
+input,
+job_id,
+job_name,
+kms_key_id,
+manifest_summary,
+operations_config,
+output_config,
+results,
+status
 FROM aws.rekognition.media_analysis_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,8 +230,8 @@ Returns a list of media analysis jobs. Results are sorted by CreationTimestamp i
 
 ```sql
 SELECT
-MediaAnalysisJobs,
-NextToken
+media_analysis_jobs,
+next_token
 FROM aws.rekognition.media_analysis_jobs
 WHERE region = '{{ region }}' -- required
 ;

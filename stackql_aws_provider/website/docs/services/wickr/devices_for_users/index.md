@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique application ID for the Wickr app on this device. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the device first appeared in the Wickr database. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastLogin" /></td>
+    <td><CopyableCode code="last_login" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the device last successfully logged into Wickr. This is also used to determine SSO idle time. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusText" /></td>
+    <td><CopyableCode code="status_text" /></td>
     <td><code>string</code></td>
     <td>The current status of the device, either 'Active' or 'Reset' depending on whether the device is currently active or has been marked for reset. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -174,10 +174,10 @@ Retrieves a paginated list of devices associated with a specific user in a Wickr
 
 ```sql
 SELECT
-appId,
+app_id,
 created,
-lastLogin,
-statusText,
+last_login,
+status_text,
 suspend,
 type_
 FROM aws.wickr.devices_for_users

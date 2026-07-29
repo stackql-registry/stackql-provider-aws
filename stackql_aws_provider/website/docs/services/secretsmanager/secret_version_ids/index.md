@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Secrets Manager includes this value if there's more output available than what is included in the current response. This can occur even when the response includes no values at all, such as when you ask for a filtered view of a long list. To get the next results, call ListSecretVersionIds again with this value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Versions" /></td>
+    <td><CopyableCode code="versions" /></td>
     <td><code>array</code></td>
     <td>A list of the versions of the secret.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists the versions of a secret. Secrets Manager uses staging labels to indicate 
 
 ```sql
 SELECT
-ARN,
-Name,
-NextToken,
-Versions
+arn,
+name,
+next_token,
+versions
 FROM aws.secretsmanager.secret_version_ids
 WHERE region = '{{ region }}' -- required
 ;

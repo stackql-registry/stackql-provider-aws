@@ -107,7 +107,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND EventsRequest = '{{ EventsRequest }}' --required
 RETURNING
-EventsResponse;
+events_response;
 ```
 </TabItem>
 </Tabs>

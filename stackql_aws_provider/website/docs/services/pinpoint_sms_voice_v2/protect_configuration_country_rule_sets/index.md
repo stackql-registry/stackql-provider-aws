@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CountryRuleSet" /></td>
+    <td><CopyableCode code="country_rule_set" /></td>
     <td><code>object</code></td>
     <td>A map of ProtectConfigurationCountryRuleSetInformation objects that contain the details for the requested NumberCapability. The Key is the two-letter ISO country code. For a list of supported ISO country codes, see Supported countries and regions (SMS channel) in the End User Messaging SMS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberCapability" /></td>
+    <td><CopyableCode code="number_capability" /></td>
     <td><code>string</code></td>
     <td>The capability type associated with the returned ProtectConfigurationCountryRuleSetInformation objects. (SMS, VOICE, MMS, RCS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectConfigurationArn" /></td>
+    <td><CopyableCode code="protect_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the protect configuration. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectConfigurationId" /></td>
+    <td><CopyableCode code="protect_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the protect configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -141,10 +141,10 @@ Retrieve the CountryRuleSet for the specified NumberCapability from a protect co
 
 ```sql
 SELECT
-CountryRuleSet,
-NumberCapability,
-ProtectConfigurationArn,
-ProtectConfigurationId
+country_rule_set,
+number_capability,
+protect_configuration_arn,
+protect_configuration_id
 FROM aws.pinpoint_sms_voice_v2.protect_configuration_country_rule_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,10 +177,10 @@ AND ProtectConfigurationId = '{{ ProtectConfigurationId }}' --required
 AND NumberCapability = '{{ NumberCapability }}' --required
 AND CountryRuleSetUpdates = '{{ CountryRuleSetUpdates }}' --required
 RETURNING
-CountryRuleSet,
-NumberCapability,
-ProtectConfigurationArn,
-ProtectConfigurationId;
+country_rule_set,
+number_capability,
+protect_configuration_arn,
+protect_configuration_id;
 ```
 </TabItem>
 </Tabs>

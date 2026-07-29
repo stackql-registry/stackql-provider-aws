@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the business glossary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this business glossary was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created this business glossary.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the business glossary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which this business glossary exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project that owns this business glossary. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the business glossary. (DISABLED, ENABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the business glossary was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the business glossary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageRestrictions" /></td>
+    <td><CopyableCode code="usage_restrictions" /></td>
     <td><code>array</code></td>
     <td>The usage restriction of the restricted glossary.</td>
 </tr>
@@ -202,15 +202,15 @@ Gets a business glossary in Amazon DataZone. Prerequisites: The specified glossa
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-owningProjectId,
+domain_id,
+owning_project_id,
 status,
-updatedAt,
-updatedBy,
-usageRestrictions
+updated_at,
+updated_by,
+usage_restrictions
 FROM aws.datazone.glossaries
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -258,10 +258,10 @@ RETURNING
 id,
 name,
 description,
-domainId,
-owningProjectId,
+domain_id,
+owning_project_id,
 status,
-usageRestrictions
+usage_restrictions
 ;
 ```
 </TabItem>
@@ -323,10 +323,10 @@ RETURNING
 id,
 name,
 description,
-domainId,
-owningProjectId,
+domain_id,
+owning_project_id,
 status,
-usageRestrictions;
+usage_restrictions;
 ```
 </TabItem>
 </Tabs>

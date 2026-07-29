@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="complianceDrifts" /></td>
+    <td><CopyableCode code="compliance_drifts" /></td>
     <td><code>array</code></td>
     <td>Indicates compliance drifts (recovery time objective (RTO) and recovery point objective (RPO)) detected for an assessed entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Null, or the token from a previous call to get the next set of results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ List of compliance drifts that were detected while running an assessment.
 
 ```sql
 SELECT
-complianceDrifts,
-nextToken
+compliance_drifts,
+next_token
 FROM aws.resiliencehub.app_assessment_compliance_drifts
 WHERE region = '{{ region }}' -- required
 ;

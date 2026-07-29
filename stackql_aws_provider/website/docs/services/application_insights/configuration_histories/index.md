@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventList" /></td>
+    <td><CopyableCode code="event_list" /></td>
     <td><code>array</code></td>
     <td>The list of configuration events and their corresponding details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The NextToken value to include in a future ListConfigurationHistory request. When the results of a ListConfigurationHistory request exceed MaxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the INFO, WARN, and ERROR events for periodic configuration updates perfor
 
 ```sql
 SELECT
-EventList,
-NextToken
+event_list,
+next_token
 FROM aws.application_insights.configuration_histories
 WHERE region = '{{ region }}' -- required
 ;

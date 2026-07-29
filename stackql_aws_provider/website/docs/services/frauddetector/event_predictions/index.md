@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="externalModelOutputs" /></td>
+    <td><CopyableCode code="external_model_outputs" /></td>
     <td><code>array</code></td>
     <td>The model scores for Amazon SageMaker models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelScores" /></td>
+    <td><CopyableCode code="model_scores" /></td>
     <td><code>array</code></td>
     <td>The model scores. Amazon Fraud Detector generates model scores between 0 and 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are directly related to the false positive rate (FPR). For example, a score of 600 corresponds to an estimated 10% false positive rate whereas a score of 900 corresponds to an estimated 2% false positive rate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleResults" /></td>
+    <td><CopyableCode code="rule_results" /></td>
     <td><code>array</code></td>
     <td>The results from the rules.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventPredictionSummaries" /></td>
+    <td><CopyableCode code="event_prediction_summaries" /></td>
     <td><code>array</code></td>
     <td>The summary of the past predictions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Identifies the next page of results to return. Use the token to make the call again to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours.</td>
 </tr>
@@ -162,9 +162,9 @@ Evaluates an event against a detector version. If a version ID is not provided, 
 
 ```sql
 SELECT
-externalModelOutputs,
-modelScores,
-ruleResults
+external_model_outputs,
+model_scores,
+rule_results
 FROM aws.frauddetector.event_predictions
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,8 +176,8 @@ Gets a list of past predictions. The list can be filtered by detector ID, detect
 
 ```sql
 SELECT
-eventPredictionSummaries,
-nextToken
+event_prediction_summaries,
+next_token
 FROM aws.frauddetector.event_predictions
 WHERE region = '{{ region }}' -- required
 ;

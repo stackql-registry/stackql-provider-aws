@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contactMethods" /></td>
+    <td><CopyableCode code="contact_methods" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the contact methods.</td>
 </tr>
@@ -140,7 +140,7 @@ Returns information about the configured contact methods. Specify a protocol in 
 
 ```sql
 SELECT
-contactMethods
+contact_methods
 FROM aws.lightsail.contact_methods
 WHERE region = '{{ region }}' -- required
 ;

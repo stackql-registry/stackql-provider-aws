@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeFilters" /></td>
+    <td><CopyableCode code="attribute_filters" /></td>
     <td><code>array</code></td>
     <td>The attribute filters that were applied when retrieving this service state information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestChangeEvents" /></td>
+    <td><CopyableCode code="latest_change_events" /></td>
     <td><code>array</code></td>
     <td>An array containing the most recent change events for this service, such as deployments, with information about when they occurred and who initiated them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Service" /></td>
+    <td><CopyableCode code="service" /></td>
     <td><code>object</code></td>
     <td>The key attributes that identify this service, including Type, Name, and Environment information.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns information about the last deployment and other change states of service
 
 ```sql
 SELECT
-AttributeFilters,
-LatestChangeEvents,
-Service
+attribute_filters,
+latest_change_events,
+service
 FROM aws.application_signals.service_states
 WHERE region = '{{ region }}' -- required
 ;

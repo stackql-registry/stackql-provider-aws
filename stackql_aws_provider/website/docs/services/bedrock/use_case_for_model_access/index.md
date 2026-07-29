@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="formData" /></td>
+    <td><CopyableCode code="form_data" /></td>
     <td><code>string (byte)</code></td>
     <td>Get customer profile Response.</td>
 </tr>
@@ -126,7 +126,7 @@ Get usecase for model access.
 
 ```sql
 SELECT
-formData
+form_data
 FROM aws.bedrock.use_case_for_model_access
 WHERE region = '{{ region }}' -- required
 ;

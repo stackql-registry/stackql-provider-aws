@@ -102,7 +102,7 @@ status = '{{ status }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-lifecycleEventHookExecutionId;
+lifecycle_event_hook_execution_id;
 ```
 </TabItem>
 </Tabs>

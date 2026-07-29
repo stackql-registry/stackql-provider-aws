@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cluster that includes the control panel. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ControlPanelArn" /></td>
+    <td><CopyableCode code="control_panel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the control panel. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultControlPanel" /></td>
+    <td><CopyableCode code="default_control_panel" /></td>
     <td><code>boolean</code></td>
     <td>A flag that Amazon Route 53 Application Recovery Controller sets to true to designate the default control panel for a cluster. When you create a cluster, Amazon Route 53 Application Recovery Controller creates a control panel, and sets this flag for that control panel. If you create a control panel yourself, this flag is set to false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the control panel. You can use any non-white space character in the name. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the control panel owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlCount" /></td>
+    <td><CopyableCode code="routing_control_count" /></td>
     <td><code>integer</code></td>
     <td>The number of routing controls in the control panel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The deployment status of control panel. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION. (PENDING, DEPLOYED, PENDING_DELETION)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cluster that includes the control panel. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ControlPanelArn" /></td>
+    <td><CopyableCode code="control_panel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the control panel. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultControlPanel" /></td>
+    <td><CopyableCode code="default_control_panel" /></td>
     <td><code>boolean</code></td>
     <td>A flag that Amazon Route 53 Application Recovery Controller sets to true to designate the default control panel for a cluster. When you create a cluster, Amazon Route 53 Application Recovery Controller creates a control panel, and sets this flag for that control panel. If you create a control panel yourself, this flag is set to false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the control panel. You can use any non-white space character in the name. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the control panel owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlCount" /></td>
+    <td><CopyableCode code="routing_control_count" /></td>
     <td><code>integer</code></td>
     <td>The number of routing controls in the control panel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The deployment status of control panel. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION. (PENDING, DEPLOYED, PENDING_DELETION)</td>
 </tr>
@@ -248,13 +248,13 @@ Displays details about a control panel.
 
 ```sql
 SELECT
-ClusterArn,
-ControlPanelArn,
-DefaultControlPanel,
-Name,
-Owner,
-RoutingControlCount,
-Status
+cluster_arn,
+control_panel_arn,
+default_control_panel,
+name,
+owner,
+routing_control_count,
+status
 FROM aws.route53_recovery_control_config.control_panels
 WHERE control_panel_arn = '{{ control_panel_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -267,13 +267,13 @@ Returns an array of control panels in an account or in a cluster.
 
 ```sql
 SELECT
-ClusterArn,
-ControlPanelArn,
-DefaultControlPanel,
-Name,
-Owner,
-RoutingControlCount,
-Status
+cluster_arn,
+control_panel_arn,
+default_control_panel,
+name,
+owner,
+routing_control_count,
+status
 FROM aws.route53_recovery_control_config.control_panels
 WHERE region = '{{ region }}' -- required
 AND ClusterArn = '{{ ClusterArn }}'
@@ -313,7 +313,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ControlPanel
+control_panel
 ;
 ```
 </TabItem>
@@ -361,7 +361,7 @@ region = '{{ region }}' --required
 AND ControlPanelArn = '{{ ControlPanelArn }}' --required
 AND ControlPanelName = '{{ ControlPanelName }}' --required
 RETURNING
-ControlPanel;
+control_panel;
 ```
 </TabItem>
 </Tabs>

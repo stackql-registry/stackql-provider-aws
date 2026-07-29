@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepName" /></td>
+    <td><CopyableCode code="step_name" /></td>
     <td><code>string</code></td>
     <td>The name of the step for the resource warning.</td>
 </tr>
@@ -65,17 +65,17 @@ The following fields are returned by `SELECT` queries:
     <td>The version for the resource warning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warningMessage" /></td>
+    <td><CopyableCode code="warning_message" /></td>
     <td><code>string</code></td>
     <td>The warning message about what needs to be corrected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warningStatus" /></td>
+    <td><CopyableCode code="warning_status" /></td>
     <td><code>string</code></td>
     <td>The status of the resource warning. (active, resolved)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warningUpdatedTime" /></td>
+    <td><CopyableCode code="warning_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the warning was last updated.</td>
 </tr>
@@ -149,12 +149,12 @@ Retrieves the evaluation status of a Region switch plan. The evaluation status p
 
 ```sql
 SELECT
-resourceArn,
-stepName,
+resource_arn,
+step_name,
 version,
-warningMessage,
-warningStatus,
-warningUpdatedTime,
+warning_message,
+warning_status,
+warning_updated_time,
 workflow
 FROM aws.arc_region_switch.plan_evaluation_status
 WHERE region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Entitlements" /></td>
+    <td><CopyableCode code="entitlements" /></td>
     <td><code>array</code></td>
     <td>The entitlements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation.</td>
 </tr>
@@ -159,8 +159,8 @@ Retrieves a list that describes one of more entitlements.
 
 ```sql
 SELECT
-Entitlements,
-NextToken
+entitlements,
+next_token
 FROM aws.appstream.entitlements
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,7 +199,7 @@ SELECT
 '{{ Attributes }}' /* required */,
 '{{ region }}'
 RETURNING
-Entitlement
+entitlement
 ;
 ```
 </TabItem>
@@ -283,7 +283,7 @@ region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 AND StackName = '{{ StackName }}' --required
 RETURNING
-Entitlement;
+entitlement;
 ```
 </TabItem>
 </Tabs>

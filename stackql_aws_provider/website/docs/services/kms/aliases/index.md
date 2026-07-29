@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasArn" /></td>
+    <td><CopyableCode code="alias_arn" /></td>
     <td><code>string</code></td>
     <td>String that contains the key ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AliasName" /></td>
+    <td><CopyableCode code="alias_name" /></td>
     <td><code>string</code></td>
     <td>String that contains the alias. This value begins with alias/. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time that the alias was most recently created in the account and Region. Formatted as Unix time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time that the alias was most recently associated with a KMS key in the account and Region. Formatted as Unix time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetKeyId" /></td>
+    <td><CopyableCode code="target_key_id" /></td>
     <td><code>string</code></td>
     <td>String that contains the key identifier of the KMS key associated with the alias.</td>
 </tr>
@@ -139,11 +139,11 @@ Gets a list of aliases in the caller's Amazon Web Services account and region. F
 
 ```sql
 SELECT
-AliasArn,
-AliasName,
-CreationDate,
-LastUpdatedDate,
-TargetKeyId
+alias_arn,
+alias_name,
+creation_date,
+last_updated_date,
+target_key_id
 FROM aws.kms.aliases
 WHERE region = '{{ region }}' -- required
 ;

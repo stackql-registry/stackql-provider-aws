@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the requested build projects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectsNotFound" /></td>
+    <td><CopyableCode code="projects_not_found" /></td>
     <td><code>array</code></td>
     <td>The names of build projects for which information could not be found.</td>
 </tr>
@@ -209,7 +209,7 @@ Gets information about one or more build projects.
 ```sql
 SELECT
 projects,
-projectsNotFound
+projects_not_found
 FROM aws.codebuild.projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -607,9 +607,9 @@ region = '{{ region }}' --required
 AND projectArn = '{{ projectArn }}' --required
 AND projectVisibility = '{{ projectVisibility }}' --required
 RETURNING
-projectArn,
-projectVisibility,
-publicProjectAlias;
+project_arn,
+project_visibility,
+public_project_alias;
 ```
 </TabItem>
 <TabItem value="update_project">

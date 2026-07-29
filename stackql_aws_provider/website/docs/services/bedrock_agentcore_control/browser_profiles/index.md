@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the browser profile. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser profile was created.</td>
 </tr>
@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the browser profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSavedAt" /></td>
+    <td><CopyableCode code="last_saved_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when browser session data was last saved to this profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSavedBrowserId" /></td>
+    <td><CopyableCode code="last_saved_browser_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the browser from which data was last saved to this profile. (pattern: &lt;code&gt;(aws\.browser\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSavedBrowserSessionId" /></td>
+    <td><CopyableCode code="last_saved_browser_session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the browser session from which data was last saved to this profile. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser profile was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileArn" /></td>
+    <td><CopyableCode code="profile_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the browser profile. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:browser-profile/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the browser profile. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the browser profile. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser profile was created.</td>
 </tr>
@@ -130,32 +130,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the browser profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSavedAt" /></td>
+    <td><CopyableCode code="last_saved_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when browser session data was last saved to this profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSavedBrowserId" /></td>
+    <td><CopyableCode code="last_saved_browser_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the browser from which data was last saved to this profile. (pattern: &lt;code&gt;(aws\.browser\.v1|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSavedBrowserSessionId" /></td>
+    <td><CopyableCode code="last_saved_browser_session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the browser session from which data was last saved to this profile. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser profile was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileArn" /></td>
+    <td><CopyableCode code="profile_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the browser profile. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:browser-profile/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the browser profile. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -272,14 +272,14 @@ Gets information about a browser profile.
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-lastSavedAt,
-lastSavedBrowserId,
-lastSavedBrowserSessionId,
-lastUpdatedAt,
-profileArn,
-profileId,
+last_saved_at,
+last_saved_browser_id,
+last_saved_browser_session_id,
+last_updated_at,
+profile_arn,
+profile_id,
 status
 FROM aws.bedrock_agentcore_control.browser_profiles
 WHERE profile_id = '{{ profile_id }}' -- required
@@ -294,14 +294,14 @@ Lists all browser profiles in your account.
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-lastSavedAt,
-lastSavedBrowserId,
-lastSavedBrowserSessionId,
-lastUpdatedAt,
-profileArn,
-profileId,
+last_saved_at,
+last_saved_browser_id,
+last_saved_browser_session_id,
+last_updated_at,
+profile_arn,
+profile_id,
 status
 FROM aws.bedrock_agentcore_control.browser_profiles
 WHERE region = '{{ region }}' -- required
@@ -341,9 +341,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
-profileArn,
-profileId,
+created_at,
+profile_arn,
+profile_id,
 status
 ;
 ```

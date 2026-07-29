@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedRules" /></td>
+    <td><CopyableCode code="managed_rules" /></td>
     <td><code>array</code></td>
     <td>The managed rules that are available for the specified Amazon Web Services resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Include this value to get the next set of rules if the value was returned by the previous operation.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns a list that contains the number of managed Contributor Insights rules in
 
 ```sql
 SELECT
-ManagedRules,
-NextToken
+managed_rules,
+next_token
 FROM aws.cloudwatch.managed_insight_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -161,7 +161,7 @@ WHERE
 region = '{{ region }}' --required
 AND ManagedRules = '{{ ManagedRules }}' --required
 RETURNING
-Failures;
+failures;
 ```
 </TabItem>
 </Tabs>

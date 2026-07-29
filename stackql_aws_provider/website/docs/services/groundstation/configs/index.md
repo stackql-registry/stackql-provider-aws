@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>Name of a Config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configArn" /></td>
+    <td><CopyableCode code="config_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a Config (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:config/&#91;a-z0-9&#93;+(-&#91;a-z0-9&#93;+)&#123;0,4&#125;/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(/.&#123;1,256&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configData" /></td>
+    <td><CopyableCode code="config_data" /></td>
     <td><code>object</code></td>
     <td>Object containing the parameters of a Config. See the subtype definitions for what each type of Config contains.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configId" /></td>
+    <td><CopyableCode code="config_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a Config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configType" /></td>
+    <td><CopyableCode code="config_type" /></td>
     <td><code>string</code></td>
     <td>Type of a Config. (antenna-downlink, antenna-downlink-demod-decode, tracking, dataflow-endpoint, antenna-uplink, uplink-echo, s3-recording, telemetry-sink)</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
     <td>Name of a Config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configArn" /></td>
+    <td><CopyableCode code="config_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a Config. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:config/&#91;a-z0-9&#93;+(-&#91;a-z0-9&#93;+)&#123;0,4&#125;/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(/.&#123;1,256&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configId" /></td>
+    <td><CopyableCode code="config_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a Config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configType" /></td>
+    <td><CopyableCode code="config_type" /></td>
     <td><code>string</code></td>
     <td>Type of a Config. (antenna-downlink, antenna-downlink-demod-decode, tracking, dataflow-endpoint, antenna-uplink, uplink-echo, s3-recording, telemetry-sink)</td>
 </tr>
@@ -229,10 +229,10 @@ Returns Config information. Only one Config response can be returned.
 ```sql
 SELECT
 name,
-configArn,
-configData,
-configId,
-configType,
+config_arn,
+config_data,
+config_id,
+config_type,
 tags
 FROM aws.groundstation.configs
 WHERE config_id = '{{ config_id }}' -- required
@@ -248,9 +248,9 @@ Returns a list of Config objects.
 ```sql
 SELECT
 name,
-configArn,
-configId,
-configType
+config_arn,
+config_id,
+config_type
 FROM aws.groundstation.configs
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -287,9 +287,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-configArn,
-configId,
-configType
+config_arn,
+config_id,
+config_type
 ;
 ```
 </TabItem>
@@ -389,9 +389,9 @@ AND region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 AND configData = '{{ configData }}' --required
 RETURNING
-configArn,
-configId,
-configType;
+config_arn,
+config_id,
+config_type;
 ```
 </TabItem>
 </Tabs>

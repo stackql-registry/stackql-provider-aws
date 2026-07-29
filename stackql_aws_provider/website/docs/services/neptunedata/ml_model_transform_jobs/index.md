@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the model-transform job to be retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="baseProcessingJob" /></td>
+    <td><CopyableCode code="base_processing_job" /></td>
     <td><code>object</code></td>
     <td>The base data processing job.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of the configuration information for the models being used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteModelTransformJob" /></td>
+    <td><CopyableCode code="remote_model_transform_job" /></td>
     <td><code>object</code></td>
     <td>The remote model transform job.</td>
 </tr>
@@ -183,9 +183,9 @@ Gets information about a specified model transform job. See Use a trained model 
 ```sql
 SELECT
 id,
-baseProcessingJob,
+base_processing_job,
 models,
-remoteModelTransformJob,
+remote_model_transform_job,
 status
 FROM aws.neptunedata.ml_model_transform_jobs
 WHERE id = '{{ id }}' -- required

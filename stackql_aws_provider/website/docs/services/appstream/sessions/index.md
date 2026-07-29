@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The authentication method. The user is authenticated using a streaming URL (API) or SAML 2.0 federation (SAML). (API, SAML, USERPOOL, AWS_AD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionState" /></td>
+    <td><CopyableCode code="connection_state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether a user is connected to the streaming session. (CONNECTED, NOT_CONNECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetName" /></td>
+    <td><CopyableCode code="fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet for the streaming session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the streaming session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceDrainStatus" /></td>
+    <td><CopyableCode code="instance_drain_status" /></td>
     <td><code>string</code></td>
     <td>The drain status of the instance hosting the streaming session. This only applies to multi-session fleets. (ACTIVE, DRAINING, NOT_APPLICABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the instance hosting the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxExpirationTime" /></td>
+    <td><CopyableCode code="max_expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the streaming session is set to expire. This time is based on the MaxUserDurationinSeconds value, which determines the maximum length of time that a streaming session can run. A streaming session might end earlier than the time specified in SessionMaxExpirationTime, when the DisconnectTimeOutInSeconds elapses or the user chooses to end his or her session. If the DisconnectTimeOutInSeconds elapses, or the user chooses to end his or her session, the streaming instance is terminated and the streaming session ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkAccessConfiguration" /></td>
+    <td><CopyableCode code="network_access_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the network details of the fleet or image builder instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stack for the streaming session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a streaming instance is dedicated for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the streaming session. (ACTIVE, PENDING, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user for whom the session was created.</td>
 </tr>
@@ -188,18 +188,18 @@ Retrieves a list that describes the streaming sessions for a specified stack and
 
 ```sql
 SELECT
-AuthenticationType,
-ConnectionState,
-FleetName,
-Id,
-InstanceDrainStatus,
-InstanceId,
-MaxExpirationTime,
-NetworkAccessConfiguration,
-StackName,
-StartTime,
-State,
-UserId
+authentication_type,
+connection_state,
+fleet_name,
+id,
+instance_drain_status,
+instance_id,
+max_expiration_time,
+network_access_configuration,
+stack_name,
+start_time,
+state,
+user_id
 FROM aws.appstream.sessions
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the operation event. For example, "Stop the EC2 instance i-abcdefgh987654321".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resource" /></td>
+    <td><CopyableCode code="resource" /></td>
     <td><code>object</code></td>
     <td>The resource involved in the operations event. Contains ResourceArn ARN and ResourceType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the operation event. The possible statuses are: IN_PROGRESS, COMPLETED, and FAILED. (IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message relating to a specific operation event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the specified operation event.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns a list of operations events. Available parameters include OperationID, a
 
 ```sql
 SELECT
-Description,
-Resource,
-Status,
-StatusMessage,
-Timestamp
+description,
+resource,
+status,
+status_message,
+timestamp
 FROM aws.ssm_sap.operation_events
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the HarvestJob.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Channel that the HarvestJob will harvest from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time the HarvestJob was submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The end of the time-window which will be harvested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the HarvestJob. The ID must be unique within the region and it cannot be changed after the HarvestJob is submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginEndpointId" /></td>
+    <td><CopyableCode code="origin_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OriginEndpoint that the HarvestJob will harvest from. This cannot be changed after the HarvestJob is submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Destination" /></td>
+    <td><CopyableCode code="s3_destination" /></td>
     <td><code>object</code></td>
     <td>Configuration parameters for where in an S3 bucket to place the harvested content</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The start of the time-window which will be harvested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the HarvestJob. Consider setting up a CloudWatch Event to listen for HarvestJobs as they succeed or fail. In the event of failure, the CloudWatch Event will include an explanation of why the HarvestJob failed. (IN_PROGRESS, SUCCEEDED, FAILED)</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the HarvestJob.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Channel that the HarvestJob will harvest from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time the HarvestJob was submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The end of the time-window which will be harvested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the HarvestJob. The ID must be unique within the region and it cannot be changed after the HarvestJob is submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginEndpointId" /></td>
+    <td><CopyableCode code="origin_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OriginEndpoint that the HarvestJob will harvest from. This cannot be changed after the HarvestJob is submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Destination" /></td>
+    <td><CopyableCode code="s3_destination" /></td>
     <td><code>object</code></td>
     <td>Configuration parameters for where in an S3 bucket to place the harvested content</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The start of the time-window which will be harvested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the HarvestJob. Consider setting up a CloudWatch Event to listen for HarvestJobs as they succeed or fail. In the event of failure, the CloudWatch Event will include an explanation of why the HarvestJob failed. (IN_PROGRESS, SUCCEEDED, FAILED)</td>
 </tr>
@@ -259,15 +259,15 @@ Gets details about an existing HarvestJob.
 
 ```sql
 SELECT
-Arn,
-ChannelId,
-CreatedAt,
-EndTime,
-Id,
-OriginEndpointId,
-S3Destination,
-StartTime,
-Status
+arn,
+channel_id,
+created_at,
+end_time,
+id,
+origin_endpoint_id,
+s3_destination,
+start_time,
+status
 FROM aws.mediapackage.harvest_jobs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -280,15 +280,15 @@ Returns a collection of HarvestJob records.
 
 ```sql
 SELECT
-Arn,
-ChannelId,
-CreatedAt,
-EndTime,
-Id,
-OriginEndpointId,
-S3Destination,
-StartTime,
-Status
+arn,
+channel_id,
+created_at,
+end_time,
+id,
+origin_endpoint_id,
+s3_destination,
+start_time,
+status
 FROM aws.mediapackage.harvest_jobs
 WHERE region = '{{ region }}' -- required
 AND includeChannelId = '{{ includeChannelId }}'
@@ -331,15 +331,15 @@ SELECT
 '{{ StartTime }}' /* required */,
 '{{ region }}'
 RETURNING
-Arn,
-ChannelId,
-CreatedAt,
-EndTime,
-Id,
-OriginEndpointId,
-S3Destination,
-StartTime,
-Status
+arn,
+channel_id,
+created_at,
+end_time,
+id,
+origin_endpoint_id,
+s3_destination,
+start_time,
+status
 ;
 ```
 </TabItem>

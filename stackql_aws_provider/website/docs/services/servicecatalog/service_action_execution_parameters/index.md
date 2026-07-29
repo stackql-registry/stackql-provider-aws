@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ServiceActionParameters" /></td>
+    <td><CopyableCode code="service_action_parameters" /></td>
     <td><code>array</code></td>
     <td>The parameters of the self-service action.</td>
 </tr>
@@ -119,7 +119,7 @@ Finds the default parameters for a specific self-service action on a specific pr
 
 ```sql
 SELECT
-ServiceActionParameters
+service_action_parameters
 FROM aws.servicecatalog.service_action_execution_parameters
 WHERE region = '{{ region }}' -- required
 ;

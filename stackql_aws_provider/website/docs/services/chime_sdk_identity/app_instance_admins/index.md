@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Admin" /></td>
+    <td><CopyableCode code="admin" /></td>
     <td><code>object</code></td>
     <td>The AppInstanceAdmin data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppInstanceArn" /></td>
+    <td><CopyableCode code="app_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AppInstance for which the user is an administrator. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which an administrator was created.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstanceAdmins" /></td>
+    <td><CopyableCode code="app_instance_admins" /></td>
     <td><code>array</code></td>
     <td>The information for each administrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppInstanceArn" /></td>
+    <td><CopyableCode code="app_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AppInstance. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token returned from previous API requests until the number of administrators is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -201,9 +201,9 @@ Returns the full details of an AppInstanceAdmin.
 
 ```sql
 SELECT
-Admin,
-AppInstanceArn,
-CreatedTimestamp
+admin,
+app_instance_arn,
+created_timestamp
 FROM aws.chime_sdk_identity.app_instance_admins
 WHERE app_instance_admin_arn = '{{ app_instance_admin_arn }}' -- required
 AND app_instance_arn = '{{ app_instance_arn }}' -- required
@@ -217,9 +217,9 @@ Returns a list of the administrators in the AppInstance.
 
 ```sql
 SELECT
-AppInstanceAdmins,
-AppInstanceArn,
-NextToken
+app_instance_admins,
+app_instance_arn,
+next_token
 FROM aws.chime_sdk_identity.app_instance_admins
 WHERE app_instance_arn = '{{ app_instance_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -255,8 +255,8 @@ SELECT
 '{{ app_instance_arn }}',
 '{{ region }}'
 RETURNING
-AppInstanceAdmin,
-AppInstanceArn
+app_instance_admin,
+app_instance_arn
 ;
 ```
 </TabItem>

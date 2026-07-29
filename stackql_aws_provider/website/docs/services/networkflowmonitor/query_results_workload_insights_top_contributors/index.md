@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID for a specific row of data. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localAz" /></td>
+    <td><CopyableCode code="local_az" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Availability Zone where the local resource is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localRegion" /></td>
+    <td><CopyableCode code="local_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the local resource is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localSubnetArn" /></td>
+    <td><CopyableCode code="local_subnet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a local subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localSubnetId" /></td>
+    <td><CopyableCode code="local_subnet_id" /></td>
     <td><code>string</code></td>
     <td>The subnet identifier for the local resource. (pattern: &lt;code&gt;subnet-&#91;a-zA-Z0-9&#93;&#123;8,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localVpcArn" /></td>
+    <td><CopyableCode code="local_vpc_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a local VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localVpcId" /></td>
+    <td><CopyableCode code="local_vpc_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the VPC for the local resource. (pattern: &lt;code&gt;vpc-&#91;a-zA-Z0-9&#93;&#123;8,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteIdentifier" /></td>
+    <td><CopyableCode code="remote_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of a remote resource. For a VPC or subnet, this identifier is the VPC Amazon Resource Name (ARN) or subnet ARN. For an Availability Zone, this identifier is the AZ name, for example, us-west-2b. For an Amazon Web Services Region , this identifier is the Region name, for example, us-west-2.</td>
 </tr>
@@ -179,14 +179,14 @@ Return the data for a query with the Network Flow Monitor query interface. You s
 
 ```sql
 SELECT
-accountId,
-localAz,
-localRegion,
-localSubnetArn,
-localSubnetId,
-localVpcArn,
-localVpcId,
-remoteIdentifier,
+account_id,
+local_az,
+local_region,
+local_subnet_arn,
+local_subnet_id,
+local_vpc_arn,
+local_vpc_id,
+remote_identifier,
 value
 FROM aws.networkflowmonitor.query_results_workload_insights_top_contributors
 WHERE scope_id = '{{ scope_id }}' -- required

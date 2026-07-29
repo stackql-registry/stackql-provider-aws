@@ -53,27 +53,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureRetryCount" /></td>
+    <td><CopyableCode code="failure_retry_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times that the task failed and was retried.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSessionActionId" /></td>
+    <td><CopyableCode code="latest_session_action_id" /></td>
     <td><code>string</code></td>
     <td>The latest session action ID for the task. (pattern: &lt;code&gt;sessionaction-&#91;0-9a-f&#93;&#123;32&#125;-(0|(&#91;1-9&#93;&#91;0-9&#93;&#123;0,9&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -83,32 +83,32 @@ The following fields are returned by `SELECT` queries:
     <td>The parameters for the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runStatus" /></td>
+    <td><CopyableCode code="run_status" /></td>
     <td><code>string</code></td>
     <td>The run status for the task. (PENDING, READY, ASSIGNED, STARTING, SCHEDULED, INTERRUPTING, RUNNING, SUSPENDED, CANCELED, FAILED, SUCCEEDED, NOT_COMPATIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetRunStatus" /></td>
+    <td><CopyableCode code="target_run_status" /></td>
     <td><code>string</code></td>
     <td>The run status with which to start the task. (READY, FAILED, SUCCEEDED, CANCELED, SUSPENDED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The task ID. (pattern: &lt;code&gt;task-&#91;0-9a-f&#93;&#123;32&#125;-(0|(&#91;1-9&#93;&#91;0-9&#93;&#123;0,9&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -127,27 +127,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureRetryCount" /></td>
+    <td><CopyableCode code="failure_retry_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times that the task failed and was retried.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSessionActionId" /></td>
+    <td><CopyableCode code="latest_session_action_id" /></td>
     <td><code>string</code></td>
     <td>The latest session action ID for the task. (pattern: &lt;code&gt;sessionaction-&#91;0-9a-f&#93;&#123;32&#125;-(0|(&#91;1-9&#93;&#91;0-9&#93;&#123;0,9&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -157,32 +157,32 @@ The following fields are returned by `SELECT` queries:
     <td>The task parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runStatus" /></td>
+    <td><CopyableCode code="run_status" /></td>
     <td><code>string</code></td>
     <td>The run status of the task. (PENDING, READY, ASSIGNED, STARTING, SCHEDULED, INTERRUPTING, RUNNING, SUSPENDED, CANCELED, FAILED, SUCCEEDED, NOT_COMPATIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetRunStatus" /></td>
+    <td><CopyableCode code="target_run_status" /></td>
     <td><code>string</code></td>
     <td>The run status on which the started. (READY, FAILED, SUCCEEDED, CANCELED, SUSPENDED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The task ID. (pattern: &lt;code&gt;task-&#91;0-9a-f&#93;&#123;32&#125;-(0|(&#91;1-9&#93;&#91;0-9&#93;&#123;0,9&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -201,7 +201,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextItemOffset" /></td>
+    <td><CopyableCode code="next_item_offset" /></td>
     <td><code>integer</code></td>
     <td>The next item offset for the search results.</td>
 </tr>
@@ -211,7 +211,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tasks in the search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResults" /></td>
+    <td><CopyableCode code="total_results" /></td>
     <td><code>integer</code></td>
     <td>The total number of results in the search.</td>
 </tr>
@@ -375,18 +375,18 @@ Gets a task.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-endedAt,
-failureRetryCount,
-latestSessionActionId,
+created_at,
+created_by,
+ended_at,
+failure_retry_count,
+latest_session_action_id,
 parameters,
-runStatus,
-startedAt,
-targetRunStatus,
-taskId,
-updatedAt,
-updatedBy
+run_status,
+started_at,
+target_run_status,
+task_id,
+updated_at,
+updated_by
 FROM aws.deadline.tasks
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -403,18 +403,18 @@ Lists tasks for a job.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-endedAt,
-failureRetryCount,
-latestSessionActionId,
+created_at,
+created_by,
+ended_at,
+failure_retry_count,
+latest_session_action_id,
 parameters,
-runStatus,
-startedAt,
-targetRunStatus,
-taskId,
-updatedAt,
-updatedBy
+run_status,
+started_at,
+target_run_status,
+task_id,
+updated_at,
+updated_by
 FROM aws.deadline.tasks
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -432,9 +432,9 @@ Searches for tasks.
 
 ```sql
 SELECT
-nextItemOffset,
+next_item_offset,
 tasks,
-totalResults
+total_results
 FROM aws.deadline.tasks
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required

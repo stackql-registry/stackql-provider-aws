@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoipPoolId" /></td>
+    <td><CopyableCode code="coip_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the customer-owned address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationCidrBlock" /></td>
+    <td><CopyableCode code="destination_cidr_block" /></td>
     <td><code>string</code></td>
     <td>The CIDR block used for destination matches.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationPrefixListId" /></td>
+    <td><CopyableCode code="destination_prefix_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableArn" /></td>
+    <td><CopyableCode code="local_gateway_route_table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableId" /></td>
+    <td><CopyableCode code="local_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayVirtualInterfaceGroupId" /></td>
+    <td><CopyableCode code="local_gateway_virtual_interface_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual interface group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the local gateway route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The route type.</td>
 </tr>
@@ -235,17 +235,17 @@ Searches for routes in the specified local gateway route table.
 
 ```sql
 SELECT
-CoipPoolId,
-DestinationCidrBlock,
-DestinationPrefixListId,
-LocalGatewayRouteTableArn,
-LocalGatewayRouteTableId,
-LocalGatewayVirtualInterfaceGroupId,
-NetworkInterfaceId,
-OwnerId,
-State,
-SubnetId,
-Type
+coip_pool_id,
+destination_cidr_block,
+destination_prefix_list_id,
+local_gateway_route_table_arn,
+local_gateway_route_table_id,
+local_gateway_virtual_interface_group_id,
+network_interface_id,
+owner_id,
+state,
+subnet_id,
+type
 FROM aws.ec2.local_gateway_routes
 WHERE LocalGatewayRouteTableId = '{{ LocalGatewayRouteTableId }}' -- required
 AND region = '{{ region }}' -- required
@@ -291,17 +291,17 @@ SELECT
 '{{ NetworkInterfaceId }}',
 '{{ DestinationPrefixListId }}'
 RETURNING
-CoipPoolId,
-DestinationCidrBlock,
-DestinationPrefixListId,
-LocalGatewayRouteTableArn,
-LocalGatewayRouteTableId,
-LocalGatewayVirtualInterfaceGroupId,
-NetworkInterfaceId,
-OwnerId,
-State,
-SubnetId,
-Type
+coip_pool_id,
+destination_cidr_block,
+destination_prefix_list_id,
+local_gateway_route_table_arn,
+local_gateway_route_table_id,
+local_gateway_virtual_interface_group_id,
+network_interface_id,
+owner_id,
+state,
+subnet_id,
+type
 ;
 ```
 </TabItem>
@@ -367,17 +367,17 @@ AND NetworkInterfaceId = '{{ NetworkInterfaceId}}'
 AND DryRun = {{ DryRun}}
 AND DestinationPrefixListId = '{{ DestinationPrefixListId}}'
 RETURNING
-CoipPoolId,
-DestinationCidrBlock,
-DestinationPrefixListId,
-LocalGatewayRouteTableArn,
-LocalGatewayRouteTableId,
-LocalGatewayVirtualInterfaceGroupId,
-NetworkInterfaceId,
-OwnerId,
-State,
-SubnetId,
-Type;
+coip_pool_id,
+destination_cidr_block,
+destination_prefix_list_id,
+local_gateway_route_table_arn,
+local_gateway_route_table_id,
+local_gateway_virtual_interface_group_id,
+network_interface_id,
+owner_id,
+state,
+subnet_id,
+type;
 ```
 </TabItem>
 </Tabs>

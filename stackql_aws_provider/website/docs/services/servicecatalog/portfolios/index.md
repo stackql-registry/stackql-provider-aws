@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Budgets" /></td>
+    <td><CopyableCode code="budgets" /></td>
     <td><code>array</code></td>
     <td>Information about the associated budgets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortfolioDetail" /></td>
+    <td><CopyableCode code="portfolio_detail" /></td>
     <td><code>object</code></td>
     <td>Information about the portfolio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagOptions" /></td>
+    <td><CopyableCode code="tag_options" /></td>
     <td><code>array</code></td>
     <td>Information about the TagOptions associated with the portfolio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Information about the tags associated with the portfolio.</td>
 </tr>
@@ -204,10 +204,10 @@ Gets information about the specified portfolio. A delegated admin is authorized 
 
 ```sql
 SELECT
-Budgets,
-PortfolioDetail,
-TagOptions,
-Tags
+budgets,
+portfolio_detail,
+tag_options,
+tags
 FROM aws.servicecatalog.portfolios
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,8 +248,8 @@ SELECT
 '{{ IdempotencyToken }}' /* required */,
 '{{ region }}'
 RETURNING
-PortfolioDetail,
-Tags
+portfolio_detail,
+tags
 ;
 ```
 </TabItem>
@@ -373,8 +373,8 @@ RemoveTags = '{{ RemoveTags }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-PortfolioDetail,
-Tags;
+portfolio_detail,
+tags;
 ```
 </TabItem>
 </Tabs>

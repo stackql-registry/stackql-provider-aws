@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="imageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>object</code></td>
     <td>An object with identifying information for an image in an Amazon ECR repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the registry. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingStatuses" /></td>
+    <td><CopyableCode code="signing_statuses" /></td>
     <td><code>array</code></td>
     <td>A list of signing statuses for the specified image. Each status corresponds to a signing profile.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the signing status for a specified image. If the image matched signing r
 
 ```sql
 SELECT
-imageId,
-registryId,
-repositoryName,
-signingStatuses
+image_id,
+registry_id,
+repository_name,
+signing_statuses
 FROM aws.ecr.image_signing_status
 WHERE region = '{{ region }}' -- required
 ;

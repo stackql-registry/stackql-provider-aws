@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProxyConfiguration" /></td>
+    <td><CopyableCode code="proxy_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for the specified proxy configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateToken" /></td>
+    <td><CopyableCode code="update_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the proxy configuration. The token marks the state of the proxy configuration resource at the time of the request. To make changes to the proxy configuration, you provide the token in your request. Network Firewall uses the token to ensure that the proxy configuration hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the proxy configuration again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a proxy configuration. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the proxy configuration. You can't change the name of a proxy configuration after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -192,8 +192,8 @@ Returns the data objects for the specified proxy configuration.
 
 ```sql
 SELECT
-ProxyConfiguration,
-UpdateToken
+proxy_configuration,
+update_token
 FROM aws.network_firewall.proxy_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,8 +205,8 @@ Retrieves the metadata for the proxy configuration that you have defined. Depend
 
 ```sql
 SELECT
-Arn,
-Name
+arn,
+name
 FROM aws.network_firewall.proxy_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,8 +247,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ProxyConfiguration,
-UpdateToken
+proxy_configuration,
+update_token
 ;
 ```
 </TabItem>
@@ -323,8 +323,8 @@ region = '{{ region }}' --required
 AND RuleGroups = '{{ RuleGroups }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-ProxyConfiguration,
-UpdateToken;
+proxy_configuration,
+update_token;
 ```
 </TabItem>
 <TabItem value="update_proxy_configuration">
@@ -343,8 +343,8 @@ region = '{{ region }}' --required
 AND DefaultRulePhaseActions = '{{ DefaultRulePhaseActions }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-ProxyConfiguration,
-UpdateToken;
+proxy_configuration,
+update_token;
 ```
 </TabItem>
 <TabItem value="detach_rule_groups_from_proxy_configuration">
@@ -363,8 +363,8 @@ WHERE
 region = '{{ region }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-ProxyConfiguration,
-UpdateToken;
+proxy_configuration,
+update_token;
 ```
 </TabItem>
 </Tabs>

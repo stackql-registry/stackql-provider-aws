@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that can be used to uniquely identify the billing view. (pattern: &lt;code&gt;arn:aws&#91;a-z-&#93;*:(billing)::&#91;0-9&#93;&#123;12&#125;:billingview/&#91;a-zA-Z0-9/:_\+=\.\-@&#93;&#123;0,75&#125;&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingViewType" /></td>
+    <td><CopyableCode code="billing_view_type" /></td>
     <td><code>string</code></td>
     <td>The type of billing group. (PRIMARY, BILLING_GROUP, CUSTOM, BILLING_TRANSFER, BILLING_TRANSFER_SHOWBACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the billing view was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataFilterExpression" /></td>
+    <td><CopyableCode code="data_filter_expression" /></td>
     <td><code>object</code></td>
     <td>See Expression. Billing view only supports LINKED_ACCOUNT, Tags, and CostCategories.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="derivedViewCount" /></td>
+    <td><CopyableCode code="derived_view_count" /></td>
     <td><code>integer</code></td>
     <td>The number of billing views that use this billing view as a source.</td>
 </tr>
@@ -86,32 +86,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the billing view. (pattern: &lt;code&gt;(&#91; a-zA-Z0-9_\+=\.\-@&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="healthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>object</code></td>
     <td>The current health status of the billing view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The account owner of the billing view. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceAccountId" /></td>
+    <td><CopyableCode code="source_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the source billing view, if this is a derived billing view. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceViewCount" /></td>
+    <td><CopyableCode code="source_view_count" /></td>
     <td><code>integer</code></td>
     <td>The number of source views associated with this billing view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the billing view was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="viewDefinitionLastUpdatedAt" /></td>
+    <td><CopyableCode code="view_definition_last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the billing view definition was last updated.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that can be used to uniquely identify the billing view. (pattern: &lt;code&gt;arn:aws&#91;a-z-&#93;*:(billing)::&#91;0-9&#93;&#123;12&#125;:billingview/&#91;a-zA-Z0-9/:_\+=\.\-@&#93;&#123;0,75&#125;&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingViewType" /></td>
+    <td><CopyableCode code="billing_view_type" /></td>
     <td><code>string</code></td>
     <td>The type of billing view. (PRIMARY, BILLING_GROUP, CUSTOM, BILLING_TRANSFER, BILLING_TRANSFER_SHOWBACK)</td>
 </tr>
@@ -150,17 +150,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the billing view. (pattern: &lt;code&gt;(&#91; a-zA-Z0-9_\+=\.\-@&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="healthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>object</code></td>
     <td>The current health status of the billing view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The list of owners of the Billing view. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceAccountId" /></td>
+    <td><CopyableCode code="source_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the source billing view, if this is a derived billing view. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -260,17 +260,17 @@ Returns the metadata associated to the specified billing view ARN.
 SELECT
 name,
 arn,
-billingViewType,
-createdAt,
-dataFilterExpression,
-derivedViewCount,
+billing_view_type,
+created_at,
+data_filter_expression,
+derived_view_count,
 description,
-healthStatus,
-ownerAccountId,
-sourceAccountId,
-sourceViewCount,
-updatedAt,
-viewDefinitionLastUpdatedAt
+health_status,
+owner_account_id,
+source_account_id,
+source_view_count,
+updated_at,
+view_definition_last_updated_at
 FROM aws.billing.billing_views
 WHERE region = '{{ region }}' -- required
 ;
@@ -284,11 +284,11 @@ Lists the billing views available for a given time period. Every Amazon Web Serv
 SELECT
 name,
 arn,
-billingViewType,
+billing_view_type,
 description,
-healthStatus,
-ownerAccountId,
-sourceAccountId
+health_status,
+owner_account_id,
+source_account_id
 FROM aws.billing.billing_views
 WHERE region = '{{ region }}' -- required
 ;
@@ -330,7 +330,7 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-createdAt
+created_at
 ;
 ```
 </TabItem>
@@ -414,7 +414,7 @@ region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
 arn,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

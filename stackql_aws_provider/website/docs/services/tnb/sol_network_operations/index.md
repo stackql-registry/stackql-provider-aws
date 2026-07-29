@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>Error related to this specific network operation occurrence.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lcmOperationType" /></td>
+    <td><CopyableCode code="lcm_operation_type" /></td>
     <td><code>string</code></td>
     <td>Type of the operation represented by this occurrence. (INSTANTIATE, UPDATE, TERMINATE)</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata of this network operation occurrence.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceId" /></td>
+    <td><CopyableCode code="ns_instance_id" /></td>
     <td><code>string</code></td>
     <td>ID of the network operation instance. (pattern: &lt;code&gt;^ni-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationState" /></td>
+    <td><CopyableCode code="operation_state" /></td>
     <td><code>string</code></td>
     <td>The state of the network operation. (PROCESSING, COMPLETED, FAILED, CANCELLING, CANCELLED)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>All tasks associated with this operation occurrence.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateType" /></td>
+    <td><CopyableCode code="update_type" /></td>
     <td><code>string</code></td>
     <td>Type of the update. Only present if the network operation lcmOperationType is UPDATE. (MODIFY_VNF_INFORMATION, UPDATE_NS)</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>Error related to this specific network operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lcmOperationType" /></td>
+    <td><CopyableCode code="lcm_operation_type" /></td>
     <td><code>string</code></td>
     <td>Type of lifecycle management network operation. (INSTANTIATE, UPDATE, TERMINATE)</td>
 </tr>
@@ -140,17 +140,17 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata related to this network operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceId" /></td>
+    <td><CopyableCode code="ns_instance_id" /></td>
     <td><code>string</code></td>
     <td>ID of the network instance related to this operation. (pattern: &lt;code&gt;^ni-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationState" /></td>
+    <td><CopyableCode code="operation_state" /></td>
     <td><code>string</code></td>
     <td>The state of the network operation. (PROCESSING, COMPLETED, FAILED, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateType" /></td>
+    <td><CopyableCode code="update_type" /></td>
     <td><code>string</code></td>
     <td>Type of the update. Only present if the network operation lcmOperationType is UPDATE. (MODIFY_VNF_INFORMATION, UPDATE_NS)</td>
 </tr>
@@ -250,13 +250,13 @@ SELECT
 id,
 arn,
 error,
-lcmOperationType,
+lcm_operation_type,
 metadata,
-nsInstanceId,
-operationState,
+ns_instance_id,
+operation_state,
 tags,
 tasks,
-updateType
+update_type
 FROM aws.tnb.sol_network_operations
 WHERE ns_lcm_op_occ_id = '{{ ns_lcm_op_occ_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -272,11 +272,11 @@ SELECT
 id,
 arn,
 error,
-lcmOperationType,
+lcm_operation_type,
 metadata,
-nsInstanceId,
-operationState,
-updateType
+ns_instance_id,
+operation_state,
+update_type
 FROM aws.tnb.sol_network_operations
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'

@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The action configured for the firewall rule. (ALLOW, ALERT, BLOCK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockOverrideDnsType" /></td>
+    <td><CopyableCode code="block_override_dns_type" /></td>
     <td><code>string</code></td>
     <td>The DNS record type configured for the firewall rule's custom response. (CNAME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockOverrideDomain" /></td>
+    <td><CopyableCode code="block_override_domain" /></td>
     <td><code>string</code></td>
     <td>The custom domain name configured for the firewall rule's BLOCK response. (pattern: &lt;code&gt;\*?&#91;a-zA-Z0-9!"#$%&'()*+,./:;&lt;=&gt;?@\&#91;\\\&#93;^_`&#123;|&#125;~-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockOverrideTtl" /></td>
+    <td><CopyableCode code="block_override_ttl" /></td>
     <td><code>integer</code></td>
     <td>The TTL value configured for the firewall rule's custom response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockResponse" /></td>
+    <td><CopyableCode code="block_response" /></td>
     <td><code>string</code></td>
     <td>The type of block response configured for the firewall rule. (NODATA, NXDOMAIN, OVERRIDE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="confidenceThreshold" /></td>
+    <td><CopyableCode code="confidence_threshold" /></td>
     <td><code>string</code></td>
     <td>The confidence threshold configured for the firewall rule's advanced threat detection. (LOW, MEDIUM, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the firewall rule was created.</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the firewall rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsAdvancedProtection" /></td>
+    <td><CopyableCode code="dns_advanced_protection" /></td>
     <td><code>string</code></td>
     <td>Whether advanced DNS threat protection is enabled for the firewall rule. (DGA, DNS_TUNNELING, DICTIONARY_DGA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsViewId" /></td>
+    <td><CopyableCode code="dns_view_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the DNS view associated with the firewall rule. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firewallDomainListId" /></td>
+    <td><CopyableCode code="firewall_domain_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the firewall domain list associated with the firewall rule. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The priority of the firewall rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryType" /></td>
+    <td><CopyableCode code="query_type" /></td>
     <td><code>string</code></td>
     <td>The DNS query type that the firewall rule matches.</td>
 </tr>
@@ -131,7 +131,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the firewall rule. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the firewall rule was last updated.</td>
 </tr>
@@ -165,32 +165,32 @@ The following fields are returned by `SELECT` queries:
     <td>The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list, or a threat in a DNS Firewall Advanced rule. (ALLOW, ALERT, BLOCK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockOverrideDnsType" /></td>
+    <td><CopyableCode code="block_override_dns_type" /></td>
     <td><code>string</code></td>
     <td>The DNS record's type. This determines the format of the record value that you provided in BlockOverrideDomain. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE. (CNAME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockOverrideDomain" /></td>
+    <td><CopyableCode code="block_override_domain" /></td>
     <td><code>string</code></td>
     <td>The custom DNS record to send back in response to the query. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE. (pattern: &lt;code&gt;\*?&#91;a-zA-Z0-9!"#$%&'()*+,./:;&lt;=&gt;?@\&#91;\\\&#93;^_`&#123;|&#125;~-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockOverrideTtl" /></td>
+    <td><CopyableCode code="block_override_ttl" /></td>
     <td><code>integer</code></td>
     <td>The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockResponse" /></td>
+    <td><CopyableCode code="block_response" /></td>
     <td><code>string</code></td>
     <td>The way that you want DNS Firewall to block the request. Used for the rule action setting BLOCK. (NODATA, NXDOMAIN, OVERRIDE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="confidenceThreshold" /></td>
+    <td><CopyableCode code="confidence_threshold" /></td>
     <td><code>string</code></td>
     <td>The confidence threshold for DNS Firewall Advanced. You must provide this value when you create a DNS Firewall Advanced rule. (LOW, MEDIUM, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the DNS Firewall rule was created.</td>
 </tr>
@@ -200,17 +200,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the DNS Firewall rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsAdvancedProtection" /></td>
+    <td><CopyableCode code="dns_advanced_protection" /></td>
     <td><code>string</code></td>
     <td>The type of the DNS Firewall Advanced rule. Valid values are DGA, DNS_TUNNELING, and DICTIONARY_DGA. (DGA, DNS_TUNNELING, DICTIONARY_DGA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsViewId" /></td>
+    <td><CopyableCode code="dns_view_id" /></td>
     <td><code>string</code></td>
     <td>The DNS view ID the DNS Firewall is associated with. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firewallDomainListId" /></td>
+    <td><CopyableCode code="firewall_domain_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a DNS Firewall domain list. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -220,7 +220,7 @@ The following fields are returned by `SELECT` queries:
     <td>The setting that determines the processing order of the rule in the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryType" /></td>
+    <td><CopyableCode code="query_type" /></td>
     <td><code>string</code></td>
     <td>The DNS query type you want the rule to evaluate.</td>
 </tr>
@@ -230,7 +230,7 @@ The following fields are returned by `SELECT` queries:
     <td>The operational status of the DNS Firewall rule. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the DNS Firewall rule was updated.</td>
 </tr>
@@ -356,20 +356,20 @@ SELECT
 id,
 name,
 action,
-blockOverrideDnsType,
-blockOverrideDomain,
-blockOverrideTtl,
-blockResponse,
-confidenceThreshold,
-createdAt,
+block_override_dns_type,
+block_override_domain,
+block_override_ttl,
+block_response,
+confidence_threshold,
+created_at,
 description,
-dnsAdvancedProtection,
-dnsViewId,
-firewallDomainListId,
+dns_advanced_protection,
+dns_view_id,
+firewall_domain_list_id,
 priority,
-queryType,
+query_type,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.firewall_rules
 WHERE dnsview_id = '{{ dnsview_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -388,20 +388,20 @@ SELECT
 id,
 name,
 action,
-blockOverrideDnsType,
-blockOverrideDomain,
-blockOverrideTtl,
-blockResponse,
-confidenceThreshold,
-createdAt,
+block_override_dns_type,
+block_override_domain,
+block_override_ttl,
+block_response,
+confidence_threshold,
+created_at,
 description,
-dnsAdvancedProtection,
-dnsViewId,
-firewallDomainListId,
+dns_advanced_protection,
+dns_view_id,
+firewall_domain_list_id,
 priority,
-queryType,
+query_type,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.firewall_rules
 WHERE firewall_rule_id = '{{ firewall_rule_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -462,20 +462,20 @@ RETURNING
 id,
 name,
 action,
-blockOverrideDnsType,
-blockOverrideDomain,
-blockOverrideTtl,
-blockResponse,
-confidenceThreshold,
-createdAt,
+block_override_dns_type,
+block_override_domain,
+block_override_ttl,
+block_response,
+confidence_threshold,
+created_at,
 description,
-dnsAdvancedProtection,
-dnsViewId,
-firewallDomainListId,
+dns_advanced_protection,
+dns_view_id,
+firewall_domain_list_id,
 priority,
-queryType,
+query_type,
 status,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -560,20 +560,20 @@ RETURNING
 id,
 name,
 action,
-blockOverrideDnsType,
-blockOverrideDomain,
-blockOverrideTtl,
-blockResponse,
-confidenceThreshold,
-createdAt,
+block_override_dns_type,
+block_override_domain,
+block_override_ttl,
+block_response,
+confidence_threshold,
+created_at,
 description,
-dnsAdvancedProtection,
-dnsViewId,
-firewallDomainListId,
+dns_advanced_protection,
+dns_view_id,
+firewall_domain_list_id,
 priority,
-queryType,
+query_type,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

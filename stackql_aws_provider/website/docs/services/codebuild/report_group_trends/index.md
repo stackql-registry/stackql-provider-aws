@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="rawData" /></td>
+    <td><CopyableCode code="raw_data" /></td>
     <td><code>array</code></td>
     <td>An array that contains the raw data for each report.</td>
 </tr>
@@ -124,7 +124,7 @@ Analyzes and accumulates test report values for the specified test reports.
 
 ```sql
 SELECT
-rawData,
+raw_data,
 stats
 FROM aws.codebuild.report_group_trends
 WHERE region = '{{ region }}' -- required

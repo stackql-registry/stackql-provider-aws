@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the site was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the site. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>object</code></td>
     <td>Describes a location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteArn" /></td>
+    <td><CopyableCode code="site_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the site. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the site. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the site. (PENDING, AVAILABLE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags for the site.</td>
 </tr>
@@ -200,14 +200,14 @@ Gets information about one or more of your sites in a global network.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-GlobalNetworkId,
-Location,
-SiteArn,
-SiteId,
-State,
-Tags
+created_at,
+description,
+global_network_id,
+location,
+site_arn,
+site_id,
+state,
+tags
 FROM aws.networkmanager.sites
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -248,7 +248,7 @@ SELECT
 '{{ global_network_id }}',
 '{{ region }}'
 RETURNING
-Site
+site
 ;
 ```
 </TabItem>
@@ -304,7 +304,7 @@ global_network_id = '{{ global_network_id }}' --required
 AND site_id = '{{ site_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Site;
+site;
 ```
 </TabItem>
 </Tabs>

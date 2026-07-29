@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="codeReviewId" /></td>
+    <td><CopyableCode code="code_review_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code review associated with the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeReviewJobId" /></td>
+    <td><CopyableCode code="code_review_job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code review job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the code review job was created, in UTC format.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The title of the code review job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the code review job was last updated, in UTC format.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns a paginated list of code review job summaries for the specified code rev
 
 ```sql
 SELECT
-codeReviewId,
-codeReviewJobId,
-createdAt,
+code_review_id,
+code_review_job_id,
+created_at,
 status,
 title_,
-updatedAt
+updated_at
 FROM aws.securityagent.code_review_jobs_for_code_reviews
 WHERE region = '{{ region }}' -- required
 ;

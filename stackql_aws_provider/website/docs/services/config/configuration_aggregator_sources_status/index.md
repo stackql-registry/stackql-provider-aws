@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The region authorized to collect aggregated data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastErrorCode" /></td>
+    <td><CopyableCode code="last_error_code" /></td>
     <td><code>string</code></td>
     <td>The error code that Config returned when the source account aggregation last failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastErrorMessage" /></td>
+    <td><CopyableCode code="last_error_message" /></td>
     <td><code>string</code></td>
     <td>The message indicating that the source account aggregation failed due to an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateStatus" /></td>
+    <td><CopyableCode code="last_update_status" /></td>
     <td><code>string</code></td>
     <td>Filters the last updated status type. Valid value FAILED indicates errors while moving data. Valid value SUCCEEDED indicates the data was successfully moved. Valid value OUTDATED indicates the data is not the most recent. (FAILED, SUCCEEDED, OUTDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time of the last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceId" /></td>
+    <td><CopyableCode code="source_id" /></td>
     <td><code>string</code></td>
     <td>The source account ID or an organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source account or an organization. (ACCOUNT, ORGANIZATION)</td>
 </tr>
@@ -149,13 +149,13 @@ Returns status information for sources within an aggregator. The status includes
 
 ```sql
 SELECT
-AwsRegion,
-LastErrorCode,
-LastErrorMessage,
-LastUpdateStatus,
-LastUpdateTime,
-SourceId,
-SourceType
+aws_region,
+last_error_code,
+last_error_message,
+last_update_status,
+last_update_time,
+source_id,
+source_type
 FROM aws.config.configuration_aggregator_sources_status
 WHERE region = '{{ region }}' -- required
 ;

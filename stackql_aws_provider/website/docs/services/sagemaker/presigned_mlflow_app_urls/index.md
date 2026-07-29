@@ -107,7 +107,7 @@ SELECT
 {{ SessionExpirationDurationInSeconds }},
 '{{ region }}'
 RETURNING
-AuthorizedUrl
+authorized_url
 ;
 ```
 </TabItem>

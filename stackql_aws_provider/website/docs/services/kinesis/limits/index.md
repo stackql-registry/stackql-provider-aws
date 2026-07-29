@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OnDemandStreamCount" /></td>
+    <td><CopyableCode code="on_demand_stream_count" /></td>
     <td><code>integer</code></td>
     <td>Indicates the number of data streams with the on-demand capacity mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnDemandStreamCountLimit" /></td>
+    <td><CopyableCode code="on_demand_stream_count_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of data streams with the on-demand capacity mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenShardCount" /></td>
+    <td><CopyableCode code="open_shard_count" /></td>
     <td><code>integer</code></td>
     <td>The number of open shards.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShardLimit" /></td>
+    <td><CopyableCode code="shard_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of shards.</td>
 </tr>
@@ -134,10 +134,10 @@ Describes the shard limits and usage for the account. If you update your account
 
 ```sql
 SELECT
-OnDemandStreamCount,
-OnDemandStreamCountLimit,
-OpenShardCount,
-ShardLimit
+on_demand_stream_count,
+on_demand_stream_count_limit,
+open_shard_count,
+shard_limit
 FROM aws.kinesis.limits
 WHERE region = '{{ region }}' -- required
 ;

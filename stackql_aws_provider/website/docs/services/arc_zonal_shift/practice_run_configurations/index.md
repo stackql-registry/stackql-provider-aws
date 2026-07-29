@@ -134,8 +134,8 @@ SELECT
 RETURNING
 name,
 arn,
-practiceRunConfiguration,
-zonalAutoshiftStatus
+practice_run_configuration,
+zonal_autoshift_status
 ;
 ```
 </TabItem>
@@ -198,8 +198,8 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 arn,
-practiceRunConfiguration,
-zonalAutoshiftStatus;
+practice_run_configuration,
+zonal_autoshift_status;
 ```
 </TabItem>
 </Tabs>

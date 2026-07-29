@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TotalBackupSizeInMegaBytes" /></td>
+    <td><CopyableCode code="total_backup_size_in_mega_bytes" /></td>
     <td><code>number</code></td>
     <td>The total amount of storage currently used for snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalProvisionedStorageInMegaBytes" /></td>
+    <td><CopyableCode code="total_provisioned_storage_in_mega_bytes" /></td>
     <td><code>number</code></td>
     <td>The total amount of storage currently provisioned.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns account level backups storage size and provisional storage.
 
 ```sql
 SELECT
-TotalBackupSizeInMegaBytes,
-TotalProvisionedStorageInMegaBytes
+total_backup_size_in_mega_bytes,
+total_provisioned_storage_in_mega_bytes
 FROM aws.redshift.storages
 WHERE region = '{{ region }}' -- required
 ;

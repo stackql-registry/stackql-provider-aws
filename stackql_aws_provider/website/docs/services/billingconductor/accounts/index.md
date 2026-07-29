@@ -109,7 +109,7 @@ WHERE
 region = '{{ region }}' --required
 AND AccountIds = '{{ AccountIds }}' --required
 RETURNING
-Arn;
+arn;
 ```
 </TabItem>
 </Tabs>

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the tracker resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description for the tracker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBridgeEnabled" /></td>
+    <td><CopyableCode code="event_bridge_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether UPDATE events from this tracker in EventBridge are enabled. If set to true these events will be sent to EventBridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyEnableGeospatialQueries" /></td>
+    <td><CopyableCode code="kms_key_enable_geospatial_queries" /></td>
     <td><code>boolean</code></td>
     <td>Enables GeospatialQueries for a tracker that uses a Amazon Web Services KMS customer managed key. This parameter is only used if you are using a KMS customer managed key. If you wish to encrypt your data using your own KMS customer managed key, then the Bounding Polygon Queries feature will be disabled by default. This is because by using this feature, a representation of your device positions will not be encrypted using the your KMS managed key. The exact device position, however; is still encrypted using your managed key. You can choose to opt-in to the Bounding Polygon Quseries feature. This is done by setting the KmsKeyEnableGeospatialQueries parameter to true when creating or updating a Tracker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>A key identifier for an Amazon Web Services KMS customer managed key assigned to the Amazon Location resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PositionFiltering" /></td>
+    <td><CopyableCode code="position_filtering" /></td>
     <td><code>string</code></td>
     <td>The position filtering method of the tracker resource. (TimeBased, DistanceBased, AccuracyBased)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlanDataSource" /></td>
+    <td><CopyableCode code="pricing_plan_data_source" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns an empty string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the tracker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackerArn" /></td>
+    <td><CopyableCode code="tracker_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:(&#91;^/&#93;.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackerName" /></td>
+    <td><CopyableCode code="tracker_name" /></td>
     <td><code>string</code></td>
     <td>The name of the tracker resource. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the tracker resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -125,32 +125,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the tracker resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the tracker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlanDataSource" /></td>
+    <td><CopyableCode code="pricing_plan_data_source" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns an empty string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackerName" /></td>
+    <td><CopyableCode code="tracker_name" /></td>
     <td><code>string</code></td>
     <td>The name of the tracker resource. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the device's position was determined. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -274,18 +274,18 @@ Retrieves the tracker resource details.
 
 ```sql
 SELECT
-CreateTime,
-Description,
-EventBridgeEnabled,
-KmsKeyEnableGeospatialQueries,
-KmsKeyId,
-PositionFiltering,
-PricingPlan,
-PricingPlanDataSource,
-Tags,
-TrackerArn,
-TrackerName,
-UpdateTime
+create_time,
+description,
+event_bridge_enabled,
+kms_key_enable_geospatial_queries,
+kms_key_id,
+position_filtering,
+pricing_plan,
+pricing_plan_data_source,
+tags,
+tracker_arn,
+tracker_name,
+update_time
 FROM aws.location.trackers
 WHERE tracker_name = '{{ tracker_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -298,12 +298,12 @@ Lists tracker resources in your Amazon Web Services account.
 
 ```sql
 SELECT
-CreateTime,
-Description,
-PricingPlan,
-PricingPlanDataSource,
-TrackerName,
-UpdateTime
+create_time,
+description,
+pricing_plan,
+pricing_plan_data_source,
+tracker_name,
+update_time
 FROM aws.location.trackers
 WHERE region = '{{ region }}' -- required
 ;
@@ -350,9 +350,9 @@ SELECT
 {{ KmsKeyEnableGeospatialQueries }},
 '{{ region }}'
 RETURNING
-CreateTime,
-TrackerArn,
-TrackerName
+create_time,
+tracker_arn,
+tracker_name
 ;
 ```
 </TabItem>
@@ -415,9 +415,9 @@ WHERE
 tracker_name = '{{ tracker_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-TrackerArn,
-TrackerName,
-UpdateTime;
+tracker_arn,
+tracker_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

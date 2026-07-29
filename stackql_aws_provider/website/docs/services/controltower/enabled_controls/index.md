@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the enabled control. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlIdentifier" /></td>
+    <td><CopyableCode code="control_identifier" /></td>
     <td><code>string</code></td>
     <td>The control identifier of the enabled control. For information on how to find the controlIdentifier, see the overview page. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="driftStatusSummary" /></td>
+    <td><CopyableCode code="drift_status_summary" /></td>
     <td><code>object</code></td>
     <td>The drift status of the enabled control.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>Array of EnabledControlParameter objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentIdentifier" /></td>
+    <td><CopyableCode code="parent_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the parent enabled control from which this control inherits its configuration, if applicable. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummary" /></td>
+    <td><CopyableCode code="status_summary" /></td>
     <td><code>object</code></td>
     <td>The deployment summary of an EnabledControl or EnabledBaseline resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetIdentifier" /></td>
+    <td><CopyableCode code="target_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the organizational unit. For information on how to find the targetIdentifier, see the overview page. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetRegions" /></td>
+    <td><CopyableCode code="target_regions" /></td>
     <td><code>array</code></td>
     <td>Target Amazon Web Services Regions for the enabled control.</td>
 </tr>
@@ -110,27 +110,27 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the enabled control. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlIdentifier" /></td>
+    <td><CopyableCode code="control_identifier" /></td>
     <td><code>string</code></td>
     <td>The controlIdentifier of the enabled control. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="driftStatusSummary" /></td>
+    <td><CopyableCode code="drift_status_summary" /></td>
     <td><code>object</code></td>
     <td>The drift status of the enabled control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentIdentifier" /></td>
+    <td><CopyableCode code="parent_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the parent enabled control from which this control inherits its configuration, if applicable. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummary" /></td>
+    <td><CopyableCode code="status_summary" /></td>
     <td><code>object</code></td>
     <td>The deployment summary of an EnabledControl or EnabledBaseline resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetIdentifier" /></td>
+    <td><CopyableCode code="target_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the organizational unit. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -222,13 +222,13 @@ Retrieves details about an enabled control. For usage examples, see the Controls
 ```sql
 SELECT
 arn,
-controlIdentifier,
-driftStatusSummary,
+control_identifier,
+drift_status_summary,
 parameters,
-parentIdentifier,
-statusSummary,
-targetIdentifier,
-targetRegions
+parent_identifier,
+status_summary,
+target_identifier,
+target_regions
 FROM aws.controltower.enabled_controls
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,11 +241,11 @@ Lists the controls enabled by Amazon Web Services Control Tower on the specified
 ```sql
 SELECT
 arn,
-controlIdentifier,
-driftStatusSummary,
-parentIdentifier,
-statusSummary,
-targetIdentifier
+control_identifier,
+drift_status_summary,
+parent_identifier,
+status_summary,
+target_identifier
 FROM aws.controltower.enabled_controls
 WHERE region = '{{ region }}' -- required
 ;
@@ -276,7 +276,7 @@ region = '{{ region }}' --required
 AND parameters = '{{ parameters }}' --required
 AND enabledControlIdentifier = '{{ enabledControlIdentifier }}' --required
 RETURNING
-operationIdentifier;
+operation_identifier;
 ```
 </TabItem>
 </Tabs>

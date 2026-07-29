@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>Specifies a metrics configuration filter. The metrics configuration will only include objects that meet the filter's criteria. A filter must be a prefix, an object tag, an access point ARN, or a conjunction (MetricsAndOperator). Metrics configurations for directory buckets do not support tag filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID used to identify the metrics configuration. The ID has a 64 character limit and can only contain letters, numbers, periods, dashes, and underscores.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>Specifies a metrics configuration filter. The metrics configuration will only include objects that meet the filter's criteria. A filter must be a prefix, an object tag, an access point ARN, or a conjunction (MetricsAndOperator). Metrics configurations for directory buckets do not support tag filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID used to identify the metrics configuration. The ID has a 64 character limit and can only contain letters, numbers, periods, dashes, and underscores.</td>
 </tr>
@@ -191,8 +191,8 @@ Gets a metrics configuration (specified by the metrics configuration ID) from th
 
 ```sql
 SELECT
-Filter,
-Id
+filter,
+id
 FROM aws.s3.bucket_metrics_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND id = '{{ id }}' -- required
@@ -207,8 +207,8 @@ Lists the metrics configurations for the bucket. The metrics configurations are 
 
 ```sql
 SELECT
-Filter,
-Id
+filter,
+id
 FROM aws.s3.bucket_metrics_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

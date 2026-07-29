@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrentDefaultVersion" /></td>
+    <td><CopyableCode code="current_default_version" /></td>
     <td><code>string</code></td>
     <td>The name of the version that's currently set as the default. (pattern: &lt;code&gt;^&#91;\w#:\.\-/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Versions" /></td>
+    <td><CopyableCode code="versions" /></td>
     <td><code>array</code></td>
     <td>The versions that are currently available for the specified managed rule group. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a list of the available versions for the specified managed rule group.
 
 ```sql
 SELECT
-CurrentDefaultVersion,
-NextMarker,
-Versions
+current_default_version,
+next_marker,
+versions
 FROM aws.wafv2.available_managed_rule_group_versions
 WHERE region = '{{ region }}' -- required
 ;

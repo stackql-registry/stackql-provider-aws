@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Generates (or retrieves) IdentityID. Supplying multiple logins will create an im
 
 ```sql
 SELECT
-IdentityId
+identity_id
 FROM aws.cognito_identity.ids
 WHERE region = '{{ region }}' -- required
 ;

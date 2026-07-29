@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DataIntegration. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN for the DataIntegration. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileConfiguration" /></td>
+    <td><CopyableCode code="file_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for what files should be pulled from the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKey" /></td>
+    <td><CopyableCode code="kms_key" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN for the DataIntegration. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the DataIntegration. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectConfiguration" /></td>
+    <td><CopyableCode code="object_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for what data should be pulled from the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleConfiguration" /></td>
+    <td><CopyableCode code="schedule_configuration" /></td>
     <td><code>object</code></td>
     <td>The name of the data and how often it should be pulled from the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceURI" /></td>
+    <td><CopyableCode code="source_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the data source. (pattern: &lt;code&gt;^(\w+\:\/\/&#91;\w.-&#93;+&#91;\w/!@#+=.-&#93;+$)|(\w+\:\/\/&#91;\w.-&#93;+&#91;\w/!@#+=.-&#93;+&#91;\w/!@#+=.-&#93;+&#91;\w/!@#+=.,-&#93;+$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the DataIntegration. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the DataIntegration. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceURI" /></td>
+    <td><CopyableCode code="source_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the data source. (pattern: &lt;code&gt;^(\w+\:\/\/&#91;\w.-&#93;+&#91;\w/!@#+=.-&#93;+$)|(\w+\:\/\/&#91;\w.-&#93;+&#91;\w/!@#+=.-&#93;+&#91;\w/!@#+=.-&#93;+&#91;\w/!@#+=.,-&#93;+$)&lt;/code&gt;)</td>
 </tr>
@@ -238,16 +238,16 @@ Returns information about the DataIntegration. You cannot create a DataIntegrati
 
 ```sql
 SELECT
-Arn,
-Description,
-FileConfiguration,
-Id,
-KmsKey,
-Name,
-ObjectConfiguration,
-ScheduleConfiguration,
-SourceURI,
-Tags
+arn,
+description,
+file_configuration,
+id,
+kms_key,
+name,
+object_configuration,
+schedule_configuration,
+source_uri,
+tags
 FROM aws.appintegrations.data_integrations
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -260,9 +260,9 @@ Returns a paginated list of DataIntegrations in the account. You cannot create a
 
 ```sql
 SELECT
-Arn,
-Name,
-SourceURI
+arn,
+name,
+source_uri
 FROM aws.appintegrations.data_integrations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -311,17 +311,17 @@ SELECT
 '{{ ObjectConfiguration }}',
 '{{ region }}'
 RETURNING
-Arn,
-ClientToken,
-Description,
-FileConfiguration,
-Id,
-KmsKey,
-Name,
-ObjectConfiguration,
-ScheduleConfiguration,
-SourceURI,
-Tags
+arn,
+client_token,
+description,
+file_configuration,
+id,
+kms_key,
+name,
+object_configuration,
+schedule_configuration,
+source_uri,
+tags
 ;
 ```
 </TabItem>

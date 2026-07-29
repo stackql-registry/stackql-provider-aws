@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsPublic" /></td>
+    <td><CopyableCode code="is_public" /></td>
     <td><code>boolean</code></td>
     <td></td>
 </tr>
@@ -129,7 +129,7 @@ This operation is not supported by directory buckets. Returns the status of the 
 
 ```sql
 SELECT
-IsPublic
+is_public
 FROM aws.s3control.access_point_policy_status_for_object_lambdas
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

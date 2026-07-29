@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>string</code></td>
     <td>You can include one or more API operations as permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Prefixes" /></td>
+    <td><CopyableCode code="prefixes" /></td>
     <td><code>string</code></td>
     <td>You can specify any amount of prefixes, but the total length of characters of all prefixes must be less than 256 bytes in size.</td>
 </tr>
@@ -148,8 +148,8 @@ Returns the access point scope for a directory bucket. To use this operation, yo
 
 ```sql
 SELECT
-Permissions,
-Prefixes
+permissions,
+prefixes
 FROM aws.s3control.access_point_scopes
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

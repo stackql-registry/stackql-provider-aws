@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="metricData" /></td>
+    <td><CopyableCode code="metric_data" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the metric data returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric returned. (ClientTLSNegotiationErrorCount, HealthyHostCount, UnhealthyHostCount, HTTPCode_LB_4XX_Count, HTTPCode_LB_5XX_Count, HTTPCode_Instance_2XX_Count, HTTPCode_Instance_3XX_Count, HTTPCode_Instance_4XX_Count, HTTPCode_Instance_5XX_Count, InstanceResponseTime, RejectedConnectionCount, RequestCount)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns information about health metrics for your Lightsail load balancer. Metri
 
 ```sql
 SELECT
-metricData,
-metricName
+metric_data,
+metric_name
 FROM aws.lightsail.load_balancer_metric_datas
 WHERE region = '{{ region }}' -- required
 ;

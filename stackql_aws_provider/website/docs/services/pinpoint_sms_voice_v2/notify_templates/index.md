@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>The channels for the template. Supported values are SMS and VOICE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The content of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the notify template was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code for the template. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;A-Z&#93;&#123;2&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the template. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedCountries" /></td>
+    <td><CopyableCode code="supported_countries" /></td>
     <td><code>array</code></td>
     <td>An array of supported country codes for the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedVoiceIds" /></td>
+    <td><CopyableCode code="supported_voice_ids" /></td>
     <td><code>array</code></td>
     <td>An array of supported voice IDs for voice templates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>Template identifier for notify templates. In UpdateNotifyConfiguration, pass UNSET_DEFAULT_TEMPLATE to clear the default template. The UNSET_DEFAULT_TEMPLATE value is only accepted by UpdateNotifyConfiguration. (pattern: &lt;code&gt;(&#91;A-Za-z0-9_-&#93;*|UNSET_DEFAULT_TEMPLATE)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The type of the template. (OTP_VERIFICATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TierAccess" /></td>
+    <td><CopyableCode code="tier_access" /></td>
     <td><code>array</code></td>
     <td>The tier access level for the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Variables" /></td>
+    <td><CopyableCode code="variables" /></td>
     <td><code>object</code></td>
     <td>An array of template variable metadata for the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version of the template.</td>
 </tr>
@@ -174,18 +174,18 @@ Describes the specified notify templates or all notify templates in your account
 
 ```sql
 SELECT
-Channels,
-Content,
-CreatedTimestamp,
-LanguageCode,
-Status,
-SupportedCountries,
-SupportedVoiceIds,
-TemplateId,
-TemplateType,
-TierAccess,
-Variables,
-Version
+channels,
+content,
+created_timestamp,
+language_code,
+status,
+supported_countries,
+supported_voice_ids,
+template_id,
+template_type,
+tier_access,
+variables,
+version
 FROM aws.pinpoint_sms_voice_v2.notify_templates
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time this resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string</code></td>
     <td>The date and time this template expires. Templates expire 1 hour after creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SemanticVersion" /></td>
+    <td><CopyableCode code="semantic_version" /></td>
     <td><code>string</code></td>
     <td>The semantic version of the application: https:​//semver.org/</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the template creation workflow. Possible values: PREPARING | ACTIVE | EXPIRED (PREPARING, ACTIVE, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The UUID returned by CreateCloudFormationTemplate. Pattern: &#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateUrl" /></td>
+    <td><CopyableCode code="template_url" /></td>
     <td><code>string</code></td>
     <td>A link to the template that can be used to deploy the application using AWS CloudFormation.</td>
 </tr>
@@ -166,13 +166,13 @@ Gets the specified AWS CloudFormation template.
 
 ```sql
 SELECT
-ApplicationId,
-CreationTime,
-ExpirationTime,
-SemanticVersion,
-Status,
-TemplateId,
-TemplateUrl
+application_id,
+creation_time,
+expiration_time,
+semantic_version,
+status,
+template_id,
+template_url
 FROM aws.serverlessrepo.cloud_formation_templates
 WHERE application_id = '{{ application_id }}' -- required
 AND template_id = '{{ template_id }}' -- required
@@ -207,13 +207,13 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-CreationTime,
-ExpirationTime,
-SemanticVersion,
-Status,
-TemplateId,
-TemplateUrl
+application_id,
+creation_time,
+expiration_time,
+semantic_version,
+status,
+template_id,
+template_url
 ;
 ```
 </TabItem>

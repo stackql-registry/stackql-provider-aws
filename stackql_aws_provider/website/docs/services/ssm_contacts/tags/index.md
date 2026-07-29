@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags related to the contact or escalation plan.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the tags of a contact, escalation plan, rotation, or on-call schedule.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.ssm_contacts.tags
 WHERE region = '{{ region }}' -- required
 ;

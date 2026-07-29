@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The CIS scan result details' account ID. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checkDescription" /></td>
+    <td><CopyableCode code="check_description" /></td>
     <td><code>string</code></td>
     <td>The account ID that's associated with the CIS scan result details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checkId" /></td>
+    <td><CopyableCode code="check_id" /></td>
     <td><code>string</code></td>
     <td>The CIS scan result details' check ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingArn" /></td>
+    <td><CopyableCode code="finding_arn" /></td>
     <td><code>string</code></td>
     <td>The CIS scan result details' finding ARN. (pattern: &lt;code&gt;arn:aws(-gov|-cn)?:inspector2:&#91;-.a-z0-9&#93;&#123;0,20&#125;:\d&#123;12&#125;:owner/\d&#123;12&#125;/cis-finding/&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>The CIS scan result details' remediation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanArn" /></td>
+    <td><CopyableCode code="scan_arn" /></td>
     <td><code>string</code></td>
     <td>The CIS scan result details' scan ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-cn)?:inspector2:&#91;-.a-z0-9&#93;&#123;0,20&#125;:\d&#123;12&#125;:owner/(\d&#123;12&#125;|o-&#91;a-z0-9&#93;&#123;10,32&#125;)/cis-scan/&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>The CIS scan result details' status. (PASSED, FAILED, SKIPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The CIS scan result details' status reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResourceId" /></td>
+    <td><CopyableCode code="target_resource_id" /></td>
     <td><code>string</code></td>
     <td>The CIS scan result details' target resource ID. (pattern: &lt;code&gt;.*(^arn:.*:ecr:.*:\d&#123;12&#125;:repository\/(?:&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*\/)*&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*(\/sha256:&#91;a-z0-9&#93;&#123;64&#125;)?$)|(^i-(&#91;a-z0-9&#93;&#123;8&#125;|&#91;a-z0-9&#93;&#123;17&#125;|\\*)$|(^arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?$)|(^arn:(aws&#91;a-zA-Z-&#93;*)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:codesecurity-integration\/&#91;a-f0-9-&#93;&#123;36&#125;\/project-&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$)).*&lt;/code&gt;)</td>
 </tr>
@@ -174,17 +174,17 @@ Retrieves CIS scan result details.
 
 ```sql
 SELECT
-accountId,
-checkDescription,
-checkId,
-findingArn,
+account_id,
+check_description,
+check_id,
+finding_arn,
 level,
 platform,
 remediation,
-scanArn,
+scan_arn,
 status,
-statusReason,
-targetResourceId,
+status_reason,
+target_resource_id,
 title_
 FROM aws.inspector2.cis_scan_result_details
 WHERE region = '{{ region }}' -- required

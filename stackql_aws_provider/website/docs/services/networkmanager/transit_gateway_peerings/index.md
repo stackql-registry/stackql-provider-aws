@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Peering" /></td>
+    <td><CopyableCode code="peering" /></td>
     <td><code>object</code></td>
     <td>Describes a transit gateway peer connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayArn" /></td>
+    <td><CopyableCode code="transit_gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the transit gateway. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayPeeringAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_peering_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway peering attachment. (pattern: &lt;code&gt;^tgw-attach-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -141,9 +141,9 @@ Returns information about a transit gateway peer.
 
 ```sql
 SELECT
-Peering,
-TransitGatewayArn,
-TransitGatewayPeeringAttachmentId
+peering,
+transit_gateway_arn,
+transit_gateway_peering_attachment_id
 FROM aws.networkmanager.transit_gateway_peerings
 WHERE peering_id = '{{ peering_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -181,7 +181,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-TransitGatewayPeering
+transit_gateway_peering
 ;
 ```
 </TabItem>

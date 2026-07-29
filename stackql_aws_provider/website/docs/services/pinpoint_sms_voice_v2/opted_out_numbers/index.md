@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndUserOptedOut" /></td>
+    <td><CopyableCode code="end_user_opted_out" /></td>
     <td><code>boolean</code></td>
     <td>This is set to true if it was the end recipient that opted out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptedOutNumber" /></td>
+    <td><CopyableCode code="opted_out_number" /></td>
     <td><code>string</code></td>
     <td>The phone number that is opted out. (pattern: &lt;code&gt;\+?&#91;1-9&#93;&#91;0-9&#93;&#123;1,18&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptedOutTimestamp" /></td>
+    <td><CopyableCode code="opted_out_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the op tout occurred, in UNIX epoch time format.</td>
 </tr>
@@ -143,9 +143,9 @@ Describes the specified opted out destination numbers or all opted out destinati
 
 ```sql
 SELECT
-EndUserOptedOut,
-OptedOutNumber,
-OptedOutTimestamp
+end_user_opted_out,
+opted_out_number,
+opted_out_timestamp
 FROM aws.pinpoint_sms_voice_v2.opted_out_numbers
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,11 +176,11 @@ region = '{{ region }}' --required
 AND OptOutListName = '{{ OptOutListName }}' --required
 AND OptedOutNumber = '{{ OptedOutNumber }}' --required
 RETURNING
-EndUserOptedOut,
-OptOutListArn,
-OptOutListName,
-OptedOutNumber,
-OptedOutTimestamp;
+end_user_opted_out,
+opt_out_list_arn,
+opt_out_list_name,
+opted_out_number,
+opted_out_timestamp;
 ```
 </TabItem>
 </Tabs>

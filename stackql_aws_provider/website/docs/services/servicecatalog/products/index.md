@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Budgets" /></td>
+    <td><CopyableCode code="budgets" /></td>
     <td><code>array</code></td>
     <td>Information about the associated budgets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchPaths" /></td>
+    <td><CopyableCode code="launch_paths" /></td>
     <td><code>array</code></td>
     <td>Information about the associated launch paths.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductViewSummary" /></td>
+    <td><CopyableCode code="product_view_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information about the product view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifacts" /></td>
+    <td><CopyableCode code="provisioning_artifacts" /></td>
     <td><code>array</code></td>
     <td>Information about the provisioning artifacts for the specified product.</td>
 </tr>
@@ -169,10 +169,10 @@ Gets information about the specified product. Running this operation with admini
 
 ```sql
 SELECT
-Budgets,
-LaunchPaths,
-ProductViewSummary,
-ProvisioningArtifacts
+budgets,
+launch_paths,
+product_view_summary,
+provisioning_artifacts
 FROM aws.servicecatalog.products
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,9 +227,9 @@ SELECT
 '{{ SourceConnection }}',
 '{{ region }}'
 RETURNING
-ProductViewDetail,
-ProvisioningArtifactDetail,
-Tags
+product_view_detail,
+provisioning_artifact_detail,
+tags
 ;
 ```
 </TabItem>
@@ -348,7 +348,7 @@ region = '{{ region }}' --required
 AND ProvisionedProductName = '{{ ProvisionedProductName }}' --required
 AND ProvisionToken = '{{ ProvisionToken }}' --required
 RETURNING
-RecordDetail;
+record_detail;
 ```
 </TabItem>
 <TabItem value="update_product">
@@ -374,8 +374,8 @@ WHERE
 region = '{{ region }}' --required
 AND Id = '{{ Id }}' --required
 RETURNING
-ProductViewDetail,
-Tags;
+product_view_detail,
+tags;
 ```
 </TabItem>
 </Tabs>

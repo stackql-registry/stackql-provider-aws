@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomerAWSAccountId" /></td>
+    <td><CopyableCode code="customer_aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The CustomerAWSAccountId parameter specifies the AWS account ID of the buyer. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerIdentifier" /></td>
+    <td><CopyableCode code="customer_identifier" /></td>
     <td><code>string</code></td>
     <td>The customer identifier is a handle to each unique customer in an application. Customer identifiers are obtained through the ResolveCustomer operation in AWS Marketplace Metering Service. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Dimension" /></td>
+    <td><CopyableCode code="dimension" /></td>
     <td><code>string</code></td>
     <td>The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseArn" /></td>
+    <td><CopyableCode code="license_arn" /></td>
     <td><code>string</code></td>
     <td>The LicenseArn is a unique identifier for a specific granted license. These are used for software purchased through AWS Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCode" /></td>
+    <td><CopyableCode code="product_code" /></td>
     <td><code>string</code></td>
     <td>The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>object</code></td>
     <td>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</td>
 </tr>
@@ -149,13 +149,13 @@ GetEntitlements retrieves entitlement values for a given product. The results ca
 
 ```sql
 SELECT
-CustomerAWSAccountId,
-CustomerIdentifier,
-Dimension,
-ExpirationDate,
-LicenseArn,
-ProductCode,
-Value
+customer_aws_account_id,
+customer_identifier,
+dimension,
+expiration_date,
+license_arn,
+product_code,
+value
 FROM aws.marketplace_entitlement.entitlements
 WHERE region = '{{ region }}' -- required
 ;

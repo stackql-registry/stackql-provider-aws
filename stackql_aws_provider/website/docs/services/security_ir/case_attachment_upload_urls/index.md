@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="attachmentPresignedUrl" /></td>
+    <td><CopyableCode code="attachment_presigned_url" /></td>
     <td><code>string</code></td>
     <td>Response element providing the Amazon S3 presigned URL to upload the attachment. (pattern: &lt;code&gt;https?:​//(?:www.)?&#91;a-zA-Z0-9@:._+~#=-&#93;&#123;2,256&#125;\.&#91;a-z&#93;&#123;2,6&#125;\b(?:&#91;-a-zA-Z0-9@:%_+.~#?&/=&#93;&#123;0,2048&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -124,7 +124,7 @@ Uploads an attachment to a case.
 
 ```sql
 SELECT
-attachmentPresignedUrl
+attachment_presigned_url
 FROM aws.security_ir.case_attachment_upload_urls
 WHERE case_id = '{{ case_id }}' -- required
 AND region = '{{ region }}' -- required

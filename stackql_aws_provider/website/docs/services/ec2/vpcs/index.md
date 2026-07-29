@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockPublicAccessStates" /></td>
+    <td><CopyableCode code="block_public_access_states" /></td>
     <td><code>string</code></td>
     <td>The state of VPC Block Public Access (BPA).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrBlock" /></td>
+    <td><CopyableCode code="cidr_block" /></td>
     <td><code>string</code></td>
     <td>The primary IPv4 CIDR block for the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrBlockAssociationSet" /></td>
+    <td><CopyableCode code="cidr_block_association_set" /></td>
     <td><code>string</code></td>
     <td>Information about the IPv4 CIDR blocks associated with the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DhcpOptionsId" /></td>
+    <td><CopyableCode code="dhcp_options_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the set of DHCP options you've associated with the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionControl" /></td>
+    <td><CopyableCode code="encryption_control" /></td>
     <td><code>string</code></td>
     <td>Describes the configuration and state of VPC encryption controls. For more information, see Enforce VPC encryption in transit in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceTenancy" /></td>
+    <td><CopyableCode code="instance_tenancy" /></td>
     <td><code>string</code></td>
     <td>The allowed tenancy of instances launched into the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6CidrBlockAssociationSet" /></td>
+    <td><CopyableCode code="ipv_6_cidr_block_association_set" /></td>
     <td><code>string</code></td>
     <td>Information about the IPv6 CIDR blocks associated with the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the VPC is the default VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -392,18 +392,18 @@ Describes your VPCs. The default is to describe all your VPCs. Alternatively, yo
 
 ```sql
 SELECT
-BlockPublicAccessStates,
-CidrBlock,
-CidrBlockAssociationSet,
-DhcpOptionsId,
-EncryptionControl,
-InstanceTenancy,
-Ipv6CidrBlockAssociationSet,
-IsDefault,
-OwnerId,
-State,
-Tags,
-VpcId
+block_public_access_states,
+cidr_block,
+cidr_block_association_set,
+dhcp_options_id,
+encryption_control,
+instance_tenancy,
+ipv_6_cidr_block_association_set,
+is_default,
+owner_id,
+state,
+tags,
+vpc_id
 FROM aws.ec2.vpcs
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'
@@ -463,18 +463,18 @@ SELECT
 '{{ InstanceTenancy }}',
 '{{ AmazonProvidedIpv6CidrBlock }}'
 RETURNING
-BlockPublicAccessStates,
-CidrBlock,
-CidrBlockAssociationSet,
-DhcpOptionsId,
-EncryptionControl,
-InstanceTenancy,
-Ipv6CidrBlockAssociationSet,
-IsDefault,
-OwnerId,
-State,
-Tags,
-VpcId
+block_public_access_states,
+cidr_block,
+cidr_block_association_set,
+dhcp_options_id,
+encryption_control,
+instance_tenancy,
+ipv_6_cidr_block_association_set,
+is_default,
+owner_id,
+state,
+tags,
+vpc_id
 ;
 ```
 </TabItem>
@@ -571,7 +571,7 @@ AND SecurityGroupId = '{{ SecurityGroupId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 <TabItem value="associate_security_group_vpc">
@@ -588,7 +588,7 @@ AND VpcId = '{{ VpcId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-State;
+state;
 ```
 </TabItem>
 <TabItem value="modify_vpc_tenancy">
@@ -605,7 +605,7 @@ AND InstanceTenancy = '{{ InstanceTenancy }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-ReturnValue;
+return_value;
 ```
 </TabItem>
 <TabItem value="associate_vpc_cidr_block">
@@ -629,9 +629,9 @@ AND Ipv6IpamPoolId = '{{ Ipv6IpamPoolId}}'
 AND Ipv6NetmaskLength = '{{ Ipv6NetmaskLength}}'
 AND AmazonProvidedIpv6CidrBlock = {{ AmazonProvidedIpv6CidrBlock}}
 RETURNING
-CidrBlockAssociation,
-Ipv6CidrBlockAssociation,
-VpcId;
+cidr_block_association,
+ipv_6_cidr_block_association,
+vpc_id;
 ```
 </TabItem>
 <TabItem value="disassociate_vpc_cidr_block">
@@ -646,9 +646,9 @@ WHERE
 AssociationId = '{{ AssociationId }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CidrBlockAssociation,
-Ipv6CidrBlockAssociation,
-VpcId;
+cidr_block_association,
+ipv_6_cidr_block_association,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

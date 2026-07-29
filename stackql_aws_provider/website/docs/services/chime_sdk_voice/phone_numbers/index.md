@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Associations" /></td>
+    <td><CopyableCode code="associations" /></td>
     <td><code>array</code></td>
     <td>The phone number's associations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CallingName" /></td>
+    <td><CopyableCode code="calling_name" /></td>
     <td><code>string</code></td>
     <td>The outbound calling name associated with the phone number. (pattern: &lt;code&gt;^$|^&#91;a-zA-Z0-9 &#93;&#123;2,15&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CallingNameStatus" /></td>
+    <td><CopyableCode code="calling_name_status" /></td>
     <td><code>string</code></td>
     <td>The outbound calling name status. (Unassigned, UpdateInProgress, UpdateSucceeded, UpdateFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>object</code></td>
     <td>The phone number's capabilities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Country" /></td>
+    <td><CopyableCode code="country" /></td>
     <td><code>string</code></td>
     <td>The phone number's country. Format: ISO 3166-1 alpha-2. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The phone number creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionTimestamp" /></td>
+    <td><CopyableCode code="deletion_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The deleted phone number timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="E164PhoneNumber" /></td>
+    <td><CopyableCode code="e164_phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number, in E.164 format. (pattern: &lt;code&gt;^\+?&#91;1-9&#93;\d&#123;1,14&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the phone number. (pattern: &lt;code&gt;^$|^&#91;a-zA-Z0-9\,\.\_\-&#93;+(\s+&#91;a-zA-Z0-9\,\.\_\-&#93;+)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderId" /></td>
+    <td><CopyableCode code="order_id" /></td>
     <td><code>string</code></td>
     <td>The phone number's order ID. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberId" /></td>
+    <td><CopyableCode code="phone_number_id" /></td>
     <td><code>string</code></td>
     <td>The phone number's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductType" /></td>
+    <td><CopyableCode code="product_type" /></td>
     <td><code>string</code></td>
     <td>The phone number's product type. (VoiceConnector, SipMediaApplicationDialIn)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The phone number's status. (Cancelled, PortinCancelRequested, PortinInProgress, AcquireInProgress, AcquireFailed, Unassigned, Assigned, ReleaseInProgress, DeleteInProgress, ReleaseFailed, DeleteFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The phone number's type. (Local, TollFree)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The updated phone number timestamp, in ISO 8601 format.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to return the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumbers" /></td>
+    <td><CopyableCode code="phone_numbers" /></td>
     <td><code>array</code></td>
     <td>The phone number details.</td>
 </tr>
@@ -285,21 +285,21 @@ Retrieves details for the specified phone number ID, such as associations, capab
 
 ```sql
 SELECT
-Associations,
-CallingName,
-CallingNameStatus,
-Capabilities,
-Country,
-CreatedTimestamp,
-DeletionTimestamp,
-E164PhoneNumber,
-Name,
-OrderId,
-PhoneNumberId,
-ProductType,
-Status,
-Type,
-UpdatedTimestamp
+associations,
+calling_name,
+calling_name_status,
+capabilities,
+country,
+created_timestamp,
+deletion_timestamp,
+e164_phone_number,
+name,
+order_id,
+phone_number_id,
+product_type,
+status,
+type,
+updated_timestamp
 FROM aws.chime_sdk_voice.phone_numbers
 WHERE phone_number_id = '{{ phone_number_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -312,8 +312,8 @@ Lists the phone numbers for the specified Amazon Chime SDK account, Amazon Chime
 
 ```sql
 SELECT
-NextToken,
-PhoneNumbers
+next_token,
+phone_numbers
 FROM aws.chime_sdk_voice.phone_numbers
 WHERE region = '{{ region }}' -- required
 AND status = '{{ status }}'
@@ -350,7 +350,7 @@ WHERE
 phone_number_id = '{{ phone_number_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-PhoneNumber;
+phone_number;
 ```
 </TabItem>
 </Tabs>

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionConfigurations" /></td>
+    <td><CopyableCode code="action_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of action configurations specifying the allowed actions and any associated filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Amazon Q Business application associated with this data accessor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authenticationDetail" /></td>
+    <td><CopyableCode code="authentication_detail" /></td>
     <td><code>object</code></td>
     <td>Contains the authentication configuration details for a data accessor. This structure defines how the ISV authenticates when accessing data through the data accessor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data accessor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataAccessorArn" /></td>
+    <td><CopyableCode code="data_accessor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data accessor. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataAccessorId" /></td>
+    <td><CopyableCode code="data_accessor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data accessor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the data accessor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idcApplicationArn" /></td>
+    <td><CopyableCode code="idc_application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM Identity Center application associated with this data accessor. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:sso::\d&#123;12&#125;:application/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/apl-&#91;a-zA-Z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the IAM role for the ISV associated with this data accessor. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:iam::&#91;0-9&#93;&#123;12&#125;:role/&#91;a-zA-Z0-9_/+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data accessor was last updated.</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authenticationDetail" /></td>
+    <td><CopyableCode code="authentication_detail" /></td>
     <td><code>object</code></td>
     <td>Contains the authentication configuration details for a data accessor. This structure defines how the ISV authenticates when accessing data through the data accessor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data accessor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataAccessorArn" /></td>
+    <td><CopyableCode code="data_accessor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data accessor. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataAccessorId" /></td>
+    <td><CopyableCode code="data_accessor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data accessor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the data accessor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idcApplicationArn" /></td>
+    <td><CopyableCode code="idc_application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the associated IAM Identity Center application. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:sso::\d&#123;12&#125;:application/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/apl-&#91;a-zA-Z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the IAM role for the ISV associated with this data accessor. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:iam::&#91;0-9&#93;&#123;12&#125;:role/&#91;a-zA-Z0-9_/+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data accessor was last updated.</td>
 </tr>
@@ -268,16 +268,16 @@ Retrieves information about a specified data accessor. This operation returns de
 
 ```sql
 SELECT
-actionConfigurations,
-applicationId,
-authenticationDetail,
-createdAt,
-dataAccessorArn,
-dataAccessorId,
-displayName,
-idcApplicationArn,
+action_configurations,
+application_id,
+authentication_detail,
+created_at,
+data_accessor_arn,
+data_accessor_id,
+display_name,
+idc_application_arn,
 principal,
-updatedAt
+updated_at
 FROM aws.qbusiness.data_accessors
 WHERE application_id = '{{ application_id }}' -- required
 AND data_accessor_id = '{{ data_accessor_id }}' -- required
@@ -291,14 +291,14 @@ Lists the data accessors for a Amazon Q Business application. This operation ret
 
 ```sql
 SELECT
-authenticationDetail,
-createdAt,
-dataAccessorArn,
-dataAccessorId,
-displayName,
-idcApplicationArn,
+authentication_detail,
+created_at,
+data_accessor_arn,
+data_accessor_id,
+display_name,
+idc_application_arn,
 principal,
-updatedAt
+updated_at
 FROM aws.qbusiness.data_accessors
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -344,9 +344,9 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-dataAccessorArn,
-dataAccessorId,
-idcApplicationArn
+data_accessor_arn,
+data_accessor_id,
+idc_application_arn
 ;
 ```
 </TabItem>

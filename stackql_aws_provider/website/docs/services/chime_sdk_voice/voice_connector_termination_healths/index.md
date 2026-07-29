@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The source IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, in ISO 8601 format.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves information about the last time a SIP OPTIONS ping was received from y
 
 ```sql
 SELECT
-Source,
-Timestamp
+source,
+timestamp
 FROM aws.chime_sdk_voice.voice_connector_termination_healths
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required

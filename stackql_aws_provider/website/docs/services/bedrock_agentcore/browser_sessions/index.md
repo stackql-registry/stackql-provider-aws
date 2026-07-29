@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the browser session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserIdentifier" /></td>
+    <td><CopyableCode code="browser_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the browser.</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The list of certificates installed in the browser session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the browser session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enterprisePolicies" /></td>
+    <td><CopyableCode code="enterprise_policies" /></td>
     <td><code>array</code></td>
     <td>A list of files containing enterprise policies for the browser session.</td>
 </tr>
@@ -81,32 +81,32 @@ The following fields are returned by `SELECT` queries:
     <td>The list of browser extensions that are configured in the browser session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the browser session was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileConfiguration" /></td>
+    <td><CopyableCode code="profile_configuration" /></td>
     <td><code>object</code></td>
     <td>The browser profile configuration associated with this session. Contains the profile identifier that links to persistent browser data such as cookies and local storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="proxyConfiguration" /></td>
+    <td><CopyableCode code="proxy_configuration" /></td>
     <td><code>object</code></td>
     <td>The active proxy configuration for this browser session. This field is only present if proxy configuration was provided when the session was started using StartBrowserSession. The configuration includes proxy servers, domain bypass rules and the proxy authentication credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the browser session. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionReplayArtifact" /></td>
+    <td><CopyableCode code="session_replay_artifact" /></td>
     <td><code>string</code></td>
     <td>The artifact containing the session replay information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionTimeoutSeconds" /></td>
+    <td><CopyableCode code="session_timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The timeout period for the browser session in seconds.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The streams associated with this browser session. These include the automation stream and live view stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="viewPort" /></td>
+    <td><CopyableCode code="view_port" /></td>
     <td><code>object</code></td>
     <td>The configuration that defines the dimensions of a browser viewport in a browser session. The viewport determines the visible area of web content and affects how web pages are rendered and displayed. Proper viewport configuration ensures that web content is displayed correctly for the agent's browsing tasks.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of browser sessions that match the specified criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use in a subsequent ListBrowserSessions request to get the next set of results. (pattern: &lt;code&gt;\S*&lt;/code&gt;)</td>
 </tr>
@@ -233,20 +233,20 @@ Retrieves detailed information about a specific browser session in Amazon Bedroc
 ```sql
 SELECT
 name,
-browserIdentifier,
+browser_identifier,
 certificates,
-createdAt,
-enterprisePolicies,
+created_at,
+enterprise_policies,
 extensions,
-lastUpdatedAt,
-profileConfiguration,
-proxyConfiguration,
-sessionId,
-sessionReplayArtifact,
-sessionTimeoutSeconds,
+last_updated_at,
+profile_configuration,
+proxy_configuration,
+session_id,
+session_replay_artifact,
+session_timeout_seconds,
 status,
 streams,
-viewPort
+view_port
 FROM aws.bedrock_agentcore.browser_sessions
 WHERE browser_identifier = '{{ browser_identifier }}' -- required
 AND sessionId = '{{ sessionId }}' -- required
@@ -261,7 +261,7 @@ Retrieves a list of browser sessions in Amazon Bedrock AgentCore that match the 
 ```sql
 SELECT
 items_,
-nextToken
+next_token
 FROM aws.bedrock_agentcore.browser_sessions
 WHERE browser_identifier = '{{ browser_identifier }}' -- required
 AND region = '{{ region }}' -- required

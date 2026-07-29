@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Application" /></td>
+    <td><CopyableCode code="application" /></td>
     <td><code>object</code></td>
     <td>Returns all of the metadata of an application registered with AWS Systems Manager for SAP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of a registered application.</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application. (pattern: &lt;code&gt;arn:(.+:)&#123;2,4&#125;.+$|^arn:(.+:)&#123;1,3&#125;.+\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscoveryStatus" /></td>
+    <td><CopyableCode code="discovery_status" /></td>
     <td><code>string</code></td>
     <td>The status of the latest discovery. (SUCCESS, REGISTRATION_FAILED, REFRESH_FAILED, REGISTERING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application. (pattern: &lt;code&gt;&#91;\w\d\.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags on the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the application. (HANA, SAP_ABAP)</td>
 </tr>
@@ -221,8 +221,8 @@ Gets an application registered with AWS Systems Manager for SAP. It also returns
 
 ```sql
 SELECT
-Application,
-Tags
+application,
+tags
 FROM aws.ssm_sap.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -234,11 +234,11 @@ Lists all the applications registered with AWS Systems Manager for SAP.
 
 ```sql
 SELECT
-Arn,
-DiscoveryStatus,
-Id,
-Tags,
-Type
+arn,
+discovery_status,
+id,
+tags,
+type
 FROM aws.ssm_sap.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -285,8 +285,8 @@ SELECT
 '{{ ComponentsInfo }}',
 '{{ region }}'
 RETURNING
-Application,
-OperationId
+application,
+operation_id
 ;
 ```
 </TabItem>
@@ -354,8 +354,8 @@ WHERE
 region = '{{ region }}' --required
 AND ApplicationId = '{{ ApplicationId }}' --required
 RETURNING
-Message,
-OperationIds;
+message,
+operation_ids;
 ```
 </TabItem>
 </Tabs>

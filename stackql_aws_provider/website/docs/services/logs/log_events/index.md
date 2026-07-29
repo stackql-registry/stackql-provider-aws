@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextBackwardToken" /></td>
+    <td><CopyableCode code="next_backward_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextForwardToken" /></td>
+    <td><CopyableCode code="next_forward_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
@@ -144,8 +144,8 @@ Lists log events from the specified log stream. You can list all of the log even
 ```sql
 SELECT
 events,
-nextBackwardToken,
-nextForwardToken
+next_backward_token,
+next_forward_token
 FROM aws.logs.log_events
 WHERE region = '{{ region }}' -- required
 ;
@@ -180,9 +180,9 @@ AND logGroupName = '{{ logGroupName }}' --required
 AND logStreamName = '{{ logStreamName }}' --required
 AND logEvents = '{{ logEvents }}' --required
 RETURNING
-nextSequenceToken,
-rejectedEntityInfo,
-rejectedLogEventsInfo;
+next_sequence_token,
+rejected_entity_info,
+rejected_log_events_info;
 ```
 </TabItem>
 </Tabs>

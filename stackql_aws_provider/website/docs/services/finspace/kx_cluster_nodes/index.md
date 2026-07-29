@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -156,7 +156,7 @@ Lists all the nodes in a kdb cluster.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 nodes
 FROM aws.finspace.kx_cluster_nodes
 WHERE environment_id = '{{ environment_id }}' -- required

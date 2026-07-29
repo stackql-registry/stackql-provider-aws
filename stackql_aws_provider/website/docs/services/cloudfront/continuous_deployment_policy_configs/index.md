@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean that indicates whether this continuous deployment policy is enabled (in effect). When this value is true, this policy is enabled and in effect. When this value is false, this policy is not enabled and has no effect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StagingDistributionDnsNames" /></td>
+    <td><CopyableCode code="staging_distribution_dns_names" /></td>
     <td><code>string</code></td>
     <td>The CloudFront domain name of the staging distribution. For example: d111111abcdef8.cloudfront.net.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficConfig" /></td>
+    <td><CopyableCode code="traffic_config" /></td>
     <td><code>string</code></td>
     <td>Contains the parameters for routing production traffic from your primary to staging distributions.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets configuration information about a continuous deployment policy.
 
 ```sql
 SELECT
-Enabled,
-StagingDistributionDnsNames,
-TrafficConfig
+enabled,
+staging_distribution_dns_names,
+traffic_config
 FROM aws.cloudfront.continuous_deployment_policy_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

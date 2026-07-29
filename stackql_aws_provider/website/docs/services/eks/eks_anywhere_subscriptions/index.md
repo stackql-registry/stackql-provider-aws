@@ -61,37 +61,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) for the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoRenew" /></td>
+    <td><CopyableCode code="auto_renew" /></td>
     <td><code>boolean</code></td>
     <td>A boolean indicating whether or not a subscription will auto renew when it expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp in seconds for when the subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveDate" /></td>
+    <td><CopyableCode code="effective_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp in seconds for when the subscription is effective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp in seconds for when the subscription will expire or auto renew, depending on the auto renew configuration of the subscription object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseArns" /></td>
+    <td><CopyableCode code="license_arns" /></td>
     <td><code>array</code></td>
     <td>Amazon Web Services License Manager ARN associated with the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseQuantity" /></td>
+    <td><CopyableCode code="license_quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of licenses included in a subscription. Valid values are between 1 and 100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseType" /></td>
+    <td><CopyableCode code="license_type" /></td>
     <td><code>string</code></td>
     <td>The type of licenses included in the subscription. Valid value is CLUSTER. With the CLUSTER license type, each license covers support for a single EKS Anywhere cluster. (Cluster)</td>
 </tr>
@@ -140,37 +140,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) for the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoRenew" /></td>
+    <td><CopyableCode code="auto_renew" /></td>
     <td><code>boolean</code></td>
     <td>A boolean indicating whether or not a subscription will auto renew when it expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp in seconds for when the subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveDate" /></td>
+    <td><CopyableCode code="effective_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp in seconds for when the subscription is effective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp in seconds for when the subscription will expire or auto renew, depending on the auto renew configuration of the subscription object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseArns" /></td>
+    <td><CopyableCode code="license_arns" /></td>
     <td><code>array</code></td>
     <td>Amazon Web Services License Manager ARN associated with the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseQuantity" /></td>
+    <td><CopyableCode code="license_quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of licenses included in a subscription. Valid values are between 1 and 100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseType" /></td>
+    <td><CopyableCode code="license_type" /></td>
     <td><code>string</code></td>
     <td>The type of licenses included in the subscription. Valid value is CLUSTER. With the CLUSTER license type, each license covers support for a single EKS Anywhere cluster. (Cluster)</td>
 </tr>
@@ -310,13 +310,13 @@ Returns descriptive information about a subscription.
 SELECT
 id,
 arn,
-autoRenew,
-createdAt,
-effectiveDate,
-expirationDate,
-licenseArns,
-licenseQuantity,
-licenseType,
+auto_renew,
+created_at,
+effective_date,
+expiration_date,
+license_arns,
+license_quantity,
+license_type,
 licenses,
 status,
 tags,
@@ -335,13 +335,13 @@ Displays the full description of the subscription.
 SELECT
 id,
 arn,
-autoRenew,
-createdAt,
-effectiveDate,
-expirationDate,
-licenseArns,
-licenseQuantity,
-licenseType,
+auto_renew,
+created_at,
+effective_date,
+expiration_date,
+license_arns,
+license_quantity,
+license_type,
 licenses,
 status,
 tags,

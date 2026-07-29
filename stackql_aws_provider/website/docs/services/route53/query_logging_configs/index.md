@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudWatchLogsLogGroupArn" /></td>
+    <td><CopyableCode code="cloud_watch_logs_log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the hosted zone that CloudWatch Logs is logging queries for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for a configuration for DNS query logging.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudWatchLogsLogGroupArn" /></td>
+    <td><CopyableCode code="cloud_watch_logs_log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the hosted zone that CloudWatch Logs is logging queries for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for a configuration for DNS query logging.</td>
 </tr>
@@ -201,9 +201,9 @@ Gets information about a specified configuration for DNS query logging. For more
 
 ```sql
 SELECT
-CloudWatchLogsLogGroupArn,
-HostedZoneId,
-Id
+cloud_watch_logs_log_group_arn,
+hosted_zone_id,
+id
 FROM aws.route53.query_logging_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -216,9 +216,9 @@ Lists the configurations for DNS query logging that are associated with the curr
 
 ```sql
 SELECT
-CloudWatchLogsLogGroupArn,
-HostedZoneId,
-Id
+cloud_watch_logs_log_group_arn,
+hosted_zone_id,
+id
 FROM aws.route53.query_logging_configs
 WHERE region = '{{ region }}' -- required
 AND hostedzoneid = '{{ hostedzoneid }}'
@@ -254,9 +254,9 @@ SELECT
 '{{ CloudWatchLogsLogGroupArn }}' /* required */,
 '{{ region }}'
 RETURNING
-CloudWatchLogsLogGroupArn,
-HostedZoneId,
-Id
+cloud_watch_logs_log_group_arn,
+hosted_zone_id,
+id
 ;
 ```
 </TabItem>

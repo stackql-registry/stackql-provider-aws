@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The value's last modified region. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The value's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryValues" /></td>
+    <td><CopyableCode code="primary_values" /></td>
     <td><code>array</code></td>
     <td>The value's primary values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecordId" /></td>
+    <td><CopyableCode code="record_id" /></td>
     <td><code>string</code></td>
     <td>The value's record ID.</td>
 </tr>
@@ -161,10 +161,10 @@ Lists all primary value combinations for a given data table. Returns the unique 
 
 ```sql
 SELECT
-LastModifiedRegion,
-LastModifiedTime,
-PrimaryValues,
-RecordId
+last_modified_region,
+last_modified_time,
+primary_values,
+record_id
 FROM aws.connect.data_table_primary_values
 WHERE instance_id = '{{ instance_id }}' -- required
 AND data_table_id = '{{ data_table_id }}' -- required
@@ -203,7 +203,7 @@ AND PrimaryValues = '{{ PrimaryValues }}' --required
 AND NewPrimaryValues = '{{ NewPrimaryValues }}' --required
 AND LockVersion = '{{ LockVersion }}' --required
 RETURNING
-LockVersion;
+lock_version;
 ```
 </TabItem>
 </Tabs>

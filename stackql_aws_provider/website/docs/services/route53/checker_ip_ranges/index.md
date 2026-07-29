@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CheckerIpRanges" /></td>
+    <td><CopyableCode code="checker_ip_ranges" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains sorted list of IP ranges in CIDR format for Amazon Route 53 health checkers.</td>
 </tr>
@@ -119,7 +119,7 @@ Route 53 does not perform authorization for this API because it retrieves inform
 
 ```sql
 SELECT
-CheckerIpRanges
+checker_ip_ranges
 FROM aws.route53.checker_ip_ranges
 WHERE region = '{{ region }}' -- required
 ;

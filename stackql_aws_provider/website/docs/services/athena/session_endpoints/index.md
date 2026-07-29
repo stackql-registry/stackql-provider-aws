@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthToken" /></td>
+    <td><CopyableCode code="auth_token" /></td>
     <td><code>string</code></td>
     <td>Authentication token for the connection</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthTokenExpirationTime" /></td>
+    <td><CopyableCode code="auth_token_expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Expiration time of the auth token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointUrl" /></td>
+    <td><CopyableCode code="endpoint_url" /></td>
     <td><code>string</code></td>
     <td>The endpoint for connecting to the session.</td>
 </tr>
@@ -129,9 +129,9 @@ Gets a connection endpoint and authentication token for a given session Id.
 
 ```sql
 SELECT
-AuthToken,
-AuthTokenExpirationTime,
-EndpointUrl
+auth_token,
+auth_token_expiration_time,
+endpoint_url
 FROM aws.athena.session_endpoints
 WHERE region = '{{ region }}' -- required
 ;

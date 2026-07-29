@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlignedEndTime" /></td>
+    <td><CopyableCode code="aligned_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time for the returned metrics, after alignment to a granular boundary (as specified by PeriodInSeconds). AlignedEndTime will be greater than or equal to the value of the user-specified Endtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlignedStartTime" /></td>
+    <td><CopyableCode code="aligned_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time for the returned metrics, after alignment to a granular boundary (as specified by PeriodInSeconds). AlignedStartTime will be less than or equal to the value of the user-specified StartTime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. In the console, the identifier is shown as ResourceID. When you call DescribeDBInstances, the identifier is returned as DbiResourceId. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricList" /></td>
+    <td><CopyableCode code="metric_list" /></td>
     <td><code>array</code></td>
     <td>An array of metric results, where each array element contains all of the data points for a particular dimension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the token, up to the value specified by MaxRecords. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_=-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieve Performance Insights metrics for a set of data sources over a time peri
 
 ```sql
 SELECT
-AlignedEndTime,
-AlignedStartTime,
-Identifier,
-MetricList,
-NextToken
+aligned_end_time,
+aligned_start_time,
+identifier,
+metric_list,
+next_token
 FROM aws.pi.resource_metrics
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>The encryption mode for the VPC Encryption Control configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceExclusions" /></td>
+    <td><CopyableCode code="resource_exclusions" /></td>
     <td><code>string</code></td>
     <td>Information about resource exclusions for the VPC Encryption Control configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the VPC Encryption Control configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>A message providing additional information about the encryption control state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the VPC Encryption Control configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEncryptionControlId" /></td>
+    <td><CopyableCode code="vpc_encryption_control_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC Encryption Control configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC associated with the encryption control configuration.</td>
 </tr>
@@ -260,13 +260,13 @@ Describes one or more VPC Encryption Control configurations. VPC Encryption Cont
 
 ```sql
 SELECT
-Mode,
-ResourceExclusions,
-State,
-StateMessage,
-Tags,
-VpcEncryptionControlId,
-VpcId
+mode,
+resource_exclusions,
+state,
+state_message,
+tags,
+vpc_encryption_control_id,
+vpc_id
 FROM aws.ec2.vpc_encryption_controls
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -307,13 +307,13 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-Mode,
-ResourceExclusions,
-State,
-StateMessage,
-Tags,
-VpcEncryptionControlId,
-VpcId
+mode,
+resource_exclusions,
+state,
+state_message,
+tags,
+vpc_encryption_control_id,
+vpc_id
 ;
 ```
 </TabItem>
@@ -372,13 +372,13 @@ AND LambdaExclusion = '{{ LambdaExclusion}}'
 AND VpcLatticeExclusion = '{{ VpcLatticeExclusion}}'
 AND ElasticFileSystemExclusion = '{{ ElasticFileSystemExclusion}}'
 RETURNING
-Mode,
-ResourceExclusions,
-State,
-StateMessage,
-Tags,
-VpcEncryptionControlId,
-VpcId;
+mode,
+resource_exclusions,
+state,
+state_message,
+tags,
+vpc_encryption_control_id,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

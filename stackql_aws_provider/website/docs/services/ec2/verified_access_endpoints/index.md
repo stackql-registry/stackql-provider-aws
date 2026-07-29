@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationDomain" /></td>
+    <td><CopyableCode code="application_domain" /></td>
     <td><code>string</code></td>
     <td>The DNS name for users to reach your application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentType" /></td>
+    <td><CopyableCode code="attachment_type" /></td>
     <td><code>string</code></td>
     <td>The type of attachment used to provide connectivity between the Amazon Web Services Verified Access endpoint and the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrOptions" /></td>
+    <td><CopyableCode code="cidr_options" /></td>
     <td><code>string</code></td>
     <td>The options for a CIDR endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionTime" /></td>
+    <td><CopyableCode code="deletion_time" /></td>
     <td><code>string</code></td>
     <td>The deletion time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description for the Amazon Web Services Verified Access endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceValidationDomain" /></td>
+    <td><CopyableCode code="device_validation_domain" /></td>
     <td><code>string</code></td>
     <td>Returned if endpoint has a device trust provider attached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainCertificateArn" /></td>
+    <td><CopyableCode code="domain_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a public TLS/SSL certificate imported into or created with ACM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointDomain" /></td>
+    <td><CopyableCode code="endpoint_domain" /></td>
     <td><code>string</code></td>
     <td>A DNS name that is generated for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services Verified Access endpoint. Incoming application requests will be sent to an IP address, load balancer or a network interface depending on the endpoint type specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The last updated time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancerOptions" /></td>
+    <td><CopyableCode code="load_balancer_options" /></td>
     <td><code>string</code></td>
     <td>The load balancer details if creating the Amazon Web Services Verified Access endpoint as load-balancertype.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceOptions" /></td>
+    <td><CopyableCode code="network_interface_options" /></td>
     <td><code>string</code></td>
     <td>The options for network-interface type endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RdsOptions" /></td>
+    <td><CopyableCode code="rds_options" /></td>
     <td><code>string</code></td>
     <td>The options for an RDS endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the security groups for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseSpecification" /></td>
+    <td><CopyableCode code="sse_specification" /></td>
     <td><code>string</code></td>
     <td>The options in use for server side encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The endpoint status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessEndpointId" /></td>
+    <td><CopyableCode code="verified_access_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Verified Access endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessGroupId" /></td>
+    <td><CopyableCode code="verified_access_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Verified Access group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessInstanceId" /></td>
+    <td><CopyableCode code="verified_access_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Verified Access instance.</td>
 </tr>
@@ -360,27 +360,27 @@ Describes the specified Amazon Web Services Verified Access endpoints.
 
 ```sql
 SELECT
-ApplicationDomain,
-AttachmentType,
-CidrOptions,
-CreationTime,
-DeletionTime,
-Description,
-DeviceValidationDomain,
-DomainCertificateArn,
-EndpointDomain,
-EndpointType,
-LastUpdatedTime,
-LoadBalancerOptions,
-NetworkInterfaceOptions,
-RdsOptions,
-SecurityGroupIds,
-SseSpecification,
-Status,
-Tags,
-VerifiedAccessEndpointId,
-VerifiedAccessGroupId,
-VerifiedAccessInstanceId
+application_domain,
+attachment_type,
+cidr_options,
+creation_time,
+deletion_time,
+description,
+device_validation_domain,
+domain_certificate_arn,
+endpoint_domain,
+endpoint_type,
+last_updated_time,
+load_balancer_options,
+network_interface_options,
+rds_options,
+security_group_ids,
+sse_specification,
+status,
+tags,
+verified_access_endpoint_id,
+verified_access_group_id,
+verified_access_instance_id
 FROM aws.ec2.verified_access_endpoints
 WHERE region = '{{ region }}' -- required
 AND VerifiedAccessEndpointId = '{{ VerifiedAccessEndpointId }}'
@@ -450,27 +450,27 @@ SELECT
 '{{ RdsOptions }}',
 '{{ CidrOptions }}'
 RETURNING
-ApplicationDomain,
-AttachmentType,
-CidrOptions,
-CreationTime,
-DeletionTime,
-Description,
-DeviceValidationDomain,
-DomainCertificateArn,
-EndpointDomain,
-EndpointType,
-LastUpdatedTime,
-LoadBalancerOptions,
-NetworkInterfaceOptions,
-RdsOptions,
-SecurityGroupIds,
-SseSpecification,
-Status,
-Tags,
-VerifiedAccessEndpointId,
-VerifiedAccessGroupId,
-VerifiedAccessInstanceId
+application_domain,
+attachment_type,
+cidr_options,
+creation_time,
+deletion_time,
+description,
+device_validation_domain,
+domain_certificate_arn,
+endpoint_domain,
+endpoint_type,
+last_updated_time,
+load_balancer_options,
+network_interface_options,
+rds_options,
+security_group_ids,
+sse_specification,
+status,
+tags,
+verified_access_endpoint_id,
+verified_access_group_id,
+verified_access_instance_id
 ;
 ```
 </TabItem>
@@ -581,27 +581,27 @@ AND DryRun = {{ DryRun}}
 AND RdsOptions = '{{ RdsOptions}}'
 AND CidrOptions = '{{ CidrOptions}}'
 RETURNING
-ApplicationDomain,
-AttachmentType,
-CidrOptions,
-CreationTime,
-DeletionTime,
-Description,
-DeviceValidationDomain,
-DomainCertificateArn,
-EndpointDomain,
-EndpointType,
-LastUpdatedTime,
-LoadBalancerOptions,
-NetworkInterfaceOptions,
-RdsOptions,
-SecurityGroupIds,
-SseSpecification,
-Status,
-Tags,
-VerifiedAccessEndpointId,
-VerifiedAccessGroupId,
-VerifiedAccessInstanceId;
+application_domain,
+attachment_type,
+cidr_options,
+creation_time,
+deletion_time,
+description,
+device_validation_domain,
+domain_certificate_arn,
+endpoint_domain,
+endpoint_type,
+last_updated_time,
+load_balancer_options,
+network_interface_options,
+rds_options,
+security_group_ids,
+sse_specification,
+status,
+tags,
+verified_access_endpoint_id,
+verified_access_group_id,
+verified_access_instance_id;
 ```
 </TabItem>
 </Tabs>

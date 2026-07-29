@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthType" /></td>
+    <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
     <td>The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information, see Control access to Lambda function URLs. (NONE, AWS_IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Cors" /></td>
+    <td><CopyableCode code="cors" /></td>
     <td><code>object</code></td>
     <td>The cross-origin resource sharing (CORS) settings for your Lambda function URL. Use CORS to grant access to your function URL from any origin. You can also use CORS to control access for specific HTTP headers and methods in requests to your function URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>When the function URL was created, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of your function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionUrl" /></td>
+    <td><CopyableCode code="function_url" /></td>
     <td><code>string</code></td>
     <td>The HTTP URL endpoint for your function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvokeMode" /></td>
+    <td><CopyableCode code="invoke_mode" /></td>
     <td><code>string</code></td>
     <td>Use one of the following options: BUFFERED – This is the default option. Lambda invokes your function using the Invoke API operation. Invocation results are available when the payload is complete. The maximum payload size is 6 MB. RESPONSE_STREAM – Your function streams payload results as they become available. Lambda invokes your function using the InvokeWithResponseStream API operation. The maximum response payload size is 200 MB. (BUFFERED, RESPONSE_STREAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>When the function URL configuration was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
@@ -197,13 +197,13 @@ Returns details about a Lambda function URL.
 
 ```sql
 SELECT
-AuthType,
-Cors,
-CreationTime,
-FunctionArn,
-FunctionUrl,
-InvokeMode,
-LastModifiedTime
+auth_type,
+cors,
+creation_time,
+function_arn,
+function_url,
+invoke_mode,
+last_modified_time
 FROM aws.lambda.function_url_configs
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -244,12 +244,12 @@ SELECT
 '{{ region }}',
 '{{ Qualifier }}'
 RETURNING
-AuthType,
-Cors,
-CreationTime,
-FunctionArn,
-FunctionUrl,
-InvokeMode
+auth_type,
+cors,
+creation_time,
+function_arn,
+function_url,
+invoke_mode
 ;
 ```
 </TabItem>
@@ -317,13 +317,13 @@ function_name = '{{ function_name }}' --required
 AND region = '{{ region }}' --required
 AND Qualifier = '{{ Qualifier}}'
 RETURNING
-AuthType,
-Cors,
-CreationTime,
-FunctionArn,
-FunctionUrl,
-InvokeMode,
-LastModifiedTime;
+auth_type,
+cors,
+creation_time,
+function_arn,
+function_url,
+invoke_mode,
+last_modified_time;
 ```
 </TabItem>
 </Tabs>

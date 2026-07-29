@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the device profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoRaWAN" /></td>
+    <td><CopyableCode code="lo_ra_wan" /></td>
     <td><code>object</code></td>
     <td>LoRaWANDeviceProfile object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sidewalk" /></td>
+    <td><CopyableCode code="sidewalk" /></td>
     <td><code>object</code></td>
     <td>Information about the Sidewalk parameters in the device profile.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeviceProfileList" /></td>
+    <td><CopyableCode code="device_profile_list" /></td>
     <td><code>array</code></td>
     <td>The list of device profiles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
@@ -206,11 +206,11 @@ Gets information about a device profile.
 
 ```sql
 SELECT
-Arn,
-Id,
-LoRaWAN,
-Name,
-Sidewalk
+arn,
+id,
+lo_ra_wan,
+name,
+sidewalk
 FROM aws.iotwireless.device_profiles
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -223,8 +223,8 @@ Lists the device profiles registered to your AWS account.
 
 ```sql
 SELECT
-DeviceProfileList,
-NextToken
+device_profile_list,
+next_token
 FROM aws.iotwireless.device_profiles
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -266,8 +266,8 @@ SELECT
 '{{ Sidewalk }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

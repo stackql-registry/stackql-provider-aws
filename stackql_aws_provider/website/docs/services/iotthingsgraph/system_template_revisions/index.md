@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the system was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionNumber" /></td>
+    <td><CopyableCode code="revision_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number of the system.</td>
 </tr>
@@ -136,8 +136,8 @@ Gets revisions made to the specified system template. Only the previous 100 revi
 SELECT
 id,
 arn,
-createdAt,
-revisionNumber
+created_at,
+revision_number
 FROM aws.iotthingsgraph.system_template_revisions
 WHERE region = '{{ region }}' -- required
 ;

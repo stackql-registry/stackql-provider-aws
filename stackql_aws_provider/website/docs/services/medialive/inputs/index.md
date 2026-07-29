@@ -51,112 +51,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachedChannels" /></td>
+    <td><CopyableCode code="attached_channels" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>A list of the destinations of the input (PUSH-type).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputClass" /></td>
+    <td><CopyableCode code="input_class" /></td>
     <td><code>string</code></td>
     <td>STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input. (STANDARD, SINGLE_PIPELINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDevices" /></td>
+    <td><CopyableCode code="input_devices" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfInputDeviceSettings</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputNetworkLocation" /></td>
+    <td><CopyableCode code="input_network_location" /></td>
     <td><code>string</code></td>
     <td>With the introduction of MediaLive Anywhere, a MediaLive input can now exist in two different places: AWS or inside an on-premises datacenter. By default all inputs will continue to be AWS inputs. (AWS, ON_PREMISES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputPartnerIds" /></td>
+    <td><CopyableCode code="input_partner_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputSourceType" /></td>
+    <td><CopyableCode code="input_source_type" /></td>
     <td><code>string</code></td>
     <td>Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE and TS_FILE inputs. (STATIC, DYNAMIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaConnectFlows" /></td>
+    <td><CopyableCode code="media_connect_flows" /></td>
     <td><code>array</code></td>
     <td>A list of MediaConnect Flows for this input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MulticastSettings" /></td>
+    <td><CopyableCode code="multicast_settings" /></td>
     <td><code>object</code></td>
     <td>Multicast Input settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouterSettings" /></td>
+    <td><CopyableCode code="router_settings" /></td>
     <td><code>object</code></td>
     <td>Information about any MediaConnect router association with this input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SdiSources" /></td>
+    <td><CopyableCode code="sdi_sources" /></td>
     <td><code>array</code></td>
     <td>SDI Sources for this Input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Smpte2110ReceiverGroupSettings" /></td>
+    <td><CopyableCode code="smpte_2110_receiver_group_settings" /></td>
     <td><code>object</code></td>
     <td>Configures the sources for the SMPTE 2110 Receiver Group input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sources" /></td>
+    <td><CopyableCode code="sources" /></td>
     <td><code>array</code></td>
     <td>A list of the sources of the input (PULL-type).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SrtSettings" /></td>
+    <td><CopyableCode code="srt_settings" /></td>
     <td><code>object</code></td>
     <td>The settings associated with an SRT input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for InputState (CREATING, DETACHED, ATTACHED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The different types of inputs that AWS Elemental MediaLive supports. (UDP_PUSH, RTP_PUSH, RTMP_PUSH, RTMP_PULL, URL_PULL, MP4_FILE, MEDIACONNECT, INPUT_DEVICE, AWS_CDI, TS_FILE, SRT_CALLER, MULTICAST, SMPTE_2110_RECEIVER_GROUP, SDI, MEDIACONNECT_ROUTER, SRT_LISTENER)</td>
 </tr>
@@ -175,112 +175,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachedChannels" /></td>
+    <td><CopyableCode code="attached_channels" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>A list of the destinations of the input (PUSH-type).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputClass" /></td>
+    <td><CopyableCode code="input_class" /></td>
     <td><code>string</code></td>
     <td>STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input. (STANDARD, SINGLE_PIPELINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDevices" /></td>
+    <td><CopyableCode code="input_devices" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfInputDeviceSettings</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputNetworkLocation" /></td>
+    <td><CopyableCode code="input_network_location" /></td>
     <td><code>string</code></td>
     <td>With the introduction of MediaLive Anywhere, a MediaLive input can now exist in two different places: AWS or inside an on-premises datacenter. By default all inputs will continue to be AWS inputs. (AWS, ON_PREMISES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputPartnerIds" /></td>
+    <td><CopyableCode code="input_partner_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputSourceType" /></td>
+    <td><CopyableCode code="input_source_type" /></td>
     <td><code>string</code></td>
     <td>Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE and TS_FILE inputs. (STATIC, DYNAMIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaConnectFlows" /></td>
+    <td><CopyableCode code="media_connect_flows" /></td>
     <td><code>array</code></td>
     <td>A list of MediaConnect Flows for this input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MulticastSettings" /></td>
+    <td><CopyableCode code="multicast_settings" /></td>
     <td><code>object</code></td>
     <td>Multicast Input settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouterSettings" /></td>
+    <td><CopyableCode code="router_settings" /></td>
     <td><code>object</code></td>
     <td>Information about any MediaConnect router association with this input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SdiSources" /></td>
+    <td><CopyableCode code="sdi_sources" /></td>
     <td><code>array</code></td>
     <td>SDI Sources for this Input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Smpte2110ReceiverGroupSettings" /></td>
+    <td><CopyableCode code="smpte_2110_receiver_group_settings" /></td>
     <td><code>object</code></td>
     <td>Configures the sources for the SMPTE 2110 Receiver Group input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sources" /></td>
+    <td><CopyableCode code="sources" /></td>
     <td><code>array</code></td>
     <td>A list of the sources of the input (PULL-type).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SrtSettings" /></td>
+    <td><CopyableCode code="srt_settings" /></td>
     <td><code>object</code></td>
     <td>The settings associated with an SRT input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for InputState (CREATING, DETACHED, ATTACHED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The different types of inputs that AWS Elemental MediaLive supports. (UDP_PUSH, RTP_PUSH, RTMP_PUSH, RTMP_PULL, URL_PULL, MP4_FILE, MEDIACONNECT, INPUT_DEVICE, AWS_CDI, TS_FILE, SRT_CALLER, MULTICAST, SMPTE_2110_RECEIVER_GROUP, SDI, MEDIACONNECT_ROUTER, SRT_LISTENER)</td>
 </tr>
@@ -426,28 +426,28 @@ Produces details about an input
 
 ```sql
 SELECT
-Arn,
-AttachedChannels,
-Destinations,
-Id,
-InputClass,
-InputDevices,
-InputNetworkLocation,
-InputPartnerIds,
-InputSourceType,
-MediaConnectFlows,
-MulticastSettings,
-Name,
-RoleArn,
-RouterSettings,
-SdiSources,
-SecurityGroups,
-Smpte2110ReceiverGroupSettings,
-Sources,
-SrtSettings,
-State,
-Tags,
-Type
+arn,
+attached_channels,
+destinations,
+id,
+input_class,
+input_devices,
+input_network_location,
+input_partner_ids,
+input_source_type,
+media_connect_flows,
+multicast_settings,
+name,
+role_arn,
+router_settings,
+sdi_sources,
+security_groups,
+smpte_2110_receiver_group_settings,
+sources,
+srt_settings,
+state,
+tags,
+type
 FROM aws.medialive.inputs
 WHERE input_id = '{{ input_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -460,28 +460,28 @@ Produces list of inputs that have been created
 
 ```sql
 SELECT
-Arn,
-AttachedChannels,
-Destinations,
-Id,
-InputClass,
-InputDevices,
-InputNetworkLocation,
-InputPartnerIds,
-InputSourceType,
-MediaConnectFlows,
-MulticastSettings,
-Name,
-RoleArn,
-RouterSettings,
-SdiSources,
-SecurityGroups,
-Smpte2110ReceiverGroupSettings,
-Sources,
-SrtSettings,
-State,
-Tags,
-Type
+arn,
+attached_channels,
+destinations,
+id,
+input_class,
+input_devices,
+input_network_location,
+input_partner_ids,
+input_source_type,
+media_connect_flows,
+multicast_settings,
+name,
+role_arn,
+router_settings,
+sdi_sources,
+security_groups,
+smpte_2110_receiver_group_settings,
+sources,
+srt_settings,
+state,
+tags,
+type
 FROM aws.medialive.inputs
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -519,7 +519,7 @@ SELECT
 '{{ input_id }}',
 '{{ region }}'
 RETURNING
-Input
+input
 ;
 ```
 </TabItem>
@@ -568,7 +568,7 @@ SELECT
 '{{ RouterSettings }}',
 '{{ region }}'
 RETURNING
-Input
+input
 ;
 ```
 </TabItem>
@@ -737,7 +737,7 @@ WHERE
 input_id = '{{ input_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Input;
+input;
 ```
 </TabItem>
 </Tabs>

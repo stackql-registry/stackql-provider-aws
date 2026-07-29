@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventConfigurationsList" /></td>
+    <td><CopyableCode code="event_configurations_list" /></td>
     <td><code>array</code></td>
     <td>Event configurations of all events for a single resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>To retrieve the next set of results, the nextToken value from a previous response; otherwise null to receive the first set of results.</td>
 </tr>
@@ -139,8 +139,8 @@ List event configurations where at least one event topic has been enabled.
 
 ```sql
 SELECT
-EventConfigurationsList,
-NextToken
+event_configurations_list,
+next_token
 FROM aws.iotwireless.event_configurations
 WHERE resourceType = '{{ resourceType }}' -- required
 AND region = '{{ region }}' -- required

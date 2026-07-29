@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddIns" /></td>
+    <td><CopyableCode code="add_ins" /></td>
     <td><code>array</code></td>
     <td>Information about client add-ins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -145,8 +145,8 @@ Retrieves a list of Amazon Connect client add-ins that have been created.
 
 ```sql
 SELECT
-AddIns,
-NextToken
+add_ins,
+next_token
 FROM aws.workspaces.connect_client_add_ins
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,7 +181,7 @@ SELECT
 '{{ URL }}' /* required */,
 '{{ region }}'
 RETURNING
-AddInId
+add_in_id
 ;
 ```
 </TabItem>

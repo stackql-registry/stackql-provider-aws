@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account to which the recommendation applies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of action you can take by adopting the recommendation. (Rightsize, Stop, Upgrade, PurchaseSavingsPlans, PurchaseReservedInstances, MigrateToGraviton, Delete, ScaleIn)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="costCalculationLookbackPeriodInDays" /></td>
+    <td><CopyableCode code="cost_calculation_lookback_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>The lookback period used to calculate cost impact for a recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code used for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentResourceDetails" /></td>
+    <td><CopyableCode code="current_resource_details" /></td>
     <td><code>object</code></td>
     <td>The details for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentResourceType" /></td>
+    <td><CopyableCode code="current_resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource. (Ec2Instance, LambdaFunction, EbsVolume, EcsService, Ec2AutoScalingGroup, Ec2InstanceSavingsPlans, ComputeSavingsPlans, SageMakerSavingsPlans, Ec2ReservedInstances, RdsReservedInstances, OpenSearchReservedInstances, RedshiftReservedInstances, ElastiCacheReservedInstances, RdsDbInstanceStorage, RdsDbInstance, AuroraDbClusterStorage, DynamoDbReservedCapacity, MemoryDbReservedInstances, NatGateway)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlyCost" /></td>
+    <td><CopyableCode code="estimated_monthly_cost" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated monthly cost of the current resource. For Reserved Instances and Savings Plans, it refers to the cost for eligible usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlySavings" /></td>
+    <td><CopyableCode code="estimated_monthly_savings" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated monthly savings amount for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedSavingsOverCostCalculationLookbackPeriod" /></td>
+    <td><CopyableCode code="estimated_savings_over_cost_calculation_lookback_period" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated savings amount over the lookback period used to calculate cost impact for a recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedSavingsPercentage" /></td>
+    <td><CopyableCode code="estimated_savings_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated savings percentage relative to the total cost over the cost calculation lookback period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="implementationEffort" /></td>
+    <td><CopyableCode code="implementation_effort" /></td>
     <td><code>string</code></td>
     <td>The effort required to implement the recommendation. (VeryLow, Low, Medium, High, VeryHigh)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRefreshTimestamp" /></td>
+    <td><CopyableCode code="last_refresh_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the recommendation was last generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationLookbackPeriodInDays" /></td>
+    <td><CopyableCode code="recommendation_lookback_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>The lookback period that's used to generate the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedResourceDetails" /></td>
+    <td><CopyableCode code="recommended_resource_details" /></td>
     <td><code>object</code></td>
     <td>The details about the recommended resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedResourceType" /></td>
+    <td><CopyableCode code="recommended_resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the recommendation. (Ec2Instance, LambdaFunction, EbsVolume, EcsService, Ec2AutoScalingGroup, Ec2InstanceSavingsPlans, ComputeSavingsPlans, SageMakerSavingsPlans, Ec2ReservedInstances, RdsReservedInstances, OpenSearchReservedInstances, RedshiftReservedInstances, ElastiCacheReservedInstances, RdsDbInstanceStorage, RdsDbInstance, AuroraDbClusterStorage, DynamoDbReservedCapacity, MemoryDbReservedInstances, NatGateway)</td>
 </tr>
@@ -136,22 +136,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the resource. This is the same as the Amazon Resource Name (ARN), if available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="restartNeeded" /></td>
+    <td><CopyableCode code="restart_needed" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not implementing the recommendation requires a restart.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollbackPossible" /></td>
+    <td><CopyableCode code="rollback_possible" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not implementing the recommendation can be rolled back.</td>
 </tr>
@@ -180,72 +180,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account to which the recommendation applies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of tasks that can be carried out by this action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code used for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentResourceSummary" /></td>
+    <td><CopyableCode code="current_resource_summary" /></td>
     <td><code>string</code></td>
     <td>Describes the current resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentResourceType" /></td>
+    <td><CopyableCode code="current_resource_type" /></td>
     <td><code>string</code></td>
     <td>The current resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlyCost" /></td>
+    <td><CopyableCode code="estimated_monthly_cost" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated monthly cost of the current resource. For Reserved Instances and Savings Plans, it refers to the cost for eligible usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlySavings" /></td>
+    <td><CopyableCode code="estimated_monthly_savings" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated monthly savings amount for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedSavingsPercentage" /></td>
+    <td><CopyableCode code="estimated_savings_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated savings percentage relative to the total cost over the cost calculation lookback period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="implementationEffort" /></td>
+    <td><CopyableCode code="implementation_effort" /></td>
     <td><code>string</code></td>
     <td>The effort required to implement the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRefreshTimestamp" /></td>
+    <td><CopyableCode code="last_refresh_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the recommendation was last generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationLookbackPeriodInDays" /></td>
+    <td><CopyableCode code="recommendation_lookback_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>The lookback period that's used to generate the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedResourceSummary" /></td>
+    <td><CopyableCode code="recommended_resource_summary" /></td>
     <td><code>string</code></td>
     <td>Describes the recommended resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedResourceType" /></td>
+    <td><CopyableCode code="recommended_resource_type" /></td>
     <td><code>string</code></td>
     <td>The recommended resource type.</td>
 </tr>
@@ -255,22 +255,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="restartNeeded" /></td>
+    <td><CopyableCode code="restart_needed" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not implementing the recommendation requires a restart.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollbackPossible" /></td>
+    <td><CopyableCode code="rollback_possible" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not implementing the recommendation can be rolled back.</td>
 </tr>
@@ -357,27 +357,27 @@ Returns both the current and recommended resource configuration and the estimate
 
 ```sql
 SELECT
-accountId,
-actionType,
-costCalculationLookbackPeriodInDays,
-currencyCode,
-currentResourceDetails,
-currentResourceType,
-estimatedMonthlyCost,
-estimatedMonthlySavings,
-estimatedSavingsOverCostCalculationLookbackPeriod,
-estimatedSavingsPercentage,
-implementationEffort,
-lastRefreshTimestamp,
-recommendationId,
-recommendationLookbackPeriodInDays,
-recommendedResourceDetails,
-recommendedResourceType,
+account_id,
+action_type,
+cost_calculation_lookback_period_in_days,
+currency_code,
+current_resource_details,
+current_resource_type,
+estimated_monthly_cost,
+estimated_monthly_savings,
+estimated_savings_over_cost_calculation_lookback_period,
+estimated_savings_percentage,
+implementation_effort,
+last_refresh_timestamp,
+recommendation_id,
+recommendation_lookback_period_in_days,
+recommended_resource_details,
+recommended_resource_type,
 region,
-resourceArn,
-resourceId,
-restartNeeded,
-rollbackPossible,
+resource_arn,
+resource_id,
+restart_needed,
+rollback_possible,
 source,
 tags
 FROM aws.cost_optimization_hub.recommendations
@@ -391,25 +391,25 @@ Returns a list of recommendations.
 
 ```sql
 SELECT
-accountId,
-actionType,
-currencyCode,
-currentResourceSummary,
-currentResourceType,
-estimatedMonthlyCost,
-estimatedMonthlySavings,
-estimatedSavingsPercentage,
-implementationEffort,
-lastRefreshTimestamp,
-recommendationId,
-recommendationLookbackPeriodInDays,
-recommendedResourceSummary,
-recommendedResourceType,
+account_id,
+action_type,
+currency_code,
+current_resource_summary,
+current_resource_type,
+estimated_monthly_cost,
+estimated_monthly_savings,
+estimated_savings_percentage,
+implementation_effort,
+last_refresh_timestamp,
+recommendation_id,
+recommendation_lookback_period_in_days,
+recommended_resource_summary,
+recommended_resource_type,
 region,
-resourceArn,
-resourceId,
-restartNeeded,
-rollbackPossible,
+resource_arn,
+resource_id,
+restart_needed,
+rollback_possible,
 source,
 tags
 FROM aws.cost_optimization_hub.recommendations

@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Auth" /></td>
+    <td><CopyableCode code="auth" /></td>
     <td><code>string</code></td>
     <td>One or more data structures specifying the authorization mechanism to connect to the associated RDS DB instance or Aurora DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the proxy was first created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBProxyArn" /></td>
+    <td><CopyableCode code="db_proxy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the proxy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBProxyName" /></td>
+    <td><CopyableCode code="db_proxy_name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the proxy. This name must be unique for all proxies owned by your Amazon Web Services account in the specified Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DebugLogging" /></td>
+    <td><CopyableCode code="debug_logging" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the proxy logs detailed connection and query information. When you enable DebugLogging, the proxy captures connection details and connection pool behavior from your queries. Debug logging increases CloudWatch costs and can impact proxy performance. Enable this option only when you need to troubleshoot connection or performance issues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultAuthScheme" /></td>
+    <td><CopyableCode code="default_auth_scheme" /></td>
     <td><code>string</code></td>
     <td>The default authentication scheme that the proxy uses for client connections to the proxy and connections from the proxy to the underlying database. Valid values are NONE and IAM_AUTH. When set to IAM_AUTH, the proxy uses end-to-end IAM authentication to connect to the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint that you can use to connect to the DB proxy. You include the endpoint value in the connection string for a database client application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointNetworkType" /></td>
+    <td><CopyableCode code="endpoint_network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of the DB proxy endpoint. The network type determines the IP version that the proxy endpoint supports. Valid values: IPV4 - The proxy endpoint supports IPv4 only. IPV6 - The proxy endpoint supports IPv6 only. DUAL - The proxy endpoint supports both IPv4 and IPv6.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineFamily" /></td>
+    <td><CopyableCode code="engine_family" /></td>
     <td><code>string</code></td>
     <td>The kinds of databases that the proxy can connect to. This value determines which database network protocol the proxy recognizes when it interprets network traffic to and from the database. MYSQL supports Aurora MySQL, RDS for MariaDB, and RDS for MySQL databases. POSTGRESQL supports Aurora PostgreSQL and RDS for PostgreSQL databases. SQLSERVER supports RDS for Microsoft SQL Server databases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdleClientTimeout" /></td>
+    <td><CopyableCode code="idle_client_timeout" /></td>
     <td><code>integer</code></td>
     <td>The number of seconds a connection to the proxy can have no activity before the proxy drops the client connection. The proxy keeps the underlying database connection open and puts it back into the connection pool for reuse by later connection requests. Default: 1800 (30 minutes) Constraints: 1 to 28,800</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequireTLS" /></td>
+    <td><CopyableCode code="require_tls" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Transport Layer Security (TLS) encryption is required for connections to the proxy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the IAM role that the proxy uses to access Amazon Secrets Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of this proxy. A status of available means the proxy is ready to handle requests. Other values indicate that you must wait for the proxy to be ready, or take some action to resolve an issue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetConnectionNetworkType" /></td>
+    <td><CopyableCode code="target_connection_network_type" /></td>
     <td><code>string</code></td>
     <td>The network type that the proxy uses to connect to the target database. The network type determines the IP version that the proxy uses for connections to the database. Valid values: IPV4 - The proxy connects to the database using IPv4 only. IPV6 - The proxy connects to the database using IPv6 only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedDate" /></td>
+    <td><CopyableCode code="updated_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the proxy was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VPC ID of the DB proxy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroupIds" /></td>
+    <td><CopyableCode code="vpc_security_group_ids" /></td>
     <td><code>string</code></td>
     <td>Provides a list of VPC security groups that the proxy belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSubnetIds" /></td>
+    <td><CopyableCode code="vpc_subnet_ids" /></td>
     <td><code>string</code></td>
     <td>The EC2 subnet IDs for the proxy.</td>
 </tr>
@@ -325,24 +325,24 @@ Returns information about DB proxies.
 
 ```sql
 SELECT
-Auth,
-CreatedDate,
-DBProxyArn,
-DBProxyName,
-DebugLogging,
-DefaultAuthScheme,
-Endpoint,
-EndpointNetworkType,
-EngineFamily,
-IdleClientTimeout,
-RequireTLS,
-RoleArn,
-Status,
-TargetConnectionNetworkType,
-UpdatedDate,
-VpcId,
-VpcSecurityGroupIds,
-VpcSubnetIds
+auth,
+created_date,
+db_proxy_arn,
+db_proxy_name,
+debug_logging,
+default_auth_scheme,
+endpoint,
+endpoint_network_type,
+engine_family,
+idle_client_timeout,
+require_tls,
+role_arn,
+status,
+target_connection_network_type,
+updated_date,
+vpc_id,
+vpc_security_group_ids,
+vpc_subnet_ids
 FROM aws.rds.db_proxies
 WHERE region = '{{ region }}' -- required
 AND DBProxyName = '{{ DBProxyName }}'
@@ -401,24 +401,24 @@ SELECT
 '{{ EndpointNetworkType }}',
 '{{ TargetConnectionNetworkType }}'
 RETURNING
-Auth,
-CreatedDate,
-DBProxyArn,
-DBProxyName,
-DebugLogging,
-DefaultAuthScheme,
-Endpoint,
-EndpointNetworkType,
-EngineFamily,
-IdleClientTimeout,
-RequireTLS,
-RoleArn,
-Status,
-TargetConnectionNetworkType,
-UpdatedDate,
-VpcId,
-VpcSecurityGroupIds,
-VpcSubnetIds
+auth,
+created_date,
+db_proxy_arn,
+db_proxy_name,
+debug_logging,
+default_auth_scheme,
+endpoint,
+endpoint_network_type,
+engine_family,
+idle_client_timeout,
+require_tls,
+role_arn,
+status,
+target_connection_network_type,
+updated_date,
+vpc_id,
+vpc_security_group_ids,
+vpc_subnet_ids
 ;
 ```
 </TabItem>
@@ -512,24 +512,24 @@ AND DebugLogging = {{ DebugLogging}}
 AND RoleArn = '{{ RoleArn}}'
 AND SecurityGroups = '{{ SecurityGroups}}'
 RETURNING
-Auth,
-CreatedDate,
-DBProxyArn,
-DBProxyName,
-DebugLogging,
-DefaultAuthScheme,
-Endpoint,
-EndpointNetworkType,
-EngineFamily,
-IdleClientTimeout,
-RequireTLS,
-RoleArn,
-Status,
-TargetConnectionNetworkType,
-UpdatedDate,
-VpcId,
-VpcSecurityGroupIds,
-VpcSubnetIds;
+auth,
+created_date,
+db_proxy_arn,
+db_proxy_name,
+debug_logging,
+default_auth_scheme,
+endpoint,
+endpoint_network_type,
+engine_family,
+idle_client_timeout,
+require_tls,
+role_arn,
+status,
+target_connection_network_type,
+updated_date,
+vpc_id,
+vpc_security_group_ids,
+vpc_subnet_ids;
 ```
 </TabItem>
 </Tabs>

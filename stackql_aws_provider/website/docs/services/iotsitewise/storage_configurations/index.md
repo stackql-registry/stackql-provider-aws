@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configurationStatus" /></td>
+    <td><CopyableCode code="configuration_status" /></td>
     <td><code>object</code></td>
     <td>Contains current status information for the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disallowIngestNullNaN" /></td>
+    <td><CopyableCode code="disallow_ingest_null_na_n" /></td>
     <td><code>boolean</code></td>
     <td>Describes the configuration for ingesting NULL and NaN data. By default the feature is allowed. The feature is disallowed if the value is true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disassociatedDataStorage" /></td>
+    <td><CopyableCode code="disassociated_data_storage" /></td>
     <td><code>string</code></td>
     <td>Contains the storage configuration for time series (data streams) that aren't associated with asset properties. The disassociatedDataStorage can be one of the following values: ENABLED – IoT SiteWise accepts time series that aren't associated with asset properties. After the disassociatedDataStorage is enabled, you can't disable it. DISABLED – IoT SiteWise doesn't accept time series (data streams) that aren't associated with asset properties. For more information, see Data streams in the IoT SiteWise User Guide. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the storage configuration was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="multiLayerStorage" /></td>
+    <td><CopyableCode code="multi_layer_storage" /></td>
     <td><code>object</code></td>
     <td>Contains information about the storage destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retentionPeriod" /></td>
+    <td><CopyableCode code="retention_period" /></td>
     <td><code>object</code></td>
     <td>The number of days your data is kept in the hot tier. By default, your data is kept indefinitely in the hot tier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage tier that you specified for your data. The storageType parameter can be one of the following values: SITEWISE_DEFAULT_STORAGE – IoT SiteWise saves your data into the hot tier. The hot tier is a service-managed database. MULTI_LAYER_STORAGE – IoT SiteWise saves your data in both the cold tier and the hot tier. The cold tier is a customer-managed Amazon S3 bucket. (SITEWISE_DEFAULT_STORAGE, MULTI_LAYER_STORAGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warmTier" /></td>
+    <td><CopyableCode code="warm_tier" /></td>
     <td><code>string</code></td>
     <td>A service managed storage tier optimized for analytical queries. It stores periodically uploaded, buffered and historical data ingested with the CreaeBulkImportJob API. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warmTierRetentionPeriod" /></td>
+    <td><CopyableCode code="warm_tier_retention_period" /></td>
     <td><code>object</code></td>
     <td>Set this period to specify how long your data is stored in the warm tier before it is deleted. You can set this only if cold tier is enabled.</td>
 </tr>
@@ -166,15 +166,15 @@ Retrieves information about the storage configuration for IoT SiteWise.
 
 ```sql
 SELECT
-configurationStatus,
-disallowIngestNullNaN,
-disassociatedDataStorage,
-lastUpdateDate,
-multiLayerStorage,
-retentionPeriod,
-storageType,
-warmTier,
-warmTierRetentionPeriod
+configuration_status,
+disallow_ingest_null_na_n,
+disassociated_data_storage,
+last_update_date,
+multi_layer_storage,
+retention_period,
+storage_type,
+warm_tier,
+warm_tier_retention_period
 FROM aws.iotsitewise.storage_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,14 +209,14 @@ WHERE
 region = '{{ region }}' --required
 AND storageType = '{{ storageType }}' --required
 RETURNING
-configurationStatus,
-disallowIngestNullNaN,
-disassociatedDataStorage,
-multiLayerStorage,
-retentionPeriod,
-storageType,
-warmTier,
-warmTierRetentionPeriod;
+configuration_status,
+disallow_ingest_null_na_n,
+disassociated_data_storage,
+multi_layer_storage,
+retention_period,
+storage_type,
+warm_tier,
+warm_tier_retention_period;
 ```
 </TabItem>
 </Tabs>

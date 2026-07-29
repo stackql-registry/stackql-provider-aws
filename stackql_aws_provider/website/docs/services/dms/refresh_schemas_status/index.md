@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailureMessage" /></td>
+    <td><CopyableCode code="last_failure_message" /></td>
     <td><code>string</code></td>
     <td>The last failure message for the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRefreshDate" /></td>
+    <td><CopyableCode code="last_refresh_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the schema was last refreshed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceArn" /></td>
+    <td><CopyableCode code="replication_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the schema. (successful, failed, refreshing)</td>
 </tr>
@@ -139,11 +139,11 @@ Returns the status of the RefreshSchemas operation.
 
 ```sql
 SELECT
-EndpointArn,
-LastFailureMessage,
-LastRefreshDate,
-ReplicationInstanceArn,
-Status
+endpoint_arn,
+last_failure_message,
+last_refresh_date,
+replication_instance_arn,
+status
 FROM aws.dms.refresh_schemas_status
 WHERE region = '{{ region }}' -- required
 ;

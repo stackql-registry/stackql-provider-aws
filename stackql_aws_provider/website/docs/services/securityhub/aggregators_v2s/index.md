@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregatorV2Arn" /></td>
+    <td><CopyableCode code="aggregator_v2_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the aggregatorV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -129,7 +129,7 @@ Retrieves a list of V2 aggregators.
 
 ```sql
 SELECT
-AggregatorV2Arn
+aggregator_v2_arn
 FROM aws.securityhub.aggregators_v2s
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

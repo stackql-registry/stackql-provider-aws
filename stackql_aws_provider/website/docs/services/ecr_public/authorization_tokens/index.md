@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authorizationToken" /></td>
+    <td><CopyableCode code="authorization_token" /></td>
     <td><code>string</code></td>
     <td>A base64-encoded string that contains authorization data for a public Amazon ECR registry. When the string is decoded, it's presented in the format user:password for public registry authentication using docker login. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix time in seconds and milliseconds when the authorization token expires. Authorization tokens are valid for 12 hours.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves an authorization token. An authorization token represents your IAM aut
 
 ```sql
 SELECT
-authorizationToken,
-expiresAt
+authorization_token,
+expires_at
 FROM aws.ecr_public.authorization_tokens
 WHERE region = '{{ region }}' -- required
 ;

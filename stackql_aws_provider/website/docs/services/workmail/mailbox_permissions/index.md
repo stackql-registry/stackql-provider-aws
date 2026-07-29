@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GranteeId" /></td>
+    <td><CopyableCode code="grantee_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user, group, or resource to which the permissions are granted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GranteeType" /></td>
+    <td><CopyableCode code="grantee_type" /></td>
     <td><code>string</code></td>
     <td>The type of user, group, or resource referred to in GranteeId. (GROUP, USER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionValues" /></td>
+    <td><CopyableCode code="permission_values" /></td>
     <td><code>array</code></td>
     <td>The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.</td>
 </tr>
@@ -143,9 +143,9 @@ Lists the mailbox permissions associated with a user, group, or resource mailbox
 
 ```sql
 SELECT
-GranteeId,
-GranteeType,
-PermissionValues
+grantee_id,
+grantee_type,
+permission_values
 FROM aws.workmail.mailbox_permissions
 WHERE region = '{{ region }}' -- required
 ;

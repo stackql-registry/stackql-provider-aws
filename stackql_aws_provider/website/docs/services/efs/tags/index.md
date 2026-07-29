@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The tag key (String). The key can't start with aws:. (pattern: &lt;code&gt;^(?!&#91;aA&#93;&#123;1&#125;&#91;wW&#93;&#123;1&#125;&#91;sS&#93;&#123;1&#125;:)(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the tag key. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token used for pagination. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of the tags for the specified EFS resource.</td>
 </tr>
@@ -220,8 +220,8 @@ DEPRECATED - The DescribeTags action is deprecated and not maintained. To view t
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.efs.tags
 WHERE file_system_id = '{{ file_system_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -236,8 +236,8 @@ Lists all tags for a top-level EFS resource. You must provide the ID of the reso
 
 ```sql
 SELECT
-NextToken,
-Tags
+next_token,
+tags
 FROM aws.efs.tags
 WHERE resource_id = '{{ resource_id }}' -- required
 AND region = '{{ region }}' -- required

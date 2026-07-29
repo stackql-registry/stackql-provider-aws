@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="documentSource" /></td>
+    <td><CopyableCode code="document_source" /></td>
     <td><code>string</code></td>
     <td>An S3 link to the job document.</td>
 </tr>
@@ -75,32 +75,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in seconds since the epoch, when the job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in seconds since the epoch, when the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isConcurrent" /></td>
+    <td><CopyableCode code="is_concurrent" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a job is concurrent. Will be true when a job is rolling out new job executions or canceling previously created executions, otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The job ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier you assigned to this job when it was created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in seconds since the epoch, when the job was last updated.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The job summary status. (IN_PROGRESS, CANCELED, COMPLETED, DELETION_IN_PROGRESS, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetSelection" /></td>
+    <td><CopyableCode code="target_selection" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group. We recommend that you use continuous jobs instead of snapshot jobs for dynamic thing group targets. By using continuous jobs, devices that join the group receive the job execution even after the job has been created. (CONTINUOUS, SNAPSHOT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingGroupId" /></td>
+    <td><CopyableCode code="thing_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the thing group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -289,7 +289,7 @@ Describes a job. Requires permission to access the DescribeJob action.
 
 ```sql
 SELECT
-documentSource,
+document_source,
 job
 FROM aws.iot.jobs
 WHERE job_id = '{{ job_id }}' -- required
@@ -304,15 +304,15 @@ Lists jobs. Requires permission to access the ListJobs action.
 
 ```sql
 SELECT
-completedAt,
-createdAt,
-isConcurrent,
-jobArn,
-jobId,
-lastUpdatedAt,
+completed_at,
+created_at,
+is_concurrent,
+job_arn,
+job_id,
+last_updated_at,
 status,
-targetSelection,
-thingGroupId
+target_selection,
+thing_group_id
 FROM aws.iot.jobs
 WHERE region = '{{ region }}' -- required
 AND status = '{{ status }}'
@@ -383,8 +383,8 @@ SELECT
 '{{ region }}'
 RETURNING
 description,
-jobArn,
-jobId
+job_arn,
+job_id
 ;
 ```
 </TabItem>
@@ -503,8 +503,8 @@ AND targets = '{{ targets }}' --required
 AND namespaceId = '{{ namespaceId}}'
 RETURNING
 description,
-jobArn,
-jobId;
+job_arn,
+job_id;
 ```
 </TabItem>
 <TabItem value="update_job">

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedPublishers" /></td>
+    <td><CopyableCode code="allowed_publishers" /></td>
     <td><code>object</code></td>
     <td>List of signing profiles that can sign a code package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeSigningConfigArn" /></td>
+    <td><CopyableCode code="code_signing_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Code signing configuration. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(b?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:code-signing-config:csc-&#91;a-z0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeSigningConfigId" /></td>
+    <td><CopyableCode code="code_signing_config_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifer for the Code signing configuration. (pattern: &lt;code&gt;csc-&#91;a-zA-Z0-9-_\.&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeSigningPolicies" /></td>
+    <td><CopyableCode code="code_signing_policies" /></td>
     <td><code>object</code></td>
     <td>Code signing configuration policies specify the validation failure action for signature mismatch or expiry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Code signing configuration description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time that the Code signing configuration was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedPublishers" /></td>
+    <td><CopyableCode code="allowed_publishers" /></td>
     <td><code>object</code></td>
     <td>List of signing profiles that can sign a code package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeSigningConfigArn" /></td>
+    <td><CopyableCode code="code_signing_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Code signing configuration. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(b?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:code-signing-config:csc-&#91;a-z0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeSigningConfigId" /></td>
+    <td><CopyableCode code="code_signing_config_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifer for the Code signing configuration. (pattern: &lt;code&gt;csc-&#91;a-zA-Z0-9-_\.&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeSigningPolicies" /></td>
+    <td><CopyableCode code="code_signing_policies" /></td>
     <td><code>object</code></td>
     <td>Code signing configuration policies specify the validation failure action for signature mismatch or expiry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Code signing configuration description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time that the Code signing configuration was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
@@ -233,12 +233,12 @@ Returns information about the specified code signing configuration.
 
 ```sql
 SELECT
-AllowedPublishers,
-CodeSigningConfigArn,
-CodeSigningConfigId,
-CodeSigningPolicies,
-Description,
-LastModified
+allowed_publishers,
+code_signing_config_arn,
+code_signing_config_id,
+code_signing_policies,
+description,
+last_modified
 FROM aws.lambda.code_signing_configs
 WHERE code_signing_config_arn = '{{ code_signing_config_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -251,12 +251,12 @@ Returns a list of code signing configurations. A request returns up to 10,000 co
 
 ```sql
 SELECT
-AllowedPublishers,
-CodeSigningConfigArn,
-CodeSigningConfigId,
-CodeSigningPolicies,
-Description,
-LastModified
+allowed_publishers,
+code_signing_config_arn,
+code_signing_config_id,
+code_signing_policies,
+description,
+last_modified
 FROM aws.lambda.code_signing_configs
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -295,7 +295,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CodeSigningConfig
+code_signing_config
 ;
 ```
 </TabItem>
@@ -350,7 +350,7 @@ WHERE
 code_signing_config_arn = '{{ code_signing_config_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CodeSigningConfig;
+code_signing_config;
 ```
 </TabItem>
 </Tabs>

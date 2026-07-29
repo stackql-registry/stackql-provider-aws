@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessKeyId" /></td>
+    <td><CopyableCode code="access_key_id" /></td>
     <td><code>string</code></td>
     <td>The access key ID of the environment.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The expiration timestamp of the environment credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="secretAccessKey" /></td>
+    <td><CopyableCode code="secret_access_key" /></td>
     <td><code>string</code></td>
     <td>The secret access key of the environment credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionToken" /></td>
+    <td><CopyableCode code="session_token" /></td>
     <td><code>string</code></td>
     <td>The session token of the environment credentials.</td>
 </tr>
@@ -144,10 +144,10 @@ Gets the credentials of an environment in Amazon DataZone.
 
 ```sql
 SELECT
-accessKeyId,
+access_key_id,
 expiration,
-secretAccessKey,
-sessionToken
+secret_access_key,
+session_token
 FROM aws.datazone.environment_credentials
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required

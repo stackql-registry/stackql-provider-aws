@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>string</code></td>
     <td>An ordered list of actions to perform on messages that match at least one of the recipient email addresses or domains specified in the receipt rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>If true, the receipt rule is active. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the receipt rule. The name must meet the following requirements: Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), dashes (-), or periods (.). Start and end with a letter or number. Contain 64 characters or fewer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recipients" /></td>
+    <td><CopyableCode code="recipients" /></td>
     <td><code>string</code></td>
     <td>The recipient domains and email addresses that the receipt rule applies to. If this field is not specified, this rule matches all recipients on all verified domains.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScanEnabled" /></td>
+    <td><CopyableCode code="scan_enabled" /></td>
     <td><code>boolean</code></td>
     <td>If true, then messages that this receipt rule applies to are scanned for spam and viruses. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TlsPolicy" /></td>
+    <td><CopyableCode code="tls_policy" /></td>
     <td><code>string</code></td>
     <td>Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). If this parameter is set to Require, Amazon SES bounces emails that are not received over TLS. The default is Optional.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time the receipt rule set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the receipt rule set. The name must meet the following requirements: Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). Start and end with a letter or number. Contain 64 characters or fewer.</td>
 </tr>
@@ -201,12 +201,12 @@ Returns the details of the specified receipt rule set. For information about man
 
 ```sql
 SELECT
-Actions,
-Enabled,
-Name,
-Recipients,
-ScanEnabled,
-TlsPolicy
+actions,
+enabled,
+name,
+recipients,
+scan_enabled,
+tls_policy
 FROM aws.ses.receipt_rule_sets
 WHERE RuleSetName = '{{ RuleSetName }}' -- required
 AND region = '{{ region }}' -- required
@@ -219,8 +219,8 @@ Lists the receipt rule sets that exist under your Amazon Web Services account in
 
 ```sql
 SELECT
-CreatedTimestamp,
-Name
+created_timestamp,
+name
 FROM aws.ses.receipt_rule_sets
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

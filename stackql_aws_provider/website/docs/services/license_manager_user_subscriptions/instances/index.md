@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityProvider" /></td>
+    <td><CopyableCode code="identity_provider" /></td>
     <td><code>object</code></td>
     <td>Refers to an identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the EC2 instance, which provides user-based subscriptions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStatusCheckDate" /></td>
+    <td><CopyableCode code="last_status_check_date" /></td>
     <td><code>string</code></td>
     <td>The date of the last status check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS Account ID of the owner of this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Products" /></td>
+    <td><CopyableCode code="products" /></td>
     <td><code>array</code></td>
     <td>A list of provided user-based subscription products.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of an EC2 instance resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for an EC2 instance.</td>
 </tr>
@@ -149,13 +149,13 @@ Lists the EC2 instances providing user-based subscriptions.
 
 ```sql
 SELECT
-IdentityProvider,
-InstanceId,
-LastStatusCheckDate,
-OwnerAccountId,
-Products,
-Status,
-StatusMessage
+identity_provider,
+instance_id,
+last_status_check_date,
+owner_account_id,
+products,
+status,
+status_message
 FROM aws.license_manager_user_subscriptions.instances
 WHERE region = '{{ region }}' -- required
 ;

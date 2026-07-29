@@ -216,7 +216,7 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-apiKey
+api_key
 ;
 ```
 </TabItem>
@@ -263,7 +263,7 @@ api_id = '{{ api_id }}' --required
 AND id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-apiKey;
+api_key;
 ```
 </TabItem>
 </Tabs>

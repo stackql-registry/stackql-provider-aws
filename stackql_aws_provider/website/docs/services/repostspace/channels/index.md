@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="channelDescription" /></td>
+    <td><CopyableCode code="channel_description" /></td>
     <td><code>string</code></td>
     <td>A description for the channel. This is used only to help you identify this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the private re:Post channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name for the channel. This must be unique per private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelRoles" /></td>
+    <td><CopyableCode code="channel_roles" /></td>
     <td><code>object</code></td>
     <td>The channel roles associated to the users and groups of the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelStatus" /></td>
+    <td><CopyableCode code="channel_status" /></td>
     <td><code>string</code></td>
     <td>The status pf the channel. (CREATED, CREATING, CREATE_FAILED, DELETED, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createDateTime" /></td>
+    <td><CopyableCode code="create_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deleteDateTime" /></td>
+    <td><CopyableCode code="delete_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the channel was deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceId" /></td>
+    <td><CopyableCode code="space_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the private re:Post.</td>
 </tr>
@@ -105,47 +105,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="channelDescription" /></td>
+    <td><CopyableCode code="channel_description" /></td>
     <td><code>string</code></td>
     <td>A description for the channel. This is used only to help you identify this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the private re:Post channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name for the channel. This must be unique per private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelStatus" /></td>
+    <td><CopyableCode code="channel_status" /></td>
     <td><code>string</code></td>
     <td>The status pf the channel. (CREATED, CREATING, CREATE_FAILED, DELETED, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createDateTime" /></td>
+    <td><CopyableCode code="create_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deleteDateTime" /></td>
+    <td><CopyableCode code="delete_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the channel was deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupCount" /></td>
+    <td><CopyableCode code="group_count" /></td>
     <td><code>integer</code></td>
     <td>The number of groups that are part of the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceId" /></td>
+    <td><CopyableCode code="space_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the private re:Post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of users that are part of the channel.</td>
 </tr>
@@ -270,14 +270,14 @@ Displays information about a channel in a private re:Post.
 
 ```sql
 SELECT
-channelDescription,
-channelId,
-channelName,
-channelRoles,
-channelStatus,
-createDateTime,
-deleteDateTime,
-spaceId
+channel_description,
+channel_id,
+channel_name,
+channel_roles,
+channel_status,
+create_date_time,
+delete_date_time,
+space_id
 FROM aws.repostspace.channels
 WHERE space_id = '{{ space_id }}' -- required
 AND channel_id = '{{ channel_id }}' -- required
@@ -291,15 +291,15 @@ Returns the list of channel within a private re:Post with some information about
 
 ```sql
 SELECT
-channelDescription,
-channelId,
-channelName,
-channelStatus,
-createDateTime,
-deleteDateTime,
-groupCount,
-spaceId,
-userCount
+channel_description,
+channel_id,
+channel_name,
+channel_status,
+create_date_time,
+delete_date_time,
+group_count,
+space_id,
+user_count
 FROM aws.repostspace.channels
 WHERE space_id = '{{ space_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -337,7 +337,7 @@ SELECT
 '{{ space_id }}',
 '{{ region }}'
 RETURNING
-channelId
+channel_id
 ;
 ```
 </TabItem>

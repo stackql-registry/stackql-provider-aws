@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="computePlatform" /></td>
+    <td><CopyableCode code="compute_platform" /></td>
     <td><code>string</code></td>
     <td>The destination platform type for the deployment (Lambda, Server, or ECS). (Server, Lambda, ECS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the deployment configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentConfigId" /></td>
+    <td><CopyableCode code="deployment_config_id" /></td>
     <td><code>string</code></td>
     <td>The deployment configuration ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentConfigName" /></td>
+    <td><CopyableCode code="deployment_config_name" /></td>
     <td><code>string</code></td>
     <td>The deployment configuration name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minimumHealthyHosts" /></td>
+    <td><CopyableCode code="minimum_healthy_hosts" /></td>
     <td><code>object</code></td>
     <td>Information about the number or percentage of minimum healthy instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trafficRoutingConfig" /></td>
+    <td><CopyableCode code="traffic_routing_config" /></td>
     <td><code>object</code></td>
     <td>The configuration that specifies how the deployment traffic is routed. Used for deployments with a Lambda or Amazon ECS compute platform only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="zonalConfig" /></td>
+    <td><CopyableCode code="zonal_config" /></td>
     <td><code>object</code></td>
     <td>Information about a zonal configuration.</td>
 </tr>
@@ -191,13 +191,13 @@ Gets information about a deployment configuration.
 
 ```sql
 SELECT
-computePlatform,
-createTime,
-deploymentConfigId,
-deploymentConfigName,
-minimumHealthyHosts,
-trafficRoutingConfig,
-zonalConfig
+compute_platform,
+create_time,
+deployment_config_id,
+deployment_config_name,
+minimum_healthy_hosts,
+traffic_routing_config,
+zonal_config
 FROM aws.codedeploy.deployment_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,7 +248,7 @@ SELECT
 '{{ zonalConfig }}',
 '{{ region }}'
 RETURNING
-deploymentConfigId
+deployment_config_id
 ;
 ```
 </TabItem>

@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the response plan. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chatChannel" /></td>
+    <td><CopyableCode code="chat_channel" /></td>
     <td><code>object</code></td>
     <td>The Chatbot chat channel used for collaboration during an incident.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The long format name of the response plan. Can contain spaces.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incidentTemplate" /></td>
+    <td><CopyableCode code="incident_template" /></td>
     <td><code>object</code></td>
     <td>Basic details used in creating a response plan. The response plan is then used to create an incident record.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the response plan. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The human readable name of the response plan. This can include spaces.</td>
 </tr>
@@ -228,10 +228,10 @@ SELECT
 name,
 actions,
 arn,
-chatChannel,
-displayName,
+chat_channel,
+display_name,
 engagements,
-incidentTemplate,
+incident_template,
 integrations
 FROM aws.ssm_incidents.response_plans
 WHERE arn = '{{ arn }}' -- required
@@ -247,7 +247,7 @@ Lists all response plans in your account.
 SELECT
 name,
 arn,
-displayName
+display_name
 FROM aws.ssm_incidents.response_plans
 WHERE region = '{{ region }}' -- required
 ;

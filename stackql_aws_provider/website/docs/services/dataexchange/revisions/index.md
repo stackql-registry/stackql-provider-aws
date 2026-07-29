@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>An optional comment about the revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the revision was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSetId" /></td>
+    <td><CopyableCode code="data_set_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data set associated with the data set revision. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Finalized" /></td>
+    <td><CopyableCode code="finalized" /></td>
     <td><code>boolean</code></td>
     <td>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products. Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the revision. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevocationComment" /></td>
+    <td><CopyableCode code="revocation_comment" /></td>
     <td><code>string</code></td>
     <td>A required comment to inform subscribers of the reason their access to the revision was revoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revoked" /></td>
+    <td><CopyableCode code="revoked" /></td>
     <td><code>boolean</code></td>
     <td>A status indicating that subscribers' access to the revision was revoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevokedAt" /></td>
+    <td><CopyableCode code="revoked_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the revision was revoked, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceId" /></td>
+    <td><CopyableCode code="source_id" /></td>
     <td><code>string</code></td>
     <td>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags for the revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the revision was last updated, in ISO 8601 format.</td>
 </tr>
@@ -212,18 +212,18 @@ This operation returns information about a revision.
 
 ```sql
 SELECT
-Arn,
-Comment,
-CreatedAt,
-DataSetId,
-Finalized,
-Id,
-RevocationComment,
-Revoked,
-RevokedAt,
-SourceId,
-Tags,
-UpdatedAt
+arn,
+comment,
+created_at,
+data_set_id,
+finalized,
+id,
+revocation_comment,
+revoked,
+revoked_at,
+source_id,
+tags,
+updated_at
 FROM aws.dataexchange.revisions
 WHERE data_set_id = '{{ data_set_id }}' -- required
 AND revision_id = '{{ revision_id }}' -- required
@@ -260,18 +260,18 @@ SELECT
 '{{ data_set_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-Comment,
-CreatedAt,
-DataSetId,
-Finalized,
-Id,
-RevocationComment,
-Revoked,
-RevokedAt,
-SourceId,
-Tags,
-UpdatedAt
+arn,
+comment,
+created_at,
+data_set_id,
+finalized,
+id,
+revocation_comment,
+revoked,
+revoked_at,
+source_id,
+tags,
+updated_at
 ;
 ```
 </TabItem>
@@ -319,17 +319,17 @@ AND revision_id = '{{ revision_id }}' --required
 AND region = '{{ region }}' --required
 AND RevocationComment = '{{ RevocationComment }}' --required
 RETURNING
-Arn,
-Comment,
-CreatedAt,
-DataSetId,
-Finalized,
-Id,
-RevocationComment,
-Revoked,
-RevokedAt,
-SourceId,
-UpdatedAt;
+arn,
+comment,
+created_at,
+data_set_id,
+finalized,
+id,
+revocation_comment,
+revoked,
+revoked_at,
+source_id,
+updated_at;
 ```
 </TabItem>
 <TabItem value="update_revision">
@@ -346,17 +346,17 @@ data_set_id = '{{ data_set_id }}' --required
 AND revision_id = '{{ revision_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-Comment,
-CreatedAt,
-DataSetId,
-Finalized,
-Id,
-RevocationComment,
-Revoked,
-RevokedAt,
-SourceId,
-UpdatedAt;
+arn,
+comment,
+created_at,
+data_set_id,
+finalized,
+id,
+revocation_comment,
+revoked,
+revoked_at,
+source_id,
+updated_at;
 ```
 </TabItem>
 </Tabs>

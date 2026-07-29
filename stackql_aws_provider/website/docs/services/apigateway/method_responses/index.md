@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="responseModels" /></td>
+    <td><CopyableCode code="response_models" /></td>
     <td><code>object</code></td>
     <td>Specifies the Model resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a Model name as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>A key-value map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header and the value specifies whether the associated method response header is required or not. The expression of the key must match the pattern method.response.header.&#123;name&#125;, where name is a valid and unique header name. API Gateway passes certain integration response data to the method response headers specified here according to the mapping you prescribe in the API's IntegrationResponse. The integration response data that can be mapped include an integration response header expressed in integration.response.header.&#123;name&#125;, a static value enclosed within a pair of single quotes (e.g., 'application/json'), or a JSON expression from the back-end response payload in the form of integration.response.body.&#123;JSON-expression&#125;, where JSON-expression is a valid JSON expression without the $ prefix.)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The status code. (pattern: &lt;code&gt;&#91;1-5&#93;\d\d&lt;/code&gt;)</td>
 </tr>
@@ -170,9 +170,9 @@ Describes a MethodResponse resource.
 
 ```sql
 SELECT
-responseModels,
-responseParameters,
-statusCode
+response_models,
+response_parameters,
+status_code
 FROM aws.apigateway.method_responses
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND resource_id = '{{ resource_id }}' -- required
@@ -208,9 +208,9 @@ AND http_method = '{{ http_method }}' --required
 AND status_code = '{{ status_code }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-responseModels,
-responseParameters,
-statusCode;
+response_models,
+response_parameters,
+status_code;
 ```
 </TabItem>
 </Tabs>
@@ -240,9 +240,9 @@ AND http_method = '{{ http_method }}' --required
 AND status_code = '{{ status_code }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-responseModels,
-responseParameters,
-statusCode;
+response_models,
+response_parameters,
+status_code;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>The current number of entities that you have created of the specified type. For example, if you specified MAX_RRSETS_BY_ZONE for the value of Type in the request, the value of Count is the current number of records that you have created in the specified hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Limit" /></td>
+    <td><CopyableCode code="limit" /></td>
     <td><code>string</code></td>
     <td>The current setting for the specified limit. For example, if you specified MAX_RRSETS_BY_ZONE for the value of Type in the request, the value of Limit is the maximum number of records that you can create in the specified hosted zone.</td>
 </tr>
@@ -134,8 +134,8 @@ Gets the specified limit for a specified hosted zone, for example, the maximum n
 
 ```sql
 SELECT
-Count,
-Limit
+count,
+limit
 FROM aws.route53.hosted_zone_limits
 WHERE type = '{{ type }}' -- required
 AND id = '{{ id }}' -- required

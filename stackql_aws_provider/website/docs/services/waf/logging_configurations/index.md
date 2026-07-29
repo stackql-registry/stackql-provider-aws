@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogDestinationConfigs" /></td>
+    <td><CopyableCode code="log_destination_configs" /></td>
     <td><code>array</code></td>
     <td>An array of Amazon Kinesis Data Firehose ARNs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedactedFields" /></td>
+    <td><CopyableCode code="redacted_fields" /></td>
     <td><code>array</code></td>
     <td>The parts of the request that you want redacted from the logs. For example, if you redact the cookie field, the cookie field in the firehose will be xxx.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the web ACL that you want to associate with LogDestinationConfigs. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogDestinationConfigs" /></td>
+    <td><CopyableCode code="log_destination_configs" /></td>
     <td><code>array</code></td>
     <td>An array of Amazon Kinesis Data Firehose ARNs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedactedFields" /></td>
+    <td><CopyableCode code="redacted_fields" /></td>
     <td><code>array</code></td>
     <td>The parts of the request that you want redacted from the logs. For example, if you redact the cookie field, the cookie field in the firehose will be xxx.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the web ACL that you want to associate with LogDestinationConfigs. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -181,9 +181,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-LogDestinationConfigs,
-RedactedFields,
-ResourceArn
+log_destination_configs,
+redacted_fields,
+resource_arn
 FROM aws.waf.logging_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -195,9 +195,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-LogDestinationConfigs,
-RedactedFields,
-ResourceArn
+log_destination_configs,
+redacted_fields,
+resource_arn
 FROM aws.waf.logging_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -226,7 +226,7 @@ WHERE
 region = '{{ region }}' --required
 AND LoggingConfiguration = '{{ LoggingConfiguration }}' --required
 RETURNING
-LoggingConfiguration;
+logging_configuration;
 ```
 </TabItem>
 </Tabs>

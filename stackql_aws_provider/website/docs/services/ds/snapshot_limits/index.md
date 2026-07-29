@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManualSnapshotsCurrentCount" /></td>
+    <td><CopyableCode code="manual_snapshots_current_count" /></td>
     <td><code>integer</code></td>
     <td>The current number of manual snapshots of the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManualSnapshotsLimit" /></td>
+    <td><CopyableCode code="manual_snapshots_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of manual snapshots allowed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManualSnapshotsLimitReached" /></td>
+    <td><CopyableCode code="manual_snapshots_limit_reached" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if the manual snapshot limit has been reached.</td>
 </tr>
@@ -129,9 +129,9 @@ Obtains the manual snapshot limits for a directory.
 
 ```sql
 SELECT
-ManualSnapshotsCurrentCount,
-ManualSnapshotsLimit,
-ManualSnapshotsLimitReached
+manual_snapshots_current_count,
+manual_snapshots_limit,
+manual_snapshots_limit_reached
 FROM aws.ds.snapshot_limits
 WHERE region = '{{ region }}' -- required
 ;

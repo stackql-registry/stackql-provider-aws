@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that uniquely identifies this delivery source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliverySourceConfiguration" /></td>
+    <td><CopyableCode code="delivery_source_configuration" /></td>
     <td><code>object</code></td>
     <td>The map of key-value pairs that configure the delivery source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logType" /></td>
+    <td><CopyableCode code="log_type" /></td>
     <td><code>string</code></td>
     <td>The type of log that the source is sending. For valid values for this parameter, see the documentation for the source service. (pattern: &lt;code&gt;&#91;\w&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArns" /></td>
+    <td><CopyableCode code="resource_arns" /></td>
     <td><code>array</code></td>
     <td>This array contains the ARN of the Amazon Web Services resource that sends logs and is represented by this delivery source. Currently, only one ARN can be in the array.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the delivery source. A delivery source can have the status ACTIVE or INACTIVE. Note: This value is defined for selective log types. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the status of the delivery source. A status reason of RESOURCE_DELETED indicates that the resource associated with the delivery source has been deleted. Note: This value is defined for selective log types. (RESOURCE_DELETED)</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that uniquely identifies this delivery source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliverySourceConfiguration" /></td>
+    <td><CopyableCode code="delivery_source_configuration" /></td>
     <td><code>object</code></td>
     <td>The map of key-value pairs that configure the delivery source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logType" /></td>
+    <td><CopyableCode code="log_type" /></td>
     <td><code>string</code></td>
     <td>The type of log that the source is sending. For valid values for this parameter, see the documentation for the source service. (pattern: &lt;code&gt;&#91;\w&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArns" /></td>
+    <td><CopyableCode code="resource_arns" /></td>
     <td><code>array</code></td>
     <td>This array contains the ARN of the Amazon Web Services resource that sends logs and is represented by this delivery source. Currently, only one ARN can be in the array.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the delivery source. A delivery source can have the status ACTIVE or INACTIVE. Note: This value is defined for selective log types. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the status of the delivery source. A status reason of RESOURCE_DELETED indicates that the resource associated with the delivery source has been deleted. Note: This value is defined for selective log types. (RESOURCE_DELETED)</td>
 </tr>
@@ -243,12 +243,12 @@ Retrieves complete information about one delivery source.
 SELECT
 name,
 arn,
-deliverySourceConfiguration,
-logType,
-resourceArns,
+delivery_source_configuration,
+log_type,
+resource_arns,
 service,
 status,
-statusReason,
+status_reason,
 tags
 FROM aws.logs.delivery_sources
 WHERE region = '{{ region }}' -- required
@@ -263,12 +263,12 @@ Retrieves a list of the delivery sources that have been created in the account.
 SELECT
 name,
 arn,
-deliverySourceConfiguration,
-logType,
-resourceArns,
+delivery_source_configuration,
+log_type,
+resource_arns,
 service,
 status,
-statusReason,
+status_reason,
 tags
 FROM aws.logs.delivery_sources
 WHERE region = '{{ region }}' -- required
@@ -304,7 +304,7 @@ AND name = '{{ name }}' --required
 AND resourceArn = '{{ resourceArn }}' --required
 AND logType = '{{ logType }}' --required
 RETURNING
-deliverySource;
+delivery_source;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DesiredState" /></td>
+    <td><CopyableCode code="desired_state" /></td>
     <td><code>object</code></td>
     <td>The desired state of the Amazon Web Services resource for the sync status with the Git repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestSuccessfulSync" /></td>
+    <td><CopyableCode code="latest_successful_sync" /></td>
     <td><code>object</code></td>
     <td>The latest successful sync for the sync status with the Git repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestSync" /></td>
+    <td><CopyableCode code="latest_sync" /></td>
     <td><code>object</code></td>
     <td>The latest sync for the sync status with the Git repository, whether successful or not.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the status of the sync with the Git repository for a specific Amazon Web
 
 ```sql
 SELECT
-DesiredState,
-LatestSuccessfulSync,
-LatestSync
+desired_state,
+latest_successful_sync,
+latest_sync
 FROM aws.codestar_connections.resource_sync_status
 WHERE region = '{{ region }}' -- required
 ;

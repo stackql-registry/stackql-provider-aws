@@ -70,67 +70,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FailureMode" /></td>
+    <td><CopyableCode code="failure_mode" /></td>
     <td><code>string</code></td>
     <td>The failure mode of the invocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HookExecutionTarget" /></td>
+    <td><CopyableCode code="hook_execution_target" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target stack or request token of the Cloud Control API operation. Only shown in responses when the request does not specify TargetType and TargetId filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HookResultId" /></td>
+    <td><CopyableCode code="hook_result_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this Hook invocation result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HookStatusReason" /></td>
+    <td><CopyableCode code="hook_status_reason" /></td>
     <td><code>string</code></td>
     <td>A description of the Hook results status. For example, if the Hook result is in a failed state, this may contain additional information for the failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationPoint" /></td>
+    <td><CopyableCode code="invocation_point" /></td>
     <td><code>string</code></td>
     <td>The specific point in the provisioning process where the Hook is invoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvokedAt" /></td>
+    <td><CopyableCode code="invoked_at" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the Hook was invoked. Only shown in responses when the request does not specify TargetType and TargetId filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Hook invocation. The following statuses are possible: HOOK_IN_PROGRESS: The Hook is currently running. HOOK_COMPLETE_SUCCEEDED: The Hook completed successfully. HOOK_COMPLETE_FAILED: The Hook completed but failed validation. HOOK_FAILED: The Hook encountered an error during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Hook invocation target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The target type that the Hook was invoked against.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeArn" /></td>
+    <td><CopyableCode code="type_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Hook that was invoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeConfigurationVersionId" /></td>
+    <td><CopyableCode code="type_configuration_version_id" /></td>
     <td><code>string</code></td>
     <td>The version of the Hook configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Hook that was invoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeVersionId" /></td>
+    <td><CopyableCode code="type_version_id" /></td>
     <td><code>string</code></td>
     <td>The version of the Hook that was invoked.</td>
 </tr>
@@ -250,19 +250,19 @@ Returns summaries of invoked Hooks. For more information, see View invocation su
 
 ```sql
 SELECT
-FailureMode,
-HookExecutionTarget,
-HookResultId,
-HookStatusReason,
-InvocationPoint,
-InvokedAt,
-Status,
-TargetId,
-TargetType,
-TypeArn,
-TypeConfigurationVersionId,
-TypeName,
-TypeVersionId
+failure_mode,
+hook_execution_target,
+hook_result_id,
+hook_status_reason,
+invocation_point,
+invoked_at,
+status,
+target_id,
+target_type,
+type_arn,
+type_configuration_version_id,
+type_name,
+type_version_id
 FROM aws.cloudformation.hook_results
 WHERE region = '{{ region }}' -- required
 AND TargetType = '{{ TargetType }}'

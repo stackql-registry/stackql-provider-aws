@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>Customer gateway device platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Software" /></td>
+    <td><CopyableCode code="software" /></td>
     <td><code>string</code></td>
     <td>Customer gateway device software version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vendor" /></td>
+    <td><CopyableCode code="vendor" /></td>
     <td><code>string</code></td>
     <td>Customer gateway device vendor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnConnectionDeviceTypeId" /></td>
+    <td><CopyableCode code="vpn_connection_device_type_id" /></td>
     <td><code>string</code></td>
     <td>Customer gateway device identifier.</td>
 </tr>
@@ -149,10 +149,10 @@ Obtain a list of customer gateway devices for which sample configuration files c
 
 ```sql
 SELECT
-Platform,
-Software,
-Vendor,
-VpnConnectionDeviceTypeId
+platform,
+software,
+vendor,
+vpn_connection_device_type_id
 FROM aws.ec2.vpn_connection_device_types
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

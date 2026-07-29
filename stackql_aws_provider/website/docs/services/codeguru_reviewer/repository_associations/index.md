@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RepositoryAssociation" /></td>
+    <td><CopyableCode code="repository_association" /></td>
     <td><code>object</code></td>
     <td>Information about the repository association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: A tag key (for example, CostCenter, Environment, Project, or Secret). Tag keys are case sensitive. An optional field known as a tag value (for example, 111122223333, Production, or a team name). Omitting the tag value is the same as using an empty string. Like tag keys, tag values are case sensitive.</td>
 </tr>
@@ -75,42 +75,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationArn" /></td>
+    <td><CopyableCode code="association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the RepositoryAssociation object. You can retrieve this ARN by calling ListRepositoryAssociations. (pattern: &lt;code&gt;^arn:aws&#91;^:\s&#93;*:codeguru-reviewer:&#91;^:\s&#93;+:&#91;\d&#93;&#123;12&#125;:&#91;a-z-&#93;+:&#91;\w-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The repository association ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionArn" /></td>
+    <td><CopyableCode code="connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an Amazon Web Services CodeStar Connections connection. Its format is arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see Connection in the Amazon Web Services CodeStar Connections API Reference. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:.+:.+:&#91;0-9&#93;&#123;12&#125;:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimeStamp" /></td>
+    <td><CopyableCode code="last_updated_time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in milliseconds since the epoch, since the repository association was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository association. (pattern: &lt;code&gt;^\S&#91;\w.-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the repository. For an Amazon Web Services CodeCommit repository, this is the Amazon Web Services account ID of the account that owns the repository. For a GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the username for the account that owns the repository. For an S3 repository, it can be the username or Amazon Web Services account ID. (pattern: &lt;code&gt;^\S(.*\S)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The provider type of the repository association. (CodeCommit, GitHub, Bitbucket, GitHubEnterpriseServer, S3Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the repository association. The valid repository association states are: Associated: The repository association is complete. Associating: CodeGuru Reviewer is: Setting up pull request notifications. This is required for pull requests to trigger a CodeGuru Reviewer review. If your repository ProviderType is GitHub, GitHub Enterprise Server, or Bitbucket, CodeGuru Reviewer creates webhooks in your repository to trigger CodeGuru Reviewer reviews. If you delete these webhooks, reviews of code in your repository cannot be triggered. Setting up source code access. This is required for CodeGuru Reviewer to securely clone code in your repository. Failed: The repository failed to associate or disassociate. Disassociating: CodeGuru Reviewer is removing the repository's pull request notifications and source code access. Disassociated: CodeGuru Reviewer successfully disassociated the repository. You can create a new association with this repository if you want to review source code in it later. You can control access to code reviews created in anassociated repository with tags after it has been disassociated. For more information, see Using tags to control access to associated repositories in the Amazon CodeGuru Reviewer User Guide. (Associated, Associating, Failed, Disassociating, Disassociated)</td>
 </tr>
@@ -222,8 +222,8 @@ Returns a RepositoryAssociation object that contains information about the reque
 
 ```sql
 SELECT
-RepositoryAssociation,
-Tags
+repository_association,
+tags
 FROM aws.codeguru_reviewer.repository_associations
 WHERE association_arn = '{{ association_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -236,14 +236,14 @@ Returns a list of RepositoryAssociationSummary objects that contain summary info
 
 ```sql
 SELECT
-AssociationArn,
-AssociationId,
-ConnectionArn,
-LastUpdatedTimeStamp,
-Name,
-Owner,
-ProviderType,
-State
+association_arn,
+association_id,
+connection_arn,
+last_updated_time_stamp,
+name,
+owner,
+provider_type,
+state
 FROM aws.codeguru_reviewer.repository_associations
 WHERE region = '{{ region }}' -- required
 AND ProviderType = '{{ ProviderType }}'

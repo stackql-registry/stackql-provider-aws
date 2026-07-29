@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="acmCertificateArn" /></td>
+    <td><CopyableCode code="acm_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ACM certificate. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):acm:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:certificate/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedAt" /></td>
+    <td><CopyableCode code="associated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the certificate was associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the certificate association. (PENDING_ASSOCIATION, ASSOCIATED, PENDING_DISASSOCIATION, DISASSOCIATED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the certificate association was last updated.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="acmCertificateArn" /></td>
+    <td><CopyableCode code="acm_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ACM certificate. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):acm:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:certificate/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedAt" /></td>
+    <td><CopyableCode code="associated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the certificate was associated.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the certificate association. (PENDING_ASSOCIATION, ASSOCIATED, PENDING_DISASSOCIATION, DISASSOCIATED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the certificate association was last updated.</td>
 </tr>
@@ -202,11 +202,11 @@ Retrieves the details of a certificate association with a responder gateway.
 
 ```sql
 SELECT
-acmCertificateArn,
-associatedAt,
-gatewayId,
+acm_certificate_arn,
+associated_at,
+gateway_id,
 status,
-updatedAt
+updated_at
 FROM aws.rtbfabric.certificate_associations
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND acmCertificateArn = '{{ acmCertificateArn }}' -- required
@@ -220,10 +220,10 @@ Lists the certificate associations for a responder gateway.
 
 ```sql
 SELECT
-acmCertificateArn,
-associatedAt,
+acm_certificate_arn,
+associated_at,
 status,
-updatedAt
+updated_at
 FROM aws.rtbfabric.certificate_associations
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND region = '{{ region }}' -- required

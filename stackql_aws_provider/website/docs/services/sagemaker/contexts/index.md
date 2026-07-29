@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContextArn" /></td>
+    <td><CopyableCode code="context_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the context. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:context/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextName" /></td>
+    <td><CopyableCode code="context_name" /></td>
     <td><code>string</code></td>
     <td>The name of the context. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-_&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextType" /></td>
+    <td><CopyableCode code="context_type" /></td>
     <td><code>string</code></td>
     <td>The type of the context.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the context was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the context. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the context was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LineageGroupArn" /></td>
+    <td><CopyableCode code="lineage_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the lineage group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:lineage-group/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Properties" /></td>
+    <td><CopyableCode code="properties" /></td>
     <td><code>object</code></td>
     <td>A list of the context's properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>The source of the context.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContextArn" /></td>
+    <td><CopyableCode code="context_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the context. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:context/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextName" /></td>
+    <td><CopyableCode code="context_name" /></td>
     <td><code>string</code></td>
     <td>The name of the context. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-_&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextType" /></td>
+    <td><CopyableCode code="context_type" /></td>
     <td><code>string</code></td>
     <td>The type of the context.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the context was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the context was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>The source of the context.</td>
 </tr>
@@ -243,17 +243,17 @@ Describes a context.
 
 ```sql
 SELECT
-ContextArn,
-ContextName,
-ContextType,
-CreatedBy,
-CreationTime,
-Description,
-LastModifiedBy,
-LastModifiedTime,
-LineageGroupArn,
-Properties,
-Source
+context_arn,
+context_name,
+context_type,
+created_by,
+creation_time,
+description,
+last_modified_by,
+last_modified_time,
+lineage_group_arn,
+properties,
+source
 FROM aws.sagemaker.contexts
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,12 +265,12 @@ Lists the contexts in your account and their properties.
 
 ```sql
 SELECT
-ContextArn,
-ContextName,
-ContextType,
-CreationTime,
-LastModifiedTime,
-Source
+context_arn,
+context_name,
+context_type,
+creation_time,
+last_modified_time,
+source
 FROM aws.sagemaker.contexts
 WHERE region = '{{ region }}' -- required
 ;
@@ -311,7 +311,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ContextArn
+context_arn
 ;
 ```
 </TabItem>
@@ -381,7 +381,7 @@ WHERE
 region = '{{ region }}' --required
 AND ContextName = '{{ ContextName }}' --required
 RETURNING
-ContextArn;
+context_arn;
 ```
 </TabItem>
 </Tabs>

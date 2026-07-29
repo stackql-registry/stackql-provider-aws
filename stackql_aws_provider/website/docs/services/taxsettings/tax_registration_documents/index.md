@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="destinationFilePath" /></td>
+    <td><CopyableCode code="destination_file_path" /></td>
     <td><code>string</code></td>
     <td>The file path of the Amazon S3 bucket where you want to download your tax document to. (pattern: &lt;code&gt;^&#91;\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="presignedS3Url" /></td>
+    <td><CopyableCode code="presigned_s3_url" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 presigned URL of the tax registration document. (pattern: &lt;code&gt;^https.*\S.*$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Downloads your tax documents to the Amazon S3 bucket that you specify in your re
 
 ```sql
 SELECT
-destinationFilePath,
-presignedS3Url
+destination_file_path,
+presigned_s3_url
 FROM aws.taxsettings.tax_registration_documents
 WHERE region = '{{ region }}' -- required
 ;

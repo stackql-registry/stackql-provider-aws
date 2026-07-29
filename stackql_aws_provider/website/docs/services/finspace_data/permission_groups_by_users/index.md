@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="permissionGroups" /></td>
+    <td><CopyableCode code="permission_groups" /></td>
     <td><code>array</code></td>
     <td>A list of returned permission groups.</td>
 </tr>
@@ -139,8 +139,8 @@ Lists all the permission groups that are associated with a specific user.
 
 ```sql
 SELECT
-nextToken,
-permissionGroups
+next_token,
+permission_groups
 FROM aws.finspace_data.permission_groups_by_users
 WHERE user_id = '{{ user_id }}' -- required
 AND maxResults = '{{ maxResults }}' -- required

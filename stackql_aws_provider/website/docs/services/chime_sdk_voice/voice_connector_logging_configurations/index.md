@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EnableMediaMetricLogs" /></td>
+    <td><CopyableCode code="enable_media_metric_logs" /></td>
     <td><code>boolean</code></td>
     <td>Enables or disables media metrics logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableSIPLogs" /></td>
+    <td><CopyableCode code="enable_sip_logs" /></td>
     <td><code>boolean</code></td>
     <td>Boolean that enables sending SIP message logs to Amazon CloudWatch.</td>
 </tr>
@@ -136,8 +136,8 @@ Retrieves the logging configuration settings for the specified Voice Connector. 
 
 ```sql
 SELECT
-EnableMediaMetricLogs,
-EnableSIPLogs
+enable_media_metric_logs,
+enable_sip_logs
 FROM aws.chime_sdk_voice.voice_connector_logging_configurations
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -168,7 +168,7 @@ voice_connector_id = '{{ voice_connector_id }}' --required
 AND region = '{{ region }}' --required
 AND LoggingConfiguration = '{{ LoggingConfiguration }}' --required
 RETURNING
-LoggingConfiguration;
+logging_configuration;
 ```
 </TabItem>
 </Tabs>

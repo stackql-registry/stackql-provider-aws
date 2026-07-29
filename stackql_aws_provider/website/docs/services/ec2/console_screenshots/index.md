@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImageData" /></td>
+    <td><CopyableCode code="image_data" /></td>
     <td><code>string</code></td>
     <td>The data that comprises the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieve a JPG-format screenshot of a running instance to help with troubleshoot
 
 ```sql
 SELECT
-ImageData,
-InstanceId
+image_data,
+instance_id
 FROM aws.ec2.console_screenshots
 WHERE InstanceId = '{{ InstanceId }}' -- required
 AND region = '{{ region }}' -- required

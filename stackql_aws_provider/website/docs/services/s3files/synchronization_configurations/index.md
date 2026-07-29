@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="expirationDataRules" /></td>
+    <td><CopyableCode code="expiration_data_rules" /></td>
     <td><code>array</code></td>
     <td>An array of expiration data rules that control when cached data expires from the file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importDataRules" /></td>
+    <td><CopyableCode code="import_data_rules" /></td>
     <td><code>array</code></td>
     <td>An array of import data rules that control how data is imported from S3 into the file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersionNumber" /></td>
+    <td><CopyableCode code="latest_version_number" /></td>
     <td><code>integer</code></td>
     <td>The version number of the synchronization configuration. Use this value with PutSynchronizationConfiguration to ensure optimistic concurrency control.</td>
 </tr>
@@ -141,9 +141,9 @@ Returns the synchronization configuration for the specified S3 File System, incl
 
 ```sql
 SELECT
-expirationDataRules,
-importDataRules,
-latestVersionNumber
+expiration_data_rules,
+import_data_rules,
+latest_version_number
 FROM aws.s3files.synchronization_configurations
 WHERE file_system_id = '{{ file_system_id }}' -- required
 AND region = '{{ region }}' -- required

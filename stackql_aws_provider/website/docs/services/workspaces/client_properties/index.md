@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientPropertiesList" /></td>
+    <td><CopyableCode code="client_properties_list" /></td>
     <td><code>array</code></td>
     <td>Information about the specified Amazon WorkSpaces clients.</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
 
 ```sql
 SELECT
-ClientPropertiesList
+client_properties_list
 FROM aws.workspaces.client_properties
 WHERE region = '{{ region }}' -- required
 ;

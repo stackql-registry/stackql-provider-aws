@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost asset. An Outpost asset can be a single server within an Outposts rack or an Outposts server configuration. (pattern: &lt;code&gt;^(\w+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityTaskId" /></td>
+    <td><CopyableCode code="capacity_task_id" /></td>
     <td><code>string</code></td>
     <td>ID of the capacity task. (pattern: &lt;code&gt;^cap-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityTaskStatus" /></td>
+    <td><CopyableCode code="capacity_task_status" /></td>
     <td><code>string</code></td>
     <td>Status of the capacity task. A capacity task can have one of the following statuses: REQUESTED - The capacity task was created and is awaiting the next step by Amazon Web Services Outposts. IN_PROGRESS - The capacity task is running and cannot be cancelled. FAILED - The capacity task could not be completed. COMPLETED - The capacity task has completed successfully. WAITING_FOR_EVACUATION - The capacity task requires capacity to run. You must stop the recommended EC2 running instances to free up capacity for the task to run. CANCELLATION_IN_PROGRESS - The capacity task has been cancelled and is in the process of cleaning up resources. CANCELLED - The capacity task is cancelled. (REQUESTED, IN_PROGRESS, FAILED, COMPLETED, WAITING_FOR_EVACUATION, CANCELLATION_IN_PROGRESS, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the capacity task ran successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the capacity task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DryRun" /></td>
+    <td><CopyableCode code="dry_run" /></td>
     <td><code>boolean</code></td>
     <td>Performs a dry run to determine if you are above or below instance capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Failed" /></td>
+    <td><CopyableCode code="failed" /></td>
     <td><code>object</code></td>
     <td>Reason why the capacity task failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstancesToExclude" /></td>
+    <td><CopyableCode code="instances_to_exclude" /></td>
     <td><code>object</code></td>
     <td>Instances that the user specified they cannot stop in order to free up the capacity needed to run the capacity task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the capacity task was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderId" /></td>
+    <td><CopyableCode code="order_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Amazon Web Services Outposts order associated with the specified capacity task. (pattern: &lt;code&gt;oo-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Outpost associated with the specified capacity task. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/)?op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedInstancePools" /></td>
+    <td><CopyableCode code="requested_instance_pools" /></td>
     <td><code>array</code></td>
     <td>List of instance pools requested in the capacity task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskActionOnBlockingInstances" /></td>
+    <td><CopyableCode code="task_action_on_blocking_instances" /></td>
     <td><code>string</code></td>
     <td>User-specified option in case an instance is blocking the capacity task from running. Shows one of the following options: WAIT_FOR_EVACUATION - Checks every 10 minutes over 48 hours to determine if instances have stopped and capacity is available to complete the task. FAIL_TASK - The capacity task fails. (WAIT_FOR_EVACUATION, FAIL_TASK)</td>
 </tr>
@@ -130,42 +130,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset. An Outpost asset can be a single server within an Outposts rack or an Outposts server configuration. (pattern: &lt;code&gt;^(\w+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityTaskId" /></td>
+    <td><CopyableCode code="capacity_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the specified capacity task. (pattern: &lt;code&gt;^cap-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityTaskStatus" /></td>
+    <td><CopyableCode code="capacity_task_status" /></td>
     <td><code>string</code></td>
     <td>The status of the capacity task. (REQUESTED, IN_PROGRESS, FAILED, COMPLETED, WAITING_FOR_EVACUATION, CANCELLATION_IN_PROGRESS, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the specified capacity task successfully ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the specified capacity task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the specified capacity was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderId" /></td>
+    <td><CopyableCode code="order_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Outposts order of the host associated with the capacity task. (pattern: &lt;code&gt;oo-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost associated with the specified capacity task. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/)?op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -272,19 +272,19 @@ Gets details of the specified capacity task.
 
 ```sql
 SELECT
-AssetId,
-CapacityTaskId,
-CapacityTaskStatus,
-CompletionDate,
-CreationDate,
-DryRun,
-Failed,
-InstancesToExclude,
-LastModifiedDate,
-OrderId,
-OutpostId,
-RequestedInstancePools,
-TaskActionOnBlockingInstances
+asset_id,
+capacity_task_id,
+capacity_task_status,
+completion_date,
+creation_date,
+dry_run,
+failed,
+instances_to_exclude,
+last_modified_date,
+order_id,
+outpost_id,
+requested_instance_pools,
+task_action_on_blocking_instances
 FROM aws.outposts.capacity_tasks
 WHERE capacity_task_id = '{{ capacity_task_id }}' -- required
 AND outpost_id = '{{ outpost_id }}' -- required
@@ -298,14 +298,14 @@ Lists the capacity tasks for your Amazon Web Services account. Use filters to re
 
 ```sql
 SELECT
-AssetId,
-CapacityTaskId,
-CapacityTaskStatus,
-CompletionDate,
-CreationDate,
-LastModifiedDate,
-OrderId,
-OutpostId
+asset_id,
+capacity_task_id,
+capacity_task_status,
+completion_date,
+creation_date,
+last_modified_date,
+order_id,
+outpost_id
 FROM aws.outposts.capacity_tasks
 WHERE region = '{{ region }}' -- required
 AND OutpostIdentifierFilter = '{{ OutpostIdentifierFilter }}'

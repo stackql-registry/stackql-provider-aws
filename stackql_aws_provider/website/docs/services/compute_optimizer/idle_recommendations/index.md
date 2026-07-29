@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe errors of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleRecommendations" /></td>
+    <td><CopyableCode code="idle_recommendations" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the idle resource recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of idle resource recommendations.</td>
 </tr>
@@ -137,8 +137,8 @@ Returns idle resource recommendations. Compute Optimizer generates recommendatio
 ```sql
 SELECT
 errors,
-idleRecommendations,
-nextToken
+idle_recommendations,
+next_token
 FROM aws.compute_optimizer.idle_recommendations
 WHERE region = '{{ region }}' -- required
 ;

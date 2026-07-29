@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the resource group owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPatternSets" /></td>
+    <td><CopyableCode code="log_pattern_sets" /></td>
     <td><code>array</code></td>
     <td>The list of log pattern sets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceGroupName" /></td>
+    <td><CopyableCode code="resource_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Lists the log pattern sets in the specific application.
 
 ```sql
 SELECT
-AccountId,
-LogPatternSets,
-NextToken,
-ResourceGroupName
+account_id,
+log_pattern_sets,
+next_token,
+resource_group_name
 FROM aws.application_insights.log_pattern_sets
 WHERE region = '{{ region }}' -- required
 ;

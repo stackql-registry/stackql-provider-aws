@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LensReviewReport" /></td>
+    <td><CopyableCode code="lens_review_report" /></td>
     <td><code>object</code></td>
     <td>A report of a lens review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MilestoneNumber" /></td>
+    <td><CopyableCode code="milestone_number" /></td>
     <td><code>integer</code></td>
     <td>The milestone number. A workload can have a maximum of 100 milestones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the workload. This ID is unique within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -144,9 +144,9 @@ Get lens review report.
 
 ```sql
 SELECT
-LensReviewReport,
-MilestoneNumber,
-WorkloadId
+lens_review_report,
+milestone_number,
+workload_id
 FROM aws.wellarchitected.lens_review_reports
 WHERE workload_id = '{{ workload_id }}' -- required
 AND lens_alias = '{{ lens_alias }}' -- required

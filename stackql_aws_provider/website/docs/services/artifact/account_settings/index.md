@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="notificationSubscriptionStatus" /></td>
+    <td><CopyableCode code="notification_subscription_status" /></td>
     <td><code>string</code></td>
     <td>Notification subscription status of the customer. (SUBSCRIBED, NOT_SUBSCRIBED)</td>
 </tr>
@@ -126,7 +126,7 @@ Get the account settings for Artifact.
 
 ```sql
 SELECT
-notificationSubscriptionStatus
+notification_subscription_status
 FROM aws.artifact.account_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -154,7 +154,7 @@ notificationSubscriptionStatus = '{{ notificationSubscriptionStatus }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-accountSettings;
+account_settings;
 ```
 </TabItem>
 </Tabs>

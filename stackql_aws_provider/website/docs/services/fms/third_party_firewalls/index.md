@@ -108,7 +108,7 @@ WHERE
 region = '{{ region }}' --required
 AND ThirdPartyFirewall = '{{ ThirdPartyFirewall }}' --required
 RETURNING
-ThirdPartyFirewallStatus;
+third_party_firewall_status;
 ```
 </TabItem>
 </Tabs>

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The options are valkey or redis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The minimum engine version required, which is Redis OSS 6.0</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingChanges" /></td>
+    <td><CopyableCode code="pending_changes" /></td>
     <td><code>string</code></td>
     <td>A list of updates being applied to the user group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationGroups" /></td>
+    <td><CopyableCode code="replication_groups" /></td>
     <td><code>string</code></td>
     <td>A list of replication groups that the user group can access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessCaches" /></td>
+    <td><CopyableCode code="serverless_caches" /></td>
     <td><code>string</code></td>
     <td>Indicates which serverless caches the specified user group is associated with. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates user group status. Can be "creating", "active", "modifying", "deleting".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserGroupId" /></td>
+    <td><CopyableCode code="user_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserIds" /></td>
+    <td><CopyableCode code="user_ids" /></td>
     <td><code>string</code></td>
     <td>The list of user IDs that belong to the user group.</td>
 </tr>
@@ -225,15 +225,15 @@ Returns a list of user groups.
 
 ```sql
 SELECT
-ARN,
-Engine,
-MinimumEngineVersion,
-PendingChanges,
-ReplicationGroups,
-ServerlessCaches,
-Status,
-UserGroupId,
-UserIds
+arn,
+engine,
+minimum_engine_version,
+pending_changes,
+replication_groups,
+serverless_caches,
+status,
+user_group_id,
+user_ids
 FROM aws.elasticache.user_groups
 WHERE region = '{{ region }}' -- required
 AND UserGroupId = '{{ UserGroupId }}'
@@ -273,15 +273,15 @@ SELECT
 '{{ UserIds }}',
 '{{ Tags }}'
 RETURNING
-ARN,
-Engine,
-MinimumEngineVersion,
-PendingChanges,
-ReplicationGroups,
-ServerlessCaches,
-Status,
-UserGroupId,
-UserIds
+arn,
+engine,
+minimum_engine_version,
+pending_changes,
+replication_groups,
+serverless_caches,
+status,
+user_group_id,
+user_ids
 ;
 ```
 </TabItem>
@@ -337,15 +337,15 @@ AND UserIdsToAdd = '{{ UserIdsToAdd}}'
 AND UserIdsToRemove = '{{ UserIdsToRemove}}'
 AND Engine = '{{ Engine}}'
 RETURNING
-ARN,
-Engine,
-MinimumEngineVersion,
-PendingChanges,
-ReplicationGroups,
-ServerlessCaches,
-Status,
-UserGroupId,
-UserIds;
+arn,
+engine,
+minimum_engine_version,
+pending_changes,
+replication_groups,
+serverless_caches,
+status,
+user_group_id,
+user_ids;
 ```
 </TabItem>
 </Tabs>

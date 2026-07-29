@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivityStatus" /></td>
+    <td><CopyableCode code="activity_status" /></td>
     <td><code>string</code></td>
     <td>The progress of the Spot Fleet request. If there is an error, the status is error. After all requests are placed, the status is pending_fulfillment. If the size of the fleet is equal to or greater than its target capacity, the status is fulfilled. If the size of the fleet is decreased, the status is pending_termination while Spot Instances are terminating.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The creation date and time of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotFleetRequestConfig" /></td>
+    <td><CopyableCode code="spot_fleet_request_config" /></td>
     <td><code>string</code></td>
     <td>The configuration of the Spot Fleet request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotFleetRequestId" /></td>
+    <td><CopyableCode code="spot_fleet_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Spot Fleet request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotFleetRequestState" /></td>
+    <td><CopyableCode code="spot_fleet_request_state" /></td>
     <td><code>string</code></td>
     <td>The state of the Spot Fleet request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for a Spot Fleet resource.</td>
 </tr>
@@ -213,12 +213,12 @@ Describes your Spot Fleet requests. Spot Fleet requests are deleted 48 hours aft
 
 ```sql
 SELECT
-ActivityStatus,
-CreateTime,
-SpotFleetRequestConfig,
-SpotFleetRequestId,
-SpotFleetRequestState,
-Tags
+activity_status,
+create_time,
+spot_fleet_request_config,
+spot_fleet_request_id,
+spot_fleet_request_state,
+tags
 FROM aws.ec2.spot_fleet_requests
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -256,7 +256,7 @@ AND Context = '{{ Context}}'
 AND TargetCapacity = '{{ TargetCapacity}}'
 AND ExcessCapacityTerminationPolicy = '{{ ExcessCapacityTerminationPolicy}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

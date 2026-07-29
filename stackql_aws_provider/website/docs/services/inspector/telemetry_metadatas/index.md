@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="telemetryMetadata" /></td>
+    <td><CopyableCode code="telemetry_metadata" /></td>
     <td><code>array</code></td>
     <td>Telemetry details.</td>
 </tr>
@@ -119,7 +119,7 @@ Information about the data that is collected for the specified assessment run.
 
 ```sql
 SELECT
-telemetryMetadata
+telemetry_metadata
 FROM aws.inspector.telemetry_metadatas
 WHERE region = '{{ region }}' -- required
 ;

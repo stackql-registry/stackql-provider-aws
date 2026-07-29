@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedRoles" /></td>
+    <td><CopyableCode code="associated_roles" /></td>
     <td><code>string</code></td>
     <td>Information about the associated IAM roles.</td>
 </tr>
@@ -129,7 +129,7 @@ Returns the IAM roles that are associated with the specified ACM (ACM) certifica
 
 ```sql
 SELECT
-AssociatedRoles
+associated_roles
 FROM aws.ec2.associated_enclave_certificate_iam_roles
 WHERE CertificateArn = '{{ CertificateArn }}' -- required
 AND region = '{{ region }}' -- required

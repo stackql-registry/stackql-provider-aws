@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams channel. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9-_=+\/.,&#93;)*%3&#91;aA&#93;(&#91;a-zA-Z0-9-_=+\/.,&#93;)*%40(&#91;a-zA-Z0-9-_=+\/.,&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Microsoft Teams channel. (pattern: &lt;code&gt;(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChatConfigurationArn" /></td>
+    <td><CopyableCode code="chat_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the MicrosoftTeamsChannelConfiguration associated with the user identity to delete. (pattern: &lt;code&gt;arn:aws:(wheatley|chatbot):&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationName" /></td>
+    <td><CopyableCode code="configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GuardrailPolicyArns" /></td>
+    <td><CopyableCode code="guardrail_policy_arns" /></td>
     <td><code>array</code></td>
     <td>The list of IAM policy ARNs that are applied as channel guardrails. The AWS managed AdministratorAccess policy is applied by default if this is not set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>A user-defined role that AWS Chatbot assumes. This is not the service-linked role. For more information, see IAM policies for AWS Chatbot in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingLevel" /></td>
+    <td><CopyableCode code="logging_level" /></td>
     <td><code>string</code></td>
     <td>Logging levels include ERROR, INFO, or NONE. (pattern: &lt;code&gt;(ERROR|INFO|NONE)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArns" /></td>
+    <td><CopyableCode code="sns_topic_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the SNS topics that deliver notifications to AWS Chatbot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Either ENABLED or DISABLED. The resource returns DISABLED if the organization's AWS Chatbot policy has explicitly denied that configuration. For example, if Amazon Chime is disabled. (pattern: &lt;code&gt;(ENABLED|DISABLED)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Provided if State is DISABLED. Provides context as to why the resource is disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A map of tags assigned to a resource. A tag is a string-to-string map of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamId" /></td>
+    <td><CopyableCode code="team_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console. For more information, see Step 1: Configure a Microsoft Teams client in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamName" /></td>
+    <td><CopyableCode code="team_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Microsoft Teams Team. (pattern: &lt;code&gt;(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams tenant. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserAuthorizationRequired" /></td>
+    <td><CopyableCode code="user_authorization_required" /></td>
     <td><code>boolean</code></td>
     <td>Enables use of a user role requirement in your chat configuration.</td>
 </tr>
@@ -140,77 +140,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams channel. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9-_=+\/.,&#93;)*%3&#91;aA&#93;(&#91;a-zA-Z0-9-_=+\/.,&#93;)*%40(&#91;a-zA-Z0-9-_=+\/.,&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Microsoft Teams channel. (pattern: &lt;code&gt;(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChatConfigurationArn" /></td>
+    <td><CopyableCode code="chat_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the MicrosoftTeamsChannelConfiguration associated with the user identity to delete. (pattern: &lt;code&gt;arn:aws:(wheatley|chatbot):&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationName" /></td>
+    <td><CopyableCode code="configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GuardrailPolicyArns" /></td>
+    <td><CopyableCode code="guardrail_policy_arns" /></td>
     <td><code>array</code></td>
     <td>The list of IAM policy ARNs that are applied as channel guardrails. The AWS managed AdministratorAccess policy is applied by default if this is not set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>A user-defined role that AWS Chatbot assumes. This is not the service-linked role. For more information, see IAM policies for AWS Chatbot in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingLevel" /></td>
+    <td><CopyableCode code="logging_level" /></td>
     <td><code>string</code></td>
     <td>Logging levels include ERROR, INFO, or NONE. (pattern: &lt;code&gt;(ERROR|INFO|NONE)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArns" /></td>
+    <td><CopyableCode code="sns_topic_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the SNS topics that deliver notifications to AWS Chatbot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Either ENABLED or DISABLED. The resource returns DISABLED if the organization's AWS Chatbot policy has explicitly denied that configuration. For example, if Amazon Chime is disabled. (pattern: &lt;code&gt;(ENABLED|DISABLED)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Provided if State is DISABLED. Provides context as to why the resource is disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A map of tags assigned to a resource. A tag is a string-to-string map of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamId" /></td>
+    <td><CopyableCode code="team_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console. For more information, see Step 1: Configure a Microsoft Teams client in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamName" /></td>
+    <td><CopyableCode code="team_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Microsoft Teams Team. (pattern: &lt;code&gt;(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams tenant. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserAuthorizationRequired" /></td>
+    <td><CopyableCode code="user_authorization_required" /></td>
     <td><code>boolean</code></td>
     <td>Enables use of a user role requirement in your chat configuration.</td>
 </tr>
@@ -308,21 +308,21 @@ Returns a Microsoft Teams channel configuration in an AWS account.
 
 ```sql
 SELECT
-ChannelId,
-ChannelName,
-ChatConfigurationArn,
-ConfigurationName,
-GuardrailPolicyArns,
-IamRoleArn,
-LoggingLevel,
-SnsTopicArns,
-State,
-StateReason,
-Tags,
-TeamId,
-TeamName,
-TenantId,
-UserAuthorizationRequired
+channel_id,
+channel_name,
+chat_configuration_arn,
+configuration_name,
+guardrail_policy_arns,
+iam_role_arn,
+logging_level,
+sns_topic_arns,
+state,
+state_reason,
+tags,
+team_id,
+team_name,
+tenant_id,
+user_authorization_required
 FROM aws.chatbot.microsoft_teams_channel_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -334,21 +334,21 @@ Lists all AWS Chatbot Microsoft Teams channel configurations in an AWS account.
 
 ```sql
 SELECT
-ChannelId,
-ChannelName,
-ChatConfigurationArn,
-ConfigurationName,
-GuardrailPolicyArns,
-IamRoleArn,
-LoggingLevel,
-SnsTopicArns,
-State,
-StateReason,
-Tags,
-TeamId,
-TeamName,
-TenantId,
-UserAuthorizationRequired
+channel_id,
+channel_name,
+chat_configuration_arn,
+configuration_name,
+guardrail_policy_arns,
+iam_role_arn,
+logging_level,
+sns_topic_arns,
+state,
+state_reason,
+tags,
+team_id,
+team_name,
+tenant_id,
+user_authorization_required
 FROM aws.chatbot.microsoft_teams_channel_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -401,7 +401,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ChannelConfiguration
+channel_configuration
 ;
 ```
 </TabItem>
@@ -475,7 +475,7 @@ region = '{{ region }}' --required
 AND ChatConfigurationArn = '{{ ChatConfigurationArn }}' --required
 AND ChannelId = '{{ ChannelId }}' --required
 RETURNING
-ChannelConfiguration;
+channel_configuration;
 ```
 </TabItem>
 </Tabs>

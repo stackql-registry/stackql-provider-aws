@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>Name of the customer-agreement resource. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="acceptanceTerms" /></td>
+    <td><CopyableCode code="acceptance_terms" /></td>
     <td><code>array</code></td>
     <td>Terms required to accept the agreement resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementArn" /></td>
+    <td><CopyableCode code="agreement_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the agreement resource the customer-agreement resource represents. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>ARN of the customer-agreement resource. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>AWS account Id that owns the resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
     <td>Description of the resource. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveEnd" /></td>
+    <td><CopyableCode code="effective_end" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating when the agreement was terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveStart" /></td>
+    <td><CopyableCode code="effective_start" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating when the agreement became effective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationArn" /></td>
+    <td><CopyableCode code="organization_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the organization that owns the resource. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>State of the resource. (ACTIVE, CUSTOMER_TERMINATED, AWS_TERMINATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="terminateTerms" /></td>
+    <td><CopyableCode code="terminate_terms" /></td>
     <td><code>array</code></td>
     <td>Terms required to terminate the customer-agreement resource.</td>
 </tr>
@@ -191,16 +191,16 @@ List active customer-agreements applicable to calling identity.
 SELECT
 id,
 name,
-acceptanceTerms,
-agreementArn,
+acceptance_terms,
+agreement_arn,
 arn,
-awsAccountId,
+aws_account_id,
 description,
-effectiveEnd,
-effectiveStart,
-organizationArn,
+effective_end,
+effective_start,
+organization_arn,
 state,
-terminateTerms,
+terminate_terms,
 type_
 FROM aws.artifact.customer_agreements
 WHERE region = '{{ region }}' -- required

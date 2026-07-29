@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the security group.</td>
 </tr>
@@ -191,8 +191,8 @@ Describes a network interface attribute. You can specify only one attribute at a
 
 ```sql
 SELECT
-GroupId,
-GroupName
+group_id,
+group_name
 FROM aws.ec2.network_interface_attributes
 WHERE NetworkInterfaceId = '{{ NetworkInterfaceId }}' -- required
 AND region = '{{ region }}' -- required

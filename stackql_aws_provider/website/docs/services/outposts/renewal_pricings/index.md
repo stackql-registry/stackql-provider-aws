@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PricingOptions" /></td>
+    <td><CopyableCode code="pricing_options" /></td>
     <td><code>array</code></td>
     <td>The pricing options for the specified Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingResult" /></td>
+    <td><CopyableCode code="pricing_result" /></td>
     <td><code>string</code></td>
     <td>The result of the pricing request. (PRICED, UNABLE_TO_PRICE)</td>
 </tr>
@@ -129,8 +129,8 @@ Gets all available renewal pricing options for the specified Outpost.
 
 ```sql
 SELECT
-PricingOptions,
-PricingResult
+pricing_options,
+pricing_result
 FROM aws.outposts.renewal_pricings
 WHERE outpost_identifier = '{{ outpost_identifier }}' -- required
 AND region = '{{ region }}' -- required

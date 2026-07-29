@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessType" /></td>
+    <td><CopyableCode code="access_type" /></td>
     <td><code>string</code></td>
     <td>The type of connectivity used to access the Amazon S3 on Outposts endpoint. (Private, CustomerOwnedIp)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrBlock" /></td>
+    <td><CopyableCode code="cidr_block" /></td>
     <td><code>string</code></td>
     <td>The VPC CIDR committed by this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOwnedIpv4Pool" /></td>
+    <td><CopyableCode code="customer_owned_ipv_4_pool" /></td>
     <td><code>string</code></td>
     <td>The ID of the customer-owned IPv4 address pool used for the endpoint. (pattern: &lt;code&gt;^ipv4pool-coip-(&#91;0-9a-f&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):s3-outposts:&#91;a-z\-0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:outpost/(op-&#91;a-f0-9&#93;&#123;17&#125;|ec2)/endpoint/&#91;a-zA-Z0-9&#93;&#123;19&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedReason" /></td>
+    <td><CopyableCode code="failed_reason" /></td>
     <td><code>object</code></td>
     <td>The failure reason, if any, for a create or delete endpoint operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaces" /></td>
+    <td><CopyableCode code="network_interfaces" /></td>
     <td><code>array</code></td>
     <td>The network interface of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostsId" /></td>
+    <td><CopyableCode code="outposts_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outposts. (pattern: &lt;code&gt;^(op-&#91;a-f0-9&#93;&#123;17&#125;|\d&#123;12&#125;|ec2)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupId" /></td>
+    <td><CopyableCode code="security_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group used for the endpoint. (pattern: &lt;code&gt;^sg-(&#91;0-9a-f&#93;&#123;8&#125;|&#91;0-9a-f&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the endpoint. (Pending, Available, Deleting, Create_Failed, Delete_Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet used for the endpoint. (pattern: &lt;code&gt;^subnet-(&#91;0-9a-f&#93;&#123;8&#125;|&#91;0-9a-f&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC used for the endpoint.</td>
 </tr>
@@ -208,18 +208,18 @@ Lists endpoints associated with the specified Outpost. Related actions include: 
 
 ```sql
 SELECT
-AccessType,
-CidrBlock,
-CreationTime,
-CustomerOwnedIpv4Pool,
-EndpointArn,
-FailedReason,
-NetworkInterfaces,
-OutpostsId,
-SecurityGroupId,
-Status,
-SubnetId,
-VpcId
+access_type,
+cidr_block,
+creation_time,
+customer_owned_ipv_4_pool,
+endpoint_arn,
+failed_reason,
+network_interfaces,
+outposts_id,
+security_group_id,
+status,
+subnet_id,
+vpc_id
 FROM aws.s3outposts.endpoints
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -260,7 +260,7 @@ SELECT
 '{{ CustomerOwnedIpv4Pool }}',
 '{{ region }}'
 RETURNING
-EndpointArn
+endpoint_arn
 ;
 ```
 </TabItem>

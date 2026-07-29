@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the AWS Trusted Advisor Check (pattern: &lt;code&gt;arn:&#91;\w-&#93;+:trustedadvisor:::check\/&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsServices" /></td>
+    <td><CopyableCode code="aws_services" /></td>
     <td><code>array</code></td>
     <td>The AWS Services that the Check applies to</td>
 </tr>
@@ -187,7 +187,7 @@ SELECT
 id,
 name,
 arn,
-awsServices,
+aws_services,
 description,
 metadata,
 pillars,

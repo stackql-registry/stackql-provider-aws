@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) for the profile. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="As2Id" /></td>
+    <td><CopyableCode code="as_2_id" /></td>
     <td><code>string</code></td>
     <td>The As2Id is the AS2-name, as defined in the RFC 4130. For inbound transfers, this is the AS2-From header for the AS2 messages sent from the partner. For outbound connectors, this is the AS2-To header for the AS2 messages sent to the partner using the StartFileTransfer API operation. This ID cannot include spaces. (pattern: &lt;code&gt;&#91;\u0020-\u007E\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateIds" /></td>
+    <td><CopyableCode code="certificate_ids" /></td>
     <td><code>array</code></td>
     <td>An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the local or partner AS2 profile. (pattern: &lt;code&gt;p-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileType" /></td>
+    <td><CopyableCode code="profile_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether to list only LOCAL type profiles or only PARTNER type profiles. If not supplied in the request, the command lists all types of profiles. (LOCAL, PARTNER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs that can be used to group and search for profiles.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified profile. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="As2Id" /></td>
+    <td><CopyableCode code="as_2_id" /></td>
     <td><code>string</code></td>
     <td>The As2Id is the AS2-name, as defined in the RFC 4130. For inbound transfers, this is the AS2-From header for the AS2 messages sent from the partner. For outbound connectors, this is the AS2-To header for the AS2 messages sent to the partner using the StartFileTransfer API operation. This ID cannot include spaces. (pattern: &lt;code&gt;&#91;\u0020-\u007E\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the local or partner AS2 profile. (pattern: &lt;code&gt;p-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileType" /></td>
+    <td><CopyableCode code="profile_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether to list only LOCAL type profiles or only PARTNER type profiles. If not supplied in the request, the command lists all types of profiles. (LOCAL, PARTNER)</td>
 </tr>
@@ -208,12 +208,12 @@ Returns the details of the profile that's specified by the ProfileId.
 
 ```sql
 SELECT
-Arn,
-As2Id,
-CertificateIds,
-ProfileId,
-ProfileType,
-Tags
+arn,
+as_2_id,
+certificate_ids,
+profile_id,
+profile_type,
+tags
 FROM aws.transfer.profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,10 +225,10 @@ Returns a list of the profiles for your system. If you want to limit the results
 
 ```sql
 SELECT
-Arn,
-As2Id,
-ProfileId,
-ProfileType
+arn,
+as_2_id,
+profile_id,
+profile_type
 FROM aws.transfer.profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,7 +265,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ProfileId
+profile_id
 ;
 ```
 </TabItem>
@@ -324,7 +324,7 @@ WHERE
 region = '{{ region }}' --required
 AND ProfileId = '{{ ProfileId }}' --required
 RETURNING
-ProfileId;
+profile_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountCustomization" /></td>
+    <td><CopyableCode code="account_customization" /></td>
     <td><code>object</code></td>
     <td>The Quick Sight customizations associated with your Amazon Web Services account or a Quick Sight namespace in a specific Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customization that's associated with this Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the Amazon Web Services account that you're describing. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The Quick Sight namespace that you're describing. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -180,12 +180,12 @@ Describes the customizations associated with the provided Amazon Web Services ac
 
 ```sql
 SELECT
-AccountCustomization,
-Arn,
-AwsAccountId,
-Namespace,
-RequestId,
-Status
+account_customization,
+arn,
+aws_account_id,
+namespace,
+request_id,
+status
 FROM aws.quicksight.account_customizations
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -225,12 +225,12 @@ SELECT
 '{{ region }}',
 '{{ namespace }}'
 RETURNING
-AccountCustomization,
-Arn,
-AwsAccountId,
-Namespace,
-RequestId,
-Status
+account_customization,
+arn,
+aws_account_id,
+namespace,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -287,12 +287,12 @@ AND region = '{{ region }}' --required
 AND AccountCustomization = '{{ AccountCustomization }}' --required
 AND namespace = '{{ namespace}}'
 RETURNING
-AccountCustomization,
-Arn,
-AwsAccountId,
-Namespace,
-RequestId,
-Status;
+account_customization,
+arn,
+aws_account_id,
+namespace,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Invitations" /></td>
+    <td><CopyableCode code="invitations" /></td>
     <td><code>array</code></td>
     <td>The invitations for the network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that indicates the next set of results to retrieve.</td>
 </tr>
@@ -146,8 +146,8 @@ Returns a list of all invitations for the current Amazon Web Services account. A
 
 ```sql
 SELECT
-Invitations,
-NextToken
+invitations,
+next_token
 FROM aws.managedblockchain.invitations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

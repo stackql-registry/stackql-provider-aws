@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ItemCount" /></td>
+    <td><CopyableCode code="item_count" /></td>
     <td><code>integer</code></td>
     <td>Number of key value pairs in the Key Value Store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the key value pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalSizeInBytes" /></td>
+    <td><CopyableCode code="total_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Total size of the Key Value Store in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the key value pair.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the key value pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the key value pair.</td>
 </tr>
@@ -213,10 +213,10 @@ Returns a key value pair.
 
 ```sql
 SELECT
-ItemCount,
-Key,
-TotalSizeInBytes,
-Value
+item_count,
+key,
+total_size_in_bytes,
+value
 FROM aws.cloudfront_keyvaluestore.keys
 WHERE kvs_arn = '{{ kvs_arn }}' -- required
 AND key = '{{ key }}' -- required
@@ -230,8 +230,8 @@ Returns a list of key value pairs.
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.cloudfront_keyvaluestore.keys
 WHERE kvs_arn = '{{ kvs_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -265,9 +265,9 @@ kvs_arn = '{{ kvs_arn }}' --required
 AND `If-Match` = '{{ If-Match }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ETag,
-ItemCount,
-TotalSizeInBytes;
+e_tag,
+item_count,
+total_size_in_bytes;
 ```
 </TabItem>
 </Tabs>
@@ -295,9 +295,9 @@ AND kvs_arn = '{{ kvs_arn }}' --required
 AND `If-Match` = '{{ If-Match }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ETag,
-ItemCount,
-TotalSizeInBytes;
+e_tag,
+item_count,
+total_size_in_bytes;
 ```
 </TabItem>
 </Tabs>

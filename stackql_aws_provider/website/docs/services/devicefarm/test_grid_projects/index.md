@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>A human-readable description for the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC security groups and subnets that are attached to a project.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Used for pagination. Pass into ListTestGridProjects to get more results in a paginated request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testGridProjects" /></td>
+    <td><CopyableCode code="test_grid_projects" /></td>
     <td><code>array</code></td>
     <td>The list of TestGridProjects, based on a ListTestGridProjectsRequest.</td>
 </tr>
@@ -197,7 +197,7 @@ name,
 arn,
 created,
 description,
-vpcConfig
+vpc_config
 FROM aws.devicefarm.test_grid_projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,8 +209,8 @@ Gets a list of all Selenium testing projects in your account.
 
 ```sql
 SELECT
-nextToken,
-testGridProjects
+next_token,
+test_grid_projects
 FROM aws.devicefarm.test_grid_projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,7 +245,7 @@ SELECT
 '{{ vpcConfig }}',
 '{{ region }}'
 RETURNING
-testGridProject
+test_grid_project
 ;
 ```
 </TabItem>
@@ -303,7 +303,7 @@ WHERE
 region = '{{ region }}' --required
 AND projectArn = '{{ projectArn }}' --required
 RETURNING
-testGridProject;
+test_grid_project;
 ```
 </TabItem>
 </Tabs>

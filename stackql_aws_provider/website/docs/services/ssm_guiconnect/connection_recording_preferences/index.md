@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>Service-provided idempotency token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionRecordingPreferences" /></td>
+    <td><CopyableCode code="connection_recording_preferences" /></td>
     <td><code>object</code></td>
     <td>The set of preferences used for recording RDP connections in the requesting Amazon Web Services account and Amazon Web Services Region. This includes details such as which S3 bucket recordings are stored in.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the preferences specified for recording RDP connections in the requestin
 
 ```sql
 SELECT
-ClientToken,
-ConnectionRecordingPreferences
+client_token,
+connection_recording_preferences
 FROM aws.ssm_guiconnect.connection_recording_preferences
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,8 +169,8 @@ WHERE
 region = '{{ region }}' --required
 AND ConnectionRecordingPreferences = '{{ ConnectionRecordingPreferences }}' --required
 RETURNING
-ClientToken,
-ConnectionRecordingPreferences;
+client_token,
+connection_recording_preferences;
 ```
 </TabItem>
 </Tabs>

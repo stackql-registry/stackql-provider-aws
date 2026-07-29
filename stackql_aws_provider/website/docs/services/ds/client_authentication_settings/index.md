@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the status of the client authentication type was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Whether the client authentication type is enabled or disabled for the specified directory. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of client authentication for the specified directory. If no type is specified, a list of all client authentication types that are supported for the directory is retrieved. (SmartCard, SmartCardOrPassword)</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves information about the type of client authentication for the specified 
 
 ```sql
 SELECT
-LastUpdatedDateTime,
-Status,
-Type
+last_updated_date_time,
+status,
+type
 FROM aws.ds.client_authentication_settings
 WHERE region = '{{ region }}' -- required
 ;

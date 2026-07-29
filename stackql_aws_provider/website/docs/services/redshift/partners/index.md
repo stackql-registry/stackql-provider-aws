@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date (UTC) that the partner integration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database that receives data from a partner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartnerName" /></td>
+    <td><CopyableCode code="partner_name" /></td>
     <td><code>string</code></td>
     <td>The name of the partner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The partner integration status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message provided by the partner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string</code></td>
     <td>The date (UTC) that the partner integration status was last updated by the partner.</td>
 </tr>
@@ -205,12 +205,12 @@ Returns information about the partner integrations defined for a cluster.
 
 ```sql
 SELECT
-CreatedAt,
-DatabaseName,
-PartnerName,
-Status,
-StatusMessage,
-UpdatedAt
+created_at,
+database_name,
+partner_name,
+status,
+status_message,
+updated_at
 FROM aws.redshift.partners
 WHERE AccountId = '{{ AccountId }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}' -- required
@@ -246,8 +246,8 @@ AND DatabaseName = '{{ DatabaseName }}' --required
 AND PartnerName = '{{ PartnerName }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DatabaseName,
-PartnerName;
+database_name,
+partner_name;
 ```
 </TabItem>
 </Tabs>

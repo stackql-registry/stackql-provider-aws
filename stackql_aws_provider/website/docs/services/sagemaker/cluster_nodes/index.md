@@ -50,112 +50,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityType" /></td>
+    <td><CopyableCode code="capacity_type" /></td>
     <td><code>string</code></td>
     <td>The capacity type of the node. Valid values are OnDemand and Spot. When set to OnDemand, the node is launched as an On-Demand instance. When set to Spot, the node is launched as a Spot instance. (Spot, OnDemand)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentImageId" /></td>
+    <td><CopyableCode code="current_image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Machine Image (AMI) currently in use by the node. (pattern: &lt;code&gt;ami-&#91;0-9a-fA-F&#93;&#123;8,17&#125;|default&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredImageId" /></td>
+    <td><CopyableCode code="desired_image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Machine Image (AMI) desired for the node. (pattern: &lt;code&gt;ami-&#91;0-9a-fA-F&#93;&#123;8,17&#125;|default&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageVersionStatus" /></td>
+    <td><CopyableCode code="image_version_status" /></td>
     <td><code>string</code></td>
     <td>The status of the image version for the cluster node. (UpToDate, UpdateAvailable)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceGroupName" /></td>
+    <td><CopyableCode code="instance_group_name" /></td>
     <td><code>string</code></td>
     <td>The instance group name in which the instance is. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceStatus" /></td>
+    <td><CopyableCode code="instance_status" /></td>
     <td><code>object</code></td>
     <td>The status of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceStorageConfigs" /></td>
+    <td><CopyableCode code="instance_storage_configs" /></td>
     <td><code>array</code></td>
     <td>The configurations of additional storage specified to the instance group where the instance (node) is launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of the instance. (ml.p4d.24xlarge, ml.p4de.24xlarge, ml.p5.48xlarge, ml.p5.4xlarge, ml.p6e-gb200.36xlarge, ml.trn1.32xlarge, ml.trn1n.32xlarge, ml.g5.xlarge, ml.g5.2xlarge, ml.g5.4xlarge, ml.g5.8xlarge, ml.g5.12xlarge, ml.g5.16xlarge, ml.g5.24xlarge, ml.g5.48xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.c5n.large, ml.c5n.2xlarge, ml.c5n.4xlarge, ml.c5n.9xlarge, ml.c5n.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.g6.xlarge, ml.g6.2xlarge, ml.g6.4xlarge, ml.g6.8xlarge, ml.g6.16xlarge, ml.g6.12xlarge, ml.g6.24xlarge, ml.g6.48xlarge, ml.gr6.4xlarge, ml.gr6.8xlarge, ml.g6e.xlarge, ml.g6e.2xlarge, ml.g6e.4xlarge, ml.g6e.8xlarge, ml.g6e.16xlarge, ml.g6e.12xlarge, ml.g6e.24xlarge, ml.g6e.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.p6-b200.48xlarge, ml.trn2.3xlarge, ml.trn2.48xlarge, ml.c6i.large, ml.c6i.xlarge, ml.c6i.2xlarge, ml.c6i.4xlarge, ml.c6i.8xlarge, ml.c6i.12xlarge, ml.c6i.16xlarge, ml.c6i.24xlarge, ml.c6i.32xlarge, ml.m6i.large, ml.m6i.xlarge, ml.m6i.2xlarge, ml.m6i.4xlarge, ml.m6i.8xlarge, ml.m6i.12xlarge, ml.m6i.16xlarge, ml.m6i.24xlarge, ml.m6i.32xlarge, ml.r6i.large, ml.r6i.xlarge, ml.r6i.2xlarge, ml.r6i.4xlarge, ml.r6i.8xlarge, ml.r6i.12xlarge, ml.r6i.16xlarge, ml.r6i.24xlarge, ml.r6i.32xlarge, ml.i3en.large, ml.i3en.xlarge, ml.i3en.2xlarge, ml.i3en.3xlarge, ml.i3en.6xlarge, ml.i3en.12xlarge, ml.i3en.24xlarge, ml.m7i.large, ml.m7i.xlarge, ml.m7i.2xlarge, ml.m7i.4xlarge, ml.m7i.8xlarge, ml.m7i.12xlarge, ml.m7i.16xlarge, ml.m7i.24xlarge, ml.m7i.48xlarge, ml.r7i.large, ml.r7i.xlarge, ml.r7i.2xlarge, ml.r7i.4xlarge, ml.r7i.8xlarge, ml.r7i.12xlarge, ml.r7i.16xlarge, ml.r7i.24xlarge, ml.r7i.48xlarge, ml.r5d.16xlarge, ml.g7e.2xlarge, ml.g7e.4xlarge, ml.g7e.8xlarge, ml.g7e.12xlarge, ml.g7e.24xlarge, ml.g7e.48xlarge, ml.p6-b300.48xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KubernetesConfig" /></td>
+    <td><CopyableCode code="kubernetes_config" /></td>
     <td><code>object</code></td>
     <td>The Kubernetes configuration applied to this node, showing both the current and desired state of labels and taints. The cluster works to reconcile the actual state with the declared state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSoftwareUpdateTime" /></td>
+    <td><CopyableCode code="last_software_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the cluster was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTime" /></td>
+    <td><CopyableCode code="launch_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the instance is launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycleConfig" /></td>
+    <td><CopyableCode code="life_cycle_config" /></td>
     <td><code>object</code></td>
     <td>The LifeCycle configuration applied to the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterface" /></td>
+    <td><CopyableCode code="network_interface" /></td>
     <td><code>object</code></td>
     <td>The network interface configuration for the cluster node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeLogicalId" /></td>
+    <td><CopyableCode code="node_logical_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the node that persists throughout its lifecycle, from provisioning request to termination. This identifier can be used to track the node even before it has an assigned InstanceId. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-&#93;*&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverrideVpcConfig" /></td>
+    <td><CopyableCode code="override_vpc_config" /></td>
     <td><code>object</code></td>
     <td>Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC. For more information, see Give SageMaker Access to Resources in your Amazon VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Placement" /></td>
+    <td><CopyableCode code="placement" /></td>
     <td><code>object</code></td>
     <td>The placement details of the SageMaker HyperPod cluster node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsHostname" /></td>
+    <td><CopyableCode code="private_dns_hostname" /></td>
     <td><code>string</code></td>
     <td>The private DNS hostname of the SageMaker HyperPod cluster node. (pattern: &lt;code&gt;ip-((25&#91;0-5&#93;|(2&#91;0-4&#93;|1\d|&#91;1-9&#93;|)\d)-?\b)&#123;4&#125;\..*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivatePrimaryIp" /></td>
+    <td><CopyableCode code="private_primary_ip" /></td>
     <td><code>string</code></td>
     <td>The private primary IP address of the SageMaker HyperPod cluster node. (pattern: &lt;code&gt;((25&#91;0-5&#93;|(2&#91;0-4&#93;|1\d|&#91;1-9&#93;|)\d)\.?\b)&#123;4&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivatePrimaryIpv6" /></td>
+    <td><CopyableCode code="private_primary_ipv_6" /></td>
     <td><code>string</code></td>
     <td>The private primary IPv6 address of the SageMaker HyperPod cluster node when configured with an Amazon VPC that supports IPv6 and includes subnets with IPv6 addressing enabled in either the cluster Amazon VPC configuration or the instance group Amazon VPC configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThreadsPerCore" /></td>
+    <td><CopyableCode code="threads_per_core" /></td>
     <td><code>integer</code></td>
     <td>The number of threads per CPU core you specified under CreateCluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UltraServerInfo" /></td>
+    <td><CopyableCode code="ultra_server_info" /></td>
     <td><code>object</code></td>
     <td>Contains information about the UltraServer.</td>
 </tr>
@@ -273,28 +273,28 @@ Retrieves information of a node (also called a instance interchangeably) of a Sa
 
 ```sql
 SELECT
-CapacityType,
-CurrentImageId,
-DesiredImageId,
-ImageVersionStatus,
-InstanceGroupName,
-InstanceId,
-InstanceStatus,
-InstanceStorageConfigs,
-InstanceType,
-KubernetesConfig,
-LastSoftwareUpdateTime,
-LaunchTime,
-LifeCycleConfig,
-NetworkInterface,
-NodeLogicalId,
-OverrideVpcConfig,
-Placement,
-PrivateDnsHostname,
-PrivatePrimaryIp,
-PrivatePrimaryIpv6,
-ThreadsPerCore,
-UltraServerInfo
+capacity_type,
+current_image_id,
+desired_image_id,
+image_version_status,
+instance_group_name,
+instance_id,
+instance_status,
+instance_storage_configs,
+instance_type,
+kubernetes_config,
+last_software_update_time,
+launch_time,
+life_cycle_config,
+network_interface,
+node_logical_id,
+override_vpc_config,
+placement,
+private_dns_hostname,
+private_primary_ip,
+private_primary_ipv_6,
+threads_per_core,
+ultra_server_info
 FROM aws.sagemaker.cluster_nodes
 WHERE region = '{{ region }}' -- required
 ;
@@ -327,12 +327,12 @@ AND ClusterArn = '{{ ClusterArn }}' --required
 AND NodeId = '{{ NodeId }}' --required
 AND VolumeId = '{{ VolumeId }}' --required
 RETURNING
-AttachTime,
-ClusterArn,
-DeviceName,
-NodeId,
-Status,
-VolumeId;
+attach_time,
+cluster_arn,
+device_name,
+node_id,
+status,
+volume_id;
 ```
 </TabItem>
 </Tabs>

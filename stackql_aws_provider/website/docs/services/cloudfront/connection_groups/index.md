@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnycastIpListId" /></td>
+    <td><CopyableCode code="anycast_ip_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the connection group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether the connection group is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Enabled" /></td>
+    <td><CopyableCode code="ipv_6_enabled" /></td>
     <td><code>boolean</code></td>
     <td>IPv6 is enabled for the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Whether the connection group is the default connection group for the distribution tenants.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the connection group was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingEndpoint" /></td>
+    <td><CopyableCode code="routing_endpoint" /></td>
     <td><code>string</code></td>
     <td>The routing endpoint (also known as the DNS name) that is assigned to the connection group, such as d111111abcdef8.cloudfront.net.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains zero or more Tag elements.</td>
 </tr>
@@ -125,57 +125,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnycastIpListId" /></td>
+    <td><CopyableCode code="anycast_ip_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Anycast static IP list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the connection group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current version of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether the connection group is enabled</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Whether the connection group is the default connection group for the distribution tenants.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the connection group was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the connection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingEndpoint" /></td>
+    <td><CopyableCode code="routing_endpoint" /></td>
     <td><code>string</code></td>
     <td>The routing endpoint (also known as the DNS name) that is assigned to the connection group, such as d111111abcdef8.cloudfront.net.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the connection group.</td>
 </tr>
@@ -288,18 +288,18 @@ Gets information about a connection group.
 
 ```sql
 SELECT
-AnycastIpListId,
-Arn,
-CreatedTime,
-Enabled,
-Id,
-Ipv6Enabled,
-IsDefault,
-LastModifiedTime,
-Name,
-RoutingEndpoint,
-Status,
-Tags
+anycast_ip_list_id,
+arn,
+created_time,
+enabled,
+id,
+ipv_6_enabled,
+is_default,
+last_modified_time,
+name,
+routing_endpoint,
+status,
+tags
 FROM aws.cloudfront.connection_groups
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -312,17 +312,17 @@ Lists the connection groups in your Amazon Web Services account.
 
 ```sql
 SELECT
-AnycastIpListId,
-Arn,
-CreatedTime,
-ETag,
-Enabled,
-Id,
-IsDefault,
-LastModifiedTime,
-Name,
-RoutingEndpoint,
-Status
+anycast_ip_list_id,
+arn,
+created_time,
+e_tag,
+enabled,
+id,
+is_default,
+last_modified_time,
+name,
+routing_endpoint,
+status
 FROM aws.cloudfront.connection_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -361,18 +361,18 @@ SELECT
 {{ Enabled }},
 '{{ region }}'
 RETURNING
-AnycastIpListId,
-Arn,
-CreatedTime,
-Enabled,
-Id,
-Ipv6Enabled,
-IsDefault,
-LastModifiedTime,
-Name,
-RoutingEndpoint,
-Status,
-Tags
+anycast_ip_list_id,
+arn,
+created_time,
+enabled,
+id,
+ipv_6_enabled,
+is_default,
+last_modified_time,
+name,
+routing_endpoint,
+status,
+tags
 ;
 ```
 </TabItem>
@@ -428,18 +428,18 @@ id = '{{ id }}' --required
 AND `If-Match` = '{{ If-Match }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AnycastIpListId,
-Arn,
-CreatedTime,
-Enabled,
-Id,
-Ipv6Enabled,
-IsDefault,
-LastModifiedTime,
-Name,
-RoutingEndpoint,
-Status,
-Tags;
+anycast_ip_list_id,
+arn,
+created_time,
+enabled,
+id,
+ipv_6_enabled,
+is_default,
+last_modified_time,
+name,
+routing_endpoint,
+status,
+tags;
 ```
 </TabItem>
 </Tabs>

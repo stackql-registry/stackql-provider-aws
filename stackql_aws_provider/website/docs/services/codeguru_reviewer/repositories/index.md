@@ -117,8 +117,8 @@ WHERE
 region = '{{ region }}' --required
 AND Repository = '{{ Repository }}' --required
 RETURNING
-RepositoryAssociation,
-Tags;
+repository_association,
+tags;
 ```
 </TabItem>
 <TabItem value="disassociate_repository">
@@ -133,8 +133,8 @@ WHERE
 association_arn = '{{ association_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RepositoryAssociation,
-Tags;
+repository_association,
+tags;
 ```
 </TabItem>
 </Tabs>

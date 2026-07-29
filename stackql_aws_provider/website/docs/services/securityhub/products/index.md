@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivationUrl" /></td>
+    <td><CopyableCode code="activation_url" /></td>
     <td><code>string</code></td>
     <td>The URL to the service or product documentation about the integration with Security Hub CSPM, including how to activate the integration. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Categories" /></td>
+    <td><CopyableCode code="categories" /></td>
     <td><code>array</code></td>
     <td>The categories assigned to the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompanyName" /></td>
+    <td><CopyableCode code="company_name" /></td>
     <td><code>string</code></td>
     <td>The name of the company that provides the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationTypes" /></td>
+    <td><CopyableCode code="integration_types" /></td>
     <td><code>array</code></td>
     <td>The types of integration that the product supports. Available values are the following. SEND_FINDINGS_TO_SECURITY_HUB - The integration sends findings to Security Hub CSPM. RECEIVE_FINDINGS_FROM_SECURITY_HUB - The integration receives findings from Security Hub CSPM. UPDATE_FINDINGS_IN_SECURITY_HUB - The integration does not send new findings to Security Hub CSPM, but does make updates to the findings that it receives from Security Hub CSPM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceUrl" /></td>
+    <td><CopyableCode code="marketplace_url" /></td>
     <td><code>string</code></td>
     <td>For integrations with Amazon Web Services services, the Amazon Web Services Console URL from which to activate the service. For integrations with third-party products, the Amazon Web Services Marketplace URL from which to subscribe to or purchase the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductArn" /></td>
+    <td><CopyableCode code="product_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN assigned to the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductName" /></td>
+    <td><CopyableCode code="product_name" /></td>
     <td><code>string</code></td>
     <td>The name of the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductSubscriptionResourcePolicy" /></td>
+    <td><CopyableCode code="product_subscription_resource_policy" /></td>
     <td><code>string</code></td>
     <td>The resource policy associated with the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -174,15 +174,15 @@ Returns information about product integrations in Security Hub CSPM. You can opt
 
 ```sql
 SELECT
-ActivationUrl,
-Categories,
-CompanyName,
-Description,
-IntegrationTypes,
-MarketplaceUrl,
-ProductArn,
-ProductName,
-ProductSubscriptionResourcePolicy
+activation_url,
+categories,
+company_name,
+description,
+integration_types,
+marketplace_url,
+product_arn,
+product_name,
+product_subscription_resource_policy
 FROM aws.securityhub.products
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

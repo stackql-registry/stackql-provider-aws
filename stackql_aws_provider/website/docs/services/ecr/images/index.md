@@ -75,77 +75,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="artifactMediaType" /></td>
+    <td><CopyableCode code="artifact_media_type" /></td>
     <td><code>string</code></td>
     <td>The artifact media type of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageDigest" /></td>
+    <td><CopyableCode code="image_digest" /></td>
     <td><code>string</code></td>
     <td>The sha256 digest of the image manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageManifestMediaType" /></td>
+    <td><CopyableCode code="image_manifest_media_type" /></td>
     <td><code>string</code></td>
     <td>The media type of the image manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imagePushedAt" /></td>
+    <td><CopyableCode code="image_pushed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageScanFindingsSummary" /></td>
+    <td><CopyableCode code="image_scan_findings_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the last completed image scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageScanStatus" /></td>
+    <td><CopyableCode code="image_scan_status" /></td>
     <td><code>object</code></td>
     <td>The current state of the scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSizeInBytes" /></td>
+    <td><CopyableCode code="image_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of the image in the repository. If the image is a manifest list, this will be the max size of all manifests in the list. Starting with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the docker images command shows the uncompressed image size. Therefore, Docker might return a larger image than the image shown in the Amazon Web Services Management Console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageStatus" /></td>
+    <td><CopyableCode code="image_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the image. (ACTIVE, ARCHIVED, ACTIVATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTags" /></td>
+    <td><CopyableCode code="image_tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags associated with this image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastActivatedAt" /></td>
+    <td><CopyableCode code="last_activated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, expressed in standard JavaScript date format, when the image was last restored from Amazon ECR archive to Amazon ECR standard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastArchivedAt" /></td>
+    <td><CopyableCode code="last_archived_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, expressed in standard JavaScript date format, when the image was last transitioned to Amazon ECR archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRecordedPullTime" /></td>
+    <td><CopyableCode code="last_recorded_pull_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, expressed in standard JavaScript date format, when Amazon ECR recorded the last image pull. Amazon ECR refreshes the last image pull timestamp at least once every 24 hours. For example, if you pull an image once a day then the lastRecordedPullTime timestamp will indicate the exact time that the image was last pulled. However, if you pull an image once an hour, because Amazon ECR refreshes the lastRecordedPullTime timestamp at least once every 24 hours, the result may not be the exact time that the image was last pulled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the registry to which this image belongs. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository to which this image belongs. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subjectManifestDigest" /></td>
+    <td><CopyableCode code="subject_manifest_digest" /></td>
     <td><code>string</code></td>
     <td>The digest of the subject manifest for images that are referrers.</td>
 </tr>
@@ -277,21 +277,21 @@ Returns metadata about the images in a repository. Starting with Docker version 
 
 ```sql
 SELECT
-artifactMediaType,
-imageDigest,
-imageManifestMediaType,
-imagePushedAt,
-imageScanFindingsSummary,
-imageScanStatus,
-imageSizeInBytes,
-imageStatus,
-imageTags,
-lastActivatedAt,
-lastArchivedAt,
-lastRecordedPullTime,
-registryId,
-repositoryName,
-subjectManifestDigest
+artifact_media_type,
+image_digest,
+image_manifest_media_type,
+image_pushed_at,
+image_scan_findings_summary,
+image_scan_status,
+image_size_in_bytes,
+image_status,
+image_tags,
+last_activated_at,
+last_archived_at,
+last_recorded_pull_time,
+registry_id,
+repository_name,
+subject_manifest_digest
 FROM aws.ecr.images
 WHERE region = '{{ region }}' -- required
 ;
@@ -325,10 +325,10 @@ AND repositoryName = '{{ repositoryName }}' --required
 AND imageId = '{{ imageId }}' --required
 AND targetStorageClass = '{{ targetStorageClass }}' --required
 RETURNING
-imageId,
-imageStatus,
-registryId,
-repositoryName;
+image_id,
+image_status,
+registry_id,
+repository_name;
 ```
 </TabItem>
 </Tabs>
@@ -380,9 +380,9 @@ region = '{{ region }}' --required
 AND repositoryName = '{{ repositoryName }}' --required
 AND imageScanningConfiguration = '{{ imageScanningConfiguration }}' --required
 RETURNING
-imageScanningConfiguration,
-registryId,
-repositoryName;
+image_scanning_configuration,
+registry_id,
+repository_name;
 ```
 </TabItem>
 <TabItem value="put_image_tag_mutability">
@@ -401,10 +401,10 @@ region = '{{ region }}' --required
 AND repositoryName = '{{ repositoryName }}' --required
 AND imageTagMutability = '{{ imageTagMutability }}' --required
 RETURNING
-imageTagMutability,
-imageTagMutabilityExclusionFilters,
-registryId,
-repositoryName;
+image_tag_mutability,
+image_tag_mutability_exclusion_filters,
+registry_id,
+repository_name;
 ```
 </TabItem>
 </Tabs>

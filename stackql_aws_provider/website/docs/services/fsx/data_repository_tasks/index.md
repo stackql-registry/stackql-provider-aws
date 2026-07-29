@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataRepositoryTasks" /></td>
+    <td><CopyableCode code="data_repository_tasks" /></td>
     <td><code>array</code></td>
     <td>The collection of data repository task descriptions returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>(Optional) Opaque pagination token returned from a previous operation (String). If present, this token indicates from what point you can continue processing the request, where the previous NextToken value left off. (pattern: &lt;code&gt;^(?:&#91;A-Za-z0-9+\/&#93;&#123;4&#125;)*(?:&#91;A-Za-z0-9+\/&#93;&#123;2&#125;==|&#91;A-Za-z0-9+\/&#93;&#123;3&#125;=)?$&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the description of specific Amazon FSx for Lustre or Amazon File Cache d
 
 ```sql
 SELECT
-DataRepositoryTasks,
-NextToken
+data_repository_tasks,
+next_token
 FROM aws.fsx.data_repository_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,7 +177,7 @@ SELECT
 '{{ ReleaseConfiguration }}',
 '{{ region }}'
 RETURNING
-DataRepositoryTask
+data_repository_task
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MigrationTaskState" /></td>
+    <td><CopyableCode code="migration_task_state" /></td>
     <td><code>object</code></td>
     <td>Task object encapsulating task information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for the update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateType" /></td>
+    <td><CopyableCode code="update_type" /></td>
     <td><code>string</code></td>
     <td>The type of the update. (MIGRATION_TASK_STATE_UPDATED)</td>
 </tr>
@@ -129,9 +129,9 @@ This is a paginated API that returns all the migration-task states for the speci
 
 ```sql
 SELECT
-MigrationTaskState,
-UpdateDateTime,
-UpdateType
+migration_task_state,
+update_date_time,
+update_type
 FROM aws.mgh.migration_task_updates
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the snapshot job. The job ARN is generated when you start a new job with a StartDashboardSnapshotJob API call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that the dashboard snapshot job is executed in. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the snapshot job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardId" /></td>
+    <td><CopyableCode code="dashboard_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the dashboard that you have started a snapshot job for. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of a job. The status updates as the job executes. This shows one of the following values. COMPLETED - The job was completed successfully. FAILED - The job failed to execute. QUEUED - The job is queued and hasn't started yet. RUNNING - The job is still running. (QUEUED, RUNNING, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the snapshot job status was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotConfiguration" /></td>
+    <td><CopyableCode code="snapshot_configuration" /></td>
     <td><code>object</code></td>
     <td>The snapshot configuration of the job. This information is provided when you make a StartDashboardSnapshotJob API call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotJobId" /></td>
+    <td><CopyableCode code="snapshot_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job to be described. The job ID is set when you start a new job with a StartDashboardSnapshotJob API call. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserConfiguration" /></td>
+    <td><CopyableCode code="user_configuration" /></td>
     <td><code>object</code></td>
     <td>The user configuration for the snapshot job. This information is provided when you make a StartDashboardSnapshotJob API call.</td>
 </tr>
@@ -196,17 +196,17 @@ Describes an existing snapshot job. Poll job descriptions after a job starts to 
 
 ```sql
 SELECT
-Arn,
-AwsAccountId,
-CreatedTime,
-DashboardId,
-JobStatus,
-LastUpdatedTime,
-RequestId,
-SnapshotConfiguration,
-SnapshotJobId,
-Status,
-UserConfiguration
+arn,
+aws_account_id,
+created_time,
+dashboard_id,
+job_status,
+last_updated_time,
+request_id,
+snapshot_configuration,
+snapshot_job_id,
+status,
+user_configuration
 FROM aws.quicksight.dashboard_snapshot_jobs
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND dashboard_id = '{{ dashboard_id }}' -- required

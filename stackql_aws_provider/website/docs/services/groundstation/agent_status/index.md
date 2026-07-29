@@ -111,7 +111,7 @@ AND taskId = '{{ taskId }}' --required
 AND aggregateStatus = '{{ aggregateStatus }}' --required
 AND componentStatuses = '{{ componentStatuses }}' --required
 RETURNING
-agentId;
+agent_id;
 ```
 </TabItem>
 </Tabs>

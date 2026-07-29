@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataFrequency" /></td>
+    <td><CopyableCode code="data_frequency" /></td>
     <td><code>string</code></td>
     <td>The frequency of data collection. Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour), 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5 minutes), and 1min (1 minute). For example, "M" indicates every month and "30min" indicates every 30 minutes. (pattern: &lt;code&gt;^Y|M|W|D|H|30min|15min|10min|5min|1min$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetType" /></td>
+    <td><CopyableCode code="dataset_type" /></td>
     <td><code>string</code></td>
     <td>The dataset type. (TARGET_TIME_SERIES, RELATED_TIME_SERIES, ITEM_METADATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain associated with the dataset. (RETAIL, CUSTOM, INVENTORY_PLANNING, EC2_CAPACITY, WORK_FORCE, WEB_TRAFFIC, METRICS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionConfig" /></td>
+    <td><CopyableCode code="encryption_config" /></td>
     <td><code>object</code></td>
     <td>An Key Management Service (KMS) key and an Identity and Access Management (IAM) role that Amazon Forecast can assume to access the key. You can specify this optional object in the CreateDataset and CreatePredictor requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When you create a dataset, LastModificationTime is the same as CreationTime. While data is being imported to the dataset, LastModificationTime is the current time of the DescribeDataset call. After a CreateDatasetImportJob operation has finished, LastModificationTime is when the import job completed or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>object</code></td>
     <td>Defines the fields of a dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the dataset. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED UPDATE_PENDING, UPDATE_IN_PROGRESS, UPDATE_FAILED The UPDATE states apply while data is imported to the dataset from a call to the CreateDatasetImportJob operation and reflect the status of the dataset import job. For example, when the import job status is CREATE_IN_PROGRESS, the status of the dataset is UPDATE_IN_PROGRESS. The Status of the dataset must be ACTIVE before you can import training data.</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetType" /></td>
+    <td><CopyableCode code="dataset_type" /></td>
     <td><code>string</code></td>
     <td>The dataset type. (TARGET_TIME_SERIES, RELATED_TIME_SERIES, ITEM_METADATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain associated with the dataset. (RETAIL, CUSTOM, INVENTORY_PLANNING, EC2_CAPACITY, WORK_FORCE, WEB_TRAFFIC, METRICS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When you create a dataset, LastModificationTime is the same as CreationTime. While data is being imported to the dataset, LastModificationTime is the current time of the ListDatasets call. After a CreateDatasetImportJob operation has finished, LastModificationTime is when the import job completed or failed.</td>
 </tr>
@@ -231,16 +231,16 @@ Describes an Amazon Forecast dataset created using the CreateDataset operation. 
 
 ```sql
 SELECT
-CreationTime,
-DataFrequency,
-DatasetArn,
-DatasetName,
-DatasetType,
-Domain,
-EncryptionConfig,
-LastModificationTime,
-Schema,
-Status
+creation_time,
+data_frequency,
+dataset_arn,
+dataset_name,
+dataset_type,
+domain,
+encryption_config,
+last_modification_time,
+schema,
+status
 FROM aws.forecast.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,12 +252,12 @@ Returns a list of datasets created using the CreateDataset operation. For each d
 
 ```sql
 SELECT
-CreationTime,
-DatasetArn,
-DatasetName,
-DatasetType,
-Domain,
-LastModificationTime
+creation_time,
+dataset_arn,
+dataset_name,
+dataset_type,
+domain,
+last_modification_time
 FROM aws.forecast.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,7 +300,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DatasetArn
+dataset_arn
 ;
 ```
 </TabItem>

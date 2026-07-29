@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InsightRules" /></td>
+    <td><CopyableCode code="insight_rules" /></td>
     <td><code>array</code></td>
     <td>The rules returned by the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If this parameter is present, it is a token that marks the start of the next batch of returned results.</td>
 </tr>
@@ -152,8 +152,8 @@ Returns a list of all the Contributor Insights rules in your account. For more i
 
 ```sql
 SELECT
-InsightRules,
-NextToken
+insight_rules,
+next_token
 FROM aws.cloudwatch.insight_rules
 WHERE region = '{{ region }}' -- required
 ;

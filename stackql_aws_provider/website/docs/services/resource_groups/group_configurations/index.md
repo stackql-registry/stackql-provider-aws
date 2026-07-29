@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>array</code></td>
     <td>The configuration currently associated with the group and in effect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If present, the reason why a request to update the group configuration failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProposedConfiguration" /></td>
+    <td><CopyableCode code="proposed_configuration" /></td>
     <td><code>array</code></td>
     <td>If present, the new configuration that is in the process of being applied to the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of an attempt to update the group configuration. (UPDATING, UPDATE_COMPLETE, UPDATE_FAILED)</td>
 </tr>
@@ -141,10 +141,10 @@ Retrieves the service configuration associated with the specified resource group
 
 ```sql
 SELECT
-Configuration,
-FailureReason,
-ProposedConfiguration,
-Status
+configuration,
+failure_reason,
+proposed_configuration,
+status
 FROM aws.resource_groups.group_configurations
 WHERE region = '{{ region }}' -- required
 ;

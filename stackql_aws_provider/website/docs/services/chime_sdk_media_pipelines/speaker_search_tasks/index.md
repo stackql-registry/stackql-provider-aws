@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a speaker search task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpeakerSearchTaskId" /></td>
+    <td><CopyableCode code="speaker_search_task_id" /></td>
     <td><code>string</code></td>
     <td>The speaker search task ID. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpeakerSearchTaskStatus" /></td>
+    <td><CopyableCode code="speaker_search_task_status" /></td>
     <td><code>string</code></td>
     <td>The status of the speaker search task. (NotStarted, Initializing, InProgress, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a speaker search task was updated.</td>
 </tr>
@@ -144,10 +144,10 @@ Retrieves the details of the specified speaker search task.
 
 ```sql
 SELECT
-CreatedTimestamp,
-SpeakerSearchTaskId,
-SpeakerSearchTaskStatus,
-UpdatedTimestamp
+created_timestamp,
+speaker_search_task_id,
+speaker_search_task_status,
+updated_timestamp
 FROM aws.chime_sdk_media_pipelines.speaker_search_tasks
 WHERE identifier = '{{ identifier }}' -- required
 AND speaker_search_task_id = '{{ speaker_search_task_id }}' -- required

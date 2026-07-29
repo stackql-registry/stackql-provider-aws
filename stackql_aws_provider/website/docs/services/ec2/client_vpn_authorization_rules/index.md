@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessAll" /></td>
+    <td><CopyableCode code="access_all" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the authorization rule grants access to all clients.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientVpnEndpointId" /></td>
+    <td><CopyableCode code="client_vpn_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Client VPN endpoint with which the authorization rule is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A brief description of the authorization rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationCidr" /></td>
+    <td><CopyableCode code="destination_cidr" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address range, in CIDR notation, of the network to which the authorization rule applies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Active Directory group to which the authorization rule grants access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the authorization rule.</td>
 </tr>
@@ -169,12 +169,12 @@ Describes the authorization rules for a specified Client VPN endpoint.
 
 ```sql
 SELECT
-AccessAll,
-ClientVpnEndpointId,
-Description,
-DestinationCidr,
-GroupId,
-Status
+access_all,
+client_vpn_endpoint_id,
+description,
+destination_cidr,
+group_id,
+status
 FROM aws.ec2.client_vpn_authorization_rules
 WHERE ClientVpnEndpointId = '{{ ClientVpnEndpointId }}' -- required
 AND region = '{{ region }}' -- required

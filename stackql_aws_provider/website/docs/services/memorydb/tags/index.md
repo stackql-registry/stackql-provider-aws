@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>A list of tags as key-value pairs.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists all tags currently on a named resource. A tag is a key-value pair where th
 
 ```sql
 SELECT
-TagList
+tag_list
 FROM aws.memorydb.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -165,7 +165,7 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 AND Tags = '{{ Tags }}' --required
 RETURNING
-TagList;
+tag_list;
 ```
 </TabItem>
 <TabItem value="untag_resource">
@@ -182,7 +182,7 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 AND TagKeys = '{{ TagKeys }}' --required
 RETURNING
-TagList;
+tag_list;
 ```
 </TabItem>
 </Tabs>

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a serverless cache snapshot. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BytesUsedForCache" /></td>
+    <td><CopyableCode code="bytes_used_for_cache" /></td>
     <td><code>string</code></td>
     <td>The total size of a serverless cache snapshot, in bytes. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the source serverless cache's metadata and cache data set was obtained for the snapshot. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiryTime" /></td>
+    <td><CopyableCode code="expiry_time" /></td>
     <td><code>string</code></td>
     <td>The time that the serverless cache snapshot will expire. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Key Management Service (KMS) key of a serverless cache snapshot. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessCacheConfiguration" /></td>
+    <td><CopyableCode code="serverless_cache_configuration" /></td>
     <td><code>string</code></td>
     <td>The configuration of the serverless cache, at the time the snapshot was taken. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessCacheSnapshotName" /></td>
+    <td><CopyableCode code="serverless_cache_snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The identifier of a serverless cache snapshot. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>The type of snapshot of serverless cache. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the serverless cache. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
@@ -218,15 +218,15 @@ Returns information about serverless cache snapshots. By default, this API lists
 
 ```sql
 SELECT
-ARN,
-BytesUsedForCache,
-CreateTime,
-ExpiryTime,
-KmsKeyId,
-ServerlessCacheConfiguration,
-ServerlessCacheSnapshotName,
-SnapshotType,
-Status
+arn,
+bytes_used_for_cache,
+create_time,
+expiry_time,
+kms_key_id,
+serverless_cache_configuration,
+serverless_cache_snapshot_name,
+snapshot_type,
+status
 FROM aws.elasticache.serverless_cache_snapshots
 WHERE region = '{{ region }}' -- required
 AND ServerlessCacheName = '{{ ServerlessCacheName }}'
@@ -268,15 +268,15 @@ SELECT
 '{{ KmsKeyId }}',
 '{{ Tags }}'
 RETURNING
-ARN,
-BytesUsedForCache,
-CreateTime,
-ExpiryTime,
-KmsKeyId,
-ServerlessCacheConfiguration,
-ServerlessCacheSnapshotName,
-SnapshotType,
-Status
+arn,
+bytes_used_for_cache,
+create_time,
+expiry_time,
+kms_key_id,
+serverless_cache_configuration,
+serverless_cache_snapshot_name,
+snapshot_type,
+status
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blob" /></td>
+    <td><CopyableCode code="blob" /></td>
     <td><code>string (byte)</code></td>
     <td>Contains the body of the sprite sheet or JSON offset ﬁle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>The HTTP Cache-Control directive for the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the sprite sheet and offsets. For example, the sprite sheet content type is image/png, and the sprite offset JSON document is application/json.</td>
 </tr>
@@ -144,9 +144,9 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-Blob,
-CacheControl,
-ContentType
+blob,
+cache_control,
+content_type
 FROM aws.location.map_sprites
 WHERE map_name = '{{ map_name }}' -- required
 AND file_name = '{{ file_name }}' -- required

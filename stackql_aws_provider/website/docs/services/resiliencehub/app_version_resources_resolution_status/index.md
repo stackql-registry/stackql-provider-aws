@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:partition:resiliencehub:region:account:app/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>string</code></td>
     <td>The version of the application. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The returned error message for the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolutionId" /></td>
+    <td><CopyableCode code="resolution_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a specific resolution.</td>
 </tr>
@@ -139,10 +139,10 @@ Returns the resolution status for the specified resolution identifier for an app
 
 ```sql
 SELECT
-appArn,
-appVersion,
-errorMessage,
-resolutionId,
+app_arn,
+app_version,
+error_message,
+resolution_id,
 status
 FROM aws.resiliencehub.app_version_resources_resolution_status
 WHERE region = '{{ region }}' -- required

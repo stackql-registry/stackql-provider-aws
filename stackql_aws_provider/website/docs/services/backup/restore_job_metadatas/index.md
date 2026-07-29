@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>This contains the metadata of the specified backup job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreJobId" /></td>
+    <td><CopyableCode code="restore_job_id" /></td>
     <td><code>string</code></td>
     <td>This is a unique identifier of a restore job within Backup.</td>
 </tr>
@@ -129,8 +129,8 @@ This request returns the metadata for the specified restore job.
 
 ```sql
 SELECT
-Metadata,
-RestoreJobId
+metadata,
+restore_job_id
 FROM aws.backup.restore_job_metadatas
 WHERE restore_job_id = '{{ restore_job_id }}' -- required
 AND region = '{{ region }}' -- required

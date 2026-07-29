@@ -61,42 +61,42 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicableAssetTypes" /></td>
+    <td><CopyableCode code="applicable_asset_types" /></td>
     <td><code>array</code></td>
     <td>The asset types associated with the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizedPrincipals" /></td>
+    <td><CopyableCode code="authorized_principals" /></td>
     <td><code>array</code></td>
     <td>The authorized principals of the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription target was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the subscription target exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment associated with the subscription target. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="manageAccessRole" /></td>
+    <td><CopyableCode code="manage_access_role" /></td>
     <td><code>string</code></td>
     <td>The manage access role with which the subscription target was created. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):iam::\d&#123;12&#125;:(role|role/service-role)/&#91;\w+=,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project associated with the subscription target. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The provider of the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionGrantCreationMode" /></td>
+    <td><CopyableCode code="subscription_grant_creation_mode" /></td>
     <td><code>string</code></td>
     <td>Determines the subscription grant creation mode for this target, defining if grants are auto-created upon subscription approval or managed manually. (AUTOMATIC, MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionTargetConfig" /></td>
+    <td><CopyableCode code="subscription_target_config" /></td>
     <td><code>array</code></td>
     <td>The configuration of teh subscription target.</td>
 </tr>
@@ -121,12 +121,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription target was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the subscription target.</td>
 </tr>
@@ -155,42 +155,42 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicableAssetTypes" /></td>
+    <td><CopyableCode code="applicable_asset_types" /></td>
     <td><code>array</code></td>
     <td>The asset types included in the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizedPrincipals" /></td>
+    <td><CopyableCode code="authorized_principals" /></td>
     <td><code>array</code></td>
     <td>The authorized principals included in the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription target was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone domain in which the subscription target exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the environment of the subscription target. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="manageAccessRole" /></td>
+    <td><CopyableCode code="manage_access_role" /></td>
     <td><code>string</code></td>
     <td>The manage access role specified in the subscription target. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):iam::\d&#123;12&#125;:(role|role/service-role)/&#91;\w+=,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the project specified in the subscription target. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -200,12 +200,12 @@ The following fields are returned by `SELECT` queries:
     <td>The provider of the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionGrantCreationMode" /></td>
+    <td><CopyableCode code="subscription_grant_creation_mode" /></td>
     <td><code>string</code></td>
     <td>Determines the subscription grant creation mode for this target, defining if grants are auto-created upon subscription approval or managed manually. (AUTOMATIC, MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionTargetConfig" /></td>
+    <td><CopyableCode code="subscription_target_config" /></td>
     <td><code>array</code></td>
     <td>The configuration of the subscription target.</td>
 </tr>
@@ -215,12 +215,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the subscription target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription target was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the subscription target.</td>
 </tr>
@@ -355,20 +355,20 @@ Gets the subscription target in Amazon DataZone.
 SELECT
 id,
 name,
-applicableAssetTypes,
-authorizedPrincipals,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-manageAccessRole,
-projectId,
+applicable_asset_types,
+authorized_principals,
+created_at,
+created_by,
+domain_id,
+environment_id,
+manage_access_role,
+project_id,
 provider,
-subscriptionGrantCreationMode,
-subscriptionTargetConfig,
+subscription_grant_creation_mode,
+subscription_target_config,
 type_,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.datazone.subscription_targets
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required
@@ -385,20 +385,20 @@ Lists subscription targets in Amazon DataZone.
 SELECT
 id,
 name,
-applicableAssetTypes,
-authorizedPrincipals,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-manageAccessRole,
-projectId,
+applicable_asset_types,
+authorized_principals,
+created_at,
+created_by,
+domain_id,
+environment_id,
+manage_access_role,
+project_id,
 provider,
-subscriptionGrantCreationMode,
-subscriptionTargetConfig,
+subscription_grant_creation_mode,
+subscription_target_config,
 type_,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.datazone.subscription_targets
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required
@@ -457,20 +457,20 @@ SELECT
 RETURNING
 id,
 name,
-applicableAssetTypes,
-authorizedPrincipals,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-manageAccessRole,
-projectId,
+applicable_asset_types,
+authorized_principals,
+created_at,
+created_by,
+domain_id,
+environment_id,
+manage_access_role,
+project_id,
 provider,
-subscriptionGrantCreationMode,
-subscriptionTargetConfig,
+subscription_grant_creation_mode,
+subscription_target_config,
 type_,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 ;
 ```
 </TabItem>
@@ -547,20 +547,20 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-applicableAssetTypes,
-authorizedPrincipals,
-createdAt,
-createdBy,
-domainId,
-environmentId,
-manageAccessRole,
-projectId,
+applicable_asset_types,
+authorized_principals,
+created_at,
+created_by,
+domain_id,
+environment_id,
+manage_access_role,
+project_id,
 provider,
-subscriptionGrantCreationMode,
-subscriptionTargetConfig,
+subscription_grant_creation_mode,
+subscription_target_config,
 type_,
-updatedAt,
-updatedBy;
+updated_at,
+updated_by;
 ```
 </TabItem>
 </Tabs>

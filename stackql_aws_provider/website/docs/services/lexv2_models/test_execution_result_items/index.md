@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="conversationLevelTestResults" /></td>
+    <td><CopyableCode code="conversation_level_test_results" /></td>
     <td><code>object</code></td>
     <td>Results related to conversations in the test set, including metrics about success and failure of conversations and intent and slot failures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentClassificationTestResults" /></td>
+    <td><CopyableCode code="intent_classification_test_results" /></td>
     <td><code>object</code></td>
     <td>Intent recognition results aggregated by intent name. The aggregated results contain success and failure rates of intent recognition, speech transcriptions, and end-to-end conversations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentLevelSlotResolutionTestResults" /></td>
+    <td><CopyableCode code="intent_level_slot_resolution_test_results" /></td>
     <td><code>object</code></td>
     <td>Slot resolution results aggregated by intent and slot name. The aggregated results contain success and failure rates of slot resolution, speech transcriptions, and end-to-end conversations</td>
 </tr>
 <tr>
-    <td><CopyableCode code="overallTestResults" /></td>
+    <td><CopyableCode code="overall_test_results" /></td>
     <td><code>object</code></td>
     <td>Overall results for the test execution, including the breakdown of conversations and single-input utterances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="utteranceLevelTestResults" /></td>
+    <td><CopyableCode code="utterance_level_test_results" /></td>
     <td><code>object</code></td>
     <td>Results related to utterances in the test set.</td>
 </tr>
@@ -144,11 +144,11 @@ Gets a list of test execution result items.
 
 ```sql
 SELECT
-conversationLevelTestResults,
-intentClassificationTestResults,
-intentLevelSlotResolutionTestResults,
-overallTestResults,
-utteranceLevelTestResults
+conversation_level_test_results,
+intent_classification_test_results,
+intent_level_slot_resolution_test_results,
+overall_test_results,
+utterance_level_test_results
 FROM aws.lexv2_models.test_execution_result_items
 WHERE test_execution_id = '{{ test_execution_id }}' -- required
 AND region = '{{ region }}' -- required

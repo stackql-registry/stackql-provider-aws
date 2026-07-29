@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cluster that the daemon is running in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for the time when the daemon was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentRevisions" /></td>
+    <td><CopyableCode code="current_revisions" /></td>
     <td><code>array</code></td>
     <td>The current daemon revision details, including the running task counts per capacity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="daemonArn" /></td>
+    <td><CopyableCode code="daemon_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the daemon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentArn" /></td>
+    <td><CopyableCode code="deployment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the most recent daemon deployment.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the daemon. (ACTIVE, DELETE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for the time when the daemon was last updated.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="daemonSummariesList" /></td>
+    <td><CopyableCode code="daemon_summaries_list" /></td>
     <td><code>array</code></td>
     <td>The list of daemon summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future ListDaemons request. When the results of a ListDaemons request exceed maxResults, this value can be used to retrieve the next page of results.</td>
 </tr>
@@ -203,13 +203,13 @@ Describes the specified daemon.
 
 ```sql
 SELECT
-clusterArn,
-createdAt,
-currentRevisions,
-daemonArn,
-deploymentArn,
+cluster_arn,
+created_at,
+current_revisions,
+daemon_arn,
+deployment_arn,
 status,
-updatedAt
+updated_at
 FROM aws.ecs.daemons
 WHERE region = '{{ region }}' -- required
 ;
@@ -221,8 +221,8 @@ Returns a list of daemons. You can filter the results by cluster or capacity pro
 
 ```sql
 SELECT
-daemonSummariesList,
-nextToken
+daemon_summaries_list,
+next_token
 FROM aws.ecs.daemons
 WHERE region = '{{ region }}' -- required
 ;
@@ -271,9 +271,9 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-createdAt,
-daemonArn,
-deploymentArn,
+created_at,
+daemon_arn,
+deployment_arn,
 status
 ;
 ```
@@ -370,11 +370,11 @@ AND daemonArn = '{{ daemonArn }}' --required
 AND daemonTaskDefinitionArn = '{{ daemonTaskDefinitionArn }}' --required
 AND capacityProviderArns = '{{ capacityProviderArns }}' --required
 RETURNING
-createdAt,
-daemonArn,
-deploymentArn,
+created_at,
+daemon_arn,
+deployment_arn,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

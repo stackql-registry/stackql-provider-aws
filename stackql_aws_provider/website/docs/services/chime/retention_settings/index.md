@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InitiateDeletionTimestamp" /></td>
+    <td><CopyableCode code="initiate_deletion_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp representing the time at which the specified items are permanently deleted, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionSettings" /></td>
+    <td><CopyableCode code="retention_settings" /></td>
     <td><code>object</code></td>
     <td>The retention settings.</td>
 </tr>
@@ -136,8 +136,8 @@ Gets the retention settings for the specified Amazon Chime Enterprise account. F
 
 ```sql
 SELECT
-InitiateDeletionTimestamp,
-RetentionSettings
+initiate_deletion_timestamp,
+retention_settings
 FROM aws.chime.retention_settings
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -168,8 +168,8 @@ account_id = '{{ account_id }}' --required
 AND region = '{{ region }}' --required
 AND RetentionSettings = '{{ RetentionSettings }}' --required
 RETURNING
-InitiateDeletionTimestamp,
-RetentionSettings;
+initiate_deletion_timestamp,
+retention_settings;
 ```
 </TabItem>
 </Tabs>

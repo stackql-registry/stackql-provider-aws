@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>string</code></td>
     <td>Attributes include the following: CustomUserData – arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB. Enabled – flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token. Token – device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service. The device token for the iOS platform is returned in lowercase.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves the endpoint attributes for a device on one of the supported push noti
 
 ```sql
 SELECT
-Attributes
+attributes
 FROM aws.sns.endpoint_attributes
 WHERE EndpointArn = '{{ EndpointArn }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID for the queue-fleet association. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The queue ID for the queue-fleet association. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the queue-fleet association. (ACTIVE, STOP_SCHEDULING_AND_COMPLETE_TASKS, STOP_SCHEDULING_AND_CANCEL_TASKS, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The queue ID. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of task scheduling in the queue-fleet association. ACTIVE–Association is active. STOP_SCHEDULING_AND_COMPLETE_TASKS–Association has stopped scheduling new tasks and is completing current tasks. STOP_SCHEDULING_AND_CANCEL_TASKS–Association has stopped scheduling new tasks and is canceling current tasks. STOPPED–Association has been stopped. (ACTIVE, STOP_SCHEDULING_AND_COMPLETE_TASKS, STOP_SCHEDULING_AND_CANCEL_TASKS, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -263,13 +263,13 @@ Gets a queue-fleet association.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-fleetId,
-queueId,
+created_at,
+created_by,
+fleet_id,
+queue_id,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.deadline.queue_fleet_associations
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -284,13 +284,13 @@ Lists queue-fleet associations.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-fleetId,
-queueId,
+created_at,
+created_by,
+fleet_id,
+queue_id,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.deadline.queue_fleet_associations
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required

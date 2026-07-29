@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description for your topic control configuration. Use this to outline how the large language model (LLM) should use this topic control configuration. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exampleChatMessages" /></td>
+    <td><CopyableCode code="example_chat_messages" /></td>
     <td><code>array</code></td>
     <td>A list of example phrases that you expect the end user to use in relation to the topic.</td>
 </tr>
@@ -165,7 +165,7 @@ Gets information about chat controls configured for an existing Amazon Q Busines
 SELECT
 name,
 description,
-exampleChatMessages,
+example_chat_messages,
 rules
 FROM aws.qbusiness.chat_controls_configurations
 WHERE application_id = '{{ application_id }}' -- required

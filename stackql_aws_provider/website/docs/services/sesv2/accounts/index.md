@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DedicatedIpAutoWarmupEnabled" /></td>
+    <td><CopyableCode code="dedicated_ip_auto_warmup_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether or not the automatic warm-up feature is enabled for dedicated IP addresses that are associated with your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Details" /></td>
+    <td><CopyableCode code="details" /></td>
     <td><code>object</code></td>
     <td>An object that defines your account details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnforcementStatus" /></td>
+    <td><CopyableCode code="enforcement_status" /></td>
     <td><code>string</code></td>
     <td>The reputation status of your Amazon SES account. The status can be one of the following: HEALTHY – There are no reputation-related issues that currently impact your account. PROBATION – We've identified potential issues with your Amazon SES account. We're placing your account under review while you work on correcting these issues. SHUTDOWN – Your account's ability to send email is currently paused because of an issue with the email sent from your account. When you correct the issue, you can contact us and request that your account's ability to send email is resumed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductionAccessEnabled" /></td>
+    <td><CopyableCode code="production_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether or not your account has production access in the current Amazon Web Services Region. If the value is false, then your account is in the sandbox. When your account is in the sandbox, you can only send email to verified identities. If the value is true, then your account has production access. When your account has production access, you can send email to any address. The sending quota and maximum sending rate for your account vary based on your specific use case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendQuota" /></td>
+    <td><CopyableCode code="send_quota" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the per-day and per-second sending limits for your Amazon SES account in the current Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingEnabled" /></td>
+    <td><CopyableCode code="sending_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether or not email sending is enabled for your Amazon SES account in the current Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuppressionAttributes" /></td>
+    <td><CopyableCode code="suppression_attributes" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the email address suppression preferences for your account in the current Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VdmAttributes" /></td>
+    <td><CopyableCode code="vdm_attributes" /></td>
     <td><code>object</code></td>
     <td>The VDM attributes that apply to your Amazon SES account.</td>
 </tr>
@@ -189,14 +189,14 @@ Obtain information about the email-sending status and capabilities of your Amazo
 
 ```sql
 SELECT
-DedicatedIpAutoWarmupEnabled,
-Details,
-EnforcementStatus,
-ProductionAccessEnabled,
-SendQuota,
-SendingEnabled,
-SuppressionAttributes,
-VdmAttributes
+dedicated_ip_auto_warmup_enabled,
+details,
+enforcement_status,
+production_access_enabled,
+send_quota,
+sending_enabled,
+suppression_attributes,
+vdm_attributes
 FROM aws.sesv2.accounts
 WHERE region = '{{ region }}' -- required
 ;

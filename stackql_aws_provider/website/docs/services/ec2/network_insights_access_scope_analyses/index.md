@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalyzedEniCount" /></td>
+    <td><CopyableCode code="analyzed_eni_count" /></td>
     <td><code>integer</code></td>
     <td>The number of network interfaces analyzed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The analysis end date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingsFound" /></td>
+    <td><CopyableCode code="findings_found" /></td>
     <td><code>string</code></td>
     <td>Indicates whether there are findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeAnalysisArn" /></td>
+    <td><CopyableCode code="network_insights_access_scope_analysis_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Network Access Scope analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeAnalysisId" /></td>
+    <td><CopyableCode code="network_insights_access_scope_analysis_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Network Access Scope analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeId" /></td>
+    <td><CopyableCode code="network_insights_access_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Network Access Scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The analysis start date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarningMessage" /></td>
+    <td><CopyableCode code="warning_message" /></td>
     <td><code>string</code></td>
     <td>The warning message.</td>
 </tr>
@@ -209,17 +209,17 @@ Describes the specified Network Access Scope analyses.
 
 ```sql
 SELECT
-AnalyzedEniCount,
-EndDate,
-FindingsFound,
-NetworkInsightsAccessScopeAnalysisArn,
-NetworkInsightsAccessScopeAnalysisId,
-NetworkInsightsAccessScopeId,
-StartDate,
-Status,
-StatusMessage,
-Tags,
-WarningMessage
+analyzed_eni_count,
+end_date,
+findings_found,
+network_insights_access_scope_analysis_arn,
+network_insights_access_scope_analysis_id,
+network_insights_access_scope_id,
+start_date,
+status,
+status_message,
+tags,
+warning_message
 FROM aws.ec2.network_insights_access_scope_analyses
 WHERE region = '{{ region }}' -- required
 AND NetworkInsightsAccessScopeAnalysisId = '{{ NetworkInsightsAccessScopeAnalysisId }}'

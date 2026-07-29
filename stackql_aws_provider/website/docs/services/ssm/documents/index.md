@@ -50,152 +50,152 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApprovedVersion" /></td>
+    <td><CopyableCode code="approved_version" /></td>
     <td><code>string</code></td>
     <td>The version of the document currently approved for use in the organization. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentsInformation" /></td>
+    <td><CopyableCode code="attachments_information" /></td>
     <td><code>array</code></td>
     <td>Details about the document attachments, including names, locations, sizes, and so on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Author" /></td>
+    <td><CopyableCode code="author" /></td>
     <td><code>string</code></td>
     <td>The user in your organization who created the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>array</code></td>
     <td>The classification of a document to help you identify and categorize its use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CategoryEnum" /></td>
+    <td><CopyableCode code="category_enum" /></td>
     <td><code>array</code></td>
     <td>The value that identifies a document's category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the document was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultVersion" /></td>
+    <td><CopyableCode code="default_version" /></td>
     <td><code>string</code></td>
     <td>The default version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the SSM document. This value can differ for each version of the document. If you want to update this value, see UpdateDocument. (pattern: &lt;code&gt;^&#91;\w\.\-\:\/ &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentFormat" /></td>
+    <td><CopyableCode code="document_format" /></td>
     <td><code>string</code></td>
     <td>The document format, either JSON or YAML. (YAML, JSON, TEXT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentType" /></td>
+    <td><CopyableCode code="document_type" /></td>
     <td><code>string</code></td>
     <td>The type of document. (Command, Policy, Automation, Session, Package, ApplicationConfiguration, ApplicationConfigurationSchema, DeploymentStrategy, ChangeCalendar, Automation.ChangeTemplate, ProblemAnalysis, ProblemAnalysisTemplate, CloudFormation, ConformancePackTemplate, QuickSetup, ManualApprovalPolicy, AutoApprovalPolicy)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>The document version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hash" /></td>
+    <td><CopyableCode code="hash" /></td>
     <td><code>string</code></td>
     <td>The Sha256 or Sha1 hash created by the system when the document was created. Sha1 hashes have been deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HashType" /></td>
+    <td><CopyableCode code="hash_type" /></td>
     <td><code>string</code></td>
     <td>The hash type of the document. Valid values include Sha256 or Sha1. Sha1 hashes have been deprecated. (Sha256, Sha1)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersion" /></td>
+    <td><CopyableCode code="latest_version" /></td>
     <td><code>string</code></td>
     <td>The latest version of the document. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the SSM document. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.:/&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services user that created the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>array</code></td>
     <td>A description of the parameters for a document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingReviewVersion" /></td>
+    <td><CopyableCode code="pending_review_version" /></td>
     <td><code>string</code></td>
     <td>The version of the document that is currently under review. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformTypes" /></td>
+    <td><CopyableCode code="platform_types" /></td>
     <td><code>array</code></td>
     <td>The list of operating system (OS) platforms compatible with this SSM document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Requires" /></td>
+    <td><CopyableCode code="requires" /></td>
     <td><code>array</code></td>
     <td>A list of SSM documents required by a document. For example, an ApplicationConfiguration document requires an ApplicationConfigurationSchema document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReviewInformation" /></td>
+    <td><CopyableCode code="review_information" /></td>
     <td><code>array</code></td>
     <td>Details about the review of a document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReviewStatus" /></td>
+    <td><CopyableCode code="review_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the review. (APPROVED, NOT_REVIEWED, PENDING, REJECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>string</code></td>
     <td>The schema version. (pattern: &lt;code&gt;(&#91;0-9&#93;+)\.(&#91;0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sha1" /></td>
+    <td><CopyableCode code="sha_1" /></td>
     <td><code>string</code></td>
     <td>The SHA1 hash of the document, which you can use for verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the SSM document. (Creating, Active, Updating, Deleting, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusInformation" /></td>
+    <td><CopyableCode code="status_information" /></td>
     <td><code>string</code></td>
     <td>A message returned by Amazon Web Services Systems Manager that explains the Status value. For example, a Failed status might be explained by the StatusInformation message, "The specified S3 bucket doesn't exist. Verify that the URL of the S3 bucket is correct."</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags, or metadata, that have been applied to the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see Amazon Web Services resource and property types reference in the CloudFormation User Guide. (pattern: &lt;code&gt;^\/&#91;\w\.\-\:\/&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The version of the artifact associated with the document. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;1,128&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -327,36 +327,36 @@ Describes the specified Amazon Web Services Systems Manager document (SSM docume
 
 ```sql
 SELECT
-ApprovedVersion,
-AttachmentsInformation,
-Author,
-Category,
-CategoryEnum,
-CreatedDate,
-DefaultVersion,
-Description,
-DisplayName,
-DocumentFormat,
-DocumentType,
-DocumentVersion,
-Hash,
-HashType,
-LatestVersion,
-Name,
-Owner,
-Parameters,
-PendingReviewVersion,
-PlatformTypes,
-Requires,
-ReviewInformation,
-ReviewStatus,
-SchemaVersion,
-Sha1,
-Status,
-StatusInformation,
-Tags,
-TargetType,
-VersionName
+approved_version,
+attachments_information,
+author,
+category,
+category_enum,
+created_date,
+default_version,
+description,
+display_name,
+document_format,
+document_type,
+document_version,
+hash,
+hash_type,
+latest_version,
+name,
+owner,
+parameters,
+pending_review_version,
+platform_types,
+requires,
+review_information,
+review_status,
+schema_version,
+sha_1,
+status,
+status_information,
+tags,
+target_type,
+version_name
 FROM aws.ssm.documents
 WHERE region = '{{ region }}' -- required
 ;
@@ -405,7 +405,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DocumentDescription
+document_description
 ;
 ```
 </TabItem>
@@ -497,7 +497,7 @@ WHERE
 region = '{{ region }}' --required
 AND DocumentVersion = '{{ DocumentVersion }}' --required
 RETURNING
-Description;
+description;
 ```
 </TabItem>
 <TabItem value="update_document_metadata">
@@ -533,7 +533,7 @@ TargetType = '{{ TargetType }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-DocumentDescription;
+document_description;
 ```
 </TabItem>
 </Tabs>

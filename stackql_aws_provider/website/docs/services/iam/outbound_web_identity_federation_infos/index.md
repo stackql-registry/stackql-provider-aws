@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IssuerIdentifier" /></td>
+    <td><CopyableCode code="issuer_identifier" /></td>
     <td><code>string</code></td>
     <td>A unique issuer URL for your Amazon Web Services account that hosts the OpenID Connect (OIDC) discovery endpoints at /.well-known/openid-configuration and /.well-known/jwks.json. The OpenID Connect (OIDC) discovery endpoints contain verification keys and metadata necessary for token verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JwtVendingEnabled" /></td>
+    <td><CopyableCode code="jwt_vending_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether outbound identity federation is currently enabled for your Amazon Web Services account. When true, IAM principals in the account can call the GetWebIdentityToken API to obtain JSON Web Tokens (JWTs) for authentication with external services.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the configuration information for the outbound identity federation fea
 
 ```sql
 SELECT
-IssuerIdentifier,
-JwtVendingEnabled
+issuer_identifier,
+jwt_vending_enabled
 FROM aws.iam.outbound_web_identity_federation_infos
 WHERE region = '{{ region }}' -- required
 ;

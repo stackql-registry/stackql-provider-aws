@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="installationId" /></td>
+    <td><CopyableCode code="installation_id" /></td>
     <td><code>string</code></td>
     <td>The installation identifier from the integration provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationId" /></td>
+    <td><CopyableCode code="integration_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for an integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of a KMS key. Can be a key ID, key ARN, alias name, or alias ARN.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>Third-party provider type. (GITHUB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of the integration provider. (SOURCE_CODE, DOCUMENTATION)</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="installationId" /></td>
+    <td><CopyableCode code="installation_id" /></td>
     <td><code>string</code></td>
     <td>The installation identifier from the integration provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationId" /></td>
+    <td><CopyableCode code="integration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the integration.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>Third-party provider type. (GITHUB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of the integration provider. (SOURCE_CODE, DOCUMENTATION)</td>
 </tr>
@@ -206,12 +206,12 @@ Retrieves information about an integration.
 
 ```sql
 SELECT
-displayName,
-installationId,
-integrationId,
-kmsKeyId,
+display_name,
+installation_id,
+integration_id,
+kms_key_id,
 provider,
-providerType
+provider_type
 FROM aws.securityagent.integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -223,11 +223,11 @@ Lists the integrations in your account, optionally filtered by provider or provi
 
 ```sql
 SELECT
-displayName,
-installationId,
-integrationId,
+display_name,
+installation_id,
+integration_id,
 provider,
-providerType
+provider_type
 FROM aws.securityagent.integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,7 +266,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-integrationId
+integration_id
 ;
 ```
 </TabItem>

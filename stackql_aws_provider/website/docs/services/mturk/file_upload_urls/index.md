@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FileUploadURL" /></td>
+    <td><CopyableCode code="file_upload_url" /></td>
     <td><code>string</code></td>
     <td>A temporary URL for the file that the Worker uploaded for the answer.</td>
 </tr>
@@ -119,7 +119,7 @@ The GetFileUploadURL operation generates and returns a temporary URL. You use th
 
 ```sql
 SELECT
-FileUploadURL
+file_upload_url
 FROM aws.mturk.file_upload_urls
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="containerDefinitions" /></td>
+    <td><CopyableCode code="container_definitions" /></td>
     <td><code>array</code></td>
     <td>A list of container definitions in JSON format that describe the containers that make up the daemon task.</td>
 </tr>
@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The number of CPU units used by the daemon task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="daemonTaskDefinitionArn" /></td>
+    <td><CopyableCode code="daemon_task_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The full Amazon Resource Name (ARN) of the daemon task definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deleteRequestedAt" /></td>
+    <td><CopyableCode code="delete_requested_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for the time when the daemon task definition delete was requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the task execution role that grants the Amazon ECS container agent permission to make Amazon Web Services API calls on your behalf.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The amount of memory (in MiB) used by the daemon task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredAt" /></td>
+    <td><CopyableCode code="registered_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for the time when the daemon task definition was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredBy" /></td>
+    <td><CopyableCode code="registered_by" /></td>
     <td><code>string</code></td>
     <td>The principal that registered the daemon task definition.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the daemon task definition. The valid values are ACTIVE, DELETE_IN_PROGRESS, and DELETED. (ACTIVE, DELETE_IN_PROGRESS, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRoleArn" /></td>
+    <td><CopyableCode code="task_role_arn" /></td>
     <td><code>string</code></td>
     <td>The short name or full Amazon Resource Name (ARN) of the IAM role that grants containers in the daemon task permission to call Amazon Web Services APIs on your behalf.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="daemonTaskDefinitions" /></td>
+    <td><CopyableCode code="daemon_task_definitions" /></td>
     <td><code>array</code></td>
     <td>The list of daemon task definition summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future ListDaemonTaskDefinitions request. When the results of a ListDaemonTaskDefinitions request exceed maxResults, this value can be used to retrieve the next page of results.</td>
 </tr>
@@ -226,18 +226,18 @@ Describes a daemon task definition. You can specify a family and revision to fin
 
 ```sql
 SELECT
-containerDefinitions,
+container_definitions,
 cpu,
-daemonTaskDefinitionArn,
-deleteRequestedAt,
-executionRoleArn,
+daemon_task_definition_arn,
+delete_requested_at,
+execution_role_arn,
 family,
 memory,
-registeredAt,
-registeredBy,
+registered_at,
+registered_by,
 revision,
 status,
-taskRoleArn,
+task_role_arn,
 volumes
 FROM aws.ecs.daemon_task_definitions
 WHERE region = '{{ region }}' -- required
@@ -250,8 +250,8 @@ Returns a list of daemon task definitions that are registered to your account. Y
 
 ```sql
 SELECT
-daemonTaskDefinitions,
-nextToken
+daemon_task_definitions,
+next_token
 FROM aws.ecs.daemon_task_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,7 +296,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-daemonTaskDefinitionArn
+daemon_task_definition_arn
 ;
 ```
 </TabItem>

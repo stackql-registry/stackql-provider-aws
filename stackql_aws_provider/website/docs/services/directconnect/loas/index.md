@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="loaContent" /></td>
+    <td><CopyableCode code="loa_content" /></td>
     <td><code>string (byte)</code></td>
     <td>The binary contents of the LOA-CFA document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loaContentType" /></td>
+    <td><CopyableCode code="loa_content_type" /></td>
     <td><code>string</code></td>
     <td>The standard media type for the LOA-CFA document. The only supported value is application/pdf. (application/pdf)</td>
 </tr>
@@ -124,8 +124,8 @@ Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG)
 
 ```sql
 SELECT
-loaContent,
-loaContentType
+loa_content,
+loa_content_type
 FROM aws.directconnect.loas
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivationId" /></td>
+    <td><CopyableCode code="activation_id" /></td>
     <td><code>string</code></td>
     <td>The ID created by Systems Manager when you submitted the activation. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the activation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultInstanceName" /></td>
+    <td><CopyableCode code="default_instance_name" /></td>
     <td><code>string</code></td>
     <td>A name for the managed node when it is created. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A user defined description of the activation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when this activation can no longer be used to register managed nodes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expired" /></td>
+    <td><CopyableCode code="expired" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not the activation is expired.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRole" /></td>
+    <td><CopyableCode code="iam_role" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management (IAM) role to assign to the managed node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationLimit" /></td>
+    <td><CopyableCode code="registration_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of managed nodes that can be registered using this activation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationsCount" /></td>
+    <td><CopyableCode code="registrations_count" /></td>
     <td><code>integer</code></td>
     <td>The number of managed nodes already registered with this activation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Tags assigned to the activation.</td>
 </tr>
@@ -178,16 +178,16 @@ Describes details about the activation, such as the date and time the activation
 
 ```sql
 SELECT
-ActivationId,
-CreatedDate,
-DefaultInstanceName,
-Description,
-ExpirationDate,
-Expired,
-IamRole,
-RegistrationLimit,
-RegistrationsCount,
-Tags
+activation_id,
+created_date,
+default_instance_name,
+description,
+expiration_date,
+expired,
+iam_role,
+registration_limit,
+registrations_count,
+tags
 FROM aws.ssm.activations
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,8 +230,8 @@ SELECT
 '{{ RegistrationMetadata }}',
 '{{ region }}'
 RETURNING
-ActivationCode,
-ActivationId
+activation_code,
+activation_id
 ;
 ```
 </TabItem>

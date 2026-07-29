@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the S3 bucket. (pattern: &lt;code&gt;(arn:aws&#91;a-zA-Z0-9-&#93;*:s3:::.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The client token used for idempotency when the file system was created. (pattern: &lt;code&gt;(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the file system was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemArn" /></td>
+    <td><CopyableCode code="file_system_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the file system. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file system. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;|fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services KMS key used for encryption. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;|mrk-&#91;0-9a-f&#93;&#123;32&#125;|alias/&#91;a-zA-Z0-9/_-&#93;+|(arn:aws&#91;-a-z&#93;*:kms:&#91;a-z0-9-&#93;+:\d&#123;12&#125;:((key/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;)|(key/mrk-&#91;0-9a-f&#93;&#123;32&#125;)|(alias/&#91;a-zA-Z0-9/_-&#93;+))))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the file system owner. (pattern: &lt;code&gt;(\d&#123;12&#125;)|(\d&#123;4&#125;-&#123;4&#125;-\d&#123;4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The prefix in the S3 bucket that the file system provides access to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used for S3 access. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the file system. (available, creating, deleting, deleted, error, updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the file system status.</td>
 </tr>
@@ -140,27 +140,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the S3 bucket. (pattern: &lt;code&gt;(arn:aws&#91;a-zA-Z0-9-&#93;*:s3:::.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the file system was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemArn" /></td>
+    <td><CopyableCode code="file_system_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the file system. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file system. (pattern: &lt;code&gt;(arn:aws&#91;-a-z&#93;*:s3files:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;17,40&#125;|fs-&#91;0-9a-f&#93;&#123;17,40&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the file system owner. (pattern: &lt;code&gt;(\d&#123;12&#125;)|(\d&#123;4&#125;-&#123;4&#125;-\d&#123;4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used for S3 access. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the file system. (available, creating, deleting, deleted, error, updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the file system status.</td>
 </tr>
@@ -288,16 +288,16 @@ Returns resource information for the specified S3 File System including status, 
 SELECT
 name,
 bucket,
-clientToken,
-creationTime,
-fileSystemArn,
-fileSystemId,
-kmsKeyId,
-ownerId,
+client_token,
+creation_time,
+file_system_arn,
+file_system_id,
+kms_key_id,
+owner_id,
 prefix,
-roleArn,
+role_arn,
 status,
-statusMessage,
+status_message,
 tags
 FROM aws.s3files.file_systems
 WHERE file_system_id = '{{ file_system_id }}' -- required
@@ -313,13 +313,13 @@ Returns a list of all S3 File Systems owned by the account with optional filteri
 SELECT
 name,
 bucket,
-creationTime,
-fileSystemArn,
-fileSystemId,
-ownerId,
-roleArn,
+creation_time,
+file_system_arn,
+file_system_id,
+owner_id,
+role_arn,
 status,
-statusMessage
+status_message
 FROM aws.s3files.file_systems
 WHERE region = '{{ region }}' -- required
 AND bucket = '{{ bucket }}'
@@ -367,16 +367,16 @@ SELECT
 RETURNING
 name,
 bucket,
-clientToken,
-creationTime,
-fileSystemArn,
-fileSystemId,
-kmsKeyId,
-ownerId,
+client_token,
+creation_time,
+file_system_arn,
+file_system_id,
+kms_key_id,
+owner_id,
 prefix,
-roleArn,
+role_arn,
 status,
-statusMessage,
+status_message,
 tags
 ;
 ```

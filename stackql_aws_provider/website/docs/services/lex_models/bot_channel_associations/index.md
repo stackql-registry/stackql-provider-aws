@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the association between the bot and the channel. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAlias" /></td>
+    <td><CopyableCode code="bot_alias" /></td>
     <td><code>string</code></td>
     <td>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botConfiguration" /></td>
+    <td><CopyableCode code="bot_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides information that the messaging platform needs to communicate with the Amazon Lex bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botName" /></td>
+    <td><CopyableCode code="bot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Lex bot. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the association between the bot and the channel was created.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the association between the bot and the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If status is FAILED, Amazon Lex provides the reason that it failed to create the association.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the association between the bot and the channel. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAlias" /></td>
+    <td><CopyableCode code="bot_alias" /></td>
     <td><code>string</code></td>
     <td>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botConfiguration" /></td>
+    <td><CopyableCode code="bot_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides information necessary to communicate with the messaging platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botName" /></td>
+    <td><CopyableCode code="bot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Lex bot to which this association is being made. Currently, Amazon Lex supports associations with Facebook and Slack, and Twilio. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the association between the Amazon Lex bot and the channel was created.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>A text description of the association you are creating.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If status is FAILED, Amazon Lex provides the reason that it failed to create the association.</td>
 </tr>
@@ -265,12 +265,12 @@ Returns information about the association between an Amazon Lex bot and a messag
 ```sql
 SELECT
 name,
-botAlias,
-botConfiguration,
-botName,
-createdDate,
+bot_alias,
+bot_configuration,
+bot_name,
+created_date,
 description,
-failureReason,
+failure_reason,
 status,
 type_
 FROM aws.lex_models.bot_channel_associations
@@ -288,12 +288,12 @@ Returns a list of all of the channels associated with the specified bot. The Get
 ```sql
 SELECT
 name,
-botAlias,
-botConfiguration,
-botName,
-createdDate,
+bot_alias,
+bot_configuration,
+bot_name,
+created_date,
 description,
-failureReason,
+failure_reason,
 status,
 type_
 FROM aws.lex_models.bot_channel_associations

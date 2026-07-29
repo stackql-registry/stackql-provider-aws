@@ -50,122 +50,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AbuseContactEmail" /></td>
+    <td><CopyableCode code="abuse_contact_email" /></td>
     <td><code>string</code></td>
     <td>Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AbuseContactPhone" /></td>
+    <td><CopyableCode code="abuse_contact_phone" /></td>
     <td><code>string</code></td>
     <td>Phone number for reporting abuse.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdminContact" /></td>
+    <td><CopyableCode code="admin_contact" /></td>
     <td><code>object</code></td>
     <td>Provides details about the domain administrative contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdminPrivacy" /></td>
+    <td><CopyableCode code="admin_privacy" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether contact information is concealed from WHOIS queries. If the value is true, WHOIS ("who is") queries return contact information either for Amazon Registrar or for our registrar associate, Gandi. If the value is false, WHOIS queries return the information that you entered for the admin contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoRenew" /></td>
+    <td><CopyableCode code="auto_renew" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the domain registration is set to renew automatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingContact" /></td>
+    <td><CopyableCode code="billing_contact" /></td>
     <td><code>object</code></td>
     <td>Provides details about the domain billing contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingPrivacy" /></td>
+    <td><CopyableCode code="billing_privacy" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether contact information is concealed from WHOIS queries. If the value is true, WHOIS ("who is") queries return contact information either for Amazon Registrar or for our registrar associate, Gandi. If the value is false, WHOIS queries return the information that you entered for the billing contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the domain was created as found in the response to a WHOIS query. The date and time is in Unix time format and Coordinated Universal time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsSec" /></td>
+    <td><CopyableCode code="dns_sec" /></td>
     <td><code>string</code></td>
     <td>Deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnssecKeys" /></td>
+    <td><CopyableCode code="dnssec_keys" /></td>
     <td><code>array</code></td>
     <td>A complex type that contains information about the DNSSEC configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the registration for the domain is set to expire. The date and time is in Unix time format and Coordinated Universal time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Nameservers" /></td>
+    <td><CopyableCode code="nameservers" /></td>
     <td><code>array</code></td>
     <td>The name servers of the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrantContact" /></td>
+    <td><CopyableCode code="registrant_contact" /></td>
     <td><code>object</code></td>
     <td>Provides details about the domain registrant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrantPrivacy" /></td>
+    <td><CopyableCode code="registrant_privacy" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether contact information is concealed from WHOIS queries. If the value is true, WHOIS ("who is") queries return contact information either for Amazon Registrar or for our registrar associate, Gandi. If the value is false, WHOIS queries return the information that you entered for the registrant contact (domain owner).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrarName" /></td>
+    <td><CopyableCode code="registrar_name" /></td>
     <td><code>string</code></td>
     <td>Name of the registrar of the domain as identified in the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrarUrl" /></td>
+    <td><CopyableCode code="registrar_url" /></td>
     <td><code>string</code></td>
     <td>Web address of the registrar.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryDomainId" /></td>
+    <td><CopyableCode code="registry_domain_id" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reseller" /></td>
+    <td><CopyableCode code="reseller" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusList" /></td>
+    <td><CopyableCode code="status_list" /></td>
     <td><code>array</code></td>
     <td>An array of domain name status codes, also known as Extensible Provisioning Protocol (EPP) status codes. ICANN, the organization that maintains a central database of domain names, has developed a set of domain name status codes that tell you the status of a variety of operations on a domain name, for example, registering a domain name, transferring a domain name to another registrar, renewing the registration for a domain name, and so on. All registrars use this same set of status codes. For a current list of domain name status codes and an explanation of what each code means, go to the ICANN website and search for epp status codes. (Search on the ICANN website; web searches sometimes return an old version of the document.)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TechContact" /></td>
+    <td><CopyableCode code="tech_contact" /></td>
     <td><code>object</code></td>
     <td>Provides details about the domain technical contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TechPrivacy" /></td>
+    <td><CopyableCode code="tech_privacy" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether contact information is concealed from WHOIS queries. If the value is true, WHOIS ("who is") queries return contact information either for Amazon Registrar or for our registrar associate, Gandi. If the value is false, WHOIS queries return the information that you entered for the technical contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedDate" /></td>
+    <td><CopyableCode code="updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last updated date of the domain as found in the response to a WHOIS query. The date and time is in Unix time format and Coordinated Universal time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhoIsServer" /></td>
+    <td><CopyableCode code="who_is_server" /></td>
     <td><code>string</code></td>
     <td>The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.</td>
 </tr>
@@ -234,30 +234,30 @@ This operation returns detailed information about a specified domain that is ass
 
 ```sql
 SELECT
-AbuseContactEmail,
-AbuseContactPhone,
-AdminContact,
-AdminPrivacy,
-AutoRenew,
-BillingContact,
-BillingPrivacy,
-CreationDate,
-DnsSec,
-DnssecKeys,
-DomainName,
-ExpirationDate,
-Nameservers,
-RegistrantContact,
-RegistrantPrivacy,
-RegistrarName,
-RegistrarUrl,
-RegistryDomainId,
-Reseller,
-StatusList,
-TechContact,
-TechPrivacy,
-UpdatedDate,
-WhoIsServer
+abuse_contact_email,
+abuse_contact_phone,
+admin_contact,
+admin_privacy,
+auto_renew,
+billing_contact,
+billing_privacy,
+creation_date,
+dns_sec,
+dnssec_keys,
+domain_name,
+expiration_date,
+nameservers,
+registrant_contact,
+registrant_privacy,
+registrar_name,
+registrar_url,
+registry_domain_id,
+reseller,
+status_list,
+tech_contact,
+tech_privacy,
+updated_date,
+who_is_server
 FROM aws.route53domains.domain_details
 WHERE region = '{{ region }}' -- required
 ;

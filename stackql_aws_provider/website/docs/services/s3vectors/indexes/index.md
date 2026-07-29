@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the vector index was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the vectors inserted into the vector index. (float32)</td>
 </tr>
@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The number of values in the vectors that are inserted into the vector index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="distanceMetric" /></td>
+    <td><CopyableCode code="distance_metric" /></td>
     <td><code>string</code></td>
     <td>The distance metric to be used for similarity search. (euclidean, cosine)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration for a vector bucket or index. By default, if you don't specify, all new vectors in Amazon S3 vector buckets use server-side encryption with Amazon S3 managed keys (SSE-S3), specifically AES256. You can optionally override bucket level encryption settings, and set a specific encryption configuration for a vector index at the time of index creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexArn" /></td>
+    <td><CopyableCode code="index_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vector index. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:s3vectors:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;/index/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vector index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataConfiguration" /></td>
+    <td><CopyableCode code="metadata_configuration" /></td>
     <td><code>object</code></td>
     <td>The metadata configuration for a vector index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorBucketName" /></td>
+    <td><CopyableCode code="vector_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vector bucket that contains the vector index.</td>
 </tr>
@@ -110,22 +110,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the vector index was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexArn" /></td>
+    <td><CopyableCode code="index_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vector index. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:s3vectors:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;/index/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vector index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorBucketName" /></td>
+    <td><CopyableCode code="vector_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vector bucket that contains the vector index.</td>
 </tr>
@@ -216,15 +216,15 @@ Returns vector index attributes. To specify the vector index, you can either use
 
 ```sql
 SELECT
-creationTime,
-dataType,
+creation_time,
+data_type,
 dimension,
-distanceMetric,
-encryptionConfiguration,
-indexArn,
-indexName,
-metadataConfiguration,
-vectorBucketName
+distance_metric,
+encryption_configuration,
+index_arn,
+index_name,
+metadata_configuration,
+vector_bucket_name
 FROM aws.s3vectors.indexes
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,10 +236,10 @@ Returns a list of all the vector indexes within the specified vector bucket. To 
 
 ```sql
 SELECT
-creationTime,
-indexArn,
-indexName,
-vectorBucketName
+creation_time,
+index_arn,
+index_name,
+vector_bucket_name
 FROM aws.s3vectors.indexes
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,7 +286,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-indexArn
+index_arn
 ;
 ```
 </TabItem>

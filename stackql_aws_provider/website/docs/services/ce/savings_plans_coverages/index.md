@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SavingsPlansCoverages" /></td>
+    <td><CopyableCode code="savings_plans_coverages" /></td>
     <td><code>array</code></td>
     <td>The amount of spend that your Savings Plans covered.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the Savings Plans covered for your account. This enables you to see ho
 
 ```sql
 SELECT
-NextToken,
-SavingsPlansCoverages
+next_token,
+savings_plans_coverages
 FROM aws.ce.savings_plans_coverages
 WHERE region = '{{ region }}' -- required
 ;

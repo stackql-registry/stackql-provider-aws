@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset. An Outpost asset can be a single server within an Outposts rack or an Outposts server configuration. (pattern: &lt;code&gt;^(\w+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsServiceName" /></td>
+    <td><CopyableCode code="aws_service_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service name of the instance. (AWS, EC2, ELASTICACHE, ELB, RDS, ROUTE53)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance. (pattern: &lt;code&gt;^i-&#91;0-9a-z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of instance. (pattern: &lt;code&gt;&#91;a-z0-9\-\.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -174,11 +174,11 @@ A list of Amazon EC2 instances, belonging to all accounts, running on the specif
 
 ```sql
 SELECT
-AccountId,
-AssetId,
-AwsServiceName,
-InstanceId,
-InstanceType
+account_id,
+asset_id,
+aws_service_name,
+instance_id,
+instance_type
 FROM aws.outposts.asset_instances
 WHERE outpost_id = '{{ outpost_id }}' -- required
 AND region = '{{ region }}' -- required

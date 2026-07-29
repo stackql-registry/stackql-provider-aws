@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceEndpointList" /></td>
+    <td><CopyableCode code="resource_endpoint_list" /></td>
     <td><code>array</code></td>
     <td>A list of endpoints for the specified signaling channel.</td>
 </tr>
@@ -119,7 +119,7 @@ Provides an endpoint for the specified signaling channel to send and receive mes
 
 ```sql
 SELECT
-ResourceEndpointList
+resource_endpoint_list
 FROM aws.kinesisvideo.signaling_channel_endpoints
 WHERE region = '{{ region }}' -- required
 ;

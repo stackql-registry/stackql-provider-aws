@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commandArn" /></td>
+    <td><CopyableCode code="command_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the command. For example, arn:aws:iot:<code>&lt;region&gt;</code>:<code>&lt;accountid&gt;</code>:command/<code>&lt;commandId&gt;</code></td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command execution was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command execution was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the command execution. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionTimeoutSeconds" /></td>
+    <td><CopyableCode code="execution_timeout_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>Specifies the amount of time in seconds that the device can take to finish a command execution. A timer starts when the command execution is created. If the command execution status is not set to another terminal state before the timer expires, it will automatically update to TIMED_OUT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command execution was last updated.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The result value for the current state of the command execution. The status provides information about the progress of the command execution. The device can use the result field to share additional details about the execution such as a return value of a remote function call. If you use the AWS-IoT-FleetWise namespace, then this field is not applicable in the API response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command execution was started.</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the command execution. After your devices receive the command and start performing the operations specified in the command, it can use the UpdateCommandExecution MQTT API to update the status information. (CREATED, IN_PROGRESS, SUCCEEDED, FAILED, REJECTED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>Your devices can use this parameter to provide additional context about the status of a command execution using a reason code and description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the device on which the command execution is being performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeToLive" /></td>
+    <td><CopyableCode code="time_to_live" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time to live (TTL) parameter that indicates the duration for which executions will be retained in your account. The default value is six months.</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commandArn" /></td>
+    <td><CopyableCode code="command_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the command execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the command completed executing on the target device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the command execution was created for the target device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the command execution. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the command started executing on the target device.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the command executions. (CREATED, IN_PROGRESS, SUCCEEDED, FAILED, REJECTED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target device for which the command is being executed.</td>
 </tr>
@@ -269,19 +269,19 @@ Gets information about the specific command execution on a single device.
 
 ```sql
 SELECT
-commandArn,
-completedAt,
-createdAt,
-executionId,
-executionTimeoutSeconds,
-lastUpdatedAt,
+command_arn,
+completed_at,
+created_at,
+execution_id,
+execution_timeout_seconds,
+last_updated_at,
 parameters,
 result,
-startedAt,
+started_at,
 status,
-statusReason,
-targetArn,
-timeToLive
+status_reason,
+target_arn,
+time_to_live
 FROM aws.iot.command_executions
 WHERE execution_id = '{{ execution_id }}' -- required
 AND targetArn = '{{ targetArn }}' -- required
@@ -296,13 +296,13 @@ List all command executions. You must provide only the startedTimeFilter or the 
 
 ```sql
 SELECT
-commandArn,
-completedAt,
-createdAt,
-executionId,
-startedAt,
+command_arn,
+completed_at,
+created_at,
+execution_id,
+started_at,
 status,
-targetArn
+target_arn
 FROM aws.iot.command_executions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

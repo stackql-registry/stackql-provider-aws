@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SubscriptionState" /></td>
+    <td><CopyableCode code="subscription_state" /></td>
     <td><code>string</code></td>
     <td>The status of the subscription. (ACTIVE, INACTIVE)</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the SubscriptionState, either Active or Inactive.
 
 ```sql
 SELECT
-SubscriptionState
+subscription_state
 FROM aws.shield.subscription_states
 WHERE region = '{{ region }}' -- required
 ;

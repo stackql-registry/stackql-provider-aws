@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the detector (instance) was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorModelName" /></td>
+    <td><CopyableCode code="detector_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the detector model that created this detector (instance). (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorModelVersion" /></td>
+    <td><CopyableCode code="detector_model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the detector model that created this detector (instance).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="keyValue" /></td>
+    <td><CopyableCode code="key_value" /></td>
     <td><code>string</code></td>
     <td>The value of the key (identifying the device or system) that caused the creation of this detector (instance). (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-_:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the detector (instance) was last updated.</td>
 </tr>
@@ -176,11 +176,11 @@ Returns information about the specified detector (instance).
 
 ```sql
 SELECT
-creationTime,
-detectorModelName,
-detectorModelVersion,
-keyValue,
-lastUpdateTime,
+creation_time,
+detector_model_name,
+detector_model_version,
+key_value,
+last_update_time,
 state
 FROM aws.iotevents_data.detectors
 WHERE detector_model_name = '{{ detector_model_name }}' -- required

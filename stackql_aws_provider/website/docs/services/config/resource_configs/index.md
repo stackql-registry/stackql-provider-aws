@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseConfigurationItems" /></td>
+    <td><CopyableCode code="base_configuration_items" /></td>
     <td><code>array</code></td>
     <td>A list that contains the current configuration of one or more resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unprocessedResourceKeys" /></td>
+    <td><CopyableCode code="unprocessed_resource_keys" /></td>
     <td><code>array</code></td>
     <td>A list of resource keys that were not processed with the current response. The unprocessesResourceKeys value is in the same form as ResourceKeys, so the value can be directly provided to a subsequent BatchGetResourceConfig operation. If there are no unprocessed resource keys, the response contains an empty unprocessedResourceKeys list.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the BaseConfigurationItem for one or more requested resources. The opera
 
 ```sql
 SELECT
-baseConfigurationItems,
-unprocessedResourceKeys
+base_configuration_items,
+unprocessed_resource_keys
 FROM aws.config.resource_configs
 WHERE region = '{{ region }}' -- required
 ;

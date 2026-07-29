@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IAMPolicyAssignment" /></td>
+    <td><CopyableCode code="iam_policy_assignment" /></td>
     <td><code>object</code></td>
     <td>Information describing the IAM policy assignment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssignmentName" /></td>
+    <td><CopyableCode code="assignment_name" /></td>
     <td><code>string</code></td>
     <td>Assignment name. (pattern: &lt;code&gt;(?=^.&#123;2,256&#125;$)(?!.*\s)&#91;0-9a-zA-Z-_.:=+@&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssignmentStatus" /></td>
+    <td><CopyableCode code="assignment_status" /></td>
     <td><code>string</code></td>
     <td>Assignment status. (ENABLED, DRAFT, DISABLED)</td>
 </tr>
@@ -213,9 +213,9 @@ Describes an existing IAM policy assignment, as specified by the assignment name
 
 ```sql
 SELECT
-IAMPolicyAssignment,
-RequestId,
-Status
+iam_policy_assignment,
+request_id,
+status
 FROM aws.quicksight.iam_policy_assignments
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND assignment_name = '{{ assignment_name }}' -- required
@@ -230,8 +230,8 @@ Lists the IAM policy assignments in the current Amazon Quick Sight account.
 
 ```sql
 SELECT
-AssignmentName,
-AssignmentStatus
+assignment_name,
+assignment_status
 FROM aws.quicksight.iam_policy_assignments
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -277,13 +277,13 @@ SELECT
 '{{ namespace }}',
 '{{ region }}'
 RETURNING
-AssignmentId,
-AssignmentName,
-AssignmentStatus,
-Identities,
-PolicyArn,
-RequestId,
-Status
+assignment_id,
+assignment_name,
+assignment_status,
+identities,
+policy_arn,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -340,13 +340,13 @@ AND assignment_name = '{{ assignment_name }}' --required
 AND namespace = '{{ namespace }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AssignmentId,
-AssignmentName,
-AssignmentStatus,
-Identities,
-PolicyArn,
-RequestId,
-Status;
+assignment_id,
+assignment_name,
+assignment_status,
+identities,
+policy_arn,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

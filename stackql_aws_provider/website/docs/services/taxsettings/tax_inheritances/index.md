@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="heritageStatus" /></td>
+    <td><CopyableCode code="heritage_status" /></td>
     <td><code>string</code></td>
     <td>The tax inheritance status. (OptIn, OptOut)</td>
 </tr>
@@ -126,7 +126,7 @@ The get account tax inheritance status.
 
 ```sql
 SELECT
-heritageStatus
+heritage_status
 FROM aws.taxsettings.tax_inheritances
 WHERE region = '{{ region }}' -- required
 ;

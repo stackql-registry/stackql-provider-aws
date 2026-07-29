@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="StreamingConfigurations" /></td>
+    <td><CopyableCode code="streaming_configurations" /></td>
     <td><code>array</code></td>
     <td>The streaming settings.</td>
 </tr>
@@ -138,7 +138,7 @@ Retrieves the data streaming configuration for an AppInstance. For more informat
 
 ```sql
 SELECT
-StreamingConfigurations
+streaming_configurations
 FROM aws.chime_sdk_messaging.messaging_streaming_configurations
 WHERE app_instance_arn = '{{ app_instance_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -169,7 +169,7 @@ app_instance_arn = '{{ app_instance_arn }}' --required
 AND region = '{{ region }}' --required
 AND StreamingConfigurations = '{{ StreamingConfigurations }}' --required
 RETURNING
-StreamingConfigurations;
+streaming_configurations;
 ```
 </TabItem>
 </Tabs>

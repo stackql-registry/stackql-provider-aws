@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="afterBlobId" /></td>
+    <td><CopyableCode code="after_blob_id" /></td>
     <td><code>string</code></td>
     <td>The full blob ID of the commit used to establish the after of the comparison.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="afterCommitId" /></td>
+    <td><CopyableCode code="after_commit_id" /></td>
     <td><code>string</code></td>
     <td>The full commit ID of the commit used to establish the after of the comparison.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="beforeBlobId" /></td>
+    <td><CopyableCode code="before_blob_id" /></td>
     <td><code>string</code></td>
     <td>The full blob ID of the commit used to establish the before of the comparison.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="beforeCommitId" /></td>
+    <td><CopyableCode code="before_commit_id" /></td>
     <td><code>string</code></td>
     <td>The full commit ID of the commit used to establish the before of the comparison.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>Location information about the comment on the comparison, including the file name, line number, and whether the version of the file where the comment was made is BEFORE or AFTER.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository that contains the compared commits. (pattern: &lt;code&gt;&#91;\w\.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -149,13 +149,13 @@ Returns information about comments made on the comparison between two commits. R
 
 ```sql
 SELECT
-afterBlobId,
-afterCommitId,
-beforeBlobId,
-beforeCommitId,
+after_blob_id,
+after_commit_id,
+before_blob_id,
+before_commit_id,
 comments,
 location,
-repositoryName
+repository_name
 FROM aws.codecommit.comments_for_compared_commits
 WHERE region = '{{ region }}' -- required
 ;

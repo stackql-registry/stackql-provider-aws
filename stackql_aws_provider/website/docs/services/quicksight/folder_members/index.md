@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MemberArn" /></td>
+    <td><CopyableCode code="member_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberId" /></td>
+    <td><CopyableCode code="member_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the member. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ List all assets (DASHBOARD, ANALYSIS, and DATASET) in a folder.
 
 ```sql
 SELECT
-MemberArn,
-MemberId
+member_arn,
+member_id
 FROM aws.quicksight.folder_members
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND folder_id = '{{ folder_id }}' -- required

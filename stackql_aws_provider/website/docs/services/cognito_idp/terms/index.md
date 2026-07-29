@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientId" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the app client that the terms documents are assigned to. (pattern: &lt;code&gt;&#91;\w+&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enforcement" /></td>
+    <td><CopyableCode code="enforcement" /></td>
     <td><code>string</code></td>
     <td>This parameter is reserved for future use and currently accepts one value. (NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Links" /></td>
+    <td><CopyableCode code="links" /></td>
     <td><code>object</code></td>
     <td>A map of URLs to languages. For each localized language that will view the requested TermsName, assign a URL. A selection of cognito:default displays for all languages that don't have a language-specific URL. For example, "cognito:default": "https:​//terms.example.com", "cognito:spanish": "https:​//terms.example.com/es".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TermsId" /></td>
+    <td><CopyableCode code="terms_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the terms documents. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;4&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;89abAB&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TermsName" /></td>
+    <td><CopyableCode code="terms_name" /></td>
     <td><code>string</code></td>
     <td>The type and friendly name of the terms documents. (pattern: &lt;code&gt;^(terms-of-use|privacy-policy)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TermsSource" /></td>
+    <td><CopyableCode code="terms_source" /></td>
     <td><code>string</code></td>
     <td>This parameter is reserved for future use and currently accepts one value. (LINK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool that contains the terms documents. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>This API operation returns a limited number of results. The pagination token is an identifier that you can present in an additional API request with the same parameters. When you include the pagination token, Amazon Cognito returns the next set of items after the current list. Subsequent requests return a new pagination token. By use of this token, you can paginate through the full list of items.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Terms" /></td>
+    <td><CopyableCode code="terms" /></td>
     <td><code>array</code></td>
     <td>A summary of the requested terms documents. Includes unique identifiers for later changes to the terms documents.</td>
 </tr>
@@ -213,15 +213,15 @@ Returns details for the requested terms documents ID. For more information, see 
 
 ```sql
 SELECT
-ClientId,
-CreationDate,
-Enforcement,
-LastModifiedDate,
-Links,
-TermsId,
-TermsName,
-TermsSource,
-UserPoolId
+client_id,
+creation_date,
+enforcement,
+last_modified_date,
+links,
+terms_id,
+terms_name,
+terms_source,
+user_pool_id
 FROM aws.cognito_idp.terms
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,8 +233,8 @@ Returns details about all terms documents for the requested user pool. Amazon Co
 
 ```sql
 SELECT
-NextToken,
-Terms
+next_token,
+terms
 FROM aws.cognito_idp.terms
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,7 +275,7 @@ SELECT
 '{{ Links }}',
 '{{ region }}'
 RETURNING
-Terms
+terms
 ;
 ```
 </TabItem>
@@ -345,7 +345,7 @@ region = '{{ region }}' --required
 AND TermsId = '{{ TermsId }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
-Terms;
+terms;
 ```
 </TabItem>
 </Tabs>

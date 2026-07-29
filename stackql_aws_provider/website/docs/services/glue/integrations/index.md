@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Integrations" /></td>
+    <td><CopyableCode code="integrations" /></td>
     <td><code>array</code></td>
     <td>A list of zero-ETL integrations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the starting point for the next set of response records in a subsequent request.</td>
 </tr>
@@ -145,8 +145,8 @@ The API is used to retrieve a list of integrations.
 
 ```sql
 SELECT
-Integrations,
-Marker
+integrations,
+marker
 FROM aws.glue.integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -193,19 +193,19 @@ SELECT
 '{{ IntegrationConfig }}',
 '{{ region }}'
 RETURNING
-AdditionalEncryptionContext,
-CreateTime,
-DataFilter,
-Description,
-Errors,
-IntegrationArn,
-IntegrationConfig,
-IntegrationName,
-KmsKeyId,
-SourceArn,
-Status,
-Tags,
-TargetArn
+additional_encryption_context,
+create_time,
+data_filter,
+description,
+errors,
+integration_arn,
+integration_config,
+integration_name,
+kms_key_id,
+source_arn,
+status,
+tags,
+target_arn
 ;
 ```
 </TabItem>
@@ -288,19 +288,19 @@ WHERE
 region = '{{ region }}' --required
 AND IntegrationIdentifier = '{{ IntegrationIdentifier }}' --required
 RETURNING
-AdditionalEncryptionContext,
-CreateTime,
-DataFilter,
-Description,
-Errors,
-IntegrationArn,
-IntegrationConfig,
-IntegrationName,
-KmsKeyId,
-SourceArn,
-Status,
-Tags,
-TargetArn;
+additional_encryption_context,
+create_time,
+data_filter,
+description,
+errors,
+integration_arn,
+integration_config,
+integration_name,
+kms_key_id,
+source_arn,
+status,
+tags,
+target_arn;
 ```
 </TabItem>
 </Tabs>

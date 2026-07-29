@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomDomains" /></td>
+    <td><CopyableCode code="custom_domains" /></td>
     <td><code>array</code></td>
     <td>A list of descriptions of custom domain names that are associated with the service. In a paginated request, the request returns up to MaxResults records per call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DNSTarget" /></td>
+    <td><CopyableCode code="dns_target" /></td>
     <td><code>string</code></td>
     <td>The App Runner subdomain of the App Runner service. The associated custom domain names are mapped to this target name. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the App Runner service whose associated custom domain names you want to describe. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:(\w|\/|-)&#123;1,1011&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcDNSTargets" /></td>
+    <td><CopyableCode code="vpc_dns_targets" /></td>
     <td><code>array</code></td>
     <td>DNS Target records for the custom domains of this Amazon VPC.</td>
 </tr>
@@ -153,11 +153,11 @@ Return a description of custom domain names that are associated with an App Runn
 
 ```sql
 SELECT
-CustomDomains,
-DNSTarget,
-NextToken,
-ServiceArn,
-VpcDNSTargets
+custom_domains,
+dns_target,
+next_token,
+service_arn,
+vpc_dns_targets
 FROM aws.apprunner.custom_domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -189,10 +189,10 @@ region = '{{ region }}' --required
 AND ServiceArn = '{{ ServiceArn }}' --required
 AND DomainName = '{{ DomainName }}' --required
 RETURNING
-CustomDomain,
-DNSTarget,
-ServiceArn,
-VpcDNSTargets;
+custom_domain,
+dns_target,
+service_arn,
+vpc_dns_targets;
 ```
 </TabItem>
 </Tabs>

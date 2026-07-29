@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>A pagination token returned for you to pass to a subsequent request. If you pass this token as the Marker value in a subsequent request, the response includes only records beyond the marker, up to the value specified in the request by MaxRecords.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationTaskAssessmentRuns" /></td>
+    <td><CopyableCode code="replication_task_assessment_runs" /></td>
     <td><code>array</code></td>
     <td>One or more premigration assessment runs as specified by Filters.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns a paginated list of premigration assessment runs based on filter setting
 
 ```sql
 SELECT
-Marker,
-ReplicationTaskAssessmentRuns
+marker,
+replication_task_assessment_runs
 FROM aws.dms.replication_task_assessment_runs
 WHERE region = '{{ region }}' -- required
 ;

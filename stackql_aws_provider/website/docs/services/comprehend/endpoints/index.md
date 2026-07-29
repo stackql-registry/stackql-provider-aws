@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentInferenceUnits" /></td>
+    <td><CopyableCode code="current_inference_units" /></td>
     <td><code>integer</code></td>
     <td>The number of inference units currently used by the model using this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to trained custom models encrypted with a customer managed key (ModelKmsKeyId). (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredDataAccessRoleArn" /></td>
+    <td><CopyableCode code="desired_data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>Data access role ARN to use in case the new model is encrypted with a customer KMS key. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredInferenceUnits" /></td>
+    <td><CopyableCode code="desired_inference_units" /></td>
     <td><code>integer</code></td>
     <td>The desired number of inference units to be used by the model using this endpoint. Each inference unit represents of a throughput of 100 characters per second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredModelArn" /></td>
+    <td><CopyableCode code="desired_model_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the new model to use for updating an existing endpoint. This ARN is going to be different from the model ARN when the update is in progress (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier|entity-recognizer)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the endpoint. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier-endpoint|entity-recognizer-endpoint)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the flywheel (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the endpoint was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Specifies a reason for failure in cases of Failed status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the model to which the endpoint is attached. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier|entity-recognizer)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of the endpoint. Because the endpoint updates and creation are asynchronous, so customers will need to wait for the endpoint to be Ready status before making inference requests. (CREATING, DELETING, FAILED, IN_SERVICE, UPDATING)</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentInferenceUnits" /></td>
+    <td><CopyableCode code="current_inference_units" /></td>
     <td><code>integer</code></td>
     <td>The number of inference units currently used by the model using this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to trained custom models encrypted with a customer managed key (ModelKmsKeyId). (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredDataAccessRoleArn" /></td>
+    <td><CopyableCode code="desired_data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>Data access role ARN to use in case the new model is encrypted with a customer KMS key. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredInferenceUnits" /></td>
+    <td><CopyableCode code="desired_inference_units" /></td>
     <td><code>integer</code></td>
     <td>The desired number of inference units to be used by the model using this endpoint. Each inference unit represents of a throughput of 100 characters per second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredModelArn" /></td>
+    <td><CopyableCode code="desired_model_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the new model to use for updating an existing endpoint. This ARN is going to be different from the model ARN when the update is in progress (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier|entity-recognizer)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the endpoint. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier-endpoint|entity-recognizer-endpoint)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the flywheel (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the endpoint was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Specifies a reason for failure in cases of Failed status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the model to which the endpoint is attached. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier|entity-recognizer)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of the endpoint. Because the endpoint updates and creation are asynchronous, so customers will need to wait for the endpoint to be Ready status before making inference requests. (CREATING, DELETING, FAILED, IN_SERVICE, UPDATING)</td>
 </tr>
@@ -285,18 +285,18 @@ Gets the properties associated with a specific endpoint. Use this operation to g
 
 ```sql
 SELECT
-CreationTime,
-CurrentInferenceUnits,
-DataAccessRoleArn,
-DesiredDataAccessRoleArn,
-DesiredInferenceUnits,
-DesiredModelArn,
-EndpointArn,
-FlywheelArn,
-LastModifiedTime,
-Message,
-ModelArn,
-Status
+creation_time,
+current_inference_units,
+data_access_role_arn,
+desired_data_access_role_arn,
+desired_inference_units,
+desired_model_arn,
+endpoint_arn,
+flywheel_arn,
+last_modified_time,
+message,
+model_arn,
+status
 FROM aws.comprehend.endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -308,18 +308,18 @@ Gets a list of all existing endpoints that you've created. For information about
 
 ```sql
 SELECT
-CreationTime,
-CurrentInferenceUnits,
-DataAccessRoleArn,
-DesiredDataAccessRoleArn,
-DesiredInferenceUnits,
-DesiredModelArn,
-EndpointArn,
-FlywheelArn,
-LastModifiedTime,
-Message,
-ModelArn,
-Status
+creation_time,
+current_inference_units,
+data_access_role_arn,
+desired_data_access_role_arn,
+desired_inference_units,
+desired_model_arn,
+endpoint_arn,
+flywheel_arn,
+last_modified_time,
+message,
+model_arn,
+status
 FROM aws.comprehend.endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -362,8 +362,8 @@ SELECT
 '{{ FlywheelArn }}',
 '{{ region }}'
 RETURNING
-EndpointArn,
-ModelArn
+endpoint_arn,
+model_arn
 ;
 ```
 </TabItem>
@@ -435,7 +435,7 @@ WHERE
 region = '{{ region }}' --required
 AND EndpointArn = '{{ EndpointArn }}' --required
 RETURNING
-DesiredModelArn;
+desired_model_arn;
 ```
 </TabItem>
 </Tabs>

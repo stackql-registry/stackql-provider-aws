@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS identifier assigned to the instance that is running the game session. Values have the following format: TLS-enabled fleets: &lt;unique identifier&gt;.&lt;region identifier&gt;.amazongamelift.com. Non-TLS-enabled fleets: ec2-&lt;unique identifier&gt;.compute.amazonaws.com. (See Amazon EC2 Instance IP Addressing.) When connecting to a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetArn" /></td>
+    <td><CopyableCode code="fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the GameLift fleet that the player's game session is running on. (pattern: &lt;code&gt;^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the fleet that the player's game session is running on. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameSessionId" /></td>
+    <td><CopyableCode code="game_session_id" /></td>
     <td><code>string</code></td>
     <td>An identifier for the game session that is unique across all regions that the player session is connected to. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlayerData" /></td>
+    <td><CopyableCode code="player_data" /></td>
     <td><code>string</code></td>
     <td>Developer-defined information related to a player. Amazon GameLift Servers does not use this data, so it can be formatted as needed for use in the game.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlayerId" /></td>
+    <td><CopyableCode code="player_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a player that is associated with this player session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlayerSessionId" /></td>
+    <td><CopyableCode code="player_session_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a player session. (pattern: &lt;code&gt;^psess-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>Port number for the game session. To connect to a Amazon GameLift Servers server process, an app needs both the IP address and port number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current status of the player session. Possible player session statuses include the following: RESERVED -- The player session request has been received, but the player has not yet connected to the server process and/or been validated. ACTIVE -- The player has been validated by the server process and is currently connected. COMPLETED -- The player connection has been dropped. TIMEDOUT -- A player session request was received, but the player did not connect and/or was not validated within the timeout limit (60 seconds). (RESERVED, ACTIVE, COMPLETED, TIMEDOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminationTime" /></td>
+    <td><CopyableCode code="termination_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
@@ -188,18 +188,18 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-CreationTime,
-DnsName,
-FleetArn,
-FleetId,
-GameSessionId,
-IpAddress,
-PlayerData,
-PlayerId,
-PlayerSessionId,
-Port,
-Status,
-TerminationTime
+creation_time,
+dns_name,
+fleet_arn,
+fleet_id,
+game_session_id,
+ip_address,
+player_data,
+player_id,
+player_session_id,
+port,
+status,
+termination_time
 FROM aws.gamelift.player_sessions
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,7 +235,7 @@ SELECT
 '{{ PlayerData }}',
 '{{ region }}'
 RETURNING
-PlayerSession
+player_session
 ;
 ```
 </TabItem>
@@ -256,7 +256,7 @@ SELECT
 '{{ PlayerDataMap }}',
 '{{ region }}'
 RETURNING
-PlayerSessions
+player_sessions
 ;
 ```
 </TabItem>

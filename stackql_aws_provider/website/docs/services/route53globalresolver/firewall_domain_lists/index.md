@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Amazon Resource Name (ARN) of the domain list. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure idempotency. This means that making the same request multiple times with the same clientToken has the same result every time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the domain list was created.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainCount" /></td>
+    <td><CopyableCode code="domain_count" /></td>
     <td><code>integer</code></td>
     <td>Number of domains in the domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="globalResolverId" /></td>
+    <td><CopyableCode code="global_resolver_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Global Resolver that the domain list is associated to. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>Operational status of the domain list. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the domain list was updated.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the firewall domain list. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the firewall domain list was created.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the firewall domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="globalResolverId" /></td>
+    <td><CopyableCode code="global_resolver_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global resolver that the firewall domain list is associated with. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the firewall domain list. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the firewall domain list was last updated.</td>
 </tr>
@@ -274,14 +274,14 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-domainCount,
-globalResolverId,
+domain_count,
+global_resolver_id,
 status,
-statusMessage,
-updatedAt
+status_message,
+updated_at
 FROM aws.route53globalresolver.firewall_domain_lists
 WHERE firewall_domain_list_id = '{{ firewall_domain_list_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -297,11 +297,11 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 description,
-globalResolverId,
+global_resolver_id,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.firewall_domain_lists
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -346,12 +346,12 @@ RETURNING
 id,
 name,
 arn,
-createdAt,
+created_at,
 description,
-domainCount,
-globalResolverId,
+domain_count,
+global_resolver_id,
 status,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>

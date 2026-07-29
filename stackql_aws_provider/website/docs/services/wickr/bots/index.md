@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the bot that is visible to users. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group to which the bot belongs. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hasChallenge" /></td>
+    <td><CopyableCode code="has_challenge" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the bot has a password set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastLogin" /></td>
+    <td><CopyableCode code="last_login" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the bot's last login. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the bot that is visible to users. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group to which the bot belongs. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hasChallenge" /></td>
+    <td><CopyableCode code="has_challenge" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the bot has a password set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastLogin" /></td>
+    <td><CopyableCode code="last_login" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the bot's last login. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -308,11 +308,11 @@ Retrieves detailed information about a specific bot in a Wickr network, includin
 
 ```sql
 SELECT
-botId,
-displayName,
-groupId,
-hasChallenge,
-lastLogin,
+bot_id,
+display_name,
+group_id,
+has_challenge,
+last_login,
 pubkey,
 status,
 suspended,
@@ -331,11 +331,11 @@ Retrieves a paginated list of bots in a specified Wickr network. You can filter 
 
 ```sql
 SELECT
-botId,
-displayName,
-groupId,
-hasChallenge,
-lastLogin,
+bot_id,
+display_name,
+group_id,
+has_challenge,
+last_login,
 pubkey,
 status,
 suspended,
@@ -388,11 +388,11 @@ SELECT
 '{{ network_id }}',
 '{{ region }}'
 RETURNING
-botId,
-displayName,
-groupId,
+bot_id,
+display_name,
+group_id,
 message,
-networkId,
+network_id,
 username
 ;
 ```

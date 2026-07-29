@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the CloudFormation stack record. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the CloudFormation stack record was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationInfo" /></td>
+    <td><CopyableCode code="destination_info" /></td>
     <td><code>object</code></td>
     <td>A list of objects describing the destination service, which is AWS CloudFormation, and the Amazon Resource Name (ARN) of the AWS CloudFormation stack.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>A list of objects describing the Availability Zone and Amazon Web Services Region of the CloudFormation stack record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type (CloudFormationStackRecord). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceInfo" /></td>
+    <td><CopyableCode code="source_info" /></td>
     <td><code>array</code></td>
     <td>A list of objects describing the source of the CloudFormation stack record.</td>
 </tr>
@@ -156,11 +156,11 @@ Returns the CloudFormation stack record created as a result of the create cloud 
 SELECT
 name,
 arn,
-createdAt,
-destinationInfo,
+created_at,
+destination_info,
 location,
-resourceType,
-sourceInfo,
+resource_type,
+source_info,
 state
 FROM aws.lightsail.cloud_formation_stack_records
 WHERE region = '{{ region }}' -- required

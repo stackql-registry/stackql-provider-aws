@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeProgressStatuses" /></td>
+    <td><CopyableCode code="change_progress_statuses" /></td>
     <td><code>array</code></td>
     <td>The current status of the change happening on the pipeline.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns progress information for the current change happening on an OpenSearch I
 
 ```sql
 SELECT
-ChangeProgressStatuses
+change_progress_statuses
 FROM aws.osis.pipeline_change_progress
 WHERE pipeline_name = '{{ pipeline_name }}' -- required
 AND region = '{{ region }}' -- required

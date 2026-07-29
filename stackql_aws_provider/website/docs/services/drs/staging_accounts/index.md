@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountID" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>Account ID of AWS account. (pattern: &lt;code&gt;.*&#91;0-9&#93;&#123;12,&#125;.*&lt;/code&gt;)</td>
 </tr>
@@ -129,7 +129,7 @@ Returns an array of staging accounts for existing extended source servers.
 
 ```sql
 SELECT
-accountID
+account_id
 FROM aws.drs.staging_accounts
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

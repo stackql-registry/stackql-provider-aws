@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the group profile. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone domain in which the group profile exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group for which the specified group profile exists. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rolePrincipalArn" /></td>
+    <td><CopyableCode code="role_principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role principal. This role is associated with the group profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rolePrincipalId" /></td>
+    <td><CopyableCode code="role_principal_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the IAM role principal. This principal is associated with the group profile.</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of a group profile. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain of a group profile. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The group name of a group profile. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rolePrincipalArn" /></td>
+    <td><CopyableCode code="role_principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role principal. This role is associated with the group profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rolePrincipalId" /></td>
+    <td><CopyableCode code="role_principal_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the IAM role principal. This principal is associated with the group profile.</td>
 </tr>
@@ -222,10 +222,10 @@ Gets a group profile in Amazon DataZone.
 ```sql
 SELECT
 id,
-domainId,
-groupName,
-rolePrincipalArn,
-rolePrincipalId,
+domain_id,
+group_name,
+role_principal_arn,
+role_principal_id,
 status
 FROM aws.datazone.group_profiles
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -241,10 +241,10 @@ Searches group profiles in Amazon DataZone.
 ```sql
 SELECT
 id,
-domainId,
-groupName,
-rolePrincipalArn,
-rolePrincipalId,
+domain_id,
+group_name,
+role_principal_arn,
+role_principal_id,
 status
 FROM aws.datazone.group_profiles
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -284,10 +284,10 @@ SELECT
 '{{ region }}'
 RETURNING
 id,
-domainId,
-groupName,
-rolePrincipalArn,
-rolePrincipalId,
+domain_id,
+group_name,
+role_principal_arn,
+role_principal_id,
 status
 ;
 ```
@@ -338,10 +338,10 @@ AND region = '{{ region }}' --required
 AND status = '{{ status }}' --required
 RETURNING
 id,
-domainId,
-groupName,
-rolePrincipalArn,
-rolePrincipalId,
+domain_id,
+group_name,
+role_principal_arn,
+role_principal_id,
 status;
 ```
 </TabItem>

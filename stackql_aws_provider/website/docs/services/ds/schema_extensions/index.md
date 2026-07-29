@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the schema extension. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9_&#93;)&#91;\\a-zA-Z0-9_@#%*+=:?./!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the directory to which the schema extension is applied. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDateTime" /></td>
+    <td><CopyableCode code="end_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the schema extension was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaExtensionId" /></td>
+    <td><CopyableCode code="schema_extension_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the schema extension. (pattern: &lt;code&gt;^e-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaExtensionStatus" /></td>
+    <td><CopyableCode code="schema_extension_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the schema extension. (Initializing, CreatingSnapshot, UpdatingSchema, Replicating, CancelInProgress, RollbackInProgress, Cancelled, Failed, Completed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaExtensionStatusReason" /></td>
+    <td><CopyableCode code="schema_extension_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the SchemaExtensionStatus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDateTime" /></td>
+    <td><CopyableCode code="start_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the schema extension started being applied to the directory.</td>
 </tr>
@@ -149,13 +149,13 @@ Lists all schema extensions applied to a Microsoft AD Directory.
 
 ```sql
 SELECT
-Description,
-DirectoryId,
-EndDateTime,
-SchemaExtensionId,
-SchemaExtensionStatus,
-SchemaExtensionStatusReason,
-StartDateTime
+description,
+directory_id,
+end_date_time,
+schema_extension_id,
+schema_extension_status,
+schema_extension_status_reason,
+start_date_time
 FROM aws.ds.schema_extensions
 WHERE region = '{{ region }}' -- required
 ;

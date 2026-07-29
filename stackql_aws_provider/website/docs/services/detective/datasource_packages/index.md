@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatasourcePackages" /></td>
+    <td><CopyableCode code="datasource_packages" /></td>
     <td><code>object</code></td>
     <td>Details on the data source packages active in the behavior graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>For requests to get the next page of results, the pagination token that was returned with the previous set of results. The initial request does not include a pagination token.</td>
 </tr>
@@ -131,8 +131,8 @@ Lists data source packages in the behavior graph.
 
 ```sql
 SELECT
-DatasourcePackages,
-NextToken
+datasource_packages,
+next_token
 FROM aws.detective.datasource_packages
 WHERE region = '{{ region }}' -- required
 ;

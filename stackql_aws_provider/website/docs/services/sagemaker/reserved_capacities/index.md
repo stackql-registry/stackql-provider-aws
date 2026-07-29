@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone where the reserved capacity is provisioned. (pattern: &lt;code&gt;&#91;a-z&#93;+\-&#91;0-9a-z\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableInstanceCount" /></td>
+    <td><CopyableCode code="available_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances currently available for use in this reserved capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationHours" /></td>
+    <td><CopyableCode code="duration_hours" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total duration of the reserved capacity in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationMinutes" /></td>
+    <td><CopyableCode code="duration_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of minutes for the duration of the reserved capacity. For example, if a reserved capacity starts at 08:55 and ends at 11:30, the minutes field would be 35.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the reserved capacity expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InUseInstanceCount" /></td>
+    <td><CopyableCode code="in_use_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances currently in use from this reserved capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instance type used in the reserved capacity. (ml.p4d.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.trn1.32xlarge, ml.trn2.48xlarge, ml.p6-b200.48xlarge, ml.p4de.24xlarge, ml.p6e-gb200.36xlarge, ml.p5.4xlarge, ml.p6-b300.48xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedCapacityArn" /></td>
+    <td><CopyableCode code="reserved_capacity_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the reserved capacity. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:reserved-capacity/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedCapacityType" /></td>
+    <td><CopyableCode code="reserved_capacity_type" /></td>
     <td><code>string</code></td>
     <td>The type of reserved capacity. (UltraServer, Instance)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the reserved capacity becomes active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the reserved capacity. (Pending, Active, Scheduled, Expired, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalInstanceCount" /></td>
+    <td><CopyableCode code="total_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of instances allocated to this reserved capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UltraServerSummary" /></td>
+    <td><CopyableCode code="ultra_server_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the UltraServer associated with this reserved capacity.</td>
 </tr>
@@ -179,19 +179,19 @@ Retrieves details about a reserved capacity.
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailableInstanceCount,
-DurationHours,
-DurationMinutes,
-EndTime,
-InUseInstanceCount,
-InstanceType,
-ReservedCapacityArn,
-ReservedCapacityType,
-StartTime,
-Status,
-TotalInstanceCount,
-UltraServerSummary
+availability_zone,
+available_instance_count,
+duration_hours,
+duration_minutes,
+end_time,
+in_use_instance_count,
+instance_type,
+reserved_capacity_arn,
+reserved_capacity_type,
+start_time,
+status,
+total_instance_count,
+ultra_server_summary
 FROM aws.sagemaker.reserved_capacities
 WHERE region = '{{ region }}' -- required
 ;

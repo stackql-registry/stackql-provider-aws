@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasConfigurations" /></td>
+    <td><CopyableCode code="alias_configurations" /></td>
     <td><code>array</code></td>
     <td>A list of alias configurations associated with this email address. Contains details about email addresses that forward to this primary email address. The list can contain at most one alias configuration per email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTimestamp" /></td>
+    <td><CopyableCode code="create_timestamp" /></td>
     <td><code>string</code></td>
     <td>The email address creation timestamp in ISO 8601 Datetime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of email address</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address, including the domain. (pattern: &lt;code&gt;&#91;^\s@&#93;+@&#91;^\s@&#93;+\.&#91;^\s@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddressArn" /></td>
+    <td><CopyableCode code="email_address_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddressId" /></td>
+    <td><CopyableCode code="email_address_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedTimestamp" /></td>
+    <td><CopyableCode code="modified_timestamp" /></td>
     <td><code>string</code></td>
     <td>The email address last modification timestamp in ISO 8601 Datetime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -204,15 +204,15 @@ Describe email address form the specified Amazon Connect instance.
 
 ```sql
 SELECT
-AliasConfigurations,
-CreateTimestamp,
-Description,
-DisplayName,
-EmailAddress,
-EmailAddressArn,
-EmailAddressId,
-ModifiedTimestamp,
-Tags
+alias_configurations,
+create_timestamp,
+description,
+display_name,
+email_address,
+email_address_arn,
+email_address_id,
+modified_timestamp,
+tags
 FROM aws.connect.email_address
 WHERE instance_id = '{{ instance_id }}' -- required
 AND email_address_id = '{{ email_address_id }}' -- required
@@ -255,8 +255,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-EmailAddressArn,
-EmailAddressId
+email_address_arn,
+email_address_id
 ;
 ```
 </TabItem>
@@ -327,8 +327,8 @@ instance_id = '{{ instance_id }}' --required
 AND email_address_id = '{{ email_address_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-EmailAddressArn,
-EmailAddressId;
+email_address_arn,
+email_address_id;
 ```
 </TabItem>
 </Tabs>

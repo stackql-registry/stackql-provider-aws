@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the inventory asset revision. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when an inventory asset revison was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the asset revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the inventory asset. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -167,9 +167,9 @@ Lists the revisions for the asset. Prerequisites: The asset must exist in the do
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-domainId,
+created_at,
+created_by,
+domain_id,
 revision
 FROM aws.datazone.asset_revisions
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -223,24 +223,24 @@ SELECT
 RETURNING
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-externalIdentifier,
-firstRevisionCreatedAt,
-firstRevisionCreatedBy,
-formsOutput,
-glossaryTerms,
-governedGlossaryTerms,
-latestTimeSeriesDataPointFormsOutput,
+domain_id,
+external_identifier,
+first_revision_created_at,
+first_revision_created_by,
+forms_output,
+glossary_terms,
+governed_glossary_terms,
+latest_time_series_data_point_forms_output,
 listing,
-owningProjectId,
-predictionConfiguration,
-readOnlyFormsOutput,
+owning_project_id,
+prediction_configuration,
+read_only_forms_output,
 revision,
-typeIdentifier,
-typeRevision
+type_identifier,
+type_revision
 ;
 ```
 </TabItem>

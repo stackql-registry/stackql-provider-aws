@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CommentId" /></td>
+    <td><CopyableCode code="comment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the comment. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Contributor" /></td>
+    <td><CopyableCode code="contributor" /></td>
     <td><code>object</code></td>
     <td>The details of the user who made the comment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the comment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentId" /></td>
+    <td><CopyableCode code="parent_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the parent comment. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipientId" /></td>
+    <td><CopyableCode code="recipient_id" /></td>
     <td><code>string</code></td>
     <td>If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the comment. (DRAFT, PUBLISHED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Text" /></td>
+    <td><CopyableCode code="text" /></td>
     <td><code>string</code></td>
     <td>The text of the comment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThreadId" /></td>
+    <td><CopyableCode code="thread_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the root comment in the thread. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors. (PUBLIC, PRIVATE)</td>
 </tr>
@@ -203,15 +203,15 @@ List all the comments for the specified document version.
 
 ```sql
 SELECT
-CommentId,
-Contributor,
-CreatedTimestamp,
-ParentId,
-RecipientId,
-Status,
-Text,
-ThreadId,
-Visibility
+comment_id,
+contributor,
+created_timestamp,
+parent_id,
+recipient_id,
+status,
+text,
+thread_id,
+visibility
 FROM aws.workdocs.comments
 WHERE document_id = '{{ document_id }}' -- required
 AND version_id = '{{ version_id }}' -- required
@@ -261,7 +261,7 @@ SELECT
 '{{ region }}',
 '{{ Authentication }}'
 RETURNING
-Comment
+comment
 ;
 ```
 </TabItem>

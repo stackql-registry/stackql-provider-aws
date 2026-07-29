@@ -50,152 +50,152 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ACLName" /></td>
+    <td><CopyableCode code="acl_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Access Control List associated with this cluster. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, the cluster will automatically receive minor engine version upgrades after launch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityMode" /></td>
+    <td><CopyableCode code="availability_mode" /></td>
     <td><code>string</code></td>
     <td>Indicates if the cluster has a Multi-AZ configuration (multiaz) or not (singleaz). (singleaz, multiaz)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterEndpoint" /></td>
+    <td><CopyableCode code="cluster_endpoint" /></td>
     <td><code>object</code></td>
     <td>The cluster's configuration endpoint</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTiering" /></td>
+    <td><CopyableCode code="data_tiering" /></td>
     <td><code>string</code></td>
     <td>Enables data tiering. Data tiering is only supported for clusters using the r6gd node type. This parameter must be set when using r6gd nodes. For more information, see Data tiering. (true, false)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the engine used by the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnginePatchVersion" /></td>
+    <td><CopyableCode code="engine_patch_version" /></td>
     <td><code>string</code></td>
     <td>The Redis OSS engine patch version used by the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The Redis OSS engine version used by the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpDiscovery" /></td>
+    <td><CopyableCode code="ip_discovery" /></td>
     <td><code>string</code></td>
     <td>The mechanism that the cluster uses to discover IP addresses. Returns 'ipv4' when DNS endpoints resolve to IPv4 addresses, or 'ipv6' when DNS endpoints resolve to IPv6 addresses. (ipv4, ipv6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used to encrypt the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>string</code></td>
     <td>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegionClusterName" /></td>
+    <td><CopyableCode code="multi_region_cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the multi-Region cluster that this cluster belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The user-supplied name of the cluster. This identifier is a unique key that identifies a cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type for the cluster. Returns 'ipv4' for IPv4 only, 'ipv6' for IPv6 only, or 'dual-stack' if the cluster supports both IPv4 and IPv6 addressing. (ipv4, ipv6, dual_stack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The cluster's node type</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfShards" /></td>
+    <td><CopyableCode code="number_of_shards" /></td>
     <td><code>integer</code></td>
     <td>The number of shards in the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroupName" /></td>
+    <td><CopyableCode code="parameter_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter group used by the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroupStatus" /></td>
+    <td><CopyableCode code="parameter_group_status" /></td>
     <td><code>string</code></td>
     <td>The status of the parameter group used by the cluster, for example 'active' or 'applying'.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingUpdates" /></td>
+    <td><CopyableCode code="pending_updates" /></td>
     <td><code>object</code></td>
     <td>A group of settings that are currently being applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>A list of security groups used by the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Shards" /></td>
+    <td><CopyableCode code="shards" /></td>
     <td><code>array</code></td>
     <td>A list of shards that are members of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotRetentionLimit" /></td>
+    <td><CopyableCode code="snapshot_retention_limit" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which MemoryDB retains automatic snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, a snapshot that was taken today is retained for 5 days before being deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotWindow" /></td>
+    <td><CopyableCode code="snapshot_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: 05:00-09:00 If you do not specify this parameter, MemoryDB automatically chooses an appropriate time range.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the SNS notification topic</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicStatus" /></td>
+    <td><CopyableCode code="sns_topic_status" /></td>
     <td><code>string</code></td>
     <td>The SNS topic must be in Active status to receive notifications</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the cluster. For example, Available, Updating, Creating.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroupName" /></td>
+    <td><CopyableCode code="subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the subnet group used by the cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TLSEnabled" /></td>
+    <td><CopyableCode code="tls_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag to indicate if In-transit encryption is enabled</td>
 </tr>
@@ -299,36 +299,36 @@ Returns information about all provisioned clusters if no cluster identifier is s
 
 ```sql
 SELECT
-ACLName,
-ARN,
-AutoMinorVersionUpgrade,
-AvailabilityMode,
-ClusterEndpoint,
-DataTiering,
-Description,
-Engine,
-EnginePatchVersion,
-EngineVersion,
-IpDiscovery,
-KmsKeyId,
-MaintenanceWindow,
-MultiRegionClusterName,
-Name,
-NetworkType,
-NodeType,
-NumberOfShards,
-ParameterGroupName,
-ParameterGroupStatus,
-PendingUpdates,
-SecurityGroups,
-Shards,
-SnapshotRetentionLimit,
-SnapshotWindow,
-SnsTopicArn,
-SnsTopicStatus,
-Status,
-SubnetGroupName,
-TLSEnabled
+acl_name,
+arn,
+auto_minor_version_upgrade,
+availability_mode,
+cluster_endpoint,
+data_tiering,
+description,
+engine,
+engine_patch_version,
+engine_version,
+ip_discovery,
+kms_key_id,
+maintenance_window,
+multi_region_cluster_name,
+name,
+network_type,
+node_type,
+number_of_shards,
+parameter_group_name,
+parameter_group_status,
+pending_updates,
+security_groups,
+shards,
+snapshot_retention_limit,
+snapshot_window,
+sns_topic_arn,
+sns_topic_status,
+status,
+subnet_group_name,
+tls_enabled
 FROM aws.memorydb.clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -409,7 +409,7 @@ SELECT
 '{{ IpDiscovery }}',
 '{{ region }}'
 RETURNING
-Cluster
+cluster
 ;
 ```
 </TabItem>
@@ -572,7 +572,7 @@ WHERE
 region = '{{ region }}' --required
 AND ClusterName = '{{ ClusterName }}' --required
 RETURNING
-Cluster;
+cluster;
 ```
 </TabItem>
 </Tabs>

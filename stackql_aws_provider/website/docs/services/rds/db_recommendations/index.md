@@ -50,102 +50,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalInfo" /></td>
+    <td><CopyableCode code="additional_info" /></td>
     <td><code>string</code></td>
     <td>Additional information about the recommendation. The information might contain markdown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>The category of the recommendation. Valid values: performance efficiency security reliability cost optimization operational excellence sustainability</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The time when the recommendation was created. For example, 2023-09-28T01:13:53.931000+00:00.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the recommendation. The description might contain markdown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Detection" /></td>
+    <td><CopyableCode code="detection" /></td>
     <td><code>string</code></td>
     <td>A short description of the issue identified for this recommendation. The description might contain markdown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Impact" /></td>
+    <td><CopyableCode code="impact" /></td>
     <td><code>string</code></td>
     <td>A short description that explains the possible impact of an issue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IssueDetails" /></td>
+    <td><CopyableCode code="issue_details" /></td>
     <td><code>string</code></td>
     <td>Details of the issue that caused the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Links" /></td>
+    <td><CopyableCode code="links" /></td>
     <td><code>string</code></td>
     <td>A link to documentation that provides additional information about the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The reason why this recommendation was created. The information might contain markdown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recommendation" /></td>
+    <td><CopyableCode code="recommendation" /></td>
     <td><code>string</code></td>
     <td>A short description of the recommendation to resolve an issue. The description might contain markdown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendedActions" /></td>
+    <td><CopyableCode code="recommended_actions" /></td>
     <td><code>string</code></td>
     <td>A list of recommended actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the RDS resource associated with the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity level of the recommendation. The severity level can help you decide the urgency with which to address the recommendation. Valid values: high medium low informational</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service that generated the recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the recommendation. Valid values: active - The recommendations which are ready for you to apply. pending - The applied or scheduled recommendations which are in progress. resolved - The recommendations which are completed. dismissed - The recommendations that you dismissed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeDetection" /></td>
+    <td><CopyableCode code="type_detection" /></td>
     <td><code>string</code></td>
     <td>A short description of the recommendation type. The description might contain markdown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeId" /></td>
+    <td><CopyableCode code="type_id" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the type of recommendation. This value determines how the description is rendered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeRecommendation" /></td>
+    <td><CopyableCode code="type_recommendation" /></td>
     <td><code>string</code></td>
     <td>A short description that summarizes the recommendation to fix all the issues of the recommendation type. The description might contain markdown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string</code></td>
     <td>The time when the recommendation was last updated.</td>
 </tr>
@@ -266,26 +266,26 @@ Describes the recommendations to resolve the issues for your DB instances, DB cl
 
 ```sql
 SELECT
-AdditionalInfo,
-Category,
-CreatedTime,
-Description,
-Detection,
-Impact,
-IssueDetails,
-Links,
-Reason,
-Recommendation,
-RecommendationId,
-RecommendedActions,
-ResourceArn,
-Severity,
-Source,
-Status,
-TypeDetection,
-TypeId,
-TypeRecommendation,
-UpdatedTime
+additional_info,
+category,
+created_time,
+description,
+detection,
+impact,
+issue_details,
+links,
+reason,
+recommendation,
+recommendation_id,
+recommended_actions,
+resource_arn,
+severity,
+source,
+status,
+type_detection,
+type_id,
+type_recommendation,
+updated_time
 FROM aws.rds.db_recommendations
 WHERE region = '{{ region }}' -- required
 AND LastUpdatedAfter = '{{ LastUpdatedAfter }}'
@@ -323,26 +323,26 @@ AND Locale = '{{ Locale}}'
 AND Status = '{{ Status}}'
 AND RecommendedActionUpdates = '{{ RecommendedActionUpdates}}'
 RETURNING
-AdditionalInfo,
-Category,
-CreatedTime,
-Description,
-Detection,
-Impact,
-IssueDetails,
-Links,
-Reason,
-Recommendation,
-RecommendationId,
-RecommendedActions,
-ResourceArn,
-Severity,
-Source,
-Status,
-TypeDetection,
-TypeId,
-TypeRecommendation,
-UpdatedTime;
+additional_info,
+category,
+created_time,
+description,
+detection,
+impact,
+issue_details,
+links,
+reason,
+recommendation,
+recommendation_id,
+recommended_actions,
+resource_arn,
+severity,
+source,
+status,
+type_detection,
+type_id,
+type_recommendation,
+updated_time;
 ```
 </TabItem>
 </Tabs>

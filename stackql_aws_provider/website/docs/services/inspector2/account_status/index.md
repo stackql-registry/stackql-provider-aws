@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that provide details on the status of Amazon Inspector for each of the requested accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedAccounts" /></td>
+    <td><CopyableCode code="failed_accounts" /></td>
     <td><code>array</code></td>
     <td>An array of objects detailing any accounts that failed to enable Amazon Inspector and why.</td>
 </tr>
@@ -125,7 +125,7 @@ Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts w
 ```sql
 SELECT
 accounts,
-failedAccounts
+failed_accounts
 FROM aws.inspector2.account_status
 WHERE region = '{{ region }}' -- required
 ;

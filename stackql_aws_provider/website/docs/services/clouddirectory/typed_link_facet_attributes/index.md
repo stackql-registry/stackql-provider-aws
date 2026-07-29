@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultValue" /></td>
+    <td><CopyableCode code="default_value" /></td>
     <td><code>object</code></td>
     <td>The default value of the attribute (if configured).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsImmutable" /></td>
+    <td><CopyableCode code="is_immutable" /></td>
     <td><code>boolean</code></td>
     <td>Whether the attribute is mutable or not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the typed link attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._:-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequiredBehavior" /></td>
+    <td><CopyableCode code="required_behavior" /></td>
     <td><code>string</code></td>
     <td>The required behavior of the TypedLinkAttributeDefinition. (REQUIRED_ALWAYS, NOT_REQUIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>object</code></td>
     <td>Validation rules that are attached to the attribute definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the attribute. (STRING, BINARY, BOOLEAN, NUMBER, DATETIME, VARIANT)</td>
 </tr>
@@ -149,12 +149,12 @@ Returns a paginated list of all attribute definitions for a particular TypedLink
 
 ```sql
 SELECT
-DefaultValue,
-IsImmutable,
-Name,
-RequiredBehavior,
-Rules,
-Type
+default_value,
+is_immutable,
+name,
+required_behavior,
+rules,
+type
 FROM aws.clouddirectory.typed_link_facet_attributes
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

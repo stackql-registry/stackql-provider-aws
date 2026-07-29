@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountAggregation" /></td>
+    <td><CopyableCode code="account_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on Amazon Web Services account IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="amiAggregation" /></td>
+    <td><CopyableCode code="ami_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on Amazon Machine Images (AMIs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsEcrContainerAggregation" /></td>
+    <td><CopyableCode code="aws_ecr_container_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on Amazon ECR container images.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeRepositoryAggregation" /></td>
+    <td><CopyableCode code="code_repository_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on code repositories.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2InstanceAggregation" /></td>
+    <td><CopyableCode code="ec_2_instance_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on Amazon EC2 instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingTypeAggregation" /></td>
+    <td><CopyableCode code="finding_type_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on finding types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageLayerAggregation" /></td>
+    <td><CopyableCode code="image_layer_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on container image layers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionAggregation" /></td>
+    <td><CopyableCode code="lambda_function_aggregation" /></td>
     <td><code>object</code></td>
     <td>An aggregation of findings by Amazon Web Services Lambda function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaLayerAggregation" /></td>
+    <td><CopyableCode code="lambda_layer_aggregation" /></td>
     <td><code>object</code></td>
     <td>An aggregation of findings by Amazon Web Services Lambda layer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageAggregation" /></td>
+    <td><CopyableCode code="package_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on operating system package type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryAggregation" /></td>
+    <td><CopyableCode code="repository_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on Amazon ECR repositories.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="titleAggregation" /></td>
+    <td><CopyableCode code="title_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on finding title.</td>
 </tr>
@@ -174,18 +174,18 @@ Lists aggregated finding data for your environment based on specific criteria.
 
 ```sql
 SELECT
-accountAggregation,
-amiAggregation,
-awsEcrContainerAggregation,
-codeRepositoryAggregation,
-ec2InstanceAggregation,
-findingTypeAggregation,
-imageLayerAggregation,
-lambdaFunctionAggregation,
-lambdaLayerAggregation,
-packageAggregation,
-repositoryAggregation,
-titleAggregation
+account_aggregation,
+ami_aggregation,
+aws_ecr_container_aggregation,
+code_repository_aggregation,
+ec_2_instance_aggregation,
+finding_type_aggregation,
+image_layer_aggregation,
+lambda_function_aggregation,
+lambda_layer_aggregation,
+package_aggregation,
+repository_aggregation,
+title_aggregation
 FROM aws.inspector2.finding_aggregations
 WHERE region = '{{ region }}' -- required
 ;

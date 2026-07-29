@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when image set properties were created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreId" /></td>
+    <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
     <td>The data store identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the image set properties were deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetArn" /></td>
+    <td><CopyableCode code="image_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the image set. (pattern: &lt;code&gt;arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:medical-imaging:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:datastore/&#91;0-9a-z&#93;&#123;32&#125;(/imageset/&#91;0-9a-z&#93;&#123;32&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetId" /></td>
+    <td><CopyableCode code="image_set_id" /></td>
     <td><code>string</code></td>
     <td>The image set identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetState" /></td>
+    <td><CopyableCode code="image_set_state" /></td>
     <td><code>string</code></td>
     <td>The image set state. (ACTIVE, LOCKED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetWorkflowStatus" /></td>
+    <td><CopyableCode code="image_set_workflow_status" /></td>
     <td><code>string</code></td>
     <td>The image set workflow status. (CREATED, COPIED, COPYING, COPYING_WITH_READ_ONLY_ACCESS, COPY_FAILED, UPDATING, UPDATING_FOR_STUDY_CONSISTENCY, UPDATED, UPDATE_FAILED, DELETING, DELETED, IMPORTING, IMPORTED, IMPORT_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPrimary" /></td>
+    <td><CopyableCode code="is_primary" /></td>
     <td><code>boolean</code></td>
     <td>The flag to determine whether the image set is primary or not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAccessedAt" /></td>
+    <td><CopyableCode code="last_accessed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the image set was last accessed.</td>
 </tr>
@@ -106,17 +106,17 @@ The following fields are returned by `SELECT` queries:
     <td>This object contains the details of any overrides used while creating a specific image set version. If an image set was copied or updated using the force flag, this object will contain the forced flag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageTier" /></td>
+    <td><CopyableCode code="storage_tier" /></td>
     <td><code>string</code></td>
     <td>The storage tier of the image set. (FREQUENT_ACCESS, ARCHIVE_INSTANT_ACCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when image set properties were updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The image set version identifier. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -135,37 +135,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DICOMTags" /></td>
+    <td><CopyableCode code="dicom_tags" /></td>
     <td><code>object</code></td>
     <td>The DICOM tags associated with the image set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time an image set is created. Sample creation date is provided in 1985-04-12T23:20:50.52Z format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetId" /></td>
+    <td><CopyableCode code="image_set_id" /></td>
     <td><code>string</code></td>
     <td>The image set identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPrimary" /></td>
+    <td><CopyableCode code="is_primary" /></td>
     <td><code>boolean</code></td>
     <td>The flag to determine whether the image set is primary or not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAccessedAt" /></td>
+    <td><CopyableCode code="last_accessed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the image set was last accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageTier" /></td>
+    <td><CopyableCode code="storage_tier" /></td>
     <td><code>string</code></td>
     <td>The image set's storage tier. (FREQUENT_ACCESS, ARCHIVE_INSTANT_ACCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time an image set was last updated.</td>
 </tr>
@@ -279,20 +279,20 @@ Get image set properties.
 
 ```sql
 SELECT
-createdAt,
-datastoreId,
-deletedAt,
-imageSetArn,
-imageSetId,
-imageSetState,
-imageSetWorkflowStatus,
-isPrimary,
-lastAccessedAt,
+created_at,
+datastore_id,
+deleted_at,
+image_set_arn,
+image_set_id,
+image_set_state,
+image_set_workflow_status,
+is_primary,
+last_accessed_at,
 message,
 overrides,
-storageTier,
-updatedAt,
-versionId
+storage_tier,
+updated_at,
+version_id
 FROM aws.medical_imaging.image_sets
 WHERE datastore_id = '{{ datastore_id }}' -- required
 AND image_set_id = '{{ image_set_id }}' -- required
@@ -307,13 +307,13 @@ Search image sets based on defined input attributes. SearchImageSets accepts a s
 
 ```sql
 SELECT
-DICOMTags,
-createdAt,
-imageSetId,
-isPrimary,
-lastAccessedAt,
-storageTier,
-updatedAt,
+dicom_tags,
+created_at,
+image_set_id,
+is_primary,
+last_accessed_at,
+storage_tier,
+updated_at,
 version
 FROM aws.medical_imaging.image_sets
 WHERE datastore_id = '{{ datastore_id }}' -- required

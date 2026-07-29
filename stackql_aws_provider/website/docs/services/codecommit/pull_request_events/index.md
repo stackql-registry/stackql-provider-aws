@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actorArn" /></td>
+    <td><CopyableCode code="actor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user whose actions resulted in the event. Examples include updating the pull request with more commits or changing the status of a pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="approvalRuleEventMetadata" /></td>
+    <td><CopyableCode code="approval_rule_event_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about a pull request event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="approvalRuleOverriddenEventMetadata" /></td>
+    <td><CopyableCode code="approval_rule_overridden_event_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about an approval rule override event for a pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="approvalStateChangedEventMetadata" /></td>
+    <td><CopyableCode code="approval_state_changed_event_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about an approval state change for a pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventDate" /></td>
+    <td><CopyableCode code="event_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The day and time of the pull request event, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestCreatedEventMetadata" /></td>
+    <td><CopyableCode code="pull_request_created_event_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the source and destination branches for the pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestEventType" /></td>
+    <td><CopyableCode code="pull_request_event_type" /></td>
     <td><code>string</code></td>
     <td>The type of the pull request event (for example, a status change event (PULL_REQUEST_STATUS_CHANGED) or update event (PULL_REQUEST_SOURCE_REFERENCE_UPDATED)). (PULL_REQUEST_CREATED, PULL_REQUEST_STATUS_CHANGED, PULL_REQUEST_SOURCE_REFERENCE_UPDATED, PULL_REQUEST_MERGE_STATE_CHANGED, PULL_REQUEST_APPROVAL_RULE_CREATED, PULL_REQUEST_APPROVAL_RULE_UPDATED, PULL_REQUEST_APPROVAL_RULE_DELETED, PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN, PULL_REQUEST_APPROVAL_STATE_CHANGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestId" /></td>
+    <td><CopyableCode code="pull_request_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID of the pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestMergedStateChangedEventMetadata" /></td>
+    <td><CopyableCode code="pull_request_merged_state_changed_event_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the change in mergability state for the pull request event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestSourceReferenceUpdatedEventMetadata" /></td>
+    <td><CopyableCode code="pull_request_source_reference_updated_event_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the updated source branch for the pull request event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestStatusChangedEventMetadata" /></td>
+    <td><CopyableCode code="pull_request_status_changed_event_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the change in status for the pull request event.</td>
 </tr>
@@ -169,17 +169,17 @@ Returns information about one or more pull request events.
 
 ```sql
 SELECT
-actorArn,
-approvalRuleEventMetadata,
-approvalRuleOverriddenEventMetadata,
-approvalStateChangedEventMetadata,
-eventDate,
-pullRequestCreatedEventMetadata,
-pullRequestEventType,
-pullRequestId,
-pullRequestMergedStateChangedEventMetadata,
-pullRequestSourceReferenceUpdatedEventMetadata,
-pullRequestStatusChangedEventMetadata
+actor_arn,
+approval_rule_event_metadata,
+approval_rule_overridden_event_metadata,
+approval_state_changed_event_metadata,
+event_date,
+pull_request_created_event_metadata,
+pull_request_event_type,
+pull_request_id,
+pull_request_merged_state_changed_event_metadata,
+pull_request_source_reference_updated_event_metadata,
+pull_request_status_changed_event_metadata
 FROM aws.codecommit.pull_request_events
 WHERE region = '{{ region }}' -- required
 ;

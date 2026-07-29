@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>A list of availability zones for the orderable cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>The cluster type, for example multi-node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterVersion" /></td>
+    <td><CopyableCode code="cluster_version" /></td>
     <td><code>string</code></td>
     <td>The version of the orderable cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type for the orderable cluster.</td>
 </tr>
@@ -154,10 +154,10 @@ Returns a list of orderable cluster options. Before you create a new cluster you
 
 ```sql
 SELECT
-AvailabilityZones,
-ClusterType,
-ClusterVersion,
-NodeType
+availability_zones,
+cluster_type,
+cluster_version,
+node_type
 FROM aws.redshift.orderable_cluster_options
 WHERE region = '{{ region }}' -- required
 AND ClusterVersion = '{{ ClusterVersion }}'

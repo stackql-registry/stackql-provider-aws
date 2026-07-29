@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EvaluationLimitExceeded" /></td>
+    <td><CopyableCode code="evaluation_limit_exceeded" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if over 100 resources are noncompliant with the Firewall Manager policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiredAt" /></td>
+    <td><CopyableCode code="expired_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the returned information should be considered out of date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IssueInfoMap" /></td>
+    <td><CopyableCode code="issue_info_map" /></td>
     <td><code>object</code></td>
     <td>Details about problems with dependent services, such as WAF or Config, and the error message received that indicates the problem with the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberAccount" /></td>
+    <td><CopyableCode code="member_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Firewall Manager policy. (pattern: &lt;code&gt;^&#91;a-z0-9A-Z-&#93;&#123;36&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyOwner" /></td>
+    <td><CopyableCode code="policy_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that created the Firewall Manager policy. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Violators" /></td>
+    <td><CopyableCode code="violators" /></td>
     <td><code>array</code></td>
     <td>An array of resources that aren't protected by the WAF or Shield Advanced policy or that aren't in compliance with the security group policy.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns detailed compliance information about the specified member account. Deta
 
 ```sql
 SELECT
-EvaluationLimitExceeded,
-ExpiredAt,
-IssueInfoMap,
-MemberAccount,
-PolicyId,
-PolicyOwner,
-Violators
+evaluation_limit_exceeded,
+expired_at,
+issue_info_map,
+member_account,
+policy_id,
+policy_owner,
+violators
 FROM aws.fms.compliance_details
 WHERE region = '{{ region }}' -- required
 ;

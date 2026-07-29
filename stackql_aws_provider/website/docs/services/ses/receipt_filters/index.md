@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IpFilter" /></td>
+    <td><CopyableCode code="ip_filter" /></td>
     <td><code>string</code></td>
     <td>A structure that provides the IP addresses to block or allow, and whether to block or allow incoming mail from them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the IP address filter. The name must meet the following requirements: Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). Start and end with a letter or number. Contain 64 characters or fewer.</td>
 </tr>
@@ -148,8 +148,8 @@ Lists the IP address filters associated with your Amazon Web Services account in
 
 ```sql
 SELECT
-IpFilter,
-Name
+ip_filter,
+name
 FROM aws.ses.receipt_filters
 WHERE region = '{{ region }}' -- required
 ;

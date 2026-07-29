@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="encoderConfigurations" /></td>
+    <td><CopyableCode code="encoder_configurations" /></td>
     <td><code>array</code></td>
     <td>List of the matching EncoderConfigurations (summary information only).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more encoder configurations than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -196,8 +196,8 @@ Gets summary information about all EncoderConfigurations in your account, in the
 
 ```sql
 SELECT
-encoderConfigurations,
-nextToken
+encoder_configurations,
+next_token
 FROM aws.ivs_realtime.encoder_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,7 +232,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-encoderConfiguration
+encoder_configuration
 ;
 ```
 </TabItem>

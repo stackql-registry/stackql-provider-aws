@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that created the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string containing a description of the group. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The group’s display name value. The length limit is 1,024 characters. This value can consist of letters, accented characters, symbols, numbers, punctuation, tab, new line, carriage return, space, and nonbreaking space in this attribute. This value is specified at the time that the group is created and stored as an attribute of the group object in the identity store. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalIds" /></td>
+    <td><CopyableCode code="external_ids" /></td>
     <td><code>array</code></td>
     <td>A list of ExternalId objects that contains the identifiers issued to this resource by an external identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a group in the identity store. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier for the identity store. (pattern: &lt;code&gt;d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the group was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that last updated the group.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that created the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string containing a description of the specified group. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name value for the group. The length limit is 1,024 characters. This value can consist of letters, accented characters, symbols, numbers, punctuation, tab, new line, carriage return, space, and nonbreaking space in this attribute. This value is specified at the time the group is created and stored as an attribute of the group object in the identity store. Prefix search supports a maximum of 1,000 characters for the string. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalIds" /></td>
+    <td><CopyableCode code="external_ids" /></td>
     <td><code>array</code></td>
     <td>A list of ExternalId objects that contains the identifiers issued to this resource by an external identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a group in the identity store. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier for the identity store. (pattern: &lt;code&gt;d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the group was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that last updated the group.</td>
 </tr>
@@ -255,15 +255,15 @@ Retrieves the group metadata and attributes from GroupId in an identity store. I
 
 ```sql
 SELECT
-CreatedAt,
-CreatedBy,
-Description,
-DisplayName,
-ExternalIds,
-GroupId,
-IdentityStoreId,
-UpdatedAt,
-UpdatedBy
+created_at,
+created_by,
+description,
+display_name,
+external_ids,
+group_id,
+identity_store_id,
+updated_at,
+updated_by
 FROM aws.identitystore.groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,15 +275,15 @@ Lists all groups in the identity store. Returns a paginated list of complete Gro
 
 ```sql
 SELECT
-CreatedAt,
-CreatedBy,
-Description,
-DisplayName,
-ExternalIds,
-GroupId,
-IdentityStoreId,
-UpdatedAt,
-UpdatedBy
+created_at,
+created_by,
+description,
+display_name,
+external_ids,
+group_id,
+identity_store_id,
+updated_at,
+updated_by
 FROM aws.identitystore.groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -318,8 +318,8 @@ SELECT
 '{{ Description }}',
 '{{ region }}'
 RETURNING
-GroupId,
-IdentityStoreId
+group_id,
+identity_store_id
 ;
 ```
 </TabItem>

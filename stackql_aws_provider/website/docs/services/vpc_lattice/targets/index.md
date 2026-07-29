@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The port on which the target is listening.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reasonCode" /></td>
+    <td><CopyableCode code="reason_code" /></td>
     <td><code>string</code></td>
     <td>The code for why the target status is what it is.</td>
 </tr>
@@ -165,7 +165,7 @@ Lists the targets for the target group. By default, all targets are included. Yo
 SELECT
 id,
 port,
-reasonCode,
+reason_code,
 status
 FROM aws.vpc_lattice.targets
 WHERE target_group_identifier = '{{ target_group_identifier }}' -- required

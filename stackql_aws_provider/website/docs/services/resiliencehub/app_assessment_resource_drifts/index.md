@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the application whose resources have drifted. The format for this ARN is: arn:partition:resiliencehub:region:account:app-assessment/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>string</code></td>
     <td>Version of the application whose resources have drifted. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="diffType" /></td>
+    <td><CopyableCode code="diff_type" /></td>
     <td><code>string</code></td>
     <td>Indicates if the resource was added or removed. (NotEqual, Added, Removed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="referenceId" /></td>
+    <td><CopyableCode code="reference_id" /></td>
     <td><code>string</code></td>
     <td>Reference identifier of the resource drift. (pattern: &lt;code&gt;^\S&#123;1,255&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>object</code></td>
     <td>Identifier of the drifted resource.</td>
 </tr>
@@ -139,11 +139,11 @@ List of resource drifts that were detected while running an assessment.
 
 ```sql
 SELECT
-appArn,
-appVersion,
-diffType,
-referenceId,
-resourceIdentifier
+app_arn,
+app_version,
+diff_type,
+reference_id,
+resource_identifier
 FROM aws.resiliencehub.app_assessment_resource_drifts
 WHERE region = '{{ region }}' -- required
 ;

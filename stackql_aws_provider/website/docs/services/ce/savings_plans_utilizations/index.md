@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SavingsPlansUtilizationsByTime" /></td>
+    <td><CopyableCode code="savings_plans_utilizations_by_time" /></td>
     <td><code>array</code></td>
     <td>The amount of cost/commitment that you used your Savings Plans. You can use it to specify date ranges.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Total" /></td>
+    <td><CopyableCode code="total" /></td>
     <td><code>object</code></td>
     <td>The total amount of cost/commitment that you used your Savings Plans, regardless of date ranges.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the Savings Plans utilization for your account across date ranges with
 
 ```sql
 SELECT
-SavingsPlansUtilizationsByTime,
-Total
+savings_plans_utilizations_by_time,
+total
 FROM aws.ce.savings_plans_utilizations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>The Region or Availability Zone that's the destination for the data query. For example, eu-west-1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID passed in the DataQuery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metric" /></td>
+    <td><CopyableCode code="metric" /></td>
     <td><code>string</code></td>
     <td>The metric used for the network performance request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricPoints" /></td>
+    <td><CopyableCode code="metric_points" /></td>
     <td><code>string</code></td>
     <td>A list of MetricPoint objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>string</code></td>
     <td>The period used for the network performance request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The Region or Availability Zone that's the source for the data query. For example, us-east-1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistic" /></td>
+    <td><CopyableCode code="statistic" /></td>
     <td><code>string</code></td>
     <td>The statistic used for the network performance request.</td>
 </tr>
@@ -179,13 +179,13 @@ Gets network performance data.
 
 ```sql
 SELECT
-Destination,
-Id,
-Metric,
-MetricPoints,
-Period,
-Source,
-Statistic
+destination,
+id,
+metric,
+metric_points,
+period,
+source,
+statistic
 FROM aws.ec2.aws_network_performance_datas
 WHERE region = '{{ region }}' -- required
 AND DataQuery = '{{ DataQuery }}'

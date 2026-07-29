@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configs" /></td>
+    <td><CopyableCode code="configs" /></td>
     <td><code>string</code></td>
     <td>Topic configurations encoded as a Base64 string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionCount" /></td>
+    <td><CopyableCode code="partition_count" /></td>
     <td><code>integer</code></td>
     <td>The partition count of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationFactor" /></td>
+    <td><CopyableCode code="replication_factor" /></td>
     <td><code>integer</code></td>
     <td>The replication factor of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the topic. (CREATING, UPDATING, DELETING, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicName" /></td>
+    <td><CopyableCode code="topic_name" /></td>
     <td><code>string</code></td>
     <td>The Kafka topic name of the topic.</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OutOfSyncReplicaCount" /></td>
+    <td><CopyableCode code="out_of_sync_replica_count" /></td>
     <td><code>integer</code></td>
     <td>Number of out-of-sync replicas for a topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionCount" /></td>
+    <td><CopyableCode code="partition_count" /></td>
     <td><code>integer</code></td>
     <td>Partition count for a topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationFactor" /></td>
+    <td><CopyableCode code="replication_factor" /></td>
     <td><code>integer</code></td>
     <td>Replication factor for a topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicName" /></td>
+    <td><CopyableCode code="topic_name" /></td>
     <td><code>string</code></td>
     <td>Name for a topic.</td>
 </tr>
@@ -238,12 +238,12 @@ Returns topic details of this topic on a MSK cluster.
 
 ```sql
 SELECT
-Configs,
-PartitionCount,
-ReplicationFactor,
-Status,
-TopicArn,
-TopicName
+configs,
+partition_count,
+replication_factor,
+status,
+topic_arn,
+topic_name
 FROM aws.kafka.topics
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND topic_name = '{{ topic_name }}' -- required
@@ -257,11 +257,11 @@ List topics in a MSK cluster.
 
 ```sql
 SELECT
-OutOfSyncReplicaCount,
-PartitionCount,
-ReplicationFactor,
-TopicArn,
-TopicName
+out_of_sync_replica_count,
+partition_count,
+replication_factor,
+topic_arn,
+topic_name
 FROM aws.kafka.topics
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -304,9 +304,9 @@ SELECT
 '{{ cluster_arn }}',
 '{{ region }}'
 RETURNING
-Status,
-TopicArn,
-TopicName
+status,
+topic_arn,
+topic_name
 ;
 ```
 </TabItem>
@@ -357,9 +357,9 @@ cluster_arn = '{{ cluster_arn }}' --required
 AND topic_name = '{{ topic_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Status,
-TopicArn,
-TopicName;
+status,
+topic_arn,
+topic_name;
 ```
 </TabItem>
 </Tabs>

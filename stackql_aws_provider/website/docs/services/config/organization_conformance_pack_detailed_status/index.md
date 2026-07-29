@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account ID of a member account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackName" /></td>
+    <td><CopyableCode code="conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>The name of conformance pack deployed in the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code that is returned when conformance pack creation or deletion failed in the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message indicating that conformance pack account creation or deletion has failed due to an error in the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last status update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates deployment status for conformance pack in a member account. When management account calls PutOrganizationConformancePack action for the first time, conformance pack status is created in the member account. When management account calls PutOrganizationConformancePack action for the second time, conformance pack status is updated in the member account. Conformance pack status is deleted when the management account deletes OrganizationConformancePack and disables service access for config-multiaccountsetup.amazonaws.com. Config sets the state of the conformance pack to: CREATE_SUCCESSFUL when conformance pack has been created in the member account. CREATE_IN_PROGRESS when conformance pack is being created in the member account. CREATE_FAILED when conformance pack creation has failed in the member account. DELETE_FAILED when conformance pack deletion has failed in the member account. DELETE_IN_PROGRESS when conformance pack is being deleted in the member account. DELETE_SUCCESSFUL when conformance pack has been deleted in the member account. UPDATE_SUCCESSFUL when conformance pack has been updated in the member account. UPDATE_IN_PROGRESS when conformance pack is being updated in the member account. UPDATE_FAILED when conformance pack deletion has failed in the member account. (CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_IN_PROGRESS, UPDATE_FAILED)</td>
 </tr>
@@ -144,12 +144,12 @@ Returns detailed status for each member account within an organization for a giv
 
 ```sql
 SELECT
-AccountId,
-ConformancePackName,
-ErrorCode,
-ErrorMessage,
-LastUpdateTime,
-Status
+account_id,
+conformance_pack_name,
+error_code,
+error_message,
+last_update_time,
+status
 FROM aws.config.organization_conformance_pack_detailed_status
 WHERE region = '{{ region }}' -- required
 ;

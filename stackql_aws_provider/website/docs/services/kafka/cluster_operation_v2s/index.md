@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>Type of the backend cluster. (PROVISIONED, SERVERLESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the operation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>If cluster operation failed from an error, it describes the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationArn" /></td>
+    <td><CopyableCode code="operation_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationState" /></td>
+    <td><CopyableCode code="operation_state" /></td>
     <td><code>string</code></td>
     <td>State of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>Type of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Provisioned" /></td>
+    <td><CopyableCode code="provisioned" /></td>
     <td><code>object</code></td>
     <td>Properties of a provisioned cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Serverless" /></td>
+    <td><CopyableCode code="serverless" /></td>
     <td><code>object</code></td>
     <td>Properties of a serverless cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which operation was started.</td>
 </tr>
@@ -169,16 +169,16 @@ Returns a description of the cluster operation specified by the ARN.
 
 ```sql
 SELECT
-ClusterArn,
-ClusterType,
-EndTime,
-ErrorInfo,
-OperationArn,
-OperationState,
-OperationType,
-Provisioned,
-Serverless,
-StartTime
+cluster_arn,
+cluster_type,
+end_time,
+error_info,
+operation_arn,
+operation_state,
+operation_type,
+provisioned,
+serverless,
+start_time
 FROM aws.kafka.cluster_operation_v2s
 WHERE cluster_operation_arn = '{{ cluster_operation_arn }}' -- required
 AND region = '{{ region }}' -- required

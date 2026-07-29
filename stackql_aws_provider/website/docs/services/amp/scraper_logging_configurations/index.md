@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="loggingDestination" /></td>
+    <td><CopyableCode code="logging_destination" /></td>
     <td><code>object</code></td>
     <td>The destination where scraper logs are sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the logging configuration was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scraperComponents" /></td>
+    <td><CopyableCode code="scraper_components" /></td>
     <td><code>array</code></td>
     <td>The list of scraper components configured for logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scraperId" /></td>
+    <td><CopyableCode code="scraper_id" /></td>
     <td><code>string</code></td>
     <td>A scraper ID. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -163,10 +163,10 @@ Describes the logging configuration for a Amazon Managed Service for Prometheus 
 
 ```sql
 SELECT
-loggingDestination,
-modifiedAt,
-scraperComponents,
-scraperId,
+logging_destination,
+modified_at,
+scraper_components,
+scraper_id,
 status
 FROM aws.amp.scraper_logging_configurations
 WHERE scraper_id = '{{ scraper_id }}' -- required

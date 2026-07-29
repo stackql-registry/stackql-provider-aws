@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type (media type) of the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The version identifier for the current version of the CloudFront function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionCode" /></td>
+    <td><CopyableCode code="function_code" /></td>
     <td><code>string</code></td>
     <td>The function code of a CloudFront function.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>Contains the functions in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of functions requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more items in the list than are in this response, this element is present. It contains the value that you should use in the Marker field of a subsequent request to continue listing functions where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of functions returned in the response.</td>
 </tr>
@@ -225,9 +225,9 @@ Gets the code of a CloudFront function. To get configuration information and met
 
 ```sql
 SELECT
-ContentType,
-ETag,
-FunctionCode
+content_type,
+e_tag,
+function_code
 FROM aws.cloudfront.functions
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -241,10 +241,10 @@ Gets a list of all CloudFront functions in your Amazon Web Services account. You
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.functions
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -284,9 +284,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ETag,
-FunctionSummary,
-Location
+e_tag,
+function_summary,
+location
 ;
 ```
 </TabItem>
@@ -349,8 +349,8 @@ AND region = '{{ region }}' --required
 AND FunctionConfig = '{{ FunctionConfig }}' --required
 AND FunctionCode = '{{ FunctionCode }}' --required
 RETURNING
-ETag,
-FunctionSummary;
+e_tag,
+function_summary;
 ```
 </TabItem>
 </Tabs>

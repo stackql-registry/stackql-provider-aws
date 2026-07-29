@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="alarmModelVersionSummaries" /></td>
+    <td><CopyableCode code="alarm_model_version_summaries" /></td>
     <td><code>array</code></td>
     <td>A list that summarizes each alarm model version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can use to return the next set of results, or null if there are no more results.</td>
 </tr>
@@ -139,8 +139,8 @@ Lists all the versions of an alarm model. The operation returns only the metadat
 
 ```sql
 SELECT
-alarmModelVersionSummaries,
-nextToken
+alarm_model_version_summaries,
+next_token
 FROM aws.iotevents.alarm_model_versions
 WHERE alarm_model_name = '{{ alarm_model_name }}' -- required
 AND region = '{{ region }}' -- required

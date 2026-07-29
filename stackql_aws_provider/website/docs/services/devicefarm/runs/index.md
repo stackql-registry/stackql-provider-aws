@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The run's name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appUpload" /></td>
+    <td><CopyableCode code="app_upload" /></td>
     <td><code>string</code></td>
     <td>An app to upload or that has been uploaded. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>The run's ARN. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingMethod" /></td>
+    <td><CopyableCode code="billing_method" /></td>
     <td><code>string</code></td>
     <td>Specifies the billing method for a test run: metered or unmetered. If the parameter is not specified, the default value is metered. If you have unmetered device slots, you must set this to unmetered to use them. Otherwise, the run is counted toward metered device minutes. (METERED, UNMETERED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedJobs" /></td>
+    <td><CopyableCode code="completed_jobs" /></td>
     <td><code>integer</code></td>
     <td>The total number of completed jobs.</td>
 </tr>
@@ -85,47 +85,47 @@ The following fields are returned by `SELECT` queries:
     <td>When the run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerArtifactPaths" /></td>
+    <td><CopyableCode code="customer_artifact_paths" /></td>
     <td><code>object</code></td>
     <td>Output CustomerArtifactPaths object for the test run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceMinutes" /></td>
+    <td><CopyableCode code="device_minutes" /></td>
     <td><code>object</code></td>
     <td>Represents the total (metered or unmetered) minutes used by the test run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="devicePoolArn" /></td>
+    <td><CopyableCode code="device_pool_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device pool for the run. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceProxy" /></td>
+    <td><CopyableCode code="device_proxy" /></td>
     <td><code>object</code></td>
     <td>The device proxy configured for the devices in the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceSelectionResult" /></td>
+    <td><CopyableCode code="device_selection_result" /></td>
     <td><code>object</code></td>
     <td>The results of a device filter used to select the devices for a test run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>array</code></td>
     <td>Environment variables associated with the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventCount" /></td>
+    <td><CopyableCode code="event_count" /></td>
     <td><code>integer</code></td>
     <td>For fuzz tests, this is the number of events, between 1 and 10000, that the UI fuzz test should perform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role associated with the run. (pattern: &lt;code&gt;^arn:aws:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobTimeoutMinutes" /></td>
+    <td><CopyableCode code="job_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The number of minutes the job executes before it times out.</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
     <td>A message about the run's result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkProfile" /></td>
+    <td><CopyableCode code="network_profile" /></td>
     <td><code>object</code></td>
     <td>The network profile being used for a test run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parsingResultUrl" /></td>
+    <td><CopyableCode code="parsing_result_url" /></td>
     <td><code>string</code></td>
     <td>Read-only URL for an object in an S3 bucket where you can get the parsing results of the test package. If the test package doesn't parse, the reason why it doesn't parse appears in the file that this URL points to.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The run's result. Allowed values include: PENDING PASSED WARNED FAILED SKIPPED ERRORED STOPPED (PENDING, PASSED, WARNED, FAILED, SKIPPED, ERRORED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resultCode" /></td>
+    <td><CopyableCode code="result_code" /></td>
     <td><code>string</code></td>
     <td>Supporting field for the result field. Set only if result is SKIPPED. PARSING_FAILED if the result is skipped because of test package parsing failure. (PARSING_FAILED, VPC_ENDPOINT_SETUP_FAILED)</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>For fuzz tests, this is a seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="skipAppResign" /></td>
+    <td><CopyableCode code="skip_app_resign" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see Do you modify my app? in the AWS Device Farm FAQs.</td>
 </tr>
@@ -200,12 +200,12 @@ The following fields are returned by `SELECT` queries:
     <td>The run's stop time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSpecArn" /></td>
+    <td><CopyableCode code="test_spec_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the YAML-formatted test specification for the run. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalJobs" /></td>
+    <td><CopyableCode code="total_jobs" /></td>
     <td><code>integer</code></td>
     <td>The total number of jobs for the run.</td>
 </tr>
@@ -215,12 +215,12 @@ The following fields are returned by `SELECT` queries:
     <td>The run's type. Must be one of the following values: BUILTIN_FUZZ APPIUM_JAVA_JUNIT APPIUM_JAVA_TESTNG APPIUM_PYTHON APPIUM_NODE APPIUM_RUBY APPIUM_WEB_JAVA_JUNIT APPIUM_WEB_JAVA_TESTNG APPIUM_WEB_PYTHON APPIUM_WEB_NODE APPIUM_WEB_RUBY INSTRUMENTATION XCTEST XCTEST_UI (BUILTIN_FUZZ, APPIUM_JAVA_JUNIT, APPIUM_JAVA_TESTNG, APPIUM_PYTHON, APPIUM_NODE, APPIUM_RUBY, APPIUM_WEB_JAVA_JUNIT, APPIUM_WEB_JAVA_TESTNG, APPIUM_WEB_PYTHON, APPIUM_WEB_NODE, APPIUM_WEB_RUBY, INSTRUMENTATION, XCTEST, XCTEST_UI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC security groups and subnets that are attached to a project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webUrl" /></td>
+    <td><CopyableCode code="web_url" /></td>
     <td><code>string</code></td>
     <td>The Device Farm console URL for the recording of the run.</td>
 </tr>
@@ -304,40 +304,40 @@ Gets information about a run.
 ```sql
 SELECT
 name,
-appUpload,
+app_upload,
 arn,
-billingMethod,
-completedJobs,
+billing_method,
+completed_jobs,
 counters,
 created,
-customerArtifactPaths,
-deviceMinutes,
-devicePoolArn,
-deviceProxy,
-deviceSelectionResult,
-environmentVariables,
-eventCount,
-executionRoleArn,
-jobTimeoutMinutes,
+customer_artifact_paths,
+device_minutes,
+device_pool_arn,
+device_proxy,
+device_selection_result,
+environment_variables,
+event_count,
+execution_role_arn,
+job_timeout_minutes,
 locale,
 location,
 message,
-networkProfile,
-parsingResultUrl,
+network_profile,
+parsing_result_url,
 platform,
 radios,
 result,
-resultCode,
+result_code,
 seed,
-skipAppResign,
+skip_app_resign,
 started,
 status,
 stopped,
-testSpecArn,
-totalJobs,
+test_spec_arn,
+total_jobs,
 type_,
-vpcConfig,
-webUrl
+vpc_config,
+web_url
 FROM aws.devicefarm.runs
 WHERE region = '{{ region }}' -- required
 ;

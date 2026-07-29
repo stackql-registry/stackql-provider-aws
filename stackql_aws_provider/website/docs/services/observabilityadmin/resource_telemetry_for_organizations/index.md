@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountIdentifier" /></td>
+    <td><CopyableCode code="account_identifier" /></td>
     <td><code>string</code></td>
     <td>The account ID which contains the resource managed in telemetry configuration. An example of a valid account ID is 012345678901. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimeStamp" /></td>
+    <td><CopyableCode code="last_update_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp of the last change to the telemetry configuration for the resource. For example, 1728679196318.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource, for example for Amazon VPC, it would be vpc-1a2b3c4d5e6f1a2b3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the resource, for example &#123; Name: "ExampleInstance", Environment: "Development" &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource, for example Amazon Web Services::EC2::Instance, or Amazon Web Services::EKS::Cluster, etc. (AWS::EC2::Instance, AWS::EC2::VPC, AWS::Lambda::Function, AWS::CloudTrail, AWS::EKS::Cluster, AWS::WAFv2::WebACL, AWS::ElasticLoadBalancingV2::LoadBalancer, AWS::Route53Resolver::ResolverEndpoint, AWS::BedrockAgentCore::Runtime, AWS::BedrockAgentCore::Browser, AWS::BedrockAgentCore::CodeInterpreter, AWS::BedrockAgentCore::Gateway, AWS::BedrockAgentCore::Memory, AWS::BedrockAgentCore::WorkloadIdentity, AWS::SecurityHub::Hub, AWS::CloudFront::Distribution, AWS::SecurityHub::HubV2, AWS::CloudWatch::OTelEnrichment, AWS::MSK::Cluster)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TelemetryConfigurationState" /></td>
+    <td><CopyableCode code="telemetry_configuration_state" /></td>
     <td><code>object</code></td>
     <td>The configuration state for the resource, for example &#123; Logs: NotApplicable; Metrics: Enabled; Traces: NotApplicable; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TelemetrySourceType" /></td>
+    <td><CopyableCode code="telemetry_source_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the type of telemetry source for a resource, such as EKS cluster logs. (VPC_FLOW_LOGS, ROUTE53_RESOLVER_QUERY_LOGS, EKS_AUDIT_LOGS, EKS_AUTHENTICATOR_LOGS, EKS_CONTROLLER_MANAGER_LOGS, EKS_SCHEDULER_LOGS, EKS_API_LOGS)</td>
 </tr>
@@ -149,13 +149,13 @@ Returns a list of telemetry configurations for Amazon Web Services resources sup
 
 ```sql
 SELECT
-AccountIdentifier,
-LastUpdateTimeStamp,
-ResourceIdentifier,
-ResourceTags,
-ResourceType,
-TelemetryConfigurationState,
-TelemetrySourceType
+account_identifier,
+last_update_time_stamp,
+resource_identifier,
+resource_tags,
+resource_type,
+telemetry_configuration_state,
+telemetry_source_type
 FROM aws.observabilityadmin.resource_telemetry_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

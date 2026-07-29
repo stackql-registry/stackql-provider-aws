@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the directory was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryArn" /></td>
+    <td><CopyableCode code="directory_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is associated with the directory. For more information, see arns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the directory. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the directory. Can be either Enabled, Disabled, or Deleted. (ENABLED, DISABLED, DELETED)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the directory was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryArn" /></td>
+    <td><CopyableCode code="directory_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is associated with the directory. For more information, see arns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the directory. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the directory. Can be either Enabled, Disabled, or Deleted. (ENABLED, DISABLED, DELETED)</td>
 </tr>
@@ -203,10 +203,10 @@ Retrieves metadata about a directory.
 
 ```sql
 SELECT
-CreationDateTime,
-DirectoryArn,
-Name,
-State
+creation_date_time,
+directory_arn,
+name,
+state
 FROM aws.clouddirectory.directories
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required
@@ -219,10 +219,10 @@ Lists directories created within an account.
 
 ```sql
 SELECT
-CreationDateTime,
-DirectoryArn,
-Name,
-State
+creation_date_time,
+directory_arn,
+name,
+state
 FROM aws.clouddirectory.directories
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,10 +255,10 @@ SELECT
 '{{ x-amz-data-partition }}',
 '{{ region }}'
 RETURNING
-AppliedSchemaArn,
-DirectoryArn,
-Name,
-ObjectIdentifier
+applied_schema_arn,
+directory_arn,
+name,
+object_identifier
 ;
 ```
 </TabItem>

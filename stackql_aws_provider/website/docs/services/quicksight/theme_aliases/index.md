@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or null if there are no more results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeAliasList" /></td>
+    <td><CopyableCode code="theme_alias_list" /></td>
     <td><code>array</code></td>
     <td>A structure containing the list of the theme's aliases.</td>
 </tr>
@@ -154,10 +154,10 @@ Lists all the aliases of a theme.
 
 ```sql
 SELECT
-NextToken,
-RequestId,
-Status,
-ThemeAliasList
+next_token,
+request_id,
+status,
+theme_alias_list
 FROM aws.quicksight.theme_aliases
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND theme_id = '{{ theme_id }}' -- required

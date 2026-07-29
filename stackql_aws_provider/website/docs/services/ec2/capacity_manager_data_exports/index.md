@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityManagerDataExportId" /></td>
+    <td><CopyableCode code="capacity_manager_data_export_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data export configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the data export configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryS3LocationUri" /></td>
+    <td><CopyableCode code="latest_delivery_s3_location_uri" /></td>
     <td><code>string</code></td>
     <td>The S3 URI of the most recently delivered export file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryStatus" /></td>
+    <td><CopyableCode code="latest_delivery_status" /></td>
     <td><code>string</code></td>
     <td>The status of the most recent export delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryStatusMessage" /></td>
+    <td><CopyableCode code="latest_delivery_status_message" /></td>
     <td><code>string</code></td>
     <td>A message describing the status of the most recent export delivery, including any error details if the delivery failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryTime" /></td>
+    <td><CopyableCode code="latest_delivery_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the most recent export was delivered to S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputFormat" /></td>
+    <td><CopyableCode code="output_format" /></td>
     <td><code>string</code></td>
     <td>The file format of the exported data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketName" /></td>
+    <td><CopyableCode code="s3_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the S3 bucket where export files are delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketPrefix" /></td>
+    <td><CopyableCode code="s3_bucket_prefix" /></td>
     <td><code>string</code></td>
     <td>The S3 key prefix used for organizing export files within the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>The frequency at which data exports are generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags associated with the data export configuration.</td>
 </tr>
@@ -243,17 +243,17 @@ Describes one or more Capacity Manager data export configurations. Returns infor
 
 ```sql
 SELECT
-CapacityManagerDataExportId,
-CreateTime,
-LatestDeliveryS3LocationUri,
-LatestDeliveryStatus,
-LatestDeliveryStatusMessage,
-LatestDeliveryTime,
-OutputFormat,
-S3BucketName,
-S3BucketPrefix,
-Schedule,
-Tags
+capacity_manager_data_export_id,
+create_time,
+latest_delivery_s3_location_uri,
+latest_delivery_status,
+latest_delivery_status_message,
+latest_delivery_time,
+output_format,
+s3_bucket_name,
+s3_bucket_prefix,
+schedule,
+tags
 FROM aws.ec2.capacity_manager_data_exports
 WHERE region = '{{ region }}' -- required
 AND CapacityManagerDataExportId = '{{ CapacityManagerDataExportId }}'
@@ -301,7 +301,7 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-CapacityManagerDataExportId
+capacity_manager_data_export_id
 ;
 ```
 </TabItem>

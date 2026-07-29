@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the Capacity Block that will be extended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID of the Capacity Block that will be extended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionDurationHours" /></td>
+    <td><CopyableCode code="capacity_block_extension_duration_hours" /></td>
     <td><code>integer</code></td>
     <td>The amount of time of the Capacity Block extension offering in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionEndDate" /></td>
+    <td><CopyableCode code="capacity_block_extension_end_date" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the Capacity Block extension expires. When a Capacity Block expires, the reserved capacity is released and you can no longer launch instances into it. The Capacity Block's state changes to expired when it reaches its end date</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionOfferingId" /></td>
+    <td><CopyableCode code="capacity_block_extension_offering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block extension offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionStartDate" /></td>
+    <td><CopyableCode code="capacity_block_extension_start_date" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the Capacity Block extension will start. This date is also the same as the end date of the Capacity Block that will be extended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency of the payment for the Capacity Block extension offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances in the Capacity Block extension offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type of the Capacity Block that will be extended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The start date of the Capacity Block that will be extended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tenancy" /></td>
+    <td><CopyableCode code="tenancy" /></td>
     <td><code>string</code></td>
     <td>Indicates the tenancy of the Capacity Block extension offering. A Capacity Block can have one of the following tenancy settings: default - The Capacity Block is created on hardware that is shared with other Amazon Web Services accounts. dedicated - The Capacity Block is created on single-tenant hardware that is dedicated to a single Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpfrontFee" /></td>
+    <td><CopyableCode code="upfront_fee" /></td>
     <td><code>string</code></td>
     <td>The total price of the Capacity Block extension offering, to be paid up front.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZoneType" /></td>
+    <td><CopyableCode code="zone_type" /></td>
     <td><code>string</code></td>
     <td>The type of zone where the Capacity Block extension offering is available.</td>
 </tr>
@@ -216,19 +216,19 @@ Describes Capacity Block extension offerings available for purchase in the Amazo
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CapacityBlockExtensionDurationHours,
-CapacityBlockExtensionEndDate,
-CapacityBlockExtensionOfferingId,
-CapacityBlockExtensionStartDate,
-CurrencyCode,
-InstanceCount,
-InstanceType,
-StartDate,
-Tenancy,
-UpfrontFee,
-ZoneType
+availability_zone,
+availability_zone_id,
+capacity_block_extension_duration_hours,
+capacity_block_extension_end_date,
+capacity_block_extension_offering_id,
+capacity_block_extension_start_date,
+currency_code,
+instance_count,
+instance_type,
+start_date,
+tenancy,
+upfront_fee,
+zone_type
 FROM aws.ec2.capacity_block_extension_offerings
 WHERE CapacityBlockExtensionDurationHours = '{{ CapacityBlockExtensionDurationHours }}' -- required
 AND CapacityReservationId = '{{ CapacityReservationId }}' -- required

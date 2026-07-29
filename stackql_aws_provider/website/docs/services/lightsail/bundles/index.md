@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>A friendly name for the bundle (Micro).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle ID (micro_x_x). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCount" /></td>
+    <td><CopyableCode code="cpu_count" /></td>
     <td><code>integer</code></td>
     <td>The number of vCPUs included in the bundle (2).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="diskSizeInGb" /></td>
+    <td><CopyableCode code="disk_size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the SSD (30).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type (micro).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the bundle is active.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
     <td>The price in US dollars (5.0) of the bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicIpv4AddressCount" /></td>
+    <td><CopyableCode code="public_ipv_4_address_count" /></td>
     <td><code>integer</code></td>
     <td>An integer that indicates the public ipv4 address count included in the bundle, the value is either 0 or 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ramSizeInGb" /></td>
+    <td><CopyableCode code="ram_size_in_gb" /></td>
     <td><code>number (float)</code></td>
     <td>The amount of RAM in GB (2.0).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedAppCategories" /></td>
+    <td><CopyableCode code="supported_app_categories" /></td>
     <td><code>array</code></td>
     <td>Virtual computer blueprints that are supported by a Lightsail for Research bundle. This parameter only applies to Lightsail for Research resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedPlatforms" /></td>
+    <td><CopyableCode code="supported_platforms" /></td>
     <td><code>array</code></td>
     <td>The operating system platform (Linux/Unix-based or Windows Server-based) that the bundle supports. You can only launch a WINDOWS bundle on a blueprint that supports the WINDOWS platform. LINUX_UNIX blueprints require a LINUX_UNIX bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transferPerMonthInGb" /></td>
+    <td><CopyableCode code="transfer_per_month_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The data transfer rate per month in GB (2000).</td>
 </tr>
@@ -180,18 +180,18 @@ Returns the bundles that you can apply to an Amazon Lightsail instance when you 
 ```sql
 SELECT
 name,
-bundleId,
-cpuCount,
-diskSizeInGb,
-instanceType,
-isActive,
+bundle_id,
+cpu_count,
+disk_size_in_gb,
+instance_type,
+is_active,
 power,
 price,
-publicIpv4AddressCount,
-ramSizeInGb,
-supportedAppCategories,
-supportedPlatforms,
-transferPerMonthInGb
+public_ipv_4_address_count,
+ram_size_in_gb,
+supported_app_categories,
+supported_platforms,
+transfer_per_month_in_gb
 FROM aws.lightsail.bundles
 WHERE region = '{{ region }}' -- required
 ;

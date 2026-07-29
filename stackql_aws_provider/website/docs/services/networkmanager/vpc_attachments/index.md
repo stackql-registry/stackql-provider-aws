@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>object</code></td>
     <td>Describes a core network attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>object</code></td>
     <td>Describes the VPC options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetArns" /></td>
+    <td><CopyableCode code="subnet_arns" /></td>
     <td><code>array</code></td>
     <td>The subnet ARNs.</td>
 </tr>
@@ -148,9 +148,9 @@ Returns information about a VPC attachment.
 
 ```sql
 SELECT
-Attachment,
-Options,
-SubnetArns
+attachment,
+options,
+subnet_arns
 FROM aws.networkmanager.vpc_attachments
 WHERE attachment_id = '{{ attachment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -194,7 +194,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-VpcAttachment
+vpc_attachment
 ;
 ```
 </TabItem>
@@ -257,7 +257,7 @@ WHERE
 attachment_id = '{{ attachment_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-VpcAttachment;
+vpc_attachment;
 ```
 </TabItem>
 </Tabs>

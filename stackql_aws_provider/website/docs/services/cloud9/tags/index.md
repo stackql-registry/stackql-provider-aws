@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags associated with the Cloud9 development environment.</td>
 </tr>
@@ -133,7 +133,7 @@ Gets a list of the tags associated with an Cloud9 development environment. Cloud
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.cloud9.tags
 WHERE region = '{{ region }}' -- required
 ;

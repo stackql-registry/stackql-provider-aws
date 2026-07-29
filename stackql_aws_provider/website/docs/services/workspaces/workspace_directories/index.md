@@ -50,147 +50,147 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveDirectoryConfig" /></td>
+    <td><CopyableCode code="active_directory_config" /></td>
     <td><code>object</code></td>
     <td>Information about the Active Directory config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The directory alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateBasedAuthProperties" /></td>
+    <td><CopyableCode code="certificate_based_auth_properties" /></td>
     <td><code>object</code></td>
     <td>The certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory for WorkSpaces login.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerUserName" /></td>
+    <td><CopyableCode code="customer_user_name" /></td>
     <td><code>string</code></td>
     <td>The user name for the service account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The directory identifier. (pattern: &lt;code&gt;^(d-&#91;0-9a-f&#93;&#123;8,63&#125;$)|(wsd-&#91;0-9a-z&#93;&#123;8,63&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryName" /></td>
+    <td><CopyableCode code="directory_name" /></td>
     <td><code>string</code></td>
     <td>The name of the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryType" /></td>
+    <td><CopyableCode code="directory_type" /></td>
     <td><code>string</code></td>
     <td>The directory type. (SIMPLE_AD, AD_CONNECTOR, CUSTOMER_MANAGED, AWS_IAM_IDENTITY_CENTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsIpAddresses" /></td>
+    <td><CopyableCode code="dns_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>The IP addresses of the DNS servers for the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsIpv6Addresses" /></td>
+    <td><CopyableCode code="dns_ipv_6_addresses" /></td>
     <td><code>array</code></td>
     <td>The IPv6 addresses of the DNS servers for the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointEncryptionMode" /></td>
+    <td><CopyableCode code="endpoint_encryption_mode" /></td>
     <td><code>string</code></td>
     <td>Endpoint encryption mode that allows you to configure the specified directory between Standard TLS and FIPS 140-2 validated mode. (STANDARD_TLS, FIPS_VALIDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IDCConfig" /></td>
+    <td><CopyableCode code="idc_config" /></td>
     <td><code>object</code></td>
     <td>Specifies details about identity center configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleId" /></td>
+    <td><CopyableCode code="iam_role_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf. (pattern: &lt;code&gt;^arn:aws&#91;a-z-&#93;&#123;0,7&#125;:&#91;A-Za-z0-9&#93;&#91;A-za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MicrosoftEntraConfig" /></td>
+    <td><CopyableCode code="microsoft_entra_config" /></td>
     <td><code>object</code></td>
     <td>Specifies details about Microsoft Entra configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationCode" /></td>
+    <td><CopyableCode code="registration_code" /></td>
     <td><code>string</code></td>
     <td>The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SamlProperties" /></td>
+    <td><CopyableCode code="saml_properties" /></td>
     <td><code>object</code></td>
     <td>Describes the enablement status, user access URL, and relay state parameter name that are used for configuring federation with an SAML 2.0 identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfservicePermissions" /></td>
+    <td><CopyableCode code="selfservice_permissions" /></td>
     <td><code>object</code></td>
     <td>The default self-service permissions for WorkSpaces in the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the directory's registration with Amazon WorkSpaces. After a directory is deregistered, the DEREGISTERED state is returned very briefly before the directory metadata is cleaned up, so this state is rarely returned. To confirm that a directory is deregistered, check for the directory ID by using DescribeWorkspaceDirectories. If the directory ID isn't returned, then the directory has been successfully deregistered. (REGISTERING, REGISTERED, DEREGISTERING, DEREGISTERED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamingProperties" /></td>
+    <td><CopyableCode code="streaming_properties" /></td>
     <td><code>object</code></td>
     <td>The streaming properties to configure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The identifiers of the subnets used with the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tenancy" /></td>
+    <td><CopyableCode code="tenancy" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the directory is dedicated or shared. To use Bring Your Own License (BYOL), this value must be set to DEDICATED. For more information, see Bring Your Own Windows Desktop Images. (DEDICATED, SHARED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserIdentityType" /></td>
+    <td><CopyableCode code="user_identity_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the identity type of the specifired user. (CUSTOMER_MANAGED, AWS_DIRECTORY_SERVICE, AWS_IAM_IDENTITY_CENTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceAccessProperties" /></td>
+    <td><CopyableCode code="workspace_access_properties" /></td>
     <td><code>object</code></td>
     <td>The devices and operating systems that users can use to access WorkSpaces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceCreationProperties" /></td>
+    <td><CopyableCode code="workspace_creation_properties" /></td>
     <td><code>object</code></td>
     <td>The default creation properties for all WorkSpaces in the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceDirectoryDescription" /></td>
+    <td><CopyableCode code="workspace_directory_description" /></td>
     <td><code>string</code></td>
     <td>The description of the WorkSpace directory (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9_&#93;)&#91;\\a-zA-Z0-9_@#%*+=:?./!\s-&#93;&#123;1,255&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceDirectoryName" /></td>
+    <td><CopyableCode code="workspace_directory_name" /></td>
     <td><code>string</code></td>
     <td>The name fo the WorkSpace directory. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_.\s-&#93;&#123;1,64&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceSecurityGroupId" /></td>
+    <td><CopyableCode code="workspace_security_group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the security group that is assigned to new WorkSpaces. (pattern: &lt;code&gt;^(sg-(&#91;0-9a-f&#93;&#123;8&#125;|&#91;0-9a-f&#93;&#123;17&#125;))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceType" /></td>
+    <td><CopyableCode code="workspace_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the directory's WorkSpace type is personal or pools. (PERSONAL, POOLS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipGroupIds" /></td>
+    <td><CopyableCode code="ip_group_ids" /></td>
     <td><code>array</code></td>
     <td>The identifiers of the IP access control groups associated with the directory.</td>
 </tr>
@@ -273,35 +273,35 @@ Describes the available directories that are registered with Amazon WorkSpaces.
 
 ```sql
 SELECT
-ActiveDirectoryConfig,
-Alias,
-CertificateBasedAuthProperties,
-CustomerUserName,
-DirectoryId,
-DirectoryName,
-DirectoryType,
-DnsIpAddresses,
-DnsIpv6Addresses,
-EndpointEncryptionMode,
-ErrorMessage,
-IDCConfig,
-IamRoleId,
-MicrosoftEntraConfig,
-RegistrationCode,
-SamlProperties,
-SelfservicePermissions,
-State,
-StreamingProperties,
-SubnetIds,
-Tenancy,
-UserIdentityType,
-WorkspaceAccessProperties,
-WorkspaceCreationProperties,
-WorkspaceDirectoryDescription,
-WorkspaceDirectoryName,
-WorkspaceSecurityGroupId,
-WorkspaceType,
-ipGroupIds
+active_directory_config,
+alias,
+certificate_based_auth_properties,
+customer_user_name,
+directory_id,
+directory_name,
+directory_type,
+dns_ip_addresses,
+dns_ipv_6_addresses,
+endpoint_encryption_mode,
+error_message,
+idc_config,
+iam_role_id,
+microsoft_entra_config,
+registration_code,
+saml_properties,
+selfservice_permissions,
+state,
+streaming_properties,
+subnet_ids,
+tenancy,
+user_identity_type,
+workspace_access_properties,
+workspace_creation_properties,
+workspace_directory_description,
+workspace_directory_name,
+workspace_security_group_id,
+workspace_type,
+ip_group_ids
 FROM aws.workspaces.workspace_directories
 WHERE region = '{{ region }}' -- required
 ;
@@ -354,8 +354,8 @@ SELECT
 '{{ ActiveDirectoryConfig }}',
 '{{ region }}'
 RETURNING
-DirectoryId,
-State
+directory_id,
+state
 ;
 ```
 </TabItem>

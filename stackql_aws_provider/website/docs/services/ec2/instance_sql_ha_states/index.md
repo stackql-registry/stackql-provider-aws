@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HaStatus" /></td>
+    <td><CopyableCode code="ha_status" /></td>
     <td><code>string</code></td>
     <td>The SQL Server High Availability status of the instance. Valid values are: processing - The SQL Server High Availability status for the SQL Server High Availability instance is being updated. active - The SQL Server High Availability instance is an active node in an SQL Server High Availability cluster. standby - The SQL Server High Availability instance is a standby failover node in an SQL Server High Availability cluster. invalid - An error occurred due to misconfigured permissions, or unable to dertemine SQL Server High Availability status for the SQL Server High Availability instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the SQL Server High Availability instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the instance's SQL Server High Availability status was last updated, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingStatus" /></td>
+    <td><CopyableCode code="processing_status" /></td>
     <td><code>string</code></td>
     <td>A brief description of the SQL Server High Availability status. If the instance is in the invalid High Availability status, this parameter includes the error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SqlServerCredentials" /></td>
+    <td><CopyableCode code="sql_server_credentials" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Secrets Manager secret containing the SQL Server access credentials for the SQL Server High Availability instance. If not specified, deafult local user credentials will be used by the Amazon Web Services Systems Manager agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SqlServerLicenseUsage" /></td>
+    <td><CopyableCode code="sql_server_license_usage" /></td>
     <td><code>string</code></td>
     <td>The license type for the SQL Server license. Valid values include: full - The SQL Server High Availability instance is using a full SQL Server license. waived - The SQL Server High Availability instance is waived from the SQL Server license.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the SQL Server High Availability instance.</td>
 </tr>
@@ -174,13 +174,13 @@ Describes the SQL Server High Availability states for Amazon EC2 instances that 
 
 ```sql
 SELECT
-HaStatus,
-InstanceId,
-LastUpdatedTime,
-ProcessingStatus,
-SqlServerCredentials,
-SqlServerLicenseUsage,
-Tags
+ha_status,
+instance_id,
+last_updated_time,
+processing_status,
+sql_server_credentials,
+sql_server_license_usage,
+tags
 FROM aws.ec2.instance_sql_ha_states
 WHERE region = '{{ region }}' -- required
 AND InstanceId = '{{ InstanceId }}'

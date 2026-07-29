@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>array</code></td>
     <td>The attributes that are associated with the typed link.</td>
 </tr>
@@ -131,7 +131,7 @@ Retrieves attributes that are associated with a typed link.
 
 ```sql
 SELECT
-Attributes
+attributes
 FROM aws.clouddirectory.link_attributes
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

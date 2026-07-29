@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the endpoint was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointConfig" /></td>
+    <td><CopyableCode code="endpoint_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the configuration for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointStatus" /></td>
+    <td><CopyableCode code="endpoint_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the endpoint (e.g., Creating, InService, Updating, Failed).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointStatusMessage" /></td>
+    <td><CopyableCode code="endpoint_status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the endpoint status, if available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelSourceIdentifier" /></td>
+    <td><CopyableCode code="model_source_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the model from Amazon Bedrock Marketplace that is deployed on this endpoint. (pattern: &lt;code&gt;.*arn:aws:sagemaker:.*:hub-content/SageMakerPublicHub/Model/.*&lt;/code&gt;)</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The overall status of the endpoint in Amazon Bedrock Marketplace (e.g., ACTIVE, INACTIVE). (REGISTERED, INCOMPATIBLE_ENDPOINT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the overall status, if available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the endpoint was last updated.</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelSourceIdentifier" /></td>
+    <td><CopyableCode code="model_source_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the model from Amazon Bedrock Marketplace that is deployed on this endpoint. (pattern: &lt;code&gt;.*arn:aws:sagemaker:.*:hub-content/SageMakerPublicHub/Model/.*&lt;/code&gt;)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The overall status of the endpoint in Amazon Bedrock Marketplace. (REGISTERED, INCOMPATIBLE_ENDPOINT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the overall status, if available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the endpoint was last updated.</td>
 </tr>
@@ -272,15 +272,15 @@ Retrieves details about a specific endpoint for a model from Amazon Bedrock Mark
 
 ```sql
 SELECT
-createdAt,
-endpointArn,
-endpointConfig,
-endpointStatus,
-endpointStatusMessage,
-modelSourceIdentifier,
+created_at,
+endpoint_arn,
+endpoint_config,
+endpoint_status,
+endpoint_status_message,
+model_source_identifier,
 status,
-statusMessage,
-updatedAt
+status_message,
+updated_at
 FROM aws.bedrock.marketplace_model_endpoints
 WHERE endpoint_arn = '{{ endpoint_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -293,12 +293,12 @@ Lists the endpoints for models from Amazon Bedrock Marketplace in your Amazon We
 
 ```sql
 SELECT
-createdAt,
-endpointArn,
-modelSourceIdentifier,
+created_at,
+endpoint_arn,
+model_source_identifier,
 status,
-statusMessage,
-updatedAt
+status_message,
+updated_at
 FROM aws.bedrock.marketplace_model_endpoints
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -343,7 +343,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-marketplaceModelEndpoint
+marketplace_model_endpoint
 ;
 ```
 </TabItem>
@@ -362,7 +362,7 @@ SELECT
 '{{ endpoint_identifier }}',
 '{{ region }}'
 RETURNING
-marketplaceModelEndpoint
+marketplace_model_endpoint
 ;
 ```
 </TabItem>
@@ -431,7 +431,7 @@ endpoint_arn = '{{ endpoint_arn }}' --required
 AND region = '{{ region }}' --required
 AND endpointConfig = '{{ endpointConfig }}' --required
 RETURNING
-marketplaceModelEndpoint;
+marketplace_model_endpoint;
 ```
 </TabItem>
 </Tabs>

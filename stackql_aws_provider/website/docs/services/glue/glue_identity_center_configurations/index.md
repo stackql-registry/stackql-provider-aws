@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Identity Center application associated with the Glue configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Identity Center instance associated with the Glue configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scopes" /></td>
+    <td><CopyableCode code="scopes" /></td>
     <td><code>array</code></td>
     <td>A list of Identity Center scopes that define the permissions and access levels for the Glue configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserBackgroundSessionsEnabled" /></td>
+    <td><CopyableCode code="user_background_sessions_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether users can run background sessions when using Identity Center authentication with Glue services.</td>
 </tr>
@@ -155,10 +155,10 @@ Retrieves the current Glue Identity Center configuration details, including the 
 
 ```sql
 SELECT
-ApplicationArn,
-InstanceArn,
-Scopes,
-UserBackgroundSessionsEnabled
+application_arn,
+instance_arn,
+scopes,
+user_background_sessions_enabled
 FROM aws.glue.glue_identity_center_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -193,7 +193,7 @@ SELECT
 {{ UserBackgroundSessionsEnabled }},
 '{{ region }}'
 RETURNING
-ApplicationArn
+application_arn
 ;
 ```
 </TabItem>

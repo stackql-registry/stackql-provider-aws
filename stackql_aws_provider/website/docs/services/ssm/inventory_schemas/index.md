@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>array</code></td>
     <td>The schema attributes for inventory. This contains data type and attribute name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The alias name of the inventory type. The alias name is used for display purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the inventory type. Default inventory item type names start with Amazon Web Services. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate. (pattern: &lt;code&gt;^(AWS|Custom):.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The schema version for the inventory item. (pattern: &lt;code&gt;^(&#91;0-9&#93;&#123;1,6&#125;)(\.&#91;0-9&#93;&#123;1,6&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Return a list of inventory type names for the account, or return a list of attri
 
 ```sql
 SELECT
-Attributes,
-DisplayName,
-TypeName,
-Version
+attributes,
+display_name,
+type_name,
+version
 FROM aws.ssm.inventory_schemas
 WHERE region = '{{ region }}' -- required
 ;

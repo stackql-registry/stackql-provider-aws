@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrentRegionAvailability" /></td>
+    <td><CopyableCode code="current_region_availability" /></td>
     <td><code>string</code></td>
     <td>Specifies whether a security control is available in the current Amazon Web Services Region. (AVAILABLE, UNAVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomizableProperties" /></td>
+    <td><CopyableCode code="customizable_properties" /></td>
     <td><code>array</code></td>
     <td>Security control properties that you can customize. Currently, only parameter customization is supported for select controls. An empty array is returned for controls that don’t support custom properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a security control across standards. This typically summarizes how Security Hub CSPM evaluates the control and the conditions under which it produces a failed finding. This parameter doesn't reference a specific standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterDefinitions" /></td>
+    <td><CopyableCode code="parameter_definitions" /></td>
     <td><code>object</code></td>
     <td>An object that provides a security control parameter name, description, and the options for customizing it. This object is excluded for a control that doesn't support custom parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemediationUrl" /></td>
+    <td><CopyableCode code="remediation_url" /></td>
     <td><code>string</code></td>
     <td>A link to Security Hub CSPM documentation that explains how to remediate a failed finding for a security control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityControlId" /></td>
+    <td><CopyableCode code="security_control_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a security control across standards. Values for this field typically consist of an Amazon Web Services service name and a number (for example, APIGateway.3). This parameter differs from SecurityControlArn, which is a unique Amazon Resource Name (ARN) assigned to a control. The ARN references the security control ID (for example, arn:aws:securityhub:eu-central-1:123456789012:security-control/APIGateway.3). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SeverityRating" /></td>
+    <td><CopyableCode code="severity_rating" /></td>
     <td><code>string</code></td>
     <td>The severity of a security control. For more information about how Security Hub CSPM determines control severity, see Assigning severity to control findings in the Security Hub CSPM User Guide. (LOW, MEDIUM, HIGH, CRITICAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of a security control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrentRegionAvailability" /></td>
+    <td><CopyableCode code="current_region_availability" /></td>
     <td><code>string</code></td>
     <td>Specifies whether a security control is available in the current Amazon Web Services Region. (AVAILABLE, UNAVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomizableProperties" /></td>
+    <td><CopyableCode code="customizable_properties" /></td>
     <td><code>array</code></td>
     <td>Security control properties that you can customize. Currently, only parameter customization is supported for select controls. An empty array is returned for controls that don’t support custom properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a security control across standards. This typically summarizes how Security Hub CSPM evaluates the control and the conditions under which it produces a failed finding. This parameter doesn't reference a specific standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterDefinitions" /></td>
+    <td><CopyableCode code="parameter_definitions" /></td>
     <td><code>object</code></td>
     <td>An object that provides a security control parameter name, description, and the options for customizing it. This object is excluded for a control that doesn't support custom parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemediationUrl" /></td>
+    <td><CopyableCode code="remediation_url" /></td>
     <td><code>string</code></td>
     <td>A link to Security Hub CSPM documentation that explains how to remediate a failed finding for a security control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityControlId" /></td>
+    <td><CopyableCode code="security_control_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a security control across standards. Values for this field typically consist of an Amazon Web Services service name and a number (for example, APIGateway.3). This parameter differs from SecurityControlArn, which is a unique Amazon Resource Name (ARN) assigned to a control. The ARN references the security control ID (for example, arn:aws:securityhub:eu-central-1:123456789012:security-control/APIGateway.3). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SeverityRating" /></td>
+    <td><CopyableCode code="severity_rating" /></td>
     <td><code>string</code></td>
     <td>The severity of a security control. For more information about how Security Hub CSPM determines control severity, see Assigning severity to control findings in the Security Hub CSPM User Guide. (LOW, MEDIUM, HIGH, CRITICAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of a security control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -237,14 +237,14 @@ Retrieves the definition of a security control. The definition includes the cont
 
 ```sql
 SELECT
-CurrentRegionAvailability,
-CustomizableProperties,
-Description,
-ParameterDefinitions,
-RemediationUrl,
-SecurityControlId,
-SeverityRating,
-Title
+current_region_availability,
+customizable_properties,
+description,
+parameter_definitions,
+remediation_url,
+security_control_id,
+severity_rating,
+title
 FROM aws.securityhub.security_control_definitions
 WHERE SecurityControlId = '{{ SecurityControlId }}' -- required
 AND region = '{{ region }}' -- required
@@ -257,14 +257,14 @@ Lists all of the security controls that apply to a specified standard.
 
 ```sql
 SELECT
-CurrentRegionAvailability,
-CustomizableProperties,
-Description,
-ParameterDefinitions,
-RemediationUrl,
-SecurityControlId,
-SeverityRating,
-Title
+current_region_availability,
+customizable_properties,
+description,
+parameter_definitions,
+remediation_url,
+security_control_id,
+severity_rating,
+title
 FROM aws.securityhub.security_control_definitions
 WHERE region = '{{ region }}' -- required
 AND StandardsArn = '{{ StandardsArn }}'

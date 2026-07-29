@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Describes when the replication configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>An array of destination objects. Only one destination object is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalSourceFileSystemArn" /></td>
+    <td><CopyableCode code="original_source_file_system_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the original source EFS file system in the replication configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceFileSystemArn" /></td>
+    <td><CopyableCode code="source_file_system_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the current source file system in the replication configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceFileSystemId" /></td>
+    <td><CopyableCode code="source_file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source Amazon EFS file system that is being replicated. (pattern: &lt;code&gt;^(arn:aws&#91;-a-z&#93;*:elasticfilesystem:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;8,40&#125;|fs-&#91;0-9a-f&#93;&#123;8,40&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceFileSystemOwnerId" /></td>
+    <td><CopyableCode code="source_file_system_owner_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Amazon Web Services account in which the source file system resides. (pattern: &lt;code&gt;^(\d&#123;12&#125;)|(\d&#123;4&#125;-\d&#123;4&#125;-\d&#123;4&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceFileSystemRegion" /></td>
+    <td><CopyableCode code="source_file_system_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region in which the source EFS file system is located. (pattern: &lt;code&gt;^&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#123;0,1&#125;&#91;0-9&#93;&#123;0,1&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -188,13 +188,13 @@ Retrieves the replication configuration for a specific file system. If a file sy
 
 ```sql
 SELECT
-CreationTime,
-Destinations,
-OriginalSourceFileSystemArn,
-SourceFileSystemArn,
-SourceFileSystemId,
-SourceFileSystemOwnerId,
-SourceFileSystemRegion
+creation_time,
+destinations,
+original_source_file_system_arn,
+source_file_system_arn,
+source_file_system_id,
+source_file_system_owner_id,
+source_file_system_region
 FROM aws.efs.replication_configurations
 WHERE region = '{{ region }}' -- required
 AND FileSystemId = '{{ FileSystemId }}'
@@ -230,13 +230,13 @@ SELECT
 '{{ source_file_system_id }}',
 '{{ region }}'
 RETURNING
-CreationTime,
-Destinations,
-OriginalSourceFileSystemArn,
-SourceFileSystemArn,
-SourceFileSystemId,
-SourceFileSystemOwnerId,
-SourceFileSystemRegion
+creation_time,
+destinations,
+original_source_file_system_arn,
+source_file_system_arn,
+source_file_system_id,
+source_file_system_owner_id,
+source_file_system_region
 ;
 ```
 </TabItem>

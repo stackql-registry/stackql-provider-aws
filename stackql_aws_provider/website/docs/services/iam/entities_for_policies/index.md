@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the group. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name (friendly name, not ARN) identifying the group.</td>
 </tr>
@@ -154,8 +154,8 @@ Lists all IAM users, groups, and roles that the specified managed policy is atta
 
 ```sql
 SELECT
-GroupId,
-GroupName
+group_id,
+group_name
 FROM aws.iam.entities_for_policies
 WHERE PolicyArn = '{{ PolicyArn }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CpuCredits" /></td>
+    <td><CopyableCode code="cpu_credits" /></td>
     <td><code>string</code></td>
     <td>The default credit option for CPU usage of the instance family. Valid values are standard and unlimited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceFamily" /></td>
+    <td><CopyableCode code="instance_family" /></td>
     <td><code>string</code></td>
     <td>The instance family.</td>
 </tr>
@@ -146,8 +146,8 @@ Describes the default credit option for CPU usage of a burstable performance ins
 
 ```sql
 SELECT
-CpuCredits,
-InstanceFamily
+cpu_credits,
+instance_family
 FROM aws.ec2.default_credit_specifications
 WHERE InstanceFamily = '{{ InstanceFamily }}' -- required
 AND region = '{{ region }}' -- required
@@ -180,8 +180,8 @@ AND CpuCredits = '{{ CpuCredits }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-CpuCredits,
-InstanceFamily;
+cpu_credits,
+instance_family;
 ```
 </TabItem>
 </Tabs>

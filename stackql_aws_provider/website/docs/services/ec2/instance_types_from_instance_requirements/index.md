@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The matching instance type.</td>
 </tr>
@@ -154,7 +154,7 @@ Returns a list of instance types with the specified instance attributes. You can
 
 ```sql
 SELECT
-InstanceType
+instance_type
 FROM aws.ec2.instance_types_from_instance_requirements
 WHERE ArchitectureType = '{{ ArchitectureType }}' -- required
 AND VirtualizationType = '{{ VirtualizationType }}' -- required

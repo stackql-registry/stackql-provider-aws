@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstanceArn" /></td>
+    <td><CopyableCode code="app_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the messaging instance. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which an AppInstance was created. In epoch milliseconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time an AppInstance was last updated. In epoch milliseconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>string</code></td>
     <td>The metadata of an AppInstance. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of an AppInstance. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u007E\u0085\u00A0-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstances" /></td>
+    <td><CopyableCode code="app_instances" /></td>
     <td><code>array</code></td>
     <td>The information for each AppInstance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API requests until the maximum number of AppInstances is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -208,11 +208,11 @@ Returns the full details of an AppInstance.
 
 ```sql
 SELECT
-AppInstanceArn,
-CreatedTimestamp,
-LastUpdatedTimestamp,
-Metadata,
-Name
+app_instance_arn,
+created_timestamp,
+last_updated_timestamp,
+metadata,
+name
 FROM aws.chime_sdk_identity.app_instances
 WHERE app_instance_arn = '{{ app_instance_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -225,8 +225,8 @@ Lists all Amazon Chime AppInstances created under a single AWS account.
 
 ```sql
 SELECT
-AppInstances,
-NextToken
+app_instances,
+next_token
 FROM aws.chime_sdk_identity.app_instances
 WHERE region = '{{ region }}' -- required
 AND `max-results` = '{{ max-results }}'
@@ -265,7 +265,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AppInstanceArn
+app_instance_arn
 ;
 ```
 </TabItem>
@@ -316,7 +316,7 @@ AND region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 AND Metadata = '{{ Metadata }}' --required
 RETURNING
-AppInstanceArn;
+app_instance_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the ResourceCatalog was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A free form description of the ResourceCatalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCatalogArn" /></td>
+    <td><CopyableCode code="resource_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ResourceCatalog. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:sagemaker-catalog/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCatalogName" /></td>
+    <td><CopyableCode code="resource_catalog_name" /></td>
     <td><code>string</code></td>
     <td>The name of the ResourceCatalog.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists Amazon SageMaker Catalogs based on given filters and orders. The maximum n
 
 ```sql
 SELECT
-CreationTime,
-Description,
-ResourceCatalogArn,
-ResourceCatalogName
+creation_time,
+description,
+resource_catalog_arn,
+resource_catalog_name
 FROM aws.sagemaker.resource_catalogs
 WHERE region = '{{ region }}' -- required
 ;

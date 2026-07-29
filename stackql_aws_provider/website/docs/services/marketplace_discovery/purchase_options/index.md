@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedEntities" /></td>
+    <td><CopyableCode code="associated_entities" /></td>
     <td><code>array</code></td>
     <td>The products, offers, and offer sets associated with this purchase option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableFromTime" /></td>
+    <td><CopyableCode code="available_from_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the purchase option became available to the buyer.</td>
 </tr>
@@ -70,27 +70,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the catalog that the purchase option belongs to. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the purchase option expires and is no longer available for procurement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="purchaseOptionId" /></td>
+    <td><CopyableCode code="purchase_option_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the purchase option. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="purchaseOptionName" /></td>
+    <td><CopyableCode code="purchase_option_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the purchase option. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="purchaseOptionType" /></td>
+    <td><CopyableCode code="purchase_option_type" /></td>
     <td><code>string</code></td>
     <td>The type of purchase option. Values are OFFER for a single-product offer or OFFERSET for a bundled offer set. (OFFER, OFFERSET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sellerOfRecord" /></td>
+    <td><CopyableCode code="seller_of_record" /></td>
     <td><code>object</code></td>
     <td>The entity responsible for selling the product under this purchase option.</td>
 </tr>
@@ -159,15 +159,15 @@ Returns the purchase options (offers and offer sets) available to the buyer. You
 
 ```sql
 SELECT
-associatedEntities,
-availableFromTime,
+associated_entities,
+available_from_time,
 badges,
 catalog,
-expirationTime,
-purchaseOptionId,
-purchaseOptionName,
-purchaseOptionType,
-sellerOfRecord
+expiration_time,
+purchase_option_id,
+purchase_option_name,
+purchase_option_type,
+seller_of_record
 FROM aws.marketplace_discovery.purchase_options
 WHERE region = '{{ region }}' -- required
 ;

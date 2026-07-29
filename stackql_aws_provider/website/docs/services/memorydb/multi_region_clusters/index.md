@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Clusters" /></td>
+    <td><CopyableCode code="clusters" /></td>
     <td><code>array</code></td>
     <td>The clusters in this multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the engine used by the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the engine used by the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegionClusterName" /></td>
+    <td><CopyableCode code="multi_region_cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegionParameterGroupName" /></td>
+    <td><CopyableCode code="multi_region_parameter_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the multi-Region parameter group associated with the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type used by the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfShards" /></td>
+    <td><CopyableCode code="number_of_shards" /></td>
     <td><code>integer</code></td>
     <td>The number of shards in the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the multi-Region cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TLSEnabled" /></td>
+    <td><CopyableCode code="tls_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indiciates if the multi-Region cluster is TLS enabled.</td>
 </tr>
@@ -190,17 +190,17 @@ Returns details about one or more multi-Region clusters.
 
 ```sql
 SELECT
-ARN,
-Clusters,
-Description,
-Engine,
-EngineVersion,
-MultiRegionClusterName,
-MultiRegionParameterGroupName,
-NodeType,
-NumberOfShards,
-Status,
-TLSEnabled
+arn,
+clusters,
+description,
+engine,
+engine_version,
+multi_region_cluster_name,
+multi_region_parameter_group_name,
+node_type,
+number_of_shards,
+status,
+tls_enabled
 FROM aws.memorydb.multi_region_clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,7 +247,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MultiRegionCluster
+multi_region_cluster
 ;
 ```
 </TabItem>
@@ -329,7 +329,7 @@ WHERE
 region = '{{ region }}' --required
 AND MultiRegionClusterName = '{{ MultiRegionClusterName }}' --required
 RETURNING
-MultiRegionCluster;
+multi_region_cluster;
 ```
 </TabItem>
 </Tabs>

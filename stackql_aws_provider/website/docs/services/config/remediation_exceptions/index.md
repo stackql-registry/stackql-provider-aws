@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemediationExceptions" /></td>
+    <td><CopyableCode code="remediation_exceptions" /></td>
     <td><code>array</code></td>
     <td>Returns a list of remediation exception objects.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the details of one or more remediation exceptions. A detailed view of a 
 
 ```sql
 SELECT
-NextToken,
-RemediationExceptions
+next_token,
+remediation_exceptions
 FROM aws.config.remediation_exceptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -172,7 +172,7 @@ region = '{{ region }}' --required
 AND ConfigRuleName = '{{ ConfigRuleName }}' --required
 AND ResourceKeys = '{{ ResourceKeys }}' --required
 RETURNING
-FailedBatches;
+failed_batches;
 ```
 </TabItem>
 </Tabs>

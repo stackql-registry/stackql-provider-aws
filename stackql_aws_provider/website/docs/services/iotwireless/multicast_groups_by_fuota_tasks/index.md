@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MulticastGroupList" /></td>
+    <td><CopyableCode code="multicast_group_list" /></td>
     <td><code>array</code></td>
     <td>List of multicast groups associated with a FUOTA task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>To retrieve the next set of results, the nextToken value from a previous response; otherwise null to receive the first set of results.</td>
 </tr>
@@ -139,8 +139,8 @@ List all multicast groups associated with a FUOTA task.
 
 ```sql
 SELECT
-MulticastGroupList,
-NextToken
+multicast_group_list,
+next_token
 FROM aws.iotwireless.multicast_groups_by_fuota_tasks
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ec2Configuration" /></td>
+    <td><CopyableCode code="ec_2_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies how the Amazon EC2 automated scan mode is currently configured for your environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ecrConfiguration" /></td>
+    <td><CopyableCode code="ecr_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies how the ECR automated re-scan duration is currently configured for your environment.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves setting configurations for Inspector scans.
 
 ```sql
 SELECT
-ec2Configuration,
-ecrConfiguration
+ec_2_configuration,
+ecr_configuration
 FROM aws.inspector2.configurations
 WHERE region = '{{ region }}' -- required
 ;

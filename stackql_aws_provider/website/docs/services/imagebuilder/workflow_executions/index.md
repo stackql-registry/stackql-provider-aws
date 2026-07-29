@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the specified runtime instance of the workflow finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageBuildVersionArn" /></td>
+    <td><CopyableCode code="image_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the image resource build version that the specified runtime instance of the workflow created. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):image/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The output message from the specified runtime instance of the workflow, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parallelGroup" /></td>
+    <td><CopyableCode code="parallel_group" /></td>
     <td><code>string</code></td>
     <td>Test workflows are defined within named runtime groups. The parallel group is a named group that contains one or more test workflows. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9-_+#&#93;&#123;0,99&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the specified runtime instance of the workflow started.</td>
 </tr>
@@ -86,22 +86,22 @@ The following fields are returned by `SELECT` queries:
     <td>The current runtime status for the specified runtime instance of the workflow. (PENDING, SKIPPED, RUNNING, COMPLETED, FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_COMPLETED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepCount" /></td>
+    <td><CopyableCode code="total_step_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of steps in the specified runtime instance of the workflow that ran. This number should equal the sum of the step counts for steps that succeeded, were skipped, and failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepsFailed" /></td>
+    <td><CopyableCode code="total_steps_failed" /></td>
     <td><code>integer</code></td>
     <td>A runtime count for the number of steps that failed in the specified runtime instance of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepsSkipped" /></td>
+    <td><CopyableCode code="total_steps_skipped" /></td>
     <td><code>integer</code></td>
     <td>A runtime count for the number of steps that were skipped in the specified runtime instance of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepsSucceeded" /></td>
+    <td><CopyableCode code="total_steps_succeeded" /></td>
     <td><code>integer</code></td>
     <td>A runtime count for the number of steps that ran successfully in the specified runtime instance of the workflow.</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of workflow that Image Builder ran for the specified runtime instance of the workflow. (BUILD, TEST, DISTRIBUTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowBuildVersionArn" /></td>
+    <td><CopyableCode code="workflow_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the build version for the Image Builder workflow resource that defines the specified runtime instance of the workflow. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):workflow/(build|test|distribution)/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionId" /></td>
+    <td><CopyableCode code="workflow_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier that Image Builder assigned to keep track of runtime details when it ran the workflow. (pattern: &lt;code&gt;^wf-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when this runtime instance of the workflow finished.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The runtime output message from the workflow, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parallelGroup" /></td>
+    <td><CopyableCode code="parallel_group" /></td>
     <td><code>string</code></td>
     <td>The name of the test group that included the test workflow resource at runtime. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9-_+#&#93;&#123;0,99&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates retry status for this runtime instance of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the runtime instance of this workflow started.</td>
 </tr>
@@ -165,22 +165,22 @@ The following fields are returned by `SELECT` queries:
     <td>The current runtime status for this workflow. (PENDING, SKIPPED, RUNNING, COMPLETED, FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_COMPLETED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepCount" /></td>
+    <td><CopyableCode code="total_step_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of steps in the workflow. This should equal the sum of the step counts for steps that succeeded, were skipped, and failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepsFailed" /></td>
+    <td><CopyableCode code="total_steps_failed" /></td>
     <td><code>integer</code></td>
     <td>A runtime count for the number of steps in the workflow that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepsSkipped" /></td>
+    <td><CopyableCode code="total_steps_skipped" /></td>
     <td><code>integer</code></td>
     <td>A runtime count for the number of steps in the workflow that were skipped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalStepsSucceeded" /></td>
+    <td><CopyableCode code="total_steps_succeeded" /></td>
     <td><code>integer</code></td>
     <td>A runtime count for the number of steps in the workflow that ran successfully.</td>
 </tr>
@@ -190,12 +190,12 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates what type of workflow that Image Builder ran for this runtime instance of the workflow. (BUILD, TEST, DISTRIBUTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowBuildVersionArn" /></td>
+    <td><CopyableCode code="workflow_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow resource build version that ran. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):workflow/(build|test|distribution)/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionId" /></td>
+    <td><CopyableCode code="workflow_execution_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier that Image Builder assigns to keep track of runtime resources each time it runs a workflow. (pattern: &lt;code&gt;^wf-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -277,20 +277,20 @@ Get the runtime information that was logged for a specific runtime instance of t
 
 ```sql
 SELECT
-endTime,
-imageBuildVersionArn,
+end_time,
+image_build_version_arn,
 message,
-parallelGroup,
-requestId,
-startTime,
+parallel_group,
+request_id,
+start_time,
 status,
-totalStepCount,
-totalStepsFailed,
-totalStepsSkipped,
-totalStepsSucceeded,
+total_step_count,
+total_steps_failed,
+total_steps_skipped,
+total_steps_succeeded,
 type_,
-workflowBuildVersionArn,
-workflowExecutionId
+workflow_build_version_arn,
+workflow_execution_id
 FROM aws.imagebuilder.workflow_executions
 WHERE workflowExecutionId = '{{ workflowExecutionId }}' -- required
 AND region = '{{ region }}' -- required
@@ -303,19 +303,19 @@ Returns a list of workflow runtime instance metadata objects for a specific imag
 
 ```sql
 SELECT
-endTime,
+end_time,
 message,
-parallelGroup,
+parallel_group,
 retried,
-startTime,
+start_time,
 status,
-totalStepCount,
-totalStepsFailed,
-totalStepsSkipped,
-totalStepsSucceeded,
+total_step_count,
+total_steps_failed,
+total_steps_skipped,
+total_steps_succeeded,
 type_,
-workflowBuildVersionArn,
-workflowExecutionId
+workflow_build_version_arn,
+workflow_execution_id
 FROM aws.imagebuilder.workflow_executions
 WHERE region = '{{ region }}' -- required
 ;

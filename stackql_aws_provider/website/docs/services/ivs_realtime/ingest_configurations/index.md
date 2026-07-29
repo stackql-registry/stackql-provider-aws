@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>Application-provided attributes to to store in the IngestConfiguration and attach to a stage. Map keys and values can contain UTF-8 encoded text. The maximum length of this field is 1 KB total. This field is exposed to all stage participants and should not be used for personally identifying, confidential, or sensitive information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestProtocol" /></td>
+    <td><CopyableCode code="ingest_protocol" /></td>
     <td><code>string</code></td>
     <td>Type of ingest protocol that the user employs for broadcasting. (RTMP, RTMPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="participantId" /></td>
+    <td><CopyableCode code="participant_id" /></td>
     <td><code>string</code></td>
     <td>ID of the participant within the stage. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redundantIngest" /></td>
+    <td><CopyableCode code="redundant_ingest" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether redundant ingest is enabled for the ingest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redundantIngestCredentials" /></td>
+    <td><CopyableCode code="redundant_ingest_credentials" /></td>
     <td><code>array</code></td>
     <td>A list of redundant ingest credentials, present only when redundantIngest is set to true. See Redundant Ingest in IVS RTMP Publishing for details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageArn" /></td>
+    <td><CopyableCode code="stage_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the stage with which the IngestConfiguration is associated. (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stage/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>State of the ingest configuration. It is ACTIVE if a publisher currently is publishing to the stage associated with the ingest configuration. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamKey" /></td>
+    <td><CopyableCode code="stream_key" /></td>
     <td><code>string</code></td>
     <td>Ingest-key value for the RTMP(S) protocol. (pattern: &lt;code&gt;rt_&#91;0-9&#93;+_&#91;a-z0-9-&#93;+_&#91;a-zA-Z0-9-&#93;+_.+&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags attached to the resource. Array of maps, each of the form string:string (key:value). See Best practices and strategies in Tagging AWS Resources and Tag Editor for details, including restrictions that apply to tags and "Tag naming limits and requirements"; Amazon IVS has no constraints on tags beyond what is documented there.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>Customer-assigned name to help identify the participant using the IngestConfiguration; this can be used to link a participant to a user in the customer’s own systems. This can be any UTF-8 encoded text. This field is exposed to all stage participants and should not be used for personally identifying, confidential, or sensitive information.</td>
 </tr>
@@ -135,22 +135,22 @@ The following fields are returned by `SELECT` queries:
     <td>Ingest configuration ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:ingest-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestProtocol" /></td>
+    <td><CopyableCode code="ingest_protocol" /></td>
     <td><code>string</code></td>
     <td>Type of ingest protocol that the user employs for broadcasting. (RTMP, RTMPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="participantId" /></td>
+    <td><CopyableCode code="participant_id" /></td>
     <td><code>string</code></td>
     <td>ID of the participant within the stage. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redundantIngest" /></td>
+    <td><CopyableCode code="redundant_ingest" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether redundant ingest is enabled for the ingest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageArn" /></td>
+    <td><CopyableCode code="stage_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the stage with which the IngestConfiguration is associated. (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stage/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>State of the ingest configuration. It is ACTIVE if a publisher currently is publishing to the stage associated with the ingest configuration. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>Customer-assigned name to help identify the participant using the IngestConfiguration; this can be used to link a participant to a user in the customer’s own systems. This can be any UTF-8 encoded text. This field is exposed to all stage participants and should not be used for personally identifying, confidential, or sensitive information.</td>
 </tr>
@@ -261,15 +261,15 @@ SELECT
 name,
 arn,
 attributes,
-ingestProtocol,
-participantId,
-redundantIngest,
-redundantIngestCredentials,
-stageArn,
+ingest_protocol,
+participant_id,
+redundant_ingest,
+redundant_ingest_credentials,
+stage_arn,
 state,
-streamKey,
+stream_key,
 tags,
-userId
+user_id
 FROM aws.ivs_realtime.ingest_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,12 +283,12 @@ Lists all IngestConfigurations in your account, in the AWS region where the API 
 SELECT
 name,
 arn,
-ingestProtocol,
-participantId,
-redundantIngest,
-stageArn,
+ingest_protocol,
+participant_id,
+redundant_ingest,
+stage_arn,
 state,
-userId
+user_id
 FROM aws.ivs_realtime.ingest_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -333,7 +333,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-ingestConfiguration
+ingest_configuration
 ;
 ```
 </TabItem>
@@ -390,7 +390,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-ingestConfiguration;
+ingest_configuration;
 ```
 </TabItem>
 </Tabs>

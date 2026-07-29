@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BudgetName" /></td>
+    <td><CopyableCode code="budget_name" /></td>
     <td><code>string</code></td>
     <td>A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notifications" /></td>
+    <td><CopyableCode code="notifications" /></td>
     <td><code>array</code></td>
     <td>A list of notifications.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the budget names and notifications that are associated with an account.
 
 ```sql
 SELECT
-BudgetName,
-Notifications
+budget_name,
+notifications
 FROM aws.budgets.budget_notifications_for_accounts
 WHERE region = '{{ region }}' -- required
 ;

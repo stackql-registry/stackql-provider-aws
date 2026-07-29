@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the commitment. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyPayment" /></td>
+    <td><CopyableCode code="monthly_payment" /></td>
     <td><code>object</code></td>
     <td>The monthly payment amount for this commitment, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offeringId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the specific offering associated with this commitment. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentOption" /></td>
+    <td><CopyableCode code="payment_option" /></td>
     <td><code>string</code></td>
     <td>The payment option chosen for this commitment (e.g., All Upfront, Partial Upfront, No Upfront).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="purchaseAgreementType" /></td>
+    <td><CopyableCode code="purchase_agreement_type" /></td>
     <td><code>string</code></td>
     <td>The type of purchase agreement (e.g., Reserved Instance, Savings Plan). (SAVINGS_PLANS, RESERVED_INSTANCE)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services region associated with this commitment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="termLength" /></td>
+    <td><CopyableCode code="term_length" /></td>
     <td><code>string</code></td>
     <td>The length of the commitment term.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upfrontPayment" /></td>
+    <td><CopyableCode code="upfront_payment" /></td>
     <td><code>object</code></td>
     <td>The upfront payment amount for this commitment, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageAccountId" /></td>
+    <td><CopyableCode code="usage_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with this commitment. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -160,14 +160,14 @@ Lists the commitments associated with a bill estimate.
 ```sql
 SELECT
 id,
-monthlyPayment,
-offeringId,
-paymentOption,
-purchaseAgreementType,
+monthly_payment,
+offering_id,
+payment_option,
+purchase_agreement_type,
 region,
-termLength,
-upfrontPayment,
-usageAccountId
+term_length,
+upfront_payment,
+usage_account_id
 FROM aws.bcm_pricing_calculator.bill_estimate_commitments
 WHERE region = '{{ region }}' -- required
 ;

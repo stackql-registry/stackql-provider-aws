@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Date" /></td>
+    <td><CopyableCode code="date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The text of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceName" /></td>
+    <td><CopyableCode code="source_name" /></td>
     <td><code>string</code></td>
     <td>The name for the source of the event. For example, if the event occurred at the cluster level, the identifier would be the name of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the origin of this event - a cluster, a parameter group, a security group, etc. (node, parameter-group, subnet-group, cluster, user, acl)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns events related to clusters, security groups, and parameter groups. You c
 
 ```sql
 SELECT
-Date,
-Message,
-SourceName,
-SourceType
+date,
+message,
+source_name,
+source_type
 FROM aws.memorydb.events
 WHERE region = '{{ region }}' -- required
 ;

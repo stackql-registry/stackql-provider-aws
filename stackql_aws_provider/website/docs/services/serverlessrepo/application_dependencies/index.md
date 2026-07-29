@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the nested application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SemanticVersion" /></td>
+    <td><CopyableCode code="semantic_version" /></td>
     <td><code>string</code></td>
     <td>The semantic version of the nested application.</td>
 </tr>
@@ -144,8 +144,8 @@ Retrieves the list of applications nested in the containing application.
 
 ```sql
 SELECT
-ApplicationId,
-SemanticVersion
+application_id,
+semantic_version
 FROM aws.serverlessrepo.application_dependencies
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

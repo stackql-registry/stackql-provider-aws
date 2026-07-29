@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DevEndpoints" /></td>
+    <td><CopyableCode code="dev_endpoints" /></td>
     <td><code>array</code></td>
     <td>A list of DevEndpoint definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DevEndpointsNotFound" /></td>
+    <td><CopyableCode code="dev_endpoints_not_found" /></td>
     <td><code>array</code></td>
     <td>A list of DevEndpoints not found.</td>
 </tr>
@@ -76,127 +76,127 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arguments" /></td>
+    <td><CopyableCode code="arguments" /></td>
     <td><code>object</code></td>
     <td>A map of arguments used to configure the DevEndpoint. Valid arguments are: "--enable-glue-datacatalog": "" You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Availability Zone where this DevEndpoint is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The point in time at which this DevEndpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtraJarsS3Path" /></td>
+    <td><CopyableCode code="extra_jars_s3_path" /></td>
     <td><code>string</code></td>
     <td>The path to one or more Java .jar files in an S3 bucket that should be loaded in your DevEndpoint. You can only use pure Java/Scala libraries with a DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtraPythonLibsS3Path" /></td>
+    <td><CopyableCode code="extra_python_libs_s3_path" /></td>
     <td><code>string</code></td>
     <td>The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your DevEndpoint. Multiple values must be complete paths separated by a comma. You can only use pure Python libraries with a DevEndpoint. Libraries that rely on C extensions, such as the pandas Python data analysis library, are not currently supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for a current failure in this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlueVersion" /></td>
+    <td><CopyableCode code="glue_version" /></td>
     <td><code>string</code></td>
     <td>Glue version determines the versions of Apache Spark and Python that Glue supports. The Python version indicates the version supported for running your ETL scripts on development endpoints. For more information about the available Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide. Development endpoints that are created without specifying a Glue version default to Glue 0.9. You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2. (pattern: &lt;code&gt;^(\w+\.)+\w+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The point in time at which this DevEndpoint was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateStatus" /></td>
+    <td><CopyableCode code="last_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfNodes" /></td>
+    <td><CopyableCode code="number_of_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of Glue Data Processing Units (DPUs) allocated to this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of workers of a defined workerType that are allocated to the development endpoint. The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateAddress" /></td>
+    <td><CopyableCode code="private_address" /></td>
     <td><code>string</code></td>
     <td>A private IP address to access the DevEndpoint within a VPC if the DevEndpoint is created within one. The PrivateAddress field is present only when you create the DevEndpoint within your VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAddress" /></td>
+    <td><CopyableCode code="public_address" /></td>
     <td><code>string</code></td>
     <td>The public IP address used by this DevEndpoint. The PublicAddress field is present only when you create a non-virtual private cloud (VPC) DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKey" /></td>
+    <td><CopyableCode code="public_key" /></td>
     <td><code>string</code></td>
     <td>The public key to be used by this DevEndpoint for authentication. This attribute is provided for backward compatibility because the recommended attribute to use is public keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKeys" /></td>
+    <td><CopyableCode code="public_keys" /></td>
     <td><code>array</code></td>
     <td>A list of public keys to be used by the DevEndpoints for authentication. Using this attribute is preferred over a single public key because the public keys allow you to have a different private key per client. If you previously created an endpoint with a public key, you must remove that key to be able to set a list of public keys. Call the UpdateDevEndpoint API operation with the public key content in the deletePublicKeys attribute, and the list of new keys in the addPublicKeys attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used in this DevEndpoint. (pattern: &lt;code&gt;arn:aws:iam::\d&#123;12&#125;:role/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>The name of the SecurityConfiguration structure to be used with this DevEndpoint. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>A list of security group identifiers used in this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The subnet ID for this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC) used by this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerType" /></td>
+    <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard, G.1X, or G.2X. For the Standard worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2 executors per worker. For the G.1X worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs. For the G.2X worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs. Known issue: when a development endpoint is created with the G.2X WorkerType configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB disk. (Standard, G.1X, G.2X, G.025X, G.4X, G.8X, Z.2X)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="YarnEndpointAddress" /></td>
+    <td><CopyableCode code="yarn_endpoint_address" /></td>
     <td><code>string</code></td>
     <td>The YARN endpoint address used by this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZeppelinRemoteSparkInterpreterPort" /></td>
+    <td><CopyableCode code="zeppelin_remote_spark_interpreter_port" /></td>
     <td><code>integer</code></td>
     <td>The Apache Zeppelin port for the remote Apache Spark interpreter.</td>
 </tr>
@@ -215,127 +215,127 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arguments" /></td>
+    <td><CopyableCode code="arguments" /></td>
     <td><code>object</code></td>
     <td>A map of arguments used to configure the DevEndpoint. Valid arguments are: "--enable-glue-datacatalog": "" You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Availability Zone where this DevEndpoint is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The point in time at which this DevEndpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtraJarsS3Path" /></td>
+    <td><CopyableCode code="extra_jars_s3_path" /></td>
     <td><code>string</code></td>
     <td>The path to one or more Java .jar files in an S3 bucket that should be loaded in your DevEndpoint. You can only use pure Java/Scala libraries with a DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtraPythonLibsS3Path" /></td>
+    <td><CopyableCode code="extra_python_libs_s3_path" /></td>
     <td><code>string</code></td>
     <td>The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your DevEndpoint. Multiple values must be complete paths separated by a comma. You can only use pure Python libraries with a DevEndpoint. Libraries that rely on C extensions, such as the pandas Python data analysis library, are not currently supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for a current failure in this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlueVersion" /></td>
+    <td><CopyableCode code="glue_version" /></td>
     <td><code>string</code></td>
     <td>Glue version determines the versions of Apache Spark and Python that Glue supports. The Python version indicates the version supported for running your ETL scripts on development endpoints. For more information about the available Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide. Development endpoints that are created without specifying a Glue version default to Glue 0.9. You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2. (pattern: &lt;code&gt;^(\w+\.)+\w+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The point in time at which this DevEndpoint was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateStatus" /></td>
+    <td><CopyableCode code="last_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfNodes" /></td>
+    <td><CopyableCode code="number_of_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of Glue Data Processing Units (DPUs) allocated to this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of workers of a defined workerType that are allocated to the development endpoint. The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateAddress" /></td>
+    <td><CopyableCode code="private_address" /></td>
     <td><code>string</code></td>
     <td>A private IP address to access the DevEndpoint within a VPC if the DevEndpoint is created within one. The PrivateAddress field is present only when you create the DevEndpoint within your VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAddress" /></td>
+    <td><CopyableCode code="public_address" /></td>
     <td><code>string</code></td>
     <td>The public IP address used by this DevEndpoint. The PublicAddress field is present only when you create a non-virtual private cloud (VPC) DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKey" /></td>
+    <td><CopyableCode code="public_key" /></td>
     <td><code>string</code></td>
     <td>The public key to be used by this DevEndpoint for authentication. This attribute is provided for backward compatibility because the recommended attribute to use is public keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKeys" /></td>
+    <td><CopyableCode code="public_keys" /></td>
     <td><code>array</code></td>
     <td>A list of public keys to be used by the DevEndpoints for authentication. Using this attribute is preferred over a single public key because the public keys allow you to have a different private key per client. If you previously created an endpoint with a public key, you must remove that key to be able to set a list of public keys. Call the UpdateDevEndpoint API operation with the public key content in the deletePublicKeys attribute, and the list of new keys in the addPublicKeys attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used in this DevEndpoint. (pattern: &lt;code&gt;arn:aws:iam::\d&#123;12&#125;:role/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>The name of the SecurityConfiguration structure to be used with this DevEndpoint. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>A list of security group identifiers used in this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The subnet ID for this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC) used by this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerType" /></td>
+    <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard, G.1X, or G.2X. For the Standard worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2 executors per worker. For the G.1X worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs. For the G.2X worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs. Known issue: when a development endpoint is created with the G.2X WorkerType configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB disk. (Standard, G.1X, G.2X, G.025X, G.4X, G.8X, Z.2X)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="YarnEndpointAddress" /></td>
+    <td><CopyableCode code="yarn_endpoint_address" /></td>
     <td><code>string</code></td>
     <td>The YARN endpoint address used by this DevEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZeppelinRemoteSparkInterpreterPort" /></td>
+    <td><CopyableCode code="zeppelin_remote_spark_interpreter_port" /></td>
     <td><code>integer</code></td>
     <td>The Apache Zeppelin port for the remote Apache Spark interpreter.</td>
 </tr>
@@ -448,8 +448,8 @@ Returns a list of resource metadata for a given list of development endpoint nam
 
 ```sql
 SELECT
-DevEndpoints,
-DevEndpointsNotFound
+dev_endpoints,
+dev_endpoints_not_found
 FROM aws.glue.dev_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -461,31 +461,31 @@ Retrieves information about a specified development endpoint. When you create a 
 
 ```sql
 SELECT
-Arguments,
-AvailabilityZone,
-CreatedTimestamp,
-EndpointName,
-ExtraJarsS3Path,
-ExtraPythonLibsS3Path,
-FailureReason,
-GlueVersion,
-LastModifiedTimestamp,
-LastUpdateStatus,
-NumberOfNodes,
-NumberOfWorkers,
-PrivateAddress,
-PublicAddress,
-PublicKey,
-PublicKeys,
-RoleArn,
-SecurityConfiguration,
-SecurityGroupIds,
-Status,
-SubnetId,
-VpcId,
-WorkerType,
-YarnEndpointAddress,
-ZeppelinRemoteSparkInterpreterPort
+arguments,
+availability_zone,
+created_timestamp,
+endpoint_name,
+extra_jars_s3_path,
+extra_python_libs_s3_path,
+failure_reason,
+glue_version,
+last_modified_timestamp,
+last_update_status,
+number_of_nodes,
+number_of_workers,
+private_address,
+public_address,
+public_key,
+public_keys,
+role_arn,
+security_configuration,
+security_group_ids,
+status,
+subnet_id,
+vpc_id,
+worker_type,
+yarn_endpoint_address,
+zeppelin_remote_spark_interpreter_port
 FROM aws.glue.dev_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -497,31 +497,31 @@ Retrieves all the development endpoints in this Amazon Web Services account. Whe
 
 ```sql
 SELECT
-Arguments,
-AvailabilityZone,
-CreatedTimestamp,
-EndpointName,
-ExtraJarsS3Path,
-ExtraPythonLibsS3Path,
-FailureReason,
-GlueVersion,
-LastModifiedTimestamp,
-LastUpdateStatus,
-NumberOfNodes,
-NumberOfWorkers,
-PrivateAddress,
-PublicAddress,
-PublicKey,
-PublicKeys,
-RoleArn,
-SecurityConfiguration,
-SecurityGroupIds,
-Status,
-SubnetId,
-VpcId,
-WorkerType,
-YarnEndpointAddress,
-ZeppelinRemoteSparkInterpreterPort
+arguments,
+availability_zone,
+created_timestamp,
+endpoint_name,
+extra_jars_s3_path,
+extra_python_libs_s3_path,
+failure_reason,
+glue_version,
+last_modified_timestamp,
+last_update_status,
+number_of_nodes,
+number_of_workers,
+private_address,
+public_address,
+public_key,
+public_keys,
+role_arn,
+security_configuration,
+security_group_ids,
+status,
+subnet_id,
+vpc_id,
+worker_type,
+yarn_endpoint_address,
+zeppelin_remote_spark_interpreter_port
 FROM aws.glue.dev_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -580,25 +580,25 @@ SELECT
 '{{ Arguments }}',
 '{{ region }}'
 RETURNING
-Arguments,
-AvailabilityZone,
-CreatedTimestamp,
-EndpointName,
-ExtraJarsS3Path,
-ExtraPythonLibsS3Path,
-FailureReason,
-GlueVersion,
-NumberOfNodes,
-NumberOfWorkers,
-RoleArn,
-SecurityConfiguration,
-SecurityGroupIds,
-Status,
-SubnetId,
-VpcId,
-WorkerType,
-YarnEndpointAddress,
-ZeppelinRemoteSparkInterpreterPort
+arguments,
+availability_zone,
+created_timestamp,
+endpoint_name,
+extra_jars_s3_path,
+extra_python_libs_s3_path,
+failure_reason,
+glue_version,
+number_of_nodes,
+number_of_workers,
+role_arn,
+security_configuration,
+security_group_ids,
+status,
+subnet_id,
+vpc_id,
+worker_type,
+yarn_endpoint_address,
+zeppelin_remote_spark_interpreter_port
 ;
 ```
 </TabItem>

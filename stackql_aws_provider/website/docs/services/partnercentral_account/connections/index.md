@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:partnercentral:&#91;a-z0-9\-&#93;*::catalog/&#91;a-zA-Z&#93;+/connection/pac-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier where the connection exists. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionTypes" /></td>
+    <td><CopyableCode code="connection_types" /></td>
     <td><code>object</code></td>
     <td>The list of connection types active between the partners.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the connection. (pattern: &lt;code&gt;pac-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtherParticipantAccountId" /></td>
+    <td><CopyableCode code="other_participant_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the other participant in the connection. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection was last updated.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:partnercentral:&#91;a-z0-9\-&#93;*::catalog/&#91;a-zA-Z&#93;+/connection/pac-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier where the connection exists. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionTypes" /></td>
+    <td><CopyableCode code="connection_types" /></td>
     <td><code>object</code></td>
     <td>A map of connection types and their summary information for this connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the connection. (pattern: &lt;code&gt;pac-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OtherParticipantAccountId" /></td>
+    <td><CopyableCode code="other_participant_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the other participant in the connection. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection was last updated.</td>
 </tr>
@@ -218,12 +218,12 @@ Retrieves detailed information about a specific connection between partners.
 
 ```sql
 SELECT
-Arn,
-Catalog,
-ConnectionTypes,
-Id,
-OtherParticipantAccountId,
-UpdatedAt
+arn,
+catalog,
+connection_types,
+id,
+other_participant_account_id,
+updated_at
 FROM aws.partnercentral_account.connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,12 +235,12 @@ Lists active connections for the partner account, with optional filtering by con
 
 ```sql
 SELECT
-Arn,
-Catalog,
-ConnectionTypes,
-Id,
-OtherParticipantAccountId,
-UpdatedAt
+arn,
+catalog,
+connection_types,
+id,
+other_participant_account_id,
+updated_at
 FROM aws.partnercentral_account.connections
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>string</code></td>
     <td>Container for information about a particular server-side encryption configuration rule.</td>
 </tr>
@@ -153,7 +153,7 @@ Returns the default encryption configuration for an Amazon S3 bucket. By default
 
 ```sql
 SELECT
-Rules
+rules
 FROM aws.s3.bucket_encryptions
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

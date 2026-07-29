@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contactPostPassDurationSeconds" /></td>
+    <td><CopyableCode code="contact_post_pass_duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>Amount of time, in seconds, after a contact ends that the Ground Station Dataflow Endpoint Group will be in a POSTPASS state. A Ground Station Dataflow Endpoint Group State Change event will be emitted when the Dataflow Endpoint Group enters and exits the POSTPASS state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contactPrePassDurationSeconds" /></td>
+    <td><CopyableCode code="contact_pre_pass_duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>Amount of time, in seconds, before a contact starts that the Ground Station Dataflow Endpoint Group will be in a PREPASS state. A Ground Station Dataflow Endpoint Group State Change event will be emitted when the Dataflow Endpoint Group enters and exits the PREPASS state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataflowEndpointGroupArn" /></td>
+    <td><CopyableCode code="dataflow_endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a dataflow endpoint group. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:dataflow-endpoint-group/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataflowEndpointGroupId" /></td>
+    <td><CopyableCode code="dataflow_endpoint_group_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a dataflow endpoint group. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointsDetails" /></td>
+    <td><CopyableCode code="endpoints_details" /></td>
     <td><code>array</code></td>
     <td>Details of a dataflow endpoint.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataflowEndpointGroupArn" /></td>
+    <td><CopyableCode code="dataflow_endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a dataflow endpoint group. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:dataflow-endpoint-group/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataflowEndpointGroupId" /></td>
+    <td><CopyableCode code="dataflow_endpoint_group_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a dataflow endpoint group. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -213,11 +213,11 @@ Returns the dataflow endpoint group.
 
 ```sql
 SELECT
-contactPostPassDurationSeconds,
-contactPrePassDurationSeconds,
-dataflowEndpointGroupArn,
-dataflowEndpointGroupId,
-endpointsDetails,
+contact_post_pass_duration_seconds,
+contact_pre_pass_duration_seconds,
+dataflow_endpoint_group_arn,
+dataflow_endpoint_group_id,
+endpoints_details,
 tags
 FROM aws.groundstation.dataflow_endpoint_groups
 WHERE dataflow_endpoint_group_id = '{{ dataflow_endpoint_group_id }}' -- required
@@ -231,8 +231,8 @@ Returns a list of DataflowEndpoint groups.
 
 ```sql
 SELECT
-dataflowEndpointGroupArn,
-dataflowEndpointGroupId
+dataflow_endpoint_group_arn,
+dataflow_endpoint_group_id
 FROM aws.groundstation.dataflow_endpoint_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -272,7 +272,7 @@ SELECT
 {{ contactPostPassDurationSeconds }},
 '{{ region }}'
 RETURNING
-dataflowEndpointGroupId
+dataflow_endpoint_group_id
 ;
 ```
 </TabItem>
@@ -295,7 +295,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-dataflowEndpointGroupId
+dataflow_endpoint_group_id
 ;
 ```
 </TabItem>

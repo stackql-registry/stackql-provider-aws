@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The descriptive name of the payment request. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement associated with this payment request. Use DescribeAgreement to retrieve full agreement details. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chargeAmount" /></td>
+    <td><CopyableCode code="charge_amount" /></td>
     <td><code>string</code></td>
     <td>The amount charged or to be charged to the buyer. (pattern: &lt;code&gt;&#91;0-9&#93;*(\.&#91;0-9&#93;&#123;0,8&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chargeId" /></td>
+    <td><CopyableCode code="charge_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the charge created after the payment request is approved. This field is only present for approved payment requests and follows the pattern ch-&#91;a-zA-Z0-9&#93;+. (pattern: &lt;code&gt;ch-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the payment request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the charge amount. (pattern: &lt;code&gt;&#91;A-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The detailed description of the payment request, if provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentRequestId" /></td>
+    <td><CopyableCode code="payment_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the payment request. (pattern: &lt;code&gt;pr-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the payment request. Possible values include: VALIDATING – The payment request is being validated against agreement terms. VALIDATION_FAILED – The payment request failed validation. PENDING_APPROVAL – The payment request is awaiting buyer action. APPROVED – The buyer has approved the payment request. REJECTED – The buyer has rejected the payment request. CANCELLED – The seller has cancelled the payment request. (VALIDATING, VALIDATION_FAILED, PENDING_APPROVAL, APPROVED, REJECTED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>An optional message providing additional context about the payment request status, such as a rejection reason or validation failure details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the payment request was last updated.</td>
 </tr>
@@ -125,32 +125,32 @@ The following fields are returned by `SELECT` queries:
     <td>The descriptive name of the payment request. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement associated with this payment request. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chargeAmount" /></td>
+    <td><CopyableCode code="charge_amount" /></td>
     <td><code>string</code></td>
     <td>The amount charged or to be charged to the buyer. (pattern: &lt;code&gt;&#91;0-9&#93;*(\.&#91;0-9&#93;&#123;0,8&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chargeId" /></td>
+    <td><CopyableCode code="charge_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the charge created after the payment request is approved. This field is only present for approved payment requests. (pattern: &lt;code&gt;ch-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the payment request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the charge amount. (pattern: &lt;code&gt;&#91;A-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentRequestId" /></td>
+    <td><CopyableCode code="payment_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the payment request. (pattern: &lt;code&gt;pr-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the payment request. Possible values include VALIDATING, VALIDATION_FAILED, PENDING_APPROVAL, APPROVED, REJECTED, and CANCELLED. (VALIDATING, VALIDATION_FAILED, PENDING_APPROVAL, APPROVED, REJECTED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the payment request was last updated.</td>
 </tr>
@@ -238,16 +238,16 @@ Retrieves detailed information about a specific payment request. Both sellers (p
 ```sql
 SELECT
 name,
-agreementId,
-chargeAmount,
-chargeId,
-createdAt,
-currencyCode,
+agreement_id,
+charge_amount,
+charge_id,
+created_at,
+currency_code,
 description,
-paymentRequestId,
+payment_request_id,
 status,
-statusMessage,
-updatedAt
+status_message,
+updated_at
 FROM aws.marketplace_agreement.agreement_payment_requests
 WHERE region = '{{ region }}' -- required
 ;
@@ -260,14 +260,14 @@ Lists payment requests available to you as a seller or buyer. Both sellers (prop
 ```sql
 SELECT
 name,
-agreementId,
-chargeAmount,
-chargeId,
-createdAt,
-currencyCode,
-paymentRequestId,
+agreement_id,
+charge_amount,
+charge_id,
+created_at,
+currency_code,
+payment_request_id,
 status,
-updatedAt
+updated_at
 FROM aws.marketplace_agreement.agreement_payment_requests
 WHERE region = '{{ region }}' -- required
 ;

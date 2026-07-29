@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The platform of the device (for example, ANDROID or IOS). (ANDROID, IOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recurringCharges" /></td>
+    <td><CopyableCode code="recurring_charges" /></td>
     <td><code>array</code></td>
     <td>Specifies whether there are recurring charges for the offering.</td>
 </tr>
@@ -156,7 +156,7 @@ SELECT
 id,
 description,
 platform,
-recurringCharges,
+recurring_charges,
 type_
 FROM aws.devicefarm.offerings
 WHERE region = '{{ region }}' -- required

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateBody" /></td>
+    <td><CopyableCode code="certificate_body" /></td>
     <td><code>string</code></td>
     <td>The contents of the signing certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateId" /></td>
+    <td><CopyableCode code="certificate_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the signing certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the signing certificate. Active means that the key is valid for API calls, while Inactive means it is not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UploadDate" /></td>
+    <td><CopyableCode code="upload_date" /></td>
     <td><code>string</code></td>
     <td>The date when the signing certificate was uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user the signing certificate is associated with.</td>
 </tr>
@@ -178,11 +178,11 @@ Returns information about the signing certificates associated with the specified
 
 ```sql
 SELECT
-CertificateBody,
-CertificateId,
-Status,
-UploadDate,
-UserName
+certificate_body,
+certificate_id,
+status,
+upload_date,
+user_name
 FROM aws.iam.signing_certificates
 WHERE region = '{{ region }}' -- required
 AND UserName = '{{ UserName }}'

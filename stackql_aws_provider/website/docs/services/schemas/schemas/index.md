@@ -52,47 +52,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The source of the schema definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that schema was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the schema</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionCreatedDate" /></td>
+    <td><CopyableCode code="version_created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the schema version was created.</td>
 </tr>
@@ -111,22 +111,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RegistryName" /></td>
+    <td><CopyableCode code="registry_name" /></td>
     <td><code>string</code></td>
     <td>The name of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersions" /></td>
+    <td><CopyableCode code="schema_versions" /></td>
     <td><code>array</code></td>
     <td>An array of schema version summaries.</td>
 </tr>
@@ -145,27 +145,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that schema was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionCount" /></td>
+    <td><CopyableCode code="version_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of versions available for the schema.</td>
 </tr>
@@ -306,15 +306,15 @@ Retrieve the schema definition.
 
 ```sql
 SELECT
-Content,
-Description,
-LastModified,
-SchemaArn,
-SchemaName,
-SchemaVersion,
-Tags,
-Type,
-VersionCreatedDate
+content,
+description,
+last_modified,
+schema_arn,
+schema_name,
+schema_version,
+tags,
+type,
+version_created_date
 FROM aws.schemas.schemas
 WHERE registry_name = '{{ registry_name }}' -- required
 AND schema_name = '{{ schema_name }}' -- required
@@ -329,10 +329,10 @@ Search the schemas
 
 ```sql
 SELECT
-RegistryName,
-SchemaArn,
-SchemaName,
-SchemaVersions
+registry_name,
+schema_arn,
+schema_name,
+schema_versions
 FROM aws.schemas.schemas
 WHERE keywords = '{{ keywords }}' -- required
 AND registry_name = '{{ registry_name }}' -- required
@@ -348,11 +348,11 @@ List the schemas.
 
 ```sql
 SELECT
-LastModified,
-SchemaArn,
-SchemaName,
-Tags,
-VersionCount
+last_modified,
+schema_arn,
+schema_name,
+tags,
+version_count
 FROM aws.schemas.schemas
 WHERE registry_name = '{{ registry_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -397,14 +397,14 @@ SELECT
 '{{ schema_name }}',
 '{{ region }}'
 RETURNING
-Description,
-LastModified,
-SchemaArn,
-SchemaName,
-SchemaVersion,
-Tags,
-Type,
-VersionCreatedDate
+description,
+last_modified,
+schema_arn,
+schema_name,
+schema_version,
+tags,
+type,
+version_created_date
 ;
 ```
 </TabItem>
@@ -463,14 +463,14 @@ registry_name = '{{ registry_name }}' --required
 AND schema_name = '{{ schema_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Description,
-LastModified,
-SchemaArn,
-SchemaName,
-SchemaVersion,
-Tags,
-Type,
-VersionCreatedDate;
+description,
+last_modified,
+schema_arn,
+schema_name,
+schema_version,
+tags,
+type,
+version_created_date;
 ```
 </TabItem>
 </Tabs>

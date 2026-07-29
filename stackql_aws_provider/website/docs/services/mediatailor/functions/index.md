@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomOutputConfiguration" /></td>
+    <td><CopyableCode code="custom_output_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a CUSTOM_OUTPUT function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionId" /></td>
+    <td><CopyableCode code="function_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionType" /></td>
+    <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
     <td>The type of the function. (HTTP_REQUEST, CUSTOM_OUTPUT, SEQUENTIAL_EXECUTOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpRequestConfiguration" /></td>
+    <td><CopyableCode code="http_request_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for an HTTP_REQUEST function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SequentialExecutorConfiguration" /></td>
+    <td><CopyableCode code="sequential_executor_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a SEQUENTIAL_EXECUTOR function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the function. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomOutputConfiguration" /></td>
+    <td><CopyableCode code="custom_output_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a CUSTOM_OUTPUT function. MediaTailor evaluates the output expressions against the current session state and commits the results as output bindings. CUSTOM_OUTPUT functions do not make external calls. For more information, see CUSTOM_OUTPUT in the MediaTailor User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionId" /></td>
+    <td><CopyableCode code="function_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionType" /></td>
+    <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
     <td>-- Define Enums (HTTP_REQUEST, CUSTOM_OUTPUT, SEQUENTIAL_EXECUTOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpRequestConfiguration" /></td>
+    <td><CopyableCode code="http_request_configuration" /></td>
     <td><code>object</code></td>
     <td>-- Function Configuration DataStructure</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SequentialExecutorConfiguration" /></td>
+    <td><CopyableCode code="sequential_executor_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a SEQUENTIAL_EXECUTOR function. A SEQUENTIAL_EXECUTOR runs a sequence of child functions in order, passing data between steps through temporary data. For more information, see SEQUENTIAL_EXECUTOR in the MediaTailor User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the function. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -246,14 +246,14 @@ Retrieves the configuration and metadata for a function. For more information ab
 
 ```sql
 SELECT
-Arn,
-CustomOutputConfiguration,
-Description,
-FunctionId,
-FunctionType,
-HttpRequestConfiguration,
-SequentialExecutorConfiguration,
-Tags
+arn,
+custom_output_configuration,
+description,
+function_id,
+function_type,
+http_request_configuration,
+sequential_executor_configuration,
+tags
 FROM aws.mediatailor.functions
 WHERE function_id = '{{ function_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,14 +266,14 @@ Retrieves all functions associated with your AWS account in the current Region. 
 
 ```sql
 SELECT
-Arn,
-CustomOutputConfiguration,
-Description,
-FunctionId,
-FunctionType,
-HttpRequestConfiguration,
-SequentialExecutorConfiguration,
-Tags
+arn,
+custom_output_configuration,
+description,
+function_id,
+function_type,
+http_request_configuration,
+sequential_executor_configuration,
+tags
 FROM aws.mediatailor.functions
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -310,14 +310,14 @@ function_id = '{{ function_id }}' --required
 AND region = '{{ region }}' --required
 AND FunctionType = '{{ FunctionType }}' --required
 RETURNING
-Arn,
-CustomOutputConfiguration,
-Description,
-FunctionId,
-FunctionType,
-HttpRequestConfiguration,
-SequentialExecutorConfiguration,
-Tags;
+arn,
+custom_output_configuration,
+description,
+function_id,
+function_type,
+http_request_configuration,
+sequential_executor_configuration,
+tags;
 ```
 </TabItem>
 </Tabs>

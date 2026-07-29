@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the template. (pattern: &lt;code&gt;.*&#91;\S&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp at which the resource was created.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp at which the resource was created or last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="layoutConfiguration" /></td>
+    <td><CopyableCode code="layout_configuration" /></td>
     <td><code>object</code></td>
     <td>Object to store configuration of layouts associated to the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requiredFields" /></td>
+    <td><CopyableCode code="required_fields" /></td>
     <td><code>array</code></td>
     <td>A list of fields that must contain a value for a case to be successfully created with this template.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the template. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tagPropagationConfigurations" /></td>
+    <td><CopyableCode code="tag_propagation_configurations" /></td>
     <td><code>array</code></td>
     <td>Defines tag propagation configuration for resources created within a domain. Tags specified here will be automatically applied to resources being created for the specified resource type.</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>A map of of key-value pairs that represent tags on a resource. Tags are used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of a template.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
@@ -259,18 +259,18 @@ Returns the details for the requested template. Other template APIs are: CreateT
 ```sql
 SELECT
 name,
-createdTime,
+created_time,
 deleted,
 description,
-lastModifiedTime,
-layoutConfiguration,
-requiredFields,
+last_modified_time,
+layout_configuration,
+required_fields,
 rules,
 status,
-tagPropagationConfigurations,
+tag_propagation_configurations,
 tags,
-templateArn,
-templateId
+template_arn,
+template_id
 FROM aws.connectcases.templates
 WHERE domain_id = '{{ domain_id }}' -- required
 AND template_id = '{{ template_id }}' -- required
@@ -284,7 +284,7 @@ Lists all of the templates in a Cases domain. Each list item is a condensed summ
 
 ```sql
 SELECT
-nextToken,
+next_token,
 templates
 FROM aws.connectcases.templates
 WHERE domain_id = '{{ domain_id }}' -- required
@@ -334,8 +334,8 @@ SELECT
 '{{ domain_id }}',
 '{{ region }}'
 RETURNING
-templateArn,
-templateId
+template_arn,
+template_id
 ;
 ```
 </TabItem>

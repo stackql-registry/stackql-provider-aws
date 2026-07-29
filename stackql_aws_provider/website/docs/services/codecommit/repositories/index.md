@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of repositories returned by the batch get repositories operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoriesNotFound" /></td>
+    <td><CopyableCode code="repositories_not_found" /></td>
     <td><code>array</code></td>
     <td>Returns a list of repository names for which information could not be found.</td>
 </tr>
@@ -81,57 +81,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account associated with the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloneUrlHttp" /></td>
+    <td><CopyableCode code="clone_url_http" /></td>
     <td><code>string</code></td>
     <td>The URL to use for cloning the repository over HTTPS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloneUrlSsh" /></td>
+    <td><CopyableCode code="clone_url_ssh" /></td>
     <td><code>string</code></td>
     <td>The URL to use for cloning the repository over SSH.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the repository was created, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultBranch" /></td>
+    <td><CopyableCode code="default_branch" /></td>
     <td><code>string</code></td>
     <td>The repository's default branch name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service encryption key used to encrypt and decrypt the repository. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the repository was last modified, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryDescription" /></td>
+    <td><CopyableCode code="repository_description" /></td>
     <td><code>string</code></td>
     <td>A comment or description about the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryId" /></td>
+    <td><CopyableCode code="repository_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The repository's name. (pattern: &lt;code&gt;&#91;\w\.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="repositoryId" /></td>
+    <td><CopyableCode code="repository_id" /></td>
     <td><code>string</code></td>
     <td>The ID associated with the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name associated with the repository. (pattern: &lt;code&gt;&#91;\w\.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -333,7 +333,7 @@ Returns information about one or more repositories. The description field for a 
 SELECT
 errors,
 repositories,
-repositoriesNotFound
+repositories_not_found
 FROM aws.codecommit.repositories
 WHERE region = '{{ region }}' -- required
 ;
@@ -345,17 +345,17 @@ Returns information about a repository. The description field for a repository a
 
 ```sql
 SELECT
-Arn,
-accountId,
-cloneUrlHttp,
-cloneUrlSsh,
-creationDate,
-defaultBranch,
-kmsKeyId,
-lastModifiedDate,
-repositoryDescription,
-repositoryId,
-repositoryName
+arn,
+account_id,
+clone_url_http,
+clone_url_ssh,
+creation_date,
+default_branch,
+kms_key_id,
+last_modified_date,
+repository_description,
+repository_id,
+repository_name
 FROM aws.codecommit.repositories
 WHERE region = '{{ region }}' -- required
 ;
@@ -367,8 +367,8 @@ Gets information about one or more repositories.
 
 ```sql
 SELECT
-repositoryId,
-repositoryName
+repository_id,
+repository_name
 FROM aws.codecommit.repositories
 WHERE region = '{{ region }}' -- required
 ;
@@ -405,7 +405,7 @@ SELECT
 '{{ kmsKeyId }}',
 '{{ region }}'
 RETURNING
-repositoryMetadata
+repository_metadata
 ;
 ```
 </TabItem>
@@ -479,9 +479,9 @@ region = '{{ region }}' --required
 AND repositoryName = '{{ repositoryName }}' --required
 AND kmsKeyId = '{{ kmsKeyId }}' --required
 RETURNING
-kmsKeyId,
-originalKmsKeyId,
-repositoryId;
+kms_key_id,
+original_kms_key_id,
+repository_id;
 ```
 </TabItem>
 <TabItem value="update_repository_name">

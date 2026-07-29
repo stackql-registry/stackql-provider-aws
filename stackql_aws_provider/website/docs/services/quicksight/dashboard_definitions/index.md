@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DashboardId" /></td>
+    <td><CopyableCode code="dashboard_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the dashboard described. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardPublishOptions" /></td>
+    <td><CopyableCode code="dashboard_publish_options" /></td>
     <td><code>object</code></td>
     <td>Dashboard publish options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>The contents of a dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>Errors associated with this dashboard version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatus" /></td>
+    <td><CopyableCode code="resource_status" /></td>
     <td><code>string</code></td>
     <td>Status associated with the dashboard version. CREATION_IN_PROGRESS CREATION_SUCCESSFUL CREATION_FAILED UPDATE_IN_PROGRESS UPDATE_SUCCESSFUL UPDATE_FAILED DELETED (CREATION_IN_PROGRESS, CREATION_SUCCESSFUL, CREATION_FAILED, UPDATE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeArn" /></td>
+    <td><CopyableCode code="theme_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the theme of the dashboard.</td>
 </tr>
@@ -179,15 +179,15 @@ Provides a detailed description of the definition of a dashboard. If you do not 
 
 ```sql
 SELECT
-DashboardId,
-DashboardPublishOptions,
-Definition,
-Errors,
-Name,
-RequestId,
-ResourceStatus,
-Status,
-ThemeArn
+dashboard_id,
+dashboard_publish_options,
+definition,
+errors,
+name,
+request_id,
+resource_status,
+status,
+theme_arn
 FROM aws.quicksight.dashboard_definitions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND dashboard_id = '{{ dashboard_id }}' -- required

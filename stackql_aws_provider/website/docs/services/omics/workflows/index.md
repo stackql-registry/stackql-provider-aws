@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The workflow's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerRegistryMap" /></td>
+    <td><CopyableCode code="container_registry_map" /></td>
     <td><code>object</code></td>
     <td>Use a container registry map to specify mappings between the ECR private repository and one or more upstream registries. For more information, see Container images in the Amazon Web Services HealthOmics User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the workflow was created.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The workflow's definition. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="definitionRepositoryDetails" /></td>
+    <td><CopyableCode code="definition_repository_details" /></td>
     <td><code>object</code></td>
     <td>Details about the source code repository that hosts the workflow definition files.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>Gets metadata for the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterTemplate" /></td>
+    <td><CopyableCode code="parameter_template" /></td>
     <td><code>object</code></td>
     <td>The workflow's parameter template.</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The README content for the workflow, providing documentation and usage information. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readmePath" /></td>
+    <td><CopyableCode code="readme_path" /></td>
     <td><code>string</code></td>
     <td>The path to the workflow README markdown file within the repository. This file provides documentation and usage information for the workflow. If not specified, the README.md file from the root directory of the repository will be used. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -136,17 +136,17 @@ The following fields are returned by `SELECT` queries:
     <td>The workflow's status. (CREATING, ACTIVE, UPDATING, DELETED, FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The workflow's status message. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageCapacity" /></td>
+    <td><CopyableCode code="storage_capacity" /></td>
     <td><code>integer</code></td>
     <td>The default static storage capacity (in gibibytes) for runs that use this workflow or workflow version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The default storage type for runs using this workflow. (STATIC, DYNAMIC)</td>
 </tr>
@@ -195,7 +195,7 @@ The following fields are returned by `SELECT` queries:
     <td>The workflow's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the workflow was created.</td>
 </tr>
@@ -352,22 +352,22 @@ id,
 name,
 accelerators,
 arn,
-containerRegistryMap,
-creationTime,
+container_registry_map,
+creation_time,
 definition,
-definitionRepositoryDetails,
+definition_repository_details,
 description,
 digest,
 engine,
 main,
 metadata,
-parameterTemplate,
+parameter_template,
 readme,
-readmePath,
+readme_path,
 status,
-statusMessage,
-storageCapacity,
-storageType,
+status_message,
+storage_capacity,
+storage_type,
 tags,
 type_,
 uuid
@@ -389,7 +389,7 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 digest,
 metadata,
 status,

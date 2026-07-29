@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultResourceDiscoveryAssociationId" /></td>
+    <td><CopyableCode code="default_resource_discovery_association_id" /></td>
     <td><code>string</code></td>
     <td>The IPAM's default resource discovery association ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultResourceDiscoveryId" /></td>
+    <td><CopyableCode code="default_resource_discovery_id" /></td>
     <td><code>string</code></td>
     <td>The IPAM's default resource discovery ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnablePrivateGua" /></td>
+    <td><CopyableCode code="enable_private_gua" /></td>
     <td><code>boolean</code></td>
     <td>Enable this option to use your own GUA ranges as private IPv6 addresses. This option is disabled by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamArn" /></td>
+    <td><CopyableCode code="ipam_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamId" /></td>
+    <td><CopyableCode code="ipam_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamRegion" /></td>
+    <td><CopyableCode code="ipam_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region of the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MeteredAccount" /></td>
+    <td><CopyableCode code="metered_account" /></td>
     <td><code>string</code></td>
     <td>A metered account is an Amazon Web Services account that is charged for active IP addresses managed in IPAM. For more information, see Enable cost distribution in the Amazon VPC IPAM User Guide. Possible values: ipam-owner (default): The Amazon Web Services account which owns the IPAM is charged for all active IP addresses managed in IPAM. resource-owner: The Amazon Web Services account that owns the IP address is charged for the active IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingRegions" /></td>
+    <td><CopyableCode code="operating_regions" /></td>
     <td><code>string</code></td>
     <td>The operating Regions for an IPAM. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions. For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDefaultScopeId" /></td>
+    <td><CopyableCode code="private_default_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM's default private scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicDefaultScopeId" /></td>
+    <td><CopyableCode code="public_default_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM's default public scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceDiscoveryAssociationCount" /></td>
+    <td><CopyableCode code="resource_discovery_association_count" /></td>
     <td><code>integer</code></td>
     <td>The IPAM's resource discovery association count.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScopeCount" /></td>
+    <td><CopyableCode code="scope_count" /></td>
     <td><code>integer</code></td>
     <td>The number of scopes in the IPAM. The scope quota is 5. For more information on quotas, see Quotas in IPAM in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>The state message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>IPAM is offered in a Free Tier and an Advanced Tier. For more information about the features available in each tier and the costs associated with the tiers, see Amazon VPC pricing &gt; IPAM tab.</td>
 </tr>
@@ -348,24 +348,24 @@ Get information about your IPAM pools. For more information, see What is IPAM? i
 
 ```sql
 SELECT
-DefaultResourceDiscoveryAssociationId,
-DefaultResourceDiscoveryId,
-Description,
-EnablePrivateGua,
-IpamArn,
-IpamId,
-IpamRegion,
-MeteredAccount,
-OperatingRegions,
-OwnerId,
-PrivateDefaultScopeId,
-PublicDefaultScopeId,
-ResourceDiscoveryAssociationCount,
-ScopeCount,
-State,
-StateMessage,
-Tags,
-Tier
+default_resource_discovery_association_id,
+default_resource_discovery_id,
+description,
+enable_private_gua,
+ipam_arn,
+ipam_id,
+ipam_region,
+metered_account,
+operating_regions,
+owner_id,
+private_default_scope_id,
+public_default_scope_id,
+resource_discovery_association_count,
+scope_count,
+state,
+state_message,
+tags,
+tier
 FROM aws.ec2.ipams
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -415,24 +415,24 @@ SELECT
 '{{ EnablePrivateGua }}',
 '{{ MeteredAccount }}'
 RETURNING
-DefaultResourceDiscoveryAssociationId,
-DefaultResourceDiscoveryId,
-Description,
-EnablePrivateGua,
-IpamArn,
-IpamId,
-IpamRegion,
-MeteredAccount,
-OperatingRegions,
-OwnerId,
-PrivateDefaultScopeId,
-PublicDefaultScopeId,
-ResourceDiscoveryAssociationCount,
-ScopeCount,
-State,
-StateMessage,
-Tags,
-Tier
+default_resource_discovery_association_id,
+default_resource_discovery_id,
+description,
+enable_private_gua,
+ipam_arn,
+ipam_id,
+ipam_region,
+metered_account,
+operating_regions,
+owner_id,
+private_default_scope_id,
+public_default_scope_id,
+resource_discovery_association_count,
+scope_count,
+state,
+state_message,
+tags,
+tier
 ;
 ```
 </TabItem>
@@ -509,24 +509,24 @@ AND Tier = '{{ Tier}}'
 AND EnablePrivateGua = {{ EnablePrivateGua}}
 AND MeteredAccount = '{{ MeteredAccount}}'
 RETURNING
-DefaultResourceDiscoveryAssociationId,
-DefaultResourceDiscoveryId,
-Description,
-EnablePrivateGua,
-IpamArn,
-IpamId,
-IpamRegion,
-MeteredAccount,
-OperatingRegions,
-OwnerId,
-PrivateDefaultScopeId,
-PublicDefaultScopeId,
-ResourceDiscoveryAssociationCount,
-ScopeCount,
-State,
-StateMessage,
-Tags,
-Tier;
+default_resource_discovery_association_id,
+default_resource_discovery_id,
+description,
+enable_private_gua,
+ipam_arn,
+ipam_id,
+ipam_region,
+metered_account,
+operating_regions,
+owner_id,
+private_default_scope_id,
+public_default_scope_id,
+resource_discovery_association_count,
+scope_count,
+state,
+state_message,
+tags,
+tier;
 ```
 </TabItem>
 </Tabs>

@@ -104,10 +104,10 @@ WHERE
 region = '{{ region }}' --required
 AND SubnetChangeProtection = {{ SubnetChangeProtection }} --required
 RETURNING
-FirewallArn,
-FirewallName,
-SubnetChangeProtection,
-UpdateToken;
+firewall_arn,
+firewall_name,
+subnet_change_protection,
+update_token;
 ```
 </TabItem>
 </Tabs>

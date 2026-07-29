@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsServiceName" /></td>
+    <td><CopyableCode code="aws_service_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service name that owns the specified blocking instance. (AWS, EC2, ELASTICACHE, ELB, RDS, ROUTE53)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the blocking instance. (pattern: &lt;code&gt;^i-&#91;0-9a-z&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -149,9 +149,9 @@ A list of Amazon EC2 instances running on the Outpost and belonging to the accou
 
 ```sql
 SELECT
-AccountId,
-AwsServiceName,
-InstanceId
+account_id,
+aws_service_name,
+instance_id
 FROM aws.outposts.blocking_instances_for_capacity_tasks
 WHERE outpost_id = '{{ outpost_id }}' -- required
 AND capacity_task_id = '{{ capacity_task_id }}' -- required

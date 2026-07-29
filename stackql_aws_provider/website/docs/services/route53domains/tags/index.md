@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>A list of the tags that are associated with the specified domain.</td>
 </tr>
@@ -119,7 +119,7 @@ This operation returns all of the tags that are associated with the specified do
 
 ```sql
 SELECT
-TagList
+tag_list
 FROM aws.route53domains.tags
 WHERE region = '{{ region }}' -- required
 ;

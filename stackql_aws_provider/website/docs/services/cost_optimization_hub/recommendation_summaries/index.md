@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="estimatedMonthlySavings" /></td>
+    <td><CopyableCode code="estimated_monthly_savings" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated total savings resulting from modifications, on a monthly basis.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The grouping of recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationCount" /></td>
+    <td><CopyableCode code="recommendation_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of instance recommendations.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a concise representation of savings estimates for resources. Also return
 
 ```sql
 SELECT
-estimatedMonthlySavings,
+estimated_monthly_savings,
 group,
-recommendationCount
+recommendation_count
 FROM aws.cost_optimization_hub.recommendation_summaries
 WHERE region = '{{ region }}' -- required
 ;

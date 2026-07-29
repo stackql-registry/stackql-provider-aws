@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceProfiles" /></td>
+    <td><CopyableCode code="instance_profiles" /></td>
     <td><code>array</code></td>
     <td>A description of instance profiles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique pagination token that makes it possible to display the next page of results. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords. If Marker is returned by a previous response, there are more results available. The value of Marker is a unique pagination token for each page. To retrieve the next page, make the call again using the returned token and keeping all other arguments unchanged.</td>
 </tr>
@@ -145,8 +145,8 @@ Returns a paginated list of instance profiles for your account in the current re
 
 ```sql
 SELECT
-InstanceProfiles,
-Marker
+instance_profiles,
+marker
 FROM aws.dms.instance_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -193,7 +193,7 @@ SELECT
 '{{ VpcSecurityGroups }}',
 '{{ region }}'
 RETURNING
-InstanceProfile
+instance_profile
 ;
 ```
 </TabItem>
@@ -279,7 +279,7 @@ WHERE
 region = '{{ region }}' --required
 AND InstanceProfileIdentifier = '{{ InstanceProfileIdentifier }}' --required
 RETURNING
-InstanceProfile;
+instance_profile;
 ```
 </TabItem>
 </Tabs>

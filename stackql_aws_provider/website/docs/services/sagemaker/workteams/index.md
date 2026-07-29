@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the work team was created (timestamp).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the work team. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the work team was last updated (timestamp).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberDefinitions" /></td>
+    <td><CopyableCode code="member_definitions" /></td>
     <td><code>array</code></td>
     <td>A list of MemberDefinition objects that contains objects that identify the workers that make up the work team. Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP). For private workforces created using Amazon Cognito use CognitoMemberDefinition. For workforces created using your own OIDC identity provider (IdP) use OidcMemberDefinition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationConfiguration" /></td>
+    <td><CopyableCode code="notification_configuration" /></td>
     <td><code>object</code></td>
     <td>Configures SNS notifications of available or expiring work items for work teams.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductListingIds" /></td>
+    <td><CopyableCode code="product_listing_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon Marketplace identifier for a vendor's work team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubDomain" /></td>
+    <td><CopyableCode code="sub_domain" /></td>
     <td><code>string</code></td>
     <td>The URI of the labeling job's user interface. Workers open this URI to start labeling your data objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerAccessConfiguration" /></td>
+    <td><CopyableCode code="worker_access_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes any access constraints that have been defined for Amazon S3 resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceArn" /></td>
+    <td><CopyableCode code="workforce_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workforce. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workforce/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkteamArn" /></td>
+    <td><CopyableCode code="workteam_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the work team. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workteam/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkteamName" /></td>
+    <td><CopyableCode code="workteam_name" /></td>
     <td><code>string</code></td>
     <td>The name of the work team. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the work team was created (timestamp).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the work team. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the work team was last updated (timestamp).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberDefinitions" /></td>
+    <td><CopyableCode code="member_definitions" /></td>
     <td><code>array</code></td>
     <td>A list of MemberDefinition objects that contains objects that identify the workers that make up the work team. Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP). For private workforces created using Amazon Cognito use CognitoMemberDefinition. For workforces created using your own OIDC identity provider (IdP) use OidcMemberDefinition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationConfiguration" /></td>
+    <td><CopyableCode code="notification_configuration" /></td>
     <td><code>object</code></td>
     <td>Configures SNS notifications of available or expiring work items for work teams.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductListingIds" /></td>
+    <td><CopyableCode code="product_listing_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon Marketplace identifier for a vendor's work team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubDomain" /></td>
+    <td><CopyableCode code="sub_domain" /></td>
     <td><code>string</code></td>
     <td>The URI of the labeling job's user interface. Workers open this URI to start labeling your data objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerAccessConfiguration" /></td>
+    <td><CopyableCode code="worker_access_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes any access constraints that have been defined for Amazon S3 resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceArn" /></td>
+    <td><CopyableCode code="workforce_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workforce. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workforce/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkteamArn" /></td>
+    <td><CopyableCode code="workteam_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the work team. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workteam/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkteamName" /></td>
+    <td><CopyableCode code="workteam_name" /></td>
     <td><code>string</code></td>
     <td>The name of the work team. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -268,17 +268,17 @@ Gets information about a specific work team. You can see information such as the
 
 ```sql
 SELECT
-CreateDate,
-Description,
-LastUpdatedDate,
-MemberDefinitions,
-NotificationConfiguration,
-ProductListingIds,
-SubDomain,
-WorkerAccessConfiguration,
-WorkforceArn,
-WorkteamArn,
-WorkteamName
+create_date,
+description,
+last_updated_date,
+member_definitions,
+notification_configuration,
+product_listing_ids,
+sub_domain,
+worker_access_configuration,
+workforce_arn,
+workteam_arn,
+workteam_name
 FROM aws.sagemaker.workteams
 WHERE region = '{{ region }}' -- required
 ;
@@ -290,17 +290,17 @@ Gets a list of private work teams that you have defined in a region. The list ma
 
 ```sql
 SELECT
-CreateDate,
-Description,
-LastUpdatedDate,
-MemberDefinitions,
-NotificationConfiguration,
-ProductListingIds,
-SubDomain,
-WorkerAccessConfiguration,
-WorkforceArn,
-WorkteamArn,
-WorkteamName
+create_date,
+description,
+last_updated_date,
+member_definitions,
+notification_configuration,
+product_listing_ids,
+sub_domain,
+worker_access_configuration,
+workforce_arn,
+workteam_arn,
+workteam_name
 FROM aws.sagemaker.workteams
 WHERE region = '{{ region }}' -- required
 ;
@@ -343,7 +343,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-WorkteamArn
+workteam_arn
 ;
 ```
 </TabItem>
@@ -427,7 +427,7 @@ WHERE
 region = '{{ region }}' --required
 AND WorkteamName = '{{ WorkteamName }}' --required
 RETURNING
-Workteam;
+workteam;
 ```
 </TabItem>
 </Tabs>

@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the environment. (pattern: &lt;code&gt;$|^&#91;0-9\p&#123;IsAlphabetic&#125;+:,.@'" -&#93;&#91;0-9\p&#123;IsAlphabetic&#125;+=:,.@'" -&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activationCode" /></td>
+    <td><CopyableCode code="activation_code" /></td>
     <td><code>string</code></td>
     <td>The activation code to register a device to the environment. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;&#91;a-z0-9&#93;&#123;6&#125;&lt;/code&gt;)</td>
 </tr>
@@ -71,77 +71,77 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredSoftwareSetId" /></td>
+    <td><CopyableCode code="desired_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set to apply. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desktopArn" /></td>
+    <td><CopyableCode code="desktop_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the desktop to stream from Amazon WorkSpaces, WorkSpaces Secure Browser, or AppStream 2.0. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desktopEndpoint" /></td>
+    <td><CopyableCode code="desktop_endpoint" /></td>
     <td><code>string</code></td>
     <td>The URL for the identity provider login (only for environments that use AppStream 2.0). (pattern: &lt;code&gt;(https:\/\/)&#91;a-z0-9&#93;+(&#91;\-\.&#93;&#123;1&#125;&#91;a-z0-9&#93;+)*\.&#91;a-z&#93;&#123;2,32&#125;(:&#91;0-9&#93;&#123;1,5&#125;)?(\/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desktopType" /></td>
+    <td><CopyableCode code="desktop_type" /></td>
     <td><code>string</code></td>
     <td>The type of streaming desktop for the environment. (workspaces, appstream, workspaces-web)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceCreationTags" /></td>
+    <td><CopyableCode code="device_creation_tags" /></td>
     <td><code>object</code></td>
     <td>The tag keys and optional values for the newly created devices for this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Key Management Service key used to encrypt the environment. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:kms:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:key\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>object</code></td>
     <td>Describes the maintenance window for a thin client device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSoftwareSetId" /></td>
+    <td><CopyableCode code="pending_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set that is pending to be installed. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSoftwareSetVersion" /></td>
+    <td><CopyableCode code="pending_software_set_version" /></td>
     <td><code>string</code></td>
     <td>The version of the software set that is pending to be installed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredDevicesCount" /></td>
+    <td><CopyableCode code="registered_devices_count" /></td>
     <td><code>integer</code></td>
     <td>The number of devices registered to the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetComplianceStatus" /></td>
+    <td><CopyableCode code="software_set_compliance_status" /></td>
     <td><code>string</code></td>
     <td>Describes if the software currently installed on all devices in the environment is a supported version. (NO_REGISTERED_DEVICES, COMPLIANT, NOT_COMPLIANT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetUpdateMode" /></td>
+    <td><CopyableCode code="software_set_update_mode" /></td>
     <td><code>string</code></td>
     <td>An option to define which software updates to apply. (USE_LATEST, USE_DESIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetUpdateSchedule" /></td>
+    <td><CopyableCode code="software_set_update_schedule" /></td>
     <td><code>string</code></td>
     <td>An option to define if software updates should be applied within a maintenance window. (USE_MAINTENANCE_WINDOW, APPLY_IMMEDIATELY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the device was updated.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the environment. (pattern: &lt;code&gt;$|^&#91;0-9\p&#123;IsAlphabetic&#125;+:,.@'" -&#93;&#91;0-9\p&#123;IsAlphabetic&#125;+=:,.@'" -&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activationCode" /></td>
+    <td><CopyableCode code="activation_code" /></td>
     <td><code>string</code></td>
     <td>The activation code to register a device to the environment. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;&#91;a-z0-9&#93;&#123;6&#125;&lt;/code&gt;)</td>
 </tr>
@@ -180,52 +180,52 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredSoftwareSetId" /></td>
+    <td><CopyableCode code="desired_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set to apply. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desktopArn" /></td>
+    <td><CopyableCode code="desktop_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the desktop to stream from Amazon WorkSpaces, WorkSpaces Secure Browser, or AppStream 2.0. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desktopEndpoint" /></td>
+    <td><CopyableCode code="desktop_endpoint" /></td>
     <td><code>string</code></td>
     <td>The URL for the identity provider login (only for environments that use AppStream 2.0). (pattern: &lt;code&gt;(https:\/\/)&#91;a-z0-9&#93;+(&#91;\-\.&#93;&#123;1&#125;&#91;a-z0-9&#93;+)*\.&#91;a-z&#93;&#123;2,32&#125;(:&#91;0-9&#93;&#123;1,5&#125;)?(\/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desktopType" /></td>
+    <td><CopyableCode code="desktop_type" /></td>
     <td><code>string</code></td>
     <td>The type of streaming desktop for the environment. (workspaces, appstream, workspaces-web)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>object</code></td>
     <td>Describes the maintenance window for a thin client device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSoftwareSetId" /></td>
+    <td><CopyableCode code="pending_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set that is pending to be installed. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetUpdateMode" /></td>
+    <td><CopyableCode code="software_set_update_mode" /></td>
     <td><code>string</code></td>
     <td>An option to define which software updates to apply. (USE_LATEST, USE_DESIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetUpdateSchedule" /></td>
+    <td><CopyableCode code="software_set_update_schedule" /></td>
     <td><code>string</code></td>
     <td>An option to define if software updates should be applied within a maintenance window. (USE_MAINTENANCE_WINDOW, APPLY_IMMEDIATELY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the device was updated.</td>
 </tr>
@@ -345,23 +345,23 @@ Returns information for an environment.
 SELECT
 id,
 name,
-activationCode,
+activation_code,
 arn,
-createdAt,
-desiredSoftwareSetId,
-desktopArn,
-desktopEndpoint,
-desktopType,
-deviceCreationTags,
-kmsKeyArn,
-maintenanceWindow,
-pendingSoftwareSetId,
-pendingSoftwareSetVersion,
-registeredDevicesCount,
-softwareSetComplianceStatus,
-softwareSetUpdateMode,
-softwareSetUpdateSchedule,
-updatedAt
+created_at,
+desired_software_set_id,
+desktop_arn,
+desktop_endpoint,
+desktop_type,
+device_creation_tags,
+kms_key_arn,
+maintenance_window,
+pending_software_set_id,
+pending_software_set_version,
+registered_devices_count,
+software_set_compliance_status,
+software_set_update_mode,
+software_set_update_schedule,
+updated_at
 FROM aws.workspaces_thin_client.environments
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -376,18 +376,18 @@ Returns a list of environments.
 SELECT
 id,
 name,
-activationCode,
+activation_code,
 arn,
-createdAt,
-desiredSoftwareSetId,
-desktopArn,
-desktopEndpoint,
-desktopType,
-maintenanceWindow,
-pendingSoftwareSetId,
-softwareSetUpdateMode,
-softwareSetUpdateSchedule,
-updatedAt
+created_at,
+desired_software_set_id,
+desktop_arn,
+desktop_endpoint,
+desktop_type,
+maintenance_window,
+pending_software_set_id,
+software_set_update_mode,
+software_set_update_schedule,
+updated_at
 FROM aws.workspaces_thin_client.environments
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

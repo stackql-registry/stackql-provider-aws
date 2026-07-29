@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SnsRoleName" /></td>
+    <td><CopyableCode code="sns_role_name" /></td>
     <td><code>string</code></td>
     <td>The IAM role that is used by Firewall Manager to record activity to SNS. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The SNS topic that records Firewall Manager activity. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Information about the Amazon Simple Notification Service (SNS) topic that is use
 
 ```sql
 SELECT
-SnsRoleName,
-SnsTopicArn
+sns_role_name,
+sns_topic_arn
 FROM aws.fms.notification_channels
 WHERE region = '{{ region }}' -- required
 ;

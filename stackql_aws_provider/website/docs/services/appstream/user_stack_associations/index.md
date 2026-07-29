@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type for the user. (API, SAML, USERPOOL, AWS_AD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendEmailNotification" /></td>
+    <td><CopyableCode code="send_email_notification" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a welcome email is sent to a user after the user is created in the user pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stack that is associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The email address of the user who is associated with the stack. Users' email addresses are case-sensitive. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieves a list that describes the UserStackAssociation objects. You must speci
 
 ```sql
 SELECT
-AuthenticationType,
-SendEmailNotification,
-StackName,
-UserName
+authentication_type,
+send_email_notification,
+stack_name,
+user_name
 FROM aws.appstream.user_stack_associations
 WHERE region = '{{ region }}' -- required
 ;

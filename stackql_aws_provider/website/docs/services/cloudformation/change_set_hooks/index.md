@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FailureMode" /></td>
+    <td><CopyableCode code="failure_mode" /></td>
     <td><code>string</code></td>
     <td>Specify the Hook failure mode for non-compliant resources in the followings ways. FAIL Stops provisioning resources. WARN Allows provisioning to continue with a warning message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationPoint" /></td>
+    <td><CopyableCode code="invocation_point" /></td>
     <td><code>string</code></td>
     <td>The specific point in the provisioning process where the Hook is invoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetDetails" /></td>
+    <td><CopyableCode code="target_details" /></td>
     <td><code>string</code></td>
     <td>Specifies details about the target that the Hook will run against.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeConfigurationVersionId" /></td>
+    <td><CopyableCode code="type_configuration_version_id" /></td>
     <td><code>string</code></td>
     <td>The version ID of the type configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The unique name for your Hook. Specifies a three-part namespace for your Hook, with a recommended pattern of Organization::Service::Hook. The following organization namespaces are reserved and can't be used in your Hook type names: Alexa AMZN Amazon ASK AWS Custom Dev</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeVersionId" /></td>
+    <td><CopyableCode code="type_version_id" /></td>
     <td><code>string</code></td>
     <td>The version ID of the type specified.</td>
 </tr>
@@ -164,12 +164,12 @@ Returns Hook-related information for the change set and a list of changes that C
 
 ```sql
 SELECT
-FailureMode,
-InvocationPoint,
-TargetDetails,
-TypeConfigurationVersionId,
-TypeName,
-TypeVersionId
+failure_mode,
+invocation_point,
+target_details,
+type_configuration_version_id,
+type_name,
+type_version_id
 FROM aws.cloudformation.change_set_hooks
 WHERE ChangeSetName = '{{ ChangeSetName }}' -- required
 AND region = '{{ region }}' -- required

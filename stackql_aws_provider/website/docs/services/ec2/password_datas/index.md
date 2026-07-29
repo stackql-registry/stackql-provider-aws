@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Windows instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PasswordData" /></td>
+    <td><CopyableCode code="password_data" /></td>
     <td><code>string</code></td>
     <td>The password of the instance. Returns an empty string if the password is not available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The time the data was last updated.</td>
 </tr>
@@ -139,9 +139,9 @@ Retrieves the encrypted administrator password for a running Windows instance. T
 
 ```sql
 SELECT
-InstanceId,
-PasswordData,
-Timestamp
+instance_id,
+password_data,
+timestamp
 FROM aws.ec2.password_datas
 WHERE InstanceId = '{{ InstanceId }}' -- required
 AND region = '{{ region }}' -- required

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Error information for findings that details could not be returned for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingDetails" /></td>
+    <td><CopyableCode code="finding_details" /></td>
     <td><code>array</code></td>
     <td>A finding's vulnerability details.</td>
 </tr>
@@ -125,7 +125,7 @@ Gets vulnerability details for findings.
 ```sql
 SELECT
 errors,
-findingDetails
+finding_details
 FROM aws.inspector2.finding_details
 WHERE region = '{{ region }}' -- required
 ;

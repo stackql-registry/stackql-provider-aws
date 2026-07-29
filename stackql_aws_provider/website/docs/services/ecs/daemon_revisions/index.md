@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="daemonRevisions" /></td>
+    <td><CopyableCode code="daemon_revisions" /></td>
     <td><code>array</code></td>
     <td>The list of daemon revisions.</td>
 </tr>
@@ -124,7 +124,7 @@ Describes one or more of your daemon revisions. A daemon revision is a snapshot 
 
 ```sql
 SELECT
-daemonRevisions,
+daemon_revisions,
 failures
 FROM aws.ecs.daemon_revisions
 WHERE region = '{{ region }}' -- required

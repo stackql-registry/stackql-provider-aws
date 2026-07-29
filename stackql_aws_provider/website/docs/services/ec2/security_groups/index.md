@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpPermissions" /></td>
+    <td><CopyableCode code="ip_permissions" /></td>
     <td><code>string</code></td>
     <td>The inbound rules associated with the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpPermissionsEgress" /></td>
+    <td><CopyableCode code="ip_permissions_egress" /></td>
     <td><code>string</code></td>
     <td>The outbound rules associated with the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupArn" /></td>
+    <td><CopyableCode code="security_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the security group.</td>
 </tr>
@@ -296,15 +296,15 @@ Describes the specified security groups or all of your security groups.
 
 ```sql
 SELECT
-Description,
-GroupId,
-GroupName,
-IpPermissions,
-IpPermissionsEgress,
-OwnerId,
-SecurityGroupArn,
-Tags,
-VpcId
+description,
+group_id,
+group_name,
+ip_permissions,
+ip_permissions_egress,
+owner_id,
+security_group_arn,
+tags,
+vpc_id
 FROM aws.ec2.security_groups
 WHERE region = '{{ region }}' -- required
 AND GroupId = '{{ GroupId }}'
@@ -349,9 +349,9 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-GroupId,
-SecurityGroupArn,
-Tags
+group_id,
+security_group_arn,
+tags
 ;
 ```
 </TabItem>
@@ -417,8 +417,8 @@ AND ToPort = '{{ ToPort}}'
 AND CidrIp = '{{ CidrIp}}'
 AND IpPermissions = '{{ IpPermissions}}'
 RETURNING
-Return,
-SecurityGroupRules;
+return,
+security_group_rules;
 ```
 </TabItem>
 <TabItem value="authorize_security_group_ingress">
@@ -443,8 +443,8 @@ AND ToPort = '{{ ToPort}}'
 AND TagSpecification = '{{ TagSpecification}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-Return,
-SecurityGroupRules;
+return,
+security_group_rules;
 ```
 </TabItem>
 </Tabs>

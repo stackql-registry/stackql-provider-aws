@@ -61,57 +61,57 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetworkvpcassociation/snva-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsOptions" /></td>
+    <td><CopyableCode code="dns_options" /></td>
     <td><code>object</code></td>
     <td>The DNS configuration options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>The failure code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>The failure message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was last updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateDnsEnabled" /></td>
+    <td><CopyableCode code="private_dns_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if private DNS is enabled in the VPC association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the security groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetwork/sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkId" /></td>
+    <td><CopyableCode code="service_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service network. (pattern: &lt;code&gt;sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkName" /></td>
+    <td><CopyableCode code="service_network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service network. (pattern: &lt;code&gt;(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the association. (CREATE_IN_PROGRESS, ACTIVE, UPDATE_IN_PROGRESS, DELETE_IN_PROGRESS, CREATE_FAILED, DELETE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC. (pattern: &lt;code&gt;vpc-((&#91;0-9a-z&#93;&#123;8&#125;)|(&#91;0-9a-z&#93;&#123;17&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -150,42 +150,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetworkvpcassociation/snva-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsOptions" /></td>
+    <td><CopyableCode code="dns_options" /></td>
     <td><code>object</code></td>
     <td>The DNS configuration options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was last updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateDnsEnabled" /></td>
+    <td><CopyableCode code="private_dns_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if private DNS is enabled for the service network VPC association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetwork/sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkId" /></td>
+    <td><CopyableCode code="service_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service network. (pattern: &lt;code&gt;sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkName" /></td>
+    <td><CopyableCode code="service_network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service network. (pattern: &lt;code&gt;(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -195,7 +195,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status. (CREATE_IN_PROGRESS, ACTIVE, UPDATE_IN_PROGRESS, DELETE_IN_PROGRESS, CREATE_FAILED, DELETE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC. (pattern: &lt;code&gt;vpc-((&#91;0-9a-z&#93;&#123;8&#125;)|(&#91;0-9a-z&#93;&#123;17&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -320,19 +320,19 @@ Retrieves information about the specified association between a service network 
 SELECT
 id,
 arn,
-createdAt,
-createdBy,
-dnsOptions,
-failureCode,
-failureMessage,
-lastUpdatedAt,
-privateDnsEnabled,
-securityGroupIds,
-serviceNetworkArn,
-serviceNetworkId,
-serviceNetworkName,
+created_at,
+created_by,
+dns_options,
+failure_code,
+failure_message,
+last_updated_at,
+private_dns_enabled,
+security_group_ids,
+service_network_arn,
+service_network_id,
+service_network_name,
 status,
-vpcId
+vpc_id
 FROM aws.vpc_lattice.service_network_vpc_associations
 WHERE service_network_vpc_association_identifier = '{{ service_network_vpc_association_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -347,16 +347,16 @@ Lists the associations between a service network and a VPC. You can filter the l
 SELECT
 id,
 arn,
-createdAt,
-createdBy,
-dnsOptions,
-lastUpdatedAt,
-privateDnsEnabled,
-serviceNetworkArn,
-serviceNetworkId,
-serviceNetworkName,
+created_at,
+created_by,
+dns_options,
+last_updated_at,
+private_dns_enabled,
+service_network_arn,
+service_network_id,
+service_network_name,
 status,
-vpcId
+vpc_id
 FROM aws.vpc_lattice.service_network_vpc_associations
 WHERE region = '{{ region }}' -- required
 AND serviceNetworkIdentifier = '{{ serviceNetworkIdentifier }}'
@@ -405,10 +405,10 @@ SELECT
 RETURNING
 id,
 arn,
-createdBy,
-dnsOptions,
-privateDnsEnabled,
-securityGroupIds,
+created_by,
+dns_options,
+private_dns_enabled,
+security_group_ids,
 status
 ;
 ```
@@ -470,8 +470,8 @@ AND securityGroupIds = '{{ securityGroupIds }}' --required
 RETURNING
 id,
 arn,
-createdBy,
-securityGroupIds,
+created_by,
+security_group_ids,
 status;
 ```
 </TabItem>

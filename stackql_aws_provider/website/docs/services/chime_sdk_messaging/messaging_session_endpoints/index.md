@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The endpoint to which you establish a websocket connection.</td>
 </tr>
@@ -124,7 +124,7 @@ The details of the endpoint for the messaging session.
 
 ```sql
 SELECT
-Url
+url
 FROM aws.chime_sdk_messaging.messaging_session_endpoints
 WHERE region = '{{ region }}' -- required
 AND `network-type` = '{{ network-type }}'

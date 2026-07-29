@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBSubnetGroupArn" /></td>
+    <td><CopyableCode code="db_subnet_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroupDescription" /></td>
+    <td><CopyableCode code="db_subnet_group_description" /></td>
     <td><code>string</code></td>
     <td>Provides the description of the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroupName" /></td>
+    <td><CopyableCode code="db_subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroupStatus" /></td>
+    <td><CopyableCode code="subnet_group_status" /></td>
     <td><code>string</code></td>
     <td>Provides the status of the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>string</code></td>
     <td>Contains a list of Subnet elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VpcId of the DB subnet group.</td>
 </tr>
@@ -210,12 +210,12 @@ Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specifie
 
 ```sql
 SELECT
-DBSubnetGroupArn,
-DBSubnetGroupDescription,
-DBSubnetGroupName,
-SubnetGroupStatus,
-Subnets,
-VpcId
+db_subnet_group_arn,
+db_subnet_group_description,
+db_subnet_group_name,
+subnet_group_status,
+subnets,
+vpc_id
 FROM aws.neptune.db_subnet_groups
 WHERE region = '{{ region }}' -- required
 AND DBSubnetGroupName = '{{ DBSubnetGroupName }}'
@@ -256,12 +256,12 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-DBSubnetGroupArn,
-DBSubnetGroupDescription,
-DBSubnetGroupName,
-SubnetGroupStatus,
-Subnets,
-VpcId
+db_subnet_group_arn,
+db_subnet_group_description,
+db_subnet_group_name,
+subnet_group_status,
+subnets,
+vpc_id
 ;
 ```
 </TabItem>
@@ -314,12 +314,12 @@ AND SubnetIds = '{{ SubnetIds }}' --required
 AND region = '{{ region }}' --required
 AND DBSubnetGroupDescription = '{{ DBSubnetGroupDescription}}'
 RETURNING
-DBSubnetGroupArn,
-DBSubnetGroupDescription,
-DBSubnetGroupName,
-SubnetGroupStatus,
-Subnets,
-VpcId;
+db_subnet_group_arn,
+db_subnet_group_description,
+db_subnet_group_name,
+subnet_group_status,
+subnets,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

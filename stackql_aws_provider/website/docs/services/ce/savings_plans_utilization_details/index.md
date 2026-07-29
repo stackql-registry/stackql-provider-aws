@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SavingsPlansUtilizationDetails" /></td>
+    <td><CopyableCode code="savings_plans_utilization_details" /></td>
     <td><code>array</code></td>
     <td>Retrieves a single daily or monthly Savings Plans utilization rate and details for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimePeriod" /></td>
+    <td><CopyableCode code="time_period" /></td>
     <td><code>object</code></td>
     <td>The time period of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Total" /></td>
+    <td><CopyableCode code="total" /></td>
     <td><code>object</code></td>
     <td>The total Savings Plans utilization, regardless of time period.</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieves attribute data along with aggregate utilization and savings data for a
 
 ```sql
 SELECT
-NextToken,
-SavingsPlansUtilizationDetails,
-TimePeriod,
-Total
+next_token,
+savings_plans_utilization_details,
+time_period,
+total
 FROM aws.ce.savings_plans_utilization_details
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiDescription" /></td>
+    <td><CopyableCode code="ami_description" /></td>
     <td><code>string</code></td>
     <td>The description that will be applied to the exported EC2 AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AmiId" /></td>
+    <td><CopyableCode code="ami_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the EC2 AMI that was created by this export task. This field is only populated when the task completes successfully. (pattern: &lt;code&gt;^ami-&#91;a-z0-9&#93;&#123;8,17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AmiName" /></td>
+    <td><CopyableCode code="ami_name" /></td>
     <td><code>string</code></td>
     <td>The name of the EC2 AMI that will be created by this export task. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9().\-/_&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the export image task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>Details about any errors that occurred during the export process. This field is only populated when the task fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageArn" /></td>
+    <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the WorkSpaces Applications image being exported. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the export image task, such as PENDING, RUNNING, COMPLETED, or FAILED. (EXPORTING, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagSpecifications" /></td>
+    <td><CopyableCode code="tag_specifications" /></td>
     <td><code>object</code></td>
     <td>The tags that will be applied to the exported EC2 AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the export image task. Use this ID to track the task's progress and retrieve its details. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -173,15 +173,15 @@ Retrieves information about an export image task, including its current state, p
 
 ```sql
 SELECT
-AmiDescription,
-AmiId,
-AmiName,
-CreatedDate,
-ErrorDetails,
-ImageArn,
-State,
-TagSpecifications,
-TaskId
+ami_description,
+ami_id,
+ami_name,
+created_date,
+error_details,
+image_arn,
+state,
+tag_specifications,
+task_id
 FROM aws.appstream.export_image_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,7 +220,7 @@ SELECT
 '{{ AmiDescription }}',
 '{{ region }}'
 RETURNING
-ExportImageTask
+export_image_task
 ;
 ```
 </TabItem>

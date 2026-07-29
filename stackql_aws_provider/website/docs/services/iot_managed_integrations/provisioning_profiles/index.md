@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the provisioning profile. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:provisioning-profile/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClaimCertificate" /></td>
+    <td><CopyableCode code="claim_certificate" /></td>
     <td><code>string</code></td>
     <td>The body of the PEM-encoded claim certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The provisioning profile id. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the provisioning profile. (pattern: &lt;code&gt;&#91;0-9A-Za-z_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningType" /></td>
+    <td><CopyableCode code="provisioning_type" /></td>
     <td><code>string</code></td>
     <td>The type of provisioning workflow the device uses for onboarding to IoT managed integrations. (FLEET_PROVISIONING, JITR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a provisioning profile. (CREATE_IN_PROGRESS, CREATE_FAILED, CREATED, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of key/value pairs that are used to manage the provisioning profile.</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the provisioning profile. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:provisioning-profile/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the provisioning profile. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the provisioning profile. (pattern: &lt;code&gt;&#91;0-9A-Za-z_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningType" /></td>
+    <td><CopyableCode code="provisioning_type" /></td>
     <td><code>string</code></td>
     <td>The type of provisioning workflow the device uses for onboarding to IoT managed integrations. (FLEET_PROVISIONING, JITR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a provisioning profile. (CREATE_IN_PROGRESS, CREATE_FAILED, CREATED, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
@@ -226,13 +226,13 @@ Get details of a provisioning profile.
 
 ```sql
 SELECT
-Arn,
-ClaimCertificate,
-Id,
-Name,
-ProvisioningType,
-Status,
-Tags
+arn,
+claim_certificate,
+id,
+name,
+provisioning_type,
+status,
+tags
 FROM aws.iot_managed_integrations.provisioning_profiles
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,11 +245,11 @@ List the provisioning profiles within the Amazon Web Services account.
 
 ```sql
 SELECT
-Arn,
-Id,
-Name,
-ProvisioningType,
-Status
+arn,
+id,
+name,
+provisioning_type,
+status
 FROM aws.iot_managed_integrations.provisioning_profiles
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -292,13 +292,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-ClaimCertificate,
-ClaimCertificatePrivateKey,
-Id,
-Name,
-ProvisioningType,
-Status
+arn,
+claim_certificate,
+claim_certificate_private_key,
+id,
+name,
+provisioning_type,
+status
 ;
 ```
 </TabItem>

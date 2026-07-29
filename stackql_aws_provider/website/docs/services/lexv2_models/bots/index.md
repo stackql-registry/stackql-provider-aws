@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botMembers" /></td>
+    <td><CopyableCode code="bot_members" /></td>
     <td><code>array</code></td>
     <td>The list of bots in the network that was described.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botName" /></td>
+    <td><CopyableCode code="bot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the bot. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botStatus" /></td>
+    <td><CopyableCode code="bot_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the bot. When the status is Available the bot is ready to be used in conversations with users. (Creating, Available, Inactive, Deleting, Failed, Versioning, Importing, Updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botType" /></td>
+    <td><CopyableCode code="bot_type" /></td>
     <td><code>string</code></td>
     <td>The type of the bot that was described. (Bot, BotNetwork)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the bot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataPrivacy" /></td>
+    <td><CopyableCode code="data_privacy" /></td>
     <td><code>object</code></td>
     <td>By default, data stored by Amazon Lex is encrypted. The DataPrivacy structure provides settings that determine how Amazon Lex handles special cases of securing the data for your bot.</td>
 </tr>
@@ -91,27 +91,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorLogSettings" /></td>
+    <td><CopyableCode code="error_log_settings" /></td>
     <td><code>object</code></td>
     <td>Settings parameters for the error logs, whether it is enabled or disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>If the botStatus is Failed, this contains a list of reasons that the bot couldn't be built.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleSessionTTLInSeconds" /></td>
+    <td><CopyableCode code="idle_session_ttl_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the bot was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that has permission to access the bot. (pattern: &lt;code&gt;^arn:aws:iam::&#91;0-9&#93;&#123;12&#125;:role/.*$&lt;/code&gt;)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botSummaries" /></td>
+    <td><CopyableCode code="bot_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the bots that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter of the request. If there are more bots available, the nextToken field contains a token to the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListBots operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListBots operation request to get the next page of results.</td>
 </tr>
@@ -357,19 +357,19 @@ Provides metadata information about a bot.
 
 ```sql
 SELECT
-botId,
-botMembers,
-botName,
-botStatus,
-botType,
-creationDateTime,
-dataPrivacy,
+bot_id,
+bot_members,
+bot_name,
+bot_status,
+bot_type,
+creation_date_time,
+data_privacy,
 description,
-errorLogSettings,
-failureReasons,
-idleSessionTTLInSeconds,
-lastUpdatedDateTime,
-roleArn
+error_log_settings,
+failure_reasons,
+idle_session_ttl_in_seconds,
+last_updated_date_time,
+role_arn
 FROM aws.lexv2_models.bots
 WHERE bot_id = '{{ bot_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -382,8 +382,8 @@ Gets a list of available bots.
 
 ```sql
 SELECT
-botSummaries,
-nextToken
+bot_summaries,
+next_token
 FROM aws.lexv2_models.bots
 WHERE region = '{{ region }}' -- required
 ;
@@ -432,19 +432,19 @@ SELECT
 '{{ errorLogSettings }}',
 '{{ region }}'
 RETURNING
-botId,
-botMembers,
-botName,
-botStatus,
-botTags,
-botType,
-creationDateTime,
-dataPrivacy,
+bot_id,
+bot_members,
+bot_name,
+bot_status,
+bot_tags,
+bot_type,
+creation_date_time,
+data_privacy,
 description,
-errorLogSettings,
-idleSessionTTLInSeconds,
-roleArn,
-testBotAliasTags
+error_log_settings,
+idle_session_ttl_in_seconds,
+role_arn,
+test_bot_alias_tags
 ;
 ```
 </TabItem>
@@ -525,18 +525,18 @@ AND roleArn = '{{ roleArn }}' --required
 AND dataPrivacy = '{{ dataPrivacy }}' --required
 AND idleSessionTTLInSeconds = '{{ idleSessionTTLInSeconds }}' --required
 RETURNING
-botId,
-botMembers,
-botName,
-botStatus,
-botType,
-creationDateTime,
-dataPrivacy,
+bot_id,
+bot_members,
+bot_name,
+bot_status,
+bot_type,
+creation_date_time,
+data_privacy,
 description,
-errorLogSettings,
-idleSessionTTLInSeconds,
-lastUpdatedDateTime,
-roleArn;
+error_log_settings,
+idle_session_ttl_in_seconds,
+last_updated_date_time,
+role_arn;
 ```
 </TabItem>
 </Tabs>

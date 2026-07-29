@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DocumentUrl" /></td>
+    <td><CopyableCode code="document_url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed URL to download the invoice document. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentUrlExpirationDate" /></td>
+    <td><CopyableCode code="document_url_expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The pre-signed URL expiration date of the invoice document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceId" /></td>
+    <td><CopyableCode code="invoice_id" /></td>
     <td><code>string</code></td>
     <td>Your unique invoice ID. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupplementalDocuments" /></td>
+    <td><CopyableCode code="supplemental_documents" /></td>
     <td><code>array</code></td>
     <td>List of supplemental documents associated with the invoice.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a URL to download the invoice document and supplemental documents associ
 
 ```sql
 SELECT
-DocumentUrl,
-DocumentUrlExpirationDate,
-InvoiceId,
-SupplementalDocuments
+document_url,
+document_url_expiration_date,
+invoice_id,
+supplemental_documents
 FROM aws.invoicing.invoice_pdfs
 WHERE region = '{{ region }}' -- required
 ;

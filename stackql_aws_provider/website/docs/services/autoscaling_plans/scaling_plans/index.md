@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationSource" /></td>
+    <td><CopyableCode code="application_source" /></td>
     <td><code>object</code></td>
     <td>Represents an application source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix time stamp when the scaling plan was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingInstructions" /></td>
+    <td><CopyableCode code="scaling_instructions" /></td>
     <td><code>array</code></td>
     <td>The scaling instructions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingPlanName" /></td>
+    <td><CopyableCode code="scaling_plan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scaling plan. (pattern: &lt;code&gt;&#91;\p&#123;Print&#125;&&&#91;^|:/&#93;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingPlanVersion" /></td>
+    <td><CopyableCode code="scaling_plan_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the scaling plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The status of the scaling plan. Active - The scaling plan is active. ActiveWithProblems - The scaling plan is active, but the scaling configuration for one or more resources could not be applied. CreationInProgress - The scaling plan is being created. CreationFailed - The scaling plan could not be created. DeletionInProgress - The scaling plan is being deleted. DeletionFailed - The scaling plan could not be deleted. UpdateInProgress - The scaling plan is being updated. UpdateFailed - The scaling plan could not be updated. (Active, ActiveWithProblems, CreationInProgress, CreationFailed, DeletionInProgress, DeletionFailed, UpdateInProgress, UpdateFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A simple message about the current status of the scaling plan. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusStartTime" /></td>
+    <td><CopyableCode code="status_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix time stamp when the scaling plan entered the current status.</td>
 </tr>
@@ -175,14 +175,14 @@ Describes one or more of your scaling plans.
 
 ```sql
 SELECT
-ApplicationSource,
-CreationTime,
-ScalingInstructions,
-ScalingPlanName,
-ScalingPlanVersion,
-StatusCode,
-StatusMessage,
-StatusStartTime
+application_source,
+creation_time,
+scaling_instructions,
+scaling_plan_name,
+scaling_plan_version,
+status_code,
+status_message,
+status_start_time
 FROM aws.autoscaling_plans.scaling_plans
 WHERE region = '{{ region }}' -- required
 ;
@@ -217,7 +217,7 @@ SELECT
 '{{ ScalingInstructions }}' /* required */,
 '{{ region }}'
 RETURNING
-ScalingPlanVersion
+scaling_plan_version
 ;
 ```
 </TabItem>

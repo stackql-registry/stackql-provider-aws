@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MailFromDomainAttributes" /></td>
+    <td><CopyableCode code="mail_from_domain_attributes" /></td>
     <td><code>string</code></td>
     <td>A map of identities to custom MAIL FROM attributes.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the custom MAIL FROM attributes for a list of identities (email addresse
 
 ```sql
 SELECT
-MailFromDomainAttributes
+mail_from_domain_attributes
 FROM aws.ses.identity_mail_from_domain_attributes
 WHERE Identities = '{{ Identities }}' -- required
 AND region = '{{ region }}' -- required

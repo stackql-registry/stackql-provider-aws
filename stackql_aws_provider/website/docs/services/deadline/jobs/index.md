@@ -63,12 +63,12 @@ The following fields are returned by `SELECT` queries:
     <td>The job attachments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
@@ -78,37 +78,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the job. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID. (pattern: &lt;code&gt;job-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatus" /></td>
+    <td><CopyableCode code="lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status for the job. (CREATE_IN_PROGRESS, CREATE_FAILED, CREATE_COMPLETE, UPLOAD_IN_PROGRESS, UPLOAD_FAILED, UPDATE_IN_PROGRESS, UPDATE_FAILED, UPDATE_SUCCEEDED, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatusMessage" /></td>
+    <td><CopyableCode code="lifecycle_status_message" /></td>
     <td><code>string</code></td>
     <td>A message that communicates the status of the life cycle for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxFailedTasksCount" /></td>
+    <td><CopyableCode code="max_failed_tasks_count" /></td>
     <td><code>integer</code></td>
     <td>The number of task failures before the job stops running and is marked as FAILED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxRetriesPerTask" /></td>
+    <td><CopyableCode code="max_retries_per_task" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of retries per failed tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxWorkerCount" /></td>
+    <td><CopyableCode code="max_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of worker hosts that can concurrently process a job. When the maxWorkerCount is reached, no more workers will be assigned to process the job, even if the fleets assigned to the job's queue has available workers. If you don't set the maxWorkerCount when you create a job, this value is not returned in the response.</td>
 </tr>
@@ -123,47 +123,47 @@ The following fields are returned by `SELECT` queries:
     <td>The job priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceJobId" /></td>
+    <td><CopyableCode code="source_job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID for the source job. (pattern: &lt;code&gt;job-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageProfileId" /></td>
+    <td><CopyableCode code="storage_profile_id" /></td>
     <td><code>string</code></td>
     <td>The storage profile ID associated with the job. (pattern: &lt;code&gt;sp-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetTaskRunStatus" /></td>
+    <td><CopyableCode code="target_task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task status with which the job started. (READY, FAILED, SUCCEEDED, CANCELED, SUSPENDED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskFailureRetryCount" /></td>
+    <td><CopyableCode code="task_failure_retry_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of times tasks from the job failed and were retried.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatus" /></td>
+    <td><CopyableCode code="task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task run status for the job. (PENDING, READY, ASSIGNED, STARTING, SCHEDULED, INTERRUPTING, RUNNING, SUSPENDED, CANCELED, FAILED, SUCCEEDED, NOT_COMPATIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatusCounts" /></td>
+    <td><CopyableCode code="task_run_status_counts" /></td>
     <td><code>object</code></td>
     <td>The number of tasks running on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -187,12 +187,12 @@ The following fields are returned by `SELECT` queries:
     <td>The jobs in the search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextItemOffset" /></td>
+    <td><CopyableCode code="next_item_offset" /></td>
     <td><code>integer</code></td>
     <td>The next item offset for the search results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResults" /></td>
+    <td><CopyableCode code="total_results" /></td>
     <td><code>integer</code></td>
     <td>The total number of results in the search.</td>
 </tr>
@@ -216,47 +216,47 @@ The following fields are returned by `SELECT` queries:
     <td>The job name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID. (pattern: &lt;code&gt;job-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatus" /></td>
+    <td><CopyableCode code="lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status. (CREATE_IN_PROGRESS, CREATE_FAILED, CREATE_COMPLETE, UPLOAD_IN_PROGRESS, UPLOAD_FAILED, UPDATE_IN_PROGRESS, UPDATE_FAILED, UPDATE_SUCCEEDED, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatusMessage" /></td>
+    <td><CopyableCode code="lifecycle_status_message" /></td>
     <td><code>string</code></td>
     <td>The life cycle status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxFailedTasksCount" /></td>
+    <td><CopyableCode code="max_failed_tasks_count" /></td>
     <td><code>integer</code></td>
     <td>The number of task failures before the job stops running and is marked as FAILED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxRetriesPerTask" /></td>
+    <td><CopyableCode code="max_retries_per_task" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of retries for a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxWorkerCount" /></td>
+    <td><CopyableCode code="max_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of worker hosts that can concurrently process a job. When the maxWorkerCount is reached, no more workers will be assigned to process the job, even if the fleets assigned to the job's queue has available workers. You can't set the maxWorkerCount to 0. If you set it to -1, there is no maximum number of workers. If you don't specify the maxWorkerCount, the default is -1.</td>
 </tr>
@@ -266,42 +266,42 @@ The following fields are returned by `SELECT` queries:
     <td>The job priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceJobId" /></td>
+    <td><CopyableCode code="source_job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID for the source job. (pattern: &lt;code&gt;job-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetTaskRunStatus" /></td>
+    <td><CopyableCode code="target_task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task status to update the job's tasks to. (READY, FAILED, SUCCEEDED, CANCELED, SUSPENDED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskFailureRetryCount" /></td>
+    <td><CopyableCode code="task_failure_retry_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of times tasks from the job failed and were retried.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatus" /></td>
+    <td><CopyableCode code="task_run_status" /></td>
     <td><code>string</code></td>
     <td>The task run status for the job. PENDING–pending and waiting for resources. READY–ready to be processed. ASSIGNED–assigned and will run next on a worker. SCHEDULED–scheduled to be run on a worker. INTERRUPTING–being interrupted. RUNNING–running on a worker. SUSPENDED–the task is suspended. CANCELED–the task has been canceled. FAILED–the task has failed. SUCCEEDED–the task has succeeded. (PENDING, READY, ASSIGNED, STARTING, SCHEDULED, INTERRUPTING, RUNNING, SUSPENDED, CANCELED, FAILED, SUCCEEDED, NOT_COMPATIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskRunStatusCounts" /></td>
+    <td><CopyableCode code="task_run_status_counts" /></td>
     <td><code>object</code></td>
     <td>The number of tasks running on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -495,27 +495,27 @@ Gets a Deadline Cloud job.
 SELECT
 name,
 attachments,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-endedAt,
-jobId,
-lifecycleStatus,
-lifecycleStatusMessage,
-maxFailedTasksCount,
-maxRetriesPerTask,
-maxWorkerCount,
+ended_at,
+job_id,
+lifecycle_status,
+lifecycle_status_message,
+max_failed_tasks_count,
+max_retries_per_task,
+max_worker_count,
 parameters,
 priority,
-sourceJobId,
-startedAt,
-storageProfileId,
-targetTaskRunStatus,
-taskFailureRetryCount,
-taskRunStatus,
-taskRunStatusCounts,
-updatedAt,
-updatedBy
+source_job_id,
+started_at,
+storage_profile_id,
+target_task_run_status,
+task_failure_retry_count,
+task_run_status,
+task_run_status_counts,
+updated_at,
+updated_by
 FROM aws.deadline.jobs
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -531,8 +531,8 @@ Searches for jobs.
 ```sql
 SELECT
 jobs,
-nextItemOffset,
-totalResults
+next_item_offset,
+total_results
 FROM aws.deadline.jobs
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -546,24 +546,24 @@ Lists jobs.
 ```sql
 SELECT
 name,
-createdAt,
-createdBy,
-endedAt,
-jobId,
-lifecycleStatus,
-lifecycleStatusMessage,
-maxFailedTasksCount,
-maxRetriesPerTask,
-maxWorkerCount,
+created_at,
+created_by,
+ended_at,
+job_id,
+lifecycle_status,
+lifecycle_status_message,
+max_failed_tasks_count,
+max_retries_per_task,
+max_worker_count,
 priority,
-sourceJobId,
-startedAt,
-targetTaskRunStatus,
-taskFailureRetryCount,
-taskRunStatus,
-taskRunStatusCounts,
-updatedAt,
-updatedBy
+source_job_id,
+started_at,
+target_task_run_status,
+task_failure_retry_count,
+task_run_status,
+task_run_status_counts,
+updated_at,
+updated_by
 FROM aws.deadline.jobs
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -644,7 +644,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-jobId
+job_id
 ;
 ```
 </TabItem>

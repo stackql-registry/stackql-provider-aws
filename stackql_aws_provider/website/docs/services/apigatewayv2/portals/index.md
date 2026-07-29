@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Authorization" /></td>
+    <td><CopyableCode code="authorization" /></td>
     <td><code>object</code></td>
     <td>Represents an authorization configuration for a portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfiguration" /></td>
+    <td><CopyableCode code="endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>The endpoint configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludedPortalProductArns" /></td>
+    <td><CopyableCode code="included_portal_product_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the portal products included in the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the portal was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublished" /></td>
+    <td><CopyableCode code="last_published" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the portal was last published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedDescription" /></td>
+    <td><CopyableCode code="last_published_description" /></td>
     <td><code>string</code></td>
     <td>The publish description used when the portal was last published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalArn" /></td>
+    <td><CopyableCode code="portal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalContent" /></td>
+    <td><CopyableCode code="portal_content" /></td>
     <td><code>object</code></td>
     <td>Contains the content that is visible to portal consumers including the themes, display names, and description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalId" /></td>
+    <td><CopyableCode code="portal_id" /></td>
     <td><code>string</code></td>
     <td>The portal identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Preview" /></td>
+    <td><CopyableCode code="preview" /></td>
     <td><code>object</code></td>
     <td>Represents the preview endpoint and the any possible error messages during preview generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishStatus" /></td>
+    <td><CopyableCode code="publish_status" /></td>
     <td><code>string</code></td>
     <td>The publish status of a portal. (PUBLISHED, PUBLISH_IN_PROGRESS, PUBLISH_FAILED, DISABLE_IN_PROGRESS, DISABLE_FAILED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RumAppMonitorName" /></td>
+    <td><CopyableCode code="rum_app_monitor_name" /></td>
     <td><code>string</code></td>
     <td>The CloudWatch RUM app monitor name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusException" /></td>
+    <td><CopyableCode code="status_exception" /></td>
     <td><code>object</code></td>
     <td>The status exception information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
@@ -135,72 +135,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Authorization" /></td>
+    <td><CopyableCode code="authorization" /></td>
     <td><code>object</code></td>
     <td>Represents an authorization configuration for a portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfiguration" /></td>
+    <td><CopyableCode code="endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>The endpoint configuration of the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludedPortalProductArns" /></td>
+    <td><CopyableCode code="included_portal_product_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the portal products included in the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the portal was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublished" /></td>
+    <td><CopyableCode code="last_published" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the portal was last published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedDescription" /></td>
+    <td><CopyableCode code="last_published_description" /></td>
     <td><code>string</code></td>
     <td>The description of the portal the last time it was published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalArn" /></td>
+    <td><CopyableCode code="portal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalContent" /></td>
+    <td><CopyableCode code="portal_content" /></td>
     <td><code>object</code></td>
     <td>Contains the content that is visible to portal consumers including the themes, display names, and description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalId" /></td>
+    <td><CopyableCode code="portal_id" /></td>
     <td><code>string</code></td>
     <td>The portal identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Preview" /></td>
+    <td><CopyableCode code="preview" /></td>
     <td><code>object</code></td>
     <td>Represents the preview endpoint and the any possible error messages during preview generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishStatus" /></td>
+    <td><CopyableCode code="publish_status" /></td>
     <td><code>string</code></td>
     <td>The publish status. (PUBLISHED, PUBLISH_IN_PROGRESS, PUBLISH_FAILED, DISABLE_IN_PROGRESS, DISABLE_FAILED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RumAppMonitorName" /></td>
+    <td><CopyableCode code="rum_app_monitor_name" /></td>
     <td><code>string</code></td>
     <td>The CloudWatch RUM app monitor name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusException" /></td>
+    <td><CopyableCode code="status_exception" /></td>
     <td><code>object</code></td>
     <td>The status exception information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
@@ -334,20 +334,20 @@ Gets a portal.
 
 ```sql
 SELECT
-Authorization,
-EndpointConfiguration,
-IncludedPortalProductArns,
-LastModified,
-LastPublished,
-LastPublishedDescription,
-PortalArn,
-PortalContent,
-PortalId,
-Preview,
-PublishStatus,
-RumAppMonitorName,
-StatusException,
-Tags
+authorization,
+endpoint_configuration,
+included_portal_product_arns,
+last_modified,
+last_published,
+last_published_description,
+portal_arn,
+portal_content,
+portal_id,
+preview,
+publish_status,
+rum_app_monitor_name,
+status_exception,
+tags
 FROM aws.apigatewayv2.portals
 WHERE portal_id = '{{ portal_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -360,20 +360,20 @@ Lists portals.
 
 ```sql
 SELECT
-Authorization,
-EndpointConfiguration,
-IncludedPortalProductArns,
-LastModified,
-LastPublished,
-LastPublishedDescription,
-PortalArn,
-PortalContent,
-PortalId,
-Preview,
-PublishStatus,
-RumAppMonitorName,
-StatusException,
-Tags
+authorization,
+endpoint_configuration,
+included_portal_product_arns,
+last_modified,
+last_published,
+last_published_description,
+portal_arn,
+portal_content,
+portal_id,
+preview,
+publish_status,
+rum_app_monitor_name,
+status_exception,
+tags
 FROM aws.apigatewayv2.portals
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -418,19 +418,19 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Authorization,
-EndpointConfiguration,
-IncludedPortalProductArns,
-LastModified,
-LastPublished,
-LastPublishedDescription,
-PortalArn,
-PortalContent,
-PortalId,
-PublishStatus,
-RumAppMonitorName,
-StatusException,
-Tags
+authorization,
+endpoint_configuration,
+included_portal_product_arns,
+last_modified,
+last_published,
+last_published_description,
+portal_arn,
+portal_content,
+portal_id,
+publish_status,
+rum_app_monitor_name,
+status_exception,
+tags
 ;
 ```
 </TabItem>
@@ -516,20 +516,20 @@ WHERE
 portal_id = '{{ portal_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Authorization,
-EndpointConfiguration,
-IncludedPortalProductArns,
-LastModified,
-LastPublished,
-LastPublishedDescription,
-PortalArn,
-PortalContent,
-PortalId,
-Preview,
-PublishStatus,
-RumAppMonitorName,
-StatusException,
-Tags;
+authorization,
+endpoint_configuration,
+included_portal_product_arns,
+last_modified,
+last_published,
+last_published_description,
+portal_arn,
+portal_content,
+portal_id,
+preview,
+publish_status,
+rum_app_monitor_name,
+status_exception,
+tags;
 ```
 </TabItem>
 </Tabs>

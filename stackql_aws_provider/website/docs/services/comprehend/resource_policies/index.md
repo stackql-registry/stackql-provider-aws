@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the policy was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyRevisionId" /></td>
+    <td><CopyableCode code="policy_revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision ID of the policy. Each time you modify a policy, Amazon Comprehend assigns a new revision ID, and it deletes the prior version of the policy. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>The JSON body of the resource-based policy. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -148,10 +148,10 @@ Gets the details of a resource-based policy that is attached to a custom model, 
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-PolicyRevisionId,
-ResourcePolicy
+creation_time,
+last_modified_time,
+policy_revision_id,
+resource_policy
 FROM aws.comprehend.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -183,7 +183,7 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 AND ResourcePolicy = '{{ ResourcePolicy }}' --required
 RETURNING
-PolicyRevisionId;
+policy_revision_id;
 ```
 </TabItem>
 </Tabs>

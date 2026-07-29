@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="s3AccessPointArn" /></td>
+    <td><CopyableCode code="s_3_access_point_arn" /></td>
     <td><code>string</code></td>
     <td>The S3 access point ARN that has the access policy. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:s3:&#91;^:&#93;*:&#91;^:&#93;*:accesspoint/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3AccessPolicy" /></td>
+    <td><CopyableCode code="s_3_access_policy" /></td>
     <td><code>string</code></td>
     <td>The current resource policy that controls S3 access on the store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeId" /></td>
+    <td><CopyableCode code="store_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services-generated Sequence Store or Reference Store ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeType" /></td>
+    <td><CopyableCode code="store_type" /></td>
     <td><code>string</code></td>
     <td>The type of store associated with the access point. (SEQUENCE_STORE, REFERENCE_STORE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the policy was last updated.</td>
 </tr>
@@ -158,11 +158,11 @@ Retrieves details about an access policy on a given store.
 
 ```sql
 SELECT
-s3AccessPointArn,
-s3AccessPolicy,
-storeId,
-storeType,
-updateTime
+s_3_access_point_arn,
+s_3_access_policy,
+store_id,
+store_type,
+update_time
 FROM aws.omics.s3_access_policies
 WHERE s3_access_point_arn = '{{ s3_access_point_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -193,9 +193,9 @@ s3_access_point_arn = '{{ s3_access_point_arn }}' --required
 AND region = '{{ region }}' --required
 AND s3AccessPolicy = '{{ s3AccessPolicy }}' --required
 RETURNING
-s3AccessPointArn,
-storeId,
-storeType;
+s_3_access_point_arn,
+store_id,
+store_type;
 ```
 </TabItem>
 </Tabs>

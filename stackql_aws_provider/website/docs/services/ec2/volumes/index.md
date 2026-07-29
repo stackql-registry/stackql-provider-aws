@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachments" /></td>
+    <td><CopyableCode code="attachments" /></td>
     <td><code>string</code></td>
     <td>This parameter is not returned by CreateVolume. Information about the volume attachments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone for the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone for the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time stamp when volume creation was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the volume is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FastRestored" /></td>
+    <td><CopyableCode code="fast_restored" /></td>
     <td><code>boolean</code></td>
     <td>This parameter is not returned by CreateVolume. Indicates whether the volume was created using fast snapshot restore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iops" /></td>
+    <td><CopyableCode code="iops" /></td>
     <td><code>integer</code></td>
     <td>The number of I/O operations per second (IOPS). For gp3, io1, and io2 volumes, this represents the number of IOPS that are provisioned for the volume. For gp2 volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key that was used to protect the volume encryption key for the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAttachEnabled" /></td>
+    <td><CopyableCode code="multi_attach_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Amazon EBS Multi-Attach is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The service provider that manages the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer</code></td>
     <td>The size of the volume, in GiBs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The snapshot from which the volume was created, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceVolumeId" /></td>
+    <td><CopyableCode code="source_volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source volume from which the volume copy was created. Only for volume copies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseType" /></td>
+    <td><CopyableCode code="sse_type" /></td>
     <td><code>string</code></td>
     <td>This parameter is not returned by CreateVolume. Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The volume state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Throughput" /></td>
+    <td><CopyableCode code="throughput" /></td>
     <td><code>integer</code></td>
     <td>The throughput that the volume supports, in MiB/s.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeInitializationRate" /></td>
+    <td><CopyableCode code="volume_initialization_rate" /></td>
     <td><code>integer</code></td>
     <td>The Amazon EBS Provisioned Rate for Volume Initialization (volume initialization rate) specified for the volume during creation, in MiB/s. If no volume initialization rate was specified, the value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeType" /></td>
+    <td><CopyableCode code="volume_type" /></td>
     <td><code>string</code></td>
     <td>The volume type.</td>
 </tr>
@@ -415,27 +415,27 @@ Describes the specified EBS volumes or all of your EBS volumes. If you are descr
 
 ```sql
 SELECT
-Attachments,
-AvailabilityZone,
-AvailabilityZoneId,
-CreateTime,
-Encrypted,
-FastRestored,
-Iops,
-KmsKeyId,
-MultiAttachEnabled,
-Operator,
-OutpostArn,
-Size,
-SnapshotId,
-SourceVolumeId,
-SseType,
-State,
-Tags,
-Throughput,
-VolumeId,
-VolumeInitializationRate,
-VolumeType
+attachments,
+availability_zone,
+availability_zone_id,
+create_time,
+encrypted,
+fast_restored,
+iops,
+kms_key_id,
+multi_attach_enabled,
+operator,
+outpost_arn,
+size,
+snapshot_id,
+source_volume_id,
+sse_type,
+state,
+tags,
+throughput,
+volume_id,
+volume_initialization_rate,
+volume_type
 FROM aws.ec2.volumes
 WHERE region = '{{ region }}' -- required
 AND VolumeId = '{{ VolumeId }}'
@@ -502,27 +502,27 @@ SELECT
 '{{ Operator }}',
 '{{ DryRun }}'
 RETURNING
-Attachments,
-AvailabilityZone,
-AvailabilityZoneId,
-CreateTime,
-Encrypted,
-FastRestored,
-Iops,
-KmsKeyId,
-MultiAttachEnabled,
-Operator,
-OutpostArn,
-Size,
-SnapshotId,
-SourceVolumeId,
-SseType,
-State,
-Tags,
-Throughput,
-VolumeId,
-VolumeInitializationRate,
-VolumeType
+attachments,
+availability_zone,
+availability_zone_id,
+create_time,
+encrypted,
+fast_restored,
+iops,
+kms_key_id,
+multi_attach_enabled,
+operator,
+outpost_arn,
+size,
+snapshot_id,
+source_volume_id,
+sse_type,
+state,
+tags,
+throughput,
+volume_id,
+volume_initialization_rate,
+volume_type
 ;
 ```
 </TabItem>
@@ -629,15 +629,15 @@ AND Device = '{{ Device}}'
 AND EbsCardIndex = '{{ EbsCardIndex}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-AssociatedResource,
-AttachTime,
-DeleteOnTermination,
-Device,
-EbsCardIndex,
-InstanceId,
-InstanceOwningService,
-State,
-VolumeId;
+associated_resource,
+attach_time,
+delete_on_termination,
+device,
+ebs_card_index,
+instance_id,
+instance_owning_service,
+state,
+volume_id;
 ```
 </TabItem>
 <TabItem value="detach_volume">
@@ -656,15 +656,15 @@ AND Force = {{ Force}}
 AND InstanceId = '{{ InstanceId}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-AssociatedResource,
-AttachTime,
-DeleteOnTermination,
-Device,
-EbsCardIndex,
-InstanceId,
-InstanceOwningService,
-State,
-VolumeId;
+associated_resource,
+attach_time,
+delete_on_termination,
+device,
+ebs_card_index,
+instance_id,
+instance_owning_service,
+state,
+volume_id;
 ```
 </TabItem>
 </Tabs>

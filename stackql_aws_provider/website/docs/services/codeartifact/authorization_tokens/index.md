@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authorizationToken" /></td>
+    <td><CopyableCode code="authorization_token" /></td>
     <td><code>string</code></td>
     <td>The returned authentication token.</td>
 </tr>
@@ -139,7 +139,7 @@ Generates a temporary authorization token for accessing repositories in the doma
 
 ```sql
 SELECT
-authorizationToken,
+authorization_token,
 expiration
 FROM aws.codeartifact.authorization_tokens
 WHERE domain = '{{ domain }}' -- required

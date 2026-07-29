@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="controlDomainInsights" /></td>
+    <td><CopyableCode code="control_domain_insights" /></td>
     <td><code>array</code></td>
     <td>The control domain analytics data that the ListControlDomainInsights API returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -134,8 +134,8 @@ Lists the latest analytics data for control domains across all of your active as
 
 ```sql
 SELECT
-controlDomainInsights,
-nextToken
+control_domain_insights,
+next_token
 FROM aws.auditmanager.control_domain_insights
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

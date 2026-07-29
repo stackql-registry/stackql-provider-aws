@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Annotations" /></td>
+    <td><CopyableCode code="annotations" /></td>
     <td><code>object</code></td>
     <td>Annotations from the trace's segment documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>array</code></td>
     <td>A list of Availability Zones for any zone corresponding to the trace segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>number (double)</code></td>
     <td>The length of time in seconds between the start time of the earliest segment that started and the end time of the last segment that completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntryPoint" /></td>
+    <td><CopyableCode code="entry_point" /></td>
     <td><code>object</code></td>
     <td>The root of a trace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorRootCauses" /></td>
+    <td><CopyableCode code="error_root_causes" /></td>
     <td><code>array</code></td>
     <td>A collection of ErrorRootCause structures corresponding to the trace segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaultRootCauses" /></td>
+    <td><CopyableCode code="fault_root_causes" /></td>
     <td><code>array</code></td>
     <td>A collection of FaultRootCause structures corresponding to the trace segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasError" /></td>
+    <td><CopyableCode code="has_error" /></td>
     <td><code>boolean</code></td>
     <td>The root segment document has a 400 series error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasFault" /></td>
+    <td><CopyableCode code="has_fault" /></td>
     <td><code>boolean</code></td>
     <td>The root segment document has a 500 series error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasThrottle" /></td>
+    <td><CopyableCode code="has_throttle" /></td>
     <td><code>boolean</code></td>
     <td>One or more of the segment documents has a 429 throttling error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Http" /></td>
+    <td><CopyableCode code="http" /></td>
     <td><code>object</code></td>
     <td>Information about the HTTP request served by the trace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the request that generated the trace's segments and subsegments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceIds" /></td>
+    <td><CopyableCode code="instance_ids" /></td>
     <td><code>array</code></td>
     <td>A list of EC2 instance IDs for any instance corresponding to the trace segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsPartial" /></td>
+    <td><CopyableCode code="is_partial" /></td>
     <td><code>boolean</code></td>
     <td>One or more of the segment documents is in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchedEventTime" /></td>
+    <td><CopyableCode code="matched_event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The matched time stamp of a defined event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceARNs" /></td>
+    <td><CopyableCode code="resource_arns" /></td>
     <td><code>array</code></td>
     <td>A list of resource ARNs for any resource corresponding to the trace segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseTime" /></td>
+    <td><CopyableCode code="response_time" /></td>
     <td><code>number (double)</code></td>
     <td>The length of time in seconds between the start and end times of the root segment. If the service performs work asynchronously, the response time measures the time before the response is sent to the user, while the duration measures the amount of time before the last traced activity completes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseTimeRootCauses" /></td>
+    <td><CopyableCode code="response_time_root_causes" /></td>
     <td><code>array</code></td>
     <td>A collection of ResponseTimeRootCause structures corresponding to the trace segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>integer</code></td>
     <td>The revision number of a trace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceIds" /></td>
+    <td><CopyableCode code="service_ids" /></td>
     <td><code>array</code></td>
     <td>Service IDs from the trace's segment documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of a trace, based on the earliest trace segment start time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Users" /></td>
+    <td><CopyableCode code="users" /></td>
     <td><code>array</code></td>
     <td>Users from the trace's segment documents.</td>
 </tr>
@@ -219,27 +219,27 @@ Retrieves IDs and annotations for traces available for a specified time frame us
 
 ```sql
 SELECT
-Annotations,
-AvailabilityZones,
-Duration,
-EntryPoint,
-ErrorRootCauses,
-FaultRootCauses,
-HasError,
-HasFault,
-HasThrottle,
-Http,
-Id,
-InstanceIds,
-IsPartial,
-MatchedEventTime,
-ResourceARNs,
-ResponseTime,
-ResponseTimeRootCauses,
-Revision,
-ServiceIds,
-StartTime,
-Users
+annotations,
+availability_zones,
+duration,
+entry_point,
+error_root_causes,
+fault_root_causes,
+has_error,
+has_fault,
+has_throttle,
+http,
+id,
+instance_ids,
+is_partial,
+matched_event_time,
+resource_arns,
+response_time,
+response_time_root_causes,
+revision,
+service_ids,
+start_time,
+users
 FROM aws.xray.trace_summaries
 WHERE region = '{{ region }}' -- required
 ;

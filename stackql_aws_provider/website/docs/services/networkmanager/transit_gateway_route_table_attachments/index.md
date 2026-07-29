@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>object</code></td>
     <td>Describes a core network attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeeringId" /></td>
+    <td><CopyableCode code="peering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the peering attachment. (pattern: &lt;code&gt;^peering-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableArn" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the transit gateway attachment route table. For example, "TransitGatewayRouteTableArn": "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456". (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -141,9 +141,9 @@ Returns information about a transit gateway route table attachment.
 
 ```sql
 SELECT
-Attachment,
-PeeringId,
-TransitGatewayRouteTableArn
+attachment,
+peering_id,
+transit_gateway_route_table_arn
 FROM aws.networkmanager.transit_gateway_route_table_attachments
 WHERE attachment_id = '{{ attachment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -183,7 +183,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-TransitGatewayRouteTableAttachment
+transit_gateway_route_table_attachment
 ;
 ```
 </TabItem>

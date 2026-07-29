@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>object</code></td>
     <td>Describes a core network attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectConnectGatewayArn" /></td>
+    <td><CopyableCode code="direct_connect_gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Direct Connect gateway attachment ARN. (pattern: &lt;code&gt;^arn:&#91;^:&#93;&#123;1,63&#125;:directconnect::&#91;^:&#93;&#123;0,63&#125;:dx-gateway\/&#91;0-9a-f&#93;&#123;8&#125;-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -143,8 +143,8 @@ Returns information about a specific Amazon Web Services Direct Connect gateway 
 
 ```sql
 SELECT
-Attachment,
-DirectConnectGatewayArn
+attachment,
+direct_connect_gateway_arn
 FROM aws.networkmanager.direct_connect_gateway_attachments
 WHERE attachment_id = '{{ attachment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -186,7 +186,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-DirectConnectGatewayAttachment
+direct_connect_gateway_attachment
 ;
 ```
 </TabItem>
@@ -239,7 +239,7 @@ WHERE
 attachment_id = '{{ attachment_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DirectConnectGatewayAttachment;
+direct_connect_gateway_attachment;
 ```
 </TabItem>
 </Tabs>

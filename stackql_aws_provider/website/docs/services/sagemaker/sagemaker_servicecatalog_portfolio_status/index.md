@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Whether Service Catalog is enabled or disabled in SageMaker. (Enabled, Disabled)</td>
 </tr>
@@ -119,7 +119,7 @@ Gets the status of Service Catalog in SageMaker. Service Catalog is used to crea
 
 ```sql
 SELECT
-Status
+status
 FROM aws.sagemaker.sagemaker_servicecatalog_portfolio_status
 WHERE region = '{{ region }}' -- required
 ;

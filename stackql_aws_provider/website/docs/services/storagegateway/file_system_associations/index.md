@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FileSystemAssociationInfoList" /></td>
+    <td><CopyableCode code="file_system_association_info_list" /></td>
     <td><code>array</code></td>
     <td>An array containing the FileSystemAssociationInfo data type of each file system association to be described.</td>
 </tr>
@@ -70,22 +70,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FileSystemAssociationARN" /></td>
+    <td><CopyableCode code="file_system_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the file system association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemAssociationId" /></td>
+    <td><CopyableCode code="file_system_association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file system association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemAssociationStatus" /></td>
+    <td><CopyableCode code="file_system_association_status" /></td>
     <td><code>string</code></td>
     <td>The status of the file share. Valid Values: AVAILABLE | CREATING | DELETING | FORCE_DELETING | UPDATING | ERROR</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
@@ -169,7 +169,7 @@ Gets the file system association information. This operation is only supported f
 
 ```sql
 SELECT
-FileSystemAssociationInfoList
+file_system_association_info_list
 FROM aws.storagegateway.file_system_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,10 +181,10 @@ Gets a list of FileSystemAssociationSummary objects. Each object contains a summ
 
 ```sql
 SELECT
-FileSystemAssociationARN,
-FileSystemAssociationId,
-FileSystemAssociationStatus,
-GatewayARN
+file_system_association_arn,
+file_system_association_id,
+file_system_association_status,
+gateway_arn
 FROM aws.storagegateway.file_system_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -217,7 +217,7 @@ WHERE
 region = '{{ region }}' --required
 AND FileSystemAssociationARN = '{{ FileSystemAssociationARN }}' --required
 RETURNING
-FileSystemAssociationARN;
+file_system_association_arn;
 ```
 </TabItem>
 </Tabs>

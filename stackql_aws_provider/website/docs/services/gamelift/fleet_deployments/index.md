@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FleetDeployment" /></td>
+    <td><CopyableCode code="fleet_deployment" /></td>
     <td><code>object</code></td>
     <td>The requested deployment information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationalDeployments" /></td>
+    <td><CopyableCode code="locational_deployments" /></td>
     <td><code>object</code></td>
     <td>If the deployment is for a multi-location fleet, the requests returns the deployment status in each fleet location.</td>
 </tr>
@@ -75,47 +75,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentConfiguration" /></td>
+    <td><CopyableCode code="deployment_configuration" /></td>
     <td><code>object</code></td>
     <td>Instructions for how to deploy updates to a container fleet and what actions to take if the deployment fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the deployment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of fleet deployment activity in the location. IN_PROGRESS -- The deployment is in progress. IMPAIRED -- The deployment failed and the fleet has some impaired containers. COMPLETE -- The deployment has completed successfully. ROLLBACK_IN_PROGRESS -- The deployment failed and rollback has been initiated. ROLLBACK_IN_COMPLETE -- The deployment failed and rollback has been completed. CANCELLED -- The deployment was cancelled. (IN_PROGRESS, IMPAIRED, COMPLETE, ROLLBACK_IN_PROGRESS, ROLLBACK_COMPLETE, CANCELLED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the container fleet. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerBinaryArn" /></td>
+    <td><CopyableCode code="game_server_binary_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the version of the game server container group definition that is being deployed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerInstanceBinaryArn" /></td>
+    <td><CopyableCode code="per_instance_binary_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the version of the per-instance container group definition that is being deployed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RollbackGameServerBinaryArn" /></td>
+    <td><CopyableCode code="rollback_game_server_binary_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the version of the game server container group definition to roll back to if deployment fails. Amazon GameLift Servers sets this property to the container group definition version that the fleet used when it was last active. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RollbackPerInstanceBinaryArn" /></td>
+    <td><CopyableCode code="rollback_per_instance_binary_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the version of the per-instance container group definition to roll back to if deployment fails. Amazon GameLift Servers sets this property to the container group definition version that the fleet used when it was last active. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -192,8 +192,8 @@ This API works with the following fleet types: Container Retrieves information a
 
 ```sql
 SELECT
-FleetDeployment,
-LocationalDeployments
+fleet_deployment,
+locational_deployments
 FROM aws.gamelift.fleet_deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,15 +205,15 @@ This API works with the following fleet types: Container Retrieves a collection 
 
 ```sql
 SELECT
-CreationTime,
-DeploymentConfiguration,
-DeploymentId,
-DeploymentStatus,
-FleetId,
-GameServerBinaryArn,
-PerInstanceBinaryArn,
-RollbackGameServerBinaryArn,
-RollbackPerInstanceBinaryArn
+creation_time,
+deployment_configuration,
+deployment_id,
+deployment_status,
+fleet_id,
+game_server_binary_arn,
+per_instance_binary_arn,
+rollback_game_server_binary_arn,
+rollback_per_instance_binary_arn
 FROM aws.gamelift.fleet_deployments
 WHERE region = '{{ region }}' -- required
 ;

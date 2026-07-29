@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationTime" /></td>
+    <td><CopyableCode code="association_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the license configuration was initially associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumedLicenses" /></td>
+    <td><CopyableCode code="consumed_licenses" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of licenses consumed by the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>ID of the account that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatus" /></td>
+    <td><CopyableCode code="resource_status" /></td>
     <td><code>string</code></td>
     <td>Status of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Type of resource. (EC2_INSTANCE, EC2_HOST, EC2_AMI, RDS, SYSTEMS_MANAGER_MANAGED_INSTANCE)</td>
 </tr>
@@ -144,12 +144,12 @@ Lists all license usage records for a license configuration, displaying license 
 
 ```sql
 SELECT
-AssociationTime,
-ConsumedLicenses,
-ResourceArn,
-ResourceOwnerId,
-ResourceStatus,
-ResourceType
+association_time,
+consumed_licenses,
+resource_arn,
+resource_owner_id,
+resource_status,
+resource_type
 FROM aws.license_manager.usage_for_license_configurations
 WHERE region = '{{ region }}' -- required
 ;

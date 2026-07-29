@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token you can use to get the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchResults" /></td>
+    <td><CopyableCode code="search_results" /></td>
     <td><code>array</code></td>
     <td>A list of objects containing the search results ordered from most relevant to least relevant.</td>
 </tr>
@@ -124,8 +124,8 @@ Searches sample queries and returns a list of sample queries that are sorted by 
 
 ```sql
 SELECT
-NextToken,
-SearchResults
+next_token,
+search_results
 FROM aws.cloudtrail.sample_queries
 WHERE region = '{{ region }}' -- required
 ;

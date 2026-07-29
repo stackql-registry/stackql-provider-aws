@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can use to return the next set of results, or null if there are no more results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routedResources" /></td>
+    <td><CopyableCode code="routed_resources" /></td>
     <td><code>array</code></td>
     <td>Summary information about the routed resources.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists one or more input routings.
 
 ```sql
 SELECT
-nextToken,
-routedResources
+next_token,
+routed_resources
 FROM aws.iotevents.input_routings
 WHERE region = '{{ region }}' -- required
 ;

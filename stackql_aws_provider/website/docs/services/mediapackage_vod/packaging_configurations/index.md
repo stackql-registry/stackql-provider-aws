@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the PackagingConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmafPackage" /></td>
+    <td><CopyableCode code="cmaf_package" /></td>
     <td><code>object</code></td>
     <td>A CMAF packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time the PackagingConfiguration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashPackage" /></td>
+    <td><CopyableCode code="dash_package" /></td>
     <td><code>object</code></td>
     <td>A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsPackage" /></td>
+    <td><CopyableCode code="hls_package" /></td>
     <td><code>object</code></td>
     <td>An HTTP Live Streaming (HLS) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the PackagingConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MssPackage" /></td>
+    <td><CopyableCode code="mss_package" /></td>
     <td><code>object</code></td>
     <td>A Microsoft Smooth Streaming (MSS) PackagingConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackagingGroupId" /></td>
+    <td><CopyableCode code="packaging_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the PackagingConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmafPackage" /></td>
+    <td><CopyableCode code="cmaf_package" /></td>
     <td><code>object</code></td>
     <td>A CMAF packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time the PackagingConfiguration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashPackage" /></td>
+    <td><CopyableCode code="dash_package" /></td>
     <td><code>object</code></td>
     <td>A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsPackage" /></td>
+    <td><CopyableCode code="hls_package" /></td>
     <td><code>object</code></td>
     <td>An HTTP Live Streaming (HLS) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the PackagingConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MssPackage" /></td>
+    <td><CopyableCode code="mss_package" /></td>
     <td><code>object</code></td>
     <td>A Microsoft Smooth Streaming (MSS) PackagingConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackagingGroupId" /></td>
+    <td><CopyableCode code="packaging_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -261,15 +261,15 @@ Returns a description of a MediaPackage VOD PackagingConfiguration resource.
 
 ```sql
 SELECT
-Arn,
-CmafPackage,
-CreatedAt,
-DashPackage,
-HlsPackage,
-Id,
-MssPackage,
-PackagingGroupId,
-Tags
+arn,
+cmaf_package,
+created_at,
+dash_package,
+hls_package,
+id,
+mss_package,
+packaging_group_id,
+tags
 FROM aws.mediapackage_vod.packaging_configurations
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -282,15 +282,15 @@ Returns a collection of MediaPackage VOD PackagingConfiguration resources.
 
 ```sql
 SELECT
-Arn,
-CmafPackage,
-CreatedAt,
-DashPackage,
-HlsPackage,
-Id,
-MssPackage,
-PackagingGroupId,
-Tags
+arn,
+cmaf_package,
+created_at,
+dash_package,
+hls_package,
+id,
+mss_package,
+packaging_group_id,
+tags
 FROM aws.mediapackage_vod.packaging_configurations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -336,15 +336,15 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-CmafPackage,
-CreatedAt,
-DashPackage,
-HlsPackage,
-Id,
-MssPackage,
-PackagingGroupId,
-Tags
+arn,
+cmaf_package,
+created_at,
+dash_package,
+hls_package,
+id,
+mss_package,
+packaging_group_id,
+tags
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProvisionedCapacityList" /></td>
+    <td><CopyableCode code="provisioned_capacity_list" /></td>
     <td><code>array</code></td>
     <td>The response body contains the following JSON fields.</td>
 </tr>
@@ -124,7 +124,7 @@ This operation lists the provisioned capacity units for the specified AWS accoun
 
 ```sql
 SELECT
-ProvisionedCapacityList
+provisioned_capacity_list
 FROM aws.glacier.provisioned_capacities
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required

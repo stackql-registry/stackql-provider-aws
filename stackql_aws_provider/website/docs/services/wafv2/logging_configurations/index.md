@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogDestinationConfigs" /></td>
+    <td><CopyableCode code="log_destination_configs" /></td>
     <td><code>array</code></td>
     <td>The logging destination configuration that you want to associate with the web ACL. You can associate one logging destination to a web ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogScope" /></td>
+    <td><CopyableCode code="log_scope" /></td>
     <td><code>string</code></td>
     <td>The owner of the logging configuration, which must be set to CUSTOMER for the configurations that you manage. The log scope SECURITY_LAKE indicates a configuration that is managed through Amazon Security Lake. You can use Security Lake to collect log and event data from various sources for normalization, analysis, and management. For information, see Collecting data from Amazon Web Services services in the Amazon Security Lake user guide. The log scope CLOUDWATCH_TELEMETRY_RULE_MANAGED indicates a configuration that is managed through Amazon CloudWatch Logs for telemetry data collection and analysis. For information, see What is Amazon CloudWatch Logs ? in the Amazon CloudWatch Logs user guide. Default: CUSTOMER (CUSTOMER, SECURITY_LAKE, CLOUDWATCH_TELEMETRY_RULE_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogType" /></td>
+    <td><CopyableCode code="log_type" /></td>
     <td><code>string</code></td>
     <td>Used to distinguish between various logging options. Currently, there is one option. Default: WAF_LOGS (WAF_LOGS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingFilter" /></td>
+    <td><CopyableCode code="logging_filter" /></td>
     <td><code>object</code></td>
     <td>Filtering that specifies which web requests are kept in the logs and which are dropped. You can filter on the rule action and on the web request labels that were applied by matching rules during web ACL evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedByFirewallManager" /></td>
+    <td><CopyableCode code="managed_by_firewall_manager" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the logging configuration was created by Firewall Manager, as part of an WAF policy configuration. If true, only Firewall Manager can modify or delete the configuration. The logging configuration can be created by Firewall Manager for use with any web ACL that Firewall Manager is using for an WAF policy. Web ACLs that Firewall Manager creates and uses have their ManagedByFirewallManager property set to true. Web ACLs that were created by a customer account and then retrofitted by Firewall Manager for use by a policy have their RetrofittedByFirewallManager property set to true. For either case, any corresponding logging configuration will indicate ManagedByFirewallManager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedactedFields" /></td>
+    <td><CopyableCode code="redacted_fields" /></td>
     <td><code>array</code></td>
     <td>The parts of the request that you want to keep out of the logs. For example, if you redact the SingleHeader field, the HEADER field in the logs will be REDACTED for all rules that use the SingleHeader FieldToMatch setting. If you configure data protection for the web ACL, the protection applies to the data that WAF sends to the logs. Redaction applies only to the component that's specified in the rule's FieldToMatch setting, so the SingleHeader redaction doesn't apply to rules that use the Headers FieldToMatch. You can specify only the following fields for redaction: UriPath, QueryString, SingleHeader, and Method. This setting has no impact on request sampling. You can only exclude fields from request sampling by disabling sampling in the web ACL visibility configuration or by configuring data protection for the web ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the web ACL that you want to associate with LogDestinationConfigs. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LoggingConfigurations" /></td>
+    <td><CopyableCode code="logging_configurations" /></td>
     <td><code>array</code></td>
     <td>Array of logging configurations. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -196,13 +196,13 @@ Returns the LoggingConfiguration for the specified web ACL.
 
 ```sql
 SELECT
-LogDestinationConfigs,
-LogScope,
-LogType,
-LoggingFilter,
-ManagedByFirewallManager,
-RedactedFields,
-ResourceArn
+log_destination_configs,
+log_scope,
+log_type,
+logging_filter,
+managed_by_firewall_manager,
+redacted_fields,
+resource_arn
 FROM aws.wafv2.logging_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,8 +214,8 @@ Retrieves an array of your LoggingConfiguration objects.
 
 ```sql
 SELECT
-LoggingConfigurations,
-NextMarker
+logging_configurations,
+next_marker
 FROM aws.wafv2.logging_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -244,7 +244,7 @@ WHERE
 region = '{{ region }}' --required
 AND LoggingConfiguration = '{{ LoggingConfiguration }}' --required
 RETURNING
-LoggingConfiguration;
+logging_configuration;
 ```
 </TabItem>
 </Tabs>

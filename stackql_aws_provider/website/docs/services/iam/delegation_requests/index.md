@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproverId" /></td>
+    <td><CopyableCode code="approver_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. For more information about ARNs, go to Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>Creation date (timestamp) of this delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DelegationRequestId" /></td>
+    <td><CopyableCode code="delegation_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the delegation request. This is a message that is provided by the Amazon Web Services partner that filed the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string</code></td>
     <td>The expiry time of this delegation request See the Understanding the Request Lifecycle for details on the life time of a delegation request at each state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notes" /></td>
+    <td><CopyableCode code="notes" /></td>
     <td><code>string</code></td>
     <td>Notes added to this delegation request, if this request was updated via the UpdateDelegationRequest API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnlySendByOwner" /></td>
+    <td><CopyableCode code="only_send_by_owner" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether the SendDelegationToken must be called by the owner of this delegation request. This is set by the requesting partner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID of the owner of the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>ARN of the owner of this delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionPolicy" /></td>
+    <td><CopyableCode code="permission_policy" /></td>
     <td><code>string</code></td>
     <td>JSON content of the associated permission policy of this delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>string</code></td>
     <td>Contains information about the permissions being delegated in a delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedirectUrl" /></td>
+    <td><CopyableCode code="redirect_url" /></td>
     <td><code>string</code></td>
     <td>A URL to be redirected to once the delegation request is approved. Partners provide this URL when creating the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RejectionReason" /></td>
+    <td><CopyableCode code="rejection_reason" /></td>
     <td><code>string</code></td>
     <td>Reasons for rejecting this delegation request, if this request was rejected. See also RejectDelegationRequest API documentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestMessage" /></td>
+    <td><CopyableCode code="request_message" /></td>
     <td><code>string</code></td>
     <td>A custom message that is added to the delegation request by the partner. This element is different from the Description element such that this is a request specific message injected by the partner. The Description is typically a generic explanation of what the delegation request is targeted to do.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestorId" /></td>
+    <td><CopyableCode code="requestor_id" /></td>
     <td><code>string</code></td>
     <td>Identity of the requestor of this delegation request. This will be an Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestorName" /></td>
+    <td><CopyableCode code="requestor_name" /></td>
     <td><code>string</code></td>
     <td>A friendly name of the requestor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RolePermissionRestrictionArns" /></td>
+    <td><CopyableCode code="role_permission_restriction_arns" /></td>
     <td><code>string</code></td>
     <td>If the PermissionPolicy includes role creation permissions, this element will include the list of permissions boundary policies associated with the role creation. See Permissions boundaries for IAM entities for more details about IAM permission boundaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionDuration" /></td>
+    <td><CopyableCode code="session_duration" /></td>
     <td><code>integer</code></td>
     <td>The life-time of the requested session credential.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of this delegation request. See the Understanding the Request Lifecycle for an explanation of how these states are transitioned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string</code></td>
     <td>Last updated timestamp of the request.</td>
 </tr>
@@ -165,102 +165,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproverId" /></td>
+    <td><CopyableCode code="approver_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. For more information about ARNs, go to Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>Creation date (timestamp) of this delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DelegationRequestId" /></td>
+    <td><CopyableCode code="delegation_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the delegation request. This is a message that is provided by the Amazon Web Services partner that filed the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string</code></td>
     <td>The expiry time of this delegation request See the Understanding the Request Lifecycle for details on the life time of a delegation request at each state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notes" /></td>
+    <td><CopyableCode code="notes" /></td>
     <td><code>string</code></td>
     <td>Notes added to this delegation request, if this request was updated via the UpdateDelegationRequest API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnlySendByOwner" /></td>
+    <td><CopyableCode code="only_send_by_owner" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether the SendDelegationToken must be called by the owner of this delegation request. This is set by the requesting partner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID of the owner of the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>ARN of the owner of this delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionPolicy" /></td>
+    <td><CopyableCode code="permission_policy" /></td>
     <td><code>string</code></td>
     <td>JSON content of the associated permission policy of this delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>string</code></td>
     <td>Contains information about the permissions being delegated in a delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedirectUrl" /></td>
+    <td><CopyableCode code="redirect_url" /></td>
     <td><code>string</code></td>
     <td>A URL to be redirected to once the delegation request is approved. Partners provide this URL when creating the delegation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RejectionReason" /></td>
+    <td><CopyableCode code="rejection_reason" /></td>
     <td><code>string</code></td>
     <td>Reasons for rejecting this delegation request, if this request was rejected. See also RejectDelegationRequest API documentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestMessage" /></td>
+    <td><CopyableCode code="request_message" /></td>
     <td><code>string</code></td>
     <td>A custom message that is added to the delegation request by the partner. This element is different from the Description element such that this is a request specific message injected by the partner. The Description is typically a generic explanation of what the delegation request is targeted to do.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestorId" /></td>
+    <td><CopyableCode code="requestor_id" /></td>
     <td><code>string</code></td>
     <td>Identity of the requestor of this delegation request. This will be an Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestorName" /></td>
+    <td><CopyableCode code="requestor_name" /></td>
     <td><code>string</code></td>
     <td>A friendly name of the requestor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RolePermissionRestrictionArns" /></td>
+    <td><CopyableCode code="role_permission_restriction_arns" /></td>
     <td><code>string</code></td>
     <td>If the PermissionPolicy includes role creation permissions, this element will include the list of permissions boundary policies associated with the role creation. See Permissions boundaries for IAM entities for more details about IAM permission boundaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionDuration" /></td>
+    <td><CopyableCode code="session_duration" /></td>
     <td><code>integer</code></td>
     <td>The life-time of the requested session credential.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of this delegation request. See the Understanding the Request Lifecycle for an explanation of how these states are transitioned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string</code></td>
     <td>Last updated timestamp of the request.</td>
 </tr>
@@ -454,26 +454,26 @@ Retrieves information about a specific delegation request. If a delegation reque
 
 ```sql
 SELECT
-ApproverId,
-CreateDate,
-DelegationRequestId,
-Description,
-ExpirationTime,
-Notes,
-OnlySendByOwner,
-OwnerAccountId,
-OwnerId,
-PermissionPolicy,
-Permissions,
-RedirectUrl,
-RejectionReason,
-RequestMessage,
-RequestorId,
-RequestorName,
-RolePermissionRestrictionArns,
-SessionDuration,
-State,
-UpdatedTime
+approver_id,
+create_date,
+delegation_request_id,
+description,
+expiration_time,
+notes,
+only_send_by_owner,
+owner_account_id,
+owner_id,
+permission_policy,
+permissions,
+redirect_url,
+rejection_reason,
+request_message,
+requestor_id,
+requestor_name,
+role_permission_restriction_arns,
+session_duration,
+state,
+updated_time
 FROM aws.iam.delegation_requests
 WHERE DelegationRequestId = '{{ DelegationRequestId }}' -- required
 AND region = '{{ region }}' -- required
@@ -487,26 +487,26 @@ Lists delegation requests based on the specified criteria. If a delegation reque
 
 ```sql
 SELECT
-ApproverId,
-CreateDate,
-DelegationRequestId,
-Description,
-ExpirationTime,
-Notes,
-OnlySendByOwner,
-OwnerAccountId,
-OwnerId,
-PermissionPolicy,
-Permissions,
-RedirectUrl,
-RejectionReason,
-RequestMessage,
-RequestorId,
-RequestorName,
-RolePermissionRestrictionArns,
-SessionDuration,
-State,
-UpdatedTime
+approver_id,
+create_date,
+delegation_request_id,
+description,
+expiration_time,
+notes,
+only_send_by_owner,
+owner_account_id,
+owner_id,
+permission_policy,
+permissions,
+redirect_url,
+rejection_reason,
+request_message,
+requestor_id,
+requestor_name,
+role_permission_restriction_arns,
+session_duration,
+state,
+updated_time
 FROM aws.iam.delegation_requests
 WHERE region = '{{ region }}' -- required
 AND OwnerId = '{{ OwnerId }}'
@@ -556,8 +556,8 @@ SELECT
 '{{ RedirectUrl }}',
 '{{ OnlySendByOwner }}'
 RETURNING
-ConsoleDeepLink,
-DelegationRequestId
+console_deep_link,
+delegation_request_id
 ;
 ```
 </TabItem>

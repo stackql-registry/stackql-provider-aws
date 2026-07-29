@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="templateBody" /></td>
+    <td><CopyableCode code="template_body" /></td>
     <td><code>string</code></td>
     <td>The body text of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateBodyExampleParams" /></td>
+    <td><CopyableCode code="template_body_example_params" /></td>
     <td><code>array</code></td>
     <td>Example parameter values for the template body, used to demonstrate how dynamic content appears in the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateButtons" /></td>
+    <td><CopyableCode code="template_buttons" /></td>
     <td><code>array</code></td>
     <td>The buttons included in the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateCategory" /></td>
+    <td><CopyableCode code="template_category" /></td>
     <td><code>string</code></td>
     <td>The category of the template (for example, UTILITY or MARKETING).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateHeader" /></td>
+    <td><CopyableCode code="template_header" /></td>
     <td><code>string</code></td>
     <td>The header text of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the template in Meta's library. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateIndustry" /></td>
+    <td><CopyableCode code="template_industry" /></td>
     <td><code>array</code></td>
     <td>The industries the template is designed for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateLanguage" /></td>
+    <td><CopyableCode code="template_language" /></td>
     <td><code>string</code></td>
     <td>The language code for the template (for example, en_US).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateTopic" /></td>
+    <td><CopyableCode code="template_topic" /></td>
     <td><code>string</code></td>
     <td>The topic or subject matter of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateUseCase" /></td>
+    <td><CopyableCode code="template_use_case" /></td>
     <td><code>string</code></td>
     <td>The intended use case for the template.</td>
 </tr>
@@ -174,17 +174,17 @@ Lists templates available in Meta's template library for WhatsApp messaging.
 
 ```sql
 SELECT
-templateBody,
-templateBodyExampleParams,
-templateButtons,
-templateCategory,
-templateHeader,
-templateId,
-templateIndustry,
-templateLanguage,
-templateName,
-templateTopic,
-templateUseCase
+template_body,
+template_body_example_params,
+template_buttons,
+template_category,
+template_header,
+template_id,
+template_industry,
+template_language,
+template_name,
+template_topic,
+template_use_case
 FROM aws.socialmessaging.whats_app_template_libraries
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

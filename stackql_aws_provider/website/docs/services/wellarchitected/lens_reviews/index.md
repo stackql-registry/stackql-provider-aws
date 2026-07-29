@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LensReview" /></td>
+    <td><CopyableCode code="lens_review" /></td>
     <td><code>object</code></td>
     <td>A lens review of a question.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MilestoneNumber" /></td>
+    <td><CopyableCode code="milestone_number" /></td>
     <td><code>integer</code></td>
     <td>The milestone number. A workload can have a maximum of 100 milestones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the workload. This ID is unique within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LensReviewSummaries" /></td>
+    <td><CopyableCode code="lens_review_summaries" /></td>
     <td><code>array</code></td>
     <td>List of lens summaries of lens reviews of a workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MilestoneNumber" /></td>
+    <td><CopyableCode code="milestone_number" /></td>
     <td><code>integer</code></td>
     <td>The milestone number. A workload can have a maximum of 100 milestones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the workload. This ID is unique within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -204,9 +204,9 @@ Get lens review.
 
 ```sql
 SELECT
-LensReview,
-MilestoneNumber,
-WorkloadId
+lens_review,
+milestone_number,
+workload_id
 FROM aws.wellarchitected.lens_reviews
 WHERE workload_id = '{{ workload_id }}' -- required
 AND lens_alias = '{{ lens_alias }}' -- required
@@ -221,10 +221,10 @@ List lens reviews for a particular workload.
 
 ```sql
 SELECT
-LensReviewSummaries,
-MilestoneNumber,
-NextToken,
-WorkloadId
+lens_review_summaries,
+milestone_number,
+next_token,
+workload_id
 FROM aws.wellarchitected.lens_reviews
 WHERE workload_id = '{{ workload_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -260,8 +260,8 @@ workload_id = '{{ workload_id }}' --required
 AND lens_alias = '{{ lens_alias }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-LensReview,
-WorkloadId;
+lens_review,
+workload_id;
 ```
 </TabItem>
 </Tabs>

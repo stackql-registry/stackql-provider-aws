@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelMemberships" /></td>
+    <td><CopyableCode code="channel_memberships" /></td>
     <td><code>array</code></td>
     <td>The information for the requested channel memberships.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested users are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ Lists all channels that an AppInstanceUser or AppInstanceBot is a part of. Only 
 
 ```sql
 SELECT
-ChannelMemberships,
-NextToken
+channel_memberships,
+next_token
 FROM aws.chime_sdk_messaging.channel_memberships_for_app_instance_users
 WHERE `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
 AND region = '{{ region }}' -- required

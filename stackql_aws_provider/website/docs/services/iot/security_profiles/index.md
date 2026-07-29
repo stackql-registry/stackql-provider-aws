@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalMetricsToRetain" /></td>
+    <td><CopyableCode code="additional_metrics_to_retain" /></td>
     <td><code>array</code></td>
     <td>Please use DescribeSecurityProfileResponse$additionalMetricsToRetainV2 instead. A list of metrics whose data is retained (stored). By default, data is retained for any metric used in the profile's behaviors, but it is also retained for any metric specified here.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="additionalMetricsToRetainV2" /></td>
+    <td><CopyableCode code="additional_metrics_to_retain_v2" /></td>
     <td><code>array</code></td>
     <td>A list of metrics whose data is retained (stored). By default, data is retained for any metric used in the profile's behaviors, but it is also retained for any metric specified here.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alertTargets" /></td>
+    <td><CopyableCode code="alert_targets" /></td>
     <td><code>object</code></td>
     <td>Where the alerts are sent. (Alerts are always sent to the console.)</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the behaviors that, when violated by a device (thing), cause an alert.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the security profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the security profile was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsExportConfig" /></td>
+    <td><CopyableCode code="metrics_export_config" /></td>
     <td><code>object</code></td>
     <td>Set configurations for metrics export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityProfileArn" /></td>
+    <td><CopyableCode code="security_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityProfileDescription" /></td>
+    <td><CopyableCode code="security_profile_description" /></td>
     <td><code>string</code></td>
     <td>A description of the security profile (associated with the security profile when it was created or updated). (pattern: &lt;code&gt;&#91;\p&#123;Graph&#125;\x20&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityProfileName" /></td>
+    <td><CopyableCode code="security_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the security profile. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -279,16 +279,16 @@ Gets information about a Device Defender security profile. Requires permission t
 
 ```sql
 SELECT
-additionalMetricsToRetain,
-additionalMetricsToRetainV2,
-alertTargets,
+additional_metrics_to_retain,
+additional_metrics_to_retain_v2,
+alert_targets,
 behaviors,
-creationDate,
-lastModifiedDate,
-metricsExportConfig,
-securityProfileArn,
-securityProfileDescription,
-securityProfileName,
+creation_date,
+last_modified_date,
+metrics_export_config,
+security_profile_arn,
+security_profile_description,
+security_profile_name,
 version
 FROM aws.iot.security_profiles
 WHERE security_profile_name = '{{ security_profile_name }}' -- required
@@ -352,8 +352,8 @@ SELECT
 '{{ security_profile_name }}',
 '{{ region }}'
 RETURNING
-securityProfileArn,
-securityProfileName
+security_profile_arn,
+security_profile_name
 ;
 ```
 </TabItem>
@@ -472,16 +472,16 @@ security_profile_name = '{{ security_profile_name }}' --required
 AND region = '{{ region }}' --required
 AND expectedVersion = '{{ expectedVersion}}'
 RETURNING
-additionalMetricsToRetain,
-additionalMetricsToRetainV2,
-alertTargets,
+additional_metrics_to_retain,
+additional_metrics_to_retain_v2,
+alert_targets,
 behaviors,
-creationDate,
-lastModifiedDate,
-metricsExportConfig,
-securityProfileArn,
-securityProfileDescription,
-securityProfileName,
+creation_date,
+last_modified_date,
+metrics_export_config,
+security_profile_arn,
+security_profile_description,
+security_profile_name,
 version;
 ```
 </TabItem>

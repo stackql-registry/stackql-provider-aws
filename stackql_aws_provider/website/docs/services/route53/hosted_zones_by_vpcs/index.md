@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Route 53 hosted zone ID of a private hosted zone that the specified VPC is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the private hosted zone, such as example.com.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The owner of a private hosted zone that the specified VPC is associated with. The owner can be either an Amazon Web Services account or an Amazon Web Services service.</td>
 </tr>
@@ -149,9 +149,9 @@ Lists all the private hosted zones that a specified VPC is associated with, rega
 
 ```sql
 SELECT
-HostedZoneId,
-Name,
-Owner
+hosted_zone_id,
+name,
+owner
 FROM aws.route53.hosted_zones_by_vpcs
 WHERE vpcid = '{{ vpcid }}' -- required
 AND vpcregion = '{{ vpcregion }}' -- required

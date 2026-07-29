@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the resource group owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPattern" /></td>
+    <td><CopyableCode code="log_pattern" /></td>
     <td><code>object</code></td>
     <td>The successfully created log pattern.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceGroupName" /></td>
+    <td><CopyableCode code="resource_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the resource group owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPatterns" /></td>
+    <td><CopyableCode code="log_patterns" /></td>
     <td><code>array</code></td>
     <td>The list of log patterns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceGroupName" /></td>
+    <td><CopyableCode code="resource_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -193,9 +193,9 @@ Describe a specific log pattern from a LogPatternSet.
 
 ```sql
 SELECT
-AccountId,
-LogPattern,
-ResourceGroupName
+account_id,
+log_pattern,
+resource_group_name
 FROM aws.application_insights.log_patterns
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,10 +207,10 @@ Lists the log patterns in the specific log LogPatternSet.
 
 ```sql
 SELECT
-AccountId,
-LogPatterns,
-NextToken,
-ResourceGroupName
+account_id,
+log_patterns,
+next_token,
+resource_group_name
 FROM aws.application_insights.log_patterns
 WHERE region = '{{ region }}' -- required
 ;
@@ -249,8 +249,8 @@ SELECT
 {{ Rank }} /* required */,
 '{{ region }}'
 RETURNING
-LogPattern,
-ResourceGroupName
+log_pattern,
+resource_group_name
 ;
 ```
 </TabItem>
@@ -314,8 +314,8 @@ AND ResourceGroupName = '{{ ResourceGroupName }}' --required
 AND PatternSetName = '{{ PatternSetName }}' --required
 AND PatternName = '{{ PatternName }}' --required
 RETURNING
-LogPattern,
-ResourceGroupName;
+log_pattern,
+resource_group_name;
 ```
 </TabItem>
 </Tabs>

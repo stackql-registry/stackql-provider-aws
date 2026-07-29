@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The resource policy in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the CloudFront resource that is associated with the resource policy.</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves the resource policy for the specified CloudFront resource that you own
 
 ```sql
 SELECT
-PolicyDocument,
-ResourceArn
+policy_document,
+resource_arn
 FROM aws.cloudfront.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,7 +170,7 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 AND PolicyDocument = '{{ PolicyDocument }}' --required
 RETURNING
-ResourceArn;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

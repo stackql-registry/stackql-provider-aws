@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the schema was originally created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the schema was most recently updated.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The namespaces of the entities referenced by this schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy store that contains the schema. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -146,10 +146,10 @@ Retrieve the details for the specified schema in the specified policy store.
 
 ```sql
 SELECT
-createdDate,
-lastUpdatedDate,
+created_date,
+last_updated_date,
 namespaces,
-policyStoreId,
+policy_store_id,
 schema
 FROM aws.verifiedpermissions.schemas
 WHERE region = '{{ region }}' -- required
@@ -181,10 +181,10 @@ region = '{{ region }}' --required
 AND policyStoreId = '{{ policyStoreId }}' --required
 AND definition = '{{ definition }}' --required
 RETURNING
-createdDate,
-lastUpdatedDate,
+created_date,
+last_updated_date,
 namespaces,
-policyStoreId;
+policy_store_id;
 ```
 </TabItem>
 </Tabs>

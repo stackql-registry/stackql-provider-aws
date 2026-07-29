@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the source association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the source association was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource share that contains the source association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceId" /></td>
+    <td><CopyableCode code="source_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the source. This can be an account ID, Amazon Resource Name (ARN), organization ID, or organization path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The type of source.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the source association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message about the status of the source association.</td>
 </tr>
@@ -149,13 +149,13 @@ Lists source associations for resource shares. Source associations control which
 
 ```sql
 SELECT
-creationTime,
-lastUpdatedTime,
-resourceShareArn,
-sourceId,
-sourceType,
+creation_time,
+last_updated_time,
+resource_share_arn,
+source_id,
+source_type,
 status,
-statusMessage
+status_message
 FROM aws.ram.source_associations
 WHERE region = '{{ region }}' -- required
 ;

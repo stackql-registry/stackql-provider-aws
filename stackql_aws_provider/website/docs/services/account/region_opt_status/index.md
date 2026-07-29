@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Region code that was passed in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionOptStatus" /></td>
+    <td><CopyableCode code="region_opt_status" /></td>
     <td><code>string</code></td>
     <td>One of the potential statuses a Region can undergo (Enabled, Enabling, Disabled, Disabling, Enabled_By_Default). (ENABLED, ENABLING, DISABLING, DISABLED, ENABLED_BY_DEFAULT)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the opt-in status of a particular Region.
 
 ```sql
 SELECT
-RegionName,
-RegionOptStatus
+region_name,
+region_opt_status
 FROM aws.account.region_opt_status
 WHERE region = '{{ region }}' -- required
 ;

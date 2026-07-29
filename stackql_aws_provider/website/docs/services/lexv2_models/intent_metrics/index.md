@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the bot for which you retrieved intent metrics. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response from the ListIntentMetrics operation contains more results than specified in the maxResults parameter, a token is returned in the response. Use the returned token in the nextToken parameter of a ListIntentMetrics request to return the next page of results. For a complete set of results, call the ListIntentMetrics operation until the nextToken returned in the response is null.</td>
 </tr>
@@ -134,8 +134,8 @@ Retrieves summary metrics for the intents in your bot. The following fields are 
 
 ```sql
 SELECT
-botId,
-nextToken,
+bot_id,
+next_token,
 results
 FROM aws.lexv2_models.intent_metrics
 WHERE bot_id = '{{ bot_id }}' -- required

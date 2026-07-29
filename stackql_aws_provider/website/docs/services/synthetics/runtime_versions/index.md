@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there is more data available. You can use this token in a subsequent DescribeRuntimeVersions operation to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeVersions" /></td>
+    <td><CopyableCode code="runtime_versions" /></td>
     <td><code>array</code></td>
     <td>An array of objects that display the details about each Synthetics canary runtime version.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of Synthetics canary runtime versions. For more information, see 
 
 ```sql
 SELECT
-NextToken,
-RuntimeVersions
+next_token,
+runtime_versions
 FROM aws.synthetics.runtime_versions
 WHERE region = '{{ region }}' -- required
 ;

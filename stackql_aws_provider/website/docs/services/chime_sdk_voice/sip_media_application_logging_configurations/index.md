@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EnableSipMediaApplicationMessageLogs" /></td>
+    <td><CopyableCode code="enable_sip_media_application_message_logs" /></td>
     <td><code>boolean</code></td>
     <td>Enables message logging for the specified SIP media application.</td>
 </tr>
@@ -131,7 +131,7 @@ Retrieves the logging configuration for the specified SIP media application.
 
 ```sql
 SELECT
-EnableSipMediaApplicationMessageLogs
+enable_sip_media_application_message_logs
 FROM aws.chime_sdk_voice.sip_media_application_logging_configurations
 WHERE sip_media_application_id = '{{ sip_media_application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -161,7 +161,7 @@ WHERE
 sip_media_application_id = '{{ sip_media_application_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-SipMediaApplicationLoggingConfiguration;
+sip_media_application_logging_configuration;
 ```
 </TabItem>
 </Tabs>

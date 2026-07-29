@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetricQueryResults" /></td>
+    <td><CopyableCode code="metric_query_results" /></td>
     <td><code>array</code></td>
     <td>The results of a query to retrieve training metrics from SageMaker.</td>
 </tr>
@@ -126,7 +126,7 @@ Used to retrieve training metrics from SageMaker.
 
 ```sql
 SELECT
-MetricQueryResults
+metric_query_results
 FROM aws.sagemaker_metrics.metrics
 WHERE region = '{{ region }}' -- required
 ;

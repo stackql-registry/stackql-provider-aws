@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupArn" /></td>
+    <td><CopyableCode code="backup_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the backup. (pattern: &lt;code&gt;^(arn:aws(-(us-gov))?:cloudhsm:(&#91;a-z&#93;&#123;2&#125;(-(gov|isob|iso))?-(east|west|north|south|central)&#123;1,2&#125;-&#91;0-9&#93;&#123;1&#125;):&#91;0-9&#93;&#123;12&#125;:backup/)?backup-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupId" /></td>
+    <td><CopyableCode code="backup_id" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the backup. (pattern: &lt;code&gt;backup-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupState" /></td>
+    <td><CopyableCode code="backup_state" /></td>
     <td><code>string</code></td>
     <td>The state of the backup. (CREATE_IN_PROGRESS, READY, DELETED, PENDING_DELETION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the cluster that was backed up. (pattern: &lt;code&gt;cluster-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyTimestamp" /></td>
+    <td><CopyableCode code="copy_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the backup was copied from a source backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTimestamp" /></td>
+    <td><CopyableCode code="create_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the backup was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeleteTimestamp" /></td>
+    <td><CopyableCode code="delete_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the backup will be permanently deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmType" /></td>
+    <td><CopyableCode code="hsm_type" /></td>
     <td><code>string</code></td>
     <td>The HSM type used to create the backup. (pattern: &lt;code&gt;((p|)hsm&#91;0-9&#93;&#91;a-z.&#93;*\.&#91;a-zA-Z&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>The mode of the cluster that was backed up. (FIPS, NON_FIPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NeverExpires" /></td>
+    <td><CopyableCode code="never_expires" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the service should exempt a backup from the retention policy for the cluster. True exempts a backup from the retention policy. False means the service applies the backup retention policy defined at the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBackup" /></td>
+    <td><CopyableCode code="source_backup" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the source backup from which the new backup was copied. (pattern: &lt;code&gt;backup-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceCluster" /></td>
+    <td><CopyableCode code="source_cluster" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the cluster containing the source backup from which the new backup was copied. (pattern: &lt;code&gt;cluster-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceRegion" /></td>
+    <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
     <td>The AWS Region that contains the source backup from which the new backup was copied. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-(gov))?-(east|west|north|south|central)&#123;1,2&#125;-\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>The list of tags for the backup.</td>
 </tr>
@@ -212,20 +212,20 @@ Gets information about backups of CloudHSM clusters. Lists either the backups yo
 
 ```sql
 SELECT
-BackupArn,
-BackupId,
-BackupState,
-ClusterId,
-CopyTimestamp,
-CreateTimestamp,
-DeleteTimestamp,
-HsmType,
-Mode,
-NeverExpires,
-SourceBackup,
-SourceCluster,
-SourceRegion,
-TagList
+backup_arn,
+backup_id,
+backup_state,
+cluster_id,
+copy_timestamp,
+create_timestamp,
+delete_timestamp,
+hsm_type,
+mode,
+never_expires,
+source_backup,
+source_cluster,
+source_region,
+tag_list
 FROM aws.cloudhsmv2.backups
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,7 +256,7 @@ region = '{{ region }}' --required
 AND BackupId = '{{ BackupId }}' --required
 AND NeverExpires = {{ NeverExpires }} --required
 RETURNING
-Backup;
+backup;
 ```
 </TabItem>
 </Tabs>

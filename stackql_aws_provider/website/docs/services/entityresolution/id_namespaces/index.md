@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ID namespace was created.</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the ID namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idMappingWorkflowProperties" /></td>
+    <td><CopyableCode code="id_mapping_workflow_properties" /></td>
     <td><code>array</code></td>
     <td>Determines the properties of IdMappingWorkflow where this IdNamespace can be used as a Source or a Target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idNamespaceArn" /></td>
+    <td><CopyableCode code="id_namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ID namespace. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(idnamespace/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idNamespaceName" /></td>
+    <td><CopyableCode code="id_namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the ID namespace. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputSourceConfig" /></td>
+    <td><CopyableCode code="input_source_config" /></td>
     <td><code>array</code></td>
     <td>A list of InputSource objects, which have the fields InputSourceARN and SchemaName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role. Entity Resolution assumes this role to access the resources defined in this IdNamespace on your behalf as part of a workflow run. (pattern: &lt;code&gt;arn:aws:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of ID namespace. There are two types: SOURCE and TARGET. The SOURCE contains configurations for sourceId data that will be processed in an ID mapping workflow. The TARGET contains a configuration of targetId to which all sourceIds will resolve to. (SOURCE, TARGET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ID namespace was last updated.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ID namespace was created.</td>
 </tr>
@@ -125,17 +125,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the ID namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idMappingWorkflowProperties" /></td>
+    <td><CopyableCode code="id_mapping_workflow_properties" /></td>
     <td><code>array</code></td>
     <td>An object which defines any additional configurations required by the ID mapping workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idNamespaceArn" /></td>
+    <td><CopyableCode code="id_namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ID namespace. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(idnamespace/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idNamespaceName" /></td>
+    <td><CopyableCode code="id_namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the ID namespace. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of ID namespace. There are two types: SOURCE and TARGET. The SOURCE contains configurations for sourceId data that will be processed in an ID mapping workflow. The TARGET contains a configuration of targetId which all sourceIds will resolve to. (SOURCE, TARGET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ID namespace was last updated.</td>
 </tr>
@@ -258,16 +258,16 @@ Returns the IdNamespace with a given name, if it exists.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-idMappingWorkflowProperties,
-idNamespaceArn,
-idNamespaceName,
-inputSourceConfig,
-roleArn,
+id_mapping_workflow_properties,
+id_namespace_arn,
+id_namespace_name,
+input_source_config,
+role_arn,
 tags,
 type_,
-updatedAt
+updated_at
 FROM aws.entityresolution.id_namespaces
 WHERE id_namespace_name = '{{ id_namespace_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -280,13 +280,13 @@ Returns a list of all ID namespaces.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-idMappingWorkflowProperties,
-idNamespaceArn,
-idNamespaceName,
+id_mapping_workflow_properties,
+id_namespace_arn,
+id_namespace_name,
 type_,
-updatedAt
+updated_at
 FROM aws.entityresolution.id_namespaces
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -331,16 +331,16 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
+created_at,
 description,
-idMappingWorkflowProperties,
-idNamespaceArn,
-idNamespaceName,
-inputSourceConfig,
-roleArn,
+id_mapping_workflow_properties,
+id_namespace_arn,
+id_namespace_name,
+input_source_config,
+role_arn,
 tags,
 type_,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -411,15 +411,15 @@ WHERE
 id_namespace_name = '{{ id_namespace_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-createdAt,
+created_at,
 description,
-idMappingWorkflowProperties,
-idNamespaceArn,
-idNamespaceName,
-inputSourceConfig,
-roleArn,
+id_mapping_workflow_properties,
+id_namespace_arn,
+id_namespace_name,
+input_source_config,
+role_arn,
 type_,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

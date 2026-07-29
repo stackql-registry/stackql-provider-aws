@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CarrierStatus" /></td>
+    <td><CopyableCode code="carrier_status" /></td>
     <td><code>array</code></td>
     <td>An array of CarrierStatusInformation objects containing carrier-level launch status details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsoCountryCode" /></td>
+    <td><CopyableCode code="iso_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code, in ISO 3166-1 alpha-2 format, for the country or region. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RcsPlatformId" /></td>
+    <td><CopyableCode code="rcs_platform_id" /></td>
     <td><code>string</code></td>
     <td>The RCS platform identifier for this country.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationId" /></td>
+    <td><CopyableCode code="registration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the registration associated with this country launch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The launch status for this country. (CREATED, PENDING, PARTIAL, ACTIVE, REJECTED)</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves the per-country launch status of an RCS agent, including carrier-level
 
 ```sql
 SELECT
-CarrierStatus,
-IsoCountryCode,
-RcsPlatformId,
-RegistrationId,
-Status
+carrier_status,
+iso_country_code,
+rcs_platform_id,
+registration_id,
+status
 FROM aws.pinpoint_sms_voice_v2.rcs_agent_country_launch_status
 WHERE region = '{{ region }}' -- required
 ;

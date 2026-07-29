@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateCreationDate" /></td>
+    <td><CopyableCode code="certificate_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the certificate was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateIdentifier" /></td>
+    <td><CopyableCode code="certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>A customer-assigned name for the certificate. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateOwner" /></td>
+    <td><CopyableCode code="certificate_owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificatePem" /></td>
+    <td><CopyableCode code="certificate_pem" /></td>
     <td><code>string</code></td>
     <td>The contents of a .pem file, which contains an X.509 certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateWallet" /></td>
+    <td><CopyableCode code="certificate_wallet" /></td>
     <td><code>string (byte)</code></td>
     <td>The location of an imported Oracle Wallet certificate for use with SSL. Example: filebase64("$&#123;path.root&#125;/rds-ca-2019-root.sso")</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyLength" /></td>
+    <td><CopyableCode code="key_length" /></td>
     <td><code>integer</code></td>
     <td>The key length of the cryptographic algorithm being used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>An KMS key identifier that is used to encrypt the certificate. If you don't specify a value for the KmsKeyId parameter, then DMS uses your default encryption key. KMS creates the default encryption key for your Amazon Web Services account. Your Amazon Web Services account has a different default encryption key for each Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningAlgorithm" /></td>
+    <td><CopyableCode code="signing_algorithm" /></td>
     <td><code>string</code></td>
     <td>The signing algorithm for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidFromDate" /></td>
+    <td><CopyableCode code="valid_from_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The beginning date that the certificate is valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidToDate" /></td>
+    <td><CopyableCode code="valid_to_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The final date that the certificate is valid.</td>
 </tr>
@@ -183,17 +183,17 @@ Provides a description of the certificate.
 
 ```sql
 SELECT
-CertificateArn,
-CertificateCreationDate,
-CertificateIdentifier,
-CertificateOwner,
-CertificatePem,
-CertificateWallet,
-KeyLength,
-KmsKeyId,
-SigningAlgorithm,
-ValidFromDate,
-ValidToDate
+certificate_arn,
+certificate_creation_date,
+certificate_identifier,
+certificate_owner,
+certificate_pem,
+certificate_wallet,
+key_length,
+kms_key_id,
+signing_algorithm,
+valid_from_date,
+valid_to_date
 FROM aws.dms.certificates
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HomeRegionControls" /></td>
+    <td><CopyableCode code="home_region_controls" /></td>
     <td><code>array</code></td>
     <td>An array that contains your HomeRegionControl objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If a NextToken was returned by a previous call, more results are available. To retrieve the next page of results, make the call again using the returned token in NextToken. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\+\=&#93;&#123;0,2048&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ This API permits filtering on the ControlId and HomeRegion fields.
 
 ```sql
 SELECT
-HomeRegionControls,
-NextToken
+home_region_controls,
+next_token
 FROM aws.migrationhub_config.home_region_controls
 WHERE region = '{{ region }}' -- required
 ;
@@ -174,7 +174,7 @@ SELECT
 {{ DryRun }},
 '{{ region }}'
 RETURNING
-HomeRegionControl
+home_region_control
 ;
 ```
 </TabItem>

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the identity source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySourceArn" /></td>
+    <td><CopyableCode code="identity_source_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the identity source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySourceParameters" /></td>
+    <td><CopyableCode code="identity_source_parameters" /></td>
     <td><code>object</code></td>
     <td>A IdentitySourceParameters object. Contains details for the resource that provides identities to the identity source. For example, an IAM Identity Center instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySourceType" /></td>
+    <td><CopyableCode code="identity_source_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource that provided identities to the identity source. For example, an IAM Identity Center instance. (IAM_IDENTITY_CENTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the identity source. For example, if the identity source is ACTIVE. (CREATING, ACTIVE, DELETING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>Status code of the identity source. (ACCESS_DENIED, DELETION_FAILED, IDC_INSTANCE_NOT_FOUND, IDC_INSTANCE_NOT_VALID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Message describing the status for the identity source.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the identity source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySourceArn" /></td>
+    <td><CopyableCode code="identity_source_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the identity source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySourceParameters" /></td>
+    <td><CopyableCode code="identity_source_parameters" /></td>
     <td><code>object</code></td>
     <td>A IdentitySourceParametersForList object. Contains details for the resource that provides identities to the identity source. For example, an IAM Identity Center instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySourceType" /></td>
+    <td><CopyableCode code="identity_source_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource that provided identities to the identity source. For example, an IAM Identity Center instance. (IAM_IDENTITY_CENTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the identity source. For example, if the identity source is ACTIVE. (CREATING, ACTIVE, DELETING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>Status code of the identity source. (ACCESS_DENIED, DELETION_FAILED, IDC_INSTANCE_NOT_FOUND, IDC_INSTANCE_NOT_VALID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Message describing the status for the identity source.</td>
 </tr>
@@ -236,13 +236,13 @@ Returns details for an identity source. For more information, see Identity Sourc
 
 ```sql
 SELECT
-CreationTime,
-IdentitySourceArn,
-IdentitySourceParameters,
-IdentitySourceType,
-Status,
-StatusCode,
-StatusMessage
+creation_time,
+identity_source_arn,
+identity_source_parameters,
+identity_source_type,
+status,
+status_code,
+status_message
 FROM aws.mpa.identity_sources
 WHERE identity_source_arn = '{{ identity_source_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -255,13 +255,13 @@ Returns a list of identity sources. For more information, see Identity Source in
 
 ```sql
 SELECT
-CreationTime,
-IdentitySourceArn,
-IdentitySourceParameters,
-IdentitySourceType,
-Status,
-StatusCode,
-StatusMessage
+creation_time,
+identity_source_arn,
+identity_source_parameters,
+identity_source_type,
+status,
+status_code,
+status_message
 FROM aws.mpa.identity_sources
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -298,9 +298,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreationTime,
-IdentitySourceArn,
-IdentitySourceType
+creation_time,
+identity_source_arn,
+identity_source_type
 ;
 ```
 </TabItem>

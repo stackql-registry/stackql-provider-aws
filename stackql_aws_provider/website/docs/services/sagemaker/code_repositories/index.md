@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CodeRepositoryArn" /></td>
+    <td><CopyableCode code="code_repository_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Git repository. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:code-repository/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeRepositoryName" /></td>
+    <td><CopyableCode code="code_repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Git repository. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the repository was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GitConfig" /></td>
+    <td><CopyableCode code="git_config" /></td>
     <td><code>object</code></td>
     <td>Configuration details about the repository, including the URL where the repository is located, the default branch, and the Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the repository was last changed.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CodeRepositoryArn" /></td>
+    <td><CopyableCode code="code_repository_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Git repository. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:code-repository/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeRepositoryName" /></td>
+    <td><CopyableCode code="code_repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Git repository. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Git repository was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GitConfig" /></td>
+    <td><CopyableCode code="git_config" /></td>
     <td><code>object</code></td>
     <td>Configuration details for the Git repository, including the URL where it is located and the ARN of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Git repository was last modified.</td>
 </tr>
@@ -208,11 +208,11 @@ Gets details about the specified Git repository.
 
 ```sql
 SELECT
-CodeRepositoryArn,
-CodeRepositoryName,
-CreationTime,
-GitConfig,
-LastModifiedTime
+code_repository_arn,
+code_repository_name,
+creation_time,
+git_config,
+last_modified_time
 FROM aws.sagemaker.code_repositories
 WHERE region = '{{ region }}' -- required
 ;
@@ -224,11 +224,11 @@ Gets a list of the Git repositories in your account.
 
 ```sql
 SELECT
-CodeRepositoryArn,
-CodeRepositoryName,
-CreationTime,
-GitConfig,
-LastModifiedTime
+code_repository_arn,
+code_repository_name,
+creation_time,
+git_config,
+last_modified_time
 FROM aws.sagemaker.code_repositories
 WHERE region = '{{ region }}' -- required
 ;
@@ -263,7 +263,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CodeRepositoryArn
+code_repository_arn
 ;
 ```
 </TabItem>
@@ -319,7 +319,7 @@ WHERE
 region = '{{ region }}' --required
 AND CodeRepositoryName = '{{ CodeRepositoryName }}' --required
 RETURNING
-CodeRepositoryArn;
+code_repository_arn;
 ```
 </TabItem>
 </Tabs>

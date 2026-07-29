@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalSourceConfiguration" /></td>
+    <td><CopyableCode code="external_source_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information of the external data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedRecordReport" /></td>
+    <td><CopyableCode code="failed_record_report" /></td>
     <td><code>string</code></td>
     <td>The link to donwload the information of resource data that failed to be imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importJobId" /></td>
+    <td><CopyableCode code="import_job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the import job. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importJobType" /></td>
+    <td><CopyableCode code="import_job_type" /></td>
     <td><code>string</code></td>
     <td>The type of the import job. (QUICK_RESPONSES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. This should not be a QUICK_RESPONSES type knowledge base if you're storing Wisdom Content resource to it. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the import job data was last modified.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the import job. (START_IN_PROGRESS, FAILED, COMPLETE, DELETE_IN_PROGRESS, DELETE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadId" /></td>
+    <td><CopyableCode code="upload_id" /></td>
     <td><code>string</code></td>
     <td>A pointer to the uploaded asset. This value is returned by StartContentUpload.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The download link to the resource file that is uploaded to the import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="urlExpiry" /></td>
+    <td><CopyableCode code="url_expiry" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration time of the URL as an epoch timestamp.</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalSourceConfiguration" /></td>
+    <td><CopyableCode code="external_source_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information of the external data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importJobId" /></td>
+    <td><CopyableCode code="import_job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the import job. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importJobType" /></td>
+    <td><CopyableCode code="import_job_type" /></td>
     <td><code>string</code></td>
     <td>The type of import job. (QUICK_RESPONSES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. This should not be a QUICK_RESPONSES type knowledge base if you're storing Wisdom Content resource to it. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the import job was last modified.</td>
 </tr>
@@ -175,7 +175,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the import job. (START_IN_PROGRESS, FAILED, COMPLETE, DELETE_IN_PROGRESS, DELETE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadId" /></td>
+    <td><CopyableCode code="upload_id" /></td>
     <td><code>string</code></td>
     <td>A pointer to the uploaded asset. This value is returned by StartContentUpload.</td>
 </tr>
@@ -279,19 +279,19 @@ Retrieves the started import job.
 
 ```sql
 SELECT
-createdTime,
-externalSourceConfiguration,
-failedRecordReport,
-importJobId,
-importJobType,
-knowledgeBaseArn,
-knowledgeBaseId,
-lastModifiedTime,
+created_time,
+external_source_configuration,
+failed_record_report,
+import_job_id,
+import_job_type,
+knowledge_base_arn,
+knowledge_base_id,
+last_modified_time,
 metadata,
 status,
-uploadId,
+upload_id,
 url,
-urlExpiry
+url_expiry
 FROM aws.wisdom.import_jobs
 WHERE import_job_id = '{{ import_job_id }}' -- required
 AND knowledge_base_id = '{{ knowledge_base_id }}' -- required
@@ -305,16 +305,16 @@ Lists information about import jobs.
 
 ```sql
 SELECT
-createdTime,
-externalSourceConfiguration,
-importJobId,
-importJobType,
-knowledgeBaseArn,
-knowledgeBaseId,
-lastModifiedTime,
+created_time,
+external_source_configuration,
+import_job_id,
+import_job_type,
+knowledge_base_arn,
+knowledge_base_id,
+last_modified_time,
 metadata,
 status,
-uploadId
+upload_id
 FROM aws.wisdom.import_jobs
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BillingConfiguration" /></td>
+    <td><CopyableCode code="billing_configuration" /></td>
     <td><code>object</code></td>
     <td>Returns the current billing configuration for the WorkSpace Instance, indicating the active billing mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EC2InstanceErrors" /></td>
+    <td><CopyableCode code="ec2_instance_errors" /></td>
     <td><code>array</code></td>
     <td>Includes any underlying EC2 instance errors encountered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EC2ManagedInstance" /></td>
+    <td><CopyableCode code="ec2_managed_instance" /></td>
     <td><code>object</code></td>
     <td>Details of the associated EC2 managed instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionState" /></td>
+    <td><CopyableCode code="provision_state" /></td>
     <td><code>string</code></td>
     <td>Current provisioning state of the WorkSpaces Instance. (ALLOCATING, ALLOCATED, DEALLOCATING, DEALLOCATED, ERROR_ALLOCATING, ERROR_DEALLOCATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceInstanceErrors" /></td>
+    <td><CopyableCode code="workspace_instance_errors" /></td>
     <td><code>array</code></td>
     <td>Captures any errors specific to the WorkSpace Instance lifecycle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceInstanceId" /></td>
+    <td><CopyableCode code="workspace_instance_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the retrieved WorkSpaces Instance. (pattern: &lt;code&gt;wsinst-&#91;0-9a-zA-Z&#93;&#123;8,63&#125;&lt;/code&gt;)</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EC2ManagedInstance" /></td>
+    <td><CopyableCode code="ec2_managed_instance" /></td>
     <td><code>object</code></td>
     <td>Details of the associated EC2 managed instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionState" /></td>
+    <td><CopyableCode code="provision_state" /></td>
     <td><code>string</code></td>
     <td>Current provisioning state of the WorkSpace Instance. (ALLOCATING, ALLOCATED, DEALLOCATING, DEALLOCATED, ERROR_ALLOCATING, ERROR_DEALLOCATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceInstanceId" /></td>
+    <td><CopyableCode code="workspace_instance_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the WorkSpace Instance. (pattern: &lt;code&gt;wsinst-&#91;0-9a-zA-Z&#93;&#123;8,63&#125;&lt;/code&gt;)</td>
 </tr>
@@ -196,12 +196,12 @@ Retrieves detailed information about a specific WorkSpace Instance.
 
 ```sql
 SELECT
-BillingConfiguration,
-EC2InstanceErrors,
-EC2ManagedInstance,
-ProvisionState,
-WorkspaceInstanceErrors,
-WorkspaceInstanceId
+billing_configuration,
+ec2_instance_errors,
+ec2_managed_instance,
+provision_state,
+workspace_instance_errors,
+workspace_instance_id
 FROM aws.workspaces_instances.workspace_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,9 +213,9 @@ Retrieves a collection of WorkSpaces Instances based on specified filters.
 
 ```sql
 SELECT
-EC2ManagedInstance,
-ProvisionState,
-WorkspaceInstanceId
+ec2_managed_instance,
+provision_state,
+workspace_instance_id
 FROM aws.workspaces_instances.workspace_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,7 +252,7 @@ SELECT
 '{{ BillingConfiguration }}',
 '{{ region }}'
 RETURNING
-WorkspaceInstanceId
+workspace_instance_id
 ;
 ```
 </TabItem>

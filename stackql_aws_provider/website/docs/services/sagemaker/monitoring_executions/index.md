@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the monitoring job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint used to run the monitoring job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Contains the reason a monitoring job failed, if it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates the last time the monitoring job was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringExecutionStatus" /></td>
+    <td><CopyableCode code="monitoring_execution_status" /></td>
     <td><code>string</code></td>
     <td>The status of the monitoring job. (Pending, Completed, CompletedWithViolations, InProgress, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringJobDefinitionName" /></td>
+    <td><CopyableCode code="monitoring_job_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitoring job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleName" /></td>
+    <td><CopyableCode code="monitoring_schedule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitoring schedule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringType" /></td>
+    <td><CopyableCode code="monitoring_type" /></td>
     <td><code>string</code></td>
     <td>The type of the monitoring job. (DataQuality, ModelQuality, ModelBias, ModelExplainability)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingJobArn" /></td>
+    <td><CopyableCode code="processing_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitoring job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:processing-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledTime" /></td>
+    <td><CopyableCode code="scheduled_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the monitoring job was scheduled.</td>
 </tr>
@@ -164,16 +164,16 @@ Returns list of all monitoring job executions.
 
 ```sql
 SELECT
-CreationTime,
-EndpointName,
-FailureReason,
-LastModifiedTime,
-MonitoringExecutionStatus,
-MonitoringJobDefinitionName,
-MonitoringScheduleName,
-MonitoringType,
-ProcessingJobArn,
-ScheduledTime
+creation_time,
+endpoint_name,
+failure_reason,
+last_modified_time,
+monitoring_execution_status,
+monitoring_job_definition_name,
+monitoring_schedule_name,
+monitoring_type,
+processing_job_arn,
+scheduled_time
 FROM aws.sagemaker.monitoring_executions
 WHERE region = '{{ region }}' -- required
 ;

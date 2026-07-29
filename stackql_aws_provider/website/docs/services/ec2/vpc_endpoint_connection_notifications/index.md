@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionEvents" /></td>
+    <td><CopyableCode code="connection_events" /></td>
     <td><code>string</code></td>
     <td>The events for the notification. Valid values are Accept, Connect, Delete, and Reject.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionNotificationArn" /></td>
+    <td><CopyableCode code="connection_notification_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the SNS topic for the notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionNotificationId" /></td>
+    <td><CopyableCode code="connection_notification_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionNotificationState" /></td>
+    <td><CopyableCode code="connection_notification_state" /></td>
     <td><code>string</code></td>
     <td>The state of the notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionNotificationType" /></td>
+    <td><CopyableCode code="connection_notification_type" /></td>
     <td><code>string</code></td>
     <td>The type of notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the endpoint service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRegion" /></td>
+    <td><CopyableCode code="service_region" /></td>
     <td><code>string</code></td>
     <td>The Region for the endpoint service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint.</td>
 </tr>
@@ -240,14 +240,14 @@ Describes the connection notifications for VPC endpoints and VPC endpoint servic
 
 ```sql
 SELECT
-ConnectionEvents,
-ConnectionNotificationArn,
-ConnectionNotificationId,
-ConnectionNotificationState,
-ConnectionNotificationType,
-ServiceId,
-ServiceRegion,
-VpcEndpointId
+connection_events,
+connection_notification_arn,
+connection_notification_id,
+connection_notification_state,
+connection_notification_type,
+service_id,
+service_region,
+vpc_endpoint_id
 FROM aws.ec2.vpc_endpoint_connection_notifications
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -293,8 +293,8 @@ SELECT
 '{{ VpcEndpointId }}',
 '{{ ClientToken }}'
 RETURNING
-ClientToken,
-ConnectionNotification
+client_token,
+connection_notification
 ;
 ```
 </TabItem>
@@ -357,7 +357,7 @@ AND DryRun = {{ DryRun}}
 AND ConnectionNotificationArn = '{{ ConnectionNotificationArn}}'
 AND ConnectionEvents = '{{ ConnectionEvents}}'
 RETURNING
-ReturnValue;
+return_value;
 ```
 </TabItem>
 </Tabs>

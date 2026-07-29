@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdapterId" /></td>
+    <td><CopyableCode code="adapter_id" /></td>
     <td><code>string</code></td>
     <td>A string containing a unique ID for the adapter version being retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdapterVersion" /></td>
+    <td><CopyableCode code="adapter_version" /></td>
     <td><code>string</code></td>
     <td>A string containing the adapter version that has been retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the adapter version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetConfig" /></td>
+    <td><CopyableCode code="dataset_config" /></td>
     <td><code>object</code></td>
     <td>Specifies a dataset used to train a new adapter version. Takes a ManifestS3Objec as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationMetrics" /></td>
+    <td><CopyableCode code="evaluation_metrics" /></td>
     <td><code>array</code></td>
     <td>The evaluation metrics (F1 score, Precision, and Recall) for the requested version, grouped by baseline metrics and adapter version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureTypes" /></td>
+    <td><CopyableCode code="feature_types" /></td>
     <td><code>array</code></td>
     <td>List of the targeted feature types for the requested adapter version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KMSKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for your AWS Key Management Service key (AWS KMS key). Used to encrypt your documents. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,2048&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>Sets whether or not your output will go to a user created bucket. Used to set the name of the bucket, and the prefix on the output file. OutputConfig is an optional parameter which lets you adjust where your output will be placed. By default, Amazon Textract will store the results internally and can only be accessed by the Get API operations. With OutputConfig enabled, you can set the name of the bucket the output will be sent to the file prefix of the results where you can download your results. Additionally, you can set the KMSKeyID parameter to a customer master key (CMK) to encrypt your output. Without this parameter set Amazon Textract will encrypt server-side using the AWS managed CMK for Amazon S3. Decryption of Customer Content is necessary for processing of the documents by Amazon Textract. If your account is opted out under an AI services opt out policy then all unencrypted Customer Content is immediately and permanently deleted after the Customer Content has been processed by the service. No copy of of the output is retained by Amazon Textract. For information about how to opt out, see Managing AI services opt-out policy. For more information on data privacy, see the Data Privacy FAQ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the adapter version that has been requested. (ACTIVE, AT_RISK, DEPRECATED, CREATION_ERROR, CREATION_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message that describes the status of the requested adapter version. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s!"\#\$%'&\(\)\*\+\,\-\./:;=\?@\&#91;\\\&#93;\^_`\&#123;\|\&#125;~&gt;&lt;&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of tags (key-value pairs) that are associated with the adapter version.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdapterId" /></td>
+    <td><CopyableCode code="adapter_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the adapter associated with a given adapter version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdapterVersion" /></td>
+    <td><CopyableCode code="adapter_version" /></td>
     <td><code>string</code></td>
     <td>An identified for a given adapter version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a given adapter version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureTypes" /></td>
+    <td><CopyableCode code="feature_types" /></td>
     <td><code>array</code></td>
     <td>The feature types that the adapter version is operating on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Contains information on the status of a given adapter version. (ACTIVE, AT_RISK, DEPRECATED, CREATION_ERROR, CREATION_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message explaining the status of a given adapter vesion. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s!"\#\$%'&\(\)\*\+\,\-\./:;=\?@\&#91;\\\&#93;\^_`\&#123;\|\&#125;~&gt;&lt;&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -236,17 +236,17 @@ Gets configuration information for the specified adapter version, including: Ada
 
 ```sql
 SELECT
-AdapterId,
-AdapterVersion,
-CreationTime,
-DatasetConfig,
-EvaluationMetrics,
-FeatureTypes,
-KMSKeyId,
-OutputConfig,
-Status,
-StatusMessage,
-Tags
+adapter_id,
+adapter_version,
+creation_time,
+dataset_config,
+evaluation_metrics,
+feature_types,
+kms_key_id,
+output_config,
+status,
+status_message,
+tags
 FROM aws.textract.adapter_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,12 +258,12 @@ List all version of an adapter that meet the specified filtration criteria.
 
 ```sql
 SELECT
-AdapterId,
-AdapterVersion,
-CreationTime,
-FeatureTypes,
-Status,
-StatusMessage
+adapter_id,
+adapter_version,
+creation_time,
+feature_types,
+status,
+status_message
 FROM aws.textract.adapter_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -304,8 +304,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AdapterId,
-AdapterVersion
+adapter_id,
+adapter_version
 ;
 ```
 </TabItem>

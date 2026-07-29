@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Deadline" /></td>
+    <td><CopyableCode code="deadline" /></td>
     <td><code>string</code></td>
     <td>The date in UTC at which you are permanently switched over to using longer IDs. If a deadline is not yet available for this resource type, this field is not returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resource" /></td>
+    <td><CopyableCode code="resource" /></td>
     <td><code>string</code></td>
     <td>The type of resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseLongIds" /></td>
+    <td><CopyableCode code="use_long_ids" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether longer IDs (17-character IDs) are enabled for the resource.</td>
 </tr>
@@ -151,9 +151,9 @@ Describes the ID format settings for resources for the specified IAM user, IAM r
 
 ```sql
 SELECT
-Deadline,
-Resource,
-UseLongIds
+deadline,
+resource,
+use_long_ids
 FROM aws.ec2.identity_id_formats
 WHERE PrincipalArn = '{{ PrincipalArn }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Describes the reason for the failure status. The field will only be populated if Status is FAILED_START or FAILED_STOP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeRegion" /></td>
+    <td><CopyableCode code="home_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region that is designated as the home region for multi-region telemetry evaluation. The home region is the single management point for all multi-region operations on this account. This field is only present when multi-region telemetry evaluation is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionStatuses" /></td>
+    <td><CopyableCode code="region_statuses" /></td>
     <td><code>array</code></td>
     <td>A list of per-region telemetry evaluation statuses. Each entry indicates the evaluation status for a specific spoke region included in the multi-region configuration. This field is only present when multi-region telemetry evaluation is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The onboarding status of the telemetry config feature. (NOT_STARTED, STARTING, FAILED_START, RUNNING, STOPPING, FAILED_STOP, STOPPED)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the current onboarding status of the telemetry config feature, including
 
 ```sql
 SELECT
-FailureReason,
-HomeRegion,
-RegionStatuses,
-Status
+failure_reason,
+home_region,
+region_statuses,
+status
 FROM aws.observabilityadmin.telemetry_evaluation_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -100,7 +100,7 @@ ForceMove = {{ ForceMove }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Result;
+result;
 ```
 </TabItem>
 </Tabs>

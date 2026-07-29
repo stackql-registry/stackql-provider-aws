@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="WorkloadConfiguration" /></td>
+    <td><CopyableCode code="workload_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration settings of the workload. The value is the escaped JSON of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workload. (pattern: &lt;code&gt;w-&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadRemarks" /></td>
+    <td><CopyableCode code="workload_remarks" /></td>
     <td><code>string</code></td>
     <td>If logging is supported for the resource type, shows whether the component has configured logs to be monitored.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to request the next page of results. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadList" /></td>
+    <td><CopyableCode code="workload_list" /></td>
     <td><code>array</code></td>
     <td>The list of workloads.</td>
 </tr>
@@ -183,9 +183,9 @@ Describes a workload and its configuration.
 
 ```sql
 SELECT
-WorkloadConfiguration,
-WorkloadId,
-WorkloadRemarks
+workload_configuration,
+workload_id,
+workload_remarks
 FROM aws.application_insights.workloads
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ Lists the workloads that are configured on a given component.
 
 ```sql
 SELECT
-NextToken,
-WorkloadList
+next_token,
+workload_list
 FROM aws.application_insights.workloads
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,8 +232,8 @@ AND ResourceGroupName = '{{ ResourceGroupName }}' --required
 AND ComponentName = '{{ ComponentName }}' --required
 AND WorkloadConfiguration = '{{ WorkloadConfiguration }}' --required
 RETURNING
-WorkloadConfiguration,
-WorkloadId;
+workload_configuration,
+workload_id;
 ```
 </TabItem>
 <TabItem value="remove_workload">

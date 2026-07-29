@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalysisReportId" /></td>
+    <td><CopyableCode code="analysis_report_id" /></td>
     <td><code>string</code></td>
     <td>The name of the analysis report. (pattern: &lt;code&gt;report-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time you created the analysis report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The analysis end time in the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the analysis report. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Insights" /></td>
+    <td><CopyableCode code="insights" /></td>
     <td><code>array</code></td>
     <td>The list of identified insights in the analysis report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceType" /></td>
+    <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>List the tags for the Amazon Web Services service for which Performance Insights returns metrics. Valid values are as follows: RDS DOCDB (RDS, DOCDB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The analysis start time in the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the created analysis report. (RUNNING, SUCCEEDED, FAILED)</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalysisReports" /></td>
+    <td><CopyableCode code="analysis_reports" /></td>
     <td><code>array</code></td>
     <td>List of reports including the report identifier, start and end time, creation time, and status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the token, up to the value specified by MaxResults. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_=-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -201,14 +201,14 @@ Retrieves the report including the report ID, status, time details, and the insi
 
 ```sql
 SELECT
-AnalysisReportId,
-CreateTime,
-EndTime,
-Identifier,
-Insights,
-ServiceType,
-StartTime,
-Status
+analysis_report_id,
+create_time,
+end_time,
+identifier,
+insights,
+service_type,
+start_time,
+status
 FROM aws.pi.performance_analysis_reports
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,8 +220,8 @@ Lists all the analysis reports created for the DB instance. The reports are sort
 
 ```sql
 SELECT
-AnalysisReports,
-NextToken
+analysis_reports,
+next_token
 FROM aws.pi.performance_analysis_reports
 WHERE region = '{{ region }}' -- required
 ;
@@ -260,7 +260,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AnalysisReportId
+analysis_report_id
 ;
 ```
 </TabItem>

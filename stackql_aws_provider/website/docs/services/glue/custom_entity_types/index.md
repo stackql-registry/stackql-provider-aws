@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomEntityTypes" /></td>
+    <td><CopyableCode code="custom_entity_types" /></td>
     <td><code>array</code></td>
     <td>A list of CustomEntityType objects representing the custom patterns that have been created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomEntityTypesNotFound" /></td>
+    <td><CopyableCode code="custom_entity_types_not_found" /></td>
     <td><code>array</code></td>
     <td>A list of the names of custom patterns that were not found.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContextWords" /></td>
+    <td><CopyableCode code="context_words" /></td>
     <td><code>array</code></td>
     <td>A list of context words if specified when you created the custom pattern. If none of these context words are found within the vicinity of the regular expression the data will not be detected as sensitive data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom pattern that you retrieved. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexString" /></td>
+    <td><CopyableCode code="regex_string" /></td>
     <td><code>string</code></td>
     <td>A regular expression string that is used for detecting sensitive data in a custom pattern. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -183,8 +183,8 @@ Retrieves the details for the custom patterns specified by a list of names.
 
 ```sql
 SELECT
-CustomEntityTypes,
-CustomEntityTypesNotFound
+custom_entity_types,
+custom_entity_types_not_found
 FROM aws.glue.custom_entity_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -196,9 +196,9 @@ Retrieves the details of a custom pattern by specifying its name.
 
 ```sql
 SELECT
-ContextWords,
-Name,
-RegexString
+context_words,
+name,
+regex_string
 FROM aws.glue.custom_entity_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,7 +235,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>

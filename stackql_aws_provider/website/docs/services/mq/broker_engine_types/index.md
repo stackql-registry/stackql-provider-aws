@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BrokerEngineTypes" /></td>
+    <td><CopyableCode code="broker_engine_types" /></td>
     <td><code>array</code></td>
     <td>List of available engine types and versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxResults" /></td>
+    <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
     <td>Required. The maximum number of engine types that can be returned per page (20 by default). This value must be an integer from 5 to 100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.</td>
 </tr>
@@ -144,9 +144,9 @@ Describe available engine types and versions.
 
 ```sql
 SELECT
-BrokerEngineTypes,
-MaxResults,
-NextToken
+broker_engine_types,
+max_results,
+next_token
 FROM aws.mq.broker_engine_types
 WHERE region = '{{ region }}' -- required
 AND engineType = '{{ engineType }}'

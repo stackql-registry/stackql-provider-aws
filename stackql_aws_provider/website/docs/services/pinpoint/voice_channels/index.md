@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the voice channel applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the voice channel was enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the voice channel is enabled for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasCredential" /></td>
+    <td><CopyableCode code="has_credential" /></td>
     <td><code>boolean</code></td>
     <td>(Not used) This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) An identifier for the voice channel. This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the voice channel is archived.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The user who last modified the voice channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the voice channel was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The type of messaging or notification platform for the channel. For the voice channel, this value is VOICE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The current version of the voice channel.</td>
 </tr>
@@ -183,16 +183,16 @@ Retrieves information about the status and settings of the voice channel for an 
 
 ```sql
 SELECT
-ApplicationId,
-CreationDate,
-Enabled,
-HasCredential,
-Id,
-IsArchived,
-LastModifiedBy,
-LastModifiedDate,
-Platform,
-Version
+application_id,
+creation_date,
+enabled,
+has_credential,
+id,
+is_archived,
+last_modified_by,
+last_modified_date,
+platform,
+version
 FROM aws.pinpoint.voice_channels
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -223,7 +223,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND VoiceChannelRequest = '{{ VoiceChannelRequest }}' --required
 RETURNING
-VoiceChannelResponse;
+voice_channel_response;
 ```
 </TabItem>
 </Tabs>

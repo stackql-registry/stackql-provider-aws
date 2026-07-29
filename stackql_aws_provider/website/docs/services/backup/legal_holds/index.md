@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CancelDescription" /></td>
+    <td><CopyableCode code="cancel_description" /></td>
     <td><code>string</code></td>
     <td>The reason for removing the legal hold.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CancellationDate" /></td>
+    <td><CopyableCode code="cancellation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the legal hold was cancelled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the legal hold was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the legal hold.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LegalHoldArn" /></td>
+    <td><CopyableCode code="legal_hold_arn" /></td>
     <td><code>string</code></td>
     <td>The framework ARN for the specified legal hold. The format of the ARN depends on the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LegalHoldId" /></td>
+    <td><CopyableCode code="legal_hold_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the legal hold.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryPointSelection" /></td>
+    <td><CopyableCode code="recovery_point_selection" /></td>
     <td><code>object</code></td>
     <td>This specifies criteria to assign a set of resources, such as resource types or backup vaults.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetainRecordUntil" /></td>
+    <td><CopyableCode code="retain_record_until" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time until which the legal hold record is retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the legal hold. (CREATING, ACTIVE, CANCELING, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of the legal hold.</td>
 </tr>
@@ -115,37 +115,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CancellationDate" /></td>
+    <td><CopyableCode code="cancellation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the legal hold was cancelled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the legal hold was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a legal hold.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LegalHoldArn" /></td>
+    <td><CopyableCode code="legal_hold_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the legal hold; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LegalHoldId" /></td>
+    <td><CopyableCode code="legal_hold_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the legal hold.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the legal hold. (CREATING, ACTIVE, CANCELING, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of a legal hold.</td>
 </tr>
@@ -261,16 +261,16 @@ This action returns details for a specified legal hold. The details are the body
 
 ```sql
 SELECT
-CancelDescription,
-CancellationDate,
-CreationDate,
-Description,
-LegalHoldArn,
-LegalHoldId,
-RecoveryPointSelection,
-RetainRecordUntil,
-Status,
-Title
+cancel_description,
+cancellation_date,
+creation_date,
+description,
+legal_hold_arn,
+legal_hold_id,
+recovery_point_selection,
+retain_record_until,
+status,
+title
 FROM aws.backup.legal_holds
 WHERE legal_hold_id = '{{ legal_hold_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -283,13 +283,13 @@ This action returns metadata about active and previous legal holds.
 
 ```sql
 SELECT
-CancellationDate,
-CreationDate,
-Description,
-LegalHoldArn,
-LegalHoldId,
-Status,
-Title
+cancellation_date,
+creation_date,
+description,
+legal_hold_arn,
+legal_hold_id,
+status,
+title
 FROM aws.backup.legal_holds
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -330,13 +330,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreationDate,
-Description,
-LegalHoldArn,
-LegalHoldId,
-RecoveryPointSelection,
-Status,
-Title
+creation_date,
+description,
+legal_hold_arn,
+legal_hold_id,
+recovery_point_selection,
+status,
+title
 ;
 ```
 </TabItem>

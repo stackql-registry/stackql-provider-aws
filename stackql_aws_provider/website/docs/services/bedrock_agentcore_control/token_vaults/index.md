@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kmsConfiguration" /></td>
+    <td><CopyableCode code="kms_configuration" /></td>
     <td><code>object</code></td>
     <td>The KMS configuration for the token vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the token vault was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenVaultId" /></td>
+    <td><CopyableCode code="token_vault_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the token vault. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves information about a token vault.
 
 ```sql
 SELECT
-kmsConfiguration,
-lastModifiedDate,
-tokenVaultId
+kms_configuration,
+last_modified_date,
+token_vault_id
 FROM aws.bedrock_agentcore_control.token_vaults
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,9 +168,9 @@ WHERE
 region = '{{ region }}' --required
 AND kmsConfiguration = '{{ kmsConfiguration }}' --required
 RETURNING
-kmsConfiguration,
-lastModifiedDate,
-tokenVaultId;
+kms_configuration,
+last_modified_date,
+token_vault_id;
 ```
 </TabItem>
 </Tabs>

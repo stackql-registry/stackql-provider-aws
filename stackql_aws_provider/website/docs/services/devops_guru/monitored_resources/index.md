@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which DevOps Guru last updated this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoredResourceName" /></td>
+    <td><CopyableCode code="monitored_resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource being monitored. (pattern: &lt;code&gt;&#91;\.\-_\/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCollection" /></td>
+    <td><CopyableCode code="resource_collection" /></td>
     <td><code>object</code></td>
     <td>A collection of Amazon Web Services resources supported by DevOps Guru. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag key. You can specify up to 500 Amazon Web Services CloudFormation stacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePermission" /></td>
+    <td><CopyableCode code="resource_permission" /></td>
     <td><code>string</code></td>
     <td>The permission status of a resource. (FULL_PERMISSION, MISSING_PERMISSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of resource being monitored. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+&#91;a-zA-Z0-9-_:&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Returns the list of all log groups that are being monitored and tagged by DevOps
 
 ```sql
 SELECT
-LastUpdated,
-MonitoredResourceName,
-ResourceCollection,
-ResourcePermission,
-Type
+last_updated,
+monitored_resource_name,
+resource_collection,
+resource_permission,
+type
 FROM aws.devops_guru.monitored_resources
 WHERE region = '{{ region }}' -- required
 ;

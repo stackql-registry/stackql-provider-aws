@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="workloadAccessToken" /></td>
+    <td><CopyableCode code="workload_access_token" /></td>
     <td><code>string</code></td>
     <td>The access token for the specified workload.</td>
 </tr>
@@ -119,7 +119,7 @@ Obtains a workload access token for agentic workloads acting on behalf of a user
 
 ```sql
 SELECT
-workloadAccessToken
+workload_access_token
 FROM aws.bedrock_agentcore.workload_access_token_for_user_ids
 WHERE region = '{{ region }}' -- required
 ;

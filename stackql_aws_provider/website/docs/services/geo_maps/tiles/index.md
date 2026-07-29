@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blob" /></td>
+    <td><CopyableCode code="blob" /></td>
     <td><code>string (byte)</code></td>
     <td>The blob represents a vector tile in mvt or a raster tile in an image format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>Header that instructs caching configuration for the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Header that represents the format of the response. The response returns the following as the HTTP body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The pricing bucket for which the request is charged at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingBucket" /></td>
+    <td><CopyableCode code="pricing_bucket" /></td>
     <td><code>string</code></td>
     <td>The pricing bucket for which the request is charged at.</td>
 </tr>
@@ -169,11 +169,11 @@ GetTile returns a tile. Map tiles are used by clients to render a map. They're a
 
 ```sql
 SELECT
-Blob,
-CacheControl,
-ContentType,
-ETag,
-PricingBucket
+blob,
+cache_control,
+content_type,
+e_tag,
+pricing_bucket
 FROM aws.geo_maps.tiles
 WHERE tileset = '{{ tileset }}' -- required
 AND z = '{{ z }}' -- required

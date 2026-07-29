@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalysisCompletionTime" /></td>
+    <td><CopyableCode code="analysis_completion_time" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnalysisId" /></td>
+    <td><CopyableCode code="analysis_id" /></td>
     <td><code>string</code></td>
     <td>The analysis ID that's associated with the commitment purchase analysis. (pattern: &lt;code&gt;^&#91;\S\s&#93;&#123;8&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnalysisStartedTime" /></td>
+    <td><CopyableCode code="analysis_started_time" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnalysisStatus" /></td>
+    <td><CopyableCode code="analysis_status" /></td>
     <td><code>string</code></td>
     <td>The status of the analysis. (SUCCEEDED, PROCESSING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CommitmentPurchaseAnalysisConfiguration" /></td>
+    <td><CopyableCode code="commitment_purchase_analysis_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for the commitment purchase analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code used for the analysis. (NO_USAGE_FOUND, INTERNAL_FAILURE, INVALID_SAVINGS_PLANS_TO_ADD, INVALID_SAVINGS_PLANS_TO_EXCLUDE, INVALID_ACCOUNT_ID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedCompletionTime" /></td>
+    <td><CopyableCode code="estimated_completion_time" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
@@ -149,13 +149,13 @@ Lists the commitment purchase analyses for your account.
 
 ```sql
 SELECT
-AnalysisCompletionTime,
-AnalysisId,
-AnalysisStartedTime,
-AnalysisStatus,
-CommitmentPurchaseAnalysisConfiguration,
-ErrorCode,
-EstimatedCompletionTime
+analysis_completion_time,
+analysis_id,
+analysis_started_time,
+analysis_status,
+commitment_purchase_analysis_configuration,
+error_code,
+estimated_completion_time
 FROM aws.ce.commitment_purchase_analyses
 WHERE region = '{{ region }}' -- required
 ;

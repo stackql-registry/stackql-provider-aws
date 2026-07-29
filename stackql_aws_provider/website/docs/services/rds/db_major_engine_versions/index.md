@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MajorEngineVersion" /></td>
+    <td><CopyableCode code="major_engine_version" /></td>
     <td><code>string</code></td>
     <td>The major version number of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedEngineLifecycles" /></td>
+    <td><CopyableCode code="supported_engine_lifecycles" /></td>
     <td><code>string</code></td>
     <td>A list of the lifecycles supported by this engine for the DescribeDBMajorEngineVersions operation.</td>
 </tr>
@@ -149,9 +149,9 @@ Describes the properties of specific major versions of DB engines.
 
 ```sql
 SELECT
-Engine,
-MajorEngineVersion,
-SupportedEngineLifecycles
+engine,
+major_engine_version,
+supported_engine_lifecycles
 FROM aws.rds.db_major_engine_versions
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

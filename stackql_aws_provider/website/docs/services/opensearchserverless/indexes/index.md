@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="indexSchema" /></td>
+    <td><CopyableCode code="index_schema" /></td>
     <td><code>object</code></td>
     <td>The JSON schema definition for the index, including field mappings and settings.</td>
 </tr>
@@ -140,7 +140,7 @@ Retrieves information about an index in an OpenSearch Serverless collection, inc
 
 ```sql
 SELECT
-indexSchema
+index_schema
 FROM aws.opensearchserverless.indexes
 WHERE region = '{{ region }}' -- required
 ;

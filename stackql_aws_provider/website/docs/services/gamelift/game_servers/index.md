@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClaimStatus" /></td>
+    <td><CopyableCode code="claim_status" /></td>
     <td><code>string</code></td>
     <td>Indicates when an available game server has been reserved for gameplay but has not yet started hosting a game. Once it is claimed, the game server remains in CLAIMED status for a maximum of one minute. During this time, game clients connect to the game server to start the game and trigger the game server to update its utilization status. After one minute, the game server claim status reverts to null. (CLAIMED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionInfo" /></td>
+    <td><CopyableCode code="connection_info" /></td>
     <td><code>string</code></td>
     <td>The port and IP address that must be used to establish a client connection to the game server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerData" /></td>
+    <td><CopyableCode code="game_server_data" /></td>
     <td><code>string</code></td>
     <td>A set of custom game server properties, formatted as a single string value. This data is passed to a game client or service when it requests information on game servers. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupArn" /></td>
+    <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier for the game server group where the game server is located. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupName" /></td>
+    <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the game server group where the game server is running. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerId" /></td>
+    <td><CopyableCode code="game_server_id" /></td>
     <td><code>string</code></td>
     <td>A custom string that uniquely identifies the game server. Game server IDs are developer-defined and are unique across all game server groups in an Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the instance where the game server is running. This ID is available in the instance metadata. EC2 instance IDs use a 17-character format, for example: i-1234567890abcdef0. (pattern: &lt;code&gt;^i-&#91;0-9a-zA-Z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastClaimTime" /></td>
+    <td><CopyableCode code="last_claim_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp that indicates the last time the game server was claimed. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057"). This value is used to calculate when a claimed game server's status should revert to null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastHealthCheckTime" /></td>
+    <td><CopyableCode code="last_health_check_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp that indicates the last time the game server was updated with health status. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057"). After game server registration, this property is only changed when a game server update specifies a health check value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationTime" /></td>
+    <td><CopyableCode code="registration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp that indicates when the game server registered. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UtilizationStatus" /></td>
+    <td><CopyableCode code="utilization_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the game server is currently available for new games or is busy. Possible statuses include: AVAILABLE - The game server is available to be claimed. A game server that has been claimed remains in this status until it reports game hosting activity. UTILIZED - The game server is currently hosting a game session with players. (AVAILABLE, UTILIZED)</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClaimStatus" /></td>
+    <td><CopyableCode code="claim_status" /></td>
     <td><code>string</code></td>
     <td>Indicates when an available game server has been reserved for gameplay but has not yet started hosting a game. Once it is claimed, the game server remains in CLAIMED status for a maximum of one minute. During this time, game clients connect to the game server to start the game and trigger the game server to update its utilization status. After one minute, the game server claim status reverts to null. (CLAIMED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionInfo" /></td>
+    <td><CopyableCode code="connection_info" /></td>
     <td><code>string</code></td>
     <td>The port and IP address that must be used to establish a client connection to the game server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerData" /></td>
+    <td><CopyableCode code="game_server_data" /></td>
     <td><code>string</code></td>
     <td>A set of custom game server properties, formatted as a single string value. This data is passed to a game client or service when it requests information on game servers. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupArn" /></td>
+    <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier for the game server group where the game server is located. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupName" /></td>
+    <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the game server group where the game server is running. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerId" /></td>
+    <td><CopyableCode code="game_server_id" /></td>
     <td><code>string</code></td>
     <td>A custom string that uniquely identifies the game server. Game server IDs are developer-defined and are unique across all game server groups in an Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the instance where the game server is running. This ID is available in the instance metadata. EC2 instance IDs use a 17-character format, for example: i-1234567890abcdef0. (pattern: &lt;code&gt;^i-&#91;0-9a-zA-Z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastClaimTime" /></td>
+    <td><CopyableCode code="last_claim_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp that indicates the last time the game server was claimed. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057"). This value is used to calculate when a claimed game server's status should revert to null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastHealthCheckTime" /></td>
+    <td><CopyableCode code="last_health_check_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp that indicates the last time the game server was updated with health status. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057"). After game server registration, this property is only changed when a game server update specifies a health check value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationTime" /></td>
+    <td><CopyableCode code="registration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp that indicates when the game server registered. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UtilizationStatus" /></td>
+    <td><CopyableCode code="utilization_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the game server is currently available for new games or is busy. Possible statuses include: AVAILABLE - The game server is available to be claimed. A game server that has been claimed remains in this status until it reports game hosting activity. UTILIZED - The game server is currently hosting a game session with players. (AVAILABLE, UTILIZED)</td>
 </tr>
@@ -275,17 +275,17 @@ This API works with the following fleet types: EC2 (FleetIQ) Retrieves informati
 
 ```sql
 SELECT
-ClaimStatus,
-ConnectionInfo,
-GameServerData,
-GameServerGroupArn,
-GameServerGroupName,
-GameServerId,
-InstanceId,
-LastClaimTime,
-LastHealthCheckTime,
-RegistrationTime,
-UtilizationStatus
+claim_status,
+connection_info,
+game_server_data,
+game_server_group_arn,
+game_server_group_name,
+game_server_id,
+instance_id,
+last_claim_time,
+last_health_check_time,
+registration_time,
+utilization_status
 FROM aws.gamelift.game_servers
 WHERE region = '{{ region }}' -- required
 ;
@@ -297,17 +297,17 @@ This API works with the following fleet types: EC2 (FleetIQ) Retrieves informati
 
 ```sql
 SELECT
-ClaimStatus,
-ConnectionInfo,
-GameServerData,
-GameServerGroupArn,
-GameServerGroupName,
-GameServerId,
-InstanceId,
-LastClaimTime,
-LastHealthCheckTime,
-RegistrationTime,
-UtilizationStatus
+claim_status,
+connection_info,
+game_server_data,
+game_server_group_arn,
+game_server_group_name,
+game_server_id,
+instance_id,
+last_claim_time,
+last_health_check_time,
+registration_time,
+utilization_status
 FROM aws.gamelift.game_servers
 WHERE region = '{{ region }}' -- required
 ;
@@ -346,7 +346,7 @@ SELECT
 '{{ GameServerData }}',
 '{{ region }}'
 RETURNING
-GameServer
+game_server
 ;
 ```
 </TabItem>
@@ -409,7 +409,7 @@ region = '{{ region }}' --required
 AND GameServerGroupName = '{{ GameServerGroupName }}' --required
 AND GameServerId = '{{ GameServerId }}' --required
 RETURNING
-GameServer;
+game_server;
 ```
 </TabItem>
 </Tabs>

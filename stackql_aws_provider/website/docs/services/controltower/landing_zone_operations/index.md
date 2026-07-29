@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The landing zone operation end time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationIdentifier" /></td>
+    <td><CopyableCode code="operation_identifier" /></td>
     <td><code>string</code></td>
     <td>The operationIdentifier of the landing zone operation. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The landing zone operation type. Valid values: DELETE: The DeleteLandingZone operation. CREATE: The CreateLandingZone operation. UPDATE: The UpdateLandingZone operation. RESET: The ResetLandingZone operation. (DELETE, CREATE, UPDATE, RESET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The landing zone operation start time.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>Valid values: SUCCEEDED: The landing zone operation succeeded. IN_PROGRESS: The landing zone operation is in progress. FAILED: The landing zone operation failed. (SUCCEEDED, FAILED, IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>If the operation result is FAILED, this string contains a message explaining why the operation failed.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="operationIdentifier" /></td>
+    <td><CopyableCode code="operation_identifier" /></td>
     <td><code>string</code></td>
     <td>The operationIdentifier of the landing zone operation. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The type of the landing zone operation. (DELETE, CREATE, UPDATE, RESET)</td>
 </tr>
@@ -182,12 +182,12 @@ Returns the status of the specified landing zone operation. Details for an opera
 
 ```sql
 SELECT
-endTime,
-operationIdentifier,
-operationType,
-startTime,
+end_time,
+operation_identifier,
+operation_type,
+start_time,
 status,
-statusMessage
+status_message
 FROM aws.controltower.landing_zone_operations
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,8 +199,8 @@ Lists all landing zone operations from the past 90 days. Results are sorted by t
 
 ```sql
 SELECT
-operationIdentifier,
-operationType,
+operation_identifier,
+operation_type,
 status
 FROM aws.controltower.landing_zone_operations
 WHERE region = '{{ region }}' -- required

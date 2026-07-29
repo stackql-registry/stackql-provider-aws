@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="blockchainInstant" /></td>
+    <td><CopyableCode code="blockchain_instant" /></td>
     <td><code>object</code></td>
     <td>The container for time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="confirmationStatus" /></td>
+    <td><CopyableCode code="confirmation_status" /></td>
     <td><code>string</code></td>
     <td>This container specifies whether the transaction has reached Finality. (FINAL, NONFINAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contractAddress" /></td>
+    <td><CopyableCode code="contract_address" /></td>
     <td><code>string</code></td>
     <td>The blockchain address for the contract (pattern: &lt;code&gt;&#91;-A-Za-z0-9&#93;&#123;13,74&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of transaction event. (ERC20_TRANSFER, ERC20_MINT, ERC20_BURN, ERC20_DEPOSIT, ERC20_WITHDRAWAL, ERC721_TRANSFER, ERC1155_TRANSFER, BITCOIN_VIN, BITCOIN_VOUT, INTERNAL_ETH_TRANSFER, ETH_TRANSFER)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The blockchain network where the transaction occurred. (ETHEREUM_MAINNET, ETHEREUM_SEPOLIA_TESTNET, BITCOIN_MAINNET, BITCOIN_TESTNET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spentVoutIndex" /></td>
+    <td><CopyableCode code="spent_vout_index" /></td>
     <td><code>integer</code></td>
     <td>The position of the spent transaction output in the output list of the creating transaction. This is only returned for BITCOIN_VIN event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spentVoutTransactionHash" /></td>
+    <td><CopyableCode code="spent_vout_transaction_hash" /></td>
     <td><code>string</code></td>
     <td>The transactionHash that created the spent transaction output. This is only returned for BITCOIN_VIN event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spentVoutTransactionId" /></td>
+    <td><CopyableCode code="spent_vout_transaction_id" /></td>
     <td><code>string</code></td>
     <td>The transactionId that created the spent transaction output. This is only returned for BITCOIN_VIN event types.</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
     <td>The wallet address receiving the transaction. It can either be a public key or a contract. (pattern: &lt;code&gt;&#91;-A-Za-z0-9&#93;&#123;13,74&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenId" /></td>
+    <td><CopyableCode code="token_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the token involved in the transaction. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;1,66&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionHash" /></td>
+    <td><CopyableCode code="transaction_hash" /></td>
     <td><code>string</code></td>
     <td>The hash of a transaction. It is generated when a transaction is created. (pattern: &lt;code&gt;(0x&#91;A-Fa-f0-9&#93;&#123;64&#125;|&#91;A-Fa-f0-9&#93;&#123;64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionId" /></td>
+    <td><CopyableCode code="transaction_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a Bitcoin transaction. It is generated when a transaction is created.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The value that was transacted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="voutIndex" /></td>
+    <td><CopyableCode code="vout_index" /></td>
     <td><code>integer</code></td>
     <td>The position of the transaction output in the transaction output list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="voutSpent" /></td>
+    <td><CopyableCode code="vout_spent" /></td>
     <td><code>boolean</code></td>
     <td>Specifies if the transaction output is spent or unspent. This is only returned for BITCOIN_VOUT event types. This is only returned for BITCOIN_VOUT event types.</td>
 </tr>
@@ -194,22 +194,22 @@ Lists all the transaction events for a transaction This action will return trans
 
 ```sql
 SELECT
-blockchainInstant,
-confirmationStatus,
-contractAddress,
-eventType,
+blockchain_instant,
+confirmation_status,
+contract_address,
+event_type,
 from,
 network,
-spentVoutIndex,
-spentVoutTransactionHash,
-spentVoutTransactionId,
+spent_vout_index,
+spent_vout_transaction_hash,
+spent_vout_transaction_id,
 to,
-tokenId,
-transactionHash,
-transactionId,
+token_id,
+transaction_hash,
+transaction_id,
 value,
-voutIndex,
-voutSpent
+vout_index,
+vout_spent
 FROM aws.managedblockchain_query.transaction_events
 WHERE region = '{{ region }}' -- required
 ;

@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The recipe of the component version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeOutputFormat" /></td>
+    <td><CopyableCode code="recipe_output_format" /></td>
     <td><code>string</code></td>
     <td>The format of the recipe. (JSON, YAML)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the component version. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:greengrass:&#91;^:&#93;*:(aws|&#91;0-9&#93;+):components:&#91;^:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentName" /></td>
+    <td><CopyableCode code="component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersion" /></td>
+    <td><CopyableCode code="latest_version" /></td>
     <td><code>object</code></td>
     <td>The latest version of the component and its details.</td>
 </tr>
@@ -207,7 +207,7 @@ Gets the recipe for a version of a component.
 ```sql
 SELECT
 recipe,
-recipeOutputFormat,
+recipe_output_format,
 tags
 FROM aws.greengrassv2.components
 WHERE arn = '{{ arn }}' -- required
@@ -223,8 +223,8 @@ Retrieves a paginated list of component summaries. This list includes components
 ```sql
 SELECT
 arn,
-componentName,
-latestVersion
+component_name,
+latest_version
 FROM aws.greengrassv2.components
 WHERE region = '{{ region }}' -- required
 AND scope = '{{ scope }}'

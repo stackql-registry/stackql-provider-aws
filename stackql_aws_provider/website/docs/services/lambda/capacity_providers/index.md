@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityProviderArn" /></td>
+    <td><CopyableCode code="capacity_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the capacity provider. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:capacity-provider:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityProviderScalingConfig" /></td>
+    <td><CopyableCode code="capacity_provider_scaling_config" /></td>
     <td><code>object</code></td>
     <td>Configuration that defines how the capacity provider scales compute instances based on demand and policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceRequirements" /></td>
+    <td><CopyableCode code="instance_requirements" /></td>
     <td><code>object</code></td>
     <td>Specifications that define the characteristics and constraints for compute instances used by the capacity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key used to encrypt the capacity provider's resources. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z0-9-.&#93;+:.*)|()&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time when the capacity provider was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsConfig" /></td>
+    <td><CopyableCode code="permissions_config" /></td>
     <td><code>object</code></td>
     <td>Configuration that specifies the permissions required for the capacity provider to manage compute resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the capacity provider. (Pending, Active, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>VPC configuration that specifies the network settings for compute instances managed by the capacity provider.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityProviderArn" /></td>
+    <td><CopyableCode code="capacity_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the capacity provider. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:capacity-provider:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityProviderScalingConfig" /></td>
+    <td><CopyableCode code="capacity_provider_scaling_config" /></td>
     <td><code>object</code></td>
     <td>Configuration that defines how the capacity provider scales compute instances based on demand and policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceRequirements" /></td>
+    <td><CopyableCode code="instance_requirements" /></td>
     <td><code>object</code></td>
     <td>Specifications that define the characteristics and constraints for compute instances used by the capacity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key used to encrypt the capacity provider's resources. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z0-9-.&#93;+:.*)|()&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time when the capacity provider was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsConfig" /></td>
+    <td><CopyableCode code="permissions_config" /></td>
     <td><code>object</code></td>
     <td>Configuration that specifies the permissions required for the capacity provider to manage compute resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the capacity provider. (Pending, Active, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>VPC configuration that specifies the network settings for compute instances managed by the capacity provider.</td>
 </tr>
@@ -258,14 +258,14 @@ Retrieves information about a specific capacity provider, including its configur
 
 ```sql
 SELECT
-CapacityProviderArn,
-CapacityProviderScalingConfig,
-InstanceRequirements,
-KmsKeyArn,
-LastModified,
-PermissionsConfig,
-State,
-VpcConfig
+capacity_provider_arn,
+capacity_provider_scaling_config,
+instance_requirements,
+kms_key_arn,
+last_modified,
+permissions_config,
+state,
+vpc_config
 FROM aws.lambda.capacity_providers
 WHERE capacity_provider_name = '{{ capacity_provider_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,14 +278,14 @@ Returns a list of capacity providers in your account.
 
 ```sql
 SELECT
-CapacityProviderArn,
-CapacityProviderScalingConfig,
-InstanceRequirements,
-KmsKeyArn,
-LastModified,
-PermissionsConfig,
-State,
-VpcConfig
+capacity_provider_arn,
+capacity_provider_scaling_config,
+instance_requirements,
+kms_key_arn,
+last_modified,
+permissions_config,
+state,
+vpc_config
 FROM aws.lambda.capacity_providers
 WHERE region = '{{ region }}' -- required
 AND State = '{{ State }}'
@@ -331,7 +331,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CapacityProvider
+capacity_provider
 ;
 ```
 </TabItem>
@@ -407,7 +407,7 @@ WHERE
 capacity_provider_name = '{{ capacity_provider_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CapacityProvider;
+capacity_provider;
 ```
 </TabItem>
 </Tabs>

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the relationship.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedAccountId" /></td>
+    <td><CopyableCode code="associated_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID associated in this relationship. (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of association for the relationship. (DOWNSTREAM_SELLER, END_CUSTOMER, INTERNAL)</td>
 </tr>
@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>The catalog identifier associated with the relationship. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the relationship was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the relationship. (pattern: &lt;code&gt;&#91;^\x00-\x1F\x7F&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="programManagementAccountId" /></td>
+    <td><CopyableCode code="program_management_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the program management account. (pattern: &lt;code&gt;pma-&#91;a-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resaleAccountModel" /></td>
+    <td><CopyableCode code="resale_account_model" /></td>
     <td><code>string</code></td>
     <td>The resale account model for the relationship. (DISTRIBUTOR, END_CUSTOMER, SOLUTION_PROVIDER)</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The business sector for the relationship. (COMMERCIAL, GOVERNMENT, GOVERNMENT_EXCEPTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date of the relationship.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the relationship was last updated.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the relationship.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedAccountId" /></td>
+    <td><CopyableCode code="associated_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID associated in this relationship. (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of association for the relationship. (DOWNSTREAM_SELLER, END_CUSTOMER, INTERNAL)</td>
 </tr>
@@ -155,17 +155,17 @@ The following fields are returned by `SELECT` queries:
     <td>The catalog identifier associated with the relationship. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the relationship was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the relationship. (pattern: &lt;code&gt;&#91;^\x00-\x1F\x7F&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="programManagementAccountId" /></td>
+    <td><CopyableCode code="program_management_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the program management account. (pattern: &lt;code&gt;pma-&#91;a-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
@@ -180,12 +180,12 @@ The following fields are returned by `SELECT` queries:
     <td>The business sector for the relationship. (COMMERCIAL, GOVERNMENT, GOVERNMENT_EXCEPTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date of the relationship.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the relationship was last updated.</td>
 </tr>
@@ -285,17 +285,17 @@ Retrieves details of a specific partner relationship.
 SELECT
 id,
 arn,
-associatedAccountId,
-associationType,
+associated_account_id,
+association_type,
 catalog,
-createdAt,
-displayName,
-programManagementAccountId,
-resaleAccountModel,
+created_at,
+display_name,
+program_management_account_id,
+resale_account_model,
 revision,
 sector,
-startDate,
-updatedAt
+start_date,
+updated_at
 FROM aws.partnercentral_channel.relationships
 WHERE region = '{{ region }}' -- required
 ;
@@ -309,16 +309,16 @@ Lists partner relationships based on specified criteria.
 SELECT
 id,
 arn,
-associatedAccountId,
-associationType,
+associated_account_id,
+association_type,
 catalog,
-createdAt,
-displayName,
-programManagementAccountId,
+created_at,
+display_name,
+program_management_account_id,
 revision,
 sector,
-startDate,
-updatedAt
+start_date,
+updated_at
 FROM aws.partnercentral_channel.relationships
 WHERE region = '{{ region }}' -- required
 ;
@@ -367,7 +367,7 @@ SELECT
 '{{ requestedSupportPlan }}',
 '{{ region }}'
 RETURNING
-relationshipDetail
+relationship_detail
 ;
 ```
 </TabItem>
@@ -469,7 +469,7 @@ AND catalog = '{{ catalog }}' --required
 AND identifier = '{{ identifier }}' --required
 AND programManagementAccountIdentifier = '{{ programManagementAccountIdentifier }}' --required
 RETURNING
-relationshipDetail;
+relationship_detail;
 ```
 </TabItem>
 </Tabs>

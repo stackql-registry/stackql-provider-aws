@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The source of the schema definition.</td>
 </tr>
@@ -119,7 +119,7 @@ Get the discovered schema that was generated based on sampled events.
 
 ```sql
 SELECT
-Content
+content
 FROM aws.schemas.discovered_schemas
 WHERE region = '{{ region }}' -- required
 ;

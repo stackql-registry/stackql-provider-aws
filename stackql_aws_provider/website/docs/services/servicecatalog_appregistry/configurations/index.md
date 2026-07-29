@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="tagQueryConfiguration" /></td>
+    <td><CopyableCode code="tag_query_configuration" /></td>
     <td><code>object</code></td>
     <td>Includes the definition of a tagQuery.</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves a TagKey configuration from an account.
 
 ```sql
 SELECT
-tagQueryConfiguration
+tag_query_configuration
 FROM aws.servicecatalog_appregistry.configurations
 WHERE region = '{{ region }}' -- required
 ;

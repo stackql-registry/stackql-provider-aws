@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CanaryRuns" /></td>
+    <td><CopyableCode code="canary_runs" /></td>
     <td><code>array</code></td>
     <td>An array of structures. Each structure contains the details of one of the retrieved canary runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there is more data available. You can use this token in a subsequent GetCanaryRuns operation to retrieve the next set of results.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves a list of runs for a specified canary.
 
 ```sql
 SELECT
-CanaryRuns,
-NextToken
+canary_runs,
+next_token
 FROM aws.synthetics.canary_runs
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required

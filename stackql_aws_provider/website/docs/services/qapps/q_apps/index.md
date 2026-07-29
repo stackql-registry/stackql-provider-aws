@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Q App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appDefinition" /></td>
+    <td><CopyableCode code="app_definition" /></td>
     <td><code>object</code></td>
     <td>The full definition of the Q App, specifying the cards and flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Q App. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the Q App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Q App was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the Q App.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Q App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="initialPrompt" /></td>
+    <td><CopyableCode code="initial_prompt" /></td>
     <td><code>string</code></td>
     <td>The initial prompt displayed when the Q App is started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requiredCapabilities" /></td>
+    <td><CopyableCode code="required_capabilities" /></td>
     <td><code>array</code></td>
     <td>The capabilities required to run the Q App, such as file upload or third-party integrations.</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The title of the Q App. (pattern: &lt;code&gt;&#91;^&#123;&#125;\\"&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Q App was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who last updated the Q App.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Q App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Q App. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="canEdit" /></td>
+    <td><CopyableCode code="can_edit" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether the user can edit the Q App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the user's association with the Q App was created.</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Q App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isVerified" /></td>
+    <td><CopyableCode code="is_verified" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the Q App has been verified.</td>
 </tr>
@@ -316,19 +316,19 @@ Retrieves the full details of an Q App, including its definition specifying the 
 
 ```sql
 SELECT
-appArn,
-appDefinition,
-appId,
-appVersion,
-createdAt,
-createdBy,
+app_arn,
+app_definition,
+app_id,
+app_version,
+created_at,
+created_by,
 description,
-initialPrompt,
-requiredCapabilities,
+initial_prompt,
+required_capabilities,
 status,
 title_,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.qapps.q_apps
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND appId = '{{ appId }}' -- required
@@ -343,12 +343,12 @@ Lists the Amazon Q Apps owned by or associated with the user either because they
 
 ```sql
 SELECT
-appArn,
-appId,
-canEdit,
-createdAt,
+app_arn,
+app_id,
+can_edit,
+created_at,
 description,
-isVerified,
+is_verified,
 status,
 title_
 FROM aws.qapps.q_apps
@@ -392,18 +392,18 @@ SELECT
 '{{ instance-id }}',
 '{{ region }}'
 RETURNING
-appArn,
-appId,
-appVersion,
-createdAt,
-createdBy,
+app_arn,
+app_id,
+app_version,
+created_at,
+created_by,
 description,
-initialPrompt,
-requiredCapabilities,
+initial_prompt,
+required_capabilities,
 status,
 title_,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 ;
 ```
 </TabItem>
@@ -596,18 +596,18 @@ WHERE
 AND region = '{{ region }}' --required
 AND appId = '{{ appId }}' --required
 RETURNING
-appArn,
-appId,
-appVersion,
-createdAt,
-createdBy,
+app_arn,
+app_id,
+app_version,
+created_at,
+created_by,
 description,
-initialPrompt,
-requiredCapabilities,
+initial_prompt,
+required_capabilities,
 status,
 title_,
-updatedAt,
-updatedBy;
+updated_at,
+updated_by;
 ```
 </TabItem>
 </Tabs>

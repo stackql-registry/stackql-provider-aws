@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>One or more tags.</td>
 </tr>
@@ -133,7 +133,7 @@ This is documentation for AWS CloudHSM Classic. For more information, see AWS Cl
 
 ```sql
 SELECT
-TagList
+tag_list
 FROM aws.cloudhsm.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -165,7 +165,7 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 AND TagList = '{{ TagList }}' --required
 RETURNING
-Status;
+status;
 ```
 </TabItem>
 <TabItem value="remove_tags_from_resource">
@@ -182,7 +182,7 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 AND TagKeyList = '{{ TagKeyList }}' --required
 RETURNING
-Status;
+status;
 ```
 </TabItem>
 </Tabs>

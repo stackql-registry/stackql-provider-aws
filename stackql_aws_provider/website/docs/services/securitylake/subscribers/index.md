@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessTypes" /></td>
+    <td><CopyableCode code="access_types" /></td>
     <td><code>array</code></td>
     <td>You can choose to notify subscribers of new objects with an Amazon Simple Queue Service (Amazon SQS) queue or through messaging to an HTTPS endpoint provided by the subscriber. Subscribers can consume data by directly querying Lake Formation tables in your Amazon S3 bucket through services like Amazon Athena. This subscription type is defined as LAKEFORMATION.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the subscriber was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) which uniquely defines the Amazon Web Services RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share. This field is available only for Lake Formation subscribers created after March 8, 2023.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareName" /></td>
+    <td><CopyableCode code="resource_share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource share. (pattern: &lt;code&gt;^LakeFormation(?:-V&#91;0-9&#93;+)-(&#91;a-zA-Z0-9&#93;+)-(&#91;\\\w\-_:/.@=+&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specifying the role of the subscriber. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z-&#93;*)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3BucketArn" /></td>
+    <td><CopyableCode code="s_3_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the Amazon S3 bucket.</td>
 </tr>
@@ -86,42 +86,42 @@ The following fields are returned by `SELECT` queries:
     <td>Amazon Security Lake supports log and event collection for natively supported Amazon Web Services services. For more information, see the Amazon Security Lake User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberArn" /></td>
+    <td><CopyableCode code="subscriber_arn" /></td>
     <td><code>string</code></td>
     <td>The subscriber ARN of the Amazon Security Lake subscriber account. (pattern: &lt;code&gt;^arn:(aws|aws-us-gov|aws-cn):securitylake:&#91;A-Za-z0-9_/.\-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.\-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.\-&#93;&#123;0,127&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberDescription" /></td>
+    <td><CopyableCode code="subscriber_description" /></td>
     <td><code>string</code></td>
     <td>The subscriber descriptions for a subscriber account. The description for a subscriber includes subscriberName, accountID, externalID, and subscriberId. (pattern: &lt;code&gt;^&#91;\\\w\-_:/.@=+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberEndpoint" /></td>
+    <td><CopyableCode code="subscriber_endpoint" /></td>
     <td><code>string</code></td>
     <td>The subscriber endpoint to which exception messages are posted. (pattern: &lt;code&gt;^&#91;\\\w\-_:/.@=+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberId" /></td>
+    <td><CopyableCode code="subscriber_id" /></td>
     <td><code>string</code></td>
     <td>The subscriber ID of the Amazon Security Lake subscriber account. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberIdentity" /></td>
+    <td><CopyableCode code="subscriber_identity" /></td>
     <td><code>object</code></td>
     <td>The Amazon Web Services identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberName" /></td>
+    <td><CopyableCode code="subscriber_name" /></td>
     <td><code>string</code></td>
     <td>The name of your Amazon Security Lake subscriber account. (pattern: &lt;code&gt;^&#91;\\\w\-_:/.@=+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberStatus" /></td>
+    <td><CopyableCode code="subscriber_status" /></td>
     <td><code>string</code></td>
     <td>The subscriber status of the Amazon Security Lake subscriber account. (ACTIVE, DEACTIVATED, PENDING, READY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the subscriber was last updated.</td>
 </tr>
@@ -140,32 +140,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessTypes" /></td>
+    <td><CopyableCode code="access_types" /></td>
     <td><code>array</code></td>
     <td>You can choose to notify subscribers of new objects with an Amazon Simple Queue Service (Amazon SQS) queue or through messaging to an HTTPS endpoint provided by the subscriber. Subscribers can consume data by directly querying Lake Formation tables in your Amazon S3 bucket through services like Amazon Athena. This subscription type is defined as LAKEFORMATION.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the subscriber was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) which uniquely defines the Amazon Web Services RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share. This field is available only for Lake Formation subscribers created after March 8, 2023.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareName" /></td>
+    <td><CopyableCode code="resource_share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource share. (pattern: &lt;code&gt;^LakeFormation(?:-V&#91;0-9&#93;+)-(&#91;a-zA-Z0-9&#93;+)-(&#91;\\\w\-_:/.@=+&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specifying the role of the subscriber. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z-&#93;*)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3BucketArn" /></td>
+    <td><CopyableCode code="s_3_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the Amazon S3 bucket.</td>
 </tr>
@@ -175,42 +175,42 @@ The following fields are returned by `SELECT` queries:
     <td>Amazon Security Lake supports log and event collection for natively supported Amazon Web Services services. For more information, see the Amazon Security Lake User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberArn" /></td>
+    <td><CopyableCode code="subscriber_arn" /></td>
     <td><code>string</code></td>
     <td>The subscriber ARN of the Amazon Security Lake subscriber account. (pattern: &lt;code&gt;^arn:(aws|aws-us-gov|aws-cn):securitylake:&#91;A-Za-z0-9_/.\-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.\-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.\-&#93;&#123;0,127&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberDescription" /></td>
+    <td><CopyableCode code="subscriber_description" /></td>
     <td><code>string</code></td>
     <td>The subscriber descriptions for a subscriber account. The description for a subscriber includes subscriberName, accountID, externalID, and subscriberId. (pattern: &lt;code&gt;^&#91;\\\w\-_:/.@=+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberEndpoint" /></td>
+    <td><CopyableCode code="subscriber_endpoint" /></td>
     <td><code>string</code></td>
     <td>The subscriber endpoint to which exception messages are posted. (pattern: &lt;code&gt;^&#91;\\\w\-_:/.@=+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberId" /></td>
+    <td><CopyableCode code="subscriber_id" /></td>
     <td><code>string</code></td>
     <td>The subscriber ID of the Amazon Security Lake subscriber account. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberIdentity" /></td>
+    <td><CopyableCode code="subscriber_identity" /></td>
     <td><code>object</code></td>
     <td>The Amazon Web Services identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberName" /></td>
+    <td><CopyableCode code="subscriber_name" /></td>
     <td><code>string</code></td>
     <td>The name of your Amazon Security Lake subscriber account. (pattern: &lt;code&gt;^&#91;\\\w\-_:/.@=+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriberStatus" /></td>
+    <td><CopyableCode code="subscriber_status" /></td>
     <td><code>string</code></td>
     <td>The subscriber status of the Amazon Security Lake subscriber account. (ACTIVE, DEACTIVATED, PENDING, READY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the subscriber was last updated.</td>
 </tr>
@@ -344,21 +344,21 @@ Retrieves the subscription information for the specified subscription ID. You ca
 
 ```sql
 SELECT
-accessTypes,
-createdAt,
-resourceShareArn,
-resourceShareName,
-roleArn,
-s3BucketArn,
+access_types,
+created_at,
+resource_share_arn,
+resource_share_name,
+role_arn,
+s_3_bucket_arn,
 sources,
-subscriberArn,
-subscriberDescription,
-subscriberEndpoint,
-subscriberId,
-subscriberIdentity,
-subscriberName,
-subscriberStatus,
-updatedAt
+subscriber_arn,
+subscriber_description,
+subscriber_endpoint,
+subscriber_id,
+subscriber_identity,
+subscriber_name,
+subscriber_status,
+updated_at
 FROM aws.securitylake.subscribers
 WHERE subscriber_id = '{{ subscriber_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -371,21 +371,21 @@ Lists all subscribers for the specific Amazon Security Lake account ID. You can 
 
 ```sql
 SELECT
-accessTypes,
-createdAt,
-resourceShareArn,
-resourceShareName,
-roleArn,
-s3BucketArn,
+access_types,
+created_at,
+resource_share_arn,
+resource_share_name,
+role_arn,
+s_3_bucket_arn,
 sources,
-subscriberArn,
-subscriberDescription,
-subscriberEndpoint,
-subscriberId,
-subscriberIdentity,
-subscriberName,
-subscriberStatus,
-updatedAt
+subscriber_arn,
+subscriber_description,
+subscriber_endpoint,
+subscriber_id,
+subscriber_identity,
+subscriber_name,
+subscriber_status,
+updated_at
 FROM aws.securitylake.subscribers
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -448,7 +448,7 @@ SELECT
 '{{ subscriber_id }}',
 '{{ region }}'
 RETURNING
-subscriberEndpoint
+subscriber_endpoint
 ;
 ```
 </TabItem>
@@ -534,7 +534,7 @@ subscriber_id = '{{ subscriber_id }}' --required
 AND region = '{{ region }}' --required
 AND configuration = '{{ configuration }}' --required
 RETURNING
-subscriberEndpoint;
+subscriber_endpoint;
 ```
 </TabItem>
 <TabItem value="update_subscriber">

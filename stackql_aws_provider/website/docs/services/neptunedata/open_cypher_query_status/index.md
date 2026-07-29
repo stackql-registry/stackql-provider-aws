@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="queryEvalStats" /></td>
+    <td><CopyableCode code="query_eval_stats" /></td>
     <td><code>object</code></td>
     <td>The openCypher query evaluation status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryId" /></td>
+    <td><CopyableCode code="query_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the query for which status is being returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The openCypher query string.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves the status of a specified openCypher query. When invoking this operati
 
 ```sql
 SELECT
-queryEvalStats,
-queryId,
-queryString
+query_eval_stats,
+query_id,
+query_string
 FROM aws.neptunedata.open_cypher_query_status
 WHERE query_id = '{{ query_id }}' -- required
 AND region = '{{ region }}' -- required

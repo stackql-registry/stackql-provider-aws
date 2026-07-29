@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DependencyKeyAttributes" /></td>
+    <td><CopyableCode code="dependency_key_attributes" /></td>
     <td><code>object</code></td>
     <td>This is a string-to-string map. It can include the following fields. Type designates the type of object this is. ResourceType specifies the type of the resource. This field is used only when the value of the Type field is Resource or AWS::Resource. Name specifies the name of the object. This is used only if the value of the Type field is Service, RemoteService, or AWS::Service. Identifier identifies the resource objects of this resource. This is used only if the value of the Type field is Resource or AWS::Resource. Environment specifies the location where this object is hosted, or what it belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DependencyOperationName" /></td>
+    <td><CopyableCode code="dependency_operation_name" /></td>
     <td><code>string</code></td>
     <td>The name of the called operation in the dependency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricReferences" /></td>
+    <td><CopyableCode code="metric_references" /></td>
     <td><code>array</code></td>
     <td>An array of structures that each contain information about one metric associated with this service dependency that was discovered by Application Signals.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationName" /></td>
+    <td><CopyableCode code="operation_name" /></td>
     <td><code>string</code></td>
     <td>The name of the operation in this service that calls the dependency.</td>
 </tr>
@@ -154,10 +154,10 @@ Returns a list of service dependencies of the service that you specify. A depend
 
 ```sql
 SELECT
-DependencyKeyAttributes,
-DependencyOperationName,
-MetricReferences,
-OperationName
+dependency_key_attributes,
+dependency_operation_name,
+metric_references,
+operation_name
 FROM aws.application_signals.service_dependencies
 WHERE StartTime = '{{ StartTime }}' -- required
 AND EndTime = '{{ EndTime }}' -- required

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name, if any, of the XssMatchSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="XssMatchSetId" /></td>
+    <td><CopyableCode code="xss_match_set_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for an XssMatchSet. You use XssMatchSetId to get information about an XssMatchSet (see GetXssMatchSet), update an XssMatchSet (see UpdateXssMatchSet), insert an XssMatchSet into a Rule or delete one from a Rule (see UpdateRule), and delete an XssMatchSet from AWS WAF (see DeleteXssMatchSet). XssMatchSetId is returned by CreateXssMatchSet and by ListXssMatchSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="XssMatchTuples" /></td>
+    <td><CopyableCode code="xss_match_tuples" /></td>
     <td><code>array</code></td>
     <td>Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If you have more XssMatchSet objects than the number that you specified for Limit in the request, the response includes a NextMarker value. To list more XssMatchSet objects, submit another ListXssMatchSets request, and specify the NextMarker value from the response in the NextMarker value in the next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="XssMatchSets" /></td>
+    <td><CopyableCode code="xss_match_sets" /></td>
     <td><code>array</code></td>
     <td>An array of XssMatchSetSummary objects.</td>
 </tr>
@@ -183,9 +183,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-Name,
-XssMatchSetId,
-XssMatchTuples
+name,
+xss_match_set_id,
+xss_match_tuples
 FROM aws.waf_regional.xss_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-NextMarker,
-XssMatchSets
+next_marker,
+xss_match_sets
 FROM aws.waf_regional.xss_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,8 +231,8 @@ SELECT
 '{{ ChangeToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ChangeToken,
-XssMatchSet
+change_token,
+xss_match_set
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ AND XssMatchSetId = '{{ XssMatchSetId }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 AND Updates = '{{ Updates }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

@@ -51,117 +51,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppNetworkAccessType" /></td>
+    <td><CopyableCode code="app_network_access_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the VPC used for non-EFS traffic. The default value is PublicInternetOnly. PublicInternetOnly - Non-EFS traffic is through a VPC managed by Amazon SageMaker AI, which allows direct internet access VpcOnly - All traffic is through the specified VPC and subnets (PublicInternetOnly, VpcOnly)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppSecurityGroupManagement" /></td>
+    <td><CopyableCode code="app_security_group_management" /></td>
     <td><code>string</code></td>
     <td>The entity that creates and manages the required security groups for inter-app communication in VPCOnly mode. Required when CreateDomain.AppNetworkAccessType is VPCOnly and DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn is provided. (Service, Customer)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthMode" /></td>
+    <td><CopyableCode code="auth_mode" /></td>
     <td><code>string</code></td>
     <td>The domain's authentication mode. (SSO, IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultSpaceSettings" /></td>
+    <td><CopyableCode code="default_space_settings" /></td>
     <td><code>object</code></td>
     <td>The default settings for shared spaces that users create in the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultUserSettings" /></td>
+    <td><CopyableCode code="default_user_settings" /></td>
     <td><code>object</code></td>
     <td>Settings which are applied to UserProfiles in this domain if settings are not explicitly specified in a given UserProfile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainArn" /></td>
+    <td><CopyableCode code="domain_arn" /></td>
     <td><code>string</code></td>
     <td>The domain's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:domain/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainSettings" /></td>
+    <td><CopyableCode code="domain_settings" /></td>
     <td><code>object</code></td>
     <td>A collection of Domain settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeEfsFileSystemId" /></td>
+    <td><CopyableCode code="home_efs_file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Elastic File System managed by this Domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeEfsFileSystemKmsKeyId" /></td>
+    <td><CopyableCode code="home_efs_file_system_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Use KmsKeyId. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS customer managed key used to encrypt the EFS volume attached to the domain. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIdForDomainBoundary" /></td>
+    <td><CopyableCode code="security_group_id_for_domain_boundary" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group that authorizes traffic between the RSessionGateway apps and the RStudioServerPro app. (pattern: &lt;code&gt;&#91;-0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SingleSignOnApplicationArn" /></td>
+    <td><CopyableCode code="single_sign_on_application_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the application managed by SageMaker AI in IAM Identity Center. This value is only returned for domains created after October 1, 2023. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso::&#91;0-9&#93;+:application\/&#91;a-zA-Z0-9-_.&#93;+\/apl-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SingleSignOnManagedApplicationInstanceId" /></td>
+    <td><CopyableCode code="single_sign_on_managed_application_instance_id" /></td>
     <td><code>string</code></td>
     <td>The IAM Identity Center managed application instance ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleting, Failed, InService, Pending, Updating, Update_Failed, Delete_Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The VPC subnets that the domain uses for communication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagPropagation" /></td>
+    <td><CopyableCode code="tag_propagation" /></td>
     <td><code>string</code></td>
     <td>Indicates whether custom tag propagation is supported for the domain. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The domain's URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Virtual Private Cloud (VPC) that the domain uses for communication. (pattern: &lt;code&gt;&#91;-0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -180,37 +180,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainArn" /></td>
+    <td><CopyableCode code="domain_arn" /></td>
     <td><code>string</code></td>
     <td>The domain's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:domain/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleting, Failed, InService, Pending, Updating, Update_Failed, Delete_Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The domain's URL.</td>
 </tr>
@@ -308,29 +308,29 @@ The description of the domain.
 
 ```sql
 SELECT
-AppNetworkAccessType,
-AppSecurityGroupManagement,
-AuthMode,
-CreationTime,
-DefaultSpaceSettings,
-DefaultUserSettings,
-DomainArn,
-DomainId,
-DomainName,
-DomainSettings,
-FailureReason,
-HomeEfsFileSystemId,
-HomeEfsFileSystemKmsKeyId,
-KmsKeyId,
-LastModifiedTime,
-SecurityGroupIdForDomainBoundary,
-SingleSignOnApplicationArn,
-SingleSignOnManagedApplicationInstanceId,
-Status,
-SubnetIds,
-TagPropagation,
-Url,
-VpcId
+app_network_access_type,
+app_security_group_management,
+auth_mode,
+creation_time,
+default_space_settings,
+default_user_settings,
+domain_arn,
+domain_id,
+domain_name,
+domain_settings,
+failure_reason,
+home_efs_file_system_id,
+home_efs_file_system_kms_key_id,
+kms_key_id,
+last_modified_time,
+security_group_id_for_domain_boundary,
+single_sign_on_application_arn,
+single_sign_on_managed_application_instance_id,
+status,
+subnet_ids,
+tag_propagation,
+url,
+vpc_id
 FROM aws.sagemaker.domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -342,13 +342,13 @@ Lists the domains.
 
 ```sql
 SELECT
-CreationTime,
-DomainArn,
-DomainId,
-DomainName,
-LastModifiedTime,
-Status,
-Url
+creation_time,
+domain_arn,
+domain_id,
+domain_name,
+last_modified_time,
+status,
+url
 FROM aws.sagemaker.domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -403,9 +403,9 @@ SELECT
 '{{ DefaultSpaceSettings }}',
 '{{ region }}'
 RETURNING
-DomainArn,
-DomainId,
-Url
+domain_arn,
+domain_id,
+url
 ;
 ```
 </TabItem>
@@ -777,7 +777,7 @@ WHERE
 region = '{{ region }}' --required
 AND DomainId = '{{ DomainId }}' --required
 RETURNING
-DomainArn;
+domain_arn;
 ```
 </TabItem>
 </Tabs>

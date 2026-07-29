@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeviceiSCSIAttributes" /></td>
+    <td><CopyableCode code="devicei_scsi_attributes" /></td>
     <td><code>object</code></td>
     <td>A list of iSCSI information about a VTL device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VTLDeviceARN" /></td>
+    <td><CopyableCode code="vtl_device_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VTLDeviceProductIdentifier" /></td>
+    <td><CopyableCode code="vtl_device_product_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the model number of device that the VTL device emulates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VTLDeviceType" /></td>
+    <td><CopyableCode code="vtl_device_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the type of device that the VTL device emulates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VTLDeviceVendor" /></td>
+    <td><CopyableCode code="vtl_device_vendor" /></td>
     <td><code>string</code></td>
     <td>Specifies the vendor of the device that the VTL device object emulates.</td>
 </tr>
@@ -146,11 +146,11 @@ Returns a description of virtual tape library (VTL) devices for the specified ta
 
 ```sql
 SELECT
-DeviceiSCSIAttributes,
-VTLDeviceARN,
-VTLDeviceProductIdentifier,
-VTLDeviceType,
-VTLDeviceVendor
+devicei_scsi_attributes,
+vtl_device_arn,
+vtl_device_product_identifier,
+vtl_device_type,
+vtl_device_vendor
 FROM aws.storagegateway.vtl_devices
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,7 +181,7 @@ region = '{{ region }}' --required
 AND VTLDeviceARN = '{{ VTLDeviceARN }}' --required
 AND DeviceType = '{{ DeviceType }}' --required
 RETURNING
-VTLDeviceARN;
+vtl_device_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregateValue" /></td>
+    <td><CopyableCode code="aggregate_value" /></td>
     <td><code>number (double)</code></td>
     <td>The sum of the values from all individual contributors that match the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AggregationStatistic" /></td>
+    <td><CopyableCode code="aggregation_statistic" /></td>
     <td><code>string</code></td>
     <td>Specifies whether this rule aggregates contributor data by COUNT or SUM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApproximateUniqueCount" /></td>
+    <td><CopyableCode code="approximate_unique_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>An approximate count of the unique contributors found by this rule in this time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Contributors" /></td>
+    <td><CopyableCode code="contributors" /></td>
     <td><code>array</code></td>
     <td>An array of the unique contributors found by this rule in this time period. If the rule contains multiple keys, each combination of values for the keys counts as a unique contributor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyLabels" /></td>
+    <td><CopyableCode code="key_labels" /></td>
     <td><code>array</code></td>
     <td>An array of the strings used as the keys for this rule. The keys are the dimensions used to classify contributors. If the rule contains more than one key, then each unique combination of values for the keys is counted as a unique contributor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricDatapoints" /></td>
+    <td><CopyableCode code="metric_datapoints" /></td>
     <td><code>array</code></td>
     <td>A time series of metric data points that matches the time period in the rule request.</td>
 </tr>
@@ -144,12 +144,12 @@ This operation returns the time series data collected by a Contributor Insights 
 
 ```sql
 SELECT
-AggregateValue,
-AggregationStatistic,
-ApproximateUniqueCount,
-Contributors,
-KeyLabels,
-MetricDatapoints
+aggregate_value,
+aggregation_statistic,
+approximate_unique_count,
+contributors,
+key_labels,
+metric_datapoints
 FROM aws.cloudwatch.insight_rule_reports
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Information about the Traffic Mirror target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayLoadBalancerEndpointId" /></td>
+    <td><CopyableCode code="gateway_load_balancer_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Gateway Load Balancer endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The network interface ID that is attached to the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkLoadBalancerArn" /></td>
+    <td><CopyableCode code="network_load_balancer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Network Load Balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that owns the Traffic Mirror target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the Traffic Mirror target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficMirrorTargetId" /></td>
+    <td><CopyableCode code="traffic_mirror_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Traffic Mirror target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of Traffic Mirror target.</td>
 </tr>
@@ -228,14 +228,14 @@ Information about one or more Traffic Mirror targets.
 
 ```sql
 SELECT
-Description,
-GatewayLoadBalancerEndpointId,
-NetworkInterfaceId,
-NetworkLoadBalancerArn,
-OwnerId,
-Tags,
-TrafficMirrorTargetId,
-Type
+description,
+gateway_load_balancer_endpoint_id,
+network_interface_id,
+network_load_balancer_arn,
+owner_id,
+tags,
+traffic_mirror_target_id,
+type
 FROM aws.ec2.traffic_mirror_targets
 WHERE region = '{{ region }}' -- required
 AND TrafficMirrorTargetId = '{{ TrafficMirrorTargetId }}'
@@ -283,14 +283,14 @@ SELECT
 '{{ ClientToken }}',
 '{{ GatewayLoadBalancerEndpointId }}'
 RETURNING
-Description,
-GatewayLoadBalancerEndpointId,
-NetworkInterfaceId,
-NetworkLoadBalancerArn,
-OwnerId,
-Tags,
-TrafficMirrorTargetId,
-Type
+description,
+gateway_load_balancer_endpoint_id,
+network_interface_id,
+network_load_balancer_arn,
+owner_id,
+tags,
+traffic_mirror_target_id,
+type
 ;
 ```
 </TabItem>

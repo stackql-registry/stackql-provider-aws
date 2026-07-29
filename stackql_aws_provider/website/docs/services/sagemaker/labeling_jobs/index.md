@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the labeling job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the job failed, the reason that it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanTaskConfig" /></td>
+    <td><CopyableCode code="human_task_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information required for human workers to complete a labeling task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputConfig" /></td>
+    <td><CopyableCode code="input_config" /></td>
     <td><code>object</code></td>
     <td>Input configuration information for the labeling job, such as the Amazon S3 location of the data objects and the location of the manifest file that describes the data objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobReferenceCode" /></td>
+    <td><CopyableCode code="job_reference_code" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for work done as part of a labeling job. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelAttributeName" /></td>
+    <td><CopyableCode code="label_attribute_name" /></td>
     <td><code>string</code></td>
     <td>The attribute used as the label in the output manifest file. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,126&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelCategoryConfigS3Uri" /></td>
+    <td><CopyableCode code="label_category_config_s3_uri" /></td>
     <td><code>string</code></td>
     <td>The S3 location of the JSON file that defines the categories used to label data objects. Please note the following label-category limits: Semantic segmentation labeling jobs using automated labeling: 20 labels Box bounding labeling jobs (all): 10 labels The file is a JSON structure in the following format: &#123; "document-version": "2018-11-28" "labels": &#91; &#123; "label": "label 1" &#125;, &#123; "label": "label 2" &#125;, ... &#123; "label": "label n" &#125; &#93; &#125; (pattern: &lt;code&gt;(https|s3):​//(&#91;^/&#93;+)/?(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelCounters" /></td>
+    <td><CopyableCode code="label_counters" /></td>
     <td><code>object</code></td>
     <td>Provides a breakdown of the number of data objects labeled by humans, the number of objects labeled by machine, the number of objects than couldn't be labeled, and the total number of objects labeled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobAlgorithmsConfig" /></td>
+    <td><CopyableCode code="labeling_job_algorithms_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information for automated data labeling.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobArn" /></td>
+    <td><CopyableCode code="labeling_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the labeling job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:labeling-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobName" /></td>
+    <td><CopyableCode code="labeling_job_name" /></td>
     <td><code>string</code></td>
     <td>The name assigned to the labeling job when it was created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobOutput" /></td>
+    <td><CopyableCode code="labeling_job_output" /></td>
     <td><code>object</code></td>
     <td>The location of the output produced by the labeling job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobStatus" /></td>
+    <td><CopyableCode code="labeling_job_status" /></td>
     <td><code>string</code></td>
     <td>The processing status of the labeling job. (Initializing, InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the labeling job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The location of the job's output data and the Amazon Web Services Key Management Service key ID for the key used to encrypt the output data, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that SageMaker assumes to perform tasks on your behalf during data labeling. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingConditions" /></td>
+    <td><CopyableCode code="stopping_conditions" /></td>
     <td><code>object</code></td>
     <td>A set of conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.</td>
 </tr>
@@ -155,62 +155,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnnotationConsolidationLambdaArn" /></td>
+    <td><CopyableCode code="annotation_consolidation_lambda_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the annotations from individual workers into a label for a data object. For more information, see Annotation Consolidation. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:lambda:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:function:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was created (timestamp).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the LabelingJobStatus field is Failed, this field contains a description of the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputConfig" /></td>
+    <td><CopyableCode code="input_config" /></td>
     <td><code>object</code></td>
     <td>Input configuration for the labeling job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelCounters" /></td>
+    <td><CopyableCode code="label_counters" /></td>
     <td><code>object</code></td>
     <td>Counts showing the progress of the labeling job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobArn" /></td>
+    <td><CopyableCode code="labeling_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the labeling job when it was created. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:labeling-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobName" /></td>
+    <td><CopyableCode code="labeling_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the labeling job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobOutput" /></td>
+    <td><CopyableCode code="labeling_job_output" /></td>
     <td><code>object</code></td>
     <td>The location of the output produced by the labeling job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelingJobStatus" /></td>
+    <td><CopyableCode code="labeling_job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the labeling job. (Initializing, InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job was last modified (timestamp).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreHumanTaskLambdaArn" /></td>
+    <td><CopyableCode code="pre_human_task_lambda_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a Lambda function. The function is run before each data object is sent to a worker. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:lambda:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:function:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkteamArn" /></td>
+    <td><CopyableCode code="workteam_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the work team assigned to the job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workteam/.*&lt;/code&gt;)</td>
 </tr>
@@ -301,24 +301,24 @@ Gets information about a labeling job.
 
 ```sql
 SELECT
-CreationTime,
-FailureReason,
-HumanTaskConfig,
-InputConfig,
-JobReferenceCode,
-LabelAttributeName,
-LabelCategoryConfigS3Uri,
-LabelCounters,
-LabelingJobAlgorithmsConfig,
-LabelingJobArn,
-LabelingJobName,
-LabelingJobOutput,
-LabelingJobStatus,
-LastModifiedTime,
-OutputConfig,
-RoleArn,
-StoppingConditions,
-Tags
+creation_time,
+failure_reason,
+human_task_config,
+input_config,
+job_reference_code,
+label_attribute_name,
+label_category_config_s3_uri,
+label_counters,
+labeling_job_algorithms_config,
+labeling_job_arn,
+labeling_job_name,
+labeling_job_output,
+labeling_job_status,
+last_modified_time,
+output_config,
+role_arn,
+stopping_conditions,
+tags
 FROM aws.sagemaker.labeling_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -330,18 +330,18 @@ Gets a list of labeling jobs.
 
 ```sql
 SELECT
-AnnotationConsolidationLambdaArn,
-CreationTime,
-FailureReason,
-InputConfig,
-LabelCounters,
-LabelingJobArn,
-LabelingJobName,
-LabelingJobOutput,
-LabelingJobStatus,
-LastModifiedTime,
-PreHumanTaskLambdaArn,
-WorkteamArn
+annotation_consolidation_lambda_arn,
+creation_time,
+failure_reason,
+input_config,
+label_counters,
+labeling_job_arn,
+labeling_job_name,
+labeling_job_output,
+labeling_job_status,
+last_modified_time,
+pre_human_task_lambda_arn,
+workteam_arn
 FROM aws.sagemaker.labeling_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -390,7 +390,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LabelingJobArn
+labeling_job_arn
 ;
 ```
 </TabItem>

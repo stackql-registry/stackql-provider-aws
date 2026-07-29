@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FindingAggregationRegion" /></td>
+    <td><CopyableCode code="finding_aggregation_region" /></td>
     <td><code>string</code></td>
     <td>The home Region. Findings generated in linked Regions are replicated and sent to the home Region. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingAggregatorArn" /></td>
+    <td><CopyableCode code="finding_aggregator_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the finding aggregator. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionLinkingMode" /></td>
+    <td><CopyableCode code="region_linking_mode" /></td>
     <td><code>string</code></td>
     <td>Indicates whether to link all Regions, all Regions except for a list of excluded Regions, or a list of included Regions. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Regions" /></td>
+    <td><CopyableCode code="regions" /></td>
     <td><code>array</code></td>
     <td>The list of excluded Regions or included Regions.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FindingAggregatorArn" /></td>
+    <td><CopyableCode code="finding_aggregator_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the finding aggregator. You use the finding aggregator ARN to retrieve details for, update, and delete the finding aggregator. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -198,10 +198,10 @@ The aggregation Region is now called the home Region. Returns the current config
 
 ```sql
 SELECT
-FindingAggregationRegion,
-FindingAggregatorArn,
-RegionLinkingMode,
-Regions
+finding_aggregation_region,
+finding_aggregator_arn,
+region_linking_mode,
+regions
 FROM aws.securityhub.finding_aggregators
 WHERE finding_aggregator_arn = '{{ finding_aggregator_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -214,7 +214,7 @@ If cross-Region aggregation is enabled, then ListFindingAggregators returns the 
 
 ```sql
 SELECT
-FindingAggregatorArn
+finding_aggregator_arn
 FROM aws.securityhub.finding_aggregators
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -249,10 +249,10 @@ SELECT
 '{{ Regions }}',
 '{{ region }}'
 RETURNING
-FindingAggregationRegion,
-FindingAggregatorArn,
-RegionLinkingMode,
-Regions
+finding_aggregation_region,
+finding_aggregator_arn,
+region_linking_mode,
+regions
 ;
 ```
 </TabItem>
@@ -298,10 +298,10 @@ region = '{{ region }}' --required
 AND FindingAggregatorArn = '{{ FindingAggregatorArn }}' --required
 AND RegionLinkingMode = '{{ RegionLinkingMode }}' --required
 RETURNING
-FindingAggregationRegion,
-FindingAggregatorArn,
-RegionLinkingMode,
-Regions;
+finding_aggregation_region,
+finding_aggregator_arn,
+region_linking_mode,
+regions;
 ```
 </TabItem>
 </Tabs>

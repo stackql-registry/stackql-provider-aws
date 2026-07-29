@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedRuleGroups" /></td>
+    <td><CopyableCode code="managed_rule_groups" /></td>
     <td><code>array</code></td>
     <td>Array of managed rule groups that you can use. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves an array of managed rule groups that are available for you to use. Thi
 
 ```sql
 SELECT
-ManagedRuleGroups,
-NextMarker
+managed_rule_groups,
+next_marker
 FROM aws.wafv2.available_managed_rule_groups
 WHERE region = '{{ region }}' -- required
 ;

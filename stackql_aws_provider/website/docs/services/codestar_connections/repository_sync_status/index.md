@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Events" /></td>
+    <td><CopyableCode code="events" /></td>
     <td><code>array</code></td>
     <td>The events associated with a specific sync attempt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of a specific sync attempt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a specific sync attempt. The following are valid statuses: INITIATED - A repository sync attempt has been created and will begin soon. IN_PROGRESS - A repository sync attempt has started and work is being done to reconcile the branch. SUCCEEDED - The repository sync attempt has completed successfully. FAILED - The repository sync attempt has failed. QUEUED - The repository sync attempt didn't execute and was queued. (FAILED, INITIATED, IN_PROGRESS, SUCCEEDED, QUEUED)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns details about the sync status for a repository. A repository sync uses G
 
 ```sql
 SELECT
-Events,
-StartedAt,
-Status
+events,
+started_at,
+status
 FROM aws.codestar_connections.repository_sync_status
 WHERE region = '{{ region }}' -- required
 ;

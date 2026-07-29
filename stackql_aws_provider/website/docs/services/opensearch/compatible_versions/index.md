@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompatibleVersions" /></td>
+    <td><CopyableCode code="compatible_versions" /></td>
     <td><code>array</code></td>
     <td>A map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns a map of OpenSearch or Elasticsearch versions and the versions you can u
 
 ```sql
 SELECT
-CompatibleVersions
+compatible_versions
 FROM aws.opensearch.compatible_versions
 WHERE region = '{{ region }}' -- required
 AND domainName = '{{ domainName }}'

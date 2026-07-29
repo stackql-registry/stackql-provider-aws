@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your Systems Manager resources. Currently, OpsItemGroup is the only resource that supports Systems Manager resource policies. The resource policy for OpsItemGroup enables Amazon Web Services accounts to view and interact with OpsCenter operational work items (OpsItems). (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyHash" /></td>
+    <td><CopyableCode code="policy_hash" /></td>
     <td><code>string</code></td>
     <td>ID of the current policy version. The hash helps to prevent a situation where multiple users attempt to overwrite a policy. You must provide this hash when updating or deleting a policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>A policy ID.</td>
 </tr>
@@ -143,9 +143,9 @@ Returns an array of the Policy object.
 
 ```sql
 SELECT
-Policy,
-PolicyHash,
-PolicyId
+policy,
+policy_hash,
+policy_id
 FROM aws.ssm.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,8 +177,8 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-PolicyHash,
-PolicyId;
+policy_hash,
+policy_id;
 ```
 </TabItem>
 </Tabs>

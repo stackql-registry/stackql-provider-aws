@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the cache parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheParameterGroupFamily" /></td>
+    <td><CopyableCode code="cache_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the cache parameter group family that this cache parameter group is compatible with. Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 | redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.x | redis7</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheParameterGroupName" /></td>
+    <td><CopyableCode code="cache_parameter_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cache parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for this cache parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsGlobal" /></td>
+    <td><CopyableCode code="is_global" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the parameter group is associated with a Global datastore</td>
 </tr>
@@ -200,11 +200,11 @@ Returns a list of cache parameter group descriptions. If a cache parameter group
 
 ```sql
 SELECT
-ARN,
-CacheParameterGroupFamily,
-CacheParameterGroupName,
-Description,
-IsGlobal
+arn,
+cache_parameter_group_family,
+cache_parameter_group_name,
+description,
+is_global
 FROM aws.elasticache.cache_parameter_groups
 WHERE region = '{{ region }}' -- required
 AND CacheParameterGroupName = '{{ CacheParameterGroupName }}'
@@ -244,11 +244,11 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-ARN,
-CacheParameterGroupFamily,
-CacheParameterGroupName,
-Description,
-IsGlobal
+arn,
+cache_parameter_group_family,
+cache_parameter_group_name,
+description,
+is_global
 ;
 ```
 </TabItem>
@@ -301,7 +301,7 @@ CacheParameterGroupName = '{{ CacheParameterGroupName }}' --required
 AND ParameterNameValues = '{{ ParameterNameValues }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CacheParameterGroupName;
+cache_parameter_group_name;
 ```
 </TabItem>
 </Tabs>

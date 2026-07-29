@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessStatus" /></td>
+    <td><CopyableCode code="access_status" /></td>
     <td><code>string</code></td>
     <td>Access Status for the Orgs Service. (ENABLED, DISABLED, PENDING, FAILED)</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the AccessStatus of Service Trust Enablement for User Notifications and 
 
 ```sql
 SELECT
-accessStatus
+access_status
 FROM aws.notifications.notifications_access_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivationState" /></td>
+    <td><CopyableCode code="activation_state" /></td>
     <td><code>string</code></td>
     <td>The state of the compute allocation being described. Use to enable or disable compute allocation. Default is Enabled. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaArn" /></td>
+    <td><CopyableCode code="compute_quota_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the compute allocation definition. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:compute-quota/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaConfig" /></td>
+    <td><CopyableCode code="compute_quota_config" /></td>
     <td><code>object</code></td>
     <td>Configuration of the compute allocation definition. This includes the resource sharing option, and the setting to preempt low priority tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaId" /></td>
+    <td><CopyableCode code="compute_quota_id" /></td>
     <td><code>string</code></td>
     <td>ID of the compute allocation definition. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaTarget" /></td>
+    <td><CopyableCode code="compute_quota_target" /></td>
     <td><code>object</code></td>
     <td>The target entity to allocate compute resources to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaVersion" /></td>
+    <td><CopyableCode code="compute_quota_version" /></td>
     <td><code>integer</code></td>
     <td>Version of the compute allocation definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the compute allocation configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the compute allocation definition. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Failure reason of the compute allocation definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time of the compute allocation configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the compute allocation definition. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the compute allocation definition. (Creating, CreateFailed, CreateRollbackFailed, Created, Updating, UpdateFailed, UpdateRollbackFailed, Updated, Deleting, DeleteFailed, DeleteRollbackFailed, Deleted)</td>
 </tr>
@@ -140,57 +140,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivationState" /></td>
+    <td><CopyableCode code="activation_state" /></td>
     <td><code>string</code></td>
     <td>The state of the compute allocation being described. Use to enable or disable compute allocation. Default is Enabled. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaArn" /></td>
+    <td><CopyableCode code="compute_quota_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the compute allocation definition. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:compute-quota/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaConfig" /></td>
+    <td><CopyableCode code="compute_quota_config" /></td>
     <td><code>object</code></td>
     <td>Configuration of the compute allocation definition. This includes the resource sharing option, and the setting to preempt low priority tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaId" /></td>
+    <td><CopyableCode code="compute_quota_id" /></td>
     <td><code>string</code></td>
     <td>ID of the compute allocation definition. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaTarget" /></td>
+    <td><CopyableCode code="compute_quota_target" /></td>
     <td><code>object</code></td>
     <td>The target entity to allocate compute resources to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeQuotaVersion" /></td>
+    <td><CopyableCode code="compute_quota_version" /></td>
     <td><code>integer</code></td>
     <td>Version of the compute allocation definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the compute allocation definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time of the compute allocation definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the compute allocation definition. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the compute allocation definition. (Creating, CreateFailed, CreateRollbackFailed, Created, Updating, UpdateFailed, UpdateRollbackFailed, Updated, Deleting, DeleteFailed, DeleteRollbackFailed, Deleted)</td>
 </tr>
@@ -288,21 +288,21 @@ Description of the compute allocation definition.
 
 ```sql
 SELECT
-ActivationState,
-ClusterArn,
-ComputeQuotaArn,
-ComputeQuotaConfig,
-ComputeQuotaId,
-ComputeQuotaTarget,
-ComputeQuotaVersion,
-CreatedBy,
-CreationTime,
-Description,
-FailureReason,
-LastModifiedBy,
-LastModifiedTime,
-Name,
-Status
+activation_state,
+cluster_arn,
+compute_quota_arn,
+compute_quota_config,
+compute_quota_id,
+compute_quota_target,
+compute_quota_version,
+created_by,
+creation_time,
+description,
+failure_reason,
+last_modified_by,
+last_modified_time,
+name,
+status
 FROM aws.sagemaker.compute_quotas
 WHERE region = '{{ region }}' -- required
 ;
@@ -314,17 +314,17 @@ List the resource allocation definitions.
 
 ```sql
 SELECT
-ActivationState,
-ClusterArn,
-ComputeQuotaArn,
-ComputeQuotaConfig,
-ComputeQuotaId,
-ComputeQuotaTarget,
-ComputeQuotaVersion,
-CreationTime,
-LastModifiedTime,
-Name,
-Status
+activation_state,
+cluster_arn,
+compute_quota_arn,
+compute_quota_config,
+compute_quota_id,
+compute_quota_target,
+compute_quota_version,
+creation_time,
+last_modified_time,
+name,
+status
 FROM aws.sagemaker.compute_quotas
 WHERE region = '{{ region }}' -- required
 ;
@@ -367,8 +367,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ComputeQuotaArn,
-ComputeQuotaId
+compute_quota_arn,
+compute_quota_id
 ;
 ```
 </TabItem>
@@ -467,8 +467,8 @@ region = '{{ region }}' --required
 AND ComputeQuotaId = '{{ ComputeQuotaId }}' --required
 AND TargetVersion = '{{ TargetVersion }}' --required
 RETURNING
-ComputeQuotaArn,
-ComputeQuotaVersion;
+compute_quota_arn,
+compute_quota_version;
 ```
 </TabItem>
 </Tabs>

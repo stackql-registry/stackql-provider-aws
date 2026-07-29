@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp, in seconds, of when the account enrollment status was last updated.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The account enrollment status. (Active, Inactive, Pending, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the account enrollment status. For example, an account might show a status of Pending because member accounts of an organization require more time to be enrolled in the service.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the Compute Optimizer enrollment (opt-in) status of organization member 
 
 ```sql
 SELECT
-accountId,
-lastUpdatedTimestamp,
+account_id,
+last_updated_timestamp,
 status,
-statusReason
+status_reason
 FROM aws.compute_optimizer.enrollment_statuses_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

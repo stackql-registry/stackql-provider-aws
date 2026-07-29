@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with the bot recommendation. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botRecommendationId" /></td>
+    <td><CopyableCode code="bot_recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot recommendation being described. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botRecommendationResults" /></td>
+    <td><CopyableCode code="bot_recommendation_results" /></td>
     <td><code>object</code></td>
     <td>The object representing the URL of the bot definition, the URL of the associated transcript and a statistical summary of the bot recommendation results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botRecommendationStatus" /></td>
+    <td><CopyableCode code="bot_recommendation_status" /></td>
     <td><code>string</code></td>
     <td>The status of the bot recommendation. If the status is Failed, then the reasons for the failure are listed in the failureReasons field. (Processing, Deleting, Deleted, Downloading, Updating, Available, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot associated with the bot recommendation. (pattern: &lt;code&gt;^DRAFT$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the bot recommendation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionSetting" /></td>
+    <td><CopyableCode code="encryption_setting" /></td>
     <td><code>object</code></td>
     <td>The object representing the passwords that were used to encrypt the data related to the bot recommendation results, as well as the KMS key ARN used to encrypt the associated metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>If botRecommendationStatus is Failed, Amazon Lex explains why.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the bot recommendation was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the language and locale of the bot recommendation to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transcriptSourceSetting" /></td>
+    <td><CopyableCode code="transcript_source_setting" /></td>
     <td><code>object</code></td>
     <td>The object representing the Amazon S3 bucket containing the transcript, as well as the associated metadata.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot that contains the bot recommendation list. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botRecommendationSummaries" /></td>
+    <td><CopyableCode code="bot_recommendation_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the bot recommendations that meet the filter specified in this request. The length of the list is specified in the maxResults parameter of the request. If there are more bot recommendations available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that contains the bot recommendation list. (pattern: &lt;code&gt;^DRAFT$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the language and locale of the bot recommendation list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListBotRecommendations operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListBotRecommendations operation request to get the next page of results.</td>
 </tr>
@@ -244,17 +244,17 @@ Provides metadata information about a bot recommendation. This information will 
 
 ```sql
 SELECT
-botId,
-botRecommendationId,
-botRecommendationResults,
-botRecommendationStatus,
-botVersion,
-creationDateTime,
-encryptionSetting,
-failureReasons,
-lastUpdatedDateTime,
-localeId,
-transcriptSourceSetting
+bot_id,
+bot_recommendation_id,
+bot_recommendation_results,
+bot_recommendation_status,
+bot_version,
+creation_date_time,
+encryption_setting,
+failure_reasons,
+last_updated_date_time,
+locale_id,
+transcript_source_setting
 FROM aws.lexv2_models.bot_recommendations
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -270,11 +270,11 @@ Get a list of bot recommendations that meet the specified criteria.
 
 ```sql
 SELECT
-botId,
-botRecommendationSummaries,
-botVersion,
-localeId,
-nextToken
+bot_id,
+bot_recommendation_summaries,
+bot_version,
+locale_id,
+next_token
 FROM aws.lexv2_models.bot_recommendations
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -310,15 +310,15 @@ AND bot_recommendation_id = '{{ bot_recommendation_id }}' --required
 AND region = '{{ region }}' --required
 AND encryptionSetting = '{{ encryptionSetting }}' --required
 RETURNING
-botId,
-botRecommendationId,
-botRecommendationStatus,
-botVersion,
-creationDateTime,
-encryptionSetting,
-lastUpdatedDateTime,
-localeId,
-transcriptSourceSetting;
+bot_id,
+bot_recommendation_id,
+bot_recommendation_status,
+bot_version,
+creation_date_time,
+encryption_setting,
+last_updated_date_time,
+locale_id,
+transcript_source_setting;
 ```
 </TabItem>
 </Tabs>

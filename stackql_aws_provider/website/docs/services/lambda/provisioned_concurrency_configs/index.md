@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedProvisionedConcurrentExecutions" /></td>
+    <td><CopyableCode code="allocated_provisioned_concurrent_executions" /></td>
     <td><code>integer</code></td>
     <td>The amount of provisioned concurrency allocated. When a weighted alias is used during linear and canary deployments, this value fluctuates depending on the amount of concurrency that is provisioned for the function versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableProvisionedConcurrentExecutions" /></td>
+    <td><CopyableCode code="available_provisioned_concurrent_executions" /></td>
     <td><code>integer</code></td>
     <td>The amount of provisioned concurrency available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time that a user last updated the configuration, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedProvisionedConcurrentExecutions" /></td>
+    <td><CopyableCode code="requested_provisioned_concurrent_executions" /></td>
     <td><code>integer</code></td>
     <td>The amount of provisioned concurrency requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the allocation process. (IN_PROGRESS, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>For failed allocations, the reason that provisioned concurrency could not be allocated.</td>
 </tr>
@@ -95,37 +95,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedProvisionedConcurrentExecutions" /></td>
+    <td><CopyableCode code="allocated_provisioned_concurrent_executions" /></td>
     <td><code>integer</code></td>
     <td>The amount of provisioned concurrency allocated. When a weighted alias is used during linear and canary deployments, this value fluctuates depending on the amount of concurrency that is provisioned for the function versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableProvisionedConcurrentExecutions" /></td>
+    <td><CopyableCode code="available_provisioned_concurrent_executions" /></td>
     <td><code>integer</code></td>
     <td>The amount of provisioned concurrency available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the alias or version. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time that a user last updated the configuration, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedProvisionedConcurrentExecutions" /></td>
+    <td><CopyableCode code="requested_provisioned_concurrent_executions" /></td>
     <td><code>integer</code></td>
     <td>The amount of provisioned concurrency requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the allocation process. (IN_PROGRESS, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>For failed allocations, the reason that provisioned concurrency could not be allocated.</td>
 </tr>
@@ -236,12 +236,12 @@ Retrieves the provisioned concurrency configuration for a function's alias or ve
 
 ```sql
 SELECT
-AllocatedProvisionedConcurrentExecutions,
-AvailableProvisionedConcurrentExecutions,
-LastModified,
-RequestedProvisionedConcurrentExecutions,
-Status,
-StatusReason
+allocated_provisioned_concurrent_executions,
+available_provisioned_concurrent_executions,
+last_modified,
+requested_provisioned_concurrent_executions,
+status,
+status_reason
 FROM aws.lambda.provisioned_concurrency_configs
 WHERE function_name = '{{ function_name }}' -- required
 AND Qualifier = '{{ Qualifier }}' -- required
@@ -255,13 +255,13 @@ Retrieves a list of provisioned concurrency configurations for a function.
 
 ```sql
 SELECT
-AllocatedProvisionedConcurrentExecutions,
-AvailableProvisionedConcurrentExecutions,
-FunctionArn,
-LastModified,
-RequestedProvisionedConcurrentExecutions,
-Status,
-StatusReason
+allocated_provisioned_concurrent_executions,
+available_provisioned_concurrent_executions,
+function_arn,
+last_modified,
+requested_provisioned_concurrent_executions,
+status,
+status_reason
 FROM aws.lambda.provisioned_concurrency_configs
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -295,12 +295,12 @@ AND Qualifier = '{{ Qualifier }}' --required
 AND region = '{{ region }}' --required
 AND ProvisionedConcurrentExecutions = '{{ ProvisionedConcurrentExecutions }}' --required
 RETURNING
-AllocatedProvisionedConcurrentExecutions,
-AvailableProvisionedConcurrentExecutions,
-LastModified,
-RequestedProvisionedConcurrentExecutions,
-Status,
-StatusReason;
+allocated_provisioned_concurrent_executions,
+available_provisioned_concurrent_executions,
+last_modified,
+requested_provisioned_concurrent_executions,
+status,
+status_reason;
 ```
 </TabItem>
 </Tabs>

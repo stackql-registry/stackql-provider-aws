@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the replay. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>A ReplayDestination object that contains details about the replay.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventEndTime" /></td>
+    <td><CopyableCode code="event_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for the last event that was replayed from the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventLastReplayedTime" /></td>
+    <td><CopyableCode code="event_last_replayed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the event was last replayed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSourceArn" /></td>
+    <td><CopyableCode code="event_source_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the archive events were replayed from. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:.+\/.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventStartTime" /></td>
+    <td><CopyableCode code="event_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of the first event that was last replayed from the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplayArn" /></td>
+    <td><CopyableCode code="replay_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the replay. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:.+\/&#91;\.\-_A-Za-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplayEndTime" /></td>
+    <td><CopyableCode code="replay_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp for the time that the replay stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplayName" /></td>
+    <td><CopyableCode code="replay_name" /></td>
     <td><code>string</code></td>
     <td>The name of the replay. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplayStartTime" /></td>
+    <td><CopyableCode code="replay_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp for the time that the replay started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the replay. (STARTING, RUNNING, CANCELLING, COMPLETED, CANCELLED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the replay is in the current state. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token indicating there are more results available. If there are no more results, no token is included in the response. The value of nextToken is a unique pagination token for each page. To retrieve the next page of results, make the call again using the returned token. Keep all other arguments unchanged. Using an expired pagination token results in an HTTP 400 InvalidToken error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Replays" /></td>
+    <td><CopyableCode code="replays" /></td>
     <td><code>array</code></td>
     <td>An array of Replay objects that contain information about the replay.</td>
 </tr>
@@ -221,18 +221,18 @@ Retrieves details about a replay. Use DescribeReplay to determine the progress o
 
 ```sql
 SELECT
-Description,
-Destination,
-EventEndTime,
-EventLastReplayedTime,
-EventSourceArn,
-EventStartTime,
-ReplayArn,
-ReplayEndTime,
-ReplayName,
-ReplayStartTime,
-State,
-StateReason
+description,
+destination,
+event_end_time,
+event_last_replayed_time,
+event_source_arn,
+event_start_time,
+replay_arn,
+replay_end_time,
+replay_name,
+replay_start_time,
+state,
+state_reason
 FROM aws.events.replays
 WHERE region = '{{ region }}' -- required
 ;
@@ -244,8 +244,8 @@ Lists your replays. You can either list all the replays or you can provide a pre
 
 ```sql
 SELECT
-NextToken,
-Replays
+next_token,
+replays
 FROM aws.events.replays
 WHERE region = '{{ region }}' -- required
 ;

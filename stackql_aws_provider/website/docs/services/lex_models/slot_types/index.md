@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Checksum of the $LATEST version of the slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the slot type was created.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enumerationValues" /></td>
+    <td><CopyableCode code="enumeration_values" /></td>
     <td><code>array</code></td>
     <td>A list of EnumerationValue objects that defines the values that the slot type can take.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the slot type was updated. When you create a resource, the creation date and last update date are the same.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentSlotTypeSignature" /></td>
+    <td><CopyableCode code="parent_slot_type_signature" /></td>
     <td><code>string</code></td>
     <td>The built-in slot type used as a parent for the slot type. (pattern: &lt;code&gt;^((AMAZON\.)_?|&#91;A-Za-z&#93;_?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotTypeConfigurations" /></td>
+    <td><CopyableCode code="slot_type_configurations" /></td>
     <td><code>array</code></td>
     <td>Configuration information that extends the parent built-in slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="valueSelectionStrategy" /></td>
+    <td><CopyableCode code="value_selection_strategy" /></td>
     <td><code>string</code></td>
     <td>The strategy that Amazon Lex uses to determine the value of the slot. For more information, see PutSlotType. (ORIGINAL_VALUE, TOP_RESOLUTION)</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the slot type. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the slot type was created.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the slot type was updated. When you create a resource, the creation date and last updated date are the same.</td>
 </tr>
@@ -253,13 +253,13 @@ Returns information about a specific version of a slot type. In addition to spec
 SELECT
 name,
 checksum,
-createdDate,
+created_date,
 description,
-enumerationValues,
-lastUpdatedDate,
-parentSlotTypeSignature,
-slotTypeConfigurations,
-valueSelectionStrategy,
+enumeration_values,
+last_updated_date,
+parent_slot_type_signature,
+slot_type_configurations,
+value_selection_strategy,
 version
 FROM aws.lex_models.slot_types
 WHERE name = '{{ name }}' -- required
@@ -275,9 +275,9 @@ Returns slot type information as follows: If you specify the nameContains field,
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
+last_updated_date,
 version
 FROM aws.lex_models.slot_types
 WHERE region = '{{ region }}' -- required
@@ -318,14 +318,14 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 checksum,
-createVersion,
-createdDate,
+create_version,
+created_date,
 description,
-enumerationValues,
-lastUpdatedDate,
-parentSlotTypeSignature,
-slotTypeConfigurations,
-valueSelectionStrategy,
+enumeration_values,
+last_updated_date,
+parent_slot_type_signature,
+slot_type_configurations,
+value_selection_strategy,
 version;
 ```
 </TabItem>

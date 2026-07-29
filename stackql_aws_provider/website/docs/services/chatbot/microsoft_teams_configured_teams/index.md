@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Either ENABLED or DISABLED. The resource returns DISABLED if the organization's AWS Chatbot policy has explicitly denied that configuration. For example, if Amazon Chime is disabled. (pattern: &lt;code&gt;(ENABLED|DISABLED)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Provided if State is DISABLED. Provides context as to why the resource is disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamId" /></td>
+    <td><CopyableCode code="team_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console. For more information, see Step 1: Configure a Microsoft Teams client in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TeamName" /></td>
+    <td><CopyableCode code="team_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Microsoft Teams Team. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Microsoft Teams tenant. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;&#123;8&#125;(?:-&#91;0-9A-Fa-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9A-Fa-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -146,11 +146,11 @@ Lists all authorized Microsoft Teams for an AWS Account
 
 ```sql
 SELECT
-State,
-StateReason,
-TeamId,
-TeamName,
-TenantId
+state,
+state_reason,
+team_id,
+team_name,
+tenant_id
 FROM aws.chatbot.microsoft_teams_configured_teams
 WHERE region = '{{ region }}' -- required
 ;

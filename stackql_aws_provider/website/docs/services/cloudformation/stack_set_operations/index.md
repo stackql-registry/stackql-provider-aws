@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The type of StackSet operation: CREATE, UPDATE, or DELETE. Create and delete operations affect only the specified stack instances that are associated with the specified StackSet. Update operations affect both the StackSet itself, in addition to all associated stack instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdministrationRoleARN" /></td>
+    <td><CopyableCode code="administration_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used to perform this StackSet operation. Use customized administrator roles to control which users or groups can manage specific StackSets within the same administrator account. For more information, see Grant self-managed permissions in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time at which the operation was initiated. Note that the creation times for the stack set operation might differ from the creation time of the individual stacks themselves. This is because CloudFormation needs to perform preparatory work for the operation, such as dispatching the work to the requested Regions, before actually creating the first stacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentTargets" /></td>
+    <td><CopyableCode code="deployment_targets" /></td>
     <td><code>string</code></td>
     <td>The Organizations accounts affected by the stack operation. Valid only if the StackSet uses service-managed permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time at which the StackSet operation ended, across all accounts and Regions specified. Note that this doesn't necessarily mean that the StackSet operation was successful, or even attempted, in each account or Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleName" /></td>
+    <td><CopyableCode code="execution_role_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM execution role used to create or update the StackSet. Use customized execution roles to control which stack resources users and groups can include in their StackSets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationId" /></td>
+    <td><CopyableCode code="operation_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of a StackSet operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationPreferences" /></td>
+    <td><CopyableCode code="operation_preferences" /></td>
     <td><code>string</code></td>
     <td>The preferences for how CloudFormation performs this StackSet operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetainStacks" /></td>
+    <td><CopyableCode code="retain_stacks" /></td>
     <td><code>boolean</code></td>
     <td>For StackSet operations of action type DELETE, specifies whether to remove the stack instances from the specified StackSet, but doesn't delete the stacks. You can't re-associate a retained stack, or add an existing, saved stack to a new StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetDriftDetectionDetails" /></td>
+    <td><CopyableCode code="stack_set_drift_detection_details" /></td>
     <td><code>string</code></td>
     <td>Detailed information about the drift status of the StackSet. This includes information about drift operations currently being performed on the StackSet. This information will only be present for StackSet operations whose Action type is DETECT_DRIFT. For more information, see Performing drift detection on CloudFormation StackSets in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackSetId" /></td>
+    <td><CopyableCode code="stack_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the StackSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the operation. FAILED: The operation exceeded the specified failure tolerance. The failure tolerance value that you've set for an operation is applied for each Region during stack create and update operations. If the number of failed stacks within a Region exceeds the failure tolerance, the status of the operation in the Region is set to FAILED. This in turn sets the status of the operation as a whole to FAILED, and CloudFormation cancels the operation in any remaining Regions. QUEUED: &#91;Service-managed permissions&#93; For automatic deployments that require a sequence of operations, the operation is queued to be performed. For more information, see the StackSets status codes in the CloudFormation User Guide. RUNNING: The operation is currently being performed. STOPPED: The user has canceled the operation. STOPPING: The operation is in the process of stopping, at user request. SUCCEEDED: The operation completed creating or updating all the specified stacks without exceeding the failure tolerance for the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>Detailed information about the StackSet operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The status of the operation in details.</td>
 </tr>
@@ -135,42 +135,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The type of operation: CREATE, UPDATE, or DELETE. Create and delete operations affect only the specified stack instances that are associated with the specified StackSet. Update operations affect both the StackSet itself and all associated StackSet instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time at which the operation was initiated. Note that the creation times for the StackSet operation might differ from the creation time of the individual stacks themselves. This is because CloudFormation needs to perform preparatory work for the operation, such as dispatching the work to the requested Regions, before actually creating the first stacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time at which the StackSet operation ended, across all accounts and Regions specified. Note that this doesn't necessarily mean that the StackSet operation was successful, or even attempted, in each account or Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationId" /></td>
+    <td><CopyableCode code="operation_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the StackSet operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationPreferences" /></td>
+    <td><CopyableCode code="operation_preferences" /></td>
     <td><code>string</code></td>
     <td>The user-specified preferences for how CloudFormation performs a StackSet operation. For more information about maximum concurrent accounts and failure tolerance, see StackSet operation options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The overall status of the operation. FAILED: The operation exceeded the specified failure tolerance. The failure tolerance value that you've set for an operation is applied for each Region during stack create and update operations. If the number of failed stacks within a Region exceeds the failure tolerance, the status of the operation in the Region is set to FAILED. This in turn sets the status of the operation as a whole to FAILED, and CloudFormation cancels the operation in any remaining Regions. QUEUED: &#91;Service-managed permissions&#93; For automatic deployments that require a sequence of operations, the operation is queued to be performed. For more information, see the StackSet status codes in the CloudFormation User Guide. RUNNING: The operation is currently being performed. STOPPED: The user has canceled the operation. STOPPING: The operation is in the process of stopping, at user request. SUCCEEDED: The operation completed creating or updating all the specified stacks without exceeding the failure tolerance for the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>Detailed information about the StackSet operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The status of the operation in details.</td>
 </tr>
@@ -272,20 +272,20 @@ Returns the description of the specified StackSet operation. This API provides s
 
 ```sql
 SELECT
-Action,
-AdministrationRoleARN,
-CreationTimestamp,
-DeploymentTargets,
-EndTimestamp,
-ExecutionRoleName,
-OperationId,
-OperationPreferences,
-RetainStacks,
-StackSetDriftDetectionDetails,
-StackSetId,
-Status,
-StatusDetails,
-StatusReason
+action,
+administration_role_arn,
+creation_timestamp,
+deployment_targets,
+end_timestamp,
+execution_role_name,
+operation_id,
+operation_preferences,
+retain_stacks,
+stack_set_drift_detection_details,
+stack_set_id,
+status,
+status_details,
+status_reason
 FROM aws.cloudformation.stack_set_operations
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND OperationId = '{{ OperationId }}' -- required
@@ -300,14 +300,14 @@ Returns summary information about operations performed on a StackSet. This API p
 
 ```sql
 SELECT
-Action,
-CreationTimestamp,
-EndTimestamp,
-OperationId,
-OperationPreferences,
-Status,
-StatusDetails,
-StatusReason
+action,
+creation_timestamp,
+end_timestamp,
+operation_id,
+operation_preferences,
+status,
+status_details,
+status_reason
 FROM aws.cloudformation.stack_set_operations
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND region = '{{ region }}' -- required

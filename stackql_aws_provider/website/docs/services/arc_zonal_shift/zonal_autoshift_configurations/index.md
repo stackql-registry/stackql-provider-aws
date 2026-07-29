@@ -107,8 +107,8 @@ resource_identifier = '{{ resource_identifier }}' --required
 AND region = '{{ region }}' --required
 AND zonalAutoshiftStatus = '{{ zonalAutoshiftStatus }}' --required
 RETURNING
-resourceIdentifier,
-zonalAutoshiftStatus;
+resource_identifier,
+zonal_autoshift_status;
 ```
 </TabItem>
 </Tabs>

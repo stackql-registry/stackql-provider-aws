@@ -52,32 +52,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeConfiguration" /></td>
+    <td><CopyableCode code="attribute_configuration" /></td>
     <td><code>object</code></td>
     <td>Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Amazon Connect admin website.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>Last modified region. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the predefined attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Purposes" /></td>
+    <td><CopyableCode code="purposes" /></td>
     <td><code>array</code></td>
     <td>Values that enable you to categorize your predefined attributes. You can use them in custom UI elements across the Amazon Connect admin website.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>object</code></td>
     <td>Information about values of a predefined attribute.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>Last modified region. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the predefined attribute.</td>
 </tr>
@@ -125,32 +125,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeConfiguration" /></td>
+    <td><CopyableCode code="attribute_configuration" /></td>
     <td><code>object</code></td>
     <td>Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Amazon Connect admin website.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>Last modified region. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the predefined attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Purposes" /></td>
+    <td><CopyableCode code="purposes" /></td>
     <td><code>array</code></td>
     <td>Values that enable you to categorize your predefined attributes. You can use them in custom UI elements across the Amazon Connect admin website.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>object</code></td>
     <td>Information about values of a predefined attribute.</td>
 </tr>
@@ -276,12 +276,12 @@ Describes a predefined attribute for the specified Amazon Connect instance. A pr
 
 ```sql
 SELECT
-AttributeConfiguration,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Purposes,
-Values
+attribute_configuration,
+last_modified_region,
+last_modified_time,
+name,
+purposes,
+values
 FROM aws.connect.predefined_attributes
 WHERE instance_id = '{{ instance_id }}' -- required
 AND name = '{{ name }}' -- required
@@ -295,9 +295,9 @@ Lists predefined attributes for the specified Amazon Connect instance. A predefi
 
 ```sql
 SELECT
-LastModifiedRegion,
-LastModifiedTime,
-Name
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.predefined_attributes
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -312,12 +312,12 @@ Searches predefined attributes that meet certain criteria. A predefined attribut
 
 ```sql
 SELECT
-AttributeConfiguration,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Purposes,
-Values
+attribute_configuration,
+last_modified_region,
+last_modified_time,
+name,
+purposes,
+values
 FROM aws.connect.predefined_attributes
 WHERE region = '{{ region }}' -- required
 ;

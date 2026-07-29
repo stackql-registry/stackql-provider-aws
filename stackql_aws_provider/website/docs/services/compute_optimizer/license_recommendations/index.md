@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe errors of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseRecommendations" /></td>
+    <td><CopyableCode code="license_recommendations" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe license recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to advance to the next page of license recommendations.</td>
 </tr>
@@ -137,8 +137,8 @@ Returns license recommendations for Amazon EC2 instances that run on a specific 
 ```sql
 SELECT
 errors,
-licenseRecommendations,
-nextToken
+license_recommendations,
+next_token
 FROM aws.compute_optimizer.license_recommendations
 WHERE region = '{{ region }}' -- required
 ;

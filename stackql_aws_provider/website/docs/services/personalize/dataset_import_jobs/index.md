@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time (in Unix time) of the dataset import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>Describes the data source that contains the data to upload to a dataset, or the list of records to delete from Amazon Personalize.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset that receives the imported data. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetImportJobArn" /></td>
+    <td><CopyableCode code="dataset_import_job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dataset import job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a dataset import job fails, provides the reason why.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importMode" /></td>
+    <td><CopyableCode code="import_mode" /></td>
     <td><code>string</code></td>
     <td>The import mode used by the dataset import job to import new records. (FULL, INCREMENTAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the import job. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) the dataset was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publishAttributionMetricsToS3" /></td>
+    <td><CopyableCode code="publish_attribution_metrics_to_s3" /></td>
     <td><code>boolean</code></td>
     <td>Whether the job publishes metrics to Amazon S3 for a metric attribution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that has permissions to read from the Amazon S3 data source. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the dataset import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetImportJobArn" /></td>
+    <td><CopyableCode code="dataset_import_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset import job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a dataset import job fails, the reason behind the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importMode" /></td>
+    <td><CopyableCode code="import_mode" /></td>
     <td><code>string</code></td>
     <td>The import mode the dataset import job used to update the data in the dataset. For more information see Updating existing bulk data. (FULL, INCREMENTAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset import job. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the dataset import job status was last updated.</td>
 </tr>
@@ -234,16 +234,16 @@ Describes the dataset import job created by CreateDatasetImportJob, including th
 
 ```sql
 SELECT
-creationDateTime,
-dataSource,
-datasetArn,
-datasetImportJobArn,
-failureReason,
-importMode,
-jobName,
-lastUpdatedDateTime,
-publishAttributionMetricsToS3,
-roleArn,
+creation_date_time,
+data_source,
+dataset_arn,
+dataset_import_job_arn,
+failure_reason,
+import_mode,
+job_name,
+last_updated_date_time,
+publish_attribution_metrics_to_s3,
+role_arn,
 status
 FROM aws.personalize.dataset_import_jobs
 WHERE region = '{{ region }}' -- required
@@ -256,12 +256,12 @@ Returns a list of dataset import jobs that use the given dataset. When a dataset
 
 ```sql
 SELECT
-creationDateTime,
-datasetImportJobArn,
-failureReason,
-importMode,
-jobName,
-lastUpdatedDateTime,
+creation_date_time,
+dataset_import_job_arn,
+failure_reason,
+import_mode,
+job_name,
+last_updated_date_time,
 status
 FROM aws.personalize.dataset_import_jobs
 WHERE region = '{{ region }}' -- required
@@ -305,7 +305,7 @@ SELECT
 {{ publishAttributionMetricsToS3 }},
 '{{ region }}'
 RETURNING
-datasetImportJobArn
+dataset_import_job_arn
 ;
 ```
 </TabItem>

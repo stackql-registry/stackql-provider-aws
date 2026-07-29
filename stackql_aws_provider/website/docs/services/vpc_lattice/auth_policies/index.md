@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the auth policy was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the auth policy was last updated, in ISO-8601 format.</td>
 </tr>
@@ -153,8 +153,8 @@ Retrieves information about the auth policy for the specified service or service
 
 ```sql
 SELECT
-createdAt,
-lastUpdatedAt,
+created_at,
+last_updated_at,
 policy,
 state
 FROM aws.vpc_lattice.auth_policies

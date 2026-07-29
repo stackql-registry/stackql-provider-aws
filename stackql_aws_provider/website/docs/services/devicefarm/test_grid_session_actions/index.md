@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The action taken by the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token.</td>
 </tr>
@@ -125,7 +125,7 @@ Returns a list of the actions taken in a TestGridSession.
 ```sql
 SELECT
 actions,
-nextToken
+next_token
 FROM aws.devicefarm.test_grid_session_actions
 WHERE region = '{{ region }}' -- required
 ;

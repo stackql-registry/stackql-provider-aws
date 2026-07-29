@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainPackageDetailsList" /></td>
+    <td><CopyableCode code="domain_package_details_list" /></td>
     <td><code>array</code></td>
     <td>List of DomainPackageDetails objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
@@ -139,8 +139,8 @@ Lists all Amazon ES domains associated with the package.
 
 ```sql
 SELECT
-DomainPackageDetailsList,
-NextToken
+domain_package_details_list,
+next_token
 FROM aws.es.domains_for_packages
 WHERE package_id = '{{ package_id }}' -- required
 AND region = '{{ region }}' -- required

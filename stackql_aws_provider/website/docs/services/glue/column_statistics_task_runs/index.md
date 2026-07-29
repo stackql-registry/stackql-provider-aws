@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ColumnStatisticsTaskRuns" /></td>
+    <td><CopyableCode code="column_statistics_task_runs" /></td>
     <td><code>array</code></td>
     <td>A list of column statistics task runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, if not all task runs have yet been returned.</td>
 </tr>
@@ -76,97 +76,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogID" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog where the table resides. If none is supplied, the Amazon Web Services account ID is used by default. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ColumnNameList" /></td>
+    <td><CopyableCode code="column_name_list" /></td>
     <td><code>array</code></td>
     <td>A list of the column names. If none is supplied, all column names for the table will be used by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ColumnStatisticsTaskRunId" /></td>
+    <td><CopyableCode code="column_statistics_task_run_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the particular column statistics task run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputationType" /></td>
+    <td><CopyableCode code="computation_type" /></td>
     <td><code>string</code></td>
     <td>The type of column statistics computation. (FULL, INCREMENTAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerId" /></td>
+    <td><CopyableCode code="customer_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DPUSeconds" /></td>
+    <td><CopyableCode code="dpu_seconds" /></td>
     <td><code>number (double)</code></td>
     <td>The calculated DPU usage in seconds for all autoscaled workers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The database where the table resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message for the job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last point in time when this task was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of workers used to generate column statistics. The job is preconfigured to autoscale up to 25 instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The IAM role that the service assumes to generate statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampleSize" /></td>
+    <td><CopyableCode code="sample_size" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of rows used to generate statistics. If none is supplied, the entire table will be used to generate stats.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>Name of the security configuration that is used to encrypt CloudWatch logs for the column stats task run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task run. (STARTING, RUNNING, SUCCEEDED, FAILED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table for which column statistics is generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerType" /></td>
+    <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of workers being used for generating stats. The default is g.1x. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -284,8 +284,8 @@ Retrieves information about all runs associated with the specified table.
 
 ```sql
 SELECT
-ColumnStatisticsTaskRuns,
-NextToken
+column_statistics_task_runs,
+next_token
 FROM aws.glue.column_statistics_task_runs
 WHERE region = '{{ region }}' -- required
 ;
@@ -297,25 +297,25 @@ Get the associated metadata/information for a task run, given a task run ID.
 
 ```sql
 SELECT
-CatalogID,
-ColumnNameList,
-ColumnStatisticsTaskRunId,
-ComputationType,
-CreationTime,
-CustomerId,
-DPUSeconds,
-DatabaseName,
-EndTime,
-ErrorMessage,
-LastUpdated,
-NumberOfWorkers,
-Role,
-SampleSize,
-SecurityConfiguration,
-StartTime,
-Status,
-TableName,
-WorkerType
+catalog_id,
+column_name_list,
+column_statistics_task_run_id,
+computation_type,
+creation_time,
+customer_id,
+dpu_seconds,
+database_name,
+end_time,
+error_message,
+last_updated,
+number_of_workers,
+role,
+sample_size,
+security_configuration,
+start_time,
+status,
+table_name,
+worker_type
 FROM aws.glue.column_statistics_task_runs
 WHERE region = '{{ region }}' -- required
 ;

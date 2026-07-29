@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualInterfaces" /></td>
+    <td><CopyableCode code="virtual_interfaces" /></td>
     <td><code>array</code></td>
     <td>The virtual interfaces</td>
 </tr>
@@ -215,8 +215,8 @@ Displays all virtual interfaces for an Amazon Web Services account. Virtual inte
 
 ```sql
 SELECT
-nextToken,
-virtualInterfaces
+next_token,
+virtual_interfaces
 FROM aws.directconnect.virtual_interfaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,32 +251,32 @@ SELECT
 '{{ newPrivateVirtualInterface }}' /* required */,
 '{{ region }}'
 RETURNING
-addressFamily,
-amazonAddress,
-amazonSideAsn,
+address_family,
+amazon_address,
+amazon_side_asn,
 asn,
-asnLong,
-authKey,
-awsDeviceV2,
-awsLogicalDeviceId,
-bgpPeers,
-connectionId,
-customerAddress,
-customerRouterConfig,
-directConnectGatewayId,
-jumboFrameCapable,
+asn_long,
+auth_key,
+aws_device_v2,
+aws_logical_device_id,
+bgp_peers,
+connection_id,
+customer_address,
+customer_router_config,
+direct_connect_gateway_id,
+jumbo_frame_capable,
 location,
 mtu,
-ownerAccount,
+owner_account,
 region,
-routeFilterPrefixes,
-siteLinkEnabled,
+route_filter_prefixes,
+site_link_enabled,
 tags,
-virtualGatewayId,
-virtualInterfaceId,
-virtualInterfaceName,
-virtualInterfaceState,
-virtualInterfaceType,
+virtual_gateway_id,
+virtual_interface_id,
+virtual_interface_name,
+virtual_interface_state,
+virtual_interface_type,
 vlan
 ;
 ```
@@ -296,32 +296,32 @@ SELECT
 '{{ newPublicVirtualInterface }}' /* required */,
 '{{ region }}'
 RETURNING
-addressFamily,
-amazonAddress,
-amazonSideAsn,
+address_family,
+amazon_address,
+amazon_side_asn,
 asn,
-asnLong,
-authKey,
-awsDeviceV2,
-awsLogicalDeviceId,
-bgpPeers,
-connectionId,
-customerAddress,
-customerRouterConfig,
-directConnectGatewayId,
-jumboFrameCapable,
+asn_long,
+auth_key,
+aws_device_v2,
+aws_logical_device_id,
+bgp_peers,
+connection_id,
+customer_address,
+customer_router_config,
+direct_connect_gateway_id,
+jumbo_frame_capable,
 location,
 mtu,
-ownerAccount,
+owner_account,
 region,
-routeFilterPrefixes,
-siteLinkEnabled,
+route_filter_prefixes,
+site_link_enabled,
 tags,
-virtualGatewayId,
-virtualInterfaceId,
-virtualInterfaceName,
-virtualInterfaceState,
-virtualInterfaceType,
+virtual_gateway_id,
+virtual_interface_id,
+virtual_interface_name,
+virtual_interface_state,
+virtual_interface_type,
 vlan
 ;
 ```
@@ -341,7 +341,7 @@ SELECT
 '{{ newTransitVirtualInterface }}' /* required */,
 '{{ region }}'
 RETURNING
-virtualInterface
+virtual_interface
 ;
 ```
 </TabItem>
@@ -445,32 +445,32 @@ AND connectionId = '{{ connectionId }}' --required
 AND ownerAccount = '{{ ownerAccount }}' --required
 AND newPrivateVirtualInterfaceAllocation = '{{ newPrivateVirtualInterfaceAllocation }}' --required
 RETURNING
-addressFamily,
-amazonAddress,
-amazonSideAsn,
+address_family,
+amazon_address,
+amazon_side_asn,
 asn,
-asnLong,
-authKey,
-awsDeviceV2,
-awsLogicalDeviceId,
-bgpPeers,
-connectionId,
-customerAddress,
-customerRouterConfig,
-directConnectGatewayId,
-jumboFrameCapable,
+asn_long,
+auth_key,
+aws_device_v2,
+aws_logical_device_id,
+bgp_peers,
+connection_id,
+customer_address,
+customer_router_config,
+direct_connect_gateway_id,
+jumbo_frame_capable,
 location,
 mtu,
-ownerAccount,
+owner_account,
 region,
-routeFilterPrefixes,
-siteLinkEnabled,
+route_filter_prefixes,
+site_link_enabled,
 tags,
-virtualGatewayId,
-virtualInterfaceId,
-virtualInterfaceName,
-virtualInterfaceState,
-virtualInterfaceType,
+virtual_gateway_id,
+virtual_interface_id,
+virtual_interface_name,
+virtual_interface_state,
+virtual_interface_type,
 vlan;
 ```
 </TabItem>
@@ -490,32 +490,32 @@ AND connectionId = '{{ connectionId }}' --required
 AND ownerAccount = '{{ ownerAccount }}' --required
 AND newPublicVirtualInterfaceAllocation = '{{ newPublicVirtualInterfaceAllocation }}' --required
 RETURNING
-addressFamily,
-amazonAddress,
-amazonSideAsn,
+address_family,
+amazon_address,
+amazon_side_asn,
 asn,
-asnLong,
-authKey,
-awsDeviceV2,
-awsLogicalDeviceId,
-bgpPeers,
-connectionId,
-customerAddress,
-customerRouterConfig,
-directConnectGatewayId,
-jumboFrameCapable,
+asn_long,
+auth_key,
+aws_device_v2,
+aws_logical_device_id,
+bgp_peers,
+connection_id,
+customer_address,
+customer_router_config,
+direct_connect_gateway_id,
+jumbo_frame_capable,
 location,
 mtu,
-ownerAccount,
+owner_account,
 region,
-routeFilterPrefixes,
-siteLinkEnabled,
+route_filter_prefixes,
+site_link_enabled,
 tags,
-virtualGatewayId,
-virtualInterfaceId,
-virtualInterfaceName,
-virtualInterfaceState,
-virtualInterfaceType,
+virtual_gateway_id,
+virtual_interface_id,
+virtual_interface_name,
+virtual_interface_state,
+virtual_interface_type,
 vlan;
 ```
 </TabItem>
@@ -535,7 +535,7 @@ AND connectionId = '{{ connectionId }}' --required
 AND ownerAccount = '{{ ownerAccount }}' --required
 AND newTransitVirtualInterfaceAllocation = '{{ newTransitVirtualInterfaceAllocation }}' --required
 RETURNING
-virtualInterface;
+virtual_interface;
 ```
 </TabItem>
 <TabItem value="associate_virtual_interface">
@@ -552,32 +552,32 @@ region = '{{ region }}' --required
 AND virtualInterfaceId = '{{ virtualInterfaceId }}' --required
 AND connectionId = '{{ connectionId }}' --required
 RETURNING
-addressFamily,
-amazonAddress,
-amazonSideAsn,
+address_family,
+amazon_address,
+amazon_side_asn,
 asn,
-asnLong,
-authKey,
-awsDeviceV2,
-awsLogicalDeviceId,
-bgpPeers,
-connectionId,
-customerAddress,
-customerRouterConfig,
-directConnectGatewayId,
-jumboFrameCapable,
+asn_long,
+auth_key,
+aws_device_v2,
+aws_logical_device_id,
+bgp_peers,
+connection_id,
+customer_address,
+customer_router_config,
+direct_connect_gateway_id,
+jumbo_frame_capable,
 location,
 mtu,
-ownerAccount,
+owner_account,
 region,
-routeFilterPrefixes,
-siteLinkEnabled,
+route_filter_prefixes,
+site_link_enabled,
 tags,
-virtualGatewayId,
-virtualInterfaceId,
-virtualInterfaceName,
-virtualInterfaceState,
-virtualInterfaceType,
+virtual_gateway_id,
+virtual_interface_id,
+virtual_interface_name,
+virtual_interface_state,
+virtual_interface_type,
 vlan;
 ```
 </TabItem>
@@ -596,32 +596,32 @@ WHERE
 region = '{{ region }}' --required
 AND virtualInterfaceId = '{{ virtualInterfaceId }}' --required
 RETURNING
-addressFamily,
-amazonAddress,
-amazonSideAsn,
+address_family,
+amazon_address,
+amazon_side_asn,
 asn,
-asnLong,
-authKey,
-awsDeviceV2,
-awsLogicalDeviceId,
-bgpPeers,
-connectionId,
-customerAddress,
-customerRouterConfig,
-directConnectGatewayId,
-jumboFrameCapable,
+asn_long,
+auth_key,
+aws_device_v2,
+aws_logical_device_id,
+bgp_peers,
+connection_id,
+customer_address,
+customer_router_config,
+direct_connect_gateway_id,
+jumbo_frame_capable,
 location,
 mtu,
-ownerAccount,
+owner_account,
 region,
-routeFilterPrefixes,
-siteLinkEnabled,
+route_filter_prefixes,
+site_link_enabled,
 tags,
-virtualGatewayId,
-virtualInterfaceId,
-virtualInterfaceName,
-virtualInterfaceState,
-virtualInterfaceType,
+virtual_gateway_id,
+virtual_interface_id,
+virtual_interface_name,
+virtual_interface_state,
+virtual_interface_type,
 vlan;
 ```
 </TabItem>

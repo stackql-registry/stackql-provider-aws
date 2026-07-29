@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageID" /></td>
+    <td><CopyableCode code="package_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the package. (pattern: &lt;code&gt;^(&#91;FG&#93;&#91;0-9&#93;+)$|^(pkg-&#91;a-f0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageVersionHistoryList" /></td>
+    <td><CopyableCode code="package_version_history_list" /></td>
     <td><code>array</code></td>
     <td>A list of package versions, along with their creation time and commit message.</td>
 </tr>
@@ -144,9 +144,9 @@ Returns a list of Amazon OpenSearch Service package versions, along with their c
 
 ```sql
 SELECT
-NextToken,
-PackageID,
-PackageVersionHistoryList
+next_token,
+package_id,
+package_version_history_list
 FROM aws.opensearch.package_version_histories
 WHERE package_id = '{{ package_id }}' -- required
 AND region = '{{ region }}' -- required

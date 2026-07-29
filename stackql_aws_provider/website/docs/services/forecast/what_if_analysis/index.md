@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the what-if analysis was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The approximate time remaining to complete the what-if analysis, in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastArn" /></td>
+    <td><CopyableCode code="forecast_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if forecast. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the what-if analysis. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED The Status of the what-if analysis must be ACTIVE before you can access the analysis. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeSeriesSelector" /></td>
+    <td><CopyableCode code="time_series_selector" /></td>
     <td><code>object</code></td>
     <td>Defines the set of time series that are used to create the forecasts in a TimeSeriesIdentifiers object. The TimeSeriesIdentifiers object needs the following information: DataSource Format Schema</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfAnalysisArn" /></td>
+    <td><CopyableCode code="what_if_analysis_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if analysis. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfAnalysisName" /></td>
+    <td><CopyableCode code="what_if_analysis_name" /></td>
     <td><code>string</code></td>
     <td>The name of the what-if analysis. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -173,15 +173,15 @@ Describes the what-if analysis created using the CreateWhatIfAnalysis operation.
 
 ```sql
 SELECT
-CreationTime,
-EstimatedTimeRemainingInMinutes,
-ForecastArn,
-LastModificationTime,
-Message,
-Status,
-TimeSeriesSelector,
-WhatIfAnalysisArn,
-WhatIfAnalysisName
+creation_time,
+estimated_time_remaining_in_minutes,
+forecast_arn,
+last_modification_time,
+message,
+status,
+time_series_selector,
+what_if_analysis_arn,
+what_if_analysis_name
 FROM aws.forecast.what_if_analysis
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,7 +218,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-WhatIfAnalysisArn
+what_if_analysis_arn
 ;
 ```
 </TabItem>

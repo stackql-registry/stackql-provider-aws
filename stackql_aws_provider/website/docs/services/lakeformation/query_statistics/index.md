@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExecutionStatistics" /></td>
+    <td><CopyableCode code="execution_statistics" /></td>
     <td><code>object</code></td>
     <td>An ExecutionStatistics structure containing execution statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlanningStatistics" /></td>
+    <td><CopyableCode code="planning_statistics" /></td>
     <td><code>object</code></td>
     <td>A PlanningStatistics structure containing query planning statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuerySubmissionTime" /></td>
+    <td><CopyableCode code="query_submission_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the query was submitted.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves statistics on the planning and execution of a query.
 
 ```sql
 SELECT
-ExecutionStatistics,
-PlanningStatistics,
-QuerySubmissionTime
+execution_statistics,
+planning_statistics,
+query_submission_time
 FROM aws.lakeformation.query_statistics
 WHERE region = '{{ region }}' -- required
 ;

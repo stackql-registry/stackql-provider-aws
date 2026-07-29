@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="consumableResourceProperties" /></td>
+    <td><CopyableCode code="consumable_resource_properties" /></td>
     <td><code>object</code></td>
     <td>Contains a list of consumable resources required by the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp (in milliseconds) for when the consumable resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDefinitionArn" /></td>
+    <td><CopyableCode code="job_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobQueueArn" /></td>
+    <td><CopyableCode code="job_queue_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the job. Can be one of: SUBMITTED PENDING RUNNABLE STARTING RUNNING SUCCEEDED FAILED</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
     <td>The total amount of the consumable resource that is available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shareIdentifier" /></td>
+    <td><CopyableCode code="share_identifier" /></td>
     <td><code>string</code></td>
     <td>The fair-share scheduling identifier for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp for when the job was started. More specifically, it's when the job transitioned from the STARTING state to the RUNNING state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A short, human-readable string to provide more details for the current status of the job.</td>
 </tr>
@@ -169,17 +169,17 @@ Returns a list of Batch jobs that require a specific consumable resource.
 
 ```sql
 SELECT
-consumableResourceProperties,
-createdAt,
-jobArn,
-jobDefinitionArn,
-jobName,
-jobQueueArn,
-jobStatus,
+consumable_resource_properties,
+created_at,
+job_arn,
+job_definition_arn,
+job_name,
+job_queue_arn,
+job_status,
 quantity,
-shareIdentifier,
-startedAt,
-statusReason
+share_identifier,
+started_at,
+status_reason
 FROM aws.batch.jobs_by_consumable_resources
 WHERE region = '{{ region }}' -- required
 ;

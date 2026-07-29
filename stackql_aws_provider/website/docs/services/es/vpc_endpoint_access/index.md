@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorizedPrincipalList" /></td>
+    <td><CopyableCode code="authorized_principal_list" /></td>
     <td><code>array</code></td>
     <td>List of AuthorizedPrincipal describing the details of the permissions to manage VPC endpoints against the specified domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results.</td>
 </tr>
@@ -148,8 +148,8 @@ Retrieves information about each principal that is allowed to access a given Ama
 
 ```sql
 SELECT
-AuthorizedPrincipalList,
-NextToken
+authorized_principal_list,
+next_token
 FROM aws.es.vpc_endpoint_access
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -181,7 +181,7 @@ domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 AND Account = '{{ Account }}' --required
 RETURNING
-AuthorizedPrincipal;
+authorized_principal;
 ```
 </TabItem>
 </Tabs>

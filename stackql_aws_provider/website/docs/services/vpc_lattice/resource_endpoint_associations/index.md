@@ -60,37 +60,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the VPC endpoint association. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceendpointassociation/rea-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the VPC endpoint association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationArn" /></td>
+    <td><CopyableCode code="resource_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource configuration. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceconfiguration/rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationId" /></td>
+    <td><CopyableCode code="resource_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource configuration. (pattern: &lt;code&gt;rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationName" /></td>
+    <td><CopyableCode code="resource_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource configuration. (pattern: &lt;code&gt;(?!rcfg-)(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint. (pattern: &lt;code&gt;vpce-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointOwner" /></td>
+    <td><CopyableCode code="vpc_endpoint_owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the VPC endpoint. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -203,13 +203,13 @@ Lists the associations for the specified VPC endpoint.
 SELECT
 id,
 arn,
-createdAt,
-createdBy,
-resourceConfigurationArn,
-resourceConfigurationId,
-resourceConfigurationName,
-vpcEndpointId,
-vpcEndpointOwner
+created_at,
+created_by,
+resource_configuration_arn,
+resource_configuration_id,
+resource_configuration_name,
+vpc_endpoint_id,
+vpc_endpoint_owner
 FROM aws.vpc_lattice.resource_endpoint_associations
 WHERE resourceConfigurationIdentifier = '{{ resourceConfigurationIdentifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the reserved cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the node reservation in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number</code></td>
     <td>The fixed cost Amazon Redshift charges you for this reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeCount" /></td>
+    <td><CopyableCode code="node_count" /></td>
     <td><code>integer</code></td>
     <td>The number of reserved compute nodes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type of the reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>The anticipated utilization of the reserved node, as defined in the reserved node offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringCharges" /></td>
+    <td><CopyableCode code="recurring_charges" /></td>
     <td><code>string</code></td>
     <td>The recurring charges for the reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodeId" /></td>
+    <td><CopyableCode code="reserved_node_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodeOfferingId" /></td>
+    <td><CopyableCode code="reserved_node_offering_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the reserved node offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodeOfferingType" /></td>
+    <td><CopyableCode code="reserved_node_offering_type" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time the reservation started. You purchase a reserved node offering for a duration. This is the start time of that duration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the reserved compute node. Possible Values: pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed. active-This reserved node is owned by the caller and is available for use. payment-failed-Payment failed for the purchase attempt. retired-The reserved node is no longer available. exchanging-The owner is exchanging the reserved node for another reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number</code></td>
     <td>The hourly rate Amazon Redshift charges you for this reserved node.</td>
 </tr>
@@ -211,19 +211,19 @@ Returns the descriptions of the reserved nodes.
 
 ```sql
 SELECT
-CurrencyCode,
-Duration,
-FixedPrice,
-NodeCount,
-NodeType,
-OfferingType,
-RecurringCharges,
-ReservedNodeId,
-ReservedNodeOfferingId,
-ReservedNodeOfferingType,
-StartTime,
-State,
-UsagePrice
+currency_code,
+duration,
+fixed_price,
+node_count,
+node_type,
+offering_type,
+recurring_charges,
+reserved_node_id,
+reserved_node_offering_id,
+reserved_node_offering_type,
+start_time,
+state,
+usage_price
 FROM aws.redshift.reserved_nodes
 WHERE region = '{{ region }}' -- required
 AND ReservedNodeId = '{{ ReservedNodeId }}'

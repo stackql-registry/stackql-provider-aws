@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalDataSources" /></td>
+    <td><CopyableCode code="additional_data_sources" /></td>
     <td><code>object</code></td>
     <td>A map of reference strings to additional data sources you can specify for an evaluation run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdditionalRunOptions" /></td>
+    <td><CopyableCode code="additional_run_options" /></td>
     <td><code>object</code></td>
     <td>Additional run options you can specify for an evaluation run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this run was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>The data source (an Glue table) associated with this evaluation run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorString" /></td>
+    <td><CopyableCode code="error_string" /></td>
     <td><code>string</code></td>
     <td>The error strings that are associated with the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionTime" /></td>
+    <td><CopyableCode code="execution_time" /></td>
     <td><code>integer</code></td>
     <td>The amount of time (in seconds) that the run consumed resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp. The last point in time when this data quality rule recommendation run was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of G.1X workers to be used in the run. The default is 5.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultIds" /></td>
+    <td><CopyableCode code="result_ids" /></td>
     <td><code>array</code></td>
     <td>A list of result IDs for the data quality results for the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>An IAM role supplied to encrypt the results of the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RulesetNames" /></td>
+    <td><CopyableCode code="ruleset_names" /></td>
     <td><code>array</code></td>
     <td>A list of ruleset names for the run. Currently, this parameter takes only one Ruleset name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The unique run identifier associated with this run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this run started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status for this run. (STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeout" /></td>
+    <td><CopyableCode code="timeout" /></td>
     <td><code>integer</code></td>
     <td>The timeout for a run in minutes. This is the maximum time that a run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token, if more results are available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Runs" /></td>
+    <td><CopyableCode code="runs" /></td>
     <td><code>array</code></td>
     <td>A list of DataQualityRulesetEvaluationRunDescription objects representing data quality ruleset runs.</td>
 </tr>
@@ -222,21 +222,21 @@ Retrieves a specific run where a ruleset is evaluated against a data source.
 
 ```sql
 SELECT
-AdditionalDataSources,
-AdditionalRunOptions,
-CompletedOn,
-DataSource,
-ErrorString,
-ExecutionTime,
-LastModifiedOn,
-NumberOfWorkers,
-ResultIds,
-Role,
-RulesetNames,
-RunId,
-StartedOn,
-Status,
-Timeout
+additional_data_sources,
+additional_run_options,
+completed_on,
+data_source,
+error_string,
+execution_time,
+last_modified_on,
+number_of_workers,
+result_ids,
+role,
+ruleset_names,
+run_id,
+started_on,
+status,
+timeout
 FROM aws.glue.data_quality_ruleset_evaluation_runs
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,8 +248,8 @@ Lists all the runs meeting the filter criteria, where a ruleset is evaluated aga
 
 ```sql
 SELECT
-NextToken,
-Runs
+next_token,
+runs
 FROM aws.glue.data_quality_ruleset_evaluation_runs
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolCidrBlocks" /></td>
+    <td><CopyableCode code="pool_cidr_blocks" /></td>
     <td><code>string</code></td>
     <td>The CIDR blocks for the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags for the address pool.</td>
 </tr>
@@ -159,10 +159,10 @@ Describes your IPv6 address pools.
 
 ```sql
 SELECT
-Description,
-PoolCidrBlocks,
-PoolId,
-Tags
+description,
+pool_cidr_blocks,
+pool_id,
+tags
 FROM aws.ec2.ipv6_pools
 WHERE region = '{{ region }}' -- required
 AND PoolId = '{{ PoolId }}'

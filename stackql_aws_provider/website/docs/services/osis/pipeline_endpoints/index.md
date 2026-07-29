@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the pipeline endpoint. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestEndpointUrl" /></td>
+    <td><CopyableCode code="ingest_endpoint_url" /></td>
     <td><code>string</code></td>
     <td>The URL used to ingest data to the pipeline through the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineArn" /></td>
+    <td><CopyableCode code="pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline associated with this endpoint. (pattern: &lt;code&gt;^arn:(aws|aws\-cn|aws\-us\-gov|aws\-iso|aws\-iso\-b):osis:.+:pipeline\/.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the pipeline endpoint. (CREATING, ACTIVE, CREATE_FAILED, DELETING, REVOKING, REVOKED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC where the pipeline endpoint is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcOptions" /></td>
+    <td><CopyableCode code="vpc_options" /></td>
     <td><code>object</code></td>
     <td>Configuration settings for the VPC endpoint, specifying network access controls.</td>
 </tr>
@@ -173,12 +173,12 @@ Lists all pipeline endpoints in your account.
 
 ```sql
 SELECT
-EndpointId,
-IngestEndpointUrl,
-PipelineArn,
-Status,
-VpcId,
-VpcOptions
+endpoint_id,
+ingest_endpoint_url,
+pipeline_arn,
+status,
+vpc_id,
+vpc_options
 FROM aws.osis.pipeline_endpoints
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -213,10 +213,10 @@ SELECT
 '{{ VpcOptions }}' /* required */,
 '{{ region }}'
 RETURNING
-EndpointId,
-PipelineArn,
-Status,
-VpcId
+endpoint_id,
+pipeline_arn,
+status,
+vpc_id
 ;
 ```
 </TabItem>

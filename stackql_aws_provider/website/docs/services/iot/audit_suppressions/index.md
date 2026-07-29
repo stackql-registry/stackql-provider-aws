@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="checkName" /></td>
+    <td><CopyableCode code="check_name" /></td>
     <td><code>string</code></td>
     <td>An audit check name. Checks must be enabled for your account. (Use DescribeAccountAuditConfiguration to see the list of all checks, including those that are enabled or use UpdateAccountAuditConfiguration to select which checks are enabled.)</td>
 </tr>
@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the audit suppression. (pattern: &lt;code&gt;&#91;\p&#123;Graph&#125;\x20&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The epoch timestamp in seconds at which this suppression expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>object</code></td>
     <td>Information that identifies the noncompliant resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suppressIndefinitely" /></td>
+    <td><CopyableCode code="suppress_indefinitely" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a suppression should exist indefinitely or not.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="checkName" /></td>
+    <td><CopyableCode code="check_name" /></td>
     <td><code>string</code></td>
     <td>An audit check name. Checks must be enabled for your account. (Use DescribeAccountAuditConfiguration to see the list of all checks, including those that are enabled or use UpdateAccountAuditConfiguration to select which checks are enabled.)</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the audit suppression. (pattern: &lt;code&gt;&#91;\p&#123;Graph&#125;\x20&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date (epoch timestamp in seconds) that you want the suppression to adhere to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>object</code></td>
     <td>Information that identifies the noncompliant resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suppressIndefinitely" /></td>
+    <td><CopyableCode code="suppress_indefinitely" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a suppression should exist indefinitely or not.</td>
 </tr>
@@ -208,11 +208,11 @@ Gets information about a Device Defender audit suppression.
 
 ```sql
 SELECT
-checkName,
+check_name,
 description,
-expirationDate,
-resourceIdentifier,
-suppressIndefinitely
+expiration_date,
+resource_identifier,
+suppress_indefinitely
 FROM aws.iot.audit_suppressions
 WHERE region = '{{ region }}' -- required
 ;
@@ -224,11 +224,11 @@ Lists your Device Defender audit listings. Requires permission to access the Lis
 
 ```sql
 SELECT
-checkName,
+check_name,
 description,
-expirationDate,
-resourceIdentifier,
-suppressIndefinitely
+expiration_date,
+resource_identifier,
+suppress_indefinitely
 FROM aws.iot.audit_suppressions
 WHERE region = '{{ region }}' -- required
 ;

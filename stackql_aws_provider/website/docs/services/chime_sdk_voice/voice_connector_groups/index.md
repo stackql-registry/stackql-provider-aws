@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Voice Connector group's creation time stamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of a Voice Connector group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9 _.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Voice Connector group's creation time stamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectorGroupArn" /></td>
+    <td><CopyableCode code="voice_connector_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Voice Connector group. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectorGroupId" /></td>
+    <td><CopyableCode code="voice_connector_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a Voice Connector group. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectorItems" /></td>
+    <td><CopyableCode code="voice_connector_items" /></td>
     <td><code>array</code></td>
     <td>The Voice Connectors to which you route inbound calls.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to return the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectorGroups" /></td>
+    <td><CopyableCode code="voice_connector_groups" /></td>
     <td><code>array</code></td>
     <td>The details of the Voice Connector groups.</td>
 </tr>
@@ -227,12 +227,12 @@ Retrieves details for the specified Amazon Chime SDK Voice Connector group, such
 
 ```sql
 SELECT
-CreatedTimestamp,
-Name,
-UpdatedTimestamp,
-VoiceConnectorGroupArn,
-VoiceConnectorGroupId,
-VoiceConnectorItems
+created_timestamp,
+name,
+updated_timestamp,
+voice_connector_group_arn,
+voice_connector_group_id,
+voice_connector_items
 FROM aws.chime_sdk_voice.voice_connector_groups
 WHERE voice_connector_group_id = '{{ voice_connector_group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,8 +245,8 @@ Lists the Amazon Chime SDK Voice Connector groups in the administrator's AWS acc
 
 ```sql
 SELECT
-NextToken,
-VoiceConnectorGroups
+next_token,
+voice_connector_groups
 FROM aws.chime_sdk_voice.voice_connector_groups
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -281,7 +281,7 @@ SELECT
 '{{ VoiceConnectorItems }}',
 '{{ region }}'
 RETURNING
-VoiceConnectorGroup
+voice_connector_group
 ;
 ```
 </TabItem>
@@ -329,7 +329,7 @@ AND region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 AND VoiceConnectorItems = '{{ VoiceConnectorItems }}' --required
 RETURNING
-VoiceConnectorGroup;
+voice_connector_group;
 ```
 </TabItem>
 <TabItem value="associate_phone_numbers_with_voice_connector_group">
@@ -346,7 +346,7 @@ voice_connector_group_id = '{{ voice_connector_group_id }}' --required
 AND region = '{{ region }}' --required
 AND E164PhoneNumbers = '{{ E164PhoneNumbers }}' --required
 RETURNING
-PhoneNumberErrors;
+phone_number_errors;
 ```
 </TabItem>
 </Tabs>

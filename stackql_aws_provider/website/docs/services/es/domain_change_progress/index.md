@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeId" /></td>
+    <td><CopyableCode code="change_id" /></td>
     <td><code>string</code></td>
     <td>The unique change identifier associated with a specific domain configuration change. (pattern: &lt;code&gt;\p&#123;XDigit&#125;&#123;8&#125;-\p&#123;XDigit&#125;&#123;4&#125;-\p&#123;XDigit&#125;&#123;4&#125;-\p&#123;XDigit&#125;&#123;4&#125;-\p&#123;XDigit&#125;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeProgressStages" /></td>
+    <td><CopyableCode code="change_progress_stages" /></td>
     <td><code>array</code></td>
     <td>The specific stages that the domain is going through to perform the configuration change.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedProperties" /></td>
+    <td><CopyableCode code="completed_properties" /></td>
     <td><code>array</code></td>
     <td>The list of properties involved in the domain configuration change that are completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigChangeStatus" /></td>
+    <td><CopyableCode code="config_change_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the configuration change. (Pending, Initializing, Validating, ValidationFailed, ApplyingChanges, Completed, PendingUserInput, Cancelled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiatedBy" /></td>
+    <td><CopyableCode code="initiated_by" /></td>
     <td><code>string</code></td>
     <td>The IAM principal who initiated the configuration change. (CUSTOMER, SERVICE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the status of the configuration change was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingProperties" /></td>
+    <td><CopyableCode code="pending_properties" /></td>
     <td><code>array</code></td>
     <td>The list of properties involved in the domain configuration change that are still in pending.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration change is made on the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The overall status of the domain configuration change. This field can take the following values: PENDING, PROCESSING, COMPLETED and FAILED (PENDING, PROCESSING, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalNumberOfStages" /></td>
+    <td><CopyableCode code="total_number_of_stages" /></td>
     <td><code>integer</code></td>
     <td>The total number of stages required for the configuration change.</td>
 </tr>
@@ -174,16 +174,16 @@ Returns information about the current blue/green deployment happening on a domai
 
 ```sql
 SELECT
-ChangeId,
-ChangeProgressStages,
-CompletedProperties,
-ConfigChangeStatus,
-InitiatedBy,
-LastUpdatedTime,
-PendingProperties,
-StartTime,
-Status,
-TotalNumberOfStages
+change_id,
+change_progress_stages,
+completed_properties,
+config_change_status,
+initiated_by,
+last_updated_time,
+pending_properties,
+start_time,
+status,
+total_number_of_stages
 FROM aws.es.domain_change_progress
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

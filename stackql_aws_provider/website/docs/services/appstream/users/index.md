@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type for the user. (API, SAML, USERPOOL, AWS_AD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the user was created in the user pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the user in the user pool is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstName" /></td>
+    <td><CopyableCode code="first_name" /></td>
     <td><code>string</code></td>
     <td>The first name, or given name, of the user. (pattern: &lt;code&gt;^&#91;A-Za-z0-9_\-\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastName" /></td>
+    <td><CopyableCode code="last_name" /></td>
     <td><code>string</code></td>
     <td>The last name, or surname, of the user. (pattern: &lt;code&gt;^&#91;A-Za-z0-9_\-\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the user in the user pool. The status can be one of the following: UNCONFIRMED – The user is created but not confirmed. CONFIRMED – The user is confirmed. ARCHIVED – The user is no longer active. COMPROMISED – The user is disabled because of a potential security threat. UNKNOWN – The user status is not known.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The email address of the user. Users' email addresses are case-sensitive. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -182,14 +182,14 @@ Retrieves a list that describes one or more specified users in the user pool.
 
 ```sql
 SELECT
-Arn,
-AuthenticationType,
-CreatedTime,
-Enabled,
-FirstName,
-LastName,
-Status,
-UserName
+arn,
+authentication_type,
+created_time,
+enabled,
+first_name,
+last_name,
+status,
+user_name
 FROM aws.appstream.users
 WHERE region = '{{ region }}' -- required
 ;

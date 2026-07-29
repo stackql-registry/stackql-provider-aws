@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="bytesScanned" /></td>
+    <td><CopyableCode code="bytes_scanned" /></td>
     <td><code>number (double)</code></td>
     <td>The total number of bytes scanned by the query. This indicates the cost associated with the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time that this query was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log group scanned by this query. (pattern: &lt;code&gt;&#91;\.\-_/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryDuration" /></td>
+    <td><CopyableCode code="query_duration" /></td>
     <td><code>integer (int64)</code></td>
     <td>The duration in milliseconds that the query took to execute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryId" /></td>
+    <td><CopyableCode code="query_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID number of this query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryLanguage" /></td>
+    <td><CopyableCode code="query_language" /></td>
     <td><code>string</code></td>
     <td>The query language used for this query. For more information about the query languages that CloudWatch Logs supports, see Supported query languages. (CWLI, SQL, PPL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The query string used in this query.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of this query. Possible values are Cancelled, Complete, Failed, Running, Scheduled, and Unknown. (Scheduled, Running, Complete, Failed, Cancelled, Timeout, Unknown)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userIdentity" /></td>
+    <td><CopyableCode code="user_identity" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user who ran the query.</td>
 </tr>
@@ -159,15 +159,15 @@ Returns a list of CloudWatch Logs Insights queries that are scheduled, running, 
 
 ```sql
 SELECT
-bytesScanned,
-createTime,
-logGroupName,
-queryDuration,
-queryId,
-queryLanguage,
-queryString,
+bytes_scanned,
+create_time,
+log_group_name,
+query_duration,
+query_id,
+query_language,
+query_string,
 status,
-userIdentity
+user_identity
 FROM aws.logs.queries
 WHERE region = '{{ region }}' -- required
 ;

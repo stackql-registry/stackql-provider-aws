@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationQuota" /></td>
+    <td><CopyableCode code="application_quota" /></td>
     <td><code>string</code></td>
     <td>The quota for applications in the AWS account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionQuota" /></td>
+    <td><CopyableCode code="application_version_quota" /></td>
     <td><code>string</code></td>
     <td>The quota for application versions in the AWS account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationTemplateQuota" /></td>
+    <td><CopyableCode code="configuration_template_quota" /></td>
     <td><code>string</code></td>
     <td>The quota for configuration templates in the AWS account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomPlatformQuota" /></td>
+    <td><CopyableCode code="custom_platform_quota" /></td>
     <td><code>string</code></td>
     <td>The quota for custom platforms in the AWS account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentQuota" /></td>
+    <td><CopyableCode code="environment_quota" /></td>
     <td><code>string</code></td>
     <td>The quota for environments in the AWS account.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns attributes related to AWS Elastic Beanstalk that are associated with the
 
 ```sql
 SELECT
-ApplicationQuota,
-ApplicationVersionQuota,
-ConfigurationTemplateQuota,
-CustomPlatformQuota,
-EnvironmentQuota
+application_quota,
+application_version_quota,
+configuration_template_quota,
+custom_platform_quota,
+environment_quota
 FROM aws.elasticbeanstalk.account_attributes
 WHERE region = '{{ region }}' -- required
 ;

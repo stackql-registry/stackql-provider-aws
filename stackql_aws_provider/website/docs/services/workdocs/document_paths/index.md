@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Components" /></td>
+    <td><CopyableCode code="components" /></td>
     <td><code>array</code></td>
     <td>The components of the resource path.</td>
 </tr>
@@ -144,7 +144,7 @@ Retrieves the path information (the hierarchy from the root folder) for the requ
 
 ```sql
 SELECT
-Components
+components
 FROM aws.workdocs.document_paths
 WHERE document_id = '{{ document_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConcurrentJobs" /></td>
+    <td><CopyableCode code="concurrent_jobs" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of jobs your queue can process concurrently.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for when you created the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description that you create for each queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for when you most recently updated the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumConcurrentFeeds" /></td>
+    <td><CopyableCode code="maximum_concurrent_feeds" /></td>
     <td><code>integer</code></td>
     <td>Specify the maximum number of Elemental Inference feeds MediaConvert can process concurrently.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name that you create for each queue. Each name must be unique within your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the pricing plan for the queue is on-demand or reserved. For on-demand, you pay per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a 12-month commitment. (ON_DEMAND, RESERVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressingJobsCount" /></td>
+    <td><CopyableCode code="progressing_jobs_count" /></td>
     <td><code>integer</code></td>
     <td>The estimated number of jobs with a PROGRESSING status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationPlan" /></td>
+    <td><CopyableCode code="reservation_plan" /></td>
     <td><code>object</code></td>
     <td>Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceOverrides" /></td>
+    <td><CopyableCode code="service_overrides" /></td>
     <td><code>array</code></td>
     <td>A list of any service overrides applied by MediaConvert to the settings that you have configured. If you see any overrides, we recommend that you contact AWS Support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Queues can be ACTIVE or PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that are running when you pause a queue continue to run until they finish or result in an error. (ACTIVE, PAUSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmittedJobsCount" /></td>
+    <td><CopyableCode code="submitted_jobs_count" /></td>
     <td><code>integer</code></td>
     <td>The estimated number of jobs with a SUBMITTED status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether this on-demand queue is system or custom. System queues are built in. You can't modify or delete system queues. You can create and modify custom queues. (SYSTEM, CUSTOM)</td>
 </tr>
@@ -135,72 +135,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConcurrentJobs" /></td>
+    <td><CopyableCode code="concurrent_jobs" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of jobs your queue can process concurrently.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for when you created the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description that you create for each queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for when you most recently updated the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumConcurrentFeeds" /></td>
+    <td><CopyableCode code="maximum_concurrent_feeds" /></td>
     <td><code>integer</code></td>
     <td>Specify the maximum number of Elemental Inference feeds MediaConvert can process concurrently.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name that you create for each queue. Each name must be unique within your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the pricing plan for the queue is on-demand or reserved. For on-demand, you pay per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a 12-month commitment. (ON_DEMAND, RESERVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressingJobsCount" /></td>
+    <td><CopyableCode code="progressing_jobs_count" /></td>
     <td><code>integer</code></td>
     <td>The estimated number of jobs with a PROGRESSING status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationPlan" /></td>
+    <td><CopyableCode code="reservation_plan" /></td>
     <td><code>object</code></td>
     <td>Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceOverrides" /></td>
+    <td><CopyableCode code="service_overrides" /></td>
     <td><code>array</code></td>
     <td>A list of any service overrides applied by MediaConvert to the settings that you have configured. If you see any overrides, we recommend that you contact AWS Support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Queues can be ACTIVE or PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that are running when you pause a queue continue to run until they finish or result in an error. (ACTIVE, PAUSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmittedJobsCount" /></td>
+    <td><CopyableCode code="submitted_jobs_count" /></td>
     <td><code>integer</code></td>
     <td>The estimated number of jobs with a SUBMITTED status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether this on-demand queue is system or custom. System queues are built in. You can't modify or delete system queues. You can create and modify custom queues. (SYSTEM, CUSTOM)</td>
 </tr>
@@ -323,20 +323,20 @@ Retrieve the JSON for a specific queue.
 
 ```sql
 SELECT
-Arn,
-ConcurrentJobs,
-CreatedAt,
-Description,
-LastUpdated,
-MaximumConcurrentFeeds,
-Name,
-PricingPlan,
-ProgressingJobsCount,
-ReservationPlan,
-ServiceOverrides,
-Status,
-SubmittedJobsCount,
-Type
+arn,
+concurrent_jobs,
+created_at,
+description,
+last_updated,
+maximum_concurrent_feeds,
+name,
+pricing_plan,
+progressing_jobs_count,
+reservation_plan,
+service_overrides,
+status,
+submitted_jobs_count,
+type
 FROM aws.mediaconvert.queues
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -349,20 +349,20 @@ Retrieve a JSON array of up to twenty of your queues. This will return the queue
 
 ```sql
 SELECT
-Arn,
-ConcurrentJobs,
-CreatedAt,
-Description,
-LastUpdated,
-MaximumConcurrentFeeds,
-Name,
-PricingPlan,
-ProgressingJobsCount,
-ReservationPlan,
-ServiceOverrides,
-Status,
-SubmittedJobsCount,
-Type
+arn,
+concurrent_jobs,
+created_at,
+description,
+last_updated,
+maximum_concurrent_feeds,
+name,
+pricing_plan,
+progressing_jobs_count,
+reservation_plan,
+service_overrides,
+status,
+submitted_jobs_count,
+type
 FROM aws.mediaconvert.queues
 WHERE region = '{{ region }}' -- required
 AND listBy = '{{ listBy }}'
@@ -411,7 +411,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Queue
+queue
 ;
 ```
 </TabItem>
@@ -480,7 +480,7 @@ WHERE
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Queue;
+queue;
 ```
 </TabItem>
 </Tabs>

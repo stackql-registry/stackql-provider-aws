@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EC2 Mac instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacModificationTaskId" /></td>
+    <td><CopyableCode code="mac_modification_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacSystemIntegrityProtectionConfig" /></td>
+    <td><CopyableCode code="mac_system_integrity_protection_config" /></td>
     <td><code>string</code></td>
     <td>&#91;SIP modification tasks only&#93; Information about the SIP configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the task was created, in the UTC timezone (YYYY-MM-DDThh:mm:ss.sssZ).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskState" /></td>
+    <td><CopyableCode code="task_state" /></td>
     <td><code>string</code></td>
     <td>The state of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>The type of task.</td>
 </tr>
@@ -174,13 +174,13 @@ Describes a System Integrity Protection (SIP) modification task or volume owners
 
 ```sql
 SELECT
-InstanceId,
-MacModificationTaskId,
-MacSystemIntegrityProtectionConfig,
-StartTime,
-Tags,
-TaskState,
-TaskType
+instance_id,
+mac_modification_task_id,
+mac_system_integrity_protection_config,
+start_time,
+tags,
+task_state,
+task_type
 FROM aws.ec2.mac_modification_tasks
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

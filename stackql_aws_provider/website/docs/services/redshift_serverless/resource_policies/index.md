@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resource policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy.</td>
 </tr>
@@ -139,7 +139,7 @@ Returns a resource policy.
 ```sql
 SELECT
 policy,
-resourceArn
+resource_arn
 FROM aws.redshift_serverless.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,7 +170,7 @@ region = '{{ region }}' --required
 AND policy = '{{ policy }}' --required
 AND resourceArn = '{{ resourceArn }}' --required
 RETURNING
-resourcePolicy;
+resource_policy;
 ```
 </TabItem>
 </Tabs>

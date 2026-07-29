@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="JobMetadata" /></td>
+    <td><CopyableCode code="job_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about a specific job, including shipping information, job status, and other important metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubJobMetadata" /></td>
+    <td><CopyableCode code="sub_job_metadata" /></td>
     <td><code>array</code></td>
     <td>Information about a specific job part (in the case of an export job), including shipping information, job status, and other important metadata.</td>
 </tr>
@@ -75,37 +75,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description of this specific job, for example Important Photos 2016-08-11. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsMaster" /></td>
+    <td><CopyableCode code="is_master" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates that this job is a main job. A main job represents a successful request to create an export job. Main jobs aren't associated with any Snowballs. Instead, each main job will have at least one job part, and each job part is associated with a Snowball. It might take some time before the job parts associated with a particular main job are listed, because they are created after the main job is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The automatically generated ID for a job, for example JID123e4567-e89b-12d3-a456-426655440000. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobState" /></td>
+    <td><CopyableCode code="job_state" /></td>
     <td><code>string</code></td>
     <td>The current state of this job. (New, PreparingAppliance, PreparingShipment, InTransitToCustomer, WithCustomer, InTransitToAWS, WithAWSSortingFacility, WithAWS, InProgress, Complete, Cancelled, Listing, Pending)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The type of job. (IMPORT, EXPORT, LOCAL_USE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnowballType" /></td>
+    <td><CopyableCode code="snowball_type" /></td>
     <td><code>string</code></td>
     <td>The type of device used with this job. (STANDARD, EDGE, EDGE_C, EDGE_CG, EDGE_S, SNC1_HDD, SNC1_SSD, V3_5C, V3_5S, RACK_5U_C)</td>
 </tr>
@@ -210,8 +210,8 @@ Returns information about a specific job including shipping information, job sta
 
 ```sql
 SELECT
-JobMetadata,
-SubJobMetadata
+job_metadata,
+sub_job_metadata
 FROM aws.snowball.jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -223,13 +223,13 @@ Returns an array of JobListEntry objects of the specified length. Each JobListEn
 
 ```sql
 SELECT
-CreationDate,
-Description,
-IsMaster,
-JobId,
-JobState,
-JobType,
-SnowballType
+creation_date,
+description,
+is_master,
+job_id,
+job_state,
+job_type,
+snowball_type
 FROM aws.snowball.jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,7 +296,7 @@ SELECT
 '{{ PickupDetails }}',
 '{{ region }}'
 RETURNING
-JobId
+job_id
 ;
 ```
 </TabItem>

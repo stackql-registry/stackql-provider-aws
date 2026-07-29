@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags that have been applied to the specified resource. Tags are mapped from the tag key to the tag value: "TagKey" : "TagValue". Format example: &#123;"tag1" : "value1", "tag2" : "value2"&#125;</td>
 </tr>
@@ -143,7 +143,7 @@ Returns a list of tags that are applied to the specified Amazon Location resourc
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.location.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

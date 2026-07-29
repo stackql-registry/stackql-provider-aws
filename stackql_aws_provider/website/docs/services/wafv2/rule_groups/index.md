@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleGroups" /></td>
+    <td><CopyableCode code="rule_groups" /></td>
     <td><code>array</code></td>
     <td>Array of rule groups. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LockToken" /></td>
+    <td><CopyableCode code="lock_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-(?:&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleGroup" /></td>
+    <td><CopyableCode code="rule_group" /></td>
     <td><code>object</code></td>
     <td>A rule group defines a collection of rules to inspect and control web requests that you can use in a WebACL. When you create a rule group, you define an immutable capacity limit. If you update a rule group, you must stay within the capacity. This allows others to reuse the rule group with confidence in its capacity requirements.</td>
 </tr>
@@ -185,8 +185,8 @@ Retrieves an array of RuleGroupSummary objects for the rule groups that you mana
 
 ```sql
 SELECT
-NextMarker,
-RuleGroups
+next_marker,
+rule_groups
 FROM aws.wafv2.rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,8 +198,8 @@ Retrieves the specified RuleGroup.
 
 ```sql
 SELECT
-LockToken,
-RuleGroup
+lock_token,
+rule_group
 FROM aws.wafv2.rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -244,7 +244,7 @@ SELECT
 '{{ CustomResponseBodies }}',
 '{{ region }}'
 RETURNING
-Summary
+summary
 ;
 ```
 </TabItem>
@@ -1023,7 +1023,7 @@ AND Id = '{{ Id }}' --required
 AND VisibilityConfig = '{{ VisibilityConfig }}' --required
 AND LockToken = '{{ LockToken }}' --required
 RETURNING
-NextLockToken;
+next_lock_token;
 ```
 </TabItem>
 </Tabs>

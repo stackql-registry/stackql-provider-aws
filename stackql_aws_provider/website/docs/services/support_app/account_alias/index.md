@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountAlias" /></td>
+    <td><CopyableCode code="account_alias" /></td>
     <td><code>string</code></td>
     <td>An alias or short name for an Amazon Web Services account. (pattern: &lt;code&gt;^&#91;\w\- &#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the alias from an Amazon Web Services account ID. The alias appears in
 
 ```sql
 SELECT
-accountAlias
+account_alias
 FROM aws.support_app.account_alias
 WHERE region = '{{ region }}' -- required
 ;

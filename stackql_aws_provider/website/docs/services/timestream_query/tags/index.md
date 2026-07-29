@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the tag. Tag keys are case sensitive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the tag. Tag values are case sensitive and can be null.</td>
 </tr>
@@ -138,8 +138,8 @@ List all tags on a Timestream query resource.
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.timestream_query.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -61,42 +61,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the load balancer. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationOptions" /></td>
+    <td><CopyableCode code="configuration_options" /></td>
     <td><code>object</code></td>
     <td>A string to string map of the configuration options for your load balancer. Valid values are listed below.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when your load balancer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name of your Lightsail load balancer. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="healthCheckPath" /></td>
+    <td><CopyableCode code="health_check_path" /></td>
     <td><code>string</code></td>
     <td>The path you specified to perform your health checks. If no path is specified, the load balancer tries to make a request to the default (root) page. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpsRedirectionEnabled" /></td>
+    <td><CopyableCode code="https_redirection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that indicates whether HTTPS redirection is enabled for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceHealthSummary" /></td>
+    <td><CopyableCode code="instance_health_summary" /></td>
     <td><code>array</code></td>
     <td>An array of InstanceHealthSummary objects describing the health of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instancePort" /></td>
+    <td><CopyableCode code="instance_port" /></td>
     <td><code>integer</code></td>
     <td>The port where the load balancer will direct traffic to your Lightsail instances. For HTTP traffic, it's port 80. For HTTPS traffic, it's port 443.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the load balancer. The possible values are ipv4 for IPv4 only, ipv6 for IPv6 only, and dualstack for IPv4 and IPv6. (dualstack, ipv4, ipv6)</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
     <td>The protocol you have enabled for your load balancer. Valid values are below. You can't just have HTTP_HTTPS, but you can have just HTTP. (HTTP_HTTPS, HTTP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicPorts" /></td>
+    <td><CopyableCode code="public_ports" /></td>
     <td><code>array</code></td>
     <td>An array of public port settings for your load balancer. For HTTP, use port 80. For HTTPS, use port 443.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type (LoadBalancer. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of your load balancer. Valid values are below. (active, provisioning, active_impaired, failed, unknown)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about your Lightsail load balancer. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -136,12 +136,12 @@ The following fields are returned by `SELECT` queries:
     <td>The tag keys and optional values for the resource. For more information about tags in Lightsail, see the Amazon Lightsail Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tlsCertificateSummaries" /></td>
+    <td><CopyableCode code="tls_certificate_summaries" /></td>
     <td><code>array</code></td>
     <td>An array of LoadBalancerTlsCertificateSummary objects that provide additional information about the SSL/TLS certificates. For example, if true, the certificate is attached to the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tlsPolicyName" /></td>
+    <td><CopyableCode code="tls_policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the TLS security policy for the load balancer. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
@@ -170,42 +170,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the load balancer. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationOptions" /></td>
+    <td><CopyableCode code="configuration_options" /></td>
     <td><code>object</code></td>
     <td>A string to string map of the configuration options for your load balancer. Valid values are listed below.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when your load balancer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name of your Lightsail load balancer. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="healthCheckPath" /></td>
+    <td><CopyableCode code="health_check_path" /></td>
     <td><code>string</code></td>
     <td>The path you specified to perform your health checks. If no path is specified, the load balancer tries to make a request to the default (root) page. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpsRedirectionEnabled" /></td>
+    <td><CopyableCode code="https_redirection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that indicates whether HTTPS redirection is enabled for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceHealthSummary" /></td>
+    <td><CopyableCode code="instance_health_summary" /></td>
     <td><code>array</code></td>
     <td>An array of InstanceHealthSummary objects describing the health of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instancePort" /></td>
+    <td><CopyableCode code="instance_port" /></td>
     <td><code>integer</code></td>
     <td>The port where the load balancer will direct traffic to your Lightsail instances. For HTTP traffic, it's port 80. For HTTPS traffic, it's port 443.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the load balancer. The possible values are ipv4 for IPv4 only, ipv6 for IPv6 only, and dualstack for IPv4 and IPv6. (dualstack, ipv4, ipv6)</td>
 </tr>
@@ -220,12 +220,12 @@ The following fields are returned by `SELECT` queries:
     <td>The protocol you have enabled for your load balancer. Valid values are below. You can't just have HTTP_HTTPS, but you can have just HTTP. (HTTP_HTTPS, HTTP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicPorts" /></td>
+    <td><CopyableCode code="public_ports" /></td>
     <td><code>array</code></td>
     <td>An array of public port settings for your load balancer. For HTTP, use port 80. For HTTPS, use port 443.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type (LoadBalancer. (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
@@ -235,7 +235,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of your load balancer. Valid values are below. (active, provisioning, active_impaired, failed, unknown)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about your Lightsail load balancer. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -245,12 +245,12 @@ The following fields are returned by `SELECT` queries:
     <td>The tag keys and optional values for the resource. For more information about tags in Lightsail, see the Amazon Lightsail Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tlsCertificateSummaries" /></td>
+    <td><CopyableCode code="tls_certificate_summaries" /></td>
     <td><code>array</code></td>
     <td>An array of LoadBalancerTlsCertificateSummary objects that provide additional information about the SSL/TLS certificates. For example, if true, the certificate is attached to the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tlsPolicyName" /></td>
+    <td><CopyableCode code="tls_policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the TLS security policy for the load balancer. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
@@ -364,23 +364,23 @@ Returns information about the specified Lightsail load balancer.
 SELECT
 name,
 arn,
-configurationOptions,
-createdAt,
-dnsName,
-healthCheckPath,
-httpsRedirectionEnabled,
-instanceHealthSummary,
-instancePort,
-ipAddressType,
+configuration_options,
+created_at,
+dns_name,
+health_check_path,
+https_redirection_enabled,
+instance_health_summary,
+instance_port,
+ip_address_type,
 location,
 protocol,
-publicPorts,
-resourceType,
+public_ports,
+resource_type,
 state,
-supportCode,
+support_code,
 tags,
-tlsCertificateSummaries,
-tlsPolicyName
+tls_certificate_summaries,
+tls_policy_name
 FROM aws.lightsail.load_balancers
 WHERE region = '{{ region }}' -- required
 ;
@@ -394,23 +394,23 @@ Returns information about all load balancers in an account.
 SELECT
 name,
 arn,
-configurationOptions,
-createdAt,
-dnsName,
-healthCheckPath,
-httpsRedirectionEnabled,
-instanceHealthSummary,
-instancePort,
-ipAddressType,
+configuration_options,
+created_at,
+dns_name,
+health_check_path,
+https_redirection_enabled,
+instance_health_summary,
+instance_port,
+ip_address_type,
 location,
 protocol,
-publicPorts,
-resourceType,
+public_ports,
+resource_type,
 state,
-supportCode,
+support_code,
 tags,
-tlsCertificateSummaries,
-tlsPolicyName
+tls_certificate_summaries,
+tls_policy_name
 FROM aws.lightsail.load_balancers
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the registry. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingConfiguration" /></td>
+    <td><CopyableCode code="signing_configuration" /></td>
     <td><code>object</code></td>
     <td>The registry's signing configuration.</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves the registry's signing configuration, which defines rules for automati
 
 ```sql
 SELECT
-registryId,
-signingConfiguration
+registry_id,
+signing_configuration
 FROM aws.ecr.signing_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,7 +168,7 @@ WHERE
 region = '{{ region }}' --required
 AND signingConfiguration = '{{ signingConfiguration }}' --required
 RETURNING
-signingConfiguration;
+signing_configuration;
 ```
 </TabItem>
 </Tabs>

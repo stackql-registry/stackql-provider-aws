@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>An error message when the operation fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of a query previously submitted. The possible states are: PENDING: the query is pending. WORKUNITS_AVAILABLE: some work units are ready for retrieval and execution. FINISHED: the query planning finished successfully, and all work units are ready for retrieval and execution. ERROR: an error occurred with the query, such as an invalid query ID or a backend error. (PENDING, WORKUNITS_AVAILABLE, ERROR, FINISHED, EXPIRED)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the state of a query previously submitted. Clients are expected to poll 
 
 ```sql
 SELECT
-Error,
-State
+error,
+state
 FROM aws.lakeformation.query_states
 WHERE region = '{{ region }}' -- required
 ;

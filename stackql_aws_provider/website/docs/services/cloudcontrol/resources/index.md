@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceDescription" /></td>
+    <td><CopyableCode code="resource_description" /></td>
     <td><code>object</code></td>
     <td>Represents information about a provisioned resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource type. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#123;2,64&#125;::&#91;A-Za-z0-9&#93;&#123;2,64&#125;::&#91;A-Za-z0-9&#93;&#123;2,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -159,8 +159,8 @@ Returns information about the current state of the specified resource. For detai
 
 ```sql
 SELECT
-ResourceDescription,
-TypeName
+resource_description,
+type_name
 FROM aws.cloudcontrol.resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,7 +199,7 @@ SELECT
 '{{ DesiredState }}' /* required */,
 '{{ region }}'
 RETURNING
-ProgressEvent
+progress_event
 ;
 ```
 </TabItem>
@@ -263,7 +263,7 @@ region = '{{ region }}' --required
 AND TypeName = '{{ TypeName }}' --required
 AND PatchDocument = '{{ PatchDocument }}' --required
 RETURNING
-ProgressEvent;
+progress_event;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>A list of message movement tasks and their attributes.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets the most recent message movement tasks (up to 10) under a specific source q
 
 ```sql
 SELECT
-Results
+results
 FROM aws.sqs.message_move_tasks
 WHERE region = '{{ region }}' -- required
 ;

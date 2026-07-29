@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total amount of running instances using this subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of subscription. The type can be subscription-included with Amazon EC2, Bring Your Own Subscription model (BYOS), or from the Amazon Web Services Marketplace. Certain subscriptions may use licensing from the Amazon Web Services Marketplace as well as OS licensing from Amazon EC2 or BYOS.</td>
 </tr>
@@ -129,9 +129,9 @@ Lists the Linux subscriptions that have been discovered. If you have linked your
 
 ```sql
 SELECT
-InstanceCount,
-Name,
-Type
+instance_count,
+name,
+type
 FROM aws.license_manager_linux_subscriptions.linux_subscriptions
 WHERE region = '{{ region }}' -- required
 ;

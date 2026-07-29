@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Associations" /></td>
+    <td><CopyableCode code="associations" /></td>
     <td><code>string</code></td>
     <td>Any associations between the network ACL and your subnets</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Entries" /></td>
+    <td><CopyableCode code="entries" /></td>
     <td><code>string</code></td>
     <td>The entries (rules) in the network ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default network ACL for the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkAclId" /></td>
+    <td><CopyableCode code="network_acl_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the network ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the network ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the network ACL.</td>
 </tr>
@@ -281,13 +281,13 @@ Describes your network ACLs. The default is to describe all your network ACLs. A
 
 ```sql
 SELECT
-Associations,
-Entries,
-IsDefault,
-NetworkAclId,
-OwnerId,
-Tags,
-VpcId
+associations,
+entries,
+is_default,
+network_acl_id,
+owner_id,
+tags,
+vpc_id
 FROM aws.ec2.network_acls
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -363,13 +363,13 @@ SELECT
 '{{ ClientToken }}',
 '{{ DryRun }}'
 RETURNING
-Associations,
-Entries,
-IsDefault,
-NetworkAclId,
-OwnerId,
-Tags,
-VpcId
+associations,
+entries,
+is_default,
+network_acl_id,
+owner_id,
+tags,
+vpc_id
 ;
 ```
 </TabItem>
@@ -479,7 +479,7 @@ AND NetworkAclId = '{{ NetworkAclId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-NewAssociationId;
+new_association_id;
 ```
 </TabItem>
 </Tabs>

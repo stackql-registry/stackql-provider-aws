@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AsyncInferenceConfig" /></td>
+    <td><CopyableCode code="async_inference_config" /></td>
     <td><code>object</code></td>
     <td>Returns the description of an endpoint configuration created using the CreateEndpointConfig API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the endpoint configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataCaptureConfig" /></td>
+    <td><CopyableCode code="data_capture_config" /></td>
     <td><code>object</code></td>
     <td>Configuration to control how SageMaker AI captures inference data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableNetworkIsolation" /></td>
+    <td><CopyableCode code="enable_network_isolation" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether all model containers deployed to the endpoint are isolated. If they are, no inbound or outbound network calls can be made to or from the model containers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfigArn" /></td>
+    <td><CopyableCode code="endpoint_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint configuration. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:endpoint-config/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfigName" /></td>
+    <td><CopyableCode code="endpoint_config_name" /></td>
     <td><code>string</code></td>
     <td>Name of the SageMaker endpoint configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that you assigned to the endpoint configuration. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainerConfig" /></td>
+    <td><CopyableCode code="explainer_config" /></td>
     <td><code>object</code></td>
     <td>The configuration parameters for an explainer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricsConfig" /></td>
+    <td><CopyableCode code="metrics_config" /></td>
     <td><code>object</code></td>
     <td>The configuration parameters for utilization metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductionVariants" /></td>
+    <td><CopyableCode code="production_variants" /></td>
     <td><code>array</code></td>
     <td>An array of ProductionVariant objects, one for each model that you want to host at this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShadowProductionVariants" /></td>
+    <td><CopyableCode code="shadow_production_variants" /></td>
     <td><code>array</code></td>
     <td>An array of ProductionVariant objects, one for each model that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on ProductionVariants.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC. For more information, see Give SageMaker Access to Resources in your Amazon VPC.</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the endpoint configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfigArn" /></td>
+    <td><CopyableCode code="endpoint_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint configuration. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:endpoint-config/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfigName" /></td>
+    <td><CopyableCode code="endpoint_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -231,19 +231,19 @@ Returns the description of an endpoint configuration created using the CreateEnd
 
 ```sql
 SELECT
-AsyncInferenceConfig,
-CreationTime,
-DataCaptureConfig,
-EnableNetworkIsolation,
-EndpointConfigArn,
-EndpointConfigName,
-ExecutionRoleArn,
-ExplainerConfig,
-KmsKeyId,
-MetricsConfig,
-ProductionVariants,
-ShadowProductionVariants,
-VpcConfig
+async_inference_config,
+creation_time,
+data_capture_config,
+enable_network_isolation,
+endpoint_config_arn,
+endpoint_config_name,
+execution_role_arn,
+explainer_config,
+kms_key_id,
+metrics_config,
+production_variants,
+shadow_production_variants,
+vpc_config
 FROM aws.sagemaker.endpoint_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,9 +255,9 @@ Lists endpoint configurations.
 
 ```sql
 SELECT
-CreationTime,
-EndpointConfigArn,
-EndpointConfigName
+creation_time,
+endpoint_config_arn,
+endpoint_config_name
 FROM aws.sagemaker.endpoint_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -310,7 +310,7 @@ SELECT
 '{{ MetricsConfig }}',
 '{{ region }}'
 RETURNING
-EndpointConfigArn
+endpoint_config_arn
 ;
 ```
 </TabItem>

@@ -52,22 +52,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessControlAllowOrigin" /></td>
+    <td><CopyableCode code="access_control_allow_origin" /></td>
     <td><code>string</code></td>
     <td>See Access-Control-Allow-Origin in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessControlExposeHeaders" /></td>
+    <td><CopyableCode code="access_control_expose_headers" /></td>
     <td><code>string</code></td>
     <td>See Access-Control-Expose-Headers in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>See Cache-Control in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentSecurityPolicy" /></td>
+    <td><CopyableCode code="content_security_policy" /></td>
     <td><code>string</code></td>
     <td>See Content-Security-Policy in the MDN Web Docs.</td>
 </tr>
@@ -77,22 +77,22 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamKeys" /></td>
+    <td><CopyableCode code="stream_keys" /></td>
     <td><code>array</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="strictTransportSecurity" /></td>
+    <td><CopyableCode code="strict_transport_security" /></td>
     <td><code>string</code></td>
     <td>See Strict-Transport-Security in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xContentTypeOptions" /></td>
+    <td><CopyableCode code="x_content_type_options" /></td>
     <td><code>string</code></td>
     <td>See X-Content-Type-Options in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xFrameOptions" /></td>
+    <td><CopyableCode code="x_frame_options" /></td>
     <td><code>string</code></td>
     <td>See X-Frame-Options in the MDN Web Docs.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>Stream-key ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stream-key/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>Channel ARN for the stream. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:channel/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>Stream-key ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stream-key/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>Channel ARN for the stream. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:channel/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -254,15 +254,15 @@ Performs GetStreamKey on multiple ARNs simultaneously.
 
 ```sql
 SELECT
-accessControlAllowOrigin,
-accessControlExposeHeaders,
-cacheControl,
-contentSecurityPolicy,
+access_control_allow_origin,
+access_control_expose_headers,
+cache_control,
+content_security_policy,
 errors,
-streamKeys,
-strictTransportSecurity,
-xContentTypeOptions,
-xFrameOptions
+stream_keys,
+strict_transport_security,
+x_content_type_options,
+x_frame_options
 FROM aws.ivs.stream_keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,7 +275,7 @@ Gets stream-key information for a specified ARN.
 ```sql
 SELECT
 arn,
-channelArn,
+channel_arn,
 tags,
 value
 FROM aws.ivs.stream_keys
@@ -290,7 +290,7 @@ Gets summary information about stream keys for the specified channel.
 ```sql
 SELECT
 arn,
-channelArn,
+channel_arn,
 tags
 FROM aws.ivs.stream_keys
 WHERE region = '{{ region }}' -- required
@@ -324,7 +324,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-streamKey
+stream_key
 ;
 ```
 </TabItem>

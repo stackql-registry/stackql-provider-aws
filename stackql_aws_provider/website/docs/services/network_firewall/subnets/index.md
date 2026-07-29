@@ -112,10 +112,10 @@ WHERE
 region = '{{ region }}' --required
 AND SubnetMappings = '{{ SubnetMappings }}' --required
 RETURNING
-FirewallArn,
-FirewallName,
-SubnetMappings,
-UpdateToken;
+firewall_arn,
+firewall_name,
+subnet_mappings,
+update_token;
 ```
 </TabItem>
 <TabItem value="disassociate_subnets">
@@ -133,10 +133,10 @@ WHERE
 region = '{{ region }}' --required
 AND SubnetIds = '{{ SubnetIds }}' --required
 RETURNING
-FirewallArn,
-FirewallName,
-SubnetMappings,
-UpdateToken;
+firewall_arn,
+firewall_name,
+subnet_mappings,
+update_token;
 ```
 </TabItem>
 </Tabs>

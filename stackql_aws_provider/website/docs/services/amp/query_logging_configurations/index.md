@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the query logging configuration was created.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list structure that contains a single CloudWatch Logs destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the query logging configuration was last modified.</td>
 </tr>
@@ -170,9 +170,9 @@ Retrieves the details of the query logging configuration for the specified works
 
 ```sql
 SELECT
-createdAt,
+created_at,
 destinations,
-modifiedAt,
+modified_at,
 status,
 workspace
 FROM aws.amp.query_logging_configurations

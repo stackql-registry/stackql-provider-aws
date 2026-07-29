@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationSummaries" /></td>
+    <td><CopyableCode code="recommendation_summaries" /></td>
     <td><code>array</code></td>
     <td>List of recommendations for the requested code review.</td>
 </tr>
@@ -139,8 +139,8 @@ Returns the list of all recommendations for a completed code review.
 
 ```sql
 SELECT
-NextToken,
-RecommendationSummaries
+next_token,
+recommendation_summaries
 FROM aws.codeguru_reviewer.recommendations
 WHERE code_review_arn = '{{ code_review_arn }}' -- required
 AND region = '{{ region }}' -- required

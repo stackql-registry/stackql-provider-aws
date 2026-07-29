@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsoCountryCode" /></td>
+    <td><CopyableCode code="iso_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code, in ISO 3166-1 alpha-2 format, for the country or region. This field is optional and may not be present for origination identity types that are not country-specific, such as RCS agents. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberCapabilities" /></td>
+    <td><CopyableCode code="number_capabilities" /></td>
     <td><code>array</code></td>
     <td>Describes if the origination identity can be used for text messages, voice calls or both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginationIdentity" /></td>
+    <td><CopyableCode code="origination_identity" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the origination identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginationIdentityArn" /></td>
+    <td><CopyableCode code="origination_identity_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the origination identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number in E.164 format. (pattern: &lt;code&gt;\+?&#91;1-9&#93;&#91;0-9&#93;&#123;1,18&#125;&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Lists all associated origination identities in your pool. If you specify filters
 
 ```sql
 SELECT
-IsoCountryCode,
-NumberCapabilities,
-OriginationIdentity,
-OriginationIdentityArn,
-PhoneNumber
+iso_country_code,
+number_capabilities,
+origination_identity,
+origination_identity_arn,
+phone_number
 FROM aws.pinpoint_sms_voice_v2.pool_origination_identities
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExpirationModel" /></td>
+    <td><CopyableCode code="expiration_model" /></td>
     <td><code>string</code></td>
     <td>Indicates if the key material is configured to automatically expire. There are two possible values for this field: KEY_MATERIAL_EXPIRES and KEY_MATERIAL_DOES_NOT_EXPIRE. For any key material that expires, the expiration date and time is indicated in ValidTo. This field is only present for symmetric encryption KMS keys with EXTERNAL origin. (KEY_MATERIAL_EXPIRES, KEY_MATERIAL_DOES_NOT_EXPIRE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportState" /></td>
+    <td><CopyableCode code="import_state" /></td>
     <td><code>string</code></td>
     <td>Indicates if the key material is currently imported into KMS. It has two possible values: IMPORTED or PENDING_IMPORT. This field is only present for symmetric encryption KMS keys with EXTERNAL origin. (IMPORTED, PENDING_IMPORT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyMaterialDescription" /></td>
+    <td><CopyableCode code="key_material_description" /></td>
     <td><code>string</code></td>
     <td>User-specified description of the key material. This field is only present for symmetric encryption KMS keys with EXTERNAL origin. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/_\s.-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyMaterialId" /></td>
+    <td><CopyableCode code="key_material_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the key material. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyMaterialState" /></td>
+    <td><CopyableCode code="key_material_state" /></td>
     <td><code>string</code></td>
     <td>There are four possible values for this field: CURRENT, NON_CURRENT, PENDING_MULTI_REGION_IMPORT_AND_ROTATION and PENDING_ROTATION. KMS uses CURRENT key material for both encryption and decryption and NON_CURRENT key material only for decryption. PENDING_ROTATION identifies key material that has been imported for on-demand key rotation but the rotation hasn't completed. The key material state PENDING_MULTI_REGION_IMPORT_AND_ROTATION is unique to multi-region, symmetric encryption keys with imported key material. It indicates key material that has been imported into the primary Region key but not all of the replica Region keys. When this key material is imported in to all of the replica Region keys, the key material state will change to PENDING_ROTATION. Key material in PENDING_MULTI_REGION_IMPORT_AND_ROTATION or PENDING_ROTATION state is not permanently associated with the KMS key. You can delete this key material and import different key material in its place. The PENDING_MULTI_REGION_IMPORT_AND_ROTATION and PENDING_ROTATION values are only used in symmetric encryption keys with imported key material. The other values, CURRENT and NON_CURRENT, are used for all KMS keys that support automatic or on-demand key rotation. (NON_CURRENT, CURRENT, PENDING_ROTATION, PENDING_MULTI_REGION_IMPORT_AND_ROTATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationDate" /></td>
+    <td><CopyableCode code="rotation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time that the key material rotation completed. Formatted as Unix time. This field is not present for the first key material or an imported key material in PENDING_ROTATION state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationType" /></td>
+    <td><CopyableCode code="rotation_type" /></td>
     <td><code>string</code></td>
     <td>Identifies whether the key material rotation was a scheduled automatic rotation or an on-demand rotation. This field is not present for the first key material or an imported key material in PENDING_ROTATION state. (AUTOMATIC, ON_DEMAND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidTo" /></td>
+    <td><CopyableCode code="valid_to" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time at which the key material expires. This field is only present for symmetric encryption KMS keys with EXTERNAL origin in rotation list entries with an ExpirationModel value of KEY_MATERIAL_EXPIRES.</td>
 </tr>
@@ -159,15 +159,15 @@ Returns information about the key materials associated with the specified KMS ke
 
 ```sql
 SELECT
-ExpirationModel,
-ImportState,
-KeyId,
-KeyMaterialDescription,
-KeyMaterialId,
-KeyMaterialState,
-RotationDate,
-RotationType,
-ValidTo
+expiration_model,
+import_state,
+key_id,
+key_material_description,
+key_material_id,
+key_material_state,
+rotation_date,
+rotation_type,
+valid_to
 FROM aws.kms.key_rotations
 WHERE region = '{{ region }}' -- required
 ;

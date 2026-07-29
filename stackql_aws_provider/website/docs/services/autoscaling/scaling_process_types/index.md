@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProcessName" /></td>
+    <td><CopyableCode code="process_name" /></td>
     <td><code>string</code></td>
     <td>One of the following processes: Launch Terminate AddToLoadBalancer AlarmNotification AZRebalance HealthCheck InstanceRefresh ReplaceUnhealthy ScheduledActions</td>
 </tr>
@@ -119,7 +119,7 @@ Describes the scaling process types for use with the ResumeProcesses and Suspend
 
 ```sql
 SELECT
-ProcessName
+process_name
 FROM aws.autoscaling.scaling_process_types
 WHERE region = '{{ region }}' -- required
 ;

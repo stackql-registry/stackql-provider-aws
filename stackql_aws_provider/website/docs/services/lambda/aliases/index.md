@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasArn" /></td>
+    <td><CopyableCode code="alias_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the alias. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionVersion" /></td>
+    <td><CopyableCode code="function_version" /></td>
     <td><code>string</code></td>
     <td>The function version that the alias invokes. (pattern: &lt;code&gt;(\$LATEST|&#91;0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the alias. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9-_&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier that changes when you update the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingConfig" /></td>
+    <td><CopyableCode code="routing_config" /></td>
     <td><code>object</code></td>
     <td>The traffic-shifting configuration of a Lambda function alias.</td>
 </tr>
@@ -164,12 +164,12 @@ Returns a list of aliases for a Lambda function.
 
 ```sql
 SELECT
-AliasArn,
-Description,
-FunctionVersion,
-Name,
-RevisionId,
-RoutingConfig
+alias_arn,
+description,
+function_version,
+name,
+revision_id,
+routing_config
 FROM aws.lambda.aliases
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required

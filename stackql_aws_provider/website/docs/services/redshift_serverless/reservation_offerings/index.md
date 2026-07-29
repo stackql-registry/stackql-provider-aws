@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the offering.</td>
 </tr>
@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The duration, in seconds, for which the reservation reserves the RPUs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hourlyCharge" /></td>
+    <td><CopyableCode code="hourly_charge" /></td>
     <td><code>number (double)</code></td>
     <td>The rate you are charged for each hour the reservation is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offeringId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>The offering identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offeringType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>Determines the payment schedule for the reservation. (ALL_UPFRONT, NO_UPFRONT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upfrontCharge" /></td>
+    <td><CopyableCode code="upfront_charge" /></td>
     <td><code>number (double)</code></td>
     <td>The up-front price you are charged for the reservation.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the offering.</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
     <td>The duration, in seconds, for which the reservation reserves the RPUs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hourlyCharge" /></td>
+    <td><CopyableCode code="hourly_charge" /></td>
     <td><code>number (double)</code></td>
     <td>The rate you are charged for each hour the reservation is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offeringId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>The offering identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offeringType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>Determines the payment schedule for the reservation. (ALL_UPFRONT, NO_UPFRONT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upfrontCharge" /></td>
+    <td><CopyableCode code="upfront_charge" /></td>
     <td><code>number (double)</code></td>
     <td>The up-front price you are charged for the reservation.</td>
 </tr>
@@ -197,12 +197,12 @@ Returns the reservation offering. The offering determines the payment schedule f
 
 ```sql
 SELECT
-currencyCode,
+currency_code,
 duration,
-hourlyCharge,
-offeringId,
-offeringType,
-upfrontCharge
+hourly_charge,
+offering_id,
+offering_type,
+upfront_charge
 FROM aws.redshift_serverless.reservation_offerings
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,12 +214,12 @@ Returns the current reservation offerings in your account.
 
 ```sql
 SELECT
-currencyCode,
+currency_code,
 duration,
-hourlyCharge,
-offeringId,
-offeringType,
-upfrontCharge
+hourly_charge,
+offering_id,
+offering_type,
+upfront_charge
 FROM aws.redshift_serverless.reservation_offerings
 WHERE region = '{{ region }}' -- required
 ;

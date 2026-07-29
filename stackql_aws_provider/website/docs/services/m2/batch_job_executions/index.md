@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the application. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchJobIdentifier" /></td>
+    <td><CopyableCode code="batch_job_identifier" /></td>
     <td><code>object</code></td>
     <td>The unique identifier of this batch job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch job execution ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this batch job execution. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this batch job. (pattern: &lt;code&gt;^\S&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of this batch job. (pattern: &lt;code&gt;^\S&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStepRestartMarker" /></td>
+    <td><CopyableCode code="job_step_restart_marker" /></td>
     <td><code>object</code></td>
     <td>The step/procedure step information for the restart batch job operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The type of job. (VSE, JES2, JES3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobUser" /></td>
+    <td><CopyableCode code="job_user" /></td>
     <td><code>string</code></td>
     <td>The user for the job. (pattern: &lt;code&gt;^\S&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="returnCode" /></td>
+    <td><CopyableCode code="return_code" /></td>
     <td><code>string</code></td>
     <td>The batch job return code from either the Blu Age or Micro Focus runtime engines. For more information, see Batch return codes in the IBM WebSphere Application Server documentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch job execution started.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the batch job execution. (Submitting, Holding, Dispatching, Running, Cancelling, Cancelled, Succeeded, Failed, Purged, Succeeded With Warning)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the reported status.</td>
 </tr>
@@ -130,47 +130,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application that hosts this batch job. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="batchJobIdentifier" /></td>
+    <td><CopyableCode code="batch_job_identifier" /></td>
     <td><code>object</code></td>
     <td>The unique identifier of this batch job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this batch job execution ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of this execution of the batch job. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a particular batch job. (pattern: &lt;code&gt;^\S&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of a particular batch job. (pattern: &lt;code&gt;^\S&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The type of a particular batch job execution. (VSE, JES2, JES3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="returnCode" /></td>
+    <td><CopyableCode code="return_code" /></td>
     <td><code>string</code></td>
     <td>The batch job return code from either the Blu Age or Micro Focus runtime engines. For more information, see Batch return codes in the IBM WebSphere Application Server documentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when a particular batch job execution started.</td>
 </tr>
@@ -297,19 +297,19 @@ Gets the details of a specific batch job execution for a specific application.
 
 ```sql
 SELECT
-applicationId,
-batchJobIdentifier,
-endTime,
-executionId,
-jobId,
-jobName,
-jobStepRestartMarker,
-jobType,
-jobUser,
-returnCode,
-startTime,
+application_id,
+batch_job_identifier,
+end_time,
+execution_id,
+job_id,
+job_name,
+job_step_restart_marker,
+job_type,
+job_user,
+return_code,
+start_time,
 status,
-statusReason
+status_reason
 FROM aws.m2.batch_job_executions
 WHERE application_id = '{{ application_id }}' -- required
 AND execution_id = '{{ execution_id }}' -- required
@@ -323,15 +323,15 @@ Lists historical, current, and scheduled batch job executions for a specific app
 
 ```sql
 SELECT
-applicationId,
-batchJobIdentifier,
-endTime,
-executionId,
-jobId,
-jobName,
-jobType,
-returnCode,
-startTime,
+application_id,
+batch_job_identifier,
+end_time,
+execution_id,
+job_id,
+job_name,
+job_type,
+return_code,
+start_time,
 status
 FROM aws.m2.batch_job_executions
 WHERE application_id = '{{ application_id }}' -- required

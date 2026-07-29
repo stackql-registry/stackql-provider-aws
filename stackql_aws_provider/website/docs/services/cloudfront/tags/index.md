@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains Tag elements.</td>
 </tr>
@@ -152,7 +152,7 @@ List tags for a CloudFront resource. For more information, see Tagging a distrib
 
 ```sql
 SELECT
-Items
+items
 FROM aws.cloudfront.tags
 WHERE Resource = '{{ Resource }}' -- required
 AND region = '{{ region }}' -- required
@@ -185,9 +185,9 @@ SELECT
 '{{ DistributionConfigWithTags }}' /* required */,
 '{{ region }}'
 RETURNING
-Distribution,
-ETag,
-Location
+distribution,
+e_tag,
+location
 ;
 ```
 </TabItem>
@@ -204,9 +204,9 @@ SELECT
 '{{ StreamingDistributionConfigWithTags }}' /* required */,
 '{{ region }}'
 RETURNING
-ETag,
-Location,
-StreamingDistribution
+e_tag,
+location,
+streaming_distribution
 ;
 ```
 </TabItem>

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the traffic policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultAction" /></td>
+    <td><CopyableCode code="default_action" /></td>
     <td><code>string</code></td>
     <td>The default action of the traffic policy. (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the traffic policy was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxMessageSizeBytes" /></td>
+    <td><CopyableCode code="max_message_size_bytes" /></td>
     <td><code>integer</code></td>
     <td>The maximum message size in bytes of email which is allowed in by this traffic policy—anything larger will be blocked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyStatements" /></td>
+    <td><CopyableCode code="policy_statements" /></td>
     <td><code>array</code></td>
     <td>The list of conditions which are in the traffic policy resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficPolicyArn" /></td>
+    <td><CopyableCode code="traffic_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the traffic policy resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficPolicyId" /></td>
+    <td><CopyableCode code="traffic_policy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the traffic policy resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficPolicyName" /></td>
+    <td><CopyableCode code="traffic_policy_name" /></td>
     <td><code>string</code></td>
     <td>A user-friendly name for the traffic policy resource. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultAction" /></td>
+    <td><CopyableCode code="default_action" /></td>
     <td><code>string</code></td>
     <td>Default action instructs the traﬃc policy to either Allow or Deny (block) messages that fall outside of (or not addressed by) the conditions of your policy statements (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficPolicyId" /></td>
+    <td><CopyableCode code="traffic_policy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the traffic policy resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficPolicyName" /></td>
+    <td><CopyableCode code="traffic_policy_name" /></td>
     <td><code>string</code></td>
     <td>A user-friendly name of the traffic policy resource. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -213,14 +213,14 @@ Fetch attributes of a traffic policy resource.
 
 ```sql
 SELECT
-CreatedTimestamp,
-DefaultAction,
-LastUpdatedTimestamp,
-MaxMessageSizeBytes,
-PolicyStatements,
-TrafficPolicyArn,
-TrafficPolicyId,
-TrafficPolicyName
+created_timestamp,
+default_action,
+last_updated_timestamp,
+max_message_size_bytes,
+policy_statements,
+traffic_policy_arn,
+traffic_policy_id,
+traffic_policy_name
 FROM aws.mailmanager.traffic_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,9 +232,9 @@ List traffic policy resources.
 
 ```sql
 SELECT
-DefaultAction,
-TrafficPolicyId,
-TrafficPolicyName
+default_action,
+traffic_policy_id,
+traffic_policy_name
 FROM aws.mailmanager.traffic_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,7 +275,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TrafficPolicyId
+traffic_policy_id
 ;
 ```
 </TabItem>

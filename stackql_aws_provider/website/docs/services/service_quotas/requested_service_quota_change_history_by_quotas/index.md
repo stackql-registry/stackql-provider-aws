@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CaseId" /></td>
+    <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
     <td>The case ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the quota increase request was received and the case ID was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredValue" /></td>
+    <td><CopyableCode code="desired_value" /></td>
     <td><code>number (double)</code></td>
     <td>The new, increased value for the quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalQuota" /></td>
+    <td><CopyableCode code="global_quota" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the quota is global.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the most recent change.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaArn" /></td>
+    <td><CopyableCode code="quota_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaCode" /></td>
+    <td><CopyableCode code="quota_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota identifier. To find the quota code for a specific quota, use the ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you want. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaContext" /></td>
+    <td><CopyableCode code="quota_context" /></td>
     <td><code>object</code></td>
     <td>The context for this service quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaName" /></td>
+    <td><CopyableCode code="quota_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaRequestedAtLevel" /></td>
+    <td><CopyableCode code="quota_requested_at_level" /></td>
     <td><code>string</code></td>
     <td>Filters the response to return quota requests for the ACCOUNT, RESOURCE, or ALL levels. ACCOUNT is the default. (ACCOUNT, RESOURCE, ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestType" /></td>
+    <td><CopyableCode code="request_type" /></td>
     <td><code>string</code></td>
     <td>The type of quota increase request. Possible values include: AutomaticManagement - The request was automatically created by Service Quotas Automatic Management when quota utilization approached the limit. If this field is not present, the request was manually created by a user. (AutomaticManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Requester" /></td>
+    <td><CopyableCode code="requester" /></td>
     <td><code>string</code></td>
     <td>The IAM identity of the requester.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the ListServices operation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the service name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The state of the quota increase request. PENDING: The quota increase request is under review by Amazon Web Services. CASE_OPENED: Service Quotas opened a support case to process the quota increase request. Follow-up on the support case for more information. APPROVED: The quota increase request is approved. DENIED: The quota increase request can't be approved by Service Quotas. Contact Amazon Web Services Support for more details. NOT APPROVED: The quota increase request can't be approved by Service Quotas. Contact Amazon Web Services Support for more details. CASE_CLOSED: The support case associated with this quota increase request was closed. Check the support case correspondence for the outcome of your quota request. INVALID_REQUEST: Service Quotas couldn't process your resource-level quota increase request because the Amazon Resource Name (ARN) specified as part of the ContextId is invalid. (PENDING, CASE_OPENED, APPROVED, DENIED, CASE_CLOSED, NOT_APPROVED, INVALID_REQUEST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Unit" /></td>
+    <td><CopyableCode code="unit" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement.</td>
 </tr>
@@ -199,23 +199,23 @@ Retrieves the quota increase requests for the specified quota. Filter responses 
 
 ```sql
 SELECT
-CaseId,
-Created,
-DesiredValue,
-GlobalQuota,
-Id,
-LastUpdated,
-QuotaArn,
-QuotaCode,
-QuotaContext,
-QuotaName,
-QuotaRequestedAtLevel,
-RequestType,
-Requester,
-ServiceCode,
-ServiceName,
-Status,
-Unit
+case_id,
+created,
+desired_value,
+global_quota,
+id,
+last_updated,
+quota_arn,
+quota_code,
+quota_context,
+quota_name,
+quota_requested_at_level,
+request_type,
+requester,
+service_code,
+service_name,
+status,
+unit
 FROM aws.service_quotas.requested_service_quota_change_history_by_quotas
 WHERE region = '{{ region }}' -- required
 ;

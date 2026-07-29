@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="containerRecipe" /></td>
+    <td><CopyableCode code="container_recipe" /></td>
     <td><code>object</code></td>
     <td>The container recipe object that is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersionReferences" /></td>
+    <td><CopyableCode code="latest_version_references" /></td>
     <td><code>object</code></td>
     <td>The resource ARNs with different wildcard variations of semantic versioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the container recipe. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerType" /></td>
+    <td><CopyableCode code="container_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the type of container, such as "Docker". (DOCKER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date when this container recipe was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceImage" /></td>
+    <td><CopyableCode code="instance_image" /></td>
     <td><code>string</code></td>
     <td>The base image for a container build and test instance. This can contain an AMI ID or it can specify an Amazon Web Services Systems Manager (SSM) Parameter Store Parameter, prefixed by ssm:, followed by the parameter name or ARN. If not specified, Image Builder uses the appropriate ECS-optimized AMI as a base image.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The owner of the container recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentImage" /></td>
+    <td><CopyableCode code="parent_image" /></td>
     <td><code>string</code></td>
     <td>The base image for the container recipe.</td>
 </tr>
@@ -216,9 +216,9 @@ Retrieves a container recipe.
 
 ```sql
 SELECT
-containerRecipe,
-latestVersionReferences,
-requestId
+container_recipe,
+latest_version_references,
+request_id
 FROM aws.imagebuilder.container_recipes
 WHERE containerRecipeArn = '{{ containerRecipeArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -233,11 +233,11 @@ Returns a list of container recipes.
 SELECT
 name,
 arn,
-containerType,
-dateCreated,
-instanceImage,
+container_type,
+date_created,
+instance_image,
 owner,
-parentImage,
+parent_image,
 platform,
 tags
 FROM aws.imagebuilder.container_recipes
@@ -300,10 +300,10 @@ SELECT
 '{{ clientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-clientToken,
-containerRecipeArn,
-latestVersionReferences,
-requestId
+client_token,
+container_recipe_arn,
+latest_version_references,
+request_id
 ;
 ```
 </TabItem>

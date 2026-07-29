@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The retention rule description. (pattern: &lt;code&gt;^&#91;\S &#93;&#123;0,255&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExcludeResourceTags" /></td>
+    <td><CopyableCode code="exclude_resource_tags" /></td>
     <td><code>array</code></td>
     <td>&#91;Region-level retention rules only&#93; Information about the exclusion tags used to identify resources that are to be excluded, or ignored, by the retention rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the retention rule. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;11&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockConfiguration" /></td>
+    <td><CopyableCode code="lock_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about a retention rule lock configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockEndTime" /></td>
+    <td><CopyableCode code="lock_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the unlock delay is set to expire. Only returned for retention rules that have been unlocked and that are still within the unlock delay period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockState" /></td>
+    <td><CopyableCode code="lock_state" /></td>
     <td><code>string</code></td>
     <td>&#91;Region-level retention rules only&#93; The lock state for the retention rule. locked - The retention rule is locked and can't be modified or deleted. pending_unlock - The retention rule has been unlocked but it is still within the unlock delay period. The retention rule can be modified or deleted only after the unlock delay period has expired. unlocked - The retention rule is unlocked and it can be modified or deleted by any user with the required permissions. null - The retention rule has never been locked. Once a retention rule has been locked, it can transition between the locked and unlocked states only; it can never transition back to null. (locked, pending_unlock, unlocked)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>&#91;Tag-level retention rules only&#93; Information about the resource tags used to identify resources that are retained by the retention rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type retained by the retention rule. (EBS_SNAPSHOT, EC2_IMAGE, EBS_VOLUME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionPeriod" /></td>
+    <td><CopyableCode code="retention_period" /></td>
     <td><code>object</code></td>
     <td>Information about the retention period for which the retention rule is to retain resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the retention rule. (pattern: &lt;code&gt;^arn:\S+:rbin:&#91;a-z\-0-9&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:rule/&#91;0-9a-zA-Z&#93;&#123;11&#125;&#123;0,1011&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The state of the retention rule. Only retention rules that are in the available state retain resources. (pending, available)</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The retention rule description. (pattern: &lt;code&gt;^&#91;\S &#93;&#123;0,255&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the retention rule. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;11&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockState" /></td>
+    <td><CopyableCode code="lock_state" /></td>
     <td><code>string</code></td>
     <td>&#91;Region-level retention rules only&#93; The lock state for the retention rule. locked - The retention rule is locked and can't be modified or deleted. pending_unlock - The retention rule has been unlocked but it is still within the unlock delay period. The retention rule can be modified or deleted only after the unlock delay period has expired. unlocked - The retention rule is unlocked and it can be modified or deleted by any user with the required permissions. null - The retention rule has never been locked. Once a retention rule has been locked, it can transition between the locked and unlocked states only; it can never transition back to null. (locked, pending_unlock, unlocked)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionPeriod" /></td>
+    <td><CopyableCode code="retention_period" /></td>
     <td><code>object</code></td>
     <td>Information about the retention period for which the retention rule is to retain resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the retention rule. (pattern: &lt;code&gt;^arn:\S+:rbin:&#91;a-z\-0-9&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:rule/&#91;0-9a-zA-Z&#93;&#123;11&#125;&#123;0,1011&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -243,17 +243,17 @@ Gets information about a Recycle Bin retention rule.
 
 ```sql
 SELECT
-Description,
-ExcludeResourceTags,
-Identifier,
-LockConfiguration,
-LockEndTime,
-LockState,
-ResourceTags,
-ResourceType,
-RetentionPeriod,
-RuleArn,
-Status
+description,
+exclude_resource_tags,
+identifier,
+lock_configuration,
+lock_end_time,
+lock_state,
+resource_tags,
+resource_type,
+retention_period,
+rule_arn,
+status
 FROM aws.rbin.rules
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,11 +266,11 @@ Lists the Recycle Bin retention rules in the Region.
 
 ```sql
 SELECT
-Description,
-Identifier,
-LockState,
-RetentionPeriod,
-RuleArn
+description,
+identifier,
+lock_state,
+retention_period,
+rule_arn
 FROM aws.rbin.rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -313,17 +313,17 @@ SELECT
 '{{ ExcludeResourceTags }}',
 '{{ region }}'
 RETURNING
-Description,
-ExcludeResourceTags,
-Identifier,
-LockConfiguration,
-LockState,
-ResourceTags,
-ResourceType,
-RetentionPeriod,
-RuleArn,
-Status,
-Tags
+description,
+exclude_resource_tags,
+identifier,
+lock_configuration,
+lock_state,
+resource_tags,
+resource_type,
+retention_period,
+rule_arn,
+status,
+tags
 ;
 ```
 </TabItem>
@@ -395,16 +395,16 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Description,
-ExcludeResourceTags,
-Identifier,
-LockEndTime,
-LockState,
-ResourceTags,
-ResourceType,
-RetentionPeriod,
-RuleArn,
-Status;
+description,
+exclude_resource_tags,
+identifier,
+lock_end_time,
+lock_state,
+resource_tags,
+resource_type,
+retention_period,
+rule_arn,
+status;
 ```
 </TabItem>
 </Tabs>

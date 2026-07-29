@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the feature transformation. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time (in Unix time) of the feature transformation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultParameters" /></td>
+    <td><CopyableCode code="default_parameters" /></td>
     <td><code>object</code></td>
     <td>Provides the default parameters for feature transformation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="featureTransformationArn" /></td>
+    <td><CopyableCode code="feature_transformation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the FeatureTransformation object. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last update date and time (in Unix time) of the feature transformation.</td>
 </tr>
@@ -145,10 +145,10 @@ Describes the given feature transformation.
 ```sql
 SELECT
 name,
-creationDateTime,
-defaultParameters,
-featureTransformationArn,
-lastUpdatedDateTime,
+creation_date_time,
+default_parameters,
+feature_transformation_arn,
+last_updated_date_time,
 status
 FROM aws.personalize.feature_transformations
 WHERE region = '{{ region }}' -- required

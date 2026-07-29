@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The number of milliseconds the query has been running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The query in question.</td>
 </tr>
@@ -196,7 +196,7 @@ Retrieves the status of a specified query. When invoking this operation in a Nep
 SELECT
 id,
 elapsed,
-queryString,
+query_string,
 state,
 waited
 FROM aws.neptune_graph.queries

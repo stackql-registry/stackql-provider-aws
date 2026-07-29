@@ -60,27 +60,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the step action. (pattern: &lt;code&gt;^&#91;A-Za-z&#93;&#91;A-Za-z0-9-_&#93;&#123;1,99&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageBuildVersionArn" /></td>
+    <td><CopyableCode code="image_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the image build version that ran the workflow. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):image/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the workflow step started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepExecutionId" /></td>
+    <td><CopyableCode code="step_execution_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies the workflow step that ran for the associated image build version. (pattern: &lt;code&gt;^step-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowBuildVersionArn" /></td>
+    <td><CopyableCode code="workflow_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow resource that ran. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):workflow/(build|test|distribution)/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionId" /></td>
+    <td><CopyableCode code="workflow_execution_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies the runtime instance of the workflow that contains the workflow step that ran for the associated image build version. (pattern: &lt;code&gt;^wf-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -151,11 +151,11 @@ Get a list of workflow steps that are waiting for action for workflows in your A
 SELECT
 name,
 action,
-imageBuildVersionArn,
-startTime,
-stepExecutionId,
-workflowBuildVersionArn,
-workflowExecutionId
+image_build_version_arn,
+start_time,
+step_execution_id,
+workflow_build_version_arn,
+workflow_execution_id
 FROM aws.imagebuilder.waiting_workflow_steps
 WHERE region = '{{ region }}' -- required
 ;

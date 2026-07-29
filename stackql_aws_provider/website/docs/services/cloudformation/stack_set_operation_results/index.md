@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Account" /></td>
+    <td><CopyableCode code="account" /></td>
     <td><code>string</code></td>
     <td>&#91;Self-managed permissions&#93; The name of the Amazon Web Services account for this operation result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountGateResult" /></td>
+    <td><CopyableCode code="account_gate_result" /></td>
     <td><code>string</code></td>
     <td>The results of the account gate function CloudFormation invokes, if present, before proceeding with StackSet operations in an account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>&#91;Service-managed permissions&#93; The organization root ID or organizational unit (OU) IDs that you specified for DeploymentTargets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services Region for this operation result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The result status of the StackSet operation for the given account in the given Region. CANCELLED: The operation in the specified account and Region has been canceled. This is either because a user has stopped the StackSet operation, or because the failure tolerance of the StackSet operation has been exceeded. FAILED: The operation in the specified account and Region failed. If the StackSet operation fails in enough accounts within a Region, the failure tolerance for the StackSet operation as a whole might be exceeded. RUNNING: The operation in the specified account and Region is currently in progress. PENDING: The operation in the specified account and Region has yet to start. SUCCEEDED: The operation in the specified account and Region completed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the assigned result status.</td>
 </tr>
@@ -174,12 +174,12 @@ Returns summary information about the results of a StackSet operation. This API 
 
 ```sql
 SELECT
-Account,
-AccountGateResult,
-OrganizationalUnitId,
-Region,
-Status,
-StatusReason
+account,
+account_gate_result,
+organizational_unit_id,
+region,
+status,
+status_reason
 FROM aws.cloudformation.stack_set_operation_results
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND OperationId = '{{ OperationId }}' -- required

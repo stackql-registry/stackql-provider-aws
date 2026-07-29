@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the payment manager. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerConfiguration" /></td>
+    <td><CopyableCode code="authorizer_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents inbound authorization configuration options used to authenticate incoming requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>The type of authorizer used by the payment manager. CUSTOM_JWT - Authorize with a bearer token. AWS_IAM - Authorize with your Amazon Web Services IAM credentials. (CUSTOM_JWT, AWS_IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment manager was created.</td>
 </tr>
@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the payment manager. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment manager was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerArn" /></td>
+    <td><CopyableCode code="payment_manager_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the payment manager. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:payment-manager/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerId" /></td>
+    <td><CopyableCode code="payment_manager_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the payment manager. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role associated with the payment manager. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags associated with the payment manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadIdentityDetails" /></td>
+    <td><CopyableCode code="workload_identity_details" /></td>
     <td><code>object</code></td>
     <td>The information about the workload identity.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the payment manager. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>The type of authorizer used by the payment manager. CUSTOM_JWT - Authorize with a bearer token. AWS_IAM - Authorize with your Amazon Web Services IAM credentials. (CUSTOM_JWT, AWS_IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment manager was created.</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the payment manager. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment manager was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerArn" /></td>
+    <td><CopyableCode code="payment_manager_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the payment manager. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:payment-manager/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerId" /></td>
+    <td><CopyableCode code="payment_manager_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the payment manager. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role associated with the payment manager. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -284,17 +284,17 @@ Retrieves information about a specific payment manager.
 ```sql
 SELECT
 name,
-authorizerConfiguration,
-authorizerType,
-createdAt,
+authorizer_configuration,
+authorizer_type,
+created_at,
 description,
-lastUpdatedAt,
-paymentManagerArn,
-paymentManagerId,
-roleArn,
+last_updated_at,
+payment_manager_arn,
+payment_manager_id,
+role_arn,
 status,
 tags,
-workloadIdentityDetails
+workload_identity_details
 FROM aws.bedrock_agentcore_control.payment_managers
 WHERE payment_manager_id = '{{ payment_manager_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -308,13 +308,13 @@ Lists all payment managers in the account.
 ```sql
 SELECT
 name,
-authorizerType,
-createdAt,
+authorizer_type,
+created_at,
 description,
-lastUpdatedAt,
-paymentManagerArn,
-paymentManagerId,
-roleArn,
+last_updated_at,
+payment_manager_arn,
+payment_manager_id,
+role_arn,
 status
 FROM aws.bedrock_agentcore_control.payment_managers
 WHERE region = '{{ region }}' -- required
@@ -361,15 +361,15 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-authorizerConfiguration,
-authorizerType,
-createdAt,
-paymentManagerArn,
-paymentManagerId,
-roleArn,
+authorizer_configuration,
+authorizer_type,
+created_at,
+payment_manager_arn,
+payment_manager_id,
+role_arn,
 status,
 tags,
-workloadIdentityDetails
+workload_identity_details
 ;
 ```
 </TabItem>
@@ -469,13 +469,13 @@ payment_manager_id = '{{ payment_manager_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
-authorizerType,
-lastUpdatedAt,
-paymentManagerArn,
-paymentManagerId,
-roleArn,
+authorizer_type,
+last_updated_at,
+payment_manager_arn,
+payment_manager_id,
+role_arn,
 status,
-workloadIdentityDetails;
+workload_identity_details;
 ```
 </TabItem>
 </Tabs>

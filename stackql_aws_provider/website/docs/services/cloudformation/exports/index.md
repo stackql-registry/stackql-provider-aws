@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExportingStackId" /></td>
+    <td><CopyableCode code="exporting_stack_id" /></td>
     <td><code>string</code></td>
     <td>The stack that contains the exported output name and value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of exported output value. Use this name and the Fn::ImportValue function to import the associated value into other stacks. The name is defined in the Export field in the associated stack's Outputs section.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the exported output, such as a resource physical ID. This value is defined in the Export field in the associated stack's Outputs section.</td>
 </tr>
@@ -134,9 +134,9 @@ Lists all exported output values in the account and Region in which you call thi
 
 ```sql
 SELECT
-ExportingStackId,
-Name,
-Value
+exporting_stack_id,
+name,
+value
 FROM aws.cloudformation.exports
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

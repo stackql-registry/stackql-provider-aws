@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Bandwidth" /></td>
+    <td><CopyableCode code="bandwidth" /></td>
     <td><code>object</code></td>
     <td>Describes bandwidth information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the link was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the link. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkArn" /></td>
+    <td><CopyableCode code="link_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the link. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the link. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Provider" /></td>
+    <td><CopyableCode code="provider" /></td>
     <td><code>string</code></td>
     <td>The provider of the link. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the site. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the link. (PENDING, AVAILABLE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags for the link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the link. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -254,17 +254,17 @@ Gets information about one or more links in a specified global network. If you s
 
 ```sql
 SELECT
-Bandwidth,
-CreatedAt,
-Description,
-GlobalNetworkId,
-LinkArn,
-LinkId,
-Provider,
-SiteId,
-State,
-Tags,
-Type
+bandwidth,
+created_at,
+description,
+global_network_id,
+link_arn,
+link_id,
+provider,
+site_id,
+state,
+tags,
+type
 FROM aws.networkmanager.links
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -314,7 +314,7 @@ SELECT
 '{{ global_network_id }}',
 '{{ region }}'
 RETURNING
-Link
+link
 ;
 ```
 </TabItem>
@@ -378,7 +378,7 @@ AND region = '{{ region }}' --required
 AND DeviceId = '{{ DeviceId }}' --required
 AND LinkId = '{{ LinkId }}' --required
 RETURNING
-LinkAssociation;
+link_association;
 ```
 </TabItem>
 <TabItem value="update_link">
@@ -397,7 +397,7 @@ global_network_id = '{{ global_network_id }}' --required
 AND link_id = '{{ link_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Link;
+link;
 ```
 </TabItem>
 <TabItem value="disassociate_link">
@@ -414,7 +414,7 @@ AND region = '{{ region }}' --required
 AND deviceId = '{{ deviceId}}'
 AND linkId = '{{ linkId}}'
 RETURNING
-LinkAssociation;
+link_association;
 ```
 </TabItem>
 </Tabs>

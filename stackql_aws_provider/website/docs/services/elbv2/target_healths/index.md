@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdministrativeOverride" /></td>
+    <td><CopyableCode code="administrative_override" /></td>
     <td><code>string</code></td>
     <td>The administrative override information for the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnomalyDetection" /></td>
+    <td><CopyableCode code="anomaly_detection" /></td>
     <td><code>string</code></td>
     <td>The anomaly detection result for the target. If no anomalies were detected, the result is normal. If anomalies were detected, the result is anomalous.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckPort" /></td>
+    <td><CopyableCode code="health_check_port" /></td>
     <td><code>string</code></td>
     <td>The port to use to connect with the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>The description of the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetHealth" /></td>
+    <td><CopyableCode code="target_health" /></td>
     <td><code>string</code></td>
     <td>The health information for the target.</td>
 </tr>
@@ -154,11 +154,11 @@ Describes the health of the specified targets or all of your targets.
 
 ```sql
 SELECT
-AdministrativeOverride,
-AnomalyDetection,
-HealthCheckPort,
-Target,
-TargetHealth
+administrative_override,
+anomaly_detection,
+health_check_port,
+target,
+target_health
 FROM aws.elbv2.target_healths
 WHERE TargetGroupArn = '{{ TargetGroupArn }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GeoJsonPayload" /></td>
+    <td><CopyableCode code="geo_json_payload" /></td>
     <td><code>string (byte)</code></td>
     <td>The position information of the resource, displayed as a JSON payload. The payload uses the GeoJSON format, which a format that's used to encode geographic data structures. For more information, see GeoJSON.</td>
 </tr>
@@ -136,7 +136,7 @@ Get the position information for a given wireless device or a wireless gateway r
 
 ```sql
 SELECT
-GeoJsonPayload
+geo_json_payload
 FROM aws.iotwireless.resource_positions
 WHERE resource_identifier = '{{ resource_identifier }}' -- required
 AND resourceType = '{{ resourceType }}' -- required

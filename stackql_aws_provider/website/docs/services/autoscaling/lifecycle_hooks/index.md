@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group for the lifecycle hook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultResult" /></td>
+    <td><CopyableCode code="default_result" /></td>
     <td><code>string</code></td>
     <td>The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an unexpected failure occurs. Valid values: CONTINUE | ABANDON</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalTimeout" /></td>
+    <td><CopyableCode code="global_timeout" /></td>
     <td><code>integer</code></td>
     <td>The maximum time, in seconds, that an instance can remain in a wait state. The maximum is 172800 seconds (48 hours) or 100 times HeartbeatTimeout, whichever is smaller.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HeartbeatTimeout" /></td>
+    <td><CopyableCode code="heartbeat_timeout" /></td>
     <td><code>integer</code></td>
     <td>The maximum time, in seconds, that can elapse before the lifecycle hook times out. If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the action that you specified in the DefaultResult property.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleHookName" /></td>
+    <td><CopyableCode code="lifecycle_hook_name" /></td>
     <td><code>string</code></td>
     <td>The name of the lifecycle hook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleTransition" /></td>
+    <td><CopyableCode code="lifecycle_transition" /></td>
     <td><code>string</code></td>
     <td>The lifecycle transition. Valid values: autoscaling:EC2_INSTANCE_LAUNCHING | autoscaling:EC2_INSTANCE_TERMINATING</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationMetadata" /></td>
+    <td><CopyableCode code="notification_metadata" /></td>
     <td><code>string</code></td>
     <td>Additional information that is included any time Amazon EC2 Auto Scaling sends a message to the notification target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationTargetARN" /></td>
+    <td><CopyableCode code="notification_target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the target that Amazon EC2 Auto Scaling sends notifications to when an instance is in a wait state for the lifecycle hook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleARN" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target (an Amazon SNS topic or an Amazon SQS queue).</td>
 </tr>
@@ -218,15 +218,15 @@ Gets information about the lifecycle hooks for the specified Auto Scaling group.
 
 ```sql
 SELECT
-AutoScalingGroupName,
-DefaultResult,
-GlobalTimeout,
-HeartbeatTimeout,
-LifecycleHookName,
-LifecycleTransition,
-NotificationMetadata,
-NotificationTargetARN,
-RoleARN
+auto_scaling_group_name,
+default_result,
+global_timeout,
+heartbeat_timeout,
+lifecycle_hook_name,
+lifecycle_transition,
+notification_metadata,
+notification_target_arn,
+role_arn
 FROM aws.autoscaling.lifecycle_hooks
 WHERE AutoScalingGroupName = '{{ AutoScalingGroupName }}' -- required
 AND region = '{{ region }}' -- required

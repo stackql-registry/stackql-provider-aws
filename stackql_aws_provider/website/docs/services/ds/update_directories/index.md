@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InitiatedBy" /></td>
+    <td><CopyableCode code="initiated_by" /></td>
     <td><code>string</code></td>
     <td>This specifies if the update was initiated by the customer or by the service team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last updated date and time of a particular directory setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NewValue" /></td>
+    <td><CopyableCode code="new_value" /></td>
     <td><code>object</code></td>
     <td>The new value of the target setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousValue" /></td>
+    <td><CopyableCode code="previous_value" /></td>
     <td><code>object</code></td>
     <td>The old value of the target setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The name of the Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the UpdateDirectorySetup for the particular type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the update performed on the directory. (Updated, Updating, UpdateFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the update type activity.</td>
 </tr>
@@ -154,14 +154,14 @@ Describes the updates of a directory for a particular update type.
 
 ```sql
 SELECT
-InitiatedBy,
-LastUpdatedDateTime,
-NewValue,
-PreviousValue,
-Region,
-StartTime,
-Status,
-StatusReason
+initiated_by,
+last_updated_date_time,
+new_value,
+previous_value,
+region,
+start_time,
+status,
+status_reason
 FROM aws.ds.update_directories
 WHERE region = '{{ region }}' -- required
 ;

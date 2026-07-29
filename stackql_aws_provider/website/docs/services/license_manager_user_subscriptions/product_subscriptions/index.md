@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain name of the Active Directory that contains the user information for the product subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProvider" /></td>
+    <td><CopyableCode code="identity_provider" /></td>
     <td><code>object</code></td>
     <td>Refers to an identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Product" /></td>
+    <td><CopyableCode code="product" /></td>
     <td><code>string</code></td>
     <td>The name of the user-based subscription product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductUserArn" /></td>
+    <td><CopyableCode code="product_user_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for this product user. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;/&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a product for this user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for a product for this user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionEndDate" /></td>
+    <td><CopyableCode code="subscription_end_date" /></td>
     <td><code>string</code></td>
     <td>The end date of a subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionStartDate" /></td>
+    <td><CopyableCode code="subscription_start_date" /></td>
     <td><code>string</code></td>
     <td>The start date of a subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The user name from the identity provider for this product user.</td>
 </tr>
@@ -159,15 +159,15 @@ Lists the user-based subscription products available from an identity provider.
 
 ```sql
 SELECT
-Domain,
-IdentityProvider,
-Product,
-ProductUserArn,
-Status,
-StatusMessage,
-SubscriptionEndDate,
-SubscriptionStartDate,
-Username
+domain,
+identity_provider,
+product,
+product_user_arn,
+status,
+status_message,
+subscription_end_date,
+subscription_start_date,
+username
 FROM aws.license_manager_user_subscriptions.product_subscriptions
 WHERE region = '{{ region }}' -- required
 ;

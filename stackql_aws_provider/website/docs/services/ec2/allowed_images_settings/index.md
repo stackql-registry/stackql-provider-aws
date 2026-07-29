@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImageCriteria" /></td>
+    <td><CopyableCode code="image_criteria" /></td>
     <td><code>string</code></td>
     <td>The list of criteria for images that are discoverable and usable in the account in the specified Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the Allowed AMIs settings. Possible values include: account - The Allowed AMIs settings is managed by the account. declarative-policy - The Allowed AMIs settings is managed by a declarative policy and can't be modified by the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Allowed AMIs setting at the account level in the specified Amazon Web Services Region. Possible values: disabled: All AMIs are allowed. audit-mode: All AMIs are allowed, but the ImageAllowed field is set to true if the AMI would be allowed with the current list of criteria if allowed AMIs was enabled. enabled: Only AMIs matching the image criteria are discoverable and available for use.</td>
 </tr>
@@ -165,9 +165,9 @@ Gets the current state of the Allowed AMIs setting and the list of Allowed AMIs 
 
 ```sql
 SELECT
-ImageCriteria,
-ManagedBy,
-State
+image_criteria,
+managed_by,
+state
 FROM aws.ec2.allowed_images_settings
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -198,7 +198,7 @@ region = '{{ region }}' --required
 AND ImageCriterion = '{{ ImageCriterion}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-ReturnValue;
+return_value;
 ```
 </TabItem>
 </Tabs>

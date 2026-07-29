@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FirewallRuleGroupPolicy" /></td>
+    <td><CopyableCode code="firewall_rule_group_policy" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management (Amazon Web Services IAM) policy for sharing the specified rule group. You can use the policy to share the rule group using Resource Access Manager (RAM).</td>
 </tr>
@@ -126,7 +126,7 @@ Returns the Identity and Access Management (Amazon Web Services IAM) policy for 
 
 ```sql
 SELECT
-FirewallRuleGroupPolicy
+firewall_rule_group_policy
 FROM aws.route53resolver.firewall_rule_group_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -157,7 +157,7 @@ region = '{{ region }}' --required
 AND Arn = '{{ Arn }}' --required
 AND FirewallRuleGroupPolicy = '{{ FirewallRuleGroupPolicy }}' --required
 RETURNING
-ReturnValue;
+return_value;
 ```
 </TabItem>
 </Tabs>

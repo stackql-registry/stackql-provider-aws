@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account from which the MLModel was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointInfo" /></td>
+    <td><CopyableCode code="endpoint_info" /></td>
     <td><code>object</code></td>
     <td>The current endpoint of the MLModel</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataLocationS3" /></td>
+    <td><CopyableCode code="input_data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3). (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>A link to the file that contains logs of the CreateMLModel operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelId" /></td>
+    <td><CopyableCode code="ml_model_id" /></td>
     <td><code>string</code></td>
     <td>The MLModel ID, which is same as the MLModelId in the request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelType" /></td>
+    <td><CopyableCode code="ml_model_type" /></td>
     <td><code>string</code></td>
     <td>Identifies the MLModel category. The following are the available types: REGRESSION -- Produces a numeric result. For example, "What price should a house be listed at?" BINARY -- Produces one of two possible results. For example, "Is this an e-commerce website?" MULTICLASS -- Produces one of several possible results. For example, "Is this a HIGH, LOW or MEDIUM risk trade?" (REGRESSION, BINARY, MULTICLASS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the most recent details about accessing the MLModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the MLModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recipe" /></td>
+    <td><CopyableCode code="recipe" /></td>
     <td><code>string</code></td>
     <td>The recipe to use when training the MLModel. The Recipe provides detailed information about the observation data to use during training, and manipulations to perform on the observation data during training. Note: This parameter is provided as part of the verbose format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>string</code></td>
     <td>The schema used by all of the data files referenced by the DataSource. Note: This parameter is provided as part of the verbose format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScoreThreshold" /></td>
+    <td><CopyableCode code="score_threshold" /></td>
     <td><code>number (float)</code></td>
     <td>The scoring threshold is used in binary classification MLModel models. It marks the boundary between a positive prediction and a negative prediction. Output values greater than or equal to the threshold receive a positive result from the MLModel, such as true. Output values less than the threshold receive a negative response from the MLModel, such as false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScoreThresholdLastUpdatedAt" /></td>
+    <td><CopyableCode code="score_threshold_last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the MLModel. This element can have one of the following values: PENDING - Amazon Machine Learning (Amazon ML) submitted a request to describe a MLModel. INPROGRESS - The request is processing. FAILED - The request did not run to completion. The ML model isn't usable. COMPLETED - The request completed successfully. DELETED - The MLModel is marked as deleted. It isn't usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingDataSourceId" /></td>
+    <td><CopyableCode code="training_data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the training DataSource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingParameters" /></td>
+    <td><CopyableCode code="training_parameters" /></td>
     <td><code>object</code></td>
     <td>A list of the training parameters in the MLModel. The list is implemented as a map of key-value pairs. The following is the current set of training parameters: sgd.maxMLModelSizeInBytes - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance. The value is an integer that ranges from 100000 to 2147483648. The default value is 33554432. sgd.maxPasses - The number of times that the training process traverses the observations to build the MLModel. The value is an integer that ranges from 1 to 10000. The default value is 10. sgd.shuffleType - Whether Amazon ML shuffles the training data. Shuffling data improves a model's ability to find the optimal solution for a variety of data types. The valid values are auto and none. The default value is none. We strongly recommend that you shuffle your data. sgd.l1RegularizationAmount - The coefficient regularization L1 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to zero, resulting in a sparse feature set. If you use this parameter, start by specifying a small value, such as 1.0E-08. The value is a double that ranges from 0 to MAX_DOUBLE. The default is to not use L1 normalization. This parameter can't be used when L2 is specified. Use this parameter sparingly. sgd.l2RegularizationAmount - The coefficient regularization L2 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as 1.0E-08. The value is a double that ranges from 0 to MAX_DOUBLE. The default is to not use L2 normalization. This parameter can't be used when L1 is specified. Use this parameter sparingly.</td>
 </tr>
@@ -170,97 +170,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Algorithm" /></td>
+    <td><CopyableCode code="algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm used to train the MLModel. The following algorithm is supported: SGD -- Stochastic gradient descent. The goal of SGD is to minimize the gradient of the loss function. (sgd)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account from which the MLModel was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointInfo" /></td>
+    <td><CopyableCode code="endpoint_info" /></td>
     <td><code>object</code></td>
     <td>The current endpoint of the MLModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataLocationS3" /></td>
+    <td><CopyableCode code="input_data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3). (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelId" /></td>
+    <td><CopyableCode code="ml_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the MLModel at creation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelType" /></td>
+    <td><CopyableCode code="ml_model_type" /></td>
     <td><code>string</code></td>
     <td>Identifies the MLModel category. The following are the available types: REGRESSION - Produces a numeric result. For example, "What price should a house be listed at?" BINARY - Produces one of two possible results. For example, "Is this a child-friendly web site?". MULTICLASS - Produces one of several possible results. For example, "Is this a HIGH-, LOW-, or MEDIUM-risk trade?". (REGRESSION, BINARY, MULTICLASS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the most recent details about accessing the MLModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the MLModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScoreThreshold" /></td>
+    <td><CopyableCode code="score_threshold" /></td>
     <td><code>number (float)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScoreThresholdLastUpdatedAt" /></td>
+    <td><CopyableCode code="score_threshold_last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of an MLModel. This element can have one of the following values: PENDING - Amazon Machine Learning (Amazon ML) submitted a request to create an MLModel. INPROGRESS - The creation process is underway. FAILED - The request to create an MLModel didn't run to completion. The model isn't usable. COMPLETED - The creation process completed successfully. DELETED - The MLModel is marked as deleted. It isn't usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingDataSourceId" /></td>
+    <td><CopyableCode code="training_data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the training DataSource. The CreateMLModel operation uses the TrainingDataSourceId. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingParameters" /></td>
+    <td><CopyableCode code="training_parameters" /></td>
     <td><code>object</code></td>
     <td>A list of the training parameters in the MLModel. The list is implemented as a map of key-value pairs. The following is the current set of training parameters: sgd.maxMLModelSizeInBytes - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance. The value is an integer that ranges from 100000 to 2147483648. The default value is 33554432. sgd.maxPasses - The number of times that the training process traverses the observations to build the MLModel. The value is an integer that ranges from 1 to 10000. The default value is 10. sgd.shuffleType - Whether Amazon ML shuffles the training data. Shuffling the data improves a model's ability to find the optimal solution for a variety of data types. The valid values are auto and none. The default value is none. sgd.l1RegularizationAmount - The coefficient regularization L1 norm, which controls overfitting the data by penalizing large coefficients. This parameter tends to drive coefficients to zero, resulting in sparse feature set. If you use this parameter, start by specifying a small value, such as 1.0E-08. The value is a double that ranges from 0 to MAX_DOUBLE. The default is to not use L1 normalization. This parameter can't be used when L2 is specified. Use this parameter sparingly. sgd.l2RegularizationAmount - The coefficient regularization L2 norm, which controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as 1.0E-08. The value is a double that ranges from 0 to MAX_DOUBLE. The default is to not use L2 normalization. This parameter can't be used when L1 is specified. Use this parameter sparingly.</td>
 </tr>
@@ -379,27 +379,27 @@ Returns an MLModel that includes detailed metadata, data source information, and
 
 ```sql
 SELECT
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-EndpointInfo,
-FinishedAt,
-InputDataLocationS3,
-LastUpdatedAt,
-LogUri,
-MLModelId,
-MLModelType,
-Message,
-Name,
-Recipe,
-Schema,
-ScoreThreshold,
-ScoreThresholdLastUpdatedAt,
-SizeInBytes,
-StartedAt,
-Status,
-TrainingDataSourceId,
-TrainingParameters
+compute_time,
+created_at,
+created_by_iam_user,
+endpoint_info,
+finished_at,
+input_data_location_s3,
+last_updated_at,
+log_uri,
+ml_model_id,
+ml_model_type,
+message,
+name,
+recipe,
+schema,
+score_threshold,
+score_threshold_last_updated_at,
+size_in_bytes,
+started_at,
+status,
+training_data_source_id,
+training_parameters
 FROM aws.machinelearning.ml_models
 WHERE region = '{{ region }}' -- required
 ;
@@ -411,25 +411,25 @@ Returns a list of MLModel that match the search criteria in the request.
 
 ```sql
 SELECT
-Algorithm,
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-EndpointInfo,
-FinishedAt,
-InputDataLocationS3,
-LastUpdatedAt,
-MLModelId,
-MLModelType,
-Message,
-Name,
-ScoreThreshold,
-ScoreThresholdLastUpdatedAt,
-SizeInBytes,
-StartedAt,
-Status,
-TrainingDataSourceId,
-TrainingParameters
+algorithm,
+compute_time,
+created_at,
+created_by_iam_user,
+endpoint_info,
+finished_at,
+input_data_location_s3,
+last_updated_at,
+ml_model_id,
+ml_model_type,
+message,
+name,
+score_threshold,
+score_threshold_last_updated_at,
+size_in_bytes,
+started_at,
+status,
+training_data_source_id,
+training_parameters
 FROM aws.machinelearning.ml_models
 WHERE region = '{{ region }}' -- required
 ;
@@ -473,7 +473,7 @@ SELECT
 '{{ RecipeUri }}',
 '{{ region }}'
 RETURNING
-MLModelId
+ml_model_id
 ;
 ```
 </TabItem>
@@ -490,8 +490,8 @@ SELECT
 '{{ MLModelId }}' /* required */,
 '{{ region }}'
 RETURNING
-MLModelId,
-RealtimeEndpointInfo
+ml_model_id,
+realtime_endpoint_info
 ;
 ```
 </TabItem>
@@ -560,7 +560,7 @@ WHERE
 region = '{{ region }}' --required
 AND MLModelId = '{{ MLModelId }}' --required
 RETURNING
-MLModelId;
+ml_model_id;
 ```
 </TabItem>
 </Tabs>

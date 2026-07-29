@@ -50,147 +50,147 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The allocated storage size of the DB cluster snapshot in gibibytes (GiB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>The list of Availability Zones (AZs) where instances in the DB cluster snapshot can be restored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which automatic DB snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the DB cluster was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotArn" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier for the DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSystemId" /></td>
+    <td><CopyableCode code="db_system_id" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbClusterResourceId" /></td>
+    <td><CopyableCode code="db_cluster_resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID of the DB cluster that this DB cluster snapshot was created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine for this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineMode" /></td>
+    <td><CopyableCode code="engine_mode" /></td>
     <td><code>string</code></td>
     <td>The engine mode of the database engine for this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the database engine for this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If StorageEncrypted is true, the Amazon Web Services KMS key identifier for the encrypted DB cluster snapshot. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The license model information for this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master username for this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the estimated data that has been transferred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port that the DB cluster was listening on at the time of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the snapshot was taken, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>The type of the DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDBClusterSnapshotArn" /></td>
+    <td><CopyableCode code="source_db_cluster_snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>If the DB cluster snapshot was copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot, otherwise, a null value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of this DB cluster snapshot. Valid statuses are the following: available copying creating</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB cluster snapshot is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncryptionType" /></td>
+    <td><CopyableCode code="storage_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used to protect data at rest in the DB cluster snapshot. Possible values: none - The DB cluster snapshot is not encrypted. sse-rds - The DB cluster snapshot is encrypted using an Amazon Web Services owned KMS key. sse-kms - The DB cluster snapshot is encrypted using a customer managed KMS key or Amazon Web Services managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageThroughput" /></td>
+    <td><CopyableCode code="storage_throughput" /></td>
     <td><code>integer</code></td>
     <td>The storage throughput for the DB cluster snapshot. The throughput is automatically set based on the IOPS that you provision, and is not configurable. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type associated with the DB cluster snapshot. This setting is only for Aurora DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC ID associated with the DB cluster snapshot.</td>
 </tr>
@@ -333,35 +333,35 @@ Returns information about DB cluster snapshots. This API action supports paginat
 
 ```sql
 SELECT
-AllocatedStorage,
-AvailabilityZones,
-BackupRetentionPeriod,
-ClusterCreateTime,
-DBClusterIdentifier,
-DBClusterSnapshotArn,
-DBClusterSnapshotIdentifier,
-DBSystemId,
-DbClusterResourceId,
-Engine,
-EngineMode,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-SnapshotCreateTime,
-SnapshotType,
-SourceDBClusterSnapshotArn,
-Status,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-VpcId
+allocated_storage,
+availability_zones,
+backup_retention_period,
+cluster_create_time,
+db_cluster_identifier,
+db_cluster_snapshot_arn,
+db_cluster_snapshot_identifier,
+db_system_id,
+db_cluster_resource_id,
+engine,
+engine_mode,
+engine_version,
+iam_database_authentication_enabled,
+kms_key_id,
+license_model,
+master_username,
+percent_progress,
+port,
+preferred_backup_window,
+snapshot_create_time,
+snapshot_type,
+source_db_cluster_snapshot_arn,
+status,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+vpc_id
 FROM aws.rds.db_cluster_snapshots
 WHERE region = '{{ region }}' -- required
 AND DBClusterIdentifier = '{{ DBClusterIdentifier }}'
@@ -405,35 +405,35 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-AllocatedStorage,
-AvailabilityZones,
-BackupRetentionPeriod,
-ClusterCreateTime,
-DBClusterIdentifier,
-DBClusterSnapshotArn,
-DBClusterSnapshotIdentifier,
-DBSystemId,
-DbClusterResourceId,
-Engine,
-EngineMode,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-SnapshotCreateTime,
-SnapshotType,
-SourceDBClusterSnapshotArn,
-Status,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-VpcId
+allocated_storage,
+availability_zones,
+backup_retention_period,
+cluster_create_time,
+db_cluster_identifier,
+db_cluster_snapshot_arn,
+db_cluster_snapshot_identifier,
+db_system_id,
+db_cluster_resource_id,
+engine,
+engine_mode,
+engine_version,
+iam_database_authentication_enabled,
+kms_key_id,
+license_model,
+master_username,
+percent_progress,
+port,
+preferred_backup_window,
+snapshot_create_time,
+snapshot_type,
+source_db_cluster_snapshot_arn,
+status,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+vpc_id
 ;
 ```
 </TabItem>

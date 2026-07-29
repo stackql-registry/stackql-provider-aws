@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A string token indicating that there might be additional recommendations available to be listed. Use the token provided in the ListRecommendationsResponse to use in the subsequent call to ListRecommendations with the same parameters to retrieve the next page of recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recommendations" /></td>
+    <td><CopyableCode code="recommendations" /></td>
     <td><code>array</code></td>
     <td>The recommendations applicable to your account.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the recommendations present in your Amazon SES account in the current Amaz
 
 ```sql
 SELECT
-NextToken,
-Recommendations
+next_token,
+recommendations
 FROM aws.sesv2.recommendations
 WHERE region = '{{ region }}' -- required
 ;

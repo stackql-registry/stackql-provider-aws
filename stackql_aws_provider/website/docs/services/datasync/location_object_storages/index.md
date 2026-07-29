@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessKey" /></td>
+    <td><CopyableCode code="access_key" /></td>
     <td><code>string</code></td>
     <td>The access key (for example, a user name) required to authenticate with the object storage system. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AgentArns" /></td>
+    <td><CopyableCode code="agent_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the DataSync agents that can connect with your object storage system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmkSecretConfig" /></td>
+    <td><CopyableCode code="cmk_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as an authentication token or set of credentials that DataSync uses to access a specific transfer location, and a customer-managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomSecretConfig" /></td>
+    <td><CopyableCode code="custom_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a customer-managed secret, such as an authentication token or set of credentials that DataSync uses to access a specific transfer location, and a customer-managed Identity and Access Management (IAM) role that provides access to the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the object storage system location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the object storage system location. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedSecretConfig" /></td>
+    <td><CopyableCode code="managed_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as an authentication token or set of credentials that DataSync uses to access a specific transfer location. DataSync uses the default Amazon Web Services-managed KMS key to encrypt this secret in Secrets Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerCertificate" /></td>
+    <td><CopyableCode code="server_certificate" /></td>
     <td><code>string (byte)</code></td>
     <td>The certificate chain for DataSync to authenticate with your object storage system if the system uses a private or self-signed certificate authority (CA).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerPort" /></td>
+    <td><CopyableCode code="server_port" /></td>
     <td><code>integer</code></td>
     <td>The port that your object storage server accepts inbound network traffic on (for example, port 443).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerProtocol" /></td>
+    <td><CopyableCode code="server_protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol that your object storage system uses to communicate. (HTTPS, HTTP)</td>
 </tr>
@@ -183,17 +183,17 @@ Provides details about how an DataSync transfer location for an object storage s
 
 ```sql
 SELECT
-AccessKey,
-AgentArns,
-CmkSecretConfig,
-CreationTime,
-CustomSecretConfig,
-LocationArn,
-LocationUri,
-ManagedSecretConfig,
-ServerCertificate,
-ServerPort,
-ServerProtocol
+access_key,
+agent_arns,
+cmk_secret_config,
+creation_time,
+custom_secret_config,
+location_arn,
+location_uri,
+managed_secret_config,
+server_certificate,
+server_port,
+server_protocol
 FROM aws.datasync.location_object_storages
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,7 +246,7 @@ SELECT
 '{{ CustomSecretConfig }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

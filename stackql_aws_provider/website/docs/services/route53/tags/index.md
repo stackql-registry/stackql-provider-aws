@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the specified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource. The resource type for health checks is healthcheck. The resource type for hosted zones is hostedzone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags associated with the specified resource.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the specified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource. The resource type for health checks is healthcheck. The resource type for hosted zones is hostedzone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags associated with the specified resource.</td>
 </tr>
@@ -177,9 +177,9 @@ Lists tags for one health check or hosted zone. For information about using tags
 
 ```sql
 SELECT
-ResourceId,
-ResourceType,
-Tags
+resource_id,
+resource_type,
+tags
 FROM aws.route53.tags
 WHERE resource_type = '{{ resource_type }}' -- required
 AND resource_id = '{{ resource_id }}' -- required
@@ -193,9 +193,9 @@ Lists tags for up to 10 health checks or hosted zones. For information about usi
 
 ```sql
 SELECT
-ResourceId,
-ResourceType,
-Tags
+resource_id,
+resource_type,
+tags
 FROM aws.route53.tags
 WHERE resource_type = '{{ resource_type }}' -- required
 AND region = '{{ region }}' -- required

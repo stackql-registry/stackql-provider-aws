@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="checkName" /></td>
+    <td><CopyableCode code="check_name" /></td>
     <td><code>string</code></td>
     <td>An audit check name. Checks must be enabled for your account. (Use DescribeAccountAuditConfiguration to see the list of all checks, including those that are enabled or use UpdateAccountAuditConfiguration to select which checks are enabled.)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingId" /></td>
+    <td><CopyableCode code="finding_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for this set of audit findings. This identifier is used to apply mitigation tasks to one or more sets of findings. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingTime" /></td>
+    <td><CopyableCode code="finding_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the result (finding) was discovered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSuppressed" /></td>
+    <td><CopyableCode code="is_suppressed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the audit finding was suppressed or not during reporting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nonCompliantResource" /></td>
+    <td><CopyableCode code="non_compliant_resource" /></td>
     <td><code>object</code></td>
     <td>The resource that was found to be noncompliant with the audit check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reasonForNonCompliance" /></td>
+    <td><CopyableCode code="reason_for_non_compliance" /></td>
     <td><code>string</code></td>
     <td>The reason the resource was noncompliant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reasonForNonComplianceCode" /></td>
+    <td><CopyableCode code="reason_for_non_compliance_code" /></td>
     <td><code>string</code></td>
     <td>A code that indicates the reason that the resource was noncompliant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedResources" /></td>
+    <td><CopyableCode code="related_resources" /></td>
     <td><code>array</code></td>
     <td>The list of related resources.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The severity of the result (finding). (CRITICAL, HIGH, MEDIUM, LOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the audit that generated this result (finding). (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStartTime" /></td>
+    <td><CopyableCode code="task_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the audit started.</td>
 </tr>
@@ -120,42 +120,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="checkName" /></td>
+    <td><CopyableCode code="check_name" /></td>
     <td><code>string</code></td>
     <td>An audit check name. Checks must be enabled for your account. (Use DescribeAccountAuditConfiguration to see the list of all checks, including those that are enabled or use UpdateAccountAuditConfiguration to select which checks are enabled.)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingId" /></td>
+    <td><CopyableCode code="finding_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for this set of audit findings. This identifier is used to apply mitigation tasks to one or more sets of findings. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingTime" /></td>
+    <td><CopyableCode code="finding_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the result (finding) was discovered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSuppressed" /></td>
+    <td><CopyableCode code="is_suppressed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the audit finding was suppressed or not during reporting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nonCompliantResource" /></td>
+    <td><CopyableCode code="non_compliant_resource" /></td>
     <td><code>object</code></td>
     <td>The resource that was found to be noncompliant with the audit check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reasonForNonCompliance" /></td>
+    <td><CopyableCode code="reason_for_non_compliance" /></td>
     <td><code>string</code></td>
     <td>The reason the resource was noncompliant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reasonForNonComplianceCode" /></td>
+    <td><CopyableCode code="reason_for_non_compliance_code" /></td>
     <td><code>string</code></td>
     <td>A code that indicates the reason that the resource was noncompliant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedResources" /></td>
+    <td><CopyableCode code="related_resources" /></td>
     <td><code>array</code></td>
     <td>The list of related resources.</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
     <td>The severity of the result (finding). (CRITICAL, HIGH, MEDIUM, LOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the audit that generated this result (finding). (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStartTime" /></td>
+    <td><CopyableCode code="task_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the audit started.</td>
 </tr>
@@ -252,17 +252,17 @@ Gets information about a single audit finding. Properties include the reason for
 
 ```sql
 SELECT
-checkName,
-findingId,
-findingTime,
-isSuppressed,
-nonCompliantResource,
-reasonForNonCompliance,
-reasonForNonComplianceCode,
-relatedResources,
+check_name,
+finding_id,
+finding_time,
+is_suppressed,
+non_compliant_resource,
+reason_for_non_compliance,
+reason_for_non_compliance_code,
+related_resources,
 severity,
-taskId,
-taskStartTime
+task_id,
+task_start_time
 FROM aws.iot.audit_findings
 WHERE finding_id = '{{ finding_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -275,17 +275,17 @@ Lists the findings (results) of a Device Defender audit or of the audits perform
 
 ```sql
 SELECT
-checkName,
-findingId,
-findingTime,
-isSuppressed,
-nonCompliantResource,
-reasonForNonCompliance,
-reasonForNonComplianceCode,
-relatedResources,
+check_name,
+finding_id,
+finding_time,
+is_suppressed,
+non_compliant_resource,
+reason_for_non_compliance,
+reason_for_non_compliance_code,
+related_resources,
 severity,
-taskId,
-taskStartTime
+task_id,
+task_start_time
 FROM aws.iot.audit_findings
 WHERE region = '{{ region }}' -- required
 ;

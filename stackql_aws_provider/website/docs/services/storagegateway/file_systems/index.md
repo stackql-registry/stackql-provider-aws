@@ -121,7 +121,7 @@ AND ClientToken = '{{ ClientToken }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND LocationARN = '{{ LocationARN }}' --required
 RETURNING
-FileSystemAssociationARN;
+file_system_association_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_file_system">
@@ -137,7 +137,7 @@ WHERE
 region = '{{ region }}' --required
 AND FileSystemAssociationARN = '{{ FileSystemAssociationARN }}' --required
 RETURNING
-FileSystemAssociationARN;
+file_system_association_arn;
 ```
 </TabItem>
 </Tabs>

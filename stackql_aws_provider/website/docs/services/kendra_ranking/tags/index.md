@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with the rescore execution plan.</td>
 </tr>
@@ -133,7 +133,7 @@ Gets a list of tags associated with a specified resource. A rescore execution pl
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.kendra_ranking.tags
 WHERE region = '{{ region }}' -- required
 ;

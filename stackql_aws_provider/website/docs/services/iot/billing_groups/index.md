@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="billingGroupArn" /></td>
+    <td><CopyableCode code="billing_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the billing group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingGroupId" /></td>
+    <td><CopyableCode code="billing_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the billing group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingGroupMetadata" /></td>
+    <td><CopyableCode code="billing_group_metadata" /></td>
     <td><code>object</code></td>
     <td>Additional information about the billing group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingGroupName" /></td>
+    <td><CopyableCode code="billing_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the billing group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingGroupProperties" /></td>
+    <td><CopyableCode code="billing_group_properties" /></td>
     <td><code>object</code></td>
     <td>The properties of a billing group.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="groupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The group ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The group name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -237,11 +237,11 @@ Returns information about a billing group. Requires permission to access the Des
 
 ```sql
 SELECT
-billingGroupArn,
-billingGroupId,
-billingGroupMetadata,
-billingGroupName,
-billingGroupProperties,
+billing_group_arn,
+billing_group_id,
+billing_group_metadata,
+billing_group_name,
+billing_group_properties,
 version
 FROM aws.iot.billing_groups
 WHERE billing_group_name = '{{ billing_group_name }}' -- required
@@ -255,8 +255,8 @@ Lists the billing groups you have created. Requires permission to access the Lis
 
 ```sql
 SELECT
-groupArn,
-groupName
+group_arn,
+group_name
 FROM aws.iot.billing_groups
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -294,9 +294,9 @@ SELECT
 '{{ billing_group_name }}',
 '{{ region }}'
 RETURNING
-billingGroupArn,
-billingGroupId,
-billingGroupName
+billing_group_arn,
+billing_group_id,
+billing_group_name
 ;
 ```
 </TabItem>

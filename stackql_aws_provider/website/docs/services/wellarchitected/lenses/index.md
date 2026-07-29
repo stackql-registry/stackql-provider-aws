@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LensSummaries" /></td>
+    <td><CopyableCode code="lens_summaries" /></td>
     <td><code>array</code></td>
     <td>List of lens summaries of available lenses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
@@ -168,8 +168,8 @@ List the available lenses.
 
 ```sql
 SELECT
-LensSummaries,
-NextToken
+lens_summaries,
+next_token
 FROM aws.wellarchitected.lenses
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

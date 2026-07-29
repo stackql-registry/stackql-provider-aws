@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BotEmail" /></td>
+    <td><CopyableCode code="bot_email" /></td>
     <td><code>string</code></td>
     <td>The bot email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BotId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The bot ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BotType" /></td>
+    <td><CopyableCode code="bot_type" /></td>
     <td><code>string</code></td>
     <td>The bot type. (ChatBot)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The bot creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Disabled" /></td>
+    <td><CopyableCode code="disabled" /></td>
     <td><code>boolean</code></td>
     <td>When true, the bot is stopped from running in your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The bot display name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityToken" /></td>
+    <td><CopyableCode code="security_token" /></td>
     <td><code>string</code></td>
     <td>The security token used to authenticate Amazon Chime with the outgoing event endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The updated bot timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the bot user.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Bots" /></td>
+    <td><CopyableCode code="bots" /></td>
     <td><code>array</code></td>
     <td>List of bots and bot details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results.</td>
 </tr>
@@ -226,15 +226,15 @@ Retrieves details for the specified bot, such as bot email address, bot type, st
 
 ```sql
 SELECT
-BotEmail,
-BotId,
-BotType,
-CreatedTimestamp,
-Disabled,
-DisplayName,
-SecurityToken,
-UpdatedTimestamp,
-UserId
+bot_email,
+bot_id,
+bot_type,
+created_timestamp,
+disabled,
+display_name,
+security_token,
+updated_timestamp,
+user_id
 FROM aws.chime.bots
 WHERE account_id = '{{ account_id }}' -- required
 AND bot_id = '{{ bot_id }}' -- required
@@ -248,8 +248,8 @@ Lists the bots associated with the administrator's Amazon Chime Enterprise accou
 
 ```sql
 SELECT
-Bots,
-NextToken
+bots,
+next_token
 FROM aws.chime.bots
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -287,7 +287,7 @@ SELECT
 '{{ account_id }}',
 '{{ region }}'
 RETURNING
-Bot
+bot
 ;
 ```
 </TabItem>
@@ -333,7 +333,7 @@ account_id = '{{ account_id }}' --required
 AND bot_id = '{{ bot_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Bot;
+bot;
 ```
 </TabItem>
 </Tabs>

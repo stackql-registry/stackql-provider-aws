@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceptanceState" /></td>
+    <td><CopyableCode code="acceptance_state" /></td>
     <td><code>string</code></td>
     <td>The acceptance state of the data grant. (PENDING_RECEIVER_ACCEPTANCE, ACCEPTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AcceptedAt" /></td>
+    <td><CopyableCode code="accepted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data grant was accepted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data grant was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSetId" /></td>
+    <td><CopyableCode code="data_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data set associated to the data grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the data grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndsAt" /></td>
+    <td><CopyableCode code="ends_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when access to the associated data set ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantDistributionScope" /></td>
+    <td><CopyableCode code="grant_distribution_scope" /></td>
     <td><code>string</code></td>
     <td>The distribution scope for the data grant. (AWS_ORGANIZATION, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the data grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceiverPrincipal" /></td>
+    <td><CopyableCode code="receiver_principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the data grant receiver. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SenderPrincipal" /></td>
+    <td><CopyableCode code="sender_principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the data grant sender. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDataSetId" /></td>
+    <td><CopyableCode code="source_data_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data set used to create the data grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated to the data grant. A tag is a key-value pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data grant was last updated.</td>
 </tr>
@@ -140,62 +140,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceptanceState" /></td>
+    <td><CopyableCode code="acceptance_state" /></td>
     <td><code>string</code></td>
     <td>The acceptance state of the data grant. (PENDING_RECEIVER_ACCEPTANCE, ACCEPTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AcceptedAt" /></td>
+    <td><CopyableCode code="accepted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data grant was accepted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data grant was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSetId" /></td>
+    <td><CopyableCode code="data_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data set associated to the data grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndsAt" /></td>
+    <td><CopyableCode code="ends_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when access to the associated data set ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the data grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceiverPrincipal" /></td>
+    <td><CopyableCode code="receiver_principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the data grant receiver. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SenderPrincipal" /></td>
+    <td><CopyableCode code="sender_principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the data grant sender. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDataSetId" /></td>
+    <td><CopyableCode code="source_data_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data set used to create the data grant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data grant was last updated.</td>
 </tr>
@@ -313,21 +313,21 @@ This operation returns information about a data grant.
 
 ```sql
 SELECT
-AcceptanceState,
-AcceptedAt,
-Arn,
-CreatedAt,
-DataSetId,
-Description,
-EndsAt,
-GrantDistributionScope,
-Id,
-Name,
-ReceiverPrincipal,
-SenderPrincipal,
-SourceDataSetId,
-Tags,
-UpdatedAt
+acceptance_state,
+accepted_at,
+arn,
+created_at,
+data_set_id,
+description,
+ends_at,
+grant_distribution_scope,
+id,
+name,
+receiver_principal,
+sender_principal,
+source_data_set_id,
+tags,
+updated_at
 FROM aws.dataexchange.data_grants
 WHERE data_grant_id = '{{ data_grant_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -340,18 +340,18 @@ This operation returns information about all data grants.
 
 ```sql
 SELECT
-AcceptanceState,
-AcceptedAt,
-Arn,
-CreatedAt,
-DataSetId,
-EndsAt,
-Id,
-Name,
-ReceiverPrincipal,
-SenderPrincipal,
-SourceDataSetId,
-UpdatedAt
+acceptance_state,
+accepted_at,
+arn,
+created_at,
+data_set_id,
+ends_at,
+id,
+name,
+receiver_principal,
+sender_principal,
+source_data_set_id,
+updated_at
 FROM aws.dataexchange.data_grants
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -396,21 +396,21 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AcceptanceState,
-AcceptedAt,
-Arn,
-CreatedAt,
-DataSetId,
-Description,
-EndsAt,
-GrantDistributionScope,
-Id,
-Name,
-ReceiverPrincipal,
-SenderPrincipal,
-SourceDataSetId,
-Tags,
-UpdatedAt
+acceptance_state,
+accepted_at,
+arn,
+created_at,
+data_set_id,
+description,
+ends_at,
+grant_distribution_scope,
+id,
+name,
+receiver_principal,
+sender_principal,
+source_data_set_id,
+tags,
+updated_at
 ;
 ```
 </TabItem>

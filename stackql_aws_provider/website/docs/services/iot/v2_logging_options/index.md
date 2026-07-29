@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="defaultLogLevel" /></td>
+    <td><CopyableCode code="default_log_level" /></td>
     <td><code>string</code></td>
     <td>The default log level. (DEBUG, INFO, ERROR, WARN, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disableAllLogs" /></td>
+    <td><CopyableCode code="disable_all_logs" /></td>
     <td><code>boolean</code></td>
     <td>Disables all logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventConfigurations" /></td>
+    <td><CopyableCode code="event_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of event configurations that override account-level logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN IoT uses to write to your CloudWatch logs.</td>
 </tr>
@@ -146,10 +146,10 @@ Gets the fine grained logging options. Requires permission to access the GetV2Lo
 
 ```sql
 SELECT
-defaultLogLevel,
-disableAllLogs,
-eventConfigurations,
-roleArn
+default_log_level,
+disable_all_logs,
+event_configurations,
+role_arn
 FROM aws.iot.v2_logging_options
 WHERE region = '{{ region }}' -- required
 AND verbose = '{{ verbose }}'

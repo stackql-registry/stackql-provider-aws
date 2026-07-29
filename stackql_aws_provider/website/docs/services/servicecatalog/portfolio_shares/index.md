@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The page token to use to retrieve the next set of results. If there are no additional results, this value is null. (pattern: &lt;code&gt;&#91;\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortfolioShareDetails" /></td>
+    <td><CopyableCode code="portfolio_share_details" /></td>
     <td><code>array</code></td>
     <td>Summaries about each of the portfolio shares.</td>
 </tr>
@@ -145,8 +145,8 @@ Returns a summary of each of the portfolio shares that were created for the spec
 
 ```sql
 SELECT
-NextPageToken,
-PortfolioShareDetails
+next_page_token,
+portfolio_share_details
 FROM aws.servicecatalog.portfolio_shares
 WHERE region = '{{ region }}' -- required
 ;
@@ -187,7 +187,7 @@ SELECT
 {{ SharePrincipals }},
 '{{ region }}'
 RETURNING
-PortfolioShareToken
+portfolio_share_token
 ;
 ```
 </TabItem>
@@ -256,8 +256,8 @@ WHERE
 region = '{{ region }}' --required
 AND PortfolioId = '{{ PortfolioId }}' --required
 RETURNING
-PortfolioShareToken,
-Status;
+portfolio_share_token,
+status;
 ```
 </TabItem>
 </Tabs>

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the automation event. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedTimestamp" /></td>
+    <td><CopyableCode code="completed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation event completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation event was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlySavings" /></td>
+    <td><CopyableCode code="estimated_monthly_savings" /></td>
     <td><code>object</code></td>
     <td>Contains information about estimated monthly cost savings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventDescription" /></td>
+    <td><CopyableCode code="event_description" /></td>
     <td><code>string</code></td>
     <td>A description of the automation event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the automation event to retrieve. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventStatus" /></td>
+    <td><CopyableCode code="event_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the automation event. (Ready, InProgress, Complete, Failed, Cancelled, RollbackReady, RollbackInProgress, RollbackComplete, RollbackFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventStatusReason" /></td>
+    <td><CopyableCode code="event_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current event status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of automation event. (SnapshotAndDeleteUnattachedEbsVolume, UpgradeEbsVolumeType)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActionId" /></td>
+    <td><CopyableCode code="recommended_action_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recommended action associated with this automation event. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -106,22 +106,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region where the automation event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource affected by the automation event. (pattern: &lt;code&gt;arn:aws&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9/_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource affected by the automation event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource affected by the automation event. (EbsVolume)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the automation rule that triggered this event. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -140,52 +140,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the automation event. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedTimestamp" /></td>
+    <td><CopyableCode code="completed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation event completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation event was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlySavings" /></td>
+    <td><CopyableCode code="estimated_monthly_savings" /></td>
     <td><code>object</code></td>
     <td>Contains information about estimated monthly cost savings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventDescription" /></td>
+    <td><CopyableCode code="event_description" /></td>
     <td><code>string</code></td>
     <td>A description of the automation event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the automation event. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventStatus" /></td>
+    <td><CopyableCode code="event_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the automation event. (Ready, InProgress, Complete, Failed, Cancelled, RollbackReady, RollbackInProgress, RollbackComplete, RollbackFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventStatusReason" /></td>
+    <td><CopyableCode code="event_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current event status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of automation event. (SnapshotAndDeleteUnattachedEbsVolume, UpgradeEbsVolumeType)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActionId" /></td>
+    <td><CopyableCode code="recommended_action_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recommended action associated with this automation event. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -195,22 +195,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region where the automation event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource affected by the automation event. (pattern: &lt;code&gt;arn:aws&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9/_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource affected by the automation event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource affected by the automation event. (EbsVolume)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the automation rule that triggered this event. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -287,21 +287,21 @@ Retrieves details about a specific automation event.
 
 ```sql
 SELECT
-accountId,
-completedTimestamp,
-createdTimestamp,
-estimatedMonthlySavings,
-eventDescription,
-eventId,
-eventStatus,
-eventStatusReason,
-eventType,
-recommendedActionId,
+account_id,
+completed_timestamp,
+created_timestamp,
+estimated_monthly_savings,
+event_description,
+event_id,
+event_status,
+event_status_reason,
+event_type,
+recommended_action_id,
 region,
-resourceArn,
-resourceId,
-resourceType,
-ruleId
+resource_arn,
+resource_id,
+resource_type,
+rule_id
 FROM aws.compute_optimizer_automation.automation_events
 WHERE region = '{{ region }}' -- required
 ;
@@ -313,21 +313,21 @@ Lists automation events based on specified filters. You can retrieve events that
 
 ```sql
 SELECT
-accountId,
-completedTimestamp,
-createdTimestamp,
-estimatedMonthlySavings,
-eventDescription,
-eventId,
-eventStatus,
-eventStatusReason,
-eventType,
-recommendedActionId,
+account_id,
+completed_timestamp,
+created_timestamp,
+estimated_monthly_savings,
+event_description,
+event_id,
+event_status,
+event_status_reason,
+event_type,
+recommended_action_id,
 region,
-resourceArn,
-resourceId,
-resourceType,
-ruleId
+resource_arn,
+resource_id,
+resource_type,
+rule_id
 FROM aws.compute_optimizer_automation.automation_events
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of elastic channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested sub-channels are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubChannels" /></td>
+    <td><CopyableCode code="sub_channels" /></td>
     <td><code>array</code></td>
     <td>The information about each sub-channel.</td>
 </tr>
@@ -149,9 +149,9 @@ Lists all the SubChannels in an elastic channel when given a channel ID. Availab
 
 ```sql
 SELECT
-ChannelArn,
-NextToken,
-SubChannels
+channel_arn,
+next_token,
+sub_channels
 FROM aws.chime_sdk_messaging.sub_channels
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required

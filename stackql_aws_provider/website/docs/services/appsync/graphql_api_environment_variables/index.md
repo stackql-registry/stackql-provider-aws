@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>The payload containing each environmental variable in the "key" : "value" format.</td>
 </tr>
@@ -131,7 +131,7 @@ Retrieves the list of environmental variable key-value pairs associated with an 
 
 ```sql
 SELECT
-environmentVariables
+environment_variables
 FROM aws.appsync.graphql_api_environment_variables
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -162,7 +162,7 @@ api_id = '{{ api_id }}' --required
 AND region = '{{ region }}' --required
 AND environmentVariables = '{{ environmentVariables }}' --required
 RETURNING
-environmentVariables;
+environment_variables;
 ```
 </TabItem>
 </Tabs>

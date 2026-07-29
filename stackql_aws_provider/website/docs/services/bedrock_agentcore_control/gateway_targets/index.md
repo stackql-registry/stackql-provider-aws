@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the gateway target. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizationData" /></td>
+    <td><CopyableCode code="authorization_data" /></td>
     <td><code>object</code></td>
     <td>OAuth2 authorization data for the gateway target. This data is returned when a target is configured with a credential provider with authorization code grant type and requires user federation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the gateway target was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderConfigurations" /></td>
+    <td><CopyableCode code="credential_provider_configurations" /></td>
     <td><code>array</code></td>
     <td>The credential provider configurations for the gateway target.</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the gateway target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:gateway/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSynchronizedAt" /></td>
+    <td><CopyableCode code="last_synchronized_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last synchronization of the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataConfiguration" /></td>
+    <td><CopyableCode code="metadata_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for HTTP header and query parameter propagation between the gateway and target servers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateEndpoint" /></td>
+    <td><CopyableCode code="private_endpoint" /></td>
     <td><code>object</code></td>
     <td>The private endpoint configuration for a gateway target. Defines how the gateway connects to private resources in your VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateEndpointManagedResources" /></td>
+    <td><CopyableCode code="private_endpoint_managed_resources" /></td>
     <td><code>array</code></td>
     <td>The managed resources created by the gateway for private endpoint connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protocolType" /></td>
+    <td><CopyableCode code="protocol_type" /></td>
     <td><code>string</code></td>
     <td>The protocol type of the gateway target. (MCP, HTTP)</td>
 </tr>
@@ -111,22 +111,22 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the gateway target. (CREATING, UPDATING, UPDATE_UNSUCCESSFUL, DELETING, READY, FAILED, SYNCHRONIZING, SYNCHRONIZE_UNSUCCESSFUL, CREATE_PENDING_AUTH, UPDATE_PENDING_AUTH, SYNCHRONIZE_PENDING_AUTH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasons" /></td>
+    <td><CopyableCode code="status_reasons" /></td>
     <td><code>array</code></td>
     <td>The reasons for the current status of the gateway target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetConfiguration" /></td>
+    <td><CopyableCode code="target_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a gateway target. This structure defines how the gateway connects to and interacts with the target endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway target. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the gateway target was last updated.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the target. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the target was created.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourcePriority" /></td>
+    <td><CopyableCode code="resource_priority" /></td>
     <td><code>integer</code></td>
     <td>Priority for resolving resource URI conflicts across targets. Lower values take precedence. Defaults to 1000 when not set.</td>
 </tr>
@@ -170,12 +170,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the target. (CREATING, UPDATING, UPDATE_UNSUCCESSFUL, DELETING, READY, FAILED, SYNCHRONIZING, SYNCHRONIZE_UNSUCCESSFUL, CREATE_PENDING_AUTH, UPDATE_PENDING_AUTH, SYNCHRONIZE_PENDING_AUTH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the target. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the target was last updated.</td>
 </tr>
@@ -301,21 +301,21 @@ Retrieves information about a specific gateway target.
 ```sql
 SELECT
 name,
-authorizationData,
-createdAt,
-credentialProviderConfigurations,
+authorization_data,
+created_at,
+credential_provider_configurations,
 description,
-gatewayArn,
-lastSynchronizedAt,
-metadataConfiguration,
-privateEndpoint,
-privateEndpointManagedResources,
-protocolType,
+gateway_arn,
+last_synchronized_at,
+metadata_configuration,
+private_endpoint,
+private_endpoint_managed_resources,
+protocol_type,
 status,
-statusReasons,
-targetConfiguration,
-targetId,
-updatedAt
+status_reasons,
+target_configuration,
+target_id,
+updated_at
 FROM aws.bedrock_agentcore_control.gateway_targets
 WHERE gateway_identifier = '{{ gateway_identifier }}' -- required
 AND target_id = '{{ target_id }}' -- required
@@ -330,12 +330,12 @@ Lists all targets for a specific gateway.
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-resourcePriority,
+resource_priority,
 status,
-targetId,
-updatedAt
+target_id,
+updated_at
 FROM aws.bedrock_agentcore_control.gateway_targets
 WHERE gateway_identifier = '{{ gateway_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -384,21 +384,21 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-authorizationData,
-createdAt,
-credentialProviderConfigurations,
+authorization_data,
+created_at,
+credential_provider_configurations,
 description,
-gatewayArn,
-lastSynchronizedAt,
-metadataConfiguration,
-privateEndpoint,
-privateEndpointManagedResources,
-protocolType,
+gateway_arn,
+last_synchronized_at,
+metadata_configuration,
+private_endpoint,
+private_endpoint_managed_resources,
+protocol_type,
 status,
-statusReasons,
-targetConfiguration,
-targetId,
-updatedAt
+status_reasons,
+target_configuration,
+target_id,
+updated_at
 ;
 ```
 </TabItem>
@@ -559,21 +559,21 @@ AND name = '{{ name }}' --required
 AND targetConfiguration = '{{ targetConfiguration }}' --required
 RETURNING
 name,
-authorizationData,
-createdAt,
-credentialProviderConfigurations,
+authorization_data,
+created_at,
+credential_provider_configurations,
 description,
-gatewayArn,
-lastSynchronizedAt,
-metadataConfiguration,
-privateEndpoint,
-privateEndpointManagedResources,
-protocolType,
+gateway_arn,
+last_synchronized_at,
+metadata_configuration,
+private_endpoint,
+private_endpoint_managed_resources,
+protocol_type,
 status,
-statusReasons,
-targetConfiguration,
-targetId,
-updatedAt;
+status_reasons,
+target_configuration,
+target_id,
+updated_at;
 ```
 </TabItem>
 </Tabs>

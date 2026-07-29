@@ -111,10 +111,10 @@ WHERE
 region = '{{ region }}' --required
 AND AvailabilityZoneMappings = '{{ AvailabilityZoneMappings }}' --required
 RETURNING
-AvailabilityZoneMappings,
-FirewallArn,
-FirewallName,
-UpdateToken;
+availability_zone_mappings,
+firewall_arn,
+firewall_name,
+update_token;
 ```
 </TabItem>
 </Tabs>

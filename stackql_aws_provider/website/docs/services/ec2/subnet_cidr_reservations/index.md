@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIpv4CidrReservations" /></td>
+    <td><CopyableCode code="subnet_ipv_4_cidr_reservations" /></td>
     <td><code>string</code></td>
     <td>Information about the IPv4 subnet CIDR reservations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIpv6CidrReservations" /></td>
+    <td><CopyableCode code="subnet_ipv_6_cidr_reservations" /></td>
     <td><code>string</code></td>
     <td>Information about the IPv6 subnet CIDR reservations.</td>
 </tr>
@@ -193,9 +193,9 @@ Gets information about the subnet CIDR reservations.
 
 ```sql
 SELECT
-NextToken,
-SubnetIpv4CidrReservations,
-SubnetIpv6CidrReservations
+next_token,
+subnet_ipv_4_cidr_reservations,
+subnet_ipv_6_cidr_reservations
 FROM aws.ec2.subnet_cidr_reservations
 WHERE SubnetId = '{{ SubnetId }}' -- required
 AND region = '{{ region }}' -- required
@@ -241,13 +241,13 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-Cidr,
-Description,
-OwnerId,
-ReservationType,
-SubnetCidrReservationId,
-SubnetId,
-Tags
+cidr,
+description,
+owner_id,
+reservation_type,
+subnet_cidr_reservation_id,
+subnet_id,
+tags
 ;
 ```
 </TabItem>

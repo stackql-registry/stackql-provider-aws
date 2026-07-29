@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the mitigation action being applied by the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the mitigation action being applied by the task. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the task was completed or canceled. Blank if the task is still running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, the code that indicates which type of error occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingId" /></td>
+    <td><CopyableCode code="finding_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the findings to which the task and associated mitigation action are applied. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>If an error occurred, a message that describes the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the task was started.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the task being executed. (IN_PROGRESS, COMPLETED, FAILED, CANCELED, SKIPPED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the task that applies the mitigation action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -184,15 +184,15 @@ Gets the status of audit mitigation action tasks that were executed. Requires pe
 
 ```sql
 SELECT
-actionId,
-actionName,
-endTime,
-errorCode,
-findingId,
+action_id,
+action_name,
+end_time,
+error_code,
+finding_id,
 message,
-startTime,
+start_time,
 status,
-taskId
+task_id
 FROM aws.iot.audit_mitigation_actions_executions
 WHERE taskId = '{{ taskId }}' -- required
 AND findingId = '{{ findingId }}' -- required

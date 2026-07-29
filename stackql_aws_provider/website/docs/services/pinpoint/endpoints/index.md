@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Address" /></td>
+    <td><CopyableCode code="address" /></td>
     <td><code>string</code></td>
     <td>The destination address for messages or push notifications that you send to the endpoint. The address varies by channel. For example, the address for a push-notification channel is typically the token provided by a push notification service, such as an Apple Push Notification service (APNs) device token or a Firebase Cloud Messaging (FCM) registration token. The address for the SMS channel is a phone number in E.164 format, such as +12065550100. The address for the email channel is an email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that's associated with the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>One or more custom attributes that describe the endpoint by associating a name with an array of values. For example, the value of a custom attribute named Interests might be: &#91;"Science", "Music", "Travel"&#93;. You can use these attributes as filter criteria when you create segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelType" /></td>
+    <td><CopyableCode code="channel_type" /></td>
     <td><code>string</code></td>
     <td>The channel that's used when sending messages or push notifications to the endpoint. (PUSH, GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM, IN_APP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CohortId" /></td>
+    <td><CopyableCode code="cohort_id" /></td>
     <td><code>string</code></td>
     <td>A number from 0-99 that represents the cohort that the endpoint is assigned to. Endpoints are grouped into cohorts randomly, and each cohort contains approximately 1 percent of the endpoints for an application. Amazon Pinpoint assigns cohorts to the holdout or treatment allocations for campaigns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Demographic" /></td>
+    <td><CopyableCode code="demographic" /></td>
     <td><code>object</code></td>
     <td>The demographic information for the endpoint, such as the time zone and platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveDate" /></td>
+    <td><CopyableCode code="effective_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the endpoint was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointStatus" /></td>
+    <td><CopyableCode code="endpoint_status" /></td>
     <td><code>string</code></td>
     <td>Specifies whether messages or push notifications are sent to the endpoint. Possible values are: ACTIVE, messages are sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint. Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the same address specified by the Address property.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier that you assigned to the endpoint. The identifier should be a globally unique identifier (GUID) to ensure that it doesn't conflict with other endpoint identifiers that are associated with the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>object</code></td>
     <td>The geographic information for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>object</code></td>
     <td>One or more custom metrics that your app reports to Amazon Pinpoint for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptOut" /></td>
+    <td><CopyableCode code="opt_out" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user who's associated with the endpoint has opted out of receiving messages and push notifications from you. Possible values are: ALL, the user has opted out and doesn't want to receive any messages or push notifications; and, NONE, the user hasn't opted out and wants to receive all messages and push notifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the most recent request to update the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="User" /></td>
+    <td><CopyableCode code="user" /></td>
     <td><code>object</code></td>
     <td>One or more custom user attributes that your app reports to Amazon Pinpoint for the user who's associated with the endpoint.</td>
 </tr>
@@ -220,21 +220,21 @@ Retrieves information about the settings and attributes of a specific endpoint f
 
 ```sql
 SELECT
-Address,
-ApplicationId,
-Attributes,
-ChannelType,
-CohortId,
-CreationDate,
-Demographic,
-EffectiveDate,
-EndpointStatus,
-Id,
-Location,
-Metrics,
-OptOut,
-RequestId,
-User
+address,
+application_id,
+attributes,
+channel_type,
+cohort_id,
+creation_date,
+demographic,
+effective_date,
+endpoint_status,
+id,
+location,
+metrics,
+opt_out,
+request_id,
+user
 FROM aws.pinpoint.endpoints
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `endpoint-id` = '{{ endpoint-id }}' -- required
@@ -268,7 +268,7 @@ AND `endpoint-id` = '{{ endpoint-id }}' --required
 AND region = '{{ region }}' --required
 AND EndpointRequest = '{{ EndpointRequest }}' --required
 RETURNING
-MessageBody;
+message_body;
 ```
 </TabItem>
 <TabItem value="update_endpoints_batch">
@@ -284,7 +284,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND EndpointBatchRequest = '{{ EndpointBatchRequest }}' --required
 RETURNING
-MessageBody;
+message_body;
 ```
 </TabItem>
 </Tabs>

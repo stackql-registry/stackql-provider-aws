@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Assets" /></td>
+    <td><CopyableCode code="assets" /></td>
     <td><code>array</code></td>
     <td>Assets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists assets for a license asset group.
 
 ```sql
 SELECT
-Assets,
-NextToken
+assets,
+next_token
 FROM aws.license_manager.assets_for_license_asset_groups
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>Provides the configuration information for an Amazon Q Business data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the data source connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceArn" /></td>
+    <td><CopyableCode code="data_source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data source. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the data source connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the data source connector. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name for the data source connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentEnrichmentConfiguration" /></td>
+    <td><CopyableCode code="document_enrichment_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides the configuration information for altering document metadata and content during the document ingestion process. For more information, see Custom document enrichment.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
     <td>Provides information about a Amazon Q Business request error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexId" /></td>
+    <td><CopyableCode code="index_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the index linked to the data source connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mediaExtractionConfiguration" /></td>
+    <td><CopyableCode code="media_extraction_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for extracting information from media in documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role with permission to access the data source and required resources. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the data source connector. When the Status field value is FAILED, the ErrorMessage field contains a description of the error that caused the data source connector to fail. (PENDING_CREATION, CREATING, ACTIVE, DELETING, FAILED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncSchedule" /></td>
+    <td><CopyableCode code="sync_schedule" /></td>
     <td><code>string</code></td>
     <td>The schedule for Amazon Q Business to update the index. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -126,12 +126,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the data source connector. For example, S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the data source connector was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfiguration" /></td>
+    <td><CopyableCode code="vpc_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides configuration information needed to connect to an Amazon VPC (Virtual Private Cloud).</td>
 </tr>
@@ -150,17 +150,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business data source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business data source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Q Business data source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -175,7 +175,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the Amazon Q Business data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business data source was last updated.</td>
 </tr>
@@ -312,23 +312,23 @@ Gets information about an existing Amazon Q Business data source connector.
 
 ```sql
 SELECT
-applicationId,
+application_id,
 configuration,
-createdAt,
-dataSourceArn,
-dataSourceId,
+created_at,
+data_source_arn,
+data_source_id,
 description,
-displayName,
-documentEnrichmentConfiguration,
+display_name,
+document_enrichment_configuration,
 error,
-indexId,
-mediaExtractionConfiguration,
-roleArn,
+index_id,
+media_extraction_configuration,
+role_arn,
 status,
-syncSchedule,
+sync_schedule,
 type_,
-updatedAt,
-vpcConfiguration
+updated_at,
+vpc_configuration
 FROM aws.qbusiness.data_sources
 WHERE application_id = '{{ application_id }}' -- required
 AND index_id = '{{ index_id }}' -- required
@@ -343,12 +343,12 @@ Lists the Amazon Q Business data source connectors that you have created.
 
 ```sql
 SELECT
-createdAt,
-dataSourceId,
-displayName,
+created_at,
+data_source_id,
+display_name,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.qbusiness.data_sources
 WHERE application_id = '{{ application_id }}' -- required
 AND index_id = '{{ index_id }}' -- required
@@ -405,8 +405,8 @@ SELECT
 '{{ index_id }}',
 '{{ region }}'
 RETURNING
-dataSourceArn,
-dataSourceId
+data_source_arn,
+data_source_id
 ;
 ```
 </TabItem>

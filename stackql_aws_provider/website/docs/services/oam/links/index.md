@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The random ID string that Amazon Web Services generated as part of the link ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>The label that you assigned to this link, with the variables resolved to their actual values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelTemplate" /></td>
+    <td><CopyableCode code="label_template" /></td>
     <td><code>string</code></td>
     <td>The exact label template that was specified when the link was created, with the template variables not resolved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkConfiguration" /></td>
+    <td><CopyableCode code="link_configuration" /></td>
     <td><code>object</code></td>
     <td>Use this structure to optionally create filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTypes" /></td>
+    <td><CopyableCode code="resource_types" /></td>
     <td><code>array</code></td>
     <td>The resource types supported by this link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SinkArn" /></td>
+    <td><CopyableCode code="sink_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the sink that is used for this link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the link.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The random ID string that Amazon Web Services generated as part of the link ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>The label that was assigned to this link at creation, with the variables resolved to their actual values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTypes" /></td>
+    <td><CopyableCode code="resource_types" /></td>
     <td><code>array</code></td>
     <td>The resource types supported by this link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SinkArn" /></td>
+    <td><CopyableCode code="sink_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the sink that this link is attached to.</td>
 </tr>
@@ -223,14 +223,14 @@ Returns complete information about one link. To use this operation, provide the 
 
 ```sql
 SELECT
-Arn,
-Id,
-Label,
-LabelTemplate,
-LinkConfiguration,
-ResourceTypes,
-SinkArn,
-Tags
+arn,
+id,
+label,
+label_template,
+link_configuration,
+resource_types,
+sink_arn,
+tags
 FROM aws.oam.links
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,11 +242,11 @@ Use this operation in a source account to return a list of links to monitoring a
 
 ```sql
 SELECT
-Arn,
-Id,
-Label,
-ResourceTypes,
-SinkArn
+arn,
+id,
+label,
+resource_types,
+sink_arn
 FROM aws.oam.links
 WHERE region = '{{ region }}' -- required
 ;
@@ -285,14 +285,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id,
-Label,
-LabelTemplate,
-LinkConfiguration,
-ResourceTypes,
-SinkArn,
-Tags
+arn,
+id,
+label,
+label_template,
+link_configuration,
+resource_types,
+sink_arn,
+tags
 ;
 ```
 </TabItem>
@@ -351,14 +351,14 @@ region = '{{ region }}' --required
 AND Identifier = '{{ Identifier }}' --required
 AND ResourceTypes = '{{ ResourceTypes }}' --required
 RETURNING
-Arn,
-Id,
-Label,
-LabelTemplate,
-LinkConfiguration,
-ResourceTypes,
-SinkArn,
-Tags;
+arn,
+id,
+label,
+label_template,
+link_configuration,
+resource_types,
+sink_arn,
+tags;
 ```
 </TabItem>
 </Tabs>

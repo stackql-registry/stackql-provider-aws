@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the EFS file system to which the FileSystemPolicy applies. (pattern: &lt;code&gt;^(arn:aws&#91;-a-z&#93;*:elasticfilesystem:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;8,40&#125;|fs-&#91;0-9a-f&#93;&#123;8,40&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The JSON formatted FileSystemPolicy for the EFS file system. (pattern: &lt;code&gt;&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -143,8 +143,8 @@ Returns the FileSystemPolicy for the specified EFS file system. This operation r
 
 ```sql
 SELECT
-FileSystemId,
-Policy
+file_system_id,
+policy
 FROM aws.efs.file_system_policies
 WHERE file_system_id = '{{ file_system_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -175,8 +175,8 @@ WHERE
 file_system_id = '{{ file_system_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-FileSystemId,
-Policy;
+file_system_id,
+policy;
 ```
 </TabItem>
 </Tabs>

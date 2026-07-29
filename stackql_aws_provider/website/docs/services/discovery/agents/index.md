@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>The agent or collector ID. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentNetworkInfoList" /></td>
+    <td><CopyableCode code="agent_network_info_list" /></td>
     <td><code>array</code></td>
     <td>Network details about the host where the agent or collector resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentType" /></td>
+    <td><CopyableCode code="agent_type" /></td>
     <td><code>string</code></td>
     <td>Type of agent. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collectionStatus" /></td>
+    <td><CopyableCode code="collection_status" /></td>
     <td><code>string</code></td>
     <td>Status of the collection process for an agent. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorId" /></td>
+    <td><CopyableCode code="connector_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connector. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The health of the agent. (HEALTHY, UNHEALTHY, RUNNING, UNKNOWN, BLACKLISTED, SHUTDOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostName" /></td>
+    <td><CopyableCode code="host_name" /></td>
     <td><code>string</code></td>
     <td>The name of the host where the agent or collector resides. The host can be a server or virtual machine. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastHealthPingTime" /></td>
+    <td><CopyableCode code="last_health_ping_time" /></td>
     <td><code>string</code></td>
     <td>Time since agent health was reported. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredTime" /></td>
+    <td><CopyableCode code="registered_time" /></td>
     <td><code>string</code></td>
     <td>Agent's first registration timestamp in UTC. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -185,15 +185,15 @@ Lists agents or collectors as specified by ID or other filters. All agents/colle
 
 ```sql
 SELECT
-agentId,
-agentNetworkInfoList,
-agentType,
-collectionStatus,
-connectorId,
+agent_id,
+agent_network_info_list,
+agent_type,
+collection_status,
+connector_id,
 health,
-hostName,
-lastHealthPingTime,
-registeredTime,
+host_name,
+last_health_ping_time,
+registered_time,
 version
 FROM aws.discovery.agents
 WHERE region = '{{ region }}' -- required

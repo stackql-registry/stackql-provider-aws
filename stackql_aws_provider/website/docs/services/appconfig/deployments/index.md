@@ -51,112 +51,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application that was deployed. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppliedExtensions" /></td>
+    <td><CopyableCode code="applied_extensions" /></td>
     <td><code>array</code></td>
     <td>A list of extensions that were processed as part of the deployment. The extensions that were previously associated to the configuration profile, environment, or the application when StartDeployment was called.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the deployment completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationLocationUri" /></td>
+    <td><CopyableCode code="configuration_location_uri" /></td>
     <td><code>string</code></td>
     <td>Information about the source location of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationName" /></td>
+    <td><CopyableCode code="configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationProfileId" /></td>
+    <td><CopyableCode code="configuration_profile_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the configuration profile that was deployed. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationVersion" /></td>
+    <td><CopyableCode code="configuration_version" /></td>
     <td><code>string</code></td>
     <td>The configuration version that was deployed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentDurationInMinutes" /></td>
+    <td><CopyableCode code="deployment_duration_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>Total amount of time the deployment lasted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentNumber" /></td>
+    <td><CopyableCode code="deployment_number" /></td>
     <td><code>integer</code></td>
     <td>The sequence number of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStrategyId" /></td>
+    <td><CopyableCode code="deployment_strategy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the deployment strategy that was deployed. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment that was deployed. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventLog" /></td>
+    <td><CopyableCode code="event_log" /></td>
     <td><code>array</code></td>
     <td>A list containing all events related to a deployment. The most recent events are displayed first.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinalBakeTimeInMinutes" /></td>
+    <td><CopyableCode code="final_bake_time_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that AppConfig monitored for alarms before considering the deployment to be complete and no longer eligible for automatic rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthFactor" /></td>
+    <td><CopyableCode code="growth_factor" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of targets to receive a deployed configuration during each interval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthType" /></td>
+    <td><CopyableCode code="growth_type" /></td>
     <td><code>string</code></td>
     <td>The algorithm used to define how percentage grew over time. (LINEAR, EXPONENTIAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the Key Management Service key used to encrypt configuration data. You can encrypt secrets stored in Secrets Manager, Amazon Simple Storage Service (Amazon S3) objects encrypted with SSE-KMS, or secure string parameters stored in Amazon Web Services Systems Manager Parameter Store. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The Key Management Service key identifier (key ID, key alias, or key ARN) provided when the resource was created or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentageComplete" /></td>
+    <td><CopyableCode code="percentage_complete" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of targets for which the deployment is available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the deployment started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the deployment. (BAKING, VALIDATING, DEPLOYING, COMPLETE, ROLLING_BACK, ROLLED_BACK, REVERTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>A user-defined label for an AppConfig hosted configuration version. (pattern: &lt;code&gt;.*&#91;^0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
@@ -175,62 +175,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time the deployment completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationName" /></td>
+    <td><CopyableCode code="configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationVersion" /></td>
+    <td><CopyableCode code="configuration_version" /></td>
     <td><code>string</code></td>
     <td>The version of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentDurationInMinutes" /></td>
+    <td><CopyableCode code="deployment_duration_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>Total amount of time the deployment lasted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentNumber" /></td>
+    <td><CopyableCode code="deployment_number" /></td>
     <td><code>integer</code></td>
     <td>The sequence number of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinalBakeTimeInMinutes" /></td>
+    <td><CopyableCode code="final_bake_time_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthFactor" /></td>
+    <td><CopyableCode code="growth_factor" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of targets to receive a deployed configuration during each interval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthType" /></td>
+    <td><CopyableCode code="growth_type" /></td>
     <td><code>string</code></td>
     <td>The algorithm used to define how percentage grows over time. (LINEAR, EXPONENTIAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentageComplete" /></td>
+    <td><CopyableCode code="percentage_complete" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of targets for which the deployment is available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time the deployment started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the deployment. (BAKING, VALIDATING, DEPLOYING, COMPLETE, ROLLING_BACK, ROLLED_BACK, REVERTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>A user-defined label for an AppConfig hosted configuration version. (pattern: &lt;code&gt;.*&#91;^0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
@@ -332,28 +332,28 @@ Retrieves information about a configuration deployment.
 
 ```sql
 SELECT
-ApplicationId,
-AppliedExtensions,
-CompletedAt,
-ConfigurationLocationUri,
-ConfigurationName,
-ConfigurationProfileId,
-ConfigurationVersion,
-DeploymentDurationInMinutes,
-DeploymentNumber,
-DeploymentStrategyId,
-Description,
-EnvironmentId,
-EventLog,
-FinalBakeTimeInMinutes,
-GrowthFactor,
-GrowthType,
-KmsKeyArn,
-KmsKeyIdentifier,
-PercentageComplete,
-StartedAt,
-State,
-VersionLabel
+application_id,
+applied_extensions,
+completed_at,
+configuration_location_uri,
+configuration_name,
+configuration_profile_id,
+configuration_version,
+deployment_duration_in_minutes,
+deployment_number,
+deployment_strategy_id,
+description,
+environment_id,
+event_log,
+final_bake_time_in_minutes,
+growth_factor,
+growth_type,
+kms_key_arn,
+kms_key_identifier,
+percentage_complete,
+started_at,
+state,
+version_label
 FROM aws.appconfig.deployments
 WHERE application_id = '{{ application_id }}' -- required
 AND environment_id = '{{ environment_id }}' -- required
@@ -368,18 +368,18 @@ Lists the deployments for an environment in descending deployment number order.
 
 ```sql
 SELECT
-CompletedAt,
-ConfigurationName,
-ConfigurationVersion,
-DeploymentDurationInMinutes,
-DeploymentNumber,
-FinalBakeTimeInMinutes,
-GrowthFactor,
-GrowthType,
-PercentageComplete,
-StartedAt,
-State,
-VersionLabel
+completed_at,
+configuration_name,
+configuration_version,
+deployment_duration_in_minutes,
+deployment_number,
+final_bake_time_in_minutes,
+growth_factor,
+growth_type,
+percentage_complete,
+started_at,
+state,
+version_label
 FROM aws.appconfig.deployments
 WHERE application_id = '{{ application_id }}' -- required
 AND environment_id = '{{ environment_id }}' -- required

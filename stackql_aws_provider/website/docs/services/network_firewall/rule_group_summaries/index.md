@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the rule group. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleGroupName" /></td>
+    <td><CopyableCode code="rule_group_name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the rule group. You can't change the name of a rule group after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Summary" /></td>
+    <td><CopyableCode code="summary" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains rule information based on the rule group's configured summary settings. The content varies depending on the fields that you specified to extract in your SummaryConfiguration. When you haven't configured any summary settings, this returns an empty array. The response might include: Rule identifiers Rule descriptions Any metadata fields that you specified in your SummaryConfiguration</td>
 </tr>
@@ -129,9 +129,9 @@ Returns detailed information for a stateful rule group. For active threat defens
 
 ```sql
 SELECT
-Description,
-RuleGroupName,
-Summary
+description,
+rule_group_name,
+summary
 FROM aws.network_firewall.rule_group_summaries
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataFormat" /></td>
+    <td><CopyableCode code="data_format" /></td>
     <td><code>string</code></td>
     <td>The format in which the segment will be exported. (CSV, JSONL, ORC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationUri" /></td>
+    <td><CopyableCode code="destination_uri" /></td>
     <td><code>string</code></td>
     <td>The destination to which the segment will be exported. This field must be provided if the request is not submitted from the Amazon Connect Admin Website.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the exported segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that allows Customer Profiles service principal to assume the role for conducting KMS and S3 operations. (pattern: &lt;code&gt;arn:aws:iam:.*:&#91;0-9&#93;+:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the segment snapshot. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the asynchronous job for exporting the segment snapshot. (COMPLETED, IN_PROGRESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the asynchronous job for exporting the segment snapshot.</td>
 </tr>
@@ -171,13 +171,13 @@ Retrieve the latest status of a segment snapshot.
 
 ```sql
 SELECT
-DataFormat,
-DestinationUri,
-EncryptionKey,
-RoleArn,
-SnapshotId,
-Status,
-StatusMessage
+data_format,
+destination_uri,
+encryption_key,
+role_arn,
+snapshot_id,
+status,
+status_message
 FROM aws.customer_profiles.segment_snapshots
 WHERE domain_name = '{{ domain_name }}' -- required
 AND segment_definition_name = '{{ segment_definition_name }}' -- required
@@ -221,7 +221,7 @@ SELECT
 '{{ segment_definition_name }}',
 '{{ region }}'
 RETURNING
-SnapshotId
+snapshot_id
 ;
 ```
 </TabItem>

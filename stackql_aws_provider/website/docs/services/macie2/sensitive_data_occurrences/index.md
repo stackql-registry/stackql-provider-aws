@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>If an error occurred when Amazon Macie attempted to retrieve occurrences of sensitive data reported by the finding, a description of the error that occurred. This value is null if the status (status) of the request is PROCESSING or SUCCESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sensitiveDataOccurrences" /></td>
+    <td><CopyableCode code="sensitive_data_occurrences" /></td>
     <td><code>object</code></td>
     <td>A map that specifies 1-100 types of sensitive data reported by the finding and, for each type, 1-10 occurrences of sensitive data.</td>
 </tr>
@@ -135,7 +135,7 @@ Retrieves occurrences of sensitive data reported by a finding.
 ```sql
 SELECT
 error,
-sensitiveDataOccurrences,
+sensitive_data_occurrences,
 status
 FROM aws.macie2.sensitive_data_occurrences
 WHERE finding_id = '{{ finding_id }}' -- required

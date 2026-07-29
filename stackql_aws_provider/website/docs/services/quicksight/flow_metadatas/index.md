@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time this flow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowId" /></td>
+    <td><CopyableCode code="flow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time this flow was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A display name for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishState" /></td>
+    <td><CopyableCode code="publish_state" /></td>
     <td><code>string</code></td>
     <td>The publish state for the flow. Valid values are DRAFT, PUBLISHED, or PENDING_APPROVAL. (PUBLISHED, DRAFT, PENDING_APPROVAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunCount" /></td>
+    <td><CopyableCode code="run_count" /></td>
     <td><code>integer</code></td>
     <td>The number of runs done for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of users who have used the flow.</td>
 </tr>
@@ -179,17 +179,17 @@ Retrieves the metadata of a flow, not including its definition specifying the st
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Description,
-FlowId,
-LastUpdatedTime,
-Name,
-PublishState,
-RequestId,
-RunCount,
-Status,
-UserCount
+arn,
+created_time,
+description,
+flow_id,
+last_updated_time,
+name,
+publish_state,
+request_id,
+run_count,
+status,
+user_count
 FROM aws.quicksight.flow_metadatas
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND flow_id = '{{ flow_id }}' -- required

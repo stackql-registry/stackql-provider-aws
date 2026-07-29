@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the Failback Replication Configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bandwidthThrottling" /></td>
+    <td><CopyableCode code="bandwidth_throttling" /></td>
     <td><code>integer (int64)</code></td>
     <td>Configure bandwidth throttling for the outbound data transfer rate of the Recovery Instance in Mbps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="internetProtocol" /></td>
+    <td><CopyableCode code="internet_protocol" /></td>
     <td><code>string</code></td>
     <td>Which version of the Internet Protocol to use for replication of data. (IPv4 or IPv6) (IPV4, IPV6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryInstanceID" /></td>
+    <td><CopyableCode code="recovery_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Recovery Instance. (pattern: &lt;code&gt;i-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usePrivateIP" /></td>
+    <td><CopyableCode code="use_private_ip" /></td>
     <td><code>boolean</code></td>
     <td>Whether to use Private IP for the failback replication of the Recovery Instance.</td>
 </tr>
@@ -147,10 +147,10 @@ Lists all Failback ReplicationConfigurations, filtered by Recovery Instance ID.
 ```sql
 SELECT
 name,
-bandwidthThrottling,
-internetProtocol,
-recoveryInstanceID,
-usePrivateIP
+bandwidth_throttling,
+internet_protocol,
+recovery_instance_id,
+use_private_ip
 FROM aws.drs.failback_replication_configurations
 WHERE region = '{{ region }}' -- required
 ;

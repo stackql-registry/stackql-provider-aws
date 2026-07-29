@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Customer-supplied name of the Timestream for InfluxDB cluster. (pattern: &lt;code&gt;&#91;a-zA-z&#93;&#91;a-zA-Z0-9&#93;*(-&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage allocated for your DB storage type (in gibibytes).</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the DB cluster. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterConfiguration" /></td>
+    <td><CopyableCode code="cluster_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for node modes in the DbCluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbInstanceType" /></td>
+    <td><CopyableCode code="db_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB instance type that InfluxDB runs on. (db.influx.medium, db.influx.large, db.influx.xlarge, db.influx.2xlarge, db.influx.4xlarge, db.influx.8xlarge, db.influx.12xlarge, db.influx.16xlarge, db.influx.24xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbParameterGroupIdentifier" /></td>
+    <td><CopyableCode code="db_parameter_group_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the DB parameter group assigned to your DB cluster. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbStorageType" /></td>
+    <td><CopyableCode code="db_storage_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB DB storage type that InfluxDB stores data on. (InfluxIOIncludedT1, InfluxIOIncludedT2, InfluxIOIncludedT3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>Deployment type of the DB cluster. (MULTI_NODE_READ_REPLICAS)</td>
 </tr>
@@ -101,42 +101,42 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint used to connect to the Timestream for InfluxDB cluster for write and read operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The engine type of your DB cluster. (INFLUXDB_V2, INFLUXDB_V3_CORE, INFLUXDB_V3_ENTERPRISE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failoverMode" /></td>
+    <td><CopyableCode code="failover_mode" /></td>
     <td><code>string</code></td>
     <td>The configured failover mode for the DB cluster. (AUTOMATIC, NO_FAILOVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="influxAuthParametersSecretArn" /></td>
+    <td><CopyableCode code="influx_auth_parameters_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Secrets Manager secret containing the initial InfluxDB authorization parameters. The secret value is a JSON formatted key-value pair holding InfluxDB authorization values: organization, bucket, username, and password.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastMaintenanceTime" /></td>
+    <td><CopyableCode code="last_maintenance_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last completed maintenance operation on the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logDeliveryConfiguration" /></td>
+    <td><CopyableCode code="log_delivery_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for sending InfluxDB engine logs to send to specified S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceSchedule" /></td>
+    <td><CopyableCode code="maintenance_schedule" /></td>
     <td><code>object</code></td>
     <td>The maintenance schedule for the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the network type of the Timestream for InfluxDB cluster is IPv4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols. (IPV4, DUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextMaintenanceTime" /></td>
+    <td><CopyableCode code="next_maintenance_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the next scheduled maintenance operation on the DB cluster.</td>
 </tr>
@@ -146,12 +146,12 @@ The following fields are returned by `SELECT` queries:
     <td>The port number on which InfluxDB accepts connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publiclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if the DB cluster has a public IP to facilitate access from outside the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readerEndpoint" /></td>
+    <td><CopyableCode code="reader_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint used to connect to the Timestream for InfluxDB cluster for read-only operations.</td>
 </tr>
@@ -161,12 +161,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the DB cluster. (CREATING, UPDATING, DELETING, AVAILABLE, FAILED, DELETED, MAINTENANCE, UPDATING_INSTANCE_TYPE, REBOOTING, REBOOT_FAILED, PARTIALLY_AVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSecurityGroupIds" /></td>
+    <td><CopyableCode code="vpc_security_group_ids" /></td>
     <td><code>array</code></td>
     <td>A list of VPC security group IDs associated with the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSubnetIds" /></td>
+    <td><CopyableCode code="vpc_subnet_ids" /></td>
     <td><code>array</code></td>
     <td>A list of VPC subnet IDs associated with the DB cluster.</td>
 </tr>
@@ -195,7 +195,7 @@ The following fields are returned by `SELECT` queries:
     <td>Customer supplied name of the Timestream for InfluxDB cluster. (pattern: &lt;code&gt;&#91;a-zA-z&#93;&#91;a-zA-Z0-9&#93;*(-&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage allocated for your DB storage type (in gibibytes).</td>
 </tr>
@@ -205,17 +205,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the DB cluster. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbInstanceType" /></td>
+    <td><CopyableCode code="db_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB DB instance type that InfluxDB runs on. (db.influx.medium, db.influx.large, db.influx.xlarge, db.influx.2xlarge, db.influx.4xlarge, db.influx.8xlarge, db.influx.12xlarge, db.influx.16xlarge, db.influx.24xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbStorageType" /></td>
+    <td><CopyableCode code="db_storage_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB DB storage type that InfluxDB stores data on. (InfluxIOIncludedT1, InfluxIOIncludedT2, InfluxIOIncludedT3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>Deployment type of the DB cluster (MULTI_NODE_READ_REPLICAS)</td>
 </tr>
@@ -225,12 +225,12 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint used to connect to the Timestream for InfluxDB cluster for write and read operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The engine type of your DB cluster. (INFLUXDB_V2, INFLUXDB_V3_CORE, INFLUXDB_V3_ENTERPRISE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the network type of the Timestream for InfluxDB Cluster is IPv4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols. (IPV4, DUAL)</td>
 </tr>
@@ -240,7 +240,7 @@ The following fields are returned by `SELECT` queries:
     <td>The port number on which InfluxDB accepts connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readerEndpoint" /></td>
+    <td><CopyableCode code="reader_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint used to connect to the Timestream for InfluxDB cluster for read-only operations.</td>
 </tr>
@@ -352,28 +352,28 @@ Retrieves information about a Timestream for InfluxDB cluster.
 SELECT
 id,
 name,
-allocatedStorage,
+allocated_storage,
 arn,
-clusterConfiguration,
-dbInstanceType,
-dbParameterGroupIdentifier,
-dbStorageType,
-deploymentType,
+cluster_configuration,
+db_instance_type,
+db_parameter_group_identifier,
+db_storage_type,
+deployment_type,
 endpoint,
-engineType,
-failoverMode,
-influxAuthParametersSecretArn,
-lastMaintenanceTime,
-logDeliveryConfiguration,
-maintenanceSchedule,
-networkType,
-nextMaintenanceTime,
+engine_type,
+failover_mode,
+influx_auth_parameters_secret_arn,
+last_maintenance_time,
+log_delivery_configuration,
+maintenance_schedule,
+network_type,
+next_maintenance_time,
 port,
-publiclyAccessible,
-readerEndpoint,
+publicly_accessible,
+reader_endpoint,
 status,
-vpcSecurityGroupIds,
-vpcSubnetIds
+vpc_security_group_ids,
+vpc_subnet_ids
 FROM aws.timestream_influxdb.db_clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -387,16 +387,16 @@ Returns a list of Timestream for InfluxDB DB clusters.
 SELECT
 id,
 name,
-allocatedStorage,
+allocated_storage,
 arn,
-dbInstanceType,
-dbStorageType,
-deploymentType,
+db_instance_type,
+db_storage_type,
+deployment_type,
 endpoint,
-engineType,
-networkType,
+engine_type,
+network_type,
 port,
-readerEndpoint,
+reader_endpoint,
 status
 FROM aws.timestream_influxdb.db_clusters
 WHERE region = '{{ region }}' -- required
@@ -464,8 +464,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-dbClusterId,
-dbClusterStatus
+db_cluster_id,
+db_cluster_status
 ;
 ```
 </TabItem>
@@ -597,7 +597,7 @@ WHERE
 region = '{{ region }}' --required
 AND dbClusterId = '{{ dbClusterId }}' --required
 RETURNING
-dbClusterStatus;
+db_cluster_status;
 ```
 </TabItem>
 </Tabs>

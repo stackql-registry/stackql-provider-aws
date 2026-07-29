@@ -112,8 +112,8 @@ region = '{{ region }}' --required
 AND Rule = '{{ Rule }}' --required
 AND Ids = '{{ Ids }}' --required
 RETURNING
-FailedEntries,
-FailedEntryCount;
+failed_entries,
+failed_entry_count;
 ```
 </TabItem>
 </Tabs>
@@ -142,8 +142,8 @@ region = '{{ region }}' --required
 AND Rule = '{{ Rule }}' --required
 AND Targets = '{{ Targets }}' --required
 RETURNING
-FailedEntries,
-FailedEntryCount;
+failed_entries,
+failed_entry_count;
 ```
 </TabItem>
 </Tabs>

@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The API name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="additionalAuthenticationProviders" /></td>
+    <td><CopyableCode code="additional_authentication_providers" /></td>
     <td><code>array</code></td>
     <td>A list of additional authentication providers for the GraphqlApi API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The API ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiType" /></td>
+    <td><CopyableCode code="api_type" /></td>
     <td><code>string</code></td>
     <td>The value that indicates whether the GraphQL API is a standard API (GRAPHQL) or merged API (MERGED). (GRAPHQL, MERGED)</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type. (API_KEY, AWS_IAM, AMAZON_COGNITO_USER_POOLS, OPENID_CONNECT, AWS_LAMBDA)</td>
 </tr>
@@ -86,32 +86,32 @@ The following fields are returned by `SELECT` queries:
     <td>The DNS records for the API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enhancedMetricsConfig" /></td>
+    <td><CopyableCode code="enhanced_metrics_config" /></td>
     <td><code>object</code></td>
     <td>Enables and controls the enhanced metrics feature. Enhanced metrics emit granular data on API usage and performance such as AppSync request and error counts, latency, and cache hits/misses. All enhanced metric data is sent to your CloudWatch account, and you can configure the types of data that will be sent. Enhanced metrics can be configured at the resolver, data source, and operation levels. EnhancedMetricsConfig contains three required parameters, each controlling one of these categories: resolverLevelMetricsBehavior: Controls how resolver metrics will be emitted to CloudWatch. Resolver metrics include: GraphQL errors: The number of GraphQL errors that occurred. Requests: The number of invocations that occurred during a request. Latency: The time to complete a resolver invocation. Cache hits: The number of cache hits during a request. Cache misses: The number of cache misses during a request. These metrics can be emitted to CloudWatch per resolver or for all resolvers in the request. Metrics will be recorded by API ID and resolver name. resolverLevelMetricsBehavior accepts one of these values at a time: FULL_REQUEST_RESOLVER_METRICS: Records and emits metric data for all resolvers in the request. PER_RESOLVER_METRICS: Records and emits metric data for resolvers that have the metricsConfig value set to ENABLED. dataSourceLevelMetricsBehavior: Controls how data source metrics will be emitted to CloudWatch. Data source metrics include: Requests: The number of invocations that occured during a request. Latency: The time to complete a data source invocation. Errors: The number of errors that occurred during a data source invocation. These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. dataSourceLevelMetricsBehavior accepts one of these values at a time: FULL_REQUEST_DATA_SOURCE_METRICS: Records and emits metric data for all data sources in the request. PER_DATA_SOURCE_METRICS: Records and emits metric data for data sources that have the metricsConfig value set to ENABLED. operationLevelMetricsConfig: Controls how operation metrics will be emitted to CloudWatch. Operation metrics include: Requests: The number of times a specified GraphQL operation was called. GraphQL errors: The number of GraphQL errors that occurred during a specified GraphQL operation. Metrics will be recorded by API ID and operation name. You can set the value to ENABLED or DISABLED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="introspectionConfig" /></td>
+    <td><CopyableCode code="introspection_config" /></td>
     <td><code>string</code></td>
     <td>Sets the value of the GraphQL API to enable (ENABLED) or disable (DISABLED) introspection. If no value is provided, the introspection configuration will be set to ENABLED by default. This field will produce an error if the operation attempts to use the introspection feature while this field is disabled. For more information about introspection, see GraphQL introspection. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaAuthorizerConfig" /></td>
+    <td><CopyableCode code="lambda_authorizer_config" /></td>
     <td><code>object</code></td>
     <td>A LambdaAuthorizerConfig specifies how to authorize AppSync API access when using the AWS_LAMBDA authorizer mode. Be aware that an AppSync API can have only one Lambda authorizer configured at a time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logConfig" /></td>
+    <td><CopyableCode code="log_config" /></td>
     <td><code>object</code></td>
     <td>The Amazon CloudWatch Logs configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mergedApiExecutionRoleArn" /></td>
+    <td><CopyableCode code="merged_api_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management service role ARN for a merged API. The AppSync service assumes this role on behalf of the Merged API to validate access to source APIs at runtime and to prompt the AUTO_MERGE to update the merged API endpoint with the source API changes automatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="openIDConnectConfig" /></td>
+    <td><CopyableCode code="open_id_connect_config" /></td>
     <td><code>object</code></td>
     <td>Describes an OpenID Connect (OIDC) configuration.</td>
 </tr>
@@ -121,17 +121,17 @@ The following fields are returned by `SELECT` queries:
     <td>The account owner of the GraphQL API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerContact" /></td>
+    <td><CopyableCode code="owner_contact" /></td>
     <td><code>string</code></td>
     <td>The owner contact information for an API resource. This field accepts any string input with a length of 0 - 256 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryDepthLimit" /></td>
+    <td><CopyableCode code="query_depth_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is 0 (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between 1 and 75 nested levels. This field will produce a limit error if the operation falls out of bounds. Note that fields can still be set to nullable or non-nullable. If a non-nullable field produces an error, the error will be thrown upwards to the first nullable field available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolverCountLimit" /></td>
+    <td><CopyableCode code="resolver_count_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of resolvers that can be invoked in a single request. The default value is 0 (or unspecified), which will set the limit to 10000. When specified, the limit value can be between 1 and 10000. This field will produce a limit error if the operation falls out of bounds.</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>The URIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userPoolConfig" /></td>
+    <td><CopyableCode code="user_pool_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Amazon Cognito user pool configuration.</td>
 </tr>
@@ -156,12 +156,12 @@ The following fields are returned by `SELECT` queries:
     <td>Sets the value of the GraphQL API to public (GLOBAL) or private (PRIVATE). If no value is provided, the visibility will be set to GLOBAL by default. This value cannot be changed once the API has been created. (GLOBAL, PRIVATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wafWebAclArn" /></td>
+    <td><CopyableCode code="waf_web_acl_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the WAF access control list (ACL) associated with this GraphqlApi, if one exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xrayEnabled" /></td>
+    <td><CopyableCode code="xray_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether to use X-Ray tracing for this GraphqlApi.</td>
 </tr>
@@ -185,17 +185,17 @@ The following fields are returned by `SELECT` queries:
     <td>The API name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="additionalAuthenticationProviders" /></td>
+    <td><CopyableCode code="additional_authentication_providers" /></td>
     <td><code>array</code></td>
     <td>A list of additional authentication providers for the GraphqlApi API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The API ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiType" /></td>
+    <td><CopyableCode code="api_type" /></td>
     <td><code>string</code></td>
     <td>The value that indicates whether the GraphQL API is a standard API (GRAPHQL) or merged API (MERGED). (GRAPHQL, MERGED)</td>
 </tr>
@@ -205,7 +205,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type. (API_KEY, AWS_IAM, AMAZON_COGNITO_USER_POOLS, OPENID_CONNECT, AWS_LAMBDA)</td>
 </tr>
@@ -215,32 +215,32 @@ The following fields are returned by `SELECT` queries:
     <td>The DNS records for the API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enhancedMetricsConfig" /></td>
+    <td><CopyableCode code="enhanced_metrics_config" /></td>
     <td><code>object</code></td>
     <td>Enables and controls the enhanced metrics feature. Enhanced metrics emit granular data on API usage and performance such as AppSync request and error counts, latency, and cache hits/misses. All enhanced metric data is sent to your CloudWatch account, and you can configure the types of data that will be sent. Enhanced metrics can be configured at the resolver, data source, and operation levels. EnhancedMetricsConfig contains three required parameters, each controlling one of these categories: resolverLevelMetricsBehavior: Controls how resolver metrics will be emitted to CloudWatch. Resolver metrics include: GraphQL errors: The number of GraphQL errors that occurred. Requests: The number of invocations that occurred during a request. Latency: The time to complete a resolver invocation. Cache hits: The number of cache hits during a request. Cache misses: The number of cache misses during a request. These metrics can be emitted to CloudWatch per resolver or for all resolvers in the request. Metrics will be recorded by API ID and resolver name. resolverLevelMetricsBehavior accepts one of these values at a time: FULL_REQUEST_RESOLVER_METRICS: Records and emits metric data for all resolvers in the request. PER_RESOLVER_METRICS: Records and emits metric data for resolvers that have the metricsConfig value set to ENABLED. dataSourceLevelMetricsBehavior: Controls how data source metrics will be emitted to CloudWatch. Data source metrics include: Requests: The number of invocations that occured during a request. Latency: The time to complete a data source invocation. Errors: The number of errors that occurred during a data source invocation. These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. dataSourceLevelMetricsBehavior accepts one of these values at a time: FULL_REQUEST_DATA_SOURCE_METRICS: Records and emits metric data for all data sources in the request. PER_DATA_SOURCE_METRICS: Records and emits metric data for data sources that have the metricsConfig value set to ENABLED. operationLevelMetricsConfig: Controls how operation metrics will be emitted to CloudWatch. Operation metrics include: Requests: The number of times a specified GraphQL operation was called. GraphQL errors: The number of GraphQL errors that occurred during a specified GraphQL operation. Metrics will be recorded by API ID and operation name. You can set the value to ENABLED or DISABLED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="introspectionConfig" /></td>
+    <td><CopyableCode code="introspection_config" /></td>
     <td><code>string</code></td>
     <td>Sets the value of the GraphQL API to enable (ENABLED) or disable (DISABLED) introspection. If no value is provided, the introspection configuration will be set to ENABLED by default. This field will produce an error if the operation attempts to use the introspection feature while this field is disabled. For more information about introspection, see GraphQL introspection. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaAuthorizerConfig" /></td>
+    <td><CopyableCode code="lambda_authorizer_config" /></td>
     <td><code>object</code></td>
     <td>A LambdaAuthorizerConfig specifies how to authorize AppSync API access when using the AWS_LAMBDA authorizer mode. Be aware that an AppSync API can have only one Lambda authorizer configured at a time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logConfig" /></td>
+    <td><CopyableCode code="log_config" /></td>
     <td><code>object</code></td>
     <td>The Amazon CloudWatch Logs configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mergedApiExecutionRoleArn" /></td>
+    <td><CopyableCode code="merged_api_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management service role ARN for a merged API. The AppSync service assumes this role on behalf of the Merged API to validate access to source APIs at runtime and to prompt the AUTO_MERGE to update the merged API endpoint with the source API changes automatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="openIDConnectConfig" /></td>
+    <td><CopyableCode code="open_id_connect_config" /></td>
     <td><code>object</code></td>
     <td>Describes an OpenID Connect (OIDC) configuration.</td>
 </tr>
@@ -250,17 +250,17 @@ The following fields are returned by `SELECT` queries:
     <td>The account owner of the GraphQL API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerContact" /></td>
+    <td><CopyableCode code="owner_contact" /></td>
     <td><code>string</code></td>
     <td>The owner contact information for an API resource. This field accepts any string input with a length of 0 - 256 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryDepthLimit" /></td>
+    <td><CopyableCode code="query_depth_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is 0 (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between 1 and 75 nested levels. This field will produce a limit error if the operation falls out of bounds. Note that fields can still be set to nullable or non-nullable. If a non-nullable field produces an error, the error will be thrown upwards to the first nullable field available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolverCountLimit" /></td>
+    <td><CopyableCode code="resolver_count_limit" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of resolvers that can be invoked in a single request. The default value is 0 (or unspecified), which will set the limit to 10000. When specified, the limit value can be between 1 and 10000. This field will produce a limit error if the operation falls out of bounds.</td>
 </tr>
@@ -275,7 +275,7 @@ The following fields are returned by `SELECT` queries:
     <td>The URIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userPoolConfig" /></td>
+    <td><CopyableCode code="user_pool_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Amazon Cognito user pool configuration.</td>
 </tr>
@@ -285,12 +285,12 @@ The following fields are returned by `SELECT` queries:
     <td>Sets the value of the GraphQL API to public (GLOBAL) or private (PRIVATE). If no value is provided, the visibility will be set to GLOBAL by default. This value cannot be changed once the API has been created. (GLOBAL, PRIVATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wafWebAclArn" /></td>
+    <td><CopyableCode code="waf_web_acl_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the WAF access control list (ACL) associated with this GraphqlApi, if one exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xrayEnabled" /></td>
+    <td><CopyableCode code="xray_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether to use X-Ray tracing for this GraphqlApi.</td>
 </tr>
@@ -457,28 +457,28 @@ Retrieves a GraphqlApi object.
 ```sql
 SELECT
 name,
-additionalAuthenticationProviders,
-apiId,
-apiType,
+additional_authentication_providers,
+api_id,
+api_type,
 arn,
-authenticationType,
+authentication_type,
 dns,
-enhancedMetricsConfig,
-introspectionConfig,
-lambdaAuthorizerConfig,
-logConfig,
-mergedApiExecutionRoleArn,
-openIDConnectConfig,
+enhanced_metrics_config,
+introspection_config,
+lambda_authorizer_config,
+log_config,
+merged_api_execution_role_arn,
+open_id_connect_config,
 owner,
-ownerContact,
-queryDepthLimit,
-resolverCountLimit,
+owner_contact,
+query_depth_limit,
+resolver_count_limit,
 tags,
 uris,
-userPoolConfig,
+user_pool_config,
 visibility,
-wafWebAclArn,
-xrayEnabled
+waf_web_acl_arn,
+xray_enabled
 FROM aws.appsync.graphql_apis
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -492,28 +492,28 @@ Lists your GraphQL APIs.
 ```sql
 SELECT
 name,
-additionalAuthenticationProviders,
-apiId,
-apiType,
+additional_authentication_providers,
+api_id,
+api_type,
 arn,
-authenticationType,
+authentication_type,
 dns,
-enhancedMetricsConfig,
-introspectionConfig,
-lambdaAuthorizerConfig,
-logConfig,
-mergedApiExecutionRoleArn,
-openIDConnectConfig,
+enhanced_metrics_config,
+introspection_config,
+lambda_authorizer_config,
+log_config,
+merged_api_execution_role_arn,
+open_id_connect_config,
 owner,
-ownerContact,
-queryDepthLimit,
-resolverCountLimit,
+owner_contact,
+query_depth_limit,
+resolver_count_limit,
 tags,
 uris,
-userPoolConfig,
+user_pool_config,
 visibility,
-wafWebAclArn,
-xrayEnabled
+waf_web_acl_arn,
+xray_enabled
 FROM aws.appsync.graphql_apis
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -580,7 +580,7 @@ SELECT
 '{{ enhancedMetricsConfig }}',
 '{{ region }}'
 RETURNING
-graphqlApi
+graphql_api
 ;
 ```
 </TabItem>
@@ -718,7 +718,7 @@ AND region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 AND authenticationType = '{{ authenticationType }}' --required
 RETURNING
-graphqlApi;
+graphql_api;
 ```
 </TabItem>
 <TabItem value="associate_merged_graphql_api">
@@ -736,7 +736,7 @@ source_api_identifier = '{{ source_api_identifier }}' --required
 AND region = '{{ region }}' --required
 AND mergedApiIdentifier = '{{ mergedApiIdentifier }}' --required
 RETURNING
-sourceApiAssociation;
+source_api_association;
 ```
 </TabItem>
 <TabItem value="associate_source_graphql_api">
@@ -754,7 +754,7 @@ merged_api_identifier = '{{ merged_api_identifier }}' --required
 AND region = '{{ region }}' --required
 AND sourceApiIdentifier = '{{ sourceApiIdentifier }}' --required
 RETURNING
-sourceApiAssociation;
+source_api_association;
 ```
 </TabItem>
 <TabItem value="disassociate_merged_graphql_api">
@@ -770,7 +770,7 @@ source_api_identifier = '{{ source_api_identifier }}' --required
 AND association_id = '{{ association_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-sourceApiAssociationStatus;
+source_api_association_status;
 ```
 </TabItem>
 <TabItem value="disassociate_source_graphql_api">
@@ -786,7 +786,7 @@ merged_api_identifier = '{{ merged_api_identifier }}' --required
 AND association_id = '{{ association_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-sourceApiAssociationStatus;
+source_api_association_status;
 ```
 </TabItem>
 </Tabs>

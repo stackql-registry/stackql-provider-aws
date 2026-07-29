@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the trust anchor. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the trust anchor was created.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the trust anchor is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationSettings" /></td>
+    <td><CopyableCode code="notification_settings" /></td>
     <td><code>array</code></td>
     <td>A list of notification settings to be associated to the trust anchor.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>The trust anchor type and its related certificate data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustAnchorArn" /></td>
+    <td><CopyableCode code="trust_anchor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trust anchor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustAnchorId" /></td>
+    <td><CopyableCode code="trust_anchor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the trust anchor. (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the trust anchor was last updated.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the trust anchor. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the trust anchor was created.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the trust anchor is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationSettings" /></td>
+    <td><CopyableCode code="notification_settings" /></td>
     <td><code>array</code></td>
     <td>A list of notification settings to be associated to the trust anchor.</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>The trust anchor type and its related certificate data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustAnchorArn" /></td>
+    <td><CopyableCode code="trust_anchor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trust anchor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustAnchorId" /></td>
+    <td><CopyableCode code="trust_anchor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the trust anchor. (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the trust anchor was last updated.</td>
 </tr>
@@ -282,13 +282,13 @@ Gets a trust anchor. Required permissions: rolesanywhere:GetTrustAnchor.
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 enabled,
-notificationSettings,
+notification_settings,
 source,
-trustAnchorArn,
-trustAnchorId,
-updatedAt
+trust_anchor_arn,
+trust_anchor_id,
+updated_at
 FROM aws.rolesanywhere.trust_anchors
 WHERE trust_anchor_id = '{{ trust_anchor_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -302,13 +302,13 @@ Lists the trust anchors in the authenticated account and Amazon Web Services Reg
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 enabled,
-notificationSettings,
+notification_settings,
 source,
-trustAnchorArn,
-trustAnchorId,
-updatedAt
+trust_anchor_arn,
+trust_anchor_id,
+updated_at
 FROM aws.rolesanywhere.trust_anchors
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -349,7 +349,7 @@ SELECT
 '{{ notificationSettings }}',
 '{{ region }}'
 RETURNING
-trustAnchor
+trust_anchor
 ;
 ```
 </TabItem>
@@ -410,7 +410,7 @@ WHERE
 trust_anchor_id = '{{ trust_anchor_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-trustAnchor;
+trust_anchor;
 ```
 </TabItem>
 </Tabs>
@@ -438,7 +438,7 @@ region = '{{ region }}' --required
 AND trustAnchorId = '{{ trustAnchorId }}' --required
 AND notificationSettings = '{{ notificationSettings }}' --required
 RETURNING
-trustAnchor;
+trust_anchor;
 ```
 </TabItem>
 </Tabs>

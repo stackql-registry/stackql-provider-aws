@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authorizerArn" /></td>
+    <td><CopyableCode code="authorizer_arn" /></td>
     <td><code>string</code></td>
     <td>The authorizer ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerFunctionArn" /></td>
+    <td><CopyableCode code="authorizer_function_arn" /></td>
     <td><code>string</code></td>
     <td>The authorizer's Lambda function ARN. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerName" /></td>
+    <td><CopyableCode code="authorizer_name" /></td>
     <td><code>string</code></td>
     <td>The authorizer name. (pattern: &lt;code&gt;&#91;\w=,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of when the authorizer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableCachingForHttp" /></td>
+    <td><CopyableCode code="enable_caching_for_http" /></td>
     <td><code>boolean</code></td>
     <td>When true, the result from the authorizer’s Lambda function is cached for the time specified in refreshAfterInSeconds. The cached result is used while the device reuses the same HTTP connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of when the authorizer was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingDisabled" /></td>
+    <td><CopyableCode code="signing_disabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether IoT validates the token signature in an authorization request.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the authorizer. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenKeyName" /></td>
+    <td><CopyableCode code="token_key_name" /></td>
     <td><code>string</code></td>
     <td>The key used to extract the token from the HTTP headers. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenSigningPublicKeys" /></td>
+    <td><CopyableCode code="token_signing_public_keys" /></td>
     <td><code>object</code></td>
     <td>The public keys used to validate the token signature returned by your custom authentication service.</td>
 </tr>
@@ -171,16 +171,16 @@ Describes the default authorizer. Requires permission to access the DescribeDefa
 
 ```sql
 SELECT
-authorizerArn,
-authorizerFunctionArn,
-authorizerName,
-creationDate,
-enableCachingForHttp,
-lastModifiedDate,
-signingDisabled,
+authorizer_arn,
+authorizer_function_arn,
+authorizer_name,
+creation_date,
+enable_caching_for_http,
+last_modified_date,
+signing_disabled,
 status,
-tokenKeyName,
-tokenSigningPublicKeys
+token_key_name,
+token_signing_public_keys
 FROM aws.iot.default_authorizers
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,8 +209,8 @@ WHERE
 region = '{{ region }}' --required
 AND authorizerName = '{{ authorizerName }}' --required
 RETURNING
-authorizerArn,
-authorizerName;
+authorizer_arn,
+authorizer_name;
 ```
 </TabItem>
 </Tabs>

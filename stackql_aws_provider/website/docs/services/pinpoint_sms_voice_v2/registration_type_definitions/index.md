@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisplayHints" /></td>
+    <td><CopyableCode code="display_hints" /></td>
     <td><code>object</code></td>
     <td>Provides help information on the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationType" /></td>
+    <td><CopyableCode code="registration_type" /></td>
     <td><code>string</code></td>
     <td>The type of registration form. The list of RegistrationTypes can be found using the DescribeRegistrationTypeDefinitions action. (pattern: &lt;code&gt;&#91;A-Za-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedAssociations" /></td>
+    <td><CopyableCode code="supported_associations" /></td>
     <td><code>array</code></td>
     <td>The supported association behavior for the registration type.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves the specified registration type definitions. You can use DescribeRegis
 
 ```sql
 SELECT
-DisplayHints,
-RegistrationType,
-SupportedAssociations
+display_hints,
+registration_type,
+supported_associations
 FROM aws.pinpoint_sms_voice_v2.registration_type_definitions
 WHERE region = '{{ region }}' -- required
 ;

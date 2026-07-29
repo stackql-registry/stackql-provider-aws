@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Keyword" /></td>
+    <td><CopyableCode code="keyword" /></td>
     <td><code>string</code></td>
     <td>The keyword as a string. (pattern: &lt;code&gt;&#91; \S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeywordAction" /></td>
+    <td><CopyableCode code="keyword_action" /></td>
     <td><code>string</code></td>
     <td>The action to perform for the keyword. (AUTOMATIC_RESPONSE, OPT_OUT, OPT_IN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeywordMessage" /></td>
+    <td><CopyableCode code="keyword_message" /></td>
     <td><code>string</code></td>
     <td>A custom message that can be used with the keyword. (pattern: &lt;code&gt;(?!\s*$)&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -143,9 +143,9 @@ Describes the specified keywords or all keywords on your origination phone numbe
 
 ```sql
 SELECT
-Keyword,
-KeywordAction,
-KeywordMessage
+keyword,
+keyword_action,
+keyword_message
 FROM aws.pinpoint_sms_voice_v2.keywords
 WHERE region = '{{ region }}' -- required
 ;
@@ -178,11 +178,11 @@ region = '{{ region }}' --required
 AND OriginationIdentity = '{{ OriginationIdentity }}' --required
 AND KeywordMessage = '{{ KeywordMessage }}' --required
 RETURNING
-Keyword,
-KeywordAction,
-KeywordMessage,
-OriginationIdentity,
-OriginationIdentityArn;
+keyword,
+keyword_action,
+keyword_message,
+origination_identity,
+origination_identity_arn;
 ```
 </TabItem>
 </Tabs>

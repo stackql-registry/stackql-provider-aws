@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastBackupTime" /></td>
+    <td><CopyableCode code="last_backup_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a resource was last backed up, in Unix format and Coordinated Universal Time (UTC). The value of LastBackupTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastBackupVaultArn" /></td>
+    <td><CopyableCode code="last_backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the backup vault that contains the most recent backup recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRecoveryPointArn" /></td>
+    <td><CopyableCode code="last_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the most recent recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRestoreExecutionTimeMinutes" /></td>
+    <td><CopyableCode code="latest_restore_execution_time_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time, in minutes, that the most recent restore job took to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRestoreJobCreationDate" /></td>
+    <td><CopyableCode code="latest_restore_job_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date of the most recent restore job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRestoreRecoveryPointCreationDate" /></td>
+    <td><CopyableCode code="latest_restore_recovery_point_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the most recent recovery point was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a resource. The format of the ARN depends on the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource that belongs to the specified backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource saved as a recovery point; for example, an Amazon EBS volume or an Amazon RDS database. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastBackupTime" /></td>
+    <td><CopyableCode code="last_backup_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a resource was last backed up, in Unix format and Coordinated Universal Time (UTC). The value of LastBackupTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastBackupVaultArn" /></td>
+    <td><CopyableCode code="last_backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the backup vault that contains the most recent backup recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRecoveryPointArn" /></td>
+    <td><CopyableCode code="last_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the most recent recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format of the ARN depends on the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The non-unique name of the resource that belongs to the specified backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource; for example, an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database. For Windows Volume Shadow Copy Service (VSS) backups, the only supported resource type is Amazon EC2. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -227,15 +227,15 @@ Returns information about a saved resource, including the last time it was backe
 
 ```sql
 SELECT
-LastBackupTime,
-LastBackupVaultArn,
-LastRecoveryPointArn,
-LatestRestoreExecutionTimeMinutes,
-LatestRestoreJobCreationDate,
-LatestRestoreRecoveryPointCreationDate,
-ResourceArn,
-ResourceName,
-ResourceType
+last_backup_time,
+last_backup_vault_arn,
+last_recovery_point_arn,
+latest_restore_execution_time_minutes,
+latest_restore_job_creation_date,
+latest_restore_recovery_point_creation_date,
+resource_arn,
+resource_name,
+resource_type
 FROM aws.backup.protected_resources
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -248,12 +248,12 @@ Returns an array of resources successfully backed up by Backup, including the ti
 
 ```sql
 SELECT
-LastBackupTime,
-LastBackupVaultArn,
-LastRecoveryPointArn,
-ResourceArn,
-ResourceName,
-ResourceType
+last_backup_time,
+last_backup_vault_arn,
+last_recovery_point_arn,
+resource_arn,
+resource_name,
+resource_type
 FROM aws.backup.protected_resources
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

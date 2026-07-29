@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceProfiles" /></td>
+    <td><CopyableCode code="voice_profiles" /></td>
     <td><code>array</code></td>
     <td>The list of voice profiles.</td>
 </tr>
@@ -75,32 +75,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the voice profile was created and enrolled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTimestamp" /></td>
+    <td><CopyableCode code="expiration_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a voice profile expires unless you re-enroll the caller via the UpdateVoiceProfile API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the voice profile was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceProfileArn" /></td>
+    <td><CopyableCode code="voice_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the voice profile. (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceProfileDomainId" /></td>
+    <td><CopyableCode code="voice_profile_domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain that contains the voice profile. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceProfileId" /></td>
+    <td><CopyableCode code="voice_profile_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the voice profile. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -218,8 +218,8 @@ Lists the voice profiles in a voice profile domain.
 
 ```sql
 SELECT
-NextToken,
-VoiceProfiles
+next_token,
+voice_profiles
 FROM aws.chime_sdk_voice.voice_profiles
 WHERE `voice-profile-domain-id` = '{{ voice-profile-domain-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -234,12 +234,12 @@ Retrieves the details of the specified voice profile.
 
 ```sql
 SELECT
-CreatedTimestamp,
-ExpirationTimestamp,
-UpdatedTimestamp,
-VoiceProfileArn,
-VoiceProfileDomainId,
-VoiceProfileId
+created_timestamp,
+expiration_timestamp,
+updated_timestamp,
+voice_profile_arn,
+voice_profile_domain_id,
+voice_profile_id
 FROM aws.chime_sdk_voice.voice_profiles
 WHERE voice_profile_id = '{{ voice_profile_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -271,7 +271,7 @@ SELECT
 '{{ SpeakerSearchTaskId }}' /* required */,
 '{{ region }}'
 RETURNING
-VoiceProfile
+voice_profile
 ;
 ```
 </TabItem>
@@ -312,7 +312,7 @@ voice_profile_id = '{{ voice_profile_id }}' --required
 AND region = '{{ region }}' --required
 AND SpeakerSearchTaskId = '{{ SpeakerSearchTaskId }}' --required
 RETURNING
-VoiceProfile;
+voice_profile;
 ```
 </TabItem>
 </Tabs>

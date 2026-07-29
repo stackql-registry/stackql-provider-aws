@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppSpecification" /></td>
+    <td><CopyableCode code="app_specification" /></td>
     <td><code>object</code></td>
     <td>Configures the processing job to run a specified container image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobArn" /></td>
+    <td><CopyableCode code="auto_ml_job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of an AutoML job associated with this processing job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:automl-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the processing job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Environment" /></td>
+    <td><CopyableCode code="environment" /></td>
     <td><code>object</code></td>
     <td>The environment variables set in the Docker container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExitMessage" /></td>
+    <td><CopyableCode code="exit_message" /></td>
     <td><code>string</code></td>
     <td>An optional string, up to one KB in size, that contains metadata from the processing container when the processing job exits. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentConfig" /></td>
+    <td><CopyableCode code="experiment_config" /></td>
     <td><code>object</code></td>
     <td>Associates a SageMaker job as a trial component with an experiment and trial. Specified when you call the following APIs: CreateProcessingJob CreateTrainingJob CreateTransformJob</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>A string, up to one KB in size, that contains the reason a processing job failed, if it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the processing job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleArn" /></td>
+    <td><CopyableCode code="monitoring_schedule_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a monitoring schedule for an endpoint associated with this processing job. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfig" /></td>
+    <td><CopyableCode code="network_config" /></td>
     <td><code>object</code></td>
     <td>Networking options for a processing job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingEndTime" /></td>
+    <td><CopyableCode code="processing_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the processing job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingInputs" /></td>
+    <td><CopyableCode code="processing_inputs" /></td>
     <td><code>array</code></td>
     <td>The inputs for a processing job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingJobArn" /></td>
+    <td><CopyableCode code="processing_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the processing job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:processing-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingJobName" /></td>
+    <td><CopyableCode code="processing_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the processing job. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingJobStatus" /></td>
+    <td><CopyableCode code="processing_job_status" /></td>
     <td><code>string</code></td>
     <td>Provides the status of a processing job. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingOutputConfig" /></td>
+    <td><CopyableCode code="processing_output_config" /></td>
     <td><code>object</code></td>
     <td>Output configuration for the processing job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingResources" /></td>
+    <td><CopyableCode code="processing_resources" /></td>
     <td><code>object</code></td>
     <td>Identifies the resources, ML compute instances, and ML storage volumes to deploy for a processing job. In distributed training, you specify more than one instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingStartTime" /></td>
+    <td><CopyableCode code="processing_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the processing job started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to perform tasks on your behalf. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>The time limit for how long the processing job is allowed to run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingJobArn" /></td>
+    <td><CopyableCode code="training_job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a training job associated with this processing job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:training-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -170,42 +170,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the processing job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExitMessage" /></td>
+    <td><CopyableCode code="exit_message" /></td>
     <td><code>string</code></td>
     <td>An optional string, up to one KB in size, that contains metadata from the processing container when the processing job exits. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>A string, up to one KB in size, that contains the reason a processing job failed, if it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates the last time the processing job was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingEndTime" /></td>
+    <td><CopyableCode code="processing_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the processing job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingJobArn" /></td>
+    <td><CopyableCode code="processing_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the processing job.. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:processing-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingJobName" /></td>
+    <td><CopyableCode code="processing_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the processing job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingJobStatus" /></td>
+    <td><CopyableCode code="processing_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the processing job. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
@@ -303,27 +303,27 @@ Returns a description of a processing job.
 
 ```sql
 SELECT
-AppSpecification,
-AutoMLJobArn,
-CreationTime,
-Environment,
-ExitMessage,
-ExperimentConfig,
-FailureReason,
-LastModifiedTime,
-MonitoringScheduleArn,
-NetworkConfig,
-ProcessingEndTime,
-ProcessingInputs,
-ProcessingJobArn,
-ProcessingJobName,
-ProcessingJobStatus,
-ProcessingOutputConfig,
-ProcessingResources,
-ProcessingStartTime,
-RoleArn,
-StoppingCondition,
-TrainingJobArn
+app_specification,
+auto_ml_job_arn,
+creation_time,
+environment,
+exit_message,
+experiment_config,
+failure_reason,
+last_modified_time,
+monitoring_schedule_arn,
+network_config,
+processing_end_time,
+processing_inputs,
+processing_job_arn,
+processing_job_name,
+processing_job_status,
+processing_output_config,
+processing_resources,
+processing_start_time,
+role_arn,
+stopping_condition,
+training_job_arn
 FROM aws.sagemaker.processing_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -335,14 +335,14 @@ Lists processing jobs that satisfy various filters.
 
 ```sql
 SELECT
-CreationTime,
-ExitMessage,
-FailureReason,
-LastModifiedTime,
-ProcessingEndTime,
-ProcessingJobArn,
-ProcessingJobName,
-ProcessingJobStatus
+creation_time,
+exit_message,
+failure_reason,
+last_modified_time,
+processing_end_time,
+processing_job_arn,
+processing_job_name,
+processing_job_status
 FROM aws.sagemaker.processing_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -393,7 +393,7 @@ SELECT
 '{{ ExperimentConfig }}',
 '{{ region }}'
 RETURNING
-ProcessingJobArn
+processing_job_arn
 ;
 ```
 </TabItem>

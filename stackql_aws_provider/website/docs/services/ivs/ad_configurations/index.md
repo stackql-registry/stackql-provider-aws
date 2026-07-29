@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Ad configuration ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:ad-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mediaTailorPlaybackConfigurations" /></td>
+    <td><CopyableCode code="media_tailor_playback_configurations" /></td>
     <td><code>array</code></td>
     <td>List of integration configurations with media tailor resources.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>Ad configuration ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:ad-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mediaTailorPlaybackConfigurations" /></td>
+    <td><CopyableCode code="media_tailor_playback_configurations" /></td>
     <td><code>array</code></td>
     <td>List of integration configurations with media tailor resources.</td>
 </tr>
@@ -193,7 +193,7 @@ Gets the ad configuration represented by the specified ARN.
 SELECT
 name,
 arn,
-mediaTailorPlaybackConfigurations,
+media_tailor_playback_configurations,
 tags
 FROM aws.ivs.ad_configurations
 WHERE region = '{{ region }}' -- required
@@ -208,7 +208,7 @@ Gets summary information about all ad configurations in your account, in the AWS
 SELECT
 name,
 arn,
-mediaTailorPlaybackConfigurations,
+media_tailor_playback_configurations,
 tags
 FROM aws.ivs.ad_configurations
 WHERE region = '{{ region }}' -- required
@@ -244,7 +244,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-adConfiguration
+ad_configuration
 ;
 ```
 </TabItem>

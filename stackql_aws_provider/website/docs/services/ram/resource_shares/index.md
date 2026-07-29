@@ -55,37 +55,37 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowExternalPrincipals" /></td>
+    <td><CopyableCode code="allow_external_principals" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether principals outside your organization in Organizations can be associated with a resource share. True – the resource share can be shared with any Amazon Web Services account. False – the resource share can be shared with only accounts in the same organization as the account that owns the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the resource share was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="featureSet" /></td>
+    <td><CopyableCode code="feature_set" /></td>
     <td><code>string</code></td>
     <td>Indicates what features are available for this resource share. This parameter can have one of the following values: STANDARD – A resource share that supports all functionality. These resource shares are visible to all principals you share the resource share with. You can modify these resource shares in RAM using the console or APIs. This resource share might have been created by RAM, or it might have been CREATED_FROM_POLICY and then promoted. CREATED_FROM_POLICY – The customer manually shared a resource by attaching a resource-based policy. That policy did not match any existing managed permissions, so RAM created this customer managed permission automatically on the customer's behalf based on the attached policy document. This type of resource share is visible only to the Amazon Web Services account that created it. You can't modify it in RAM unless you promote it. For more information, see PromoteResourceShareCreatedFromPolicy. PROMOTING_TO_STANDARD – This resource share was originally CREATED_FROM_POLICY, but the customer ran the PromoteResourceShareCreatedFromPolicy and that operation is still in progress. This value changes to STANDARD when complete. (CREATED_FROM_POLICY, PROMOTING_TO_STANDARD, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the resource share was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningAccountId" /></td>
+    <td><CopyableCode code="owning_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource share</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareConfiguration" /></td>
+    <td><CopyableCode code="resource_share_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the resource share</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the resource share. (PENDING, ACTIVE, FAILED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message about the status of the resource share.</td>
 </tr>
@@ -236,15 +236,15 @@ Retrieves details about the resource shares that you own or that are shared with
 ```sql
 SELECT
 name,
-allowExternalPrincipals,
-creationTime,
-featureSet,
-lastUpdatedTime,
-owningAccountId,
-resourceShareArn,
-resourceShareConfiguration,
+allow_external_principals,
+creation_time,
+feature_set,
+last_updated_time,
+owning_account_id,
+resource_share_arn,
+resource_share_configuration,
 status,
-statusMessage,
+status_message,
 tags
 FROM aws.ram.resource_shares
 WHERE region = '{{ region }}' -- required
@@ -292,8 +292,8 @@ SELECT
 '{{ resourceShareConfiguration }}',
 '{{ region }}'
 RETURNING
-clientToken,
-resourceShare
+client_token,
+resource_share
 ;
 ```
 </TabItem>
@@ -362,8 +362,8 @@ WHERE
 region = '{{ region }}' --required
 AND resourceShareArn = '{{ resourceShareArn }}' --required
 RETURNING
-clientToken,
-resourceShareAssociations;
+client_token,
+resource_share_associations;
 ```
 </TabItem>
 </Tabs>

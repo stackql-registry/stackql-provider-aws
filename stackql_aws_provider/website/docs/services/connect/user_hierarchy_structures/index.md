@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LevelFive" /></td>
+    <td><CopyableCode code="level_five" /></td>
     <td><code>object</code></td>
     <td>Information about level five.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LevelFour" /></td>
+    <td><CopyableCode code="level_four" /></td>
     <td><code>object</code></td>
     <td>Information about level four.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LevelOne" /></td>
+    <td><CopyableCode code="level_one" /></td>
     <td><code>object</code></td>
     <td>Information about level one.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LevelThree" /></td>
+    <td><CopyableCode code="level_three" /></td>
     <td><code>object</code></td>
     <td>Information about level three.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LevelTwo" /></td>
+    <td><CopyableCode code="level_two" /></td>
     <td><code>object</code></td>
     <td>Information about level two.</td>
 </tr>
@@ -151,11 +151,11 @@ Describes the hierarchy structure of the specified Amazon Connect instance.
 
 ```sql
 SELECT
-LevelFive,
-LevelFour,
-LevelOne,
-LevelThree,
-LevelTwo
+level_five,
+level_four,
+level_one,
+level_three,
+level_two
 FROM aws.connect.user_hierarchy_structures
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

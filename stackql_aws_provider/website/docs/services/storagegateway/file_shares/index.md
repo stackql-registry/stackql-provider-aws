@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FileShareARN" /></td>
+    <td><CopyableCode code="file_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the file share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileShareId" /></td>
+    <td><CopyableCode code="file_share_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileShareStatus" /></td>
+    <td><CopyableCode code="file_share_status" /></td>
     <td><code>string</code></td>
     <td>The status of the file share. Valid Values: CREATING | UPDATING | AVAILABLE | DELETING</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileShareType" /></td>
+    <td><CopyableCode code="file_share_type" /></td>
     <td><code>string</code></td>
     <td>The type of the file share. (NFS, SMB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
@@ -160,11 +160,11 @@ Gets a list of the file shares for a specific S3 File Gateway, or the list of fi
 
 ```sql
 SELECT
-FileShareARN,
-FileShareId,
-FileShareStatus,
-FileShareType,
-GatewayARN
+file_share_arn,
+file_share_id,
+file_share_status,
+file_share_type,
+gateway_arn
 FROM aws.storagegateway.file_shares
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the key group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyGroupConfig" /></td>
+    <td><CopyableCode code="key_group_config" /></td>
     <td><code>string</code></td>
     <td>The key group configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the key group was last modified.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A list of key groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of key groups requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more items in the list than are in this response, this element is present. It contains the value that you should use in the Marker field of a subsequent request to continue listing key groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of key groups returned in the response.</td>
 </tr>
@@ -213,9 +213,9 @@ Gets a key group, including the date and time when the key group was last modifi
 
 ```sql
 SELECT
-Id,
-KeyGroupConfig,
-LastModifiedTime
+id,
+key_group_config,
+last_modified_time
 FROM aws.cloudfront.key_groups
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,10 +228,10 @@ Gets a list of key groups. You can optionally specify the maximum number of item
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.key_groups
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -264,9 +264,9 @@ SELECT
 '{{ KeyGroupConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-Id,
-KeyGroupConfig,
-LastModifiedTime
+id,
+key_group_config,
+last_modified_time
 ;
 ```
 </TabItem>
@@ -314,9 +314,9 @@ AND region = '{{ region }}' --required
 AND KeyGroupConfig = '{{ KeyGroupConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-Id,
-KeyGroupConfig,
-LastModifiedTime;
+id,
+key_group_config,
+last_modified_time;
 ```
 </TabItem>
 </Tabs>

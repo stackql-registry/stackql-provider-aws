@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetricReferences" /></td>
+    <td><CopyableCode code="metric_references" /></td>
     <td><code>array</code></td>
     <td>An array of structures that each contain information about one metric associated with this service operation that was discovered by Application Signals.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the operation, discovered by Application Signals.</td>
 </tr>
@@ -144,8 +144,8 @@ Returns a list of the operations of this service that have been discovered by Ap
 
 ```sql
 SELECT
-MetricReferences,
-Name
+metric_references,
+name
 FROM aws.application_signals.service_operations
 WHERE StartTime = '{{ StartTime }}' -- required
 AND EndTime = '{{ EndTime }}' -- required

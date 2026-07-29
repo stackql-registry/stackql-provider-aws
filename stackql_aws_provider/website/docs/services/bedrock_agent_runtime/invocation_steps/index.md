@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="invocationId" /></td>
+    <td><CopyableCode code="invocation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (in UUID format) for the invocation that includes the invocation step. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invocationStepId" /></td>
+    <td><CopyableCode code="invocation_step_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (in UUID format) for the invocation step. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invocationStepTime" /></td>
+    <td><CopyableCode code="invocation_step_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the invocation step was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>Payload content, such as text and images, for the invocation step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the session containing the invocation step. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="invocationId" /></td>
+    <td><CopyableCode code="invocation_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the invocation in UUID format. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invocationStepId" /></td>
+    <td><CopyableCode code="invocation_step_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (in UUID format) for the invocation step. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invocationStepTime" /></td>
+    <td><CopyableCode code="invocation_step_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the invocation step was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the session associated with the invocation step. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -209,11 +209,11 @@ Retrieves the details of a specific invocation step within an invocation in a se
 
 ```sql
 SELECT
-invocationId,
-invocationStepId,
-invocationStepTime,
+invocation_id,
+invocation_step_id,
+invocation_step_time,
 payload,
-sessionId
+session_id
 FROM aws.bedrock_agent_runtime.invocation_steps
 WHERE invocation_step_id = '{{ invocation_step_id }}' -- required
 AND session_identifier = '{{ session_identifier }}' -- required
@@ -227,10 +227,10 @@ Lists all invocation steps associated with a session and optionally, an invocati
 
 ```sql
 SELECT
-invocationId,
-invocationStepId,
-invocationStepTime,
-sessionId
+invocation_id,
+invocation_step_id,
+invocation_step_time,
+session_id
 FROM aws.bedrock_agent_runtime.invocation_steps
 WHERE session_identifier = '{{ session_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,7 +268,7 @@ AND invocationIdentifier = '{{ invocationIdentifier }}' --required
 AND invocationStepTime = '{{ invocationStepTime }}' --required
 AND payload = '{{ payload }}' --required
 RETURNING
-invocationStepId;
+invocation_step_id;
 ```
 </TabItem>
 </Tabs>

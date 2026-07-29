@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceTypeDetails" /></td>
+    <td><CopyableCode code="instance_type_details" /></td>
     <td><code>array</code></td>
     <td>Lists all supported instance types and features for the given OpenSearch or Elasticsearch version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -154,8 +154,8 @@ Lists all instance types and available features for a given OpenSearch or Elasti
 
 ```sql
 SELECT
-InstanceTypeDetails,
-NextToken
+instance_type_details,
+next_token
 FROM aws.opensearch.instance_type_details
 WHERE engine_version = '{{ engine_version }}' -- required
 AND region = '{{ region }}' -- required

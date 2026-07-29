@@ -51,142 +51,142 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountIds" /></td>
+    <td><CopyableCode code="account_ids" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon Web Services account IDs associated with the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Applications" /></td>
+    <td><CopyableCode code="applications" /></td>
     <td><code>array</code></td>
     <td>List of AppRegistry application ARNs associated to the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchitecturalDesign" /></td>
+    <td><CopyableCode code="architectural_design" /></td>
     <td><code>string</code></td>
     <td>The URL of the architectural design for the workload. (pattern: &lt;code&gt;^(|(https?|ftp):\/\/&#91;^\s/$.?#&#93;.&#91;^\s&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsRegions" /></td>
+    <td><CopyableCode code="aws_regions" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon Web Services Regions associated with the workload, for example, us-east-2, or ca-central-1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscoveryConfig" /></td>
+    <td><CopyableCode code="discovery_config" /></td>
     <td><code>object</code></td>
     <td>Discovery configuration associated to the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Environment" /></td>
+    <td><CopyableCode code="environment" /></td>
     <td><code>string</code></td>
     <td>The environment for the workload. (PRODUCTION, PREPRODUCTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImprovementStatus" /></td>
+    <td><CopyableCode code="improvement_status" /></td>
     <td><code>string</code></td>
     <td>The improvement status for a workload. (NOT_APPLICABLE, NOT_STARTED, IN_PROGRESS, COMPLETE, RISK_ACKNOWLEDGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Industry" /></td>
+    <td><CopyableCode code="industry" /></td>
     <td><code>string</code></td>
     <td>The industry for the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndustryType" /></td>
+    <td><CopyableCode code="industry_type" /></td>
     <td><code>string</code></td>
     <td>The industry type for the workload. If specified, must be one of the following: Agriculture Automobile Defense Design and Engineering Digital Advertising Education Environmental Protection Financial Services Gaming General Public Services Healthcare Hospitality InfoTech Justice and Public Safety Life Sciences Manufacturing Media & Entertainment Mining & Resources Oil & Gas Power & Utilities Professional Services Real Estate & Construction Retail & Wholesale Social Protection Telecommunications Travel, Transportation & Logistics Other</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsReviewOwnerUpdateAcknowledged" /></td>
+    <td><CopyableCode code="is_review_owner_update_acknowledged" /></td>
     <td><code>boolean</code></td>
     <td>Flag indicating whether the workload owner has acknowledged that the Review owner field is required. If a Review owner is not added to the workload within 60 days of acknowledgement, access to the workload is restricted until an owner is added.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JiraConfiguration" /></td>
+    <td><CopyableCode code="jira_configuration" /></td>
     <td><code>object</code></td>
     <td>Jira configuration for a specific workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lenses" /></td>
+    <td><CopyableCode code="lenses" /></td>
     <td><code>array</code></td>
     <td>The list of lenses associated with the workload. Each lens is identified by its LensSummary$LensAlias. If a review template that specifies lenses is applied to the workload, those lenses are applied to the workload in addition to these lenses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonAwsRegions" /></td>
+    <td><CopyableCode code="non_aws_regions" /></td>
     <td><code>array</code></td>
     <td>The list of non-Amazon Web Services Regions associated with the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notes" /></td>
+    <td><CopyableCode code="notes" /></td>
     <td><code>string</code></td>
     <td>The notes associated with the workload. For a review template, these are the notes that will be associated with the workload when the template is applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services account ID. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PillarPriorities" /></td>
+    <td><CopyableCode code="pillar_priorities" /></td>
     <td><code>array</code></td>
     <td>The priorities of the pillars, which are used to order items in the improvement plan. Each pillar is represented by its PillarReviewSummary$PillarId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrioritizedRiskCounts" /></td>
+    <td><CopyableCode code="prioritized_risk_counts" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="Profiles" /></td>
+    <td><CopyableCode code="profiles" /></td>
     <td><code>array</code></td>
     <td>Profile associated with a workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReviewOwner" /></td>
+    <td><CopyableCode code="review_owner" /></td>
     <td><code>string</code></td>
     <td>The review owner of the workload. The name, email address, or identifier for the primary group or individual that owns the workload review process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReviewRestrictionDate" /></td>
+    <td><CopyableCode code="review_restriction_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time recorded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RiskCounts" /></td>
+    <td><CopyableCode code="risk_counts" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareInvitationId" /></td>
+    <td><CopyableCode code="share_invitation_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the share invitation. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time recorded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadArn" /></td>
+    <td><CopyableCode code="workload_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the workload. This ID is unique within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload. The name must be unique within an account within an Amazon Web Services Region. Spaces and capitalization are ignored when checking for uniqueness.</td>
 </tr>
@@ -205,12 +205,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadSummaries" /></td>
+    <td><CopyableCode code="workload_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of workload summaries.</td>
 </tr>
@@ -337,34 +337,34 @@ Get an existing workload.
 
 ```sql
 SELECT
-AccountIds,
-Applications,
-ArchitecturalDesign,
-AwsRegions,
-Description,
-DiscoveryConfig,
-Environment,
-ImprovementStatus,
-Industry,
-IndustryType,
-IsReviewOwnerUpdateAcknowledged,
-JiraConfiguration,
-Lenses,
-NonAwsRegions,
-Notes,
-Owner,
-PillarPriorities,
-PrioritizedRiskCounts,
-Profiles,
-ReviewOwner,
-ReviewRestrictionDate,
-RiskCounts,
-ShareInvitationId,
-Tags,
-UpdatedAt,
-WorkloadArn,
-WorkloadId,
-WorkloadName
+account_ids,
+applications,
+architectural_design,
+aws_regions,
+description,
+discovery_config,
+environment,
+improvement_status,
+industry,
+industry_type,
+is_review_owner_update_acknowledged,
+jira_configuration,
+lenses,
+non_aws_regions,
+notes,
+owner,
+pillar_priorities,
+prioritized_risk_counts,
+profiles,
+review_owner,
+review_restriction_date,
+risk_counts,
+share_invitation_id,
+tags,
+updated_at,
+workload_arn,
+workload_id,
+workload_name
 FROM aws.wellarchitected.workloads
 WHERE workload_id = '{{ workload_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -377,8 +377,8 @@ Paginated list of workloads.
 
 ```sql
 SELECT
-NextToken,
-WorkloadSummaries
+next_token,
+workload_summaries
 FROM aws.wellarchitected.workloads
 WHERE region = '{{ region }}' -- required
 ;
@@ -447,8 +447,8 @@ SELECT
 '{{ JiraConfiguration }}',
 '{{ region }}'
 RETURNING
-WorkloadArn,
-WorkloadId
+workload_arn,
+workload_id
 ;
 ```
 </TabItem>
@@ -606,7 +606,7 @@ WHERE
 workload_id = '{{ workload_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Workload;
+workload;
 ```
 </TabItem>
 </Tabs>

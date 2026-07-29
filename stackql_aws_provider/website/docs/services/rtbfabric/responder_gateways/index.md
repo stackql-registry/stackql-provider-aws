@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeLinksCount" /></td>
+    <td><CopyableCode code="active_links_count" /></td>
     <td><code>integer</code></td>
     <td>The count of active links for the responder gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the responder gateway was created.</td>
 </tr>
@@ -66,37 +66,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the responder gateway. (pattern: &lt;code&gt;&#91;A-Za-z0-9 &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name of the responder gateway. (pattern: &lt;code&gt;(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?)(?:\.(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?))+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalInboundEndpoint" /></td>
+    <td><CopyableCode code="external_inbound_endpoint" /></td>
     <td><code>string</code></td>
     <td>The external inbound endpoint for the responder gateway. (pattern: &lt;code&gt;(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?)(?:\.(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?))+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayType" /></td>
+    <td><CopyableCode code="gateway_type" /></td>
     <td><code>string</code></td>
     <td>The type of gateway. (EXTERNAL, INTERNAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inboundLinksCount" /></td>
+    <td><CopyableCode code="inbound_links_count" /></td>
     <td><code>integer</code></td>
     <td>The count of inbound links for the responder gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listenerConfig" /></td>
+    <td><CopyableCode code="listener_config" /></td>
     <td><code>object</code></td>
     <td>Listener configuration for the protocols (HTTP, HTTPS, or both) accepted by the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedEndpointConfiguration" /></td>
+    <td><CopyableCode code="managed_endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the configuration of a managed endpoint.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The networking protocol. (HTTP, HTTPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifiers of the security groups.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the request. (PENDING_CREATION, ACTIVE, PENDING_DELETION, DELETED, ERROR, PENDING_UPDATE, ISOLATED, PENDING_ISOLATION, PENDING_RESTORATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifiers of the subnets.</td>
 </tr>
@@ -131,22 +131,22 @@ The following fields are returned by `SELECT` queries:
     <td>A map of the key-value pairs for the tag or tags assigned to the specified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalLinksCount" /></td>
+    <td><CopyableCode code="total_links_count" /></td>
     <td><code>integer</code></td>
     <td>The total count of links for the responder gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustStoreConfiguration" /></td>
+    <td><CopyableCode code="trust_store_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the configuration of a trust store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the responder gateway was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Virtual Private Cloud (VPC). (pattern: &lt;code&gt;vpc-&#91;a-f0-9&#93;&#123;8,17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -278,26 +278,26 @@ Retrieves information about a responder gateway.
 
 ```sql
 SELECT
-activeLinksCount,
-createdAt,
+active_links_count,
+created_at,
 description,
-domainName,
-externalInboundEndpoint,
-gatewayId,
-gatewayType,
-inboundLinksCount,
-listenerConfig,
-managedEndpointConfiguration,
+domain_name,
+external_inbound_endpoint,
+gateway_id,
+gateway_type,
+inbound_links_count,
+listener_config,
+managed_endpoint_configuration,
 port,
 protocol,
-securityGroupIds,
+security_group_ids,
 status,
-subnetIds,
+subnet_ids,
 tags,
-totalLinksCount,
-trustStoreConfiguration,
-updatedAt,
-vpcId
+total_links_count,
+trust_store_configuration,
+updated_at,
+vpc_id
 FROM aws.rtbfabric.responder_gateways
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -367,9 +367,9 @@ SELECT
 '{{ gatewayType }}',
 '{{ region }}'
 RETURNING
-externalInboundEndpoint,
-gatewayId,
-listenerConfig,
+external_inbound_endpoint,
+gateway_id,
+listener_config,
 status
 ;
 ```
@@ -480,7 +480,7 @@ AND port = '{{ port }}' --required
 AND protocol = '{{ protocol }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-gatewayId,
+gateway_id,
 status;
 ```
 </TabItem>

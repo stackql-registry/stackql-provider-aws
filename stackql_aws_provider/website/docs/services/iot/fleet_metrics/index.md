@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregationField" /></td>
+    <td><CopyableCode code="aggregation_field" /></td>
     <td><code>string</code></td>
     <td>The field to aggregate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationType" /></td>
+    <td><CopyableCode code="aggregation_type" /></td>
     <td><code>object</code></td>
     <td>The type of aggregation queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the fleet metric is created.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>The fleet metric description. (pattern: &lt;code&gt;&#91;\p&#123;Graph&#125;\x20&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The name of the index to search. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the fleet metric is last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricArn" /></td>
+    <td><CopyableCode code="metric_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the fleet metric to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet metric to describe. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The time in seconds between fleet metric emissions. Range &#91;60(1 min), 86400(1 day)&#93; and must be multiple of 60.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The search query string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryVersion" /></td>
+    <td><CopyableCode code="query_version" /></td>
     <td><code>string</code></td>
     <td>The query version.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="metricArn" /></td>
+    <td><CopyableCode code="metric_arn" /></td>
     <td><code>string</code></td>
     <td>The fleet metric ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The fleet metric name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -253,17 +253,17 @@ Gets information about the specified fleet metric. Requires permission to access
 
 ```sql
 SELECT
-aggregationField,
-aggregationType,
-creationDate,
+aggregation_field,
+aggregation_type,
+creation_date,
 description,
-indexName,
-lastModifiedDate,
-metricArn,
-metricName,
+index_name,
+last_modified_date,
+metric_arn,
+metric_name,
 period,
-queryString,
-queryVersion,
+query_string,
+query_version,
 unit,
 version
 FROM aws.iot.fleet_metrics
@@ -278,8 +278,8 @@ Lists all your fleet metrics. Requires permission to access the ListFleetMetrics
 
 ```sql
 SELECT
-metricArn,
-metricName
+metric_arn,
+metric_name
 FROM aws.iot.fleet_metrics
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -330,8 +330,8 @@ SELECT
 '{{ metric_name }}',
 '{{ region }}'
 RETURNING
-metricArn,
-metricName
+metric_arn,
+metric_name
 ;
 ```
 </TabItem>

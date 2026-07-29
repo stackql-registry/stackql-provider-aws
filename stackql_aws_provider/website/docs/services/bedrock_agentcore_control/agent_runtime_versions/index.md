@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentRuntimeArn" /></td>
+    <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the agent runtime. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeId" /></td>
+    <td><CopyableCode code="agent_runtime_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent runtime. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeName" /></td>
+    <td><CopyableCode code="agent_runtime_name" /></td>
     <td><code>string</code></td>
     <td>The name of the agent runtime. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeVersion" /></td>
+    <td><CopyableCode code="agent_runtime_version" /></td>
     <td><code>string</code></td>
     <td>The version of the agent runtime. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the agent runtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the agent runtime was last updated.</td>
 </tr>
@@ -164,12 +164,12 @@ Lists all versions of a specific Amazon Secure Agent.
 
 ```sql
 SELECT
-agentRuntimeArn,
-agentRuntimeId,
-agentRuntimeName,
-agentRuntimeVersion,
+agent_runtime_arn,
+agent_runtime_id,
+agent_runtime_name,
+agent_runtime_version,
 description,
-lastUpdatedAt,
+last_updated_at,
 status
 FROM aws.bedrock_agentcore_control.agent_runtime_versions
 WHERE agent_runtime_id = '{{ agent_runtime_id }}' -- required

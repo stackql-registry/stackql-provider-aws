@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botName" /></td>
+    <td><CopyableCode code="bot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the bot for which utterance information was returned. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
@@ -139,7 +139,7 @@ Use the GetUtterancesView operation to get information about the utterances that
 
 ```sql
 SELECT
-botName,
+bot_name,
 utterances
 FROM aws.lex_models.utterances_views
 WHERE botname = '{{ botname }}' -- required

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The mailbox export job description. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The mailbox export job end timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityId" /></td>
+    <td><CopyableCode code="entity_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or resource associated with the mailbox.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>string</code></td>
     <td>Error information for failed mailbox export jobs. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedProgress" /></td>
+    <td><CopyableCode code="estimated_progress" /></td>
     <td><code>integer</code></td>
     <td>The estimated progress of the mailbox export job, in percentage points.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the symmetric AWS Key Management Service (AWS KMS) key that encrypts the exported mailbox content. (pattern: &lt;code&gt;arn:aws:kms:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;+:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AWS Identity and Access Management (IAM) role that grants write permission to the Amazon Simple Storage Service (Amazon S3) bucket. (pattern: &lt;code&gt;arn:aws:iam:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;+:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketName" /></td>
+    <td><CopyableCode code="s3_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the S3 bucket. (pattern: &lt;code&gt;&#91;A-Za-z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Path" /></td>
+    <td><CopyableCode code="s3_path" /></td>
     <td><code>string</code></td>
     <td>The path to the S3 bucket and file that the mailbox export job is exporting to. (pattern: &lt;code&gt;&#91;A-Za-z0-9!_.*'()/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Prefix" /></td>
+    <td><CopyableCode code="s3_prefix" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket prefix. (pattern: &lt;code&gt;&#91;A-Za-z0-9!_.*'()/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The mailbox export job start timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the mailbox export job. (RUNNING, COMPLETED, FAILED, CANCELLED)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Jobs" /></td>
+    <td><CopyableCode code="jobs" /></td>
     <td><code>array</code></td>
     <td>The mailbox export job details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. (pattern: &lt;code&gt;&#91;\S\s&#93;*|&#91;a-zA-Z0-9/+=&#93;&#123;1,1024&#125;&lt;/code&gt;)</td>
 </tr>
@@ -207,18 +207,18 @@ Describes the current status of a mailbox export job.
 
 ```sql
 SELECT
-Description,
-EndTime,
-EntityId,
-ErrorInfo,
-EstimatedProgress,
-KmsKeyArn,
-RoleArn,
-S3BucketName,
-S3Path,
-S3Prefix,
-StartTime,
-State
+description,
+end_time,
+entity_id,
+error_info,
+estimated_progress,
+kms_key_arn,
+role_arn,
+s3_bucket_name,
+s3_path,
+s3_prefix,
+start_time,
+state
 FROM aws.workmail.mailbox_export_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,8 +230,8 @@ Lists the mailbox export jobs started for the specified organization within the 
 
 ```sql
 SELECT
-Jobs,
-NextToken
+jobs,
+next_token
 FROM aws.workmail.mailbox_export_jobs
 WHERE region = '{{ region }}' -- required
 ;

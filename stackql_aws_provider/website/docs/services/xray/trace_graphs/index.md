@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the Amazon Web Services account in which the service runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationHistogram" /></td>
+    <td><CopyableCode code="duration_histogram" /></td>
     <td><code>array</code></td>
     <td>A histogram that maps the spread of service durations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Edges" /></td>
+    <td><CopyableCode code="edges" /></td>
     <td><code>array</code></td>
     <td>Connections to downstream services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the last segment that the service generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The canonical name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Names" /></td>
+    <td><CopyableCode code="names" /></td>
     <td><code>array</code></td>
     <td>A list of names for the service, including the canonical name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferenceId" /></td>
+    <td><CopyableCode code="reference_id" /></td>
     <td><code>integer</code></td>
     <td>Identifier for the service. Unique within the service map.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseTimeHistogram" /></td>
+    <td><CopyableCode code="response_time_histogram" /></td>
     <td><code>array</code></td>
     <td>A histogram that maps the spread of service response times.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Root" /></td>
+    <td><CopyableCode code="root" /></td>
     <td><code>boolean</code></td>
     <td>Indicates that the service was the first service to process a request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the first segment that the service generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The service's state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SummaryStatistics" /></td>
+    <td><CopyableCode code="summary_statistics" /></td>
     <td><code>object</code></td>
     <td>Aggregated statistics for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of service. Amazon Web Services Resource - The type of an Amazon Web Services resource. For example, AWS::EC2::Instance for an application running on Amazon EC2 or AWS::DynamoDB::Table for an Amazon DynamoDB table that the application used. Amazon Web Services Service - The type of an Amazon Web Services service. For example, AWS::DynamoDB for downstream calls to Amazon DynamoDB that didn't target a specific table. client - Represents the clients that sent requests to a root service. remote - A downstream service of indeterminate type.</td>
 </tr>
@@ -179,19 +179,19 @@ Retrieves a service graph for one or more specific trace IDs.
 
 ```sql
 SELECT
-AccountId,
-DurationHistogram,
-Edges,
-EndTime,
-Name,
-Names,
-ReferenceId,
-ResponseTimeHistogram,
-Root,
-StartTime,
-State,
-SummaryStatistics,
-Type
+account_id,
+duration_histogram,
+edges,
+end_time,
+name,
+names,
+reference_id,
+response_time_histogram,
+root,
+start_time,
+state,
+summary_statistics,
+type
 FROM aws.xray.trace_graphs
 WHERE region = '{{ region }}' -- required
 ;

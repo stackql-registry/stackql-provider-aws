@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique name of the disk. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addOns" /></td>
+    <td><CopyableCode code="add_ons" /></td>
     <td><code>array</code></td>
     <td>An array of objects representing the add-ons enabled on the disk.</td>
 </tr>
@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the disk. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachedTo" /></td>
+    <td><CopyableCode code="attached_to" /></td>
     <td><code>string</code></td>
     <td>The resources to which the disk is attached. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachmentState" /></td>
+    <td><CopyableCode code="attachment_state" /></td>
     <td><code>string</code></td>
     <td>(Discontinued) The attachment state of the disk. In releases prior to November 14, 2017, this parameter returned attached for system disks in the API response. It is now discontinued, but still included in the response. Use isAttached instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoMountStatus" /></td>
+    <td><CopyableCode code="auto_mount_status" /></td>
     <td><code>string</code></td>
     <td>The status of automatically mounting a storage disk to a virtual computer. This parameter only applies to Lightsail for Research resources. (Failed, Pending, Mounted, NotMounted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the disk was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gbInUse" /></td>
+    <td><CopyableCode code="gb_in_use" /></td>
     <td><code>integer</code></td>
     <td>(Discontinued) The number of GB in use by the disk. In releases prior to November 14, 2017, this parameter was not included in the API response. It is now discontinued.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The input/output operations per second (IOPS) of the disk.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAttached" /></td>
+    <td><CopyableCode code="is_attached" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the disk is attached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSystemDisk" /></td>
+    <td><CopyableCode code="is_system_disk" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether this disk is a system disk (has an operating system loaded on it).</td>
 </tr>
@@ -116,12 +116,12 @@ The following fields are returned by `SELECT` queries:
     <td>The disk path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type (Disk). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the disk in GB.</td>
 </tr>
@@ -131,7 +131,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the status of the disk. (pending, error, available, in-use, unknown)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique name of the disk. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addOns" /></td>
+    <td><CopyableCode code="add_ons" /></td>
     <td><code>array</code></td>
     <td>An array of objects representing the add-ons enabled on the disk.</td>
 </tr>
@@ -170,27 +170,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the disk. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachedTo" /></td>
+    <td><CopyableCode code="attached_to" /></td>
     <td><code>string</code></td>
     <td>The resources to which the disk is attached. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachmentState" /></td>
+    <td><CopyableCode code="attachment_state" /></td>
     <td><code>string</code></td>
     <td>(Discontinued) The attachment state of the disk. In releases prior to November 14, 2017, this parameter returned attached for system disks in the API response. It is now discontinued, but still included in the response. Use isAttached instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoMountStatus" /></td>
+    <td><CopyableCode code="auto_mount_status" /></td>
     <td><code>string</code></td>
     <td>The status of automatically mounting a storage disk to a virtual computer. This parameter only applies to Lightsail for Research resources. (Failed, Pending, Mounted, NotMounted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the disk was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gbInUse" /></td>
+    <td><CopyableCode code="gb_in_use" /></td>
     <td><code>integer</code></td>
     <td>(Discontinued) The number of GB in use by the disk. In releases prior to November 14, 2017, this parameter was not included in the API response. It is now discontinued.</td>
 </tr>
@@ -200,12 +200,12 @@ The following fields are returned by `SELECT` queries:
     <td>The input/output operations per second (IOPS) of the disk.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAttached" /></td>
+    <td><CopyableCode code="is_attached" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the disk is attached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSystemDisk" /></td>
+    <td><CopyableCode code="is_system_disk" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether this disk is a system disk (has an operating system loaded on it).</td>
 </tr>
@@ -220,12 +220,12 @@ The following fields are returned by `SELECT` queries:
     <td>The disk path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type (Disk). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the disk in GB.</td>
 </tr>
@@ -235,7 +235,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the status of the disk. (pending, error, available, in-use, unknown)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -353,22 +353,22 @@ Returns information about a specific block storage disk.
 ```sql
 SELECT
 name,
-addOns,
+add_ons,
 arn,
-attachedTo,
-attachmentState,
-autoMountStatus,
-createdAt,
-gbInUse,
+attached_to,
+attachment_state,
+auto_mount_status,
+created_at,
+gb_in_use,
 iops,
-isAttached,
-isSystemDisk,
+is_attached,
+is_system_disk,
 location,
 path,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.disks
 WHERE region = '{{ region }}' -- required
@@ -382,22 +382,22 @@ Returns information about all block storage disks in your AWS account and region
 ```sql
 SELECT
 name,
-addOns,
+add_ons,
 arn,
-attachedTo,
-attachmentState,
-autoMountStatus,
-createdAt,
-gbInUse,
+attached_to,
+attachment_state,
+auto_mount_status,
+created_at,
+gb_in_use,
 iops,
-isAttached,
-isSystemDisk,
+is_attached,
+is_system_disk,
 location,
 path,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.disks
 WHERE region = '{{ region }}' -- required

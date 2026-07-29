@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationConfigArn" /></td>
+    <td><CopyableCode code="replication_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the replication config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationTableStatistics" /></td>
+    <td><CopyableCode code="replication_table_statistics" /></td>
     <td><code>array</code></td>
     <td>Returns table statistics on the replication, including table name, rows inserted, rows updated, and rows deleted.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns table and schema statistics for one or more provisioned replications tha
 
 ```sql
 SELECT
-Marker,
-ReplicationConfigArn,
-ReplicationTableStatistics
+marker,
+replication_config_arn,
+replication_table_statistics
 FROM aws.dms.replication_table_statistics
 WHERE region = '{{ region }}' -- required
 ;

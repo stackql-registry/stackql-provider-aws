@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttemptCount" /></td>
+    <td><CopyableCode code="attempt_count" /></td>
     <td><code>integer</code></td>
     <td>The current attempt of the execution step. For more information, see Retry Policy for SageMaker Pipelines steps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheHitResult" /></td>
+    <td><CopyableCode code="cache_hit_result" /></td>
     <td><code>object</code></td>
     <td>If this pipeline execution step was cached, details on the cache hit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the step stopped executing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason why the step failed execution. This is only returned if the step failed its execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>Metadata to run the pipeline step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectiveExecutionResult" /></td>
+    <td><CopyableCode code="selective_execution_result" /></td>
     <td><code>object</code></td>
     <td>The ARN from an execution of the current pipeline from which results are reused for this step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the step started executing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepDescription" /></td>
+    <td><CopyableCode code="step_description" /></td>
     <td><code>string</code></td>
     <td>The description of the step. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepDisplayName" /></td>
+    <td><CopyableCode code="step_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the step. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepName" /></td>
+    <td><CopyableCode code="step_name" /></td>
     <td><code>string</code></td>
     <td>The name of the step that is executed. (pattern: &lt;code&gt;&#91;A-Za-z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepStatus" /></td>
+    <td><CopyableCode code="step_status" /></td>
     <td><code>string</code></td>
     <td>The status of the step execution. (Starting, Executing, Stopping, Stopped, Failed, Succeeded)</td>
 </tr>
@@ -183,17 +183,17 @@ Gets a list of PipeLineExecutionStep objects.
 
 ```sql
 SELECT
-AttemptCount,
-CacheHitResult,
-EndTime,
-FailureReason,
-Metadata,
-SelectiveExecutionResult,
-StartTime,
-StepDescription,
-StepDisplayName,
-StepName,
-StepStatus
+attempt_count,
+cache_hit_result,
+end_time,
+failure_reason,
+metadata,
+selective_execution_result,
+start_time,
+step_description,
+step_display_name,
+step_name,
+step_status
 FROM aws.sagemaker.pipeline_execution_steps
 WHERE region = '{{ region }}' -- required
 ;

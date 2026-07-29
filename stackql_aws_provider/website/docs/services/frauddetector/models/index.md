@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The array of models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token to be used in subsequent requests.</td>
 </tr>
@@ -146,7 +146,7 @@ Gets one or more models. Gets all models for the Amazon Web Services account if 
 ```sql
 SELECT
 models,
-nextToken
+next_token
 FROM aws.frauddetector.models
 WHERE region = '{{ region }}' -- required
 ;

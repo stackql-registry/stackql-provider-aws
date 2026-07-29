@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time the pipeline was created, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineName" /></td>
+    <td><CopyableCode code="pipeline_name" /></td>
     <td><code>string</code></td>
     <td>The name of the pipeline for which you want to get the state. (pattern: &lt;code&gt;&#91;A-Za-z0-9.@\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineVersion" /></td>
+    <td><CopyableCode code="pipeline_version" /></td>
     <td><code>integer</code></td>
     <td>The version number of the pipeline. A newly created pipeline is always assigned a version number of 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageStates" /></td>
+    <td><CopyableCode code="stage_states" /></td>
     <td><code>array</code></td>
     <td>A list of the pipeline stage output information, including stage name, state, most recent run details, whether the stage is disabled, and other data.</td>
 </tr>
@@ -140,9 +140,9 @@ Returns information about the state of a pipeline, including the stages and acti
 ```sql
 SELECT
 created,
-pipelineName,
-pipelineVersion,
-stageStates,
+pipeline_name,
+pipeline_version,
+stage_states,
 updated
 FROM aws.codepipeline.pipeline_states
 WHERE region = '{{ region }}' -- required

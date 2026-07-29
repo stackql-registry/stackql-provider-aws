@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>string</code></td>
     <td>The details of the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentStatuses" /></td>
+    <td><CopyableCode code="attachment_statuses" /></td>
     <td><code>string</code></td>
     <td>Information about the instances to which the volume is attached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Events" /></td>
+    <td><CopyableCode code="events" /></td>
     <td><code>string</code></td>
     <td>A list of events associated with the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitializationStatusDetails" /></td>
+    <td><CopyableCode code="initialization_status_details" /></td>
     <td><code>string</code></td>
     <td>Information about the volume initialization. It can take up to 5 minutes for the volume initialization information to be updated. Only available for volumes created from snapshots. Not available for empty volumes created without a snapshot. For more information, see Initialize Amazon EBS volumes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The service provider that manages the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The volume ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeStatus" /></td>
+    <td><CopyableCode code="volume_status" /></td>
     <td><code>string</code></td>
     <td>The volume status.</td>
 </tr>
@@ -194,16 +194,16 @@ Describes the status of the specified volumes. Volume status provides the result
 
 ```sql
 SELECT
-Actions,
-AttachmentStatuses,
-AvailabilityZone,
-AvailabilityZoneId,
-Events,
-InitializationStatusDetails,
-Operator,
-OutpostArn,
-VolumeId,
-VolumeStatus
+actions,
+attachment_statuses,
+availability_zone,
+availability_zone_id,
+events,
+initialization_status_details,
+operator,
+outpost_arn,
+volume_id,
+volume_status
 FROM aws.ec2.volume_status
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

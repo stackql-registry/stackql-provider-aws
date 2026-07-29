@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CidrBlock" /></td>
+    <td><CopyableCode code="cidr_block" /></td>
     <td><code>string</code></td>
     <td>Value for the CIDR block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationName" /></td>
+    <td><CopyableCode code="location_name" /></td>
     <td><code>string</code></td>
     <td>The location name of the CIDR block.</td>
 </tr>
@@ -144,8 +144,8 @@ Returns a paginated list of location objects and their CIDR blocks.
 
 ```sql
 SELECT
-CidrBlock,
-LocationName
+cidr_block,
+location_name
 FROM aws.route53.cidr_blocks
 WHERE cidr_collection_id = '{{ cidr_collection_id }}' -- required
 AND region = '{{ region }}' -- required

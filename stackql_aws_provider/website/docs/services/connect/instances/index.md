@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Instance" /></td>
+    <td><CopyableCode code="instance" /></td>
     <td><code>object</code></td>
     <td>The name of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationConfiguration" /></td>
+    <td><CopyableCode code="replication_configuration" /></td>
     <td><code>object</code></td>
     <td>Status information about the replication process. This field is included only when you are using the ReplicateInstance API to replicate an Amazon Connect instance across Amazon Web Services Regions. For information about replicating Amazon Connect instances, see Create a replica of your existing Amazon Connect instance in the Amazon Connect Administrator Guide.</td>
 </tr>
@@ -75,52 +75,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityManagementType" /></td>
+    <td><CopyableCode code="identity_management_type" /></td>
     <td><code>string</code></td>
     <td>The identity management type of the instance. (SAML, CONNECT_MANAGED, EXISTING_DIRECTORY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InboundCallsEnabled" /></td>
+    <td><CopyableCode code="inbound_calls_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether inbound calls are enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceAccessUrl" /></td>
+    <td><CopyableCode code="instance_access_url" /></td>
     <td><code>string</code></td>
     <td>This URL allows contact center users to access the Amazon Connect admin website.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceAlias" /></td>
+    <td><CopyableCode code="instance_alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the instance. (pattern: &lt;code&gt;^(?!d-)(&#91;\da-zA-Z&#93;+)(&#91;-&#93;*&#91;\da-zA-Z&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceStatus" /></td>
+    <td><CopyableCode code="instance_status" /></td>
     <td><code>string</code></td>
     <td>The state of the instance. (CREATION_IN_PROGRESS, ACTIVE, CREATION_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundCallsEnabled" /></td>
+    <td><CopyableCode code="outbound_calls_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether outbound calls are enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The service role of the instance.</td>
 </tr>
@@ -465,8 +465,8 @@ This API is in preview release for Amazon Connect and is subject to change. Retu
 
 ```sql
 SELECT
-Instance,
-ReplicationConfiguration
+instance,
+replication_configuration
 FROM aws.connect.instances
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -479,16 +479,16 @@ This API is in preview release for Amazon Connect and is subject to change. Retu
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Id,
-IdentityManagementType,
-InboundCallsEnabled,
-InstanceAccessUrl,
-InstanceAlias,
-InstanceStatus,
-OutboundCallsEnabled,
-ServiceRole
+arn,
+created_time,
+id,
+identity_management_type,
+inbound_calls_enabled,
+instance_access_url,
+instance_alias,
+instance_status,
+outbound_calls_enabled,
+service_role
 FROM aws.connect.instances
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -534,7 +534,7 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-RegistrationId
+registration_id
 ;
 ```
 </TabItem>
@@ -559,7 +559,7 @@ SELECT
 '{{ initial_contact_id }}',
 '{{ region }}'
 RETURNING
-ContinuedFromContactId
+continued_from_contact_id
 ;
 ```
 </TabItem>
@@ -588,8 +588,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>
@@ -612,8 +612,8 @@ SELECT
 '{{ ParticipantDetails }}' /* required */,
 '{{ region }}'
 RETURNING
-ParticipantCredentials,
-ParticipantId
+participant_credentials,
+participant_id
 ;
 ```
 </TabItem>
@@ -758,10 +758,10 @@ instance_id = '{{ instance_id }}' --required
 AND region = '{{ region }}' --required
 AND DataSetId = '{{ DataSetId }}' --required
 RETURNING
-DataSetId,
-ResourceShareArn,
-ResourceShareId,
-TargetAccountId;
+data_set_id,
+resource_share_arn,
+resource_share_id,
+target_account_id;
 ```
 </TabItem>
 <TabItem value="update_participant_authentication">

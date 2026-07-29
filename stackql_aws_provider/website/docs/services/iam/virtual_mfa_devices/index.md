@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Base32StringSeed" /></td>
+    <td><CopyableCode code="base_32_string_seed" /></td>
     <td><code>string</code></td>
     <td>The base32 seed defined as specified in RFC3548. The Base32StringSeed is base32-encoded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableDate" /></td>
+    <td><CopyableCode code="enable_date" /></td>
     <td><code>string</code></td>
     <td>The date and time on which the virtual MFA device was enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QRCodePNG" /></td>
+    <td><CopyableCode code="qr_code_png" /></td>
     <td><code>string</code></td>
     <td>A QR code PNG image that encodes otpauth:​//totp/$virtualMFADeviceName@$AccountName?secret=$Base32String where $virtualMFADeviceName is one of the create call arguments. AccountName is the user name if set (otherwise, the account ID otherwise), and Base32String is the seed in base32 format. The Base32String value is base64-encoded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The serial number associated with VirtualMFADevice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the virtual MFA device. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="User" /></td>
+    <td><CopyableCode code="user" /></td>
     <td><code>string</code></td>
     <td>The IAM user associated with this virtual MFA device.</td>
 </tr>
@@ -193,12 +193,12 @@ Lists the virtual MFA devices defined in the Amazon Web Services account by assi
 
 ```sql
 SELECT
-Base32StringSeed,
-EnableDate,
-QRCodePNG,
-SerialNumber,
-Tags,
-User
+base_32_string_seed,
+enable_date,
+qr_code_png,
+serial_number,
+tags,
+user
 FROM aws.iam.virtual_mfa_devices
 WHERE region = '{{ region }}' -- required
 AND AssignmentStatus = '{{ AssignmentStatus }}'
@@ -236,12 +236,12 @@ SELECT
 '{{ Path }}',
 '{{ Tags }}'
 RETURNING
-Base32StringSeed,
-EnableDate,
-QRCodePNG,
-SerialNumber,
-Tags,
-User
+base_32_string_seed,
+enable_date,
+qr_code_png,
+serial_number,
+tags,
+user
 ;
 ```
 </TabItem>

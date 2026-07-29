@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExclusionList" /></td>
+    <td><CopyableCode code="exclusion_list" /></td>
     <td><code>object</code></td>
     <td>List of Amazon Web Services services excluded from Automatic Management. You won't be notified of Service Quotas utilization for Amazon Web Services services added to the Automatic Management exclusion list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationArn" /></td>
+    <td><CopyableCode code="notification_arn" /></td>
     <td><code>string</code></td>
     <td>The User Notifications Amazon Resource Name (ARN) for Automatic Management notifications. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:*:.+:&#91;0-9&#93;&#123;12&#125;:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptInLevel" /></td>
+    <td><CopyableCode code="opt_in_level" /></td>
     <td><code>string</code></td>
     <td>Information on the opt-in level for Automatic Management. Only Amazon Web Services account level is supported. (ACCOUNT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptInStatus" /></td>
+    <td><CopyableCode code="opt_in_status" /></td>
     <td><code>string</code></td>
     <td>Status on whether Automatic Management is started or stopped. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptInType" /></td>
+    <td><CopyableCode code="opt_in_type" /></td>
     <td><code>string</code></td>
     <td>Information on the opt-in type for Automatic Management. There are two modes: Notify only and Notify and Auto-Adjust. Currently, only NotifyOnly is available. (NotifyOnly, NotifyAndAdjust)</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves information about your Service Quotas Automatic Management configurati
 
 ```sql
 SELECT
-ExclusionList,
-NotificationArn,
-OptInLevel,
-OptInStatus,
-OptInType
+exclusion_list,
+notification_arn,
+opt_in_level,
+opt_in_status,
+opt_in_type
 FROM aws.service_quotas.auto_management_configurations
 WHERE region = '{{ region }}' -- required
 ;

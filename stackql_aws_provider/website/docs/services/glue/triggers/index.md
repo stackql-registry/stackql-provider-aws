@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Triggers" /></td>
+    <td><CopyableCode code="triggers" /></td>
     <td><code>array</code></td>
     <td>A list of trigger definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggersNotFound" /></td>
+    <td><CopyableCode code="triggers_not_found" /></td>
     <td><code>array</code></td>
     <td>A list of names of triggers not found.</td>
 </tr>
@@ -75,52 +75,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>array</code></td>
     <td>The actions initiated by this trigger.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of this trigger. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBatchingCondition" /></td>
+    <td><CopyableCode code="event_batching_condition" /></td>
     <td><code>object</code></td>
     <td>Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the trigger. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Predicate" /></td>
+    <td><CopyableCode code="predicate" /></td>
     <td><code>object</code></td>
     <td>The predicate of this trigger, which defines when it will fire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>A cron expression used to specify the schedule (see Time-Based Schedules for Jobs and Crawlers. For example, to run something every day at 12:15 UTC, you would specify: cron(15 12 * * ? *).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the trigger. (CREATING, CREATED, ACTIVATING, ACTIVATED, DEACTIVATING, DEACTIVATED, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of trigger that this is. (SCHEDULED, CONDITIONAL, ON_DEMAND, EVENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowName" /></td>
+    <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow associated with the trigger. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -232,8 +232,8 @@ Returns a list of resource metadata for a given list of trigger names. After cal
 
 ```sql
 SELECT
-Triggers,
-TriggersNotFound
+triggers,
+triggers_not_found
 FROM aws.glue.triggers
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,16 +245,16 @@ Retrieves the definition of a trigger.
 
 ```sql
 SELECT
-Actions,
-Description,
-EventBatchingCondition,
-Id,
-Name,
-Predicate,
-Schedule,
-State,
-Type,
-WorkflowName
+actions,
+description,
+event_batching_condition,
+id,
+name,
+predicate,
+schedule,
+state,
+type,
+workflow_name
 FROM aws.glue.triggers
 WHERE region = '{{ region }}' -- required
 ;
@@ -303,7 +303,7 @@ SELECT
 '{{ EventBatchingCondition }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -399,7 +399,7 @@ WHERE
 region = '{{ region }}' --required
 AND TriggerUpdate = '{{ TriggerUpdate }}' --required
 RETURNING
-Trigger;
+trigger;
 ```
 </TabItem>
 </Tabs>

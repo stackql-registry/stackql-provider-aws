@@ -66,42 +66,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authType" /></td>
+    <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
     <td>The type of IAM policy. (NONE, AWS_IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate. (pattern: &lt;code&gt;(arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:certificate/&#91;0-9a-z-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsEntry" /></td>
+    <td><CopyableCode code="dns_entry" /></td>
     <td><code>object</code></td>
     <td>The DNS name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>The failure code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>The failure message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service was last updated, in ISO-8601 format.</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsEntry" /></td>
+    <td><CopyableCode code="dns_entry" /></td>
     <td><code>object</code></td>
     <td>The DNS information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service was last updated, in ISO-8601 format.</td>
 </tr>
@@ -276,14 +276,14 @@ SELECT
 id,
 name,
 arn,
-authType,
-certificateArn,
-createdAt,
-customDomainName,
-dnsEntry,
-failureCode,
-failureMessage,
-lastUpdatedAt,
+auth_type,
+certificate_arn,
+created_at,
+custom_domain_name,
+dns_entry,
+failure_code,
+failure_message,
+last_updated_at,
 status
 FROM aws.vpc_lattice.services
 WHERE service_identifier = '{{ service_identifier }}' -- required
@@ -300,10 +300,10 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-customDomainName,
-dnsEntry,
-lastUpdatedAt,
+created_at,
+custom_domain_name,
+dns_entry,
+last_updated_at,
 status
 FROM aws.vpc_lattice.services
 WHERE region = '{{ region }}' -- required
@@ -350,10 +350,10 @@ RETURNING
 id,
 name,
 arn,
-authType,
-certificateArn,
-customDomainName,
-dnsEntry,
+auth_type,
+certificate_arn,
+custom_domain_name,
+dns_entry,
 status
 ;
 ```
@@ -409,9 +409,9 @@ RETURNING
 id,
 name,
 arn,
-authType,
-certificateArn,
-customDomainName;
+auth_type,
+certificate_arn,
+custom_domain_name;
 ```
 </TabItem>
 </Tabs>

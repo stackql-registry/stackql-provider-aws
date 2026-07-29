@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the landing zone. (pattern: &lt;code&gt;arn:aws&#91;0-9a-zA-Z_\-:\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="driftStatus" /></td>
+    <td><CopyableCode code="drift_status" /></td>
     <td><code>object</code></td>
     <td>The drift status of the landing zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestAvailableVersion" /></td>
+    <td><CopyableCode code="latest_available_version" /></td>
     <td><code>string</code></td>
     <td>The latest available version of the landing zone. (pattern: &lt;code&gt;\d+.\d+&lt;/code&gt;)</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The landing zone manifest JSON text file that specifies the landing zone configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remediationTypes" /></td>
+    <td><CopyableCode code="remediation_types" /></td>
     <td><code>array</code></td>
     <td>The types of remediation actions configured for the landing zone, such as automatic drift correction or compliance enforcement.</td>
 </tr>
@@ -206,10 +206,10 @@ Returns details about the landing zone. Displays a message in case of error.
 ```sql
 SELECT
 arn,
-driftStatus,
-latestAvailableVersion,
+drift_status,
+latest_available_version,
 manifest,
-remediationTypes,
+remediation_types,
 status,
 version
 FROM aws.controltower.landing_zones
@@ -261,7 +261,7 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-operationIdentifier
+operation_identifier
 ;
 ```
 </TabItem>
@@ -312,7 +312,7 @@ region = '{{ region }}' --required
 AND version = '{{ version }}' --required
 AND landingZoneIdentifier = '{{ landingZoneIdentifier }}' --required
 RETURNING
-operationIdentifier;
+operation_identifier;
 ```
 </TabItem>
 </Tabs>

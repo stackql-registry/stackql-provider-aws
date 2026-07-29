@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of this Amazon DataZone blueprint. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when this blueprint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentProperties" /></td>
+    <td><CopyableCode code="deployment_properties" /></td>
     <td><code>object</code></td>
     <td>The deployment properties of this Amazon DataZone blueprint.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of this Amazon DataZone blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="glossaryTerms" /></td>
+    <td><CopyableCode code="glossary_terms" /></td>
     <td><code>array</code></td>
     <td>The glossary terms attached to this Amazon DataZone blueprint.</td>
 </tr>
@@ -86,17 +86,17 @@ The following fields are returned by `SELECT` queries:
     <td>The provider of this Amazon DataZone blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningProperties" /></td>
+    <td><CopyableCode code="provisioning_properties" /></td>
     <td><code>object</code></td>
     <td>The provisioning properties of an environment blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this blueprint was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userParameters" /></td>
+    <td><CopyableCode code="user_parameters" /></td>
     <td><code>array</code></td>
     <td>The user parameters of this blueprint.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the blueprint. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when an environment blueprint was created.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The provider of the blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningProperties" /></td>
+    <td><CopyableCode code="provisioning_properties" /></td>
     <td><code>object</code></td>
     <td>The provisioning properties of an environment blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the blueprint was enabled.</td>
 </tr>
@@ -275,14 +275,14 @@ Gets an Amazon DataZone blueprint.
 SELECT
 id,
 name,
-createdAt,
-deploymentProperties,
+created_at,
+deployment_properties,
 description,
-glossaryTerms,
+glossary_terms,
 provider,
-provisioningProperties,
-updatedAt,
-userParameters
+provisioning_properties,
+updated_at,
+user_parameters
 FROM aws.datazone.environment_blueprints
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -298,11 +298,11 @@ Lists blueprints in an Amazon DataZone environment.
 SELECT
 id,
 name,
-createdAt,
+created_at,
 description,
 provider,
-provisioningProperties,
-updatedAt
+provisioning_properties,
+updated_at
 FROM aws.datazone.environment_blueprints
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -348,14 +348,14 @@ SELECT
 RETURNING
 id,
 name,
-createdAt,
-deploymentProperties,
+created_at,
+deployment_properties,
 description,
-glossaryTerms,
+glossary_terms,
 provider,
-provisioningProperties,
-updatedAt,
-userParameters
+provisioning_properties,
+updated_at,
+user_parameters
 ;
 ```
 </TabItem>
@@ -420,14 +420,14 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-createdAt,
-deploymentProperties,
+created_at,
+deployment_properties,
 description,
-glossaryTerms,
+glossary_terms,
 provider,
-provisioningProperties,
-updatedAt,
-userParameters;
+provisioning_properties,
+updated_at,
+user_parameters;
 ```
 </TabItem>
 </Tabs>

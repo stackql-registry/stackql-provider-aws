@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LensReview" /></td>
+    <td><CopyableCode code="lens_review" /></td>
     <td><code>object</code></td>
     <td>A lens review of a question.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The review template ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-iso(-&#91;a-z&#93;)?|-cn)?:wellarchitected:&#91;a-z&#93;&#123;2&#125;(-gov|-iso(&#91;a-z&#93;)?)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:(review-template)/&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -141,8 +141,8 @@ Get a lens review associated with a review template.
 
 ```sql
 SELECT
-LensReview,
-TemplateArn
+lens_review,
+template_arn
 FROM aws.wellarchitected.review_template_lens_reviews
 WHERE template_arn = '{{ template_arn }}' -- required
 AND lens_alias = '{{ lens_alias }}' -- required
@@ -175,8 +175,8 @@ template_arn = '{{ template_arn }}' --required
 AND lens_alias = '{{ lens_alias }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-LensReview,
-TemplateArn;
+lens_review,
+template_arn;
 ```
 </TabItem>
 </Tabs>

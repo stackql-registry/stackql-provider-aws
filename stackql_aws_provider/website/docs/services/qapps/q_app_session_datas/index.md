@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that indicates the next set of results to retrieve.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Q App data collection session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionData" /></td>
+    <td><CopyableCode code="session_data" /></td>
     <td><code>array</code></td>
     <td>The collected responses of a Q App session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Q App data collection session. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -144,10 +144,10 @@ Lists the collected data of a Q App data collection session.
 
 ```sql
 SELECT
-nextToken,
-sessionArn,
-sessionData,
-sessionId
+next_token,
+session_arn,
+session_data,
+session_id
 FROM aws.qapps.q_app_session_datas
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND sessionId = '{{ sessionId }}' -- required

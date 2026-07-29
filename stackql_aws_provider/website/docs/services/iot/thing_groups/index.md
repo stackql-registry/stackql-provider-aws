@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="indexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The dynamic thing group index name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The dynamic thing group search query string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryVersion" /></td>
+    <td><CopyableCode code="query_version" /></td>
     <td><code>string</code></td>
     <td>The dynamic thing group query version.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>The dynamic thing group status. (ACTIVE, BUILDING, REBUILDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingGroupArn" /></td>
+    <td><CopyableCode code="thing_group_arn" /></td>
     <td><code>string</code></td>
     <td>The thing group ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingGroupId" /></td>
+    <td><CopyableCode code="thing_group_id" /></td>
     <td><code>string</code></td>
     <td>The thing group ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingGroupMetadata" /></td>
+    <td><CopyableCode code="thing_group_metadata" /></td>
     <td><code>object</code></td>
     <td>Thing group metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingGroupName" /></td>
+    <td><CopyableCode code="thing_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingGroupProperties" /></td>
+    <td><CopyableCode code="thing_group_properties" /></td>
     <td><code>object</code></td>
     <td>Thing group properties.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="groupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The group ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The group name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -288,15 +288,15 @@ Describe a thing group. Requires permission to access the DescribeThingGroup act
 
 ```sql
 SELECT
-indexName,
-queryString,
-queryVersion,
+index_name,
+query_string,
+query_version,
 status,
-thingGroupArn,
-thingGroupId,
-thingGroupMetadata,
-thingGroupName,
-thingGroupProperties,
+thing_group_arn,
+thing_group_id,
+thing_group_metadata,
+thing_group_name,
+thing_group_properties,
 version
 FROM aws.iot.thing_groups
 WHERE thing_group_name = '{{ thing_group_name }}' -- required
@@ -310,8 +310,8 @@ List the thing groups in your account. Requires permission to access the ListThi
 
 ```sql
 SELECT
-groupArn,
-groupName
+group_arn,
+group_name
 FROM aws.iot.thing_groups
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -358,12 +358,12 @@ SELECT
 '{{ thing_group_name }}',
 '{{ region }}'
 RETURNING
-indexName,
-queryString,
-queryVersion,
-thingGroupArn,
-thingGroupId,
-thingGroupName
+index_name,
+query_string,
+query_version,
+thing_group_arn,
+thing_group_id,
+thing_group_name
 ;
 ```
 </TabItem>
@@ -386,9 +386,9 @@ SELECT
 '{{ thing_group_name }}',
 '{{ region }}'
 RETURNING
-thingGroupArn,
-thingGroupId,
-thingGroupName
+thing_group_arn,
+thing_group_id,
+thing_group_name
 ;
 ```
 </TabItem>

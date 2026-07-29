@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Baseline" /></td>
+    <td><CopyableCode code="baseline" /></td>
     <td><code>object</code></td>
     <td>Metrics you can use as a baseline for comparison purposes. Use these values you interpret monitoring results for an auto predictor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the monitor resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedEvaluationTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_evaluation_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The estimated number of minutes remaining before the monitor resource finishes its current evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastEvaluationState" /></td>
+    <td><CopyableCode code="last_evaluation_state" /></td>
     <td><code>string</code></td>
     <td>The state of the monitor's latest evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastEvaluationTime" /></td>
+    <td><CopyableCode code="last_evaluation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the latest evaluation completed by the monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the latest modification to the monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>An error message, if any, for the monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitor resource described. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the auto predictor being monitored. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the monitor resource.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the monitor resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the monitor resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. STOPPED - When the resource stopped. ACTIVE or CREATE_FAILED - When the monitor creation finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitor resource. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor resource. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the predictor being monitored. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the monitor. States include: ACTIVE ACTIVE_STOPPING, ACTIVE_STOPPED UPDATE_IN_PROGRESS CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
@@ -236,17 +236,17 @@ Describes a monitor resource. In addition to listing the properties provided in 
 
 ```sql
 SELECT
-Baseline,
-CreationTime,
-EstimatedEvaluationTimeRemainingInMinutes,
-LastEvaluationState,
-LastEvaluationTime,
-LastModificationTime,
-Message,
-MonitorArn,
-MonitorName,
-ResourceArn,
-Status
+baseline,
+creation_time,
+estimated_evaluation_time_remaining_in_minutes,
+last_evaluation_state,
+last_evaluation_time,
+last_modification_time,
+message,
+monitor_arn,
+monitor_name,
+resource_arn,
+status
 FROM aws.forecast.monitors
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,12 +258,12 @@ Returns a list of monitors created with the CreateMonitor operation and CreateAu
 
 ```sql
 SELECT
-CreationTime,
-LastModificationTime,
-MonitorArn,
-MonitorName,
-ResourceArn,
-Status
+creation_time,
+last_modification_time,
+monitor_arn,
+monitor_name,
+resource_arn,
+status
 FROM aws.forecast.monitors
 WHERE region = '{{ region }}' -- required
 ;
@@ -298,7 +298,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MonitorArn
+monitor_arn
 ;
 ```
 </TabItem>

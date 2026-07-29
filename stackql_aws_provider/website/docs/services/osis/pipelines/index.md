@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BufferOptions" /></td>
+    <td><CopyableCode code="buffer_options" /></td>
     <td><code>object</code></td>
     <td>Options that specify the configuration of a persistent buffer. To configure how OpenSearch Ingestion encrypts this data, set the EncryptionAtRestOptions. For more information, see Persistent buffering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the pipeline was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>Destinations to which the pipeline writes data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionAtRestOptions" /></td>
+    <td><CopyableCode code="encryption_at_rest_options" /></td>
     <td><code>object</code></td>
     <td>Options to control how OpenSearch encrypts buffer data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestEndpointUrls" /></td>
+    <td><CopyableCode code="ingest_endpoint_urls" /></td>
     <td><code>array</code></td>
     <td>The ingestion endpoints for the pipeline, which you can send data to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the pipeline was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPublishingOptions" /></td>
+    <td><CopyableCode code="log_publishing_options" /></td>
     <td><code>object</code></td>
     <td>Container for the values required to configure logging for the pipeline. If you don't specify these values, OpenSearch Ingestion will not publish logs from your application to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxUnits" /></td>
+    <td><CopyableCode code="max_units" /></td>
     <td><code>integer</code></td>
     <td>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinUnits" /></td>
+    <td><CopyableCode code="min_units" /></td>
     <td><code>integer</code></td>
     <td>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineArn" /></td>
+    <td><CopyableCode code="pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineConfigurationBody" /></td>
+    <td><CopyableCode code="pipeline_configuration_body" /></td>
     <td><code>string</code></td>
     <td>The Data Prepper pipeline configuration in YAML format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineName" /></td>
+    <td><CopyableCode code="pipeline_name" /></td>
     <td><code>string</code></td>
     <td>The name of the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineRoleArn" /></td>
+    <td><CopyableCode code="pipeline_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that the pipeline uses to access AWS resources. (pattern: &lt;code&gt;^arn:(aws|aws\-cn|aws\-us\-gov|aws\-iso|aws\-iso\-b|aws\-iso\-e|aws\-iso\-f):iam::&#91;0-9&#93;+:role\/.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceVpcEndpoints" /></td>
+    <td><CopyableCode code="service_vpc_endpoints" /></td>
     <td><code>array</code></td>
     <td>A list of VPC endpoints that OpenSearch Ingestion has created to other Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the pipeline. (CREATING, ACTIVE, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, STARTING, START_FAILED, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>The reason for the current status of the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with the given pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointService" /></td>
+    <td><CopyableCode code="vpc_endpoint_service" /></td>
     <td><code>string</code></td>
     <td>The VPC endpoint service name for the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpoints" /></td>
+    <td><CopyableCode code="vpc_endpoints" /></td>
     <td><code>array</code></td>
     <td>The VPC interface endpoints that have access to the pipeline.</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. (pattern: &lt;code&gt;^(&#91;\s\S&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Pipelines" /></td>
+    <td><CopyableCode code="pipelines" /></td>
     <td><code>array</code></td>
     <td>A list of all existing Data Prepper pipelines.</td>
 </tr>
@@ -278,25 +278,25 @@ Retrieves information about an OpenSearch Ingestion pipeline.
 
 ```sql
 SELECT
-BufferOptions,
-CreatedAt,
-Destinations,
-EncryptionAtRestOptions,
-IngestEndpointUrls,
-LastUpdatedAt,
-LogPublishingOptions,
-MaxUnits,
-MinUnits,
-PipelineArn,
-PipelineConfigurationBody,
-PipelineName,
-PipelineRoleArn,
-ServiceVpcEndpoints,
-Status,
-StatusReason,
-Tags,
-VpcEndpointService,
-VpcEndpoints
+buffer_options,
+created_at,
+destinations,
+encryption_at_rest_options,
+ingest_endpoint_urls,
+last_updated_at,
+log_publishing_options,
+max_units,
+min_units,
+pipeline_arn,
+pipeline_configuration_body,
+pipeline_name,
+pipeline_role_arn,
+service_vpc_endpoints,
+status,
+status_reason,
+tags,
+vpc_endpoint_service,
+vpc_endpoints
 FROM aws.osis.pipelines
 WHERE pipeline_name = '{{ pipeline_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -309,8 +309,8 @@ Lists all OpenSearch Ingestion pipelines in the current Amazon Web Services acco
 
 ```sql
 SELECT
-NextToken,
-Pipelines
+next_token,
+pipelines
 FROM aws.osis.pipelines
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -361,7 +361,7 @@ SELECT
 '{{ PipelineRoleArn }}',
 '{{ region }}'
 RETURNING
-Pipeline
+pipeline
 ;
 ```
 </TabItem>
@@ -448,7 +448,7 @@ WHERE
 pipeline_name = '{{ pipeline_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Pipeline;
+pipeline;
 ```
 </TabItem>
 </Tabs>

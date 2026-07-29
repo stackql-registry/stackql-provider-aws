@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the registry was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the registry. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryName" /></td>
+    <td><CopyableCode code="registry_name" /></td>
     <td><code>string</code></td>
     <td>The name of the registry. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$#.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the registry. (AVAILABLE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the registry was updated.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The data the registry was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the registry. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryName" /></td>
+    <td><CopyableCode code="registry_name" /></td>
     <td><code>string</code></td>
     <td>The name of the registry. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$#.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the registry. (AVAILABLE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string</code></td>
     <td>The date the registry was updated.</td>
 </tr>
@@ -218,12 +218,12 @@ Describes the specified registry in detail.
 
 ```sql
 SELECT
-CreatedTime,
-Description,
-RegistryArn,
-RegistryName,
-Status,
-UpdatedTime
+created_time,
+description,
+registry_arn,
+registry_name,
+status,
+updated_time
 FROM aws.glue.registries
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,12 +235,12 @@ Returns a list of registries that you have created, with minimal registry inform
 
 ```sql
 SELECT
-CreatedTime,
-Description,
-RegistryArn,
-RegistryName,
-Status,
-UpdatedTime
+created_time,
+description,
+registry_arn,
+registry_name,
+status,
+updated_time
 FROM aws.glue.registries
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,10 +275,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Description,
-RegistryArn,
-RegistryName,
-Tags
+description,
+registry_arn,
+registry_name,
+tags
 ;
 ```
 </TabItem>
@@ -329,8 +329,8 @@ WHERE
 region = '{{ region }}' --required
 AND RegistryId = '{{ RegistryId }}' --required
 RETURNING
-RegistryArn,
-RegistryName;
+registry_arn,
+registry_name;
 ```
 </TabItem>
 </Tabs>

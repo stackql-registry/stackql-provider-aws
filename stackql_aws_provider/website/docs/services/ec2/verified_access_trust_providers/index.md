@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description for the Amazon Web Services Verified Access trust provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceOptions" /></td>
+    <td><CopyableCode code="device_options" /></td>
     <td><code>string</code></td>
     <td>The options for device-identity trust provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceTrustProviderType" /></td>
+    <td><CopyableCode code="device_trust_provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of device-based trust provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The last updated time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NativeApplicationOidcOptions" /></td>
+    <td><CopyableCode code="native_application_oidc_options" /></td>
     <td><code>string</code></td>
     <td>The OpenID Connect (OIDC) options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OidcOptions" /></td>
+    <td><CopyableCode code="oidc_options" /></td>
     <td><code>string</code></td>
     <td>The options for an OpenID Connect-compatible user-identity trust provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyReferenceName" /></td>
+    <td><CopyableCode code="policy_reference_name" /></td>
     <td><code>string</code></td>
     <td>The identifier to be used when working with policy rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseSpecification" /></td>
+    <td><CopyableCode code="sse_specification" /></td>
     <td><code>string</code></td>
     <td>The options in use for server side encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustProviderType" /></td>
+    <td><CopyableCode code="trust_provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of Verified Access trust provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserTrustProviderType" /></td>
+    <td><CopyableCode code="user_trust_provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of user-based trust provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessTrustProviderId" /></td>
+    <td><CopyableCode code="verified_access_trust_provider_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Verified Access trust provider.</td>
 </tr>
@@ -304,19 +304,19 @@ Describes the specified Amazon Web Services Verified Access trust providers.
 
 ```sql
 SELECT
-CreationTime,
-Description,
-DeviceOptions,
-DeviceTrustProviderType,
-LastUpdatedTime,
-NativeApplicationOidcOptions,
-OidcOptions,
-PolicyReferenceName,
-SseSpecification,
-Tags,
-TrustProviderType,
-UserTrustProviderType,
-VerifiedAccessTrustProviderId
+creation_time,
+description,
+device_options,
+device_trust_provider_type,
+last_updated_time,
+native_application_oidc_options,
+oidc_options,
+policy_reference_name,
+sse_specification,
+tags,
+trust_provider_type,
+user_trust_provider_type,
+verified_access_trust_provider_id
 FROM aws.ec2.verified_access_trust_providers
 WHERE region = '{{ region }}' -- required
 AND VerifiedAccessTrustProviderId = '{{ VerifiedAccessTrustProviderId }}'
@@ -374,19 +374,19 @@ SELECT
 '{{ SseSpecification }}',
 '{{ NativeApplicationOidcOptions }}'
 RETURNING
-CreationTime,
-Description,
-DeviceOptions,
-DeviceTrustProviderType,
-LastUpdatedTime,
-NativeApplicationOidcOptions,
-OidcOptions,
-PolicyReferenceName,
-SseSpecification,
-Tags,
-TrustProviderType,
-UserTrustProviderType,
-VerifiedAccessTrustProviderId
+creation_time,
+description,
+device_options,
+device_trust_provider_type,
+last_updated_time,
+native_application_oidc_options,
+oidc_options,
+policy_reference_name,
+sse_specification,
+tags,
+trust_provider_type,
+user_trust_provider_type,
+verified_access_trust_provider_id
 ;
 ```
 </TabItem>
@@ -474,19 +474,19 @@ AND region = '{{ region }}' --required
 AND ClientToken = '{{ ClientToken}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-CreationTime,
-Description,
-DeviceOptions,
-DeviceTrustProviderType,
-LastUpdatedTime,
-NativeApplicationOidcOptions,
-OidcOptions,
-PolicyReferenceName,
-SseSpecification,
-Tags,
-TrustProviderType,
-UserTrustProviderType,
-VerifiedAccessTrustProviderId;
+creation_time,
+description,
+device_options,
+device_trust_provider_type,
+last_updated_time,
+native_application_oidc_options,
+oidc_options,
+policy_reference_name,
+sse_specification,
+tags,
+trust_provider_type,
+user_trust_provider_type,
+verified_access_trust_provider_id;
 ```
 </TabItem>
 <TabItem value="modify_verified_access_trust_provider">
@@ -508,19 +508,19 @@ AND ClientToken = '{{ ClientToken}}'
 AND SseSpecification = '{{ SseSpecification}}'
 AND NativeApplicationOidcOptions = '{{ NativeApplicationOidcOptions}}'
 RETURNING
-CreationTime,
-Description,
-DeviceOptions,
-DeviceTrustProviderType,
-LastUpdatedTime,
-NativeApplicationOidcOptions,
-OidcOptions,
-PolicyReferenceName,
-SseSpecification,
-Tags,
-TrustProviderType,
-UserTrustProviderType,
-VerifiedAccessTrustProviderId;
+creation_time,
+description,
+device_options,
+device_trust_provider_type,
+last_updated_time,
+native_application_oidc_options,
+oidc_options,
+policy_reference_name,
+sse_specification,
+tags,
+trust_provider_type,
+user_trust_provider_type,
+verified_access_trust_provider_id;
 ```
 </TabItem>
 </Tabs>

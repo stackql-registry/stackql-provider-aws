@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetadataModelName" /></td>
+    <td><CopyableCode code="metadata_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metadata model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectionRules" /></td>
+    <td><CopyableCode code="selection_rules" /></td>
     <td><code>string</code></td>
     <td>The JSON string representing metadata model location.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets a list of child metadata models for the specified metadata model in the dat
 
 ```sql
 SELECT
-MetadataModelName,
-SelectionRules
+metadata_model_name,
+selection_rules
 FROM aws.dms.metadata_model_childrens
 WHERE region = '{{ region }}' -- required
 ;

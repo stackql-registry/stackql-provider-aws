@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the engine for which version information is provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnginePatchVersion" /></td>
+    <td><CopyableCode code="engine_patch_version" /></td>
     <td><code>string</code></td>
     <td>The patched engine version</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The engine version</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroupFamily" /></td>
+    <td><CopyableCode code="parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the parameter group family to which the engine default parameters apply.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a list of the available Redis OSS engine versions.
 
 ```sql
 SELECT
-Engine,
-EnginePatchVersion,
-EngineVersion,
-ParameterGroupFamily
+engine,
+engine_patch_version,
+engine_version,
+parameter_group_family
 FROM aws.memorydb.engine_versions
 WHERE region = '{{ region }}' -- required
 ;

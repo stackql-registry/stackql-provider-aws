@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerConfiguration" /></td>
+    <td><CopyableCode code="authorizer_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents inbound authorization configuration options used to authenticate incoming requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>Authorizer type for the gateway. (CUSTOM_JWT, AWS_IAM, NONE, AUTHENTICATE_ONLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the gateway was created.</td>
 </tr>
@@ -76,52 +76,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exceptionLevel" /></td>
+    <td><CopyableCode code="exception_level" /></td>
     <td><code>string</code></td>
     <td>The level of detail in error messages returned when invoking the gateway. If the value is DEBUG, granular exception messages are returned to help a user debug the gateway. If the value is omitted, a generic error message is returned to the end user. (DEBUG)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:gateway/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayUrl" /></td>
+    <td><CopyableCode code="gateway_url" /></td>
     <td><code>string</code></td>
     <td>An endpoint for invoking gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interceptorConfigurations" /></td>
+    <td><CopyableCode code="interceptor_configurations" /></td>
     <td><code>array</code></td>
     <td>The interceptors configured on the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the gateway. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyEngineConfiguration" /></td>
+    <td><CopyableCode code="policy_engine_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a policy engine associated with a gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protocolConfiguration" /></td>
+    <td><CopyableCode code="protocol_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a gateway protocol. This structure defines how the gateway communicates with external services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protocolType" /></td>
+    <td><CopyableCode code="protocol_type" /></td>
     <td><code>string</code></td>
     <td>Protocol applied to a gateway. (MCP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN that provides permissions for the gateway. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -131,17 +131,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the gateway. (CREATING, UPDATING, UPDATE_UNSUCCESSFUL, DELETING, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasons" /></td>
+    <td><CopyableCode code="status_reasons" /></td>
     <td><code>array</code></td>
     <td>The reasons for the current status of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the gateway was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadIdentityDetails" /></td>
+    <td><CopyableCode code="workload_identity_details" /></td>
     <td><code>object</code></td>
     <td>The information about the workload identity.</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>The type of authorizer used by the gateway. (CUSTOM_JWT, AWS_IAM, NONE, AUTHENTICATE_ONLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the gateway was created.</td>
 </tr>
@@ -180,12 +180,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protocolType" /></td>
+    <td><CopyableCode code="protocol_type" /></td>
     <td><code>string</code></td>
     <td>The protocol type used by the gateway. (MCP)</td>
 </tr>
@@ -195,7 +195,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the gateway. (CREATING, UPDATING, UPDATE_UNSUCCESSFUL, DELETING, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the gateway was last updated.</td>
 </tr>
@@ -309,24 +309,24 @@ Retrieves information about a specific Gateway.
 ```sql
 SELECT
 name,
-authorizerConfiguration,
-authorizerType,
-createdAt,
+authorizer_configuration,
+authorizer_type,
+created_at,
 description,
-exceptionLevel,
-gatewayArn,
-gatewayId,
-gatewayUrl,
-interceptorConfigurations,
-kmsKeyArn,
-policyEngineConfiguration,
-protocolConfiguration,
-protocolType,
-roleArn,
+exception_level,
+gateway_arn,
+gateway_id,
+gateway_url,
+interceptor_configurations,
+kms_key_arn,
+policy_engine_configuration,
+protocol_configuration,
+protocol_type,
+role_arn,
 status,
-statusReasons,
-updatedAt,
-workloadIdentityDetails
+status_reasons,
+updated_at,
+workload_identity_details
 FROM aws.bedrock_agentcore_control.gateways
 WHERE gateway_identifier = '{{ gateway_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -340,13 +340,13 @@ Lists all gateways in the account.
 ```sql
 SELECT
 name,
-authorizerType,
-createdAt,
+authorizer_type,
+created_at,
 description,
-gatewayId,
-protocolType,
+gateway_id,
+protocol_type,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.gateways
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -404,24 +404,24 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-authorizerConfiguration,
-authorizerType,
-createdAt,
+authorizer_configuration,
+authorizer_type,
+created_at,
 description,
-exceptionLevel,
-gatewayArn,
-gatewayId,
-gatewayUrl,
-interceptorConfigurations,
-kmsKeyArn,
-policyEngineConfiguration,
-protocolConfiguration,
-protocolType,
-roleArn,
+exception_level,
+gateway_arn,
+gateway_id,
+gateway_url,
+interceptor_configurations,
+kms_key_arn,
+policy_engine_configuration,
+protocol_configuration,
+protocol_type,
+role_arn,
 status,
-statusReasons,
-updatedAt,
-workloadIdentityDetails
+status_reasons,
+updated_at,
+workload_identity_details
 ;
 ```
 </TabItem>
@@ -565,24 +565,24 @@ AND roleArn = '{{ roleArn }}' --required
 AND authorizerType = '{{ authorizerType }}' --required
 RETURNING
 name,
-authorizerConfiguration,
-authorizerType,
-createdAt,
+authorizer_configuration,
+authorizer_type,
+created_at,
 description,
-exceptionLevel,
-gatewayArn,
-gatewayId,
-gatewayUrl,
-interceptorConfigurations,
-kmsKeyArn,
-policyEngineConfiguration,
-protocolConfiguration,
-protocolType,
-roleArn,
+exception_level,
+gateway_arn,
+gateway_id,
+gateway_url,
+interceptor_configurations,
+kms_key_arn,
+policy_engine_configuration,
+protocol_configuration,
+protocol_type,
+role_arn,
 status,
-statusReasons,
-updatedAt,
-workloadIdentityDetails;
+status_reasons,
+updated_at,
+workload_identity_details;
 ```
 </TabItem>
 </Tabs>

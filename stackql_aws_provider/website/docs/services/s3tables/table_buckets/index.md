@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the table bucket. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9_-&#93;&#123;3,63&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the table bucket was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that owns the table bucket. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBucketId" /></td>
+    <td><CopyableCode code="table_bucket_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the table bucket.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the table bucket. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9_-&#93;&#123;3,63&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the table bucket was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that owns the table bucket. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBucketId" /></td>
+    <td><CopyableCode code="table_bucket_id" /></td>
     <td><code>string</code></td>
     <td>The system-assigned unique identifier for the table bucket.</td>
 </tr>
@@ -255,9 +255,9 @@ Gets details on a table bucket. For more information, see Viewing details about 
 SELECT
 name,
 arn,
-createdAt,
-ownerAccountId,
-tableBucketId,
+created_at,
+owner_account_id,
+table_bucket_id,
 type_
 FROM aws.s3tables.table_buckets
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
@@ -273,9 +273,9 @@ Lists table buckets for your account. For more information, see S3 Table buckets
 SELECT
 name,
 arn,
-createdAt,
-ownerAccountId,
-tableBucketId,
+created_at,
+owner_account_id,
+table_bucket_id,
 type_
 FROM aws.s3tables.table_buckets
 WHERE region = '{{ region }}' -- required

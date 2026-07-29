@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DesiredNumberOfDomainControllers" /></td>
+    <td><CopyableCode code="desired_number_of_domain_controllers" /></td>
     <td><code>integer</code></td>
     <td>The desired number of domain controllers in the specified Region for the specified directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the directory. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Region description was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTime" /></td>
+    <td><CopyableCode code="launch_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies when the Region replication began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Region. For example, us-east-1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionType" /></td>
+    <td><CopyableCode code="region_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the Region is the primary Region or an additional Region. (Primary, Additional)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the replication process for the specified Region. (Requested, Creating, Created, Active, Inoperable, Impaired, Restoring, RestoreFailed, Deleting, Deleted, Failed, Updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusLastUpdatedDateTime" /></td>
+    <td><CopyableCode code="status_last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Region status was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSettings" /></td>
+    <td><CopyableCode code="vpc_settings" /></td>
     <td><code>object</code></td>
     <td>Contains VPC information for the CreateDirectory, CreateMicrosoftAD, or CreateHybridAD operation.</td>
 </tr>
@@ -173,15 +173,15 @@ Provides information about the Regions that are configured for multi-Region repl
 
 ```sql
 SELECT
-DesiredNumberOfDomainControllers,
-DirectoryId,
-LastUpdatedDateTime,
-LaunchTime,
-RegionName,
-RegionType,
-Status,
-StatusLastUpdatedDateTime,
-VpcSettings
+desired_number_of_domain_controllers,
+directory_id,
+last_updated_date_time,
+launch_time,
+region_name,
+region_type,
+status,
+status_last_updated_date_time,
+vpc_settings
 FROM aws.ds.regions
 WHERE region = '{{ region }}' -- required
 ;

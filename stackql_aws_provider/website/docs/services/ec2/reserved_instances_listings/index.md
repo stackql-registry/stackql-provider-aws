@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive key supplied by the client to ensure that the request is idempotent. For more information, see Ensuring Idempotency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The time the listing was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCounts" /></td>
+    <td><CopyableCode code="instance_counts" /></td>
     <td><code>string</code></td>
     <td>The number of instances in this state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriceSchedules" /></td>
+    <td><CopyableCode code="price_schedules" /></td>
     <td><code>string</code></td>
     <td>The price of the Reserved Instance listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstancesId" /></td>
+    <td><CopyableCode code="reserved_instances_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstancesListingId" /></td>
+    <td><CopyableCode code="reserved_instances_listing_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Reserved Instance listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Reserved Instance listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the Reserved Instance listing. The response can be blank.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDate" /></td>
+    <td><CopyableCode code="update_date" /></td>
     <td><code>string</code></td>
     <td>The last modified timestamp of the listing.</td>
 </tr>
@@ -206,16 +206,16 @@ Describes your account's Reserved Instance listings in the Reserved Instance Mar
 
 ```sql
 SELECT
-ClientToken,
-CreateDate,
-InstanceCounts,
-PriceSchedules,
-ReservedInstancesId,
-ReservedInstancesListingId,
-Status,
-StatusMessage,
-Tags,
-UpdateDate
+client_token,
+create_date,
+instance_counts,
+price_schedules,
+reserved_instances_id,
+reserved_instances_listing_id,
+status,
+status_message,
+tags,
+update_date
 FROM aws.ec2.reserved_instances_listings
 WHERE region = '{{ region }}' -- required
 AND ReservedInstancesId = '{{ ReservedInstancesId }}'
@@ -255,7 +255,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ReservedInstancesListings
+reserved_instances_listings
 ;
 ```
 </TabItem>

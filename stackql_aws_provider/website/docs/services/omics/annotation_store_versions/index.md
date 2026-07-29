@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the annotation store. (pattern: &lt;code&gt;(&#91;a-z&#93;)&#123;1&#125;(&#91;a-z0-9_&#93;)&#123;2,254&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for when an annotation store version was created.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of an annotation store version. (CREATING, UPDATING, DELETING, ACTIVE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status of an annotation store version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeId" /></td>
+    <td><CopyableCode code="store_id" /></td>
     <td><code>string</code></td>
     <td>The store ID for annotation store version. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,27 +91,27 @@ The following fields are returned by `SELECT` queries:
     <td>Any tags associated with an annotation store version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for when an annotation store version was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionArn" /></td>
+    <td><CopyableCode code="version_arn" /></td>
     <td><code>string</code></td>
     <td>The Arn for the annotation store. (pattern: &lt;code&gt;arn:(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The name given to an annotation store version to distinguish it from others. (pattern: &lt;code&gt;(&#91;a-z&#93;)&#123;1&#125;(&#91;a-z0-9_&#93;)&#123;2,254&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionOptions" /></td>
+    <td><CopyableCode code="version_options" /></td>
     <td><code>object</code></td>
     <td>The options for an annotation store version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionSizeBytes" /></td>
+    <td><CopyableCode code="version_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the annotation store version in Bytes.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>A name given to an annotation store version to distinguish it from others. (pattern: &lt;code&gt;(&#91;a-z&#93;)&#123;1&#125;(&#91;a-z0-9_&#93;)&#123;2,254&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for when an annotation store version was created.</td>
 </tr>
@@ -155,32 +155,32 @@ The following fields are returned by `SELECT` queries:
     <td>The status of an annotation store version. (CREATING, UPDATING, DELETING, ACTIVE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status of an annotation store version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeId" /></td>
+    <td><CopyableCode code="store_id" /></td>
     <td><code>string</code></td>
     <td>The store ID for an annotation store version. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for when an annotation store version was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionArn" /></td>
+    <td><CopyableCode code="version_arn" /></td>
     <td><code>string</code></td>
     <td>The Arn for an annotation store version. (pattern: &lt;code&gt;arn:(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The name of an annotation store version. (pattern: &lt;code&gt;(&#91;a-z&#93;)&#123;1&#125;(&#91;a-z0-9_&#93;)&#123;2,254&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionSizeBytes" /></td>
+    <td><CopyableCode code="version_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of an annotation store version in Bytes.</td>
 </tr>
@@ -305,17 +305,17 @@ Retrieves the metadata for an annotation store version.
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
 status,
-statusMessage,
-storeId,
+status_message,
+store_id,
 tags,
-updateTime,
-versionArn,
-versionName,
-versionOptions,
-versionSizeBytes
+update_time,
+version_arn,
+version_name,
+version_options,
+version_size_bytes
 FROM aws.omics.annotation_store_versions
 WHERE name = '{{ name }}' -- required
 AND version_name = '{{ version_name }}' -- required
@@ -331,15 +331,15 @@ Lists the versions of an annotation store.
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
 status,
-statusMessage,
-storeId,
-updateTime,
-versionArn,
-versionName,
-versionSizeBytes
+status_message,
+store_id,
+update_time,
+version_arn,
+version_name,
+version_size_bytes
 FROM aws.omics.annotation_store_versions
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -383,11 +383,11 @@ SELECT
 RETURNING
 id,
 name,
-creationTime,
+creation_time,
 status,
-storeId,
-versionName,
-versionOptions
+store_id,
+version_name,
+version_options
 ;
 ```
 </TabItem>
@@ -445,12 +445,12 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-creationTime,
+creation_time,
 description,
 status,
-storeId,
-updateTime,
-versionName;
+store_id,
+update_time,
+version_name;
 ```
 </TabItem>
 </Tabs>

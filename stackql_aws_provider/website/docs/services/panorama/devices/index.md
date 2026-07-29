@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlternateSoftwares" /></td>
+    <td><CopyableCode code="alternate_softwares" /></td>
     <td><code>array</code></td>
     <td>Beta software releases available for the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The device's ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Brand" /></td>
+    <td><CopyableCode code="brand" /></td>
     <td><code>string</code></td>
     <td>The device's maker. (AWS_PANORAMA, LENOVO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the device was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentNetworkingStatus" /></td>
+    <td><CopyableCode code="current_networking_status" /></td>
     <td><code>object</code></td>
     <td>The device's networking status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentSoftware" /></td>
+    <td><CopyableCode code="current_software" /></td>
     <td><code>string</code></td>
     <td>The device's current software version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The device's description. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceAggregatedStatus" /></td>
+    <td><CopyableCode code="device_aggregated_status" /></td>
     <td><code>string</code></td>
     <td>A device's aggregated status. Including the device's connection status, provisioning status, and lease status. (ERROR, AWAITING_PROVISIONING, PENDING, FAILED, DELETING, ONLINE, OFFLINE, LEASE_EXPIRED, UPDATE_NEEDED, REBOOTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceConnectionStatus" /></td>
+    <td><CopyableCode code="device_connection_status" /></td>
     <td><code>string</code></td>
     <td>The device's connection status. (ONLINE, OFFLINE, AWAITING_CREDENTIALS, NOT_AVAILABLE, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The device's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestAlternateSoftware" /></td>
+    <td><CopyableCode code="latest_alternate_software" /></td>
     <td><code>string</code></td>
     <td>The most recent beta software release.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeviceJob" /></td>
+    <td><CopyableCode code="latest_device_job" /></td>
     <td><code>object</code></td>
     <td>A device's latest job. Includes the target image version, and the job status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestSoftware" /></td>
+    <td><CopyableCode code="latest_software" /></td>
     <td><code>string</code></td>
     <td>The latest software version available for the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LeaseExpirationTime" /></td>
+    <td><CopyableCode code="lease_expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The device's lease expiration time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The device's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkingConfiguration" /></td>
+    <td><CopyableCode code="networking_configuration" /></td>
     <td><code>object</code></td>
     <td>The device's networking configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningStatus" /></td>
+    <td><CopyableCode code="provisioning_status" /></td>
     <td><code>string</code></td>
     <td>The device's provisioning status. (AWAITING_PROVISIONING, PENDING, SUCCEEDED, FAILED, ERROR, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The device's serial number. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;1,20&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The device's tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The device's type. (PANORAMA_APPLIANCE_DEVELOPER_KIT, PANORAMA_APPLIANCE)</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Devices" /></td>
+    <td><CopyableCode code="devices" /></td>
     <td><code>array</code></td>
     <td>A list of devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
@@ -310,26 +310,26 @@ Returns information about a device.
 
 ```sql
 SELECT
-AlternateSoftwares,
-Arn,
-Brand,
-CreatedTime,
-CurrentNetworkingStatus,
-CurrentSoftware,
-Description,
-DeviceAggregatedStatus,
-DeviceConnectionStatus,
-DeviceId,
-LatestAlternateSoftware,
-LatestDeviceJob,
-LatestSoftware,
-LeaseExpirationTime,
-Name,
-NetworkingConfiguration,
-ProvisioningStatus,
-SerialNumber,
-Tags,
-Type
+alternate_softwares,
+arn,
+brand,
+created_time,
+current_networking_status,
+current_software,
+description,
+device_aggregated_status,
+device_connection_status,
+device_id,
+latest_alternate_software,
+latest_device_job,
+latest_software,
+lease_expiration_time,
+name,
+networking_configuration,
+provisioning_status,
+serial_number,
+tags,
+type
 FROM aws.panorama.devices
 WHERE device_id = '{{ device_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -342,8 +342,8 @@ Returns a list of devices.
 
 ```sql
 SELECT
-Devices,
-NextToken
+devices,
+next_token
 FROM aws.panorama.devices
 WHERE region = '{{ region }}' -- required
 AND DeviceAggregatedStatusFilter = '{{ DeviceAggregatedStatusFilter }}'
@@ -384,7 +384,7 @@ SELECT
 '{{ JobType }}' /* required */,
 '{{ region }}'
 RETURNING
-Jobs
+jobs
 ;
 ```
 </TabItem>
@@ -436,7 +436,7 @@ WHERE
 device_id = '{{ device_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DeviceId;
+device_id;
 ```
 </TabItem>
 <TabItem value="provision_device">
@@ -453,11 +453,11 @@ Tags = '{{ Tags }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-Certificates,
-DeviceId,
-IotThingName,
-Status;
+arn,
+certificates,
+device_id,
+iot_thing_name,
+status;
 ```
 </TabItem>
 </Tabs>

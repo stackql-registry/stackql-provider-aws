@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DurableExecutionArn" /></td>
+    <td><CopyableCode code="durable_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the durable execution, if this execution is a durable execution. (pattern: &lt;code&gt;arn:(&#91;a-zA-Z0-9-&#93;+):lambda:(&#91;a-zA-Z0-9-&#93;+):(\d&#123;12&#125;):function:(&#91;a-zA-Z0-9_-&#93;+):(\$LATEST(?:\.PUBLISHED)?|&#91;0-9&#93;+)/durable-execution/(&#91;a-zA-Z0-9_-&#93;+)/(&#91;a-zA-Z0-9_-&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurableExecutionName" /></td>
+    <td><CopyableCode code="durable_execution_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the durable execution, if one was provided when the execution was started. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the durable execution ended, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the durable execution started, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the durable execution. (RUNNING, SUCCEEDED, FAILED, TIMED_OUT, STOPPED)</td>
 </tr>
@@ -189,12 +189,12 @@ Returns a list of durable executions for a specified Lambda function. You can fi
 
 ```sql
 SELECT
-DurableExecutionArn,
-DurableExecutionName,
-EndTimestamp,
-FunctionArn,
-StartTimestamp,
-Status
+durable_execution_arn,
+durable_execution_name,
+end_timestamp,
+function_arn,
+start_timestamp,
+status
 FROM aws.lambda.durable_executions_by_functions
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required

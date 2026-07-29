@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="compatibilityInformation" /></td>
+    <td><CopyableCode code="compatibility_information" /></td>
     <td><code>object</code></td>
     <td>Information about client compatibility and supported models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelAliases" /></td>
+    <td><CopyableCode code="model_aliases" /></td>
     <td><code>array</code></td>
     <td>A list of model aliases that provide stable references to model versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelSummaries" /></td>
+    <td><CopyableCode code="model_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of available AI models with their status and compatibility information.</td>
 </tr>
@@ -134,9 +134,9 @@ Lists all available AI models that can be used for workflow execution, including
 
 ```sql
 SELECT
-compatibilityInformation,
-modelAliases,
-modelSummaries
+compatibility_information,
+model_aliases,
+model_summaries
 FROM aws.nova_act.models
 WHERE clientCompatibilityVersion = '{{ clientCompatibilityVersion }}' -- required
 AND region = '{{ region }}' -- required

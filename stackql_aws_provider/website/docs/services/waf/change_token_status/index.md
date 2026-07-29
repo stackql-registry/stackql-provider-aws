@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeTokenStatus" /></td>
+    <td><CopyableCode code="change_token_status" /></td>
     <td><code>string</code></td>
     <td>The status of the change token. (PROVISIONED, PENDING, INSYNC)</td>
 </tr>
@@ -119,7 +119,7 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-ChangeTokenStatus
+change_token_status
 FROM aws.waf.change_token_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="imageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>object</code></td>
     <td>An object with identifying information for an image in an Amazon ECR repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationStatuses" /></td>
+    <td><CopyableCode code="replication_statuses" /></td>
     <td><code>array</code></td>
     <td>The replication status details for the images in the specified repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The repository name associated with the request. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the replication status for a specified image.
 
 ```sql
 SELECT
-imageId,
-replicationStatuses,
-repositoryName
+image_id,
+replication_statuses,
+repository_name
 FROM aws.ecr.image_replication_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>The JSON that defines the policy.</td>
 </tr>
@@ -148,7 +148,7 @@ Gets details about a table policy. For more information, see Viewing a table pol
 
 ```sql
 SELECT
-resourcePolicy
+resource_policy
 FROM aws.s3tables.table_policies
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND namespace = '{{ namespace }}' -- required

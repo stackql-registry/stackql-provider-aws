@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date of the event configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventConfigurations" /></td>
+    <td><CopyableCode code="event_configurations" /></td>
     <td><code>object</code></td>
     <td>The event configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the event configurations were last modified.</td>
 </tr>
@@ -136,9 +136,9 @@ Describes event configurations. Requires permission to access the DescribeEventC
 
 ```sql
 SELECT
-creationDate,
-eventConfigurations,
-lastModifiedDate
+creation_date,
+event_configurations,
+last_modified_date
 FROM aws.iot.event_configurations
 WHERE region = '{{ region }}' -- required
 ;

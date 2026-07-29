@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the charge. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement that resulted in this charge. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementType" /></td>
+    <td><CopyableCode code="agreement_type" /></td>
     <td><code>string</code></td>
     <td>The type of agreement that resulted in this charge (for example, PurchaseAgreement). (pattern: &lt;code&gt;&#91;A-Za-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The amount of the charge. (pattern: &lt;code&gt;(.)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the charge amount. (pattern: &lt;code&gt;&#91;A-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="purchaseOrderReference" /></td>
+    <td><CopyableCode code="purchase_order_reference" /></td>
     <td><code>string</code></td>
     <td>The purchase order reference associated with the charge, if any.</td>
 </tr>
@@ -155,11 +155,11 @@ Allows acceptors to view charges and purchase orders that are associated with an
 ```sql
 SELECT
 id,
-agreementId,
-agreementType,
+agreement_id,
+agreement_type,
 amount,
-currencyCode,
-purchaseOrderReference,
+currency_code,
+purchase_order_reference,
 revision,
 time
 FROM aws.marketplace_agreement.agreement_charges

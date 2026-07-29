@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the finding was last updated.</td>
 </tr>
@@ -171,7 +171,7 @@ Retrieves a list of the IDs of findings, plus their last modified times, that ha
 ```sql
 SELECT
 id,
-lastModifiedTime
+last_modified_time
 FROM aws.ssm_incidents.incident_findings
 WHERE region = '{{ region }}' -- required
 ;

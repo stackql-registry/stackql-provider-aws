@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation form was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormArn" /></td>
+    <td><CopyableCode code="evaluation_form_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the evaluation form resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormId" /></td>
+    <td><CopyableCode code="evaluation_form_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormVersion" /></td>
+    <td><CopyableCode code="evaluation_form_version" /></td>
     <td><code>integer</code></td>
     <td>A version of the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation form was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Locked" /></td>
+    <td><CopyableCode code="locked" /></td>
     <td><code>boolean</code></td>
     <td>The flag indicating whether the evaluation form is locked for changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the evaluation form. (DRAFT, ACTIVE)</td>
 </tr>
@@ -179,15 +179,15 @@ Lists versions of an evaluation form in the specified Amazon Connect instance.
 
 ```sql
 SELECT
-CreatedBy,
-CreatedTime,
-EvaluationFormArn,
-EvaluationFormId,
-EvaluationFormVersion,
-LastModifiedBy,
-LastModifiedTime,
-Locked,
-Status
+created_by,
+created_time,
+evaluation_form_arn,
+evaluation_form_id,
+evaluation_form_version,
+last_modified_by,
+last_modified_time,
+locked,
+status
 FROM aws.connect.evaluation_form_versions
 WHERE instance_id = '{{ instance_id }}' -- required
 AND evaluation_form_id = '{{ evaluation_form_id }}' -- required

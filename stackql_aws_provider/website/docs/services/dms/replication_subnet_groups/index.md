@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsReadOnly" /></td>
+    <td><CopyableCode code="is_read_only" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the replication subnet group is read-only. When set to true, this subnet group is managed by DMS as part of a zero-ETL integration and cannot be modified or deleted directly. You can only modify or delete read-only subnet groups through their associated zero-ETL integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationSubnetGroupDescription" /></td>
+    <td><CopyableCode code="replication_subnet_group_description" /></td>
     <td><code>string</code></td>
     <td>A description for the replication subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationSubnetGroupIdentifier" /></td>
+    <td><CopyableCode code="replication_subnet_group_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the replication instance subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroupStatus" /></td>
+    <td><CopyableCode code="subnet_group_status" /></td>
     <td><code>string</code></td>
     <td>The status of the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>array</code></td>
     <td>The subnets that are in the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedNetworkTypes" /></td>
+    <td><CopyableCode code="supported_network_types" /></td>
     <td><code>array</code></td>
     <td>The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -170,13 +170,13 @@ Returns information about the replication subnet groups.
 
 ```sql
 SELECT
-IsReadOnly,
-ReplicationSubnetGroupDescription,
-ReplicationSubnetGroupIdentifier,
-SubnetGroupStatus,
-Subnets,
-SupportedNetworkTypes,
-VpcId
+is_read_only,
+replication_subnet_group_description,
+replication_subnet_group_identifier,
+subnet_group_status,
+subnets,
+supported_network_types,
+vpc_id
 FROM aws.dms.replication_subnet_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,7 +213,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ReplicationSubnetGroup
+replication_subnet_group
 ;
 ```
 </TabItem>
@@ -274,7 +274,7 @@ region = '{{ region }}' --required
 AND ReplicationSubnetGroupIdentifier = '{{ ReplicationSubnetGroupIdentifier }}' --required
 AND SubnetIds = '{{ SubnetIds }}' --required
 RETURNING
-ReplicationSubnetGroup;
+replication_subnet_group;
 ```
 </TabItem>
 </Tabs>

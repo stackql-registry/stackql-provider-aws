@@ -112,16 +112,16 @@ SubscriptionName = '{{ SubscriptionName }}' --required
 AND SourceIdentifier = '{{ SourceIdentifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-EventSubscriptionArn,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime;
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+event_subscription_arn,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time;
 ```
 </TabItem>
 </Tabs>

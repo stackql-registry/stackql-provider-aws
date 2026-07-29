@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="acceptanceTime" /></td>
+    <td><CopyableCode code="acceptance_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the offer was accepted or the agreement was created. AcceptanceTime and StartTime can differ for future dated agreements (FDAs).</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The details of the party accepting the agreement terms. This is commonly the buyer for PurchaseAgreement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementType" /></td>
+    <td><CopyableCode code="agreement_type" /></td>
     <td><code>string</code></td>
     <td>The type of agreement. Values are PurchaseAgreement or VendorInsightsAgreement. (pattern: &lt;code&gt;&#91;A-Za-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the agreement ends. The field is null for pay-as-you-go agreements, which don’t have end dates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedCharges" /></td>
+    <td><CopyableCode code="estimated_charges" /></td>
     <td><code>object</code></td>
     <td>The estimated cost of the agreement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="proposalSummary" /></td>
+    <td><CopyableCode code="proposal_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the proposal received from the proposer.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The details of the party proposing the agreement terms. This is commonly the seller for PurchaseAgreement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the agreement starts.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="acceptanceTime" /></td>
+    <td><CopyableCode code="acceptance_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the agreement was accepted.</td>
 </tr>
@@ -125,22 +125,22 @@ The following fields are returned by `SELECT` queries:
     <td>Details of the party accepting the agreement terms. This is commonly the buyer for PurchaseAgreement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementType" /></td>
+    <td><CopyableCode code="agreement_type" /></td>
     <td><code>string</code></td>
     <td>The type of agreement. (pattern: &lt;code&gt;&#91;A-Za-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the agreement ends. The field is null for pay-as-you-go agreements, which don’t have end dates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="proposalSummary" /></td>
+    <td><CopyableCode code="proposal_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the proposal</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>Details of the party proposing the agreement terms, most commonly the seller for PurchaseAgreement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the agreement starts.</td>
 </tr>
@@ -309,15 +309,15 @@ Provides details about an agreement, such as the proposer, acceptor, start date,
 
 ```sql
 SELECT
-acceptanceTime,
+acceptance_time,
 acceptor,
-agreementId,
-agreementType,
-endTime,
-estimatedCharges,
-proposalSummary,
+agreement_id,
+agreement_type,
+end_time,
+estimated_charges,
+proposal_summary,
 proposer,
-startTime,
+start_time,
 status
 FROM aws.marketplace_agreement.agreements
 WHERE region = '{{ region }}' -- required
@@ -330,14 +330,14 @@ Searches across all agreements that a proposer or an acceptor has in AWS Marketp
 
 ```sql
 SELECT
-acceptanceTime,
+acceptance_time,
 acceptor,
-agreementId,
-agreementType,
-endTime,
-proposalSummary,
+agreement_id,
+agreement_type,
+end_time,
+proposal_summary,
 proposer,
-startTime,
+start_time,
 status
 FROM aws.marketplace_agreement.agreements
 WHERE region = '{{ region }}' -- required
@@ -379,8 +379,8 @@ SELECT
 '{{ taxConfiguration }}',
 '{{ region }}'
 RETURNING
-agreementRequestId,
-chargeSummary
+agreement_request_id,
+charge_summary
 ;
 ```
 </TabItem>

@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpSource" /></td>
+    <td><CopyableCode code="ip_source" /></td>
     <td><code>string</code></td>
     <td>The source that allocated the IP address space. byoip or amazon indicates public IP address space allocated by Amazon or space that you have allocated with Bring your own IP (BYOIP). none indicates private space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpUsage" /></td>
+    <td><CopyableCode code="ip_usage" /></td>
     <td><code>number</code></td>
     <td>The percentage of IP address space in use. To convert the decimal to a percentage, multiply the decimal by 100. Note the following: For resources that are VPCs, this is the percentage of IP address space in the VPC that's taken up by subnet CIDRs. For resources that are subnets, if the subnet has an IPv4 CIDR provisioned to it, this is the percentage of IPv4 address space in the subnet that's in use. If the subnet has an IPv6 CIDR provisioned to it, the percentage of IPv6 address space in use is not represented. The percentage of IPv6 address space in use cannot currently be calculated. For resources that are public IPv4 pools, this is the percentage of IP address space in the pool that's been allocated to Elastic IP addresses (EIPs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryId" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_id" /></td>
     <td><code>string</code></td>
     <td>The resource discovery ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceAttachmentStatus" /></td>
+    <td><CopyableCode code="network_interface_attachment_status" /></td>
     <td><code>string</code></td>
     <td>For elastic network interfaces, this is the status of whether or not the elastic network interface is attached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCidr" /></td>
+    <td><CopyableCode code="resource_cidr" /></td>
     <td><code>string</code></td>
     <td>The resource CIDR.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>The resource owner ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceRegion" /></td>
+    <td><CopyableCode code="resource_region" /></td>
     <td><code>string</code></td>
     <td>The resource Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>string</code></td>
     <td>The resource tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampleTime" /></td>
+    <td><CopyableCode code="sample_time" /></td>
     <td><code>string</code></td>
     <td>The last successful resource discovery time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The subnet ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC ID.</td>
 </tr>
@@ -214,20 +214,20 @@ Returns the resource CIDRs that are monitored as part of a resource discovery. A
 
 ```sql
 SELECT
-AvailabilityZoneId,
-IpSource,
-IpUsage,
-IpamResourceDiscoveryId,
-NetworkInterfaceAttachmentStatus,
-ResourceCidr,
-ResourceId,
-ResourceOwnerId,
-ResourceRegion,
-ResourceTags,
-ResourceType,
-SampleTime,
-SubnetId,
-VpcId
+availability_zone_id,
+ip_source,
+ip_usage,
+ipam_resource_discovery_id,
+network_interface_attachment_status,
+resource_cidr,
+resource_id,
+resource_owner_id,
+resource_region,
+resource_tags,
+resource_type,
+sample_time,
+subnet_id,
+vpc_id
 FROM aws.ec2.ipam_discovered_resource_cidrs
 WHERE IpamResourceDiscoveryId = '{{ IpamResourceDiscoveryId }}' -- required
 AND ResourceRegion = '{{ ResourceRegion }}' -- required

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DimensionKeys" /></td>
+    <td><CopyableCode code="dimension_keys" /></td>
     <td><code>object</code></td>
     <td>This field is a map of field paths to dimension names. It defines the dimensions to associate with this metric in CloudWatch The value of this field is used only if the metric destination is CloudWatch. If the metric destination is Evidently, the value of DimensionKeys is ignored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventPattern" /></td>
+    <td><CopyableCode code="event_pattern" /></td>
     <td><code>string</code></td>
     <td>The pattern that defines the metric. RUM checks events that happen in a user's session against the pattern, and events that match the pattern are sent to the metric destination. If the metrics destination is CloudWatch and the event also matches a value in DimensionKeys, then the metric is published with the specified dimensions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricDefinitionId" /></td>
+    <td><CopyableCode code="metric_definition_id" /></td>
     <td><code>string</code></td>
     <td>The ID of this metric definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric that is defined in this structure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>If this metric definition is for a custom metric instead of an extended metric, this field displays the metric namespace that the custom metric is published to. (pattern: &lt;code&gt;.*&#91;a-zA-Z0-9-._/#:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnitLabel" /></td>
+    <td><CopyableCode code="unit_label" /></td>
     <td><code>string</code></td>
     <td>Use this field only if you are sending this metric to CloudWatch. It defines the CloudWatch metric unit that this metric is measured in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueKey" /></td>
+    <td><CopyableCode code="value_key" /></td>
     <td><code>string</code></td>
     <td>The field within the event object that the metric value is sourced from.</td>
 </tr>
@@ -200,13 +200,13 @@ Retrieves the list of metrics and dimensions that a RUM app monitor is sending t
 
 ```sql
 SELECT
-DimensionKeys,
-EventPattern,
-MetricDefinitionId,
-Name,
-Namespace,
-UnitLabel,
-ValueKey
+dimension_keys,
+event_pattern,
+metric_definition_id,
+name,
+namespace,
+unit_label,
+value_key
 FROM aws.rum.rum_metric_definitions
 WHERE app_monitor_name = '{{ app_monitor_name }}' -- required
 AND destination = '{{ destination }}' -- required

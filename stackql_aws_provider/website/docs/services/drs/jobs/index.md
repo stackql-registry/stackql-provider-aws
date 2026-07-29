@@ -55,32 +55,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of a Job. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string</code></td>
     <td>The date and time of when the Job was created. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endDateTime" /></td>
+    <td><CopyableCode code="end_date_time" /></td>
     <td><code>string</code></td>
     <td>The date and time of when the Job ended. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="initiatedBy" /></td>
+    <td><CopyableCode code="initiated_by" /></td>
     <td><code>string</code></td>
     <td>A string representing who initiated the Job. (START_RECOVERY, START_DRILL, FAILBACK, DIAGNOSTIC, TERMINATE_RECOVERY_INSTANCES, TARGET_ACCOUNT, CREATE_NETWORK_RECOVERY, UPDATE_NETWORK_RECOVERY, ASSOCIATE_NETWORK_RECOVERY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Job. (pattern: &lt;code&gt;drsjob-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="participatingResources" /></td>
+    <td><CopyableCode code="participating_resources" /></td>
     <td><code>array</code></td>
     <td>A list of resources that the Job is acting upon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="participatingServers" /></td>
+    <td><CopyableCode code="participating_servers" /></td>
     <td><code>array</code></td>
     <td>A list of servers that the Job is acting upon.</td>
 </tr>
@@ -172,12 +172,12 @@ Returns a list of Jobs. Use the JobsID and fromDate and toDate filters to limit 
 ```sql
 SELECT
 arn,
-creationDateTime,
-endDateTime,
-initiatedBy,
-jobID,
-participatingResources,
-participatingServers,
+creation_date_time,
+end_date_time,
+initiated_by,
+job_id,
+participating_resources,
+participating_servers,
 status,
 tags,
 type_

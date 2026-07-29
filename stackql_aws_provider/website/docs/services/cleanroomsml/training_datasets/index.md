@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the training dataset. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the training dataset was created.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the training dataset. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role used to read the training data. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tags that are assigned to this training dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingData" /></td>
+    <td><CopyableCode code="training_data" /></td>
     <td><code>array</code></td>
     <td>Metadata about the requested training data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDatasetArn" /></td>
+    <td><CopyableCode code="training_dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the training dataset. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:training-dataset/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the training dataset was updated.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the training dataset. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the training dataset was created.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the training dataset. (ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDatasetArn" /></td>
+    <td><CopyableCode code="training_dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the training dataset. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:training-dataset/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the training dataset was updated.</td>
 </tr>
@@ -242,14 +242,14 @@ Returns information about a training dataset.
 ```sql
 SELECT
 name,
-createTime,
+create_time,
 description,
-roleArn,
+role_arn,
 status,
 tags,
-trainingData,
-trainingDatasetArn,
-updateTime
+training_data,
+training_dataset_arn,
+update_time
 FROM aws.cleanroomsml.training_datasets
 WHERE training_dataset_arn = '{{ training_dataset_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -263,11 +263,11 @@ Returns a list of training datasets.
 ```sql
 SELECT
 name,
-createTime,
+create_time,
 description,
 status,
-trainingDatasetArn,
-updateTime
+training_dataset_arn,
+update_time
 FROM aws.cleanroomsml.training_datasets
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -308,7 +308,7 @@ SELECT
 '{{ description }}',
 '{{ region }}'
 RETURNING
-trainingDatasetArn
+training_dataset_arn
 ;
 ```
 </TabItem>

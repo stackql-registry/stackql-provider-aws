@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The product sharing policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalProductId" /></td>
+    <td><CopyableCode code="portal_product_id" /></td>
     <td><code>string</code></td>
     <td>The portal product identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -143,8 +143,8 @@ Gets the sharing policy for a portal product.
 
 ```sql
 SELECT
-PolicyDocument,
-PortalProductId
+policy_document,
+portal_product_id
 FROM aws.apigatewayv2.portal_product_sharing_policies
 WHERE portal_product_id = '{{ portal_product_id }}' -- required
 AND region = '{{ region }}' -- required

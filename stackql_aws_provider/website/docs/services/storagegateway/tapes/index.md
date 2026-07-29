@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KMSKey" /></td>
+    <td><CopyableCode code="kms_key" /></td>
     <td><code>string</code></td>
     <td>Optional. The Amazon Resource Name (ARN) of a symmetric customer master key (CMK) used for Amazon S3 server-side encryption. Storage Gateway does not support asymmetric CMKs. This value must be set if KMSEncrypted is true, or if EncryptionType is SseKms or DsseKms. (pattern: &lt;code&gt;(^arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):kms:(&#91;a-zA-Z0-9-&#93;+):(&#91;0-9&#93;+):(key|alias)/(\S+)$)|(^alias/(\S+)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolEntryDate" /></td>
+    <td><CopyableCode code="pool_entry_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the tape enters a custom tape pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the pool that contains tapes that will be archived. The tapes in this pool are archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>number (double)</code></td>
     <td>For archiving virtual tapes, indicates how much data remains to be uploaded before archiving is complete. Range: 0 (not started) to 100 (complete).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionStartDate" /></td>
+    <td><CopyableCode code="retention_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the tape is first archived with tape retention lock enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeARN" /></td>
+    <td><CopyableCode code="tape_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the virtual tape. (pattern: &lt;code&gt;arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):storagegateway:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;+:tape\/&#91;0-9A-Z&#93;&#123;5,16&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeBarcode" /></td>
+    <td><CopyableCode code="tape_barcode" /></td>
     <td><code>string</code></td>
     <td>The barcode that identifies a specific virtual tape. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeCreatedDate" /></td>
+    <td><CopyableCode code="tape_created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the virtual tape was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeSizeInBytes" /></td>
+    <td><CopyableCode code="tape_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of the virtual tape capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeStatus" /></td>
+    <td><CopyableCode code="tape_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the virtual tape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeUsedInBytes" /></td>
+    <td><CopyableCode code="tape_used_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of data stored on the virtual tape. This value is not available for tapes created prior to May 13, 2015.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VTLDevice" /></td>
+    <td><CopyableCode code="vtl_device" /></td>
     <td><code>string</code></td>
     <td>The virtual tape library (VTL) device that the virtual tape is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Worm" /></td>
+    <td><CopyableCode code="worm" /></td>
     <td><code>boolean</code></td>
     <td>If the tape is archived as write-once-read-many (WORM), this value is true.</td>
 </tr>
@@ -130,42 +130,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolEntryDate" /></td>
+    <td><CopyableCode code="pool_entry_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the tape entered the custom tape pool with tape retention lock enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the pool that you want to add your tape to for archiving. The tape in this pool is archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionStartDate" /></td>
+    <td><CopyableCode code="retention_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the tape became subject to tape retention lock.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeARN" /></td>
+    <td><CopyableCode code="tape_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a virtual tape. (pattern: &lt;code&gt;arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):storagegateway:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;+:tape\/&#91;0-9A-Z&#93;&#123;5,16&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeBarcode" /></td>
+    <td><CopyableCode code="tape_barcode" /></td>
     <td><code>string</code></td>
     <td>The barcode that identifies a specific virtual tape. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeSizeInBytes" /></td>
+    <td><CopyableCode code="tape_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of a virtual tape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeStatus" /></td>
+    <td><CopyableCode code="tape_status" /></td>
     <td><code>string</code></td>
     <td>The status of the tape.</td>
 </tr>
@@ -263,19 +263,19 @@ Returns a description of virtual tapes that correspond to the specified Amazon R
 
 ```sql
 SELECT
-KMSKey,
-PoolEntryDate,
-PoolId,
-Progress,
-RetentionStartDate,
-TapeARN,
-TapeBarcode,
-TapeCreatedDate,
-TapeSizeInBytes,
-TapeStatus,
-TapeUsedInBytes,
-VTLDevice,
-Worm
+kms_key,
+pool_entry_date,
+pool_id,
+progress,
+retention_start_date,
+tape_arn,
+tape_barcode,
+tape_created_date,
+tape_size_in_bytes,
+tape_status,
+tape_used_in_bytes,
+vtl_device,
+worm
 FROM aws.storagegateway.tapes
 WHERE region = '{{ region }}' -- required
 ;
@@ -287,14 +287,14 @@ Lists virtual tapes in your virtual tape library (VTL) and your virtual tape she
 
 ```sql
 SELECT
-GatewayARN,
-PoolEntryDate,
-PoolId,
-RetentionStartDate,
-TapeARN,
-TapeBarcode,
-TapeSizeInBytes,
-TapeStatus
+gateway_arn,
+pool_entry_date,
+pool_id,
+retention_start_date,
+tape_arn,
+tape_barcode,
+tape_size_in_bytes,
+tape_status
 FROM aws.storagegateway.tapes
 WHERE region = '{{ region }}' -- required
 ;
@@ -344,7 +344,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TapeARNs
+tape_arns
 ;
 ```
 </TabItem>
@@ -375,7 +375,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TapeARN
+tape_arn
 ;
 ```
 </TabItem>

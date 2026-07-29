@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specifying the role. For more information about ARNs and how to use them in policies, see IAM identifiers in the IAM User Guide guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssumeRolePolicyDocument" /></td>
+    <td><CopyableCode code="assume_role_policy_document" /></td>
     <td><code>string</code></td>
     <td>The policy that grants an entity permission to assume the role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the role was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the role that you provide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSessionDuration" /></td>
+    <td><CopyableCode code="max_session_duration" /></td>
     <td><code>integer</code></td>
     <td>The maximum session duration (in seconds) for the specified role. Anyone who uses the CLI, or API to assume the role can specify the duration using the optional DurationSeconds API parameter or duration-seconds CLI parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the role. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsBoundary" /></td>
+    <td><CopyableCode code="permissions_boundary" /></td>
     <td><code>string</code></td>
     <td>The ARN of the policy used to set the permissions boundary for the role. For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleId" /></td>
+    <td><CopyableCode code="role_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the role. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleLastUsed" /></td>
+    <td><CopyableCode code="role_last_used" /></td>
     <td><code>string</code></td>
     <td>Contains information about the last time that an IAM role was used. This includes the date and time and the Region in which the role was last used. Activity is only reported for the trailing 400 days. This period can be shorter if your Region began supporting these features within the last year. The role might have been used more than 400 days ago. For more information, see Regions where data is tracked in the IAM user Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleName" /></td>
+    <td><CopyableCode code="role_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name that identifies the role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the role. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specifying the role. For more information about ARNs and how to use them in policies, see IAM identifiers in the IAM User Guide guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssumeRolePolicyDocument" /></td>
+    <td><CopyableCode code="assume_role_policy_document" /></td>
     <td><code>string</code></td>
     <td>The policy that grants an entity permission to assume the role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the role was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the role that you provide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSessionDuration" /></td>
+    <td><CopyableCode code="max_session_duration" /></td>
     <td><code>integer</code></td>
     <td>The maximum session duration (in seconds) for the specified role. Anyone who uses the CLI, or API to assume the role can specify the duration using the optional DurationSeconds API parameter or duration-seconds CLI parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the role. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsBoundary" /></td>
+    <td><CopyableCode code="permissions_boundary" /></td>
     <td><code>string</code></td>
     <td>The ARN of the policy used to set the permissions boundary for the role. For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleId" /></td>
+    <td><CopyableCode code="role_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the role. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleLastUsed" /></td>
+    <td><CopyableCode code="role_last_used" /></td>
     <td><code>string</code></td>
     <td>Contains information about the last time that an IAM role was used. This includes the date and time and the Region in which the role was last used. Activity is only reported for the trailing 400 days. This period can be shorter if your Region began supporting these features within the last year. The role might have been used more than 400 days ago. For more information, see Regions where data is tracked in the IAM user Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleName" /></td>
+    <td><CopyableCode code="role_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name that identifies the role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the role. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
@@ -368,17 +368,17 @@ Retrieves information about the specified role, including the role's path, GUID,
 
 ```sql
 SELECT
-Arn,
-AssumeRolePolicyDocument,
-CreateDate,
-Description,
-MaxSessionDuration,
-Path,
-PermissionsBoundary,
-RoleId,
-RoleLastUsed,
-RoleName,
-Tags
+arn,
+assume_role_policy_document,
+create_date,
+description,
+max_session_duration,
+path,
+permissions_boundary,
+role_id,
+role_last_used,
+role_name,
+tags
 FROM aws.iam.roles
 WHERE RoleName = '{{ RoleName }}' -- required
 AND region = '{{ region }}' -- required
@@ -391,17 +391,17 @@ Lists the IAM roles that have the specified path prefix. If there are none, the 
 
 ```sql
 SELECT
-Arn,
-AssumeRolePolicyDocument,
-CreateDate,
-Description,
-MaxSessionDuration,
-Path,
-PermissionsBoundary,
-RoleId,
-RoleLastUsed,
-RoleName,
-Tags
+arn,
+assume_role_policy_document,
+create_date,
+description,
+max_session_duration,
+path,
+permissions_boundary,
+role_id,
+role_last_used,
+role_name,
+tags
 FROM aws.iam.roles
 WHERE region = '{{ region }}' -- required
 AND PathPrefix = '{{ PathPrefix }}'
@@ -448,17 +448,17 @@ SELECT
 '{{ PermissionsBoundary }}',
 '{{ Tags }}'
 RETURNING
-Arn,
-AssumeRolePolicyDocument,
-CreateDate,
-Description,
-MaxSessionDuration,
-Path,
-PermissionsBoundary,
-RoleId,
-RoleLastUsed,
-RoleName,
-Tags
+arn,
+assume_role_policy_document,
+create_date,
+description,
+max_session_duration,
+path,
+permissions_boundary,
+role_id,
+role_last_used,
+role_name,
+tags
 ;
 ```
 </TabItem>
@@ -479,17 +479,17 @@ SELECT
 '{{ Description }}',
 '{{ CustomSuffix }}'
 RETURNING
-Arn,
-AssumeRolePolicyDocument,
-CreateDate,
-Description,
-MaxSessionDuration,
-Path,
-PermissionsBoundary,
-RoleId,
-RoleLastUsed,
-RoleName,
-Tags
+arn,
+assume_role_policy_document,
+create_date,
+description,
+max_session_duration,
+path,
+permissions_boundary,
+role_id,
+role_last_used,
+role_name,
+tags
 ;
 ```
 </TabItem>

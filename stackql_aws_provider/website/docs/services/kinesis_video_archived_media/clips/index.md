@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the media in the requested clip. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\.\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Payload" /></td>
+    <td><CopyableCode code="payload" /></td>
     <td><code>string (byte)</code></td>
     <td>Traditional MP4 file that contains the media clip from the specified video stream. The output will contain the first 100 MB or the first 200 fragments from the specified start timestamp. For more information, see Kinesis Video Streams Limits.</td>
 </tr>
@@ -124,8 +124,8 @@ Downloads an MP4 file (clip) containing the archived, on-demand media from the s
 
 ```sql
 SELECT
-ContentType,
-Payload
+content_type,
+payload
 FROM aws.kinesis_video_archived_media.clips
 WHERE region = '{{ region }}' -- required
 ;

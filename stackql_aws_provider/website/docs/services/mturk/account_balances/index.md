@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailableBalance" /></td>
+    <td><CopyableCode code="available_balance" /></td>
     <td><code>string</code></td>
     <td>A string representing a currency amount. (pattern: &lt;code&gt;^&#91;0-9&#93;+(\.)?&#91;0-9&#93;&#123;0,2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnHoldBalance" /></td>
+    <td><CopyableCode code="on_hold_balance" /></td>
     <td><code>string</code></td>
     <td>A string representing a currency amount. (pattern: &lt;code&gt;^&#91;0-9&#93;+(\.)?&#91;0-9&#93;&#123;0,2&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ The GetAccountBalance operation retrieves the Prepaid HITs balance in your Amazo
 
 ```sql
 SELECT
-AvailableBalance,
-OnHoldBalance
+available_balance,
+on_hold_balance
 FROM aws.mturk.account_balances
 WHERE region = '{{ region }}' -- required
 ;

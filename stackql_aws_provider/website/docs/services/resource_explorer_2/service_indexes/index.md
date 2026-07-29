@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Resource Explorer index in the current Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the index. Valid values are LOCAL (contains resources from the current Region only) or AGGREGATOR (contains replicated resource information from all Regions). (LOCAL, AGGREGATOR)</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves information about the Resource Explorer index in the current Amazon We
 
 ```sql
 SELECT
-Arn,
-Type
+arn,
+type
 FROM aws.resource_explorer_2.service_indexes
 WHERE region = '{{ region }}' -- required
 ;

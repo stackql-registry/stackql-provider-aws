@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="apiKeyVersion" /></td>
+    <td><CopyableCode code="api_key_version" /></td>
     <td><code>string</code></td>
     <td>The version of the API keys used for the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudwatchRoleArn" /></td>
+    <td><CopyableCode code="cloudwatch_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of an Amazon CloudWatch role for the current Account.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of features supported for the account. When usage plans are enabled, the features list will include an entry of "UsagePlans".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="throttleSettings" /></td>
+    <td><CopyableCode code="throttle_settings" /></td>
     <td><code>object</code></td>
     <td>The API request rate limits.</td>
 </tr>
@@ -141,10 +141,10 @@ Gets information about the current Account resource.
 
 ```sql
 SELECT
-apiKeyVersion,
-cloudwatchRoleArn,
+api_key_version,
+cloudwatch_role_arn,
 features,
-throttleSettings
+throttle_settings
 FROM aws.apigateway.accounts
 WHERE region = '{{ region }}' -- required
 ;
@@ -172,10 +172,10 @@ patchOperations = '{{ patchOperations }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-apiKeyVersion,
-cloudwatchRoleArn,
+api_key_version,
+cloudwatch_role_arn,
 features,
-throttleSettings;
+throttle_settings;
 ```
 </TabItem>
 </Tabs>

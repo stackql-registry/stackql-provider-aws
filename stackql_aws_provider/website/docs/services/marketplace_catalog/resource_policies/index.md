@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy document to set; formatted in JSON. (pattern: &lt;code&gt;^&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -138,7 +138,7 @@ Gets a resource-based policy of an entity that is identified by its resource ARN
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.marketplace_catalog.resource_policies
 WHERE region = '{{ region }}' -- required
 AND resourceArn = '{{ resourceArn }}'

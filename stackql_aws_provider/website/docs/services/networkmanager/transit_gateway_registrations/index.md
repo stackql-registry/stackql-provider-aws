@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>object</code></td>
     <td>The state of the transit gateway registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayArn" /></td>
+    <td><CopyableCode code="transit_gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the transit gateway. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -149,9 +149,9 @@ Gets information about the transit gateway registrations in a specified global n
 
 ```sql
 SELECT
-GlobalNetworkId,
-State,
-TransitGatewayArn
+global_network_id,
+state,
+transit_gateway_arn
 FROM aws.networkmanager.transit_gateway_registrations
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required

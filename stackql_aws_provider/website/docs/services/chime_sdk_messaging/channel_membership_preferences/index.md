@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Member" /></td>
+    <td><CopyableCode code="member" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Preferences" /></td>
+    <td><CopyableCode code="preferences" /></td>
     <td><code>object</code></td>
     <td>The channel membership preferences for an AppInstanceUser .</td>
 </tr>
@@ -151,9 +151,9 @@ Gets the membership preferences of an AppInstanceUser or AppInstanceBot for the 
 
 ```sql
 SELECT
-ChannelArn,
-Member,
-Preferences
+channel_arn,
+member,
+preferences
 FROM aws.chime_sdk_messaging.channel_membership_preferences
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND member_arn = '{{ member_arn }}' -- required
@@ -187,9 +187,9 @@ AND member_arn = '{{ member_arn }}' --required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ChannelArn,
-Member,
-Preferences;
+channel_arn,
+member,
+preferences;
 ```
 </TabItem>
 </Tabs>

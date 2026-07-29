@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time recorded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services account ID. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileArn" /></td>
+    <td><CopyableCode code="profile_arn" /></td>
     <td><code>string</code></td>
     <td>The profile ARN. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:wellarchitected:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:profile/&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileDescription" /></td>
+    <td><CopyableCode code="profile_description" /></td>
     <td><code>string</code></td>
     <td>The profile description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileName" /></td>
+    <td><CopyableCode code="profile_name" /></td>
     <td><code>string</code></td>
     <td>The profile name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileQuestions" /></td>
+    <td><CopyableCode code="profile_questions" /></td>
     <td><code>array</code></td>
     <td>Profile questions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileVersion" /></td>
+    <td><CopyableCode code="profile_version" /></td>
     <td><code>string</code></td>
     <td>The profile version. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareInvitationId" /></td>
+    <td><CopyableCode code="share_invitation_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the share invitation. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time recorded.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileSummaries" /></td>
+    <td><CopyableCode code="profile_summaries" /></td>
     <td><code>array</code></td>
     <td>Profile summaries.</td>
 </tr>
@@ -272,16 +272,16 @@ Get profile information.
 
 ```sql
 SELECT
-CreatedAt,
-Owner,
-ProfileArn,
-ProfileDescription,
-ProfileName,
-ProfileQuestions,
-ProfileVersion,
-ShareInvitationId,
-Tags,
-UpdatedAt
+created_at,
+owner,
+profile_arn,
+profile_description,
+profile_name,
+profile_questions,
+profile_version,
+share_invitation_id,
+tags,
+updated_at
 FROM aws.wellarchitected.profiles
 WHERE profile_arn = '{{ profile_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -295,8 +295,8 @@ List profiles.
 
 ```sql
 SELECT
-NextToken,
-ProfileSummaries
+next_token,
+profile_summaries
 FROM aws.wellarchitected.profiles
 WHERE region = '{{ region }}' -- required
 AND ProfileNamePrefix = '{{ ProfileNamePrefix }}'
@@ -339,8 +339,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ProfileArn,
-ProfileVersion
+profile_arn,
+profile_version
 ;
 ```
 </TabItem>
@@ -408,7 +408,7 @@ WHERE
 profile_arn = '{{ profile_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Profile;
+profile;
 ```
 </TabItem>
 </Tabs>

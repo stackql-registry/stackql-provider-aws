@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="desiredState" /></td>
+    <td><CopyableCode code="desired_state" /></td>
     <td><code>object</code></td>
     <td>The template sync desired state that's returned by Proton.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSuccessfulSync" /></td>
+    <td><CopyableCode code="latest_successful_sync" /></td>
     <td><code>object</code></td>
     <td>The details of the last successful sync that's returned by Proton.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSync" /></td>
+    <td><CopyableCode code="latest_sync" /></td>
     <td><code>object</code></td>
     <td>The details of the last sync that's returned by Proton.</td>
 </tr>
@@ -129,9 +129,9 @@ Get the status of a template sync.
 
 ```sql
 SELECT
-desiredState,
-latestSuccessfulSync,
-latestSync
+desired_state,
+latest_successful_sync,
+latest_sync
 FROM aws.proton.template_sync_status
 WHERE region = '{{ region }}' -- required
 ;

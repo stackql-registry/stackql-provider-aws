@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that gives Amazon Comprehend Medical read access to your input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the detection job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that job metadata is deleted from the server. Output files in your S3 bucket will not be deleted. After the metadata is deleted, the job will no longer appear in the results of the ListEntitiesDetectionV2Job or the ListPHIDetectionJobs operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>The input data configuration that you supplied when you created the detection job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier assigned to the detection job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assigned to the detection job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the detection job. If the status is FAILED, the Message field shows the reason for the failure. (SUBMITTED, IN_PROGRESS, COMPLETED, PARTIAL_SUCCESS, FAILED, STOP_REQUESTED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KMSKey" /></td>
+    <td><CopyableCode code="kms_key" /></td>
     <td><code>string</code></td>
     <td>The AWS Key Management Service key, if any, used to encrypt the output files. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code of the input documents. (en)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestFilePath" /></td>
+    <td><CopyableCode code="manifest_file_path" /></td>
     <td><code>string</code></td>
     <td>The path to the file that describes the results of a batch job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the status of a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelVersion" /></td>
+    <td><CopyableCode code="model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the model used to analyze the documents. The version number looks like X.X.X. You can use this information to track the model used for a particular batch of documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>The output data configuration that you supplied when you created the detection job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the detection job was submitted for processing.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComprehendMedicalAsyncJobPropertiesList" /></td>
+    <td><CopyableCode code="comprehend_medical_async_job_properties_list" /></td>
     <td><code>array</code></td>
     <td>A list containing the properties of each job that is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Identifies the next page of results to return.</td>
 </tr>
@@ -217,20 +217,20 @@ Gets the properties associated with an InferICD10CM job. Use this operation to g
 
 ```sql
 SELECT
-DataAccessRoleArn,
-EndTime,
-ExpirationTime,
-InputDataConfig,
-JobId,
-JobName,
-JobStatus,
-KMSKey,
-LanguageCode,
-ManifestFilePath,
-Message,
-ModelVersion,
-OutputDataConfig,
-SubmitTime
+data_access_role_arn,
+end_time,
+expiration_time,
+input_data_config,
+job_id,
+job_name,
+job_status,
+kms_key,
+language_code,
+manifest_file_path,
+message,
+model_version,
+output_data_config,
+submit_time
 FROM aws.comprehendmedical.icd10_cm_inference_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,8 +242,8 @@ Gets a list of InferICD10CM jobs that you have submitted.
 
 ```sql
 SELECT
-ComprehendMedicalAsyncJobPropertiesList,
-NextToken
+comprehend_medical_async_job_properties_list,
+next_token
 FROM aws.comprehendmedical.icd10_cm_inference_jobs
 WHERE region = '{{ region }}' -- required
 ;

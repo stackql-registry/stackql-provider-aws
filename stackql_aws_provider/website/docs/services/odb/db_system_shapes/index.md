@@ -55,117 +55,117 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="areServerTypesSupported" /></td>
+    <td><CopyableCode code="are_server_types_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the hardware system model supports configurable database and server storage types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableCoreCount" /></td>
+    <td><CopyableCode code="available_core_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of CPU cores that can be enabled for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableCoreCountPerNode" /></td>
+    <td><CopyableCode code="available_core_count_per_node" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of CPU cores per DB node that can be enabled for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableDataStorageInTBs" /></td>
+    <td><CopyableCode code="available_data_storage_in_tbs" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of data storage, in terabytes (TB), that can be enabled for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableDataStoragePerServerInTBs" /></td>
+    <td><CopyableCode code="available_data_storage_per_server_in_tbs" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of data storage, in terabytes (TB), that's available per storage server for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableDbNodePerNodeInGBs" /></td>
+    <td><CopyableCode code="available_db_node_per_node_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of DB node storage, in gigabytes (GB), that's available per DB node for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableDbNodeStorageInGBs" /></td>
+    <td><CopyableCode code="available_db_node_storage_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of DB node storage, in gigabytes (GB), that can be enabled for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableMemoryInGBs" /></td>
+    <td><CopyableCode code="available_memory_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of memory, in gigabytes (GB), that can be enabled for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableMemoryPerNodeInGBs" /></td>
+    <td><CopyableCode code="available_memory_per_node_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of memory, in gigabytes (GB), that's available per DB node for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeModel" /></td>
+    <td><CopyableCode code="compute_model" /></td>
     <td><code>string</code></td>
     <td>The OCI model compute model used when you create or clone an instance: ECPU or OCPU. An ECPU is an abstracted measure of compute resources. ECPUs are based on the number of cores elastically allocated from a pool of compute and storage servers. An OCPU is a legacy physical measure of compute resources. OCPUs are based on the physical core of a processor with hyper-threading enabled. (ECPU, OCPU)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="coreCountIncrement" /></td>
+    <td><CopyableCode code="core_count_increment" /></td>
     <td><code>integer</code></td>
     <td>The discrete number by which the CPU core count for the shape can be increased or decreased.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxStorageCount" /></td>
+    <td><CopyableCode code="max_storage_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of Exadata storage servers that's available for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maximumNodeCount" /></td>
+    <td><CopyableCode code="maximum_node_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of compute servers that is available for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minCoreCountPerNode" /></td>
+    <td><CopyableCode code="min_core_count_per_node" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of CPU cores that can be enabled per node for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minDataStorageInTBs" /></td>
+    <td><CopyableCode code="min_data_storage_in_tbs" /></td>
     <td><code>integer</code></td>
     <td>The minimum amount of data storage, in terabytes (TB), that must be allocated for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minDbNodeStoragePerNodeInGBs" /></td>
+    <td><CopyableCode code="min_db_node_storage_per_node_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The minimum amount of DB node storage, in gigabytes (GB), that must be allocated per DB node for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minMemoryPerNodeInGBs" /></td>
+    <td><CopyableCode code="min_memory_per_node_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The minimum amount of memory, in gigabytes (GB), that must be allocated per DB node for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minStorageCount" /></td>
+    <td><CopyableCode code="min_storage_count" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of Exadata storage servers that are available for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minimumCoreCount" /></td>
+    <td><CopyableCode code="minimum_core_count" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of CPU cores that can be enabled for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minimumNodeCount" /></td>
+    <td><CopyableCode code="minimum_node_count" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of compute servers that are available for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runtimeMinimumCoreCount" /></td>
+    <td><CopyableCode code="runtime_minimum_core_count" /></td>
     <td><code>integer</code></td>
     <td>The runtime minimum number of CPU cores that can be enabled for the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shapeFamily" /></td>
+    <td><CopyableCode code="shape_family" /></td>
     <td><code>string</code></td>
     <td>The family of the shape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shapeType" /></td>
+    <td><CopyableCode code="shape_type" /></td>
     <td><code>string</code></td>
     <td>The shape type. This property is determined by the CPU hardware. (AMD, INTEL, INTEL_FLEX_X9, AMPERE_FLEX_A1)</td>
 </tr>
@@ -235,29 +235,29 @@ Returns information about the shapes that are available for an Exadata infrastru
 ```sql
 SELECT
 name,
-areServerTypesSupported,
-availableCoreCount,
-availableCoreCountPerNode,
-availableDataStorageInTBs,
-availableDataStoragePerServerInTBs,
-availableDbNodePerNodeInGBs,
-availableDbNodeStorageInGBs,
-availableMemoryInGBs,
-availableMemoryPerNodeInGBs,
-computeModel,
-coreCountIncrement,
-maxStorageCount,
-maximumNodeCount,
-minCoreCountPerNode,
-minDataStorageInTBs,
-minDbNodeStoragePerNodeInGBs,
-minMemoryPerNodeInGBs,
-minStorageCount,
-minimumCoreCount,
-minimumNodeCount,
-runtimeMinimumCoreCount,
-shapeFamily,
-shapeType
+are_server_types_supported,
+available_core_count,
+available_core_count_per_node,
+available_data_storage_in_tbs,
+available_data_storage_per_server_in_tbs,
+available_db_node_per_node_in_gbs,
+available_db_node_storage_in_gbs,
+available_memory_in_gbs,
+available_memory_per_node_in_gbs,
+compute_model,
+core_count_increment,
+max_storage_count,
+maximum_node_count,
+min_core_count_per_node,
+min_data_storage_in_tbs,
+min_db_node_storage_per_node_in_gbs,
+min_memory_per_node_in_gbs,
+min_storage_count,
+minimum_core_count,
+minimum_node_count,
+runtime_minimum_core_count,
+shape_family,
+shape_type
 FROM aws.odb.db_system_shapes
 WHERE region = '{{ region }}' -- required
 ;

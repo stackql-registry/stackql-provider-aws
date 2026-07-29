@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The user-friendly name of the anomaly detector. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="anomalyDetectorId" /></td>
+    <td><CopyableCode code="anomaly_detector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the anomaly detector. (pattern: &lt;code&gt;ad-&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration for the anomaly detection algorithm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the anomaly detector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationIntervalInSeconds" /></td>
+    <td><CopyableCode code="evaluation_interval_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The frequency, in seconds, at which the anomaly detector evaluates metrics.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Managed Service for Prometheus metric labels associated with the anomaly detector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="missingDataAction" /></td>
+    <td><CopyableCode code="missing_data_action" /></td>
     <td><code>object</code></td>
     <td>Specifies the action to take when data is missing during anomaly detection evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the anomaly detector was last modified.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The user-friendly name of the anomaly detector. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="anomalyDetectorId" /></td>
+    <td><CopyableCode code="anomaly_detector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the anomaly detector. (pattern: &lt;code&gt;ad-&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the anomaly detector. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:aps:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:anomalydetector/ws-.+/ad-.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the anomaly detector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the anomaly detector was last modified.</td>
 </tr>
@@ -279,14 +279,14 @@ Retrieves detailed information about a specific anomaly detector, including its 
 ```sql
 SELECT
 alias,
-anomalyDetectorId,
+anomaly_detector_id,
 arn,
 configuration,
-createdAt,
-evaluationIntervalInSeconds,
+created_at,
+evaluation_interval_in_seconds,
 labels,
-missingDataAction,
-modifiedAt,
+missing_data_action,
+modified_at,
 status,
 tags
 FROM aws.amp.anomaly_detectors
@@ -303,10 +303,10 @@ Returns a paginated list of anomaly detectors for a workspace with optional filt
 ```sql
 SELECT
 alias,
-anomalyDetectorId,
+anomaly_detector_id,
 arn,
-createdAt,
-modifiedAt,
+created_at,
+modified_at,
 status,
 tags
 FROM aws.amp.anomaly_detectors
@@ -357,7 +357,7 @@ SELECT
 '{{ workspace_id }}',
 '{{ region }}'
 RETURNING
-anomalyDetectorId,
+anomaly_detector_id,
 arn,
 status,
 tags
@@ -441,7 +441,7 @@ AND anomaly_detector_id = '{{ anomaly_detector_id }}' --required
 AND region = '{{ region }}' --required
 AND configuration = '{{ configuration }}' --required
 RETURNING
-anomalyDetectorId,
+anomaly_detector_id,
 arn,
 status,
 tags;

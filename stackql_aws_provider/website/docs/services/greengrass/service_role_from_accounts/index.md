@@ -100,7 +100,7 @@ SET
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-DisassociatedAt;
+disassociated_at;
 ```
 </TabItem>
 </Tabs>

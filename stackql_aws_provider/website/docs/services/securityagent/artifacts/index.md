@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the agent space.</td>
 </tr>
@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The artifact content and type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="artifactId" /></td>
+    <td><CopyableCode code="artifact_id" /></td>
     <td><code>string</code></td>
     <td>The id of the artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileName" /></td>
+    <td><CopyableCode code="file_name" /></td>
     <td><code>string</code></td>
     <td>The file name of the artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the artifact was last updated, in UTC format.</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="artifactId" /></td>
+    <td><CopyableCode code="artifact_id" /></td>
     <td><code>string</code></td>
     <td>The id of the artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="artifactType" /></td>
+    <td><CopyableCode code="artifact_type" /></td>
     <td><code>string</code></td>
     <td>Supported file extension types for artifacts. (TXT, PNG, JPEG, MD, PDF, DOCX, DOC, JSON, YAML)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileName" /></td>
+    <td><CopyableCode code="file_name" /></td>
     <td><code>string</code></td>
     <td>The file name of the artifact.</td>
 </tr>
@@ -191,11 +191,11 @@ Retrieves an artifact from an agent space.
 
 ```sql
 SELECT
-agentSpaceId,
+agent_space_id,
 artifact,
-artifactId,
-fileName,
-updatedAt
+artifact_id,
+file_name,
+updated_at
 FROM aws.securityagent.artifacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,9 +207,9 @@ Returns a paginated list of artifact summaries for the specified agent space.
 
 ```sql
 SELECT
-artifactId,
-artifactType,
-fileName
+artifact_id,
+artifact_type,
+file_name
 FROM aws.securityagent.artifacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -244,7 +244,7 @@ AND artifactContent = '{{ artifactContent }}' --required
 AND artifactType = '{{ artifactType }}' --required
 AND fileName = '{{ fileName }}' --required
 RETURNING
-artifactId;
+artifact_id;
 ```
 </TabItem>
 </Tabs>

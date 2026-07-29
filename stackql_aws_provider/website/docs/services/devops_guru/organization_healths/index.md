@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetricsAnalyzed" /></td>
+    <td><CopyableCode code="metrics_analyzed" /></td>
     <td><code>integer</code></td>
     <td>An integer that specifies the number of metrics that have been analyzed in your organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenProactiveInsights" /></td>
+    <td><CopyableCode code="open_proactive_insights" /></td>
     <td><code>integer</code></td>
     <td>An integer that specifies the number of open proactive insights in your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenReactiveInsights" /></td>
+    <td><CopyableCode code="open_reactive_insights" /></td>
     <td><code>integer</code></td>
     <td>An integer that specifies the number of open reactive insights in your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceHours" /></td>
+    <td><CopyableCode code="resource_hours" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of Amazon DevOps Guru resource analysis hours billed to the current Amazon Web Services account in the last hour.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns active insights, predictive insights, and resource hours analyzed in las
 
 ```sql
 SELECT
-MetricsAnalyzed,
-OpenProactiveInsights,
-OpenReactiveInsights,
-ResourceHours
+metrics_analyzed,
+open_proactive_insights,
+open_reactive_insights,
+resource_hours
 FROM aws.devops_guru.organization_healths
 WHERE region = '{{ region }}' -- required
 ;

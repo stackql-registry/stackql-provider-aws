@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessEntryArn" /></td>
+    <td><CopyableCode code="access_entry_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the access entry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp at object creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kubernetesGroups" /></td>
+    <td><CopyableCode code="kubernetes_groups" /></td>
     <td><code>array</code></td>
     <td>A name that you've specified in a Kubernetes RoleBinding or ClusterRoleBinding object so that Kubernetes authorizes the principalARN access to cluster objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp for the last modification to the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalArn" /></td>
+    <td><CopyableCode code="principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM principal for the access entry. If you ever delete the IAM principal with this ARN, the access entry isn't automatically deleted. We recommend that you delete the access entry with an ARN for an IAM principal that you delete. If you don't delete the access entry and ever recreate the IAM principal, even if it has the same ARN, the access entry won't work. This is because even though the ARN is the same for the recreated IAM principal, the roleID or userID (you can see this with the Security Token Service GetCallerIdentity API) is different for the recreated IAM principal than it was for the original IAM principal. Even though you don't see the IAM principal's roleID or userID for an access entry, Amazon EKS stores it with the access entry.</td>
 </tr>
@@ -233,12 +233,12 @@ Describes an access entry.
 
 ```sql
 SELECT
-accessEntryArn,
-clusterName,
-createdAt,
-kubernetesGroups,
-modifiedAt,
-principalArn,
+access_entry_arn,
+cluster_name,
+created_at,
+kubernetes_groups,
+modified_at,
+principal_arn,
 tags,
 type_,
 username
@@ -302,7 +302,7 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-accessEntry
+access_entry
 ;
 ```
 </TabItem>
@@ -361,7 +361,7 @@ name = '{{ name }}' --required
 AND principal_arn = '{{ principal_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-accessEntry;
+access_entry;
 ```
 </TabItem>
 </Tabs>

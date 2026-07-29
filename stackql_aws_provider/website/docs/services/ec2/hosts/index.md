@@ -50,102 +50,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocationTime" /></td>
+    <td><CopyableCode code="allocation_time" /></td>
     <td><code>string</code></td>
     <td>The time that the Dedicated Host was allocated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllowsMultipleInstanceTypes" /></td>
+    <td><CopyableCode code="allows_multiple_instance_types" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the Dedicated Host supports multiple instance types of the same instance family. If the value is on, the Dedicated Host supports multiple instance types in the instance family. If the value is off, the Dedicated Host supports a single instance type only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost hardware asset on which the Dedicated Host is allocated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoPlacement" /></td>
+    <td><CopyableCode code="auto_placement" /></td>
     <td><code>string</code></td>
     <td>Whether auto-placement is on or off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone in which the Dedicated Host is allocated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableCapacity" /></td>
+    <td><CopyableCode code="available_capacity" /></td>
     <td><code>string</code></td>
     <td>Information about the instances running on the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring Idempotency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostId" /></td>
+    <td><CopyableCode code="host_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostMaintenance" /></td>
+    <td><CopyableCode code="host_maintenance" /></td>
     <td><code>string</code></td>
     <td>Indicates whether host maintenance is enabled or disabled for the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostProperties" /></td>
+    <td><CopyableCode code="host_properties" /></td>
     <td><code>string</code></td>
     <td>The hardware specifications of the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostRecovery" /></td>
+    <td><CopyableCode code="host_recovery" /></td>
     <td><code>string</code></td>
     <td>Indicates whether host recovery is enabled or disabled for the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostReservationId" /></td>
+    <td><CopyableCode code="host_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The reservation ID of the Dedicated Host. This returns a null response if the Dedicated Host doesn't have an associated reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Instances" /></td>
+    <td><CopyableCode code="instances" /></td>
     <td><code>string</code></td>
     <td>The IDs and instance type that are currently running on the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberOfServiceLinkedResourceGroup" /></td>
+    <td><CopyableCode code="member_of_service_linked_resource_group" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the Dedicated Host is in a host resource group. If memberOfServiceLinkedResourceGroup is true, the host is in a host resource group; otherwise, it is not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which the Dedicated Host is allocated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the Dedicated Host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReleaseTime" /></td>
+    <td><CopyableCode code="release_time" /></td>
     <td><code>string</code></td>
     <td>The time that the Dedicated Host was released.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The Dedicated Host's state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the Dedicated Host.</td>
 </tr>
@@ -320,26 +320,26 @@ Describes the specified Dedicated Hosts or all your Dedicated Hosts. The results
 
 ```sql
 SELECT
-AllocationTime,
-AllowsMultipleInstanceTypes,
-AssetId,
-AutoPlacement,
-AvailabilityZone,
-AvailabilityZoneId,
-AvailableCapacity,
-ClientToken,
-HostId,
-HostMaintenance,
-HostProperties,
-HostRecovery,
-HostReservationId,
-Instances,
-MemberOfServiceLinkedResourceGroup,
-OutpostArn,
-OwnerId,
-ReleaseTime,
-State,
-Tags
+allocation_time,
+allows_multiple_instance_types,
+asset_id,
+auto_placement,
+availability_zone,
+availability_zone_id,
+available_capacity,
+client_token,
+host_id,
+host_maintenance,
+host_properties,
+host_recovery,
+host_reservation_id,
+instances,
+member_of_service_linked_resource_group,
+outpost_arn,
+owner_id,
+release_time,
+state,
+tags
 FROM aws.ec2.hosts
 WHERE region = '{{ region }}' -- required
 AND HostId = '{{ HostId }}'
@@ -378,8 +378,8 @@ AND InstanceFamily = '{{ InstanceFamily}}'
 AND HostMaintenance = '{{ HostMaintenance}}'
 AND AutoPlacement = '{{ AutoPlacement}}'
 RETURNING
-Successful,
-Unsuccessful;
+successful,
+unsuccessful;
 ```
 </TabItem>
 <TabItem value="allocate_hosts">
@@ -405,7 +405,7 @@ AND InstanceType = '{{ InstanceType}}'
 AND Quantity = '{{ Quantity}}'
 AND AvailabilityZone = '{{ AvailabilityZone}}'
 RETURNING
-HostIds;
+host_ids;
 ```
 </TabItem>
 </Tabs>

@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>When the project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultJobTimeoutMinutes" /></td>
+    <td><CopyableCode code="default_job_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The default number of minutes (at the project level) a test run executes before it times out. The default value is 150 minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>array</code></td>
     <td>Environment variables associated with the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM execution role associated with the project. (pattern: &lt;code&gt;^arn:aws:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC security groups and subnets that are attached to a project.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>When the project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultJobTimeoutMinutes" /></td>
+    <td><CopyableCode code="default_job_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The default number of minutes (at the project level) a test run executes before it times out. The default value is 150 minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>array</code></td>
     <td>Environment variables associated with the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM execution role associated with the project. (pattern: &lt;code&gt;^arn:aws:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC security groups and subnets that are attached to a project.</td>
 </tr>
@@ -238,10 +238,10 @@ SELECT
 name,
 arn,
 created,
-defaultJobTimeoutMinutes,
-environmentVariables,
-executionRoleArn,
-vpcConfig
+default_job_timeout_minutes,
+environment_variables,
+execution_role_arn,
+vpc_config
 FROM aws.devicefarm.projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,10 +256,10 @@ SELECT
 name,
 arn,
 created,
-defaultJobTimeoutMinutes,
-environmentVariables,
-executionRoleArn,
-vpcConfig
+default_job_timeout_minutes,
+environment_variables,
+execution_role_arn,
+vpc_config
 FROM aws.devicefarm.projects
 WHERE region = '{{ region }}' -- required
 ;

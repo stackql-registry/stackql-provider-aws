@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComplianceSummariesByResourceType" /></td>
+    <td><CopyableCode code="compliance_summaries_by_resource_type" /></td>
     <td><code>array</code></td>
     <td>The number of resources that are compliant and the number that are noncompliant. If one or more resource types were provided with the request, the numbers are returned for each resource type. The maximum number returned is 100.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the number of resources that are compliant and the number that are nonco
 
 ```sql
 SELECT
-ComplianceSummariesByResourceType
+compliance_summaries_by_resource_type
 FROM aws.config.compliance_summary_by_resource_types
 WHERE region = '{{ region }}' -- required
 ;

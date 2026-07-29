@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="cacheKeyParameters" /></td>
+    <td><CopyableCode code="cache_key_parameters" /></td>
     <td><code>array</code></td>
     <td>A list of request parameters whose values API Gateway caches. To be valid values for cacheKeyParameters, these parameters must also be specified for Method requestParameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheNamespace" /></td>
+    <td><CopyableCode code="cache_namespace" /></td>
     <td><code>string</code></td>
     <td>Specifies a group of related cached parameters. By default, API Gateway uses the resource ID as the cacheNamespace. You can specify the same cacheNamespace across resources to return the same cached data for requests to different resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VpcLink used for the integration when connectionType=VPC_LINK and undefined, otherwise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionType" /></td>
+    <td><CopyableCode code="connection_type" /></td>
     <td><code>string</code></td>
     <td>The type of the network connection to the integration endpoint. The valid value is INTERNET for connections through the public routable internet or VPC_LINK for private connections between API Gateway and a network load balancer in a VPC. The default value is INTERNET. (INTERNET, VPC_LINK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentHandling" /></td>
+    <td><CopyableCode code="content_handling" /></td>
     <td><code>string</code></td>
     <td>Specifies how to handle request payload content type conversions. Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors: If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the passthroughBehavior is configured to support payload pass-through. (CONVERT_TO_BINARY, CONVERT_TO_TEXT)</td>
 </tr>
@@ -80,47 +80,47 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string arn:aws:iam::\*:user/\*. To use resource-based permissions on supported Amazon Web Services services, specify null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpMethod" /></td>
+    <td><CopyableCode code="http_method" /></td>
     <td><code>string</code></td>
     <td>Specifies the integration's HTTP method type. For the Type property, if you specify MOCK, this property is optional. For Lambda integrations, you must set the integration method to POST. For all other types, you must specify this property.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationResponses" /></td>
+    <td><CopyableCode code="integration_responses" /></td>
     <td><code>object</code></td>
     <td>Specifies the integration's responses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationTarget" /></td>
+    <td><CopyableCode code="integration_target" /></td>
     <td><code>string</code></td>
     <td>The ALB or NLB listener to send the request to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="passthroughBehavior" /></td>
+    <td><CopyableCode code="passthrough_behavior" /></td>
     <td><code>string</code></td>
     <td>Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in requestTemplates. The valid value is one of the following: WHEN_NO_MATCH: passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request. WHEN_NO_TEMPLATES: passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP 415 Unsupported Media Type response. NEVER: rejects the method request with an HTTP 415 Unsupported Media Type response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestParameters" /></td>
+    <td><CopyableCode code="request_parameters" /></td>
     <td><code>object</code></td>
     <td>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of method.request.&#123;location&#125;.&#123;name&#125;, where location is querystring, path, or header and name must be a valid and unique method request parameter name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestTemplates" /></td>
+    <td><CopyableCode code="request_templates" /></td>
     <td><code>object</code></td>
     <td>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseTransferMode" /></td>
+    <td><CopyableCode code="response_transfer_mode" /></td>
     <td><code>string</code></td>
     <td>The response transfer mode of the integration. (BUFFERED, STREAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutInMillis" /></td>
+    <td><CopyableCode code="timeout_in_millis" /></td>
     <td><code>integer</code></td>
     <td>Custom timeout between 50 and 29,000 milliseconds. The default value is 29,000 milliseconds or 29 seconds. You can increase the default value to longer than 29 seconds for Regional or private APIs only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tlsConfig" /></td>
+    <td><CopyableCode code="tls_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the TLS configuration for an integration.</td>
 </tr>
@@ -235,21 +235,21 @@ Get the integration settings.
 
 ```sql
 SELECT
-cacheKeyParameters,
-cacheNamespace,
-connectionId,
-connectionType,
-contentHandling,
+cache_key_parameters,
+cache_namespace,
+connection_id,
+connection_type,
+content_handling,
 credentials,
-httpMethod,
-integrationResponses,
-integrationTarget,
-passthroughBehavior,
-requestParameters,
-requestTemplates,
-responseTransferMode,
-timeoutInMillis,
-tlsConfig,
+http_method,
+integration_responses,
+integration_target,
+passthrough_behavior,
+request_parameters,
+request_templates,
+response_transfer_mode,
+timeout_in_millis,
+tls_config,
 type_,
 uri
 FROM aws.apigateway.integrations
@@ -285,21 +285,21 @@ AND resource_id = '{{ resource_id }}' --required
 AND http_method = '{{ http_method }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-cacheKeyParameters,
-cacheNamespace,
-connectionId,
-connectionType,
-contentHandling,
+cache_key_parameters,
+cache_namespace,
+connection_id,
+connection_type,
+content_handling,
 credentials,
-httpMethod,
-integrationResponses,
-integrationTarget,
-passthroughBehavior,
-requestParameters,
-requestTemplates,
-responseTransferMode,
-timeoutInMillis,
-tlsConfig,
+http_method,
+integration_responses,
+integration_target,
+passthrough_behavior,
+request_parameters,
+request_templates,
+response_transfer_mode,
+timeout_in_millis,
+tls_config,
 type_,
 uri;
 ```
@@ -345,21 +345,21 @@ AND http_method = '{{ http_method }}' --required
 AND region = '{{ region }}' --required
 AND type = '{{ type }}' --required
 RETURNING
-cacheKeyParameters,
-cacheNamespace,
-connectionId,
-connectionType,
-contentHandling,
+cache_key_parameters,
+cache_namespace,
+connection_id,
+connection_type,
+content_handling,
 credentials,
-httpMethod,
-integrationResponses,
-integrationTarget,
-passthroughBehavior,
-requestParameters,
-requestTemplates,
-responseTransferMode,
-timeoutInMillis,
-tlsConfig,
+http_method,
+integration_responses,
+integration_target,
+passthrough_behavior,
+request_parameters,
+request_templates,
+response_transfer_mode,
+timeout_in_millis,
+tls_config,
 type_,
 uri;
 ```

@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the fleet was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the fleet. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the fleet was last updated, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a signal catalog associated with the fleet.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the fleet was created, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the fleet. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the fleet was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the signal catalog associated with the fleet.</td>
 </tr>
@@ -234,10 +234,10 @@ Retrieves information about a fleet.
 SELECT
 id,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
-signalCatalogArn
+last_modification_time,
+signal_catalog_arn
 FROM aws.iotfleetwise.fleets
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,10 +251,10 @@ Retrieves information for each created fleet in an Amazon Web Services account. 
 SELECT
 id,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
-signalCatalogArn
+last_modification_time,
+signal_catalog_arn
 FROM aws.iotfleetwise.fleets
 WHERE region = '{{ region }}' -- required
 ;

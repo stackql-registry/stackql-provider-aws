@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Identity" /></td>
+    <td><CopyableCode code="identity" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the invoking principal.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the identity of the invoking principal.
 
 ```sql
 SELECT
-Identity
+identity
 FROM aws.lakeformation.data_lake_principals
 WHERE region = '{{ region }}' -- required
 ;

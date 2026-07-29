@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actualIncidentStartDate" /></td>
+    <td><CopyableCode code="actual_incident_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Response element for GetCase that provides the actual incident start date as identified by data analysis during the investigation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseArn" /></td>
+    <td><CopyableCode code="case_arn" /></td>
     <td><code>string</code></td>
     <td>Response element for GetCase that provides the case ARN (pattern: &lt;code&gt;arn:aws:security-ir:\w+?-\w+?-\d+:&#91;0-9&#93;&#123;12&#125;:case/&#91;0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseAttachments" /></td>
+    <td><CopyableCode code="case_attachments" /></td>
     <td><code>array</code></td>
     <td>Response element for GetCase that provides a list of current case attachments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseMetadata" /></td>
+    <td><CopyableCode code="case_metadata" /></td>
     <td><code>array</code></td>
     <td>Case response metadata</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseStatus" /></td>
+    <td><CopyableCode code="case_status" /></td>
     <td><code>string</code></td>
     <td>Response element for GetCase that provides the case status. Options for statuses include Submitted | Detection and Analysis | Eradication, Containment and Recovery | Post-Incident Activities | Closed (Submitted, Acknowledged, Detection and Analysis, Containment, Eradication and Recovery, Post-incident Activities, Ready to Close, Closed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="closedDate" /></td>
+    <td><CopyableCode code="closed_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Response element for GetCase that provides the date a specified case was closed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="closureCode" /></td>
+    <td><CopyableCode code="closure_code" /></td>
     <td><code>string</code></td>
     <td>Response element for GetCase that provides the summary code for why a case was closed. (Investigation Completed, Not Resolved, False Positive, Duplicate)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Response element for GetCase that provides the date the case was created.</td>
 </tr>
@@ -96,47 +96,47 @@ The following fields are returned by `SELECT` queries:
     <td>Response element for GetCase that provides contents of the case description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engagementType" /></td>
+    <td><CopyableCode code="engagement_type" /></td>
     <td><code>string</code></td>
     <td>Response element for GetCase that provides the engagement type. Options for engagement type include Active Security Event | Investigations (Security Incident, Investigation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="impactedAccounts" /></td>
+    <td><CopyableCode code="impacted_accounts" /></td>
     <td><code>array</code></td>
     <td>Response element for GetCase that provides a list of impacted accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="impactedAwsRegions" /></td>
+    <td><CopyableCode code="impacted_aws_regions" /></td>
     <td><code>array</code></td>
     <td>Response element for GetCase that provides the impacted regions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="impactedServices" /></td>
+    <td><CopyableCode code="impacted_services" /></td>
     <td><code>array</code></td>
     <td>Response element for GetCase that provides a list of impacted services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Response element for GetCase that provides the date a case was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingAction" /></td>
+    <td><CopyableCode code="pending_action" /></td>
     <td><code>string</code></td>
     <td>Response element for GetCase that identifies the case is waiting on customer input. (Customer, None)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportedIncidentStartDate" /></td>
+    <td><CopyableCode code="reported_incident_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Response element for GetCase that provides the customer provided incident start date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolverType" /></td>
+    <td><CopyableCode code="resolver_type" /></td>
     <td><code>string</code></td>
     <td>Response element for GetCase that provides the current resolver types. (AWS, Self)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="threatActorIpAddresses" /></td>
+    <td><CopyableCode code="threat_actor_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>Response element for GetCase that provides a list of suspicious IP addresses associated with unauthorized activity.</td>
 </tr>
@@ -165,47 +165,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="caseArn" /></td>
+    <td><CopyableCode code="case_arn" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;arn:aws:security-ir:\w+?-\w+?-\d+:&#91;0-9&#93;&#123;12&#125;:case/&#91;0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseId" /></td>
+    <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;\d&#123;10,32&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseStatus" /></td>
+    <td><CopyableCode code="case_status" /></td>
     <td><code>string</code></td>
     <td> (Submitted, Acknowledged, Detection and Analysis, Containment, Eradication and Recovery, Post-incident Activities, Ready to Close, Closed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="closedDate" /></td>
+    <td><CopyableCode code="closed_date" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="engagementType" /></td>
+    <td><CopyableCode code="engagement_type" /></td>
     <td><code>string</code></td>
     <td> (Security Incident, Investigation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingAction" /></td>
+    <td><CopyableCode code="pending_action" /></td>
     <td><code>string</code></td>
     <td> (Customer, None)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolverType" /></td>
+    <td><CopyableCode code="resolver_type" /></td>
     <td><code>string</code></td>
     <td> (AWS, Self)</td>
 </tr>
@@ -339,24 +339,24 @@ Returns the attributes of a case.
 
 ```sql
 SELECT
-actualIncidentStartDate,
-caseArn,
-caseAttachments,
-caseMetadata,
-caseStatus,
-closedDate,
-closureCode,
-createdDate,
+actual_incident_start_date,
+case_arn,
+case_attachments,
+case_metadata,
+case_status,
+closed_date,
+closure_code,
+created_date,
 description,
-engagementType,
-impactedAccounts,
-impactedAwsRegions,
-impactedServices,
-lastUpdatedDate,
-pendingAction,
-reportedIncidentStartDate,
-resolverType,
-threatActorIpAddresses,
+engagement_type,
+impacted_accounts,
+impacted_aws_regions,
+impacted_services,
+last_updated_date,
+pending_action,
+reported_incident_start_date,
+resolver_type,
+threat_actor_ip_addresses,
 title_,
 watchers
 FROM aws.security_ir.cases
@@ -371,15 +371,15 @@ Lists all cases the requester has access to.
 
 ```sql
 SELECT
-caseArn,
-caseId,
-caseStatus,
-closedDate,
-createdDate,
-engagementType,
-lastUpdatedDate,
-pendingAction,
-resolverType,
+case_arn,
+case_id,
+case_status,
+closed_date,
+created_date,
+engagement_type,
+last_updated_date,
+pending_action,
+resolver_type,
 title_
 FROM aws.security_ir.cases
 WHERE region = '{{ region }}' -- required
@@ -433,7 +433,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-caseId
+case_id
 ;
 ```
 </TabItem>
@@ -508,7 +508,7 @@ case_id = '{{ case_id }}' --required
 AND region = '{{ region }}' --required
 AND caseStatus = '{{ caseStatus }}' --required
 RETURNING
-caseStatus;
+case_status;
 ```
 </TabItem>
 <TabItem value="update_resolver_type">
@@ -524,9 +524,9 @@ case_id = '{{ case_id }}' --required
 AND region = '{{ region }}' --required
 AND resolverType = '{{ resolverType }}' --required
 RETURNING
-caseId,
-caseStatus,
-resolverType;
+case_id,
+case_status,
+resolver_type;
 ```
 </TabItem>
 <TabItem value="update_case">

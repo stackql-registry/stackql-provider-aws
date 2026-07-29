@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExplorerEnablingRoleArn" /></td>
+    <td><CopyableCode code="explorer_enabling_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role used to enable Explorer.</td>
 </tr>
@@ -126,7 +126,7 @@ Returns settings configured for Quick Setup in the requesting Amazon Web Service
 
 ```sql
 SELECT
-ExplorerEnablingRoleArn
+explorer_enabling_role_arn
 FROM aws.ssm_quicksetup.service_settings
 WHERE region = '{{ region }}' -- required
 ;

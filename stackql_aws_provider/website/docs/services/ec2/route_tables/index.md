@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Associations" /></td>
+    <td><CopyableCode code="associations" /></td>
     <td><code>string</code></td>
     <td>The associations between the route table and your subnets or gateways.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PropagatingVgws" /></td>
+    <td><CopyableCode code="propagating_vgws" /></td>
     <td><code>string</code></td>
     <td>Any virtual private gateway (VGW) propagating routes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteTableId" /></td>
+    <td><CopyableCode code="route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>string</code></td>
     <td>The routes in the route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -364,13 +364,13 @@ Describes your route tables. The default is to describe all your route tables. A
 
 ```sql
 SELECT
-Associations,
-OwnerId,
-PropagatingVgws,
-RouteTableId,
-Routes,
-Tags,
-VpcId
+associations,
+owner_id,
+propagating_vgws,
+route_table_id,
+routes,
+tags,
+vpc_id
 FROM aws.ec2.route_tables
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -439,7 +439,7 @@ SELECT
 '{{ VpcPeeringConnectionId }}',
 '{{ NatGatewayId }}'
 RETURNING
-Return
+return
 ;
 ```
 </TabItem>
@@ -462,13 +462,13 @@ SELECT
 '{{ ClientToken }}',
 '{{ DryRun }}'
 RETURNING
-Associations,
-OwnerId,
-PropagatingVgws,
-RouteTableId,
-Routes,
-Tags,
-VpcId
+associations,
+owner_id,
+propagating_vgws,
+route_table_id,
+routes,
+tags,
+vpc_id
 ;
 ```
 </TabItem>
@@ -589,8 +589,8 @@ AND PublicIpv4Pool = '{{ PublicIpv4Pool}}'
 AND DryRun = {{ DryRun}}
 AND SubnetId = '{{ SubnetId}}'
 RETURNING
-AssociationId,
-AssociationState;
+association_id,
+association_state;
 ```
 </TabItem>
 <TabItem value="disassociate_route_table">
@@ -633,8 +633,8 @@ AND RouteTableId = '{{ RouteTableId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-AssociationState,
-NewAssociationId;
+association_state,
+new_association_id;
 ```
 </TabItem>
 <TabItem value="replace_route">

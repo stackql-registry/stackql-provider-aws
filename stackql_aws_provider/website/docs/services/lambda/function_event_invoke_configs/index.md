@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationConfig" /></td>
+    <td><CopyableCode code="destination_config" /></td>
     <td><code>object</code></td>
     <td>A configuration object that specifies the destination of an event after Lambda processes it. For more information, see Adding a destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the configuration was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumEventAgeInSeconds" /></td>
+    <td><CopyableCode code="maximum_event_age_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum age of a request that Lambda sends to a function for processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumRetryAttempts" /></td>
+    <td><CopyableCode code="maximum_retry_attempts" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of times to retry when the function returns an error.</td>
 </tr>
@@ -187,11 +187,11 @@ Retrieves the configuration for asynchronous invocation for a function, version,
 
 ```sql
 SELECT
-DestinationConfig,
-FunctionArn,
-LastModified,
-MaximumEventAgeInSeconds,
-MaximumRetryAttempts
+destination_config,
+function_arn,
+last_modified,
+maximum_event_age_in_seconds,
+maximum_retry_attempts
 FROM aws.lambda.function_event_invoke_configs
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -225,11 +225,11 @@ function_name = '{{ function_name }}' --required
 AND region = '{{ region }}' --required
 AND Qualifier = '{{ Qualifier}}'
 RETURNING
-DestinationConfig,
-FunctionArn,
-LastModified,
-MaximumEventAgeInSeconds,
-MaximumRetryAttempts;
+destination_config,
+function_arn,
+last_modified,
+maximum_event_age_in_seconds,
+maximum_retry_attempts;
 ```
 </TabItem>
 </Tabs>
@@ -258,11 +258,11 @@ function_name = '{{ function_name }}' --required
 AND region = '{{ region }}' --required
 AND Qualifier = '{{ Qualifier}}'
 RETURNING
-DestinationConfig,
-FunctionArn,
-LastModified,
-MaximumEventAgeInSeconds,
-MaximumRetryAttempts;
+destination_config,
+function_arn,
+last_modified,
+maximum_event_age_in_seconds,
+maximum_retry_attempts;
 ```
 </TabItem>
 </Tabs>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>object</code></td>
     <td>Security credentials that are required to access the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the fleet containing the instance to be accessed. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the instance to be accessed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>IP address assigned to the instance. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>Operating system that is running on the instance. (WINDOWS_2012, AMAZON_LINUX, AMAZON_LINUX_2, WINDOWS_2016, AMAZON_LINUX_2023, WINDOWS_2022)</td>
 </tr>
@@ -139,11 +139,11 @@ This API works with the following fleet types: EC2 Requests authorization to rem
 
 ```sql
 SELECT
-Credentials,
-FleetId,
-InstanceId,
-IpAddress,
-OperatingSystem
+credentials,
+fleet_id,
+instance_id,
+ip_address,
+operating_system
 FROM aws.gamelift.instance_access
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the tenant was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingStatus" /></td>
+    <td><CopyableCode code="sending_status" /></td>
     <td><code>string</code></td>
     <td>The status of sending capability for the tenant. (ENABLED, REINSTATED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) associated with the tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantArn" /></td>
+    <td><CopyableCode code="tenant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantName" /></td>
+    <td><CopyableCode code="tenant_name" /></td>
     <td><code>string</code></td>
     <td>The name of a tenant. The name can contain up to 64 alphanumeric characters, including letters, numbers, hyphens (-) and underscores (_) only.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the tenant was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantArn" /></td>
+    <td><CopyableCode code="tenant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantName" /></td>
+    <td><CopyableCode code="tenant_name" /></td>
     <td><code>string</code></td>
     <td>The name of a tenant. The name can contain up to 64 alphanumeric characters, including letters, numbers, hyphens (-) and underscores (_) only.</td>
 </tr>
@@ -201,12 +201,12 @@ Get information about a specific tenant, including the tenant's name, ID, ARN, c
 
 ```sql
 SELECT
-CreatedTimestamp,
-SendingStatus,
-Tags,
-TenantArn,
-TenantId,
-TenantName
+created_timestamp,
+sending_status,
+tags,
+tenant_arn,
+tenant_id,
+tenant_name
 FROM aws.sesv2.tenants
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,10 +218,10 @@ List all tenants associated with your account in the current Amazon Web Services
 
 ```sql
 SELECT
-CreatedTimestamp,
-TenantArn,
-TenantId,
-TenantName
+created_timestamp,
+tenant_arn,
+tenant_id,
+tenant_name
 FROM aws.sesv2.tenants
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,12 +254,12 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreatedTimestamp,
-SendingStatus,
-Tags,
-TenantArn,
-TenantId,
-TenantName
+created_timestamp,
+sending_status,
+tags,
+tenant_arn,
+tenant_id,
+tenant_name
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="thingArn" /></td>
+    <td><CopyableCode code="thing_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the thing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Searches for things associated with the specified entity. You can search by both
 
 ```sql
 SELECT
-thingArn,
-thingName
+thing_arn,
+thing_name
 FROM aws.iotthingsgraph.things
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManifestURI" /></td>
+    <td><CopyableCode code="manifest_uri" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 presigned URL for the manifest file associated with the specified JobId value. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Returns a link to an Amazon S3 presigned URL for the manifest file associated wi
 
 ```sql
 SELECT
-ManifestURI
+manifest_uri
 FROM aws.snowball.job_manifests
 WHERE region = '{{ region }}' -- required
 ;

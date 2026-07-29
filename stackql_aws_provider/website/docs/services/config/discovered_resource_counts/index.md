@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that you use in a subsequent request to get the next page of results in a paginated response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceCounts" /></td>
+    <td><CopyableCode code="resource_counts" /></td>
     <td><code>array</code></td>
     <td>The list of ResourceCount objects. Each object is listed in descending order by the number of resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalDiscoveredResources" /></td>
+    <td><CopyableCode code="total_discovered_resources" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of resources that Config is recording in the region for your account. If you specify resource types in the request, Config returns only the total number of resources for those resource types. Example Config is recording three resource types in the US East (Ohio) Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3 buckets, for a total of 60 resources. You make a call to the GetDiscoveredResourceCounts action and specify the resource type, "AWS::EC2::Instances", in the request. Config returns 25 for totalDiscoveredResources.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the resource types, the number of each resource type, and the total numb
 
 ```sql
 SELECT
-nextToken,
-resourceCounts,
-totalDiscoveredResources
+next_token,
+resource_counts,
+total_discovered_resources
 FROM aws.config.discovered_resource_counts
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IpamArn" /></td>
+    <td><CopyableCode code="ipam_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the IPAM that created the token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamExternalResourceVerificationTokenArn" /></td>
+    <td><CopyableCode code="ipam_external_resource_verification_token_arn" /></td>
     <td><code>string</code></td>
     <td>Token ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamExternalResourceVerificationTokenId" /></td>
+    <td><CopyableCode code="ipam_external_resource_verification_token_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamId" /></td>
+    <td><CopyableCode code="ipam_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM that created the token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamRegion" /></td>
+    <td><CopyableCode code="ipam_region" /></td>
     <td><code>string</code></td>
     <td>Region of the IPAM that created the token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotAfter" /></td>
+    <td><CopyableCode code="not_after" /></td>
     <td><code>string</code></td>
     <td>Token expiration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Token state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Token status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Token tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TokenName" /></td>
+    <td><CopyableCode code="token_name" /></td>
     <td><code>string</code></td>
     <td>Token name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TokenValue" /></td>
+    <td><CopyableCode code="token_value" /></td>
     <td><code>string</code></td>
     <td>Token value.</td>
 </tr>
@@ -228,17 +228,17 @@ Describe verification tokens. A verification token is an Amazon Web Services-gen
 
 ```sql
 SELECT
-IpamArn,
-IpamExternalResourceVerificationTokenArn,
-IpamExternalResourceVerificationTokenId,
-IpamId,
-IpamRegion,
-NotAfter,
-State,
-Status,
-Tags,
-TokenName,
-TokenValue
+ipam_arn,
+ipam_external_resource_verification_token_arn,
+ipam_external_resource_verification_token_id,
+ipam_id,
+ipam_region,
+not_after,
+state,
+status,
+tags,
+token_name,
+token_value
 FROM aws.ec2.ipam_external_resource_verification_tokens
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -280,17 +280,17 @@ SELECT
 '{{ TagSpecification }}',
 '{{ ClientToken }}'
 RETURNING
-IpamArn,
-IpamExternalResourceVerificationTokenArn,
-IpamExternalResourceVerificationTokenId,
-IpamId,
-IpamRegion,
-NotAfter,
-State,
-Status,
-Tags,
-TokenName,
-TokenValue
+ipam_arn,
+ipam_external_resource_verification_token_arn,
+ipam_external_resource_verification_token_id,
+ipam_id,
+ipam_region,
+not_after,
+state,
+status,
+tags,
+token_name,
+token_value
 ;
 ```
 </TabItem>

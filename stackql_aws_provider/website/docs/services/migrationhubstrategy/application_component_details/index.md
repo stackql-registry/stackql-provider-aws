@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationComponentDetail" /></td>
+    <td><CopyableCode code="application_component_detail" /></td>
     <td><code>object</code></td>
     <td>Detailed information about an application component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedApplications" /></td>
+    <td><CopyableCode code="associated_applications" /></td>
     <td><code>array</code></td>
     <td>The associated application group as defined in AWS Application Discovery Service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedServerIds" /></td>
+    <td><CopyableCode code="associated_server_ids" /></td>
     <td><code>array</code></td>
     <td>A list of the IDs of the servers on which the application component is running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="moreApplicationResource" /></td>
+    <td><CopyableCode code="more_application_resource" /></td>
     <td><code>boolean</code></td>
     <td>Set to true if the application component belongs to more than one application group.</td>
 </tr>
@@ -139,10 +139,10 @@ Retrieves details about an application component.
 
 ```sql
 SELECT
-applicationComponentDetail,
-associatedApplications,
-associatedServerIds,
-moreApplicationResource
+application_component_detail,
+associated_applications,
+associated_server_ids,
+more_application_resource
 FROM aws.migrationhubstrategy.application_component_details
 WHERE application_component_id = '{{ application_component_id }}' -- required
 AND region = '{{ region }}' -- required

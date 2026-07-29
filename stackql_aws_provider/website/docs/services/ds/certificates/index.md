@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateId" /></td>
+    <td><CopyableCode code="certificate_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the certificate. (pattern: &lt;code&gt;^c-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientCertAuthSettings" /></td>
+    <td><CopyableCode code="client_cert_auth_settings" /></td>
     <td><code>object</code></td>
     <td>A ClientCertAuthSettings object that contains client certificate authentication settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CommonName" /></td>
+    <td><CopyableCode code="common_name" /></td>
     <td><code>string</code></td>
     <td>The common name for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiryDateTime" /></td>
+    <td><CopyableCode code="expiry_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the certificate will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegisteredDateTime" /></td>
+    <td><CopyableCode code="registered_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the certificate was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the certificate. (Registering, Registered, RegisterFailed, Deregistering, Deregistered, DeregisterFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Describes a state change for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The function that the registered certificate performs. Valid values include ClientLDAPS or ClientCertAuth. The default value is ClientLDAPS. (ClientCertAuth, ClientLDAPS)</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateId" /></td>
+    <td><CopyableCode code="certificate_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the certificate. (pattern: &lt;code&gt;^c-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CommonName" /></td>
+    <td><CopyableCode code="common_name" /></td>
     <td><code>string</code></td>
     <td>The common name for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiryDateTime" /></td>
+    <td><CopyableCode code="expiry_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the certificate will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the certificate. (Registering, Registered, RegisterFailed, Deregistering, Deregistered, DeregisterFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The function that the registered certificate performs. Valid values include ClientLDAPS or ClientCertAuth. The default value is ClientLDAPS. (ClientCertAuth, ClientLDAPS)</td>
 </tr>
@@ -216,14 +216,14 @@ Displays information about the certificate registered for secure LDAP or client 
 
 ```sql
 SELECT
-CertificateId,
-ClientCertAuthSettings,
-CommonName,
-ExpiryDateTime,
-RegisteredDateTime,
-State,
-StateReason,
-Type
+certificate_id,
+client_cert_auth_settings,
+common_name,
+expiry_date_time,
+registered_date_time,
+state,
+state_reason,
+type
 FROM aws.ds.certificates
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,11 +235,11 @@ For the specified directory, lists all the certificates registered for a secure 
 
 ```sql
 SELECT
-CertificateId,
-CommonName,
-ExpiryDateTime,
-State,
-Type
+certificate_id,
+common_name,
+expiry_date_time,
+state,
+type
 FROM aws.ds.certificates
 WHERE region = '{{ region }}' -- required
 ;
@@ -276,7 +276,7 @@ SELECT
 '{{ ClientCertAuthSettings }}',
 '{{ region }}'
 RETURNING
-CertificateId
+certificate_id
 ;
 ```
 </TabItem>

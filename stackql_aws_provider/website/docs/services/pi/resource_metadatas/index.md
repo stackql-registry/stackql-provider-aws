@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Features" /></td>
+    <td><CopyableCode code="features" /></td>
     <td><code>object</code></td>
     <td>The metadata for different features. For example, the metadata might indicate that a feature is turned on or off on a specific DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. To use a DB instance as a data source, specify its DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VW2X. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieve the metadata for different features. For example, the metadata might in
 
 ```sql
 SELECT
-Features,
-Identifier
+features,
+identifier
 FROM aws.pi.resource_metadatas
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="batchJobSteps" /></td>
+    <td><CopyableCode code="batch_job_steps" /></td>
     <td><code>array</code></td>
     <td>Returns all the batch job steps and related information for a batch job that previously ran.</td>
 </tr>
@@ -134,7 +134,7 @@ Lists all the job steps for a JCL file to restart a batch job. This is only appl
 
 ```sql
 SELECT
-batchJobSteps
+batch_job_steps
 FROM aws.m2.batch_job_restart_points
 WHERE application_id = '{{ application_id }}' -- required
 AND execution_id = '{{ execution_id }}' -- required

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time, in ISO format, when the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentArn" /></td>
+    <td><CopyableCode code="deployment_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the group deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the group deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the group deployment: ''InProgress'', ''Building'', ''Success'', or ''Failure''.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid. (NewDeployment, Redeployment, ResetDeployment, ForceResetDeployment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>Details about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message for a failed deployment</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Greengrass group.</td>
 </tr>
@@ -169,14 +169,14 @@ Gets a paginated list of the deployments that have been started in a bulk deploy
 
 ```sql
 SELECT
-CreatedAt,
-DeploymentArn,
-DeploymentId,
-DeploymentStatus,
-DeploymentType,
-ErrorDetails,
-ErrorMessage,
-GroupArn
+created_at,
+deployment_arn,
+deployment_id,
+deployment_status,
+deployment_type,
+error_details,
+error_message,
+group_arn
 FROM aws.greengrass.bulk_deployment_detailed_reports
 WHERE bulk_deployment_id = '{{ bulk_deployment_id }}' -- required
 AND region = '{{ region }}' -- required

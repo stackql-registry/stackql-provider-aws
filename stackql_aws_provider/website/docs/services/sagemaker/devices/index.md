@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>Edge Manager agent version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\ \_\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the device. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.,;:! &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the device. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:&#91;a-z\-&#93;*:&#91;a-z\-&#93;*:\d&#123;12&#125;:&#91;a-z\-&#93;*/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet the device belongs to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the device. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IotThingName" /></td>
+    <td><CopyableCode code="iot_thing_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Internet of Things (IoT) object thing name associated with the device. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestHeartbeat" /></td>
+    <td><CopyableCode code="latest_heartbeat" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last heartbeat received from the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxModels" /></td>
+    <td><CopyableCode code="max_models" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Models" /></td>
+    <td><CopyableCode code="models" /></td>
     <td><code>array</code></td>
     <td>Models on the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The response from the last list when returning a list large enough to need tokening. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationTime" /></td>
+    <td><CopyableCode code="registration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last registration or de-reregistration.</td>
 </tr>
@@ -120,47 +120,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>Edge Manager agent version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\ \_\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the device. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.,;:! &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the device. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:&#91;a-z\-&#93;*:&#91;a-z\-&#93;*:\d&#123;12&#125;:&#91;a-z\-&#93;*/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet the device belongs to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the device. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IotThingName" /></td>
+    <td><CopyableCode code="iot_thing_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Internet of Things (IoT) object thing name associated with the device.. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestHeartbeat" /></td>
+    <td><CopyableCode code="latest_heartbeat" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last heartbeat received from the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Models" /></td>
+    <td><CopyableCode code="models" /></td>
     <td><code>array</code></td>
     <td>Models on the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationTime" /></td>
+    <td><CopyableCode code="registration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last registration or de-reregistration.</td>
 </tr>
@@ -258,17 +258,17 @@ Describes the device.
 
 ```sql
 SELECT
-AgentVersion,
-Description,
-DeviceArn,
-DeviceFleetName,
-DeviceName,
-IotThingName,
-LatestHeartbeat,
-MaxModels,
-Models,
-NextToken,
-RegistrationTime
+agent_version,
+description,
+device_arn,
+device_fleet_name,
+device_name,
+iot_thing_name,
+latest_heartbeat,
+max_models,
+models,
+next_token,
+registration_time
 FROM aws.sagemaker.devices
 WHERE region = '{{ region }}' -- required
 ;
@@ -280,15 +280,15 @@ A list of devices.
 
 ```sql
 SELECT
-AgentVersion,
-Description,
-DeviceArn,
-DeviceFleetName,
-DeviceName,
-IotThingName,
-LatestHeartbeat,
-Models,
-RegistrationTime
+agent_version,
+description,
+device_arn,
+device_fleet_name,
+device_name,
+iot_thing_name,
+latest_heartbeat,
+models,
+registration_time
 FROM aws.sagemaker.devices
 WHERE region = '{{ region }}' -- required
 ;

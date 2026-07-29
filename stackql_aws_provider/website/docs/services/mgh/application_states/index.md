@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationStatus" /></td>
+    <td><CopyableCode code="application_status" /></td>
     <td><code>string</code></td>
     <td>Status of the application - Not Started, In-Progress, Complete. (NOT_STARTED, IN_PROGRESS, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the application status was last updated.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The configurationId from the Application Discovery Service that uniquely identifies an application. (pattern: &lt;code&gt;^.&#123;1,1600&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationStatus" /></td>
+    <td><CopyableCode code="application_status" /></td>
     <td><code>string</code></td>
     <td>The current status of an application. (NOT_STARTED, IN_PROGRESS, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the application status was last updated.</td>
 </tr>
@@ -162,8 +162,8 @@ Gets the migration status of an application.
 
 ```sql
 SELECT
-ApplicationStatus,
-LastUpdatedTime
+application_status,
+last_updated_time
 FROM aws.mgh.application_states
 WHERE region = '{{ region }}' -- required
 ;
@@ -175,9 +175,9 @@ Lists all the migration statuses for your applications. If you use the optional 
 
 ```sql
 SELECT
-ApplicationId,
-ApplicationStatus,
-LastUpdatedTime
+application_id,
+application_status,
+last_updated_time
 FROM aws.mgh.application_states
 WHERE region = '{{ region }}' -- required
 ;

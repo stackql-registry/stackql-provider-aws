@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the status of the execution was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedDeviceId" /></td>
+    <td><CopyableCode code="managed_device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the managed device that the task is being executed on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the execution began.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current state of the execution. (QUEUED, IN_PROGRESS, CANCELED, FAILED, SUCCEEDED, REJECTED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the task being executed on the device.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedDeviceId" /></td>
+    <td><CopyableCode code="managed_device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the managed device that the task is being executed on.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the execution. (QUEUED, IN_PROGRESS, CANCELED, FAILED, SUCCEEDED, REJECTED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the task.</td>
 </tr>
@@ -217,12 +217,12 @@ Checks the status of a remote task running on one or more target devices.
 
 ```sql
 SELECT
-executionId,
-lastUpdatedAt,
-managedDeviceId,
-startedAt,
+execution_id,
+last_updated_at,
+managed_device_id,
+started_at,
 state,
-taskId
+task_id
 FROM aws.snow_device_management.executions
 WHERE managed_device_id = '{{ managed_device_id }}' -- required
 AND task_id = '{{ task_id }}' -- required
@@ -236,10 +236,10 @@ Returns the status of tasks for one or more target devices.
 
 ```sql
 SELECT
-executionId,
-managedDeviceId,
+execution_id,
+managed_device_id,
 state,
-taskId
+task_id
 FROM aws.snow_device_management.executions
 WHERE taskId = '{{ taskId }}' -- required
 AND region = '{{ region }}' -- required

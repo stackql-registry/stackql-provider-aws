@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Metric" /></td>
+    <td><CopyableCode code="metric" /></td>
     <td><code>string</code></td>
     <td>One of the following metrics: GroupMinSize GroupMaxSize GroupDesiredCapacity GroupInServiceInstances GroupPendingInstances GroupStandbyInstances GroupTerminatingInstances GroupTotalInstances GroupInServiceCapacity GroupPendingCapacity GroupStandbyCapacity GroupTerminatingCapacity GroupTotalCapacity WarmPoolDesiredCapacity WarmPoolWarmedCapacity WarmPoolPendingCapacity WarmPoolTerminatingCapacity WarmPoolTotalCapacity GroupAndWarmPoolDesiredCapacity GroupAndWarmPoolTotalCapacity</td>
 </tr>
@@ -119,7 +119,7 @@ Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 
 ```sql
 SELECT
-Metric
+metric
 FROM aws.autoscaling.metric_collection_types
 WHERE region = '{{ region }}' -- required
 ;

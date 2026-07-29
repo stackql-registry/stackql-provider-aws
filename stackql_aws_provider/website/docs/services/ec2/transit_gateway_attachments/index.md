@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Association" /></td>
+    <td><CopyableCode code="association" /></td>
     <td><code>string</code></td>
     <td>The association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. Note that the tgw-peering resource type has been deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The attachment state. Note that the initiating state has been deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayOwnerId" /></td>
+    <td><CopyableCode code="transit_gateway_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the transit gateway.</td>
 </tr>
@@ -189,16 +189,16 @@ Describes one or more attachments between resources and transit gateways. By def
 
 ```sql
 SELECT
-Association,
-CreationTime,
-ResourceId,
-ResourceOwnerId,
-ResourceType,
-State,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-TransitGatewayOwnerId
+association,
+creation_time,
+resource_id,
+resource_owner_id,
+resource_type,
+state,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+transit_gateway_owner_id
 FROM aws.ec2.transit_gateway_attachments
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayAttachmentIds = '{{ TransitGatewayAttachmentIds }}'

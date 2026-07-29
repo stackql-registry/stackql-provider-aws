@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The id of a managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskExecutionSummary" /></td>
+    <td><CopyableCode code="task_execution_summary" /></td>
     <td><code>object</code></td>
     <td>Structure representing one over-the-air (OTA) task execution summary</td>
 </tr>
@@ -139,8 +139,8 @@ List all of the over-the-air (OTA) task executions.
 
 ```sql
 SELECT
-ManagedThingId,
-TaskExecutionSummary
+managed_thing_id,
+task_execution_summary
 FROM aws.iot_managed_integrations.ota_task_executions
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

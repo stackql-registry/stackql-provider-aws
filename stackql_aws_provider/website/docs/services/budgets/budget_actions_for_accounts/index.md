@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>A system-generated universally unique identifier (UUID) for the action. (pattern: &lt;code&gt;^&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionThreshold" /></td>
+    <td><CopyableCode code="action_threshold" /></td>
     <td><code>object</code></td>
     <td>The trigger threshold of the action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. (APPLY_IAM_POLICY, APPLY_SCP_POLICY, RUN_SSM_DOCUMENTS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalModel" /></td>
+    <td><CopyableCode code="approval_model" /></td>
     <td><code>string</code></td>
     <td>This specifies if the action needs manual or automatic approval. (AUTOMATIC, MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BudgetName" /></td>
+    <td><CopyableCode code="budget_name" /></td>
     <td><code>string</code></td>
     <td>A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>Specifies all of the type-specific parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The role passed for action execution and reversion. Roles and actions must be in the same account. (pattern: &lt;code&gt;^arn:aws(-eusc|-cn|-us-gov|-iso|-iso-&#91;a-z&#93;&#123;1&#125;)?:iam::\d&#123;12&#125;:role(\u002F&#91;\u0021-\u007F&#93;+\u002F|\u002F)&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationType" /></td>
+    <td><CopyableCode code="notification_type" /></td>
     <td><code>string</code></td>
     <td>The type of a notification. It must be ACTUAL or FORECASTED. (ACTUAL, FORECASTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the action. (STANDBY, PENDING, EXECUTION_IN_PROGRESS, EXECUTION_SUCCESS, EXECUTION_FAILURE, REVERSE_IN_PROGRESS, REVERSE_SUCCESS, REVERSE_FAILURE, RESET_IN_PROGRESS, RESET_FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subscribers" /></td>
+    <td><CopyableCode code="subscribers" /></td>
     <td><code>array</code></td>
     <td>A list of subscribers.</td>
 </tr>
@@ -164,16 +164,16 @@ Describes all of the budget actions for an account.
 
 ```sql
 SELECT
-ActionId,
-ActionThreshold,
-ActionType,
-ApprovalModel,
-BudgetName,
-Definition,
-ExecutionRoleArn,
-NotificationType,
-Status,
-Subscribers
+action_id,
+action_threshold,
+action_type,
+approval_model,
+budget_name,
+definition,
+execution_role_arn,
+notification_type,
+status,
+subscribers
 FROM aws.budgets.budget_actions_for_accounts
 WHERE region = '{{ region }}' -- required
 ;

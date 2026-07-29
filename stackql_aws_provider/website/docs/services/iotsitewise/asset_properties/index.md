@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assetExternalId" /></td>
+    <td><CopyableCode code="asset_external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of the asset. For more information, see Using external IDs in the IoT SiteWise User Guide. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset, in UUID format. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelId" /></td>
+    <td><CopyableCode code="asset_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset model, in UUID format. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetName" /></td>
+    <td><CopyableCode code="asset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the asset. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetProperty" /></td>
+    <td><CopyableCode code="asset_property" /></td>
     <td><code>object</code></td>
     <td>The asset property's definition, alias, and notification state. This response includes this object for normal asset properties. If you describe an asset property in a composite model, this response includes the asset property information in compositeModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compositeModel" /></td>
+    <td><CopyableCode code="composite_model" /></td>
     <td><code>object</code></td>
     <td>The composite model that declares this asset property, if this asset property exists in a composite model.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The alias that identifies the property, such as an OPC-UA server data stream path (for example, /company/windfarm/3/turbine/7/temperature). For more information, see Mapping industrial data streams to asset properties in the IoT SiteWise User Guide. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelId" /></td>
+    <td><CopyableCode code="asset_composite_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the composite model that contains the asset property. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of the property. For more information, see Using external IDs in the IoT SiteWise User Guide. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -263,12 +263,12 @@ Retrieves information about an asset property. When you call this operation for 
 
 ```sql
 SELECT
-assetExternalId,
-assetId,
-assetModelId,
-assetName,
-assetProperty,
-compositeModel
+asset_external_id,
+asset_id,
+asset_model_id,
+asset_name,
+asset_property,
+composite_model
 FROM aws.iotsitewise.asset_properties
 WHERE asset_id = '{{ asset_id }}' -- required
 AND property_id = '{{ property_id }}' -- required
@@ -284,8 +284,8 @@ Retrieves a paginated list of properties associated with an asset. If you update
 SELECT
 id,
 alias,
-assetCompositeModelId,
-externalId,
+asset_composite_model_id,
+external_id,
 notification,
 path,
 unit

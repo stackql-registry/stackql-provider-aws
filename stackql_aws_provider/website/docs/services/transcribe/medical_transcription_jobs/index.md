@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified medical transcription job finished processing. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:33:13.922000-07:00 represents a transcription job that started processing at 12:33 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentIdentificationType" /></td>
+    <td><CopyableCode code="content_identification_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether content identification was enabled for your transcription request. (PHI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified medical transcription job request was made. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.761000-07:00 represents a transcription job that started processing at 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If TranscriptionJobStatus is FAILED, FailureReason contains information about why the transcription job request failed. The FailureReason field contains one of the following values: Unsupported media format. The media format specified in MediaFormat isn't valid. Refer to refer to the MediaFormat parameter for a list of supported formats. The media format provided does not match the detected media format. The media format specified in MediaFormat doesn't match the format of the input file. Check the media format of your media file and correct the specified value. Invalid sample rate for audio file. The sample rate specified in MediaSampleRateHertz isn't valid. The sample rate must be between 16,000 and 48,000 hertz. The sample rate provided does not match the detected sample rate. The sample rate specified in MediaSampleRateHertz doesn't match the sample rate detected in your input media file. Check the sample rate of your media file and correct the specified value. Invalid file size: file size too large. The size of your media file is larger than what Amazon Transcribe can process. For more information, refer to Service quotas. Invalid number of channels: number of channels too large. Your audio contains more channels than Amazon Transcribe is able to process. For more information, refer to Service quotas.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code used to create your medical transcription job. US English (en-US) is the only supported language for medical transcriptions. (af-ZA, ar-AE, ar-SA, da-DK, de-CH, de-DE, en-AB, en-AU, en-GB, en-IE, en-IN, en-US, en-WL, es-ES, es-US, fa-IR, fr-CA, fr-FR, he-IL, hi-IN, id-ID, it-IT, ja-JP, ko-KR, ms-MY, nl-NL, pt-BR, pt-PT, ru-RU, ta-IN, te-IN, tr-TR, zh-CN, zh-TW, th-TH, en-ZA, en-NZ, vi-VN, sv-SE, ab-GE, ast-ES, az-AZ, ba-RU, be-BY, bg-BG, bn-IN, bs-BA, ca-ES, ckb-IQ, ckb-IR, cs-CZ, cy-WL, el-GR, et-EE, et-ET, eu-ES, fi-FI, gl-ES, gu-IN, ha-NG, hr-HR, hu-HU, hy-AM, is-IS, ka-GE, kab-DZ, kk-KZ, kn-IN, ky-KG, lg-IN, lt-LT, lv-LV, mhr-RU, mi-NZ, mk-MK, ml-IN, mn-MN, mr-IN, mt-MT, no-NO, or-IN, pa-IN, pl-PL, ps-AF, ro-RO, rw-RW, si-LK, sk-SK, sl-SI, so-SO, sr-RS, su-ID, sw-BI, sw-KE, sw-RW, sw-TZ, sw-UG, tl-PH, tt-RU, ug-CN, uk-UA, uz-UZ, wo-SN, zh-HK, zu-ZA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Media" /></td>
+    <td><CopyableCode code="media" /></td>
     <td><code>object</code></td>
     <td>Describes the Amazon S3 location of the media file you want to use in your request. For information on supported media formats, refer to the MediaFormat parameter or the Media formats section in the Amazon S3 Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaFormat" /></td>
+    <td><CopyableCode code="media_format" /></td>
     <td><code>string</code></td>
     <td>The format of the input media file. (mp3, mp4, wav, flac, ogg, amr, webm, m4a)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaSampleRateHertz" /></td>
+    <td><CopyableCode code="media_sample_rate_hertz" /></td>
     <td><code>integer</code></td>
     <td>The sample rate, in hertz, of the audio track in your input media file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedicalTranscriptionJobName" /></td>
+    <td><CopyableCode code="medical_transcription_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the medical transcription job. Job names are case sensitive and must be unique within an Amazon Web Services account. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>Provides information on any additional settings that were included in your request. Additional settings include channel identification, alternative transcriptions, speaker partitioning, custom vocabularies, and custom vocabulary filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Specialty" /></td>
+    <td><CopyableCode code="specialty" /></td>
     <td><code>string</code></td>
     <td>Describes the medical specialty represented in your media. (PRIMARYCARE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified medical transcription job began processing. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.789000-07:00 represents a transcription job that started processing at 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags, each in the form of a key:value pair, assigned to the specified medical transcription job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Transcript" /></td>
+    <td><CopyableCode code="transcript" /></td>
     <td><code>object</code></td>
     <td>Provides you with the Amazon S3 URI you can use to access your transcript.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TranscriptionJobStatus" /></td>
+    <td><CopyableCode code="transcription_job_status" /></td>
     <td><code>string</code></td>
     <td>Provides the status of the specified medical transcription job. If the status is COMPLETED, the job is finished and you can find the results at the location specified in TranscriptFileUri. If the status is FAILED, FailureReason provides details on why your transcription job failed. (QUEUED, IN_PROGRESS, FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the input media is a dictation or a conversation, as specified in the StartMedicalTranscriptionJob request. (CONVERSATION, DICTATION)</td>
 </tr>
@@ -145,17 +145,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MedicalTranscriptionJobSummaries" /></td>
+    <td><CopyableCode code="medical_transcription_job_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides a summary of information about each result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If NextToken is present in your response, it indicates that not all results are displayed. To view the next set of results, copy the string associated with the NextToken parameter in your results output, then run your request again including NextToken with the value of the copied string. Repeat as needed to view all your results. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Lists all medical transcription jobs that have the status specified in your request. Jobs are ordered by creation date, with the newest job first. (QUEUED, IN_PROGRESS, FAILED, COMPLETED)</td>
 </tr>
@@ -246,22 +246,22 @@ Provides information about the specified medical transcription job. To view the 
 
 ```sql
 SELECT
-CompletionTime,
-ContentIdentificationType,
-CreationTime,
-FailureReason,
-LanguageCode,
-Media,
-MediaFormat,
-MediaSampleRateHertz,
-MedicalTranscriptionJobName,
-Settings,
-Specialty,
-StartTime,
-Tags,
-Transcript,
-TranscriptionJobStatus,
-Type
+completion_time,
+content_identification_type,
+creation_time,
+failure_reason,
+language_code,
+media,
+media_format,
+media_sample_rate_hertz,
+medical_transcription_job_name,
+settings,
+specialty,
+start_time,
+tags,
+transcript,
+transcription_job_status,
+type
 FROM aws.transcribe.medical_transcription_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -273,9 +273,9 @@ Provides a list of medical transcription jobs that match the specified criteria.
 
 ```sql
 SELECT
-MedicalTranscriptionJobSummaries,
-NextToken,
-Status
+medical_transcription_job_summaries,
+next_token,
+status
 FROM aws.transcribe.medical_transcription_jobs
 WHERE region = '{{ region }}' -- required
 ;

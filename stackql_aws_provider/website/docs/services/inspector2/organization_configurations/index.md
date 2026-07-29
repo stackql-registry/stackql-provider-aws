@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoEnable" /></td>
+    <td><CopyableCode code="auto_enable" /></td>
     <td><code>object</code></td>
     <td>The scan types are automatically enabled for new members of your organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxAccountLimitReached" /></td>
+    <td><CopyableCode code="max_account_limit_reached" /></td>
     <td><code>boolean</code></td>
     <td>Represents whether your organization has reached the maximum Amazon Web Services account limit for Amazon Inspector.</td>
 </tr>
@@ -131,8 +131,8 @@ Describe Amazon Inspector configuration settings for an Amazon Web Services orga
 
 ```sql
 SELECT
-autoEnable,
-maxAccountLimitReached
+auto_enable,
+max_account_limit_reached
 FROM aws.inspector2.organization_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -161,7 +161,7 @@ WHERE
 region = '{{ region }}' --required
 AND autoEnable = '{{ autoEnable }}' --required
 RETURNING
-autoEnable;
+auto_enable;
 ```
 </TabItem>
 </Tabs>

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the NotificationEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the NotificationEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationConfigurationArn" /></td>
+    <td><CopyableCode code="notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the NotificationConfiguration. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregateNotificationEventArn" /></td>
+    <td><CopyableCode code="aggregate_notification_event_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the aggregatedNotificationEventArn to match. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationEventType" /></td>
+    <td><CopyableCode code="aggregation_event_type" /></td>
     <td><code>string</code></td>
     <td>The NotificationConfiguration's aggregation type. Values: AGGREGATE The notification event is an aggregate notification. Aggregate notifications summarize grouped events over a specified time period. CHILD Some EventRules are ACTIVE and some are INACTIVE. Any call can be run. NONE The notification isn't aggregated. (AGGREGATE, CHILD, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationSummary" /></td>
+    <td><CopyableCode code="aggregation_summary" /></td>
     <td><code>object</code></td>
     <td>Provides additional information about the aggregation key.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the resource. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the NotificationEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationConfigurationArn" /></td>
+    <td><CopyableCode code="notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the NotificationConfiguration. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationEvent" /></td>
+    <td><CopyableCode code="notification_event" /></td>
     <td><code>object</code></td>
     <td>Refers to a NotificationEventSummary object. Similar in structure to content in the GetNotificationEvent response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the organizational unit in the notification event overview. (pattern: &lt;code&gt;(Root|r-&#91;0-9a-z&#93;&#123;4,32&#125;|ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedAccount" /></td>
+    <td><CopyableCode code="related_account" /></td>
     <td><code>string</code></td>
     <td>The account name containing the NotificationHub. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -254,8 +254,8 @@ Returns a specified NotificationEvent. User Notifications stores notifications i
 SELECT
 arn,
 content,
-creationTime,
-notificationConfigurationArn
+creation_time,
+notification_configuration_arn
 FROM aws.notifications.notification_events
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -269,15 +269,15 @@ Returns a list of NotificationEvents according to specified filters, in reverse 
 
 ```sql
 SELECT
-aggregateNotificationEventArn,
-aggregationEventType,
-aggregationSummary,
+aggregate_notification_event_arn,
+aggregation_event_type,
+aggregation_summary,
 arn,
-creationTime,
-notificationConfigurationArn,
-notificationEvent,
-organizationalUnitId,
-relatedAccount
+creation_time,
+notification_configuration_arn,
+notification_event,
+organizational_unit_id,
+related_account
 FROM aws.notifications.notification_events
 WHERE region = '{{ region }}' -- required
 AND startTime = '{{ startTime }}'

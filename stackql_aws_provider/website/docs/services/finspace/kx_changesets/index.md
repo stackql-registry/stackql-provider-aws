@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeFromTimestamp" /></td>
+    <td><CopyableCode code="active_from_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Beginning time from which the changeset is active. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changeRequests" /></td>
+    <td><CopyableCode code="change_requests" /></td>
     <td><code>array</code></td>
     <td>A list of change request objects that are run in order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changesetId" /></td>
+    <td><CopyableCode code="changeset_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the changeset. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the changeset was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the kdb database. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb environment. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Provides details in the event of a failed flow, including the error type and the related error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the changeset was updated in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kxChangesets" /></td>
+    <td><CopyableCode code="kx_changesets" /></td>
     <td><code>array</code></td>
     <td>A list of changesets for a database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -224,14 +224,14 @@ Returns information about a kdb changeset.
 
 ```sql
 SELECT
-activeFromTimestamp,
-changeRequests,
-changesetId,
-createdTimestamp,
-databaseName,
-environmentId,
-errorInfo,
-lastModifiedTimestamp,
+active_from_timestamp,
+change_requests,
+changeset_id,
+created_timestamp,
+database_name,
+environment_id,
+error_info,
+last_modified_timestamp,
 status
 FROM aws.finspace.kx_changesets
 WHERE environment_id = '{{ environment_id }}' -- required
@@ -247,8 +247,8 @@ Returns a list of all the changesets for a database.
 
 ```sql
 SELECT
-kxChangesets,
-nextToken
+kx_changesets,
+next_token
 FROM aws.finspace.kx_changesets
 WHERE environment_id = '{{ environment_id }}' -- required
 AND database_name = '{{ database_name }}' -- required
@@ -289,13 +289,13 @@ SELECT
 '{{ database_name }}',
 '{{ region }}'
 RETURNING
-changeRequests,
-changesetId,
-createdTimestamp,
-databaseName,
-environmentId,
-errorInfo,
-lastModifiedTimestamp,
+change_requests,
+changeset_id,
+created_timestamp,
+database_name,
+environment_id,
+error_info,
+last_modified_timestamp,
 status
 ;
 ```

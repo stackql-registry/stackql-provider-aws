@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the phone number was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true the phone number can't be deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InternationalSendingEnabled" /></td>
+    <td><CopyableCode code="international_sending_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true the international sending of phone number is Enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsoCountryCode" /></td>
+    <td><CopyableCode code="iso_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code, in ISO 3166-1 alpha-2 format, for the country or region. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageType" /></td>
+    <td><CopyableCode code="message_type" /></td>
     <td><code>string</code></td>
     <td>The type of message. Valid values are TRANSACTIONAL for messages that are critical or time-sensitive and PROMOTIONAL for messages that aren't critical or time-sensitive. (TRANSACTIONAL, PROMOTIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonthlyLeasingPrice" /></td>
+    <td><CopyableCode code="monthly_leasing_price" /></td>
     <td><code>string</code></td>
     <td>The price, in US dollars, to lease the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberCapabilities" /></td>
+    <td><CopyableCode code="number_capabilities" /></td>
     <td><code>array</code></td>
     <td>Describes if the origination identity can be used for text messages, voice calls or both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberType" /></td>
+    <td><CopyableCode code="number_type" /></td>
     <td><code>string</code></td>
     <td>The type of phone number. (SHORT_CODE, LONG_CODE, TOLL_FREE, TEN_DLC, SIMULATOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptOutListName" /></td>
+    <td><CopyableCode code="opt_out_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OptOutList associated with the phone number. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number in E.164 format. (pattern: &lt;code&gt;\+?&#91;1-9&#93;&#91;0-9&#93;&#123;1,18&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberArn" /></td>
+    <td><CopyableCode code="phone_number_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberId" /></td>
+    <td><CopyableCode code="phone_number_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the pool associated with the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationId" /></td>
+    <td><CopyableCode code="registration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfManagedOptOutsEnabled" /></td>
+    <td><CopyableCode code="self_managed_opt_outs_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to false and an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, End User Messaging SMS automatically replies with a customizable message and adds the end recipient to the OptOutList. When set to true you're responsible for responding to HELP and STOP requests. You're also responsible for tracking and honoring opt-out request. For more information see Self-managed opt-outs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the phone number. (PENDING, ACTIVE, ASSOCIATING, DISASSOCIATING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayChannelArn" /></td>
+    <td><CopyableCode code="two_way_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the two way channel. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayChannelRole" /></td>
+    <td><CopyableCode code="two_way_channel_role" /></td>
     <td><code>string</code></td>
     <td>An optional IAM Role Arn for a service to assume, to be able to post inbound SMS messages. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TwoWayEnabled" /></td>
+    <td><CopyableCode code="two_way_enabled" /></td>
     <td><code>boolean</code></td>
     <td>By default this is set to false. When set to true you can receive incoming text messages from your end recipients using the TwoWayChannelArn.</td>
 </tr>
@@ -223,25 +223,25 @@ Describes the specified origination phone number, or all the phone numbers in yo
 
 ```sql
 SELECT
-CreatedTimestamp,
-DeletionProtectionEnabled,
-InternationalSendingEnabled,
-IsoCountryCode,
-MessageType,
-MonthlyLeasingPrice,
-NumberCapabilities,
-NumberType,
-OptOutListName,
-PhoneNumber,
-PhoneNumberArn,
-PhoneNumberId,
-PoolId,
-RegistrationId,
-SelfManagedOptOutsEnabled,
-Status,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled
+created_timestamp,
+deletion_protection_enabled,
+international_sending_enabled,
+iso_country_code,
+message_type,
+monthly_leasing_price,
+number_capabilities,
+number_type,
+opt_out_list_name,
+phone_number,
+phone_number_arn,
+phone_number_id,
+pool_id,
+registration_id,
+self_managed_opt_outs_enabled,
+status,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled
 FROM aws.pinpoint_sms_voice_v2.phone_numbers
 WHERE region = '{{ region }}' -- required
 ;
@@ -270,22 +270,22 @@ WHERE
 region = '{{ region }}' --required
 AND PhoneNumberId = '{{ PhoneNumberId }}' --required
 RETURNING
-CreatedTimestamp,
-IsoCountryCode,
-MessageType,
-MonthlyLeasingPrice,
-NumberCapabilities,
-NumberType,
-OptOutListName,
-PhoneNumber,
-PhoneNumberArn,
-PhoneNumberId,
-RegistrationId,
-SelfManagedOptOutsEnabled,
-Status,
-TwoWayChannelArn,
-TwoWayChannelRole,
-TwoWayEnabled;
+created_timestamp,
+iso_country_code,
+message_type,
+monthly_leasing_price,
+number_capabilities,
+number_type,
+opt_out_list_name,
+phone_number,
+phone_number_arn,
+phone_number_id,
+registration_id,
+self_managed_opt_outs_enabled,
+status,
+two_way_channel_arn,
+two_way_channel_role,
+two_way_enabled;
 ```
 </TabItem>
 </Tabs>

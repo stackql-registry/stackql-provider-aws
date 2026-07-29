@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Documents" /></td>
+    <td><CopyableCode code="documents" /></td>
     <td><code>array</code></td>
     <td>The documents in the specified collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Folders" /></td>
+    <td><CopyableCode code="folders" /></td>
     <td><code>array</code></td>
     <td>The folders in the specified folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</td>
 </tr>
@@ -219,9 +219,9 @@ Retrieves a collection of resources, including folders and documents. The only C
 
 ```sql
 SELECT
-Documents,
-Folders,
-Marker
+documents,
+folders,
+marker
 FROM aws.workdocs.resources
 WHERE region = '{{ region }}' -- required
 AND Authentication = '{{ Authentication }}'

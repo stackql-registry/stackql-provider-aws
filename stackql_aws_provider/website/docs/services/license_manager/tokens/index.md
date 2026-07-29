@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tokens" /></td>
+    <td><CopyableCode code="tokens" /></td>
     <td><code>array</code></td>
     <td>Received token details.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists your tokens.
 
 ```sql
 SELECT
-NextToken,
-Tokens
+next_token,
+tokens
 FROM aws.license_manager.tokens
 WHERE region = '{{ region }}' -- required
 ;
@@ -178,9 +178,9 @@ SELECT
 '{{ ClientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-Token,
-TokenId,
-TokenType
+token,
+token_id,
+token_type
 ;
 ```
 </TabItem>

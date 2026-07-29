@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BranchInterfaceId" /></td>
+    <td><CopyableCode code="branch_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the branch network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GreKey" /></td>
+    <td><CopyableCode code="gre_key" /></td>
     <td><code>integer</code></td>
     <td>The application key when you use the GRE protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InterfaceProtocol" /></td>
+    <td><CopyableCode code="interface_protocol" /></td>
     <td><code>string</code></td>
     <td>The interface protocol. Valid values are VLAN and GRE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the trunk interface association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrunkInterfaceId" /></td>
+    <td><CopyableCode code="trunk_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the trunk network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VlanId" /></td>
+    <td><CopyableCode code="vlan_id" /></td>
     <td><code>integer</code></td>
     <td>The ID of the VLAN when you use the VLAN protocol.</td>
 </tr>
@@ -174,13 +174,13 @@ Describes one or more network interface trunk associations.
 
 ```sql
 SELECT
-AssociationId,
-BranchInterfaceId,
-GreKey,
-InterfaceProtocol,
-Tags,
-TrunkInterfaceId,
-VlanId
+association_id,
+branch_interface_id,
+gre_key,
+interface_protocol,
+tags,
+trunk_interface_id,
+vlan_id
 FROM aws.ec2.trunk_interface_associations
 WHERE region = '{{ region }}' -- required
 AND AssociationId = '{{ AssociationId }}'

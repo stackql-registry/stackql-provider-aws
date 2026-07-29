@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q Business application. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachmentsConfiguration" /></td>
+    <td><CopyableCode code="attachments_configuration" /></td>
     <td><code>object</code></td>
     <td>Settings for whether end users can upload files directly during chat.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoSubscriptionConfiguration" /></td>
+    <td><CopyableCode code="auto_subscription_configuration" /></td>
     <td><code>object</code></td>
     <td>Settings for auto-subscription behavior for this application. This is only applicable to SAML and OIDC applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientIdsForOIDC" /></td>
+    <td><CopyableCode code="client_ids_for_oidc" /></td>
     <td><code>array</code></td>
     <td>The OIDC client ID for a Amazon Q Business application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business application was last updated.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>A description for the Amazon Q Business application. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Q Business application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides the identifier of the KMS key used to encrypt data indexed by Amazon Q Business. Amazon Q Business doesn't support asymmetric keys.</td>
 </tr>
@@ -101,37 +101,37 @@ The following fields are returned by `SELECT` queries:
     <td>If the Status field is set to ERROR, the ErrorMessage field contains a description of the error that caused the synchronization to fail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamIdentityProviderArn" /></td>
+    <td><CopyableCode code="iam_identity_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an identity provider being used by an Amazon Q Business application. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:iam::\d&#123;12&#125;:(oidc-provider|saml-provider)/&#91;a-zA-Z0-9_\.\/@\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterApplicationArn" /></td>
+    <td><CopyableCode code="identity_center_application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AWS IAM Identity Center instance attached to your Amazon Q Business application. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:sso::\d&#123;12&#125;:application/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/apl-&#91;a-zA-Z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type being used by a Amazon Q Business application. (AWS_IAM_IDP_SAML, AWS_IAM_IDP_OIDC, AWS_IAM_IDC, AWS_QUICKSIGHT_IDP, ANONYMOUS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="personalizationConfiguration" /></td>
+    <td><CopyableCode code="personalization_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information about chat response personalization. For more information, see Personalizing chat responses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="qAppsConfiguration" /></td>
+    <td><CopyableCode code="q_apps_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information about Amazon Q Apps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickSightConfiguration" /></td>
+    <td><CopyableCode code="quick_sight_configuration" /></td>
     <td><code>object</code></td>
     <td>The Amazon Quick Suite configuration for an Amazon Q Business application that uses Quick Suite as the identity provider. For more information, see Creating an Amazon Quick Suite integrated application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM with permissions to access your CloudWatch logs and metrics. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -141,7 +141,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the Amazon Q Business application. (CREATING, ACTIVE, DELETING, FAILED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business application was last updated.</td>
 </tr>
@@ -160,27 +160,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Amazon Q Business application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Q Business application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type being used by a Amazon Q Business application. (AWS_IAM_IDP_SAML, AWS_IAM_IDP_OIDC, AWS_IAM_IDC, AWS_QUICKSIGHT_IDP, ANONYMOUS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickSightConfiguration" /></td>
+    <td><CopyableCode code="quick_sight_configuration" /></td>
     <td><code>object</code></td>
     <td>The Amazon Quick Suite configuration for an Amazon Q Business application that uses Quick Suite as the identity provider. For more information, see Creating an Amazon Quick Suite integrated application.</td>
 </tr>
@@ -190,7 +190,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the Amazon Q Business application. The application is ready to use when the status is ACTIVE. (CREATING, ACTIVE, DELETING, FAILED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business application was last updated.</td>
 </tr>
@@ -402,25 +402,25 @@ Gets information about an existing Amazon Q Business application.
 
 ```sql
 SELECT
-applicationArn,
-applicationId,
-attachmentsConfiguration,
-autoSubscriptionConfiguration,
-clientIdsForOIDC,
-createdAt,
+application_arn,
+application_id,
+attachments_configuration,
+auto_subscription_configuration,
+client_ids_for_oidc,
+created_at,
 description,
-displayName,
-encryptionConfiguration,
+display_name,
+encryption_configuration,
 error,
-iamIdentityProviderArn,
-identityCenterApplicationArn,
-identityType,
-personalizationConfiguration,
-qAppsConfiguration,
-quickSightConfiguration,
-roleArn,
+iam_identity_provider_arn,
+identity_center_application_arn,
+identity_type,
+personalization_configuration,
+q_apps_configuration,
+quick_sight_configuration,
+role_arn,
 status,
-updatedAt
+updated_at
 FROM aws.qbusiness.applications
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -433,13 +433,13 @@ Lists Amazon Q Business applications. Amazon Q Business applications may securel
 
 ```sql
 SELECT
-applicationId,
-createdAt,
-displayName,
-identityType,
-quickSightConfiguration,
+application_id,
+created_at,
+display_name,
+identity_type,
+quick_sight_configuration,
 status,
-updatedAt
+updated_at
 FROM aws.qbusiness.applications
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -498,8 +498,8 @@ SELECT
 '{{ quickSightConfiguration }}',
 '{{ region }}'
 RETURNING
-applicationArn,
-applicationId
+application_arn,
+application_id
 ;
 ```
 </TabItem>

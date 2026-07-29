@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp indicating when the feature was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description you added to describe the feature. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupArn" /></td>
+    <td><CopyableCode code="feature_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the feature group that contains the feature. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:feature-group/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupName" /></td>
+    <td><CopyableCode code="feature_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the feature group that you've specified. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;_-&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureName" /></td>
+    <td><CopyableCode code="feature_name" /></td>
     <td><code>string</code></td>
     <td>The name of the feature that you've specified. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-_&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureType" /></td>
+    <td><CopyableCode code="feature_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the feature. (Integral, Fractional, String)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp indicating when the metadata for the feature group was modified. For example, if you add a parameter describing the feature, the timestamp changes to reflect the last time you</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>array</code></td>
     <td>The key-value pairs that you added to describe the feature.</td>
 </tr>
@@ -161,14 +161,14 @@ Shows the metadata for a feature within a feature group.
 
 ```sql
 SELECT
-CreationTime,
-Description,
-FeatureGroupArn,
-FeatureGroupName,
-FeatureName,
-FeatureType,
-LastModifiedTime,
-Parameters
+creation_time,
+description,
+feature_group_arn,
+feature_group_name,
+feature_name,
+feature_type,
+last_modified_time,
+parameters
 FROM aws.sagemaker.feature_metadatas
 WHERE region = '{{ region }}' -- required
 ;

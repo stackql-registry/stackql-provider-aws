@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Feedback" /></td>
+    <td><CopyableCode code="feedback" /></td>
     <td><code>string</code></td>
     <td>The feedback provided by the customer. (VALID_COLLECTION, RECOMMENDATION_USEFUL, ALERT_TOO_SENSITIVE, DATA_NOISY_ANOMALY, DATA_INCORRECT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The insight feedback ID. (pattern: &lt;code&gt;^&#91;\w-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the most recent feedback submitted in the current Amazon Web Services ac
 
 ```sql
 SELECT
-Feedback,
-Id
+feedback,
+id
 FROM aws.devops_guru.feedbacks
 WHERE region = '{{ region }}' -- required
 ;

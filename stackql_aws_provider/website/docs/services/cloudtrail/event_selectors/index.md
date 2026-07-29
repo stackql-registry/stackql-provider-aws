@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdvancedEventSelectors" /></td>
+    <td><CopyableCode code="advanced_event_selectors" /></td>
     <td><code>array</code></td>
     <td>The advanced event selectors that are configured for the trail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSelectors" /></td>
+    <td><CopyableCode code="event_selectors" /></td>
     <td><code>array</code></td>
     <td>The event selectors that are configured for the trail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrailARN" /></td>
+    <td><CopyableCode code="trail_arn" /></td>
     <td><code>string</code></td>
     <td>The specified trail ARN that has the event selectors.</td>
 </tr>
@@ -136,9 +136,9 @@ Describes the settings for the event selectors that you configured for your trai
 
 ```sql
 SELECT
-AdvancedEventSelectors,
-EventSelectors,
-TrailARN
+advanced_event_selectors,
+event_selectors,
+trail_arn
 FROM aws.cloudtrail.event_selectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,9 +169,9 @@ WHERE
 region = '{{ region }}' --required
 AND TrailName = '{{ TrailName }}' --required
 RETURNING
-AdvancedEventSelectors,
-EventSelectors,
-TrailARN;
+advanced_event_selectors,
+event_selectors,
+trail_arn;
 ```
 </TabItem>
 </Tabs>

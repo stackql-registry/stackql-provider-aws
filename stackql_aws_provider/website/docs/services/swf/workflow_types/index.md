@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration settings of the workflow type registered through RegisterWorkflowType</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeInfo" /></td>
+    <td><CopyableCode code="type_info" /></td>
     <td><code>object</code></td>
     <td>General information about the workflow type. The status of the workflow type (returned in the WorkflowTypeInfo structure) can be one of the following. REGISTERED – The type is registered and available. Workers supporting this type should be running. DEPRECATED – The type was deprecated using DeprecateWorkflowType, but is still in use. You should keep workers supporting this type running. You cannot create new workflow executions of this type.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when this type was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deprecationDate" /></td>
+    <td><CopyableCode code="deprecation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the type is in deprecated state, then it is set to the date when the type was deprecated.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the workflow type. (REGISTERED, DEPRECATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowType" /></td>
+    <td><CopyableCode code="workflow_type" /></td>
     <td><code>object</code></td>
     <td>The workflow type this information is about.</td>
 </tr>
@@ -187,7 +187,7 @@ Returns information about the specified workflow type. This includes configurati
 ```sql
 SELECT
 configuration,
-typeInfo
+type_info
 FROM aws.swf.workflow_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,11 +199,11 @@ Returns information about workflow types in the specified domain. The results ma
 
 ```sql
 SELECT
-creationDate,
-deprecationDate,
+creation_date,
+deprecation_date,
 description,
 status,
-workflowType
+workflow_type
 FROM aws.swf.workflow_types
 WHERE region = '{{ region }}' -- required
 ;

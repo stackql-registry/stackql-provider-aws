@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationLayerAutomaticResponseConfiguration" /></td>
+    <td><CopyableCode code="application_layer_automatic_response_configuration" /></td>
     <td><code>object</code></td>
     <td>The automatic application layer DDoS mitigation settings for the protection. This configuration determines whether Shield Advanced automatically manages rules in the web ACL in order to respond to application layer events that Shield Advanced determines to be DDoS attacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckIds" /></td>
+    <td><CopyableCode code="health_check_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifier (ID) for the Route 53 health check that's associated with the protection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the protection. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the protection. For example, My CloudFront distributions. (pattern: &lt;code&gt;&#91; a-zA-Z0-9_\\.\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectionArn" /></td>
+    <td><CopyableCode code="protection_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the protection. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the Amazon Web Services resource that is protected. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationLayerAutomaticResponseConfiguration" /></td>
+    <td><CopyableCode code="application_layer_automatic_response_configuration" /></td>
     <td><code>object</code></td>
     <td>The automatic application layer DDoS mitigation settings for the protection. This configuration determines whether Shield Advanced automatically manages rules in the web ACL in order to respond to application layer events that Shield Advanced determines to be DDoS attacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckIds" /></td>
+    <td><CopyableCode code="health_check_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifier (ID) for the Route 53 health check that's associated with the protection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the protection. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the protection. For example, My CloudFront distributions. (pattern: &lt;code&gt;&#91; a-zA-Z0-9_\\.\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectionArn" /></td>
+    <td><CopyableCode code="protection_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the protection. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the Amazon Web Services resource that is protected. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
@@ -225,12 +225,12 @@ Lists the details of a Protection object.
 
 ```sql
 SELECT
-ApplicationLayerAutomaticResponseConfiguration,
-HealthCheckIds,
-Id,
-Name,
-ProtectionArn,
-ResourceArn
+application_layer_automatic_response_configuration,
+health_check_ids,
+id,
+name,
+protection_arn,
+resource_arn
 FROM aws.shield.protections
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,12 +242,12 @@ Retrieves Protection objects for the account. You can retrieve all protections o
 
 ```sql
 SELECT
-ApplicationLayerAutomaticResponseConfiguration,
-HealthCheckIds,
-Id,
-Name,
-ProtectionArn,
-ResourceArn
+application_layer_automatic_response_configuration,
+health_check_ids,
+id,
+name,
+protection_arn,
+resource_arn
 FROM aws.shield.protections
 WHERE region = '{{ region }}' -- required
 ;
@@ -282,7 +282,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ProtectionId
+protection_id
 ;
 ```
 </TabItem>

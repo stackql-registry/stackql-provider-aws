@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the certificate. Example: arn:aws:rds:us-east-1::cert:rds-ca-2019</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateIdentifier" /></td>
+    <td><CopyableCode code="certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique key that identifies a certificate. Example: rds-ca-2019</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateType" /></td>
+    <td><CopyableCode code="certificate_type" /></td>
     <td><code>string</code></td>
     <td>The type of the certificate. Example: CA</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Thumbprint" /></td>
+    <td><CopyableCode code="thumbprint" /></td>
     <td><code>string</code></td>
     <td>The thumbprint of the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidFrom" /></td>
+    <td><CopyableCode code="valid_from" /></td>
     <td><code>string</code></td>
     <td>The starting date-time from which the certificate is valid. Example: 2019-07-31T17:57:09Z</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidTill" /></td>
+    <td><CopyableCode code="valid_till" /></td>
     <td><code>string</code></td>
     <td>The date-time after which the certificate is no longer valid. Example: 2024-07-31T17:57:09Z</td>
 </tr>
@@ -164,12 +164,12 @@ Returns a list of certificate authority (CA) certificates provided by Amazon Doc
 
 ```sql
 SELECT
-CertificateArn,
-CertificateIdentifier,
-CertificateType,
-Thumbprint,
-ValidFrom,
-ValidTill
+certificate_arn,
+certificate_identifier,
+certificate_type,
+thumbprint,
+valid_from,
+valid_till
 FROM aws.docdb.certificates
 WHERE region = '{{ region }}' -- required
 AND CertificateIdentifier = '{{ CertificateIdentifier }}'

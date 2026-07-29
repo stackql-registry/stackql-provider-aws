@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CaptureTime" /></td>
+    <td><CopyableCode code="capture_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC timestamp for when the managed node data was last captured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the managed node. (pattern: &lt;code&gt;(^i-(\w&#123;8&#125;|\w&#123;17&#125;)$)|(^mi-\w&#123;17&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>object</code></td>
     <td>Information about the type of node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>object</code></td>
     <td>Information about the ownership of the managed node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region that a managed node was created in or assigned to.</td>
 </tr>
@@ -139,11 +139,11 @@ Takes in filters and returns a list of managed nodes matching the filter criteri
 
 ```sql
 SELECT
-CaptureTime,
-Id,
-NodeType,
-Owner,
-Region
+capture_time,
+id,
+node_type,
+owner,
+region
 FROM aws.ssm.nodes
 WHERE region = '{{ region }}' -- required
 ;

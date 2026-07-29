@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configurationType" /></td>
+    <td><CopyableCode code="configuration_type" /></td>
     <td><code>string</code></td>
     <td>The type of configuration item to delete. Supported types are: SERVER. (SERVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletedConfigurations" /></td>
+    <td><CopyableCode code="deleted_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of configuration IDs that were successfully deleted by the deletion task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionWarnings" /></td>
+    <td><CopyableCode code="deletion_warnings" /></td>
     <td><code>array</code></td>
     <td>A list of configuration IDs that produced warnings regarding their deletion, paired with a warning message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>An epoch seconds timestamp (UTC) of when the deletion task was completed or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedConfigurations" /></td>
+    <td><CopyableCode code="failed_configurations" /></td>
     <td><code>array</code></td>
     <td>A list of configuration IDs that failed to delete during the deletion task, each paired with an error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestedConfigurations" /></td>
+    <td><CopyableCode code="requested_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of configuration IDs that were originally requested to be deleted by the deletion task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>An epoch seconds timestamp (UTC) of when the deletion task was started.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current execution status of the deletion task. Valid status are: INITIALIZING | VALIDATING | DELETING | COMPLETED | FAILED. (INITIALIZING, VALIDATING, DELETING, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The deletion task's unique identifier. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -159,15 +159,15 @@ Takes a unique deletion task identifier as input and returns metadata about a co
 
 ```sql
 SELECT
-configurationType,
-deletedConfigurations,
-deletionWarnings,
-endTime,
-failedConfigurations,
-requestedConfigurations,
-startTime,
+configuration_type,
+deleted_configurations,
+deletion_warnings,
+end_time,
+failed_configurations,
+requested_configurations,
+start_time,
 status,
-taskId
+task_id
 FROM aws.discovery.batch_delete_configuration_tasks
 WHERE region = '{{ region }}' -- required
 ;

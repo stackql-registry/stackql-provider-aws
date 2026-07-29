@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the schema version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersionId" /></td>
+    <td><CopyableCode code="schema_version_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the schema version. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the schema version. (AVAILABLE, PENDING, FAILURE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the schema.</td>
 </tr>
@@ -90,37 +90,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the schema version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataFormat" /></td>
+    <td><CopyableCode code="data_format" /></td>
     <td><code>string</code></td>
     <td>The data format of the schema definition. Currently AVRO, JSON and PROTOBUF are supported. (AVRO, JSON, PROTOBUF)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaDefinition" /></td>
+    <td><CopyableCode code="schema_definition" /></td>
     <td><code>string</code></td>
     <td>The schema definition for the schema ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersionId" /></td>
+    <td><CopyableCode code="schema_version_id" /></td>
     <td><code>string</code></td>
     <td>The SchemaVersionId of the schema version. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the schema version. (AVAILABLE, PENDING, FAILURE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the schema.</td>
 </tr>
@@ -225,11 +225,11 @@ Returns a list of schema versions that you have created, with minimal informatio
 
 ```sql
 SELECT
-CreatedTime,
-SchemaArn,
-SchemaVersionId,
-Status,
-VersionNumber
+created_time,
+schema_arn,
+schema_version_id,
+status,
+version_number
 FROM aws.glue.schema_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,13 +241,13 @@ Get the specified schema by its unique ID assigned when a version of the schema 
 
 ```sql
 SELECT
-CreatedTime,
-DataFormat,
-SchemaArn,
-SchemaDefinition,
-SchemaVersionId,
-Status,
-VersionNumber
+created_time,
+data_format,
+schema_arn,
+schema_definition,
+schema_version_id,
+status,
+version_number
 FROM aws.glue.schema_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -280,9 +280,9 @@ SELECT
 '{{ SchemaDefinition }}' /* required */,
 '{{ region }}'
 RETURNING
-SchemaVersionId,
-Status,
-VersionNumber
+schema_version_id,
+status,
+version_number
 ;
 ```
 </TabItem>
@@ -334,14 +334,14 @@ WHERE
 region = '{{ region }}' --required
 AND MetadataKeyValue = '{{ MetadataKeyValue }}' --required
 RETURNING
-LatestVersion,
-MetadataKey,
-MetadataValue,
-RegistryName,
-SchemaArn,
-SchemaName,
-SchemaVersionId,
-VersionNumber;
+latest_version,
+metadata_key,
+metadata_value,
+registry_name,
+schema_arn,
+schema_name,
+schema_version_id,
+version_number;
 ```
 </TabItem>
 </Tabs>
@@ -370,14 +370,14 @@ WHERE
 region = '{{ region }}' --required
 AND MetadataKeyValue = '{{ MetadataKeyValue }}' --required
 RETURNING
-LatestVersion,
-MetadataKey,
-MetadataValue,
-RegistryName,
-SchemaArn,
-SchemaName,
-SchemaVersionId,
-VersionNumber;
+latest_version,
+metadata_key,
+metadata_value,
+registry_name,
+schema_arn,
+schema_name,
+schema_version_id,
+version_number;
 ```
 </TabItem>
 </Tabs>

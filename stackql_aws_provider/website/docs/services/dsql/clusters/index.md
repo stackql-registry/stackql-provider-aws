@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name of the cluster. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:dsql:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time of when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether deletion protection is enabled for a cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionDetails" /></td>
+    <td><CopyableCode code="encryption_details" /></td>
     <td><code>object</code></td>
     <td>The current encryption configuration details for the cluster.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the cluster. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="multiRegionProperties" /></td>
+    <td><CopyableCode code="multi_region_properties" /></td>
     <td><code>object</code></td>
     <td>Defines the structure for multi-Region cluster configurations, containing the witness region and linked cluster settings.</td>
 </tr>
@@ -234,12 +234,12 @@ Retrieves information about a cluster.
 ```sql
 SELECT
 arn,
-creationTime,
-deletionProtectionEnabled,
-encryptionDetails,
+creation_time,
+deletion_protection_enabled,
+encryption_details,
 endpoint,
 identifier,
-multiRegionProperties,
+multi_region_properties,
 status,
 tags
 FROM aws.dsql.clusters
@@ -301,12 +301,12 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-creationTime,
-deletionProtectionEnabled,
-encryptionDetails,
+creation_time,
+deletion_protection_enabled,
+encryption_details,
 endpoint,
 identifier,
-multiRegionProperties,
+multi_region_properties,
 status
 ;
 ```
@@ -376,7 +376,7 @@ identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 arn,
-creationTime,
+creation_time,
 identifier,
 status;
 ```

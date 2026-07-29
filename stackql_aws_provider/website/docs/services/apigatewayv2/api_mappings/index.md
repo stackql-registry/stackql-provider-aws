@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiMappingId" /></td>
+    <td><CopyableCode code="api_mapping_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiMappingKey" /></td>
+    <td><CopyableCode code="api_mapping_key" /></td>
     <td><code>string</code></td>
     <td>After evaluating a selection expression, the result is compared against one or more selection keys to find a matching key. See Selection Expressions for a list of expressions and each expression's associated selection key type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Stage" /></td>
+    <td><CopyableCode code="stage" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The elements from this collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page of elements from this collection. Not valid for the last element of the collection.</td>
 </tr>
@@ -208,10 +208,10 @@ Gets an API mapping.
 
 ```sql
 SELECT
-ApiId,
-ApiMappingId,
-ApiMappingKey,
-Stage
+api_id,
+api_mapping_id,
+api_mapping_key,
+stage
 FROM aws.apigatewayv2.api_mappings
 WHERE api_mapping_id = '{{ api_mapping_id }}' -- required
 AND domain_name = '{{ domain_name }}' -- required
@@ -225,8 +225,8 @@ Gets API mappings.
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.apigatewayv2.api_mappings
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,10 +266,10 @@ SELECT
 '{{ domain_name }}',
 '{{ region }}'
 RETURNING
-ApiId,
-ApiMappingId,
-ApiMappingKey,
-Stage
+api_id,
+api_mapping_id,
+api_mapping_key,
+stage
 ;
 ```
 </TabItem>
@@ -326,10 +326,10 @@ AND domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 AND ApiId = '{{ ApiId }}' --required
 RETURNING
-ApiId,
-ApiMappingId,
-ApiMappingKey,
-Stage;
+api_id,
+api_mapping_id,
+api_mapping_key,
+stage;
 ```
 </TabItem>
 </Tabs>

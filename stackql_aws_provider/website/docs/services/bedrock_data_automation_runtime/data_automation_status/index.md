@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error Message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorType" /></td>
+    <td><CopyableCode code="error_type" /></td>
     <td><code>string</code></td>
     <td>Error Type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobCompletionTime" /></td>
+    <td><CopyableCode code="job_completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Job completion time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDurationInSeconds" /></td>
+    <td><CopyableCode code="job_duration_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>Job duration in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobSubmissionTime" /></td>
+    <td><CopyableCode code="job_submission_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Job Submission time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfiguration" /></td>
+    <td><CopyableCode code="output_configuration" /></td>
     <td><code>object</code></td>
     <td>Output configuration.</td>
 </tr>
@@ -149,12 +149,12 @@ API used to get data automation status.
 
 ```sql
 SELECT
-errorMessage,
-errorType,
-jobCompletionTime,
-jobDurationInSeconds,
-jobSubmissionTime,
-outputConfiguration,
+error_message,
+error_type,
+job_completion_time,
+job_duration_in_seconds,
+job_submission_time,
+output_configuration,
 status
 FROM aws.bedrock_data_automation_runtime.data_automation_status
 WHERE region = '{{ region }}' -- required

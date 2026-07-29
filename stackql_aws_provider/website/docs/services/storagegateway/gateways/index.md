@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeprecationDate" /></td>
+    <td><CopyableCode code="deprecation_date" /></td>
     <td><code>string</code></td>
     <td>Date after which this gateway will not receive software updates for new features and bug fixes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ec2InstanceId" /></td>
+    <td><CopyableCode code="ec_2_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EC2 instance that was used to launch the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ec2InstanceRegion" /></td>
+    <td><CopyableCode code="ec_2_instance_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the Amazon EC2 instance is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayName" /></td>
+    <td><CopyableCode code="gateway_name" /></td>
     <td><code>string</code></td>
     <td>The name of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayOperationalState" /></td>
+    <td><CopyableCode code="gateway_operational_state" /></td>
     <td><code>string</code></td>
     <td>The state of the gateway. Valid Values: DISABLED | ACTIVE</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayType" /></td>
+    <td><CopyableCode code="gateway_type" /></td>
     <td><code>string</code></td>
     <td>The type of the gateway. Amazon FSx File Gateway is no longer available to new customers. Existing customers of FSx File Gateway can continue to use the service normally. For capabilities similar to FSx File Gateway, visit this blog post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostEnvironment" /></td>
+    <td><CopyableCode code="host_environment" /></td>
     <td><code>string</code></td>
     <td>The type of hardware or software platform on which the gateway is running. Tape Gateway is no longer available on Snow Family devices. (VMWARE, HYPER-V, EC2, KVM, OTHER, SNOWBALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostEnvironmentId" /></td>
+    <td><CopyableCode code="host_environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the specific instance of the host platform running the gateway. This value is only available for certain host environments, and its format depends on the host environment type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareVersion" /></td>
+    <td><CopyableCode code="software_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the software running on the gateway appliance.</td>
 </tr>
@@ -281,17 +281,17 @@ Lists gateways owned by an Amazon Web Services account in an Amazon Web Services
 
 ```sql
 SELECT
-DeprecationDate,
-Ec2InstanceId,
-Ec2InstanceRegion,
-GatewayARN,
-GatewayId,
-GatewayName,
-GatewayOperationalState,
-GatewayType,
-HostEnvironment,
-HostEnvironmentId,
-SoftwareVersion
+deprecation_date,
+ec_2_instance_id,
+ec_2_instance_region,
+gateway_arn,
+gateway_id,
+gateway_name,
+gateway_operational_state,
+gateway_type,
+host_environment,
+host_environment_id,
+software_version
 FROM aws.storagegateway.gateways
 WHERE region = '{{ region }}' -- required
 ;
@@ -326,7 +326,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND LocalConsolePassword = '{{ LocalConsolePassword }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 <TabItem value="set_smb_guest_password">
@@ -343,7 +343,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND Password = '{{ Password }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 <TabItem value="update_smb_local_groups">
@@ -360,7 +360,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND SMBLocalGroups = '{{ SMBLocalGroups }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 <TabItem value="update_smb_security_strategy">
@@ -377,7 +377,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND SMBSecurityStrategy = '{{ SMBSecurityStrategy }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 <TabItem value="update_gateway_software_now">
@@ -392,7 +392,7 @@ WHERE
 region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Date" /></td>
+    <td><CopyableCode code="date" /></td>
     <td><code>string</code></td>
     <td>Specifies the date and time of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventCategories" /></td>
+    <td><CopyableCode code="event_categories" /></td>
     <td><code>string</code></td>
     <td>Specifies the category for the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Provides the text of this event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIdentifier" /></td>
+    <td><CopyableCode code="source_identifier" /></td>
     <td><code>string</code></td>
     <td>Provides the identifier for the source of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the source type for this event.</td>
 </tr>
@@ -189,12 +189,12 @@ Returns events related to instances, security groups, snapshots, and DB paramete
 
 ```sql
 SELECT
-Date,
-EventCategories,
-Message,
-SourceArn,
-SourceIdentifier,
-SourceType
+date,
+event_categories,
+message,
+source_arn,
+source_identifier,
+source_type
 FROM aws.docdb.events
 WHERE region = '{{ region }}' -- required
 AND SourceIdentifier = '{{ SourceIdentifier }}'

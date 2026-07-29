@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the event trigger was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the event trigger.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTriggerConditions" /></td>
+    <td><CopyableCode code="event_trigger_conditions" /></td>
     <td><code>array</code></td>
     <td>A list of conditions that determine when an event should trigger the destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTriggerLimits" /></td>
+    <td><CopyableCode code="event_trigger_limits" /></td>
     <td><code>object</code></td>
     <td>Defines limits controlling whether an event triggers the destination, based on ingestion latency and the number of invocations per profile over specific time periods.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTriggerName" /></td>
+    <td><CopyableCode code="event_trigger_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the event trigger. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the event trigger was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectTypeName" /></td>
+    <td><CopyableCode code="object_type_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the object type. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentFilter" /></td>
+    <td><CopyableCode code="segment_filter" /></td>
     <td><code>string</code></td>
     <td>The destination is triggered only for profiles that meet the criteria of a segment definition. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>An array of key-value pairs to apply to this resource.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the event trigger was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the event trigger.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTriggerName" /></td>
+    <td><CopyableCode code="event_trigger_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the event trigger. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the event trigger was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectTypeName" /></td>
+    <td><CopyableCode code="object_type_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the object type. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>An array of key-value pairs to apply to this resource.</td>
 </tr>
@@ -253,15 +253,15 @@ Get a specific Event Trigger from the domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-EventTriggerConditions,
-EventTriggerLimits,
-EventTriggerName,
-LastUpdatedAt,
-ObjectTypeName,
-SegmentFilter,
-Tags
+created_at,
+description,
+event_trigger_conditions,
+event_trigger_limits,
+event_trigger_name,
+last_updated_at,
+object_type_name,
+segment_filter,
+tags
 FROM aws.customer_profiles.event_triggers
 WHERE domain_name = '{{ domain_name }}' -- required
 AND event_trigger_name = '{{ event_trigger_name }}' -- required
@@ -275,12 +275,12 @@ List all Event Triggers under a domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-EventTriggerName,
-LastUpdatedAt,
-ObjectTypeName,
-Tags
+created_at,
+description,
+event_trigger_name,
+last_updated_at,
+object_type_name,
+tags
 FROM aws.customer_profiles.event_triggers
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -328,15 +328,15 @@ SELECT
 '{{ event_trigger_name }}',
 '{{ region }}'
 RETURNING
-CreatedAt,
-Description,
-EventTriggerConditions,
-EventTriggerLimits,
-EventTriggerName,
-LastUpdatedAt,
-ObjectTypeName,
-SegmentFilter,
-Tags
+created_at,
+description,
+event_trigger_conditions,
+event_trigger_limits,
+event_trigger_name,
+last_updated_at,
+object_type_name,
+segment_filter,
+tags
 ;
 ```
 </TabItem>
@@ -407,15 +407,15 @@ domain_name = '{{ domain_name }}' --required
 AND event_trigger_name = '{{ event_trigger_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreatedAt,
-Description,
-EventTriggerConditions,
-EventTriggerLimits,
-EventTriggerName,
-LastUpdatedAt,
-ObjectTypeName,
-SegmentFilter,
-Tags;
+created_at,
+description,
+event_trigger_conditions,
+event_trigger_limits,
+event_trigger_name,
+last_updated_at,
+object_type_name,
+segment_filter,
+tags;
 ```
 </TabItem>
 </Tabs>

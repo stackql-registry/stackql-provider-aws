@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ViewArn" /></td>
+    <td><CopyableCode code="view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the view that is the current default for the Amazon Web Services Region in which you called this operation.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the Amazon Resource Name (ARN) of the view that is the default for the
 
 ```sql
 SELECT
-ViewArn
+view_arn
 FROM aws.resource_explorer_2.default_views
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ WHERE
 region = '{{ region }}' --required
 AND ViewArn = '{{ ViewArn }}' --required
 RETURNING
-ViewArn;
+view_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_default_view">

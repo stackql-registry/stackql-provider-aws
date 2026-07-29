@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="destinationKmsKeyId" /></td>
+    <td><CopyableCode code="destination_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key to use to encrypt your snapshots in the destination Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationRegion" /></td>
+    <td><CopyableCode code="destination_region" /></td>
     <td><code>string</code></td>
     <td>The destination Amazon Web Services Region to copy snapshots to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace to copy snapshots from in the source Amazon Web Services Region. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCopyConfigurationArn" /></td>
+    <td><CopyableCode code="snapshot_copy_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the snapshot copy configuration object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCopyConfigurationId" /></td>
+    <td><CopyableCode code="snapshot_copy_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot copy configuration object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotRetentionPeriod" /></td>
+    <td><CopyableCode code="snapshot_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The retention period of snapshots that are copied to the destination Amazon Web Services Region.</td>
 </tr>
@@ -165,12 +165,12 @@ Returns a list of snapshot copy configurations.
 
 ```sql
 SELECT
-destinationKmsKeyId,
-destinationRegion,
-namespaceName,
-snapshotCopyConfigurationArn,
-snapshotCopyConfigurationId,
-snapshotRetentionPeriod
+destination_kms_key_id,
+destination_region,
+namespace_name,
+snapshot_copy_configuration_arn,
+snapshot_copy_configuration_id,
+snapshot_retention_period
 FROM aws.redshift_serverless.snapshot_copy_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,7 +207,7 @@ SELECT
 {{ snapshotRetentionPeriod }},
 '{{ region }}'
 RETURNING
-snapshotCopyConfiguration
+snapshot_copy_configuration
 ;
 ```
 </TabItem>
@@ -262,7 +262,7 @@ WHERE
 region = '{{ region }}' --required
 AND snapshotCopyConfigurationId = '{{ snapshotCopyConfigurationId }}' --required
 RETURNING
-snapshotCopyConfiguration;
+snapshot_copy_configuration;
 ```
 </TabItem>
 </Tabs>

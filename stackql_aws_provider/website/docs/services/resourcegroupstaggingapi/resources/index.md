@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComplianceDetails" /></td>
+    <td><CopyableCode code="compliance_details" /></td>
     <td><code>object</code></td>
     <td>Information that shows whether a resource is compliant with the effective tag policy, including details on any noncompliant tag keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceARN" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags that have been applied to one or more Amazon Web Services resources.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns all the tagged or previously tagged resources that are located in the sp
 
 ```sql
 SELECT
-ComplianceDetails,
-ResourceARN,
-Tags
+compliance_details,
+resource_arn,
+tags
 FROM aws.resourcegroupstaggingapi.resources
 WHERE region = '{{ region }}' -- required
 ;

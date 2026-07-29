@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTriggerNames" /></td>
+    <td><CopyableCode code="event_trigger_names" /></td>
     <td><code>array</code></td>
     <td>A list of unique names for active event triggers associated with the integration. This list would be empty if no Event Trigger is associated with the integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsUnstructured" /></td>
+    <td><CopyableCode code="is_unstructured" /></td>
     <td><code>boolean</code></td>
     <td>Boolean that shows if the Flow that's associated with the Integration is created in Amazon Appflow, or with ObjectTypeName equals _unstructured via API/CLI in flowDefinition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was most recently edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectTypeName" /></td>
+    <td><CopyableCode code="object_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the profile object type. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectTypeNames" /></td>
+    <td><CopyableCode code="object_type_names" /></td>
     <td><code>object</code></td>
     <td>A map in which each key is an event type from an external application such as Segment or Shopify, and each value is an ObjectTypeName (template) used to ingest the event. It supports the following event types: SegmentIdentify, ShopifyCreateCustomers, ShopifyUpdateCustomers, ShopifyCreateDraftOrders, ShopifyUpdateDraftOrders, ShopifyCreateOrders, and ShopifyUpdatedOrders.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role. The Integration uses this role to make Customer Profiles requests on your behalf. (pattern: &lt;code&gt;arn:aws:iam:.*:&#91;0-9&#93;+:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scope" /></td>
+    <td><CopyableCode code="scope" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the integration applies to profile level data (associated with profiles) or domain level data (not associated with any specific profile). The default value is PROFILE. (PROFILE, DOMAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Uri" /></td>
+    <td><CopyableCode code="uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the S3 bucket or any other type of data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the workflow.</td>
 </tr>
@@ -215,18 +215,18 @@ Returns an integration for a domain.
 
 ```sql
 SELECT
-CreatedAt,
-DomainName,
-EventTriggerNames,
-IsUnstructured,
-LastUpdatedAt,
-ObjectTypeName,
-ObjectTypeNames,
-RoleArn,
-Scope,
-Tags,
-Uri,
-WorkflowId
+created_at,
+domain_name,
+event_trigger_names,
+is_unstructured,
+last_updated_at,
+object_type_name,
+object_type_names,
+role_arn,
+scope,
+tags,
+uri,
+workflow_id
 FROM aws.customer_profiles.integrations
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -263,18 +263,18 @@ WHERE
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreatedAt,
-DomainName,
-EventTriggerNames,
-IsUnstructured,
-LastUpdatedAt,
-ObjectTypeName,
-ObjectTypeNames,
-RoleArn,
-Scope,
-Tags,
-Uri,
-WorkflowId;
+created_at,
+domain_name,
+event_trigger_names,
+is_unstructured,
+last_updated_at,
+object_type_name,
+object_type_names,
+role_arn,
+scope,
+tags,
+uri,
+workflow_id;
 ```
 </TabItem>
 </Tabs>

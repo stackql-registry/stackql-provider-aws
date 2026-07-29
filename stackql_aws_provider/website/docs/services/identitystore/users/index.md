@@ -51,132 +51,132 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Addresses" /></td>
+    <td><CopyableCode code="addresses" /></td>
     <td><code>array</code></td>
     <td>The physical address of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Birthdate" /></td>
+    <td><CopyableCode code="birthdate" /></td>
     <td><code>string</code></td>
     <td>The user's birthdate in YYYY-MM-DD format. This field returns the stored birthdate information for the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the user was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that created the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Emails" /></td>
+    <td><CopyableCode code="emails" /></td>
     <td><code>array</code></td>
     <td>The email address of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Extensions" /></td>
+    <td><CopyableCode code="extensions" /></td>
     <td><code>object</code></td>
     <td>A map of explicitly requested attribute extensions associated with the user. Not populated if the user has no requested extensions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalIds" /></td>
+    <td><CopyableCode code="external_ids" /></td>
     <td><code>array</code></td>
     <td>A list of ExternalId objects that contains the identifiers issued to this resource by an external identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier for the identity store. (pattern: &lt;code&gt;d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Locale" /></td>
+    <td><CopyableCode code="locale" /></td>
     <td><code>string</code></td>
     <td>A string containing the geographical region or location of the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>object</code></td>
     <td>The name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NickName" /></td>
+    <td><CopyableCode code="nick_name" /></td>
     <td><code>string</code></td>
     <td>An alternative descriptive name for the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumbers" /></td>
+    <td><CopyableCode code="phone_numbers" /></td>
     <td><code>array</code></td>
     <td>A list of PhoneNumber objects associated with a user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Photos" /></td>
+    <td><CopyableCode code="photos" /></td>
     <td><code>array</code></td>
     <td>A list of photos associated with the user. Returns up to 3 photos with their associated metadata including type, display name, and primary designation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredLanguage" /></td>
+    <td><CopyableCode code="preferred_language" /></td>
     <td><code>string</code></td>
     <td>The preferred language of the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileUrl" /></td>
+    <td><CopyableCode code="profile_url" /></td>
     <td><code>string</code></td>
     <td>A URL link for the user's profile. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Roles" /></td>
+    <td><CopyableCode code="roles" /></td>
     <td><code>array</code></td>
     <td>The roles of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timezone" /></td>
+    <td><CopyableCode code="timezone" /></td>
     <td><code>string</code></td>
     <td>The time zone for a user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>A string containing the title of the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the user was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that last updated the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a user in the identity store. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>A unique string used to identify the user. The length limit is 128 characters. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserStatus" /></td>
+    <td><CopyableCode code="user_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the user account. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserType" /></td>
+    <td><CopyableCode code="user_type" /></td>
     <td><code>string</code></td>
     <td>A string indicating the type of user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Website" /></td>
+    <td><CopyableCode code="website" /></td>
     <td><code>string</code></td>
     <td>The user's personal website or blog URL. Returns the stored website information for the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -195,132 +195,132 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Addresses" /></td>
+    <td><CopyableCode code="addresses" /></td>
     <td><code>array</code></td>
     <td>A list of Address objects containing addresses associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Birthdate" /></td>
+    <td><CopyableCode code="birthdate" /></td>
     <td><code>string</code></td>
     <td>The user's birthdate in YYYY-MM-DD format. This field stores personal birthdate information for the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the user was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that created the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>A string containing the name of the user that is formatted for display when the user is referenced. For example, "John Doe." Prefix search supports a maximum of 1,000 characters for the string. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Emails" /></td>
+    <td><CopyableCode code="emails" /></td>
     <td><code>array</code></td>
     <td>A list of Email objects containing email addresses associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Extensions" /></td>
+    <td><CopyableCode code="extensions" /></td>
     <td><code>object</code></td>
     <td>A map of explicitly requested attribute extensions associated with the user. Not populated if the user has no requested extensions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalIds" /></td>
+    <td><CopyableCode code="external_ids" /></td>
     <td><code>array</code></td>
     <td>A list of ExternalId objects that contains the identifiers issued to this resource by an external identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier for the identity store. (pattern: &lt;code&gt;d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Locale" /></td>
+    <td><CopyableCode code="locale" /></td>
     <td><code>string</code></td>
     <td>A string containing the geographical region or location of the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>object</code></td>
     <td>An object containing the name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NickName" /></td>
+    <td><CopyableCode code="nick_name" /></td>
     <td><code>string</code></td>
     <td>A string containing an alternate name for the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumbers" /></td>
+    <td><CopyableCode code="phone_numbers" /></td>
     <td><code>array</code></td>
     <td>A list of PhoneNumber objects containing phone numbers associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Photos" /></td>
+    <td><CopyableCode code="photos" /></td>
     <td><code>array</code></td>
     <td>A list of photos associated with the user. Users can have up to 3 photos with metadata including type, display name, and primary designation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredLanguage" /></td>
+    <td><CopyableCode code="preferred_language" /></td>
     <td><code>string</code></td>
     <td>A string containing the preferred language of the user. For example, "American English" or "en-us." (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileUrl" /></td>
+    <td><CopyableCode code="profile_url" /></td>
     <td><code>string</code></td>
     <td>A string containing a URL that might be associated with the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Roles" /></td>
+    <td><CopyableCode code="roles" /></td>
     <td><code>array</code></td>
     <td>A list of Role objects containing roles associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timezone" /></td>
+    <td><CopyableCode code="timezone" /></td>
     <td><code>string</code></td>
     <td>A string containing the time zone of the user. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>A string containing the title of the user. Possible values are left unspecified. The value can vary based on your specific use case. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the user was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user or system that last updated the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a user in the identity store. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>A unique string used to identify the user. The length limit is 128 characters. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserStatus" /></td>
+    <td><CopyableCode code="user_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the user account. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserType" /></td>
+    <td><CopyableCode code="user_type" /></td>
     <td><code>string</code></td>
     <td>A string indicating the type of user. Possible values are left unspecified. The value can vary based on your specific use case. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Website" /></td>
+    <td><CopyableCode code="website" /></td>
     <td><code>string</code></td>
     <td>The user's personal website or blog URL. This field stores website information for personal or professional use. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r  　&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -418,32 +418,32 @@ Retrieves the user metadata and attributes from the UserId in an identity store.
 
 ```sql
 SELECT
-Addresses,
-Birthdate,
-CreatedAt,
-CreatedBy,
-DisplayName,
-Emails,
-Extensions,
-ExternalIds,
-IdentityStoreId,
-Locale,
-Name,
-NickName,
-PhoneNumbers,
-Photos,
-PreferredLanguage,
-ProfileUrl,
-Roles,
-Timezone,
-Title,
-UpdatedAt,
-UpdatedBy,
-UserId,
-UserName,
-UserStatus,
-UserType,
-Website
+addresses,
+birthdate,
+created_at,
+created_by,
+display_name,
+emails,
+extensions,
+external_ids,
+identity_store_id,
+locale,
+name,
+nick_name,
+phone_numbers,
+photos,
+preferred_language,
+profile_url,
+roles,
+timezone,
+title,
+updated_at,
+updated_by,
+user_id,
+user_name,
+user_status,
+user_type,
+website
 FROM aws.identitystore.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -455,32 +455,32 @@ Lists all users in the identity store. Returns a paginated list of complete User
 
 ```sql
 SELECT
-Addresses,
-Birthdate,
-CreatedAt,
-CreatedBy,
-DisplayName,
-Emails,
-Extensions,
-ExternalIds,
-IdentityStoreId,
-Locale,
-Name,
-NickName,
-PhoneNumbers,
-Photos,
-PreferredLanguage,
-ProfileUrl,
-Roles,
-Timezone,
-Title,
-UpdatedAt,
-UpdatedBy,
-UserId,
-UserName,
-UserStatus,
-UserType,
-Website
+addresses,
+birthdate,
+created_at,
+created_by,
+display_name,
+emails,
+extensions,
+external_ids,
+identity_store_id,
+locale,
+name,
+nick_name,
+phone_numbers,
+photos,
+preferred_language,
+profile_url,
+roles,
+timezone,
+title,
+updated_at,
+updated_by,
+user_id,
+user_name,
+user_status,
+user_type,
+website
 FROM aws.identitystore.users
 WHERE region = '{{ region }}' -- required
 ;
@@ -547,8 +547,8 @@ SELECT
 '{{ Extensions }}',
 '{{ region }}'
 RETURNING
-IdentityStoreId,
-UserId
+identity_store_id,
+user_id
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Csr" /></td>
+    <td><CopyableCode code="csr" /></td>
     <td><code>string</code></td>
     <td>The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the certificate signing request (CSR) for your private certificate aut
 
 ```sql
 SELECT
-Csr
+csr
 FROM aws.acm_pca.certificate_authority_csrs
 WHERE region = '{{ region }}' -- required
 ;

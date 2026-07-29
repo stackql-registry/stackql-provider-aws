@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="limitsPerLabelSet" /></td>
+    <td><CopyableCode code="limits_per_label_set" /></td>
     <td><code>array</code></td>
     <td>This is an array of structures, where each structure displays one label sets for the workspace and the limits for that label set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retentionPeriodInDays" /></td>
+    <td><CopyableCode code="retention_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>This field displays how many days that metrics are retained in the workspace.</td>
 </tr>
@@ -141,8 +141,8 @@ Use this operation to return information about the configuration of a workspace.
 
 ```sql
 SELECT
-limitsPerLabelSet,
-retentionPeriodInDays,
+limits_per_label_set,
+retention_period_in_days,
 status
 FROM aws.amp.workspace_configurations
 WHERE workspace_id = '{{ workspace_id }}' -- required

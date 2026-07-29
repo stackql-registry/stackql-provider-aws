@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceleratorPort" /></td>
+    <td><CopyableCode code="accelerator_port" /></td>
     <td><code>integer</code></td>
     <td>The accelerator port.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationSocketAddress" /></td>
+    <td><CopyableCode code="destination_socket_address" /></td>
     <td><code>object</code></td>
     <td>The EC2 instance IP address and port number in the virtual private cloud (VPC) subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationTrafficState" /></td>
+    <td><CopyableCode code="destination_traffic_state" /></td>
     <td><code>string</code></td>
     <td>Indicates whether or not a port mapping destination can receive traffic. The value is either ALLOW, if traffic is allowed to the destination, or DENY, if traffic is not allowed to the destination. (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupArn" /></td>
+    <td><CopyableCode code="endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The IP address of the VPC subnet (the subnet ID).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocols" /></td>
+    <td><CopyableCode code="protocols" /></td>
     <td><code>array</code></td>
     <td>The protocols supported by the endpoint group.</td>
 </tr>
@@ -144,12 +144,12 @@ Provides a complete mapping from the public accelerator IP address and port to d
 
 ```sql
 SELECT
-AcceleratorPort,
-DestinationSocketAddress,
-DestinationTrafficState,
-EndpointGroupArn,
-EndpointId,
-Protocols
+accelerator_port,
+destination_socket_address,
+destination_traffic_state,
+endpoint_group_arn,
+endpoint_id,
+protocols
 FROM aws.globalaccelerator.custom_routing_port_mappings
 WHERE region = '{{ region }}' -- required
 ;

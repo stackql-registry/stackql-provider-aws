@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Geography" /></td>
+    <td><CopyableCode code="geography" /></td>
     <td><code>string</code></td>
     <td>The geography information for the Availability Zone or Local Zone. The geography is returned as a list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupLongName" /></td>
+    <td><CopyableCode code="group_long_name" /></td>
     <td><code>string</code></td>
     <td>The long name of the Availability Zone group, Local Zone group, or Wavelength Zone group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the zone group. For example: Availability Zones - us-east-1-zg-1 Local Zones - us-west-2-lax-1 Wavelength Zones - us-east-1-wl1-bos-wlz-1</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>string</code></td>
     <td>Any messages about the Availability Zone, Local Zone, or Wavelength Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkBorderGroup" /></td>
+    <td><CopyableCode code="network_border_group" /></td>
     <td><code>string</code></td>
     <td>The name of the network border group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptInStatus" /></td>
+    <td><CopyableCode code="opt_in_status" /></td>
     <td><code>string</code></td>
     <td>For Availability Zones, this parameter always has the value of opt-in-not-required. For Local Zones and Wavelength Zones, this parameter is the opt-in status. The possible values are opted-in and not-opted-in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentZoneId" /></td>
+    <td><CopyableCode code="parent_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the zone that handles some of the Local Zone or Wavelength Zone control plane operations, such as API calls.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentZoneName" /></td>
+    <td><CopyableCode code="parent_zone_name" /></td>
     <td><code>string</code></td>
     <td>The name of the zone that handles some of the Local Zone or Wavelength Zone control plane operations, such as API calls.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Availability Zone, Local Zone, or Wavelength Zone. The possible values are available, unavailable, and constrained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubGeography" /></td>
+    <td><CopyableCode code="sub_geography" /></td>
     <td><code>string</code></td>
     <td>The sub-geography information for the Availability Zone or Local Zone. The sub-geography is returned as a list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZoneId" /></td>
+    <td><CopyableCode code="zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone, Local Zone, or Wavelength Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZoneName" /></td>
+    <td><CopyableCode code="zone_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone, Local Zone, or Wavelength Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZoneType" /></td>
+    <td><CopyableCode code="zone_type" /></td>
     <td><code>string</code></td>
     <td>The type of zone. Valid values: availability-zone | local-zone | wavelength-zone</td>
 </tr>
@@ -226,20 +226,20 @@ Describes the Availability Zones, Local Zones, and Wavelength Zones that are ava
 
 ```sql
 SELECT
-Geography,
-GroupLongName,
-GroupName,
-Messages,
-NetworkBorderGroup,
-OptInStatus,
-ParentZoneId,
-ParentZoneName,
-RegionName,
-State,
-SubGeography,
-ZoneId,
-ZoneName,
-ZoneType
+geography,
+group_long_name,
+group_name,
+messages,
+network_border_group,
+opt_in_status,
+parent_zone_id,
+parent_zone_name,
+region_name,
+state,
+sub_geography,
+zone_id,
+zone_name,
+zone_type
 FROM aws.ec2.availability_zones
 WHERE region = '{{ region }}' -- required
 AND ZoneName = '{{ ZoneName }}'
@@ -275,7 +275,7 @@ AND OptInStatus = '{{ OptInStatus }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

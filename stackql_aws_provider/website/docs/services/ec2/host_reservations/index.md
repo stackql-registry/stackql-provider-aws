@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>The number of Dedicated Hosts the reservation is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency in which the upfrontPrice and hourlyPrice amounts are specified. At this time, the only supported currency is USD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The length of the reservation's term, specified in seconds. Can be 31536000 (1 year) | 94608000 (3 years).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="End" /></td>
+    <td><CopyableCode code="end" /></td>
     <td><code>string</code></td>
     <td>The date and time that the reservation ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostIdSet" /></td>
+    <td><CopyableCode code="host_id_set" /></td>
     <td><code>string</code></td>
     <td>The IDs of the Dedicated Hosts associated with the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostReservationId" /></td>
+    <td><CopyableCode code="host_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the reservation that specifies the associated Dedicated Hosts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HourlyPrice" /></td>
+    <td><CopyableCode code="hourly_price" /></td>
     <td><code>string</code></td>
     <td>The hourly price of the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceFamily" /></td>
+    <td><CopyableCode code="instance_family" /></td>
     <td><code>string</code></td>
     <td>The instance family of the Dedicated Host Reservation. The instance family on the Dedicated Host must be the same in order for it to benefit from the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the reservation. This remains the same regardless of which Dedicated Hosts are associated with it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentOption" /></td>
+    <td><CopyableCode code="payment_option" /></td>
     <td><code>string</code></td>
     <td>The payment option selected for this reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Start" /></td>
+    <td><CopyableCode code="start" /></td>
     <td><code>string</code></td>
     <td>The date and time that the reservation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the Dedicated Host Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpfrontPrice" /></td>
+    <td><CopyableCode code="upfront_price" /></td>
     <td><code>string</code></td>
     <td>The upfront price of the reservation.</td>
 </tr>
@@ -204,20 +204,20 @@ Describes reservations that are associated with Dedicated Hosts in your account.
 
 ```sql
 SELECT
-Count,
-CurrencyCode,
-Duration,
-End,
-HostIdSet,
-HostReservationId,
-HourlyPrice,
-InstanceFamily,
-OfferingId,
-PaymentOption,
-Start,
-State,
-Tags,
-UpfrontPrice
+count,
+currency_code,
+duration,
+end,
+host_id_set,
+host_reservation_id,
+hourly_price,
+instance_family,
+offering_id,
+payment_option,
+start,
+state,
+tags,
+upfront_price
 FROM aws.ec2.host_reservations
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

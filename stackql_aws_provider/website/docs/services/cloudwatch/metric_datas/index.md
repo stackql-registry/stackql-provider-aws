@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The short name you specified to represent this metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>The human-readable label associated with the data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>array</code></td>
     <td>A list of messages with additional information about the data returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The status of the returned data. Complete indicates that all data points in the requested time range were returned. PartialData means that an incomplete set of data points were returned. You can use the NextToken value that was returned and repeat your request to get more data points. NextToken is not returned if you are performing a math expression. InternalError indicates that an error occurred. Retry your request using NextToken, if present. (Complete, InternalError, PartialData, Forbidden)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamps" /></td>
+    <td><CopyableCode code="timestamps" /></td>
     <td><code>array</code></td>
     <td>The timestamps for the data points, formatted in Unix timestamp format. The number of timestamps always matches the number of values and the value for Timestamps&#91;x&#93; is Values&#91;x&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>array</code></td>
     <td>The data points for the metric corresponding to Timestamps. The number of values always matches the number of timestamps and the timestamp for Values&#91;x&#93; is Timestamps&#91;x&#93;.</td>
 </tr>
@@ -151,12 +151,12 @@ You can use the GetMetricData API to retrieve CloudWatch metric values. The oper
 
 ```sql
 SELECT
-Id,
-Label,
-Messages,
-StatusCode,
-Timestamps,
-Values
+id,
+label,
+messages,
+status_code,
+timestamps,
+values
 FROM aws.cloudwatch.metric_datas
 WHERE region = '{{ region }}' -- required
 ;

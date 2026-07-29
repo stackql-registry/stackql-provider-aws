@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceAccessControlAttributeConfiguration" /></td>
+    <td><CopyableCode code="instance_access_control_attribute_configuration" /></td>
     <td><code>object</code></td>
     <td>Gets the list of IAM Identity Center identity store attributes that have been added to your ABAC configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the attribute configuration process. (ENABLED, CREATION_IN_PROGRESS, CREATION_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Provides more details about the current status of the specified attribute.</td>
 </tr>
@@ -150,9 +150,9 @@ Returns the list of IAM Identity Center identity store attributes that have been
 
 ```sql
 SELECT
-InstanceAccessControlAttributeConfiguration,
-Status,
-StatusReason
+instance_access_control_attribute_configuration,
+status,
+status_reason
 FROM aws.sso_admin.instance_access_control_attribute_configurations
 WHERE region = '{{ region }}' -- required
 ;

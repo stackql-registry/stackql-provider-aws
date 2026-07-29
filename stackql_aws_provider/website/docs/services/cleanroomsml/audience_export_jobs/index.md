@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the audience export job. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceGenerationJobArn" /></td>
+    <td><CopyableCode code="audience_generation_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the audience generation job that was exported. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:audience-generation-job/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceSize" /></td>
+    <td><CopyableCode code="audience_size" /></td>
     <td><code>object</code></td>
     <td>The size of the generated audience. Must match one of the sizes in the configured audience model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the audience export job was created.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the audience export job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputLocation" /></td>
+    <td><CopyableCode code="output_location" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 bucket where the audience export is stored. (pattern: &lt;code&gt;s3:​//.+&lt;/code&gt;)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the audience export job. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the status of a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the audience export job was updated.</td>
 </tr>
@@ -175,14 +175,14 @@ Returns a list of the audience export jobs.
 ```sql
 SELECT
 name,
-audienceGenerationJobArn,
-audienceSize,
-createTime,
+audience_generation_job_arn,
+audience_size,
+create_time,
 description,
-outputLocation,
+output_location,
 status,
-statusDetails,
-updateTime
+status_details,
+update_time
 FROM aws.cleanroomsml.audience_export_jobs
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

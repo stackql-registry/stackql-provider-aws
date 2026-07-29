@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the ingestion destination. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ingestion destination was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConfiguration" /></td>
+    <td><CopyableCode code="destination_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains information about the destination of ingested data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestionArn" /></td>
+    <td><CopyableCode code="ingestion_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ingestion. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processingConfiguration" /></td>
+    <td><CopyableCode code="processing_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains information about how ingested data is processed.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the ingestion destination. The following states are possible: Active: The ingestion destination is active and is ready to be used. Failed: The ingestion destination has failed. If the ingestion destination is in this state, you should verify the ingestion destination configuration and try again. (Active, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the ingestion destination. Only present when the status of ingestion destination is Failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ingestion destination was last updated.</td>
 </tr>
@@ -229,13 +229,13 @@ Returns information about an ingestion destination.
 ```sql
 SELECT
 arn,
-createdAt,
-destinationConfiguration,
-ingestionArn,
-processingConfiguration,
+created_at,
+destination_configuration,
+ingestion_arn,
+processing_configuration,
 status,
-statusReason,
-updatedAt
+status_reason,
+updated_at
 FROM aws.appfabric.ingestion_destinations
 WHERE app_bundle_identifier = '{{ app_bundle_identifier }}' -- required
 AND ingestion_identifier = '{{ ingestion_identifier }}' -- required
@@ -295,7 +295,7 @@ SELECT
 '{{ ingestion_identifier }}',
 '{{ region }}'
 RETURNING
-ingestionDestination
+ingestion_destination
 ;
 ```
 </TabItem>
@@ -366,7 +366,7 @@ AND ingestion_destination_identifier = '{{ ingestion_destination_identifier }}' 
 AND region = '{{ region }}' --required
 AND destinationConfiguration = '{{ destinationConfiguration }}' --required
 RETURNING
-ingestionDestination;
+ingestion_destination;
 ```
 </TabItem>
 </Tabs>

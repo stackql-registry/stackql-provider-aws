@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>The Region or Availability Zone that's the target for the subscription. For example, eu-west-1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metric" /></td>
+    <td><CopyableCode code="metric" /></td>
     <td><code>string</code></td>
     <td>The metric used for the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>string</code></td>
     <td>The data aggregation time for the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The Region or Availability Zone that's the source for the subscription. For example, us-east-1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistic" /></td>
+    <td><CopyableCode code="statistic" /></td>
     <td><code>string</code></td>
     <td>The statistic used for the subscription.</td>
 </tr>
@@ -159,11 +159,11 @@ Describes the current Infrastructure Performance metric subscriptions.
 
 ```sql
 SELECT
-Destination,
-Metric,
-Period,
-Source,
-Statistic
+destination,
+metric,
+period,
+source,
+statistic
 FROM aws.ec2.aws_network_performance_metric_subscriptions
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

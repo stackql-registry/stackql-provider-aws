@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HostId" /></td>
+    <td><CopyableCode code="host_id" /></td>
     <td><code>string</code></td>
     <td>The EC2 Mac Dedicated Host ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacOSLatestSupportedVersions" /></td>
+    <td><CopyableCode code="mac_os_latest_supported_versions" /></td>
     <td><code>string</code></td>
     <td>The latest macOS versions that the EC2 Mac Dedicated Host can launch without being upgraded.</td>
 </tr>
@@ -144,8 +144,8 @@ Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac Dedicated 
 
 ```sql
 SELECT
-HostId,
-MacOSLatestSupportedVersions
+host_id,
+mac_os_latest_supported_versions
 FROM aws.ec2.mac_hosts
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

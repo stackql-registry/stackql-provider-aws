@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>This is the unique identifier for the AWS account associated with the member organization. It's used for AWS-related operations and identity verification. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompanyName" /></td>
+    <td><CopyableCode code="company_name" /></td>
     <td><code>string</code></td>
     <td>The official name of the member's company or organization. (pattern: &lt;code&gt;(?s).&#123;1,120&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebsiteUrl" /></td>
+    <td><CopyableCode code="website_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the member company's website. This offers a way to find more information about the member organization and serves as an additional identifier.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves the details of member partners in an Engagement. This operation can on
 
 ```sql
 SELECT
-AccountId,
-CompanyName,
-WebsiteUrl
+account_id,
+company_name,
+website_url
 FROM aws.partnercentral_selling.engagement_members
 WHERE region = '{{ region }}' -- required
 ;

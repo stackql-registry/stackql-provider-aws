@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DocumentStatusList" /></td>
+    <td><CopyableCode code="document_status_list" /></td>
     <td><code>array</code></td>
     <td>The status of documents. The status indicates if the document is waiting to be indexed, is in the process of indexing, has completed indexing, or failed indexing. If a document failed indexing, the status provides the reason why.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>A list of documents that Amazon Kendra couldn't get the status for. The list includes the ID of the document and the reason that the status couldn't be found.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the indexing status for one or more documents submitted with the BatchPu
 
 ```sql
 SELECT
-DocumentStatusList,
-Errors
+document_status_list,
+errors
 FROM aws.kendra.document_status
 WHERE region = '{{ region }}' -- required
 ;

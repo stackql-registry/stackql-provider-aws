@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the EventRule. CloudFormation stack generates this ARN and then uses this ARN to associate with the NotificationConfiguration. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/rule/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the EventRule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventPattern" /></td>
+    <td><CopyableCode code="event_pattern" /></td>
     <td><code>string</code></td>
     <td>An additional event pattern used to further filter the events this EventRule receives. For more information, see Amazon EventBridge event patterns in the Amazon EventBridge User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The event type this rule should match with the EventBridge events. It must match with atleast one of the valid EventBridge event types. For example, Amazon EC2 Instance State change Notification and Amazon CloudWatch State Change. For more information, see Event delivery from Amazon Web Services services in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9 \-\(\)&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedRules" /></td>
+    <td><CopyableCode code="managed_rules" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon EventBridge Managed Rule ARNs associated with this EventRule. These are created by User Notifications within your account so your EventRules can function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationConfigurationArn" /></td>
+    <td><CopyableCode code="notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the NotificationConfiguration associated with this EventRule. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The event source this rule should match with the EventBridge event sources. It must match with atleast one of the valid EventBridge event sources. Only Amazon Web Services service sourced events are supported. For example, aws.ec2 and aws.cloudwatch. For more information, see Event delivery from Amazon Web Services services in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;aws.(&#91;a-z0-9\-&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummaryByRegion" /></td>
+    <td><CopyableCode code="status_summary_by_region" /></td>
     <td><code>object</code></td>
     <td>A list of an EventRule's status by Region. Regions are mapped to EventRuleStatusSummary.</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the resource. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/rule/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the EventRule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventPattern" /></td>
+    <td><CopyableCode code="event_pattern" /></td>
     <td><code>string</code></td>
     <td>An additional event pattern used to further filter the events this EventRule receives. For more information, see Amazon EventBridge event patterns in the Amazon EventBridge User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The event type to match. Must match one of the valid Amazon EventBridge event types. For example, EC2 Instance State-change Notification and Amazon CloudWatch Alarm State Change. For more information, see Event delivery from Amazon Web Services services in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9 \-\(\)&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedRules" /></td>
+    <td><CopyableCode code="managed_rules" /></td>
     <td><code>array</code></td>
     <td>A list of managed rules from EventBridge that are associated with this EventRule. These are created by User Notifications within your account so this EventRule functions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationConfigurationArn" /></td>
+    <td><CopyableCode code="notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a NotificationConfiguration. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The matched event source. Must match one of the valid EventBridge sources. Only Amazon Web Services service sourced events are supported. For example, aws.ec2 and aws.cloudwatch. For more information, see Event delivery from Amazon Web Services services in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;aws.(&#91;a-z0-9\-&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummaryByRegion" /></td>
+    <td><CopyableCode code="status_summary_by_region" /></td>
     <td><code>object</code></td>
     <td>A list of an EventRule's status by Region. Regions are mapped to EventRuleStatusSummary.</td>
 </tr>
@@ -269,14 +269,14 @@ Returns a list of EventRules according to specified filters, in reverse chronolo
 ```sql
 SELECT
 arn,
-creationTime,
-eventPattern,
-eventType,
-managedRules,
-notificationConfigurationArn,
+creation_time,
+event_pattern,
+event_type,
+managed_rules,
+notification_configuration_arn,
 regions,
 source,
-statusSummaryByRegion
+status_summary_by_region
 FROM aws.notifications.event_rules
 WHERE notificationConfigurationArn = '{{ notificationConfigurationArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -292,14 +292,14 @@ Returns a specified EventRule.
 ```sql
 SELECT
 arn,
-creationTime,
-eventPattern,
-eventType,
-managedRules,
-notificationConfigurationArn,
+creation_time,
+event_pattern,
+event_type,
+managed_rules,
+notification_configuration_arn,
 regions,
 source,
-statusSummaryByRegion
+status_summary_by_region
 FROM aws.notifications.event_rules
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -340,8 +340,8 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-notificationConfigurationArn,
-statusSummaryByRegion
+notification_configuration_arn,
+status_summary_by_region
 ;
 ```
 </TabItem>
@@ -392,8 +392,8 @@ arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 arn,
-notificationConfigurationArn,
-statusSummaryByRegion;
+notification_configuration_arn,
+status_summary_by_region;
 ```
 </TabItem>
 </Tabs>

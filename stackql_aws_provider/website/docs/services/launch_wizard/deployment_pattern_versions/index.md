@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentPatternName" /></td>
+    <td><CopyableCode code="deployment_pattern_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment pattern.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentPatternVersionName" /></td>
+    <td><CopyableCode code="deployment_pattern_version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment pattern version.</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the deployment pattern version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentationUrl" /></td>
+    <td><CopyableCode code="documentation_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the documentation for the deployment pattern version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentPatternName" /></td>
+    <td><CopyableCode code="deployment_pattern_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment pattern.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentPatternVersionName" /></td>
+    <td><CopyableCode code="deployment_pattern_version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment pattern version.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the deployment pattern version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentationUrl" /></td>
+    <td><CopyableCode code="documentation_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the documentation for the deployment pattern version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload.</td>
 </tr>
@@ -187,11 +187,11 @@ Returns information about a deployment pattern version.
 
 ```sql
 SELECT
-deploymentPatternName,
-deploymentPatternVersionName,
+deployment_pattern_name,
+deployment_pattern_version_name,
 description,
-documentationUrl,
-workloadName
+documentation_url,
+workload_name
 FROM aws.launch_wizard.deployment_pattern_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,11 +203,11 @@ Lists the deployment pattern versions.
 
 ```sql
 SELECT
-deploymentPatternName,
-deploymentPatternVersionName,
+deployment_pattern_name,
+deployment_pattern_version_name,
 description,
-documentationUrl,
-workloadName
+documentation_url,
+workload_name
 FROM aws.launch_wizard.deployment_pattern_versions
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HostedZoneCount" /></td>
+    <td><CopyableCode code="hosted_zone_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of public and private hosted zones that are associated with the current Amazon Web Services account.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the number of hosted zones that are associated with the current Amazon
 
 ```sql
 SELECT
-HostedZoneCount
+hosted_zone_count
 FROM aws.route53.hosted_zone_counts
 WHERE region = '{{ region }}' -- required
 ;

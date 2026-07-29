@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsLatestPatch" /></td>
+    <td><CopyableCode code="is_latest_patch" /></td>
     <td><code>boolean</code></td>
     <td>Whether the version is the latest available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The account ID of the version's owner. (pattern: &lt;code&gt;^&#91;0-9a-z\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageArn" /></td>
+    <td><CopyableCode code="package_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageId" /></td>
+    <td><CopyableCode code="package_id" /></td>
     <td><code>string</code></td>
     <td>The version's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The version's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageVersion" /></td>
+    <td><CopyableCode code="package_version" /></td>
     <td><code>string</code></td>
     <td>The version's version. (pattern: &lt;code&gt;^(&#91;0-9&#93;+)\.(&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PatchVersion" /></td>
+    <td><CopyableCode code="patch_version" /></td>
     <td><code>string</code></td>
     <td>The version's patch version. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegisteredTime" /></td>
+    <td><CopyableCode code="registered_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The version's registered time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The version's status. (REGISTER_PENDING, REGISTER_COMPLETED, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDescription" /></td>
+    <td><CopyableCode code="status_description" /></td>
     <td><code>string</code></td>
     <td>The version's status description.</td>
 </tr>
@@ -208,16 +208,16 @@ Returns information about a package version.
 
 ```sql
 SELECT
-IsLatestPatch,
-OwnerAccount,
-PackageArn,
-PackageId,
-PackageName,
-PackageVersion,
-PatchVersion,
-RegisteredTime,
-Status,
-StatusDescription
+is_latest_patch,
+owner_account,
+package_arn,
+package_id,
+package_name,
+package_version,
+patch_version,
+registered_time,
+status,
+status_description
 FROM aws.panorama.package_versions
 WHERE package_id = '{{ package_id }}' -- required
 AND package_version = '{{ package_version }}' -- required

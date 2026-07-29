@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataRetentionInHours" /></td>
+    <td><CopyableCode code="data_retention_in_hours" /></td>
     <td><code>integer</code></td>
     <td>The amount of time, in hours, to the Kinesis data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Disabled" /></td>
+    <td><CopyableCode code="disabled" /></td>
     <td><code>boolean</code></td>
     <td>When true, streaming to Kinesis is off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaInsightsConfiguration" /></td>
+    <td><CopyableCode code="media_insights_configuration" /></td>
     <td><code>object</code></td>
     <td>The call analytics configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamingNotificationTargets" /></td>
+    <td><CopyableCode code="streaming_notification_targets" /></td>
     <td><code>array</code></td>
     <td>The streaming notification targets.</td>
 </tr>
@@ -153,10 +153,10 @@ Retrieves the streaming configuration details for the specified Amazon Chime SDK
 
 ```sql
 SELECT
-DataRetentionInHours,
-Disabled,
-MediaInsightsConfiguration,
-StreamingNotificationTargets
+data_retention_in_hours,
+disabled,
+media_insights_configuration,
+streaming_notification_targets
 FROM aws.chime_sdk_voice.voice_connector_streaming_configurations
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -187,7 +187,7 @@ voice_connector_id = '{{ voice_connector_id }}' --required
 AND region = '{{ region }}' --required
 AND StreamingConfiguration = '{{ StreamingConfiguration }}' --required
 RETURNING
-StreamingConfiguration;
+streaming_configuration;
 ```
 </TabItem>
 </Tabs>

@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="thingTypeArn" /></td>
+    <td><CopyableCode code="thing_type_arn" /></td>
     <td><code>string</code></td>
     <td>The thing type ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeId" /></td>
+    <td><CopyableCode code="thing_type_id" /></td>
     <td><code>string</code></td>
     <td>The thing type ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeMetadata" /></td>
+    <td><CopyableCode code="thing_type_metadata" /></td>
     <td><code>object</code></td>
     <td>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeName" /></td>
+    <td><CopyableCode code="thing_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing type. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeProperties" /></td>
+    <td><CopyableCode code="thing_type_properties" /></td>
     <td><code>object</code></td>
     <td>The ThingTypeProperties contains information about the thing type including: a thing type description, and a list of searchable thing attribute names.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="thingTypeArn" /></td>
+    <td><CopyableCode code="thing_type_arn" /></td>
     <td><code>string</code></td>
     <td>The thing type ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeMetadata" /></td>
+    <td><CopyableCode code="thing_type_metadata" /></td>
     <td><code>object</code></td>
     <td>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeName" /></td>
+    <td><CopyableCode code="thing_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing type. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeProperties" /></td>
+    <td><CopyableCode code="thing_type_properties" /></td>
     <td><code>object</code></td>
     <td>The ThingTypeProperties contains information about the thing type including: a thing type description, and a list of searchable thing attribute names.</td>
 </tr>
@@ -230,11 +230,11 @@ Gets information about the specified thing type. Requires permission to access t
 
 ```sql
 SELECT
-thingTypeArn,
-thingTypeId,
-thingTypeMetadata,
-thingTypeName,
-thingTypeProperties
+thing_type_arn,
+thing_type_id,
+thing_type_metadata,
+thing_type_name,
+thing_type_properties
 FROM aws.iot.thing_types
 WHERE thing_type_name = '{{ thing_type_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,10 +247,10 @@ Lists the existing thing types. Requires permission to access the ListThingTypes
 
 ```sql
 SELECT
-thingTypeArn,
-thingTypeMetadata,
-thingTypeName,
-thingTypeProperties
+thing_type_arn,
+thing_type_metadata,
+thing_type_name,
+thing_type_properties
 FROM aws.iot.thing_types
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -288,9 +288,9 @@ SELECT
 '{{ thing_type_name }}',
 '{{ region }}'
 RETURNING
-thingTypeArn,
-thingTypeId,
-thingTypeName
+thing_type_arn,
+thing_type_id,
+thing_type_name
 ;
 ```
 </TabItem>

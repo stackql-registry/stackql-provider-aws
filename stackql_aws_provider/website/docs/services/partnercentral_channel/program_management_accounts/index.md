@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the program management account. (pattern: &lt;code&gt;pma-&#91;a-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID associated with the program management account. (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The catalog identifier associated with the account. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the account was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the program management account. (pattern: &lt;code&gt;&#91;^\x00-\x1F\x7F&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current revision number of the program management account. (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date of the program management account.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the program management account. (PENDING, ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the account was last updated.</td>
 </tr>
@@ -191,16 +191,16 @@ Lists program management accounts based on specified criteria.
 ```sql
 SELECT
 id,
-accountId,
+account_id,
 arn,
 catalog,
-createdAt,
-displayName,
+created_at,
+display_name,
 program,
 revision,
-startDate,
+start_date,
 status,
-updatedAt
+updated_at
 FROM aws.partnercentral_channel.program_management_accounts
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,7 +241,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-programManagementAccountDetail
+program_management_account_detail
 ;
 ```
 </TabItem>
@@ -310,7 +310,7 @@ region = '{{ region }}' --required
 AND catalog = '{{ catalog }}' --required
 AND identifier = '{{ identifier }}' --required
 RETURNING
-programManagementAccountDetail;
+program_management_account_detail;
 ```
 </TabItem>
 </Tabs>

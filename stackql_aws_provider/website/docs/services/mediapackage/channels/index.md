@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the Channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time the Channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A short text description of the Channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressAccessLogs" /></td>
+    <td><CopyableCode code="egress_access_logs" /></td>
     <td><code>object</code></td>
     <td>Configure egress access logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsIngest" /></td>
+    <td><CopyableCode code="hls_ingest" /></td>
     <td><code>object</code></td>
     <td>An HTTP Live Streaming (HLS) ingest resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressAccessLogs" /></td>
+    <td><CopyableCode code="ingress_access_logs" /></td>
     <td><code>object</code></td>
     <td>Configure ingress access logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the Channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time the Channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A short text description of the Channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressAccessLogs" /></td>
+    <td><CopyableCode code="egress_access_logs" /></td>
     <td><code>object</code></td>
     <td>Configure egress access logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsIngest" /></td>
+    <td><CopyableCode code="hls_ingest" /></td>
     <td><code>object</code></td>
     <td>An HTTP Live Streaming (HLS) ingest resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressAccessLogs" /></td>
+    <td><CopyableCode code="ingress_access_logs" /></td>
     <td><code>object</code></td>
     <td>Configure ingress access logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -253,14 +253,14 @@ Gets details about a Channel.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-EgressAccessLogs,
-HlsIngest,
-Id,
-IngressAccessLogs,
-Tags
+arn,
+created_at,
+description,
+egress_access_logs,
+hls_ingest,
+id,
+ingress_access_logs,
+tags
 FROM aws.mediapackage.channels
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,14 +273,14 @@ Returns a collection of Channels.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-EgressAccessLogs,
-HlsIngest,
-Id,
-IngressAccessLogs,
-Tags
+arn,
+created_at,
+description,
+egress_access_logs,
+hls_ingest,
+id,
+ingress_access_logs,
+tags
 FROM aws.mediapackage.channels
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -317,14 +317,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedAt,
-Description,
-EgressAccessLogs,
-HlsIngest,
-Id,
-IngressAccessLogs,
-Tags
+arn,
+created_at,
+description,
+egress_access_logs,
+hls_ingest,
+id,
+ingress_access_logs,
+tags
 ;
 ```
 </TabItem>
@@ -370,14 +370,14 @@ WHERE
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-CreatedAt,
-Description,
-EgressAccessLogs,
-HlsIngest,
-Id,
-IngressAccessLogs,
-Tags;
+arn,
+created_at,
+description,
+egress_access_logs,
+hls_ingest,
+id,
+ingress_access_logs,
+tags;
 ```
 </TabItem>
 </Tabs>

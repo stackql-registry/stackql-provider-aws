@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CpuCredits" /></td>
+    <td><CopyableCode code="cpu_credits" /></td>
     <td><code>string</code></td>
     <td>The credit option for CPU usage of the instance. Valid values: standard | unlimited</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
@@ -166,8 +166,8 @@ Describes the credit option for CPU usage of the specified burstable performance
 
 ```sql
 SELECT
-CpuCredits,
-InstanceId
+cpu_credits,
+instance_id
 FROM aws.ec2.instance_credit_specifications
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -203,8 +203,8 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND ClientToken = '{{ ClientToken}}'
 RETURNING
-SuccessfulInstanceCreditSpecifications,
-UnsuccessfulInstanceCreditSpecifications;
+successful_instance_credit_specifications,
+unsuccessful_instance_credit_specifications;
 ```
 </TabItem>
 </Tabs>

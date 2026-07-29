@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConformancePackArn" /></td>
+    <td><CopyableCode code="conformance_pack_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the conformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackId" /></td>
+    <td><CopyableCode code="conformance_pack_id" /></td>
     <td><code>string</code></td>
     <td>ID of the conformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackInputParameters" /></td>
+    <td><CopyableCode code="conformance_pack_input_parameters" /></td>
     <td><code>array</code></td>
     <td>A list of ConformancePackInputParameter objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackName" /></td>
+    <td><CopyableCode code="conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>Name of the conformance pack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service that created the conformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryS3Bucket" /></td>
+    <td><CopyableCode code="delivery_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket where Config stores conformance pack templates. This field is optional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryS3KeyPrefix" /></td>
+    <td><CopyableCode code="delivery_s3_key_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix for the Amazon S3 bucket. This field is optional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateRequestedTime" /></td>
+    <td><CopyableCode code="last_update_requested_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time a conformation pack update was requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateSSMDocumentDetails" /></td>
+    <td><CopyableCode code="template_ssm_document_details" /></td>
     <td><code>object</code></td>
     <td>An object that contains the name or Amazon Resource Name (ARN) of the Amazon Web Services Systems Manager document (SSM document) and the version of the SSM document that is used to create a conformance pack.</td>
 </tr>
@@ -173,15 +173,15 @@ Returns a list of one or more conformance packs.
 
 ```sql
 SELECT
-ConformancePackArn,
-ConformancePackId,
-ConformancePackInputParameters,
-ConformancePackName,
-CreatedBy,
-DeliveryS3Bucket,
-DeliveryS3KeyPrefix,
-LastUpdateRequestedTime,
-TemplateSSMDocumentDetails
+conformance_pack_arn,
+conformance_pack_id,
+conformance_pack_input_parameters,
+conformance_pack_name,
+created_by,
+delivery_s3_bucket,
+delivery_s3_key_prefix,
+last_update_requested_time,
+template_ssm_document_details
 FROM aws.config.conformance_packs
 WHERE region = '{{ region }}' -- required
 ;
@@ -217,7 +217,7 @@ WHERE
 region = '{{ region }}' --required
 AND ConformancePackName = '{{ ConformancePackName }}' --required
 RETURNING
-ConformancePackArn;
+conformance_pack_arn;
 ```
 </TabItem>
 </Tabs>

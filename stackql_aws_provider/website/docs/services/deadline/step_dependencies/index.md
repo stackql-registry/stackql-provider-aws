@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The step dependency status. (RESOLVED, UNRESOLVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepId" /></td>
+    <td><CopyableCode code="step_id" /></td>
     <td><code>string</code></td>
     <td>The step ID. (pattern: &lt;code&gt;step-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -155,7 +155,7 @@ Lists the dependencies for a step.
 ```sql
 SELECT
 status,
-stepId
+step_id
 FROM aws.deadline.step_dependencies
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required

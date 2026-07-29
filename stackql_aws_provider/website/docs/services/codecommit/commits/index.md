@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalData" /></td>
+    <td><CopyableCode code="additional_data" /></td>
     <td><code>string</code></td>
     <td>Any other data associated with the specified commit.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the author of the specified commit. Information includes the date in timestamp format with GMT offset, the name of the author, and the email address for the author, as configured in Git.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitId" /></td>
+    <td><CopyableCode code="commit_id" /></td>
     <td><code>string</code></td>
     <td>The full SHA ID of the specified commit.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of parent commits for the specified commit. Each parent commit ID is the full commit ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="treeId" /></td>
+    <td><CopyableCode code="tree_id" /></td>
     <td><code>string</code></td>
     <td>Tree information for the specified commit.</td>
 </tr>
@@ -202,13 +202,13 @@ Returns information about a commit, including commit message and committer infor
 
 ```sql
 SELECT
-additionalData,
+additional_data,
 author,
-commitId,
+commit_id,
 committer,
 message,
 parents,
-treeId
+tree_id
 FROM aws.codecommit.commits
 WHERE region = '{{ region }}' -- required
 ;
@@ -257,11 +257,11 @@ SELECT
 '{{ setFileModes }}',
 '{{ region }}'
 RETURNING
-commitId,
-filesAdded,
-filesDeleted,
-filesUpdated,
-treeId
+commit_id,
+files_added,
+files_deleted,
+files_updated,
+tree_id
 ;
 ```
 </TabItem>

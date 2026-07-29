@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results. If response includes nextToken there are two possible scenarios: There are more segments so another call is required to get them. There are no more segments at this time, but more may be available later (real-time analysis is in progress) so the client should call the operation again to get new segments. If response does not include nextToken, the analysis is completed (successfully or failed) and there are no more segments to retrieve. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Segments" /></td>
+    <td><CopyableCode code="segments" /></td>
     <td><code>array</code></td>
     <td>An analyzed transcript or category.</td>
 </tr>
@@ -124,8 +124,8 @@ Provides a list of analysis segments for a real-time analysis session.
 
 ```sql
 SELECT
-NextToken,
-Segments
+next_token,
+segments
 FROM aws.connect_contact_lens.realtime_contact_analysis_segments
 WHERE region = '{{ region }}' -- required
 ;

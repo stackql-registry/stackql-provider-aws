@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GeoMatchConstraints" /></td>
+    <td><CopyableCode code="geo_match_constraints" /></td>
     <td><code>array</code></td>
     <td>An array of GeoMatchConstraint objects, which contain the country that you want AWS WAF to search for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeoMatchSetId" /></td>
+    <td><CopyableCode code="geo_match_set_id" /></td>
     <td><code>string</code></td>
     <td>The GeoMatchSetId for an GeoMatchSet. You use GeoMatchSetId to get information about a GeoMatchSet (see GeoMatchSet), update a GeoMatchSet (see UpdateGeoMatchSet), insert a GeoMatchSet into a Rule or delete one from a Rule (see UpdateRule), and delete a GeoMatchSet from AWS WAF (see DeleteGeoMatchSet). GeoMatchSetId is returned by CreateGeoMatchSet and by ListGeoMatchSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the GeoMatchSet. You can't change the name of an GeoMatchSet after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GeoMatchSetId" /></td>
+    <td><CopyableCode code="geo_match_set_id" /></td>
     <td><code>string</code></td>
     <td>The GeoMatchSetId for an GeoMatchSet. You can use GeoMatchSetId in a GetGeoMatchSet request to get detailed information about an GeoMatchSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the GeoMatchSet. You can't change the name of an GeoMatchSet after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -183,9 +183,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-GeoMatchConstraints,
-GeoMatchSetId,
-Name
+geo_match_constraints,
+geo_match_set_id,
+name
 FROM aws.waf.geo_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-GeoMatchSetId,
-Name
+geo_match_set_id,
+name
 FROM aws.waf.geo_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,8 +231,8 @@ SELECT
 '{{ ChangeToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ChangeToken,
-GeoMatchSet
+change_token,
+geo_match_set
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ AND GeoMatchSetId = '{{ GeoMatchSetId }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 AND Updates = '{{ Updates }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

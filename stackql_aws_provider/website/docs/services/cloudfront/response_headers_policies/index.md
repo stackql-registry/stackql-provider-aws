@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the response headers policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the response headers policy was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseHeadersPolicyConfig" /></td>
+    <td><CopyableCode code="response_headers_policy_config" /></td>
     <td><code>string</code></td>
     <td>A response headers policy configuration.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>The response headers policies in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of response headers policies requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more items in the list than are in this response, this element is present. It contains the value that you should use in the Marker field of a subsequent request to continue listing response headers policies where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of response headers policies returned.</td>
 </tr>
@@ -218,9 +218,9 @@ Gets a response headers policy, including metadata (the policy's identifier and 
 
 ```sql
 SELECT
-Id,
-LastModifiedTime,
-ResponseHeadersPolicyConfig
+id,
+last_modified_time,
+response_headers_policy_config
 FROM aws.cloudfront.response_headers_policies
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -233,10 +233,10 @@ Gets a list of response headers policies. You can optionally apply a filter to g
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.response_headers_policies
 WHERE region = '{{ region }}' -- required
 AND Type = '{{ Type }}'
@@ -270,9 +270,9 @@ SELECT
 '{{ ResponseHeadersPolicyConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-Id,
-LastModifiedTime,
-ResponseHeadersPolicyConfig
+id,
+last_modified_time,
+response_headers_policy_config
 ;
 ```
 </TabItem>
@@ -373,9 +373,9 @@ AND region = '{{ region }}' --required
 AND ResponseHeadersPolicyConfig = '{{ ResponseHeadersPolicyConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-Id,
-LastModifiedTime,
-ResponseHeadersPolicyConfig;
+id,
+last_modified_time,
+response_headers_policy_config;
 ```
 </TabItem>
 </Tabs>

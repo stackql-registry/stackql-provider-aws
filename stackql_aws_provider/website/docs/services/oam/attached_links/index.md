@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>The label that was assigned to this link at creation, with the variables resolved to their actual values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkArn" /></td>
+    <td><CopyableCode code="link_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTypes" /></td>
+    <td><CopyableCode code="resource_types" /></td>
     <td><code>array</code></td>
     <td>The resource types supported by this link.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a list of source account links that are linked to this monitoring accoun
 
 ```sql
 SELECT
-Label,
-LinkArn,
-ResourceTypes
+label,
+link_arn,
+resource_types
 FROM aws.oam.attached_links
 WHERE region = '{{ region }}' -- required
 ;

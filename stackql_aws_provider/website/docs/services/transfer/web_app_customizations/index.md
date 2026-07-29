@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Returns the Amazon Resource Name (ARN) for the web app. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FaviconFile" /></td>
+    <td><CopyableCode code="favicon_file" /></td>
     <td><code>string (byte)</code></td>
     <td>Returns an icon file data string (in base64 encoding).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogoFile" /></td>
+    <td><CopyableCode code="logo_file" /></td>
     <td><code>string (byte)</code></td>
     <td>Returns a logo file data string (in base64 encoding).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>Returns the page title that you defined for your web app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAppId" /></td>
+    <td><CopyableCode code="web_app_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique identifier for your web app. (pattern: &lt;code&gt;webapp-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -153,11 +153,11 @@ Describes the web app customization object that's identified by WebAppId.
 
 ```sql
 SELECT
-Arn,
-FaviconFile,
-LogoFile,
-Title,
-WebAppId
+arn,
+favicon_file,
+logo_file,
+title,
+web_app_id
 FROM aws.transfer.web_app_customizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -189,7 +189,7 @@ WHERE
 region = '{{ region }}' --required
 AND WebAppId = '{{ WebAppId }}' --required
 RETURNING
-WebAppId;
+web_app_id;
 ```
 </TabItem>
 </Tabs>

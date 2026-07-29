@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientIDList" /></td>
+    <td><CopyableCode code="client_id_list" /></td>
     <td><code>string</code></td>
     <td>A list of client IDs (also known as audiences) that are associated with the specified IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the IAM OIDC provider resource object was created in the Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the specified IAM OIDC provider. The returned list of tags is sorted by tag key. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThumbprintList" /></td>
+    <td><CopyableCode code="thumbprint_list" /></td>
     <td><code>string</code></td>
     <td>A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The URL that the IAM OIDC provider resource object is associated with. For more information, see CreateOpenIDConnectProvider.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. For more information about ARNs, go to Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
 </tr>
@@ -237,11 +237,11 @@ Returns information about the specified OpenID Connect (OIDC) provider resource 
 
 ```sql
 SELECT
-ClientIDList,
-CreateDate,
-Tags,
-ThumbprintList,
-Url
+client_id_list,
+create_date,
+tags,
+thumbprint_list,
+url
 FROM aws.iam.open_id_connect_providers
 WHERE OpenIDConnectProviderArn = '{{ OpenIDConnectProviderArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -254,7 +254,7 @@ Lists information about the IAM OpenID Connect (OIDC) provider resource objects 
 
 ```sql
 SELECT
-Arn
+arn
 FROM aws.iam.open_id_connect_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,8 +291,8 @@ SELECT
 '{{ ThumbprintList }}',
 '{{ Tags }}'
 RETURNING
-OpenIDConnectProviderArn,
-Tags
+open_id_connect_provider_arn,
+tags
 ;
 ```
 </TabItem>

@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the requested builds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildsNotFound" /></td>
+    <td><CopyableCode code="builds_not_found" /></td>
     <td><code>array</code></td>
     <td>The IDs of builds for which information could not be found.</td>
 </tr>
@@ -174,7 +174,7 @@ Gets information about one or more builds.
 ```sql
 SELECT
 builds,
-buildsNotFound
+builds_not_found
 FROM aws.codebuild.builds
 WHERE region = '{{ region }}' -- required
 ;

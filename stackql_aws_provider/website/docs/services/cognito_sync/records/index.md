@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>Total number of records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetDeletedAfterRequestedSyncCount" /></td>
+    <td><CopyableCode code="dataset_deleted_after_requested_sync_count" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value specifying whether to delete the dataset locally.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetExists" /></td>
+    <td><CopyableCode code="dataset_exists" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the dataset exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetSyncCount" /></td>
+    <td><CopyableCode code="dataset_sync_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Server sync count for this dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The user/device that made the last change to this record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MergedDatasetNames" /></td>
+    <td><CopyableCode code="merged_dataset_names" /></td>
     <td><code>array</code></td>
     <td>Names of merged datasets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token for obtaining the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Records" /></td>
+    <td><CopyableCode code="records" /></td>
     <td><code>array</code></td>
     <td>A list of all records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncSessionToken" /></td>
+    <td><CopyableCode code="sync_session_token" /></td>
     <td><code>string</code></td>
     <td>A token containing a session ID, identity ID, and expiration.</td>
 </tr>
@@ -206,15 +206,15 @@ Gets paginated records, optionally changed after a particular sync count for a d
 
 ```sql
 SELECT
-Count,
-DatasetDeletedAfterRequestedSyncCount,
-DatasetExists,
-DatasetSyncCount,
-LastModifiedBy,
-MergedDatasetNames,
-NextToken,
-Records,
-SyncSessionToken
+count,
+dataset_deleted_after_requested_sync_count,
+dataset_exists,
+dataset_sync_count,
+last_modified_by,
+merged_dataset_names,
+next_token,
+records,
+sync_session_token
 FROM aws.cognito_sync.records
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND identity_id = '{{ identity_id }}' -- required
@@ -256,7 +256,7 @@ AND region = '{{ region }}' --required
 AND SyncSessionToken = '{{ SyncSessionToken }}' --required
 AND `x-amz-Client-Context` = '{{ x-amz-Client-Context}}'
 RETURNING
-Records;
+records;
 ```
 </TabItem>
 </Tabs>

@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the registry record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_\-\.\/&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry record was created.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the registry record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="descriptorType" /></td>
+    <td><CopyableCode code="descriptor_type" /></td>
     <td><code>string</code></td>
     <td>The descriptor type of the registry record. Possible values are MCP, A2A, CUSTOM, and AGENT_SKILLS. (MCP, A2A, CUSTOM, AGENT_SKILLS)</td>
 </tr>
@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>Contains descriptor-type-specific configurations for a registry record. Only the descriptor matching the record's descriptorType should be populated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordArn" /></td>
+    <td><CopyableCode code="record_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;/record/&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordId" /></td>
+    <td><CopyableCode code="record_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the registry record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordVersion" /></td>
+    <td><CopyableCode code="record_version" /></td>
     <td><code>string</code></td>
     <td>The version of the registry record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry that contains the record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -101,22 +101,22 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the registry record. Possible values include CREATING, DRAFT, APPROVED, PENDING_APPROVAL, REJECTED, DEPRECATED, UPDATING, CREATE_FAILED, and UPDATE_FAILED. A record transitions from CREATING to DRAFT, then to PENDING_APPROVAL (via SubmitRegistryRecordForApproval), and finally to APPROVED upon approval. (DRAFT, PENDING_APPROVAL, APPROVED, REJECTED, DEPRECATED, CREATING, UPDATING, CREATE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status, typically set when the status is a failure state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="synchronizationConfiguration" /></td>
+    <td><CopyableCode code="synchronization_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for synchronizing registry record metadata from an external source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="synchronizationType" /></td>
+    <td><CopyableCode code="synchronization_type" /></td>
     <td><code>string</code></td>
     <td>The type of synchronization used for this record. (URL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry record was last updated.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the registry record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_\-\.\/&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry record was created.</td>
 </tr>
@@ -150,27 +150,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the registry record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="descriptorType" /></td>
+    <td><CopyableCode code="descriptor_type" /></td>
     <td><code>string</code></td>
     <td>The descriptor type of the registry record. Possible values are MCP, A2A, CUSTOM, and AGENT_SKILLS. (MCP, A2A, CUSTOM, AGENT_SKILLS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordArn" /></td>
+    <td><CopyableCode code="record_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;/record/&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordId" /></td>
+    <td><CopyableCode code="record_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the registry record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordVersion" /></td>
+    <td><CopyableCode code="record_version" /></td>
     <td><code>string</code></td>
     <td>The version of the registry record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry that contains the record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the registry record. Possible values include CREATING, DRAFT, APPROVED, PENDING_APPROVAL, REJECTED, DEPRECATED, UPDATING, CREATE_FAILED, and UPDATE_FAILED. (DRAFT, PENDING_APPROVAL, APPROVED, REJECTED, DEPRECATED, CREATING, UPDATING, CREATE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry record was last updated.</td>
 </tr>
@@ -328,19 +328,19 @@ Retrieves information about a specific registry record.
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-descriptorType,
+descriptor_type,
 descriptors,
-recordArn,
-recordId,
-recordVersion,
-registryArn,
+record_arn,
+record_id,
+record_version,
+registry_arn,
 status,
-statusReason,
-synchronizationConfiguration,
-synchronizationType,
-updatedAt
+status_reason,
+synchronization_configuration,
+synchronization_type,
+updated_at
 FROM aws.bedrock_agentcore_control.registry_records
 WHERE registry_id = '{{ registry_id }}' -- required
 AND record_id = '{{ record_id }}' -- required
@@ -355,15 +355,15 @@ Lists registry records within a registry. You can optionally filter results usin
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-descriptorType,
-recordArn,
-recordId,
-recordVersion,
-registryArn,
+descriptor_type,
+record_arn,
+record_id,
+record_version,
+registry_arn,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.registry_records
 WHERE registry_id = '{{ registry_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -416,7 +416,7 @@ SELECT
 '{{ registry_id }}',
 '{{ region }}'
 RETURNING
-recordArn,
+record_arn,
 status
 ;
 ```
@@ -518,12 +518,12 @@ AND region = '{{ region }}' --required
 AND status = '{{ status }}' --required
 AND statusReason = '{{ statusReason }}' --required
 RETURNING
-recordArn,
-recordId,
-registryArn,
+record_arn,
+record_id,
+registry_arn,
 status,
-statusReason,
-updatedAt;
+status_reason,
+updated_at;
 ```
 </TabItem>
 <TabItem value="update_registry_record">
@@ -547,19 +547,19 @@ AND record_id = '{{ record_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
-createdAt,
+created_at,
 description,
-descriptorType,
+descriptor_type,
 descriptors,
-recordArn,
-recordId,
-recordVersion,
-registryArn,
+record_arn,
+record_id,
+record_version,
+registry_arn,
 status,
-statusReason,
-synchronizationConfiguration,
-synchronizationType,
-updatedAt;
+status_reason,
+synchronization_configuration,
+synchronization_type,
+updated_at;
 ```
 </TabItem>
 </Tabs>

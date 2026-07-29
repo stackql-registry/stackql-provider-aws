@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the new resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationName" /></td>
+    <td><CopyableCode code="destination_name" /></td>
     <td><code>string</code></td>
     <td>The name of the destination to which the device is assigned. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the wireless device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoRaWAN" /></td>
+    <td><CopyableCode code="lo_ra_wan" /></td>
     <td><code>object</code></td>
     <td>LoRaWAN object for create functions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Positioning" /></td>
+    <td><CopyableCode code="positioning" /></td>
     <td><code>string</code></td>
     <td>The integration status of the Device Location feature for LoRaWAN and Sidewalk devices. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sidewalk" /></td>
+    <td><CopyableCode code="sidewalk" /></td>
     <td><code>object</code></td>
     <td>Sidewalk device object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThingArn" /></td>
+    <td><CopyableCode code="thing_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the thing associated with the wireless device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing associated with the wireless device. The value is empty if a thing isn't associated with the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The wireless device type. (Sidewalk, LoRaWAN)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessDeviceList" /></td>
+    <td><CopyableCode code="wireless_device_list" /></td>
     <td><code>array</code></td>
     <td>The ID of the wireless device.</td>
 </tr>
@@ -311,17 +311,17 @@ Gets information about a wireless device.
 
 ```sql
 SELECT
-Arn,
-Description,
-DestinationName,
-Id,
-LoRaWAN,
-Name,
-Positioning,
-Sidewalk,
-ThingArn,
-ThingName,
-Type
+arn,
+description,
+destination_name,
+id,
+lo_ra_wan,
+name,
+positioning,
+sidewalk,
+thing_arn,
+thing_name,
+type
 FROM aws.iotwireless.wireless_devices
 WHERE identifier = '{{ identifier }}' -- required
 AND identifierType = '{{ identifierType }}' -- required
@@ -335,8 +335,8 @@ Lists the wireless devices registered to your AWS account.
 
 ```sql
 SELECT
-NextToken,
-WirelessDeviceList
+next_token,
+wireless_device_list
 FROM aws.iotwireless.wireless_devices
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -391,8 +391,8 @@ SELECT
 '{{ Sidewalk }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

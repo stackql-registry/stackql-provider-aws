@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountStatus" /></td>
+    <td><CopyableCode code="account_status" /></td>
     <td><code>string</code></td>
     <td>The current status of your Deliverability dashboard subscription. If this value is PENDING_EXPIRATION, your subscription is scheduled to expire at the end of the current calendar month. (ACTIVE, PENDING_EXPIRATION, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActiveSubscribedDomains" /></td>
+    <td><CopyableCode code="active_subscribed_domains" /></td>
     <td><code>array</code></td>
     <td>An array of objects, one for each verified domain that you use to send email and currently has an active Deliverability dashboard subscription that isn’t scheduled to expire at the end of the current calendar month.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardEnabled" /></td>
+    <td><CopyableCode code="dashboard_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the Deliverability dashboard is enabled for your Amazon Pinpoint account. If this value is true, the dashboard is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingExpirationSubscribedDomains" /></td>
+    <td><CopyableCode code="pending_expiration_subscribed_domains" /></td>
     <td><code>array</code></td>
     <td>An array of objects, one for each verified domain that you use to send email and currently has an active Deliverability dashboard subscription that's scheduled to expire at the end of the current calendar month.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionExpiryDate" /></td>
+    <td><CopyableCode code="subscription_expiry_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date, in Unix time format, when your current subscription to the Deliverability dashboard is scheduled to expire, if your subscription is scheduled to expire at the end of the current calendar month. This value is null if you have an active subscription that isn’t due to expire at the end of the month.</td>
 </tr>
@@ -146,11 +146,11 @@ Retrieve information about the status of the Deliverability dashboard for your A
 
 ```sql
 SELECT
-AccountStatus,
-ActiveSubscribedDomains,
-DashboardEnabled,
-PendingExpirationSubscribedDomains,
-SubscriptionExpiryDate
+account_status,
+active_subscribed_domains,
+dashboard_enabled,
+pending_expiration_subscribed_domains,
+subscription_expiry_date
 FROM aws.pinpoint_email.deliverability_dashboard_options
 WHERE region = '{{ region }}' -- required
 ;

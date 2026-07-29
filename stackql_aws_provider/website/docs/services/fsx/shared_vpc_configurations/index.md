@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EnableFsxRouteTableUpdatesFromParticipantAccounts" /></td>
+    <td><CopyableCode code="enable_fsx_route_table_updates_from_participant_accounts" /></td>
     <td><code>string</code></td>
     <td>Indicates whether participant accounts can create FSx for ONTAP Multi-AZ file systems in shared subnets. (pattern: &lt;code&gt;^(?i)(true|false)$&lt;/code&gt;)</td>
 </tr>
@@ -126,7 +126,7 @@ Indicates whether participant accounts in your organization can create Amazon FS
 
 ```sql
 SELECT
-EnableFsxRouteTableUpdatesFromParticipantAccounts
+enable_fsx_route_table_updates_from_participant_accounts
 FROM aws.fsx.shared_vpc_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -155,7 +155,7 @@ ClientRequestToken = '{{ ClientRequestToken }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-EnableFsxRouteTableUpdatesFromParticipantAccounts;
+enable_fsx_route_table_updates_from_participant_accounts;
 ```
 </TabItem>
 </Tabs>

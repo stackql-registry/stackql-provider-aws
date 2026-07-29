@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudWatchDestination" /></td>
+    <td><CopyableCode code="cloud_watch_destination" /></td>
     <td><code>string</code></td>
     <td>An object that contains the names, default values, and sources of the dimensions associated with an Amazon CloudWatch event destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Sets whether Amazon SES publishes events to this destination when you send an email with the associated configuration set. Set to true to enable publishing to this destination; set to false to prevent publishing to this destination. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisFirehoseDestination" /></td>
+    <td><CopyableCode code="kinesis_firehose_destination" /></td>
     <td><code>string</code></td>
     <td>An object that contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchingEventTypes" /></td>
+    <td><CopyableCode code="matching_event_types" /></td>
     <td><code>string</code></td>
     <td>The type of email sending events to publish to the event destination. send - The call was successful and Amazon SES is attempting to deliver the email. reject - Amazon SES determined that the email contained a virus and rejected it. bounce - The recipient's mail server permanently rejected the email. This corresponds to a hard bounce. complaint - The recipient marked the email as spam. delivery - Amazon SES successfully delivered the email to the recipient's mail server. open - The recipient received the email and opened it in their email client. click - The recipient clicked one or more links in the email. renderingFailure - Amazon SES did not send the email because of a template rendering issue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event destination. The name must meet the following requirements: Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). Contain 64 characters or fewer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SNSDestination" /></td>
+    <td><CopyableCode code="sns_destination" /></td>
     <td><code>string</code></td>
     <td>An object that contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration set. The name must meet the following requirements: Contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). Contain 64 characters or fewer.</td>
 </tr>
@@ -299,12 +299,12 @@ Returns the details of the specified configuration set. For information about us
 
 ```sql
 SELECT
-CloudWatchDestination,
-Enabled,
-KinesisFirehoseDestination,
-MatchingEventTypes,
-Name,
-SNSDestination
+cloud_watch_destination,
+enabled,
+kinesis_firehose_destination,
+matching_event_types,
+name,
+sns_destination
 FROM aws.ses.configuration_sets
 WHERE ConfigurationSetName = '{{ ConfigurationSetName }}' -- required
 AND region = '{{ region }}' -- required
@@ -318,7 +318,7 @@ Provides a list of the configuration sets associated with your Amazon SES accoun
 
 ```sql
 SELECT
-Name
+name
 FROM aws.ses.configuration_sets
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

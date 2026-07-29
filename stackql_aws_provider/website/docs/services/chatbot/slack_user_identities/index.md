@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsUserIdentity" /></td>
+    <td><CopyableCode code="aws_user_identity" /></td>
     <td><code>string</code></td>
     <td>The AWS user identity ARN used to associate a Slack user ID with an IAM Role. (pattern: &lt;code&gt;arn:aws:(iam|sts)::&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChatConfigurationArn" /></td>
+    <td><CopyableCode code="chat_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the SlackChannelConfiguration associated with the user identity to delete. (pattern: &lt;code&gt;arn:aws:(wheatley|chatbot):&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>A user-defined role that AWS Chatbot assumes. This is not the service-linked role. For more information, see IAM policies for AWS Chatbot in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlackTeamId" /></td>
+    <td><CopyableCode code="slack_team_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Slack workspace authorized with AWS Chatbot. (pattern: &lt;code&gt;&#91;0-9A-Z&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlackUserId" /></td>
+    <td><CopyableCode code="slack_user_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user in Slack (pattern: &lt;code&gt;(.*)&lt;/code&gt;)</td>
 </tr>
@@ -146,11 +146,11 @@ Lists all Slack user identities with a mapped role.
 
 ```sql
 SELECT
-AwsUserIdentity,
-ChatConfigurationArn,
-IamRoleArn,
-SlackTeamId,
-SlackUserId
+aws_user_identity,
+chat_configuration_arn,
+iam_role_arn,
+slack_team_id,
+slack_user_id
 FROM aws.chatbot.slack_user_identities
 WHERE region = '{{ region }}' -- required
 ;

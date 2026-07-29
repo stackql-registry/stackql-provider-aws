@@ -60,62 +60,62 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportS3Object" /></td>
+    <td><CopyableCode code="antipattern_report_s3_object" /></td>
     <td><code>object</code></td>
     <td>Contains the S3 bucket name and the Amazon S3 key name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportStatus" /></td>
+    <td><CopyableCode code="antipattern_report_status" /></td>
     <td><code>string</code></td>
     <td>The status of the anti-pattern report generation. (FAILED, IN_PROGRESS, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportStatusMessage" /></td>
+    <td><CopyableCode code="antipattern_report_status_message" /></td>
     <td><code>string</code></td>
     <td>A message about the status of the anti-pattern report generation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationComponentStrategySummary" /></td>
+    <td><CopyableCode code="application_component_strategy_summary" /></td>
     <td><code>array</code></td>
     <td>A list of strategy summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataCollectionStatus" /></td>
+    <td><CopyableCode code="data_collection_status" /></td>
     <td><code>string</code></td>
     <td>The status of assessment for the server. (dataCollectionTaskToBeScheduled, dataCollectionTaskScheduled, dataCollectionTaskStarted, dataCollectionTaskStopped, dataCollectionTaskSuccess, dataCollectionTaskFailed, dataCollectionTaskPartialSuccess)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAnalyzedTimestamp" /></td>
+    <td><CopyableCode code="last_analyzed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the server was assessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listAntipatternSeveritySummary" /></td>
+    <td><CopyableCode code="list_antipattern_severity_summary" /></td>
     <td><code>array</code></td>
     <td>A list of anti-pattern severity summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationSet" /></td>
+    <td><CopyableCode code="recommendation_set" /></td>
     <td><code>object</code></td>
     <td>A set of recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverError" /></td>
+    <td><CopyableCode code="server_error" /></td>
     <td><code>object</code></td>
     <td>The error in server analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverType" /></td>
+    <td><CopyableCode code="server_type" /></td>
     <td><code>string</code></td>
     <td>The type of server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message about the status of data collection, which contains detailed descriptions of any error messages. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="systemInfo" /></td>
+    <td><CopyableCode code="system_info" /></td>
     <td><code>object</code></td>
     <td>System information about the server.</td>
 </tr>
@@ -193,18 +193,18 @@ Returns a list of all the servers.
 SELECT
 id,
 name,
-antipatternReportS3Object,
-antipatternReportStatus,
-antipatternReportStatusMessage,
-applicationComponentStrategySummary,
-dataCollectionStatus,
-lastAnalyzedTimestamp,
-listAntipatternSeveritySummary,
-recommendationSet,
-serverError,
-serverType,
-statusMessage,
-systemInfo
+antipattern_report_s3_object,
+antipattern_report_status,
+antipattern_report_status_message,
+application_component_strategy_summary,
+data_collection_status,
+last_analyzed_timestamp,
+list_antipattern_severity_summary,
+recommendation_set,
+server_error,
+server_type,
+status_message,
+system_info
 FROM aws.migrationhubstrategy.servers
 WHERE region = '{{ region }}' -- required
 ;

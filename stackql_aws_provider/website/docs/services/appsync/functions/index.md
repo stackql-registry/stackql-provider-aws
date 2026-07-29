@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceName" /></td>
+    <td><CopyableCode code="data_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the DataSource. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Function description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Function object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionId" /></td>
+    <td><CopyableCode code="function_id" /></td>
     <td><code>string</code></td>
     <td>A unique ID representing the Function object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionVersion" /></td>
+    <td><CopyableCode code="function_version" /></td>
     <td><code>string</code></td>
     <td>The version of the request mapping template. Currently, only the 2018-05-29 version of the template is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxBatchSize" /></td>
+    <td><CopyableCode code="max_batch_size" /></td>
     <td><code>integer</code></td>
     <td>The maximum batching size for a resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestMappingTemplate" /></td>
+    <td><CopyableCode code="request_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseMappingTemplate" /></td>
+    <td><CopyableCode code="response_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The Function response mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes a runtime used by an Amazon Web Services AppSync pipeline resolver or Amazon Web Services AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncConfig" /></td>
+    <td><CopyableCode code="sync_config" /></td>
     <td><code>object</code></td>
     <td>Describes a Sync configuration for a resolver. Specifies which Conflict Detection strategy and Resolution strategy to use when the resolver is invoked.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceName" /></td>
+    <td><CopyableCode code="data_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the DataSource. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -145,32 +145,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Function description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Function object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionId" /></td>
+    <td><CopyableCode code="function_id" /></td>
     <td><code>string</code></td>
     <td>A unique ID representing the Function object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionVersion" /></td>
+    <td><CopyableCode code="function_version" /></td>
     <td><code>string</code></td>
     <td>The version of the request mapping template. Currently, only the 2018-05-29 version of the template is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxBatchSize" /></td>
+    <td><CopyableCode code="max_batch_size" /></td>
     <td><code>integer</code></td>
     <td>The maximum batching size for a resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestMappingTemplate" /></td>
+    <td><CopyableCode code="request_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseMappingTemplate" /></td>
+    <td><CopyableCode code="response_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The Function response mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes a runtime used by an Amazon Web Services AppSync pipeline resolver or Amazon Web Services AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncConfig" /></td>
+    <td><CopyableCode code="sync_config" /></td>
     <td><code>object</code></td>
     <td>Describes a Sync configuration for a resolver. Specifies which Conflict Detection strategy and Resolution strategy to use when the resolver is invoked.</td>
 </tr>
@@ -300,16 +300,16 @@ Get a Function.
 SELECT
 name,
 code,
-dataSourceName,
+data_source_name,
 description,
-functionArn,
-functionId,
-functionVersion,
-maxBatchSize,
-requestMappingTemplate,
-responseMappingTemplate,
+function_arn,
+function_id,
+function_version,
+max_batch_size,
+request_mapping_template,
+response_mapping_template,
 runtime,
-syncConfig
+sync_config
 FROM aws.appsync.functions
 WHERE api_id = '{{ api_id }}' -- required
 AND function_id = '{{ function_id }}' -- required
@@ -325,16 +325,16 @@ List multiple functions.
 SELECT
 name,
 code,
-dataSourceName,
+data_source_name,
 description,
-functionArn,
-functionId,
-functionVersion,
-maxBatchSize,
-requestMappingTemplate,
-responseMappingTemplate,
+function_arn,
+function_id,
+function_version,
+max_batch_size,
+request_mapping_template,
+response_mapping_template,
 runtime,
-syncConfig
+sync_config
 FROM aws.appsync.functions
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -388,7 +388,7 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-functionConfiguration
+function_configuration
 ;
 ```
 </TabItem>
@@ -471,7 +471,7 @@ AND region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 AND dataSourceName = '{{ dataSourceName }}' --required
 RETURNING
-functionConfiguration;
+function_configuration;
 ```
 </TabItem>
 </Tabs>

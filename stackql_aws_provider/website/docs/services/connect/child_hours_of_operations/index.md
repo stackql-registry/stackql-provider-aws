@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the hours of operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the hours of operation</td>
 </tr>
@@ -149,9 +149,9 @@ Provides information about the child hours of operations for the specified paren
 
 ```sql
 SELECT
-Arn,
-Id,
-Name
+arn,
+id,
+name
 FROM aws.connect.child_hours_of_operations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND hours_of_operation_id = '{{ hours_of_operation_id }}' -- required

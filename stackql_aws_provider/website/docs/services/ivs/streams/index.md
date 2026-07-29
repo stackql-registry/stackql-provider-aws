@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="channelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>Channel ARN for the stream. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:channel/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The stream’s health. (HEALTHY, STARVING, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="playbackUrl" /></td>
+    <td><CopyableCode code="playback_url" /></td>
     <td><code>string</code></td>
     <td>URL of the master playlist, required by the video player to play the HLS stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time of the stream’s start. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The stream’s state. Do not rely on the OFFLINE state, as the API may not return it; instead, a "NotBroadcasting" error will indicate that the stream is not live. (LIVE, OFFLINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamId" /></td>
+    <td><CopyableCode code="stream_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a live or previously live stream in the specified channel. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="viewerCount" /></td>
+    <td><CopyableCode code="viewer_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>A count of concurrent views of the stream. Typically, a new view appears in viewerCount within 15 seconds of when video playback starts and a view is removed from viewerCount within 1 minute of when video playback ends. A value of -1 indicates that the request timed out; in this case, retry.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="channelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>Channel ARN for the stream. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:channel/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The stream’s health. (HEALTHY, STARVING, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time of the stream’s start. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The stream’s state. Do not rely on the OFFLINE state, as the API may not return it; instead, a "NotBroadcasting" error will indicate that the stream is not live. (LIVE, OFFLINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamId" /></td>
+    <td><CopyableCode code="stream_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a live or previously live stream in the specified channel. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="viewerCount" /></td>
+    <td><CopyableCode code="viewer_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>A count of concurrent views of the stream. Typically, a new view appears in viewerCount within 15 seconds of when video playback starts and a view is removed from viewerCount within 1 minute of when video playback ends. A value of -1 indicates that the request timed out; in this case, retry.</td>
 </tr>
@@ -202,13 +202,13 @@ Gets information about the active (live) stream on a specified channel.
 
 ```sql
 SELECT
-channelArn,
+channel_arn,
 health,
-playbackUrl,
-startTime,
+playback_url,
+start_time,
 state,
-streamId,
-viewerCount
+stream_id,
+viewer_count
 FROM aws.ivs.streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,12 +220,12 @@ Gets summary information about live streams in your account, in the Amazon Web S
 
 ```sql
 SELECT
-channelArn,
+channel_arn,
 health,
-startTime,
+start_time,
 state,
-streamId,
-viewerCount
+stream_id,
+viewer_count
 FROM aws.ivs.streams
 WHERE region = '{{ region }}' -- required
 ;

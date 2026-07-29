@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the access log subscription (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:accesslogsubscription/als-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the access log subscription was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the destination. (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:(&#91;^/&#93;.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the access log subscription was last updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service or service network. (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:((servicenetwork/sn)|(service/svc)|(resourceconfiguration/rcfg))-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service or service network. (pattern: &lt;code&gt;((sn)|(svc))-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkLogType" /></td>
+    <td><CopyableCode code="service_network_log_type" /></td>
     <td><code>string</code></td>
     <td>Log type of the service network. (SERVICE, RESOURCE)</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the access log subscription. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:accesslogsubscription/als-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the access log subscription was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the access log destination. (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:(&#91;^/&#93;.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the access log subscription was last updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network or service. (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:((servicenetwork/sn)|(service/svc)|(resourceconfiguration/rcfg))-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service network or service. (pattern: &lt;code&gt;((sn)|(svc))-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkLogType" /></td>
+    <td><CopyableCode code="service_network_log_type" /></td>
     <td><code>string</code></td>
     <td>The log type for the service network. (SERVICE, RESOURCE)</td>
 </tr>
@@ -260,12 +260,12 @@ Lists the access log subscriptions for the specified service network or service.
 SELECT
 id,
 arn,
-createdAt,
-destinationArn,
-lastUpdatedAt,
-resourceArn,
-resourceId,
-serviceNetworkLogType
+created_at,
+destination_arn,
+last_updated_at,
+resource_arn,
+resource_id,
+service_network_log_type
 FROM aws.vpc_lattice.access_log_subscriptions
 WHERE resourceIdentifier = '{{ resourceIdentifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -282,12 +282,12 @@ Retrieves information about the specified access log subscription.
 SELECT
 id,
 arn,
-createdAt,
-destinationArn,
-lastUpdatedAt,
-resourceArn,
-resourceId,
-serviceNetworkLogType
+created_at,
+destination_arn,
+last_updated_at,
+resource_arn,
+resource_id,
+service_network_log_type
 FROM aws.vpc_lattice.access_log_subscriptions
 WHERE access_log_subscription_identifier = '{{ access_log_subscription_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -329,10 +329,10 @@ SELECT
 RETURNING
 id,
 arn,
-destinationArn,
-resourceArn,
-resourceId,
-serviceNetworkLogType
+destination_arn,
+resource_arn,
+resource_id,
+service_network_log_type
 ;
 ```
 </TabItem>
@@ -384,9 +384,9 @@ AND destinationArn = '{{ destinationArn }}' --required
 RETURNING
 id,
 arn,
-destinationArn,
-resourceArn,
-resourceId;
+destination_arn,
+resource_arn,
+resource_id;
 ```
 </TabItem>
 </Tabs>

@@ -51,182 +51,182 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AIMLOptions" /></td>
+    <td><CopyableCode code="aiml_options" /></td>
     <td><code>object</code></td>
     <td>Container for parameters required to enable all machine learning features.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the domain. See Identifiers for IAM Entities in Using Amazon Web Services Identity and Access Management for more information. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessPolicies" /></td>
+    <td><CopyableCode code="access_policies" /></td>
     <td><code>string</code></td>
     <td>Access policy rules for an Amazon OpenSearch Service domain endpoint. For more information, see Configuring access policies. The maximum size of a policy document is 100 KB. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdvancedOptions" /></td>
+    <td><CopyableCode code="advanced_options" /></td>
     <td><code>object</code></td>
     <td>Key-value pairs that specify advanced configuration options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdvancedSecurityOptions" /></td>
+    <td><CopyableCode code="advanced_security_options" /></td>
     <td><code>object</code></td>
     <td>Settings for fine-grained access control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoTuneOptions" /></td>
+    <td><CopyableCode code="auto_tune_options" /></td>
     <td><code>object</code></td>
     <td>Auto-Tune settings for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomatedSnapshotPauseOptions" /></td>
+    <td><CopyableCode code="automated_snapshot_pause_options" /></td>
     <td><code>object</code></td>
     <td>The current status of the domain's automated snapshot pause options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeProgressDetails" /></td>
+    <td><CopyableCode code="change_progress_details" /></td>
     <td><code>object</code></td>
     <td>Information about a configuration change happening on the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterConfig" /></td>
+    <td><CopyableCode code="cluster_config" /></td>
     <td><code>object</code></td>
     <td>Container for the cluster configuration of an OpenSearch Service domain. For more information, see Creating and managing Amazon OpenSearch Service domains.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CognitoOptions" /></td>
+    <td><CopyableCode code="cognito_options" /></td>
     <td><code>object</code></td>
     <td>Container for the parameters required to enable Cognito authentication for an OpenSearch Service domain. For more information, see Configuring Amazon Cognito authentication for OpenSearch Dashboards.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>boolean</code></td>
     <td>Creation status of an OpenSearch Service domain. True if domain creation is complete. False if domain creation is still in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Deleted" /></td>
+    <td><CopyableCode code="deleted" /></td>
     <td><code>boolean</code></td>
     <td>Deletion status of an OpenSearch Service domain. True if domain deletion is complete. False if domain deletion is still in progress. Once deletion is complete, the status of the domain is no longer returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStrategyOptions" /></td>
+    <td><CopyableCode code="deployment_strategy_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the deployment strategy options for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainEndpointOptions" /></td>
+    <td><CopyableCode code="domain_endpoint_options" /></td>
     <td><code>object</code></td>
     <td>Options to configure a custom endpoint for an OpenSearch Service domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainEndpointV2HostedZoneId" /></td>
+    <td><CopyableCode code="domain_endpoint_v2_hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The dual stack hosted zone ID for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of an OpenSearch Service domain. Domain names are unique across the domains owned by an account within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainProcessingStatus" /></td>
+    <td><CopyableCode code="domain_processing_status" /></td>
     <td><code>string</code></td>
     <td>The status of any changes that are currently in progress for the domain. (Creating, Active, Modifying, UpgradingEngineVersion, UpdatingServiceSoftware, Isolated, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EBSOptions" /></td>
+    <td><CopyableCode code="ebs_options" /></td>
     <td><code>object</code></td>
     <td>Container for the parameters required to enable EBS-based storage for an OpenSearch Service domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionAtRestOptions" /></td>
+    <td><CopyableCode code="encryption_at_rest_options" /></td>
     <td><code>object</code></td>
     <td>Specifies whether the domain should encrypt data at rest, and if so, the Key Management Service (KMS) key to use. Can only be used when creating a new domain or enabling encryption at rest for the first time on an existing domain. You can't modify this parameter after it's already been specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>Domain-specific endpoint used to submit index, search, and data upload requests to the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointV2" /></td>
+    <td><CopyableCode code="endpoint_v2" /></td>
     <td><code>string</code></td>
     <td>If IPAddressType to set to dualstack, a version 2 domain endpoint is provisioned. This endpoint functions like a normal endpoint, except that it works with both IPv4 and IPv6 IP addresses. Normal endpoints work only with IPv4 IP addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>object</code></td>
     <td>The key-value pair that exists if the OpenSearch Service domain uses VPC endpoints. For example: IPv4 IP addresses - 'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com' Dual stack IP addresses - 'vpcv2':'vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.aos.us-east-1.on.aws'</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Version of OpenSearch or Elasticsearch that the domain is running, in the format Elasticsearch_X.Y or OpenSearch_X.Y. (pattern: &lt;code&gt;^Elasticsearch_&#91;0-9&#93;&#123;1&#125;\.&#91;0-9&#93;&#123;1,2&#125;$|^OpenSearch_&#91;0-9&#93;&#123;1,2&#125;\.&#91;0-9&#93;&#123;1,2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IPAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP addresses supported by the endpoint for the domain. (ipv4, dualstack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityCenterOptions" /></td>
+    <td><CopyableCode code="identity_center_options" /></td>
     <td><code>object</code></td>
     <td>Configuration options for controlling IAM Identity Center integration within a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPublishingOptions" /></td>
+    <td><CopyableCode code="log_publishing_options" /></td>
     <td><code>object</code></td>
     <td>Log publishing options for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifyingProperties" /></td>
+    <td><CopyableCode code="modifying_properties" /></td>
     <td><code>array</code></td>
     <td>Information about the domain properties that are currently being modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeToNodeEncryptionOptions" /></td>
+    <td><CopyableCode code="node_to_node_encryption_options" /></td>
     <td><code>object</code></td>
     <td>Enables or disables node-to-node encryption. For more information, see Node-to-node encryption for Amazon OpenSearch Service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OffPeakWindowOptions" /></td>
+    <td><CopyableCode code="off_peak_window_options" /></td>
     <td><code>object</code></td>
     <td>Options for a domain's off-peak window, during which OpenSearch Service can perform mandatory configuration changes on the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Processing" /></td>
+    <td><CopyableCode code="processing" /></td>
     <td><code>boolean</code></td>
     <td>The status of the domain configuration. True if OpenSearch Service is processing configuration changes. False if the configuration is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceSoftwareOptions" /></td>
+    <td><CopyableCode code="service_software_options" /></td>
     <td><code>object</code></td>
     <td>The current status of the domain's service software.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotOptions" /></td>
+    <td><CopyableCode code="snapshot_options" /></td>
     <td><code>object</code></td>
     <td>The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is 0 hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareUpdateOptions" /></td>
+    <td><CopyableCode code="software_update_options" /></td>
     <td><code>object</code></td>
     <td>Options for configuring service software updates for a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeProcessing" /></td>
+    <td><CopyableCode code="upgrade_processing" /></td>
     <td><code>boolean</code></td>
     <td>The status of a domain version upgrade to a new version of OpenSearch or Elasticsearch. True if OpenSearch Service is in the process of a version upgrade. False if the configuration is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCOptions" /></td>
+    <td><CopyableCode code="vpc_options" /></td>
     <td><code>object</code></td>
     <td>The VPC configuration for the domain.</td>
 </tr>
@@ -245,7 +245,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainStatusList" /></td>
+    <td><CopyableCode code="domain_status_list" /></td>
     <td><code>array</code></td>
     <td>The status of the requested domains.</td>
 </tr>
@@ -376,42 +376,42 @@ Describes the domain configuration for the specified Amazon OpenSearch Service d
 
 ```sql
 SELECT
-AIMLOptions,
-ARN,
-AccessPolicies,
-AdvancedOptions,
-AdvancedSecurityOptions,
-AutoTuneOptions,
-AutomatedSnapshotPauseOptions,
-ChangeProgressDetails,
-ClusterConfig,
-CognitoOptions,
-Created,
-Deleted,
-DeploymentStrategyOptions,
-DomainEndpointOptions,
-DomainEndpointV2HostedZoneId,
-DomainId,
-DomainName,
-DomainProcessingStatus,
-EBSOptions,
-EncryptionAtRestOptions,
-Endpoint,
-EndpointV2,
-Endpoints,
-EngineVersion,
-IPAddressType,
-IdentityCenterOptions,
-LogPublishingOptions,
-ModifyingProperties,
-NodeToNodeEncryptionOptions,
-OffPeakWindowOptions,
-Processing,
-ServiceSoftwareOptions,
-SnapshotOptions,
-SoftwareUpdateOptions,
-UpgradeProcessing,
-VPCOptions
+aiml_options,
+arn,
+access_policies,
+advanced_options,
+advanced_security_options,
+auto_tune_options,
+automated_snapshot_pause_options,
+change_progress_details,
+cluster_config,
+cognito_options,
+created,
+deleted,
+deployment_strategy_options,
+domain_endpoint_options,
+domain_endpoint_v2_hosted_zone_id,
+domain_id,
+domain_name,
+domain_processing_status,
+ebs_options,
+encryption_at_rest_options,
+endpoint,
+endpoint_v2,
+endpoints,
+engine_version,
+ip_address_type,
+identity_center_options,
+log_publishing_options,
+modifying_properties,
+node_to_node_encryption_options,
+off_peak_window_options,
+processing,
+service_software_options,
+snapshot_options,
+software_update_options,
+upgrade_processing,
+vpc_options
 FROM aws.opensearch.domains
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -424,7 +424,7 @@ Returns domain configuration information about the specified Amazon OpenSearch S
 
 ```sql
 SELECT
-DomainStatusList
+domain_status_list
 FROM aws.opensearch.domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -499,7 +499,7 @@ SELECT
 '{{ AutomatedSnapshotPauseOptions }}',
 '{{ region }}'
 RETURNING
-DomainStatus
+domain_status
 ;
 ```
 </TabItem>

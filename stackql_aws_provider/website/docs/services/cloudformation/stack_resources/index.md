@@ -52,62 +52,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>User defined description associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftInformation" /></td>
+    <td><CopyableCode code="drift_information" /></td>
     <td><code>string</code></td>
     <td>Information about whether the resource's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see Detect unmanaged configuration changes to stacks and resources with drift detection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string</code></td>
     <td>Time the status was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogicalResourceId" /></td>
+    <td><CopyableCode code="logical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The logical name of the resource specified in the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>string</code></td>
     <td>The content of the Metadata attribute declared for the resource. For more information, see Metadata attribute in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModuleInfo" /></td>
+    <td><CopyableCode code="module_info" /></td>
     <td><code>string</code></td>
     <td>Contains information about the module from which the resource was created, if the resource was created from a module included in the stack template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceId" /></td>
+    <td><CopyableCode code="physical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique identifier that corresponds to a physical instance ID of a resource supported by CloudFormation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatus" /></td>
+    <td><CopyableCode code="resource_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatusReason" /></td>
+    <td><CopyableCode code="resource_status_reason" /></td>
     <td><code>string</code></td>
     <td>Success/failure message associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Type of resource. For more information, see Amazon Web Services resource and property types reference in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name associated with the stack.</td>
 </tr>
@@ -126,42 +126,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DriftInformation" /></td>
+    <td><CopyableCode code="drift_information" /></td>
     <td><code>string</code></td>
     <td>Information about whether the resource's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see Detect unmanaged configuration changes to stacks and resources with drift detection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string</code></td>
     <td>Time the status was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogicalResourceId" /></td>
+    <td><CopyableCode code="logical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The logical name of the resource specified in the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModuleInfo" /></td>
+    <td><CopyableCode code="module_info" /></td>
     <td><code>string</code></td>
     <td>Contains information about the module from which the resource was created, if the resource was created from a module included in the stack template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceId" /></td>
+    <td><CopyableCode code="physical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique identifier that corresponds to a physical instance ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatus" /></td>
+    <td><CopyableCode code="resource_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatusReason" /></td>
+    <td><CopyableCode code="resource_status_reason" /></td>
     <td><code>string</code></td>
     <td>Success/failure message associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Type of resource. (For more information, see Amazon Web Services resource and property types reference in the CloudFormation User Guide.)</td>
 </tr>
@@ -180,57 +180,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>User defined description associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftInformation" /></td>
+    <td><CopyableCode code="drift_information" /></td>
     <td><code>string</code></td>
     <td>Information about whether the resource's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see Detect unmanaged configuration changes to stacks and resources with drift detection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogicalResourceId" /></td>
+    <td><CopyableCode code="logical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The logical name of the resource specified in the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModuleInfo" /></td>
+    <td><CopyableCode code="module_info" /></td>
     <td><code>string</code></td>
     <td>Contains information about the module from which the resource was created, if the resource was created from a module included in the stack template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceId" /></td>
+    <td><CopyableCode code="physical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique identifier that corresponds to a physical instance ID of a resource supported by CloudFormation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatus" /></td>
+    <td><CopyableCode code="resource_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatusReason" /></td>
+    <td><CopyableCode code="resource_status_reason" /></td>
     <td><code>string</code></td>
     <td>Success/failure message associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Type of resource. For more information, see Amazon Web Services resource and property types reference in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name associated with the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>Time the status was updated.</td>
 </tr>
@@ -345,18 +345,18 @@ Returns a description of the specified resource in the specified stack. For dele
 
 ```sql
 SELECT
-Description,
-DriftInformation,
-LastUpdatedTimestamp,
-LogicalResourceId,
-Metadata,
-ModuleInfo,
-PhysicalResourceId,
-ResourceStatus,
-ResourceStatusReason,
-ResourceType,
-StackId,
-StackName
+description,
+drift_information,
+last_updated_timestamp,
+logical_resource_id,
+metadata,
+module_info,
+physical_resource_id,
+resource_status,
+resource_status_reason,
+resource_type,
+stack_id,
+stack_name
 FROM aws.cloudformation.stack_resources
 WHERE StackName = '{{ StackName }}' -- required
 AND LogicalResourceId = '{{ LogicalResourceId }}' -- required
@@ -370,14 +370,14 @@ Returns descriptions of all resources of the specified stack. For deleted stacks
 
 ```sql
 SELECT
-DriftInformation,
-LastUpdatedTimestamp,
-LogicalResourceId,
-ModuleInfo,
-PhysicalResourceId,
-ResourceStatus,
-ResourceStatusReason,
-ResourceType
+drift_information,
+last_updated_timestamp,
+logical_resource_id,
+module_info,
+physical_resource_id,
+resource_status,
+resource_status_reason,
+resource_type
 FROM aws.cloudformation.stack_resources
 WHERE StackName = '{{ StackName }}' -- required
 AND region = '{{ region }}' -- required
@@ -391,17 +391,17 @@ Returns Amazon Web Services resource descriptions for running and deleted stacks
 
 ```sql
 SELECT
-Description,
-DriftInformation,
-LogicalResourceId,
-ModuleInfo,
-PhysicalResourceId,
-ResourceStatus,
-ResourceStatusReason,
-ResourceType,
-StackId,
-StackName,
-Timestamp
+description,
+drift_information,
+logical_resource_id,
+module_info,
+physical_resource_id,
+resource_status,
+resource_status_reason,
+resource_type,
+stack_id,
+stack_name,
+timestamp
 FROM aws.cloudformation.stack_resources
 WHERE region = '{{ region }}' -- required
 AND StackName = '{{ StackName }}'

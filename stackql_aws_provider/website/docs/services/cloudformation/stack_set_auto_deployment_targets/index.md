@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>The organization root ID or organizational unit (OU) IDs where the StackSet is targeted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Regions" /></td>
+    <td><CopyableCode code="regions" /></td>
     <td><code>string</code></td>
     <td>The list of Regions targeted for this organization or OU.</td>
 </tr>
@@ -144,8 +144,8 @@ Returns summary information about deployment targets for a StackSet.
 
 ```sql
 SELECT
-OrganizationalUnitId,
-Regions
+organizational_unit_id,
+regions
 FROM aws.cloudformation.stack_set_auto_deployment_targets
 WHERE StackSetName = '{{ StackSetName }}' -- required
 AND region = '{{ region }}' -- required

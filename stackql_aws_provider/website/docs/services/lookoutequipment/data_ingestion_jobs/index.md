@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the data ingestion job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataEndTime" /></td>
+    <td><CopyableCode code="data_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the latest timestamp corresponding to data that was successfully ingested during this specific ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataQualitySummary" /></td>
+    <td><CopyableCode code="data_quality_summary" /></td>
     <td><code>object</code></td>
     <td>Gives statistics about a completed ingestion job. These statistics primarily relate to quantifying incorrect data such as MissingCompleteSensorData, MissingSensorData, UnsupportedDateFormats, InsufficientSensorData, and DuplicateTimeStamps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataStartTime" /></td>
+    <td><CopyableCode code="data_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the earliest timestamp corresponding to data that was successfully ingested during this specific ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset being used in the data ingestion job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:dataset\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedReason" /></td>
+    <td><CopyableCode code="failed_reason" /></td>
     <td><code>string</code></td>
     <td>Specifies the reason for failure when a data ingestion job has failed. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;1,5000&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestedDataSize" /></td>
+    <td><CopyableCode code="ingested_data_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>Indicates the size of the ingested dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestedFilesSummary" /></td>
+    <td><CopyableCode code="ingested_files_summary" /></td>
     <td><code>object</code></td>
     <td>Gives statistics about how many files have been ingested, and which files have not been ingested, for a particular ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionInputConfiguration" /></td>
+    <td><CopyableCode code="ingestion_input_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the S3 location configuration for the data input for the data ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>Indicates the job ID of the data ingestion job. (pattern: &lt;code&gt;&#91;A-Fa-f0-9&#93;&#123;0,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role with permission to access the data source being ingested. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDatasetArn" /></td>
+    <td><CopyableCode code="source_dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source dataset from which the data used for the data ingestion job was imported from. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:dataset\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the DataIngestionJob operation. (IN_PROGRESS, SUCCESS, FAILED, IMPORT_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetail" /></td>
+    <td><CopyableCode code="status_detail" /></td>
     <td><code>string</code></td>
     <td>Provides details about status of the ingestion job that is currently in progress. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;1,5000&#125;&lt;/code&gt;)</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataIngestionJobSummaries" /></td>
+    <td><CopyableCode code="data_ingestion_job_summaries" /></td>
     <td><code>array</code></td>
     <td>Specifies information about the specific data ingestion job, including dataset name and status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of data ingestion jobs. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -217,20 +217,20 @@ Provides information on a specific data ingestion job such as creation time, dat
 
 ```sql
 SELECT
-CreatedAt,
-DataEndTime,
-DataQualitySummary,
-DataStartTime,
-DatasetArn,
-FailedReason,
-IngestedDataSize,
-IngestedFilesSummary,
-IngestionInputConfiguration,
-JobId,
-RoleArn,
-SourceDatasetArn,
-Status,
-StatusDetail
+created_at,
+data_end_time,
+data_quality_summary,
+data_start_time,
+dataset_arn,
+failed_reason,
+ingested_data_size,
+ingested_files_summary,
+ingestion_input_configuration,
+job_id,
+role_arn,
+source_dataset_arn,
+status,
+status_detail
 FROM aws.lookoutequipment.data_ingestion_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,8 +242,8 @@ Provides a list of all data ingestion jobs, including dataset name and ARN, S3 l
 
 ```sql
 SELECT
-DataIngestionJobSummaries,
-NextToken
+data_ingestion_job_summaries,
+next_token
 FROM aws.lookoutequipment.data_ingestion_jobs
 WHERE region = '{{ region }}' -- required
 ;

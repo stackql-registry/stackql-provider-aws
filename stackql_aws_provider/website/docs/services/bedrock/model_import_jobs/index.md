@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time that the resource transitioned to terminal state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>Information about why the import job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importedModelArn" /></td>
+    <td><CopyableCode code="imported_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the imported model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:imported-model/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importedModelKmsKeyArn" /></td>
+    <td><CopyableCode code="imported_model_kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The imported model is encrypted at rest using this key. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importedModelName" /></td>
+    <td><CopyableCode code="imported_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the imported model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the import job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-import-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the import job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9\+\-\.&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time the resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelDataSource" /></td>
+    <td><CopyableCode code="model_data_source" /></td>
     <td><code>object</code></td>
     <td>The data source of the model to import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role associated with this job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the job. A successful job transitions from in-progress to completed when the imported model is ready to use. If the job failed, the failure message contains information about why the job failed. (InProgress, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of a virtual private cloud (VPC). For more information, see Protect your data using Amazon Virtual Private Cloud and Amazon Web Services PrivateLink.</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when import job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importedModelArn" /></td>
+    <td><CopyableCode code="imported_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource Name (ARN) of the imported model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:imported-model/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importedModelName" /></td>
+    <td><CopyableCode code="imported_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the imported model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the import job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-import-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the import job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9\+\-\.&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the import job was last modified.</td>
 </tr>
@@ -294,19 +294,19 @@ Retrieves the properties associated with import model job, including the status 
 
 ```sql
 SELECT
-creationTime,
-endTime,
-failureMessage,
-importedModelArn,
-importedModelKmsKeyArn,
-importedModelName,
-jobArn,
-jobName,
-lastModifiedTime,
-modelDataSource,
-roleArn,
+creation_time,
+end_time,
+failure_message,
+imported_model_arn,
+imported_model_kms_key_arn,
+imported_model_name,
+job_arn,
+job_name,
+last_modified_time,
+model_data_source,
+role_arn,
 status,
-vpcConfig
+vpc_config
 FROM aws.bedrock.model_import_jobs
 WHERE job_identifier = '{{ job_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -319,13 +319,13 @@ Returns a list of import jobs you've submitted. You can filter the results to re
 
 ```sql
 SELECT
-creationTime,
-endTime,
-importedModelArn,
-importedModelName,
-jobArn,
-jobName,
-lastModifiedTime,
+creation_time,
+end_time,
+imported_model_arn,
+imported_model_name,
+job_arn,
+job_name,
+last_modified_time,
 status
 FROM aws.bedrock.model_import_jobs
 WHERE region = '{{ region }}' -- required
@@ -381,7 +381,7 @@ SELECT
 '{{ importedModelKmsKeyId }}',
 '{{ region }}'
 RETURNING
-jobArn
+job_arn
 ;
 ```
 </TabItem>

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExpiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string</code></td>
     <td>The ExpiresAt ISO string of the requested record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Record" /></td>
+    <td><CopyableCode code="record" /></td>
     <td><code>array</code></td>
     <td>The record you requested. A list of FeatureValues.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>A list of errors that have occurred when retrieving a batch of Records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Records" /></td>
+    <td><CopyableCode code="records" /></td>
     <td><code>array</code></td>
     <td>A list of Records you requested to be retrieved in batch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedIdentifiers" /></td>
+    <td><CopyableCode code="unprocessed_identifiers" /></td>
     <td><code>array</code></td>
     <td>A unprocessed list of FeatureGroup names, with their corresponding RecordIdentifier value, and Feature name.</td>
 </tr>
@@ -211,8 +211,8 @@ Use for OnlineStore serving from a FeatureStore. Only the latest records stored 
 
 ```sql
 SELECT
-ExpiresAt,
-Record
+expires_at,
+record
 FROM aws.sagemaker_featurestore_runtime.records
 WHERE feature_group_name = '{{ feature_group_name }}' -- required
 AND RecordIdentifierValueAsString = '{{ RecordIdentifierValueAsString }}' -- required
@@ -228,9 +228,9 @@ Retrieves a batch of Records from a FeatureGroup.
 
 ```sql
 SELECT
-Errors,
-Records,
-UnprocessedIdentifiers
+errors,
+records,
+unprocessed_identifiers
 FROM aws.sagemaker_featurestore_runtime.records
 WHERE region = '{{ region }}' -- required
 ;

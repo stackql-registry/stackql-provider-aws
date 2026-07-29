@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An enumeration token that, when provided in a request, returns the next batch of the results. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RepositorySyncDefinitions" /></td>
+    <td><CopyableCode code="repository_sync_definitions" /></td>
     <td><code>array</code></td>
     <td>The list of repository sync definitions returned by the request. A RepositorySyncDefinition is a mapping from a repository branch to all the Amazon Web Services resources that are being synced from that branch.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the repository sync definitions for repository links in your account.
 
 ```sql
 SELECT
-NextToken,
-RepositorySyncDefinitions
+next_token,
+repository_sync_definitions
 FROM aws.codeconnections.repository_sync_definitions
 WHERE region = '{{ region }}' -- required
 ;

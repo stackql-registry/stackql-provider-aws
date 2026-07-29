@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specified in your request. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:transcribe:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;a-zA-Z-&#93;*/&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Lists all tags associated with the given transcription job, vocabulary, model, or resource.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists all tags associated with the specified transcription job, vocabulary, mode
 
 ```sql
 SELECT
-ResourceArn,
-Tags
+resource_arn,
+tags
 FROM aws.transcribe.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
     <td>The creation date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeArn" /></td>
+    <td><CopyableCode code="network_insights_access_scope_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Network Access Scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeId" /></td>
+    <td><CopyableCode code="network_insights_access_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Network Access Scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedDate" /></td>
+    <td><CopyableCode code="updated_date" /></td>
     <td><code>string</code></td>
     <td>The last updated date.</td>
 </tr>
@@ -222,11 +222,11 @@ Describes the specified Network Access Scopes.
 
 ```sql
 SELECT
-CreatedDate,
-NetworkInsightsAccessScopeArn,
-NetworkInsightsAccessScopeId,
-Tags,
-UpdatedDate
+created_date,
+network_insights_access_scope_arn,
+network_insights_access_scope_id,
+tags,
+updated_date
 FROM aws.ec2.network_insights_access_scopes
 WHERE region = '{{ region }}' -- required
 AND NetworkInsightsAccessScopeId = '{{ NetworkInsightsAccessScopeId }}'
@@ -270,11 +270,11 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-CreatedDate,
-NetworkInsightsAccessScopeArn,
-NetworkInsightsAccessScopeId,
-Tags,
-UpdatedDate
+created_date,
+network_insights_access_scope_arn,
+network_insights_access_scope_id,
+tags,
+updated_date
 ;
 ```
 </TabItem>

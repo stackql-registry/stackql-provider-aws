@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the package that is displayed. The displayName varies depending on the package version's format. For example, if an npm package is named ui, is in the namespace vue, and has the format npm, then the displayName is @vue/ui.</td>
 </tr>
@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The format of the package version. (npm, pypi, maven, nuget, generic, ruby, swift, cargo)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="homePage" /></td>
+    <td><CopyableCode code="home_page" /></td>
     <td><code>string</code></td>
     <td>The homepage associated with the package.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>A PackageVersionOrigin object that contains information about how the package version was added to the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The name of the requested package. (pattern: &lt;code&gt;&#91;^#/\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publishedTime" /></td>
+    <td><CopyableCode code="published_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that contains the date and time the package version was published.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The revision of the package version. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceCodeRepository" /></td>
+    <td><CopyableCode code="source_code_repository" /></td>
     <td><code>string</code></td>
     <td>The repository for the source code in the package version, or the source code used to build it.</td>
 </tr>
@@ -320,16 +320,16 @@ Returns a PackageVersionDescription object that contains information about the r
 
 ```sql
 SELECT
-displayName,
+display_name,
 format_,
-homePage,
+home_page,
 licenses,
 namespace,
 origin,
-packageName,
-publishedTime,
+package_name,
+published_time,
 revision,
-sourceCodeRepository,
+source_code_repository,
 status,
 summary,
 version
@@ -404,8 +404,8 @@ AND targetStatus = '{{ targetStatus }}' --required
 AND `domain-owner` = '{{ domain-owner}}'
 AND namespace = '{{ namespace}}'
 RETURNING
-failedVersions,
-successfulVersions;
+failed_versions,
+successful_versions;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;^&#91;A-Za-z0-9/=\+&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="savingsPlanId" /></td>
+    <td><CopyableCode code="savings_plan_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Savings Plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="searchResults" /></td>
+    <td><CopyableCode code="search_results" /></td>
     <td><code>array</code></td>
     <td>Information about the Savings Plan rates.</td>
 </tr>
@@ -129,9 +129,9 @@ Describes the rates for a specific, existing Savings Plan.
 
 ```sql
 SELECT
-nextToken,
-savingsPlanId,
-searchResults
+next_token,
+savings_plan_id,
+search_results
 FROM aws.savingsplans.savings_plan_rates
 WHERE region = '{{ region }}' -- required
 ;

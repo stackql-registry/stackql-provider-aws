@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Disks" /></td>
+    <td><CopyableCode code="disks" /></td>
     <td><code>array</code></td>
     <td>A JSON object containing the following fields: ListLocalDisksOutput$Disks</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of the gateway's local disks. To specify which gateway to describ
 
 ```sql
 SELECT
-Disks,
-GatewayARN
+disks,
+gateway_arn
 FROM aws.storagegateway.local_disks
 WHERE region = '{{ region }}' -- required
 ;

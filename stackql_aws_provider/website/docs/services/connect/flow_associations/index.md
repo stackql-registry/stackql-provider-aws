@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlowId" /></td>
+    <td><CopyableCode code="flow_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>A valid resource type. (SMS_PHONE_NUMBER, INBOUND_EMAIL, OUTBOUND_EMAIL, ANALYTICS_CONNECTOR, WHATSAPP_MESSAGING_PHONE_NUMBER)</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlowAssociationSummaryList" /></td>
+    <td><CopyableCode code="flow_association_summary_list" /></td>
     <td><code>array</code></td>
     <td>Information about flow associations.</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlowId" /></td>
+    <td><CopyableCode code="flow_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource association. (WHATSAPP_MESSAGING_PHONE_NUMBER, VOICE_PHONE_NUMBER, INBOUND_EMAIL, OUTBOUND_EMAIL, ANALYTICS_CONNECTOR)</td>
 </tr>
@@ -225,9 +225,9 @@ Retrieves the flow associated for a given resource.
 
 ```sql
 SELECT
-FlowId,
-ResourceId,
-ResourceType
+flow_id,
+resource_id,
+resource_type
 FROM aws.connect.flow_associations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND resource_id = '{{ resource_id }}' -- required
@@ -242,7 +242,7 @@ Retrieve the flow associations for the given resources.
 
 ```sql
 SELECT
-FlowAssociationSummaryList
+flow_association_summary_list
 FROM aws.connect.flow_associations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -255,9 +255,9 @@ List the flow association based on the filters.
 
 ```sql
 SELECT
-FlowId,
-ResourceId,
-ResourceType
+flow_id,
+resource_id,
+resource_type
 FROM aws.connect.flow_associations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

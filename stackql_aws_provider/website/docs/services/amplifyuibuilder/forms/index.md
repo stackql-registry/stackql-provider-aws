@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amplify app associated with the form.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>Stores the call to action configuration for the form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>object</code></td>
     <td>The type of data source to use to create the form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment that is a part of the Amplify app.</td>
 </tr>
@@ -86,22 +86,22 @@ The following fields are returned by `SELECT` queries:
     <td>Stores the information about the form's fields.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formActionType" /></td>
+    <td><CopyableCode code="form_action_type" /></td>
     <td><code>string</code></td>
     <td>The operation to perform on the specified form. (create, update)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="labelDecorator" /></td>
+    <td><CopyableCode code="label_decorator" /></td>
     <td><code>string</code></td>
     <td>Specifies an icon or decoration to display on the form. (required, optional, none)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>string</code></td>
     <td>The schema version of the form when it was imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sectionalElements" /></td>
+    <td><CopyableCode code="sectional_elements" /></td>
     <td><code>object</code></td>
     <td>Stores the visual helper elements for the form that are not associated with any data.</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the app associated with the form summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>object</code></td>
     <td>The form's data source type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment that is part of the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formActionType" /></td>
+    <td><CopyableCode code="form_action_type" /></td>
     <td><code>string</code></td>
     <td>The type of operation to perform on the form. (create, update)</td>
 </tr>
@@ -292,15 +292,15 @@ Returns an existing form for an Amplify app.
 SELECT
 id,
 name,
-appId,
+app_id,
 cta,
-dataType,
-environmentName,
+data_type,
+environment_name,
 fields,
-formActionType,
-labelDecorator,
-schemaVersion,
-sectionalElements,
+form_action_type,
+label_decorator,
+schema_version,
+sectional_elements,
 style,
 tags
 FROM aws.amplifyuibuilder.forms
@@ -319,10 +319,10 @@ Retrieves a list of forms for a specified Amplify app and backend environment.
 SELECT
 id,
 name,
-appId,
-dataType,
-environmentName,
-formActionType
+app_id,
+data_type,
+environment_name,
+form_action_type
 FROM aws.amplifyuibuilder.forms
 WHERE app_id = '{{ app_id }}' -- required
 AND environment_name = '{{ environment_name }}' -- required

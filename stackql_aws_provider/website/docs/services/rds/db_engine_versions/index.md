@@ -50,187 +50,187 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The creation time of the DB engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDBEngineVersionManifest" /></td>
+    <td><CopyableCode code="custom_db_engine_version_manifest" /></td>
     <td><code>string</code></td>
     <td>JSON string that lists the installation files and parameters that RDS Custom uses to create a custom engine version (CEV). RDS Custom applies the patches in the order in which they're listed in the manifest. You can set the Oracle home, Oracle base, and UNIX/Linux user and group using the installation parameters. For more information, see JSON fields in the CEV manifest in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBEngineDescription" /></td>
+    <td><CopyableCode code="db_engine_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBEngineMediaType" /></td>
+    <td><CopyableCode code="db_engine_media_type" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the source media provider of the AMI based on the usage operation. Applicable for RDS Custom for SQL Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBEngineVersionArn" /></td>
+    <td><CopyableCode code="db_engine_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the custom engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBEngineVersionDescription" /></td>
+    <td><CopyableCode code="db_engine_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBParameterGroupFamily" /></td>
+    <td><CopyableCode code="db_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the DB parameter group family for the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseInstallationFiles" /></td>
+    <td><CopyableCode code="database_installation_files" /></td>
     <td><code>string</code></td>
     <td>The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS. Required for sqlserver-dev-ee.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseInstallationFilesS3BucketName" /></td>
+    <td><CopyableCode code="database_installation_files_s3_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket that contains your database installation files.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseInstallationFilesS3Prefix" /></td>
+    <td><CopyableCode code="database_installation_files_s3_prefix" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 directory that contains the database installation files. If not specified, then no prefix is assumed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultCharacterSet" /></td>
+    <td><CopyableCode code="default_character_set" /></td>
     <td><code>string</code></td>
     <td>The default character set for new instances of this engine version, if the CharacterSetName parameter of the CreateDBInstance API isn't specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportableLogTypes" /></td>
+    <td><CopyableCode code="exportable_log_types" /></td>
     <td><code>string</code></td>
     <td>The types of logs that the database engine has available for export to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the custom engine version creation for sqlserver-dev-ee failed with an incompatible-installation-media status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Image" /></td>
+    <td><CopyableCode code="image" /></td>
     <td><code>string</code></td>
     <td>The EC2 image</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KMSKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key identifier for an encrypted CEV. This parameter is required for RDS Custom, but optional for Amazon RDS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MajorEngineVersion" /></td>
+    <td><CopyableCode code="major_engine_version" /></td>
     <td><code>string</code></td>
     <td>The major engine version of the CEV.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2FeaturesSupport" /></td>
+    <td><CopyableCode code="serverless_v2_features_support" /></td>
     <td><code>string</code></td>
     <td>Specifies any Aurora Serverless v2 properties or limits that differ between Aurora engine versions. You can test the values of this attribute when deciding which Aurora version to use in a new or upgraded DB cluster. You can also retrieve the version of an existing DB cluster and check whether that version supports certain Aurora Serverless v2 features before you attempt to use those features.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the DB engine version, either available or deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedCACertificateIdentifiers" /></td>
+    <td><CopyableCode code="supported_ca_certificate_identifiers" /></td>
     <td><code>string</code></td>
     <td>A list of the supported CA certificate identifiers. For more information, see Using SSL/TLS to encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedCharacterSets" /></td>
+    <td><CopyableCode code="supported_character_sets" /></td>
     <td><code>string</code></td>
     <td>A list of the character sets supported by this engine for the CharacterSetName parameter of the CreateDBInstance operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedEngineModes" /></td>
+    <td><CopyableCode code="supported_engine_modes" /></td>
     <td><code>string</code></td>
     <td>A list of the supported DB engine modes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedFeatureNames" /></td>
+    <td><CopyableCode code="supported_feature_names" /></td>
     <td><code>string</code></td>
     <td>A list of features supported by the DB engine. The supported features vary by DB engine and DB engine version. To determine the supported features for a specific DB engine and DB engine version using the CLI, use the following command: aws rds describe-db-engine-versions --engine <code>&lt;engine_name&gt;</code> --engine-version <code>&lt;engine_version&gt;</code> For example, to determine the supported features for RDS for PostgreSQL version 13.3 using the CLI, use the following command: aws rds describe-db-engine-versions --engine postgres --engine-version 13.3 The supported features are listed under SupportedFeatureNames in the output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedNcharCharacterSets" /></td>
+    <td><CopyableCode code="supported_nchar_character_sets" /></td>
     <td><code>string</code></td>
     <td>A list of the character sets supported by the Oracle DB engine for the NcharCharacterSetName parameter of the CreateDBInstance operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedTimezones" /></td>
+    <td><CopyableCode code="supported_timezones" /></td>
     <td><code>string</code></td>
     <td>A list of the time zones supported by this engine for the Timezone parameter of the CreateDBInstance action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsBabelfish" /></td>
+    <td><CopyableCode code="supports_babelfish" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the engine version supports Babelfish for Aurora PostgreSQL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsCertificateRotationWithoutRestart" /></td>
+    <td><CopyableCode code="supports_certificate_rotation_without_restart" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the engine version supports rotating the server certificate without rebooting the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsGlobalDatabases" /></td>
+    <td><CopyableCode code="supports_global_databases" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether you can use Aurora global databases with a specific DB engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsIntegrations" /></td>
+    <td><CopyableCode code="supports_integrations" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB engine version supports zero-ETL integrations with Amazon Redshift.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsLimitlessDatabase" /></td>
+    <td><CopyableCode code="supports_limitless_database" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB engine version supports Aurora Limitless Database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsLocalWriteForwarding" /></td>
+    <td><CopyableCode code="supports_local_write_forwarding" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB engine version supports forwarding write operations from reader DB instances to the writer DB instance in the DB cluster. By default, write operations aren't allowed on reader DB instances. Valid for: Aurora DB clusters only</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsLogExportsToCloudwatchLogs" /></td>
+    <td><CopyableCode code="supports_log_exports_to_cloudwatch_logs" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the engine version supports exporting the log types specified by ExportableLogTypes to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsParallelQuery" /></td>
+    <td><CopyableCode code="supports_parallel_query" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether you can use Aurora parallel query with a specific DB engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsReadReplica" /></td>
+    <td><CopyableCode code="supports_read_replica" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the database engine version supports read replicas.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidUpgradeTarget" /></td>
+    <td><CopyableCode code="valid_upgrade_target" /></td>
     <td><code>string</code></td>
     <td>A list of engine versions that this database engine version can be upgraded to.</td>
 </tr>
@@ -430,43 +430,43 @@ Describes the properties of specific versions of DB engines.
 
 ```sql
 SELECT
-CreateTime,
-CustomDBEngineVersionManifest,
-DBEngineDescription,
-DBEngineMediaType,
-DBEngineVersionArn,
-DBEngineVersionDescription,
-DBParameterGroupFamily,
-DatabaseInstallationFiles,
-DatabaseInstallationFilesS3BucketName,
-DatabaseInstallationFilesS3Prefix,
-DefaultCharacterSet,
-Engine,
-EngineVersion,
-ExportableLogTypes,
-FailureReason,
-Image,
-KMSKeyId,
-MajorEngineVersion,
-ServerlessV2FeaturesSupport,
-Status,
-SupportedCACertificateIdentifiers,
-SupportedCharacterSets,
-SupportedEngineModes,
-SupportedFeatureNames,
-SupportedNcharCharacterSets,
-SupportedTimezones,
-SupportsBabelfish,
-SupportsCertificateRotationWithoutRestart,
-SupportsGlobalDatabases,
-SupportsIntegrations,
-SupportsLimitlessDatabase,
-SupportsLocalWriteForwarding,
-SupportsLogExportsToCloudwatchLogs,
-SupportsParallelQuery,
-SupportsReadReplica,
-TagList,
-ValidUpgradeTarget
+create_time,
+custom_db_engine_version_manifest,
+db_engine_description,
+db_engine_media_type,
+db_engine_version_arn,
+db_engine_version_description,
+db_parameter_group_family,
+database_installation_files,
+database_installation_files_s3_bucket_name,
+database_installation_files_s3_prefix,
+default_character_set,
+engine,
+engine_version,
+exportable_log_types,
+failure_reason,
+image,
+kms_key_id,
+major_engine_version,
+serverless_v2_features_support,
+status,
+supported_ca_certificate_identifiers,
+supported_character_sets,
+supported_engine_modes,
+supported_feature_names,
+supported_nchar_character_sets,
+supported_timezones,
+supports_babelfish,
+supports_certificate_rotation_without_restart,
+supports_global_databases,
+supports_integrations,
+supports_limitless_database,
+supports_local_write_forwarding,
+supports_log_exports_to_cloudwatch_logs,
+supports_parallel_query,
+supports_read_replica,
+tag_list,
+valid_upgrade_target
 FROM aws.rds.db_engine_versions
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'
@@ -529,43 +529,43 @@ SELECT
 '{{ Manifest }}',
 '{{ Tags }}'
 RETURNING
-CreateTime,
-CustomDBEngineVersionManifest,
-DBEngineDescription,
-DBEngineMediaType,
-DBEngineVersionArn,
-DBEngineVersionDescription,
-DBParameterGroupFamily,
-DatabaseInstallationFiles,
-DatabaseInstallationFilesS3BucketName,
-DatabaseInstallationFilesS3Prefix,
-DefaultCharacterSet,
-Engine,
-EngineVersion,
-ExportableLogTypes,
-FailureReason,
-Image,
-KMSKeyId,
-MajorEngineVersion,
-ServerlessV2FeaturesSupport,
-Status,
-SupportedCACertificateIdentifiers,
-SupportedCharacterSets,
-SupportedEngineModes,
-SupportedFeatureNames,
-SupportedNcharCharacterSets,
-SupportedTimezones,
-SupportsBabelfish,
-SupportsCertificateRotationWithoutRestart,
-SupportsGlobalDatabases,
-SupportsIntegrations,
-SupportsLimitlessDatabase,
-SupportsLocalWriteForwarding,
-SupportsLogExportsToCloudwatchLogs,
-SupportsParallelQuery,
-SupportsReadReplica,
-TagList,
-ValidUpgradeTarget
+create_time,
+custom_db_engine_version_manifest,
+db_engine_description,
+db_engine_media_type,
+db_engine_version_arn,
+db_engine_version_description,
+db_parameter_group_family,
+database_installation_files,
+database_installation_files_s3_bucket_name,
+database_installation_files_s3_prefix,
+default_character_set,
+engine,
+engine_version,
+exportable_log_types,
+failure_reason,
+image,
+kms_key_id,
+major_engine_version,
+serverless_v2_features_support,
+status,
+supported_ca_certificate_identifiers,
+supported_character_sets,
+supported_engine_modes,
+supported_feature_names,
+supported_nchar_character_sets,
+supported_timezones,
+supports_babelfish,
+supports_certificate_rotation_without_restart,
+supports_global_databases,
+supports_integrations,
+supports_limitless_database,
+supports_local_write_forwarding,
+supports_log_exports_to_cloudwatch_logs,
+supports_parallel_query,
+supports_read_replica,
+tag_list,
+valid_upgrade_target
 ;
 ```
 </TabItem>
@@ -651,43 +651,43 @@ AND Engine = '{{ Engine}}'
 AND Description = '{{ Description}}'
 AND Status = '{{ Status}}'
 RETURNING
-CreateTime,
-CustomDBEngineVersionManifest,
-DBEngineDescription,
-DBEngineMediaType,
-DBEngineVersionArn,
-DBEngineVersionDescription,
-DBParameterGroupFamily,
-DatabaseInstallationFiles,
-DatabaseInstallationFilesS3BucketName,
-DatabaseInstallationFilesS3Prefix,
-DefaultCharacterSet,
-Engine,
-EngineVersion,
-ExportableLogTypes,
-FailureReason,
-Image,
-KMSKeyId,
-MajorEngineVersion,
-ServerlessV2FeaturesSupport,
-Status,
-SupportedCACertificateIdentifiers,
-SupportedCharacterSets,
-SupportedEngineModes,
-SupportedFeatureNames,
-SupportedNcharCharacterSets,
-SupportedTimezones,
-SupportsBabelfish,
-SupportsCertificateRotationWithoutRestart,
-SupportsGlobalDatabases,
-SupportsIntegrations,
-SupportsLimitlessDatabase,
-SupportsLocalWriteForwarding,
-SupportsLogExportsToCloudwatchLogs,
-SupportsParallelQuery,
-SupportsReadReplica,
-TagList,
-ValidUpgradeTarget;
+create_time,
+custom_db_engine_version_manifest,
+db_engine_description,
+db_engine_media_type,
+db_engine_version_arn,
+db_engine_version_description,
+db_parameter_group_family,
+database_installation_files,
+database_installation_files_s3_bucket_name,
+database_installation_files_s3_prefix,
+default_character_set,
+engine,
+engine_version,
+exportable_log_types,
+failure_reason,
+image,
+kms_key_id,
+major_engine_version,
+serverless_v2_features_support,
+status,
+supported_ca_certificate_identifiers,
+supported_character_sets,
+supported_engine_modes,
+supported_feature_names,
+supported_nchar_character_sets,
+supported_timezones,
+supports_babelfish,
+supports_certificate_rotation_without_restart,
+supports_global_databases,
+supports_integrations,
+supports_limitless_database,
+supports_local_write_forwarding,
+supports_log_exports_to_cloudwatch_logs,
+supports_parallel_query,
+supports_read_replica,
+tag_list,
+valid_upgrade_target;
 ```
 </TabItem>
 </Tabs>

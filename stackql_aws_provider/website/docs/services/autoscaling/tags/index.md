@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The tag key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PropagateAtLaunch" /></td>
+    <td><CopyableCode code="propagate_at_launch" /></td>
     <td><code>boolean</code></td>
     <td>Determines whether the tag is added to new instances as they are launched in the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The name of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource. The only supported value is auto-scaling-group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The tag value.</td>
 </tr>
@@ -173,11 +173,11 @@ Describes the specified tags. You can use filters to limit the results. For exam
 
 ```sql
 SELECT
-Key,
-PropagateAtLaunch,
-ResourceId,
-ResourceType,
-Value
+key,
+propagate_at_launch,
+resource_id,
+resource_type,
+value
 FROM aws.autoscaling.tags
 WHERE region = '{{ region }}' -- required
 AND Filters = '{{ Filters }}'

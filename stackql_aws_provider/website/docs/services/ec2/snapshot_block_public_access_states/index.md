@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the state for block public access for snapshots. Possible values include: account - The state is managed by the account. declarative-policy - The state is managed by a declarative policy and can't be modified by the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of block public access for snapshots. Possible values include: block-all-sharing - All public sharing of snapshots is blocked. Users in the account can't request new public sharing. Additionally, snapshots that were already publicly shared are treated as private and are not publicly available. block-new-sharing - Only new public sharing of snapshots is blocked. Users in the account can't request new public sharing. However, snapshots that were already publicly shared, remain publicly available. unblocked - Public sharing is not blocked. Users can publicly share snapshots.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets the current state of block public access for snapshots setting for the acco
 
 ```sql
 SELECT
-ManagedBy,
-State
+managed_by,
+state
 FROM aws.ec2.snapshot_block_public_access_states
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

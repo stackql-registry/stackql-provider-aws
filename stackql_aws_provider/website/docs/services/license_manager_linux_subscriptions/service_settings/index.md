@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HomeRegions" /></td>
+    <td><CopyableCode code="home_regions" /></td>
     <td><code>array</code></td>
     <td>The Region in which License Manager displays the aggregated data for Linux subscriptions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinuxSubscriptionsDiscovery" /></td>
+    <td><CopyableCode code="linux_subscriptions_discovery" /></td>
     <td><code>string</code></td>
     <td>Lists if discovery has been enabled for Linux subscriptions. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinuxSubscriptionsDiscoverySettings" /></td>
+    <td><CopyableCode code="linux_subscriptions_discovery_settings" /></td>
     <td><code>object</code></td>
     <td>Lists the settings defined for Linux subscriptions discovery. The settings include if Organizations integration has been enabled, and which Regions data will be aggregated from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of Linux subscriptions settings being applied. (InProgress, Completed, Successful, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>object</code></td>
     <td>A message which details the Linux subscriptions service settings current status.</td>
 </tr>
@@ -146,11 +146,11 @@ Lists the Linux subscriptions service settings for your account.
 
 ```sql
 SELECT
-HomeRegions,
-LinuxSubscriptionsDiscovery,
-LinuxSubscriptionsDiscoverySettings,
-Status,
-StatusMessage
+home_regions,
+linux_subscriptions_discovery,
+linux_subscriptions_discovery_settings,
+status,
+status_message
 FROM aws.license_manager_linux_subscriptions.service_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -182,11 +182,11 @@ region = '{{ region }}' --required
 AND LinuxSubscriptionsDiscovery = '{{ LinuxSubscriptionsDiscovery }}' --required
 AND LinuxSubscriptionsDiscoverySettings = '{{ LinuxSubscriptionsDiscoverySettings }}' --required
 RETURNING
-HomeRegions,
-LinuxSubscriptionsDiscovery,
-LinuxSubscriptionsDiscoverySettings,
-Status,
-StatusMessage;
+home_regions,
+linux_subscriptions_discovery,
+linux_subscriptions_discovery_settings,
+status,
+status_message;
 ```
 </TabItem>
 </Tabs>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message returned if a query failed. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token you can use to get the next page of query results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryResultRows" /></td>
+    <td><CopyableCode code="query_result_rows" /></td>
     <td><code>array</code></td>
     <td>Contains the individual event results of the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryStatistics" /></td>
+    <td><CopyableCode code="query_statistics" /></td>
     <td><code>object</code></td>
     <td>Shows the count of query results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryStatus" /></td>
+    <td><CopyableCode code="query_status" /></td>
     <td><code>string</code></td>
     <td>The status of the query. Values include QUEUED, RUNNING, FINISHED, FAILED, TIMED_OUT, or CANCELLED. (QUEUED, RUNNING, FINISHED, FAILED, CANCELLED, TIMED_OUT)</td>
 </tr>
@@ -139,11 +139,11 @@ Gets event data results of a query. You must specify the QueryID value returned 
 
 ```sql
 SELECT
-ErrorMessage,
-NextToken,
-QueryResultRows,
-QueryStatistics,
-QueryStatus
+error_message,
+next_token,
+query_result_rows,
+query_statistics,
+query_status
 FROM aws.cloudtrail.query_results
 WHERE region = '{{ region }}' -- required
 ;

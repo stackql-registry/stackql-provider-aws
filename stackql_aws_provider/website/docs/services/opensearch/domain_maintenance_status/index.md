@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The action name. (REBOOT_NODE, RESTART_SEARCH_PROCESS, RESTART_DASHBOARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the action was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeId" /></td>
+    <td><CopyableCode code="node_id" /></td>
     <td><code>string</code></td>
     <td>The node ID of the maintenance action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the maintenance action. (PENDING, IN_PROGRESS, COMPLETED, FAILED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the maintenance action. (pattern: &lt;code&gt;^(&#91;\s\S&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the action was updated.</td>
 </tr>
@@ -154,12 +154,12 @@ The status of the maintenance action.
 
 ```sql
 SELECT
-Action,
-CreatedAt,
-NodeId,
-Status,
-StatusMessage,
-UpdatedAt
+action,
+created_at,
+node_id,
+status,
+status_message,
+updated_at
 FROM aws.opensearch.domain_maintenance_status
 WHERE domain_name = '{{ domain_name }}' -- required
 AND maintenanceId = '{{ maintenanceId }}' -- required

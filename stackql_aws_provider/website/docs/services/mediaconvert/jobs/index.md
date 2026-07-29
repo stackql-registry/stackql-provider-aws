@@ -51,162 +51,162 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccelerationSettings" /></td>
+    <td><CopyableCode code="acceleration_settings" /></td>
     <td><code>object</code></td>
     <td>Accelerated transcoding can significantly speed up jobs with long, visually complex content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccelerationStatus" /></td>
+    <td><CopyableCode code="acceleration_status" /></td>
     <td><code>string</code></td>
     <td>Describes whether the current job is running with accelerated transcoding. For jobs that have Acceleration (AccelerationMode) set to DISABLED, AccelerationStatus is always NOT_APPLICABLE. For jobs that have Acceleration (AccelerationMode) set to ENABLED or PREFERRED, AccelerationStatus is one of the other states. AccelerationStatus is IN_PROGRESS initially, while the service determines whether the input files and job settings are compatible with accelerated transcoding. If they are, AcclerationStatus is ACCELERATED. If your input files and job settings aren't compatible with accelerated transcoding, the service either fails your job or runs it without accelerated transcoding, depending on how you set Acceleration (AccelerationMode). When the service runs your job without accelerated transcoding, AccelerationStatus is NOT_ACCELERATED. (NOT_APPLICABLE, IN_PROGRESS, ACCELERATED, NOT_ACCELERATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingTagsSource" /></td>
+    <td><CopyableCode code="billing_tags_source" /></td>
     <td><code>string</code></td>
     <td>The tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. (QUEUE, PRESET, JOB_TEMPLATE, JOB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>Prevent duplicate jobs from being created and ensure idempotency for your requests. A client request token can be any string that includes up to 64 ASCII characters. If you reuse a client request token within one minute of a successful request, the API returns the job details of the original request instead. For more information see https:​//docs.aws.amazon.com/mediaconvert/latest/apireference/idempotency.html.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in Unix epoch format in seconds, when the job got created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentPhase" /></td>
+    <td><CopyableCode code="current_phase" /></td>
     <td><code>string</code></td>
     <td>A job's phase can be PROBING, TRANSCODING OR UPLOADING (PROBING, TRANSCODING, UPLOADING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElementalInferenceConfiguration" /></td>
+    <td><CopyableCode code="elemental_inference_configuration" /></td>
     <td><code>object</code></td>
     <td>The Elemental Inference configuration used in this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>integer</code></td>
     <td>Error code for the job</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message of Job</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HopDestinations" /></td>
+    <td><CopyableCode code="hop_destinations" /></td>
     <td><code>array</code></td>
     <td>Optional list of hop destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A portion of the job's ARN, unique within your AWS Elemental MediaConvert resources</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobEngineVersionRequested" /></td>
+    <td><CopyableCode code="job_engine_version_requested" /></td>
     <td><code>string</code></td>
     <td>The Job engine version that you requested for your job. Valid versions are in a YYYY-MM-DD format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobEngineVersionUsed" /></td>
+    <td><CopyableCode code="job_engine_version_used" /></td>
     <td><code>string</code></td>
     <td>The Job engine version that your job used. Job engine versions are in a YYYY-MM-DD format. When you request an expired version, the response for this property will be empty. Requests to create jobs with an expired version result in a regular job, as if no specific Job engine version was requested. When you request an invalid version, the response for this property will be empty. Requests to create jobs with an invalid version result in a 400 error message, and no job is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobPercentComplete" /></td>
+    <td><CopyableCode code="job_percent_complete" /></td>
     <td><code>integer</code></td>
     <td>An estimate of how far your job has progressed. This estimate is shown as a percentage of the total time from when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS Elemental MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response to GetJob and ListJobs requests. The jobPercentComplete estimate is reliable for the following input containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, the service can't provide information about job progress. In those cases, jobPercentComplete returns a null value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobTemplate" /></td>
+    <td><CopyableCode code="job_template" /></td>
     <td><code>string</code></td>
     <td>The job template that the job is created from, if it is created from a job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastShareDetails" /></td>
+    <td><CopyableCode code="last_share_details" /></td>
     <td><code>string</code></td>
     <td>Contains information about the most recent share attempt for the job. For more information, see https:​//docs.aws.amazon.com/mediaconvert/latest/ug/creating-resource-share.html</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>object</code></td>
     <td>Provides messages from the service about jobs that you have already successfully submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputGroupDetails" /></td>
+    <td><CopyableCode code="output_group_details" /></td>
     <td><code>array</code></td>
     <td>List of output group details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>Relative priority on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Queue" /></td>
+    <td><CopyableCode code="queue" /></td>
     <td><code>string</code></td>
     <td>When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueTransitions" /></td>
+    <td><CopyableCode code="queue_transitions" /></td>
     <td><code>array</code></td>
     <td>The job's queue hopping history.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetryCount" /></td>
+    <td><CopyableCode code="retry_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times that the service automatically attempted to process your job after encountering an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>JobSettings contains all the transcode settings for a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>A job's share status can be NOT_SHARED, INITIATED, or SHARED (NOT_SHARED, INITIATED, SHARED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SimulateReservedQueue" /></td>
+    <td><CopyableCode code="simulate_reserved_queue" /></td>
     <td><code>string</code></td>
     <td>Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default. (DISABLED, ENABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR. (SUBMITTED, PROGRESSING, COMPLETE, CANCELED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusUpdateInterval" /></td>
+    <td><CopyableCode code="status_update_interval" /></td>
     <td><code>string</code></td>
     <td>Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error. (SECONDS_10, SECONDS_12, SECONDS_15, SECONDS_20, SECONDS_30, SECONDS_60, SECONDS_120, SECONDS_180, SECONDS_240, SECONDS_300, SECONDS_360, SECONDS_420, SECONDS_480, SECONDS_540, SECONDS_600)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timing" /></td>
+    <td><CopyableCode code="timing" /></td>
     <td><code>object</code></td>
     <td>Information about when jobs are submitted, started, and finished is specified in Unix epoch format in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserMetadata" /></td>
+    <td><CopyableCode code="user_metadata" /></td>
     <td><code>object</code></td>
     <td>User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>Contains any warning messages for the job. Use to help identify potential issues with your input, output, or job. For more information, see https:​//docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html</td>
 </tr>
@@ -225,162 +225,162 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccelerationSettings" /></td>
+    <td><CopyableCode code="acceleration_settings" /></td>
     <td><code>object</code></td>
     <td>Accelerated transcoding can significantly speed up jobs with long, visually complex content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccelerationStatus" /></td>
+    <td><CopyableCode code="acceleration_status" /></td>
     <td><code>string</code></td>
     <td>Describes whether the current job is running with accelerated transcoding. For jobs that have Acceleration (AccelerationMode) set to DISABLED, AccelerationStatus is always NOT_APPLICABLE. For jobs that have Acceleration (AccelerationMode) set to ENABLED or PREFERRED, AccelerationStatus is one of the other states. AccelerationStatus is IN_PROGRESS initially, while the service determines whether the input files and job settings are compatible with accelerated transcoding. If they are, AcclerationStatus is ACCELERATED. If your input files and job settings aren't compatible with accelerated transcoding, the service either fails your job or runs it without accelerated transcoding, depending on how you set Acceleration (AccelerationMode). When the service runs your job without accelerated transcoding, AccelerationStatus is NOT_ACCELERATED. (NOT_APPLICABLE, IN_PROGRESS, ACCELERATED, NOT_ACCELERATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingTagsSource" /></td>
+    <td><CopyableCode code="billing_tags_source" /></td>
     <td><code>string</code></td>
     <td>The tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. (QUEUE, PRESET, JOB_TEMPLATE, JOB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>Prevent duplicate jobs from being created and ensure idempotency for your requests. A client request token can be any string that includes up to 64 ASCII characters. If you reuse a client request token within one minute of a successful request, the API returns the job details of the original request instead. For more information see https:​//docs.aws.amazon.com/mediaconvert/latest/apireference/idempotency.html.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in Unix epoch format in seconds, when the job got created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentPhase" /></td>
+    <td><CopyableCode code="current_phase" /></td>
     <td><code>string</code></td>
     <td>A job's phase can be PROBING, TRANSCODING OR UPLOADING (PROBING, TRANSCODING, UPLOADING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElementalInferenceConfiguration" /></td>
+    <td><CopyableCode code="elemental_inference_configuration" /></td>
     <td><code>object</code></td>
     <td>The Elemental Inference configuration used in this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>integer</code></td>
     <td>Error code for the job</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message of Job</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HopDestinations" /></td>
+    <td><CopyableCode code="hop_destinations" /></td>
     <td><code>array</code></td>
     <td>Optional list of hop destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A portion of the job's ARN, unique within your AWS Elemental MediaConvert resources</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobEngineVersionRequested" /></td>
+    <td><CopyableCode code="job_engine_version_requested" /></td>
     <td><code>string</code></td>
     <td>The Job engine version that you requested for your job. Valid versions are in a YYYY-MM-DD format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobEngineVersionUsed" /></td>
+    <td><CopyableCode code="job_engine_version_used" /></td>
     <td><code>string</code></td>
     <td>The Job engine version that your job used. Job engine versions are in a YYYY-MM-DD format. When you request an expired version, the response for this property will be empty. Requests to create jobs with an expired version result in a regular job, as if no specific Job engine version was requested. When you request an invalid version, the response for this property will be empty. Requests to create jobs with an invalid version result in a 400 error message, and no job is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobPercentComplete" /></td>
+    <td><CopyableCode code="job_percent_complete" /></td>
     <td><code>integer</code></td>
     <td>An estimate of how far your job has progressed. This estimate is shown as a percentage of the total time from when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS Elemental MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response to GetJob and ListJobs requests. The jobPercentComplete estimate is reliable for the following input containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, the service can't provide information about job progress. In those cases, jobPercentComplete returns a null value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobTemplate" /></td>
+    <td><CopyableCode code="job_template" /></td>
     <td><code>string</code></td>
     <td>The job template that the job is created from, if it is created from a job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastShareDetails" /></td>
+    <td><CopyableCode code="last_share_details" /></td>
     <td><code>string</code></td>
     <td>Contains information about the most recent share attempt for the job. For more information, see https:​//docs.aws.amazon.com/mediaconvert/latest/ug/creating-resource-share.html</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>object</code></td>
     <td>Provides messages from the service about jobs that you have already successfully submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputGroupDetails" /></td>
+    <td><CopyableCode code="output_group_details" /></td>
     <td><code>array</code></td>
     <td>List of output group details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>Relative priority on the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Queue" /></td>
+    <td><CopyableCode code="queue" /></td>
     <td><code>string</code></td>
     <td>When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueTransitions" /></td>
+    <td><CopyableCode code="queue_transitions" /></td>
     <td><code>array</code></td>
     <td>The job's queue hopping history.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetryCount" /></td>
+    <td><CopyableCode code="retry_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times that the service automatically attempted to process your job after encountering an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>JobSettings contains all the transcode settings for a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>A job's share status can be NOT_SHARED, INITIATED, or SHARED (NOT_SHARED, INITIATED, SHARED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SimulateReservedQueue" /></td>
+    <td><CopyableCode code="simulate_reserved_queue" /></td>
     <td><code>string</code></td>
     <td>Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default. (DISABLED, ENABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR. (SUBMITTED, PROGRESSING, COMPLETE, CANCELED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusUpdateInterval" /></td>
+    <td><CopyableCode code="status_update_interval" /></td>
     <td><code>string</code></td>
     <td>Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error. (SECONDS_10, SECONDS_12, SECONDS_15, SECONDS_20, SECONDS_30, SECONDS_60, SECONDS_120, SECONDS_180, SECONDS_240, SECONDS_300, SECONDS_360, SECONDS_420, SECONDS_480, SECONDS_540, SECONDS_600)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timing" /></td>
+    <td><CopyableCode code="timing" /></td>
     <td><code>object</code></td>
     <td>Information about when jobs are submitted, started, and finished is specified in Unix epoch format in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserMetadata" /></td>
+    <td><CopyableCode code="user_metadata" /></td>
     <td><code>object</code></td>
     <td>User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>Contains any warning messages for the job. Use to help identify potential issues with your input, output, or job. For more information, see https:​//docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html</td>
 </tr>
@@ -520,38 +520,38 @@ Retrieve the JSON for a specific transcoding job.
 
 ```sql
 SELECT
-AccelerationSettings,
-AccelerationStatus,
-Arn,
-BillingTagsSource,
-ClientRequestToken,
-CreatedAt,
-CurrentPhase,
-ElementalInferenceConfiguration,
-ErrorCode,
-ErrorMessage,
-HopDestinations,
-Id,
-JobEngineVersionRequested,
-JobEngineVersionUsed,
-JobPercentComplete,
-JobTemplate,
-LastShareDetails,
-Messages,
-OutputGroupDetails,
-Priority,
-Queue,
-QueueTransitions,
-RetryCount,
-Role,
-Settings,
-ShareStatus,
-SimulateReservedQueue,
-Status,
-StatusUpdateInterval,
-Timing,
-UserMetadata,
-Warnings
+acceleration_settings,
+acceleration_status,
+arn,
+billing_tags_source,
+client_request_token,
+created_at,
+current_phase,
+elemental_inference_configuration,
+error_code,
+error_message,
+hop_destinations,
+id,
+job_engine_version_requested,
+job_engine_version_used,
+job_percent_complete,
+job_template,
+last_share_details,
+messages,
+output_group_details,
+priority,
+queue,
+queue_transitions,
+retry_count,
+role,
+settings,
+share_status,
+simulate_reserved_queue,
+status,
+status_update_interval,
+timing,
+user_metadata,
+warnings
 FROM aws.mediaconvert.jobs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -564,38 +564,38 @@ Retrieve a JSON array of up to twenty of your most recently created jobs. This a
 
 ```sql
 SELECT
-AccelerationSettings,
-AccelerationStatus,
-Arn,
-BillingTagsSource,
-ClientRequestToken,
-CreatedAt,
-CurrentPhase,
-ElementalInferenceConfiguration,
-ErrorCode,
-ErrorMessage,
-HopDestinations,
-Id,
-JobEngineVersionRequested,
-JobEngineVersionUsed,
-JobPercentComplete,
-JobTemplate,
-LastShareDetails,
-Messages,
-OutputGroupDetails,
-Priority,
-Queue,
-QueueTransitions,
-RetryCount,
-Role,
-Settings,
-ShareStatus,
-SimulateReservedQueue,
-Status,
-StatusUpdateInterval,
-Timing,
-UserMetadata,
-Warnings
+acceleration_settings,
+acceleration_status,
+arn,
+billing_tags_source,
+client_request_token,
+created_at,
+current_phase,
+elemental_inference_configuration,
+error_code,
+error_message,
+hop_destinations,
+id,
+job_engine_version_requested,
+job_engine_version_used,
+job_percent_complete,
+job_template,
+last_share_details,
+messages,
+output_group_details,
+priority,
+queue,
+queue_transitions,
+retry_count,
+role,
+settings,
+share_status,
+simulate_reserved_queue,
+status,
+status_update_interval,
+timing,
+user_metadata,
+warnings
 FROM aws.mediaconvert.jobs
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -675,7 +675,7 @@ SELECT
 '{{ UserMetadata }}',
 '{{ region }}'
 RETURNING
-Job
+job
 ;
 ```
 </TabItem>

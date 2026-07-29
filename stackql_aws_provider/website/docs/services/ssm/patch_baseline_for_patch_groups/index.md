@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaselineId" /></td>
+    <td><CopyableCode code="baseline_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the patch baseline that should be used for the patch group. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-:/&#93;&#123;20,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>The operating system rule specified for patch groups using the patch baseline. (WINDOWS, AMAZON_LINUX, AMAZON_LINUX_2, AMAZON_LINUX_2022, UBUNTU, REDHAT_ENTERPRISE_LINUX, SUSE, CENTOS, ORACLE_LINUX, DEBIAN, MACOS, RASPBIAN, ROCKY_LINUX, ALMA_LINUX, AMAZON_LINUX_2023)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PatchGroup" /></td>
+    <td><CopyableCode code="patch_group" /></td>
     <td><code>string</code></td>
     <td>The name of the patch group. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves the patch baseline that should be used for the specified patch group.
 
 ```sql
 SELECT
-BaselineId,
-OperatingSystem,
-PatchGroup
+baseline_id,
+operating_system,
+patch_group
 FROM aws.ssm.patch_baseline_for_patch_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -178,8 +178,8 @@ SELECT
 '{{ PatchGroup }}' /* required */,
 '{{ region }}'
 RETURNING
-BaselineId,
-PatchGroup
+baseline_id,
+patch_group
 ;
 ```
 </TabItem>

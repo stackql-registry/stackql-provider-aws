@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Amazon Q App for which permissions are returned.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of permissions granted for the Amazon Q App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q App for which permissions are returned.</td>
 </tr>
@@ -146,9 +146,9 @@ Describes read permissions for a Amazon Q App in Amazon Q Business application e
 
 ```sql
 SELECT
-appId,
+app_id,
 permissions,
-resourceArn
+resource_arn
 FROM aws.qapps.q_app_permissions
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND appId = '{{ appId }}' -- required
@@ -182,9 +182,9 @@ WHERE
 AND region = '{{ region }}' --required
 AND appId = '{{ appId }}' --required
 RETURNING
-appId,
+app_id,
 permissions,
-resourceArn;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

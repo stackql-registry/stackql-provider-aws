@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>string</code></td>
     <td>Attributes for platform application object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformApplicationArn" /></td>
+    <td><CopyableCode code="platform_application_arn" /></td>
     <td><code>string</code></td>
     <td>PlatformApplicationArn for platform application object.</td>
 </tr>
@@ -180,8 +180,8 @@ Lists the platform application objects for the supported push notification servi
 
 ```sql
 SELECT
-Attributes,
-PlatformApplicationArn
+attributes,
+platform_application_arn
 FROM aws.sns.platform_applications
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -218,7 +218,7 @@ SELECT
 '{{ region }}',
 '{{ Attributes }}'
 RETURNING
-PlatformApplicationArn
+platform_application_arn
 ;
 ```
 </TabItem>
@@ -241,7 +241,7 @@ SELECT
 '{{ CustomUserData }}',
 '{{ Attributes }}'
 RETURNING
-EndpointArn
+endpoint_arn
 ;
 ```
 </TabItem>

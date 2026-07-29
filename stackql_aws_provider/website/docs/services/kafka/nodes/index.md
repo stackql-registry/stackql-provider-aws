@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddedToClusterTime" /></td>
+    <td><CopyableCode code="added_to_cluster_time" /></td>
     <td><code>string</code></td>
     <td>The start time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerNodeInfo" /></td>
+    <td><CopyableCode code="broker_node_info" /></td>
     <td><code>object</code></td>
     <td>The broker node info.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ControllerNodeInfo" /></td>
+    <td><CopyableCode code="controller_node_info" /></td>
     <td><code>object</code></td>
     <td>The ControllerNodeInfo.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeARN" /></td>
+    <td><CopyableCode code="node_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type. (BROKER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZookeeperNodeInfo" /></td>
+    <td><CopyableCode code="zookeeper_node_info" /></td>
     <td><code>object</code></td>
     <td>The ZookeeperNodeInfo.</td>
 </tr>
@@ -164,13 +164,13 @@ Returns a list of the broker nodes in the cluster.
 
 ```sql
 SELECT
-AddedToClusterTime,
-BrokerNodeInfo,
-ControllerNodeInfo,
-InstanceType,
-NodeARN,
-NodeType,
-ZookeeperNodeInfo
+added_to_cluster_time,
+broker_node_info,
+controller_node_info,
+instance_type,
+node_arn,
+node_type,
+zookeeper_node_info
 FROM aws.kafka.nodes
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required

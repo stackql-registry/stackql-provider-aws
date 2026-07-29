@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique bot ID of the replicated bot being monitored. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botReplicaStatus" /></td>
+    <td><CopyableCode code="bot_replica_status" /></td>
     <td><code>string</code></td>
     <td>The operational status of the replicated bot being monitored. (Enabling, Enabled, Deleting, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time of the replicated bot being monitored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>The failure reasons the bot being monitored failed to replicate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicaRegion" /></td>
+    <td><CopyableCode code="replica_region" /></td>
     <td><code>string</code></td>
     <td>The region that contains the replicated bots. Minimum value = 2, maximum value = 25.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceRegion" /></td>
+    <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
     <td>The region that contains the replicated bots. Minimum value = 2, maximum value = 25.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>the unique bot IDs in the list of replicated bots. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botReplicaSummaries" /></td>
+    <td><CopyableCode code="bot_replica_summaries" /></td>
     <td><code>array</code></td>
     <td>The summary details for the replicated bots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceRegion" /></td>
+    <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
     <td>The region that contains the replicated bots. Minimum value = 2, maximum value = 25.</td>
 </tr>
@@ -206,12 +206,12 @@ Monitors the bot replication status through the UI console.
 
 ```sql
 SELECT
-botId,
-botReplicaStatus,
-creationDateTime,
-failureReasons,
-replicaRegion,
-sourceRegion
+bot_id,
+bot_replica_status,
+creation_date_time,
+failure_reasons,
+replica_region,
+source_region
 FROM aws.lexv2_models.bot_replicas
 WHERE bot_id = '{{ bot_id }}' -- required
 AND replica_region = '{{ replica_region }}' -- required
@@ -225,9 +225,9 @@ The action to list the replicated bots.
 
 ```sql
 SELECT
-botId,
-botReplicaSummaries,
-sourceRegion
+bot_id,
+bot_replica_summaries,
+source_region
 FROM aws.lexv2_models.bot_replicas
 WHERE bot_id = '{{ bot_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -261,11 +261,11 @@ SELECT
 '{{ bot_id }}',
 '{{ region }}'
 RETURNING
-botId,
-botReplicaStatus,
-creationDateTime,
-replicaRegion,
-sourceRegion
+bot_id,
+bot_replica_status,
+creation_date_time,
+replica_region,
+source_region
 ;
 ```
 </TabItem>

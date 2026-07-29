@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Effect" /></td>
+    <td><CopyableCode code="effect" /></td>
     <td><code>string</code></td>
     <td>The rule effect. (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchedRules" /></td>
+    <td><CopyableCode code="matched_rules" /></td>
     <td><code>array</code></td>
     <td>The rules that match the given parameters, resulting in an effect.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets the effects of an organization's access control rules as they apply to a sp
 
 ```sql
 SELECT
-Effect,
-MatchedRules
+effect,
+matched_rules
 FROM aws.workmail.access_control_effects
 WHERE region = '{{ region }}' -- required
 ;

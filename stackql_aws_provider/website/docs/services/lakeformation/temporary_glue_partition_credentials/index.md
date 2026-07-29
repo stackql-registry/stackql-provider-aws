@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessKeyId" /></td>
+    <td><CopyableCode code="access_key_id" /></td>
     <td><code>string</code></td>
     <td>The access key ID for the temporary credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expiration" /></td>
+    <td><CopyableCode code="expiration" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the temporary credentials expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretAccessKey" /></td>
+    <td><CopyableCode code="secret_access_key" /></td>
     <td><code>string</code></td>
     <td>The secret key for the temporary credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionToken" /></td>
+    <td><CopyableCode code="session_token" /></td>
     <td><code>string</code></td>
     <td>The session token for the temporary credentials.</td>
 </tr>
@@ -134,10 +134,10 @@ This API is identical to GetTemporaryTableCredentials except that this is used w
 
 ```sql
 SELECT
-AccessKeyId,
-Expiration,
-SecretAccessKey,
-SessionToken
+access_key_id,
+expiration,
+secret_access_key,
+session_token
 FROM aws.lakeformation.temporary_glue_partition_credentials
 WHERE region = '{{ region }}' -- required
 ;

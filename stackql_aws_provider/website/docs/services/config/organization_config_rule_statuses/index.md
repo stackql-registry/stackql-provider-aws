@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code that is returned when organization Config rule creation or deletion has failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message indicating that organization Config rule creation or deletion failed due to an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConfigRuleName" /></td>
+    <td><CopyableCode code="organization_config_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assign to organization Config rule. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationRuleStatus" /></td>
+    <td><CopyableCode code="organization_rule_status" /></td>
     <td><code>string</code></td>
     <td>Indicates deployment status of an organization Config rule. When management account calls PutOrganizationConfigRule action for the first time, Config rule status is created in all the member accounts. When management account calls PutOrganizationConfigRule action for the second time, Config rule status is updated in all the member accounts. Additionally, Config rule status is updated when one or more member accounts join or leave an organization. Config rule status is deleted when the management account deletes OrganizationConfigRule in all the member accounts and disables service access for config-multiaccountsetup.amazonaws.com. Config sets the state of the rule to: CREATE_SUCCESSFUL when an organization Config rule has been successfully created in all the member accounts. CREATE_IN_PROGRESS when an organization Config rule creation is in progress. CREATE_FAILED when an organization Config rule creation failed in one or more member accounts within that organization. DELETE_FAILED when an organization Config rule deletion failed in one or more member accounts within that organization. DELETE_IN_PROGRESS when an organization Config rule deletion is in progress. DELETE_SUCCESSFUL when an organization Config rule has been successfully deleted from all the member accounts. UPDATE_SUCCESSFUL when an organization Config rule has been successfully updated in all the member accounts. UPDATE_IN_PROGRESS when an organization Config rule update is in progress. UPDATE_FAILED when an organization Config rule update failed in one or more member accounts within that organization. (CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_IN_PROGRESS, UPDATE_FAILED)</td>
 </tr>
@@ -139,11 +139,11 @@ Provides organization Config rule deployment status for an organization. The sta
 
 ```sql
 SELECT
-ErrorCode,
-ErrorMessage,
-LastUpdateTime,
-OrganizationConfigRuleName,
-OrganizationRuleStatus
+error_code,
+error_message,
+last_update_time,
+organization_config_rule_name,
+organization_rule_status
 FROM aws.config.organization_config_rule_statuses
 WHERE region = '{{ region }}' -- required
 ;

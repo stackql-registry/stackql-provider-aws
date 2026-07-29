@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalDetails" /></td>
+    <td><CopyableCode code="additional_details" /></td>
     <td><code>string</code></td>
     <td>Additional information about the planned maintenance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupIpId" /></td>
+    <td><CopyableCode code="backup_ip_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupVnic2Id" /></td>
+    <td><CopyableCode code="backup_vnic_2_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the second backup VNIC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupVnicId" /></td>
+    <td><CopyableCode code="backup_vnic_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the backup VNIC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCoreCount" /></td>
+    <td><CopyableCode code="cpu_core_count" /></td>
     <td><code>integer</code></td>
     <td>Number of CPU cores enabled on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the DB node was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeArn" /></td>
+    <td><CopyableCode code="db_node_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the DB node. (pattern: &lt;code&gt;arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-z0-9-_&#93;&#123;6,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeId" /></td>
+    <td><CopyableCode code="db_node_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the DB node. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of local node storage, in gigabytes (GBs), that's allocated on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServerId" /></td>
+    <td><CopyableCode code="db_server_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Db server that is associated with the DB node. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbSystemId" /></td>
+    <td><CopyableCode code="db_system_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the DB system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="faultDomain" /></td>
+    <td><CopyableCode code="fault_domain" /></td>
     <td><code>string</code></td>
     <td>The name of the fault domain the instance is contained in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="floatingIpAddress" /></td>
+    <td><CopyableCode code="floating_ip_address" /></td>
     <td><code>string</code></td>
     <td>The floating IP address assigned to the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostIpId" /></td>
+    <td><CopyableCode code="host_ip_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the host IP address that's associated with the DB node.</td>
 </tr>
@@ -126,17 +126,17 @@ The following fields are returned by `SELECT` queries:
     <td>The host name for the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceType" /></td>
+    <td><CopyableCode code="maintenance_type" /></td>
     <td><code>string</code></td>
     <td>The type of database node maintenance. Either VMDB_REBOOT_MIGRATION or EXADBXS_REBOOT_MIGRATION. (VMDB_REBOOT_MIGRATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeInGBs" /></td>
+    <td><CopyableCode code="memory_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The allocated memory in GBs on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor for the DB node.</td>
 </tr>
@@ -146,12 +146,12 @@ The following fields are returned by `SELECT` queries:
     <td>The OCID of the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateIpAddress" /></td>
+    <td><CopyableCode code="private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The private IP address assigned to the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareStorageSizeInGB" /></td>
+    <td><CopyableCode code="software_storage_size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size (in GB) of the block storage volume allocation for the DB system.</td>
 </tr>
@@ -161,32 +161,32 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the DB node. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, STOPPING, STOPPED, STARTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeMaintenanceWindowEnd" /></td>
+    <td><CopyableCode code="time_maintenance_window_end" /></td>
     <td><code>string</code></td>
     <td>End date and time of maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeMaintenanceWindowStart" /></td>
+    <td><CopyableCode code="time_maintenance_window_start" /></td>
     <td><code>string</code></td>
     <td>Start date and time of maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalCpuCoreCount" /></td>
+    <td><CopyableCode code="total_cpu_core_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores reserved on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnic2Id" /></td>
+    <td><CopyableCode code="vnic_2_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the second VNIC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnicId" /></td>
+    <td><CopyableCode code="vnic_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the VNIC.</td>
 </tr>
@@ -205,67 +205,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalDetails" /></td>
+    <td><CopyableCode code="additional_details" /></td>
     <td><code>string</code></td>
     <td>Additional information about the planned maintenance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupIpId" /></td>
+    <td><CopyableCode code="backup_ip_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupVnic2Id" /></td>
+    <td><CopyableCode code="backup_vnic_2_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the second backup virtual network interface card (VNIC) for the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupVnicId" /></td>
+    <td><CopyableCode code="backup_vnic_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the backup VNIC for the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCoreCount" /></td>
+    <td><CopyableCode code="cpu_core_count" /></td>
     <td><code>integer</code></td>
     <td>The number of CPU cores enabled on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the DB node was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeArn" /></td>
+    <td><CopyableCode code="db_node_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the DB node. (pattern: &lt;code&gt;arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-z0-9-_&#93;&#123;6,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeId" /></td>
+    <td><CopyableCode code="db_node_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the DB node. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of local node storage, in gigabytes (GB), that's allocated on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServerId" /></td>
+    <td><CopyableCode code="db_server_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the database server that's associated with the DB node. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbSystemId" /></td>
+    <td><CopyableCode code="db_system_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the DB system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="faultDomain" /></td>
+    <td><CopyableCode code="fault_domain" /></td>
     <td><code>string</code></td>
     <td>The name of the fault domain where the DB node is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostIpId" /></td>
+    <td><CopyableCode code="host_ip_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the host IP address that's associated with the DB node.</td>
 </tr>
@@ -275,17 +275,17 @@ The following fields are returned by `SELECT` queries:
     <td>The host name for the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceType" /></td>
+    <td><CopyableCode code="maintenance_type" /></td>
     <td><code>string</code></td>
     <td>The type of maintenance the DB node. (VMDB_REBOOT_MIGRATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeInGBs" /></td>
+    <td><CopyableCode code="memory_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of memory, in gigabytes (GB), that allocated on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor for the DB node.</td>
 </tr>
@@ -295,7 +295,7 @@ The following fields are returned by `SELECT` queries:
     <td>The OCID of the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareStorageSizeInGB" /></td>
+    <td><CopyableCode code="software_storage_size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the block storage volume, in gigabytes (GB), that's allocated for the DB system. This attribute applies only for virtual machine DB systems.</td>
 </tr>
@@ -305,32 +305,32 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the DB node. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, STOPPING, STOPPED, STARTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeMaintenanceWindowEnd" /></td>
+    <td><CopyableCode code="time_maintenance_window_end" /></td>
     <td><code>string</code></td>
     <td>The end date and time of the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeMaintenanceWindowStart" /></td>
+    <td><CopyableCode code="time_maintenance_window_start" /></td>
     <td><code>string</code></td>
     <td>The start date and time of the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalCpuCoreCount" /></td>
+    <td><CopyableCode code="total_cpu_core_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores reserved on the DB node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnic2Id" /></td>
+    <td><CopyableCode code="vnic_2_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the second VNIC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnicId" /></td>
+    <td><CopyableCode code="vnic_id" /></td>
     <td><code>string</code></td>
     <td>The OCID of the VNIC.</td>
 </tr>
@@ -407,34 +407,34 @@ Returns information about the specified DB node.
 
 ```sql
 SELECT
-additionalDetails,
-backupIpId,
-backupVnic2Id,
-backupVnicId,
-cpuCoreCount,
-createdAt,
-dbNodeArn,
-dbNodeId,
-dbNodeStorageSizeInGBs,
-dbServerId,
-dbSystemId,
-faultDomain,
-floatingIpAddress,
-hostIpId,
+additional_details,
+backup_ip_id,
+backup_vnic_2_id,
+backup_vnic_id,
+cpu_core_count,
+created_at,
+db_node_arn,
+db_node_id,
+db_node_storage_size_in_gbs,
+db_server_id,
+db_system_id,
+fault_domain,
+floating_ip_address,
+host_ip_id,
 hostname,
-maintenanceType,
-memorySizeInGBs,
-ociResourceAnchorName,
+maintenance_type,
+memory_size_in_gbs,
+oci_resource_anchor_name,
 ocid,
-privateIpAddress,
-softwareStorageSizeInGB,
+private_ip_address,
+software_storage_size_in_gb,
 status,
-statusReason,
-timeMaintenanceWindowEnd,
-timeMaintenanceWindowStart,
-totalCpuCoreCount,
-vnic2Id,
-vnicId
+status_reason,
+time_maintenance_window_end,
+time_maintenance_window_start,
+total_cpu_core_count,
+vnic_2_id,
+vnic_id
 FROM aws.odb.db_nodes
 WHERE region = '{{ region }}' -- required
 ;
@@ -446,32 +446,32 @@ Returns information about the DB nodes for the specified VM cluster.
 
 ```sql
 SELECT
-additionalDetails,
-backupIpId,
-backupVnic2Id,
-backupVnicId,
-cpuCoreCount,
-createdAt,
-dbNodeArn,
-dbNodeId,
-dbNodeStorageSizeInGBs,
-dbServerId,
-dbSystemId,
-faultDomain,
-hostIpId,
+additional_details,
+backup_ip_id,
+backup_vnic_2_id,
+backup_vnic_id,
+cpu_core_count,
+created_at,
+db_node_arn,
+db_node_id,
+db_node_storage_size_in_gbs,
+db_server_id,
+db_system_id,
+fault_domain,
+host_ip_id,
 hostname,
-maintenanceType,
-memorySizeInGBs,
-ociResourceAnchorName,
+maintenance_type,
+memory_size_in_gbs,
+oci_resource_anchor_name,
 ocid,
-softwareStorageSizeInGB,
+software_storage_size_in_gb,
 status,
-statusReason,
-timeMaintenanceWindowEnd,
-timeMaintenanceWindowStart,
-totalCpuCoreCount,
-vnic2Id,
-vnicId
+status_reason,
+time_maintenance_window_end,
+time_maintenance_window_start,
+total_cpu_core_count,
+vnic_2_id,
+vnic_id
 FROM aws.odb.db_nodes
 WHERE region = '{{ region }}' -- required
 ;

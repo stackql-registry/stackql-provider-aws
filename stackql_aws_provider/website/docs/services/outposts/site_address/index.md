@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Address" /></td>
+    <td><CopyableCode code="address" /></td>
     <td><code>object</code></td>
     <td>Information about an address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressType" /></td>
+    <td><CopyableCode code="address_type" /></td>
     <td><code>string</code></td>
     <td>The type of the address you receive. (SHIPPING_ADDRESS, OPERATING_ADDRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the site. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/)?(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -146,9 +146,9 @@ Gets the site address of the specified site.
 
 ```sql
 SELECT
-Address,
-AddressType,
-SiteId
+address,
+address_type,
+site_id
 FROM aws.outposts.site_address
 WHERE site_id = '{{ site_id }}' -- required
 AND AddressType = '{{ AddressType }}' -- required
@@ -181,8 +181,8 @@ site_id = '{{ site_id }}' --required
 AND region = '{{ region }}' --required
 AND AddressType = '{{ AddressType }}' --required
 RETURNING
-Address,
-AddressType;
+address,
+address_type;
 ```
 </TabItem>
 </Tabs>

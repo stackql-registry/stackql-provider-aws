@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>Contains the configuration settings for code security scans.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the scan configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the scan configuration was last updated.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The security level for the scan configuration. (ORGANIZATION, ACCOUNT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanConfigurationArn" /></td>
+    <td><CopyableCode code="scan_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>arn:aws:inspector2:::owner//codesecurity-configuration/ (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:owner/(\d&#123;12&#125;|o-&#91;a-z0-9&#93;&#123;10,32&#125;)/codesecurity-configuration/&#91;a-f0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scopeSettings" /></td>
+    <td><CopyableCode code="scope_settings" /></td>
     <td><code>object</code></td>
     <td>Defines the scope of repositories to be included in code security scans.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of code security scan configuration summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request. For subsequent calls, use the NextToken value returned from the previous request to continue listing results after the first page.</td>
 </tr>
@@ -220,11 +220,11 @@ Retrieves information about a code security scan configuration.
 SELECT
 name,
 configuration,
-createdAt,
-lastUpdatedAt,
+created_at,
+last_updated_at,
 level,
-scanConfigurationArn,
-scopeSettings,
+scan_configuration_arn,
+scope_settings,
 tags
 FROM aws.inspector2.code_security_scan_configurations
 WHERE region = '{{ region }}' -- required
@@ -238,7 +238,7 @@ Lists all code security scan configurations in your account.
 ```sql
 SELECT
 configurations,
-nextToken
+next_token
 FROM aws.inspector2.code_security_scan_configurations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -279,7 +279,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-scanConfigurationArn
+scan_configuration_arn
 ;
 ```
 </TabItem>
@@ -343,7 +343,7 @@ region = '{{ region }}' --required
 AND scanConfigurationArn = '{{ scanConfigurationArn }}' --required
 AND configuration = '{{ configuration }}' --required
 RETURNING
-scanConfigurationArn;
+scan_configuration_arn;
 ```
 </TabItem>
 </Tabs>

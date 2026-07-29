@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The public key fingerprint, a short string used to identify or verify the full public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicKeyMaterial" /></td>
+    <td><CopyableCode code="public_key_material" /></td>
     <td><code>string</code></td>
     <td>Public key material. (pattern: &lt;code&gt;.*-----BEGIN PUBLIC KEY-----\r?\n(&#91;a-zA-Z0-9+/=\r\n&#93;+)\r?\n-----END PUBLIC KEY-----(\r?\n)?.*&lt;/code&gt;)</td>
 </tr>
@@ -187,7 +187,7 @@ SELECT
 name,
 arn,
 fingerprint,
-publicKeyMaterial,
+public_key_material,
 tags
 FROM aws.ivs_realtime.public_keys
 WHERE region = '{{ region }}' -- required

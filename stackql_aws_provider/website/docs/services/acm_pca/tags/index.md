@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>Key (name) of the tag. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>Value of the tag. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the tags, if any, that are associated with your private CA or one that has
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.acm_pca.tags
 WHERE region = '{{ region }}' -- required
 ;

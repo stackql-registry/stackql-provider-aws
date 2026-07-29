@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="UnlockCode" /></td>
+    <td><CopyableCode code="unlock_code" /></td>
     <td><code>string</code></td>
     <td>The UnlockCode value for the specified job. The UnlockCode value can be accessed for up to 360 days after the job has been created. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the UnlockCode code value for the specified job. A particular UnlockCode
 
 ```sql
 SELECT
-UnlockCode
+unlock_code
 FROM aws.snowball.job_unlock_codes
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for an agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the agent status. (ROUTABLE, CUSTOM, OFFLINE)</td>
 </tr>
@@ -95,52 +95,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentStatusARN" /></td>
+    <td><CopyableCode code="agent_status_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AgentStatusId" /></td>
+    <td><CopyableCode code="agent_status_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayOrder" /></td>
+    <td><CopyableCode code="display_order" /></td>
     <td><code>integer</code></td>
     <td>The display order of the agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the agent status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the agent status. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of agent status. (ROUTABLE, CUSTOM, OFFLINE)</td>
 </tr>
@@ -237,12 +237,12 @@ Lists agent statuses.
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Type
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name,
+type
 FROM aws.connect.agent_statuses
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -258,16 +258,16 @@ Searches AgentStatuses in an Amazon Connect instance, with optional filtering.
 
 ```sql
 SELECT
-AgentStatusARN,
-AgentStatusId,
-Description,
-DisplayOrder,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-State,
-Tags,
-Type
+agent_status_arn,
+agent_status_id,
+description,
+display_order,
+last_modified_region,
+last_modified_time,
+name,
+state,
+tags,
+type
 FROM aws.connect.agent_statuses
 WHERE region = '{{ region }}' -- required
 ;

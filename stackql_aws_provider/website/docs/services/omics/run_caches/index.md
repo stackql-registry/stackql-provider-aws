@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>Unique resource identifier for the run cache. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheBehavior" /></td>
+    <td><CopyableCode code="cache_behavior" /></td>
     <td><code>string</code></td>
     <td>The default cache behavior for runs using this cache. (CACHE_ON_FAILURE, CACHE_ALWAYS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheBucketOwnerId" /></td>
+    <td><CopyableCode code="cache_bucket_owner_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bucket owner. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheS3Uri" /></td>
+    <td><CopyableCode code="cache_s3_uri" /></td>
     <td><code>string</code></td>
     <td>Uri to a S3 object or bucket (pattern: &lt;code&gt;s3:​//(&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;)(/(.&#123;0,1024&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the run cache (an ISO 8601 formatted string).</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>Unique resource identifier for the run cache. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheBehavior" /></td>
+    <td><CopyableCode code="cache_behavior" /></td>
     <td><code>string</code></td>
     <td>Default cache behavior for the run cache. (CACHE_ON_FAILURE, CACHE_ALWAYS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheS3Uri" /></td>
+    <td><CopyableCode code="cache_s3_uri" /></td>
     <td><code>string</code></td>
     <td>Uri to a S3 object or bucket (pattern: &lt;code&gt;s3:​//(&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;)(/(.&#123;0,1024&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this run cache was created (an ISO 8601 formatted string).</td>
 </tr>
@@ -261,10 +261,10 @@ SELECT
 id,
 name,
 arn,
-cacheBehavior,
-cacheBucketOwnerId,
-cacheS3Uri,
-creationTime,
+cache_behavior,
+cache_bucket_owner_id,
+cache_s3_uri,
+creation_time,
 description,
 status,
 tags
@@ -283,9 +283,9 @@ SELECT
 id,
 name,
 arn,
-cacheBehavior,
-cacheS3Uri,
-creationTime,
+cache_behavior,
+cache_s3_uri,
+creation_time,
 status
 FROM aws.omics.run_caches
 WHERE region = '{{ region }}' -- required

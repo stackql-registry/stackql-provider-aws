@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SumByAccount" /></td>
+    <td><CopyableCode code="sum_by_account" /></td>
     <td><code>array</code></td>
     <td>The usage statistic sum organized by account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SumByDataSource" /></td>
+    <td><CopyableCode code="sum_by_data_source" /></td>
     <td><code>array</code></td>
     <td>The usage statistic sum organized by on data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SumByFeature" /></td>
+    <td><CopyableCode code="sum_by_feature" /></td>
     <td><code>array</code></td>
     <td>The usage statistic sum organized by feature.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SumByResource" /></td>
+    <td><CopyableCode code="sum_by_resource" /></td>
     <td><code>array</code></td>
     <td>The usage statistic sum organized by resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopAccountsByFeature" /></td>
+    <td><CopyableCode code="top_accounts_by_feature" /></td>
     <td><code>array</code></td>
     <td>Lists the top 50 accounts by feature that have generated the most GuardDuty usage, in the order from most to least expensive. Currently, this doesn't support RDS_LOGIN_EVENTS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopResources" /></td>
+    <td><CopyableCode code="top_resources" /></td>
     <td><code>array</code></td>
     <td>Lists the top 50 resources that have generated the most GuardDuty usage, in order from most to least expensive.</td>
 </tr>
@@ -149,12 +149,12 @@ Lists Amazon GuardDuty usage statistics over the last 30 days for the specified 
 
 ```sql
 SELECT
-SumByAccount,
-SumByDataSource,
-SumByFeature,
-SumByResource,
-TopAccountsByFeature,
-TopResources
+sum_by_account,
+sum_by_data_source,
+sum_by_feature,
+sum_by_resource,
+top_accounts_by_feature,
+top_resources
 FROM aws.guardduty.usage_statistics
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required

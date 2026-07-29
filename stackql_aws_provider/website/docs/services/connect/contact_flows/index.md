@@ -52,72 +52,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language. Length Constraints: Minimum length of 1. Maximum length of 256000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowContentSha256" /></td>
+    <td><CopyableCode code="flow_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>Indicates the checksum value of the flow content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The region in which the flow was last modified (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the flow was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The type of flow. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the flow. For descriptions of the available types, see Choose a flow type in the Amazon Connect Administrator Guide. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The identifier of the flow version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow version.</td>
 </tr>
@@ -136,32 +136,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactFlowState" /></td>
+    <td><CopyableCode code="contact_flow_state" /></td>
     <td><code>string</code></td>
     <td>The type of flow. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactFlowStatus" /></td>
+    <td><CopyableCode code="contact_flow_status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactFlowType" /></td>
+    <td><CopyableCode code="contact_flow_type" /></td>
     <td><code>string</code></td>
     <td>The type of flow. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow.</td>
 </tr>
@@ -180,72 +180,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language. Length Constraints: Minimum length of 1. Maximum length of 256000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowContentSha256" /></td>
+    <td><CopyableCode code="flow_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>Indicates the checksum value of the flow content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The region in which the flow was last modified (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the flow was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The type of flow. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the flow. For descriptions of the available types, see Choose a flow type in the Amazon Connect Administrator Guide. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The identifier of the flow version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow version.</td>
 </tr>
@@ -449,20 +449,20 @@ Describes the specified flow. You can also create and update flows using the Ama
 
 ```sql
 SELECT
-Arn,
-Content,
-Description,
-FlowContentSha256,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-State,
-Status,
-Tags,
-Type,
-Version,
-VersionDescription
+arn,
+content,
+description,
+flow_content_sha_256,
+id,
+last_modified_region,
+last_modified_time,
+name,
+state,
+status,
+tags,
+type,
+version,
+version_description
 FROM aws.connect.contact_flows
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_flow_id = '{{ contact_flow_id }}' -- required
@@ -476,12 +476,12 @@ Provides information about the flows for the specified Amazon Connect instance. 
 
 ```sql
 SELECT
-Arn,
-ContactFlowState,
-ContactFlowStatus,
-ContactFlowType,
-Id,
-Name
+arn,
+contact_flow_state,
+contact_flow_status,
+contact_flow_type,
+id,
+name
 FROM aws.connect.contact_flows
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -497,20 +497,20 @@ Searches the flows in an Amazon Connect instance, with optional filtering.
 
 ```sql
 SELECT
-Arn,
-Content,
-Description,
-FlowContentSha256,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-State,
-Status,
-Tags,
-Type,
-Version,
-VersionDescription
+arn,
+content,
+description,
+flow_content_sha_256,
+id,
+last_modified_region,
+last_modified_time,
+name,
+state,
+status,
+tags,
+type,
+version,
+version_description
 FROM aws.connect.contact_flows
 WHERE region = '{{ region }}' -- required
 ;
@@ -553,9 +553,9 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-ContactFlowArn,
-ContactFlowId,
-FlowContentSha256
+contact_flow_arn,
+contact_flow_id,
+flow_content_sha_256
 ;
 ```
 </TabItem>

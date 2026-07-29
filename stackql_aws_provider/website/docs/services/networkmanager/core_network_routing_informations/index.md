@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AsPath" /></td>
+    <td><CopyableCode code="as_path" /></td>
     <td><code>array</code></td>
     <td>The BGP AS path for the route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Communities" /></td>
+    <td><CopyableCode code="communities" /></td>
     <td><code>array</code></td>
     <td>The BGP community values for the route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalPreference" /></td>
+    <td><CopyableCode code="local_preference" /></td>
     <td><code>string</code></td>
     <td>The BGP local preference value for the route. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Med" /></td>
+    <td><CopyableCode code="med" /></td>
     <td><code>string</code></td>
     <td>The BGP Multi-Exit Discriminator (MED) value for the route. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextHop" /></td>
+    <td><CopyableCode code="next_hop" /></td>
     <td><code>object</code></td>
     <td>The next hop information for the route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Prefix" /></td>
+    <td><CopyableCode code="prefix" /></td>
     <td><code>string</code></td>
     <td>The IP prefix for the route. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -159,12 +159,12 @@ Lists routing information for a core network, including routes and their attribu
 
 ```sql
 SELECT
-AsPath,
-Communities,
-LocalPreference,
-Med,
-NextHop,
-Prefix
+as_path,
+communities,
+local_preference,
+med,
+next_hop,
+prefix
 FROM aws.networkmanager.core_network_routing_informations
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND region = '{{ region }}' -- required

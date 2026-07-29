@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the trained model. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationIdentifier" /></td>
+    <td><CopyableCode code="collaboration_identifier" /></td>
     <td><code>string</code></td>
     <td>The collaboration ID of the collaboration that contains the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmAssociationArn" /></td>
+    <td><CopyableCode code="configured_model_algorithm_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured model algorithm association that was used to create the trained model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/configured-model-algorithm-association/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the trained model was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataChannels" /></td>
+    <td><CopyableCode code="data_channels" /></td>
     <td><code>array</code></td>
     <td>The data channels that were used for the trained model.</td>
 </tr>
@@ -91,42 +91,42 @@ The following fields are returned by `SELECT` queries:
     <td>The hyperparameters that were used to create the trained model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incrementalTrainingDataChannels" /></td>
+    <td><CopyableCode code="incremental_training_data_channels" /></td>
     <td><code>array</code></td>
     <td>Information about the incremental training data channels used to create this version of the trained model. This includes details about the base model that was used for incremental training and the channel configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key. This key is used to encrypt and decrypt customer-owned data in the trained ML model and associated data. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:kms:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logsStatus" /></td>
+    <td><CopyableCode code="logs_status" /></td>
     <td><code>string</code></td>
     <td>The logs status for the trained model. (PUBLISH_SUCCEEDED, PUBLISH_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logsStatusDetails" /></td>
+    <td><CopyableCode code="logs_status_details" /></td>
     <td><code>string</code></td>
     <td>Details about the logs status for the trained model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the member that created the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsStatus" /></td>
+    <td><CopyableCode code="metrics_status" /></td>
     <td><code>string</code></td>
     <td>The status of the model metrics. (PUBLISH_SUCCEEDED, PUBLISH_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsStatusDetails" /></td>
+    <td><CopyableCode code="metrics_status_details" /></td>
     <td><code>string</code></td>
     <td>Details about the metrics status for the trained model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfig" /></td>
+    <td><CopyableCode code="resource_config" /></td>
     <td><code>object</code></td>
     <td>The EC2 resource configuration that was used to create the trained model.</td>
 </tr>
@@ -136,12 +136,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the trained model. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED, INACTIVE, CANCEL_PENDING, CANCEL_IN_PROGRESS, CANCEL_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the status of a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>The stopping condition that was used to terminate model training.</td>
 </tr>
@@ -151,27 +151,27 @@ The following fields are returned by `SELECT` queries:
     <td>The optional metadata that you applied to the resource to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. The following basic restrictions apply to tags: Maximum number of tags per resource - 50. For each resource, each tag key must be unique, and each tag key can have only one value. Maximum key length - 128 Unicode characters in UTF-8. Maximum value length - 256 Unicode characters in UTF-8. If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys and values are case sensitive. Do not use aws:, AWS:, or any upper or lowercase combination of such as a prefix for keys as it is reserved for AWS use. You cannot edit or delete tag keys with this prefix. Values can have this prefix. If a tag value has aws as its prefix but the key does not, then Clean Rooms ML considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not count against your tags per resource limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelArn" /></td>
+    <td><CopyableCode code="trained_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trained model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/trained-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingContainerImageDigest" /></td>
+    <td><CopyableCode code="training_container_image_digest" /></td>
     <td><code>string</code></td>
     <td>Information about the training image container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingInputMode" /></td>
+    <td><CopyableCode code="training_input_mode" /></td>
     <td><code>string</code></td>
     <td>The input mode that was used for accessing the training data when this trained model was created. This indicates how the training data was made available to the training algorithm. (File, FastFile, Pipe)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the trained model was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionIdentifier" /></td>
+    <td><CopyableCode code="version_identifier" /></td>
     <td><code>string</code></td>
     <td>The version identifier of the trained model. This unique identifier distinguishes this version from other versions of the same trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -195,17 +195,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the trained model. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationIdentifier" /></td>
+    <td><CopyableCode code="collaboration_identifier" /></td>
     <td><code>string</code></td>
     <td>The collaboration ID of the collaboration that contains the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmAssociationArn" /></td>
+    <td><CopyableCode code="configured_model_algorithm_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured model algorithm association that was used to create this trained model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/configured-model-algorithm-association/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the trained model was created.</td>
 </tr>
@@ -215,12 +215,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the trained model. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incrementalTrainingDataChannels" /></td>
+    <td><CopyableCode code="incremental_training_data_channels" /></td>
     <td><code>array</code></td>
     <td>Information about the incremental training data channels used to create this version of the trained model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the member that created the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -230,17 +230,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the trained model. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED, INACTIVE, CANCEL_PENDING, CANCEL_IN_PROGRESS, CANCEL_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelArn" /></td>
+    <td><CopyableCode code="trained_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trained model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/trained-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the trained model was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionIdentifier" /></td>
+    <td><CopyableCode code="version_identifier" /></td>
     <td><code>string</code></td>
     <td>The version identifier of this trained model version. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -390,30 +390,30 @@ Returns information about a trained model.
 ```sql
 SELECT
 name,
-collaborationIdentifier,
-configuredModelAlgorithmAssociationArn,
-createTime,
-dataChannels,
+collaboration_identifier,
+configured_model_algorithm_association_arn,
+create_time,
+data_channels,
 description,
 environment,
 hyperparameters,
-incrementalTrainingDataChannels,
-kmsKeyArn,
-logsStatus,
-logsStatusDetails,
-membershipIdentifier,
-metricsStatus,
-metricsStatusDetails,
-resourceConfig,
+incremental_training_data_channels,
+kms_key_arn,
+logs_status,
+logs_status_details,
+membership_identifier,
+metrics_status,
+metrics_status_details,
+resource_config,
 status,
-statusDetails,
-stoppingCondition,
+status_details,
+stopping_condition,
 tags,
-trainedModelArn,
-trainingContainerImageDigest,
-trainingInputMode,
-updateTime,
-versionIdentifier
+trained_model_arn,
+training_container_image_digest,
+training_input_mode,
+update_time,
+version_identifier
 FROM aws.cleanroomsml.trained_models
 WHERE trained_model_arn = '{{ trained_model_arn }}' -- required
 AND membership_identifier = '{{ membership_identifier }}' -- required
@@ -429,16 +429,16 @@ Returns a list of trained models.
 ```sql
 SELECT
 name,
-collaborationIdentifier,
-configuredModelAlgorithmAssociationArn,
-createTime,
+collaboration_identifier,
+configured_model_algorithm_association_arn,
+create_time,
 description,
-incrementalTrainingDataChannels,
-membershipIdentifier,
+incremental_training_data_channels,
+membership_identifier,
 status,
-trainedModelArn,
-updateTime,
-versionIdentifier
+trained_model_arn,
+update_time,
+version_identifier
 FROM aws.cleanroomsml.trained_models
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -496,8 +496,8 @@ SELECT
 '{{ membership_identifier }}',
 '{{ region }}'
 RETURNING
-trainedModelArn,
-versionIdentifier
+trained_model_arn,
+version_identifier
 ;
 ```
 </TabItem>

@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the S3 bucket to which the log data was exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationPrefix" /></td>
+    <td><CopyableCode code="destination_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix that was used as the start of Amazon S3 key for every object exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionInfo" /></td>
+    <td><CopyableCode code="execution_info" /></td>
     <td><code>object</code></td>
     <td>Execution information about the export task.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The start time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time are not exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log group from which logs data was exported. (pattern: &lt;code&gt;&#91;\.\-_/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskName" /></td>
+    <td><CopyableCode code="task_name" /></td>
     <td><code>string</code></td>
     <td>The name of the export task.</td>
 </tr>
@@ -167,13 +167,13 @@ Lists the specified export tasks. You can list all your export tasks or filter t
 ```sql
 SELECT
 destination,
-destinationPrefix,
-executionInfo,
+destination_prefix,
+execution_info,
 from,
-logGroupName,
+log_group_name,
 status,
-taskId,
-taskName,
+task_id,
+task_name,
 to
 FROM aws.logs.export_tasks
 WHERE region = '{{ region }}' -- required
@@ -217,7 +217,7 @@ SELECT
 '{{ destinationPrefix }}',
 '{{ region }}'
 RETURNING
-taskId
+task_id
 ;
 ```
 </TabItem>

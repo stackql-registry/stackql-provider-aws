@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountTakeoverRiskConfiguration" /></td>
+    <td><CopyableCode code="account_takeover_risk_configuration" /></td>
     <td><code>object</code></td>
     <td>The settings for automated responses and notification templates for adaptive authentication with threat protection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientId" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
     <td>The app client where this configuration is applied. When this parameter isn't present, the risk configuration applies to all user pool app clients that don't have client-level settings. (pattern: &lt;code&gt;&#91;\w+&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompromisedCredentialsRiskConfiguration" /></td>
+    <td><CopyableCode code="compromised_credentials_risk_configuration" /></td>
     <td><code>object</code></td>
     <td>Settings for compromised-credentials actions and authentication types with threat protection in full-function ENFORCED mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RiskExceptionConfiguration" /></td>
+    <td><CopyableCode code="risk_exception_configuration" /></td>
     <td><code>object</code></td>
     <td>Exceptions to the risk evaluation configuration, including always-allow and always-block IP address ranges.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool that has the risk configuration applied. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -151,12 +151,12 @@ Given an app client or user pool ID where threat protection is configured, descr
 
 ```sql
 SELECT
-AccountTakeoverRiskConfiguration,
-ClientId,
-CompromisedCredentialsRiskConfiguration,
-LastModifiedDate,
-RiskExceptionConfiguration,
-UserPoolId
+account_takeover_risk_configuration,
+client_id,
+compromised_credentials_risk_configuration,
+last_modified_date,
+risk_exception_configuration,
+user_pool_id
 FROM aws.cognito_idp.risk_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -189,7 +189,7 @@ WHERE
 region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
-RiskConfiguration;
+risk_configuration;
 ```
 </TabItem>
 </Tabs>

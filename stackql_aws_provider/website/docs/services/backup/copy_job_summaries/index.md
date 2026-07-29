@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregationPeriod" /></td>
+    <td><CopyableCode code="aggregation_period" /></td>
     <td><code>string</code></td>
     <td>The period for the returned results. ONE_DAY - The daily job count for the prior 14 days. SEVEN_DAYS - The aggregated job count for the prior 7 days. FOURTEEN_DAYS - The aggregated job count for prior 14 days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyJobSummaries" /></td>
+    <td><CopyableCode code="copy_job_summaries" /></td>
     <td><code>array</code></td>
     <td>This return shows a summary that contains Region, Account, State, ResourceType, MessageCategory, StartTime, EndTime, and Count of included jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next item following a partial list of returned resources. For example, if a request is made to return MaxResults number of resources, NextToken allows you to return more items in your list starting at the location pointed to by the next token.</td>
 </tr>
@@ -164,9 +164,9 @@ This request obtains a list of copy jobs created or running within the the most 
 
 ```sql
 SELECT
-AggregationPeriod,
-CopyJobSummaries,
-NextToken
+aggregation_period,
+copy_job_summaries,
+next_token
 FROM aws.backup.copy_job_summaries
 WHERE region = '{{ region }}' -- required
 AND AccountId = '{{ AccountId }}'

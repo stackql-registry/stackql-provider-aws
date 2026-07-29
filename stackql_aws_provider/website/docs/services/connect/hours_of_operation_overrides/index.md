@@ -52,52 +52,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>array</code></td>
     <td>Configuration information for the hours of operation override: day, start time, and end time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the hours of operation override. (pattern: &lt;code&gt;^&#91;\P&#123;C&#125;\r\n\t&#93;&#123;1,250&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveFrom" /></td>
+    <td><CopyableCode code="effective_from" /></td>
     <td><code>string</code></td>
     <td>The date from which the hours of operation override would be effective. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveTill" /></td>
+    <td><CopyableCode code="effective_till" /></td>
     <td><code>string</code></td>
     <td>The date until the hours of operation override is effective. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationArn" /></td>
+    <td><CopyableCode code="hours_of_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationId" /></td>
+    <td><CopyableCode code="hours_of_operation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationOverrideId" /></td>
+    <td><CopyableCode code="hours_of_operation_override_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation override.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hours of operation override. (pattern: &lt;code&gt;^&#91;\P&#123;C&#125;\r\n\t&#93;&#123;1,127&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverrideType" /></td>
+    <td><CopyableCode code="override_type" /></td>
     <td><code>string</code></td>
     <td>Whether the override will be defined as a standard or as a recurring event. (STANDARD, OPEN, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurrenceConfig" /></td>
+    <td><CopyableCode code="recurrence_config" /></td>
     <td><code>object</code></td>
     <td>Defines the recurrence configuration for overrides. This configuration uses a recurrence pattern to specify when and how frequently an event should repeat.</td>
 </tr>
@@ -116,52 +116,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>array</code></td>
     <td>Configuration information for the hours of operation override: day, start time, and end time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the hours of operation override. (pattern: &lt;code&gt;^&#91;\P&#123;C&#125;\r\n\t&#93;&#123;1,250&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveFrom" /></td>
+    <td><CopyableCode code="effective_from" /></td>
     <td><code>string</code></td>
     <td>The date from which the hours of operation override would be effective. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveTill" /></td>
+    <td><CopyableCode code="effective_till" /></td>
     <td><code>string</code></td>
     <td>The date until the hours of operation override is effective. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationArn" /></td>
+    <td><CopyableCode code="hours_of_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationId" /></td>
+    <td><CopyableCode code="hours_of_operation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationOverrideId" /></td>
+    <td><CopyableCode code="hours_of_operation_override_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation override.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hours of operation override. (pattern: &lt;code&gt;^&#91;\P&#123;C&#125;\r\n\t&#93;&#123;1,127&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverrideType" /></td>
+    <td><CopyableCode code="override_type" /></td>
     <td><code>string</code></td>
     <td>Whether the override will be defined as a standard or as a recurring event. (STANDARD, OPEN, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurrenceConfig" /></td>
+    <td><CopyableCode code="recurrence_config" /></td>
     <td><code>object</code></td>
     <td>Defines the recurrence configuration for overrides. This configuration uses a recurrence pattern to specify when and how frequently an event should repeat.</td>
 </tr>
@@ -180,52 +180,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>array</code></td>
     <td>Configuration information for the hours of operation override: day, start time, and end time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the hours of operation override. (pattern: &lt;code&gt;^&#91;\P&#123;C&#125;\r\n\t&#93;&#123;1,250&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveFrom" /></td>
+    <td><CopyableCode code="effective_from" /></td>
     <td><code>string</code></td>
     <td>The date from which the hours of operation override would be effective. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveTill" /></td>
+    <td><CopyableCode code="effective_till" /></td>
     <td><code>string</code></td>
     <td>The date until the hours of operation override is effective. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationArn" /></td>
+    <td><CopyableCode code="hours_of_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationId" /></td>
+    <td><CopyableCode code="hours_of_operation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationOverrideId" /></td>
+    <td><CopyableCode code="hours_of_operation_override_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation override.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hours of operation override. (pattern: &lt;code&gt;^&#91;\P&#123;C&#125;\r\n\t&#93;&#123;1,127&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverrideType" /></td>
+    <td><CopyableCode code="override_type" /></td>
     <td><code>string</code></td>
     <td>Whether the override will be defined as a standard or as a recurring event. (STANDARD, OPEN, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurrenceConfig" /></td>
+    <td><CopyableCode code="recurrence_config" /></td>
     <td><code>object</code></td>
     <td>Defines the recurrence configuration for overrides. This configuration uses a recurrence pattern to specify when and how frequently an event should repeat.</td>
 </tr>
@@ -356,16 +356,16 @@ Describes the hours of operation override.
 
 ```sql
 SELECT
-Config,
-Description,
-EffectiveFrom,
-EffectiveTill,
-HoursOfOperationArn,
-HoursOfOperationId,
-HoursOfOperationOverrideId,
-Name,
-OverrideType,
-RecurrenceConfig
+config,
+description,
+effective_from,
+effective_till,
+hours_of_operation_arn,
+hours_of_operation_id,
+hours_of_operation_override_id,
+name,
+override_type,
+recurrence_config
 FROM aws.connect.hours_of_operation_overrides
 WHERE instance_id = '{{ instance_id }}' -- required
 AND hours_of_operation_id = '{{ hours_of_operation_id }}' -- required
@@ -380,16 +380,16 @@ List the hours of operation overrides.
 
 ```sql
 SELECT
-Config,
-Description,
-EffectiveFrom,
-EffectiveTill,
-HoursOfOperationArn,
-HoursOfOperationId,
-HoursOfOperationOverrideId,
-Name,
-OverrideType,
-RecurrenceConfig
+config,
+description,
+effective_from,
+effective_till,
+hours_of_operation_arn,
+hours_of_operation_id,
+hours_of_operation_override_id,
+name,
+override_type,
+recurrence_config
 FROM aws.connect.hours_of_operation_overrides
 WHERE instance_id = '{{ instance_id }}' -- required
 AND hours_of_operation_id = '{{ hours_of_operation_id }}' -- required
@@ -405,16 +405,16 @@ Searches the hours of operation overrides.
 
 ```sql
 SELECT
-Config,
-Description,
-EffectiveFrom,
-EffectiveTill,
-HoursOfOperationArn,
-HoursOfOperationId,
-HoursOfOperationOverrideId,
-Name,
-OverrideType,
-RecurrenceConfig
+config,
+description,
+effective_from,
+effective_till,
+hours_of_operation_arn,
+hours_of_operation_id,
+hours_of_operation_override_id,
+name,
+override_type,
+recurrence_config
 FROM aws.connect.hours_of_operation_overrides
 WHERE region = '{{ region }}' -- required
 ;
@@ -461,7 +461,7 @@ SELECT
 '{{ hours_of_operation_id }}',
 '{{ region }}'
 RETURNING
-HoursOfOperationOverrideId
+hours_of_operation_override_id
 ;
 ```
 </TabItem>

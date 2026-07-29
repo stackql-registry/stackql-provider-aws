@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The topic's ARN.</td>
 </tr>
@@ -243,7 +243,7 @@ Returns a list of the requester's topics. Each call returns a limited list of to
 
 ```sql
 SELECT
-TopicArn
+topic_arn
 FROM aws.sns.topics
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -281,7 +281,7 @@ SELECT
 '{{ Tags }}',
 '{{ DataProtectionPolicy }}'
 RETURNING
-TopicArn
+topic_arn
 ;
 ```
 </TabItem>

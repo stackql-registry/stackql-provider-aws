@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="costScaleFactor" /></td>
+    <td><CopyableCode code="cost_scale_factor" /></td>
     <td><code>number (float)</code></td>
     <td>A multiplier applied to calculated costs. Valid range is 0 to 100. Values less than 1.0 represent discounts, values greater than 1.0 represent markups, and a value of 1.0 represents no adjustment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the farm. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the farm. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID of the farm to get. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key used on the farm. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):kms:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(b?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:key/&#91;\w-&#93;&#123;1,120&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -110,37 +110,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the farm. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the KMS key. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):kms:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(b?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:key/&#91;\w-&#93;&#123;1,120&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -282,15 +282,15 @@ Get a farm.
 
 ```sql
 SELECT
-costScaleFactor,
-createdAt,
-createdBy,
+cost_scale_factor,
+created_at,
+created_by,
 description,
-displayName,
-farmId,
-kmsKeyArn,
-updatedAt,
-updatedBy
+display_name,
+farm_id,
+kms_key_arn,
+updated_at,
+updated_by
 FROM aws.deadline.farms
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -303,13 +303,13 @@ Lists farms.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-displayName,
-farmId,
-kmsKeyArn,
-updatedAt,
-updatedBy
+created_at,
+created_by,
+display_name,
+farm_id,
+kms_key_arn,
+updated_at,
+updated_by
 FROM aws.deadline.farms
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -353,7 +353,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-farmId
+farm_id
 ;
 ```
 </TabItem>

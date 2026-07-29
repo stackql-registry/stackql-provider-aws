@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="scopeArn" /></td>
+    <td><CopyableCode code="scope_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the scope. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scopeId" /></td>
+    <td><CopyableCode code="scope_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the scope that includes the resources you want to get data results for. A scope ID is an internally-generated identifier that includes all the resources for a specific root account. A scope ID is returned from a CreateScope API call.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="scopeArn" /></td>
+    <td><CopyableCode code="scope_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the scope. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scopeId" /></td>
+    <td><CopyableCode code="scope_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the scope that includes the resources that you want to get data results for. A scope ID is an internally-generated identifier that includes all the resources for the accounts in a scope.</td>
 </tr>
@@ -246,8 +246,8 @@ Gets information about a scope, including the name, status, tags, and target det
 
 ```sql
 SELECT
-scopeArn,
-scopeId,
+scope_arn,
+scope_id,
 status,
 tags,
 targets
@@ -263,8 +263,8 @@ List all the scopes for an account.
 
 ```sql
 SELECT
-scopeArn,
-scopeId,
+scope_arn,
+scope_id,
 status
 FROM aws.networkflowmonitor.scopes
 WHERE region = '{{ region }}' -- required
@@ -302,8 +302,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-scopeArn,
-scopeId,
+scope_arn,
+scope_id,
 status,
 tags
 ;
@@ -355,8 +355,8 @@ WHERE
 scope_id = '{{ scope_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-scopeArn,
-scopeId,
+scope_arn,
+scope_id,
 status,
 tags;
 ```

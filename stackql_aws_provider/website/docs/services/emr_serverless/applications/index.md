@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the application. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/#-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -71,77 +71,77 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the application. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-serverless:.+:(\d&#123;12&#125;):\/applications\/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoStartConfiguration" /></td>
+    <td><CopyableCode code="auto_start_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for an application to automatically start on job submission.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoStopConfiguration" /></td>
+    <td><CopyableCode code="auto_stop_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for an application to automatically stop after a certain amount of time being idle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the application run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="diskEncryptionConfiguration" /></td>
+    <td><CopyableCode code="disk_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration object that allows encrypting local disks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterConfiguration" /></td>
+    <td><CopyableCode code="identity_center_configuration" /></td>
     <td><code>object</code></td>
     <td>The IAM Identity Center configuration applied to enable trusted identity propagation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageConfiguration" /></td>
+    <td><CopyableCode code="image_configuration" /></td>
     <td><code>object</code></td>
     <td>The image configuration applied to all worker types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="initialCapacity" /></td>
+    <td><CopyableCode code="initial_capacity" /></td>
     <td><code>object</code></td>
     <td>The initial capacity of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interactiveConfiguration" /></td>
+    <td><CopyableCode code="interactive_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration to use to enable the different types of interactive use cases in an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobLevelCostAllocationConfiguration" /></td>
+    <td><CopyableCode code="job_level_cost_allocation_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration object that enables job level cost allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maximumCapacity" /></td>
+    <td><CopyableCode code="maximum_capacity" /></td>
     <td><code>object</code></td>
     <td>The maximum allowed cumulative resources for an application. No new resources will be created once the limit is hit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitoringConfiguration" /></td>
+    <td><CopyableCode code="monitoring_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration setting for monitoring.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration for customer VPC connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The Amazon EMR release associated with the application. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runtimeConfiguration" /></td>
+    <td><CopyableCode code="runtime_configuration" /></td>
     <td><code>array</code></td>
     <td>The Configuration specifications of an application. Each configuration consists of a classification and properties. You use this parameter when creating or updating an application. To see the runtimeConfiguration object of an application, run the GetApplication API operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schedulerConfiguration" /></td>
+    <td><CopyableCode code="scheduler_configuration" /></td>
     <td><code>object</code></td>
     <td>The scheduler configuration for batch and streaming jobs running on this application. Supported with release labels emr-7.0.0 and above.</td>
 </tr>
@@ -151,7 +151,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the application. (CREATING, CREATED, STARTING, STARTED, STOPPING, STOPPED, TERMINATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>The state details of the application. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -166,12 +166,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of application, such as Spark or Hive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the application run was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerTypeSpecifications" /></td>
+    <td><CopyableCode code="worker_type_specifications" /></td>
     <td><code>object</code></td>
     <td>The specification applied to each worker type.</td>
 </tr>
@@ -210,12 +210,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the application. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-serverless:.+:(\d&#123;12&#125;):\/applications\/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The Amazon EMR release associated with the application. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -225,7 +225,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the application. (CREATING, CREATED, STARTING, STARTED, STOPPING, STOPPED, TERMINATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>The state details of the application. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -235,7 +235,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of application, such as Spark or Hive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the application was last updated.</td>
 </tr>
@@ -399,30 +399,30 @@ Displays detailed information about a specified application.
 ```sql
 SELECT
 name,
-applicationId,
+application_id,
 architecture,
 arn,
-autoStartConfiguration,
-autoStopConfiguration,
-createdAt,
-diskEncryptionConfiguration,
-identityCenterConfiguration,
-imageConfiguration,
-initialCapacity,
-interactiveConfiguration,
-jobLevelCostAllocationConfiguration,
-maximumCapacity,
-monitoringConfiguration,
-networkConfiguration,
-releaseLabel,
-runtimeConfiguration,
-schedulerConfiguration,
+auto_start_configuration,
+auto_stop_configuration,
+created_at,
+disk_encryption_configuration,
+identity_center_configuration,
+image_configuration,
+initial_capacity,
+interactive_configuration,
+job_level_cost_allocation_configuration,
+maximum_capacity,
+monitoring_configuration,
+network_configuration,
+release_label,
+runtime_configuration,
+scheduler_configuration,
 state,
-stateDetails,
+state_details,
 tags,
 type_,
-updatedAt,
-workerTypeSpecifications
+updated_at,
+worker_type_specifications
 FROM aws.emr_serverless.applications
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -439,12 +439,12 @@ id,
 name,
 architecture,
 arn,
-createdAt,
-releaseLabel,
+created_at,
+release_label,
 state,
-stateDetails,
+state_details,
 type_,
-updatedAt
+updated_at
 FROM aws.emr_serverless.applications
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -517,7 +517,7 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-applicationId,
+application_id,
 arn
 ;
 ```

@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the workspace. (pattern: &lt;code&gt;arn:((aws)|(aws-cn)|(aws-us-gov)):iottwinmaker:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:&#91;\/a-zA-Z0-9_\-\.:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workspace was created.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the workspace. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkedServices" /></td>
+    <td><CopyableCode code="linked_services" /></td>
     <td><code>array</code></td>
     <td>A list of services that are linked to the workspace.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the execution role associated with the workspace. (pattern: &lt;code&gt;arn:((aws)|(aws-cn)|(aws-us-gov)):iam::&#91;0-9&#93;&#123;12&#125;:role/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Location" /></td>
+    <td><CopyableCode code="s_3_location" /></td>
     <td><code>string</code></td>
     <td>The ARN of the S3 bucket where resources associated with the workspace are stored. (pattern: &lt;code&gt;.*(^arn:((aws)|(aws-cn)|(aws-us-gov)):s3:::)(&#91;a-zA-Z0-9_-&#93;+$).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workspace was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workspace. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceSummaries" /></td>
+    <td><CopyableCode code="workspace_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain information about the workspaces.</td>
 </tr>
@@ -221,13 +221,13 @@ Retrieves information about a workspace.
 ```sql
 SELECT
 arn,
-creationDateTime,
+creation_date_time,
 description,
-linkedServices,
+linked_services,
 role,
-s3Location,
-updateDateTime,
-workspaceId
+s_3_location,
+update_date_time,
+workspace_id
 FROM aws.iottwinmaker.workspaces
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -240,8 +240,8 @@ Retrieves information about workspaces in the current account.
 
 ```sql
 SELECT
-nextToken,
-workspaceSummaries
+next_token,
+workspace_summaries
 FROM aws.iottwinmaker.workspaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -281,7 +281,7 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-creationDateTime
+creation_date_time
 ;
 ```
 </TabItem>
@@ -332,7 +332,7 @@ WHERE
 workspace_id = '{{ workspace_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-updateDateTime;
+update_date_time;
 ```
 </TabItem>
 </Tabs>

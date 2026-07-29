@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the attributes of a link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectivityType" /></td>
+    <td><CopyableCode code="connectivity_type" /></td>
     <td><code>string</code></td>
     <td>The connectivity type of the link. (DEFAULT, PUBLIC_INGRESS, PUBLIC_EGRESS, EXTERNAL_INBOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the link was created.</td>
 </tr>
@@ -71,37 +71,37 @@ The following fields are returned by `SELECT` queries:
     <td>The direction of the link. (RESPONSE, REQUEST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowModules" /></td>
+    <td><CopyableCode code="flow_modules" /></td>
     <td><code>array</code></td>
     <td>The configuration of flow modules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpResponderAllowed" /></td>
+    <td><CopyableCode code="http_responder_allowed" /></td>
     <td><code>boolean</code></td>
     <td>Boolean to specify if an HTTP responder is allowed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the link. (pattern: &lt;code&gt;link-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logSettings" /></td>
+    <td><CopyableCode code="log_settings" /></td>
     <td><code>object</code></td>
     <td>Describes the settings for a link log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peerGatewayId" /></td>
+    <td><CopyableCode code="peer_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the peer gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingFlowModules" /></td>
+    <td><CopyableCode code="pending_flow_modules" /></td>
     <td><code>array</code></td>
     <td>The configuration of pending flow modules.</td>
 </tr>
@@ -116,12 +116,12 @@ The following fields are returned by `SELECT` queries:
     <td>A map of the key-value pairs for the tag or tags assigned to the specified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutInMillis" /></td>
+    <td><CopyableCode code="timeout_in_millis" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timeout value in milliseconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the link was updated.</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the attributes of a link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectivityType" /></td>
+    <td><CopyableCode code="connectivity_type" /></td>
     <td><code>string</code></td>
     <td>The connectivity type of the link. (DEFAULT, PUBLIC_INGRESS, PUBLIC_EGRESS, EXTERNAL_INBOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the link was created.</td>
 </tr>
@@ -160,37 +160,37 @@ The following fields are returned by `SELECT` queries:
     <td>The direction of the link. (RESPONSE, REQUEST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowModules" /></td>
+    <td><CopyableCode code="flow_modules" /></td>
     <td><code>array</code></td>
     <td>Describes the configuration of flow modules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the link. (pattern: &lt;code&gt;link-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logSettings" /></td>
+    <td><CopyableCode code="log_settings" /></td>
     <td><code>object</code></td>
     <td>Describes the settings for a link log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peerGatewayId" /></td>
+    <td><CopyableCode code="peer_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the peer gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingFlowModules" /></td>
+    <td><CopyableCode code="pending_flow_modules" /></td>
     <td><code>array</code></td>
     <td>Describes the configuration of pending flow modules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicEndpoint" /></td>
+    <td><CopyableCode code="public_endpoint" /></td>
     <td><code>string</code></td>
     <td>The public endpoint of the outbound link. (pattern: &lt;code&gt;(https|http):​//.+&lt;/code&gt;)</td>
 </tr>
@@ -205,7 +205,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of the key-value pairs of the tag or tags to assign to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the link was updated.</td>
 </tr>
@@ -345,20 +345,20 @@ Retrieves information about a link between gateways. Returns detailed informatio
 ```sql
 SELECT
 attributes,
-connectivityType,
-createdAt,
+connectivity_type,
+created_at,
 direction,
-flowModules,
-gatewayId,
-httpResponderAllowed,
-linkId,
-logSettings,
-peerGatewayId,
-pendingFlowModules,
+flow_modules,
+gateway_id,
+http_responder_allowed,
+link_id,
+log_settings,
+peer_gateway_id,
+pending_flow_modules,
 status,
 tags,
-timeoutInMillis,
-updatedAt
+timeout_in_millis,
+updated_at
 FROM aws.rtbfabric.links
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND link_id = '{{ link_id }}' -- required
@@ -373,19 +373,19 @@ Lists links associated with gateways. Returns a list of all links for the specif
 ```sql
 SELECT
 attributes,
-connectivityType,
-createdAt,
+connectivity_type,
+created_at,
 direction,
-flowModules,
-gatewayId,
-linkId,
-logSettings,
-peerGatewayId,
-pendingFlowModules,
-publicEndpoint,
+flow_modules,
+gateway_id,
+link_id,
+log_settings,
+peer_gateway_id,
+pending_flow_modules,
+public_endpoint,
 status,
 tags,
-updatedAt
+updated_at
 FROM aws.rtbfabric.links
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -432,18 +432,18 @@ SELECT
 '{{ region }}'
 RETURNING
 attributes,
-connectivityType,
-createdAt,
-customerProvidedId,
+connectivity_type,
+created_at,
+customer_provided_id,
 direction,
-flowModules,
-gatewayId,
-linkId,
-logSettings,
-peerGatewayId,
-pendingFlowModules,
+flow_modules,
+gateway_id,
+link_id,
+log_settings,
+peer_gateway_id,
+pending_flow_modules,
 status,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -515,8 +515,8 @@ AND region = '{{ region }}' --required
 AND clientToken = '{{ clientToken }}' --required
 AND modules = '{{ modules }}' --required
 RETURNING
-gatewayId,
-linkId,
+gateway_id,
+link_id,
 status;
 ```
 </TabItem>
@@ -534,7 +534,7 @@ gateway_id = '{{ gateway_id }}' --required
 AND link_id = '{{ link_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-linkId,
+link_id,
 status;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>Access rules for a domain's document or search service endpoints. For more information, see Configuring Access for a Search Domain in the Amazon CloudSearch Developer Guide. The maximum size of a policy document is 100 KB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of domain configuration option.</td>
 </tr>
@@ -146,8 +146,8 @@ Gets information about the access policies that control access to the domain's d
 
 ```sql
 SELECT
-Options,
-Status
+options,
+status
 FROM aws.cloudsearch.service_access_policies
 WHERE DomainName = '{{ DomainName }}' -- required
 AND region = '{{ region }}' -- required
@@ -179,8 +179,8 @@ DomainName = '{{ DomainName }}' --required
 AND AccessPolicies = '{{ AccessPolicies }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Options,
-Status;
+options,
+status;
 ```
 </TabItem>
 </Tabs>

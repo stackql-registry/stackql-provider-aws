@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyFormat" /></td>
+    <td><CopyableCode code="key_format" /></td>
     <td><code>string</code></td>
     <td>The public endorsement key format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyType" /></td>
+    <td><CopyableCode code="key_type" /></td>
     <td><code>string</code></td>
     <td>The public endorsement key type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyValue" /></td>
+    <td><CopyableCode code="key_value" /></td>
     <td><code>string</code></td>
     <td>The public endorsement key material.</td>
 </tr>
@@ -154,10 +154,10 @@ Gets the public endorsement key associated with the Nitro Trusted Platform Modul
 
 ```sql
 SELECT
-InstanceId,
-KeyFormat,
-KeyType,
-KeyValue
+instance_id,
+key_format,
+key_type,
+key_value
 FROM aws.ec2.instance_tpm_ek_pubs
 WHERE InstanceId = '{{ InstanceId }}' -- required
 AND KeyType = '{{ KeyType }}' -- required

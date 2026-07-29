@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A map of tags that are associated with the resource, where each tag consists of a key-value pair.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists all tags that are associated with a specified Amazon Managed Workflows for
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.mwaa_serverless.tags
 WHERE region = '{{ region }}' -- required
 ;

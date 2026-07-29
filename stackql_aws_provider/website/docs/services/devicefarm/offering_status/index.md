@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>When specified, gets the offering status for the current period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextPeriod" /></td>
+    <td><CopyableCode code="next_period" /></td>
     <td><code>object</code></td>
     <td>When specified, gets the offering status for the next period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</td>
 </tr>
@@ -130,8 +130,8 @@ Gets the current status and future status of all offerings purchased by an AWS a
 ```sql
 SELECT
 current,
-nextPeriod,
-nextToken
+next_period,
+next_token
 FROM aws.devicefarm.offering_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoTunes" /></td>
+    <td><CopyableCode code="auto_tunes" /></td>
     <td><code>array</code></td>
     <td>The list of setting adjustments that Auto-Tune has made to the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -139,8 +139,8 @@ Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearc
 
 ```sql
 SELECT
-AutoTunes,
-NextToken
+auto_tunes,
+next_token
 FROM aws.opensearch.domain_auto_tunes
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The core network id in the association. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListAlias" /></td>
+    <td><CopyableCode code="prefix_list_alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the prefix list in the association. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListArn" /></td>
+    <td><CopyableCode code="prefix_list_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the prefix list in the association. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -168,9 +168,9 @@ Lists the prefix list associations for a core network.
 
 ```sql
 SELECT
-CoreNetworkId,
-PrefixListAlias,
-PrefixListArn
+core_network_id,
+prefix_list_alias,
+prefix_list_arn
 FROM aws.networkmanager.core_network_prefix_list_associations
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -211,9 +211,9 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-CoreNetworkId,
-PrefixListAlias,
-PrefixListArn
+core_network_id,
+prefix_list_alias,
+prefix_list_arn
 ;
 ```
 </TabItem>

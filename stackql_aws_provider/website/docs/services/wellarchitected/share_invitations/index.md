@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareInvitationSummaries" /></td>
+    <td><CopyableCode code="share_invitation_summaries" /></td>
     <td><code>array</code></td>
     <td>List of share invitation summaries in a workload.</td>
 </tr>
@@ -171,8 +171,8 @@ List the share invitations. WorkloadNamePrefix, LensNamePrefix, ProfileNamePrefi
 
 ```sql
 SELECT
-NextToken,
-ShareInvitationSummaries
+next_token,
+share_invitation_summaries
 FROM aws.wellarchitected.share_invitations
 WHERE region = '{{ region }}' -- required
 AND WorkloadNamePrefix = '{{ WorkloadNamePrefix }}'
@@ -209,7 +209,7 @@ share_invitation_id = '{{ share_invitation_id }}' --required
 AND region = '{{ region }}' --required
 AND ShareInvitationAction = '{{ ShareInvitationAction }}' --required
 RETURNING
-ShareInvitation;
+share_invitation;
 ```
 </TabItem>
 </Tabs>

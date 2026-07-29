@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Data" /></td>
+    <td><CopyableCode code="data" /></td>
     <td><code>object</code></td>
     <td>The data returned by the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The query ID.</td>
 </tr>
@@ -124,8 +124,8 @@ View a summary of operations metadata (OpsData) based on specified filters and a
 
 ```sql
 SELECT
-Data,
-Id
+data,
+id
 FROM aws.ssm.ops_summaries
 WHERE region = '{{ region }}' -- required
 ;

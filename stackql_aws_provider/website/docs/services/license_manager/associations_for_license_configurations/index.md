@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiAssociationScope" /></td>
+    <td><CopyableCode code="ami_association_scope" /></td>
     <td><code>string</code></td>
     <td>Scope of AMI associations. The possible value is cross-account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationTime" /></td>
+    <td><CopyableCode code="association_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the license configuration was associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Amazon Web Services account that owns the resource consuming licenses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Type of server resource. (EC2_INSTANCE, EC2_HOST, EC2_AMI, RDS, SYSTEMS_MANAGER_MANAGED_INSTANCE)</td>
 </tr>
@@ -139,11 +139,11 @@ Lists the resource associations for the specified license configuration. Resourc
 
 ```sql
 SELECT
-AmiAssociationScope,
-AssociationTime,
-ResourceArn,
-ResourceOwnerId,
-ResourceType
+ami_association_scope,
+association_time,
+resource_arn,
+resource_owner_id,
+resource_type
 FROM aws.license_manager.associations_for_license_configurations
 WHERE region = '{{ region }}' -- required
 ;

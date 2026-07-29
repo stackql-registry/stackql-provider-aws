@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FpgaImageId" /></td>
+    <td><CopyableCode code="fpga_image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadPermissions" /></td>
+    <td><CopyableCode code="load_permissions" /></td>
     <td><code>string</code></td>
     <td>The load permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the AFI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCodes" /></td>
+    <td><CopyableCode code="product_codes" /></td>
     <td><code>string</code></td>
     <td>The product codes.</td>
 </tr>
@@ -201,11 +201,11 @@ Describes the specified attribute of the specified Amazon FPGA Image (AFI).
 
 ```sql
 SELECT
-Description,
-FpgaImageId,
-LoadPermissions,
-Name,
-ProductCodes
+description,
+fpga_image_id,
+load_permissions,
+name,
+product_codes
 FROM aws.ec2.fpga_image_attributes
 WHERE FpgaImageId = '{{ FpgaImageId }}' -- required
 AND Attribute = '{{ Attribute }}' -- required
@@ -246,11 +246,11 @@ AND LoadPermission = '{{ LoadPermission}}'
 AND Description = '{{ Description}}'
 AND Name = '{{ Name}}'
 RETURNING
-Description,
-FpgaImageId,
-LoadPermissions,
-Name,
-ProductCodes;
+description,
+fpga_image_id,
+load_permissions,
+name,
+product_codes;
 ```
 </TabItem>
 </Tabs>

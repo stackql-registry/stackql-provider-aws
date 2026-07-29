@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>object</code></td>
     <td>The number of resources that match the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If present, indicates that more output is available than is included in the current response. Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the NextToken response element comes back as null. The pagination tokens expire after 24 hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>The list of structures that describe the resources that match the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ViewArn" /></td>
+    <td><CopyableCode code="view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the view that this operation used to perform the search.</td>
 </tr>
@@ -134,10 +134,10 @@ Searches for resources and displays details about all resources that match the s
 
 ```sql
 SELECT
-Count,
-NextToken,
-Resources,
-ViewArn
+count,
+next_token,
+resources,
+view_arn
 FROM aws.resource_explorer_2.search
 WHERE region = '{{ region }}' -- required
 ;

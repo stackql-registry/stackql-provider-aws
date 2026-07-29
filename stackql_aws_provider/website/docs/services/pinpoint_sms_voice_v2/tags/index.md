@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource. (pattern: &lt;code&gt;arn:&#91;A-Za-z0-9_:/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of key and value pair tags that are associated with the resource.</td>
 </tr>
@@ -138,8 +138,8 @@ List all tags associated with a resource.
 
 ```sql
 SELECT
-ResourceArn,
-Tags
+resource_arn,
+tags
 FROM aws.pinpoint_sms_voice_v2.tags
 WHERE region = '{{ region }}' -- required
 ;

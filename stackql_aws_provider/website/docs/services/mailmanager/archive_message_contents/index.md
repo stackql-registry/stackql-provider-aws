@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Html" /></td>
+    <td><CopyableCode code="html" /></td>
     <td><code>string</code></td>
     <td>The HTML body content of the message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageMalformed" /></td>
+    <td><CopyableCode code="message_malformed" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating if the email was malformed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Text" /></td>
+    <td><CopyableCode code="text" /></td>
     <td><code>string</code></td>
     <td>The plain text body content of the message.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the textual content of a specific email message stored in the archive. A
 
 ```sql
 SELECT
-Html,
-MessageMalformed,
-Text
+html,
+message_malformed,
+text
 FROM aws.mailmanager.archive_message_contents
 WHERE region = '{{ region }}' -- required
 ;

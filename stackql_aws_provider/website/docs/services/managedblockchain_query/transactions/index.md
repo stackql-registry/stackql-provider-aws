@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="confirmationStatus" /></td>
+    <td><CopyableCode code="confirmation_status" /></td>
     <td><code>string</code></td>
     <td>Specifies whether to list transactions that have not reached Finality. (FINAL, NONFINAL)</td>
 </tr>
@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The blockchain network where the transaction occurred. (ETHEREUM_MAINNET, ETHEREUM_SEPOLIA_TESTNET, BITCOIN_MAINNET, BITCOIN_TESTNET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionHash" /></td>
+    <td><CopyableCode code="transaction_hash" /></td>
     <td><code>string</code></td>
     <td>The hash of a transaction. It is generated when a transaction is created. (pattern: &lt;code&gt;(0x&#91;A-Fa-f0-9&#93;&#123;64&#125;|&#91;A-Fa-f0-9&#93;&#123;64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionId" /></td>
+    <td><CopyableCode code="transaction_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a Bitcoin transaction. It is generated when a transaction is created. (pattern: &lt;code&gt;(0x&#91;A-Fa-f0-9&#93;&#123;64&#125;|&#91;A-Fa-f0-9&#93;&#123;64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionTimestamp" /></td>
+    <td><CopyableCode code="transaction_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the transaction occurred.</td>
 </tr>
@@ -90,37 +90,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="blockHash" /></td>
+    <td><CopyableCode code="block_hash" /></td>
     <td><code>string</code></td>
     <td>The block hash is a unique identifier for a block. It is a fixed-size string that is calculated by using the information in the block. The block hash is used to verify the integrity of the data in the block. (pattern: &lt;code&gt;(0x&#91;A-Fa-f0-9&#93;&#123;64&#125;|&#91;A-Fa-f0-9&#93;&#123;64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockNumber" /></td>
+    <td><CopyableCode code="block_number" /></td>
     <td><code>string</code></td>
     <td>The block number in which the transaction is recorded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="confirmationStatus" /></td>
+    <td><CopyableCode code="confirmation_status" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the transaction has reached Finality. (FINAL, NONFINAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contractAddress" /></td>
+    <td><CopyableCode code="contract_address" /></td>
     <td><code>string</code></td>
     <td>The blockchain address for the contract. (pattern: &lt;code&gt;&#91;-A-Za-z0-9&#93;&#123;13,74&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cumulativeGasUsed" /></td>
+    <td><CopyableCode code="cumulative_gas_used" /></td>
     <td><code>string</code></td>
     <td>The amount of gas used up to the specified point in the block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveGasPrice" /></td>
+    <td><CopyableCode code="effective_gas_price" /></td>
     <td><code>string</code></td>
     <td>The effective gas price.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>Identifies whether the transaction has succeeded or failed. (FAILED, SUCCEEDED)</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The initiator of the transaction. It is either in the form a public key or a contract address. (pattern: &lt;code&gt;&#91;-A-Za-z0-9&#93;&#123;13,74&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gasUsed" /></td>
+    <td><CopyableCode code="gas_used" /></td>
     <td><code>string</code></td>
     <td>The amount of gas used for the transaction.</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>The blockchain network where the transaction occurred. (ETHEREUM_MAINNET, ETHEREUM_SEPOLIA_TESTNET, BITCOIN_MAINNET, BITCOIN_TESTNET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfTransactions" /></td>
+    <td><CopyableCode code="number_of_transactions" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of transactions in the block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signatureR" /></td>
+    <td><CopyableCode code="signature_r" /></td>
     <td><code>string</code></td>
     <td>The signature of the transaction. The X coordinate of a point R.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signatureS" /></td>
+    <td><CopyableCode code="signature_s" /></td>
     <td><code>string</code></td>
     <td>The signature of the transaction. The Y coordinate of a point S.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signatureV" /></td>
+    <td><CopyableCode code="signature_v" /></td>
     <td><code>integer</code></td>
     <td>The signature of the transaction. The Z coordinate of a point V.</td>
 </tr>
@@ -165,27 +165,27 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the transaction. It is generated whenever a transaction is verified and added to the blockchain. (pattern: &lt;code&gt;&#91;-A-Za-z0-9&#93;&#123;13,74&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionFee" /></td>
+    <td><CopyableCode code="transaction_fee" /></td>
     <td><code>string</code></td>
     <td>The transaction fee.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionHash" /></td>
+    <td><CopyableCode code="transaction_hash" /></td>
     <td><code>string</code></td>
     <td>The hash of a transaction. It is generated when a transaction is created. (pattern: &lt;code&gt;(0x&#91;A-Fa-f0-9&#93;&#123;64&#125;|&#91;A-Fa-f0-9&#93;&#123;64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionId" /></td>
+    <td><CopyableCode code="transaction_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a Bitcoin transaction. It is generated when a transaction is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionIndex" /></td>
+    <td><CopyableCode code="transaction_index" /></td>
     <td><code>integer (int64)</code></td>
     <td>The index of the transaction within a blockchain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionTimestamp" /></td>
+    <td><CopyableCode code="transaction_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Timestamp of the transaction.</td>
 </tr>
@@ -262,11 +262,11 @@ Lists all the transaction events for a transaction.
 
 ```sql
 SELECT
-confirmationStatus,
+confirmation_status,
 network,
-transactionHash,
-transactionId,
-transactionTimestamp
+transaction_hash,
+transaction_id,
+transaction_timestamp
 FROM aws.managedblockchain_query.transactions
 WHERE region = '{{ region }}' -- required
 ;
@@ -278,26 +278,26 @@ Gets the details of a transaction. This action will return transaction details f
 
 ```sql
 SELECT
-blockHash,
-blockNumber,
-confirmationStatus,
-contractAddress,
-cumulativeGasUsed,
-effectiveGasPrice,
-executionStatus,
+block_hash,
+block_number,
+confirmation_status,
+contract_address,
+cumulative_gas_used,
+effective_gas_price,
+execution_status,
 from,
-gasUsed,
+gas_used,
 network,
-numberOfTransactions,
-signatureR,
-signatureS,
-signatureV,
+number_of_transactions,
+signature_r,
+signature_s,
+signature_v,
 to,
-transactionFee,
-transactionHash,
-transactionId,
-transactionIndex,
-transactionTimestamp
+transaction_fee,
+transaction_hash,
+transaction_id,
+transaction_index,
+transaction_timestamp
 FROM aws.managedblockchain_query.transactions
 WHERE region = '{{ region }}' -- required
 ;

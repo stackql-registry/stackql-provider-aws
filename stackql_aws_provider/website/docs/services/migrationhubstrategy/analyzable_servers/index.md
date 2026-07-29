@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The host name of the analyzable server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The ip address of the analyzable server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The data source of the analyzable server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vmId" /></td>
+    <td><CopyableCode code="vm_id" /></td>
     <td><code>string</code></td>
     <td>The virtual machine id of the analyzable server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -135,9 +135,9 @@ Retrieves a list of all the servers fetched from customer vCenter using Strategy
 ```sql
 SELECT
 hostname,
-ipAddress,
+ip_address,
 source,
-vmId
+vm_id
 FROM aws.migrationhubstrategy.analyzable_servers
 WHERE region = '{{ region }}' -- required
 ;

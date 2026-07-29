@@ -51,137 +51,137 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivatedAt" /></td>
+    <td><CopyableCode code="activated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestampe value of when the device was activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdvertisedProductId" /></td>
+    <td><CopyableCode code="advertised_product_id" /></td>
     <td><code>string</code></td>
     <td>The id of the advertised product. (pattern: &lt;code&gt;(&#91;A-Za-z0-9!#$%&()*\+\-;&lt;=&gt;?@^_`&#123;|&#125;~&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the managed thing. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:managed-thing/(&#91;0-9a-zA-Z:_-&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Brand" /></td>
+    <td><CopyableCode code="brand" /></td>
     <td><code>string</code></td>
     <td>The brand of the device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Classification" /></td>
+    <td><CopyableCode code="classification" /></td>
     <td><code>string</code></td>
     <td>The classification of the managed thing such as light bulb or thermostat.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDestinationId" /></td>
+    <td><CopyableCode code="connector_destination_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the connector destination associated with this managed thing. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDeviceId" /></td>
+    <td><CopyableCode code="connector_device_id" /></td>
     <td><code>string</code></td>
     <td>The third-party device id as defined by the connector. This device id must not contain personal identifiable information (PII). This parameter is used for cloud-to-cloud devices only. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorPolicyId" /></td>
+    <td><CopyableCode code="connector_policy_id" /></td>
     <td><code>string</code></td>
     <td>The id of the connector policy. This parameter is used for cloud-to-cloud devices only. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the device creation request occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CredentialLockerId" /></td>
+    <td><CopyableCode code="credential_locker_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the credential locker for the managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceSpecificKey" /></td>
+    <td><CopyableCode code="device_specific_key" /></td>
     <td><code>string</code></td>
     <td>A Zwave device-specific key used during device activation. This parameter is used for Zwave devices only. (pattern: &lt;code&gt;&#91;a-zA-Z0-9=_.,@\+\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubNetworkMode" /></td>
+    <td><CopyableCode code="hub_network_mode" /></td>
     <td><code>string</code></td>
     <td>The network mode for the hub-connected device. (STANDARD, NETWORK_WIDE_EXCLUSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The id of the managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InternationalArticleNumber" /></td>
+    <td><CopyableCode code="international_article_number" /></td>
     <td><code>string</code></td>
     <td>The unique 13 digit number that identifies the managed thing. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacAddress" /></td>
+    <td><CopyableCode code="mac_address" /></td>
     <td><code>string</code></td>
     <td>The media access control (MAC) address for the device represented by the managed thing. This parameter is used for Zigbee devices only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetaData" /></td>
+    <td><CopyableCode code="meta_data" /></td>
     <td><code>object</code></td>
     <td>The metadata for the managed thing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Model" /></td>
+    <td><CopyableCode code="model" /></td>
     <td><code>string</code></td>
     <td>The model of the device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the managed thing representing the physical device. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125; ._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>Owner of the device, usually an indication of whom the device belongs to. This value should not contain personal identifiable information. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentControllerId" /></td>
+    <td><CopyableCode code="parent_controller_id" /></td>
     <td><code>string</code></td>
     <td>Id of the controller device used for the discovery job. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningStatus" /></td>
+    <td><CopyableCode code="provisioning_status" /></td>
     <td><code>string</code></td>
     <td>The provisioning status of the device in the provisioning workflow for onboarding to IoT managed integrations. For more information, see Device Provisioning. (UNASSOCIATED, PRE_ASSOCIATED, DISCOVERED, ACTIVATED, DELETION_FAILED, DELETE_IN_PROGRESS, ISOLATED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The type of device used. This will be the Amazon Web Services hub controller, cloud device, or IoT device. (CONTROLLER, DEVICE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The serial number of the device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of key/value pairs that are used to manage the managed thing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UniversalProductCode" /></td>
+    <td><CopyableCode code="universal_product_code" /></td>
     <td><code>string</code></td>
     <td>The universal product code (UPC) of the device model. The UPC is typically used in the United States of America and Canada. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the managed thing was last updated at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WiFiSimpleSetupConfiguration" /></td>
+    <td><CopyableCode code="wi_fi_simple_setup_configuration" /></td>
     <td><code>object</code></td>
     <td>The Wi-Fi Simple Setup configuration for the managed thing, which defines provisioning capabilities and timeout settings.</td>
 </tr>
@@ -200,97 +200,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivatedAt" /></td>
+    <td><CopyableCode code="activated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestampe value of when the managed thing was activated at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdvertisedProductId" /></td>
+    <td><CopyableCode code="advertised_product_id" /></td>
     <td><code>string</code></td>
     <td>The id of the advertised product. (pattern: &lt;code&gt;(&#91;A-Za-z0-9!#$%&()*\+\-;&lt;=&gt;?@^_`&#123;|&#125;~&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the managed thing. (pattern: &lt;code&gt;arn:aws:iotmanagedintegrations:&#91;0-9a-zA-Z-&#93;+:&#91;0-9&#93;+:managed-thing/(&#91;0-9a-zA-Z:_-&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Brand" /></td>
+    <td><CopyableCode code="brand" /></td>
     <td><code>string</code></td>
     <td>The brand of the device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Classification" /></td>
+    <td><CopyableCode code="classification" /></td>
     <td><code>string</code></td>
     <td>The classification of the managed thing such as light bulb or thermostat.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDestinationId" /></td>
+    <td><CopyableCode code="connector_destination_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the connector destination associated with this managed thing, if applicable. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDeviceId" /></td>
+    <td><CopyableCode code="connector_device_id" /></td>
     <td><code>string</code></td>
     <td>The third-party device id as defined by the connector. This device id must not contain personal identifiable information (PII). This parameter is used for cloud-to-cloud devices only. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorPolicyId" /></td>
+    <td><CopyableCode code="connector_policy_id" /></td>
     <td><code>string</code></td>
     <td>The id of the connector policy. This parameter is used for cloud-to-cloud devices only. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the device creation request occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CredentialLockerId" /></td>
+    <td><CopyableCode code="credential_locker_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the credential locker for the managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The id of the device. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Model" /></td>
+    <td><CopyableCode code="model" /></td>
     <td><code>string</code></td>
     <td>The model of the device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the managed thing representing the physical device. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125; ._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>Owner of the device, usually an indication of whom the device belongs to. This value should not contain personal identifiable information. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentControllerId" /></td>
+    <td><CopyableCode code="parent_controller_id" /></td>
     <td><code>string</code></td>
     <td>Id of the controller device used for the discovery job. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningStatus" /></td>
+    <td><CopyableCode code="provisioning_status" /></td>
     <td><code>string</code></td>
     <td>The provisioning status of the device in the provisioning workflow for onboarding to IoT managed integrations. For more information, see Device Provisioning. (UNASSOCIATED, PRE_ASSOCIATED, DISCOVERED, ACTIVATED, DELETION_FAILED, DELETE_IN_PROGRESS, ISOLATED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The type of device used. This will be the Amazon Web Services hub controller, cloud device, or IoT device. (CONTROLLER, DEVICE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The serial number of the device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the managed thing was last updated at.</td>
 </tr>
@@ -472,33 +472,33 @@ Get details of a managed thing including its attributes and capabilities.
 
 ```sql
 SELECT
-ActivatedAt,
-AdvertisedProductId,
-Arn,
-Brand,
-Classification,
-ConnectorDestinationId,
-ConnectorDeviceId,
-ConnectorPolicyId,
-CreatedAt,
-CredentialLockerId,
-DeviceSpecificKey,
-HubNetworkMode,
-Id,
-InternationalArticleNumber,
-MacAddress,
-MetaData,
-Model,
-Name,
-Owner,
-ParentControllerId,
-ProvisioningStatus,
-Role,
-SerialNumber,
-Tags,
-UniversalProductCode,
-UpdatedAt,
-WiFiSimpleSetupConfiguration
+activated_at,
+advertised_product_id,
+arn,
+brand,
+classification,
+connector_destination_id,
+connector_device_id,
+connector_policy_id,
+created_at,
+credential_locker_id,
+device_specific_key,
+hub_network_mode,
+id,
+international_article_number,
+mac_address,
+meta_data,
+model,
+name,
+owner,
+parent_controller_id,
+provisioning_status,
+role,
+serial_number,
+tags,
+universal_product_code,
+updated_at,
+wi_fi_simple_setup_configuration
 FROM aws.iot_managed_integrations.managed_things
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -511,25 +511,25 @@ Listing all managed things with provision for filters.
 
 ```sql
 SELECT
-ActivatedAt,
-AdvertisedProductId,
-Arn,
-Brand,
-Classification,
-ConnectorDestinationId,
-ConnectorDeviceId,
-ConnectorPolicyId,
-CreatedAt,
-CredentialLockerId,
-Id,
-Model,
-Name,
-Owner,
-ParentControllerId,
-ProvisioningStatus,
-Role,
-SerialNumber,
-UpdatedAt
+activated_at,
+advertised_product_id,
+arn,
+brand,
+classification,
+connector_destination_id,
+connector_device_id,
+connector_policy_id,
+created_at,
+credential_locker_id,
+id,
+model,
+name,
+owner,
+parent_controller_id,
+provisioning_status,
+role,
+serial_number,
+updated_at
 FROM aws.iot_managed_integrations.managed_things
 WHERE region = '{{ region }}' -- required
 AND OwnerFilter = '{{ OwnerFilter }}'
@@ -603,9 +603,9 @@ SELECT
 '{{ MetaData }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedAt,
-Id
+arn,
+created_at,
+id
 ;
 ```
 </TabItem>

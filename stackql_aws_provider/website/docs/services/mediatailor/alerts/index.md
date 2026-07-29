@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlertCode" /></td>
+    <td><CopyableCode code="alert_code" /></td>
     <td><code>string</code></td>
     <td>The code for the alert. For example, NOT_PROCESSED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlertMessage" /></td>
+    <td><CopyableCode code="alert_message" /></td>
     <td><code>string</code></td>
     <td>If an alert is generated for a resource, an explanation of the reason for the alert.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>The category that MediaTailor assigns to the alert. (SCHEDULING_ERROR, PLAYBACK_WARNING, INFO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the alert was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedResourceArns" /></td>
+    <td><CopyableCode code="related_resource_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) related to this alert.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
@@ -159,12 +159,12 @@ Lists the alerts that are associated with a MediaTailor channel assembly resourc
 
 ```sql
 SELECT
-AlertCode,
-AlertMessage,
-Category,
-LastModifiedTime,
-RelatedResourceArns,
-ResourceArn
+alert_code,
+alert_message,
+category,
+last_modified_time,
+related_resource_arns,
+resource_arn
 FROM aws.mediatailor.alerts
 WHERE resourceArn = '{{ resourceArn }}' -- required
 AND region = '{{ region }}' -- required

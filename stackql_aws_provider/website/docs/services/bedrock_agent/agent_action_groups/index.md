@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionGroupExecutor" /></td>
+    <td><CopyableCode code="action_group_executor" /></td>
     <td><code>object</code></td>
     <td>Contains details about the Lambda function containing the business logic that is carried out upon invoking the action or the custom control method for handling the information elicited from the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionGroupId" /></td>
+    <td><CopyableCode code="action_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the action group. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionGroupName" /></td>
+    <td><CopyableCode code="action_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the action group. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionGroupState" /></td>
+    <td><CopyableCode code="action_group_state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the action group is available for the agent to invoke or not when sending an InvokeAgent request. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent to which the action group belongs. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>The version of the agent to which the action group belongs. (pattern: &lt;code&gt;(DRAFT|&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiSchema" /></td>
+    <td><CopyableCode code="api_schema" /></td>
     <td><code>object</code></td>
     <td>Contains details about the OpenAPI schema for the action group. For more information, see Action group OpenAPI schemas. You can either include the schema directly in the payload field or you can upload it to an S3 bucket and specify the S3 bucket location in the s3 field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see Ensuring idempotency. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the action group was created.</td>
 </tr>
@@ -101,22 +101,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the action group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionSchema" /></td>
+    <td><CopyableCode code="function_schema" /></td>
     <td><code>object</code></td>
     <td>Defines functions that each define parameters that the agent needs to invoke from the user. Each function represents an action in an action group. This data type is used in the following API operations: CreateAgentActionGroup request CreateAgentActionGroup response UpdateAgentActionGroup request UpdateAgentActionGroup response GetAgentActionGroup response</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentActionGroupSignatureParams" /></td>
+    <td><CopyableCode code="parent_action_group_signature_params" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for a computer use action. Computer use is a new Anthropic Claude model capability (in beta) available with Claude 3.7 Sonnet and Claude 3.5 Sonnet v2 only. For more information, see Configure an Amazon Bedrock Agent to complete tasks with computer use tools.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentActionSignature" /></td>
+    <td><CopyableCode code="parent_action_signature" /></td>
     <td><code>string</code></td>
     <td>If this field is set as AMAZON.UserInput, the agent can request the user for additional information when trying to complete a task. The description, apiSchema, and actionGroupExecutor fields must be blank for this action group. During orchestration, if the agent determines that it needs to invoke an API in an action group, but doesn't have enough information to complete the API request, it will invoke this action group instead and return an Observation reprompting the user for more information. (AMAZON.UserInput, AMAZON.CodeInterpreter, ANTHROPIC.Computer, ANTHROPIC.Bash, ANTHROPIC.TextEditor)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the action group was last updated.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionGroupId" /></td>
+    <td><CopyableCode code="action_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the action group. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionGroupName" /></td>
+    <td><CopyableCode code="action_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the action group. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionGroupState" /></td>
+    <td><CopyableCode code="action_group_state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the action group is available for the agent to invoke or not when sending an InvokeAgent request. (ENABLED, DISABLED)</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the action group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the action group was last updated.</td>
 </tr>
@@ -273,20 +273,20 @@ Gets information about an action group for an agent.
 
 ```sql
 SELECT
-actionGroupExecutor,
-actionGroupId,
-actionGroupName,
-actionGroupState,
-agentId,
-agentVersion,
-apiSchema,
-clientToken,
-createdAt,
+action_group_executor,
+action_group_id,
+action_group_name,
+action_group_state,
+agent_id,
+agent_version,
+api_schema,
+client_token,
+created_at,
 description,
-functionSchema,
-parentActionGroupSignatureParams,
-parentActionSignature,
-updatedAt
+function_schema,
+parent_action_group_signature_params,
+parent_action_signature,
+updated_at
 FROM aws.bedrock_agent.agent_action_groups
 WHERE agent_id = '{{ agent_id }}' -- required
 AND agent_version = '{{ agent_version }}' -- required
@@ -301,11 +301,11 @@ Lists the action groups for an agent and information about each one.
 
 ```sql
 SELECT
-actionGroupId,
-actionGroupName,
-actionGroupState,
+action_group_id,
+action_group_name,
+action_group_state,
 description,
-updatedAt
+updated_at
 FROM aws.bedrock_agent.agent_action_groups
 WHERE agent_id = '{{ agent_id }}' -- required
 AND agent_version = '{{ agent_version }}' -- required
@@ -358,7 +358,7 @@ SELECT
 '{{ agent_version }}',
 '{{ region }}'
 RETURNING
-agentActionGroup
+agent_action_group
 ;
 ```
 </TabItem>
@@ -449,7 +449,7 @@ AND action_group_id = '{{ action_group_id }}' --required
 AND region = '{{ region }}' --required
 AND actionGroupName = '{{ actionGroupName }}' --required
 RETURNING
-agentActionGroup;
+agent_action_group;
 ```
 </TabItem>
 </Tabs>

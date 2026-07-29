@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="billingPeriod" /></td>
+    <td><CopyableCode code="billing_period" /></td>
     <td><code>string</code></td>
     <td>The billing period when this guest user accessed the network (e.g., '2024-01'). (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The username of the guest user. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usernameHash" /></td>
+    <td><CopyableCode code="username_hash" /></td>
     <td><code>string</code></td>
     <td>The unique username hash identifier for the guest user. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -176,9 +176,9 @@ Retrieves a paginated list of guest users who have communicated with your Wickr 
 
 ```sql
 SELECT
-billingPeriod,
+billing_period,
 username,
-usernameHash
+username_hash
 FROM aws.wickr.guest_users
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required

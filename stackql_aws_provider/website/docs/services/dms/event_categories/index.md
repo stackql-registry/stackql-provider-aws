@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventCategoryGroupList" /></td>
+    <td><CopyableCode code="event_category_group_list" /></td>
     <td><code>array</code></td>
     <td>A list of event categories.</td>
 </tr>
@@ -119,7 +119,7 @@ Lists categories for all event source types, or, if specified, for a specified s
 
 ```sql
 SELECT
-EventCategoryGroupList
+event_category_group_list
 FROM aws.dms.event_categories
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the email channel applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationSet" /></td>
+    <td><CopyableCode code="configuration_set" /></td>
     <td><code>string</code></td>
     <td>The Amazon SES configuration set that's applied to messages that are sent through the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the email channel was enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the email channel is enabled for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FromAddress" /></td>
+    <td><CopyableCode code="from_address" /></td>
     <td><code>string</code></td>
     <td>The verified email address that email is sent from when you send email through the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasCredential" /></td>
+    <td><CopyableCode code="has_credential" /></td>
     <td><code>boolean</code></td>
     <td>(Not used) This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) An identifier for the email channel. This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identity" /></td>
+    <td><CopyableCode code="identity" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that's used when you send email through the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the email channel is archived.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The user who last modified the email channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the email channel was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessagesPerSecond" /></td>
+    <td><CopyableCode code="messages_per_second" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of emails that can be sent through the channel each second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrchestrationSendingRoleArn" /></td>
+    <td><CopyableCode code="orchestration_sending_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of an IAM role for Amazon Pinpoint to use to send email from your campaigns or journeys through Amazon SES.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The type of messaging or notification platform for the channel. For the email channel, this value is EMAIL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AWS Identity and Access Management (IAM) role that Amazon Pinpoint uses to submit email-related event data for the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The current version of the email channel.</td>
 </tr>
@@ -213,22 +213,22 @@ Retrieves information about the status and settings of the email channel for an 
 
 ```sql
 SELECT
-ApplicationId,
-ConfigurationSet,
-CreationDate,
-Enabled,
-FromAddress,
-HasCredential,
-Id,
-Identity,
-IsArchived,
-LastModifiedBy,
-LastModifiedDate,
-MessagesPerSecond,
-OrchestrationSendingRoleArn,
-Platform,
-RoleArn,
-Version
+application_id,
+configuration_set,
+creation_date,
+enabled,
+from_address,
+has_credential,
+id,
+identity,
+is_archived,
+last_modified_by,
+last_modified_date,
+messages_per_second,
+orchestration_sending_role_arn,
+platform,
+role_arn,
+version
 FROM aws.pinpoint.email_channels
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -259,7 +259,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND EmailChannelRequest = '{{ EmailChannelRequest }}' --required
 RETURNING
-EmailChannelResponse;
+email_channel_response;
 ```
 </TabItem>
 </Tabs>

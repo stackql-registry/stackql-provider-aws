@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The required key portion of the tag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The optional value portion of the tag.</td>
 </tr>
@@ -153,8 +153,8 @@ List all tags added to the specified Amazon SNS topic. For an overview, see Amaz
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.sns.tags
 WHERE ResourceArn = '{{ ResourceArn }}' -- required
 AND region = '{{ region }}' -- required

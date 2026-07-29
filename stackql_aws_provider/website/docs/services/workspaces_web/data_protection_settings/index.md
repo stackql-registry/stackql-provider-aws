@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalEncryptionContext" /></td>
+    <td><CopyableCode code="additional_encryption_context" /></td>
     <td><code>object</code></td>
     <td>The additional encryption context of the data protection settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedPortalArns" /></td>
+    <td><CopyableCode code="associated_portal_arns" /></td>
     <td><code>array</code></td>
     <td>A list of web portal ARNs that this data protection settings resource is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date timestamp of the data protection settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerManagedKey" /></td>
+    <td><CopyableCode code="customer_managed_key" /></td>
     <td><code>string</code></td>
     <td>The customer managed key used to encrypt sensitive information in the data protection settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:kms:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:key\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataProtectionSettingsArn" /></td>
+    <td><CopyableCode code="data_protection_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the data protection settings resource. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data protection settings. (pattern: &lt;code&gt;&#91; _\-\d\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the data protection settings. (pattern: &lt;code&gt;&#91; _\-\d\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inlineRedactionConfiguration" /></td>
+    <td><CopyableCode code="inline_redaction_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for in-session inline redaction.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date timestamp of the data protection settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataProtectionSettingsArn" /></td>
+    <td><CopyableCode code="data_protection_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the data protection settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data protection settings. (pattern: &lt;code&gt;&#91; _\-\d\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the data protection settings. (pattern: &lt;code&gt;&#91; _\-\d\w&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -257,14 +257,14 @@ Gets the data protection settings.
 
 ```sql
 SELECT
-additionalEncryptionContext,
-associatedPortalArns,
-creationDate,
-customerManagedKey,
-dataProtectionSettingsArn,
+additional_encryption_context,
+associated_portal_arns,
+creation_date,
+customer_managed_key,
+data_protection_settings_arn,
 description,
-displayName,
-inlineRedactionConfiguration
+display_name,
+inline_redaction_configuration
 FROM aws.workspaces_web.data_protection_settings
 WHERE data_protection_settings_arn = '{{ data_protection_settings_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,10 +277,10 @@ Retrieves a list of data protection settings.
 
 ```sql
 SELECT
-creationDate,
-dataProtectionSettingsArn,
+creation_date,
+data_protection_settings_arn,
 description,
-displayName
+display_name
 FROM aws.workspaces_web.data_protection_settings
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -325,7 +325,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-dataProtectionSettingsArn
+data_protection_settings_arn
 ;
 ```
 </TabItem>
@@ -402,8 +402,8 @@ portal_arn = '{{ portal_arn }}' --required
 AND dataProtectionSettingsArn = '{{ dataProtectionSettingsArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-dataProtectionSettingsArn,
-portalArn;
+data_protection_settings_arn,
+portal_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_data_protection_settings">
@@ -434,7 +434,7 @@ WHERE
 data_protection_settings_arn = '{{ data_protection_settings_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-dataProtectionSettings;
+data_protection_settings;
 ```
 </TabItem>
 </Tabs>

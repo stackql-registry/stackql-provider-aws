@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the security configuration was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the security configuration. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>The security configuration details in JSON format.</td>
 </tr>
@@ -150,9 +150,9 @@ Provides the details of a security configuration by returning the configuration 
 
 ```sql
 SELECT
-CreationDateTime,
-Name,
-SecurityConfiguration
+creation_date_time,
+name,
+security_configuration
 FROM aws.emr.security_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -185,8 +185,8 @@ SELECT
 '{{ SecurityConfiguration }}' /* required */,
 '{{ region }}'
 RETURNING
-CreationDateTime,
-Name
+creation_date_time,
+name
 ;
 ```
 </TabItem>

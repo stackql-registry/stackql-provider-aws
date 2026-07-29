@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="allChannelSubtypes" /></td>
+    <td><CopyableCode code="all_channel_subtypes" /></td>
     <td><code>object</code></td>
     <td>Communication limits</td>
 </tr>
@@ -131,7 +131,7 @@ Get the instance communication limits.
 
 ```sql
 SELECT
-allChannelSubtypes
+all_channel_subtypes
 FROM aws.connectcampaignsv2.instance_communication_limits
 WHERE connect_instance_id = '{{ connect_instance_id }}' -- required
 AND region = '{{ region }}' -- required

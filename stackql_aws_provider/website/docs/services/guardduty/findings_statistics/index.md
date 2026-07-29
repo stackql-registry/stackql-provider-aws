@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CountBySeverity" /></td>
+    <td><CopyableCode code="count_by_severity" /></td>
     <td><code>object</code></td>
     <td>Represents a list of map of severity to count statistics for a set of findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupedByAccount" /></td>
+    <td><CopyableCode code="grouped_by_account" /></td>
     <td><code>array</code></td>
     <td>Represents a list of map of accounts with a findings count associated with each account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupedByDate" /></td>
+    <td><CopyableCode code="grouped_by_date" /></td>
     <td><code>array</code></td>
     <td>Represents a list of map of dates with a count of total findings generated on each date per severity level.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupedByFindingType" /></td>
+    <td><CopyableCode code="grouped_by_finding_type" /></td>
     <td><code>array</code></td>
     <td>Represents a list of map of finding types with a count of total findings generated for each type. Based on the orderBy parameter, this request returns either the most occurring finding types or the least occurring finding types. If the orderBy parameter is ASC, this will represent the least occurring finding types in your account; otherwise, this will represent the most occurring finding types. The default value of orderBy is DESC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupedByResource" /></td>
+    <td><CopyableCode code="grouped_by_resource" /></td>
     <td><code>array</code></td>
     <td>Represents a list of map of top resources with a count of total findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupedBySeverity" /></td>
+    <td><CopyableCode code="grouped_by_severity" /></td>
     <td><code>array</code></td>
     <td>Represents a list of map of total findings for each severity level.</td>
 </tr>
@@ -149,12 +149,12 @@ Lists GuardDuty findings statistics for the specified detector ID. You must prov
 
 ```sql
 SELECT
-CountBySeverity,
-GroupedByAccount,
-GroupedByDate,
-GroupedByFindingType,
-GroupedByResource,
-GroupedBySeverity
+count_by_severity,
+grouped_by_account,
+grouped_by_date,
+grouped_by_finding_type,
+grouped_by_resource,
+grouped_by_severity
 FROM aws.guardduty.findings_statistics
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required

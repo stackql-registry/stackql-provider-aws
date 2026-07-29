@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The connection ARN of the source, or the database ARN of the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePropertyArn" /></td>
+    <td><CopyableCode code="resource_property_arn" /></td>
     <td><code>string</code></td>
     <td>The resource ARN created through this create API. The format is something like arn:aws:glue:<code>&lt;region&gt;</code>:<code>&lt;account_id&gt;</code>:integrationresourceproperty/*</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceProcessingProperties" /></td>
+    <td><CopyableCode code="source_processing_properties" /></td>
     <td><code>object</code></td>
     <td>The resource properties associated with the integration source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetProcessingProperties" /></td>
+    <td><CopyableCode code="target_processing_properties" /></td>
     <td><code>object</code></td>
     <td>The resource properties associated with the integration target.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IntegrationResourcePropertyList" /></td>
+    <td><CopyableCode code="integration_resource_property_list" /></td>
     <td><code>array</code></td>
     <td>A list of integration resource property meeting the filter criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>This is the pagination token for the next page.</td>
 </tr>
@@ -188,10 +188,10 @@ This API is used for fetching the ResourceProperty of the Glue connection (for t
 
 ```sql
 SELECT
-ResourceArn,
-ResourcePropertyArn,
-SourceProcessingProperties,
-TargetProcessingProperties
+resource_arn,
+resource_property_arn,
+source_processing_properties,
+target_processing_properties
 FROM aws.glue.integration_resource_properties
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,8 +203,8 @@ List integration resource properties for a single customer. It supports the filt
 
 ```sql
 SELECT
-IntegrationResourcePropertyList,
-Marker
+integration_resource_property_list,
+marker
 FROM aws.glue.integration_resource_properties
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,10 +241,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ResourceArn,
-ResourcePropertyArn,
-SourceProcessingProperties,
-TargetProcessingProperties
+resource_arn,
+resource_property_arn,
+source_processing_properties,
+target_processing_properties
 ;
 ```
 </TabItem>
@@ -307,10 +307,10 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-ResourceArn,
-ResourcePropertyArn,
-SourceProcessingProperties,
-TargetProcessingProperties;
+resource_arn,
+resource_property_arn,
+source_processing_properties,
+target_processing_properties;
 ```
 </TabItem>
 </Tabs>

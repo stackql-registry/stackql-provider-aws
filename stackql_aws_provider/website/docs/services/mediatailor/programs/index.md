@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdBreaks" /></td>
+    <td><CopyableCode code="ad_breaks" /></td>
     <td><code>array</code></td>
     <td>The ad break configuration settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AudienceMedia" /></td>
+    <td><CopyableCode code="audience_media" /></td>
     <td><code>array</code></td>
     <td>The list of AudienceMedia defined in program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel that the program belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClipRange" /></td>
+    <td><CopyableCode code="clip_range" /></td>
     <td><code>object</code></td>
     <td>Clip range configuration for the VOD source associated with the program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the program was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationMillis" /></td>
+    <td><CopyableCode code="duration_millis" /></td>
     <td><code>integer (int64)</code></td>
     <td>The duration of the live program in milliseconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LiveSourceName" /></td>
+    <td><CopyableCode code="live_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the LiveSource for this Program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgramName" /></td>
+    <td><CopyableCode code="program_name" /></td>
     <td><code>string</code></td>
     <td>The name of the program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledStartTime" /></td>
+    <td><CopyableCode code="scheduled_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the program is scheduled to start in ISO 8601 format and Coordinated Universal Time (UTC). For example, the value 2021-03-27T17:48:16.751Z represents March 27, 2021 at 17:48:16.751 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The source location name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the program. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VodSourceName" /></td>
+    <td><CopyableCode code="vod_source_name" /></td>
     <td><code>string</code></td>
     <td>The name that's used to refer to a VOD source.</td>
 </tr>
@@ -210,19 +210,19 @@ Describes a program within a channel. For information about programs, see Workin
 
 ```sql
 SELECT
-AdBreaks,
-Arn,
-AudienceMedia,
-ChannelName,
-ClipRange,
-CreationTime,
-DurationMillis,
-LiveSourceName,
-ProgramName,
-ScheduledStartTime,
-SourceLocationName,
-Tags,
-VodSourceName
+ad_breaks,
+arn,
+audience_media,
+channel_name,
+clip_range,
+creation_time,
+duration_millis,
+live_source_name,
+program_name,
+scheduled_start_time,
+source_location_name,
+tags,
+vod_source_name
 FROM aws.mediatailor.programs
 WHERE channel_name = '{{ channel_name }}' -- required
 AND program_name = '{{ program_name }}' -- required
@@ -271,19 +271,19 @@ SELECT
 '{{ program_name }}',
 '{{ region }}'
 RETURNING
-AdBreaks,
-Arn,
-AudienceMedia,
-ChannelName,
-ClipRange,
-CreationTime,
-DurationMillis,
-LiveSourceName,
-ProgramName,
-ScheduledStartTime,
-SourceLocationName,
-Tags,
-VodSourceName
+ad_breaks,
+arn,
+audience_media,
+channel_name,
+clip_range,
+creation_time,
+duration_millis,
+live_source_name,
+program_name,
+scheduled_start_time,
+source_location_name,
+tags,
+vod_source_name
 ;
 ```
 </TabItem>
@@ -379,19 +379,19 @@ AND program_name = '{{ program_name }}' --required
 AND region = '{{ region }}' --required
 AND ScheduleConfiguration = '{{ ScheduleConfiguration }}' --required
 RETURNING
-AdBreaks,
-Arn,
-AudienceMedia,
-ChannelName,
-ClipRange,
-CreationTime,
-DurationMillis,
-LiveSourceName,
-ProgramName,
-ScheduledStartTime,
-SourceLocationName,
-Tags,
-VodSourceName;
+ad_breaks,
+arn,
+audience_media,
+channel_name,
+clip_range,
+creation_time,
+duration_millis,
+live_source_name,
+program_name,
+scheduled_start_time,
+source_location_name,
+tags,
+vod_source_name;
 ```
 </TabItem>
 </Tabs>

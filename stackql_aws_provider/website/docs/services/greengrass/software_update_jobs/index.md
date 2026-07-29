@@ -120,9 +120,9 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-IotJobArn,
-IotJobId,
-PlatformSoftwareVersion
+iot_job_arn,
+iot_job_id,
+platform_software_version
 ;
 ```
 </TabItem>

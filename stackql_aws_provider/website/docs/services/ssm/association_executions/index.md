@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>The details for the CloudWatch alarm you want to apply to an automation or command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The association ID. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationVersion" /></td>
+    <td><CopyableCode code="association_version" /></td>
     <td><code>string</code></td>
     <td>The association version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST)|(&#91;1-9&#93;&#91;0-9&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetailedStatus" /></td>
+    <td><CopyableCode code="detailed_status" /></td>
     <td><code>string</code></td>
     <td>Detailed status information about the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution ID for the association. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionDate" /></td>
+    <td><CopyableCode code="last_execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of the last execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCountByStatus" /></td>
+    <td><CopyableCode code="resource_count_by_status" /></td>
     <td><code>string</code></td>
     <td>An aggregate status of the resources in the execution based on the status type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the association execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggeredAlarms" /></td>
+    <td><CopyableCode code="triggered_alarms" /></td>
     <td><code>array</code></td>
     <td>The CloudWatch alarms that were invoked by the association.</td>
 </tr>
@@ -164,16 +164,16 @@ Views all executions for a specific association ID.
 
 ```sql
 SELECT
-AlarmConfiguration,
-AssociationId,
-AssociationVersion,
-CreatedTime,
-DetailedStatus,
-ExecutionId,
-LastExecutionDate,
-ResourceCountByStatus,
-Status,
-TriggeredAlarms
+alarm_configuration,
+association_id,
+association_version,
+created_time,
+detailed_status,
+execution_id,
+last_execution_date,
+resource_count_by_status,
+status,
+triggered_alarms
 FROM aws.ssm.association_executions
 WHERE region = '{{ region }}' -- required
 ;

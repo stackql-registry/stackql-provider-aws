@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of retrievable results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Total" /></td>
+    <td><CopyableCode code="total" /></td>
     <td><code>object</code></td>
     <td>The total amount of time that you used your Reserved Instances (RIs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UtilizationsByTime" /></td>
+    <td><CopyableCode code="utilizations_by_time" /></td>
     <td><code>array</code></td>
     <td>The amount of time that you used your Reserved Instances (RIs).</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves the reservation utilization for your account. Management account in an
 
 ```sql
 SELECT
-NextPageToken,
-Total,
-UtilizationsByTime
+next_page_token,
+total,
+utilizations_by_time
 FROM aws.ce.reservation_utilizations
 WHERE region = '{{ region }}' -- required
 ;

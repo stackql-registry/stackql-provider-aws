@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="defaultAssessmentReportsDestination" /></td>
+    <td><CopyableCode code="default_assessment_reports_destination" /></td>
     <td><code>object</code></td>
     <td>The location where Audit Manager saves assessment reports for the given assessment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultExportDestination" /></td>
+    <td><CopyableCode code="default_export_destination" /></td>
     <td><code>object</code></td>
     <td>The default S3 destination bucket for storing evidence finder exports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultProcessOwners" /></td>
+    <td><CopyableCode code="default_process_owners" /></td>
     <td><code>array</code></td>
     <td>The designated default audit owners.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deregistrationPolicy" /></td>
+    <td><CopyableCode code="deregistration_policy" /></td>
     <td><code>object</code></td>
     <td>The deregistration policy for your Audit Manager data. You can use this attribute to determine how your data is handled when you deregister Audit Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceFinderEnablement" /></td>
+    <td><CopyableCode code="evidence_finder_enablement" /></td>
     <td><code>object</code></td>
     <td>The current evidence finder status and event data store details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAwsOrgEnabled" /></td>
+    <td><CopyableCode code="is_aws_org_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether Organizations is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKey" /></td>
+    <td><CopyableCode code="kms_key" /></td>
     <td><code>string</code></td>
     <td>The KMS key details. (pattern: &lt;code&gt;^arn:.*:kms:.*|DEFAULT&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snsTopic" /></td>
+    <td><CopyableCode code="sns_topic" /></td>
     <td><code>string</code></td>
     <td>The designated Amazon Simple Notification Service (Amazon SNS) topic. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_\(\)\&#91;\&#93;&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -166,14 +166,14 @@ Gets the settings for a specified Amazon Web Services account.
 
 ```sql
 SELECT
-defaultAssessmentReportsDestination,
-defaultExportDestination,
-defaultProcessOwners,
-deregistrationPolicy,
-evidenceFinderEnablement,
-isAwsOrgEnabled,
-kmsKey,
-snsTopic
+default_assessment_reports_destination,
+default_export_destination,
+default_process_owners,
+deregistration_policy,
+evidence_finder_enablement,
+is_aws_org_enabled,
+kms_key,
+sns_topic
 FROM aws.auditmanager.settings
 WHERE attribute = '{{ attribute }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM policy that you have configured in each account where you want to deploy your permission set. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the IAM policy that you have configured in each account where you want to deploy your permission set. The default is /. For more information, see Friendly names and paths in the IAM User Guide. (pattern: &lt;code&gt;((/&#91;A-Za-z0-9\.,\+@=_-&#93;+)*)/&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all customer managed policies attached to a specified PermissionSet.
 
 ```sql
 SELECT
-Name,
-Path
+name,
+path
 FROM aws.sso_admin.customer_managed_policy_references_in_permission_sets
 WHERE region = '{{ region }}' -- required
 ;

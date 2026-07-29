@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the gateway was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the gateway, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:gateway/$&#123;GatewayId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayCapabilitySummaries" /></td>
+    <td><CopyableCode code="gateway_capability_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of gateway capability summaries that each contain a namespace and status. Each gateway capability defines data sources for the gateway. To retrieve a capability configuration's definition, use DescribeGatewayCapabilityConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the gateway device. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayName" /></td>
+    <td><CopyableCode code="gateway_name" /></td>
     <td><code>string</code></td>
     <td>The name of the gateway. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayPlatform" /></td>
+    <td><CopyableCode code="gateway_platform" /></td>
     <td><code>object</code></td>
     <td>The gateway's platform configuration. You can only specify one platform type in a gateway. (Legacy only) For Greengrass V1 gateways, specify the greengrass parameter with a valid Greengrass group ARN. For Greengrass V2 gateways, specify the greengrassV2 parameter with a valid core device thing name. If creating a V3 gateway (gatewayVersion=3), you must also specify the coreDeviceOperatingSystem. For Siemens Industrial Edge gateways, specify the siemensIE parameter with a valid IoT Core thing name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayVersion" /></td>
+    <td><CopyableCode code="gateway_version" /></td>
     <td><code>string</code></td>
     <td>The version of the gateway. Options include: 2 - Classic streams, V2 gateway. 3 - MQTT-enabled, V3 gateway. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the gateway was last updated, in Unix epoch time.</td>
 </tr>
@@ -105,37 +105,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the gateway was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayCapabilitySummaries" /></td>
+    <td><CopyableCode code="gateway_capability_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of gateway capability summaries that each contain a namespace and status. Each gateway capability defines data sources for the gateway. To retrieve a capability configuration's definition, use DescribeGatewayCapabilityConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the gateway device. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayName" /></td>
+    <td><CopyableCode code="gateway_name" /></td>
     <td><code>string</code></td>
     <td>The name of the gateway. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayPlatform" /></td>
+    <td><CopyableCode code="gateway_platform" /></td>
     <td><code>object</code></td>
     <td>The gateway's platform configuration. You can only specify one platform type in a gateway. (Legacy only) For Greengrass V1 gateways, specify the greengrass parameter with a valid Greengrass group ARN. For Greengrass V2 gateways, specify the greengrassV2 parameter with a valid core device thing name. If creating a V3 gateway (gatewayVersion=3), you must also specify the coreDeviceOperatingSystem. For Siemens Industrial Edge gateways, specify the siemensIE parameter with a valid IoT Core thing name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayVersion" /></td>
+    <td><CopyableCode code="gateway_version" /></td>
     <td><code>string</code></td>
     <td>The version of the gateway. Options include: 2 - Classic streams, V2 gateway. 3 - MQTT-enabled, V3 gateway. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the gateway was last updated, in Unix epoch time.</td>
 </tr>
@@ -248,14 +248,14 @@ Retrieves information about a gateway.
 
 ```sql
 SELECT
-creationDate,
-gatewayArn,
-gatewayCapabilitySummaries,
-gatewayId,
-gatewayName,
-gatewayPlatform,
-gatewayVersion,
-lastUpdateDate
+creation_date,
+gateway_arn,
+gateway_capability_summaries,
+gateway_id,
+gateway_name,
+gateway_platform,
+gateway_version,
+last_update_date
 FROM aws.iotsitewise.gateways
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,13 +268,13 @@ Retrieves a paginated list of gateways.
 
 ```sql
 SELECT
-creationDate,
-gatewayCapabilitySummaries,
-gatewayId,
-gatewayName,
-gatewayPlatform,
-gatewayVersion,
-lastUpdateDate
+creation_date,
+gateway_capability_summaries,
+gateway_id,
+gateway_name,
+gateway_platform,
+gateway_version,
+last_update_date
 FROM aws.iotsitewise.gateways
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -313,8 +313,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-gatewayArn,
-gatewayId
+gateway_arn,
+gateway_id
 ;
 ```
 </TabItem>

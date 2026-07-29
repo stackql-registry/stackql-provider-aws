@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>An optional CacheControl header that allows the caller to control the object's cache behavior. Headers can be passed in as specified in the HTTP at https:​//www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9. Headers with a custom user-defined value are also accepted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentLength" /></td>
+    <td><CopyableCode code="content_length" /></td>
     <td><code>integer (int64)</code></td>
     <td>The length of the object in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the object. (pattern: &lt;code&gt;^&#91;\w\-\/\.\+&#93;&#123;1,255&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The ETag that represents a unique instance of the object. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the object was last modified.</td>
 </tr>
@@ -190,11 +190,11 @@ Gets the headers for an object at the specified path.
 
 ```sql
 SELECT
-CacheControl,
-ContentLength,
-ContentType,
-ETag,
-LastModified
+cache_control,
+content_length,
+content_type,
+e_tag,
+last_modified
 FROM aws.mediastore_data.objects
 WHERE path = '{{ path }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,9 +228,9 @@ AND `Cache-Control` = '{{ Cache-Control}}'
 AND `x-amz-storage-class` = '{{ x-amz-storage-class}}'
 AND `x-amz-upload-availability` = '{{ x-amz-upload-availability}}'
 RETURNING
-ContentSHA256,
-ETag,
-StorageClass;
+content_sha256,
+e_tag,
+storage_class;
 ```
 </TabItem>
 </Tabs>

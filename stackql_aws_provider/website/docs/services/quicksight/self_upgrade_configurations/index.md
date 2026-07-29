@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfUpgradeConfiguration" /></td>
+    <td><CopyableCode code="self_upgrade_configuration" /></td>
     <td><code>object</code></td>
     <td>The self-upgrade configuration for the Quick account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -146,9 +146,9 @@ Describes the self-upgrade configuration for a Quick account.
 
 ```sql
 SELECT
-RequestId,
-SelfUpgradeConfiguration,
-Status
+request_id,
+self_upgrade_configuration,
+status
 FROM aws.quicksight.self_upgrade_configurations
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -181,8 +181,8 @@ AND namespace = '{{ namespace }}' --required
 AND region = '{{ region }}' --required
 AND SelfUpgradeStatus = '{{ SelfUpgradeStatus }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

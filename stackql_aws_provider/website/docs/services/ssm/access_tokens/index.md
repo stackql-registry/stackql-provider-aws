@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessRequestStatus" /></td>
+    <td><CopyableCode code="access_request_status" /></td>
     <td><code>string</code></td>
     <td>The status of the access request. (Approved, Rejected, Revoked, Expired, Pending)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>object</code></td>
     <td>The temporary security credentials which can be used to start just-in-time node access sessions.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a credentials set to be used with just-in-time node access.
 
 ```sql
 SELECT
-AccessRequestStatus,
-Credentials
+access_request_status,
+credentials
 FROM aws.ssm.access_tokens
 WHERE region = '{{ region }}' -- required
 ;

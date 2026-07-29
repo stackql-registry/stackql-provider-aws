@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the app. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:app/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppName" /></td>
+    <td><CopyableCode code="app_name" /></td>
     <td><code>string</code></td>
     <td>The name of the app. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppType" /></td>
+    <td><CopyableCode code="app_type" /></td>
     <td><code>string</code></td>
     <td>The type of app. (JupyterServer, KernelGateway, DetailedProfiler, TensorBoard, CodeEditor, JupyterLab, RStudioServerPro, RSessionGateway, Canvas)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuiltInLifecycleConfigArn" /></td>
+    <td><CopyableCode code="built_in_lifecycle_config_arn" /></td>
     <td><code>string</code></td>
     <td>The lifecycle configuration that runs before the default lifecycle configuration (pattern: &lt;code&gt;(arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:studio-lifecycle-config/.*|None)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the application. After an application has been shut down for 24 hours, SageMaker AI deletes all metadata for the application. To be considered an update and retain application metadata, applications must be restarted within 24 hours after the previous application has been shut down. After this time window, creation of an application is considered a new application rather than an update of the previous application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveTrustedIdentityPropagationStatus" /></td>
+    <td><CopyableCode code="effective_trusted_identity_propagation_status" /></td>
     <td><code>string</code></td>
     <td>The effective status of Trusted Identity Propagation (TIP) for this application. When enabled, user identities from IAM Identity Center are being propagated through the application to TIP enabled Amazon Web Services services. When disabled, standard IAM role-based access is used. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastHealthCheckTimestamp" /></td>
+    <td><CopyableCode code="last_health_check_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last health check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUserActivityTimestamp" /></td>
+    <td><CopyableCode code="last_user_activity_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last user's activity. LastUserActivityTimestamp is also updated when SageMaker AI performs health checks without user activity. As a result, this value is set to the same value as LastHealthCheckTimestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryMode" /></td>
+    <td><CopyableCode code="recovery_mode" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the application is launched in recovery mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpec" /></td>
+    <td><CopyableCode code="resource_spec" /></td>
     <td><code>object</code></td>
     <td>Specifies the ARN's of a SageMaker AI image and SageMaker AI image version, and the instance type that the version runs on. When both SageMakerImageVersionArn and SageMakerImageArn are passed, SageMakerImageVersionArn is used. Any updates to SageMakerImageArn will not take effect if SageMakerImageVersionArn already exists in the ResourceSpec because SageMakerImageVersionArn always takes precedence. To clear the value set for SageMakerImageVersionArn, pass None as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. If this value is not set, then UserProfileName must be set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleted, Deleting, Failed, InService, Pending)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserProfileName" /></td>
+    <td><CopyableCode code="user_profile_name" /></td>
     <td><code>string</code></td>
     <td>The user profile name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -140,42 +140,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppName" /></td>
+    <td><CopyableCode code="app_name" /></td>
     <td><code>string</code></td>
     <td>The name of the app. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppType" /></td>
+    <td><CopyableCode code="app_type" /></td>
     <td><code>string</code></td>
     <td>The type of app. (JupyterServer, KernelGateway, DetailedProfiler, TensorBoard, CodeEditor, JupyterLab, RStudioServerPro, RSessionGateway, Canvas)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpec" /></td>
+    <td><CopyableCode code="resource_spec" /></td>
     <td><code>object</code></td>
     <td>Specifies the ARN's of a SageMaker AI image and SageMaker AI image version, and the instance type that the version runs on. When both SageMakerImageVersionArn and SageMakerImageArn are passed, SageMakerImageVersionArn is used. Any updates to SageMakerImageArn will not take effect if SageMakerImageVersionArn already exists in the ResourceSpec because SageMakerImageVersionArn always takes precedence. To clear the value set for SageMakerImageVersionArn, pass None as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleted, Deleting, Failed, InService, Pending)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserProfileName" /></td>
+    <td><CopyableCode code="user_profile_name" /></td>
     <td><code>string</code></td>
     <td>The user profile name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -266,21 +266,21 @@ Describes the app.
 
 ```sql
 SELECT
-AppArn,
-AppName,
-AppType,
-BuiltInLifecycleConfigArn,
-CreationTime,
-DomainId,
-EffectiveTrustedIdentityPropagationStatus,
-FailureReason,
-LastHealthCheckTimestamp,
-LastUserActivityTimestamp,
-RecoveryMode,
-ResourceSpec,
-SpaceName,
-Status,
-UserProfileName
+app_arn,
+app_name,
+app_type,
+built_in_lifecycle_config_arn,
+creation_time,
+domain_id,
+effective_trusted_identity_propagation_status,
+failure_reason,
+last_health_check_timestamp,
+last_user_activity_timestamp,
+recovery_mode,
+resource_spec,
+space_name,
+status,
+user_profile_name
 FROM aws.sagemaker.apps
 WHERE region = '{{ region }}' -- required
 ;
@@ -292,14 +292,14 @@ Lists apps.
 
 ```sql
 SELECT
-AppName,
-AppType,
-CreationTime,
-DomainId,
-ResourceSpec,
-SpaceName,
-Status,
-UserProfileName
+app_name,
+app_type,
+creation_time,
+domain_id,
+resource_spec,
+space_name,
+status,
+user_profile_name
 FROM aws.sagemaker.apps
 WHERE region = '{{ region }}' -- required
 ;
@@ -344,7 +344,7 @@ SELECT
 {{ RecoveryMode }},
 '{{ region }}'
 RETURNING
-AppArn
+app_arn
 ;
 ```
 </TabItem>

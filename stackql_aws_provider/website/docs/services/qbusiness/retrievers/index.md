@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business application using the retriever. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>Provides information on how the retriever used for your Amazon Q Business application is configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the retriever was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the retriever. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retrieverArn" /></td>
+    <td><CopyableCode code="retriever_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role associated with the retriever. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retrieverId" /></td>
+    <td><CopyableCode code="retriever_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the retriever. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role with the permission to access the retriever and required resources. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the retriever. (NATIVE_INDEX, KENDRA_INDEX)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the retriever was last updated.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business application using the retriever. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of your retriever. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retrieverId" /></td>
+    <td><CopyableCode code="retriever_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the retriever used by your Amazon Q Business application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
@@ -253,16 +253,16 @@ Gets information about an existing retriever used by an Amazon Q Business applic
 
 ```sql
 SELECT
-applicationId,
+application_id,
 configuration,
-createdAt,
-displayName,
-retrieverArn,
-retrieverId,
-roleArn,
+created_at,
+display_name,
+retriever_arn,
+retriever_id,
+role_arn,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.qbusiness.retrievers
 WHERE application_id = '{{ application_id }}' -- required
 AND retriever_id = '{{ retriever_id }}' -- required
@@ -276,9 +276,9 @@ Lists the retriever used by an Amazon Q Business application.
 
 ```sql
 SELECT
-applicationId,
-displayName,
-retrieverId,
+application_id,
+display_name,
+retriever_id,
 status,
 type_
 FROM aws.qbusiness.retrievers
@@ -326,8 +326,8 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-retrieverArn,
-retrieverId
+retriever_arn,
+retriever_id
 ;
 ```
 </TabItem>

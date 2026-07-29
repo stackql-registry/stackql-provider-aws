@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the static IP (arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachedTo" /></td>
+    <td><CopyableCode code="attached_to" /></td>
     <td><code>string</code></td>
     <td>The instance where the static IP is attached (Amazon_Linux-1GB-Ohio-1). (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the static IP was created (1479735304.222).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The static IP address. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;1,3&#125;\.)&#123;3&#125;&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAttached" /></td>
+    <td><CopyableCode code="is_attached" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the static IP is attached.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the resource location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type (usually StaticIp). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the static IP (arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attachedTo" /></td>
+    <td><CopyableCode code="attached_to" /></td>
     <td><code>string</code></td>
     <td>The instance where the static IP is attached (Amazon_Linux-1GB-Ohio-1). (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the static IP was created (1479735304.222).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The static IP address. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;1,3&#125;\.)&#123;3&#125;&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAttached" /></td>
+    <td><CopyableCode code="is_attached" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the static IP is attached.</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the resource location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type (usually StaticIp). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -257,13 +257,13 @@ Returns information about an Amazon Lightsail static IP.
 SELECT
 name,
 arn,
-attachedTo,
-createdAt,
-ipAddress,
-isAttached,
+attached_to,
+created_at,
+ip_address,
+is_attached,
 location,
-resourceType,
-supportCode
+resource_type,
+support_code
 FROM aws.lightsail.static_ips
 WHERE region = '{{ region }}' -- required
 ;
@@ -277,13 +277,13 @@ Returns information about all static IPs in the user's account.
 SELECT
 name,
 arn,
-attachedTo,
-createdAt,
-ipAddress,
-isAttached,
+attached_to,
+created_at,
+ip_address,
+is_attached,
 location,
-resourceType,
-supportCode
+resource_type,
+support_code
 FROM aws.lightsail.static_ips
 WHERE region = '{{ region }}' -- required
 ;

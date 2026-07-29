@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActualProperties" /></td>
+    <td><CopyableCode code="actual_properties" /></td>
     <td><code>string</code></td>
     <td>A JSON structure that contains the actual property values of the stack resource. For resources whose StackResourceDriftStatus is DELETED, this structure will not be present.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftStatusReason" /></td>
+    <td><CopyableCode code="drift_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the drift status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpectedProperties" /></td>
+    <td><CopyableCode code="expected_properties" /></td>
     <td><code>string</code></td>
     <td>A JSON structure that contains the expected property values of the stack resource, as defined in the stack template and any values specified as template parameters. For resources whose StackResourceDriftStatus is DELETED, this structure will not be present.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogicalResourceId" /></td>
+    <td><CopyableCode code="logical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The logical name of the resource specified in the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModuleInfo" /></td>
+    <td><CopyableCode code="module_info" /></td>
     <td><code>string</code></td>
     <td>Contains information about the module from which the resource was created, if the resource was created from a module included in the stack template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceId" /></td>
+    <td><CopyableCode code="physical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique identifier that corresponds to a physical instance ID of a resource supported by CloudFormation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceIdContext" /></td>
+    <td><CopyableCode code="physical_resource_id_context" /></td>
     <td><code>string</code></td>
     <td>Context information that enables CloudFormation to uniquely identify a resource. CloudFormation uses context key-value pairs in cases where a resource's logical and physical IDs aren't enough to uniquely identify that resource. Each context key-value pair specifies a unique resource that contains the targeted resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PropertyDifferences" /></td>
+    <td><CopyableCode code="property_differences" /></td>
     <td><code>string</code></td>
     <td>A collection of the resource properties whose actual values differ from their expected values. These will be present only for resources whose StackResourceDriftStatus is MODIFIED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackResourceDriftStatus" /></td>
+    <td><CopyableCode code="stack_resource_drift_status" /></td>
     <td><code>string</code></td>
     <td>Status of the resource's actual configuration compared to its expected configuration. DELETED: The resource differs from its expected template configuration because the resource has been deleted. MODIFIED: One or more resource properties differ from their expected values (as defined in the stack template and any values specified as template parameters). IN_SYNC: The resource's actual configuration matches its expected template configuration. NOT_CHECKED: CloudFormation does not currently return this value. UNKNOWN: CloudFormation could not run drift detection for the resource. See the DriftStatusReason for details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>Time at which CloudFormation performed drift detection on the stack resource.</td>
 </tr>
@@ -194,18 +194,18 @@ Returns drift information for the resources that have been checked for drift in 
 
 ```sql
 SELECT
-ActualProperties,
-DriftStatusReason,
-ExpectedProperties,
-LogicalResourceId,
-ModuleInfo,
-PhysicalResourceId,
-PhysicalResourceIdContext,
-PropertyDifferences,
-ResourceType,
-StackId,
-StackResourceDriftStatus,
-Timestamp
+actual_properties,
+drift_status_reason,
+expected_properties,
+logical_resource_id,
+module_info,
+physical_resource_id,
+physical_resource_id_context,
+property_differences,
+resource_type,
+stack_id,
+stack_resource_drift_status,
+timestamp
 FROM aws.cloudformation.stack_resource_drifts
 WHERE StackName = '{{ StackName }}' -- required
 AND region = '{{ region }}' -- required

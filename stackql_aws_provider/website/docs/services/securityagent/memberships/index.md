@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the agent space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>Application identifier.</td>
 </tr>
@@ -65,22 +65,22 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration for a membership. This is a union type that contains member-type-specific configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the membership was created, in UTC format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the entity that created the membership.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberType" /></td>
+    <td><CopyableCode code="member_type" /></td>
     <td><code>string</code></td>
     <td>Type of membership. (USER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>Member identifier.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata for the member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the membership was last updated, in UTC format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the entity that last updated the membership.</td>
 </tr>
@@ -178,16 +178,16 @@ Returns a paginated list of membership summaries for the specified agent space w
 
 ```sql
 SELECT
-agentSpaceId,
-applicationId,
+agent_space_id,
+application_id,
 config,
-createdAt,
-createdBy,
-memberType,
-membershipId,
+created_at,
+created_by,
+member_type,
+membership_id,
 metadata,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.securityagent.memberships
 WHERE region = '{{ region }}' -- required
 ;

@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the allow list. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):macie2:&#91;a-z1-9-&#93;&#123;9,20&#125;:\d&#123;12&#125;:allow-list\/&#91;a-z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the allow list was created in Amazon Macie.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of key-value pairs that specifies which tags (keys and values) are associated with the allow list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the allow list's settings were most recently changed in Amazon Macie.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the allow list. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):macie2:&#91;a-z1-9-&#93;&#123;9,20&#125;:\d&#123;12&#125;:allow-list\/&#91;a-z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the allow list was created in Amazon Macie.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The custom description of the allow list. (pattern: &lt;code&gt;^&#91;\s\S&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the allow list's settings were most recently changed in Amazon Macie.</td>
 </tr>
@@ -256,12 +256,12 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 criteria,
 description,
 status,
 tags,
-updatedAt
+updated_at
 FROM aws.macie2.allow_lists
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,9 +277,9 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 description,
-updatedAt
+updated_at
 FROM aws.macie2.allow_lists
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

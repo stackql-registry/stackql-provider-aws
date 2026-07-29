@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationTargets" /></td>
+    <td><CopyableCode code="organization_targets" /></td>
     <td><code>string</code></td>
     <td>The IDs of the Amazon Web Services Organizations targets. A target can be an individual Amazon Web Services account or an entity within an Amazon Web Services Organization to which an IPAM policy can be applied.</td>
 </tr>
@@ -149,8 +149,8 @@ Gets the Amazon Web Services Organizations targets for an IPAM policy. An IPAM p
 
 ```sql
 SELECT
-NextToken,
-OrganizationTargets
+next_token,
+organization_targets
 FROM aws.ec2.ipam_policy_organization_targets
 WHERE IpamPolicyId = '{{ IpamPolicyId }}' -- required
 AND region = '{{ region }}' -- required

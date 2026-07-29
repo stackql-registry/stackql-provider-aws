@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InputData" /></td>
+    <td><CopyableCode code="input_data" /></td>
     <td><code>string</code></td>
     <td>A JSON string containing input parameters passed to the view when the page is rendered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Page" /></td>
+    <td><CopyableCode code="page" /></td>
     <td><code>string</code></td>
     <td>The page identifier. System pages include HOME and AGENT_EXPERIENCE. (pattern: &lt;code&gt;^(?!\\.$)(?!\\.\\.$)&#91;\\p&#123;L&#125;\\p&#123;Z&#125;\\p&#123;N&#125;\\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the view associated with this page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Slug" /></td>
+    <td><CopyableCode code="slug" /></td>
     <td><code>string</code></td>
     <td>The URL-friendly identifier for the page. (pattern: &lt;code&gt;^$|^&#91;\\p&#123;L&#125;\\p&#123;Z&#125;\\p&#123;N&#125;\\-_.:=@'|&#93;&#123;3,&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -180,10 +180,10 @@ Lists the page configurations in a workspace, including the views assigned to ea
 
 ```sql
 SELECT
-InputData,
-Page,
-ResourceArn,
-Slug
+input_data,
+page,
+resource_arn,
+slug
 FROM aws.connect.workspace_pages
 WHERE instance_id = '{{ instance_id }}' -- required
 AND workspace_id = '{{ workspace_id }}' -- required

@@ -112,8 +112,8 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND namespace = '{{ namespace }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

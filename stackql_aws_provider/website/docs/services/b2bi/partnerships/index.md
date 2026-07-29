@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>Returns one or more capabilities associated with this partnership.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityOptions" /></td>
+    <td><CopyableCode code="capability_options" /></td>
     <td><code>object</code></td>
     <td>Contains the details for an Outbound EDI capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for creation date and time of the partnership.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the email address associated with this trading partner. (pattern: &lt;code&gt;&#91;\w\.\-&#93;+@&#91;\w\.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp that identifies the most recent date and time that the partnership was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partnershipArn" /></td>
+    <td><CopyableCode code="partnership_arn" /></td>
     <td><code>string</code></td>
     <td>Returns an Amazon Resource Name (ARN) for a specific Amazon Web Services resource, such as a capability, partnership, profile, or transformer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partnershipId" /></td>
+    <td><CopyableCode code="partnership_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique, system-generated identifier for a partnership. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the phone number associated with the partnership. (pattern: &lt;code&gt;\+?(&#91;0-9 \t\-()\/&#93;&#123;7,&#125;)(?:\s*(?:#|x\.?|ext\.?|extension) \t*(\d+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique, system-generated identifier for the profile connected to this partnership. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tradingPartnerId" /></td>
+    <td><CopyableCode code="trading_partner_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique identifier for the partner for this partnership. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -130,32 +130,32 @@ The following fields are returned by `SELECT` queries:
     <td>Returns one or more capabilities associated with this partnership.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityOptions" /></td>
+    <td><CopyableCode code="capability_options" /></td>
     <td><code>object</code></td>
     <td>Contains the details for an Outbound EDI capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for creation date and time of the partnership.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp that identifies the most recent date and time that the partnership was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partnershipId" /></td>
+    <td><CopyableCode code="partnership_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique, system-generated identifier for a partnership. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique, system-generated identifier for the profile connected to this partnership. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tradingPartnerId" /></td>
+    <td><CopyableCode code="trading_partner_id" /></td>
     <td><code>string</code></td>
     <td>Returns the unique, system-generated identifier for a trading partner. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -255,15 +255,15 @@ Retrieves the details for a partnership, based on the partner and profile IDs sp
 SELECT
 name,
 capabilities,
-capabilityOptions,
-createdAt,
+capability_options,
+created_at,
 email,
-modifiedAt,
-partnershipArn,
-partnershipId,
+modified_at,
+partnership_arn,
+partnership_id,
 phone,
-profileId,
-tradingPartnerId
+profile_id,
+trading_partner_id
 FROM aws.b2bi.partnerships
 WHERE region = '{{ region }}' -- required
 ;
@@ -277,12 +277,12 @@ Lists the partnerships associated with your Amazon Web Services account for your
 SELECT
 name,
 capabilities,
-capabilityOptions,
-createdAt,
-modifiedAt,
-partnershipId,
-profileId,
-tradingPartnerId
+capability_options,
+created_at,
+modified_at,
+partnership_id,
+profile_id,
+trading_partner_id
 FROM aws.b2bi.partnerships
 WHERE region = '{{ region }}' -- required
 ;
@@ -329,14 +329,14 @@ SELECT
 RETURNING
 name,
 capabilities,
-capabilityOptions,
-createdAt,
+capability_options,
+created_at,
 email,
-partnershipArn,
-partnershipId,
+partnership_arn,
+partnership_id,
 phone,
-profileId,
-tradingPartnerId
+profile_id,
+trading_partner_id
 ;
 ```
 </TabItem>
@@ -448,15 +448,15 @@ AND partnershipId = '{{ partnershipId }}' --required
 RETURNING
 name,
 capabilities,
-capabilityOptions,
-createdAt,
+capability_options,
+created_at,
 email,
-modifiedAt,
-partnershipArn,
-partnershipId,
+modified_at,
+partnership_arn,
+partnership_id,
 phone,
-profileId,
-tradingPartnerId;
+profile_id,
+trading_partner_id;
 ```
 </TabItem>
 </Tabs>

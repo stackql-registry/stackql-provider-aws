@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actId" /></td>
+    <td><CopyableCode code="act_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the act. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the act completed execution, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the session containing this act. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the act started execution.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current execution status of the act. (RUNNING, PENDING_CLIENT_ACTION, PENDING_HUMAN_ACTION, SUCCEEDED, FAILED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="traceLocation" /></td>
+    <td><CopyableCode code="trace_location" /></td>
     <td><code>object</code></td>
     <td>The location where trace information for this act is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowRunId" /></td>
+    <td><CopyableCode code="workflow_run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workflow run containing this act. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -210,13 +210,13 @@ Lists all acts within a specific session with their current status and execution
 
 ```sql
 SELECT
-actId,
-endedAt,
-sessionId,
-startedAt,
+act_id,
+ended_at,
+session_id,
+started_at,
 status,
-traceLocation,
-workflowRunId
+trace_location,
+workflow_run_id
 FROM aws.nova_act.acts
 WHERE workflow_definition_name = '{{ workflow_definition_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,7 +262,7 @@ SELECT
 '{{ session_id }}',
 '{{ region }}'
 RETURNING
-actId,
+act_id,
 status
 ;
 ```

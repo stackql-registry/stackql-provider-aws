@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a contact in the engagement resolution process. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StageIndex" /></td>
+    <td><CopyableCode code="stage_index" /></td>
     <td><code>integer</code></td>
     <td>The stage in the escalation plan that resolves to this contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of contact for a resolution step. (PERSONAL, ESCALATION, ONCALL_SCHEDULE)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the resolution path of an engagement. For example, the escalation plan e
 
 ```sql
 SELECT
-ContactArn,
-StageIndex,
-Type
+contact_arn,
+stage_index,
+type
 FROM aws.ssm_contacts.page_resolutions
 WHERE region = '{{ region }}' -- required
 ;

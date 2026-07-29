@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountState" /></td>
+    <td><CopyableCode code="account_state" /></td>
     <td><code>string</code></td>
     <td>The account state of the linked GovCloud account. (PENDING_ACTIVATION, ACTIVE, SUSPENDED, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GovCloudAccountId" /></td>
+    <td><CopyableCode code="gov_cloud_account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account ID number of the linked GovCloud account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves information about the GovCloud account linked to the specified standar
 
 ```sql
 SELECT
-AccountState,
-GovCloudAccountId
+account_state,
+gov_cloud_account_id
 FROM aws.account.gov_cloud_account_informations
 WHERE region = '{{ region }}' -- required
 ;

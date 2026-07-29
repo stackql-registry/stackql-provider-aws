@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationVersion" /></td>
+    <td><CopyableCode code="configuration_version" /></td>
     <td><code>string</code></td>
     <td>The configuration version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string (byte)</code></td>
     <td>The content of the configuration or the configuration data. The Content attribute only contains data if the system finds new or updated configuration data. If there is no new or updated data and ClientConfigurationVersion matches the version of the current configuration, AppConfig returns a 204 No Content HTTP response code and the Content value will be empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>A standard MIME type describing the format of the configuration content. For more information, see Content-Type.</td>
 </tr>
@@ -154,9 +154,9 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 
 ```sql
 SELECT
-ConfigurationVersion,
-Content,
-ContentType
+configuration_version,
+content,
+content_type
 FROM aws.appconfig.configurations
 WHERE application = '{{ application }}' -- required
 AND environment = '{{ environment }}' -- required

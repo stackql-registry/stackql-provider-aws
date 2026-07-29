@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="artifactId" /></td>
+    <td><CopyableCode code="artifact_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for an artifact. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="artifactUrl" /></td>
+    <td><CopyableCode code="artifact_url" /></td>
     <td><code>string</code></td>
     <td>The presigned URL for the artifact.</td>
 </tr>
@@ -129,8 +129,8 @@ Returns the artifact info that corresponds to an artifact id.
 
 ```sql
 SELECT
-artifactId,
-artifactUrl
+artifact_id,
+artifact_url
 FROM aws.amplify.artifact_urls
 WHERE artifact_id = '{{ artifact_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -164,7 +164,7 @@ region = '{{ region }}' --required
 AND policy = '{{ policy }}' --required
 AND resourceArn = '{{ resourceArn }}' --required
 RETURNING
-resourceArn;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

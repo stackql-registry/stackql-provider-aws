@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationCidrBlock" /></td>
+    <td><CopyableCode code="destination_cidr_block" /></td>
     <td><code>string</code></td>
     <td>The CIDR block used for destination matches.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListId" /></td>
+    <td><CopyableCode code="prefix_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the prefix list used for destination matches.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachments" /></td>
+    <td><CopyableCode code="transit_gateway_attachments" /></td>
     <td><code>string</code></td>
     <td>The attachments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableAnnouncementId" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_announcement_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway route table announcement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The route type.</td>
 </tr>
@@ -222,12 +222,12 @@ Searches for routes in the specified transit gateway route table.
 
 ```sql
 SELECT
-DestinationCidrBlock,
-PrefixListId,
-State,
-TransitGatewayAttachments,
-TransitGatewayRouteTableAnnouncementId,
-Type
+destination_cidr_block,
+prefix_list_id,
+state,
+transit_gateway_attachments,
+transit_gateway_route_table_announcement_id,
+type
 FROM aws.ec2.transit_gateway_routes
 WHERE TransitGatewayRouteTableId = '{{ TransitGatewayRouteTableId }}' -- required
 AND Filter = '{{ Filter }}' -- required
@@ -271,12 +271,12 @@ SELECT
 '{{ Blackhole }}',
 '{{ DryRun }}'
 RETURNING
-DestinationCidrBlock,
-PrefixListId,
-State,
-TransitGatewayAttachments,
-TransitGatewayRouteTableAnnouncementId,
-Type
+destination_cidr_block,
+prefix_list_id,
+state,
+transit_gateway_attachments,
+transit_gateway_route_table_announcement_id,
+type
 ;
 ```
 </TabItem>
@@ -336,12 +336,12 @@ AND TransitGatewayAttachmentId = '{{ TransitGatewayAttachmentId}}'
 AND Blackhole = {{ Blackhole}}
 AND DryRun = {{ DryRun}}
 RETURNING
-DestinationCidrBlock,
-PrefixListId,
-State,
-TransitGatewayAttachments,
-TransitGatewayRouteTableAnnouncementId,
-Type;
+destination_cidr_block,
+prefix_list_id,
+state,
+transit_gateway_attachments,
+transit_gateway_route_table_announcement_id,
+type;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LoadBalancerTargetGroupARN" /></td>
+    <td><CopyableCode code="load_balancer_target_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the target group. Adding - The Auto Scaling instances are being registered with the target group. Added - All Auto Scaling instances are registered with the target group. InService - At least one Auto Scaling instance passed an ELB health check. Removing - The Auto Scaling instances are being deregistered from the target group. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances. Removed - All Auto Scaling instances are deregistered from the target group.</td>
 </tr>
@@ -158,8 +158,8 @@ This API operation is superseded by DescribeTrafficSources, which can describe m
 
 ```sql
 SELECT
-LoadBalancerTargetGroupARN,
-State
+load_balancer_target_group_arn,
+state
 FROM aws.autoscaling.load_balancer_target_groups
 WHERE AutoScalingGroupName = '{{ AutoScalingGroupName }}' -- required
 AND region = '{{ region }}' -- required

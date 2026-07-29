@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the metadata form type. (pattern: &lt;code&gt;(amazon.datazone.)?(?!&#91;0-9_&#93;)\w+$|^_\w*&#91;a-zA-Z0-9&#93;\w*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this metadata form type was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created this metadata form type.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the metadata form type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which this metadata form type exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
     <td>The model of the API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originDomainId" /></td>
+    <td><CopyableCode code="origin_domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the metadata form type was originally created. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originProjectId" /></td>
+    <td><CopyableCode code="origin_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project in which this metadata form type was originally created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project that owns this metadata form type. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -204,15 +204,15 @@ Gets a metadata form type in Amazon DataZone. Form types define the structure an
 ```sql
 SELECT
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
+domain_id,
 imports,
 model,
-originDomainId,
-originProjectId,
-owningProjectId,
+origin_domain_id,
+origin_project_id,
+owning_project_id,
 revision,
 status
 FROM aws.datazone.form_types
@@ -260,10 +260,10 @@ SELECT
 RETURNING
 name,
 description,
-domainId,
-originDomainId,
-originProjectId,
-owningProjectId,
+domain_id,
+origin_domain_id,
+origin_project_id,
+owning_project_id,
 revision
 ;
 ```

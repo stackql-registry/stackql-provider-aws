@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The entity ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the entity was created.</td>
 </tr>
@@ -181,7 +181,7 @@ Searches for entities of the specified type. You can search for entities in your
 SELECT
 id,
 arn,
-createdAt,
+created_at,
 definition,
 type_
 FROM aws.iotthingsgraph.entities

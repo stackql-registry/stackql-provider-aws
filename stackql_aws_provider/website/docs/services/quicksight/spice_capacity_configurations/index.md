@@ -107,8 +107,8 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 AND PurchaseMode = '{{ PurchaseMode }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

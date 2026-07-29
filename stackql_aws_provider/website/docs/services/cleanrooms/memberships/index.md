@@ -61,72 +61,72 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN for the membership. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the membership's associated collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationCreatorAccountId" /></td>
+    <td><CopyableCode code="collaboration_creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Currently only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationCreatorDisplayName" /></td>
+    <td><CopyableCode code="collaboration_creator_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the collaboration creator. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the membership's collaboration. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationName" /></td>
+    <td><CopyableCode code="collaboration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the membership's collaboration. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the membership was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultJobResultConfiguration" /></td>
+    <td><CopyableCode code="default_job_result_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains configurations for protected job results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultResultConfiguration" /></td>
+    <td><CopyableCode code="default_result_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains configurations for protected query results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isMetricsEnabled" /></td>
+    <td><CopyableCode code="is_metrics_enabled" /></td>
     <td><code>boolean</code></td>
     <td>An indicator as to whether Amazon CloudWatch metrics are enabled for the membership. When true, metrics about query execution are collected in Amazon CloudWatch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobLogStatus" /></td>
+    <td><CopyableCode code="job_log_status" /></td>
     <td><code>string</code></td>
     <td>An indicator as to whether job logging has been enabled or disabled for the collaboration. When ENABLED, Clean Rooms logs details about jobs run within this collaboration and those logs can be viewed in Amazon CloudWatch Logs. The default value is DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberAbilities" /></td>
+    <td><CopyableCode code="member_abilities" /></td>
     <td><code>array</code></td>
     <td>The abilities granted to the collaboration member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mlMemberAbilities" /></td>
+    <td><CopyableCode code="ml_member_abilities" /></td>
     <td><code>object</code></td>
     <td>The ML member abilities for a collaboration member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentConfiguration" /></td>
+    <td><CopyableCode code="payment_configuration" /></td>
     <td><code>object</code></td>
     <td>An object representing the payment responsibilities accepted by the collaboration member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryLogStatus" /></td>
+    <td><CopyableCode code="query_log_status" /></td>
     <td><code>string</code></td>
     <td>An indicator as to whether query logging has been enabled or disabled for the membership. When ENABLED, Clean Rooms logs details about queries run within this collaboration and those logs can be viewed in Amazon CloudWatch Logs. The default value is DISABLED. (ENABLED, DISABLED)</td>
 </tr>
@@ -136,7 +136,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the membership. (ACTIVE, REMOVED, COLLABORATION_DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the membership metadata was last updated.</td>
 </tr>
@@ -165,47 +165,47 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN for the membership. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the membership's associated collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationCreatorAccountId" /></td>
+    <td><CopyableCode code="collaboration_creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Web Services principal that created the collaboration. Currently only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationCreatorDisplayName" /></td>
+    <td><CopyableCode code="collaboration_creator_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the collaboration creator. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the membership's collaboration. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationName" /></td>
+    <td><CopyableCode code="collaboration_name" /></td>
     <td><code>string</code></td>
     <td>The name for the membership's collaboration. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the membership was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberAbilities" /></td>
+    <td><CopyableCode code="member_abilities" /></td>
     <td><code>array</code></td>
     <td>The abilities granted to the collaboration member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mlMemberAbilities" /></td>
+    <td><CopyableCode code="ml_member_abilities" /></td>
     <td><code>object</code></td>
     <td>The ML member abilities for a collaboration member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentConfiguration" /></td>
+    <td><CopyableCode code="payment_configuration" /></td>
     <td><code>object</code></td>
     <td>An object representing the payment responsibilities accepted by the collaboration member.</td>
 </tr>
@@ -215,7 +215,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the membership. (ACTIVE, REMOVED, COLLABORATION_DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the membership metadata was last updated.</td>
 </tr>
@@ -356,22 +356,22 @@ Retrieves a specified membership for an identifier.
 SELECT
 id,
 arn,
-collaborationArn,
-collaborationCreatorAccountId,
-collaborationCreatorDisplayName,
-collaborationId,
-collaborationName,
-createTime,
-defaultJobResultConfiguration,
-defaultResultConfiguration,
-isMetricsEnabled,
-jobLogStatus,
-memberAbilities,
-mlMemberAbilities,
-paymentConfiguration,
-queryLogStatus,
+collaboration_arn,
+collaboration_creator_account_id,
+collaboration_creator_display_name,
+collaboration_id,
+collaboration_name,
+create_time,
+default_job_result_configuration,
+default_result_configuration,
+is_metrics_enabled,
+job_log_status,
+member_abilities,
+ml_member_abilities,
+payment_configuration,
+query_log_status,
 status,
-updateTime
+update_time
 FROM aws.cleanrooms.memberships
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -386,17 +386,17 @@ Lists all memberships resources within the caller's account.
 SELECT
 id,
 arn,
-collaborationArn,
-collaborationCreatorAccountId,
-collaborationCreatorDisplayName,
-collaborationId,
-collaborationName,
-createTime,
-memberAbilities,
-mlMemberAbilities,
-paymentConfiguration,
+collaboration_arn,
+collaboration_creator_account_id,
+collaboration_creator_display_name,
+collaboration_id,
+collaboration_name,
+create_time,
+member_abilities,
+ml_member_abilities,
+payment_configuration,
 status,
-updateTime
+update_time
 FROM aws.cleanrooms.memberships
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

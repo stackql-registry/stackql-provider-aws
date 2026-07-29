@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the member's channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the channel membership was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitedBy" /></td>
+    <td><CopyableCode code="invited_by" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a channel membership was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Member" /></td>
+    <td><CopyableCode code="member" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubChannelId" /></td>
+    <td><CopyableCode code="sub_channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the SubChannel that a user belongs to. (pattern: &lt;code&gt;&#91;-_a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The membership type set for the channel member. (DEFAULT, HIDDEN)</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelMemberships" /></td>
+    <td><CopyableCode code="channel_memberships" /></td>
     <td><code>array</code></td>
     <td>The information for the requested channel memberships.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested channel memberships are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -236,13 +236,13 @@ Returns the full details of a user's channel membership. The x-amz-chime-bearer 
 
 ```sql
 SELECT
-ChannelArn,
-CreatedTimestamp,
-InvitedBy,
-LastUpdatedTimestamp,
-Member,
-SubChannelId,
-Type
+channel_arn,
+created_timestamp,
+invited_by,
+last_updated_timestamp,
+member,
+sub_channel_id,
+type
 FROM aws.chime_sdk_messaging.channel_memberships
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND member_arn = '{{ member_arn }}' -- required
@@ -258,9 +258,9 @@ Lists all channel memberships in a channel. The x-amz-chime-bearer request heade
 
 ```sql
 SELECT
-ChannelArn,
-ChannelMemberships,
-NextToken
+channel_arn,
+channel_memberships,
+next_token
 FROM aws.chime_sdk_messaging.channel_memberships
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
@@ -305,9 +305,9 @@ SELECT
 '{{ x-amz-chime-bearer }}',
 '{{ region }}'
 RETURNING
-ChannelArn,
-Member,
-SubChannelId
+channel_arn,
+member,
+sub_channel_id
 ;
 ```
 </TabItem>

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that grants AWS HealthLake access to the input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatastoreId" /></td>
+    <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
     <td>The data store identifier. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the import job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>The input data configuration supplied when the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The import job identifier. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The import job name. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobOutputDataConfig" /></td>
+    <td><CopyableCode code="job_output_data_config" /></td>
     <td><code>object</code></td>
     <td>The output data configuration supplied when the export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobProgressReport" /></td>
+    <td><CopyableCode code="job_progress_report" /></td>
     <td><code>object</code></td>
     <td>Displays the progress of the import job, including total resources scanned, total resources imported, and total size of data imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The import job status. (SUBMITTED, QUEUED, IN_PROGRESS, COMPLETED_WITH_ERRORS, COMPLETED, FAILED, CANCEL_SUBMITTED, CANCEL_IN_PROGRESS, CANCEL_COMPLETED, CANCEL_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>An explanation of any errors that might have occurred during the FHIR import job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the import job was submitted for processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationLevel" /></td>
+    <td><CopyableCode code="validation_level" /></td>
     <td><code>string</code></td>
     <td>The validation level of the import job. (strict, structure-only, minimal)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImportJobPropertiesList" /></td>
+    <td><CopyableCode code="import_job_properties_list" /></td>
     <td><code>array</code></td>
     <td>The properties for listed import jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to identify the next page of results to return. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -207,18 +207,18 @@ Get the import job properties to learn more about the job or job progress.
 
 ```sql
 SELECT
-DataAccessRoleArn,
-DatastoreId,
-EndTime,
-InputDataConfig,
-JobId,
-JobName,
-JobOutputDataConfig,
-JobProgressReport,
-JobStatus,
-Message,
-SubmitTime,
-ValidationLevel
+data_access_role_arn,
+datastore_id,
+end_time,
+input_data_config,
+job_id,
+job_name,
+job_output_data_config,
+job_progress_report,
+job_status,
+message,
+submit_time,
+validation_level
 FROM aws.healthlake.fhir_import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,8 +230,8 @@ List all FHIR import jobs associated with an account and their statuses.
 
 ```sql
 SELECT
-ImportJobPropertiesList,
-NextToken
+import_job_properties_list,
+next_token
 FROM aws.healthlake.fhir_import_jobs
 WHERE region = '{{ region }}' -- required
 ;

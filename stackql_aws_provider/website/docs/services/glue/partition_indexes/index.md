@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackfillErrors" /></td>
+    <td><CopyableCode code="backfill_errors" /></td>
     <td><code>array</code></td>
     <td>A list of errors that can occur when registering partition indexes for an existing table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The name of the partition index. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatus" /></td>
+    <td><CopyableCode code="index_status" /></td>
     <td><code>string</code></td>
     <td>The status of the partition index. The possible statuses are: CREATING: The index is being created. When an index is in a CREATING state, the index or its table cannot be deleted. ACTIVE: The index creation succeeds. FAILED: The index creation fails. DELETING: The index is deleted from the list of indexes. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Keys" /></td>
+    <td><CopyableCode code="keys" /></td>
     <td><code>array</code></td>
     <td>A list of one or more keys, as KeySchemaElement structures, for the partition index.</td>
 </tr>
@@ -148,10 +148,10 @@ Retrieves the partition indexes associated with a table.
 
 ```sql
 SELECT
-BackfillErrors,
-IndexName,
-IndexStatus,
-Keys
+backfill_errors,
+index_name,
+index_status,
+keys
 FROM aws.glue.partition_indexes
 WHERE region = '{{ region }}' -- required
 ;

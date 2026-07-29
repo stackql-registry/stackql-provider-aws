@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the online evaluation configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceConfig" /></td>
+    <td><CopyableCode code="data_source_config" /></td>
     <td><code>object</code></td>
     <td>The configuration that specifies where to read agent traces for online evaluation.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the online evaluation configuration. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationExecutionRoleArn" /></td>
+    <td><CopyableCode code="evaluation_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used for evaluation execution. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
     <td>The list of evaluators applied during online evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The execution status indicating whether the online evaluation is currently running. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the online evaluation configuration execution failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlineEvaluationConfigArn" /></td>
+    <td><CopyableCode code="online_evaluation_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the online evaluation configuration. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:online-evaluation-config\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlineEvaluationConfigId" /></td>
+    <td><CopyableCode code="online_evaluation_config_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the online evaluation configuration. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlineEvaluationConfigName" /></td>
+    <td><CopyableCode code="online_evaluation_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the online evaluation configuration. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The configuration that specifies where evaluation results should be written for monitoring and analysis.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the online evaluation configuration. (ACTIVE, CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the online evaluation configuration was last updated.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the online evaluation configuration was created.</td>
 </tr>
@@ -145,27 +145,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the online evaluation configuration. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The execution status indicating whether the online evaluation is currently running. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the online evaluation configuration execution failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlineEvaluationConfigArn" /></td>
+    <td><CopyableCode code="online_evaluation_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the online evaluation configuration. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:online-evaluation-config\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlineEvaluationConfigId" /></td>
+    <td><CopyableCode code="online_evaluation_config_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the online evaluation configuration. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onlineEvaluationConfigName" /></td>
+    <td><CopyableCode code="online_evaluation_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the online evaluation configuration. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
@@ -175,7 +175,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the online evaluation configuration. (ACTIVE, CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the online evaluation configuration was last updated.</td>
 </tr>
@@ -288,20 +288,20 @@ Retrieves detailed information about an online evaluation configuration, includi
 
 ```sql
 SELECT
-createdAt,
-dataSourceConfig,
+created_at,
+data_source_config,
 description,
-evaluationExecutionRoleArn,
+evaluation_execution_role_arn,
 evaluators,
-executionStatus,
-failureReason,
-onlineEvaluationConfigArn,
-onlineEvaluationConfigId,
-onlineEvaluationConfigName,
-outputConfig,
+execution_status,
+failure_reason,
+online_evaluation_config_arn,
+online_evaluation_config_id,
+online_evaluation_config_name,
+output_config,
 rule,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.online_evaluation_configs
 WHERE online_evaluation_config_id = '{{ online_evaluation_config_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -314,15 +314,15 @@ Lists all online evaluation configurations in the account, providing summary inf
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-executionStatus,
-failureReason,
-onlineEvaluationConfigArn,
-onlineEvaluationConfigId,
-onlineEvaluationConfigName,
+execution_status,
+failure_reason,
+online_evaluation_config_arn,
+online_evaluation_config_id,
+online_evaluation_config_name,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.online_evaluation_configs
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -371,12 +371,12 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
-executionStatus,
-failureReason,
-onlineEvaluationConfigArn,
-onlineEvaluationConfigId,
-outputConfig,
+created_at,
+execution_status,
+failure_reason,
+online_evaluation_config_arn,
+online_evaluation_config_id,
+output_config,
 status
 ;
 ```
@@ -460,12 +460,12 @@ WHERE
 online_evaluation_config_id = '{{ online_evaluation_config_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-executionStatus,
-failureReason,
-onlineEvaluationConfigArn,
-onlineEvaluationConfigId,
+execution_status,
+failure_reason,
+online_evaluation_config_arn,
+online_evaluation_config_id,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

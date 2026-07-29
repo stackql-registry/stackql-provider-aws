@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the instance state. This string can contain one or more of the following messages. N/A A transient error occurred. Please try again later. Instance has failed at least the UnhealthyThreshold number of health checks consecutively. Instance has not passed the configured HealthyThreshold number of health checks consecutively. Instance registration is still in progress. Instance is in the EC2 Availability Zone for which LoadBalancer is not configured to route traffic to. Instance is not currently registered with the LoadBalancer. Instance deregistration currently in progress. Disable Availability Zone is currently in progress. Instance is in pending state. Instance is in stopped state. Instance is in terminated state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReasonCode" /></td>
+    <td><CopyableCode code="reason_code" /></td>
     <td><code>string</code></td>
     <td>Information about the cause of OutOfService instances. Specifically, whether the cause is Elastic Load Balancing or the instance. Valid values: ELB | Instance | N/A</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the instance. Valid values: InService | OutOfService | Unknown</td>
 </tr>
@@ -144,10 +144,10 @@ Describes the state of the specified instances with respect to the specified loa
 
 ```sql
 SELECT
-Description,
-InstanceId,
-ReasonCode,
-State
+description,
+instance_id,
+reason_code,
+state
 FROM aws.elb.instance_healths
 WHERE LoadBalancerName = '{{ LoadBalancerName }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="generatedPolicyResult" /></td>
+    <td><CopyableCode code="generated_policy_result" /></td>
     <td><code>object</code></td>
     <td>A GeneratedPolicyResult object that contains the generated policies and associated details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDetails" /></td>
+    <td><CopyableCode code="job_details" /></td>
     <td><code>object</code></td>
     <td>A GeneratedPolicyDetails object that contains details about the generated policy.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieves the policy that was generated using StartPolicyGeneration.
 
 ```sql
 SELECT
-generatedPolicyResult,
-jobDetails
+generated_policy_result,
+job_details
 FROM aws.accessanalyzer.generated_policies
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>string</code></td>
     <td>A map of policy names to policies.</td>
 </tr>
@@ -181,7 +181,7 @@ Returns the requested sending authorization policies for the given identity (an 
 
 ```sql
 SELECT
-Policies
+policies
 FROM aws.ses.identity_policies
 WHERE PolicyNames = '{{ PolicyNames }}' -- required
 AND region = '{{ region }}' -- required

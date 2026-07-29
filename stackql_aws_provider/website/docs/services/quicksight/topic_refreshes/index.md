@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RefreshDetails" /></td>
+    <td><CopyableCode code="refresh_details" /></td>
     <td><code>object</code></td>
     <td>Details of the refresh, which is performed when the topic is created or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -144,9 +144,9 @@ Describes the status of a topic refresh.
 
 ```sql
 SELECT
-RefreshDetails,
-RequestId,
-Status
+refresh_details,
+request_id,
+status
 FROM aws.quicksight.topic_refreshes
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND topic_id = '{{ topic_id }}' -- required

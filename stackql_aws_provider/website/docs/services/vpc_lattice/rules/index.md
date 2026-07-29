@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the listener. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;/listener/listener-&#91;0-9a-z&#93;&#123;17&#125;/rule/rule-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener rule was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener rule was last updated, in ISO-8601 format.</td>
 </tr>
@@ -125,17 +125,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the rule. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;/listener/listener-&#91;0-9a-z&#93;&#123;17&#125;/rule/rule-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener rule was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default listener rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener rule was last updated, in ISO-8601 format.</td>
 </tr>
@@ -267,9 +267,9 @@ id,
 name,
 action,
 arn,
-createdAt,
-isDefault,
-lastUpdatedAt,
+created_at,
+is_default,
+last_updated_at,
 match,
 priority
 FROM aws.vpc_lattice.rules
@@ -289,9 +289,9 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-isDefault,
-lastUpdatedAt,
+created_at,
+is_default,
+last_updated_at,
 priority
 FROM aws.vpc_lattice.rules
 WHERE service_identifier = '{{ service_identifier }}' -- required
@@ -434,7 +434,7 @@ id,
 name,
 action,
 arn,
-isDefault,
+is_default,
 match,
 priority;
 ```

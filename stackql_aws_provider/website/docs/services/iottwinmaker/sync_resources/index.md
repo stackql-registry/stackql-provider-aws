@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncResources" /></td>
+    <td><CopyableCode code="sync_resources" /></td>
     <td><code>array</code></td>
     <td>The sync resources.</td>
 </tr>
@@ -134,8 +134,8 @@ Lists the sync resources.
 
 ```sql
 SELECT
-nextToken,
-syncResources
+next_token,
+sync_resources
 FROM aws.iottwinmaker.sync_resources
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND sync_source = '{{ sync_source }}' -- required

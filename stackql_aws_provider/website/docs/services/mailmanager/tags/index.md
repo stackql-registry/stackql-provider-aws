@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags used to organize, track, or control access for the resource. For example, &#123; "tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the list of tags (keys and values) assigned to the resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.mailmanager.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="thingGroupIndexingConfiguration" /></td>
+    <td><CopyableCode code="thing_group_indexing_configuration" /></td>
     <td><code>object</code></td>
     <td>The index configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingIndexingConfiguration" /></td>
+    <td><CopyableCode code="thing_indexing_configuration" /></td>
     <td><code>object</code></td>
     <td>Thing indexing configuration.</td>
 </tr>
@@ -131,8 +131,8 @@ Gets the indexing configuration. Requires permission to access the GetIndexingCo
 
 ```sql
 SELECT
-thingGroupIndexingConfiguration,
-thingIndexingConfiguration
+thing_group_indexing_configuration,
+thing_indexing_configuration
 FROM aws.iot.indexing_configurations
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArtifactStoreUri" /></td>
+    <td><CopyableCode code="artifact_store_uri" /></td>
     <td><code>string</code></td>
     <td>The S3 URI of the general purpose bucket used as the MLflow Tracking Server artifact store. (pattern: &lt;code&gt;(https|s3):​//(&#91;^/&#93;+)/?(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomaticModelRegistration" /></td>
+    <td><CopyableCode code="automatic_model_registration" /></td>
     <td><code>boolean</code></td>
     <td>Whether automatic registration of new MLflow models to the SageMaker Model Registry is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the described MLflow Tracking Server was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>string</code></td>
     <td>Whether the described MLflow Tracking Server is currently active. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the described MLflow Tracking Server was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MlflowVersion" /></td>
+    <td><CopyableCode code="mlflow_version" /></td>
     <td><code>string</code></td>
     <td>The MLflow version used for the described tracking server. (pattern: &lt;code&gt;&#91;0-9&#93;*.&#91;0-9&#93;*.&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for an IAM role in your account that the described MLflow Tracking Server uses to access the artifact store in Amazon S3. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketOwnerAccountId" /></td>
+    <td><CopyableCode code="s3_bucket_owner_account_id" /></td>
     <td><code>string</code></td>
     <td>Expected Amazon Web Services account ID that owns the Amazon S3 bucket for artifact storage. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketOwnerVerification" /></td>
+    <td><CopyableCode code="s3_bucket_owner_verification" /></td>
     <td><code>boolean</code></td>
     <td>Whether Amazon S3 Bucket Ownership checks are enabled whenever the tracking server interacts with Amazon Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerArn" /></td>
+    <td><CopyableCode code="tracking_server_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the described tracking server. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:mlflow-tracking-server/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerMaintenanceStatus" /></td>
+    <td><CopyableCode code="tracking_server_maintenance_status" /></td>
     <td><code>string</code></td>
     <td>The current maintenance status of the described MLflow Tracking Server. (MaintenanceInProgress, MaintenanceComplete, MaintenanceFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerName" /></td>
+    <td><CopyableCode code="tracking_server_name" /></td>
     <td><code>string</code></td>
     <td>The name of the described tracking server. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerSize" /></td>
+    <td><CopyableCode code="tracking_server_size" /></td>
     <td><code>string</code></td>
     <td>The size of the described tracking server. (Small, Medium, Large)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerStatus" /></td>
+    <td><CopyableCode code="tracking_server_status" /></td>
     <td><code>string</code></td>
     <td>The current creation status of the described MLflow Tracking Server. (Creating, Created, CreateFailed, Updating, Updated, UpdateFailed, Deleting, DeleteFailed, Stopping, Stopped, StopFailed, Starting, Started, StartFailed, MaintenanceInProgress, MaintenanceComplete, MaintenanceFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerUrl" /></td>
+    <td><CopyableCode code="tracking_server_url" /></td>
     <td><code>string</code></td>
     <td>The URL to connect to the MLflow user interface for the described tracking server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WeeklyMaintenanceWindowStart" /></td>
+    <td><CopyableCode code="weekly_maintenance_window_start" /></td>
     <td><code>string</code></td>
     <td>The day and time of the week when weekly maintenance occurs on the described tracking server. (pattern: &lt;code&gt;(Mon|Tue|Wed|Thu|Fri|Sat|Sun):(&#91;01&#93;\d|2&#91;0-3&#93;):(&#91;0-5&#93;\d)&lt;/code&gt;)</td>
 </tr>
@@ -155,37 +155,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of a listed tracking server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>string</code></td>
     <td>The activity status of a listed tracking server. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of a listed tracking server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MlflowVersion" /></td>
+    <td><CopyableCode code="mlflow_version" /></td>
     <td><code>string</code></td>
     <td>The MLflow version used for a listed tracking server. (pattern: &lt;code&gt;&#91;0-9&#93;*.&#91;0-9&#93;*.&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerArn" /></td>
+    <td><CopyableCode code="tracking_server_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a listed tracking server. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:mlflow-tracking-server/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerName" /></td>
+    <td><CopyableCode code="tracking_server_name" /></td>
     <td><code>string</code></td>
     <td>The name of a listed tracking server. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingServerStatus" /></td>
+    <td><CopyableCode code="tracking_server_status" /></td>
     <td><code>string</code></td>
     <td>The creation status of a listed tracking server. (Creating, Created, CreateFailed, Updating, Updated, UpdateFailed, Deleting, DeleteFailed, Stopping, Stopped, StopFailed, Starting, Started, StartFailed, MaintenanceInProgress, MaintenanceComplete, MaintenanceFailed)</td>
 </tr>
@@ -283,24 +283,24 @@ Returns information about an MLflow Tracking Server.
 
 ```sql
 SELECT
-ArtifactStoreUri,
-AutomaticModelRegistration,
-CreatedBy,
-CreationTime,
-IsActive,
-LastModifiedBy,
-LastModifiedTime,
-MlflowVersion,
-RoleArn,
-S3BucketOwnerAccountId,
-S3BucketOwnerVerification,
-TrackingServerArn,
-TrackingServerMaintenanceStatus,
-TrackingServerName,
-TrackingServerSize,
-TrackingServerStatus,
-TrackingServerUrl,
-WeeklyMaintenanceWindowStart
+artifact_store_uri,
+automatic_model_registration,
+created_by,
+creation_time,
+is_active,
+last_modified_by,
+last_modified_time,
+mlflow_version,
+role_arn,
+s3_bucket_owner_account_id,
+s3_bucket_owner_verification,
+tracking_server_arn,
+tracking_server_maintenance_status,
+tracking_server_name,
+tracking_server_size,
+tracking_server_status,
+tracking_server_url,
+weekly_maintenance_window_start
 FROM aws.sagemaker.mlflow_tracking_servers
 WHERE region = '{{ region }}' -- required
 ;
@@ -312,13 +312,13 @@ Lists all MLflow Tracking Servers.
 
 ```sql
 SELECT
-CreationTime,
-IsActive,
-LastModifiedTime,
-MlflowVersion,
-TrackingServerArn,
-TrackingServerName,
-TrackingServerStatus
+creation_time,
+is_active,
+last_modified_time,
+mlflow_version,
+tracking_server_arn,
+tracking_server_name,
+tracking_server_status
 FROM aws.sagemaker.mlflow_tracking_servers
 WHERE region = '{{ region }}' -- required
 ;
@@ -367,7 +367,7 @@ SELECT
 {{ S3BucketOwnerVerification }},
 '{{ region }}'
 RETURNING
-TrackingServerArn
+tracking_server_arn
 ;
 ```
 </TabItem>
@@ -454,7 +454,7 @@ WHERE
 region = '{{ region }}' --required
 AND TrackingServerName = '{{ TrackingServerName }}' --required
 RETURNING
-TrackingServerArn;
+tracking_server_arn;
 ```
 </TabItem>
 </Tabs>

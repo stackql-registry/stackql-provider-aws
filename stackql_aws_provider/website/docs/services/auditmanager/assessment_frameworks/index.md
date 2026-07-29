@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="frameworkMetadataList" /></td>
+    <td><CopyableCode code="framework_metadata_list" /></td>
     <td><code>array</code></td>
     <td>A list of metadata that the ListAssessmentFrameworks API returns for each framework.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the framework. (pattern: &lt;code&gt;^arn:.*:auditmanager:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="complianceType" /></td>
+    <td><CopyableCode code="compliance_type" /></td>
     <td><code>string</code></td>
     <td>The compliance type that the framework supports, such as CIS or HIPAA. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlSets" /></td>
+    <td><CopyableCode code="control_sets" /></td>
     <td><code>array</code></td>
     <td>The control sets that are associated with the framework. The Controls object returns a partial response when called through Framework APIs. For a complete Controls object, use GetControl.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="controlSources" /></td>
+    <td><CopyableCode code="control_sources" /></td>
     <td><code>string</code></td>
     <td>The control data sources where Audit Manager collects evidence from. This API parameter is no longer supported. (pattern: &lt;code&gt;^&#91;a-zA-Z_0-9-\s.,&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the framework was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or role that created the framework. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s-_()\&#91;\&#93;&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the framework. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the framework was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or role that most recently updated the framework. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s-_()\&#91;\&#93;&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -289,8 +289,8 @@ Returns a list of the frameworks that are available in the Audit Manager framewo
 
 ```sql
 SELECT
-frameworkMetadataList,
-nextToken
+framework_metadata_list,
+next_token
 FROM aws.auditmanager.assessment_frameworks
 WHERE frameworkType = '{{ frameworkType }}' -- required
 AND region = '{{ region }}' -- required
@@ -308,14 +308,14 @@ SELECT
 id,
 name,
 arn,
-complianceType,
-controlSets,
-controlSources,
-createdAt,
-createdBy,
+compliance_type,
+control_sets,
+control_sources,
+created_at,
+created_by,
 description,
-lastUpdatedAt,
-lastUpdatedBy,
+last_updated_at,
+last_updated_by,
 logo,
 tags,
 type_
@@ -432,7 +432,7 @@ AND region = '{{ region }}' --required
 AND requestType = '{{ requestType }}' --required
 AND action = '{{ action }}' --required
 RETURNING
-assessmentFrameworkShareRequest;
+assessment_framework_share_request;
 ```
 </TabItem>
 </Tabs>

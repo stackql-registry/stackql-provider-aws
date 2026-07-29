@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>A list of tags.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a list of the tags assigned to the specified resource. For information a
 
 ```sql
 SELECT
-TagList
+tag_list
 FROM aws.ssm.tags
 WHERE region = '{{ region }}' -- required
 ;

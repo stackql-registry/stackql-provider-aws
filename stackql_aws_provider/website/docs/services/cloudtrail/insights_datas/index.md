@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessKeyId" /></td>
+    <td><CopyableCode code="access_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services access key ID that was used to sign the request. If the request was made with temporary security credentials, this is the access key ID of the temporary credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudTrailEvent" /></td>
+    <td><CopyableCode code="cloud_trail_event" /></td>
     <td><code>string</code></td>
     <td>A JSON string that contains a representation of the event returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The CloudTrail ID of the event returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventName" /></td>
+    <td><CopyableCode code="event_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSource" /></td>
+    <td><CopyableCode code="event_source" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service to which the request was made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the event returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadOnly" /></td>
+    <td><CopyableCode code="read_only" /></td>
     <td><code>string</code></td>
     <td>Information about whether the event is a write event or a read event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>A list of resources referenced by the event returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>A user name or role name of the requester that called the API in the event returned.</td>
 </tr>
@@ -159,15 +159,15 @@ Returns Insights events generated on a trail that logs data events. You can list
 
 ```sql
 SELECT
-AccessKeyId,
-CloudTrailEvent,
-EventId,
-EventName,
-EventSource,
-EventTime,
-ReadOnly,
-Resources,
-Username
+access_key_id,
+cloud_trail_event,
+event_id,
+event_name,
+event_source,
+event_time,
+read_only,
+resources,
+username
 FROM aws.cloudtrail.insights_datas
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the ruleset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The modification date and time of the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>A list of rules that are defined with the ruleset. A rule includes one or more checks to be validated on a DataBrew dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags that have been applied to the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is associated with.</td>
 </tr>
@@ -115,57 +115,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the ruleset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The modification date and time of the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleCount" /></td>
+    <td><CopyableCode code="rule_count" /></td>
     <td><code>integer</code></td>
     <td>The number of rules that are defined in the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags that have been applied to the ruleset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is associated with.</td>
 </tr>
@@ -283,16 +283,16 @@ Retrieves detailed information about the ruleset.
 
 ```sql
 SELECT
-CreateDate,
-CreatedBy,
-Description,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-ResourceArn,
-Rules,
-Tags,
-TargetArn
+create_date,
+created_by,
+description,
+last_modified_by,
+last_modified_date,
+name,
+resource_arn,
+rules,
+tags,
+target_arn
 FROM aws.databrew.rulesets
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -305,17 +305,17 @@ List all rulesets available in the current account or rulesets associated with a
 
 ```sql
 SELECT
-AccountId,
-CreateDate,
-CreatedBy,
-Description,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-ResourceArn,
-RuleCount,
-Tags,
-TargetArn
+account_id,
+create_date,
+created_by,
+description,
+last_modified_by,
+last_modified_date,
+name,
+resource_arn,
+rule_count,
+tags,
+target_arn
 FROM aws.databrew.rulesets
 WHERE region = '{{ region }}' -- required
 AND targetArn = '{{ targetArn }}'
@@ -357,7 +357,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -415,7 +415,7 @@ WHERE
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

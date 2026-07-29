@@ -50,117 +50,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone or Local Zone of the snapshot. For example, us-west-1a (Availability Zone) or us-west-2-lax-1a (Local Zone).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDurationMinutes" /></td>
+    <td><CopyableCode code="completion_duration_minutes" /></td>
     <td><code>integer</code></td>
     <td>Only for snapshot copies created with time-based snapshot copy operations. The completion duration requested for the time-based snapshot copy operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string</code></td>
     <td>The time stamp when the snapshot was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataEncryptionKeyId" /></td>
+    <td><CopyableCode code="data_encryption_key_id" /></td>
     <td><code>string</code></td>
     <td>The data encryption key identifier for the snapshot. This value is a unique identifier that corresponds to the data encryption key that was used to encrypt the original volume or snapshot copy. Because data encryption keys are inherited by volumes created from snapshots, and vice versa, if snapshots share the same data encryption key identifier, then they belong to the same volume/snapshot lineage. This parameter is only returned by DescribeSnapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the snapshot is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullSnapshotSizeInBytes" /></td>
+    <td><CopyableCode code="full_snapshot_size_in_bytes" /></td>
     <td><code>integer</code></td>
     <td>The full size of the snapshot, in bytes. This is not the incremental size of the snapshot. This is the full snapshot size and represents the size of all the blocks that were written to the source volume at the time the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key that was used to protect the volume encryption key for the parent volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Outpost on which the snapshot is stored. For more information, see Amazon EBS local snapshots on Outposts in the Amazon EBS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAlias" /></td>
+    <td><CopyableCode code="owner_alias" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services owner alias, from an Amazon-maintained list (amazon). This is not the user-configured Amazon Web Services account alias set using the IAM console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the EBS snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>string</code></td>
     <td>The progress of the snapshot, as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreExpiryTime" /></td>
+    <td><CopyableCode code="restore_expiry_time" /></td>
     <td><code>string</code></td>
     <td>Only for archived snapshots that are temporarily restored. Indicates the date and time when a temporarily restored snapshot will be automatically re-archived.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot. Each snapshot receives a unique identifier when it is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseType" /></td>
+    <td><CopyableCode code="sse_type" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time stamp when the snapshot was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The snapshot state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>Encrypted Amazon EBS snapshots are copied asynchronously. If a snapshot copy operation fails (for example, if the proper KMS permissions are not obtained) this field displays error state details to help you diagnose why the error occurred. This parameter is only returned by DescribeSnapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageTier" /></td>
+    <td><CopyableCode code="storage_tier" /></td>
     <td><code>string</code></td>
     <td>The storage tier in which the snapshot is stored. standard indicates that the snapshot is stored in the standard snapshot storage tier and that it is ready for use. archive indicates that the snapshot is currently archived and that it must be restored before it can be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransferType" /></td>
+    <td><CopyableCode code="transfer_type" /></td>
     <td><code>string</code></td>
     <td>Only for snapshot copies. Indicates whether the snapshot copy was created with a standard or time-based snapshot copy operation. Time-based snapshot copy operations complete within the completion duration specified in the request. Standard snapshot copy operations are completed on a best-effort basis. standard - The snapshot copy was created with a standard snapshot copy operation. time-based - The snapshot copy was created with a time-based snapshot copy operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the volume that was used to create the snapshot. Snapshots created by a copy snapshot operation have an arbitrary volume ID that you should not use for any purpose.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeSize" /></td>
+    <td><CopyableCode code="volume_size" /></td>
     <td><code>integer</code></td>
     <td>The size of the volume, in GiB.</td>
 </tr>
@@ -426,29 +426,29 @@ Describes the specified EBS snapshots available to you or all of the EBS snapsho
 
 ```sql
 SELECT
-AvailabilityZone,
-CompletionDurationMinutes,
-CompletionTime,
-DataEncryptionKeyId,
-Description,
-Encrypted,
-FullSnapshotSizeInBytes,
-KmsKeyId,
-OutpostArn,
-OwnerAlias,
-OwnerId,
-Progress,
-RestoreExpiryTime,
-SnapshotId,
-SseType,
-StartTime,
-State,
-StateMessage,
-StorageTier,
-Tags,
-TransferType,
-VolumeId,
-VolumeSize
+availability_zone,
+completion_duration_minutes,
+completion_time,
+data_encryption_key_id,
+description,
+encrypted,
+full_snapshot_size_in_bytes,
+kms_key_id,
+outpost_arn,
+owner_alias,
+owner_id,
+progress,
+restore_expiry_time,
+snapshot_id,
+sse_type,
+start_time,
+state,
+state_message,
+storage_tier,
+tags,
+transfer_type,
+volume_id,
+volume_size
 FROM aws.ec2.snapshots
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -497,29 +497,29 @@ SELECT
 '{{ Location }}',
 '{{ DryRun }}'
 RETURNING
-AvailabilityZone,
-CompletionDurationMinutes,
-CompletionTime,
-DataEncryptionKeyId,
-Description,
-Encrypted,
-FullSnapshotSizeInBytes,
-KmsKeyId,
-OutpostArn,
-OwnerAlias,
-OwnerId,
-Progress,
-RestoreExpiryTime,
-SnapshotId,
-SseType,
-StartTime,
-State,
-StateMessage,
-StorageTier,
-Tags,
-TransferType,
-VolumeId,
-VolumeSize
+availability_zone,
+completion_duration_minutes,
+completion_time,
+data_encryption_key_id,
+description,
+encrypted,
+full_snapshot_size_in_bytes,
+kms_key_id,
+outpost_arn,
+owner_alias,
+owner_id,
+progress,
+restore_expiry_time,
+snapshot_id,
+sse_type,
+start_time,
+state,
+state_message,
+storage_tier,
+tags,
+transfer_type,
+volume_id,
+volume_size
 ;
 ```
 </TabItem>
@@ -548,19 +548,19 @@ SELECT
 '{{ CopyTagsFromSource }}',
 '{{ Location }}'
 RETURNING
-AvailabilityZone,
-Description,
-Encrypted,
-OutpostArn,
-OwnerId,
-Progress,
-SnapshotId,
-SseType,
-StartTime,
-State,
-Tags,
-VolumeId,
-VolumeSize
+availability_zone,
+description,
+encrypted,
+outpost_arn,
+owner_id,
+progress,
+snapshot_id,
+sse_type,
+start_time,
+state,
+tags,
+volume_id,
+volume_size
 ;
 ```
 </TabItem>
@@ -630,8 +630,8 @@ AND region = '{{ region }}' --required
 AND StorageTier = '{{ StorageTier}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-SnapshotId,
-TieringStartTime;
+snapshot_id,
+tiering_start_time;
 ```
 </TabItem>
 </Tabs>

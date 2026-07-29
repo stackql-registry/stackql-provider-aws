@@ -61,57 +61,57 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the investigation group. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):aiops:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:investigation-group\/&#91;A-Za-z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chatbotNotificationChannel" /></td>
+    <td><CopyableCode code="chatbot_notification_channel" /></td>
     <td><code>object</code></td>
     <td>This structure is a string array. The first string is the ARN of a Amazon SNS topic. The array of strings display the ARNs of chat applications configurations that are associated with that topic. For more information about these configuration ARNs, see Getting started with Amazon Q in chat applications and Resource type defined by Amazon Web Services Chatbot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time that the investigation group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The name of the user who created the investigation group. (pattern: &lt;code&gt;&#91;\-_\/A-Za-z0-9:\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crossAccountConfigurations" /></td>
+    <td><CopyableCode code="cross_account_configurations" /></td>
     <td><code>array</code></td>
     <td>Lists the AWSAccountId of the accounts configured for cross-account access and the results of the last scan performed on each account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>Use this structure to specify a customer managed KMS key to use to encrypt investigation data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isCloudTrailEventHistoryEnabled" /></td>
+    <td><CopyableCode code="is_cloud_trail_event_history_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether CloudWatch investigationshas access to change events that are recorded by CloudTrail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date and time that the investigation group was most recently modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The name of the user who created the investigation group. (pattern: &lt;code&gt;&#91;\-_\/A-Za-z0-9:\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retentionInDays" /></td>
+    <td><CopyableCode code="retention_in_days" /></td>
     <td><code>integer (int64)</code></td>
     <td>Specifies how long that investigation data is kept.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that the investigation group uses for permissions to gather data. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tagKeyBoundaries" /></td>
+    <td><CopyableCode code="tag_key_boundaries" /></td>
     <td><code>array</code></td>
     <td>Displays the custom tag keys for custom applications in your system that you have specified in the investigation group. Resource tags help CloudWatch investigations narrow the search space when it is unable to discover definite relationships between resources.</td>
 </tr>
@@ -250,17 +250,17 @@ Returns the configuration information for the specified investigation group.
 SELECT
 name,
 arn,
-chatbotNotificationChannel,
-createdAt,
-createdBy,
-crossAccountConfigurations,
-encryptionConfiguration,
-isCloudTrailEventHistoryEnabled,
-lastModifiedAt,
-lastModifiedBy,
-retentionInDays,
-roleArn,
-tagKeyBoundaries
+chatbot_notification_channel,
+created_at,
+created_by,
+cross_account_configurations,
+encryption_configuration,
+is_cloud_trail_event_history_enabled,
+last_modified_at,
+last_modified_by,
+retention_in_days,
+role_arn,
+tag_key_boundaries
 FROM aws.aiops.investigation_groups
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

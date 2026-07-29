@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags of S3 Storage Lens configuration requested.</td>
 </tr>
@@ -143,7 +143,7 @@ This operation is not supported by directory buckets. Gets the tags of Amazon S3
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.s3control.storage_lens_configuration_taggings
 WHERE storagelensid = '{{ storagelensid }}' -- required
 AND `x-amz-account-id` = '{{ x-amz-account-id }}' -- required

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>By default this is set to false. When set to true the sender ID can't be deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsoCountryCode" /></td>
+    <td><CopyableCode code="iso_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code, in ISO 3166-1 alpha-2 format, for the country or region. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageTypes" /></td>
+    <td><CopyableCode code="message_types" /></td>
     <td><code>array</code></td>
     <td>The type of message. Valid values are TRANSACTIONAL for messages that are critical or time-sensitive and PROMOTIONAL for messages that aren't critical or time-sensitive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonthlyLeasingPrice" /></td>
+    <td><CopyableCode code="monthly_leasing_price" /></td>
     <td><code>string</code></td>
     <td>The monthly leasing price, in US dollars.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Registered" /></td>
+    <td><CopyableCode code="registered" /></td>
     <td><code>boolean</code></td>
     <td>True if the sender ID is registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationId" /></td>
+    <td><CopyableCode code="registration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SenderId" /></td>
+    <td><CopyableCode code="sender_id" /></td>
     <td><code>string</code></td>
     <td>The alphanumeric sender ID in a specific country that you'd like to describe. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SenderIdArn" /></td>
+    <td><CopyableCode code="sender_id_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the SenderId.</td>
 </tr>
@@ -182,14 +182,14 @@ Describes the specified SenderIds or all SenderIds associated with your Amazon W
 
 ```sql
 SELECT
-DeletionProtectionEnabled,
-IsoCountryCode,
-MessageTypes,
-MonthlyLeasingPrice,
-Registered,
-RegistrationId,
-SenderId,
-SenderIdArn
+deletion_protection_enabled,
+iso_country_code,
+message_types,
+monthly_leasing_price,
+registered,
+registration_id,
+sender_id,
+sender_id_arn
 FROM aws.pinpoint_sms_voice_v2.sender_ids
 WHERE region = '{{ region }}' -- required
 ;
@@ -221,13 +221,13 @@ region = '{{ region }}' --required
 AND SenderId = '{{ SenderId }}' --required
 AND IsoCountryCode = '{{ IsoCountryCode }}' --required
 RETURNING
-IsoCountryCode,
-MessageTypes,
-MonthlyLeasingPrice,
-Registered,
-RegistrationId,
-SenderId,
-SenderIdArn;
+iso_country_code,
+message_types,
+monthly_leasing_price,
+registered,
+registration_id,
+sender_id,
+sender_id_arn;
 ```
 </TabItem>
 <TabItem value="set_default_sender_id">
@@ -244,9 +244,9 @@ region = '{{ region }}' --required
 AND ConfigurationSetName = '{{ ConfigurationSetName }}' --required
 AND SenderId = '{{ SenderId }}' --required
 RETURNING
-ConfigurationSetArn,
-ConfigurationSetName,
-SenderId;
+configuration_set_arn,
+configuration_set_name,
+sender_id;
 ```
 </TabItem>
 </Tabs>

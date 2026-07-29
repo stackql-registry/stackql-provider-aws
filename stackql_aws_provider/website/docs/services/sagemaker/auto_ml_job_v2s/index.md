@@ -50,117 +50,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoMLComputeConfig" /></td>
+    <td><CopyableCode code="auto_ml_compute_config" /></td>
     <td><code>object</code></td>
     <td>The compute configuration used for the AutoML job V2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobArn" /></td>
+    <td><CopyableCode code="auto_ml_job_arn" /></td>
     <td><code>string</code></td>
     <td>Returns the Amazon Resource Name (ARN) of the AutoML job V2. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:automl-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobArtifacts" /></td>
+    <td><CopyableCode code="auto_ml_job_artifacts" /></td>
     <td><code>object</code></td>
     <td>The artifacts that are generated during an AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobInputDataConfig" /></td>
+    <td><CopyableCode code="auto_ml_job_input_data_config" /></td>
     <td><code>array</code></td>
     <td>Returns an array of channel objects describing the input data and their location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobName" /></td>
+    <td><CopyableCode code="auto_ml_job_name" /></td>
     <td><code>string</code></td>
     <td>Returns the name of the AutoML job V2. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobObjective" /></td>
+    <td><CopyableCode code="auto_ml_job_objective" /></td>
     <td><code>object</code></td>
     <td>Specifies a metric to minimize or maximize as the objective of an AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobSecondaryStatus" /></td>
+    <td><CopyableCode code="auto_ml_job_secondary_status" /></td>
     <td><code>string</code></td>
     <td>Returns the secondary status of the AutoML job V2. (Starting, MaxCandidatesReached, Failed, Stopped, MaxAutoMLJobRuntimeReached, Stopping, CandidateDefinitionsGenerated, Completed, ExplainabilityError, DeployingModel, ModelDeploymentError, GeneratingModelInsightsReport, ModelInsightsError, AnalyzingData, FeatureEngineering, ModelTuning, GeneratingExplainabilityReport, TrainingModels, PreTraining)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobStatus" /></td>
+    <td><CopyableCode code="auto_ml_job_status" /></td>
     <td><code>string</code></td>
     <td>Returns the status of the AutoML job V2. (Completed, InProgress, Failed, Stopped, Stopping)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLProblemTypeConfig" /></td>
+    <td><CopyableCode code="auto_ml_problem_type_config" /></td>
     <td><code>object</code></td>
     <td>Returns the configuration settings of the problem type set for the AutoML job V2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLProblemTypeConfigName" /></td>
+    <td><CopyableCode code="auto_ml_problem_type_config_name" /></td>
     <td><code>string</code></td>
     <td>Returns the name of the problem type configuration set for the AutoML job V2. (ImageClassification, TextClassification, TimeSeriesForecasting, Tabular, TextGeneration)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BestCandidate" /></td>
+    <td><CopyableCode code="best_candidate" /></td>
     <td><code>object</code></td>
     <td>Information about the candidate produced by an AutoML training job V2, including its status, steps, and other properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the creation time of the AutoML job V2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSplitConfig" /></td>
+    <td><CopyableCode code="data_split_config" /></td>
     <td><code>object</code></td>
     <td>Returns the configuration settings of how the data are split into train and validation datasets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the end time of the AutoML job V2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Returns the reason for the failure of the AutoML job V2, when applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the job's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelDeployConfig" /></td>
+    <td><CopyableCode code="model_deploy_config" /></td>
     <td><code>object</code></td>
     <td>Indicates whether the model was deployed automatically to an endpoint and the name of that endpoint if deployed automatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelDeployResult" /></td>
+    <td><CopyableCode code="model_deploy_result" /></td>
     <td><code>object</code></td>
     <td>Provides information about endpoint for the model deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Returns the job's output data config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartialFailureReasons" /></td>
+    <td><CopyableCode code="partial_failure_reasons" /></td>
     <td><code>array</code></td>
     <td>Returns a list of reasons for partial failures within an AutoML job V2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolvedAttributes" /></td>
+    <td><CopyableCode code="resolved_attributes" /></td>
     <td><code>object</code></td>
     <td>Returns the resolved attributes used by the AutoML job V2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that has read permission to the input data location and write permission to the output data location in Amazon S3. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfig" /></td>
+    <td><CopyableCode code="security_config" /></td>
     <td><code>object</code></td>
     <td>Returns the security configuration for traffic encryption or Amazon VPC settings.</td>
 </tr>
@@ -236,29 +236,29 @@ Returns information about an AutoML job created by calling CreateAutoMLJobV2 or 
 
 ```sql
 SELECT
-AutoMLComputeConfig,
-AutoMLJobArn,
-AutoMLJobArtifacts,
-AutoMLJobInputDataConfig,
-AutoMLJobName,
-AutoMLJobObjective,
-AutoMLJobSecondaryStatus,
-AutoMLJobStatus,
-AutoMLProblemTypeConfig,
-AutoMLProblemTypeConfigName,
-BestCandidate,
-CreationTime,
-DataSplitConfig,
-EndTime,
-FailureReason,
-LastModifiedTime,
-ModelDeployConfig,
-ModelDeployResult,
-OutputDataConfig,
-PartialFailureReasons,
-ResolvedAttributes,
-RoleArn,
-SecurityConfig
+auto_ml_compute_config,
+auto_ml_job_arn,
+auto_ml_job_artifacts,
+auto_ml_job_input_data_config,
+auto_ml_job_name,
+auto_ml_job_objective,
+auto_ml_job_secondary_status,
+auto_ml_job_status,
+auto_ml_problem_type_config,
+auto_ml_problem_type_config_name,
+best_candidate,
+creation_time,
+data_split_config,
+end_time,
+failure_reason,
+last_modified_time,
+model_deploy_config,
+model_deploy_result,
+output_data_config,
+partial_failure_reasons,
+resolved_attributes,
+role_arn,
+security_config
 FROM aws.sagemaker.auto_ml_job_v2s
 WHERE region = '{{ region }}' -- required
 ;
@@ -309,7 +309,7 @@ SELECT
 '{{ AutoMLComputeConfig }}',
 '{{ region }}'
 RETURNING
-AutoMLJobArn
+auto_ml_job_arn
 ;
 ```
 </TabItem>

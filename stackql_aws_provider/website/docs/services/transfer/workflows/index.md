@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique Amazon Resource Name (ARN) for the workflow. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Specifies the text description for the workflow. (pattern: &lt;code&gt;&#91;\w- &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnExceptionSteps" /></td>
+    <td><CopyableCode code="on_exception_steps" /></td>
     <td><code>array</code></td>
     <td>Specifies the steps (actions) to take if errors are encountered during execution of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Steps" /></td>
+    <td><CopyableCode code="steps" /></td>
     <td><code>array</code></td>
     <td>Specifies the details for the steps that are in the specified workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs that can be used to group and search for workflows. Tags are metadata attached to workflows for any purpose.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the workflow. (pattern: &lt;code&gt;w-(&#91;a-z0-9&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique Amazon Resource Name (ARN) for the workflow. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Specifies the text description for the workflow. (pattern: &lt;code&gt;&#91;\w- &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the workflow. (pattern: &lt;code&gt;w-(&#91;a-z0-9&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -203,12 +203,12 @@ Describes the specified workflow.
 
 ```sql
 SELECT
-Arn,
-Description,
-OnExceptionSteps,
-Steps,
-Tags,
-WorkflowId
+arn,
+description,
+on_exception_steps,
+steps,
+tags,
+workflow_id
 FROM aws.transfer.workflows
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,9 +220,9 @@ Lists all workflows associated with your Amazon Web Services account for your cu
 
 ```sql
 SELECT
-Arn,
-Description,
-WorkflowId
+arn,
+description,
+workflow_id
 FROM aws.transfer.workflows
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,7 +259,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-WorkflowId
+workflow_id
 ;
 ```
 </TabItem>

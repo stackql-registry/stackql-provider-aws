@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EmergencyContactList" /></td>
+    <td><CopyableCode code="emergency_contact_list" /></td>
     <td><code>array</code></td>
     <td>A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support.</td>
 </tr>
@@ -126,7 +126,7 @@ A list of email addresses and phone numbers that the Shield Response Team (SRT) 
 
 ```sql
 SELECT
-EmergencyContactList
+emergency_contact_list
 FROM aws.shield.emergency_contact_settings
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetricAlarms" /></td>
+    <td><CopyableCode code="metric_alarms" /></td>
     <td><code>array</code></td>
     <td>The information for each alarm with the specified metric.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the alarms for the specified metric. To filter the results, specify a 
 
 ```sql
 SELECT
-MetricAlarms
+metric_alarms
 FROM aws.cloudwatch.alarms_for_metrics
 WHERE region = '{{ region }}' -- required
 ;

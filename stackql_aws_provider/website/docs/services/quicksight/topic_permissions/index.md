@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A list of resource permissions that are configured to the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicId" /></td>
+    <td><CopyableCode code="topic_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the topic that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.\\+&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -156,11 +156,11 @@ Describes the permissions of a topic.
 
 ```sql
 SELECT
-Permissions,
-RequestId,
-Status,
-TopicArn,
-TopicId
+permissions,
+request_id,
+status,
+topic_arn,
+topic_id
 FROM aws.quicksight.topic_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND topic_id = '{{ topic_id }}' -- required
@@ -193,11 +193,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND topic_id = '{{ topic_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Permissions,
-RequestId,
-Status,
-TopicArn,
-TopicId;
+permissions,
+request_id,
+status,
+topic_arn,
+topic_id;
 ```
 </TabItem>
 </Tabs>

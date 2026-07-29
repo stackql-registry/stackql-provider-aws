@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedEntities" /></td>
+    <td><CopyableCode code="associated_entities" /></td>
     <td><code>array</code></td>
     <td>The products and offers included in this offer set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableFromTime" /></td>
+    <td><CopyableCode code="available_from_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the offer set became available to the buyer.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>Badges indicating special attributes of the offer set, such as private pricing or future dated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buyerNotes" /></td>
+    <td><CopyableCode code="buyer_notes" /></td>
     <td><code>string</code></td>
     <td>Detailed information about the offer set that helps buyers understand its purpose and contents.</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the catalog that the offer set belongs to. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the offer set expires and is no longer available for procurement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offerSetId" /></td>
+    <td><CopyableCode code="offer_set_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the offer set. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offerSetName" /></td>
+    <td><CopyableCode code="offer_set_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the offer set. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sellerOfRecord" /></td>
+    <td><CopyableCode code="seller_of_record" /></td>
     <td><code>object</code></td>
     <td>The entity responsible for selling the products under this offer set.</td>
 </tr>
@@ -159,15 +159,15 @@ Provides details about an offer set, which is a bundle of offers across multiple
 
 ```sql
 SELECT
-associatedEntities,
-availableFromTime,
+associated_entities,
+available_from_time,
 badges,
-buyerNotes,
+buyer_notes,
 catalog,
-expirationTime,
-offerSetId,
-offerSetName,
-sellerOfRecord
+expiration_time,
+offer_set_id,
+offer_set_name,
+seller_of_record
 FROM aws.marketplace_discovery.offer_sets
 WHERE region = '{{ region }}' -- required
 ;

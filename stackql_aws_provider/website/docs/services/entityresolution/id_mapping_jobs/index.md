@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the job has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>object</code></td>
     <td>An object containing an error message, if there was an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The job type of the ID mapping job. A value of INCREMENTAL indicates that only new or changed data was processed since the last job run. This is the default job type if the workflow was created with an incrementalRunConfig. A value of BATCH indicates that all data was processed from the input source, regardless of previous job runs. This is the default job type if the workflow wasn't created with an incrementalRunConfig. A value of DELETE_ONLY indicates that only deletion requests from BatchDeleteUniqueIds were processed. (BATCH, INCREMENTAL, DELETE_ONLY)</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>Metrics associated with the execution, specifically total records processed, unique IDs generated, and records the execution skipped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputSourceConfig" /></td>
+    <td><CopyableCode code="output_source_config" /></td>
     <td><code>array</code></td>
     <td>A list of OutputSource objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the job was started.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the job has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the job was started.</td>
 </tr>
@@ -217,13 +217,13 @@ Returns the status, metrics, and errors (if there are any) that are associated w
 
 ```sql
 SELECT
-endTime,
-errorDetails,
-jobId,
-jobType,
+end_time,
+error_details,
+job_id,
+job_type,
 metrics,
-outputSourceConfig,
-startTime,
+output_source_config,
+start_time,
 status
 FROM aws.entityresolution.id_mapping_jobs
 WHERE workflow_name = '{{ workflow_name }}' -- required
@@ -238,9 +238,9 @@ Lists all ID mapping jobs for a given workflow.
 
 ```sql
 SELECT
-endTime,
-jobId,
-startTime,
+end_time,
+job_id,
+start_time,
 status
 FROM aws.entityresolution.id_mapping_jobs
 WHERE workflow_name = '{{ workflow_name }}' -- required

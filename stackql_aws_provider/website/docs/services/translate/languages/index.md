@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisplayLanguageCode" /></td>
+    <td><CopyableCode code="display_language_code" /></td>
     <td><code>string</code></td>
     <td>The language code passed in with the request. (de, en, es, fr, it, ja, ko, pt, zh, zh-TW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Languages" /></td>
+    <td><CopyableCode code="languages" /></td>
     <td><code>array</code></td>
     <td>The list of supported languages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response does not include all remaining results, use the NextToken in the next request to fetch the next group of supported languages. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Provides a list of languages (RFC-5646 codes and names) that Amazon Translate su
 
 ```sql
 SELECT
-DisplayLanguageCode,
-Languages,
-NextToken
+display_language_code,
+languages,
+next_token
 FROM aws.translate.languages
 WHERE region = '{{ region }}' -- required
 ;

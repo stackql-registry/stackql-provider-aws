@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FilterExpression" /></td>
+    <td><CopyableCode code="filter_expression" /></td>
     <td><code>string</code></td>
     <td>The filter expression defining the parameters to include traces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupARN" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the group generated based on the GroupName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The unique case-sensitive name of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightsConfiguration" /></td>
+    <td><CopyableCode code="insights_configuration" /></td>
     <td><code>object</code></td>
     <td>The structure containing configurations related to insights.</td>
 </tr>
@@ -162,10 +162,10 @@ Retrieves group resource details.
 
 ```sql
 SELECT
-FilterExpression,
-GroupARN,
-GroupName,
-InsightsConfiguration
+filter_expression,
+group_arn,
+group_name,
+insights_configuration
 FROM aws.xray.groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,7 +202,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Group
+group
 ;
 ```
 </TabItem>
@@ -256,7 +256,7 @@ InsightsConfiguration = '{{ InsightsConfiguration }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Group;
+group;
 ```
 </TabItem>
 </Tabs>

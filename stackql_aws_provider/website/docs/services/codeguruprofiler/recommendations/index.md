@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The list of anomalies that the analysis has found for this profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileEndTime" /></td>
+    <td><CopyableCode code="profile_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileStartTime" /></td>
+    <td><CopyableCode code="profile_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profilingGroupName" /></td>
+    <td><CopyableCode code="profiling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the profiling group the analysis data is about. (pattern: &lt;code&gt;^&#91;\w-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -160,9 +160,9 @@ Returns a list of Recommendation objects that contain recommendations for a prof
 ```sql
 SELECT
 anomalies,
-profileEndTime,
-profileStartTime,
-profilingGroupName,
+profile_end_time,
+profile_start_time,
+profiling_group_name,
 recommendations
 FROM aws.codeguruprofiler.recommendations
 WHERE endTime = '{{ endTime }}' -- required

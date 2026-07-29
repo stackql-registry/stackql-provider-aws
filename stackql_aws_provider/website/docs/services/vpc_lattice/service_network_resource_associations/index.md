@@ -61,82 +61,82 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetworkresourceassociation/snra-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsEntry" /></td>
+    <td><CopyableCode code="dns_entry" /></td>
     <td><code>object</code></td>
     <td>The DNS entry for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainVerificationStatus" /></td>
+    <td><CopyableCode code="domain_verification_status" /></td>
     <td><code>string</code></td>
     <td>The domain verification status in the service network resource association. (VERIFIED, PENDING, VERIFICATION_TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>The failure code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the association request failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isManagedAssociation" /></td>
+    <td><CopyableCode code="is_managed_association" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the association is managed by Amazon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date and time that the association was updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateDnsEnabled" /></td>
+    <td><CopyableCode code="private_dns_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if private DNS is enabled in the service network resource association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateDnsEntry" /></td>
+    <td><CopyableCode code="private_dns_entry" /></td>
     <td><code>object</code></td>
     <td>The private DNS entry for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationArn" /></td>
+    <td><CopyableCode code="resource_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceconfiguration/rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationId" /></td>
+    <td><CopyableCode code="resource_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource configuration that is associated with the service network. (pattern: &lt;code&gt;rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationName" /></td>
+    <td><CopyableCode code="resource_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource configuration that is associated with the service network. (pattern: &lt;code&gt;(?!rcfg-)(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network that is associated with the resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkId" /></td>
+    <td><CopyableCode code="service_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service network that is associated with the resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkName" /></td>
+    <td><CopyableCode code="service_network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service network that is associated with the resource configuration.</td>
 </tr>
@@ -170,67 +170,67 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetworkresourceassociation/snra-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsEntry" /></td>
+    <td><CopyableCode code="dns_entry" /></td>
     <td><code>object</code></td>
     <td>The DNS entry for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>The failure code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isManagedAssociation" /></td>
+    <td><CopyableCode code="is_managed_association" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the association is managed by Amazon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateDnsEnabled" /></td>
+    <td><CopyableCode code="private_dns_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if private DNS is enabled for the service network resource association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateDnsEntry" /></td>
+    <td><CopyableCode code="private_dns_entry" /></td>
     <td><code>object</code></td>
     <td>The private DNS entry for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationArn" /></td>
+    <td><CopyableCode code="resource_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the association. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceconfiguration/rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationId" /></td>
+    <td><CopyableCode code="resource_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource configuration associated with the service network. (pattern: &lt;code&gt;rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationName" /></td>
+    <td><CopyableCode code="resource_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource configuration associated with the service network. (pattern: &lt;code&gt;(?!rcfg-)(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network associated with the resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkId" /></td>
+    <td><CopyableCode code="service_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service network associated with the resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkName" /></td>
+    <td><CopyableCode code="service_network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service network associated with the resource configuration.</td>
 </tr>
@@ -358,22 +358,22 @@ Retrieves information about the specified association between a service network 
 SELECT
 id,
 arn,
-createdAt,
-createdBy,
-dnsEntry,
-domainVerificationStatus,
-failureCode,
-failureReason,
-isManagedAssociation,
-lastUpdatedAt,
-privateDnsEnabled,
-privateDnsEntry,
-resourceConfigurationArn,
-resourceConfigurationId,
-resourceConfigurationName,
-serviceNetworkArn,
-serviceNetworkId,
-serviceNetworkName,
+created_at,
+created_by,
+dns_entry,
+domain_verification_status,
+failure_code,
+failure_reason,
+is_managed_association,
+last_updated_at,
+private_dns_enabled,
+private_dns_entry,
+resource_configuration_arn,
+resource_configuration_id,
+resource_configuration_name,
+service_network_arn,
+service_network_id,
+service_network_name,
 status
 FROM aws.vpc_lattice.service_network_resource_associations
 WHERE service_network_resource_association_identifier = '{{ service_network_resource_association_identifier }}' -- required
@@ -389,19 +389,19 @@ Lists the associations between a service network and a resource configuration.
 SELECT
 id,
 arn,
-createdAt,
-createdBy,
-dnsEntry,
-failureCode,
-isManagedAssociation,
-privateDnsEnabled,
-privateDnsEntry,
-resourceConfigurationArn,
-resourceConfigurationId,
-resourceConfigurationName,
-serviceNetworkArn,
-serviceNetworkId,
-serviceNetworkName,
+created_at,
+created_by,
+dns_entry,
+failure_code,
+is_managed_association,
+private_dns_enabled,
+private_dns_entry,
+resource_configuration_arn,
+resource_configuration_id,
+resource_configuration_name,
+service_network_arn,
+service_network_id,
+service_network_name,
 status
 FROM aws.vpc_lattice.service_network_resource_associations
 WHERE region = '{{ region }}' -- required
@@ -448,8 +448,8 @@ SELECT
 RETURNING
 id,
 arn,
-createdBy,
-privateDnsEnabled,
+created_by,
+private_dns_enabled,
 status
 ;
 ```

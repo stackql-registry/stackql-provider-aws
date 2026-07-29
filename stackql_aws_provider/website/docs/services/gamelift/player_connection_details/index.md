@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GameSessionId" /></td>
+    <td><CopyableCode code="game_session_id" /></td>
     <td><code>string</code></td>
     <td>An identifier for the game session that is unique across all regions for which the player connection details were retrieved. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlayerConnectionDetails" /></td>
+    <td><CopyableCode code="player_connection_details" /></td>
     <td><code>array</code></td>
     <td>A collection of player connection detail objects, one for each requested player.</td>
 </tr>
@@ -124,8 +124,8 @@ This API works with the following fleet types: EC2 (server SDK 5.x or later), Co
 
 ```sql
 SELECT
-GameSessionId,
-PlayerConnectionDetails
+game_session_id,
+player_connection_details
 FROM aws.gamelift.player_connection_details
 WHERE region = '{{ region }}' -- required
 ;

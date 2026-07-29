@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The template value.</td>
 </tr>
@@ -129,7 +129,7 @@ Gets a model template.
 
 ```sql
 SELECT
-Value
+value
 FROM aws.apigatewayv2.model_templates
 WHERE api_id = '{{ api_id }}' -- required
 AND model_id = '{{ model_id }}' -- required

@@ -56,32 +56,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneIds" /></td>
+    <td><CopyableCode code="availability_zone_ids" /></td>
     <td><code>array</code></td>
     <td>The identifier of the availability zones where subnets for the environment are created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the AWS account that is used to create the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateAuthorityArn" /></td>
+    <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate authority of the kdb environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the kdb environment was created in FinSpace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDNSConfiguration" /></td>
+    <td><CopyableCode code="custom_dns_configuration" /></td>
     <td><code>array</code></td>
     <td>A list of DNS server name and server IP. This is used to set up Route-53 outbound resolvers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dedicatedServiceAccountId" /></td>
+    <td><CopyableCode code="dedicated_service_account_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the AWS environment infrastructure account. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -91,27 +91,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description for the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsStatus" /></td>
+    <td><CopyableCode code="dns_status" /></td>
     <td><code>string</code></td>
     <td>The status of DNS configuration. (NONE, UPDATE_REQUESTED, UPDATING, FAILED_UPDATE, SUCCESSFULLY_UPDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the environment. (pattern: &lt;code&gt;^arn:aws:finspace:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:\d+:environment/&#91;0-9A-Za-z_-&#93;&#123;1,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Specifies the error message that appears if a flow fails. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The KMS key ID to encrypt your data in the FinSpace environment. (pattern: &lt;code&gt;^&#91;a-zA-Z-0-9-:\/&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -121,17 +121,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the kdb environment. (CREATE_REQUESTED, CREATING, CREATED, DELETE_REQUESTED, DELETING, DELETED, FAILED_CREATION, RETRY_DELETION, FAILED_DELETION, UPDATE_NETWORK_REQUESTED, UPDATING_NETWORK, FAILED_UPDATING_NETWORK, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tgwStatus" /></td>
+    <td><CopyableCode code="tgw_status" /></td>
     <td><code>string</code></td>
     <td>The status of the network configuration. (NONE, UPDATE_REQUESTED, UPDATING, FAILED_UPDATE, SUCCESSFULLY_UPDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transitGatewayConfiguration" /></td>
+    <td><CopyableCode code="transit_gateway_configuration" /></td>
     <td><code>object</code></td>
     <td>The structure of the transit gateway and network configuration that is used to connect the kdb environment to an internal network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTimestamp" /></td>
+    <td><CopyableCode code="update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the kdb environment was updated.</td>
 </tr>
@@ -155,32 +155,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneIds" /></td>
+    <td><CopyableCode code="availability_zone_ids" /></td>
     <td><code>array</code></td>
     <td>The identifier of the availability zones where subnets for the environment are created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the AWS account in which you create the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateAuthorityArn" /></td>
+    <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate authority:</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the kdb environment was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDNSConfiguration" /></td>
+    <td><CopyableCode code="custom_dns_configuration" /></td>
     <td><code>array</code></td>
     <td>A list of DNS server name and server IP. This is used to set up Route-53 outbound resolvers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dedicatedServiceAccountId" /></td>
+    <td><CopyableCode code="dedicated_service_account_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the AWS environment infrastructure account. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -190,27 +190,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsStatus" /></td>
+    <td><CopyableCode code="dns_status" /></td>
     <td><code>string</code></td>
     <td>The status of DNS configuration. (NONE, UPDATE_REQUESTED, UPDATING, FAILED_UPDATE, SUCCESSFULLY_UPDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of your kdb environment. (pattern: &lt;code&gt;^arn:aws:finspace:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:\d+:environment/&#91;0-9A-Za-z_-&#93;&#123;1,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Specifies the error message that appears if a flow fails. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the KMS key. (pattern: &lt;code&gt;^&#91;a-zA-Z-0-9-:\/&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -220,17 +220,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the environment creation. CREATE_REQUESTED – Environment creation has been requested. CREATING – Environment is in the process of being created. FAILED_CREATION – Environment creation has failed. CREATED – Environment is successfully created and is currently active. DELETE REQUESTED – Environment deletion has been requested. DELETING – Environment is in the process of being deleted. RETRY_DELETION – Initial environment deletion failed, system is reattempting delete. DELETED – Environment has been deleted. FAILED_DELETION – Environment deletion has failed. (CREATE_REQUESTED, CREATING, CREATED, DELETE_REQUESTED, DELETING, DELETED, FAILED_CREATION, RETRY_DELETION, FAILED_DELETION, UPDATE_NETWORK_REQUESTED, UPDATING_NETWORK, FAILED_UPDATING_NETWORK, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tgwStatus" /></td>
+    <td><CopyableCode code="tgw_status" /></td>
     <td><code>string</code></td>
     <td>The status of the network configuration. (NONE, UPDATE_REQUESTED, UPDATING, FAILED_UPDATE, SUCCESSFULLY_UPDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transitGatewayConfiguration" /></td>
+    <td><CopyableCode code="transit_gateway_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the transit gateway and network configuration to connect the kdb environment to an internal network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTimestamp" /></td>
+    <td><CopyableCode code="update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the kdb environment was modified in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
@@ -356,22 +356,22 @@ Retrieves all the information for the specified kdb environment.
 ```sql
 SELECT
 name,
-availabilityZoneIds,
-awsAccountId,
-certificateAuthorityArn,
-creationTimestamp,
-customDNSConfiguration,
-dedicatedServiceAccountId,
+availability_zone_ids,
+aws_account_id,
+certificate_authority_arn,
+creation_timestamp,
+custom_dns_configuration,
+dedicated_service_account_id,
 description,
-dnsStatus,
-environmentArn,
-environmentId,
-errorMessage,
-kmsKeyId,
+dns_status,
+environment_arn,
+environment_id,
+error_message,
+kms_key_id,
 status,
-tgwStatus,
-transitGatewayConfiguration,
-updateTimestamp
+tgw_status,
+transit_gateway_configuration,
+update_timestamp
 FROM aws.finspace.kx_environments
 WHERE environment_id = '{{ environment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -385,22 +385,22 @@ Returns a list of kdb environments created in an account.
 ```sql
 SELECT
 name,
-availabilityZoneIds,
-awsAccountId,
-certificateAuthorityArn,
-creationTimestamp,
-customDNSConfiguration,
-dedicatedServiceAccountId,
+availability_zone_ids,
+aws_account_id,
+certificate_authority_arn,
+creation_timestamp,
+custom_dns_configuration,
+dedicated_service_account_id,
 description,
-dnsStatus,
-environmentArn,
-environmentId,
-errorMessage,
-kmsKeyId,
+dns_status,
+environment_arn,
+environment_id,
+error_message,
+kms_key_id,
 status,
-tgwStatus,
-transitGatewayConfiguration,
-updateTimestamp
+tgw_status,
+transit_gateway_configuration,
+update_timestamp
 FROM aws.finspace.kx_environments
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -442,11 +442,11 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-creationTimestamp,
+creation_timestamp,
 description,
-environmentArn,
-environmentId,
-kmsKeyId,
+environment_arn,
+environment_id,
+kms_key_id,
 status
 ;
 ```
@@ -498,21 +498,21 @@ environment_id = '{{ environment_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
-availabilityZoneIds,
-awsAccountId,
-creationTimestamp,
-customDNSConfiguration,
-dedicatedServiceAccountId,
+availability_zone_ids,
+aws_account_id,
+creation_timestamp,
+custom_dns_configuration,
+dedicated_service_account_id,
 description,
-dnsStatus,
-environmentArn,
-environmentId,
-errorMessage,
-kmsKeyId,
+dns_status,
+environment_arn,
+environment_id,
+error_message,
+kms_key_id,
 status,
-tgwStatus,
-transitGatewayConfiguration,
-updateTimestamp;
+tgw_status,
+transit_gateway_configuration,
+update_timestamp;
 ```
 </TabItem>
 </Tabs>

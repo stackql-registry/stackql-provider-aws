@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attempt" /></td>
+    <td><CopyableCode code="attempt" /></td>
     <td><code>integer</code></td>
     <td>The attempt ID number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobBookmark" /></td>
+    <td><CopyableCode code="job_bookmark" /></td>
     <td><code>string</code></td>
     <td>The bookmark itself.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the job in question.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousRunId" /></td>
+    <td><CopyableCode code="previous_run_id" /></td>
     <td><code>string</code></td>
     <td>The unique run identifier associated with the previous job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Run" /></td>
+    <td><CopyableCode code="run" /></td>
     <td><code>integer</code></td>
     <td>The run ID number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The run ID number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version of the job.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns information on a job bookmark entry. For more information about enabling
 
 ```sql
 SELECT
-Attempt,
-JobBookmark,
-JobName,
-PreviousRunId,
-Run,
-RunId,
-Version
+attempt,
+job_bookmark,
+job_name,
+previous_run_id,
+run,
+run_id,
+version
 FROM aws.glue.job_bookmarks
 WHERE region = '{{ region }}' -- required
 ;

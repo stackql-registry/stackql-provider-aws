@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdminAccount" /></td>
+    <td><CopyableCode code="admin_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Firewall Manager administrator's account. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultAdmin" /></td>
+    <td><CopyableCode code="default_admin" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value that indicates if the administrator is the default administrator. If true, then this is the default administrator account. The default administrator can manage third-party firewalls and has full administrative scope. There is only one default administrator account per organization. For information about Firewall Manager default administrator accounts, see Managing Firewall Manager administrators in the Firewall Manager Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the request to onboard a member account as an Firewall Manager administrator. ONBOARDING - The account is onboarding to Firewall Manager as an administrator. ONBOARDING_COMPLETE - Firewall Manager The account is onboarded to Firewall Manager as an administrator, and can perform actions on the resources defined in their AdminScope. OFFBOARDING - The account is being removed as an Firewall Manager administrator. OFFBOARDING_COMPLETE - The account has been removed as an Firewall Manager administrator. (ONBOARDING, ONBOARDING_COMPLETE, OFFBOARDING, OFFBOARDING_COMPLETE)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a AdminAccounts object that lists the Firewall Manager administrators wi
 
 ```sql
 SELECT
-AdminAccount,
-DefaultAdmin,
-Status
+admin_account,
+default_admin,
+status
 FROM aws.fms.admin_accounts_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for an agent space (allows alphanumeric characters and hyphens; 1-64 characters) (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the pending messages were created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the execution.</td>
 </tr>
@@ -139,9 +139,9 @@ List pending messages for a specific execution.
 
 ```sql
 SELECT
-agentSpaceId,
-createdAt,
-executionId,
+agent_space_id,
+created_at,
+execution_id,
 messages
 FROM aws.devops_agent.pending_messages
 WHERE agent_space_id = '{{ agent_space_id }}' -- required

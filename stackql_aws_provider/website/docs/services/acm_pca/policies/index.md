@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy attached to the private CA as a JSON document. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the resource-based policy attached to a private CA. If either the priv
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.acm_pca.policies
 WHERE region = '{{ region }}' -- required
 ;

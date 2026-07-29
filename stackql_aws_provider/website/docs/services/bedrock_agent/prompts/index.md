@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the prompt or the prompt version (if you specified a version in the request). (pattern: &lt;code&gt;(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:prompt/&#91;0-9a-zA-Z&#93;&#123;10&#125;(?::&#91;0-9&#93;&#123;1,5&#125;)?)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the prompt was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerEncryptionKeyArn" /></td>
+    <td><CopyableCode code="customer_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key that the prompt is encrypted with. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultVariant" /></td>
+    <td><CopyableCode code="default_variant" /></td>
     <td><code>string</code></td>
     <td>The name of the default variant for the prompt. This value must match the name field in the relevant PromptVariant object. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The descriptino of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the prompt was last updated.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the prompt or the prompt version (if you specified a version in the request). (pattern: &lt;code&gt;(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:prompt/&#91;0-9a-zA-Z&#93;&#123;10&#125;(?::&#91;0-9&#93;&#123;1,5&#125;)?)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the prompt was created.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the prompt was last updated.</td>
 </tr>
@@ -278,11 +278,11 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-customerEncryptionKeyArn,
-defaultVariant,
+created_at,
+customer_encryption_key_arn,
+default_variant,
 description,
-updatedAt,
+updated_at,
 variants,
 version
 FROM aws.bedrock_agent.prompts
@@ -301,9 +301,9 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 description,
-updatedAt,
+updated_at,
 version
 FROM aws.bedrock_agent.prompts
 WHERE region = '{{ region }}' -- required
@@ -354,11 +354,11 @@ RETURNING
 id,
 name,
 arn,
-createdAt,
-customerEncryptionKeyArn,
-defaultVariant,
+created_at,
+customer_encryption_key_arn,
+default_variant,
 description,
-updatedAt,
+updated_at,
 variants,
 version
 ;
@@ -386,11 +386,11 @@ RETURNING
 id,
 name,
 arn,
-createdAt,
-customerEncryptionKeyArn,
-defaultVariant,
+created_at,
+customer_encryption_key_arn,
+default_variant,
 description,
-updatedAt,
+updated_at,
 variants,
 version
 ;
@@ -500,11 +500,11 @@ RETURNING
 id,
 name,
 arn,
-createdAt,
-customerEncryptionKeyArn,
-defaultVariant,
+created_at,
+customer_encryption_key_arn,
+default_variant,
 description,
-updatedAt,
+updated_at,
 variants,
 version;
 ```

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventInformation" /></td>
+    <td><CopyableCode code="event_information" /></td>
     <td><code>string</code></td>
     <td>Information about the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The event type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time of the event, in UTC format (for example, YYYY-MM-DDTHH:MM:SSZ).</td>
 </tr>
@@ -159,9 +159,9 @@ Describes the events for the specified EC2 Fleet during the specified time. EC2 
 
 ```sql
 SELECT
-EventInformation,
-EventType,
-Timestamp
+event_information,
+event_type,
+timestamp
 FROM aws.ec2.fleet_histories
 WHERE FleetId = '{{ FleetId }}' -- required
 AND StartTime = '{{ StartTime }}' -- required

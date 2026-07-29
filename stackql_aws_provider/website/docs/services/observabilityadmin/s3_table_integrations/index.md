@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the S3 Table integration. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the S3 Table integration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationTableBucketArn" /></td>
+    <td><CopyableCode code="destination_table_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the S3 bucket used as the destination for the table data. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encryption" /></td>
+    <td><CopyableCode code="encryption" /></td>
     <td><code>object</code></td>
     <td>Defines the encryption configuration for S3 Table integrations, including the encryption algorithm and KMS key settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used by the S3 Table integration. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the S3 Table integration. (ACTIVE, DELETING)</td>
 </tr>
@@ -165,12 +165,12 @@ Retrieves information about a specific S3 Table integration, including its confi
 
 ```sql
 SELECT
-Arn,
-CreatedTimeStamp,
-DestinationTableBucketArn,
-Encryption,
-RoleArn,
-Status
+arn,
+created_time_stamp,
+destination_table_bucket_arn,
+encryption,
+role_arn,
+status
 FROM aws.observabilityadmin.s3_table_integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,7 +205,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessPolicyArn" /></td>
+    <td><CopyableCode code="access_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the access policy, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:access-policy/$&#123;AccessPolicyId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPolicyCreationDate" /></td>
+    <td><CopyableCode code="access_policy_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the access policy was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPolicyId" /></td>
+    <td><CopyableCode code="access_policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the access policy. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPolicyIdentity" /></td>
+    <td><CopyableCode code="access_policy_identity" /></td>
     <td><code>object</code></td>
     <td>Contains an identity that can access an IoT SiteWise Monitor resource. Currently, you can't use Amazon Web Services API operations to retrieve IAM Identity Center identity IDs. You can find the IAM Identity Center identity IDs in the URL of user and group pages in the IAM Identity Center console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPolicyLastUpdateDate" /></td>
+    <td><CopyableCode code="access_policy_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the access policy was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPolicyPermission" /></td>
+    <td><CopyableCode code="access_policy_permission" /></td>
     <td><code>string</code></td>
     <td>The access policy permission. Note that a project ADMINISTRATOR is also known as a project owner. (ADMINISTRATOR, VIEWER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessPolicyResource" /></td>
+    <td><CopyableCode code="access_policy_resource" /></td>
     <td><code>object</code></td>
     <td>Contains an IoT SiteWise Monitor resource ID for a portal or project.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the access policy. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the access policy was created, in Unix epoch time.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains an identity that can access an IoT SiteWise Monitor resource. Currently, you can't use Amazon Web Services API operations to retrieve IAM Identity Center identity IDs. You can find the IAM Identity Center identity IDs in the URL of user and group pages in the IAM Identity Center console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the access policy was last updated, in Unix epoch time.</td>
 </tr>
@@ -268,13 +268,13 @@ Describes an access policy, which specifies an identity's access to an IoT SiteW
 
 ```sql
 SELECT
-accessPolicyArn,
-accessPolicyCreationDate,
-accessPolicyId,
-accessPolicyIdentity,
-accessPolicyLastUpdateDate,
-accessPolicyPermission,
-accessPolicyResource
+access_policy_arn,
+access_policy_creation_date,
+access_policy_id,
+access_policy_identity,
+access_policy_last_update_date,
+access_policy_permission,
+access_policy_resource
 FROM aws.iotsitewise.access_policies
 WHERE access_policy_id = '{{ access_policy_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,9 +288,9 @@ Retrieves a paginated list of access policies for an identity (an IAM Identity C
 ```sql
 SELECT
 id,
-creationDate,
+creation_date,
 identity,
-lastUpdateDate,
+last_update_date,
 permission,
 resource
 FROM aws.iotsitewise.access_policies
@@ -338,8 +338,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-accessPolicyArn,
-accessPolicyId
+access_policy_arn,
+access_policy_id
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ObjectLockEnabled" /></td>
+    <td><CopyableCode code="object_lock_enabled" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this bucket has an Object Lock configuration enabled. Enable ObjectLockEnabled when you apply ObjectLockConfiguration to a bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rule" /></td>
+    <td><CopyableCode code="rule" /></td>
     <td><code>string</code></td>
     <td>Specifies the Object Lock rule for the specified object. Enable the this rule when you apply ObjectLockConfiguration to a bucket. Bucket settings require both a mode and a period. The period can be either Days or Years but you must select one. You cannot specify Days and Years at the same time.</td>
 </tr>
@@ -161,8 +161,8 @@ This operation is not supported for directory buckets. Gets the Object Lock conf
 
 ```sql
 SELECT
-ObjectLockEnabled,
-Rule
+object_lock_enabled,
+rule
 FROM aws.s3.object_lock_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

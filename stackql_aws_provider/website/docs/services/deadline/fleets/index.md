@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoScalingStatus" /></td>
+    <td><CopyableCode code="auto_scaling_status" /></td>
     <td><code>string</code></td>
     <td>The Auto Scaling status of the fleet. Either GROWING, STEADY, or SHRINKING. (GROWING, STEADY, SHRINKING)</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Fleet configuration details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
@@ -81,37 +81,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the fleet. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the fleet. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID of the farm in the fleet. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostConfiguration" /></td>
+    <td><CopyableCode code="host_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides a script that runs as a worker is starting up that you can use to provide additional configuration for workers in your fleet. To remove a script from a fleet, use the UpdateFleet operation with the hostConfiguration scriptBody parameter set to an empty string ("").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxWorkerCount" /></td>
+    <td><CopyableCode code="max_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of workers specified in the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minWorkerCount" /></td>
+    <td><CopyableCode code="min_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of workers specified in the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):iam::\d&#123;12&#125;:role(/&#91;!-.0-~&#93;+)*/&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -121,27 +121,27 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the fleet. (ACTIVE, CREATE_IN_PROGRESS, UPDATE_IN_PROGRESS, CREATE_FAILED, UPDATE_FAILED, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message that communicates a suspended status of the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetWorkerCount" /></td>
+    <td><CopyableCode code="target_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The number of target workers in the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerCount" /></td>
+    <td><CopyableCode code="worker_count" /></td>
     <td><code>integer</code></td>
     <td>The number of workers in the fleet.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoScalingStatus" /></td>
+    <td><CopyableCode code="auto_scaling_status" /></td>
     <td><code>string</code></td>
     <td>The Auto Scaling status of a fleet. (GROWING, STEADY, SHRINKING)</td>
 </tr>
@@ -170,37 +170,37 @@ The following fields are returned by `SELECT` queries:
     <td>Fleet configuration details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the fleet summary to update. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxWorkerCount" /></td>
+    <td><CopyableCode code="max_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of workers specified in the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minWorkerCount" /></td>
+    <td><CopyableCode code="min_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of workers in the fleet.</td>
 </tr>
@@ -210,27 +210,27 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the fleet. (ACTIVE, CREATE_IN_PROGRESS, UPDATE_IN_PROGRESS, CREATE_FAILED, UPDATE_FAILED, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message that communicates a suspended status of the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetWorkerCount" /></td>
+    <td><CopyableCode code="target_worker_count" /></td>
     <td><code>integer</code></td>
     <td>The target number of workers in a fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerCount" /></td>
+    <td><CopyableCode code="worker_count" /></td>
     <td><code>integer</code></td>
     <td>The number of workers in the fleet summary.</td>
 </tr>
@@ -394,25 +394,25 @@ Get a fleet.
 
 ```sql
 SELECT
-autoScalingStatus,
+auto_scaling_status,
 capabilities,
 configuration,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-displayName,
-farmId,
-fleetId,
-hostConfiguration,
-maxWorkerCount,
-minWorkerCount,
-roleArn,
+display_name,
+farm_id,
+fleet_id,
+host_configuration,
+max_worker_count,
+min_worker_count,
+role_arn,
 status,
-statusMessage,
-targetWorkerCount,
-updatedAt,
-updatedBy,
-workerCount
+status_message,
+target_worker_count,
+updated_at,
+updated_by,
+worker_count
 FROM aws.deadline.fleets
 WHERE farm_id = '{{ farm_id }}' -- required
 AND fleet_id = '{{ fleet_id }}' -- required
@@ -426,21 +426,21 @@ Lists fleets.
 
 ```sql
 SELECT
-autoScalingStatus,
+auto_scaling_status,
 configuration,
-createdAt,
-createdBy,
-displayName,
-farmId,
-fleetId,
-maxWorkerCount,
-minWorkerCount,
+created_at,
+created_by,
+display_name,
+farm_id,
+fleet_id,
+max_worker_count,
+min_worker_count,
 status,
-statusMessage,
-targetWorkerCount,
-updatedAt,
-updatedBy,
-workerCount
+status_message,
+target_worker_count,
+updated_at,
+updated_by,
+worker_count
 FROM aws.deadline.fleets
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -495,7 +495,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-fleetId
+fleet_id
 ;
 ```
 </TabItem>

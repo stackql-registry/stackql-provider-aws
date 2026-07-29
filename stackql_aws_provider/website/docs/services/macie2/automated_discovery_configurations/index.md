@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoEnableOrganizationMembers" /></td>
+    <td><CopyableCode code="auto_enable_organization_members" /></td>
     <td><code>string</code></td>
     <td>Specifies whether automated sensitive data discovery is enabled automatically for accounts in the organization. Possible values are: ALL, enable it for all existing accounts and new member accounts; NEW, enable it only for new member accounts; and, NONE, don't enable it for any accounts. (ALL, NEW, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="classificationScopeId" /></td>
+    <td><CopyableCode code="classification_scope_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the classification scope that's used when performing automated sensitive data discovery. The classification scope specifies S3 buckets to exclude from analyses. (pattern: &lt;code&gt;^&#91;0-9a-z&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disabledAt" /></td>
+    <td><CopyableCode code="disabled_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when automated sensitive data discovery was most recently disabled. This value is null if automated sensitive data discovery is currently enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstEnabledAt" /></td>
+    <td><CopyableCode code="first_enabled_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when automated sensitive data discovery was initially enabled. This value is null if automated sensitive data discovery has never been enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the configuration settings or status of automated sensitive data discovery was most recently changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sensitivityInspectionTemplateId" /></td>
+    <td><CopyableCode code="sensitivity_inspection_template_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the sensitivity inspection template that's used when performing automated sensitive data discovery. The template specifies which allow lists, custom data identifiers, and managed data identifiers to use when analyzing data.</td>
 </tr>
@@ -156,12 +156,12 @@ Retrieves the configuration settings and status of automated sensitive data disc
 
 ```sql
 SELECT
-autoEnableOrganizationMembers,
-classificationScopeId,
-disabledAt,
-firstEnabledAt,
-lastUpdatedAt,
-sensitivityInspectionTemplateId,
+auto_enable_organization_members,
+classification_scope_id,
+disabled_at,
+first_enabled_at,
+last_updated_at,
+sensitivity_inspection_template_id,
 status
 FROM aws.macie2.automated_discovery_configurations
 WHERE region = '{{ region }}' -- required

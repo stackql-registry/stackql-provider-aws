@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecycleBinEnterTime" /></td>
+    <td><CopyableCode code="recycle_bin_enter_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the snapshot entered the Recycle Bin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecycleBinExitTime" /></td>
+    <td><CopyableCode code="recycle_bin_exit_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the snapshot is to be permanently deleted from the Recycle Bin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the volume from which the snapshot was created.</td>
 </tr>
@@ -159,11 +159,11 @@ Lists one or more snapshots that are currently in the Recycle Bin.
 
 ```sql
 SELECT
-Description,
-RecycleBinEnterTime,
-RecycleBinExitTime,
-SnapshotId,
-VolumeId
+description,
+recycle_bin_enter_time,
+recycle_bin_exit_time,
+snapshot_id,
+volume_id
 FROM aws.ec2.snapshots_in_recycle_bins
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

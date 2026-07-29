@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile association was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile association was modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the Profile association. (pattern: &lt;code&gt;^(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID of the Profile association owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the Profile association. (COMPLETE, DELETING, UPDATING, CREATING, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the Profile association.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile association was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile association was modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the Profile association. (pattern: &lt;code&gt;^(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID of the Profile association owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the Profile association. (COMPLETE, DELETING, UPDATING, CREATING, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the Profile association.</td>
 </tr>
@@ -252,15 +252,15 @@ Retrieves a Route 53 Profile association for a VPC. A VPC can have only one Prof
 
 ```sql
 SELECT
-CreationTime,
-Id,
-ModificationTime,
-Name,
-OwnerId,
-ProfileId,
-ResourceId,
-Status,
-StatusMessage
+creation_time,
+id,
+modification_time,
+name,
+owner_id,
+profile_id,
+resource_id,
+status,
+status_message
 FROM aws.route53profiles.profile_associations
 WHERE profile_association_id = '{{ profile_association_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,15 +273,15 @@ Lists all the VPCs that the specified Route 53 Profile is associated with.
 
 ```sql
 SELECT
-CreationTime,
-Id,
-ModificationTime,
-Name,
-OwnerId,
-ProfileId,
-ResourceId,
-Status,
-StatusMessage
+creation_time,
+id,
+modification_time,
+name,
+owner_id,
+profile_id,
+resource_id,
+status,
+status_message
 FROM aws.route53profiles.profile_associations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

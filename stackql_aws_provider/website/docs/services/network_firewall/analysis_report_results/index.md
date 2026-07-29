@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The most frequently accessed domains.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstAccessed" /></td>
+    <td><CopyableCode code="first_accessed" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time any domain was first accessed (within the last 30 day period).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hits" /></td>
+    <td><CopyableCode code="hits" /></td>
     <td><code>object</code></td>
     <td>The number of attempts made to access a observed domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessed" /></td>
+    <td><CopyableCode code="last_accessed" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time any domain was last accessed (within the last 30 day period).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The type of traffic captured by the analysis report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UniqueSources" /></td>
+    <td><CopyableCode code="unique_sources" /></td>
     <td><code>object</code></td>
     <td>The number of unique source IP addresses that connected to a domain.</td>
 </tr>
@@ -144,12 +144,12 @@ The results of a COMPLETED analysis report generated with StartAnalysisReport. F
 
 ```sql
 SELECT
-Domain,
-FirstAccessed,
-Hits,
-LastAccessed,
-Protocol,
-UniqueSources
+domain,
+first_accessed,
+hits,
+last_accessed,
+protocol,
+unique_sources
 FROM aws.network_firewall.analysis_report_results
 WHERE region = '{{ region }}' -- required
 ;

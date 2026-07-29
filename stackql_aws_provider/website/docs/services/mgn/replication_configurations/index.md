@@ -55,87 +55,87 @@ The following fields are returned by `SELECT` queries:
     <td>Replication Configuration name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associateDefaultSecurityGroup" /></td>
+    <td><CopyableCode code="associate_default_security_group" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration associate default Application Migration Service Security Group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bandwidthThrottling" /></td>
+    <td><CopyableCode code="bandwidth_throttling" /></td>
     <td><code>integer (int64)</code></td>
     <td>Replication Configuration set bandwidth throttling.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createPublicIP" /></td>
+    <td><CopyableCode code="create_public_ip" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration create Public IP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataPlaneRouting" /></td>
+    <td><CopyableCode code="data_plane_routing" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration data plane routing. (PRIVATE_IP, PUBLIC_IP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultLargeStagingDiskType" /></td>
+    <td><CopyableCode code="default_large_staging_disk_type" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration use default large Staging Disks. (GP2, ST1, GP3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ebsEncryption" /></td>
+    <td><CopyableCode code="ebs_encryption" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration EBS encryption. (DEFAULT, CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ebsEncryptionKeyArn" /></td>
+    <td><CopyableCode code="ebs_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration EBS encryption key ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="internetProtocol" /></td>
+    <td><CopyableCode code="internet_protocol" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration internet protocol. (IPV4, IPV6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicatedDisks" /></td>
+    <td><CopyableCode code="replicated_disks" /></td>
     <td><code>array</code></td>
     <td>Replication Configuration replicated disks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationServerInstanceType" /></td>
+    <td><CopyableCode code="replication_server_instance_type" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration Replication Server instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationServersSecurityGroupsIDs" /></td>
+    <td><CopyableCode code="replication_servers_security_groups_ids" /></td>
     <td><code>array</code></td>
     <td>Replication Configuration Replication Server Security Group IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerID" /></td>
+    <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration Source Server ID. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stagingAreaSubnetId" /></td>
+    <td><CopyableCode code="staging_area_subnet_id" /></td>
     <td><code>string</code></td>
     <td>Replication Configuration Staging Area subnet ID. (pattern: &lt;code&gt;subnet-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stagingAreaTags" /></td>
+    <td><CopyableCode code="staging_area_tags" /></td>
     <td><code>object</code></td>
     <td>Replication Configuration Staging Area tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeSnapshotOnLocalZone" /></td>
+    <td><CopyableCode code="store_snapshot_on_local_zone" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration store snapshot on local zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="useDedicatedReplicationServer" /></td>
+    <td><CopyableCode code="use_dedicated_replication_server" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration use Dedicated Replication Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="useFipsEndpoint" /></td>
+    <td><CopyableCode code="use_fips_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration use Fips Endpoint.</td>
 </tr>
@@ -212,23 +212,23 @@ Lists all ReplicationConfigurations, filtered by Source Server ID.
 ```sql
 SELECT
 name,
-associateDefaultSecurityGroup,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-replicatedDisks,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-sourceServerID,
-stagingAreaSubnetId,
-stagingAreaTags,
-storeSnapshotOnLocalZone,
-useDedicatedReplicationServer,
-useFipsEndpoint
+associate_default_security_group,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+replicated_disks,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+source_server_id,
+staging_area_subnet_id,
+staging_area_tags,
+store_snapshot_on_local_zone,
+use_dedicated_replication_server,
+use_fips_endpoint
 FROM aws.mgn.replication_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -276,23 +276,23 @@ region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required
 RETURNING
 name,
-associateDefaultSecurityGroup,
-bandwidthThrottling,
-createPublicIP,
-dataPlaneRouting,
-defaultLargeStagingDiskType,
-ebsEncryption,
-ebsEncryptionKeyArn,
-internetProtocol,
-replicatedDisks,
-replicationServerInstanceType,
-replicationServersSecurityGroupsIDs,
-sourceServerID,
-stagingAreaSubnetId,
-stagingAreaTags,
-storeSnapshotOnLocalZone,
-useDedicatedReplicationServer,
-useFipsEndpoint;
+associate_default_security_group,
+bandwidth_throttling,
+create_public_ip,
+data_plane_routing,
+default_large_staging_disk_type,
+ebs_encryption,
+ebs_encryption_key_arn,
+internet_protocol,
+replicated_disks,
+replication_server_instance_type,
+replication_servers_security_groups_ids,
+source_server_id,
+staging_area_subnet_id,
+staging_area_tags,
+store_snapshot_on_local_zone,
+use_dedicated_replication_server,
+use_fips_endpoint;
 ```
 </TabItem>
 </Tabs>

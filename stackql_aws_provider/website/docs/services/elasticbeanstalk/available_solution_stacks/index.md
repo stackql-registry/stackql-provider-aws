@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PermittedFileTypes" /></td>
+    <td><CopyableCode code="permitted_file_types" /></td>
     <td><code>string</code></td>
     <td>The permitted file types allowed for a solution stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SolutionStackName" /></td>
+    <td><CopyableCode code="solution_stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the solution stack.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of the available solution stack names, with the public version fi
 
 ```sql
 SELECT
-PermittedFileTypes,
-SolutionStackName
+permitted_file_types,
+solution_stack_name
 FROM aws.elasticbeanstalk.available_solution_stacks
 WHERE region = '{{ region }}' -- required
 ;

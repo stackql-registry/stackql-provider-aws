@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivityType" /></td>
+    <td><CopyableCode code="activity_type" /></td>
     <td><code>string</code></td>
     <td>The type of activity that the metric applies to. Possible values are: CONDITIONAL_SPLIT – For a yes/no split activity, which is an activity that sends participants down one of two paths in a journey. HOLDOUT – For a holdout activity, which is an activity that stops a journey for a specified percentage of participants. MESSAGE – For an email activity, which is an activity that sends an email message to participants. MULTI_CONDITIONAL_SPLIT – For a multivariate split activity, which is an activity that sends participants down one of as many as five paths in a journey. RANDOM_SPLIT – For a random split activity, which is an activity that sends specified percentages of participants down one of as many as five paths in a journey. WAIT – For a wait activity, which is an activity that waits for a certain amount of time or until a specific date and time before moving participants to the next activity in a journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the metric applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JourneyActivityId" /></td>
+    <td><CopyableCode code="journey_activity_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the activity that the metric applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JourneyId" /></td>
+    <td><CopyableCode code="journey_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the journey that the metric applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastEvaluatedTime" /></td>
+    <td><CopyableCode code="last_evaluated_time" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when Amazon Pinpoint last evaluated the execution status of the activity and updated the data for the metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>object</code></td>
     <td>A JSON object that contains the results of the query. The results vary depending on the type of activity (ActivityType). For information about the structure and contents of the results, see the Amazon Pinpoint Developer Guide.</td>
 </tr>
@@ -169,12 +169,12 @@ Retrieves (queries) pre-aggregated data for a standard execution metric that app
 
 ```sql
 SELECT
-ActivityType,
-ApplicationId,
-JourneyActivityId,
-JourneyId,
-LastEvaluatedTime,
-Metrics
+activity_type,
+application_id,
+journey_activity_id,
+journey_id,
+last_evaluated_time,
+metrics
 FROM aws.pinpoint.journey_execution_activity_metrics
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `journey-activity-id` = '{{ journey-activity-id }}' -- required

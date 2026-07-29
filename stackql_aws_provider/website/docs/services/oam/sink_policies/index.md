@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy that you specified, in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SinkArn" /></td>
+    <td><CopyableCode code="sink_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the sink.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SinkId" /></td>
+    <td><CopyableCode code="sink_id" /></td>
     <td><code>string</code></td>
     <td>The random ID string that Amazon Web Services generated as part of the sink ARN.</td>
 </tr>
@@ -136,9 +136,9 @@ Returns the current sink policy attached to this sink. The sink policy specifies
 
 ```sql
 SELECT
-Policy,
-SinkArn,
-SinkId
+policy,
+sink_arn,
+sink_id
 FROM aws.oam.sink_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,9 +168,9 @@ WHERE
 region = '{{ region }}' --required
 AND SinkIdentifier = '{{ SinkIdentifier }}' --required
 RETURNING
-Policy,
-SinkArn,
-SinkId;
+policy,
+sink_arn,
+sink_id;
 ```
 </TabItem>
 </Tabs>

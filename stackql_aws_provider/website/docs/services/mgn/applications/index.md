@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>Application name. (pattern: &lt;code&gt;&#91;^\s\x00&#93;( *&#91;^\s\x00&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationAggregatedStatus" /></td>
+    <td><CopyableCode code="application_aggregated_status" /></td>
     <td><code>object</code></td>
     <td>Application aggregated status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationID" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>Application ID. (pattern: &lt;code&gt;app-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>Application ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string</code></td>
     <td>Application creation dateTime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>Application description. (pattern: &lt;code&gt;&#91;^\x00&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Application archival status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDateTime" /></td>
+    <td><CopyableCode code="last_modified_date_time" /></td>
     <td><code>string</code></td>
     <td>Application last modified dateTime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>Application tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="waveID" /></td>
+    <td><CopyableCode code="wave_id" /></td>
     <td><code>string</code></td>
     <td>Application wave ID. (pattern: &lt;code&gt;wave-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -214,15 +214,15 @@ Retrieves all applications or multiple applications by ID.
 ```sql
 SELECT
 name,
-applicationAggregatedStatus,
-applicationID,
+application_aggregated_status,
+application_id,
 arn,
-creationDateTime,
+creation_date_time,
 description,
-isArchived,
-lastModifiedDateTime,
+is_archived,
+last_modified_date_time,
 tags,
-waveID
+wave_id
 FROM aws.mgn.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -260,15 +260,15 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-applicationAggregatedStatus,
-applicationID,
+application_aggregated_status,
+application_id,
 arn,
-creationDateTime,
+creation_date_time,
 description,
-isArchived,
-lastModifiedDateTime,
+is_archived,
+last_modified_date_time,
 tags,
-waveID
+wave_id
 ;
 ```
 </TabItem>
@@ -335,15 +335,15 @@ region = '{{ region }}' --required
 AND applicationID = '{{ applicationID }}' --required
 RETURNING
 name,
-applicationAggregatedStatus,
-applicationID,
+application_aggregated_status,
+application_id,
 arn,
-creationDateTime,
+creation_date_time,
 description,
-isArchived,
-lastModifiedDateTime,
+is_archived,
+last_modified_date_time,
 tags,
-waveID;
+wave_id;
 ```
 </TabItem>
 </Tabs>

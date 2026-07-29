@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The device pool's description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDevices" /></td>
+    <td><CopyableCode code="max_devices" /></td>
     <td><code>integer</code></td>
     <td>The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available and meet the criteria that you assign for the rules parameter. Depending on how many devices meet these constraints, your device pool might contain fewer devices than the value for this parameter. By specifying the maximum number of devices, you can control the costs that you incur by running tests.</td>
 </tr>
@@ -175,7 +175,7 @@ SELECT
 name,
 arn,
 description,
-maxDevices,
+max_devices,
 rules,
 type_
 FROM aws.devicefarm.device_pools
@@ -216,7 +216,7 @@ SELECT
 {{ maxDevices }},
 '{{ region }}'
 RETURNING
-devicePool
+device_pool
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-devicePool;
+device_pool;
 ```
 </TabItem>
 </Tabs>

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>The filter used to describe a set of objects for analyses. A filter must have exactly one prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all objects will be considered in any analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID that identifies the analytics configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageClassAnalysis" /></td>
+    <td><CopyableCode code="storage_class_analysis" /></td>
     <td><code>string</code></td>
     <td>Contains data related to access patterns to be collected and made available to analyze the tradeoffs between different storage classes.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>The filter used to describe a set of objects for analyses. A filter must have exactly one prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all objects will be considered in any analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID that identifies the analytics configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageClassAnalysis" /></td>
+    <td><CopyableCode code="storage_class_analysis" /></td>
     <td><code>string</code></td>
     <td>Contains data related to access patterns to be collected and made available to analyze the tradeoffs between different storage classes.</td>
 </tr>
@@ -201,9 +201,9 @@ This operation is not supported for directory buckets. This implementation of th
 
 ```sql
 SELECT
-Filter,
-Id,
-StorageClassAnalysis
+filter,
+id,
+storage_class_analysis
 FROM aws.s3.bucket_analytics_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND id = '{{ id }}' -- required
@@ -218,9 +218,9 @@ This operation is not supported for directory buckets. Lists the analytics confi
 
 ```sql
 SELECT
-Filter,
-Id,
-StorageClassAnalysis
+filter,
+id,
+storage_class_analysis
 FROM aws.s3.bucket_analytics_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the flow execution ended. This field is only populated when the execution has completed, failed, timed out, or been aborted.</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>A list of errors that occurred during the flow execution. Each error includes an error code, message, and the node where the error occurred, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionArn" /></td>
+    <td><CopyableCode code="execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the flow execution. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;&#123;1,36&#125;$|^(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;/alias/&#91;0-9a-zA-Z&#93;&#123;10&#125;/execution/&#91;a-zA-Z0-9-&#93;&#123;1,36&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowAliasIdentifier" /></td>
+    <td><CopyableCode code="flow_alias_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow alias used for the execution. (pattern: &lt;code&gt;^(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;/alias/&#91;0-9a-zA-Z&#93;&#123;10&#125;)|(\bTSTALIASID\b|&#91;0-9a-zA-Z&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowIdentifier" /></td>
+    <td><CopyableCode code="flow_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow. (pattern: &lt;code&gt;^(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;)|(&#91;0-9a-zA-Z&#93;&#123;10&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowVersion" /></td>
+    <td><CopyableCode code="flow_version" /></td>
     <td><code>string</code></td>
     <td>The version of the flow used for the execution. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the flow execution started.</td>
 </tr>
@@ -105,32 +105,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the flow execution was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the flow execution ended. This field is only populated when the execution has completed, failed, timed out, or been aborted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionArn" /></td>
+    <td><CopyableCode code="execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the flow execution. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;&#123;1,36&#125;$|^(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;/alias/&#91;0-9a-zA-Z&#93;&#123;10&#125;/execution/&#91;a-zA-Z0-9-&#93;&#123;1,36&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowAliasIdentifier" /></td>
+    <td><CopyableCode code="flow_alias_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow alias used for the execution. (pattern: &lt;code&gt;^(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;/alias/&#91;0-9a-zA-Z&#93;&#123;10&#125;)|(\bTSTALIASID\b|&#91;0-9a-zA-Z&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowIdentifier" /></td>
+    <td><CopyableCode code="flow_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow. (pattern: &lt;code&gt;^(arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:flow/&#91;0-9a-zA-Z&#93;&#123;10&#125;)|(&#91;0-9a-zA-Z&#93;&#123;10&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowVersion" /></td>
+    <td><CopyableCode code="flow_version" /></td>
     <td><code>string</code></td>
     <td>The version of the flow used for the execution. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -242,13 +242,13 @@ Retrieves details about a specific flow execution, including its status, start a
 
 ```sql
 SELECT
-endedAt,
+ended_at,
 errors,
-executionArn,
-flowAliasIdentifier,
-flowIdentifier,
-flowVersion,
-startedAt,
+execution_arn,
+flow_alias_identifier,
+flow_identifier,
+flow_version,
+started_at,
 status
 FROM aws.bedrock_agent_runtime.flow_executions
 WHERE execution_identifier = '{{ execution_identifier }}' -- required
@@ -264,12 +264,12 @@ Lists all executions of a flow. Results can be paginated and include summary inf
 
 ```sql
 SELECT
-createdAt,
-endedAt,
-executionArn,
-flowAliasIdentifier,
-flowIdentifier,
-flowVersion,
+created_at,
+ended_at,
+execution_arn,
+flow_alias_identifier,
+flow_identifier,
+flow_version,
 status
 FROM aws.bedrock_agent_runtime.flow_executions
 WHERE flow_identifier = '{{ flow_identifier }}' -- required

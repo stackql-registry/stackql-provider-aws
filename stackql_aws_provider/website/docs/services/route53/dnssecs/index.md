@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KeySigningKeys" /></td>
+    <td><CopyableCode code="key_signing_keys" /></td>
     <td><code>string</code></td>
     <td>The key-signing keys (KSKs) in your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A string representing the status of DNSSEC.</td>
 </tr>
@@ -129,8 +129,8 @@ Returns information about DNSSEC for a specific hosted zone, including the key-s
 
 ```sql
 SELECT
-KeySigningKeys,
-Status
+key_signing_keys,
+status
 FROM aws.route53.dnssecs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

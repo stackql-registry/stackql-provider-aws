@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationArn" /></td>
+    <td><CopyableCode code="access_grants_location_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registered location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationId" /></td>
+    <td><CopyableCode code="access_grants_location_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID when you register the location. S3 Access Grants assigns the ID default to the default location s3:​// and assigns an auto-generated ID to other locations that you register.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when you registered the location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role for the registered location. S3 Access Grants assumes this role to manage access to the registered location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationScope" /></td>
+    <td><CopyableCode code="location_scope" /></td>
     <td><code>string</code></td>
     <td>The S3 URI path to the registered location. The location scope can be the default S3 location s3:​//, the S3 path to a bucket, or the S3 path to a bucket and prefix. A prefix in S3 is a string of characters at the beginning of an object key name used to organize the objects that you store in your S3 buckets. For example, object key names that start with the engineering/ prefix or object key names that start with the marketing/campaigns/ prefix.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationArn" /></td>
+    <td><CopyableCode code="access_grants_location_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registered location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationId" /></td>
+    <td><CopyableCode code="access_grants_location_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID when you register the location. S3 Access Grants assigns the ID default to the default location s3:​// and assigns an auto-generated ID to other locations that you register.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when you registered the location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role for the registered location. S3 Access Grants assumes this role to manage access to the registered location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationScope" /></td>
+    <td><CopyableCode code="location_scope" /></td>
     <td><code>string</code></td>
     <td>The S3 path to the location that you are registering. The location scope can be the default S3 location s3:​//, the S3 path to a bucket s3:​//<code>&lt;bucket&gt;</code>, or the S3 path to a bucket and prefix s3:​//<code>&lt;bucket&gt;</code>/<code>&lt;prefix&gt;</code>. A prefix in S3 is a string of characters at the beginning of an object key name used to organize the objects that you store in your S3 buckets. For example, object key names that start with the engineering/ prefix or object key names that start with the marketing/campaigns/ prefix.</td>
 </tr>
@@ -233,11 +233,11 @@ Retrieves the details of a particular location registered in your S3 Access Gran
 
 ```sql
 SELECT
-AccessGrantsLocationArn,
-AccessGrantsLocationId,
-CreatedAt,
-IAMRoleArn,
-LocationScope
+access_grants_location_arn,
+access_grants_location_id,
+created_at,
+iam_role_arn,
+location_scope
 FROM aws.s3control.access_grants_locations
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND id = '{{ id }}' -- required
@@ -251,11 +251,11 @@ Returns a list of the locations registered in your S3 Access Grants instance. Pe
 
 ```sql
 SELECT
-AccessGrantsLocationArn,
-AccessGrantsLocationId,
-CreatedAt,
-IAMRoleArn,
-LocationScope
+access_grants_location_arn,
+access_grants_location_id,
+created_at,
+iam_role_arn,
+location_scope
 FROM aws.s3control.access_grants_locations
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -296,11 +296,11 @@ SELECT
 '{{ x-amz-account-id }}',
 '{{ region }}'
 RETURNING
-AccessGrantsLocationArn,
-AccessGrantsLocationId,
-CreatedAt,
-IAMRoleArn,
-LocationScope
+access_grants_location_arn,
+access_grants_location_id,
+created_at,
+iam_role_arn,
+location_scope
 ;
 ```
 </TabItem>
@@ -351,11 +351,11 @@ AND id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 AND IAMRoleArn = '{{ IAMRoleArn }}' --required
 RETURNING
-AccessGrantsLocationArn,
-AccessGrantsLocationId,
-CreatedAt,
-IAMRoleArn,
-LocationScope;
+access_grants_location_arn,
+access_grants_location_id,
+created_at,
+iam_role_arn,
+location_scope;
 ```
 </TabItem>
 </Tabs>

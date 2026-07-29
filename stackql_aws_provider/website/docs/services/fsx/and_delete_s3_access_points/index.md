@@ -101,8 +101,8 @@ Name = '{{ Name }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Lifecycle,
-Name;
+lifecycle,
+name;
 ```
 </TabItem>
 </Tabs>

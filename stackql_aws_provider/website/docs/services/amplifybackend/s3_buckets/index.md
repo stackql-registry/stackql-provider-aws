@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Buckets" /></td>
+    <td><CopyableCode code="buckets" /></td>
     <td><code>array</code></td>
     <td>The list of S3 buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
@@ -124,8 +124,8 @@ The list of S3 buckets in your account.
 
 ```sql
 SELECT
-Buckets,
-NextToken
+buckets,
+next_token
 FROM aws.amplifybackend.s3_buckets
 WHERE region = '{{ region }}' -- required
 ;

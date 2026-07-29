@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A signal map's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchAlarmTemplateGroupIds" /></td>
+    <td><CopyableCode code="cloud_watch_alarm_template_group_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscoveryEntryPointArn" /></td>
+    <td><CopyableCode code="discovery_entry_point_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max2048</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max2048</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBridgeRuleTemplateGroupIds" /></td>
+    <td><CopyableCode code="event_bridge_rule_template_group_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedMediaResourceMap" /></td>
+    <td><CopyableCode code="failed_media_resource_map" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDiscoveredAt" /></td>
+    <td><CopyableCode code="last_discovered_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulMonitorDeployment" /></td>
+    <td><CopyableCode code="last_successful_monitor_deployment" /></td>
     <td><code>object</code></td>
     <td>Represents the latest successful monitor deployment of a signal map.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaResourceMap" /></td>
+    <td><CopyableCode code="media_resource_map" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorChangesPendingDeployment" /></td>
+    <td><CopyableCode code="monitor_changes_pending_deployment" /></td>
     <td><code>boolean</code></td>
     <td>Placeholder documentation for __boolean</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorDeployment" /></td>
+    <td><CopyableCode code="monitor_deployment" /></td>
     <td><code>object</code></td>
     <td>Represents the latest monitor deployment of a signal map.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A signal map's current status which is dependent on its lifecycle actions or associated jobs. (CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_REVERTED, UPDATE_FAILED, READY, NOT_READY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -155,47 +155,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A signal map's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorDeploymentStatus" /></td>
+    <td><CopyableCode code="monitor_deployment_status" /></td>
     <td><code>string</code></td>
     <td>A signal map's monitor deployment status. (NOT_DEPLOYED, DRY_RUN_DEPLOYMENT_COMPLETE, DRY_RUN_DEPLOYMENT_FAILED, DRY_RUN_DEPLOYMENT_IN_PROGRESS, DEPLOYMENT_COMPLETE, DEPLOYMENT_FAILED, DEPLOYMENT_IN_PROGRESS, DELETE_COMPLETE, DELETE_FAILED, DELETE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A signal map's current status which is dependent on its lifecycle actions or associated jobs. (CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_REVERTED, UPDATE_FAILED, READY, NOT_READY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -311,24 +311,24 @@ Retrieves the specified signal map.
 
 ```sql
 SELECT
-Arn,
-CloudWatchAlarmTemplateGroupIds,
-CreatedAt,
-Description,
-DiscoveryEntryPointArn,
-ErrorMessage,
-EventBridgeRuleTemplateGroupIds,
-FailedMediaResourceMap,
-Id,
-LastDiscoveredAt,
-LastSuccessfulMonitorDeployment,
-MediaResourceMap,
-ModifiedAt,
-MonitorChangesPendingDeployment,
-MonitorDeployment,
-Name,
-Status,
-Tags
+arn,
+cloud_watch_alarm_template_group_ids,
+created_at,
+description,
+discovery_entry_point_arn,
+error_message,
+event_bridge_rule_template_group_ids,
+failed_media_resource_map,
+id,
+last_discovered_at,
+last_successful_monitor_deployment,
+media_resource_map,
+modified_at,
+monitor_changes_pending_deployment,
+monitor_deployment,
+name,
+status,
+tags
 FROM aws.medialive.signal_maps
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -341,15 +341,15 @@ Lists signal maps.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-Id,
-ModifiedAt,
-MonitorDeploymentStatus,
-Name,
-Status,
-Tags
+arn,
+created_at,
+description,
+id,
+modified_at,
+monitor_deployment_status,
+name,
+status,
+tags
 FROM aws.medialive.signal_maps
 WHERE region = '{{ region }}' -- required
 AND cloudWatchAlarmTemplateGroupIdentifier = '{{ cloudWatchAlarmTemplateGroupIdentifier }}'
@@ -396,24 +396,24 @@ SELECT
 '{{ RequestId }}',
 '{{ region }}'
 RETURNING
-Arn,
-CloudWatchAlarmTemplateGroupIds,
-CreatedAt,
-Description,
-DiscoveryEntryPointArn,
-ErrorMessage,
-EventBridgeRuleTemplateGroupIds,
-FailedMediaResourceMap,
-Id,
-LastDiscoveredAt,
-LastSuccessfulMonitorDeployment,
-MediaResourceMap,
-ModifiedAt,
-MonitorChangesPendingDeployment,
-MonitorDeployment,
-Name,
-Status,
-Tags
+arn,
+cloud_watch_alarm_template_group_ids,
+created_at,
+description,
+discovery_entry_point_arn,
+error_message,
+event_bridge_rule_template_group_ids,
+failed_media_resource_map,
+id,
+last_discovered_at,
+last_successful_monitor_deployment,
+media_resource_map,
+modified_at,
+monitor_changes_pending_deployment,
+monitor_deployment,
+name,
+status,
+tags
 ;
 ```
 </TabItem>

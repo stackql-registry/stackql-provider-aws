@@ -56,47 +56,47 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the data source run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the data source run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceConfigurationSnapshot" /></td>
+    <td><CopyableCode code="data_source_configuration_snapshot" /></td>
     <td><code>string</code></td>
     <td>The configuration snapshot of the data source run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data source for this data source run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain in which this data source run was performed. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>object</code></td>
     <td>The details of the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineageSummary" /></td>
+    <td><CopyableCode code="lineage_summary" /></td>
     <td><code>object</code></td>
     <td>The summary of the data lineage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project in which this data source run occured. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runStatisticsForAssets" /></td>
+    <td><CopyableCode code="run_statistics_for_assets" /></td>
     <td><code>object</code></td>
     <td>The asset statistics from this data source run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this data source run started.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of this data source run. (REQUESTED, RUNNING, FAILED, PARTIALLY_SUCCEEDED, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stoppedAt" /></td>
+    <td><CopyableCode code="stopped_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this data source run stopped.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of this data source run. (PRIORITIZED, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this data source run was updated.</td>
 </tr>
@@ -140,37 +140,37 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the data source run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when a data source run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the data source of the data source run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>object</code></td>
     <td>The details of the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineageSummary" /></td>
+    <td><CopyableCode code="lineage_summary" /></td>
     <td><code>object</code></td>
     <td>The run lineage summary of a data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The project ID of the data source run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runStatisticsForAssets" /></td>
+    <td><CopyableCode code="run_statistics_for_assets" /></td>
     <td><code>object</code></td>
     <td>The asset statistics from the data source run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when a data source run was started.</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the data source run. (REQUESTED, RUNNING, FAILED, PARTIALLY_SUCCEEDED, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stoppedAt" /></td>
+    <td><CopyableCode code="stopped_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when a data source run was stopped.</td>
 </tr>
@@ -190,7 +190,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the data source run. (PRIORITIZED, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when a data source run was updated.</td>
 </tr>
@@ -298,19 +298,19 @@ Gets an Amazon DataZone data source run.
 ```sql
 SELECT
 id,
-createdAt,
-dataSourceConfigurationSnapshot,
-dataSourceId,
-domainId,
-errorMessage,
-lineageSummary,
-projectId,
-runStatisticsForAssets,
-startedAt,
+created_at,
+data_source_configuration_snapshot,
+data_source_id,
+domain_id,
+error_message,
+lineage_summary,
+project_id,
+run_statistics_for_assets,
+started_at,
 status,
-stoppedAt,
+stopped_at,
 type_,
-updatedAt
+updated_at
 FROM aws.datazone.data_source_runs
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -325,17 +325,17 @@ Lists data source runs in Amazon DataZone.
 ```sql
 SELECT
 id,
-createdAt,
-dataSourceId,
-errorMessage,
-lineageSummary,
-projectId,
-runStatisticsForAssets,
-startedAt,
+created_at,
+data_source_id,
+error_message,
+lineage_summary,
+project_id,
+run_statistics_for_assets,
+started_at,
 status,
-stoppedAt,
+stopped_at,
 type_,
-updatedAt
+updated_at
 FROM aws.datazone.data_source_runs
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND data_source_identifier = '{{ data_source_identifier }}' -- required

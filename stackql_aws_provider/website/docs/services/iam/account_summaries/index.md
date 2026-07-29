@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SummaryMap" /></td>
+    <td><CopyableCode code="summary_map" /></td>
     <td><code>string</code></td>
     <td>A set of key–value pairs containing information about IAM entity usage and IAM quotas.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Se
 
 ```sql
 SELECT
-SummaryMap
+summary_map
 FROM aws.iam.account_summaries
 WHERE region = '{{ region }}' -- required
 ;

@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the ML input channel. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationIdentifier" /></td>
+    <td><CopyableCode code="collaboration_identifier" /></td>
     <td><code>string</code></td>
     <td>The collaboration ID of the collaboration that contains the ML input channel. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmAssociations" /></td>
+    <td><CopyableCode code="configured_model_algorithm_associations" /></td>
     <td><code>array</code></td>
     <td>The configured model algorithm associations that were used to create the ML input channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the ML input channel was created.</td>
 </tr>
@@ -76,52 +76,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the ML input channel. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputChannel" /></td>
+    <td><CopyableCode code="input_channel" /></td>
     <td><code>object</code></td>
     <td>Provides information about the data source that is used to create an ML input channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key that was used to create the ML input channel. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:kms:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the membership that contains the ML input channel. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mlInputChannelArn" /></td>
+    <td><CopyableCode code="ml_input_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ML input channel. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/ml-input-channel/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfFiles" /></td>
+    <td><CopyableCode code="number_of_files" /></td>
     <td><code>number (double)</code></td>
     <td>The number of files in the ML input channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfRecords" /></td>
+    <td><CopyableCode code="number_of_records" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records in the ML input channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privacyBudgets" /></td>
+    <td><CopyableCode code="privacy_budgets" /></td>
     <td><code>object</code></td>
     <td>Returns the privacy budgets that control access to this Clean Rooms ML input channel. Use these budgets to monitor and limit resource consumption over specified time periods.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protectedQueryIdentifier" /></td>
+    <td><CopyableCode code="protected_query_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the protected query that was used to create the ML input channel. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retentionInDays" /></td>
+    <td><CopyableCode code="retention_in_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days to keep the data in the ML input channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>number (double)</code></td>
     <td>The size, in GB, of the ML input channel.</td>
 </tr>
@@ -131,12 +131,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the ML input channel. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the status of a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syntheticDataConfiguration" /></td>
+    <td><CopyableCode code="synthetic_data_configuration" /></td>
     <td><code>object</code></td>
     <td>The synthetic data configuration for this ML input channel, including parameters for generating privacy-preserving synthetic data and evaluation scores for measuring the privacy of the generated data.</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>The optional metadata that you applied to the resource to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. The following basic restrictions apply to tags: Maximum number of tags per resource - 50. For each resource, each tag key must be unique, and each tag key can have only one value. Maximum key length - 128 Unicode characters in UTF-8. Maximum value length - 256 Unicode characters in UTF-8. If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys and values are case sensitive. Do not use aws:, AWS:, or any upper or lowercase combination of such as a prefix for keys as it is reserved for AWS use. You cannot edit or delete tag keys with this prefix. Values can have this prefix. If a tag value has aws as its prefix but the key does not, then Clean Rooms ML considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not count against your tags per resource limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the ML input channel was updated.</td>
 </tr>
@@ -170,17 +170,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the ML input channel. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationIdentifier" /></td>
+    <td><CopyableCode code="collaboration_identifier" /></td>
     <td><code>string</code></td>
     <td>The collaboration ID of the collaboration that contains the ML input channel. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmAssociations" /></td>
+    <td><CopyableCode code="configured_model_algorithm_associations" /></td>
     <td><code>array</code></td>
     <td>The associated configured model algorithms used to create the ML input channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the ML input channel was created.</td>
 </tr>
@@ -190,17 +190,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the ML input channel. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the membership that contains the ML input channel. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mlInputChannelArn" /></td>
+    <td><CopyableCode code="ml_input_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ML input channel. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/ml-input-channel/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protectedQueryIdentifier" /></td>
+    <td><CopyableCode code="protected_query_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the protected query that was used to create the ML input channel. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -210,7 +210,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the ML input channel. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the ML input channel was updated.</td>
 </tr>
@@ -322,25 +322,25 @@ Returns information about an ML input channel.
 ```sql
 SELECT
 name,
-collaborationIdentifier,
-configuredModelAlgorithmAssociations,
-createTime,
+collaboration_identifier,
+configured_model_algorithm_associations,
+create_time,
 description,
-inputChannel,
-kmsKeyArn,
-membershipIdentifier,
-mlInputChannelArn,
-numberOfFiles,
-numberOfRecords,
-privacyBudgets,
-protectedQueryIdentifier,
-retentionInDays,
-sizeInGb,
+input_channel,
+kms_key_arn,
+membership_identifier,
+ml_input_channel_arn,
+number_of_files,
+number_of_records,
+privacy_budgets,
+protected_query_identifier,
+retention_in_days,
+size_in_gb,
 status,
-statusDetails,
-syntheticDataConfiguration,
+status_details,
+synthetic_data_configuration,
 tags,
-updateTime
+update_time
 FROM aws.cleanroomsml.ml_input_channels
 WHERE ml_input_channel_arn = '{{ ml_input_channel_arn }}' -- required
 AND membership_identifier = '{{ membership_identifier }}' -- required
@@ -355,15 +355,15 @@ Returns a list of ML input channels.
 ```sql
 SELECT
 name,
-collaborationIdentifier,
-configuredModelAlgorithmAssociations,
-createTime,
+collaboration_identifier,
+configured_model_algorithm_associations,
+create_time,
 description,
-membershipIdentifier,
-mlInputChannelArn,
-protectedQueryIdentifier,
+membership_identifier,
+ml_input_channel_arn,
+protected_query_identifier,
 status,
-updateTime
+update_time
 FROM aws.cleanroomsml.ml_input_channels
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -411,7 +411,7 @@ SELECT
 '{{ membership_identifier }}',
 '{{ region }}'
 RETURNING
-mlInputChannelArn
+ml_input_channel_arn
 ;
 ```
 </TabItem>

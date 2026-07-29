@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for the time and date that the dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetStats" /></td>
+    <td><CopyableCode code="dataset_stats" /></td>
     <td><code>object</code></td>
     <td>The status message code for the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for the date and time that the dataset was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the dataset. (CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_FAILED, DELETE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessageCode" /></td>
+    <td><CopyableCode code="status_message_code" /></td>
     <td><code>string</code></td>
     <td>The status message code for the dataset operation. If a service error occurs, try the API call again later. If a client error occurs, check the input parameters to the dataset API call that failed. (SUCCESS, SERVICE_ERROR, CLIENT_ERROR)</td>
 </tr>
@@ -158,12 +158,12 @@ This operation applies only to Amazon Rekognition Custom Labels. Describes an Am
 
 ```sql
 SELECT
-CreationTimestamp,
-DatasetStats,
-LastUpdatedTimestamp,
-Status,
-StatusMessage,
-StatusMessageCode
+creation_timestamp,
+dataset_stats,
+last_updated_timestamp,
+status,
+status_message,
+status_message_code
 FROM aws.rekognition.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -200,7 +200,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DatasetArn
+dataset_arn
 ;
 ```
 </TabItem>

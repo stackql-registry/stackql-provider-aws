@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the agent space containing this record</td>
 </tr>
@@ -60,27 +60,27 @@ The following fields are returned by `SELECT` queries:
     <td>The content of this journal record</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this journal record was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution ID associated with this journal record</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordId" /></td>
+    <td><CopyableCode code="record_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this journal record</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordType" /></td>
+    <td><CopyableCode code="record_type" /></td>
     <td><code>string</code></td>
     <td>The type of this journal record</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userReference" /></td>
+    <td><CopyableCode code="user_reference" /></td>
     <td><code>object</code></td>
     <td>Reference to the user associated with this journal record</td>
 </tr>
@@ -154,13 +154,13 @@ List journal records for a specific execution
 
 ```sql
 SELECT
-agentSpaceId,
+agent_space_id,
 content,
-createdAt,
-executionId,
-recordId,
-recordType,
-userReference
+created_at,
+execution_id,
+record_id,
+record_type,
+user_reference
 FROM aws.devops_agent.journal_records
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
 AND region = '{{ region }}' -- required

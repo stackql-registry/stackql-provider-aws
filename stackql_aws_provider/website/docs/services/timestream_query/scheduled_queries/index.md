@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Scheduled query ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the scheduled query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorReportConfiguration" /></td>
+    <td><CopyableCode code="error_report_configuration" /></td>
     <td><code>object</code></td>
     <td>Error-reporting configuration for the scheduled query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>A customer provided KMS key used to encrypt the scheduled query resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRunSummary" /></td>
+    <td><CopyableCode code="last_run_summary" /></td>
     <td><code>object</code></td>
     <td>Runtime summary for the last scheduled query run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the scheduled query. (pattern: &lt;code&gt;&#91;a-zA-Z0-9|!\-_*'\(\)&#93;(&#91;a-zA-Z0-9&#93;|&#91;!\-_*'\(\)\/.&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextInvocationTime" /></td>
+    <td><CopyableCode code="next_invocation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The next time the scheduled query is scheduled to run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationConfiguration" /></td>
+    <td><CopyableCode code="notification_configuration" /></td>
     <td><code>object</code></td>
     <td>Notification configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousInvocationTime" /></td>
+    <td><CopyableCode code="previous_invocation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last time the query was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The query to be run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecentlyFailedRuns" /></td>
+    <td><CopyableCode code="recently_failed_runs" /></td>
     <td><code>array</code></td>
     <td>Runtime summary for the last five failed scheduled query runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleConfiguration" /></td>
+    <td><CopyableCode code="schedule_configuration" /></td>
     <td><code>object</code></td>
     <td>Schedule configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledQueryExecutionRoleArn" /></td>
+    <td><CopyableCode code="scheduled_query_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>IAM role that Timestream uses to run the schedule query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>State of the scheduled query. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetConfiguration" /></td>
+    <td><CopyableCode code="target_configuration" /></td>
     <td><code>object</code></td>
     <td>Scheduled query target store configuration.</td>
 </tr>
@@ -140,47 +140,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the scheduled query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorReportConfiguration" /></td>
+    <td><CopyableCode code="error_report_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for scheduled query error reporting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRunStatus" /></td>
+    <td><CopyableCode code="last_run_status" /></td>
     <td><code>string</code></td>
     <td>Status of the last scheduled query run. (AUTO_TRIGGER_SUCCESS, AUTO_TRIGGER_FAILURE, MANUAL_TRIGGER_SUCCESS, MANUAL_TRIGGER_FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the scheduled query. (pattern: &lt;code&gt;&#91;a-zA-Z0-9|!\-_*'\(\)&#93;(&#91;a-zA-Z0-9&#93;|&#91;!\-_*'\(\)\/.&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextInvocationTime" /></td>
+    <td><CopyableCode code="next_invocation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The next time the scheduled query is to be run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousInvocationTime" /></td>
+    <td><CopyableCode code="previous_invocation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the scheduled query was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>State of scheduled query. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetDestination" /></td>
+    <td><CopyableCode code="target_destination" /></td>
     <td><code>object</code></td>
     <td>Target data source where final scheduled query result will be written.</td>
 </tr>
@@ -285,21 +285,21 @@ Provides detailed information about a scheduled query.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-ErrorReportConfiguration,
-KmsKeyId,
-LastRunSummary,
-Name,
-NextInvocationTime,
-NotificationConfiguration,
-PreviousInvocationTime,
-QueryString,
-RecentlyFailedRuns,
-ScheduleConfiguration,
-ScheduledQueryExecutionRoleArn,
-State,
-TargetConfiguration
+arn,
+creation_time,
+error_report_configuration,
+kms_key_id,
+last_run_summary,
+name,
+next_invocation_time,
+notification_configuration,
+previous_invocation_time,
+query_string,
+recently_failed_runs,
+schedule_configuration,
+scheduled_query_execution_role_arn,
+state,
+target_configuration
 FROM aws.timestream_query.scheduled_queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -311,15 +311,15 @@ Gets a list of all scheduled queries in the caller's Amazon account and Region. 
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-ErrorReportConfiguration,
-LastRunStatus,
-Name,
-NextInvocationTime,
-PreviousInvocationTime,
-State,
-TargetDestination
+arn,
+creation_time,
+error_report_configuration,
+last_run_status,
+name,
+next_invocation_time,
+previous_invocation_time,
+state,
+target_destination
 FROM aws.timestream_query.scheduled_queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -368,7 +368,7 @@ SELECT
 '{{ ErrorReportConfiguration }}' /* required */,
 '{{ region }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroupName" /></td>
+    <td><CopyableCode code="parameter_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter group.</td>
 </tr>
@@ -145,8 +145,8 @@ Returns a list of parameter group descriptions. If a parameter group name is spe
 
 ```sql
 SELECT
-Description,
-ParameterGroupName
+description,
+parameter_group_name
 FROM aws.dax.parameter_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -179,7 +179,7 @@ SELECT
 '{{ Description }}',
 '{{ region }}'
 RETURNING
-ParameterGroup
+parameter_group
 ;
 ```
 </TabItem>
@@ -227,7 +227,7 @@ region = '{{ region }}' --required
 AND ParameterGroupName = '{{ ParameterGroupName }}' --required
 AND ParameterNameValues = '{{ ParameterNameValues }}' --required
 RETURNING
-ParameterGroup;
+parameter_group;
 ```
 </TabItem>
 </Tabs>

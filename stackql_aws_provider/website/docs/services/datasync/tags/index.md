@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key for an Amazon Web Services resource tag. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s+=._:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value for an Amazon Web Services resource tag. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s+=._:@/-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Returns all the tags associated with an Amazon Web Services resource.
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.datasync.tags
 WHERE region = '{{ region }}' -- required
 ;

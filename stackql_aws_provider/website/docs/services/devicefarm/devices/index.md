@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the device's CPU.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetName" /></td>
+    <td><CopyableCode code="fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet to which this device belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetType" /></td>
+    <td><CopyableCode code="fleet_type" /></td>
     <td><code>string</code></td>
     <td>The type of fleet to which this device belongs. Possible values are PRIVATE and PUBLIC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formFactor" /></td>
+    <td><CopyableCode code="form_factor" /></td>
     <td><code>string</code></td>
     <td>The device's form factor. Allowed values include: PHONE TABLET (PHONE, TABLET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="heapSize" /></td>
+    <td><CopyableCode code="heap_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The device's heap size, expressed in bytes.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The device's model name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The device's model ID.</td>
 </tr>
@@ -141,12 +141,12 @@ The following fields are returned by `SELECT` queries:
     <td>The device's radio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteAccessEnabled" /></td>
+    <td><CopyableCode code="remote_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether remote access has been enabled for the specified device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteDebugEnabled" /></td>
+    <td><CopyableCode code="remote_debug_enabled" /></td>
     <td><code>boolean</code></td>
     <td>This flag is set to true if remote debugging is enabled for the device. Remote debugging is no longer supported.</td>
 </tr>
@@ -195,22 +195,22 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the device's CPU.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetName" /></td>
+    <td><CopyableCode code="fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet to which this device belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetType" /></td>
+    <td><CopyableCode code="fleet_type" /></td>
     <td><code>string</code></td>
     <td>The type of fleet to which this device belongs. Possible values are PRIVATE and PUBLIC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formFactor" /></td>
+    <td><CopyableCode code="form_factor" /></td>
     <td><code>string</code></td>
     <td>The device's form factor. Allowed values include: PHONE TABLET (PHONE, TABLET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="heapSize" /></td>
+    <td><CopyableCode code="heap_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The device's heap size, expressed in bytes.</td>
 </tr>
@@ -240,7 +240,7 @@ The following fields are returned by `SELECT` queries:
     <td>The device's model name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The device's model ID.</td>
 </tr>
@@ -260,12 +260,12 @@ The following fields are returned by `SELECT` queries:
     <td>The device's radio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteAccessEnabled" /></td>
+    <td><CopyableCode code="remote_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether remote access has been enabled for the specified device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteDebugEnabled" /></td>
+    <td><CopyableCode code="remote_debug_enabled" /></td>
     <td><code>boolean</code></td>
     <td>This flag is set to true if remote debugging is enabled for the device. Remote debugging is no longer supported.</td>
 </tr>
@@ -352,21 +352,21 @@ arn,
 availability,
 carrier,
 cpu,
-fleetName,
-fleetType,
-formFactor,
-heapSize,
+fleet_name,
+fleet_type,
+form_factor,
+heap_size,
 image,
 instances,
 manufacturer,
 memory,
 model,
-modelId,
+model_id,
 os,
 platform,
 radio,
-remoteAccessEnabled,
-remoteDebugEnabled,
+remote_access_enabled,
+remote_debug_enabled,
 resolution
 FROM aws.devicefarm.devices
 WHERE region = '{{ region }}' -- required
@@ -384,21 +384,21 @@ arn,
 availability,
 carrier,
 cpu,
-fleetName,
-fleetType,
-formFactor,
-heapSize,
+fleet_name,
+fleet_type,
+form_factor,
+heap_size,
 image,
 instances,
 manufacturer,
 memory,
 model,
-modelId,
+model_id,
 os,
 platform,
 radio,
-remoteAccessEnabled,
-remoteDebugEnabled,
+remote_access_enabled,
+remote_debug_enabled,
 resolution
 FROM aws.devicefarm.devices
 WHERE region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="trailList" /></td>
+    <td><CopyableCode code="trail_list" /></td>
     <td><code>array</code></td>
     <td>The list of trail objects. Trail objects with string values are only returned if values for the objects exist in a trail's configuration. For example, SNSTopicName and SNSTopicARN are only returned in results if a trail is configured to send SNS notifications. Similarly, KMSKeyId only appears in results if a trail's log files are encrypted with KMS customer managed keys.</td>
 </tr>
@@ -154,7 +154,7 @@ Retrieves settings for one or more trails associated with the current Region for
 
 ```sql
 SELECT
-trailList
+trail_list
 FROM aws.cloudtrail.trails
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,19 +207,19 @@ SELECT
 '{{ TagsList }}',
 '{{ region }}'
 RETURNING
-CloudWatchLogsLogGroupArn,
-CloudWatchLogsRoleArn,
-IncludeGlobalServiceEvents,
-IsMultiRegionTrail,
-IsOrganizationTrail,
-KmsKeyId,
-LogFileValidationEnabled,
-Name,
-S3BucketName,
-S3KeyPrefix,
-SnsTopicARN,
-SnsTopicName,
-TrailARN
+cloud_watch_logs_log_group_arn,
+cloud_watch_logs_role_arn,
+include_global_service_events,
+is_multi_region_trail,
+is_organization_trail,
+kms_key_id,
+log_file_validation_enabled,
+name,
+s3_bucket_name,
+s3_key_prefix,
+sns_topic_arn,
+sns_topic_name,
+trail_arn
 ;
 ```
 </TabItem>
@@ -316,19 +316,19 @@ IsOrganizationTrail = {{ IsOrganizationTrail }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-CloudWatchLogsLogGroupArn,
-CloudWatchLogsRoleArn,
-IncludeGlobalServiceEvents,
-IsMultiRegionTrail,
-IsOrganizationTrail,
-KmsKeyId,
-LogFileValidationEnabled,
-Name,
-S3BucketName,
-S3KeyPrefix,
-SnsTopicARN,
-SnsTopicName,
-TrailARN;
+cloud_watch_logs_log_group_arn,
+cloud_watch_logs_role_arn,
+include_global_service_events,
+is_multi_region_trail,
+is_organization_trail,
+kms_key_id,
+log_file_validation_enabled,
+name,
+s3_bucket_name,
+s3_key_prefix,
+sns_topic_arn,
+sns_topic_name,
+trail_arn;
 ```
 </TabItem>
 </Tabs>

@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="arrayProperties" /></td>
+    <td><CopyableCode code="array_properties" /></td>
     <td><code>object</code></td>
     <td>The array properties of the job, if it's an array job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capacityUsage" /></td>
+    <td><CopyableCode code="capacity_usage" /></td>
     <td><code>array</code></td>
     <td>The configured capacity usage information for this job, including the unit of measure and quantity of resources.</td>
 </tr>
@@ -85,47 +85,47 @@ The following fields are returned by `SELECT` queries:
     <td>An object that represents the details of the container that's associated with the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp (in milliseconds) for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the SUBMITTED state (at the time SubmitJob was called). For array child jobs, this is when the child job was spawned by its parent and entered the PENDING state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDefinition" /></td>
+    <td><CopyableCode code="job_definition" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The job name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeProperties" /></td>
+    <td><CopyableCode code="node_properties" /></td>
     <td><code>object</code></td>
     <td>The node properties for a single node in a job summary list. This isn't applicable to jobs that are running on Fargate resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledAt" /></td>
+    <td><CopyableCode code="scheduled_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp (in milliseconds) for when the job was scheduled for execution. For more information on job statues, see Service job status in the Batch User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shareIdentifier" /></td>
+    <td><CopyableCode code="share_identifier" /></td>
     <td><code>string</code></td>
     <td>The share identifier for the fairshare scheduling queue that this job is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp for when the job was started. More specifically, it's when the job transitioned from the STARTING state to the RUNNING state.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status for the job. (SUBMITTED, PENDING, RUNNABLE, STARTING, RUNNING, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A short, human-readable string to provide more details for the current status of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stoppedAt" /></td>
+    <td><CopyableCode code="stopped_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp for when the job was stopped. More specifically, it's when the job transitioned from the RUNNING state to a terminal state, such as SUCCEEDED or FAILED.</td>
 </tr>
@@ -257,21 +257,21 @@ Returns a list of Batch jobs. You must specify only one of the following items: 
 
 ```sql
 SELECT
-arrayProperties,
-capacityUsage,
+array_properties,
+capacity_usage,
 container,
-createdAt,
-jobArn,
-jobDefinition,
-jobId,
-jobName,
-nodeProperties,
-scheduledAt,
-shareIdentifier,
-startedAt,
+created_at,
+job_arn,
+job_definition,
+job_id,
+job_name,
+node_properties,
+scheduled_at,
+share_identifier,
+started_at,
 status,
-statusReason,
-stoppedAt
+status_reason,
+stopped_at
 FROM aws.batch.jobs
 WHERE region = '{{ region }}' -- required
 ;

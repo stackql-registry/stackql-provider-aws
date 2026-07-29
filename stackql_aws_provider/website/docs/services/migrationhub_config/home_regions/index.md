@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HomeRegion" /></td>
+    <td><CopyableCode code="home_region" /></td>
     <td><code>string</code></td>
     <td>The name of the home region of the calling account. (pattern: &lt;code&gt;^(&#91;a-z&#93;+)-(&#91;a-z&#93;+)-(&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the calling account’s home region, if configured. This API is used by 
 
 ```sql
 SELECT
-HomeRegion
+home_region
 FROM aws.migrationhub_config.home_regions
 WHERE region = '{{ region }}' -- required
 ;

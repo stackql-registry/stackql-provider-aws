@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComplianceStatus" /></td>
+    <td><CopyableCode code="compliance_status" /></td>
     <td><code>string</code></td>
     <td>The compliance status of the IPAM resource. For more information on compliance statuses, see Monitor CIDR usage by resource in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpUsage" /></td>
+    <td><CopyableCode code="ip_usage" /></td>
     <td><code>number</code></td>
     <td>The percentage of IP address space in use. To convert the decimal to a percentage, multiply the decimal by 100. Note the following: For resources that are VPCs, this is the percentage of IP address space in the VPC that's taken up by subnet CIDRs. For resources that are subnets, if the subnet has an IPv4 CIDR provisioned to it, this is the percentage of IPv4 address space in the subnet that's in use. If the subnet has an IPv6 CIDR provisioned to it, the percentage of IPv6 address space in use is not represented. The percentage of IPv6 address space in use cannot currently be calculated. For resources that are public IPv4 pools, this is the percentage of IP address space in the pool that's been allocated to Elastic IP addresses (EIPs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamId" /></td>
+    <td><CopyableCode code="ipam_id" /></td>
     <td><code>string</code></td>
     <td>The IPAM ID for an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPoolId" /></td>
+    <td><CopyableCode code="ipam_pool_id" /></td>
     <td><code>string</code></td>
     <td>The pool ID for an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamScopeId" /></td>
+    <td><CopyableCode code="ipam_scope_id" /></td>
     <td><code>string</code></td>
     <td>The scope ID for an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagementState" /></td>
+    <td><CopyableCode code="management_state" /></td>
     <td><code>string</code></td>
     <td>The management state of the resource. For more information about management states, see Monitor CIDR usage by resource in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverlapStatus" /></td>
+    <td><CopyableCode code="overlap_status" /></td>
     <td><code>string</code></td>
     <td>The overlap status of an IPAM resource. The overlap status tells you if the CIDR for a resource overlaps with another CIDR in the scope. For more information on overlap statuses, see Monitor CIDR usage by resource in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCidr" /></td>
+    <td><CopyableCode code="resource_cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR for an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account number of the owner of an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceRegion" /></td>
+    <td><CopyableCode code="resource_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region for an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>string</code></td>
     <td>The tags for an IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of IPAM resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a VPC.</td>
 </tr>
@@ -281,22 +281,22 @@ Returns resource CIDRs managed by IPAM in a given scope. If an IPAM is associate
 
 ```sql
 SELECT
-AvailabilityZoneId,
-ComplianceStatus,
-IpUsage,
-IpamId,
-IpamPoolId,
-IpamScopeId,
-ManagementState,
-OverlapStatus,
-ResourceCidr,
-ResourceId,
-ResourceName,
-ResourceOwnerId,
-ResourceRegion,
-ResourceTags,
-ResourceType,
-VpcId
+availability_zone_id,
+compliance_status,
+ip_usage,
+ipam_id,
+ipam_pool_id,
+ipam_scope_id,
+management_state,
+overlap_status,
+resource_cidr,
+resource_id,
+resource_name,
+resource_owner_id,
+resource_region,
+resource_tags,
+resource_type,
+vpc_id
 FROM aws.ec2.ipam_resource_cidrs
 WHERE IpamScopeId = '{{ IpamScopeId }}' -- required
 AND region = '{{ region }}' -- required
@@ -341,22 +341,22 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND DestinationIpamScopeId = '{{ DestinationIpamScopeId}}'
 RETURNING
-AvailabilityZoneId,
-ComplianceStatus,
-IpUsage,
-IpamId,
-IpamPoolId,
-IpamScopeId,
-ManagementState,
-OverlapStatus,
-ResourceCidr,
-ResourceId,
-ResourceName,
-ResourceOwnerId,
-ResourceRegion,
-ResourceTags,
-ResourceType,
-VpcId;
+availability_zone_id,
+compliance_status,
+ip_usage,
+ipam_id,
+ipam_pool_id,
+ipam_scope_id,
+management_state,
+overlap_status,
+resource_cidr,
+resource_id,
+resource_name,
+resource_owner_id,
+resource_region,
+resource_tags,
+resource_type,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

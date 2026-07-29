@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of investigation action being performed. This categorizes the investigation method or approach used in the case. (Evidence, Investigation, Summarization)</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>User feedback for this investigation result. This contains the user's assessment and comments about the quality and usefulness of the investigation findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="investigationId" /></td>
+    <td><CopyableCode code="investigation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this investigation action. This ID is used to track and reference the specific investigation throughout its lifecycle. (pattern: &lt;code&gt;inv-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>ISO 8601 timestamp of the most recent status update. This indicates when the investigation was last modified or when its status last changed.</td>
 </tr>
@@ -164,11 +164,11 @@ Investigation performed by an agent for a security incident...
 
 ```sql
 SELECT
-actionType,
+action_type,
 content,
 feedback,
-investigationId,
-lastUpdated,
+investigation_id,
+last_updated,
 status,
 title_
 FROM aws.security_ir.investigations

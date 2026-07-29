@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name the user gave the instance (Amazon_Linux_2023-1). (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addOns" /></td>
+    <td><CopyableCode code="add_ons" /></td>
     <td><code>array</code></td>
     <td>An array of objects representing the add-ons enabled on the instance.</td>
 </tr>
@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the instance (arn:aws:lightsail:us-east-2:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintId" /></td>
+    <td><CopyableCode code="blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID (amazon_linux_2023). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintName" /></td>
+    <td><CopyableCode code="blueprint_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the blueprint (Amazon Linux 2023). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle for the instance (micro_x_x). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the instance was created (1479734909.17) in Unix time format.</td>
 </tr>
@@ -91,17 +91,17 @@ The following fields are returned by `SELECT` queries:
     <td>The size of the vCPU and the amount of RAM for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the instance. The possible values are ipv4 for IPv4 only, ipv6 for IPv6 only, and dualstack for IPv4 and IPv6. (dualstack, ipv4, ipv6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv6Addresses" /></td>
+    <td><CopyableCode code="ipv_6_addresses" /></td>
     <td><code>array</code></td>
     <td>The IPv6 addresses of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isStaticIp" /></td>
+    <td><CopyableCode code="is_static_ip" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether this instance has a static IP assigned to it.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The region name and Availability Zone where the instance is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataOptions" /></td>
+    <td><CopyableCode code="metadata_options" /></td>
     <td><code>object</code></td>
     <td>The metadata options for the Amazon Lightsail instance.</td>
 </tr>
@@ -121,22 +121,22 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the public ports and monthly data transfer rates for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateIpAddress" /></td>
+    <td><CopyableCode code="private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The private IP address of the instance. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;1,3&#125;\.)&#123;3&#125;&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicIpAddress" /></td>
+    <td><CopyableCode code="public_ip_address" /></td>
     <td><code>string</code></td>
     <td>The public IP address of the instance. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;1,3&#125;\.)&#123;3&#125;&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource (usually Instance). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sshKeyName" /></td>
+    <td><CopyableCode code="ssh_key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SSH key being used to connect to the instance (LightsailDefaultKeyPair). (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status code and the state (running) for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name the user gave the instance (Amazon_Linux_2023-1). (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addOns" /></td>
+    <td><CopyableCode code="add_ons" /></td>
     <td><code>array</code></td>
     <td>An array of objects representing the add-ons enabled on the instance.</td>
 </tr>
@@ -190,22 +190,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the instance (arn:aws:lightsail:us-east-2:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintId" /></td>
+    <td><CopyableCode code="blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID (amazon_linux_2023). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintName" /></td>
+    <td><CopyableCode code="blueprint_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the blueprint (Amazon Linux 2023). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle for the instance (micro_x_x). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the instance was created (1479734909.17) in Unix time format.</td>
 </tr>
@@ -215,17 +215,17 @@ The following fields are returned by `SELECT` queries:
     <td>The size of the vCPU and the amount of RAM for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the instance. The possible values are ipv4 for IPv4 only, ipv6 for IPv6 only, and dualstack for IPv4 and IPv6. (dualstack, ipv4, ipv6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv6Addresses" /></td>
+    <td><CopyableCode code="ipv_6_addresses" /></td>
     <td><code>array</code></td>
     <td>The IPv6 addresses of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isStaticIp" /></td>
+    <td><CopyableCode code="is_static_ip" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether this instance has a static IP assigned to it.</td>
 </tr>
@@ -235,7 +235,7 @@ The following fields are returned by `SELECT` queries:
     <td>The region name and Availability Zone where the instance is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataOptions" /></td>
+    <td><CopyableCode code="metadata_options" /></td>
     <td><code>object</code></td>
     <td>The metadata options for the Amazon Lightsail instance.</td>
 </tr>
@@ -245,22 +245,22 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the public ports and monthly data transfer rates for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateIpAddress" /></td>
+    <td><CopyableCode code="private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The private IP address of the instance. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;1,3&#125;\.)&#123;3&#125;&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicIpAddress" /></td>
+    <td><CopyableCode code="public_ip_address" /></td>
     <td><code>string</code></td>
     <td>The public IP address of the instance. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;1,3&#125;\.)&#123;3&#125;&#91;0-9&#93;&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource (usually Instance). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sshKeyName" /></td>
+    <td><CopyableCode code="ssh_key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SSH key being used to connect to the instance (LightsailDefaultKeyPair). (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
@@ -270,7 +270,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status code and the state (running) for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -442,25 +442,25 @@ Returns information about a specific Amazon Lightsail instance, which is a virtu
 ```sql
 SELECT
 name,
-addOns,
+add_ons,
 arn,
-blueprintId,
-blueprintName,
-bundleId,
-createdAt,
+blueprint_id,
+blueprint_name,
+bundle_id,
+created_at,
 hardware,
-ipAddressType,
-ipv6Addresses,
-isStaticIp,
+ip_address_type,
+ipv_6_addresses,
+is_static_ip,
 location,
-metadataOptions,
+metadata_options,
 networking,
-privateIpAddress,
-publicIpAddress,
-resourceType,
-sshKeyName,
+private_ip_address,
+public_ip_address,
+resource_type,
+ssh_key_name,
 state,
-supportCode,
+support_code,
 tags,
 username
 FROM aws.lightsail.instances
@@ -475,25 +475,25 @@ Returns information about all Amazon Lightsail virtual private servers, or insta
 ```sql
 SELECT
 name,
-addOns,
+add_ons,
 arn,
-blueprintId,
-blueprintName,
-bundleId,
-createdAt,
+blueprint_id,
+blueprint_name,
+bundle_id,
+created_at,
 hardware,
-ipAddressType,
-ipv6Addresses,
-isStaticIp,
+ip_address_type,
+ipv_6_addresses,
+is_static_ip,
 location,
-metadataOptions,
+metadata_options,
 networking,
-privateIpAddress,
-publicIpAddress,
-resourceType,
-sshKeyName,
+private_ip_address,
+public_ip_address,
+resource_type,
+ssh_key_name,
 state,
-supportCode,
+support_code,
 tags,
 username
 FROM aws.lightsail.instances

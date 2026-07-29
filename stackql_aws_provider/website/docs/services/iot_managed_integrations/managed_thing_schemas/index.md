@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapabilityId" /></td>
+    <td><CopyableCode code="capability_id" /></td>
     <td><code>string</code></td>
     <td>The id of the capability for a managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9./&#93;+(@\d+\.\d+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The id of the endpoint for a managed thing. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>object</code></td>
     <td>The validation schema for one schema item associated with a managed thing.</td>
 </tr>
@@ -154,9 +154,9 @@ List schemas associated with a managed thing.
 
 ```sql
 SELECT
-CapabilityId,
-EndpointId,
-Schema
+capability_id,
+endpoint_id,
+schema
 FROM aws.iot_managed_integrations.managed_thing_schemas
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

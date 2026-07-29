@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>array</code></td>
     <td>The device endpoint.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the managed thing state for the given device Id.
 
 ```sql
 SELECT
-Endpoints
+endpoints
 FROM aws.iot_managed_integrations.managed_thing_states
 WHERE managed_thing_id = '{{ managed_thing_id }}' -- required
 AND region = '{{ region }}' -- required

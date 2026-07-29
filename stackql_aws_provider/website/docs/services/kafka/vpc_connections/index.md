@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Authentication" /></td>
+    <td><CopyableCode code="authentication" /></td>
     <td><code>string</code></td>
     <td>The authentication type of VPC connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the VPC connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>The list of security groups for the VPC connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of VPC connection. (CREATING, AVAILABLE, INACTIVE, DEACTIVATING, DELETING, FAILED, REJECTED, REJECTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>array</code></td>
     <td>The list of subnets for the VPC connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A map of tags for the VPC connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetClusterArn" /></td>
+    <td><CopyableCode code="target_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies an MSK cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectionArn" /></td>
+    <td><CopyableCode code="vpc_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies a MSK VPC connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC Id for the VPC connection.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Authentication" /></td>
+    <td><CopyableCode code="authentication" /></td>
     <td><code>string</code></td>
     <td>Information about the auth scheme of Vpc Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the Vpc Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>State of the Vpc Connection. (CREATING, AVAILABLE, INACTIVE, DEACTIVATING, DELETING, FAILED, REJECTED, REJECTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetClusterArn" /></td>
+    <td><CopyableCode code="target_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN that identifies the Cluster which the Vpc Connection belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectionArn" /></td>
+    <td><CopyableCode code="vpc_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN that identifies the Vpc Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The vpcId that belongs to the Vpc Connection.</td>
 </tr>
@@ -253,15 +253,15 @@ Returns a description of this MSK VPC connection.
 
 ```sql
 SELECT
-Authentication,
-CreationTime,
-SecurityGroups,
-State,
-Subnets,
-Tags,
-TargetClusterArn,
-VpcConnectionArn,
-VpcId
+authentication,
+creation_time,
+security_groups,
+state,
+subnets,
+tags,
+target_cluster_arn,
+vpc_connection_arn,
+vpc_id
 FROM aws.kafka.vpc_connections
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -274,12 +274,12 @@ Returns a list of all the VPC connections in this Region.
 
 ```sql
 SELECT
-Authentication,
-CreationTime,
-State,
-TargetClusterArn,
-VpcConnectionArn,
-VpcId
+authentication,
+creation_time,
+state,
+target_cluster_arn,
+vpc_connection_arn,
+vpc_id
 FROM aws.kafka.vpc_connections
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -322,14 +322,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Authentication,
-ClientSubnets,
-CreationTime,
-SecurityGroups,
-State,
-Tags,
-VpcConnectionArn,
-VpcId
+authentication,
+client_subnets,
+creation_time,
+security_groups,
+state,
+tags,
+vpc_connection_arn,
+vpc_id
 ;
 ```
 </TabItem>

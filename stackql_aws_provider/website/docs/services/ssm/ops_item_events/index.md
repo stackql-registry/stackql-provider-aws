@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user or resource that created the OpsItem event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the OpsItem event was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Detail" /></td>
+    <td><CopyableCode code="detail" /></td>
     <td><code>string</code></td>
     <td>Specific information about the OpsItem event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetailType" /></td>
+    <td><CopyableCode code="detail_type" /></td>
     <td><code>string</code></td>
     <td>The type of information provided as a detail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OpsItem event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemId" /></td>
+    <td><CopyableCode code="ops_item_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OpsItem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The source of the OpsItem event.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns a list of all OpsItem events in the current Amazon Web Services Region a
 
 ```sql
 SELECT
-CreatedBy,
-CreatedTime,
-Detail,
-DetailType,
-EventId,
-OpsItemId,
-Source
+created_by,
+created_time,
+detail,
+detail_type,
+event_id,
+ops_item_id,
+source
 FROM aws.ssm.ops_item_events
 WHERE region = '{{ region }}' -- required
 ;

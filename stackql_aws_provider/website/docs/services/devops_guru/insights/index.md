@@ -52,47 +52,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedResourceArns" /></td>
+    <td><CopyableCode code="associated_resource_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the Amazon Web Services resources that generated this insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the proactive insight. (pattern: &lt;code&gt;^&#91;\w-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightTimeRange" /></td>
+    <td><CopyableCode code="insight_time_range" /></td>
     <td><code>object</code></td>
     <td>A time ranged that specifies when the observed behavior in an insight started and ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the proactive insight. (pattern: &lt;code&gt;^&#91;\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictionTimeRange" /></td>
+    <td><CopyableCode code="prediction_time_range" /></td>
     <td><code>object</code></td>
     <td>The time range during which anomalous behavior in a proactive anomaly or an insight is expected to occur.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCollection" /></td>
+    <td><CopyableCode code="resource_collection" /></td>
     <td><code>object</code></td>
     <td>A collection of Amazon Web Services resources supported by DevOps Guru. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag key. You can specify up to 500 Amazon Web Services CloudFormation stacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCollection" /></td>
+    <td><CopyableCode code="service_collection" /></td>
     <td><code>object</code></td>
     <td>A collection of the names of Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the insight. For more information, see Understanding insight severities in the Amazon DevOps Guru User Guide. (LOW, MEDIUM, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the proactive insight. (ONGOING, CLOSED)</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProactiveInsight" /></td>
+    <td><CopyableCode code="proactive_insight" /></td>
     <td><code>object</code></td>
     <td>A ProactiveInsight object that represents the requested insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReactiveInsight" /></td>
+    <td><CopyableCode code="reactive_insight" /></td>
     <td><code>object</code></td>
     <td>A ReactiveInsight object that represents the requested insight.</td>
 </tr>
@@ -135,47 +135,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedResourceArns" /></td>
+    <td><CopyableCode code="associated_resource_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the Amazon Web Services resources that generated this insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the proactive insight. (pattern: &lt;code&gt;^&#91;\w-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightTimeRange" /></td>
+    <td><CopyableCode code="insight_time_range" /></td>
     <td><code>object</code></td>
     <td>A time ranged that specifies when the observed behavior in an insight started and ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the proactive insight. (pattern: &lt;code&gt;^&#91;\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictionTimeRange" /></td>
+    <td><CopyableCode code="prediction_time_range" /></td>
     <td><code>object</code></td>
     <td>The time range during which anomalous behavior in a proactive anomaly or an insight is expected to occur.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCollection" /></td>
+    <td><CopyableCode code="resource_collection" /></td>
     <td><code>object</code></td>
     <td>A collection of Amazon Web Services resources supported by DevOps Guru. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag key. You can specify up to 500 Amazon Web Services CloudFormation stacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCollection" /></td>
+    <td><CopyableCode code="service_collection" /></td>
     <td><code>object</code></td>
     <td>A collection of the names of Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the insight. For more information, see Understanding insight severities in the Amazon DevOps Guru User Guide. (LOW, MEDIUM, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the proactive insight. (ONGOING, CLOSED)</td>
 </tr>
@@ -277,15 +277,15 @@ Returns a list of insights in your Amazon Web Services account. You can specify 
 
 ```sql
 SELECT
-AssociatedResourceArns,
-Id,
-InsightTimeRange,
-Name,
-PredictionTimeRange,
-ResourceCollection,
-ServiceCollection,
-Severity,
-Status
+associated_resource_arns,
+id,
+insight_time_range,
+name,
+prediction_time_range,
+resource_collection,
+service_collection,
+severity,
+status
 FROM aws.devops_guru.insights
 WHERE region = '{{ region }}' -- required
 ;
@@ -297,8 +297,8 @@ Returns details about an insight that you specify using its ID.
 
 ```sql
 SELECT
-ProactiveInsight,
-ReactiveInsight
+proactive_insight,
+reactive_insight
 FROM aws.devops_guru.insights
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -312,15 +312,15 @@ Returns a list of insights in your Amazon Web Services account. You can specify 
 
 ```sql
 SELECT
-AssociatedResourceArns,
-Id,
-InsightTimeRange,
-Name,
-PredictionTimeRange,
-ResourceCollection,
-ServiceCollection,
-Severity,
-Status
+associated_resource_arns,
+id,
+insight_time_range,
+name,
+prediction_time_range,
+resource_collection,
+service_collection,
+severity,
+status
 FROM aws.devops_guru.insights
 WHERE region = '{{ region }}' -- required
 ;

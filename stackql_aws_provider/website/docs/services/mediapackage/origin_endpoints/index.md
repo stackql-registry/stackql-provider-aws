@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Authorization" /></td>
+    <td><CopyableCode code="authorization" /></td>
     <td><code>object</code></td>
     <td>CDN Authorization credentials</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Channel the OriginEndpoint is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmafPackage" /></td>
+    <td><CopyableCode code="cmaf_package" /></td>
     <td><code>object</code></td>
     <td>A Common Media Application Format (CMAF) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time the OriginEndpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashPackage" /></td>
+    <td><CopyableCode code="dash_package" /></td>
     <td><code>object</code></td>
     <td>A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A short text description of the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsPackage" /></td>
+    <td><CopyableCode code="hls_package" /></td>
     <td><code>object</code></td>
     <td>An HTTP Live Streaming (HLS) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestName" /></td>
+    <td><CopyableCode code="manifest_name" /></td>
     <td><code>string</code></td>
     <td>A short string appended to the end of the OriginEndpoint URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MssPackage" /></td>
+    <td><CopyableCode code="mss_package" /></td>
     <td><code>object</code></td>
     <td>A Microsoft Smooth Streaming (MSS) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Origination" /></td>
+    <td><CopyableCode code="origination" /></td>
     <td><code>string</code></td>
     <td>Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartoverWindowSeconds" /></td>
+    <td><CopyableCode code="startover_window_seconds" /></td>
     <td><code>integer</code></td>
     <td>Maximum duration (seconds) of content to retain for startover playback. If not specified, startover playback will be disabled for the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeDelaySeconds" /></td>
+    <td><CopyableCode code="time_delay_seconds" /></td>
     <td><code>integer</code></td>
     <td>Amount of delay (seconds) to enforce on the playback of live content. If not specified, there will be no time delay in effect for the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The URL of the packaged OriginEndpoint for consumption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Whitelist" /></td>
+    <td><CopyableCode code="whitelist" /></td>
     <td><code>array</code></td>
     <td>A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.</td>
 </tr>
@@ -150,87 +150,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Authorization" /></td>
+    <td><CopyableCode code="authorization" /></td>
     <td><code>object</code></td>
     <td>CDN Authorization credentials</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Channel the OriginEndpoint is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmafPackage" /></td>
+    <td><CopyableCode code="cmaf_package" /></td>
     <td><code>object</code></td>
     <td>A Common Media Application Format (CMAF) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time the OriginEndpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashPackage" /></td>
+    <td><CopyableCode code="dash_package" /></td>
     <td><code>object</code></td>
     <td>A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A short text description of the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsPackage" /></td>
+    <td><CopyableCode code="hls_package" /></td>
     <td><code>object</code></td>
     <td>An HTTP Live Streaming (HLS) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestName" /></td>
+    <td><CopyableCode code="manifest_name" /></td>
     <td><code>string</code></td>
     <td>A short string appended to the end of the OriginEndpoint URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MssPackage" /></td>
+    <td><CopyableCode code="mss_package" /></td>
     <td><code>object</code></td>
     <td>A Microsoft Smooth Streaming (MSS) packaging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Origination" /></td>
+    <td><CopyableCode code="origination" /></td>
     <td><code>string</code></td>
     <td>Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartoverWindowSeconds" /></td>
+    <td><CopyableCode code="startover_window_seconds" /></td>
     <td><code>integer</code></td>
     <td>Maximum duration (seconds) of content to retain for startover playback. If not specified, startover playback will be disabled for the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeDelaySeconds" /></td>
+    <td><CopyableCode code="time_delay_seconds" /></td>
     <td><code>integer</code></td>
     <td>Amount of delay (seconds) to enforce on the playback of live content. If not specified, there will be no time delay in effect for the OriginEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The URL of the packaged OriginEndpoint for consumption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Whitelist" /></td>
+    <td><CopyableCode code="whitelist" /></td>
     <td><code>array</code></td>
     <td>A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.</td>
 </tr>
@@ -348,23 +348,23 @@ Gets details about an existing OriginEndpoint.
 
 ```sql
 SELECT
-Arn,
-Authorization,
-ChannelId,
-CmafPackage,
-CreatedAt,
-DashPackage,
-Description,
-HlsPackage,
-Id,
-ManifestName,
-MssPackage,
-Origination,
-StartoverWindowSeconds,
-Tags,
-TimeDelaySeconds,
-Url,
-Whitelist
+arn,
+authorization,
+channel_id,
+cmaf_package,
+created_at,
+dash_package,
+description,
+hls_package,
+id,
+manifest_name,
+mss_package,
+origination,
+startover_window_seconds,
+tags,
+time_delay_seconds,
+url,
+whitelist
 FROM aws.mediapackage.origin_endpoints
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -377,23 +377,23 @@ Returns a collection of OriginEndpoint records.
 
 ```sql
 SELECT
-Arn,
-Authorization,
-ChannelId,
-CmafPackage,
-CreatedAt,
-DashPackage,
-Description,
-HlsPackage,
-Id,
-ManifestName,
-MssPackage,
-Origination,
-StartoverWindowSeconds,
-Tags,
-TimeDelaySeconds,
-Url,
-Whitelist
+arn,
+authorization,
+channel_id,
+cmaf_package,
+created_at,
+dash_package,
+description,
+hls_package,
+id,
+manifest_name,
+mss_package,
+origination,
+startover_window_seconds,
+tags,
+time_delay_seconds,
+url,
+whitelist
 FROM aws.mediapackage.origin_endpoints
 WHERE region = '{{ region }}' -- required
 AND channelId = '{{ channelId }}'
@@ -453,23 +453,23 @@ SELECT
 '{{ Whitelist }}',
 '{{ region }}'
 RETURNING
-Arn,
-Authorization,
-ChannelId,
-CmafPackage,
-CreatedAt,
-DashPackage,
-Description,
-HlsPackage,
-Id,
-ManifestName,
-MssPackage,
-Origination,
-StartoverWindowSeconds,
-Tags,
-TimeDelaySeconds,
-Url,
-Whitelist
+arn,
+authorization,
+channel_id,
+cmaf_package,
+created_at,
+dash_package,
+description,
+hls_package,
+id,
+manifest_name,
+mss_package,
+origination,
+startover_window_seconds,
+tags,
+time_delay_seconds,
+url,
+whitelist
 ;
 ```
 </TabItem>
@@ -670,23 +670,23 @@ WHERE
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-Authorization,
-ChannelId,
-CmafPackage,
-CreatedAt,
-DashPackage,
-Description,
-HlsPackage,
-Id,
-ManifestName,
-MssPackage,
-Origination,
-StartoverWindowSeconds,
-Tags,
-TimeDelaySeconds,
-Url,
-Whitelist;
+arn,
+authorization,
+channel_id,
+cmaf_package,
+created_at,
+dash_package,
+description,
+hls_package,
+id,
+manifest_name,
+mss_package,
+origination,
+startover_window_seconds,
+tags,
+time_delay_seconds,
+url,
+whitelist;
 ```
 </TabItem>
 </Tabs>

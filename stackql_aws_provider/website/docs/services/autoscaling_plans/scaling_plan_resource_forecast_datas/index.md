@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Datapoints" /></td>
+    <td><CopyableCode code="datapoints" /></td>
     <td><code>array</code></td>
     <td>The data points to return.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the forecast data for a scalable resource. Capacity forecasts are repr
 
 ```sql
 SELECT
-Datapoints
+datapoints
 FROM aws.autoscaling_plans.scaling_plan_resource_forecast_datas
 WHERE region = '{{ region }}' -- required
 ;

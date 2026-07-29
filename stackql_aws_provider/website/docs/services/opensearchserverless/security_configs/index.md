@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the security configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configVersion" /></td>
+    <td><CopyableCode code="config_version" /></td>
     <td><code>string</code></td>
     <td>The version of the security configuration. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z+/&#93;&#123;4&#125;)*((&#91;0-9a-zA-Z+/&#93;&#123;2&#125;==)|(&#91;0-9a-zA-Z+/&#93;&#123;3&#125;=))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date the configuration was created.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the security configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamFederationOptions" /></td>
+    <td><CopyableCode code="iam_federation_options" /></td>
     <td><code>object</code></td>
     <td>Describes IAM federation options in the form of a key-value map. Contains configuration details about how OpenSearch Serverless integrates with external identity providers through federation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamIdentityCenterOptions" /></td>
+    <td><CopyableCode code="iam_identity_center_options" /></td>
     <td><code>object</code></td>
     <td>Describes IAM Identity Center options in the form of a key-value map.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp of when the configuration was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="samlOptions" /></td>
+    <td><CopyableCode code="saml_options" /></td>
     <td><code>object</code></td>
     <td>SAML options for the security configuration in the form of a key-value map.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityConfigSummaries" /></td>
+    <td><CopyableCode code="security_config_summaries" /></td>
     <td><code>array</code></td>
     <td>Details about the security configurations in your account.</td>
 </tr>
@@ -214,13 +214,13 @@ Returns information about an OpenSearch Serverless security configuration. For m
 ```sql
 SELECT
 id,
-configVersion,
-createdDate,
+config_version,
+created_date,
 description,
-iamFederationOptions,
-iamIdentityCenterOptions,
-lastModifiedDate,
-samlOptions,
+iam_federation_options,
+iam_identity_center_options,
+last_modified_date,
+saml_options,
 type_
 FROM aws.opensearchserverless.security_configs
 WHERE region = '{{ region }}' -- required
@@ -233,8 +233,8 @@ Returns information about configured OpenSearch Serverless security configuratio
 
 ```sql
 SELECT
-nextToken,
-securityConfigSummaries
+next_token,
+security_config_summaries
 FROM aws.opensearchserverless.security_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -277,7 +277,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-securityConfigDetail
+security_config_detail
 ;
 ```
 </TabItem>
@@ -361,7 +361,7 @@ region = '{{ region }}' --required
 AND id = '{{ id }}' --required
 AND configVersion = '{{ configVersion }}' --required
 RETURNING
-securityConfigDetail;
+security_config_detail;
 ```
 </TabItem>
 </Tabs>

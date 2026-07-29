@@ -55,37 +55,37 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of this line item. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The availability zone associated with this line item, if applicable. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedCost" /></td>
+    <td><CopyableCode code="estimated_cost" /></td>
     <td><code>object</code></td>
     <td>The estimated cost for this line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedUsageQuantity" /></td>
+    <td><CopyableCode code="estimated_usage_quantity" /></td>
     <td><code>object</code></td>
     <td>The estimated usage quantity for this line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="historicalCost" /></td>
+    <td><CopyableCode code="historical_cost" /></td>
     <td><code>object</code></td>
     <td>The historical cost for this line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="historicalUsageQuantity" /></td>
+    <td><CopyableCode code="historical_usage_quantity" /></td>
     <td><code>object</code></td>
     <td>The historical usage quantity for this line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineItemId" /></td>
+    <td><CopyableCode code="line_item_id" /></td>
     <td><code>string</code></td>
     <td>The line item identifier from the original bill.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineItemType" /></td>
+    <td><CopyableCode code="line_item_type" /></td>
     <td><code>string</code></td>
     <td>The type of this line item (e.g., Usage, Tax, Credit).</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
     <td>The specific operation associated with this line item. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="payerAccountId" /></td>
+    <td><CopyableCode code="payer_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the payer for this line item. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="savingsPlanArns" /></td>
+    <td><CopyableCode code="savings_plan_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of any Savings Plans applied to this line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service code associated with this line item. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageAccountId" /></td>
+    <td><CopyableCode code="usage_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the usage for this line item. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>The type of usage for this line item. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -190,20 +190,20 @@ Lists the line items associated with a bill estimate.
 ```sql
 SELECT
 id,
-availabilityZone,
-estimatedCost,
-estimatedUsageQuantity,
-historicalCost,
-historicalUsageQuantity,
-lineItemId,
-lineItemType,
+availability_zone,
+estimated_cost,
+estimated_usage_quantity,
+historical_cost,
+historical_usage_quantity,
+line_item_id,
+line_item_type,
 location,
 operation,
-payerAccountId,
-savingsPlanArns,
-serviceCode,
-usageAccountId,
-usageType
+payer_account_id,
+savings_plan_arns,
+service_code,
+usage_account_id,
+usage_type
 FROM aws.bcm_pricing_calculator.bill_estimate_line_items
 WHERE region = '{{ region }}' -- required
 ;

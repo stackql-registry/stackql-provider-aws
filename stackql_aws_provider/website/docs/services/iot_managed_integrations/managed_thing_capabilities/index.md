@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>string</code></td>
     <td>The capabilities of the device such as light bulb. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s'\x&#123;0022&#125;,.:\\\/&#123;$&#125;\&#91;\&#93;=_\-\+&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapabilityReport" /></td>
+    <td><CopyableCode code="capability_report" /></td>
     <td><code>object</code></td>
     <td>Report of all capabilities supported by the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The id of the device. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -134,9 +134,9 @@ Get the capabilities for a managed thing using the device ID.
 
 ```sql
 SELECT
-Capabilities,
-CapabilityReport,
-ManagedThingId
+capabilities,
+capability_report,
+managed_thing_id
 FROM aws.iot_managed_integrations.managed_thing_capabilities
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

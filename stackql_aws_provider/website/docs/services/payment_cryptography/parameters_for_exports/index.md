@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExportToken" /></td>
+    <td><CopyableCode code="export_token" /></td>
     <td><code>string</code></td>
     <td>The export token to initiate key export from Amazon Web Services Payment Cryptography. The export token expires after 30 days. You can use the same export token to export multiple keys from the same service account. (pattern: &lt;code&gt;(export-token-&#91;0-9a-zA-Z&#93;&#123;16,64&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParametersValidUntilTimestamp" /></td>
+    <td><CopyableCode code="parameters_valid_until_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The validity period of the export token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningKeyAlgorithm" /></td>
+    <td><CopyableCode code="signing_key_algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm of the signing key certificate for use in TR-34 key block generation. RSA_2048 is the only signing key algorithm allowed. (TDES_2KEY, TDES_3KEY, AES_128, AES_192, AES_256, HMAC_SHA256, HMAC_SHA384, HMAC_SHA512, HMAC_SHA224, RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningKeyCertificate" /></td>
+    <td><CopyableCode code="signing_key_certificate" /></td>
     <td><code>string</code></td>
     <td>The signing key certificate in PEM format (base64 encoded) of the public key for signature within the TR-34 key block. The certificate expires after 30 days. (pattern: &lt;code&gt;&#91;^\&#91;;\&#93;&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningKeyCertificateChain" /></td>
+    <td><CopyableCode code="signing_key_certificate_chain" /></td>
     <td><code>string</code></td>
     <td>The root certificate authority (CA) that signed the signing key certificate in PEM format (base64 encoded). (pattern: &lt;code&gt;&#91;^\&#91;;\&#93;&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Gets the export token and the signing key certificate to initiate a TR-34 key ex
 
 ```sql
 SELECT
-ExportToken,
-ParametersValidUntilTimestamp,
-SigningKeyAlgorithm,
-SigningKeyCertificate,
-SigningKeyCertificateChain
+export_token,
+parameters_valid_until_timestamp,
+signing_key_algorithm,
+signing_key_certificate,
+signing_key_certificate_chain
 FROM aws.payment_cryptography.parameters_for_exports
 WHERE region = '{{ region }}' -- required
 ;

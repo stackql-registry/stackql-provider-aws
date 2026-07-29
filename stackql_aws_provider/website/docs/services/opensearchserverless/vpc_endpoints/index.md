@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="vpcEndpointDetails" /></td>
+    <td><CopyableCode code="vpc_endpoint_details" /></td>
     <td><code>array</code></td>
     <td>Details about the specified VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointErrorDetails" /></td>
+    <td><CopyableCode code="vpc_endpoint_error_details" /></td>
     <td><code>array</code></td>
     <td>Error information for a failed request.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointSummaries" /></td>
+    <td><CopyableCode code="vpc_endpoint_summaries" /></td>
     <td><code>array</code></td>
     <td>Details about each VPC endpoint, including the name and current status.</td>
 </tr>
@@ -178,8 +178,8 @@ Returns attributes for one or more VPC endpoints associated with the current acc
 
 ```sql
 SELECT
-vpcEndpointDetails,
-vpcEndpointErrorDetails
+vpc_endpoint_details,
+vpc_endpoint_error_details
 FROM aws.opensearchserverless.vpc_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,8 +191,8 @@ Returns the OpenSearch Serverless-managed interface VPC endpoints associated wit
 
 ```sql
 SELECT
-nextToken,
-vpcEndpointSummaries
+next_token,
+vpc_endpoint_summaries
 FROM aws.opensearchserverless.vpc_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,7 +231,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-createVpcEndpointDetail
+create_vpc_endpoint_detail
 ;
 ```
 </TabItem>
@@ -296,7 +296,7 @@ WHERE
 region = '{{ region }}' --required
 AND id = '{{ id }}' --required
 RETURNING
-UpdateVpcEndpointDetail;
+update_vpc_endpoint_detail;
 ```
 </TabItem>
 </Tabs>

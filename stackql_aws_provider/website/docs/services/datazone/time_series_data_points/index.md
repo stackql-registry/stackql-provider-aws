@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain that houses the asset data point that you want to get. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityId" /></td>
+    <td><CopyableCode code="entity_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset for which you want to get the data point. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityType" /></td>
+    <td><CopyableCode code="entity_type" /></td>
     <td><code>string</code></td>
     <td>The type of the asset for which you want to get the data point. (ASSET, LISTING)</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The time series data points form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formName" /></td>
+    <td><CopyableCode code="form_name" /></td>
     <td><code>string</code></td>
     <td>The name of the time series form that houses the data point that you want to get.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the time series data points summary form. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;0,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentSummary" /></td>
+    <td><CopyableCode code="content_summary" /></td>
     <td><code>string</code></td>
     <td>The content of the summary of the time series data points form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formName" /></td>
+    <td><CopyableCode code="form_name" /></td>
     <td><code>string</code></td>
     <td>The name of the time series data points summary form.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp of the time series data points summary form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeIdentifier" /></td>
+    <td><CopyableCode code="type_identifier" /></td>
     <td><code>string</code></td>
     <td>The type ID of the time series data points summary form. (pattern: &lt;code&gt;(?!\.)&#91;\w\.&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeRevision" /></td>
+    <td><CopyableCode code="type_revision" /></td>
     <td><code>string</code></td>
     <td>The type revision of the time series data points summary form.</td>
 </tr>
@@ -256,11 +256,11 @@ Gets the existing data point for the asset.
 
 ```sql
 SELECT
-domainId,
-entityId,
-entityType,
+domain_id,
+entity_id,
+entity_type,
 form,
-formName
+form_name
 FROM aws.datazone.time_series_data_points
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND entity_identifier = '{{ entity_identifier }}' -- required
@@ -278,11 +278,11 @@ Lists time series data points.
 ```sql
 SELECT
 id,
-contentSummary,
-formName,
+content_summary,
+form_name,
 timestamp,
-typeIdentifier,
-typeRevision
+type_identifier,
+type_revision
 FROM aws.datazone.time_series_data_points
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND entity_identifier = '{{ entity_identifier }}' -- required

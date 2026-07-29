@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessType" /></td>
+    <td><CopyableCode code="access_type" /></td>
     <td><code>string</code></td>
     <td>The access type setting for connections (e.g., open, restricted, invitation-only). (ALLOW_ALL, DENY_ALL, ALLOW_BY_DEFAULT_DENY_SOME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection preferences. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:partnercentral:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:catalog/&#91;a-zA-Z&#93;+/connection-preferences&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier for the partner account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExcludedParticipantIds" /></td>
+    <td><CopyableCode code="excluded_participant_ids" /></td>
     <td><code>array</code></td>
     <td>A list of participant IDs that are excluded from connection requests or interactions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number of the connection preferences for optimistic locking.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the connection preferences were last updated.</td>
 </tr>
@@ -151,12 +151,12 @@ Retrieves the connection preferences for a partner account, including access set
 
 ```sql
 SELECT
-AccessType,
-Arn,
-Catalog,
-ExcludedParticipantIds,
-Revision,
-UpdatedAt
+access_type,
+arn,
+catalog,
+excluded_participant_ids,
+revision,
+updated_at
 FROM aws.partnercentral_account.connection_preferences
 WHERE region = '{{ region }}' -- required
 ;
@@ -188,12 +188,12 @@ WHERE
 region = '{{ region }}' --required
 AND AccessType = '{{ AccessType }}' --required
 RETURNING
-AccessType,
-Arn,
-Catalog,
-ExcludedParticipantIds,
-Revision,
-UpdatedAt;
+access_type,
+arn,
+catalog,
+excluded_participant_ids,
+revision,
+updated_at;
 ```
 </TabItem>
 </Tabs>

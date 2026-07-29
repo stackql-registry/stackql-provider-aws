@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="codeReviews" /></td>
+    <td><CopyableCode code="code_reviews" /></td>
     <td><code>array</code></td>
     <td>The list of code reviews that were found.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notFound" /></td>
+    <td><CopyableCode code="not_found" /></td>
     <td><code>array</code></td>
     <td>List of code review IDs.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent space that contains the code review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeReviewId" /></td>
+    <td><CopyableCode code="code_review_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the code review was created, in UTC format.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The title of the code review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the code review was last updated, in UTC format.</td>
 </tr>
@@ -207,8 +207,8 @@ Retrieves information about one or more code reviews in an agent space.
 
 ```sql
 SELECT
-codeReviews,
-notFound
+code_reviews,
+not_found
 FROM aws.securityagent.code_reviews
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,11 +220,11 @@ Returns a paginated list of code review summaries for the specified agent space.
 
 ```sql
 SELECT
-agentSpaceId,
-codeReviewId,
-createdAt,
+agent_space_id,
+code_review_id,
+created_at,
 title_,
-updatedAt
+updated_at
 FROM aws.securityagent.code_reviews
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,15 +265,15 @@ SELECT
 '{{ codeRemediationStrategy }}',
 '{{ region }}'
 RETURNING
-agentSpaceId,
+agent_space_id,
 assets,
-codeRemediationStrategy,
-codeReviewId,
-createdAt,
-logConfig,
-serviceRole,
+code_remediation_strategy,
+code_review_id,
+created_at,
+log_config,
+service_role,
 title_,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -358,15 +358,15 @@ region = '{{ region }}' --required
 AND codeReviewId = '{{ codeReviewId }}' --required
 AND agentSpaceId = '{{ agentSpaceId }}' --required
 RETURNING
-agentSpaceId,
+agent_space_id,
 assets,
-codeRemediationStrategy,
-codeReviewId,
-createdAt,
-logConfig,
-serviceRole,
+code_remediation_strategy,
+code_review_id,
+created_at,
+log_config,
+service_role,
 title_,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

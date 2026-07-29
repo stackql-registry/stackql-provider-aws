@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Established" /></td>
+    <td><CopyableCode code="established" /></td>
     <td><code>string</code></td>
     <td>The last established policy for the Multi-Region Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Proposed" /></td>
+    <td><CopyableCode code="proposed" /></td>
     <td><code>string</code></td>
     <td>The proposed policy for the Multi-Region Access Point.</td>
 </tr>
@@ -141,8 +141,8 @@ This operation is not supported by directory buckets. Returns the access control
 
 ```sql
 SELECT
-Established,
-Proposed
+established,
+proposed
 FROM aws.s3control.multi_region_access_point_policies
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required
@@ -176,7 +176,7 @@ AND region = '{{ region }}' --required
 AND ClientToken = '{{ ClientToken }}' --required
 AND Details = '{{ Details }}' --required
 RETURNING
-RequestTokenARN;
+request_token_arn;
 ```
 </TabItem>
 </Tabs>

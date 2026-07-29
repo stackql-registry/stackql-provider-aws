@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the definition was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersion" /></td>
+    <td><CopyableCode code="latest_version" /></td>
     <td><code>string</code></td>
     <td>The ID of the latest version associated with the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersionArn" /></td>
+    <td><CopyableCode code="latest_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the latest version associated with the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the definition.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the definition was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersion" /></td>
+    <td><CopyableCode code="latest_version" /></td>
     <td><code>string</code></td>
     <td>The ID of the latest version associated with the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersionArn" /></td>
+    <td><CopyableCode code="latest_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the latest version associated with the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tag(s) attached to the resource arn.</td>
 </tr>
@@ -258,13 +258,13 @@ Retrieves information about a subscription definition.
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Id,
-LastUpdatedTimestamp,
-LatestVersion,
-LatestVersionArn,
-Name,
+arn,
+creation_timestamp,
+id,
+last_updated_timestamp,
+latest_version,
+latest_version_arn,
+name,
 tags
 FROM aws.greengrass.subscription_definitions
 WHERE subscription_definition_id = '{{ subscription_definition_id }}' -- required
@@ -278,14 +278,14 @@ Retrieves a list of subscription definitions.
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Id,
-LastUpdatedTimestamp,
-LatestVersion,
-LatestVersionArn,
-Name,
-Tags
+arn,
+creation_timestamp,
+id,
+last_updated_timestamp,
+latest_version,
+latest_version_arn,
+name,
+tags
 FROM aws.greengrass.subscription_definitions
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -324,13 +324,13 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn,
-CreationTimestamp,
-Id,
-LastUpdatedTimestamp,
-LatestVersion,
-LatestVersionArn,
-Name
+arn,
+creation_timestamp,
+id,
+last_updated_timestamp,
+latest_version,
+latest_version_arn,
+name
 ;
 ```
 </TabItem>

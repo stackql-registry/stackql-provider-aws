@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the step group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the step group was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the step group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the step group was last modified.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the step group. (AWAITING_DEPENDENCIES, READY, IN_PROGRESS, COMPLETED, FAILED, PAUSED, PAUSING, USER_ATTENTION_REQUIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the template.</td>
 </tr>
@@ -229,13 +229,13 @@ Get a step group in a template.
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
-lastModifiedTime,
+last_modified_time,
 next,
 previous,
 status,
-templateId,
+template_id,
 tools
 FROM aws.migrationhuborchestrator.template_step_groups
 WHERE template_id = '{{ template_id }}' -- required

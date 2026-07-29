@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time this resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SemanticVersion" /></td>
+    <td><CopyableCode code="semantic_version" /></td>
     <td><code>string</code></td>
     <td>The semantic version of the application: https:​//semver.org/</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceCodeUrl" /></td>
+    <td><CopyableCode code="source_code_url" /></td>
     <td><code>string</code></td>
     <td>A link to a public repository for the source code of your application, for example the URL of a specific GitHub commit.</td>
 </tr>
@@ -161,10 +161,10 @@ Lists versions for the specified application.
 
 ```sql
 SELECT
-ApplicationId,
-CreationTime,
-SemanticVersion,
-SourceCodeUrl
+application_id,
+creation_time,
+semantic_version,
+source_code_url
 FROM aws.serverlessrepo.application_versions
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -208,15 +208,15 @@ SELECT
 '{{ semantic_version }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-CreationTime,
-ParameterDefinitions,
-RequiredCapabilities,
-ResourcesSupported,
-SemanticVersion,
-SourceCodeArchiveUrl,
-SourceCodeUrl,
-TemplateUrl
+application_id,
+creation_time,
+parameter_definitions,
+required_capabilities,
+resources_supported,
+semantic_version,
+source_code_archive_url,
+source_code_url,
+template_url
 ;
 ```
 </TabItem>

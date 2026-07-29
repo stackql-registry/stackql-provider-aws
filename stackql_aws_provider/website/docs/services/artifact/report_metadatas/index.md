@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>Name for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="acceptanceType" /></td>
+    <td><CopyableCode code="acceptance_type" /></td>
     <td><code>string</code></td>
     <td>Acceptance type for report. (PASSTHROUGH, EXPLICIT)</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
     <td>Category for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="companyName" /></td>
+    <td><CopyableCode code="company_name" /></td>
     <td><code>string</code></td>
     <td>Associated company name for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating when the report resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating when the report resource was deleted.</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
     <td>Description for the report resource. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating when the report resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="periodEnd" /></td>
+    <td><CopyableCode code="period_end" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating the report resource effective end.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="periodStart" /></td>
+    <td><CopyableCode code="period_start" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating the report resource effective start.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productName" /></td>
+    <td><CopyableCode code="product_name" /></td>
     <td><code>string</code></td>
     <td>Associated product name for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sequenceNumber" /></td>
+    <td><CopyableCode code="sequence_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>Sequence number to enforce optimistic locking.</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>Current state of the report resource (PUBLISHED, UNPUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The message associated with the current upload state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="termArn" /></td>
+    <td><CopyableCode code="term_arn" /></td>
     <td><code>string</code></td>
     <td>Unique resource ARN for term resource. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadState" /></td>
+    <td><CopyableCode code="upload_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the document upload. (PROCESSING, COMPLETE, FAILED, FAULT)</td>
 </tr>
@@ -226,23 +226,23 @@ Get the metadata for a single report.
 SELECT
 id,
 name,
-acceptanceType,
+acceptance_type,
 arn,
 category,
-companyName,
-createdAt,
-deletedAt,
+company_name,
+created_at,
+deleted_at,
 description,
-lastModifiedAt,
-periodEnd,
-periodStart,
-productName,
-sequenceNumber,
+last_modified_at,
+period_end,
+period_start,
+product_name,
+sequence_number,
 series,
 state,
-statusMessage,
-termArn,
-uploadState,
+status_message,
+term_arn,
+upload_state,
 version
 FROM aws.artifact.report_metadatas
 WHERE reportId = '{{ reportId }}' -- required

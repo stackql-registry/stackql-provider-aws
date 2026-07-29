@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleActionSettings" /></td>
+    <td><CopyableCode code="schedule_action_settings" /></td>
     <td><code>object</code></td>
     <td>Settings for this schedule action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleActionStartSettings" /></td>
+    <td><CopyableCode code="schedule_action_start_settings" /></td>
     <td><code>object</code></td>
     <td>The time for the action to start in the channel.</td>
 </tr>
@@ -151,9 +151,9 @@ Get a channel schedule
 
 ```sql
 SELECT
-ActionName,
-ScheduleActionSettings,
-ScheduleActionStartSettings
+action_name,
+schedule_action_settings,
+schedule_action_start_settings
 FROM aws.medialive.schedules
 WHERE channel_id = '{{ channel_id }}' -- required
 AND region = '{{ region }}' -- required

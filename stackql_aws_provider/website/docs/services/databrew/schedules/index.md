@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the schedule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who created the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CronExpression" /></td>
+    <td><CopyableCode code="cron_expression" /></td>
     <td><code>string</code></td>
     <td>The date or dates and time or times when the jobs are to be run for the schedule. For more information, see Cron expressions in the Glue DataBrew Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobNames" /></td>
+    <td><CopyableCode code="job_names" /></td>
     <td><code>array</code></td>
     <td>The name or names of one or more jobs to be run by using the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who last modified the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the schedule was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags associated with this schedule.</td>
 </tr>
@@ -110,52 +110,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the schedule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CronExpression" /></td>
+    <td><CopyableCode code="cron_expression" /></td>
     <td><code>string</code></td>
     <td>The dates and times when the job is to run. For more information, see Cron expressions in the Glue DataBrew Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobNames" /></td>
+    <td><CopyableCode code="job_names" /></td>
     <td><code>array</code></td>
     <td>A list of jobs to be run, according to the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last modified the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the schedule was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags that have been applied to the schedule.</td>
 </tr>
@@ -273,15 +273,15 @@ Returns the definition of a specific DataBrew schedule.
 
 ```sql
 SELECT
-CreateDate,
-CreatedBy,
-CronExpression,
-JobNames,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-ResourceArn,
-Tags
+create_date,
+created_by,
+cron_expression,
+job_names,
+last_modified_by,
+last_modified_date,
+name,
+resource_arn,
+tags
 FROM aws.databrew.schedules
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -294,16 +294,16 @@ Lists the DataBrew schedules that are defined.
 
 ```sql
 SELECT
-AccountId,
-CreateDate,
-CreatedBy,
-CronExpression,
-JobNames,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-ResourceArn,
-Tags
+account_id,
+create_date,
+created_by,
+cron_expression,
+job_names,
+last_modified_by,
+last_modified_date,
+name,
+resource_arn,
+tags
 FROM aws.databrew.schedules
 WHERE region = '{{ region }}' -- required
 AND jobName = '{{ jobName }}'
@@ -343,7 +343,7 @@ SELECT
 '{{ Name }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -392,7 +392,7 @@ name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 AND CronExpression = '{{ CronExpression }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

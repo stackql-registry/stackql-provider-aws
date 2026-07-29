@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="blueprintArn" /></td>
+    <td><CopyableCode code="blueprint_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a Blueprint (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:(aws|&#91;0-9&#93;&#123;12&#125;):blueprint/(bedrock-data-automation-public-&#91;a-zA-Z0-9-_&#93;&#123;1,30&#125;|&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintName" /></td>
+    <td><CopyableCode code="blueprint_name" /></td>
     <td><code>string</code></td>
     <td>Name of the Blueprint (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintStage" /></td>
+    <td><CopyableCode code="blueprint_stage" /></td>
     <td><code>string</code></td>
     <td>Stage of the Blueprint (DEVELOPMENT, LIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintVersion" /></td>
+    <td><CopyableCode code="blueprint_version" /></td>
     <td><code>string</code></td>
     <td>Blueprint Version (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsEncryptionContext" /></td>
+    <td><CopyableCode code="kms_encryption_context" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>KMS Key Identifier (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="optimizationSamples" /></td>
+    <td><CopyableCode code="optimization_samples" /></td>
     <td><code>array</code></td>
     <td>List of Blueprint Optimization Samples</td>
 </tr>
 <tr>
-    <td><CopyableCode code="optimizationTime" /></td>
+    <td><CopyableCode code="optimization_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
@@ -125,32 +125,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="blueprintArn" /></td>
+    <td><CopyableCode code="blueprint_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a Blueprint (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:(aws|&#91;0-9&#93;&#123;12&#125;):blueprint/(bedrock-data-automation-public-&#91;a-zA-Z0-9-_&#93;&#123;1,30&#125;|&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintName" /></td>
+    <td><CopyableCode code="blueprint_name" /></td>
     <td><code>string</code></td>
     <td>Name of the Blueprint (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintStage" /></td>
+    <td><CopyableCode code="blueprint_stage" /></td>
     <td><code>string</code></td>
     <td>Stage of the Blueprint (DEVELOPMENT, LIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintVersion" /></td>
+    <td><CopyableCode code="blueprint_version" /></td>
     <td><code>string</code></td>
     <td>Blueprint Version (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
@@ -279,16 +279,16 @@ Gets an existing Amazon Bedrock Data Automation Blueprint
 
 ```sql
 SELECT
-blueprintArn,
-blueprintName,
-blueprintStage,
-blueprintVersion,
-creationTime,
-kmsEncryptionContext,
-kmsKeyId,
-lastModifiedTime,
-optimizationSamples,
-optimizationTime,
+blueprint_arn,
+blueprint_name,
+blueprint_stage,
+blueprint_version,
+creation_time,
+kms_encryption_context,
+kms_key_id,
+last_modified_time,
+optimization_samples,
+optimization_time,
 schema,
 type_
 FROM aws.bedrock_data_automation.blueprints
@@ -303,12 +303,12 @@ Lists all existing Amazon Bedrock Data Automation Blueprints
 
 ```sql
 SELECT
-blueprintArn,
-blueprintName,
-blueprintStage,
-blueprintVersion,
-creationTime,
-lastModifiedTime
+blueprint_arn,
+blueprint_name,
+blueprint_stage,
+blueprint_version,
+creation_time,
+last_modified_time
 FROM aws.bedrock_data_automation.blueprints
 WHERE region = '{{ region }}' -- required
 ;

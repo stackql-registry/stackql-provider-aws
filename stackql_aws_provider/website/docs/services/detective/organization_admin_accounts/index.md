@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Administrators" /></td>
+    <td><CopyableCode code="administrators" /></td>
     <td><code>array</code></td>
     <td>The list of Detective administrator accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more accounts remaining in the results, then this is the pagination token to use to request the next page of accounts.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns information about the Detective administrator account for an organizatio
 
 ```sql
 SELECT
-Administrators,
-NextToken
+administrators,
+next_token
 FROM aws.detective.organization_admin_accounts
 WHERE region = '{{ region }}' -- required
 ;

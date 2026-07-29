@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUsedDate" /></td>
+    <td><CopyableCode code="last_used_date" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a cost allocation tag. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagKey" /></td>
+    <td><CopyableCode code="tag_key" /></td>
     <td><code>string</code></td>
     <td>The key for the cost allocation tag. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of cost allocation tag. You can use AWSGenerated or UserDefined type tags. AWSGenerated type tags are tags that Amazon Web Services defines and applies to support Amazon Web Services resources for cost allocation purposes. UserDefined type tags are tags that you define, create, and apply to resources. (AWSGenerated, UserDefined)</td>
 </tr>
@@ -153,11 +153,11 @@ Get a list of cost allocation tags. All inputs in the API are optional and serve
 
 ```sql
 SELECT
-LastUpdatedDate,
-LastUsedDate,
-Status,
-TagKey,
-Type
+last_updated_date,
+last_used_date,
+status,
+tag_key,
+type
 FROM aws.ce.cost_allocation_tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -186,7 +186,7 @@ WHERE
 region = '{{ region }}' --required
 AND CostAllocationTagsStatus = '{{ CostAllocationTagsStatus }}' --required
 RETURNING
-Errors;
+errors;
 ```
 </TabItem>
 </Tabs>

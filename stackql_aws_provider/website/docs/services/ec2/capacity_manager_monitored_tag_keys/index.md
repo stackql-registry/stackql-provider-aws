@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityManagerProvided" /></td>
+    <td><CopyableCode code="capacity_manager_provided" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this tag key is provided by Capacity Manager by default, rather than being user-activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EarliestDatapointTimestamp" /></td>
+    <td><CopyableCode code="earliest_datapoint_timestamp" /></td>
     <td><code>string</code></td>
     <td>The earliest timestamp from which tag data is available for queries, in UTC ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the monitored tag key. Valid values are activating, activated, deactivating, and suspended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message providing additional details about the current status of the monitored tag key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagKey" /></td>
+    <td><CopyableCode code="tag_key" /></td>
     <td><code>string</code></td>
     <td>The tag key being monitored.</td>
 </tr>
@@ -176,11 +176,11 @@ Retrieves the tag keys that are currently being monitored by EC2 Capacity Manage
 
 ```sql
 SELECT
-CapacityManagerProvided,
-EarliestDatapointTimestamp,
-Status,
-StatusMessage,
-TagKey
+capacity_manager_provided,
+earliest_datapoint_timestamp,
+status,
+status_message,
+tag_key
 FROM aws.ec2.capacity_manager_monitored_tag_keys
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -215,7 +215,7 @@ AND DeactivateTagKey = '{{ DeactivateTagKey}}'
 AND DryRun = {{ DryRun}}
 AND ClientToken = '{{ ClientToken}}'
 RETURNING
-CapacityManagerTagKeys;
+capacity_manager_tag_keys;
 ```
 </TabItem>
 </Tabs>

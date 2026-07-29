@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token to use to request the next page of results. Otherwise, this parameter is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>An array of automation rules.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns a list of automation rules and metadata for the calling account.
 
 ```sql
 SELECT
-NextToken,
-Rules
+next_token,
+rules
 FROM aws.securityhub.automation_rules_v2s
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

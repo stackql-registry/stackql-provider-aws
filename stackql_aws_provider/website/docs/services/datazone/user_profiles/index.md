@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The user profile details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>the identifier of the Amazon DataZone domain of which you want to get the user profile. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The details of the user profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain of the user profile. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -223,7 +223,7 @@ Gets a user profile in Amazon DataZone.
 SELECT
 id,
 details,
-domainId,
+domain_id,
 status,
 type_
 FROM aws.datazone.user_profiles
@@ -243,7 +243,7 @@ Searches user profiles in Amazon DataZone.
 SELECT
 id,
 details,
-domainId,
+domain_id,
 status,
 type_
 FROM aws.datazone.user_profiles
@@ -287,7 +287,7 @@ SELECT
 RETURNING
 id,
 details,
-domainId,
+domain_id,
 status,
 type_
 ;
@@ -345,7 +345,7 @@ AND status = '{{ status }}' --required
 RETURNING
 id,
 details,
-domainId,
+domain_id,
 status,
 type_;
 ```

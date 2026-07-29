@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the associated resource. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:(customlineitem|billinggroup)/)?&#91;a-zA-Z0-9&#93;&#123;10,12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndBillingPeriod" /></td>
+    <td><CopyableCode code="end_billing_period" /></td>
     <td><code>string</code></td>
     <td>The end billing period of the associated resource. (pattern: &lt;code&gt;\d&#123;4&#125;-(0?&#91;1-9&#93;|1&#91;012&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Relationship" /></td>
+    <td><CopyableCode code="relationship" /></td>
     <td><code>string</code></td>
     <td>The type of relationship between the custom line item and the associated resource. (PARENT, CHILD)</td>
 </tr>
@@ -129,9 +129,9 @@ List the resources that are associated to a custom line item.
 
 ```sql
 SELECT
-Arn,
-EndBillingPeriod,
-Relationship
+arn,
+end_billing_period,
+relationship
 FROM aws.billingconductor.resources_associated_to_custom_line_items
 WHERE region = '{{ region }}' -- required
 ;

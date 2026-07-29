@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="conditionResultEvent" /></td>
+    <td><CopyableCode code="condition_result_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about a condition evaluation result during the flow execution. This event is generated when a condition node in the flow evaluates its conditions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowFailureEvent" /></td>
+    <td><CopyableCode code="flow_failure_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about a failure that occurred at the flow level during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowInputEvent" /></td>
+    <td><CopyableCode code="flow_input_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about the inputs provided to the flow at the start of execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowOutputEvent" /></td>
+    <td><CopyableCode code="flow_output_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about the outputs produced by the flow at the end of execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeActionEvent" /></td>
+    <td><CopyableCode code="node_action_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about an action (operation) called by a node during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeDependencyEvent" /></td>
+    <td><CopyableCode code="node_dependency_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about an internal trace of a specific node during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeFailureEvent" /></td>
+    <td><CopyableCode code="node_failure_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about a failure that occurred at a specific node during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeInputEvent" /></td>
+    <td><CopyableCode code="node_input_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about the inputs provided to a specific node during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeOutputEvent" /></td>
+    <td><CopyableCode code="node_output_event" /></td>
     <td><code>object</code></td>
     <td>Contains information about the outputs produced by a specific node during execution.</td>
 </tr>
@@ -189,15 +189,15 @@ Lists events that occurred during a flow execution. Events provide detailed info
 
 ```sql
 SELECT
-conditionResultEvent,
-flowFailureEvent,
-flowInputEvent,
-flowOutputEvent,
-nodeActionEvent,
-nodeDependencyEvent,
-nodeFailureEvent,
-nodeInputEvent,
-nodeOutputEvent
+condition_result_event,
+flow_failure_event,
+flow_input_event,
+flow_output_event,
+node_action_event,
+node_dependency_event,
+node_failure_event,
+node_input_event,
+node_output_event
 FROM aws.bedrock_agent_runtime.flow_execution_events
 WHERE eventType = '{{ eventType }}' -- required
 AND execution_identifier = '{{ execution_identifier }}' -- required

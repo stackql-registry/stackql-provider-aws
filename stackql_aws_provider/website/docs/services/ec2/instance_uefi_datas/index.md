@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance from which to retrieve the UEFI data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UefiData" /></td>
+    <td><CopyableCode code="uefi_data" /></td>
     <td><code>string</code></td>
     <td>Base64 representation of the non-volatile UEFI variable store.</td>
 </tr>
@@ -134,8 +134,8 @@ A binary representation of the UEFI variable store. Only non-volatile variables 
 
 ```sql
 SELECT
-InstanceId,
-UefiData
+instance_id,
+uefi_data
 FROM aws.ec2.instance_uefi_datas
 WHERE InstanceId = '{{ InstanceId }}' -- required
 AND region = '{{ region }}' -- required

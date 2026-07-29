@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>A string included in the request to help make sure that the request can't be replayed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>A comment to describe the public key. The comment cannot be longer than 128 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncodedKey" /></td>
+    <td><CopyableCode code="encoded_key" /></td>
     <td><code>string</code></td>
     <td>The public key that you can use with signed URLs and signed cookies, or with field-level encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name to help identify the public key.</td>
 </tr>
@@ -139,10 +139,10 @@ Gets a public key configuration.
 
 ```sql
 SELECT
-CallerReference,
-Comment,
-EncodedKey,
-Name
+caller_reference,
+comment,
+encoded_key,
+name
 FROM aws.cloudfront.public_key_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

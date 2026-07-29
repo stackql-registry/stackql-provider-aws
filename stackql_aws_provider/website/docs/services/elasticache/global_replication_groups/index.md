@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the global replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AtRestEncryptionEnabled" /></td>
+    <td><CopyableCode code="at_rest_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables encryption at rest when set to true. You cannot modify the value of AtRestEncryptionEnabled after the replication group is created. To enable encryption at rest on a replication group you must set AtRestEncryptionEnabled to true when you create the replication group. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthTokenEnabled" /></td>
+    <td><CopyableCode code="auth_token_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables using an AuthToken (password) when issuing Valkey or Redis OSS commands. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheNodeType" /></td>
+    <td><CopyableCode code="cache_node_type" /></td>
     <td><code>string</code></td>
     <td>The cache node type of the Global datastore</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterEnabled" /></td>
+    <td><CopyableCode code="cluster_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether the Global datastore is cluster enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The ElastiCache engine. For Valkey or Redis OSS only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The ElastiCache engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNodeGroups" /></td>
+    <td><CopyableCode code="global_node_groups" /></td>
     <td><code>string</code></td>
     <td>Indicates the slot configuration and global identifier for each slice group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalReplicationGroupDescription" /></td>
+    <td><CopyableCode code="global_replication_group_description" /></td>
     <td><code>string</code></td>
     <td>The optional description of the Global datastore</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalReplicationGroupId" /></td>
+    <td><CopyableCode code="global_replication_group_id" /></td>
     <td><code>string</code></td>
     <td>The name of the Global datastore</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Members" /></td>
+    <td><CopyableCode code="members" /></td>
     <td><code>string</code></td>
     <td>The replication groups that comprise the Global datastore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Global datastore</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitEncryptionEnabled" /></td>
+    <td><CopyableCode code="transit_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables in-transit encryption when set to true. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later.</td>
 </tr>
@@ -345,19 +345,19 @@ Returns information about a particular global replication group. If no identifie
 
 ```sql
 SELECT
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-CacheNodeType,
-ClusterEnabled,
-Engine,
-EngineVersion,
-GlobalNodeGroups,
-GlobalReplicationGroupDescription,
-GlobalReplicationGroupId,
-Members,
-Status,
-TransitEncryptionEnabled
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+cache_node_type,
+cluster_enabled,
+engine,
+engine_version,
+global_node_groups,
+global_replication_group_description,
+global_replication_group_id,
+members,
+status,
+transit_encryption_enabled
 FROM aws.elasticache.global_replication_groups
 WHERE region = '{{ region }}' -- required
 AND GlobalReplicationGroupId = '{{ GlobalReplicationGroupId }}'
@@ -396,19 +396,19 @@ SELECT
 '{{ region }}',
 '{{ GlobalReplicationGroupDescription }}'
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-CacheNodeType,
-ClusterEnabled,
-Engine,
-EngineVersion,
-GlobalNodeGroups,
-GlobalReplicationGroupDescription,
-GlobalReplicationGroupId,
-Members,
-Status,
-TransitEncryptionEnabled
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+cache_node_type,
+cluster_enabled,
+engine,
+engine_version,
+global_node_groups,
+global_replication_group_description,
+global_replication_group_id,
+members,
+status,
+transit_encryption_enabled
 ;
 ```
 </TabItem>
@@ -459,19 +459,19 @@ AND ReplicationGroupId = '{{ ReplicationGroupId }}' --required
 AND ReplicationGroupRegion = '{{ ReplicationGroupRegion }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-CacheNodeType,
-ClusterEnabled,
-Engine,
-EngineVersion,
-GlobalNodeGroups,
-GlobalReplicationGroupDescription,
-GlobalReplicationGroupId,
-Members,
-Status,
-TransitEncryptionEnabled;
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+cache_node_type,
+cluster_enabled,
+engine,
+engine_version,
+global_node_groups,
+global_replication_group_description,
+global_replication_group_id,
+members,
+status,
+transit_encryption_enabled;
 ```
 </TabItem>
 <TabItem value="modify_global_replication_group">
@@ -493,19 +493,19 @@ AND CacheParameterGroupName = '{{ CacheParameterGroupName}}'
 AND GlobalReplicationGroupDescription = '{{ GlobalReplicationGroupDescription}}'
 AND AutomaticFailoverEnabled = {{ AutomaticFailoverEnabled}}
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-CacheNodeType,
-ClusterEnabled,
-Engine,
-EngineVersion,
-GlobalNodeGroups,
-GlobalReplicationGroupDescription,
-GlobalReplicationGroupId,
-Members,
-Status,
-TransitEncryptionEnabled;
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+cache_node_type,
+cluster_enabled,
+engine,
+engine_version,
+global_node_groups,
+global_replication_group_description,
+global_replication_group_id,
+members,
+status,
+transit_encryption_enabled;
 ```
 </TabItem>
 </Tabs>

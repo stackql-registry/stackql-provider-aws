@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountGrouping" /></td>
+    <td><CopyableCode code="account_grouping" /></td>
     <td><code>object</code></td>
     <td>Specifies if the billing group has automatic account association (AutoAssociate) enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) that can be used to uniquely identify the billing group. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:billinggroup/)?&#91;a-zA-Z0-9&#93;&#123;10,12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingGroupType" /></td>
+    <td><CopyableCode code="billing_group_type" /></td>
     <td><code>string</code></td>
     <td>The type of billing group. (STANDARD, TRANSFER_BILLING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputationPreference" /></td>
+    <td><CopyableCode code="computation_preference" /></td>
     <td><code>object</code></td>
     <td>The preferences and settings that will be used to compute the Amazon Web Services charges for a billing group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time when the billing group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the billing group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The most recent time when the billing group was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the billing group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\+=\.\-@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryAccountId" /></td>
+    <td><CopyableCode code="primary_account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID that serves as the main account in a billing group. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of accounts in the particular billing group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The billing group status. Only one of the valid values can be used. (ACTIVE, PRIMARY_ACCOUNT_MISSING, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason why the billing group is in its current status.</td>
 </tr>
@@ -200,18 +200,18 @@ A paginated call to retrieve a list of billing groups for the given billing peri
 
 ```sql
 SELECT
-AccountGrouping,
-Arn,
-BillingGroupType,
-ComputationPreference,
-CreationTime,
-Description,
-LastModifiedTime,
-Name,
-PrimaryAccountId,
-Size,
-Status,
-StatusReason
+account_grouping,
+arn,
+billing_group_type,
+computation_preference,
+creation_time,
+description,
+last_modified_time,
+name,
+primary_account_id,
+size,
+status,
+status_reason
 FROM aws.billingconductor.billing_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,7 +254,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>
@@ -321,16 +321,16 @@ AccountGrouping = '{{ AccountGrouping }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-AccountGrouping,
-Arn,
-Description,
-LastModifiedTime,
-Name,
-PricingPlanArn,
-PrimaryAccountId,
-Size,
-Status,
-StatusReason;
+account_grouping,
+arn,
+description,
+last_modified_time,
+name,
+pricing_plan_arn,
+primary_account_id,
+size,
+status,
+status_reason;
 ```
 </TabItem>
 </Tabs>

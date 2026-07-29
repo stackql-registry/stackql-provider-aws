@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blob" /></td>
+    <td><CopyableCode code="blob" /></td>
     <td><code>string (byte)</code></td>
     <td>Contains Mapbox Vector Tile (MVT) data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>The HTTP Cache-Control directive for the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The map tile's content type. For example, application/vnd.mapbox-vector-tile.</td>
 </tr>
@@ -154,9 +154,9 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-Blob,
-CacheControl,
-ContentType
+blob,
+cache_control,
+content_type
 FROM aws.location.map_tiles
 WHERE map_name = '{{ map_name }}' -- required
 AND z = '{{ z }}' -- required

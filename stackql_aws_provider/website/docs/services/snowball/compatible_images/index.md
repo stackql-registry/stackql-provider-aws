@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiId" /></td>
+    <td><CopyableCode code="ami_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for an individual Snow device AMI. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The optional name of a compatible image. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ This action returns a list of the different Amazon EC2-compatible Amazon Machine
 
 ```sql
 SELECT
-AmiId,
-Name
+ami_id,
+name
 FROM aws.snowball.compatible_images
 WHERE region = '{{ region }}' -- required
 ;

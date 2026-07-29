@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the OpenSearch application. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appConfigs" /></td>
+    <td><CopyableCode code="app_configs" /></td>
     <td><code>array</code></td>
     <td>The configuration settings of the OpenSearch application.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the domain. See Identifiers for IAM Entities in Using Amazon Web Services Identity and Access Management for more information. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the OpenSearch application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSources" /></td>
+    <td><CopyableCode code="data_sources" /></td>
     <td><code>array</code></td>
     <td>The data sources associated with the OpenSearch application.</td>
 </tr>
@@ -86,17 +86,17 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint URL of the OpenSearch application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamIdentityCenterOptions" /></td>
+    <td><CopyableCode code="iam_identity_center_options" /></td>
     <td><code>object</code></td>
     <td>The IAM Identity Center settings configured for the OpenSearch application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the application's data at rest. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:kms:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last update to the OpenSearch application.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the domain. See Identifiers for IAM Entities in Using Amazon Web Services Identity and Access Management for more information. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when an OpenSearch application was created.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint URL of an OpenSearch application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last update to an OpenSearch application.</td>
 </tr>
@@ -270,14 +270,14 @@ Retrieves the configuration and status of an existing OpenSearch application.
 SELECT
 id,
 name,
-appConfigs,
+app_configs,
 arn,
-createdAt,
-dataSources,
+created_at,
+data_sources,
 endpoint,
-iamIdentityCenterOptions,
-kmsKeyArn,
-lastUpdatedAt,
+iam_identity_center_options,
+kms_key_arn,
+last_updated_at,
 status
 FROM aws.opensearch.applications
 WHERE id = '{{ id }}' -- required
@@ -294,9 +294,9 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 endpoint,
-lastUpdatedAt,
+last_updated_at,
 status
 FROM aws.opensearch.applications
 WHERE region = '{{ region }}' -- required
@@ -345,13 +345,13 @@ SELECT
 RETURNING
 id,
 name,
-appConfigs,
+app_configs,
 arn,
-createdAt,
-dataSources,
-iamIdentityCenterOptions,
-kmsKeyArn,
-tagList
+created_at,
+data_sources,
+iam_identity_center_options,
+kms_key_arn,
+tag_list
 ;
 ```
 </TabItem>
@@ -420,12 +420,12 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-appConfigs,
+app_configs,
 arn,
-createdAt,
-dataSources,
-iamIdentityCenterOptions,
-lastUpdatedAt;
+created_at,
+data_sources,
+iam_identity_center_options,
+last_updated_at;
 ```
 </TabItem>
 </Tabs>

@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel. The name is the primary identifier for the channel, and must be unique for your account in the AWS Region and channel group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerType" /></td>
+    <td><CopyableCode code="container_type" /></td>
     <td><code>string</code></td>
     <td>The type of container attached to this origin endpoint. (TS, CMAF, ISM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the origin endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashManifests" /></td>
+    <td><CopyableCode code="dash_manifests" /></td>
     <td><code>array</code></td>
     <td>A DASH manifest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for your origin endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current Entity Tag (ETag) associated with this resource. The entity tag can be used to safely make concurrent updates to the resource. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForceEndpointErrorConfiguration" /></td>
+    <td><CopyableCode code="force_endpoint_error_configuration" /></td>
     <td><code>object</code></td>
     <td>The failover settings for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsManifests" /></td>
+    <td><CopyableCode code="hls_manifests" /></td>
     <td><code>array</code></td>
     <td>An HTTP live streaming (HLS) manifest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LowLatencyHlsManifests" /></td>
+    <td><CopyableCode code="low_latency_hls_manifests" /></td>
     <td><code>array</code></td>
     <td>A low-latency HLS manifest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the origin endpoint was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MssManifests" /></td>
+    <td><CopyableCode code="mss_manifests" /></td>
     <td><code>array</code></td>
     <td>The Microsoft Smooth Streaming (MSS) manifest configurations associated with this origin endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginEndpointName" /></td>
+    <td><CopyableCode code="origin_endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the origin endpoint. The name is the primary identifier for the origin endpoint, and and must be unique for your account in the AWS Region and channel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResetAt" /></td>
+    <td><CopyableCode code="reset_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the origin endpoint was last reset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Segment" /></td>
+    <td><CopyableCode code="segment" /></td>
     <td><code>object</code></td>
     <td>The segment configuration, including the segment name, duration, and other configuration values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartoverWindowSeconds" /></td>
+    <td><CopyableCode code="startover_window_seconds" /></td>
     <td><code>integer</code></td>
     <td>The size of the window (in seconds) to create a window of the live stream that's available for on-demand viewing. Viewers can start-over or catch-up on content that falls within the window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The comma-separated list of tag key:value pairs assigned to the origin endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UriSeparator" /></td>
+    <td><CopyableCode code="uri_separator" /></td>
     <td><code>string</code></td>
     <td>The separator character used in generated URIs for this origin endpoint. (UNDERSCORE, HYPHEN)</td>
 </tr>
@@ -160,72 +160,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel. The name is the primary identifier for the channel, and must be unique for your account in the AWS Region and channel group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerType" /></td>
+    <td><CopyableCode code="container_type" /></td>
     <td><code>string</code></td>
     <td>The type of container attached to this origin endpoint. A container type is a file format that encapsulates one or more media streams, such as audio and video, into a single file. (TS, CMAF, ISM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the origin endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashManifests" /></td>
+    <td><CopyableCode code="dash_manifests" /></td>
     <td><code>array</code></td>
     <td>A DASH manifest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Any descriptive information that you want to add to the origin endpoint for future identification purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForceEndpointErrorConfiguration" /></td>
+    <td><CopyableCode code="force_endpoint_error_configuration" /></td>
     <td><code>object</code></td>
     <td>The failover settings for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsManifests" /></td>
+    <td><CopyableCode code="hls_manifests" /></td>
     <td><code>array</code></td>
     <td>An HTTP live streaming (HLS) manifest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LowLatencyHlsManifests" /></td>
+    <td><CopyableCode code="low_latency_hls_manifests" /></td>
     <td><code>array</code></td>
     <td>A low-latency HLS manifest configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the origin endpoint was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MssManifests" /></td>
+    <td><CopyableCode code="mss_manifests" /></td>
     <td><code>array</code></td>
     <td>A list of Microsoft Smooth Streaming (MSS) manifest configurations associated with the origin endpoint. Each configuration represents a different MSS streaming option available from this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginEndpointName" /></td>
+    <td><CopyableCode code="origin_endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the origin endpoint. The name is the primary identifier for the origin endpoint, and and must be unique for your account in the AWS Region and channel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UriSeparator" /></td>
+    <td><CopyableCode code="uri_separator" /></td>
     <td><code>string</code></td>
     <td>The separator character used in generated URIs for this origin endpoint. (UNDERSCORE, HYPHEN)</td>
 </tr>
@@ -377,25 +377,25 @@ Retrieves the specified origin endpoint that's configured in AWS Elemental Media
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-ChannelName,
-ContainerType,
-CreatedAt,
-DashManifests,
-Description,
-ETag,
-ForceEndpointErrorConfiguration,
-HlsManifests,
-LowLatencyHlsManifests,
-ModifiedAt,
-MssManifests,
-OriginEndpointName,
-ResetAt,
-Segment,
-StartoverWindowSeconds,
-Tags,
-UriSeparator
+arn,
+channel_group_name,
+channel_name,
+container_type,
+created_at,
+dash_manifests,
+description,
+e_tag,
+force_endpoint_error_configuration,
+hls_manifests,
+low_latency_hls_manifests,
+modified_at,
+mss_manifests,
+origin_endpoint_name,
+reset_at,
+segment,
+startover_window_seconds,
+tags,
+uri_separator
 FROM aws.mediapackagev2.origin_endpoints
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND channel_name = '{{ channel_name }}' -- required
@@ -410,20 +410,20 @@ Retrieves all origin endpoints in a specific channel that are configured in AWS 
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-ChannelName,
-ContainerType,
-CreatedAt,
-DashManifests,
-Description,
-ForceEndpointErrorConfiguration,
-HlsManifests,
-LowLatencyHlsManifests,
-ModifiedAt,
-MssManifests,
-OriginEndpointName,
-UriSeparator
+arn,
+channel_group_name,
+channel_name,
+container_type,
+created_at,
+dash_manifests,
+description,
+force_endpoint_error_configuration,
+hls_manifests,
+low_latency_hls_manifests,
+modified_at,
+mss_manifests,
+origin_endpoint_name,
+uri_separator
 FROM aws.mediapackagev2.origin_endpoints
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND channel_name = '{{ channel_name }}' -- required
@@ -486,24 +486,24 @@ SELECT
 '{{ region }}',
 '{{ x-amzn-client-token }}'
 RETURNING
-Arn,
-ChannelGroupName,
-ChannelName,
-ContainerType,
-CreatedAt,
-DashManifests,
-Description,
-ETag,
-ForceEndpointErrorConfiguration,
-HlsManifests,
-LowLatencyHlsManifests,
-ModifiedAt,
-MssManifests,
-OriginEndpointName,
-Segment,
-StartoverWindowSeconds,
-Tags,
-UriSeparator
+arn,
+channel_group_name,
+channel_name,
+container_type,
+created_at,
+dash_manifests,
+description,
+e_tag,
+force_endpoint_error_configuration,
+hls_manifests,
+low_latency_hls_manifests,
+modified_at,
+mss_manifests,
+origin_endpoint_name,
+segment,
+startover_window_seconds,
+tags,
+uri_separator
 ;
 ```
 </TabItem>
@@ -717,24 +717,24 @@ AND region = '{{ region }}' --required
 AND ContainerType = '{{ ContainerType }}' --required
 AND `x-amzn-update-if-match` = '{{ x-amzn-update-if-match}}'
 RETURNING
-Arn,
-ChannelGroupName,
-ChannelName,
-ContainerType,
-CreatedAt,
-DashManifests,
-Description,
-ETag,
-ForceEndpointErrorConfiguration,
-HlsManifests,
-LowLatencyHlsManifests,
-ModifiedAt,
-MssManifests,
-OriginEndpointName,
-Segment,
-StartoverWindowSeconds,
-Tags,
-UriSeparator;
+arn,
+channel_group_name,
+channel_name,
+container_type,
+created_at,
+dash_manifests,
+description,
+e_tag,
+force_endpoint_error_configuration,
+hls_manifests,
+low_latency_hls_manifests,
+modified_at,
+mss_manifests,
+origin_endpoint_name,
+segment,
+startover_window_seconds,
+tags,
+uri_separator;
 ```
 </TabItem>
 </Tabs>

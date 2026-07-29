@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Arn of the resource definition version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the resource definition version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>Information about a resource definition version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource definition version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of the resource definition version.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the parent definition that the version is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The ID of the version.</td>
 </tr>
@@ -214,11 +214,11 @@ Retrieves information about a resource definition version, including which resou
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Definition,
-Id,
-Version
+arn,
+creation_timestamp,
+definition,
+id,
+version
 FROM aws.greengrass.resource_definition_versions
 WHERE resource_definition_id = '{{ resource_definition_id }}' -- required
 AND resource_definition_version_id = '{{ resource_definition_version_id }}' -- required
@@ -232,10 +232,10 @@ Lists the versions of a resource definition.
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Id,
-Version
+arn,
+creation_timestamp,
+id,
+version
 FROM aws.greengrass.resource_definition_versions
 WHERE resource_definition_id = '{{ resource_definition_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,10 +273,10 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn,
-CreationTimestamp,
-Id,
-Version
+arn,
+creation_timestamp,
+id,
+version
 ;
 ```
 </TabItem>

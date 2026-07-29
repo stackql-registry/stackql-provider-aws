@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the signal catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the signal catalog was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the signal catalog. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the signal catalog was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeCounts" /></td>
+    <td><CopyableCode code="node_counts" /></td>
     <td><code>object</code></td>
     <td>The total number of network nodes specified in a signal catalog.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the signal catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the signal catalog was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the signal catalog was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -210,10 +210,10 @@ Retrieves information about a signal catalog.
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
-nodeCounts
+last_modification_time,
+node_counts
 FROM aws.iotfleetwise.signal_catalogs
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,8 +227,8 @@ Lists all the created signal catalogs in an Amazon Web Services account. You can
 SELECT
 name,
 arn,
-creationTime,
-lastModificationTime
+creation_time,
+last_modification_time
 FROM aws.iotfleetwise.signal_catalogs
 WHERE region = '{{ region }}' -- required
 ;

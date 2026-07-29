@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>object</code></td>
     <td>Information about the specified Firewall Manager policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified policy. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -75,42 +75,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeleteUnusedFMManagedResources" /></td>
+    <td><CopyableCode code="delete_unused_fm_managed_resources" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Firewall Manager should automatically remove protections from resources that leave the policy scope and clean up resources that Firewall Manager is managing for accounts when those accounts leave policy scope. For example, Firewall Manager will disassociate a Firewall Manager managed web ACL from a protected customer resource when the customer resource leaves policy scope. By default, Firewall Manager doesn't remove protections or delete Firewall Manager managed resources. This option is not available for Shield Advanced or WAF Classic policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified policy. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the specified policy. (pattern: &lt;code&gt;^&#91;a-z0-9A-Z-&#93;&#123;36&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the specified policy. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyStatus" /></td>
+    <td><CopyableCode code="policy_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the policy is in or out of an admin's policy or Region scope. ACTIVE - The administrator can manage and delete the policy. OUT_OF_ADMIN_SCOPE - The administrator can view the policy, but they can't edit or delete the policy. Existing policy protections stay in place. Any new resources that come into scope of the policy won't be protected. (ACTIVE, OUT_OF_ADMIN_SCOPE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemediationEnabled" /></td>
+    <td><CopyableCode code="remediation_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if the policy should be automatically applied to new resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource protected by or in scope of the policy. This is in the format shown in the Amazon Web Services Resource Types Reference. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityServiceType" /></td>
+    <td><CopyableCode code="security_service_type" /></td>
     <td><code>string</code></td>
     <td>The service that the policy is using to protect the resources. This specifies the type of policy that is created, either an WAF policy, a Shield Advanced policy, or a security group policy. (WAF, WAFV2, SHIELD_ADVANCED, SECURITY_GROUPS_COMMON, SECURITY_GROUPS_CONTENT_AUDIT, SECURITY_GROUPS_USAGE_AUDIT, NETWORK_FIREWALL, DNS_FIREWALL, THIRD_PARTY_FIREWALL, IMPORT_NETWORK_FIREWALL, NETWORK_ACL_COMMON)</td>
 </tr>
@@ -201,8 +201,8 @@ Returns information about the specified Firewall Manager policy.
 
 ```sql
 SELECT
-Policy,
-PolicyArn
+policy,
+policy_arn
 FROM aws.fms.policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,14 +214,14 @@ Returns an array of PolicySummary objects.
 
 ```sql
 SELECT
-DeleteUnusedFMManagedResources,
-PolicyArn,
-PolicyId,
-PolicyName,
-PolicyStatus,
-RemediationEnabled,
-ResourceType,
-SecurityServiceType
+delete_unused_fm_managed_resources,
+policy_arn,
+policy_id,
+policy_name,
+policy_status,
+remediation_enabled,
+resource_type,
+security_service_type
 FROM aws.fms.policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -250,8 +250,8 @@ TagList = '{{ TagList }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Policy,
-PolicyArn;
+policy,
+policy_arn;
 ```
 </TabItem>
 </Tabs>

@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CellArn" /></td>
+    <td><CopyableCode code="cell_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the cell.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CellName" /></td>
+    <td><CopyableCode code="cell_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cell. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Cells" /></td>
+    <td><CopyableCode code="cells" /></td>
     <td><code>array</code></td>
     <td>A list of cell ARNs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentReadinessScopes" /></td>
+    <td><CopyableCode code="parent_readiness_scopes" /></td>
     <td><code>array</code></td>
     <td>The readiness scope for the cell, which can be a cell Amazon Resource Name (ARN) or a recovery group ARN. This is a list but currently can have only one element.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags on the resources.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CellArn" /></td>
+    <td><CopyableCode code="cell_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the cell.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CellName" /></td>
+    <td><CopyableCode code="cell_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cell. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Cells" /></td>
+    <td><CopyableCode code="cells" /></td>
     <td><code>array</code></td>
     <td>A list of cell ARNs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentReadinessScopes" /></td>
+    <td><CopyableCode code="parent_readiness_scopes" /></td>
     <td><code>array</code></td>
     <td>The readiness scope for the cell, which can be a cell Amazon Resource Name (ARN) or a recovery group ARN. This is a list but currently can have only one element.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags on the resources.</td>
 </tr>
@@ -223,11 +223,11 @@ Gets information about a cell including cell name, cell Amazon Resource Name (AR
 
 ```sql
 SELECT
-CellArn,
-CellName,
-Cells,
-ParentReadinessScopes,
-Tags
+cell_arn,
+cell_name,
+cells,
+parent_readiness_scopes,
+tags
 FROM aws.route53_recovery_readiness.cells
 WHERE cell_name = '{{ cell_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -240,11 +240,11 @@ Lists the cells for an account.
 
 ```sql
 SELECT
-CellArn,
-CellName,
-Cells,
-ParentReadinessScopes,
-Tags
+cell_arn,
+cell_name,
+cells,
+parent_readiness_scopes,
+tags
 FROM aws.route53_recovery_readiness.cells
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -281,11 +281,11 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CellArn,
-CellName,
-Cells,
-ParentReadinessScopes,
-Tags
+cell_arn,
+cell_name,
+cells,
+parent_readiness_scopes,
+tags
 ;
 ```
 </TabItem>
@@ -332,11 +332,11 @@ WHERE
 cell_name = '{{ cell_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CellArn,
-CellName,
-Cells,
-ParentReadinessScopes,
-Tags;
+cell_arn,
+cell_name,
+cells,
+parent_readiness_scopes,
+tags;
 ```
 </TabItem>
 </Tabs>

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of this audit. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>The status of this audit. One of "IN_PROGRESS", "COMPLETED", "FAILED", or "CANCELED". (IN_PROGRESS, COMPLETED, FAILED, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>The type of this audit. One of "ON_DEMAND_AUDIT_TASK" or "SCHEDULED_AUDIT_TASK". (ON_DEMAND_AUDIT_TASK, SCHEDULED_AUDIT_TASK)</td>
 </tr>
@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="auditDetails" /></td>
+    <td><CopyableCode code="audit_details" /></td>
     <td><code>object</code></td>
     <td>Detailed information about each check performed during this audit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledAuditName" /></td>
+    <td><CopyableCode code="scheduled_audit_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scheduled audit (only if the audit was a scheduled audit). (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStartTime" /></td>
+    <td><CopyableCode code="task_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the audit started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatistics" /></td>
+    <td><CopyableCode code="task_statistics" /></td>
     <td><code>object</code></td>
     <td>Statistical information about the audit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>The status of the audit: one of "IN_PROGRESS", "COMPLETED", "FAILED", or "CANCELED". (IN_PROGRESS, COMPLETED, FAILED, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>The type of audit: "ON_DEMAND_AUDIT_TASK" or "SCHEDULED_AUDIT_TASK". (ON_DEMAND_AUDIT_TASK, SCHEDULED_AUDIT_TASK)</td>
 </tr>
@@ -217,9 +217,9 @@ Lists the Device Defender audits that have been performed during a given time pe
 
 ```sql
 SELECT
-taskId,
-taskStatus,
-taskType
+task_id,
+task_status,
+task_type
 FROM aws.iot.audit_tasks
 WHERE startTime = '{{ startTime }}' -- required
 AND endTime = '{{ endTime }}' -- required
@@ -237,12 +237,12 @@ Gets information about a Device Defender audit. Requires permission to access th
 
 ```sql
 SELECT
-auditDetails,
-scheduledAuditName,
-taskStartTime,
-taskStatistics,
-taskStatus,
-taskType
+audit_details,
+scheduled_audit_name,
+task_start_time,
+task_statistics,
+task_status,
+task_type
 FROM aws.iot.audit_tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s_.,-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Wisdom assistant. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Wisdom assistant. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s_.,-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationConfiguration" /></td>
+    <td><CopyableCode code="integration_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the Wisdom assistant integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the customer managed key used for encryption.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the assistant. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s_.,-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Wisdom assistant. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Wisdom assistant. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the assistant. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s_.,-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationConfiguration" /></td>
+    <td><CopyableCode code="integration_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the Wisdom assistant integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the customer managed key used for encryption.</td>
 </tr>
@@ -264,11 +264,11 @@ Retrieves information about an assistant.
 ```sql
 SELECT
 name,
-assistantArn,
-assistantId,
+assistant_arn,
+assistant_id,
 description,
-integrationConfiguration,
-serverSideEncryptionConfiguration,
+integration_configuration,
+server_side_encryption_configuration,
 status,
 tags,
 type_
@@ -285,11 +285,11 @@ Lists information about assistants.
 ```sql
 SELECT
 name,
-assistantArn,
-assistantId,
+assistant_arn,
+assistant_id,
 description,
-integrationConfiguration,
-serverSideEncryptionConfiguration,
+integration_configuration,
+server_side_encryption_configuration,
 status,
 tags,
 type_

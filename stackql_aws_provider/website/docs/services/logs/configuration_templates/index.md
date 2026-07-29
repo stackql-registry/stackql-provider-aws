@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="allowedActionForAllowVendedLogsDeliveryForResource" /></td>
+    <td><CopyableCode code="allowed_action_for_allow_vended_logs_delivery_for_resource" /></td>
     <td><code>string</code></td>
     <td>The action permissions that a caller needs to have to be able to successfully create a delivery source on the desired resource type when calling PutDeliverySource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedFieldDelimiters" /></td>
+    <td><CopyableCode code="allowed_field_delimiters" /></td>
     <td><code>array</code></td>
     <td>The valid values that a caller can use as field delimiters when calling CreateDelivery or UpdateDeliveryConfiguration on a delivery that delivers in Plain, W3C, or Raw format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedFields" /></td>
+    <td><CopyableCode code="allowed_fields" /></td>
     <td><code>array</code></td>
     <td>The allowed fields that a caller can use in the recordFields parameter of a CreateDelivery or UpdateDeliveryConfiguration operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedOutputFormats" /></td>
+    <td><CopyableCode code="allowed_output_formats" /></td>
     <td><code>array</code></td>
     <td>The list of delivery destination output formats that are supported by this log source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedSuffixPathFields" /></td>
+    <td><CopyableCode code="allowed_suffix_path_fields" /></td>
     <td><code>array</code></td>
     <td>The list of variable fields that can be used in the suffix path of a delivery that delivers to an S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultDeliveryConfigValues" /></td>
+    <td><CopyableCode code="default_delivery_config_values" /></td>
     <td><code>object</code></td>
     <td>A mapping that displays the default value of each property within a delivery's configuration, if it is not specified in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationType" /></td>
+    <td><CopyableCode code="delivery_destination_type" /></td>
     <td><code>string</code></td>
     <td>A string specifying which destination type this configuration template applies to. (S3, CWL, FH, XRAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliverySourceConfiguration" /></td>
+    <td><CopyableCode code="delivery_source_configuration" /></td>
     <td><code>array</code></td>
     <td>The schema of the delivery source configuration that is available for this log type. Each element describes a configuration that can be set when calling PutDeliverySource, including the configuration name, type, and default value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logType" /></td>
+    <td><CopyableCode code="log_type" /></td>
     <td><code>string</code></td>
     <td>A string specifying which log type this configuration template applies to. (pattern: &lt;code&gt;&#91;\w&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>A string specifying which resource type this configuration template applies to. (pattern: &lt;code&gt;&#91;\w-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3TablesIntegration" /></td>
+    <td><CopyableCode code="s_3_tables_integration" /></td>
     <td><code>object</code></td>
     <td>The S3 Tables integration configuration for this configuration template, including the datasource name and type.</td>
 </tr>
@@ -174,17 +174,17 @@ Use this operation to return the valid and default values that are used when cre
 
 ```sql
 SELECT
-allowedActionForAllowVendedLogsDeliveryForResource,
-allowedFieldDelimiters,
-allowedFields,
-allowedOutputFormats,
-allowedSuffixPathFields,
-defaultDeliveryConfigValues,
-deliveryDestinationType,
-deliverySourceConfiguration,
-logType,
-resourceType,
-s3TablesIntegration,
+allowed_action_for_allow_vended_logs_delivery_for_resource,
+allowed_field_delimiters,
+allowed_fields,
+allowed_output_formats,
+allowed_suffix_path_fields,
+default_delivery_config_values,
+delivery_destination_type,
+delivery_source_configuration,
+log_type,
+resource_type,
+s_3_tables_integration,
 service
 FROM aws.logs.configuration_templates
 WHERE region = '{{ region }}' -- required

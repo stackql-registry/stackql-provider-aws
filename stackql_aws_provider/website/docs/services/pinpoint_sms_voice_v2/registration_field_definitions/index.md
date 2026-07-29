@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisplayHints" /></td>
+    <td><CopyableCode code="display_hints" /></td>
     <td><code>object</code></td>
     <td>An array of RegistrationFieldDisplayHints objects for the field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FieldPath" /></td>
+    <td><CopyableCode code="field_path" /></td>
     <td><code>string</code></td>
     <td>The path to the registration form field. You can use DescribeRegistrationFieldDefinitions for a list of FieldPaths. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FieldRequirement" /></td>
+    <td><CopyableCode code="field_requirement" /></td>
     <td><code>string</code></td>
     <td>Specifies if the field for the registration form is required, conditional or optional. (REQUIRED, CONDITIONAL, OPTIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FieldType" /></td>
+    <td><CopyableCode code="field_type" /></td>
     <td><code>string</code></td>
     <td>The type of field. (SELECT, TEXT, ATTACHMENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SectionPath" /></td>
+    <td><CopyableCode code="section_path" /></td>
     <td><code>string</code></td>
     <td>The section path of the field. (pattern: &lt;code&gt;&#91;A-Za-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectValidation" /></td>
+    <td><CopyableCode code="select_validation" /></td>
     <td><code>object</code></td>
     <td>The validation rules for a select field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TextValidation" /></td>
+    <td><CopyableCode code="text_validation" /></td>
     <td><code>object</code></td>
     <td>The validation rules for a text field.</td>
 </tr>
@@ -149,13 +149,13 @@ Retrieves the specified registration type field definitions. You can use Describ
 
 ```sql
 SELECT
-DisplayHints,
-FieldPath,
-FieldRequirement,
-FieldType,
-SectionPath,
-SelectValidation,
-TextValidation
+display_hints,
+field_path,
+field_requirement,
+field_type,
+section_path,
+select_validation,
+text_validation
 FROM aws.pinpoint_sms_voice_v2.registration_field_definitions
 WHERE region = '{{ region }}' -- required
 ;

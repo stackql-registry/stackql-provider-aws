@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheReportARN" /></td>
+    <td><CopyableCode code="cache_report_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cache report you want to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheReportStatus" /></td>
+    <td><CopyableCode code="cache_report_status" /></td>
     <td><code>string</code></td>
     <td>The status of the specified cache report. (IN_PROGRESS, COMPLETED, CANCELED, FAILED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the gateway stopped generating the cache report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExclusionFilters" /></td>
+    <td><CopyableCode code="exclusion_filters" /></td>
     <td><code>array</code></td>
     <td>The list of filters and parameters that determine which files are excluded from the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileShareARN" /></td>
+    <td><CopyableCode code="file_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the file share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InclusionFilters" /></td>
+    <td><CopyableCode code="inclusion_filters" /></td>
     <td><code>array</code></td>
     <td>The list of filters and parameters that determine which files are included in the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationARN" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon S3 bucket location where the cache report is saved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportCompletionPercent" /></td>
+    <td><CopyableCode code="report_completion_percent" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the report generation process that has been completed at time of inquiry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportName" /></td>
+    <td><CopyableCode code="report_name" /></td>
     <td><code>string</code></td>
     <td>The file name of the completed cache report object stored in Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that an S3 File Gateway assumes when it accesses the underlying storage. (pattern: &lt;code&gt;^arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):iam::(&#91;0-9&#93;+):role/(\S+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the gateway started generating the cache report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of key/value tags associated with the report.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheReportARN" /></td>
+    <td><CopyableCode code="cache_report_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cache report you want to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheReportStatus" /></td>
+    <td><CopyableCode code="cache_report_status" /></td>
     <td><code>string</code></td>
     <td>The status of the specified cache report. (IN_PROGRESS, COMPLETED, CANCELED, FAILED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the gateway stopped generating the cache report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExclusionFilters" /></td>
+    <td><CopyableCode code="exclusion_filters" /></td>
     <td><code>array</code></td>
     <td>The list of filters and parameters that determine which files are excluded from the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileShareARN" /></td>
+    <td><CopyableCode code="file_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the file share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InclusionFilters" /></td>
+    <td><CopyableCode code="inclusion_filters" /></td>
     <td><code>array</code></td>
     <td>The list of filters and parameters that determine which files are included in the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationARN" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon S3 bucket location where the cache report is saved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportCompletionPercent" /></td>
+    <td><CopyableCode code="report_completion_percent" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the report generation process that has been completed at time of inquiry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportName" /></td>
+    <td><CopyableCode code="report_name" /></td>
     <td><code>string</code></td>
     <td>The file name of the completed cache report object stored in Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that an S3 File Gateway assumes when it accesses the underlying storage. (pattern: &lt;code&gt;^arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):iam::(&#91;0-9&#93;+):role/(\S+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the gateway started generating the cache report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of key/value tags associated with the report.</td>
 </tr>
@@ -264,18 +264,18 @@ Returns information about the specified cache report, including completion statu
 
 ```sql
 SELECT
-CacheReportARN,
-CacheReportStatus,
-EndTime,
-ExclusionFilters,
-FileShareARN,
-InclusionFilters,
-LocationARN,
-ReportCompletionPercent,
-ReportName,
-Role,
-StartTime,
-Tags
+cache_report_arn,
+cache_report_status,
+end_time,
+exclusion_filters,
+file_share_arn,
+inclusion_filters,
+location_arn,
+report_completion_percent,
+report_name,
+role,
+start_time,
+tags
 FROM aws.storagegateway.cache_reports
 WHERE region = '{{ region }}' -- required
 ;
@@ -287,18 +287,18 @@ Returns a list of existing cache reports for all file shares associated with you
 
 ```sql
 SELECT
-CacheReportARN,
-CacheReportStatus,
-EndTime,
-ExclusionFilters,
-FileShareARN,
-InclusionFilters,
-LocationARN,
-ReportCompletionPercent,
-ReportName,
-Role,
-StartTime,
-Tags
+cache_report_arn,
+cache_report_status,
+end_time,
+exclusion_filters,
+file_share_arn,
+inclusion_filters,
+location_arn,
+report_completion_percent,
+report_name,
+role,
+start_time,
+tags
 FROM aws.storagegateway.cache_reports
 WHERE region = '{{ region }}' -- required
 ;

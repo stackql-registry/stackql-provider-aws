@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the domain. See Identifiers for IAM Entities in Using Amazon Web Services Identity and Access Management for more information. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -126,7 +126,7 @@ Gets the ARN of the current default application. If the default application isn'
 
 ```sql
 SELECT
-applicationArn
+application_arn
 FROM aws.opensearch.default_application_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -157,7 +157,7 @@ region = '{{ region }}' --required
 AND applicationArn = '{{ applicationArn }}' --required
 AND setAsDefault = {{ setAsDefault }} --required
 RETURNING
-applicationArn;
+application_arn;
 ```
 </TabItem>
 </Tabs>

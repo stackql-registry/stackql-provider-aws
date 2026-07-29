@@ -56,32 +56,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the replication set. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>Details about who created the replication set. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the replication set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionProtected" /></td>
+    <td><CopyableCode code="deletion_protected" /></td>
     <td><code>boolean</code></td>
     <td>Determines if the replication set deletion protection is enabled or not. If deletion protection is enabled, you can't delete the last Amazon Web Services Region in the replication set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>Who last modified the replication set. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the replication set was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionMap" /></td>
+    <td><CopyableCode code="region_map" /></td>
     <td><code>object</code></td>
     <td>The map between each Amazon Web Services Region in your replication set and the KMS key that's used to encrypt the data in that Region.</td>
 </tr>
@@ -209,12 +209,12 @@ Retrieve your Incident Manager replication set.
 ```sql
 SELECT
 arn,
-createdBy,
-createdTime,
-deletionProtected,
-lastModifiedBy,
-lastModifiedTime,
-regionMap,
+created_by,
+created_time,
+deletion_protected,
+last_modified_by,
+last_modified_time,
+region_map,
 status
 FROM aws.ssm_incidents.replication_sets
 WHERE arn = '{{ arn }}' -- required

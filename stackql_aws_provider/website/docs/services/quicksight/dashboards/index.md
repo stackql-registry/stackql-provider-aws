@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Dashboard" /></td>
+    <td><CopyableCode code="dashboard" /></td>
     <td><code>object</code></td>
     <td>Information about the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of this request.</td>
 </tr>
@@ -81,37 +81,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this dashboard was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardId" /></td>
+    <td><CopyableCode code="dashboard_id" /></td>
     <td><code>string</code></td>
     <td>Dashboard ID. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedTime" /></td>
+    <td><CopyableCode code="last_published_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this dashboard was published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this dashboard was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A display name for the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishedVersionNumber" /></td>
+    <td><CopyableCode code="published_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>Published version number.</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this dashboard was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardId" /></td>
+    <td><CopyableCode code="dashboard_id" /></td>
     <td><code>string</code></td>
     <td>Dashboard ID. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedTime" /></td>
+    <td><CopyableCode code="last_published_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this dashboard was published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this dashboard was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A display name for the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishedVersionNumber" /></td>
+    <td><CopyableCode code="published_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>Published version number.</td>
 </tr>
@@ -322,9 +322,9 @@ Provides a summary for a dashboard.
 
 ```sql
 SELECT
-Dashboard,
-RequestId,
-Status
+dashboard,
+request_id,
+status
 FROM aws.quicksight.dashboards
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND dashboard_id = '{{ dashboard_id }}' -- required
@@ -340,13 +340,13 @@ Searches for dashboards that belong to a user. This operation is eventually cons
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-DashboardId,
-LastPublishedTime,
-LastUpdatedTime,
-Name,
-PublishedVersionNumber
+arn,
+created_time,
+dashboard_id,
+last_published_time,
+last_updated_time,
+name,
+published_version_number
 FROM aws.quicksight.dashboards
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -359,13 +359,13 @@ Lists dashboards in an Amazon Web Services account.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-DashboardId,
-LastPublishedTime,
-LastUpdatedTime,
-Name,
-PublishedVersionNumber
+arn,
+created_time,
+dashboard_id,
+last_published_time,
+last_updated_time,
+name,
+published_version_number
 FROM aws.quicksight.dashboards
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -427,12 +427,12 @@ SELECT
 '{{ dashboard_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationStatus,
-DashboardId,
-RequestId,
-Status,
-VersionArn
+arn,
+creation_status,
+dashboard_id,
+request_id,
+status,
+version_arn
 ;
 ```
 </TabItem>
@@ -763,10 +763,10 @@ AND dashboard_id = '{{ dashboard_id }}' --required
 AND region = '{{ region }}' --required
 AND LinkEntities = '{{ LinkEntities }}' --required
 RETURNING
-DashboardArn,
-LinkEntities,
-RequestId,
-Status;
+dashboard_arn,
+link_entities,
+request_id,
+status;
 ```
 </TabItem>
 <TabItem value="update_dashboard_published_version">
@@ -783,10 +783,10 @@ AND dashboard_id = '{{ dashboard_id }}' --required
 AND version_number = '{{ version_number }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DashboardArn,
-DashboardId,
-RequestId,
-Status;
+dashboard_arn,
+dashboard_id,
+request_id,
+status;
 ```
 </TabItem>
 <TabItem value="update_dashboard">
@@ -809,12 +809,12 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND dashboard_id = '{{ dashboard_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-CreationStatus,
-DashboardId,
-RequestId,
-Status,
-VersionArn;
+arn,
+creation_status,
+dashboard_id,
+request_id,
+status,
+version_arn;
 ```
 </TabItem>
 </Tabs>

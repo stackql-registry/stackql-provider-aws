@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InternalStreamingException" /></td>
+    <td><CopyableCode code="internal_streaming_exception" /></td>
     <td><code>object</code></td>
     <td>An internal error occurred during the streaming of log data. This exception is thrown when there's an issue with the internal streaming mechanism used by the GetLogObject operation.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves a large logging object (LLO) and streams it back. This API is used to 
 
 ```sql
 SELECT
-InternalStreamingException,
+internal_streaming_exception,
 fields
 FROM aws.logs.log_objects
 WHERE region = '{{ region }}' -- required

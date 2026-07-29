@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SMBFileShareInfoList" /></td>
+    <td><CopyableCode code="smb_file_share_info_list" /></td>
     <td><code>array</code></td>
     <td>An array containing a description for each requested file share.</td>
 </tr>
@@ -140,7 +140,7 @@ Gets a description for one or more Server Message Block (SMB) file shares from a
 
 ```sql
 SELECT
-SMBFileShareInfoList
+smb_file_share_info_list
 FROM aws.storagegateway.smb_file_shares
 WHERE region = '{{ region }}' -- required
 ;
@@ -223,7 +223,7 @@ SELECT
 {{ OplocksEnabled }},
 '{{ region }}'
 RETURNING
-FileShareARN
+file_share_arn
 ;
 ```
 </TabItem>
@@ -381,7 +381,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND FileSharesVisible = {{ FileSharesVisible }} --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 <TabItem value="update_smb_file_share">
@@ -415,7 +415,7 @@ WHERE
 region = '{{ region }}' --required
 AND FileShareARN = '{{ FileShareARN }}' --required
 RETURNING
-FileShareARN;
+file_share_arn;
 ```
 </TabItem>
 </Tabs>

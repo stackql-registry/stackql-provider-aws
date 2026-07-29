@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metrics for the solution version. For more information, see Evaluating a solution version with metrics .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionVersionArn" /></td>
+    <td><CopyableCode code="solution_version_arn" /></td>
     <td><code>string</code></td>
     <td>The same solution version ARN as specified in the request. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -125,7 +125,7 @@ Gets the metrics for the specified solution version.
 ```sql
 SELECT
 metrics,
-solutionVersionArn
+solution_version_arn
 FROM aws.personalize.solution_metrics
 WHERE region = '{{ region }}' -- required
 ;

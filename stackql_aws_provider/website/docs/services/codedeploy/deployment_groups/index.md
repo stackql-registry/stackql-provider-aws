@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentGroupsInfo" /></td>
+    <td><CopyableCode code="deployment_groups_info" /></td>
     <td><code>array</code></td>
     <td>Information about the deployment groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Information about errors that might have occurred during the API call.</td>
 </tr>
@@ -76,117 +76,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="alarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>A list of alarms associated with the deployment group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The application name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoRollbackConfiguration" /></td>
+    <td><CopyableCode code="auto_rollback_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the automatic rollback configuration associated with the deployment group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoScalingGroups" /></td>
+    <td><CopyableCode code="auto_scaling_groups" /></td>
     <td><code>array</code></td>
     <td>A list of associated Auto Scaling groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueGreenDeploymentConfiguration" /></td>
+    <td><CopyableCode code="blue_green_deployment_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about blue/green deployment options for a deployment group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computePlatform" /></td>
+    <td><CopyableCode code="compute_platform" /></td>
     <td><code>string</code></td>
     <td>The destination platform type for the deployment (Lambda, Server, or ECS). (Server, Lambda, ECS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentConfigName" /></td>
+    <td><CopyableCode code="deployment_config_name" /></td>
     <td><code>string</code></td>
     <td>The deployment configuration name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentGroupId" /></td>
+    <td><CopyableCode code="deployment_group_id" /></td>
     <td><code>string</code></td>
     <td>The deployment group ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentGroupName" /></td>
+    <td><CopyableCode code="deployment_group_name" /></td>
     <td><code>string</code></td>
     <td>The deployment group name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStyle" /></td>
+    <td><CopyableCode code="deployment_style" /></td>
     <td><code>object</code></td>
     <td>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2TagFilters" /></td>
+    <td><CopyableCode code="ec_2_tag_filters" /></td>
     <td><code>array</code></td>
     <td>The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2TagSet" /></td>
+    <td><CopyableCode code="ec_2_tag_set" /></td>
     <td><code>object</code></td>
     <td>Information about groups of tags applied to an Amazon EC2 instance. The deployment group includes only Amazon EC2 instances identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ecsServices" /></td>
+    <td><CopyableCode code="ecs_services" /></td>
     <td><code>array</code></td>
     <td>The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format <code>&lt;clustername&gt;</code>:<code>&lt;servicename&gt;</code>.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeployment" /></td>
+    <td><CopyableCode code="last_attempted_deployment" /></td>
     <td><code>object</code></td>
     <td>Information about the most recent attempted deployment to the deployment group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSuccessfulDeployment" /></td>
+    <td><CopyableCode code="last_successful_deployment" /></td>
     <td><code>object</code></td>
     <td>Information about the most recent successful deployment to the deployment group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loadBalancerInfo" /></td>
+    <td><CopyableCode code="load_balancer_info" /></td>
     <td><code>object</code></td>
     <td>Information about the load balancer to use in a deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onPremisesInstanceTagFilters" /></td>
+    <td><CopyableCode code="on_premises_instance_tag_filters" /></td>
     <td><code>array</code></td>
     <td>The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of the specified tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="onPremisesTagSet" /></td>
+    <td><CopyableCode code="on_premises_tag_set" /></td>
     <td><code>object</code></td>
     <td>Information about groups of tags applied to an on-premises instance. The deployment group includes only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outdatedInstancesStrategy" /></td>
+    <td><CopyableCode code="outdated_instances_strategy" /></td>
     <td><code>string</code></td>
     <td>Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. If this option is set to UPDATE or is unspecified, CodeDeploy initiates one or more 'auto-update outdated instances' deployments to apply the deployed application revision to the new Amazon EC2 instances. If this option is set to IGNORE, CodeDeploy does not initiate a deployment to update the new Amazon EC2 instances. This may result in instances having different revisions. (UPDATE, IGNORE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceRoleArn" /></td>
+    <td><CopyableCode code="service_role_arn" /></td>
     <td><code>string</code></td>
     <td>A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to Amazon Web Services services on your behalf. For more information, see Create a Service Role for CodeDeploy in the CodeDeploy User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetRevision" /></td>
+    <td><CopyableCode code="target_revision" /></td>
     <td><code>object</code></td>
     <td>Information about the location of an application revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="terminationHookEnabled" /></td>
+    <td><CopyableCode code="termination_hook_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group. For more information about the termination hook, see How Amazon EC2 Auto Scaling works with CodeDeploy in the CodeDeploy User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="triggerConfigurations" /></td>
+    <td><CopyableCode code="trigger_configurations" /></td>
     <td><code>array</code></td>
     <td>Information about triggers associated with the deployment group.</td>
 </tr>
@@ -311,8 +311,8 @@ Gets information about one or more deployment groups.
 
 ```sql
 SELECT
-deploymentGroupsInfo,
-errorMessage
+deployment_groups_info,
+error_message
 FROM aws.codedeploy.deployment_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -324,29 +324,29 @@ Gets information about a deployment group.
 
 ```sql
 SELECT
-alarmConfiguration,
-applicationName,
-autoRollbackConfiguration,
-autoScalingGroups,
-blueGreenDeploymentConfiguration,
-computePlatform,
-deploymentConfigName,
-deploymentGroupId,
-deploymentGroupName,
-deploymentStyle,
-ec2TagFilters,
-ec2TagSet,
-ecsServices,
-lastAttemptedDeployment,
-lastSuccessfulDeployment,
-loadBalancerInfo,
-onPremisesInstanceTagFilters,
-onPremisesTagSet,
-outdatedInstancesStrategy,
-serviceRoleArn,
-targetRevision,
-terminationHookEnabled,
-triggerConfigurations
+alarm_configuration,
+application_name,
+auto_rollback_configuration,
+auto_scaling_groups,
+blue_green_deployment_configuration,
+compute_platform,
+deployment_config_name,
+deployment_group_id,
+deployment_group_name,
+deployment_style,
+ec_2_tag_filters,
+ec_2_tag_set,
+ecs_services,
+last_attempted_deployment,
+last_successful_deployment,
+load_balancer_info,
+on_premises_instance_tag_filters,
+on_premises_tag_set,
+outdated_instances_strategy,
+service_role_arn,
+target_revision,
+termination_hook_enabled,
+trigger_configurations
 FROM aws.codedeploy.deployment_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -425,7 +425,7 @@ SELECT
 {{ terminationHookEnabled }},
 '{{ region }}'
 RETURNING
-deploymentGroupId
+deployment_group_id
 ;
 ```
 </TabItem>
@@ -606,7 +606,7 @@ region = '{{ region }}' --required
 AND applicationName = '{{ applicationName }}' --required
 AND currentDeploymentGroupName = '{{ currentDeploymentGroupName }}' --required
 RETURNING
-hooksNotCleanedUp;
+hooks_not_cleaned_up;
 ```
 </TabItem>
 </Tabs>

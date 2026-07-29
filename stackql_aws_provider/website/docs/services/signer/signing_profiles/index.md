@@ -61,47 +61,47 @@ The following fields are returned by `SELECT` queries:
     <td>A list of overrides applied by the target signing profile for signing operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformDisplayName" /></td>
+    <td><CopyableCode code="platform_display_name" /></td>
     <td><code>string</code></td>
     <td>A human-readable name for the signing platform associated with the signing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformId" /></td>
+    <td><CopyableCode code="platform_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the platform that is used by the target signing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileName" /></td>
+    <td><CopyableCode code="profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the target signing profile. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileVersion" /></td>
+    <td><CopyableCode code="profile_version" /></td>
     <td><code>string</code></td>
     <td>The current version of the signing profile. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileVersionArn" /></td>
+    <td><CopyableCode code="profile_version_arn" /></td>
     <td><code>string</code></td>
     <td>The signing profile ARN, including the profile version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revocationRecord" /></td>
+    <td><CopyableCode code="revocation_record" /></td>
     <td><code>object</code></td>
     <td>Revocation information for a signing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signatureValidityPeriod" /></td>
+    <td><CopyableCode code="signature_validity_period" /></td>
     <td><code>object</code></td>
     <td>The validity period for a signing job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingMaterial" /></td>
+    <td><CopyableCode code="signing_material" /></td>
     <td><code>object</code></td>
     <td>The ARN of the certificate that the target profile uses for signing operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingParameters" /></td>
+    <td><CopyableCode code="signing_parameters" /></td>
     <td><code>object</code></td>
     <td>A map of key-value pairs for signing operations that is attached to the target signing profile.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the target signing profile. (Active, Canceled, Revoked)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Reason for the status of the target signing profile.</td>
 </tr>
@@ -140,42 +140,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) for the signing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformDisplayName" /></td>
+    <td><CopyableCode code="platform_display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformId" /></td>
+    <td><CopyableCode code="platform_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a platform that is available for use by a signing profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileName" /></td>
+    <td><CopyableCode code="profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the signing profile. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileVersion" /></td>
+    <td><CopyableCode code="profile_version" /></td>
     <td><code>string</code></td>
     <td>The version of a signing profile. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profileVersionArn" /></td>
+    <td><CopyableCode code="profile_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a signing profile, including the profile version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signatureValidityPeriod" /></td>
+    <td><CopyableCode code="signature_validity_period" /></td>
     <td><code>object</code></td>
     <td>The validity period for a signing job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingMaterial" /></td>
+    <td><CopyableCode code="signing_material" /></td>
     <td><code>object</code></td>
     <td>The ACM certificate that is used to sign your code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingParameters" /></td>
+    <td><CopyableCode code="signing_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters that are available for use by a Signer user.</td>
 </tr>
@@ -313,17 +313,17 @@ Returns information on a specific signing profile.
 SELECT
 arn,
 overrides,
-platformDisplayName,
-platformId,
-profileName,
-profileVersion,
-profileVersionArn,
-revocationRecord,
-signatureValidityPeriod,
-signingMaterial,
-signingParameters,
+platform_display_name,
+platform_id,
+profile_name,
+profile_version,
+profile_version_arn,
+revocation_record,
+signature_validity_period,
+signing_material,
+signing_parameters,
 status,
-statusReason,
+status_reason,
 tags
 FROM aws.signer.signing_profiles
 WHERE profile_name = '{{ profile_name }}' -- required
@@ -339,14 +339,14 @@ Lists all available signing profiles in your AWS account. Returns only profiles 
 ```sql
 SELECT
 arn,
-platformDisplayName,
-platformId,
-profileName,
-profileVersion,
-profileVersionArn,
-signatureValidityPeriod,
-signingMaterial,
-signingParameters,
+platform_display_name,
+platform_id,
+profile_name,
+profile_version,
+profile_version_arn,
+signature_validity_period,
+signing_material,
+signing_parameters,
 status,
 tags
 FROM aws.signer.signing_profiles
@@ -418,8 +418,8 @@ AND region = '{{ region }}' --required
 AND platformId = '{{ platformId }}' --required
 RETURNING
 arn,
-profileVersion,
-profileVersionArn;
+profile_version,
+profile_version_arn;
 ```
 </TabItem>
 </Tabs>

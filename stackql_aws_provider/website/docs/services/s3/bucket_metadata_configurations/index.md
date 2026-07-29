@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetadataConfigurationResult" /></td>
+    <td><CopyableCode code="metadata_configuration_result" /></td>
     <td><code>string</code></td>
     <td>The metadata configuration for a general purpose bucket.</td>
 </tr>
@@ -153,7 +153,7 @@ Retrieves the S3 Metadata configuration for a general purpose bucket. For more i
 
 ```sql
 SELECT
-MetadataConfigurationResult
+metadata_configuration_result
 FROM aws.s3.bucket_metadata_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

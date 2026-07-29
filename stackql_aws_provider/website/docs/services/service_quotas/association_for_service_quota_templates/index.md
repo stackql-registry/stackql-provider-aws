@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ServiceQuotaTemplateAssociationStatus" /></td>
+    <td><CopyableCode code="service_quota_template_association_status" /></td>
     <td><code>string</code></td>
     <td>The association status. If the status is ASSOCIATED, the quota increase requests in the template are automatically applied to new Amazon Web Services accounts in your organization. (ASSOCIATED, DISASSOCIATED)</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the status of the association for the quota request template.
 
 ```sql
 SELECT
-ServiceQuotaTemplateAssociationStatus
+service_quota_template_association_status
 FROM aws.service_quotas.association_for_service_quota_templates
 WHERE region = '{{ region }}' -- required
 ;

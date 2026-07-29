@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalysisReportId" /></td>
+    <td><CopyableCode code="analysis_report_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the query that ran when you requested an analysis report. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnalysisType" /></td>
+    <td><CopyableCode code="analysis_type" /></td>
     <td><code>string</code></td>
     <td>The type of traffic that will be used to generate a report. (TLS_SNI, HTTP_HOST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportTime" /></td>
+    <td><CopyableCode code="report_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the analysis report was ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the analysis report you specify. Statuses include RUNNING, COMPLETED, or FAILED.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a list of all traffic analysis reports generated within the last 30 days
 
 ```sql
 SELECT
-AnalysisReportId,
-AnalysisType,
-ReportTime,
-Status
+analysis_report_id,
+analysis_type,
+report_time,
+status
 FROM aws.network_firewall.analysis_reports
 WHERE region = '{{ region }}' -- required
 ;

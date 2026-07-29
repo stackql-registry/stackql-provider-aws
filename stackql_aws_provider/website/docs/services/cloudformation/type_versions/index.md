@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the extension version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the extension version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefaultVersion" /></td>
+    <td><CopyableCode code="is_default_version" /></td>
     <td><code>boolean</code></td>
     <td>Whether the specified extension version is set as the default version. This applies only to private extensions you have registered in your account, and extensions published by Amazon. For public third-party extensions, CloudFormation returns null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicVersionNumber" /></td>
+    <td><CopyableCode code="public_version_number" /></td>
     <td><code>string</code></td>
     <td>For public extensions that have been activated for this account and Region, the version of the public extension to be used for CloudFormation operations in this account and Region. For any extensions other than activated third-party extensions, CloudFormation returns null. How you specified AutoUpdate when enabling the extension affects whether CloudFormation automatically updates the extension in this account and Region when a new version is released. For more information, see Automatically use new versions of extensions in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeCreated" /></td>
+    <td><CopyableCode code="time_created" /></td>
     <td><code>string</code></td>
     <td>When the version was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The kind of extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a specific version of the extension. The version ID is the value at the end of the ARN assigned to the extension version when it's registered.</td>
 </tr>
@@ -189,14 +189,14 @@ Returns summary information about the versions of an extension.
 
 ```sql
 SELECT
-Arn,
-Description,
-IsDefaultVersion,
-PublicVersionNumber,
-TimeCreated,
-Type,
-TypeName,
-VersionId
+arn,
+description,
+is_default_version,
+public_version_number,
+time_created,
+type,
+type_name,
+version_id
 FROM aws.cloudformation.type_versions
 WHERE region = '{{ region }}' -- required
 AND Type = '{{ Type }}'

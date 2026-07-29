@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdjustmentType" /></td>
+    <td><CopyableCode code="adjustment_type" /></td>
     <td><code>string</code></td>
     <td>Specifies how the scaling adjustment is interpreted (for example, an absolute number or a percentage). The valid values are ChangeInCapacity, ExactCapacity, and PercentChangeInCapacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Alarms" /></td>
+    <td><CopyableCode code="alarms" /></td>
     <td><code>string</code></td>
     <td>The CloudWatch alarms related to the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Cooldown" /></td>
+    <td><CopyableCode code="cooldown" /></td>
     <td><code>integer</code></td>
     <td>The duration of the policy's cooldown period, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the policy is enabled (true) or disabled (false).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedInstanceWarmup" /></td>
+    <td><CopyableCode code="estimated_instance_warmup" /></td>
     <td><code>integer</code></td>
     <td>The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricAggregationType" /></td>
+    <td><CopyableCode code="metric_aggregation_type" /></td>
     <td><code>string</code></td>
     <td>The aggregation type for the CloudWatch metrics. The valid values are Minimum, Maximum, and Average.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinAdjustmentMagnitude" /></td>
+    <td><CopyableCode code="min_adjustment_magnitude" /></td>
     <td><code>integer</code></td>
     <td>The minimum value to scale by when the adjustment type is PercentChangeInCapacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinAdjustmentStep" /></td>
+    <td><CopyableCode code="min_adjustment_step" /></td>
     <td><code>integer</code></td>
     <td>Available for backward compatibility. Use MinAdjustmentMagnitude instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyARN" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scaling policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>One of the following policy types: TargetTrackingScaling StepScaling SimpleScaling (default) PredictiveScaling For more information, see Target tracking scaling policies and Step and simple scaling policies in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictiveScalingConfiguration" /></td>
+    <td><CopyableCode code="predictive_scaling_configuration" /></td>
     <td><code>string</code></td>
     <td>A predictive scaling policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingAdjustment" /></td>
+    <td><CopyableCode code="scaling_adjustment" /></td>
     <td><code>integer</code></td>
     <td>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepAdjustments" /></td>
+    <td><CopyableCode code="step_adjustments" /></td>
     <td><code>string</code></td>
     <td>A set of adjustments that enable you to scale based on the size of the alarm breach.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetTrackingConfiguration" /></td>
+    <td><CopyableCode code="target_tracking_configuration" /></td>
     <td><code>string</code></td>
     <td>A target tracking scaling policy.</td>
 </tr>
@@ -325,22 +325,22 @@ Gets information about the scaling policies in the account and Region.
 
 ```sql
 SELECT
-AdjustmentType,
-Alarms,
-AutoScalingGroupName,
-Cooldown,
-Enabled,
-EstimatedInstanceWarmup,
-MetricAggregationType,
-MinAdjustmentMagnitude,
-MinAdjustmentStep,
-PolicyARN,
-PolicyName,
-PolicyType,
-PredictiveScalingConfiguration,
-ScalingAdjustment,
-StepAdjustments,
-TargetTrackingConfiguration
+adjustment_type,
+alarms,
+auto_scaling_group_name,
+cooldown,
+enabled,
+estimated_instance_warmup,
+metric_aggregation_type,
+min_adjustment_magnitude,
+min_adjustment_step,
+policy_arn,
+policy_name,
+policy_type,
+predictive_scaling_configuration,
+scaling_adjustment,
+step_adjustments,
+target_tracking_configuration
 FROM aws.autoscaling.policies
 WHERE region = '{{ region }}' -- required
 AND AutoScalingGroupName = '{{ AutoScalingGroupName }}'
@@ -387,8 +387,8 @@ AND TargetTrackingConfiguration = '{{ TargetTrackingConfiguration}}'
 AND Enabled = {{ Enabled}}
 AND PredictiveScalingConfiguration = '{{ PredictiveScalingConfiguration}}'
 RETURNING
-Alarms,
-PolicyARN;
+alarms,
+policy_arn;
 ```
 </TabItem>
 </Tabs>

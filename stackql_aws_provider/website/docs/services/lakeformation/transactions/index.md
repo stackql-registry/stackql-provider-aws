@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TransactionEndTime" /></td>
+    <td><CopyableCode code="transaction_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the transaction committed or aborted, if it is not currently active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransactionId" /></td>
+    <td><CopyableCode code="transaction_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transaction. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransactionStartTime" /></td>
+    <td><CopyableCode code="transaction_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the transaction started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransactionStatus" /></td>
+    <td><CopyableCode code="transaction_status" /></td>
     <td><code>string</code></td>
     <td>A status of ACTIVE, COMMITTED, or ABORTED. (ACTIVE, COMMITTED, ABORTED, COMMIT_IN_PROGRESS)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token indicating whether additional data is available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Transactions" /></td>
+    <td><CopyableCode code="transactions" /></td>
     <td><code>array</code></td>
     <td>A list of transactions. The record for each transaction is a TransactionDescription object.</td>
 </tr>
@@ -181,10 +181,10 @@ Returns the details of a single transaction.
 
 ```sql
 SELECT
-TransactionEndTime,
-TransactionId,
-TransactionStartTime,
-TransactionStatus
+transaction_end_time,
+transaction_id,
+transaction_start_time,
+transaction_status
 FROM aws.lakeformation.transactions
 WHERE region = '{{ region }}' -- required
 ;
@@ -196,8 +196,8 @@ Returns metadata about transactions and their status. To prevent the response fr
 
 ```sql
 SELECT
-NextToken,
-Transactions
+next_token,
+transactions
 FROM aws.lakeformation.transactions
 WHERE region = '{{ region }}' -- required
 ;

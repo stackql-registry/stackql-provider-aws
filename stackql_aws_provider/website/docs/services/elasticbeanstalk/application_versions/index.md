@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application to which the application version belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionArn" /></td>
+    <td><CopyableCode code="application_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuildArn" /></td>
+    <td><CopyableCode code="build_arn" /></td>
     <td><code>string</code></td>
     <td>Reference to the artifact from the AWS CodeBuild build.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The creation date of the application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The last modified date of the application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBuildInformation" /></td>
+    <td><CopyableCode code="source_build_information" /></td>
     <td><code>string</code></td>
     <td>If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBundle" /></td>
+    <td><CopyableCode code="source_bundle" /></td>
     <td><code>string</code></td>
     <td>The storage location of the application version's source bundle in Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The processing status of the application version. Reflects the state of the application version during its creation. Many of the values are only applicable if you specified True for the Process parameter of the CreateApplicationVersion action. The following list describes the possible values. Unprocessed – Application version wasn't pre-processed or validated. Elastic Beanstalk will validate configuration files during deployment of the application version to an environment. Processing – Elastic Beanstalk is currently processing the application version. Building – Application version is currently undergoing an AWS CodeBuild build. Processed – Elastic Beanstalk was successfully pre-processed and validated. Failed – Either the AWS CodeBuild build failed or configuration files didn't pass validation. This application version isn't usable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the application version.</td>
 </tr>
@@ -255,16 +255,16 @@ Retrieve a list of application versions.
 
 ```sql
 SELECT
-ApplicationName,
-ApplicationVersionArn,
-BuildArn,
-DateCreated,
-DateUpdated,
-Description,
-SourceBuildInformation,
-SourceBundle,
-Status,
-VersionLabel
+application_name,
+application_version_arn,
+build_arn,
+date_created,
+date_updated,
+description,
+source_build_information,
+source_bundle,
+status,
+version_label
 FROM aws.elasticbeanstalk.application_versions
 WHERE region = '{{ region }}' -- required
 AND ApplicationName = '{{ ApplicationName }}'
@@ -315,16 +315,16 @@ SELECT
 '{{ Process }}',
 '{{ Tags }}'
 RETURNING
-ApplicationName,
-ApplicationVersionArn,
-BuildArn,
-DateCreated,
-DateUpdated,
-Description,
-SourceBuildInformation,
-SourceBundle,
-Status,
-VersionLabel
+application_name,
+application_version_arn,
+build_arn,
+date_created,
+date_updated,
+description,
+source_build_information,
+source_bundle,
+status,
+version_label
 ;
 ```
 </TabItem>
@@ -398,16 +398,16 @@ AND VersionLabel = '{{ VersionLabel }}' --required
 AND region = '{{ region }}' --required
 AND Description = '{{ Description}}'
 RETURNING
-ApplicationName,
-ApplicationVersionArn,
-BuildArn,
-DateCreated,
-DateUpdated,
-Description,
-SourceBuildInformation,
-SourceBundle,
-Status,
-VersionLabel;
+application_name,
+application_version_arn,
+build_arn,
+date_created,
+date_updated,
+description,
+source_build_information,
+source_bundle,
+status,
+version_label;
 ```
 </TabItem>
 </Tabs>

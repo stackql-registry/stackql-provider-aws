@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assetTypeItem" /></td>
+    <td><CopyableCode code="asset_type_item" /></td>
     <td><code>object</code></td>
     <td>The asset type included in the results of the SearchTypes action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formTypeItem" /></td>
+    <td><CopyableCode code="form_type_item" /></td>
     <td><code>object</code></td>
     <td>The form type included in the results of the SearchTypes action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineageNodeTypeItem" /></td>
+    <td><CopyableCode code="lineage_node_type_item" /></td>
     <td><code>object</code></td>
     <td>The details of a data lineage node type.</td>
 </tr>
@@ -134,9 +134,9 @@ Searches for types in Amazon DataZone. Prerequisites: The --domain-identifier mu
 
 ```sql
 SELECT
-assetTypeItem,
-formTypeItem,
-lineageNodeTypeItem
+asset_type_item,
+form_type_item,
+lineage_node_type_item
 FROM aws.datazone.types
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the principal that can be associated with a resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the principal was associated with the resource share.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates the relationship between the Amazon Web Services account the principal belongs to and the account that owns the resource share: True – The two accounts belong to same organization. False – The two accounts do not belong to the same organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the association between the resource share and the principal was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a resource share the principal is associated with.</td>
 </tr>
@@ -140,10 +140,10 @@ Lists the principals that you are sharing resources with or that are sharing res
 ```sql
 SELECT
 id,
-creationTime,
+creation_time,
 external,
-lastUpdatedTime,
-resourceShareArn
+last_updated_time,
+resource_share_arn
 FROM aws.ram.principals
 WHERE region = '{{ region }}' -- required
 ;

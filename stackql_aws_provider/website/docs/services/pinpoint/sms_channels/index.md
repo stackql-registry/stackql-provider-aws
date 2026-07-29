@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the SMS channel applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the SMS channel was enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the SMS channel is enabled for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasCredential" /></td>
+    <td><CopyableCode code="has_credential" /></td>
     <td><code>boolean</code></td>
     <td>(Not used) This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) An identifier for the SMS channel. This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the SMS channel is archived.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The user who last modified the SMS channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the SMS channel was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The type of messaging or notification platform for the channel. For the SMS channel, this value is SMS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromotionalMessagesPerSecond" /></td>
+    <td><CopyableCode code="promotional_messages_per_second" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of promotional messages that you can send through the SMS channel each second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SenderId" /></td>
+    <td><CopyableCode code="sender_id" /></td>
     <td><code>string</code></td>
     <td>The identity that displays on recipients' devices when they receive messages from the SMS channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShortCode" /></td>
+    <td><CopyableCode code="short_code" /></td>
     <td><code>string</code></td>
     <td>The registered short code to use when you send messages through the SMS channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransactionalMessagesPerSecond" /></td>
+    <td><CopyableCode code="transactional_messages_per_second" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of transactional messages that you can send through the SMS channel each second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The current version of the SMS channel.</td>
 </tr>
@@ -203,20 +203,20 @@ Retrieves information about the status and settings of the SMS channel for an ap
 
 ```sql
 SELECT
-ApplicationId,
-CreationDate,
-Enabled,
-HasCredential,
-Id,
-IsArchived,
-LastModifiedBy,
-LastModifiedDate,
-Platform,
-PromotionalMessagesPerSecond,
-SenderId,
-ShortCode,
-TransactionalMessagesPerSecond,
-Version
+application_id,
+creation_date,
+enabled,
+has_credential,
+id,
+is_archived,
+last_modified_by,
+last_modified_date,
+platform,
+promotional_messages_per_second,
+sender_id,
+short_code,
+transactional_messages_per_second,
+version
 FROM aws.pinpoint.sms_channels
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,7 +247,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND SMSChannelRequest = '{{ SMSChannelRequest }}' --required
 RETURNING
-SMSChannelResponse;
+sms_channel_response;
 ```
 </TabItem>
 </Tabs>

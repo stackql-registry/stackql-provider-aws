@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The DNS address of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointCreateTime" /></td>
+    <td><CopyableCode code="endpoint_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointStatus" /></td>
+    <td><CopyableCode code="endpoint_status" /></td>
     <td><code>string</code></td>
     <td>The status of the VPC endpoint.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>The port number on which Amazon Redshift Serverless accepts incoming connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifier of subnets where Amazon Redshift Serverless choose to deploy the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpoint" /></td>
+    <td><CopyableCode code="vpc_endpoint" /></td>
     <td><code>object</code></td>
     <td>The connection endpoint for connecting to Amazon Redshift Serverless.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>array</code></td>
     <td>The security groups associated with the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup associated with the endpoint.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>The DNS address of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointCreateTime" /></td>
+    <td><CopyableCode code="endpoint_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointStatus" /></td>
+    <td><CopyableCode code="endpoint_status" /></td>
     <td><code>string</code></td>
     <td>The status of the VPC endpoint.</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>The port number on which Amazon Redshift Serverless accepts incoming connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifier of subnets where Amazon Redshift Serverless choose to deploy the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpoint" /></td>
+    <td><CopyableCode code="vpc_endpoint" /></td>
     <td><code>object</code></td>
     <td>The connection endpoint for connecting to Amazon Redshift Serverless.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>array</code></td>
     <td>The security groups associated with the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup associated with the endpoint.</td>
 </tr>
@@ -259,15 +259,15 @@ Returns information, such as the name, about a VPC endpoint.
 ```sql
 SELECT
 address,
-endpointArn,
-endpointCreateTime,
-endpointName,
-endpointStatus,
+endpoint_arn,
+endpoint_create_time,
+endpoint_name,
+endpoint_status,
 port,
-subnetIds,
-vpcEndpoint,
-vpcSecurityGroups,
-workgroupName
+subnet_ids,
+vpc_endpoint,
+vpc_security_groups,
+workgroup_name
 FROM aws.redshift_serverless.endpoint_access
 WHERE region = '{{ region }}' -- required
 ;
@@ -280,15 +280,15 @@ Returns an array of EndpointAccess objects and relevant information.
 ```sql
 SELECT
 address,
-endpointArn,
-endpointCreateTime,
-endpointName,
-endpointStatus,
+endpoint_arn,
+endpoint_create_time,
+endpoint_name,
+endpoint_status,
 port,
-subnetIds,
-vpcEndpoint,
-vpcSecurityGroups,
-workgroupName
+subnet_ids,
+vpc_endpoint,
+vpc_security_groups,
+workgroup_name
 FROM aws.redshift_serverless.endpoint_access
 WHERE region = '{{ region }}' -- required
 ;

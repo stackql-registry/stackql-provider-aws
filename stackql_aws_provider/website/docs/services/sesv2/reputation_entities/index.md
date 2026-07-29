@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsSesManagedStatus" /></td>
+    <td><CopyableCode code="aws_ses_managed_status" /></td>
     <td><code>object</code></td>
     <td>The Amazon Web Services Amazon SES-managed status record for this reputation entity, including the current status, cause description, and last updated timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerManagedStatus" /></td>
+    <td><CopyableCode code="customer_managed_status" /></td>
     <td><code>object</code></td>
     <td>The customer-managed status record for this reputation entity, including the current status, cause description, and last updated timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationEntityReference" /></td>
+    <td><CopyableCode code="reputation_entity_reference" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for a reputation entity. For resource-type entities, this is the Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationEntityType" /></td>
+    <td><CopyableCode code="reputation_entity_type" /></td>
     <td><code>string</code></td>
     <td>The type of reputation entity. Currently, only RESOURCE type entities are supported, which represent resources in your Amazon SES account that have reputation tracking capabilities. (RESOURCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationImpact" /></td>
+    <td><CopyableCode code="reputation_impact" /></td>
     <td><code>string</code></td>
     <td>The reputation impact level for this entity, representing the highest impact reputation finding currently active. Reputation findings can be retrieved using the ListRecommendations operation. (LOW, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationManagementPolicy" /></td>
+    <td><CopyableCode code="reputation_management_policy" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the reputation management policy applied to this entity. This is an Amazon Web Services Amazon SES-managed policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingStatusAggregate" /></td>
+    <td><CopyableCode code="sending_status_aggregate" /></td>
     <td><code>string</code></td>
     <td>The aggregate sending status that determines whether the entity is allowed to send emails. This status is derived from both the customer-managed and Amazon Web Services Amazon SES-managed statuses. If either the customer-managed status or the Amazon Web Services Amazon SES-managed status is DISABLED, the aggregate status will be DISABLED and the entity will not be allowed to send emails. When the customer-managed status is set to REINSTATED, the entity can continue sending even if there are active reputation findings, provided the Amazon Web Services Amazon SES-managed status also permits sending. The entity can only send emails when both statuses permit sending. (ENABLED, REINSTATED, DISABLED)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsSesManagedStatus" /></td>
+    <td><CopyableCode code="aws_ses_managed_status" /></td>
     <td><code>object</code></td>
     <td>The Amazon Web Services Amazon SES-managed status record for this reputation entity, including the current status, cause description, and last updated timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerManagedStatus" /></td>
+    <td><CopyableCode code="customer_managed_status" /></td>
     <td><code>object</code></td>
     <td>The customer-managed status record for this reputation entity, including the current status, cause description, and last updated timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationEntityReference" /></td>
+    <td><CopyableCode code="reputation_entity_reference" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for a reputation entity. For resource-type entities, this is the Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationEntityType" /></td>
+    <td><CopyableCode code="reputation_entity_type" /></td>
     <td><code>string</code></td>
     <td>The type of reputation entity. Currently, only RESOURCE type entities are supported, which represent resources in your Amazon SES account that have reputation tracking capabilities. (RESOURCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationImpact" /></td>
+    <td><CopyableCode code="reputation_impact" /></td>
     <td><code>string</code></td>
     <td>The reputation impact level for this entity, representing the highest impact reputation finding currently active. Reputation findings can be retrieved using the ListRecommendations operation. (LOW, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationManagementPolicy" /></td>
+    <td><CopyableCode code="reputation_management_policy" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the reputation management policy applied to this entity. This is an Amazon Web Services Amazon SES-managed policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingStatusAggregate" /></td>
+    <td><CopyableCode code="sending_status_aggregate" /></td>
     <td><code>string</code></td>
     <td>The aggregate sending status that determines whether the entity is allowed to send emails. This status is derived from both the customer-managed and Amazon Web Services Amazon SES-managed statuses. If either the customer-managed status or the Amazon Web Services Amazon SES-managed status is DISABLED, the aggregate status will be DISABLED and the entity will not be allowed to send emails. When the customer-managed status is set to REINSTATED, the entity can continue sending even if there are active reputation findings, provided the Amazon Web Services Amazon SES-managed status also permits sending. The entity can only send emails when both statuses permit sending. (ENABLED, REINSTATED, DISABLED)</td>
 </tr>
@@ -231,13 +231,13 @@ Retrieve information about a specific reputation entity, including its reputatio
 
 ```sql
 SELECT
-AwsSesManagedStatus,
-CustomerManagedStatus,
-ReputationEntityReference,
-ReputationEntityType,
-ReputationImpact,
-ReputationManagementPolicy,
-SendingStatusAggregate
+aws_ses_managed_status,
+customer_managed_status,
+reputation_entity_reference,
+reputation_entity_type,
+reputation_impact,
+reputation_management_policy,
+sending_status_aggregate
 FROM aws.sesv2.reputation_entities
 WHERE reputation_entity_reference = '{{ reputation_entity_reference }}' -- required
 AND reputation_entity_type = '{{ reputation_entity_type }}' -- required
@@ -251,13 +251,13 @@ List reputation entities in your Amazon SES account in the current Amazon Web Se
 
 ```sql
 SELECT
-AwsSesManagedStatus,
-CustomerManagedStatus,
-ReputationEntityReference,
-ReputationEntityType,
-ReputationImpact,
-ReputationManagementPolicy,
-SendingStatusAggregate
+aws_ses_managed_status,
+customer_managed_status,
+reputation_entity_reference,
+reputation_entity_type,
+reputation_impact,
+reputation_management_policy,
+sending_status_aggregate
 FROM aws.sesv2.reputation_entities
 WHERE region = '{{ region }}' -- required
 ;

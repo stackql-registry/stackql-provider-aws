@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the collection summary. Can be used to reference the collection in IAM policy or cross-account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Unique ID for the CIDR collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of a CIDR collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>A sequential counter that Route 53 sets to 1 when you create a CIDR collection and increments by 1 each time you update settings for the CIDR collection.</td>
 </tr>
@@ -163,10 +163,10 @@ Returns a paginated list of CIDR collections in the Amazon Web Services account 
 
 ```sql
 SELECT
-Arn,
-Id,
-Name,
-Version
+arn,
+id,
+name,
+version
 FROM aws.route53.cidr_collections
 WHERE region = '{{ region }}' -- required
 AND nexttoken = '{{ nexttoken }}'
@@ -201,8 +201,8 @@ SELECT
 '{{ CallerReference }}' /* required */,
 '{{ region }}'
 RETURNING
-Collection,
-Location
+collection,
+location
 ;
 ```
 </TabItem>

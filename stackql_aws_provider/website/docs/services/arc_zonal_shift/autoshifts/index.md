@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awayFrom" /></td>
+    <td><CopyableCode code="away_from" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone (for example, use1-az1) that traffic is shifted away from for a resource when Amazon Web Services starts an autoshift. Until the autoshift ends, traffic for the resource is instead directed to other Availability Zones in the Amazon Web Services Region. An autoshift can end for a resource, for example, when Amazon Web Services ends the autoshift for the Availability Zone or when you disable zonal autoshift for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time (in UTC) when the autoshift ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time (in UTC) when the autoshift started.</td>
 </tr>
@@ -149,9 +149,9 @@ Returns the autoshifts for an Amazon Web Services Region. By default, the call r
 
 ```sql
 SELECT
-awayFrom,
-endTime,
-startTime,
+away_from,
+end_time,
+start_time,
 status
 FROM aws.arc_zonal_shift.autoshifts
 WHERE region = '{{ region }}' -- required

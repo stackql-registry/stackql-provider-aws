@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlexaSkillIds" /></td>
+    <td><CopyableCode code="alexa_skill_ids" /></td>
     <td><code>array</code></td>
     <td>The ID of the Alexa Skill configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlexaSkillStatus" /></td>
+    <td><CopyableCode code="alexa_skill_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Alexa Skill configuration. (ACTIVE, INACTIVE)</td>
 </tr>
@@ -136,8 +136,8 @@ Gets the Alexa Skill configuration for the SIP media application. Due to changes
 
 ```sql
 SELECT
-AlexaSkillIds,
-AlexaSkillStatus
+alexa_skill_ids,
+alexa_skill_status
 FROM aws.chime_sdk_voice.sip_media_application_alexa_skill_configurations
 WHERE sip_media_application_id = '{{ sip_media_application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -167,7 +167,7 @@ WHERE
 sip_media_application_id = '{{ sip_media_application_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-SipMediaApplicationAlexaSkillConfiguration;
+sip_media_application_alexa_skill_configuration;
 ```
 </TabItem>
 </Tabs>

@@ -55,42 +55,42 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the attributes of a link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectivityType" /></td>
+    <td><CopyableCode code="connectivity_type" /></td>
     <td><code>string</code></td>
     <td>The connectivity type of the link. (DEFAULT, PUBLIC_INGRESS, PUBLIC_EGRESS, EXTERNAL_INBOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the inbound external link was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name. (pattern: &lt;code&gt;(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?)(?:\.(?:&#91;a-z0-9&#93;(?:&#91;a-z0-9-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?))+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowModules" /></td>
+    <td><CopyableCode code="flow_modules" /></td>
     <td><code>array</code></td>
     <td>The configuration of flow modules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the link. (pattern: &lt;code&gt;link-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logSettings" /></td>
+    <td><CopyableCode code="log_settings" /></td>
     <td><code>object</code></td>
     <td>Describes the settings for a link log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingFlowModules" /></td>
+    <td><CopyableCode code="pending_flow_modules" /></td>
     <td><code>array</code></td>
     <td>The configuration of pending flow modules.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of the key-value pairs for the tag or tags assigned to the specified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the inbound external link was updated.</td>
 </tr>
@@ -199,17 +199,17 @@ Retrieves information about an inbound external link.
 ```sql
 SELECT
 attributes,
-connectivityType,
-createdAt,
-domainName,
-flowModules,
-gatewayId,
-linkId,
-logSettings,
-pendingFlowModules,
+connectivity_type,
+created_at,
+domain_name,
+flow_modules,
+gateway_id,
+link_id,
+log_settings,
+pending_flow_modules,
 status,
 tags,
-updatedAt
+updated_at
 FROM aws.rtbfabric.inbound_external_links
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND link_id = '{{ link_id }}' -- required
@@ -250,9 +250,9 @@ SELECT
 '{{ gateway_id }}',
 '{{ region }}'
 RETURNING
-domainName,
-gatewayId,
-linkId,
+domain_name,
+gateway_id,
+link_id,
 status
 ;
 ```

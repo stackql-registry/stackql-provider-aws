@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string</code></td>
     <td>The time (UTC) when the token expires. After this timestamp, the token will no longer be valid for authentication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Token" /></td>
+    <td><CopyableCode code="token" /></td>
     <td><code>string</code></td>
     <td>The encrypted authentication token containing the caller's Amazon Web Services IAM Identity Center identity information. This token is encrypted using Key Management Service and can only be decrypted by the specified Amazon Redshift clusters. Use this token with Amazon Redshift drivers to authenticate using your Amazon Web Services IAM Identity Center identity.</td>
 </tr>
@@ -129,8 +129,8 @@ Generates an encrypted authentication token that propagates the caller's Amazon 
 
 ```sql
 SELECT
-ExpirationTime,
-Token
+expiration_time,
+token
 FROM aws.redshift.identity_center_auth_tokens
 WHERE ClusterIds = '{{ ClusterIds }}' -- required
 AND region = '{{ region }}' -- required

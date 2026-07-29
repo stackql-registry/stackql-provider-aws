@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataStore" /></td>
+    <td><CopyableCode code="data_store" /></td>
     <td><code>object</code></td>
     <td>True if data store is enabled for this domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeadLetterQueueUrl" /></td>
+    <td><CopyableCode code="dead_letter_queue_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting data from third party applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultEncryptionKey" /></td>
+    <td><CopyableCode code="default_encryption_key" /></td>
     <td><code>string</code></td>
     <td>The default encryption key, which is an AWS managed key, is used when no specific type of encryption key is specified. It is used to encrypt all data before it is placed in permanent or semi-permanent storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultExpirationDays" /></td>
+    <td><CopyableCode code="default_expiration_days" /></td>
     <td><code>integer</code></td>
     <td>The default number of days until the data within the domain expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was most recently edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Matching" /></td>
+    <td><CopyableCode code="matching" /></td>
     <td><code>object</code></td>
     <td>The process of matching duplicate profiles. If Matching = true, Amazon Connect Customer Profiles starts a weekly batch process called Identity Resolution Job. If you do not specify a date and time for Identity Resolution Job to run, by default it runs every Saturday at 12AM UTC to detect duplicate profiles in your domains. After the Identity Resolution Job completes, use the GetMatches API to return and review the results. Or, if you have configured ExportingConfig in the MatchingRequest, you can download the results from S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleBasedMatching" /></td>
+    <td><CopyableCode code="rule_based_matching" /></td>
     <td><code>object</code></td>
     <td>The process of matching duplicate profiles using the Rule-Based matching. If RuleBasedMatching = true, Amazon Connect Customer Profiles will start to match and merge your profiles according to your configuration in the RuleBasedMatchingRequest. You can use the ListRuleBasedMatches and GetSimilarProfiles API to return and review the results. Also, if you have configured ExportingConfig in the RuleBasedMatchingRequest, you can download the results from S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Stats" /></td>
+    <td><CopyableCode code="stats" /></td>
     <td><code>object</code></td>
     <td>Usage-specific statistics about the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The list of ListDomains instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token from the previous ListDomains API call.</td>
 </tr>
@@ -264,17 +264,17 @@ Returns information about a specific domain.
 
 ```sql
 SELECT
-CreatedAt,
-DataStore,
-DeadLetterQueueUrl,
-DefaultEncryptionKey,
-DefaultExpirationDays,
-DomainName,
-LastUpdatedAt,
-Matching,
-RuleBasedMatching,
-Stats,
-Tags
+created_at,
+data_store,
+dead_letter_queue_url,
+default_encryption_key,
+default_expiration_days,
+domain_name,
+last_updated_at,
+matching,
+rule_based_matching,
+stats,
+tags
 FROM aws.customer_profiles.domains
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -287,8 +287,8 @@ Returns a list of all the domains for an AWS account that have been created.
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.domains
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -335,16 +335,16 @@ SELECT
 '{{ domain_name }}',
 '{{ region }}'
 RETURNING
-CreatedAt,
-DataStore,
-DeadLetterQueueUrl,
-DefaultEncryptionKey,
-DefaultExpirationDays,
-DomainName,
-LastUpdatedAt,
-Matching,
-RuleBasedMatching,
-Tags
+created_at,
+data_store,
+dead_letter_queue_url,
+default_encryption_key,
+default_expiration_days,
+domain_name,
+last_updated_at,
+matching,
+rule_based_matching,
+tags
 ;
 ```
 </TabItem>
@@ -449,16 +449,16 @@ WHERE
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreatedAt,
-DataStore,
-DeadLetterQueueUrl,
-DefaultEncryptionKey,
-DefaultExpirationDays,
-DomainName,
-LastUpdatedAt,
-Matching,
-RuleBasedMatching,
-Tags;
+created_at,
+data_store,
+dead_letter_queue_url,
+default_encryption_key,
+default_expiration_days,
+domain_name,
+last_updated_at,
+matching,
+rule_based_matching,
+tags;
 ```
 </TabItem>
 </Tabs>

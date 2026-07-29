@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the cluster for which the recommendation is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time (UTC) that the recommendation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the Advisor recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImpactRanking" /></td>
+    <td><CopyableCode code="impact_ranking" /></td>
     <td><code>string</code></td>
     <td>The scale of the impact that the Advisor recommendation has to the performance and cost of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NamespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Redshift cluster namespace ARN for which the recommendations is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Observation" /></td>
+    <td><CopyableCode code="observation" /></td>
     <td><code>string</code></td>
     <td>The description of what was observed about your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationText" /></td>
+    <td><CopyableCode code="recommendation_text" /></td>
     <td><code>string</code></td>
     <td>The description of the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationType" /></td>
+    <td><CopyableCode code="recommendation_type" /></td>
     <td><code>string</code></td>
     <td>The type of Advisor recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendedActions" /></td>
+    <td><CopyableCode code="recommended_actions" /></td>
     <td><code>string</code></td>
     <td>List of Amazon Redshift recommended actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferenceLinks" /></td>
+    <td><CopyableCode code="reference_links" /></td>
     <td><code>string</code></td>
     <td>List of helpful links for more information about the Advisor recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of the recommendation.</td>
 </tr>
@@ -194,18 +194,18 @@ List the Amazon Redshift Advisor recommendations for one or multiple Amazon Reds
 
 ```sql
 SELECT
-ClusterIdentifier,
-CreatedAt,
-Description,
-Id,
-ImpactRanking,
-NamespaceArn,
-Observation,
-RecommendationText,
-RecommendationType,
-RecommendedActions,
-ReferenceLinks,
-Title
+cluster_identifier,
+created_at,
+description,
+id,
+impact_ranking,
+namespace_arn,
+observation,
+recommendation_text,
+recommendation_type,
+recommended_actions,
+reference_links,
+title
 FROM aws.redshift.recommendations
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'

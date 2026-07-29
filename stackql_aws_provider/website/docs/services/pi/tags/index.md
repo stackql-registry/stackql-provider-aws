@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The metadata assigned to an Amazon RDS resource consisting of a key-value pair.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves all the metadata tags associated with Amazon RDS Performance Insights 
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.pi.tags
 WHERE region = '{{ region }}' -- required
 ;

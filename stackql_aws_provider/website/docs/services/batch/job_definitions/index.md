@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="consumableResourceProperties" /></td>
+    <td><CopyableCode code="consumable_resource_properties" /></td>
     <td><code>object</code></td>
     <td>Contains a list of consumable resources required by the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerOrchestrationType" /></td>
+    <td><CopyableCode code="container_orchestration_type" /></td>
     <td><code>string</code></td>
     <td>The orchestration type of the compute environment. The valid values are ECS (default) or EKS. (ECS, EKS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerProperties" /></td>
+    <td><CopyableCode code="container_properties" /></td>
     <td><code>object</code></td>
     <td>An object with properties specific to Amazon ECS-based jobs. When containerProperties is used in the job definition, it can't be used in addition to eksProperties, ecsProperties, or nodeProperties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ecsProperties" /></td>
+    <td><CopyableCode code="ecs_properties" /></td>
     <td><code>object</code></td>
     <td>An object that contains the properties for the Amazon ECS resources of a job.When ecsProperties is used in the job definition, it can't be used in addition to containerProperties, eksProperties, or nodeProperties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eksProperties" /></td>
+    <td><CopyableCode code="eks_properties" /></td>
     <td><code>object</code></td>
     <td>An object with properties that are specific to Amazon EKS-based jobs. When eksProperties is used in the job definition, it can't be used in addition to containerProperties, ecsProperties, or nodeProperties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDefinitionArn" /></td>
+    <td><CopyableCode code="job_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the job definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDefinitionName" /></td>
+    <td><CopyableCode code="job_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the job definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeProperties" /></td>
+    <td><CopyableCode code="node_properties" /></td>
     <td><code>object</code></td>
     <td>An object with properties that are specific to multi-node parallel jobs. When nodeProperties is used in the job definition, it can't be used in addition to containerProperties, ecsProperties, or eksProperties. If the job runs on Fargate resources, don't specify nodeProperties. Use containerProperties instead.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
     <td>Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a SubmitJob request override any corresponding parameter defaults from the job definition. For more information about specifying parameters, see Job definition parameters in the Batch User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformCapabilities" /></td>
+    <td><CopyableCode code="platform_capabilities" /></td>
     <td><code>array</code></td>
     <td>The platform capabilities required by the job definition. If no value is specified, it defaults to EC2. Jobs run on Fargate resources specify FARGATE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propagateTags" /></td>
+    <td><CopyableCode code="propagate_tags" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether to propagate the tags from the job or job definition to the corresponding Amazon ECS task. If no value is specified, the tags aren't propagated. Tags can only be propagated to the tasks when the tasks are created. For tags with the same name, job tags are given priority over job definitions tags. If the total number of combined tags from the job and job definition is over 50, the job is moved to the FAILED state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retryStrategy" /></td>
+    <td><CopyableCode code="retry_strategy" /></td>
     <td><code>object</code></td>
     <td>The retry strategy to use for failed jobs that are submitted with this job definition.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The revision of the job definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schedulingPriority" /></td>
+    <td><CopyableCode code="scheduling_priority" /></td>
     <td><code>integer</code></td>
     <td>The scheduling priority of the job definition. This only affects jobs in job queues with a fair-share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority.</td>
 </tr>
@@ -218,20 +218,20 @@ Describes a list of job definitions. You can specify a status (such as ACTIVE) t
 
 ```sql
 SELECT
-consumableResourceProperties,
-containerOrchestrationType,
-containerProperties,
-ecsProperties,
-eksProperties,
-jobDefinitionArn,
-jobDefinitionName,
-nodeProperties,
+consumable_resource_properties,
+container_orchestration_type,
+container_properties,
+ecs_properties,
+eks_properties,
+job_definition_arn,
+job_definition_name,
+node_properties,
 parameters,
-platformCapabilities,
-propagateTags,
-retryStrategy,
+platform_capabilities,
+propagate_tags,
+retry_strategy,
 revision,
-schedulingPriority,
+scheduling_priority,
 status,
 tags,
 timeout,
@@ -292,8 +292,8 @@ SELECT
 '{{ consumableResourceProperties }}',
 '{{ region }}'
 RETURNING
-jobDefinitionArn,
-jobDefinitionName,
+job_definition_arn,
+job_definition_name,
 revision
 ;
 ```

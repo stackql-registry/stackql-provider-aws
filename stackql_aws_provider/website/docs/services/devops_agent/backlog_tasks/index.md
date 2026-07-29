@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the agent space containing this task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this task was created</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Optional detailed description of the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution ID associated with this task, if any</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hasLinkedTasks" /></td>
+    <td><CopyableCode code="has_linked_tasks" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if this task has other tasks linked to it</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>Optional metadata for the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="primaryTaskId" /></td>
+    <td><CopyableCode code="primary_task_id" /></td>
     <td><code>string</code></td>
     <td>The task ID of the primary investigation this task is linked to</td>
 </tr>
@@ -101,22 +101,22 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Explanation for why the task status was changed (e.g., linked reason)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportMetadata" /></td>
+    <td><CopyableCode code="support_metadata" /></td>
     <td><code>object</code></td>
     <td>Optional support metadata for the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>Types of tasks that can be created in the backlog (INVESTIGATION, EVALUATION)</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The title of the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this task was last updated</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the agent space containing this task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this task was created</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
     <td>Optional detailed description of the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution ID associated with this task, if any</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hasLinkedTasks" /></td>
+    <td><CopyableCode code="has_linked_tasks" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if this task has other tasks linked to it</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>Optional metadata for the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="primaryTaskId" /></td>
+    <td><CopyableCode code="primary_task_id" /></td>
     <td><code>string</code></td>
     <td>The task ID of the primary investigation this task is linked to</td>
 </tr>
@@ -200,22 +200,22 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Explanation for why the task status was changed (e.g., linked reason)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportMetadata" /></td>
+    <td><CopyableCode code="support_metadata" /></td>
     <td><code>object</code></td>
     <td>Optional support metadata for the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>Types of tasks that can be created in the backlog (INVESTIGATION, EVALUATION)</td>
 </tr>
@@ -225,7 +225,7 @@ The following fields are returned by `SELECT` queries:
     <td>The title of the task</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this task was last updated</td>
 </tr>
@@ -331,22 +331,22 @@ Gets a backlog task for the specified agent space and task id
 
 ```sql
 SELECT
-agentSpaceId,
-createdAt,
+agent_space_id,
+created_at,
 description,
-executionId,
-hasLinkedTasks,
+execution_id,
+has_linked_tasks,
 metadata,
-primaryTaskId,
+primary_task_id,
 priority,
 reference,
 status,
-statusReason,
-supportMetadata,
-taskId,
-taskType,
+status_reason,
+support_metadata,
+task_id,
+task_type,
 title_,
-updatedAt,
+updated_at,
 version
 FROM aws.devops_agent.backlog_tasks
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
@@ -361,22 +361,22 @@ Lists backlog tasks in the specified agent space with optional filtering and sor
 
 ```sql
 SELECT
-agentSpaceId,
-createdAt,
+agent_space_id,
+created_at,
 description,
-executionId,
-hasLinkedTasks,
+execution_id,
+has_linked_tasks,
 metadata,
-primaryTaskId,
+primary_task_id,
 priority,
 reference,
 status,
-statusReason,
-supportMetadata,
-taskId,
-taskType,
+status_reason,
+support_metadata,
+task_id,
+task_type,
 title_,
-updatedAt,
+updated_at,
 version
 FROM aws.devops_agent.backlog_tasks
 WHERE agent_space_id = '{{ agent_space_id }}' -- required

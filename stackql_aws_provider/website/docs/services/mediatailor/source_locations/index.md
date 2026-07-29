@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessConfiguration" /></td>
+    <td><CopyableCode code="access_configuration" /></td>
     <td><code>object</code></td>
     <td>Access configuration parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the source location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultSegmentDeliveryConfiguration" /></td>
+    <td><CopyableCode code="default_segment_delivery_configuration" /></td>
     <td><code>object</code></td>
     <td>The optional configuration for a server that serves segments. Use this if you want the segment delivery server to be different from the source location server. For example, you can configure your source location server to be an origination server, such as MediaPackage, and the segment delivery server to be a content delivery network (CDN), such as CloudFront. If you don't specify a segment delivery server, then the source location server is used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpConfiguration" /></td>
+    <td><CopyableCode code="http_configuration" /></td>
     <td><code>object</code></td>
     <td>The HTTP configuration for the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the source location was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentDeliveryConfigurations" /></td>
+    <td><CopyableCode code="segment_delivery_configurations" /></td>
     <td><code>array</code></td>
     <td>A list of the segment delivery configurations associated with this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the source location. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessConfiguration" /></td>
+    <td><CopyableCode code="access_configuration" /></td>
     <td><code>object</code></td>
     <td>Access configuration parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the SourceLocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the source location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultSegmentDeliveryConfiguration" /></td>
+    <td><CopyableCode code="default_segment_delivery_configuration" /></td>
     <td><code>object</code></td>
     <td>The optional configuration for a server that serves segments. Use this if you want the segment delivery server to be different from the source location server. For example, you can configure your source location server to be an origination server, such as MediaPackage, and the segment delivery server to be a content delivery network (CDN), such as CloudFront. If you don't specify a segment delivery server, then the source location server is used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpConfiguration" /></td>
+    <td><CopyableCode code="http_configuration" /></td>
     <td><code>object</code></td>
     <td>The HTTP configuration for the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the source location was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentDeliveryConfigurations" /></td>
+    <td><CopyableCode code="segment_delivery_configurations" /></td>
     <td><code>array</code></td>
     <td>The segment delivery configurations for the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the source location. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -263,15 +263,15 @@ Describes a source location. A source location is a container for sources. For m
 
 ```sql
 SELECT
-AccessConfiguration,
-Arn,
-CreationTime,
-DefaultSegmentDeliveryConfiguration,
-HttpConfiguration,
-LastModifiedTime,
-SegmentDeliveryConfigurations,
-SourceLocationName,
-Tags
+access_configuration,
+arn,
+creation_time,
+default_segment_delivery_configuration,
+http_configuration,
+last_modified_time,
+segment_delivery_configurations,
+source_location_name,
+tags
 FROM aws.mediatailor.source_locations
 WHERE source_location_name = '{{ source_location_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -284,15 +284,15 @@ Lists the source locations for a channel. A source location defines the host ser
 
 ```sql
 SELECT
-AccessConfiguration,
-Arn,
-CreationTime,
-DefaultSegmentDeliveryConfiguration,
-HttpConfiguration,
-LastModifiedTime,
-SegmentDeliveryConfigurations,
-SourceLocationName,
-Tags
+access_configuration,
+arn,
+creation_time,
+default_segment_delivery_configuration,
+http_configuration,
+last_modified_time,
+segment_delivery_configurations,
+source_location_name,
+tags
 FROM aws.mediatailor.source_locations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -335,15 +335,15 @@ SELECT
 '{{ source_location_name }}',
 '{{ region }}'
 RETURNING
-AccessConfiguration,
-Arn,
-CreationTime,
-DefaultSegmentDeliveryConfiguration,
-HttpConfiguration,
-LastModifiedTime,
-SegmentDeliveryConfigurations,
-SourceLocationName,
-Tags
+access_configuration,
+arn,
+creation_time,
+default_segment_delivery_configuration,
+http_configuration,
+last_modified_time,
+segment_delivery_configurations,
+source_location_name,
+tags
 ;
 ```
 </TabItem>
@@ -413,15 +413,15 @@ source_location_name = '{{ source_location_name }}' --required
 AND region = '{{ region }}' --required
 AND HttpConfiguration = '{{ HttpConfiguration }}' --required
 RETURNING
-AccessConfiguration,
-Arn,
-CreationTime,
-DefaultSegmentDeliveryConfiguration,
-HttpConfiguration,
-LastModifiedTime,
-SegmentDeliveryConfigurations,
-SourceLocationName,
-Tags;
+access_configuration,
+arn,
+creation_time,
+default_segment_delivery_configuration,
+http_configuration,
+last_modified_time,
+segment_delivery_configurations,
+source_location_name,
+tags;
 ```
 </TabItem>
 </Tabs>

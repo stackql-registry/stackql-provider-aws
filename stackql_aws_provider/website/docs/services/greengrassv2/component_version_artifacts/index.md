@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="preSignedUrl" /></td>
+    <td><CopyableCode code="pre_signed_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the artifact.</td>
 </tr>
@@ -139,7 +139,7 @@ Gets the pre-signed URL to download a public or a Lambda component artifact. Cor
 
 ```sql
 SELECT
-preSignedUrl
+pre_signed_url
 FROM aws.greengrassv2.component_version_artifacts
 WHERE arn = '{{ arn }}' -- required
 AND artifact_name = '{{ artifact_name }}' -- required

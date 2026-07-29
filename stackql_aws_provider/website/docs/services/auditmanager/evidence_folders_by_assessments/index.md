@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="evidenceFolders" /></td>
+    <td><CopyableCode code="evidence_folders" /></td>
     <td><code>array</code></td>
     <td>The list of evidence folders that the GetEvidenceFoldersByAssessment API returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -139,8 +139,8 @@ Gets the evidence folders from a specified assessment in Audit Manager.
 
 ```sql
 SELECT
-evidenceFolders,
-nextToken
+evidence_folders,
+next_token
 FROM aws.auditmanager.evidence_folders_by_assessments
 WHERE assessment_id = '{{ assessment_id }}' -- required
 AND region = '{{ region }}' -- required

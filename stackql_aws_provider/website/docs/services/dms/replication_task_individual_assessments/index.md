@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>A pagination token returned for you to pass to a subsequent request. If you pass this token as the Marker value in a subsequent request, the response includes only records beyond the marker, up to the value specified in the request by MaxRecords.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationTaskIndividualAssessments" /></td>
+    <td><CopyableCode code="replication_task_individual_assessments" /></td>
     <td><code>array</code></td>
     <td>One or more individual assessments as specified by Filters.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a paginated list of individual assessments based on filter settings. The
 
 ```sql
 SELECT
-Marker,
-ReplicationTaskIndividualAssessments
+marker,
+replication_task_individual_assessments
 FROM aws.dms.replication_task_individual_assessments
 WHERE region = '{{ region }}' -- required
 ;

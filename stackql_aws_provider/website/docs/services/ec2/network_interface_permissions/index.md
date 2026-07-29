@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsService" /></td>
+    <td><CopyableCode code="aws_service" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfacePermissionId" /></td>
+    <td><CopyableCode code="network_interface_permission_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface permission.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permission" /></td>
+    <td><CopyableCode code="permission" /></td>
     <td><code>string</code></td>
     <td>The type of permission.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionState" /></td>
+    <td><CopyableCode code="permission_state" /></td>
     <td><code>string</code></td>
     <td>Information about the state of the permission.</td>
 </tr>
@@ -213,12 +213,12 @@ Describes the permissions for your network interfaces.
 
 ```sql
 SELECT
-AwsAccountId,
-AwsService,
-NetworkInterfaceId,
-NetworkInterfacePermissionId,
-Permission,
-PermissionState
+aws_account_id,
+aws_service,
+network_interface_id,
+network_interface_permission_id,
+permission,
+permission_state
 FROM aws.ec2.network_interface_permissions
 WHERE region = '{{ region }}' -- required
 AND NetworkInterfacePermissionId = '{{ NetworkInterfacePermissionId }}'
@@ -261,12 +261,12 @@ SELECT
 '{{ Permission }}',
 '{{ DryRun }}'
 RETURNING
-AwsAccountId,
-AwsService,
-NetworkInterfaceId,
-NetworkInterfacePermissionId,
-Permission,
-PermissionState
+aws_account_id,
+aws_service,
+network_interface_id,
+network_interface_permission_id,
+permission,
+permission_state
 ;
 ```
 </TabItem>

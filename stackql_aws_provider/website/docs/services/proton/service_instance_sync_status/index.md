@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="desiredState" /></td>
+    <td><CopyableCode code="desired_state" /></td>
     <td><code>object</code></td>
     <td>The service instance sync desired state that's returned by Proton</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSuccessfulSync" /></td>
+    <td><CopyableCode code="latest_successful_sync" /></td>
     <td><code>object</code></td>
     <td>The detailed data of the latest successful sync with the service instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSync" /></td>
+    <td><CopyableCode code="latest_sync" /></td>
     <td><code>object</code></td>
     <td>The detailed data of the latest sync with the service instance.</td>
 </tr>
@@ -129,9 +129,9 @@ Get the status of the synced service instance.
 
 ```sql
 SELECT
-desiredState,
-latestSuccessfulSync,
-latestSync
+desired_state,
+latest_successful_sync,
+latest_sync
 FROM aws.proton.service_instance_sync_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The account ID of the user that created the rule. If you use PutRule to put a rule on an event bus in another account, the other account is the owner of the rule, and the rule ARN includes the account ID for that account. However, the value for CreatedBy is the account ID as the account that created the rule in the other account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBusName" /></td>
+    <td><CopyableCode code="event_bus_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event bus associated with the rule. (pattern: &lt;code&gt;&#91;/\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventPattern" /></td>
+    <td><CopyableCode code="event_pattern" /></td>
     <td><code>string</code></td>
     <td>The event pattern. For more information, see Events and Event Patterns in the Amazon EventBridge User Guide .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>If this is a managed rule, created by an Amazon Web Services service on your behalf, this field displays the principal name of the Amazon Web Services service that created the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the rule. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the rule is enabled or disabled. (ENABLED, DISABLED, ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS)</td>
 </tr>
@@ -185,16 +185,16 @@ Describes the specified rule. DescribeRule does not list the targets of a rule. 
 
 ```sql
 SELECT
-Arn,
-CreatedBy,
-Description,
-EventBusName,
-EventPattern,
-ManagedBy,
-Name,
-RoleArn,
-ScheduleExpression,
-State
+arn,
+created_by,
+description,
+event_bus_name,
+event_pattern,
+managed_by,
+name,
+role_arn,
+schedule_expression,
+state
 FROM aws.events.rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -229,7 +229,7 @@ EventBusName = '{{ EventBusName }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-RuleArn;
+rule_arn;
 ```
 </TabItem>
 </Tabs>

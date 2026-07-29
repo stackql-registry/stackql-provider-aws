@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the override was first created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateModified" /></td>
+    <td><CopyableCode code="date_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the description was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the override. (pattern: &lt;code&gt;&#91;\S\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The device to which the access override applies. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Effect" /></td>
+    <td><CopyableCode code="effect" /></td>
     <td><code>string</code></td>
     <td>The effect of the override, ALLOW or DENY. (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The WorkMail user to which the access override applies.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. The value is “null” when there are no more results to return. (pattern: &lt;code&gt;&#91;\S\s&#93;*|&#91;a-zA-Z0-9/+=&#93;&#123;1,1024&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Overrides" /></td>
+    <td><CopyableCode code="overrides" /></td>
     <td><code>array</code></td>
     <td>The list of mobile device access overrides that exist for the specified WorkMail organization and user.</td>
 </tr>
@@ -191,12 +191,12 @@ Gets the mobile device access override for the given WorkMail organization, user
 
 ```sql
 SELECT
-DateCreated,
-DateModified,
-Description,
-DeviceId,
-Effect,
-UserId
+date_created,
+date_modified,
+description,
+device_id,
+effect,
+user_id
 FROM aws.workmail.mobile_device_access_overrides
 WHERE region = '{{ region }}' -- required
 ;
@@ -208,8 +208,8 @@ Lists all the mobile device access overrides for any given combination of WorkMa
 
 ```sql
 SELECT
-NextToken,
-Overrides
+next_token,
+overrides
 FROM aws.workmail.mobile_device_access_overrides
 WHERE region = '{{ region }}' -- required
 ;

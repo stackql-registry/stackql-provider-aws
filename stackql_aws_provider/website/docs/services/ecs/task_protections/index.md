@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Any failures associated with the call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protectedTasks" /></td>
+    <td><CopyableCode code="protected_tasks" /></td>
     <td><code>array</code></td>
     <td>A list of tasks with the following information. taskArn: The task ARN. protectionEnabled: The protection status of the task. If scale-in protection is turned on for a task, the value is true. Otherwise, it is false. expirationDate: The epoch time when protection for the task will expire.</td>
 </tr>
@@ -132,7 +132,7 @@ Retrieves the protection status of tasks in an Amazon ECS service.
 ```sql
 SELECT
 failures,
-protectedTasks
+protected_tasks
 FROM aws.ecs.task_protections
 WHERE region = '{{ region }}' -- required
 ;
@@ -167,7 +167,7 @@ AND tasks = '{{ tasks }}' --required
 AND protectionEnabled = {{ protectionEnabled }} --required
 RETURNING
 failures,
-protectedTasks;
+protected_tasks;
 ```
 </TabItem>
 </Tabs>

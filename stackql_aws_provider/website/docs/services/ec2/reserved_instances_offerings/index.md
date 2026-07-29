@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the Reserved Instance can be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency of the Reserved Instance offering you are purchasing. It's specified using ISO 4217 standard currency codes. At this time, the only supported currency is USD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the Reserved Instance, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number</code></td>
     <td>The purchase price of the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceTenancy" /></td>
+    <td><CopyableCode code="instance_tenancy" /></td>
     <td><code>string</code></td>
     <td>The tenancy of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type on which the Reserved Instance can be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marketplace" /></td>
+    <td><CopyableCode code="marketplace" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the offering is available through the Reserved Instance Marketplace (resale) or Amazon Web Services. If it's a Reserved Instance Marketplace offering, this is true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingClass" /></td>
+    <td><CopyableCode code="offering_class" /></td>
     <td><code>string</code></td>
     <td>If convertible it can be exchanged for Reserved Instances of the same or higher monetary value, with different configurations. If standard, it is not possible to perform an exchange.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>The Reserved Instance offering type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingDetails" /></td>
+    <td><CopyableCode code="pricing_details" /></td>
     <td><code>string</code></td>
     <td>The pricing details of the Reserved Instance offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductDescription" /></td>
+    <td><CopyableCode code="product_description" /></td>
     <td><code>string</code></td>
     <td>The Reserved Instance product platform description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringCharges" /></td>
+    <td><CopyableCode code="recurring_charges" /></td>
     <td><code>string</code></td>
     <td>The recurring charge tag assigned to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstancesOfferingId" /></td>
+    <td><CopyableCode code="reserved_instances_offering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Reserved Instance offering. This is the offering ID used in GetReservedInstancesExchangeQuote to confirm that an exchange can be made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scope" /></td>
+    <td><CopyableCode code="scope" /></td>
     <td><code>string</code></td>
     <td>Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number</code></td>
     <td>The usage price of the Reserved Instance, per hour.</td>
 </tr>
@@ -301,22 +301,22 @@ Describes Reserved Instance offerings that are available for purchase. With Rese
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CurrencyCode,
-Duration,
-FixedPrice,
-InstanceTenancy,
-InstanceType,
-Marketplace,
-OfferingClass,
-OfferingType,
-PricingDetails,
-ProductDescription,
-RecurringCharges,
-ReservedInstancesOfferingId,
-Scope,
-UsagePrice
+availability_zone,
+availability_zone_id,
+currency_code,
+duration,
+fixed_price,
+instance_tenancy,
+instance_type,
+marketplace,
+offering_class,
+offering_type,
+pricing_details,
+product_description,
+recurring_charges,
+reserved_instances_offering_id,
+scope,
+usage_price
 FROM aws.ec2.reserved_instances_offerings
 WHERE region = '{{ region }}' -- required
 AND AvailabilityZone = '{{ AvailabilityZone }}'

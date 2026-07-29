@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoMLJobArn" /></td>
+    <td><CopyableCode code="auto_ml_job_arn" /></td>
     <td><code>string</code></td>
     <td>Returns the ARN of the AutoML job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:automl-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobArtifacts" /></td>
+    <td><CopyableCode code="auto_ml_job_artifacts" /></td>
     <td><code>object</code></td>
     <td>Returns information on the job's artifacts found in AutoMLJobArtifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobConfig" /></td>
+    <td><CopyableCode code="auto_ml_job_config" /></td>
     <td><code>object</code></td>
     <td>Returns the configuration for the AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobName" /></td>
+    <td><CopyableCode code="auto_ml_job_name" /></td>
     <td><code>string</code></td>
     <td>Returns the name of the AutoML job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobObjective" /></td>
+    <td><CopyableCode code="auto_ml_job_objective" /></td>
     <td><code>object</code></td>
     <td>Returns the job's objective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobSecondaryStatus" /></td>
+    <td><CopyableCode code="auto_ml_job_secondary_status" /></td>
     <td><code>string</code></td>
     <td>Returns the secondary status of the AutoML job. (Starting, MaxCandidatesReached, Failed, Stopped, MaxAutoMLJobRuntimeReached, Stopping, CandidateDefinitionsGenerated, Completed, ExplainabilityError, DeployingModel, ModelDeploymentError, GeneratingModelInsightsReport, ModelInsightsError, AnalyzingData, FeatureEngineering, ModelTuning, GeneratingExplainabilityReport, TrainingModels, PreTraining)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobStatus" /></td>
+    <td><CopyableCode code="auto_ml_job_status" /></td>
     <td><code>string</code></td>
     <td>Returns the status of the AutoML job. (Completed, InProgress, Failed, Stopped, Stopping)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BestCandidate" /></td>
+    <td><CopyableCode code="best_candidate" /></td>
     <td><code>object</code></td>
     <td>The best model candidate selected by SageMaker AI Autopilot using both the best objective metric and lowest InferenceLatency for an experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the creation time of the AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the end time of the AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Returns the failure reason for an AutoML job, when applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GenerateCandidateDefinitionsOnly" /></td>
+    <td><CopyableCode code="generate_candidate_definitions_only" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the output for an AutoML job generates candidate definitions only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>array</code></td>
     <td>Returns the input data configuration for the AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns the job's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelDeployConfig" /></td>
+    <td><CopyableCode code="model_deploy_config" /></td>
     <td><code>object</code></td>
     <td>Indicates whether the model was deployed automatically to an endpoint and the name of that endpoint if deployed automatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelDeployResult" /></td>
+    <td><CopyableCode code="model_deploy_result" /></td>
     <td><code>object</code></td>
     <td>Provides information about endpoint for the model deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Returns the job's output data config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartialFailureReasons" /></td>
+    <td><CopyableCode code="partial_failure_reasons" /></td>
     <td><code>array</code></td>
     <td>Returns a list of reasons for partial failures within an AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProblemType" /></td>
+    <td><CopyableCode code="problem_type" /></td>
     <td><code>string</code></td>
     <td>Returns the job's problem type. (BinaryClassification, MulticlassClassification, Regression)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResolvedAttributes" /></td>
+    <td><CopyableCode code="resolved_attributes" /></td>
     <td><code>object</code></td>
     <td>Contains ProblemType, AutoMLJobObjective, and CompletionCriteria. If you do not provide these values, they are inferred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that has read permission to the input data location and write permission to the output data location in Amazon S3. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -170,47 +170,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoMLJobArn" /></td>
+    <td><CopyableCode code="auto_ml_job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AutoML job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:automl-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobName" /></td>
+    <td><CopyableCode code="auto_ml_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AutoML job you are requesting. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobSecondaryStatus" /></td>
+    <td><CopyableCode code="auto_ml_job_secondary_status" /></td>
     <td><code>string</code></td>
     <td>The secondary status of the AutoML job. (Starting, MaxCandidatesReached, Failed, Stopped, MaxAutoMLJobRuntimeReached, Stopping, CandidateDefinitionsGenerated, Completed, ExplainabilityError, DeployingModel, ModelDeploymentError, GeneratingModelInsightsReport, ModelInsightsError, AnalyzingData, FeatureEngineering, ModelTuning, GeneratingExplainabilityReport, TrainingModels, PreTraining)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLJobStatus" /></td>
+    <td><CopyableCode code="auto_ml_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the AutoML job. (Completed, InProgress, Failed, Stopped, Stopping)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the AutoML job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of an AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason of an AutoML job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the AutoML job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartialFailureReasons" /></td>
+    <td><CopyableCode code="partial_failure_reasons" /></td>
     <td><code>array</code></td>
     <td>The list of reasons for partial failures within an AutoML job.</td>
 </tr>
@@ -301,27 +301,27 @@ Returns information about an AutoML job created by calling CreateAutoMLJob. Auto
 
 ```sql
 SELECT
-AutoMLJobArn,
-AutoMLJobArtifacts,
-AutoMLJobConfig,
-AutoMLJobName,
-AutoMLJobObjective,
-AutoMLJobSecondaryStatus,
-AutoMLJobStatus,
-BestCandidate,
-CreationTime,
-EndTime,
-FailureReason,
-GenerateCandidateDefinitionsOnly,
-InputDataConfig,
-LastModifiedTime,
-ModelDeployConfig,
-ModelDeployResult,
-OutputDataConfig,
-PartialFailureReasons,
-ProblemType,
-ResolvedAttributes,
-RoleArn
+auto_ml_job_arn,
+auto_ml_job_artifacts,
+auto_ml_job_config,
+auto_ml_job_name,
+auto_ml_job_objective,
+auto_ml_job_secondary_status,
+auto_ml_job_status,
+best_candidate,
+creation_time,
+end_time,
+failure_reason,
+generate_candidate_definitions_only,
+input_data_config,
+last_modified_time,
+model_deploy_config,
+model_deploy_result,
+output_data_config,
+partial_failure_reasons,
+problem_type,
+resolved_attributes,
+role_arn
 FROM aws.sagemaker.auto_ml_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -333,15 +333,15 @@ Request a list of jobs.
 
 ```sql
 SELECT
-AutoMLJobArn,
-AutoMLJobName,
-AutoMLJobSecondaryStatus,
-AutoMLJobStatus,
-CreationTime,
-EndTime,
-FailureReason,
-LastModifiedTime,
-PartialFailureReasons
+auto_ml_job_arn,
+auto_ml_job_name,
+auto_ml_job_secondary_status,
+auto_ml_job_status,
+creation_time,
+end_time,
+failure_reason,
+last_modified_time,
+partial_failure_reasons
 FROM aws.sagemaker.auto_ml_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -390,7 +390,7 @@ SELECT
 '{{ ModelDeployConfig }}',
 '{{ region }}'
 RETURNING
-AutoMLJobArn
+auto_ml_job_arn
 ;
 ```
 </TabItem>

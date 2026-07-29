@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AbortableOperationInProgress" /></td>
+    <td><CopyableCode code="abortable_operation_in_progress" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if there is an in-progress environment configuration update or application version deployment that you can cancel. true: There is an update in progress. false: There are no updates currently in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application associated with this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CNAME" /></td>
+    <td><CopyableCode code="cname" /></td>
     <td><code>string</code></td>
     <td>The URL to the CNAME for this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The creation date for this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The last modified date for this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Describes this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointURL" /></td>
+    <td><CopyableCode code="endpoint_url" /></td>
     <td><code>string</code></td>
     <td>For load-balanced, autoscaling environments, the URL to the LoadBalancer. For single-instance environments, the IP address of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The environment's Amazon Resource Name (ARN), which can be used in other API requests that require an ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentLinks" /></td>
+    <td><CopyableCode code="environment_links" /></td>
     <td><code>string</code></td>
     <td>A list of links to other environments in the same group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Health" /></td>
+    <td><CopyableCode code="health" /></td>
     <td><code>string</code></td>
     <td>Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment: Red: Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment. Yellow: Indicates that something is wrong. Occurs when two consecutive failures occur for an environment. Green: Indicates the environment is healthy and fully functional. Grey: Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an UpdateEnvironment or RestartEnvironment request. Default: Grey</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>string</code></td>
     <td>Returns the health status of the application running in your environment. For more information, see Health Colors and Statuses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationsRole" /></td>
+    <td><CopyableCode code="operations_role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the environment's operations role. For more information, see Operations roles in the AWS Elastic Beanstalk Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformArn" /></td>
+    <td><CopyableCode code="platform_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>string</code></td>
     <td>The description of the AWS resources used by this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SolutionStackName" /></td>
+    <td><CopyableCode code="solution_stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SolutionStack deployed with this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current operational status of the environment: Launching: Environment is in the process of initial deployment. Updating: Environment is in the process of updating its configuration settings or application version. Ready: Environment is available to have an action performed on it, such as update or terminate. Terminating: Environment is in the shut-down process. Terminated: Environment is not running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration template used to originally launch this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>Describes the current tier of this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>The application version deployed in this environment.</td>
 </tr>
@@ -403,27 +403,27 @@ Returns descriptions for existing environments.
 
 ```sql
 SELECT
-AbortableOperationInProgress,
-ApplicationName,
-CNAME,
-DateCreated,
-DateUpdated,
-Description,
-EndpointURL,
-EnvironmentArn,
-EnvironmentId,
-EnvironmentLinks,
-EnvironmentName,
-Health,
-HealthStatus,
-OperationsRole,
-PlatformArn,
-Resources,
-SolutionStackName,
-Status,
-TemplateName,
-Tier,
-VersionLabel
+abortable_operation_in_progress,
+application_name,
+cname,
+date_created,
+date_updated,
+description,
+endpoint_url,
+environment_arn,
+environment_id,
+environment_links,
+environment_name,
+health,
+health_status,
+operations_role,
+platform_arn,
+resources,
+solution_stack_name,
+status,
+template_name,
+tier,
+version_label
 FROM aws.elasticbeanstalk.environments
 WHERE region = '{{ region }}' -- required
 AND ApplicationName = '{{ ApplicationName }}'
@@ -488,27 +488,27 @@ SELECT
 '{{ OptionsToRemove }}',
 '{{ OperationsRole }}'
 RETURNING
-AbortableOperationInProgress,
-ApplicationName,
-CNAME,
-DateCreated,
-DateUpdated,
-Description,
-EndpointURL,
-EnvironmentArn,
-EnvironmentId,
-EnvironmentLinks,
-EnvironmentName,
-Health,
-HealthStatus,
-OperationsRole,
-PlatformArn,
-Resources,
-SolutionStackName,
-Status,
-TemplateName,
-Tier,
-VersionLabel
+abortable_operation_in_progress,
+application_name,
+cname,
+date_created,
+date_updated,
+description,
+endpoint_url,
+environment_arn,
+environment_id,
+environment_links,
+environment_name,
+health,
+health_status,
+operations_role,
+platform_arn,
+resources,
+solution_stack_name,
+status,
+template_name,
+tier,
+version_label
 ;
 ```
 </TabItem>
@@ -641,27 +641,27 @@ AND PlatformArn = '{{ PlatformArn}}'
 AND OptionSettings = '{{ OptionSettings}}'
 AND OptionsToRemove = '{{ OptionsToRemove}}'
 RETURNING
-AbortableOperationInProgress,
-ApplicationName,
-CNAME,
-DateCreated,
-DateUpdated,
-Description,
-EndpointURL,
-EnvironmentArn,
-EnvironmentId,
-EnvironmentLinks,
-EnvironmentName,
-Health,
-HealthStatus,
-OperationsRole,
-PlatformArn,
-Resources,
-SolutionStackName,
-Status,
-TemplateName,
-Tier,
-VersionLabel;
+abortable_operation_in_progress,
+application_name,
+cname,
+date_created,
+date_updated,
+description,
+endpoint_url,
+environment_arn,
+environment_id,
+environment_links,
+environment_name,
+health,
+health_status,
+operations_role,
+platform_arn,
+resources,
+solution_stack_name,
+status,
+template_name,
+tier,
+version_label;
 ```
 </TabItem>
 </Tabs>

@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the state template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the state template was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataExtraDimensions" /></td>
+    <td><CopyableCode code="data_extra_dimensions" /></td>
     <td><code>array</code></td>
     <td>A list of vehicle attributes associated with the payload published on the state template's MQTT topic. Default: An empty array</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the state template. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the state template was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataExtraDimensions" /></td>
+    <td><CopyableCode code="metadata_extra_dimensions" /></td>
     <td><code>array</code></td>
     <td>A list of vehicle attributes to associate with user properties of the messages published on the state template's MQTT topic. Default: An empty array</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the signal catalog associated with the state template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateTemplateProperties" /></td>
+    <td><CopyableCode code="state_template_properties" /></td>
     <td><code>array</code></td>
     <td>A list of signals from which data is collected. The state template properties contain the fully qualified names of the signals.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the state template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the state template was created, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description of the state template. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the state template was last updated, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the signal catalog associated with the state template.</td>
 </tr>
@@ -246,13 +246,13 @@ SELECT
 id,
 name,
 arn,
-creationTime,
-dataExtraDimensions,
+creation_time,
+data_extra_dimensions,
 description,
-lastModificationTime,
-metadataExtraDimensions,
-signalCatalogArn,
-stateTemplateProperties
+last_modification_time,
+metadata_extra_dimensions,
+signal_catalog_arn,
+state_template_properties
 FROM aws.iotfleetwise.state_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -267,10 +267,10 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
-signalCatalogArn
+last_modification_time,
+signal_catalog_arn
 FROM aws.iotfleetwise.state_templates
 WHERE region = '{{ region }}' -- required
 ;

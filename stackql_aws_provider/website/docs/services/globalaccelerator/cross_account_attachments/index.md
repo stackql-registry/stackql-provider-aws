@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachmentArn" /></td>
+    <td><CopyableCode code="attachment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cross-account attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the cross-account attachment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the cross-account attachment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the cross-account attachment. (pattern: &lt;code&gt;&#91;\S\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Principals" /></td>
+    <td><CopyableCode code="principals" /></td>
     <td><code>array</code></td>
     <td>The principals included in the cross-account attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>The resources included in the cross-account attachment.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachmentArn" /></td>
+    <td><CopyableCode code="attachment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the cross-account attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the cross-account attachment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the cross-account attachment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the cross-account attachment. (pattern: &lt;code&gt;&#91;\S\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Principals" /></td>
+    <td><CopyableCode code="principals" /></td>
     <td><code>array</code></td>
     <td>The principals included in the cross-account attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>The resources included in the cross-account attachment.</td>
 </tr>
@@ -218,12 +218,12 @@ Gets configuration information about a cross-account attachment.
 
 ```sql
 SELECT
-AttachmentArn,
-CreatedTime,
-LastModifiedTime,
-Name,
-Principals,
-Resources
+attachment_arn,
+created_time,
+last_modified_time,
+name,
+principals,
+resources
 FROM aws.globalaccelerator.cross_account_attachments
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,12 +235,12 @@ List the cross-account attachments that have been created in Global Accelerator.
 
 ```sql
 SELECT
-AttachmentArn,
-CreatedTime,
-LastModifiedTime,
-Name,
-Principals,
-Resources
+attachment_arn,
+created_time,
+last_modified_time,
+name,
+principals,
+resources
 FROM aws.globalaccelerator.cross_account_attachments
 WHERE region = '{{ region }}' -- required
 ;
@@ -279,7 +279,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CrossAccountAttachment
+cross_account_attachment
 ;
 ```
 </TabItem>
@@ -348,7 +348,7 @@ WHERE
 region = '{{ region }}' --required
 AND AttachmentArn = '{{ AttachmentArn }}' --required
 RETURNING
-CrossAccountAttachment;
+cross_account_attachment;
 ```
 </TabItem>
 </Tabs>

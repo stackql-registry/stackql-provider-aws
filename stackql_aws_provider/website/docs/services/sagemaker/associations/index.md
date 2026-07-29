@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of the association. (ContributedTo, AssociatedWith, DerivedFrom, Produced, SameAs)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the destination. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:(experiment|experiment-trial-component|artifact|action|context)/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationName" /></td>
+    <td><CopyableCode code="destination_name" /></td>
     <td><code>string</code></td>
     <td>The name of the destination. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationType" /></td>
+    <td><CopyableCode code="destination_type" /></td>
     <td><code>string</code></td>
     <td>The destination type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the source. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:(experiment|experiment-trial-component|artifact|action|context)/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceName" /></td>
+    <td><CopyableCode code="source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source type.</td>
 </tr>
@@ -173,15 +173,15 @@ Lists the associations in your account and their properties.
 
 ```sql
 SELECT
-AssociationType,
-CreatedBy,
-CreationTime,
-DestinationArn,
-DestinationName,
-DestinationType,
-SourceArn,
-SourceName,
-SourceType
+association_type,
+created_by,
+creation_time,
+destination_arn,
+destination_name,
+destination_type,
+source_arn,
+source_name,
+source_type
 FROM aws.sagemaker.associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,8 +213,8 @@ region = '{{ region }}' --required
 AND SourceArn = '{{ SourceArn }}' --required
 AND DestinationArn = '{{ DestinationArn }}' --required
 RETURNING
-DestinationArn,
-SourceArn;
+destination_arn,
+source_arn;
 ```
 </TabItem>
 </Tabs>

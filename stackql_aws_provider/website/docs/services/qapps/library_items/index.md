@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Q App associated with the library item. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the Q App associated with the library item.</td>
 </tr>
@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The categories associated with the library item for discovery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the library item was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isRatedByUser" /></td>
+    <td><CopyableCode code="is_rated_by_user" /></td>
     <td><code>boolean</code></td>
     <td>Whether the current user has rated the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isVerified" /></td>
+    <td><CopyableCode code="is_verified" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the library item has been verified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="libraryItemId" /></td>
+    <td><CopyableCode code="library_item_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the library item. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ratingCount" /></td>
+    <td><CopyableCode code="rating_count" /></td>
     <td><code>integer</code></td>
     <td>The number of ratings the library item has received from users.</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the library item, such as "Published".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the library item was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who last updated the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of users who have associated the Q App with their account.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Q App associated with the library item. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the Q App associated with the library item.</td>
 </tr>
@@ -145,32 +145,32 @@ The following fields are returned by `SELECT` queries:
     <td>The categories associated with the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the library item was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isRatedByUser" /></td>
+    <td><CopyableCode code="is_rated_by_user" /></td>
     <td><code>boolean</code></td>
     <td>Whether the current user has rated the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isVerified" /></td>
+    <td><CopyableCode code="is_verified" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the library item has been verified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="libraryItemId" /></td>
+    <td><CopyableCode code="library_item_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the library item. (pattern: &lt;code&gt;&#91;\da-f&#93;&#123;8&#125;-&#91;\da-f&#93;&#123;4&#125;-&#91;45&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;89ABab&#93;&#91;\da-f&#93;&#123;3&#125;-&#91;\da-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ratingCount" /></td>
+    <td><CopyableCode code="rating_count" /></td>
     <td><code>integer</code></td>
     <td>The number of ratings the library item has received.</td>
 </tr>
@@ -180,17 +180,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the library item was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who last updated the library item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of users who have the associated Q App.</td>
 </tr>
@@ -339,19 +339,19 @@ Retrieves details about a library item for an Amazon Q App, including its metada
 
 ```sql
 SELECT
-appId,
-appVersion,
+app_id,
+app_version,
 categories,
-createdAt,
-createdBy,
-isRatedByUser,
-isVerified,
-libraryItemId,
-ratingCount,
+created_at,
+created_by,
+is_rated_by_user,
+is_verified,
+library_item_id,
+rating_count,
 status,
-updatedAt,
-updatedBy,
-userCount
+updated_at,
+updated_by,
+user_count
 FROM aws.qapps.library_items
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND libraryItemId = '{{ libraryItemId }}' -- required
@@ -366,19 +366,19 @@ Lists the library items for Amazon Q Apps that are published and available for u
 
 ```sql
 SELECT
-appId,
-appVersion,
+app_id,
+app_version,
 categories,
-createdAt,
-createdBy,
-isRatedByUser,
-isVerified,
-libraryItemId,
-ratingCount,
+created_at,
+created_by,
+is_rated_by_user,
+is_verified,
+library_item_id,
+rating_count,
 status,
-updatedAt,
-updatedBy,
-userCount
+updated_at,
+updated_by,
+user_count
 FROM aws.qapps.library_items
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -419,14 +419,14 @@ SELECT
 '{{ instance-id }}',
 '{{ region }}'
 RETURNING
-createdAt,
-createdBy,
-isVerified,
-libraryItemId,
-ratingCount,
+created_at,
+created_by,
+is_verified,
+library_item_id,
+rating_count,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 ;
 ```
 </TabItem>
@@ -477,19 +477,19 @@ WHERE
 AND region = '{{ region }}' --required
 AND libraryItemId = '{{ libraryItemId }}' --required
 RETURNING
-appId,
-appVersion,
+app_id,
+app_version,
 categories,
-createdAt,
-createdBy,
-isRatedByUser,
-isVerified,
-libraryItemId,
-ratingCount,
+created_at,
+created_by,
+is_rated_by_user,
+is_verified,
+library_item_id,
+rating_count,
 status,
-updatedAt,
-updatedBy,
-userCount;
+updated_at,
+updated_by,
+user_count;
 ```
 </TabItem>
 </Tabs>

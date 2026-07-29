@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppliedFunctionScalingConfig" /></td>
+    <td><CopyableCode code="applied_function_scaling_config" /></td>
     <td><code>object</code></td>
     <td>The scaling configuration that is currently applied to the function. This represents the actual scaling settings in effect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedFunctionScalingConfig" /></td>
+    <td><CopyableCode code="requested_function_scaling_config" /></td>
     <td><code>object</code></td>
     <td>The scaling configuration that was requested for the function.</td>
 </tr>
@@ -146,9 +146,9 @@ Retrieves the scaling configuration for a Lambda Managed Instances function.
 
 ```sql
 SELECT
-AppliedFunctionScalingConfig,
-FunctionArn,
-RequestedFunctionScalingConfig
+applied_function_scaling_config,
+function_arn,
+requested_function_scaling_config
 FROM aws.lambda.function_scaling_configs
 WHERE function_name = '{{ function_name }}' -- required
 AND Qualifier = '{{ Qualifier }}' -- required
@@ -180,7 +180,7 @@ function_name = '{{ function_name }}' --required
 AND Qualifier = '{{ Qualifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-FunctionState;
+function_state;
 ```
 </TabItem>
 </Tabs>

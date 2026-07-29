@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApprovalStrategy" /></td>
+    <td><CopyableCode code="approval_strategy" /></td>
     <td><code>object</code></td>
     <td>An ApprovalStrategyResponse object. Contains details for how the team grants approval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Approvers" /></td>
+    <td><CopyableCode code="approvers" /></td>
     <td><code>array</code></td>
     <td>An array of GetApprovalTeamResponseApprover objects. Contains details for the approvers in the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the team was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the team was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the approval team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfApprovers" /></td>
+    <td><CopyableCode code="number_of_approvers" /></td>
     <td><code>integer</code></td>
     <td>Total number of approvers in the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingUpdate" /></td>
+    <td><CopyableCode code="pending_update" /></td>
     <td><code>object</code></td>
     <td>A PendingUpdate object. Contains details for the pending updates for the team, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>array</code></td>
     <td>An array of PolicyReference objects. Contains a list of policies that define the permissions for team resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the team. For more information, see Team health in the Multi-party approval User Guide. (ACTIVE, INACTIVE, DELETING, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>Status code for the approval team. For more information, see Team health in the Multi-party approval User Guide. (VALIDATING, PENDING_ACTIVATION, FAILED_VALIDATION, FAILED_ACTIVATION, UPDATE_PENDING_APPROVAL, UPDATE_PENDING_ACTIVATION, UPDATE_FAILED_APPROVAL, UPDATE_FAILED_ACTIVATION, UPDATE_FAILED_VALIDATION, DELETE_PENDING_APPROVAL, DELETE_FAILED_APPROVAL, DELETE_FAILED_VALIDATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Message describing the status for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateSessionArn" /></td>
+    <td><CopyableCode code="update_session_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>Version ID for the team.</td>
 </tr>
@@ -140,47 +140,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApprovalStrategy" /></td>
+    <td><CopyableCode code="approval_strategy" /></td>
     <td><code>object</code></td>
     <td>An ApprovalStrategyResponse object. Contains details for how an approval team grants approval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the team. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:mpa:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:approval-team/&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the team was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the team. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfApprovers" /></td>
+    <td><CopyableCode code="number_of_approvers" /></td>
     <td><code>integer</code></td>
     <td>Total number of approvers in the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the team. For more information, see Team health in the Multi-party approval User Guide. (ACTIVE, INACTIVE, DELETING, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>Status code for the team. For more information, see Team health in the Multi-party approval User Guide. (VALIDATING, PENDING_ACTIVATION, FAILED_VALIDATION, FAILED_ACTIVATION, UPDATE_PENDING_APPROVAL, UPDATE_PENDING_ACTIVATION, UPDATE_FAILED_APPROVAL, UPDATE_FAILED_ACTIVATION, UPDATE_FAILED_VALIDATION, DELETE_PENDING_APPROVAL, DELETE_FAILED_APPROVAL, DELETE_FAILED_VALIDATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Message describing the status for the team.</td>
 </tr>
@@ -293,21 +293,21 @@ Returns details for an approval team.
 
 ```sql
 SELECT
-ApprovalStrategy,
-Approvers,
-Arn,
-CreationTime,
-Description,
-LastUpdateTime,
-Name,
-NumberOfApprovers,
-PendingUpdate,
-Policies,
-Status,
-StatusCode,
-StatusMessage,
-UpdateSessionArn,
-VersionId
+approval_strategy,
+approvers,
+arn,
+creation_time,
+description,
+last_update_time,
+name,
+number_of_approvers,
+pending_update,
+policies,
+status,
+status_code,
+status_message,
+update_session_arn,
+version_id
 FROM aws.mpa.approval_teams
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -320,15 +320,15 @@ Returns a list of approval teams.
 
 ```sql
 SELECT
-ApprovalStrategy,
-Arn,
-CreationTime,
-Description,
-Name,
-NumberOfApprovers,
-Status,
-StatusCode,
-StatusMessage
+approval_strategy,
+arn,
+creation_time,
+description,
+name,
+number_of_approvers,
+status,
+status_code,
+status_message
 FROM aws.mpa.approval_teams
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -373,10 +373,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationTime,
-Name,
-VersionId
+arn,
+creation_time,
+name,
+version_id
 ;
 ```
 </TabItem>
@@ -438,7 +438,7 @@ WHERE
 arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-VersionId;
+version_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>object</code></td>
     <td>Information about the reference when the referenceType is ATTACHMENT. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Date" /></td>
+    <td><CopyableCode code="date" /></td>
     <td><code>object</code></td>
     <td>Information about a reference when the referenceType is DATE. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>object</code></td>
     <td>Information about a reference when the referenceType is EMAIL. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailMessage" /></td>
+    <td><CopyableCode code="email_message" /></td>
     <td><code>object</code></td>
     <td>Information about the reference when the referenceType is EMAIL_MESSAGE. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailMessagePlainText" /></td>
+    <td><CopyableCode code="email_message_plain_text" /></td>
     <td><code>object</code></td>
     <td>Information about the reference when the referenceType is EMAIL_MESSAGE. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailMessagePlainTextRedacted" /></td>
+    <td><CopyableCode code="email_message_plain_text_redacted" /></td>
     <td><code>object</code></td>
     <td>Information about the reference when the referenceType is EMAIL_MESSAGE. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailMessageRedacted" /></td>
+    <td><CopyableCode code="email_message_redacted" /></td>
     <td><code>object</code></td>
     <td>Information about the reference when the referenceType is EMAIL_MESSAGE. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Number" /></td>
+    <td><CopyableCode code="number" /></td>
     <td><code>object</code></td>
     <td>Information about a reference when the referenceType is NUMBER. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="String" /></td>
+    <td><CopyableCode code="string" /></td>
     <td><code>object</code></td>
     <td>Information about a reference when the referenceType is STRING. Otherwise, null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>object</code></td>
     <td>Information about the reference when the referenceType is URL. Otherwise, null.</td>
 </tr>
@@ -184,16 +184,16 @@ This API is in preview release for Amazon Connect and is subject to change. For 
 
 ```sql
 SELECT
-Attachment,
-Date,
-Email,
-EmailMessage,
-EmailMessagePlainText,
-EmailMessagePlainTextRedacted,
-EmailMessageRedacted,
-Number,
-String,
-Url
+attachment,
+date,
+email,
+email_message,
+email_message_plain_text,
+email_message_plain_text_redacted,
+email_message_redacted,
+number,
+string,
+url
 FROM aws.connect.contact_references
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_id = '{{ contact_id }}' -- required

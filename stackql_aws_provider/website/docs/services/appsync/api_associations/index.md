@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="apiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The API ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationStatus" /></td>
+    <td><CopyableCode code="association_status" /></td>
     <td><code>string</code></td>
     <td>Identifies the status of an association. PROCESSING: The API association is being created. You cannot modify association requests during processing. SUCCESS: The API association was successful. You can modify associations after success. FAILED: The API association has failed. You can modify associations after failure. (PROCESSING, FAILED, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentDetail" /></td>
+    <td><CopyableCode code="deployment_detail" /></td>
     <td><code>string</code></td>
     <td>Details about the last deployment status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name. (pattern: &lt;code&gt;^(\*&#91;\w\d-&#93;*\.)?(&#91;\w\d-&#93;+\.)+&#91;\w\d-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -139,10 +139,10 @@ Retrieves an ApiAssociation object.
 
 ```sql
 SELECT
-apiId,
-associationStatus,
-deploymentDetail,
-domainName
+api_id,
+association_status,
+deployment_detail,
+domain_name
 FROM aws.appsync.api_associations
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

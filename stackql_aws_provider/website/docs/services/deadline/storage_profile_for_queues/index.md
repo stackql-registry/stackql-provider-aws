@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the storage profile connected to a queue. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemLocations" /></td>
+    <td><CopyableCode code="file_system_locations" /></td>
     <td><code>array</code></td>
     <td>The location of the files for the storage profile within the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osFamily" /></td>
+    <td><CopyableCode code="os_family" /></td>
     <td><code>string</code></td>
     <td>The operating system of the storage profile in the queue. (WINDOWS, LINUX, MACOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageProfileId" /></td>
+    <td><CopyableCode code="storage_profile_id" /></td>
     <td><code>string</code></td>
     <td>The storage profile ID. (pattern: &lt;code&gt;sp-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -149,10 +149,10 @@ Gets a storage profile for a queue.
 
 ```sql
 SELECT
-displayName,
-fileSystemLocations,
-osFamily,
-storageProfileId
+display_name,
+file_system_locations,
+os_family,
+storage_profile_id
 FROM aws.deadline.storage_profile_for_queues
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required

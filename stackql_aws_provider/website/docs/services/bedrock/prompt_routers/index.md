@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the router was created.</td>
 </tr>
@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The router's description. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z:.&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fallbackModel" /></td>
+    <td><CopyableCode code="fallback_model" /></td>
     <td><code>object</code></td>
     <td>The target model for a prompt router.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The router's models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="promptRouterArn" /></td>
+    <td><CopyableCode code="prompt_router_arn" /></td>
     <td><code>string</code></td>
     <td>The prompt router's ARN (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:default-prompt-router/&#91;a-zA-Z0-9-:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="promptRouterName" /></td>
+    <td><CopyableCode code="prompt_router_name" /></td>
     <td><code>string</code></td>
     <td>The router's name. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routingCriteria" /></td>
+    <td><CopyableCode code="routing_criteria" /></td>
     <td><code>object</code></td>
     <td>Routing criteria for a prompt router.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The router's type. (custom, default)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the router was updated.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the router was created.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The router's description. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z:.&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fallbackModel" /></td>
+    <td><CopyableCode code="fallback_model" /></td>
     <td><code>object</code></td>
     <td>The target model for a prompt router.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The router's models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="promptRouterArn" /></td>
+    <td><CopyableCode code="prompt_router_arn" /></td>
     <td><code>string</code></td>
     <td>The router's ARN. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:default-prompt-router/&#91;a-zA-Z0-9-:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="promptRouterName" /></td>
+    <td><CopyableCode code="prompt_router_name" /></td>
     <td><code>string</code></td>
     <td>The router's name. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91; _-&#93;?)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routingCriteria" /></td>
+    <td><CopyableCode code="routing_criteria" /></td>
     <td><code>object</code></td>
     <td>Routing criteria for a prompt router.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The summary's type. (custom, default)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the router was updated.</td>
 </tr>
@@ -271,16 +271,16 @@ Retrieves details about a prompt router.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-fallbackModel,
+fallback_model,
 models,
-promptRouterArn,
-promptRouterName,
-routingCriteria,
+prompt_router_arn,
+prompt_router_name,
+routing_criteria,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.bedrock.prompt_routers
 WHERE prompt_router_arn = '{{ prompt_router_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -293,16 +293,16 @@ Retrieves a list of prompt routers.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-fallbackModel,
+fallback_model,
 models,
-promptRouterArn,
-promptRouterName,
-routingCriteria,
+prompt_router_arn,
+prompt_router_name,
+routing_criteria,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.bedrock.prompt_routers
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -348,7 +348,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-promptRouterArn
+prompt_router_arn
 ;
 ```
 </TabItem>

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the SIP rule was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Disabled" /></td>
+    <td><CopyableCode code="disabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the SIP rule is enabled or disabled. You must disable a rule before you can delete it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A SIP rule's name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9 _.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SipRuleId" /></td>
+    <td><CopyableCode code="sip_rule_id" /></td>
     <td><code>string</code></td>
     <td>A SIP rule's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetApplications" /></td>
+    <td><CopyableCode code="target_applications" /></td>
     <td><code>array</code></td>
     <td>The target SIP media application and other details, such as priority and AWS Region, to be specified in the SIP rule. Only one SIP rule per AWS Region can be provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerType" /></td>
+    <td><CopyableCode code="trigger_type" /></td>
     <td><code>string</code></td>
     <td>The type of trigger set for a SIP rule, either a phone number or a URI request host name. (ToPhoneNumber, RequestUriHostname)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerValue" /></td>
+    <td><CopyableCode code="trigger_value" /></td>
     <td><code>string</code></td>
     <td>The value set for a SIP rule's trigger type. Either a phone number or a URI hostname. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the SIP rule was updated, in ISO 8601 format.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the SIP rule was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Disabled" /></td>
+    <td><CopyableCode code="disabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the SIP rule is enabled or disabled. You must disable a rule before you can delete it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A SIP rule's name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9 _.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SipRuleId" /></td>
+    <td><CopyableCode code="sip_rule_id" /></td>
     <td><code>string</code></td>
     <td>A SIP rule's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetApplications" /></td>
+    <td><CopyableCode code="target_applications" /></td>
     <td><code>array</code></td>
     <td>The target SIP media application and other details, such as priority and AWS Region, to be specified in the SIP rule. Only one SIP rule per AWS Region can be provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerType" /></td>
+    <td><CopyableCode code="trigger_type" /></td>
     <td><code>string</code></td>
     <td>The type of trigger set for a SIP rule, either a phone number or a URI request host name. (ToPhoneNumber, RequestUriHostname)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerValue" /></td>
+    <td><CopyableCode code="trigger_value" /></td>
     <td><code>string</code></td>
     <td>The value set for a SIP rule's trigger type. Either a phone number or a URI hostname. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the SIP rule was updated, in ISO 8601 format.</td>
 </tr>
@@ -258,14 +258,14 @@ Retrieves the details of a SIP rule, such as the rule ID, name, triggers, and ta
 
 ```sql
 SELECT
-CreatedTimestamp,
-Disabled,
-Name,
-SipRuleId,
-TargetApplications,
-TriggerType,
-TriggerValue,
-UpdatedTimestamp
+created_timestamp,
+disabled,
+name,
+sip_rule_id,
+target_applications,
+trigger_type,
+trigger_value,
+updated_timestamp
 FROM aws.chime_sdk_voice.sip_rules
 WHERE sip_rule_id = '{{ sip_rule_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,14 +278,14 @@ Lists the SIP rules under the administrator's AWS account.
 
 ```sql
 SELECT
-CreatedTimestamp,
-Disabled,
-Name,
-SipRuleId,
-TargetApplications,
-TriggerType,
-TriggerValue,
-UpdatedTimestamp
+created_timestamp,
+disabled,
+name,
+sip_rule_id,
+target_applications,
+trigger_type,
+trigger_value,
+updated_timestamp
 FROM aws.chime_sdk_voice.sip_rules
 WHERE region = '{{ region }}' -- required
 AND `sip-media-application` = '{{ sip-media-application }}'
@@ -327,7 +327,7 @@ SELECT
 '{{ TargetApplications }}',
 '{{ region }}'
 RETURNING
-SipRule
+sip_rule
 ;
 ```
 </TabItem>
@@ -381,7 +381,7 @@ WHERE
 sip_rule_id = '{{ sip_rule_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-SipRule;
+sip_rule;
 ```
 </TabItem>
 </Tabs>

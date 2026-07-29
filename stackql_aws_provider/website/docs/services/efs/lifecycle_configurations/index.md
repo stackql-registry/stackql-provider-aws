@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LifecyclePolicies" /></td>
+    <td><CopyableCode code="lifecycle_policies" /></td>
     <td><code>array</code></td>
     <td>An array of lifecycle management policies. EFS supports a maximum of one policy per file system.</td>
 </tr>
@@ -131,7 +131,7 @@ Returns the current LifecycleConfiguration object for the specified EFS file sys
 
 ```sql
 SELECT
-LifecyclePolicies
+lifecycle_policies
 FROM aws.efs.lifecycle_configurations
 WHERE file_system_id = '{{ file_system_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -162,7 +162,7 @@ file_system_id = '{{ file_system_id }}' --required
 AND region = '{{ region }}' --required
 AND LifecyclePolicies = '{{ LifecyclePolicies }}' --required
 RETURNING
-LifecyclePolicies;
+lifecycle_policies;
 ```
 </TabItem>
 </Tabs>

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>For information about the errors that are common to all actions, see Common Errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Profiles" /></td>
+    <td><CopyableCode code="profiles" /></td>
     <td><code>array</code></td>
     <td>Array of Profile Objects.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The list of Profiles matching the search criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token from the previous SearchProfiles API call.</td>
 </tr>
@@ -214,8 +214,8 @@ Get a batch of profiles.
 
 ```sql
 SELECT
-Errors,
-Profiles
+errors,
+profiles
 FROM aws.customer_profiles.profiles
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,8 +228,8 @@ Searches for profiles within a specific domain using one or more predefined sear
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.profiles
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -313,7 +313,7 @@ SELECT
 '{{ domain_name }}',
 '{{ region }}'
 RETURNING
-ProfileId
+profile_id
 ;
 ```
 </TabItem>
@@ -472,8 +472,8 @@ AND region = '{{ region }}' --required
 AND ProfileId = '{{ ProfileId }}' --required
 AND KeyName = '{{ KeyName }}' --required
 RETURNING
-KeyName,
-Values;
+key_name,
+values;
 ```
 </TabItem>
 <TabItem value="update_profile">
@@ -514,7 +514,7 @@ domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 AND ProfileId = '{{ ProfileId }}' --required
 RETURNING
-ProfileId;
+profile_id;
 ```
 </TabItem>
 </Tabs>

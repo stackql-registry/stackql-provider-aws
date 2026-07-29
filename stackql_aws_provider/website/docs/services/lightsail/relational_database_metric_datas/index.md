@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="metricData" /></td>
+    <td><CopyableCode code="metric_data" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the metric data returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric returned. (CPUUtilization, DatabaseConnections, DiskQueueDepth, FreeStorageSpace, NetworkReceiveThroughput, NetworkTransmitThroughput)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the data points of the specified metric for a database in Amazon Lightsa
 
 ```sql
 SELECT
-metricData,
-metricName
+metric_data,
+metric_name
 FROM aws.lightsail.relational_database_metric_datas
 WHERE region = '{{ region }}' -- required
 ;

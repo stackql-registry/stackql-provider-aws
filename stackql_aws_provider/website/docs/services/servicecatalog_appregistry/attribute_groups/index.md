@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>A JSON string in the form of nested key-value pairs that represent the attributes in the group and describes an application and its components. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The service principal that created the attribute group. (pattern: &lt;code&gt;^(?!-)(&#91;a-z0-9-&#93;+\.)+(aws\.internal|amazonaws\.com(\.cn)?)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment the attribute group was created.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the attribute group that the user provides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment the attribute group was last updated. This time is the same as the creationTime for a newly created attribute group.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon resource name (ARN) that specifies the attribute group across services. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:servicecatalog:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:/attribute-groups/&#91;-.\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The service principal that created the attribute group. (pattern: &lt;code&gt;^(?!-)(&#91;a-z0-9-&#93;+\.)+(aws\.internal|amazonaws\.com(\.cn)?)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment the attribute group was created.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the attribute group that the user provides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment the attribute group was last updated. This time is the same as the creationTime for a newly created attribute group.</td>
 </tr>
@@ -276,10 +276,10 @@ id,
 name,
 arn,
 attributes,
-createdBy,
-creationTime,
+created_by,
+creation_time,
 description,
-lastUpdateTime,
+last_update_time,
 tags
 FROM aws.servicecatalog_appregistry.attribute_groups
 WHERE attribute_group = '{{ attribute_group }}' -- required
@@ -296,10 +296,10 @@ SELECT
 id,
 name,
 arn,
-createdBy,
-creationTime,
+created_by,
+creation_time,
 description,
-lastUpdateTime
+last_update_time
 FROM aws.servicecatalog_appregistry.attribute_groups
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -340,7 +340,7 @@ SELECT
 '{{ clientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-attributeGroup
+attribute_group
 ;
 ```
 </TabItem>
@@ -390,8 +390,8 @@ application = '{{ application }}' --required
 AND attribute_group = '{{ attribute_group }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-applicationArn,
-attributeGroupArn;
+application_arn,
+attribute_group_arn;
 ```
 </TabItem>
 <TabItem value="update_attribute_group">
@@ -408,7 +408,7 @@ WHERE
 attribute_group = '{{ attribute_group }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-attributeGroup;
+attribute_group;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The Verified Access policy document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyEnabled" /></td>
+    <td><CopyableCode code="policy_enabled" /></td>
     <td><code>boolean</code></td>
     <td>The status of the Verified Access policy.</td>
 </tr>
@@ -161,8 +161,8 @@ Get the Verified Access policy associated with the endpoint.
 
 ```sql
 SELECT
-PolicyDocument,
-PolicyEnabled
+policy_document,
+policy_enabled
 FROM aws.ec2.verified_access_endpoint_policies
 WHERE VerifiedAccessEndpointId = '{{ VerifiedAccessEndpointId }}' -- required
 AND region = '{{ region }}' -- required
@@ -198,9 +198,9 @@ AND ClientToken = '{{ ClientToken}}'
 AND DryRun = {{ DryRun}}
 AND SseSpecification = '{{ SseSpecification}}'
 RETURNING
-PolicyDocument,
-PolicyEnabled,
-SseSpecification;
+policy_document,
+policy_enabled,
+sse_specification;
 ```
 </TabItem>
 </Tabs>

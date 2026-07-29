@@ -50,307 +50,307 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiLaunchIndex" /></td>
+    <td><CopyableCode code="ami_launch_index" /></td>
     <td><code>integer</code></td>
     <td>The AMI launch index, which can be used to find this instance in the launch group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Architecture" /></td>
+    <td><CopyableCode code="architecture" /></td>
     <td><code>string</code></td>
     <td>The architecture of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockDeviceMappings" /></td>
+    <td><CopyableCode code="block_device_mappings" /></td>
     <td><code>string</code></td>
     <td>Any block device mapping entries for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootMode" /></td>
+    <td><CopyableCode code="boot_mode" /></td>
     <td><code>string</code></td>
     <td>The boot mode that was specified by the AMI. If the value is uefi-preferred, the AMI supports both UEFI and Legacy BIOS. The currentInstanceBootMode parameter is the boot mode that is used to boot the instance at launch or start. The operating system contained in the AMI must be configured to support the specified boot mode. For more information, see Boot modes in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockId" /></td>
+    <td><CopyableCode code="capacity_block_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block. For P5 instances, a Capacity Block ID refers to a group of instances. For Trn2u instances, a capacity block ID refers to an EC2 UltraServer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationId" /></td>
+    <td><CopyableCode code="capacity_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationSpecification" /></td>
+    <td><CopyableCode code="capacity_reservation_specification" /></td>
     <td><code>string</code></td>
     <td>Information about the Capacity Reservation targeting option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The idempotency token you provided when you launched the instance, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CpuOptions" /></td>
+    <td><CopyableCode code="cpu_options" /></td>
     <td><code>string</code></td>
     <td>The CPU options for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentInstanceBootMode" /></td>
+    <td><CopyableCode code="current_instance_boot_mode" /></td>
     <td><code>string</code></td>
     <td>The boot mode that is used to boot the instance at launch or start. For more information, see Boot modes in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EbsOptimized" /></td>
+    <td><CopyableCode code="ebs_optimized" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticGpuAssociations" /></td>
+    <td><CopyableCode code="elastic_gpu_associations" /></td>
     <td><code>string</code></td>
     <td>Deprecated. Amazon Elastic Graphics reached end of life on January 8, 2024.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticInferenceAcceleratorAssociations" /></td>
+    <td><CopyableCode code="elastic_inference_accelerator_associations" /></td>
     <td><code>string</code></td>
     <td>Deprecated Amazon Elastic Inference is no longer available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnaSupport" /></td>
+    <td><CopyableCode code="ena_support" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether enhanced networking with ENA is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnclaveOptions" /></td>
+    <td><CopyableCode code="enclave_options" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the instance is enabled for Amazon Web Services Nitro Enclaves.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HibernationOptions" /></td>
+    <td><CopyableCode code="hibernation_options" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the instance is enabled for hibernation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hypervisor" /></td>
+    <td><CopyableCode code="hypervisor" /></td>
     <td><code>string</code></td>
     <td>The hypervisor type of the instance. The value xen is used for both Xen and Nitro hypervisors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamInstanceProfile" /></td>
+    <td><CopyableCode code="iam_instance_profile" /></td>
     <td><code>string</code></td>
     <td>The IAM instance profile associated with the instance, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AMI used to launch the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceLifecycle" /></td>
+    <td><CopyableCode code="instance_lifecycle" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this is a Spot Instance or a Scheduled Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Address" /></td>
+    <td><CopyableCode code="ipv_6_address" /></td>
     <td><code>string</code></td>
     <td>The IPv6 address assigned to the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KernelId" /></td>
+    <td><CopyableCode code="kernel_id" /></td>
     <td><code>string</code></td>
     <td>The kernel associated with this instance, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyName" /></td>
+    <td><CopyableCode code="key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the key pair, if this instance was launched with an associated key pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTime" /></td>
+    <td><CopyableCode code="launch_time" /></td>
     <td><code>string</code></td>
     <td>The time that the instance was last launched. To determine the time that instance was first launched, see the attachment time for the primary network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Licenses" /></td>
+    <td><CopyableCode code="licenses" /></td>
     <td><code>string</code></td>
     <td>The license configurations for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceOptions" /></td>
+    <td><CopyableCode code="maintenance_options" /></td>
     <td><code>string</code></td>
     <td>Provides information on the recovery and maintenance options of your instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataOptions" /></td>
+    <td><CopyableCode code="metadata_options" /></td>
     <td><code>string</code></td>
     <td>The metadata options for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Monitoring" /></td>
+    <td><CopyableCode code="monitoring" /></td>
     <td><code>string</code></td>
     <td>The monitoring for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaces" /></td>
+    <td><CopyableCode code="network_interfaces" /></td>
     <td><code>string</code></td>
     <td>The network interfaces for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkPerformanceOptions" /></td>
+    <td><CopyableCode code="network_performance_options" /></td>
     <td><code>string</code></td>
     <td>Contains settings for the network performance options for your instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The service provider that manages the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Placement" /></td>
+    <td><CopyableCode code="placement" /></td>
     <td><code>string</code></td>
     <td>The location where the instance launched, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The platform. This value is windows for Windows instances; otherwise, it is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformDetails" /></td>
+    <td><CopyableCode code="platform_details" /></td>
     <td><code>string</code></td>
     <td>The platform details value for the instance. For more information, see AMI billing information fields in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsName" /></td>
+    <td><CopyableCode code="private_dns_name" /></td>
     <td><code>string</code></td>
     <td>&#91;IPv4 only&#93; The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the running state. The Amazon-provided DNS server resolves Amazon-provided private DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If you are not using the Amazon-provided DNS server in your VPC, your custom domain name servers must resolve the hostname as appropriate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsNameOptions" /></td>
+    <td><CopyableCode code="private_dns_name_options" /></td>
     <td><code>string</code></td>
     <td>The options for the instance hostname.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateIpAddress" /></td>
+    <td><CopyableCode code="private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The private IPv4 address assigned to the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCodes" /></td>
+    <td><CopyableCode code="product_codes" /></td>
     <td><code>string</code></td>
     <td>The product codes attached to this instance, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicDnsName" /></td>
+    <td><CopyableCode code="public_dns_name" /></td>
     <td><code>string</code></td>
     <td>The public DNS name assigned to the instance. This name is not available until the instance enters the running state. This name is only available if you've enabled DNS hostnames for your VPC. The format of this name depends on the public hostname type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIpAddress" /></td>
+    <td><CopyableCode code="public_ip_address" /></td>
     <td><code>string</code></td>
     <td>The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable. A Carrier IP address only applies to an instance launched in a subnet associated with a Wavelength Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RamdiskId" /></td>
+    <td><CopyableCode code="ramdisk_id" /></td>
     <td><code>string</code></td>
     <td>The RAM disk associated with this instance, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootDeviceName" /></td>
+    <td><CopyableCode code="root_device_name" /></td>
     <td><code>string</code></td>
     <td>The device name of the root device volume (for example, /dev/sda1).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootDeviceType" /></td>
+    <td><CopyableCode code="root_device_type" /></td>
     <td><code>string</code></td>
     <td>The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryInterfaces" /></td>
+    <td><CopyableCode code="secondary_interfaces" /></td>
     <td><code>string</code></td>
     <td>The secondary interfaces for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>string</code></td>
     <td>The security groups for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDestCheck" /></td>
+    <td><CopyableCode code="source_dest_check" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether source/destination checking is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotInstanceRequestId" /></td>
+    <td><CopyableCode code="spot_instance_request_id" /></td>
     <td><code>string</code></td>
     <td>If the request is a Spot Instance request, the ID of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SriovNetSupport" /></td>
+    <td><CopyableCode code="sriov_net_support" /></td>
     <td><code>string</code></td>
     <td>Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the most recent state transition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateTransitionReason" /></td>
+    <td><CopyableCode code="state_transition_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the most recent state transition. This might be an empty string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet in which the instance is running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TpmSupport" /></td>
+    <td><CopyableCode code="tpm_support" /></td>
     <td><code>string</code></td>
     <td>If the instance is configured for NitroTPM support, the value is v2.0. For more information, see NitroTPM in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageOperation" /></td>
+    <td><CopyableCode code="usage_operation" /></td>
     <td><code>string</code></td>
     <td>The usage operation value for the instance. For more information, see AMI billing information fields in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageOperationUpdateTime" /></td>
+    <td><CopyableCode code="usage_operation_update_time" /></td>
     <td><code>string</code></td>
     <td>The time that the usage operation was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VirtualizationType" /></td>
+    <td><CopyableCode code="virtualization_type" /></td>
     <td><code>string</code></td>
     <td>The virtualization type of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC in which the instance is running.</td>
 </tr>
@@ -1084,67 +1084,67 @@ Describes the specified instances or all instances. If you specify instance IDs,
 
 ```sql
 SELECT
-AmiLaunchIndex,
-Architecture,
-BlockDeviceMappings,
-BootMode,
-CapacityBlockId,
-CapacityReservationId,
-CapacityReservationSpecification,
-ClientToken,
-CpuOptions,
-CurrentInstanceBootMode,
-EbsOptimized,
-ElasticGpuAssociations,
-ElasticInferenceAcceleratorAssociations,
-EnaSupport,
-EnclaveOptions,
-HibernationOptions,
-Hypervisor,
-IamInstanceProfile,
-ImageId,
-InstanceId,
-InstanceLifecycle,
-InstanceType,
-Ipv6Address,
-KernelId,
-KeyName,
-LaunchTime,
-Licenses,
-MaintenanceOptions,
-MetadataOptions,
-Monitoring,
-NetworkInterfaces,
-NetworkPerformanceOptions,
-Operator,
-OutpostArn,
-Placement,
-Platform,
-PlatformDetails,
-PrivateDnsName,
-PrivateDnsNameOptions,
-PrivateIpAddress,
-ProductCodes,
-PublicDnsName,
-PublicIpAddress,
-RamdiskId,
-RootDeviceName,
-RootDeviceType,
-SecondaryInterfaces,
-SecurityGroups,
-SourceDestCheck,
-SpotInstanceRequestId,
-SriovNetSupport,
-State,
-StateReason,
-StateTransitionReason,
-SubnetId,
-Tags,
-TpmSupport,
-UsageOperation,
-UsageOperationUpdateTime,
-VirtualizationType,
-VpcId
+ami_launch_index,
+architecture,
+block_device_mappings,
+boot_mode,
+capacity_block_id,
+capacity_reservation_id,
+capacity_reservation_specification,
+client_token,
+cpu_options,
+current_instance_boot_mode,
+ebs_optimized,
+elastic_gpu_associations,
+elastic_inference_accelerator_associations,
+ena_support,
+enclave_options,
+hibernation_options,
+hypervisor,
+iam_instance_profile,
+image_id,
+instance_id,
+instance_lifecycle,
+instance_type,
+ipv_6_address,
+kernel_id,
+key_name,
+launch_time,
+licenses,
+maintenance_options,
+metadata_options,
+monitoring,
+network_interfaces,
+network_performance_options,
+operator,
+outpost_arn,
+placement,
+platform,
+platform_details,
+private_dns_name,
+private_dns_name_options,
+private_ip_address,
+product_codes,
+public_dns_name,
+public_ip_address,
+ramdisk_id,
+root_device_name,
+root_device_type,
+secondary_interfaces,
+security_groups,
+source_dest_check,
+spot_instance_request_id,
+sriov_net_support,
+state,
+state_reason,
+state_transition_reason,
+subnet_id,
+tags,
+tpm_support,
+usage_operation,
+usage_operation_update_time,
+virtualization_type,
+vpc_id
 FROM aws.ec2.instances
 WHERE region = '{{ region }}' -- required
 AND InstanceId = '{{ InstanceId }}'
@@ -1191,13 +1191,13 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-InstanceId,
-MacModificationTaskId,
-MacSystemIntegrityProtectionConfig,
-StartTime,
-Tags,
-TaskState,
-TaskType
+instance_id,
+mac_modification_task_id,
+mac_system_integrity_protection_config,
+start_time,
+tags,
+task_state,
+task_type
 ;
 ```
 </TabItem>
@@ -1226,13 +1226,13 @@ SELECT
 '{{ MacSystemIntegrityProtectionConfiguration }}',
 '{{ TagSpecification }}'
 RETURNING
-InstanceId,
-MacModificationTaskId,
-MacSystemIntegrityProtectionConfig,
-StartTime,
-Tags,
-TaskState,
-TaskType
+instance_id,
+mac_modification_task_id,
+mac_system_integrity_protection_config,
+start_time,
+tags,
+task_state,
+task_type
 ;
 ```
 </TabItem>
@@ -1335,67 +1335,67 @@ SELECT
 '{{ IamInstanceProfile }}',
 '{{ EbsOptimized }}'
 RETURNING
-AmiLaunchIndex,
-Architecture,
-BlockDeviceMappings,
-BootMode,
-CapacityBlockId,
-CapacityReservationId,
-CapacityReservationSpecification,
-ClientToken,
-CpuOptions,
-CurrentInstanceBootMode,
-EbsOptimized,
-ElasticGpuAssociations,
-ElasticInferenceAcceleratorAssociations,
-EnaSupport,
-EnclaveOptions,
-HibernationOptions,
-Hypervisor,
-IamInstanceProfile,
-ImageId,
-InstanceId,
-InstanceLifecycle,
-InstanceType,
-Ipv6Address,
-KernelId,
-KeyName,
-LaunchTime,
-Licenses,
-MaintenanceOptions,
-MetadataOptions,
-Monitoring,
-NetworkInterfaces,
-NetworkPerformanceOptions,
-Operator,
-OutpostArn,
-Placement,
-Platform,
-PlatformDetails,
-PrivateDnsName,
-PrivateDnsNameOptions,
-PrivateIpAddress,
-ProductCodes,
-PublicDnsName,
-PublicIpAddress,
-RamdiskId,
-RootDeviceName,
-RootDeviceType,
-SecondaryInterfaces,
-SecurityGroups,
-SourceDestCheck,
-SpotInstanceRequestId,
-SriovNetSupport,
-State,
-StateReason,
-StateTransitionReason,
-SubnetId,
-Tags,
-TpmSupport,
-UsageOperation,
-UsageOperationUpdateTime,
-VirtualizationType,
-VpcId
+ami_launch_index,
+architecture,
+block_device_mappings,
+boot_mode,
+capacity_block_id,
+capacity_reservation_id,
+capacity_reservation_specification,
+client_token,
+cpu_options,
+current_instance_boot_mode,
+ebs_optimized,
+elastic_gpu_associations,
+elastic_inference_accelerator_associations,
+ena_support,
+enclave_options,
+hibernation_options,
+hypervisor,
+iam_instance_profile,
+image_id,
+instance_id,
+instance_lifecycle,
+instance_type,
+ipv_6_address,
+kernel_id,
+key_name,
+launch_time,
+licenses,
+maintenance_options,
+metadata_options,
+monitoring,
+network_interfaces,
+network_performance_options,
+operator,
+outpost_arn,
+placement,
+platform,
+platform_details,
+private_dns_name,
+private_dns_name_options,
+private_ip_address,
+product_codes,
+public_dns_name,
+public_ip_address,
+ramdisk_id,
+root_device_name,
+root_device_type,
+secondary_interfaces,
+security_groups,
+source_dest_check,
+spot_instance_request_id,
+sriov_net_support,
+state,
+state_reason,
+state_transition_reason,
+subnet_id,
+tags,
+tpm_support,
+usage_operation,
+usage_operation_update_time,
+virtualization_type,
+vpc_id
 ;
 ```
 </TabItem>
@@ -1626,12 +1626,12 @@ AND NotBefore = '{{ NotBefore }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Code,
-Description,
-InstanceEventId,
-NotAfter,
-NotBefore,
-NotBeforeDeadline;
+code,
+description,
+instance_event_id,
+not_after,
+not_before,
+not_before_deadline;
 ```
 </TabItem>
 <TabItem value="modify_instance_capacity_reservation_attributes">
@@ -1648,7 +1648,7 @@ AND CapacityReservationSpecification = '{{ CapacityReservationSpecification }}' 
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 <TabItem value="modify_instance_network_performance_options">
@@ -1665,8 +1665,8 @@ AND BandwidthWeighting = '{{ BandwidthWeighting }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-BandwidthWeighting,
-InstanceId;
+bandwidth_weighting,
+instance_id;
 ```
 </TabItem>
 <TabItem value="modify_instance_cpu_options">
@@ -1685,10 +1685,10 @@ AND ThreadsPerCore = '{{ ThreadsPerCore}}'
 AND NestedVirtualization = '{{ NestedVirtualization}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-CoreCount,
-InstanceId,
-NestedVirtualization,
-ThreadsPerCore;
+core_count,
+instance_id,
+nested_virtualization,
+threads_per_core;
 ```
 </TabItem>
 </Tabs>

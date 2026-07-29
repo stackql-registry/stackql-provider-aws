@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filters" /></td>
+    <td><CopyableCode code="filters" /></td>
     <td><code>object</code></td>
     <td>A search filter defines which resources can be part of a search query result set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludedProperties" /></td>
+    <td><CopyableCode code="included_properties" /></td>
     <td><code>array</code></td>
     <td>A structure that contains additional information about the managed view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this managed view was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedViewArn" /></td>
+    <td><CopyableCode code="managed_view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the managed view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedViewName" /></td>
+    <td><CopyableCode code="managed_view_name" /></td>
     <td><code>string</code></td>
     <td>The name of the managed view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that owns this managed view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>The resource policy that defines access to the managed view. To learn more about this policy, review Managed views.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scope" /></td>
+    <td><CopyableCode code="scope" /></td>
     <td><code>string</code></td>
     <td>An Amazon resource name (ARN) of an Amazon Web Services account or organization that specifies whether this managed view includes resources from only the specified Amazon Web Services account or all accounts in the specified organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedService" /></td>
+    <td><CopyableCode code="trusted_service" /></td>
     <td><code>string</code></td>
     <td>The service principal of the Amazon Web Services service that created and manages the managed view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of the managed view.</td>
 </tr>
@@ -192,16 +192,16 @@ Retrieves details of the specified Amazon Web Services-managed view.
 
 ```sql
 SELECT
-Filters,
-IncludedProperties,
-LastUpdatedAt,
-ManagedViewArn,
-ManagedViewName,
-Owner,
-ResourcePolicy,
-Scope,
-TrustedService,
-Version
+filters,
+included_properties,
+last_updated_at,
+managed_view_arn,
+managed_view_name,
+owner,
+resource_policy,
+scope,
+trusted_service,
+version
 FROM aws.resource_explorer_2.managed_views
 WHERE region = '{{ region }}' -- required
 ;

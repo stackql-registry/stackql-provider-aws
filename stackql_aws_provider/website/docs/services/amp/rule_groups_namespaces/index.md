@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the rule groups namespace. For example, arn:aws:aps:<code>&lt;region&gt;</code>:123456789012:rulegroupsnamespace/ws-example1-1234-abcd-5678-ef90abcd1234/rulesfile1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the rule groups namespace was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The rule groups namespace data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the rule groups namespace was most recently changed.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the rule groups namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the rule groups namespace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the rule groups namespace was most recently changed.</td>
 </tr>
@@ -255,9 +255,9 @@ Returns complete information about one rule groups namespace. To retrieve a list
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 data,
-modifiedAt,
+modified_at,
 status,
 tags
 FROM aws.amp.rule_groups_namespaces
@@ -275,8 +275,8 @@ Returns a list of rule groups namespaces in a workspace.
 SELECT
 name,
 arn,
-createdAt,
-modifiedAt,
+created_at,
+modified_at,
 status,
 tags
 FROM aws.amp.rule_groups_namespaces

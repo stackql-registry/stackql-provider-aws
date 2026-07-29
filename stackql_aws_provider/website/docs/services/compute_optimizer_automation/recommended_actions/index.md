@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the resource. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentResourceDetails" /></td>
+    <td><CopyableCode code="current_resource_details" /></td>
     <td><code>object</code></td>
     <td>Detailed configuration information for a specific Amazon Web Services resource, with type-specific details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentResourceSummary" /></td>
+    <td><CopyableCode code="current_resource_summary" /></td>
     <td><code>string</code></td>
     <td>A summary of the resource's current configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlySavings" /></td>
+    <td><CopyableCode code="estimated_monthly_savings" /></td>
     <td><code>object</code></td>
     <td>Contains information about estimated monthly cost savings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lookBackPeriodInDays" /></td>
+    <td><CopyableCode code="look_back_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days of historical data used to generate the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActionId" /></td>
+    <td><CopyableCode code="recommended_action_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the recommended action. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActionType" /></td>
+    <td><CopyableCode code="recommended_action_type" /></td>
     <td><code>string</code></td>
     <td>Recommended action type enumeration (SnapshotAndDeleteUnattachedEbsVolume, UpgradeEbsVolumeType)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedResourceDetails" /></td>
+    <td><CopyableCode code="recommended_resource_details" /></td>
     <td><code>object</code></td>
     <td>Detailed configuration information for a specific Amazon Web Services resource, with type-specific details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedResourceSummary" /></td>
+    <td><CopyableCode code="recommended_resource_summary" /></td>
     <td><code>string</code></td>
     <td>A summary of the resource's recommended configuration.</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region where the resource is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource that the recommendation applies to. (pattern: &lt;code&gt;arn:aws&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9/_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource that the recommendation applies to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource being evaluated. (EbsVolume)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="restartNeeded" /></td>
+    <td><CopyableCode code="restart_needed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether implementing the recommended action requires a resource restart.</td>
 </tr>
@@ -196,21 +196,21 @@ Lists the recommended actions based that match specified filters. Management acc
 
 ```sql
 SELECT
-accountId,
-currentResourceDetails,
-currentResourceSummary,
-estimatedMonthlySavings,
-lookBackPeriodInDays,
-recommendedActionId,
-recommendedActionType,
-recommendedResourceDetails,
-recommendedResourceSummary,
+account_id,
+current_resource_details,
+current_resource_summary,
+estimated_monthly_savings,
+look_back_period_in_days,
+recommended_action_id,
+recommended_action_type,
+recommended_resource_details,
+recommended_resource_summary,
 region,
-resourceArn,
-resourceId,
-resourceTags,
-resourceType,
-restartNeeded
+resource_arn,
+resource_id,
+resource_tags,
+resource_type,
+restart_needed
 FROM aws.compute_optimizer_automation.recommended_actions
 WHERE region = '{{ region }}' -- required
 ;

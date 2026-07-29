@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>object</code></td>
     <td>What occurs after a certain event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the event action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the event action was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Event" /></td>
+    <td><CopyableCode code="event" /></td>
     <td><code>object</code></td>
     <td>What occurs to start an action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the event action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags for the event action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the event action was last updated, in ISO 8601 format.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>object</code></td>
     <td>What occurs after a certain event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the event action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the event action was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Event" /></td>
+    <td><CopyableCode code="event" /></td>
     <td><code>object</code></td>
     <td>What occurs to start an action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the event action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the event action was last updated, in ISO 8601 format.</td>
 </tr>
@@ -243,13 +243,13 @@ This operation retrieves information about an event action.
 
 ```sql
 SELECT
-Action,
-Arn,
-CreatedAt,
-Event,
-Id,
-Tags,
-UpdatedAt
+action,
+arn,
+created_at,
+event,
+id,
+tags,
+updated_at
 FROM aws.dataexchange.event_actions
 WHERE event_action_id = '{{ event_action_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,12 +262,12 @@ This operation lists your event actions.
 
 ```sql
 SELECT
-Action,
-Arn,
-CreatedAt,
-Event,
-Id,
-UpdatedAt
+action,
+arn,
+created_at,
+event,
+id,
+updated_at
 FROM aws.dataexchange.event_actions
 WHERE region = '{{ region }}' -- required
 AND eventSourceId = '{{ eventSourceId }}'
@@ -305,13 +305,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Action,
-Arn,
-CreatedAt,
-Event,
-Id,
-Tags,
-UpdatedAt
+action,
+arn,
+created_at,
+event,
+id,
+tags,
+updated_at
 ;
 ```
 </TabItem>
@@ -368,12 +368,12 @@ WHERE
 event_action_id = '{{ event_action_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Action,
-Arn,
-CreatedAt,
-Event,
-Id,
-UpdatedAt;
+action,
+arn,
+created_at,
+event,
+id,
+updated_at;
 ```
 </TabItem>
 </Tabs>

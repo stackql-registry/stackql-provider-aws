@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeAlias" /></td>
+    <td><CopyableCode code="theme_alias" /></td>
     <td><code>object</code></td>
     <td>Information about the theme alias.</td>
 </tr>
@@ -165,9 +165,9 @@ Describes the alias for a theme.
 
 ```sql
 SELECT
-RequestId,
-Status,
-ThemeAlias
+request_id,
+status,
+theme_alias
 FROM aws.quicksight.theme_alias
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND theme_id = '{{ theme_id }}' -- required
@@ -207,9 +207,9 @@ SELECT
 '{{ alias_name }}',
 '{{ region }}'
 RETURNING
-RequestId,
-Status,
-ThemeAlias
+request_id,
+status,
+theme_alias
 ;
 ```
 </TabItem>
@@ -261,9 +261,9 @@ AND alias_name = '{{ alias_name }}' --required
 AND region = '{{ region }}' --required
 AND ThemeVersionNumber = '{{ ThemeVersionNumber }}' --required
 RETURNING
-RequestId,
-Status,
-ThemeAlias;
+request_id,
+status,
+theme_alias;
 ```
 </TabItem>
 </Tabs>

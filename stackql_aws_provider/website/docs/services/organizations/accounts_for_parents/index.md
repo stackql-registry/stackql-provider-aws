@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the account. For more information about ARNs in Organizations, see ARN Formats Supported by Organizations in the Amazon Web Services Service Authorization Reference. (pattern: &lt;code&gt;^arn:aws:organizations::\d&#123;12&#125;:account\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email address associated with the Amazon Web Services account. The regex pattern for this parameter is a string of characters that represents a standard internet email address. (pattern: &lt;code&gt;&#91;^\s@&#93;+@&#91;^\s@&#93;+\.&#91;^\s@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the account. The regex pattern for an account ID string requires exactly 12 digits. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JoinedMethod" /></td>
+    <td><CopyableCode code="joined_method" /></td>
     <td><code>string</code></td>
     <td>The method by which the account joined the organization. (INVITED, CREATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JoinedTimestamp" /></td>
+    <td><CopyableCode code="joined_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the account became a part of the organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the account. The regex pattern that is used to validate this parameter is a string of any of the characters in the ASCII character range. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Paths" /></td>
+    <td><CopyableCode code="paths" /></td>
     <td><code>array</code></td>
     <td>The paths in the organization where the account exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Each state represents a specific phase in the account lifecycle. Use this information to manage account access, automate workflows, or trigger actions based on account state changes. For more information about account states and their implications, see Monitor the state of your Amazon Web Services accounts in the Organizations User Guide. (PENDING_ACTIVATION, ACTIVE, SUSPENDED, PENDING_CLOSURE, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the account in the organization. The Status parameter in the Account object will be retired on September 9, 2026. Although both the account State and account Status parameters are currently available in the Organizations APIs (DescribeAccount, ListAccounts, ListAccountsForParent), we recommend that you update your scripts or other code to use the State parameter instead of Status before September 9, 2026. (ACTIVE, SUSPENDED, PENDING_CLOSURE)</td>
 </tr>
@@ -159,15 +159,15 @@ Lists the accounts in an organization that are contained by the specified target
 
 ```sql
 SELECT
-Arn,
-Email,
-Id,
-JoinedMethod,
-JoinedTimestamp,
-Name,
-Paths,
-State,
-Status
+arn,
+email,
+id,
+joined_method,
+joined_timestamp,
+name,
+paths,
+state,
+status
 FROM aws.organizations.accounts_for_parents
 WHERE region = '{{ region }}' -- required
 ;

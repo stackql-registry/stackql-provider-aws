@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MemberAccount" /></td>
+    <td><CopyableCode code="member_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that the violation details were requested for. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Firewall Manager policy that the violation details were requested for. (pattern: &lt;code&gt;^&#91;a-z0-9A-Z-&#93;&#123;36&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceDescription" /></td>
+    <td><CopyableCode code="resource_description" /></td>
     <td><code>string</code></td>
     <td>Brief description for the requested resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID that the violation details were requested for. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>The ResourceTag objects associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type that the violation details were requested for. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceViolations" /></td>
+    <td><CopyableCode code="resource_violations" /></td>
     <td><code>array</code></td>
     <td>List of violations for the requested resource.</td>
 </tr>
@@ -149,13 +149,13 @@ Retrieves violations for a resource based on the specified Firewall Manager poli
 
 ```sql
 SELECT
-MemberAccount,
-PolicyId,
-ResourceDescription,
-ResourceId,
-ResourceTags,
-ResourceType,
-ResourceViolations
+member_account,
+policy_id,
+resource_description,
+resource_id,
+resource_tags,
+resource_type,
+resource_violations
 FROM aws.fms.violation_details
 WHERE region = '{{ region }}' -- required
 ;

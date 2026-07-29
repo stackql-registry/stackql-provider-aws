@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Answer" /></td>
+    <td><CopyableCode code="answer" /></td>
     <td><code>string</code></td>
     <td>The Worker's answers for the Qualification type's test contained in a QuestionFormAnswers document, if the type has a test and the Worker has submitted answers. If the Worker does not provide any answers, Answer may be empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualificationRequestId" /></td>
+    <td><CopyableCode code="qualification_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Qualification request, a unique identifier generated when the request was submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualificationTypeId" /></td>
+    <td><CopyableCode code="qualification_type_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Qualification type the Worker is requesting, as returned by the CreateQualificationType operation. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Qualification request had a status of Submitted. This is either the time the Worker submitted answers for a Qualification test, or the time the Worker requested the Qualification if the Qualification type does not have a test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Test" /></td>
+    <td><CopyableCode code="test" /></td>
     <td><code>string</code></td>
     <td>The contents of the Qualification test that was presented to the Worker, if the type has a test and the Worker has submitted answers. This value is identical to the QuestionForm associated with the Qualification type at the time the Worker requests the Qualification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Worker requesting the Qualification. (pattern: &lt;code&gt;^A&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -158,12 +158,12 @@ The ListQualificationRequests operation retrieves requests for Qualifications of
 
 ```sql
 SELECT
-Answer,
-QualificationRequestId,
-QualificationTypeId,
-SubmitTime,
-Test,
-WorkerId
+answer,
+qualification_request_id,
+qualification_type_id,
+submit_time,
+test,
+worker_id
 FROM aws.mturk.qualification_requests
 WHERE region = '{{ region }}' -- required
 ;

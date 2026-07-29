@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="computationModelExecutionSummary" /></td>
+    <td><CopyableCode code="computation_model_execution_summary" /></td>
     <td><code>object</code></td>
     <td>Contains the execution summary of the computation model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelId" /></td>
+    <td><CopyableCode code="computation_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the computation model. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolveTo" /></td>
+    <td><CopyableCode code="resolve_to" /></td>
     <td><code>object</code></td>
     <td>The detailed resource this execution summary resolves to.</td>
 </tr>
@@ -144,9 +144,9 @@ Retrieves information about the execution summary of a computation model.
 
 ```sql
 SELECT
-computationModelExecutionSummary,
-computationModelId,
-resolveTo
+computation_model_execution_summary,
+computation_model_id,
+resolve_to
 FROM aws.iotsitewise.computation_model_execution_summaries
 WHERE computation_model_id = '{{ computation_model_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configId" /></td>
+    <td><CopyableCode code="config_id" /></td>
     <td><code>string</code></td>
     <td>Unique ID for the account enforced configuration. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role used to update the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardrailArn" /></td>
+    <td><CopyableCode code="guardrail_arn" /></td>
     <td><code>string</code></td>
     <td>ARN representation for the guardrail. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:guardrail/&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardrailId" /></td>
+    <td><CopyableCode code="guardrail_id" /></td>
     <td><code>string</code></td>
     <td>Unique ID for the guardrail. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardrailVersion" /></td>
+    <td><CopyableCode code="guardrail_version" /></td>
     <td><code>string</code></td>
     <td>Numerical guardrail version. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;&#123;0,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputTags" /></td>
+    <td><CopyableCode code="input_tags" /></td>
     <td><code>string</code></td>
     <td>Whether to honor or ignore input tags at runtime. (HONOR, IGNORE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelEnforcement" /></td>
+    <td><CopyableCode code="model_enforcement" /></td>
     <td><code>object</code></td>
     <td>Model-specific information for the enforced guardrail configuration.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration owner type. (ACCOUNT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="selectiveContentGuarding" /></td>
+    <td><CopyableCode code="selective_content_guarding" /></td>
     <td><code>object</code></td>
     <td>Selective content guarding controls for enforced guardrails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role used to update the configuration.</td>
 </tr>
@@ -179,18 +179,18 @@ Lists the account-level enforced guardrail configurations.
 
 ```sql
 SELECT
-configId,
-createdAt,
-createdBy,
-guardrailArn,
-guardrailId,
-guardrailVersion,
-inputTags,
-modelEnforcement,
+config_id,
+created_at,
+created_by,
+guardrail_arn,
+guardrail_id,
+guardrail_version,
+input_tags,
+model_enforcement,
 owner,
-selectiveContentGuarding,
-updatedAt,
-updatedBy
+selective_content_guarding,
+updated_at,
+updated_by
 FROM aws.bedrock.enforced_guardrails_configurations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

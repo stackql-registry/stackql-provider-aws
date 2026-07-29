@@ -103,8 +103,8 @@ region = '{{ region }}' --required
 AND MessageId = '{{ MessageId }}' --required
 AND MessageFeedbackStatus = '{{ MessageFeedbackStatus }}' --required
 RETURNING
-MessageFeedbackStatus,
-MessageId;
+message_feedback_status,
+message_id;
 ```
 </TabItem>
 </Tabs>

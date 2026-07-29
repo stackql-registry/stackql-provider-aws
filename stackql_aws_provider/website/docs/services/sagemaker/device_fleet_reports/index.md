@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentVersions" /></td>
+    <td><CopyableCode code="agent_versions" /></td>
     <td><code>array</code></td>
     <td>The versions of Edge Manager agent deployed on the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the fleet. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.,;:! &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetArn" /></td>
+    <td><CopyableCode code="device_fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the device. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:device-fleet/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceStats" /></td>
+    <td><CopyableCode code="device_stats" /></td>
     <td><code>object</code></td>
     <td>Status of devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelStats" /></td>
+    <td><CopyableCode code="model_stats" /></td>
     <td><code>array</code></td>
     <td>Status of model on device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration for storing sample data collected by the fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportGenerated" /></td>
+    <td><CopyableCode code="report_generated" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of when the report was generated.</td>
 </tr>
@@ -154,14 +154,14 @@ Describes a fleet.
 
 ```sql
 SELECT
-AgentVersions,
-Description,
-DeviceFleetArn,
-DeviceFleetName,
-DeviceStats,
-ModelStats,
-OutputConfig,
-ReportGenerated
+agent_versions,
+description,
+device_fleet_arn,
+device_fleet_name,
+device_stats,
+model_stats,
+output_config,
+report_generated
 FROM aws.sagemaker.device_fleet_reports
 WHERE region = '{{ region }}' -- required
 ;

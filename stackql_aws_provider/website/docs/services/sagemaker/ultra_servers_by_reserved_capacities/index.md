@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone where the UltraServer is provisioned. (pattern: &lt;code&gt;&#91;a-z&#93;+\-&#91;0-9a-z\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableInstanceCount" /></td>
+    <td><CopyableCode code="available_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances currently available for use in this UltraServer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableSpareInstanceCount" /></td>
+    <td><CopyableCode code="available_spare_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of available spare instances in the UltraServer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfiguredSpareInstanceCount" /></td>
+    <td><CopyableCode code="configured_spare_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of spare instances configured for this UltraServer to provide enhanced resiliency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>string</code></td>
     <td>The overall health status of the UltraServer. (OK, Impaired, Insufficient-Data)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InUseInstanceCount" /></td>
+    <td><CopyableCode code="in_use_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances currently in use in this UltraServer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instance type used in the UltraServer. (ml.p4d.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.trn1.32xlarge, ml.trn2.48xlarge, ml.p6-b200.48xlarge, ml.p4de.24xlarge, ml.p6e-gb200.36xlarge, ml.p5.4xlarge, ml.p6-b300.48xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalInstanceCount" /></td>
+    <td><CopyableCode code="total_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of instances in this UltraServer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UltraServerId" /></td>
+    <td><CopyableCode code="ultra_server_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the UltraServer. (pattern: &lt;code&gt;(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UltraServerType" /></td>
+    <td><CopyableCode code="ultra_server_type" /></td>
     <td><code>string</code></td>
     <td>The type of UltraServer, such as ml.u-p6e-gb200x72. (pattern: &lt;code&gt;ml.&#91;a-z0-9\-.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnhealthyInstanceCount" /></td>
+    <td><CopyableCode code="unhealthy_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances in this UltraServer that are currently in an unhealthy state.</td>
 </tr>
@@ -169,17 +169,17 @@ Lists all UltraServers that are part of a specified reserved capacity.
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailableInstanceCount,
-AvailableSpareInstanceCount,
-ConfiguredSpareInstanceCount,
-HealthStatus,
-InUseInstanceCount,
-InstanceType,
-TotalInstanceCount,
-UltraServerId,
-UltraServerType,
-UnhealthyInstanceCount
+availability_zone,
+available_instance_count,
+available_spare_instance_count,
+configured_spare_instance_count,
+health_status,
+in_use_instance_count,
+instance_type,
+total_instance_count,
+ultra_server_id,
+ultra_server_type,
+unhealthy_instance_count
 FROM aws.sagemaker.ultra_servers_by_reserved_capacities
 WHERE region = '{{ region }}' -- required
 ;

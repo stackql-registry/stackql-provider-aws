@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Connected" /></td>
+    <td><CopyableCode code="connected" /></td>
     <td><code>boolean</code></td>
     <td>The connectivity status for a managed thing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisconnectReason" /></td>
+    <td><CopyableCode code="disconnect_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the connectivity disconnect with the managed thing. (AUTH_ERROR, CLIENT_INITIATED_DISCONNECT, CLIENT_ERROR, CONNECTION_LOST, DUPLICATE_CLIENTID, FORBIDDEN_ACCESS, MQTT_KEEP_ALIVE_TIMEOUT, SERVER_ERROR, SERVER_INITIATED_DISCONNECT, THROTTLED, WEBSOCKET_TTL_EXPIRATION, CUSTOMAUTH_TTL_EXPIRATION, UNKNOWN, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The id of a managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the connectivity status for a managed thing was last taken.</td>
 </tr>
@@ -139,10 +139,10 @@ Get the connectivity status of a managed thing.
 
 ```sql
 SELECT
-Connected,
-DisconnectReason,
-ManagedThingId,
-Timestamp
+connected,
+disconnect_reason,
+managed_thing_id,
+timestamp
 FROM aws.iot_managed_integrations.managed_thing_connectivity_datas
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TrainingPlanExtensionOfferings" /></td>
+    <td><CopyableCode code="training_plan_extension_offerings" /></td>
     <td><code>array</code></td>
     <td>A list of extension offerings available for the specified training plan. These offerings can be used with the ExtendTrainingPlan API to extend an existing training plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingPlanOfferings" /></td>
+    <td><CopyableCode code="training_plan_offerings" /></td>
     <td><code>array</code></td>
     <td>A list of training plan offerings that match the search criteria.</td>
 </tr>
@@ -124,8 +124,8 @@ Searches for available training plan offerings based on specified criteria. User
 
 ```sql
 SELECT
-TrainingPlanExtensionOfferings,
-TrainingPlanOfferings
+training_plan_extension_offerings,
+training_plan_offerings
 FROM aws.sagemaker.training_plan_offerings
 WHERE region = '{{ region }}' -- required
 ;

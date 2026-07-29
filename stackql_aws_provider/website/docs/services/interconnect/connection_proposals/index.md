@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The bandwidth of the proposed Connection. (pattern: &lt;code&gt;\d+&#91;MG&#93;bps&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Environment upon which the Connection would be placed if this proposal were accepted.</td>
 </tr>
@@ -135,7 +135,7 @@ Describes the details of a connection proposal generated at a partner's portal.
 ```sql
 SELECT
 bandwidth,
-environmentId,
+environment_id,
 location,
 provider
 FROM aws.interconnect.connection_proposals

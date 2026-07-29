@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the data included in the response. In a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: 1698778057. This displays the time that Application Signals used for the request. It might not match your request exactly, because it was rounded to the nearest hour.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogGroupReferences" /></td>
+    <td><CopyableCode code="log_group_references" /></td>
     <td><code>array</code></td>
     <td>An array of string-to-string maps that each contain information about one log group associated with this service. Each string-to-string map includes the following fields: "Type": "AWS::Resource" "ResourceType": "AWS::Logs::LogGroup" "Identifier": "name-of-log-group"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Service" /></td>
+    <td><CopyableCode code="service" /></td>
     <td><code>object</code></td>
     <td>A structure containing information about the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the data included in the response. In a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: 1698778057. This displays the time that Application Signals used for the request. It might not match your request exactly, because it was rounded to the nearest hour.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeMaps" /></td>
+    <td><CopyableCode code="attribute_maps" /></td>
     <td><code>array</code></td>
     <td>This structure contains one or more string-to-string maps that help identify this service. It can include platform attributes, application attributes, and telemetry attributes. Platform attributes contain information the service's platform. PlatformType defines the hosted-in platform. EKS.Cluster is the name of the Amazon EKS cluster. K8s.Cluster is the name of the self-hosted Kubernetes cluster. K8s.Namespace is the name of the Kubernetes namespace in either Amazon EKS or Kubernetes clusters. K8s.Workload is the name of the Kubernetes workload in either Amazon EKS or Kubernetes clusters. K8s.Node is the name of the Kubernetes node in either Amazon EKS or Kubernetes clusters. K8s.Pod is the name of the Kubernetes pod in either Amazon EKS or Kubernetes clusters. EC2.AutoScalingGroup is the name of the Amazon EC2 Auto Scaling group. EC2.InstanceId is the ID of the Amazon EC2 instance. Host is the name of the host, for all platform types. Application attributes contain information about the application. AWS.Application is the application's name in Amazon Web Services Service Catalog AppRegistry. AWS.Application.ARN is the application's ARN in Amazon Web Services Service Catalog AppRegistry. Telemetry attributes contain telemetry information. Telemetry.SDK is the fingerprint of the OpenTelemetry SDK version for instrumented services. Telemetry.Agent is the fingerprint of the agent used to collect and send telemetry data. Telemetry.Source Specifies the point of application where the telemetry was collected or specifies what was used for the source of telemetry data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyAttributes" /></td>
+    <td><CopyableCode code="key_attributes" /></td>
     <td><code>object</code></td>
     <td>This is a string-to-string map that help identify the objects discovered by Application Signals. It can include the following fields. Type designates the type of object this is. ResourceType specifies the type of the resource. This field is used only when the value of the Type field is Resource or AWS::Resource. Name specifies the name of the object. This is used only if the value of the Type field is Service, RemoteService, or AWS::Service. Identifier identifies the resource objects of this resource. This is used only if the value of the Type field is Resource or AWS::Resource. Environment specifies the location where this object is hosted, or what it belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricReferences" /></td>
+    <td><CopyableCode code="metric_references" /></td>
     <td><code>array</code></td>
     <td>An array of structures that each contain information about one metric associated with this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceGroups" /></td>
+    <td><CopyableCode code="service_groups" /></td>
     <td><code>array</code></td>
     <td>An array of service groups that this service belongs to, based on the configured grouping attributes.</td>
 </tr>
@@ -207,10 +207,10 @@ Returns information about a service discovered by Application Signals.
 
 ```sql
 SELECT
-EndTime,
-LogGroupReferences,
-Service,
-StartTime
+end_time,
+log_group_references,
+service,
+start_time
 FROM aws.application_signals.services
 WHERE StartTime = '{{ StartTime }}' -- required
 AND EndTime = '{{ EndTime }}' -- required
@@ -224,10 +224,10 @@ Returns a list of services that have been discovered by Application Signals. A s
 
 ```sql
 SELECT
-AttributeMaps,
-KeyAttributes,
-MetricReferences,
-ServiceGroups
+attribute_maps,
+key_attributes,
+metric_references,
+service_groups
 FROM aws.application_signals.services
 WHERE StartTime = '{{ StartTime }}' -- required
 AND EndTime = '{{ EndTime }}' -- required

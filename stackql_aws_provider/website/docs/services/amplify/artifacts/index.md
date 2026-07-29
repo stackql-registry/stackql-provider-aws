@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of artifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token. If a non-null pagination token is returned in a result, pass its value in another request to retrieve more entries. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ Returns a list of end-to-end testing artifacts for a specified app, branch, and 
 ```sql
 SELECT
 artifacts,
-nextToken
+next_token
 FROM aws.amplify.artifacts
 WHERE app_id = '{{ app_id }}' -- required
 AND branch_name = '{{ branch_name }}' -- required

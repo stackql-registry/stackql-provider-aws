@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeSuggestionsConfig" /></td>
+    <td><CopyableCode code="attribute_suggestions_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information for the document fields/attributes that you want to base query suggestions on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeQueriesWithoutUserInformation" /></td>
+    <td><CopyableCode code="include_queries_without_user_information" /></td>
     <td><code>boolean</code></td>
     <td>TRUE to use all queries, otherwise use only queries that include user information to generate the query suggestions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastClearTime" /></td>
+    <td><CopyableCode code="last_clear_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when query suggestions for an index was last cleared. After you clear suggestions, Amazon Kendra learns new suggestions based on new queries added to the query log from the time you cleared suggestions. Amazon Kendra only considers re-occurences of a query from the time you cleared suggestions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuggestionsBuildTime" /></td>
+    <td><CopyableCode code="last_suggestions_build_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when query suggestions for an index was last updated. Amazon Kendra automatically updates suggestions every 24 hours, after you change a setting or after you apply a block list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumNumberOfQueryingUsers" /></td>
+    <td><CopyableCode code="minimum_number_of_querying_users" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of unique users who must search a query in order for the query to be eligible to suggest to your users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumQueryCount" /></td>
+    <td><CopyableCode code="minimum_query_count" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of times a query must be searched in order for the query to be eligible to suggest to your users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>Whether query suggestions are currently in ENABLED mode or LEARN_ONLY mode. By default, Amazon Kendra enables query suggestions.LEARN_ONLY turns off query suggestions for your users. You can change the mode using the UpdateQuerySuggestionsConfig API. (ENABLED, LEARN_ONLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryLogLookBackWindowInDays" /></td>
+    <td><CopyableCode code="query_log_look_back_window_in_days" /></td>
     <td><code>integer</code></td>
     <td>How recent your queries are in your query log time window (in days).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Whether the status of query suggestions settings is currently ACTIVE or UPDATING. Active means the current settings apply and Updating means your changed settings are in the process of applying. (ACTIVE, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalSuggestionsCount" /></td>
+    <td><CopyableCode code="total_suggestions_count" /></td>
     <td><code>integer</code></td>
     <td>The current total count of query suggestions for an index. This count can change when you update your query suggestions settings, if you filter out certain queries from suggestions using a block list, and as the query log accumulates more queries for Amazon Kendra to learn from. If the count is much lower than you expected, it could be because Amazon Kendra needs more queries in the query history to learn from or your current query suggestions settings are too strict.</td>
 </tr>
@@ -171,16 +171,16 @@ Gets information on the settings of query suggestions for an index. This is used
 
 ```sql
 SELECT
-AttributeSuggestionsConfig,
-IncludeQueriesWithoutUserInformation,
-LastClearTime,
-LastSuggestionsBuildTime,
-MinimumNumberOfQueryingUsers,
-MinimumQueryCount,
-Mode,
-QueryLogLookBackWindowInDays,
-Status,
-TotalSuggestionsCount
+attribute_suggestions_config,
+include_queries_without_user_information,
+last_clear_time,
+last_suggestions_build_time,
+minimum_number_of_querying_users,
+minimum_query_count,
+mode,
+query_log_look_back_window_in_days,
+status,
+total_suggestions_count
 FROM aws.kendra.query_suggestions_configs
 WHERE region = '{{ region }}' -- required
 ;

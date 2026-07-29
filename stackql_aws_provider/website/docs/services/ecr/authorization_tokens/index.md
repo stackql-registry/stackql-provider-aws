@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authorizationData" /></td>
+    <td><CopyableCode code="authorization_data" /></td>
     <td><code>array</code></td>
     <td>A list of authorization token data objects that correspond to the registryIds values in the request. The size of the authorization token returned by Amazon ECR is not fixed. We recommend that you don't make assumptions about the maximum size.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves an authorization token. An authorization token represents your IAM aut
 
 ```sql
 SELECT
-authorizationData
+authorization_data
 FROM aws.ecr.authorization_tokens
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ScaleDownNodeTypes" /></td>
+    <td><CopyableCode code="scale_down_node_types" /></td>
     <td><code>array</code></td>
     <td>A list node types which you can use to scale down your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScaleUpNodeTypes" /></td>
+    <td><CopyableCode code="scale_up_node_types" /></td>
     <td><code>array</code></td>
     <td>A list node types which you can use to scale up your cluster.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all available node types that you can scale to from your cluster's current
 
 ```sql
 SELECT
-ScaleDownNodeTypes,
-ScaleUpNodeTypes
+scale_down_node_types,
+scale_up_node_types
 FROM aws.memorydb.allowed_node_type_updates
 WHERE region = '{{ region }}' -- required
 ;

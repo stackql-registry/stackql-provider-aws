@@ -101,7 +101,7 @@ region
 SELECT 
 '{{ region }}'
 RETURNING
-S3Bucket
+s3_bucket
 ;
 ```
 </TabItem>

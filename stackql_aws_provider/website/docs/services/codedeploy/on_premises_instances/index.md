@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="instanceInfos" /></td>
+    <td><CopyableCode code="instance_infos" /></td>
     <td><code>array</code></td>
     <td>Information about the on-premises instances.</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deregisterTime" /></td>
+    <td><CopyableCode code="deregister_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the on-premises instance was deregistered, the time at which the on-premises instance was deregistered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamSessionArn" /></td>
+    <td><CopyableCode code="iam_session_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM session associated with the on-premises instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamUserArn" /></td>
+    <td><CopyableCode code="iam_user_arn" /></td>
     <td><code>string</code></td>
     <td>The user ARN associated with the on-premises instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the on-premises instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceName" /></td>
+    <td><CopyableCode code="instance_name" /></td>
     <td><code>string</code></td>
     <td>The name of the on-premises instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registerTime" /></td>
+    <td><CopyableCode code="register_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the on-premises instance was registered.</td>
 </tr>
@@ -219,7 +219,7 @@ Gets information about one or more on-premises instances. The maximum number of 
 
 ```sql
 SELECT
-instanceInfos
+instance_infos
 FROM aws.codedeploy.on_premises_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,12 +231,12 @@ Gets information about an on-premises instance.
 
 ```sql
 SELECT
-deregisterTime,
-iamSessionArn,
-iamUserArn,
-instanceArn,
-instanceName,
-registerTime,
+deregister_time,
+iam_session_arn,
+iam_user_arn,
+instance_arn,
+instance_name,
+register_time,
 tags
 FROM aws.codedeploy.on_premises_instances
 WHERE region = '{{ region }}' -- required

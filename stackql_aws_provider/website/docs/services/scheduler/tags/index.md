@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags associated with the specified resource.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags associated with the Scheduler resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.scheduler.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -127,9 +127,9 @@ setupFinalization = '{{ setupFinalization }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-linkedWhatsAppBusinessAccountId,
-signupCallbackResult,
-statusCode;
+linked_whats_app_business_account_id,
+signup_callback_result,
+status_code;
 ```
 </TabItem>
 </Tabs>

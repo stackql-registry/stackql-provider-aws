@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the theme was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The stack that has the custom branding theme. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_.-&#93;&#123;0,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the theme. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeFaviconURL" /></td>
+    <td><CopyableCode code="theme_favicon_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the icon that displays at the top of a user's browser tab during streaming sessions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeFooterLinks" /></td>
+    <td><CopyableCode code="theme_footer_links" /></td>
     <td><code>array</code></td>
     <td>The website links that display in the catalog page footer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeOrganizationLogoURL" /></td>
+    <td><CopyableCode code="theme_organization_logo_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the logo that displays in the catalog page header.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeStyling" /></td>
+    <td><CopyableCode code="theme_styling" /></td>
     <td><code>string</code></td>
     <td>The color that is used for the website links, text, buttons, and catalog page background. (LIGHT_BLUE, BLUE, PINK, RED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeTitleText" /></td>
+    <td><CopyableCode code="theme_title_text" /></td>
     <td><code>string</code></td>
     <td>The browser tab page title. (pattern: &lt;code&gt;^&#91;-@./#&+\w\s&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -175,14 +175,14 @@ Retrieves a list that describes the theme for a specified stack. A theme is cust
 
 ```sql
 SELECT
-CreatedTime,
-StackName,
-State,
-ThemeFaviconURL,
-ThemeFooterLinks,
-ThemeOrganizationLogoURL,
-ThemeStyling,
-ThemeTitleText
+created_time,
+stack_name,
+state,
+theme_favicon_url,
+theme_footer_links,
+theme_organization_logo_url,
+theme_styling,
+theme_title_text
 FROM aws.appstream.theme_for_stacks
 WHERE region = '{{ region }}' -- required
 ;
@@ -223,7 +223,7 @@ SELECT
 '{{ FaviconS3Location }}' /* required */,
 '{{ region }}'
 RETURNING
-Theme
+theme
 ;
 ```
 </TabItem>
@@ -299,7 +299,7 @@ WHERE
 region = '{{ region }}' --required
 AND StackName = '{{ StackName }}' --required
 RETURNING
-Theme;
+theme;
 ```
 </TabItem>
 </Tabs>

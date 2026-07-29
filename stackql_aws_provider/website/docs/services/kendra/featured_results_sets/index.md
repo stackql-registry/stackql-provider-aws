@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp when the set of the featured results was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the set of featured results. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeaturedDocumentsMissing" /></td>
+    <td><CopyableCode code="featured_documents_missing" /></td>
     <td><code>array</code></td>
     <td>The list of document IDs that don't exist but you have specified as featured documents. Amazon Kendra cannot feature these documents if they don't exist in the index. You can check the status of a document and its ID or check for documents with status errors using the BatchGetDocumentStatus API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeaturedDocumentsWithMetadata" /></td>
+    <td><CopyableCode code="featured_documents_with_metadata" /></td>
     <td><code>array</code></td>
     <td>The list of document IDs for the documents you want to feature with their metadata information. For more information on the list of featured documents, see FeaturedResultsSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeaturedResultsSetId" /></td>
+    <td><CopyableCode code="featured_results_set_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the set of featured results. (pattern: &lt;code&gt;^&#91;a-zA-Z-0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeaturedResultsSetName" /></td>
+    <td><CopyableCode code="featured_results_set_name" /></td>
     <td><code>string</code></td>
     <td>The name for the set of featured results. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91; a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the set of featured results was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryTexts" /></td>
+    <td><CopyableCode code="query_texts" /></td>
     <td><code>array</code></td>
     <td>The list of queries for featuring results. For more information on the list of queries, see FeaturedResultsSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the set of featured results. When the value is ACTIVE, featured results are ready for use. You can still configure your settings before setting the status to ACTIVE. You can set the status to ACTIVE or INACTIVE using the UpdateFeaturedResultsSet API. The queries you specify for featured results must be unique per featured results set for each index, whether the status is ACTIVE or INACTIVE. (ACTIVE, INACTIVE)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FeaturedResultsSetSummaryItems" /></td>
+    <td><CopyableCode code="featured_results_set_summary_items" /></td>
     <td><code>array</code></td>
     <td>An array of summary information for one or more featured results sets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, Amazon Kendra returns a pagination token in the response.</td>
 </tr>
@@ -213,15 +213,15 @@ Gets information about a set of featured results. Features results are placed ab
 
 ```sql
 SELECT
-CreationTimestamp,
-Description,
-FeaturedDocumentsMissing,
-FeaturedDocumentsWithMetadata,
-FeaturedResultsSetId,
-FeaturedResultsSetName,
-LastUpdatedTimestamp,
-QueryTexts,
-Status
+creation_timestamp,
+description,
+featured_documents_missing,
+featured_documents_with_metadata,
+featured_results_set_id,
+featured_results_set_name,
+last_updated_timestamp,
+query_texts,
+status
 FROM aws.kendra.featured_results_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,8 +233,8 @@ Lists all your sets of featured results for a given index. Features results are 
 
 ```sql
 SELECT
-FeaturedResultsSetSummaryItems,
-NextToken
+featured_results_set_summary_items,
+next_token
 FROM aws.kendra.featured_results_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -279,7 +279,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-FeaturedResultsSet
+featured_results_set
 ;
 ```
 </TabItem>
@@ -361,7 +361,7 @@ region = '{{ region }}' --required
 AND IndexId = '{{ IndexId }}' --required
 AND FeaturedResultsSetId = '{{ FeaturedResultsSetId }}' --required
 RETURNING
-FeaturedResultsSet;
+featured_results_set;
 ```
 </TabItem>
 </Tabs>

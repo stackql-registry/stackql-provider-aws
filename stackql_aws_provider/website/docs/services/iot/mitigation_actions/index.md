@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionArn" /></td>
+    <td><CopyableCode code="action_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN that identifies this migration action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for this action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name that uniquely identifies the mitigation action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionParams" /></td>
+    <td><CopyableCode code="action_params" /></td>
     <td><code>object</code></td>
     <td>The set of parameters for this mitigation action. You can specify only one type of parameter (in other words, you can apply only one action for each defined mitigation action).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of mitigation action. (UPDATE_DEVICE_CERTIFICATE, UPDATE_CA_CERTIFICATE, ADD_THINGS_TO_THING_GROUP, REPLACE_DEFAULT_POLICY_VERSION, ENABLE_IOT_LOGGING, PUBLISH_FINDING_TO_SNS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the mitigation action was added to your Amazon Web Services accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the mitigation action was last changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role used to apply this action.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionArn" /></td>
+    <td><CopyableCode code="action_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN used to apply this mitigation action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the mitigation action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when this mitigation action was created.</td>
 </tr>
@@ -233,14 +233,14 @@ Gets information about a mitigation action. Requires permission to access the De
 
 ```sql
 SELECT
-actionArn,
-actionId,
-actionName,
-actionParams,
-actionType,
-creationDate,
-lastModifiedDate,
-roleArn
+action_arn,
+action_id,
+action_name,
+action_params,
+action_type,
+creation_date,
+last_modified_date,
+role_arn
 FROM aws.iot.mitigation_actions
 WHERE action_name = '{{ action_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,9 +253,9 @@ Gets a list of all mitigation actions that match the specified filter criteria. 
 
 ```sql
 SELECT
-actionArn,
-actionName,
-creationDate
+action_arn,
+action_name,
+creation_date
 FROM aws.iot.mitigation_actions
 WHERE region = '{{ region }}' -- required
 AND actionType = '{{ actionType }}'
@@ -295,8 +295,8 @@ SELECT
 '{{ action_name }}',
 '{{ region }}'
 RETURNING
-actionArn,
-actionId
+action_arn,
+action_id
 ;
 ```
 </TabItem>
@@ -363,8 +363,8 @@ WHERE
 action_name = '{{ action_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-actionArn,
-actionId;
+action_arn,
+action_id;
 ```
 </TabItem>
 </Tabs>

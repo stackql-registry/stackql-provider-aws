@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resource's identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentId" /></td>
+    <td><CopyableCode code="parent_id" /></td>
     <td><code>string</code></td>
     <td>The parent resource's identifier.</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The full path for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pathPart" /></td>
+    <td><CopyableCode code="path_part" /></td>
     <td><code>string</code></td>
     <td>The last path segment for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceMethods" /></td>
+    <td><CopyableCode code="resource_methods" /></td>
     <td><code>object</code></td>
     <td>Gets an API resource's method of a given HTTP verb.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resource's identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentId" /></td>
+    <td><CopyableCode code="parent_id" /></td>
     <td><code>string</code></td>
     <td>The parent resource's identifier.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The full path for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pathPart" /></td>
+    <td><CopyableCode code="path_part" /></td>
     <td><code>string</code></td>
     <td>The last path segment for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceMethods" /></td>
+    <td><CopyableCode code="resource_methods" /></td>
     <td><code>object</code></td>
     <td>Gets an API resource's method of a given HTTP verb.</td>
 </tr>
@@ -251,10 +251,10 @@ Lists information about a resource.
 ```sql
 SELECT
 id,
-parentId,
+parent_id,
 path,
-pathPart,
-resourceMethods
+path_part,
+resource_methods
 FROM aws.apigateway.resources
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND resource_id = '{{ resource_id }}' -- required
@@ -270,10 +270,10 @@ Lists information about a collection of Resource resources.
 ```sql
 SELECT
 id,
-parentId,
+parent_id,
 path,
-pathPart,
-resourceMethods
+path_part,
+resource_methods
 FROM aws.apigateway.resources
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -313,10 +313,10 @@ SELECT
 '{{ region }}'
 RETURNING
 id,
-parentId,
+parent_id,
 path,
-pathPart,
-resourceMethods
+path_part,
+resource_methods
 ;
 ```
 </TabItem>
@@ -364,10 +364,10 @@ AND resource_id = '{{ resource_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 id,
-parentId,
+parent_id,
 path,
-pathPart,
-resourceMethods;
+path_part,
+resource_methods;
 ```
 </TabItem>
 </Tabs>

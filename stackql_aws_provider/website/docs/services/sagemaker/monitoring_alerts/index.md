@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>object</code></td>
     <td>A list of alert actions taken in response to an alert going into InAlert status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlertStatus" /></td>
+    <td><CopyableCode code="alert_status" /></td>
     <td><code>string</code></td>
     <td>The current status of an alert. (InAlert, OK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when a monitor alert was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatapointsToAlert" /></td>
+    <td><CopyableCode code="datapoints_to_alert" /></td>
     <td><code>integer</code></td>
     <td>Within EvaluationPeriod, how many execution failures will raise an alert.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationPeriod" /></td>
+    <td><CopyableCode code="evaluation_period" /></td>
     <td><code>integer</code></td>
     <td>The number of most recent monitoring executions to consider when evaluating alert status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when a monitor alert was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringAlertName" /></td>
+    <td><CopyableCode code="monitoring_alert_name" /></td>
     <td><code>string</code></td>
     <td>The name of a monitoring alert. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -156,13 +156,13 @@ Gets the alerts for a single monitoring schedule.
 
 ```sql
 SELECT
-Actions,
-AlertStatus,
-CreationTime,
-DatapointsToAlert,
-EvaluationPeriod,
-LastModifiedTime,
-MonitoringAlertName
+actions,
+alert_status,
+creation_time,
+datapoints_to_alert,
+evaluation_period,
+last_modified_time,
+monitoring_alert_name
 FROM aws.sagemaker.monitoring_alerts
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ AND MonitoringAlertName = '{{ MonitoringAlertName }}' --required
 AND DatapointsToAlert = '{{ DatapointsToAlert }}' --required
 AND EvaluationPeriod = '{{ EvaluationPeriod }}' --required
 RETURNING
-MonitoringAlertName,
-MonitoringScheduleArn;
+monitoring_alert_name,
+monitoring_schedule_arn;
 ```
 </TabItem>
 </Tabs>

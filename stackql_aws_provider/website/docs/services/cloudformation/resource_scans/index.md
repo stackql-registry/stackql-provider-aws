@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Types" /></td>
+    <td><CopyableCode code="types" /></td>
     <td><code>string</code></td>
     <td>An array of strings where each string represents an Amazon Web Services resource type you want to scan. Each string defines the resource type using the format AWS::ServiceName::ResourceType, for example, AWS::DynamoDB::Table. For the full list of supported resource types, see the Resource type support table in the CloudFormation User Guide. To scan all resource types within a service, you can use a wildcard, represented by an asterisk (*). You can place an asterisk at only the end of the string, for example, AWS::S3::*.</td>
 </tr>
@@ -70,37 +70,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The time that the resource scan was finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentageCompleted" /></td>
+    <td><CopyableCode code="percentage_completed" /></td>
     <td><code>number</code></td>
     <td>The percentage of the resource scan that has been completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceScanId" /></td>
+    <td><CopyableCode code="resource_scan_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource scan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScanType" /></td>
+    <td><CopyableCode code="scan_type" /></td>
     <td><code>string</code></td>
     <td>The scan type that has been completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time that the resource scan was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the resource scan. IN_PROGRESS The resource scan is still in progress. COMPLETE The resource scan is complete. EXPIRED The resource scan has expired. FAILED The resource scan has failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the resource scan status, providing more information if a failure happened.</td>
 </tr>
@@ -197,7 +197,7 @@ Describes details of a resource scan.
 
 ```sql
 SELECT
-Types
+types
 FROM aws.cloudformation.resource_scans
 WHERE ResourceScanId = '{{ ResourceScanId }}' -- required
 AND region = '{{ region }}' -- required
@@ -210,13 +210,13 @@ List the resource scans from newest to oldest. By default it will return up to 1
 
 ```sql
 SELECT
-EndTime,
-PercentageCompleted,
-ResourceScanId,
-ScanType,
-StartTime,
-Status,
-StatusReason
+end_time,
+percentage_completed,
+resource_scan_id,
+scan_type,
+start_time,
+status,
+status_reason
 FROM aws.cloudformation.resource_scans
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

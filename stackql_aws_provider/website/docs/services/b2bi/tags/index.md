@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Returns the key-value pairs assigned to ARNs that you can use to group and search for resources by type. You can attach this metadata to resources (capabilities, partnerships, and so on) for any purpose.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists all of the tags associated with the Amazon Resource Name (ARN) that you sp
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.b2bi.tags
 WHERE region = '{{ region }}' -- required
 ;

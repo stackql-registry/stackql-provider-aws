@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog where the table resides. If none is supplied, the account ID is used by default. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerId" /></td>
+    <td><CopyableCode code="customer_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DPUSeconds" /></td>
+    <td><CopyableCode code="dpu_seconds" /></td>
     <td><code>number (double)</code></td>
     <td>The calculated DPU usage in seconds for all autoscaled workers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The database where the table resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message for the job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last point in time when this task was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaterializedViewRefreshTaskRunId" /></td>
+    <td><CopyableCode code="materialized_view_refresh_task_run_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the materialized view refresh task run. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessedBytes" /></td>
+    <td><CopyableCode code="processed_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of bytes the refresh task run has scanned to refresh the materialized view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshType" /></td>
+    <td><CopyableCode code="refresh_type" /></td>
     <td><code>string</code></td>
     <td>The type of the refresh task run. Either FULL or INCREMENTAL. (FULL, INCREMENTAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The IAM role that the service assumes to generate statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task run. (STARTING, RUNNING, SUCCEEDED, FAILED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table for which statistics is generated.</td>
 </tr>
@@ -140,77 +140,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog where the table resides. If none is supplied, the account ID is used by default. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerId" /></td>
+    <td><CopyableCode code="customer_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DPUSeconds" /></td>
+    <td><CopyableCode code="dpu_seconds" /></td>
     <td><code>number (double)</code></td>
     <td>The calculated DPU usage in seconds for all autoscaled workers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The database where the table resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message for the job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last point in time when this task was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaterializedViewRefreshTaskRunId" /></td>
+    <td><CopyableCode code="materialized_view_refresh_task_run_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the materialized view refresh task run. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessedBytes" /></td>
+    <td><CopyableCode code="processed_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of bytes the refresh task run has scanned to refresh the materialized view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshType" /></td>
+    <td><CopyableCode code="refresh_type" /></td>
     <td><code>string</code></td>
     <td>The type of the refresh task run. Either FULL or INCREMENTAL. (FULL, INCREMENTAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The IAM role that the service assumes to generate statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task run. (STARTING, RUNNING, SUCCEEDED, FAILED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table for which statistics is generated.</td>
 </tr>
@@ -287,21 +287,21 @@ Get the associated metadata/information for a task run, given a task run ID.
 
 ```sql
 SELECT
-CatalogId,
-CreationTime,
-CustomerId,
-DPUSeconds,
-DatabaseName,
-EndTime,
-ErrorMessage,
-LastUpdated,
-MaterializedViewRefreshTaskRunId,
-ProcessedBytes,
-RefreshType,
-Role,
-StartTime,
-Status,
-TableName
+catalog_id,
+creation_time,
+customer_id,
+dpu_seconds,
+database_name,
+end_time,
+error_message,
+last_updated,
+materialized_view_refresh_task_run_id,
+processed_bytes,
+refresh_type,
+role,
+start_time,
+status,
+table_name
 FROM aws.glue.materialized_view_refresh_task_runs
 WHERE region = '{{ region }}' -- required
 ;
@@ -313,21 +313,21 @@ List all task runs for a particular account.
 
 ```sql
 SELECT
-CatalogId,
-CreationTime,
-CustomerId,
-DPUSeconds,
-DatabaseName,
-EndTime,
-ErrorMessage,
-LastUpdated,
-MaterializedViewRefreshTaskRunId,
-ProcessedBytes,
-RefreshType,
-Role,
-StartTime,
-Status,
-TableName
+catalog_id,
+creation_time,
+customer_id,
+dpu_seconds,
+database_name,
+end_time,
+error_message,
+last_updated,
+materialized_view_refresh_task_run_id,
+processed_bytes,
+refresh_type,
+role,
+start_time,
+status,
+table_name
 FROM aws.glue.materialized_view_refresh_task_runs
 WHERE region = '{{ region }}' -- required
 ;

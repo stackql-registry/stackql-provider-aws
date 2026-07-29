@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="healthCheckId" /></td>
+    <td><CopyableCode code="health_check_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Route 53 health check ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Route 53 health check hosted zone ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordName" /></td>
+    <td><CopyableCode code="record_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Route 53 record name.</td>
 </tr>
@@ -139,9 +139,9 @@ List the Amazon Route 53 health checks.
 
 ```sql
 SELECT
-healthCheckId,
-hostedZoneId,
-recordName,
+health_check_id,
+hosted_zone_id,
+record_name,
 region,
 status
 FROM aws.arc_region_switch.route53_health_checks

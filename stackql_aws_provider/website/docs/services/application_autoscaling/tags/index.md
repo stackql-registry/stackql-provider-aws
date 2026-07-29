@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A list of tags. Each tag consists of a tag key and a tag value.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns all the tags on the specified Application Auto Scaling scalable target. 
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.application_autoscaling.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BgpAsn" /></td>
+    <td><CopyableCode code="bgp_asn" /></td>
     <td><code>string</code></td>
     <td>The customer gateway device's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values: 1 to 2,147,483,647</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BgpAsnExtended" /></td>
+    <td><CopyableCode code="bgp_asn_extended" /></td>
     <td><code>string</code></td>
     <td>The customer gateway device's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values: 2,147,483,648 to 4,294,967,295</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the customer gateway certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerGatewayId" /></td>
+    <td><CopyableCode code="customer_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the customer gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The name of customer gateway device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address for the customer gateway device's outside interface. The address must be static. If OutsideIpAddressType in your VPN connection options is set to PrivateIpv4, you can use an RFC6598 or RFC1918 private IPv4 address. If OutsideIpAddressType is set to PublicIpv4, you can use a public IPv4 address. If OutsideIpAddressType is set to Ipv6, you can use a public IPv6 address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the customer gateway (pending | available | deleting | deleted).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the customer gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of VPN connection the customer gateway supports (ipsec.1).</td>
 </tr>
@@ -233,15 +233,15 @@ Describes one or more of your VPN customer gateways. For more information, see A
 
 ```sql
 SELECT
-BgpAsn,
-BgpAsnExtended,
-CertificateArn,
-CustomerGatewayId,
-DeviceName,
-IpAddress,
-State,
-Tags,
-Type
+bgp_asn,
+bgp_asn_extended,
+certificate_arn,
+customer_gateway_id,
+device_name,
+ip_address,
+state,
+tags,
+type
 FROM aws.ec2.customer_gateways
 WHERE region = '{{ region }}' -- required
 AND CustomerGatewayId = '{{ CustomerGatewayId }}'
@@ -291,15 +291,15 @@ SELECT
 '{{ BgpAsnExtended }}',
 '{{ DryRun }}'
 RETURNING
-BgpAsn,
-BgpAsnExtended,
-CertificateArn,
-CustomerGatewayId,
-DeviceName,
-IpAddress,
-State,
-Tags,
-Type
+bgp_asn,
+bgp_asn_extended,
+certificate_arn,
+customer_gateway_id,
+device_name,
+ip_address,
+state,
+tags,
+type
 ;
 ```
 </TabItem>

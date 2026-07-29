@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResolverQueryLogConfigPolicy" /></td>
+    <td><CopyableCode code="resolver_query_log_config_policy" /></td>
     <td><code>string</code></td>
     <td>Information about the query logging policy for the query logging configuration that you specified in a GetResolverQueryLogConfigPolicy request.</td>
 </tr>
@@ -126,7 +126,7 @@ Gets information about a query logging policy. A query logging policy specifies 
 
 ```sql
 SELECT
-ResolverQueryLogConfigPolicy
+resolver_query_log_config_policy
 FROM aws.route53resolver.resolver_query_log_config_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -157,7 +157,7 @@ region = '{{ region }}' --required
 AND Arn = '{{ Arn }}' --required
 AND ResolverQueryLogConfigPolicy = '{{ ResolverQueryLogConfigPolicy }}' --required
 RETURNING
-ReturnValue;
+return_value;
 ```
 </TabItem>
 </Tabs>

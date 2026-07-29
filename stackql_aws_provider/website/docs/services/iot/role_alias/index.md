@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of when the role alias was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialDurationSeconds" /></td>
+    <td><CopyableCode code="credential_duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>The number of seconds for which the credential is valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of when the role alias was last modified.</td>
 </tr>
@@ -70,17 +70,17 @@ The following fields are returned by `SELECT` queries:
     <td>The role alias owner. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleAlias" /></td>
+    <td><CopyableCode code="role_alias" /></td>
     <td><code>string</code></td>
     <td>The role alias. (pattern: &lt;code&gt;&#91;\w=,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleAliasArn" /></td>
+    <td><CopyableCode code="role_alias_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The role ARN.</td>
 </tr>
@@ -175,13 +175,13 @@ Describes a role alias. Requires permission to access the DescribeRoleAlias acti
 
 ```sql
 SELECT
-creationDate,
-credentialDurationSeconds,
-lastModifiedDate,
+creation_date,
+credential_duration_seconds,
+last_modified_date,
 owner,
-roleAlias,
-roleAliasArn,
-roleArn
+role_alias,
+role_alias_arn,
+role_arn
 FROM aws.iot.role_alias
 WHERE role_alias = '{{ role_alias }}' -- required
 AND region = '{{ region }}' -- required
@@ -219,8 +219,8 @@ SELECT
 '{{ role_alias }}',
 '{{ region }}'
 RETURNING
-roleAlias,
-roleAliasArn
+role_alias,
+role_alias_arn
 ;
 ```
 </TabItem>
@@ -270,8 +270,8 @@ WHERE
 role_alias = '{{ role_alias }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-roleAlias,
-roleAliasArn;
+role_alias,
+role_alias_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BulkPublishCompleteTime" /></td>
+    <td><CopyableCode code="bulk_publish_complete_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BulkPublishStartTime" /></td>
+    <td><CopyableCode code="bulk_publish_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date/time at which the last bulk publish was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BulkPublishStatus" /></td>
+    <td><CopyableCode code="bulk_publish_status" /></td>
     <td><code>string</code></td>
     <td>Status of the last bulk publish operation, valid values are: NOT_STARTED - No bulk publish has been requested for this identity pool IN_PROGRESS - Data is being published to the configured stream SUCCEEDED - All data for the identity pool has been published to the configured stream FAILED - Some portion of the data has failed to publish, check FailureMessage for the cause. (NOT_STARTED, IN_PROGRESS, FAILED, SUCCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -144,11 +144,11 @@ Get the status of the last BulkPublish operation for an identity pool. This API 
 
 ```sql
 SELECT
-BulkPublishCompleteTime,
-BulkPublishStartTime,
-BulkPublishStatus,
-FailureMessage,
-IdentityPoolId
+bulk_publish_complete_time,
+bulk_publish_start_time,
+bulk_publish_status,
+failure_message,
+identity_pool_id
 FROM aws.cognito_sync.bulk_publish_details
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND region = '{{ region }}' -- required

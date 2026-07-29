@@ -55,32 +55,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name given to the import job. (pattern: &lt;code&gt;&#91;a-zA-Z_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp for the date and time that the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>array</code></td>
     <td>A string that describes why an import job failed to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importId" /></td>
+    <td><CopyableCode code="import_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the specific import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importStatus" /></td>
+    <td><CopyableCode code="import_status" /></td>
     <td><code>string</code></td>
     <td>The status of the import job. If the status is FAILED, you can get the reason for the failure from the failureReason field. (IN_PROGRESS, COMPLETE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mergeStrategy" /></td>
+    <td><CopyableCode code="merge_strategy" /></td>
     <td><code>string</code></td>
     <td>The action taken when there was a conflict between an existing resource and a resource in the import file. (OVERWRITE_LATEST, FAIL_ON_CONFLICT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource imported. (BOT, INTENT, SLOT_TYPE)</td>
 </tr>
@@ -155,12 +155,12 @@ Gets information about an import job started with the StartImport operation.
 ```sql
 SELECT
 name,
-createdDate,
-failureReason,
-importId,
-importStatus,
-mergeStrategy,
-resourceType
+created_date,
+failure_reason,
+import_id,
+import_status,
+merge_strategy,
+resource_type
 FROM aws.lex_models.imports
 WHERE import_id = '{{ import_id }}' -- required
 AND region = '{{ region }}' -- required

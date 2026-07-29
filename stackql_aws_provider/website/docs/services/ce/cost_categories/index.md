@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CostCategoryNames" /></td>
+    <td><CopyableCode code="cost_category_names" /></td>
     <td><code>array</code></td>
     <td>The names of the cost categories.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CostCategoryValues" /></td>
+    <td><CopyableCode code="cost_category_values" /></td>
     <td><code>array</code></td>
     <td>The cost category values. If the CostCategoryName key isn't specified in the request, the CostCategoryValues fields aren't returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>If the number of objects that are still available for retrieval exceeds the quota, Amazon Web Services returns a NextPageToken value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReturnSize" /></td>
+    <td><CopyableCode code="return_size" /></td>
     <td><code>integer</code></td>
     <td>The number of objects that are returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalSize" /></td>
+    <td><CopyableCode code="total_size" /></td>
     <td><code>integer</code></td>
     <td>The total number of objects.</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves an array of cost category names and values incurred cost. If some cost
 
 ```sql
 SELECT
-CostCategoryNames,
-CostCategoryValues,
-NextPageToken,
-ReturnSize,
-TotalSize
+cost_category_names,
+cost_category_values,
+next_page_token,
+return_size,
+total_size
 FROM aws.ce.cost_categories
 WHERE region = '{{ region }}' -- required
 ;

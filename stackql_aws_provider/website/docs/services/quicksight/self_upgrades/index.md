@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or null if there are no more results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfUpgradeRequestDetails" /></td>
+    <td><CopyableCode code="self_upgrade_request_details" /></td>
     <td><code>array</code></td>
     <td>A list of self-upgrade request details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -161,10 +161,10 @@ Lists all self-upgrade requests for a Quick account.
 
 ```sql
 SELECT
-NextToken,
-RequestId,
-SelfUpgradeRequestDetails,
-Status
+next_token,
+request_id,
+self_upgrade_request_details,
+status
 FROM aws.quicksight.self_upgrades
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -201,9 +201,9 @@ AND region = '{{ region }}' --required
 AND UpgradeRequestId = '{{ UpgradeRequestId }}' --required
 AND Action = '{{ Action }}' --required
 RETURNING
-RequestId,
-SelfUpgradeRequestDetail,
-Status;
+request_id,
+self_upgrade_request_detail,
+status;
 ```
 </TabItem>
 </Tabs>

@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockDeviceMappings" /></td>
+    <td><CopyableCode code="block_device_mappings" /></td>
     <td><code>string</code></td>
     <td>The block device mapping entries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootMode" /></td>
+    <td><CopyableCode code="boot_mode" /></td>
     <td><code>string</code></td>
     <td>The boot mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeregistrationProtection" /></td>
+    <td><CopyableCode code="deregistration_protection" /></td>
     <td><code>string</code></td>
     <td>Indicates whether deregistration protection is enabled for the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description for the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImdsSupport" /></td>
+    <td><CopyableCode code="imds_support" /></td>
     <td><code>string</code></td>
     <td>If v2.0, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have HttpTokens automatically set to required so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, HttpPutResponseHopLimit is set to 2. For more information, see Configure the AMI in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KernelId" /></td>
+    <td><CopyableCode code="kernel_id" /></td>
     <td><code>string</code></td>
     <td>The kernel ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastLaunchedTime" /></td>
+    <td><CopyableCode code="last_launched_time" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. lastLaunchedTime data is available starting April 2017.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchPermissions" /></td>
+    <td><CopyableCode code="launch_permissions" /></td>
     <td><code>string</code></td>
     <td>The launch permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCodes" /></td>
+    <td><CopyableCode code="product_codes" /></td>
     <td><code>string</code></td>
     <td>The product codes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RamdiskId" /></td>
+    <td><CopyableCode code="ramdisk_id" /></td>
     <td><code>string</code></td>
     <td>The RAM disk ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SriovNetSupport" /></td>
+    <td><CopyableCode code="sriov_net_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TpmSupport" /></td>
+    <td><CopyableCode code="tpm_support" /></td>
     <td><code>string</code></td>
     <td>If the image is configured for NitroTPM support, the value is v2.0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UefiData" /></td>
+    <td><CopyableCode code="uefi_data" /></td>
     <td><code>string</code></td>
     <td>Base64 representation of the non-volatile UEFI variable store. To retrieve the UEFI data, use the GetInstanceUefiData command. You can inspect and modify the UEFI data by using the python-uefivars tool on GitHub. For more information, see UEFI Secure Boot for Amazon EC2 instances in the Amazon EC2 User Guide.</td>
 </tr>
@@ -261,20 +261,20 @@ Describes the specified attribute of the specified AMI. You can specify only one
 
 ```sql
 SELECT
-BlockDeviceMappings,
-BootMode,
-DeregistrationProtection,
-Description,
-ImageId,
-ImdsSupport,
-KernelId,
-LastLaunchedTime,
-LaunchPermissions,
-ProductCodes,
-RamdiskId,
-SriovNetSupport,
-TpmSupport,
-UefiData
+block_device_mappings,
+boot_mode,
+deregistration_protection,
+description,
+image_id,
+imds_support,
+kernel_id,
+last_launched_time,
+launch_permissions,
+product_codes,
+ramdisk_id,
+sriov_net_support,
+tpm_support,
+uefi_data
 FROM aws.ec2.image_attributes
 WHERE Attribute = '{{ Attribute }}' -- required
 AND ImageId = '{{ ImageId }}' -- required

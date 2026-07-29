@@ -137,7 +137,7 @@ SELECT
 '{{ x-amz-data-partition }}',
 '{{ region }}'
 RETURNING
-ObjectIdentifier
+object_identifier
 ;
 ```
 </TabItem>
@@ -207,7 +207,7 @@ AND ParentReference = '{{ ParentReference }}' --required
 AND ChildReference = '{{ ChildReference }}' --required
 AND LinkName = '{{ LinkName }}' --required
 RETURNING
-AttachedObjectIdentifier;
+attached_object_identifier;
 ```
 </TabItem>
 <TabItem value="detach_object">
@@ -225,7 +225,7 @@ AND region = '{{ region }}' --required
 AND ParentReference = '{{ ParentReference }}' --required
 AND LinkName = '{{ LinkName }}' --required
 RETURNING
-DetachedObjectIdentifier;
+detached_object_identifier;
 ```
 </TabItem>
 </Tabs>

@@ -66,47 +66,47 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the experiment. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the experiment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the experiment ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentOptions" /></td>
+    <td><CopyableCode code="experiment_options" /></td>
     <td><code>object</code></td>
     <td>The experiment options for the experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentReport" /></td>
+    <td><CopyableCode code="experiment_report" /></td>
     <td><code>object</code></td>
     <td>The experiment report for the experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentReportConfiguration" /></td>
+    <td><CopyableCode code="experiment_report_configuration" /></td>
     <td><code>object</code></td>
     <td>The experiment report configuration for the experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentTemplateId" /></td>
+    <td><CopyableCode code="experiment_template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the experiment template. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for experiment logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that grants the FIS service permission to perform service actions on your behalf. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the experiment started.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopConditions" /></td>
+    <td><CopyableCode code="stop_conditions" /></td>
     <td><code>array</code></td>
     <td>The stop conditions for the experiment.</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags for the experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetAccountConfigurationsCount" /></td>
+    <td><CopyableCode code="target_account_configurations_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The count of target account configurations for the experiment.</td>
 </tr>
@@ -160,17 +160,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the experiment. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the experiment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentOptions" /></td>
+    <td><CopyableCode code="experiment_options" /></td>
     <td><code>object</code></td>
     <td>The experiment options for the experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentTemplateId" /></td>
+    <td><CopyableCode code="experiment_template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the experiment template. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -280,19 +280,19 @@ SELECT
 id,
 actions,
 arn,
-creationTime,
-endTime,
-experimentOptions,
-experimentReport,
-experimentReportConfiguration,
-experimentTemplateId,
-logConfiguration,
-roleArn,
-startTime,
+creation_time,
+end_time,
+experiment_options,
+experiment_report,
+experiment_report_configuration,
+experiment_template_id,
+log_configuration,
+role_arn,
+start_time,
 state,
-stopConditions,
+stop_conditions,
 tags,
-targetAccountConfigurationsCount,
+target_account_configurations_count,
 targets
 FROM aws.fis.experiments
 WHERE id = '{{ id }}' -- required
@@ -308,9 +308,9 @@ Lists your experiments.
 SELECT
 id,
 arn,
-creationTime,
-experimentOptions,
-experimentTemplateId,
+creation_time,
+experiment_options,
+experiment_template_id,
 state,
 tags
 FROM aws.fis.experiments

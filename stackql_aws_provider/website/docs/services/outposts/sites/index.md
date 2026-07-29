@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the site. (pattern: &lt;code&gt;^&#91;\S &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the site. (pattern: &lt;code&gt;^&#91;\S &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notes" /></td>
+    <td><CopyableCode code="notes" /></td>
     <td><code>string</code></td>
     <td>Notes about a site. (pattern: &lt;code&gt;^&#91;\S \n&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingAddressCity" /></td>
+    <td><CopyableCode code="operating_address_city" /></td>
     <td><code>string</code></td>
     <td>City where the hardware is installed and powered on. (pattern: &lt;code&gt;^\S&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingAddressCountryCode" /></td>
+    <td><CopyableCode code="operating_address_country_code" /></td>
     <td><code>string</code></td>
     <td>The ISO-3166 two-letter country code where the hardware is installed and powered on. (pattern: &lt;code&gt;^&#91;A-Z&#93;&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingAddressStateOrRegion" /></td>
+    <td><CopyableCode code="operating_address_state_or_region" /></td>
     <td><code>string</code></td>
     <td>State or region where the hardware is installed and powered on. (pattern: &lt;code&gt;^\S&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RackPhysicalProperties" /></td>
+    <td><CopyableCode code="rack_physical_properties" /></td>
     <td><code>object</code></td>
     <td>Information about the physical and logistical details for racks at sites. For more information about hardware requirements for racks, see Network readiness checklist in the Amazon Web Services Outposts User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteArn" /></td>
+    <td><CopyableCode code="site_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the site. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the site. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/)?(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The site tags.</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the site. (pattern: &lt;code&gt;^&#91;\S &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the site. (pattern: &lt;code&gt;^&#91;\S &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notes" /></td>
+    <td><CopyableCode code="notes" /></td>
     <td><code>string</code></td>
     <td>Notes about a site. (pattern: &lt;code&gt;^&#91;\S \n&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingAddressCity" /></td>
+    <td><CopyableCode code="operating_address_city" /></td>
     <td><code>string</code></td>
     <td>City where the hardware is installed and powered on. (pattern: &lt;code&gt;^\S&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingAddressCountryCode" /></td>
+    <td><CopyableCode code="operating_address_country_code" /></td>
     <td><code>string</code></td>
     <td>The ISO-3166 two-letter country code where the hardware is installed and powered on. (pattern: &lt;code&gt;^&#91;A-Z&#93;&#123;2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingAddressStateOrRegion" /></td>
+    <td><CopyableCode code="operating_address_state_or_region" /></td>
     <td><code>string</code></td>
     <td>State or region where the hardware is installed and powered on. (pattern: &lt;code&gt;^\S&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RackPhysicalProperties" /></td>
+    <td><CopyableCode code="rack_physical_properties" /></td>
     <td><code>object</code></td>
     <td>Information about the physical and logistical details for racks at sites. For more information about hardware requirements for racks, see Network readiness checklist in the Amazon Web Services Outposts User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteArn" /></td>
+    <td><CopyableCode code="site_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the site. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the site. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/)?(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The site tags.</td>
 </tr>
@@ -305,17 +305,17 @@ Gets information about the specified Outpost site.
 
 ```sql
 SELECT
-AccountId,
-Description,
-Name,
-Notes,
-OperatingAddressCity,
-OperatingAddressCountryCode,
-OperatingAddressStateOrRegion,
-RackPhysicalProperties,
-SiteArn,
-SiteId,
-Tags
+account_id,
+description,
+name,
+notes,
+operating_address_city,
+operating_address_country_code,
+operating_address_state_or_region,
+rack_physical_properties,
+site_arn,
+site_id,
+tags
 FROM aws.outposts.sites
 WHERE site_id = '{{ site_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -328,17 +328,17 @@ Lists the Outpost sites for your Amazon Web Services account. Use filters to ret
 
 ```sql
 SELECT
-AccountId,
-Description,
-Name,
-Notes,
-OperatingAddressCity,
-OperatingAddressCountryCode,
-OperatingAddressStateOrRegion,
-RackPhysicalProperties,
-SiteArn,
-SiteId,
-Tags
+account_id,
+description,
+name,
+notes,
+operating_address_city,
+operating_address_country_code,
+operating_address_state_or_region,
+rack_physical_properties,
+site_arn,
+site_id,
+tags
 FROM aws.outposts.sites
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -386,7 +386,7 @@ SELECT
 '{{ RackPhysicalProperties }}',
 '{{ region }}'
 RETURNING
-Site
+site
 ;
 ```
 </TabItem>
@@ -481,7 +481,7 @@ WHERE
 site_id = '{{ site_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Site;
+site;
 ```
 </TabItem>
 </Tabs>

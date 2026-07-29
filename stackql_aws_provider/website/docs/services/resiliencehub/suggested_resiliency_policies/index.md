@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resiliencyPolicies" /></td>
+    <td><CopyableCode code="resiliency_policies" /></td>
     <td><code>array</code></td>
     <td>The suggested resiliency policies for the Resilience Hub applications.</td>
 </tr>
@@ -134,8 +134,8 @@ Lists the suggested resiliency policies for the Resilience Hub applications.
 
 ```sql
 SELECT
-nextToken,
-resiliencyPolicies
+next_token,
+resiliency_policies
 FROM aws.resiliencehub.suggested_resiliency_policies
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

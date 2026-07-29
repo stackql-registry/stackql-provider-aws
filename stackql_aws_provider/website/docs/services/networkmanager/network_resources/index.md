@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a core network. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>string</code></td>
     <td>Information about the resource, in JSON format. Network Manager gets this information by describing the resource using its Describe API call. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefinitionTimestamp" /></td>
+    <td><CopyableCode code="definition_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the resource definition was retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>The resource metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegisteredGatewayArn" /></td>
+    <td><CopyableCode code="registered_gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the gateway. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. The following are the supported resource types for Direct Connect: dxcon dx-gateway dx-vif The following are the supported resource types for Network Manager: attachment connect-peer connection core-network device link peering site The following are the supported resource types for Amazon VPC: customer-gateway transit-gateway transit-gateway-attachment transit-gateway-connect-peer transit-gateway-route-table vpn-connection (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags.</td>
 </tr>
@@ -226,17 +226,17 @@ Describes the network resources for the specified global network. The results in
 
 ```sql
 SELECT
-AccountId,
-AwsRegion,
-CoreNetworkId,
-Definition,
-DefinitionTimestamp,
-Metadata,
-RegisteredGatewayArn,
-ResourceArn,
-ResourceId,
-ResourceType,
-Tags
+account_id,
+aws_region,
+core_network_id,
+definition,
+definition_timestamp,
+metadata,
+registered_gateway_arn,
+resource_arn,
+resource_id,
+resource_type,
+tags
 FROM aws.networkmanager.network_resources
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -275,8 +275,8 @@ global_network_id = '{{ global_network_id }}' --required
 AND resource_arn = '{{ resource_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Metadata,
-ResourceArn;
+metadata,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

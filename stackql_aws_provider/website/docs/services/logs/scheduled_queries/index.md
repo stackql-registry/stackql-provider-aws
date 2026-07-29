@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the scheduled query. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-/.#&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the scheduled query was created.</td>
 </tr>
@@ -66,67 +66,67 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the scheduled query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConfiguration" /></td>
+    <td><CopyableCode code="destination_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for where query results are delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role used to execute the query and deliver results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastExecutionStatus" /></td>
+    <td><CopyableCode code="last_execution_status" /></td>
     <td><code>string</code></td>
     <td>The status of the most recent execution of the scheduled query. (Running, InvalidQuery, Complete, Failed, Timeout)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastTriggeredTime" /></td>
+    <td><CopyableCode code="last_triggered_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the scheduled query was last executed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the scheduled query was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupIdentifiers" /></td>
+    <td><CopyableCode code="log_group_identifiers" /></td>
     <td><code>array</code></td>
     <td>The log groups queried by the scheduled query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryLanguage" /></td>
+    <td><CopyableCode code="query_language" /></td>
     <td><code>string</code></td>
     <td>The query language used by the scheduled query. (CWLI, SQL, PPL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The query string executed by the scheduled query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleEndTime" /></td>
+    <td><CopyableCode code="schedule_end_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The end time for the scheduled query in Unix epoch format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>The cron expression that defines when the scheduled query runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleStartTime" /></td>
+    <td><CopyableCode code="schedule_start_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The start time for the scheduled query in Unix epoch format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledQueryArn" /></td>
+    <td><CopyableCode code="scheduled_query_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the scheduled query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTimeOffset" /></td>
+    <td><CopyableCode code="start_time_offset" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time offset in seconds that defines the lookback period for the query.</td>
 </tr>
@@ -160,37 +160,37 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the scheduled query. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-/.#&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the scheduled query was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConfiguration" /></td>
+    <td><CopyableCode code="destination_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for where query results are delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastExecutionStatus" /></td>
+    <td><CopyableCode code="last_execution_status" /></td>
     <td><code>string</code></td>
     <td>The status of the most recent execution. (Running, InvalidQuery, Complete, Failed, Timeout)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastTriggeredTime" /></td>
+    <td><CopyableCode code="last_triggered_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the scheduled query was last executed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the scheduled query was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>The cron expression that defines when the scheduled query runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledQueryArn" /></td>
+    <td><CopyableCode code="scheduled_query_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the scheduled query.</td>
 </tr>
@@ -299,21 +299,21 @@ Retrieves details about a specific scheduled query, including its configuration,
 ```sql
 SELECT
 name,
-creationTime,
+creation_time,
 description,
-destinationConfiguration,
-executionRoleArn,
-lastExecutionStatus,
-lastTriggeredTime,
-lastUpdatedTime,
-logGroupIdentifiers,
-queryLanguage,
-queryString,
-scheduleEndTime,
-scheduleExpression,
-scheduleStartTime,
-scheduledQueryArn,
-startTimeOffset,
+destination_configuration,
+execution_role_arn,
+last_execution_status,
+last_triggered_time,
+last_updated_time,
+log_group_identifiers,
+query_language,
+query_string,
+schedule_end_time,
+schedule_expression,
+schedule_start_time,
+scheduled_query_arn,
+start_time_offset,
 state,
 timezone
 FROM aws.logs.scheduled_queries
@@ -328,13 +328,13 @@ Lists all scheduled queries in your account and region. You can filter results b
 ```sql
 SELECT
 name,
-creationTime,
-destinationConfiguration,
-lastExecutionStatus,
-lastTriggeredTime,
-lastUpdatedTime,
-scheduleExpression,
-scheduledQueryArn,
+creation_time,
+destination_configuration,
+last_execution_status,
+last_triggered_time,
+last_updated_time,
+schedule_expression,
+scheduled_query_arn,
 state,
 timezone
 FROM aws.logs.scheduled_queries
@@ -393,7 +393,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-scheduledQueryArn,
+scheduled_query_arn,
 state
 ;
 ```
@@ -513,21 +513,21 @@ AND scheduleExpression = '{{ scheduleExpression }}' --required
 AND executionRoleArn = '{{ executionRoleArn }}' --required
 RETURNING
 name,
-creationTime,
+creation_time,
 description,
-destinationConfiguration,
-executionRoleArn,
-lastExecutionStatus,
-lastTriggeredTime,
-lastUpdatedTime,
-logGroupIdentifiers,
-queryLanguage,
-queryString,
-scheduleEndTime,
-scheduleExpression,
-scheduleStartTime,
-scheduledQueryArn,
-startTimeOffset,
+destination_configuration,
+execution_role_arn,
+last_execution_status,
+last_triggered_time,
+last_updated_time,
+log_group_identifiers,
+query_language,
+query_string,
+schedule_end_time,
+schedule_expression,
+schedule_start_time,
+scheduled_query_arn,
+start_time_offset,
 state,
 timezone;
 ```

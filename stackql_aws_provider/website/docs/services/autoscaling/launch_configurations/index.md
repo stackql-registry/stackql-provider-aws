@@ -50,102 +50,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatePublicIpAddress" /></td>
+    <td><CopyableCode code="associate_public_ip_address" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether to assign a public IPv4 address to the group's instances. If the instance is launched into a default subnet, the default is to assign a public IPv4 address, unless you disabled the option to assign a public IPv4 address on the subnet. If the instance is launched into a nondefault subnet, the default is not to assign a public IPv4 address, unless you enabled the option to assign a public IPv4 address on the subnet. For more information, see Provide network connectivity for your Auto Scaling instances using Amazon VPC in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockDeviceMappings" /></td>
+    <td><CopyableCode code="block_device_mappings" /></td>
     <td><code>string</code></td>
     <td>The block device mapping entries that define the block devices to attach to the instances at launch. By default, the block devices specified in the block device mapping for the AMI are used. For more information, see Block device mappings in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClassicLinkVPCId" /></td>
+    <td><CopyableCode code="classic_link_vpc_id" /></td>
     <td><code>string</code></td>
     <td>Available for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClassicLinkVPCSecurityGroups" /></td>
+    <td><CopyableCode code="classic_link_vpc_security_groups" /></td>
     <td><code>string</code></td>
     <td>Available for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The creation date and time for the launch configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EbsOptimized" /></td>
+    <td><CopyableCode code="ebs_optimized" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the launch configuration is optimized for EBS I/O (true) or not (false). For more information, see Amazon EBS-optimized instances in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamInstanceProfile" /></td>
+    <td><CopyableCode code="iam_instance_profile" /></td>
     <td><code>string</code></td>
     <td>The name or the Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance. The instance profile contains the IAM role. For more information, see IAM role for applications that run on Amazon EC2 instances in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances. For more information, see Find a Linux AMI in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceMonitoring" /></td>
+    <td><CopyableCode code="instance_monitoring" /></td>
     <td><code>string</code></td>
     <td>Controls whether instances in this group are launched with detailed (true) or basic (false) monitoring. For more information, see Configure monitoring for Auto Scaling instances in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type for the instances. For information about available instance types, see Available instance types in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KernelId" /></td>
+    <td><CopyableCode code="kernel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the kernel associated with the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyName" /></td>
+    <td><CopyableCode code="key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the key pair. For more information, see Amazon EC2 key pairs and Amazon EC2 instances in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchConfigurationARN" /></td>
+    <td><CopyableCode code="launch_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the launch configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchConfigurationName" /></td>
+    <td><CopyableCode code="launch_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the launch configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataOptions" /></td>
+    <td><CopyableCode code="metadata_options" /></td>
     <td><code>string</code></td>
     <td>The metadata options for the instances. For more information, see Configure the instance metadata options in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlacementTenancy" /></td>
+    <td><CopyableCode code="placement_tenancy" /></td>
     <td><code>string</code></td>
     <td>The tenancy of the instance, either default or dedicated. An instance with dedicated tenancy runs on isolated, single-tenant hardware and can only be launched into a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RamdiskId" /></td>
+    <td><CopyableCode code="ramdisk_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the RAM disk associated with the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>string</code></td>
     <td>A list that contains the security groups to assign to the instances in the Auto Scaling group. For more information, see Control traffic to your Amazon Web Services resources using security groups in the Amazon Virtual Private Cloud User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotPrice" /></td>
+    <td><CopyableCode code="spot_price" /></td>
     <td><code>string</code></td>
     <td>The maximum hourly price to be paid for any Spot Instance launched to fulfill the request. Spot Instances are launched when the price you specify exceeds the current Spot price. For more information, see Requesting Spot Instances for fault-tolerant and flexible applications in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserData" /></td>
+    <td><CopyableCode code="user_data" /></td>
     <td><code>string</code></td>
     <td>The user data to make available to the launched EC2 instances. For more information, see Instance metadata and user data in the Amazon EC2 User Guide. If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text. User data is limited to 16 KB.</td>
 </tr>
@@ -338,26 +338,26 @@ Gets information about the launch configurations in the account and Region.
 
 ```sql
 SELECT
-AssociatePublicIpAddress,
-BlockDeviceMappings,
-ClassicLinkVPCId,
-ClassicLinkVPCSecurityGroups,
-CreatedTime,
-EbsOptimized,
-IamInstanceProfile,
-ImageId,
-InstanceMonitoring,
-InstanceType,
-KernelId,
-KeyName,
-LaunchConfigurationARN,
-LaunchConfigurationName,
-MetadataOptions,
-PlacementTenancy,
-RamdiskId,
-SecurityGroups,
-SpotPrice,
-UserData
+associate_public_ip_address,
+block_device_mappings,
+classic_link_vpc_id,
+classic_link_vpc_security_groups,
+created_time,
+ebs_optimized,
+iam_instance_profile,
+image_id,
+instance_monitoring,
+instance_type,
+kernel_id,
+key_name,
+launch_configuration_arn,
+launch_configuration_name,
+metadata_options,
+placement_tenancy,
+ramdisk_id,
+security_groups,
+spot_price,
+user_data
 FROM aws.autoscaling.launch_configurations
 WHERE region = '{{ region }}' -- required
 AND LaunchConfigurationNames = '{{ LaunchConfigurationNames }}'

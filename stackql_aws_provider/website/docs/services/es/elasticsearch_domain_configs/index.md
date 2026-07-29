@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessPolicies" /></td>
+    <td><CopyableCode code="access_policies" /></td>
     <td><code>object</code></td>
     <td>IAM access policy as a JSON-formatted string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdvancedOptions" /></td>
+    <td><CopyableCode code="advanced_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the AdvancedOptions for the domain. See Configuring Advanced Options for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdvancedSecurityOptions" /></td>
+    <td><CopyableCode code="advanced_security_options" /></td>
     <td><code>object</code></td>
     <td>Specifies AdvancedSecurityOptions for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoTuneOptions" /></td>
+    <td><CopyableCode code="auto_tune_options" /></td>
     <td><code>object</code></td>
     <td>Specifies AutoTuneOptions for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomatedSnapshotPauseOptions" /></td>
+    <td><CopyableCode code="automated_snapshot_pause_options" /></td>
     <td><code>object</code></td>
     <td>Specifies AutomatedSnapshotPauseOptions for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeProgressDetails" /></td>
+    <td><CopyableCode code="change_progress_details" /></td>
     <td><code>object</code></td>
     <td>Specifies change details of the domain configuration change.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CognitoOptions" /></td>
+    <td><CopyableCode code="cognito_options" /></td>
     <td><code>object</code></td>
     <td>The CognitoOptions for the specified domain. For more information, see Amazon Cognito Authentication for Kibana.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStrategyOptions" /></td>
+    <td><CopyableCode code="deployment_strategy_options" /></td>
     <td><code>object</code></td>
     <td>Specifies DeploymentStrategyOptions for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainEndpointOptions" /></td>
+    <td><CopyableCode code="domain_endpoint_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the DomainEndpointOptions for the Elasticsearch domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EBSOptions" /></td>
+    <td><CopyableCode code="ebs_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the EBSOptions for the Elasticsearch domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticsearchClusterConfig" /></td>
+    <td><CopyableCode code="elasticsearch_cluster_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the ElasticsearchClusterConfig for the Elasticsearch domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticsearchVersion" /></td>
+    <td><CopyableCode code="elasticsearch_version" /></td>
     <td><code>object</code></td>
     <td>String of format X.Y to specify version for the Elasticsearch domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionAtRestOptions" /></td>
+    <td><CopyableCode code="encryption_at_rest_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the EncryptionAtRestOptions for the Elasticsearch domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPublishingOptions" /></td>
+    <td><CopyableCode code="log_publishing_options" /></td>
     <td><code>object</code></td>
     <td>Log publishing options for the given domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifyingProperties" /></td>
+    <td><CopyableCode code="modifying_properties" /></td>
     <td><code>array</code></td>
     <td>Information about the domain properties that are currently being modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeToNodeEncryptionOptions" /></td>
+    <td><CopyableCode code="node_to_node_encryption_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the NodeToNodeEncryptionOptions for the Elasticsearch domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotOptions" /></td>
+    <td><CopyableCode code="snapshot_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the SnapshotOptions for the Elasticsearch domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCOptions" /></td>
+    <td><CopyableCode code="vpc_options" /></td>
     <td><code>object</code></td>
     <td>The VPCOptions for the specified domain. For more information, see VPC Endpoints for Amazon Elasticsearch Service Domains.</td>
 </tr>
@@ -216,24 +216,24 @@ Provides cluster configuration information about the specified Elasticsearch dom
 
 ```sql
 SELECT
-AccessPolicies,
-AdvancedOptions,
-AdvancedSecurityOptions,
-AutoTuneOptions,
-AutomatedSnapshotPauseOptions,
-ChangeProgressDetails,
-CognitoOptions,
-DeploymentStrategyOptions,
-DomainEndpointOptions,
-EBSOptions,
-ElasticsearchClusterConfig,
-ElasticsearchVersion,
-EncryptionAtRestOptions,
-LogPublishingOptions,
-ModifyingProperties,
-NodeToNodeEncryptionOptions,
-SnapshotOptions,
-VPCOptions
+access_policies,
+advanced_options,
+advanced_security_options,
+auto_tune_options,
+automated_snapshot_pause_options,
+change_progress_details,
+cognito_options,
+deployment_strategy_options,
+domain_endpoint_options,
+ebs_options,
+elasticsearch_cluster_config,
+elasticsearch_version,
+encryption_at_rest_options,
+log_publishing_options,
+modifying_properties,
+node_to_node_encryption_options,
+snapshot_options,
+vpc_options
 FROM aws.es.elasticsearch_domain_configs
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,8 +278,8 @@ WHERE
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DomainConfig,
-DryRunResults;
+domain_config,
+dry_run_results;
 ```
 </TabItem>
 </Tabs>

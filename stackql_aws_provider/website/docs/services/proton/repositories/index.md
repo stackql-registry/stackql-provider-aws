@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the linked repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionArn" /></td>
+    <td><CopyableCode code="connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of your AWS CodeStar connection that connects Proton to your repository provider account. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>Your customer Amazon Web Services KMS encryption key. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the linked repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionArn" /></td>
+    <td><CopyableCode code="connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the of your connection that connects Proton to your repository. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -198,8 +198,8 @@ Get detail data for a linked repository.
 SELECT
 name,
 arn,
-connectionArn,
-encryptionKey,
+connection_arn,
+encryption_key,
 provider
 FROM aws.proton.repositories
 WHERE region = '{{ region }}' -- required
@@ -214,7 +214,7 @@ List linked repositories with detail data.
 SELECT
 name,
 arn,
-connectionArn,
+connection_arn,
 provider
 FROM aws.proton.repositories
 WHERE region = '{{ region }}' -- required

@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The job type. This value is either ArchiveRetrieval, InventoryRetrieval, or Select. (ArchiveRetrieval, InventoryRetrieval, Select)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveId" /></td>
+    <td><CopyableCode code="archive_id" /></td>
     <td><code>string</code></td>
     <td>The archive ID requested for a select job or archive retrieval. Otherwise, this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveSHA256TreeHash" /></td>
+    <td><CopyableCode code="archive_sha256_tree_hash" /></td>
     <td><code>string</code></td>
     <td>The SHA256 tree hash of the entire archive for an archive retrieval. For inventory retrieval or select jobs, this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveSizeInBytes" /></td>
+    <td><CopyableCode code="archive_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>For an archive retrieval job, this value is the size in bytes of the archive being requested for download. For an inventory retrieval or select job, this value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Completed" /></td>
+    <td><CopyableCode code="completed" /></td>
     <td><code>boolean</code></td>
     <td>The job status. When a job is completed, you get the job's output using Get Job Output (GET output).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string</code></td>
     <td>The UTC time that the job request completed. While the job is in progress, the value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The UTC date when the job was created. This value is a string representation of ISO 8601 date format, for example "2012-03-20T17:03:43.221Z".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InventoryRetrievalParameters" /></td>
+    <td><CopyableCode code="inventory_retrieval_parameters" /></td>
     <td><code>object</code></td>
     <td>Parameters used for range inventory retrieval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InventorySizeInBytes" /></td>
+    <td><CopyableCode code="inventory_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>For an inventory retrieval job, this value is the size in bytes of the inventory requested for download. For an archive retrieval or select job, this value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDescription" /></td>
+    <td><CopyableCode code="job_description" /></td>
     <td><code>string</code></td>
     <td>The job description provided when initiating the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>An opaque string that identifies an Amazon S3 Glacier job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobOutputPath" /></td>
+    <td><CopyableCode code="job_output_path" /></td>
     <td><code>string</code></td>
     <td>Contains the job output location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputLocation" /></td>
+    <td><CopyableCode code="output_location" /></td>
     <td><code>object</code></td>
     <td>Contains the location where the data from the select job is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrievalByteRange" /></td>
+    <td><CopyableCode code="retrieval_byte_range" /></td>
     <td><code>string</code></td>
     <td>The retrieved byte range for archive retrieval jobs in the form StartByteValue-EndByteValue. If no range was specified in the archive retrieval, then the whole archive is retrieved. In this case, StartByteValue equals 0 and EndByteValue equals the size of the archive minus 1. For inventory retrieval or select jobs, this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SHA256TreeHash" /></td>
+    <td><CopyableCode code="sha256_tree_hash" /></td>
     <td><code>string</code></td>
     <td>For an archive retrieval job, this value is the checksum of the archive. Otherwise, this value is null. The SHA256 tree hash value for the requested range of an archive. If the InitiateJob request for an archive specified a tree-hash aligned range, then this field returns a value. If the whole archive is retrieved, this value is the same as the ArchiveSHA256TreeHash value. This field is null for the following: Archive retrieval jobs that specify a range that is not tree-hash aligned Archival jobs that specify a range that is equal to the whole archive, when the job status is InProgress Inventory jobs Select jobs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SNSTopic" /></td>
+    <td><CopyableCode code="sns_topic" /></td>
     <td><code>string</code></td>
     <td>An Amazon SNS topic that receives notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectParameters" /></td>
+    <td><CopyableCode code="select_parameters" /></td>
     <td><code>object</code></td>
     <td>Contains the parameters used for a select.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The status code can be InProgress, Succeeded, or Failed, and indicates the status of the job. (InProgress, Succeeded, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A friendly message that describes the job status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The tier to use for a select or an archive retrieval. Valid values are Expedited, Standard, or Bulk. Standard is the default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultARN" /></td>
+    <td><CopyableCode code="vault_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vault from which an archive retrieval was requested.</td>
 </tr>
@@ -170,107 +170,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The job type. This value is either ArchiveRetrieval, InventoryRetrieval, or Select. (ArchiveRetrieval, InventoryRetrieval, Select)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveId" /></td>
+    <td><CopyableCode code="archive_id" /></td>
     <td><code>string</code></td>
     <td>The archive ID requested for a select job or archive retrieval. Otherwise, this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveSHA256TreeHash" /></td>
+    <td><CopyableCode code="archive_sha256_tree_hash" /></td>
     <td><code>string</code></td>
     <td>The SHA256 tree hash of the entire archive for an archive retrieval. For inventory retrieval or select jobs, this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveSizeInBytes" /></td>
+    <td><CopyableCode code="archive_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>For an archive retrieval job, this value is the size in bytes of the archive being requested for download. For an inventory retrieval or select job, this value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Completed" /></td>
+    <td><CopyableCode code="completed" /></td>
     <td><code>boolean</code></td>
     <td>The job status. When a job is completed, you get the job's output using Get Job Output (GET output).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string</code></td>
     <td>The UTC time that the job request completed. While the job is in progress, the value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The UTC date when the job was created. This value is a string representation of ISO 8601 date format, for example "2012-03-20T17:03:43.221Z".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InventoryRetrievalParameters" /></td>
+    <td><CopyableCode code="inventory_retrieval_parameters" /></td>
     <td><code>object</code></td>
     <td>Parameters used for range inventory retrieval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InventorySizeInBytes" /></td>
+    <td><CopyableCode code="inventory_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>For an inventory retrieval job, this value is the size in bytes of the inventory requested for download. For an archive retrieval or select job, this value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDescription" /></td>
+    <td><CopyableCode code="job_description" /></td>
     <td><code>string</code></td>
     <td>The job description provided when initiating the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>An opaque string that identifies an Amazon S3 Glacier job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobOutputPath" /></td>
+    <td><CopyableCode code="job_output_path" /></td>
     <td><code>string</code></td>
     <td>Contains the job output location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputLocation" /></td>
+    <td><CopyableCode code="output_location" /></td>
     <td><code>object</code></td>
     <td>Contains the location where the data from the select job is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrievalByteRange" /></td>
+    <td><CopyableCode code="retrieval_byte_range" /></td>
     <td><code>string</code></td>
     <td>The retrieved byte range for archive retrieval jobs in the form StartByteValue-EndByteValue. If no range was specified in the archive retrieval, then the whole archive is retrieved. In this case, StartByteValue equals 0 and EndByteValue equals the size of the archive minus 1. For inventory retrieval or select jobs, this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SHA256TreeHash" /></td>
+    <td><CopyableCode code="sha256_tree_hash" /></td>
     <td><code>string</code></td>
     <td>For an archive retrieval job, this value is the checksum of the archive. Otherwise, this value is null. The SHA256 tree hash value for the requested range of an archive. If the InitiateJob request for an archive specified a tree-hash aligned range, then this field returns a value. If the whole archive is retrieved, this value is the same as the ArchiveSHA256TreeHash value. This field is null for the following: Archive retrieval jobs that specify a range that is not tree-hash aligned Archival jobs that specify a range that is equal to the whole archive, when the job status is InProgress Inventory jobs Select jobs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SNSTopic" /></td>
+    <td><CopyableCode code="sns_topic" /></td>
     <td><code>string</code></td>
     <td>An Amazon SNS topic that receives notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectParameters" /></td>
+    <td><CopyableCode code="select_parameters" /></td>
     <td><code>object</code></td>
     <td>Contains the parameters used for a select.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The status code can be InProgress, Succeeded, or Failed, and indicates the status of the job. (InProgress, Succeeded, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A friendly message that describes the job status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The tier to use for a select or an archive retrieval. Valid values are Expedited, Standard, or Bulk. Standard is the default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultARN" /></td>
+    <td><CopyableCode code="vault_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vault from which an archive retrieval was requested.</td>
 </tr>
@@ -382,27 +382,27 @@ This operation returns information about a job you previously initiated, includi
 
 ```sql
 SELECT
-Action,
-ArchiveId,
-ArchiveSHA256TreeHash,
-ArchiveSizeInBytes,
-Completed,
-CompletionDate,
-CreationDate,
-InventoryRetrievalParameters,
-InventorySizeInBytes,
-JobDescription,
-JobId,
-JobOutputPath,
-OutputLocation,
-RetrievalByteRange,
-SHA256TreeHash,
-SNSTopic,
-SelectParameters,
-StatusCode,
-StatusMessage,
-Tier,
-VaultARN
+action,
+archive_id,
+archive_sha256_tree_hash,
+archive_size_in_bytes,
+completed,
+completion_date,
+creation_date,
+inventory_retrieval_parameters,
+inventory_size_in_bytes,
+job_description,
+job_id,
+job_output_path,
+output_location,
+retrieval_byte_range,
+sha256_tree_hash,
+sns_topic,
+select_parameters,
+status_code,
+status_message,
+tier,
+vault_arn
 FROM aws.glacier.jobs
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required
@@ -417,27 +417,27 @@ This operation lists jobs for a vault, including jobs that are in-progress and j
 
 ```sql
 SELECT
-Action,
-ArchiveId,
-ArchiveSHA256TreeHash,
-ArchiveSizeInBytes,
-Completed,
-CompletionDate,
-CreationDate,
-InventoryRetrievalParameters,
-InventorySizeInBytes,
-JobDescription,
-JobId,
-JobOutputPath,
-OutputLocation,
-RetrievalByteRange,
-SHA256TreeHash,
-SNSTopic,
-SelectParameters,
-StatusCode,
-StatusMessage,
-Tier,
-VaultARN
+action,
+archive_id,
+archive_sha256_tree_hash,
+archive_size_in_bytes,
+completed,
+completion_date,
+creation_date,
+inventory_retrieval_parameters,
+inventory_size_in_bytes,
+job_description,
+job_id,
+job_output_path,
+output_location,
+retrieval_byte_range,
+sha256_tree_hash,
+sns_topic,
+select_parameters,
+status_code,
+status_message,
+tier,
+vault_arn
 FROM aws.glacier.jobs
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required

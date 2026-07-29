@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>The comment that you specify in the CreateTrafficPolicy request, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Document" /></td>
+    <td><CopyableCode code="document" /></td>
     <td><code>string</code></td>
     <td>The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the CreateTrafficPolicy request. For more information about the JSON format, see Traffic Policy Document Format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID that Amazon Route 53 assigned to a traffic policy when you created it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name that you specified when you created the traffic policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version number that Amazon Route 53 assigns to a traffic policy. For a new traffic policy, the value of Version is always 1.</td>
 </tr>
@@ -166,12 +166,12 @@ Gets information about all of the versions for a specified traffic policy. Traff
 
 ```sql
 SELECT
-Comment,
-Document,
-Id,
-Name,
-Type,
-Version
+comment,
+document,
+id,
+name,
+type,
+version
 FROM aws.route53.traffic_policy_versions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -209,8 +209,8 @@ SELECT
 '{{ id }}',
 '{{ region }}'
 RETURNING
-Location,
-TrafficPolicy
+location,
+traffic_policy
 ;
 ```
 </TabItem>

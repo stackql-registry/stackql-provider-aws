@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the subject was created.</td>
 </tr>
@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The enabled status of the subject.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceProperties" /></td>
+    <td><CopyableCode code="instance_properties" /></td>
     <td><code>array</code></td>
     <td>The specified instance properties associated with the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSeenAt" /></td>
+    <td><CopyableCode code="last_seen_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp of the last time this subject requested temporary session credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subjectArn" /></td>
+    <td><CopyableCode code="subject_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subjectId" /></td>
+    <td><CopyableCode code="subject_id" /></td>
     <td><code>string</code></td>
     <td>The id of the resource (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the subject was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="x509Subject" /></td>
+    <td><CopyableCode code="x_509_subject" /></td>
     <td><code>string</code></td>
     <td>The x509 principal identifier of the authenticating certificate.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 time stamp of when the certificate was first used in a temporary credential request.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
     <td>The enabled status of the subject.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSeenAt" /></td>
+    <td><CopyableCode code="last_seen_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 time stamp of when the certificate was last used in a temporary credential request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subjectArn" /></td>
+    <td><CopyableCode code="subject_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subjectId" /></td>
+    <td><CopyableCode code="subject_id" /></td>
     <td><code>string</code></td>
     <td>The id of the resource. (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the subject was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="x509Subject" /></td>
+    <td><CopyableCode code="x_509_subject" /></td>
     <td><code>string</code></td>
     <td>The x509 principal identifier of the authenticating certificate.</td>
 </tr>
@@ -232,15 +232,15 @@ Gets a subject, which associates a certificate identity with authentication atte
 
 ```sql
 SELECT
-createdAt,
+created_at,
 credentials,
 enabled,
-instanceProperties,
-lastSeenAt,
-subjectArn,
-subjectId,
-updatedAt,
-x509Subject
+instance_properties,
+last_seen_at,
+subject_arn,
+subject_id,
+updated_at,
+x_509_subject
 FROM aws.rolesanywhere.subjects
 WHERE subject_id = '{{ subject_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,13 +253,13 @@ Lists the subjects in the authenticated account and Amazon Web Services Region. 
 
 ```sql
 SELECT
-createdAt,
+created_at,
 enabled,
-lastSeenAt,
-subjectArn,
-subjectId,
-updatedAt,
-x509Subject
+last_seen_at,
+subject_arn,
+subject_id,
+updated_at,
+x_509_subject
 FROM aws.rolesanywhere.subjects
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

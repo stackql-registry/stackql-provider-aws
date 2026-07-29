@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LatestBlockers" /></td>
+    <td><CopyableCode code="latest_blockers" /></td>
     <td><code>array</code></td>
     <td>The latest events for a sync blocker summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentResourceName" /></td>
+    <td><CopyableCode code="parent_resource_name" /></td>
     <td><code>string</code></td>
     <td>The parent resource name for a sync blocker summary. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The resource name for sync blocker summary. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a list of the most recent sync blockers.
 
 ```sql
 SELECT
-LatestBlockers,
-ParentResourceName,
-ResourceName
+latest_blockers,
+parent_resource_name,
+resource_name
 FROM aws.codeconnections.sync_blocker_summaries
 WHERE region = '{{ region }}' -- required
 ;

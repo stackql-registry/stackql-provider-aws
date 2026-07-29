@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceCapabilities" /></td>
+    <td><CopyableCode code="device_capabilities" /></td>
     <td><code>string</code></td>
     <td>Details about the capabilities of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The name of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceQueueInfo" /></td>
+    <td><CopyableCode code="device_queue_info" /></td>
     <td><code>array</code></td>
     <td>The number of quantum tasks and hybrid jobs currently queued on the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceStatus" /></td>
+    <td><CopyableCode code="device_status" /></td>
     <td><code>string</code></td>
     <td>The status of the device. (ONLINE, OFFLINE, RETIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceType" /></td>
+    <td><CopyableCode code="device_type" /></td>
     <td><code>string</code></td>
     <td>The type of the device. (QPU, SIMULATOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>The name of the partner company for the device.</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The name of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceStatus" /></td>
+    <td><CopyableCode code="device_status" /></td>
     <td><code>string</code></td>
     <td>The status of the device. (ONLINE, OFFLINE, RETIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceType" /></td>
+    <td><CopyableCode code="device_type" /></td>
     <td><code>string</code></td>
     <td>The type of the device. (QPU, SIMULATOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>The provider of the device.</td>
 </tr>
@@ -202,13 +202,13 @@ Retrieves the devices available in Amazon Braket. For backwards compatibility wi
 
 ```sql
 SELECT
-deviceArn,
-deviceCapabilities,
-deviceName,
-deviceQueueInfo,
-deviceStatus,
-deviceType,
-providerName
+device_arn,
+device_capabilities,
+device_name,
+device_queue_info,
+device_status,
+device_type,
+provider_name
 FROM aws.braket.devices
 WHERE device_arn = '{{ device_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -221,11 +221,11 @@ Searches for devices using the specified filters.
 
 ```sql
 SELECT
-deviceArn,
-deviceName,
-deviceStatus,
-deviceType,
-providerName
+device_arn,
+device_name,
+device_status,
+device_type,
+provider_name
 FROM aws.braket.devices
 WHERE region = '{{ region }}' -- required
 ;

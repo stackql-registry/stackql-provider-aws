@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalEncryptionContext" /></td>
+    <td><CopyableCode code="additional_encryption_context" /></td>
     <td><code>object</code></td>
     <td>The additional encryption context of the user settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedPortalArns" /></td>
+    <td><CopyableCode code="associated_portal_arns" /></td>
     <td><code>array</code></td>
     <td>A list of web portal ARNs that this user settings is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="brandingConfiguration" /></td>
+    <td><CopyableCode code="branding_configuration" /></td>
     <td><code>object</code></td>
     <td>The branding configuration output that customizes the appearance of the web portal for end users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cookieSynchronizationConfiguration" /></td>
+    <td><CopyableCode code="cookie_synchronization_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration that specifies which cookies should be synchronized from the end user's local browser to the remote browser.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyAllowed" /></td>
+    <td><CopyableCode code="copy_allowed" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user can copy text from the streaming session to the local device. (Disabled, Enabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerManagedKey" /></td>
+    <td><CopyableCode code="customer_managed_key" /></td>
     <td><code>string</code></td>
     <td>The customer managed key used to encrypt sensitive information in the user settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:kms:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:key\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deepLinkAllowed" /></td>
+    <td><CopyableCode code="deep_link_allowed" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user can use deep links that open automatically when connecting to a session. (Disabled, Enabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="disconnectTimeoutInMinutes" /></td>
+    <td><CopyableCode code="disconnect_timeout_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that a streaming session remains active after users disconnect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="downloadAllowed" /></td>
+    <td><CopyableCode code="download_allowed" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user can download files from the streaming session to the local device. (Disabled, Enabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleDisconnectTimeoutInMinutes" /></td>
+    <td><CopyableCode code="idle_disconnect_timeout_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the disconnect timeout interval begins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pasteAllowed" /></td>
+    <td><CopyableCode code="paste_allowed" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user can paste text from the local device to the streaming session. (Disabled, Enabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="printAllowed" /></td>
+    <td><CopyableCode code="print_allowed" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user can print to the local device. (Disabled, Enabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="toolbarConfiguration" /></td>
+    <td><CopyableCode code="toolbar_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the toolbar. This allows administrators to select the toolbar type and visual mode, set maximum display resolution for sessions, and choose which items are visible to end users during their sessions. If administrators do not modify these settings, end users retain control over their toolbar preferences.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadAllowed" /></td>
+    <td><CopyableCode code="upload_allowed" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user can upload files from the local device to the streaming session. (Disabled, Enabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userSettingsArn" /></td>
+    <td><CopyableCode code="user_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webAuthnAllowed" /></td>
+    <td><CopyableCode code="web_authn_allowed" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the user can use WebAuthn redirection for passwordless login to websites within the streaming session. (Disabled, Enabled)</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userSettings" /></td>
+    <td><CopyableCode code="user_settings" /></td>
     <td><code>array</code></td>
     <td>The user settings.</td>
 </tr>
@@ -287,22 +287,22 @@ Gets user settings.
 
 ```sql
 SELECT
-additionalEncryptionContext,
-associatedPortalArns,
-brandingConfiguration,
-cookieSynchronizationConfiguration,
-copyAllowed,
-customerManagedKey,
-deepLinkAllowed,
-disconnectTimeoutInMinutes,
-downloadAllowed,
-idleDisconnectTimeoutInMinutes,
-pasteAllowed,
-printAllowed,
-toolbarConfiguration,
-uploadAllowed,
-userSettingsArn,
-webAuthnAllowed
+additional_encryption_context,
+associated_portal_arns,
+branding_configuration,
+cookie_synchronization_configuration,
+copy_allowed,
+customer_managed_key,
+deep_link_allowed,
+disconnect_timeout_in_minutes,
+download_allowed,
+idle_disconnect_timeout_in_minutes,
+paste_allowed,
+print_allowed,
+toolbar_configuration,
+upload_allowed,
+user_settings_arn,
+web_authn_allowed
 FROM aws.workspaces_web.user_settings
 WHERE user_settings_arn = '{{ user_settings_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -315,8 +315,8 @@ Retrieves a list of user settings.
 
 ```sql
 SELECT
-nextToken,
-userSettings
+next_token,
+user_settings
 FROM aws.workspaces_web.user_settings
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -379,7 +379,7 @@ SELECT
 '{{ webAuthnAllowed }}',
 '{{ region }}'
 RETURNING
-userSettingsArn
+user_settings_arn
 ;
 ```
 </TabItem>
@@ -492,8 +492,8 @@ portal_arn = '{{ portal_arn }}' --required
 AND userSettingsArn = '{{ userSettingsArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-portalArn,
-userSettingsArn;
+portal_arn,
+user_settings_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_user_settings">
@@ -533,7 +533,7 @@ WHERE
 user_settings_arn = '{{ user_settings_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-userSettings;
+user_settings;
 ```
 </TabItem>
 </Tabs>

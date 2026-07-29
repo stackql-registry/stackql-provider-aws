@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the media type of the resource. (application/zip)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageContent" /></td>
+    <td><CopyableCode code="package_content" /></td>
     <td><code>string (byte)</code></td>
     <td>Contents of the function package.</td>
 </tr>
@@ -146,8 +146,8 @@ Gets the contents of a function package. A function package is a .zip file in CS
 
 ```sql
 SELECT
-contentType,
-packageContent
+content_type,
+package_content
 FROM aws.tnb.sol_function_package_contents
 WHERE Accept = '{{ Accept }}' -- required
 AND vnf_pkg_id = '{{ vnf_pkg_id }}' -- required
@@ -182,10 +182,10 @@ AND `Content-Type` = '{{ Content-Type}}'
 RETURNING
 id,
 metadata,
-vnfProductName,
-vnfProvider,
-vnfdId,
-vnfdVersion;
+vnf_product_name,
+vnf_provider,
+vnfd_id,
+vnfd_version;
 ```
 </TabItem>
 </Tabs>

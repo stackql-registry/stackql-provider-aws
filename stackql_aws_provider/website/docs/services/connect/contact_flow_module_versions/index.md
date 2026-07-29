@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow module version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow module version. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -168,9 +168,9 @@ Retrieves a paginated list of all versions for a specific contact flow module.
 
 ```sql
 SELECT
-Arn,
-Version,
-VersionDescription
+arn,
+version,
+version_description
 FROM aws.connect.contact_flow_module_versions
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_flow_module_id = '{{ contact_flow_module_id }}' -- required
@@ -211,8 +211,8 @@ SELECT
 '{{ contact_flow_module_id }}',
 '{{ region }}'
 RETURNING
-ContactFlowModuleArn,
-Version
+contact_flow_module_arn,
+version
 ;
 ```
 </TabItem>

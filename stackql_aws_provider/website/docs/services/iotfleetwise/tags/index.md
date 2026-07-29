@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags assigned to the resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the tags (metadata) you have assigned to the resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.iotfleetwise.tags
 WHERE region = '{{ region }}' -- required
 ;

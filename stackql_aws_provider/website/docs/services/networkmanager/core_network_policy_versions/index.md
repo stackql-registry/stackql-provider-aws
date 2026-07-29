@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>Whether a core network policy is the current policy or the most recently submitted policy. (LIVE, LATEST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetState" /></td>
+    <td><CopyableCode code="change_set_state" /></td>
     <td><code>string</code></td>
     <td>The status of the policy version change set. (PENDING_GENERATION, FAILED_GENERATION, READY_TO_EXECUTE, EXECUTING, EXECUTION_SUCCEEDED, OUT_OF_DATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a core network. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when a core network policy version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a core network policy version. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyVersionId" /></td>
+    <td><CopyableCode code="policy_version_id" /></td>
     <td><code>integer</code></td>
     <td>The ID of the policy version.</td>
 </tr>
@@ -171,12 +171,12 @@ Returns a list of core network policy versions.
 
 ```sql
 SELECT
-Alias,
-ChangeSetState,
-CoreNetworkId,
-CreatedAt,
-Description,
-PolicyVersionId
+alias,
+change_set_state,
+core_network_id,
+created_at,
+description,
+policy_version_id
 FROM aws.networkmanager.core_network_policy_versions
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND region = '{{ region }}' -- required

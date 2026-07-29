@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activationPageUrl" /></td>
+    <td><CopyableCode code="activation_page_url" /></td>
     <td><code>string</code></td>
     <td>An HTTPS URL on the remote partner portal where the Activation Key should be brought to complete the creation process.</td>
 </tr>
@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The sets of bandwidths that are available and supported on this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of this Environment</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The provider on the remote side of this Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteIdentifierType" /></td>
+    <td><CopyableCode code="remote_identifier_type" /></td>
     <td><code>string</code></td>
     <td>The type of identifying information that should be supplied to the remoteAccount parameter of a CreateConnection call for this specific Environment. (account, email)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activationPageUrl" /></td>
+    <td><CopyableCode code="activation_page_url" /></td>
     <td><code>string</code></td>
     <td>An HTTPS URL on the remote partner portal where the Activation Key should be brought to complete the creation process.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The sets of bandwidths that are available and supported on this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of this Environment</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The provider on the remote side of this Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteIdentifierType" /></td>
+    <td><CopyableCode code="remote_identifier_type" /></td>
     <td><code>string</code></td>
     <td>The type of identifying information that should be supplied to the remoteAccount parameter of a CreateConnection call for this specific Environment. (account, email)</td>
 </tr>
@@ -217,12 +217,12 @@ Describes a specific Environment
 
 ```sql
 SELECT
-activationPageUrl,
+activation_page_url,
 bandwidths,
-environmentId,
+environment_id,
 location,
 provider,
-remoteIdentifierType,
+remote_identifier_type,
 state,
 type_
 FROM aws.interconnect.environments
@@ -236,12 +236,12 @@ Lists all of the environments that can produce connections that will land in the
 
 ```sql
 SELECT
-activationPageUrl,
+activation_page_url,
 bandwidths,
-environmentId,
+environment_id,
 location,
 provider,
-remoteIdentifierType,
+remote_identifier_type,
 state,
 type_
 FROM aws.interconnect.environments

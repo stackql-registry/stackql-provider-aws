@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalStorage" /></td>
+    <td><CopyableCode code="additional_storage" /></td>
     <td><code>string</code></td>
     <td>The valid additional storage options for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Storage" /></td>
+    <td><CopyableCode code="storage" /></td>
     <td><code>string</code></td>
     <td>Valid storage options for your DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsDedicatedLogVolume" /></td>
+    <td><CopyableCode code="supports_dedicated_log_volume" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports using a dedicated log volume (DLV).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidProcessorFeatures" /></td>
+    <td><CopyableCode code="valid_processor_features" /></td>
     <td><code>string</code></td>
     <td>Valid processor features for your DB instance.</td>
 </tr>
@@ -139,10 +139,10 @@ You can call DescribeValidDBInstanceModifications to learn what modifications yo
 
 ```sql
 SELECT
-AdditionalStorage,
-Storage,
-SupportsDedicatedLogVolume,
-ValidProcessorFeatures
+additional_storage,
+storage,
+supports_dedicated_log_volume,
+valid_processor_features
 FROM aws.rds.valid_db_instance_modifications
 WHERE DBInstanceIdentifier = '{{ DBInstanceIdentifier }}' -- required
 AND region = '{{ region }}' -- required

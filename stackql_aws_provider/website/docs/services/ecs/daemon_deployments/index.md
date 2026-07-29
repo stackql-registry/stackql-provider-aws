@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="daemonDeployments" /></td>
+    <td><CopyableCode code="daemon_deployments" /></td>
     <td><code>array</code></td>
     <td>The list of daemon deployments.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="daemonDeployments" /></td>
+    <td><CopyableCode code="daemon_deployments" /></td>
     <td><code>array</code></td>
     <td>The list of daemon deployment summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future ListDaemonDeployments request. When the results of a ListDaemonDeployments request exceed maxResults, this value can be used to retrieve the next page of results.</td>
 </tr>
@@ -157,7 +157,7 @@ Describes one or more of your daemon deployments. A daemon deployment orchestrat
 
 ```sql
 SELECT
-daemonDeployments,
+daemon_deployments,
 failures
 FROM aws.ecs.daemon_deployments
 WHERE region = '{{ region }}' -- required
@@ -170,8 +170,8 @@ Returns a list of daemon deployments for a specified daemon. You can filter the 
 
 ```sql
 SELECT
-daemonDeployments,
-nextToken
+daemon_deployments,
+next_token
 FROM aws.ecs.daemon_deployments
 WHERE region = '{{ region }}' -- required
 ;

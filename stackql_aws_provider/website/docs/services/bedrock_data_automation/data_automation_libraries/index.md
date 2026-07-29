@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityTypes" /></td>
+    <td><CopyableCode code="entity_types" /></td>
     <td><code>array</code></td>
     <td>List of info for each entity type in the DataAutomationLibrary</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsEncryptionContext" /></td>
+    <td><CopyableCode code="kms_encryption_context" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>KMS Key Identifier (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="libraryArn" /></td>
+    <td><CopyableCode code="library_arn" /></td>
     <td><code>string</code></td>
     <td>ARN generated at the server side when a DataAutomationLibrary is created (pattern: &lt;code&gt;arn:aws(|-cn|-iso|-iso-&#91;a-z&#93;|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:data-automation-library/&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="libraryDescription" /></td>
+    <td><CopyableCode code="library_description" /></td>
     <td><code>string</code></td>
     <td>Description of the DataAutomationLibrary (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s!"\#\$%'&\(\)\*\+\,\-\./:;=\?@\&#91;\\\&#93;\^_`\&#123;\|\&#125;~&gt;&lt;À-ÖØ-Üßà-öø-üẞ¿¡Œ-œ°£¥₹€§©ª®™¹±-µ✓⑆-⑉฿₽₱₦₣₩₫₺&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="libraryName" /></td>
+    <td><CopyableCode code="library_name" /></td>
     <td><code>string</code></td>
     <td>Name of the DataAutomationLibrary (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="libraryArn" /></td>
+    <td><CopyableCode code="library_arn" /></td>
     <td><code>string</code></td>
     <td>ARN generated at the server side when a DataAutomationLibrary is created (pattern: &lt;code&gt;arn:aws(|-cn|-iso|-iso-&#91;a-z&#93;|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:data-automation-library/&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="libraryName" /></td>
+    <td><CopyableCode code="library_name" /></td>
     <td><code>string</code></td>
     <td>Name of the DataAutomationLibrary (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -225,13 +225,13 @@ Gets an existing Amazon Bedrock Data Automation Library
 
 ```sql
 SELECT
-creationTime,
-entityTypes,
-kmsEncryptionContext,
-kmsKeyId,
-libraryArn,
-libraryDescription,
-libraryName,
+creation_time,
+entity_types,
+kms_encryption_context,
+kms_key_id,
+library_arn,
+library_description,
+library_name,
 status
 FROM aws.bedrock_data_automation.data_automation_libraries
 WHERE library_arn = '{{ library_arn }}' -- required
@@ -245,9 +245,9 @@ Lists all existing Amazon Bedrock Data Automation Libraries
 
 ```sql
 SELECT
-creationTime,
-libraryArn,
-libraryName
+creation_time,
+library_arn,
+library_name
 FROM aws.bedrock_data_automation.data_automation_libraries
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,7 +286,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-libraryArn,
+library_arn,
 status
 ;
 ```
@@ -350,7 +350,7 @@ WHERE
 library_arn = '{{ library_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-libraryArn,
+library_arn,
 status;
 ```
 </TabItem>

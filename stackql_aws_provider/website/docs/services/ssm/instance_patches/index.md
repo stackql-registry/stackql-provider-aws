@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CVEIds" /></td>
+    <td><CopyableCode code="cve_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of one or more Common Vulnerabilities and Exposure (CVE) issues that are resolved by the patch. Currently, CVE ID values are reported only for patches with a status of Missing or Failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Classification" /></td>
+    <td><CopyableCode code="classification" /></td>
     <td><code>string</code></td>
     <td>The classification of the patch, such as SecurityUpdates, Updates, and CriticalUpdates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstalledTime" /></td>
+    <td><CopyableCode code="installed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date/time the patch was installed on the managed node. Not all operating systems provide this level of information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KBId" /></td>
+    <td><CopyableCode code="kb_id" /></td>
     <td><code>string</code></td>
     <td>The operating system-specific ID of the patch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the patch such as Critical, Important, and Moderate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the patch on the managed node, such as INSTALLED or FAILED. For descriptions of each patch state, see About patch compliance in the Amazon Web Services Systems Manager User Guide. (INSTALLED, INSTALLED_OTHER, INSTALLED_PENDING_REBOOT, INSTALLED_REJECTED, MISSING, NOT_APPLICABLE, FAILED, AVAILABLE_SECURITY_UPDATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of the patch.</td>
 </tr>
@@ -149,13 +149,13 @@ Retrieves information about the patches on the specified managed node and their 
 
 ```sql
 SELECT
-CVEIds,
-Classification,
-InstalledTime,
-KBId,
-Severity,
-State,
-Title
+cve_ids,
+classification,
+installed_time,
+kb_id,
+severity,
+state,
+title
 FROM aws.ssm.instance_patches
 WHERE region = '{{ region }}' -- required
 ;

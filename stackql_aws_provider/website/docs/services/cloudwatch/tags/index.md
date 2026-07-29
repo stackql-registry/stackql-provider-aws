@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of tag keys and values associated with the resource you specified.</td>
 </tr>
@@ -133,7 +133,7 @@ Displays the tags associated with a CloudWatch resource. Currently, alarms, dash
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.cloudwatch.tags
 WHERE region = '{{ region }}' -- required
 ;

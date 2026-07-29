@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HealthCheckObservations" /></td>
+    <td><CopyableCode code="health_check_observations" /></td>
     <td><code>string</code></td>
     <td>A list that contains one Observation element for each Amazon Route 53 health checker that is reporting a last failure reason.</td>
 </tr>
@@ -124,7 +124,7 @@ Gets the reason that a specified health check failed most recently.
 
 ```sql
 SELECT
-HealthCheckObservations
+health_check_observations
 FROM aws.route53.health_check_last_failure_reasons
 WHERE health_check_id = '{{ health_check_id }}' -- required
 AND region = '{{ region }}' -- required

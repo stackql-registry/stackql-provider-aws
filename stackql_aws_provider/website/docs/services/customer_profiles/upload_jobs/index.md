@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the upload job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the upload job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataExpiry" /></td>
+    <td><CopyableCode code="data_expiry" /></td>
     <td><code>integer</code></td>
     <td>The expiry duration for the profiles ingested with the upload job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the upload job. Could be a file name to identify the upload job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>object</code></td>
     <td>The mapping between CSV Columns and Profile Object attributes for the upload job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the upload job. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultsSummary" /></td>
+    <td><CopyableCode code="results_summary" /></td>
     <td><code>object</code></td>
     <td>The summary of results for the upload job, including the number of updated, created, and failed records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status describing the status for the upload job. The following are Valid Values: CREATED: The upload job has been created, but has not started processing yet. IN_PROGRESS: The upload job is currently in progress, ingesting and processing the profile data. PARTIALLY_SUCCEEDED: The upload job has successfully completed the ingestion and processing of all profile data. SUCCEEDED: The upload job has successfully completed the ingestion and processing of all profile data. FAILED: The upload job has failed to complete. STOPPED: The upload job has been manually stopped or terminated before completion. (CREATED, IN_PROGRESS, PARTIALLY_SUCCEEDED, SUCCEEDED, FAILED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the upload job. Possible reasons: VALIDATION_FAILURE: The upload job has encountered an error or issue and was unable to complete the profile data ingestion. INTERNAL_FAILURE: Failure caused from service side (VALIDATION_FAILURE, INTERNAL_FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UniqueKey" /></td>
+    <td><CopyableCode code="unique_key" /></td>
     <td><code>string</code></td>
     <td>The unique key columns used for de-duping the keys in the upload job.</td>
 </tr>
@@ -115,37 +115,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the upload job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the upload job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataExpiry" /></td>
+    <td><CopyableCode code="data_expiry" /></td>
     <td><code>integer</code></td>
     <td>The expiry duration for the profiles ingested with the upload job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the upload job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the upload job. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the upload job. (CREATED, IN_PROGRESS, PARTIALLY_SUCCEEDED, SUCCEEDED, FAILED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the upload job. (VALIDATION_FAILURE, INTERNAL_FAILURE)</td>
 </tr>
@@ -249,16 +249,16 @@ This API retrieves the details of a specific upload job.
 
 ```sql
 SELECT
-CompletedAt,
-CreatedAt,
-DataExpiry,
-DisplayName,
-Fields,
-JobId,
-ResultsSummary,
-Status,
-StatusReason,
-UniqueKey
+completed_at,
+created_at,
+data_expiry,
+display_name,
+fields,
+job_id,
+results_summary,
+status,
+status_reason,
+unique_key
 FROM aws.customer_profiles.upload_jobs
 WHERE domain_name = '{{ domain_name }}' -- required
 AND job_id = '{{ job_id }}' -- required
@@ -272,13 +272,13 @@ This API retrieves a list of upload jobs for the specified domain.
 
 ```sql
 SELECT
-CompletedAt,
-CreatedAt,
-DataExpiry,
-DisplayName,
-JobId,
-Status,
-StatusReason
+completed_at,
+created_at,
+data_expiry,
+display_name,
+job_id,
+status,
+status_reason
 FROM aws.customer_profiles.upload_jobs
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -320,7 +320,7 @@ SELECT
 '{{ domain_name }}',
 '{{ region }}'
 RETURNING
-JobId
+job_id
 ;
 ```
 </TabItem>

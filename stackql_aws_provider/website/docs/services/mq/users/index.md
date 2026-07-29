@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BrokerId" /></td>
+    <td><CopyableCode code="broker_id" /></td>
     <td><code>string</code></td>
     <td>Required. The unique ID that Amazon MQ generates for the broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsoleAccess" /></td>
+    <td><CopyableCode code="console_access" /></td>
     <td><code>boolean</code></td>
     <td>Enables access to the the ActiveMQ Web Console for the ActiveMQ user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>array</code></td>
     <td>The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Pending" /></td>
+    <td><CopyableCode code="pending" /></td>
     <td><code>object</code></td>
     <td>The status of the changes pending for the ActiveMQ user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationUser" /></td>
+    <td><CopyableCode code="replication_user" /></td>
     <td><code>boolean</code></td>
     <td>Describes whether the user is intended for data replication</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>Required. The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BrokerId" /></td>
+    <td><CopyableCode code="broker_id" /></td>
     <td><code>string</code></td>
     <td>Required. The unique ID that Amazon MQ generates for the broker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxResults" /></td>
+    <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
     <td>Required. The maximum number of ActiveMQ users that can be returned per page (20 by default). This value must be an integer from 5 to 100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Users" /></td>
+    <td><CopyableCode code="users" /></td>
     <td><code>array</code></td>
     <td>Required. The list of all ActiveMQ usernames for the specified broker. Does not apply to RabbitMQ brokers.</td>
 </tr>
@@ -228,12 +228,12 @@ Returns information about an ActiveMQ user.
 
 ```sql
 SELECT
-BrokerId,
-ConsoleAccess,
-Groups,
-Pending,
-ReplicationUser,
-Username
+broker_id,
+console_access,
+groups,
+pending,
+replication_user,
+username
 FROM aws.mq.users
 WHERE `broker-id` = '{{ broker-id }}' -- required
 AND username = '{{ username }}' -- required
@@ -247,10 +247,10 @@ Returns a list of all ActiveMQ users.
 
 ```sql
 SELECT
-BrokerId,
-MaxResults,
-NextToken,
-Users
+broker_id,
+max_results,
+next_token,
+users
 FROM aws.mq.users
 WHERE `broker-id` = '{{ broker-id }}' -- required
 AND region = '{{ region }}' -- required

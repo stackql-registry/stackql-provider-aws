@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The contents of the access policy. (pattern: &lt;code&gt;&#91;\x00-\x7F&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the access policy for the specified container. For information about t
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.mediastore.container_policies
 WHERE region = '{{ region }}' -- required
 ;

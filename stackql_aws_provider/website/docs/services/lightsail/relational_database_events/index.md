@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the database event was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventCategories" /></td>
+    <td><CopyableCode code="event_categories" /></td>
     <td><code>array</code></td>
     <td>The category that the database event belongs to.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns a list of events for a specific database in Amazon Lightsail.
 
 ```sql
 SELECT
-createdAt,
-eventCategories,
+created_at,
+event_categories,
 message,
 resource
 FROM aws.lightsail.relational_database_events

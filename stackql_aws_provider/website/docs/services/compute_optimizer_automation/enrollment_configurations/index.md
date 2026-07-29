@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last update to the enrollment configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationRuleMode" /></td>
+    <td><CopyableCode code="organization_rule_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the management account can create Automation rules that implement optimization actions for this account. (AnyAllowed, NoneAllowed)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current enrollment status. (Active, Inactive, Pending, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current enrollment status.</td>
 </tr>
@@ -141,10 +141,10 @@ Retrieves the current enrollment configuration for Compute Optimizer Automation.
 
 ```sql
 SELECT
-lastUpdatedTimestamp,
-organizationRuleMode,
+last_updated_timestamp,
+organization_rule_mode,
 status,
-statusReason
+status_reason
 FROM aws.compute_optimizer_automation.enrollment_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -174,9 +174,9 @@ WHERE
 region = '{{ region }}' --required
 AND status = '{{ status }}' --required
 RETURNING
-lastUpdatedTimestamp,
+last_updated_timestamp,
 status,
-statusReason;
+status_reason;
 ```
 </TabItem>
 </Tabs>

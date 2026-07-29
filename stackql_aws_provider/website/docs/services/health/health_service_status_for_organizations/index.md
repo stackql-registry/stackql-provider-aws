@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="healthServiceAccessStatusForOrganization" /></td>
+    <td><CopyableCode code="health_service_access_status_for_organization" /></td>
     <td><code>string</code></td>
     <td>Information about the status of enabling or disabling the Health organizational view feature in your organization. Valid values are ENABLED | DISABLED | PENDING.</td>
 </tr>
@@ -119,7 +119,7 @@ This operation provides status information on enabling or disabling Health to wo
 
 ```sql
 SELECT
-healthServiceAccessStatusForOrganization
+health_service_access_status_for_organization
 FROM aws.health.health_service_status_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

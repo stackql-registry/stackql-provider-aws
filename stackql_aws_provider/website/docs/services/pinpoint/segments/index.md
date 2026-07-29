@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the segment is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the segment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Dimensions" /></td>
+    <td><CopyableCode code="dimensions" /></td>
     <td><code>object</code></td>
     <td>Specifies the dimension settings for a segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportDefinition" /></td>
+    <td><CopyableCode code="import_definition" /></td>
     <td><code>object</code></td>
     <td>The settings for the import job that's associated with the segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the segment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentGroups" /></td>
+    <td><CopyableCode code="segment_groups" /></td>
     <td><code>object</code></td>
     <td>A list of one or more segment groups that apply to the segment. Each segment group consists of zero or more base segments and the dimensions that are applied to those base segments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentType" /></td>
+    <td><CopyableCode code="segment_type" /></td>
     <td><code>string</code></td>
     <td>The segment type. Valid values are: DIMENSIONAL - A dynamic segment, which is a segment that uses selection criteria that you specify and is based on endpoint data that's reported by your app. Dynamic segments can change over time. IMPORT - A static segment, which is a segment that uses selection criteria that you specify and is based on endpoint definitions that you import from a file. Imported segments are static; they don't change over time. (DIMENSIONAL, IMPORT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version number of the segment.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each segment that's associated with the application (Segments resource) or each version of a segment that's associated with the application (Segment Versions resource).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -248,17 +248,17 @@ Retrieves information about the configuration, dimension, and other settings for
 
 ```sql
 SELECT
-ApplicationId,
-Arn,
-CreationDate,
-Dimensions,
-Id,
-ImportDefinition,
-LastModifiedDate,
-Name,
-SegmentGroups,
-SegmentType,
-Version,
+application_id,
+arn,
+creation_date,
+dimensions,
+id,
+import_definition,
+last_modified_date,
+name,
+segment_groups,
+segment_type,
+version,
 tags
 FROM aws.pinpoint.segments
 WHERE `application-id` = '{{ application-id }}' -- required
@@ -273,8 +273,8 @@ Retrieves information about the configuration, dimension, and other settings for
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.segments
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -310,7 +310,7 @@ SELECT
 '{{ application-id }}',
 '{{ region }}'
 RETURNING
-SegmentResponse
+segment_response
 ;
 ```
 </TabItem>
@@ -409,7 +409,7 @@ AND `segment-id` = '{{ segment-id }}' --required
 AND region = '{{ region }}' --required
 AND WriteSegmentRequest = '{{ WriteSegmentRequest }}' --required
 RETURNING
-SegmentResponse;
+segment_response;
 ```
 </TabItem>
 </Tabs>

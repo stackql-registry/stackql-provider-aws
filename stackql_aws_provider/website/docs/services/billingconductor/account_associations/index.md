@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountEmail" /></td>
+    <td><CopyableCode code="account_email" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The associating array of account IDs. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountName" /></td>
+    <td><CopyableCode code="account_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingGroupArn" /></td>
+    <td><CopyableCode code="billing_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Billing Group Arn that the linked account is associated to. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:billinggroup/)?&#91;a-zA-Z0-9&#93;&#123;10,12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ This is a paginated call to list linked accounts that are linked to the payer ac
 
 ```sql
 SELECT
-AccountEmail,
-AccountId,
-AccountName,
-BillingGroupArn
+account_email,
+account_id,
+account_name,
+billing_group_arn
 FROM aws.billingconductor.account_associations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The point where pagination should resume when the response returns only partial results. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slackChannelConfigurations" /></td>
+    <td><CopyableCode code="slack_channel_configurations" /></td>
     <td><code>array</code></td>
     <td>The configurations for a Slack channel.</td>
 </tr>
@@ -145,8 +145,8 @@ Lists the Slack channel configurations for an Amazon Web Services account.
 
 ```sql
 SELECT
-nextToken,
-slackChannelConfigurations
+next_token,
+slack_channel_configurations
 FROM aws.support_app.slack_channel_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,14 +252,14 @@ region = '{{ region }}' --required
 AND channelId = '{{ channelId }}' --required
 AND teamId = '{{ teamId }}' --required
 RETURNING
-channelId,
-channelName,
-channelRoleArn,
-notifyOnAddCorrespondenceToCase,
-notifyOnCaseSeverity,
-notifyOnCreateOrReopenCase,
-notifyOnResolveCase,
-teamId;
+channel_id,
+channel_name,
+channel_role_arn,
+notify_on_add_correspondence_to_case,
+notify_on_case_severity,
+notify_on_create_or_reopen_case,
+notify_on_resolve_case,
+team_id;
 ```
 </TabItem>
 </Tabs>

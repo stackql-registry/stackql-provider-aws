@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the Amazon Web Services account that owns the VPC origin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The VPC origin ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The VPC origin created time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The VPC origin ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The VPC origin last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The VPC origin status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcOriginEndpointConfig" /></td>
+    <td><CopyableCode code="vpc_origin_endpoint_config" /></td>
     <td><code>string</code></td>
     <td>The VPC origin endpoint configuration.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether more VPC origins remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more VPC origins in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>The items of the VPC origins list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>The marker associated with the VPC origins list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of items included in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>The next marker associated with the VPC origins list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of VPC origins in the list.</td>
 </tr>
@@ -243,13 +243,13 @@ Get the details of an Amazon CloudFront VPC origin.
 
 ```sql
 SELECT
-AccountId,
-Arn,
-CreatedTime,
-Id,
-LastModifiedTime,
-Status,
-VpcOriginEndpointConfig
+account_id,
+arn,
+created_time,
+id,
+last_modified_time,
+status,
+vpc_origin_endpoint_config
 FROM aws.cloudfront.vpc_origins
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,12 +262,12 @@ List the CloudFront VPC origins in your account.
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.vpc_origins
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -302,13 +302,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AccountId,
-Arn,
-CreatedTime,
-Id,
-LastModifiedTime,
-Status,
-VpcOriginEndpointConfig
+account_id,
+arn,
+created_time,
+id,
+last_modified_time,
+status,
+vpc_origin_endpoint_config
 ;
 ```
 </TabItem>
@@ -368,13 +368,13 @@ AND `If-Match` = '{{ If-Match }}' --required
 AND region = '{{ region }}' --required
 AND VpcOriginEndpointConfig = '{{ VpcOriginEndpointConfig }}' --required
 RETURNING
-AccountId,
-Arn,
-CreatedTime,
-Id,
-LastModifiedTime,
-Status,
-VpcOriginEndpointConfig;
+account_id,
+arn,
+created_time,
+id,
+last_modified_time,
+status,
+vpc_origin_endpoint_config;
 ```
 </TabItem>
 </Tabs>

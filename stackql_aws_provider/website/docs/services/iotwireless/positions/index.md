@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Accuracy" /></td>
+    <td><CopyableCode code="accuracy" /></td>
     <td><code>object</code></td>
     <td>The accuracy of the estimated position in meters. An empty value indicates that no position data is available. A value of ‘0.0’ value indicates that position data is available. This data corresponds to the position information that you specified instead of the position computed by solver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Position" /></td>
+    <td><CopyableCode code="position" /></td>
     <td><code>array</code></td>
     <td>The position information of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SolverProvider" /></td>
+    <td><CopyableCode code="solver_provider" /></td>
     <td><code>string</code></td>
     <td>The vendor of the positioning solver. (Semtech)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SolverType" /></td>
+    <td><CopyableCode code="solver_type" /></td>
     <td><code>string</code></td>
     <td>The type of solver used to identify the position of the resource. (GNSS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SolverVersion" /></td>
+    <td><CopyableCode code="solver_version" /></td>
     <td><code>string</code></td>
     <td>The version of the positioning solver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp at which the device's position was determined. (pattern: &lt;code&gt;^(&#91;\+-&#93;?\d&#123;4&#125;(?!\d&#123;2&#125;\b))((-?)((0&#91;1-9&#93;|1&#91;0-2&#93;)(\3(&#91;12&#93;\d|0&#91;1-9&#93;|3&#91;01&#93;))?|W(&#91;0-4&#93;\d|5&#91;0-2&#93;)(-?&#91;1-7&#93;)?|(00&#91;1-9&#93;|0&#91;1-9&#93;\d|&#91;12&#93;\d&#123;2&#125;|3(&#91;0-5&#93;\d|6&#91;1-6&#93;)))(&#91;T\s&#93;(((&#91;01&#93;\d|2&#91;0-3&#93;)((:?)&#91;0-5&#93;\d)?|24\:?00)(&#91;\.,&#93;\d+(?!:))?)?(\17&#91;0-5&#93;\d(&#91;\.,&#93;\d+)?)?(&#91;zZ&#93;|(&#91;\+-&#93;)(&#91;01&#93;\d|2&#91;0-3&#93;):?(&#91;0-5&#93;\d)?)?)?)?$&lt;/code&gt;)</td>
 </tr>
@@ -161,12 +161,12 @@ Get the position information for a given resource. This action is no longer supp
 
 ```sql
 SELECT
-Accuracy,
-Position,
-SolverProvider,
-SolverType,
-SolverVersion,
-Timestamp
+accuracy,
+position,
+solver_provider,
+solver_type,
+solver_version,
+timestamp
 FROM aws.iotwireless.positions
 WHERE resource_identifier = '{{ resource_identifier }}' -- required
 AND resourceType = '{{ resourceType }}' -- required

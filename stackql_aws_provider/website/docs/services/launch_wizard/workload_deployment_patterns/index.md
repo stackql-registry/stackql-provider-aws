@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentPatternName" /></td>
+    <td><CopyableCode code="deployment_pattern_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment pattern. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentPatternVersionName" /></td>
+    <td><CopyableCode code="deployment_pattern_version_name" /></td>
     <td><code>string</code></td>
     <td>The version name of the deployment pattern. (pattern: &lt;code&gt;((&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*)|(\d+\.\d+\.\d+))&lt;/code&gt;)</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the deployment pattern.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the deployment pattern.</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the deployment pattern. (ACTIVE, INACTIVE, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the deployment pattern.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The workload name of the deployment pattern. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadVersionName" /></td>
+    <td><CopyableCode code="workload_version_name" /></td>
     <td><code>string</code></td>
     <td>The workload version name of the deployment pattern. (pattern: &lt;code&gt;((&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*)|(\d+\.\d+\.\d+))&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentPatternName" /></td>
+    <td><CopyableCode code="deployment_pattern_name" /></td>
     <td><code>string</code></td>
     <td>The name of a workload deployment pattern. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentPatternVersionName" /></td>
+    <td><CopyableCode code="deployment_pattern_version_name" /></td>
     <td><code>string</code></td>
     <td>The version name of a workload deployment pattern. (pattern: &lt;code&gt;((&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*)|(\d+\.\d+\.\d+))&lt;/code&gt;)</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a workload deployment pattern.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of a workload deployment pattern.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a workload deployment pattern. (ACTIVE, INACTIVE, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message about a workload deployment pattern's status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadVersionName" /></td>
+    <td><CopyableCode code="workload_version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload deployment pattern version. (pattern: &lt;code&gt;((&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*)|(\d+\.\d+\.\d+))&lt;/code&gt;)</td>
 </tr>
@@ -222,15 +222,15 @@ Returns details for a given workload and deployment pattern, including the avail
 
 ```sql
 SELECT
-deploymentPatternName,
-deploymentPatternVersionName,
+deployment_pattern_name,
+deployment_pattern_version_name,
 description,
-displayName,
+display_name,
 specifications,
 status,
-statusMessage,
-workloadName,
-workloadVersionName
+status_message,
+workload_name,
+workload_version_name
 FROM aws.launch_wizard.workload_deployment_patterns
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,14 +242,14 @@ Lists the workload deployment patterns for a given workload name. You can use th
 
 ```sql
 SELECT
-deploymentPatternName,
-deploymentPatternVersionName,
+deployment_pattern_name,
+deployment_pattern_version_name,
 description,
-displayName,
+display_name,
 status,
-statusMessage,
-workloadName,
-workloadVersionName
+status_message,
+workload_name,
+workload_version_name
 FROM aws.launch_wizard.workload_deployment_patterns
 WHERE region = '{{ region }}' -- required
 ;

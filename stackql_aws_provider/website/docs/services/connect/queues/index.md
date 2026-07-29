@@ -52,62 +52,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationId" /></td>
+    <td><CopyableCode code="hours_of_operation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxContacts" /></td>
+    <td><CopyableCode code="max_contacts" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of contacts that can be in the queue before it is considered full.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundCallerConfig" /></td>
+    <td><CopyableCode code="outbound_caller_config" /></td>
     <td><code>object</code></td>
     <td>The outbound caller ID name, number, and outbound whisper flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundEmailConfig" /></td>
+    <td><CopyableCode code="outbound_email_config" /></td>
     <td><code>object</code></td>
     <td>The outbound email address ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueArn" /></td>
+    <td><CopyableCode code="queue_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the queue. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -126,32 +126,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueType" /></td>
+    <td><CopyableCode code="queue_type" /></td>
     <td><code>string</code></td>
     <td>The type of queue. (STANDARD, AGENT)</td>
 </tr>
@@ -170,62 +170,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HoursOfOperationId" /></td>
+    <td><CopyableCode code="hours_of_operation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the hours of operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxContacts" /></td>
+    <td><CopyableCode code="max_contacts" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of contacts that can be in the queue before it is considered full.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundCallerConfig" /></td>
+    <td><CopyableCode code="outbound_caller_config" /></td>
     <td><code>object</code></td>
     <td>The outbound caller ID name, number, and outbound whisper flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundEmailConfig" /></td>
+    <td><CopyableCode code="outbound_email_config" /></td>
     <td><code>object</code></td>
     <td>The outbound email address ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueArn" /></td>
+    <td><CopyableCode code="queue_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the queue. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -389,18 +389,18 @@ Describes the specified queue.
 
 ```sql
 SELECT
-Description,
-HoursOfOperationId,
-LastModifiedRegion,
-LastModifiedTime,
-MaxContacts,
-Name,
-OutboundCallerConfig,
-OutboundEmailConfig,
-QueueArn,
-QueueId,
-Status,
-Tags
+description,
+hours_of_operation_id,
+last_modified_region,
+last_modified_time,
+max_contacts,
+name,
+outbound_caller_config,
+outbound_email_config,
+queue_arn,
+queue_id,
+status,
+tags
 FROM aws.connect.queues
 WHERE instance_id = '{{ instance_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -414,12 +414,12 @@ Provides information about the queues for the specified Amazon Connect instance.
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-QueueType
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name,
+queue_type
 FROM aws.connect.queues
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -435,18 +435,18 @@ Searches queues in an Amazon Connect instance, with optional filtering.
 
 ```sql
 SELECT
-Description,
-HoursOfOperationId,
-LastModifiedRegion,
-LastModifiedTime,
-MaxContacts,
-Name,
-OutboundCallerConfig,
-OutboundEmailConfig,
-QueueArn,
-QueueId,
-Status,
-Tags
+description,
+hours_of_operation_id,
+last_modified_region,
+last_modified_time,
+max_contacts,
+name,
+outbound_caller_config,
+outbound_email_config,
+queue_arn,
+queue_id,
+status,
+tags
 FROM aws.connect.queues
 WHERE region = '{{ region }}' -- required
 ;
@@ -495,8 +495,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-QueueArn,
-QueueId
+queue_arn,
+queue_id
 ;
 ```
 </TabItem>

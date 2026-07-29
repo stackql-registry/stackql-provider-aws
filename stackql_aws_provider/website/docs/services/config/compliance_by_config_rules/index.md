@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Compliance" /></td>
+    <td><CopyableCode code="compliance" /></td>
     <td><code>object</code></td>
     <td>Indicates whether the Config rule is compliant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleName" /></td>
+    <td><CopyableCode code="config_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Config rule.</td>
 </tr>
@@ -124,8 +124,8 @@ Indicates whether the specified Config rules are compliant. If a rule is noncomp
 
 ```sql
 SELECT
-Compliance,
-ConfigRuleName
+compliance,
+config_rule_name
 FROM aws.config.compliance_by_config_rules
 WHERE region = '{{ region }}' -- required
 ;

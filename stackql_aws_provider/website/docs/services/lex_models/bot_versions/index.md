@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the bot. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot was created.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the bot was updated. When you create a bot, the creation date and last updated date are the same.</td>
 </tr>
@@ -179,9 +179,9 @@ Gets information about all of the versions of a bot. The GetBotVersions operatio
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
+last_updated_date,
 status,
 version
 FROM aws.lex_models.bot_versions
@@ -220,22 +220,22 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-abortStatement,
+abort_statement,
 checksum,
-childDirected,
-clarificationPrompt,
-createdDate,
+child_directed,
+clarification_prompt,
+created_date,
 description,
-detectSentiment,
-enableModelImprovements,
-failureReason,
-idleSessionTTLInSeconds,
+detect_sentiment,
+enable_model_improvements,
+failure_reason,
+idle_session_ttl_in_seconds,
 intents,
-lastUpdatedDate,
+last_updated_date,
 locale,
 status,
 version,
-voiceId
+voice_id
 ;
 ```
 </TabItem>

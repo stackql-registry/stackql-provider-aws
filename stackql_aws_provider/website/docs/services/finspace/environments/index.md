@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the FinSpace environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AWS account in which the FinSpace environment is created. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dedicatedServiceAccountId" /></td>
+    <td><CopyableCode code="dedicated_service_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the dedicated service account associated with your FinSpace environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -71,37 +71,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the FinSpace environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of your FinSpace environment. (pattern: &lt;code&gt;^arn:aws:finspace:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:\d+:environment/&#91;0-9A-Za-z_-&#93;&#123;1,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the FinSpace environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentUrl" /></td>
+    <td><CopyableCode code="environment_url" /></td>
     <td><code>string</code></td>
     <td>The sign-in URL for the web application of your FinSpace environment. (pattern: &lt;code&gt;^https?:​//&#91;-a-zA-Z0-9+&@#/%?=~_|!:,.;&#93;*&#91;-a-zA-Z0-9+&@#/%=~_|&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="federationMode" /></td>
+    <td><CopyableCode code="federation_mode" /></td>
     <td><code>string</code></td>
     <td>The authentication mode for the environment. (FEDERATED, LOCAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="federationParameters" /></td>
+    <td><CopyableCode code="federation_parameters" /></td>
     <td><code>object</code></td>
     <td>Configuration information when authentication mode is FEDERATED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The KMS key id used to encrypt in the FinSpace environment. (pattern: &lt;code&gt;^&#91;a-zA-Z-0-9-:\/&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sageMakerStudioDomainUrl" /></td>
+    <td><CopyableCode code="sage_maker_studio_domain_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the integrated FinSpace notebook environment in your web application. (pattern: &lt;code&gt;^&#91;a-zA-Z-0-9-:\/.&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of all of your FinSpace environments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that you can use in a subsequent call to retrieve the next set of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -244,16 +244,16 @@ Returns the FinSpace environment object.
 ```sql
 SELECT
 name,
-awsAccountId,
-dedicatedServiceAccountId,
+aws_account_id,
+dedicated_service_account_id,
 description,
-environmentArn,
-environmentId,
-environmentUrl,
-federationMode,
-federationParameters,
-kmsKeyId,
-sageMakerStudioDomainUrl,
+environment_arn,
+environment_id,
+environment_url,
+federation_mode,
+federation_parameters,
+kms_key_id,
+sage_maker_studio_domain_url,
 status
 FROM aws.finspace.environments
 WHERE environment_id = '{{ environment_id }}' -- required
@@ -268,7 +268,7 @@ A list of all of your FinSpace environments.
 ```sql
 SELECT
 environments,
-nextToken
+next_token
 FROM aws.finspace.environments
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -315,9 +315,9 @@ SELECT
 '{{ dataBundles }}',
 '{{ region }}'
 RETURNING
-environmentArn,
-environmentId,
-environmentUrl
+environment_arn,
+environment_id,
+environment_url
 ;
 ```
 </TabItem>

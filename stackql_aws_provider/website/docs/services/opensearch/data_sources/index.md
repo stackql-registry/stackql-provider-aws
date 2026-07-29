@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSourceType" /></td>
+    <td><CopyableCode code="data_source_type" /></td>
     <td><code>object</code></td>
     <td>The type of data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the data source. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9_&#93;)*&#91;\\a-zA-Z0-9_@#%*+=:?./!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the data source. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the data source. (ACTIVE, DISABLED)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSources" /></td>
+    <td><CopyableCode code="data_sources" /></td>
     <td><code>array</code></td>
     <td>A list of data sources associated with specified domain.</td>
 </tr>
@@ -193,10 +193,10 @@ Retrieves information about a direct query data source.
 
 ```sql
 SELECT
-DataSourceType,
-Description,
-Name,
-Status
+data_source_type,
+description,
+name,
+status
 FROM aws.opensearch.data_sources
 WHERE domain_name = '{{ domain_name }}' -- required
 AND data_source_name = '{{ data_source_name }}' -- required
@@ -210,7 +210,7 @@ Lists direct-query data sources for a specific domain. For more information, see
 
 ```sql
 SELECT
-DataSources
+data_sources
 FROM aws.opensearch.data_sources
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,7 +245,7 @@ AND data_source_name = '{{ data_source_name }}' --required
 AND region = '{{ region }}' --required
 AND DataSourceType = '{{ DataSourceType }}' --required
 RETURNING
-Message;
+message;
 ```
 </TabItem>
 <TabItem value="add_data_source">
@@ -263,7 +263,7 @@ domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 AND DataSourceType = '{{ DataSourceType }}' --required
 RETURNING
-Message;
+message;
 ```
 </TabItem>
 </Tabs>

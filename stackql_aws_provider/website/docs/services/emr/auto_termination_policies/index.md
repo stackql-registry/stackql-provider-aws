@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdleTimeout" /></td>
+    <td><CopyableCode code="idle_timeout" /></td>
     <td><code>integer (int64)</code></td>
     <td>Specifies the amount of idle time in seconds after which the cluster automatically terminates. You can specify a minimum of 60 seconds and a maximum of 604800 seconds (seven days).</td>
 </tr>
@@ -133,7 +133,7 @@ Returns the auto-termination policy for an Amazon EMR cluster.
 
 ```sql
 SELECT
-IdleTimeout
+idle_timeout
 FROM aws.emr.auto_termination_policies
 WHERE region = '{{ region }}' -- required
 ;

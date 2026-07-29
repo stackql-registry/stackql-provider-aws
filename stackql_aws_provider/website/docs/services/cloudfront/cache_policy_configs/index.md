@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>A comment to describe the cache policy. The comment cannot be longer than 128 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultTTL" /></td>
+    <td><CopyableCode code="default_ttl" /></td>
     <td><code>integer</code></td>
     <td>The default amount of time, in seconds, that you want objects to stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated. CloudFront uses this value as the object's time to live (TTL) only when the origin does not send Cache-Control or Expires headers with the object. For more information, see Managing How Long Content Stays in an Edge Cache (Expiration) in the Amazon CloudFront Developer Guide. The default value for this field is 86400 seconds (one day). If the value of MinTTL is more than 86400 seconds, then the default value for this field is the same as the value of MinTTL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxTTL" /></td>
+    <td><CopyableCode code="max_ttl" /></td>
     <td><code>integer</code></td>
     <td>The maximum amount of time, in seconds, that objects stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated. CloudFront uses this value only when the origin sends Cache-Control or Expires headers with the object. For more information, see Managing How Long Content Stays in an Edge Cache (Expiration) in the Amazon CloudFront Developer Guide. The default value for this field is 31536000 seconds (one year). If the value of MinTTL or DefaultTTL is more than 31536000 seconds, then the default value for this field is the same as the value of DefaultTTL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinTTL" /></td>
+    <td><CopyableCode code="min_ttl" /></td>
     <td><code>integer</code></td>
     <td>The minimum amount of time, in seconds, that you want objects to stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated. For more information, see Managing How Long Content Stays in an Edge Cache (Expiration) in the Amazon CloudFront Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A unique name to identify the cache policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParametersInCacheKeyAndForwardedToOrigin" /></td>
+    <td><CopyableCode code="parameters_in_cache_key_and_forwarded_to_origin" /></td>
     <td><code>string</code></td>
     <td>The HTTP headers, cookies, and URL query strings to include in the cache key. The values included in the cache key are also included in requests that CloudFront sends to the origin.</td>
 </tr>
@@ -149,12 +149,12 @@ Gets a cache policy configuration. To get a cache policy configuration, you must
 
 ```sql
 SELECT
-Comment,
-DefaultTTL,
-MaxTTL,
-MinTTL,
-Name,
-ParametersInCacheKeyAndForwardedToOrigin
+comment,
+default_ttl,
+max_ttl,
+min_ttl,
+name,
+parameters_in_cache_key_and_forwarded_to_origin
 FROM aws.cloudfront.cache_policy_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

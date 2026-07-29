@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddonInstanceArn" /></td>
+    <td><CopyableCode code="addon_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Add On instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonName" /></td>
+    <td><CopyableCode code="addon_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Add On provider associated to the subscription of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonSubscriptionId" /></td>
+    <td><CopyableCode code="addon_subscription_id" /></td>
     <td><code>string</code></td>
     <td>The subscription ID associated to the instance. (pattern: &lt;code&gt;as-&#91;a-zA-Z0-9&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the Add On instance was created.</td>
 </tr>
@@ -85,27 +85,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddonInstanceArn" /></td>
+    <td><CopyableCode code="addon_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Add On instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonInstanceId" /></td>
+    <td><CopyableCode code="addon_instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Add On instance. (pattern: &lt;code&gt;ai-&#91;a-zA-Z0-9&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonName" /></td>
+    <td><CopyableCode code="addon_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Add On for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddonSubscriptionId" /></td>
+    <td><CopyableCode code="addon_subscription_id" /></td>
     <td><code>string</code></td>
     <td>The subscription ID for the instance. (pattern: &lt;code&gt;as-&#91;a-zA-Z0-9&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the Add On instance was created.</td>
 </tr>
@@ -196,10 +196,10 @@ Gets detailed information about an Add On instance.
 
 ```sql
 SELECT
-AddonInstanceArn,
-AddonName,
-AddonSubscriptionId,
-CreatedTimestamp
+addon_instance_arn,
+addon_name,
+addon_subscription_id,
+created_timestamp
 FROM aws.mailmanager.addon_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -211,11 +211,11 @@ Lists all Add On instances in your account.
 
 ```sql
 SELECT
-AddonInstanceArn,
-AddonInstanceId,
-AddonName,
-AddonSubscriptionId,
-CreatedTimestamp
+addon_instance_arn,
+addon_instance_id,
+addon_name,
+addon_subscription_id,
+created_timestamp
 FROM aws.mailmanager.addon_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -250,7 +250,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AddonInstanceId
+addon_instance_id
 ;
 ```
 </TabItem>

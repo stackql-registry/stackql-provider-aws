@@ -50,117 +50,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Applications" /></td>
+    <td><CopyableCode code="applications" /></td>
     <td><code>array</code></td>
     <td>The applications associated with the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppstreamAgentVersion" /></td>
+    <td><CopyableCode code="appstream_agent_version" /></td>
     <td><code>string</code></td>
     <td>The version of the WorkSpaces Applications agent to use for instances that are launched from this image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the image. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BaseImageArn" /></td>
+    <td><CopyableCode code="base_image_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the image from which this image was created. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the image was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The image name to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DynamicAppProvidersEnabled" /></td>
+    <td><CopyableCode code="dynamic_app_providers_enabled" /></td>
     <td><code>string</code></td>
     <td>Indicates whether dynamic app providers are enabled within an WorkSpaces Applications image or not. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageBuilderName" /></td>
+    <td><CopyableCode code="image_builder_name" /></td>
     <td><code>string</code></td>
     <td>The name of the image builder that was used to create the private image. If the image is shared, copied, or updated by using Managed Image Updates, this value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageBuilderSupported" /></td>
+    <td><CopyableCode code="image_builder_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether an image builder can be launched from this image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageErrors" /></td>
+    <td><CopyableCode code="image_errors" /></td>
     <td><code>array</code></td>
     <td>Describes the errors that are returned when a new image can't be created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImagePermissions" /></td>
+    <td><CopyableCode code="image_permissions" /></td>
     <td><code>object</code></td>
     <td>The permissions to provide to the destination AWS account for the specified image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageSharedWithOthers" /></td>
+    <td><CopyableCode code="image_shared_with_others" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the image is shared with another account ID. (TRUE, FALSE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageType" /></td>
+    <td><CopyableCode code="image_type" /></td>
     <td><code>string</code></td>
     <td>The type of the image. Images created through AMI import have type "custom", while WorkSpaces Applications provided images have type "native". Custom images support additional instance types including GeneralPurpose, MemoryOptimized, ComputeOptimized, and Accelerated instance families. (CUSTOM, NATIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestAppstreamAgentVersion" /></td>
+    <td><CopyableCode code="latest_appstream_agent_version" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the image is using the latest WorkSpaces Applications agent version or not. (TRUE, FALSE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedSoftwareIncluded" /></td>
+    <td><CopyableCode code="managed_software_included" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the image includes license-included applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The operating system platform of the image. (WINDOWS, WINDOWS_SERVER_2016, WINDOWS_SERVER_2019, WINDOWS_SERVER_2022, WINDOWS_SERVER_2025, AMAZON_LINUX2, RHEL8, ROCKY_LINUX8, UBUNTU_PRO_2404)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicBaseImageReleasedDate" /></td>
+    <td><CopyableCode code="public_base_image_released_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The release date of the public base image. For private images, this date is the release date of the base image from which the image was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The image starts in the PENDING state. If image creation succeeds, the state is AVAILABLE. If image creation fails, the state is FAILED. (PENDING, AVAILABLE, FAILED, COPYING, DELETING, CREATING, IMPORTING, VALIDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateChangeReason" /></td>
+    <td><CopyableCode code="state_change_reason" /></td>
     <td><code>object</code></td>
     <td>The reason why the last state change occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedInstanceFamilies" /></td>
+    <td><CopyableCode code="supported_instance_families" /></td>
     <td><code>array</code></td>
     <td>The supported instances families that determine which image a customer can use when the customer launches a fleet or image builder. The following instances families are supported: General Purpose Compute Optimized Memory Optimized Graphics G4 Graphics G5 Graphics G6</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the image is public or private. (PUBLIC, PRIVATE, SHARED)</td>
 </tr>
@@ -264,29 +264,29 @@ Retrieves a list that describes one or more specified images, if the image names
 
 ```sql
 SELECT
-Applications,
-AppstreamAgentVersion,
-Arn,
-BaseImageArn,
-CreatedTime,
-Description,
-DisplayName,
-DynamicAppProvidersEnabled,
-ImageBuilderName,
-ImageBuilderSupported,
-ImageErrors,
-ImagePermissions,
-ImageSharedWithOthers,
-ImageType,
-LatestAppstreamAgentVersion,
-ManagedSoftwareIncluded,
-Name,
-Platform,
-PublicBaseImageReleasedDate,
-State,
-StateChangeReason,
-SupportedInstanceFamilies,
-Visibility
+applications,
+appstream_agent_version,
+arn,
+base_image_arn,
+created_time,
+description,
+display_name,
+dynamic_app_providers_enabled,
+image_builder_name,
+image_builder_supported,
+image_errors,
+image_permissions,
+image_shared_with_others,
+image_type,
+latest_appstream_agent_version,
+managed_software_included,
+name,
+platform,
+public_base_image_released_date,
+state,
+state_change_reason,
+supported_instance_families,
+visibility
 FROM aws.appstream.images
 WHERE region = '{{ region }}' -- required
 ;
@@ -336,7 +336,7 @@ SELECT
 {{ DryRun }},
 '{{ region }}'
 RETURNING
-Image
+image
 ;
 ```
 </TabItem>
@@ -363,7 +363,7 @@ SELECT
 {{ dryRun }},
 '{{ region }}'
 RETURNING
-canUpdateImage,
+can_update_image,
 image
 ;
 ```

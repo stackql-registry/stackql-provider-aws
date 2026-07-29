@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A list of resource permissions to be set on the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the template. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -156,11 +156,11 @@ Describes read and write permissions on a template.
 
 ```sql
 SELECT
-Permissions,
-RequestId,
-Status,
-TemplateArn,
-TemplateId
+permissions,
+request_id,
+status,
+template_arn,
+template_id
 FROM aws.quicksight.template_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND template_id = '{{ template_id }}' -- required
@@ -193,11 +193,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND template_id = '{{ template_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Permissions,
-RequestId,
-Status,
-TemplateArn,
-TemplateId;
+permissions,
+request_id,
+status,
+template_arn,
+template_id;
 ```
 </TabItem>
 </Tabs>

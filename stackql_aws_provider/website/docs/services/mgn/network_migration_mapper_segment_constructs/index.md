@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the construct. (pattern: &lt;code&gt;&#91;^\s\x00&#93;( *&#91;^\s\x00&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="constructID" /></td>
+    <td><CopyableCode code="construct_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the construct. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="constructType" /></td>
+    <td><CopyableCode code="construct_type" /></td>
     <td><code>string</code></td>
     <td>The type of the construct, such as VPC, subnet, security group, or route table. (pattern: &lt;code&gt;AWS::(&#91;A-Z\d&#93;)&#123;2,10&#125;::&#91;a-zA-Z\d&#93;&#123;2,30&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the construct was created.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>Whether this construct is excluded from the migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logicalID" /></td>
+    <td><CopyableCode code="logical_id" /></td>
     <td><code>string</code></td>
     <td>The logical identifier for the construct in the infrastructure code. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The properties and configuration of the construct.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the construct was last updated.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the construct. (pattern: &lt;code&gt;&#91;^\s\x00&#93;( *&#91;^\s\x00&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="constructID" /></td>
+    <td><CopyableCode code="construct_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the construct. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="constructType" /></td>
+    <td><CopyableCode code="construct_type" /></td>
     <td><code>string</code></td>
     <td>The type of the construct, such as VPC, subnet, security group, or route table. (pattern: &lt;code&gt;AWS::(&#91;A-Z\d&#93;)&#123;2,10&#125;::&#91;a-zA-Z\d&#93;&#123;2,30&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the construct was created.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>Whether this construct is excluded from the migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logicalID" /></td>
+    <td><CopyableCode code="logical_id" /></td>
     <td><code>string</code></td>
     <td>The logical identifier for the construct in the infrastructure code. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The properties and configuration of the construct.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the construct was last updated.</td>
 </tr>
@@ -228,14 +228,14 @@ Retrieves detailed information about a specific construct within a mapper segmen
 ```sql
 SELECT
 name,
-constructID,
-constructType,
-createdAt,
+construct_id,
+construct_type,
+created_at,
 description,
 excluded,
-logicalID,
+logical_id,
 properties_,
-updatedAt
+updated_at
 FROM aws.mgn.network_migration_mapper_segment_constructs
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,14 +248,14 @@ Lists constructs within a mapper segment, representing individual infrastructure
 ```sql
 SELECT
 name,
-constructID,
-constructType,
-createdAt,
+construct_id,
+construct_type,
+created_at,
 description,
 excluded,
-logicalID,
+logical_id,
 properties_,
-updatedAt
+updated_at
 FROM aws.mgn.network_migration_mapper_segment_constructs
 WHERE region = '{{ region }}' -- required
 ;

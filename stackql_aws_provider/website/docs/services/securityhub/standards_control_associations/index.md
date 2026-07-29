@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="StandardsControlAssociationDetails" /></td>
+    <td><CopyableCode code="standards_control_association_details" /></td>
     <td><code>array</code></td>
     <td>Provides the enablement status of a security control in a specified standard and other details for the control in relation to the specified standard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedAssociations" /></td>
+    <td><CopyableCode code="unprocessed_associations" /></td>
     <td><code>array</code></td>
     <td>A security control (identified with SecurityControlId, SecurityControlArn, or a mix of both parameters) whose enablement status in a specified standard cannot be returned.</td>
 </tr>
@@ -75,47 +75,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationStatus" /></td>
+    <td><CopyableCode code="association_status" /></td>
     <td><code>string</code></td>
     <td>The enablement status of a control in a specific standard. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedRequirements" /></td>
+    <td><CopyableCode code="related_requirements" /></td>
     <td><code>array</code></td>
     <td>The requirement that underlies this control in the compliance framework related to the standard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityControlArn" /></td>
+    <td><CopyableCode code="security_control_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a control, such as arn:aws:securityhub:eu-central-1:123456789012:security-control/S3.1. This parameter doesn't mention a specific standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityControlId" /></td>
+    <td><CopyableCode code="security_control_id" /></td>
     <td><code>string</code></td>
     <td>A unique standard-agnostic identifier for a control. Values for this field typically consist of an Amazon Web Services service and a number, such as APIGateway.5. This field doesn't reference a specific standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsArn" /></td>
+    <td><CopyableCode code="standards_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsControlDescription" /></td>
+    <td><CopyableCode code="standards_control_description" /></td>
     <td><code>string</code></td>
     <td>The description of a control. This typically summarizes how Security Hub CSPM evaluates the control and the conditions under which it produces a failed finding. The parameter may reference a specific standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsControlTitle" /></td>
+    <td><CopyableCode code="standards_control_title" /></td>
     <td><code>string</code></td>
     <td>The title of a control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that a control's enablement status in a specified standard was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedReason" /></td>
+    <td><CopyableCode code="updated_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for updating a control's enablement status in a specified standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -214,8 +214,8 @@ For a batch of security controls and standards, identifies whether each control 
 
 ```sql
 SELECT
-StandardsControlAssociationDetails,
-UnprocessedAssociations
+standards_control_association_details,
+unprocessed_associations
 FROM aws.securityhub.standards_control_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,15 +227,15 @@ Specifies whether a control is currently enabled or disabled in each enabled sta
 
 ```sql
 SELECT
-AssociationStatus,
-RelatedRequirements,
-SecurityControlArn,
-SecurityControlId,
-StandardsArn,
-StandardsControlDescription,
-StandardsControlTitle,
-UpdatedAt,
-UpdatedReason
+association_status,
+related_requirements,
+security_control_arn,
+security_control_id,
+standards_arn,
+standards_control_description,
+standards_control_title,
+updated_at,
+updated_reason
 FROM aws.securityhub.standards_control_associations
 WHERE SecurityControlId = '{{ SecurityControlId }}' -- required
 AND region = '{{ region }}' -- required

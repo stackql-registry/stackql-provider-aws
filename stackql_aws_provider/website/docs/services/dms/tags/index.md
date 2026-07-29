@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>A list of tags for the resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists all metadata tags attached to an DMS resource, including replication insta
 
 ```sql
 SELECT
-TagList
+tag_list
 FROM aws.dms.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>array</code></td>
     <td>The IAM action to grant or revoke permissions on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Principal" /></td>
+    <td><CopyableCode code="principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the principal. This can be one of the following: The ARN of an Quick Sight user or group associated with a data source or dataset. (This is common.) The ARN of an Quick Sight user, group, or namespace associated with an analysis, dashboard, template, or theme. Namespace sharing is not supported for action connectors. (This is common.) The ARN of an Amazon Web Services account root: This is an IAM ARN rather than a Quick Sight ARN. Use this option only to share resources (templates) across Amazon Web Services accounts. Account root sharing is not supported for action connectors. (This is less common.)</td>
 </tr>
@@ -149,8 +149,8 @@ Describes the folder resolved permissions. Permissions consists of both folder d
 
 ```sql
 SELECT
-Actions,
-Principal
+actions,
+principal
 FROM aws.quicksight.folder_resolved_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND folder_id = '{{ folder_id }}' -- required

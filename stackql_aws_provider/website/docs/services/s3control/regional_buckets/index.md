@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Bucket" /></td>
+    <td><CopyableCode code="bucket" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="BucketArn" /></td>
+    <td><CopyableCode code="bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the regional bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The creation date of the regional bucket</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>The Outposts ID of the regional bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAccessBlockEnabled" /></td>
+    <td><CopyableCode code="public_access_block_enabled" /></td>
     <td><code>boolean</code></td>
     <td></td>
 </tr>
@@ -159,11 +159,11 @@ This operation is not supported by directory buckets. Returns a list of all Outp
 
 ```sql
 SELECT
-Bucket,
-BucketArn,
-CreationDate,
-OutpostId,
-PublicAccessBlockEnabled
+bucket,
+bucket_arn,
+creation_date,
+outpost_id,
+public_access_block_enabled
 FROM aws.s3control.regional_buckets
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required

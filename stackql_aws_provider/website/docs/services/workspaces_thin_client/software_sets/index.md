@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the software set. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releasedAt" /></td>
+    <td><CopyableCode code="released_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the software set was released.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>A list of the software components in the software set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedUntil" /></td>
+    <td><CopyableCode code="supported_until" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the end of support for the software set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationStatus" /></td>
+    <td><CopyableCode code="validation_status" /></td>
     <td><code>string</code></td>
     <td>An option to define if the software set has been validated. (VALIDATED, NOT_VALIDATED)</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the software set. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releasedAt" /></td>
+    <td><CopyableCode code="released_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the software set was released.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedUntil" /></td>
+    <td><CopyableCode code="supported_until" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the end of support for the software set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationStatus" /></td>
+    <td><CopyableCode code="validation_status" /></td>
     <td><code>string</code></td>
     <td>An option to define if the software set has been validated. (VALIDATED, NOT_VALIDATED)</td>
 </tr>
@@ -226,10 +226,10 @@ Returns information for a software set.
 SELECT
 id,
 arn,
-releasedAt,
+released_at,
 software,
-supportedUntil,
-validationStatus,
+supported_until,
+validation_status,
 version
 FROM aws.workspaces_thin_client.software_sets
 WHERE id = '{{ id }}' -- required
@@ -245,9 +245,9 @@ Returns a list of software sets.
 SELECT
 id,
 arn,
-releasedAt,
-supportedUntil,
-validationStatus,
+released_at,
+supported_until,
+validation_status,
 version
 FROM aws.workspaces_thin_client.software_sets
 WHERE region = '{{ region }}' -- required

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastRuleModification" /></td>
+    <td><CopyableCode code="last_rule_modification" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time a user changed the sampling rule configuration. If the sampling rule configuration changed since the service last retrieved it, the service should call GetSamplingRules to get the latest version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SamplingTargetDocuments" /></td>
+    <td><CopyableCode code="sampling_target_documents" /></td>
     <td><code>array</code></td>
     <td>Updated rules that the service should use to sample requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedBoostStatistics" /></td>
+    <td><CopyableCode code="unprocessed_boost_statistics" /></td>
     <td><code>array</code></td>
     <td>Information about SamplingBoostStatisticsDocument that X-Ray could not process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedStatistics" /></td>
+    <td><CopyableCode code="unprocessed_statistics" /></td>
     <td><code>array</code></td>
     <td>Information about SamplingStatisticsDocument that X-Ray could not process.</td>
 </tr>
@@ -134,10 +134,10 @@ Requests a sampling quota for rules that the service is using to sample requests
 
 ```sql
 SELECT
-LastRuleModification,
-SamplingTargetDocuments,
-UnprocessedBoostStatistics,
-UnprocessedStatistics
+last_rule_modification,
+sampling_target_documents,
+unprocessed_boost_statistics,
+unprocessed_statistics
 FROM aws.xray.sampling_targets
 WHERE region = '{{ region }}' -- required
 ;

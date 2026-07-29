@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog in which the function resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClassName" /></td>
+    <td><CopyableCode code="class_name" /></td>
     <td><code>string</code></td>
     <td>The Java class that contains the function code. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the function was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the catalog database that contains the function. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionName" /></td>
+    <td><CopyableCode code="function_name" /></td>
     <td><code>string</code></td>
     <td>The name of the function. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionType" /></td>
+    <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
     <td>The type of the function. (REGULAR_FUNCTION, AGGREGATE_FUNCTION, STORED_PROCEDURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerName" /></td>
+    <td><CopyableCode code="owner_name" /></td>
     <td><code>string</code></td>
     <td>The owner of the function. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerType" /></td>
+    <td><CopyableCode code="owner_type" /></td>
     <td><code>string</code></td>
     <td>The owner type. (USER, ROLE, GROUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceUris" /></td>
+    <td><CopyableCode code="resource_uris" /></td>
     <td><code>array</code></td>
     <td>The resource URIs for the function.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog in which the function resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClassName" /></td>
+    <td><CopyableCode code="class_name" /></td>
     <td><code>string</code></td>
     <td>The Java class that contains the function code. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the function was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the catalog database that contains the function. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionName" /></td>
+    <td><CopyableCode code="function_name" /></td>
     <td><code>string</code></td>
     <td>The name of the function. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionType" /></td>
+    <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
     <td>The type of the function. (REGULAR_FUNCTION, AGGREGATE_FUNCTION, STORED_PROCEDURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerName" /></td>
+    <td><CopyableCode code="owner_name" /></td>
     <td><code>string</code></td>
     <td>The owner of the function. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerType" /></td>
+    <td><CopyableCode code="owner_type" /></td>
     <td><code>string</code></td>
     <td>The owner type. (USER, ROLE, GROUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceUris" /></td>
+    <td><CopyableCode code="resource_uris" /></td>
     <td><code>array</code></td>
     <td>The resource URIs for the function.</td>
 </tr>
@@ -248,15 +248,15 @@ Retrieves a specified function definition from the Data Catalog.
 
 ```sql
 SELECT
-CatalogId,
-ClassName,
-CreateTime,
-DatabaseName,
-FunctionName,
-FunctionType,
-OwnerName,
-OwnerType,
-ResourceUris
+catalog_id,
+class_name,
+create_time,
+database_name,
+function_name,
+function_type,
+owner_name,
+owner_type,
+resource_uris
 FROM aws.glue.user_defined_functions
 WHERE region = '{{ region }}' -- required
 ;
@@ -268,15 +268,15 @@ Retrieves multiple function definitions from the Data Catalog.
 
 ```sql
 SELECT
-CatalogId,
-ClassName,
-CreateTime,
-DatabaseName,
-FunctionName,
-FunctionType,
-OwnerName,
-OwnerType,
-ResourceUris
+catalog_id,
+class_name,
+create_time,
+database_name,
+function_name,
+function_type,
+owner_name,
+owner_type,
+resource_uris
 FROM aws.glue.user_defined_functions
 WHERE region = '{{ region }}' -- required
 ;

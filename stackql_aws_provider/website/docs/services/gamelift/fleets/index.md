@@ -226,8 +226,8 @@ SELECT
 '{{ PlayerGatewayConfiguration }}',
 '{{ region }}'
 RETURNING
-FleetAttributes,
-LocationStates
+fleet_attributes,
+location_states
 ;
 ```
 </TabItem>

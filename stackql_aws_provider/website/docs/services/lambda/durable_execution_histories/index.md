@@ -50,157 +50,157 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallbackFailedDetails" /></td>
+    <td><CopyableCode code="callback_failed_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a failed callback operation, including error information and the reason for failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CallbackStartedDetails" /></td>
+    <td><CopyableCode code="callback_started_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a callback operation that has started, including timing information and callback metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CallbackSucceededDetails" /></td>
+    <td><CopyableCode code="callback_succeeded_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a successfully completed callback operation, including the result data and completion timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CallbackTimedOutDetails" /></td>
+    <td><CopyableCode code="callback_timed_out_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a callback operation that timed out, including timeout duration and any partial results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChainedInvokeFailedDetails" /></td>
+    <td><CopyableCode code="chained_invoke_failed_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a failed chained function invocation, including error information and failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChainedInvokeStartedDetails" /></td>
+    <td><CopyableCode code="chained_invoke_started_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a chained function invocation that has started execution, including start time and execution context.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChainedInvokeStoppedDetails" /></td>
+    <td><CopyableCode code="chained_invoke_stopped_details" /></td>
     <td><code>object</code></td>
     <td>Details about a chained invocation that was stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChainedInvokeSucceededDetails" /></td>
+    <td><CopyableCode code="chained_invoke_succeeded_details" /></td>
     <td><code>object</code></td>
     <td>Details about a chained invocation that succeeded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChainedInvokeTimedOutDetails" /></td>
+    <td><CopyableCode code="chained_invoke_timed_out_details" /></td>
     <td><code>object</code></td>
     <td>Details about a chained invocation that timed out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextFailedDetails" /></td>
+    <td><CopyableCode code="context_failed_details" /></td>
     <td><code>object</code></td>
     <td>Details about a context that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextStartedDetails" /></td>
+    <td><CopyableCode code="context_started_details" /></td>
     <td><code>object</code></td>
     <td>Details about a context that started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextSucceededDetails" /></td>
+    <td><CopyableCode code="context_succeeded_details" /></td>
     <td><code>object</code></td>
     <td>Details about a context that succeeded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>integer</code></td>
     <td>The unique identifier for this event. Event IDs increment sequentially.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this event occurred, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of event that occurred. (ExecutionStarted, ExecutionSucceeded, ExecutionFailed, ExecutionTimedOut, ExecutionStopped, ContextStarted, ContextSucceeded, ContextFailed, WaitStarted, WaitSucceeded, WaitCancelled, StepStarted, StepSucceeded, StepFailed, ChainedInvokeStarted, ChainedInvokeSucceeded, ChainedInvokeFailed, ChainedInvokeTimedOut, ChainedInvokeStopped, CallbackStarted, CallbackSucceeded, CallbackFailed, CallbackTimedOut, InvocationCompleted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionFailedDetails" /></td>
+    <td><CopyableCode code="execution_failed_details" /></td>
     <td><code>object</code></td>
     <td>Details about an execution that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStartedDetails" /></td>
+    <td><CopyableCode code="execution_started_details" /></td>
     <td><code>object</code></td>
     <td>Details about an execution that started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStoppedDetails" /></td>
+    <td><CopyableCode code="execution_stopped_details" /></td>
     <td><code>object</code></td>
     <td>Details about an execution that was stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionSucceededDetails" /></td>
+    <td><CopyableCode code="execution_succeeded_details" /></td>
     <td><code>object</code></td>
     <td>Details about an execution that succeeded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionTimedOutDetails" /></td>
+    <td><CopyableCode code="execution_timed_out_details" /></td>
     <td><code>object</code></td>
     <td>Details about an execution that timed out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this operation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationCompletedDetails" /></td>
+    <td><CopyableCode code="invocation_completed_details" /></td>
     <td><code>object</code></td>
     <td>Details about a function invocation that completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The customer-provided name for this operation. (pattern: &lt;code&gt;&#91;\x20-\x7E&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentId" /></td>
+    <td><CopyableCode code="parent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the parent operation, if this operation is running within a child context. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepFailedDetails" /></td>
+    <td><CopyableCode code="step_failed_details" /></td>
     <td><code>object</code></td>
     <td>Details about a step that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepStartedDetails" /></td>
+    <td><CopyableCode code="step_started_details" /></td>
     <td><code>object</code></td>
     <td>Details about a step that started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepSucceededDetails" /></td>
+    <td><CopyableCode code="step_succeeded_details" /></td>
     <td><code>object</code></td>
     <td>Details about a step that succeeded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubType" /></td>
+    <td><CopyableCode code="sub_type" /></td>
     <td><code>string</code></td>
     <td>The subtype of the event, providing additional categorization. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WaitCancelledDetails" /></td>
+    <td><CopyableCode code="wait_cancelled_details" /></td>
     <td><code>object</code></td>
     <td>Details about a wait operation that was cancelled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WaitStartedDetails" /></td>
+    <td><CopyableCode code="wait_started_details" /></td>
     <td><code>object</code></td>
     <td>Details about a wait operation that started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WaitSucceededDetails" /></td>
+    <td><CopyableCode code="wait_succeeded_details" /></td>
     <td><code>object</code></td>
     <td>Details about a wait operation that succeeded.</td>
 </tr>
@@ -294,37 +294,37 @@ Retrieves the execution history for a durable execution, showing all the steps, 
 
 ```sql
 SELECT
-CallbackFailedDetails,
-CallbackStartedDetails,
-CallbackSucceededDetails,
-CallbackTimedOutDetails,
-ChainedInvokeFailedDetails,
-ChainedInvokeStartedDetails,
-ChainedInvokeStoppedDetails,
-ChainedInvokeSucceededDetails,
-ChainedInvokeTimedOutDetails,
-ContextFailedDetails,
-ContextStartedDetails,
-ContextSucceededDetails,
-EventId,
-EventTimestamp,
-EventType,
-ExecutionFailedDetails,
-ExecutionStartedDetails,
-ExecutionStoppedDetails,
-ExecutionSucceededDetails,
-ExecutionTimedOutDetails,
-Id,
-InvocationCompletedDetails,
-Name,
-ParentId,
-StepFailedDetails,
-StepStartedDetails,
-StepSucceededDetails,
-SubType,
-WaitCancelledDetails,
-WaitStartedDetails,
-WaitSucceededDetails
+callback_failed_details,
+callback_started_details,
+callback_succeeded_details,
+callback_timed_out_details,
+chained_invoke_failed_details,
+chained_invoke_started_details,
+chained_invoke_stopped_details,
+chained_invoke_succeeded_details,
+chained_invoke_timed_out_details,
+context_failed_details,
+context_started_details,
+context_succeeded_details,
+event_id,
+event_timestamp,
+event_type,
+execution_failed_details,
+execution_started_details,
+execution_stopped_details,
+execution_succeeded_details,
+execution_timed_out_details,
+id,
+invocation_completed_details,
+name,
+parent_id,
+step_failed_details,
+step_started_details,
+step_succeeded_details,
+sub_type,
+wait_cancelled_details,
+wait_started_details,
+wait_succeeded_details
 FROM aws.lambda.durable_execution_histories
 WHERE durable_execution_arn = '{{ durable_execution_arn }}' -- required
 AND region = '{{ region }}' -- required

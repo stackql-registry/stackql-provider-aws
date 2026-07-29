@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DelegationEnabledDate" /></td>
+    <td><CopyableCode code="delegation_enabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the account became a delegated administrator for this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServicePrincipal" /></td>
+    <td><CopyableCode code="service_principal" /></td>
     <td><code>string</code></td>
     <td>The name of an Amazon Web Services service that can request an operation for the specified service. This is typically in the form of a URL, such as: servicename.amazonaws.com. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ List the Amazon Web Services services for which the specified account is a deleg
 
 ```sql
 SELECT
-DelegationEnabledDate,
-ServicePrincipal
+delegation_enabled_date,
+service_principal
 FROM aws.organizations.delegated_services_for_accounts
 WHERE region = '{{ region }}' -- required
 ;

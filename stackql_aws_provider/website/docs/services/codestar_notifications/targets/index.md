@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TargetAddress" /></td>
+    <td><CopyableCode code="target_address" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q Developer in chat applications topic or Amazon Q Developer in chat applications client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetStatus" /></td>
+    <td><CopyableCode code="target_status" /></td>
     <td><code>string</code></td>
     <td>The status of the target. (PENDING, ACTIVE, UNREACHABLE, INACTIVE, DEACTIVATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The type of the target (for example, SNS). Amazon Q Developer in chat applications topics are specified as SNS. Amazon Q Developer in chat applications clients are specified as AWSChatbotSlack. (pattern: &lt;code&gt;^&#91;A-Za-z&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -136,9 +136,9 @@ Returns a list of the notification rule targets for an Amazon Web Services accou
 
 ```sql
 SELECT
-TargetAddress,
-TargetStatus,
-TargetType
+target_address,
+target_status,
+target_type
 FROM aws.codestar_notifications.targets
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the member. For more information about ARNs and their format, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:.+:.+:.+:.+:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the member was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description for the member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkAttributes" /></td>
+    <td><CopyableCode code="framework_attributes" /></td>
     <td><code>object</code></td>
     <td>Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customer managed key in Key Management Service (KMS) that the member uses for encryption at rest. If the value of this parameter is "AWS Owned KMS Key", the member uses an Amazon Web Services owned KMS key for encryption. This parameter is inherited by the nodes that this member owns. For more information, see Encryption at Rest in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPublishingConfiguration" /></td>
+    <td><CopyableCode code="log_publishing_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration properties for logging events associated with a member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the member. (pattern: &lt;code&gt;^(?!-|&#91;0-9&#93;)(?!.*-$)(?!.*?--)&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkId" /></td>
+    <td><CopyableCode code="network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network to which the member belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a member. CREATING - The Amazon Web Services account is in the process of creating a member. AVAILABLE - The member has been created and can participate in the network. CREATE_FAILED - The Amazon Web Services account attempted to create a member and creation failed. UPDATING - The member is in the process of being updated. DELETING - The member and all associated resources are in the process of being deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an APPROVED PROPOSAL to remove the member. DELETED - The member can no longer participate on the network and all associated resources are deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an APPROVED PROPOSAL to remove the member. INACCESSIBLE_ENCRYPTION_KEY - The member is impaired and might not function as expected because it cannot access the specified customer managed key in KMS for encryption at rest. Either the KMS key was disabled or deleted, or the grants on the key were revoked. The effect of disabling or deleting a key or of revoking a grant isn't immediate. It might take some time for the member resource to discover that the key is inaccessible. When a resource is in this state, we recommend deleting and recreating the resource. (CREATING, AVAILABLE, CREATE_FAILED, UPDATING, DELETING, DELETED, INACCESSIBLE_ENCRYPTION_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags assigned to the member. Tags consist of a key and optional value. For more information about tags, see Tagging Resources in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Members" /></td>
+    <td><CopyableCode code="members" /></td>
     <td><code>array</code></td>
     <td>An array of MemberSummary objects. Each object contains details about a network member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that indicates the next set of results to retrieve.</td>
 </tr>
@@ -258,17 +258,17 @@ Returns detailed information about a member. Applies only to Hyperledger Fabric.
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-Description,
-FrameworkAttributes,
-Id,
-KmsKeyArn,
-LogPublishingConfiguration,
-Name,
-NetworkId,
-Status,
-Tags
+arn,
+creation_date,
+description,
+framework_attributes,
+id,
+kms_key_arn,
+log_publishing_configuration,
+name,
+network_id,
+status,
+tags
 FROM aws.managedblockchain.members
 WHERE network_id = '{{ network_id }}' -- required
 AND member_id = '{{ member_id }}' -- required
@@ -282,8 +282,8 @@ Returns a list of the members in a network and properties of their configuration
 
 ```sql
 SELECT
-Members,
-NextToken
+members,
+next_token
 FROM aws.managedblockchain.members
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -326,7 +326,7 @@ SELECT
 '{{ network_id }}',
 '{{ region }}'
 RETURNING
-MemberId
+member_id
 ;
 ```
 </TabItem>

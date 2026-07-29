@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deliveryDestinationPolicy" /></td>
+    <td><CopyableCode code="delivery_destination_policy" /></td>
     <td><code>string</code></td>
     <td>The contents of the delivery destination policy.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the delivery destination policy assigned to the delivery destination t
 
 ```sql
 SELECT
-deliveryDestinationPolicy
+delivery_destination_policy
 FROM aws.logs.delivery_destination_policies
 WHERE region = '{{ region }}' -- required
 ;

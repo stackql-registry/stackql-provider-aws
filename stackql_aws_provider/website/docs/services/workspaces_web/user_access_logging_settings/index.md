@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedPortalArns" /></td>
+    <td><CopyableCode code="associated_portal_arns" /></td>
     <td><code>array</code></td>
     <td>A list of web portal ARNs that this user access logging settings is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kinesisStreamArn" /></td>
+    <td><CopyableCode code="kinesis_stream_arn" /></td>
     <td><code>string</code></td>
     <td>Kinesis stream ARN to which log events are published. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:kinesis:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:stream/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userAccessLoggingSettingsArn" /></td>
+    <td><CopyableCode code="user_access_logging_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user access logging settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userAccessLoggingSettings" /></td>
+    <td><CopyableCode code="user_access_logging_settings" /></td>
     <td><code>array</code></td>
     <td>The user access logging settings.</td>
 </tr>
@@ -222,9 +222,9 @@ Gets user access logging settings.
 
 ```sql
 SELECT
-associatedPortalArns,
-kinesisStreamArn,
-userAccessLoggingSettingsArn
+associated_portal_arns,
+kinesis_stream_arn,
+user_access_logging_settings_arn
 FROM aws.workspaces_web.user_access_logging_settings
 WHERE user_access_logging_settings_arn = '{{ user_access_logging_settings_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -237,8 +237,8 @@ Retrieves a list of user access logging settings.
 
 ```sql
 SELECT
-nextToken,
-userAccessLoggingSettings
+next_token,
+user_access_logging_settings
 FROM aws.workspaces_web.user_access_logging_settings
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -275,7 +275,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-userAccessLoggingSettingsArn
+user_access_logging_settings_arn
 ;
 ```
 </TabItem>
@@ -326,8 +326,8 @@ portal_arn = '{{ portal_arn }}' --required
 AND userAccessLoggingSettingsArn = '{{ userAccessLoggingSettingsArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-portalArn,
-userAccessLoggingSettingsArn;
+portal_arn,
+user_access_logging_settings_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_user_access_logging_settings">
@@ -356,7 +356,7 @@ WHERE
 user_access_logging_settings_arn = '{{ user_access_logging_settings_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-userAccessLoggingSettings;
+user_access_logging_settings;
 ```
 </TabItem>
 </Tabs>

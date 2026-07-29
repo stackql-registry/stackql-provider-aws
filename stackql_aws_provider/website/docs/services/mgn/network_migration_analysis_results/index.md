@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="analysisResult" /></td>
+    <td><CopyableCode code="analysis_result" /></td>
     <td><code>string</code></td>
     <td>The detailed analysis findings and recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyzerType" /></td>
+    <td><CopyableCode code="analyzer_type" /></td>
     <td><code>string</code></td>
     <td>The type of analyzer that generated this result. (REACHABILITY_ANALYZER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the analysis job that generated this result. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationDefinitionID" /></td>
+    <td><CopyableCode code="network_migration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration definition. (pattern: &lt;code&gt;nmd-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationExecutionID" /></td>
+    <td><CopyableCode code="network_migration_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -154,11 +154,11 @@ Lists the results of network migration analyses, showing connectivity and compat
 
 ```sql
 SELECT
-analysisResult,
-analyzerType,
-jobID,
-networkMigrationDefinitionID,
-networkMigrationExecutionID,
+analysis_result,
+analyzer_type,
+job_id,
+network_migration_definition_id,
+network_migration_execution_id,
 source,
 status,
 target

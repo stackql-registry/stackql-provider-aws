@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-256&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-32768&#93;.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-256&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-32768&#93;.</td>
 </tr>
@@ -228,11 +228,11 @@ Gets a Model.
 
 ```sql
 SELECT
-ContentType,
-Description,
-ModelId,
-Name,
-Schema
+content_type,
+description,
+model_id,
+name,
+schema
 FROM aws.apigatewayv2.models
 WHERE api_id = '{{ api_id }}' -- required
 AND model_id = '{{ model_id }}' -- required
@@ -246,11 +246,11 @@ Gets the Models for an API.
 
 ```sql
 SELECT
-ContentType,
-Description,
-ModelId,
-Name,
-Schema
+content_type,
+description,
+model_id,
+name,
+schema
 FROM aws.apigatewayv2.models
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -292,11 +292,11 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-ContentType,
-Description,
-ModelId,
-Name,
-Schema
+content_type,
+description,
+model_id,
+name,
+schema
 ;
 ```
 </TabItem>
@@ -357,11 +357,11 @@ api_id = '{{ api_id }}' --required
 AND model_id = '{{ model_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ContentType,
-Description,
-ModelId,
-Name,
-Schema;
+content_type,
+description,
+model_id,
+name,
+schema;
 ```
 </TabItem>
 </Tabs>

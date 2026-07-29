@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. For more information about ARNs, go to Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentCount" /></td>
+    <td><CopyableCode code="attachment_count" /></td>
     <td><code>integer</code></td>
     <td>The number of entities (users, groups, and roles) that the policy is attached to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultVersionId" /></td>
+    <td><CopyableCode code="default_version_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the version of the policy that is set as the default version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A friendly description of the policy. This element is included in the response to the GetPolicy operation. It is not included in the response to the ListPolicies operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsAttachable" /></td>
+    <td><CopyableCode code="is_attachable" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the policy can be attached to an IAM user, group, or role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the policy. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsBoundaryUsageCount" /></td>
+    <td><CopyableCode code="permissions_boundary_usage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of entities (users and roles) for which the policy is used to set the permissions boundary. For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the policy. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name (not ARN) identifying the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the instance profile. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDate" /></td>
+    <td><CopyableCode code="update_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the policy was last updated. When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. For more information about ARNs, go to Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentCount" /></td>
+    <td><CopyableCode code="attachment_count" /></td>
     <td><code>integer</code></td>
     <td>The number of entities (users, groups, and roles) that the policy is attached to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultVersionId" /></td>
+    <td><CopyableCode code="default_version_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the version of the policy that is set as the default version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A friendly description of the policy. This element is included in the response to the GetPolicy operation. It is not included in the response to the ListPolicies operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsAttachable" /></td>
+    <td><CopyableCode code="is_attachable" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the policy can be attached to an IAM user, group, or role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the policy. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsBoundaryUsageCount" /></td>
+    <td><CopyableCode code="permissions_boundary_usage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of entities (users and roles) for which the policy is used to set the permissions boundary. For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the policy. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name (not ARN) identifying the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the instance profile. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDate" /></td>
+    <td><CopyableCode code="update_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the policy was last updated. When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</td>
 </tr>
@@ -331,18 +331,18 @@ Retrieves information about the specified managed policy, including the policy's
 
 ```sql
 SELECT
-Arn,
-AttachmentCount,
-CreateDate,
-DefaultVersionId,
-Description,
-IsAttachable,
-Path,
-PermissionsBoundaryUsageCount,
-PolicyId,
-PolicyName,
-Tags,
-UpdateDate
+arn,
+attachment_count,
+create_date,
+default_version_id,
+description,
+is_attachable,
+path,
+permissions_boundary_usage_count,
+policy_id,
+policy_name,
+tags,
+update_date
 FROM aws.iam.policies
 WHERE PolicyArn = '{{ PolicyArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -355,18 +355,18 @@ Lists all the managed policies that are available in your Amazon Web Services ac
 
 ```sql
 SELECT
-Arn,
-AttachmentCount,
-CreateDate,
-DefaultVersionId,
-Description,
-IsAttachable,
-Path,
-PermissionsBoundaryUsageCount,
-PolicyId,
-PolicyName,
-Tags,
-UpdateDate
+arn,
+attachment_count,
+create_date,
+default_version_id,
+description,
+is_attachable,
+path,
+permissions_boundary_usage_count,
+policy_id,
+policy_name,
+tags,
+update_date
 FROM aws.iam.policies
 WHERE region = '{{ region }}' -- required
 AND Scope = '{{ Scope }}'
@@ -411,18 +411,18 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-Arn,
-AttachmentCount,
-CreateDate,
-DefaultVersionId,
-Description,
-IsAttachable,
-Path,
-PermissionsBoundaryUsageCount,
-PolicyId,
-PolicyName,
-Tags,
-UpdateDate
+arn,
+attachment_count,
+create_date,
+default_version_id,
+description,
+is_attachable,
+path,
+permissions_boundary_usage_count,
+policy_id,
+policy_name,
+tags,
+update_date
 ;
 ```
 </TabItem>

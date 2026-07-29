@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>UTC Timestamp at which the Upgrade API call was made in "yyyy-MM-ddTHH:mm:ssZ" format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepsList" /></td>
+    <td><CopyableCode code="steps_list" /></td>
     <td><code>array</code></td>
     <td>A list of UpgradeStepItem s representing information about each step performed as pard of a specific Upgrade or Upgrade Eligibility Check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeName" /></td>
+    <td><CopyableCode code="upgrade_name" /></td>
     <td><code>string</code></td>
     <td>A string that describes the update briefly</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeStatus" /></td>
+    <td><CopyableCode code="upgrade_status" /></td>
     <td><code>string</code></td>
     <td>The overall status of the update. The status can take one of the following values: In Progress Succeeded Succeeded with Issues Failed (IN_PROGRESS, SUCCEEDED, SUCCEEDED_WITH_ISSUES, FAILED)</td>
 </tr>
@@ -149,10 +149,10 @@ Retrieves the complete history of the last 10 upgrades that were performed on th
 
 ```sql
 SELECT
-StartTimestamp,
-StepsList,
-UpgradeName,
-UpgradeStatus
+start_timestamp,
+steps_list,
+upgrade_name,
+upgrade_status
 FROM aws.es.upgrade_histories
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

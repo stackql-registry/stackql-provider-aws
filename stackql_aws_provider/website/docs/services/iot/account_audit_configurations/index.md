@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="auditCheckConfigurations" /></td>
+    <td><CopyableCode code="audit_check_configurations" /></td>
     <td><code>object</code></td>
     <td>Which audit checks are enabled and disabled for this account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="auditNotificationTargetConfigurations" /></td>
+    <td><CopyableCode code="audit_notification_target_configurations" /></td>
     <td><code>object</code></td>
     <td>Information about the targets to which audit notifications are sent for this account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role that grants permission to IoT to access information about your devices, policies, certificates, and other items as required when performing an audit. On the first call to UpdateAccountAuditConfiguration, this parameter is required.</td>
 </tr>
@@ -148,9 +148,9 @@ Gets information about the Device Defender audit settings for this account. Sett
 
 ```sql
 SELECT
-auditCheckConfigurations,
-auditNotificationTargetConfigurations,
-roleArn
+audit_check_configurations,
+audit_notification_target_configurations,
+role_arn
 FROM aws.iot.account_audit_configurations
 WHERE region = '{{ region }}' -- required
 ;

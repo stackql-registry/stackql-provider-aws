@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commandArn" /></td>
+    <td><CopyableCode code="command_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the command. For example, arn:aws:iot:<code>&lt;region&gt;</code>:<code>&lt;accountid&gt;</code>:command/<code>&lt;commandId&gt;</code></td>
 </tr>
 <tr>
-    <td><CopyableCode code="commandId" /></td>
+    <td><CopyableCode code="command_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the command. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command was created.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>A short text description of the command. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name in the console for the command. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mandatoryParameters" /></td>
+    <td><CopyableCode code="mandatory_parameters" /></td>
     <td><code>array</code></td>
     <td>A list of parameters for the command created.</td>
 </tr>
@@ -101,12 +101,12 @@ The following fields are returned by `SELECT` queries:
     <td>The command payload object that contains the instructions for the device to process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="payloadTemplate" /></td>
+    <td><CopyableCode code="payload_template" /></td>
     <td><code>string</code></td>
     <td>The payload template for the dynamic command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingDeletion" /></td>
+    <td><CopyableCode code="pending_deletion" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the command is being deleted.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration that determines how the payloadTemplate is processed by the service to generate the final payload sent to devices at StartCommandExecution API invocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role that you provided when creating the command with AWS-IoT-FleetWise as the namespace.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commandArn" /></td>
+    <td><CopyableCode code="command_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commandId" /></td>
+    <td><CopyableCode code="command_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the command. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command was created.</td>
 </tr>
@@ -155,17 +155,17 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the command has been deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the command. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, when the command was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingDeletion" /></td>
+    <td><CopyableCode code="pending_deletion" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the command is pending deletion.</td>
 </tr>
@@ -293,20 +293,20 @@ Gets information about the specified command.
 
 ```sql
 SELECT
-commandArn,
-commandId,
-createdAt,
+command_arn,
+command_id,
+created_at,
 deprecated_,
 description,
-displayName,
-lastUpdatedAt,
-mandatoryParameters,
+display_name,
+last_updated_at,
+mandatory_parameters,
 namespace,
 payload,
-payloadTemplate,
-pendingDeletion,
+payload_template,
+pending_deletion,
 preprocessor,
-roleArn
+role_arn
 FROM aws.iot.commands
 WHERE command_id = '{{ command_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -319,13 +319,13 @@ List all commands in your account.
 
 ```sql
 SELECT
-commandArn,
-commandId,
-createdAt,
+command_arn,
+command_id,
+created_at,
 deprecated_,
-displayName,
-lastUpdatedAt,
-pendingDeletion
+display_name,
+last_updated_at,
+pending_deletion
 FROM aws.iot.commands
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -379,8 +379,8 @@ SELECT
 '{{ command_id }}',
 '{{ region }}'
 RETURNING
-commandArn,
-commandId
+command_arn,
+command_id
 ;
 ```
 </TabItem>
@@ -472,11 +472,11 @@ WHERE
 command_id = '{{ command_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-commandId,
+command_id,
 deprecated_,
 description,
-displayName,
-lastUpdatedAt;
+display_name,
+last_updated_at;
 ```
 </TabItem>
 </Tabs>

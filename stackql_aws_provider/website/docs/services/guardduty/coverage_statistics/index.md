@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CountByCoverageStatus" /></td>
+    <td><CopyableCode code="count_by_coverage_status" /></td>
     <td><code>object</code></td>
     <td>Represents coverage statistics for EKS clusters aggregated by coverage status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CountByResourceType" /></td>
+    <td><CopyableCode code="count_by_resource_type" /></td>
     <td><code>object</code></td>
     <td>Represents coverage statistics for EKS clusters aggregated by resource type.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves aggregated statistics for your account. If you are a GuardDuty adminis
 
 ```sql
 SELECT
-CountByCoverageStatus,
-CountByResourceType
+count_by_coverage_status,
+count_by_resource_type
 FROM aws.guardduty.coverage_statistics
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required

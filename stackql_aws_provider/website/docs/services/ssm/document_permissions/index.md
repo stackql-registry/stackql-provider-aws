@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountIds" /></td>
+    <td><CopyableCode code="account_ids" /></td>
     <td><code>array</code></td>
     <td>The account IDs that have permission to use this document. The ID can be either an Amazon Web Services account number or all.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountSharingInfoList" /></td>
+    <td><CopyableCode code="account_sharing_info_list" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon Web Services accounts where the current document is shared and the version shared with each account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. Use this token to get the next set of results.</td>
 </tr>
@@ -136,9 +136,9 @@ Describes the permissions for a Amazon Web Services Systems Manager document (SS
 
 ```sql
 SELECT
-AccountIds,
-AccountSharingInfoList,
-NextToken
+account_ids,
+account_sharing_info_list,
+next_token
 FROM aws.ssm.document_permissions
 WHERE region = '{{ region }}' -- required
 ;

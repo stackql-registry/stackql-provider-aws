@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>Specifies the allocated storage size in gibibytes (GiB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>Provides the list of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotArn" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the identifier for a DB cluster snapshot. Must match the identifier of an existing snapshot. After you restore a DB cluster using a DBClusterSnapshotIdentifier, you must specify the same DBClusterSnapshotIdentifier for any future updates to the DB cluster. When you specify this property for an update, the DB cluster is not restored from the snapshot again, and the data in the database is not changed. However, if you don't specify the DBClusterSnapshotIdentifier, an empty DB cluster is created, and the original DB cluster is deleted. If you specify a property that is different from the previous snapshot restore property, the DB cluster is restored from the snapshot specified by the DBClusterSnapshotIdentifier, and the original DB cluster is deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Provides the version of the database engine for this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>True if mapping of Amazon Identity and Access Management (IAM) accounts to database accounts is enabled, and otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If StorageEncrypted is true, the Amazon KMS key identifier for the encrypted DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>Provides the license model information for this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>Not supported by Neptune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>integer</code></td>
     <td>Specifies the percentage of the estimated data that has been transferred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>Specifies the port that the DB cluster was listening on at the time of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string</code></td>
     <td>Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>Provides the type of the DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDBClusterSnapshotArn" /></td>
+    <td><CopyableCode code="source_db_cluster_snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>If the DB cluster snapshot was copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot, otherwise, a null value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of this DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the DB cluster snapshot is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type associated with the DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VPC ID associated with the DB cluster snapshot.</td>
 </tr>
@@ -288,27 +288,27 @@ Returns information about DB cluster snapshots. This API action supports paginat
 
 ```sql
 SELECT
-AllocatedStorage,
-AvailabilityZones,
-ClusterCreateTime,
-DBClusterIdentifier,
-DBClusterSnapshotArn,
-DBClusterSnapshotIdentifier,
-Engine,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-PercentProgress,
-Port,
-SnapshotCreateTime,
-SnapshotType,
-SourceDBClusterSnapshotArn,
-Status,
-StorageEncrypted,
-StorageType,
-VpcId
+allocated_storage,
+availability_zones,
+cluster_create_time,
+db_cluster_identifier,
+db_cluster_snapshot_arn,
+db_cluster_snapshot_identifier,
+engine,
+engine_version,
+iam_database_authentication_enabled,
+kms_key_id,
+license_model,
+master_username,
+percent_progress,
+port,
+snapshot_create_time,
+snapshot_type,
+source_db_cluster_snapshot_arn,
+status,
+storage_encrypted,
+storage_type,
+vpc_id
 FROM aws.neptune.db_cluster_snapshots
 WHERE region = '{{ region }}' -- required
 AND DBClusterIdentifier = '{{ DBClusterIdentifier }}'
@@ -351,27 +351,27 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-AllocatedStorage,
-AvailabilityZones,
-ClusterCreateTime,
-DBClusterIdentifier,
-DBClusterSnapshotArn,
-DBClusterSnapshotIdentifier,
-Engine,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-PercentProgress,
-Port,
-SnapshotCreateTime,
-SnapshotType,
-SourceDBClusterSnapshotArn,
-Status,
-StorageEncrypted,
-StorageType,
-VpcId
+allocated_storage,
+availability_zones,
+cluster_create_time,
+db_cluster_identifier,
+db_cluster_snapshot_arn,
+db_cluster_snapshot_identifier,
+engine,
+engine_version,
+iam_database_authentication_enabled,
+kms_key_id,
+license_model,
+master_username,
+percent_progress,
+port,
+snapshot_create_time,
+snapshot_type,
+source_db_cluster_snapshot_arn,
+status,
+storage_encrypted,
+storage_type,
+vpc_id
 ;
 ```
 </TabItem>

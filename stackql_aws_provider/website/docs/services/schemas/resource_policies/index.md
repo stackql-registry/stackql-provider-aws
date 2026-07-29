@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The resource-based policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision ID.</td>
 </tr>
@@ -143,8 +143,8 @@ Retrieves the resource-based policy attached to a given registry.
 
 ```sql
 SELECT
-Policy,
-RevisionId
+policy,
+revision_id
 FROM aws.schemas.resource_policies
 WHERE region = '{{ region }}' -- required
 AND registryName = '{{ registryName }}'
@@ -175,8 +175,8 @@ WHERE
 region = '{{ region }}' --required
 AND registryName = '{{ registryName}}'
 RETURNING
-Policy,
-RevisionId;
+policy,
+revision_id;
 ```
 </TabItem>
 </Tabs>

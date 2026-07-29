@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountPolicies" /></td>
+    <td><CopyableCode code="account_policies" /></td>
     <td><code>array</code></td>
     <td>An array of structures that contain information about the CloudWatch Logs account policies that match the specified filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use when requesting the next set of items. The token expires after 24 hours.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns a list of all CloudWatch Logs account policies in the account. To use th
 
 ```sql
 SELECT
-accountPolicies,
-nextToken
+account_policies,
+next_token
 FROM aws.logs.account_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -174,7 +174,7 @@ AND policyName = '{{ policyName }}' --required
 AND policyDocument = '{{ policyDocument }}' --required
 AND policyType = '{{ policyType }}' --required
 RETURNING
-accountPolicy;
+account_policy;
 ```
 </TabItem>
 </Tabs>

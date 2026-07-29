@@ -113,7 +113,7 @@ SELECT
 '{{ S3AccessPoint }}',
 '{{ region }}'
 RETURNING
-S3AccessPointAttachment
+s3_access_point_attachment
 ;
 ```
 </TabItem>

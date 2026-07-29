@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoCreateTasks" /></td>
+    <td><CopyableCode code="auto_create_tasks" /></td>
     <td><code>boolean</code></td>
     <td>Whether to automatically create tasks using this task definition for all gateways with the specified current version. If false, the task must me created by calling CreateWirelessGatewayTask.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Update" /></td>
+    <td><CopyableCode code="update" /></td>
     <td><code>object</code></td>
     <td>UpdateWirelessGatewayTaskCreate object.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskDefinitions" /></td>
+    <td><CopyableCode code="task_definitions" /></td>
     <td><code>array</code></td>
     <td>The list of task definitions.</td>
 </tr>
@@ -201,10 +201,10 @@ Gets information about a wireless gateway task definition.
 
 ```sql
 SELECT
-Arn,
-AutoCreateTasks,
-Name,
-Update
+arn,
+auto_create_tasks,
+name,
+update
 FROM aws.iotwireless.wireless_gateway_task_definitions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -217,8 +217,8 @@ List the wireless gateway tasks definitions registered to your AWS account.
 
 ```sql
 SELECT
-NextToken,
-TaskDefinitions
+next_token,
+task_definitions
 FROM aws.iotwireless.wireless_gateway_task_definitions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -260,8 +260,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

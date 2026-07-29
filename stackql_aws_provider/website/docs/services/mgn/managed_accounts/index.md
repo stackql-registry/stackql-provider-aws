@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>Managed account, account ID. (pattern: &lt;code&gt;.*&#91;0-9&#93;&#123;12,&#125;.*&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ List Managed Accounts.
 
 ```sql
 SELECT
-accountId
+account_id
 FROM aws.mgn.managed_accounts
 WHERE region = '{{ region }}' -- required
 ;

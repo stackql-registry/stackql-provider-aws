@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CachePolicyConfig" /></td>
+    <td><CopyableCode code="cache_policy_config" /></td>
     <td><code>string</code></td>
     <td>The cache policy configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the cache policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the cache policy was last modified.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>Contains the cache policies in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of cache policies requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more items in the list than are in this response, this element is present. It contains the value that you should use in the Marker field of a subsequent request to continue listing cache policies where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The total number of cache policies returned in the response.</td>
 </tr>
@@ -218,9 +218,9 @@ Gets a cache policy, including the following metadata: The policy's identifier. 
 
 ```sql
 SELECT
-CachePolicyConfig,
-Id,
-LastModifiedTime
+cache_policy_config,
+id,
+last_modified_time
 FROM aws.cloudfront.cache_policies
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -233,10 +233,10 @@ Gets a list of cache policies. You can optionally apply a filter to return only 
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.cache_policies
 WHERE region = '{{ region }}' -- required
 AND Type = '{{ Type }}'
@@ -270,9 +270,9 @@ SELECT
 '{{ CachePolicyConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-CachePolicyConfig,
-Id,
-LastModifiedTime
+cache_policy_config,
+id,
+last_modified_time
 ;
 ```
 </TabItem>
@@ -342,9 +342,9 @@ AND region = '{{ region }}' --required
 AND CachePolicyConfig = '{{ CachePolicyConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-CachePolicyConfig,
-Id,
-LastModifiedTime;
+cache_policy_config,
+id,
+last_modified_time;
 ```
 </TabItem>
 </Tabs>

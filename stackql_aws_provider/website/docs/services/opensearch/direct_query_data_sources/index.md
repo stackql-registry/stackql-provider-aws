@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSourceAccessPolicy" /></td>
+    <td><CopyableCode code="data_source_access_policy" /></td>
     <td><code>string</code></td>
     <td>Access policy rules for an Amazon OpenSearch Service domain endpoint. For more information, see Configuring access policies. The maximum size of a policy document is 100 KB. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceArn" /></td>
+    <td><CopyableCode code="data_source_arn" /></td>
     <td><code>string</code></td>
     <td>The unique, system-generated identifier that represents the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceName" /></td>
+    <td><CopyableCode code="data_source_name" /></td>
     <td><code>string</code></td>
     <td>A unique, user-defined label to identify the data source within your OpenSearch Service environment. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceType" /></td>
+    <td><CopyableCode code="data_source_type" /></td>
     <td><code>object</code></td>
     <td>The type of data source that is used for direct queries. This is a supported Amazon Web Services service, such as CloudWatch Logs or Security Lake.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description that provides additional context and details about the data source. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9_&#93;)*&#91;\\a-zA-Z0-9_@#%*+=:?./!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenSearchArns" /></td>
+    <td><CopyableCode code="open_search_arns" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon Resource Names (ARNs) for the OpenSearch collections that are associated with the direct query data source.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DirectQueryDataSources" /></td>
+    <td><CopyableCode code="direct_query_data_sources" /></td>
     <td><code>array</code></td>
     <td>A list of the direct query data sources that are returned by the ListDirectQueryDataSources API operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -208,12 +208,12 @@ Returns detailed configuration information for a specific direct query data sour
 
 ```sql
 SELECT
-DataSourceAccessPolicy,
-DataSourceArn,
-DataSourceName,
-DataSourceType,
-Description,
-OpenSearchArns
+data_source_access_policy,
+data_source_arn,
+data_source_name,
+data_source_type,
+description,
+open_search_arns
 FROM aws.opensearch.direct_query_data_sources
 WHERE data_source_name = '{{ data_source_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -226,8 +226,8 @@ Lists an inventory of all the direct query data sources that you have configured
 
 ```sql
 SELECT
-DirectQueryDataSources,
-NextToken
+direct_query_data_sources,
+next_token
 FROM aws.opensearch.direct_query_data_sources
 WHERE region = '{{ region }}' -- required
 AND nexttoken = '{{ nexttoken }}'
@@ -264,7 +264,7 @@ region = '{{ region }}' --required
 AND DataSourceName = '{{ DataSourceName }}' --required
 AND DataSourceType = '{{ DataSourceType }}' --required
 RETURNING
-DataSourceArn;
+data_source_arn;
 ```
 </TabItem>
 <TabItem value="update_direct_query_data_source">
@@ -283,7 +283,7 @@ data_source_name = '{{ data_source_name }}' --required
 AND region = '{{ region }}' --required
 AND DataSourceType = '{{ DataSourceType }}' --required
 RETURNING
-DataSourceArn;
+data_source_arn;
 ```
 </TabItem>
 </Tabs>

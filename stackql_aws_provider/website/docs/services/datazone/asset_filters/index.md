@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the asset filter. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data asset. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration of the asset filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the asset filter was created.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the asset filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain where you want to get an asset filter. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveColumnNames" /></td>
+    <td><CopyableCode code="effective_column_names" /></td>
     <td><code>array</code></td>
     <td>The column names of the asset filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveRowFilter" /></td>
+    <td><CopyableCode code="effective_row_filter" /></td>
     <td><code>string</code></td>
     <td>The row filter of the asset filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message that is displayed if the action does not complete successfully.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the asset filter. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data asset. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the asset filter was created.</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the asset filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain where the asset filter lives. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveColumnNames" /></td>
+    <td><CopyableCode code="effective_column_names" /></td>
     <td><code>array</code></td>
     <td>The effective column names of the asset filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveRowFilter" /></td>
+    <td><CopyableCode code="effective_row_filter" /></td>
     <td><code>string</code></td>
     <td>The effective row filter of the asset filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message that is displayed if the action does not succeed.</td>
 </tr>
@@ -295,14 +295,14 @@ Gets an asset filter. Prerequisites: Domain (--domain-identifier), asset (--asse
 SELECT
 id,
 name,
-assetId,
+asset_id,
 configuration,
-createdAt,
+created_at,
 description,
-domainId,
-effectiveColumnNames,
-effectiveRowFilter,
-errorMessage,
+domain_id,
+effective_column_names,
+effective_row_filter,
+error_message,
 status
 FROM aws.datazone.asset_filters
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -320,13 +320,13 @@ Lists asset filters. Prerequisites: A valid domain and asset must exist. The ass
 SELECT
 id,
 name,
-assetId,
-createdAt,
+asset_id,
+created_at,
 description,
-domainId,
-effectiveColumnNames,
-effectiveRowFilter,
-errorMessage,
+domain_id,
+effective_column_names,
+effective_row_filter,
+error_message,
 status
 FROM aws.datazone.asset_filters
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -375,14 +375,14 @@ SELECT
 RETURNING
 id,
 name,
-assetId,
+asset_id,
 configuration,
-createdAt,
+created_at,
 description,
-domainId,
-effectiveColumnNames,
-effectiveRowFilter,
-errorMessage,
+domain_id,
+effective_column_names,
+effective_row_filter,
+error_message,
 status
 ;
 ```
@@ -516,14 +516,14 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-assetId,
+asset_id,
 configuration,
-createdAt,
+created_at,
 description,
-domainId,
-effectiveColumnNames,
-effectiveRowFilter,
-errorMessage,
+domain_id,
+effective_column_names,
+effective_row_filter,
+error_message,
 status;
 ```
 </TabItem>

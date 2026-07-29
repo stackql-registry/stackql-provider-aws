@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="queryEvalStats" /></td>
+    <td><CopyableCode code="query_eval_stats" /></td>
     <td><code>object</code></td>
     <td>The evaluation status of the Gremlin query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryId" /></td>
+    <td><CopyableCode code="query_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the query for which status is being returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The Gremlin query string.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets the status of a specified Gremlin query. When invoking this operation in a 
 
 ```sql
 SELECT
-queryEvalStats,
-queryId,
-queryString
+query_eval_stats,
+query_id,
+query_string
 FROM aws.neptunedata.gremlin_query_status
 WHERE query_id = '{{ query_id }}' -- required
 AND region = '{{ region }}' -- required

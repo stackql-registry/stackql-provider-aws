@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallDetails" /></td>
+    <td><CopyableCode code="call_details" /></td>
     <td><code>object</code></td>
     <td>The call details of a voice tone analysis task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a voice tone analysis task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedTimestamp" /></td>
+    <td><CopyableCode code="started_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a voice tone analysis task started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status of a voice tone analysis task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a voice tone analysis task was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceToneAnalysisTaskId" /></td>
+    <td><CopyableCode code="voice_tone_analysis_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the voice tone analysis task. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceToneAnalysisTaskStatus" /></td>
+    <td><CopyableCode code="voice_tone_analysis_task_status" /></td>
     <td><code>string</code></td>
     <td>The status of a voice tone analysis task, IN_QUEUE, IN_PROGRESS, PARTIAL_SUCCESS, SUCCEEDED, FAILED, or STOPPED. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -164,13 +164,13 @@ Retrieves the details of a voice tone analysis task.
 
 ```sql
 SELECT
-CallDetails,
-CreatedTimestamp,
-StartedTimestamp,
-StatusMessage,
-UpdatedTimestamp,
-VoiceToneAnalysisTaskId,
-VoiceToneAnalysisTaskStatus
+call_details,
+created_timestamp,
+started_timestamp,
+status_message,
+updated_timestamp,
+voice_tone_analysis_task_id,
+voice_tone_analysis_task_status
 FROM aws.chime_sdk_voice.voice_tone_analysis_tasks
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND voice_tone_analysis_task_id = '{{ voice_tone_analysis_task_id }}' -- required

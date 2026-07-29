@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Crawls" /></td>
+    <td><CopyableCode code="crawls" /></td>
     <td><code>array</code></td>
     <td>A list of CrawlerHistory objects representing the crawl runs that meet your criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token for paginating the returned list of tokens, returned if the current segment of the list is not the last.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns all the crawls of a specified crawler. Returns only the crawls that have
 
 ```sql
 SELECT
-Crawls,
-NextToken
+crawls,
+next_token
 FROM aws.glue.crawls
 WHERE region = '{{ region }}' -- required
 ;

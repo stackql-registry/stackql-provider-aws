@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Constraints" /></td>
+    <td><CopyableCode code="constraints" /></td>
     <td><code>object</code></td>
     <td>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the grant was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantId" /></td>
+    <td><CopyableCode code="grant_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GranteePrincipal" /></td>
+    <td><CopyableCode code="grantee_principal" /></td>
     <td><code>string</code></td>
     <td>The identity that gets the permissions in the grant. The GranteePrincipal field in the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, when the grantee principal in the grant is an Amazon Web Services service, the GranteePrincipal field contains the service principal, which might represent several different grantee principals. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IssuingAccount" /></td>
+    <td><CopyableCode code="issuing_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account under which the grant was issued. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the KMS key to which the grant applies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The friendly name that identifies the grant. If a name was provided in the CreateGrant request, that name is returned. Otherwise this value is null. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operations" /></td>
+    <td><CopyableCode code="operations" /></td>
     <td><code>array</code></td>
     <td>The list of operations permitted by the grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetiringPrincipal" /></td>
+    <td><CopyableCode code="retiring_principal" /></td>
     <td><code>string</code></td>
     <td>The principal that can retire the grant. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -173,15 +173,15 @@ Gets a list of all grants for the specified KMS key. You must specify the KMS ke
 
 ```sql
 SELECT
-Constraints,
-CreationDate,
-GrantId,
-GranteePrincipal,
-IssuingAccount,
-KeyId,
-Name,
-Operations,
-RetiringPrincipal
+constraints,
+creation_date,
+grant_id,
+grantee_principal,
+issuing_account,
+key_id,
+name,
+operations,
+retiring_principal
 FROM aws.kms.grants
 WHERE region = '{{ region }}' -- required
 ;
@@ -226,8 +226,8 @@ SELECT
 {{ DryRun }},
 '{{ region }}'
 RETURNING
-GrantId,
-GrantToken
+grant_id,
+grant_token
 ;
 ```
 </TabItem>

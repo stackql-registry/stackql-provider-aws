@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="acquiredLimits" /></td>
+    <td><CopyableCode code="acquired_limits" /></td>
     <td><code>array</code></td>
     <td>The limits and their amounts acquired during a session action. If no limits were acquired during the session, this field isn't returned.</td>
 </tr>
@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
     <td>The session action definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
@@ -72,32 +72,32 @@ The following fields are returned by `SELECT` queries:
     <td>The list of manifest properties that describe file attachments for the task run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processExitCode" /></td>
+    <td><CopyableCode code="process_exit_code" /></td>
     <td><code>integer</code></td>
     <td>The process exit code. The default Deadline Cloud worker agent converts unsigned 32-bit exit codes to signed 32-bit exit codes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="progressMessage" /></td>
+    <td><CopyableCode code="progress_message" /></td>
     <td><code>string</code></td>
     <td>The message that communicates the progress of the session action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="progressPercent" /></td>
+    <td><CopyableCode code="progress_percent" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage completed for a session action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionActionId" /></td>
+    <td><CopyableCode code="session_action_id" /></td>
     <td><code>string</code></td>
     <td>The session action ID. (pattern: &lt;code&gt;sessionaction-&#91;0-9a-f&#93;&#123;32&#125;-(0|(&#91;1-9&#93;&#91;0-9&#93;&#123;0,9&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The session ID for the session action. (pattern: &lt;code&gt;session-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
@@ -107,7 +107,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the session action. (ASSIGNED, RUNNING, CANCELING, SUCCEEDED, FAILED, INTERRUPTED, CANCELED, NEVER_ATTEMPTED, SCHEDULED, RECLAIMING, RECLAIMED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerUpdatedAt" /></td>
+    <td><CopyableCode code="worker_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Linux timestamp of the date and time the session action was last updated.</td>
 </tr>
@@ -131,7 +131,7 @@ The following fields are returned by `SELECT` queries:
     <td>The session action definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
@@ -141,17 +141,17 @@ The following fields are returned by `SELECT` queries:
     <td>The list of manifest properties that describe file attachments for the task run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="progressPercent" /></td>
+    <td><CopyableCode code="progress_percent" /></td>
     <td><code>number (float)</code></td>
     <td>The completion percentage for the session action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionActionId" /></td>
+    <td><CopyableCode code="session_action_id" /></td>
     <td><code>string</code></td>
     <td>The session action ID. (pattern: &lt;code&gt;sessionaction-&#91;0-9a-f&#93;&#123;32&#125;-(0|(&#91;1-9&#93;&#91;0-9&#93;&#123;0,9&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
@@ -161,7 +161,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the session action. (ASSIGNED, RUNNING, CANCELING, SUCCEEDED, FAILED, INTERRUPTED, CANCELED, NEVER_ATTEMPTED, SCHEDULED, RECLAIMING, RECLAIMED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerUpdatedAt" /></td>
+    <td><CopyableCode code="worker_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Linux timestamp of the last date and time that the session action was updated.</td>
 </tr>
@@ -185,7 +185,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of errors for session actions that could not be retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionActions" /></td>
+    <td><CopyableCode code="session_actions" /></td>
     <td><code>array</code></td>
     <td>A list of session actions that were successfully retrieved.</td>
 </tr>
@@ -310,18 +310,18 @@ Gets a session action for the job.
 
 ```sql
 SELECT
-acquiredLimits,
+acquired_limits,
 definition,
-endedAt,
+ended_at,
 manifests,
-processExitCode,
-progressMessage,
-progressPercent,
-sessionActionId,
-sessionId,
-startedAt,
+process_exit_code,
+progress_message,
+progress_percent,
+session_action_id,
+session_id,
+started_at,
 status,
-workerUpdatedAt
+worker_updated_at
 FROM aws.deadline.session_actions
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -338,13 +338,13 @@ Lists session actions.
 ```sql
 SELECT
 definition,
-endedAt,
+ended_at,
 manifests,
-progressPercent,
-sessionActionId,
-startedAt,
+progress_percent,
+session_action_id,
+started_at,
 status,
-workerUpdatedAt
+worker_updated_at
 FROM aws.deadline.session_actions
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -364,7 +364,7 @@ Retrieves multiple session actions in a single request. This is a batch version 
 ```sql
 SELECT
 errors,
-sessionActions
+session_actions
 FROM aws.deadline.session_actions
 WHERE region = '{{ region }}' -- required
 ;

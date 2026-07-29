@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionStatus" /></td>
+    <td><CopyableCode code="connection_status" /></td>
     <td><code>string</code></td>
     <td>The connection status of the wireless gateway. (Connected, Disconnected)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUplinkReceivedAt" /></td>
+    <td><CopyableCode code="last_uplink_received_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when the most recent uplink was received. This value is only valid for 3 months. (pattern: &lt;code&gt;^(&#91;\+-&#93;?\d&#123;4&#125;(?!\d&#123;2&#125;\b))((-?)((0&#91;1-9&#93;|1&#91;0-2&#93;)(\3(&#91;12&#93;\d|0&#91;1-9&#93;|3&#91;01&#93;))?|W(&#91;0-4&#93;\d|5&#91;0-2&#93;)(-?&#91;1-7&#93;)?|(00&#91;1-9&#93;|0&#91;1-9&#93;\d|&#91;12&#93;\d&#123;2&#125;|3(&#91;0-5&#93;\d|6&#91;1-6&#93;)))(&#91;T\s&#93;(((&#91;01&#93;\d|2&#91;0-3&#93;)((:?)&#91;0-5&#93;\d)?|24\:?00)(&#91;\.,&#93;\d+(?!:))?)?(\17&#91;0-5&#93;\d(&#91;\.,&#93;\d+)?)?(&#91;zZ&#93;|(&#91;\+-&#93;)(&#91;01&#93;\d|2&#91;0-3&#93;):?(&#91;0-5&#93;\d)?)?)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WirelessGatewayId" /></td>
+    <td><CopyableCode code="wireless_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the wireless gateway.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets operating information about a wireless gateway.
 
 ```sql
 SELECT
-ConnectionStatus,
-LastUplinkReceivedAt,
-WirelessGatewayId
+connection_status,
+last_uplink_received_at,
+wireless_gateway_id
 FROM aws.iotwireless.wireless_gateway_statistics
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

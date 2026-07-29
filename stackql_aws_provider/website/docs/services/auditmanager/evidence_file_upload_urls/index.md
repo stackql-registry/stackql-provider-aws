@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="evidenceFileName" /></td>
+    <td><CopyableCode code="evidence_file_name" /></td>
     <td><code>string</code></td>
     <td>The name of the uploaded manual evidence file that the presigned URL was generated for. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadUrl" /></td>
+    <td><CopyableCode code="upload_url" /></td>
     <td><code>string</code></td>
     <td>The presigned URL that was generated. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ Creates a presigned Amazon S3 URL that can be used to upload a file as manual ev
 
 ```sql
 SELECT
-evidenceFileName,
-uploadUrl
+evidence_file_name,
+upload_url
 FROM aws.auditmanager.evidence_file_upload_urls
 WHERE fileName = '{{ fileName }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailableInstanceCount" /></td>
+    <td><CopyableCode code="available_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The remaining capacity. Indicates the number of instances that can be launched in the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationId" /></td>
+    <td><CopyableCode code="capacity_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of instance for which the Capacity Reservation reserves capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceUsages" /></td>
+    <td><CopyableCode code="instance_usages" /></td>
     <td><code>string</code></td>
     <td>Information about the Capacity Reservation usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Interruptible" /></td>
+    <td><CopyableCode code="interruptible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the Capacity Reservation is interruptible, meaning instances may be terminated when the owner reclaims capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InterruptibleCapacityAllocation" /></td>
+    <td><CopyableCode code="interruptible_capacity_allocation" /></td>
     <td><code>string</code></td>
     <td>Information about the capacity allocated to the interruptible Capacity Reservation, including instance counts and allocation status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InterruptionInfo" /></td>
+    <td><CopyableCode code="interruption_info" /></td>
     <td><code>string</code></td>
     <td>Details about the interruption configuration and source reservation for interruptible Capacity Reservations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Capacity Reservation. A Capacity Reservation can be in one of the following states: active - The capacity is available for use. expired - The Capacity Reservation expired automatically at the date and time specified in your reservation request. The reserved capacity is no longer available for your use. cancelled - The Capacity Reservation was canceled. The reserved capacity is no longer available for your use. pending - The Capacity Reservation request was successful but the capacity provisioning is still pending. failed - The Capacity Reservation request has failed. A request can fail due to request parameters that are not valid, capacity constraints, or instance limit constraints. You can view a failed request for 60 minutes. scheduled - (Future-dated Capacity Reservations) The future-dated Capacity Reservation request was approved and the Capacity Reservation is scheduled for delivery on the requested start date. payment-pending - (Capacity Blocks) The upfront payment has not been processed yet. payment-failed - (Capacity Blocks) The upfront payment was not processed in the 12-hour time frame. Your Capacity Block was released. assessing - (Future-dated Capacity Reservations) Amazon EC2 is assessing your request for a future-dated Capacity Reservation. delayed - (Future-dated Capacity Reservations) Amazon EC2 encountered a delay in provisioning the requested future-dated Capacity Reservation. Amazon EC2 is unable to deliver the requested capacity by the requested start date and time. unsupported - (Future-dated Capacity Reservations) Amazon EC2 can't support the future-dated Capacity Reservation request due to capacity constraints. You can view unsupported requests for 30 days. The Capacity Reservation will not be delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalInstanceCount" /></td>
+    <td><CopyableCode code="total_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances for which the Capacity Reservation reserves capacity.</td>
 </tr>
@@ -184,16 +184,16 @@ Gets usage information about a Capacity Reservation. If the Capacity Reservation
 
 ```sql
 SELECT
-AvailableInstanceCount,
-CapacityReservationId,
-InstanceType,
-InstanceUsages,
-Interruptible,
-InterruptibleCapacityAllocation,
-InterruptionInfo,
-NextToken,
-State,
-TotalInstanceCount
+available_instance_count,
+capacity_reservation_id,
+instance_type,
+instance_usages,
+interruptible,
+interruptible_capacity_allocation,
+interruption_info,
+next_token,
+state,
+total_instance_count
 FROM aws.ec2.capacity_reservation_usages
 WHERE CapacityReservationId = '{{ CapacityReservationId }}' -- required
 AND region = '{{ region }}' -- required

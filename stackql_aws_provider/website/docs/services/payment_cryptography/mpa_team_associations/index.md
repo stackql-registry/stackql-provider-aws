@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The protected operation associated with the MPA team. (IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationState" /></td>
+    <td><CopyableCode code="association_state" /></td>
     <td><code>string</code></td>
     <td>The state of the MPA team association. (ACTIVE, UPDATE_PENDING, DELETE_PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MpaStatus" /></td>
+    <td><CopyableCode code="mpa_status" /></td>
     <td><code>object</code></td>
     <td>The MPA session status for the association, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MpaTeamArn" /></td>
+    <td><CopyableCode code="mpa_team_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the MPA team. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:mpa:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:approval-team/&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the Multi-Party Approval (MPA) team association for a protected operatio
 
 ```sql
 SELECT
-Action,
-AssociationState,
-MpaStatus,
-MpaTeamArn
+action,
+association_state,
+mpa_status,
+mpa_team_arn
 FROM aws.payment_cryptography.mpa_team_associations
 WHERE region = '{{ region }}' -- required
 ;

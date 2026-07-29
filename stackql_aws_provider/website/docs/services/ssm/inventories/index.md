@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Data" /></td>
+    <td><CopyableCode code="data" /></td>
     <td><code>object</code></td>
     <td>The data section in the inventory result entity JSON.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID of the inventory result entity. For example, for managed node inventory the result will be the managed node ID. For EC2 instance inventory, the result will be the instance ID.</td>
 </tr>
@@ -138,8 +138,8 @@ Query inventory information. This includes managed node status, such as Stopped 
 
 ```sql
 SELECT
-Data,
-Id
+data,
+id
 FROM aws.ssm.inventories
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,7 +170,7 @@ region = '{{ region }}' --required
 AND InstanceId = '{{ InstanceId }}' --required
 AND Items = '{{ Items }}' --required
 RETURNING
-Message;
+message;
 ```
 </TabItem>
 </Tabs>

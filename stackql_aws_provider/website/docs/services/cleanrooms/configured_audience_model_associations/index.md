@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the configured audience model association. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/configuredaudiencemodelassociation/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the collaboration that contains this configured audience model association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the collaboration that contains this configured audience model association. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured audience model that was used for this configured audience model association. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured audience model association was created.</td>
 </tr>
@@ -91,22 +91,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured audience model association. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="manageResourcePolicies" /></td>
+    <td><CopyableCode code="manage_resource_policies" /></td>
     <td><code>boolean</code></td>
     <td>When TRUE, indicates that the resource policy for the configured audience model resource being associated is configured for Clean Rooms to manage permissions related to the given collaboration. When FALSE, indicates that the configured audience model resource owner will manage permissions related to the given collaboration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the membership that contains this configured audience model association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the membership that contains this configured audience model association. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured audience model association was updated.</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the configured audience model association. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/configuredaudiencemodelassociation/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the collaboration that contains the configured audience model association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the collaboration that configured audience model is associated with. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured audience model that was used for this configured audience model association. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured audience model association was created.</td>
 </tr>
@@ -165,17 +165,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured audience model association. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the membership that contains the configured audience model association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the membership that contains the configured audience model association. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured audience model association was updated.</td>
 </tr>
@@ -296,15 +296,15 @@ SELECT
 id,
 name,
 arn,
-collaborationArn,
-collaborationId,
-configuredAudienceModelArn,
-createTime,
+collaboration_arn,
+collaboration_id,
+configured_audience_model_arn,
+create_time,
 description,
-manageResourcePolicies,
-membershipArn,
-membershipId,
-updateTime
+manage_resource_policies,
+membership_arn,
+membership_id,
+update_time
 FROM aws.cleanrooms.configured_audience_model_associations
 WHERE configured_audience_model_association_identifier = '{{ configured_audience_model_association_identifier }}' -- required
 AND membership_identifier = '{{ membership_identifier }}' -- required
@@ -321,14 +321,14 @@ SELECT
 id,
 name,
 arn,
-collaborationArn,
-collaborationId,
-configuredAudienceModelArn,
-createTime,
+collaboration_arn,
+collaboration_id,
+configured_audience_model_arn,
+create_time,
 description,
-membershipArn,
-membershipId,
-updateTime
+membership_arn,
+membership_id,
+update_time
 FROM aws.cleanrooms.configured_audience_model_associations
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -372,7 +372,7 @@ SELECT
 '{{ membership_identifier }}',
 '{{ region }}'
 RETURNING
-configuredAudienceModelAssociation
+configured_audience_model_association
 ;
 ```
 </TabItem>
@@ -427,7 +427,7 @@ configured_audience_model_association_identifier = '{{ configured_audience_model
 AND membership_identifier = '{{ membership_identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-configuredAudienceModelAssociation;
+configured_audience_model_association;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessLogs" /></td>
+    <td><CopyableCode code="access_logs" /></td>
     <td><code>string</code></td>
     <td>Details about the logging options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessInstanceId" /></td>
+    <td><CopyableCode code="verified_access_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Verified Access instance.</td>
 </tr>
@@ -171,8 +171,8 @@ Describes the specified Amazon Web Services Verified Access instances.
 
 ```sql
 SELECT
-AccessLogs,
-VerifiedAccessInstanceId
+access_logs,
+verified_access_instance_id
 FROM aws.ec2.verified_access_instance_logging_configurations
 WHERE region = '{{ region }}' -- required
 AND VerifiedAccessInstanceId = '{{ VerifiedAccessInstanceId }}'
@@ -209,8 +209,8 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND ClientToken = '{{ ClientToken}}'
 RETURNING
-AccessLogs,
-VerifiedAccessInstanceId;
+access_logs,
+verified_access_instance_id;
 ```
 </TabItem>
 </Tabs>

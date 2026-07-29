@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChecksumAlgorithm" /></td>
+    <td><CopyableCode code="checksum_algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm that was used to create a checksum of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChecksumType" /></td>
+    <td><CopyableCode code="checksum_type" /></td>
     <td><code>string</code></td>
     <td>The checksum type that is used to calculate the object’s checksum value. For more information, see Checking object integrity in the Amazon S3 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The entity tag is a hash of the object. The ETag reflects changes only to the contents of an object, not its metadata. The ETag may or may not be an MD5 digest of the object data. Whether or not it is depends on how the object was created and how it is encrypted as described below: Objects created by the PUT Object, POST Object, or Copy operation, or through the Amazon Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have ETags that are an MD5 digest of their object data. Objects created by the PUT Object, POST Object, or Copy operation, or through the Amazon Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have ETags that are not an MD5 digest of their object data. If an object is created by either the Multipart Upload or Part Copy operation, the ETag is not an MD5 digest, regardless of the method of encryption. If an object is larger than 16 MB, the Amazon Web Services Management Console will upload or copy that object as a Multipart Upload, and therefore the ETag will not be an MD5 digest. Directory buckets - MD5 is not supported by directory buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The name that you assign to an object. You use the object key to retrieve the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>Creation date of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the object Directory buckets - The bucket owner is returned as the object owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreStatus" /></td>
+    <td><CopyableCode code="restore_status" /></td>
     <td><code>string</code></td>
     <td>Specifies the restoration status of an object. Objects in certain storage classes must be restored before they can be retrieved. For more information about these storage classes and how to work with archived objects, see Working with archived objects in the Amazon S3 User Guide. This functionality is not supported for directory buckets. Directory buckets only support EXPRESS_ONEZONE (the S3 Express One Zone storage class) in Availability Zones and ONEZONE_IA (the S3 One Zone-Infrequent Access storage class) in Dedicated Local Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer</code></td>
     <td>Size in bytes of the object</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageClass" /></td>
+    <td><CopyableCode code="storage_class" /></td>
     <td><code>string</code></td>
     <td>The class of storage used to store the object. Directory buckets - Directory buckets only support EXPRESS_ONEZONE (the S3 Express One Zone storage class) in Availability Zones and ONEZONE_IA (the S3 One Zone-Infrequent Access storage class) in Dedicated Local Zones.</td>
 </tr>
@@ -214,15 +214,15 @@ Returns some or all (up to 1,000) of the objects in a bucket with each request. 
 
 ```sql
 SELECT
-ChecksumAlgorithm,
-ChecksumType,
-ETag,
-Key,
-LastModified,
-Owner,
-RestoreStatus,
-Size,
-StorageClass
+checksum_algorithm,
+checksum_type,
+e_tag,
+key,
+last_modified,
+owner,
+restore_status,
+size,
+storage_class
 FROM aws.s3.objects_v2s
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

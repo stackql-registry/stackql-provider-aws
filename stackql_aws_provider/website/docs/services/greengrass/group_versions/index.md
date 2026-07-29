@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the group version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the group version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>Information about a group version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the group that the version is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The ID of the group version.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the parent definition that the version is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The ID of the version.</td>
 </tr>
@@ -214,11 +214,11 @@ Retrieves information about a group version.
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Definition,
-Id,
-Version
+arn,
+creation_timestamp,
+definition,
+id,
+version
 FROM aws.greengrass.group_versions
 WHERE group_id = '{{ group_id }}' -- required
 AND group_version_id = '{{ group_version_id }}' -- required
@@ -232,10 +232,10 @@ Lists the versions of a group.
 
 ```sql
 SELECT
-Arn,
-CreationTimestamp,
-Id,
-Version
+arn,
+creation_timestamp,
+id,
+version
 FROM aws.greengrass.group_versions
 WHERE group_id = '{{ group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -285,10 +285,10 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn,
-CreationTimestamp,
-Id,
-Version
+arn,
+creation_timestamp,
+id,
+version
 ;
 ```
 </TabItem>

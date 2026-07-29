@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel. The name is the primary identifier for the channel, and must be unique for your account in the AWS Region and channel group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for your channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current Entity Tag (ETag) associated with this resource. The entity tag can be used to safely make concurrent updates to the resource. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestEndpoints" /></td>
+    <td><CopyableCode code="ingest_endpoints" /></td>
     <td><code>array</code></td>
     <td>The list of ingest endpoints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputSwitchConfiguration" /></td>
+    <td><CopyableCode code="input_switch_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for input switching based on the media quality confidence score (MQCS) as provided from AWS Elemental MediaLive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputType" /></td>
+    <td><CopyableCode code="input_type" /></td>
     <td><code>string</code></td>
     <td>The input type will be an immutable field which will be used to define whether the channel will allow CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). (HLS, CMAF)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputHeaderConfiguration" /></td>
+    <td><CopyableCode code="output_header_configuration" /></td>
     <td><code>object</code></td>
     <td>The settings for what common media server data (CMSD) headers AWS Elemental MediaPackage includes in responses to the CDN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResetAt" /></td>
+    <td><CopyableCode code="reset_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the channel was last reset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The comma-separated list of tag key:value pairs assigned to the channel.</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel. The name is the primary identifier for the channel, and must be unique for your account in the AWS Region and channel group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Any descriptive information that you want to add to the channel for future identification purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputType" /></td>
+    <td><CopyableCode code="input_type" /></td>
     <td><code>string</code></td>
     <td>The input type will be an immutable field which will be used to define whether the channel will allow CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). (HLS, CMAF)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel was modified.</td>
 </tr>
@@ -295,19 +295,19 @@ Retrieves the specified channel that's configured in AWS Elemental MediaPackage.
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-ChannelName,
-CreatedAt,
-Description,
-ETag,
-IngestEndpoints,
-InputSwitchConfiguration,
-InputType,
-ModifiedAt,
-OutputHeaderConfiguration,
-ResetAt,
-Tags
+arn,
+channel_group_name,
+channel_name,
+created_at,
+description,
+e_tag,
+ingest_endpoints,
+input_switch_configuration,
+input_type,
+modified_at,
+output_header_configuration,
+reset_at,
+tags
 FROM aws.mediapackagev2.channels
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND channel_name = '{{ channel_name }}' -- required
@@ -321,13 +321,13 @@ Retrieves all channels in a specific channel group that are configured in AWS El
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-ChannelName,
-CreatedAt,
-Description,
-InputType,
-ModifiedAt
+arn,
+channel_group_name,
+channel_name,
+created_at,
+description,
+input_type,
+modified_at
 FROM aws.mediapackagev2.channels
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -375,18 +375,18 @@ SELECT
 '{{ region }}',
 '{{ x-amzn-client-token }}'
 RETURNING
-Arn,
-ChannelGroupName,
-ChannelName,
-CreatedAt,
-Description,
-ETag,
-IngestEndpoints,
-InputSwitchConfiguration,
-InputType,
-ModifiedAt,
-OutputHeaderConfiguration,
-Tags
+arn,
+channel_group_name,
+channel_name,
+created_at,
+description,
+e_tag,
+ingest_endpoints,
+input_switch_configuration,
+input_type,
+modified_at,
+output_header_configuration,
+tags
 ;
 ```
 </TabItem>
@@ -455,18 +455,18 @@ AND channel_name = '{{ channel_name }}' --required
 AND region = '{{ region }}' --required
 AND `x-amzn-update-if-match` = '{{ x-amzn-update-if-match}}'
 RETURNING
-Arn,
-ChannelGroupName,
-ChannelName,
-CreatedAt,
-Description,
-ETag,
-IngestEndpoints,
-InputSwitchConfiguration,
-InputType,
-ModifiedAt,
-OutputHeaderConfiguration,
-Tags;
+arn,
+channel_group_name,
+channel_name,
+created_at,
+description,
+e_tag,
+ingest_endpoints,
+input_switch_configuration,
+input_type,
+modified_at,
+output_header_configuration,
+tags;
 ```
 </TabItem>
 </Tabs>

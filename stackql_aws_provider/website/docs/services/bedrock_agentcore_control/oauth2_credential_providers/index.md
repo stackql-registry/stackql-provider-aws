@@ -56,42 +56,42 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the OAuth2 credential provider. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="callbackUrl" /></td>
+    <td><CopyableCode code="callback_url" /></td>
     <td><code>string</code></td>
     <td>Callback URL to register on the OAuth2 credential provider as an allowed callback URL. This URL is where the OAuth2 authorization server redirects users after they complete the authorization flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientSecretArn" /></td>
+    <td><CopyableCode code="client_secret_arn" /></td>
     <td><code>object</code></td>
     <td>Contains information about a secret in AWS Secrets Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the OAuth2 credential provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderArn" /></td>
+    <td><CopyableCode code="credential_provider_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the credential provider requested. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):acps:&#91;A-Za-z0-9-&#93;&#123;1,64&#125;:&#91;0-9&#93;&#123;12&#125;:token-vault/&#91;a-zA-Z0-9-.&#93;+/oauth2credentialprovider/&#91;a-zA-Z0-9-.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderVendor" /></td>
+    <td><CopyableCode code="credential_provider_vendor" /></td>
     <td><code>string</code></td>
     <td>The vendor of the OAuth2 credential provider. (GoogleOauth2, GithubOauth2, SlackOauth2, SalesforceOauth2, MicrosoftOauth2, CustomOauth2, AtlassianOauth2, LinkedinOauth2, XOauth2, OktaOauth2, OneLoginOauth2, PingOneOauth2, FacebookOauth2, YandexOauth2, RedditOauth2, ZoomOauth2, TwitchOauth2, SpotifyOauth2, DropboxOauth2, NotionOauth2, HubspotOauth2, CyberArkOauth2, FusionAuthOauth2, Auth0Oauth2, CognitoOauth2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the OAuth2 credential provider is in a failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the OAuth2 credential provider was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="oauth2ProviderConfigOutput" /></td>
+    <td><CopyableCode code="oauth_2_provider_config_output" /></td>
     <td><code>object</code></td>
     <td>Contains the output configuration for an OAuth2 provider.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the OAuth2 credential provider. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the OAuth2 credential provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderArn" /></td>
+    <td><CopyableCode code="credential_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the OAuth2 credential provider. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):acps:&#91;A-Za-z0-9-&#93;&#123;1,64&#125;:&#91;0-9&#93;&#123;12&#125;:token-vault/&#91;a-zA-Z0-9-.&#93;+/oauth2credentialprovider/&#91;a-zA-Z0-9-.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="credentialProviderVendor" /></td>
+    <td><CopyableCode code="credential_provider_vendor" /></td>
     <td><code>string</code></td>
     <td>The vendor of the OAuth2 credential provider. (GoogleOauth2, GithubOauth2, SlackOauth2, SalesforceOauth2, MicrosoftOauth2, CustomOauth2, AtlassianOauth2, LinkedinOauth2, XOauth2, OktaOauth2, OneLoginOauth2, PingOneOauth2, FacebookOauth2, YandexOauth2, RedditOauth2, ZoomOauth2, TwitchOauth2, SpotifyOauth2, DropboxOauth2, NotionOauth2, HubspotOauth2, CyberArkOauth2, FusionAuthOauth2, Auth0Oauth2, CognitoOauth2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the OAuth2 credential provider was last updated.</td>
 </tr>
@@ -234,14 +234,14 @@ Retrieves information about an OAuth2 credential provider.
 ```sql
 SELECT
 name,
-callbackUrl,
-clientSecretArn,
-createdTime,
-credentialProviderArn,
-credentialProviderVendor,
-failureReason,
-lastUpdatedTime,
-oauth2ProviderConfigOutput,
+callback_url,
+client_secret_arn,
+created_time,
+credential_provider_arn,
+credential_provider_vendor,
+failure_reason,
+last_updated_time,
+oauth_2_provider_config_output,
 status
 FROM aws.bedrock_agentcore_control.oauth2_credential_providers
 WHERE region = '{{ region }}' -- required
@@ -255,10 +255,10 @@ Lists all OAuth2 credential providers in your account.
 ```sql
 SELECT
 name,
-createdTime,
-credentialProviderArn,
-credentialProviderVendor,
-lastUpdatedTime
+created_time,
+credential_provider_arn,
+credential_provider_vendor,
+last_updated_time
 FROM aws.bedrock_agentcore_control.oauth2_credential_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,10 +296,10 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-callbackUrl,
-clientSecretArn,
-credentialProviderArn,
-oauth2ProviderConfigOutput,
+callback_url,
+client_secret_arn,
+credential_provider_arn,
+oauth_2_provider_config_output,
 status
 ;
 ```
@@ -426,13 +426,13 @@ AND credentialProviderVendor = '{{ credentialProviderVendor }}' --required
 AND oauth2ProviderConfigInput = '{{ oauth2ProviderConfigInput }}' --required
 RETURNING
 name,
-callbackUrl,
-clientSecretArn,
-createdTime,
-credentialProviderArn,
-credentialProviderVendor,
-lastUpdatedTime,
-oauth2ProviderConfigOutput,
+callback_url,
+client_secret_arn,
+created_time,
+credential_provider_arn,
+credential_provider_vendor,
+last_updated_time,
+oauth_2_provider_config_output,
 status;
 ```
 </TabItem>

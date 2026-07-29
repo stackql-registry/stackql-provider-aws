@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the flow definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason your flow definition failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionArn" /></td>
+    <td><CopyableCode code="flow_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow defintion. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:flow-definition/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionName" /></td>
+    <td><CopyableCode code="flow_definition_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow definition. (pattern: &lt;code&gt;&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionStatus" /></td>
+    <td><CopyableCode code="flow_definition_status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow definition. Valid values are listed below. (Initializing, Active, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopActivationConfig" /></td>
+    <td><CopyableCode code="human_loop_activation_config" /></td>
     <td><code>object</code></td>
     <td>An object containing information about what triggers a human review workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopConfig" /></td>
+    <td><CopyableCode code="human_loop_config" /></td>
     <td><code>object</code></td>
     <td>An object containing information about who works on the task, the workforce task price, and other task details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopRequestSource" /></td>
+    <td><CopyableCode code="human_loop_request_source" /></td>
     <td><code>object</code></td>
     <td>Container for configuring the source of human task requests. Used to specify if Amazon Rekognition or Amazon Textract is used as an integration source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>An object containing information about the output file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) execution role for the flow definition. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when SageMaker created the flow definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason why the flow definition creation failed. A failure reason is returned only when the flow definition status is Failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionArn" /></td>
+    <td><CopyableCode code="flow_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow definition. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:flow-definition/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionName" /></td>
+    <td><CopyableCode code="flow_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow definition. (pattern: &lt;code&gt;&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionStatus" /></td>
+    <td><CopyableCode code="flow_definition_status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow definition. Valid values: (Initializing, Active, Failed, Deleting)</td>
 </tr>
@@ -226,16 +226,16 @@ Returns information about the specified flow definition.
 
 ```sql
 SELECT
-CreationTime,
-FailureReason,
-FlowDefinitionArn,
-FlowDefinitionName,
-FlowDefinitionStatus,
-HumanLoopActivationConfig,
-HumanLoopConfig,
-HumanLoopRequestSource,
-OutputConfig,
-RoleArn
+creation_time,
+failure_reason,
+flow_definition_arn,
+flow_definition_name,
+flow_definition_status,
+human_loop_activation_config,
+human_loop_config,
+human_loop_request_source,
+output_config,
+role_arn
 FROM aws.sagemaker.flow_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,11 +247,11 @@ Returns information about the flow definitions in your account.
 
 ```sql
 SELECT
-CreationTime,
-FailureReason,
-FlowDefinitionArn,
-FlowDefinitionName,
-FlowDefinitionStatus
+creation_time,
+failure_reason,
+flow_definition_arn,
+flow_definition_name,
+flow_definition_status
 FROM aws.sagemaker.flow_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -294,7 +294,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-FlowDefinitionArn
+flow_definition_arn
 ;
 ```
 </TabItem>

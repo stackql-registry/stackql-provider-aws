@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="acceptedQueryCount" /></td>
+    <td><CopyableCode code="accepted_query_count" /></td>
     <td><code>integer</code></td>
     <td>The number of queries that have been accepted but not yet completed, including queries in the queue.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of current openCypher queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runningQueryCount" /></td>
+    <td><CopyableCode code="running_query_count" /></td>
     <td><code>integer</code></td>
     <td>The number of currently running openCypher queries.</td>
 </tr>
@@ -134,9 +134,9 @@ Lists active openCypher queries. See Neptune openCypher status endpoint for more
 
 ```sql
 SELECT
-acceptedQueryCount,
+accepted_query_count,
 queries,
-runningQueryCount
+running_query_count
 FROM aws.neptunedata.open_cypher_queries
 WHERE region = '{{ region }}' -- required
 AND includeWaiting = '{{ includeWaiting }}'

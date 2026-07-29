@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the attachment file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileName" /></td>
+    <td><CopyableCode code="file_name" /></td>
     <td><code>string</code></td>
     <td>The name of the attachment file.</td>
 </tr>
@@ -132,7 +132,7 @@ Returns the attachment that has the specified ID. Attachments can include screen
 ```sql
 SELECT
 data,
-fileName
+file_name
 FROM aws.support.attachments
 WHERE region = '{{ region }}' -- required
 ;
@@ -162,8 +162,8 @@ WHERE
 region = '{{ region }}' --required
 AND attachments = '{{ attachments }}' --required
 RETURNING
-attachmentSetId,
-expiryTime;
+attachment_set_id,
+expiry_time;
 ```
 </TabItem>
 </Tabs>

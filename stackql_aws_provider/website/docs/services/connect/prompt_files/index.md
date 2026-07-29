@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromptPresignedUrl" /></td>
+    <td><CopyableCode code="prompt_presigned_url" /></td>
     <td><code>string</code></td>
     <td>A generated URL to the prompt that can be given to an unauthorized user so they can access the prompt in S3.</td>
 </tr>
@@ -139,9 +139,9 @@ Gets the prompt file.
 
 ```sql
 SELECT
-LastModifiedRegion,
-LastModifiedTime,
-PromptPresignedUrl
+last_modified_region,
+last_modified_time,
+prompt_presigned_url
 FROM aws.connect.prompt_files
 WHERE instance_id = '{{ instance_id }}' -- required
 AND prompt_id = '{{ prompt_id }}' -- required

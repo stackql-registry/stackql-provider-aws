@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of OTel enrichment for the account. Valid values are Running (enrichment is enabled) and Stopped (enrichment is disabled). (Running, Stopped)</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the current status of vended metric enrichment for the account, includin
 
 ```sql
 SELECT
-Status
+status
 FROM aws.cloudwatch.o_tel_enrichments
 WHERE region = '{{ region }}' -- required
 ;

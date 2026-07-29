@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeName" /></td>
+    <td><CopyableCode code="compute_name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label for the compute resource. The compute resource that is hosting the game session. For EC2 fleets, this is the EC2 instance ID. For Container fleets, each game server container group on a fleet instance is assigned a compute name. For Anywhere fleets, this is the custom compute name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorId" /></td>
+    <td><CopyableCode code="creator_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that limits the number of game sessions a player can create.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentPlayerSessionCount" /></td>
+    <td><CopyableCode code="current_player_session_count" /></td>
     <td><code>integer</code></td>
     <td>Number of players currently in the game session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS identifier assigned to the instance that is running the game session. Values have the following format: TLS-enabled fleets: &lt;unique identifier&gt;.&lt;region identifier&gt;.amazongamelift.com. Non-TLS-enabled fleets: ec2-&lt;unique identifier&gt;.compute.amazonaws.com. (See Amazon EC2 Instance IP Addressing.) When connecting to a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetArn" /></td>
+    <td><CopyableCode code="fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the GameLift fleet that this game session is running on. (pattern: &lt;code&gt;^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the fleet that the game session is running on. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameProperties" /></td>
+    <td><CopyableCode code="game_properties" /></td>
     <td><code>array</code></td>
     <td>A set of key-value pairs that can store custom data in a game session. For example: &#123;"Key": "difficulty", "Value": "novice"&#125;. Avoid using periods (".") in property keys if you plan to search for game sessions by properties. Property keys containing periods cannot be searched and will be filtered out from search results due to search index limitations. If you use SearchGameSessions API, there is a limit of 500 game property keys across all game sessions and all fleets per region. If the limit is exceeded, there will potentially be game session entries missing from SearchGameSessions API results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameSessionData" /></td>
+    <td><CopyableCode code="game_session_data" /></td>
     <td><code>string</code></td>
     <td>A set of custom game session properties, formatted as a single string value. This data is passed to a game server process with a request to start a new game session. For more information, see Start a game session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameSessionId" /></td>
+    <td><CopyableCode code="game_session_id" /></td>
     <td><code>string</code></td>
     <td>An identifier for the game session that is unique across all regions. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
     <td>The fleet location where the game session is running. This value might specify the fleet's home Region or a remote location. Location is expressed as an Amazon Web Services Region code such as us-west-2. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchmakerData" /></td>
+    <td><CopyableCode code="matchmaker_data" /></td>
     <td><code>string</code></td>
     <td>Information about the matchmaking process that resulted in the game session, if matchmaking was used. Data is in JSON syntax, formatted as a string. Information includes the matchmaker ID as well as player attributes and team assignments. For more details on matchmaker data, see Match Data. Matchmaker data is updated whenever new players are added during a successful backfill (see StartMatchBackfill).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumPlayerSessionCount" /></td>
+    <td><CopyableCode code="maximum_player_session_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of players that can be connected simultaneously to the game session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with a game session. Session names do not need to be unique.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlayerGatewayStatus" /></td>
+    <td><CopyableCode code="player_gateway_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether player gateway is available for use for this game session. Note, even if a fleet has PlayerGatewayMode configured as ENABLED, player gateway might not be available in a specific location. For more information about locations where player gateway is supported, see Amazon GameLift Servers service locations. Possible values include: ENABLED -- Player gateway is available for routing player connections for this game session. DISABLED -- Player gateway is not available for this game session. (DISABLED, ENABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlayerSessionCreationPolicy" /></td>
+    <td><CopyableCode code="player_session_creation_policy" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the game session is accepting new players. (ACCEPT_ALL, DENY_ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port number for the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current status of the game session. A game session must have an ACTIVE status to have player sessions. (ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Provides additional information about game session status. INTERRUPTED -- The game session was hosted on an EC2 Spot instance that was reclaimed, causing the active game session to be stopped. TRIGGERED_ON_PROCESS_TERMINATE – The game session was stopped by calling TerminateGameSession with the termination mode TRIGGER_ON_PROCESS_TERMINATE. FORCE_TERMINATED – The game session was stopped by calling TerminateGameSession with the termination mode FORCE_TERMINATE. (INTERRUPTED, TRIGGERED_ON_PROCESS_TERMINATE, FORCE_TERMINATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminationTime" /></td>
+    <td><CopyableCode code="termination_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
@@ -261,27 +261,27 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-ComputeName,
-CreationTime,
-CreatorId,
-CurrentPlayerSessionCount,
-DnsName,
-FleetArn,
-FleetId,
-GameProperties,
-GameSessionData,
-GameSessionId,
-IpAddress,
-Location,
-MatchmakerData,
-MaximumPlayerSessionCount,
-Name,
-PlayerGatewayStatus,
-PlayerSessionCreationPolicy,
-Port,
-Status,
-StatusReason,
-TerminationTime
+compute_name,
+creation_time,
+creator_id,
+current_player_session_count,
+dns_name,
+fleet_arn,
+fleet_id,
+game_properties,
+game_session_data,
+game_session_id,
+ip_address,
+location,
+matchmaker_data,
+maximum_player_session_count,
+name,
+player_gateway_status,
+player_session_creation_policy,
+port,
+status,
+status_reason,
+termination_time
 FROM aws.gamelift.game_sessions
 WHERE region = '{{ region }}' -- required
 ;
@@ -330,7 +330,7 @@ SELECT
 '{{ Location }}',
 '{{ region }}'
 RETURNING
-GameSession
+game_session
 ;
 ```
 </TabItem>
@@ -415,7 +415,7 @@ WHERE
 region = '{{ region }}' --required
 AND GameSessionId = '{{ GameSessionId }}' --required
 RETURNING
-GameSession;
+game_session;
 ```
 </TabItem>
 </Tabs>

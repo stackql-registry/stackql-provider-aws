@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Fingerprint" /></td>
+    <td><CopyableCode code="fingerprint" /></td>
     <td><code>string</code></td>
     <td>The MD5 message digest of the SSH public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SSHPublicKeyBody" /></td>
+    <td><CopyableCode code="ssh_public_key_body" /></td>
     <td><code>string</code></td>
     <td>The SSH public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SSHPublicKeyId" /></td>
+    <td><CopyableCode code="ssh_public_key_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the SSH public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the SSH public key. Active means that the key can be used for authentication with an CodeCommit repository. Inactive means that the key cannot be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UploadDate" /></td>
+    <td><CopyableCode code="upload_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the SSH public key was uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM user associated with the SSH public key.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SSHPublicKeyId" /></td>
+    <td><CopyableCode code="ssh_public_key_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the SSH public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the SSH public key. Active means that the key can be used for authentication with an CodeCommit repository. Inactive means that the key cannot be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UploadDate" /></td>
+    <td><CopyableCode code="upload_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the SSH public key was uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM user associated with the SSH public key.</td>
 </tr>
@@ -236,12 +236,12 @@ Retrieves the specified SSH public key, including metadata about the key. The SS
 
 ```sql
 SELECT
-Fingerprint,
-SSHPublicKeyBody,
-SSHPublicKeyId,
-Status,
-UploadDate,
-UserName
+fingerprint,
+ssh_public_key_body,
+ssh_public_key_id,
+status,
+upload_date,
+user_name
 FROM aws.iam.ssh_public_keys
 WHERE UserName = '{{ UserName }}' -- required
 AND SSHPublicKeyId = '{{ SSHPublicKeyId }}' -- required
@@ -256,10 +256,10 @@ Returns information about the SSH public keys associated with the specified IAM 
 
 ```sql
 SELECT
-SSHPublicKeyId,
-Status,
-UploadDate,
-UserName
+ssh_public_key_id,
+status,
+upload_date,
+user_name
 FROM aws.iam.ssh_public_keys
 WHERE region = '{{ region }}' -- required
 AND UserName = '{{ UserName }}'

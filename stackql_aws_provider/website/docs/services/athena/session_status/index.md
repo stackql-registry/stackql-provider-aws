@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The session ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>Contains information about the status of the session.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets the current status of a session.
 
 ```sql
 SELECT
-SessionId,
-Status
+session_id,
+status
 FROM aws.athena.session_status
 WHERE region = '{{ region }}' -- required
 ;

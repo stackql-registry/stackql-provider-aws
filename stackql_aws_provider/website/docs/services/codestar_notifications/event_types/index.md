@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventTypeId" /></td>
+    <td><CopyableCode code="event_type_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID of the event. For a complete list of event types and IDs, see Notification concepts in the Developer Tools Console User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTypeName" /></td>
+    <td><CopyableCode code="event_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the event. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9-&#93;)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service for which the event applies.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns information about the event types available for configuring notification
 
 ```sql
 SELECT
-EventTypeId,
-EventTypeName,
-ResourceType,
-ServiceName
+event_type_id,
+event_type_name,
+resource_type,
+service_name
 FROM aws.codestar_notifications.event_types
 WHERE region = '{{ region }}' -- required
 ;

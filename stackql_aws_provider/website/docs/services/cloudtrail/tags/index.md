@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the ARN of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagsList" /></td>
+    <td><CopyableCode code="tags_list" /></td>
     <td><code>array</code></td>
     <td>A list of tags.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the tags for the specified trails, event data stores, dashboards, or chann
 
 ```sql
 SELECT
-ResourceId,
-TagsList
+resource_id,
+tags_list
 FROM aws.cloudtrail.tags
 WHERE region = '{{ region }}' -- required
 ;

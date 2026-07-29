@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicableApplicationTypes" /></td>
+    <td><CopyableCode code="applicable_application_types" /></td>
     <td><code>array</code></td>
     <td>The list of SSMSAP application types that this configuration check can be evaluated against.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of what the configuration check validates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the configuration check. (SAP_CHECK_01, SAP_CHECK_02, SAP_CHECK_03)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration check.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists all configuration check types supported by AWS Systems Manager for SAP.
 
 ```sql
 SELECT
-ApplicableApplicationTypes,
-Description,
-Id,
-Name
+applicable_application_types,
+description,
+id,
+name
 FROM aws.ssm_sap.configuration_check_definitions
 WHERE region = '{{ region }}' -- required
 ;

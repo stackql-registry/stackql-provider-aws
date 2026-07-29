@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A friendly description of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Precedence" /></td>
+    <td><CopyableCode code="precedence" /></td>
     <td><code>integer</code></td>
     <td>A non-negative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. Zero is the highest precedence value. Groups with lower Precedence values take precedence over groups with higher ornull Precedence values. If a user belongs to two or more groups, it is the group with the lowest precedence value whose role ARN is given in the user's tokens for the cognito:roles and cognito:preferred_role claims. Two groups can have the same Precedence value. If this happens, neither group takes precedence over the other. If two groups with the same Precedence have the same role ARN, that role is used in the cognito:preferred_role claim in tokens for users in each group. If the two groups have different role ARNs, the cognito:preferred_role claim isn't set in users' tokens. The default Precedence value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role associated with the group. If a group has the highest priority of a user's groups, users who authenticate with an identity pool get credentials for the RoleArn that's associated with the group. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:&#91;\w+=/,.@-&#93;+:(&#91;\w+=/,.@-&#93;*)?:&#91;0-9&#93;+:&#91;\w+=/,.@-&#93;+(:&#91;\w+=/,.@-&#93;+)?(:&#91;\w+=/,.@-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool that contains the group. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A friendly description of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Precedence" /></td>
+    <td><CopyableCode code="precedence" /></td>
     <td><code>integer</code></td>
     <td>A non-negative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. Zero is the highest precedence value. Groups with lower Precedence values take precedence over groups with higher ornull Precedence values. If a user belongs to two or more groups, it is the group with the lowest precedence value whose role ARN is given in the user's tokens for the cognito:roles and cognito:preferred_role claims. Two groups can have the same Precedence value. If this happens, neither group takes precedence over the other. If two groups with the same Precedence have the same role ARN, that role is used in the cognito:preferred_role claim in tokens for users in each group. If the two groups have different role ARNs, the cognito:preferred_role claim isn't set in users' tokens. The default Precedence value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role associated with the group. If a group has the highest priority of a user's groups, users who authenticate with an identity pool get credentials for the RoleArn that's associated with the group. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:&#91;\w+=/,.@-&#93;+:(&#91;\w+=/,.@-&#93;*)?:&#91;0-9&#93;+:&#91;\w+=/,.@-&#93;+(:&#91;\w+=/,.@-&#93;+)?(:&#91;\w+=/,.@-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool that contains the group. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -228,13 +228,13 @@ Given a user pool ID and a group name, returns information about the user group.
 
 ```sql
 SELECT
-CreationDate,
-Description,
-GroupName,
-LastModifiedDate,
-Precedence,
-RoleArn,
-UserPoolId
+creation_date,
+description,
+group_name,
+last_modified_date,
+precedence,
+role_arn,
+user_pool_id
 FROM aws.cognito_idp.groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,13 +246,13 @@ Given a user pool ID, returns user pool groups and their details. Amazon Cognito
 
 ```sql
 SELECT
-CreationDate,
-Description,
-GroupName,
-LastModifiedDate,
-Precedence,
-RoleArn,
-UserPoolId
+creation_date,
+description,
+group_name,
+last_modified_date,
+precedence,
+role_arn,
+user_pool_id
 FROM aws.cognito_idp.groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,7 +291,7 @@ SELECT
 {{ Precedence }},
 '{{ region }}'
 RETURNING
-Group
+group
 ;
 ```
 </TabItem>
@@ -354,7 +354,7 @@ region = '{{ region }}' --required
 AND GroupName = '{{ GroupName }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
-Group;
+group;
 ```
 </TabItem>
 </Tabs>

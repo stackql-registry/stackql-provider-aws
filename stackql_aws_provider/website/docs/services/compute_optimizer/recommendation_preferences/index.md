@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="enhancedInfrastructureMetrics" /></td>
+    <td><CopyableCode code="enhanced_infrastructure_metrics" /></td>
     <td><code>string</code></td>
     <td>The status of the enhanced infrastructure metrics recommendation preference. When the recommendations page is refreshed, a status of Active confirms that the preference is applied to the recommendations, and a status of Inactive confirms that the preference isn't yet applied to recommendations. For more information, see Enhanced infrastructure metrics in the Compute Optimizer User Guide. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalMetricsPreference" /></td>
+    <td><CopyableCode code="external_metrics_preference" /></td>
     <td><code>object</code></td>
     <td>An object that describes the external metrics recommendation preference. If the preference is applied in the latest recommendation refresh, an object with a valid source value appears in the response. If the preference isn't applied to the recommendations already, then this object doesn't appear in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferredWorkloadTypes" /></td>
+    <td><CopyableCode code="inferred_workload_types" /></td>
     <td><code>string</code></td>
     <td>The status of the inferred workload types recommendation preference. When the recommendations page is refreshed, a status of Active confirms that the preference is applied to the recommendations, and a status of Inactive confirms that the preference isn't yet applied to recommendations. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lookBackPeriod" /></td>
+    <td><CopyableCode code="look_back_period" /></td>
     <td><code>string</code></td>
     <td>The preference to control the number of days the utilization metrics of the Amazon Web Services resource are analyzed. If the preference isn’t set, this object is null. (DAYS_14, DAYS_32, DAYS_93)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredResources" /></td>
+    <td><CopyableCode code="preferred_resources" /></td>
     <td><code>array</code></td>
     <td>The preference to control which resource type values are considered when generating rightsizing recommendations. This object resolves any wildcard expressions and returns the effective list of candidate resource type values. If the preference isn’t set, this object is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The target resource type of the recommendation preference to create. The Ec2Instance option encompasses standalone instances and instances that are part of Auto Scaling groups. The AutoScalingGroup option encompasses only instances that are part of an Auto Scaling group. (Ec2Instance, AutoScalingGroup, EbsVolume, LambdaFunction, NotApplicable, EcsService, License, RdsDBInstance, AuroraDBClusterStorage, Idle)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="savingsEstimationMode" /></td>
+    <td><CopyableCode code="savings_estimation_mode" /></td>
     <td><code>string</code></td>
     <td>Describes the savings estimation mode used for calculating savings opportunity. Only the account manager or delegated administrator of your organization can activate this preference. (AfterDiscounts, BeforeDiscounts)</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>An object that describes the scope of the recommendation preference. Recommendation preferences can be created at the organization level (for management accounts of an organization only), account level, and resource level. For more information, see Activating enhanced infrastructure metrics in the Compute Optimizer User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="utilizationPreferences" /></td>
+    <td><CopyableCode code="utilization_preferences" /></td>
     <td><code>array</code></td>
     <td>The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. If the preference isn’t set, this object is null. This preference is only available for the Amazon EC2 instance resource type.</td>
 </tr>
@@ -173,15 +173,15 @@ Returns existing recommendation preferences, such as enhanced infrastructure met
 
 ```sql
 SELECT
-enhancedInfrastructureMetrics,
-externalMetricsPreference,
-inferredWorkloadTypes,
-lookBackPeriod,
-preferredResources,
-resourceType,
-savingsEstimationMode,
+enhanced_infrastructure_metrics,
+external_metrics_preference,
+inferred_workload_types,
+look_back_period,
+preferred_resources,
+resource_type,
+savings_estimation_mode,
 scope,
-utilizationPreferences
+utilization_preferences
 FROM aws.compute_optimizer.recommendation_preferences
 WHERE region = '{{ region }}' -- required
 ;

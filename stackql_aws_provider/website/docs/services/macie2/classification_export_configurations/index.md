@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="s3Destination" /></td>
+    <td><CopyableCode code="s_3_destination" /></td>
     <td><code>object</code></td>
     <td>The S3 bucket to store data classification results in, and the encryption settings to use when storing results in that bucket.</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves the configuration settings for storing data classification results.
 
 ```sql
 SELECT
-s3Destination
+s_3_destination
 FROM aws.macie2.classification_export_configurations
 WHERE region = '{{ region }}' -- required
 ;

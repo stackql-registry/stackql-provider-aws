@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the challenge. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:pca-connector-scep:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;\/challenge\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:pca-connector-scep:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was updated.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the challenge. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:pca-connector-scep:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;\/challenge\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:pca-connector-scep:&#91;a-z&#93;+(-&#91;a-z&#93;+)+-&#91;1-9&#93;\d*:\d&#123;12&#125;:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the challenge was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the challenge was updated.</td>
 </tr>
@@ -197,10 +197,10 @@ Retrieves the metadata for the specified Challenge.
 
 ```sql
 SELECT
-Arn,
-ConnectorArn,
-CreatedAt,
-UpdatedAt
+arn,
+connector_arn,
+created_at,
+updated_at
 FROM aws.pca_connector_scep.challenge_metadatas
 WHERE challenge_arn = '{{ challenge_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -213,10 +213,10 @@ Retrieves the challenge metadata for the specified ARN.
 
 ```sql
 SELECT
-Arn,
-ConnectorArn,
-CreatedAt,
-UpdatedAt
+arn,
+connector_arn,
+created_at,
+updated_at
 FROM aws.pca_connector_scep.challenge_metadatas
 WHERE ConnectorArn = '{{ ConnectorArn }}' -- required
 AND region = '{{ region }}' -- required

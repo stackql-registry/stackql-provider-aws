@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EdgeSummaryStatistics" /></td>
+    <td><CopyableCode code="edge_summary_statistics" /></td>
     <td><code>object</code></td>
     <td>Response statistics for an edge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseTimeHistogram" /></td>
+    <td><CopyableCode code="response_time_histogram" /></td>
     <td><code>array</code></td>
     <td>The response time histogram for the selected entities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceForecastStatistics" /></td>
+    <td><CopyableCode code="service_forecast_statistics" /></td>
     <td><code>object</code></td>
     <td>The forecasted high and low fault count values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceSummaryStatistics" /></td>
+    <td><CopyableCode code="service_summary_statistics" /></td>
     <td><code>object</code></td>
     <td>Response statistics for a service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of the window for which statistics are aggregated.</td>
 </tr>
@@ -139,11 +139,11 @@ Get an aggregation of service statistics defined by a specific time range.
 
 ```sql
 SELECT
-EdgeSummaryStatistics,
-ResponseTimeHistogram,
-ServiceForecastStatistics,
-ServiceSummaryStatistics,
-Timestamp
+edge_summary_statistics,
+response_time_histogram,
+service_forecast_statistics,
+service_summary_statistics,
+timestamp
 FROM aws.xray.time_series_service_statistics
 WHERE region = '{{ region }}' -- required
 ;

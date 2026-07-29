@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupCreationTime" /></td>
+    <td><CopyableCode code="backup_creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>This is the creation time of the backup (recovery point).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupResourceArn" /></td>
+    <td><CopyableCode code="backup_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the backup resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexCreationTime" /></td>
+    <td><CopyableCode code="index_creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>This is the creation time of the backup index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>This is the resource type of the search. (S3, EBS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceResourceArn" /></td>
+    <td><CopyableCode code="source_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the source resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>This is the status of the search job backup result. (RUNNING, COMPLETED, STOPPING, STOPPED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>This is the status message included with the results.</td>
 </tr>
@@ -164,13 +164,13 @@ This operation returns a list of all backups (recovery points) in a paginated fo
 
 ```sql
 SELECT
-BackupCreationTime,
-BackupResourceArn,
-IndexCreationTime,
-ResourceType,
-SourceResourceArn,
-Status,
-StatusMessage
+backup_creation_time,
+backup_resource_arn,
+index_creation_time,
+resource_type,
+source_resource_arn,
+status,
+status_message
 FROM aws.backupsearch.search_job_backups
 WHERE search_job_identifier = '{{ search_job_identifier }}' -- required
 AND region = '{{ region }}' -- required

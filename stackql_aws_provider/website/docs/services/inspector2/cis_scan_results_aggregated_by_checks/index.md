@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID for the CIS check. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checkDescription" /></td>
+    <td><CopyableCode code="check_description" /></td>
     <td><code>string</code></td>
     <td>The description for the CIS check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checkId" /></td>
+    <td><CopyableCode code="check_id" /></td>
     <td><code>string</code></td>
     <td>The check ID for the CIS check.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The CIS check platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanArn" /></td>
+    <td><CopyableCode code="scan_arn" /></td>
     <td><code>string</code></td>
     <td>The scan ARN for the CIS check scan ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-cn)?:inspector2:&#91;-.a-z0-9&#93;&#123;0,20&#125;:\d&#123;12&#125;:owner/(\d&#123;12&#125;|o-&#91;a-z0-9&#93;&#123;10,32&#125;)/cis-scan/&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCounts" /></td>
+    <td><CopyableCode code="status_counts" /></td>
     <td><code>object</code></td>
     <td>The CIS check status counts.</td>
 </tr>
@@ -154,13 +154,13 @@ Lists scan results aggregated by checks.
 
 ```sql
 SELECT
-accountId,
-checkDescription,
-checkId,
+account_id,
+check_description,
+check_id,
 level,
 platform,
-scanArn,
-statusCounts,
+scan_arn,
+status_counts,
 title_
 FROM aws.inspector2.cis_scan_results_aggregated_by_checks
 WHERE region = '{{ region }}' -- required

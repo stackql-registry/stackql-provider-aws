@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the inference component was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint that hosts the inference component. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:endpoint/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint that hosts the inference component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the inference component status is Failed, the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceComponentArn" /></td>
+    <td><CopyableCode code="inference_component_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the inference component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceComponentName" /></td>
+    <td><CopyableCode code="inference_component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the inference component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;\-a-zA-Z0-9&#93;*&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceComponentStatus" /></td>
+    <td><CopyableCode code="inference_component_status" /></td>
     <td><code>string</code></td>
     <td>The status of the inference component. (InService, Creating, Updating, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDeploymentConfig" /></td>
+    <td><CopyableCode code="last_deployment_config" /></td>
     <td><code>object</code></td>
     <td>The deployment and rollback settings that you assigned to the inference component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the inference component was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeConfig" /></td>
+    <td><CopyableCode code="runtime_config" /></td>
     <td><code>object</code></td>
     <td>Details about the runtime settings for the model that is deployed with the inference component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Specification" /></td>
+    <td><CopyableCode code="specification" /></td>
     <td><code>object</code></td>
     <td>Details about the resources that are deployed with this inference component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Specifications" /></td>
+    <td><CopyableCode code="specifications" /></td>
     <td><code>array</code></td>
     <td>A list of specification summaries for the inference component, one per instance type. This parameter is populated when the inference component was created with multiple specifications. When this parameter is populated, the singular Specification parameter is not returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VariantName" /></td>
+    <td><CopyableCode code="variant_name" /></td>
     <td><code>string</code></td>
     <td>The name of the production variant that hosts the inference component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -130,42 +130,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the inference component was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint that hosts the inference component. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:endpoint/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint that hosts the inference component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceComponentArn" /></td>
+    <td><CopyableCode code="inference_component_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the inference component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceComponentName" /></td>
+    <td><CopyableCode code="inference_component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the inference component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;\-a-zA-Z0-9&#93;*&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceComponentStatus" /></td>
+    <td><CopyableCode code="inference_component_status" /></td>
     <td><code>string</code></td>
     <td>The status of the inference component. (InService, Creating, Updating, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the inference component was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VariantName" /></td>
+    <td><CopyableCode code="variant_name" /></td>
     <td><code>string</code></td>
     <td>The name of the production variant that hosts the inference component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -270,19 +270,19 @@ Returns information about an inference component.
 
 ```sql
 SELECT
-CreationTime,
-EndpointArn,
-EndpointName,
-FailureReason,
-InferenceComponentArn,
-InferenceComponentName,
-InferenceComponentStatus,
-LastDeploymentConfig,
-LastModifiedTime,
-RuntimeConfig,
-Specification,
-Specifications,
-VariantName
+creation_time,
+endpoint_arn,
+endpoint_name,
+failure_reason,
+inference_component_arn,
+inference_component_name,
+inference_component_status,
+last_deployment_config,
+last_modified_time,
+runtime_config,
+specification,
+specifications,
+variant_name
 FROM aws.sagemaker.inference_components
 WHERE region = '{{ region }}' -- required
 ;
@@ -294,14 +294,14 @@ Lists the inference components in your account and their properties.
 
 ```sql
 SELECT
-CreationTime,
-EndpointArn,
-EndpointName,
-InferenceComponentArn,
-InferenceComponentName,
-InferenceComponentStatus,
-LastModifiedTime,
-VariantName
+creation_time,
+endpoint_arn,
+endpoint_name,
+inference_component_arn,
+inference_component_name,
+inference_component_status,
+last_modified_time,
+variant_name
 FROM aws.sagemaker.inference_components
 WHERE region = '{{ region }}' -- required
 ;
@@ -344,7 +344,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-InferenceComponentArn
+inference_component_arn
 ;
 ```
 </TabItem>
@@ -460,7 +460,7 @@ region = '{{ region }}' --required
 AND InferenceComponentName = '{{ InferenceComponentName }}' --required
 AND DesiredRuntimeConfig = '{{ DesiredRuntimeConfig }}' --required
 RETURNING
-InferenceComponentArn;
+inference_component_arn;
 ```
 </TabItem>
 <TabItem value="update_inference_component">
@@ -479,7 +479,7 @@ WHERE
 region = '{{ region }}' --required
 AND InferenceComponentName = '{{ InferenceComponentName }}' --required
 RETURNING
-InferenceComponentArn;
+inference_component_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LexRegion" /></td>
+    <td><CopyableCode code="lex_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the Amazon Lex bot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Lex bot.</td>
 </tr>
@@ -168,8 +168,8 @@ This API is in preview release for Amazon Connect and is subject to change. Retu
 
 ```sql
 SELECT
-LexRegion,
-Name
+lex_region,
+name
 FROM aws.connect.lex_bots
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

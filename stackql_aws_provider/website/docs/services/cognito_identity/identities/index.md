@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Identities" /></td>
+    <td><CopyableCode code="identities" /></td>
     <td><code>array</code></td>
     <td>An object containing a set of identities and associated mappings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>An identity pool ID in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date on which the identity was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date on which the identity was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Logins" /></td>
+    <td><CopyableCode code="logins" /></td>
     <td><code>array</code></td>
     <td>The provider names.</td>
 </tr>
@@ -186,9 +186,9 @@ Lists the identities in an identity pool. You must use Amazon Web Services devel
 
 ```sql
 SELECT
-Identities,
-IdentityPoolId,
-NextToken
+identities,
+identity_pool_id,
+next_token
 FROM aws.cognito_identity.identities
 WHERE region = '{{ region }}' -- required
 ;
@@ -200,10 +200,10 @@ Returns metadata related to the given identity, including when the identity was 
 
 ```sql
 SELECT
-CreationDate,
-IdentityId,
-LastModifiedDate,
-Logins
+creation_date,
+identity_id,
+last_modified_date,
+logins
 FROM aws.cognito_identity.identities
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CachediSCSIVolumes" /></td>
+    <td><CopyableCode code="cachedi_scsi_volumes" /></td>
     <td><code>array</code></td>
     <td>An array of objects where each object contains metadata about one cached volume.</td>
 </tr>
@@ -126,7 +126,7 @@ Returns a description of the gateway volumes specified in the request. This oper
 
 ```sql
 SELECT
-CachediSCSIVolumes
+cachedi_scsi_volumes
 FROM aws.storagegateway.cachedi_scsi_volumes
 WHERE region = '{{ region }}' -- required
 ;
@@ -175,8 +175,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TargetARN,
-VolumeARN
+target_arn,
+volume_arn
 ;
 ```
 </TabItem>

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchName" /></td>
+    <td><CopyableCode code="branch_name" /></td>
     <td><code>string</code></td>
     <td>The name of the code repository branch that holds the code that's deployed in Proton.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service was created.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service was last modified.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The service pipeline detail data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryConnectionArn" /></td>
+    <td><CopyableCode code="repository_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the repository connection. For more information, see Setting up an AWS CodeStar connection in the Proton User Guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryId" /></td>
+    <td><CopyableCode code="repository_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source code repository.</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the service. (CREATE_IN_PROGRESS, CREATE_FAILED_CLEANUP_IN_PROGRESS, CREATE_FAILED_CLEANUP_COMPLETE, CREATE_FAILED_CLEANUP_FAILED, CREATE_FAILED, ACTIVE, DELETE_IN_PROGRESS, DELETE_FAILED, UPDATE_IN_PROGRESS, UPDATE_FAILED_CLEANUP_IN_PROGRESS, UPDATE_FAILED_CLEANUP_COMPLETE, UPDATE_FAILED_CLEANUP_FAILED, UPDATE_FAILED, UPDATE_COMPLETE_CLEANUP_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A service status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service was created.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service was last modified.</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the service. (CREATE_IN_PROGRESS, CREATE_FAILED_CLEANUP_IN_PROGRESS, CREATE_FAILED_CLEANUP_COMPLETE, CREATE_FAILED_CLEANUP_FAILED, CREATE_FAILED, ACTIVE, DELETE_IN_PROGRESS, DELETE_FAILED, UPDATE_IN_PROGRESS, UPDATE_FAILED_CLEANUP_IN_PROGRESS, UPDATE_FAILED_CLEANUP_COMPLETE, UPDATE_FAILED_CLEANUP_FAILED, UPDATE_FAILED, UPDATE_COMPLETE_CLEANUP_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A service status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -286,17 +286,17 @@ Get detailed data for a service.
 SELECT
 name,
 arn,
-branchName,
-createdAt,
+branch_name,
+created_at,
 description,
-lastModifiedAt,
+last_modified_at,
 pipeline,
-repositoryConnectionArn,
-repositoryId,
+repository_connection_arn,
+repository_id,
 spec,
 status,
-statusMessage,
-templateName
+status_message,
+template_name
 FROM aws.proton.services
 WHERE region = '{{ region }}' -- required
 ;
@@ -310,12 +310,12 @@ List services with summaries of detail data.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
-lastModifiedAt,
+last_modified_at,
 status,
-statusMessage,
-templateName
+status_message,
+template_name
 FROM aws.proton.services
 WHERE region = '{{ region }}' -- required
 ;
@@ -469,9 +469,9 @@ region = '{{ region }}' --required
 AND id = '{{ id }}' --required
 AND resolvedReason = '{{ resolvedReason }}' --required
 RETURNING
-serviceInstanceName,
-serviceName,
-serviceSyncBlocker;
+service_instance_name,
+service_name,
+service_sync_blocker;
 ```
 </TabItem>
 <TabItem value="update_service">

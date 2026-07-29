@@ -231,7 +231,7 @@ SELECT
 {{ dryRun }},
 '{{ region }}'
 RETURNING
-environmentId
+environment_id
 ;
 ```
 </TabItem>

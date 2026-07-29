@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventCategories" /></td>
+    <td><CopyableCode code="event_categories" /></td>
     <td><code>string</code></td>
     <td>The event categories for the specified source type</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source type that the returned categories belong to</td>
 </tr>
@@ -134,8 +134,8 @@ Displays a list of categories for all event source types, or, if specified, for 
 
 ```sql
 SELECT
-EventCategories,
-SourceType
+event_categories,
+source_type
 FROM aws.neptune.event_categories
 WHERE region = '{{ region }}' -- required
 AND SourceType = '{{ SourceType }}'

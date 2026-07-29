@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ColumnStatisticsList" /></td>
+    <td><CopyableCode code="column_statistics_list" /></td>
     <td><code>array</code></td>
     <td>List of ColumnStatistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>List of ColumnStatistics that failed to be retrieved.</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves table statistics of columns. The Identity and Access Management (IAM) 
 
 ```sql
 SELECT
-ColumnStatisticsList,
-Errors
+column_statistics_list,
+errors
 FROM aws.glue.column_statistics_for_tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -173,7 +173,7 @@ AND DatabaseName = '{{ DatabaseName }}' --required
 AND TableName = '{{ TableName }}' --required
 AND ColumnStatisticsList = '{{ ColumnStatisticsList }}' --required
 RETURNING
-Errors;
+errors;
 ```
 </TabItem>
 </Tabs>

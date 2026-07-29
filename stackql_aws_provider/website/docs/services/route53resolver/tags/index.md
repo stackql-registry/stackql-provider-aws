@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The name for the tag. For example, if you want to associate Resolver resources with the account IDs of your customers for billing purposes, the value of Key might be account-id.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value for the tag. For example, if Key is account-id, then Value might be the ID of the customer account that you're creating the resource for.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the tags that you associated with the specified resource.
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.route53resolver.tags
 WHERE region = '{{ region }}' -- required
 ;

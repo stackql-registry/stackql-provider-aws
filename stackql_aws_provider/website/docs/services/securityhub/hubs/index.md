@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoEnableControls" /></td>
+    <td><CopyableCode code="auto_enable_controls" /></td>
     <td><code>boolean</code></td>
     <td>Whether to automatically enable new controls when they are added to standards that are enabled. If set to true, then new controls for enabled standards are enabled automatically. If set to false, then new controls are not enabled. When you automatically enable new controls, you can interact with the controls in the console and programmatically immediately after release. However, automatically enabled controls have a temporary default status of DISABLED. It can take up to several days for Security Hub CSPM to process the control release and designate the control as ENABLED in your account. During the processing period, you can manually enable or disable a control, and Security Hub CSPM will maintain that designation regardless of whether you have AutoEnableControls set to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ControlFindingGenerator" /></td>
+    <td><CopyableCode code="control_finding_generator" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the calling account has consolidated control findings turned on. If the value for this field is set to SECURITY_CONTROL, Security Hub CSPM generates a single finding for a control check even when the check applies to multiple enabled standards. If the value for this field is set to STANDARD_CONTROL, Security Hub CSPM generates separate findings for a control check when the check applies to multiple enabled standards. The value for this field in a member account matches the value in the administrator account. For accounts that aren't part of an organization, the default value of this field is SECURITY_CONTROL if you enabled Security Hub CSPM on or after February 23, 2023. (STANDARD_CONTROL, SECURITY_CONTROL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubArn" /></td>
+    <td><CopyableCode code="hub_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Hub resource that was retrieved. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscribedAt" /></td>
+    <td><CopyableCode code="subscribed_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when Security Hub CSPM was enabled in the account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -139,10 +139,10 @@ Returns details about the Hub resource in your account, including the HubArn and
 
 ```sql
 SELECT
-AutoEnableControls,
-ControlFindingGenerator,
-HubArn,
-SubscribedAt
+auto_enable_controls,
+control_finding_generator,
+hub_arn,
+subscribed_at
 FROM aws.securityhub.hubs
 WHERE region = '{{ region }}' -- required
 AND HubArn = '{{ HubArn }}'

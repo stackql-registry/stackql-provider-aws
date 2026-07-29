@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="effectivePolicies" /></td>
+    <td><CopyableCode code="effective_policies" /></td>
     <td><code>array</code></td>
     <td>The effective policies.</td>
 </tr>
@@ -124,7 +124,7 @@ Gets a list of the policies that have an effect on the authorization behavior of
 
 ```sql
 SELECT
-effectivePolicies
+effective_policies
 FROM aws.iot.effective_policies
 WHERE region = '{{ region }}' -- required
 AND thingName = '{{ thingName }}'

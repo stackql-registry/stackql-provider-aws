@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the audience model. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceModelArn" /></td>
+    <td><CopyableCode code="audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the audience model was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the audience model. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN used for the audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:kms:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/.+&lt;/code&gt;)</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the audience model. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the status of a resource.</td>
 </tr>
@@ -91,22 +91,22 @@ The following fields are returned by `SELECT` queries:
     <td>The tags that are assigned to the audience model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDataEndTime" /></td>
+    <td><CopyableCode code="training_data_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end date specified for the training window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDataStartTime" /></td>
+    <td><CopyableCode code="training_data_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date specified for the training window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDatasetArn" /></td>
+    <td><CopyableCode code="training_dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the training dataset that was used for this audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:training-dataset/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the audience model was updated.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the audience model. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceModelArn" /></td>
+    <td><CopyableCode code="audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the audience model was created.</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the audience model. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDatasetArn" /></td>
+    <td><CopyableCode code="training_dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the training dataset that was used for the audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:training-dataset/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the audience model was updated.</td>
 </tr>
@@ -262,17 +262,17 @@ Returns information about an audience model
 ```sql
 SELECT
 name,
-audienceModelArn,
-createTime,
+audience_model_arn,
+create_time,
 description,
-kmsKeyArn,
+kms_key_arn,
 status,
-statusDetails,
+status_details,
 tags,
-trainingDataEndTime,
-trainingDataStartTime,
-trainingDatasetArn,
-updateTime
+training_data_end_time,
+training_data_start_time,
+training_dataset_arn,
+update_time
 FROM aws.cleanroomsml.audience_models
 WHERE audience_model_arn = '{{ audience_model_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -286,12 +286,12 @@ Returns a list of audience models.
 ```sql
 SELECT
 name,
-audienceModelArn,
-createTime,
+audience_model_arn,
+create_time,
 description,
 status,
-trainingDatasetArn,
-updateTime
+training_dataset_arn,
+update_time
 FROM aws.cleanroomsml.audience_models
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -336,7 +336,7 @@ SELECT
 '{{ description }}',
 '{{ region }}'
 RETURNING
-audienceModelArn
+audience_model_arn
 ;
 ```
 </TabItem>

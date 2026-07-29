@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessPoints" /></td>
+    <td><CopyableCode code="access_points" /></td>
     <td><code>array</code></td>
     <td>Position of the access point in World Geodetic System (WGS 84) format: &#91;longitude, latitude&#93;. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessRestrictions" /></td>
+    <td><CopyableCode code="access_restrictions" /></td>
     <td><code>array</code></td>
     <td>Indicates known access restrictions on a vehicle access point. The index correlates to an access point and indicates if access through this point has some form of restriction. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Address" /></td>
+    <td><CopyableCode code="address" /></td>
     <td><code>object</code></td>
     <td>The place address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AddressNumberCorrected" /></td>
+    <td><CopyableCode code="address_number_corrected" /></td>
     <td><code>boolean</code></td>
     <td>Boolean indicating if the address provided has been corrected. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BusinessChains" /></td>
+    <td><CopyableCode code="business_chains" /></td>
     <td><code>array</code></td>
     <td>The Business Chains associated with the place.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Categories" /></td>
+    <td><CopyableCode code="categories" /></td>
     <td><code>array</code></td>
     <td>Categories of results that results must belong to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Contacts" /></td>
+    <td><CopyableCode code="contacts" /></td>
     <td><code>object</code></td>
     <td>List of potential contact methods for the result/place. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoodTypes" /></td>
+    <td><CopyableCode code="food_types" /></td>
     <td><code>array</code></td>
     <td>List of food types offered by this result. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MainAddress" /></td>
+    <td><CopyableCode code="main_address" /></td>
     <td><code>object</code></td>
     <td>Place that is related to the result item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MapView" /></td>
+    <td><CopyableCode code="map_view" /></td>
     <td><code>array</code></td>
     <td>The bounding box enclosing the geometric shape (area or line) that an individual result covers. The bounding box formed is defined as a set of four coordinates: &#91;&#123;westward lng&#125;, &#123;southern lat&#125;, &#123;eastward lng&#125;, &#123;northern lat&#125;&#93;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpeningHours" /></td>
+    <td><CopyableCode code="opening_hours" /></td>
     <td><code>array</code></td>
     <td>List of opening hours objects. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Phonemes" /></td>
+    <td><CopyableCode code="phonemes" /></td>
     <td><code>object</code></td>
     <td>How the various components of the result's address are pronounced in various languages. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaceId" /></td>
+    <td><CopyableCode code="place_id" /></td>
     <td><code>string</code></td>
     <td>The PlaceId of the place you wish to receive the information for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaceType" /></td>
+    <td><CopyableCode code="place_type" /></td>
     <td><code>string</code></td>
     <td>A PlaceType is a category that the result place must belong to. (Country, Region, SubRegion, Locality, District, SubDistrict, PostalCode, Block, SubBlock, Intersection, Street, PointOfInterest, PointAddress, InterpolatedAddress, SecondaryAddress, InferredSecondaryAddress)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoliticalView" /></td>
+    <td><CopyableCode code="political_view" /></td>
     <td><code>string</code></td>
     <td>The alpha-2 or alpha-3 character code for the political view of a country. The political view applies to the results of the request to represent unresolved territorial claims through the point of view of the specified country. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Position" /></td>
+    <td><CopyableCode code="position" /></td>
     <td><code>array</code></td>
     <td>The position in World Geodetic System (WGS 84) format: &#91;longitude, latitude&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PostalCodeDetails" /></td>
+    <td><CopyableCode code="postal_code_details" /></td>
     <td><code>array</code></td>
     <td>Contains details about the postal code of the place/result. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingBucket" /></td>
+    <td><CopyableCode code="pricing_bucket" /></td>
     <td><code>string</code></td>
     <td>The pricing bucket for which the query is charged at. For more information on pricing, please visit Amazon Location Service Pricing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryAddresses" /></td>
+    <td><CopyableCode code="secondary_addresses" /></td>
     <td><code>array</code></td>
     <td>All secondary addresses that are associated with a main address. A secondary address is one that includes secondary designators, such as a Suite or Unit Number, Building, or Floor information. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. Coverage for this functionality is available in the following countries: AUS, CAN, NZL, USA, PRI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>object</code></td>
     <td>The time zone in which the place is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The localized display name of this result item based on request parameter language.</td>
 </tr>
@@ -249,27 +249,27 @@ GetPlace finds a place by its unique ID. A PlaceId is returned by other place op
 
 ```sql
 SELECT
-AccessPoints,
-AccessRestrictions,
-Address,
-AddressNumberCorrected,
-BusinessChains,
-Categories,
-Contacts,
-FoodTypes,
-MainAddress,
-MapView,
-OpeningHours,
-Phonemes,
-PlaceId,
-PlaceType,
-PoliticalView,
-Position,
-PostalCodeDetails,
-PricingBucket,
-SecondaryAddresses,
-TimeZone,
-Title
+access_points,
+access_restrictions,
+address,
+address_number_corrected,
+business_chains,
+categories,
+contacts,
+food_types,
+main_address,
+map_view,
+opening_hours,
+phonemes,
+place_id,
+place_type,
+political_view,
+position,
+postal_code_details,
+pricing_bucket,
+secondary_addresses,
+time_zone,
+title
 FROM aws.geo_places.places
 WHERE place_id = '{{ place_id }}' -- required
 AND region = '{{ region }}' -- required

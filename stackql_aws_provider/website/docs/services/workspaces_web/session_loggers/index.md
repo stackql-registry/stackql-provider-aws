@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalEncryptionContext" /></td>
+    <td><CopyableCode code="additional_encryption_context" /></td>
     <td><code>object</code></td>
     <td>The additional encryption context of the session logger.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedPortalArns" /></td>
+    <td><CopyableCode code="associated_portal_arns" /></td>
     <td><code>array</code></td>
     <td>The associated portal ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the session logger resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerManagedKey" /></td>
+    <td><CopyableCode code="customer_managed_key" /></td>
     <td><code>string</code></td>
     <td>The custom managed key of the session logger. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:kms:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:key\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The human-readable display name. (pattern: &lt;code&gt;&#91; _\-\d\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventFilter" /></td>
+    <td><CopyableCode code="event_filter" /></td>
     <td><code>object</code></td>
     <td>The filter that specifies the events to monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionLoggerArn" /></td>
+    <td><CopyableCode code="session_logger_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the session logger resource. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the session logger resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The human-readable display name. (pattern: &lt;code&gt;&#91; _\-\d\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionLoggerArn" /></td>
+    <td><CopyableCode code="session_logger_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the session logger resource. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -257,14 +257,14 @@ Gets details about a specific session logger resource.
 
 ```sql
 SELECT
-additionalEncryptionContext,
-associatedPortalArns,
-creationDate,
-customerManagedKey,
-displayName,
-eventFilter,
-logConfiguration,
-sessionLoggerArn
+additional_encryption_context,
+associated_portal_arns,
+creation_date,
+customer_managed_key,
+display_name,
+event_filter,
+log_configuration,
+session_logger_arn
 FROM aws.workspaces_web.session_loggers
 WHERE session_logger_arn = '{{ session_logger_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,10 +277,10 @@ Lists all available session logger resources.
 
 ```sql
 SELECT
-creationDate,
-displayName,
-logConfiguration,
-sessionLoggerArn
+creation_date,
+display_name,
+log_configuration,
+session_logger_arn
 FROM aws.workspaces_web.session_loggers
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -325,7 +325,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-sessionLoggerArn
+session_logger_arn
 ;
 ```
 </TabItem>
@@ -395,8 +395,8 @@ portal_arn = '{{ portal_arn }}' --required
 AND sessionLoggerArn = '{{ sessionLoggerArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-portalArn,
-sessionLoggerArn;
+portal_arn,
+session_logger_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_session_logger">
@@ -426,7 +426,7 @@ WHERE
 session_logger_arn = '{{ session_logger_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-sessionLogger;
+session_logger;
 ```
 </TabItem>
 </Tabs>

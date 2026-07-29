@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>The resource policy for the model group. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Gets a resource policy that manages access for a model group. For information ab
 
 ```sql
 SELECT
-ResourcePolicy
+resource_policy
 FROM aws.sagemaker.model_package_group_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -164,7 +164,7 @@ region = '{{ region }}' --required
 AND ModelPackageGroupName = '{{ ModelPackageGroupName }}' --required
 AND ResourcePolicy = '{{ ResourcePolicy }}' --required
 RETURNING
-ModelPackageGroupArn;
+model_package_group_arn;
 ```
 </TabItem>
 </Tabs>

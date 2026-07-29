@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the traffic source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Describes the current state of a traffic source. The state values are as follows: Adding - The Auto Scaling instances are being registered with the load balancer or target group. Added - All Auto Scaling instances are registered with the load balancer or target group. InService - For an Elastic Load Balancing load balancer or target group, at least one Auto Scaling instance passed an ELB health check. For VPC Lattice, at least one Auto Scaling instance passed an VPC_LATTICE health check. Removing - The Auto Scaling instances are being deregistered from the load balancer or target group. If connection draining (deregistration delay) is enabled, Elastic Load Balancing or VPC Lattice waits for in-flight requests to complete before deregistering the instances. Removed - All Auto Scaling instances are deregistered from the load balancer or target group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficSource" /></td>
+    <td><CopyableCode code="traffic_source" /></td>
     <td><code>string</code></td>
     <td>This is replaced by Identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Provides additional context for the value of Identifier. The following lists the valid values: elb if Identifier is the name of a Classic Load Balancer. elbv2 if Identifier is the ARN of an Application Load Balancer, Gateway Load Balancer, or Network Load Balancer target group. vpc-lattice if Identifier is the ARN of a VPC Lattice target group. Required if the identifier is the name of a Classic Load Balancer.</td>
 </tr>
@@ -178,10 +178,10 @@ Gets information about the traffic sources for the specified Auto Scaling group.
 
 ```sql
 SELECT
-Identifier,
-State,
-TrafficSource,
-Type
+identifier,
+state,
+traffic_source,
+type
 FROM aws.autoscaling.traffic_sources
 WHERE AutoScalingGroupName = '{{ AutoScalingGroupName }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RecursiveLoop" /></td>
+    <td><CopyableCode code="recursive_loop" /></td>
     <td><code>string</code></td>
     <td>If your function's recursive loop detection configuration is Allow, Lambda doesn't take any action when it detects your function being invoked as part of a recursive loop. If your function's recursive loop detection configuration is Terminate, Lambda stops your function being invoked and notifies you when it detects your function being invoked as part of a recursive loop. By default, Lambda sets your function's configuration to Terminate. You can update this configuration using the PutFunctionRecursionConfig action. (Allow, Terminate)</td>
 </tr>
@@ -131,7 +131,7 @@ Returns your function's recursive loop detection configuration.
 
 ```sql
 SELECT
-RecursiveLoop
+recursive_loop
 FROM aws.lambda.function_recursion_configs
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -162,7 +162,7 @@ function_name = '{{ function_name }}' --required
 AND region = '{{ region }}' --required
 AND RecursiveLoop = '{{ RecursiveLoop }}' --required
 RETURNING
-RecursiveLoop;
+recursive_loop;
 ```
 </TabItem>
 </Tabs>

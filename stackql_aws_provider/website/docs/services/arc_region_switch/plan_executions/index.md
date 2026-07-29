@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of a step in a workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when a step endeded execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when a step started execution.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a step in a workflow. For example, a status might be Completed or Pending Approval. (notStarted, running, failed, completed, canceled, skipped, pendingApproval)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepMode" /></td>
+    <td><CopyableCode code="step_mode" /></td>
     <td><code>string</code></td>
     <td>The mode for a step execution. The mode can be Graceful or Ungraceful. (graceful, ungraceful)</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actualRecoveryTime" /></td>
+    <td><CopyableCode code="actual_recovery_time" /></td>
     <td><code>string</code></td>
     <td>The actual recovery time that Region switch calculates for a plan execution. Actual recovery time includes the time for the plan to run added to the time elapsed until the application health alarms that you've specified are healthy again. (pattern: &lt;code&gt;P(?!$)(\d+Y)?(\d+M)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+S)?)?&lt;/code&gt;)</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
     <td>An optional comment about the plan execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the plan execution was ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionAction" /></td>
+    <td><CopyableCode code="execution_action" /></td>
     <td><code>string</code></td>
     <td>The plan execution action. Valid values are activate, to activate an Amazon Web Services Region, or deactivate, to deactivate a Region. (activate, deactivate, postRecovery)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution identifier of a plan execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRegion" /></td>
+    <td><CopyableCode code="execution_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region for a plan execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionState" /></td>
+    <td><CopyableCode code="execution_state" /></td>
     <td><code>string</code></td>
     <td>The plan execution state. Provides the state of a plan execution, for example, In Progress or Paused by Operator. (inProgress, pausedByFailedStep, pausedByOperator, completed, completedWithExceptions, canceled, planExecutionTimedOut, pendingManualApproval, failed, pending, completedMonitoringApplicationHealth)</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>The plan execution mode. Valid values are graceful, for graceful executions, or ungraceful, for ungraceful executions. (graceful, ungraceful)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="planArn" /></td>
+    <td><CopyableCode code="plan_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the plan. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:arc-region-switch::&#91;0-9&#93;&#123;12&#125;:plan/(&#91;a-zA-Z0-9&#93;(?:&#91;a-zA-Z0-9-&#93;&#123;0,30&#125;&#91;a-zA-Z0-9&#93;)?):(&#91;a-z0-9&#93;&#123;6&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryExecutionId" /></td>
+    <td><CopyableCode code="recovery_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the most recent recovery execution. Required when starting a post-recovery execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the plan execution was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the plan execution was last updated.</td>
 </tr>
@@ -249,10 +249,10 @@ Retrieves detailed information about a specific plan execution. You must specify
 ```sql
 SELECT
 name,
-endTime,
-startTime,
+end_time,
+start_time,
 status,
-stepMode
+step_mode
 FROM aws.arc_region_switch.plan_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -264,18 +264,18 @@ Lists the executions of a Region switch plan. This operation returns information
 
 ```sql
 SELECT
-actualRecoveryTime,
+actual_recovery_time,
 comment,
-endTime,
-executionAction,
-executionId,
-executionRegion,
-executionState,
+end_time,
+execution_action,
+execution_id,
+execution_region,
+execution_state,
 mode,
-planArn,
-recoveryExecutionId,
-startTime,
-updatedAt,
+plan_arn,
+recovery_execution_id,
+start_time,
+updated_at,
 version
 FROM aws.arc_region_switch.plan_executions
 WHERE region = '{{ region }}' -- required

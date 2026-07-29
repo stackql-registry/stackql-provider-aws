@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetBundleExportJobId" /></td>
+    <td><CopyableCode code="asset_bundle_export_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job. The job ID is set when you start a new job with a StartAssetBundleExportJob API call. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that the export job was executed in. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudFormationOverridePropertyConfiguration" /></td>
+    <td><CopyableCode code="cloud_formation_override_property_configuration" /></td>
     <td><code>object</code></td>
     <td>The CloudFormation override property configuration for the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DownloadUrl" /></td>
+    <td><CopyableCode code="download_url" /></td>
     <td><code>string</code></td>
     <td>The URL to download the exported asset bundle data from. This URL is available only after the job has succeeded. This URL is valid for 5 minutes after issuance. Call DescribeAssetBundleExportJob again for a fresh URL if needed. The downloaded asset bundle is a zip file named assetbundle-&#123;jobId&#125;.qs. The file has a .qs extension. This URL can't be used in a StartAssetBundleImportJob API call and should only be used for download purposes. (pattern: &lt;code&gt;^(https|s3):​//(&#91;^/&#93;+)/?(.*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>An array of error records that describes any failures that occurred during the export job processing. Error records accumulate while the job runs. The complete set of error records is available after the job has completed and failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportFormat" /></td>
+    <td><CopyableCode code="export_format" /></td>
     <td><code>string</code></td>
     <td>The format of the exported asset bundle. A QUICKSIGHT_JSON formatted file can be used to make a StartAssetBundleImportJob API call. A CLOUDFORMATION_JSON formatted file can be used in the CloudFormation console and with the CloudFormation APIs. (CLOUDFORMATION_JSON, QUICKSIGHT_JSON)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeAllDependencies" /></td>
+    <td><CopyableCode code="include_all_dependencies" /></td>
     <td><code>boolean</code></td>
     <td>The include dependencies flag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeFolderMembers" /></td>
+    <td><CopyableCode code="include_folder_members" /></td>
     <td><code>string</code></td>
     <td>A setting that determines whether folder members are included. (RECURSE, ONE_LEVEL, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeFolderMemberships" /></td>
+    <td><CopyableCode code="include_folder_memberships" /></td>
     <td><code>boolean</code></td>
     <td>The include folder memberships flag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludePermissions" /></td>
+    <td><CopyableCode code="include_permissions" /></td>
     <td><code>boolean</code></td>
     <td>The include permissions flag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeTags" /></td>
+    <td><CopyableCode code="include_tags" /></td>
     <td><code>boolean</code></td>
     <td>The include tags flag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of a job through its queuing and execution. Poll this DescribeAssetBundleExportApi until JobStatus is either SUCCESSFUL or FAILED. (QUEUED_FOR_IMMEDIATE_EXECUTION, IN_PROGRESS, SUCCESSFUL, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArns" /></td>
+    <td><CopyableCode code="resource_arns" /></td>
     <td><code>array</code></td>
     <td>A list of resource ARNs that exported with the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationStrategy" /></td>
+    <td><CopyableCode code="validation_strategy" /></td>
     <td><code>object</code></td>
     <td>The validation strategy that is used to export the analysis or dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>An array of warning records that describe the analysis or dashboard that is exported. This array includes UI errors that can be skipped during the validation process. This property only appears if StrictModeForAllResources in ValidationStrategy is set to FALSE.</td>
 </tr>
@@ -160,42 +160,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetBundleExportJobId" /></td>
+    <td><CopyableCode code="asset_bundle_export_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the export job. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportFormat" /></td>
+    <td><CopyableCode code="export_format" /></td>
     <td><code>string</code></td>
     <td>The format for the export job. (CLOUDFORMATION_JSON, QUICKSIGHT_JSON)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeAllDependencies" /></td>
+    <td><CopyableCode code="include_all_dependencies" /></td>
     <td><code>boolean</code></td>
     <td>The flag that determines the inclusion of resource dependencies in the returned asset bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludePermissions" /></td>
+    <td><CopyableCode code="include_permissions" /></td>
     <td><code>boolean</code></td>
     <td>The flag that determines the inclusion of permissions associated with each resource ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeTags" /></td>
+    <td><CopyableCode code="include_tags" /></td>
     <td><code>boolean</code></td>
     <td>The flag that determines the inclusion of tags associated with each resource ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the export job. (QUEUED_FOR_IMMEDIATE_EXECUTION, IN_PROGRESS, SUCCESSFUL, FAILED)</td>
 </tr>
@@ -299,25 +299,25 @@ Describes an existing export job. Poll job descriptions after a job starts to kn
 
 ```sql
 SELECT
-Arn,
-AssetBundleExportJobId,
-AwsAccountId,
-CloudFormationOverridePropertyConfiguration,
-CreatedTime,
-DownloadUrl,
-Errors,
-ExportFormat,
-IncludeAllDependencies,
-IncludeFolderMembers,
-IncludeFolderMemberships,
-IncludePermissions,
-IncludeTags,
-JobStatus,
-RequestId,
-ResourceArns,
-Status,
-ValidationStrategy,
-Warnings
+arn,
+asset_bundle_export_job_id,
+aws_account_id,
+cloud_formation_override_property_configuration,
+created_time,
+download_url,
+errors,
+export_format,
+include_all_dependencies,
+include_folder_members,
+include_folder_memberships,
+include_permissions,
+include_tags,
+job_status,
+request_id,
+resource_arns,
+status,
+validation_strategy,
+warnings
 FROM aws.quicksight.asset_bundle_export_jobs
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND asset_bundle_export_job_id = '{{ asset_bundle_export_job_id }}' -- required
@@ -331,14 +331,14 @@ Lists all asset bundle export jobs that have been taken place in the last 14 day
 
 ```sql
 SELECT
-Arn,
-AssetBundleExportJobId,
-CreatedTime,
-ExportFormat,
-IncludeAllDependencies,
-IncludePermissions,
-IncludeTags,
-JobStatus
+arn,
+asset_bundle_export_job_id,
+created_time,
+export_format,
+include_all_dependencies,
+include_permissions,
+include_tags,
+job_status
 FROM aws.quicksight.asset_bundle_export_jobs
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required

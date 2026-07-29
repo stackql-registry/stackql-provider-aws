@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountStatus" /></td>
+    <td><CopyableCode code="account_status" /></td>
     <td><code>string</code></td>
     <td>The status of registering your account and resources. The status can be one of: REGISTRATION_SUCCESS - The Amazon Web Services resource is successfully registered. REGISTRATION_PENDING - Amazon Web Services IoT FleetWise is processing the registration request. This process takes approximately five minutes to complete. REGISTRATION_FAILURE - Amazon Web Services IoT FleetWise can't register the AWS resource. Try again later. (REGISTRATION_PENDING, REGISTRATION_SUCCESS, REGISTRATION_FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the account was registered, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerAccountId" /></td>
+    <td><CopyableCode code="customer_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amazon Web Services account, provided at account creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamRegistrationResponse" /></td>
+    <td><CopyableCode code="iam_registration_response" /></td>
     <td><code>object</code></td>
     <td>Information about the registered IAM resources or errors, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time this registration was last updated, in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timestreamRegistrationResponse" /></td>
+    <td><CopyableCode code="timestream_registration_response" /></td>
     <td><code>object</code></td>
     <td>Information about the registered Amazon Timestream resources or errors, if any.</td>
 </tr>
@@ -144,12 +144,12 @@ Retrieves information about the status of registering your Amazon Web Services a
 
 ```sql
 SELECT
-accountStatus,
-creationTime,
-customerAccountId,
-iamRegistrationResponse,
-lastModificationTime,
-timestreamRegistrationResponse
+account_status,
+creation_time,
+customer_account_id,
+iam_registration_response,
+last_modification_time,
+timestream_registration_response
 FROM aws.iotfleetwise.register_account_status
 WHERE region = '{{ region }}' -- required
 ;

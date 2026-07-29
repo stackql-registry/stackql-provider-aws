@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The writer endpoint for the RDS DB instance or Aurora DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port that the RDS Proxy uses to connect to the target RDS DB instance or Aurora DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RdsResourceId" /></td>
+    <td><CopyableCode code="rds_resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier representing the target. It can be the instance identifier for an RDS DB instance, or the cluster identifier for an Aurora DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>A value that indicates whether the target of the proxy can be used for read/write or read-only operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the RDS DB instance or Aurora DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetHealth" /></td>
+    <td><CopyableCode code="target_health" /></td>
     <td><code>string</code></td>
     <td>Information about the connection health of the RDS Proxy target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackedClusterId" /></td>
+    <td><CopyableCode code="tracked_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The DB cluster identifier when the target represents an Aurora DB cluster. This field is blank when the target represents an RDS DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Specifies the kind of database, such as an RDS DB instance or an Aurora DB cluster, that the target represents.</td>
 </tr>
@@ -203,14 +203,14 @@ Returns information about DBProxyTarget objects. This API supports pagination.
 
 ```sql
 SELECT
-Endpoint,
-Port,
-RdsResourceId,
-Role,
-TargetArn,
-TargetHealth,
-TrackedClusterId,
-Type
+endpoint,
+port,
+rds_resource_id,
+role,
+target_arn,
+target_health,
+tracked_cluster_id,
+type
 FROM aws.rds.db_proxy_targets
 WHERE DBProxyName = '{{ DBProxyName }}' -- required
 AND region = '{{ region }}' -- required
@@ -252,14 +252,14 @@ SELECT
 '{{ DBInstanceIdentifiers }}',
 '{{ DBClusterIdentifiers }}'
 RETURNING
-Endpoint,
-Port,
-RdsResourceId,
-Role,
-TargetArn,
-TargetHealth,
-TrackedClusterId,
-Type
+endpoint,
+port,
+rds_resource_id,
+role,
+target_arn,
+target_health,
+tracked_cluster_id,
+type
 ;
 ```
 </TabItem>

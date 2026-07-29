@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FaceModelVersion" /></td>
+    <td><CopyableCode code="face_model_version" /></td>
     <td><code>string</code></td>
     <td>Version number of the face detection model associated with the input collection CollectionId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchedFace" /></td>
+    <td><CopyableCode code="searched_face" /></td>
     <td><code>object</code></td>
     <td>A list of FaceDetail objects containing the BoundingBox for the largest face in image, as well as the confidence in the bounding box, that was searched for matches. If no valid face is detected in the image the response will contain no SearchedFace object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnsearchedFaces" /></td>
+    <td><CopyableCode code="unsearched_faces" /></td>
     <td><code>array</code></td>
     <td>List of UnsearchedFace objects. Contains the face details infered from the specified image but not used for search. Contains reasons that describe why a face wasn't used for Search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserMatches" /></td>
+    <td><CopyableCode code="user_matches" /></td>
     <td><code>array</code></td>
     <td>An array of UserID objects that matched the input face, along with the confidence in the match. The returned structure will be empty if there are no matches. Returned if the SearchUsersByImageResponse action is successful.</td>
 </tr>
@@ -134,10 +134,10 @@ Searches for UserIDs using a supplied image. It first detects the largest face i
 
 ```sql
 SELECT
-FaceModelVersion,
-SearchedFace,
-UnsearchedFaces,
-UserMatches
+face_model_version,
+searched_face,
+unsearched_faces,
+user_matches
 FROM aws.rekognition.users_by_images
 WHERE region = '{{ region }}' -- required
 ;

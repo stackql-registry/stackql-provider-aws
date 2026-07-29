@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="matchId" /></td>
+    <td><CopyableCode code="match_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifiers for this group of match records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="matchRule" /></td>
+    <td><CopyableCode code="match_rule" /></td>
     <td><code>string</code></td>
     <td>The rule the record matched on.</td>
 </tr>
@@ -129,8 +129,8 @@ Returns the corresponding Match ID of a customer record if the record has been p
 
 ```sql
 SELECT
-matchId,
-matchRule
+match_id,
+match_rule
 FROM aws.entityresolution.match_ids
 WHERE workflow_name = '{{ workflow_name }}' -- required
 AND region = '{{ region }}' -- required

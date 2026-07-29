@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags for the resource.</td>
 </tr>
@@ -143,7 +143,7 @@ List the tags for a resource. The WorkloadArn parameter can be a workload ARN, a
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.wellarchitected.tags
 WHERE workload_arn = '{{ workload_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoreNetworkSegmentEdge" /></td>
+    <td><CopyableCode code="core_network_segment_edge" /></td>
     <td><code>object</code></td>
     <td>Describes a core network segment edge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkRoutes" /></td>
+    <td><CopyableCode code="network_routes" /></td>
     <td><code>array</code></td>
     <td>The network routes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteTableArn" /></td>
+    <td><CopyableCode code="route_table_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the route table. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteTableTimestamp" /></td>
+    <td><CopyableCode code="route_table_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The route table creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteTableType" /></td>
+    <td><CopyableCode code="route_table_type" /></td>
     <td><code>string</code></td>
     <td>The route table type. (TRANSIT_GATEWAY_ROUTE_TABLE, CORE_NETWORK_SEGMENT, NETWORK_FUNCTION_GROUP)</td>
 </tr>
@@ -144,11 +144,11 @@ Gets the network routes of the specified global network.
 
 ```sql
 SELECT
-CoreNetworkSegmentEdge,
-NetworkRoutes,
-RouteTableArn,
-RouteTableTimestamp,
-RouteTableType
+core_network_segment_edge,
+network_routes,
+route_table_arn,
+route_table_timestamp,
+route_table_type
 FROM aws.networkmanager.network_routes
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required

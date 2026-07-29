@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>A list of the multiplex output destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiplexSettings" /></td>
+    <td><CopyableCode code="multiplex_settings" /></td>
     <td><code>object</code></td>
     <td>Contains configuration for a Multiplex event</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelinesRunningCount" /></td>
+    <td><CopyableCode code="pipelines_running_count" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgramCount" /></td>
+    <td><CopyableCode code="program_count" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the multiplex. (CREATING, CREATE_FAILED, IDLE, STARTING, RUNNING, RECOVERING, STOPPING, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
@@ -115,47 +115,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiplexSettings" /></td>
+    <td><CopyableCode code="multiplex_settings" /></td>
     <td><code>object</code></td>
     <td>Configuration for a multiplex event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelinesRunningCount" /></td>
+    <td><CopyableCode code="pipelines_running_count" /></td>
     <td><code>integer</code></td>
     <td>The number of currently healthy pipelines.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgramCount" /></td>
+    <td><CopyableCode code="program_count" /></td>
     <td><code>integer</code></td>
     <td>The number of programs in the multiplex.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the multiplex. (CREATING, CREATE_FAILED, IDLE, STARTING, RUNNING, RECOVERING, STOPPING, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
@@ -282,16 +282,16 @@ Gets details about a multiplex.
 
 ```sql
 SELECT
-Arn,
-AvailabilityZones,
-Destinations,
-Id,
-MultiplexSettings,
-Name,
-PipelinesRunningCount,
-ProgramCount,
-State,
-Tags
+arn,
+availability_zones,
+destinations,
+id,
+multiplex_settings,
+name,
+pipelines_running_count,
+program_count,
+state,
+tags
 FROM aws.medialive.multiplexes
 WHERE multiplex_id = '{{ multiplex_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -304,15 +304,15 @@ Retrieve a list of the existing multiplexes.
 
 ```sql
 SELECT
-Arn,
-AvailabilityZones,
-Id,
-MultiplexSettings,
-Name,
-PipelinesRunningCount,
-ProgramCount,
-State,
-Tags
+arn,
+availability_zones,
+id,
+multiplex_settings,
+name,
+pipelines_running_count,
+program_count,
+state,
+tags
 FROM aws.medialive.multiplexes
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -353,7 +353,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Multiplex
+multiplex
 ;
 ```
 </TabItem>
@@ -418,7 +418,7 @@ WHERE
 multiplex_id = '{{ multiplex_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Multiplex;
+multiplex;
 ```
 </TabItem>
 </Tabs>

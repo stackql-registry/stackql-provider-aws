@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="allowedPrefixesToDirectConnectGateway" /></td>
+    <td><CopyableCode code="allowed_prefixes_to_direct_connect_gateway" /></td>
     <td><code>array</code></td>
     <td>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedCoreNetwork" /></td>
+    <td><CopyableCode code="associated_core_network" /></td>
     <td><code>object</code></td>
     <td>The ID of the Cloud WAN core network associated with the Direct Connect gateway attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedGateway" /></td>
+    <td><CopyableCode code="associated_gateway" /></td>
     <td><code>object</code></td>
     <td>Information about the associated gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Direct Connect gateway association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationState" /></td>
+    <td><CopyableCode code="association_state" /></td>
     <td><code>string</code></td>
     <td>The state of the association. The following are the possible values: associating: The initial state after calling CreateDirectConnectGatewayAssociation. associated: The Direct Connect gateway and virtual private gateway or transit gateway are successfully associated and ready to pass traffic. disassociating: The initial state after calling DeleteDirectConnectGatewayAssociation. disassociated: The virtual private gateway or transit gateway is disassociated from the Direct Connect gateway. Traffic flow between the Direct Connect gateway and virtual private gateway or transit gateway is stopped. updating: The CIDR blocks for the virtual private gateway or transit gateway are currently being updated. This could be new CIDR blocks added or current CIDR blocks removed. (associating, associated, disassociating, disassociated, updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="directConnectGatewayId" /></td>
+    <td><CopyableCode code="direct_connect_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Direct Connect gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="directConnectGatewayOwnerAccount" /></td>
+    <td><CopyableCode code="direct_connect_gateway_owner_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the associated gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateChangeError" /></td>
+    <td><CopyableCode code="state_change_error" /></td>
     <td><code>string</code></td>
     <td>The error message if the state of an object failed to advance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualGatewayId" /></td>
+    <td><CopyableCode code="virtual_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private gateway. Applies only to private virtual interfaces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualGatewayOwnerAccount" /></td>
+    <td><CopyableCode code="virtual_gateway_owner_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the virtual private gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualGatewayRegion" /></td>
+    <td><CopyableCode code="virtual_gateway_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the virtual private gateway is located.</td>
 </tr>
@@ -197,17 +197,17 @@ Lists the associations between your Direct Connect gateways and virtual private 
 
 ```sql
 SELECT
-allowedPrefixesToDirectConnectGateway,
-associatedCoreNetwork,
-associatedGateway,
-associationId,
-associationState,
-directConnectGatewayId,
-directConnectGatewayOwnerAccount,
-stateChangeError,
-virtualGatewayId,
-virtualGatewayOwnerAccount,
-virtualGatewayRegion
+allowed_prefixes_to_direct_connect_gateway,
+associated_core_network,
+associated_gateway,
+association_id,
+association_state,
+direct_connect_gateway_id,
+direct_connect_gateway_owner_account,
+state_change_error,
+virtual_gateway_id,
+virtual_gateway_owner_account,
+virtual_gateway_region
 FROM aws.directconnect.direct_connect_gateway_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -244,7 +244,7 @@ SELECT
 '{{ virtualGatewayId }}',
 '{{ region }}'
 RETURNING
-directConnectGatewayAssociation
+direct_connect_gateway_association
 ;
 ```
 </TabItem>
@@ -300,7 +300,7 @@ removeAllowedPrefixesToDirectConnectGateway = '{{ removeAllowedPrefixesToDirectC
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-directConnectGatewayAssociation;
+direct_connect_gateway_association;
 ```
 </TabItem>
 </Tabs>

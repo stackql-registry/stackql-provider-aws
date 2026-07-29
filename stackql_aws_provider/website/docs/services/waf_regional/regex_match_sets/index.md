@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the RegexMatchSet. You can't change Name after you create a RegexMatchSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexMatchSetId" /></td>
+    <td><CopyableCode code="regex_match_set_id" /></td>
     <td><code>string</code></td>
     <td>The RegexMatchSetId for a RegexMatchSet. You use RegexMatchSetId to get information about a RegexMatchSet (see GetRegexMatchSet), update a RegexMatchSet (see UpdateRegexMatchSet), insert a RegexMatchSet into a Rule or delete one from a Rule (see UpdateRule), and delete a RegexMatchSet from AWS WAF (see DeleteRegexMatchSet). RegexMatchSetId is returned by CreateRegexMatchSet and by ListRegexMatchSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexMatchTuples" /></td>
+    <td><CopyableCode code="regex_match_tuples" /></td>
     <td><code>array</code></td>
     <td>Contains an array of RegexMatchTuple objects. Each RegexMatchTuple object contains: The part of a web request that you want AWS WAF to inspect, such as a query string or the value of the User-Agent header. The identifier of the pattern (a regular expression) that you want AWS WAF to look for. For more information, see RegexPatternSet. Whether to perform any conversions on the request, such as converting it to lowercase, before inspecting it for the specified string.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If you have more RegexMatchSet objects than the number that you specified for Limit in the request, the response includes a NextMarker value. To list more RegexMatchSet objects, submit another ListRegexMatchSets request, and specify the NextMarker value from the response in the NextMarker value in the next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexMatchSets" /></td>
+    <td><CopyableCode code="regex_match_sets" /></td>
     <td><code>array</code></td>
     <td>An array of RegexMatchSetSummary objects.</td>
 </tr>
@@ -183,9 +183,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-Name,
-RegexMatchSetId,
-RegexMatchTuples
+name,
+regex_match_set_id,
+regex_match_tuples
 FROM aws.waf_regional.regex_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-NextMarker,
-RegexMatchSets
+next_marker,
+regex_match_sets
 FROM aws.waf_regional.regex_match_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,8 +231,8 @@ SELECT
 '{{ ChangeToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ChangeToken,
-RegexMatchSet
+change_token,
+regex_match_set
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ AND RegexMatchSetId = '{{ RegexMatchSetId }}' --required
 AND Updates = '{{ Updates }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
@@ -140,7 +140,7 @@ Views the case history for edits made to a designated case.
 ```sql
 SELECT
 action,
-eventTimestamp,
+event_timestamp,
 message,
 principal
 FROM aws.security_ir.case_edits

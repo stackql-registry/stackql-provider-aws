@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="flowExecutions" /></td>
+    <td><CopyableCode code="flow_executions" /></td>
     <td><code>array</code></td>
     <td>Returns a list of all instances when this flow was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token for the next page of data. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Fetches the execution history of the flow.
 
 ```sql
 SELECT
-flowExecutions,
-nextToken
+flow_executions,
+next_token
 FROM aws.appflow.flow_execution_records
 WHERE region = '{{ region }}' -- required
 ;

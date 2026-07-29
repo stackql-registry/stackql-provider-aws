@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the email contact. (pattern: &lt;code&gt;arn:aws:notifications-contacts::&#91;0-9&#93;&#123;12&#125;:emailcontact/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the resource.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the email contact. Only activated email contacts receive emails. (inactive, active)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the resource was last updated.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the email contact. (pattern: &lt;code&gt;arn:aws:notifications-contacts::&#91;0-9&#93;&#123;12&#125;:emailcontact/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the resource.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the email contact. Only activated email contacts receive emails. (inactive, active)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the resource was last updated.</td>
 </tr>
@@ -229,9 +229,9 @@ SELECT
 name,
 address,
 arn,
-creationTime,
+creation_time,
 status,
-updateTime
+update_time
 FROM aws.notificationscontacts.email_contacts
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,9 +247,9 @@ SELECT
 name,
 address,
 arn,
-creationTime,
+creation_time,
 status,
-updateTime
+update_time
 FROM aws.notificationscontacts.email_contacts
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

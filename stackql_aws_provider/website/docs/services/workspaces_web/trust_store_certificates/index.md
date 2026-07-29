@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The certificate of the trust store certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustStoreArn" /></td>
+    <td><CopyableCode code="trust_store_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trust store certificate. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certificateList" /></td>
+    <td><CopyableCode code="certificate_list" /></td>
     <td><code>array</code></td>
     <td>The certificate list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation.&gt; (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustStoreArn" /></td>
+    <td><CopyableCode code="trust_store_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trust store. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -183,7 +183,7 @@ Gets the trust store certificate.
 ```sql
 SELECT
 certificate,
-trustStoreArn
+trust_store_arn
 FROM aws.workspaces_web.trust_store_certificates
 WHERE trust_store_arn = '{{ trust_store_arn }}' -- required
 AND thumbprint = '{{ thumbprint }}' -- required
@@ -197,9 +197,9 @@ Retrieves a list of trust store certificates.
 
 ```sql
 SELECT
-certificateList,
-nextToken,
-trustStoreArn
+certificate_list,
+next_token,
+trust_store_arn
 FROM aws.workspaces_web.trust_store_certificates
 WHERE trust_store_arn = '{{ trust_store_arn }}' -- required
 AND region = '{{ region }}' -- required

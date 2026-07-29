@@ -119,11 +119,11 @@ SELECT
 '{{ codeVerifier }}',
 '{{ region }}'
 RETURNING
-accessToken,
-expiresIn,
-idToken,
-refreshToken,
-tokenType
+access_token,
+expires_in,
+id_token,
+refresh_token,
+token_type
 ;
 ```
 </TabItem>

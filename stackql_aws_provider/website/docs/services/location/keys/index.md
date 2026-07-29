@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the API key resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description for the API key resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpireTime" /></td>
+    <td><CopyableCode code="expire_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the API key resource will expire in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key value/string of an API key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyArn" /></td>
+    <td><CopyableCode code="key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the API key resource. Used when you need to specify a resource across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:key/ExampleKey (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:(&#91;^/&#93;.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyName" /></td>
+    <td><CopyableCode code="key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the API key resource. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Restrictions" /></td>
+    <td><CopyableCode code="restrictions" /></td>
     <td><code>object</code></td>
     <td>API Restrictions on the allowed actions, resources, and referers for an API key resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the API key resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the API key resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the API key was created, in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description for the API key resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpireTime" /></td>
+    <td><CopyableCode code="expire_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the API key resource will expire, in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyName" /></td>
+    <td><CopyableCode code="key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the API key resource. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Restrictions" /></td>
+    <td><CopyableCode code="restrictions" /></td>
     <td><code>object</code></td>
     <td>API Restrictions on the allowed actions, resources, and referers for an API key resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the API key was last updated, in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -243,15 +243,15 @@ Retrieves the API key resource details. For more information, see Use API keys t
 
 ```sql
 SELECT
-CreateTime,
-Description,
-ExpireTime,
-Key,
-KeyArn,
-KeyName,
-Restrictions,
-Tags,
-UpdateTime
+create_time,
+description,
+expire_time,
+key,
+key_arn,
+key_name,
+restrictions,
+tags,
+update_time
 FROM aws.location.keys
 WHERE key_name = '{{ key_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -264,12 +264,12 @@ Lists API key resources in your Amazon Web Services account. For more informatio
 
 ```sql
 SELECT
-CreateTime,
-Description,
-ExpireTime,
-KeyName,
-Restrictions,
-UpdateTime
+create_time,
+description,
+expire_time,
+key_name,
+restrictions,
+update_time
 FROM aws.location.keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -310,10 +310,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreateTime,
-Key,
-KeyArn,
-KeyName
+create_time,
+key,
+key_arn,
+key_name
 ;
 ```
 </TabItem>
@@ -380,9 +380,9 @@ WHERE
 key_name = '{{ key_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-KeyArn,
-KeyName,
-UpdateTime;
+key_arn,
+key_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

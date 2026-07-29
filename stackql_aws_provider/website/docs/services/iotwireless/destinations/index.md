@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the new resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expression" /></td>
+    <td><CopyableCode code="expression" /></td>
     <td><code>string</code></td>
     <td>The rule name or topic rule to send messages to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpressionType" /></td>
+    <td><CopyableCode code="expression_type" /></td>
     <td><code>string</code></td>
     <td>The type of value in Expression. (RuleName, MqttTopic)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM Role that authorizes the destination.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationList" /></td>
+    <td><CopyableCode code="destination_list" /></td>
     <td><code>array</code></td>
     <td>The list of destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
@@ -220,12 +220,12 @@ Gets information about a destination.
 
 ```sql
 SELECT
-Arn,
-Description,
-Expression,
-ExpressionType,
-Name,
-RoleArn
+arn,
+description,
+expression,
+expression_type,
+name,
+role_arn
 FROM aws.iotwireless.destinations
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -238,8 +238,8 @@ Lists the destinations registered to your AWS account.
 
 ```sql
 SELECT
-DestinationList,
-NextToken
+destination_list,
+next_token
 FROM aws.iotwireless.destinations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -284,8 +284,8 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-Arn,
-Name
+arn,
+name
 ;
 ```
 </TabItem>

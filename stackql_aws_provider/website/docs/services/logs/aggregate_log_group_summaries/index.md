@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="groupingIdentifiers" /></td>
+    <td><CopyableCode code="grouping_identifiers" /></td>
     <td><code>array</code></td>
     <td>An array of key-value pairs that identify the data source characteristics used to group the log groups. The size and content of this array depends on the groupBy parameter specified in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupCount" /></td>
+    <td><CopyableCode code="log_group_count" /></td>
     <td><code>integer</code></td>
     <td>The number of log groups in this aggregate summary group.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns an aggregate summary of all log groups in the Region grouped by specifie
 
 ```sql
 SELECT
-groupingIdentifiers,
-logGroupCount
+grouping_identifiers,
+log_group_count
 FROM aws.logs.aggregate_log_group_summaries
 WHERE region = '{{ region }}' -- required
 ;

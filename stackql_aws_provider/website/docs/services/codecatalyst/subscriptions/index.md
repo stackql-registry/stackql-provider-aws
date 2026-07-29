@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountName" /></td>
+    <td><CopyableCode code="aws_account_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the Amazon Web Services account used for billing for the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSubscriptionStartTime" /></td>
+    <td><CopyableCode code="pending_subscription_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The day and time the pending change will be applied to the space, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSubscriptionType" /></td>
+    <td><CopyableCode code="pending_subscription_type" /></td>
     <td><code>string</code></td>
     <td>The type of the billing plan that the space will be changed to at the start of the next billing cycle. This applies only to changes that reduce the functionality available for the space. Billing plan changes that increase functionality are applied immediately. For more information, see Pricing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionType" /></td>
+    <td><CopyableCode code="subscription_type" /></td>
     <td><code>string</code></td>
     <td>The type of the billing plan for the space.</td>
 </tr>
@@ -139,10 +139,10 @@ Returns information about the Amazon Web Services account used for billing purpo
 
 ```sql
 SELECT
-awsAccountName,
-pendingSubscriptionStartTime,
-pendingSubscriptionType,
-subscriptionType
+aws_account_name,
+pending_subscription_start_time,
+pending_subscription_type,
+subscription_type
 FROM aws.codecatalyst.subscriptions
 WHERE space_name = '{{ space_name }}' -- required
 AND region = '{{ region }}' -- required

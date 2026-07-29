@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that uses the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportCreationTime" /></td>
+    <td><CopyableCode code="report_creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the report creation was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource (ec2:Instance or ec2:LaunchTemplate).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageCount" /></td>
+    <td><CopyableCode code="usage_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times resources of this type reference this image in the account.</td>
 </tr>
@@ -174,12 +174,12 @@ Describes the entries in image usage reports, showing how your images are used a
 
 ```sql
 SELECT
-AccountId,
-ImageId,
-ReportCreationTime,
-ReportId,
-ResourceType,
-UsageCount
+account_id,
+image_id,
+report_creation_time,
+report_id,
+resource_type,
+usage_count
 FROM aws.ec2.image_usage_report_entries
 WHERE region = '{{ region }}' -- required
 AND ImageId = '{{ ImageId }}'

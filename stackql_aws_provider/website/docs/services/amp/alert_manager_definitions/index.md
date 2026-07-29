@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the alert manager definition was created.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The base-64 encoded blob that is alert manager definition. For details about the alert manager definition, see AlertManagedDefinitionData.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the alert manager definition was most recently changed.</td>
 </tr>
@@ -165,9 +165,9 @@ Retrieves the full information about the alert manager definition for a workspac
 
 ```sql
 SELECT
-createdAt,
+created_at,
 data,
-modifiedAt,
+modified_at,
 status
 FROM aws.amp.alert_manager_definitions
 WHERE workspace_id = '{{ workspace_id }}' -- required

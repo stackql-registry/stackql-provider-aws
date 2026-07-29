@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="runArn" /></td>
+    <td><CopyableCode code="run_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN of the workflow run. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The HealthOmics-generated identifier for the workflow run. Empty if submission failed. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runInternalUuid" /></td>
+    <td><CopyableCode code="run_internal_uuid" /></td>
     <td><code>string</code></td>
     <td>The universally unique identifier (UUID) for the run. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runSettingId" /></td>
+    <td><CopyableCode code="run_setting_id" /></td>
     <td><code>string</code></td>
     <td>The customer-provided identifier for the run configuration. Use this to correlate results back to the input configuration provided in inlineSettings or s3UriSettings. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submissionFailureMessage" /></td>
+    <td><CopyableCode code="submission_failure_message" /></td>
     <td><code>string</code></td>
     <td>A detailed message describing the submission failure. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submissionFailureReason" /></td>
+    <td><CopyableCode code="submission_failure_reason" /></td>
     <td><code>string</code></td>
     <td>The error category for a failed submission. See the run-level failure table in the HealthOmics User Guide for details on each value. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submissionStatus" /></td>
+    <td><CopyableCode code="submission_status" /></td>
     <td><code>string</code></td>
     <td>The submission outcome for this run. (SUCCESS, FAILED, CANCEL_SUCCESS, CANCEL_FAILED, DELETE_SUCCESS, DELETE_FAILED)</td>
 </tr>
@@ -179,13 +179,13 @@ Returns a paginated list of individual workflow runs within a specific batch. Us
 
 ```sql
 SELECT
-runArn,
-runId,
-runInternalUuid,
-runSettingId,
-submissionFailureMessage,
-submissionFailureReason,
-submissionStatus
+run_arn,
+run_id,
+run_internal_uuid,
+run_setting_id,
+submission_failure_message,
+submission_failure_reason,
+submission_status
 FROM aws.omics.runs_in_batches
 WHERE batch_id = '{{ batch_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that represents the aliases for a public registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the public registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that's associated with the registry. If you do not specify a registry, the default public registry is assumed. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryUri" /></td>
+    <td><CopyableCode code="registry_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of a public registry. The URI contains a universal prefix and the registry alias.</td>
 </tr>
@@ -140,9 +140,9 @@ Returns details for a public registry.
 ```sql
 SELECT
 aliases,
-registryArn,
-registryId,
-registryUri,
+registry_arn,
+registry_id,
+registry_uri,
 verified
 FROM aws.ecr_public.registries
 WHERE region = '{{ region }}' -- required

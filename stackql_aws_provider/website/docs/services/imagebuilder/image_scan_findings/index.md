@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that's associated with the finding.</td>
 </tr>
@@ -60,37 +60,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstObservedAt" /></td>
+    <td><CopyableCode code="first_observed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the finding was first observed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fixAvailable" /></td>
+    <td><CopyableCode code="fix_available" /></td>
     <td><code>string</code></td>
     <td>Details about whether a fix is available for any of the packages that are identified in the finding through a version update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageBuildVersionArn" /></td>
+    <td><CopyableCode code="image_build_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the image build version that's associated with the finding. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):image/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+/&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imagePipelineArn" /></td>
+    <td><CopyableCode code="image_pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the image pipeline that's associated with the finding. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws):image-pipeline/&#91;a-z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inspectorScore" /></td>
+    <td><CopyableCode code="inspector_score" /></td>
     <td><code>number (double)</code></td>
     <td>The score that Amazon Inspector assigned for the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inspectorScoreDetails" /></td>
+    <td><CopyableCode code="inspector_score_details" /></td>
     <td><code>object</code></td>
     <td>An object that contains details of the Amazon Inspector score.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageVulnerabilityDetails" /></td>
+    <td><CopyableCode code="package_vulnerability_details" /></td>
     <td><code>object</code></td>
     <td>An object that contains the details of a package vulnerability finding.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the finding. Image Builder looks for findings of the type PACKAGE_VULNERABILITY that apply to output images, and excludes other types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the finding was last updated.</td>
 </tr>
@@ -184,20 +184,20 @@ Returns a list of image scan findings for your account.
 
 ```sql
 SELECT
-awsAccountId,
+aws_account_id,
 description,
-firstObservedAt,
-fixAvailable,
-imageBuildVersionArn,
-imagePipelineArn,
-inspectorScore,
-inspectorScoreDetails,
-packageVulnerabilityDetails,
+first_observed_at,
+fix_available,
+image_build_version_arn,
+image_pipeline_arn,
+inspector_score,
+inspector_score_details,
+package_vulnerability_details,
 remediation,
 severity,
 title_,
 type_,
-updatedAt
+updated_at
 FROM aws.imagebuilder.image_scan_findings
 WHERE region = '{{ region }}' -- required
 ;

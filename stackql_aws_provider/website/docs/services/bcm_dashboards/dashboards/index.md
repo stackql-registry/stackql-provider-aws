@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the retrieved dashboard. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:bcm-dashboards::&#91;0-9&#93;&#123;12&#125;:dashboard/(\*|&#91;-a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the dashboard was created.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates the dashboard type. (CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the dashboard was last modified.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the referenced dashboard. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:bcm-dashboards::&#91;0-9&#93;&#123;12&#125;:dashboard/(\*|&#91;-a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the dashboard was created.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The dashboard type. (CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the dashboard was last modified.</td>
 </tr>
@@ -225,10 +225,10 @@ Retrieves the configuration and metadata of a specified dashboard, including its
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
 type_,
-updatedAt,
+updated_at,
 widgets
 FROM aws.bcm_dashboards.dashboards
 WHERE region = '{{ region }}' -- required
@@ -243,10 +243,10 @@ Returns a list of all dashboards in your account.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
 type_,
-updatedAt
+updated_at
 FROM aws.bcm_dashboards.dashboards
 WHERE region = '{{ region }}' -- required
 ;

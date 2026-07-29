@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientId" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
     <td>The OIDC client ID used for authenticating with the OpenTDF provider. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientSecret" /></td>
+    <td><CopyableCode code="client_secret" /></td>
     <td><code>string</code></td>
     <td>The OIDC client secret used for authenticating with the OpenTDF provider. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -151,8 +151,8 @@ Retrieves the OpenTDF integration configuration for a Wickr network.
 
 ```sql
 SELECT
-clientId,
-clientSecret,
+client_id,
+client_secret,
 domain,
 provider
 FROM aws.wickr.opentdf_configs
@@ -196,8 +196,8 @@ SELECT
 '{{ region }}',
 '{{ dryRun }}'
 RETURNING
-clientId,
-clientSecret,
+client_id,
+client_secret,
 domain,
 provider
 ;

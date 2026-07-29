@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the table. (pattern: &lt;code&gt;&#91;0-9a-z_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the table was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedByService" /></td>
+    <td><CopyableCode code="managed_by_service" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service managing this table, if applicable. For example, a replicated table is managed by the S3 Tables replication service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the table was last modified at.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceId" /></td>
+    <td><CopyableCode code="namespace_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the namespace that contains this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableARN" /></td>
+    <td><CopyableCode code="table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the table. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9_-&#93;&#123;3,63&#125;/table/&#91;a-zA-Z0-9-_&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBucketId" /></td>
+    <td><CopyableCode code="table_bucket_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the table bucket that contains this table.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the table. (pattern: &lt;code&gt;&#91;0-9a-z_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the table bucket was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that created the table. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
     <td>The format of the table. (ICEBERG)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedByService" /></td>
+    <td><CopyableCode code="managed_by_service" /></td>
     <td><code>string</code></td>
     <td>The service that manages the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedTableInformation" /></td>
+    <td><CopyableCode code="managed_table_information" /></td>
     <td><code>object</code></td>
     <td>If this table is managed by S3 Tables, contains additional information such as replication details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataLocation" /></td>
+    <td><CopyableCode code="metadata_location" /></td>
     <td><code>string</code></td>
     <td>The metadata location of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the table was last modified on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedBy" /></td>
+    <td><CopyableCode code="modified_by" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that last modified the table. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
@@ -160,22 +160,22 @@ The following fields are returned by `SELECT` queries:
     <td>The namespace associated with the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceId" /></td>
+    <td><CopyableCode code="namespace_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the namespace containing this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that owns the table. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableARN" /></td>
+    <td><CopyableCode code="table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the table. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9_-&#93;&#123;3,63&#125;/table/&#91;a-zA-Z0-9-_&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBucketId" /></td>
+    <td><CopyableCode code="table_bucket_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the table bucket containing this table.</td>
 </tr>
@@ -185,12 +185,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the table. (customer, aws)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionToken" /></td>
+    <td><CopyableCode code="version_token" /></td>
     <td><code>string</code></td>
     <td>The version token of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warehouseLocation" /></td>
+    <td><CopyableCode code="warehouse_location" /></td>
     <td><code>string</code></td>
     <td>The warehouse location of the table.</td>
 </tr>
@@ -337,13 +337,13 @@ List tables in the given table bucket. For more information, see S3 Tables in th
 ```sql
 SELECT
 name,
-createdAt,
-managedByService,
-modifiedAt,
+created_at,
+managed_by_service,
+modified_at,
 namespace,
-namespaceId,
-tableARN,
-tableBucketId,
+namespace_id,
+table_arn,
+table_bucket_id,
 type_
 FROM aws.s3tables.tables
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
@@ -362,22 +362,22 @@ Gets details about a table. For more information, see S3 Tables in the Amazon Si
 ```sql
 SELECT
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 format_,
-managedByService,
-managedTableInformation,
-metadataLocation,
-modifiedAt,
-modifiedBy,
+managed_by_service,
+managed_table_information,
+metadata_location,
+modified_at,
+modified_by,
 namespace,
-namespaceId,
-ownerAccountId,
-tableARN,
-tableBucketId,
+namespace_id,
+owner_account_id,
+table_arn,
+table_bucket_id,
 type_,
-versionToken,
-warehouseLocation
+version_token,
+warehouse_location
 FROM aws.s3tables.tables
 WHERE region = '{{ region }}' -- required
 AND tableBucketARN = '{{ tableBucketARN }}'
@@ -426,8 +426,8 @@ SELECT
 '{{ namespace }}',
 '{{ region }}'
 RETURNING
-tableARN,
-versionToken
+table_arn,
+version_token
 ;
 ```
 </TabItem>

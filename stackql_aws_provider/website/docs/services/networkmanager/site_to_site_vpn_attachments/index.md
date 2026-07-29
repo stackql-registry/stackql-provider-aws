@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>object</code></td>
     <td>Describes a core network attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnConnectionArn" /></td>
+    <td><CopyableCode code="vpn_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the site-to-site VPN attachment. (pattern: &lt;code&gt;^arn:&#91;^:&#93;&#123;1,63&#125;:ec2:&#91;^:&#93;&#123;0,63&#125;:&#91;^:&#93;&#123;0,63&#125;:vpn-connection\/vpn-&#91;0-9a-f&#93;&#123;8,17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -136,8 +136,8 @@ Returns information about a site-to-site VPN attachment.
 
 ```sql
 SELECT
-Attachment,
-VpnConnectionArn
+attachment,
+vpn_connection_arn
 FROM aws.networkmanager.site_to_site_vpn_attachments
 WHERE attachment_id = '{{ attachment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -177,7 +177,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-SiteToSiteVpnAttachment
+site_to_site_vpn_attachment
 ;
 ```
 </TabItem>

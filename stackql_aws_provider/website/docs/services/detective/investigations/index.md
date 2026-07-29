@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the investigation report in UTC time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityArn" /></td>
+    <td><CopyableCode code="entity_arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN). Detective supports IAM user ARNs and IAM role ARNs. (pattern: &lt;code&gt;^arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityType" /></td>
+    <td><CopyableCode code="entity_type" /></td>
     <td><code>string</code></td>
     <td>Type of entity. For example, Amazon Web Services accounts, such as an IAM user and/or IAM role. (IAM_ROLE, IAM_USER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GraphArn" /></td>
+    <td><CopyableCode code="graph_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the behavior graph. (pattern: &lt;code&gt;^arn:aws&#91;-\w&#93;&#123;0,10&#125;?:detective:&#91;-\w&#93;&#123;2,20&#125;?:\d&#123;12&#125;?:graph:&#91;abcdef\d&#93;&#123;32&#125;?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvestigationId" /></td>
+    <td><CopyableCode code="investigation_id" /></td>
     <td><code>string</code></td>
     <td>The investigation ID of the investigation report. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScopeEndTime" /></td>
+    <td><CopyableCode code="scope_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The data and time when the investigation began. The value is an UTC ISO8601 formatted string. For example, 2021-08-18T16:35:56.284Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScopeStartTime" /></td>
+    <td><CopyableCode code="scope_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date and time used to set the scope time within which you want to generate the investigation report. The value is an UTC ISO8601 formatted string. For example, 2021-08-18T16:35:56.284Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity assigned is based on the likelihood and impact of the indicators of compromise discovered in the investigation. (INFORMATIONAL, LOW, MEDIUM, HIGH, CRITICAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the investigation. An archived investigation indicates that you have completed reviewing the investigation. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status based on the completion status of the investigation. (RUNNING, FAILED, SUCCESSFUL)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InvestigationDetails" /></td>
+    <td><CopyableCode code="investigation_details" /></td>
     <td><code>array</code></td>
     <td>Lists the summary of uncommon behavior or malicious activity which indicates a compromise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Lists if there are more results available. The value of nextToken is a unique pagination token for each page. Repeat the call using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours.</td>
 </tr>
@@ -204,16 +204,16 @@ Detective investigations lets you investigate IAM users and IAM roles using indi
 
 ```sql
 SELECT
-CreatedTime,
-EntityArn,
-EntityType,
-GraphArn,
-InvestigationId,
-ScopeEndTime,
-ScopeStartTime,
-Severity,
-State,
-Status
+created_time,
+entity_arn,
+entity_type,
+graph_arn,
+investigation_id,
+scope_end_time,
+scope_start_time,
+severity,
+state,
+status
 FROM aws.detective.investigations
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,8 +225,8 @@ Detective investigations lets you investigate IAM users and IAM roles using indi
 
 ```sql
 SELECT
-InvestigationDetails,
-NextToken
+investigation_details,
+next_token
 FROM aws.detective.investigations
 WHERE region = '{{ region }}' -- required
 ;

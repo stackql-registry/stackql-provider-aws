@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectivityInfo" /></td>
+    <td><CopyableCode code="connectivity_info" /></td>
     <td><code>array</code></td>
     <td>The connectivity information for the core device.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves connectivity information for a Greengrass core device. Connectivity in
 
 ```sql
 SELECT
-connectivityInfo,
+connectivity_info,
 message
 FROM aws.greengrassv2.connectivity_infos
 WHERE thing_name = '{{ thing_name }}' -- required

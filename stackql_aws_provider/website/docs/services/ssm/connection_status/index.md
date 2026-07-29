@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the connection to the managed node. (connected, notconnected)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>The ID of the managed node to check connection status.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the Session Manager connection status for a managed node to determine 
 
 ```sql
 SELECT
-Status,
-Target
+status,
+target
 FROM aws.ssm.connection_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RouteServerId" /></td>
+    <td><CopyableCode code="route_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the route server configured for route propagation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteTableId" /></td>
+    <td><CopyableCode code="route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the route table configured for route server propagation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of route propagation.</td>
 </tr>
@@ -144,9 +144,9 @@ Gets information about the route propagations for the specified route server. Wh
 
 ```sql
 SELECT
-RouteServerId,
-RouteTableId,
-State
+route_server_id,
+route_table_id,
+state
 FROM aws.ec2.route_server_propagations
 WHERE RouteServerId = '{{ RouteServerId }}' -- required
 AND region = '{{ region }}' -- required

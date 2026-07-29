@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The domain configuration. Currently, this includes only the domain's retention period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainInfo" /></td>
+    <td><CopyableCode code="domain_info" /></td>
     <td><code>object</code></td>
     <td>The basic information about a domain, such as its name, status, and description.</td>
 </tr>
@@ -175,7 +175,7 @@ Returns information about the specified domain, including description and status
 ```sql
 SELECT
 configuration,
-domainInfo
+domain_info
 FROM aws.swf.domains
 WHERE region = '{{ region }}' -- required
 ;

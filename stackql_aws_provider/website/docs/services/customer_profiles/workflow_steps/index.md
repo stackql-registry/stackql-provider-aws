@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>List containing workflow step details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the workflow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowType" /></td>
+    <td><CopyableCode code="workflow_type" /></td>
     <td><code>string</code></td>
     <td>The type of workflow. The only supported value is APPFLOW_INTEGRATION. (APPFLOW_INTEGRATION)</td>
 </tr>
@@ -154,10 +154,10 @@ Get granular list of steps in workflow.
 
 ```sql
 SELECT
-Items,
-NextToken,
-WorkflowId,
-WorkflowType
+items,
+next_token,
+workflow_id,
+workflow_type
 FROM aws.customer_profiles.workflow_steps
 WHERE domain_name = '{{ domain_name }}' -- required
 AND workflow_id = '{{ workflow_id }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregateConformancePackComplianceSummaries" /></td>
+    <td><CopyableCode code="aggregate_conformance_pack_compliance_summaries" /></td>
     <td><code>array</code></td>
     <td>Returns a list of AggregateConformancePackComplianceSummary object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupByKey" /></td>
+    <td><CopyableCode code="group_by_key" /></td>
     <td><code>string</code></td>
     <td>Groups the result based on Amazon Web Services account ID or Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the count of compliant and noncompliant conformance packs across all Ama
 
 ```sql
 SELECT
-AggregateConformancePackComplianceSummaries,
-GroupByKey,
-NextToken
+aggregate_conformance_pack_compliance_summaries,
+group_by_key,
+next_token
 FROM aws.config.aggregate_conformance_pack_compliance_summaries
 WHERE region = '{{ region }}' -- required
 ;

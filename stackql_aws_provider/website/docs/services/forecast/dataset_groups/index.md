@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArns" /></td>
+    <td><CopyableCode code="dataset_arns" /></td>
     <td><code>array</code></td>
     <td>An array of Amazon Resource Names (ARNs) of the datasets contained in the dataset group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dataset group. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetGroupName" /></td>
+    <td><CopyableCode code="dataset_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset group. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain associated with the dataset group. (RETAIL, CUSTOM, INVENTORY_PLANNING, EC2_CAPACITY, WORK_FORCE, WEB_TRAFFIC, METRICS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset group was created or last updated from a call to the UpdateDatasetGroup operation. While the dataset group is being updated, LastModificationTime is the current time of the DescribeDatasetGroup call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the dataset group. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED UPDATE_PENDING, UPDATE_IN_PROGRESS, UPDATE_FAILED The UPDATE states apply when you call the UpdateDatasetGroup operation. The Status of the dataset group must be ACTIVE before you can use the dataset group to create a predictor.</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset group. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetGroupName" /></td>
+    <td><CopyableCode code="dataset_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset group. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset group was created or last updated from a call to the UpdateDatasetGroup operation. While the dataset group is being updated, LastModificationTime is the current time of the ListDatasetGroups call.</td>
 </tr>
@@ -213,13 +213,13 @@ Describes a dataset group created using the CreateDatasetGroup operation. In add
 
 ```sql
 SELECT
-CreationTime,
-DatasetArns,
-DatasetGroupArn,
-DatasetGroupName,
-Domain,
-LastModificationTime,
-Status
+creation_time,
+dataset_arns,
+dataset_group_arn,
+dataset_group_name,
+domain,
+last_modification_time,
+status
 FROM aws.forecast.dataset_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,10 +231,10 @@ Returns a list of dataset groups created using the CreateDatasetGroup operation.
 
 ```sql
 SELECT
-CreationTime,
-DatasetGroupArn,
-DatasetGroupName,
-LastModificationTime
+creation_time,
+dataset_group_arn,
+dataset_group_name,
+last_modification_time
 FROM aws.forecast.dataset_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -271,7 +271,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DatasetGroupArn
+dataset_group_arn
 ;
 ```
 </TabItem>

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudFrontOriginAccessIdentityConfig" /></td>
+    <td><CopyableCode code="cloud_front_origin_access_identity_config" /></td>
     <td><code>string</code></td>
     <td>The current configuration information for the identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for the origin access identity, for example, E74FTE3AJFJ256A.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3CanonicalUserId" /></td>
+    <td><CopyableCode code="s3_canonical_user_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3.</td>
 </tr>
@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether more origin access identities remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more items in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains one CloudFrontOriginAccessIdentitySummary element for each origin access identity that was created by the current Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response (which is also the ID of the last identity on that page).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of origin access identities you want in the response body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your origin access identities where they left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of CloudFront origin access identities that were created by the current Amazon Web Services account.</td>
 </tr>
@@ -223,9 +223,9 @@ Get the information about an origin access identity.
 
 ```sql
 SELECT
-CloudFrontOriginAccessIdentityConfig,
-Id,
-S3CanonicalUserId
+cloud_front_origin_access_identity_config,
+id,
+s3_canonical_user_id
 FROM aws.cloudfront.cloud_front_origin_access_identities
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -238,12 +238,12 @@ Lists origin access identities.
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.cloud_front_origin_access_identities
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -276,9 +276,9 @@ SELECT
 '{{ CloudFrontOriginAccessIdentityConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-CloudFrontOriginAccessIdentityConfig,
-Id,
-S3CanonicalUserId
+cloud_front_origin_access_identity_config,
+id,
+s3_canonical_user_id
 ;
 ```
 </TabItem>
@@ -324,9 +324,9 @@ AND region = '{{ region }}' --required
 AND CloudFrontOriginAccessIdentityConfig = '{{ CloudFrontOriginAccessIdentityConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-CloudFrontOriginAccessIdentityConfig,
-Id,
-S3CanonicalUserId;
+cloud_front_origin_access_identity_config,
+id,
+s3_canonical_user_id;
 ```
 </TabItem>
 </Tabs>

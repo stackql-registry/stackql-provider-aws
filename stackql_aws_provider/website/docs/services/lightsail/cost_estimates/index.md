@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourcesBudgetEstimate" /></td>
+    <td><CopyableCode code="resources_budget_estimate" /></td>
     <td><code>array</code></td>
     <td>Returns the estimate's forecasted cost or usage.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves information about the cost estimate for a specified resource. A cost e
 
 ```sql
 SELECT
-resourcesBudgetEstimate
+resources_budget_estimate
 FROM aws.lightsail.cost_estimates
 WHERE region = '{{ region }}' -- required
 ;

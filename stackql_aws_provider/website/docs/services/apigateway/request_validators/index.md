@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of this RequestValidator</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validateRequestBody" /></td>
+    <td><CopyableCode code="validate_request_body" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean flag to indicate whether to validate a request body according to the configured Model schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validateRequestParameters" /></td>
+    <td><CopyableCode code="validate_request_parameters" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean flag to indicate whether to validate request parameters (true) or not (false).</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of this RequestValidator</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validateRequestBody" /></td>
+    <td><CopyableCode code="validate_request_body" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean flag to indicate whether to validate a request body according to the configured Model schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validateRequestParameters" /></td>
+    <td><CopyableCode code="validate_request_parameters" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean flag to indicate whether to validate request parameters (true) or not (false).</td>
 </tr>
@@ -220,8 +220,8 @@ Gets a RequestValidator of a given RestApi.
 SELECT
 id,
 name,
-validateRequestBody,
-validateRequestParameters
+validate_request_body,
+validate_request_parameters
 FROM aws.apigateway.request_validators
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND requestvalidator_id = '{{ requestvalidator_id }}' -- required
@@ -237,8 +237,8 @@ Gets the RequestValidators collection of a given RestApi.
 SELECT
 id,
 name,
-validateRequestBody,
-validateRequestParameters
+validate_request_body,
+validate_request_parameters
 FROM aws.apigateway.request_validators
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -280,8 +280,8 @@ SELECT
 RETURNING
 id,
 name,
-validateRequestBody,
-validateRequestParameters
+validate_request_body,
+validate_request_parameters
 ;
 ```
 </TabItem>
@@ -331,8 +331,8 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-validateRequestBody,
-validateRequestParameters;
+validate_request_body,
+validate_request_parameters;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>object</code></td>
     <td>The attachment details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>object</code></td>
     <td>Describes a core network Connect attachment options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransportAttachmentId" /></td>
+    <td><CopyableCode code="transport_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transport attachment. (pattern: &lt;code&gt;^attachment-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -141,9 +141,9 @@ Returns information about a core network Connect attachment.
 
 ```sql
 SELECT
-Attachment,
-Options,
-TransportAttachmentId
+attachment,
+options,
+transport_attachment_id
 FROM aws.networkmanager.connect_attachments
 WHERE attachment_id = '{{ attachment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -187,7 +187,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ConnectAttachment
+connect_attachment
 ;
 ```
 </TabItem>

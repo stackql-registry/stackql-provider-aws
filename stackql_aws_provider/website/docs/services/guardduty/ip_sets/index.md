@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExpectedBucketOwner" /></td>
+    <td><CopyableCode code="expected_bucket_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the Amazon S3 bucket specified in the location parameter. This field appears in the response only if it was provided during IPSet creation or update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format of the file that contains the IPSet. (TXT, STIX, OTX_CSV, ALIEN_VAULT, PROOF_POINT, FIRE_EYE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
     <td>The URI of the file that contains the IPSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name for the IPSet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of IPSet file that was uploaded. (INACTIVE, ACTIVATING, ACTIVE, DEACTIVATING, ERROR, DELETE_PENDING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of the IPSet resource.</td>
 </tr>
@@ -213,12 +213,12 @@ Retrieves the IPSet specified by the ipSetId.
 
 ```sql
 SELECT
-ExpectedBucketOwner,
-Format,
-Location,
-Name,
-Status,
-Tags
+expected_bucket_owner,
+format,
+location,
+name,
+status,
+tags
 FROM aws.guardduty.ip_sets
 WHERE detector_id = '{{ detector_id }}' -- required
 AND ip_set_id = '{{ ip_set_id }}' -- required
@@ -280,7 +280,7 @@ SELECT
 '{{ detector_id }}',
 '{{ region }}'
 RETURNING
-IpSetId
+ip_set_id
 ;
 ```
 </TabItem>

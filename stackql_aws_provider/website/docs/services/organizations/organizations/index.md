@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an organization. For more information about ARNs in Organizations, see ARN Formats Supported by Organizations in the Amazon Web Services Service Authorization Reference. (pattern: &lt;code&gt;^arn:aws:organizations::\d&#123;12&#125;:organization\/o-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailablePolicyTypes" /></td>
+    <td><CopyableCode code="available_policy_types" /></td>
     <td><code>array</code></td>
     <td>Do not use. This field is deprecated and doesn't provide complete information about the policies in your organization. To determine the policies that are enabled and available for use in your organization, use the ListRoots operation instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureSet" /></td>
+    <td><CopyableCode code="feature_set" /></td>
     <td><code>string</code></td>
     <td>Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available. For more information, see Enabling all features in your organization in the Organizations User Guide. (ALL, CONSOLIDATED_BILLING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of an organization. The regex pattern for an organization ID string requires "o-" followed by from 10 to 32 lowercase letters or digits. (pattern: &lt;code&gt;^o-&#91;a-z0-9&#93;&#123;10,32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterAccountArn" /></td>
+    <td><CopyableCode code="master_account_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. For more information about ARNs in Organizations, see ARN Formats Supported by Organizations in the Amazon Web Services Service Authorization Reference. (pattern: &lt;code&gt;^arn:aws:organizations::\d&#123;12&#125;:account\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterAccountEmail" /></td>
+    <td><CopyableCode code="master_account_email" /></td>
     <td><code>string</code></td>
     <td>The email address that is associated with the Amazon Web Services account that is designated as the management account for the organization. (pattern: &lt;code&gt;&#91;^\s@&#93;+@&#91;^\s@&#93;+\.&#91;^\s@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterAccountId" /></td>
+    <td><CopyableCode code="master_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the management account of an organization. The regex pattern for an account ID string requires exactly 12 digits. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -170,13 +170,13 @@ Retrieves information about the organization that the user's account belongs to.
 
 ```sql
 SELECT
-Arn,
-AvailablePolicyTypes,
-FeatureSet,
-Id,
-MasterAccountArn,
-MasterAccountEmail,
-MasterAccountId
+arn,
+available_policy_types,
+feature_set,
+id,
+master_account_arn,
+master_account_email,
+master_account_id
 FROM aws.organizations.organizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,7 +207,7 @@ SELECT
 '{{ FeatureSet }}',
 '{{ region }}'
 RETURNING
-Organization
+organization
 ;
 ```
 </TabItem>

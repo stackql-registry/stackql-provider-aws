@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChimeSdkMeetingConfiguration" /></td>
+    <td><CopyableCode code="chime_sdk_meeting_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration object of the Amazon Chime SDK meeting for a specified media pipeline. SourceType must be ChimeSdkMeeting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the pipeline was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaPipelineArn" /></td>
+    <td><CopyableCode code="media_pipeline_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the media capture pipeline (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaPipelineId" /></td>
+    <td><CopyableCode code="media_pipeline_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a media pipeline. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SinkArn" /></td>
+    <td><CopyableCode code="sink_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the destination to which the media artifacts are saved. (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SinkIamRoleArn" /></td>
+    <td><CopyableCode code="sink_iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the sink role to be used with AwsKmsKeyId in SseAwsKeyManagementParams. (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SinkType" /></td>
+    <td><CopyableCode code="sink_type" /></td>
     <td><code>string</code></td>
     <td>Destination type to which the media artifacts are saved. You must use an S3 Bucket. (S3Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the source from which the media artifacts are saved. (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>Source type from which media artifacts are saved. You must use ChimeMeeting. (ChimeSdkMeeting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseAwsKeyManagementParams" /></td>
+    <td><CopyableCode code="sse_aws_key_management_params" /></td>
     <td><code>object</code></td>
     <td>Contains server side encryption parameters to be used by media capture pipeline. The parameters can also be used by media concatenation pipeline taking media capture pipeline as a media source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the media pipeline. (Initializing, InProgress, Failed, Stopping, Stopped, Paused, NotStarted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the pipeline was updated, in ISO 8601 format.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MediaCapturePipelines" /></td>
+    <td><CopyableCode code="media_capture_pipelines" /></td>
     <td><code>array</code></td>
     <td>The media pipeline objects in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -236,18 +236,18 @@ Gets an existing media pipeline.
 
 ```sql
 SELECT
-ChimeSdkMeetingConfiguration,
-CreatedTimestamp,
-MediaPipelineArn,
-MediaPipelineId,
-SinkArn,
-SinkIamRoleArn,
-SinkType,
-SourceArn,
-SourceType,
-SseAwsKeyManagementParams,
-Status,
-UpdatedTimestamp
+chime_sdk_meeting_configuration,
+created_timestamp,
+media_pipeline_arn,
+media_pipeline_id,
+sink_arn,
+sink_iam_role_arn,
+sink_type,
+source_arn,
+source_type,
+sse_aws_key_management_params,
+status,
+updated_timestamp
 FROM aws.chime_sdk_media_pipelines.media_capture_pipelines
 WHERE media_pipeline_id = '{{ media_pipeline_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -260,8 +260,8 @@ Returns a list of media pipelines.
 
 ```sql
 SELECT
-MediaCapturePipelines,
-NextToken
+media_capture_pipelines,
+next_token
 FROM aws.chime_sdk_media_pipelines.media_capture_pipelines
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -310,7 +310,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MediaCapturePipeline
+media_capture_pipeline
 ;
 ```
 </TabItem>

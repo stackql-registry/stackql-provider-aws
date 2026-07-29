@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, if this is not the first call to retrieve this list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A list of the permissions for the specified table or database resource located at the path in Amazon S3.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the Lake Formation permissions for a specified table or database resourc
 
 ```sql
 SELECT
-NextToken,
-Permissions
+next_token,
+permissions
 FROM aws.lakeformation.effective_permissions_for_paths
 WHERE region = '{{ region }}' -- required
 ;

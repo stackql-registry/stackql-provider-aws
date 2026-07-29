@@ -60,32 +60,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the business glossary term.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the business glossary term was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the business glossary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which this business glossary term exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="glossaryId" /></td>
+    <td><CopyableCode code="glossary_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the business glossary to which this term belongs. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="longDescription" /></td>
+    <td><CopyableCode code="long_description" /></td>
     <td><code>string</code></td>
     <td>The long description of the business glossary term.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shortDescription" /></td>
+    <td><CopyableCode code="short_description" /></td>
     <td><code>string</code></td>
     <td>The short decription of the business glossary term.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the business glossary term. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="termRelations" /></td>
+    <td><CopyableCode code="term_relations" /></td>
     <td><code>object</code></td>
     <td>The details of the term relations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the business glossary term was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the business glossary term.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageRestrictions" /></td>
+    <td><CopyableCode code="usage_restrictions" /></td>
     <td><code>array</code></td>
     <td>The usage restriction of a term within a restricted glossary.</td>
 </tr>
@@ -212,17 +212,17 @@ Gets a business glossary term in Amazon DataZone. Prerequisites: Glossary term w
 SELECT
 id,
 name,
-createdAt,
-createdBy,
-domainId,
-glossaryId,
-longDescription,
-shortDescription,
+created_at,
+created_by,
+domain_id,
+glossary_id,
+long_description,
+short_description,
 status,
-termRelations,
-updatedAt,
-updatedBy,
-usageRestrictions
+term_relations,
+updated_at,
+updated_by,
+usage_restrictions
 FROM aws.datazone.glossary_terms
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -271,13 +271,13 @@ SELECT
 RETURNING
 id,
 name,
-domainId,
-glossaryId,
-longDescription,
-shortDescription,
+domain_id,
+glossary_id,
+long_description,
+short_description,
 status,
-termRelations,
-usageRestrictions
+term_relations,
+usage_restrictions
 ;
 ```
 </TabItem>
@@ -347,13 +347,13 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-domainId,
-glossaryId,
-longDescription,
-shortDescription,
+domain_id,
+glossary_id,
+long_description,
+short_description,
 status,
-termRelations,
-usageRestrictions;
+term_relations,
+usage_restrictions;
 ```
 </TabItem>
 </Tabs>

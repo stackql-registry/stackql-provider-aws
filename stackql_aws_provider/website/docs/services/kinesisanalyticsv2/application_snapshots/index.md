@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationEncryptionConfigurationDescription" /></td>
+    <td><CopyableCode code="application_encryption_configuration_description" /></td>
     <td><code>object</code></td>
     <td>Specifies the encryption settings of data at rest for the application snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionId" /></td>
+    <td><CopyableCode code="application_version_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>The current application version ID when the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeEnvironment" /></td>
+    <td><CopyableCode code="runtime_environment" /></td>
     <td><code>string</code></td>
     <td>The Flink Runtime for the application snapshot. (SQL-1_0, FLINK-1_6, FLINK-1_8, ZEPPELIN-FLINK-1_0, FLINK-1_11, FLINK-1_13, ZEPPELIN-FLINK-2_0, FLINK-1_15, ZEPPELIN-FLINK-3_0, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCreationTimestamp" /></td>
+    <td><CopyableCode code="snapshot_creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the application snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the application snapshot. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotStatus" /></td>
+    <td><CopyableCode code="snapshot_status" /></td>
     <td><code>string</code></td>
     <td>The status of the application snapshot. (CREATING, READY, DELETING, FAILED)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationEncryptionConfigurationDescription" /></td>
+    <td><CopyableCode code="application_encryption_configuration_description" /></td>
     <td><code>object</code></td>
     <td>Specifies the encryption settings of data at rest for the application snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionId" /></td>
+    <td><CopyableCode code="application_version_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>The current application version ID when the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeEnvironment" /></td>
+    <td><CopyableCode code="runtime_environment" /></td>
     <td><code>string</code></td>
     <td>The Flink Runtime for the application snapshot. (SQL-1_0, FLINK-1_6, FLINK-1_8, ZEPPELIN-FLINK-1_0, FLINK-1_11, FLINK-1_13, ZEPPELIN-FLINK-2_0, FLINK-1_15, ZEPPELIN-FLINK-3_0, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCreationTimestamp" /></td>
+    <td><CopyableCode code="snapshot_creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the application snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the application snapshot. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotStatus" /></td>
+    <td><CopyableCode code="snapshot_status" /></td>
     <td><code>string</code></td>
     <td>The status of the application snapshot. (CREATING, READY, DELETING, FAILED)</td>
 </tr>
@@ -211,12 +211,12 @@ Returns information about a snapshot of application state data.
 
 ```sql
 SELECT
-ApplicationEncryptionConfigurationDescription,
-ApplicationVersionId,
-RuntimeEnvironment,
-SnapshotCreationTimestamp,
-SnapshotName,
-SnapshotStatus
+application_encryption_configuration_description,
+application_version_id,
+runtime_environment,
+snapshot_creation_timestamp,
+snapshot_name,
+snapshot_status
 FROM aws.kinesisanalyticsv2.application_snapshots
 WHERE region = '{{ region }}' -- required
 ;
@@ -228,12 +228,12 @@ Lists information about the current application snapshots.
 
 ```sql
 SELECT
-ApplicationEncryptionConfigurationDescription,
-ApplicationVersionId,
-RuntimeEnvironment,
-SnapshotCreationTimestamp,
-SnapshotName,
-SnapshotStatus
+application_encryption_configuration_description,
+application_version_id,
+runtime_environment,
+snapshot_creation_timestamp,
+snapshot_name,
+snapshot_status
 FROM aws.kinesisanalyticsv2.application_snapshots
 WHERE region = '{{ region }}' -- required
 ;

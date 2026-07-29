@@ -50,177 +50,177 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalStorageVolumes" /></td>
+    <td><CopyableCode code="additional_storage_volumes" /></td>
     <td><code>string</code></td>
     <td>The additional storage volumes associated with the automated backup. Valid Values: GP3 | IO2</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The allocated storage size for the automated backup in gibibytes (GiB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone that the automated backup was created in. For information on Amazon Web Services Regions and Availability Zones, see Regions and Availability Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsBackupRecoveryPointArn" /></td>
+    <td><CopyableCode code="aws_backup_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The retention period for the automated backups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupTarget" /></td>
+    <td><CopyableCode code="backup_target" /></td>
     <td><code>string</code></td>
     <td>The location where automated backups are stored: Dedicated Local Zones, Amazon Web Services Outposts or the Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceArn" /></td>
+    <td><CopyableCode code="db_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the automated backups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceAutomatedBackupsArn" /></td>
+    <td><CopyableCode code="db_instance_automated_backups_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the replicated automated backups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceAutomatedBackupsReplications" /></td>
+    <td><CopyableCode code="db_instance_automated_backups_replications" /></td>
     <td><code>string</code></td>
     <td>The list of replications to different Amazon Web Services Regions associated with the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceIdentifier" /></td>
+    <td><CopyableCode code="db_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier for the source DB instance, which can't be changed and which is unique to an Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbiResourceId" /></td>
+    <td><CopyableCode code="dbi_resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID for the source DB instance, which can't be changed and which is unique to an Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedLogVolume" /></td>
+    <td><CopyableCode code="dedicated_log_volume" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance has a dedicated log volume (DLV) enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the automated backup is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine for this automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the database engine for the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>True if mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled, and otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCreateTime" /></td>
+    <td><CopyableCode code="instance_create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the DB instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iops" /></td>
+    <td><CopyableCode code="iops" /></td>
     <td><code>integer</code></td>
     <td>The IOPS (I/O operations per second) value for the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key ID for an automated backup. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The license model information for the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master user name of an automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiTenant" /></td>
+    <td><CopyableCode code="multi_tenant" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the automatic backup is for a DB instance in the multi-tenant configuration (TRUE) or the single-tenant configuration (FALSE).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupName" /></td>
+    <td><CopyableCode code="option_group_name" /></td>
     <td><code>string</code></td>
     <td>The option group the automated backup is associated with. If omitted, the default option group for the engine specified is used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port number that the automated backup used for connections. Default: Inherits from the source DB instance Valid Values: 1150-65535</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region associated with the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreWindow" /></td>
+    <td><CopyableCode code="restore_window" /></td>
     <td><code>string</code></td>
     <td>The earliest and latest time a DB instance can be restored to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A list of status information for an automated backup: active - Automated backups for current instances. retained - Automated backups for deleted instances. creating - Automated backups that are waiting for the first automated snapshot to be available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncryptionType" /></td>
+    <td><CopyableCode code="storage_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used to protect data at rest in the automated backup. Possible values: none - The automated backup is not encrypted. sse-rds - The automated backup is encrypted using an Amazon Web Services owned KMS key. sse-kms - The automated backup is encrypted using a customer managed KMS key or Amazon Web Services managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageThroughput" /></td>
+    <td><CopyableCode code="storage_throughput" /></td>
     <td><code>integer</code></td>
     <td>The storage throughput for the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type associated with the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TdeCredentialArn" /></td>
+    <td><CopyableCode code="tde_credential_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN from the key store with which the automated backup is associated for TDE encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timezone" /></td>
+    <td><CopyableCode code="timezone" /></td>
     <td><code>string</code></td>
     <td>The time zone of the automated backup. In most cases, the Timezone element is empty. Timezone content appears only for Microsoft SQL Server DB instances that were created with a time zone specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC ID associated with the DB instance.</td>
 </tr>
@@ -365,41 +365,41 @@ Displays backups for both current and deleted instances. For example, use this o
 
 ```sql
 SELECT
-AdditionalStorageVolumes,
-AllocatedStorage,
-AvailabilityZone,
-AwsBackupRecoveryPointArn,
-BackupRetentionPeriod,
-BackupTarget,
-DBInstanceArn,
-DBInstanceAutomatedBackupsArn,
-DBInstanceAutomatedBackupsReplications,
-DBInstanceIdentifier,
-DbiResourceId,
-DedicatedLogVolume,
-Encrypted,
-Engine,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-MultiTenant,
-OptionGroupName,
-Port,
-PreferredBackupWindow,
-Region,
-RestoreWindow,
-Status,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-TdeCredentialArn,
-Timezone,
-VpcId
+additional_storage_volumes,
+allocated_storage,
+availability_zone,
+aws_backup_recovery_point_arn,
+backup_retention_period,
+backup_target,
+db_instance_arn,
+db_instance_automated_backups_arn,
+db_instance_automated_backups_replications,
+db_instance_identifier,
+dbi_resource_id,
+dedicated_log_volume,
+encrypted,
+engine,
+engine_version,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+kms_key_id,
+license_model,
+master_username,
+multi_tenant,
+option_group_name,
+port,
+preferred_backup_window,
+region,
+restore_window,
+status,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+tde_credential_arn,
+timezone,
+vpc_id
 FROM aws.rds.db_instance_automated_backups
 WHERE region = '{{ region }}' -- required
 AND DbiResourceId = '{{ DbiResourceId }}'

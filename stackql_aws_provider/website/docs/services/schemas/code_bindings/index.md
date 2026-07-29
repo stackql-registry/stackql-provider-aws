@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date that the code binding was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that code bindings were modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of code binding generation. (CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED)</td>
 </tr>
@@ -161,10 +161,10 @@ Describe the code binding URI.
 
 ```sql
 SELECT
-CreationDate,
-LastModified,
-SchemaVersion,
-Status
+creation_date,
+last_modified,
+schema_version,
+status
 FROM aws.schemas.code_bindings
 WHERE language = '{{ language }}' -- required
 AND registry_name = '{{ registry_name }}' -- required
@@ -200,10 +200,10 @@ AND schema_name = '{{ schema_name }}' --required
 AND region = '{{ region }}' --required
 AND schemaVersion = '{{ schemaVersion}}'
 RETURNING
-CreationDate,
-LastModified,
-SchemaVersion,
-Status;
+creation_date,
+last_modified,
+schema_version,
+status;
 ```
 </TabItem>
 </Tabs>

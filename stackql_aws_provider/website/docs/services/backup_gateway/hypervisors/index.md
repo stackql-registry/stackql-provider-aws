@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Host" /></td>
+    <td><CopyableCode code="host" /></td>
     <td><code>string</code></td>
     <td>The server host of the hypervisor. This can be either an IP address or a fully-qualified domain name (FQDN). (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HypervisorArn" /></td>
+    <td><CopyableCode code="hypervisor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hypervisor. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS used to encrypt the hypervisor. (pattern: &lt;code&gt;(^arn:(aws|aws-cn|aws-us-gov):kms:(&#91;a-zA-Z0-9-&#93;+):(&#91;0-9&#93;+):(key|alias)/(\S+)$)|(^alias/(\S+)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulMetadataSyncTime" /></td>
+    <td><CopyableCode code="last_successful_metadata_sync_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>This is the time when the most recent successful sync of metadata occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestMetadataSyncStatus" /></td>
+    <td><CopyableCode code="latest_metadata_sync_status" /></td>
     <td><code>string</code></td>
     <td>This is the most recent status for the indicated metadata sync. (CREATED, RUNNING, FAILED, PARTIALLY_FAILED, SUCCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestMetadataSyncStatusMessage" /></td>
+    <td><CopyableCode code="latest_metadata_sync_status_message" /></td>
     <td><code>string</code></td>
     <td>This is the most recent status for the indicated metadata sync.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogGroupArn" /></td>
+    <td><CopyableCode code="log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the group of gateways within the requested log. (pattern: &lt;code&gt;$|^arn:(aws|aws-cn|aws-us-gov):logs:(&#91;a-zA-Z0-9-&#93;+):(&#91;0-9&#93;+):log-group:&#91;a-zA-Z0-9_\-\/\.&#93;+:\*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>This is the name of the specified hypervisor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>This is the current state of the specified hypervisor. The possible states are PENDING, ONLINE, OFFLINE, or ERROR. (PENDING, ONLINE, OFFLINE, ERROR)</td>
 </tr>
@@ -110,27 +110,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Host" /></td>
+    <td><CopyableCode code="host" /></td>
     <td><code>string</code></td>
     <td>The server host of the hypervisor. This can be either an IP address or a fully-qualified domain name (FQDN). (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HypervisorArn" /></td>
+    <td><CopyableCode code="hypervisor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hypervisor. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Key Management Service used to encrypt the hypervisor. (pattern: &lt;code&gt;(^arn:(aws|aws-cn|aws-us-gov):kms:(&#91;a-zA-Z0-9-&#93;+):(&#91;0-9&#93;+):(key|alias)/(\S+)$)|(^alias/(\S+)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the hypervisor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the hypervisor. (PENDING, ONLINE, OFFLINE, ERROR)</td>
 </tr>
@@ -235,15 +235,15 @@ This action requests information about the specified hypervisor to which the gat
 
 ```sql
 SELECT
-Host,
-HypervisorArn,
-KmsKeyArn,
-LastSuccessfulMetadataSyncTime,
-LatestMetadataSyncStatus,
-LatestMetadataSyncStatusMessage,
-LogGroupArn,
-Name,
-State
+host,
+hypervisor_arn,
+kms_key_arn,
+last_successful_metadata_sync_time,
+latest_metadata_sync_status,
+latest_metadata_sync_status_message,
+log_group_arn,
+name,
+state
 FROM aws.backup_gateway.hypervisors
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,11 +255,11 @@ Lists your hypervisors.
 
 ```sql
 SELECT
-Host,
-HypervisorArn,
-KmsKeyArn,
-Name,
-State
+host,
+hypervisor_arn,
+kms_key_arn,
+name,
+state
 FROM aws.backup_gateway.hypervisors
 WHERE region = '{{ region }}' -- required
 ;
@@ -293,7 +293,7 @@ WHERE
 region = '{{ region }}' --required
 AND HypervisorArn = '{{ HypervisorArn }}' --required
 RETURNING
-HypervisorArn;
+hypervisor_arn;
 ```
 </TabItem>
 </Tabs>

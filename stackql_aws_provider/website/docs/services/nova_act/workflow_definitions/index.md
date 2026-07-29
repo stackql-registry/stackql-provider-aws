@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the workflow definition. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):nova-act:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:workflow-definition/&#91;a-zA-Z0-9_-&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow definition was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the workflow definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportConfig" /></td>
+    <td><CopyableCode code="export_config" /></td>
     <td><code>object</code></td>
     <td>Configuration settings for exporting workflow execution data and logs to Amazon Simple Storage Service (Amazon S3).</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow definition was created.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the workflow definition. (ACTIVE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowDefinitionArn" /></td>
+    <td><CopyableCode code="workflow_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow definition. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):nova-act:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:workflow-definition/&#91;a-zA-Z0-9_-&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowDefinitionName" /></td>
+    <td><CopyableCode code="workflow_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow definition. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
@@ -218,9 +218,9 @@ Retrieves the details and configuration of a specific workflow definition.
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
-exportConfig,
+export_config,
 status
 FROM aws.nova_act.workflow_definitions
 WHERE workflow_definition_name = '{{ workflow_definition_name }}' -- required
@@ -234,10 +234,10 @@ Lists all workflow definitions in your account with optional filtering and pagin
 
 ```sql
 SELECT
-createdAt,
+created_at,
 status,
-workflowDefinitionArn,
-workflowDefinitionName
+workflow_definition_arn,
+workflow_definition_name
 FROM aws.nova_act.workflow_definitions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

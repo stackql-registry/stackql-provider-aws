@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessKeyId" /></td>
+    <td><CopyableCode code="access_key_id" /></td>
     <td><code>string</code></td>
     <td>The access key ID that identifies the temporary security credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expiration" /></td>
+    <td><CopyableCode code="expiration" /></td>
     <td><code>string</code></td>
     <td>The date on which the current credentials expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretAccessKey" /></td>
+    <td><CopyableCode code="secret_access_key" /></td>
     <td><code>string</code></td>
     <td>The secret access key that can be used to sign requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionToken" /></td>
+    <td><CopyableCode code="session_token" /></td>
     <td><code>string</code></td>
     <td>The token that users must pass to the service API to use the temporary credentials.</td>
 </tr>
@@ -149,10 +149,10 @@ Returns a set of temporary credentials for an Amazon Web Services account or IAM
 
 ```sql
 SELECT
-AccessKeyId,
-Expiration,
-SecretAccessKey,
-SessionToken
+access_key_id,
+expiration,
+secret_access_key,
+session_token
 FROM aws.sts.session_tokens
 WHERE region = '{{ region }}' -- required
 AND DurationSeconds = '{{ DurationSeconds }}'

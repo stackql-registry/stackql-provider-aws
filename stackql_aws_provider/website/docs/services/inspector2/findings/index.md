@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the finding. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeVulnerabilityDetails" /></td>
+    <td><CopyableCode code="code_vulnerability_details" /></td>
     <td><code>object</code></td>
     <td>Details about the code vulnerability identified in a Lambda function used to filter findings.</td>
 </tr>
@@ -70,52 +70,52 @@ The following fields are returned by `SELECT` queries:
     <td>The finding's EPSS score.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exploitAvailable" /></td>
+    <td><CopyableCode code="exploit_available" /></td>
     <td><code>string</code></td>
     <td>If a finding discovered in your environment has an exploit available. (YES, NO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exploitabilityDetails" /></td>
+    <td><CopyableCode code="exploitability_details" /></td>
     <td><code>object</code></td>
     <td>The details of an exploit available for a finding discovered in your environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingArn" /></td>
+    <td><CopyableCode code="finding_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the finding. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:finding/&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstObservedAt" /></td>
+    <td><CopyableCode code="first_observed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the finding was first observed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fixAvailable" /></td>
+    <td><CopyableCode code="fix_available" /></td>
     <td><code>string</code></td>
     <td>Details on whether a fix is available through a version update. This value can be YES, NO, or PARTIAL. A PARTIAL fix means that some, but not all, of the packages identified in the finding have fixes available through updated versions. (YES, NO, PARTIAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inspectorScore" /></td>
+    <td><CopyableCode code="inspector_score" /></td>
     <td><code>number (double)</code></td>
     <td>The Amazon Inspector score given to the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inspectorScoreDetails" /></td>
+    <td><CopyableCode code="inspector_score_details" /></td>
     <td><code>object</code></td>
     <td>An object that contains details of the Amazon Inspector score.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastObservedAt" /></td>
+    <td><CopyableCode code="last_observed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the finding was last observed. This timestamp for this field remains unchanged until a finding is updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkReachabilityDetails" /></td>
+    <td><CopyableCode code="network_reachability_details" /></td>
     <td><code>object</code></td>
     <td>An object that contains the details of a network reachability finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageVulnerabilityDetails" /></td>
+    <td><CopyableCode code="package_vulnerability_details" /></td>
     <td><code>object</code></td>
     <td>An object that contains the details of a package vulnerability finding.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the finding. The type value determines the valid values for resource in your request. For more information, see Finding types in the Amazon Inspector user guide. (NETWORK_REACHABILITY, PACKAGE_VULNERABILITY, CODE_VULNERABILITY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the finding was last updated at.</td>
 </tr>
@@ -233,27 +233,27 @@ Lists findings for your environment.
 
 ```sql
 SELECT
-awsAccountId,
-codeVulnerabilityDetails,
+aws_account_id,
+code_vulnerability_details,
 description,
 epss,
-exploitAvailable,
-exploitabilityDetails,
-findingArn,
-firstObservedAt,
-fixAvailable,
-inspectorScore,
-inspectorScoreDetails,
-lastObservedAt,
-networkReachabilityDetails,
-packageVulnerabilityDetails,
+exploit_available,
+exploitability_details,
+finding_arn,
+first_observed_at,
+fix_available,
+inspector_score,
+inspector_score_details,
+last_observed_at,
+network_reachability_details,
+package_vulnerability_details,
 remediation,
 resources,
 severity,
 status,
 title_,
 type_,
-updatedAt
+updated_at
 FROM aws.inspector2.findings
 WHERE region = '{{ region }}' -- required
 ;
@@ -288,7 +288,7 @@ SELECT
 '{{ s3Destination }}' /* required */,
 '{{ region }}'
 RETURNING
-reportId
+report_id
 ;
 ```
 </TabItem>

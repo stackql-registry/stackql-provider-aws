@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The directory identifier. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the snapshot. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9_&#93;)&#91;\\a-zA-Z0-9_@#%*+=:?./!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The snapshot identifier. (pattern: &lt;code&gt;^s-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the snapshot was taken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The snapshot status. (Creating, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The snapshot type. (Auto, Manual)</td>
 </tr>
@@ -165,12 +165,12 @@ Obtains information about the directory snapshots that belong to this account. T
 
 ```sql
 SELECT
-DirectoryId,
-Name,
-SnapshotId,
-StartTime,
-Status,
-Type
+directory_id,
+name,
+snapshot_id,
+start_time,
+status,
+type
 FROM aws.ds.snapshots
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,7 +203,7 @@ SELECT
 '{{ Name }}',
 '{{ region }}'
 RETURNING
-SnapshotId
+snapshot_id
 ;
 ```
 </TabItem>

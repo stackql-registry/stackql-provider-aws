@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the namespace the recovery point is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace the recovery point is associated with. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryPointCreateTime" /></td>
+    <td><CopyableCode code="recovery_point_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the recovery point is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryPointId" /></td>
+    <td><CopyableCode code="recovery_point_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalSizeInMegaBytes" /></td>
+    <td><CopyableCode code="total_size_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The total size of the data in the recovery point in megabytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup the recovery point is associated with. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the namespace the recovery point is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace the recovery point is associated with. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryPointCreateTime" /></td>
+    <td><CopyableCode code="recovery_point_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the recovery point is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryPointId" /></td>
+    <td><CopyableCode code="recovery_point_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalSizeInMegaBytes" /></td>
+    <td><CopyableCode code="total_size_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The total size of the data in the recovery point in megabytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup the recovery point is associated with. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -218,12 +218,12 @@ Returns information about a recovery point.
 
 ```sql
 SELECT
-namespaceArn,
-namespaceName,
-recoveryPointCreateTime,
-recoveryPointId,
-totalSizeInMegaBytes,
-workgroupName
+namespace_arn,
+namespace_name,
+recovery_point_create_time,
+recovery_point_id,
+total_size_in_mega_bytes,
+workgroup_name
 FROM aws.redshift_serverless.recovery_points
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,12 +235,12 @@ Returns an array of recovery points.
 
 ```sql
 SELECT
-namespaceArn,
-namespaceName,
-recoveryPointCreateTime,
-recoveryPointId,
-totalSizeInMegaBytes,
-workgroupName
+namespace_arn,
+namespace_name,
+recovery_point_create_time,
+recovery_point_id,
+total_size_in_mega_bytes,
+workgroup_name
 FROM aws.redshift_serverless.recovery_points
 WHERE region = '{{ region }}' -- required
 ;

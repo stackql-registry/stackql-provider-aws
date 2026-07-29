@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="algorithmSpecification" /></td>
+    <td><CopyableCode code="algorithm_specification" /></td>
     <td><code>object</code></td>
     <td>Defines the Amazon Braket hybrid job to be created. Specifies the container image the job uses and the paths to the Python scripts used for entry and training.</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The list of Amazon Braket resources associated with the hybrid job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billableDuration" /></td>
+    <td><CopyableCode code="billable_duration" /></td>
     <td><code>integer</code></td>
     <td>The billable time for which the Amazon Braket hybrid job used to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checkpointConfig" /></td>
+    <td><CopyableCode code="checkpoint_config" /></td>
     <td><code>object</code></td>
     <td>Contains information about the output locations for hybrid job checkpoint data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the Amazon Braket hybrid job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceConfig" /></td>
+    <td><CopyableCode code="device_config" /></td>
     <td><code>object</code></td>
     <td>Configures the primary device used to create and run an Amazon Braket hybrid job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the Amazon Braket hybrid job ended.</td>
 </tr>
@@ -91,52 +91,52 @@ The following fields are returned by `SELECT` queries:
     <td>Details about the time and type of events occurred related to the Amazon Braket hybrid job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>A description of the reason why an Amazon Braket hybrid job failed, if it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hyperParameters" /></td>
+    <td><CopyableCode code="hyper_parameters" /></td>
     <td><code>object</code></td>
     <td>Algorithm-specific parameters used by an Amazon Braket hybrid job that influence the quality of the traiing job. The values are set with a map of JSON key:value pairs, where the key is the name of the hyperparameter and the value is the value of th hyperparameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>array</code></td>
     <td>A list of parameters that specify the name and type of input data and where it is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceConfig" /></td>
+    <td><CopyableCode code="instance_config" /></td>
     <td><code>object</code></td>
     <td>Configures the resource instances to use while running the Amazon Braket hybrid job on Amazon Braket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Braket hybrid job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:braket:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Braket hybrid job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,50&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the path to the S3 location where you want to store hybrid job artifacts and the encryption key used to store them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueInfo" /></td>
+    <td><CopyableCode code="queue_info" /></td>
     <td><code>object</code></td>
     <td>Queue information for the requested hybrid job. Only returned if QueueInfo is specified in the additionalAttributeNames" field in the GetJob API request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that Amazon Braket can assume to perform tasks on behalf of a user. It can access user resources, run an Amazon Braket job container on behalf of user, and output results and other hybrid job details to the s3 buckets of a user. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the Amazon Braket hybrid job was started.</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the Amazon Braket hybrid job. (QUEUED, RUNNING, COMPLETED, FAILED, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>Specifies limits for how long an Amazon Braket hybrid job can run.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the Amazon Braket hybrid job was created.</td>
 </tr>
@@ -180,22 +180,22 @@ The following fields are returned by `SELECT` queries:
     <td>The primary device used by an Amazon Braket hybrid job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the Amazon Braket hybrid job ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Braket hybrid job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:braket:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Braket hybrid job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the Amazon Braket hybrid job was started.</td>
 </tr>
@@ -306,26 +306,26 @@ Retrieves the specified Amazon Braket hybrid job.
 
 ```sql
 SELECT
-algorithmSpecification,
+algorithm_specification,
 associations,
-billableDuration,
-checkpointConfig,
-createdAt,
-deviceConfig,
-endedAt,
+billable_duration,
+checkpoint_config,
+created_at,
+device_config,
+ended_at,
 events,
-failureReason,
-hyperParameters,
-inputDataConfig,
-instanceConfig,
-jobArn,
-jobName,
-outputDataConfig,
-queueInfo,
-roleArn,
-startedAt,
+failure_reason,
+hyper_parameters,
+input_data_config,
+instance_config,
+job_arn,
+job_name,
+output_data_config,
+queue_info,
+role_arn,
+started_at,
 status,
-stoppingCondition,
+stopping_condition,
 tags
 FROM aws.braket.jobs
 WHERE job_arn = '{{ job_arn }}' -- required
@@ -340,12 +340,12 @@ Searches for Amazon Braket hybrid jobs that match the specified filter values.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 device,
-endedAt,
-jobArn,
-jobName,
-startedAt,
+ended_at,
+job_arn,
+job_name,
+started_at,
 status,
 tags
 FROM aws.braket.jobs
@@ -402,7 +402,7 @@ SELECT
 '{{ associations }}',
 '{{ region }}'
 RETURNING
-jobArn
+job_arn
 ;
 ```
 </TabItem>

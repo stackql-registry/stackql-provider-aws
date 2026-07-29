@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="linkedWhatsAppBusinessAccountId" /></td>
+    <td><CopyableCode code="linked_whats_app_business_account_id" /></td>
     <td><code>string</code></td>
     <td>The WABA identifier linked to the phone number, formatted as waba-01234567890123456789012345678901. (pattern: &lt;code&gt;.*(^waba-.*$)|(^arn:.*:waba/&#91;0-9a-zA-Z&#93;+$).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="phoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>object</code></td>
     <td>The details of your WhatsApp phone number.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieve the WABA account id and phone number details of a WhatsApp business acc
 
 ```sql
 SELECT
-linkedWhatsAppBusinessAccountId,
-phoneNumber
+linked_whats_app_business_account_id,
+phone_number
 FROM aws.socialmessaging.linked_whats_app_business_account_phone_numbers
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

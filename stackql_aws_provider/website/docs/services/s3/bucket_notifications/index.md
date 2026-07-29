@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudFunctionConfiguration" /></td>
+    <td><CopyableCode code="cloud_function_configuration" /></td>
     <td><code>string</code></td>
     <td>Container for specifying the Lambda notification configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueConfiguration" /></td>
+    <td><CopyableCode code="queue_configuration" /></td>
     <td><code>string</code></td>
     <td>This data type is deprecated. This data type specifies the configuration for publishing messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects specified events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicConfiguration" /></td>
+    <td><CopyableCode code="topic_configuration" /></td>
     <td><code>string</code></td>
     <td>This data type is deprecated. A container for specifying the configuration for publication of messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.</td>
 </tr>
@@ -156,9 +156,9 @@ This operation is not supported for directory buckets. No longer used, see GetBu
 
 ```sql
 SELECT
-CloudFunctionConfiguration,
-QueueConfiguration,
-TopicConfiguration
+cloud_function_configuration,
+queue_configuration,
+topic_configuration
 FROM aws.s3.bucket_notifications
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

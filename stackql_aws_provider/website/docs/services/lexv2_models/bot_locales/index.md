@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="audioFillerSettings" /></td>
+    <td><CopyableCode code="audio_filler_settings" /></td>
     <td><code>object</code></td>
     <td>The audio filler settings configured for the bot locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with the locale. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botLocaleHistoryEvents" /></td>
+    <td><CopyableCode code="bot_locale_history_events" /></td>
     <td><code>array</code></td>
     <td>History of changes, such as when a locale is used in an alias, that have taken place for the locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botLocaleStatus" /></td>
+    <td><CopyableCode code="bot_locale_status" /></td>
     <td><code>string</code></td>
     <td>The status of the bot. If the status is Failed, the reasons for the failure are listed in the failureReasons field. (Creating, Building, Built, ReadyExpressTesting, Failed, Deleting, NotBuilt, Importing, Processing)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot associated with the locale. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the locale was created.</td>
 </tr>
@@ -86,72 +86,72 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>if botLocaleStatus is Failed, Amazon Lex explains why it failed to build the bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generativeAISettings" /></td>
+    <td><CopyableCode code="generative_ai_settings" /></td>
     <td><code>object</code></td>
     <td>Contains settings for Amazon Bedrock's generative AI features for your bot locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentsCount" /></td>
+    <td><CopyableCode code="intents_count" /></td>
     <td><code>integer</code></td>
     <td>The number of intents defined for the locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastBuildSubmittedDateTime" /></td>
+    <td><CopyableCode code="last_build_submitted_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the locale was last submitted for building.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the locale was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the described locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeName" /></td>
+    <td><CopyableCode code="locale_name" /></td>
     <td><code>string</code></td>
     <td>The name of the locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nluIntentConfidenceThreshold" /></td>
+    <td><CopyableCode code="nlu_intent_confidence_threshold" /></td>
     <td><code>number (double)</code></td>
     <td>The confidence threshold where Amazon Lex inserts the AMAZON.FallbackIntent and AMAZON.KendraSearchIntent intents in the list of possible intents for an utterance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActions" /></td>
+    <td><CopyableCode code="recommended_actions" /></td>
     <td><code>array</code></td>
     <td>Recommended actions to take to resolve an error in the failureReasons field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotTypesCount" /></td>
+    <td><CopyableCode code="slot_types_count" /></td>
     <td><code>integer</code></td>
     <td>The number of slot types defined for the locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="speechDetectionSensitivity" /></td>
+    <td><CopyableCode code="speech_detection_sensitivity" /></td>
     <td><code>string</code></td>
     <td>The sensitivity level for voice activity detection (VAD) configured for the bot locale. (Default, HighNoiseTolerance, MaximumNoiseTolerance)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="speechRecognitionSettings" /></td>
+    <td><CopyableCode code="speech_recognition_settings" /></td>
     <td><code>object</code></td>
     <td>The speech-to-text settings configured for the bot locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unifiedSpeechSettings" /></td>
+    <td><CopyableCode code="unified_speech_settings" /></td>
     <td><code>object</code></td>
     <td>The unified speech settings configured for the bot locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="voiceSettings" /></td>
+    <td><CopyableCode code="voice_settings" /></td>
     <td><code>object</code></td>
     <td>The Amazon Polly voice Amazon Lex uses for voice interaction with the user.</td>
 </tr>
@@ -170,22 +170,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot to list locales for. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botLocaleSummaries" /></td>
+    <td><CopyableCode code="bot_locale_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the locales that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter of the request. If there are more locales available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListBotLocales operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListBotLocales operation request to get the next page of results.</td>
 </tr>
@@ -298,27 +298,27 @@ Describes the settings that a bot has for a specific locale.
 
 ```sql
 SELECT
-audioFillerSettings,
-botId,
-botLocaleHistoryEvents,
-botLocaleStatus,
-botVersion,
-creationDateTime,
+audio_filler_settings,
+bot_id,
+bot_locale_history_events,
+bot_locale_status,
+bot_version,
+creation_date_time,
 description,
-failureReasons,
-generativeAISettings,
-intentsCount,
-lastBuildSubmittedDateTime,
-lastUpdatedDateTime,
-localeId,
-localeName,
-nluIntentConfidenceThreshold,
-recommendedActions,
-slotTypesCount,
-speechDetectionSensitivity,
-speechRecognitionSettings,
-unifiedSpeechSettings,
-voiceSettings
+failure_reasons,
+generative_ai_settings,
+intents_count,
+last_build_submitted_date_time,
+last_updated_date_time,
+locale_id,
+locale_name,
+nlu_intent_confidence_threshold,
+recommended_actions,
+slot_types_count,
+speech_detection_sensitivity,
+speech_recognition_settings,
+unified_speech_settings,
+voice_settings
 FROM aws.lexv2_models.bot_locales
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -333,10 +333,10 @@ Gets a list of locales for the specified bot.
 
 ```sql
 SELECT
-botId,
-botLocaleSummaries,
-botVersion,
-nextToken
+bot_id,
+bot_locale_summaries,
+bot_version,
+next_token
 FROM aws.lexv2_models.bot_locales
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -389,20 +389,20 @@ SELECT
 '{{ bot_version }}',
 '{{ region }}'
 RETURNING
-audioFillerSettings,
-botId,
-botLocaleStatus,
-botVersion,
-creationDateTime,
+audio_filler_settings,
+bot_id,
+bot_locale_status,
+bot_version,
+creation_date_time,
 description,
-generativeAISettings,
-localeId,
-localeName,
-nluIntentConfidenceThreshold,
-speechDetectionSensitivity,
-speechRecognitionSettings,
-unifiedSpeechSettings,
-voiceSettings
+generative_ai_settings,
+locale_id,
+locale_name,
+nlu_intent_confidence_threshold,
+speech_detection_sensitivity,
+speech_recognition_settings,
+unified_speech_settings,
+voice_settings
 ;
 ```
 </TabItem>
@@ -538,23 +538,23 @@ AND locale_id = '{{ locale_id }}' --required
 AND region = '{{ region }}' --required
 AND nluIntentConfidenceThreshold = '{{ nluIntentConfidenceThreshold }}' --required
 RETURNING
-audioFillerSettings,
-botId,
-botLocaleStatus,
-botVersion,
-creationDateTime,
+audio_filler_settings,
+bot_id,
+bot_locale_status,
+bot_version,
+creation_date_time,
 description,
-failureReasons,
-generativeAISettings,
-lastUpdatedDateTime,
-localeId,
-localeName,
-nluIntentConfidenceThreshold,
-recommendedActions,
-speechDetectionSensitivity,
-speechRecognitionSettings,
-unifiedSpeechSettings,
-voiceSettings;
+failure_reasons,
+generative_ai_settings,
+last_updated_date_time,
+locale_id,
+locale_name,
+nlu_intent_confidence_threshold,
+recommended_actions,
+speech_detection_sensitivity,
+speech_recognition_settings,
+unified_speech_settings,
+voice_settings;
 ```
 </TabItem>
 </Tabs>

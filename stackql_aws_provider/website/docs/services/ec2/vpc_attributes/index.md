@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EnableDnsHostnames" /></td>
+    <td><CopyableCode code="enable_dns_hostnames" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the instances launched in the VPC get DNS hostnames. If this attribute is true, instances in the VPC get DNS hostnames; otherwise, they do not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableDnsSupport" /></td>
+    <td><CopyableCode code="enable_dns_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether DNS resolution is enabled for the VPC. If this attribute is true, the Amazon DNS server resolves DNS hostnames for your instances to their corresponding IP addresses; otherwise, it does not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableNetworkAddressUsageMetrics" /></td>
+    <td><CopyableCode code="enable_network_address_usage_metrics" /></td>
     <td><code>string</code></td>
     <td>Indicates whether Network Address Usage metrics are enabled for your VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -171,10 +171,10 @@ Describes the specified attribute of the specified VPC. You can specify only one
 
 ```sql
 SELECT
-EnableDnsHostnames,
-EnableDnsSupport,
-EnableNetworkAddressUsageMetrics,
-VpcId
+enable_dns_hostnames,
+enable_dns_support,
+enable_network_address_usage_metrics,
+vpc_id
 FROM aws.ec2.vpc_attributes
 WHERE Attribute = '{{ Attribute }}' -- required
 AND VpcId = '{{ VpcId }}' -- required

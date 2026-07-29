@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Amazon Resource Name (ARN) of the DNS view. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure idempotency. This means that making the same request multiple times with the same clientToken has the same result every time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the DNS view was creates on.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>Description of the DNS view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnssecValidation" /></td>
+    <td><CopyableCode code="dnssec_validation" /></td>
     <td><code>string</code></td>
     <td>Specifies whether DNSSEC is enabled or disabled for the DNS view. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ednsClientSubnet" /></td>
+    <td><CopyableCode code="edns_client_subnet" /></td>
     <td><code>string</code></td>
     <td>Specifies whether edns0 client subnet is enabled. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firewallRulesFailOpen" /></td>
+    <td><CopyableCode code="firewall_rules_fail_open" /></td>
     <td><code>string</code></td>
     <td>Specifies the DNS Firewall failure mode configuration. When enabled, the DNS Firewall allows DNS queries to proceed if it's unable to properly evaluate them. When disabled, the DNS Firewall blocks DNS queries it's unable to evaluate. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="globalResolverId" /></td>
+    <td><CopyableCode code="global_resolver_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Global Resolver the DNS view is associated to. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>Operational status of the DNS view. (CREATING, OPERATIONAL, UPDATING, ENABLING, DISABLING, DISABLED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the DNS view was updated on.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the DNS view. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The unique string that identifies the request and ensures idempotency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the DNS view was created.</td>
 </tr>
@@ -155,22 +155,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the DNS view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnssecValidation" /></td>
+    <td><CopyableCode code="dnssec_validation" /></td>
     <td><code>string</code></td>
     <td>Whether DNSSEC validation is enabled for the DNS view. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ednsClientSubnet" /></td>
+    <td><CopyableCode code="edns_client_subnet" /></td>
     <td><code>string</code></td>
     <td>Whether EDNS Client Subnet injection is enabled for the DNS view. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firewallRulesFailOpen" /></td>
+    <td><CopyableCode code="firewall_rules_fail_open" /></td>
     <td><code>string</code></td>
     <td>Whether firewall rules fail open when they cannot be evaluated. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="globalResolverId" /></td>
+    <td><CopyableCode code="global_resolver_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global resolver that the DNS view is associated with. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the DNS view. (CREATING, OPERATIONAL, UPDATING, ENABLING, DISABLING, DISABLED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the DNS view was last updated.</td>
 </tr>
@@ -315,15 +315,15 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnssecValidation,
-ednsClientSubnet,
-firewallRulesFailOpen,
-globalResolverId,
+dnssec_validation,
+edns_client_subnet,
+firewall_rules_fail_open,
+global_resolver_id,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.dns_views
 WHERE dns_view_id = '{{ dns_view_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -339,15 +339,15 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnssecValidation,
-ednsClientSubnet,
-firewallRulesFailOpen,
-globalResolverId,
+dnssec_validation,
+edns_client_subnet,
+firewall_rules_fail_open,
+global_resolver_id,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.dns_views
 WHERE global_resolver_id = '{{ global_resolver_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -398,15 +398,15 @@ RETURNING
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnssecValidation,
-ednsClientSubnet,
-firewallRulesFailOpen,
-globalResolverId,
+dnssec_validation,
+edns_client_subnet,
+firewall_rules_fail_open,
+global_resolver_id,
 status,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -471,15 +471,15 @@ RETURNING
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnssecValidation,
-ednsClientSubnet,
-firewallRulesFailOpen,
-globalResolverId,
+dnssec_validation,
+edns_client_subnet,
+firewall_rules_fail_open,
+global_resolver_id,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

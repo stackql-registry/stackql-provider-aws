@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Applications" /></td>
+    <td><CopyableCode code="applications" /></td>
     <td><code>array</code></td>
     <td>The applications in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation.</td>
 </tr>
@@ -145,8 +145,8 @@ Retrieves a list that describes one or more applications.
 
 ```sql
 SELECT
-Applications,
-NextToken
+applications,
+next_token
 FROM aws.appstream.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,7 +197,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Application
+application
 ;
 ```
 </TabItem>
@@ -291,7 +291,7 @@ WHERE
 region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 RETURNING
-Application;
+application;
 ```
 </TabItem>
 </Tabs>

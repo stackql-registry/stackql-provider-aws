@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IPSetDescriptors" /></td>
+    <td><CopyableCode code="ip_set_descriptors" /></td>
     <td><code>array</code></td>
     <td>The IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) that web requests originate from. If the WebACL is associated with a CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IPSetId" /></td>
+    <td><CopyableCode code="ip_set_id" /></td>
     <td><code>string</code></td>
     <td>The IPSetId for an IPSet. You use IPSetId to get information about an IPSet (see GetIPSet), update an IPSet (see UpdateIPSet), insert an IPSet into a Rule or delete one from a Rule (see UpdateRule), and delete an IPSet from AWS WAF (see DeleteIPSet). IPSetId is returned by CreateIPSet and by ListIPSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the IPSet. You can't change the name of an IPSet after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IPSetId" /></td>
+    <td><CopyableCode code="ip_set_id" /></td>
     <td><code>string</code></td>
     <td>The IPSetId for an IPSet. You can use IPSetId in a GetIPSet request to get detailed information about an IPSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the IPSet. You can't change the name of an IPSet after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -183,9 +183,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-IPSetDescriptors,
-IPSetId,
-Name
+ip_set_descriptors,
+ip_set_id,
+name
 FROM aws.waf.ip_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-IPSetId,
-Name
+ip_set_id,
+name
 FROM aws.waf.ip_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,8 +231,8 @@ SELECT
 '{{ ChangeToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ChangeToken,
-IPSet
+change_token,
+ip_set
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ AND IPSetId = '{{ IPSetId }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 AND Updates = '{{ Updates }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

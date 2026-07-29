@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of labels.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token.</td>
 </tr>
@@ -146,7 +146,7 @@ Gets all labels or a specific label if name is provided. This is a paginated API
 ```sql
 SELECT
 labels,
-nextToken
+next_token
 FROM aws.frauddetector.labels
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the advanced prompt optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>KMS key ARN used for encrypting output data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>Failure message if the advanced prompt optimization job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputConfig" /></td>
+    <td><CopyableCode code="input_config" /></td>
     <td><code>object</code></td>
     <td>Input data configuration for the advanced prompt optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the advanced prompt optimization job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:advanced-prompt-optimization-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDescription" /></td>
+    <td><CopyableCode code="job_description" /></td>
     <td><code>string</code></td>
     <td>Description of the advanced prompt optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>Name of the advanced prompt optimization job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9.+-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>Status of the advanced prompt optimization job. (InProgress, Completed, Failed, PartiallyCompleted, Stopping, Stopped, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time of the advanced prompt optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelConfigurations" /></td>
+    <td><CopyableCode code="model_configurations" /></td>
     <td><code>array</code></td>
     <td>Model configurations for advanced prompt optimization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>Output data configuration for the advanced prompt optimization job.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the advanced prompt optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the advanced prompt optimization job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:advanced-prompt-optimization-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>Name of the advanced prompt optimization job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9.+-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>Status of the advanced prompt optimization job. (InProgress, Completed, Failed, PartiallyCompleted, Stopping, Stopped, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time of the advanced prompt optimization job.</td>
 </tr>
@@ -249,17 +249,17 @@ Retrieves the details and status of an advanced prompt optimization job.
 
 ```sql
 SELECT
-creationTime,
-encryptionKeyArn,
-failureMessage,
-inputConfig,
-jobArn,
-jobDescription,
-jobName,
-jobStatus,
-lastModifiedTime,
-modelConfigurations,
-outputConfig
+creation_time,
+encryption_key_arn,
+failure_message,
+input_config,
+job_arn,
+job_description,
+job_name,
+job_status,
+last_modified_time,
+model_configurations,
+output_config
 FROM aws.bedrock.advanced_prompt_optimization_jobs
 WHERE job_identifier = '{{ job_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -272,11 +272,11 @@ Lists all advanced prompt optimization jobs for the account.
 
 ```sql
 SELECT
-creationTime,
-jobArn,
-jobName,
-jobStatus,
-lastModifiedTime
+creation_time,
+job_arn,
+job_name,
+job_status,
+last_modified_time
 FROM aws.bedrock.advanced_prompt_optimization_jobs
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -325,7 +325,7 @@ SELECT
 '{{ modelConfigurations }}' /* required */,
 '{{ region }}'
 RETURNING
-jobArn
+job_arn
 ;
 ```
 </TabItem>

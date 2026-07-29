@@ -5,8 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "vendor-config": "rimraf .shared-config && git clone --depth 1 --branch main https://github.com/stackql/docusaurus-config.git .shared-config",
-    "prestart": "yarn vendor-config",
-    "prebuild": "yarn vendor-config",
+    "prestart": "yarn vendor-config && yarn snake-case-docs && yarn scrub-docs",
+    "prebuild": "yarn vendor-config && yarn snake-case-docs && yarn scrub-docs",
+    "snake-case-docs": "node scripts/snake-case-docs.mjs",
     "sanitize-docs": "node scripts/sanitize-docs.mjs",
     "scrub-docs": "node scripts/scrub-docs.mjs",
     "start": "docusaurus start",

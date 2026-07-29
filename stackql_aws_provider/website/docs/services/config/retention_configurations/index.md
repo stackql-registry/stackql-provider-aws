@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the retention configuration object. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionPeriodInDays" /></td>
+    <td><CopyableCode code="retention_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>Number of days Config stores your historical information. Currently, only applicable to the configuration item history.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the details of one or more retention configurations. If the retention co
 
 ```sql
 SELECT
-Name,
-RetentionPeriodInDays
+name,
+retention_period_in_days
 FROM aws.config.retention_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,7 +168,7 @@ WHERE
 region = '{{ region }}' --required
 AND RetentionPeriodInDays = '{{ RetentionPeriodInDays }}' --required
 RETURNING
-RetentionConfiguration;
+retention_configuration;
 ```
 </TabItem>
 </Tabs>

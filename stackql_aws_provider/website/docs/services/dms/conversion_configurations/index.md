@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConversionConfiguration" /></td>
+    <td><CopyableCode code="conversion_configuration" /></td>
     <td><code>string</code></td>
     <td>The configuration parameters for the schema conversion project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MigrationProjectIdentifier" /></td>
+    <td><CopyableCode code="migration_project_identifier" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) for the schema conversion project.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns configuration parameters for a schema conversion project.
 
 ```sql
 SELECT
-ConversionConfiguration,
-MigrationProjectIdentifier
+conversion_configuration,
+migration_project_identifier
 FROM aws.dms.conversion_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND MigrationProjectIdentifier = '{{ MigrationProjectIdentifier }}' --required
 AND ConversionConfiguration = '{{ ConversionConfiguration }}' --required
 RETURNING
-MigrationProjectIdentifier;
+migration_project_identifier;
 ```
 </TabItem>
 </Tabs>

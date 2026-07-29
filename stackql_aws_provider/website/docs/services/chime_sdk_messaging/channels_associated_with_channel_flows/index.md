@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>The information about each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested channels are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -139,8 +139,8 @@ Lists all channels associated with a specified channel flow. You can associate a
 
 ```sql
 SELECT
-Channels,
-NextToken
+channels,
+next_token
 FROM aws.chime_sdk_messaging.channels_associated_with_channel_flows
 WHERE `channel-flow-arn` = '{{ channel-flow-arn }}' -- required
 AND region = '{{ region }}' -- required

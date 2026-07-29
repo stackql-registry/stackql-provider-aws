@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The binary blob response to GetSdk, which contains the generated SDK.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentDisposition" /></td>
+    <td><CopyableCode code="content_disposition" /></td>
     <td><code>string</code></td>
     <td>The content-disposition header value in the HTTP response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content-type header value in the HTTP response.</td>
 </tr>
@@ -150,8 +150,8 @@ Generates a client SDK for a RestApi and Stage.
 ```sql
 SELECT
 body,
-contentDisposition,
-contentType
+content_disposition,
+content_type
 FROM aws.apigateway.sdks
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND stage_name = '{{ stage_name }}' -- required

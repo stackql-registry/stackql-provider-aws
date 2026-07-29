@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>Only returned if InsightType parameter was set to ApiErrorRateInsight. If returning metrics for the ApiErrorRateInsight Insights type, this is the error to retrieve data for. For example, AccessDenied. (pattern: &lt;code&gt;^&#91;\w\d\s_.,\-:\&#91;\&#93;&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventName" /></td>
+    <td><CopyableCode code="event_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event, typically the Amazon Web Services API on which unusual levels of activity were recorded. (pattern: &lt;code&gt;^&#91;A-Za-z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSource" /></td>
+    <td><CopyableCode code="event_source" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service to which the request was made, such as iam.amazonaws.com or s3.amazonaws.com. (pattern: &lt;code&gt;^&#91;a-z0-9_-&#93;+\.amazonaws\.com$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightType" /></td>
+    <td><CopyableCode code="insight_type" /></td>
     <td><code>string</code></td>
     <td>The type of CloudTrail Insights event, which is either ApiCallRateInsight or ApiErrorRateInsight. The ApiCallRateInsight Insights type analyzes write-only management API calls that are aggregated per minute against a baseline API call volume. The ApiErrorRateInsight Insights type analyzes management API calls that result in error codes. (ApiCallRateInsight, ApiErrorRateInsight)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Only returned if the full results could not be returned in a single query. You can set the NextToken parameter in the next request to this value to continue retrieval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamps" /></td>
+    <td><CopyableCode code="timestamps" /></td>
     <td><code>array</code></td>
     <td>List of timestamps at intervals corresponding to the specified time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrailARN" /></td>
+    <td><CopyableCode code="trail_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the ARN of the trail. This is only returned when Insights is enabled on a trail logging data events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>array</code></td>
     <td>List of values representing the API call rate or error rate at each timestamp. The number of values is equal to the number of timestamps.</td>
 </tr>
@@ -154,14 +154,14 @@ Returns Insights metrics data for trails that have enabled Insights. The request
 
 ```sql
 SELECT
-ErrorCode,
-EventName,
-EventSource,
-InsightType,
-NextToken,
-Timestamps,
-TrailARN,
-Values
+error_code,
+event_name,
+event_source,
+insight_type,
+next_token,
+timestamps,
+trail_arn,
+values
 FROM aws.cloudtrail.insights_metric_datas
 WHERE region = '{{ region }}' -- required
 ;

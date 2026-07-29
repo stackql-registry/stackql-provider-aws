@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was created.</td>
 </tr>
@@ -76,27 +76,27 @@ The following fields are returned by `SELECT` queries:
     <td>The store's description. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eTagAlgorithmFamily" /></td>
+    <td><CopyableCode code="e_tag_algorithm_family" /></td>
     <td><code>string</code></td>
     <td>The algorithm family of the ETag. (MD5up, SHA256up, SHA512up)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fallbackLocation" /></td>
+    <td><CopyableCode code="fallback_location" /></td>
     <td><code>string</code></td>
     <td>An S3 location that is used to store files that have failed a direct upload. (pattern: &lt;code&gt;$|^s3:​//(&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;)/?((.&#123;1,1024&#125;)/)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propagatedSetLevelTags" /></td>
+    <td><CopyableCode code="propagated_set_level_tags" /></td>
     <td><code>array</code></td>
     <td>The tags keys to propagate to the S3 objects associated with read sets in the sequence store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Access" /></td>
+    <td><CopyableCode code="s_3_access" /></td>
     <td><code>object</code></td>
     <td>The S3 access metadata of the sequence store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sseConfig" /></td>
+    <td><CopyableCode code="sse_config" /></td>
     <td><code>object</code></td>
     <td>Server-side encryption (SSE) settings for a store.</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the sequence store. (CREATING, ACTIVE, UPDATING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the sequence store. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last-updated time of the sequence store.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was created.</td>
 </tr>
@@ -155,17 +155,17 @@ The following fields are returned by `SELECT` queries:
     <td>The store's description. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eTagAlgorithmFamily" /></td>
+    <td><CopyableCode code="e_tag_algorithm_family" /></td>
     <td><code>string</code></td>
     <td>The algorithm family of the ETag. (MD5up, SHA256up, SHA512up)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fallbackLocation" /></td>
+    <td><CopyableCode code="fallback_location" /></td>
     <td><code>string</code></td>
     <td>An S3 location that is used to store files that have failed a direct upload. (pattern: &lt;code&gt;$|^s3:​//(&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;)/?((.&#123;1,1024&#125;)/)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sseConfig" /></td>
+    <td><CopyableCode code="sse_config" /></td>
     <td><code>object</code></td>
     <td>Server-side encryption (SSE) settings for a store.</td>
 </tr>
@@ -175,12 +175,12 @@ The following fields are returned by `SELECT` queries:
     <td>Status of the sequence store. (CREATING, ACTIVE, UPDATING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the sequence store. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last-updated time of the Sequence Store.</td>
 </tr>
@@ -337,16 +337,16 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-eTagAlgorithmFamily,
-fallbackLocation,
-propagatedSetLevelTags,
-s3Access,
-sseConfig,
+e_tag_algorithm_family,
+fallback_location,
+propagated_set_level_tags,
+s_3_access,
+sse_config,
 status,
-statusMessage,
-updateTime
+status_message,
+update_time
 FROM aws.omics.sequence_stores
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -362,14 +362,14 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-eTagAlgorithmFamily,
-fallbackLocation,
-sseConfig,
+e_tag_algorithm_family,
+fallback_location,
+sse_config,
 status,
-statusMessage,
-updateTime
+status_message,
+update_time
 FROM aws.omics.sequence_stores
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -421,15 +421,15 @@ RETURNING
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-eTagAlgorithmFamily,
-fallbackLocation,
-propagatedSetLevelTags,
-s3Access,
-sseConfig,
+e_tag_algorithm_family,
+fallback_location,
+propagated_set_level_tags,
+s_3_access,
+sse_config,
 status,
-statusMessage
+status_message
 ;
 ```
 </TabItem>
@@ -502,16 +502,16 @@ RETURNING
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-eTagAlgorithmFamily,
-fallbackLocation,
-propagatedSetLevelTags,
-s3Access,
-sseConfig,
+e_tag_algorithm_family,
+fallback_location,
+propagated_set_level_tags,
+s_3_access,
+sse_config,
 status,
-statusMessage,
-updateTime;
+status_message,
+update_time;
 ```
 </TabItem>
 </Tabs>

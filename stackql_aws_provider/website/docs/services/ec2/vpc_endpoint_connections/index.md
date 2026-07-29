@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time that the VPC endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsEntries" /></td>
+    <td><CopyableCode code="dns_entries" /></td>
     <td><code>string</code></td>
     <td>The DNS entries for the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayLoadBalancerArns" /></td>
+    <td><CopyableCode code="gateway_load_balancer_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARNs) of the Gateway Load Balancers for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkLoadBalancerArns" /></td>
+    <td><CopyableCode code="network_load_balancer_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARNs) of the network load balancers for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service to which the endpoint is connected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointConnectionId" /></td>
+    <td><CopyableCode code="vpc_endpoint_connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointOwner" /></td>
+    <td><CopyableCode code="vpc_endpoint_owner" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the VPC endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointRegion" /></td>
+    <td><CopyableCode code="vpc_endpoint_region" /></td>
     <td><code>string</code></td>
     <td>The Region of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointState" /></td>
+    <td><CopyableCode code="vpc_endpoint_state" /></td>
     <td><code>string</code></td>
     <td>The state of the VPC endpoint.</td>
 </tr>
@@ -218,18 +218,18 @@ Describes the VPC endpoint connections to your VPC endpoint services, including 
 
 ```sql
 SELECT
-CreationTimestamp,
-DnsEntries,
-GatewayLoadBalancerArns,
-IpAddressType,
-NetworkLoadBalancerArns,
-ServiceId,
-Tags,
-VpcEndpointConnectionId,
-VpcEndpointId,
-VpcEndpointOwner,
-VpcEndpointRegion,
-VpcEndpointState
+creation_timestamp,
+dns_entries,
+gateway_load_balancer_arns,
+ip_address_type,
+network_load_balancer_arns,
+service_id,
+tags,
+vpc_endpoint_connection_id,
+vpc_endpoint_id,
+vpc_endpoint_owner,
+vpc_endpoint_region,
+vpc_endpoint_state
 FROM aws.ec2.vpc_endpoint_connections
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

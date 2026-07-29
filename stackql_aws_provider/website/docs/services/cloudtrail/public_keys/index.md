@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Fingerprint" /></td>
+    <td><CopyableCode code="fingerprint" /></td>
     <td><code>string</code></td>
     <td>The fingerprint of the public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidityEndTime" /></td>
+    <td><CopyableCode code="validity_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ending time of validity of the public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidityStartTime" /></td>
+    <td><CopyableCode code="validity_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The starting time of validity of the public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string (byte)</code></td>
     <td>The DER encoded public key value in PKCS#1 format.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns all public keys whose private keys were used to sign the digest files wi
 
 ```sql
 SELECT
-Fingerprint,
-ValidityEndTime,
-ValidityStartTime,
-Value
+fingerprint,
+validity_end_time,
+validity_start_time,
+value
 FROM aws.cloudtrail.public_keys
 WHERE region = '{{ region }}' -- required
 ;

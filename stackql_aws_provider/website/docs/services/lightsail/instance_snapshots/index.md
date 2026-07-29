@@ -61,37 +61,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the snapshot (arn:aws:lightsail:us-east-2:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the snapshot was created (1479907467.024).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromAttachedDisks" /></td>
+    <td><CopyableCode code="from_attached_disks" /></td>
     <td><code>array</code></td>
     <td>An array of disk objects containing information about all block storage disks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromBlueprintId" /></td>
+    <td><CopyableCode code="from_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID from which you created the snapshot (amazon_linux_2023). A blueprint is a virtual private server (or instance) image used to create instances quickly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromBundleId" /></td>
+    <td><CopyableCode code="from_bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle ID from which you created the snapshot (micro_x_x).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceArn" /></td>
+    <td><CopyableCode code="from_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the instance from which the snapshot was created (arn:aws:lightsail:us-east-2:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceName" /></td>
+    <td><CopyableCode code="from_instance_name" /></td>
     <td><code>string</code></td>
     <td>The instance from which the snapshot was created. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isFromAutoSnapshot" /></td>
+    <td><CopyableCode code="is_from_auto_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the snapshot was created from an automatic snapshot.</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The progress of the snapshot. This is populated only for disk snapshots, and is null for instance snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource (usually InstanceSnapshot). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size in GB of the SSD.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state the snapshot is in. (pending, error, available)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -155,37 +155,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the snapshot (arn:aws:lightsail:us-east-2:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the snapshot was created (1479907467.024).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromAttachedDisks" /></td>
+    <td><CopyableCode code="from_attached_disks" /></td>
     <td><code>array</code></td>
     <td>An array of disk objects containing information about all block storage disks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromBlueprintId" /></td>
+    <td><CopyableCode code="from_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID from which you created the snapshot (amazon_linux_2023). A blueprint is a virtual private server (or instance) image used to create instances quickly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromBundleId" /></td>
+    <td><CopyableCode code="from_bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle ID from which you created the snapshot (micro_x_x).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceArn" /></td>
+    <td><CopyableCode code="from_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the instance from which the snapshot was created (arn:aws:lightsail:us-east-2:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fromInstanceName" /></td>
+    <td><CopyableCode code="from_instance_name" /></td>
     <td><code>string</code></td>
     <td>The instance from which the snapshot was created. (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isFromAutoSnapshot" /></td>
+    <td><CopyableCode code="is_from_auto_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the snapshot was created from an automatic snapshot.</td>
 </tr>
@@ -200,12 +200,12 @@ The following fields are returned by `SELECT` queries:
     <td>The progress of the snapshot. This is populated only for disk snapshots, and is null for instance snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource (usually InstanceSnapshot). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sizeInGb" /></td>
+    <td><CopyableCode code="size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size in GB of the SSD.</td>
 </tr>
@@ -215,7 +215,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state the snapshot is in. (pending, error, available)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -313,19 +313,19 @@ Returns information about a specific instance snapshot.
 SELECT
 name,
 arn,
-createdAt,
-fromAttachedDisks,
-fromBlueprintId,
-fromBundleId,
-fromInstanceArn,
-fromInstanceName,
-isFromAutoSnapshot,
+created_at,
+from_attached_disks,
+from_blueprint_id,
+from_bundle_id,
+from_instance_arn,
+from_instance_name,
+is_from_auto_snapshot,
 location,
 progress,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.instance_snapshots
 WHERE region = '{{ region }}' -- required
@@ -340,19 +340,19 @@ Returns all instance snapshots for the user's account.
 SELECT
 name,
 arn,
-createdAt,
-fromAttachedDisks,
-fromBlueprintId,
-fromBundleId,
-fromInstanceArn,
-fromInstanceName,
-isFromAutoSnapshot,
+created_at,
+from_attached_disks,
+from_blueprint_id,
+from_bundle_id,
+from_instance_arn,
+from_instance_name,
+is_from_auto_snapshot,
 location,
 progress,
-resourceType,
-sizeInGb,
+resource_type,
+size_in_gb,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.instance_snapshots
 WHERE region = '{{ region }}' -- required

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>Attributes provided for workflow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDescription" /></td>
+    <td><CopyableCode code="error_description" /></td>
     <td><code>string</code></td>
     <td>Workflow error messages during execution (if any).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that represents when workflow execution last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>object</code></td>
     <td>Workflow specific execution metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that represents when workflow execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of workflow execution. (NOT_STARTED, IN_PROGRESS, COMPLETE, FAILED, SPLIT, RETRY, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the workflow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowType" /></td>
+    <td><CopyableCode code="workflow_type" /></td>
     <td><code>string</code></td>
     <td>The type of workflow. The only supported value is APPFLOW_INTEGRATION. (APPFLOW_INTEGRATION)</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>List containing workflow details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -221,14 +221,14 @@ Get details of specified workflow.
 
 ```sql
 SELECT
-Attributes,
-ErrorDescription,
-LastUpdatedAt,
-Metrics,
-StartDate,
-Status,
-WorkflowId,
-WorkflowType
+attributes,
+error_description,
+last_updated_at,
+metrics,
+start_date,
+status,
+workflow_id,
+workflow_type
 FROM aws.customer_profiles.workflows
 WHERE domain_name = '{{ domain_name }}' -- required
 AND workflow_id = '{{ workflow_id }}' -- required
@@ -242,8 +242,8 @@ Query to list all workflows.
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.workflows
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -287,8 +287,8 @@ SELECT
 '{{ domain_name }}',
 '{{ region }}'
 RETURNING
-Message,
-WorkflowId
+message,
+workflow_id
 ;
 ```
 </TabItem>

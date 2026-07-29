@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data store was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreArn" /></td>
+    <td><CopyableCode code="datastore_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the data store. (pattern: &lt;code&gt;arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:medical-imaging:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:datastore/&#91;0-9a-z&#93;&#123;32&#125;(/imageset/&#91;0-9a-z&#93;&#123;32&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreId" /></td>
+    <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
     <td>The data store identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreName" /></td>
+    <td><CopyableCode code="datastore_name" /></td>
     <td><code>string</code></td>
     <td>The data store name. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/#-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreStatus" /></td>
+    <td><CopyableCode code="datastore_status" /></td>
     <td><code>string</code></td>
     <td>The data store status. (CREATING, CREATE_FAILED, ACTIVE, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>ARN referencing a KMS key or KMS key alias. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;&#123;0,16&#125;:kms:&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;&#123;1,16&#125;)&#123;1,3&#125;-\d&#123;1&#125;:\d&#123;12&#125;:((key/&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;)|(alias/&#91;a-zA-Z0-9:/_-&#93;&#123;1,256&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaAuthorizerArn" /></td>
+    <td><CopyableCode code="lambda_authorizer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the authorizer's Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(b?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="losslessStorageFormat" /></td>
+    <td><CopyableCode code="lossless_storage_format" /></td>
     <td><code>string</code></td>
     <td>The datastore's lossless storage format. (HTJ2K, JPEG_2000_LOSSLESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data store was last updated.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data store was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreArn" /></td>
+    <td><CopyableCode code="datastore_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the data store. (pattern: &lt;code&gt;arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:medical-imaging:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:datastore/&#91;0-9a-z&#93;&#123;32&#125;(/imageset/&#91;0-9a-z&#93;&#123;32&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreId" /></td>
+    <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
     <td>The data store identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreName" /></td>
+    <td><CopyableCode code="datastore_name" /></td>
     <td><code>string</code></td>
     <td>The data store name. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/#-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datastoreStatus" /></td>
+    <td><CopyableCode code="datastore_status" /></td>
     <td><code>string</code></td>
     <td>The data store status. (CREATING, CREATE_FAILED, ACTIVE, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data store was last updated.</td>
 </tr>
@@ -275,15 +275,15 @@ Get data store properties.
 
 ```sql
 SELECT
-createdAt,
-datastoreArn,
-datastoreId,
-datastoreName,
-datastoreStatus,
-kmsKeyArn,
-lambdaAuthorizerArn,
-losslessStorageFormat,
-updatedAt
+created_at,
+datastore_arn,
+datastore_id,
+datastore_name,
+datastore_status,
+kms_key_arn,
+lambda_authorizer_arn,
+lossless_storage_format,
+updated_at
 FROM aws.medical_imaging.datastores
 WHERE datastore_id = '{{ datastore_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -296,12 +296,12 @@ List data stores.
 
 ```sql
 SELECT
-createdAt,
-datastoreArn,
-datastoreId,
-datastoreName,
-datastoreStatus,
-updatedAt
+created_at,
+datastore_arn,
+datastore_id,
+datastore_name,
+datastore_status,
+updated_at
 FROM aws.medical_imaging.datastores
 WHERE region = '{{ region }}' -- required
 AND datastoreStatus = '{{ datastoreStatus }}'
@@ -345,8 +345,8 @@ SELECT
 '{{ losslessStorageFormat }}',
 '{{ region }}'
 RETURNING
-datastoreId,
-datastoreStatus
+datastore_id,
+datastore_status
 ;
 ```
 </TabItem>

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the data quality monitoring job definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataQualityAppSpecification" /></td>
+    <td><CopyableCode code="data_quality_app_specification" /></td>
     <td><code>object</code></td>
     <td>Information about the container that runs the data quality monitoring job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataQualityBaselineConfig" /></td>
+    <td><CopyableCode code="data_quality_baseline_config" /></td>
     <td><code>object</code></td>
     <td>The constraints and baselines for the data quality monitoring job definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataQualityJobInput" /></td>
+    <td><CopyableCode code="data_quality_job_input" /></td>
     <td><code>object</code></td>
     <td>The list of inputs for the data quality monitoring job. Currently endpoints are supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataQualityJobOutputConfig" /></td>
+    <td><CopyableCode code="data_quality_job_output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration for monitoring jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDefinitionArn" /></td>
+    <td><CopyableCode code="job_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data quality monitoring job definition. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDefinitionName" /></td>
+    <td><CopyableCode code="job_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the data quality monitoring job definition. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobResources" /></td>
+    <td><CopyableCode code="job_resources" /></td>
     <td><code>object</code></td>
     <td>Identifies the resources to deploy for a monitoring job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfig" /></td>
+    <td><CopyableCode code="network_config" /></td>
     <td><code>object</code></td>
     <td>The networking configuration for the data quality monitoring job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>A time limit for how long the monitoring job is allowed to run before stopping.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the monitoring job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint that the job monitors. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringJobDefinitionArn" /></td>
+    <td><CopyableCode code="monitoring_job_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitoring job. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringJobDefinitionName" /></td>
+    <td><CopyableCode code="monitoring_job_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitoring job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -226,17 +226,17 @@ Gets the details of a data quality monitoring job definition.
 
 ```sql
 SELECT
-CreationTime,
-DataQualityAppSpecification,
-DataQualityBaselineConfig,
-DataQualityJobInput,
-DataQualityJobOutputConfig,
-JobDefinitionArn,
-JobDefinitionName,
-JobResources,
-NetworkConfig,
-RoleArn,
-StoppingCondition
+creation_time,
+data_quality_app_specification,
+data_quality_baseline_config,
+data_quality_job_input,
+data_quality_job_output_config,
+job_definition_arn,
+job_definition_name,
+job_resources,
+network_config,
+role_arn,
+stopping_condition
 FROM aws.sagemaker.data_quality_job_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,10 +248,10 @@ Lists the data quality job definitions in your account.
 
 ```sql
 SELECT
-CreationTime,
-EndpointName,
-MonitoringJobDefinitionArn,
-MonitoringJobDefinitionName
+creation_time,
+endpoint_name,
+monitoring_job_definition_arn,
+monitoring_job_definition_name
 FROM aws.sagemaker.data_quality_job_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,7 +300,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-JobDefinitionArn
+job_definition_arn
 ;
 ```
 </TabItem>

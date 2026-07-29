@@ -112,12 +112,12 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn}}'
 AND AuditPolicyState = '{{ AuditPolicyState}}'
 RETURNING
-EngineNativeAuditFieldsIncluded,
-KinesisStreamName,
-KmsKeyId,
-Mode,
-PolicyStatus,
-Status;
+engine_native_audit_fields_included,
+kinesis_stream_name,
+kms_key_id,
+mode,
+policy_status,
+status;
 ```
 </TabItem>
 </Tabs>

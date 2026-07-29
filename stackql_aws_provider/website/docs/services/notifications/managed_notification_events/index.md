@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the ManagedNotificationEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the ManagedNotificationEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedNotificationConfigurationArn" /></td>
+    <td><CopyableCode code="managed_notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregatedNotificationRegions" /></td>
+    <td><CopyableCode code="aggregated_notification_regions" /></td>
     <td><code>array</code></td>
     <td>The list of the regions where the aggregated notifications in this NotificationEvent originated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationEventType" /></td>
+    <td><CopyableCode code="aggregation_event_type" /></td>
     <td><code>string</code></td>
     <td>The notifications aggregation type. Values: AGGREGATE The notification event is an aggregate notification. Aggregate notifications summarize grouped events over a specified time period. CHILD Some EventRules are ACTIVE and some are INACTIVE. Any call can be run. NONE The notification isn't aggregated. (AGGREGATE, CHILD, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationSummary" /></td>
+    <td><CopyableCode code="aggregation_summary" /></td>
     <td><code>object</code></td>
     <td>Provides additional information about the aggregation key.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the ManagedNotificationEvent. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the ManagedNotificationEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedNotificationConfigurationArn" /></td>
+    <td><CopyableCode code="managed_notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationEvent" /></td>
+    <td><CopyableCode code="notification_event" /></td>
     <td><code>object</code></td>
     <td>A short summary of a ManagedNotificationEvent. This is only used when listing managed notification events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>The Organizational Unit Id that an Amazon Web Services account belongs to. (pattern: &lt;code&gt;(Root|r-&#91;0-9a-z&#93;&#123;4,32&#125;|ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedAccount" /></td>
+    <td><CopyableCode code="related_account" /></td>
     <td><code>string</code></td>
     <td>The account that related to the ManagedNotificationEvent. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -249,8 +249,8 @@ Returns a specified ManagedNotificationEvent.
 SELECT
 arn,
 content,
-creationTime,
-managedNotificationConfigurationArn
+creation_time,
+managed_notification_configuration_arn
 FROM aws.notifications.managed_notification_events
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -264,15 +264,15 @@ Returns a list of Managed Notification Events according to specified filters, or
 
 ```sql
 SELECT
-aggregatedNotificationRegions,
-aggregationEventType,
-aggregationSummary,
+aggregated_notification_regions,
+aggregation_event_type,
+aggregation_summary,
 arn,
-creationTime,
-managedNotificationConfigurationArn,
-notificationEvent,
-organizationalUnitId,
-relatedAccount
+creation_time,
+managed_notification_configuration_arn,
+notification_event,
+organizational_unit_id,
+related_account
 FROM aws.notifications.managed_notification_events
 WHERE region = '{{ region }}' -- required
 AND startTime = '{{ startTime }}'

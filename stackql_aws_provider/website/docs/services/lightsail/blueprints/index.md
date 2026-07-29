@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The friendly name of the blueprint (Amazon Linux). (pattern: &lt;code&gt;\w&#91;\w\-&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appCategory" /></td>
+    <td><CopyableCode code="app_category" /></td>
     <td><code>string</code></td>
     <td>Virtual computer blueprints that are supported by Lightsail for Research. This parameter only applies to Lightsail for Research resources. (LfR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueprintId" /></td>
+    <td><CopyableCode code="blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the virtual private server image (app_wordpress_x_x or app_lamp_x_x). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
     <td>The group name of the blueprint (amazon-linux). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the blueprint is active. Inactive blueprints are listed to support customers with existing instances but are not necessarily available for launch of new instances. Blueprints are marked inactive when they become outdated due to operating system updates or new application releases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseUrl" /></td>
+    <td><CopyableCode code="license_url" /></td>
     <td><code>string</code></td>
     <td>The end-user license agreement URL for the image or blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minPower" /></td>
+    <td><CopyableCode code="min_power" /></td>
     <td><code>integer</code></td>
     <td>The minimum bundle power required to run this blueprint. For example, you need a bundle with a power value of 500 or more to create an instance that uses a blueprint with a minimum power value of 500. 0 indicates that the blueprint runs on all instance sizes.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The operating system platform (either Linux/Unix-based or Windows Server-based) of the blueprint. (LINUX_UNIX, WINDOWS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productUrl" /></td>
+    <td><CopyableCode code="product_url" /></td>
     <td><code>string</code></td>
     <td>The product URL to learn more about the image or blueprint.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The version number of the operating system, application, or stack ( 2016.03.0).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionCode" /></td>
+    <td><CopyableCode code="version_code" /></td>
     <td><code>string</code></td>
     <td>The version code.</td>
 </tr>
@@ -180,18 +180,18 @@ Returns the list of available instance images, or blueprints. You can use a blue
 ```sql
 SELECT
 name,
-appCategory,
-blueprintId,
+app_category,
+blueprint_id,
 description,
 group,
-isActive,
-licenseUrl,
-minPower,
+is_active,
+license_url,
+min_power,
 platform,
-productUrl,
+product_url,
 type_,
 version,
-versionCode
+version_code
 FROM aws.lightsail.blueprints
 WHERE region = '{{ region }}' -- required
 ;

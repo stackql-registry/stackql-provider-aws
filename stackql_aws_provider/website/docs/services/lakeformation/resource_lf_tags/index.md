@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LFTagOnDatabase" /></td>
+    <td><CopyableCode code="lf_tag_on_database" /></td>
     <td><code>array</code></td>
     <td>A list of LF-tags applied to a database resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LFTagsOnColumns" /></td>
+    <td><CopyableCode code="lf_tags_on_columns" /></td>
     <td><code>array</code></td>
     <td>A list of LF-tags applied to a column resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LFTagsOnTable" /></td>
+    <td><CopyableCode code="lf_tags_on_table" /></td>
     <td><code>array</code></td>
     <td>A list of LF-tags applied to a table resource.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the LF-tags applied to a resource.
 
 ```sql
 SELECT
-LFTagOnDatabase,
-LFTagsOnColumns,
-LFTagsOnTable
+lf_tag_on_database,
+lf_tags_on_columns,
+lf_tags_on_table
 FROM aws.lakeformation.resource_lf_tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The flow execution end timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The flow executionId. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowName" /></td>
+    <td><CopyableCode code="flow_name" /></td>
     <td><code>string</code></td>
     <td>The flow execution's flowName. (pattern: &lt;code&gt;&#91;A-Za-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The flow execution's instanceId. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>The failure message (if any) of failed flow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputMetadata" /></td>
+    <td><CopyableCode code="output_metadata" /></td>
     <td><code>object</code></td>
     <td>The flow execution output metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceInfo" /></td>
+    <td><CopyableCode code="source_info" /></td>
     <td><code>object</code></td>
     <td>The source information for a flow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The flow execution start timestamp.</td>
 </tr>
@@ -110,22 +110,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The flow execution end timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The flow executionId. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowName" /></td>
+    <td><CopyableCode code="flow_name" /></td>
     <td><code>string</code></td>
     <td>The flow execution's flowName. (pattern: &lt;code&gt;&#91;A-Za-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The flow execution's instanceId. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The failure message (if any) of failed flow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputMetadata" /></td>
+    <td><CopyableCode code="output_metadata" /></td>
     <td><code>object</code></td>
     <td>The flow execution output metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceInfo" /></td>
+    <td><CopyableCode code="source_info" /></td>
     <td><code>object</code></td>
     <td>The source information for a flow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The flow execution start timestamp.</td>
 </tr>
@@ -252,14 +252,14 @@ Get the flow execution.
 
 ```sql
 SELECT
-endTime,
-executionId,
-flowName,
-instanceId,
+end_time,
+execution_id,
+flow_name,
+instance_id,
 message,
-outputMetadata,
-sourceInfo,
-startTime,
+output_metadata,
+source_info,
+start_time,
 status
 FROM aws.supplychain.data_integration_flow_executions
 WHERE instance_id = '{{ instance_id }}' -- required
@@ -275,14 +275,14 @@ List flow executions.
 
 ```sql
 SELECT
-endTime,
-executionId,
-flowName,
-instanceId,
+end_time,
+execution_id,
+flow_name,
+instance_id,
 message,
-outputMetadata,
-sourceInfo,
-startTime,
+output_metadata,
+source_info,
+start_time,
 status
 FROM aws.supplychain.data_integration_flow_executions
 WHERE instance_id = '{{ instance_id }}' -- required

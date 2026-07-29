@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the memory record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the memory record was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryRecordId" /></td>
+    <td><CopyableCode code="memory_record_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the memory record. (pattern: &lt;code&gt;mem-&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryStrategyId" /></td>
+    <td><CopyableCode code="memory_strategy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the memory strategy associated with this record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the memory record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the memory record was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryRecordId" /></td>
+    <td><CopyableCode code="memory_record_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the memory record. (pattern: &lt;code&gt;mem-&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryStrategyId" /></td>
+    <td><CopyableCode code="memory_strategy_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the memory strategy associated with this record. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -248,9 +248,9 @@ Retrieves a specific memory record from an AgentCore Memory resource. To use thi
 ```sql
 SELECT
 content,
-createdAt,
-memoryRecordId,
-memoryStrategyId,
+created_at,
+memory_record_id,
+memory_strategy_id,
 metadata,
 namespaces
 FROM aws.bedrock_agentcore.memory_records
@@ -267,9 +267,9 @@ Lists memory records in an AgentCore Memory resource based on specified criteria
 ```sql
 SELECT
 content,
-createdAt,
-memoryRecordId,
-memoryStrategyId,
+created_at,
+memory_record_id,
+memory_strategy_id,
 metadata,
 namespaces,
 score

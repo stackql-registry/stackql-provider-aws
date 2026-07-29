@@ -55,47 +55,47 @@ The following fields are returned by `SELECT` queries:
     <td>A Device Defender security profile behavior.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricValue" /></td>
+    <td><CopyableCode code="metric_value" /></td>
     <td><code>object</code></td>
     <td>The value of the metric (the measurement).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityProfileName" /></td>
+    <td><CopyableCode code="security_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the security profile whose behavior was violated. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing responsible for the violation event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="verificationState" /></td>
+    <td><CopyableCode code="verification_state" /></td>
     <td><code>string</code></td>
     <td>The verification state of the violation (detect alarm). (FALSE_POSITIVE, BENIGN_POSITIVE, TRUE_POSITIVE, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="verificationStateDescription" /></td>
+    <td><CopyableCode code="verification_state_description" /></td>
     <td><code>string</code></td>
     <td>The description of the verification state of the violation. (pattern: &lt;code&gt;&#91;^\p&#123;Cntrl&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="violationEventAdditionalInfo" /></td>
+    <td><CopyableCode code="violation_event_additional_info" /></td>
     <td><code>object</code></td>
     <td>The details of a violation event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="violationEventTime" /></td>
+    <td><CopyableCode code="violation_event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the violation event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="violationEventType" /></td>
+    <td><CopyableCode code="violation_event_type" /></td>
     <td><code>string</code></td>
     <td>The type of violation event. (in-alarm, alarm-cleared, alarm-invalidated)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="violationId" /></td>
+    <td><CopyableCode code="violation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the violation event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -210,15 +210,15 @@ Lists the Device Defender security profile violations discovered during the give
 ```sql
 SELECT
 behavior,
-metricValue,
-securityProfileName,
-thingName,
-verificationState,
-verificationStateDescription,
-violationEventAdditionalInfo,
-violationEventTime,
-violationEventType,
-violationId
+metric_value,
+security_profile_name,
+thing_name,
+verification_state,
+verification_state_description,
+violation_event_additional_info,
+violation_event_time,
+violation_event_type,
+violation_id
 FROM aws.iot.violation_events
 WHERE startTime = '{{ startTime }}' -- required
 AND endTime = '{{ endTime }}' -- required

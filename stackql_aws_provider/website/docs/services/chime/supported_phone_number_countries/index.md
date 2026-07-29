@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PhoneNumberCountries" /></td>
+    <td><CopyableCode code="phone_number_countries" /></td>
     <td><code>array</code></td>
     <td>The supported phone number countries.</td>
 </tr>
@@ -124,7 +124,7 @@ Lists supported phone number countries.
 
 ```sql
 SELECT
-PhoneNumberCountries
+phone_number_countries
 FROM aws.chime.supported_phone_number_countries
 WHERE `product-type` = '{{ product-type }}' -- required
 AND region = '{{ region }}' -- required

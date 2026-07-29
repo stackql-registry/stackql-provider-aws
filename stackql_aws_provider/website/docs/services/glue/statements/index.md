@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Code" /></td>
+    <td><CopyableCode code="code" /></td>
     <td><code>string</code></td>
     <td>The execution code of the statement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>integer (int64)</code></td>
     <td>The unix time and date that the job definition was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>integer</code></td>
     <td>The ID of the statement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Output" /></td>
+    <td><CopyableCode code="output" /></td>
     <td><code>object</code></td>
     <td>The output in JSON.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>number (double)</code></td>
     <td>The code execution progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>integer (int64)</code></td>
     <td>The unix time and date that the job definition was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state while request is actioned. (WAITING, RUNNING, AVAILABLE, CANCELLING, CANCELLED, ERROR)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, if not all statements have yet been returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statements" /></td>
+    <td><CopyableCode code="statements" /></td>
     <td><code>array</code></td>
     <td>Returns the list of statements.</td>
 </tr>
@@ -182,13 +182,13 @@ Retrieves the statement.
 
 ```sql
 SELECT
-Code,
-CompletedOn,
-Id,
-Output,
-Progress,
-StartedOn,
-State
+code,
+completed_on,
+id,
+output,
+progress,
+started_on,
+state
 FROM aws.glue.statements
 WHERE region = '{{ region }}' -- required
 ;
@@ -200,8 +200,8 @@ Lists statements for the session.
 
 ```sql
 SELECT
-NextToken,
-Statements
+next_token,
+statements
 FROM aws.glue.statements
 WHERE region = '{{ region }}' -- required
 ;

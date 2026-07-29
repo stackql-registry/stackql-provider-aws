@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Connectors" /></td>
+    <td><CopyableCode code="connectors" /></td>
     <td><code>array</code></td>
     <td>An array of connectorV2 summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token to use to request the next page of results. Otherwise, this parameter is null.</td>
 </tr>
@@ -144,8 +144,8 @@ Grants permission to retrieve a list of connectorsV2 and their metadata for the 
 
 ```sql
 SELECT
-Connectors,
-NextToken
+connectors,
+next_token
 FROM aws.securityhub.connectors_v2s
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

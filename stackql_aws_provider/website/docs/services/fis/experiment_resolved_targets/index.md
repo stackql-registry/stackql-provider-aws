@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the target. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetInformation" /></td>
+    <td><CopyableCode code="target_information" /></td>
     <td><code>object</code></td>
     <td>Information about the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetName" /></td>
+    <td><CopyableCode code="target_name" /></td>
     <td><code>string</code></td>
     <td>The name of the target. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -149,9 +149,9 @@ Lists the resolved targets information of the specified experiment.
 
 ```sql
 SELECT
-resourceType,
-targetInformation,
-targetName
+resource_type,
+target_information,
+target_name
 FROM aws.fis.experiment_resolved_targets
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

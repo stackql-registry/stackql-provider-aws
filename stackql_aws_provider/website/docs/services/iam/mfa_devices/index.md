@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Certifications" /></td>
+    <td><CopyableCode code="certifications" /></td>
     <td><code>string</code></td>
     <td>The certifications of a specified user's MFA device. We currently provide FIPS-140-2, FIPS-140-3, and FIDO certification levels obtained from FIDO Alliance Metadata Service (MDS).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableDate" /></td>
+    <td><CopyableCode code="enable_date" /></td>
     <td><code>string</code></td>
     <td>The date that a specified user's MFA device was first enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>Serial number that uniquely identifies the MFA device. For this API, we only accept FIDO security key ARNs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name identifying the user.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EnableDate" /></td>
+    <td><CopyableCode code="enable_date" /></td>
     <td><code>string</code></td>
     <td>The date when the MFA device was enabled for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The user with whom the MFA device is associated.</td>
 </tr>
@@ -192,10 +192,10 @@ Retrieves information about an MFA device for a specified user.
 
 ```sql
 SELECT
-Certifications,
-EnableDate,
-SerialNumber,
-UserName
+certifications,
+enable_date,
+serial_number,
+user_name
 FROM aws.iam.mfa_devices
 WHERE SerialNumber = '{{ SerialNumber }}' -- required
 AND region = '{{ region }}' -- required
@@ -209,9 +209,9 @@ Lists the MFA devices for an IAM user. If the request includes a IAM user name, 
 
 ```sql
 SELECT
-EnableDate,
-SerialNumber,
-UserName
+enable_date,
+serial_number,
+user_name
 FROM aws.iam.mfa_devices
 WHERE region = '{{ region }}' -- required
 AND UserName = '{{ UserName }}'

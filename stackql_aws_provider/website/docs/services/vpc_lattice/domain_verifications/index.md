@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the domain verification. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:domainverification/dv-&#91;a-fA-F0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the domain verification was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name being verified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastVerifiedTime" /></td>
+    <td><CopyableCode code="last_verified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the domain was last successfully verified, in ISO-8601 format.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags associated with the domain verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="txtMethodConfig" /></td>
+    <td><CopyableCode code="txt_method_config" /></td>
     <td><code>object</code></td>
     <td>The TXT record configuration used for domain verification.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the domain verification. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:domainverification/dv-&#91;a-fA-F0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the domain verification was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name being verified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastVerifiedTime" /></td>
+    <td><CopyableCode code="last_verified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the domain was last successfully verified, in ISO-8601 format.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags associated with the domain verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="txtMethodConfig" /></td>
+    <td><CopyableCode code="txt_method_config" /></td>
     <td><code>object</code></td>
     <td>The TXT record configuration used for domain verification.</td>
 </tr>
@@ -241,12 +241,12 @@ Retrieves information about a domain verification.ß
 SELECT
 id,
 arn,
-createdAt,
-domainName,
-lastVerifiedTime,
+created_at,
+domain_name,
+last_verified_time,
 status,
 tags,
-txtMethodConfig
+txt_method_config
 FROM aws.vpc_lattice.domain_verifications
 WHERE domain_verification_identifier = '{{ domain_verification_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -261,12 +261,12 @@ Lists the domain verifications.
 SELECT
 id,
 arn,
-createdAt,
-domainName,
-lastVerifiedTime,
+created_at,
+domain_name,
+last_verified_time,
 status,
 tags,
-txtMethodConfig
+txt_method_config
 FROM aws.vpc_lattice.domain_verifications
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

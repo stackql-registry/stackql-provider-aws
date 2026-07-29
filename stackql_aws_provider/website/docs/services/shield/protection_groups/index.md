@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Aggregation" /></td>
+    <td><CopyableCode code="aggregation" /></td>
     <td><code>string</code></td>
     <td>Defines how Shield combines resource data for the group in order to detect, mitigate, and report events. Sum - Use the total traffic across the group. This is a good choice for most cases. Examples include Elastic IP addresses for EC2 instances that scale manually or automatically. Mean - Use the average of the traffic across the group. This is a good choice for resources that share traffic uniformly. Examples include accelerators and load balancers. Max - Use the highest traffic from each resource. This is useful for resources that don't share traffic and for resources that share that traffic in a non-uniform way. Examples include Amazon CloudFront distributions and origin resources for CloudFront distributions. (SUM, MEAN, MAX)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Members" /></td>
+    <td><CopyableCode code="members" /></td>
     <td><code>array</code></td>
     <td>The ARNs (Amazon Resource Names) of the resources to include in the protection group. You must set this when you set Pattern to ARBITRARY and you must not set it for any other Pattern setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Pattern" /></td>
+    <td><CopyableCode code="pattern" /></td>
     <td><code>string</code></td>
     <td>The criteria to use to choose the protected resources for inclusion in the group. You can include all resources that have protections, provide a list of resource ARNs (Amazon Resource Names), or include all resources of a specified resource type. (ALL, ARBITRARY, BY_RESOURCE_TYPE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectionGroupArn" /></td>
+    <td><CopyableCode code="protection_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the protection group. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectionGroupId" /></td>
+    <td><CopyableCode code="protection_group_id" /></td>
     <td><code>string</code></td>
     <td>The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type to include in the protection group. All protected resources of this type are included in the protection group. You must set this when you set Pattern to BY_RESOURCE_TYPE and you must not set it for any other Pattern setting. (CLOUDFRONT_DISTRIBUTION, ROUTE_53_HOSTED_ZONE, ELASTIC_IP_ALLOCATION, CLASSIC_LOAD_BALANCER, APPLICATION_LOAD_BALANCER, GLOBAL_ACCELERATOR)</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects from Shield Advanced, if the response does not include all of the remaining available objects, Shield Advanced includes a NextToken value in the response. You can retrieve the next batch of objects by requesting the list again and providing the token that was returned by the prior call in your request. You can indicate the maximum number of objects that you want Shield Advanced to return for a single call with the MaxResults setting. Shield Advanced will not return more than MaxResults objects, but may return fewer, even if more objects are still available. Whenever more objects remain that Shield Advanced has not yet returned to you, the response will include a NextToken value. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectionGroups" /></td>
+    <td><CopyableCode code="protection_groups" /></td>
     <td><code>array</code></td>
     <td></td>
 </tr>
@@ -198,12 +198,12 @@ Returns the specification for the specified protection group.
 
 ```sql
 SELECT
-Aggregation,
-Members,
-Pattern,
-ProtectionGroupArn,
-ProtectionGroupId,
-ResourceType
+aggregation,
+members,
+pattern,
+protection_group_arn,
+protection_group_id,
+resource_type
 FROM aws.shield.protection_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -215,8 +215,8 @@ Retrieves ProtectionGroup objects for the account. You can retrieve all protecti
 
 ```sql
 SELECT
-NextToken,
-ProtectionGroups
+next_token,
+protection_groups
 FROM aws.shield.protection_groups
 WHERE region = '{{ region }}' -- required
 ;

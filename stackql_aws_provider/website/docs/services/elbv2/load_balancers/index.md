@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>The subnets for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CanonicalHostedZoneId" /></td>
+    <td><CopyableCode code="canonical_hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the load balancer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOwnedIpv4Pool" /></td>
+    <td><CopyableCode code="customer_owned_ipv_4_pool" /></td>
     <td><code>string</code></td>
     <td>&#91;Application Load Balancers on Outposts&#93; The ID of the customer-owned address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DNSName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The public DNS name of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnablePrefixForIpv6SourceNat" /></td>
+    <td><CopyableCode code="enable_prefix_for_ipv_6_source_nat" /></td>
     <td><code>string</code></td>
     <td>&#91;Network Load Balancers with UDP listeners&#93; Indicates whether to use an IPv6 prefix from each subnet for source NAT. The IP address type must be dualstack. The default value is off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic" /></td>
+    <td><CopyableCode code="enforce_security_group_inbound_rules_on_private_link_traffic" /></td>
     <td><code>string</code></td>
     <td>Indicates whether to evaluate inbound security group rules for traffic sent to a Network Load Balancer through Amazon Web Services PrivateLink.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP addresses used for public or private connections by the subnets attached to your load balancer. &#91;Application Load Balancers&#93; The possible values are ipv4 (IPv4 addresses), dualstack (IPv4 and IPv6 addresses), and dualstack-without-public-ipv4 (public IPv6 addresses and private IPv4 and IPv6 addresses). &#91;Network Load Balancers and Gateway Load Balancers&#93; The possible values are ipv4 (IPv4 addresses) and dualstack (IPv4 and IPv6 addresses).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPools" /></td>
+    <td><CopyableCode code="ipam_pools" /></td>
     <td><code>string</code></td>
     <td>&#91;Application Load Balancers&#93; The IPAM pool in use by the load balancer, if configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancerArn" /></td>
+    <td><CopyableCode code="load_balancer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancerName" /></td>
+    <td><CopyableCode code="load_balancer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scheme" /></td>
+    <td><CopyableCode code="scheme" /></td>
     <td><code>string</code></td>
     <td>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the internet. The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route requests only from clients with access to the VPC for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>string</code></td>
     <td>The IDs of the security groups for the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the load balancer.</td>
 </tr>
@@ -336,22 +336,22 @@ Describes the specified load balancers or all of your load balancers.
 
 ```sql
 SELECT
-AvailabilityZones,
-CanonicalHostedZoneId,
-CreatedTime,
-CustomerOwnedIpv4Pool,
-DNSName,
-EnablePrefixForIpv6SourceNat,
-EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic,
-IpAddressType,
-IpamPools,
-LoadBalancerArn,
-LoadBalancerName,
-Scheme,
-SecurityGroups,
-State,
-Type,
-VpcId
+availability_zones,
+canonical_hosted_zone_id,
+created_time,
+customer_owned_ipv_4_pool,
+dns_name,
+enable_prefix_for_ipv_6_source_nat,
+enforce_security_group_inbound_rules_on_private_link_traffic,
+ip_address_type,
+ipam_pools,
+load_balancer_arn,
+load_balancer_name,
+scheme,
+security_groups,
+state,
+type,
+vpc_id
 FROM aws.elbv2.load_balancers
 WHERE region = '{{ region }}' -- required
 AND LoadBalancerArns = '{{ LoadBalancerArns }}'
@@ -525,7 +525,7 @@ AND region = '{{ region }}' --required
 AND IpamPools = '{{ IpamPools}}'
 AND RemoveIpamPools = '{{ RemoveIpamPools}}'
 RETURNING
-Ipv4IpamPoolId;
+ipv_4_ipam_pool_id;
 ```
 </TabItem>
 </Tabs>

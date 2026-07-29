@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DiskIds" /></td>
+    <td><CopyableCode code="disk_ids" /></td>
     <td><code>array</code></td>
     <td>An array of the gateway's local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UploadBufferAllocatedInBytes" /></td>
+    <td><CopyableCode code="upload_buffer_allocated_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of bytes allocated in the gateway's as upload buffer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UploadBufferUsedInBytes" /></td>
+    <td><CopyableCode code="upload_buffer_used_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of bytes being used in the gateway's upload buffer.</td>
 </tr>
@@ -141,10 +141,10 @@ Returns information about the upload buffer of a gateway. This operation is supp
 
 ```sql
 SELECT
-DiskIds,
-GatewayARN,
-UploadBufferAllocatedInBytes,
-UploadBufferUsedInBytes
+disk_ids,
+gateway_arn,
+upload_buffer_allocated_in_bytes,
+upload_buffer_used_in_bytes
 FROM aws.storagegateway.upload_buffers
 WHERE region = '{{ region }}' -- required
 ;
@@ -175,7 +175,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND DiskIds = '{{ DiskIds }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConformancePackComplianceScores" /></td>
+    <td><CopyableCode code="conformance_pack_compliance_scores" /></td>
     <td><code>array</code></td>
     <td>A list of ConformancePackComplianceScore objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken string that you can use to get the next page of results in a paginated response.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of conformance pack compliance scores. A compliance score is the 
 
 ```sql
 SELECT
-ConformancePackComplianceScores,
-NextToken
+conformance_pack_compliance_scores,
+next_token
 FROM aws.config.conformance_pack_compliance_scores
 WHERE region = '{{ region }}' -- required
 ;

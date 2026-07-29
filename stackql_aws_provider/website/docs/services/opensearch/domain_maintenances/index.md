@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainMaintenances" /></td>
+    <td><CopyableCode code="domain_maintenances" /></td>
     <td><code>array</code></td>
     <td>A list of the submitted maintenance actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -149,8 +149,8 @@ A list of maintenance actions for the domain.
 
 ```sql
 SELECT
-DomainMaintenances,
-NextToken
+domain_maintenances,
+next_token
 FROM aws.opensearch.domain_maintenances
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

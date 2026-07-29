@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="allowedTools" /></td>
+    <td><CopyableCode code="allowed_tools" /></td>
     <td><code>array</code></td>
     <td>The allowed tools of the Harness. All tools are allowed by default.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the Harness. (pattern: &lt;code&gt;arn:(&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:harness/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerConfiguration" /></td>
+    <td><CopyableCode code="authorizer_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents inbound authorization configuration options used to authenticate incoming requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The createdAt time of the Harness.</td>
 </tr>
@@ -75,42 +75,42 @@ The following fields are returned by `SELECT` queries:
     <td>The compute environment on which the Harness runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArtifact" /></td>
+    <td><CopyableCode code="environment_artifact" /></td>
     <td><code>object</code></td>
     <td>The environment artifact for a harness, such as a container image containing custom dependencies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>Environment variables exposed in the environment in which the Harness operates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>IAM role the Harness assumes when running. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Reason why create or update operations fail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="harnessId" /></td>
+    <td><CopyableCode code="harness_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="harnessName" /></td>
+    <td><CopyableCode code="harness_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxIterations" /></td>
+    <td><CopyableCode code="max_iterations" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of iterations in the agent loop allowed before exiting per invocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxTokens" /></td>
+    <td><CopyableCode code="max_tokens" /></td>
     <td><code>integer</code></td>
     <td>The maximum total number of output tokens the agent can generate across all model calls within a single invocation.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the Harness. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="systemPrompt" /></td>
+    <td><CopyableCode code="system_prompt" /></td>
     <td><code>array</code></td>
     <td>The system prompt of the Harness.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutSeconds" /></td>
+    <td><CopyableCode code="timeout_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum duration per invocation.</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration for truncating conversation context when it exceeds model limits.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The updatedAt time of the Harness.</td>
 </tr>
@@ -255,28 +255,28 @@ Operation to get a single Harness.
 
 ```sql
 SELECT
-allowedTools,
+allowed_tools,
 arn,
-authorizerConfiguration,
-createdAt,
+authorizer_configuration,
+created_at,
 environment,
-environmentArtifact,
-environmentVariables,
-executionRoleArn,
-failureReason,
-harnessId,
-harnessName,
-maxIterations,
-maxTokens,
+environment_artifact,
+environment_variables,
+execution_role_arn,
+failure_reason,
+harness_id,
+harness_name,
+max_iterations,
+max_tokens,
 memory,
 model,
 skills,
 status,
-systemPrompt,
-timeoutSeconds,
+system_prompt,
+timeout_seconds,
 tools,
 truncation,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.harness
 WHERE harness_id = '{{ harness_id }}' -- required
 AND region = '{{ region }}' -- required

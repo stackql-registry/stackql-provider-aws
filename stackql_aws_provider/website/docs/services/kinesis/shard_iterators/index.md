@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ShardIterator" /></td>
+    <td><CopyableCode code="shard_iterator" /></td>
     <td><code>string</code></td>
     <td>The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets an Amazon Kinesis shard iterator. A shard iterator expires 5 minutes after 
 
 ```sql
 SELECT
-ShardIterator
+shard_iterator
 FROM aws.kinesis.shard_iterators
 WHERE region = '{{ region }}' -- required
 ;

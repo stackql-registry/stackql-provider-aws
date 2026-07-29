@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionTime" /></td>
+    <td><CopyableCode code="deletion_time" /></td>
     <td><code>string</code></td>
     <td>The deletion time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description for the Amazon Web Services Verified Access group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The last updated time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account number that owns the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseSpecification" /></td>
+    <td><CopyableCode code="sse_specification" /></td>
     <td><code>string</code></td>
     <td>The options in use for server side encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessGroupArn" /></td>
+    <td><CopyableCode code="verified_access_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Verified Access group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessGroupId" /></td>
+    <td><CopyableCode code="verified_access_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Verified Access group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessInstanceId" /></td>
+    <td><CopyableCode code="verified_access_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Verified Access instance.</td>
 </tr>
@@ -250,16 +250,16 @@ Describes the specified Verified Access groups.
 
 ```sql
 SELECT
-CreationTime,
-DeletionTime,
-Description,
-LastUpdatedTime,
-Owner,
-SseSpecification,
-Tags,
-VerifiedAccessGroupArn,
-VerifiedAccessGroupId,
-VerifiedAccessInstanceId
+creation_time,
+deletion_time,
+description,
+last_updated_time,
+owner,
+sse_specification,
+tags,
+verified_access_group_arn,
+verified_access_group_id,
+verified_access_instance_id
 FROM aws.ec2.verified_access_groups
 WHERE region = '{{ region }}' -- required
 AND VerifiedAccessGroupId = '{{ VerifiedAccessGroupId }}'
@@ -308,16 +308,16 @@ SELECT
 '{{ DryRun }}',
 '{{ SseSpecification }}'
 RETURNING
-CreationTime,
-DeletionTime,
-Description,
-LastUpdatedTime,
-Owner,
-SseSpecification,
-Tags,
-VerifiedAccessGroupArn,
-VerifiedAccessGroupId,
-VerifiedAccessInstanceId
+creation_time,
+deletion_time,
+description,
+last_updated_time,
+owner,
+sse_specification,
+tags,
+verified_access_group_arn,
+verified_access_group_id,
+verified_access_instance_id
 ;
 ```
 </TabItem>
@@ -386,16 +386,16 @@ AND Description = '{{ Description}}'
 AND ClientToken = '{{ ClientToken}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-CreationTime,
-DeletionTime,
-Description,
-LastUpdatedTime,
-Owner,
-SseSpecification,
-Tags,
-VerifiedAccessGroupArn,
-VerifiedAccessGroupId,
-VerifiedAccessInstanceId;
+creation_time,
+deletion_time,
+description,
+last_updated_time,
+owner,
+sse_specification,
+tags,
+verified_access_group_arn,
+verified_access_group_id,
+verified_access_instance_id;
 ```
 </TabItem>
 </Tabs>

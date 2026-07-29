@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the rule group was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the rule group was last modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the rule group. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account that created the rule group. When a rule group is shared with your account, this is the account that has shared the rule group with you.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleCount" /></td>
+    <td><CopyableCode code="rule_count" /></td>
     <td><code>integer</code></td>
     <td>The number of rules in the rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>Whether the rule group is shared with other Amazon Web Services accounts, or was shared with the current account by another Amazon Web Services account. Sharing is configured through Resource Access Manager (RAM). (NOT_SHARED, SHARED_WITH_ME, SHARED_BY_ME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the domain list. (COMPLETE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the rule group, if available.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the rule group. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account that created the rule group. When a rule group is shared with your account, this is the account that has shared the rule group with you.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>Whether the rule group is shared with other Amazon Web Services accounts, or was shared with the current account by another Amazon Web Services account. Sharing is configured through Resource Access Manager (RAM). (NOT_SHARED, SHARED_WITH_ME, SHARED_BY_ME)</td>
 </tr>
@@ -250,17 +250,17 @@ Retrieves the specified firewall rule group.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CreatorRequestId,
-Id,
-ModificationTime,
-Name,
-OwnerId,
-RuleCount,
-ShareStatus,
-Status,
-StatusMessage
+arn,
+creation_time,
+creator_request_id,
+id,
+modification_time,
+name,
+owner_id,
+rule_count,
+share_status,
+status,
+status_message
 FROM aws.route53resolver.firewall_rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -272,12 +272,12 @@ Retrieves the minimal high-level information for the rule groups that you have d
 
 ```sql
 SELECT
-Arn,
-CreatorRequestId,
-Id,
-Name,
-OwnerId,
-ShareStatus
+arn,
+creator_request_id,
+id,
+name,
+owner_id,
+share_status
 FROM aws.route53resolver.firewall_rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -312,7 +312,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-FirewallRuleGroup
+firewall_rule_group
 ;
 ```
 </TabItem>
@@ -374,7 +374,7 @@ AND FirewallRuleGroupId = '{{ FirewallRuleGroupId }}' --required
 AND VpcId = '{{ VpcId }}' --required
 AND Priority = '{{ Priority }}' --required
 RETURNING
-FirewallRuleGroupAssociation;
+firewall_rule_group_association;
 ```
 </TabItem>
 <TabItem value="disassociate_firewall_rule_group">
@@ -389,7 +389,7 @@ WHERE
 region = '{{ region }}' --required
 AND FirewallRuleGroupAssociationId = '{{ FirewallRuleGroupAssociationId }}' --required
 RETURNING
-FirewallRuleGroupAssociation;
+firewall_rule_group_association;
 ```
 </TabItem>
 </Tabs>

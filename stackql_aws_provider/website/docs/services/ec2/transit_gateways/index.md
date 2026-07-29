@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>The transit gateway options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayArn" /></td>
+    <td><CopyableCode code="transit_gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
@@ -274,14 +274,14 @@ Describes one or more transit gateways. By default, all transit gateways are des
 
 ```sql
 SELECT
-CreationTime,
-Description,
-Options,
-OwnerId,
-State,
-Tags,
-TransitGatewayArn,
-TransitGatewayId
+creation_time,
+description,
+options,
+owner_id,
+state,
+tags,
+transit_gateway_arn,
+transit_gateway_id
 FROM aws.ec2.transit_gateways
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayIds = '{{ TransitGatewayIds }}'
@@ -323,14 +323,14 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-CreationTime,
-Description,
-Options,
-OwnerId,
-State,
-Tags,
-TransitGatewayArn,
-TransitGatewayId
+creation_time,
+description,
+options,
+owner_id,
+state,
+tags,
+transit_gateway_arn,
+transit_gateway_id
 ;
 ```
 </TabItem>
@@ -387,14 +387,14 @@ AND Description = '{{ Description}}'
 AND Options = '{{ Options}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-CreationTime,
-Description,
-Options,
-OwnerId,
-State,
-Tags,
-TransitGatewayArn,
-TransitGatewayId;
+creation_time,
+description,
+options,
+owner_id,
+state,
+tags,
+transit_gateway_arn,
+transit_gateway_id;
 ```
 </TabItem>
 </Tabs>

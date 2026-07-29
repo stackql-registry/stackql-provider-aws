@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags associated with the specified dashboard resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a list of all tags associated with a specified dashboard resource.
 
 ```sql
 SELECT
-resourceTags
+resource_tags
 FROM aws.bcm_dashboards.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the schema was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataFormat" /></td>
+    <td><CopyableCode code="data_format" /></td>
     <td><code>string</code></td>
     <td>The data format of the schema definition. Currently AVRO, JSON and PROTOBUF are supported. (AVRO, JSON, PROTOBUF)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersionId" /></td>
+    <td><CopyableCode code="schema_version_id" /></td>
     <td><code>string</code></td>
     <td>The schema ID of the schema version. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the schema version. (AVAILABLE, PENDING, FAILURE, DELETING)</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves a schema by the SchemaDefinition. The schema definition is sent to the
 
 ```sql
 SELECT
-CreatedTime,
-DataFormat,
-SchemaArn,
-SchemaVersionId,
-Status
+created_time,
+data_format,
+schema_arn,
+schema_version_id,
+status
 FROM aws.glue.schema_by_definitions
 WHERE region = '{{ region }}' -- required
 ;

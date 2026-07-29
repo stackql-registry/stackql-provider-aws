@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DASHStreamingSessionURL" /></td>
+    <td><CopyableCode code="dash_streaming_session_url" /></td>
     <td><code>string</code></td>
     <td>The URL (containing the session token) that a media player can use to retrieve the MPEG-DASH manifest.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for the stream
 
 ```sql
 SELECT
-DASHStreamingSessionURL
+dash_streaming_session_url
 FROM aws.kinesis_video_archived_media.dash_streaming_session_urls
 WHERE region = '{{ region }}' -- required
 ;

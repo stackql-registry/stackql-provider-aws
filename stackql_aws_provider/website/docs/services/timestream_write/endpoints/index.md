@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>array</code></td>
     <td>An Endpoints object is returned when a DescribeEndpoints request is made.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns a list of available endpoints to make Timestream API calls against. This
 
 ```sql
 SELECT
-Endpoints
+endpoints
 FROM aws.timestream_write.endpoints
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeployedStageName" /></td>
+    <td><CopyableCode code="deployed_stage_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployed stage. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStartTime" /></td>
+    <td><CopyableCode code="deployment_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the deployment on the device started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the device. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.,;:! &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:&#91;a-z\-&#93;*:&#91;a-z\-&#93;*:\d&#123;12&#125;:&#91;a-z\-&#93;*/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceDeploymentStatus" /></td>
+    <td><CopyableCode code="device_deployment_status" /></td>
     <td><code>string</code></td>
     <td>The deployment status of the device. (READYTODEPLOY, INPROGRESS, DEPLOYED, FAILED, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceDeploymentStatusMessage" /></td>
+    <td><CopyableCode code="device_deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>The detailed error message for the deployoment status result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the fleet to which the device belongs to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The name of the device. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPlanArn" /></td>
+    <td><CopyableCode code="edge_deployment_plan_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the edge deployment plan. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z\-&#93;*:\d&#123;12&#125;:edge-deployment/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPlanName" /></td>
+    <td><CopyableCode code="edge_deployment_plan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the edge deployment plan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StageName" /></td>
+    <td><CopyableCode code="stage_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stage in the edge deployment plan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -169,17 +169,17 @@ Lists devices allocated to the stage, containing detailed device information and
 
 ```sql
 SELECT
-DeployedStageName,
-DeploymentStartTime,
-Description,
-DeviceArn,
-DeviceDeploymentStatus,
-DeviceDeploymentStatusMessage,
-DeviceFleetName,
-DeviceName,
-EdgeDeploymentPlanArn,
-EdgeDeploymentPlanName,
-StageName
+deployed_stage_name,
+deployment_start_time,
+description,
+device_arn,
+device_deployment_status,
+device_deployment_status_message,
+device_fleet_name,
+device_name,
+edge_deployment_plan_arn,
+edge_deployment_plan_name,
+stage_name
 FROM aws.sagemaker.stage_devices
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was created.</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incrementalRunConfig" /></td>
+    <td><CopyableCode code="incremental_run_config" /></td>
     <td><code>object</code></td>
     <td>Optional. An object that defines the incremental run type. This object contains only the incrementalRunType field, which appears as "Automatic" in the console. For workflows where resolutionType is ML_MATCHING or PROVIDER, incremental processing is not supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputSourceConfig" /></td>
+    <td><CopyableCode code="input_source_config" /></td>
     <td><code>array</code></td>
     <td>A list of InputSource objects, which have the fields InputSourceARN and SchemaName.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputSourceConfig" /></td>
+    <td><CopyableCode code="output_source_config" /></td>
     <td><code>array</code></td>
     <td>A list of OutputSource objects, each of which contains fields outputS3Path, applyNormalization, KMSArn, and output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolutionTechniques" /></td>
+    <td><CopyableCode code="resolution_techniques" /></td>
     <td><code>object</code></td>
     <td>An object which defines the resolutionType and the ruleBasedProperties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role. Entity Resolution assumes this role to access Amazon Web Services resources on your behalf.</td>
 </tr>
@@ -91,17 +91,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the MatchingWorkflow. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(matchingworkflow/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowName" /></td>
+    <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolutionType" /></td>
+    <td><CopyableCode code="resolution_type" /></td>
     <td><code>string</code></td>
     <td>The method that has been specified for data matching, either using matching provided by Entity Resolution or through a provider service. (RULE_MATCHING, ML_MATCHING, PROVIDER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the workflow was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the MatchingWorkflow. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(matchingworkflow/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowName" /></td>
+    <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -253,17 +253,17 @@ Returns the MatchingWorkflow with a given name, if it exists.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-incrementalRunConfig,
-inputSourceConfig,
-outputSourceConfig,
-resolutionTechniques,
-roleArn,
+incremental_run_config,
+input_source_config,
+output_source_config,
+resolution_techniques,
+role_arn,
 tags,
-updatedAt,
-workflowArn,
-workflowName
+updated_at,
+workflow_arn,
+workflow_name
 FROM aws.entityresolution.matching_workflows
 WHERE workflow_name = '{{ workflow_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -276,11 +276,11 @@ Returns a list of all the MatchingWorkflows that have been created for an Amazon
 
 ```sql
 SELECT
-createdAt,
-resolutionType,
-updatedAt,
-workflowArn,
-workflowName
+created_at,
+resolution_type,
+updated_at,
+workflow_arn,
+workflow_name
 FROM aws.entityresolution.matching_workflows
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -328,13 +328,13 @@ SELECT
 '{{ region }}'
 RETURNING
 description,
-incrementalRunConfig,
-inputSourceConfig,
-outputSourceConfig,
-resolutionTechniques,
-roleArn,
-workflowArn,
-workflowName
+incremental_run_config,
+input_source_config,
+output_source_config,
+resolution_techniques,
+role_arn,
+workflow_arn,
+workflow_name
 ;
 ```
 </TabItem>
@@ -431,12 +431,12 @@ AND resolutionTechniques = '{{ resolutionTechniques }}' --required
 AND roleArn = '{{ roleArn }}' --required
 RETURNING
 description,
-incrementalRunConfig,
-inputSourceConfig,
-outputSourceConfig,
-resolutionTechniques,
-roleArn,
-workflowName;
+incremental_run_config,
+input_source_config,
+output_source_config,
+resolution_techniques,
+role_arn,
+workflow_name;
 ```
 </TabItem>
 </Tabs>

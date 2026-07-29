@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the worker configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the worker configuration was created.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the worker configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestRevision" /></td>
+    <td><CopyableCode code="latest_revision" /></td>
     <td><code>object</code></td>
     <td>The latest revision of the custom configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerConfigurationArn" /></td>
+    <td><CopyableCode code="worker_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerConfigurationState" /></td>
+    <td><CopyableCode code="worker_configuration_state" /></td>
     <td><code>string</code></td>
     <td>The state of the worker configuration. (ACTIVE, DELETING)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the worker configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that a worker configuration was created.</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a worker configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestRevision" /></td>
+    <td><CopyableCode code="latest_revision" /></td>
     <td><code>object</code></td>
     <td>The latest revision of a worker configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerConfigurationArn" /></td>
+    <td><CopyableCode code="worker_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the worker configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerConfigurationState" /></td>
+    <td><CopyableCode code="worker_configuration_state" /></td>
     <td><code>string</code></td>
     <td>The state of the worker configuration. (ACTIVE, DELETING)</td>
 </tr>
@@ -232,11 +232,11 @@ Returns information about a worker configuration.
 ```sql
 SELECT
 name,
-creationTime,
+creation_time,
 description,
-latestRevision,
-workerConfigurationArn,
-workerConfigurationState
+latest_revision,
+worker_configuration_arn,
+worker_configuration_state
 FROM aws.kafkaconnect.worker_configurations
 WHERE worker_configuration_arn = '{{ worker_configuration_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -250,11 +250,11 @@ Returns a list of all of the worker configurations in this account and Region.
 ```sql
 SELECT
 name,
-creationTime,
+creation_time,
 description,
-latestRevision,
-workerConfigurationArn,
-workerConfigurationState
+latest_revision,
+worker_configuration_arn,
+worker_configuration_state
 FROM aws.kafkaconnect.worker_configurations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -295,10 +295,10 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-creationTime,
-latestRevision,
-workerConfigurationArn,
-workerConfigurationState
+creation_time,
+latest_revision,
+worker_configuration_arn,
+worker_configuration_state
 ;
 ```
 </TabItem>

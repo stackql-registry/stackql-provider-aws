@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedAllVPCs" /></td>
+    <td><CopyableCode code="allowed_all_vpcs" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether all VPCs in the grantee account are allowed access to the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllowedVPCs" /></td>
+    <td><CopyableCode code="allowed_vpcs" /></td>
     <td><code>string</code></td>
     <td>The VPCs allowed access to the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizeTime" /></td>
+    <td><CopyableCode code="authorize_time" /></td>
     <td><code>string</code></td>
     <td>The time (UTC) when the authorization was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The cluster identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterStatus" /></td>
+    <td><CopyableCode code="cluster_status" /></td>
     <td><code>string</code></td>
     <td>The status of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointCount" /></td>
+    <td><CopyableCode code="endpoint_count" /></td>
     <td><code>integer</code></td>
     <td>The number of Redshift-managed VPC endpoints created for the authorization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Grantee" /></td>
+    <td><CopyableCode code="grantee" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the grantee of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Grantor" /></td>
+    <td><CopyableCode code="grantor" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the cluster owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the authorization action.</td>
 </tr>
@@ -184,15 +184,15 @@ Describes an endpoint authorization.
 
 ```sql
 SELECT
-AllowedAllVPCs,
-AllowedVPCs,
-AuthorizeTime,
-ClusterIdentifier,
-ClusterStatus,
-EndpointCount,
-Grantee,
-Grantor,
-Status
+allowed_all_vpcs,
+allowed_vpcs,
+authorize_time,
+cluster_identifier,
+cluster_status,
+endpoint_count,
+grantee,
+grantor,
+status
 FROM aws.redshift.endpoint_authorizations
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'

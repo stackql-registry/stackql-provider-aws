@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The JSON policy document that represents the dashboard's resource-based policy. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dashboard for which the resource-based policy was retrieved. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:bcm-dashboards::&#91;0-9&#93;&#123;12&#125;:dashboard/(\*|&#91;-a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the resource-based policy attached to a dashboard, showing sharing con
 
 ```sql
 SELECT
-policyDocument,
-resourceArn
+policy_document,
+resource_arn
 FROM aws.bcm_dashboards.resource_policies
 WHERE region = '{{ region }}' -- required
 ;

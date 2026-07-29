@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveOperationArn" /></td>
+    <td><CopyableCode code="active_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies a cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>Cluster Type. (PROVISIONED, SERVERLESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The current version of the MSK cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Provisioned" /></td>
+    <td><CopyableCode code="provisioned" /></td>
     <td><code>object</code></td>
     <td>Information about the provisioned cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Serverless" /></td>
+    <td><CopyableCode code="serverless" /></td>
     <td><code>object</code></td>
     <td>Information about the serverless cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the cluster. The possible states are ACTIVE, CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and UPDATING. (ACTIVE, CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateInfo" /></td>
+    <td><CopyableCode code="state_info" /></td>
     <td><code>object</code></td>
     <td>State Info for the Amazon MSK cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags attached to the cluster.</td>
 </tr>
@@ -181,17 +181,17 @@ Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is spe
 
 ```sql
 SELECT
-ActiveOperationArn,
-ClusterArn,
-ClusterName,
-ClusterType,
-CreationTime,
-CurrentVersion,
-Provisioned,
-Serverless,
-State,
-StateInfo,
-Tags
+active_operation_arn,
+cluster_arn,
+cluster_name,
+cluster_type,
+creation_time,
+current_version,
+provisioned,
+serverless,
+state,
+state_info,
+tags
 FROM aws.kafka.cluster_v2s
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,10 +229,10 @@ SELECT
 '{{ Serverless }}',
 '{{ region }}'
 RETURNING
-ClusterArn,
-ClusterName,
-ClusterType,
-State
+cluster_arn,
+cluster_name,
+cluster_type,
+state
 ;
 ```
 </TabItem>

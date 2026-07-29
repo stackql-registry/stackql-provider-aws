@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProgressUpdateStreamName" /></td>
+    <td><CopyableCode code="progress_update_stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the ProgressUpdateStream. Do not store personal data in this field. (pattern: &lt;code&gt;&#91;^/:|\000-\037&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Lists progress update streams associated with the user account making this call.
 
 ```sql
 SELECT
-ProgressUpdateStreamName
+progress_update_stream_name
 FROM aws.mgh.progress_update_streams
 WHERE region = '{{ region }}' -- required
 ;

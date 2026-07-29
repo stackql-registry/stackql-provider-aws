@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeniedReasons" /></td>
+    <td><CopyableCode code="denied_reasons" /></td>
     <td><code>array</code></td>
     <td>An array of RegistrationDeniedReasonInformation objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Feedback" /></td>
+    <td><CopyableCode code="feedback" /></td>
     <td><code>string</code></td>
     <td>Generative AI feedback information provided during the registration review process. This includes comments, suggestions, or additional requirements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationVersionStatus" /></td>
+    <td><CopyableCode code="registration_version_status" /></td>
     <td><code>string</code></td>
     <td>The status of the registration. APPROVED: Your registration has been approved. ARCHIVED: Your previously approved registration version moves into this status when a more recently submitted version is approved. DENIED: You must fix your registration and resubmit it. DISCARDED: You've abandon this version of their registration to start over with a new version. DRAFT: The initial status of a registration version after it’s created. REQUIRES_AUTHENTICATION: You need to complete email authentication. REVIEWING: Your registration has been accepted and is being reviewed. REVOKED: Your previously approved registration has been revoked. SUBMITTED: Your registration has been submitted. (DRAFT, SUBMITTED, AWS_REVIEWING, REVIEWING, REQUIRES_AUTHENTICATION, APPROVED, DISCARDED, DENIED, REVOKED, ARCHIVED, REQUIRES_OFFLINE_REVIEW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationVersionStatusHistory" /></td>
+    <td><CopyableCode code="registration_version_status_history" /></td>
     <td><code>object</code></td>
     <td>The RegistrationVersionStatusHistory object contains the time stamps for when the reservations status changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the registration.</td>
 </tr>
@@ -146,11 +146,11 @@ Retrieves the specified registration version.
 
 ```sql
 SELECT
-DeniedReasons,
-Feedback,
-RegistrationVersionStatus,
-RegistrationVersionStatusHistory,
-VersionNumber
+denied_reasons,
+feedback,
+registration_version_status,
+registration_version_status_history,
+version_number
 FROM aws.pinpoint_sms_voice_v2.registration_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,11 +181,11 @@ SELECT
 '{{ RegistrationId }}' /* required */,
 '{{ region }}'
 RETURNING
-RegistrationArn,
-RegistrationId,
-RegistrationVersionStatus,
-RegistrationVersionStatusHistory,
-VersionNumber
+registration_arn,
+registration_id,
+registration_version_status,
+registration_version_status_history,
+version_number
 ;
 ```
 </TabItem>

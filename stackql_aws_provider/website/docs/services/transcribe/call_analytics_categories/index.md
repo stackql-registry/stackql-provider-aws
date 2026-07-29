@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CategoryName" /></td>
+    <td><CopyableCode code="category_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Call Analytics category. Category names are case sensitive and must be unique within an Amazon Web Services account. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified Call Analytics category was created. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.761000-07:00 represents 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputType" /></td>
+    <td><CopyableCode code="input_type" /></td>
     <td><code>string</code></td>
     <td>The input type associated with the specified category. POST_CALL refers to a category that is applied to batch transcriptions; REAL_TIME refers to a category that is applied to streaming transcriptions. (REAL_TIME, POST_CALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified Call Analytics category was last updated. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-05T12:45:32.691000-07:00 represents 12:45 PM UTC-7 on May 5, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>The rules used to define a Call Analytics category. Each category can have between 1 and 20 rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags, each in the form of a key:value pair, assigned to the specified call analytics category.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Categories" /></td>
+    <td><CopyableCode code="categories" /></td>
     <td><code>array</code></td>
     <td>Provides detailed information about your Call Analytics categories, including all the rules associated with each category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If NextToken is present in your response, it indicates that not all results are displayed. To view the next set of results, copy the string associated with the NextToken parameter in your results output, then run your request again including NextToken with the value of the copied string. Repeat as needed to view all your results. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -198,12 +198,12 @@ Provides information about the specified Call Analytics category. To get a list 
 
 ```sql
 SELECT
-CategoryName,
-CreateTime,
-InputType,
-LastUpdateTime,
-Rules,
-Tags
+category_name,
+create_time,
+input_type,
+last_update_time,
+rules,
+tags
 FROM aws.transcribe.call_analytics_categories
 WHERE region = '{{ region }}' -- required
 ;
@@ -215,8 +215,8 @@ Provides a list of Call Analytics categories, including all rules that make up e
 
 ```sql
 SELECT
-Categories,
-NextToken
+categories,
+next_token
 FROM aws.transcribe.call_analytics_categories
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,7 +253,7 @@ SELECT
 '{{ InputType }}',
 '{{ region }}'
 RETURNING
-CategoryProperties
+category_properties
 ;
 ```
 </TabItem>
@@ -371,7 +371,7 @@ region = '{{ region }}' --required
 AND CategoryName = '{{ CategoryName }}' --required
 AND Rules = '{{ Rules }}' --required
 RETURNING
-CategoryProperties;
+category_properties;
 ```
 </TabItem>
 </Tabs>

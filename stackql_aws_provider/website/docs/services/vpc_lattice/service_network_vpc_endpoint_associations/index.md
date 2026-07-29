@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:servicenetwork/sn-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -70,17 +70,17 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint associated with the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointOwnerId" /></td>
+    <td><CopyableCode code="vpc_endpoint_owner_id" /></td>
     <td><code>string</code></td>
     <td>The owner of the VPC endpoint associated with the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the association.</td>
 </tr>
@@ -165,12 +165,12 @@ Lists the associations between a service network and a VPC endpoint.
 ```sql
 SELECT
 id,
-createdAt,
-serviceNetworkArn,
+created_at,
+service_network_arn,
 state,
-vpcEndpointId,
-vpcEndpointOwnerId,
-vpcId
+vpc_endpoint_id,
+vpc_endpoint_owner_id,
+vpc_id
 FROM aws.vpc_lattice.service_network_vpc_endpoint_associations
 WHERE serviceNetworkIdentifier = '{{ serviceNetworkIdentifier }}' -- required
 AND region = '{{ region }}' -- required

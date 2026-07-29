@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the WorkSpace image import was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>Describes in-depth details about the error. These details include the possible causes of the error and troubleshooting information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageBuilderInstanceId" /></td>
+    <td><CopyableCode code="image_builder_instance_id" /></td>
     <td><code>string</code></td>
     <td>The image builder instance ID of the WorkSpace image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the WorkSpace image. (pattern: &lt;code&gt;wsi-&#91;0-9a-z&#93;&#123;9,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageSource" /></td>
+    <td><CopyableCode code="image_source" /></td>
     <td><code>object</code></td>
     <td>Describes the image import source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InfrastructureConfigurationArn" /></td>
+    <td><CopyableCode code="infrastructure_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The infrastructure configuration ARN that specifies how the WorkSpace image is built. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws):infrastructure-configuration/&#91;a-z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the WorkSpace image import was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressPercentage" /></td>
+    <td><CopyableCode code="progress_percentage" /></td>
     <td><code>integer</code></td>
     <td>The estimated progress percentage of the WorkSpace image import workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the WorkSpace image. (PENDING, IN_PROGRESS, PROCESSING_SOURCE_IMAGE, IMAGE_TESTING_START, UPDATING_OPERATING_SYSTEM, IMAGE_COMPATIBILITY_CHECKING, IMAGE_TESTING_GENERALIZATION, CREATING_TEST_INSTANCE, INSTALLING_COMPONENTS, GENERALIZING, VALIDATING, PUBLISHING, COMPLETED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>The state message of the WorkSpace image import workflow.</td>
 </tr>
@@ -164,16 +164,16 @@ Retrieves information about a WorkSpace BYOL image being imported via ImportCust
 
 ```sql
 SELECT
-Created,
-ErrorDetails,
-ImageBuilderInstanceId,
-ImageId,
-ImageSource,
-InfrastructureConfigurationArn,
-LastUpdatedTime,
-ProgressPercentage,
-State,
-StateMessage
+created,
+error_details,
+image_builder_instance_id,
+image_id,
+image_source,
+infrastructure_configuration_arn,
+last_updated_time,
+progress_percentage,
+state,
+state_message
 FROM aws.workspaces.custom_workspace_image_imports
 WHERE region = '{{ region }}' -- required
 ;

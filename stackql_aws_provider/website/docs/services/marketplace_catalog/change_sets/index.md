@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeSet" /></td>
+    <td><CopyableCode code="change_set" /></td>
     <td><code>array</code></td>
     <td>An array of ChangeSummary objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetArn" /></td>
+    <td><CopyableCode code="change_set_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN associated with the unique identifier for the change set referenced in this request. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:*/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetId" /></td>
+    <td><CopyableCode code="change_set_id" /></td>
     <td><code>string</code></td>
     <td>Required. The unique identifier for the change set referenced in this request. (pattern: &lt;code&gt;^&#91;\w\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetName" /></td>
+    <td><CopyableCode code="change_set_name" /></td>
     <td><code>string</code></td>
     <td>The optional name provided in the StartChangeSet request. If you do not provide a name, one is set by default. (pattern: &lt;code&gt;^&#91;\w\s+=.:@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request transitioned to a terminal state. The change cannot transition to a different state. Null if the request is not in a terminal state. (pattern: &lt;code&gt;^(&#91;\d&#93;&#123;4&#125;)\-(1&#91;0-2&#93;|0&#91;1-9&#93;)\-(3&#91;01&#93;|0&#91;1-9&#93;|&#91;12&#93;&#91;\d&#93;)T(2&#91;0-3&#93;|&#91;01&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;)Z$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>Returned if the change set is in FAILED status. Can be either CLIENT_ERROR, which means that there are issues with the request (see the ErrorDetailList), or SERVER_FAULT, which means that there is a problem in the system, and you should retry your request. (CLIENT_ERROR, SERVER_FAULT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureDescription" /></td>
+    <td><CopyableCode code="failure_description" /></td>
     <td><code>string</code></td>
     <td>Returned if there is a failure on the change set, but that failure is not related to any of the changes in the request. (pattern: &lt;code&gt;^(.)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Intent" /></td>
+    <td><CopyableCode code="intent" /></td>
     <td><code>string</code></td>
     <td>The optional intent provided in the StartChangeSet request. If you do not provide an intent, APPLY is set by default. (VALIDATE, APPLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request started. (pattern: &lt;code&gt;^(&#91;\d&#93;&#123;4&#125;)\-(1&#91;0-2&#93;|0&#91;1-9&#93;)\-(3&#91;01&#93;|0&#91;1-9&#93;|&#91;12&#93;&#91;\d&#93;)T(2&#91;0-3&#93;|&#91;01&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;)Z$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the change request. (PREPARING, APPLYING, SUCCEEDED, CANCELLED, FAILED)</td>
 </tr>
@@ -115,42 +115,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeSetArn" /></td>
+    <td><CopyableCode code="change_set_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN associated with the unique identifier for the change set referenced in this request. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:*/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetId" /></td>
+    <td><CopyableCode code="change_set_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for a change set. (pattern: &lt;code&gt;^&#91;\w\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetName" /></td>
+    <td><CopyableCode code="change_set_name" /></td>
     <td><code>string</code></td>
     <td>The non-unique name for the change set. (pattern: &lt;code&gt;^&#91;\w\s+=.:@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The time, in ISO 8601 format (2018-02-27T13:45:22Z), when the change set was finished. (pattern: &lt;code&gt;^(&#91;\d&#93;&#123;4&#125;)\-(1&#91;0-2&#93;|0&#91;1-9&#93;)\-(3&#91;01&#93;|0&#91;1-9&#93;|&#91;12&#93;&#91;\d&#93;)T(2&#91;0-3&#93;|&#91;01&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;)Z$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityIdList" /></td>
+    <td><CopyableCode code="entity_id_list" /></td>
     <td><code>array</code></td>
     <td>This object is a list of entity IDs (string) that are a part of a change set. The entity ID list is a maximum of 20 entities. It must contain at least one entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>Returned if the change set is in FAILED status. Can be either CLIENT_ERROR, which means that there are issues with the request (see the ErrorDetailList of DescribeChangeSet), or SERVER_FAULT, which means that there is a problem in the system, and you should retry your request. (CLIENT_ERROR, SERVER_FAULT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time, in ISO 8601 format (2018-02-27T13:45:22Z), when the change set was started. (pattern: &lt;code&gt;^(&#91;\d&#93;&#123;4&#125;)\-(1&#91;0-2&#93;|0&#91;1-9&#93;)\-(3&#91;01&#93;|0&#91;1-9&#93;|&#91;12&#93;&#91;\d&#93;)T(2&#91;0-3&#93;|&#91;01&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;):(&#91;0-5&#93;&#91;\d&#93;)Z$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the change set. (PREPARING, APPLYING, SUCCEEDED, CANCELLED, FAILED)</td>
 </tr>
@@ -237,16 +237,16 @@ Provides information about a given change set.
 
 ```sql
 SELECT
-ChangeSet,
-ChangeSetArn,
-ChangeSetId,
-ChangeSetName,
-EndTime,
-FailureCode,
-FailureDescription,
-Intent,
-StartTime,
-Status
+change_set,
+change_set_arn,
+change_set_id,
+change_set_name,
+end_time,
+failure_code,
+failure_description,
+intent,
+start_time,
+status
 FROM aws.marketplace_catalog.change_sets
 WHERE catalog = '{{ catalog }}' -- required
 AND changeSetId = '{{ changeSetId }}' -- required
@@ -260,14 +260,14 @@ Returns the list of change sets owned by the account being used to make the call
 
 ```sql
 SELECT
-ChangeSetArn,
-ChangeSetId,
-ChangeSetName,
-EndTime,
-EntityIdList,
-FailureCode,
-StartTime,
-Status
+change_set_arn,
+change_set_id,
+change_set_name,
+end_time,
+entity_id_list,
+failure_code,
+start_time,
+status
 FROM aws.marketplace_catalog.change_sets
 WHERE region = '{{ region }}' -- required
 ;

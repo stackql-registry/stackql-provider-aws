@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiId" /></td>
+    <td><CopyableCode code="ami_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AMI that is being stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Bucket" /></td>
+    <td><CopyableCode code="bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket that contains the stored AMI object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressPercentage" /></td>
+    <td><CopyableCode code="progress_percentage" /></td>
     <td><code>integer</code></td>
     <td>The progress of the task as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3objectKey" /></td>
+    <td><CopyableCode code="s3object_key" /></td>
     <td><code>string</code></td>
     <td>The name of the stored AMI object in the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoreTaskFailureReason" /></td>
+    <td><CopyableCode code="store_task_failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the tasks fails, the reason for the failure is returned. If the task succeeds, null is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoreTaskState" /></td>
+    <td><CopyableCode code="store_task_state" /></td>
     <td><code>string</code></td>
     <td>The state of the store task (InProgress, Completed, or Failed).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskStartTime" /></td>
+    <td><CopyableCode code="task_start_time" /></td>
     <td><code>string</code></td>
     <td>The time the task started.</td>
 </tr>
@@ -196,13 +196,13 @@ Describes the progress of the AMI store tasks. You can describe the store tasks 
 
 ```sql
 SELECT
-AmiId,
-Bucket,
-ProgressPercentage,
-S3objectKey,
-StoreTaskFailureReason,
-StoreTaskState,
-TaskStartTime
+ami_id,
+bucket,
+progress_percentage,
+s3object_key,
+store_task_failure_reason,
+store_task_state,
+task_start_time
 FROM aws.ec2.store_image_tasks
 WHERE region = '{{ region }}' -- required
 AND ImageId = '{{ ImageId }}'
@@ -244,7 +244,7 @@ SELECT
 '{{ S3ObjectTag }}',
 '{{ DryRun }}'
 RETURNING
-ObjectKey
+object_key
 ;
 ```
 </TabItem>

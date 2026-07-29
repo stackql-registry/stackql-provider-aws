@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="QuerySuggestionsId" /></td>
+    <td><CopyableCode code="query_suggestions_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a list of query suggestions for an index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Suggestions" /></td>
+    <td><CopyableCode code="suggestions" /></td>
     <td><code>array</code></td>
     <td>A list of query suggestions for an index.</td>
 </tr>
@@ -131,8 +131,8 @@ Fetches the queries that are suggested to your users. GetQuerySuggestions is cur
 
 ```sql
 SELECT
-QuerySuggestionsId,
-Suggestions
+query_suggestions_id,
+suggestions
 FROM aws.kendra.query_suggestions
 WHERE region = '{{ region }}' -- required
 ;

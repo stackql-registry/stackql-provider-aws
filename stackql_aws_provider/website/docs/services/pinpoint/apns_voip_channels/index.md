@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the APNs VoIP channel applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the APNs VoIP channel was enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultAuthenticationMethod" /></td>
+    <td><CopyableCode code="default_authentication_method" /></td>
     <td><code>string</code></td>
     <td>The default authentication method that Amazon Pinpoint uses to authenticate with APNs for this channel, key or certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the APNs VoIP channel is enabled for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasCredential" /></td>
+    <td><CopyableCode code="has_credential" /></td>
     <td><code>boolean</code></td>
     <td>(Not used) This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasTokenKey" /></td>
+    <td><CopyableCode code="has_token_key" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the APNs VoIP channel is configured to communicate with APNs by using APNs tokens. To provide an authentication key for APNs tokens, set the TokenKey property of the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) An identifier for the APNs VoIP channel. This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the APNs VoIP channel is archived.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The user who last modified the APNs VoIP channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the APNs VoIP channel was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The type of messaging or notification platform for the channel. For the APNs VoIP channel, this value is APNS_VOIP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The current version of the APNs VoIP channel.</td>
 </tr>
@@ -193,18 +193,18 @@ Retrieves information about the status and settings of the APNs VoIP channel for
 
 ```sql
 SELECT
-ApplicationId,
-CreationDate,
-DefaultAuthenticationMethod,
-Enabled,
-HasCredential,
-HasTokenKey,
-Id,
-IsArchived,
-LastModifiedBy,
-LastModifiedDate,
-Platform,
-Version
+application_id,
+creation_date,
+default_authentication_method,
+enabled,
+has_credential,
+has_token_key,
+id,
+is_archived,
+last_modified_by,
+last_modified_date,
+platform,
+version
 FROM aws.pinpoint.apns_voip_channels
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -235,7 +235,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND APNSVoipChannelRequest = '{{ APNSVoipChannelRequest }}' --required
 RETURNING
-APNSVoipChannelResponse;
+apns_voip_channel_response;
 ```
 </TabItem>
 </Tabs>

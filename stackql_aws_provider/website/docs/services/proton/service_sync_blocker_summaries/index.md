@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="latestBlockers" /></td>
+    <td><CopyableCode code="latest_blockers" /></td>
     <td><code>array</code></td>
     <td>The latest active blockers for the synced service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceInstanceName" /></td>
+    <td><CopyableCode code="service_instance_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service instance that you want sync your service configuration with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service that you want to get the sync blocker summary for. If given a service instance name and a service name, it will return the blockers only applying to the instance that is blocked. If given only a service name, it will return the blockers that apply to all of the instances. In order to get the blockers for a single instance, you will need to make two distinct calls, one to get the sync blocker summary for the service and the other to get the sync blocker for the service instance.</td>
 </tr>
@@ -129,9 +129,9 @@ Get detailed data for the service sync blocker summary.
 
 ```sql
 SELECT
-latestBlockers,
-serviceInstanceName,
-serviceName
+latest_blockers,
+service_instance_name,
+service_name
 FROM aws.proton.service_sync_blocker_summaries
 WHERE region = '{{ region }}' -- required
 ;

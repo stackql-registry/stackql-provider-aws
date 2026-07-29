@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the availability zones. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The list of Managed kdb clusters that are currently active in the given scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the scaling group was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostType" /></td>
+    <td><CopyableCode code="host_type" /></td>
     <td><code>string</code></td>
     <td>The memory and CPU capabilities of the scaling group host on which FinSpace Managed kdb clusters will be placed. It can have one of the following values: kx.sg.large – The host type with a configuration of 16 GiB memory and 2 vCPUs. kx.sg.xlarge – The host type with a configuration of 32 GiB memory and 4 vCPUs. kx.sg.2xlarge – The host type with a configuration of 64 GiB memory and 8 vCPUs. kx.sg.4xlarge – The host type with a configuration of 108 GiB memory and 16 vCPUs. kx.sg.8xlarge – The host type with a configuration of 216 GiB memory and 32 vCPUs. kx.sg.16xlarge – The host type with a configuration of 432 GiB memory and 64 vCPUs. kx.sg.32xlarge – The host type with a configuration of 864 GiB memory and 128 vCPUs. kx.sg1.16xlarge – The host type with a configuration of 1949 GiB memory and 64 vCPUs. kx.sg1.24xlarge – The host type with a configuration of 2948 GiB memory and 96 vCPUs. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the scaling group was updated in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scalingGroupArn" /></td>
+    <td><CopyableCode code="scaling_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier for the scaling group. (pattern: &lt;code&gt;^arn:*:*:*:*:*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scalingGroupName" /></td>
+    <td><CopyableCode code="scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb scaling group. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of scaling group. CREATING – The scaling group creation is in progress. CREATE_FAILED – The scaling group creation has failed. ACTIVE – The scaling group is active. UPDATING – The scaling group is in the process of being updated. UPDATE_FAILED – The update action failed. DELETING – The scaling group is in the process of being deleted. DELETE_FAILED – The system failed to delete the scaling group. DELETED – The scaling group is successfully deleted. (CREATING, CREATE_FAILED, ACTIVE, DELETING, DELETED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The error message when a failed state occurs. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-\.\s&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scalingGroups" /></td>
+    <td><CopyableCode code="scaling_groups" /></td>
     <td><code>array</code></td>
     <td>A list of scaling groups available in a kdb environment.</td>
 </tr>
@@ -231,15 +231,15 @@ Retrieves details of a scaling group.
 
 ```sql
 SELECT
-availabilityZoneId,
+availability_zone_id,
 clusters,
-createdTimestamp,
-hostType,
-lastModifiedTimestamp,
-scalingGroupArn,
-scalingGroupName,
+created_timestamp,
+host_type,
+last_modified_timestamp,
+scaling_group_arn,
+scaling_group_name,
 status,
-statusReason
+status_reason
 FROM aws.finspace.kx_scaling_groups
 WHERE environment_id = '{{ environment_id }}' -- required
 AND scaling_group_name = '{{ scaling_group_name }}' -- required
@@ -253,8 +253,8 @@ Returns a list of scaling groups in a kdb environment.
 
 ```sql
 SELECT
-nextToken,
-scalingGroups
+next_token,
+scaling_groups
 FROM aws.finspace.kx_scaling_groups
 WHERE environment_id = '{{ environment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -298,12 +298,12 @@ SELECT
 '{{ environment_id }}',
 '{{ region }}'
 RETURNING
-availabilityZoneId,
-createdTimestamp,
-environmentId,
-hostType,
-lastModifiedTimestamp,
-scalingGroupName,
+availability_zone_id,
+created_timestamp,
+environment_id,
+host_type,
+last_modified_timestamp,
+scaling_group_name,
 status
 ;
 ```

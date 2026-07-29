@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the handshake.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedResourceId" /></td>
+    <td><CopyableCode code="associated_resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource associated with the handshake. (pattern: &lt;code&gt;(pma|rs)-&#91;a-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The catalog identifier associated with the handshake. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the handshake was created.</td>
 </tr>
@@ -80,27 +80,27 @@ The following fields are returned by `SELECT` queries:
     <td>Detailed information about the handshake.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="handshakeType" /></td>
+    <td><CopyableCode code="handshake_type" /></td>
     <td><code>string</code></td>
     <td>The type of the handshake. (START_SERVICE_PERIOD, REVOKE_SERVICE_PERIOD, PROGRAM_MANAGEMENT_ACCOUNT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the handshake owner. (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="receiverAccountId" /></td>
+    <td><CopyableCode code="receiver_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the handshake receiver. (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="senderAccountId" /></td>
+    <td><CopyableCode code="sender_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the handshake sender. (pattern: &lt;code&gt;&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="senderDisplayName" /></td>
+    <td><CopyableCode code="sender_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the handshake sender. (pattern: &lt;code&gt;&#91;\x00-\x7E\xA9\xAE\xA2-\xA5\u202F&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the handshake. (PENDING, ACCEPTED, REJECTED, CANCELED, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the handshake was last updated.</td>
 </tr>
@@ -188,17 +188,17 @@ Lists channel handshakes based on specified criteria.
 SELECT
 id,
 arn,
-associatedResourceId,
+associated_resource_id,
 catalog,
-createdAt,
+created_at,
 detail,
-handshakeType,
-ownerAccountId,
-receiverAccountId,
-senderAccountId,
-senderDisplayName,
+handshake_type,
+owner_account_id,
+receiver_account_id,
+sender_account_id,
+sender_display_name,
 status,
-updatedAt
+updated_at
 FROM aws.partnercentral_channel.channel_handshakes
 WHERE region = '{{ region }}' -- required
 ;
@@ -239,7 +239,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-channelHandshakeDetail
+channel_handshake_detail
 ;
 ```
 </TabItem>

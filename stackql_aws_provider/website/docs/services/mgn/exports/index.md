@@ -55,37 +55,37 @@ The following fields are returned by `SELECT` queries:
     <td>ExportTask arn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string</code></td>
     <td>Export task creation datetime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endDateTime" /></td>
+    <td><CopyableCode code="end_date_time" /></td>
     <td><code>string</code></td>
     <td>Export task end datetime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportID" /></td>
+    <td><CopyableCode code="export_id" /></td>
     <td><code>string</code></td>
     <td>Export task id. (pattern: &lt;code&gt;export-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="progressPercentage" /></td>
+    <td><CopyableCode code="progress_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>Export task progress percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Bucket" /></td>
+    <td><CopyableCode code="s_3_bucket" /></td>
     <td><code>string</code></td>
     <td>Export task s3 bucket. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.\-_&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3BucketOwner" /></td>
+    <td><CopyableCode code="s_3_bucket_owner" /></td>
     <td><code>string</code></td>
     <td>Export task s3 bucket owner. (pattern: &lt;code&gt;.*&#91;0-9&#93;&#123;12,&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Key" /></td>
+    <td><CopyableCode code="s_3_key" /></td>
     <td><code>string</code></td>
     <td>Export task s3 key. (pattern: &lt;code&gt;&#91;^\x00&#93;&#123;1,1020&#125;\.csv&lt;/code&gt;)</td>
 </tr>
@@ -170,13 +170,13 @@ List exports.
 ```sql
 SELECT
 arn,
-creationDateTime,
-endDateTime,
-exportID,
-progressPercentage,
-s3Bucket,
-s3BucketOwner,
-s3Key,
+creation_date_time,
+end_date_time,
+export_id,
+progress_percentage,
+s_3_bucket,
+s_3_bucket_owner,
+s_3_key,
 status,
 summary,
 tags

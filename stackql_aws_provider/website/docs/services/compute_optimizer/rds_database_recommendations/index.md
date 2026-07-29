@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe errors of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of Amazon Aurora and RDS database recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rdsDBRecommendations" /></td>
+    <td><CopyableCode code="rds_db_recommendations" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the Amazon Aurora and RDS database recommendations.</td>
 </tr>
@@ -137,8 +137,8 @@ Returns Amazon Aurora and RDS database recommendations. Compute Optimizer genera
 ```sql
 SELECT
 errors,
-nextToken,
-rdsDBRecommendations
+next_token,
+rds_db_recommendations
 FROM aws.compute_optimizer.rds_database_recommendations
 WHERE region = '{{ region }}' -- required
 ;

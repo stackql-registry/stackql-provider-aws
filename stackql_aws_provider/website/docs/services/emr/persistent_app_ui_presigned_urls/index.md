@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PresignedURL" /></td>
+    <td><CopyableCode code="presigned_url" /></td>
     <td><code>string</code></td>
     <td>The returned presigned URL. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PresignedURLReady" /></td>
+    <td><CopyableCode code="presigned_url_ready" /></td>
     <td><code>boolean</code></td>
     <td>Used to determine if the presigned URL is ready.</td>
 </tr>
@@ -124,8 +124,8 @@ The presigned URL properties for the cluster's application user interface.
 
 ```sql
 SELECT
-PresignedURL,
-PresignedURLReady
+presigned_url,
+presigned_url_ready
 FROM aws.emr.persistent_app_ui_presigned_urls
 WHERE region = '{{ region }}' -- required
 ;

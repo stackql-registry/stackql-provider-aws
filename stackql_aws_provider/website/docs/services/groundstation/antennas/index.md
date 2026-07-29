@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="antennaName" /></td>
+    <td><CopyableCode code="antenna_name" /></td>
     <td><code>string</code></td>
     <td>Name of the antenna. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-._:=&#93;&#123;4,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groundStationName" /></td>
+    <td><CopyableCode code="ground_station_name" /></td>
     <td><code>string</code></td>
     <td>Name of the ground station the antenna is associated with. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-._:=&#93;&#123;4,97&#125;&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ Returns a list of antennas at a specified ground station.
 
 ```sql
 SELECT
-antennaName,
-groundStationName,
+antenna_name,
+ground_station_name,
 region
 FROM aws.groundstation.antennas
 WHERE ground_station_id = '{{ ground_station_id }}' -- required

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnomalyEndDate" /></td>
+    <td><CopyableCode code="anomaly_end_date" /></td>
     <td><code>string</code></td>
     <td>The last day the anomaly is detected. (pattern: &lt;code&gt;(\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;)(T\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;Z)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnomalyId" /></td>
+    <td><CopyableCode code="anomaly_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the anomaly. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnomalyScore" /></td>
+    <td><CopyableCode code="anomaly_score" /></td>
     <td><code>object</code></td>
     <td>The latest and maximum score for the anomaly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnomalyStartDate" /></td>
+    <td><CopyableCode code="anomaly_start_date" /></td>
     <td><code>string</code></td>
     <td>The first day the anomaly is detected. (pattern: &lt;code&gt;(\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;)(T\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;Z)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DimensionValue" /></td>
+    <td><CopyableCode code="dimension_value" /></td>
     <td><code>string</code></td>
     <td>The dimension for the anomaly (for example, an Amazon Web Services service in a service monitor). (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Feedback" /></td>
+    <td><CopyableCode code="feedback" /></td>
     <td><code>string</code></td>
     <td>The feedback value. (YES, NO, PLANNED_ACTIVITY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Impact" /></td>
+    <td><CopyableCode code="impact" /></td>
     <td><code>object</code></td>
     <td>The dollar impact for the anomaly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the cost monitor that generated this anomaly. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootCauses" /></td>
+    <td><CopyableCode code="root_causes" /></td>
     <td><code>array</code></td>
     <td>The list of identified root causes for the anomaly.</td>
 </tr>
@@ -166,15 +166,15 @@ Retrieves all of the cost anomalies detected on your account during the time per
 
 ```sql
 SELECT
-AnomalyEndDate,
-AnomalyId,
-AnomalyScore,
-AnomalyStartDate,
-DimensionValue,
-Feedback,
-Impact,
-MonitorArn,
-RootCauses
+anomaly_end_date,
+anomaly_id,
+anomaly_score,
+anomaly_start_date,
+dimension_value,
+feedback,
+impact,
+monitor_arn,
+root_causes
 FROM aws.ce.anomalies
 WHERE region = '{{ region }}' -- required
 ;

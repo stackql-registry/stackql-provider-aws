@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time the transit gateway multicast domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>The options for the transit gateway multicast domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the transit gateway multicast domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway multicast domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the transit gateway multicast domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayMulticastDomainArn" /></td>
+    <td><CopyableCode code="transit_gateway_multicast_domain_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the transit gateway multicast domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayMulticastDomainId" /></td>
+    <td><CopyableCode code="transit_gateway_multicast_domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway multicast domain.</td>
 </tr>
@@ -237,14 +237,14 @@ Describes one or more transit gateway multicast domains.
 
 ```sql
 SELECT
-CreationTime,
-Options,
-OwnerId,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayMulticastDomainArn,
-TransitGatewayMulticastDomainId
+creation_time,
+options,
+owner_id,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_multicast_domain_arn,
+transit_gateway_multicast_domain_id
 FROM aws.ec2.transit_gateway_multicast_domains
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayMulticastDomainIds = '{{ TransitGatewayMulticastDomainIds }}'
@@ -286,14 +286,14 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-CreationTime,
-Options,
-OwnerId,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayMulticastDomainArn,
-TransitGatewayMulticastDomainId
+creation_time,
+options,
+owner_id,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_multicast_domain_arn,
+transit_gateway_multicast_domain_id
 ;
 ```
 </TabItem>
@@ -349,12 +349,12 @@ AND SubnetIds = '{{ SubnetIds }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-ResourceId,
-ResourceOwnerId,
-ResourceType,
-Subnets,
-TransitGatewayAttachmentId,
-TransitGatewayMulticastDomainId;
+resource_id,
+resource_owner_id,
+resource_type,
+subnets,
+transit_gateway_attachment_id,
+transit_gateway_multicast_domain_id;
 ```
 </TabItem>
 </Tabs>

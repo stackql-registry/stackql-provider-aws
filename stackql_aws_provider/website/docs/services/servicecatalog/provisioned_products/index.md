@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudWatchDashboards" /></td>
+    <td><CopyableCode code="cloud_watch_dashboards" /></td>
     <td><code>array</code></td>
     <td>Any CloudWatch dashboards that were created when provisioning the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionedProductDetail" /></td>
+    <td><CopyableCode code="provisioned_product_detail" /></td>
     <td><code>object</code></td>
     <td>Information about the provisioned product.</td>
 </tr>
@@ -166,8 +166,8 @@ Gets information about the specified provisioned product.
 
 ```sql
 SELECT
-CloudWatchDashboards,
-ProvisionedProductDetail
+cloud_watch_dashboards,
+provisioned_product_detail
 FROM aws.servicecatalog.provisioned_products
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,10 +202,10 @@ AND ProvisionedProductId = '{{ ProvisionedProductId }}' --required
 AND ProvisionedProductProperties = '{{ ProvisionedProductProperties }}' --required
 AND IdempotencyToken = '{{ IdempotencyToken }}' --required
 RETURNING
-ProvisionedProductId,
-ProvisionedProductProperties,
-RecordId,
-Status;
+provisioned_product_id,
+provisioned_product_properties,
+record_id,
+status;
 ```
 </TabItem>
 <TabItem value="update_provisioned_product">
@@ -232,7 +232,7 @@ WHERE
 region = '{{ region }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-RecordDetail;
+record_detail;
 ```
 </TabItem>
 </Tabs>

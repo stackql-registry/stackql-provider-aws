@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the domain. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:voiceid.+:&#91;0-9&#93;&#123;12&#125;:domain/&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the domain. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainStatus" /></td>
+    <td><CopyableCode code="domain_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the domain. (ACTIVE, PENDING, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The server-side encryption configuration containing the KMS key identifier you want Voice ID to use to encrypt your data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideEncryptionUpdateDetails" /></td>
+    <td><CopyableCode code="server_side_encryption_update_details" /></td>
     <td><code>object</code></td>
     <td>Details about the most recent server-side encryption configuration update. When the server-side encryption configuration is changed, dependency on the old KMS key is removed through an asynchronous process. When this update is complete, the domain's data can only be accessed using the new KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was last update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WatchlistDetails" /></td>
+    <td><CopyableCode code="watchlist_details" /></td>
     <td><code>object</code></td>
     <td>The watchlist details of a domain. Contains the default watchlist ID of the domain.</td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the domain. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:voiceid.+:&#91;0-9&#93;&#123;12&#125;:domain/&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the domain. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainStatus" /></td>
+    <td><CopyableCode code="domain_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the domain. (ACTIVE, PENDING, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The client-provided name for the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The server-side encryption configuration containing the KMS key identifier you want Voice ID to use to encrypt your data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideEncryptionUpdateDetails" /></td>
+    <td><CopyableCode code="server_side_encryption_update_details" /></td>
     <td><code>object</code></td>
     <td>Details about the most recent server-side encryption configuration update. When the server-side encryption configuration is changed, dependency on the old KMS key is removed through an asynchronous process. When this update is complete, the domain's data can only be accessed using the new KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WatchlistDetails" /></td>
+    <td><CopyableCode code="watchlist_details" /></td>
     <td><code>object</code></td>
     <td>Provides information about watchlistDetails and DefaultWatchlistID.</td>
 </tr>
@@ -265,16 +265,16 @@ Describes the specified domain.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-DomainId,
-DomainStatus,
-Name,
-ServerSideEncryptionConfiguration,
-ServerSideEncryptionUpdateDetails,
-UpdatedAt,
-WatchlistDetails
+arn,
+created_at,
+description,
+domain_id,
+domain_status,
+name,
+server_side_encryption_configuration,
+server_side_encryption_update_details,
+updated_at,
+watchlist_details
 FROM aws.voice_id.domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,16 +286,16 @@ Lists all the domains in the Amazon Web Services account.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-DomainId,
-DomainStatus,
-Name,
-ServerSideEncryptionConfiguration,
-ServerSideEncryptionUpdateDetails,
-UpdatedAt,
-WatchlistDetails
+arn,
+created_at,
+description,
+domain_id,
+domain_status,
+name,
+server_side_encryption_configuration,
+server_side_encryption_update_details,
+updated_at,
+watchlist_details
 FROM aws.voice_id.domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -334,7 +334,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Domain
+domain
 ;
 ```
 </TabItem>
@@ -399,7 +399,7 @@ region = '{{ region }}' --required
 AND DomainId = '{{ DomainId }}' --required
 AND ServerSideEncryptionConfiguration = '{{ ServerSideEncryptionConfiguration }}' --required
 RETURNING
-Domain;
+domain;
 ```
 </TabItem>
 </Tabs>

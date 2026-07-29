@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivityId" /></td>
+    <td><CopyableCode code="activity_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupARN" /></td>
+    <td><CopyableCode code="auto_scaling_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupState" /></td>
+    <td><CopyableCode code="auto_scaling_group_state" /></td>
     <td><code>string</code></td>
     <td>The state of the Auto Scaling group, which is either InService or Deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Cause" /></td>
+    <td><CopyableCode code="cause" /></td>
     <td><code>string</code></td>
     <td>The reason the activity began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A friendly, more verbose description of the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Details" /></td>
+    <td><CopyableCode code="details" /></td>
     <td><code>string</code></td>
     <td>The details about the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The end time of the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>integer</code></td>
     <td>A value between 0 and 100 that indicates the progress of the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The start time of the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The current status of the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A friendly, more verbose description of the activity status.</td>
 </tr>
@@ -204,18 +204,18 @@ Gets information about the scaling activities in the account and Region. When sc
 
 ```sql
 SELECT
-ActivityId,
-AutoScalingGroupARN,
-AutoScalingGroupName,
-AutoScalingGroupState,
-Cause,
-Description,
-Details,
-EndTime,
-Progress,
-StartTime,
-StatusCode,
-StatusMessage
+activity_id,
+auto_scaling_group_arn,
+auto_scaling_group_name,
+auto_scaling_group_state,
+cause,
+description,
+details,
+end_time,
+progress,
+start_time,
+status_code,
+status_message
 FROM aws.autoscaling.scaling_activities
 WHERE region = '{{ region }}' -- required
 AND ActivityIds = '{{ ActivityIds }}'

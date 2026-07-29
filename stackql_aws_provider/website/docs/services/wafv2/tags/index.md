@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceARN" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>The array of Tag objects defined for the resource.</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves the TagInfoForResource for the specified resource. Tags are key:value 
 
 ```sql
 SELECT
-ResourceARN,
-TagList
+resource_arn,
+tag_list
 FROM aws.wafv2.tags
 WHERE region = '{{ region }}' -- required
 ;

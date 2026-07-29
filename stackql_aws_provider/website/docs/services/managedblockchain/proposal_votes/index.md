@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that indicates the next set of results to retrieve.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProposalVotes" /></td>
+    <td><CopyableCode code="proposal_votes" /></td>
     <td><code>array</code></td>
     <td>The list of votes.</td>
 </tr>
@@ -144,8 +144,8 @@ Returns the list of votes for a specified proposal, including the value of each 
 
 ```sql
 SELECT
-NextToken,
-ProposalVotes
+next_token,
+proposal_votes
 FROM aws.managedblockchain.proposal_votes
 WHERE network_id = '{{ network_id }}' -- required
 AND proposal_id = '{{ proposal_id }}' -- required

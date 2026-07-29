@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationIntegrationURL" /></td>
+    <td><CopyableCode code="application_integration_url" /></td>
     <td><code>string</code></td>
     <td>The URL to use in SDK integrations with Amazon Web Services managed rule groups. For example, you can use the integration SDKs with the account takeover prevention managed rule group AWSManagedRulesATPRuleSet and the account creation fraud prevention managed rule group AWSManagedRulesACFPRuleSet. This is only populated if you are using a rule group in your web ACL that integrates with your applications in this way. For more information, see WAF client application integration in the WAF Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockToken" /></td>
+    <td><CopyableCode code="lock_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-(?:&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebACL" /></td>
+    <td><CopyableCode code="web_acl" /></td>
     <td><code>object</code></td>
     <td>The web ACL specification. You can modify the settings in this web ACL and use it to update this web ACL or create a new one.</td>
 </tr>
@@ -164,9 +164,9 @@ Retrieves the specified WebACL.
 
 ```sql
 SELECT
-ApplicationIntegrationURL,
-LockToken,
-WebACL
+application_integration_url,
+lock_token,
+web_acl
 FROM aws.wafv2.web_acls
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,7 +225,7 @@ SELECT
 '{{ ApplicationConfig }}',
 '{{ region }}'
 RETURNING
-Summary
+summary
 ;
 ```
 </TabItem>
@@ -1073,7 +1073,7 @@ AND DefaultAction = '{{ DefaultAction }}' --required
 AND VisibilityConfig = '{{ VisibilityConfig }}' --required
 AND LockToken = '{{ LockToken }}' --required
 RETURNING
-NextLockToken;
+next_lock_token;
 ```
 </TabItem>
 <TabItem value="associate_web_acl">

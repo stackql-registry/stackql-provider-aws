@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataProtectionPolicy" /></td>
+    <td><CopyableCode code="data_protection_policy" /></td>
     <td><code>string</code></td>
     <td>Retrieves the DataProtectionPolicy in JSON string format.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves the specified inline DataProtectionPolicy document that is stored in t
 
 ```sql
 SELECT
-DataProtectionPolicy
+data_protection_policy
 FROM aws.sns.data_protection_policies
 WHERE ResourceArn = '{{ ResourceArn }}' -- required
 AND region = '{{ region }}' -- required

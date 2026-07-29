@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChecksumAlgorithm" /></td>
+    <td><CopyableCode code="checksum_algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm that was used to create a checksum of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChecksumType" /></td>
+    <td><CopyableCode code="checksum_type" /></td>
     <td><code>string</code></td>
     <td>The checksum type that is used to calculate the object’s checksum value. For more information, see Checking object integrity in the Amazon S3 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Initiated" /></td>
+    <td><CopyableCode code="initiated" /></td>
     <td><code>string</code></td>
     <td>Date and time at which the multipart upload was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Initiator" /></td>
+    <td><CopyableCode code="initiator" /></td>
     <td><code>string</code></td>
     <td>Identifies who initiated the multipart upload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>Key of the object for which the multipart upload was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>Specifies the owner of the object that is part of the multipart upload. Directory buckets - The bucket owner is returned as the object owner for all the objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageClass" /></td>
+    <td><CopyableCode code="storage_class" /></td>
     <td><code>string</code></td>
     <td>The class of storage used to store the object. Directory buckets - Directory buckets only support EXPRESS_ONEZONE (the S3 Express One Zone storage class) in Availability Zones and ONEZONE_IA (the S3 One Zone-Infrequent Access storage class) in Dedicated Local Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UploadId" /></td>
+    <td><CopyableCode code="upload_id" /></td>
     <td><code>string</code></td>
     <td>Upload ID that identifies the multipart upload.</td>
 </tr>
@@ -346,14 +346,14 @@ This operation lists in-progress multipart uploads in a bucket. An in-progress m
 
 ```sql
 SELECT
-ChecksumAlgorithm,
-ChecksumType,
-Initiated,
-Initiator,
-Key,
-Owner,
-StorageClass,
-UploadId
+checksum_algorithm,
+checksum_type,
+initiated,
+initiator,
+key,
+owner,
+storage_class,
+upload_id
 FROM aws.s3.multipart_uploads
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

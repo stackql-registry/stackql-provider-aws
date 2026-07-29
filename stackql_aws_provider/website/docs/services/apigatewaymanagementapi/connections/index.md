@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectedAt" /></td>
+    <td><CopyableCode code="connected_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time in ISO 8601 format for when the connection was established.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identity" /></td>
+    <td><CopyableCode code="identity" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastActiveAt" /></td>
+    <td><CopyableCode code="last_active_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time in ISO 8601 format for when the connection was last active.</td>
 </tr>
@@ -148,9 +148,9 @@ Get information about the connection with the provided id.
 
 ```sql
 SELECT
-ConnectedAt,
-Identity,
-LastActiveAt
+connected_at,
+identity,
+last_active_at
 FROM aws.apigatewaymanagementapi.connections
 WHERE connection_id = '{{ connection_id }}' -- required
 AND region = '{{ region }}' -- required

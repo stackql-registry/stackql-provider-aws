@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An eventbridge rule template's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTargets" /></td>
+    <td><CopyableCode code="event_targets" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfEventBridgeRuleTemplateTarget</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of event to match with the rule. (MEDIALIVE_MULTIPLEX_ALERT, MEDIALIVE_MULTIPLEX_STATE_CHANGE, MEDIALIVE_CHANNEL_ALERT, MEDIALIVE_CHANNEL_INPUT_CHANGE, MEDIALIVE_CHANNEL_STATE_CHANGE, MEDIAPACKAGE_INPUT_NOTIFICATION, MEDIAPACKAGE_KEY_PROVIDER_NOTIFICATION, MEDIAPACKAGE_HARVEST_JOB_NOTIFICATION, SIGNAL_MAP_ACTIVE_ALARM, MEDIACONNECT_ALERT, MEDIACONNECT_SOURCE_HEALTH, MEDIACONNECT_OUTPUT_HEALTH, MEDIACONNECT_FLOW_STATUS_CHANGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An eventbridge rule template's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTargetCount" /></td>
+    <td><CopyableCode code="event_target_count" /></td>
     <td><code>integer</code></td>
     <td>The number of targets configured to send matching events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of event to match with the rule. (MEDIALIVE_MULTIPLEX_ALERT, MEDIALIVE_MULTIPLEX_STATE_CHANGE, MEDIALIVE_CHANNEL_ALERT, MEDIALIVE_CHANNEL_INPUT_CHANGE, MEDIALIVE_CHANNEL_STATE_CHANGE, MEDIAPACKAGE_INPUT_NOTIFICATION, MEDIAPACKAGE_KEY_PROVIDER_NOTIFICATION, MEDIAPACKAGE_HARVEST_JOB_NOTIFICATION, SIGNAL_MAP_ACTIVE_ALARM, MEDIACONNECT_ALERT, MEDIACONNECT_SOURCE_HEALTH, MEDIACONNECT_OUTPUT_HEALTH, MEDIACONNECT_FLOW_STATUS_CHANGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>An eventbridge rule template group's id. AWS provided template groups have ids that start with `aws-`</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>An eventbridge rule template's id. AWS provided templates have ids that start with `aws-`</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -283,16 +283,16 @@ Retrieves the specified eventbridge rule template.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-EventTargets,
-EventType,
-GroupId,
-Id,
-ModifiedAt,
-Name,
-Tags
+arn,
+created_at,
+description,
+event_targets,
+event_type,
+group_id,
+id,
+modified_at,
+name,
+tags
 FROM aws.medialive.event_bridge_rule_templates
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -305,16 +305,16 @@ Lists eventbridge rule templates.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-EventTargetCount,
-EventType,
-GroupId,
-Id,
-ModifiedAt,
-Name,
-Tags
+arn,
+created_at,
+description,
+event_target_count,
+event_type,
+group_id,
+id,
+modified_at,
+name,
+tags
 FROM aws.medialive.event_bridge_rule_templates
 WHERE region = '{{ region }}' -- required
 AND groupIdentifier = '{{ groupIdentifier }}'
@@ -361,16 +361,16 @@ SELECT
 '{{ RequestId }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedAt,
-Description,
-EventTargets,
-EventType,
-GroupId,
-Id,
-ModifiedAt,
-Name,
-Tags
+arn,
+created_at,
+description,
+event_targets,
+event_type,
+group_id,
+id,
+modified_at,
+name,
+tags
 ;
 ```
 </TabItem>
@@ -442,16 +442,16 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-CreatedAt,
-Description,
-EventTargets,
-EventType,
-GroupId,
-Id,
-ModifiedAt,
-Name,
-Tags;
+arn,
+created_at,
+description,
+event_targets,
+event_type,
+group_id,
+id,
+modified_at,
+name,
+tags;
 ```
 </TabItem>
 </Tabs>

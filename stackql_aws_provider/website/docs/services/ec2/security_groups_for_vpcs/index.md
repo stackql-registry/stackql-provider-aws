@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The security group's description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The security group ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The security group name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The security group owner ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryVpcId" /></td>
+    <td><CopyableCode code="primary_vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC ID in which the security group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The security group tags.</td>
 </tr>
@@ -169,12 +169,12 @@ Gets security groups that can be associated by the Amazon Web Services account m
 
 ```sql
 SELECT
-Description,
-GroupId,
-GroupName,
-OwnerId,
-PrimaryVpcId,
-Tags
+description,
+group_id,
+group_name,
+owner_id,
+primary_vpc_id,
+tags
 FROM aws.ec2.security_groups_for_vpcs
 WHERE VpcId = '{{ VpcId }}' -- required
 AND region = '{{ region }}' -- required

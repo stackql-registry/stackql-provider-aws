@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeviceTypeAndroid" /></td>
+    <td><CopyableCode code="device_type_android" /></td>
     <td><code>object</code></td>
     <td>The branding information for Android devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceTypeIos" /></td>
+    <td><CopyableCode code="device_type_ios" /></td>
     <td><code>object</code></td>
     <td>The branding information for iOS devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceTypeLinux" /></td>
+    <td><CopyableCode code="device_type_linux" /></td>
     <td><code>object</code></td>
     <td>The branding information for Linux devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceTypeOsx" /></td>
+    <td><CopyableCode code="device_type_osx" /></td>
     <td><code>object</code></td>
     <td>The branding information for macOS devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceTypeWeb" /></td>
+    <td><CopyableCode code="device_type_web" /></td>
     <td><code>object</code></td>
     <td>The branding information for Web access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceTypeWindows" /></td>
+    <td><CopyableCode code="device_type_windows" /></td>
     <td><code>object</code></td>
     <td>The branding information for Windows devices.</td>
 </tr>
@@ -151,12 +151,12 @@ Describes the specified client branding. Client branding allows you to customize
 
 ```sql
 SELECT
-DeviceTypeAndroid,
-DeviceTypeIos,
-DeviceTypeLinux,
-DeviceTypeOsx,
-DeviceTypeWeb,
-DeviceTypeWindows
+device_type_android,
+device_type_ios,
+device_type_linux,
+device_type_osx,
+device_type_web,
+device_type_windows
 FROM aws.workspaces.client_brandings
 WHERE region = '{{ region }}' -- required
 ;

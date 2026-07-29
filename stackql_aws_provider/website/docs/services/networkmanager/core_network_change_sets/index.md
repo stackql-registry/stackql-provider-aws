@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The action to take for a core network. (ADD, MODIFY, REMOVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>The resource identifier. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentifierPath" /></td>
+    <td><CopyableCode code="identifier_path" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies the path for a change within the changeset. For example, the IdentifierPath for a core network segment change might be "CORE_NETWORK_SEGMENT/us-east-1/devsegment". (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NewValues" /></td>
+    <td><CopyableCode code="new_values" /></td>
     <td><code>object</code></td>
     <td>The new value for a core network</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousValues" /></td>
+    <td><CopyableCode code="previous_values" /></td>
     <td><code>object</code></td>
     <td>The previous values for a core network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of change. (CORE_NETWORK_SEGMENT, NETWORK_FUNCTION_GROUP, CORE_NETWORK_EDGE, ATTACHMENT_MAPPING, ATTACHMENT_ROUTE_PROPAGATION, ATTACHMENT_ROUTE_STATIC, ROUTING_POLICY, ROUTING_POLICY_SEGMENT_ASSOCIATION, ROUTING_POLICY_EDGE_ASSOCIATION, ROUTING_POLICY_ATTACHMENT_ASSOCIATION, CORE_NETWORK_CONFIGURATION, SEGMENTS_CONFIGURATION, SEGMENT_ACTIONS_CONFIGURATION, ATTACHMENT_POLICIES_CONFIGURATION)</td>
 </tr>
@@ -164,12 +164,12 @@ Returns a change set between the LIVE core network policy and a submitted policy
 
 ```sql
 SELECT
-Action,
-Identifier,
-IdentifierPath,
-NewValues,
-PreviousValues,
-Type
+action,
+identifier,
+identifier_path,
+new_values,
+previous_values,
+type
 FROM aws.networkmanager.core_network_change_sets
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND policy_version_id = '{{ policy_version_id }}' -- required

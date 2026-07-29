@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the SchemaMapping was created.</td>
 </tr>
@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hasWorkflows" /></td>
+    <td><CopyableCode code="has_workflows" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the schema mapping has been applied to a workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mappedInputFields" /></td>
+    <td><CopyableCode code="mapped_input_fields" /></td>
     <td><code>array</code></td>
     <td>A list of MappedInputFields. Each MappedInputField corresponds to a column the source data table, and contains column name plus additional information Entity Resolution uses for matching.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the SchemaMapping. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(schemamapping/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the SchemaMapping was last updated.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the SchemaMapping was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hasWorkflows" /></td>
+    <td><CopyableCode code="has_workflows" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the schema mapping has been applied to a workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the SchemaMapping. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):entityresolution:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;:&#91;0-9&#93;&#123;12&#125;:(schemamapping/&#91;a-zA-Z_0-9-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the SchemaMapping was last updated.</td>
 </tr>
@@ -238,14 +238,14 @@ Returns the SchemaMapping of a given name.
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-hasWorkflows,
-mappedInputFields,
-schemaArn,
-schemaName,
+has_workflows,
+mapped_input_fields,
+schema_arn,
+schema_name,
 tags,
-updatedAt
+updated_at
 FROM aws.entityresolution.schema_mappings
 WHERE schema_name = '{{ schema_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -258,11 +258,11 @@ Returns a list of all the SchemaMappings that have been created for an Amazon We
 
 ```sql
 SELECT
-createdAt,
-hasWorkflows,
-schemaArn,
-schemaName,
-updatedAt
+created_at,
+has_workflows,
+schema_arn,
+schema_name,
+updated_at
 FROM aws.entityresolution.schema_mappings
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -302,9 +302,9 @@ SELECT
 '{{ region }}'
 RETURNING
 description,
-mappedInputFields,
-schemaArn,
-schemaName
+mapped_input_fields,
+schema_arn,
+schema_name
 ;
 ```
 </TabItem>
@@ -359,9 +359,9 @@ AND region = '{{ region }}' --required
 AND mappedInputFields = '{{ mappedInputFields }}' --required
 RETURNING
 description,
-mappedInputFields,
-schemaArn,
-schemaName;
+mapped_input_fields,
+schema_arn,
+schema_name;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Storage" /></td>
+    <td><CopyableCode code="storage" /></td>
     <td><code>string</code></td>
     <td>Valid storage options for your DB instance.</td>
 </tr>
@@ -124,7 +124,7 @@ You can call DescribeValidDBInstanceModifications to learn what modifications yo
 
 ```sql
 SELECT
-Storage
+storage
 FROM aws.neptune.valid_db_instance_modifications
 WHERE DBInstanceIdentifier = '{{ DBInstanceIdentifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applyOnTransformedLogs" /></td>
+    <td><CopyableCode code="apply_on_transformed_logs" /></td>
     <td><code>boolean</code></td>
     <td>This parameter is valid only for log groups that have an active log transformer. For more information about log transformers, see PutTransformer. If this value is true, the metric filter is applied on the transformed version of the log events instead of the original ingested log events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The creation time of the metric filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="emitSystemFieldDimensions" /></td>
+    <td><CopyableCode code="emit_system_field_dimensions" /></td>
     <td><code>array</code></td>
     <td>The list of system fields that are emitted as additional dimensions in the generated metrics. Returns the emitSystemFieldDimensions value if it was specified when the metric filter was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fieldSelectionCriteria" /></td>
+    <td><CopyableCode code="field_selection_criteria" /></td>
     <td><code>string</code></td>
     <td>The filter expression that specifies which log events are processed by this metric filter based on system fields. Returns the fieldSelectionCriteria value if it was specified when the metric filter was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterName" /></td>
+    <td><CopyableCode code="filter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric filter. (pattern: &lt;code&gt;&#91;^:*&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterPattern" /></td>
+    <td><CopyableCode code="filter_pattern" /></td>
     <td><code>string</code></td>
     <td>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log group. (pattern: &lt;code&gt;&#91;\.\-_/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricTransformations" /></td>
+    <td><CopyableCode code="metric_transformations" /></td>
     <td><code>array</code></td>
     <td>The metric transformations.</td>
 </tr>
@@ -168,14 +168,14 @@ Lists the specified metric filters. You can list all of the metric filters or fi
 
 ```sql
 SELECT
-applyOnTransformedLogs,
-creationTime,
-emitSystemFieldDimensions,
-fieldSelectionCriteria,
-filterName,
-filterPattern,
-logGroupName,
-metricTransformations
+apply_on_transformed_logs,
+creation_time,
+emit_system_field_dimensions,
+field_selection_criteria,
+filter_name,
+filter_pattern,
+log_group_name,
+metric_transformations
 FROM aws.logs.metric_filters
 WHERE region = '{{ region }}' -- required
 ;

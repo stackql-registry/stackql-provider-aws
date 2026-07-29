@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedTimestamp" /></td>
+    <td><CopyableCode code="associated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the resource was associated with the tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the tenant associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantName" /></td>
+    <td><CopyableCode code="tenant_name" /></td>
     <td><code>string</code></td>
     <td>The name of a tenant. The name can contain up to 64 alphanumeric characters, including letters, numbers, hyphens (-) and underscores (_) only.</td>
 </tr>
@@ -134,10 +134,10 @@ List all tenants associated with a specific resource. This operation returns a l
 
 ```sql
 SELECT
-AssociatedTimestamp,
-ResourceArn,
-TenantId,
-TenantName
+associated_timestamp,
+resource_arn,
+tenant_id,
+tenant_name
 FROM aws.sesv2.resource_tenants
 WHERE region = '{{ region }}' -- required
 ;

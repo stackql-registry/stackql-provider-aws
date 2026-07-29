@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the resiliency policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataLocationConstraint" /></td>
+    <td><CopyableCode code="data_location_constraint" /></td>
     <td><code>string</code></td>
     <td>Specifies a high-level geographical location constraint for where your resilience policy data can be stored. (AnyLocation, SameContinent, SameCountry)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedCostTier" /></td>
+    <td><CopyableCode code="estimated_cost_tier" /></td>
     <td><code>string</code></td>
     <td>Specifies the estimated cost tier of the resiliency policy. (L1, L2, L3, L4)</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The resiliency policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the resiliency policy. The format for this ARN is: arn:partition:resiliencehub:region:account:resiliency-policy/policy-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyDescription" /></td>
+    <td><CopyableCode code="policy_description" /></td>
     <td><code>string</code></td>
     <td>Description of the resiliency policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the policy (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resiliencyPolicies" /></td>
+    <td><CopyableCode code="resiliency_policies" /></td>
     <td><code>array</code></td>
     <td>The resiliency policies for the Resilience Hub applications.</td>
 </tr>
@@ -228,13 +228,13 @@ Describes a specified resiliency policy for an Resilience Hub application. The r
 
 ```sql
 SELECT
-creationTime,
-dataLocationConstraint,
-estimatedCostTier,
+creation_time,
+data_location_constraint,
+estimated_cost_tier,
 policy,
-policyArn,
-policyDescription,
-policyName,
+policy_arn,
+policy_description,
+policy_name,
 tags,
 tier
 FROM aws.resiliencehub.resiliency_policies
@@ -248,8 +248,8 @@ Lists the resiliency policies for the Resilience Hub applications.
 
 ```sql
 SELECT
-nextToken,
-resiliencyPolicies
+next_token,
+resiliency_policies
 FROM aws.resiliencehub.resiliency_policies
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

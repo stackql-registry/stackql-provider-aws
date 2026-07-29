@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with this custom vocabulary. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The identifier of the version of the bot associated with this custom vocabulary. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customVocabularyItems" /></td>
+    <td><CopyableCode code="custom_vocabulary_items" /></td>
     <td><code>array</code></td>
     <td>The custom vocabulary items from the list custom vocabulary response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the language and locale where this custom vocabulary is used. The string must match one of the supported locales. For more information, see Supported Languages .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken identifier to the list custom vocabulary response.</td>
 </tr>
@@ -154,11 +154,11 @@ Paginated list of custom vocabulary items for a given bot locale's custom vocabu
 
 ```sql
 SELECT
-botId,
-botVersion,
-customVocabularyItems,
-localeId,
-nextToken
+bot_id,
+bot_version,
+custom_vocabulary_items,
+locale_id,
+next_token
 FROM aws.lexv2_models.custom_vocabulary_items
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required

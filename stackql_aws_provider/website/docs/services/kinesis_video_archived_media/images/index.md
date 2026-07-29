@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>The error message shown when the image for the provided timestamp was not extracted due to a non-tryable error. An error will be returned if: There is no media that exists for the specified Timestamp. The media for the specified time does not allow an image to be extracted. In this case the media is audio only, or the incorrect media has been ingested. (NO_MEDIA, MEDIA_ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageContent" /></td>
+    <td><CopyableCode code="image_content" /></td>
     <td><code>string</code></td>
     <td>An attribute of the Image object that is Base64 encoded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeStamp" /></td>
+    <td><CopyableCode code="time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>An attribute of the Image object that is used to extract an image from the video stream. This field is used to manage gaps on images or to better understand the pagination window.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves a list of images corresponding to each timestamp for a given time rang
 
 ```sql
 SELECT
-Error,
-ImageContent,
-TimeStamp
+error,
+image_content,
+time_stamp
 FROM aws.kinesis_video_archived_media.images
 WHERE region = '{{ region }}' -- required
 ;

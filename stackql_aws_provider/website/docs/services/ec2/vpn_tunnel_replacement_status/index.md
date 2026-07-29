@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomerGatewayId" /></td>
+    <td><CopyableCode code="customer_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the customer gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceDetails" /></td>
+    <td><CopyableCode code="maintenance_details" /></td>
     <td><code>string</code></td>
     <td>Get details of pending tunnel endpoint maintenance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway associated with the VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnConnectionId" /></td>
+    <td><CopyableCode code="vpn_connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Site-to-Site VPN connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnGatewayId" /></td>
+    <td><CopyableCode code="vpn_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnTunnelOutsideIpAddress" /></td>
+    <td><CopyableCode code="vpn_tunnel_outside_ip_address" /></td>
     <td><code>string</code></td>
     <td>The external IP address of the VPN tunnel.</td>
 </tr>
@@ -159,12 +159,12 @@ Get details of available tunnel endpoint maintenance.
 
 ```sql
 SELECT
-CustomerGatewayId,
-MaintenanceDetails,
-TransitGatewayId,
-VpnConnectionId,
-VpnGatewayId,
-VpnTunnelOutsideIpAddress
+customer_gateway_id,
+maintenance_details,
+transit_gateway_id,
+vpn_connection_id,
+vpn_gateway_id,
+vpn_tunnel_outside_ip_address
 FROM aws.ec2.vpn_tunnel_replacement_status
 WHERE VpnConnectionId = '{{ VpnConnectionId }}' -- required
 AND VpnTunnelOutsideIpAddress = '{{ VpnTunnelOutsideIpAddress }}' -- required

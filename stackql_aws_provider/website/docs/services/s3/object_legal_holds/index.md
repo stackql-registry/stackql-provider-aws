@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the specified object has a legal hold in place.</td>
 </tr>
@@ -161,7 +161,7 @@ This operation is not supported for directory buckets. Gets an object's current 
 
 ```sql
 SELECT
-Status
+status
 FROM aws.s3.object_legal_holds
 WHERE bucket = '{{ bucket }}' -- required
 AND key = '{{ key }}' -- required

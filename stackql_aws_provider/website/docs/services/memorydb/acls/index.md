@@ -121,7 +121,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ACL
+acl
 ;
 ```
 </TabItem>
@@ -176,7 +176,7 @@ WHERE
 region = '{{ region }}' --required
 AND ACLName = '{{ ACLName }}' --required
 RETURNING
-ACL;
+acl;
 ```
 </TabItem>
 </Tabs>

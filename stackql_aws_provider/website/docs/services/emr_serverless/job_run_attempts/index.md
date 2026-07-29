@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the job run attempt. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application the job is running on. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
     <td>The attempt number of the job run execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run attempt was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the execution role of the job run.. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):iam::(&#91;0-9&#93;&#123;12&#125;):(role((\u002F)|(\u002F&#91;\u0021-\u007F&#93;+\u002F))&#91;\w+=,.@-&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobCreatedAt" /></td>
+    <td><CopyableCode code="job_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the job run was created.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The mode of the job run attempt. (BATCH, STREAMING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The Amazon EMR release label of the job run attempt. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the job run attempt. (SUBMITTED, PENDING, SCHEDULED, RUNNING, SUCCESS, FAILED, CANCELLING, CANCELLED, QUEUED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>The state details of the job run attempt. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the job run, such as Spark or Hive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the job run attempt was last updated.</td>
 </tr>
@@ -211,19 +211,19 @@ Lists all attempt of a job run.
 SELECT
 id,
 name,
-applicationId,
+application_id,
 arn,
 attempt,
-createdAt,
-createdBy,
-executionRole,
-jobCreatedAt,
+created_at,
+created_by,
+execution_role,
+job_created_at,
 mode,
-releaseLabel,
+release_label,
 state,
-stateDetails,
+state_details,
 type_,
-updatedAt
+updated_at
 FROM aws.emr_serverless.job_run_attempts
 WHERE application_id = '{{ application_id }}' -- required
 AND job_run_id = '{{ job_run_id }}' -- required

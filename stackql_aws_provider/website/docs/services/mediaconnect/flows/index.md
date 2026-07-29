@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Flow" /></td>
+    <td><CopyableCode code="flow" /></td>
     <td><code>object</code></td>
     <td>The flow that you requested a description of.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>object</code></td>
     <td>Any errors that apply currently to the flow. If there are no errors, MediaConnect will not include this field in the response.</td>
 </tr>
@@ -75,37 +75,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone that the flow was created in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowArn" /></td>
+    <td><CopyableCode code="flow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Maintenance" /></td>
+    <td><CopyableCode code="maintenance" /></td>
     <td><code>object</code></td>
     <td>The maintenance settings for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The type of source. This value is either owned (originated somewhere other than an MediaConnect flow owned by another Amazon Web Services account) or entitled (originated at a MediaConnect flow owned by another Amazon Web Services account). (OWNED, ENTITLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the flow. (STANDBY, ACTIVE, UPDATING, DELETING, STARTING, STOPPING, ERROR)</td>
 </tr>
@@ -329,8 +329,8 @@ Displays the details of a flow. The response includes the flow Amazon Resource N
 
 ```sql
 SELECT
-Flow,
-Messages
+flow,
+messages
 FROM aws.mediaconnect.flows
 WHERE flow_arn = '{{ flow_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -343,13 +343,13 @@ Displays a list of flows that are associated with this account. This request ret
 
 ```sql
 SELECT
-AvailabilityZone,
-Description,
-FlowArn,
-Maintenance,
-Name,
-SourceType,
-Status
+availability_zone,
+description,
+flow_arn,
+maintenance,
+name,
+source_type,
+status
 FROM aws.mediaconnect.flows
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -410,7 +410,7 @@ SELECT
 '{{ FlowTags }}',
 '{{ region }}'
 RETURNING
-Flow
+flow
 ;
 ```
 </TabItem>
@@ -689,8 +689,8 @@ flow_arn = '{{ flow_arn }}' --required
 AND region = '{{ region }}' --required
 AND MediaStreams = '{{ MediaStreams }}' --required
 RETURNING
-FlowArn,
-MediaStreams;
+flow_arn,
+media_streams;
 ```
 </TabItem>
 <TabItem value="add_flow_vpc_interfaces">
@@ -706,8 +706,8 @@ flow_arn = '{{ flow_arn }}' --required
 AND region = '{{ region }}' --required
 AND VpcInterfaces = '{{ VpcInterfaces }}' --required
 RETURNING
-FlowArn,
-VpcInterfaces;
+flow_arn,
+vpc_interfaces;
 ```
 </TabItem>
 <TabItem value="remove_flow_media_stream">
@@ -723,8 +723,8 @@ flow_arn = '{{ flow_arn }}' --required
 AND media_stream_name = '{{ media_stream_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-FlowArn,
-MediaStreamName;
+flow_arn,
+media_stream_name;
 ```
 </TabItem>
 <TabItem value="remove_flow_output">
@@ -740,8 +740,8 @@ flow_arn = '{{ flow_arn }}' --required
 AND output_arn = '{{ output_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-FlowArn,
-OutputArn;
+flow_arn,
+output_arn;
 ```
 </TabItem>
 <TabItem value="remove_flow_source">
@@ -757,8 +757,8 @@ flow_arn = '{{ flow_arn }}' --required
 AND source_arn = '{{ source_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-FlowArn,
-SourceArn;
+flow_arn,
+source_arn;
 ```
 </TabItem>
 <TabItem value="remove_flow_vpc_interface">
@@ -774,9 +774,9 @@ flow_arn = '{{ flow_arn }}' --required
 AND vpc_interface_name = '{{ vpc_interface_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-FlowArn,
-NonDeletedNetworkInterfaceIds,
-VpcInterfaceName;
+flow_arn,
+non_deleted_network_interface_ids,
+vpc_interface_name;
 ```
 </TabItem>
 <TabItem value="update_flow">
@@ -796,7 +796,7 @@ WHERE
 flow_arn = '{{ flow_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Flow;
+flow;
 ```
 </TabItem>
 </Tabs>

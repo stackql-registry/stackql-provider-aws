@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of a workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentationUrl" /></td>
+    <td><CopyableCode code="documentation_url" /></td>
     <td><code>string</code></td>
     <td>The URL of a workload document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iconUrl" /></td>
+    <td><CopyableCode code="icon_url" /></td>
     <td><code>string</code></td>
     <td>The URL of a workload icon.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a workload. You can list deployments in the DISABLED status. (ACTIVE, INACTIVE, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The message about a workload's status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the workload data.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the workload. (ACTIVE, INACTIVE, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -188,12 +188,12 @@ Returns information about a workload.
 ```sql
 SELECT
 description,
-displayName,
-documentationUrl,
-iconUrl,
+display_name,
+documentation_url,
+icon_url,
 status,
-statusMessage,
-workloadName
+status_message,
+workload_name
 FROM aws.launch_wizard.workloads
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,9 +205,9 @@ Lists the available workload names. You can use the ListWorkloadDeploymentPatter
 
 ```sql
 SELECT
-displayName,
+display_name,
 status,
-workloadName
+workload_name
 FROM aws.launch_wizard.workloads
 WHERE region = '{{ region }}' -- required
 ;

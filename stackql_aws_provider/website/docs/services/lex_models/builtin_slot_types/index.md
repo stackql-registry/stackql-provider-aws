@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A unique identifier for the built-in slot type. To find the signature for a slot type, see Slot Type Reference in the Alexa Skills Kit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedLocales" /></td>
+    <td><CopyableCode code="supported_locales" /></td>
     <td><code>array</code></td>
     <td>A list of target locales for the slot.</td>
 </tr>
@@ -145,7 +145,7 @@ Gets a list of built-in slot types that meet the specified criteria. For a list 
 ```sql
 SELECT
 signature,
-supportedLocales
+supported_locales
 FROM aws.lex_models.builtin_slot_types
 WHERE region = '{{ region }}' -- required
 AND locale = '{{ locale }}'

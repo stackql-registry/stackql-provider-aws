@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationConfig" /></td>
+    <td><CopyableCode code="application_config" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationSourceConfig" /></td>
+    <td><CopyableCode code="application_source_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for where the application should be loaded from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationType" /></td>
+    <td><CopyableCode code="application_type" /></td>
     <td><code>string</code></td>
     <td>The type of application (STANDARD, SERVICE, MCP_SERVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Application. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The created time of the Application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the Application. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IframeConfig" /></td>
+    <td><CopyableCode code="iframe_config" /></td>
     <td><code>object</code></td>
     <td>The iframe configuration for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitializationTimeout" /></td>
+    <td><CopyableCode code="initialization_timeout" /></td>
     <td><code>integer</code></td>
     <td>The maximum time in milliseconds allowed to establish a connection with the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsService" /></td>
+    <td><CopyableCode code="is_service" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the application is a service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of the Application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._ \-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The namespace of the application. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>The configuration of events or requests that the application has access to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Publications" /></td>
+    <td><CopyableCode code="publications" /></td>
     <td><code>array</code></td>
     <td>The events that the application publishes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subscriptions" /></td>
+    <td><CopyableCode code="subscriptions" /></td>
     <td><code>array</code></td>
     <td>The events that the application subscribes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -150,42 +150,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationType" /></td>
+    <td><CopyableCode code="application_type" /></td>
     <td><code>string</code></td>
     <td>The type of application (STANDARD, SERVICE, MCP_SERVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Application. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the Application. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsService" /></td>
+    <td><CopyableCode code="is_service" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the application is a service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the application was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._ \-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The namespace of the application. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -303,23 +303,23 @@ Get an Application resource.
 
 ```sql
 SELECT
-ApplicationConfig,
-ApplicationSourceConfig,
-ApplicationType,
-Arn,
-CreatedTime,
-Description,
-Id,
-IframeConfig,
-InitializationTimeout,
-IsService,
-LastModifiedTime,
-Name,
-Namespace,
-Permissions,
-Publications,
-Subscriptions,
-Tags
+application_config,
+application_source_config,
+application_type,
+arn,
+created_time,
+description,
+id,
+iframe_config,
+initialization_timeout,
+is_service,
+last_modified_time,
+name,
+namespace,
+permissions,
+publications,
+subscriptions,
+tags
 FROM aws.appintegrations.applications
 WHERE application_identifier = '{{ application_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -332,14 +332,14 @@ Lists applications in the account.
 
 ```sql
 SELECT
-ApplicationType,
-Arn,
-CreatedTime,
-Id,
-IsService,
-LastModifiedTime,
-Name,
-Namespace
+application_type,
+arn,
+created_time,
+id,
+is_service,
+last_modified_time,
+name,
+namespace
 FROM aws.appintegrations.applications
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -399,8 +399,8 @@ SELECT
 '{{ ApplicationType }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

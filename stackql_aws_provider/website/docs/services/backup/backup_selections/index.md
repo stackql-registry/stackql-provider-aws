@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupPlanId" /></td>
+    <td><CopyableCode code="backup_plan_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies a backup plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupSelection" /></td>
+    <td><CopyableCode code="backup_selection" /></td>
     <td><code>object</code></td>
     <td>Used to specify a set of resources to a backup plan. We recommend that you specify conditions, tags, or resources to include or exclude. Otherwise, Backup attempts to select all supported and opted-in storage resources, which could have unintended cost implications. For more information, see Assigning resources programmatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a backup selection is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request and allows failed requests to be retried without the risk of running the operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectionId" /></td>
+    <td><CopyableCode code="selection_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies the body of a request to assign a set of resources to a backup plan.</td>
 </tr>
@@ -90,32 +90,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupPlanId" /></td>
+    <td><CopyableCode code="backup_plan_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies a backup plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a backup plan is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request and allows failed requests to be retried without the risk of running the operation twice. This parameter is optional. If used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the IAM role Amazon Resource Name (ARN) to create the target recovery point; for example, arn:aws:iam::123456789012:role/S3Access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectionId" /></td>
+    <td><CopyableCode code="selection_id" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies a request to assign a set of resources to a backup plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectionName" /></td>
+    <td><CopyableCode code="selection_name" /></td>
     <td><code>string</code></td>
     <td>The display name of a resource selection document. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -226,11 +226,11 @@ Returns selection metadata and a document in JSON format that specifies a list o
 
 ```sql
 SELECT
-BackupPlanId,
-BackupSelection,
-CreationDate,
-CreatorRequestId,
-SelectionId
+backup_plan_id,
+backup_selection,
+creation_date,
+creator_request_id,
+selection_id
 FROM aws.backup.backup_selections
 WHERE backup_plan_id = '{{ backup_plan_id }}' -- required
 AND selection_id = '{{ selection_id }}' -- required
@@ -244,12 +244,12 @@ Returns an array containing metadata of the resources associated with the target
 
 ```sql
 SELECT
-BackupPlanId,
-CreationDate,
-CreatorRequestId,
-IamRoleArn,
-SelectionId,
-SelectionName
+backup_plan_id,
+creation_date,
+creator_request_id,
+iam_role_arn,
+selection_id,
+selection_name
 FROM aws.backup.backup_selections
 WHERE backup_plan_id = '{{ backup_plan_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -287,9 +287,9 @@ SELECT
 '{{ backup_plan_id }}',
 '{{ region }}'
 RETURNING
-BackupPlanId,
-CreationDate,
-SelectionId
+backup_plan_id,
+creation_date,
+selection_id
 ;
 ```
 </TabItem>

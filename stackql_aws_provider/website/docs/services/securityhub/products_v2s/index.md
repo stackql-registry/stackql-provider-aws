@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivationUrl" /></td>
+    <td><CopyableCode code="activation_url" /></td>
     <td><code>string</code></td>
     <td>The URL to the serviceV@ or productV2 documentation about the integration, which includes how to activate the integration. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Categories" /></td>
+    <td><CopyableCode code="categories" /></td>
     <td><code>array</code></td>
     <td>The domains or functional areas the productV2 addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompanyName" /></td>
+    <td><CopyableCode code="company_name" /></td>
     <td><code>string</code></td>
     <td>The name of the organization or vendor that provides the productV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Detailed information about the productV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationV2Types" /></td>
+    <td><CopyableCode code="integration_v2_types" /></td>
     <td><code>array</code></td>
     <td>The type of integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceProductId" /></td>
+    <td><CopyableCode code="marketplace_product_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Amazon Web Services Marketplace product associated with this integration. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceUrl" /></td>
+    <td><CopyableCode code="marketplace_url" /></td>
     <td><code>string</code></td>
     <td>The console URL where you can purchase or subscribe to products. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductV2Name" /></td>
+    <td><CopyableCode code="product_v2_name" /></td>
     <td><code>string</code></td>
     <td>The name of the productV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -164,14 +164,14 @@ Gets information about the product integration.
 
 ```sql
 SELECT
-ActivationUrl,
-Categories,
-CompanyName,
-Description,
-IntegrationV2Types,
-MarketplaceProductId,
-MarketplaceUrl,
-ProductV2Name
+activation_url,
+categories,
+company_name,
+description,
+integration_v2_types,
+marketplace_product_id,
+marketplace_url,
+product_v2_name
 FROM aws.securityhub.products_v2s
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

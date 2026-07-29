@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The availability zone of the VLAN.</td>
 </tr>
@@ -60,52 +60,52 @@ The following fields are returned by `SELECT` queries:
     <td>The CIDR block of the VLAN. Amazon EVS VLAN subnets have a minimum CIDR block size of /28 and a maximum size of /24. (pattern: &lt;code&gt;((25&#91;0-5&#93;|2&#91;0-4&#93;&#91;0-9&#93;|&#91;01&#93;?&#91;0-9&#93;&#91;0-9&#93;?)\.)&#123;3&#125;(25&#91;0-5&#93;|2&#91;0-4&#93;&#91;0-9&#93;|&#91;01&#93;?&#91;0-9&#93;&#91;0-9&#93;?)/(3&#91;0-2&#93;|&#91;1-2&#93;&#91;0-9&#93;|&#91;0-9&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the VLAN was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eipAssociations" /></td>
+    <td><CopyableCode code="eip_associations" /></td>
     <td><code>array</code></td>
     <td>An array of Elastic IP address associations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionName" /></td>
+    <td><CopyableCode code="function_name" /></td>
     <td><code>string</code></td>
     <td>The VMware VCF traffic type that is carried over the VLAN. For example, a VLAN with a functionName of hcx is being used to carry VMware HCX traffic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPublic" /></td>
+    <td><CopyableCode code="is_public" /></td>
     <td><code>boolean</code></td>
     <td>Determines if the VLAN that Amazon EVS provisions is public or private.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the VLAN was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkAclId" /></td>
+    <td><CopyableCode code="network_acl_id" /></td>
     <td><code>string</code></td>
     <td>A unique ID for a network access control list. (pattern: &lt;code&gt;acl-&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>The state details of the VLAN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the VLAN subnet. (pattern: &lt;code&gt;subnet-&#91;a-f0-9&#93;&#123;8&#125;(&#91;a-f0-9&#93;&#123;9&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vlanId" /></td>
+    <td><CopyableCode code="vlan_id" /></td>
     <td><code>integer</code></td>
     <td>The unique ID of the VLAN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vlanState" /></td>
+    <td><CopyableCode code="vlan_state" /></td>
     <td><code>string</code></td>
     <td>The state of the VLAN. (CREATING, CREATED, DELETING, DELETED, CREATE_FAILED)</td>
 </tr>
@@ -174,18 +174,18 @@ Lists environment VLANs that are associated with the specified environment.
 
 ```sql
 SELECT
-availabilityZone,
+availability_zone,
 cidr,
-createdAt,
-eipAssociations,
-functionName,
-isPublic,
-modifiedAt,
-networkAclId,
-stateDetails,
-subnetId,
-vlanId,
-vlanState
+created_at,
+eip_associations,
+function_name,
+is_public,
+modified_at,
+network_acl_id,
+state_details,
+subnet_id,
+vlan_id,
+vlan_state
 FROM aws.evs.environment_vlans
 WHERE region = '{{ region }}' -- required
 ;

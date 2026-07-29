@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="campaignName" /></td>
+    <td><CopyableCode code="campaign_name" /></td>
     <td><code>string</code></td>
     <td>The name of a campaign. (pattern: &lt;code&gt;&#91;a-zA-Z\d\-_:&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a campaign, which can be one of the following: CREATED - The campaign exists but is not yet approved. READY - The campaign is approved but has not been deployed to the vehicle. Data has not arrived at the vehicle yet. HEALTHY - The campaign is deployed to the vehicle. SUSPENDED - The campaign is suspended and data collection is paused. DELETING - The campaign is being removed from the vehicle. READY_FOR_CHECKIN - The campaign is approved and waiting for vehicle check-in before deployment. (CREATED, READY, HEALTHY, SUSPENDED, DELETING, READY_FOR_CHECKIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vehicleName" /></td>
+    <td><CopyableCode code="vehicle_name" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the vehicle. (pattern: &lt;code&gt;&#91;a-zA-Z\d\-_:&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves information about the status of campaigns, decoder manifests, or state
 
 ```sql
 SELECT
-campaignName,
+campaign_name,
 status,
-vehicleName
+vehicle_name
 FROM aws.iotfleetwise.vehicle_status
 WHERE region = '{{ region }}' -- required
 ;

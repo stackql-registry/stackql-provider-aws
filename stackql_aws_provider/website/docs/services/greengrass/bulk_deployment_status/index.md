@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BulkDeploymentMetrics" /></td>
+    <td><CopyableCode code="bulk_deployment_metrics" /></td>
     <td><code>object</code></td>
     <td>Relevant metrics on input records processed during bulk deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BulkDeploymentStatus" /></td>
+    <td><CopyableCode code="bulk_deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the bulk deployment. (Initializing, Running, Completed, Stopping, Stopped, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time, in ISO format, when the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>Error details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message</td>
 </tr>
@@ -149,11 +149,11 @@ Returns the status of a bulk deployment.
 
 ```sql
 SELECT
-BulkDeploymentMetrics,
-BulkDeploymentStatus,
-CreatedAt,
-ErrorDetails,
-ErrorMessage,
+bulk_deployment_metrics,
+bulk_deployment_status,
+created_at,
+error_details,
+error_message,
 tags
 FROM aws.greengrass.bulk_deployment_status
 WHERE bulk_deployment_id = '{{ bulk_deployment_id }}' -- required

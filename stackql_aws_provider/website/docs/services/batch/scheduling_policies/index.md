@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="schedulingPolicies" /></td>
+    <td><CopyableCode code="scheduling_policies" /></td>
     <td><code>array</code></td>
     <td>The list of scheduling policies.</td>
 </tr>
@@ -168,7 +168,7 @@ Describes one or more of your scheduling policies.
 
 ```sql
 SELECT
-schedulingPolicies
+scheduling_policies
 FROM aws.batch.scheduling_policies
 WHERE region = '{{ region }}' -- required
 ;

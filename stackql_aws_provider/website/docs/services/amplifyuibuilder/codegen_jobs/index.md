@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ID for the code generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amplify app associated with the code generation job. (pattern: &lt;code&gt;d&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The CodegenJobAsset to use for the code generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoGenerateForms" /></td>
+    <td><CopyableCode code="auto_generate_forms" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether to autogenerate forms in the code generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the code generation job was created.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>Lists the dependency packages that may be required for the project code to run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment associated with the code generation job.</td>
 </tr>
@@ -91,17 +91,17 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the feature flags that you can specify for a code generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="genericDataSchema" /></td>
+    <td><CopyableCode code="generic_data_schema" /></td>
     <td><code>object</code></td>
     <td>Describes the data schema for a code generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the code generation job was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="renderConfig" /></td>
+    <td><CopyableCode code="render_config" /></td>
     <td><code>object</code></td>
     <td>Describes the configuration information for rendering the UI component associated with the code generation job.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the code generation job. (in_progress, failed, succeeded)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The customized status message for the code generation job.</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ID for the code generation job summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amplify app associated with the code generation job. (pattern: &lt;code&gt;d&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the code generation job summary was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment associated with the code generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the code generation job summary was modified.</td>
 </tr>
@@ -258,18 +258,18 @@ Returns an existing code generation job.
 ```sql
 SELECT
 id,
-appId,
+app_id,
 asset,
-autoGenerateForms,
-createdAt,
+auto_generate_forms,
+created_at,
 dependencies,
-environmentName,
+environment_name,
 features,
-genericDataSchema,
-modifiedAt,
-renderConfig,
+generic_data_schema,
+modified_at,
+render_config,
 status,
-statusMessage,
+status_message,
 tags
 FROM aws.amplifyuibuilder.codegen_jobs
 WHERE app_id = '{{ app_id }}' -- required
@@ -286,10 +286,10 @@ Retrieves a list of code generation jobs for a specified Amplify app and backend
 ```sql
 SELECT
 id,
-appId,
-createdAt,
-environmentName,
-modifiedAt
+app_id,
+created_at,
+environment_name,
+modified_at
 FROM aws.amplifyuibuilder.codegen_jobs
 WHERE app_id = '{{ app_id }}' -- required
 AND environment_name = '{{ environment_name }}' -- required

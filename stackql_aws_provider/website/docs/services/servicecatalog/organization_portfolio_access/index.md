@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The organization node type. (ORGANIZATION, ORGANIZATIONAL_UNIT, ACCOUNT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The identifier of the organization node. (pattern: &lt;code&gt;(^&#91;0-9&#93;&#123;12&#125;$)|(^arn:aws:organizations::\d&#123;12&#125;:organization\/o-&#91;a-z0-9&#93;&#123;10,32&#125;)|(^o-&#91;a-z0-9&#93;&#123;10,32&#125;$)|(^arn:aws:organizations::\d&#123;12&#125;:ou\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;0-9a-z&#93;&#123;8,32&#125;$)|(^ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;$)&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the organization nodes that have access to the specified portfolio. This A
 
 ```sql
 SELECT
-Type,
-Value
+type,
+value
 FROM aws.servicecatalog.organization_portfolio_access
 WHERE region = '{{ region }}' -- required
 ;

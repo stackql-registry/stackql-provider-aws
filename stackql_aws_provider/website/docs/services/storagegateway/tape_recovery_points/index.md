@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TapeARN" /></td>
+    <td><CopyableCode code="tape_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the virtual tape. (pattern: &lt;code&gt;arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):storagegateway:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;+:tape\/&#91;0-9A-Z&#93;&#123;5,16&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeRecoveryPointTime" /></td>
+    <td><CopyableCode code="tape_recovery_point_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the point-in-time view of the virtual tape was replicated for later recovery. The default timestamp format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeSizeInBytes" /></td>
+    <td><CopyableCode code="tape_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of the virtual tapes to recover.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeStatus" /></td>
+    <td><CopyableCode code="tape_status" /></td>
     <td><code>string</code></td>
     <td>The status of the virtual tapes.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a list of virtual tape recovery points that are available for the specif
 
 ```sql
 SELECT
-TapeARN,
-TapeRecoveryPointTime,
-TapeSizeInBytes,
-TapeStatus
+tape_arn,
+tape_recovery_point_time,
+tape_size_in_bytes,
+tape_status
 FROM aws.storagegateway.tape_recovery_points
 WHERE region = '{{ region }}' -- required
 ;

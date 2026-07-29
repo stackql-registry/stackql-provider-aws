@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>A UUID that is used to track the update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp at object creation.</td>
 </tr>
@@ -208,7 +208,7 @@ Describes an update to an Amazon EKS resource. When the status of the update is 
 ```sql
 SELECT
 id,
-createdAt,
+created_at,
 errors,
 params,
 status,

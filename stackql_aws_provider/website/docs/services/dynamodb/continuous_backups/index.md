@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContinuousBackupsStatus" /></td>
+    <td><CopyableCode code="continuous_backups_status" /></td>
     <td><code>string</code></td>
     <td>ContinuousBackupsStatus can be one of the following states: ENABLED, DISABLED (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PointInTimeRecoveryDescription" /></td>
+    <td><CopyableCode code="point_in_time_recovery_description" /></td>
     <td><code>object</code></td>
     <td>The description of the point in time recovery settings applied to the table.</td>
 </tr>
@@ -131,8 +131,8 @@ Checks the status of continuous backups and point in time recovery on the specif
 
 ```sql
 SELECT
-ContinuousBackupsStatus,
-PointInTimeRecoveryDescription
+continuous_backups_status,
+point_in_time_recovery_description
 FROM aws.dynamodb.continuous_backups
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND TableName = '{{ TableName }}' --required
 AND PointInTimeRecoverySpecification = '{{ PointInTimeRecoverySpecification }}' --required
 RETURNING
-ContinuousBackupsDescription;
+continuous_backups_description;
 ```
 </TabItem>
 </Tabs>

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the intent. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the intent was created.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the intent was updated. When you create an intent, the creation date and last updated date are the same.</td>
 </tr>
@@ -174,9 +174,9 @@ Gets information about all of the versions of an intent. The GetIntentVersions o
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
+last_updated_date,
 version
 FROM aws.lex_models.intent_versions
 WHERE name = '{{ name }}' -- required
@@ -215,20 +215,20 @@ SELECT
 RETURNING
 name,
 checksum,
-conclusionStatement,
-confirmationPrompt,
-createdDate,
+conclusion_statement,
+confirmation_prompt,
+created_date,
 description,
-dialogCodeHook,
-followUpPrompt,
-fulfillmentActivity,
-inputContexts,
-kendraConfiguration,
-lastUpdatedDate,
-outputContexts,
-parentIntentSignature,
-rejectionStatement,
-sampleUtterances,
+dialog_code_hook,
+follow_up_prompt,
+fulfillment_activity,
+input_contexts,
+kendra_configuration,
+last_updated_date,
+output_contexts,
+parent_intent_signature,
+rejection_statement,
+sample_utterances,
 slots,
 version
 ;

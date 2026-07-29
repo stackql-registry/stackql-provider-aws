@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the OpenSearch UI application. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;3,30&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityConfig" /></td>
+    <td><CopyableCode code="capability_config" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for the capability, including capability-specific settings such as AI configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityName" /></td>
+    <td><CopyableCode code="capability_name" /></td>
     <td><code>string</code></td>
     <td>The name of a capability. Must be between 3 and 30 characters and contain only alphanumeric characters and hyphens. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -163,9 +163,9 @@ Retrieves information about a registered capability for an OpenSearch UI applica
 
 ```sql
 SELECT
-applicationId,
-capabilityConfig,
-capabilityName,
+application_id,
+capability_config,
+capability_name,
 failures,
 status
 FROM aws.opensearch.capabilities
@@ -204,9 +204,9 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-applicationId,
-capabilityConfig,
-capabilityName,
+application_id,
+capability_config,
+capability_name,
 status
 ;
 ```

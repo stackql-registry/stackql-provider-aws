@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Export" /></td>
+    <td><CopyableCode code="export" /></td>
     <td><code>object</code></td>
     <td>The data for this specific export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportStatus" /></td>
+    <td><CopyableCode code="export_status" /></td>
     <td><code>object</code></td>
     <td>The status of this specific export.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExportArn" /></td>
+    <td><CopyableCode code="export_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for this export. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:(bcm-data-exports):&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;-a-zA-Z0-9/:_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportName" /></td>
+    <td><CopyableCode code="export_name" /></td>
     <td><code>string</code></td>
     <td>The name of this specific data export. (pattern: &lt;code&gt;&#91;0-9A-Za-z\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportStatus" /></td>
+    <td><CopyableCode code="export_status" /></td>
     <td><code>object</code></td>
     <td>The status of this specific data export.</td>
 </tr>
@@ -183,8 +183,8 @@ Views the definition of an existing data export.
 
 ```sql
 SELECT
-Export,
-ExportStatus
+export,
+export_status
 FROM aws.bcm_data_exports.exports
 WHERE region = '{{ region }}' -- required
 ;
@@ -196,9 +196,9 @@ Lists all data export definitions.
 
 ```sql
 SELECT
-ExportArn,
-ExportName,
-ExportStatus
+export_arn,
+export_name,
+export_status
 FROM aws.bcm_data_exports.exports
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,7 +231,7 @@ SELECT
 '{{ ResourceTags }}',
 '{{ region }}'
 RETURNING
-ExportArn
+export_arn
 ;
 ```
 </TabItem>
@@ -299,7 +299,7 @@ WHERE
 region = '{{ region }}' --required
 AND ExportArn = '{{ ExportArn }}' --required
 RETURNING
-ExportArn;
+export_arn;
 ```
 </TabItem>
 </Tabs>

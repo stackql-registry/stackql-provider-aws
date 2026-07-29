@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventDataStoreArn" /></td>
+    <td><CopyableCode code="event_data_store_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the source event data store that enabled Insights events. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightSelectors" /></td>
+    <td><CopyableCode code="insight_selectors" /></td>
     <td><code>array</code></td>
     <td>Contains the Insights types that are enabled on a trail or event data store. It also specifies the event categories on which a particular Insight type is enabled. ApiCallRateInsight and ApiErrorRateInsight are valid Insight types.The EventCategory field can specify Management or Data events or both. For event data store, you can log Insights for management events only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightsDestination" /></td>
+    <td><CopyableCode code="insights_destination" /></td>
     <td><code>string</code></td>
     <td>The ARN of the destination event data store that logs Insights events. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrailARN" /></td>
+    <td><CopyableCode code="trail_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a trail for which you want to get Insights selectors.</td>
 </tr>
@@ -141,10 +141,10 @@ Describes the settings for the Insights event selectors that you configured for 
 
 ```sql
 SELECT
-EventDataStoreArn,
-InsightSelectors,
-InsightsDestination,
-TrailARN
+event_data_store_arn,
+insight_selectors,
+insights_destination,
+trail_arn
 FROM aws.cloudtrail.insight_selectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,10 +176,10 @@ WHERE
 region = '{{ region }}' --required
 AND InsightSelectors = '{{ InsightSelectors }}' --required
 RETURNING
-EventDataStoreArn,
-InsightSelectors,
-InsightsDestination,
-TrailARN;
+event_data_store_arn,
+insight_selectors,
+insights_destination,
+trail_arn;
 ```
 </TabItem>
 </Tabs>

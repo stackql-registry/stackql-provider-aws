@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="apiAccess" /></td>
+    <td><CopyableCode code="api_access" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the user can use the GetProgrammaticAccessCredentials API to obtain credentials that can then be used to access other FinSpace Data API operations. ENABLED – The user has permissions to use the APIs. DISABLED – The user does not have permissions to use any APIs. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiAccessPrincipalArn" /></td>
+    <td><CopyableCode code="api_access_principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of an AWS user or role that is allowed to call the GetProgrammaticAccessCredentials API to obtain a credentials token for a specific FinSpace user. This must be an IAM role within your FinSpace account. (pattern: &lt;code&gt;^arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="emailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address of the user. The email address serves as a uniquer identifier for each user and cannot be changed after it's created. (pattern: &lt;code&gt;&#91;A-Za-z0-9._%+-&#93;+@&#91;A-Za-z0-9.-&#93;+\.&#91;A-Za-z&#93;&#123;2,4&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstName" /></td>
+    <td><CopyableCode code="first_name" /></td>
     <td><code>string</code></td>
     <td>The first name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDisabledTime" /></td>
+    <td><CopyableCode code="last_disabled_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastEnabledTime" /></td>
+    <td><CopyableCode code="last_enabled_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastLoginTime" /></td>
+    <td><CopyableCode code="last_login_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastName" /></td>
+    <td><CopyableCode code="last_name" /></td>
     <td><code>string</code></td>
     <td>The last name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates the type of user. SUPER_USER – A user with permission to all the functionality and data in FinSpace. APP_USER – A user with specific permissions in FinSpace. The users are assigned permissions by adding them to a permission group. (SUPER_USER, APP_USER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -130,52 +130,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="apiAccess" /></td>
+    <td><CopyableCode code="api_access" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the user can use the GetProgrammaticAccessCredentials API to obtain credentials that can then be used to access other FinSpace Data API operations. ENABLED – The user has permissions to use the APIs. DISABLED – The user does not have permissions to use any APIs. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiAccessPrincipalArn" /></td>
+    <td><CopyableCode code="api_access_principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of an AWS user or role that is allowed to call the GetProgrammaticAccessCredentials API to obtain a credentials token for a specific FinSpace user. This must be an IAM role within your FinSpace account. (pattern: &lt;code&gt;^arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="emailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address that is associated with the user. (pattern: &lt;code&gt;&#91;A-Za-z0-9._%+-&#93;+@&#91;A-Za-z0-9.-&#93;+\.&#91;A-Za-z&#93;&#123;2,4&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstName" /></td>
+    <td><CopyableCode code="first_name" /></td>
     <td><code>string</code></td>
     <td>The first name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDisabledTime" /></td>
+    <td><CopyableCode code="last_disabled_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastEnabledTime" /></td>
+    <td><CopyableCode code="last_enabled_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastLoginTime" /></td>
+    <td><CopyableCode code="last_login_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastName" /></td>
+    <td><CopyableCode code="last_name" /></td>
     <td><code>string</code></td>
     <td>The last name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -190,7 +190,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates the type of user. SUPER_USER – A user with permission to all the functionality and data in FinSpace. APP_USER – A user with specific permissions in FinSpace. The users are assigned permissions by adding them to a permission group. (SUPER_USER, APP_USER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the user that is retrieved. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -317,19 +317,19 @@ Lists all available users in FinSpace.
 
 ```sql
 SELECT
-apiAccess,
-apiAccessPrincipalArn,
-createTime,
-emailAddress,
-firstName,
-lastDisabledTime,
-lastEnabledTime,
-lastLoginTime,
-lastModifiedTime,
-lastName,
+api_access,
+api_access_principal_arn,
+create_time,
+email_address,
+first_name,
+last_disabled_time,
+last_enabled_time,
+last_login_time,
+last_modified_time,
+last_name,
 status,
 type_,
-userId
+user_id
 FROM aws.finspace_data.users
 WHERE maxResults = '{{ maxResults }}' -- required
 AND region = '{{ region }}' -- required
@@ -343,19 +343,19 @@ Retrieves details for a specific user.
 
 ```sql
 SELECT
-apiAccess,
-apiAccessPrincipalArn,
-createTime,
-emailAddress,
-firstName,
-lastDisabledTime,
-lastEnabledTime,
-lastLoginTime,
-lastModifiedTime,
-lastName,
+api_access,
+api_access_principal_arn,
+create_time,
+email_address,
+first_name,
+last_disabled_time,
+last_enabled_time,
+last_login_time,
+last_modified_time,
+last_name,
 status,
 type_,
-userId
+user_id
 FROM aws.finspace_data.users
 WHERE user_id = '{{ user_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -399,7 +399,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-userId
+user_id
 ;
 ```
 </TabItem>
@@ -460,7 +460,7 @@ WHERE
 user_id = '{{ user_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-userId;
+user_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Dimension" /></td>
+    <td><CopyableCode code="dimension" /></td>
     <td><code>string</code></td>
     <td>The dimension values that identify this specific data point, such as account ID, region, and instance family.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricValues" /></td>
+    <td><CopyableCode code="metric_values" /></td>
     <td><code>string</code></td>
     <td>The metric values and statistics for this data point, containing the actual capacity usage numbers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp for this data point, indicating when the capacity usage occurred.</td>
 </tr>
@@ -174,9 +174,9 @@ Retrieves capacity usage metrics for your EC2 resources. Returns time-series dat
 
 ```sql
 SELECT
-Dimension,
-MetricValues,
-Timestamp
+dimension,
+metric_values,
+timestamp
 FROM aws.ec2.capacity_manager_metric_datas
 WHERE MetricName = '{{ MetricName }}' -- required
 AND StartTime = '{{ StartTime }}' -- required

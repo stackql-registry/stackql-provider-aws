@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of findings that were found.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notFound" /></td>
+    <td><CopyableCode code="not_found" /></td>
     <td><code>array</code></td>
     <td>The list of finding identifiers that were not found.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent space associated with the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeReviewId" /></td>
+    <td><CopyableCode code="code_review_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code review associated with the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codeReviewJobId" /></td>
+    <td><CopyableCode code="code_review_job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the code review job that produced the finding.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
     <td>Finding confidence level. (FALSE_POSITIVE, UNCONFIRMED, LOW, MEDIUM, HIGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the finding was created, in UTC format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingId" /></td>
+    <td><CopyableCode code="finding_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pentestId" /></td>
+    <td><CopyableCode code="pentest_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the pentest associated with the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pentestJobId" /></td>
+    <td><CopyableCode code="pentest_job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the pentest job that produced the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="riskLevel" /></td>
+    <td><CopyableCode code="risk_level" /></td>
     <td><code>string</code></td>
     <td>Risk severity level. (UNKNOWN, INFORMATIONAL, LOW, MEDIUM, HIGH, CRITICAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="riskType" /></td>
+    <td><CopyableCode code="risk_type" /></td>
     <td><code>string</code></td>
     <td>The type of security risk identified by the finding.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>Finding status. (ACTIVE, RESOLVED, ACCEPTED, FALSE_POSITIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the finding was last updated, in UTC format.</td>
 </tr>
@@ -220,7 +220,7 @@ Retrieves information about one or more security findings in an agent space.
 ```sql
 SELECT
 findings,
-notFound
+not_found
 FROM aws.securityagent.findings
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,18 +233,18 @@ Lists the security findings for a pentest job.
 ```sql
 SELECT
 name,
-agentSpaceId,
-codeReviewId,
-codeReviewJobId,
+agent_space_id,
+code_review_id,
+code_review_job_id,
 confidence,
-createdAt,
-findingId,
-pentestId,
-pentestJobId,
-riskLevel,
-riskType,
+created_at,
+finding_id,
+pentest_id,
+pentest_job_id,
+risk_level,
+risk_type,
 status,
-updatedAt
+updated_at
 FROM aws.securityagent.findings
 WHERE region = '{{ region }}' -- required
 ;

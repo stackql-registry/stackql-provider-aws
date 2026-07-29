@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actualUsageAmount" /></td>
+    <td><CopyableCode code="actual_usage_amount" /></td>
     <td><code>number (double)</code></td>
     <td>Describes the actual usage accrued month-to-day (MTD) that you've used so far.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Free Tier offer. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="forecastedUsageAmount" /></td>
+    <td><CopyableCode code="forecasted_usage_amount" /></td>
     <td><code>number (double)</code></td>
     <td>Describes the forecasted usage by the month that you're expected to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="freeTierType" /></td>
+    <td><CopyableCode code="free_tier_type" /></td>
     <td><code>string</code></td>
     <td>Describes the type of the Free Tier offer. For example, the offer can be "12 Months Free", "Always Free", and "Free Trial". (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the unit of the usageType, such as Hrs. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>Describes the usage details of the offer. For example, this might be Global-BoxUsage:freetrial. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -164,16 +164,16 @@ Returns a list of all Free Tier usage objects that match your filters.
 
 ```sql
 SELECT
-actualUsageAmount,
+actual_usage_amount,
 description,
-forecastedUsageAmount,
-freeTierType,
+forecasted_usage_amount,
+free_tier_type,
 limit,
 operation,
 region,
 service,
 unit,
-usageType
+usage_type
 FROM aws.freetier.free_tier_usages
 WHERE region = '{{ region }}' -- required
 ;

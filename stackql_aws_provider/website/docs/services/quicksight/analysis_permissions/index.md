@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalysisArn" /></td>
+    <td><CopyableCode code="analysis_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the analysis whose permissions you're describing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnalysisId" /></td>
+    <td><CopyableCode code="analysis_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the analysis whose permissions you're describing. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A structure that describes the principals and the resource-level permissions on an analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -156,11 +156,11 @@ Provides the read and write permissions for an analysis.
 
 ```sql
 SELECT
-AnalysisArn,
-AnalysisId,
-Permissions,
-RequestId,
-Status
+analysis_arn,
+analysis_id,
+permissions,
+request_id,
+status
 FROM aws.quicksight.analysis_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND analysis_id = '{{ analysis_id }}' -- required
@@ -193,11 +193,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND analysis_id = '{{ analysis_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AnalysisArn,
-AnalysisId,
-Permissions,
-RequestId,
-Status;
+analysis_arn,
+analysis_id,
+permissions,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

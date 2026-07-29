@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date (in Unix epoch time) when the test suite run ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorReason" /></td>
+    <td><CopyableCode code="error_reason" /></td>
     <td><code>string</code></td>
     <td>Error reason for any test suite run failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date (in Unix epoch time) when the test suite run started.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>Status for the test suite run. (PASS, FAIL, CANCELED, PENDING, RUNNING, STOPPING, STOPPED, PASS_WITH_WARNINGS, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteDefinitionId" /></td>
+    <td><CopyableCode code="suite_definition_id" /></td>
     <td><code>string</code></td>
     <td>Suite definition ID for the test suite run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteDefinitionVersion" /></td>
+    <td><CopyableCode code="suite_definition_version" /></td>
     <td><code>string</code></td>
     <td>Suite definition version for the test suite run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteRunArn" /></td>
+    <td><CopyableCode code="suite_run_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the suite run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteRunConfiguration" /></td>
+    <td><CopyableCode code="suite_run_configuration" /></td>
     <td><code>object</code></td>
     <td>Suite run configuration for the test suite run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteRunId" /></td>
+    <td><CopyableCode code="suite_run_id" /></td>
     <td><code>string</code></td>
     <td>Suite run ID for the test suite run.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags attached to the suite run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testResult" /></td>
+    <td><CopyableCode code="test_result" /></td>
     <td><code>object</code></td>
     <td>Test results for the test suite run.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteRunsList" /></td>
+    <td><CopyableCode code="suite_runs_list" /></td>
     <td><code>array</code></td>
     <td>An array of objects that provide summaries of information about the suite runs in the list.</td>
 </tr>
@@ -232,17 +232,17 @@ Gets information about a Device Advisor test suite run. Requires permission to a
 
 ```sql
 SELECT
-endTime,
-errorReason,
-startTime,
+end_time,
+error_reason,
+start_time,
 status,
-suiteDefinitionId,
-suiteDefinitionVersion,
-suiteRunArn,
-suiteRunConfiguration,
-suiteRunId,
+suite_definition_id,
+suite_definition_version,
+suite_run_arn,
+suite_run_configuration,
+suite_run_id,
 tags,
-testResult
+test_result
 FROM aws.iotdeviceadvisor.suite_runs
 WHERE suite_definition_id = '{{ suite_definition_id }}' -- required
 AND suite_run_id = '{{ suite_run_id }}' -- required
@@ -256,8 +256,8 @@ Lists runs of the specified Device Advisor test suite. You can list all runs of 
 
 ```sql
 SELECT
-nextToken,
-suiteRunsList
+next_token,
+suite_runs_list
 FROM aws.iotdeviceadvisor.suite_runs
 WHERE region = '{{ region }}' -- required
 AND suiteDefinitionId = '{{ suiteDefinitionId }}'

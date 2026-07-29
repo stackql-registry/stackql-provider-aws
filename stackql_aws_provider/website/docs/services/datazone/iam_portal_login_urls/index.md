@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authCodeUrl" /></td>
+    <td><CopyableCode code="auth_code_url" /></td>
     <td><code>string</code></td>
     <td>The data portal URL of the specified Amazon DataZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userProfileId" /></td>
+    <td><CopyableCode code="user_profile_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user profile.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets the data portal URL for the specified Amazon DataZone domain.
 
 ```sql
 SELECT
-authCodeUrl,
-userProfileId
+auth_code_url,
+user_profile_id
 FROM aws.datazone.iam_portal_login_urls
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required

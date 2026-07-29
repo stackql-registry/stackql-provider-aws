@@ -60,32 +60,32 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier for the event. The event ARN has the arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID format. For example, an event ARN might look like the following: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456 (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+(-&#91;a-z&#93;+)?)?:health:&#91;^:&#93;*:&#91;^:&#93;*:event(?:/&#91;\w-&#93;+)&#123;3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Availability Zone of the event. For example, us-east-1a. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2,4&#125;\-&#91;0-9a-z\-&#93;&#123;4,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the event ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventScopeCode" /></td>
+    <td><CopyableCode code="event_scope_code" /></td>
     <td><code>string</code></td>
     <td>This parameter specifies if the Health event is a public Amazon Web Services service event or an account-specific event. If the eventScopeCode value is PUBLIC, then the affectedAccounts value is always empty. If the eventScopeCode value is ACCOUNT_SPECIFIC, then the affectedAccounts value lists the affected Amazon Web Services accounts in your organization. For example, if an event affects a service such as Amazon Elastic Compute Cloud and you have Amazon Web Services accounts that use that service, those account IDs appear in the response. If the eventScopeCode value is NONE, then the eventArn that you specified in the request is invalid or doesn't exist. (PUBLIC, ACCOUNT_SPECIFIC, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTypeCategory" /></td>
+    <td><CopyableCode code="event_type_category" /></td>
     <td><code>string</code></td>
     <td>A list of event type category codes. Possible values are issue, accountNotification, or scheduledChange. Currently, the investigation value isn't supported at this time. (issue, accountNotification, scheduledChange, investigation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTypeCode" /></td>
+    <td><CopyableCode code="event_type_code" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the event type. The format is AWS_SERVICE_DESCRIPTION ; for example, AWS_EC2_SYSTEM_MAINTENANCE_EVENT. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\_\-&#93;&#123;3,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date and time that the event was updated.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services service that is affected by the event. For example, EC2, RDS. (pattern: &lt;code&gt;&#91;^:/&#93;&#123;2,30&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the event began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The most recent status of the event. Possible values are open, closed, and upcoming. (open, closed, upcoming)</td>
 </tr>
@@ -181,17 +181,17 @@ Returns information about events that meet the specified filter criteria. Events
 SELECT
 actionability,
 arn,
-availabilityZone,
-endTime,
-eventScopeCode,
-eventTypeCategory,
-eventTypeCode,
-lastUpdatedTime,
+availability_zone,
+end_time,
+event_scope_code,
+event_type_category,
+event_type_code,
+last_updated_time,
 personas,
 region,
 service,
-startTime,
-statusCode
+start_time,
+status_code
 FROM aws.health.events
 WHERE region = '{{ region }}' -- required
 ;

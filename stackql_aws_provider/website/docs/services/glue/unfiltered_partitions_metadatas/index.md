@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, if the returned list of partitions does not include the last one.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnfilteredPartitions" /></td>
+    <td><CopyableCode code="unfiltered_partitions" /></td>
     <td><code>array</code></td>
     <td>A list of requested partitions.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves partition metadata from the Data Catalog that contains unfiltered meta
 
 ```sql
 SELECT
-NextToken,
-UnfilteredPartitions
+next_token,
+unfiltered_partitions
 FROM aws.glue.unfiltered_partitions_metadatas
 WHERE region = '{{ region }}' -- required
 ;

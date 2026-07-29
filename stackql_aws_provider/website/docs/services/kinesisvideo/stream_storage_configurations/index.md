@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="StreamARN" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the stream. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamName" /></td>
+    <td><CopyableCode code="stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamStorageConfiguration" /></td>
+    <td><CopyableCode code="stream_storage_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for stream storage, including the default storage tier for stream data. This configuration determines how stream data is stored and accessed, with different tiers offering varying levels of performance and cost optimization.</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves the current storage configuration for the specified Kinesis video stre
 
 ```sql
 SELECT
-StreamARN,
-StreamName,
-StreamStorageConfiguration
+stream_arn,
+stream_name,
+stream_storage_configuration
 FROM aws.kinesisvideo.stream_storage_configurations
 WHERE region = '{{ region }}' -- required
 ;

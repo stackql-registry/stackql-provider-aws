@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency of the transaction.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsValidExchange" /></td>
+    <td><CopyableCode code="is_valid_exchange" /></td>
     <td><code>boolean</code></td>
     <td>If true, the exchange is valid. If false, the exchange cannot be completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputReservedInstancesWillExpireAt" /></td>
+    <td><CopyableCode code="output_reserved_instances_will_expire_at" /></td>
     <td><code>string</code></td>
     <td>The new end date of the reservation term.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentDue" /></td>
+    <td><CopyableCode code="payment_due" /></td>
     <td><code>string</code></td>
     <td>The total true upfront charge for the exchange.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstanceValueRollup" /></td>
+    <td><CopyableCode code="reserved_instance_value_rollup" /></td>
     <td><code>string</code></td>
     <td>The cost associated with the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstanceValueSet" /></td>
+    <td><CopyableCode code="reserved_instance_value_set" /></td>
     <td><code>string</code></td>
     <td>The configuration of your Convertible Reserved Instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetConfigurationValueRollup" /></td>
+    <td><CopyableCode code="target_configuration_value_rollup" /></td>
     <td><code>string</code></td>
     <td>The cost associated with the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetConfigurationValueSet" /></td>
+    <td><CopyableCode code="target_configuration_value_set" /></td>
     <td><code>string</code></td>
     <td>The values of the target Convertible Reserved Instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationFailureReason" /></td>
+    <td><CopyableCode code="validation_failure_reason" /></td>
     <td><code>string</code></td>
     <td>Describes the reason why the exchange cannot be completed.</td>
 </tr>
@@ -174,15 +174,15 @@ Returns a quote and exchange information for exchanging one or more specified Co
 
 ```sql
 SELECT
-CurrencyCode,
-IsValidExchange,
-OutputReservedInstancesWillExpireAt,
-PaymentDue,
-ReservedInstanceValueRollup,
-ReservedInstanceValueSet,
-TargetConfigurationValueRollup,
-TargetConfigurationValueSet,
-ValidationFailureReason
+currency_code,
+is_valid_exchange,
+output_reserved_instances_will_expire_at,
+payment_due,
+reserved_instance_value_rollup,
+reserved_instance_value_set,
+target_configuration_value_rollup,
+target_configuration_value_set,
+validation_failure_reason
 FROM aws.ec2.reserved_instances_exchange_quotes
 WHERE ReservedInstanceId = '{{ ReservedInstanceId }}' -- required
 AND region = '{{ region }}' -- required

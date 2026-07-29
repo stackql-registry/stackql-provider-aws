@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="logFields" /></td>
+    <td><CopyableCode code="log_fields" /></td>
     <td><code>array</code></td>
     <td>The list of log fields for the specified data source, including field names and their data types.</td>
 </tr>
@@ -119,7 +119,7 @@ Discovers available fields for a specific data source and type. The response inc
 
 ```sql
 SELECT
-logFields
+log_fields
 FROM aws.logs.log_fields
 WHERE region = '{{ region }}' -- required
 ;

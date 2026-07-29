@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the member account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="delegatedAdminAccountId" /></td>
+    <td><CopyableCode code="delegated_admin_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Amazon Inspector delegated administrator for this member account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The status of the member account. (CREATED, INVITED, DISABLED, ENABLED, REMOVED, RESIGNED, DELETED, EMAIL_VERIFICATION_IN_PROGRESS, EMAIL_VERIFICATION_FAILED, REGION_DISABLED, ACCOUNT_SUSPENDED, CANNOT_CREATE_DETECTOR_IN_ORG_MASTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp showing when the status of this member was last updated.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the member account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="delegatedAdminAccountId" /></td>
+    <td><CopyableCode code="delegated_admin_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Amazon Inspector delegated administrator for this member account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The status of the member account. (CREATED, INVITED, DISABLED, ENABLED, REMOVED, RESIGNED, DELETED, EMAIL_VERIFICATION_IN_PROGRESS, EMAIL_VERIFICATION_FAILED, REGION_DISABLED, ACCOUNT_SUSPENDED, CANNOT_CREATE_DETECTOR_IN_ORG_MASTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp showing when the status of this member was last updated.</td>
 </tr>
@@ -191,10 +191,10 @@ Gets member information for your organization.
 
 ```sql
 SELECT
-accountId,
-delegatedAdminAccountId,
-relationshipStatus,
-updatedAt
+account_id,
+delegated_admin_account_id,
+relationship_status,
+updated_at
 FROM aws.inspector2.members
 WHERE region = '{{ region }}' -- required
 ;
@@ -206,10 +206,10 @@ List members associated with the Amazon Inspector delegated administrator for yo
 
 ```sql
 SELECT
-accountId,
-delegatedAdminAccountId,
-relationshipStatus,
-updatedAt
+account_id,
+delegated_admin_account_id,
+relationship_status,
+updated_at
 FROM aws.inspector2.members
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,7 +238,7 @@ WHERE
 region = '{{ region }}' --required
 AND accountId = '{{ accountId }}' --required
 RETURNING
-accountId;
+account_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DateEnabled" /></td>
+    <td><CopyableCode code="date_enabled" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the service principal was enabled for integration with Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServicePrincipal" /></td>
+    <td><CopyableCode code="service_principal" /></td>
     <td><code>string</code></td>
     <td>The name of the service principal. This is typically in the form of a URL, such as: servicename.amazonaws.com. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of the Amazon Web Services services that you enabled to integrate
 
 ```sql
 SELECT
-DateEnabled,
-ServicePrincipal
+date_enabled,
+service_principal
 FROM aws.organizations.aws_service_access_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

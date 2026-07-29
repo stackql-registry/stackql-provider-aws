@@ -119,7 +119,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Challenge
+challenge
 ;
 ```
 </TabItem>

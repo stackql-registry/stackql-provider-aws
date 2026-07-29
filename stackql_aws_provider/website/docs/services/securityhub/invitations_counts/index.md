@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InvitationsCount" /></td>
+    <td><CopyableCode code="invitations_count" /></td>
     <td><code>integer</code></td>
     <td>The number of all membership invitations sent to this Security Hub CSPM member account, not including the currently accepted invitation.</td>
 </tr>
@@ -119,7 +119,7 @@ We recommend using Organizations instead of Security Hub CSPM invitations to man
 
 ```sql
 SELECT
-InvitationsCount
+invitations_count
 FROM aws.securityhub.invitations_counts
 WHERE region = '{{ region }}' -- required
 ;

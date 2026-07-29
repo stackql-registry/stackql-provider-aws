@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of tags associated with the specified Kinesis resource.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HasMoreTags" /></td>
+    <td><CopyableCode code="has_more_tags" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, more tags are available. To request additional tags, set ExclusiveStartTagKey to the key of the last tag returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with StreamName, starting with the first tag after ExclusiveStartTagKey and up to the specified Limit.</td>
 </tr>
@@ -180,7 +180,7 @@ List all tags added to the specified Kinesis resource. Each tag is a label consi
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.kinesis.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -192,8 +192,8 @@ Lists the tags for the specified Kinesis data stream. This operation has a limit
 
 ```sql
 SELECT
-HasMoreTags,
-Tags
+has_more_tags,
+tags
 FROM aws.kinesis.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MaxQueryTCU" /></td>
+    <td><CopyableCode code="max_query_tcu" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of Timestream compute units (TCUs) the service will use at any point in time to serve your queries. To run queries, you must set a minimum capacity of 4 TCU. You can set the maximum number of TCU in multiples of 4, for example, 4, 8, 16, 32, and so on. This configuration is applicable only for on-demand usage of (TCUs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryCompute" /></td>
+    <td><CopyableCode code="query_compute" /></td>
     <td><code>object</code></td>
     <td>An object that contains the usage settings for Timestream Compute Units (TCUs) in your account for the query workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryPricingModel" /></td>
+    <td><CopyableCode code="query_pricing_model" /></td>
     <td><code>string</code></td>
     <td>The pricing model for queries in your account. The QueryPricingModel parameter is used by several Timestream operations; however, the UpdateAccountSettings API operation doesn't recognize any values other than COMPUTE_UNITS. (BYTES_SCANNED, COMPUTE_UNITS)</td>
 </tr>
@@ -136,9 +136,9 @@ Describes the settings for your account that include the query pricing model and
 
 ```sql
 SELECT
-MaxQueryTCU,
-QueryCompute,
-QueryPricingModel
+max_query_tcu,
+query_compute,
+query_pricing_model
 FROM aws.timestream_query.account_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,9 +168,9 @@ QueryCompute = '{{ QueryCompute }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-MaxQueryTCU,
-QueryCompute,
-QueryPricingModel;
+max_query_tcu,
+query_compute,
+query_pricing_model;
 ```
 </TabItem>
 </Tabs>

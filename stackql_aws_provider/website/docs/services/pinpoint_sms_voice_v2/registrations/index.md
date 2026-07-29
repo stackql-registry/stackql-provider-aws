@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalAttributes" /></td>
+    <td><CopyableCode code="additional_attributes" /></td>
     <td><code>object</code></td>
     <td>Metadata about a given registration which is specific to that registration type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovedVersionNumber" /></td>
+    <td><CopyableCode code="approved_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the registration that was approved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the registration was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentVersionNumber" /></td>
+    <td><CopyableCode code="current_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The current version number of the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeniedVersionNumber" /></td>
+    <td><CopyableCode code="latest_denied_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The latest version number of the registration that was denied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationArn" /></td>
+    <td><CopyableCode code="registration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationId" /></td>
+    <td><CopyableCode code="registration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationStatus" /></td>
+    <td><CopyableCode code="registration_status" /></td>
     <td><code>string</code></td>
     <td>The status of the registration. CLOSED: The phone number or sender ID has been deleted and you must also delete the registration for the number. CREATED: Your registration is created but not submitted. COMPLETE: Your registration has been approved and your origination identity has been created. DELETED: The registration has been deleted. PROVISIONING: Your registration has been approved and your origination identity is being created. REQUIRES_AUTHENTICATION: You need to complete email authentication. REQUIRES_UPDATES: You must fix your registration and resubmit it. REVIEWING: Your registration has been accepted and is being reviewed. SUBMITTED: Your registration has been submitted and is awaiting review. (CREATED, SUBMITTED, AWS_REVIEWING, REVIEWING, REQUIRES_AUTHENTICATION, PROVISIONING, COMPLETE, REQUIRES_UPDATES, CLOSED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationType" /></td>
+    <td><CopyableCode code="registration_type" /></td>
     <td><code>string</code></td>
     <td>The type of registration form. The list of RegistrationTypes can be found using the DescribeRegistrationTypeDefinitions action. (pattern: &lt;code&gt;&#91;A-Za-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -187,15 +187,15 @@ Retrieves the specified registrations.
 
 ```sql
 SELECT
-AdditionalAttributes,
-ApprovedVersionNumber,
-CreatedTimestamp,
-CurrentVersionNumber,
-LatestDeniedVersionNumber,
-RegistrationArn,
-RegistrationId,
-RegistrationStatus,
-RegistrationType
+additional_attributes,
+approved_version_number,
+created_timestamp,
+current_version_number,
+latest_denied_version_number,
+registration_arn,
+registration_id,
+registration_status,
+registration_type
 FROM aws.pinpoint_sms_voice_v2.registrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,14 +230,14 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-AdditionalAttributes,
-CreatedTimestamp,
-CurrentVersionNumber,
-RegistrationArn,
-RegistrationId,
-RegistrationStatus,
-RegistrationType,
-Tags
+additional_attributes,
+created_timestamp,
+current_version_number,
+registration_arn,
+registration_id,
+registration_status,
+registration_type,
+tags
 ;
 ```
 </TabItem>

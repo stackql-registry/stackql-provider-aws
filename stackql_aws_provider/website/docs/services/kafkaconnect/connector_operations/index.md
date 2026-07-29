@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorOperationArn" /></td>
+    <td><CopyableCode code="connector_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorOperationState" /></td>
+    <td><CopyableCode code="connector_operation_state" /></td>
     <td><code>string</code></td>
     <td>The state of the connector operation. (PENDING, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_FAILED, ROLLBACK_COMPLETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorOperationType" /></td>
+    <td><CopyableCode code="connector_operation_type" /></td>
     <td><code>string</code></td>
     <td>The type of connector operation performed. (UPDATE_WORKER_SETTING, UPDATE_CONNECTOR_CONFIGURATION, ISOLATE_CONNECTOR, RESTORE_CONNECTOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the operation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the operation ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Details about the state of a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationSteps" /></td>
+    <td><CopyableCode code="operation_steps" /></td>
     <td><code>array</code></td>
     <td>The array of operation steps taken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originConnectorConfiguration" /></td>
+    <td><CopyableCode code="origin_connector_configuration" /></td>
     <td><code>object</code></td>
     <td>The origin connector configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originWorkerSetting" /></td>
+    <td><CopyableCode code="origin_worker_setting" /></td>
     <td><code>object</code></td>
     <td>The origin worker setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetConnectorConfiguration" /></td>
+    <td><CopyableCode code="target_connector_configuration" /></td>
     <td><code>object</code></td>
     <td>The target connector configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetWorkerSetting" /></td>
+    <td><CopyableCode code="target_worker_setting" /></td>
     <td><code>object</code></td>
     <td>The target worker setting.</td>
 </tr>
@@ -125,27 +125,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectorOperationArn" /></td>
+    <td><CopyableCode code="connector_operation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connector operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorOperationState" /></td>
+    <td><CopyableCode code="connector_operation_state" /></td>
     <td><code>string</code></td>
     <td>The state of the connector operation. (PENDING, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_FAILED, ROLLBACK_COMPLETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorOperationType" /></td>
+    <td><CopyableCode code="connector_operation_type" /></td>
     <td><code>string</code></td>
     <td>The type of connector operation performed. (UPDATE_WORKER_SETTING, UPDATE_CONNECTOR_CONFIGURATION, ISOLATE_CONNECTOR, RESTORE_CONNECTOR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when operation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when operation ended.</td>
 </tr>
@@ -242,18 +242,18 @@ Returns information about the specified connector's operations.
 
 ```sql
 SELECT
-connectorArn,
-connectorOperationArn,
-connectorOperationState,
-connectorOperationType,
-creationTime,
-endTime,
-errorInfo,
-operationSteps,
-originConnectorConfiguration,
-originWorkerSetting,
-targetConnectorConfiguration,
-targetWorkerSetting
+connector_arn,
+connector_operation_arn,
+connector_operation_state,
+connector_operation_type,
+creation_time,
+end_time,
+error_info,
+operation_steps,
+origin_connector_configuration,
+origin_worker_setting,
+target_connector_configuration,
+target_worker_setting
 FROM aws.kafkaconnect.connector_operations
 WHERE connector_operation_arn = '{{ connector_operation_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,11 +266,11 @@ Lists information about a connector's operation(s).
 
 ```sql
 SELECT
-connectorOperationArn,
-connectorOperationState,
-connectorOperationType,
-creationTime,
-endTime
+connector_operation_arn,
+connector_operation_state,
+connector_operation_type,
+creation_time,
+end_time
 FROM aws.kafkaconnect.connector_operations
 WHERE connector_arn = '{{ connector_arn }}' -- required
 AND region = '{{ region }}' -- required

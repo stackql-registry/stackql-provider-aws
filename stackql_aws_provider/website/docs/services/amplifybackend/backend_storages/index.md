@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The app ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackendEnvironmentName" /></td>
+    <td><CopyableCode code="backend_environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceConfig" /></td>
+    <td><CopyableCode code="resource_config" /></td>
     <td><code>object</code></td>
     <td>The resource configuration for the backend storage resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the storage resource.</td>
 </tr>
@@ -165,10 +165,10 @@ Gets details for a backend storage resource.
 
 ```sql
 SELECT
-AppId,
-BackendEnvironmentName,
-ResourceConfig,
-ResourceName
+app_id,
+backend_environment_name,
+resource_config,
+resource_name
 FROM aws.amplifybackend.backend_storages
 WHERE app_id = '{{ app_id }}' -- required
 AND backend_environment_name = '{{ backend_environment_name }}' -- required
@@ -207,10 +207,10 @@ SELECT
 '{{ app_id }}',
 '{{ region }}'
 RETURNING
-AppId,
-BackendEnvironmentName,
-JobId,
-Status
+app_id,
+backend_environment_name,
+job_id,
+status
 ;
 ```
 </TabItem>
@@ -270,10 +270,10 @@ AND region = '{{ region }}' --required
 AND ResourceConfig = '{{ ResourceConfig }}' --required
 AND ResourceName = '{{ ResourceName }}' --required
 RETURNING
-AppId,
-BackendEnvironmentName,
-JobId,
-Status;
+app_id,
+backend_environment_name,
+job_id,
+status;
 ```
 </TabItem>
 </Tabs>

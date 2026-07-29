@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The image ID that identifies the Windows fast launch enabled image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplate" /></td>
+    <td><CopyableCode code="launch_template" /></td>
     <td><code>string</code></td>
     <td>The launch template that the Windows fast launch enabled AMI uses when it launches Windows instances from pre-provisioned snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxParallelLaunches" /></td>
+    <td><CopyableCode code="max_parallel_launches" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of instances that Amazon EC2 can launch at the same time to create pre-provisioned snapshots for Windows fast launch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The owner ID for the Windows fast launch enabled AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type that Amazon EC2 uses for pre-provisioning the Windows AMI. Supported values include: snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotConfiguration" /></td>
+    <td><CopyableCode code="snapshot_configuration" /></td>
     <td><code>string</code></td>
     <td>A group of parameters that are used for pre-provisioning the associated Windows AMI using snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of Windows fast launch for the specified Windows AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateTransitionReason" /></td>
+    <td><CopyableCode code="state_transition_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that Windows fast launch for the AMI changed to the current state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateTransitionTime" /></td>
+    <td><CopyableCode code="state_transition_time" /></td>
     <td><code>string</code></td>
     <td>The time that Windows fast launch for the AMI changed to the current state.</td>
 </tr>
@@ -184,15 +184,15 @@ Describe details for Windows AMIs that are configured for Windows fast launch.
 
 ```sql
 SELECT
-ImageId,
-LaunchTemplate,
-MaxParallelLaunches,
-OwnerId,
-ResourceType,
-SnapshotConfiguration,
-State,
-StateTransitionReason,
-StateTransitionTime
+image_id,
+launch_template,
+max_parallel_launches,
+owner_id,
+resource_type,
+snapshot_configuration,
+state,
+state_transition_reason,
+state_transition_time
 FROM aws.ec2.fast_launch_images
 WHERE region = '{{ region }}' -- required
 AND ImageId = '{{ ImageId }}'

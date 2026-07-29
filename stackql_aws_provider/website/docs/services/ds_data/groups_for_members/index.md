@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupScope" /></td>
+    <td><CopyableCode code="group_scope" /></td>
     <td><code>string</code></td>
     <td>The scope of the AD group. For details, see Active Directory security groups. (DomainLocal, Global, Universal, BuiltinLocal)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupType" /></td>
+    <td><CopyableCode code="group_type" /></td>
     <td><code>string</code></td>
     <td>The AD group type. For details, see Active Directory security group type. (Distribution, Security)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SAMAccountName" /></td>
+    <td><CopyableCode code="sam_account_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group. (pattern: &lt;code&gt;^&#91;^:;|=+"*?&lt;&gt;/\\,\&#91;\&#93;@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SID" /></td>
+    <td><CopyableCode code="sid" /></td>
     <td><code>string</code></td>
     <td>The unique security identifier (SID) of the group.</td>
 </tr>
@@ -139,10 +139,10 @@ Returns group information for the specified member. This operation supports pagi
 
 ```sql
 SELECT
-GroupScope,
-GroupType,
-SAMAccountName,
-SID
+group_scope,
+group_type,
+sam_account_name,
+sid
 FROM aws.ds_data.groups_for_members
 WHERE DirectoryId = '{{ DirectoryId }}' -- required
 AND region = '{{ region }}' -- required

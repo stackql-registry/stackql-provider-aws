@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the resource-based policy was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The JSON formatted string that contains the resource-based policy attached to the End User Messaging SMS resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the End User Messaging SMS resource attached to the resource-based policy. (pattern: &lt;code&gt;arn:&#91;A-Za-z0-9_:/-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves the JSON text of the resource-based policy document attached to the En
 
 ```sql
 SELECT
-CreatedTimestamp,
-Policy,
-ResourceArn
+created_timestamp,
+policy,
+resource_arn
 FROM aws.pinpoint_sms_voice_v2.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -175,9 +175,9 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-CreatedTimestamp,
-Policy,
-ResourceArn;
+created_timestamp,
+policy,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

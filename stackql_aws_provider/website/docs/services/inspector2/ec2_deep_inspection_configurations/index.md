@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message explaining why Amazon Inspector deep inspection configurations could not be retrieved for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="orgPackagePaths" /></td>
+    <td><CopyableCode code="org_package_paths" /></td>
     <td><code>array</code></td>
     <td>The Amazon Inspector deep inspection custom paths for your organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packagePaths" /></td>
+    <td><CopyableCode code="package_paths" /></td>
     <td><code>array</code></td>
     <td>The Amazon Inspector deep inspection custom paths for your account.</td>
 </tr>
@@ -148,9 +148,9 @@ Retrieves the activation status of Amazon Inspector deep inspection and custom p
 
 ```sql
 SELECT
-errorMessage,
-orgPackagePaths,
-packagePaths,
+error_message,
+org_package_paths,
+package_paths,
 status
 FROM aws.inspector2.ec2_deep_inspection_configurations
 WHERE region = '{{ region }}' -- required
@@ -194,9 +194,9 @@ packagePaths = '{{ packagePaths }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-errorMessage,
-orgPackagePaths,
-packagePaths,
+error_message,
+org_package_paths,
+package_paths,
 status;
 ```
 </TabItem>

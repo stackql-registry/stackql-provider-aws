@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CostCategoryArn" /></td>
+    <td><CopyableCode code="cost_category_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for your cost category. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;-a-zA-Z0-9/:_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CostCategoryName" /></td>
+    <td><CopyableCode code="cost_category_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the cost category. (pattern: &lt;code&gt;^(?! )&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;Z&#125;-_&#93;*(?&lt;! )$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for an associated resource. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;-a-zA-Z0-9/:_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns resource associations of all cost categories defined in the account. You
 
 ```sql
 SELECT
-CostCategoryArn,
-CostCategoryName,
-ResourceArn
+cost_category_arn,
+cost_category_name,
+resource_arn
 FROM aws.ce.cost_category_resource_associations
 WHERE region = '{{ region }}' -- required
 ;

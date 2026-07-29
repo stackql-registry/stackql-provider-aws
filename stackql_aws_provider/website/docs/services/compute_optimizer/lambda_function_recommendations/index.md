@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentMemorySize" /></td>
+    <td><CopyableCode code="current_memory_size" /></td>
     <td><code>integer</code></td>
     <td>The amount of memory, in MB, that's allocated to the current function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentPerformanceRisk" /></td>
+    <td><CopyableCode code="current_performance_risk" /></td>
     <td><code>string</code></td>
     <td>The risk of the current Lambda function not meeting the performance needs of its workloads. The higher the risk, the more likely the current Lambda function requires more memory. (VeryLow, Low, Medium, High)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveRecommendationPreferences" /></td>
+    <td><CopyableCode code="effective_recommendation_preferences" /></td>
     <td><code>object</code></td>
     <td>Describes the effective recommendation preferences for Lambda functions.</td>
 </tr>
@@ -75,37 +75,37 @@ The following fields are returned by `SELECT` queries:
     <td>The finding classification of the function. Findings for functions include: Optimized — The function is correctly provisioned to run your workload based on its current configuration and its utilization history. This finding classification does not include finding reason codes. NotOptimized — The function is performing at a higher level (over-provisioned) or at a lower level (under-provisioned) than required for your workload because its current configuration is not optimal. Over-provisioned resources might lead to unnecessary infrastructure cost, and under-provisioned resources might lead to poor application performance. This finding classification can include the MemoryUnderprovisioned and MemoryUnderprovisioned finding reason codes. Unavailable — Compute Optimizer was unable to generate a recommendation for the function. This could be because the function has not accumulated sufficient metric data, or the function does not qualify for a recommendation. This finding classification can include the InsufficientData and Inconclusive finding reason codes. Functions with a finding of unavailable are not returned unless you specify the filter parameter with a value of Unavailable in your GetLambdaFunctionRecommendations request. (Optimized, NotOptimized, Unavailable)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingReasonCodes" /></td>
+    <td><CopyableCode code="finding_reason_codes" /></td>
     <td><code>array</code></td>
     <td>The reason for the finding classification of the function. Functions that have a finding classification of Optimized don't have a finding reason code. Finding reason codes for functions include: MemoryOverprovisioned — The function is over-provisioned when its memory configuration can be sized down while still meeting the performance requirements of your workload. An over-provisioned function might lead to unnecessary infrastructure cost. This finding reason code is part of the NotOptimized finding classification. MemoryUnderprovisioned — The function is under-provisioned when its memory configuration doesn't meet the performance requirements of the workload. An under-provisioned function might lead to poor application performance. This finding reason code is part of the NotOptimized finding classification. InsufficientData — The function does not have sufficient metric data for Compute Optimizer to generate a recommendation. For more information, see the Supported resources and requirements in the Compute Optimizer User Guide. This finding reason code is part of the Unavailable finding classification. Inconclusive — The function does not qualify for a recommendation because Compute Optimizer cannot generate a recommendation with a high degree of confidence. This finding reason code is part of the Unavailable finding classification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the current function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="functionVersion" /></td>
+    <td><CopyableCode code="function_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the current function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRefreshTimestamp" /></td>
+    <td><CopyableCode code="last_refresh_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the function recommendation was last generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lookbackPeriodInDays" /></td>
+    <td><CopyableCode code="lookback_period_in_days" /></td>
     <td><code>number (double)</code></td>
     <td>The number of days for which utilization metrics were analyzed for the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeRecommendationOptions" /></td>
+    <td><CopyableCode code="memory_size_recommendation_options" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the memory configuration recommendation options for the function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfInvocations" /></td>
+    <td><CopyableCode code="number_of_invocations" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of times your function code was applied during the look-back period.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of tags assigned to your Lambda function recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="utilizationMetrics" /></td>
+    <td><CopyableCode code="utilization_metrics" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the utilization metrics of the function.</td>
 </tr>
@@ -191,20 +191,20 @@ Returns Lambda function recommendations. Compute Optimizer generates recommendat
 
 ```sql
 SELECT
-accountId,
-currentMemorySize,
-currentPerformanceRisk,
-effectiveRecommendationPreferences,
+account_id,
+current_memory_size,
+current_performance_risk,
+effective_recommendation_preferences,
 finding,
-findingReasonCodes,
-functionArn,
-functionVersion,
-lastRefreshTimestamp,
-lookbackPeriodInDays,
-memorySizeRecommendationOptions,
-numberOfInvocations,
+finding_reason_codes,
+function_arn,
+function_version,
+last_refresh_timestamp,
+lookback_period_in_days,
+memory_size_recommendation_options,
+number_of_invocations,
 tags,
-utilizationMetrics
+utilization_metrics
 FROM aws.compute_optimizer.lambda_function_recommendations
 WHERE region = '{{ region }}' -- required
 ;

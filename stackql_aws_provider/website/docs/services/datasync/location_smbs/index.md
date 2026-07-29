@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentArns" /></td>
+    <td><CopyableCode code="agent_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the DataSync agents that can connect with your SMB file server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The authentication protocol that DataSync uses to connect to your SMB file server. (NTLM, KERBEROS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmkSecretConfig" /></td>
+    <td><CopyableCode code="cmk_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as a Password or KerberosKeytab that DataSync uses to access a specific storage location, with a customer-managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the SMB location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomSecretConfig" /></td>
+    <td><CopyableCode code="custom_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a customer-managed secret, such as a Password or KerberosKeytab that DataSync uses to access a specific storage location, with a customer-managed Identity and Access Management (IAM) role that provides access to the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsIpAddresses" /></td>
+    <td><CopyableCode code="dns_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>The IPv4 or IPv6 addresses for the DNS servers that your SMB file server belongs to. This element applies only if AuthenticationType is set to KERBEROS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The name of the Windows domain that the SMB file server belongs to. This element applies only if AuthenticationType is set to NTLM. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;((\.|-+)?&#91;A-Za-z0-9&#93;)&#123;0,252&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KerberosPrincipal" /></td>
+    <td><CopyableCode code="kerberos_principal" /></td>
     <td><code>string</code></td>
     <td>The Kerberos principal that has permission to access the files, folders, and file metadata in your SMB file server. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the SMB location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the SMB location. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedSecretConfig" /></td>
+    <td><CopyableCode code="managed_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as a Password or KerberosKeytab that DataSync uses to access a specific storage location. DataSync uses the default Amazon Web Services-managed KMS key to encrypt this secret in Secrets Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MountOptions" /></td>
+    <td><CopyableCode code="mount_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the version of the Server Message Block (SMB) protocol that DataSync uses to access an SMB file server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="User" /></td>
+    <td><CopyableCode code="user" /></td>
     <td><code>string</code></td>
     <td>The user that can mount and access the files, folders, and file metadata in your SMB file server. This element applies only if AuthenticationType is set to NTLM. (pattern: &lt;code&gt;^&#91;^\x22\x5B\x5D/\\:;|=,+*?\x3C\x3E&#93;&#123;1,104&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -193,19 +193,19 @@ Provides details about how an DataSync transfer location for a Server Message Bl
 
 ```sql
 SELECT
-AgentArns,
-AuthenticationType,
-CmkSecretConfig,
-CreationTime,
-CustomSecretConfig,
-DnsIpAddresses,
-Domain,
-KerberosPrincipal,
-LocationArn,
-LocationUri,
-ManagedSecretConfig,
-MountOptions,
-User
+agent_arns,
+authentication_type,
+cmk_secret_config,
+creation_time,
+custom_secret_config,
+dns_ip_addresses,
+domain,
+kerberos_principal,
+location_arn,
+location_uri,
+managed_secret_config,
+mount_options,
+user
 FROM aws.datasync.location_smbs
 WHERE region = '{{ region }}' -- required
 ;
@@ -264,7 +264,7 @@ SELECT
 '{{ KerberosKrb5Conf }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

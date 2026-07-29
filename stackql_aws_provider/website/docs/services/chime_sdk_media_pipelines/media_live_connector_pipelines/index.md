@@ -109,7 +109,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MediaLiveConnectorPipeline
+media_live_connector_pipeline
 ;
 ```
 </TabItem>

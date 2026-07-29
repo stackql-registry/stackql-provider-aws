@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppsList" /></td>
+    <td><CopyableCode code="apps_list" /></td>
     <td><code>object</code></td>
     <td>Information about the specified Firewall Manager applications list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppsListArn" /></td>
+    <td><CopyableCode code="apps_list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the applications list. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppsList" /></td>
+    <td><CopyableCode code="apps_list" /></td>
     <td><code>array</code></td>
     <td>An array of App objects in the Firewall Manager applications list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListArn" /></td>
+    <td><CopyableCode code="list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the applications list. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListId" /></td>
+    <td><CopyableCode code="list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the applications list. (pattern: &lt;code&gt;^&#91;a-z0-9A-Z-&#93;&#123;36&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListName" /></td>
+    <td><CopyableCode code="list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the applications list. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -181,8 +181,8 @@ Returns information about the specified Firewall Manager applications list.
 
 ```sql
 SELECT
-AppsList,
-AppsListArn
+apps_list,
+apps_list_arn
 FROM aws.fms.apps_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,10 +194,10 @@ Returns an array of AppsListDataSummary objects.
 
 ```sql
 SELECT
-AppsList,
-ListArn,
-ListId,
-ListName
+apps_list,
+list_arn,
+list_id,
+list_name
 FROM aws.fms.apps_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,8 +227,8 @@ WHERE
 region = '{{ region }}' --required
 AND AppsList = '{{ AppsList }}' --required
 RETURNING
-AppsList,
-AppsListArn;
+apps_list,
+apps_list_arn;
 ```
 </TabItem>
 </Tabs>

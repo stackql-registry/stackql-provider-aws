@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="UserBackgroundSessionApplicationStatus" /></td>
+    <td><CopyableCode code="user_background_session_application_status" /></td>
     <td><code>string</code></td>
     <td>The status of user background sessions for the application. (ENABLED, DISABLED)</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves the session configuration for an application in IAM Identity Center. T
 
 ```sql
 SELECT
-UserBackgroundSessionApplicationStatus
+user_background_session_application_status
 FROM aws.sso_admin.application_session_configurations
 WHERE region = '{{ region }}' -- required
 ;

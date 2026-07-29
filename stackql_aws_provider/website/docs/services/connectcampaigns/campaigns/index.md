@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The resource name of an Amazon Connect campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectInstanceId" /></td>
+    <td><CopyableCode code="connect_instance_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Connect Instance Id (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dialerConfig" /></td>
+    <td><CopyableCode code="dialer_config" /></td>
     <td><code>object</code></td>
     <td>The possible types of dialer config parameters</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outboundCallConfig" /></td>
+    <td><CopyableCode code="outbound_call_config" /></td>
     <td><code>object</code></td>
     <td>The configuration used for outbound calls.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resource name of an Amazon Connect campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectInstanceId" /></td>
+    <td><CopyableCode code="connect_instance_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Connect Instance Id (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-.&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -235,9 +235,9 @@ SELECT
 id,
 name,
 arn,
-connectInstanceId,
-dialerConfig,
-outboundCallConfig,
+connect_instance_id,
+dialer_config,
+outbound_call_config,
 tags
 FROM aws.connectcampaigns.campaigns
 WHERE id = '{{ id }}' -- required
@@ -254,7 +254,7 @@ SELECT
 id,
 name,
 arn,
-connectInstanceId
+connect_instance_id
 FROM aws.connectcampaigns.campaigns
 WHERE region = '{{ region }}' -- required
 ;

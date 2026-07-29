@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>string</code></td>
     <td>The PoliciesGrantingServiceAccess object that contains details about the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceNamespace" /></td>
+    <td><CopyableCode code="service_namespace" /></td>
     <td><code>string</code></td>
     <td>The namespace of the service that was accessed. To learn the service namespace of a service, see Actions, resources, and condition keys for Amazon Web Services services in the Service Authorization Reference. Choose the name of the service to view details for that service. In the first paragraph, find the service prefix. For example, (service prefix: a4b). For more information about service namespaces, see Amazon Web Services service namespaces in the Amazon Web Services General Reference.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieves a list of policies that the IAM identity (user, group, or role) can us
 
 ```sql
 SELECT
-Policies,
-ServiceNamespace
+policies,
+service_namespace
 FROM aws.iam.policies_granting_service_access
 WHERE ServiceNamespaces = '{{ ServiceNamespaces }}' -- required
 AND region = '{{ region }}' -- required

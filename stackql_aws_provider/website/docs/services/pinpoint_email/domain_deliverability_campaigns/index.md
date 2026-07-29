@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainDeliverabilityCampaigns" /></td>
+    <td><CopyableCode code="domain_deliverability_campaigns" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each campaign that used the domain to send email during the specified time range.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that’s returned from a previous call to the ListDomainDeliverabilityCampaigns operation. This token indicates the position of the campaign in the list of campaigns.</td>
 </tr>
@@ -75,72 +75,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CampaignId" /></td>
+    <td><CopyableCode code="campaign_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the campaign. Amazon Pinpoint automatically generates and assigns this identifier to a campaign. This value is not the same as the campaign identifier that Amazon Pinpoint assigns to campaigns that you create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeleteRate" /></td>
+    <td><CopyableCode code="delete_rate" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of email messages that were deleted by recipients, without being opened first. Due to technical limitations, this value only includes recipients who opened the message by using an email client that supports images.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Esps" /></td>
+    <td><CopyableCode code="esps" /></td>
     <td><code>array</code></td>
     <td>The major email providers who handled the email message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstSeenDateTime" /></td>
+    <td><CopyableCode code="first_seen_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The first time, in Unix time format, when the email message was delivered to any recipient's inbox. This value can help you determine how long it took for a campaign to deliver an email message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FromAddress" /></td>
+    <td><CopyableCode code="from_address" /></td>
     <td><code>string</code></td>
     <td>The verified email address that the email message was sent from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageUrl" /></td>
+    <td><CopyableCode code="image_url" /></td>
     <td><code>string</code></td>
     <td>The URL of an image that contains a snapshot of the email message that was sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InboxCount" /></td>
+    <td><CopyableCode code="inbox_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of email messages that were delivered to recipients’ inboxes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSeenDateTime" /></td>
+    <td><CopyableCode code="last_seen_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time, in Unix time format, when the email message was delivered to any recipient's inbox. This value can help you determine how long it took for a campaign to deliver an email message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectedVolume" /></td>
+    <td><CopyableCode code="projected_volume" /></td>
     <td><code>integer (int64)</code></td>
     <td>The projected number of recipients that the email message was sent to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadDeleteRate" /></td>
+    <td><CopyableCode code="read_delete_rate" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of email messages that were opened and then deleted by recipients. Due to technical limitations, this value only includes recipients who opened the message by using an email client that supports images.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadRate" /></td>
+    <td><CopyableCode code="read_rate" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of email messages that were opened by recipients. Due to technical limitations, this value only includes recipients who opened the message by using an email client that supports images.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingIps" /></td>
+    <td><CopyableCode code="sending_ips" /></td>
     <td><code>array</code></td>
     <td>The IP addresses that were used to send the email message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpamCount" /></td>
+    <td><CopyableCode code="spam_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of email messages that were delivered to recipients' spam or junk mail folders.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subject" /></td>
+    <td><CopyableCode code="subject" /></td>
     <td><code>string</code></td>
     <td>The subject line, or title, of the email message.</td>
 </tr>
@@ -247,8 +247,8 @@ Retrieve deliverability data for all the campaigns that used a specific domain t
 
 ```sql
 SELECT
-DomainDeliverabilityCampaigns,
-NextToken
+domain_deliverability_campaigns,
+next_token
 FROM aws.pinpoint_email.domain_deliverability_campaigns
 WHERE StartDate = '{{ StartDate }}' -- required
 AND EndDate = '{{ EndDate }}' -- required
@@ -265,20 +265,20 @@ Retrieve all the deliverability data for a specific campaign. This data is avail
 
 ```sql
 SELECT
-CampaignId,
-DeleteRate,
-Esps,
-FirstSeenDateTime,
-FromAddress,
-ImageUrl,
-InboxCount,
-LastSeenDateTime,
-ProjectedVolume,
-ReadDeleteRate,
-ReadRate,
-SendingIps,
-SpamCount,
-Subject
+campaign_id,
+delete_rate,
+esps,
+first_seen_date_time,
+from_address,
+image_url,
+inbox_count,
+last_seen_date_time,
+projected_volume,
+read_delete_rate,
+read_rate,
+sending_ips,
+spam_count,
+subject
 FROM aws.pinpoint_email.domain_deliverability_campaigns
 WHERE campaign_id = '{{ campaign_id }}' -- required
 AND region = '{{ region }}' -- required

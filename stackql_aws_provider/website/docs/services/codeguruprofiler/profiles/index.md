@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentEncoding" /></td>
+    <td><CopyableCode code="content_encoding" /></td>
     <td><code>string</code></td>
     <td>The content encoding of the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the profile in the payload. It is either application/json or the default application/x-amzn-ion.</td>
 </tr>
@@ -159,8 +159,8 @@ Gets the aggregated profile of a profiling group for a specified time range. Ama
 
 ```sql
 SELECT
-contentEncoding,
-contentType,
+content_encoding,
+content_type,
 profile
 FROM aws.codeguruprofiler.profiles
 WHERE profiling_group_name = '{{ profiling_group_name }}' -- required

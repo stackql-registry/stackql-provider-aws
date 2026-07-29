@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KMSServerSideEncryption" /></td>
+    <td><CopyableCode code="kms_server_side_encryption" /></td>
     <td><code>object</code></td>
     <td>Information about whether DevOps Guru is configured to encrypt server-side data using KMS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogsAnomalyDetection" /></td>
+    <td><CopyableCode code="logs_anomaly_detection" /></td>
     <td><code>object</code></td>
     <td>Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsCenter" /></td>
+    <td><CopyableCode code="ops_center" /></td>
     <td><code>object</code></td>
     <td>Information about whether DevOps Guru is configured to create an OpsItem in Amazon Web Services Systems Manager OpsCenter for each created insight.</td>
 </tr>
@@ -136,9 +136,9 @@ Returns the integration status of services that are integrated with DevOps Guru.
 
 ```sql
 SELECT
-KMSServerSideEncryption,
-LogsAnomalyDetection,
-OpsCenter
+kms_server_side_encryption,
+logs_anomaly_detection,
+ops_center
 FROM aws.devops_guru.service_integrations
 WHERE region = '{{ region }}' -- required
 ;

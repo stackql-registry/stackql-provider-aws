@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressTransferStatus" /></td>
+    <td><CopyableCode code="address_transfer_status" /></td>
     <td><code>string</code></td>
     <td>The Elastic IP address transfer status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocationId" /></td>
+    <td><CopyableCode code="allocation_id" /></td>
     <td><code>string</code></td>
     <td>The allocation ID of an Elastic IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIp" /></td>
+    <td><CopyableCode code="public_ip" /></td>
     <td><code>string</code></td>
     <td>The Elastic IP address being transferred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransferAccountId" /></td>
+    <td><CopyableCode code="transfer_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that you want to transfer the Elastic IP address to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransferOfferAcceptedTimestamp" /></td>
+    <td><CopyableCode code="transfer_offer_accepted_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the Elastic IP address transfer was accepted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransferOfferExpirationTimestamp" /></td>
+    <td><CopyableCode code="transfer_offer_expiration_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the Elastic IP address transfer expired. When the source account starts the transfer, the transfer account has seven hours to allocate the Elastic IP address to complete the transfer, or the Elastic IP address will return to its original owner.</td>
 </tr>
@@ -164,12 +164,12 @@ Describes an Elastic IP address transfer. For more information, see Transfer Ela
 
 ```sql
 SELECT
-AddressTransferStatus,
-AllocationId,
-PublicIp,
-TransferAccountId,
-TransferOfferAcceptedTimestamp,
-TransferOfferExpirationTimestamp
+address_transfer_status,
+allocation_id,
+public_ip,
+transfer_account_id,
+transfer_offer_accepted_timestamp,
+transfer_offer_expiration_timestamp
 FROM aws.ec2.address_transfers
 WHERE region = '{{ region }}' -- required
 AND AllocationId = '{{ AllocationId }}'

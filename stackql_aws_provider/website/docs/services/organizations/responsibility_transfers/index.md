@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveHandshakeId" /></td>
+    <td><CopyableCode code="active_handshake_id" /></td>
     <td><code>string</code></td>
     <td>ID for the handshake of the transfer. (pattern: &lt;code&gt;^h-&#91;0-9a-z&#93;&#123;8,32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the transfer. (pattern: &lt;code&gt;^arn:&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;0,62&#125;:organizations::\d&#123;12&#125;:transfer\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/(billing)\/(inbound|outbound)\/rt-&#91;0-9a-z&#93;&#123;8,32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the transfer ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID for the transfer. (pattern: &lt;code&gt;^rt-&#91;0-9a-z&#93;&#123;8,32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name assigned to the transfer. (pattern: &lt;code&gt;^&#91; -~&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>Account that allows another account external to its organization to manage the specified responsibilities for the organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the transfer starts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the transfer. (REQUESTED, DECLINED, CANCELED, EXPIRED, ACCEPTED, WITHDRAWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>object</code></td>
     <td>Account that manages the specified responsibilities for another organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of transfer. Currently, only BILLING is supported. (BILLING)</td>
 </tr>
@@ -178,16 +178,16 @@ Returns details for a transfer. A transfer is an arrangement between two managem
 
 ```sql
 SELECT
-ActiveHandshakeId,
-Arn,
-EndTimestamp,
-Id,
-Name,
-Source,
-StartTimestamp,
-Status,
-Target,
-Type
+active_handshake_id,
+arn,
+end_timestamp,
+id,
+name,
+source,
+start_timestamp,
+status,
+target,
+type
 FROM aws.organizations.responsibility_transfers
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,7 +218,7 @@ region = '{{ region }}' --required
 AND Id = '{{ Id }}' --required
 AND Name = '{{ Name }}' --required
 RETURNING
-ResponsibilityTransfer;
+responsibility_transfer;
 ```
 </TabItem>
 </Tabs>

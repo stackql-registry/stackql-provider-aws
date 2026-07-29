@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the owner of the application. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachMissingPermission" /></td>
+    <td><CopyableCode code="attach_missing_permission" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, the managed policies for SSM and CW will be attached to the instance roles if they are missing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoConfigEnabled" /></td>
+    <td><CopyableCode code="auto_config_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether auto-configuration is turned on for this application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CWEMonitorEnabled" /></td>
+    <td><CopyableCode code="cwe_monitor_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscoveryType" /></td>
+    <td><CopyableCode code="discovery_type" /></td>
     <td><code>string</code></td>
     <td>The method used by Application Insights to onboard your resources. (RESOURCE_GROUP_BASED, ACCOUNT_BASED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycle" /></td>
+    <td><CopyableCode code="life_cycle" /></td>
     <td><code>string</code></td>
     <td>The lifecycle of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsCenterEnabled" /></td>
+    <td><CopyableCode code="ops_center_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Application Insights will create opsItems for any problem detected by Application Insights for an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemSNSTopicArn" /></td>
+    <td><CopyableCode code="ops_item_sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The SNS topic provided to Application Insights that is associated to the created opsItems to receive SNS notifications for opsItem updates. (pattern: &lt;code&gt;^arn:aws(-\w+)*:&#91;\w\d-&#93;+:(&#91;\w\d-&#93;*)?:&#91;\w\d_-&#93;*(&#91;:/&#93;.+)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Remarks" /></td>
+    <td><CopyableCode code="remarks" /></td>
     <td><code>string</code></td>
     <td>The issues on the user side that block Application Insights from successfully monitoring an application. Example remarks include: “Configuring application, detected 1 Errors, 3 Warnings” “Configuring application, detected 1 Unconfigured Components”</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceGroupName" /></td>
+    <td><CopyableCode code="resource_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group used for the application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SNSNotificationArn" /></td>
+    <td><CopyableCode code="sns_notification_arn" /></td>
     <td><code>string</code></td>
     <td>The SNS topic ARN that is associated with SNS notifications for updates or issues. (pattern: &lt;code&gt;^arn:aws(-\w+)*:&#91;\w\d-&#93;+:(&#91;\w\d-&#93;*)?:&#91;\w\d_-&#93;*(&#91;:/&#93;.+)*$&lt;/code&gt;)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationInfoList" /></td>
+    <td><CopyableCode code="application_info_list" /></td>
     <td><code>array</code></td>
     <td>The list of applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -223,17 +223,17 @@ Describes the application.
 
 ```sql
 SELECT
-AccountId,
-AttachMissingPermission,
-AutoConfigEnabled,
-CWEMonitorEnabled,
-DiscoveryType,
-LifeCycle,
-OpsCenterEnabled,
-OpsItemSNSTopicArn,
-Remarks,
-ResourceGroupName,
-SNSNotificationArn
+account_id,
+attach_missing_permission,
+auto_config_enabled,
+cwe_monitor_enabled,
+discovery_type,
+life_cycle,
+ops_center_enabled,
+ops_item_sns_topic_arn,
+remarks,
+resource_group_name,
+sns_notification_arn
 FROM aws.application_insights.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,8 +245,8 @@ Lists the IDs of the applications that you are monitoring.
 
 ```sql
 SELECT
-ApplicationInfoList,
-NextToken
+application_info_list,
+next_token
 FROM aws.application_insights.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -295,7 +295,7 @@ SELECT
 {{ AttachMissingPermission }},
 '{{ region }}'
 RETURNING
-ApplicationInfo
+application_info
 ;
 ```
 </TabItem>
@@ -383,7 +383,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceGroupName = '{{ ResourceGroupName }}' --required
 RETURNING
-ApplicationInfo;
+application_info;
 ```
 </TabItem>
 </Tabs>

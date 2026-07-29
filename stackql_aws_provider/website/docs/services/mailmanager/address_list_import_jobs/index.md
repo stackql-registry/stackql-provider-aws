@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressListId" /></td>
+    <td><CopyableCode code="address_list_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the address list the import job was created for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedTimestamp" /></td>
+    <td><CopyableCode code="completed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the import job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>The reason for failure of an import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedItemsCount" /></td>
+    <td><CopyableCode code="failed_items_count" /></td>
     <td><code>integer</code></td>
     <td>The number of input addresses that failed to be imported into the address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportDataFormat" /></td>
+    <td><CopyableCode code="import_data_format" /></td>
     <td><code>object</code></td>
     <td>The format of the input for an import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportedItemsCount" /></td>
+    <td><CopyableCode code="imported_items_count" /></td>
     <td><code>integer</code></td>
     <td>The number of input addresses successfully imported into the address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the import job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-friendly name for the import job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreSignedUrl" /></td>
+    <td><CopyableCode code="pre_signed_url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed URL target for uploading the input file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the import job was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the import job. (CREATED, PROCESSING, COMPLETED, FAILED, STOPPED)</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressListId" /></td>
+    <td><CopyableCode code="address_list_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the address list the import job was created for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedTimestamp" /></td>
+    <td><CopyableCode code="completed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the import job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>The reason for failure of an import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedItemsCount" /></td>
+    <td><CopyableCode code="failed_items_count" /></td>
     <td><code>integer</code></td>
     <td>The number of addresses in the input that failed to get imported into address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportDataFormat" /></td>
+    <td><CopyableCode code="import_data_format" /></td>
     <td><code>object</code></td>
     <td>The format of the input for the import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportedItemsCount" /></td>
+    <td><CopyableCode code="imported_items_count" /></td>
     <td><code>integer</code></td>
     <td>The number of addresses in the input that were successfully imported into the address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the import job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-friendly name for the import job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreSignedUrl" /></td>
+    <td><CopyableCode code="pre_signed_url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed URL target for uploading the input file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the import job was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the import job. (CREATED, PROCESSING, COMPLETED, FAILED, STOPPED)</td>
 </tr>
@@ -264,18 +264,18 @@ Fetch attributes of an import job.
 
 ```sql
 SELECT
-AddressListId,
-CompletedTimestamp,
-CreatedTimestamp,
-Error,
-FailedItemsCount,
-ImportDataFormat,
-ImportedItemsCount,
-JobId,
-Name,
-PreSignedUrl,
-StartTimestamp,
-Status
+address_list_id,
+completed_timestamp,
+created_timestamp,
+error,
+failed_items_count,
+import_data_format,
+imported_items_count,
+job_id,
+name,
+pre_signed_url,
+start_timestamp,
+status
 FROM aws.mailmanager.address_list_import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -287,18 +287,18 @@ Lists jobs for an address list.
 
 ```sql
 SELECT
-AddressListId,
-CompletedTimestamp,
-CreatedTimestamp,
-Error,
-FailedItemsCount,
-ImportDataFormat,
-ImportedItemsCount,
-JobId,
-Name,
-PreSignedUrl,
-StartTimestamp,
-Status
+address_list_id,
+completed_timestamp,
+created_timestamp,
+error,
+failed_items_count,
+import_data_format,
+imported_items_count,
+job_id,
+name,
+pre_signed_url,
+start_timestamp,
+status
 FROM aws.mailmanager.address_list_import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -335,8 +335,8 @@ SELECT
 '{{ ImportDataFormat }}' /* required */,
 '{{ region }}'
 RETURNING
-JobId,
-PreSignedUrl
+job_id,
+pre_signed_url
 ;
 ```
 </TabItem>

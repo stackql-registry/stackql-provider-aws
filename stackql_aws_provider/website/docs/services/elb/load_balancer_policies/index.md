@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyAttributeDescriptions" /></td>
+    <td><CopyableCode code="policy_attribute_descriptions" /></td>
     <td><code>string</code></td>
     <td>The policy attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyTypeName" /></td>
+    <td><CopyableCode code="policy_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the policy type.</td>
 </tr>
@@ -202,9 +202,9 @@ Describes the specified policies. If you specify a load balancer name, the actio
 
 ```sql
 SELECT
-PolicyAttributeDescriptions,
-PolicyName,
-PolicyTypeName
+policy_attribute_descriptions,
+policy_name,
+policy_type_name
 FROM aws.elb.load_balancer_policies
 WHERE region = '{{ region }}' -- required
 AND LoadBalancerName = '{{ LoadBalancerName }}'

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the schema version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.,/ -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The name of the schema version. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>object</code></td>
     <td>The schema of the schema version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaId" /></td>
+    <td><CopyableCode code="schema_id" /></td>
     <td><code>string</code></td>
     <td>The id of the schema version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SemanticVersion" /></td>
+    <td><CopyableCode code="semantic_version" /></td>
     <td><code>string</code></td>
     <td>The schema version. If this is left blank, it defaults to the latest version. (pattern: &lt;code&gt;(\d+\.\d+(\.\d+)?|\$latest)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of schema version. (capability, definition)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>The visibility of the schema version. (PUBLIC, PRIVATE)</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the schema version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.,/ -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The name of the schema version. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaId" /></td>
+    <td><CopyableCode code="schema_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the schema version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SemanticVersion" /></td>
+    <td><CopyableCode code="semantic_version" /></td>
     <td><code>string</code></td>
     <td>The schema version. If this is left blank, it defaults to the latest version. (pattern: &lt;code&gt;(\d+\.\d+(\.\d+)?|\$latest)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of schema version. (capability, definition)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>The visibility of the schema version. (PUBLIC, PRIVATE)</td>
 </tr>
@@ -247,13 +247,13 @@ Gets a schema version with the provided information.
 
 ```sql
 SELECT
-Description,
-Namespace,
-Schema,
-SchemaId,
-SemanticVersion,
-Type,
-Visibility
+description,
+namespace,
+schema,
+schema_id,
+semantic_version,
+type,
+visibility
 FROM aws.iot_managed_integrations.schema_versions
 WHERE type = '{{ type }}' -- required
 AND schema_versioned_id = '{{ schema_versioned_id }}' -- required
@@ -268,12 +268,12 @@ Lists schema versions with the provided information.
 
 ```sql
 SELECT
-Description,
-Namespace,
-SchemaId,
-SemanticVersion,
-Type,
-Visibility
+description,
+namespace,
+schema_id,
+semantic_version,
+type,
+visibility
 FROM aws.iot_managed_integrations.schema_versions
 WHERE type = '{{ type }}' -- required
 AND region = '{{ region }}' -- required

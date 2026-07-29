@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the asset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the asset.</td>
 </tr>
@@ -75,42 +75,42 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Amazon DataZone asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain to which the asset belongs. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalIdentifier" /></td>
+    <td><CopyableCode code="external_identifier" /></td>
     <td><code>string</code></td>
     <td>The external ID of the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstRevisionCreatedAt" /></td>
+    <td><CopyableCode code="first_revision_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the first revision of the asset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstRevisionCreatedBy" /></td>
+    <td><CopyableCode code="first_revision_created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the first revision of the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formsOutput" /></td>
+    <td><CopyableCode code="forms_output" /></td>
     <td><code>array</code></td>
     <td>The metadata forms attached to the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="glossaryTerms" /></td>
+    <td><CopyableCode code="glossary_terms" /></td>
     <td><code>array</code></td>
     <td>The business glossary terms attached to the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="governedGlossaryTerms" /></td>
+    <td><CopyableCode code="governed_glossary_terms" /></td>
     <td><code>array</code></td>
     <td>The restricted glossary terms attached to an asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestTimeSeriesDataPointFormsOutput" /></td>
+    <td><CopyableCode code="latest_time_series_data_point_forms_output" /></td>
     <td><code>array</code></td>
     <td>The latest data point that was imported into the time series form for the asset.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The listing of the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project that owns the asset. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readOnlyFormsOutput" /></td>
+    <td><CopyableCode code="read_only_forms_output" /></td>
     <td><code>array</code></td>
     <td>The read-only metadata forms attached to the asset.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
     <td>The revision of the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeIdentifier" /></td>
+    <td><CopyableCode code="type_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset type. (pattern: &lt;code&gt;(?!\.)&#91;\w\.&#93;*\w&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeRevision" /></td>
+    <td><CopyableCode code="type_revision" /></td>
     <td><code>string</code></td>
     <td>The revision of the asset type.</td>
 </tr>
@@ -240,23 +240,23 @@ Gets an Amazon DataZone asset. An asset is the fundamental building block in Ama
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-externalIdentifier,
-firstRevisionCreatedAt,
-firstRevisionCreatedBy,
-formsOutput,
-glossaryTerms,
-governedGlossaryTerms,
-latestTimeSeriesDataPointFormsOutput,
+domain_id,
+external_identifier,
+first_revision_created_at,
+first_revision_created_by,
+forms_output,
+glossary_terms,
+governed_glossary_terms,
+latest_time_series_data_point_forms_output,
 listing,
-owningProjectId,
-readOnlyFormsOutput,
+owning_project_id,
+read_only_forms_output,
 revision,
-typeIdentifier,
-typeRevision
+type_identifier,
+type_revision
 FROM aws.datazone.assets
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -312,24 +312,24 @@ SELECT
 RETURNING
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-externalIdentifier,
-firstRevisionCreatedAt,
-firstRevisionCreatedBy,
-formsOutput,
-glossaryTerms,
-governedGlossaryTerms,
-latestTimeSeriesDataPointFormsOutput,
+domain_id,
+external_identifier,
+first_revision_created_at,
+first_revision_created_by,
+forms_output,
+glossary_terms,
+governed_glossary_terms,
+latest_time_series_data_point_forms_output,
 listing,
-owningProjectId,
-predictionConfiguration,
-readOnlyFormsOutput,
+owning_project_id,
+prediction_configuration,
+read_only_forms_output,
 revision,
-typeIdentifier,
-typeRevision
+type_identifier,
+type_revision
 ;
 ```
 </TabItem>

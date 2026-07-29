@@ -56,37 +56,37 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the dataset. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time (in Unix time) of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset that you want metadata for. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset group. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetType" /></td>
+    <td><CopyableCode code="dataset_type" /></td>
     <td><code>string</code></td>
     <td>One of the following values: Interactions Items Users Actions Action_Interactions (pattern: &lt;code&gt;^&#91;A-Za-z_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp that shows when the dataset was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestDatasetUpdate" /></td>
+    <td><CopyableCode code="latest_dataset_update" /></td>
     <td><code>object</code></td>
     <td>Describes the latest update to the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the associated schema. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the dataset. A dataset can be in one of the following states: CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED DELETE PENDING &gt; DELETE IN_PROGRESS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackingId" /></td>
+    <td><CopyableCode code="tracking_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the event tracker for an Action interactions dataset. You specify the tracker's ID in the PutActionInteractions API operation. Amazon Personalize uses it to direct new data to the Action interactions dataset in your dataset group.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the dataset. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetType" /></td>
+    <td><CopyableCode code="dataset_type" /></td>
     <td><code>string</code></td>
     <td>The dataset type. One of the following values: Interactions Items Users Event-Interactions (pattern: &lt;code&gt;^&#91;A-Za-z_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the dataset was last updated.</td>
 </tr>
@@ -239,15 +239,15 @@ Describes the given dataset. For more information on datasets, see CreateDataset
 ```sql
 SELECT
 name,
-creationDateTime,
-datasetArn,
-datasetGroupArn,
-datasetType,
-lastUpdatedDateTime,
-latestDatasetUpdate,
-schemaArn,
+creation_date_time,
+dataset_arn,
+dataset_group_arn,
+dataset_type,
+last_updated_date_time,
+latest_dataset_update,
+schema_arn,
 status,
-trackingId
+tracking_id
 FROM aws.personalize.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -260,10 +260,10 @@ Returns the list of datasets contained in the given dataset group. The response 
 ```sql
 SELECT
 name,
-creationDateTime,
-datasetArn,
-datasetType,
-lastUpdatedDateTime,
+creation_date_time,
+dataset_arn,
+dataset_type,
+last_updated_date_time,
 status
 FROM aws.personalize.datasets
 WHERE region = '{{ region }}' -- required
@@ -303,7 +303,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-datasetArn
+dataset_arn
 ;
 ```
 </TabItem>
@@ -365,7 +365,7 @@ region = '{{ region }}' --required
 AND datasetArn = '{{ datasetArn }}' --required
 AND schemaArn = '{{ schemaArn }}' --required
 RETURNING
-datasetArn;
+dataset_arn;
 ```
 </TabItem>
 </Tabs>

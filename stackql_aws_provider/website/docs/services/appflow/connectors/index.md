@@ -51,142 +51,142 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="authenticationConfig" /></td>
+    <td><CopyableCode code="authentication_config" /></td>
     <td><code>object</code></td>
     <td>The authentication config required for the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="canUseAsDestination" /></td>
+    <td><CopyableCode code="can_use_as_destination" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the connector can be used as a destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="canUseAsSource" /></td>
+    <td><CopyableCode code="can_use_as_source" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the connector can be used as a source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the registered connector. (pattern: &lt;code&gt;arn:aws:.*:.*:&#91;0-9&#93;+:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorDescription" /></td>
+    <td><CopyableCode code="connector_description" /></td>
     <td><code>string</code></td>
     <td>A description about the connector. (pattern: &lt;code&gt;&#91;\w!@#\-.?,\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorLabel" /></td>
+    <td><CopyableCode code="connector_label" /></td>
     <td><code>string</code></td>
     <td>The label used for registering the connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;\w!@#.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorMetadata" /></td>
+    <td><CopyableCode code="connector_metadata" /></td>
     <td><code>object</code></td>
     <td>Specifies connector-specific metadata such as oAuthScopes, supportedRegions, privateLinkServiceUrl, and so on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorModes" /></td>
+    <td><CopyableCode code="connector_modes" /></td>
     <td><code>array</code></td>
     <td>The connection modes that the connector supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorName" /></td>
+    <td><CopyableCode code="connector_name" /></td>
     <td><code>string</code></td>
     <td>The connector name. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorOwner" /></td>
+    <td><CopyableCode code="connector_owner" /></td>
     <td><code>string</code></td>
     <td>The owner who developed the connector. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorProvisioningConfig" /></td>
+    <td><CopyableCode code="connector_provisioning_config" /></td>
     <td><code>object</code></td>
     <td>The configuration required for registering the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorProvisioningType" /></td>
+    <td><CopyableCode code="connector_provisioning_type" /></td>
     <td><code>string</code></td>
     <td>The provisioning type used to register the connector. (LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorRuntimeSettings" /></td>
+    <td><CopyableCode code="connector_runtime_settings" /></td>
     <td><code>array</code></td>
     <td>The required connector runtime settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorType" /></td>
+    <td><CopyableCode code="connector_type" /></td>
     <td><code>string</code></td>
     <td>The connector type. (Salesforce, Singular, Slack, Redshift, S3, Marketo, Googleanalytics, Zendesk, Servicenow, Datadog, Trendmicro, Snowflake, Dynatrace, Infornexus, Amplitude, Veeva, EventBridge, LookoutMetrics, Upsolver, Honeycode, CustomerProfiles, SAPOData, CustomConnector, Pardot)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorVersion" /></td>
+    <td><CopyableCode code="connector_version" /></td>
     <td><code>string</code></td>
     <td>The connector version. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPrivateLinkEnabled" /></td>
+    <td><CopyableCode code="is_private_link_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies if PrivateLink is enabled for that connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPrivateLinkEndpointUrlRequired" /></td>
+    <td><CopyableCode code="is_private_link_endpoint_url_required" /></td>
     <td><code>boolean</code></td>
     <td>Specifies if a PrivateLink endpoint URL is required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logoURL" /></td>
+    <td><CopyableCode code="logo_url" /></td>
     <td><code>string</code></td>
     <td>Logo URL of the connector. (pattern: &lt;code&gt;^(https?|ftp|file):​//&#91;-a-zA-Z0-9+&@#/%?=~_|!:,.;&#93;*&#91;-a-zA-Z0-9+&@#/%=~_|&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredAt" /></td>
+    <td><CopyableCode code="registered_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date on which the connector was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredBy" /></td>
+    <td><CopyableCode code="registered_by" /></td>
     <td><code>string</code></td>
     <td>Information about who registered the connector. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedApiVersions" /></td>
+    <td><CopyableCode code="supported_api_versions" /></td>
     <td><code>array</code></td>
     <td>A list of API versions that are supported by the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedDataTransferApis" /></td>
+    <td><CopyableCode code="supported_data_transfer_apis" /></td>
     <td><code>array</code></td>
     <td>The APIs of the connector application that Amazon AppFlow can use to transfer your data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedDataTransferTypes" /></td>
+    <td><CopyableCode code="supported_data_transfer_types" /></td>
     <td><code>array</code></td>
     <td>The data transfer types that the connector supports. RECORD Structured records. FILE Files or binary data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedDestinationConnectors" /></td>
+    <td><CopyableCode code="supported_destination_connectors" /></td>
     <td><code>array</code></td>
     <td>Lists the connectors that are available for use as destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedOperators" /></td>
+    <td><CopyableCode code="supported_operators" /></td>
     <td><code>array</code></td>
     <td>A list of operators supported by the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedSchedulingFrequencies" /></td>
+    <td><CopyableCode code="supported_scheduling_frequencies" /></td>
     <td><code>array</code></td>
     <td>Specifies the supported flow frequency for that connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedTriggerTypes" /></td>
+    <td><CopyableCode code="supported_trigger_types" /></td>
     <td><code>array</code></td>
     <td>Specifies the supported trigger types for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedWriteOperations" /></td>
+    <td><CopyableCode code="supported_write_operations" /></td>
     <td><code>array</code></td>
     <td>A list of write operations supported by the connector.</td>
 </tr>
@@ -205,7 +205,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectorConfigurations" /></td>
+    <td><CopyableCode code="connector_configurations" /></td>
     <td><code>object</code></td>
     <td>The configuration that is applied to the connectors used in the flow.</td>
 </tr>
@@ -215,7 +215,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the connectors supported in Amazon AppFlow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token for the next page of data. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -320,34 +320,34 @@ Describes the given custom connector registered in your Amazon Web Services acco
 
 ```sql
 SELECT
-authenticationConfig,
-canUseAsDestination,
-canUseAsSource,
-connectorArn,
-connectorDescription,
-connectorLabel,
-connectorMetadata,
-connectorModes,
-connectorName,
-connectorOwner,
-connectorProvisioningConfig,
-connectorProvisioningType,
-connectorRuntimeSettings,
-connectorType,
-connectorVersion,
-isPrivateLinkEnabled,
-isPrivateLinkEndpointUrlRequired,
-logoURL,
-registeredAt,
-registeredBy,
-supportedApiVersions,
-supportedDataTransferApis,
-supportedDataTransferTypes,
-supportedDestinationConnectors,
-supportedOperators,
-supportedSchedulingFrequencies,
-supportedTriggerTypes,
-supportedWriteOperations
+authentication_config,
+can_use_as_destination,
+can_use_as_source,
+connector_arn,
+connector_description,
+connector_label,
+connector_metadata,
+connector_modes,
+connector_name,
+connector_owner,
+connector_provisioning_config,
+connector_provisioning_type,
+connector_runtime_settings,
+connector_type,
+connector_version,
+is_private_link_enabled,
+is_private_link_endpoint_url_required,
+logo_url,
+registered_at,
+registered_by,
+supported_api_versions,
+supported_data_transfer_apis,
+supported_data_transfer_types,
+supported_destination_connectors,
+supported_operators,
+supported_scheduling_frequencies,
+supported_trigger_types,
+supported_write_operations
 FROM aws.appflow.connectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -359,9 +359,9 @@ Describes the connectors vended by Amazon AppFlow for specified connector types.
 
 ```sql
 SELECT
-connectorConfigurations,
+connector_configurations,
 connectors,
-nextToken
+next_token
 FROM aws.appflow.connectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -400,7 +400,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-connectorArn
+connector_arn
 ;
 ```
 </TabItem>
@@ -458,7 +458,7 @@ WHERE
 region = '{{ region }}' --required
 AND connectorLabel = '{{ connectorLabel }}' --required
 RETURNING
-connectorArn;
+connector_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationDate" /></td>
+    <td><CopyableCode code="association_date" /></td>
     <td><code>string</code></td>
     <td>The date a user was associated with an EC2 instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisassociationDate" /></td>
+    <td><CopyableCode code="disassociation_date" /></td>
     <td><code>string</code></td>
     <td>The date a user was disassociated from an EC2 instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain name of the Active Directory that contains the user information for the product subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProvider" /></td>
+    <td><CopyableCode code="identity_provider" /></td>
     <td><code>object</code></td>
     <td>Refers to an identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the EC2 instance that provides user-based subscriptions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceUserArn" /></td>
+    <td><CopyableCode code="instance_user_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the instance user. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;/&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a user associated with an EC2 instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for users of an EC2 instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The user name from the identity provider for the user.</td>
 </tr>
@@ -159,15 +159,15 @@ Lists user associations for an identity provider.
 
 ```sql
 SELECT
-AssociationDate,
-DisassociationDate,
-Domain,
-IdentityProvider,
-InstanceId,
-InstanceUserArn,
-Status,
-StatusMessage,
-Username
+association_date,
+disassociation_date,
+domain,
+identity_provider,
+instance_id,
+instance_user_arn,
+status,
+status_message,
+username
 FROM aws.license_manager_user_subscriptions.user_associations
 WHERE region = '{{ region }}' -- required
 ;

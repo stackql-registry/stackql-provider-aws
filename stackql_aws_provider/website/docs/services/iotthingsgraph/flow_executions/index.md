@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the flow execution summary was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowExecutionId" /></td>
+    <td><CopyableCode code="flow_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the flow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowTemplateId" /></td>
+    <td><CopyableCode code="flow_template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the flow. (pattern: &lt;code&gt;^urn:tdm:((&#91;a-z&#93;&#123;2&#125;-(gov-)?&#91;a-z&#93;&#123;4,9&#125;-&#91;0-9&#93;&#123;1,3&#125;/&#91;0-9&#93;+/)*&#91;\p&#123;Alnum&#125;_&#93;+(/&#91;\p&#123;Alnum&#125;_&#93;+)*):(&#91;\p&#123;Alpha&#125;&#93;*):(&#91;\p&#123;Alnum&#125;_&#93;+(/&#91;\p&#123;Alnum&#125;_&#93;+)*)$&lt;/code&gt;)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the flow execution. (RUNNING, ABORTED, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="systemInstanceId" /></td>
+    <td><CopyableCode code="system_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the system instance that contains the flow. (pattern: &lt;code&gt;^urn:tdm:((&#91;a-z&#93;&#123;2&#125;-(gov-)?&#91;a-z&#93;&#123;4,9&#125;-&#91;0-9&#93;&#123;1,3&#125;/&#91;0-9&#93;+/)*&#91;\p&#123;Alnum&#125;_&#93;+(/&#91;\p&#123;Alnum&#125;_&#93;+)*):(&#91;\p&#123;Alpha&#125;&#93;*):(&#91;\p&#123;Alnum&#125;_&#93;+(/&#91;\p&#123;Alnum&#125;_&#93;+)*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the flow execution summary was last updated.</td>
 </tr>
@@ -144,12 +144,12 @@ Searches for AWS IoT Things Graph workflow execution instances.
 
 ```sql
 SELECT
-createdAt,
-flowExecutionId,
-flowTemplateId,
+created_at,
+flow_execution_id,
+flow_template_id,
 status,
-systemInstanceId,
-updatedAt
+system_instance_id,
+updated_at
 FROM aws.iotthingsgraph.flow_executions
 WHERE region = '{{ region }}' -- required
 ;

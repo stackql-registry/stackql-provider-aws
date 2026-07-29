@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the ML configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultOutputLocation" /></td>
+    <td><CopyableCode code="default_output_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location where ML model output is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the member that owns the ML configuration you requested. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the ML configuration was updated.</td>
 </tr>
@@ -153,10 +153,10 @@ Returns information about a specific ML configuration.
 
 ```sql
 SELECT
-createTime,
-defaultOutputLocation,
-membershipIdentifier,
-updateTime
+create_time,
+default_output_location,
+membership_identifier,
+update_time
 FROM aws.cleanroomsml.ml_configurations
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiplexProgramSettings" /></td>
+    <td><CopyableCode code="multiplex_program_settings" /></td>
     <td><code>object</code></td>
     <td>Multiplex Program settings configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PacketIdentifiersMap" /></td>
+    <td><CopyableCode code="packet_identifiers_map" /></td>
     <td><code>object</code></td>
     <td>The packet identifier map for this multiplex program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDetails" /></td>
+    <td><CopyableCode code="pipeline_details" /></td>
     <td><code>array</code></td>
     <td>Contains information about the current sources for the specified program in the specified multiplex. Keep in mind that each multiplex pipeline connects to both pipelines in a given source channel (the channel identified by the program). But only one of those channel pipelines is ever active at one time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgramName" /></td>
+    <td><CopyableCode code="program_name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelId" /></td>
+    <td><CopyableCode code="channel_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgramName" /></td>
+    <td><CopyableCode code="program_name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
@@ -213,11 +213,11 @@ Get the details for a program in a multiplex.
 
 ```sql
 SELECT
-ChannelId,
-MultiplexProgramSettings,
-PacketIdentifiersMap,
-PipelineDetails,
-ProgramName
+channel_id,
+multiplex_program_settings,
+packet_identifiers_map,
+pipeline_details,
+program_name
 FROM aws.medialive.multiplex_programs
 WHERE multiplex_id = '{{ multiplex_id }}' -- required
 AND program_name = '{{ program_name }}' -- required
@@ -231,8 +231,8 @@ List the programs that currently exist for a specific multiplex.
 
 ```sql
 SELECT
-ChannelId,
-ProgramName
+channel_id,
+program_name
 FROM aws.medialive.multiplex_programs
 WHERE multiplex_id = '{{ multiplex_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -272,7 +272,7 @@ SELECT
 '{{ multiplex_id }}',
 '{{ region }}'
 RETURNING
-MultiplexProgram
+multiplex_program
 ;
 ```
 </TabItem>
@@ -337,7 +337,7 @@ multiplex_id = '{{ multiplex_id }}' --required
 AND program_name = '{{ program_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-MultiplexProgram;
+multiplex_program;
 ```
 </TabItem>
 </Tabs>

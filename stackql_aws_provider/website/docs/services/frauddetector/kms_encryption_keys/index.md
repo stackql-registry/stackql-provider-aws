@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kmsEncryptionKeyArn" /></td>
+    <td><CopyableCode code="kms_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The encryption key ARN. (pattern: &lt;code&gt;^DEFAULT|arn:&#91;a-zA-Z0-9-&#93;+:kms:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:key\/\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -126,7 +126,7 @@ Gets the encryption key if a KMS key has been specified to be used to encrypt co
 
 ```sql
 SELECT
-kmsEncryptionKeyArn
+kms_encryption_key_arn
 FROM aws.frauddetector.kms_encryption_keys
 WHERE region = '{{ region }}' -- required
 ;

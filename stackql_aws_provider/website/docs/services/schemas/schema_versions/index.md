@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the schema version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of schema. (OpenApi3, JSONSchemaDraft4)</td>
 </tr>
@@ -166,10 +166,10 @@ Provides a list of the schema versions and related information.
 
 ```sql
 SELECT
-SchemaArn,
-SchemaName,
-SchemaVersion,
-Type
+schema_arn,
+schema_name,
+schema_version,
+type
 FROM aws.schemas.schema_versions
 WHERE registry_name = '{{ registry_name }}' -- required
 AND schema_name = '{{ schema_name }}' -- required

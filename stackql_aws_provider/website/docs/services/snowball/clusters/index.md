@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressId" /></td>
+    <td><CopyableCode code="address_id" /></td>
     <td><code>string</code></td>
     <td>The automatically generated ID for a specific address. (pattern: &lt;code&gt;ADID&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>The automatically generated ID for a cluster. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterState" /></td>
+    <td><CopyableCode code="cluster_state" /></td>
     <td><code>string</code></td>
     <td>The current status of the cluster. (AwaitingQuorum, Pending, InUse, Complete, Cancelled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date for this cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description of the cluster. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForwardingAddressId" /></td>
+    <td><CopyableCode code="forwarding_address_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the address that you want a cluster shipped to, after it will be shipped to its primary address. This field is not supported in most regions. (pattern: &lt;code&gt;ADID&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The type of job for this cluster. Currently, the only job type supported for clusters is LOCAL_USE. (IMPORT, EXPORT, LOCAL_USE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyARN" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KmsKeyARN Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the CreateKey API action in Key Management Service (KMS. (pattern: &lt;code&gt;arn:aws.*:kms:.*:&#91;0-9&#93;&#123;12&#125;:key/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notification" /></td>
+    <td><CopyableCode code="notification" /></td>
     <td><code>object</code></td>
     <td>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnDeviceServiceConfiguration" /></td>
+    <td><CopyableCode code="on_device_service_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents metadata and configuration settings for services on an Amazon Web Services Snow Family device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>object</code></td>
     <td>The arrays of JobResource objects that can include updated S3Resource objects or LambdaResource objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleARN" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The role ARN associated with this cluster. This ARN was created using the CreateRole API action in Identity and Access Management (IAM). (pattern: &lt;code&gt;arn:aws.*:iam::&#91;0-9&#93;&#123;12&#125;:role/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShippingOption" /></td>
+    <td><CopyableCode code="shipping_option" /></td>
     <td><code>string</code></td>
     <td>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows: In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day. In the European Union (EU), you have access to express shipping. Typically, Snow devices shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way. In India, Snow devices are delivered in one to seven days. In the US, you have access to one-day shipping and two-day shipping. (SECOND_DAY, NEXT_DAY, EXPRESS, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnowballType" /></td>
+    <td><CopyableCode code="snowball_type" /></td>
     <td><code>string</code></td>
     <td>The type of Snowball Edge device to use for this cluster. For cluster jobs, Amazon Web Services Snow Family currently supports only the EDGE device type. (STANDARD, EDGE, EDGE_C, EDGE_CG, EDGE_S, SNC1_HDD, SNC1_SSD, V3_5C, V3_5S, RACK_5U_C)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaxDocuments" /></td>
+    <td><CopyableCode code="tax_documents" /></td>
     <td><code>object</code></td>
     <td>The tax documents required in your Amazon Web Services Region.</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>The 39-character ID for the cluster that you want to list, for example CID123e4567-e89b-12d3-a456-426655440000. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterState" /></td>
+    <td><CopyableCode code="cluster_state" /></td>
     <td><code>string</code></td>
     <td>The current state of this cluster. For information about the state of a specific node, see JobListEntry$JobState. (AwaitingQuorum, Pending, InUse, Complete, Cancelled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date for this cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Defines an optional description of the cluster, for example Environmental Data Cluster-01. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -253,21 +253,21 @@ Returns information about a specific cluster including shipping information, clu
 
 ```sql
 SELECT
-AddressId,
-ClusterId,
-ClusterState,
-CreationDate,
-Description,
-ForwardingAddressId,
-JobType,
-KmsKeyARN,
-Notification,
-OnDeviceServiceConfiguration,
-Resources,
-RoleARN,
-ShippingOption,
-SnowballType,
-TaxDocuments
+address_id,
+cluster_id,
+cluster_state,
+creation_date,
+description,
+forwarding_address_id,
+job_type,
+kms_key_arn,
+notification,
+on_device_service_configuration,
+resources,
+role_arn,
+shipping_option,
+snowball_type,
+tax_documents
 FROM aws.snowball.clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -279,10 +279,10 @@ Returns an array of ClusterListEntry objects of the specified length. Each Clust
 
 ```sql
 SELECT
-ClusterId,
-ClusterState,
-CreationDate,
-Description
+cluster_id,
+cluster_state,
+creation_date,
+description
 FROM aws.snowball.clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -345,8 +345,8 @@ SELECT
 '{{ SnowballCapacityPreference }}',
 '{{ region }}'
 RETURNING
-ClusterId,
-JobListEntries
+cluster_id,
+job_list_entries
 ;
 ```
 </TabItem>

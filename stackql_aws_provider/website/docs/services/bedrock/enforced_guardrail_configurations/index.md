@@ -114,9 +114,9 @@ WHERE
 region = '{{ region }}' --required
 AND guardrailInferenceConfig = '{{ guardrailInferenceConfig }}' --required
 RETURNING
-configId,
-updatedAt,
-updatedBy;
+config_id,
+updated_at,
+updated_by;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>The access control rules.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the access control rules for the specified organization.
 
 ```sql
 SELECT
-Rules
+rules
 FROM aws.workmail.access_control_rules
 WHERE region = '{{ region }}' -- required
 ;

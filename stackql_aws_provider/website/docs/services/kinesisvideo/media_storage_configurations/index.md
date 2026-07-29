@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the media storage configuration. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamARN" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the stream. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the most current information about the channel. Specify the ChannelName 
 
 ```sql
 SELECT
-Status,
-StreamARN
+status,
+stream_arn
 FROM aws.kinesisvideo.media_storage_configurations
 WHERE region = '{{ region }}' -- required
 ;

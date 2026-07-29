@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="personalizedRanking" /></td>
+    <td><CopyableCode code="personalized_ranking" /></td>
     <td><code>array</code></td>
     <td>A list of items in order of most likely interest to the user. The maximum is 500.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recommendation.</td>
 </tr>
@@ -124,8 +124,8 @@ Re-ranks a list of recommended items for the given user. The first item in the l
 
 ```sql
 SELECT
-personalizedRanking,
-recommendationId
+personalized_ranking,
+recommendation_id
 FROM aws.personalize_runtime.personalized_rankings
 WHERE region = '{{ region }}' -- required
 ;

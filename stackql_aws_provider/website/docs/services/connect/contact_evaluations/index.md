@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Evaluation" /></td>
+    <td><CopyableCode code="evaluation" /></td>
     <td><code>object</code></td>
     <td>Information about the evaluation form completed for a specific contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationForm" /></td>
+    <td><CopyableCode code="evaluation_form" /></td>
     <td><code>object</code></td>
     <td>Information about the evaluation form.</td>
 </tr>
@@ -76,77 +76,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Acknowledgement" /></td>
+    <td><CopyableCode code="acknowledgement" /></td>
     <td><code>object</code></td>
     <td>Information related to evaluation acknowledgement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoEvaluationEnabled" /></td>
+    <td><CopyableCode code="auto_evaluation_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether automated evaluation is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoEvaluationStatus" /></td>
+    <td><CopyableCode code="auto_evaluation_status" /></td>
     <td><code>string</code></td>
     <td>The status of the contact auto evaluation. (IN_PROGRESS, FAILED, SUCCEEDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CalibrationSessionId" /></td>
+    <td><CopyableCode code="calibration_session_id" /></td>
     <td><code>string</code></td>
     <td>The calibration session ID that this evaluation belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactParticipant" /></td>
+    <td><CopyableCode code="contact_participant" /></td>
     <td><code>object</code></td>
     <td>Information about a contact participant in the evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationArn" /></td>
+    <td><CopyableCode code="evaluation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the contact evaluation resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormId" /></td>
+    <td><CopyableCode code="evaluation_form_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormTitle" /></td>
+    <td><CopyableCode code="evaluation_form_title" /></td>
     <td><code>string</code></td>
     <td>A title of the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationId" /></td>
+    <td><CopyableCode code="evaluation_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the contact evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationType" /></td>
+    <td><CopyableCode code="evaluation_type" /></td>
     <td><code>string</code></td>
     <td>Type of the evaluation. (STANDARD, CALIBRATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluatorArn" /></td>
+    <td><CopyableCode code="evaluator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Score" /></td>
+    <td><CopyableCode code="score" /></td>
     <td><code>object</code></td>
     <td>The overall score of the contact evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the contact evaluation. (DRAFT, SUBMITTED, REVIEW_REQUESTED, UNDER_REVIEW)</td>
 </tr>
@@ -165,17 +165,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateTotalCount" /></td>
+    <td><CopyableCode code="approximate_total_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of contact evaluations that matched your search query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationSearchSummaryList" /></td>
+    <td><CopyableCode code="evaluation_search_summary_list" /></td>
     <td><code>array</code></td>
     <td>Contains information about contact evaluations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -294,8 +294,8 @@ Describes a contact evaluation in the specified Amazon Connect instance.
 
 ```sql
 SELECT
-Evaluation,
-EvaluationForm
+evaluation,
+evaluation_form
 FROM aws.connect.contact_evaluations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND evaluation_id = '{{ evaluation_id }}' -- required
@@ -309,21 +309,21 @@ Lists contact evaluations in the specified Amazon Connect instance.
 
 ```sql
 SELECT
-Acknowledgement,
-AutoEvaluationEnabled,
-AutoEvaluationStatus,
-CalibrationSessionId,
-ContactParticipant,
-CreatedTime,
-EvaluationArn,
-EvaluationFormId,
-EvaluationFormTitle,
-EvaluationId,
-EvaluationType,
-EvaluatorArn,
-LastModifiedTime,
-Score,
-Status
+acknowledgement,
+auto_evaluation_enabled,
+auto_evaluation_status,
+calibration_session_id,
+contact_participant,
+created_time,
+evaluation_arn,
+evaluation_form_id,
+evaluation_form_title,
+evaluation_id,
+evaluation_type,
+evaluator_arn,
+last_modified_time,
+score,
+status
 FROM aws.connect.contact_evaluations
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contactId = '{{ contactId }}' -- required
@@ -338,9 +338,9 @@ Searches contact evaluations in an Amazon Connect instance, with optional filter
 
 ```sql
 SELECT
-ApproximateTotalCount,
-EvaluationSearchSummaryList,
-NextToken
+approximate_total_count,
+evaluation_search_summary_list,
+next_token
 FROM aws.connect.contact_evaluations
 WHERE region = '{{ region }}' -- required
 ;
@@ -372,8 +372,8 @@ instance_id = '{{ instance_id }}' --required
 AND evaluation_id = '{{ evaluation_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-EvaluationArn,
-EvaluationId;
+evaluation_arn,
+evaluation_id;
 ```
 </TabItem>
 </Tabs>

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the model explainability job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDefinitionArn" /></td>
+    <td><CopyableCode code="job_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model explainability job. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDefinitionName" /></td>
+    <td><CopyableCode code="job_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the explainability job definition. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobResources" /></td>
+    <td><CopyableCode code="job_resources" /></td>
     <td><code>object</code></td>
     <td>Identifies the resources to deploy for a monitoring job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelExplainabilityAppSpecification" /></td>
+    <td><CopyableCode code="model_explainability_app_specification" /></td>
     <td><code>object</code></td>
     <td>Configures the model explainability job to run a specified Docker container image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelExplainabilityBaselineConfig" /></td>
+    <td><CopyableCode code="model_explainability_baseline_config" /></td>
     <td><code>object</code></td>
     <td>The baseline configuration for a model explainability job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelExplainabilityJobInput" /></td>
+    <td><CopyableCode code="model_explainability_job_input" /></td>
     <td><code>object</code></td>
     <td>Inputs for the model explainability job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelExplainabilityJobOutputConfig" /></td>
+    <td><CopyableCode code="model_explainability_job_output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration for monitoring jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfig" /></td>
+    <td><CopyableCode code="network_config" /></td>
     <td><code>object</code></td>
     <td>Networking options for a model explainability job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that has read permission to the input data location and write permission to the output data location in Amazon S3. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>A time limit for how long the monitoring job is allowed to run before stopping.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the monitoring job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint that the job monitors. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringJobDefinitionArn" /></td>
+    <td><CopyableCode code="monitoring_job_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitoring job. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringJobDefinitionName" /></td>
+    <td><CopyableCode code="monitoring_job_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitoring job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -226,17 +226,17 @@ Returns a description of a model explainability job definition.
 
 ```sql
 SELECT
-CreationTime,
-JobDefinitionArn,
-JobDefinitionName,
-JobResources,
-ModelExplainabilityAppSpecification,
-ModelExplainabilityBaselineConfig,
-ModelExplainabilityJobInput,
-ModelExplainabilityJobOutputConfig,
-NetworkConfig,
-RoleArn,
-StoppingCondition
+creation_time,
+job_definition_arn,
+job_definition_name,
+job_resources,
+model_explainability_app_specification,
+model_explainability_baseline_config,
+model_explainability_job_input,
+model_explainability_job_output_config,
+network_config,
+role_arn,
+stopping_condition
 FROM aws.sagemaker.model_explainability_job_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,10 +248,10 @@ Lists model explainability job definitions that satisfy various filters.
 
 ```sql
 SELECT
-CreationTime,
-EndpointName,
-MonitoringJobDefinitionArn,
-MonitoringJobDefinitionName
+creation_time,
+endpoint_name,
+monitoring_job_definition_arn,
+monitoring_job_definition_name
 FROM aws.sagemaker.model_explainability_job_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,7 +300,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-JobDefinitionArn
+job_definition_arn
 ;
 ```
 </TabItem>

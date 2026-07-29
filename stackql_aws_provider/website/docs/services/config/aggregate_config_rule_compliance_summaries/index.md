@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregateComplianceCounts" /></td>
+    <td><CopyableCode code="aggregate_compliance_counts" /></td>
     <td><code>array</code></td>
     <td>Returns a list of AggregateComplianceCounts object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupByKey" /></td>
+    <td><CopyableCode code="group_by_key" /></td>
     <td><code>string</code></td>
     <td>Groups the result based on ACCOUNT_ID or AWS_REGION.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the number of compliant and noncompliant rules for one or more accounts 
 
 ```sql
 SELECT
-AggregateComplianceCounts,
-GroupByKey,
-NextToken
+aggregate_compliance_counts,
+group_by_key,
+next_token
 FROM aws.config.aggregate_config_rule_compliance_summaries
 WHERE region = '{{ region }}' -- required
 ;

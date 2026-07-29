@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The entity that manages access to the serial console. Possible values include: account - Access is managed by the account. declarative-policy - Access is managed by a declarative policy and can't be modified by the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialConsoleAccessEnabled" /></td>
+    <td><CopyableCode code="serial_console_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>If true, access to the EC2 serial console of all instances is enabled for your account. If false, access to the EC2 serial console of all instances is disabled for your account.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves the access status of your account to the EC2 serial console of all ins
 
 ```sql
 SELECT
-ManagedBy,
-SerialConsoleAccessEnabled
+managed_by,
+serial_console_access_enabled
 FROM aws.ec2.serial_console_access_status
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

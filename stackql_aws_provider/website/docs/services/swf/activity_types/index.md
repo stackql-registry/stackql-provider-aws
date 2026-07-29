@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration settings registered with the activity type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeInfo" /></td>
+    <td><CopyableCode code="type_info" /></td>
     <td><code>object</code></td>
     <td>General information about the activity type. The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following. REGISTERED – The type is registered and available. Workers supporting this type should be running. DEPRECATED – The type was deprecated using DeprecateActivityType, but is still in use. You should keep workers supporting this type running. You cannot create new tasks of this type.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activityType" /></td>
+    <td><CopyableCode code="activity_type" /></td>
     <td><code>object</code></td>
     <td>The ActivityType type structure representing the activity type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time this activity type was created through RegisterActivityType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deprecationDate" /></td>
+    <td><CopyableCode code="deprecation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>If DEPRECATED, the date and time DeprecateActivityType was called.</td>
 </tr>
@@ -187,7 +187,7 @@ Returns information about the specified activity type. This includes configurati
 ```sql
 SELECT
 configuration,
-typeInfo
+type_info
 FROM aws.swf.activity_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,9 +199,9 @@ Returns information about all activities registered in the specified domain that
 
 ```sql
 SELECT
-activityType,
-creationDate,
-deprecationDate,
+activity_type,
+creation_date,
+deprecation_date,
 description,
 status
 FROM aws.swf.activity_types

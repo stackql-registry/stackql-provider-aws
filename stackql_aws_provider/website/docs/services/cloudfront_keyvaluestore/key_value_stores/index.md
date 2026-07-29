@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the Key Value Store was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The version identifier for the current version of the Key Value Store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for Key Value Store creation failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ItemCount" /></td>
+    <td><CopyableCode code="item_count" /></td>
     <td><code>integer</code></td>
     <td>Number of key value pairs in the Key Value Store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KvsARN" /></td>
+    <td><CopyableCode code="kvs_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Key Value Store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the key value pairs in the Key Value Store was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the Key Value Store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalSizeInBytes" /></td>
+    <td><CopyableCode code="total_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Total size of the Key Value Store in bytes.</td>
 </tr>
@@ -159,14 +159,14 @@ Returns metadata information about Key Value Store.
 
 ```sql
 SELECT
-Created,
-ETag,
-FailureReason,
-ItemCount,
-KvsARN,
-LastModified,
-Status,
-TotalSizeInBytes
+created,
+e_tag,
+failure_reason,
+item_count,
+kvs_arn,
+last_modified,
+status,
+total_size_in_bytes
 FROM aws.cloudfront_keyvaluestore.key_value_stores
 WHERE kvs_arn = '{{ kvs_arn }}' -- required
 AND region = '{{ region }}' -- required

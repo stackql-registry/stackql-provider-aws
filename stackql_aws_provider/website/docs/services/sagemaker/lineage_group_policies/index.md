@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LineageGroupArn" /></td>
+    <td><CopyableCode code="lineage_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the lineage group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:lineage-group/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>The resource policy that gives access to the lineage group in another account. (pattern: &lt;code&gt;.*(?:&#91; \r\n\t&#93;.*)*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ The resource policy for the lineage group.
 
 ```sql
 SELECT
-LineageGroupArn,
-ResourcePolicy
+lineage_group_arn,
+resource_policy
 FROM aws.sagemaker.lineage_group_policies
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the current revision of the policy.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns the permission policy for a version of an Lambda layer. For more informa
 
 ```sql
 SELECT
-Policy,
-RevisionId
+policy,
+revision_id
 FROM aws.lambda.layer_version_policies
 WHERE layer_name = '{{ layer_name }}' -- required
 AND version_number = '{{ version_number }}' -- required

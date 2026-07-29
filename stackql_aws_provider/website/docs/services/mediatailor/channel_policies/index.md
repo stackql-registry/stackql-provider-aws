@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The IAM policy for the channel. IAM policies are used to control access to your channel.</td>
 </tr>
@@ -138,7 +138,7 @@ Returns the channel's IAM policy. IAM policies are used to control access to you
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.mediatailor.channel_policies
 WHERE channel_name = '{{ channel_name }}' -- required
 AND region = '{{ region }}' -- required

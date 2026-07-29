@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StaleIpPermissions" /></td>
+    <td><CopyableCode code="stale_ip_permissions" /></td>
     <td><code>string</code></td>
     <td>Information about the stale inbound rules in the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StaleIpPermissionsEgress" /></td>
+    <td><CopyableCode code="stale_ip_permissions_egress" /></td>
     <td><code>string</code></td>
     <td>Information about the stale outbound rules in the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the security group.</td>
 </tr>
@@ -164,12 +164,12 @@ Describes the stale security group rules for security groups referenced across a
 
 ```sql
 SELECT
-Description,
-GroupId,
-GroupName,
-StaleIpPermissions,
-StaleIpPermissionsEgress,
-VpcId
+description,
+group_id,
+group_name,
+stale_ip_permissions,
+stale_ip_permissions_egress,
+vpc_id
 FROM aws.ec2.stale_security_groups
 WHERE VpcId = '{{ VpcId }}' -- required
 AND region = '{{ region }}' -- required

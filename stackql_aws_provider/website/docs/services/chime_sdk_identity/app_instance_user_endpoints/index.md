@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowMessages" /></td>
+    <td><CopyableCode code="allow_messages" /></td>
     <td><code>string</code></td>
     <td>Boolean that controls whether the AppInstanceUserEndpoint is opted in to receive messages. ALL indicates the endpoint will receive all messages. NONE indicates the endpoint will receive no messages. (ALL, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppInstanceUserArn" /></td>
+    <td><CopyableCode code="app_instance_user_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AppInstanceUser. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which an AppInstanceUserEndpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointAttributes" /></td>
+    <td><CopyableCode code="endpoint_attributes" /></td>
     <td><code>object</code></td>
     <td>The attributes of an Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the AppInstanceUserEndpoint. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointState" /></td>
+    <td><CopyableCode code="endpoint_state" /></td>
     <td><code>object</code></td>
     <td>A read-only field that represents the state of an AppInstanceUserEndpoint. Supported values: ACTIVE: The AppInstanceUserEndpoint is active and able to receive messages. When ACTIVE, the EndpointStatusReason remains empty. INACTIVE: The AppInstanceUserEndpoint is inactive and can't receive message. When INACTIVE, the corresponding reason will be conveyed through EndpointStatusReason. INVALID_DEVICE_TOKEN indicates that an AppInstanceUserEndpoint is INACTIVE due to invalid device token INVALID_PINPOINT_ARN indicates that an AppInstanceUserEndpoint is INACTIVE due to an invalid pinpoint ARN that was input through the ResourceArn field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which an AppInstanceUserEndpoint was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the AppInstanceUserEndpoint. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource to which the endpoint belongs. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the AppInstanceUserEndpoint. (APNS, APNS_SANDBOX, GCM)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstanceUserEndpoints" /></td>
+    <td><CopyableCode code="app_instance_user_endpoints" /></td>
     <td><code>array</code></td>
     <td>The information for each requested AppInstanceUserEndpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested endpoints are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -238,16 +238,16 @@ Returns the full details of an AppInstanceUserEndpoint.
 
 ```sql
 SELECT
-AllowMessages,
-AppInstanceUserArn,
-CreatedTimestamp,
-EndpointAttributes,
-EndpointId,
-EndpointState,
-LastUpdatedTimestamp,
-Name,
-ResourceArn,
-Type
+allow_messages,
+app_instance_user_arn,
+created_timestamp,
+endpoint_attributes,
+endpoint_id,
+endpoint_state,
+last_updated_timestamp,
+name,
+resource_arn,
+type
 FROM aws.chime_sdk_identity.app_instance_user_endpoints
 WHERE app_instance_user_arn = '{{ app_instance_user_arn }}' -- required
 AND endpoint_id = '{{ endpoint_id }}' -- required
@@ -261,8 +261,8 @@ Lists all the AppInstanceUserEndpoints created under a single AppInstanceUser.
 
 ```sql
 SELECT
-AppInstanceUserEndpoints,
-NextToken
+app_instance_user_endpoints,
+next_token
 FROM aws.chime_sdk_identity.app_instance_user_endpoints
 WHERE app_instance_user_arn = '{{ app_instance_user_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -308,8 +308,8 @@ SELECT
 '{{ app_instance_user_arn }}',
 '{{ region }}'
 RETURNING
-AppInstanceUserArn,
-EndpointId
+app_instance_user_arn,
+endpoint_id
 ;
 ```
 </TabItem>
@@ -370,8 +370,8 @@ app_instance_user_arn = '{{ app_instance_user_arn }}' --required
 AND endpoint_id = '{{ endpoint_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AppInstanceUserArn,
-EndpointId;
+app_instance_user_arn,
+endpoint_id;
 ```
 </TabItem>
 </Tabs>

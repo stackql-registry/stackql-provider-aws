@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Max24HourSend" /></td>
+    <td><CopyableCode code="max_24_hour_send" /></td>
     <td><code>number</code></td>
     <td>The maximum number of emails the user is allowed to send in a 24-hour interval. A value of -1 signifies an unlimited quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSendRate" /></td>
+    <td><CopyableCode code="max_send_rate" /></td>
     <td><code>number</code></td>
     <td>The maximum number of emails that Amazon SES can accept from the user's account per second. The rate at which Amazon SES accepts the user's messages might be less than the maximum send rate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SentLast24Hours" /></td>
+    <td><CopyableCode code="sent_last_24_hours" /></td>
     <td><code>number</code></td>
     <td>The number of emails sent during the previous 24 hours.</td>
 </tr>
@@ -129,9 +129,9 @@ Provides the sending limits for the Amazon SES account. You can execute this ope
 
 ```sql
 SELECT
-Max24HourSend,
-MaxSendRate,
-SentLast24Hours
+max_24_hour_send,
+max_send_rate,
+sent_last_24_hours
 FROM aws.ses.send_quotas
 WHERE region = '{{ region }}' -- required
 ;

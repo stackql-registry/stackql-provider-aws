@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmazonSideAsn" /></td>
+    <td><CopyableCode code="amazon_side_asn" /></td>
     <td><code>integer</code></td>
     <td>The private Autonomous System Number (ASN) for the Amazon side of a BGP session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone where the virtual private gateway was created, if applicable. This field may be empty or not returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the virtual private gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the virtual private gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of VPN connection the virtual private gateway supports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcAttachments" /></td>
+    <td><CopyableCode code="vpc_attachments" /></td>
     <td><code>string</code></td>
     <td>Any VPCs attached to the virtual private gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnGatewayId" /></td>
+    <td><CopyableCode code="vpn_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private gateway.</td>
 </tr>
@@ -222,13 +222,13 @@ Describes one or more of your virtual private gateways. For more information, se
 
 ```sql
 SELECT
-AmazonSideAsn,
-AvailabilityZone,
-State,
-Tags,
-Type,
-VpcAttachments,
-VpnGatewayId
+amazon_side_asn,
+availability_zone,
+state,
+tags,
+type,
+vpc_attachments,
+vpn_gateway_id
 FROM aws.ec2.vpn_gateways
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'
@@ -270,13 +270,13 @@ SELECT
 '{{ AmazonSideAsn }}',
 '{{ DryRun }}'
 RETURNING
-AmazonSideAsn,
-AvailabilityZone,
-State,
-Tags,
-Type,
-VpcAttachments,
-VpnGatewayId
+amazon_side_asn,
+availability_zone,
+state,
+tags,
+type,
+vpc_attachments,
+vpn_gateway_id
 ;
 ```
 </TabItem>
@@ -336,8 +336,8 @@ AND VpnGatewayId = '{{ VpnGatewayId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-State,
-VpcId;
+state,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

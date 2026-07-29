@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Account" /></td>
+    <td><CopyableCode code="account" /></td>
     <td><code>string</code></td>
     <td>The number used to identify the Amazon Web Services account.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the account identifier for the specified access key ID. Access keys cons
 
 ```sql
 SELECT
-Account
+account
 FROM aws.sts.access_key_infos
 WHERE AccessKeyId = '{{ AccessKeyId }}' -- required
 AND region = '{{ region }}' -- required

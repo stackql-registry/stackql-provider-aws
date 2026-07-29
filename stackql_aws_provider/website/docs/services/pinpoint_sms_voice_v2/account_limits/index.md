@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Max" /></td>
+    <td><CopyableCode code="max" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Amazon Web Services set limit for that resource type, in US dollars.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the attribute to apply the account limit to. (PHONE_NUMBERS, POOLS, CONFIGURATION_SETS, OPT_OUT_LISTS, SENDER_IDS, REGISTRATIONS, REGISTRATION_ATTACHMENTS, VERIFIED_DESTINATION_NUMBERS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Used" /></td>
+    <td><CopyableCode code="used" /></td>
     <td><code>integer (int64)</code></td>
     <td>The current amount that has been spent, in US dollars.</td>
 </tr>
@@ -129,9 +129,9 @@ Describes the current End User Messaging SMS SMS Voice V2 resource quotas for yo
 
 ```sql
 SELECT
-Max,
-Name,
-Used
+max,
+name,
+used
 FROM aws.pinpoint_sms_voice_v2.account_limits
 WHERE region = '{{ region }}' -- required
 ;

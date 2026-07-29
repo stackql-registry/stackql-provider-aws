@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlertType" /></td>
+    <td><CopyableCode code="alert_type" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClearedTimestamp" /></td>
+    <td><CopyableCode code="cleared_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineId" /></td>
+    <td><CopyableCode code="pipeline_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SetTimestamp" /></td>
+    <td><CopyableCode code="set_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the alert (SET, CLEARED)</td>
 </tr>
@@ -169,13 +169,13 @@ List the alerts for a multiplex with optional filtering based on alert state.
 
 ```sql
 SELECT
-AlertType,
-ClearedTimestamp,
-Id,
-Message,
-PipelineId,
-SetTimestamp,
-State
+alert_type,
+cleared_timestamp,
+id,
+message,
+pipeline_id,
+set_timestamp,
+state
 FROM aws.medialive.multiplex_alerts
 WHERE multiplex_id = '{{ multiplex_id }}' -- required
 AND region = '{{ region }}' -- required

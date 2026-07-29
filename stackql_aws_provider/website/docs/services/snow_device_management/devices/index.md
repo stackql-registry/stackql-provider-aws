@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedWithJob" /></td>
+    <td><CopyableCode code="associated_with_job" /></td>
     <td><code>string</code></td>
     <td>The ID of the job used when ordering the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceCapacities" /></td>
+    <td><CopyableCode code="device_capacities" /></td>
     <td><code>array</code></td>
     <td>The hardware specifications of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceState" /></td>
+    <td><CopyableCode code="device_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the device. (UNLOCKED, LOCKED, UNLOCKING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceType" /></td>
+    <td><CopyableCode code="device_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services Snow Family device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastReachedOutAt" /></td>
+    <td><CopyableCode code="last_reached_out_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the device last contacted the Amazon Web Services Cloud. Indicates that the device is online.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the device last pushed an update to the Amazon Web Services Cloud. Indicates when the device cache was refreshed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedDeviceArn" /></td>
+    <td><CopyableCode code="managed_device_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedDeviceId" /></td>
+    <td><CopyableCode code="managed_device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the device that you checked the information for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="physicalNetworkInterfaces" /></td>
+    <td><CopyableCode code="physical_network_interfaces" /></td>
     <td><code>array</code></td>
     <td>The network interfaces available on the device.</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedWithJob" /></td>
+    <td><CopyableCode code="associated_with_job" /></td>
     <td><code>string</code></td>
     <td>The ID of the job used to order the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedDeviceArn" /></td>
+    <td><CopyableCode code="managed_device_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedDeviceId" /></td>
+    <td><CopyableCode code="managed_device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the device.</td>
 </tr>
@@ -232,15 +232,15 @@ Checks device-specific information, such as the device type, software version, I
 
 ```sql
 SELECT
-associatedWithJob,
-deviceCapacities,
-deviceState,
-deviceType,
-lastReachedOutAt,
-lastUpdatedAt,
-managedDeviceArn,
-managedDeviceId,
-physicalNetworkInterfaces,
+associated_with_job,
+device_capacities,
+device_state,
+device_type,
+last_reached_out_at,
+last_updated_at,
+managed_device_arn,
+managed_device_id,
+physical_network_interfaces,
 software,
 tags
 FROM aws.snow_device_management.devices
@@ -255,9 +255,9 @@ Returns a list of all devices on your Amazon Web Services account that have Amaz
 
 ```sql
 SELECT
-associatedWithJob,
-managedDeviceArn,
-managedDeviceId,
+associated_with_job,
+managed_device_arn,
+managed_device_id,
 tags
 FROM aws.snow_device_management.devices
 WHERE region = '{{ region }}' -- required

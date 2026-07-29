@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key that is associated with the tag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value that is associated with the tag.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns tags for a resource. Tagging is currently supported only for directories
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.clouddirectory.tags
 WHERE region = '{{ region }}' -- required
 ;

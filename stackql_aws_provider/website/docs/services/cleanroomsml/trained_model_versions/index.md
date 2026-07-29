@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the trained model. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationIdentifier" /></td>
+    <td><CopyableCode code="collaboration_identifier" /></td>
     <td><code>string</code></td>
     <td>The collaboration ID of the collaboration that contains the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmAssociationArn" /></td>
+    <td><CopyableCode code="configured_model_algorithm_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured model algorithm association that was used to create this trained model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/configured-model-algorithm-association/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the trained model was created.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the trained model. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incrementalTrainingDataChannels" /></td>
+    <td><CopyableCode code="incremental_training_data_channels" /></td>
     <td><code>array</code></td>
     <td>Information about the incremental training data channels used to create this version of the trained model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the member that created the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the trained model. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED, INACTIVE, CANCEL_PENDING, CANCEL_IN_PROGRESS, CANCEL_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelArn" /></td>
+    <td><CopyableCode code="trained_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trained model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/trained-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the trained model was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionIdentifier" /></td>
+    <td><CopyableCode code="version_identifier" /></td>
     <td><code>string</code></td>
     <td>The version identifier of this trained model version. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -195,16 +195,16 @@ Returns a list of trained model versions for a specified trained model. This ope
 ```sql
 SELECT
 name,
-collaborationIdentifier,
-configuredModelAlgorithmAssociationArn,
-createTime,
+collaboration_identifier,
+configured_model_algorithm_association_arn,
+create_time,
 description,
-incrementalTrainingDataChannels,
-membershipIdentifier,
+incremental_training_data_channels,
+membership_identifier,
 status,
-trainedModelArn,
-updateTime,
-versionIdentifier
+trained_model_arn,
+update_time,
+version_identifier
 FROM aws.cleanroomsml.trained_model_versions
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND trained_model_arn = '{{ trained_model_arn }}' -- required

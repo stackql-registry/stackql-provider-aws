@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in JavaScript date format, when the repository was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that's associated with the public registry that contains the repository. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryArn" /></td>
+    <td><CopyableCode code="repository_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the arn:aws:ecr namespace, followed by the region of the repository, Amazon Web Services account ID of the repository owner, repository namespace, and repository name. For example, arn:aws:ecr:region:012345678910:repository/test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository. (pattern: &lt;code&gt;(?:&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*/)*&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryUri" /></td>
+    <td><CopyableCode code="repository_uri" /></td>
     <td><code>string</code></td>
     <td>The URI for the repository. You can use this URI for container image push and pull operations.</td>
 </tr>
@@ -188,11 +188,11 @@ Describes repositories that are in a public registry.
 
 ```sql
 SELECT
-createdAt,
-registryId,
-repositoryArn,
-repositoryName,
-repositoryUri
+created_at,
+registry_id,
+repository_arn,
+repository_name,
+repository_uri
 FROM aws.ecr_public.repositories
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,7 +227,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-catalogData,
+catalog_data,
 repository
 ;
 ```

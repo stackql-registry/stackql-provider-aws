@@ -50,102 +50,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bundle used to create the WorkSpace. (pattern: &lt;code&gt;^wsb-&#91;0-9a-z&#93;&#123;8,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputerName" /></td>
+    <td><CopyableCode code="computer_name" /></td>
     <td><code>string</code></td>
     <td>The name of the WorkSpace, as seen by the operating system. The format of this name varies. For more information, see Launch a WorkSpace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataReplicationSettings" /></td>
+    <td><CopyableCode code="data_replication_settings" /></td>
     <td><code>object</code></td>
     <td>Indicates the settings of the data replication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Directory Service directory for the WorkSpace. (pattern: &lt;code&gt;^(d-&#91;0-9a-f&#93;&#123;8,63&#125;$)|(wsd-&#91;0-9a-z&#93;&#123;8,63&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code that is returned if the WorkSpace cannot be created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The text of the error message that is returned if the WorkSpace cannot be created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the WorkSpace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Address" /></td>
+    <td><CopyableCode code="ipv_6_address" /></td>
     <td><code>string</code></td>
     <td>The IPv6 address of the WorkSpace. (pattern: &lt;code&gt;^(?:&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;7&#125;&#91;0-9a-fA-F&#93;&#123;1,4&#125;|&#91;0-9a-fA-F&#93;&#123;1,4&#125;(?::&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;0,6&#125;::&#91;0-9a-fA-F&#93;&#123;1,4&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationStates" /></td>
+    <td><CopyableCode code="modification_states" /></td>
     <td><code>array</code></td>
     <td>The modification states of the WorkSpace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedWorkspaces" /></td>
+    <td><CopyableCode code="related_workspaces" /></td>
     <td><code>array</code></td>
     <td>The standby WorkSpace or primary WorkSpace related to the specified WorkSpace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootVolumeEncryptionEnabled" /></td>
+    <td><CopyableCode code="root_volume_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the data stored on the root volume is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandbyWorkspacesProperties" /></td>
+    <td><CopyableCode code="standby_workspaces_properties" /></td>
     <td><code>array</code></td>
     <td>The properties of the standby WorkSpace</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The operational state of the WorkSpace. PENDING – The WorkSpace is in a waiting state (for example, the WorkSpace is being created). AVAILABLE – The WorkSpace is running and has passed the health checks. IMPAIRED – Refer to UNHEALTHY state. UNHEALTHY – The WorkSpace is not responding to health checks. REBOOTING – The WorkSpace is being rebooted (restarted). STARTING – The WorkSpace is starting up and health checks are being run. REBUILDING – The WorkSpace is being rebuilt. RESTORING – The WorkSpace is being restored. MAINTENANCE – The WorkSpace is undergoing scheduled maintenance by Amazon Web Services. ADMIN_MAINTENANCE – The WorkSpace is undergoing maintenance by the WorkSpaces administrator. TERMINATING – The WorkSpace is being deleted. TERMINATED – The WorkSpace has been deleted. SUSPENDED – The WorkSpace has been suspended for image creation. UPDATING – The WorkSpace is undergoing an update. STOPPING – The WorkSpace is being stopped. STOPPED – The WorkSpace has been stopped. ERROR – The WorkSpace is an error state (for example, an error occurred during startup). After a WorkSpace is terminated, the TERMINATED state is returned only briefly before the WorkSpace directory metadata is cleaned up, so this state is rarely returned. To confirm that a WorkSpace is terminated, check for the WorkSpace ID by using DescribeWorkSpaces. If the WorkSpace ID isn't returned, then the WorkSpace has been successfully terminated. (PENDING, AVAILABLE, IMPAIRED, UNHEALTHY, REBOOTING, STARTING, REBUILDING, RESTORING, MAINTENANCE, ADMIN_MAINTENANCE, TERMINATING, TERMINATED, SUSPENDED, UPDATING, STOPPING, STOPPED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the subnet for the WorkSpace. (pattern: &lt;code&gt;^(subnet-(&#91;0-9a-f&#93;&#123;8&#125;|&#91;0-9a-f&#93;&#123;17&#125;))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The user for the WorkSpace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserVolumeEncryptionEnabled" /></td>
+    <td><CopyableCode code="user_volume_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the data stored on the user volume is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeEncryptionKey" /></td>
+    <td><CopyableCode code="volume_encryption_key" /></td>
     <td><code>string</code></td>
     <td>The ARN of the symmetric KMS key used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric KMS keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the WorkSpace. (pattern: &lt;code&gt;^ws-&#91;0-9a-z&#93;&#123;8,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceName" /></td>
+    <td><CopyableCode code="workspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user-decoupled WorkSpace. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_()&#93;&#91;a-zA-Z0-9_.()-&#93;&#123;1,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceProperties" /></td>
+    <td><CopyableCode code="workspace_properties" /></td>
     <td><code>object</code></td>
     <td>The properties of the WorkSpace.</td>
 </tr>
@@ -319,26 +319,26 @@ Describes the specified WorkSpaces. You can filter the results by using the bund
 
 ```sql
 SELECT
-BundleId,
-ComputerName,
-DataReplicationSettings,
-DirectoryId,
-ErrorCode,
-ErrorMessage,
-IpAddress,
-Ipv6Address,
-ModificationStates,
-RelatedWorkspaces,
-RootVolumeEncryptionEnabled,
-StandbyWorkspacesProperties,
-State,
-SubnetId,
-UserName,
-UserVolumeEncryptionEnabled,
-VolumeEncryptionKey,
-WorkspaceId,
-WorkspaceName,
-WorkspaceProperties
+bundle_id,
+computer_name,
+data_replication_settings,
+directory_id,
+error_code,
+error_message,
+ip_address,
+ipv_6_address,
+modification_states,
+related_workspaces,
+root_volume_encryption_enabled,
+standby_workspaces_properties,
+state,
+subnet_id,
+user_name,
+user_volume_encryption_enabled,
+volume_encryption_key,
+workspace_id,
+workspace_name,
+workspace_properties
 FROM aws.workspaces.workspaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -372,8 +372,8 @@ SELECT
 '{{ StandbyWorkspaces }}' /* required */,
 '{{ region }}'
 RETURNING
-FailedStandbyRequests,
-PendingStandbyRequests
+failed_standby_requests,
+pending_standby_requests
 ;
 ```
 </TabItem>
@@ -390,8 +390,8 @@ SELECT
 '{{ Workspaces }}' /* required */,
 '{{ region }}'
 RETURNING
-FailedRequests,
-PendingRequests
+failed_requests,
+pending_requests
 ;
 ```
 </TabItem>

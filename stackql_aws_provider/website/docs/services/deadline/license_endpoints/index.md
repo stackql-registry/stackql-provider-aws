@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseEndpointId" /></td>
+    <td><CopyableCode code="license_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The license endpoint ID. (pattern: &lt;code&gt;le-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The security group IDs for the license endpoint.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the license endpoint. (CREATE_IN_PROGRESS, DELETE_IN_PROGRESS, READY, NOT_READY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the license endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The subnet IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC (virtual private cloud) ID associated with the license endpoint. (pattern: &lt;code&gt;vpc-&#91;\w&#93;&#123;1,120&#125;&lt;/code&gt;)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="licenseEndpointId" /></td>
+    <td><CopyableCode code="license_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The license endpoint ID. (pattern: &lt;code&gt;le-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the license endpoint. (CREATE_IN_PROGRESS, DELETE_IN_PROGRESS, READY, NOT_READY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the license endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC (virtual private cloud) ID associated with the license endpoint. (pattern: &lt;code&gt;vpc-&#91;\w&#93;&#123;1,120&#125;&lt;/code&gt;)</td>
 </tr>
@@ -226,13 +226,13 @@ Gets a licence endpoint.
 
 ```sql
 SELECT
-dnsName,
-licenseEndpointId,
-securityGroupIds,
+dns_name,
+license_endpoint_id,
+security_group_ids,
 status,
-statusMessage,
-subnetIds,
-vpcId
+status_message,
+subnet_ids,
+vpc_id
 FROM aws.deadline.license_endpoints
 WHERE license_endpoint_id = '{{ license_endpoint_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,10 +245,10 @@ Lists license endpoints.
 
 ```sql
 SELECT
-licenseEndpointId,
+license_endpoint_id,
 status,
-statusMessage,
-vpcId
+status_message,
+vpc_id
 FROM aws.deadline.license_endpoints
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -289,7 +289,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-licenseEndpointId
+license_endpoint_id
 ;
 ```
 </TabItem>

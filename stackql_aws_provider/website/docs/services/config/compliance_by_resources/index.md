@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Compliance" /></td>
+    <td><CopyableCode code="compliance" /></td>
     <td><code>object</code></td>
     <td>Indicates whether the Amazon Web Services resource complies with all of the Config rules that evaluated it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services resource that was evaluated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the Amazon Web Services resource that was evaluated.</td>
 </tr>
@@ -129,9 +129,9 @@ Indicates whether the specified Amazon Web Services resources are compliant. If 
 
 ```sql
 SELECT
-Compliance,
-ResourceId,
-ResourceType
+compliance,
+resource_id,
+resource_type
 FROM aws.config.compliance_by_resources
 WHERE region = '{{ region }}' -- required
 ;

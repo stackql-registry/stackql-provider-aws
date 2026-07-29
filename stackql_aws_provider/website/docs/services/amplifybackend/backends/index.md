@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmplifyFeatureFlags" /></td>
+    <td><CopyableCode code="amplify_feature_flags" /></td>
     <td><code>string</code></td>
     <td>A stringified version of the cli.json file for your Amplify project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AmplifyMetaConfig" /></td>
+    <td><CopyableCode code="amplify_meta_config" /></td>
     <td><code>string</code></td>
     <td>A stringified version of the current configs for your Amplify project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The app ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppName" /></td>
+    <td><CopyableCode code="app_name" /></td>
     <td><code>string</code></td>
     <td>The name of the app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackendEnvironmentList" /></td>
+    <td><CopyableCode code="backend_environment_list" /></td>
     <td><code>array</code></td>
     <td>A list of backend environments in an array.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackendEnvironmentName" /></td>
+    <td><CopyableCode code="backend_environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>If the request failed, this is the returned error.</td>
 </tr>
@@ -215,13 +215,13 @@ Provides project-level details for your Amplify UI project.
 
 ```sql
 SELECT
-AmplifyFeatureFlags,
-AmplifyMetaConfig,
-AppId,
-AppName,
-BackendEnvironmentList,
-BackendEnvironmentName,
-Error
+amplify_feature_flags,
+amplify_meta_config,
+app_id,
+app_name,
+backend_environment_list,
+backend_environment_name,
+error
 FROM aws.amplifybackend.backends
 WHERE app_id = '{{ app_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,12 +262,12 @@ SELECT
 '{{ ResourceName }}',
 '{{ region }}'
 RETURNING
-AppId,
-BackendEnvironmentName,
-Error,
-JobId,
-Operation,
-Status
+app_id,
+backend_environment_name,
+error,
+job_id,
+operation,
+status
 ;
 ```
 </TabItem>
@@ -286,10 +286,10 @@ SELECT
 '{{ app_id }}',
 '{{ region }}'
 RETURNING
-AppId,
-BackendEnvironmentName,
-JobId,
-Status
+app_id,
+backend_environment_name,
+job_id,
+status
 ;
 ```
 </TabItem>
@@ -344,11 +344,11 @@ WHERE
 app_id = '{{ app_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AppId,
-Error,
-JobId,
-Operation,
-Status;
+app_id,
+error,
+job_id,
+operation,
+status;
 ```
 </TabItem>
 </Tabs>

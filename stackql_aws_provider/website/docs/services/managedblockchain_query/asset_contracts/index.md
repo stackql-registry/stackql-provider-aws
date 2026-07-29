@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contractIdentifier" /></td>
+    <td><CopyableCode code="contract_identifier" /></td>
     <td><code>object</code></td>
     <td>Container for the blockchain address and network information about a contract.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deployerAddress" /></td>
+    <td><CopyableCode code="deployer_address" /></td>
     <td><code>string</code></td>
     <td>The address of the deployer of contract. (pattern: &lt;code&gt;&#91;-A-Za-z0-9&#93;&#123;13,74&#125;&lt;/code&gt;)</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of the contract.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenStandard" /></td>
+    <td><CopyableCode code="token_standard" /></td>
     <td><code>string</code></td>
     <td>The token standard of the contract requested. (ERC20, ERC721, ERC1155)</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contractIdentifier" /></td>
+    <td><CopyableCode code="contract_identifier" /></td>
     <td><code>object</code></td>
     <td>Container for the blockchain address and network information about a contract.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deployerAddress" /></td>
+    <td><CopyableCode code="deployer_address" /></td>
     <td><code>string</code></td>
     <td>The address of the contract deployer. (pattern: &lt;code&gt;&#91;-A-Za-z0-9&#93;&#123;13,74&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenStandard" /></td>
+    <td><CopyableCode code="token_standard" /></td>
     <td><code>string</code></td>
     <td>The token standard of the contract. (ERC20, ERC721, ERC1155)</td>
 </tr>
@@ -172,10 +172,10 @@ Gets the information about a specific contract deployed on the blockchain. The B
 
 ```sql
 SELECT
-contractIdentifier,
-deployerAddress,
+contract_identifier,
+deployer_address,
 metadata,
-tokenStandard
+token_standard
 FROM aws.managedblockchain_query.asset_contracts
 WHERE region = '{{ region }}' -- required
 ;
@@ -187,9 +187,9 @@ Lists all the contracts for a given contract type deployed by an address (either
 
 ```sql
 SELECT
-contractIdentifier,
-deployerAddress,
-tokenStandard
+contract_identifier,
+deployer_address,
+token_standard
 FROM aws.managedblockchain_query.asset_contracts
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit Amazon Web Services account number that contains the affected entity. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityArn" /></td>
+    <td><CopyableCode code="entity_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the entity. Format: arn:aws:health:entity-region:aws-account:entity/entity-id . Example: arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K (pattern: &lt;code&gt;.&#123;0,1600&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityMetadata" /></td>
+    <td><CopyableCode code="entity_metadata" /></td>
     <td><code>object</code></td>
     <td>Additional metadata about the affected entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityUrl" /></td>
+    <td><CopyableCode code="entity_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the affected entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityValue" /></td>
+    <td><CopyableCode code="entity_value" /></td>
     <td><code>string</code></td>
     <td>The ID of the affected entity. (pattern: &lt;code&gt;.&#123;0,1224&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventArn" /></td>
+    <td><CopyableCode code="event_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the event. The event ARN has the arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID format. For example, an event ARN might look like the following: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456 (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+(-&#91;a-z&#93;+)?)?:health:&#91;^:&#93;*:&#91;^:&#93;*:event(?:/&#91;\w-&#93;+)&#123;3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time that the entity was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The most recent status of the entity affected by the event. The possible values are IMPAIRED, UNIMPAIRED, UNKNOWN, PENDING, and RESOLVED. (IMPAIRED, UNIMPAIRED, UNKNOWN, PENDING, RESOLVED)</td>
 </tr>
@@ -159,14 +159,14 @@ Returns a list of entities that have been affected by one or more events for one
 
 ```sql
 SELECT
-awsAccountId,
-entityArn,
-entityMetadata,
-entityUrl,
-entityValue,
-eventArn,
-lastUpdatedTime,
-statusCode,
+aws_account_id,
+entity_arn,
+entity_metadata,
+entity_url,
+entity_value,
+event_arn,
+last_updated_time,
+status_code,
 tags
 FROM aws.health.affected_entities_for_organizations
 WHERE region = '{{ region }}' -- required

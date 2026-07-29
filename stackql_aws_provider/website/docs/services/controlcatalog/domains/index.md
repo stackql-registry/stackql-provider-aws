@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the domain. (pattern: &lt;code&gt;arn:(aws(?:&#91;-a-z&#93;*)?):controlcatalog:::domain/&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the domain was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain.</td>
 </tr>
@@ -149,11 +149,11 @@ Returns a paginated list of domains from the Control Catalog.
 
 ```sql
 SELECT
-Arn,
-CreateTime,
-Description,
-LastUpdateTime,
-Name
+arn,
+create_time,
+description,
+last_update_time,
+name
 FROM aws.controlcatalog.domains
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The JSON policy document that you requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyRevisionId" /></td>
+    <td><CopyableCode code="policy_revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision ID information for this version of the policy document that you requested.</td>
 </tr>
@@ -148,8 +148,8 @@ Use this operation to retrieve information about a resource-based policy that is
 
 ```sql
 SELECT
-PolicyDocument,
-PolicyRevisionId
+policy_document,
+policy_revision_id
 FROM aws.rum.resource_policies
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -181,8 +181,8 @@ name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 AND PolicyDocument = '{{ PolicyDocument }}' --required
 RETURNING
-PolicyDocument,
-PolicyRevisionId;
+policy_document,
+policy_revision_id;
 ```
 </TabItem>
 </Tabs>

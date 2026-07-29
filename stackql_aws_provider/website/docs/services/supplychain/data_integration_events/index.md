@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="datasetTargetDetails" /></td>
+    <td><CopyableCode code="dataset_target_details" /></td>
     <td><code>object</code></td>
     <td>The target dataset details for a DATASET event type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventGroupId" /></td>
+    <td><CopyableCode code="event_group_id" /></td>
     <td><code>string</code></td>
     <td>Event identifier (for example, orderId for InboundOrder) used for data sharding or partitioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The unique event identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The event timestamp (in epoch seconds).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The data event type. (scn.data.forecast, scn.data.inventorylevel, scn.data.inboundorder, scn.data.inboundorderline, scn.data.inboundorderlineschedule, scn.data.outboundorderline, scn.data.outboundshipment, scn.data.processheader, scn.data.processoperation, scn.data.processproduct, scn.data.reservation, scn.data.shipment, scn.data.shipmentstop, scn.data.shipmentstoporder, scn.data.supplyplan, scn.data.dataset)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The AWS Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="datasetTargetDetails" /></td>
+    <td><CopyableCode code="dataset_target_details" /></td>
     <td><code>object</code></td>
     <td>The target dataset details for a DATASET event type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventGroupId" /></td>
+    <td><CopyableCode code="event_group_id" /></td>
     <td><code>string</code></td>
     <td>Event identifier (for example, orderId for InboundOrder) used for data sharding or partitioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The unique event identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The event timestamp (in epoch seconds).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The data event type. (scn.data.forecast, scn.data.inventorylevel, scn.data.inboundorder, scn.data.inboundorderline, scn.data.inboundorderlineschedule, scn.data.outboundorderline, scn.data.outboundshipment, scn.data.processheader, scn.data.processoperation, scn.data.processproduct, scn.data.reservation, scn.data.shipment, scn.data.shipmentstop, scn.data.shipmentstoporder, scn.data.supplyplan, scn.data.dataset)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The AWS Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -222,12 +222,12 @@ Enables you to programmatically view an Amazon Web Services Supply Chain Data In
 
 ```sql
 SELECT
-datasetTargetDetails,
-eventGroupId,
-eventId,
-eventTimestamp,
-eventType,
-instanceId
+dataset_target_details,
+event_group_id,
+event_id,
+event_timestamp,
+event_type,
+instance_id
 FROM aws.supplychain.data_integration_events
 WHERE instance_id = '{{ instance_id }}' -- required
 AND event_id = '{{ event_id }}' -- required
@@ -241,12 +241,12 @@ Enables you to programmatically list all data integration events for the provide
 
 ```sql
 SELECT
-datasetTargetDetails,
-eventGroupId,
-eventId,
-eventTimestamp,
-eventType,
-instanceId
+dataset_target_details,
+event_group_id,
+event_id,
+event_timestamp,
+event_type,
+instance_id
 FROM aws.supplychain.data_integration_events
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

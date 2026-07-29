@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HttpInputs" /></td>
+    <td><CopyableCode code="http_inputs" /></td>
     <td><code>string</code></td>
     <td>Allow or disallow jobs that specify HTTP inputs. (ALLOWED, DISALLOWED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpsInputs" /></td>
+    <td><CopyableCode code="https_inputs" /></td>
     <td><code>string</code></td>
     <td>Allow or disallow jobs that specify HTTPS inputs. (ALLOWED, DISALLOWED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Inputs" /></td>
+    <td><CopyableCode code="s3_inputs" /></td>
     <td><code>string</code></td>
     <td>Allow or disallow jobs that specify Amazon S3 inputs. (ALLOWED, DISALLOWED)</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieve the JSON for your policy.
 
 ```sql
 SELECT
-HttpInputs,
-HttpsInputs,
-S3Inputs
+http_inputs,
+https_inputs,
+s3_inputs
 FROM aws.mediaconvert.policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -173,7 +173,7 @@ Policy = '{{ Policy }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Policy;
+policy;
 ```
 </TabItem>
 </Tabs>

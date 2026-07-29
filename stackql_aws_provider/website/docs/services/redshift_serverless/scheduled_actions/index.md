@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The end time in UTC when the schedule is no longer active. After this time, the scheduled action does not trigger. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextInvocations" /></td>
+    <td><CopyableCode code="next_invocations" /></td>
     <td><code>array</code></td>
     <td>An array of timestamps of when the next scheduled actions will trigger.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role to assume to run the scheduled action. This IAM role must have permission to run the Amazon Redshift Serverless API operation in the scheduled action. This IAM role must allow the Amazon Redshift scheduler to schedule creating snapshots. (Principal scheduler.redshift.amazonaws.com) to assume permissions on your behalf. For more information about the IAM role to use with the Amazon Redshift scheduler, see Using Identity-Based Policies for Amazon Redshift in the Amazon Redshift Management Guide</td>
 </tr>
@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>The schedule for a one-time (at timestamp format) or recurring (cron format) scheduled action. Schedule invocations must be separated by at least one hour. Times are in UTC. Format of at timestamp is yyyy-mm-ddThh:mm:ss. For example, 2016-03-04T17:27:00. Format of cron expression is (Minutes Hours Day-of-month Month Day-of-week Year). For example, "(0 10 ? * MON *)". For more information, see Cron Expressions in the Amazon CloudWatch Events User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledActionDescription" /></td>
+    <td><CopyableCode code="scheduled_action_description" /></td>
     <td><code>string</code></td>
     <td>The description of the scheduled action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledActionName" /></td>
+    <td><CopyableCode code="scheduled_action_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scheduled action. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledActionUuid" /></td>
+    <td><CopyableCode code="scheduled_action_uuid" /></td>
     <td><code>string</code></td>
     <td>The uuid of the scheduled action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time in UTC when the schedule is active. Before this time, the scheduled action does not trigger.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the scheduled action. (ACTIVE, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetAction" /></td>
+    <td><CopyableCode code="target_action" /></td>
     <td><code>object</code></td>
     <td>A JSON format string of the Amazon Redshift Serverless API operation with input parameters. The following is an example of a target action. "&#123;"CreateSnapshot": &#123;"NamespaceName": "sampleNamespace","SnapshotName": "sampleSnapshot", "retentionPeriod": "1"&#125;&#125;"</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>Name of associated Amazon Redshift Serverless namespace. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledActionName" /></td>
+    <td><CopyableCode code="scheduled_action_name" /></td>
     <td><code>string</code></td>
     <td>Name of associated scheduled action. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -223,17 +223,17 @@ Returns information about a scheduled action.
 
 ```sql
 SELECT
-endTime,
-namespaceName,
-nextInvocations,
-roleArn,
+end_time,
+namespace_name,
+next_invocations,
+role_arn,
 schedule,
-scheduledActionDescription,
-scheduledActionName,
-scheduledActionUuid,
-startTime,
+scheduled_action_description,
+scheduled_action_name,
+scheduled_action_uuid,
+start_time,
 state,
-targetAction
+target_action
 FROM aws.redshift_serverless.scheduled_actions
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,8 +245,8 @@ Returns a list of scheduled actions. You can use the flags to filter the list of
 
 ```sql
 SELECT
-namespaceName,
-scheduledActionName
+namespace_name,
+scheduled_action_name
 FROM aws.redshift_serverless.scheduled_actions
 WHERE region = '{{ region }}' -- required
 ;
@@ -293,7 +293,7 @@ SELECT
 '{{ targetAction }}' /* required */,
 '{{ region }}'
 RETURNING
-scheduledAction
+scheduled_action
 ;
 ```
 </TabItem>
@@ -383,7 +383,7 @@ WHERE
 region = '{{ region }}' --required
 AND scheduledActionName = '{{ scheduledActionName }}' --required
 RETURNING
-scheduledAction;
+scheduled_action;
 ```
 </TabItem>
 </Tabs>

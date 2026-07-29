@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the queue environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.&gt;</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The priority of the queue environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueEnvironmentId" /></td>
+    <td><CopyableCode code="queue_environment_id" /></td>
     <td><code>string</code></td>
     <td>The queue environment ID. (pattern: &lt;code&gt;queueenv-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The template for the queue environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The type of template for the queue environment. (JSON, YAML)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The queue environment's priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueEnvironmentId" /></td>
+    <td><CopyableCode code="queue_environment_id" /></td>
     <td><code>string</code></td>
     <td>The queue environment ID. (pattern: &lt;code&gt;queueenv-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -249,14 +249,14 @@ Gets a queue environment.
 ```sql
 SELECT
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 priority,
-queueEnvironmentId,
+queue_environment_id,
 template,
-templateType,
-updatedAt,
-updatedBy
+template_type,
+updated_at,
+updated_by
 FROM aws.deadline.queue_environments
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -273,7 +273,7 @@ Lists queue environments.
 SELECT
 name,
 priority,
-queueEnvironmentId
+queue_environment_id
 FROM aws.deadline.queue_environments
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -318,7 +318,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-queueEnvironmentId
+queue_environment_id
 ;
 ```
 </TabItem>

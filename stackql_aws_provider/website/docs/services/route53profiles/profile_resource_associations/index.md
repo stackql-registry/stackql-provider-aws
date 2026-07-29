@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile resource association was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile resource association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile resource association was modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the Profile resource association. (pattern: &lt;code&gt;^(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID of the Profile resource association owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>Profile ID of the Profile that the resources are associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceProperties" /></td>
+    <td><CopyableCode code="resource_properties" /></td>
     <td><code>string</code></td>
     <td>If the DNS resource is a DNS Firewall rule group, this indicates the priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Resource type, such as a private hosted zone, or DNS Firewall rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the Profile resource association. (COMPLETE, DELETING, UPDATING, CREATING, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the Profile resource association.</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile resource association was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile resource association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile resource association was modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the Profile resource association. (pattern: &lt;code&gt;^(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID of the Profile resource association owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>Profile ID of the Profile that the resources are associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceProperties" /></td>
+    <td><CopyableCode code="resource_properties" /></td>
     <td><code>string</code></td>
     <td>If the DNS resource is a DNS Firewall rule group, this indicates the priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Resource type, such as a private hosted zone, or DNS Firewall rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the Profile resource association. (COMPLETE, DELETING, UPDATING, CREATING, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the Profile resource association.</td>
 </tr>
@@ -279,17 +279,17 @@ Returns information about a specified Route 53 Profile resource association.
 
 ```sql
 SELECT
-CreationTime,
-Id,
-ModificationTime,
-Name,
-OwnerId,
-ProfileId,
-ResourceArn,
-ResourceProperties,
-ResourceType,
-Status,
-StatusMessage
+creation_time,
+id,
+modification_time,
+name,
+owner_id,
+profile_id,
+resource_arn,
+resource_properties,
+resource_type,
+status,
+status_message
 FROM aws.route53profiles.profile_resource_associations
 WHERE profile_resource_association_id = '{{ profile_resource_association_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -302,17 +302,17 @@ Lists all the resource associations for the specified Route 53 Profile.
 
 ```sql
 SELECT
-CreationTime,
-Id,
-ModificationTime,
-Name,
-OwnerId,
-ProfileId,
-ResourceArn,
-ResourceProperties,
-ResourceType,
-Status,
-StatusMessage
+creation_time,
+id,
+modification_time,
+name,
+owner_id,
+profile_id,
+resource_arn,
+resource_properties,
+resource_type,
+status,
+status_message
 FROM aws.route53profiles.profile_resource_associations
 WHERE profile_id = '{{ profile_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -346,7 +346,7 @@ WHERE
 profile_resource_association_id = '{{ profile_resource_association_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ProfileResourceAssociation;
+profile_resource_association;
 ```
 </TabItem>
 </Tabs>

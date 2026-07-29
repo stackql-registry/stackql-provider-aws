@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>array</code></td>
     <td>The overview of groups in an organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is `null` when there are no more results to return. (pattern: &lt;code&gt;&#91;\S\s&#93;*|&#91;a-zA-Z0-9/+=&#93;&#123;1,1024&#125;&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns all the groups to which an entity belongs.
 
 ```sql
 SELECT
-Groups,
-NextToken
+groups,
+next_token
 FROM aws.workmail.groups_for_entities
 WHERE region = '{{ region }}' -- required
 ;

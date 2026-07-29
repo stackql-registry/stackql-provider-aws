@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Context" /></td>
+    <td><CopyableCode code="context" /></td>
     <td><code>string</code></td>
     <td>Reserved. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the instance fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceFleetType" /></td>
+    <td><CopyableCode code="instance_fleet_type" /></td>
     <td><code>string</code></td>
     <td>The node type that the instance fleet hosts. Valid values are MASTER, CORE, or TASK. (MASTER, CORE, TASK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceTypeSpecifications" /></td>
+    <td><CopyableCode code="instance_type_specifications" /></td>
     <td><code>array</code></td>
     <td>An array of specifications for the instance types that comprise an instance fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchSpecifications" /></td>
+    <td><CopyableCode code="launch_specifications" /></td>
     <td><code>object</code></td>
     <td>Describes the launch specification for an instance fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name for the instance fleet. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionedOnDemandCapacity" /></td>
+    <td><CopyableCode code="provisioned_on_demand_capacity" /></td>
     <td><code>integer</code></td>
     <td>The number of On-Demand units that have been provisioned for the instance fleet to fulfill TargetOnDemandCapacity. This provisioned capacity might be less than or greater than TargetOnDemandCapacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionedSpotCapacity" /></td>
+    <td><CopyableCode code="provisioned_spot_capacity" /></td>
     <td><code>integer</code></td>
     <td>The number of Spot units that have been provisioned for this instance fleet to fulfill TargetSpotCapacity. This provisioned capacity might be less than or greater than TargetSpotCapacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResizeSpecifications" /></td>
+    <td><CopyableCode code="resize_specifications" /></td>
     <td><code>object</code></td>
     <td>The resize specification for the instance fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current status of the instance fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetOnDemandCapacity" /></td>
+    <td><CopyableCode code="target_on_demand_capacity" /></td>
     <td><code>integer</code></td>
     <td>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand Instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand Instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When an On-Demand Instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use InstanceFleet$ProvisionedOnDemandCapacity to determine the Spot capacity units that have been provisioned for the instance fleet. If not specified or set to 0, only Spot Instances are provisioned for the instance fleet using TargetSpotCapacity. At least one of TargetSpotCapacity and TargetOnDemandCapacity should be greater than 0. For a master instance fleet, only one of TargetSpotCapacity and TargetOnDemandCapacity can be specified, and its value must be 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetSpotCapacity" /></td>
+    <td><CopyableCode code="target_spot_capacity" /></td>
     <td><code>integer</code></td>
     <td>The target capacity of Spot units for the instance fleet, which determines how many Spot Instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot Instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When a Spot instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use InstanceFleet$ProvisionedSpotCapacity to determine the Spot capacity units that have been provisioned for the instance fleet. If not specified or set to 0, only On-Demand Instances are provisioned for the instance fleet. At least one of TargetSpotCapacity and TargetOnDemandCapacity should be greater than 0. For a master instance fleet, only one of TargetSpotCapacity and TargetOnDemandCapacity can be specified, and its value must be 1.</td>
 </tr>
@@ -188,18 +188,18 @@ Lists all available details about the instance fleets in a cluster. The instance
 
 ```sql
 SELECT
-Context,
-Id,
-InstanceFleetType,
-InstanceTypeSpecifications,
-LaunchSpecifications,
-Name,
-ProvisionedOnDemandCapacity,
-ProvisionedSpotCapacity,
-ResizeSpecifications,
-Status,
-TargetOnDemandCapacity,
-TargetSpotCapacity
+context,
+id,
+instance_fleet_type,
+instance_type_specifications,
+launch_specifications,
+name,
+provisioned_on_demand_capacity,
+provisioned_spot_capacity,
+resize_specifications,
+status,
+target_on_demand_capacity,
+target_spot_capacity
 FROM aws.emr.instance_fleets
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,9 +230,9 @@ region = '{{ region }}' --required
 AND ClusterId = '{{ ClusterId }}' --required
 AND InstanceFleet = '{{ InstanceFleet }}' --required
 RETURNING
-ClusterArn,
-ClusterId,
-InstanceFleetId;
+cluster_arn,
+cluster_id,
+instance_fleet_id;
 ```
 </TabItem>
 </Tabs>

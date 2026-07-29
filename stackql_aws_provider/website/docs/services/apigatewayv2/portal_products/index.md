@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a portal product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayOrder" /></td>
+    <td><CopyableCode code="display_order" /></td>
     <td><code>object</code></td>
     <td>The display order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the portal product was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalProductArn" /></td>
+    <td><CopyableCode code="portal_product_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the portal product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalProductId" /></td>
+    <td><CopyableCode code="portal_product_id" /></td>
     <td><code>string</code></td>
     <td>The portal product identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of a portal product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the portal product was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalProductArn" /></td>
+    <td><CopyableCode code="portal_product_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a portal product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalProductId" /></td>
+    <td><CopyableCode code="portal_product_id" /></td>
     <td><code>string</code></td>
     <td>The portal product identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
@@ -248,13 +248,13 @@ Gets a portal product.
 
 ```sql
 SELECT
-Description,
-DisplayName,
-DisplayOrder,
-LastModified,
-PortalProductArn,
-PortalProductId,
-Tags
+description,
+display_name,
+display_order,
+last_modified,
+portal_product_arn,
+portal_product_id,
+tags
 FROM aws.apigatewayv2.portal_products
 WHERE portal_product_id = '{{ portal_product_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,12 +268,12 @@ Lists portal products.
 
 ```sql
 SELECT
-Description,
-DisplayName,
-LastModified,
-PortalProductArn,
-PortalProductId,
-Tags
+description,
+display_name,
+last_modified,
+portal_product_arn,
+portal_product_id,
+tags
 FROM aws.apigatewayv2.portal_products
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -311,13 +311,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Description,
-DisplayName,
-DisplayOrder,
-LastModified,
-PortalProductArn,
-PortalProductId,
-Tags
+description,
+display_name,
+display_order,
+last_modified,
+portal_product_arn,
+portal_product_id,
+tags
 ;
 ```
 </TabItem>
@@ -365,13 +365,13 @@ WHERE
 portal_product_id = '{{ portal_product_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Description,
-DisplayName,
-DisplayOrder,
-LastModified,
-PortalProductArn,
-PortalProductId,
-Tags;
+description,
+display_name,
+display_order,
+last_modified,
+portal_product_arn,
+portal_product_id,
+tags;
 ```
 </TabItem>
 </Tabs>

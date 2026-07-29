@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedByStack" /></td>
+    <td><CopyableCode code="managed_by_stack" /></td>
     <td><code>boolean</code></td>
     <td>If true, the resource is managed by a CloudFormation stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>string</code></td>
     <td>A list of up to 256 key-value pairs that identifies for the scanned resource. The key is the name of one of the primary identifiers for the resource. (Primary identifiers are specified in the primaryIdentifier list in the resource schema.) The value is the value of that primary identifier. For example, for a AWS::DynamoDB::Table resource, the primary identifiers is TableName so the key-value pair could be "TableName": "MyDDBTable". For more information, see primaryIdentifier in the CloudFormation Command Line Interface (CLI) User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource, such as AWS::DynamoDB::Table. For the list of supported resources, see Resource type support for imports and drift detection In the CloudFormation User Guide</td>
 </tr>
@@ -149,9 +149,9 @@ Lists the related resources for a list of resources from a resource scan. The re
 
 ```sql
 SELECT
-ManagedByStack,
-ResourceIdentifier,
-ResourceType
+managed_by_stack,
+resource_identifier,
+resource_type
 FROM aws.cloudformation.resource_scan_related_resources
 WHERE ResourceScanId = '{{ ResourceScanId }}' -- required
 AND Resources = '{{ Resources }}' -- required

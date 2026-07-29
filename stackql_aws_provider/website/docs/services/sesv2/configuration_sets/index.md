@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArchivingOptions" /></td>
+    <td><CopyableCode code="archiving_options" /></td>
     <td><code>object</code></td>
     <td>Used to associate a configuration set with a MailManager archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationSetName" /></td>
+    <td><CopyableCode code="configuration_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of a configuration set. Configuration sets are groups of rules that you can apply to the emails you send. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryOptions" /></td>
+    <td><CopyableCode code="delivery_options" /></td>
     <td><code>object</code></td>
     <td>Used to associate a configuration set with a dedicated IP pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReputationOptions" /></td>
+    <td><CopyableCode code="reputation_options" /></td>
     <td><code>object</code></td>
     <td>Enable or disable collection of reputation metrics for emails that you send using this configuration set in the current Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingOptions" /></td>
+    <td><CopyableCode code="sending_options" /></td>
     <td><code>object</code></td>
     <td>Used to enable or disable email sending for messages that use this configuration set in the current Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuppressionOptions" /></td>
+    <td><CopyableCode code="suppression_options" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the suppression list preferences for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) that are associated with the configuration set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingOptions" /></td>
+    <td><CopyableCode code="tracking_options" /></td>
     <td><code>object</code></td>
     <td>An object that defines the tracking options for a configuration set. When you use the Amazon SES API v2 to send an email, it contains an invisible image that's used to track when recipients open your email. If your email contains links, those links are changed slightly in order to track when recipients click them. These images and links include references to a domain operated by Amazon Web Services. You can optionally configure the Amazon SES to use a domain that you operate for these images and links.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VdmOptions" /></td>
+    <td><CopyableCode code="vdm_options" /></td>
     <td><code>object</code></td>
     <td>An object that defines the VDM settings that apply to emails that you send using the configuration set.</td>
 </tr>
@@ -265,15 +265,15 @@ Get information about an existing configuration set, including the dedicated IP 
 
 ```sql
 SELECT
-ArchivingOptions,
-ConfigurationSetName,
-DeliveryOptions,
-ReputationOptions,
-SendingOptions,
-SuppressionOptions,
-Tags,
-TrackingOptions,
-VdmOptions
+archiving_options,
+configuration_set_name,
+delivery_options,
+reputation_options,
+sending_options,
+suppression_options,
+tags,
+tracking_options,
+vdm_options
 FROM aws.sesv2.configuration_sets
 WHERE configuration_set_name = '{{ configuration_set_name }}' -- required
 AND region = '{{ region }}' -- required

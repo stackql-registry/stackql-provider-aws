@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>An object that contains details about the reason the deletion failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the deletion.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves the status of your service-linked role deletion. After you use DeleteS
 
 ```sql
 SELECT
-Reason,
-Status
+reason,
+status
 FROM aws.iam.service_linked_role_deletion_status
 WHERE DeletionTaskId = '{{ DeletionTaskId }}' -- required
 AND region = '{{ region }}' -- required

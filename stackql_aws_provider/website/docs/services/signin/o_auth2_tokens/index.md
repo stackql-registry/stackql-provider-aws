@@ -103,7 +103,7 @@ SELECT
 '{{ tokenInput }}' /* required */,
 '{{ region }}'
 RETURNING
-tokenOutput
+token_output
 ;
 ```
 </TabItem>

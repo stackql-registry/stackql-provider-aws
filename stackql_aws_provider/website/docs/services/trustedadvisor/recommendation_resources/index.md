@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the Recommendation Resource (pattern: &lt;code&gt;arn:&#91;\w-&#93;+:trustedadvisor::\d&#123;12&#125;:recommendation-resource\/&#91;\w-&#93;+\/&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsResourceId" /></td>
+    <td><CopyableCode code="aws_resource_id" /></td>
     <td><code>string</code></td>
     <td>The AWS resource identifier. There are certain checks that generate recommendation resources without an awsResourceId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exclusionStatus" /></td>
+    <td><CopyableCode code="exclusion_status" /></td>
     <td><code>string</code></td>
     <td>The exclusion status of the Recommendation Resource (excluded, included)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the Recommendation Resource was last updated</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata associated with the Recommendation Resource</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationArn" /></td>
+    <td><CopyableCode code="recommendation_arn" /></td>
     <td><code>string</code></td>
     <td>The Recommendation ARN (pattern: &lt;code&gt;arn:&#91;\w-&#93;+:trustedadvisor::\d&#123;12&#125;:recommendation\/&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionCode" /></td>
+    <td><CopyableCode code="region_code" /></td>
     <td><code>string</code></td>
     <td>The AWS Region code that the Recommendation Resource is in</td>
 </tr>
@@ -196,12 +196,12 @@ List Resources of a Recommendation. This API provides global recommendations, el
 SELECT
 id,
 arn,
-awsResourceId,
-exclusionStatus,
-lastUpdatedAt,
+aws_resource_id,
+exclusion_status,
+last_updated_at,
 metadata,
-recommendationArn,
-regionCode,
+recommendation_arn,
+region_code,
 status
 FROM aws.trustedadvisor.recommendation_resources
 WHERE recommendation_identifier = '{{ recommendation_identifier }}' -- required

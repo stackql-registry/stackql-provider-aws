@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs and how to use ARNs in policies, see IAM Identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the user was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PasswordLastUsed" /></td>
+    <td><CopyableCode code="password_last_used" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the user's password was last used to sign in to an Amazon Web Services website. For a list of Amazon Web Services websites that capture a user's last sign-in time, see the Credential reports topic in the IAM User Guide. If a password is used more than once in a five-minute span, only the first use is returned in this field. If the field is null (no value), then it indicates that they never signed in with a password. This can be because: The user never had a password. A password exists but has not been used since IAM started tracking this information on October 20, 2014. A null value does not mean that the user never had a password. Also, if the user does not currently have a password but had one in the past, then this field contains the date and time the most recent password was used. This value is returned only in the GetUser and ListUsers operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the user. For more information about paths, see IAM identifiers in the IAM User Guide. The ARN of the policy used to set the permissions boundary for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsBoundary" /></td>
+    <td><CopyableCode code="permissions_boundary" /></td>
     <td><code>string</code></td>
     <td>For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are associated with the user. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the user. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name identifying the user.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs and how to use ARNs in policies, see IAM Identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the user was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PasswordLastUsed" /></td>
+    <td><CopyableCode code="password_last_used" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the user's password was last used to sign in to an Amazon Web Services website. For a list of Amazon Web Services websites that capture a user's last sign-in time, see the Credential reports topic in the IAM User Guide. If a password is used more than once in a five-minute span, only the first use is returned in this field. If the field is null (no value), then it indicates that they never signed in with a password. This can be because: The user never had a password. A password exists but has not been used since IAM started tracking this information on October 20, 2014. A null value does not mean that the user never had a password. Also, if the user does not currently have a password but had one in the past, then this field contains the date and time the most recent password was used. This value is returned only in the GetUser and ListUsers operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the user. For more information about paths, see IAM identifiers in the IAM User Guide. The ARN of the policy used to set the permissions boundary for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsBoundary" /></td>
+    <td><CopyableCode code="permissions_boundary" /></td>
     <td><code>string</code></td>
     <td>For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are associated with the user. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the user. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name identifying the user.</td>
 </tr>
@@ -336,14 +336,14 @@ Retrieves information about the specified IAM user, including the user's creatio
 
 ```sql
 SELECT
-Arn,
-CreateDate,
-PasswordLastUsed,
-Path,
-PermissionsBoundary,
-Tags,
-UserId,
-UserName
+arn,
+create_date,
+password_last_used,
+path,
+permissions_boundary,
+tags,
+user_id,
+user_name
 FROM aws.iam.users
 WHERE UserName = '{{ UserName }}' -- required
 AND region = '{{ region }}' -- required
@@ -356,14 +356,14 @@ Lists the IAM users that have the specified path prefix. If no path prefix is sp
 
 ```sql
 SELECT
-Arn,
-CreateDate,
-PasswordLastUsed,
-Path,
-PermissionsBoundary,
-Tags,
-UserId,
-UserName
+arn,
+create_date,
+password_last_used,
+path,
+permissions_boundary,
+tags,
+user_id,
+user_name
 FROM aws.iam.users
 WHERE region = '{{ region }}' -- required
 AND PathPrefix = '{{ PathPrefix }}'
@@ -403,14 +403,14 @@ SELECT
 '{{ PermissionsBoundary }}',
 '{{ Tags }}'
 RETURNING
-Arn,
-CreateDate,
-PasswordLastUsed,
-Path,
-PermissionsBoundary,
-Tags,
-UserId,
-UserName
+arn,
+create_date,
+password_last_used,
+path,
+permissions_boundary,
+tags,
+user_id,
+user_name
 ;
 ```
 </TabItem>

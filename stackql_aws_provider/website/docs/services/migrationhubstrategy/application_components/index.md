@@ -60,107 +60,107 @@ The following fields are returned by `SELECT` queries:
     <td>The name of application component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisStatus" /></td>
+    <td><CopyableCode code="analysis_status" /></td>
     <td><code>string</code></td>
     <td>The status of analysis, if the application component has source code or an associated database. (ANALYSIS_TO_BE_SCHEDULED, ANALYSIS_STARTED, ANALYSIS_SUCCESS, ANALYSIS_FAILED, ANALYSIS_PARTIAL_SUCCESS, UNCONFIGURED, CONFIGURED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportS3Object" /></td>
+    <td><CopyableCode code="antipattern_report_s3_object" /></td>
     <td><code>object</code></td>
     <td>The S3 bucket name and the Amazon S3 key name for the anti-pattern report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportStatus" /></td>
+    <td><CopyableCode code="antipattern_report_status" /></td>
     <td><code>string</code></td>
     <td>The status of the anti-pattern report generation. (FAILED, IN_PROGRESS, SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="antipatternReportStatusMessage" /></td>
+    <td><CopyableCode code="antipattern_report_status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for the anti-pattern. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appType" /></td>
+    <td><CopyableCode code="app_type" /></td>
     <td><code>string</code></td>
     <td>The type of application component. (DotNetFramework, Java, SQLServer, IIS, Oracle, Other, Tomcat, JBoss, Spring, Mongo DB, DB2, Maria DB, MySQL, Sybase, PostgreSQLServer, Cassandra, IBM WebSphere, Oracle WebLogic, Visual Basic, Unknown, DotnetCore, Dotnet)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appUnitError" /></td>
+    <td><CopyableCode code="app_unit_error" /></td>
     <td><code>object</code></td>
     <td>The error in the analysis of the source code or database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedServerId" /></td>
+    <td><CopyableCode code="associated_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the server that the application component is running on. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databaseConfigDetail" /></td>
+    <td><CopyableCode code="database_config_detail" /></td>
     <td><code>object</code></td>
     <td>Configuration details for the database associated with the application component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inclusionStatus" /></td>
+    <td><CopyableCode code="inclusion_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the application component has been included for server recommendation or not. (excludeFromAssessment, includeInAssessment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAnalyzedTimestamp" /></td>
+    <td><CopyableCode code="last_analyzed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the application component was assessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listAntipatternSeveritySummary" /></td>
+    <td><CopyableCode code="list_antipattern_severity_summary" /></td>
     <td><code>array</code></td>
     <td>A list of anti-pattern severity summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="moreServerAssociationExists" /></td>
+    <td><CopyableCode code="more_server_association_exists" /></td>
     <td><code>boolean</code></td>
     <td>Set to true if the application component is running on multiple servers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osDriver" /></td>
+    <td><CopyableCode code="os_driver" /></td>
     <td><code>string</code></td>
     <td>OS driver. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osVersion" /></td>
+    <td><CopyableCode code="os_version" /></td>
     <td><code>string</code></td>
     <td>OS version. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationSet" /></td>
+    <td><CopyableCode code="recommendation_set" /></td>
     <td><code>object</code></td>
     <td>The top recommendation set for the application component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceSubType" /></td>
+    <td><CopyableCode code="resource_sub_type" /></td>
     <td><code>string</code></td>
     <td>The application component subtype. (Database, Process, DatabaseProcess)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resultList" /></td>
+    <td><CopyableCode code="result_list" /></td>
     <td><code>array</code></td>
     <td>A list of the analysis results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runtimeStatus" /></td>
+    <td><CopyableCode code="runtime_status" /></td>
     <td><code>string</code></td>
     <td>The status of the application unit. (ANALYSIS_TO_BE_SCHEDULED, ANALYSIS_STARTED, ANALYSIS_SUCCESS, ANALYSIS_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runtimeStatusMessage" /></td>
+    <td><CopyableCode code="runtime_status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for the application unit. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceCodeRepositories" /></td>
+    <td><CopyableCode code="source_code_repositories" /></td>
     <td><code>array</code></td>
     <td>Details about the source code repository associated with the application component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the analysis status and any failure message. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -238,27 +238,27 @@ Retrieves a list of all the application components (processes).
 SELECT
 id,
 name,
-analysisStatus,
-antipatternReportS3Object,
-antipatternReportStatus,
-antipatternReportStatusMessage,
-appType,
-appUnitError,
-associatedServerId,
-databaseConfigDetail,
-inclusionStatus,
-lastAnalyzedTimestamp,
-listAntipatternSeveritySummary,
-moreServerAssociationExists,
-osDriver,
-osVersion,
-recommendationSet,
-resourceSubType,
-resultList,
-runtimeStatus,
-runtimeStatusMessage,
-sourceCodeRepositories,
-statusMessage
+analysis_status,
+antipattern_report_s3_object,
+antipattern_report_status,
+antipattern_report_status_message,
+app_type,
+app_unit_error,
+associated_server_id,
+database_config_detail,
+inclusion_status,
+last_analyzed_timestamp,
+list_antipattern_severity_summary,
+more_server_association_exists,
+os_driver,
+os_version,
+recommendation_set,
+resource_sub_type,
+result_list,
+runtime_status,
+runtime_status_message,
+source_code_repositories,
+status_message
 FROM aws.migrationhubstrategy.application_components
 WHERE region = '{{ region }}' -- required
 ;

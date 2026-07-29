@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for this data point in the resources trend metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrendsValues" /></td>
+    <td><CopyableCode code="trends_values" /></td>
     <td><code>object</code></td>
     <td>The resource trend metric values associated with this timestamp, including resource counts.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns resource trend data based on the specified criteria. This operation help
 
 ```sql
 SELECT
-Timestamp,
-TrendsValues
+timestamp,
+trends_values
 FROM aws.securityhub.resources_trends_v2s
 WHERE region = '{{ region }}' -- required
 ;

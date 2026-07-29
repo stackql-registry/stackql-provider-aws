@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the VPN concentrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the VPN concentrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway attachment for the VPN concentrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway associated with the VPN concentrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of VPN concentrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpnConcentratorId" /></td>
+    <td><CopyableCode code="vpn_concentrator_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPN concentrator.</td>
 </tr>
@@ -203,12 +203,12 @@ Describes one or more of your VPN concentrators.
 
 ```sql
 SELECT
-State,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-Type,
-VpnConcentratorId
+state,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+type,
+vpn_concentrator_id
 FROM aws.ec2.vpn_concentrators
 WHERE region = '{{ region }}' -- required
 AND VpnConcentratorId = '{{ VpnConcentratorId }}'
@@ -250,12 +250,12 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-State,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-Type,
-VpnConcentratorId
+state,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+type,
+vpn_concentrator_id
 ;
 ```
 </TabItem>

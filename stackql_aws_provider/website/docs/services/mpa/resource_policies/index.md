@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>Document that contains the contents for the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>Name of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The type of policy (AWS_MANAGED, AWS_RAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyVersionArn" /></td>
+    <td><CopyableCode code="policy_version_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the policy version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the resource.</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>Name of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The type of policy. (AWS_MANAGED, AWS_RAM)</td>
 </tr>
@@ -192,11 +192,11 @@ Returns details about a policy for a resource.
 
 ```sql
 SELECT
-PolicyDocument,
-PolicyName,
-PolicyType,
-PolicyVersionArn,
-ResourceArn
+policy_document,
+policy_name,
+policy_type,
+policy_version_arn,
+resource_arn
 FROM aws.mpa.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -208,9 +208,9 @@ Returns a list of policies for a resource.
 
 ```sql
 SELECT
-PolicyArn,
-PolicyName,
-PolicyType
+policy_arn,
+policy_name,
+policy_type
 FROM aws.mpa.resource_policies
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

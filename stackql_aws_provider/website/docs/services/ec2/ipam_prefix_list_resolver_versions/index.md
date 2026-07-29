@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version number of the IPAM prefix list resolver. Each version is a snapshot of what CIDRs matched your rules at that moment in time. The version number increments every time the CIDR list changes due to infrastructure changes.</td>
 </tr>
@@ -149,7 +149,7 @@ Retrieves version information for an IPAM prefix list resolver. Each version is 
 
 ```sql
 SELECT
-Version
+version
 FROM aws.ec2.ipam_prefix_list_resolver_versions
 WHERE IpamPrefixListResolverId = '{{ IpamPrefixListResolverId }}' -- required
 AND region = '{{ region }}' -- required

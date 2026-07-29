@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeviceAttributes" /></td>
+    <td><CopyableCode code="device_attributes" /></td>
     <td><code>array</code></td>
     <td>Metadata about a user's device, like name and last-access source IP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceCreateDate" /></td>
+    <td><CopyableCode code="device_create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceKey" /></td>
+    <td><CopyableCode code="device_key" /></td>
     <td><code>string</code></td>
     <td>The device key, for example us-west-2_EXAMPLE-a1b2c3d4-5678-90ab-cdef-EXAMPLE22222. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceLastAuthenticatedDate" /></td>
+    <td><CopyableCode code="device_last_authenticated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the user last signed in with the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceLastModifiedDate" /></td>
+    <td><CopyableCode code="device_last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Devices" /></td>
+    <td><CopyableCode code="devices" /></td>
     <td><code>array</code></td>
     <td>An array of devices and their details. Each entry that's returned includes device information, last-accessed and created dates, and the device key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaginationToken" /></td>
+    <td><CopyableCode code="pagination_token" /></td>
     <td><code>string</code></td>
     <td>The identifier that Amazon Cognito returned with the previous request to this operation. When you include a pagination token in your request, Amazon Cognito returns the next set of items in the list. By use of this token, you can paginate through the full list of items. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -186,11 +186,11 @@ Given a device key, returns information about a remembered device for the curren
 
 ```sql
 SELECT
-DeviceAttributes,
-DeviceCreateDate,
-DeviceKey,
-DeviceLastAuthenticatedDate,
-DeviceLastModifiedDate
+device_attributes,
+device_create_date,
+device_key,
+device_last_authenticated_date,
+device_last_modified_date
 FROM aws.cognito_idp.devices
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,8 +202,8 @@ Lists the devices that Amazon Cognito has registered to the currently signed-in 
 
 ```sql
 SELECT
-Devices,
-PaginationToken
+devices,
+pagination_token
 FROM aws.cognito_idp.devices
 WHERE region = '{{ region }}' -- required
 ;

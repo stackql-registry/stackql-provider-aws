@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the organization telemetry rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeRegion" /></td>
+    <td><CopyableCode code="home_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the organization telemetry rule was originally created. For replicated rules in spoke regions, this indicates the region that manages the rule. For rules created without multi-region scope, this field is not present.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsReplicated" /></td>
+    <td><CopyableCode code="is_replicated" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this organization telemetry rule is a replica that was created in this region through multi-region fan-out from the home region. Replicated rules cannot be directly updated or deleted in the spoke region. To modify a replicated rule, make changes in the home region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimeStamp" /></td>
+    <td><CopyableCode code="last_update_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the organization telemetry rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionStatuses" /></td>
+    <td><CopyableCode code="region_statuses" /></td>
     <td><code>array</code></td>
     <td>A list of per-region replication statuses for the organization telemetry rule. Each entry indicates the replication status of the rule in a specific spoke region. This field is only present for rules created with multi-region scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the organization telemetry rule. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the organization telemetry rule. (pattern: &lt;code&gt;&#91;0-9A-Za-z-_.#/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TelemetryRule" /></td>
+    <td><CopyableCode code="telemetry_rule" /></td>
     <td><code>object</code></td>
     <td>Defines how telemetry should be configured for specific Amazon Web Services resources.</td>
 </tr>
@@ -175,14 +175,14 @@ Retrieves the details of a specific organization telemetry rule. This operation 
 
 ```sql
 SELECT
-CreatedTimeStamp,
-HomeRegion,
-IsReplicated,
-LastUpdateTimeStamp,
-RegionStatuses,
-RuleArn,
-RuleName,
-TelemetryRule
+created_time_stamp,
+home_region,
+is_replicated,
+last_update_time_stamp,
+region_statuses,
+rule_arn,
+rule_name,
+telemetry_rule
 FROM aws.observabilityadmin.telemetry_rule_for_organizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -217,7 +217,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-RuleArn
+rule_arn
 ;
 ```
 </TabItem>
@@ -309,7 +309,7 @@ region = '{{ region }}' --required
 AND RuleIdentifier = '{{ RuleIdentifier }}' --required
 AND Rule = '{{ Rule }}' --required
 RETURNING
-RuleArn;
+rule_arn;
 ```
 </TabItem>
 </Tabs>

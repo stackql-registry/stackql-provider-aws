@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationProtocol" /></td>
+    <td><CopyableCode code="application_protocol" /></td>
     <td><code>string</code></td>
     <td>An enumerated string that speciﬁes the application-layer protocol. SECURE_MQTT - MQTT over TLS. MQTT_WSS - MQTT over WebSocket. HTTPS - HTTP over TLS. DEFAULT - Use a combination of port and Application Layer Protocol Negotiation (ALPN) to specify application_layer protocol. For more information, see Device communication protocols. (SECURE_MQTT, MQTT_WSS, HTTPS, DEFAULT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>An enumerated string that speciﬁes the authentication type. CUSTOM_AUTH_X509 - Use custom authentication and authorization with additional details from the X.509 client certificate. CUSTOM_AUTH - Use custom authentication and authorization. For more information, see Custom authentication and authorization. AWS_X509 - Use X.509 client certificates without custom authentication and authorization. For more information, see X.509 client certificates. AWS_SIGV4 - Use Amazon Web Services Signature Version 4. For more information, see IAM users, groups, and roles. DEFAULT - Use a combination of port and Application Layer Protocol Negotiation (ALPN) to specify authentication type. For more information, see Device communication protocols. (CUSTOM_AUTH_X509, CUSTOM_AUTH, AWS_X509, AWS_SIGV4, DEFAULT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerConfig" /></td>
+    <td><CopyableCode code="authorizer_config" /></td>
     <td><code>object</code></td>
     <td>An object that specifies the authorization service for a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientCertificateConfig" /></td>
+    <td><CopyableCode code="client_certificate_config" /></td>
     <td><code>object</code></td>
     <td>An object that speciﬁes the client certificate conﬁguration for a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainConfigurationArn" /></td>
+    <td><CopyableCode code="domain_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the domain configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainConfigurationName" /></td>
+    <td><CopyableCode code="domain_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain configuration. (pattern: &lt;code&gt;&#91;\w.:-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainConfigurationStatus" /></td>
+    <td><CopyableCode code="domain_configuration_status" /></td>
     <td><code>string</code></td>
     <td>A Boolean value that specifies the current state of the domain configuration. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainType" /></td>
+    <td><CopyableCode code="domain_type" /></td>
     <td><code>string</code></td>
     <td>The type of the domain. (ENDPOINT, AWS_MANAGED, CUSTOMER_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStatusChangeDate" /></td>
+    <td><CopyableCode code="last_status_change_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the domain configuration's status was last changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverCertificateConfig" /></td>
+    <td><CopyableCode code="server_certificate_config" /></td>
     <td><code>object</code></td>
     <td>The server certificate configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverCertificates" /></td>
+    <td><CopyableCode code="server_certificates" /></td>
     <td><code>array</code></td>
     <td>A list containing summary information about the server certificate included in the domain configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceType" /></td>
+    <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>The type of service delivered by the endpoint. (DATA, CREDENTIAL_PROVIDER, JOBS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tlsConfig" /></td>
+    <td><CopyableCode code="tls_config" /></td>
     <td><code>object</code></td>
     <td>An object that specifies the TLS configuration for a domain.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="domainConfigurationArn" /></td>
+    <td><CopyableCode code="domain_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the domain configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainConfigurationName" /></td>
+    <td><CopyableCode code="domain_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain configuration. This value must be unique to a region. (pattern: &lt;code&gt;&#91;\w.:-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceType" /></td>
+    <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>The type of service delivered by the endpoint. (DATA, CREDENTIAL_PROVIDER, JOBS)</td>
 </tr>
@@ -263,20 +263,20 @@ Gets summary information about a domain configuration. Requires permission to ac
 
 ```sql
 SELECT
-applicationProtocol,
-authenticationType,
-authorizerConfig,
-clientCertificateConfig,
-domainConfigurationArn,
-domainConfigurationName,
-domainConfigurationStatus,
-domainName,
-domainType,
-lastStatusChangeDate,
-serverCertificateConfig,
-serverCertificates,
-serviceType,
-tlsConfig
+application_protocol,
+authentication_type,
+authorizer_config,
+client_certificate_config,
+domain_configuration_arn,
+domain_configuration_name,
+domain_configuration_status,
+domain_name,
+domain_type,
+last_status_change_date,
+server_certificate_config,
+server_certificates,
+service_type,
+tls_config
 FROM aws.iot.domain_configurations
 WHERE domain_configuration_name = '{{ domain_configuration_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -289,9 +289,9 @@ Gets a list of domain configurations for the user. This list is sorted alphabeti
 
 ```sql
 SELECT
-domainConfigurationArn,
-domainConfigurationName,
-serviceType
+domain_configuration_arn,
+domain_configuration_name,
+service_type
 FROM aws.iot.domain_configurations
 WHERE region = '{{ region }}' -- required
 AND marker = '{{ marker }}'
@@ -347,8 +347,8 @@ SELECT
 '{{ domain_configuration_name }}',
 '{{ region }}'
 RETURNING
-domainConfigurationArn,
-domainConfigurationName
+domain_configuration_arn,
+domain_configuration_name
 ;
 ```
 </TabItem>
@@ -439,8 +439,8 @@ WHERE
 domain_configuration_name = '{{ domain_configuration_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-domainConfigurationArn,
-domainConfigurationName;
+domain_configuration_arn,
+domain_configuration_name;
 ```
 </TabItem>
 </Tabs>

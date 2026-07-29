@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InferenceEventSummaries" /></td>
+    <td><CopyableCode code="inference_event_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides an array of information about the individual inference events returned from the ListInferenceEvents operation, including scheduler used, event start time, event end time, diagnostics, and so on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of inference executions. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all inference events that have been found for the specified inference sche
 
 ```sql
 SELECT
-InferenceEventSummaries,
-NextToken
+inference_event_summaries,
+next_token
 FROM aws.lookoutequipment.inference_events
 WHERE region = '{{ region }}' -- required
 ;

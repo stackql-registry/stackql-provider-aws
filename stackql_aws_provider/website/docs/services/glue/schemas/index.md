@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Compatibility" /></td>
+    <td><CopyableCode code="compatibility" /></td>
     <td><code>string</code></td>
     <td>The compatibility mode of the schema. (NONE, DISABLED, BACKWARD, BACKWARD_ALL, FORWARD, FORWARD_ALL, FULL, FULL_ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the schema was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataFormat" /></td>
+    <td><CopyableCode code="data_format" /></td>
     <td><code>string</code></td>
     <td>The data format of the schema definition. Currently AVRO, JSON and PROTOBUF are supported. (AVRO, JSON, PROTOBUF)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of schema if specified when created (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestSchemaVersion" /></td>
+    <td><CopyableCode code="latest_schema_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The latest version of the schema associated with the returned schema definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextSchemaVersion" /></td>
+    <td><CopyableCode code="next_schema_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The next version of the schema associated with the returned schema definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryName" /></td>
+    <td><CopyableCode code="registry_name" /></td>
     <td><code>string</code></td>
     <td>The name of the registry. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$#.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaCheckpoint" /></td>
+    <td><CopyableCode code="schema_checkpoint" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the checkpoint (the last time the compatibility mode was changed).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$#.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaStatus" /></td>
+    <td><CopyableCode code="schema_status" /></td>
     <td><code>string</code></td>
     <td>The status of the schema. (AVAILABLE, PENDING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the schema was updated.</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that a schema was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description for the schema. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryName" /></td>
+    <td><CopyableCode code="registry_name" /></td>
     <td><code>string</code></td>
     <td>the name of the registry where the schema resides. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$#.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the schema. (pattern: &lt;code&gt;arn:aws(-(cn|us-gov|iso(-&#91;bef&#93;)?))?:glue:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$#.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaStatus" /></td>
+    <td><CopyableCode code="schema_status" /></td>
     <td><code>string</code></td>
     <td>The status of the schema. (AVAILABLE, PENDING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTime" /></td>
+    <td><CopyableCode code="updated_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that a schema was updated.</td>
 </tr>
@@ -258,19 +258,19 @@ Describes the specified schema in detail.
 
 ```sql
 SELECT
-Compatibility,
-CreatedTime,
-DataFormat,
-Description,
-LatestSchemaVersion,
-NextSchemaVersion,
-RegistryArn,
-RegistryName,
-SchemaArn,
-SchemaCheckpoint,
-SchemaName,
-SchemaStatus,
-UpdatedTime
+compatibility,
+created_time,
+data_format,
+description,
+latest_schema_version,
+next_schema_version,
+registry_arn,
+registry_name,
+schema_arn,
+schema_checkpoint,
+schema_name,
+schema_status,
+updated_time
 FROM aws.glue.schemas
 WHERE region = '{{ region }}' -- required
 ;
@@ -282,13 +282,13 @@ Returns a list of schemas with minimal details. Schemas in Deleting status will 
 
 ```sql
 SELECT
-CreatedTime,
-Description,
-RegistryName,
-SchemaArn,
-SchemaName,
-SchemaStatus,
-UpdatedTime
+created_time,
+description,
+registry_name,
+schema_arn,
+schema_name,
+schema_status,
+updated_time
 FROM aws.glue.schemas
 WHERE region = '{{ region }}' -- required
 ;
@@ -331,20 +331,20 @@ SELECT
 '{{ SchemaDefinition }}',
 '{{ region }}'
 RETURNING
-Compatibility,
-DataFormat,
-Description,
-LatestSchemaVersion,
-NextSchemaVersion,
-RegistryArn,
-RegistryName,
-SchemaArn,
-SchemaCheckpoint,
-SchemaName,
-SchemaStatus,
-SchemaVersionId,
-SchemaVersionStatus,
-Tags
+compatibility,
+data_format,
+description,
+latest_schema_version,
+next_schema_version,
+registry_arn,
+registry_name,
+schema_arn,
+schema_checkpoint,
+schema_name,
+schema_status,
+schema_version_id,
+schema_version_status,
+tags
 ;
 ```
 </TabItem>
@@ -417,9 +417,9 @@ WHERE
 region = '{{ region }}' --required
 AND SchemaId = '{{ SchemaId }}' --required
 RETURNING
-RegistryName,
-SchemaArn,
-SchemaName;
+registry_name,
+schema_arn,
+schema_name;
 ```
 </TabItem>
 </Tabs>

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Answer" /></td>
+    <td><CopyableCode code="answer" /></td>
     <td><code>object</code></td>
     <td>An answer of the question.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LensAlias" /></td>
+    <td><CopyableCode code="lens_alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the lens. For Amazon Web Services official lenses, this is either the lens alias, such as serverless, or the lens ARN, such as arn:aws:wellarchitected:us-east-1::lens/serverless. Note that some operations (such as ExportLens and CreateLensShare) are not permitted on Amazon Web Services official lenses. For custom lenses, this is the lens ARN, such as arn:aws:wellarchitected:us-west-2:123456789012:lens/0123456789abcdef01234567890abcdef. Each lens is identified by its LensSummary$LensAlias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The review template ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-iso(-&#91;a-z&#93;)?|-cn)?:wellarchitected:&#91;a-z&#93;&#123;2&#125;(-gov|-iso(&#91;a-z&#93;)?)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:(review-template)/&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnswerSummaries" /></td>
+    <td><CopyableCode code="answer_summaries" /></td>
     <td><code>array</code></td>
     <td>List of answer summaries of a lens review in a review template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LensAlias" /></td>
+    <td><CopyableCode code="lens_alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the lens. For Amazon Web Services official lenses, this is either the lens alias, such as serverless, or the lens ARN, such as arn:aws:wellarchitected:us-east-1::lens/serverless. Note that some operations (such as ExportLens and CreateLensShare) are not permitted on Amazon Web Services official lenses. For custom lenses, this is the lens ARN, such as arn:aws:wellarchitected:us-west-2:123456789012:lens/0123456789abcdef01234567890abcdef. Each lens is identified by its LensSummary$LensAlias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the review template. (pattern: &lt;code&gt;arn:aws(-us-gov|-iso(-&#91;a-z&#93;)?|-cn)?:wellarchitected:&#91;a-z&#93;&#123;2&#125;(-gov|-iso(&#91;a-z&#93;)?)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:(review-template)/&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -209,9 +209,9 @@ Get review template answer.
 
 ```sql
 SELECT
-Answer,
-LensAlias,
-TemplateArn
+answer,
+lens_alias,
+template_arn
 FROM aws.wellarchitected.review_template_answers
 WHERE template_arn = '{{ template_arn }}' -- required
 AND lens_alias = '{{ lens_alias }}' -- required
@@ -226,10 +226,10 @@ List the answers of a review template.
 
 ```sql
 SELECT
-AnswerSummaries,
-LensAlias,
-NextToken,
-TemplateArn
+answer_summaries,
+lens_alias,
+next_token,
+template_arn
 FROM aws.wellarchitected.review_template_answers
 WHERE template_arn = '{{ template_arn }}' -- required
 AND lens_alias = '{{ lens_alias }}' -- required
@@ -269,9 +269,9 @@ AND lens_alias = '{{ lens_alias }}' --required
 AND question_id = '{{ question_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Answer,
-LensAlias,
-TemplateArn;
+answer,
+lens_alias,
+template_arn;
 ```
 </TabItem>
 </Tabs>

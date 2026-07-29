@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveNodes" /></td>
+    <td><CopyableCode code="active_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of nodes in the cluster that are active (i.e., capable of serving requests).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterDiscoveryEndpoint" /></td>
+    <td><CopyableCode code="cluster_discovery_endpoint" /></td>
     <td><code>object</code></td>
     <td>The endpoint for this DAX cluster, consisting of a DNS name, a port number, and a URL. Applications should use the URL to configure the DAX client to find their cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterEndpointEncryptionType" /></td>
+    <td><CopyableCode code="cluster_endpoint_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption supported by the cluster's endpoint. Values are: NONE for no encryption TLS for Transport Layer Security (NONE, TLS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the DAX cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type of the cluster. Values are: ipv4 - IPv4 addresses only ipv6 - IPv6 addresses only dual_stack - Both IPv4 and IPv6 addresses (ipv4, ipv6, dual_stack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeIdsToRemove" /></td>
+    <td><CopyableCode code="node_ids_to_remove" /></td>
     <td><code>array</code></td>
     <td>A list of nodes to be removed from the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Nodes" /></td>
+    <td><CopyableCode code="nodes" /></td>
     <td><code>array</code></td>
     <td>A list of nodes that are currently in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationConfiguration" /></td>
+    <td><CopyableCode code="notification_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroup" /></td>
+    <td><CopyableCode code="parameter_group" /></td>
     <td><code>object</code></td>
     <td>The parameter group being used by nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>A range of time when maintenance of DAX cluster software will be performed. For example: sun:01:00-sun:09:00. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SSEDescription" /></td>
+    <td><CopyableCode code="sse_description" /></td>
     <td><code>object</code></td>
     <td>The description of the server-side encryption status on the specified DAX cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>A list of security groups, and the status of each, for the nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroup" /></td>
+    <td><CopyableCode code="subnet_group" /></td>
     <td><code>string</code></td>
     <td>The subnet group where the DAX cluster is running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalNodes" /></td>
+    <td><CopyableCode code="total_nodes" /></td>
     <td><code>integer</code></td>
     <td>The total number of nodes in the cluster.</td>
 </tr>
@@ -251,25 +251,25 @@ Returns information about all provisioned DAX clusters if no cluster identifier 
 
 ```sql
 SELECT
-ActiveNodes,
-ClusterArn,
-ClusterDiscoveryEndpoint,
-ClusterEndpointEncryptionType,
-ClusterName,
-Description,
-IamRoleArn,
-NetworkType,
-NodeIdsToRemove,
-NodeType,
-Nodes,
-NotificationConfiguration,
-ParameterGroup,
-PreferredMaintenanceWindow,
-SSEDescription,
-SecurityGroups,
-Status,
-SubnetGroup,
-TotalNodes
+active_nodes,
+cluster_arn,
+cluster_discovery_endpoint,
+cluster_endpoint_encryption_type,
+cluster_name,
+description,
+iam_role_arn,
+network_type,
+node_ids_to_remove,
+node_type,
+nodes,
+notification_configuration,
+parameter_group,
+preferred_maintenance_window,
+sse_description,
+security_groups,
+status,
+subnet_group,
+total_nodes
 FROM aws.dax.clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -328,7 +328,7 @@ SELECT
 '{{ NetworkType }}',
 '{{ region }}'
 RETURNING
-Cluster
+cluster
 ;
 ```
 </TabItem>
@@ -439,7 +439,7 @@ WHERE
 region = '{{ region }}' --required
 AND ClusterName = '{{ ClusterName }}' --required
 RETURNING
-Cluster;
+cluster;
 ```
 </TabItem>
 </Tabs>

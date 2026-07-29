@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointPerformances" /></td>
+    <td><CopyableCode code="endpoint_performances" /></td>
     <td><code>array</code></td>
     <td>The performance results from running an Inference Recommender job on an existing endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the job fails, provides information why the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceRecommendations" /></td>
+    <td><CopyableCode code="inference_recommendations" /></td>
     <td><code>array</code></td>
     <td>The recommendations made by Inference Recommender.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputConfig" /></td>
+    <td><CopyableCode code="input_config" /></td>
     <td><code>object</code></td>
     <td>Returns information about the versioned model package Amazon Resource Name (ARN), the traffic pattern, and endpoint configurations you provided when you initiated the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:inference-recommendations-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDescription" /></td>
+    <td><CopyableCode code="job_description" /></td>
     <td><code>string</code></td>
     <td>The job description that you provided when you initiated the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the job. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The job type that you provided when you initiated the job. (Default, Advanced)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) role you provided when you initiated the job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the job. (PENDING, IN_PROGRESS, COMPLETED, FAILED, STOPPING, STOPPED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingConditions" /></td>
+    <td><CopyableCode code="stopping_conditions" /></td>
     <td><code>object</code></td>
     <td>The stopping conditions that you provided when you initiated the job.</td>
 </tr>
@@ -135,67 +135,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the job fails, provides information why the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recommendation job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:inference-recommendations-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobDescription" /></td>
+    <td><CopyableCode code="job_description" /></td>
     <td><code>string</code></td>
     <td>The job description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The recommendation job type. (Default, Advanced)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the created model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;\-a-zA-Z0-9&#93;*&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageVersionArn" /></td>
+    <td><CopyableCode code="model_package_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a versioned model package. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-package/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform tasks on your behalf. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SamplePayloadUrl" /></td>
+    <td><CopyableCode code="sample_payload_url" /></td>
     <td><code>string</code></td>
     <td>The Amazon Simple Storage Service (Amazon S3) path where the sample payload is stored. This path must point to a single gzip compressed tar archive (.tar.gz suffix). (pattern: &lt;code&gt;(https|s3):​//(&#91;^/&#93;+)/?(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the job. (PENDING, IN_PROGRESS, COMPLETED, FAILED, STOPPING, STOPPED, DELETING, DELETED)</td>
 </tr>
@@ -279,20 +279,20 @@ Provides the results of the Inference Recommender job. One or more recommendatio
 
 ```sql
 SELECT
-CompletionTime,
-CreationTime,
-EndpointPerformances,
-FailureReason,
-InferenceRecommendations,
-InputConfig,
-JobArn,
-JobDescription,
-JobName,
-JobType,
-LastModifiedTime,
-RoleArn,
-Status,
-StoppingConditions
+completion_time,
+creation_time,
+endpoint_performances,
+failure_reason,
+inference_recommendations,
+input_config,
+job_arn,
+job_description,
+job_name,
+job_type,
+last_modified_time,
+role_arn,
+status,
+stopping_conditions
 FROM aws.sagemaker.inference_recommendations_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -304,19 +304,19 @@ Lists recommendation jobs that satisfy various filters.
 
 ```sql
 SELECT
-CompletionTime,
-CreationTime,
-FailureReason,
-JobArn,
-JobDescription,
-JobName,
-JobType,
-LastModifiedTime,
-ModelName,
-ModelPackageVersionArn,
-RoleArn,
-SamplePayloadUrl,
-Status
+completion_time,
+creation_time,
+failure_reason,
+job_arn,
+job_description,
+job_name,
+job_type,
+last_modified_time,
+model_name,
+model_package_version_arn,
+role_arn,
+sample_payload_url,
+status
 FROM aws.sagemaker.inference_recommendations_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -361,7 +361,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-JobArn
+job_arn
 ;
 ```
 </TabItem>

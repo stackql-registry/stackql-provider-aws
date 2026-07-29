@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBParameterGroupFamily" /></td>
+    <td><CopyableCode code="db_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the DB parameter group family that the engine default parameters apply to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous EngineDefaults request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>Contains a list of engine default parameters.</td>
 </tr>
@@ -149,9 +149,9 @@ Returns the default engine and system parameter information for the cluster data
 
 ```sql
 SELECT
-DBParameterGroupFamily,
-Marker,
-Parameters
+db_parameter_group_family,
+marker,
+parameters
 FROM aws.neptune.engine_default_cluster_parameters
 WHERE DBParameterGroupFamily = '{{ DBParameterGroupFamily }}' -- required
 AND region = '{{ region }}' -- required

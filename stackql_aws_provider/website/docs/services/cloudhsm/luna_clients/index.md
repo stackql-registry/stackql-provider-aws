@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Certificate" /></td>
+    <td><CopyableCode code="certificate" /></td>
     <td><code>string</code></td>
     <td>The certificate installed on the HSMs used by this client. (pattern: &lt;code&gt;&#91;\w :+=./\n-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateFingerprint" /></td>
+    <td><CopyableCode code="certificate_fingerprint" /></td>
     <td><code>string</code></td>
     <td>The certificate fingerprint. (pattern: &lt;code&gt;(&#91;0-9a-fA-F&#93;&#91;0-9a-fA-F&#93;:)&#123;15&#125;&#91;0-9a-fA-F&#93;&#91;0-9a-fA-F&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientArn" /></td>
+    <td><CopyableCode code="client_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the client. (pattern: &lt;code&gt;arn:aws(-iso)?:cloudhsm:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:client-&#91;0-9a-f&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>The label of the client. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time the client was last modified. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
@@ -167,11 +167,11 @@ This is documentation for AWS CloudHSM Classic. For more information, see AWS Cl
 
 ```sql
 SELECT
-Certificate,
-CertificateFingerprint,
-ClientArn,
-Label,
-LastModifiedTimestamp
+certificate,
+certificate_fingerprint,
+client_arn,
+label,
+last_modified_timestamp
 FROM aws.cloudhsm.luna_clients
 WHERE region = '{{ region }}' -- required
 ;
@@ -204,7 +204,7 @@ SELECT
 '{{ Certificate }}',
 '{{ region }}'
 RETURNING
-ClientArn
+client_arn
 ;
 ```
 </TabItem>
@@ -251,7 +251,7 @@ WHERE
 region = '{{ region }}' --required
 AND ClientArn = '{{ ClientArn }}' --required
 RETURNING
-ClientArn;
+client_arn;
 ```
 </TabItem>
 </Tabs>

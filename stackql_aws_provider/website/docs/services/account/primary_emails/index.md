@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PrimaryEmail" /></td>
+    <td><CopyableCode code="primary_email" /></td>
     <td><code>string</code></td>
     <td>Retrieves the primary email address associated with the specified account.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the primary email address for the specified account.
 
 ```sql
 SELECT
-PrimaryEmail
+primary_email
 FROM aws.account.primary_emails
 WHERE region = '{{ region }}' -- required
 ;

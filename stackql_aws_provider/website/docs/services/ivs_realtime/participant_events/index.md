@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>List of the matching events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more events than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -125,7 +125,7 @@ Lists events for a specified participant that occurred during a specified stage 
 ```sql
 SELECT
 events,
-nextToken
+next_token
 FROM aws.ivs_realtime.participant_events
 WHERE region = '{{ region }}' -- required
 ;

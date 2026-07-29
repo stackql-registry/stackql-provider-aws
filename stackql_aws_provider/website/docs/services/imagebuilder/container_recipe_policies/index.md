@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The container recipe policy object that is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -137,7 +137,7 @@ Retrieves the policy for a container recipe.
 ```sql
 SELECT
 policy,
-requestId
+request_id
 FROM aws.imagebuilder.container_recipe_policies
 WHERE containerRecipeArn = '{{ containerRecipeArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -169,8 +169,8 @@ region = '{{ region }}' --required
 AND containerRecipeArn = '{{ containerRecipeArn }}' --required
 AND policy = '{{ policy }}' --required
 RETURNING
-containerRecipeArn,
-requestId;
+container_recipe_arn,
+request_id;
 ```
 </TabItem>
 </Tabs>

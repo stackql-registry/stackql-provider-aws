@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="distributionConfiguration" /></td>
+    <td><CopyableCode code="distribution_configuration" /></td>
     <td><code>object</code></td>
     <td>The distribution configuration object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the distribution configuration. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date on which the distribution configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The date on which the distribution configuration was updated.</td>
 </tr>
@@ -215,8 +215,8 @@ Gets a distribution configuration.
 
 ```sql
 SELECT
-distributionConfiguration,
-requestId
+distribution_configuration,
+request_id
 FROM aws.imagebuilder.distribution_configurations
 WHERE distributionConfigurationArn = '{{ distributionConfigurationArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -231,8 +231,8 @@ Returns a list of distribution configurations.
 SELECT
 name,
 arn,
-dateCreated,
-dateUpdated,
+date_created,
+date_updated,
 description,
 regions,
 tags
@@ -274,9 +274,9 @@ SELECT
 '{{ clientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-clientToken,
-distributionConfigurationArn,
-requestId
+client_token,
+distribution_configuration_arn,
+request_id
 ;
 ```
 </TabItem>
@@ -362,9 +362,9 @@ AND distributionConfigurationArn = '{{ distributionConfigurationArn }}' --requir
 AND distributions = '{{ distributions }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-clientToken,
-distributionConfigurationArn,
-requestId;
+client_token,
+distribution_configuration_arn,
+request_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Explains the error that occurred while exporting the metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportLocation" /></td>
+    <td><CopyableCode code="export_location" /></td>
     <td><code>object</code></td>
     <td>Specifies the name of the Amazon S3 bucket where the exported metrics is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsExportId" /></td>
+    <td><CopyableCode code="metrics_export_id" /></td>
     <td><code>string</code></td>
     <td>Identifier for the metrics export task.</td>
 </tr>
@@ -134,9 +134,9 @@ Describes the metrics of the application configuration being exported.
 
 ```sql
 SELECT
-errorMessage,
-exportLocation,
-metricsExportId,
+error_message,
+export_location,
+metrics_export_id,
 status
 FROM aws.resiliencehub.metrics_exports
 WHERE region = '{{ region }}' -- required

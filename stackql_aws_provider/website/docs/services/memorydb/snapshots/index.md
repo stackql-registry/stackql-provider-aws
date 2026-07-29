@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterConfiguration" /></td>
+    <td><CopyableCode code="cluster_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the cluster from which the snapshot was taken</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTiering" /></td>
+    <td><CopyableCode code="data_tiering" /></td>
     <td><code>string</code></td>
     <td>Enables data tiering. Data tiering is only supported for clusters using the r6gd node type. This parameter must be set when using r6gd nodes. For more information, see Data tiering. (true, false)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used to encrypt the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the snapshot</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the snapshot is from an automatic backup (automated) or was created manually (manual).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the snapshot. Valid values: creating | available | restoring | copying | deleting.</td>
 </tr>
@@ -163,13 +163,13 @@ Returns information about cluster snapshots. By default, DescribeSnapshots lists
 
 ```sql
 SELECT
-ARN,
-ClusterConfiguration,
-DataTiering,
-KmsKeyId,
-Name,
-Source,
-Status
+arn,
+cluster_configuration,
+data_tiering,
+kms_key_id,
+name,
+source,
+status
 FROM aws.memorydb.snapshots
 WHERE region = '{{ region }}' -- required
 ;
@@ -206,7 +206,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Snapshot
+snapshot
 ;
 ```
 </TabItem>

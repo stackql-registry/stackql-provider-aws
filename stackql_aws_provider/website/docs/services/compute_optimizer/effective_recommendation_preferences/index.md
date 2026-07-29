@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="enhancedInfrastructureMetrics" /></td>
+    <td><CopyableCode code="enhanced_infrastructure_metrics" /></td>
     <td><code>string</code></td>
     <td>The status of the enhanced infrastructure metrics recommendation preference. Considers all applicable preferences that you might have set at the resource, account, and organization level. A status of Active confirms that the preference is applied in the latest recommendation refresh, and a status of Inactive confirms that it's not yet applied to recommendations. To validate whether the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations and GetEC2InstanceRecommendations actions. For more information, see Enhanced infrastructure metrics in the Compute Optimizer User Guide. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalMetricsPreference" /></td>
+    <td><CopyableCode code="external_metrics_preference" /></td>
     <td><code>object</code></td>
     <td>The provider of the external metrics recommendation preference. Considers all applicable preferences that you might have set at the account and organization level. If the preference is applied in the latest recommendation refresh, an object with a valid source value appears in the response. If the preference isn't applied to the recommendations already, then this object doesn't appear in the response. To validate whether the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences value in the response of the GetEC2InstanceRecommendations actions. For more information, see Enhanced infrastructure metrics in the Compute Optimizer User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lookBackPeriod" /></td>
+    <td><CopyableCode code="look_back_period" /></td>
     <td><code>string</code></td>
     <td>The number of days the utilization metrics of the Amazon Web Services resource are analyzed. To validate that the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations or GetEC2InstanceRecommendations actions. (DAYS_14, DAYS_32, DAYS_93)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredResources" /></td>
+    <td><CopyableCode code="preferred_resources" /></td>
     <td><code>array</code></td>
     <td>The resource type values that are considered as candidates when generating rightsizing recommendations. This object resolves any wildcard expressions and returns the effective list of candidate resource type values. It also considers all applicable preferences that you set at the resource, account, and organization level. To validate that the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations or GetEC2InstanceRecommendations actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="utilizationPreferences" /></td>
+    <td><CopyableCode code="utilization_preferences" /></td>
     <td><code>array</code></td>
     <td>The resource’s CPU and memory utilization preferences, such as threshold and headroom, that were used to generate rightsizing recommendations. It considers all applicable preferences that you set at the resource, account, and organization level. To validate that the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations or GetEC2InstanceRecommendations actions.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns the recommendation preferences that are in effect for a given resource, 
 
 ```sql
 SELECT
-enhancedInfrastructureMetrics,
-externalMetricsPreference,
-lookBackPeriod,
-preferredResources,
-utilizationPreferences
+enhanced_infrastructure_metrics,
+external_metrics_preference,
+look_back_period,
+preferred_resources,
+utilization_preferences
 FROM aws.compute_optimizer.effective_recommendation_preferences
 WHERE region = '{{ region }}' -- required
 ;

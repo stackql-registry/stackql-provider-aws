@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>A unique number that ensures that the request can't be replayed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>An optional comment for the field-level encryption profile. The comment cannot be longer than 128 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionEntities" /></td>
+    <td><CopyableCode code="encryption_entities" /></td>
     <td><code>string</code></td>
     <td>A complex data type of encryption entities for the field-level encryption profile that include the public key ID, provider, and field patterns for specifying which fields to encrypt with this key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Profile name for the field-level encryption profile.</td>
 </tr>
@@ -139,10 +139,10 @@ Get the field-level encryption profile configuration information.
 
 ```sql
 SELECT
-CallerReference,
-Comment,
-EncryptionEntities,
-Name
+caller_reference,
+comment,
+encryption_entities,
+name
 FROM aws.cloudfront.field_level_encryption_profile_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="componentSummaries" /></td>
+    <td><CopyableCode code="component_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain information about the components.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of component results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -134,8 +134,8 @@ This API lists the components of an entity.
 
 ```sql
 SELECT
-componentSummaries,
-nextToken
+component_summaries,
+next_token
 FROM aws.iottwinmaker.components
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND entity_id = '{{ entity_id }}' -- required

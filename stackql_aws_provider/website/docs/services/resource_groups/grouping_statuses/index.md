@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>Describes the resource grouping action with values of GROUP or UNGROUP. (GROUP, UNGROUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the error code that was raised.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>A message that explains the ErrorCode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of a resource. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:&#91;a-z0-9\-&#93;*:(&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)+-\d&#123;1&#125;)?:(&#91;0-9&#93;&#123;12&#125;)?:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Describes the resource grouping status with values of SUCCESS, FAILED, IN_PROGRESS, or SKIPPED. (SUCCESS, FAILED, IN_PROGRESS, SKIPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when the status was last updated.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns the status of the last grouping or ungrouping action for each resource i
 
 ```sql
 SELECT
-Action,
-ErrorCode,
-ErrorMessage,
-ResourceArn,
-Status,
-UpdatedAt
+action,
+error_code,
+error_message,
+resource_arn,
+status,
+updated_at
 FROM aws.resource_groups.grouping_statuses
 WHERE region = '{{ region }}' -- required
 ;

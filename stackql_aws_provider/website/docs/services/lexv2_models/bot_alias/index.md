@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botAliasHistoryEvents" /></td>
+    <td><CopyableCode code="bot_alias_history_events" /></td>
     <td><code>array</code></td>
     <td>A list of events that affect a bot alias. For example, an event is recorded when the version that the alias points to changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAliasId" /></td>
+    <td><CopyableCode code="bot_alias_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot alias. (pattern: &lt;code&gt;^(\bTSTALIASID\b|&#91;0-9a-zA-Z&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAliasLocaleSettings" /></td>
+    <td><CopyableCode code="bot_alias_locale_settings" /></td>
     <td><code>object</code></td>
     <td>The locale settings that are unique to the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAliasName" /></td>
+    <td><CopyableCode code="bot_alias_name" /></td>
     <td><code>string</code></td>
     <td>The name of the bot alias. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAliasStatus" /></td>
+    <td><CopyableCode code="bot_alias_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the alias. When the alias is Available, the alias is ready for use with your bot. (Creating, Available, Deleting, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with the bot alias. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot associated with the bot alias. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conversationLogSettings" /></td>
+    <td><CopyableCode code="conversation_log_settings" /></td>
     <td><code>object</code></td>
     <td>Configures conversation logging that saves audio, text, and metadata for the conversations with your users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the alias was created.</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the bot alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the alias was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentBotNetworks" /></td>
+    <td><CopyableCode code="parent_bot_networks" /></td>
     <td><code>array</code></td>
     <td>A list of the networks to which the bot alias you described belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sentimentAnalysisSettings" /></td>
+    <td><CopyableCode code="sentiment_analysis_settings" /></td>
     <td><code>object</code></td>
     <td>Determines whether Amazon Lex will use Amazon Comprehend to detect the sentiment of user utterances.</td>
 </tr>
@@ -215,19 +215,19 @@ Get information about a specific bot alias.
 
 ```sql
 SELECT
-botAliasHistoryEvents,
-botAliasId,
-botAliasLocaleSettings,
-botAliasName,
-botAliasStatus,
-botId,
-botVersion,
-conversationLogSettings,
-creationDateTime,
+bot_alias_history_events,
+bot_alias_id,
+bot_alias_locale_settings,
+bot_alias_name,
+bot_alias_status,
+bot_id,
+bot_version,
+conversation_log_settings,
+creation_date_time,
 description,
-lastUpdatedDateTime,
-parentBotNetworks,
-sentimentAnalysisSettings
+last_updated_date_time,
+parent_bot_networks,
+sentiment_analysis_settings
 FROM aws.lexv2_models.bot_alias
 WHERE bot_alias_id = '{{ bot_alias_id }}' -- required
 AND bot_id = '{{ bot_id }}' -- required
@@ -274,16 +274,16 @@ SELECT
 '{{ bot_id }}',
 '{{ region }}'
 RETURNING
-botAliasId,
-botAliasLocaleSettings,
-botAliasName,
-botAliasStatus,
-botId,
-botVersion,
-conversationLogSettings,
-creationDateTime,
+bot_alias_id,
+bot_alias_locale_settings,
+bot_alias_name,
+bot_alias_status,
+bot_id,
+bot_version,
+conversation_log_settings,
+creation_date_time,
 description,
-sentimentAnalysisSettings,
+sentiment_analysis_settings,
 tags
 ;
 ```
@@ -366,17 +366,17 @@ AND bot_id = '{{ bot_id }}' --required
 AND region = '{{ region }}' --required
 AND botAliasName = '{{ botAliasName }}' --required
 RETURNING
-botAliasId,
-botAliasLocaleSettings,
-botAliasName,
-botAliasStatus,
-botId,
-botVersion,
-conversationLogSettings,
-creationDateTime,
+bot_alias_id,
+bot_alias_locale_settings,
+bot_alias_name,
+bot_alias_status,
+bot_id,
+bot_version,
+conversation_log_settings,
+creation_date_time,
 description,
-lastUpdatedDateTime,
-sentimentAnalysisSettings;
+last_updated_date_time,
+sentiment_analysis_settings;
 ```
 </TabItem>
 </Tabs>

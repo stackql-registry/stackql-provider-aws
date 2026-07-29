@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Amazon Web Services account that the data applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="automatedDiscoveryFreeTrialStartDate" /></td>
+    <td><CopyableCode code="automated_discovery_free_trial_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the free trial of automated sensitive data discovery started for the account. This value is null if automated sensitive data discovery hasn't been enabled for the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="freeTrialStartDate" /></td>
+    <td><CopyableCode code="free_trial_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the Amazon Macie free trial started for the account.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves (queries) quotas and aggregated usage data for one or more accounts.
 
 ```sql
 SELECT
-accountId,
-automatedDiscoveryFreeTrialStartDate,
-freeTrialStartDate,
+account_id,
+automated_discovery_free_trial_start_date,
+free_trial_start_date,
 usage
 FROM aws.macie2.usage_statistics
 WHERE region = '{{ region }}' -- required

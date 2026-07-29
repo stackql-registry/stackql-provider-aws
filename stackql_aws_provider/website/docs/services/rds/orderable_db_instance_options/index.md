@@ -50,197 +50,197 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneGroup" /></td>
+    <td><CopyableCode code="availability_zone_group" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone group for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>A list of Availability Zones for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableAdditionalStorageVolumesOptions" /></td>
+    <td><CopyableCode code="available_additional_storage_volumes_options" /></td>
     <td><code>string</code></td>
     <td>The available options for additional storage volumes for the DB instance class.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableProcessorFeatures" /></td>
+    <td><CopyableCode code="available_processor_features" /></td>
     <td><code>string</code></td>
     <td>A list of the available processor features for the DB instance class of a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceClass" /></td>
+    <td><CopyableCode code="db_instance_class" /></td>
     <td><code>string</code></td>
     <td>The DB instance class for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The engine type of a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The engine version of a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The license model for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxIopsPerDbInstance" /></td>
+    <td><CopyableCode code="max_iops_per_db_instance" /></td>
     <td><code>integer</code></td>
     <td>Maximum total provisioned IOPS for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxIopsPerGib" /></td>
+    <td><CopyableCode code="max_iops_per_gib" /></td>
     <td><code>number</code></td>
     <td>Maximum provisioned IOPS per GiB for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxStorageSize" /></td>
+    <td><CopyableCode code="max_storage_size" /></td>
     <td><code>integer</code></td>
     <td>Maximum storage size for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxStorageThroughputPerDbInstance" /></td>
+    <td><CopyableCode code="max_storage_throughput_per_db_instance" /></td>
     <td><code>integer</code></td>
     <td>Maximum storage throughput for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxStorageThroughputPerIops" /></td>
+    <td><CopyableCode code="max_storage_throughput_per_iops" /></td>
     <td><code>number</code></td>
     <td>Maximum storage throughput to provisioned IOPS ratio for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinIopsPerDbInstance" /></td>
+    <td><CopyableCode code="min_iops_per_db_instance" /></td>
     <td><code>integer</code></td>
     <td>Minimum total provisioned IOPS for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinIopsPerGib" /></td>
+    <td><CopyableCode code="min_iops_per_gib" /></td>
     <td><code>number</code></td>
     <td>Minimum provisioned IOPS per GiB for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinStorageSize" /></td>
+    <td><CopyableCode code="min_storage_size" /></td>
     <td><code>integer</code></td>
     <td>Minimum storage size for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinStorageThroughputPerDbInstance" /></td>
+    <td><CopyableCode code="min_storage_throughput_per_db_instance" /></td>
     <td><code>integer</code></td>
     <td>Minimum storage throughput for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinStorageThroughputPerIops" /></td>
+    <td><CopyableCode code="min_storage_throughput_per_iops" /></td>
     <td><code>number</code></td>
     <td>Minimum storage throughput to provisioned IOPS ratio for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZCapable" /></td>
+    <td><CopyableCode code="multi_az_capable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance is Multi-AZ capable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostCapable" /></td>
+    <td><CopyableCode code="outpost_capable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports RDS on Outposts. For more information about RDS on Outposts, see Amazon RDS on Amazon Web Services Outposts in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaCapable" /></td>
+    <td><CopyableCode code="read_replica_capable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance can have a read replica.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedActivityStreamModes" /></td>
+    <td><CopyableCode code="supported_activity_stream_modes" /></td>
     <td><code>string</code></td>
     <td>The list of supported modes for Database Activity Streams. Aurora PostgreSQL returns the value &#91;sync, async&#93;. Aurora MySQL and RDS for Oracle return &#91;async&#93; only. If Database Activity Streams isn't supported, the return value is an empty list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedEngineModes" /></td>
+    <td><CopyableCode code="supported_engine_modes" /></td>
     <td><code>string</code></td>
     <td>A list of the supported DB engine modes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedNetworkTypes" /></td>
+    <td><CopyableCode code="supported_network_types" /></td>
     <td><code>string</code></td>
     <td>The network types supported by the DB instance (IPV4 or DUAL). A DB instance can support only the IPv4 protocol or the IPv4 and the IPv6 protocols (DUAL). For more information, see Working with a DB instance in a VPC in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsAdditionalStorageVolumes" /></td>
+    <td><CopyableCode code="supports_additional_storage_volumes" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance class supports additional storage volumes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsClusters" /></td>
+    <td><CopyableCode code="supports_clusters" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether DB instances can be configured as a Multi-AZ DB cluster. For more information on Multi-AZ DB clusters, see Multi-AZ deployments with two readable standby DB instances in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsDedicatedLogVolume" /></td>
+    <td><CopyableCode code="supports_dedicated_log_volume" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports using a dedicated log volume (DLV).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsEnhancedMonitoring" /></td>
+    <td><CopyableCode code="supports_enhanced_monitoring" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports Enhanced Monitoring at intervals from 1 to 60 seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsGlobalDatabases" /></td>
+    <td><CopyableCode code="supports_global_databases" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether you can use Aurora global databases with a specific combination of other DB engine attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsHttpEndpoint" /></td>
+    <td><CopyableCode code="supports_http_endpoint" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports HTTP endpoints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsIAMDatabaseAuthentication" /></td>
+    <td><CopyableCode code="supports_iam_database_authentication" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports IAM database authentication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsIops" /></td>
+    <td><CopyableCode code="supports_iops" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports provisioned IOPS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsKerberosAuthentication" /></td>
+    <td><CopyableCode code="supports_kerberos_authentication" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports Kerberos Authentication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsPerformanceInsights" /></td>
+    <td><CopyableCode code="supports_performance_insights" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports Performance Insights.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsStorageAutoscaling" /></td>
+    <td><CopyableCode code="supports_storage_autoscaling" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Amazon RDS can automatically scale storage for DB instances that use the specified DB instance class.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsStorageEncryption" /></td>
+    <td><CopyableCode code="supports_storage_encryption" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports encrypted storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsStorageThroughput" /></td>
+    <td><CopyableCode code="supports_storage_throughput" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports storage throughput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vpc" /></td>
+    <td><CopyableCode code="vpc" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance is in a VPC.</td>
 </tr>
@@ -354,45 +354,45 @@ Describes the orderable DB instance options for a specified DB engine.
 
 ```sql
 SELECT
-AvailabilityZoneGroup,
-AvailabilityZones,
-AvailableAdditionalStorageVolumesOptions,
-AvailableProcessorFeatures,
-DBInstanceClass,
-Engine,
-EngineVersion,
-LicenseModel,
-MaxIopsPerDbInstance,
-MaxIopsPerGib,
-MaxStorageSize,
-MaxStorageThroughputPerDbInstance,
-MaxStorageThroughputPerIops,
-MinIopsPerDbInstance,
-MinIopsPerGib,
-MinStorageSize,
-MinStorageThroughputPerDbInstance,
-MinStorageThroughputPerIops,
-MultiAZCapable,
-OutpostCapable,
-ReadReplicaCapable,
-StorageType,
-SupportedActivityStreamModes,
-SupportedEngineModes,
-SupportedNetworkTypes,
-SupportsAdditionalStorageVolumes,
-SupportsClusters,
-SupportsDedicatedLogVolume,
-SupportsEnhancedMonitoring,
-SupportsGlobalDatabases,
-SupportsHttpEndpoint,
-SupportsIAMDatabaseAuthentication,
-SupportsIops,
-SupportsKerberosAuthentication,
-SupportsPerformanceInsights,
-SupportsStorageAutoscaling,
-SupportsStorageEncryption,
-SupportsStorageThroughput,
-Vpc
+availability_zone_group,
+availability_zones,
+available_additional_storage_volumes_options,
+available_processor_features,
+db_instance_class,
+engine,
+engine_version,
+license_model,
+max_iops_per_db_instance,
+max_iops_per_gib,
+max_storage_size,
+max_storage_throughput_per_db_instance,
+max_storage_throughput_per_iops,
+min_iops_per_db_instance,
+min_iops_per_gib,
+min_storage_size,
+min_storage_throughput_per_db_instance,
+min_storage_throughput_per_iops,
+multi_az_capable,
+outpost_capable,
+read_replica_capable,
+storage_type,
+supported_activity_stream_modes,
+supported_engine_modes,
+supported_network_types,
+supports_additional_storage_volumes,
+supports_clusters,
+supports_dedicated_log_volume,
+supports_enhanced_monitoring,
+supports_global_databases,
+supports_http_endpoint,
+supports_iam_database_authentication,
+supports_iops,
+supports_kerberos_authentication,
+supports_performance_insights,
+supports_storage_autoscaling,
+supports_storage_encryption,
+supports_storage_throughput,
+vpc
 FROM aws.rds.orderable_db_instance_options
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

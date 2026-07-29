@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the moderator's channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the moderator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Moderator" /></td>
+    <td><CopyableCode code="moderator" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelModerators" /></td>
+    <td><CopyableCode code="channel_moderators" /></td>
     <td><code>array</code></td>
     <td>The information about and names of each moderator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested moderators are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -211,10 +211,10 @@ Returns the full details of a single ChannelModerator. The x-amz-chime-bearer re
 
 ```sql
 SELECT
-ChannelArn,
-CreatedBy,
-CreatedTimestamp,
-Moderator
+channel_arn,
+created_by,
+created_timestamp,
+moderator
 FROM aws.chime_sdk_messaging.channel_moderators
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND channel_moderator_arn = '{{ channel_moderator_arn }}' -- required
@@ -229,9 +229,9 @@ Lists all the moderators for a channel. The x-amz-chime-bearer request header is
 
 ```sql
 SELECT
-ChannelArn,
-ChannelModerators,
-NextToken
+channel_arn,
+channel_moderators,
+next_token
 FROM aws.chime_sdk_messaging.channel_moderators
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
@@ -270,8 +270,8 @@ SELECT
 '{{ x-amz-chime-bearer }}',
 '{{ region }}'
 RETURNING
-ChannelArn,
-ChannelModerator
+channel_arn,
+channel_moderator
 ;
 ```
 </TabItem>

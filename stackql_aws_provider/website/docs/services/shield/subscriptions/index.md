@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoRenew" /></td>
+    <td><CopyableCode code="auto_renew" /></td>
     <td><code>string</code></td>
     <td>If ENABLED, the subscription will be automatically renewed at the end of the existing subscription period. When you initally create a subscription, AutoRenew is set to ENABLED. You can change this by submitting an UpdateSubscription request. If the UpdateSubscription request does not included a value for AutoRenew, the existing value for AutoRenew remains unchanged. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time your subscription will end.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Limits" /></td>
+    <td><CopyableCode code="limits" /></td>
     <td><code>array</code></td>
     <td>Specifies how many protections of a given type you can create.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProactiveEngagementStatus" /></td>
+    <td><CopyableCode code="proactive_engagement_status" /></td>
     <td><code>string</code></td>
     <td>If ENABLED, the Shield Response Team (SRT) will use email and phone to notify contacts about escalations to the SRT and to initiate proactive customer support. If PENDING, you have requested proactive engagement and the request is pending. The status changes to ENABLED when your request is fully processed. If DISABLED, the SRT will not proactively notify contacts about escalations or to initiate proactive customer support. (ENABLED, DISABLED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the subscription, in Unix time in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionArn" /></td>
+    <td><CopyableCode code="subscription_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the subscription. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionLimits" /></td>
+    <td><CopyableCode code="subscription_limits" /></td>
     <td><code>object</code></td>
     <td>Limits settings for your subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeCommitmentInSeconds" /></td>
+    <td><CopyableCode code="time_commitment_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The length, in seconds, of the Shield Advanced subscription for the account.</td>
 </tr>
@@ -175,14 +175,14 @@ Provides details about the Shield Advanced subscription for an account.
 
 ```sql
 SELECT
-AutoRenew,
-EndTime,
-Limits,
-ProactiveEngagementStatus,
-StartTime,
-SubscriptionArn,
-SubscriptionLimits,
-TimeCommitmentInSeconds
+auto_renew,
+end_time,
+limits,
+proactive_engagement_status,
+start_time,
+subscription_arn,
+subscription_limits,
+time_commitment_in_seconds
 FROM aws.shield.subscriptions
 WHERE region = '{{ region }}' -- required
 ;

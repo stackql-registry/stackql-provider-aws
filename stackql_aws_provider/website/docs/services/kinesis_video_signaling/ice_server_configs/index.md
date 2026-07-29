@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IceServerList" /></td>
+    <td><CopyableCode code="ice_server_list" /></td>
     <td><code>array</code></td>
     <td>The list of ICE server information objects.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets the Interactive Connectivity Establishment (ICE) server configuration infor
 
 ```sql
 SELECT
-IceServerList
+ice_server_list
 FROM aws.kinesis_video_signaling.ice_server_configs
 WHERE region = '{{ region }}' -- required
 ;

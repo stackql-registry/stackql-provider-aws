@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudWatchLogGroupArn" /></td>
+    <td><CopyableCode code="cloud_watch_log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an Amazon CloudWatch log group for monitoring your task. For more information, see Monitoring data transfers with CloudWatch Logs. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):logs:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:log-group:(&#91;^:\*&#93;*)(:\*)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentTaskExecutionArn" /></td>
+    <td><CopyableCode code="current_task_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the most recent task execution. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:task/task-&#91;0-9a-f&#93;&#123;17&#125;/execution/exec-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationLocationArn" /></td>
+    <td><CopyableCode code="destination_location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of your transfer's destination location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationNetworkInterfaceArns" /></td>
+    <td><CopyableCode code="destination_network_interface_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the network interfaces that DataSync created for your destination location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>If there's an issue with your task, you can use the error code to help you troubleshoot the problem. For more information, see Troubleshooting issues with DataSync transfers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetail" /></td>
+    <td><CopyableCode code="error_detail" /></td>
     <td><code>string</code></td>
     <td>If there's an issue with your task, you can use the error details to help you troubleshoot the problem. For more information, see Troubleshooting issues with DataSync transfers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Excludes" /></td>
+    <td><CopyableCode code="excludes" /></td>
     <td><code>array</code></td>
     <td>The exclude filters that define the files, objects, and folders in your source location that you don't want DataSync to transfer. For more information and examples, see Specifying what DataSync transfers by using filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Includes" /></td>
+    <td><CopyableCode code="includes" /></td>
     <td><code>array</code></td>
     <td>The include filters that define the files, objects, and folders in your source location that you want DataSync to transfer. For more information and examples, see Specifying what DataSync transfers by using filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestConfig" /></td>
+    <td><CopyableCode code="manifest_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the manifest that lists the files or objects that you want DataSync to transfer. For more information, see Specifying what DataSync transfers by using a manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of your task. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s+=._:@/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>object</code></td>
     <td>The task's settings. For example, what file metadata gets preserved, how data integrity gets verified at the end of your transfer, bandwidth limits, among other options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>object</code></td>
     <td>The schedule for when you want your task to run. For more information, see Scheduling your task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleDetails" /></td>
+    <td><CopyableCode code="schedule_details" /></td>
     <td><code>object</code></td>
     <td>The details about your task schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationArn" /></td>
+    <td><CopyableCode code="source_location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of your transfer's source location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceNetworkInterfaceArns" /></td>
+    <td><CopyableCode code="source_network_interface_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the network interfaces that DataSync created for your source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of your task. For information about what each status means, see Task statuses. (AVAILABLE, CREATING, QUEUED, RUNNING, UNAVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of your task. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:task/task-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskMode" /></td>
+    <td><CopyableCode code="task_mode" /></td>
     <td><code>string</code></td>
     <td>The task mode that you're using. For more information, see Choosing a task mode for your data transfer. (BASIC, ENHANCED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskReportConfig" /></td>
+    <td><CopyableCode code="task_report_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of your task report, which provides detailed information about your DataSync transfer. For more information, see Monitoring your DataSync transfers with task reports.</td>
 </tr>
@@ -165,22 +165,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the task. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s+=._:@/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task. (AVAILABLE, CREATING, QUEUED, RUNNING, UNAVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the task. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:task/task-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskMode" /></td>
+    <td><CopyableCode code="task_mode" /></td>
     <td><code>string</code></td>
     <td>The task mode that you're using. For more information, see Choosing a task mode for your data transfer. (BASIC, ENHANCED)</td>
 </tr>
@@ -292,26 +292,26 @@ Provides information about a task, which defines where and how DataSync transfer
 
 ```sql
 SELECT
-CloudWatchLogGroupArn,
-CreationTime,
-CurrentTaskExecutionArn,
-DestinationLocationArn,
-DestinationNetworkInterfaceArns,
-ErrorCode,
-ErrorDetail,
-Excludes,
-Includes,
-ManifestConfig,
-Name,
-Options,
-Schedule,
-ScheduleDetails,
-SourceLocationArn,
-SourceNetworkInterfaceArns,
-Status,
-TaskArn,
-TaskMode,
-TaskReportConfig
+cloud_watch_log_group_arn,
+creation_time,
+current_task_execution_arn,
+destination_location_arn,
+destination_network_interface_arns,
+error_code,
+error_detail,
+excludes,
+includes,
+manifest_config,
+name,
+options,
+schedule,
+schedule_details,
+source_location_arn,
+source_network_interface_arns,
+status,
+task_arn,
+task_mode,
+task_report_config
 FROM aws.datasync.tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -323,10 +323,10 @@ Returns a list of the DataSync tasks you created.
 
 ```sql
 SELECT
-Name,
-Status,
-TaskArn,
-TaskMode
+name,
+status,
+task_arn,
+task_mode
 FROM aws.datasync.tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -379,7 +379,7 @@ SELECT
 '{{ TaskMode }}',
 '{{ region }}'
 RETURNING
-TaskArn
+task_arn
 ;
 ```
 </TabItem>

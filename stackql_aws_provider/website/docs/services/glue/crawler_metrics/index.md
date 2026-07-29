@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CrawlerName" /></td>
+    <td><CopyableCode code="crawler_name" /></td>
     <td><code>string</code></td>
     <td>The name of the crawler. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRuntimeSeconds" /></td>
+    <td><CopyableCode code="last_runtime_seconds" /></td>
     <td><code>number (double)</code></td>
     <td>The duration of the crawler's most recent run, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedianRuntimeSeconds" /></td>
+    <td><CopyableCode code="median_runtime_seconds" /></td>
     <td><code>number (double)</code></td>
     <td>The median duration of this crawler's runs, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StillEstimating" /></td>
+    <td><CopyableCode code="still_estimating" /></td>
     <td><code>boolean</code></td>
     <td>True if the crawler is still estimating how long it will take to complete this run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TablesCreated" /></td>
+    <td><CopyableCode code="tables_created" /></td>
     <td><code>integer</code></td>
     <td>The number of tables created by this crawler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TablesDeleted" /></td>
+    <td><CopyableCode code="tables_deleted" /></td>
     <td><code>integer</code></td>
     <td>The number of tables deleted by this crawler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TablesUpdated" /></td>
+    <td><CopyableCode code="tables_updated" /></td>
     <td><code>integer</code></td>
     <td>The number of tables updated by this crawler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeLeftSeconds" /></td>
+    <td><CopyableCode code="time_left_seconds" /></td>
     <td><code>number (double)</code></td>
     <td>The estimated time left to complete a running crawl.</td>
 </tr>
@@ -154,14 +154,14 @@ Retrieves metrics about specified crawlers.
 
 ```sql
 SELECT
-CrawlerName,
-LastRuntimeSeconds,
-MedianRuntimeSeconds,
-StillEstimating,
-TablesCreated,
-TablesDeleted,
-TablesUpdated,
-TimeLeftSeconds
+crawler_name,
+last_runtime_seconds,
+median_runtime_seconds,
+still_estimating,
+tables_created,
+tables_deleted,
+tables_updated,
+time_left_seconds
 FROM aws.glue.crawler_metrics
 WHERE region = '{{ region }}' -- required
 ;

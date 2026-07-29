@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataItems" /></td>
+    <td><CopyableCode code="data_items" /></td>
     <td><code>array</code></td>
     <td>The data that describes the attacks detected during the time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeRange" /></td>
+    <td><CopyableCode code="time_range" /></td>
     <td><code>object</code></td>
     <td>The time range of the attack.</td>
 </tr>
@@ -124,8 +124,8 @@ Provides information about the number and type of attacks Shield has detected in
 
 ```sql
 SELECT
-DataItems,
-TimeRange
+data_items,
+time_range
 FROM aws.shield.attack_statistics
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupByAttribute" /></td>
+    <td><CopyableCode code="group_by_attribute" /></td>
     <td><code>string</code></td>
     <td>The attribute that the findings are grouped by for the insight whose results are returned by the GetInsightResults operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightArn" /></td>
+    <td><CopyableCode code="insight_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the insight whose results are returned by the GetInsightResults operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultValues" /></td>
+    <td><CopyableCode code="result_values" /></td>
     <td><code>array</code></td>
     <td>The list of insight result values returned by the GetInsightResults operation.</td>
 </tr>
@@ -134,9 +134,9 @@ Lists the results of the Security Hub CSPM insight specified by the insight ARN.
 
 ```sql
 SELECT
-GroupByAttribute,
-InsightArn,
-ResultValues
+group_by_attribute,
+insight_arn,
+result_values
 FROM aws.securityhub.insight_results
 WHERE insight_arn = '{{ insight_arn }}' -- required
 AND region = '{{ region }}' -- required

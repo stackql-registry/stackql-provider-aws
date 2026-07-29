@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when License Manager created the license server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderArn" /></td>
+    <td><CopyableCode code="identity_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the identity provider that's associated with the RDS license server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseServerEndpointArn" /></td>
+    <td><CopyableCode code="license_server_endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the ServerEndpoint resource for the RDS license server. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;/&#91;a-zA-Z0-9-\.&#93;&#123;1,510&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseServerEndpointId" /></td>
+    <td><CopyableCode code="license_server_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the license server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseServerEndpointProvisioningStatus" /></td>
+    <td><CopyableCode code="license_server_endpoint_provisioning_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the provisioning process for the RDS license server endpoint (PROVISIONING, PROVISIONING_FAILED, PROVISIONED, DELETING, DELETION_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseServers" /></td>
+    <td><CopyableCode code="license_servers" /></td>
     <td><code>array</code></td>
     <td>An array of LicenseServer resources that represent the license servers that are accessed through this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerEndpoint" /></td>
+    <td><CopyableCode code="server_endpoint" /></td>
     <td><code>object</code></td>
     <td>The ServerEndpoint resource contains the network address of the RDS license server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerType" /></td>
+    <td><CopyableCode code="server_type" /></td>
     <td><code>string</code></td>
     <td>The type of license server. (RDS_SAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The message associated with the provisioning status, if there is one.</td>
 </tr>
@@ -173,15 +173,15 @@ List the Remote Desktop Services (RDS) License Server endpoints
 
 ```sql
 SELECT
-CreationTime,
-IdentityProviderArn,
-LicenseServerEndpointArn,
-LicenseServerEndpointId,
-LicenseServerEndpointProvisioningStatus,
-LicenseServers,
-ServerEndpoint,
-ServerType,
-StatusMessage
+creation_time,
+identity_provider_arn,
+license_server_endpoint_arn,
+license_server_endpoint_id,
+license_server_endpoint_provisioning_status,
+license_servers,
+server_endpoint,
+server_type,
+status_message
 FROM aws.license_manager_user_subscriptions.license_server_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -216,8 +216,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-IdentityProviderArn,
-LicenseServerEndpointArn
+identity_provider_arn,
+license_server_endpoint_arn
 ;
 ```
 </TabItem>

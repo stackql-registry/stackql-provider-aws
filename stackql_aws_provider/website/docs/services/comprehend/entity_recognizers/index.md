@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to your input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the recognizer creation completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityRecognizerArn" /></td>
+    <td><CopyableCode code="entity_recognizer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the entity recognizer. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:entity-recognizer/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the flywheel (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>The input data properties of an entity recognizer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language of the input documents. All documents must be in the same language. Only English ("en") is currently supported. (en, es, fr, de, it, pt, ar, hi, ja, ko, zh, zh-TW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the status of the recognizer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelKmsKeyId" /></td>
+    <td><CopyableCode code="model_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the KMS key that Amazon Comprehend uses to encrypt trained custom models. The ModelKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Output data configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecognizerMetadata" /></td>
+    <td><CopyableCode code="recognizer_metadata" /></td>
     <td><code>object</code></td>
     <td>Provides information about an entity recognizer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceModelArn" /></td>
+    <td><CopyableCode code="source_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source model. This model was imported from a different Amazon Web Services account to create the entity recognizer model in your Amazon Web Services account. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:entity-recognizer/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Provides the status of the entity recognizer. (SUBMITTED, TRAINING, DELETING, STOP_REQUESTED, STOPPED, IN_ERROR, TRAINED, TRAINED_WITH_WARNING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the recognizer was submitted for processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingEndTime" /></td>
+    <td><CopyableCode code="training_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training of the entity recognizer was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingStartTime" /></td>
+    <td><CopyableCode code="training_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training of the entity recognizer started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The version name you assigned to the entity recognizer. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeKmsKeyId" /></td>
+    <td><CopyableCode code="volume_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see Amazon VPC.</td>
 </tr>
@@ -155,92 +155,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to your input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the recognizer creation completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntityRecognizerArn" /></td>
+    <td><CopyableCode code="entity_recognizer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the entity recognizer. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:entity-recognizer/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the flywheel (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>The input data properties of an entity recognizer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language of the input documents. All documents must be in the same language. Only English ("en") is currently supported. (en, es, fr, de, it, pt, ar, hi, ja, ko, zh, zh-TW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the status of the recognizer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelKmsKeyId" /></td>
+    <td><CopyableCode code="model_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the KMS key that Amazon Comprehend uses to encrypt trained custom models. The ModelKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Output data configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecognizerMetadata" /></td>
+    <td><CopyableCode code="recognizer_metadata" /></td>
     <td><code>object</code></td>
     <td>Provides information about an entity recognizer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceModelArn" /></td>
+    <td><CopyableCode code="source_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source model. This model was imported from a different Amazon Web Services account to create the entity recognizer model in your Amazon Web Services account. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:entity-recognizer/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Provides the status of the entity recognizer. (SUBMITTED, TRAINING, DELETING, STOP_REQUESTED, STOPPED, IN_ERROR, TRAINED, TRAINED_WITH_WARNING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the recognizer was submitted for processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingEndTime" /></td>
+    <td><CopyableCode code="training_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training of the entity recognizer was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingStartTime" /></td>
+    <td><CopyableCode code="training_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training of the entity recognizer started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The version name you assigned to the entity recognizer. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeKmsKeyId" /></td>
+    <td><CopyableCode code="volume_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see Amazon VPC.</td>
 </tr>
@@ -338,24 +338,24 @@ Provides details about an entity recognizer including status, S3 buckets contain
 
 ```sql
 SELECT
-DataAccessRoleArn,
-EndTime,
-EntityRecognizerArn,
-FlywheelArn,
-InputDataConfig,
-LanguageCode,
-Message,
-ModelKmsKeyId,
-OutputDataConfig,
-RecognizerMetadata,
-SourceModelArn,
-Status,
-SubmitTime,
-TrainingEndTime,
-TrainingStartTime,
-VersionName,
-VolumeKmsKeyId,
-VpcConfig
+data_access_role_arn,
+end_time,
+entity_recognizer_arn,
+flywheel_arn,
+input_data_config,
+language_code,
+message,
+model_kms_key_id,
+output_data_config,
+recognizer_metadata,
+source_model_arn,
+status,
+submit_time,
+training_end_time,
+training_start_time,
+version_name,
+volume_kms_key_id,
+vpc_config
 FROM aws.comprehend.entity_recognizers
 WHERE region = '{{ region }}' -- required
 ;
@@ -367,24 +367,24 @@ Gets a list of the properties of all entity recognizers that you created, includ
 
 ```sql
 SELECT
-DataAccessRoleArn,
-EndTime,
-EntityRecognizerArn,
-FlywheelArn,
-InputDataConfig,
-LanguageCode,
-Message,
-ModelKmsKeyId,
-OutputDataConfig,
-RecognizerMetadata,
-SourceModelArn,
-Status,
-SubmitTime,
-TrainingEndTime,
-TrainingStartTime,
-VersionName,
-VolumeKmsKeyId,
-VpcConfig
+data_access_role_arn,
+end_time,
+entity_recognizer_arn,
+flywheel_arn,
+input_data_config,
+language_code,
+message,
+model_kms_key_id,
+output_data_config,
+recognizer_metadata,
+source_model_arn,
+status,
+submit_time,
+training_end_time,
+training_start_time,
+version_name,
+volume_kms_key_id,
+vpc_config
 FROM aws.comprehend.entity_recognizers
 WHERE region = '{{ region }}' -- required
 ;
@@ -435,7 +435,7 @@ SELECT
 '{{ ModelPolicy }}',
 '{{ region }}'
 RETURNING
-EntityRecognizerArn
+entity_recognizer_arn
 ;
 ```
 </TabItem>

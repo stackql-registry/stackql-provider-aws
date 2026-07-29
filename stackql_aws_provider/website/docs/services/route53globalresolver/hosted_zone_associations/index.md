@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>Name of the private hosted zone association. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9-_/' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the private hosted zone association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>ID of the hosted zone associated to the DNS view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostedZoneName" /></td>
+    <td><CopyableCode code="hosted_zone_name" /></td>
     <td><code>string</code></td>
     <td>Name of the domain associated with the private hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the DNS view the private hosted zone is associated to. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The operational status of the private hosted zone association. (CREATING, OPERATIONAL, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the private hosted zone association was updated.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the hosted zone association. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9-_/' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the hosted zone association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostedZoneName" /></td>
+    <td><CopyableCode code="hosted_zone_name" /></td>
     <td><code>string</code></td>
     <td>The name of the hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource associated with the hosted zone. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the hosted zone association. (CREATING, OPERATIONAL, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the hosted zone association was last updated.</td>
 </tr>
@@ -246,12 +246,12 @@ Retrieves information about a hosted zone association. Route 53 Global Resolver 
 SELECT
 id,
 name,
-createdAt,
-hostedZoneId,
-hostedZoneName,
-resourceArn,
+created_at,
+hosted_zone_id,
+hosted_zone_name,
+resource_arn,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.hosted_zone_associations
 WHERE hosted_zone_association_id = '{{ hosted_zone_association_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,12 +266,12 @@ Lists all hosted zone associations for a Route 53 Global Resolver resource with 
 SELECT
 id,
 name,
-createdAt,
-hostedZoneId,
-hostedZoneName,
-resourceArn,
+created_at,
+hosted_zone_id,
+hosted_zone_name,
+resource_arn,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.hosted_zone_associations
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -305,12 +305,12 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-createdAt,
-hostedZoneId,
-hostedZoneName,
-resourceArn,
+created_at,
+hosted_zone_id,
+hosted_zone_name,
+resource_arn,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

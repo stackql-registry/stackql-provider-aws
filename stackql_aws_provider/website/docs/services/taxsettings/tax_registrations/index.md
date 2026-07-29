@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalTaxInformation" /></td>
+    <td><CopyableCode code="additional_tax_information" /></td>
     <td><code>object</code></td>
     <td>Additional tax information associated with your TRN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certifiedEmailId" /></td>
+    <td><CopyableCode code="certified_email_id" /></td>
     <td><code>string</code></td>
     <td>The email address to receive VAT invoices. (pattern: &lt;code&gt;^&#91;A-Za-z0-9._%+-&#93;+@&#91;A-Za-z0-9.-&#93;+\.&#91;A-Za-z&#93;&#123;2,20&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="legalAddress" /></td>
+    <td><CopyableCode code="legal_address" /></td>
     <td><code>object</code></td>
     <td>The legal address associated with your TRN registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="legalName" /></td>
+    <td><CopyableCode code="legal_name" /></td>
     <td><code>string</code></td>
     <td>The legal name associated with your TRN registration. (pattern: &lt;code&gt;^(?!\s*$)&#91;\s\S&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationId" /></td>
+    <td><CopyableCode code="registration_id" /></td>
     <td><code>string</code></td>
     <td>Your tax registration unique identifier. (pattern: &lt;code&gt;^(?!\s*$)&#91;\s\S&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationType" /></td>
+    <td><CopyableCode code="registration_type" /></td>
     <td><code>string</code></td>
     <td>Type of your tax registration. (VAT, GST, CPF, CNPJ, SST, TIN, NRIC)</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of your TRN. This can be either Verified, Pending, Deleted, or Rejected. (Verified, Pending, Deleted, Rejected)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taxDocumentMetadatas" /></td>
+    <td><CopyableCode code="tax_document_metadatas" /></td>
     <td><code>array</code></td>
     <td>The metadata for your tax document.</td>
 </tr>
@@ -180,15 +180,15 @@ Retrieves tax registration for a single account.
 
 ```sql
 SELECT
-additionalTaxInformation,
-certifiedEmailId,
-legalAddress,
-legalName,
-registrationId,
-registrationType,
+additional_tax_information,
+certified_email_id,
+legal_address,
+legal_name,
+registration_id,
+registration_type,
 sector,
 status,
-taxDocumentMetadatas
+tax_document_metadatas
 FROM aws.taxsettings.tax_registrations
 WHERE region = '{{ region }}' -- required
 ;

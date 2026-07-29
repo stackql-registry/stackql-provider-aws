@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedEntities" /></td>
+    <td><CopyableCode code="associated_entities" /></td>
     <td><code>array</code></td>
     <td>The products and offers associated with this listing. Each entity contains product and offer information.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The categories used to classify this listing into logical groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fulfillmentOptionSummaries" /></td>
+    <td><CopyableCode code="fulfillment_option_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of fulfillment options available for deploying or accessing the listing, such as AMI, SaaS, or Container.</td>
 </tr>
@@ -81,42 +81,42 @@ The following fields are returned by `SELECT` queries:
     <td>A list of key features that the listing offers to customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationGuide" /></td>
+    <td><CopyableCode code="integration_guide" /></td>
     <td><code>string</code></td>
     <td>Optional guidance explaining how to use data in this listing. Primarily defines how to integrate with a multi-product listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listingId" /></td>
+    <td><CopyableCode code="listing_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the listing. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listingName" /></td>
+    <td><CopyableCode code="listing_name" /></td>
     <td><code>string</code></td>
     <td>The human-readable display name of the listing. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logoThumbnailUrl" /></td>
+    <td><CopyableCode code="logo_thumbnail_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the logo thumbnail image for the listing. (pattern: &lt;code&gt;https?:​//.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="longDescription" /></td>
+    <td><CopyableCode code="long_description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of what the listing offers, in paragraph format. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pricingModels" /></td>
+    <td><CopyableCode code="pricing_models" /></td>
     <td><code>array</code></td>
     <td>The pricing models for offers associated with this listing, such as usage-based, contract, BYOL, or free.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pricingUnits" /></td>
+    <td><CopyableCode code="pricing_units" /></td>
     <td><code>array</code></td>
     <td>The pricing units that define the billing dimensions for offers associated with this listing, such as users, hosts, or data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="promotionalMedia" /></td>
+    <td><CopyableCode code="promotional_media" /></td>
     <td><code>array</code></td>
     <td>Embedded promotional media provided by the creator of the product, such as images and videos.</td>
 </tr>
@@ -131,22 +131,22 @@ The following fields are returned by `SELECT` queries:
     <td>Resources that provide further information about using the product or requesting support, such as documentation links, support contacts, and usage instructions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reviewSummary" /></td>
+    <td><CopyableCode code="review_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of customer reviews available for the listing, including average rating and total review count by source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sellerEngagements" /></td>
+    <td><CopyableCode code="seller_engagements" /></td>
     <td><code>array</code></td>
     <td>Engagement options available to potential buyers, such as requesting a private offer or requesting a demo.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shortDescription" /></td>
+    <td><CopyableCode code="short_description" /></td>
     <td><code>string</code></td>
     <td>A 1–3 sentence summary describing the key aspects of the listing. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="useCases" /></td>
+    <td><CopyableCode code="use_cases" /></td>
     <td><code>array</code></td>
     <td>Use cases associated with the listing, describing scenarios where the product can be applied.</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedEntities" /></td>
+    <td><CopyableCode code="associated_entities" /></td>
     <td><code>array</code></td>
     <td>The products associated with this listing.</td>
 </tr>
@@ -185,32 +185,32 @@ The following fields are returned by `SELECT` queries:
     <td>The categories used to classify this listing into logical groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fulfillmentOptionSummaries" /></td>
+    <td><CopyableCode code="fulfillment_option_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of fulfillment options available for the listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listingId" /></td>
+    <td><CopyableCode code="listing_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the listing. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listingName" /></td>
+    <td><CopyableCode code="listing_name" /></td>
     <td><code>string</code></td>
     <td>The human-readable display name of the listing. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logoThumbnailUrl" /></td>
+    <td><CopyableCode code="logo_thumbnail_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the logo thumbnail image for the listing. (pattern: &lt;code&gt;https?:​//.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pricingModels" /></td>
+    <td><CopyableCode code="pricing_models" /></td>
     <td><code>array</code></td>
     <td>The pricing models for offers associated with this listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pricingUnits" /></td>
+    <td><CopyableCode code="pricing_units" /></td>
     <td><code>array</code></td>
     <td>The pricing units that define the billing dimensions for offers associated with this listing.</td>
 </tr>
@@ -220,12 +220,12 @@ The following fields are returned by `SELECT` queries:
     <td>The entity who created and published the listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reviewSummary" /></td>
+    <td><CopyableCode code="review_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of customer reviews for the listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shortDescription" /></td>
+    <td><CopyableCode code="short_description" /></td>
     <td><code>string</code></td>
     <td>A 1–3 sentence summary describing the key aspects of the listing. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -302,26 +302,26 @@ Provides details about a listing, such as descriptions, badges, categories, pric
 
 ```sql
 SELECT
-associatedEntities,
+associated_entities,
 badges,
 catalog,
 categories,
-fulfillmentOptionSummaries,
+fulfillment_option_summaries,
 highlights,
-integrationGuide,
-listingId,
-listingName,
-logoThumbnailUrl,
-longDescription,
-pricingModels,
-pricingUnits,
-promotionalMedia,
+integration_guide,
+listing_id,
+listing_name,
+logo_thumbnail_url,
+long_description,
+pricing_models,
+pricing_units,
+promotional_media,
 publisher,
 resources,
-reviewSummary,
-sellerEngagements,
-shortDescription,
-useCases
+review_summary,
+seller_engagements,
+short_description,
+use_cases
 FROM aws.marketplace_discovery.listings
 WHERE region = '{{ region }}' -- required
 ;
@@ -333,19 +333,19 @@ Returns a list of product listings based on search criteria and filters. You can
 
 ```sql
 SELECT
-associatedEntities,
+associated_entities,
 badges,
 catalog,
 categories,
-fulfillmentOptionSummaries,
-listingId,
-listingName,
-logoThumbnailUrl,
-pricingModels,
-pricingUnits,
+fulfillment_option_summaries,
+listing_id,
+listing_name,
+logo_thumbnail_url,
+pricing_models,
+pricing_units,
 publisher,
-reviewSummary,
-shortDescription
+review_summary,
+short_description
 FROM aws.marketplace_discovery.listings
 WHERE region = '{{ region }}' -- required
 ;

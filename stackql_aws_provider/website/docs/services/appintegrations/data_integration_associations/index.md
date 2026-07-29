@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientId" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the client that is associated with the DataIntegration association. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataIntegrationArn" /></td>
+    <td><CopyableCode code="data_integration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the DataIntegration. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataIntegrationAssociationArn" /></td>
+    <td><CopyableCode code="data_integration_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the DataIntegration association. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationURI" /></td>
+    <td><CopyableCode code="destination_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the data destination. (pattern: &lt;code&gt;^(\w+\:\/\/&#91;\w.-&#93;+&#91;\w/!@#+=.-&#93;+$)|(\w+\:\/\/&#91;\w.-&#93;+&#91;\w/!@#+=.-&#93;+&#91;\w/!@#+=.-&#93;+&#91;\w/!@#+=.,-&#93;+$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionConfiguration" /></td>
+    <td><CopyableCode code="execution_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for how the files should be pulled from the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionStatus" /></td>
+    <td><CopyableCode code="last_execution_status" /></td>
     <td><code>object</code></td>
     <td>The execution status of the last job.</td>
 </tr>
@@ -178,12 +178,12 @@ Returns a paginated list of DataIntegration associations in the account. You can
 
 ```sql
 SELECT
-ClientId,
-DataIntegrationArn,
-DataIntegrationAssociationArn,
-DestinationURI,
-ExecutionConfiguration,
-LastExecutionStatus
+client_id,
+data_integration_arn,
+data_integration_association_arn,
+destination_uri,
+execution_configuration,
+last_execution_status
 FROM aws.appintegrations.data_integration_associations
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,8 +229,8 @@ SELECT
 '{{ identifier }}',
 '{{ region }}'
 RETURNING
-DataIntegrationArn,
-DataIntegrationAssociationId
+data_integration_arn,
+data_integration_association_id
 ;
 ```
 </TabItem>

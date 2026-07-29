@@ -55,47 +55,47 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the Source Network. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cfnStackName" /></td>
+    <td><CopyableCode code="cfn_stack_name" /></td>
     <td><code>string</code></td>
     <td>CloudFormation stack name that was deployed for recovering the Source Network. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRecovery" /></td>
+    <td><CopyableCode code="last_recovery" /></td>
     <td><code>object</code></td>
     <td>An object containing information regarding the last recovery of the Source Network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchedVpcID" /></td>
+    <td><CopyableCode code="launched_vpc_id" /></td>
     <td><code>string</code></td>
     <td>ID of the recovered VPC following Source Network recovery. (pattern: &lt;code&gt;vpc-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationStatus" /></td>
+    <td><CopyableCode code="replication_status" /></td>
     <td><code>string</code></td>
     <td>Status of Source Network Replication. Possible values: (a) STOPPED - Source Network is not replicating. (b) IN_PROGRESS - Source Network is being replicated. (c) PROTECTED - Source Network was replicated successfully and is being synchronized for changes. (d) ERROR - Source Network replication has failed (STOPPED, IN_PROGRESS, PROTECTED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationStatusDetails" /></td>
+    <td><CopyableCode code="replication_status_details" /></td>
     <td><code>string</code></td>
     <td>Error details in case Source Network replication status is ERROR.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceAccountID" /></td>
+    <td><CopyableCode code="source_account_id" /></td>
     <td><code>string</code></td>
     <td>Account ID containing the VPC protected by the Source Network. (pattern: &lt;code&gt;.*&#91;0-9&#93;&#123;12,&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceNetworkID" /></td>
+    <td><CopyableCode code="source_network_id" /></td>
     <td><code>string</code></td>
     <td>Source Network ID. (pattern: &lt;code&gt;sn-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceRegion" /></td>
+    <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
     <td>Region containing the VPC protected by the Source Network. (pattern: &lt;code&gt;(us(-gov)?|ap|ca|cn|eu|eusc|sa|af|me|il)-(&#91;a-z&#93;&#123;2&#125;-)?(central|north|(north(?:east|west))|south|south(?:east|west)|east|west)-&#91;0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceVpcID" /></td>
+    <td><CopyableCode code="source_vpc_id" /></td>
     <td><code>string</code></td>
     <td>VPC ID protected by the Source Network. (pattern: &lt;code&gt;vpc-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
@@ -219,15 +219,15 @@ Lists all Source Networks or multiple Source Networks filtered by ID.
 ```sql
 SELECT
 arn,
-cfnStackName,
-lastRecovery,
-launchedVpcID,
-replicationStatus,
-replicationStatusDetails,
-sourceAccountID,
-sourceNetworkID,
-sourceRegion,
-sourceVpcID,
+cfn_stack_name,
+last_recovery,
+launched_vpc_id,
+replication_status,
+replication_status_details,
+source_account_id,
+source_network_id,
+source_region,
+source_vpc_id,
 tags
 FROM aws.drs.source_networks
 WHERE region = '{{ region }}' -- required
@@ -265,7 +265,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-sourceNetworkID
+source_network_id
 ;
 ```
 </TabItem>

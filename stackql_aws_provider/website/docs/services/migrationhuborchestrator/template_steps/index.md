@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time at which the step was created.</td>
 </tr>
@@ -86,22 +86,22 @@ The following fields are returned by `SELECT` queries:
     <td>The previous step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepActionType" /></td>
+    <td><CopyableCode code="step_action_type" /></td>
     <td><code>string</code></td>
     <td>The action type of the step. You must run and update the status of a manual step for the workflow to continue after the completion of the step. (MANUAL, AUTOMATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepAutomationConfiguration" /></td>
+    <td><CopyableCode code="step_automation_configuration" /></td>
     <td><code>object</code></td>
     <td>The custom script to run tests on source or target environments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepGroupId" /></td>
+    <td><CopyableCode code="step_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the step group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the template. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.+&#93;+&#91;-a-zA-Z0-9_.+ &#93;*&lt;/code&gt;)</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>The previous step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepActionType" /></td>
+    <td><CopyableCode code="step_action_type" /></td>
     <td><code>string</code></td>
     <td>The action type of the step. You must run and update the status of a manual step for the workflow to continue after the completion of the step. (MANUAL, AUTOMATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepGroupId" /></td>
+    <td><CopyableCode code="step_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the step group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The servers on which to run the script. (SINGLE, ALL, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the template.</td>
 </tr>
@@ -264,15 +264,15 @@ Get a specific step in a template.
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
 next,
 outputs,
 previous,
-stepActionType,
-stepAutomationConfiguration,
-stepGroupId,
-templateId
+step_action_type,
+step_automation_configuration,
+step_group_id,
+template_id
 FROM aws.migrationhuborchestrator.template_steps
 WHERE id = '{{ id }}' -- required
 AND templateId = '{{ templateId }}' -- required
@@ -292,10 +292,10 @@ name,
 next,
 owner,
 previous,
-stepActionType,
-stepGroupId,
-targetType,
-templateId
+step_action_type,
+step_group_id,
+target_type,
+template_id
 FROM aws.migrationhuborchestrator.template_steps
 WHERE templateId = '{{ templateId }}' -- required
 AND stepGroupId = '{{ stepGroupId }}' -- required

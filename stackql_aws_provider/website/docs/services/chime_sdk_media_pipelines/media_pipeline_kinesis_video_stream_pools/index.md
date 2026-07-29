@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolArn" /></td>
+    <td><CopyableCode code="pool_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the video stream pool configuration. (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the video stream pool in the configuration. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolName" /></td>
+    <td><CopyableCode code="pool_name" /></td>
     <td><code>string</code></td>
     <td>The name of the video stream pool configuration. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolSize" /></td>
+    <td><CopyableCode code="pool_size" /></td>
     <td><code>integer</code></td>
     <td>The size of the video stream pool in the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolStatus" /></td>
+    <td><CopyableCode code="pool_status" /></td>
     <td><code>string</code></td>
     <td>The status of the video stream pool in the configuration. (CREATING, ACTIVE, UPDATING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamConfiguration" /></td>
+    <td><CopyableCode code="stream_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of an Kinesis video stream. If a meeting uses an opt-in Region as its MediaRegion, the KVS stream must be in that same Region. For example, if a meeting uses the af-south-1 Region, the KVS stream must also be in af-south-1. However, if the meeting uses a Region that AWS turns on by default, the KVS stream can be in any available Region, including an opt-in Region. For example, if the meeting uses ca-central-1, the KVS stream can be in eu-west-2, us-east-1, af-south-1, or any other Region that the Amazon Chime SDK supports. To learn which AWS Region a meeting uses, call the GetMeeting API and use the MediaRegion parameter from the response. For more information about opt-in Regions, refer to Available Regions in the Amazon Chime SDK Developer Guide, and Specify which AWS Regions your account can use, in the AWS Account Management Reference Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration was updated.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KinesisVideoStreamPools" /></td>
+    <td><CopyableCode code="kinesis_video_stream_pools" /></td>
     <td><code>array</code></td>
     <td>The list of video stream pools.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to return the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -223,14 +223,14 @@ Gets an Kinesis video stream pool.
 
 ```sql
 SELECT
-CreatedTimestamp,
-PoolArn,
-PoolId,
-PoolName,
-PoolSize,
-PoolStatus,
-StreamConfiguration,
-UpdatedTimestamp
+created_timestamp,
+pool_arn,
+pool_id,
+pool_name,
+pool_size,
+pool_status,
+stream_configuration,
+updated_timestamp
 FROM aws.chime_sdk_media_pipelines.media_pipeline_kinesis_video_stream_pools
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -243,8 +243,8 @@ Lists the video stream pools in the media pipeline.
 
 ```sql
 SELECT
-KinesisVideoStreamPools,
-NextToken
+kinesis_video_stream_pools,
+next_token
 FROM aws.chime_sdk_media_pipelines.media_pipeline_kinesis_video_stream_pools
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -283,7 +283,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-KinesisVideoStreamPoolConfiguration
+kinesis_video_stream_pool_configuration
 ;
 ```
 </TabItem>
@@ -335,7 +335,7 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-KinesisVideoStreamPoolConfiguration;
+kinesis_video_stream_pool_configuration;
 ```
 </TabItem>
 </Tabs>

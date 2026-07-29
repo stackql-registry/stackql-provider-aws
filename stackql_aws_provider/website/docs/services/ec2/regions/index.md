@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The Region service endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Geography" /></td>
+    <td><CopyableCode code="geography" /></td>
     <td><code>string</code></td>
     <td>The geography information for the Region. The geography is returned as a list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptInStatus" /></td>
+    <td><CopyableCode code="opt_in_status" /></td>
     <td><code>string</code></td>
     <td>The Region opt-in status. The possible values are opt-in-not-required, opted-in, and not-opted-in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Region.</td>
 </tr>
@@ -154,10 +154,10 @@ Describes the Regions that are enabled for your account, or all Regions. For a l
 
 ```sql
 SELECT
-Endpoint,
-Geography,
-OptInStatus,
-RegionName
+endpoint,
+geography,
+opt_in_status,
+region_name
 FROM aws.ec2.regions
 WHERE region = '{{ region }}' -- required
 AND RegionName = '{{ RegionName }}'

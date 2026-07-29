@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Any tags associated with the resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists all the tags for a specified resource, including key and value.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.lookoutequipment.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier for the evidence. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentReportSelection" /></td>
+    <td><CopyableCode code="assessment_report_selection" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the evidence is included in the assessment report. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -65,57 +65,57 @@ The following fields are returned by `SELECT` queries:
     <td>The names and values that are used by the evidence event. This includes an attribute name (such as allowUsersToChangePassword) and value (such as true or false).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Amazon Web Services account. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsOrganization" /></td>
+    <td><CopyableCode code="aws_organization" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that the evidence is collected from, and its organization path. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="complianceCheck" /></td>
+    <td><CopyableCode code="compliance_check" /></td>
     <td><code>string</code></td>
     <td>The evaluation status for automated evidence that falls under the compliance check category. Audit Manager classes evidence as non-compliant if Security Hub reports a Fail result, or if Config reports a Non-compliant result. Audit Manager classes evidence as compliant if Security Hub reports a Pass result, or if Config reports a Compliant result. If a compliance check isn't available or applicable, then no compliance evaluation can be made for that evidence. This is the case if the evidence uses Config or Security Hub as the underlying data source type, but those services aren't enabled. This is also the case if the evidence uses an underlying data source type that doesn't support compliance checks (such as manual evidence, Amazon Web Services API calls, or CloudTrail). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>The data source where the evidence was collected from. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventName" /></td>
+    <td><CopyableCode code="event_name" /></td>
     <td><code>string</code></td>
     <td>The name of the evidence event. (pattern: &lt;code&gt;^&#91;\w\W\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventSource" /></td>
+    <td><CopyableCode code="event_source" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service that the evidence is collected from. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\s().&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceAwsAccountId" /></td>
+    <td><CopyableCode code="evidence_aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Amazon Web Services account. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceByType" /></td>
+    <td><CopyableCode code="evidence_by_type" /></td>
     <td><code>string</code></td>
     <td>The type of automated evidence. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evidenceFolderId" /></td>
+    <td><CopyableCode code="evidence_folder_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the folder that the evidence is stored in. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamId" /></td>
+    <td><CopyableCode code="iam_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the user or role that's associated with the evidence. (pattern: &lt;code&gt;^arn:.*:iam:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourcesIncluded" /></td>
+    <td><CopyableCode code="resources_included" /></td>
     <td><code>array</code></td>
     <td>The list of resources that are assessed to generate the evidence.</td>
 </tr>
@@ -210,19 +210,19 @@ Gets information about a specified evidence item.
 ```sql
 SELECT
 id,
-assessmentReportSelection,
+assessment_report_selection,
 attributes,
-awsAccountId,
-awsOrganization,
-complianceCheck,
-dataSource,
-eventName,
-eventSource,
-evidenceAwsAccountId,
-evidenceByType,
-evidenceFolderId,
-iamId,
-resourcesIncluded,
+aws_account_id,
+aws_organization,
+compliance_check,
+data_source,
+event_name,
+event_source,
+evidence_aws_account_id,
+evidence_by_type,
+evidence_folder_id,
+iam_id,
+resources_included,
 time
 FROM aws.auditmanager.evidences
 WHERE assessment_id = '{{ assessment_id }}' -- required

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationProfileId" /></td>
+    <td><CopyableCode code="configuration_profile_id" /></td>
     <td><code>string</code></td>
     <td>The configuration profile ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string (byte)</code></td>
     <td>The content of the configuration or the configuration data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>A standard MIME type describing the format of the configuration content. For more information, see Content-Type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the Key Management Service key that was used to encrypt this specific version of the configuration data in the AppConfig hosted configuration store. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>A user-defined label for an AppConfig hosted configuration version. (pattern: &lt;code&gt;.*&#91;^0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer</code></td>
     <td>The configuration version.</td>
 </tr>
@@ -105,37 +105,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationProfileId" /></td>
+    <td><CopyableCode code="configuration_profile_id" /></td>
     <td><code>string</code></td>
     <td>The configuration profile ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>A standard MIME type describing the format of the configuration content. For more information, see Content-Type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the Key Management Service key that was used to encrypt this specific version of the configuration data in the AppConfig hosted configuration store. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>A user-defined label for an AppConfig hosted configuration version. (pattern: &lt;code&gt;.*&#91;^0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer</code></td>
     <td>The configuration version.</td>
 </tr>
@@ -276,14 +276,14 @@ Retrieves information about a specific configuration version.
 
 ```sql
 SELECT
-ApplicationId,
-ConfigurationProfileId,
-Content,
-ContentType,
-Description,
-KmsKeyArn,
-VersionLabel,
-VersionNumber
+application_id,
+configuration_profile_id,
+content,
+content_type,
+description,
+kms_key_arn,
+version_label,
+version_number
 FROM aws.appconfig.hosted_configuration_versions
 WHERE application_id = '{{ application_id }}' -- required
 AND configuration_profile_id = '{{ configuration_profile_id }}' -- required
@@ -298,13 +298,13 @@ Lists configurations stored in the AppConfig hosted configuration store by versi
 
 ```sql
 SELECT
-ApplicationId,
-ConfigurationProfileId,
-ContentType,
-Description,
-KmsKeyArn,
-VersionLabel,
-VersionNumber
+application_id,
+configuration_profile_id,
+content_type,
+description,
+kms_key_arn,
+version_label,
+version_number
 FROM aws.appconfig.hosted_configuration_versions
 WHERE application_id = '{{ application_id }}' -- required
 AND configuration_profile_id = '{{ configuration_profile_id }}' -- required
@@ -352,14 +352,14 @@ SELECT
 '{{ Latest-Version-Number }}',
 '{{ VersionLabel }}'
 RETURNING
-ApplicationId,
-ConfigurationProfileId,
-Content,
-ContentType,
-Description,
-KmsKeyArn,
-VersionLabel,
-VersionNumber
+application_id,
+configuration_profile_id,
+content,
+content_type,
+description,
+kms_key_arn,
+version_label,
+version_number
 ;
 ```
 </TabItem>

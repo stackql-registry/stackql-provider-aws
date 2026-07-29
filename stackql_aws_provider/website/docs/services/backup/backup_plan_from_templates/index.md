@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdvancedBackupSettings" /></td>
+    <td><CopyableCode code="advanced_backup_settings" /></td>
     <td><code>array</code></td>
     <td>Contains a list of BackupOptions for each resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupPlanName" /></td>
+    <td><CopyableCode code="backup_plan_name" /></td>
     <td><code>string</code></td>
     <td>The display name of a backup plan. Must contain only alphanumeric or '-_.' special characters. If this is set in the console, it can contain 1 to 50 characters; if this is set through CLI or API, it can contain 1 to 200 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>An array of BackupRule objects, each of which specifies a scheduled task that is used to back up a selection of resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScanSettings" /></td>
+    <td><CopyableCode code="scan_settings" /></td>
     <td><code>array</code></td>
     <td>Contains your scanning configuration for the backup plan and includes the Malware scanner, your selected resources, and scanner role.</td>
 </tr>
@@ -139,10 +139,10 @@ Returns the template specified by its templateId as a backup plan.
 
 ```sql
 SELECT
-AdvancedBackupSettings,
-BackupPlanName,
-Rules,
-ScanSettings
+advanced_backup_settings,
+backup_plan_name,
+rules,
+scan_settings
 FROM aws.backup.backup_plan_from_templates
 WHERE template_id = '{{ template_id }}' -- required
 AND region = '{{ region }}' -- required

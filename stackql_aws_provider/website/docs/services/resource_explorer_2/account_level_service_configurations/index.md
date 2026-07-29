@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AWSServiceAccessStatus" /></td>
+    <td><CopyableCode code="aws_service_access_status" /></td>
     <td><code>string</code></td>
     <td>This value displays whether your Amazon Web Services service access is ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceLinkedRole" /></td>
+    <td><CopyableCode code="service_linked_role" /></td>
     <td><code>string</code></td>
     <td>This value shows whether or not you have a valid a service-linked role required to start the multi-account search feature.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the status of your account's Amazon Web Services service access, and v
 
 ```sql
 SELECT
-AWSServiceAccessStatus,
-ServiceLinkedRole
+aws_service_access_status,
+service_linked_role
 FROM aws.resource_explorer_2.account_level_service_configurations
 WHERE region = '{{ region }}' -- required
 ;

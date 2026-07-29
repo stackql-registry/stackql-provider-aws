@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Grants" /></td>
+    <td><CopyableCode code="grants" /></td>
     <td><code>array</code></td>
     <td>Received grant details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists grants that are received. Received grants are grants created while specify
 
 ```sql
 SELECT
-Grants,
-NextToken
+grants,
+next_token
 FROM aws.license_manager.received_grants
 WHERE region = '{{ region }}' -- required
 ;

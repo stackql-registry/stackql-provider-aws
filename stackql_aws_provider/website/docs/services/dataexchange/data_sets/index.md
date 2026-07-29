@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the data set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetType" /></td>
+    <td><CopyableCode code="asset_type" /></td>
     <td><code>string</code></td>
     <td>The type of asset that is added to a data set. (S3_SNAPSHOT, REDSHIFT_DATA_SHARE, API_GATEWAY_API, S3_DATA_ACCESS, LAKE_FORMATION_DATA_PERMISSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the data set was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the data set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the data set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Origin" /></td>
+    <td><CopyableCode code="origin" /></td>
     <td><code>string</code></td>
     <td>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers). (OWNED, ENTITLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginDetails" /></td>
+    <td><CopyableCode code="origin_details" /></td>
     <td><code>object</code></td>
     <td>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceId" /></td>
+    <td><CopyableCode code="source_id" /></td>
     <td><code>string</code></td>
     <td>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags for the data set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the data set was last updated, in ISO 8601 format.</td>
 </tr>
@@ -120,52 +120,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the data set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetType" /></td>
+    <td><CopyableCode code="asset_type" /></td>
     <td><code>string</code></td>
     <td>The type of asset that is added to a data set. (S3_SNAPSHOT, REDSHIFT_DATA_SHARE, API_GATEWAY_API, S3_DATA_ACCESS, LAKE_FORMATION_DATA_PERMISSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the data set was created, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the data set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the data set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Origin" /></td>
+    <td><CopyableCode code="origin" /></td>
     <td><code>string</code></td>
     <td>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers). (OWNED, ENTITLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginDetails" /></td>
+    <td><CopyableCode code="origin_details" /></td>
     <td><code>object</code></td>
     <td>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceId" /></td>
+    <td><CopyableCode code="source_id" /></td>
     <td><code>string</code></td>
     <td>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;30,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the data set was last updated, in ISO 8601 format.</td>
 </tr>
@@ -290,17 +290,17 @@ This operation returns information about a data set.
 
 ```sql
 SELECT
-Arn,
-AssetType,
-CreatedAt,
-Description,
-Id,
-Name,
-Origin,
-OriginDetails,
-SourceId,
-Tags,
-UpdatedAt
+arn,
+asset_type,
+created_at,
+description,
+id,
+name,
+origin,
+origin_details,
+source_id,
+tags,
+updated_at
 FROM aws.dataexchange.data_sets
 WHERE data_set_id = '{{ data_set_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -313,16 +313,16 @@ This operation lists your data sets. When listing by origin OWNED, results are s
 
 ```sql
 SELECT
-Arn,
-AssetType,
-CreatedAt,
-Description,
-Id,
-Name,
-Origin,
-OriginDetails,
-SourceId,
-UpdatedAt
+arn,
+asset_type,
+created_at,
+description,
+id,
+name,
+origin,
+origin_details,
+source_id,
+updated_at
 FROM aws.dataexchange.data_sets
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -362,17 +362,17 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-AssetType,
-CreatedAt,
-Description,
-Id,
-Name,
-Origin,
-OriginDetails,
-SourceId,
-Tags,
-UpdatedAt
+arn,
+asset_type,
+created_at,
+description,
+id,
+name,
+origin,
+origin_details,
+source_id,
+tags,
+updated_at
 ;
 ```
 </TabItem>
@@ -420,16 +420,16 @@ WHERE
 data_set_id = '{{ data_set_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-AssetType,
-CreatedAt,
-Description,
-Id,
-Name,
-Origin,
-OriginDetails,
-SourceId,
-UpdatedAt;
+arn,
+asset_type,
+created_at,
+description,
+id,
+name,
+origin,
+origin_details,
+source_id,
+updated_at;
 ```
 </TabItem>
 </Tabs>

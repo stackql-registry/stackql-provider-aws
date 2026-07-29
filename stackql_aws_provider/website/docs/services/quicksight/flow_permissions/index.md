@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow you are getting permissions against.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowId" /></td>
+    <td><CopyableCode code="flow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow with permissions. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A structure that contains the permissions for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -156,11 +156,11 @@ Get permissions for a flow.
 
 ```sql
 SELECT
-Arn,
-FlowId,
-Permissions,
-RequestId,
-Status
+arn,
+flow_id,
+permissions,
+request_id,
+status
 FROM aws.quicksight.flow_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND flow_id = '{{ flow_id }}' -- required
@@ -193,11 +193,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND flow_id = '{{ flow_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-FlowId,
-Permissions,
-RequestId,
-Status;
+arn,
+flow_id,
+permissions,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

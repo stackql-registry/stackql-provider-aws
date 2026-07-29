@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupLifecycleEventsDesiredStatus" /></td>
+    <td><CopyableCode code="group_lifecycle_events_desired_status" /></td>
     <td><code>string</code></td>
     <td>The desired target status of the group lifecycle events feature. If (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupLifecycleEventsStatus" /></td>
+    <td><CopyableCode code="group_lifecycle_events_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the group lifecycle events feature. (ACTIVE, INACTIVE, IN_PROGRESS, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupLifecycleEventsStatusMessage" /></td>
+    <td><CopyableCode code="group_lifecycle_events_status_message" /></td>
     <td><code>string</code></td>
     <td>The text of any error message occurs during an attempt to turn group lifecycle events on or off.</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves the current status of optional features in Resource Groups.
 
 ```sql
 SELECT
-GroupLifecycleEventsDesiredStatus,
-GroupLifecycleEventsStatus,
-GroupLifecycleEventsStatusMessage
+group_lifecycle_events_desired_status,
+group_lifecycle_events_status,
+group_lifecycle_events_status_message
 FROM aws.resource_groups.account_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -166,7 +166,7 @@ GroupLifecycleEventsDesiredStatus = '{{ GroupLifecycleEventsDesiredStatus }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-AccountSettings;
+account_settings;
 ```
 </TabItem>
 </Tabs>

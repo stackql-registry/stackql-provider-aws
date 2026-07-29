@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a report job is completed, in Unix format and Coordinated Universal Time (UTC). The value of CompletionTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a report job is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportDestination" /></td>
+    <td><CopyableCode code="report_destination" /></td>
     <td><code>object</code></td>
     <td>The S3 bucket name and S3 keys for the destination where the report job publishes the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportJobId" /></td>
+    <td><CopyableCode code="report_job_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a report job. A unique, randomly generated, Unicode, UTF-8 encoded string that is at most 1,024 bytes long. Report job IDs cannot be edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportPlanArn" /></td>
+    <td><CopyableCode code="report_plan_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format of the ARN depends on the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportTemplate" /></td>
+    <td><CopyableCode code="report_template" /></td>
     <td><code>string</code></td>
     <td>Identifies the report template for the report. Reports are built using a report template. The report templates are: RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT | COPY_JOB_REPORT | RESTORE_JOB_REPORT</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a report job. The statuses are: CREATED | RUNNING | COMPLETED | FAILED COMPLETED means that the report is available for your review at your designated destination. If the status is FAILED, review the StatusMessage for the reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message explaining the status of the report job.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportJobs" /></td>
+    <td><CopyableCode code="report_jobs" /></td>
     <td><code>array</code></td>
     <td>Details about your report jobs in JSON format.</td>
 </tr>
@@ -222,14 +222,14 @@ Returns the details associated with creating a report as specified by its Report
 
 ```sql
 SELECT
-CompletionTime,
-CreationTime,
-ReportDestination,
-ReportJobId,
-ReportPlanArn,
-ReportTemplate,
-Status,
-StatusMessage
+completion_time,
+creation_time,
+report_destination,
+report_job_id,
+report_plan_arn,
+report_template,
+status,
+status_message
 FROM aws.backup.report_jobs
 WHERE report_job_id = '{{ report_job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -242,8 +242,8 @@ Returns details about your report jobs.
 
 ```sql
 SELECT
-NextToken,
-ReportJobs
+next_token,
+report_jobs
 FROM aws.backup.report_jobs
 WHERE region = '{{ region }}' -- required
 AND ReportPlanName = '{{ ReportPlanName }}'

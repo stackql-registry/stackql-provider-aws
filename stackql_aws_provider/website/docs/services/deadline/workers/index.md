@@ -53,27 +53,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostProperties" /></td>
+    <td><CopyableCode code="host_properties" /></td>
     <td><code>object</code></td>
     <td>The host properties for the worker.</td>
 </tr>
@@ -88,17 +88,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the worker. (CREATED, STARTED, STOPPING, STOPPED, NOT_RESPONDING, NOT_COMPATIBLE, RUNNING, IDLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The worker ID. (pattern: &lt;code&gt;worker-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -117,12 +117,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextItemOffset" /></td>
+    <td><CopyableCode code="next_item_offset" /></td>
     <td><code>integer</code></td>
     <td>The next item offset for the search results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResults" /></td>
+    <td><CopyableCode code="total_results" /></td>
     <td><code>integer</code></td>
     <td>The total number of results in the search.</td>
 </tr>
@@ -146,27 +146,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostProperties" /></td>
+    <td><CopyableCode code="host_properties" /></td>
     <td><code>object</code></td>
     <td>The host properties of the worker.</td>
 </tr>
@@ -181,17 +181,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the worker. (CREATED, STARTED, STOPPING, STOPPED, NOT_RESPONDING, NOT_COMPATIBLE, RUNNING, IDLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The worker ID. (pattern: &lt;code&gt;worker-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -385,16 +385,16 @@ Gets a worker.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-farmId,
-fleetId,
-hostProperties,
+created_at,
+created_by,
+farm_id,
+fleet_id,
+host_properties,
 log,
 status,
-updatedAt,
-updatedBy,
-workerId
+updated_at,
+updated_by,
+worker_id
 FROM aws.deadline.workers
 WHERE farm_id = '{{ farm_id }}' -- required
 AND fleet_id = '{{ fleet_id }}' -- required
@@ -409,8 +409,8 @@ Searches for workers.
 
 ```sql
 SELECT
-nextItemOffset,
-totalResults,
+next_item_offset,
+total_results,
 workers
 FROM aws.deadline.workers
 WHERE farm_id = '{{ farm_id }}' -- required
@@ -424,16 +424,16 @@ Lists workers.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-farmId,
-fleetId,
-hostProperties,
+created_at,
+created_by,
+farm_id,
+fleet_id,
+host_properties,
 log,
 status,
-updatedAt,
-updatedBy,
-workerId
+updated_at,
+updated_by,
+worker_id
 FROM aws.deadline.workers
 WHERE farm_id = '{{ farm_id }}' -- required
 AND fleet_id = '{{ fleet_id }}' -- required
@@ -489,7 +489,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-workerId
+worker_id
 ;
 ```
 </TabItem>
@@ -553,7 +553,7 @@ AND fleet_id = '{{ fleet_id }}' --required
 AND worker_id = '{{ worker_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-hostConfiguration,
+host_configuration,
 log;
 ```
 </TabItem>

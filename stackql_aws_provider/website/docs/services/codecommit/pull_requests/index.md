@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="approvalRules" /></td>
+    <td><CopyableCode code="approval_rules" /></td>
     <td><code>array</code></td>
     <td>The approval rules applied to the pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorArn" /></td>
+    <td><CopyableCode code="author_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the pull request was originally created, in timestamp format.</td>
 </tr>
@@ -76,27 +76,27 @@ The following fields are returned by `SELECT` queries:
     <td>The user-defined description of the pull request. This description can be used to clarify what should be reviewed and other details of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastActivityDate" /></td>
+    <td><CopyableCode code="last_activity_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The day and time of the last user or system activity on the pull request, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestId" /></td>
+    <td><CopyableCode code="pull_request_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID of the pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestStatus" /></td>
+    <td><CopyableCode code="pull_request_status" /></td>
     <td><code>string</code></td>
     <td>The status of the pull request. Pull request status can only change from OPEN to CLOSED. (OPEN, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestTargets" /></td>
+    <td><CopyableCode code="pull_request_targets" /></td>
     <td><code>array</code></td>
     <td>The targets of the pull request, including the source branch and destination branch for the pull request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated revision ID for the pull request.</td>
 </tr>
@@ -288,16 +288,16 @@ Gets information about a pull request in a specified repository.
 
 ```sql
 SELECT
-approvalRules,
-authorArn,
-clientRequestToken,
-creationDate,
+approval_rules,
+author_arn,
+client_request_token,
+creation_date,
 description,
-lastActivityDate,
-pullRequestId,
-pullRequestStatus,
-pullRequestTargets,
-revisionId,
+last_activity_date,
+pull_request_id,
+pull_request_status,
+pull_request_targets,
+revision_id,
 title_
 FROM aws.codecommit.pull_requests
 WHERE region = '{{ region }}' -- required
@@ -346,7 +346,7 @@ SELECT
 '{{ approvalRuleContent }}' /* required */,
 '{{ region }}'
 RETURNING
-approvalRule
+approval_rule
 ;
 ```
 </TabItem>
@@ -369,7 +369,7 @@ SELECT
 '{{ clientRequestToken }}',
 '{{ region }}'
 RETURNING
-pullRequest
+pull_request
 ;
 ```
 </TabItem>
@@ -446,7 +446,7 @@ AND pullRequestId = '{{ pullRequestId }}' --required
 AND approvalRuleName = '{{ approvalRuleName }}' --required
 AND newRuleContent = '{{ newRuleContent }}' --required
 RETURNING
-approvalRule;
+approval_rule;
 ```
 </TabItem>
 <TabItem value="update_pull_request_description">
@@ -463,7 +463,7 @@ region = '{{ region }}' --required
 AND pullRequestId = '{{ pullRequestId }}' --required
 AND description = '{{ description }}' --required
 RETURNING
-pullRequest;
+pull_request;
 ```
 </TabItem>
 <TabItem value="update_pull_request_status">
@@ -480,7 +480,7 @@ region = '{{ region }}' --required
 AND pullRequestId = '{{ pullRequestId }}' --required
 AND pullRequestStatus = '{{ pullRequestStatus }}' --required
 RETURNING
-pullRequest;
+pull_request;
 ```
 </TabItem>
 <TabItem value="update_pull_request_title">
@@ -497,7 +497,7 @@ region = '{{ region }}' --required
 AND pullRequestId = '{{ pullRequestId }}' --required
 AND title = '{{ title }}' --required
 RETURNING
-pullRequest;
+pull_request;
 ```
 </TabItem>
 </Tabs>

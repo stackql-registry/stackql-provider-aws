@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The URL to download your Price List file from.</td>
 </tr>
@@ -119,7 +119,7 @@ This feature is in preview release and is subject to change. Your use of Amazon 
 
 ```sql
 SELECT
-Url
+url
 FROM aws.pricing.price_list_file_urls
 WHERE region = '{{ region }}' -- required
 ;

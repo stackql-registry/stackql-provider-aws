@@ -51,162 +51,162 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalInferenceSpecifications" /></td>
+    <td><CopyableCode code="additional_inference_specifications" /></td>
     <td><code>array</code></td>
     <td>An array of additional Inference Specification objects. Each additional Inference Specification specifies artifacts based on this model package that can be used on inference endpoints. Generally used with SageMaker Neo to store the compiled artifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalDescription" /></td>
+    <td><CopyableCode code="approval_description" /></td>
     <td><code>string</code></td>
     <td>A description provided for the model approval. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertifyForMarketplace" /></td>
+    <td><CopyableCode code="certify_for_marketplace" /></td>
     <td><code>boolean</code></td>
     <td>Whether the model package is certified for listing on Amazon Web Services Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp specifying when the model package was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerMetadataProperties" /></td>
+    <td><CopyableCode code="customer_metadata_properties" /></td>
     <td><code>object</code></td>
     <td>The metadata properties associated with the model package versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The machine learning domain of the model package you specified. Common machine learning domains include computer vision and natural language processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftCheckBaselines" /></td>
+    <td><CopyableCode code="drift_check_baselines" /></td>
     <td><code>object</code></td>
     <td>Represents the drift check baselines that can be used when the model monitor is set using the model package. For more information, see the topic on Drift Detection against Previous Baselines in SageMaker Pipelines in the Amazon SageMaker Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceSpecification" /></td>
+    <td><CopyableCode code="inference_specification" /></td>
     <td><code>object</code></td>
     <td>Details about inference jobs that you can run with models based on this model package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the model package was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedStorageType" /></td>
+    <td><CopyableCode code="managed_storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type of the model package. (Restricted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataProperties" /></td>
+    <td><CopyableCode code="metadata_properties" /></td>
     <td><code>object</code></td>
     <td>Metadata properties of the tracking entity, trial, or trial component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelApprovalStatus" /></td>
+    <td><CopyableCode code="model_approval_status" /></td>
     <td><code>string</code></td>
     <td>The approval status of the model package. (Approved, Rejected, PendingManualApproval)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCard" /></td>
+    <td><CopyableCode code="model_card" /></td>
     <td><code>object</code></td>
     <td>The model card associated with the model package. Since ModelPackageModelCard is tied to a model package, it is a specific usage of a model card and its schema is simplified compared to the schema of ModelCard. The ModelPackageModelCard schema does not include model_package_details, and model_overview is composed of the model_creator and model_artifact properties. For more information about the model package model card schema, see Model package model card schema. For more information about the model card associated with the model package, see View the Details of a Model Version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelLifeCycle" /></td>
+    <td><CopyableCode code="model_life_cycle" /></td>
     <td><code>object</code></td>
     <td>A structure describing the current state of the model in its life cycle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelMetrics" /></td>
+    <td><CopyableCode code="model_metrics" /></td>
     <td><code>object</code></td>
     <td>Metrics for the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageArn" /></td>
+    <td><CopyableCode code="model_package_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model package. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-package/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageDescription" /></td>
+    <td><CopyableCode code="model_package_description" /></td>
     <td><code>string</code></td>
     <td>A brief summary of the model package. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupName" /></td>
+    <td><CopyableCode code="model_package_group_name" /></td>
     <td><code>string</code></td>
     <td>If the model is a versioned model, the name of the model group that the versioned model belongs to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageName" /></td>
+    <td><CopyableCode code="model_package_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model package being described. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageRegistrationType" /></td>
+    <td><CopyableCode code="model_package_registration_type" /></td>
     <td><code>string</code></td>
     <td>The package registration type of the model package output. (Logged, Registered)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageStatus" /></td>
+    <td><CopyableCode code="model_package_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the model package. (Pending, InProgress, Completed, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageStatusDetails" /></td>
+    <td><CopyableCode code="model_package_status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the current status of the model package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageVersion" /></td>
+    <td><CopyableCode code="model_package_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the model package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SamplePayloadUrl" /></td>
+    <td><CopyableCode code="sample_payload_url" /></td>
     <td><code>string</code></td>
     <td>The Amazon Simple Storage Service (Amazon S3) path where the sample payload are stored. This path points to a single gzip compressed tar archive (.tar.gz suffix).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfig" /></td>
+    <td><CopyableCode code="security_config" /></td>
     <td><code>object</code></td>
     <td>The KMS Key ID (KMSKeyId) used for encryption of model package information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SkipModelValidation" /></td>
+    <td><CopyableCode code="skip_model_validation" /></td>
     <td><code>string</code></td>
     <td>Indicates if you want to skip model validation. (All, None)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceAlgorithmSpecification" /></td>
+    <td><CopyableCode code="source_algorithm_specification" /></td>
     <td><code>object</code></td>
     <td>Details about the algorithm that was used to create the model package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceUri" /></td>
+    <td><CopyableCode code="source_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the source for the model package. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;&#123;0,1024&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Task" /></td>
+    <td><CopyableCode code="task" /></td>
     <td><code>string</code></td>
     <td>The machine learning task you specified that your model package accomplishes. Common machine learning tasks include object detection and image classification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationSpecification" /></td>
+    <td><CopyableCode code="validation_specification" /></td>
     <td><code>object</code></td>
     <td>Configurations for one or more transform jobs that SageMaker runs to test the model package.</td>
 </tr>
@@ -225,52 +225,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the model package was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelApprovalStatus" /></td>
+    <td><CopyableCode code="model_approval_status" /></td>
     <td><code>string</code></td>
     <td>The approval status of the model. This can be one of the following values. APPROVED - The model is approved REJECTED - The model is rejected. PENDING_MANUAL_APPROVAL - The model is waiting for manual approval. (Approved, Rejected, PendingManualApproval)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelLifeCycle" /></td>
+    <td><CopyableCode code="model_life_cycle" /></td>
     <td><code>object</code></td>
     <td>A structure describing the current state of the model in its life cycle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageArn" /></td>
+    <td><CopyableCode code="model_package_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model package. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-package/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageDescription" /></td>
+    <td><CopyableCode code="model_package_description" /></td>
     <td><code>string</code></td>
     <td>A brief description of the model package. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupName" /></td>
+    <td><CopyableCode code="model_package_group_name" /></td>
     <td><code>string</code></td>
     <td>If the model package is a versioned model, the model group that the versioned model belongs to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageName" /></td>
+    <td><CopyableCode code="model_package_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model package. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageRegistrationType" /></td>
+    <td><CopyableCode code="model_package_registration_type" /></td>
     <td><code>string</code></td>
     <td>The package registration type of the model package summary. (Logged, Registered)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageStatus" /></td>
+    <td><CopyableCode code="model_package_status" /></td>
     <td><code>string</code></td>
     <td>The overall status of the model package. (Pending, InProgress, Completed, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageVersion" /></td>
+    <td><CopyableCode code="model_package_version" /></td>
     <td><code>integer</code></td>
     <td>If the model package is a versioned model, the version of the model.</td>
 </tr>
@@ -368,38 +368,38 @@ Returns a description of the specified model package, which is used to create Sa
 
 ```sql
 SELECT
-AdditionalInferenceSpecifications,
-ApprovalDescription,
-CertifyForMarketplace,
-CreatedBy,
-CreationTime,
-CustomerMetadataProperties,
-Domain,
-DriftCheckBaselines,
-InferenceSpecification,
-LastModifiedBy,
-LastModifiedTime,
-ManagedStorageType,
-MetadataProperties,
-ModelApprovalStatus,
-ModelCard,
-ModelLifeCycle,
-ModelMetrics,
-ModelPackageArn,
-ModelPackageDescription,
-ModelPackageGroupName,
-ModelPackageName,
-ModelPackageRegistrationType,
-ModelPackageStatus,
-ModelPackageStatusDetails,
-ModelPackageVersion,
-SamplePayloadUrl,
-SecurityConfig,
-SkipModelValidation,
-SourceAlgorithmSpecification,
-SourceUri,
-Task,
-ValidationSpecification
+additional_inference_specifications,
+approval_description,
+certify_for_marketplace,
+created_by,
+creation_time,
+customer_metadata_properties,
+domain,
+drift_check_baselines,
+inference_specification,
+last_modified_by,
+last_modified_time,
+managed_storage_type,
+metadata_properties,
+model_approval_status,
+model_card,
+model_life_cycle,
+model_metrics,
+model_package_arn,
+model_package_description,
+model_package_group_name,
+model_package_name,
+model_package_registration_type,
+model_package_status,
+model_package_status_details,
+model_package_version,
+sample_payload_url,
+security_config,
+skip_model_validation,
+source_algorithm_specification,
+source_uri,
+task,
+validation_specification
 FROM aws.sagemaker.model_packages
 WHERE region = '{{ region }}' -- required
 ;
@@ -411,16 +411,16 @@ Lists the model packages that have been created.
 
 ```sql
 SELECT
-CreationTime,
-ModelApprovalStatus,
-ModelLifeCycle,
-ModelPackageArn,
-ModelPackageDescription,
-ModelPackageGroupName,
-ModelPackageName,
-ModelPackageRegistrationType,
-ModelPackageStatus,
-ModelPackageVersion
+creation_time,
+model_approval_status,
+model_life_cycle,
+model_package_arn,
+model_package_description,
+model_package_group_name,
+model_package_name,
+model_package_registration_type,
+model_package_status,
+model_package_version
 FROM aws.sagemaker.model_packages
 WHERE region = '{{ region }}' -- required
 ;
@@ -499,7 +499,7 @@ SELECT
 '{{ ManagedStorageType }}',
 '{{ region }}'
 RETURNING
-ModelPackageArn
+model_package_arn
 ;
 ```
 </TabItem>
@@ -831,7 +831,7 @@ WHERE
 region = '{{ region }}' --required
 AND ModelPackageArn = '{{ ModelPackageArn }}' --required
 RETURNING
-ModelPackageArn;
+model_package_arn;
 ```
 </TabItem>
 </Tabs>

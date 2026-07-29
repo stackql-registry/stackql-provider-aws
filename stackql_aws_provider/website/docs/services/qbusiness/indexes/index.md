@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business application associated with the index. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capacityConfiguration" /></td>
+    <td><CopyableCode code="capacity_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides information about index capacity configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business index was created.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the Amazon Q Business index. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Q Business index. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentAttributeConfigurations" /></td>
+    <td><CopyableCode code="document_attribute_configurations" /></td>
     <td><code>array</code></td>
     <td>Configuration information for document attributes or metadata. Document metadata are fields associated with your documents. For example, the company department name associated with each document. For more information, see Understanding document attributes.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
     <td>Provides information about a Amazon Q Business request error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexArn" /></td>
+    <td><CopyableCode code="index_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q Business index. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexId" /></td>
+    <td><CopyableCode code="index_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business index. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexStatistics" /></td>
+    <td><CopyableCode code="index_statistics" /></td>
     <td><code>object</code></td>
     <td>Provides information about the number of documents indexed.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of index attached to your Amazon Q Business application. (ENTERPRISE, STARTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the Amazon Q Business index was last updated.</td>
 </tr>
@@ -210,19 +210,19 @@ Gets information about an existing Amazon Q Business index.
 
 ```sql
 SELECT
-applicationId,
-capacityConfiguration,
-createdAt,
+application_id,
+capacity_configuration,
+created_at,
 description,
-displayName,
-documentAttributeConfigurations,
+display_name,
+document_attribute_configurations,
 error,
-indexArn,
-indexId,
-indexStatistics,
+index_arn,
+index_id,
+index_statistics,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.qbusiness.indexes
 WHERE application_id = '{{ application_id }}' -- required
 AND index_id = '{{ index_id }}' -- required
@@ -267,8 +267,8 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-indexArn,
-indexId
+index_arn,
+index_id
 ;
 ```
 </TabItem>

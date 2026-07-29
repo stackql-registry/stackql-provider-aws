@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application. (pattern: &lt;code&gt;^app-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccountId" /></td>
+    <td><CopyableCode code="created_by_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the service creator. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the service is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the service. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_\s\.\!\*\#\@\'&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The endpoint type of the service. (LAMBDA, URL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the service resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LambdaEndpoint" /></td>
+    <td><CopyableCode code="lambda_endpoint" /></td>
     <td><code>object</code></td>
     <td>The configuration for the Lambda endpoint type. The Arn is the Amazon Resource Name (ARN) of the Lambda function associated with this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the service was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the service. (pattern: &lt;code&gt;^(?!svc-)&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9-_ &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the service owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the service. (pattern: &lt;code&gt;^svc-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the service. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the service. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key-value pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UrlEndpoint" /></td>
+    <td><CopyableCode code="url_endpoint" /></td>
     <td><code>object</code></td>
     <td>The configuration for the URL endpoint type. The Url isthe URL of the endpoint type. The HealthUrl is the health check URL of the endpoint type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC). (pattern: &lt;code&gt;^vpc-&#91;-a-f0-9&#93;&#123;8&#125;(&#91;-a-f0-9&#93;&#123;9&#125;)?$&lt;/code&gt;)</td>
 </tr>
@@ -150,87 +150,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^app-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccountId" /></td>
+    <td><CopyableCode code="created_by_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the service creator. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the service is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the service. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_\s\.\!\*\#\@\'&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The endpoint type of the service. (LAMBDA, URL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the service resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LambdaEndpoint" /></td>
+    <td><CopyableCode code="lambda_endpoint" /></td>
     <td><code>object</code></td>
     <td>A summary of the configuration for the Lambda endpoint type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the service was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the service. (pattern: &lt;code&gt;^(?!svc-)&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9-_ &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the service owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the service. (pattern: &lt;code&gt;^svc-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the service. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UrlEndpoint" /></td>
+    <td><CopyableCode code="url_endpoint" /></td>
     <td><code>object</code></td>
     <td>The summary of the configuration for the URL endpoint type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC). (pattern: &lt;code&gt;^vpc-&#91;-a-f0-9&#93;&#123;8&#125;(&#91;-a-f0-9&#93;&#123;9&#125;)?$&lt;/code&gt;)</td>
 </tr>
@@ -346,23 +346,23 @@ Gets an Amazon Web Services Migration Hub Refactor Spaces service.
 
 ```sql
 SELECT
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-Description,
-EndpointType,
-EnvironmentId,
-Error,
-LambdaEndpoint,
-LastUpdatedTime,
-Name,
-OwnerAccountId,
-ServiceId,
-State,
-Tags,
-UrlEndpoint,
-VpcId
+application_id,
+arn,
+created_by_account_id,
+created_time,
+description,
+endpoint_type,
+environment_id,
+error,
+lambda_endpoint,
+last_updated_time,
+name,
+owner_account_id,
+service_id,
+state,
+tags,
+url_endpoint,
+vpc_id
 FROM aws.migration_hub_refactor_spaces.services
 WHERE application_identifier = '{{ application_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required
@@ -377,23 +377,23 @@ Lists all the Amazon Web Services Migration Hub Refactor Spaces services within 
 
 ```sql
 SELECT
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-Description,
-EndpointType,
-EnvironmentId,
-Error,
-LambdaEndpoint,
-LastUpdatedTime,
-Name,
-OwnerAccountId,
-ServiceId,
-State,
-Tags,
-UrlEndpoint,
-VpcId
+application_id,
+arn,
+created_by_account_id,
+created_time,
+description,
+endpoint_type,
+environment_id,
+error,
+lambda_endpoint,
+last_updated_time,
+name,
+owner_account_id,
+service_id,
+state,
+tags,
+url_endpoint,
+vpc_id
 FROM aws.migration_hub_refactor_spaces.services
 WHERE application_identifier = '{{ application_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required
@@ -446,22 +446,22 @@ SELECT
 '{{ environment_identifier }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-Description,
-EndpointType,
-EnvironmentId,
-LambdaEndpoint,
-LastUpdatedTime,
-Name,
-OwnerAccountId,
-ServiceId,
-State,
-Tags,
-UrlEndpoint,
-VpcId
+application_id,
+arn,
+created_by_account_id,
+created_time,
+description,
+endpoint_type,
+environment_id,
+lambda_endpoint,
+last_updated_time,
+name,
+owner_account_id,
+service_id,
+state,
+tags,
+url_endpoint,
+vpc_id
 ;
 ```
 </TabItem>

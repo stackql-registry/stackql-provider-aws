@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="areAllComponentsReturned" /></td>
+    <td><CopyableCode code="are_all_components_returned" /></td>
     <td><code>boolean</code></td>
     <td>This flag notes whether all components are returned in the API response. The maximum number of components returned is 30.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>An object that maps strings to the components in the entity. Each string in the mapping must be unique to this object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the entity was created.</td>
 </tr>
@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the entity. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityId" /></td>
+    <td><CopyableCode code="entity_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the entity. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;|^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityName" /></td>
+    <td><CopyableCode code="entity_name" /></td>
     <td><code>string</code></td>
     <td>The name of the entity. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hasChildEntities" /></td>
+    <td><CopyableCode code="has_child_entities" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that specifies whether the entity has associated child entities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentEntityId" /></td>
+    <td><CopyableCode code="parent_entity_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the parent entity for this entity. (pattern: &lt;code&gt;\$ROOT|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;|^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncSource" /></td>
+    <td><CopyableCode code="sync_source" /></td>
     <td><code>string</code></td>
     <td>The syncSource of the sync job, if this entity was created by a sync job. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the entity was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workspace. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="entitySummaries" /></td>
+    <td><CopyableCode code="entity_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain information about the entities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -248,19 +248,19 @@ Retrieves information about an entity.
 
 ```sql
 SELECT
-areAllComponentsReturned,
+are_all_components_returned,
 arn,
 components,
-creationDateTime,
+creation_date_time,
 description,
-entityId,
-entityName,
-hasChildEntities,
-parentEntityId,
+entity_id,
+entity_name,
+has_child_entities,
+parent_entity_id,
 status,
-syncSource,
-updateDateTime,
-workspaceId
+sync_source,
+update_date_time,
+workspace_id
 FROM aws.iottwinmaker.entities
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND entity_id = '{{ entity_id }}' -- required
@@ -274,8 +274,8 @@ Lists all entities in a workspace.
 
 ```sql
 SELECT
-entitySummaries,
-nextToken
+entity_summaries,
+next_token
 FROM aws.iottwinmaker.entities
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -322,8 +322,8 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-creationDateTime,
-entityId,
+creation_date_time,
+entity_id,
 state
 ;
 ```
@@ -385,7 +385,7 @@ AND entity_id = '{{ entity_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 state,
-updateDateTime;
+update_date_time;
 ```
 </TabItem>
 </Tabs>

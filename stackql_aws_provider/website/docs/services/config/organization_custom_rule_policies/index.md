@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyText" /></td>
+    <td><CopyableCode code="policy_text" /></td>
     <td><code>string</code></td>
     <td>The policy definition containing the logic for your organization Config Custom Policy rule.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the policy definition containing the logic for your organization Config 
 
 ```sql
 SELECT
-PolicyText
+policy_text
 FROM aws.config.organization_custom_rule_policies
 WHERE region = '{{ region }}' -- required
 ;

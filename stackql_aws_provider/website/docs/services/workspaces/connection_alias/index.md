@@ -126,7 +126,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AliasId
+alias_id
 ;
 ```
 </TabItem>
@@ -177,7 +177,7 @@ region = '{{ region }}' --required
 AND AliasId = '{{ AliasId }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
 RETURNING
-ConnectionIdentifier;
+connection_identifier;
 ```
 </TabItem>
 <TabItem value="disassociate_connection_alias">

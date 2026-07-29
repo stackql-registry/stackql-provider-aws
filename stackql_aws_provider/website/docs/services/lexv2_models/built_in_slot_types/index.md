@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="builtInSlotTypeSummaries" /></td>
+    <td><CopyableCode code="built_in_slot_type_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the built-in slot types that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter of the request. If there are more slot types available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The language and locale of the slot types in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListBuiltInSlotTypes operation. If the nextToken field is present, you send the contents as the nextToken parameter of a LIstBuiltInSlotTypes operation request to get the next page of results.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets a list of built-in slot types that meet the specified criteria.
 
 ```sql
 SELECT
-builtInSlotTypeSummaries,
-localeId,
-nextToken
+built_in_slot_type_summaries,
+locale_id,
+next_token
 FROM aws.lexv2_models.built_in_slot_types
 WHERE locale_id = '{{ locale_id }}' -- required
 AND region = '{{ region }}' -- required

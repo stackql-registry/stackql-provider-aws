@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The rule ARN.</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The rule ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleDisabled" /></td>
+    <td><CopyableCode code="rule_disabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the rule is disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the rule. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="topicPattern" /></td>
+    <td><CopyableCode code="topic_pattern" /></td>
     <td><code>string</code></td>
     <td>The pattern for the topic names that apply.</td>
 </tr>
@@ -236,7 +236,7 @@ Gets information about the rule. Requires permission to access the GetTopicRule 
 ```sql
 SELECT
 rule,
-ruleArn
+rule_arn
 FROM aws.iot.topic_rules
 WHERE rule_name = '{{ rule_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -249,11 +249,11 @@ Lists the rules for the specific topic. Requires permission to access the ListTo
 
 ```sql
 SELECT
-createdAt,
-ruleArn,
-ruleDisabled,
-ruleName,
-topicPattern
+created_at,
+rule_arn,
+rule_disabled,
+rule_name,
+topic_pattern
 FROM aws.iot.topic_rules
 WHERE region = '{{ region }}' -- required
 AND topic = '{{ topic }}'

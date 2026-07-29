@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>Recording-configuration ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:recording-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConfiguration" /></td>
+    <td><CopyableCode code="destination_configuration" /></td>
     <td><code>object</code></td>
     <td>A complex type that describes a location where recorded videos will be stored. Each member represents a type of destination configuration. For recording, you define one and only one type of destination configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordingReconnectWindowSeconds" /></td>
+    <td><CopyableCode code="recording_reconnect_window_seconds" /></td>
     <td><code>integer</code></td>
     <td>If a broadcast disconnects and then reconnects within the specified interval, the multiple streams will be considered a single broadcast and merged together. Default: 0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="renditionConfiguration" /></td>
+    <td><CopyableCode code="rendition_configuration" /></td>
     <td><code>object</code></td>
     <td>Object that describes which renditions should be recorded for a stream.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags attached to the resource. Array of 1-50 maps, each of the form string:string (key:value). See Best practices and strategies in Tagging Amazon Web Services Resources and Tag Editor for details, including restrictions that apply to tags and "Tag naming limits and requirements"; Amazon IVS has no service-specific constraints beyond what is documented there.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thumbnailConfiguration" /></td>
+    <td><CopyableCode code="thumbnail_configuration" /></td>
     <td><code>object</code></td>
     <td>An object representing a configuration of thumbnails for recorded video.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>Recording-configuration ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:recording-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConfiguration" /></td>
+    <td><CopyableCode code="destination_configuration" /></td>
     <td><code>object</code></td>
     <td>A complex type that describes a location where recorded videos will be stored. Each member represents a type of destination configuration. For recording, you define one and only one type of destination configuration.</td>
 </tr>
@@ -218,12 +218,12 @@ Gets the recording configuration for the specified ARN.
 SELECT
 name,
 arn,
-destinationConfiguration,
-recordingReconnectWindowSeconds,
-renditionConfiguration,
+destination_configuration,
+recording_reconnect_window_seconds,
+rendition_configuration,
 state,
 tags,
-thumbnailConfiguration
+thumbnail_configuration
 FROM aws.ivs.recording_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -237,7 +237,7 @@ Gets summary information about all recording configurations in your account, in 
 SELECT
 name,
 arn,
-destinationConfiguration,
+destination_configuration,
 state,
 tags
 FROM aws.ivs.recording_configurations
@@ -280,7 +280,7 @@ SELECT
 '{{ renditionConfiguration }}',
 '{{ region }}'
 RETURNING
-recordingConfiguration
+recording_configuration
 ;
 ```
 </TabItem>

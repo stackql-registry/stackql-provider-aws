@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceVersion" /></td>
+    <td><CopyableCode code="namespace_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the user's namespace to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackingNamespaceName" /></td>
+    <td><CopyableCode code="tracking_namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the public namespace that the latest namespace version is tracking.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackingNamespaceVersion" /></td>
+    <td><CopyableCode code="tracking_namespace_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the public namespace that the latest version is tracking.</td>
 </tr>
@@ -146,11 +146,11 @@ Gets the latest version of the user's namespace and the public version that it i
 
 ```sql
 SELECT
-namespaceArn,
-namespaceName,
-namespaceVersion,
-trackingNamespaceName,
-trackingNamespaceVersion
+namespace_arn,
+namespace_name,
+namespace_version,
+tracking_namespace_name,
+tracking_namespace_version
 FROM aws.iotthingsgraph.namespaces
 WHERE region = '{{ region }}' -- required
 ;

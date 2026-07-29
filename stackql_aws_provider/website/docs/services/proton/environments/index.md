@@ -61,27 +61,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="codebuildRoleArn" /></td>
+    <td><CopyableCode code="codebuild_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role that allows Proton to provision infrastructure using CodeBuild-based provisioning on your behalf. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):iam::\d&#123;12&#125;:role/(&#91;\w+=,.@-&#93;&#123;1,512&#125;&#91;/:&#93;)*(&#91;\w+=,.@-&#93;&#123;1,64&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentRoleArn" /></td>
+    <td><CopyableCode code="component_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role that Proton uses when provisioning directly defined components in this environment. It determines the scope of infrastructure that a component can provision. The environment must have a componentRoleArn to allow directly defined components to be associated with the environment. For more information about components, see Proton components in the Proton User Guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):iam::\d&#123;12&#125;:role/(&#91;\w+=,.@-&#93;&#123;1,512&#125;&#91;/:&#93;)*(&#91;\w+=,.@-&#93;&#123;1,64&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The environment deployment status. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>An environment deployment status message.</td>
 </tr>
@@ -91,37 +91,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentAccountConnectionId" /></td>
+    <td><CopyableCode code="environment_account_connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment account connection that's used to provision infrastructure resources in an environment account. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentAccountId" /></td>
+    <td><CopyableCode code="environment_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment account that the environment infrastructure resources are provisioned in. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment of this environment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentAttemptedAt" /></td>
+    <td><CopyableCode code="last_deployment_attempted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a deployment of the environment was last attempted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentSucceededAt" /></td>
+    <td><CopyableCode code="last_deployment_succeeded_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment was last deployed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment of this environment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protonServiceRoleArn" /></td>
+    <td><CopyableCode code="proton_service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Proton service role that allows Proton to make calls to other services on your behalf. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -131,7 +131,7 @@ The following fields are returned by `SELECT` queries:
     <td>When included, indicates that the environment template is for customer provisioned and managed infrastructure. (CUSTOMER_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningRepository" /></td>
+    <td><CopyableCode code="provisioning_repository" /></td>
     <td><code>object</code></td>
     <td>The linked repository that you use to host your rendered infrastructure templates for self-managed provisioning. A linked repository is a repository that has been registered with Proton. For more information, see CreateRepository.</td>
 </tr>
@@ -141,17 +141,17 @@ The following fields are returned by `SELECT` queries:
     <td>The environment spec.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMajorVersion" /></td>
+    <td><CopyableCode code="template_major_version" /></td>
     <td><code>string</code></td>
     <td>The major version of the environment template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMinorVersion" /></td>
+    <td><CopyableCode code="template_minor_version" /></td>
     <td><code>string</code></td>
     <td>The minor version of the environment template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the environment template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -180,22 +180,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentRoleArn" /></td>
+    <td><CopyableCode code="component_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role that Proton uses when provisioning directly defined components in this environment. It determines the scope of infrastructure that a component can provision. The environment must have a componentRoleArn to allow directly defined components to be associated with the environment. For more information about components, see Proton components in the Proton User Guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The environment deployment status. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>An environment deployment status message.</td>
 </tr>
@@ -205,37 +205,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentAccountConnectionId" /></td>
+    <td><CopyableCode code="environment_account_connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment account connection that the environment is associated with. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentAccountId" /></td>
+    <td><CopyableCode code="environment_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment account that the environment infrastructure resources are provisioned in. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment of this environment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentAttemptedAt" /></td>
+    <td><CopyableCode code="last_deployment_attempted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a deployment of the environment was last attempted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentSucceededAt" /></td>
+    <td><CopyableCode code="last_deployment_succeeded_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the environment was last deployed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment of this environment. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protonServiceRoleArn" /></td>
+    <td><CopyableCode code="proton_service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Proton service role that allows Proton to make calls to other services on your behalf. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov):&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;*:\d&#123;12&#125;:(&#91;\w+=,.@-&#93;+&#91;/:&#93;)*&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -245,17 +245,17 @@ The following fields are returned by `SELECT` queries:
     <td>When included, indicates that the environment template is for customer provisioned and managed infrastructure. (CUSTOMER_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMajorVersion" /></td>
+    <td><CopyableCode code="template_major_version" /></td>
     <td><code>string</code></td>
     <td>The major version of the environment template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMinorVersion" /></td>
+    <td><CopyableCode code="template_minor_version" /></td>
     <td><code>string</code></td>
     <td>The minor version of the environment template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -376,25 +376,25 @@ Get detailed data for an environment.
 SELECT
 name,
 arn,
-codebuildRoleArn,
-componentRoleArn,
-createdAt,
-deploymentStatus,
-deploymentStatusMessage,
+codebuild_role_arn,
+component_role_arn,
+created_at,
+deployment_status,
+deployment_status_message,
 description,
-environmentAccountConnectionId,
-environmentAccountId,
-lastAttemptedDeploymentId,
-lastDeploymentAttemptedAt,
-lastDeploymentSucceededAt,
-lastSucceededDeploymentId,
-protonServiceRoleArn,
+environment_account_connection_id,
+environment_account_id,
+last_attempted_deployment_id,
+last_deployment_attempted_at,
+last_deployment_succeeded_at,
+last_succeeded_deployment_id,
+proton_service_role_arn,
 provisioning,
-provisioningRepository,
+provisioning_repository,
 spec,
-templateMajorVersion,
-templateMinorVersion,
-templateName
+template_major_version,
+template_minor_version,
+template_name
 FROM aws.proton.environments
 WHERE region = '{{ region }}' -- required
 ;
@@ -408,22 +408,22 @@ List environments with detail data summaries.
 SELECT
 name,
 arn,
-componentRoleArn,
-createdAt,
-deploymentStatus,
-deploymentStatusMessage,
+component_role_arn,
+created_at,
+deployment_status,
+deployment_status_message,
 description,
-environmentAccountConnectionId,
-environmentAccountId,
-lastAttemptedDeploymentId,
-lastDeploymentAttemptedAt,
-lastDeploymentSucceededAt,
-lastSucceededDeploymentId,
-protonServiceRoleArn,
+environment_account_connection_id,
+environment_account_id,
+last_attempted_deployment_id,
+last_deployment_attempted_at,
+last_deployment_succeeded_at,
+last_succeeded_deployment_id,
+proton_service_role_arn,
 provisioning,
-templateMajorVersion,
-templateMinorVersion,
-templateName
+template_major_version,
+template_minor_version,
+template_name
 FROM aws.proton.environments
 WHERE region = '{{ region }}' -- required
 ;

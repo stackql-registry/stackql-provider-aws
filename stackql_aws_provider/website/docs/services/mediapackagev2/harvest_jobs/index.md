@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the harvest job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel group containing the channel associated with the harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel associated with the harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the harvest job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the harvest job, if provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The S3 destination where the harvested content is being placed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current version of the harvest job. Used for concurrency control. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message if the harvest job encountered any issues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HarvestJobName" /></td>
+    <td><CopyableCode code="harvest_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HarvestedManifests" /></td>
+    <td><CopyableCode code="harvested_manifests" /></td>
     <td><code>object</code></td>
     <td>A list of manifests that are being or have been harvested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the harvest job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginEndpointName" /></td>
+    <td><CopyableCode code="origin_endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the origin endpoint associated with the harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleConfiguration" /></td>
+    <td><CopyableCode code="schedule_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for when the harvest job is scheduled to run, including start and end times.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the harvest job (e.g., QUEUED, IN_PROGRESS, CANCELLED, COMPLETED, FAILED). (QUEUED, IN_PROGRESS, CANCELLED, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of tags associated with the harvest job.</td>
 </tr>
@@ -140,72 +140,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the harvest job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel group containing the channel associated with this harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel associated with this harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the harvest job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description of the harvest job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The configuration for the destination where the harvested content will be exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current version of the harvest job. Used for concurrency control. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message if the harvest job encountered any issues.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HarvestJobName" /></td>
+    <td><CopyableCode code="harvest_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HarvestedManifests" /></td>
+    <td><CopyableCode code="harvested_manifests" /></td>
     <td><code>object</code></td>
     <td>A collection of harvested manifests of different types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the harvest job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginEndpointName" /></td>
+    <td><CopyableCode code="origin_endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the origin endpoint associated with this harvest job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleConfiguration" /></td>
+    <td><CopyableCode code="schedule_configuration" /></td>
     <td><code>object</code></td>
     <td>Defines the schedule configuration for a harvest job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the harvest job (e.g., QUEUED, IN_PROGRESS, CANCELLED, COMPLETED, FAILED). (QUEUED, IN_PROGRESS, CANCELLED, COMPLETED, FAILED)</td>
 </tr>
@@ -339,21 +339,21 @@ Retrieves the details of a specific harvest job.
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-ChannelName,
-CreatedAt,
-Description,
-Destination,
-ETag,
-ErrorMessage,
-HarvestJobName,
-HarvestedManifests,
-ModifiedAt,
-OriginEndpointName,
-ScheduleConfiguration,
-Status,
-Tags
+arn,
+channel_group_name,
+channel_name,
+created_at,
+description,
+destination,
+e_tag,
+error_message,
+harvest_job_name,
+harvested_manifests,
+modified_at,
+origin_endpoint_name,
+schedule_configuration,
+status,
+tags
 FROM aws.mediapackagev2.harvest_jobs
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND channel_name = '{{ channel_name }}' -- required
@@ -369,20 +369,20 @@ Retrieves a list of harvest jobs that match the specified criteria.
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-ChannelName,
-CreatedAt,
-Description,
-Destination,
-ETag,
-ErrorMessage,
-HarvestJobName,
-HarvestedManifests,
-ModifiedAt,
-OriginEndpointName,
-ScheduleConfiguration,
-Status
+arn,
+channel_group_name,
+channel_name,
+created_at,
+description,
+destination,
+e_tag,
+error_message,
+harvest_job_name,
+harvested_manifests,
+modified_at,
+origin_endpoint_name,
+schedule_configuration,
+status
 FROM aws.mediapackagev2.harvest_jobs
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -437,21 +437,21 @@ SELECT
 '{{ region }}',
 '{{ x-amzn-client-token }}'
 RETURNING
-Arn,
-ChannelGroupName,
-ChannelName,
-CreatedAt,
-Description,
-Destination,
-ETag,
-ErrorMessage,
-HarvestJobName,
-HarvestedManifests,
-ModifiedAt,
-OriginEndpointName,
-ScheduleConfiguration,
-Status,
-Tags
+arn,
+channel_group_name,
+channel_name,
+created_at,
+description,
+destination,
+e_tag,
+error_message,
+harvest_job_name,
+harvested_manifests,
+modified_at,
+origin_endpoint_name,
+schedule_configuration,
+status,
+tags
 ;
 ```
 </TabItem>

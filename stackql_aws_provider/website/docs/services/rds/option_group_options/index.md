@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CopyableCrossAccount" /></td>
+    <td><CopyableCode code="copyable_cross_account" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the option can be copied across Amazon Web Services accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultPort" /></td>
+    <td><CopyableCode code="default_port" /></td>
     <td><code>integer</code></td>
     <td>If the option requires a port, specifies the default port for the option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineName" /></td>
+    <td><CopyableCode code="engine_name" /></td>
     <td><code>string</code></td>
     <td>The name of the engine that this option can be applied to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MajorEngineVersion" /></td>
+    <td><CopyableCode code="major_engine_version" /></td>
     <td><code>string</code></td>
     <td>Indicates the major engine version that the option is available for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumRequiredMinorEngineVersion" /></td>
+    <td><CopyableCode code="minimum_required_minor_engine_version" /></td>
     <td><code>string</code></td>
     <td>The minimum required engine version for the option to be applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupOptionSettings" /></td>
+    <td><CopyableCode code="option_group_option_settings" /></td>
     <td><code>string</code></td>
     <td>The option settings that are available (and the default value) for each option in an option group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupOptionVersions" /></td>
+    <td><CopyableCode code="option_group_option_versions" /></td>
     <td><code>string</code></td>
     <td>The versions that are available for the option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionsConflictsWith" /></td>
+    <td><CopyableCode code="options_conflicts_with" /></td>
     <td><code>string</code></td>
     <td>The options that conflict with this option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionsDependedOn" /></td>
+    <td><CopyableCode code="options_depended_on" /></td>
     <td><code>string</code></td>
     <td>The options that are prerequisites for this option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permanent" /></td>
+    <td><CopyableCode code="permanent" /></td>
     <td><code>boolean</code></td>
     <td>Permanent options can never be removed from an option group. An option group containing a permanent option can't be removed from a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Persistent" /></td>
+    <td><CopyableCode code="persistent" /></td>
     <td><code>boolean</code></td>
     <td>Persistent options can't be removed from an option group while DB instances are associated with the option group. If you disassociate all DB instances from the option group, your can remove the persistent option from the option group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortRequired" /></td>
+    <td><CopyableCode code="port_required" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the option requires a port.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequiresAutoMinorEngineVersionUpgrade" /></td>
+    <td><CopyableCode code="requires_auto_minor_engine_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>If true, you must enable the Auto Minor Version Upgrade setting for your DB instance before you can use this option. You can enable Auto Minor Version Upgrade when you first create your DB instance, or by modifying your DB instance later.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsOptionVersionDowngrade" /></td>
+    <td><CopyableCode code="supports_option_version_downgrade" /></td>
     <td><code>boolean</code></td>
     <td>If true, you can change the option to an earlier version of the option. This only applies to options that have different versions available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcOnly" /></td>
+    <td><CopyableCode code="vpc_only" /></td>
     <td><code>boolean</code></td>
     <td>If true, you can only use this option with a DB instance that is in a VPC.</td>
 </tr>
@@ -224,23 +224,23 @@ Describes all available options for the specified engine.
 
 ```sql
 SELECT
-CopyableCrossAccount,
-DefaultPort,
-Description,
-EngineName,
-MajorEngineVersion,
-MinimumRequiredMinorEngineVersion,
-Name,
-OptionGroupOptionSettings,
-OptionGroupOptionVersions,
-OptionsConflictsWith,
-OptionsDependedOn,
-Permanent,
-Persistent,
-PortRequired,
-RequiresAutoMinorEngineVersionUpgrade,
-SupportsOptionVersionDowngrade,
-VpcOnly
+copyable_cross_account,
+default_port,
+description,
+engine_name,
+major_engine_version,
+minimum_required_minor_engine_version,
+name,
+option_group_option_settings,
+option_group_option_versions,
+options_conflicts_with,
+options_depended_on,
+permanent,
+persistent,
+port_required,
+requires_auto_minor_engine_version_upgrade,
+supports_option_version_downgrade,
+vpc_only
 FROM aws.rds.option_group_options
 WHERE EngineName = '{{ EngineName }}' -- required
 AND region = '{{ region }}' -- required

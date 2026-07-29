@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the service setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the service setting was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedUser" /></td>
+    <td><CopyableCode code="last_modified_user" /></td>
     <td><code>string</code></td>
     <td>The ARN of the last modified user. This field is populated only if the setting value was overwritten.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SettingId" /></td>
+    <td><CopyableCode code="setting_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SettingValue" /></td>
+    <td><CopyableCode code="setting_value" /></td>
     <td><code>string</code></td>
     <td>The value of the service setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the service setting. The value can be Default, Customized or PendingUpdate. Default: The current setting uses a default value provisioned by the Amazon Web Services service team. Customized: The current setting use a custom value specified by the customer. PendingUpdate: The current setting uses a default or custom value, but a setting change request is pending approval.</td>
 </tr>
@@ -151,12 +151,12 @@ ServiceSetting is an account-level setting for an Amazon Web Services service. T
 
 ```sql
 SELECT
-ARN,
-LastModifiedDate,
-LastModifiedUser,
-SettingId,
-SettingValue,
-Status
+arn,
+last_modified_date,
+last_modified_user,
+setting_id,
+setting_value,
+status
 FROM aws.ssm.service_settings
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Access" /></td>
+    <td><CopyableCode code="access" /></td>
     <td><code>object</code></td>
     <td>The external identifier of the server that the access is attached to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerId" /></td>
+    <td><CopyableCode code="server_id" /></td>
     <td><code>string</code></td>
     <td>A system-assigned unique identifier for a server that has this access assigned. (pattern: &lt;code&gt;s-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -145,8 +145,8 @@ Describes the access that is assigned to the specific file transfer protocol-ena
 
 ```sql
 SELECT
-Access,
-ServerId
+access,
+server_id
 FROM aws.transfer.access
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,8 +191,8 @@ SELECT
 '{{ ExternalId }}' /* required */,
 '{{ region }}'
 RETURNING
-ExternalId,
-ServerId
+external_id,
+server_id
 ;
 ```
 </TabItem>
@@ -278,8 +278,8 @@ region = '{{ region }}' --required
 AND ServerId = '{{ ServerId }}' --required
 AND ExternalId = '{{ ExternalId }}' --required
 RETURNING
-ExternalId,
-ServerId;
+external_id,
+server_id;
 ```
 </TabItem>
 </Tabs>

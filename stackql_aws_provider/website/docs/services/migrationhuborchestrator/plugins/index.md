@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address at which the plugin is located. (pattern: &lt;code&gt;((&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#123;2&#125;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)\.)&#123;3&#125;(&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#123;2&#125;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pluginId" /></td>
+    <td><CopyableCode code="plugin_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the plugin. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredTime" /></td>
+    <td><CopyableCode code="registered_time" /></td>
     <td><code>string</code></td>
     <td>The time at which the plugin was registered.</td>
 </tr>
@@ -155,9 +155,9 @@ List AWS Migration Hub Orchestrator plugins.
 ```sql
 SELECT
 hostname,
-ipAddress,
-pluginId,
-registeredTime,
+ip_address,
+plugin_id,
+registered_time,
 status,
 version
 FROM aws.migrationhuborchestrator.plugins

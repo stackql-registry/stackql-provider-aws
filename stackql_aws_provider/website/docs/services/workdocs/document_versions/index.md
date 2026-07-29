@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomMetadata" /></td>
+    <td><CopyableCode code="custom_metadata" /></td>
     <td><code>object</code></td>
     <td>The custom metadata on the document version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>The version metadata.</td>
 </tr>
@@ -75,67 +75,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentCreatedTimestamp" /></td>
+    <td><CopyableCode code="content_created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the content of the document was originally created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentModifiedTimestamp" /></td>
+    <td><CopyableCode code="content_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the content of the document was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the document was first uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorId" /></td>
+    <td><CopyableCode code="creator_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the creator. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the version. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedTimestamp" /></td>
+    <td><CopyableCode code="modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the document was last uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the version. (pattern: &lt;code&gt;&#91;\u0020-\u202D\u202F-\uFFFF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Signature" /></td>
+    <td><CopyableCode code="signature" /></td>
     <td><code>string</code></td>
     <td>The signature of the document. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the document, in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>The source of the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the document. (INITIALIZED, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Thumbnail" /></td>
+    <td><CopyableCode code="thumbnail" /></td>
     <td><code>object</code></td>
     <td>The thumbnail of the document.</td>
 </tr>
@@ -278,8 +278,8 @@ Retrieves version metadata for the specified document.
 
 ```sql
 SELECT
-CustomMetadata,
-Metadata
+custom_metadata,
+metadata
 FROM aws.workdocs.document_versions
 WHERE document_id = '{{ document_id }}' -- required
 AND version_id = '{{ version_id }}' -- required
@@ -296,19 +296,19 @@ Retrieves the document versions for the specified document. By default, only act
 
 ```sql
 SELECT
-ContentCreatedTimestamp,
-ContentModifiedTimestamp,
-ContentType,
-CreatedTimestamp,
-CreatorId,
-Id,
-ModifiedTimestamp,
-Name,
-Signature,
-Size,
-Source,
-Status,
-Thumbnail
+content_created_timestamp,
+content_modified_timestamp,
+content_type,
+created_timestamp,
+creator_id,
+id,
+modified_timestamp,
+name,
+signature,
+size,
+source,
+status,
+thumbnail
 FROM aws.workdocs.document_versions
 WHERE document_id = '{{ document_id }}' -- required
 AND region = '{{ region }}' -- required

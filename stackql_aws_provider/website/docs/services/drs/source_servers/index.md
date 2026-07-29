@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>The version of the DRS agent installed on the source server (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,5&#125;.&#91;0-9&#93;&#123;1,5&#125;.&#91;0-9&#93;&#123;1,5&#125;(.&#91;0-9&#93;&#123;4&#125;.&#91;0-9&#93;&#123;3&#125;.&#91;0-9&#93;&#123;4&#125;)?&lt;/code&gt;)</td>
 </tr>
@@ -60,57 +60,57 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the Source Server. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataReplicationInfo" /></td>
+    <td><CopyableCode code="data_replication_info" /></td>
     <td><code>object</code></td>
     <td>The Data Replication Info of the Source Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastLaunchResult" /></td>
+    <td><CopyableCode code="last_launch_result" /></td>
     <td><code>string</code></td>
     <td>The status of the last recovery launch of this Source Server. (NOT_STARTED, PENDING, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifeCycle" /></td>
+    <td><CopyableCode code="life_cycle" /></td>
     <td><code>object</code></td>
     <td>The lifecycle information of this Source Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryInstanceId" /></td>
+    <td><CopyableCode code="recovery_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Recovery Instance associated with this Source Server. (pattern: &lt;code&gt;i-&#91;0-9a-fA-F&#93;&#123;8,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationDirection" /></td>
+    <td><CopyableCode code="replication_direction" /></td>
     <td><code>string</code></td>
     <td>Replication direction of the Source Server. (FAILOVER, FAILBACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reversedDirectionSourceServerArn" /></td>
+    <td><CopyableCode code="reversed_direction_source_server_arn" /></td>
     <td><code>string</code></td>
     <td>For EC2-originated Source Servers which have been failed over and then failed back, this value will mean the ARN of the Source Server on the opposite replication direction. (pattern: &lt;code&gt;arn:(?:&#91;0-9a-zA-Z_-&#93;+:)&#123;3&#125;(&#91;0-9&#93;&#123;12,&#125;):source-server/(s-&#91;0-9a-zA-Z&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceCloudProperties" /></td>
+    <td><CopyableCode code="source_cloud_properties" /></td>
     <td><code>object</code></td>
     <td>Source cloud properties of the Source Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceNetworkID" /></td>
+    <td><CopyableCode code="source_network_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Source Network which is protecting this Source Server's network. (pattern: &lt;code&gt;sn-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceProperties" /></td>
+    <td><CopyableCode code="source_properties" /></td>
     <td><code>object</code></td>
     <td>The source properties of the Source Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerID" /></td>
+    <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Source Server. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stagingArea" /></td>
+    <td><CopyableCode code="staging_area" /></td>
     <td><code>object</code></td>
     <td>The staging area of the source server.</td>
 </tr>
@@ -226,19 +226,19 @@ Lists all Source Servers or multiple Source Servers filtered by ID.
 
 ```sql
 SELECT
-agentVersion,
+agent_version,
 arn,
-dataReplicationInfo,
-lastLaunchResult,
-lifeCycle,
-recoveryInstanceId,
-replicationDirection,
-reversedDirectionSourceServerArn,
-sourceCloudProperties,
-sourceNetworkID,
-sourceProperties,
-sourceServerID,
-stagingArea,
+data_replication_info,
+last_launch_result,
+life_cycle,
+recovery_instance_id,
+replication_direction,
+reversed_direction_source_server_arn,
+source_cloud_properties,
+source_network_id,
+source_properties,
+source_server_id,
+staging_area,
 tags
 FROM aws.drs.source_servers
 WHERE region = '{{ region }}' -- required
@@ -272,7 +272,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-sourceServer
+source_server
 ;
 ```
 </TabItem>

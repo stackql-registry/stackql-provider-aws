@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExecutionRecords" /></td>
+    <td><CopyableCode code="execution_records" /></td>
     <td><code>array</code></td>
     <td>An array of test case execution record objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -154,8 +154,8 @@ Lists detailed steps of test case execution that includes all observations along
 
 ```sql
 SELECT
-ExecutionRecords,
-NextToken
+execution_records,
+next_token
 FROM aws.connect.test_case_execution_records
 WHERE instance_id = '{{ instance_id }}' -- required
 AND test_case_id = '{{ test_case_id }}' -- required

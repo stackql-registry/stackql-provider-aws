@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EmailTags" /></td>
+    <td><CopyableCode code="email_tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags, in the form of name/value pairs, that were applied to the email you sent, along with Amazon SES Auto-Tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FromEmailAddress" /></td>
+    <td><CopyableCode code="from_email_address" /></td>
     <td><code>string</code></td>
     <td>The from address used to send the message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Insights" /></td>
+    <td><CopyableCode code="insights" /></td>
     <td><code>array</code></td>
     <td>A set of insights associated with the message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageId" /></td>
+    <td><CopyableCode code="message_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subject" /></td>
+    <td><CopyableCode code="subject" /></td>
     <td><code>string</code></td>
     <td>The subject line of the message.</td>
 </tr>
@@ -144,11 +144,11 @@ Provides information about a specific message, including the from address, the s
 
 ```sql
 SELECT
-EmailTags,
-FromEmailAddress,
-Insights,
-MessageId,
-Subject
+email_tags,
+from_email_address,
+insights,
+message_id,
+subject
 FROM aws.sesv2.message_insights
 WHERE message_id = '{{ message_id }}' -- required
 AND region = '{{ region }}' -- required

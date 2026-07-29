@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the policy version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Document" /></td>
+    <td><CopyableCode code="document" /></td>
     <td><code>string</code></td>
     <td>The policy document. The policy document is returned in the response to the GetPolicyVersion and GetAccountAuthorizationDetails operations. It is not returned in the response to the CreatePolicyVersion or ListPolicyVersions operations. The policy document returned in this structure is URL-encoded compliant with RFC 3986. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the decode method of the java.net.URLDecoder utility class in the Java SDK. Other languages and SDKs provide similar functionality.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefaultVersion" /></td>
+    <td><CopyableCode code="is_default_version" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the policy version is set as the policy's default version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the policy version. Policy version identifiers always begin with v (always lowercase). When a policy is created, the first policy version is v1.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the policy version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Document" /></td>
+    <td><CopyableCode code="document" /></td>
     <td><code>string</code></td>
     <td>The policy document. The policy document is returned in the response to the GetPolicyVersion and GetAccountAuthorizationDetails operations. It is not returned in the response to the CreatePolicyVersion or ListPolicyVersions operations. The policy document returned in this structure is URL-encoded compliant with RFC 3986. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the decode method of the java.net.URLDecoder utility class in the Java SDK. Other languages and SDKs provide similar functionality.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefaultVersion" /></td>
+    <td><CopyableCode code="is_default_version" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the policy version is set as the policy's default version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the policy version. Policy version identifiers always begin with v (always lowercase). When a policy is created, the first policy version is v1.</td>
 </tr>
@@ -228,10 +228,10 @@ Retrieves information about the specified version of the specified managed polic
 
 ```sql
 SELECT
-CreateDate,
-Document,
-IsDefaultVersion,
-VersionId
+create_date,
+document,
+is_default_version,
+version_id
 FROM aws.iam.policy_versions
 WHERE PolicyArn = '{{ PolicyArn }}' -- required
 AND VersionId = '{{ VersionId }}' -- required
@@ -245,10 +245,10 @@ Lists information about the versions of the specified managed policy, including 
 
 ```sql
 SELECT
-CreateDate,
-Document,
-IsDefaultVersion,
-VersionId
+create_date,
+document,
+is_default_version,
+version_id
 FROM aws.iam.policy_versions
 WHERE PolicyArn = '{{ PolicyArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -286,10 +286,10 @@ SELECT
 '{{ region }}',
 '{{ SetAsDefault }}'
 RETURNING
-CreateDate,
-Document,
-IsDefaultVersion,
-VersionId
+create_date,
+document,
+is_default_version,
+version_id
 ;
 ```
 </TabItem>

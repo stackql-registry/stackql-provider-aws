@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The group identifier for this usage item. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="historicalUsage" /></td>
+    <td><CopyableCode code="historical_usage" /></td>
     <td><code>object</code></td>
     <td>Historical usage data associated with this item, if available.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The estimated usage quantity for this item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service code associated with this usage item. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of this usage item. (VALID, INVALID, STALE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageAccountId" /></td>
+    <td><CopyableCode code="usage_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with this usage item. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>The type of usage for this item. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -178,14 +178,14 @@ id,
 cost,
 currency,
 group,
-historicalUsage,
+historical_usage,
 location,
 operation,
 quantity,
-serviceCode,
+service_code,
 status,
-usageAccountId,
-usageType
+usage_account_id,
+usage_type
 FROM aws.bcm_pricing_calculator.workload_estimate_usages
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentArns" /></td>
+    <td><CopyableCode code="agent_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the DataSync agents deployed on your Outpost when using working with Amazon S3 on Outposts. For more information, see Deploy your DataSync agent on Outposts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the Amazon S3 location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon S3 location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URL of the Amazon S3 location that was described. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Config" /></td>
+    <td><CopyableCode code="s3_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that DataSync uses to access your S3 bucket. For more information, see Providing DataSync access to S3 buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3StorageClass" /></td>
+    <td><CopyableCode code="s3_storage_class" /></td>
     <td><code>string</code></td>
     <td>When Amazon S3 is a destination location, this is the storage class that you chose for your objects. Some storage classes have behaviors that can affect your Amazon S3 storage costs. For more information, see Storage class considerations with Amazon S3 transfers. (STANDARD, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, DEEP_ARCHIVE, OUTPOSTS, GLACIER_INSTANT_RETRIEVAL)</td>
 </tr>
@@ -158,12 +158,12 @@ Provides details about how an DataSync transfer location for an S3 bucket is con
 
 ```sql
 SELECT
-AgentArns,
-CreationTime,
-LocationArn,
-LocationUri,
-S3Config,
-S3StorageClass
+agent_arns,
+creation_time,
+location_arn,
+location_uri,
+s3_config,
+s3_storage_class
 FROM aws.datasync.location_s3s
 WHERE region = '{{ region }}' -- required
 ;
@@ -204,7 +204,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone that the HSM is in. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EniId" /></td>
+    <td><CopyableCode code="eni_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the elastic network interface (ENI) attached to the HSM. (pattern: &lt;code&gt;eni-&#91;0-9a-f&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EniIp" /></td>
+    <td><CopyableCode code="eni_ip" /></td>
     <td><code>string</code></td>
     <td>The IP address assigned to the HSM's ENI. (pattern: &lt;code&gt;\d&#123;1,3&#125;\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmArn" /></td>
+    <td><CopyableCode code="hsm_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that identifies an HSM. (pattern: &lt;code&gt;arn:aws(-iso)?:cloudhsm:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:hsm-&#91;0-9a-f&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmType" /></td>
+    <td><CopyableCode code="hsm_type" /></td>
     <td><code>string</code></td>
     <td>The HSM model type. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role assigned to the HSM. (pattern: &lt;code&gt;arn:aws(-iso)?:iam::&#91;0-9&#93;&#123;12&#125;:role/&#91;a-zA-Z0-9_\+=,\.\-@&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Partitions" /></td>
+    <td><CopyableCode code="partitions" /></td>
     <td><code>array</code></td>
     <td>The list of partitions on the HSM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The serial number of the HSM. (pattern: &lt;code&gt;\d&#123;1,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerCertLastUpdated" /></td>
+    <td><CopyableCode code="server_cert_last_updated" /></td>
     <td><code>string</code></td>
     <td>The date and time that the server certificate was last updated. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerCertUri" /></td>
+    <td><CopyableCode code="server_cert_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the certificate server. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareVersion" /></td>
+    <td><CopyableCode code="software_version" /></td>
     <td><code>string</code></td>
     <td>The HSM software version. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SshKeyLastUpdated" /></td>
+    <td><CopyableCode code="ssh_key_last_updated" /></td>
     <td><code>string</code></td>
     <td>The date and time that the SSH key was last updated. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SshPublicKey" /></td>
+    <td><CopyableCode code="ssh_public_key" /></td>
     <td><code>string</code></td>
     <td>The public SSH key. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/= ._:\\@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the HSM. (PENDING, RUNNING, UPDATING, SUSPENDED, TERMINATING, TERMINATED, DEGRADED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>Contains additional information about the status of the HSM. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the subnet that the HSM is in. (pattern: &lt;code&gt;subnet-&#91;0-9a-f&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionEndDate" /></td>
+    <td><CopyableCode code="subscription_end_date" /></td>
     <td><code>string</code></td>
     <td>The subscription end date. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionStartDate" /></td>
+    <td><CopyableCode code="subscription_start_date" /></td>
     <td><code>string</code></td>
     <td>The subscription start date. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionType" /></td>
+    <td><CopyableCode code="subscription_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the type of subscription for the HSM. PRODUCTION - The HSM is being used in a production environment. TRIAL - The HSM is being used in a product trial. (PRODUCTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VendorName" /></td>
+    <td><CopyableCode code="vendor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the HSM vendor. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the VPC that the HSM is in. (pattern: &lt;code&gt;vpc-&#91;0-9a-f&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
@@ -268,27 +268,27 @@ This is documentation for AWS CloudHSM Classic. For more information, see AWS Cl
 
 ```sql
 SELECT
-AvailabilityZone,
-EniId,
-EniIp,
-HsmArn,
-HsmType,
-IamRoleArn,
-Partitions,
-SerialNumber,
-ServerCertLastUpdated,
-ServerCertUri,
-SoftwareVersion,
-SshKeyLastUpdated,
-SshPublicKey,
-Status,
-StatusDetails,
-SubnetId,
-SubscriptionEndDate,
-SubscriptionStartDate,
-SubscriptionType,
-VendorName,
-VpcId
+availability_zone,
+eni_id,
+eni_ip,
+hsm_arn,
+hsm_type,
+iam_role_arn,
+partitions,
+serial_number,
+server_cert_last_updated,
+server_cert_uri,
+software_version,
+ssh_key_last_updated,
+ssh_public_key,
+status,
+status_details,
+subnet_id,
+subscription_end_date,
+subscription_start_date,
+subscription_type,
+vendor_name,
+vpc_id
 FROM aws.cloudhsm.hsms
 WHERE region = '{{ region }}' -- required
 ;
@@ -345,7 +345,7 @@ SELECT
 '{{ SyslogIp }}',
 '{{ region }}'
 RETURNING
-HsmArn
+hsm_arn
 ;
 ```
 </TabItem>
@@ -421,7 +421,7 @@ WHERE
 region = '{{ region }}' --required
 AND HsmArn = '{{ HsmArn }}' --required
 RETURNING
-HsmArn;
+hsm_arn;
 ```
 </TabItem>
 </Tabs>

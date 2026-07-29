@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttemptNumber" /></td>
+    <td><CopyableCode code="attempt_number" /></td>
     <td><code>integer</code></td>
     <td>The attempt number for this task instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationInSeconds" /></td>
+    <td><CopyableCode code="duration_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The duration of the task instance execution in seconds. This value is null if the task is not complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task instance completed execution, in ISO 8601 date-time format. This value is null if the task is not complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message if the task instance failed. This value is null if the task completed successfully. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogStream" /></td>
+    <td><CopyableCode code="log_stream" /></td>
     <td><code>string</code></td>
     <td>The CloudWatch log stream name for this task instance execution. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task instance was last modified, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatorName" /></td>
+    <td><CopyableCode code="operator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Apache Airflow operator used for this task instance. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workflow run that contains this task instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task instance started execution, in ISO 8601 date-time format. This value is null if the task has not started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the task instance. (QUEUED, FAILED, SCHEDULED, RUNNING, SUCCESS, UP_FOR_RESCHEDULE, UP_FOR_RETRY, UPSTREAM_FAILED, REMOVED, RESTARTING, DEFERRED, NONE, CANCELLED, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the task definition within the workflow. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskInstanceId" /></td>
+    <td><CopyableCode code="task_instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of this task instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow that contains this task instance. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:airflow-serverless:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;):(&#91;0-9&#93;&#123;12&#125;):workflow/(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\.\-_&#93;&#123;0,254&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowVersion" /></td>
+    <td><CopyableCode code="workflow_version" /></td>
     <td><code>string</code></td>
     <td>The version of the workflow that contains this task instance. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Xcom" /></td>
+    <td><CopyableCode code="xcom" /></td>
     <td><code>object</code></td>
     <td>Cross-communication data exchanged between tasks in the workflow execution.</td>
 </tr>
@@ -140,37 +140,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DurationInSeconds" /></td>
+    <td><CopyableCode code="duration_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The duration of the task instance execution in seconds. This value is null if the task is not complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatorName" /></td>
+    <td><CopyableCode code="operator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Apache Airflow operator used for this task instance. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workflow run that contains this task instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the task instance. (QUEUED, FAILED, SCHEDULED, RUNNING, SUCCESS, UP_FOR_RESCHEDULE, UP_FOR_RETRY, UPSTREAM_FAILED, REMOVED, RESTARTING, DEFERRED, NONE, CANCELLED, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskInstanceId" /></td>
+    <td><CopyableCode code="task_instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of this task instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow that contains this task instance. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:airflow-serverless:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;):(&#91;0-9&#93;&#123;12&#125;):workflow/(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\.\-_&#93;&#123;0,254&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowVersion" /></td>
+    <td><CopyableCode code="workflow_version" /></td>
     <td><code>string</code></td>
     <td>The version of the workflow that contains this task instance. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -247,21 +247,21 @@ Retrieves detailed information about a specific task instance within a workflow 
 
 ```sql
 SELECT
-AttemptNumber,
-DurationInSeconds,
-EndedAt,
-ErrorMessage,
-LogStream,
-ModifiedAt,
-OperatorName,
-RunId,
-StartedAt,
-Status,
-TaskId,
-TaskInstanceId,
-WorkflowArn,
-WorkflowVersion,
-Xcom
+attempt_number,
+duration_in_seconds,
+ended_at,
+error_message,
+log_stream,
+modified_at,
+operator_name,
+run_id,
+started_at,
+status,
+task_id,
+task_instance_id,
+workflow_arn,
+workflow_version,
+xcom
 FROM aws.mwaa_serverless.task_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -273,13 +273,13 @@ Lists all task instances for a specific workflow run, with optional pagination s
 
 ```sql
 SELECT
-DurationInSeconds,
-OperatorName,
-RunId,
-Status,
-TaskInstanceId,
-WorkflowArn,
-WorkflowVersion
+duration_in_seconds,
+operator_name,
+run_id,
+status,
+task_instance_id,
+workflow_arn,
+workflow_version
 FROM aws.mwaa_serverless.task_instances
 WHERE region = '{{ region }}' -- required
 ;

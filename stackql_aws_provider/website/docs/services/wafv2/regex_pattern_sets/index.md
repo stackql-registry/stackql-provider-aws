@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LockToken" /></td>
+    <td><CopyableCode code="lock_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-(?:&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexPatternSet" /></td>
+    <td><CopyableCode code="regex_pattern_set" /></td>
     <td><code>object</code></td>
     <td>Contains one or more regular expressions. WAF assigns an ARN to each RegexPatternSet that you create. To use a set in a rule, you provide the ARN to the Rule statement RegexPatternSetReferenceStatement.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexPatternSets" /></td>
+    <td><CopyableCode code="regex_pattern_sets" /></td>
     <td><code>array</code></td>
     <td>Array of regex pattern sets. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
@@ -178,8 +178,8 @@ Retrieves the specified RegexPatternSet.
 
 ```sql
 SELECT
-LockToken,
-RegexPatternSet
+lock_token,
+regex_pattern_set
 FROM aws.wafv2.regex_pattern_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,8 +191,8 @@ Retrieves an array of RegexPatternSetSummary objects for the regex pattern sets 
 
 ```sql
 SELECT
-NextMarker,
-RegexPatternSets
+next_marker,
+regex_pattern_sets
 FROM aws.wafv2.regex_pattern_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,7 +231,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Summary
+summary
 ;
 ```
 </TabItem>
@@ -302,7 +302,7 @@ AND Id = '{{ Id }}' --required
 AND RegularExpressionList = '{{ RegularExpressionList }}' --required
 AND LockToken = '{{ LockToken }}' --required
 RETURNING
-NextLockToken;
+next_lock_token;
 ```
 </TabItem>
 </Tabs>

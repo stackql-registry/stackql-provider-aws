@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when Voice ID identified the fraudster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain that contains the fraudster. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedFraudsterId" /></td>
+    <td><CopyableCode code="generated_fraudster_id" /></td>
     <td><code>string</code></td>
     <td>The service-generated identifier for the fraudster. (pattern: &lt;code&gt;^id#&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WatchlistIds" /></td>
+    <td><CopyableCode code="watchlist_ids" /></td>
     <td><code>array</code></td>
     <td>The identifier of the watchlists the fraudster is a part of.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the fraudster summary was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain that contains the fraudster summary. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedFraudsterId" /></td>
+    <td><CopyableCode code="generated_fraudster_id" /></td>
     <td><code>string</code></td>
     <td>The service-generated identifier for the fraudster. (pattern: &lt;code&gt;^id#&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WatchlistIds" /></td>
+    <td><CopyableCode code="watchlist_ids" /></td>
     <td><code>array</code></td>
     <td>The identifier of the watchlists the fraudster is a part of.</td>
 </tr>
@@ -205,10 +205,10 @@ Describes the specified fraudster.
 
 ```sql
 SELECT
-CreatedAt,
-DomainId,
-GeneratedFraudsterId,
-WatchlistIds
+created_at,
+domain_id,
+generated_fraudster_id,
+watchlist_ids
 FROM aws.voice_id.fraudsters
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,10 +220,10 @@ Lists all fraudsters in a specified watchlist or domain.
 
 ```sql
 SELECT
-CreatedAt,
-DomainId,
-GeneratedFraudsterId,
-WatchlistIds
+created_at,
+domain_id,
+generated_fraudster_id,
+watchlist_ids
 FROM aws.voice_id.fraudsters
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,7 +256,7 @@ AND DomainId = '{{ DomainId }}' --required
 AND FraudsterId = '{{ FraudsterId }}' --required
 AND WatchlistId = '{{ WatchlistId }}' --required
 RETURNING
-Fraudster;
+fraudster;
 ```
 </TabItem>
 </Tabs>

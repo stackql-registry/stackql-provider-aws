@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the Q App used for the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cardStatus" /></td>
+    <td><CopyableCode code="card_status" /></td>
     <td><code>object</code></td>
     <td>The current status for each card in the Q App session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestPublishedAppVersion" /></td>
+    <td><CopyableCode code="latest_published_app_version" /></td>
     <td><code>integer</code></td>
     <td>The latest published version of the Q App used for the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Q App session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Q App session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionName" /></td>
+    <td><CopyableCode code="session_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Q App session.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the Q App session. (IN_PROGRESS, WAITING, COMPLETED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userIsHost" /></td>
+    <td><CopyableCode code="user_is_host" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the current user is the owner of the Q App data collection session.</td>
 </tr>
@@ -178,14 +178,14 @@ Retrieves the current state and results for an active session of an Amazon Q App
 
 ```sql
 SELECT
-appVersion,
-cardStatus,
-latestPublishedAppVersion,
-sessionArn,
-sessionId,
-sessionName,
+app_version,
+card_status,
+latest_published_app_version,
+session_arn,
+session_id,
+session_name,
 status,
-userIsHost
+user_is_host
 FROM aws.qapps.q_app_sessions
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND sessionId = '{{ sessionId }}' -- required
@@ -218,8 +218,8 @@ WHERE
 AND region = '{{ region }}' --required
 AND sessionId = '{{ sessionId }}' --required
 RETURNING
-sessionArn,
-sessionId;
+session_arn,
+session_id;
 ```
 </TabItem>
 </Tabs>

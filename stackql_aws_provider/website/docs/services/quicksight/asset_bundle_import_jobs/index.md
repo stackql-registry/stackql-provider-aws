@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetBundleImportJobId" /></td>
+    <td><CopyableCode code="asset_bundle_import_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job. The job ID is set when you start a new job with a StartAssetBundleImportJob API call. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetBundleImportSource" /></td>
+    <td><CopyableCode code="asset_bundle_import_source" /></td>
     <td><code>object</code></td>
     <td>The source of the asset bundle zip file that contains the data that is imported by the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account the import job was executed in. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>An array of error records that describes any failures that occurred during the export job processing. Error records accumulate while the job is still running. The complete set of error records is available after the job has completed and failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureAction" /></td>
+    <td><CopyableCode code="failure_action" /></td>
     <td><code>string</code></td>
     <td>The failure action for the import job. (DO_NOTHING, ROLLBACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of a job through its queuing and execution. Poll the DescribeAssetBundleImport API until JobStatus returns one of the following values: SUCCESSFUL FAILED FAILED_ROLLBACK_COMPLETED FAILED_ROLLBACK_ERROR (QUEUED_FOR_IMMEDIATE_EXECUTION, IN_PROGRESS, SUCCESSFUL, FAILED, FAILED_ROLLBACK_IN_PROGRESS, FAILED_ROLLBACK_COMPLETED, FAILED_ROLLBACK_ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverrideParameters" /></td>
+    <td><CopyableCode code="override_parameters" /></td>
     <td><code>object</code></td>
     <td>Optional overrides that are applied to the resource configuration before import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverridePermissions" /></td>
+    <td><CopyableCode code="override_permissions" /></td>
     <td><code>object</code></td>
     <td>Optional permission overrides that are applied to the resource configuration before import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverrideTags" /></td>
+    <td><CopyableCode code="override_tags" /></td>
     <td><code>object</code></td>
     <td>Optional tag overrides that are applied to the resource configuration before import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverrideValidationStrategy" /></td>
+    <td><CopyableCode code="override_validation_strategy" /></td>
     <td><code>object</code></td>
     <td>An optional validation strategy override for all analyses and dashboards to be applied to the resource configuration before import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RollbackErrors" /></td>
+    <td><CopyableCode code="rollback_errors" /></td>
     <td><code>array</code></td>
     <td>An array of error records that describes any failures that occurred while an import job was attempting a rollback. Error records accumulate while the job is still running. The complete set of error records is available after the job has completed and failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>An array of warning records that describe all permitted errors that are encountered during the import job.</td>
 </tr>
@@ -145,27 +145,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetBundleImportJobId" /></td>
+    <td><CopyableCode code="asset_bundle_import_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job. This ID is unique while the job is running. After the job is completed, you can reuse this ID for another job. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureAction" /></td>
+    <td><CopyableCode code="failure_action" /></td>
     <td><code>string</code></td>
     <td>The failure action for the import job. (DO_NOTHING, ROLLBACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the import job. (QUEUED_FOR_IMMEDIATE_EXECUTION, IN_PROGRESS, SUCCESSFUL, FAILED, FAILED_ROLLBACK_IN_PROGRESS, FAILED_ROLLBACK_COMPLETED, FAILED_ROLLBACK_ERROR)</td>
 </tr>
@@ -269,22 +269,22 @@ Describes an existing import job. Poll job descriptions after starting a job to 
 
 ```sql
 SELECT
-Arn,
-AssetBundleImportJobId,
-AssetBundleImportSource,
-AwsAccountId,
-CreatedTime,
-Errors,
-FailureAction,
-JobStatus,
-OverrideParameters,
-OverridePermissions,
-OverrideTags,
-OverrideValidationStrategy,
-RequestId,
-RollbackErrors,
-Status,
-Warnings
+arn,
+asset_bundle_import_job_id,
+asset_bundle_import_source,
+aws_account_id,
+created_time,
+errors,
+failure_action,
+job_status,
+override_parameters,
+override_permissions,
+override_tags,
+override_validation_strategy,
+request_id,
+rollback_errors,
+status,
+warnings
 FROM aws.quicksight.asset_bundle_import_jobs
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND asset_bundle_import_job_id = '{{ asset_bundle_import_job_id }}' -- required
@@ -298,11 +298,11 @@ Lists all asset bundle import jobs that have taken place in the last 14 days. Jo
 
 ```sql
 SELECT
-Arn,
-AssetBundleImportJobId,
-CreatedTime,
-FailureAction,
-JobStatus
+arn,
+asset_bundle_import_job_id,
+created_time,
+failure_action,
+job_status
 FROM aws.quicksight.asset_bundle_import_jobs
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaselineIdentity" /></td>
+    <td><CopyableCode code="baseline_identity" /></td>
     <td><code>object</code></td>
     <td>Defines the basic information about a patch baseline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PatchGroup" /></td>
+    <td><CopyableCode code="patch_group" /></td>
     <td><code>string</code></td>
     <td>The name of the patch group registered with the patch baseline. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all patch groups that have been registered with patch baselines.
 
 ```sql
 SELECT
-BaselineIdentity,
-PatchGroup
+baseline_identity,
+patch_group
 FROM aws.ssm.patch_groups
 WHERE region = '{{ region }}' -- required
 ;

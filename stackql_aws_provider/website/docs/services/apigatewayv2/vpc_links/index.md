@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the VPC link was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>A list of security group IDs for the VPC link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>A list of subnet IDs to include in the VPC link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags for the VPC link.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcLinkId" /></td>
+    <td><CopyableCode code="vpc_link_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcLinkStatus" /></td>
+    <td><CopyableCode code="vpc_link_status" /></td>
     <td><code>string</code></td>
     <td>The status of the VPC link. (PENDING, AVAILABLE, DELETING, FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcLinkStatusMessage" /></td>
+    <td><CopyableCode code="vpc_link_status_message" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcLinkVersion" /></td>
+    <td><CopyableCode code="vpc_link_version" /></td>
     <td><code>string</code></td>
     <td>The version of the VPC link. (V2)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>A collection of VPC links.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page of elements from this collection. Not valid for the last element of the collection.</td>
 </tr>
@@ -228,15 +228,15 @@ Gets a VPC link.
 
 ```sql
 SELECT
-CreatedDate,
-Name,
-SecurityGroupIds,
-SubnetIds,
-Tags,
-VpcLinkId,
-VpcLinkStatus,
-VpcLinkStatusMessage,
-VpcLinkVersion
+created_date,
+name,
+security_group_ids,
+subnet_ids,
+tags,
+vpc_link_id,
+vpc_link_status,
+vpc_link_status_message,
+vpc_link_version
 FROM aws.apigatewayv2.vpc_links
 WHERE vpc_link_id = '{{ vpc_link_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -249,8 +249,8 @@ Gets a collection of VPC links.
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.apigatewayv2.vpc_links
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -289,15 +289,15 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreatedDate,
-Name,
-SecurityGroupIds,
-SubnetIds,
-Tags,
-VpcLinkId,
-VpcLinkStatus,
-VpcLinkStatusMessage,
-VpcLinkVersion
+created_date,
+name,
+security_group_ids,
+subnet_ids,
+tags,
+vpc_link_id,
+vpc_link_status,
+vpc_link_status_message,
+vpc_link_version
 ;
 ```
 </TabItem>
@@ -353,15 +353,15 @@ WHERE
 vpc_link_id = '{{ vpc_link_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreatedDate,
-Name,
-SecurityGroupIds,
-SubnetIds,
-Tags,
-VpcLinkId,
-VpcLinkStatus,
-VpcLinkStatusMessage,
-VpcLinkVersion;
+created_date,
+name,
+security_group_ids,
+subnet_ids,
+tags,
+vpc_link_id,
+vpc_link_status,
+vpc_link_status_message,
+vpc_link_version;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ecsServiceRecommendations" /></td>
+    <td><CopyableCode code="ecs_service_recommendations" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the Amazon ECS service recommendations.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe errors of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of Amazon ECS service recommendations.</td>
 </tr>
@@ -136,9 +136,9 @@ Returns Amazon ECS service recommendations. Compute Optimizer generates recommen
 
 ```sql
 SELECT
-ecsServiceRecommendations,
+ecs_service_recommendations,
 errors,
-nextToken
+next_token
 FROM aws.compute_optimizer.ecs_service_recommendations
 WHERE region = '{{ region }}' -- required
 ;

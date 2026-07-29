@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetricDimensions" /></td>
+    <td><CopyableCode code="metric_dimensions" /></td>
     <td><code>array</code></td>
     <td>The dimension information returned for requested metric types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the token, up to the value specified by MaxRecords. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_=-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieve the dimensions that can be queried for each specified metric type on a 
 
 ```sql
 SELECT
-MetricDimensions,
-NextToken
+metric_dimensions,
+next_token
 FROM aws.pi.available_resource_dimensions
 WHERE region = '{{ region }}' -- required
 ;

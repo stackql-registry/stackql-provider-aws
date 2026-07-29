@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user group. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the group.</td>
 </tr>
@@ -149,8 +149,8 @@ Describes the groups specified by the query. Groups are defined by the underlyin
 
 ```sql
 SELECT
-Id,
-Name
+id,
+name
 FROM aws.workdocs.groups
 WHERE searchQuery = '{{ searchQuery }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Aliases" /></td>
+    <td><CopyableCode code="aliases" /></td>
     <td><code>array</code></td>
     <td>An array of one or more DNS aliases that are currently associated with the Amazon FSx file system. Aliases allow you to use existing DNS names to access the data in your Amazon FSx file system. You can associate up to 50 aliases with a file system at any time. You can associate additional DNS aliases after you create the file system using the AssociateFileSystemAliases operation. You can remove DNS aliases from the file system after it is created using the DisassociateFileSystemAliases operation. You only need to specify the alias name in the request payload. For more information, see Managing DNS aliases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>(Optional) Opaque pagination token returned from a previous operation (String). If present, this token indicates from what point you can continue processing the request, where the previous NextToken value left off. (pattern: &lt;code&gt;^(?:&#91;A-Za-z0-9+\/&#93;&#123;4&#125;)*(?:&#91;A-Za-z0-9+\/&#93;&#123;2&#125;==|&#91;A-Za-z0-9+\/&#93;&#123;3&#125;=)?$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the DNS aliases that are associated with the specified Amazon FSx for Wi
 
 ```sql
 SELECT
-Aliases,
-NextToken
+aliases,
+next_token
 FROM aws.fsx.file_system_aliases
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,7 +170,7 @@ WHERE
 region = '{{ region }}' --required
 AND FileSystemId = '{{ FileSystemId }}' --required
 RETURNING
-Aliases;
+aliases;
 ```
 </TabItem>
 </Tabs>

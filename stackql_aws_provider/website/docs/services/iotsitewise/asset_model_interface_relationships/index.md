@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assetModelId" /></td>
+    <td><CopyableCode code="asset_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset model. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hierarchyMappings" /></td>
+    <td><CopyableCode code="hierarchy_mappings" /></td>
     <td><code>array</code></td>
     <td>A list of hierarchy mappings between the interface asset model and the asset model where the interface is applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interfaceAssetModelId" /></td>
+    <td><CopyableCode code="interface_asset_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the interface asset model. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propertyMappings" /></td>
+    <td><CopyableCode code="property_mappings" /></td>
     <td><code>array</code></td>
     <td>A list of property mappings between the interface asset model and the asset model where the interface is applied.</td>
 </tr>
@@ -163,10 +163,10 @@ Retrieves information about an interface relationship between an asset model and
 
 ```sql
 SELECT
-assetModelId,
-hierarchyMappings,
-interfaceAssetModelId,
-propertyMappings
+asset_model_id,
+hierarchy_mappings,
+interface_asset_model_id,
+property_mappings
 FROM aws.iotsitewise.asset_model_interface_relationships
 WHERE asset_model_id = '{{ asset_model_id }}' -- required
 AND interface_asset_model_id = '{{ interface_asset_model_id }}' -- required
@@ -200,10 +200,10 @@ AND interface_asset_model_id = '{{ interface_asset_model_id }}' --required
 AND region = '{{ region }}' --required
 AND propertyMappingConfiguration = '{{ propertyMappingConfiguration }}' --required
 RETURNING
-assetModelArn,
-assetModelId,
-assetModelStatus,
-interfaceAssetModelId;
+asset_model_arn,
+asset_model_id,
+asset_model_status,
+interface_asset_model_id;
 ```
 </TabItem>
 </Tabs>

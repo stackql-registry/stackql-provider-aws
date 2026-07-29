@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Key Management Service key used to encrypt the session data. For more information, see Amazon Bedrock session encryption. (pattern: &lt;code&gt;^arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the session was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the session. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:session/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the session in UUID format. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionMetadata" /></td>
+    <td><CopyableCode code="session_metadata" /></td>
     <td><code>object</code></td>
     <td>A map of key-value pairs containing attributes persisted across the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionStatus" /></td>
+    <td><CopyableCode code="session_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the session. (ACTIVE, EXPIRED, ENDED)</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the session was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the session. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:session/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the session. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionStatus" /></td>
+    <td><CopyableCode code="session_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the session. (ACTIVE, EXPIRED, ENDED)</td>
 </tr>
@@ -274,13 +274,13 @@ Retrieves details about a specific session. For more information about sessions,
 
 ```sql
 SELECT
-createdAt,
-encryptionKeyArn,
-lastUpdatedAt,
-sessionArn,
-sessionId,
-sessionMetadata,
-sessionStatus
+created_at,
+encryption_key_arn,
+last_updated_at,
+session_arn,
+session_id,
+session_metadata,
+session_status
 FROM aws.bedrock_agent_runtime.sessions
 WHERE session_identifier = '{{ session_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -293,11 +293,11 @@ Lists all sessions in your Amazon Web Services account. For more information abo
 
 ```sql
 SELECT
-createdAt,
-lastUpdatedAt,
-sessionArn,
-sessionId,
-sessionStatus
+created_at,
+last_updated_at,
+session_arn,
+session_id,
+session_status
 FROM aws.bedrock_agent_runtime.sessions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -334,10 +334,10 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
-sessionArn,
-sessionId,
-sessionStatus
+created_at,
+session_arn,
+session_id,
+session_status
 ;
 ```
 </TabItem>
@@ -383,11 +383,11 @@ WHERE
 session_identifier = '{{ session_identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-createdAt,
-lastUpdatedAt,
-sessionArn,
-sessionId,
-sessionStatus;
+created_at,
+last_updated_at,
+session_arn,
+session_id,
+session_status;
 ```
 </TabItem>
 </Tabs>

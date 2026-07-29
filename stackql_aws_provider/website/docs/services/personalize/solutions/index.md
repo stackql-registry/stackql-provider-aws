@@ -56,72 +56,72 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the solution. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoMLResult" /></td>
+    <td><CopyableCode code="auto_ml_result" /></td>
     <td><code>object</code></td>
     <td>When performAutoML is true, specifies the best recipe found.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time (in Unix time) of the solution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset group that provides the training data. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The event type (for example, 'click' or 'like') that is used for training the model. If no eventType is provided, Amazon Personalize uses all interactions for training with equal weight regardless of type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the solution was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSolutionUpdate" /></td>
+    <td><CopyableCode code="latest_solution_update" /></td>
     <td><code>object</code></td>
     <td>Provides a summary of the latest updates to the solution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestSolutionVersion" /></td>
+    <td><CopyableCode code="latest_solution_version" /></td>
     <td><code>object</code></td>
     <td>Describes the latest version of the solution, including the status and the ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performAutoML" /></td>
+    <td><CopyableCode code="perform_auto_ml" /></td>
     <td><code>boolean</code></td>
     <td>We don't recommend enabling automated machine learning. Instead, match your use case to the available Amazon Personalize recipes. For more information, see Determining your use case. When true, Amazon Personalize performs a search for the best USER_PERSONALIZATION recipe from the list specified in the solution configuration (recipeArn must not be specified). When false (the default), Amazon Personalize uses recipeArn for training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performAutoTraining" /></td>
+    <td><CopyableCode code="perform_auto_training" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the solution automatically creates solution versions. The default is True and the solution automatically creates new solution versions every 7 days. For more information about auto training, see Creating and configuring a solution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performHPO" /></td>
+    <td><CopyableCode code="perform_hpo" /></td>
     <td><code>boolean</code></td>
     <td>Whether to perform hyperparameter optimization (HPO) on the chosen recipe. The default is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performIncrementalUpdate" /></td>
+    <td><CopyableCode code="perform_incremental_update" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that indicates whether incremental training updates are performed on the model. When enabled, this allows the model to learn from new data more frequently without requiring full retraining, which enables near real-time personalization. This parameter is supported only for solutions that use the semantic-similarity recipe</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeArn" /></td>
+    <td><CopyableCode code="recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the recipe used to create the solution. This is required when performAutoML is false. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionArn" /></td>
+    <td><CopyableCode code="solution_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the solution. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionConfig" /></td>
+    <td><CopyableCode code="solution_config" /></td>
     <td><code>object</code></td>
     <td>Describes the configuration properties for the solution.</td>
 </tr>
@@ -150,22 +150,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the solution. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the solution was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the solution was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeArn" /></td>
+    <td><CopyableCode code="recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recipe used by the solution. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionArn" /></td>
+    <td><CopyableCode code="solution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the solution. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -269,20 +269,20 @@ Describes a solution. For more information on solutions, see CreateSolution.
 ```sql
 SELECT
 name,
-autoMLResult,
-creationDateTime,
-datasetGroupArn,
-eventType,
-lastUpdatedDateTime,
-latestSolutionUpdate,
-latestSolutionVersion,
-performAutoML,
-performAutoTraining,
-performHPO,
-performIncrementalUpdate,
-recipeArn,
-solutionArn,
-solutionConfig,
+auto_ml_result,
+creation_date_time,
+dataset_group_arn,
+event_type,
+last_updated_date_time,
+latest_solution_update,
+latest_solution_version,
+perform_auto_ml,
+perform_auto_training,
+perform_hpo,
+perform_incremental_update,
+recipe_arn,
+solution_arn,
+solution_config,
 status
 FROM aws.personalize.solutions
 WHERE region = '{{ region }}' -- required
@@ -296,10 +296,10 @@ Returns a list of solutions in a given dataset group. When a dataset group is no
 ```sql
 SELECT
 name,
-creationDateTime,
-lastUpdatedDateTime,
-recipeArn,
-solutionArn,
+creation_date_time,
+last_updated_date_time,
+recipe_arn,
+solution_arn,
 status
 FROM aws.personalize.solutions
 WHERE region = '{{ region }}' -- required
@@ -349,7 +349,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-solutionArn
+solution_arn
 ;
 ```
 </TabItem>
@@ -472,7 +472,7 @@ WHERE
 region = '{{ region }}' --required
 AND solutionArn = '{{ solutionArn }}' --required
 RETURNING
-solutionArn;
+solution_arn;
 ```
 </TabItem>
 </Tabs>

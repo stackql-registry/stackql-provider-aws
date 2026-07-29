@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The customer-assigned name of the policy engine. This is the human-readable identifier that was specified when the policy engine was created. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy engine was originally created.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The human-readable description of the policy engine's purpose and scope. This helps administrators understand the policy engine's role in governance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the policy engine data. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyEngineArn" /></td>
+    <td><CopyableCode code="policy_engine_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy engine. This globally unique identifier can be used for cross-service references and IAM policy statements. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;&#123;0,7&#125;:bedrock-agentcore:&#91;a-z0-9-&#93;&#123;9,15&#125;:&#91;0-9&#93;&#123;12&#125;:policy-engine/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9_&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyEngineId" /></td>
+    <td><CopyableCode code="policy_engine_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the retrieved policy engine. This matches the policy engine ID provided in the request and serves as the system identifier. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_&#93;*-&#91;a-z0-9_&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the policy engine. (CREATING, ACTIVE, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasons" /></td>
+    <td><CopyableCode code="status_reasons" /></td>
     <td><code>array</code></td>
     <td>Additional information about the policy engine status. This provides details about any failures or the current state of the policy engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy engine was last modified. This tracks the most recent changes to the policy engine configuration.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The customer-assigned immutable name for the policy engine. This human-readable identifier must be unique within the account and cannot exceed 48 characters. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy engine was originally created. This is automatically set by the service and used for auditing and lifecycle management.</td>
 </tr>
@@ -125,17 +125,17 @@ The following fields are returned by `SELECT` queries:
     <td>A human-readable description of the policy engine's purpose and scope. Limited to 4,096 characters, this helps administrators understand the policy engine's role in the overall governance strategy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the policy engine data. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyEngineArn" /></td>
+    <td><CopyableCode code="policy_engine_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy engine. This globally unique identifier can be used for cross-service references and IAM policy statements. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;&#123;0,7&#125;:bedrock-agentcore:&#91;a-z0-9-&#93;&#123;9,15&#125;:&#91;0-9&#93;&#123;12&#125;:policy-engine/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9_&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyEngineId" /></td>
+    <td><CopyableCode code="policy_engine_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the policy engine. This system-generated identifier consists of the user name plus a 10-character generated suffix and serves as the primary key for policy engine operations. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_&#93;*-&#91;a-z0-9_&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the policy engine. (CREATING, ACTIVE, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasons" /></td>
+    <td><CopyableCode code="status_reasons" /></td>
     <td><code>array</code></td>
     <td>Additional information about the policy engine status. This provides details about any failures or the current state of the policy engine lifecycle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy engine was last modified. This tracks the most recent changes to the policy engine configuration or metadata.</td>
 </tr>
@@ -264,14 +264,14 @@ Retrieves detailed information about a specific policy engine within the AgentCo
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-encryptionKeyArn,
-policyEngineArn,
-policyEngineId,
+encryption_key_arn,
+policy_engine_arn,
+policy_engine_id,
 status,
-statusReasons,
-updatedAt
+status_reasons,
+updated_at
 FROM aws.bedrock_agentcore_control.policy_engines
 WHERE policy_engine_id = '{{ policy_engine_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -285,14 +285,14 @@ Retrieves a list of policy engines within the AgentCore Policy system. This oper
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-encryptionKeyArn,
-policyEngineArn,
-policyEngineId,
+encryption_key_arn,
+policy_engine_arn,
+policy_engine_id,
 status,
-statusReasons,
-updatedAt
+status_reasons,
+updated_at
 FROM aws.bedrock_agentcore_control.policy_engines
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -334,14 +334,14 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-createdAt,
+created_at,
 description,
-encryptionKeyArn,
-policyEngineArn,
-policyEngineId,
+encryption_key_arn,
+policy_engine_arn,
+policy_engine_id,
 status,
-statusReasons,
-updatedAt
+status_reasons,
+updated_at
 ;
 ```
 </TabItem>
@@ -390,14 +390,14 @@ policy_engine_id = '{{ policy_engine_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
-createdAt,
+created_at,
 description,
-encryptionKeyArn,
-policyEngineArn,
-policyEngineId,
+encryption_key_arn,
+policy_engine_arn,
+policy_engine_id,
 status,
-statusReasons,
-updatedAt;
+status_reasons,
+updated_at;
 ```
 </TabItem>
 </Tabs>

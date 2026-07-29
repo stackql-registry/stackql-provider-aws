@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Beneficiary" /></td>
+    <td><CopyableCode code="beneficiary" /></td>
     <td><code>string</code></td>
     <td>License beneficiary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumptionConfiguration" /></td>
+    <td><CopyableCode code="consumption_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for consumption of the license.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>License creation time. (pattern: &lt;code&gt;^(-?(?:&#91;1-9&#93;&#91;0-9&#93;*)?&#91;0-9&#93;&#123;4&#125;)-(1&#91;0-2&#93;|0&#91;1-9&#93;)-(3&#91;0-1&#93;|0&#91;1-9&#93;|&#91;1-2&#93;&#91;0-9&#93;)T(2&#91;0-3&#93;|&#91;0-1&#93;&#91;0-9&#93;):(&#91;0-5&#93;&#91;0-9&#93;):(&#91;0-5&#93;&#91;0-9&#93;)(\.&#91;0-9&#93;+)?(Z|&#91;+-&#93;(?:2&#91; 0-3&#93;|&#91;0-1&#93;&#91;0-9&#93;):&#91;0-5&#93;&#91;0-9&#93;)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Entitlements" /></td>
+    <td><CopyableCode code="entitlements" /></td>
     <td><code>array</code></td>
     <td>License entitlements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeRegion" /></td>
+    <td><CopyableCode code="home_region" /></td>
     <td><code>string</code></td>
     <td>Home Region of the license.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Issuer" /></td>
+    <td><CopyableCode code="issuer" /></td>
     <td><code>object</code></td>
     <td>License issuer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseArn" /></td>
+    <td><CopyableCode code="license_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the license. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseMetadata" /></td>
+    <td><CopyableCode code="license_metadata" /></td>
     <td><code>array</code></td>
     <td>License metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseName" /></td>
+    <td><CopyableCode code="license_name" /></td>
     <td><code>string</code></td>
     <td>License name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductName" /></td>
+    <td><CopyableCode code="product_name" /></td>
     <td><code>string</code></td>
     <td>Product name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductSKU" /></td>
+    <td><CopyableCode code="product_sku" /></td>
     <td><code>string</code></td>
     <td>Product SKU.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>License status. (AVAILABLE, PENDING_AVAILABLE, DEACTIVATED, SUSPENDED, EXPIRED, PENDING_DELETE, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Validity" /></td>
+    <td><CopyableCode code="validity" /></td>
     <td><code>object</code></td>
     <td>Date and time range during which the license is valid, in ISO8601-UTC format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>License version.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Licenses" /></td>
+    <td><CopyableCode code="licenses" /></td>
     <td><code>array</code></td>
     <td>License details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -238,20 +238,20 @@ Gets detailed information about the specified license.
 
 ```sql
 SELECT
-Beneficiary,
-ConsumptionConfiguration,
-CreateTime,
-Entitlements,
-HomeRegion,
-Issuer,
-LicenseArn,
-LicenseMetadata,
-LicenseName,
-ProductName,
-ProductSKU,
-Status,
-Validity,
-Version
+beneficiary,
+consumption_configuration,
+create_time,
+entitlements,
+home_region,
+issuer,
+license_arn,
+license_metadata,
+license_name,
+product_name,
+product_sku,
+status,
+validity,
+version
 FROM aws.license_manager.licenses
 WHERE region = '{{ region }}' -- required
 ;
@@ -263,8 +263,8 @@ Lists the licenses for your account.
 
 ```sql
 SELECT
-Licenses,
-NextToken
+licenses,
+next_token
 FROM aws.license_manager.licenses
 WHERE region = '{{ region }}' -- required
 ;
@@ -317,9 +317,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LicenseArn,
-Status,
-Version
+license_arn,
+status,
+version
 ;
 ```
 </TabItem>

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="documentDetails" /></td>
+    <td><CopyableCode code="document_details" /></td>
     <td><code>array</code></td>
     <td>A list of objects, each of which contains information about the documents that were retrieved.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the data source connected to the knowledge base that the document was ingested into or deleted from. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information that identifies the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base that the document was ingested into or deleted from. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ingestion status of the document. The following statuses are possible: STARTING – You submitted the ingestion job containing the document. PENDING – The document is waiting to be ingested. IN_PROGRESS – The document is being ingested. INDEXED – The document was successfully indexed. PARTIALLY_INDEXED – The document was partially indexed. METADATA_PARTIALLY_INDEXED – You submitted metadata for an existing document and it was partially indexed. METADATA_UPDATE_FAILED – You submitted a metadata update for an existing document but it failed. FAILED – The document failed to be ingested. NOT_FOUND – The document wasn't found. IGNORED – The document was ignored during ingestion. DELETING – You submitted the delete job containing the document. DELETE_IN_PROGRESS – The document is being deleted. (INDEXED, PARTIALLY_INDEXED, PENDING, FAILED, METADATA_PARTIALLY_INDEXED, METADATA_UPDATE_FAILED, IGNORED, NOT_FOUND, STARTING, IN_PROGRESS, DELETING, DELETE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the status. Appears alongside the status IGNORED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the document was last updated.</td>
 </tr>
@@ -196,7 +196,7 @@ Retrieves specific documents from a data source that is connected to a knowledge
 
 ```sql
 SELECT
-documentDetails
+document_details
 FROM aws.bedrock_agent.knowledge_base_documents
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND data_source_id = '{{ data_source_id }}' -- required
@@ -210,12 +210,12 @@ Retrieves all the documents contained in a data source that is connected to a kn
 
 ```sql
 SELECT
-dataSourceId,
+data_source_id,
 identifier,
-knowledgeBaseId,
+knowledge_base_id,
 status,
-statusReason,
-updatedAt
+status_reason,
+updated_at
 FROM aws.bedrock_agent.knowledge_base_documents
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND data_source_id = '{{ data_source_id }}' -- required

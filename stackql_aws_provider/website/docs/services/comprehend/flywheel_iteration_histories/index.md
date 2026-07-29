@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlywheelIterationPropertiesList" /></td>
+    <td><CopyableCode code="flywheel_iteration_properties_list" /></td>
     <td><code>array</code></td>
     <td>List of flywheel iteration properties</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Next token</td>
 </tr>
@@ -124,8 +124,8 @@ Information about the history of a flywheel iteration. For more information abou
 
 ```sql
 SELECT
-FlywheelIterationPropertiesList,
-NextToken
+flywheel_iteration_properties_list,
+next_token
 FROM aws.comprehend.flywheel_iteration_histories
 WHERE region = '{{ region }}' -- required
 ;

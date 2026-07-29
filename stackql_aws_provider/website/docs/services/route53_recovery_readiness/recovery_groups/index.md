@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cells" /></td>
+    <td><CopyableCode code="cells" /></td>
     <td><code>array</code></td>
     <td>A list of a cell's Amazon Resource Names (ARNs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryGroupArn" /></td>
+    <td><CopyableCode code="recovery_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the recovery group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryGroupName" /></td>
+    <td><CopyableCode code="recovery_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recovery group. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the recovery group.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cells" /></td>
+    <td><CopyableCode code="cells" /></td>
     <td><code>array</code></td>
     <td>A list of a cell's Amazon Resource Names (ARNs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryGroupArn" /></td>
+    <td><CopyableCode code="recovery_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the recovery group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryGroupName" /></td>
+    <td><CopyableCode code="recovery_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recovery group. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the recovery group.</td>
 </tr>
@@ -213,10 +213,10 @@ Gets details about a recovery group, including a list of the cells that are incl
 
 ```sql
 SELECT
-Cells,
-RecoveryGroupArn,
-RecoveryGroupName,
-Tags
+cells,
+recovery_group_arn,
+recovery_group_name,
+tags
 FROM aws.route53_recovery_readiness.recovery_groups
 WHERE recovery_group_name = '{{ recovery_group_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,10 +229,10 @@ Lists the recovery groups in an account.
 
 ```sql
 SELECT
-Cells,
-RecoveryGroupArn,
-RecoveryGroupName,
-Tags
+cells,
+recovery_group_arn,
+recovery_group_name,
+tags
 FROM aws.route53_recovery_readiness.recovery_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -269,10 +269,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Cells,
-RecoveryGroupArn,
-RecoveryGroupName,
-Tags
+cells,
+recovery_group_arn,
+recovery_group_name,
+tags
 ;
 ```
 </TabItem>
@@ -319,10 +319,10 @@ WHERE
 recovery_group_name = '{{ recovery_group_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Cells,
-RecoveryGroupArn,
-RecoveryGroupName,
-Tags;
+cells,
+recovery_group_arn,
+recovery_group_name,
+tags;
 ```
 </TabItem>
 </Tabs>

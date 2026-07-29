@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>URL of endpoint</td>
 </tr>
@@ -119,7 +119,7 @@ Send a request with an empty body to the regional API endpoint to get your accou
 
 ```sql
 SELECT
-Url
+url
 FROM aws.mediaconvert.endpoints
 WHERE region = '{{ region }}' -- required
 ;

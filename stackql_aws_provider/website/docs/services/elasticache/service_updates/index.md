@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoUpdateAfterRecommendedApplyByDate" /></td>
+    <td><CopyableCode code="auto_update_after_recommended_apply_by_date" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the service update will be automatically applied once the recommended apply-by date has expired.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The Elasticache engine to which the update applies. Either Valkey, Redis OSS or Memcached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The Elasticache engine version to which the update applies. Either Valkey, Redis OSS or Memcached engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedUpdateTime" /></td>
+    <td><CopyableCode code="estimated_update_time" /></td>
     <td><code>string</code></td>
     <td>The estimated length of time the service update will take</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateDescription" /></td>
+    <td><CopyableCode code="service_update_description" /></td>
     <td><code>string</code></td>
     <td>Provides details of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateEndDate" /></td>
+    <td><CopyableCode code="service_update_end_date" /></td>
     <td><code>string</code></td>
     <td>The date after which the service update is no longer available</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateName" /></td>
+    <td><CopyableCode code="service_update_name" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateRecommendedApplyByDate" /></td>
+    <td><CopyableCode code="service_update_recommended_apply_by_date" /></td>
     <td><code>string</code></td>
     <td>The recommendend date to apply the service update in order to ensure compliance. For information on compliance, see Self-Service Security Updates for Compliance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateReleaseDate" /></td>
+    <td><CopyableCode code="service_update_release_date" /></td>
     <td><code>string</code></td>
     <td>The date when the service update is initially available</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateSeverity" /></td>
+    <td><CopyableCode code="service_update_severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateStatus" /></td>
+    <td><CopyableCode code="service_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateType" /></td>
+    <td><CopyableCode code="service_update_type" /></td>
     <td><code>string</code></td>
     <td>Reflects the nature of the service update</td>
 </tr>
@@ -223,18 +223,18 @@ Returns details of the service updates
 
 ```sql
 SELECT
-AutoUpdateAfterRecommendedApplyByDate,
-Engine,
-EngineVersion,
-EstimatedUpdateTime,
-ServiceUpdateDescription,
-ServiceUpdateEndDate,
-ServiceUpdateName,
-ServiceUpdateRecommendedApplyByDate,
-ServiceUpdateReleaseDate,
-ServiceUpdateSeverity,
-ServiceUpdateStatus,
-ServiceUpdateType
+auto_update_after_recommended_apply_by_date,
+engine,
+engine_version,
+estimated_update_time,
+service_update_description,
+service_update_end_date,
+service_update_name,
+service_update_recommended_apply_by_date,
+service_update_release_date,
+service_update_severity,
+service_update_status,
+service_update_type
 FROM aws.elasticache.service_updates
 WHERE region = '{{ region }}' -- required
 AND ServiceUpdateName = '{{ ServiceUpdateName }}'

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>A human-readable identifier provided by the collaboration owner. Display names are not unique. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedResultRegions" /></td>
+    <td><CopyableCode code="allowed_result_regions" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services Regions where collaboration query results can be stored. Returns the list of Region identifiers that were specified when the collaboration was created. This list is used to enforce regional storage policies and compliance requirements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyticsEngine" /></td>
+    <td><CopyableCode code="analytics_engine" /></td>
     <td><code>string</code></td>
     <td>The analytics engine for the collaboration. After July 16, 2025, the CLEAN_ROOMS_SQL parameter will no longer be available. (SPARK, CLEAN_ROOMS_SQL)</td>
 </tr>
@@ -76,27 +76,27 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN for the collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoApprovedChangeTypes" /></td>
+    <td><CopyableCode code="auto_approved_change_types" /></td>
     <td><code>array</code></td>
     <td>The types of change requests that are automatically approved for this collaboration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the collaboration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Currently only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorDisplayName" /></td>
+    <td><CopyableCode code="creator_display_name" /></td>
     <td><code>string</code></td>
     <td>A display name of the collaboration creator. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataEncryptionMetadata" /></td>
+    <td><CopyableCode code="data_encryption_metadata" /></td>
     <td><code>object</code></td>
     <td>The settings for client-side encryption for cryptographic computing.</td>
 </tr>
@@ -106,37 +106,37 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the collaboration provided by the collaboration owner. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isMetricsEnabled" /></td>
+    <td><CopyableCode code="is_metrics_enabled" /></td>
     <td><code>boolean</code></td>
     <td>An indicator as to whether metrics are enabled for the collaboration. When true, collaboration members can opt in to Amazon CloudWatch metrics for their membership queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobLogStatus" /></td>
+    <td><CopyableCode code="job_log_status" /></td>
     <td><code>string</code></td>
     <td>An indicator as to whether job logging has been enabled or disabled for the collaboration. When ENABLED, Clean Rooms logs details about jobs run within this collaboration and those logs can be viewed in Amazon CloudWatch Logs. The default value is DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberStatus" /></td>
+    <td><CopyableCode code="member_status" /></td>
     <td><code>string</code></td>
     <td>The status of a member in a collaboration. (INVITED, ACTIVE, LEFT, REMOVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for your membership within the collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for your membership within the collaboration. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryLogStatus" /></td>
+    <td><CopyableCode code="query_log_status" /></td>
     <td><code>string</code></td>
     <td>An indicator as to whether query logging has been enabled or disabled for the collaboration. When ENABLED, Clean Rooms logs details about queries run within this collaboration and those logs can be viewed in Amazon CloudWatch Logs. The default value is DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the collaboration metadata was last updated.</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
     <td>A human-readable identifier provided by the collaboration owner. Display names are not unique. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyticsEngine" /></td>
+    <td><CopyableCode code="analytics_engine" /></td>
     <td><code>string</code></td>
     <td>The analytics engine. After July 16, 2025, the CLEAN_ROOMS_SQL parameter will no longer be available. (SPARK, CLEAN_ROOMS_SQL)</td>
 </tr>
@@ -175,37 +175,37 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the collaboration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Currently only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorDisplayName" /></td>
+    <td><CopyableCode code="creator_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the collaboration creator. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberStatus" /></td>
+    <td><CopyableCode code="member_status" /></td>
     <td><code>string</code></td>
     <td>The status of a member in a collaboration. (INVITED, ACTIVE, LEFT, REMOVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a member in a collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a member in a collaboration. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the collaboration metadata was last updated.</td>
 </tr>
@@ -325,22 +325,22 @@ Returns metadata about a collaboration.
 SELECT
 id,
 name,
-allowedResultRegions,
-analyticsEngine,
+allowed_result_regions,
+analytics_engine,
 arn,
-autoApprovedChangeTypes,
-createTime,
-creatorAccountId,
-creatorDisplayName,
-dataEncryptionMetadata,
+auto_approved_change_types,
+create_time,
+creator_account_id,
+creator_display_name,
+data_encryption_metadata,
 description,
-isMetricsEnabled,
-jobLogStatus,
-memberStatus,
-membershipArn,
-membershipId,
-queryLogStatus,
-updateTime
+is_metrics_enabled,
+job_log_status,
+member_status,
+membership_arn,
+membership_id,
+query_log_status,
+update_time
 FROM aws.cleanrooms.collaborations
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -355,15 +355,15 @@ Lists collaborations the caller owns, is active in, or has been invited to.
 SELECT
 id,
 name,
-analyticsEngine,
+analytics_engine,
 arn,
-createTime,
-creatorAccountId,
-creatorDisplayName,
-memberStatus,
-membershipArn,
-membershipId,
-updateTime
+create_time,
+creator_account_id,
+creator_display_name,
+member_status,
+membership_arn,
+membership_id,
+update_time
 FROM aws.cleanrooms.collaborations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

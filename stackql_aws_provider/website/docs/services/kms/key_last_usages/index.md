@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KeyCreationDate" /></td>
+    <td><CopyableCode code="key_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the KMS key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyLastUsage" /></td>
+    <td><CopyableCode code="key_last_usage" /></td>
     <td><code>object</code></td>
     <td>Contains usage information about the last time the KMS key was used for a successful cryptographic operation. If the key has not been used since tracking began, this response element is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrackingStartDate" /></td>
+    <td><CopyableCode code="tracking_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date from which KMS began recording cryptographic activity for this key, or the date the KMS key was created, whichever is later.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns usage information about the last successful cryptographic operation perf
 
 ```sql
 SELECT
-KeyCreationDate,
-KeyId,
-KeyLastUsage,
-TrackingStartDate
+key_creation_date,
+key_id,
+key_last_usage,
+tracking_start_date
 FROM aws.kms.key_last_usages
 WHERE region = '{{ region }}' -- required
 ;

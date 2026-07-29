@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="buildBatches" /></td>
+    <td><CopyableCode code="build_batches" /></td>
     <td><code>array</code></td>
     <td>An array of BuildBatch objects that represent the retrieved batch builds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildBatchesNotFound" /></td>
+    <td><CopyableCode code="build_batches_not_found" /></td>
     <td><code>array</code></td>
     <td>An array that contains the identifiers of any batch builds that are not found.</td>
 </tr>
@@ -159,8 +159,8 @@ Retrieves information about one or more batch builds.
 
 ```sql
 SELECT
-buildBatches,
-buildBatchesNotFound
+build_batches,
+build_batches_not_found
 FROM aws.codebuild.build_batches
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Authentication" /></td>
+    <td><CopyableCode code="authentication" /></td>
     <td><code>object</code></td>
     <td>The authentication attribute—contains the secret ARN where the customer relay server credentials are stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the relay was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when relay was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelayArn" /></td>
+    <td><CopyableCode code="relay_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the relay.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelayId" /></td>
+    <td><CopyableCode code="relay_id" /></td>
     <td><code>string</code></td>
     <td>The unique relay identifier. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelayName" /></td>
+    <td><CopyableCode code="relay_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the relay. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerName" /></td>
+    <td><CopyableCode code="server_name" /></td>
     <td><code>string</code></td>
     <td>The destination relay server address. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerPort" /></td>
+    <td><CopyableCode code="server_port" /></td>
     <td><code>integer</code></td>
     <td>The destination relay server port.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the relay was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelayId" /></td>
+    <td><CopyableCode code="relay_id" /></td>
     <td><code>string</code></td>
     <td>The unique relay identifier. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelayName" /></td>
+    <td><CopyableCode code="relay_name" /></td>
     <td><code>string</code></td>
     <td>The unique relay name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -213,14 +213,14 @@ Fetch the relay resource and it's attributes.
 
 ```sql
 SELECT
-Authentication,
-CreatedTimestamp,
-LastModifiedTimestamp,
-RelayArn,
-RelayId,
-RelayName,
-ServerName,
-ServerPort
+authentication,
+created_timestamp,
+last_modified_timestamp,
+relay_arn,
+relay_id,
+relay_name,
+server_name,
+server_port
 FROM aws.mailmanager.relays
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,9 +232,9 @@ Lists all the existing relay resources.
 
 ```sql
 SELECT
-LastModifiedTimestamp,
-RelayId,
-RelayName
+last_modified_timestamp,
+relay_id,
+relay_name
 FROM aws.mailmanager.relays
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,7 +275,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-RelayId
+relay_id
 ;
 ```
 </TabItem>

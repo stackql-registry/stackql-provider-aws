@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the session. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s_.,-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationConfiguration" /></td>
+    <td><CopyableCode code="integration_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the session integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the session. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the session. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Wisdom assistant. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Wisdom assistant. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the session. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the session. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -216,9 +216,9 @@ Retrieves information for a specified session.
 SELECT
 name,
 description,
-integrationConfiguration,
-sessionArn,
-sessionId,
+integration_configuration,
+session_arn,
+session_id,
 tags
 FROM aws.wisdom.sessions
 WHERE assistant_id = '{{ assistant_id }}' -- required
@@ -233,10 +233,10 @@ Searches for sessions.
 
 ```sql
 SELECT
-assistantArn,
-assistantId,
-sessionArn,
-sessionId
+assistant_arn,
+assistant_id,
+session_arn,
+session_id
 FROM aws.wisdom.sessions
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND region = '{{ region }}' -- required

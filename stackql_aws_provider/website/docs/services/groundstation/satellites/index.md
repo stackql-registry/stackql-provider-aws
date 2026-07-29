@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="currentEphemeris" /></td>
+    <td><CopyableCode code="current_ephemeris" /></td>
     <td><code>object</code></td>
     <td>The current ephemeris being used to compute the trajectory of the satellite.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groundStations" /></td>
+    <td><CopyableCode code="ground_stations" /></td>
     <td><code>array</code></td>
     <td>A list of ground stations to which the satellite is on-boarded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noradSatelliteID" /></td>
+    <td><CopyableCode code="norad_satellite_id" /></td>
     <td><code>integer</code></td>
     <td>NORAD satellite ID number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="satelliteArn" /></td>
+    <td><CopyableCode code="satellite_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a satellite. (pattern: &lt;code&gt;arn:aws:groundstation:(&#91;-a-z0-9&#93;&#123;1,50&#125;)?:&#91;0-9&#93;&#123;12&#125;:satellite/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="satelliteId" /></td>
+    <td><CopyableCode code="satellite_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a satellite. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="currentEphemeris" /></td>
+    <td><CopyableCode code="current_ephemeris" /></td>
     <td><code>object</code></td>
     <td>The current ephemeris being used to compute the trajectory of the satellite.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groundStations" /></td>
+    <td><CopyableCode code="ground_stations" /></td>
     <td><code>array</code></td>
     <td>A list of ground stations to which the satellite is on-boarded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noradSatelliteID" /></td>
+    <td><CopyableCode code="norad_satellite_id" /></td>
     <td><code>integer</code></td>
     <td>NORAD satellite ID number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="satelliteArn" /></td>
+    <td><CopyableCode code="satellite_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a satellite. (pattern: &lt;code&gt;arn:aws:groundstation:(&#91;-a-z0-9&#93;&#123;1,50&#125;)?:&#91;0-9&#93;&#123;12&#125;:satellite/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="satelliteId" /></td>
+    <td><CopyableCode code="satellite_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a satellite. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -202,11 +202,11 @@ Returns a satellite.
 
 ```sql
 SELECT
-currentEphemeris,
-groundStations,
-noradSatelliteID,
-satelliteArn,
-satelliteId
+current_ephemeris,
+ground_stations,
+norad_satellite_id,
+satellite_arn,
+satellite_id
 FROM aws.groundstation.satellites
 WHERE satellite_id = '{{ satellite_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -219,11 +219,11 @@ Returns a list of satellites.
 
 ```sql
 SELECT
-currentEphemeris,
-groundStations,
-noradSatelliteID,
-satelliteArn,
-satelliteId
+current_ephemeris,
+ground_stations,
+norad_satellite_id,
+satellite_arn,
+satellite_id
 FROM aws.groundstation.satellites
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterGroupFamily" /></td>
+    <td><CopyableCode code="parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster parameter group family to which the engine default parameters apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>The list of cluster default parameters.</td>
 </tr>
@@ -144,9 +144,9 @@ Returns a list of parameter settings for the specified parameter group family. F
 
 ```sql
 SELECT
-Marker,
-ParameterGroupFamily,
-Parameters
+marker,
+parameter_group_family,
+parameters
 FROM aws.redshift.default_cluster_parameters
 WHERE ParameterGroupFamily = '{{ ParameterGroupFamily }}' -- required
 AND region = '{{ region }}' -- required

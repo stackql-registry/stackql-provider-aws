@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the job template. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/jobtemplates\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job template. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decryptionError" /></td>
+    <td><CopyableCode code="decryption_error" /></td>
     <td><code>string</code></td>
     <td>The error message in case the decryption of job template fails. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobTemplateData" /></td>
+    <td><CopyableCode code="job_template_data" /></td>
     <td><code>object</code></td>
     <td>The values of StartJobRun API requests used in job runs started using the job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN used to encrypt the job template. (pattern: &lt;code&gt;^(arn:(aws&#91;a-zA-Z0-9-&#93;*):kms:.+:(\d&#123;12&#125;)?:key\/&#91;(0-9a-zA-Z)-?&#93;+|\$\&#123;&#91;a-zA-Z&#93;\w*\&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -125,27 +125,27 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the job template. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/jobtemplates\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job template. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decryptionError" /></td>
+    <td><CopyableCode code="decryption_error" /></td>
     <td><code>string</code></td>
     <td>The error message in case the decryption of job template fails. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobTemplateData" /></td>
+    <td><CopyableCode code="job_template_data" /></td>
     <td><code>object</code></td>
     <td>The values of StartJobRun API requests used in job runs started using the job template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN used to encrypt the job template. (pattern: &lt;code&gt;^(arn:(aws&#91;a-zA-Z0-9-&#93;*):kms:.+:(\d&#123;12&#125;)?:key\/&#91;(0-9a-zA-Z)-?&#93;+|\$\&#123;&#91;a-zA-Z&#93;\w*\&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -269,11 +269,11 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-createdBy,
-decryptionError,
-jobTemplateData,
-kmsKeyArn,
+created_at,
+created_by,
+decryption_error,
+job_template_data,
+kms_key_arn,
 tags
 FROM aws.emr_containers.job_templates
 WHERE template_id = '{{ template_id }}' -- required
@@ -290,11 +290,11 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-createdBy,
-decryptionError,
-jobTemplateData,
-kmsKeyArn,
+created_at,
+created_by,
+decryption_error,
+job_template_data,
+kms_key_arn,
 tags
 FROM aws.emr_containers.job_templates
 WHERE region = '{{ region }}' -- required
@@ -341,7 +341,7 @@ RETURNING
 id,
 name,
 arn,
-createdAt
+created_at
 ;
 ```
 </TabItem>

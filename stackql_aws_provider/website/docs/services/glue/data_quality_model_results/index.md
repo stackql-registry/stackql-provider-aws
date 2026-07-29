@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data quality model training completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Model" /></td>
+    <td><CopyableCode code="model" /></td>
     <td><code>array</code></td>
     <td>A list of StatisticModelResult</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieve a statistic's predictions for a given Profile ID.
 
 ```sql
 SELECT
-CompletedOn,
-Model
+completed_on,
+model
 FROM aws.glue.data_quality_model_results
 WHERE region = '{{ region }}' -- required
 ;

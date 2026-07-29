@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CodeReviewSummaries" /></td>
+    <td><CopyableCode code="code_review_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of code reviews that meet the criteria of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token.</td>
 </tr>
@@ -75,82 +75,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalysisTypes" /></td>
+    <td><CopyableCode code="analysis_types" /></td>
     <td><code>array</code></td>
     <td>The types of analysis performed during a repository analysis or a pull request review. You can specify either Security, CodeQuality, or both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationArn" /></td>
+    <td><CopyableCode code="association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the RepositoryAssociation that contains the reviewed source code. You can retrieve associated repository ARNs by calling ListRepositoryAssociations. (pattern: &lt;code&gt;^arn:aws&#91;^:\s&#93;*:codeguru-reviewer:&#91;^:\s&#93;+:&#91;\d&#93;&#123;12&#125;:association:&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeReviewArn" /></td>
+    <td><CopyableCode code="code_review_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the CodeReview object. (pattern: &lt;code&gt;^arn:aws&#91;^:\s&#93;*:codeguru-reviewer:&#91;^:\s&#93;+:&#91;\d&#93;&#123;12&#125;:&#91;a-z-&#93;+:&#91;\w-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigFileState" /></td>
+    <td><CopyableCode code="config_file_state" /></td>
     <td><code>string</code></td>
     <td>The state of the aws-codeguru-reviewer.yml configuration file that allows the configuration of the CodeGuru Reviewer analysis. The file either exists, doesn't exist, or exists with errors at the root directory of your repository. (Present, Absent, PresentWithErrors)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in milliseconds since the epoch, when the code review was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimeStamp" /></td>
+    <td><CopyableCode code="last_updated_time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in milliseconds since the epoch, when the code review was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>object</code></td>
     <td>The statistics from the code review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the code review. (pattern: &lt;code&gt;^\S&#91;\w.-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the repository. For an Amazon Web Services CodeCommit repository, this is the Amazon Web Services account ID of the account that owns the repository. For a GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the username for the account that owns the repository. For an S3 repository, it can be the username or Amazon Web Services account ID. (pattern: &lt;code&gt;^\S(.*\S)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of repository that contains the reviewed code (for example, GitHub or Bitbucket). (CodeCommit, GitHub, Bitbucket, GitHubEnterpriseServer, S3Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PullRequestId" /></td>
+    <td><CopyableCode code="pull_request_id" /></td>
     <td><code>string</code></td>
     <td>The pull request ID for the code review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RepositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository. (pattern: &lt;code&gt;^\S&#91;\w.-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceCodeType" /></td>
+    <td><CopyableCode code="source_code_type" /></td>
     <td><code>object</code></td>
     <td>Specifies the source code that is analyzed in a code review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The valid code review states are: Completed: The code review is complete. Pending: The code review started and has not completed or failed. Failed: The code review failed. Deleting: The code review is being deleted. (Completed, Pending, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the state of the code review.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of code review. (PullRequest, RepositoryAnalysis)</td>
 </tr>
@@ -269,8 +269,8 @@ Lists all the code reviews that the customer has created in the past 90 days.
 
 ```sql
 SELECT
-CodeReviewSummaries,
-NextToken
+code_review_summaries,
+next_token
 FROM aws.codeguru_reviewer.code_reviews
 WHERE Type = '{{ Type }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,22 +288,22 @@ Returns the metadata associated with the code review along with its status.
 
 ```sql
 SELECT
-AnalysisTypes,
-AssociationArn,
-CodeReviewArn,
-ConfigFileState,
-CreatedTimeStamp,
-LastUpdatedTimeStamp,
-Metrics,
-Name,
-Owner,
-ProviderType,
-PullRequestId,
-RepositoryName,
-SourceCodeType,
-State,
-StateReason,
-Type
+analysis_types,
+association_arn,
+code_review_arn,
+config_file_state,
+created_time_stamp,
+last_updated_time_stamp,
+metrics,
+name,
+owner,
+provider_type,
+pull_request_id,
+repository_name,
+source_code_type,
+state,
+state_reason,
+type
 FROM aws.codeguru_reviewer.code_reviews
 WHERE code_review_arn = '{{ code_review_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -341,7 +341,7 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-CodeReview
+code_review
 ;
 ```
 </TabItem>

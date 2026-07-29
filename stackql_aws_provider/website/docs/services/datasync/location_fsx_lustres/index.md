@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the FSx for Lustre location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the FSx for Lustre location that was described. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the FSx for Lustre location that was described. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupArns" /></td>
+    <td><CopyableCode code="security_group_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the security groups that are configured for the FSx for Lustre file system.</td>
 </tr>
@@ -148,10 +148,10 @@ Provides details about how an DataSync transfer location for an Amazon FSx for L
 
 ```sql
 SELECT
-CreationTime,
-LocationArn,
-LocationUri,
-SecurityGroupArns
+creation_time,
+location_arn,
+location_uri,
+security_group_arns
 FROM aws.datasync.location_fsx_lustres
 WHERE region = '{{ region }}' -- required
 ;
@@ -188,7 +188,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

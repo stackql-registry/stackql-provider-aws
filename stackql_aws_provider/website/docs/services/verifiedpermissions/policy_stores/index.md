@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the policy store. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cedarVersion" /></td>
+    <td><CopyableCode code="cedar_version" /></td>
     <td><code>string</code></td>
     <td>The version of the Cedar language used with policies, policy templates, and schemas in this policy store. For more information, see Amazon Verified Permissions upgrade to Cedar v4 FAQ. (CEDAR_2, CEDAR_4)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy store was originally created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted. The default state is DISABLED. (ENABLED, DISABLED)</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>Descriptive text that you can provide to help with identification of the current policy store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionState" /></td>
+    <td><CopyableCode code="encryption_state" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the encryption configuration for the policy store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy store was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy store; (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of tags associated with the policy store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationSettings" /></td>
+    <td><CopyableCode code="validation_settings" /></td>
     <td><code>object</code></td>
     <td>The current validation settings for the policy store.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the policy store. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the policy was created.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>Descriptive text that you can provide to help with identification of the current policy store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the policy store was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the policy store. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -262,15 +262,15 @@ Retrieves details about a policy store.
 ```sql
 SELECT
 arn,
-cedarVersion,
-createdDate,
-deletionProtection,
+cedar_version,
+created_date,
+deletion_protection,
 description,
-encryptionState,
-lastUpdatedDate,
-policyStoreId,
+encryption_state,
+last_updated_date,
+policy_store_id,
 tags,
-validationSettings
+validation_settings
 FROM aws.verifiedpermissions.policy_stores
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,10 +283,10 @@ Returns a paginated list of all policy stores in the calling Amazon Web Services
 ```sql
 SELECT
 arn,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
-policyStoreId
+last_updated_date,
+policy_store_id
 FROM aws.verifiedpermissions.policy_stores
 WHERE region = '{{ region }}' -- required
 ;
@@ -328,9 +328,9 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-createdDate,
-lastUpdatedDate,
-policyStoreId
+created_date,
+last_updated_date,
+policy_store_id
 ;
 ```
 </TabItem>
@@ -403,9 +403,9 @@ AND policyStoreId = '{{ policyStoreId }}' --required
 AND validationSettings = '{{ validationSettings }}' --required
 RETURNING
 arn,
-createdDate,
-lastUpdatedDate,
-policyStoreId;
+created_date,
+last_updated_date,
+policy_store_id;
 ```
 </TabItem>
 </Tabs>

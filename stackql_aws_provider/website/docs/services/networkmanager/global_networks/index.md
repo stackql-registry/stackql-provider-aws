@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the global network was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkArn" /></td>
+    <td><CopyableCode code="global_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the global network. (PENDING, AVAILABLE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags for the global network.</td>
 </tr>
@@ -223,12 +223,12 @@ Describes one or more global networks. By default, all global networks are descr
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-GlobalNetworkArn,
-GlobalNetworkId,
-State,
-Tags
+created_at,
+description,
+global_network_arn,
+global_network_id,
+state,
+tags
 FROM aws.networkmanager.global_networks
 WHERE region = '{{ region }}' -- required
 AND globalNetworkIds = '{{ globalNetworkIds }}'
@@ -265,7 +265,7 @@ SELECT
 '{{ global_network_id }}',
 '{{ region }}'
 RETURNING
-TransitGatewayRegistration
+transit_gateway_registration
 ;
 ```
 </TabItem>
@@ -284,7 +284,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-GlobalNetwork
+global_network
 ;
 ```
 </TabItem>
@@ -339,7 +339,7 @@ AND region = '{{ region }}' --required
 AND CustomerGatewayArn = '{{ CustomerGatewayArn }}' --required
 AND DeviceId = '{{ DeviceId }}' --required
 RETURNING
-CustomerGatewayAssociation;
+customer_gateway_association;
 ```
 </TabItem>
 <TabItem value="disassociate_customer_gateway">
@@ -355,7 +355,7 @@ global_network_id = '{{ global_network_id }}' --required
 AND customer_gateway_arn = '{{ customer_gateway_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CustomerGatewayAssociation;
+customer_gateway_association;
 ```
 </TabItem>
 <TabItem value="update_global_network">
@@ -370,7 +370,7 @@ WHERE
 global_network_id = '{{ global_network_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-GlobalNetwork;
+global_network;
 ```
 </TabItem>
 </Tabs>

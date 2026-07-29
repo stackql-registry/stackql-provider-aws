@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClassifierMetadata" /></td>
+    <td><CopyableCode code="classifier_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the document classifier, including the number of documents used for training the classifier, the number of documents used for test the classifier, and an accuracy rating.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to your input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentClassifierArn" /></td>
+    <td><CopyableCode code="document_classifier_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the document classifier. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:document-classifier/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training the document classifier completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the flywheel (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>The input data configuration that you supplied when you created the document classifier for training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code for the language of the documents that the classifier was trained on. (en, es, fr, de, it, pt, ar, hi, ja, ko, zh, zh-TW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the classifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>Indicates the mode in which the specific classifier was trained. This also indicates the format of input documents and the format of the confusion matrix. Each classifier can only be trained in one mode and this cannot be changed once the classifier is trained. (MULTI_CLASS, MULTI_LABEL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelKmsKeyId" /></td>
+    <td><CopyableCode code="model_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the KMS key that Amazon Comprehend uses to encrypt trained custom models. The ModelKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Provides output results configuration parameters for custom classifier jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceModelArn" /></td>
+    <td><CopyableCode code="source_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source model. This model was imported from a different Amazon Web Services account to create the document classifier model in your Amazon Web Services account. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:document-classifier/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the document classifier. If the status is TRAINED the classifier is ready to use. If the status is TRAINED_WITH_WARNINGS the classifier training succeeded, but you should review the warnings returned in the CreateDocumentClassifier response. If the status is FAILED you can see additional information about why the classifier wasn't trained in the Message field. (SUBMITTED, TRAINING, DELETING, STOP_REQUESTED, STOPPED, IN_ERROR, TRAINED, TRAINED_WITH_WARNING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the document classifier was submitted for training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingEndTime" /></td>
+    <td><CopyableCode code="training_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training of the document classifier was completed. Indicates the time when the training completes on documentation classifiers. You are billed for the time interval between this time and the value of TrainingStartTime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingStartTime" /></td>
+    <td><CopyableCode code="training_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time when the training starts on documentation classifiers. You are billed for the time interval between this time and the value of TrainingEndTime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The version name that you assigned to the document classifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeKmsKeyId" /></td>
+    <td><CopyableCode code="volume_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see Amazon VPC.</td>
 </tr>
@@ -160,97 +160,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClassifierMetadata" /></td>
+    <td><CopyableCode code="classifier_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the document classifier, including the number of documents used for training the classifier, the number of documents used for test the classifier, and an accuracy rating.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to your input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentClassifierArn" /></td>
+    <td><CopyableCode code="document_classifier_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the document classifier. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:document-classifier/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training the document classifier completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the flywheel (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>The input data configuration that you supplied when you created the document classifier for training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code for the language of the documents that the classifier was trained on. (en, es, fr, de, it, pt, ar, hi, ja, ko, zh, zh-TW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the classifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>Indicates the mode in which the specific classifier was trained. This also indicates the format of input documents and the format of the confusion matrix. Each classifier can only be trained in one mode and this cannot be changed once the classifier is trained. (MULTI_CLASS, MULTI_LABEL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelKmsKeyId" /></td>
+    <td><CopyableCode code="model_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the KMS key that Amazon Comprehend uses to encrypt trained custom models. The ModelKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Provides output results configuration parameters for custom classifier jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceModelArn" /></td>
+    <td><CopyableCode code="source_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source model. This model was imported from a different Amazon Web Services account to create the document classifier model in your Amazon Web Services account. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:document-classifier/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the document classifier. If the status is TRAINED the classifier is ready to use. If the status is TRAINED_WITH_WARNINGS the classifier training succeeded, but you should review the warnings returned in the CreateDocumentClassifier response. If the status is FAILED you can see additional information about why the classifier wasn't trained in the Message field. (SUBMITTED, TRAINING, DELETING, STOP_REQUESTED, STOPPED, IN_ERROR, TRAINED, TRAINED_WITH_WARNING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the document classifier was submitted for training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingEndTime" /></td>
+    <td><CopyableCode code="training_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that training of the document classifier was completed. Indicates the time when the training completes on documentation classifiers. You are billed for the time interval between this time and the value of TrainingStartTime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingStartTime" /></td>
+    <td><CopyableCode code="training_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time when the training starts on documentation classifiers. You are billed for the time interval between this time and the value of TrainingEndTime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The version name that you assigned to the document classifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeKmsKeyId" /></td>
+    <td><CopyableCode code="volume_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see Amazon VPC.</td>
 </tr>
@@ -348,25 +348,25 @@ Gets the properties associated with a document classifier.
 
 ```sql
 SELECT
-ClassifierMetadata,
-DataAccessRoleArn,
-DocumentClassifierArn,
-EndTime,
-FlywheelArn,
-InputDataConfig,
-LanguageCode,
-Message,
-Mode,
-ModelKmsKeyId,
-OutputDataConfig,
-SourceModelArn,
-Status,
-SubmitTime,
-TrainingEndTime,
-TrainingStartTime,
-VersionName,
-VolumeKmsKeyId,
-VpcConfig
+classifier_metadata,
+data_access_role_arn,
+document_classifier_arn,
+end_time,
+flywheel_arn,
+input_data_config,
+language_code,
+message,
+mode,
+model_kms_key_id,
+output_data_config,
+source_model_arn,
+status,
+submit_time,
+training_end_time,
+training_start_time,
+version_name,
+volume_kms_key_id,
+vpc_config
 FROM aws.comprehend.document_classifiers
 WHERE region = '{{ region }}' -- required
 ;
@@ -378,25 +378,25 @@ Gets a list of the document classifiers that you have created.
 
 ```sql
 SELECT
-ClassifierMetadata,
-DataAccessRoleArn,
-DocumentClassifierArn,
-EndTime,
-FlywheelArn,
-InputDataConfig,
-LanguageCode,
-Message,
-Mode,
-ModelKmsKeyId,
-OutputDataConfig,
-SourceModelArn,
-Status,
-SubmitTime,
-TrainingEndTime,
-TrainingStartTime,
-VersionName,
-VolumeKmsKeyId,
-VpcConfig
+classifier_metadata,
+data_access_role_arn,
+document_classifier_arn,
+end_time,
+flywheel_arn,
+input_data_config,
+language_code,
+message,
+mode,
+model_kms_key_id,
+output_data_config,
+source_model_arn,
+status,
+submit_time,
+training_end_time,
+training_start_time,
+version_name,
+volume_kms_key_id,
+vpc_config
 FROM aws.comprehend.document_classifiers
 WHERE region = '{{ region }}' -- required
 ;
@@ -451,7 +451,7 @@ SELECT
 '{{ ModelPolicy }}',
 '{{ region }}'
 RETURNING
-DocumentClassifierArn
+document_classifier_arn
 ;
 ```
 </TabItem>

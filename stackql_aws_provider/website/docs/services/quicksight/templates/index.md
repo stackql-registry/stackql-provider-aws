@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Template" /></td>
+    <td><CopyableCode code="template" /></td>
     <td><code>object</code></td>
     <td>The template structure for the object you want to describe.</td>
 </tr>
@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A summary of a template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this template was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersionNumber" /></td>
+    <td><CopyableCode code="latest_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>A structure containing a list of version numbers for the template summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A display name for the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the template. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -233,9 +233,9 @@ Describes a template's metadata.
 
 ```sql
 SELECT
-RequestId,
-Status,
-Template
+request_id,
+status,
+template
 FROM aws.quicksight.templates
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND template_id = '{{ template_id }}' -- required
@@ -251,12 +251,12 @@ Lists all the templates in the current Amazon Quick Sight account.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-LastUpdatedTime,
-LatestVersionNumber,
-Name,
-TemplateId
+arn,
+created_time,
+last_updated_time,
+latest_version_number,
+name,
+template_id
 FROM aws.quicksight.templates
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -306,12 +306,12 @@ SELECT
 '{{ template_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationStatus,
-RequestId,
-Status,
-TemplateId,
-VersionArn
+arn,
+creation_status,
+request_id,
+status,
+template_id,
+version_arn
 ;
 ```
 </TabItem>
@@ -586,12 +586,12 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND template_id = '{{ template_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-CreationStatus,
-RequestId,
-Status,
-TemplateId,
-VersionArn;
+arn,
+creation_status,
+request_id,
+status,
+template_id,
+version_arn;
 ```
 </TabItem>
 </Tabs>

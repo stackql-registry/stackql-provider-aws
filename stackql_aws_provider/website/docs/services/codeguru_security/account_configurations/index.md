@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The KMS key ARN that is used for encryption. If an AWS-managed key is used for encryption, returns empty. (pattern: &lt;code&gt;arn:aws:kms:&#91;\S&#93;+:&#91;\d&#93;&#123;12&#125;:key\/((&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)|(mrk-&#91;0-9a-zA-Z&#93;&#123;32&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -126,7 +126,7 @@ Use to get the encryption configuration for an account.
 
 ```sql
 SELECT
-kmsKeyArn
+kms_key_arn
 FROM aws.codeguru_security.account_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -155,7 +155,7 @@ WHERE
 region = '{{ region }}' --required
 AND encryptionConfig = '{{ encryptionConfig }}' --required
 RETURNING
-encryptionConfig;
+encryption_config;
 ```
 </TabItem>
 </Tabs>

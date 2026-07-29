@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockDeviceMappings" /></td>
+    <td><CopyableCode code="block_device_mappings" /></td>
     <td><code>string</code></td>
     <td>The block device mapping of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableApiStop" /></td>
+    <td><CopyableCode code="disable_api_stop" /></td>
     <td><code>string</code></td>
     <td>Indicates whether stop protection is enabled for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableApiTermination" /></td>
+    <td><CopyableCode code="disable_api_termination" /></td>
     <td><code>string</code></td>
     <td>Indicates whether termination protection is enabled. If the value is true, you can't terminate the instance using the Amazon EC2 console, command line tools, or API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EbsOptimized" /></td>
+    <td><CopyableCode code="ebs_optimized" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the instance is optimized for Amazon EBS I/O.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnaSupport" /></td>
+    <td><CopyableCode code="ena_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether enhanced networking with ENA is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnclaveOptions" /></td>
+    <td><CopyableCode code="enclave_options" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the instance is enabled for Amazon Web Services Nitro Enclaves.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>string</code></td>
     <td>The security groups associated with the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceInitiatedShutdownBehavior" /></td>
+    <td><CopyableCode code="instance_initiated_shutdown_behavior" /></td>
     <td><code>string</code></td>
     <td>Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KernelId" /></td>
+    <td><CopyableCode code="kernel_id" /></td>
     <td><code>string</code></td>
     <td>The kernel ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCodes" /></td>
+    <td><CopyableCode code="product_codes" /></td>
     <td><code>string</code></td>
     <td>The product codes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RamdiskId" /></td>
+    <td><CopyableCode code="ramdisk_id" /></td>
     <td><code>string</code></td>
     <td>The RAM disk ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootDeviceName" /></td>
+    <td><CopyableCode code="root_device_name" /></td>
     <td><code>string</code></td>
     <td>The device name of the root device volume (for example, /dev/sda1).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDestCheck" /></td>
+    <td><CopyableCode code="source_dest_check" /></td>
     <td><code>string</code></td>
     <td>Indicates whether source/destination checks are enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SriovNetSupport" /></td>
+    <td><CopyableCode code="sriov_net_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserData" /></td>
+    <td><CopyableCode code="user_data" /></td>
     <td><code>string</code></td>
     <td>The user data.</td>
 </tr>
@@ -296,23 +296,23 @@ Describes the specified attribute of the specified instance. You can specify onl
 
 ```sql
 SELECT
-BlockDeviceMappings,
-DisableApiStop,
-DisableApiTermination,
-EbsOptimized,
-EnaSupport,
-EnclaveOptions,
-Groups,
-InstanceId,
-InstanceInitiatedShutdownBehavior,
-InstanceType,
-KernelId,
-ProductCodes,
-RamdiskId,
-RootDeviceName,
-SourceDestCheck,
-SriovNetSupport,
-UserData
+block_device_mappings,
+disable_api_stop,
+disable_api_termination,
+ebs_optimized,
+ena_support,
+enclave_options,
+groups,
+instance_id,
+instance_initiated_shutdown_behavior,
+instance_type,
+kernel_id,
+product_codes,
+ramdisk_id,
+root_device_name,
+source_dest_check,
+sriov_net_support,
+user_data
 FROM aws.ec2.instance_attributes
 WHERE InstanceId = '{{ InstanceId }}' -- required
 AND Attribute = '{{ Attribute }}' -- required

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Database" /></td>
+    <td><CopyableCode code="database" /></td>
     <td><code>object</code></td>
     <td>The SAP HANA database of an application registered with AWS Systems Manager for SAP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of a database.</td>
 </tr>
@@ -75,32 +75,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application. (pattern: &lt;code&gt;&#91;\w\d\.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the database. (pattern: &lt;code&gt;arn:(.+:)&#123;2,4&#125;.+$|^arn:(.+:)&#123;1,3&#125;.+\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComponentId" /></td>
+    <td><CopyableCode code="component_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the component. (pattern: &lt;code&gt;&#91;\w\d-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseId" /></td>
+    <td><CopyableCode code="database_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the database. (pattern: &lt;code&gt;.*&#91;\w\d&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseType" /></td>
+    <td><CopyableCode code="database_type" /></td>
     <td><code>string</code></td>
     <td>The type of the database. (SYSTEM, TENANT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of the database.</td>
 </tr>
@@ -177,8 +177,8 @@ Gets the SAP HANA database of an application registered with AWS Systems Manager
 
 ```sql
 SELECT
-Database,
-Tags
+database,
+tags
 FROM aws.ssm_sap.databases
 WHERE region = '{{ region }}' -- required
 ;
@@ -190,12 +190,12 @@ Lists the SAP HANA databases of an application registered with AWS Systems Manag
 
 ```sql
 SELECT
-ApplicationId,
-Arn,
-ComponentId,
-DatabaseId,
-DatabaseType,
-Tags
+application_id,
+arn,
+component_id,
+database_id,
+database_type,
+tags
 FROM aws.ssm_sap.databases
 WHERE region = '{{ region }}' -- required
 ;

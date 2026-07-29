@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the workload. This ID is unique within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadShareSummaries" /></td>
+    <td><CopyableCode code="workload_share_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of workload share summaries.</td>
 </tr>
@@ -185,9 +185,9 @@ List the workload shares associated with the workload.
 
 ```sql
 SELECT
-NextToken,
-WorkloadId,
-WorkloadShareSummaries
+next_token,
+workload_id,
+workload_share_summaries
 FROM aws.wellarchitected.workload_shares
 WHERE workload_id = '{{ workload_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,8 +229,8 @@ SELECT
 '{{ workload_id }}',
 '{{ region }}'
 RETURNING
-ShareId,
-WorkloadId
+share_id,
+workload_id
 ;
 ```
 </TabItem>
@@ -286,8 +286,8 @@ AND workload_id = '{{ workload_id }}' --required
 AND region = '{{ region }}' --required
 AND PermissionType = '{{ PermissionType }}' --required
 RETURNING
-WorkloadId,
-WorkloadShare;
+workload_id,
+workload_share;
 ```
 </TabItem>
 </Tabs>

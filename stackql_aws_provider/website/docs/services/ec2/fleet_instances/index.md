@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceHealth" /></td>
+    <td><CopyableCode code="instance_health" /></td>
     <td><code>string</code></td>
     <td>The health status of the instance. If the status of either the instance status check or the system status check is impaired, the health status of the instance is unhealthy. Otherwise, the health status is healthy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotInstanceRequestId" /></td>
+    <td><CopyableCode code="spot_instance_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Spot Instance request.</td>
 </tr>
@@ -159,10 +159,10 @@ Describes the running instances for the specified EC2 Fleet. Currently, Describe
 
 ```sql
 SELECT
-InstanceHealth,
-InstanceId,
-InstanceType,
-SpotInstanceRequestId
+instance_health,
+instance_id,
+instance_type,
+spot_instance_request_id
 FROM aws.ec2.fleet_instances
 WHERE FleetId = '{{ FleetId }}' -- required
 AND region = '{{ region }}' -- required

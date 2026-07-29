@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall rule group association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the association was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallRuleGroupId" /></td>
+    <td><CopyableCode code="firewall_rule_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the firewall rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedOwnerName" /></td>
+    <td><CopyableCode code="managed_owner_name" /></td>
     <td><code>string</code></td>
     <td>The owner of the association, used only for associations that are not managed by you. If you use Firewall Manager to manage your DNS Firewalls, then this reports Firewall Manager as the managed owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the association was last modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MutationProtection" /></td>
+    <td><CopyableCode code="mutation_protection" /></td>
     <td><code>string</code></td>
     <td>If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the association. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The setting that determines the processing order of the rule group among the rule groups that are associated with a single VPC. DNS Firewall filters VPC traffic starting from rule group with the lowest numeric priority setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the association. (COMPLETE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the response, if available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the VPC that is associated with the rule group.</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall rule group association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the association was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallRuleGroupId" /></td>
+    <td><CopyableCode code="firewall_rule_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the firewall rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedOwnerName" /></td>
+    <td><CopyableCode code="managed_owner_name" /></td>
     <td><code>string</code></td>
     <td>The owner of the association, used only for associations that are not managed by you. If you use Firewall Manager to manage your DNS Firewalls, then this reports Firewall Manager as the managed owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the association was last modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MutationProtection" /></td>
+    <td><CopyableCode code="mutation_protection" /></td>
     <td><code>string</code></td>
     <td>If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the association. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The setting that determines the processing order of the rule group among the rule groups that are associated with a single VPC. DNS Firewall filters VPC traffic starting from rule group with the lowest numeric priority setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the association. (COMPLETE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the response, if available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the VPC that is associated with the rule group.</td>
 </tr>
@@ -274,19 +274,19 @@ Retrieves a firewall rule group association, which enables DNS filtering for a V
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CreatorRequestId,
-FirewallRuleGroupId,
-Id,
-ManagedOwnerName,
-ModificationTime,
-MutationProtection,
-Name,
-Priority,
-Status,
-StatusMessage,
-VpcId
+arn,
+creation_time,
+creator_request_id,
+firewall_rule_group_id,
+id,
+managed_owner_name,
+modification_time,
+mutation_protection,
+name,
+priority,
+status,
+status_message,
+vpc_id
 FROM aws.route53resolver.firewall_rule_group_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -298,19 +298,19 @@ Retrieves the firewall rule group associations that you have defined. Each assoc
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CreatorRequestId,
-FirewallRuleGroupId,
-Id,
-ManagedOwnerName,
-ModificationTime,
-MutationProtection,
-Name,
-Priority,
-Status,
-StatusMessage,
-VpcId
+arn,
+creation_time,
+creator_request_id,
+firewall_rule_group_id,
+id,
+managed_owner_name,
+modification_time,
+mutation_protection,
+name,
+priority,
+status,
+status_message,
+vpc_id
 FROM aws.route53resolver.firewall_rule_group_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -342,7 +342,7 @@ WHERE
 region = '{{ region }}' --required
 AND FirewallRuleGroupAssociationId = '{{ FirewallRuleGroupAssociationId }}' --required
 RETURNING
-FirewallRuleGroupAssociation;
+firewall_rule_group_association;
 ```
 </TabItem>
 </Tabs>

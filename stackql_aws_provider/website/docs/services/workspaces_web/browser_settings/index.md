@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalEncryptionContext" /></td>
+    <td><CopyableCode code="additional_encryption_context" /></td>
     <td><code>object</code></td>
     <td>The additional encryption context of the browser settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedPortalArns" /></td>
+    <td><CopyableCode code="associated_portal_arns" /></td>
     <td><code>array</code></td>
     <td>A list of web portal ARNs that this browser settings is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserPolicy" /></td>
+    <td><CopyableCode code="browser_policy" /></td>
     <td><code>string</code></td>
     <td>A JSON string containing Chrome Enterprise policies that will be applied to all streaming sessions. (pattern: &lt;code&gt;\&#123;&#91;\S\s&#93;*\&#125;\s*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="browserSettingsArn" /></td>
+    <td><CopyableCode code="browser_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the browser settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerManagedKey" /></td>
+    <td><CopyableCode code="customer_managed_key" /></td>
     <td><code>string</code></td>
     <td>The customer managed key used to encrypt sensitive information in the browser settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:kms:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:key\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webContentFilteringPolicy" /></td>
+    <td><CopyableCode code="web_content_filtering_policy" /></td>
     <td><code>object</code></td>
     <td>The policy that specifies which URLs end users are allowed to access or which URLs or domain categories they are restricted from accessing for enhanced security.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="browserSettings" /></td>
+    <td><CopyableCode code="browser_settings" /></td>
     <td><code>array</code></td>
     <td>The browser settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -237,12 +237,12 @@ Gets browser settings.
 
 ```sql
 SELECT
-additionalEncryptionContext,
-associatedPortalArns,
-browserPolicy,
-browserSettingsArn,
-customerManagedKey,
-webContentFilteringPolicy
+additional_encryption_context,
+associated_portal_arns,
+browser_policy,
+browser_settings_arn,
+customer_managed_key,
+web_content_filtering_policy
 FROM aws.workspaces_web.browser_settings
 WHERE browser_settings_arn = '{{ browser_settings_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -255,8 +255,8 @@ Retrieves a list of browser settings.
 
 ```sql
 SELECT
-browserSettings,
-nextToken
+browser_settings,
+next_token
 FROM aws.workspaces_web.browser_settings
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -299,7 +299,7 @@ SELECT
 '{{ webContentFilteringPolicy }}',
 '{{ region }}'
 RETURNING
-browserSettingsArn
+browser_settings_arn
 ;
 ```
 </TabItem>
@@ -362,8 +362,8 @@ portal_arn = '{{ portal_arn }}' --required
 AND browserSettingsArn = '{{ browserSettingsArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-browserSettingsArn,
-portalArn;
+browser_settings_arn,
+portal_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_browser_settings">
@@ -393,7 +393,7 @@ WHERE
 browser_settings_arn = '{{ browser_settings_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-browserSettings;
+browser_settings;
 ```
 </TabItem>
 </Tabs>

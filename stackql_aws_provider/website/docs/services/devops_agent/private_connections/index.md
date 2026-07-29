@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>Unique name for a Private Connection within an account. (pattern: &lt;code&gt;&#91;a-z0-9&#93;(&#91;a-z0-9-&#93;*&#91;a-z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateExpiryTime" /></td>
+    <td><CopyableCode code="certificate_expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiry time of the certificate associated with the Private Connection. Only present when a certificate is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostAddress" /></td>
+    <td><CopyableCode code="host_address" /></td>
     <td><code>string</code></td>
     <td>IP address or DNS name of the target resource. Only present for service-managed Private Connections. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.:\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationId" /></td>
+    <td><CopyableCode code="resource_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The Resource Configuration ARN. Only present for self-managed Private Connections. (pattern: &lt;code&gt;(arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceconfiguration/rcfg-&#91;0-9a-z&#93;&#123;17&#125;|rcfg-&#91;0-9a-z&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceGatewayId" /></td>
+    <td><CopyableCode code="resource_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The service-managed Resource Gateway ARN. Only present for service-managed Private Connections. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourcegateway/rgw-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the Private Connection. (SELF_MANAGED, SERVICE_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>VPC identifier of the service-managed Resource Gateway. Only present for service-managed Private Connections. (pattern: &lt;code&gt;vpc-((&#91;0-9a-z&#93;&#123;8&#125;)|(&#91;0-9a-z&#93;&#123;17&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="privateConnections" /></td>
+    <td><CopyableCode code="private_connections" /></td>
     <td><code>array</code></td>
     <td>The list of Private Connections.</td>
 </tr>
@@ -214,14 +214,14 @@ Retrieves details of an existing Private Connection.
 ```sql
 SELECT
 name,
-certificateExpiryTime,
-hostAddress,
-resourceConfigurationId,
-resourceGatewayId,
+certificate_expiry_time,
+host_address,
+resource_configuration_id,
+resource_gateway_id,
 status,
 tags,
 type_,
-vpcId
+vpc_id
 FROM aws.devops_agent.private_connections
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -234,7 +234,7 @@ Lists all Private Connections in the caller's account.
 
 ```sql
 SELECT
-privateConnections
+private_connections
 FROM aws.devops_agent.private_connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -270,14 +270,14 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-certificateExpiryTime,
-hostAddress,
-resourceConfigurationId,
-resourceGatewayId,
+certificate_expiry_time,
+host_address,
+resource_configuration_id,
+resource_gateway_id,
 status,
 tags,
 type_,
-vpcId
+vpc_id
 ;
 ```
 </TabItem>
@@ -344,13 +344,13 @@ AND region = '{{ region }}' --required
 AND certificate = '{{ certificate }}' --required
 RETURNING
 name,
-certificateExpiryTime,
-hostAddress,
-resourceConfigurationId,
-resourceGatewayId,
+certificate_expiry_time,
+host_address,
+resource_configuration_id,
+resource_gateway_id,
 status,
 type_,
-vpcId;
+vpc_id;
 ```
 </TabItem>
 </Tabs>

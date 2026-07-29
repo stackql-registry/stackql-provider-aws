@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was created.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>A genome reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sseConfig" /></td>
+    <td><CopyableCode code="sse_config" /></td>
     <td><code>object</code></td>
     <td>Server-side encryption (SSE) settings for a store.</td>
 </tr>
@@ -86,17 +86,17 @@ The following fields are returned by `SELECT` queries:
     <td>The store's status. (CREATING, UPDATING, DELETING, ACTIVE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The store's status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeArn" /></td>
+    <td><CopyableCode code="store_arn" /></td>
     <td><code>string</code></td>
     <td>The store's ARN. (pattern: &lt;code&gt;arn:(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeSizeBytes" /></td>
+    <td><CopyableCode code="store_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The store's size in bytes.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was updated.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was created.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>A genome reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sseConfig" /></td>
+    <td><CopyableCode code="sse_config" /></td>
     <td><code>object</code></td>
     <td>Server-side encryption (SSE) settings for a store.</td>
 </tr>
@@ -160,22 +160,22 @@ The following fields are returned by `SELECT` queries:
     <td>The store's status. (CREATING, UPDATING, DELETING, ACTIVE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The store's status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeArn" /></td>
+    <td><CopyableCode code="store_arn" /></td>
     <td><code>string</code></td>
     <td>The store's ARN. (pattern: &lt;code&gt;arn:(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storeSizeBytes" /></td>
+    <td><CopyableCode code="store_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The store's size in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was updated.</td>
 </tr>
@@ -295,16 +295,16 @@ Amazon Web Services HealthOmics variant stores and annotation stores are no long
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
 reference,
-sseConfig,
+sse_config,
 status,
-statusMessage,
-storeArn,
-storeSizeBytes,
+status_message,
+store_arn,
+store_size_bytes,
 tags,
-updateTime
+update_time
 FROM aws.omics.variant_stores
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -319,15 +319,15 @@ Amazon Web Services HealthOmics variant stores and annotation stores are no long
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
 reference,
-sseConfig,
+sse_config,
 status,
-statusMessage,
-storeArn,
-storeSizeBytes,
-updateTime
+status_message,
+store_arn,
+store_size_bytes,
+update_time
 FROM aws.omics.variant_stores
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -370,7 +370,7 @@ SELECT
 RETURNING
 id,
 name,
-creationTime,
+creation_time,
 reference,
 status
 ;
@@ -429,11 +429,11 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-creationTime,
+creation_time,
 description,
 reference,
 status,
-updateTime;
+update_time;
 ```
 </TabItem>
 </Tabs>

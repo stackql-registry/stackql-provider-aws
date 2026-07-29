@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future ListImageReferrers request. When the results of a ListImageReferrers request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -124,7 +124,7 @@ Lists the artifacts associated with a specified subject image. The IAM principal
 
 ```sql
 SELECT
-nextToken,
+next_token,
 referrers
 FROM aws.ecr.image_referrers
 WHERE region = '{{ region }}' -- required

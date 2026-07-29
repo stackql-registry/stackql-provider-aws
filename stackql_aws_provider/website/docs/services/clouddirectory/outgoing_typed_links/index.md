@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityAttributeValues" /></td>
+    <td><CopyableCode code="identity_attribute_values" /></td>
     <td><code>array</code></td>
     <td>Identifies the attribute value to update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceObjectReference" /></td>
+    <td><CopyableCode code="source_object_reference" /></td>
     <td><code>object</code></td>
     <td>The reference that identifies an object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetObjectReference" /></td>
+    <td><CopyableCode code="target_object_reference" /></td>
     <td><code>object</code></td>
     <td>The reference that identifies an object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypedLinkFacet" /></td>
+    <td><CopyableCode code="typed_link_facet" /></td>
     <td><code>object</code></td>
     <td>Identifies the schema Amazon Resource Name (ARN) and facet name for the typed link.</td>
 </tr>
@@ -139,10 +139,10 @@ Returns a paginated list of all the outgoing TypedLinkSpecifier information for 
 
 ```sql
 SELECT
-IdentityAttributeValues,
-SourceObjectReference,
-TargetObjectReference,
-TypedLinkFacet
+identity_attribute_values,
+source_object_reference,
+target_object_reference,
+typed_link_facet
 FROM aws.clouddirectory.outgoing_typed_links
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

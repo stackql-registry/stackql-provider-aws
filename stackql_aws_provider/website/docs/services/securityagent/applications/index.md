@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>Application identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultKmsKeyId" /></td>
+    <td><CopyableCode code="default_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of a KMS key. Can be a key ID, key ARN, alias name, or alias ARN.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The domain associated with the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idcConfiguration" /></td>
+    <td><CopyableCode code="idc_configuration" /></td>
     <td><code>object</code></td>
     <td>The IAM Identity Center configuration for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the IAM role that the application uses to access AWS resources on your behalf.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>Application identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultKmsKeyId" /></td>
+    <td><CopyableCode code="default_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of a KMS key. Can be a key ID, key ARN, alias name, or alias ARN.</td>
 </tr>
@@ -208,12 +208,12 @@ Retrieves information about an application.
 
 ```sql
 SELECT
-applicationId,
-applicationName,
-defaultKmsKeyId,
+application_id,
+application_name,
+default_kms_key_id,
 domain,
-idcConfiguration,
-roleArn
+idc_configuration,
+role_arn
 FROM aws.securityagent.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,9 +225,9 @@ Returns a paginated list of application summaries in your account.
 
 ```sql
 SELECT
-applicationId,
-applicationName,
-defaultKmsKeyId,
+application_id,
+application_name,
+default_kms_key_id,
 domain
 FROM aws.securityagent.applications
 WHERE region = '{{ region }}' -- required
@@ -265,7 +265,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-applicationId
+application_id
 ;
 ```
 </TabItem>
@@ -321,7 +321,7 @@ WHERE
 region = '{{ region }}' --required
 AND applicationId = '{{ applicationId }}' --required
 RETURNING
-applicationId;
+application_id;
 ```
 </TabItem>
 </Tabs>

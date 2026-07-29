@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata that's applied to the task definition to help you categorize and organize them. Each tag consists of a key and an optional value. You define both. The following basic restrictions apply to tags: Maximum number of tags per resource - 50 For each resource, each tag key must be unique, and each tag key can have only one value. Maximum key length - 128 Unicode characters in UTF-8 Maximum value length - 256 Unicode characters in UTF-8 If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys and values are case-sensitive. Do not use aws:, AWS:, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for Amazon Web Services use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskDefinition" /></td>
+    <td><CopyableCode code="task_definition" /></td>
     <td><code>object</code></td>
     <td>The details of a task definition which describes the container and volume definitions of an Amazon Elastic Container Service task. You can specify which Docker images to use, the required resources, and other configurations related to launching the task definition through an Amazon ECS service or task.</td>
 </tr>
@@ -174,7 +174,7 @@ Describes a task definition. You can specify a family and revision to find infor
 ```sql
 SELECT
 tags,
-taskDefinition
+task_definition
 FROM aws.ecs.task_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,7 +252,7 @@ SELECT
 '{{ region }}'
 RETURNING
 tags,
-taskDefinition
+task_definition
 ;
 ```
 </TabItem>

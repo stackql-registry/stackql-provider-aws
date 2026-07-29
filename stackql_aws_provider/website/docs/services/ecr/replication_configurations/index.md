@@ -101,7 +101,7 @@ WHERE
 region = '{{ region }}' --required
 AND replicationConfiguration = '{{ replicationConfiguration }}' --required
 RETURNING
-replicationConfiguration;
+replication_configuration;
 ```
 </TabItem>
 </Tabs>

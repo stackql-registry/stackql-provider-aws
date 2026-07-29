@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The number of Redshift Processing Units (RPUs) to reserve.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end date for the serverless reservation. This date is one year after the start date that you specify.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The type of offering for the reservation. The offering class determines the payment schedule for the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservationArn" /></td>
+    <td><CopyableCode code="reservation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the serverless reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservationId" /></td>
+    <td><CopyableCode code="reservation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier that uniquely identifies the serverless reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date for the serverless reservation. This is the date you created the reservation.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The number of Redshift Processing Units (RPUs) to reserve.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end date for the serverless reservation. This date is one year after the start date that you specify.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The type of offering for the reservation. The offering class determines the payment schedule for the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservationArn" /></td>
+    <td><CopyableCode code="reservation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the serverless reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservationId" /></td>
+    <td><CopyableCode code="reservation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier that uniquely identifies the serverless reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date for the serverless reservation. This is the date you created the reservation.</td>
 </tr>
@@ -215,11 +215,11 @@ Gets an Amazon Redshift Serverless reservation. A reservation gives you the opti
 ```sql
 SELECT
 capacity,
-endDate,
+end_date,
 offering,
-reservationArn,
-reservationId,
-startDate,
+reservation_arn,
+reservation_id,
+start_date,
 status
 FROM aws.redshift_serverless.reservations
 WHERE region = '{{ region }}' -- required
@@ -233,11 +233,11 @@ Returns a list of Reservation objects.
 ```sql
 SELECT
 capacity,
-endDate,
+end_date,
 offering,
-reservationArn,
-reservationId,
-startDate,
+reservation_arn,
+reservation_id,
+start_date,
 status
 FROM aws.redshift_serverless.reservations
 WHERE region = '{{ region }}' -- required

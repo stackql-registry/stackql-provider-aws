@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationPolicy" /></td>
+    <td><CopyableCode code="configuration_policy" /></td>
     <td><code>object</code></td>
     <td>An object that defines how Security Hub CSPM is configured. It includes whether Security Hub CSPM is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub CSPM disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub CSPM enables all other controls (including newly released controls).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and ISO 8601 format, that the configuration policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The UUID of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and ISO 8601 format, that the configuration policy was last updated.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The universally unique identifier (UUID) of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration policy. Alphanumeric characters and the following ASCII characters are permitted: -, ., !, *, /. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceEnabled" /></td>
+    <td><CopyableCode code="service_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the service that the configuration policy applies to is enabled in the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and ISO 8601 format, that the configuration policy was last updated.</td>
 </tr>
@@ -252,13 +252,13 @@ Provides information about a configuration policy. Only the Security Hub CSPM de
 
 ```sql
 SELECT
-Arn,
-ConfigurationPolicy,
-CreatedAt,
-Description,
-Id,
-Name,
-UpdatedAt
+arn,
+configuration_policy,
+created_at,
+description,
+id,
+name,
+updated_at
 FROM aws.securityhub.configuration_policies
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -271,12 +271,12 @@ Lists the configuration policies that the Security Hub CSPM delegated administra
 
 ```sql
 SELECT
-Arn,
-Description,
-Id,
-Name,
-ServiceEnabled,
-UpdatedAt
+arn,
+description,
+id,
+name,
+service_enabled,
+updated_at
 FROM aws.securityhub.configuration_policies
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -315,13 +315,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-ConfigurationPolicy,
-CreatedAt,
-Description,
-Id,
-Name,
-UpdatedAt
+arn,
+configuration_policy,
+created_at,
+description,
+id,
+name,
+updated_at
 ;
 ```
 </TabItem>
@@ -384,13 +384,13 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-ConfigurationPolicy,
-CreatedAt,
-Description,
-Id,
-Name,
-UpdatedAt;
+arn,
+configuration_policy,
+created_at,
+description,
+id,
+name,
+updated_at;
 ```
 </TabItem>
 </Tabs>

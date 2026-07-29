@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Contains a map of the key-value pairs for the resource tag or tags assigned to the resource.</td>
 </tr>
@@ -153,9 +153,9 @@ Lists the tags assigned to a resource.
 
 ```sql
 SELECT
-RequestId,
-Status,
-Tags
+request_id,
+status,
+tags
 FROM aws.quicksight.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -187,8 +187,8 @@ resource_arn = '{{ resource_arn }}' --required
 AND keys = '{{ keys }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 <TabItem value="tag_resource">
@@ -203,8 +203,8 @@ WHERE
 resource_arn = '{{ resource_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

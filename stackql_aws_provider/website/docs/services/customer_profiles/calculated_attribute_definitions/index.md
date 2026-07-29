@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeDetails" /></td>
+    <td><CopyableCode code="attribute_details" /></td>
     <td><code>object</code></td>
     <td>Mathematical expression and a list of attribute items specified in that expression.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CalculatedAttributeName" /></td>
+    <td><CopyableCode code="calculated_attribute_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the calculated attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Conditions" /></td>
+    <td><CopyableCode code="conditions" /></td>
     <td><code>object</code></td>
     <td>The conditions including range, object count, and threshold for the calculated attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the calculated attribute definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the calculated attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the calculated attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-\s&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>object</code></td>
     <td>Defines how to filter the objects coming in for calculated attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the calculated attribute definition was most recently edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Readiness" /></td>
+    <td><CopyableCode code="readiness" /></td>
     <td><code>object</code></td>
     <td>Information indicating if the Calculated Attribute is ready for use by confirming all historical data has been processed and reflected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistic" /></td>
+    <td><CopyableCode code="statistic" /></td>
     <td><code>string</code></td>
     <td>The aggregation operation to perform for the calculated attribute. (FIRST_OCCURRENCE, LAST_OCCURRENCE, COUNT, SUM, MINIMUM, MAXIMUM, AVERAGE, MAX_OCCURRENCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the Calculated Attribute creation (whether all historical data has been indexed). (PREPARING, IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseHistoricalData" /></td>
+    <td><CopyableCode code="use_historical_data" /></td>
     <td><code>boolean</code></td>
     <td>Whether historical data ingested before the Calculated Attribute was created should be included in calculations.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The list of calculated attribute definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token from the previous call to ListCalculatedAttributeDefinitions.</td>
 </tr>
@@ -253,19 +253,19 @@ Provides more information on a calculated attribute definition for Customer Prof
 
 ```sql
 SELECT
-AttributeDetails,
-CalculatedAttributeName,
-Conditions,
-CreatedAt,
-Description,
-DisplayName,
-Filter,
-LastUpdatedAt,
-Readiness,
-Statistic,
-Status,
-Tags,
-UseHistoricalData
+attribute_details,
+calculated_attribute_name,
+conditions,
+created_at,
+description,
+display_name,
+filter,
+last_updated_at,
+readiness,
+statistic,
+status,
+tags,
+use_historical_data
 FROM aws.customer_profiles.calculated_attribute_definitions
 WHERE domain_name = '{{ domain_name }}' -- required
 AND calculated_attribute_name = '{{ calculated_attribute_name }}' -- required
@@ -279,8 +279,8 @@ Lists calculated attribute definitions for Customer Profiles
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.calculated_attribute_definitions
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -332,19 +332,19 @@ SELECT
 '{{ calculated_attribute_name }}',
 '{{ region }}'
 RETURNING
-AttributeDetails,
-CalculatedAttributeName,
-Conditions,
-CreatedAt,
-Description,
-DisplayName,
-Filter,
-LastUpdatedAt,
-Readiness,
-Statistic,
-Status,
-Tags,
-UseHistoricalData
+attribute_details,
+calculated_attribute_name,
+conditions,
+created_at,
+description,
+display_name,
+filter,
+last_updated_at,
+readiness,
+statistic,
+status,
+tags,
+use_historical_data
 ;
 ```
 </TabItem>
@@ -433,18 +433,18 @@ domain_name = '{{ domain_name }}' --required
 AND calculated_attribute_name = '{{ calculated_attribute_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AttributeDetails,
-CalculatedAttributeName,
-Conditions,
-CreatedAt,
-Description,
-DisplayName,
-LastUpdatedAt,
-Readiness,
-Statistic,
-Status,
-Tags,
-UseHistoricalData;
+attribute_details,
+calculated_attribute_name,
+conditions,
+created_at,
+description,
+display_name,
+last_updated_at,
+readiness,
+statistic,
+status,
+tags,
+use_historical_data;
 ```
 </TabItem>
 </Tabs>

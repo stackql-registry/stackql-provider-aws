@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>Errors for an execution event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The event ID for an execution event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionBlockType" /></td>
+    <td><CopyableCode code="execution_block_type" /></td>
     <td><code>string</code></td>
     <td>The execution block type for an execution event. (CustomActionLambda, ManualApproval, AuroraGlobalDatabase, EC2AutoScaling, ARCRoutingControl, ARCRegionSwitchPlan, Parallel, ECSServiceScaling, EKSResourceScaling, Route53HealthCheck, DocumentDb, RdsPromoteReadReplica, RdsCreateCrossRegionReplica, LambdaEventSourceMapping)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="previousEventId" /></td>
+    <td><CopyableCode code="previous_event_id" /></td>
     <td><code>string</code></td>
     <td>The event ID of the previous execution event.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resources for an execution event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepName" /></td>
+    <td><CopyableCode code="step_name" /></td>
     <td><code>string</code></td>
     <td>The step name for an execution event.</td>
 </tr>
@@ -161,11 +161,11 @@ Lists the events that occurred during a plan execution. These events provide a d
 SELECT
 description,
 error,
-eventId,
-executionBlockType,
-previousEventId,
+event_id,
+execution_block_type,
+previous_event_id,
 resources,
-stepName,
+step_name,
 timestamp,
 type_
 FROM aws.arc_region_switch.plan_execution_events

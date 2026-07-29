@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoScalingConfiguration" /></td>
+    <td><CopyableCode code="auto_scaling_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration based on which FinSpace will scale in or scale out nodes in your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The availability zone identifiers for the requested regions. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="azMode" /></td>
+    <td><CopyableCode code="az_mode" /></td>
     <td><code>string</code></td>
     <td>The number of availability zones you want to assign per cluster. This can be one of the following SINGLE – Assigns one availability zone per cluster. MULTI – Assigns all the availability zones per cluster. (SINGLE, MULTI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheStorageConfigurations" /></td>
+    <td><CopyableCode code="cache_storage_configurations" /></td>
     <td><code>array</code></td>
     <td>The configurations for a read only cache storage associated with a cluster. This cache will be stored as an FSx Lustre that reads from the S3 store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capacityConfiguration" /></td>
+    <td><CopyableCode code="capacity_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure for the metadata of a cluster. It includes information like the CPUs needed, memory of instances, and number of instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterDescription" /></td>
+    <td><CopyableCode code="cluster_description" /></td>
     <td><code>string</code></td>
     <td>A description of the cluster. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-\.\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>A unique name for the cluster. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the type of KDB database that is being created. The following types are available: HDB – A Historical Database. The data is only accessible with read-only permissions from one of the FinSpace managed kdb databases mounted to the cluster. RDB – A Realtime Database. This type of database captures all the data from a ticker plant and stores it in memory until the end of day, after which it writes all of its data to a disk and reloads the HDB. This cluster type requires local storage for temporary storage of data during the savedown process. If you specify this field in your request, you must provide the savedownStorageConfiguration parameter. GATEWAY – A gateway cluster allows you to access data across processes in kdb systems. It allows you to create your own routing logic using the initialization scripts and custom code. This type of cluster does not require a writable local storage. GP – A general purpose cluster allows you to quickly iterate on code during development by granting greater access to system commands and enabling a fast reload of custom code. This cluster type can optionally mount databases including cache and savedown storage. For this cluster type, the node count is fixed at 1. It does not support autoscaling and supports only SINGLE AZ mode. Tickerplant – A tickerplant cluster allows you to subscribe to feed handlers based on IAM permissions. It can publish to RDBs, other Tickerplants, and real-time subscribers (RTS). Tickerplants can persist messages to log, which is readable by any RDB environment. It supports only single-node that is only one kdb process. (HDB, RDB, GATEWAY, GP, TICKERPLANT)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The structure of the customer code available within the running cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commandLineArguments" /></td>
+    <td><CopyableCode code="command_line_arguments" /></td>
     <td><code>array</code></td>
     <td>Defines key-value pairs to make them available inside the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the cluster was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
@@ -111,32 +111,32 @@ The following fields are returned by `SELECT` queries:
     <td>A list of databases mounted on the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>An IAM role that defines a set of permissions associated with a cluster. These permissions are assumed when a cluster attempts to access another cluster. (pattern: &lt;code&gt;^arn:aws&#91;a-z0-9-&#93;*:iam::\d&#123;12&#125;:role\/&#91;\w-\/.@+=,&#93;&#123;1,1017&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="initializationScript" /></td>
+    <td><CopyableCode code="initialization_script" /></td>
     <td><code>string</code></td>
     <td>Specifies a Q program that will be run at launch of a cluster. It is a relative path within .zip file that contains the custom code, which will be loaded on the cluster. It must include the file name itself. For example, somedir/init.q. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-\.\/\\&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the cluster was modified. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The version of FinSpace managed kdb to run. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="savedownStorageConfiguration" /></td>
+    <td><CopyableCode code="savedown_storage_configuration" /></td>
     <td><code>object</code></td>
     <td>The size and type of temporary storage that is used to hold data during the savedown process. All the data written to this storage space is lost when the cluster node is restarted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scalingGroupConfiguration" /></td>
+    <td><CopyableCode code="scaling_group_configuration" /></td>
     <td><code>object</code></td>
     <td>The structure that stores the capacity configuration details of a scaling group.</td>
 </tr>
@@ -146,12 +146,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of cluster creation. PENDING – The cluster is pending creation. CREATING – The cluster creation process is in progress. CREATE_FAILED – The cluster creation process has failed. RUNNING – The cluster creation process is running. UPDATING – The cluster is in the process of being updated. DELETING – The cluster is in the process of being deleted. DELETED – The cluster has been deleted. DELETE_FAILED – The cluster failed to delete. (PENDING, CREATING, CREATE_FAILED, RUNNING, UPDATING, DELETING, DELETED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The error message when a failed state occurs. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-\.\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tickerplantLogConfiguration" /></td>
+    <td><CopyableCode code="tickerplant_log_configuration" /></td>
     <td><code>object</code></td>
     <td>A configuration to store the Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant, the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path.</td>
 </tr>
@@ -161,7 +161,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of volumes attached to the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfiguration" /></td>
+    <td><CopyableCode code="vpc_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration details about the network where the Privatelink endpoint of the cluster resides.</td>
 </tr>
@@ -180,12 +180,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kxClusterSummaries" /></td>
+    <td><CopyableCode code="kx_cluster_summaries" /></td>
     <td><code>array</code></td>
     <td>Lists the cluster details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -320,29 +320,29 @@ Retrieves information about a kdb cluster.
 
 ```sql
 SELECT
-autoScalingConfiguration,
-availabilityZoneId,
-azMode,
-cacheStorageConfigurations,
-capacityConfiguration,
-clusterDescription,
-clusterName,
-clusterType,
+auto_scaling_configuration,
+availability_zone_id,
+az_mode,
+cache_storage_configurations,
+capacity_configuration,
+cluster_description,
+cluster_name,
+cluster_type,
 code,
-commandLineArguments,
-createdTimestamp,
+command_line_arguments,
+created_timestamp,
 databases,
-executionRole,
-initializationScript,
-lastModifiedTimestamp,
-releaseLabel,
-savedownStorageConfiguration,
-scalingGroupConfiguration,
+execution_role,
+initialization_script,
+last_modified_timestamp,
+release_label,
+savedown_storage_configuration,
+scaling_group_configuration,
 status,
-statusReason,
-tickerplantLogConfiguration,
+status_reason,
+tickerplant_log_configuration,
 volumes,
-vpcConfiguration
+vpc_configuration
 FROM aws.finspace.kx_clusters
 WHERE environment_id = '{{ environment_id }}' -- required
 AND cluster_name = '{{ cluster_name }}' -- required
@@ -356,8 +356,8 @@ Returns a list of clusters.
 
 ```sql
 SELECT
-kxClusterSummaries,
-nextToken
+kx_cluster_summaries,
+next_token
 FROM aws.finspace.kx_clusters
 WHERE environment_id = '{{ environment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -432,30 +432,30 @@ SELECT
 '{{ environment_id }}',
 '{{ region }}'
 RETURNING
-autoScalingConfiguration,
-availabilityZoneId,
-azMode,
-cacheStorageConfigurations,
-capacityConfiguration,
-clusterDescription,
-clusterName,
-clusterType,
+auto_scaling_configuration,
+availability_zone_id,
+az_mode,
+cache_storage_configurations,
+capacity_configuration,
+cluster_description,
+cluster_name,
+cluster_type,
 code,
-commandLineArguments,
-createdTimestamp,
+command_line_arguments,
+created_timestamp,
 databases,
-environmentId,
-executionRole,
-initializationScript,
-lastModifiedTimestamp,
-releaseLabel,
-savedownStorageConfiguration,
-scalingGroupConfiguration,
+environment_id,
+execution_role,
+initialization_script,
+last_modified_timestamp,
+release_label,
+savedown_storage_configuration,
+scaling_group_configuration,
 status,
-statusReason,
-tickerplantLogConfiguration,
+status_reason,
+tickerplant_log_configuration,
 volumes,
-vpcConfiguration
+vpc_configuration
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the invocation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invocationId" /></td>
+    <td><CopyableCode code="invocation_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the invocation in UUID format. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the session associated with the invocation. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -151,9 +151,9 @@ Lists all invocations associated with a specific session. For more information a
 
 ```sql
 SELECT
-createdAt,
-invocationId,
-sessionId
+created_at,
+invocation_id,
+session_id
 FROM aws.bedrock_agent_runtime.invocations
 WHERE session_identifier = '{{ session_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -191,9 +191,9 @@ SELECT
 '{{ session_identifier }}',
 '{{ region }}'
 RETURNING
-createdAt,
-invocationId,
-sessionId
+created_at,
+invocation_id,
+session_id
 ;
 ```
 </TabItem>

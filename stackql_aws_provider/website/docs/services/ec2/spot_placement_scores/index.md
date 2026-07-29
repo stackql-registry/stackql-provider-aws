@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Score" /></td>
+    <td><CopyableCode code="score" /></td>
     <td><code>integer</code></td>
     <td>The placement score, on a scale from 1 to 10. A score of 10 indicates that your Spot request is highly likely to succeed in this Region or Availability Zone. A score of 1 indicates that your Spot request is not likely to succeed.</td>
 </tr>
@@ -174,9 +174,9 @@ Calculates the Spot placement score for a Region or Availability Zone based on t
 
 ```sql
 SELECT
-AvailabilityZoneId,
-Region,
-Score
+availability_zone_id,
+region,
+score
 FROM aws.ec2.spot_placement_scores
 WHERE TargetCapacity = '{{ TargetCapacity }}' -- required
 AND region = '{{ region }}' -- required

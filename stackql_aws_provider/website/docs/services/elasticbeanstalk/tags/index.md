@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the tag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the tag.</td>
 </tr>
@@ -146,8 +146,8 @@ Return the tags applied to an AWS Elastic Beanstalk resource. The response conta
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.elasticbeanstalk.tags
 WHERE ResourceArn = '{{ ResourceArn }}' -- required
 AND region = '{{ region }}' -- required

@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the network migration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the network migration definition was created.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the network migration definition. (pattern: &lt;code&gt;&#91;^\x00&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationDefinitionID" /></td>
+    <td><CopyableCode code="network_migration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration definition. (pattern: &lt;code&gt;nmd-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scopeTags" /></td>
+    <td><CopyableCode code="scope_tags" /></td>
     <td><code>object</code></td>
     <td>Scope tags for the network migration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceConfigurations" /></td>
+    <td><CopyableCode code="source_configurations" /></td>
     <td><code>array</code></td>
     <td>A list of source configurations for the network migration.</td>
 </tr>
@@ -91,22 +91,22 @@ The following fields are returned by `SELECT` queries:
     <td>Tags assigned to the network migration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetDeployment" /></td>
+    <td><CopyableCode code="target_deployment" /></td>
     <td><code>string</code></td>
     <td>The target deployment configuration for the migrated network. (SINGLE_ACCOUNT, MULTI_ACCOUNT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetNetwork" /></td>
+    <td><CopyableCode code="target_network" /></td>
     <td><code>object</code></td>
     <td>Configuration for the target network topology and addressing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetS3Configuration" /></td>
+    <td><CopyableCode code="target_s3_configuration" /></td>
     <td><code>object</code></td>
     <td>S3 configuration for storing target network artifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the network migration definition was last updated.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the network migration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationDefinitionID" /></td>
+    <td><CopyableCode code="network_migration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration definition. (pattern: &lt;code&gt;nmd-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scopeTags" /></td>
+    <td><CopyableCode code="scope_tags" /></td>
     <td><code>object</code></td>
     <td>Scope tags for the network migration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceEnvironment" /></td>
+    <td><CopyableCode code="source_environment" /></td>
     <td><code>string</code></td>
     <td>The source environment configuration. (NSX, VSPHERE, FORTIGATE_FIREWALL, PALO_ALTO_FIREWALL, CISCO_ACI, LOGICAL_MODEL, MODELIZE_IT)</td>
 </tr>
@@ -278,16 +278,16 @@ Retrieves the details of a network migration definition including source and tar
 SELECT
 name,
 arn,
-createdAt,
+created_at,
 description,
-networkMigrationDefinitionID,
-scopeTags,
-sourceConfigurations,
+network_migration_definition_id,
+scope_tags,
+source_configurations,
 tags,
-targetDeployment,
-targetNetwork,
-targetS3Configuration,
-updatedAt
+target_deployment,
+target_network,
+target_s3_configuration,
+updated_at
 FROM aws.mgn.network_migration_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -301,9 +301,9 @@ Lists all network migration definitions in the account, with optional filtering.
 SELECT
 name,
 arn,
-networkMigrationDefinitionID,
-scopeTags,
-sourceEnvironment,
+network_migration_definition_id,
+scope_tags,
+source_environment,
 tags
 FROM aws.mgn.network_migration_definitions
 WHERE region = '{{ region }}' -- required
@@ -351,16 +351,16 @@ SELECT
 RETURNING
 name,
 arn,
-createdAt,
+created_at,
 description,
-networkMigrationDefinitionID,
-scopeTags,
-sourceConfigurations,
+network_migration_definition_id,
+scope_tags,
+source_configurations,
 tags,
-targetDeployment,
-targetNetwork,
-targetS3Configuration,
-updatedAt
+target_deployment,
+target_network,
+target_s3_configuration,
+updated_at
 ;
 ```
 </TabItem>
@@ -439,16 +439,16 @@ AND networkMigrationDefinitionID = '{{ networkMigrationDefinitionID }}' --requir
 RETURNING
 name,
 arn,
-createdAt,
+created_at,
 description,
-networkMigrationDefinitionID,
-scopeTags,
-sourceConfigurations,
+network_migration_definition_id,
+scope_tags,
+source_configurations,
 tags,
-targetDeployment,
-targetNetwork,
-targetS3Configuration,
-updatedAt;
+target_deployment,
+target_network,
+target_s3_configuration,
+updated_at;
 ```
 </TabItem>
 </Tabs>

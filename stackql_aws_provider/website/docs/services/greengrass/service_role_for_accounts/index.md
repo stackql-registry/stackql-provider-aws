@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedAt" /></td>
+    <td><CopyableCode code="associated_at" /></td>
     <td><code>string</code></td>
     <td>The time when the service role was associated with the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role which is associated with the account.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the service role that is attached to your account.
 
 ```sql
 SELECT
-AssociatedAt,
-RoleArn
+associated_at,
+role_arn
 FROM aws.greengrass.service_role_for_accounts
 WHERE region = '{{ region }}' -- required
 ;

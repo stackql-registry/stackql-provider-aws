@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="batchImports" /></td>
+    <td><CopyableCode code="batch_imports" /></td>
     <td><code>array</code></td>
     <td>An array containing the details of each batch import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next token for the subsequent resquest.</td>
 </tr>
@@ -138,8 +138,8 @@ Gets all batch import jobs or a specific job of the specified ID. This is a pagi
 
 ```sql
 SELECT
-batchImports,
-nextToken
+batch_imports,
+next_token
 FROM aws.frauddetector.batch_import_jobs
 WHERE region = '{{ region }}' -- required
 ;

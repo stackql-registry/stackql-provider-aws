@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>A string map that contains the following information for the service that you specify in ServiceArn: The attributes that apply to the service. For each attribute, the applicable value. You can specify a total of 30 attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that created the namespace with which the service is associated. If this isn't your account ID, it is the ID of the account that shared the namespace with your account. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the service that the attributes are associated with.</td>
 </tr>
@@ -143,9 +143,9 @@ Returns the attributes associated with a specified service.
 
 ```sql
 SELECT
-Attributes,
-ResourceOwner,
-ServiceArn
+attributes,
+resource_owner,
+service_arn
 FROM aws.servicediscovery.service_attributes
 WHERE region = '{{ region }}' -- required
 ;

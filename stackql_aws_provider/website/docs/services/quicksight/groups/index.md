@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Group" /></td>
+    <td><CopyableCode code="group" /></td>
     <td><code>object</code></td>
     <td>A group in Quick Sight consists of a set of users. You can use groups to make it easier to manage access and security.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The group description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group. (pattern: &lt;code&gt;&#91;\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalId" /></td>
+    <td><CopyableCode code="principal_id" /></td>
     <td><code>string</code></td>
     <td>The principal ID of the group.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The group description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group. (pattern: &lt;code&gt;&#91;\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalId" /></td>
+    <td><CopyableCode code="principal_id" /></td>
     <td><code>string</code></td>
     <td>The principal ID of the group.</td>
 </tr>
@@ -261,9 +261,9 @@ Returns an Amazon Quick Sight group's description and Amazon Resource Name (ARN)
 
 ```sql
 SELECT
-Group,
-RequestId,
-Status
+group,
+request_id,
+status
 FROM aws.quicksight.groups
 WHERE group_name = '{{ group_name }}' -- required
 AND aws_account_id = '{{ aws_account_id }}' -- required
@@ -278,10 +278,10 @@ Use the SearchGroups operation to search groups in a specified Quick Sight names
 
 ```sql
 SELECT
-Arn,
-Description,
-GroupName,
-PrincipalId
+arn,
+description,
+group_name,
+principal_id
 FROM aws.quicksight.groups
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -297,10 +297,10 @@ Lists all user groups in Amazon Quick Sight.
 
 ```sql
 SELECT
-Arn,
-Description,
-GroupName,
-PrincipalId
+arn,
+description,
+group_name,
+principal_id
 FROM aws.quicksight.groups
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -341,9 +341,9 @@ SELECT
 '{{ namespace }}',
 '{{ region }}'
 RETURNING
-Group,
-RequestId,
-Status
+group,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -393,9 +393,9 @@ AND aws_account_id = '{{ aws_account_id }}' --required
 AND namespace = '{{ namespace }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Group,
-RequestId,
-Status;
+group,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

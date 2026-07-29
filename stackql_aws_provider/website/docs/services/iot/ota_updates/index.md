@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalParameters" /></td>
+    <td><CopyableCode code="additional_parameters" /></td>
     <td><code>object</code></td>
     <td>A collection of name/value pairs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsIotJobArn" /></td>
+    <td><CopyableCode code="aws_iot_job_arn" /></td>
     <td><code>string</code></td>
     <td>The IoT job ARN associated with the OTA update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsIotJobId" /></td>
+    <td><CopyableCode code="aws_iot_job_id" /></td>
     <td><code>string</code></td>
     <td>The IoT job ID associated with the OTA update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsJobExecutionsRolloutConfig" /></td>
+    <td><CopyableCode code="aws_job_executions_rollout_config" /></td>
     <td><code>object</code></td>
     <td>Configuration for the rollout of OTA updates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsJobPresignedUrlConfig" /></td>
+    <td><CopyableCode code="aws_job_presigned_url_config" /></td>
     <td><code>object</code></td>
     <td>Configuration information for pre-signed URLs. Valid when protocols contains HTTP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the OTA update was created.</td>
 </tr>
@@ -86,32 +86,32 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the OTA update. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Error information associated with the OTA update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the OTA update was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="otaUpdateArn" /></td>
+    <td><CopyableCode code="ota_update_arn" /></td>
     <td><code>string</code></td>
     <td>The OTA update ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="otaUpdateFiles" /></td>
+    <td><CopyableCode code="ota_update_files" /></td>
     <td><code>array</code></td>
     <td>A list of files associated with the OTA update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="otaUpdateId" /></td>
+    <td><CopyableCode code="ota_update_id" /></td>
     <td><code>string</code></td>
     <td>The OTA update ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="otaUpdateStatus" /></td>
+    <td><CopyableCode code="ota_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the OTA update. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The protocol used to transfer the OTA update image. Valid values are &#91;HTTP&#93;, &#91;MQTT&#93;, &#91;HTTP, MQTT&#93;. When both HTTP and MQTT are specified, the target device can choose the protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetSelection" /></td>
+    <td><CopyableCode code="target_selection" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the OTA update will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the OTA update (SNAPSHOT). If continuous, the OTA update may also be run on a thing when a change is detected in a target. For example, an OTA update will run on a thing when the thing is added to a target group, even after the OTA update was completed by all things originally in the group. (CONTINUOUS, SNAPSHOT)</td>
 </tr>
@@ -145,17 +145,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the OTA update was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="otaUpdateArn" /></td>
+    <td><CopyableCode code="ota_update_arn" /></td>
     <td><code>string</code></td>
     <td>The OTA update ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="otaUpdateId" /></td>
+    <td><CopyableCode code="ota_update_id" /></td>
     <td><code>string</code></td>
     <td>The OTA update ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -276,21 +276,21 @@ Gets an OTA update. Requires permission to access the GetOTAUpdate action.
 
 ```sql
 SELECT
-additionalParameters,
-awsIotJobArn,
-awsIotJobId,
-awsJobExecutionsRolloutConfig,
-awsJobPresignedUrlConfig,
-creationDate,
+additional_parameters,
+aws_iot_job_arn,
+aws_iot_job_id,
+aws_job_executions_rollout_config,
+aws_job_presigned_url_config,
+creation_date,
 description,
-errorInfo,
-lastModifiedDate,
-otaUpdateArn,
-otaUpdateFiles,
-otaUpdateId,
-otaUpdateStatus,
+error_info,
+last_modified_date,
+ota_update_arn,
+ota_update_files,
+ota_update_id,
+ota_update_status,
 protocols,
-targetSelection,
+target_selection,
 targets
 FROM aws.iot.ota_updates
 WHERE ota_update_id = '{{ ota_update_id }}' -- required
@@ -304,9 +304,9 @@ Lists OTA updates. Requires permission to access the ListOTAUpdates action.
 
 ```sql
 SELECT
-creationDate,
-otaUpdateArn,
-otaUpdateId
+creation_date,
+ota_update_arn,
+ota_update_id
 FROM aws.iot.ota_updates
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -364,11 +364,11 @@ SELECT
 '{{ ota_update_id }}',
 '{{ region }}'
 RETURNING
-awsIotJobArn,
-awsIotJobId,
-otaUpdateArn,
-otaUpdateId,
-otaUpdateStatus
+aws_iot_job_arn,
+aws_iot_job_id,
+ota_update_arn,
+ota_update_id,
+ota_update_status
 ;
 ```
 </TabItem>

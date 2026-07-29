@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ForecastResultsByTime" /></td>
+    <td><CopyableCode code="forecast_results_by_time" /></td>
     <td><code>array</code></td>
     <td>The forecasts for your query, in order. For DAILY forecasts, this is a list of days. For MONTHLY forecasts, this is a list of months.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Total" /></td>
+    <td><CopyableCode code="total" /></td>
     <td><code>object</code></td>
     <td>How much you're forecasted to use over the forecast period.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a forecast for how much Amazon Web Services predicts that you will use
 
 ```sql
 SELECT
-ForecastResultsByTime,
-Total
+forecast_results_by_time,
+total
 FROM aws.ce.usage_forecasts
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that S3 on Outposts assumes when replicating objects. For information about S3 replication on Outposts configuration, see Setting up replication in the Amazon S3 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>string</code></td>
     <td>A container for one or more replication rules. A replication configuration must have at least one rule and can contain an array of 100 rules at the most.</td>
 </tr>
@@ -148,8 +148,8 @@ This operation gets an Amazon S3 on Outposts bucket's replication configuration.
 
 ```sql
 SELECT
-Role,
-Rules
+role,
+rules
 FROM aws.s3control.bucket_replications
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

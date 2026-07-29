@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeletionId" /></td>
+    <td><CopyableCode code="deletion_id" /></td>
     <td><code>string</code></td>
     <td>The deletion ID returned by the DeleteInventory operation. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionStartTime" /></td>
+    <td><CopyableCode code="deletion_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC timestamp when the delete operation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionSummary" /></td>
+    <td><CopyableCode code="deletion_summary" /></td>
     <td><code>object</code></td>
     <td>Information about the delete operation. For more information about this summary, see Understanding the delete inventory summary in the Amazon Web Services Systems Manager User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStatus" /></td>
+    <td><CopyableCode code="last_status" /></td>
     <td><code>string</code></td>
     <td>The status of the operation. Possible values are InProgress and Complete. (InProgress, Complete)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStatusMessage" /></td>
+    <td><CopyableCode code="last_status_message" /></td>
     <td><code>string</code></td>
     <td>Information about the status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStatusUpdateTime" /></td>
+    <td><CopyableCode code="last_status_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC timestamp of when the last status report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TypeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the inventory data type. (pattern: &lt;code&gt;^(AWS|Custom):.*$&lt;/code&gt;)</td>
 </tr>
@@ -149,13 +149,13 @@ Describes a specific delete inventory operation.
 
 ```sql
 SELECT
-DeletionId,
-DeletionStartTime,
-DeletionSummary,
-LastStatus,
-LastStatusMessage,
-LastStatusUpdateTime,
-TypeName
+deletion_id,
+deletion_start_time,
+deletion_summary,
+last_status,
+last_status_message,
+last_status_update_time,
+type_name
 FROM aws.ssm.inventory_deletions
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>string</code></td>
     <td>Attributes for endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The EndpointArn for mobile app and device.</td>
 </tr>
@@ -134,8 +134,8 @@ Lists the endpoints and endpoint attributes for devices in a supported push noti
 
 ```sql
 SELECT
-Attributes,
-EndpointArn
+attributes,
+endpoint_arn
 FROM aws.sns.endpoints_by_platform_applications
 WHERE PlatformApplicationArn = '{{ PlatformApplicationArn }}' -- required
 AND region = '{{ region }}' -- required

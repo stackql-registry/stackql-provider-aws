@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains configuration information about an identity source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the identity source was originally created.</td>
 </tr>
@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>A structure that describes the configuration of the identity source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identitySourceId" /></td>
+    <td><CopyableCode code="identity_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the identity source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the identity source was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy store that contains the identity source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalEntityType" /></td>
+    <td><CopyableCode code="principal_entity_type" /></td>
     <td><code>string</code></td>
     <td>The data type of principals generated for identities authenticated by this identity source. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains configuration information about an identity source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the identity source was originally created.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>A structure that contains the details of the associated identity provider (IdP).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identitySourceId" /></td>
+    <td><CopyableCode code="identity_source_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the identity source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the identity source was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the policy store that contains the identity source. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalEntityType" /></td>
+    <td><CopyableCode code="principal_entity_type" /></td>
     <td><code>string</code></td>
     <td>The Cedar entity type of the principals returned from the IdP associated with this identity source. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -229,12 +229,12 @@ Retrieves the details about the specified identity source.
 ```sql
 SELECT
 configuration,
-createdDate,
+created_date,
 details,
-identitySourceId,
-lastUpdatedDate,
-policyStoreId,
-principalEntityType
+identity_source_id,
+last_updated_date,
+policy_store_id,
+principal_entity_type
 FROM aws.verifiedpermissions.identity_sources
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,12 +247,12 @@ Returns a paginated list of all of the identity sources defined in the specified
 ```sql
 SELECT
 configuration,
-createdDate,
+created_date,
 details,
-identitySourceId,
-lastUpdatedDate,
-policyStoreId,
-principalEntityType
+identity_source_id,
+last_updated_date,
+policy_store_id,
+principal_entity_type
 FROM aws.verifiedpermissions.identity_sources
 WHERE region = '{{ region }}' -- required
 ;
@@ -289,10 +289,10 @@ SELECT
 '{{ principalEntityType }}',
 '{{ region }}'
 RETURNING
-createdDate,
-identitySourceId,
-lastUpdatedDate,
-policyStoreId
+created_date,
+identity_source_id,
+last_updated_date,
+policy_store_id
 ;
 ```
 </TabItem>
@@ -372,10 +372,10 @@ AND policyStoreId = '{{ policyStoreId }}' --required
 AND identitySourceId = '{{ identitySourceId }}' --required
 AND updateConfiguration = '{{ updateConfiguration }}' --required
 RETURNING
-createdDate,
-identitySourceId,
-lastUpdatedDate,
-policyStoreId;
+created_date,
+identity_source_id,
+last_updated_date,
+policy_store_id;
 ```
 </TabItem>
 </Tabs>

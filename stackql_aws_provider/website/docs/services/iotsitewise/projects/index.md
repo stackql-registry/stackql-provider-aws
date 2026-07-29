@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the project. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the project was created, in Unix epoch time.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The project's description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the project was last updated, in Unix epoch time.</td>
 </tr>
@@ -90,37 +90,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="portalId" /></td>
+    <td><CopyableCode code="portal_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the portal that the project is in. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectArn" /></td>
+    <td><CopyableCode code="project_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the project, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:project/$&#123;ProjectId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectCreationDate" /></td>
+    <td><CopyableCode code="project_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the project was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectDescription" /></td>
+    <td><CopyableCode code="project_description" /></td>
     <td><code>string</code></td>
     <td>The project's description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectLastUpdateDate" /></td>
+    <td><CopyableCode code="project_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the project was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -245,9 +245,9 @@ Retrieves a paginated list of projects for an IoT SiteWise Monitor portal.
 SELECT
 id,
 name,
-creationDate,
+creation_date,
 description,
-lastUpdateDate
+last_update_date
 FROM aws.iotsitewise.projects
 WHERE portalId = '{{ portalId }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,13 +262,13 @@ Retrieves information about a project.
 
 ```sql
 SELECT
-portalId,
-projectArn,
-projectCreationDate,
-projectDescription,
-projectId,
-projectLastUpdateDate,
-projectName
+portal_id,
+project_arn,
+project_creation_date,
+project_description,
+project_id,
+project_last_update_date,
+project_name
 FROM aws.iotsitewise.projects
 WHERE project_id = '{{ project_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -308,8 +308,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-projectArn,
-projectId
+project_arn,
+project_id
 ;
 ```
 </TabItem>

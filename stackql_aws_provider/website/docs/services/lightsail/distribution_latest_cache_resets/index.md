@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last cache reset (1479734909.17) in Unix time format.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the timestamp and status of the last cache reset of a specific Amazon Li
 
 ```sql
 SELECT
-createTime,
+create_time,
 status
 FROM aws.lightsail.distribution_latest_cache_resets
 WHERE region = '{{ region }}' -- required

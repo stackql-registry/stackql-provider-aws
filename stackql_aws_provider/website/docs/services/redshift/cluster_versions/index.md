@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterParameterGroupFamily" /></td>
+    <td><CopyableCode code="cluster_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster parameter group family for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterVersion" /></td>
+    <td><CopyableCode code="cluster_version" /></td>
     <td><code>string</code></td>
     <td>The version number used by the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the cluster version.</td>
 </tr>
@@ -149,9 +149,9 @@ Returns descriptions of the available Amazon Redshift cluster versions. You can 
 
 ```sql
 SELECT
-ClusterParameterGroupFamily,
-ClusterVersion,
-Description
+cluster_parameter_group_family,
+cluster_version,
+description
 FROM aws.redshift.cluster_versions
 WHERE region = '{{ region }}' -- required
 AND ClusterVersion = '{{ ClusterVersion }}'

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="externalModels" /></td>
+    <td><CopyableCode code="external_models" /></td>
     <td><code>array</code></td>
     <td>Gets the Amazon SageMaker models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token to be used in subsequent requests.</td>
 </tr>
@@ -138,8 +138,8 @@ Gets the details for one or more Amazon SageMaker models that have been imported
 
 ```sql
 SELECT
-externalModels,
-nextToken
+external_models,
+next_token
 FROM aws.frauddetector.external_models
 WHERE region = '{{ region }}' -- required
 ;

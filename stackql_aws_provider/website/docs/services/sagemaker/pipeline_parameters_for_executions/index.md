@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter to assign a value to. This parameter name must match a named parameter in the pipeline definition. (pattern: &lt;code&gt;&#91;A-Za-z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The literal value for the parameter.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets a list of parameters for a pipeline execution.
 
 ```sql
 SELECT
-Name,
-Value
+name,
+value
 FROM aws.sagemaker.pipeline_parameters_for_executions
 WHERE region = '{{ region }}' -- required
 ;

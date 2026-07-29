@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>Timestamp of the CreateJob request in ISO8601 date format. For example "2010-03-28T20:27:35Z".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsCanceled" /></td>
+    <td><CopyableCode code="is_canceled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the job was canceled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier which refers to a particular job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the job to initiate is an import or export job.</td>
 </tr>
@@ -195,10 +195,10 @@ This operation returns the jobs associated with the requester. AWS Import/Export
 
 ```sql
 SELECT
-CreationDate,
-IsCanceled,
-JobId,
-JobType
+creation_date,
+is_canceled,
+job_id,
+job_type
 FROM aws.importexport.jobs
 WHERE region = '{{ region }}' -- required
 AND MaxJobs = '{{ MaxJobs }}'

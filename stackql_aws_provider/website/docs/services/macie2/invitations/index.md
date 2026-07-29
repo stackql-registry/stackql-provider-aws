@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account that sent the invitation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invitationId" /></td>
+    <td><CopyableCode code="invitation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the invitation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invitedAt" /></td>
+    <td><CopyableCode code="invited_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the invitation was sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The status of the relationship between the account that sent the invitation and the account that received the invitation. (Enabled, Paused, Invited, Created, Removed, Resigned, EmailVerificationInProgress, EmailVerificationFailed, RegionDisabled, AccountSuspended)</td>
 </tr>
@@ -172,10 +172,10 @@ Retrieves information about Amazon Macie membership invitations that were receiv
 
 ```sql
 SELECT
-accountId,
-invitationId,
-invitedAt,
-relationshipStatus
+account_id,
+invitation_id,
+invited_at,
+relationship_status
 FROM aws.macie2.invitations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -212,7 +212,7 @@ SELECT
 '{{ message }}',
 '{{ region }}'
 RETURNING
-unprocessedAccounts
+unprocessed_accounts
 ;
 ```
 </TabItem>

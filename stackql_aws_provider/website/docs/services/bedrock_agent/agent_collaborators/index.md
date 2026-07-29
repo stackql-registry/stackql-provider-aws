@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentDescriptor" /></td>
+    <td><CopyableCode code="agent_descriptor" /></td>
     <td><code>object</code></td>
     <td>An agent descriptor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>The collaborator's agent ID. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>The collaborator's agent version. (pattern: &lt;code&gt;(DRAFT|&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The collaborator's client token. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationInstruction" /></td>
+    <td><CopyableCode code="collaboration_instruction" /></td>
     <td><code>string</code></td>
     <td>The collaborator's instructions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaboratorId" /></td>
+    <td><CopyableCode code="collaborator_id" /></td>
     <td><code>string</code></td>
     <td>The collaborator's collaborator ID. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaboratorName" /></td>
+    <td><CopyableCode code="collaborator_name" /></td>
     <td><code>string</code></td>
     <td>The collaborator's collaborator name. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the collaborator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the collaborator was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relayConversationHistory" /></td>
+    <td><CopyableCode code="relay_conversation_history" /></td>
     <td><code>string</code></td>
     <td>The collaborator's relay conversation history. (TO_COLLABORATOR, DISABLED)</td>
 </tr>
@@ -115,47 +115,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentDescriptor" /></td>
+    <td><CopyableCode code="agent_descriptor" /></td>
     <td><code>object</code></td>
     <td>An agent descriptor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>The collaborator's agent ID. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>The collaborator's agent version. (pattern: &lt;code&gt;(DRAFT|&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationInstruction" /></td>
+    <td><CopyableCode code="collaboration_instruction" /></td>
     <td><code>string</code></td>
     <td>The collaborator's collaboration instruction.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaboratorId" /></td>
+    <td><CopyableCode code="collaborator_id" /></td>
     <td><code>string</code></td>
     <td>The collaborator's ID. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaboratorName" /></td>
+    <td><CopyableCode code="collaborator_name" /></td>
     <td><code>string</code></td>
     <td>The collaborator's name. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the collaborator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the collaborator was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relayConversationHistory" /></td>
+    <td><CopyableCode code="relay_conversation_history" /></td>
     <td><code>string</code></td>
     <td>The collaborator's relay conversation history. (TO_COLLABORATOR, DISABLED)</td>
 </tr>
@@ -268,16 +268,16 @@ Retrieves information about an agent's collaborator.
 
 ```sql
 SELECT
-agentDescriptor,
-agentId,
-agentVersion,
-clientToken,
-collaborationInstruction,
-collaboratorId,
-collaboratorName,
-createdAt,
-lastUpdatedAt,
-relayConversationHistory
+agent_descriptor,
+agent_id,
+agent_version,
+client_token,
+collaboration_instruction,
+collaborator_id,
+collaborator_name,
+created_at,
+last_updated_at,
+relay_conversation_history
 FROM aws.bedrock_agent.agent_collaborators
 WHERE agent_id = '{{ agent_id }}' -- required
 AND agent_version = '{{ agent_version }}' -- required
@@ -292,15 +292,15 @@ Retrieve a list of an agent's collaborators.
 
 ```sql
 SELECT
-agentDescriptor,
-agentId,
-agentVersion,
-collaborationInstruction,
-collaboratorId,
-collaboratorName,
-createdAt,
-lastUpdatedAt,
-relayConversationHistory
+agent_descriptor,
+agent_id,
+agent_version,
+collaboration_instruction,
+collaborator_id,
+collaborator_name,
+created_at,
+last_updated_at,
+relay_conversation_history
 FROM aws.bedrock_agent.agent_collaborators
 WHERE agent_id = '{{ agent_id }}' -- required
 AND agent_version = '{{ agent_version }}' -- required
@@ -341,7 +341,7 @@ AND agentDescriptor = '{{ agentDescriptor }}' --required
 AND collaboratorName = '{{ collaboratorName }}' --required
 AND collaborationInstruction = '{{ collaborationInstruction }}' --required
 RETURNING
-agentCollaborator;
+agent_collaborator;
 ```
 </TabItem>
 <TabItem value="associate_agent_collaborator">
@@ -364,7 +364,7 @@ AND agentDescriptor = '{{ agentDescriptor }}' --required
 AND collaboratorName = '{{ collaboratorName }}' --required
 AND collaborationInstruction = '{{ collaborationInstruction }}' --required
 RETURNING
-agentCollaborator;
+agent_collaborator;
 ```
 </TabItem>
 <TabItem value="disassociate_agent_collaborator">

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentConfig" /></td>
+    <td><CopyableCode code="agent_config" /></td>
     <td><code>object</code></td>
     <td>The distribution of agents between the instance and its replica(s).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the traffic distribution group. (pattern: &lt;code&gt;^arn:(aws|aws-us-gov):connect:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;:&#91;0-9&#93;&#123;1,20&#125;:traffic-distribution-group/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SignInConfig" /></td>
+    <td><CopyableCode code="sign_in_config" /></td>
     <td><code>object</code></td>
     <td>The distribution that determines which Amazon Web Services Regions should be used to sign in agents in to both the instance and its replica(s).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TelephonyConfig" /></td>
+    <td><CopyableCode code="telephony_config" /></td>
     <td><code>object</code></td>
     <td>The distribution of traffic between the instance and its replicas.</td>
 </tr>
@@ -151,11 +151,11 @@ Retrieves the current traffic distribution for a given traffic distribution grou
 
 ```sql
 SELECT
-AgentConfig,
-Arn,
-Id,
-SignInConfig,
-TelephonyConfig
+agent_config,
+arn,
+id,
+sign_in_config,
+telephony_config
 FROM aws.connect.traffic_distributions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

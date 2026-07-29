@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:.+:.+:.+:.+:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the network was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Attributes of the blockchain framework for the network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Framework" /></td>
+    <td><CopyableCode code="framework" /></td>
     <td><code>string</code></td>
     <td>The blockchain framework that the network uses. (HYPERLEDGER_FABRIC, ETHEREUM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkAttributes" /></td>
+    <td><CopyableCode code="framework_attributes" /></td>
     <td><code>object</code></td>
     <td>Attributes of the blockchain framework that the network uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkVersion" /></td>
+    <td><CopyableCode code="framework_version" /></td>
     <td><code>string</code></td>
     <td>The version of the blockchain framework that the network uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the network. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the network. (CREATING, AVAILABLE, CREATE_FAILED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags assigned to the network. Each tag consists of a key and optional value. For more information about tags, see Tagging Resources in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VotingPolicy" /></td>
+    <td><CopyableCode code="voting_policy" /></td>
     <td><code>object</code></td>
     <td>The voting rules for the network to decide if a proposal is accepted Applies only to Hyperledger Fabric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointServiceName" /></td>
+    <td><CopyableCode code="vpc_endpoint_service_name" /></td>
     <td><code>string</code></td>
     <td>The VPC endpoint service name of the VPC endpoint service of the network. Members use the VPC endpoint service name to create a VPC endpoint to access network resources.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Networks" /></td>
+    <td><CopyableCode code="networks" /></td>
     <td><code>array</code></td>
     <td>An array of NetworkSummary objects that contain configuration properties for each network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that indicates the next set of results to retrieve.</td>
 </tr>
@@ -244,18 +244,18 @@ Returns detailed information about a network. Applies to Hyperledger Fabric and 
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-Description,
-Framework,
-FrameworkAttributes,
-FrameworkVersion,
-Id,
-Name,
-Status,
-Tags,
-VotingPolicy,
-VpcEndpointServiceName
+arn,
+creation_date,
+description,
+framework,
+framework_attributes,
+framework_version,
+id,
+name,
+status,
+tags,
+voting_policy,
+vpc_endpoint_service_name
 FROM aws.managedblockchain.networks
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,8 +268,8 @@ Returns information about the networks in which the current Amazon Web Services 
 
 ```sql
 SELECT
-Networks,
-NextToken
+networks,
+next_token
 FROM aws.managedblockchain.networks
 WHERE region = '{{ region }}' -- required
 AND name = '{{ name }}'
@@ -321,8 +321,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MemberId,
-NetworkId
+member_id,
+network_id
 ;
 ```
 </TabItem>

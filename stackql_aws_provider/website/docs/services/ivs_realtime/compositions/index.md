@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Array of Destination objects. A Composition can contain either one destination (channel or s3) or two (one channel and one s3).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>UTC time of the Composition end. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>Layout object to configure composition parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageArn" /></td>
+    <td><CopyableCode code="stage_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the stage used as input (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stage/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>UTC time of the Composition start. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>List of the matching Compositions (summary information only).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more compositions than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -189,10 +189,10 @@ Get information about the specified Composition resource.
 SELECT
 arn,
 destinations,
-endTime,
+end_time,
 layout,
-stageArn,
-startTime,
+stage_arn,
+start_time,
 state,
 tags
 FROM aws.ivs_realtime.compositions
@@ -207,7 +207,7 @@ Gets summary information about all Compositions in your account, in the AWS regi
 ```sql
 SELECT
 compositions,
-nextToken
+next_token
 FROM aws.ivs_realtime.compositions
 WHERE region = '{{ region }}' -- required
 ;

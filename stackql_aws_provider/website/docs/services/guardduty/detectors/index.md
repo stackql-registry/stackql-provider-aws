@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The timestamp of when the detector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSources" /></td>
+    <td><CopyableCode code="data_sources" /></td>
     <td><code>object</code></td>
     <td>Describes which data sources are enabled for the detector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Features" /></td>
+    <td><CopyableCode code="features" /></td>
     <td><code>array</code></td>
     <td>Describes the features that have been enabled for the detector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingPublishingFrequency" /></td>
+    <td><CopyableCode code="finding_publishing_frequency" /></td>
     <td><code>string</code></td>
     <td>The publishing frequency of the finding. (FIFTEEN_MINUTES, ONE_HOUR, SIX_HOURS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The GuardDuty service role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The detector status. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of the detector resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string</code></td>
     <td>The last-updated timestamp for the detector.</td>
 </tr>
@@ -218,14 +218,14 @@ Retrieves a GuardDuty detector specified by the detectorId. There might be regio
 
 ```sql
 SELECT
-CreatedAt,
-DataSources,
-Features,
-FindingPublishingFrequency,
-ServiceRole,
-Status,
-Tags,
-UpdatedAt
+created_at,
+data_sources,
+features,
+finding_publishing_frequency,
+service_role,
+status,
+tags,
+updated_at
 FROM aws.guardduty.detectors
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -281,8 +281,8 @@ SELECT
 '{{ Features }}',
 '{{ region }}'
 RETURNING
-DetectorId,
-UnprocessedDataSources
+detector_id,
+unprocessed_data_sources
 ;
 ```
 </TabItem>

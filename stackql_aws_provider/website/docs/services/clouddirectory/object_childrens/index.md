@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Children" /></td>
+    <td><CopyableCode code="children" /></td>
     <td><code>object</code></td>
     <td>Children structure, which is a map with key as the LinkName and ObjectIdentifier as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns a paginated list of child objects that are associated with a given objec
 
 ```sql
 SELECT
-Children,
-NextToken
+children,
+next_token
 FROM aws.clouddirectory.object_childrens
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

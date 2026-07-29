@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the schema. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the schema was created.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The domain of a schema that you created for a dataset in a Domain dataset group. (ECOMMERCE, VIDEO_ON_DEMAND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the schema was last updated.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the schema. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the schema was created.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The domain of a schema that you created for a dataset in a Domain dataset group. (ECOMMERCE, VIDEO_ON_DEMAND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the schema was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaArn" /></td>
+    <td><CopyableCode code="schema_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -207,11 +207,11 @@ Describes a schema. For more information on schemas, see CreateSchema.
 ```sql
 SELECT
 name,
-creationDateTime,
+creation_date_time,
 domain,
-lastUpdatedDateTime,
+last_updated_date_time,
 schema,
-schemaArn
+schema_arn
 FROM aws.personalize.schemas
 WHERE region = '{{ region }}' -- required
 ;
@@ -224,10 +224,10 @@ Returns the list of schemas associated with the account. The response provides t
 ```sql
 SELECT
 name,
-creationDateTime,
+creation_date_time,
 domain,
-lastUpdatedDateTime,
-schemaArn
+last_updated_date_time,
+schema_arn
 FROM aws.personalize.schemas
 WHERE region = '{{ region }}' -- required
 ;
@@ -262,7 +262,7 @@ SELECT
 '{{ domain }}',
 '{{ region }}'
 RETURNING
-schemaArn
+schema_arn
 ;
 ```
 </TabItem>

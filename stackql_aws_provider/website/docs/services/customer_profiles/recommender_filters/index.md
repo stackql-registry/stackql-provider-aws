@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the recommender filter was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the recommender filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the recommender filter failed, provides the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderFilterExpression" /></td>
+    <td><CopyableCode code="recommender_filter_expression" /></td>
     <td><code>string</code></td>
     <td>The filter expression that defines which items to include or exclude from recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderFilterName" /></td>
+    <td><CopyableCode code="recommender_filter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender filter. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderSchemaName" /></td>
+    <td><CopyableCode code="recommender_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender schema associated with this recommender filter. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the recommender filter. (ACTIVE, PENDING, IN_PROGRESS, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the recommender filter was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the recommender filter's purpose and characteristics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the recommender filter is in a failed state, provides the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderFilterExpression" /></td>
+    <td><CopyableCode code="recommender_filter_expression" /></td>
     <td><code>string</code></td>
     <td>The filter expression that defines which items to include or exclude from recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderFilterName" /></td>
+    <td><CopyableCode code="recommender_filter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender filter. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderSchemaName" /></td>
+    <td><CopyableCode code="recommender_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender schema associated with this recommender filter. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current operational status of the recommender filter. (ACTIVE, PENDING, IN_PROGRESS, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -251,14 +251,14 @@ Retrieves information about a specific recommender filter in a domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-FailureReason,
-RecommenderFilterExpression,
-RecommenderFilterName,
-RecommenderSchemaName,
-Status,
-Tags
+created_at,
+description,
+failure_reason,
+recommender_filter_expression,
+recommender_filter_name,
+recommender_schema_name,
+status,
+tags
 FROM aws.customer_profiles.recommender_filters
 WHERE domain_name = '{{ domain_name }}' -- required
 AND recommender_filter_name = '{{ recommender_filter_name }}' -- required
@@ -272,14 +272,14 @@ Returns a list of recommender filters in the specified domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-FailureReason,
-RecommenderFilterExpression,
-RecommenderFilterName,
-RecommenderSchemaName,
-Status,
-Tags
+created_at,
+description,
+failure_reason,
+recommender_filter_expression,
+recommender_filter_name,
+recommender_schema_name,
+status,
+tags
 FROM aws.customer_profiles.recommender_filters
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -323,8 +323,8 @@ SELECT
 '{{ recommender_filter_name }}',
 '{{ region }}'
 RETURNING
-RecommenderFilterArn,
-Tags
+recommender_filter_arn,
+tags
 ;
 ```
 </TabItem>

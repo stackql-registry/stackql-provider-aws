@@ -51,117 +51,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with this procurement portal preference. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuyerDomain" /></td>
+    <td><CopyableCode code="buyer_domain" /></td>
     <td><code>string</code></td>
     <td>The domain identifier for the buyer in the procurement portal. (NetworkID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuyerIdentifier" /></td>
+    <td><CopyableCode code="buyer_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the buyer in the procurement portal. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Contacts" /></td>
+    <td><CopyableCode code="contacts" /></td>
     <td><code>array</code></td>
     <td>List of contact information for portal administrators and technical contacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the procurement portal preference was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryEnabled" /></td>
+    <td><CopyableCode code="einvoice_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether e-invoice delivery is enabled for this procurement portal preference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryPreference" /></td>
+    <td><CopyableCode code="einvoice_delivery_preference" /></td>
     <td><code>object</code></td>
     <td>The configuration settings that specify how e-invoices are delivered to the procurement portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryPreferenceStatus" /></td>
+    <td><CopyableCode code="einvoice_delivery_preference_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the e-invoice delivery preference. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryPreferenceStatusReason" /></td>
+    <td><CopyableCode code="einvoice_delivery_preference_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current e-invoice delivery preference status. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the procurement portal preference was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcurementPortalInstanceEndpoint" /></td>
+    <td><CopyableCode code="procurement_portal_instance_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint URL where e-invoices are delivered to the procurement portal. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcurementPortalName" /></td>
+    <td><CopyableCode code="procurement_portal_name" /></td>
     <td><code>string</code></td>
     <td>The name of the procurement portal. (SAP_BUSINESS_NETWORK, COUPA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcurementPortalPreferenceArn" /></td>
+    <td><CopyableCode code="procurement_portal_preference_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the procurement portal preference. (pattern: &lt;code&gt;arn:aws:invoicing::&#91;0-9&#93;&#123;12&#125;:procurement-portal-preference/&#91;-a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcurementPortalSharedSecret" /></td>
+    <td><CopyableCode code="procurement_portal_shared_secret" /></td>
     <td><code>string</code></td>
     <td>The shared secret or authentication credential used for secure communication with the procurement portal. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderRetrievalEnabled" /></td>
+    <td><CopyableCode code="purchase_order_retrieval_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether purchase order retrieval is enabled for this procurement portal preference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderRetrievalEndpoint" /></td>
+    <td><CopyableCode code="purchase_order_retrieval_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint URL used for retrieving purchase orders from the procurement portal. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderRetrievalPreferenceStatus" /></td>
+    <td><CopyableCode code="purchase_order_retrieval_preference_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the purchase order retrieval preference. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderRetrievalPreferenceStatusReason" /></td>
+    <td><CopyableCode code="purchase_order_retrieval_preference_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current purchase order retrieval preference status. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Selector" /></td>
+    <td><CopyableCode code="selector" /></td>
     <td><code>object</code></td>
     <td>Specifies criteria for selecting which invoices should be processed using a particular procurement portal preference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupplierDomain" /></td>
+    <td><CopyableCode code="supplier_domain" /></td>
     <td><code>string</code></td>
     <td>The domain identifier for the supplier in the procurement portal. (NetworkID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupplierIdentifier" /></td>
+    <td><CopyableCode code="supplier_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the supplier in the procurement portal. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestEnvPreference" /></td>
+    <td><CopyableCode code="test_env_preference" /></td>
     <td><code>object</code></td>
     <td>Configuration on settings for the test environment of the procurement portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the procurement portal preference configuration.</td>
 </tr>
@@ -180,87 +180,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with this procurement portal preference summary. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuyerDomain" /></td>
+    <td><CopyableCode code="buyer_domain" /></td>
     <td><code>string</code></td>
     <td>The domain identifier for the buyer in the procurement portal. (NetworkID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuyerIdentifier" /></td>
+    <td><CopyableCode code="buyer_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the buyer in the procurement portal. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the procurement portal preference was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryEnabled" /></td>
+    <td><CopyableCode code="einvoice_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether e-invoice delivery is enabled for this procurement portal preference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryPreferenceStatus" /></td>
+    <td><CopyableCode code="einvoice_delivery_preference_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the e-invoice delivery preference in this summary. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EinvoiceDeliveryPreferenceStatusReason" /></td>
+    <td><CopyableCode code="einvoice_delivery_preference_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current e-invoice delivery preference status in this summary. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the procurement portal preference was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcurementPortalName" /></td>
+    <td><CopyableCode code="procurement_portal_name" /></td>
     <td><code>string</code></td>
     <td>The name of the procurement portal. (SAP_BUSINESS_NETWORK, COUPA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcurementPortalPreferenceArn" /></td>
+    <td><CopyableCode code="procurement_portal_preference_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the procurement portal preference. (pattern: &lt;code&gt;arn:aws:invoicing::&#91;0-9&#93;&#123;12&#125;:procurement-portal-preference/&#91;-a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderRetrievalEnabled" /></td>
+    <td><CopyableCode code="purchase_order_retrieval_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether purchase order retrieval is enabled for this procurement portal preference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderRetrievalPreferenceStatus" /></td>
+    <td><CopyableCode code="purchase_order_retrieval_preference_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the purchase order retrieval preference in this summary. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseOrderRetrievalPreferenceStatusReason" /></td>
+    <td><CopyableCode code="purchase_order_retrieval_preference_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current purchase order retrieval preference status in this summary. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Selector" /></td>
+    <td><CopyableCode code="selector" /></td>
     <td><code>object</code></td>
     <td>Specifies criteria for selecting which invoices should be processed using a particular procurement portal preference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupplierDomain" /></td>
+    <td><CopyableCode code="supplier_domain" /></td>
     <td><code>string</code></td>
     <td>The domain identifier for the supplier in the procurement portal. (NetworkID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupplierIdentifier" /></td>
+    <td><CopyableCode code="supplier_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the supplier in the procurement portal. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the procurement portal preference configuration in this summary.</td>
 </tr>
@@ -365,29 +365,29 @@ This feature API is subject to changing at any time. For more information, see t
 
 ```sql
 SELECT
-AwsAccountId,
-BuyerDomain,
-BuyerIdentifier,
-Contacts,
-CreateDate,
-EinvoiceDeliveryEnabled,
-EinvoiceDeliveryPreference,
-EinvoiceDeliveryPreferenceStatus,
-EinvoiceDeliveryPreferenceStatusReason,
-LastUpdateDate,
-ProcurementPortalInstanceEndpoint,
-ProcurementPortalName,
-ProcurementPortalPreferenceArn,
-ProcurementPortalSharedSecret,
-PurchaseOrderRetrievalEnabled,
-PurchaseOrderRetrievalEndpoint,
-PurchaseOrderRetrievalPreferenceStatus,
-PurchaseOrderRetrievalPreferenceStatusReason,
-Selector,
-SupplierDomain,
-SupplierIdentifier,
-TestEnvPreference,
-Version
+aws_account_id,
+buyer_domain,
+buyer_identifier,
+contacts,
+create_date,
+einvoice_delivery_enabled,
+einvoice_delivery_preference,
+einvoice_delivery_preference_status,
+einvoice_delivery_preference_status_reason,
+last_update_date,
+procurement_portal_instance_endpoint,
+procurement_portal_name,
+procurement_portal_preference_arn,
+procurement_portal_shared_secret,
+purchase_order_retrieval_enabled,
+purchase_order_retrieval_endpoint,
+purchase_order_retrieval_preference_status,
+purchase_order_retrieval_preference_status_reason,
+selector,
+supplier_domain,
+supplier_identifier,
+test_env_preference,
+version
 FROM aws.invoicing.procurement_portal_preferences
 WHERE region = '{{ region }}' -- required
 ;
@@ -399,23 +399,23 @@ This feature API is subject to changing at any time. For more information, see t
 
 ```sql
 SELECT
-AwsAccountId,
-BuyerDomain,
-BuyerIdentifier,
-CreateDate,
-EinvoiceDeliveryEnabled,
-EinvoiceDeliveryPreferenceStatus,
-EinvoiceDeliveryPreferenceStatusReason,
-LastUpdateDate,
-ProcurementPortalName,
-ProcurementPortalPreferenceArn,
-PurchaseOrderRetrievalEnabled,
-PurchaseOrderRetrievalPreferenceStatus,
-PurchaseOrderRetrievalPreferenceStatusReason,
-Selector,
-SupplierDomain,
-SupplierIdentifier,
-Version
+aws_account_id,
+buyer_domain,
+buyer_identifier,
+create_date,
+einvoice_delivery_enabled,
+einvoice_delivery_preference_status,
+einvoice_delivery_preference_status_reason,
+last_update_date,
+procurement_portal_name,
+procurement_portal_preference_arn,
+purchase_order_retrieval_enabled,
+purchase_order_retrieval_preference_status,
+purchase_order_retrieval_preference_status_reason,
+selector,
+supplier_domain,
+supplier_identifier,
+version
 FROM aws.invoicing.procurement_portal_preferences
 WHERE region = '{{ region }}' -- required
 ;
@@ -474,7 +474,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ProcurementPortalPreferenceArn
+procurement_portal_preference_arn
 ;
 ```
 </TabItem>
@@ -603,7 +603,7 @@ WHERE
 region = '{{ region }}' --required
 AND ProcurementPortalPreferenceArn = '{{ ProcurementPortalPreferenceArn }}' --required
 RETURNING
-ProcurementPortalPreferenceArn;
+procurement_portal_preference_arn;
 ```
 </TabItem>
 </Tabs>
@@ -640,7 +640,7 @@ AND EinvoiceDeliveryEnabled = {{ EinvoiceDeliveryEnabled }} --required
 AND PurchaseOrderRetrievalEnabled = {{ PurchaseOrderRetrievalEnabled }} --required
 AND Contacts = '{{ Contacts }}' --required
 RETURNING
-ProcurementPortalPreferenceArn;
+procurement_portal_preference_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Address" /></td>
+    <td><CopyableCode code="address" /></td>
     <td><code>string</code></td>
     <td>The address retrieved from the address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the address was created.</td>
 </tr>
@@ -124,8 +124,8 @@ Fetch attributes of a member in an address list.
 
 ```sql
 SELECT
-Address,
-CreatedTimestamp
+address,
+created_timestamp
 FROM aws.mailmanager.member_of_address_lists
 WHERE region = '{{ region }}' -- required
 ;

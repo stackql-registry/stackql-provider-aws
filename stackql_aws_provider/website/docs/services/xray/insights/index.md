@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Categories" /></td>
+    <td><CopyableCode code="categories" /></td>
     <td><code>array</code></td>
     <td>The categories that label and describe the type of insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientRequestImpactStatistics" /></td>
+    <td><CopyableCode code="client_request_impact_statistics" /></td>
     <td><code>object</code></td>
     <td>The impact statistics of the client side service. This includes the number of requests to the client service and whether the requests were faults or okay.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in Unix seconds, at which the insight ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupARN" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the group that the insight belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group that the insight belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightId" /></td>
+    <td><CopyableCode code="insight_id" /></td>
     <td><code>string</code></td>
     <td>The insights unique identifier. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;1-5&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;89abAB&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootCauseServiceId" /></td>
+    <td><CopyableCode code="root_cause_service_id" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootCauseServiceRequestImpactStatistics" /></td>
+    <td><CopyableCode code="root_cause_service_request_impact_statistics" /></td>
     <td><code>object</code></td>
     <td>The impact statistics of the root cause service. This includes the number of requests to the client service and whether the requests were faults or okay.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in Unix seconds, at which the insight began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the insight. (ACTIVE, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Summary" /></td>
+    <td><CopyableCode code="summary" /></td>
     <td><code>string</code></td>
     <td>A brief description of the insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopAnomalousServices" /></td>
+    <td><CopyableCode code="top_anomalous_services" /></td>
     <td><code>array</code></td>
     <td>The service within the insight that is most impacted by the incident.</td>
 </tr>
@@ -174,18 +174,18 @@ Retrieves the summary information of an insight. This includes impact to clients
 
 ```sql
 SELECT
-Categories,
-ClientRequestImpactStatistics,
-EndTime,
-GroupARN,
-GroupName,
-InsightId,
-RootCauseServiceId,
-RootCauseServiceRequestImpactStatistics,
-StartTime,
-State,
-Summary,
-TopAnomalousServices
+categories,
+client_request_impact_statistics,
+end_time,
+group_arn,
+group_name,
+insight_id,
+root_cause_service_id,
+root_cause_service_request_impact_statistics,
+start_time,
+state,
+summary,
+top_anomalous_services
 FROM aws.xray.insights
 WHERE region = '{{ region }}' -- required
 ;

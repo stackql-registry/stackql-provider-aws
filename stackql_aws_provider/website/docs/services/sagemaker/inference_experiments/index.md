@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the inference experiment being described. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:inference-experiment/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the inference experiment was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which you created the inference experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataStorageConfig" /></td>
+    <td><CopyableCode code="data_storage_config" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location and configuration for storing inference request and response data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the inference experiment. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointMetadata" /></td>
+    <td><CopyableCode code="endpoint_metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata of the endpoint on which the inference experiment ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKey" /></td>
+    <td><CopyableCode code="kms_key" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint. For more information, see CreateInferenceExperiment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which you last modified the inference experiment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelVariants" /></td>
+    <td><CopyableCode code="model_variants" /></td>
     <td><code>array</code></td>
     <td>An array of ModelVariantConfigSummary objects. There is one for each variant in the inference experiment. Each ModelVariantConfigSummary object in the array describes the infrastructure configuration for deploying the corresponding variant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the inference experiment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that Amazon SageMaker can assume to access model artifacts and container images, and manage Amazon SageMaker Inference endpoints for model deployment. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>object</code></td>
     <td>The duration for which the inference experiment ran or will run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShadowModeConfig" /></td>
+    <td><CopyableCode code="shadow_mode_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of ShadowMode inference experiment type, which shows the production variant that takes all the inference requests, and the shadow variant to which Amazon SageMaker replicates a percentage of the inference requests. For the shadow variant it also shows the percentage of requests that Amazon SageMaker replicates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the inference experiment. The following are the possible statuses for an inference experiment: Creating - Amazon SageMaker is creating your experiment. Created - Amazon SageMaker has finished the creation of your experiment and will begin the experiment at the scheduled time. Updating - When you make changes to your experiment, your experiment shows as updating. Starting - Amazon SageMaker is beginning your experiment. Running - Your experiment is in progress. Stopping - Amazon SageMaker is stopping your experiment. Completed - Your experiment has completed. Cancelled - When you conclude your experiment early using the StopInferenceExperiment API, or if any operation fails with an unexpected error, it shows as cancelled. (Creating, Created, Updating, Running, Starting, Stopping, Completed, Cancelled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The error message or client-specified Reason from the StopInferenceExperiment API, that explains the status of the inference experiment. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the inference experiment. (ShadowMode)</td>
 </tr>
@@ -222,22 +222,22 @@ Returns details about an inference experiment.
 
 ```sql
 SELECT
-Arn,
-CompletionTime,
-CreationTime,
-DataStorageConfig,
-Description,
-EndpointMetadata,
-KmsKey,
-LastModifiedTime,
-ModelVariants,
-Name,
-RoleArn,
-Schedule,
-ShadowModeConfig,
-Status,
-StatusReason,
-Type
+arn,
+completion_time,
+creation_time,
+data_storage_config,
+description,
+endpoint_metadata,
+kms_key,
+last_modified_time,
+model_variants,
+name,
+role_arn,
+schedule,
+shadow_mode_config,
+status,
+status_reason,
+type
 FROM aws.sagemaker.inference_experiments
 WHERE region = '{{ region }}' -- required
 ;
@@ -288,7 +288,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-InferenceExperimentArn
+inference_experiment_arn
 ;
 ```
 </TabItem>
@@ -397,7 +397,7 @@ ShadowModeConfig = '{{ ShadowModeConfig }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-InferenceExperimentArn;
+inference_experiment_arn;
 ```
 </TabItem>
 </Tabs>

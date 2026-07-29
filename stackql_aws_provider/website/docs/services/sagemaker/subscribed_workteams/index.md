@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ListingId" /></td>
+    <td><CopyableCode code="listing_id" /></td>
     <td><code>string</code></td>
     <td>Marketplace product listing ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceDescription" /></td>
+    <td><CopyableCode code="marketplace_description" /></td>
     <td><code>string</code></td>
     <td>The description of the vendor from the Amazon Marketplace. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceTitle" /></td>
+    <td><CopyableCode code="marketplace_title" /></td>
     <td><code>string</code></td>
     <td>The title of the service provided by the vendor in the Amazon Marketplace. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SellerName" /></td>
+    <td><CopyableCode code="seller_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vendor in the Amazon Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkteamArn" /></td>
+    <td><CopyableCode code="workteam_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vendor that you have subscribed. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workteam/.*&lt;/code&gt;)</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ListingId" /></td>
+    <td><CopyableCode code="listing_id" /></td>
     <td><code>string</code></td>
     <td>Marketplace product listing ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceDescription" /></td>
+    <td><CopyableCode code="marketplace_description" /></td>
     <td><code>string</code></td>
     <td>The description of the vendor from the Amazon Marketplace. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceTitle" /></td>
+    <td><CopyableCode code="marketplace_title" /></td>
     <td><code>string</code></td>
     <td>The title of the service provided by the vendor in the Amazon Marketplace. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SellerName" /></td>
+    <td><CopyableCode code="seller_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vendor in the Amazon Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkteamArn" /></td>
+    <td><CopyableCode code="workteam_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vendor that you have subscribed. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workteam/.*&lt;/code&gt;)</td>
 </tr>
@@ -187,11 +187,11 @@ Gets information about a work team provided by a vendor. It returns details abou
 
 ```sql
 SELECT
-ListingId,
-MarketplaceDescription,
-MarketplaceTitle,
-SellerName,
-WorkteamArn
+listing_id,
+marketplace_description,
+marketplace_title,
+seller_name,
+workteam_arn
 FROM aws.sagemaker.subscribed_workteams
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,11 +203,11 @@ Gets a list of the work teams that you are subscribed to in the Amazon Web Servi
 
 ```sql
 SELECT
-ListingId,
-MarketplaceDescription,
-MarketplaceTitle,
-SellerName,
-WorkteamArn
+listing_id,
+marketplace_description,
+marketplace_title,
+seller_name,
+workteam_arn
 FROM aws.sagemaker.subscribed_workteams
 WHERE region = '{{ region }}' -- required
 ;

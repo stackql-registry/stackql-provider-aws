@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BandwidthRateLimitIntervals" /></td>
+    <td><CopyableCode code="bandwidth_rate_limit_intervals" /></td>
     <td><code>array</code></td>
     <td>An array containing bandwidth rate limit schedule intervals for a gateway. When no bandwidth rate limit intervals have been scheduled, the array is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the bandwidth rate limit schedule for a specified gateway. By default,
 
 ```sql
 SELECT
-BandwidthRateLimitIntervals,
-GatewayArn
+bandwidth_rate_limit_intervals,
+gateway_arn
 FROM aws.backup_gateway.bandwidth_rate_limit_schedules
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND GatewayArn = '{{ GatewayArn }}' --required
 AND BandwidthRateLimitIntervals = '{{ BandwidthRateLimitIntervals }}' --required
 RETURNING
-GatewayArn;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

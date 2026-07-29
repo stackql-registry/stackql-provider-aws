@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BillingGroupCostReportResults" /></td>
+    <td><CopyableCode code="billing_group_cost_report_results" /></td>
     <td><code>array</code></td>
     <td>The list of margin summary reports.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used on subsequent calls to get reports.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the margin summary report, which includes the Amazon Web Services cost
 
 ```sql
 SELECT
-BillingGroupCostReportResults,
-NextToken
+billing_group_cost_report_results,
+next_token
 FROM aws.billingconductor.billing_group_cost_reports
 WHERE region = '{{ region }}' -- required
 ;

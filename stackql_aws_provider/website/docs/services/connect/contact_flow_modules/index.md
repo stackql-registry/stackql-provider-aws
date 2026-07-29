@@ -52,67 +52,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow module. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalInvocationConfiguration" /></td>
+    <td><CopyableCode code="external_invocation_configuration" /></td>
     <td><code>object</code></td>
     <td>The external invocation configuration for the flow module</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowModuleContentSha256" /></td>
+    <td><CopyableCode code="flow_module_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>Hash of the module content for integrity verification. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow module. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>string</code></td>
     <td>The configuration settings for the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The type of flow module. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow module. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>Description of the version. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -131,22 +131,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow module. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The type of flow module. (ACTIVE, ARCHIVED)</td>
 </tr>
@@ -165,67 +165,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow module. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalInvocationConfiguration" /></td>
+    <td><CopyableCode code="external_invocation_configuration" /></td>
     <td><code>object</code></td>
     <td>The external invocation configuration for the flow module</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowModuleContentSha256" /></td>
+    <td><CopyableCode code="flow_module_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>Hash of the module content for integrity verification. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow module. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>string</code></td>
     <td>The configuration settings for the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The type of flow module. (ACTIVE, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow module. (PUBLISHED, SAVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the flow module.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>Description of the version. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -363,19 +363,19 @@ Describes the specified flow module. Use the $SAVED alias in the request to desc
 
 ```sql
 SELECT
-Arn,
-Content,
-Description,
-ExternalInvocationConfiguration,
-FlowModuleContentSha256,
-Id,
-Name,
-Settings,
-State,
-Status,
-Tags,
-Version,
-VersionDescription
+arn,
+content,
+description,
+external_invocation_configuration,
+flow_module_content_sha_256,
+id,
+name,
+settings,
+state,
+status,
+tags,
+version,
+version_description
 FROM aws.connect.contact_flow_modules
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_flow_module_id = '{{ contact_flow_module_id }}' -- required
@@ -389,10 +389,10 @@ Provides information about the flow modules for the specified Amazon Connect ins
 
 ```sql
 SELECT
-Arn,
-Id,
-Name,
-State
+arn,
+id,
+name,
+state
 FROM aws.connect.contact_flow_modules
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -408,19 +408,19 @@ Searches the flow modules in an Amazon Connect instance, with optional filtering
 
 ```sql
 SELECT
-Arn,
-Content,
-Description,
-ExternalInvocationConfiguration,
-FlowModuleContentSha256,
-Id,
-Name,
-Settings,
-State,
-Status,
-Tags,
-Version,
-VersionDescription
+arn,
+content,
+description,
+external_invocation_configuration,
+flow_module_content_sha_256,
+id,
+name,
+settings,
+state,
+status,
+tags,
+version,
+version_description
 FROM aws.connect.contact_flow_modules
 WHERE region = '{{ region }}' -- required
 ;
@@ -465,8 +465,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessGrantArn" /></td>
+    <td><CopyableCode code="access_grant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the access grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantId" /></td>
+    <td><CopyableCode code="access_grant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the access grant. S3 Access Grants auto-generates this ID when you create the access grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationConfiguration" /></td>
+    <td><CopyableCode code="access_grants_location_configuration" /></td>
     <td><code>string</code></td>
     <td>The configuration options of the grant location. The grant location is the S3 path to the data to which you are granting access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationId" /></td>
+    <td><CopyableCode code="access_grants_location_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID when you register the location. S3 Access Grants assigns the ID default to the default location s3:​// and assigns an auto-generated ID to other locations that you register.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity Center application associated with your Identity Center instance. If the grant includes an application ARN, the grantee can only access the S3 data through this application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when you created the access grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantScope" /></td>
+    <td><CopyableCode code="grant_scope" /></td>
     <td><code>string</code></td>
     <td>The S3 path of the data to which you are granting access. It is the result of appending the Subprefix to the location scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Grantee" /></td>
+    <td><CopyableCode code="grantee" /></td>
     <td><code>string</code></td>
     <td>The user, group, or role to which you are granting access. You can grant access to an IAM user or role. If you have added a corporate directory to Amazon Web Services IAM Identity Center and associated this Identity Center instance with the S3 Access Grants instance, the grantee can also be a corporate directory user or group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permission" /></td>
+    <td><CopyableCode code="permission" /></td>
     <td><code>string</code></td>
     <td>The type of permission that was granted in the access grant. Can be one of the following values: READ – Grant read-only access to the S3 data. WRITE – Grant write-only access to the S3 data. READWRITE – Grant both read and write access to the S3 data.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessGrantArn" /></td>
+    <td><CopyableCode code="access_grant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the access grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantId" /></td>
+    <td><CopyableCode code="access_grant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the access grant. S3 Access Grants auto-generates this ID when you create the access grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationConfiguration" /></td>
+    <td><CopyableCode code="access_grants_location_configuration" /></td>
     <td><code>string</code></td>
     <td>The configuration options of the grant location. The grant location is the S3 path to the data to which you are granting access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessGrantsLocationId" /></td>
+    <td><CopyableCode code="access_grants_location_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID when you register the location. S3 Access Grants assigns the ID default to the default location s3:​// and assigns an auto-generated ID to other locations that you register.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity Center application associated with your Identity Center instance. If the grant includes an application ARN, the grantee can only access the S3 data through this application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when you created the S3 Access Grants instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantScope" /></td>
+    <td><CopyableCode code="grant_scope" /></td>
     <td><code>string</code></td>
     <td>The S3 path of the data to which you are granting access. It is the result of appending the Subprefix to the location scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Grantee" /></td>
+    <td><CopyableCode code="grantee" /></td>
     <td><code>string</code></td>
     <td>The user, group, or role to which you are granting access. You can grant access to an IAM user or role. If you have added your corporate directory to Amazon Web Services IAM Identity Center and associated your Identity Center instance with your S3 Access Grants instance, the grantee can also be a corporate directory user or group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permission" /></td>
+    <td><CopyableCode code="permission" /></td>
     <td><code>string</code></td>
     <td>The type of access granted to your S3 data, which can be set to one of the following values: READ – Grant read-only access to the S3 data. WRITE – Grant write-only access to the S3 data. READWRITE – Grant both read and write access to the S3 data.</td>
 </tr>
@@ -293,15 +293,15 @@ Get the details of an access grant from your S3 Access Grants instance. Permissi
 
 ```sql
 SELECT
-AccessGrantArn,
-AccessGrantId,
-AccessGrantsLocationConfiguration,
-AccessGrantsLocationId,
-ApplicationArn,
-CreatedAt,
-GrantScope,
-Grantee,
-Permission
+access_grant_arn,
+access_grant_id,
+access_grants_location_configuration,
+access_grants_location_id,
+application_arn,
+created_at,
+grant_scope,
+grantee,
+permission
 FROM aws.s3control.access_grants
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND id = '{{ id }}' -- required
@@ -315,15 +315,15 @@ Returns the list of access grants in your S3 Access Grants instance. Permissions
 
 ```sql
 SELECT
-AccessGrantArn,
-AccessGrantId,
-AccessGrantsLocationConfiguration,
-AccessGrantsLocationId,
-ApplicationArn,
-CreatedAt,
-GrantScope,
-Grantee,
-Permission
+access_grant_arn,
+access_grant_id,
+access_grants_location_configuration,
+access_grants_location_id,
+application_arn,
+created_at,
+grant_scope,
+grantee,
+permission
 FROM aws.s3control.access_grants
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -376,15 +376,15 @@ SELECT
 '{{ x-amz-account-id }}',
 '{{ region }}'
 RETURNING
-AccessGrantArn,
-AccessGrantId,
-AccessGrantsLocationConfiguration,
-AccessGrantsLocationId,
-ApplicationArn,
-CreatedAt,
-GrantScope,
-Grantee,
-Permission
+access_grant_arn,
+access_grant_id,
+access_grants_location_configuration,
+access_grants_location_id,
+application_arn,
+created_at,
+grant_scope,
+grantee,
+permission
 ;
 ```
 </TabItem>

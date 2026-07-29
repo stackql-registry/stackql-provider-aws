@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adminUserName" /></td>
+    <td><CopyableCode code="admin_user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the elastic cluster administrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authType" /></td>
+    <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
     <td>The authentication type for the elastic cluster. (PLAIN_TEXT, SECRET_ARN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which automatic snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterEndpoint" /></td>
+    <td><CopyableCode code="cluster_endpoint" /></td>
     <td><code>string</code></td>
     <td>The URL used to connect to the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the elastic cluster was created in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The KMS key identifier to use to encrypt the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created if automated backups are enabled, as determined by backupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). Format: ddd:hh24:mi-ddd:hh24:mi</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shardCapacity" /></td>
+    <td><CopyableCode code="shard_capacity" /></td>
     <td><code>integer</code></td>
     <td>The number of vCPUs assigned to each elastic cluster shard. Maximum is 64. Allowed values are 2, 4, 8, 16, 32, 64.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shardCount" /></td>
+    <td><CopyableCode code="shard_count" /></td>
     <td><code>integer</code></td>
     <td>The number of shards assigned to the elastic cluster. Maximum is 32.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shardInstanceCount" /></td>
+    <td><CopyableCode code="shard_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of replica instances applying to all shards in the cluster. A shardInstanceCount value of 1 means there is one writer instance, and any additional instances are replicas that can be used for reads and to improve availability.</td>
 </tr>
@@ -126,12 +126,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the elastic cluster. (CREATING, ACTIVE, DELETING, UPDATING, VPC_ENDPOINT_LIMIT_EXCEEDED, IP_ADDRESS_LIMIT_EXCEEDED, INVALID_SECURITY_GROUP_ID, INVALID_SUBNET_ID, INACCESSIBLE_ENCRYPTION_CREDS, INACCESSIBLE_SECRET_ARN, INACCESSIBLE_VPC_ENDPOINT, INCOMPATIBLE_NETWORK, MERGING, MODIFYING, SPLITTING, COPYING, STARTING, STOPPING, STOPPED, MAINTENANCE, INACCESSIBLE_ENCRYPTION_CREDENTIALS_RECOVERABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon EC2 subnet IDs for the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSecurityGroupIds" /></td>
+    <td><CopyableCode code="vpc_security_group_ids" /></td>
     <td><code>array</code></td>
     <td>A list of EC2 VPC security groups associated with thie elastic cluster.</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the elastic cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the elastic cluster.</td>
 </tr>
@@ -306,23 +306,23 @@ Returns information about a specific elastic cluster.
 
 ```sql
 SELECT
-adminUserName,
-authType,
-backupRetentionPeriod,
-clusterArn,
-clusterEndpoint,
-clusterName,
-createTime,
-kmsKeyId,
-preferredBackupWindow,
-preferredMaintenanceWindow,
-shardCapacity,
-shardCount,
-shardInstanceCount,
+admin_user_name,
+auth_type,
+backup_retention_period,
+cluster_arn,
+cluster_endpoint,
+cluster_name,
+create_time,
+kms_key_id,
+preferred_backup_window,
+preferred_maintenance_window,
+shard_capacity,
+shard_count,
+shard_instance_count,
 shards,
 status,
-subnetIds,
-vpcSecurityGroupIds
+subnet_ids,
+vpc_security_group_ids
 FROM aws.docdb_elastic.clusters
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -335,8 +335,8 @@ Returns information about provisioned Amazon DocumentDB elastic clusters.
 
 ```sql
 SELECT
-clusterArn,
-clusterName,
+cluster_arn,
+cluster_name,
 status
 FROM aws.docdb_elastic.clusters
 WHERE region = '{{ region }}' -- required

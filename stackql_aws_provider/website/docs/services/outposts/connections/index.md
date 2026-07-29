@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionDetails" /></td>
+    <td><CopyableCode code="connection_details" /></td>
     <td><code>object</code></td>
     <td>Information about the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connection. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9+/=&#93;&#123;1,1024&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ Amazon Web Services uses this action to install Outpost servers. Gets informatio
 
 ```sql
 SELECT
-ConnectionDetails,
-ConnectionId
+connection_details,
+connection_id
 FROM aws.outposts.connections
 WHERE connection_id = '{{ connection_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assessmentRuns" /></td>
+    <td><CopyableCode code="assessment_runs" /></td>
     <td><code>array</code></td>
     <td>Information about the assessment run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedItems" /></td>
+    <td><CopyableCode code="failed_items" /></td>
     <td><code>object</code></td>
     <td>Assessment run details that cannot be described. An error code is provided for each failed item.</td>
 </tr>
@@ -159,8 +159,8 @@ Describes the assessment runs that are specified by the ARNs of the assessment r
 
 ```sql
 SELECT
-assessmentRuns,
-failedItems
+assessment_runs,
+failed_items
 FROM aws.inspector.assessment_runs
 WHERE region = '{{ region }}' -- required
 ;

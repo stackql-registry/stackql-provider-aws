@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If more than MaxResults instances match the specified criteria, you can submit another GetInstancesHealthStatus request to get the next group of results. Specify the value of NextToken from the previous response in the next request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains the IDs and the health status of the instances that you specified in the GetInstancesHealthStatus request.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets the current health status (Healthy, Unhealthy, or Unknown) of one or more i
 
 ```sql
 SELECT
-NextToken,
-Status
+next_token,
+status
 FROM aws.servicediscovery.instances_health_status
 WHERE region = '{{ region }}' -- required
 ;

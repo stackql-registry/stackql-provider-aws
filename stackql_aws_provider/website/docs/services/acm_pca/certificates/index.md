@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Certificate" /></td>
+    <td><CopyableCode code="certificate" /></td>
     <td><code>string</code></td>
     <td>The base64 PEM-encoded certificate specified by the CertificateArn parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateChain" /></td>
+    <td><CopyableCode code="certificate_chain" /></td>
     <td><code>string</code></td>
     <td>The base64 PEM-encoded certificate chain that chains up to the root CA certificate that you used to sign your private CA certificate.</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves a certificate from your private CA or one that has been shared with yo
 
 ```sql
 SELECT
-Certificate,
-CertificateChain
+certificate,
+certificate_chain
 FROM aws.acm_pca.certificates
 WHERE region = '{{ region }}' -- required
 ;

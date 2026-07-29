@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Principal" /></td>
+    <td><CopyableCode code="principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the principal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalType" /></td>
+    <td><CopyableCode code="principal_type" /></td>
     <td><code>string</code></td>
     <td>The type of principal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServicePermissionId" /></td>
+    <td><CopyableCode code="service_permission_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service permission.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
@@ -181,11 +181,11 @@ Describes the principals (service consumers) that are permitted to discover your
 
 ```sql
 SELECT
-Principal,
-PrincipalType,
-ServiceId,
-ServicePermissionId,
-Tags
+principal,
+principal_type,
+service_id,
+service_permission_id,
+tags
 FROM aws.ec2.vpc_endpoint_service_permissions
 WHERE ServiceId = '{{ ServiceId }}' -- required
 AND region = '{{ region }}' -- required
@@ -222,8 +222,8 @@ AND DryRun = {{ DryRun}}
 AND AddAllowedPrincipals = '{{ AddAllowedPrincipals}}'
 AND RemoveAllowedPrincipals = '{{ RemoveAllowedPrincipals}}'
 RETURNING
-AddedPrincipals,
-ReturnValue;
+added_principals,
+return_value;
 ```
 </TabItem>
 </Tabs>

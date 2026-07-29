@@ -66,57 +66,57 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/virtualclusters\/&#91;0-9a-zA-Z&#93;+\/jobruns\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The client token used to start a job run. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationOverrides" /></td>
+    <td><CopyableCode code="configuration_overrides" /></td>
     <td><code>object</code></td>
     <td>The configuration settings that are used to override default configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The execution role ARN of the job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):iam::(\d&#123;12&#125;)?:(role((\u002F)|(\u002F&#91;\u0021-\u007F&#93;+\u002F))&#91;\w+=,.@-&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reasons why the job run has failed. (INTERNAL_ERROR, USER_ERROR, VALIDATION_ERROR, CLUSTER_UNAVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="finishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDriver" /></td>
+    <td><CopyableCode code="job_driver" /></td>
     <td><code>object</code></td>
     <td>Parameters of job driver for the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The release version of Amazon EMR. (pattern: &lt;code&gt;&#91;\.\-_/A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retryPolicyConfiguration" /></td>
+    <td><CopyableCode code="retry_policy_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the retry policy that the job runs on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retryPolicyExecution" /></td>
+    <td><CopyableCode code="retry_policy_execution" /></td>
     <td><code>object</code></td>
     <td>The current status of the retry policy executed on the job.</td>
 </tr>
@@ -126,7 +126,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the job run. (PENDING, SUBMITTED, RUNNING, FAILED, CANCELLED, CANCEL_PENDING, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>Additional details of the job run state. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -136,7 +136,7 @@ The following fields are returned by `SELECT` queries:
     <td>The assigned tags of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualClusterId" /></td>
+    <td><CopyableCode code="virtual_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job run's virtual cluster. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -170,57 +170,57 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/virtualclusters\/&#91;0-9a-zA-Z&#93;+\/jobruns\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The client token used to start a job run. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationOverrides" /></td>
+    <td><CopyableCode code="configuration_overrides" /></td>
     <td><code>object</code></td>
     <td>The configuration settings that are used to override default configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The execution role ARN of the job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):iam::(\d&#123;12&#125;)?:(role((\u002F)|(\u002F&#91;\u0021-\u007F&#93;+\u002F))&#91;\w+=,.@-&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reasons why the job run has failed. (INTERNAL_ERROR, USER_ERROR, VALIDATION_ERROR, CLUSTER_UNAVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="finishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDriver" /></td>
+    <td><CopyableCode code="job_driver" /></td>
     <td><code>object</code></td>
     <td>Parameters of job driver for the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The release version of Amazon EMR. (pattern: &lt;code&gt;&#91;\.\-_/A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retryPolicyConfiguration" /></td>
+    <td><CopyableCode code="retry_policy_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the retry policy that the job runs on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retryPolicyExecution" /></td>
+    <td><CopyableCode code="retry_policy_execution" /></td>
     <td><code>object</code></td>
     <td>The current status of the retry policy executed on the job.</td>
 </tr>
@@ -230,7 +230,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the job run. (PENDING, SUBMITTED, RUNNING, FAILED, CANCELLED, CANCEL_PENDING, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>Additional details of the job run state. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -240,7 +240,7 @@ The following fields are returned by `SELECT` queries:
     <td>The assigned tags of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualClusterId" /></td>
+    <td><CopyableCode code="virtual_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job run's virtual cluster. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -360,21 +360,21 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-configurationOverrides,
-createdAt,
-createdBy,
-executionRoleArn,
-failureReason,
-finishedAt,
-jobDriver,
-releaseLabel,
-retryPolicyConfiguration,
-retryPolicyExecution,
+client_token,
+configuration_overrides,
+created_at,
+created_by,
+execution_role_arn,
+failure_reason,
+finished_at,
+job_driver,
+release_label,
+retry_policy_configuration,
+retry_policy_execution,
 state,
-stateDetails,
+state_details,
 tags,
-virtualClusterId
+virtual_cluster_id
 FROM aws.emr_containers.job_runs
 WHERE job_run_id = '{{ job_run_id }}' -- required
 AND virtual_cluster_id = '{{ virtual_cluster_id }}' -- required
@@ -391,21 +391,21 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-configurationOverrides,
-createdAt,
-createdBy,
-executionRoleArn,
-failureReason,
-finishedAt,
-jobDriver,
-releaseLabel,
-retryPolicyConfiguration,
-retryPolicyExecution,
+client_token,
+configuration_overrides,
+created_at,
+created_by,
+execution_role_arn,
+failure_reason,
+finished_at,
+job_driver,
+release_label,
+retry_policy_configuration,
+retry_policy_execution,
 state,
-stateDetails,
+state_details,
 tags,
-virtualClusterId
+virtual_cluster_id
 FROM aws.emr_containers.job_runs
 WHERE virtual_cluster_id = '{{ virtual_cluster_id }}' -- required
 AND region = '{{ region }}' -- required

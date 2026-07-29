@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the resource configuration. (pattern: &lt;code&gt;(?!rcfg-)(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowAssociationToShareableServiceNetwork" /></td>
+    <td><CopyableCode code="allow_association_to_shareable_service_network" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the resource configuration is associated with a sharable service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="amazonManaged" /></td>
+    <td><CopyableCode code="amazon_managed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the resource configuration was created and is managed by Amazon.</td>
 </tr>
@@ -76,47 +76,47 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the resource configuration. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceconfiguration/rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the resource configuration was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name of the resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainVerificationArn" /></td>
+    <td><CopyableCode code="domain_verification_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the domain verification. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:domainverification/dv-&#91;a-fA-F0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainVerificationId" /></td>
+    <td><CopyableCode code="domain_verification_id" /></td>
     <td><code>string</code></td>
     <td>The domain verification ID. (pattern: &lt;code&gt;dv-&#91;a-fA-F0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainVerificationStatus" /></td>
+    <td><CopyableCode code="domain_verification_status" /></td>
     <td><code>string</code></td>
     <td>The domain verification status. (VERIFIED, PENDING, VERIFICATION_TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the create-resource-configuration request failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupDomain" /></td>
+    <td><CopyableCode code="group_domain" /></td>
     <td><code>string</code></td>
     <td>(GROUP) The group domain for a group resource configuration. Any domains that you create for the child resource are subdomains of the group domain. Child resources inherit the verification status of the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date and time that the resource configuration was updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portRanges" /></td>
+    <td><CopyableCode code="port_ranges" /></td>
     <td><code>array</code></td>
     <td>The TCP port ranges that a consumer can use to access a resource configuration. You can separate port ranges with a comma. Example: 1-65535 or 1,2,22-30</td>
 </tr>
@@ -126,17 +126,17 @@ The following fields are returned by `SELECT` queries:
     <td>The TCP protocol accepted by the specified resource configuration. (TCP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationDefinition" /></td>
+    <td><CopyableCode code="resource_configuration_definition" /></td>
     <td><code>object</code></td>
     <td>Describes a resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationGroupId" /></td>
+    <td><CopyableCode code="resource_configuration_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the group resource configuration. (pattern: &lt;code&gt;rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceGatewayId" /></td>
+    <td><CopyableCode code="resource_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource gateway used to connect to the resource configuration in a given VPC. You can specify the resource gateway identifier only for resource configurations with type SINGLE, GROUP, or ARN. (pattern: &lt;code&gt;rgw-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -175,7 +175,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the resource configuration. (pattern: &lt;code&gt;(?!rcfg-)(?!&#91;-&#93;)(?!.*&#91;-&#93;$)(?!.*&#91;-&#93;&#123;2&#125;)&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="amazonManaged" /></td>
+    <td><CopyableCode code="amazon_managed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the resource configuration was created and is managed by Amazon.</td>
 </tr>
@@ -185,37 +185,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the resource configuration. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceconfiguration/rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the resource configuration was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainVerificationId" /></td>
+    <td><CopyableCode code="domain_verification_id" /></td>
     <td><code>string</code></td>
     <td>The domain verification ID. (pattern: &lt;code&gt;dv-&#91;a-fA-F0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupDomain" /></td>
+    <td><CopyableCode code="group_domain" /></td>
     <td><code>string</code></td>
     <td>(GROUP) The group domain for a group resource configuration. Any domains that you create for the child resource are subdomains of the group domain. Child resources inherit the verification status of the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date and time that the resource configuration was updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigurationGroupId" /></td>
+    <td><CopyableCode code="resource_configuration_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the group resource configuration. (pattern: &lt;code&gt;rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceGatewayId" /></td>
+    <td><CopyableCode code="resource_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource gateway. (pattern: &lt;code&gt;rgw-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -355,22 +355,22 @@ Retrieves information about the specified resource configuration.
 SELECT
 id,
 name,
-allowAssociationToShareableServiceNetwork,
-amazonManaged,
+allow_association_to_shareable_service_network,
+amazon_managed,
 arn,
-createdAt,
-customDomainName,
-domainVerificationArn,
-domainVerificationId,
-domainVerificationStatus,
-failureReason,
-groupDomain,
-lastUpdatedAt,
-portRanges,
+created_at,
+custom_domain_name,
+domain_verification_arn,
+domain_verification_id,
+domain_verification_status,
+failure_reason,
+group_domain,
+last_updated_at,
+port_ranges,
 protocol,
-resourceConfigurationDefinition,
-resourceConfigurationGroupId,
-resourceGatewayId,
+resource_configuration_definition,
+resource_configuration_group_id,
+resource_gateway_id,
 status,
 type_
 FROM aws.vpc_lattice.resource_configurations
@@ -387,15 +387,15 @@ Lists the resource configurations owned by or shared with this account.
 SELECT
 id,
 name,
-amazonManaged,
+amazon_managed,
 arn,
-createdAt,
-customDomainName,
-domainVerificationId,
-groupDomain,
-lastUpdatedAt,
-resourceConfigurationGroupId,
-resourceGatewayId,
+created_at,
+custom_domain_name,
+domain_verification_id,
+group_domain,
+last_updated_at,
+resource_configuration_group_id,
+resource_gateway_id,
 status,
 type_
 FROM aws.vpc_lattice.resource_configurations
@@ -459,19 +459,19 @@ SELECT
 RETURNING
 id,
 name,
-allowAssociationToShareableServiceNetwork,
+allow_association_to_shareable_service_network,
 arn,
-createdAt,
-customDomainName,
-domainVerificationArn,
-domainVerificationId,
-failureReason,
-groupDomain,
-portRanges,
+created_at,
+custom_domain_name,
+domain_verification_arn,
+domain_verification_id,
+failure_reason,
+group_domain,
+port_ranges,
 protocol,
-resourceConfigurationDefinition,
-resourceConfigurationGroupId,
-resourceGatewayId,
+resource_configuration_definition,
+resource_configuration_group_id,
+resource_gateway_id,
 status,
 type_
 ;
@@ -553,13 +553,13 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-allowAssociationToShareableServiceNetwork,
+allow_association_to_shareable_service_network,
 arn,
-portRanges,
+port_ranges,
 protocol,
-resourceConfigurationDefinition,
-resourceConfigurationGroupId,
-resourceGatewayId,
+resource_configuration_definition,
+resource_configuration_group_id,
+resource_gateway_id,
 status,
 type_;
 ```

@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the memory. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:memory\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the memory was created.</td>
 </tr>
@@ -76,27 +76,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the memory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key used to encrypt the memory. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventExpiryDuration" /></td>
+    <td><CopyableCode code="event_expiry_duration" /></td>
     <td><code>integer</code></td>
     <td>The number of days after which memory events will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the memory is in a failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexedKeys" /></td>
+    <td><CopyableCode code="indexed_keys" /></td>
     <td><code>array</code></td>
     <td>The indexed metadata keys for this memory. Only indexed keys can be used in metadata filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryExecutionRoleArn" /></td>
+    <td><CopyableCode code="memory_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that provides permissions for the memory. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
     <td>The list of memory strategies associated with this memory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamDeliveryResources" /></td>
+    <td><CopyableCode code="stream_delivery_resources" /></td>
     <td><code>object</code></td>
     <td>Configuration for streaming memory record data to external resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the memory was last updated.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the memory. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:memory\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the memory was created.</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the memory. (CREATING, ACTIVE, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the memory was last updated.</td>
 </tr>
@@ -271,17 +271,17 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 description,
-encryptionKeyArn,
-eventExpiryDuration,
-failureReason,
-indexedKeys,
-memoryExecutionRoleArn,
+encryption_key_arn,
+event_expiry_duration,
+failure_reason,
+indexed_keys,
+memory_execution_role_arn,
 status,
 strategies,
-streamDeliveryResources,
-updatedAt
+stream_delivery_resources,
+updated_at
 FROM aws.bedrock_agentcore_control.memories
 WHERE memory_id = '{{ memory_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -297,9 +297,9 @@ Lists the available Amazon Bedrock AgentCore Memory resources in the current Ama
 SELECT
 id,
 arn,
-createdAt,
+created_at,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.memories
 WHERE region = '{{ region }}' -- required
 ;

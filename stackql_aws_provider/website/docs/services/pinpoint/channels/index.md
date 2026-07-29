@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>object</code></td>
     <td>A map that contains a multipart response for each channel. For each item in this object, the ChannelType is the key and the Channel is the value.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves information about the history and status of each channel for an applic
 
 ```sql
 SELECT
-Channels
+channels
 FROM aws.pinpoint.channels
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="compactionMetrics" /></td>
+    <td><CopyableCode code="compaction_metrics" /></td>
     <td><code>object</code></td>
     <td>A CompactionMetrics object containing metrics for the optimizer run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compactionStrategy" /></td>
+    <td><CopyableCode code="compaction_strategy" /></td>
     <td><code>string</code></td>
     <td>The strategy used for the compaction run. Indicates which algorithm was applied to determine how files were selected and combined during the compaction process. Valid values are: binpack: Combines small files into larger files, typically targeting sizes over 100MB, while applying any pending deletes. This is the recommended compaction strategy for most use cases. sort: Organizes data based on specified columns which are sorted hierarchically during compaction, improving query performance for filtered operations. This strategy is recommended when your queries frequently filter on specific columns. To use this strategy, you must first define a sort order in your Iceberg table properties using the sort_order table property. z-order: Optimizes data organization by blending multiple attributes into a single scalar value that can be used for sorting, allowing efficient querying across multiple dimensions. This strategy is recommended when you need to query data across multiple dimensions simultaneously. To use this strategy, you must first define a sort order in your Iceberg table properties using the sort_order table property. (binpack, sort, z-order)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Represents the epoch timestamp at which the compaction job ended.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>An error that occured during the optimizer run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>An event type representing the status of the table optimizer run. (starting, completed, failed, in_progress)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>A RunMetrics object containing metrics for the optimizer run. This member is deprecated. See the individual metric members for compaction, retention, and orphan file deletion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="orphanFileDeletionMetrics" /></td>
+    <td><CopyableCode code="orphan_file_deletion_metrics" /></td>
     <td><code>object</code></td>
     <td>An OrphanFileDeletionMetrics object containing metrics for the optimizer run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retentionMetrics" /></td>
+    <td><CopyableCode code="retention_metrics" /></td>
     <td><code>object</code></td>
     <td>A RetentionMetrics object containing metrics for the optimizer run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Represents the epoch timestamp at which the compaction job was started within Lake Formation.</td>
 </tr>
@@ -159,15 +159,15 @@ Lists the history of previous optimizer runs for a specific table.
 
 ```sql
 SELECT
-compactionMetrics,
-compactionStrategy,
-endTimestamp,
+compaction_metrics,
+compaction_strategy,
+end_timestamp,
 error,
-eventType,
+event_type,
 metrics,
-orphanFileDeletionMetrics,
-retentionMetrics,
-startTimestamp
+orphan_file_deletion_metrics,
+retention_metrics,
+start_timestamp
 FROM aws.glue.table_optimizer_runs
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EvaluationMode" /></td>
+    <td><CopyableCode code="evaluation_mode" /></td>
     <td><code>string</code></td>
     <td>The mode of an evaluation. The valid values are Detective or Proactive. (DETECTIVE, PROACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationStartTimestamp" /></td>
+    <td><CopyableCode code="evaluation_start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The starting time of an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceEvaluationId" /></td>
+    <td><CopyableCode code="resource_evaluation_id" /></td>
     <td><code>string</code></td>
     <td>The ResourceEvaluationId of a evaluation.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a list of proactive resource evaluations.
 
 ```sql
 SELECT
-EvaluationMode,
-EvaluationStartTimestamp,
-ResourceEvaluationId
+evaluation_mode,
+evaluation_start_timestamp,
+resource_evaluation_id
 FROM aws.config.resource_evaluations
 WHERE region = '{{ region }}' -- required
 ;

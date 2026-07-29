@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="identityProviderArn" /></td>
+    <td><CopyableCode code="identity_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the identity provider. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityProviderDetails" /></td>
+    <td><CopyableCode code="identity_provider_details" /></td>
     <td><code>object</code></td>
     <td>The identity provider details. The following list describes the provider detail keys for each identity provider type. For Google and Login with Amazon: client_id client_secret authorize_scopes For Facebook: client_id client_secret authorize_scopes api_version For Sign in with Apple: client_id team_id key_id private_key authorize_scopes For OIDC providers: client_id client_secret attributes_request_method oidc_issuer authorize_scopes authorize_url if not available from discovery URL specified by oidc_issuer key token_url if not available from discovery URL specified by oidc_issuer key attributes_url if not available from discovery URL specified by oidc_issuer key jwks_uri if not available from discovery URL specified by oidc_issuer key For SAML providers: MetadataFile OR MetadataURL IDPSignout (boolean) optional IDPInit (boolean) optional RequestSigningAlgorithm (string) optional - Only accepts rsa-sha256 EncryptedResponses (boolean) optional</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityProviderName" /></td>
+    <td><CopyableCode code="identity_provider_name" /></td>
     <td><code>string</code></td>
     <td>The identity provider name. (pattern: &lt;code&gt;&#91;^_&#93;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;&#91;^_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityProviderType" /></td>
+    <td><CopyableCode code="identity_provider_type" /></td>
     <td><code>string</code></td>
     <td>The identity provider type. (SAML, Facebook, Google, LoginWithAmazon, SignInWithApple, OIDC)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="identityProviders" /></td>
+    <td><CopyableCode code="identity_providers" /></td>
     <td><code>array</code></td>
     <td>The identity providers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -208,10 +208,10 @@ Gets the identity provider.
 
 ```sql
 SELECT
-identityProviderArn,
-identityProviderDetails,
-identityProviderName,
-identityProviderType
+identity_provider_arn,
+identity_provider_details,
+identity_provider_name,
+identity_provider_type
 FROM aws.workspaces_web.identity_providers
 WHERE identity_provider_arn = '{{ identity_provider_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -224,8 +224,8 @@ Retrieves a list of identity providers for a specific web portal.
 
 ```sql
 SELECT
-identityProviders,
-nextToken
+identity_providers,
+next_token
 FROM aws.workspaces_web.identity_providers
 WHERE portal_arn = '{{ portal_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -269,7 +269,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-identityProviderArn
+identity_provider_arn
 ;
 ```
 </TabItem>
@@ -325,7 +325,7 @@ WHERE
 identity_provider_arn = '{{ identity_provider_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-identityProvider;
+identity_provider;
 ```
 </TabItem>
 </Tabs>

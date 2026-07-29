@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DashboardsQAStatus" /></td>
+    <td><CopyableCode code="dashboards_qa_status" /></td>
     <td><code>string</code></td>
     <td>The status of dashboards QA configuration that you want described. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -141,9 +141,9 @@ Describes an existing dashboard QA configuration.
 
 ```sql
 SELECT
-DashboardsQAStatus,
-RequestId,
-Status
+dashboards_qa_status,
+request_id,
+status
 FROM aws.quicksight.dashboards_qa_configurations
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -174,9 +174,9 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 AND DashboardsQAStatus = '{{ DashboardsQAStatus }}' --required
 RETURNING
-DashboardsQAStatus,
-RequestId,
-Status;
+dashboards_qa_status,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedClusterIds" /></td>
+    <td><CopyableCode code="associated_cluster_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpPools" /></td>
+    <td><CopyableCode code="ip_pools" /></td>
     <td><code>array</code></td>
     <td>An array of IpPools in your organization's network that identify a collection of IP addresses in this network that are reserved for use in MediaLive Anywhere. MediaLive Anywhere uses these IP addresses for Push inputs (in both Bridge and NAT networks) and for output destinations (only in Bridge networks). Each IpPool specifies one CIDR block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>array</code></td>
     <td>An array of routes that MediaLive Anywhere needs to know about in order to route encoding traffic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Network. Only MediaLive Anywhere can change the state. (CREATING, CREATE_FAILED, ACTIVE, DELETING, IDLE, IN_USE, UPDATING, DELETE_FAILED, DELETED)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedClusterIds" /></td>
+    <td><CopyableCode code="associated_cluster_ids" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpPools" /></td>
+    <td><CopyableCode code="ip_pools" /></td>
     <td><code>array</code></td>
     <td>An array of IpPools in your organization's network that identify a collection of IP addresses in your organization's network that are reserved for use in MediaLive Anywhere. MediaLive Anywhere uses these IP addresses for Push inputs (in both Bridge and NAT networks) and for output destinations (only in Bridge networks). Each IpPool specifies one CIDR block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>array</code></td>
     <td>An array of routes that MediaLive Anywhere needs to know about in order to route encoding traffic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Network. Only MediaLive Anywhere can change the state. (CREATING, CREATE_FAILED, ACTIVE, DELETING, IDLE, IN_USE, UPDATING, DELETE_FAILED, DELETED)</td>
 </tr>
@@ -243,13 +243,13 @@ Get details about a Network.
 
 ```sql
 SELECT
-Arn,
-AssociatedClusterIds,
-Id,
-IpPools,
-Name,
-Routes,
-State
+arn,
+associated_cluster_ids,
+id,
+ip_pools,
+name,
+routes,
+state
 FROM aws.medialive.networks
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,13 +262,13 @@ Retrieve the list of Networks.
 
 ```sql
 SELECT
-Arn,
-AssociatedClusterIds,
-Id,
-IpPools,
-Name,
-Routes,
-State
+arn,
+associated_cluster_ids,
+id,
+ip_pools,
+name,
+routes,
+state
 FROM aws.medialive.networks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -309,13 +309,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-AssociatedClusterIds,
-Id,
-IpPools,
-Name,
-Routes,
-State
+arn,
+associated_cluster_ids,
+id,
+ip_pools,
+name,
+routes,
+state
 ;
 ```
 </TabItem>
@@ -378,13 +378,13 @@ WHERE
 network_id = '{{ network_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-AssociatedClusterIds,
-Id,
-IpPools,
-Name,
-Routes,
-State;
+arn,
+associated_cluster_ids,
+id,
+ip_pools,
+name,
+routes,
+state;
 ```
 </TabItem>
 </Tabs>

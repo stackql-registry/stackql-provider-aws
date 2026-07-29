@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Applications" /></td>
+    <td><CopyableCode code="applications" /></td>
     <td><code>array</code></td>
     <td>The list of applications available for the target release label. Name is the name of the application. Version is the concise version of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableOSReleases" /></td>
+    <td><CopyableCode code="available_os_releases" /></td>
     <td><code>array</code></td>
     <td>The list of available Amazon Linux release versions for an Amazon EMR release. Contains a Label field that is formatted as shown in Amazon Linux 2 Release Notes . For example, 2.0.20220218.1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token. Reserved for future use. Currently set to null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReleaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The target release label described in the response.</td>
 </tr>
@@ -162,10 +162,10 @@ Provides Amazon EMR release label details, such as the releases available the Re
 
 ```sql
 SELECT
-Applications,
-AvailableOSReleases,
-NextToken,
-ReleaseLabel
+applications,
+available_os_releases,
+next_token,
+release_label
 FROM aws.emr.release_labels
 WHERE region = '{{ region }}' -- required
 ;

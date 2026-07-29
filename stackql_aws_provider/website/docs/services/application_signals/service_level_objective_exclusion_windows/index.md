@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>A description explaining why this time period should be excluded from SLO calculations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurrenceRule" /></td>
+    <td><CopyableCode code="recurrence_rule" /></td>
     <td><code>object</code></td>
     <td>The recurrence rule for the SLO time window exclusion. Supports both cron and rate expressions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start of the SLO time window exclusion. Defaults to current time if not specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Window" /></td>
+    <td><CopyableCode code="window" /></td>
     <td><code>object</code></td>
     <td>The SLO time window exclusion .</td>
 </tr>
@@ -149,10 +149,10 @@ Retrieves all exclusion windows configured for a specific SLO.
 
 ```sql
 SELECT
-Reason,
-RecurrenceRule,
-StartTime,
-Window
+reason,
+recurrence_rule,
+start_time,
+window
 FROM aws.application_signals.service_level_objective_exclusion_windows
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

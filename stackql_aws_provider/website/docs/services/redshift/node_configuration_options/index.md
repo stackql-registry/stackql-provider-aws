@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EstimatedDiskUtilizationPercent" /></td>
+    <td><CopyableCode code="estimated_disk_utilization_percent" /></td>
     <td><code>number</code></td>
     <td>The estimated disk utilizaton percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>The category of the node configuration recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type, such as, "ra3.4xlarge".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfNodes" /></td>
+    <td><CopyableCode code="number_of_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of nodes.</td>
 </tr>
@@ -174,10 +174,10 @@ Returns properties of possible node configurations such as node type, number of 
 
 ```sql
 SELECT
-EstimatedDiskUtilizationPercent,
-Mode,
-NodeType,
-NumberOfNodes
+estimated_disk_utilization_percent,
+mode,
+node_type,
+number_of_nodes
 FROM aws.redshift.node_configuration_options
 WHERE ActionType = '{{ ActionType }}' -- required
 AND region = '{{ region }}' -- required

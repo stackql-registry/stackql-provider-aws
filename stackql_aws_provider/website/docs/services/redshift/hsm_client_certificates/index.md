@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HsmClientCertificateIdentifier" /></td>
+    <td><CopyableCode code="hsm_client_certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the HSM client certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmClientCertificatePublicKey" /></td>
+    <td><CopyableCode code="hsm_client_certificate_public_key" /></td>
     <td><code>string</code></td>
     <td>The public key that the Amazon Redshift cluster will use to connect to the HSM. You must register the public key in the HSM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the HSM client certificate.</td>
 </tr>
@@ -178,9 +178,9 @@ Returns information about the specified HSM client certificate. If no certificat
 
 ```sql
 SELECT
-HsmClientCertificateIdentifier,
-HsmClientCertificatePublicKey,
-Tags
+hsm_client_certificate_identifier,
+hsm_client_certificate_public_key,
+tags
 FROM aws.redshift.hsm_client_certificates
 WHERE region = '{{ region }}' -- required
 AND HsmClientCertificateIdentifier = '{{ HsmClientCertificateIdentifier }}'
@@ -218,9 +218,9 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-HsmClientCertificateIdentifier,
-HsmClientCertificatePublicKey,
-Tags
+hsm_client_certificate_identifier,
+hsm_client_certificate_public_key,
+tags
 ;
 ```
 </TabItem>

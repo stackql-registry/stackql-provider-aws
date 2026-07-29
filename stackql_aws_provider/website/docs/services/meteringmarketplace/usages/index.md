@@ -107,8 +107,8 @@ SELECT
 '{{ Nonce }}',
 '{{ region }}'
 RETURNING
-PublicKeyRotationTimestamp,
-Signature
+public_key_rotation_timestamp,
+signature
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VerifiedAccessEndpointId" /></td>
+    <td><CopyableCode code="verified_access_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Verified Access endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessEndpointTargetDns" /></td>
+    <td><CopyableCode code="verified_access_endpoint_target_dns" /></td>
     <td><code>string</code></td>
     <td>The DNS name of the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessEndpointTargetIpAddress" /></td>
+    <td><CopyableCode code="verified_access_endpoint_target_ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the target.</td>
 </tr>
@@ -149,9 +149,9 @@ Gets the targets for the specified network CIDR endpoint for Verified Access.
 
 ```sql
 SELECT
-VerifiedAccessEndpointId,
-VerifiedAccessEndpointTargetDns,
-VerifiedAccessEndpointTargetIpAddress
+verified_access_endpoint_id,
+verified_access_endpoint_target_dns,
+verified_access_endpoint_target_ip_address
 FROM aws.ec2.verified_access_endpoint_targets
 WHERE VerifiedAccessEndpointId = '{{ VerifiedAccessEndpointId }}' -- required
 AND region = '{{ region }}' -- required

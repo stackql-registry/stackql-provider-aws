@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the trust store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfCaCertificates" /></td>
+    <td><CopyableCode code="number_of_ca_certificates" /></td>
     <td><code>integer</code></td>
     <td>The number of ca certificates in the trust store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the trust store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalRevokedEntries" /></td>
+    <td><CopyableCode code="total_revoked_entries" /></td>
     <td><code>integer</code></td>
     <td>The number of revoked certificates in the trust store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustStoreArn" /></td>
+    <td><CopyableCode code="trust_store_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trust store.</td>
 </tr>
@@ -210,11 +210,11 @@ Describes all trust stores for the specified account.
 
 ```sql
 SELECT
-Name,
-NumberOfCaCertificates,
-Status,
-TotalRevokedEntries,
-TrustStoreArn
+name,
+number_of_ca_certificates,
+status,
+total_revoked_entries,
+trust_store_arn
 FROM aws.elbv2.trust_stores
 WHERE region = '{{ region }}' -- required
 AND TrustStoreArns = '{{ TrustStoreArns }}'

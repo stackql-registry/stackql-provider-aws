@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time recorded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the profile template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateQuestions" /></td>
+    <td><CopyableCode code="template_questions" /></td>
     <td><code>array</code></td>
     <td>Profile template questions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time recorded.</td>
 </tr>
@@ -134,10 +134,10 @@ Get profile template.
 
 ```sql
 SELECT
-CreatedAt,
-TemplateName,
-TemplateQuestions,
-UpdatedAt
+created_at,
+template_name,
+template_questions,
+updated_at
 FROM aws.wellarchitected.profile_templates
 WHERE region = '{{ region }}' -- required
 ;

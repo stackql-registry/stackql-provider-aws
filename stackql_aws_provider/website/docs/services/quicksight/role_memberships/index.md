@@ -205,8 +205,8 @@ SELECT
 '{{ role }}',
 '{{ region }}'
 RETURNING
-RequestId,
-Status
+request_id,
+status
 ;
 ```
 </TabItem>

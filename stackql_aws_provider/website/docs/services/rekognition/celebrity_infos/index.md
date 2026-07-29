@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KnownGender" /></td>
+    <td><CopyableCode code="known_gender" /></td>
     <td><code>object</code></td>
     <td>Retrieves the known gender for the celebrity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the celebrity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Urls" /></td>
+    <td><CopyableCode code="urls" /></td>
     <td><code>array</code></td>
     <td>An array of URLs pointing to additional celebrity information.</td>
 </tr>
@@ -129,9 +129,9 @@ Gets the name and additional information about a celebrity based on their Amazon
 
 ```sql
 SELECT
-KnownGender,
-Name,
-Urls
+known_gender,
+name,
+urls
 FROM aws.rekognition.celebrity_infos
 WHERE region = '{{ region }}' -- required
 ;

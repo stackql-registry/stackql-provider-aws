@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDateTime" /></td>
+    <td><CopyableCode code="created_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the trust relationship was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The Directory ID of the Amazon Web Services directory involved in the trust relationship. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the trust relationship was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemoteDomainName" /></td>
+    <td><CopyableCode code="remote_domain_name" /></td>
     <td><code>string</code></td>
     <td>The Fully Qualified Domain Name (FQDN) of the external domain involved in the trust relationship. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9&#93;+&#91;\\.-&#93;)+(&#91;a-zA-Z0-9&#93;)+&#91;.&#93;?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelectiveAuth" /></td>
+    <td><CopyableCode code="selective_auth" /></td>
     <td><code>string</code></td>
     <td>Current state of selective authentication for the trust. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateLastUpdatedDateTime" /></td>
+    <td><CopyableCode code="state_last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the TrustState was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustDirection" /></td>
+    <td><CopyableCode code="trust_direction" /></td>
     <td><code>string</code></td>
     <td>The trust relationship direction. (One-Way: Outgoing, One-Way: Incoming, Two-Way)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustId" /></td>
+    <td><CopyableCode code="trust_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the trust relationship. (pattern: &lt;code&gt;^t-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustState" /></td>
+    <td><CopyableCode code="trust_state" /></td>
     <td><code>string</code></td>
     <td>The trust relationship state. (Creating, Created, Verifying, VerifyFailed, Verified, Updating, UpdateFailed, Updated, Deleting, Deleted, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustStateReason" /></td>
+    <td><CopyableCode code="trust_state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the TrustState.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustType" /></td>
+    <td><CopyableCode code="trust_type" /></td>
     <td><code>string</code></td>
     <td>The trust relationship type. Forest is the default. (Forest, External)</td>
 </tr>
@@ -197,17 +197,17 @@ Obtains information about the trust relationships for this account. If no input 
 
 ```sql
 SELECT
-CreatedDateTime,
-DirectoryId,
-LastUpdatedDateTime,
-RemoteDomainName,
-SelectiveAuth,
-StateLastUpdatedDateTime,
-TrustDirection,
-TrustId,
-TrustState,
-TrustStateReason,
-TrustType
+created_date_time,
+directory_id,
+last_updated_date_time,
+remote_domain_name,
+selective_auth,
+state_last_updated_date_time,
+trust_direction,
+trust_id,
+trust_state,
+trust_state_reason,
+trust_type
 FROM aws.ds.trusts
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,7 +252,7 @@ SELECT
 '{{ SelectiveAuth }}',
 '{{ region }}'
 RETURNING
-TrustId
+trust_id
 ;
 ```
 </TabItem>
@@ -328,8 +328,8 @@ WHERE
 region = '{{ region }}' --required
 AND TrustId = '{{ TrustId }}' --required
 RETURNING
-RequestId,
-TrustId;
+request_id,
+trust_id;
 ```
 </TabItem>
 </Tabs>

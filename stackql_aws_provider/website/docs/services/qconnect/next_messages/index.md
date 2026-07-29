@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="chunkedResponseTerminated" /></td>
+    <td><CopyableCode code="chunked_response_terminated" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the chunked response has been terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conversationSessionData" /></td>
+    <td><CopyableCode code="conversation_session_data" /></td>
     <td><code>array</code></td>
     <td>The conversation data stored on an Amazon Q in Connect Session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conversationState" /></td>
+    <td><CopyableCode code="conversation_state" /></td>
     <td><code>object</code></td>
     <td>The state of current conversation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextMessageToken" /></td>
+    <td><CopyableCode code="next_message_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestMessageId" /></td>
+    <td><CopyableCode code="request_message_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the submitted message. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -164,11 +164,11 @@ Retrieves next message on an Amazon Q in Connect session.
 
 ```sql
 SELECT
-chunkedResponseTerminated,
-conversationSessionData,
-conversationState,
-nextMessageToken,
-requestMessageId,
+chunked_response_terminated,
+conversation_session_data,
+conversation_state,
+next_message_token,
+request_message_id,
 response,
 type_
 FROM aws.qconnect.next_messages

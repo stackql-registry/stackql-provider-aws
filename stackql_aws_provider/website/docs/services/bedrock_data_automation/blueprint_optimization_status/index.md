@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error Message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorType" /></td>
+    <td><CopyableCode code="error_type" /></td>
     <td><code>string</code></td>
     <td>Error Type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfiguration" /></td>
+    <td><CopyableCode code="output_configuration" /></td>
     <td><code>object</code></td>
     <td>Output configuration.</td>
 </tr>
@@ -139,9 +139,9 @@ API used to get blueprint optimization status.
 
 ```sql
 SELECT
-errorMessage,
-errorType,
-outputConfiguration,
+error_message,
+error_type,
+output_configuration,
 status
 FROM aws.bedrock_data_automation.blueprint_optimization_status
 WHERE invocation_arn = '{{ invocation_arn }}' -- required

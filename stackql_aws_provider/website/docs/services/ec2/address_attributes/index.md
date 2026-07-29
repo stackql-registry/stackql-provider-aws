@@ -118,10 +118,10 @@ AND region = '{{ region }}' --required
 AND DomainName = '{{ DomainName}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-AllocationId,
-PtrRecord,
-PtrRecordUpdate,
-PublicIp;
+allocation_id,
+ptr_record,
+ptr_record_update,
+public_ip;
 ```
 </TabItem>
 </Tabs>

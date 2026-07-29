@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregationPeriod" /></td>
+    <td><CopyableCode code="aggregation_period" /></td>
     <td><code>integer (int64)</code></td>
     <td>The aggregation period for the specified monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date when the monitor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date when the monitor was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the selected monitor. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregationPeriod" /></td>
+    <td><CopyableCode code="aggregation_period" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time, in seconds, that metrics are collected and sent to Amazon CloudWatch. Valid values are either 30 or 60.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the monitor. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -243,11 +243,11 @@ Returns details about a specific monitor. This action requires the monitorName p
 
 ```sql
 SELECT
-aggregationPeriod,
-createdAt,
-modifiedAt,
-monitorArn,
-monitorName,
+aggregation_period,
+created_at,
+modified_at,
+monitor_arn,
+monitor_name,
 probes,
 state,
 tags
@@ -263,9 +263,9 @@ Returns a list of all of your monitors.
 
 ```sql
 SELECT
-aggregationPeriod,
-monitorArn,
-monitorName,
+aggregation_period,
+monitor_arn,
+monitor_name,
 state,
 tags
 FROM aws.networkmonitor.monitors
@@ -309,9 +309,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-aggregationPeriod,
-monitorArn,
-monitorName,
+aggregation_period,
+monitor_arn,
+monitor_name,
 state,
 tags
 ;
@@ -368,9 +368,9 @@ monitor_name = '{{ monitor_name }}' --required
 AND region = '{{ region }}' --required
 AND aggregationPeriod = '{{ aggregationPeriod }}' --required
 RETURNING
-aggregationPeriod,
-monitorArn,
-monitorName,
+aggregation_period,
+monitor_arn,
+monitor_name,
 state,
 tags;
 ```

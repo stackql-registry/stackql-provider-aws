@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the partner account. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+:partnercentral:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:catalog/&#91;A-Za-z-_&#93;+/partner/partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsTrainingCertificationEmailDomains" /></td>
+    <td><CopyableCode code="aws_training_certification_email_domains" /></td>
     <td><code>array</code></td>
     <td>The list of verified email domains associated with AWS training and certification credentials for the partner organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier for the partner account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the partner account was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the partner account. (pattern: &lt;code&gt;partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LegalName" /></td>
+    <td><CopyableCode code="legal_name" /></td>
     <td><code>string</code></td>
     <td>The legal name of the partner organization. (pattern: &lt;code&gt;&#91;\u0020-\u007E\u00A0-\uD7FF\uE000-\uFFFD&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Profile" /></td>
+    <td><CopyableCode code="profile" /></td>
     <td><code>object</code></td>
     <td>The partner profile information including display name, description, and other public details.</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the partner account. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+:partnercentral:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:catalog/&#91;A-Za-z-_&#93;+/partner/partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier for the partner account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the partner account was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the partner account. (pattern: &lt;code&gt;partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LegalName" /></td>
+    <td><CopyableCode code="legal_name" /></td>
     <td><code>string</code></td>
     <td>The legal name of the partner organization. (pattern: &lt;code&gt;&#91;\u0020-\u007E\u00A0-\uD7FF\uE000-\uFFFD&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -204,13 +204,13 @@ Retrieves detailed information about a specific partner account.
 
 ```sql
 SELECT
-Arn,
-AwsTrainingCertificationEmailDomains,
-Catalog,
-CreatedAt,
-Id,
-LegalName,
-Profile
+arn,
+aws_training_certification_email_domains,
+catalog,
+created_at,
+id,
+legal_name,
+profile
 FROM aws.partnercentral_account.partners
 WHERE region = '{{ region }}' -- required
 ;
@@ -222,11 +222,11 @@ Lists partner accounts in the catalog, providing a summary view of all partners.
 
 ```sql
 SELECT
-Arn,
-Catalog,
-CreatedAt,
-Id,
-LegalName
+arn,
+catalog,
+created_at,
+id,
+legal_name
 FROM aws.partnercentral_account.partners
 WHERE region = '{{ region }}' -- required
 ;
@@ -269,14 +269,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AllianceLeadContact,
-Arn,
-AwsTrainingCertificationEmailDomains,
-Catalog,
-CreatedAt,
-Id,
-LegalName,
-Profile
+alliance_lead_contact,
+arn,
+aws_training_certification_email_domains,
+catalog,
+created_at,
+id,
+legal_name,
+profile
 ;
 ```
 </TabItem>

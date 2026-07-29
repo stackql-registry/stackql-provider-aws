@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the listener. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;/listener/listener-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultAction" /></td>
+    <td><CopyableCode code="default_action" /></td>
     <td><code>object</code></td>
     <td>Describes the action for a rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener was last updated, in ISO-8601 format.</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>The listener protocol. (HTTP, HTTPS, TLS_PASSTHROUGH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service. (pattern: &lt;code&gt;svc-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the listener. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:service/svc-&#91;0-9a-z&#93;&#123;17&#125;/listener/listener-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the listener was last updated, in ISO-8601 format.</td>
 </tr>
@@ -273,13 +273,13 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-defaultAction,
-lastUpdatedAt,
+created_at,
+default_action,
+last_updated_at,
 port,
 protocol,
-serviceArn,
-serviceId
+service_arn,
+service_id
 FROM aws.vpc_lattice.listeners
 WHERE service_identifier = '{{ service_identifier }}' -- required
 AND listener_identifier = '{{ listener_identifier }}' -- required
@@ -296,8 +296,8 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-lastUpdatedAt,
+created_at,
+last_updated_at,
 port,
 protocol
 FROM aws.vpc_lattice.listeners
@@ -348,11 +348,11 @@ RETURNING
 id,
 name,
 arn,
-defaultAction,
+default_action,
 port,
 protocol,
-serviceArn,
-serviceId
+service_arn,
+service_id
 ;
 ```
 </TabItem>
@@ -419,11 +419,11 @@ RETURNING
 id,
 name,
 arn,
-defaultAction,
+default_action,
 port,
 protocol,
-serviceArn,
-serviceId;
+service_arn,
+service_id;
 ```
 </TabItem>
 </Tabs>

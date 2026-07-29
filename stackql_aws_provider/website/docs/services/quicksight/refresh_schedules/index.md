@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the refresh schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshSchedule" /></td>
+    <td><CopyableCode code="refresh_schedule" /></td>
     <td><code>object</code></td>
     <td>The refresh schedule of a dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RefreshSchedules" /></td>
+    <td><CopyableCode code="refresh_schedules" /></td>
     <td><code>array</code></td>
     <td>The list of refresh schedules for the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -208,10 +208,10 @@ Provides a summary of a refresh schedule.
 
 ```sql
 SELECT
-Arn,
-RefreshSchedule,
-RequestId,
-Status
+arn,
+refresh_schedule,
+request_id,
+status
 FROM aws.quicksight.refresh_schedules
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND data_set_id = '{{ data_set_id }}' -- required
@@ -226,9 +226,9 @@ Lists the refresh schedules of a dataset. Each dataset can have up to 5 schedule
 
 ```sql
 SELECT
-RefreshSchedules,
-RequestId,
-Status
+refresh_schedules,
+request_id,
+status
 FROM aws.quicksight.refresh_schedules
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND data_set_id = '{{ data_set_id }}' -- required
@@ -265,10 +265,10 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-RequestId,
-ScheduleId,
-Status
+arn,
+request_id,
+schedule_id,
+status
 ;
 ```
 </TabItem>
@@ -329,10 +329,10 @@ AND aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 AND Schedule = '{{ Schedule }}' --required
 RETURNING
-Arn,
-RequestId,
-ScheduleId,
-Status;
+arn,
+request_id,
+schedule_id,
+status;
 ```
 </TabItem>
 </Tabs>

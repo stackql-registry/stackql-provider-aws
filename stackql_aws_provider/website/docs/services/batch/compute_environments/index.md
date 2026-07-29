@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="computeEnvironmentArn" /></td>
+    <td><CopyableCode code="compute_environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the compute environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeEnvironmentName" /></td>
+    <td><CopyableCode code="compute_environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the compute environment. It can be up to 128 characters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeResources" /></td>
+    <td><CopyableCode code="compute_resources" /></td>
     <td><code>object</code></td>
     <td>An object that represents an Batch compute resource. For more information, see Compute environments in the Batch User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerOrchestrationType" /></td>
+    <td><CopyableCode code="container_orchestration_type" /></td>
     <td><code>string</code></td>
     <td>The orchestration type of the compute environment. The valid values are ECS (default) or EKS. (ECS, EKS)</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
     <td>Reserved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ecsClusterArn" /></td>
+    <td><CopyableCode code="ecs_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster that the compute environment uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eksConfiguration" /></td>
+    <td><CopyableCode code="eks_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for the Amazon EKS cluster that supports the Batch compute environment. The cluster must exist before the compute environment can be created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The service role that's associated with the compute environment that allows Batch to make calls to Amazon Web Services API operations on your behalf. For more information, see Batch service IAM role in the Batch User Guide.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the compute environment (for example, CREATING or VALID). (CREATING, UPDATING, DELETING, DELETED, VALID, INVALID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A short, human-readable string to provide additional details for the current status of the compute environment.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the compute environment: MANAGED or UNMANAGED. For more information, see Compute environments in the Batch User Guide. (MANAGED, UNMANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unmanagedvCpus" /></td>
+    <td><CopyableCode code="unmanagedv_cpus" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of VCPUs expected to be used for an unmanaged compute environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatePolicy" /></td>
+    <td><CopyableCode code="update_policy" /></td>
     <td><code>object</code></td>
     <td>Specifies the infrastructure update policy for the compute environment. For more information about infrastructure updates, see Updating compute environments in the Batch User Guide.</td>
 </tr>
@@ -215,21 +215,21 @@ Describes one or more of your compute environments. If you're using an unmanaged
 
 ```sql
 SELECT
-computeEnvironmentArn,
-computeEnvironmentName,
-computeResources,
-containerOrchestrationType,
+compute_environment_arn,
+compute_environment_name,
+compute_resources,
+container_orchestration_type,
 context,
-ecsClusterArn,
-eksConfiguration,
-serviceRole,
+ecs_cluster_arn,
+eks_configuration,
+service_role,
 state,
 status,
-statusReason,
+status_reason,
 tags,
 type_,
-unmanagedvCpus,
-updatePolicy,
+unmanagedv_cpus,
+update_policy,
 uuid
 FROM aws.batch.compute_environments
 WHERE region = '{{ region }}' -- required
@@ -277,8 +277,8 @@ SELECT
 '{{ context }}',
 '{{ region }}'
 RETURNING
-computeEnvironmentArn,
-computeEnvironmentName
+compute_environment_arn,
+compute_environment_name
 ;
 ```
 </TabItem>
@@ -384,8 +384,8 @@ WHERE
 region = '{{ region }}' --required
 AND computeEnvironment = '{{ computeEnvironment }}' --required
 RETURNING
-computeEnvironmentArn,
-computeEnvironmentName;
+compute_environment_arn,
+compute_environment_name;
 ```
 </TabItem>
 </Tabs>

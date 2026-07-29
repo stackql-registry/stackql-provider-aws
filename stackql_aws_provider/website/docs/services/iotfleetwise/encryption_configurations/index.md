@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when encryption was configured in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionStatus" /></td>
+    <td><CopyableCode code="encryption_status" /></td>
     <td><code>string</code></td>
     <td>The encryption status. (PENDING, SUCCESS, FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionType" /></td>
+    <td><CopyableCode code="encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption. Set to KMS_BASED_ENCRYPTION to use a KMS key that you own and manage. Set to FLEETWISE_DEFAULT_ENCRYPTION to use an Amazon Web Services managed key that is owned by the Amazon Web Services IoT FleetWise service account. (KMS_BASED_ENCRYPTION, FLEETWISE_DEFAULT_ENCRYPTION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message that describes why encryption settings couldn't be configured, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key that is used for encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when encryption was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
@@ -151,12 +151,12 @@ Retrieves the encryption configuration for resources and data in Amazon Web Serv
 
 ```sql
 SELECT
-creationTime,
-encryptionStatus,
-encryptionType,
-errorMessage,
-kmsKeyId,
-lastModificationTime
+creation_time,
+encryption_status,
+encryption_type,
+error_message,
+kms_key_id,
+last_modification_time
 FROM aws.iotfleetwise.encryption_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -186,9 +186,9 @@ WHERE
 region = '{{ region }}' --required
 AND encryptionType = '{{ encryptionType }}' --required
 RETURNING
-encryptionStatus,
-encryptionType,
-kmsKeyId;
+encryption_status,
+encryption_type,
+kms_key_id;
 ```
 </TabItem>
 </Tabs>

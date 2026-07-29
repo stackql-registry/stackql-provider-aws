@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KafkaVersions" /></td>
+    <td><CopyableCode code="kafka_versions" /></td>
     <td><code>array</code></td>
     <td>The versions of Apache Kafka with which you can use this MSK configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRevision" /></td>
+    <td><CopyableCode code="latest_revision" /></td>
     <td><code>object</code></td>
     <td>Latest revision of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the configuration. The possible states are ACTIVE, DELETING, and DELETE_FAILED. (ACTIVE, DELETING, DELETE_FAILED)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KafkaVersions" /></td>
+    <td><CopyableCode code="kafka_versions" /></td>
     <td><code>array</code></td>
     <td>An array of the versions of Apache Kafka with which you can use this MSK configuration. You can use this configuration for an MSK cluster only if the Apache Kafka version specified for the cluster appears in this array.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRevision" /></td>
+    <td><CopyableCode code="latest_revision" /></td>
     <td><code>object</code></td>
     <td>Latest revision of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the configuration. The possible states are ACTIVE, DELETING, and DELETE_FAILED. (ACTIVE, DELETING, DELETE_FAILED)</td>
 </tr>
@@ -255,13 +255,13 @@ Returns a description of this MSK configuration.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-Description,
-KafkaVersions,
-LatestRevision,
-Name,
-State
+arn,
+creation_time,
+description,
+kafka_versions,
+latest_revision,
+name,
+state
 FROM aws.kafka.configurations
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -274,13 +274,13 @@ Returns a list of all the MSK configurations in this Region.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-Description,
-KafkaVersions,
-LatestRevision,
-Name,
-State
+arn,
+creation_time,
+description,
+kafka_versions,
+latest_revision,
+name,
+state
 FROM aws.kafka.configurations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -319,11 +319,11 @@ SELECT
 '{{ ServerProperties }}' /* required */,
 '{{ region }}'
 RETURNING
-Arn,
-CreationTime,
-LatestRevision,
-Name,
-State
+arn,
+creation_time,
+latest_revision,
+name,
+state
 ;
 ```
 </TabItem>
@@ -374,8 +374,8 @@ AND region = '{{ region }}' --required
 AND ConfigurationInfo = '{{ ConfigurationInfo }}' --required
 AND CurrentVersion = '{{ CurrentVersion }}' --required
 RETURNING
-ClusterArn,
-ClusterOperationArn;
+cluster_arn,
+cluster_operation_arn;
 ```
 </TabItem>
 <TabItem value="update_configuration">
@@ -392,8 +392,8 @@ arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
 AND ServerProperties = '{{ ServerProperties }}' --required
 RETURNING
-Arn,
-LatestRevision;
+arn,
+latest_revision;
 ```
 </TabItem>
 </Tabs>

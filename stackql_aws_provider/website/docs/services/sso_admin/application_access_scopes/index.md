@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorizedTargets" /></td>
+    <td><CopyableCode code="authorized_targets" /></td>
     <td><code>array</code></td>
     <td>An array of authorized targets associated with this access scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scope" /></td>
+    <td><CopyableCode code="scope" /></td>
     <td><code>string</code></td>
     <td>The name of the access scope that can be used with the authorized targets. (pattern: &lt;code&gt;(&#91;A-Za-z0-9_&#93;&#123;1,50&#125;)(:&#91;A-Za-z0-9_&#93;&#123;1,50&#125;)&#123;0,1&#125;(:&#91;A-Za-z0-9_&#93;&#123;1,50&#125;)&#123;0,1&#125;&lt;/code&gt;)</td>
 </tr>
@@ -145,8 +145,8 @@ Retrieves the authorized targets for an IAM Identity Center access scope for an 
 
 ```sql
 SELECT
-AuthorizedTargets,
-Scope
+authorized_targets,
+scope
 FROM aws.sso_admin.application_access_scopes
 WHERE region = '{{ region }}' -- required
 ;

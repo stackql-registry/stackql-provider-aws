@@ -55,62 +55,62 @@ The following fields are returned by `SELECT` queries:
     <td>A descriptive name for an import task. You can use this name to filter future requests related to this import task, such as identifying applications and servers that were included in this import task. We recommend that you use a meaningful name for each import task. (pattern: &lt;code&gt;&#91;\s\S&#93;*\S&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationImportFailure" /></td>
+    <td><CopyableCode code="application_import_failure" /></td>
     <td><code>integer</code></td>
     <td>The total number of application records in the import file that failed to be imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationImportSuccess" /></td>
+    <td><CopyableCode code="application_import_success" /></td>
     <td><code>integer</code></td>
     <td>The total number of application records in the import file that were successfully imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>A unique token used to prevent the same import request from occurring more than once. If you didn't provide a token, a token was automatically generated when the import task request was sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorsAndFailedEntriesZip" /></td>
+    <td><CopyableCode code="errors_and_failed_entries_zip" /></td>
     <td><code>string</code></td>
     <td>A link to a compressed archive folder (in the ZIP format) that contains an error log and a file of failed records. You can use these two files to quickly identify records that failed, why they failed, and correct those records. Afterward, you can upload the corrected file to your Amazon S3 bucket and create another import task request. This field also includes authorization information so you can confirm the authenticity of the compressed archive before you download it. If some records failed to be imported we recommend that you correct the records in the failed entries file and then imports that failed entries file. This prevents you from having to correct and update the larger original file and attempt importing it again.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileClassification" /></td>
+    <td><CopyableCode code="file_classification" /></td>
     <td><code>string</code></td>
     <td>The type of file detected by the import task. (MODELIZEIT_EXPORT, RVTOOLS_EXPORT, VMWARE_NSX_EXPORT, IMPORT_TEMPLATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importCompletionTime" /></td>
+    <td><CopyableCode code="import_completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the import task request finished, presented in the Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importDeletedTime" /></td>
+    <td><CopyableCode code="import_deleted_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the import task request was deleted, presented in the Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importRequestTime" /></td>
+    <td><CopyableCode code="import_request_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the import task request was made, presented in the Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importTaskId" /></td>
+    <td><CopyableCode code="import_task_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for a specific import task. These IDs aren't globally unique, but they are unique within an Amazon Web Services account. (pattern: &lt;code&gt;^import-task-&#91;a-fA-F0-9&#93;&#123;32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importUrl" /></td>
+    <td><CopyableCode code="import_url" /></td>
     <td><code>string</code></td>
     <td>The URL for your import file that you've uploaded to Amazon S3. (pattern: &lt;code&gt;\S+:​//\S+/&#91;\s\S&#93;*\S&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverImportFailure" /></td>
+    <td><CopyableCode code="server_import_failure" /></td>
     <td><code>integer</code></td>
     <td>The total number of server records in the import file that failed to be imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverImportSuccess" /></td>
+    <td><CopyableCode code="server_import_success" /></td>
     <td><code>integer</code></td>
     <td>The total number of server records in the import file that were successfully imported.</td>
 </tr>
@@ -192,18 +192,18 @@ Returns an array of import tasks for your account, including status information,
 ```sql
 SELECT
 name,
-applicationImportFailure,
-applicationImportSuccess,
-clientRequestToken,
-errorsAndFailedEntriesZip,
-fileClassification,
-importCompletionTime,
-importDeletedTime,
-importRequestTime,
-importTaskId,
-importUrl,
-serverImportFailure,
-serverImportSuccess,
+application_import_failure,
+application_import_success,
+client_request_token,
+errors_and_failed_entries_zip,
+file_classification,
+import_completion_time,
+import_deleted_time,
+import_request_time,
+import_task_id,
+import_url,
+server_import_failure,
+server_import_success,
 status
 FROM aws.discovery.import_tasks
 WHERE region = '{{ region }}' -- required

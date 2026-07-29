@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessEndpoints" /></td>
+    <td><CopyableCode code="access_endpoints" /></td>
     <td><code>array</code></td>
     <td>The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to WorkSpaces Applications only through the specified endpoints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AgentAccessConfig" /></td>
+    <td><CopyableCode code="agent_access_config" /></td>
     <td><code>object</code></td>
     <td>The agent access configuration of the stack, if agent access is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationSettings" /></td>
+    <td><CopyableCode code="application_settings" /></td>
     <td><code>object</code></td>
     <td>The persistent application settings for users of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the stack. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentRedirection" /></td>
+    <td><CopyableCode code="content_redirection" /></td>
     <td><code>object</code></td>
     <td>Configuration for bidirectional URL redirection between the streaming session and the local client. Use HostToClient to redirect URLs from the remote desktop to the local browser.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the stack was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The stack name to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmbedHostDomains" /></td>
+    <td><CopyableCode code="embed_host_domains" /></td>
     <td><code>array</code></td>
     <td>The domains where WorkSpaces Applications streaming sessions can be embedded in an iframe. You must approve the domains that you want to host embedded WorkSpaces Applications streaming sessions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeedbackURL" /></td>
+    <td><CopyableCode code="feedback_url" /></td>
     <td><code>string</code></td>
     <td>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedirectURL" /></td>
+    <td><CopyableCode code="redirect_url" /></td>
     <td><code>string</code></td>
     <td>The URL that users are redirected to after their streaming session ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackErrors" /></td>
+    <td><CopyableCode code="stack_errors" /></td>
     <td><code>array</code></td>
     <td>The errors for the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageConnectors" /></td>
+    <td><CopyableCode code="storage_connectors" /></td>
     <td><code>array</code></td>
     <td>The storage connectors to enable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamingExperienceSettings" /></td>
+    <td><CopyableCode code="streaming_experience_settings" /></td>
     <td><code>object</code></td>
     <td>The streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserSettings" /></td>
+    <td><CopyableCode code="user_settings" /></td>
     <td><code>array</code></td>
     <td>The actions that are enabled or disabled for users during their streaming sessions. By default these actions are enabled.</td>
 </tr>
@@ -215,22 +215,22 @@ Retrieves a list that describes one or more specified stacks, if the stack names
 
 ```sql
 SELECT
-AccessEndpoints,
-AgentAccessConfig,
-ApplicationSettings,
-Arn,
-ContentRedirection,
-CreatedTime,
-Description,
-DisplayName,
-EmbedHostDomains,
-FeedbackURL,
-Name,
-RedirectURL,
-StackErrors,
-StorageConnectors,
-StreamingExperienceSettings,
-UserSettings
+access_endpoints,
+agent_access_config,
+application_settings,
+arn,
+content_redirection,
+created_time,
+description,
+display_name,
+embed_host_domains,
+feedback_url,
+name,
+redirect_url,
+stack_errors,
+storage_connectors,
+streaming_experience_settings,
+user_settings
 FROM aws.appstream.stacks
 WHERE region = '{{ region }}' -- required
 ;
@@ -287,7 +287,7 @@ SELECT
 '{{ AgentAccessConfig }}',
 '{{ region }}'
 RETURNING
-Stack
+stack
 ;
 ```
 </TabItem>
@@ -420,7 +420,7 @@ AgentAccessConfig = '{{ AgentAccessConfig }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Stack;
+stack;
 ```
 </TabItem>
 </Tabs>

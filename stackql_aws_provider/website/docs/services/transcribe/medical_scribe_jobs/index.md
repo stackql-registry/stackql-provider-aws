@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelDefinitions" /></td>
+    <td><CopyableCode code="channel_definitions" /></td>
     <td><code>array</code></td>
     <td>Makes it possible to specify which speaker is on which channel. For example, if the clinician is the first participant to speak, you would set ChannelId of the first ChannelDefinition in the list to 0 (to indicate the first channel) and ParticipantRole to CLINICIAN (to indicate that it's the clinician speaking). Then you would set the ChannelId of the second ChannelDefinition in the list to 1 (to indicate the second channel) and ParticipantRole to PATIENT (to indicate that it's the patient speaking).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified Medical Scribe job finished processing. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.761000-07:00 represents a Medical Scribe job that finished processing at 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified Medical Scribe job request was made. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.761000-07:00 represents a Medical Scribe job that started processing at 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that has permissions to access the Amazon S3 bucket that contains your input files, write to the output bucket, and use your KMS key if supplied. If the role that you specify doesn’t have the appropriate permissions your request fails. IAM role ARNs have the format arn:partition:iam::account:role/role-name-with-path. For example: arn:aws:iam::111122223333:role/Admin. For more information, see IAM ARNs. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):iam::&#91;0-9&#93;&#123;0,63&#125;:role/&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1024&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If MedicalScribeJobStatus is FAILED, FailureReason contains information about why the transcription job failed. See also: Common Errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code used to create your Medical Scribe job. US English (en-US) is the only supported language for Medical Scribe jobs. (en-US)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Media" /></td>
+    <td><CopyableCode code="media" /></td>
     <td><code>object</code></td>
     <td>Describes the Amazon S3 location of the media file you want to use in your request. For information on supported media formats, refer to the MediaFormat parameter or the Media formats section in the Amazon S3 Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedicalScribeContextProvided" /></td>
+    <td><CopyableCode code="medical_scribe_context_provided" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the MedicalScribeContext object was provided when the Medical Scribe job was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedicalScribeJobName" /></td>
+    <td><CopyableCode code="medical_scribe_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Medical Scribe job. Job names are case sensitive and must be unique within an Amazon Web Services account. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedicalScribeJobStatus" /></td>
+    <td><CopyableCode code="medical_scribe_job_status" /></td>
     <td><code>string</code></td>
     <td>Provides the status of the specified Medical Scribe job. If the status is COMPLETED, the job is finished and you can find the results at the location specified in MedicalScribeOutput If the status is FAILED, FailureReason provides details on why your Medical Scribe job failed. (QUEUED, IN_PROGRESS, FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedicalScribeOutput" /></td>
+    <td><CopyableCode code="medical_scribe_output" /></td>
     <td><code>object</code></td>
     <td>The location of the output of your Medical Scribe job. ClinicalDocumentUri holds the Amazon S3 URI for the Clinical Document and TranscriptFileUri holds the Amazon S3 URI for the Transcript.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>Makes it possible to control how your Medical Scribe job is processed using a MedicalScribeSettings object. Specify ChannelIdentification if ChannelDefinitions are set. Enabled ShowSpeakerLabels if ChannelIdentification and ChannelDefinitions are not set. One and only one of ChannelIdentification and ShowSpeakerLabels must be set. If ShowSpeakerLabels is set, MaxSpeakerLabels must also be set. Use Settings to specify a vocabulary or vocabulary filter or both using VocabularyName, VocabularyFilterName. VocabularyFilterMethod must be specified if VocabularyFilterName is set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time your Medical Scribe job began processing. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.789000-07:00 represents a Medical Scribe job that started processing at 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Adds one or more custom tags, each in the form of a key:value pair, to the Medical Scribe job. To learn more about using tags with Amazon Transcribe, refer to Tagging resources.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MedicalScribeJobSummaries" /></td>
+    <td><CopyableCode code="medical_scribe_job_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides a summary of information about each result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If NextToken is present in your response, it indicates that not all results are displayed. To view the next set of results, copy the string associated with the NextToken parameter in your results output, then run your request again including NextToken with the value of the copied string. Repeat as needed to view all your results. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Lists all Medical Scribe jobs that have the status specified in your request. Jobs are ordered by creation date, with the newest job first. (QUEUED, IN_PROGRESS, FAILED, COMPLETED)</td>
 </tr>
@@ -236,20 +236,20 @@ Provides information about the specified Medical Scribe job. To view the status 
 
 ```sql
 SELECT
-ChannelDefinitions,
-CompletionTime,
-CreationTime,
-DataAccessRoleArn,
-FailureReason,
-LanguageCode,
-Media,
-MedicalScribeContextProvided,
-MedicalScribeJobName,
-MedicalScribeJobStatus,
-MedicalScribeOutput,
-Settings,
-StartTime,
-Tags
+channel_definitions,
+completion_time,
+creation_time,
+data_access_role_arn,
+failure_reason,
+language_code,
+media,
+medical_scribe_context_provided,
+medical_scribe_job_name,
+medical_scribe_job_status,
+medical_scribe_output,
+settings,
+start_time,
+tags
 FROM aws.transcribe.medical_scribe_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -261,9 +261,9 @@ Provides a list of Medical Scribe jobs that match the specified criteria. If no 
 
 ```sql
 SELECT
-MedicalScribeJobSummaries,
-NextToken,
-Status
+medical_scribe_job_summaries,
+next_token,
+status
 FROM aws.transcribe.medical_scribe_jobs
 WHERE region = '{{ region }}' -- required
 ;

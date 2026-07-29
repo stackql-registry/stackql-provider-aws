@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventTypes" /></td>
+    <td><CopyableCode code="event_types" /></td>
     <td><code>array</code></td>
     <td>An array of event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token.</td>
 </tr>
@@ -152,8 +152,8 @@ Gets all event types or a specific event type if name is provided. This is a pag
 
 ```sql
 SELECT
-eventTypes,
-nextToken
+event_types,
+next_token
 FROM aws.frauddetector.event_types
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GrantArn" /></td>
+    <td><CopyableCode code="grant_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the grant. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantName" /></td>
+    <td><CopyableCode code="grant_name" /></td>
     <td><code>string</code></td>
     <td>Grant name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantStatus" /></td>
+    <td><CopyableCode code="grant_status" /></td>
     <td><code>string</code></td>
     <td>Grant status. (PENDING_WORKFLOW, PENDING_ACCEPT, REJECTED, ACTIVE, FAILED_WORKFLOW, DELETED, PENDING_DELETE, DISABLED, WORKFLOW_COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantedOperations" /></td>
+    <td><CopyableCode code="granted_operations" /></td>
     <td><code>array</code></td>
     <td>Granted operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GranteePrincipalArn" /></td>
+    <td><CopyableCode code="grantee_principal_arn" /></td>
     <td><code>string</code></td>
     <td>The grantee principal ARN. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeRegion" /></td>
+    <td><CopyableCode code="home_region" /></td>
     <td><code>string</code></td>
     <td>Home Region of the grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseArn" /></td>
+    <td><CopyableCode code="license_arn" /></td>
     <td><code>string</code></td>
     <td>License ARN. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>object</code></td>
     <td>The options specified for the grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentArn" /></td>
+    <td><CopyableCode code="parent_arn" /></td>
     <td><code>string</code></td>
     <td>Parent ARN. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Grant status reason. (pattern: &lt;code&gt;&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>Grant version.</td>
 </tr>
@@ -204,17 +204,17 @@ Gets detailed information about the specified grant.
 
 ```sql
 SELECT
-GrantArn,
-GrantName,
-GrantStatus,
-GrantedOperations,
-GranteePrincipalArn,
-HomeRegion,
-LicenseArn,
-Options,
-ParentArn,
-StatusReason,
-Version
+grant_arn,
+grant_name,
+grant_status,
+granted_operations,
+grantee_principal_arn,
+home_region,
+license_arn,
+options,
+parent_arn,
+status_reason,
+version
 FROM aws.license_manager.grants
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,9 +258,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-GrantArn,
-Status,
-Version
+grant_arn,
+status,
+version
 ;
 ```
 </TabItem>
@@ -291,9 +291,9 @@ SELECT
 '{{ Options }}',
 '{{ region }}'
 RETURNING
-GrantArn,
-Status,
-Version
+grant_arn,
+status,
+version
 ;
 ```
 </TabItem>

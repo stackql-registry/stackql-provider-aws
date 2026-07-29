@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataAccessStatus" /></td>
+    <td><CopyableCode code="data_access_status" /></td>
     <td><code>string</code></td>
     <td>The current status of data access through the Directory Service Data API. (Disabled, Disabling, Enabled, Enabling, Failed)</td>
 </tr>
@@ -133,7 +133,7 @@ Obtains status of directory data access enablement through the Directory Service
 
 ```sql
 SELECT
-DataAccessStatus
+data_access_status
 FROM aws.ds.directory_data_access
 WHERE region = '{{ region }}' -- required
 ;

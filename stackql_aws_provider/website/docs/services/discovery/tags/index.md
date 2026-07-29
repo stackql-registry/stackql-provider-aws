@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configurationId" /></td>
+    <td><CopyableCode code="configuration_id" /></td>
     <td><code>string</code></td>
     <td>The configuration ID for the item to tag. You can specify a list of keys and values. (pattern: &lt;code&gt;\S*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationType" /></td>
+    <td><CopyableCode code="configuration_type" /></td>
     <td><code>string</code></td>
     <td>A type of IT asset to tag. (SERVER, PROCESS, CONNECTION, APPLICATION)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>A type of tag on which to filter. For example, serverType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeOfCreation" /></td>
+    <td><CopyableCode code="time_of_creation" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configuration tag was created in Coordinated Universal Time (UTC).</td>
 </tr>
@@ -153,10 +153,10 @@ Retrieves a list of configuration items that have tags as specified by the key-v
 
 ```sql
 SELECT
-configurationId,
-configurationType,
+configuration_id,
+configuration_type,
 key,
-timeOfCreation,
+time_of_creation,
 value
 FROM aws.discovery.tags
 WHERE region = '{{ region }}' -- required

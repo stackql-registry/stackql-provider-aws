@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account ID of the source account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Annotation" /></td>
+    <td><CopyableCode code="annotation" /></td>
     <td><code>string</code></td>
     <td>Supplementary information about how the agrregate evaluation determined the compliance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The source region from where the data is aggregated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComplianceType" /></td>
+    <td><CopyableCode code="compliance_type" /></td>
     <td><code>string</code></td>
     <td>The resource compliance status. For the AggregationEvaluationResult data type, Config supports only the COMPLIANT and NON_COMPLIANT. Config does not support the NOT_APPLICABLE and INSUFFICIENT_DATA value. (COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleInvokedTime" /></td>
+    <td><CopyableCode code="config_rule_invoked_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Config rule evaluated the Amazon Web Services resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationResultIdentifier" /></td>
+    <td><CopyableCode code="evaluation_result_identifier" /></td>
     <td><code>object</code></td>
     <td>Uniquely identifies the evaluation result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultRecordedTime" /></td>
+    <td><CopyableCode code="result_recorded_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when Config recorded the aggregate evaluation result.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns the evaluation results for the specified Config rule for a specific reso
 
 ```sql
 SELECT
-AccountId,
-Annotation,
-AwsRegion,
-ComplianceType,
-ConfigRuleInvokedTime,
-EvaluationResultIdentifier,
-ResultRecordedTime
+account_id,
+annotation,
+aws_region,
+compliance_type,
+config_rule_invoked_time,
+evaluation_result_identifier,
+result_recorded_time
 FROM aws.config.aggregate_compliance_details_by_config_rules
 WHERE region = '{{ region }}' -- required
 ;

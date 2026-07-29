@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the incident record. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="automationExecutions" /></td>
+    <td><CopyableCode code="automation_executions" /></td>
     <td><code>array</code></td>
     <td>The runbook, or automation document, that's run at the beginning of the incident.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="chatChannel" /></td>
+    <td><CopyableCode code="chat_channel" /></td>
     <td><code>object</code></td>
     <td>The Chatbot chat channel used for collaboration during an incident.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when Incident Manager created the incident record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dedupeString" /></td>
+    <td><CopyableCode code="dedupe_string" /></td>
     <td><code>string</code></td>
     <td>The string Incident Manager uses to prevent duplicate incidents from being created by the same incident in the same account.</td>
 </tr>
@@ -81,27 +81,27 @@ The following fields are returned by `SELECT` queries:
     <td>The impact of the incident on customers and applications. Supported impact codes 1 - Critical 2 - High 3 - Medium 4 - Low 5 - No Impact</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incidentRecordSource" /></td>
+    <td><CopyableCode code="incident_record_source" /></td>
     <td><code>object</code></td>
     <td>Details about the action that started the incident.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>Who modified the incident most recently. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the incident was most recently modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationTargets" /></td>
+    <td><CopyableCode code="notification_targets" /></td>
     <td><code>array</code></td>
     <td>The Amazon SNS targets that are notified when updates are made to an incident.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolvedTime" /></td>
+    <td><CopyableCode code="resolved_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the incident was resolved. This appears as a timeline event.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the incident. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the incident was created.</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
     <td>Defines the impact to customers and applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incidentRecordSource" /></td>
+    <td><CopyableCode code="incident_record_source" /></td>
     <td><code>object</code></td>
     <td>What caused Incident Manager to create the incident.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolvedTime" /></td>
+    <td><CopyableCode code="resolved_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the incident was resolved.</td>
 </tr>
@@ -262,16 +262,16 @@ Returns the details for the specified incident record.
 ```sql
 SELECT
 arn,
-automationExecutions,
-chatChannel,
-creationTime,
-dedupeString,
+automation_executions,
+chat_channel,
+creation_time,
+dedupe_string,
 impact,
-incidentRecordSource,
-lastModifiedBy,
-lastModifiedTime,
-notificationTargets,
-resolvedTime,
+incident_record_source,
+last_modified_by,
+last_modified_time,
+notification_targets,
+resolved_time,
 status,
 summary,
 title_
@@ -288,10 +288,10 @@ Lists all incident records in your account. Use this command to retrieve the Ama
 ```sql
 SELECT
 arn,
-creationTime,
+creation_time,
 impact,
-incidentRecordSource,
-resolvedTime,
+incident_record_source,
+resolved_time,
 status,
 title_
 FROM aws.ssm_incidents.incident_records

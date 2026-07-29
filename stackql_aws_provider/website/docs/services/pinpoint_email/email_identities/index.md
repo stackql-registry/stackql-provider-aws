@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DkimAttributes" /></td>
+    <td><CopyableCode code="dkim_attributes" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the DKIM attributes for the identity. This object includes the tokens that you use to create the CNAME records that are required to complete the DKIM verification process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeedbackForwardingStatus" /></td>
+    <td><CopyableCode code="feedback_forwarding_status" /></td>
     <td><code>boolean</code></td>
     <td>The feedback forwarding configuration for the identity. If the value is true, Amazon Pinpoint sends you email notifications when bounce or complaint events occur. Amazon Pinpoint sends this notification to the address that you specified in the Return-Path header of the original email. When you set this value to false, Amazon Pinpoint sends notifications through other mechanisms, such as by notifying an Amazon SNS topic or another event destination. You're required to have a method of tracking bounces and complaints. If you haven't set up another mechanism for receiving bounce or complaint notifications, Amazon Pinpoint sends an email notification when these events occur (even if this setting is disabled).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>The email identity type. (EMAIL_ADDRESS, DOMAIN, MANAGED_DOMAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MailFromAttributes" /></td>
+    <td><CopyableCode code="mail_from_attributes" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the Mail-From attributes for the email identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) that are associated with the email identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedForSendingStatus" /></td>
+    <td><CopyableCode code="verified_for_sending_status" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether or not the identity is verified. In Amazon Pinpoint, you can only send email from verified email addresses or domains. For more information about verifying identities, see the Amazon Pinpoint User Guide.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityName" /></td>
+    <td><CopyableCode code="identity_name" /></td>
     <td><code>string</code></td>
     <td>The address or domain of the identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>The email identity type. The identity type can be one of the following: EMAIL_ADDRESS – The identity is an email address. DOMAIN – The identity is a domain. MANAGED_DOMAIN – The identity is a domain that is managed by AWS. (EMAIL_ADDRESS, DOMAIN, MANAGED_DOMAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingEnabled" /></td>
+    <td><CopyableCode code="sending_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether or not you can send email from the identity. In Amazon Pinpoint, an identity is an email address or domain that you send email from. Before you can send email from an identity, you have to demostrate that you own the identity, and that you authorize Amazon Pinpoint to send email from that identity.</td>
 </tr>
@@ -232,12 +232,12 @@ Provides information about a specific identity associated with your Amazon Pinpo
 
 ```sql
 SELECT
-DkimAttributes,
-FeedbackForwardingStatus,
-IdentityType,
-MailFromAttributes,
-Tags,
-VerifiedForSendingStatus
+dkim_attributes,
+feedback_forwarding_status,
+identity_type,
+mail_from_attributes,
+tags,
+verified_for_sending_status
 FROM aws.pinpoint_email.email_identities
 WHERE email_identity = '{{ email_identity }}' -- required
 AND region = '{{ region }}' -- required
@@ -250,9 +250,9 @@ Returns a list of all of the email identities that are associated with your Amaz
 
 ```sql
 SELECT
-IdentityName,
-IdentityType,
-SendingEnabled
+identity_name,
+identity_type,
+sending_enabled
 FROM aws.pinpoint_email.email_identities
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -287,9 +287,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DkimAttributes,
-IdentityType,
-VerifiedForSendingStatus
+dkim_attributes,
+identity_type,
+verified_for_sending_status
 ;
 ```
 </TabItem>

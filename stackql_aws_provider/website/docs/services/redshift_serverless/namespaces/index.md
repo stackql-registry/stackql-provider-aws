@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretArn" /></td>
+    <td><CopyableCode code="admin_password_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the namespace's admin user credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretKmsKeyId" /></td>
+    <td><CopyableCode code="admin_password_secret_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key used to encrypt and store the namespace's admin credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminUsername" /></td>
+    <td><CopyableCode code="admin_username" /></td>
     <td><code>string</code></td>
     <td>The username of the administrator for the first database created in the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="catalogArn" /></td>
+    <td><CopyableCode code="catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Glue Data Catalog associated with the namespace enabled with Amazon Redshift federated permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of when the namespace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbName" /></td>
+    <td><CopyableCode code="db_name" /></td>
     <td><code>string</code></td>
     <td>The name of the first database created in the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultIamRoleArn" /></td>
+    <td><CopyableCode code="default_iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamRoles" /></td>
+    <td><CopyableCode code="iam_roles" /></td>
     <td><code>array</code></td>
     <td>A list of IAM roles to associate with the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Key Management Service key used to encrypt your data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lakehouseRegistrationStatus" /></td>
+    <td><CopyableCode code="lakehouse_registration_status" /></td>
     <td><code>string</code></td>
     <td>The status of the lakehouse registration for the namespace. Indicates whether the namespace is successfully registered with Amazon Redshift federated permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logExports" /></td>
+    <td><CopyableCode code="log_exports" /></td>
     <td><code>array</code></td>
     <td>The types of logs the namespace can export. Available export types are User log, Connection log, and User activity log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with a namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceId" /></td>
+    <td><CopyableCode code="namespace_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace. Must be between 3-64 alphanumeric characters in lowercase, and it cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -140,72 +140,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretArn" /></td>
+    <td><CopyableCode code="admin_password_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the namespace's admin user credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretKmsKeyId" /></td>
+    <td><CopyableCode code="admin_password_secret_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key used to encrypt and store the namespace's admin credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminUsername" /></td>
+    <td><CopyableCode code="admin_username" /></td>
     <td><code>string</code></td>
     <td>The username of the administrator for the first database created in the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="catalogArn" /></td>
+    <td><CopyableCode code="catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Glue Data Catalog associated with the namespace enabled with Amazon Redshift federated permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of when the namespace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbName" /></td>
+    <td><CopyableCode code="db_name" /></td>
     <td><code>string</code></td>
     <td>The name of the first database created in the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultIamRoleArn" /></td>
+    <td><CopyableCode code="default_iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamRoles" /></td>
+    <td><CopyableCode code="iam_roles" /></td>
     <td><code>array</code></td>
     <td>A list of IAM roles to associate with the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Key Management Service key used to encrypt your data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lakehouseRegistrationStatus" /></td>
+    <td><CopyableCode code="lakehouse_registration_status" /></td>
     <td><code>string</code></td>
     <td>The status of the lakehouse registration for the namespace. Indicates whether the namespace is successfully registered with Amazon Redshift federated permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logExports" /></td>
+    <td><CopyableCode code="log_exports" /></td>
     <td><code>array</code></td>
     <td>The types of logs the namespace can export. Available export types are User log, Connection log, and User activity log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with a namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceId" /></td>
+    <td><CopyableCode code="namespace_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace. Must be between 3-64 alphanumeric characters in lowercase, and it cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -329,20 +329,20 @@ Returns information about a namespace in Amazon Redshift Serverless.
 
 ```sql
 SELECT
-adminPasswordSecretArn,
-adminPasswordSecretKmsKeyId,
-adminUsername,
-catalogArn,
-creationDate,
-dbName,
-defaultIamRoleArn,
-iamRoles,
-kmsKeyId,
-lakehouseRegistrationStatus,
-logExports,
-namespaceArn,
-namespaceId,
-namespaceName,
+admin_password_secret_arn,
+admin_password_secret_kms_key_id,
+admin_username,
+catalog_arn,
+creation_date,
+db_name,
+default_iam_role_arn,
+iam_roles,
+kms_key_id,
+lakehouse_registration_status,
+log_exports,
+namespace_arn,
+namespace_id,
+namespace_name,
 status
 FROM aws.redshift_serverless.namespaces
 WHERE region = '{{ region }}' -- required
@@ -355,20 +355,20 @@ Returns information about a list of specified namespaces.
 
 ```sql
 SELECT
-adminPasswordSecretArn,
-adminPasswordSecretKmsKeyId,
-adminUsername,
-catalogArn,
-creationDate,
-dbName,
-defaultIamRoleArn,
-iamRoles,
-kmsKeyId,
-lakehouseRegistrationStatus,
-logExports,
-namespaceArn,
-namespaceId,
-namespaceName,
+admin_password_secret_arn,
+admin_password_secret_kms_key_id,
+admin_username,
+catalog_arn,
+creation_date,
+db_name,
+default_iam_role_arn,
+iam_roles,
+kms_key_id,
+lakehouse_registration_status,
+log_exports,
+namespace_arn,
+namespace_id,
+namespace_name,
 status
 FROM aws.redshift_serverless.namespaces
 WHERE region = '{{ region }}' -- required

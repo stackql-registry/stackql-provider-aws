@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this dashboard version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceEntityArn" /></td>
+    <td><CopyableCode code="source_entity_arn" /></td>
     <td><code>string</code></td>
     <td>Source entity ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The HTTP status of the request. (CREATION_IN_PROGRESS, CREATION_SUCCESSFUL, CREATION_FAILED, UPDATE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>Version number.</td>
 </tr>
@@ -164,12 +164,12 @@ Lists all the versions of the dashboards in the Amazon Quick Sight subscription.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Description,
-SourceEntityArn,
-Status,
-VersionNumber
+arn,
+created_time,
+description,
+source_entity_arn,
+status,
+version_number
 FROM aws.quicksight.dashboard_versions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND dashboard_id = '{{ dashboard_id }}' -- required

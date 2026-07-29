@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the profiling group. (pattern: &lt;code&gt;^&#91;\w-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentOrchestrationConfig" /></td>
+    <td><CopyableCode code="agent_orchestration_config" /></td>
     <td><code>object</code></td>
     <td>Specifies whether profiling is enabled or disabled for a profiling group. It is used by ConfigureAgent to enable or disable profiling for a profiling group.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) identifying the profiling group resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computePlatform" /></td>
+    <td><CopyableCode code="compute_platform" /></td>
     <td><code>string</code></td>
     <td>The compute platform of the profiling group. If it is set to AWSLambda, then the profiled application runs on AWS Lambda. If it is set to Default, then the profiled application runs on a compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises server, or a different platform. The default is Default. (Default, AWSLambda)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the profiling group was created. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profilingStatus" /></td>
+    <td><CopyableCode code="profiling_status" /></td>
     <td><code>object</code></td>
     <td>A ProfilingStatus object that includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of the tags that belong to this profiling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the profiling group was last updated. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future ListProfilingGroups request. When the results of a ListProfilingGroups request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;^&#91;\w-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profilingGroupNames" /></td>
+    <td><CopyableCode code="profiling_group_names" /></td>
     <td><code>array</code></td>
     <td>A returned list of profiling group names. A list of the names is returned only if includeDescription is false, otherwise a list of ProfilingGroupDescription objects is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="profilingGroups" /></td>
+    <td><CopyableCode code="profiling_groups" /></td>
     <td><code>array</code></td>
     <td>A returned list ProfilingGroupDescription objects. A list of ProfilingGroupDescription objects is returned only if includeDescription is true, otherwise a list of profiling group names is returned.</td>
 </tr>
@@ -318,13 +318,13 @@ Returns a ProfilingGroupDescription object that contains information about the r
 ```sql
 SELECT
 name,
-agentOrchestrationConfig,
+agent_orchestration_config,
 arn,
-computePlatform,
-createdAt,
-profilingStatus,
+compute_platform,
+created_at,
+profiling_status,
 tags,
-updatedAt
+updated_at
 FROM aws.codeguruprofiler.profiling_groups
 WHERE profiling_group_name = '{{ profiling_group_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -337,9 +337,9 @@ Returns a list of profiling groups. The profiling groups are returned as Profili
 
 ```sql
 SELECT
-nextToken,
-profilingGroupNames,
-profilingGroups
+next_token,
+profiling_group_names,
+profiling_groups
 FROM aws.codeguruprofiler.profiling_groups
 WHERE region = '{{ region }}' -- required
 AND includeDescription = '{{ includeDescription }}'
@@ -381,7 +381,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-profilingGroup
+profiling_group
 ;
 ```
 </TabItem>
@@ -440,7 +440,7 @@ AND revisionId = '{{ revisionId }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 policy,
-revisionId;
+revision_id;
 ```
 </TabItem>
 <TabItem value="add_notification_channels">
@@ -456,7 +456,7 @@ profiling_group_name = '{{ profiling_group_name }}' --required
 AND region = '{{ region }}' --required
 AND channels = '{{ channels }}' --required
 RETURNING
-notificationConfiguration;
+notification_configuration;
 ```
 </TabItem>
 <TabItem value="update_profiling_group">
@@ -472,7 +472,7 @@ profiling_group_name = '{{ profiling_group_name }}' --required
 AND region = '{{ region }}' --required
 AND agentOrchestrationConfig = '{{ agentOrchestrationConfig }}' --required
 RETURNING
-profilingGroup;
+profiling_group;
 ```
 </TabItem>
 <TabItem value="remove_notification_channel">
@@ -488,7 +488,7 @@ channel_id = '{{ channel_id }}' --required
 AND profiling_group_name = '{{ profiling_group_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-notificationConfiguration;
+notification_configuration;
 ```
 </TabItem>
 </Tabs>
@@ -518,7 +518,7 @@ AND region = '{{ region }}' --required
 AND principals = '{{ principals }}' --required
 RETURNING
 policy,
-revisionId;
+revision_id;
 ```
 </TabItem>
 </Tabs>

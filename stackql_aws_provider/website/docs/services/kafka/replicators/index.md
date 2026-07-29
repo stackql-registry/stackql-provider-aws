@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the replicator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The current version number of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsReplicatorReference" /></td>
+    <td><CopyableCode code="is_replicator_reference" /></td>
     <td><code>boolean</code></td>
     <td>Whether this resource is a replicator reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KafkaClusters" /></td>
+    <td><CopyableCode code="kafka_clusters" /></td>
     <td><code>array</code></td>
     <td>Kafka Clusters used in setting up sources / targets for replication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogDelivery" /></td>
+    <td><CopyableCode code="log_delivery" /></td>
     <td><code>object</code></td>
     <td>Configuration for log delivery to customer destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInfoList" /></td>
+    <td><CopyableCode code="replication_info_list" /></td>
     <td><code>array</code></td>
     <td>A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorArn" /></td>
+    <td><CopyableCode code="replicator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorDescription" /></td>
+    <td><CopyableCode code="replicator_description" /></td>
     <td><code>string</code></td>
     <td>The description of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorName" /></td>
+    <td><CopyableCode code="replicator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorResourceArn" /></td>
+    <td><CopyableCode code="replicator_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replicator resource in the region where the replicator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorState" /></td>
+    <td><CopyableCode code="replicator_state" /></td>
     <td><code>string</code></td>
     <td>State of the replicator. (RUNNING, CREATING, UPDATING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceExecutionRoleArn" /></td>
+    <td><CopyableCode code="service_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateInfo" /></td>
+    <td><CopyableCode code="state_info" /></td>
     <td><code>object</code></td>
     <td>Details about the state of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>List of tags attached to the Replicator.</td>
 </tr>
@@ -135,47 +135,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the replicator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The current version of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsReplicatorReference" /></td>
+    <td><CopyableCode code="is_replicator_reference" /></td>
     <td><code>boolean</code></td>
     <td>Whether this resource is a replicator reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KafkaClustersSummary" /></td>
+    <td><CopyableCode code="kafka_clusters_summary" /></td>
     <td><code>array</code></td>
     <td>Kafka Clusters used in setting up sources / targets for replication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInfoSummaryList" /></td>
+    <td><CopyableCode code="replication_info_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of summarized information of replications between clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorArn" /></td>
+    <td><CopyableCode code="replicator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorName" /></td>
+    <td><CopyableCode code="replicator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the replicator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorResourceArn" /></td>
+    <td><CopyableCode code="replicator_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replicator resource in the region where the replicator was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatorState" /></td>
+    <td><CopyableCode code="replicator_state" /></td>
     <td><code>string</code></td>
     <td>State of the replicator. (RUNNING, CREATING, UPDATING, DELETING, FAILED)</td>
 </tr>
@@ -298,20 +298,20 @@ Describes a replicator.
 
 ```sql
 SELECT
-CreationTime,
-CurrentVersion,
-IsReplicatorReference,
-KafkaClusters,
-LogDelivery,
-ReplicationInfoList,
-ReplicatorArn,
-ReplicatorDescription,
-ReplicatorName,
-ReplicatorResourceArn,
-ReplicatorState,
-ServiceExecutionRoleArn,
-StateInfo,
-Tags
+creation_time,
+current_version,
+is_replicator_reference,
+kafka_clusters,
+log_delivery,
+replication_info_list,
+replicator_arn,
+replicator_description,
+replicator_name,
+replicator_resource_arn,
+replicator_state,
+service_execution_role_arn,
+state_info,
+tags
 FROM aws.kafka.replicators
 WHERE replicator_arn = '{{ replicator_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -324,15 +324,15 @@ Lists the replicators.
 
 ```sql
 SELECT
-CreationTime,
-CurrentVersion,
-IsReplicatorReference,
-KafkaClustersSummary,
-ReplicationInfoSummaryList,
-ReplicatorArn,
-ReplicatorName,
-ReplicatorResourceArn,
-ReplicatorState
+creation_time,
+current_version,
+is_replicator_reference,
+kafka_clusters_summary,
+replication_info_summary_list,
+replicator_arn,
+replicator_name,
+replicator_resource_arn,
+replicator_state
 FROM aws.kafka.replicators
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -378,9 +378,9 @@ SELECT
 '{{ LogDelivery }}',
 '{{ region }}'
 RETURNING
-ReplicatorArn,
-ReplicatorName,
-ReplicatorState
+replicator_arn,
+replicator_name,
+replicator_state
 ;
 ```
 </TabItem>
@@ -495,8 +495,8 @@ replicator_arn = '{{ replicator_arn }}' --required
 AND region = '{{ region }}' --required
 AND CurrentVersion = '{{ CurrentVersion }}' --required
 RETURNING
-ReplicatorArn,
-ReplicatorState;
+replicator_arn,
+replicator_state;
 ```
 </TabItem>
 </Tabs>

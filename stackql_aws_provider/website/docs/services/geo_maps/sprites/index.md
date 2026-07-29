@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blob" /></td>
+    <td><CopyableCode code="blob" /></td>
     <td><code>string (byte)</code></td>
     <td>The body of the sprite sheet or JSON offset file (image/png or application/json, depending on input).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>Header that instructs caching configuration for the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Header that represents the format of the response. The response returns the following as the HTTP body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The sprite's Etag.</td>
 </tr>
@@ -154,10 +154,10 @@ GetSprites returns the map's sprites. For more information, see Style iconograph
 
 ```sql
 SELECT
-Blob,
-CacheControl,
-ContentType,
-ETag
+blob,
+cache_control,
+content_type,
+e_tag
 FROM aws.geo_maps.sprites
 WHERE file_name = '{{ file_name }}' -- required
 AND style = '{{ style }}' -- required

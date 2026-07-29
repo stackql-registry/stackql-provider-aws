@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificatePem" /></td>
+    <td><CopyableCode code="certificate_pem" /></td>
     <td><code>string</code></td>
     <td>The PEM-encoded certificate for the managed thing. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the managed thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves the certificate PEM for a managed IoT thing.
 
 ```sql
 SELECT
-CertificatePem,
-ManagedThingId
+certificate_pem,
+managed_thing_id
 FROM aws.iot_managed_integrations.managed_thing_certificates
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

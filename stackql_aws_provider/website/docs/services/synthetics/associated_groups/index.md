@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>array</code></td>
     <td>An array of structures that contain information about the groups that this canary is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there is more data available. You can use this token in a subsequent ListAssociatedGroups operation to retrieve the next set of results. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ Returns a list of the groups that the specified canary is associated with. The c
 
 ```sql
 SELECT
-Groups,
-NextToken
+groups,
+next_token
 FROM aws.synthetics.associated_groups
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

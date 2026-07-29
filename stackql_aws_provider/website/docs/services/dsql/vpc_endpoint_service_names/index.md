@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clusterVpcEndpoint" /></td>
+    <td><CopyableCode code="cluster_vpc_endpoint" /></td>
     <td><code>string</code></td>
     <td>The VPC connection endpoint for the cluster. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The VPC endpoint service name. (pattern: &lt;code&gt;com\.amazonaws\.&#91;a-z0-9-&#93;+\.dsql-&#91;a-f0-9&#93;&#123;6&#125;&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves the VPC endpoint service name.
 
 ```sql
 SELECT
-clusterVpcEndpoint,
-serviceName
+cluster_vpc_endpoint,
+service_name
 FROM aws.dsql.vpc_endpoint_service_names
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

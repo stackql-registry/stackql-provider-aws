@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="signedConnectionString" /></td>
+    <td><CopyableCode code="signed_connection_string" /></td>
     <td><code>string</code></td>
     <td>The signed connection string that you can use to connect to clusters. (pattern: &lt;code&gt;^(:|:tcps:\/\/)&#91;a-zA-Z0-9-\.\_&#93;+:\d+:&#91;a-zA-Z0-9-\.\_&#93;+:\S+$&lt;/code&gt;)</td>
 </tr>
@@ -134,7 +134,7 @@ Retrieves a connection string for a user to connect to a kdb cluster. You must c
 
 ```sql
 SELECT
-signedConnectionString
+signed_connection_string
 FROM aws.finspace.kx_connection_strings
 WHERE userArn = '{{ userArn }}' -- required
 AND environment_id = '{{ environment_id }}' -- required

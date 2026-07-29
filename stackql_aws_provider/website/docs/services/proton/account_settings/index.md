@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="pipelineCodebuildRoleArn" /></td>
+    <td><CopyableCode code="pipeline_codebuild_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service role that Proton uses for provisioning pipelines. Proton assumes this role for CodeBuild-based provisioning. (pattern: &lt;code&gt;(^$)|(^arn:(aws|aws-cn|aws-us-gov):iam::\d&#123;12&#125;:role/(&#91;\w+=,.@-&#93;&#123;1,512&#125;&#91;/:&#93;)*(&#91;\w+=,.@-&#93;&#123;1,64&#125;)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineProvisioningRepository" /></td>
+    <td><CopyableCode code="pipeline_provisioning_repository" /></td>
     <td><code>object</code></td>
     <td>The linked repository for pipeline provisioning. Required if you have environments configured for self-managed provisioning with services that include pipelines. A linked repository is a repository that has been registered with Proton. For more information, see CreateRepository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineServiceRoleArn" /></td>
+    <td><CopyableCode code="pipeline_service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service role you want to use for provisioning pipelines. Assumed by Proton for Amazon Web Services-managed provisioning, and by customer-owned automation for self-managed provisioning. (pattern: &lt;code&gt;(^$)|(^arn:(aws|aws-cn|aws-us-gov):iam::\d&#123;12&#125;:role/(&#91;\w+=,.@-&#93;&#123;1,512&#125;&#91;/:&#93;)*(&#91;\w+=,.@-&#93;&#123;1,64&#125;)$)&lt;/code&gt;)</td>
 </tr>
@@ -136,9 +136,9 @@ Get detail data for Proton account-wide settings.
 
 ```sql
 SELECT
-pipelineCodebuildRoleArn,
-pipelineProvisioningRepository,
-pipelineServiceRoleArn
+pipeline_codebuild_role_arn,
+pipeline_provisioning_repository,
+pipeline_service_role_arn
 FROM aws.proton.account_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,7 +169,7 @@ pipelineServiceRoleArn = '{{ pipelineServiceRoleArn }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-accountSettings;
+account_settings;
 ```
 </TabItem>
 </Tabs>

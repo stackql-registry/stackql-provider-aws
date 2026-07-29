@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HubContentSummaries" /></td>
+    <td><CopyableCode code="hub_content_summaries" /></td>
     <td><code>array</code></td>
     <td>The summaries of the listed hub content versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, SageMaker returns this token. To retrieve the next set of hub content versions, use it in the subsequent request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ List hub content versions.
 
 ```sql
 SELECT
-HubContentSummaries,
-NextToken
+hub_content_summaries,
+next_token
 FROM aws.sagemaker.hub_content_versions
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,32 +55,32 @@ The following fields are returned by `SELECT` queries:
     <td>ARN of the Launch Configuration Template. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyPrivateIp" /></td>
+    <td><CopyableCode code="copy_private_ip" /></td>
     <td><code>boolean</code></td>
     <td>Copy private IP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyTags" /></td>
+    <td><CopyableCode code="copy_tags" /></td>
     <td><code>boolean</code></td>
     <td>Copy tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportBucketArn" /></td>
+    <td><CopyableCode code="export_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>S3 bucket ARN to export Source Network templates. (pattern: &lt;code&gt;arn:.&#123;16,2044&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchConfigurationTemplateID" /></td>
+    <td><CopyableCode code="launch_configuration_template_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Launch Configuration Template. (pattern: &lt;code&gt;lct-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchDisposition" /></td>
+    <td><CopyableCode code="launch_disposition" /></td>
     <td><code>string</code></td>
     <td>Launch disposition. (STOPPED, STARTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchIntoSourceInstance" /></td>
+    <td><CopyableCode code="launch_into_source_instance" /></td>
     <td><code>boolean</code></td>
     <td>DRS will set the 'launch into instance ID' of any source server when performing a drill, recovery or failback to the previous region or availability zone, using the instance ID of the source instance.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration of a machine's license.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postLaunchEnabled" /></td>
+    <td><CopyableCode code="post_launch_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Post-launch actions activated.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags of the Launch Configuration Template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetInstanceTypeRightSizingMethod" /></td>
+    <td><CopyableCode code="target_instance_type_right_sizing_method" /></td>
     <td><code>string</code></td>
     <td>Target instance type right-sizing method. (NONE, BASIC, IN_AWS)</td>
 </tr>
@@ -191,16 +191,16 @@ Lists all Launch Configuration Templates, filtered by Launch Configuration Templ
 ```sql
 SELECT
 arn,
-copyPrivateIp,
-copyTags,
-exportBucketArn,
-launchConfigurationTemplateID,
-launchDisposition,
-launchIntoSourceInstance,
+copy_private_ip,
+copy_tags,
+export_bucket_arn,
+launch_configuration_template_id,
+launch_disposition,
+launch_into_source_instance,
 licensing,
-postLaunchEnabled,
+post_launch_enabled,
 tags,
-targetInstanceTypeRightSizingMethod
+target_instance_type_right_sizing_method
 FROM aws.drs.launch_configuration_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,7 +247,7 @@ SELECT
 {{ launchIntoSourceInstance }},
 '{{ region }}'
 RETURNING
-launchConfigurationTemplate
+launch_configuration_template
 ;
 ```
 </TabItem>
@@ -316,7 +316,7 @@ WHERE
 region = '{{ region }}' --required
 AND launchConfigurationTemplateID = '{{ launchConfigurationTemplateID }}' --required
 RETURNING
-launchConfigurationTemplate;
+launch_configuration_template;
 ```
 </TabItem>
 </Tabs>

@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The client token that was provided for the import task. Reusing the client token on retry makes a call to ImportTable idempotent. (pattern: &lt;code&gt;^&#91;^\$&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchLogGroupArn" /></td>
+    <td><CopyableCode code="cloud_watch_log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the Cloudwatch Log Group associated with the target table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the creation of the table associated with this import task completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCount" /></td>
+    <td><CopyableCode code="error_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of errors occurred on importing the source file into the target table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>The error code corresponding to the failure that the import job ran into during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>The error message corresponding to the failure that the import job ran into during execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportArn" /></td>
+    <td><CopyableCode code="import_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) corresponding to the import request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportStatus" /></td>
+    <td><CopyableCode code="import_status" /></td>
     <td><code>string</code></td>
     <td>The status of the import. (IN_PROGRESS, COMPLETED, CANCELLING, CANCELLED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportedItemCount" /></td>
+    <td><CopyableCode code="imported_item_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of items successfully imported into the new table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputCompressionType" /></td>
+    <td><CopyableCode code="input_compression_type" /></td>
     <td><code>string</code></td>
     <td>The compression options for the data that has been imported into the target table. The values are NONE, GZIP, or ZSTD. (GZIP, ZSTD, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputFormat" /></td>
+    <td><CopyableCode code="input_format" /></td>
     <td><code>string</code></td>
     <td>The format of the source data going into the target table. (DYNAMODB_JSON, ION, CSV)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputFormatOptions" /></td>
+    <td><CopyableCode code="input_format_options" /></td>
     <td><code>object</code></td>
     <td>The format options for the data that was imported into the target table. There is one value, CsvOption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessedItemCount" /></td>
+    <td><CopyableCode code="processed_item_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of items processed from the source file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessedSizeBytes" /></td>
+    <td><CopyableCode code="processed_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total size of data processed from the source file, in Bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketSource" /></td>
+    <td><CopyableCode code="s3_bucket_source" /></td>
     <td><code>object</code></td>
     <td>Values for the S3 bucket the source file is imported from. Includes bucket name (required), key prefix (optional) and bucket account owner ID (optional).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when this import task started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableArn" /></td>
+    <td><CopyableCode code="table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the table being imported into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableCreationParameters" /></td>
+    <td><CopyableCode code="table_creation_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters for the new table that is being imported into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableId" /></td>
+    <td><CopyableCode code="table_id" /></td>
     <td><code>string</code></td>
     <td>The table id corresponding to the table created by import table process. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImportSummaryList" /></td>
+    <td><CopyableCode code="import_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of ImportSummary objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If this value is returned, there are additional results to be displayed. To retrieve them, call ListImports again, with NextToken set to this value. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;16&#125;)+&lt;/code&gt;)</td>
 </tr>
@@ -242,25 +242,25 @@ Represents the properties of the import.
 
 ```sql
 SELECT
-ClientToken,
-CloudWatchLogGroupArn,
-EndTime,
-ErrorCount,
-FailureCode,
-FailureMessage,
-ImportArn,
-ImportStatus,
-ImportedItemCount,
-InputCompressionType,
-InputFormat,
-InputFormatOptions,
-ProcessedItemCount,
-ProcessedSizeBytes,
-S3BucketSource,
-StartTime,
-TableArn,
-TableCreationParameters,
-TableId
+client_token,
+cloud_watch_log_group_arn,
+end_time,
+error_count,
+failure_code,
+failure_message,
+import_arn,
+import_status,
+imported_item_count,
+input_compression_type,
+input_format,
+input_format_options,
+processed_item_count,
+processed_size_bytes,
+s3_bucket_source,
+start_time,
+table_arn,
+table_creation_parameters,
+table_id
 FROM aws.dynamodb.imports
 WHERE region = '{{ region }}' -- required
 ;
@@ -272,8 +272,8 @@ Lists completed imports within the past 90 days.
 
 ```sql
 SELECT
-ImportSummaryList,
-NextToken
+import_summary_list,
+next_token
 FROM aws.dynamodb.imports
 WHERE region = '{{ region }}' -- required
 ;

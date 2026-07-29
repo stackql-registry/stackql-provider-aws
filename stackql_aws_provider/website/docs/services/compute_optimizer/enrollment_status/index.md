@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp, in seconds, of when the account enrollment status was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberAccountsEnrolled" /></td>
+    <td><CopyableCode code="member_accounts_enrolled" /></td>
     <td><code>boolean</code></td>
     <td>Confirms the enrollment status of member accounts of the organization, if the account is a management account of an organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfMemberAccountsOptedIn" /></td>
+    <td><CopyableCode code="number_of_member_accounts_opted_in" /></td>
     <td><code>integer</code></td>
     <td>The count of organization member accounts that are opted in to the service, if your account is an organization management account.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The enrollment status of the account. (Active, Inactive, Pending, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the enrollment status of the account. For example, an account might show a status of Pending because member accounts of an organization require more time to be enrolled in the service.</td>
 </tr>
@@ -146,11 +146,11 @@ Returns the enrollment (opt in) status of an account to the Compute Optimizer se
 
 ```sql
 SELECT
-lastUpdatedTimestamp,
-memberAccountsEnrolled,
-numberOfMemberAccountsOptedIn,
+last_updated_timestamp,
+member_accounts_enrolled,
+number_of_member_accounts_opted_in,
 status,
-statusReason
+status_reason
 FROM aws.compute_optimizer.enrollment_status
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,7 +181,7 @@ region = '{{ region }}' --required
 AND status = '{{ status }}' --required
 RETURNING
 status,
-statusReason;
+status_reason;
 ```
 </TabItem>
 </Tabs>

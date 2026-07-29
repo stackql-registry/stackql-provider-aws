@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TelemetryConfiguration" /></td>
+    <td><CopyableCode code="telemetry_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for telemetry service.</td>
 </tr>
@@ -131,7 +131,7 @@ Get the runtime configuration of a thing.
 
 ```sql
 SELECT
-TelemetryConfiguration
+telemetry_configuration
 FROM aws.greengrass.thing_runtime_configurations
 WHERE thing_name = '{{ thing_name }}' -- required
 AND region = '{{ region }}' -- required

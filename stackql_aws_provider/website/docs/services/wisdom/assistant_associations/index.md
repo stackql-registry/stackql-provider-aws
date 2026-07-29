@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Wisdom assistant. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantAssociationArn" /></td>
+    <td><CopyableCode code="assistant_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the assistant association. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantAssociationId" /></td>
+    <td><CopyableCode code="assistant_association_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the assistant association. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Wisdom assistant. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationData" /></td>
+    <td><CopyableCode code="association_data" /></td>
     <td><code>object</code></td>
     <td>A union type that currently has a single argument, the knowledge base ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of association. (KNOWLEDGE_BASE)</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Wisdom assistant. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantAssociationArn" /></td>
+    <td><CopyableCode code="assistant_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the assistant association. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantAssociationId" /></td>
+    <td><CopyableCode code="assistant_association_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the assistant association. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Wisdom assistant. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationData" /></td>
+    <td><CopyableCode code="association_data" /></td>
     <td><code>object</code></td>
     <td>The association data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>The type of association. (KNOWLEDGE_BASE)</td>
 </tr>
@@ -241,12 +241,12 @@ Retrieves information about an assistant association.
 
 ```sql
 SELECT
-assistantArn,
-assistantAssociationArn,
-assistantAssociationId,
-assistantId,
-associationData,
-associationType,
+assistant_arn,
+assistant_association_arn,
+assistant_association_id,
+assistant_id,
+association_data,
+association_type,
 tags
 FROM aws.wisdom.assistant_associations
 WHERE assistant_association_id = '{{ assistant_association_id }}' -- required
@@ -261,12 +261,12 @@ Lists information about assistant associations.
 
 ```sql
 SELECT
-assistantArn,
-assistantAssociationArn,
-assistantAssociationId,
-assistantId,
-associationData,
-associationType,
+assistant_arn,
+assistant_association_arn,
+assistant_association_id,
+assistant_id,
+association_data,
+association_type,
 tags
 FROM aws.wisdom.assistant_associations
 WHERE assistant_id = '{{ assistant_id }}' -- required
@@ -309,7 +309,7 @@ SELECT
 '{{ assistant_id }}',
 '{{ region }}'
 RETURNING
-assistantAssociation
+assistant_association
 ;
 ```
 </TabItem>

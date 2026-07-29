@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InvalidParameters" /></td>
+    <td><CopyableCode code="invalid_parameters" /></td>
     <td><code>array</code></td>
     <td>A list of parameters that aren't formatted correctly or don't run during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>array</code></td>
     <td>A list of details for a parameter.</td>
 </tr>
@@ -75,62 +75,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllowedPattern" /></td>
+    <td><CopyableCode code="allowed_pattern" /></td>
     <td><code>string</code></td>
     <td>A parameter name can include only the following letters and symbols. a-zA-Z0-9_.-</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the parameter, such as text or aws:ec2:image. The default is text.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the parameter actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The alias of the Key Management Service (KMS) key used to encrypt the parameter. Applies to SecureString parameters only. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9:/_-&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date the parameter was last changed or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedUser" /></td>
+    <td><CopyableCode code="last_modified_user" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Amazon Web Services user who last changed the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The parameter name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>array</code></td>
     <td>A list of policies associated with a parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The parameter tier. (Standard, Advanced, Intelligent-Tiering)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of parameter. Valid parameter types include the following: String, StringList, and SecureString. (String, StringList, SecureString)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The parameter version.</td>
 </tr>
@@ -235,8 +235,8 @@ Get information about one or more parameters by specifying multiple parameter na
 
 ```sql
 SELECT
-InvalidParameters,
-Parameters
+invalid_parameters,
+parameters
 FROM aws.ssm.parameters
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,18 +248,18 @@ Lists the parameters in your Amazon Web Services account or the parameters share
 
 ```sql
 SELECT
-ARN,
-AllowedPattern,
-DataType,
-Description,
-KeyId,
-LastModifiedDate,
-LastModifiedUser,
-Name,
-Policies,
-Tier,
-Type,
-Version
+arn,
+allowed_pattern,
+data_type,
+description,
+key_id,
+last_modified_date,
+last_modified_user,
+name,
+policies,
+tier,
+type,
+version
 FROM aws.ssm.parameters
 WHERE region = '{{ region }}' -- required
 ;
@@ -298,8 +298,8 @@ WHERE
 region = '{{ region }}' --required
 AND Value = '{{ Value }}' --required
 RETURNING
-Tier,
-Version;
+tier,
+version;
 ```
 </TabItem>
 </Tabs>

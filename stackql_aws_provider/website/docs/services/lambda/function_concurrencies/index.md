@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ReservedConcurrentExecutions" /></td>
+    <td><CopyableCode code="reserved_concurrent_executions" /></td>
     <td><code>integer</code></td>
     <td>The number of simultaneous executions that are reserved for the function.</td>
 </tr>
@@ -138,7 +138,7 @@ Returns details about the reserved concurrency configuration for a function. To 
 
 ```sql
 SELECT
-ReservedConcurrentExecutions
+reserved_concurrent_executions
 FROM aws.lambda.function_concurrencies
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -169,7 +169,7 @@ function_name = '{{ function_name }}' --required
 AND region = '{{ region }}' --required
 AND ReservedConcurrentExecutions = '{{ ReservedConcurrentExecutions }}' --required
 RETURNING
-ReservedConcurrentExecutions;
+reserved_concurrent_executions;
 ```
 </TabItem>
 </Tabs>

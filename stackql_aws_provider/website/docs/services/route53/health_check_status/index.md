@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HealthCheckObservations" /></td>
+    <td><CopyableCode code="health_check_observations" /></td>
     <td><code>string</code></td>
     <td>A list that contains one HealthCheckObservation element for each Amazon Route 53 health checker that is reporting a status about the health check endpoint.</td>
 </tr>
@@ -124,7 +124,7 @@ Gets status of a specified health check. This API is intended for use during dev
 
 ```sql
 SELECT
-HealthCheckObservations
+health_check_observations
 FROM aws.route53.health_check_status
 WHERE health_check_id = '{{ health_check_id }}' -- required
 AND region = '{{ region }}' -- required

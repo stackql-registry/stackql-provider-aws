@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainNames" /></td>
+    <td><CopyableCode code="domain_names" /></td>
     <td><code>array</code></td>
     <td>List of domain names and respective engine types.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the name of all Elasticsearch domains owned by the current user's accoun
 
 ```sql
 SELECT
-DomainNames
+domain_names
 FROM aws.es.domain_names
 WHERE region = '{{ region }}' -- required
 AND engineType = '{{ engineType }}'

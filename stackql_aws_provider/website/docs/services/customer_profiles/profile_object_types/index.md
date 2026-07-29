@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowProfileCreation" /></td>
+    <td><CopyableCode code="allow_profile_creation" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a profile should be created when data is received if one doesn’t exist for an object of this type. The default is FALSE. If the AllowProfileCreation flag is set to FALSE, then the service tries to fetch a standard profile and associate this object with the profile. If it is set to TRUE, and if no match is found, then the service creates a new standard profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the profile object type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>The customer-provided key to encrypt the profile object that will be created in this profile object type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationDays" /></td>
+    <td><CopyableCode code="expiration_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days until the data in the object expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>object</code></td>
     <td>A map of the name and ObjectType field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Keys" /></td>
+    <td><CopyableCode code="keys" /></td>
     <td><code>object</code></td>
     <td>A list of unique keys that can be used to map data to the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the domain was most recently edited.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxAvailableProfileObjectCount" /></td>
+    <td><CopyableCode code="max_available_profile_object_count" /></td>
     <td><code>integer</code></td>
     <td>The amount of provisioned profile object max count available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxProfileObjectCount" /></td>
+    <td><CopyableCode code="max_profile_object_count" /></td>
     <td><code>integer</code></td>
     <td>The amount of profile object max count assigned to the object type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectTypeName" /></td>
+    <td><CopyableCode code="object_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the profile object type. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLastUpdatedTimestampFormat" /></td>
+    <td><CopyableCode code="source_last_updated_timestamp_format" /></td>
     <td><code>string</code></td>
     <td>The format of your sourceLastUpdatedTimestamp that was previously set up.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourcePriority" /></td>
+    <td><CopyableCode code="source_priority" /></td>
     <td><code>integer</code></td>
     <td>An integer that determines the priority of this object type when data from multiple sources is ingested. Lower values take priority. Object types without a specified source priority default to the lowest priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the object template. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The list of ListProfileObjectTypes instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Identifies the next page of results to return.</td>
 </tr>
@@ -256,21 +256,21 @@ Returns the object types for a specific domain.
 
 ```sql
 SELECT
-AllowProfileCreation,
-CreatedAt,
-Description,
-EncryptionKey,
-ExpirationDays,
-Fields,
-Keys,
-LastUpdatedAt,
-MaxAvailableProfileObjectCount,
-MaxProfileObjectCount,
-ObjectTypeName,
-SourceLastUpdatedTimestampFormat,
-SourcePriority,
-Tags,
-TemplateId
+allow_profile_creation,
+created_at,
+description,
+encryption_key,
+expiration_days,
+fields,
+keys,
+last_updated_at,
+max_available_profile_object_count,
+max_profile_object_count,
+object_type_name,
+source_last_updated_timestamp_format,
+source_priority,
+tags,
+template_id
 FROM aws.customer_profiles.profile_object_types
 WHERE domain_name = '{{ domain_name }}' -- required
 AND object_type_name = '{{ object_type_name }}' -- required
@@ -284,8 +284,8 @@ Lists all of the templates available within the service.
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.profile_object_types
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -328,21 +328,21 @@ domain_name = '{{ domain_name }}' --required
 AND object_type_name = '{{ object_type_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AllowProfileCreation,
-CreatedAt,
-Description,
-EncryptionKey,
-ExpirationDays,
-Fields,
-Keys,
-LastUpdatedAt,
-MaxAvailableProfileObjectCount,
-MaxProfileObjectCount,
-ObjectTypeName,
-SourceLastUpdatedTimestampFormat,
-SourcePriority,
-Tags,
-TemplateId;
+allow_profile_creation,
+created_at,
+description,
+encryption_key,
+expiration_days,
+fields,
+keys,
+last_updated_at,
+max_available_profile_object_count,
+max_profile_object_count,
+object_type_name,
+source_last_updated_timestamp_format,
+source_priority,
+tags,
+template_id;
 ```
 </TabItem>
 </Tabs>

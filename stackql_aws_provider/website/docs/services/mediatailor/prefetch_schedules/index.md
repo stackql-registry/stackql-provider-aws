@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the prefetch schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Consumption" /></td>
+    <td><CopyableCode code="consumption" /></td>
     <td><code>object</code></td>
     <td>For single prefetch, describes how and when that MediaTailor places prefetched ads into upcoming ad breaks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the prefetch schedule. The name must be unique among all prefetch schedules that are associated with the specified playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackConfigurationName" /></td>
+    <td><CopyableCode code="playback_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the playback configuration to create the prefetch schedule for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringPrefetchConfiguration" /></td>
+    <td><CopyableCode code="recurring_prefetch_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration that defines how MediaTailor performs recurring prefetch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Retrieval" /></td>
+    <td><CopyableCode code="retrieval" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains settings governing when MediaTailor prefetches ads, and which dynamic variables that MediaTailor includes in the request to the ad decision server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleType" /></td>
+    <td><CopyableCode code="schedule_type" /></td>
     <td><code>string</code></td>
     <td>The frequency that MediaTailor creates prefetch schedules. SINGLE indicates that this schedule applies to one ad break. RECURRING indicates that MediaTailor automatically creates a schedule for each ad avail in a live event. (SINGLE, RECURRING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamId" /></td>
+    <td><CopyableCode code="stream_id" /></td>
     <td><code>string</code></td>
     <td>An optional stream identifier that you can specify in order to prefetch for multiple streams that use the same playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the prefetch schedule. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the prefetch schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Consumption" /></td>
+    <td><CopyableCode code="consumption" /></td>
     <td><code>object</code></td>
     <td>For single prefetch, describes how and when that MediaTailor places prefetched ads into upcoming ad breaks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the prefetch schedule. The name must be unique among all prefetch schedules that are associated with the specified playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackConfigurationName" /></td>
+    <td><CopyableCode code="playback_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the playback configuration to create the prefetch schedule for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringPrefetchConfiguration" /></td>
+    <td><CopyableCode code="recurring_prefetch_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration that defines how MediaTailor performs recurring prefetch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Retrieval" /></td>
+    <td><CopyableCode code="retrieval" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains settings governing when MediaTailor prefetches ads, and which dynamic variables that MediaTailor includes in the request to the ad decision server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleType" /></td>
+    <td><CopyableCode code="schedule_type" /></td>
     <td><code>string</code></td>
     <td>The frequency that MediaTailor creates prefetch schedules. SINGLE indicates that this schedule applies to one ad break. RECURRING indicates that MediaTailor automatically creates a schedule for each ad avail in a live event. For more information about the prefetch types and when you might use each, see Prefetching ads in Elemental MediaTailor. (SINGLE, RECURRING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamId" /></td>
+    <td><CopyableCode code="stream_id" /></td>
     <td><code>string</code></td>
     <td>An optional stream identifier that you can specify in order to prefetch for multiple streams that use the same playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the prefetch schedule. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
@@ -251,15 +251,15 @@ Retrieves a prefetch schedule for a playback configuration. A prefetch schedule 
 
 ```sql
 SELECT
-Arn,
-Consumption,
-Name,
-PlaybackConfigurationName,
-RecurringPrefetchConfiguration,
-Retrieval,
-ScheduleType,
-StreamId,
-Tags
+arn,
+consumption,
+name,
+playback_configuration_name,
+recurring_prefetch_configuration,
+retrieval,
+schedule_type,
+stream_id,
+tags
 FROM aws.mediatailor.prefetch_schedules
 WHERE name = '{{ name }}' -- required
 AND playback_configuration_name = '{{ playback_configuration_name }}' -- required
@@ -273,15 +273,15 @@ Lists the prefetch schedules for a playback configuration.
 
 ```sql
 SELECT
-Arn,
-Consumption,
-Name,
-PlaybackConfigurationName,
-RecurringPrefetchConfiguration,
-Retrieval,
-ScheduleType,
-StreamId,
-Tags
+arn,
+consumption,
+name,
+playback_configuration_name,
+recurring_prefetch_configuration,
+retrieval,
+schedule_type,
+stream_id,
+tags
 FROM aws.mediatailor.prefetch_schedules
 WHERE playback_configuration_name = '{{ playback_configuration_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -327,15 +327,15 @@ SELECT
 '{{ playback_configuration_name }}',
 '{{ region }}'
 RETURNING
-Arn,
-Consumption,
-Name,
-PlaybackConfigurationName,
-RecurringPrefetchConfiguration,
-Retrieval,
-ScheduleType,
-StreamId,
-Tags
+arn,
+consumption,
+name,
+playback_configuration_name,
+recurring_prefetch_configuration,
+retrieval,
+schedule_type,
+stream_id,
+tags
 ;
 ```
 </TabItem>

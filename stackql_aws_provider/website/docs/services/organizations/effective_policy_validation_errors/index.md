@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContributingPolicies" /></td>
+    <td><CopyableCode code="contributing_policies" /></td>
     <td><code>array</code></td>
     <td>The individual policies inherited and attached to the account which contributed to the validation error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code for the validation error. For example, ELEMENTS_TOO_MANY.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message for the validation error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PathToError" /></td>
+    <td><CopyableCode code="path_to_error" /></td>
     <td><code>string</code></td>
     <td>The path within the effective policy where the validation error occurred.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists all the validation errors on an effective policy for a specified account a
 
 ```sql
 SELECT
-ContributingPolicies,
-ErrorCode,
-ErrorMessage,
-PathToError
+contributing_policies,
+error_code,
+error_message,
+path_to_error
 FROM aws.organizations.effective_policy_validation_errors
 WHERE region = '{{ region }}' -- required
 ;

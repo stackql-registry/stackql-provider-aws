@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the instance. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The instance creation timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance error message. If the instance results in an unhealthy state, customers need to check the error message, delete the current instance, and recreate a new one based on the mitigation from the error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceDescription" /></td>
+    <td><CopyableCode code="instance_description" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance description. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9., _ʼ'%-&#93;)&#123;0,500&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceName" /></td>
+    <td><CopyableCode code="instance_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance name. (pattern: &lt;code&gt;(?!&#91; _ʼ'%-&#93;)&#91;a-zA-Z0-9 _ʼ'%-&#93;&#123;0,62&#125;&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the Key Management Service (KMS) key you optionally provided for encryption. If you did not provide anything here, AWS Supply Chain uses the Amazon Web Services owned KMS key and nothing is returned. (pattern: &lt;code&gt;arn:&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;:kms:(&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;)?:(&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;)?:key/.&#123;0,1019&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The instance last modified timestamp.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the instance. (Initializing, Active, CreateFailed, DeleteFailed, Deleting, Deleted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>number (double)</code></td>
     <td>The version number of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webAppDnsDomain" /></td>
+    <td><CopyableCode code="web_app_dns_domain" /></td>
     <td><code>string</code></td>
     <td>The WebApp DNS domain name of the instance. (pattern: &lt;code&gt;(?!&#91;-&#93;)&#91;a-zA-Z0-9-&#93;&#123;1,62&#125;&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
@@ -120,42 +120,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the instance. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The instance creation timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance error message. If the instance results in an unhealthy state, customers need to check the error message, delete the current instance, and recreate a new one based on the mitigation from the error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceDescription" /></td>
+    <td><CopyableCode code="instance_description" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance description. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9., _ʼ'%-&#93;)&#123;0,500&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceName" /></td>
+    <td><CopyableCode code="instance_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance name. (pattern: &lt;code&gt;(?!&#91; _ʼ'%-&#93;)&#91;a-zA-Z0-9 _ʼ'%-&#93;&#123;0,62&#125;&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the Key Management Service (KMS) key you optionally provided for encryption. If you did not provide anything here, AWS Supply Chain uses the Amazon Web Services owned KMS key and nothing is returned. (pattern: &lt;code&gt;arn:&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;:kms:(&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;)?:(&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;)?:key/.&#123;0,1019&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The instance last modified timestamp.</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the instance. (Initializing, Active, CreateFailed, DeleteFailed, Deleting, Deleted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>number (double)</code></td>
     <td>The version number of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webAppDnsDomain" /></td>
+    <td><CopyableCode code="web_app_dns_domain" /></td>
     <td><code>string</code></td>
     <td>The WebApp DNS domain name of the instance. (pattern: &lt;code&gt;(?!&#91;-&#93;)&#91;a-zA-Z0-9-&#93;&#123;1,62&#125;&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
@@ -300,17 +300,17 @@ Enables you to programmatically retrieve the information related to an Amazon We
 
 ```sql
 SELECT
-awsAccountId,
-createdTime,
-errorMessage,
-instanceDescription,
-instanceId,
-instanceName,
-kmsKeyArn,
-lastModifiedTime,
+aws_account_id,
+created_time,
+error_message,
+instance_description,
+instance_id,
+instance_name,
+kms_key_arn,
+last_modified_time,
 state,
-versionNumber,
-webAppDnsDomain
+version_number,
+web_app_dns_domain
 FROM aws.supplychain.instances
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -323,17 +323,17 @@ List all Amazon Web Services Supply Chain instances for a specific account. Enab
 
 ```sql
 SELECT
-awsAccountId,
-createdTime,
-errorMessage,
-instanceDescription,
-instanceId,
-instanceName,
-kmsKeyArn,
-lastModifiedTime,
+aws_account_id,
+created_time,
+error_message,
+instance_description,
+instance_id,
+instance_name,
+kms_key_arn,
+last_modified_time,
 state,
-versionNumber,
-webAppDnsDomain
+version_number,
+web_app_dns_domain
 FROM aws.supplychain.instances
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the policy was last updated, in Unix time seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The resource policy document, which can be up to 5kb in size.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource policy. Must be unique within a specific Amazon Web Services account. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyRevisionId" /></td>
+    <td><CopyableCode code="policy_revision_id" /></td>
     <td><code>string</code></td>
     <td>Returns the current policy revision id for this policy name.</td>
 </tr>
@@ -148,10 +148,10 @@ Returns the list of resource policies in the target Amazon Web Services account.
 
 ```sql
 SELECT
-LastUpdatedTime,
-PolicyDocument,
-PolicyName,
-PolicyRevisionId
+last_updated_time,
+policy_document,
+policy_name,
+policy_revision_id
 FROM aws.xray.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -184,7 +184,7 @@ region = '{{ region }}' --required
 AND PolicyName = '{{ PolicyName }}' --required
 AND PolicyDocument = '{{ PolicyDocument }}' --required
 RETURNING
-ResourcePolicy;
+resource_policy;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>Information about the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveCapacityUnits" /></td>
+    <td><CopyableCode code="effective_capacity_units" /></td>
     <td><code>number</code></td>
     <td>The number of effective capacity units.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the capacity reservation.</td>
 </tr>
@@ -151,9 +151,9 @@ Describes the capacity reservation status for the specified load balancer.
 
 ```sql
 SELECT
-AvailabilityZone,
-EffectiveCapacityUnits,
-State
+availability_zone,
+effective_capacity_units,
+state
 FROM aws.elbv2.capacity_reservations
 WHERE LoadBalancerArn = '{{ LoadBalancerArn }}' -- required
 AND region = '{{ region }}' -- required

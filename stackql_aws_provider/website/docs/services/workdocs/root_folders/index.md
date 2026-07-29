@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the folder was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorId" /></td>
+    <td><CopyableCode code="creator_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the creator. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the folder. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Labels" /></td>
+    <td><CopyableCode code="labels" /></td>
     <td><code>array</code></td>
     <td>List of labels on the folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersionSize" /></td>
+    <td><CopyableCode code="latest_version_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the latest version of the folder metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedTimestamp" /></td>
+    <td><CopyableCode code="modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the folder was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the folder. (pattern: &lt;code&gt;&#91;\u0020-\u202D\u202F-\uFFFF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentFolderId" /></td>
+    <td><CopyableCode code="parent_folder_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the parent folder. (pattern: &lt;code&gt;&#91;\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceState" /></td>
+    <td><CopyableCode code="resource_state" /></td>
     <td><code>string</code></td>
     <td>The resource state of the folder. (ACTIVE, RESTORING, RECYCLING, RECYCLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Signature" /></td>
+    <td><CopyableCode code="signature" /></td>
     <td><code>string</code></td>
     <td>The unique identifier created from the subfolders and documents of the folder. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the folder metadata.</td>
 </tr>
@@ -184,17 +184,17 @@ Describes the current user's special folders; the RootFolder and the RecycleBin.
 
 ```sql
 SELECT
-CreatedTimestamp,
-CreatorId,
-Id,
-Labels,
-LatestVersionSize,
-ModifiedTimestamp,
-Name,
-ParentFolderId,
-ResourceState,
-Signature,
-Size
+created_timestamp,
+creator_id,
+id,
+labels,
+latest_version_size,
+modified_timestamp,
+name,
+parent_folder_id,
+resource_state,
+signature,
+size
 FROM aws.workdocs.root_folders
 WHERE Authentication = '{{ Authentication }}' -- required
 AND region = '{{ region }}' -- required

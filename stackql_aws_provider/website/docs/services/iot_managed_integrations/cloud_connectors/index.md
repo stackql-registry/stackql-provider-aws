@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the C2C connector. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfig" /></td>
+    <td><CopyableCode code="endpoint_config" /></td>
     <td><code>object</code></td>
     <td>The configuration details for an endpoint, which defines how to connect to and communicate with external services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint used for the cloud connector, which defines how the connector communicates with external services. (LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the cloud connector. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the C2C connector. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of cloud connector created. (LISTED, UNLISTED)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the C2C connector. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfig" /></td>
+    <td><CopyableCode code="endpoint_config" /></td>
     <td><code>object</code></td>
     <td>The configuration details for an endpoint, which defines how to connect to and communicate with external services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint used for the C2C connector. (LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the C2C connector. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the C2C connector. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of cloud connector created. (LISTED, UNLISTED)</td>
 </tr>
@@ -243,12 +243,12 @@ Get configuration details for a cloud connector.
 
 ```sql
 SELECT
-Description,
-EndpointConfig,
-EndpointType,
-Id,
-Name,
-Type
+description,
+endpoint_config,
+endpoint_type,
+id,
+name,
+type
 FROM aws.iot_managed_integrations.cloud_connectors
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -261,12 +261,12 @@ Returns a list of connectors filtered by its Lambda Amazon Resource Name (ARN) a
 
 ```sql
 SELECT
-Description,
-EndpointConfig,
-EndpointType,
-Id,
-Name,
-Type
+description,
+endpoint_config,
+endpoint_type,
+id,
+name,
+type
 FROM aws.iot_managed_integrations.cloud_connectors
 WHERE region = '{{ region }}' -- required
 AND Type = '{{ Type }}'
@@ -309,7 +309,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

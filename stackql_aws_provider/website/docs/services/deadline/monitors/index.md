@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of the date and time that the monitor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user name of the person that created the monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name used to identify the monitor on the Deadline Cloud console. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterApplicationArn" /></td>
+    <td><CopyableCode code="identity_center_application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name that the IAM Identity Center assigned to the monitor when it was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterInstanceArn" /></td>
+    <td><CopyableCode code="identity_center_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the IAM Identity Center instance responsible for authenticating monitor users. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterRegion" /></td>
+    <td><CopyableCode code="identity_center_region" /></td>
     <td><code>string</code></td>
     <td>The AWS Region where IAM Identity Center is enabled. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorId" /></td>
+    <td><CopyableCode code="monitor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the monitor. (pattern: &lt;code&gt;monitor-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the IAM role for the monitor. Users of the monitor use this role to access Deadline Cloud resources. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):iam::\d&#123;12&#125;:role(/&#91;!-.0-~&#93;+)*/&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The subdomain used for the monitor URL. The full URL of the monitor is subdomain.Region.deadlinecloud.amazonaws.com. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of the last date and time that the monitor was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user name of the person that last updated the monitor.</td>
 </tr>
@@ -125,42 +125,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of the date and time that the monitor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user name of the person that created the monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor that displays on the Deadline Cloud console. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterApplicationArn" /></td>
+    <td><CopyableCode code="identity_center_application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name that the IAM Identity Center assigned to the monitor when it was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterInstanceArn" /></td>
+    <td><CopyableCode code="identity_center_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the IAM Identity Center instance responsible for authenticating monitor users. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityCenterRegion" /></td>
+    <td><CopyableCode code="identity_center_region" /></td>
     <td><code>string</code></td>
     <td>The AWS Region where IAM Identity Center is enabled. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorId" /></td>
+    <td><CopyableCode code="monitor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the monitor. (pattern: &lt;code&gt;monitor-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the IAM role for the monitor. Users of the monitor use this role to access Deadline Cloud resources. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):iam::\d&#123;12&#125;:role(/&#91;!-.0-~&#93;+)*/&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -170,12 +170,12 @@ The following fields are returned by `SELECT` queries:
     <td>The subdomain used for the monitor URL. The full URL of the monitor is subdomain.Region.deadlinecloud.amazonaws.com. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UNIX timestamp of the date and time that the monitor was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user name of the person that last updated the monitor.</td>
 </tr>
@@ -298,17 +298,17 @@ Gets information about the specified monitor.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-displayName,
-identityCenterApplicationArn,
-identityCenterInstanceArn,
-identityCenterRegion,
-monitorId,
-roleArn,
+created_at,
+created_by,
+display_name,
+identity_center_application_arn,
+identity_center_instance_arn,
+identity_center_region,
+monitor_id,
+role_arn,
 subdomain,
-updatedAt,
-updatedBy,
+updated_at,
+updated_by,
 url
 FROM aws.deadline.monitors
 WHERE monitor_id = '{{ monitor_id }}' -- required
@@ -322,17 +322,17 @@ Gets a list of your monitors in Deadline Cloud.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-displayName,
-identityCenterApplicationArn,
-identityCenterInstanceArn,
-identityCenterRegion,
-monitorId,
-roleArn,
+created_at,
+created_by,
+display_name,
+identity_center_application_arn,
+identity_center_instance_arn,
+identity_center_region,
+monitor_id,
+role_arn,
 subdomain,
-updatedAt,
-updatedBy,
+updated_at,
+updated_by,
 url
 FROM aws.deadline.monitors
 WHERE region = '{{ region }}' -- required
@@ -378,8 +378,8 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-identityCenterApplicationArn,
-monitorId
+identity_center_application_arn,
+monitor_id
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainNodesStatusList" /></td>
+    <td><CopyableCode code="domain_nodes_status_list" /></td>
     <td><code>array</code></td>
     <td>Contains nodes information list DomainNodesStatusList with details about the all nodes on the requested domain.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns information about domain and nodes, including data nodes, master nodes, 
 
 ```sql
 SELECT
-DomainNodesStatusList
+domain_nodes_status_list
 FROM aws.opensearch.domain_nodes
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="virtualInterfaceTestHistory" /></td>
+    <td><CopyableCode code="virtual_interface_test_history" /></td>
     <td><code>array</code></td>
     <td>The ID of the tested virtual interface.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the virtual interface failover test history.
 
 ```sql
 SELECT
-nextToken,
-virtualInterfaceTestHistory
+next_token,
+virtual_interface_test_history
 FROM aws.directconnect.virtual_interface_test_histories
 WHERE region = '{{ region }}' -- required
 ;

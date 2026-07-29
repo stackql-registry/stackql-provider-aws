@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="effectiveLifecyclePolicyDetails" /></td>
+    <td><CopyableCode code="effective_lifecycle_policy_details" /></td>
     <td><code>array</code></td>
     <td>A list of lifecycle policies applied to the OpenSearch Serverless indexes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="effectiveLifecyclePolicyErrorDetails" /></td>
+    <td><CopyableCode code="effective_lifecycle_policy_error_details" /></td>
     <td><code>array</code></td>
     <td>A list of resources for which retrieval failed.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of successful and failed retrievals for the OpenSearch Serverless
 
 ```sql
 SELECT
-effectiveLifecyclePolicyDetails,
-effectiveLifecyclePolicyErrorDetails
+effective_lifecycle_policy_details,
+effective_lifecycle_policy_error_details
 FROM aws.opensearchserverless.effective_lifecycle_policies
 WHERE region = '{{ region }}' -- required
 ;

@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the policy. (pattern: &lt;code&gt;&#91;0-9a-zA-Z-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="definitionHash" /></td>
+    <td><CopyableCode code="definition_hash" /></td>
     <td><code>string</code></td>
     <td>The hash of the policy definition used as a concurrency token. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;128&#125;&lt;/code&gt;)</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the policy. (pattern: &lt;code&gt;&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the automated reasoning policy and its associated artifacts. If a KMS key is not provided during the initial CreateAutomatedReasoningPolicyRequest, the kmsKeyArn won't be included in the GetAutomatedReasoningPolicyResponse. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the policy. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy was last updated.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the policy. (pattern: &lt;code&gt;&#91;0-9a-zA-Z-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy was created.</td>
 </tr>
@@ -125,17 +125,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the policy. (pattern: &lt;code&gt;&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the policy. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy was last updated.</td>
 </tr>
@@ -314,13 +314,13 @@ Retrieves details about an Automated Reasoning policy or policy version. Returns
 ```sql
 SELECT
 name,
-createdAt,
-definitionHash,
+created_at,
+definition_hash,
 description,
-kmsKeyArn,
-policyArn,
-policyId,
-updatedAt,
+kms_key_arn,
+policy_arn,
+policy_id,
+updated_at,
 version
 FROM aws.bedrock.automated_reasoning_policies
 WHERE policy_arn = '{{ policy_arn }}' -- required
@@ -335,11 +335,11 @@ Lists all Automated Reasoning policies in your account, with optional filtering 
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-policyArn,
-policyId,
-updatedAt,
+policy_arn,
+policy_id,
+updated_at,
 version
 FROM aws.bedrock.automated_reasoning_policies
 WHERE region = '{{ region }}' -- required
@@ -382,10 +382,10 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-createdAt,
-definitionHash,
+created_at,
+definition_hash,
 description,
-policyArn,
+policy_arn,
 version
 ;
 ```
@@ -414,11 +414,11 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-createdAt,
-definitionHash,
+created_at,
+definition_hash,
 description,
-policyArn,
-updatedAt,
+policy_arn,
+updated_at,
 version
 ;
 ```
@@ -495,9 +495,9 @@ AND region = '{{ region }}' --required
 AND policyDefinition = '{{ policyDefinition }}' --required
 RETURNING
 name,
-definitionHash,
-policyArn,
-updatedAt;
+definition_hash,
+policy_arn,
+updated_at;
 ```
 </TabItem>
 </Tabs>

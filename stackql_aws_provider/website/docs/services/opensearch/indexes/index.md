@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IndexSchema" /></td>
+    <td><CopyableCode code="index_schema" /></td>
     <td><code>object</code></td>
     <td>The JSON schema of the index including mappings, settings, and semantic enrichment configuration.</td>
 </tr>
@@ -150,7 +150,7 @@ Retrieves information about an OpenSearch index including its schema and semanti
 
 ```sql
 SELECT
-IndexSchema
+index_schema
 FROM aws.opensearch.indexes
 WHERE domain_name = '{{ domain_name }}' -- required
 AND index_name = '{{ index_name }}' -- required
@@ -187,7 +187,7 @@ SELECT
 '{{ domain_name }}',
 '{{ region }}'
 RETURNING
-Status
+status
 ;
 ```
 </TabItem>
@@ -236,7 +236,7 @@ AND index_name = '{{ index_name }}' --required
 AND region = '{{ region }}' --required
 AND IndexSchema = '{{ IndexSchema }}' --required
 RETURNING
-Status;
+status;
 ```
 </TabItem>
 </Tabs>

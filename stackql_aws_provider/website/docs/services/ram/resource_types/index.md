@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If present, this value indicates that more output is available than is included in the current response. Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the NextToken response element comes back as null. This indicates that this is the last page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceTypes" /></td>
+    <td><CopyableCode code="resource_types" /></td>
     <td><code>array</code></td>
     <td>An array of objects that contain information about the resource types that can be shared using RAM.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the resource types that can be shared by RAM.
 
 ```sql
 SELECT
-nextToken,
-resourceTypes
+next_token,
+resource_types
 FROM aws.ram.resource_types
 WHERE region = '{{ region }}' -- required
 ;

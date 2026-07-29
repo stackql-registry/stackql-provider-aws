@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time of the last update to this policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyContent" /></td>
+    <td><CopyableCode code="policy_content" /></td>
     <td><code>string</code></td>
     <td>The text content of the policy. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyType" /></td>
+    <td><CopyableCode code="policy_type" /></td>
     <td><code>string</code></td>
     <td>The policy type. (TAG_POLICY, BACKUP_POLICY, AISERVICES_OPT_OUT_POLICY, CHATBOT_POLICY, DECLARATIVE_POLICY_EC2, SECURITYHUB_POLICY, INSPECTOR_POLICY, UPGRADE_ROLLOUT_POLICY, BEDROCK_POLICY, S3_POLICY, NETWORK_SECURITY_DIRECTOR_POLICY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the policy target. (pattern: &lt;code&gt;^(r-&#91;0-9a-z&#93;&#123;4,32&#125;)|(\d&#123;12&#125;)|(ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the contents of the effective policy for specified policy type and accou
 
 ```sql
 SELECT
-LastUpdatedTimestamp,
-PolicyContent,
-PolicyType,
-TargetId
+last_updated_timestamp,
+policy_content,
+policy_type,
+target_id
 FROM aws.organizations.effective_policies
 WHERE region = '{{ region }}' -- required
 ;

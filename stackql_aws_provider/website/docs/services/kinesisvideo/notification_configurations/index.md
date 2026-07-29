@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationConfig" /></td>
+    <td><CopyableCode code="destination_config" /></td>
     <td><code>object</code></td>
     <td>The destination information required to deliver a notification to a customer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates if a notification configuration is enabled or disabled. (ENABLED, DISABLED)</td>
 </tr>
@@ -131,8 +131,8 @@ Gets the NotificationConfiguration for a given Kinesis video stream.
 
 ```sql
 SELECT
-DestinationConfig,
-Status
+destination_config,
+status
 FROM aws.kinesisvideo.notification_configurations
 WHERE region = '{{ region }}' -- required
 ;

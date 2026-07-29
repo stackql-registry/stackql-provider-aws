@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The detector ARN. (pattern: &lt;code&gt;^arn\:aws&#91;a-z-&#93;&#123;0,15&#125;\:frauddetector\:&#91;a-z0-9-&#93;&#123;3,20&#125;\:&#91;0-9&#93;&#123;12&#125;\:&#91;^\s&#93;&#123;2,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorId" /></td>
+    <td><CopyableCode code="detector_id" /></td>
     <td><code>string</code></td>
     <td>The detector ID. (pattern: &lt;code&gt;^&#91;0-9a-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorVersionSummaries" /></td>
+    <td><CopyableCode code="detector_version_summaries" /></td>
     <td><code>array</code></td>
     <td>The status and description for each detector version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next token to be used for subsequent requests.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The detectors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token.</td>
 </tr>
@@ -182,9 +182,9 @@ Gets all versions for a specified detector.
 ```sql
 SELECT
 arn,
-detectorId,
-detectorVersionSummaries,
-nextToken
+detector_id,
+detector_version_summaries,
+next_token
 FROM aws.frauddetector.detectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,7 +197,7 @@ Gets all detectors or a single detector if a detectorId is specified. This is a 
 ```sql
 SELECT
 detectors,
-nextToken
+next_token
 FROM aws.frauddetector.detectors
 WHERE region = '{{ region }}' -- required
 ;

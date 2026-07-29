@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the model copy job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>An error message for why the model copy job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model copy job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-copy-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceAccountId" /></td>
+    <td><CopyableCode code="source_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the account that the model being copied originated from. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceModelArn" /></td>
+    <td><CopyableCode code="source_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the original model being copied. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceModelName" /></td>
+    <td><CopyableCode code="source_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the original model being copied. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,22 +86,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the model copy job. (InProgress, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelArn" /></td>
+    <td><CopyableCode code="target_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the copied model. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model/(imported|&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelKmsKeyArn" /></td>
+    <td><CopyableCode code="target_model_kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key encrypting the copied model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelName" /></td>
+    <td><CopyableCode code="target_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the copied model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelTags" /></td>
+    <td><CopyableCode code="target_model_tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the copied model.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the model copy job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>If a model fails to be copied, a message describing why the job failed is included here.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resoource Name (ARN) of the model copy job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-copy-job/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceAccountId" /></td>
+    <td><CopyableCode code="source_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the account that the model being copied originated from. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceModelArn" /></td>
+    <td><CopyableCode code="source_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the original model being copied. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceModelName" /></td>
+    <td><CopyableCode code="source_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the original model being copied. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
@@ -155,22 +155,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the model copy job. (InProgress, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelArn" /></td>
+    <td><CopyableCode code="target_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the copied model. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model/(imported|&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelKmsKeyArn" /></td>
+    <td><CopyableCode code="target_model_kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the copied model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelName" /></td>
+    <td><CopyableCode code="target_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the copied model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetModelTags" /></td>
+    <td><CopyableCode code="target_model_tags" /></td>
     <td><code>array</code></td>
     <td>Tags associated with the copied model.</td>
 </tr>
@@ -309,17 +309,17 @@ Retrieves information about a model copy job. For more information, see Copy mod
 
 ```sql
 SELECT
-creationTime,
-failureMessage,
-jobArn,
-sourceAccountId,
-sourceModelArn,
-sourceModelName,
+creation_time,
+failure_message,
+job_arn,
+source_account_id,
+source_model_arn,
+source_model_name,
 status,
-targetModelArn,
-targetModelKmsKeyArn,
-targetModelName,
-targetModelTags
+target_model_arn,
+target_model_kms_key_arn,
+target_model_name,
+target_model_tags
 FROM aws.bedrock.model_copy_jobs
 WHERE job_arn = '{{ job_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -332,17 +332,17 @@ Returns a list of model copy jobs that you have submitted. You can filter the jo
 
 ```sql
 SELECT
-creationTime,
-failureMessage,
-jobArn,
-sourceAccountId,
-sourceModelArn,
-sourceModelName,
+creation_time,
+failure_message,
+job_arn,
+source_account_id,
+source_model_arn,
+source_model_name,
 status,
-targetModelArn,
-targetModelKmsKeyArn,
-targetModelName,
-targetModelTags
+target_model_arn,
+target_model_kms_key_arn,
+target_model_name,
+target_model_tags
 FROM aws.bedrock.model_copy_jobs
 WHERE region = '{{ region }}' -- required
 AND creationTimeAfter = '{{ creationTimeAfter }}'
@@ -391,7 +391,7 @@ SELECT
 '{{ clientRequestToken }}',
 '{{ region }}'
 RETURNING
-jobArn
+job_arn
 ;
 ```
 </TabItem>

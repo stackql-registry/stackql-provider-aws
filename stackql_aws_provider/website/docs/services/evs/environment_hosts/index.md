@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the host was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dedicatedHostId" /></td>
+    <td><CopyableCode code="dedicated_host_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amazon EC2 Dedicated Host. (pattern: &lt;code&gt;h-&#91;a-f0-9&#93;&#123;8&#125;(&#91;a-f0-9&#93;&#123;9&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2InstanceId" /></td>
+    <td><CopyableCode code="ec_2_instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the EC2 instance that represents the host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostName" /></td>
+    <td><CopyableCode code="host_name" /></td>
     <td><code>string</code></td>
     <td>The DNS hostname of the host. DNS hostnames for hosts must be unique across Amazon EVS environments and within VCF. (pattern: &lt;code&gt;(&#91;a-zA-Z0-9\-&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostState" /></td>
+    <td><CopyableCode code="host_state" /></td>
     <td><code>string</code></td>
     <td>The state of the host. (CREATING, CREATED, UPDATING, DELETING, DELETED, CREATE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The EC2 instance type of the host. EC2 instances created through Amazon EVS do not support associating an IAM instance profile. (i4i.metal, i7i.metal-24xl)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the host. (pattern: &lt;code&gt;(\d&#123;1,3&#125;\.)&#123;3&#125;\d&#123;1,3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="keyName" /></td>
+    <td><CopyableCode code="key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SSH key that is used to access the host. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the host was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkInterfaces" /></td>
+    <td><CopyableCode code="network_interfaces" /></td>
     <td><code>array</code></td>
     <td>The elastic network interfaces that are attached to the host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="placementGroupId" /></td>
+    <td><CopyableCode code="placement_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the placement group where the host is placed. (pattern: &lt;code&gt;pg-&#91;a-f0-9&#93;&#123;8&#125;(&#91;a-f0-9&#93;&#123;9&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the hostState of a host.</td>
 </tr>
@@ -188,18 +188,18 @@ List the hosts within an environment.
 
 ```sql
 SELECT
-createdAt,
-dedicatedHostId,
-ec2InstanceId,
-hostName,
-hostState,
-instanceType,
-ipAddress,
-keyName,
-modifiedAt,
-networkInterfaces,
-placementGroupId,
-stateDetails
+created_at,
+dedicated_host_id,
+ec_2_instance_id,
+host_name,
+host_state,
+instance_type,
+ip_address,
+key_name,
+modified_at,
+network_interfaces,
+placement_group_id,
+state_details
 FROM aws.evs.environment_hosts
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,7 +236,7 @@ SELECT
 '{{ esxVersion }}',
 '{{ region }}'
 RETURNING
-environmentSummary,
+environment_summary,
 host
 ;
 ```

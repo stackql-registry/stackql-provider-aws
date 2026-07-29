@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the target table for which to retrieve integration table properties. Currently, this API only supports retrieving properties for target tables, and the provided ARN should be the ARN of the target table in the Glue Data Catalog. Support for retrieving integration table properties for source connections (using the connection ARN) is not yet implemented and will be added in a future release.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceTableConfig" /></td>
+    <td><CopyableCode code="source_table_config" /></td>
     <td><code>object</code></td>
     <td>A structure for the source table configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table to be replicated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetTableConfig" /></td>
+    <td><CopyableCode code="target_table_config" /></td>
     <td><code>object</code></td>
     <td>A structure for the target table configuration.</td>
 </tr>
@@ -155,10 +155,10 @@ This API is used to retrieve optional override properties for the tables that ne
 
 ```sql
 SELECT
-ResourceArn,
-SourceTableConfig,
-TableName,
-TargetTableConfig
+resource_arn,
+source_table_config,
+table_name,
+target_table_config
 FROM aws.glue.integration_table_properties
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessKeyId" /></td>
+    <td><CopyableCode code="access_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID for this access key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date when the access key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the access key. Active means that the key is valid for API calls; Inactive means it is not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM user that the key is associated with.</td>
 </tr>
@@ -180,10 +180,10 @@ Returns information about the access key IDs associated with the specified IAM u
 
 ```sql
 SELECT
-AccessKeyId,
-CreateDate,
-Status,
-UserName
+access_key_id,
+create_date,
+status,
+user_name
 FROM aws.iam.access_keys
 WHERE region = '{{ region }}' -- required
 AND UserName = '{{ UserName }}'
@@ -217,11 +217,11 @@ SELECT
 '{{ region }}',
 '{{ UserName }}'
 RETURNING
-AccessKeyId,
-CreateDate,
-SecretAccessKey,
-Status,
-UserName
+access_key_id,
+create_date,
+secret_access_key,
+status,
+user_name
 ;
 ```
 </TabItem>

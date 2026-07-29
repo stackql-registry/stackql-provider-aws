@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LookbackPeriod" /></td>
+    <td><CopyableCode code="lookback_period" /></td>
     <td><code>object</code></td>
     <td>The lookback period that's used for the estimation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Services" /></td>
+    <td><CopyableCode code="services" /></td>
     <td><code>object</code></td>
     <td>The service metadata for the service or services in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalRecords" /></td>
+    <td><CopyableCode code="total_records" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of usage records for all services in the services list.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves estimated usage records for hourly granularity or resource-level data 
 
 ```sql
 SELECT
-LookbackPeriod,
-Services,
-TotalRecords
+lookback_period,
+services,
+total_records
 FROM aws.ce.approximate_usage_records
 WHERE region = '{{ region }}' -- required
 ;

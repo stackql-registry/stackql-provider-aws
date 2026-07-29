@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the automation rule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit Amazon Web Services account ID that owns this automation rule. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation rule was created.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the automation rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationConfiguration" /></td>
+    <td><CopyableCode code="organization_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration settings for organization-wide automation rules.</td>
 </tr>
@@ -91,27 +91,27 @@ The following fields are returned by `SELECT` queries:
     <td>A string representation of a decimal number between 0 and 1 (having up to 30 digits after the decimal point) that determines the priority of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActionTypes" /></td>
+    <td><CopyableCode code="recommended_action_types" /></td>
     <td><code>array</code></td>
     <td>List of recommended action types that this rule can execute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the automation rule. (pattern: &lt;code&gt;arn:aws:compute-optimizer::&#91;0-9&#93;&#123;12&#125;:automation-rule/&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the automation rule. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleRevision" /></td>
+    <td><CopyableCode code="rule_revision" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number of the automation rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleType" /></td>
+    <td><CopyableCode code="rule_type" /></td>
     <td><code>string</code></td>
     <td>The type of automation rule. (OrganizationRule, AccountRule)</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the automation rule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit Amazon Web Services account ID that owns this automation rule. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation rule was created.</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the automation rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the automation rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationConfiguration" /></td>
+    <td><CopyableCode code="organization_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration settings for organization-wide automation rules.</td>
 </tr>
@@ -180,27 +180,27 @@ The following fields are returned by `SELECT` queries:
     <td>A string representation of a decimal number between 0 and 1 (having up to 30 digits after the decimal point) that determines the priority of the rule. When multiple rules match the same recommended action, Compute Optimizer assigns the action to the rule with the lowest priority value (highest priority), even if that rule is scheduled to run later than other matching rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActionTypes" /></td>
+    <td><CopyableCode code="recommended_action_types" /></td>
     <td><code>array</code></td>
     <td>List of recommended action types that this rule can execute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the automation rule. (pattern: &lt;code&gt;arn:aws:compute-optimizer::&#91;0-9&#93;&#123;12&#125;:automation-rule/&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the automation rule. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleRevision" /></td>
+    <td><CopyableCode code="rule_revision" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number of the automation rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleType" /></td>
+    <td><CopyableCode code="rule_type" /></td>
     <td><code>string</code></td>
     <td>The type of automation rule (OrganizationRule or AccountRule). (OrganizationRule, AccountRule)</td>
 </tr>
@@ -309,18 +309,18 @@ Retrieves details about a specific automation rule.
 ```sql
 SELECT
 name,
-accountId,
-createdTimestamp,
+account_id,
+created_timestamp,
 criteria,
 description,
-lastUpdatedTimestamp,
-organizationConfiguration,
+last_updated_timestamp,
+organization_configuration,
 priority,
-recommendedActionTypes,
-ruleArn,
-ruleId,
-ruleRevision,
-ruleType,
+recommended_action_types,
+rule_arn,
+rule_id,
+rule_revision,
+rule_type,
 schedule,
 status,
 tags
@@ -336,17 +336,17 @@ Lists the automation rules that match specified filters.
 ```sql
 SELECT
 name,
-accountId,
-createdTimestamp,
+account_id,
+created_timestamp,
 description,
-lastUpdatedTimestamp,
-organizationConfiguration,
+last_updated_timestamp,
+organization_configuration,
 priority,
-recommendedActionTypes,
-ruleArn,
-ruleId,
-ruleRevision,
-ruleType,
+recommended_action_types,
+rule_arn,
+rule_id,
+rule_revision,
+rule_type,
 schedule,
 status
 FROM aws.compute_optimizer_automation.automation_rules
@@ -400,16 +400,16 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-createdTimestamp,
+created_timestamp,
 criteria,
 description,
-organizationConfiguration,
+organization_configuration,
 priority,
-recommendedActionTypes,
-ruleArn,
-ruleId,
-ruleRevision,
-ruleType,
+recommended_action_types,
+rule_arn,
+rule_id,
+rule_revision,
+rule_type,
 schedule,
 status,
 tags
@@ -543,16 +543,16 @@ AND ruleArn = '{{ ruleArn }}' --required
 AND ruleRevision = '{{ ruleRevision }}' --required
 RETURNING
 name,
-createdTimestamp,
+created_timestamp,
 criteria,
 description,
-lastUpdatedTimestamp,
-organizationConfiguration,
+last_updated_timestamp,
+organization_configuration,
 priority,
-recommendedActionTypes,
-ruleArn,
-ruleRevision,
-ruleType,
+recommended_action_types,
+rule_arn,
+rule_revision,
+rule_type,
 schedule,
 status;
 ```

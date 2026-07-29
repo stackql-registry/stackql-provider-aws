@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The checksum of the segment data for integrity verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the segment was created.</td>
 </tr>
@@ -70,57 +70,57 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the segment. (pattern: &lt;code&gt;&#91;^\x00&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the job that created this segment. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logicalID" /></td>
+    <td><CopyableCode code="logical_id" /></td>
     <td><code>string</code></td>
     <td>The logical identifier for the segment in the infrastructure code. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationDefinitionID" /></td>
+    <td><CopyableCode code="network_migration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration definition. (pattern: &lt;code&gt;nmd-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationExecutionID" /></td>
+    <td><CopyableCode code="network_migration_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputS3Configuration" /></td>
+    <td><CopyableCode code="output_s3_configuration" /></td>
     <td><code>object</code></td>
     <td>The S3 location where segment artifacts are stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="referencedSegments" /></td>
+    <td><CopyableCode code="referenced_segments" /></td>
     <td><code>array</code></td>
     <td>A list of other segments that this segment depends on or references.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scopeTags" /></td>
+    <td><CopyableCode code="scope_tags" /></td>
     <td><code>object</code></td>
     <td>Scope tags for the segment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="segmentID" /></td>
+    <td><CopyableCode code="segment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the segment. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="segmentType" /></td>
+    <td><CopyableCode code="segment_type" /></td>
     <td><code>string</code></td>
     <td>The type of the segment, such as VPC, subnet, or security group. (WORKLOAD, APPLIANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetAccount" /></td>
+    <td><CopyableCode code="target_account" /></td>
     <td><code>string</code></td>
     <td>The target AWS account where this segment will be deployed. (pattern: &lt;code&gt;.*&#91;0-9&#93;&#123;12,&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the segment was last updated.</td>
 </tr>
@@ -198,19 +198,19 @@ Lists mapper segments, which represent logical groupings of network resources to
 SELECT
 name,
 checksum,
-createdAt,
+created_at,
 description,
-jobID,
-logicalID,
-networkMigrationDefinitionID,
-networkMigrationExecutionID,
-outputS3Configuration,
-referencedSegments,
-scopeTags,
-segmentID,
-segmentType,
-targetAccount,
-updatedAt
+job_id,
+logical_id,
+network_migration_definition_id,
+network_migration_execution_id,
+output_s3_configuration,
+referenced_segments,
+scope_tags,
+segment_id,
+segment_type,
+target_account,
+updated_at
 FROM aws.mgn.network_migration_mapper_segments
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,19 +246,19 @@ AND segmentID = '{{ segmentID }}' --required
 RETURNING
 name,
 checksum,
-createdAt,
+created_at,
 description,
-jobID,
-logicalID,
-networkMigrationDefinitionID,
-networkMigrationExecutionID,
-outputS3Configuration,
-referencedSegments,
-scopeTags,
-segmentID,
-segmentType,
-targetAccount,
-updatedAt;
+job_id,
+logical_id,
+network_migration_definition_id,
+network_migration_execution_id,
+output_s3_configuration,
+referenced_segments,
+scope_tags,
+segment_id,
+segment_type,
+target_account,
+updated_at;
 ```
 </TabItem>
 </Tabs>

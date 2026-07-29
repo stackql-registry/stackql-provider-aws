@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment instrument was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentConnectorId" /></td>
+    <td><CopyableCode code="payment_connector_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the payment connector associated with this instrument. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentInstrumentDetails" /></td>
+    <td><CopyableCode code="payment_instrument_details" /></td>
     <td><code>object</code></td>
     <td>Details specific to the instrument type</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentInstrumentId" /></td>
+    <td><CopyableCode code="payment_instrument_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this payment instrument. (pattern: &lt;code&gt;payment-instrument-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentInstrumentType" /></td>
+    <td><CopyableCode code="payment_instrument_type" /></td>
     <td><code>string</code></td>
     <td>The type of payment instrument (EMBEDDED_CRYPTO_WALLET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerArn" /></td>
+    <td><CopyableCode code="payment_manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the payment manager that owns this payment instrument. (pattern: &lt;code&gt;arn:(aws|aws-&#91;a-z0-9-&#93;+):bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:payment-manager/&#91;a-z0-9&#93;(&#91;a-z0-9-&#93;&#123;0,47&#125;&#91;a-z0-9&#93;)?-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of this payment instrument. (INITIATED, ACTIVE, FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment instrument was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID associated with this payment instrument.</td>
 </tr>
@@ -110,27 +110,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment instrument was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentConnectorId" /></td>
+    <td><CopyableCode code="payment_connector_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the payment connector associated with this instrument. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentInstrumentId" /></td>
+    <td><CopyableCode code="payment_instrument_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this payment instrument. (pattern: &lt;code&gt;payment-instrument-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentInstrumentType" /></td>
+    <td><CopyableCode code="payment_instrument_type" /></td>
     <td><code>string</code></td>
     <td>The type of payment instrument (EMBEDDED_CRYPTO_WALLET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentManagerArn" /></td>
+    <td><CopyableCode code="payment_manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the payment manager that owns this payment instrument. (pattern: &lt;code&gt;arn:(aws|aws-&#91;a-z0-9-&#93;+):bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:payment-manager/&#91;a-z0-9&#93;(&#91;a-z0-9-&#93;&#123;0,47&#125;&#91;a-z0-9&#93;)?-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of this payment instrument. (INITIATED, ACTIVE, FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this payment instrument was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID associated with this payment instrument.</td>
 </tr>
@@ -253,15 +253,15 @@ Get a payment instrument by ID
 
 ```sql
 SELECT
-createdAt,
-paymentConnectorId,
-paymentInstrumentDetails,
-paymentInstrumentId,
-paymentInstrumentType,
-paymentManagerArn,
+created_at,
+payment_connector_id,
+payment_instrument_details,
+payment_instrument_id,
+payment_instrument_type,
+payment_manager_arn,
 status,
-updatedAt,
-userId
+updated_at,
+user_id
 FROM aws.bedrock_agentcore.payment_instruments
 WHERE region = '{{ region }}' -- required
 AND `X-Amzn-Bedrock-AgentCore-Payments-User-Id` = '{{ X-Amzn-Bedrock-AgentCore-Payments-User-Id }}'
@@ -275,14 +275,14 @@ List payment instruments for a manager
 
 ```sql
 SELECT
-createdAt,
-paymentConnectorId,
-paymentInstrumentId,
-paymentInstrumentType,
-paymentManagerArn,
+created_at,
+payment_connector_id,
+payment_instrument_id,
+payment_instrument_type,
+payment_manager_arn,
 status,
-updatedAt,
-userId
+updated_at,
+user_id
 FROM aws.bedrock_agentcore.payment_instruments
 WHERE region = '{{ region }}' -- required
 AND `X-Amzn-Bedrock-AgentCore-Payments-User-Id` = '{{ X-Amzn-Bedrock-AgentCore-Payments-User-Id }}'
@@ -327,7 +327,7 @@ SELECT
 '{{ X-Amzn-Bedrock-AgentCore-Payments-User-Id }}',
 '{{ X-Amzn-Bedrock-AgentCore-Payments-Agent-Name }}'
 RETURNING
-paymentInstrument
+payment_instrument
 ;
 ```
 </TabItem>

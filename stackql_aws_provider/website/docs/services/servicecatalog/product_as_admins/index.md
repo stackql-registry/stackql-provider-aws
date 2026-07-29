@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Budgets" /></td>
+    <td><CopyableCode code="budgets" /></td>
     <td><code>array</code></td>
     <td>Information about the associated budgets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductViewDetail" /></td>
+    <td><CopyableCode code="product_view_detail" /></td>
     <td><code>object</code></td>
     <td>Information about the product view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactSummaries" /></td>
+    <td><CopyableCode code="provisioning_artifact_summaries" /></td>
     <td><code>array</code></td>
     <td>Information about the provisioning artifacts (also known as versions) for the specified product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagOptions" /></td>
+    <td><CopyableCode code="tag_options" /></td>
     <td><code>array</code></td>
     <td>Information about the TagOptions associated with the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Information about the tags associated with the product.</td>
 </tr>
@@ -139,11 +139,11 @@ Gets information about the specified product. This operation is run with adminis
 
 ```sql
 SELECT
-Budgets,
-ProductViewDetail,
-ProvisioningArtifactSummaries,
-TagOptions,
-Tags
+budgets,
+product_view_detail,
+provisioning_artifact_summaries,
+tag_options,
+tags
 FROM aws.servicecatalog.product_as_admins
 WHERE region = '{{ region }}' -- required
 ;

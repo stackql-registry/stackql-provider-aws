@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutomatedDiscoveryInformation" /></td>
+    <td><CopyableCode code="automated_discovery_information" /></td>
     <td><code>object</code></td>
     <td>Automated discovery information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumedLicenseSummaryList" /></td>
+    <td><CopyableCode code="consumed_license_summary_list" /></td>
     <td><code>array</code></td>
     <td>Summaries of the licenses consumed by resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumedLicenses" /></td>
+    <td><CopyableCode code="consumed_licenses" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of licenses assigned to resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisassociateWhenNotFound" /></td>
+    <td><CopyableCode code="disassociate_when_not_found" /></td>
     <td><code>boolean</code></td>
     <td>When true, disassociates a resource when software is uninstalled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseConfigurationArn" /></td>
+    <td><CopyableCode code="license_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseConfigurationId" /></td>
+    <td><CopyableCode code="license_configuration_id" /></td>
     <td><code>string</code></td>
     <td>Unique ID for the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseCount" /></td>
+    <td><CopyableCode code="license_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of available licenses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseCountHardLimit" /></td>
+    <td><CopyableCode code="license_count_hard_limit" /></td>
     <td><code>boolean</code></td>
     <td>Sets the number of available licenses as a hard limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseCountingType" /></td>
+    <td><CopyableCode code="license_counting_type" /></td>
     <td><code>string</code></td>
     <td>Dimension for which the licenses are counted. (vCPU, Instance, Core, Socket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseExpiry" /></td>
+    <td><CopyableCode code="license_expiry" /></td>
     <td><code>integer (int64)</code></td>
     <td>License Expiry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseRules" /></td>
+    <td><CopyableCode code="license_rules" /></td>
     <td><code>array</code></td>
     <td>License rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedResourceSummaryList" /></td>
+    <td><CopyableCode code="managed_resource_summary_list" /></td>
     <td><code>array</code></td>
     <td>Summaries of the managed resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>Account ID of the owner of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductInformationList" /></td>
+    <td><CopyableCode code="product_information_list" /></td>
     <td><code>array</code></td>
     <td>Product information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>License configuration status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Tags for the license configuration.</td>
 </tr>
@@ -155,87 +155,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutomatedDiscoveryInformation" /></td>
+    <td><CopyableCode code="automated_discovery_information" /></td>
     <td><code>object</code></td>
     <td>Automated discovery information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumedLicenseSummaryList" /></td>
+    <td><CopyableCode code="consumed_license_summary_list" /></td>
     <td><code>array</code></td>
     <td>Summaries for licenses consumed by various resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumedLicenses" /></td>
+    <td><CopyableCode code="consumed_licenses" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of licenses consumed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisassociateWhenNotFound" /></td>
+    <td><CopyableCode code="disassociate_when_not_found" /></td>
     <td><code>boolean</code></td>
     <td>When true, disassociates a resource when software is uninstalled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseConfigurationArn" /></td>
+    <td><CopyableCode code="license_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseConfigurationId" /></td>
+    <td><CopyableCode code="license_configuration_id" /></td>
     <td><code>string</code></td>
     <td>Unique ID of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseCount" /></td>
+    <td><CopyableCode code="license_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of licenses managed by the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseCountHardLimit" /></td>
+    <td><CopyableCode code="license_count_hard_limit" /></td>
     <td><code>boolean</code></td>
     <td>Number of available licenses as a hard limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseCountingType" /></td>
+    <td><CopyableCode code="license_counting_type" /></td>
     <td><code>string</code></td>
     <td>Dimension to use to track the license inventory. (vCPU, Instance, Core, Socket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseExpiry" /></td>
+    <td><CopyableCode code="license_expiry" /></td>
     <td><code>integer (int64)</code></td>
     <td>License configuration expiry time in Unix timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseRules" /></td>
+    <td><CopyableCode code="license_rules" /></td>
     <td><code>array</code></td>
     <td>License rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedResourceSummaryList" /></td>
+    <td><CopyableCode code="managed_resource_summary_list" /></td>
     <td><code>array</code></td>
     <td>Summaries for managed resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the license configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>Account ID of the license configuration's owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductInformationList" /></td>
+    <td><CopyableCode code="product_information_list" /></td>
     <td><code>array</code></td>
     <td>Product information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the license configuration.</td>
 </tr>
@@ -333,24 +333,24 @@ Gets detailed information about the specified license configuration.
 
 ```sql
 SELECT
-AutomatedDiscoveryInformation,
-ConsumedLicenseSummaryList,
-ConsumedLicenses,
-Description,
-DisassociateWhenNotFound,
-LicenseConfigurationArn,
-LicenseConfigurationId,
-LicenseCount,
-LicenseCountHardLimit,
-LicenseCountingType,
-LicenseExpiry,
-LicenseRules,
-ManagedResourceSummaryList,
-Name,
-OwnerAccountId,
-ProductInformationList,
-Status,
-Tags
+automated_discovery_information,
+consumed_license_summary_list,
+consumed_licenses,
+description,
+disassociate_when_not_found,
+license_configuration_arn,
+license_configuration_id,
+license_count,
+license_count_hard_limit,
+license_counting_type,
+license_expiry,
+license_rules,
+managed_resource_summary_list,
+name,
+owner_account_id,
+product_information_list,
+status,
+tags
 FROM aws.license_manager.license_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -362,23 +362,23 @@ Lists the license configurations for your account.
 
 ```sql
 SELECT
-AutomatedDiscoveryInformation,
-ConsumedLicenseSummaryList,
-ConsumedLicenses,
-Description,
-DisassociateWhenNotFound,
-LicenseConfigurationArn,
-LicenseConfigurationId,
-LicenseCount,
-LicenseCountHardLimit,
-LicenseCountingType,
-LicenseExpiry,
-LicenseRules,
-ManagedResourceSummaryList,
-Name,
-OwnerAccountId,
-ProductInformationList,
-Status
+automated_discovery_information,
+consumed_license_summary_list,
+consumed_licenses,
+description,
+disassociate_when_not_found,
+license_configuration_arn,
+license_configuration_id,
+license_count,
+license_count_hard_limit,
+license_counting_type,
+license_expiry,
+license_rules,
+managed_resource_summary_list,
+name,
+owner_account_id,
+product_information_list,
+status
 FROM aws.license_manager.license_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -427,7 +427,7 @@ SELECT
 {{ LicenseExpiry }},
 '{{ region }}'
 RETURNING
-LicenseConfigurationArn
+license_configuration_arn
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsResourceExplorerManagedViewArn" /></td>
+    <td><CopyableCode code="aws_resource_explorer_managed_view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Resource Explorer managed view used for resource tags for telemetry, if the feature is enabled. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:resource-explorer-2:(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:managed-view/(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the resource tags for telemetry feature (Running, Stopped, or Impaired). (Running, Stopped, Impaired)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the current status of the resource tags for telemetry feature, which enh
 
 ```sql
 SELECT
-AwsResourceExplorerManagedViewArn,
-Status
+aws_resource_explorer_managed_view_arn,
+status
 FROM aws.observabilityadmin.telemetry_enrichment_status
 WHERE region = '{{ region }}' -- required
 ;

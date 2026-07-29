@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionList" /></td>
+    <td><CopyableCode code="action_list" /></td>
     <td><code>array</code></td>
     <td>A list of action recommendations sorted in descending order by prediction score. There can be a maximum of 100 actions in the list. For information about action scores, see How action recommendation scoring works.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recommendation.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of recommended actions in sorted in descending order by predictio
 
 ```sql
 SELECT
-actionList,
-recommendationId
+action_list,
+recommendation_id
 FROM aws.personalize_runtime.action_recommendations
 WHERE region = '{{ region }}' -- required
 ;

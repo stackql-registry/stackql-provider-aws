@@ -108,8 +108,8 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-CliToken,
-WebServerHostname
+cli_token,
+web_server_hostname
 ;
 ```
 </TabItem>

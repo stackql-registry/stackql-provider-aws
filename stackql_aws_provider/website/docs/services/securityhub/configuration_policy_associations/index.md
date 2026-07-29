@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationPolicyAssociations" /></td>
+    <td><CopyableCode code="configuration_policy_associations" /></td>
     <td><code>array</code></td>
     <td>Describes associations for the target accounts, OUs, or the root.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedConfigurationPolicyAssociations" /></td>
+    <td><CopyableCode code="unprocessed_configuration_policy_associations" /></td>
     <td><code>array</code></td>
     <td>An array of configuration policy associations, one for each configuration policy association identifier, that was specified in the request but couldn’t be processed due to an error.</td>
 </tr>
@@ -76,37 +76,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationStatus" /></td>
+    <td><CopyableCode code="association_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the association between the specified target and the configuration. (PENDING, SUCCESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationStatusMessage" /></td>
+    <td><CopyableCode code="association_status_message" /></td>
     <td><code>string</code></td>
     <td>The explanation for a FAILED value for AssociationStatus. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the association between the specified target and the configuration was directly applied by the Security Hub CSPM delegated administrator or inherited from a parent. (INHERITED, APPLIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationPolicyId" /></td>
+    <td><CopyableCode code="configuration_policy_id" /></td>
     <td><code>string</code></td>
     <td>The universally unique identifier (UUID) of a configuration policy. For self-managed behavior, the value is SELF_MANAGED_SECURITY_HUB. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The target account ID, organizational unit ID, or the root ID for which the association is retrieved. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the target is an Amazon Web Services account, organizational unit, or the organization root. (ACCOUNT, ORGANIZATIONAL_UNIT, ROOT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and ISO 8601 format, that the configuration policy association was last updated.</td>
 </tr>
@@ -125,37 +125,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationStatus" /></td>
+    <td><CopyableCode code="association_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the association between the specified target and the configuration. (PENDING, SUCCESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationStatusMessage" /></td>
+    <td><CopyableCode code="association_status_message" /></td>
     <td><code>string</code></td>
     <td>The explanation for a FAILED value for AssociationStatus. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the association between the specified target and the configuration was directly applied by the Security Hub CSPM delegated administrator or inherited from a parent. (INHERITED, APPLIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationPolicyId" /></td>
+    <td><CopyableCode code="configuration_policy_id" /></td>
     <td><code>string</code></td>
     <td>The universally unique identifier (UUID) of the configuration policy. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the target account, organizational unit, or the root. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the target is an Amazon Web Services account, organizational unit, or the root. (ACCOUNT, ORGANIZATIONAL_UNIT, ROOT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and ISO 8601 format, that the configuration policy association was last updated.</td>
 </tr>
@@ -240,8 +240,8 @@ Returns associations between an Security Hub CSPM configuration and a batch of t
 
 ```sql
 SELECT
-ConfigurationPolicyAssociations,
-UnprocessedConfigurationPolicyAssociations
+configuration_policy_associations,
+unprocessed_configuration_policy_associations
 FROM aws.securityhub.configuration_policy_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,13 +253,13 @@ Returns the association between a configuration and a target account, organizati
 
 ```sql
 SELECT
-AssociationStatus,
-AssociationStatusMessage,
-AssociationType,
-ConfigurationPolicyId,
-TargetId,
-TargetType,
-UpdatedAt
+association_status,
+association_status_message,
+association_type,
+configuration_policy_id,
+target_id,
+target_type,
+updated_at
 FROM aws.securityhub.configuration_policy_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -271,13 +271,13 @@ Provides information about the associations for your configuration policies and 
 
 ```sql
 SELECT
-AssociationStatus,
-AssociationStatusMessage,
-AssociationType,
-ConfigurationPolicyId,
-TargetId,
-TargetType,
-UpdatedAt
+association_status,
+association_status_message,
+association_type,
+configuration_policy_id,
+target_id,
+target_type,
+updated_at
 FROM aws.securityhub.configuration_policy_associations
 WHERE region = '{{ region }}' -- required
 ;

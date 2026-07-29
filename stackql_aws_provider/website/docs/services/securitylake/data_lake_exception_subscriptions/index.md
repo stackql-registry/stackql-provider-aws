@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="exceptionTimeToLive" /></td>
+    <td><CopyableCode code="exception_time_to_live" /></td>
     <td><code>integer (int64)</code></td>
     <td>The expiration period and time-to-live (TTL). It is the duration of time until which the exception message remains.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationEndpoint" /></td>
+    <td><CopyableCode code="notification_endpoint" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account where you receive exception notifications. (pattern: &lt;code&gt;^&#91;\\\w\-_:/.@=+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionProtocol" /></td>
+    <td><CopyableCode code="subscription_protocol" /></td>
     <td><code>string</code></td>
     <td>The subscription protocol to which exception notifications are posted. (pattern: &lt;code&gt;^&#91;a-z\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -150,9 +150,9 @@ Retrieves the protocol and endpoint that were provided when subscribing to Amazo
 
 ```sql
 SELECT
-exceptionTimeToLive,
-notificationEndpoint,
-subscriptionProtocol
+exception_time_to_live,
+notification_endpoint,
+subscription_protocol
 FROM aws.securitylake.data_lake_exception_subscriptions
 WHERE region = '{{ region }}' -- required
 ;

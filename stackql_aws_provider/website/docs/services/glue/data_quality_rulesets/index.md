@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp. The time and date that this data quality ruleset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataQualitySecurityConfiguration" /></td>
+    <td><CopyableCode code="data_quality_security_configuration" /></td>
     <td><code>string</code></td>
     <td>The name of the security configuration created with the data quality encryption option. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the ruleset. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp. The last point in time when this data quality ruleset was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the ruleset. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationRunId" /></td>
+    <td><CopyableCode code="recommendation_run_id" /></td>
     <td><code>string</code></td>
     <td>When a ruleset was created from a recommendation run, this run ID is generated to link the two together. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ruleset" /></td>
+    <td><CopyableCode code="ruleset" /></td>
     <td><code>string</code></td>
     <td>A Data Quality Definition Language (DQDL) ruleset. For more information, see the Glue developer guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetTable" /></td>
+    <td><CopyableCode code="target_table" /></td>
     <td><code>object</code></td>
     <td>The name and database name of the target table.</td>
 </tr>
@@ -196,14 +196,14 @@ Returns an existing ruleset by identifier or name.
 
 ```sql
 SELECT
-CreatedOn,
-DataQualitySecurityConfiguration,
-Description,
-LastModifiedOn,
-Name,
-RecommendationRunId,
-Ruleset,
-TargetTable
+created_on,
+data_quality_security_configuration,
+description,
+last_modified_on,
+name,
+recommendation_run_id,
+ruleset,
+target_table
 FROM aws.glue.data_quality_rulesets
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,7 +246,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -316,9 +316,9 @@ Ruleset = '{{ Ruleset }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Description,
-Name,
-Ruleset;
+description,
+name,
+ruleset;
 ```
 </TabItem>
 </Tabs>

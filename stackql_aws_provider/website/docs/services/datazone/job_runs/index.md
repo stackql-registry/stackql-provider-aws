@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The details of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the job run ended.</td>
 </tr>
@@ -86,22 +86,22 @@ The following fields are returned by `SELECT` queries:
     <td>The error generated if the action is not completed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The type of the job run. (LINEAGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runMode" /></td>
+    <td><CopyableCode code="run_mode" /></td>
     <td><code>string</code></td>
     <td>The mode of the job run. (SCHEDULED, ON_DEMAND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the job run started.</td>
 </tr>
@@ -125,22 +125,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The domain ID of the job run. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of a job run.</td>
 </tr>
@@ -150,27 +150,27 @@ The following fields are returned by `SELECT` queries:
     <td>The error of a job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The job ID of a job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The job type of a job run. (LINEAGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The run ID of a job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runMode" /></td>
+    <td><CopyableCode code="run_mode" /></td>
     <td><code>string</code></td>
     <td>The run mode of a job run. (SCHEDULED, ON_DEMAND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of a job run.</td>
 </tr>
@@ -288,16 +288,16 @@ The details of the job run.
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
+created_at,
+created_by,
 details,
-domainId,
-endTime,
+domain_id,
+end_time,
 error,
-jobId,
-jobType,
-runMode,
-startTime,
+job_id,
+job_type,
+run_mode,
+start_time,
 status
 FROM aws.datazone.job_runs
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -312,16 +312,16 @@ Lists job runs.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-domainId,
-endTime,
+created_at,
+created_by,
+domain_id,
+end_time,
 error,
-jobId,
-jobType,
-runId,
-runMode,
-startTime,
+job_id,
+job_type,
+run_id,
+run_mode,
+start_time,
 status
 FROM aws.datazone.job_runs
 WHERE domain_identifier = '{{ domain_identifier }}' -- required

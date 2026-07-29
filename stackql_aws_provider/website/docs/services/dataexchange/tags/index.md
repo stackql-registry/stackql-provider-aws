@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A label that consists of a customer-defined key and an optional value.</td>
 </tr>
@@ -143,7 +143,7 @@ This operation lists the tags on the resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.dataexchange.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

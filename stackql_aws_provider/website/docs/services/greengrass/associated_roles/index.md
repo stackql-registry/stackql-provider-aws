@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedAt" /></td>
+    <td><CopyableCode code="associated_at" /></td>
     <td><code>string</code></td>
     <td>The time when the role was associated with the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role that is associated with the group.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves the role associated with a particular group.
 
 ```sql
 SELECT
-AssociatedAt,
-RoleArn
+associated_at,
+role_arn
 FROM aws.greengrass.associated_roles
 WHERE group_id = '{{ group_id }}' -- required
 AND region = '{{ region }}' -- required

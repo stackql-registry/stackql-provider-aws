@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>The policy rule. Although this is a list type, currently there must be only one rule, which contains a Strategy field and optionally a BytesPerHour field.</td>
 </tr>
@@ -131,7 +131,7 @@ This operation returns the current data retrieval policy for the account and reg
 
 ```sql
 SELECT
-Rules
+rules
 FROM aws.glacier.data_retrieval_policies
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required

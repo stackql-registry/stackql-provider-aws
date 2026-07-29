@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EarliestAllowedEndAt" /></td>
+    <td><CopyableCode code="earliest_allowed_end_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The earliest timestamp when the commitment can be ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the commitment was ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the commitment was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the minimum throughput billing commitment. (ENABLED, DISABLED, ENABLED_UNTIL_EARLIEST_ALLOWED_END)</td>
 </tr>
@@ -141,10 +141,10 @@ Describes the account-level settings for Amazon Kinesis Data Streams. This opera
 
 ```sql
 SELECT
-EarliestAllowedEndAt,
-EndedAt,
-StartedAt,
-Status
+earliest_allowed_end_at,
+ended_at,
+started_at,
+status
 FROM aws.kinesis.account_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -173,7 +173,7 @@ WHERE
 region = '{{ region }}' --required
 AND MinimumThroughputBillingCommitment = '{{ MinimumThroughputBillingCommitment }}' --required
 RETURNING
-MinimumThroughputBillingCommitment;
+minimum_throughput_billing_commitment;
 ```
 </TabItem>
 </Tabs>

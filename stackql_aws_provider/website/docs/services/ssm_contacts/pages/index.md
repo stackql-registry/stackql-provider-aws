@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the contact that was engaged. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The secure content of the message that was sent to the contact. Use this field for engagements to VOICE and EMAIL. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryTime" /></td>
+    <td><CopyableCode code="delivery_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the contact channel received the engagement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementArn" /></td>
+    <td><CopyableCode code="engagement_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the engagement that engaged the contact channel. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncidentId" /></td>
+    <td><CopyableCode code="incident_id" /></td>
     <td><code>string</code></td>
     <td>The ARN of the incident that engaged the contact channel. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PageArn" /></td>
+    <td><CopyableCode code="page_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the engagement to a contact channel. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicContent" /></td>
+    <td><CopyableCode code="public_content" /></td>
     <td><code>string</code></td>
     <td>The insecure content of the message that was sent to the contact. Use this field for engagements to SMS. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicSubject" /></td>
+    <td><CopyableCode code="public_subject" /></td>
     <td><code>string</code></td>
     <td>The insecure subject of the message that was sent to the contact. Use this field for engagements to SMS. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadTime" /></td>
+    <td><CopyableCode code="read_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the contact channel acknowledged the engagement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sender" /></td>
+    <td><CopyableCode code="sender" /></td>
     <td><code>string</code></td>
     <td>The user that started the engagement. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SentTime" /></td>
+    <td><CopyableCode code="sent_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the engagement was sent to the contact channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subject" /></td>
+    <td><CopyableCode code="subject" /></td>
     <td><code>string</code></td>
     <td>The secure subject of the message that was sent to the contact. Use this field for engagements to VOICE and EMAIL. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -181,18 +181,18 @@ Lists details of the engagement to a contact channel.
 
 ```sql
 SELECT
-ContactArn,
-Content,
-DeliveryTime,
-EngagementArn,
-IncidentId,
-PageArn,
-PublicContent,
-PublicSubject,
-ReadTime,
-Sender,
-SentTime,
-Subject
+contact_arn,
+content,
+delivery_time,
+engagement_arn,
+incident_id,
+page_arn,
+public_content,
+public_subject,
+read_time,
+sender,
+sent_time,
+subject
 FROM aws.ssm_contacts.pages
 WHERE region = '{{ region }}' -- required
 ;

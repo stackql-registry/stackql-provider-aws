@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe errors of the request. For example, an error is returned if you request recommendations for an unsupported volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to advance to the next page of volume recommendations. This value is null when there are no more pages of volume recommendations to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="volumeRecommendations" /></td>
+    <td><CopyableCode code="volume_recommendations" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe volume recommendations.</td>
 </tr>
@@ -137,8 +137,8 @@ Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations. Compute 
 ```sql
 SELECT
 errors,
-nextToken,
-volumeRecommendations
+next_token,
+volume_recommendations
 FROM aws.compute_optimizer.ebs_volume_recommendations
 WHERE region = '{{ region }}' -- required
 ;

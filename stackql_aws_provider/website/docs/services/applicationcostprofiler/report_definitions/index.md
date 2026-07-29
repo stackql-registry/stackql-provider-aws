@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp (milliseconds) when this report definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationS3Location" /></td>
+    <td><CopyableCode code="destination_s3_location" /></td>
     <td><code>object</code></td>
     <td>Amazon Simple Storage Service (Amazon S3) location where the report is uploaded.</td>
 </tr>
@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>Format of the generated report. (CSV, PARQUET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp (milliseconds) when this report definition was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportDescription" /></td>
+    <td><CopyableCode code="report_description" /></td>
     <td><code>string</code></td>
     <td>Description of the report. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportFrequency" /></td>
+    <td><CopyableCode code="report_frequency" /></td>
     <td><code>string</code></td>
     <td>Cadence used to generate the report. (MONTHLY, DAILY, ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>ID of the report retrieved. (pattern: &lt;code&gt;^&#91;0-9A-Za-z\.\-_&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp (milliseconds) when this report definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationS3Location" /></td>
+    <td><CopyableCode code="destination_s3_location" /></td>
     <td><code>object</code></td>
     <td>Represents the Amazon Simple Storage Service (Amazon S3) location where AWS Application Cost Profiler reports are generated and then written to.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>The format used for the generated reports. (CSV, PARQUET)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp (milliseconds) when this report definition was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportDescription" /></td>
+    <td><CopyableCode code="report_description" /></td>
     <td><code>string</code></td>
     <td>Description of the report (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportFrequency" /></td>
+    <td><CopyableCode code="report_frequency" /></td>
     <td><code>string</code></td>
     <td>The cadence at which the report is generated. (MONTHLY, DAILY, ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the report. (pattern: &lt;code&gt;^&#91;0-9A-Za-z\.\-_&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -243,13 +243,13 @@ Retrieves the definition of a report already configured in AWS Application Cost 
 
 ```sql
 SELECT
-createdAt,
-destinationS3Location,
+created_at,
+destination_s3_location,
 format_,
-lastUpdated,
-reportDescription,
-reportFrequency,
-reportId
+last_updated,
+report_description,
+report_frequency,
+report_id
 FROM aws.applicationcostprofiler.report_definitions
 WHERE report_id = '{{ report_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,13 +262,13 @@ Retrieves a list of all reports and their configurations for your AWS account. T
 
 ```sql
 SELECT
-createdAt,
-destinationS3Location,
+created_at,
+destination_s3_location,
 format_,
-lastUpdatedAt,
-reportDescription,
-reportFrequency,
-reportId
+last_updated_at,
+report_description,
+report_frequency,
+report_id
 FROM aws.applicationcostprofiler.report_definitions
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -306,7 +306,7 @@ AND reportFrequency = '{{ reportFrequency }}' --required
 AND format = '{{ format }}' --required
 AND destinationS3Location = '{{ destinationS3Location }}' --required
 RETURNING
-reportId;
+report_id;
 ```
 </TabItem>
 </Tabs>
@@ -340,7 +340,7 @@ AND reportFrequency = '{{ reportFrequency }}' --required
 AND format = '{{ format }}' --required
 AND destinationS3Location = '{{ destinationS3Location }}' --required
 RETURNING
-reportId;
+report_id;
 ```
 </TabItem>
 </Tabs>

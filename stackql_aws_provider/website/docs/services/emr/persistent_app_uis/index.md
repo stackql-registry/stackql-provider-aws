@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorId" /></td>
+    <td><CopyableCode code="author_id" /></td>
     <td><code>string</code></td>
     <td>The author ID for the persistent application user interface object. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time for the persistent application user interface object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the persistent application user interface object was last changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStateChangeReason" /></td>
+    <td><CopyableCode code="last_state_change_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the persistent application user interface object was last changed. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersistentAppUIId" /></td>
+    <td><CopyableCode code="persistent_app_ui_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the persistent application user interface object. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersistentAppUIStatus" /></td>
+    <td><CopyableCode code="persistent_app_ui_status" /></td>
     <td><code>string</code></td>
     <td>The status for the persistent application user interface object. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersistentAppUITypeList" /></td>
+    <td><CopyableCode code="persistent_app_ui_type_list" /></td>
     <td><code>array</code></td>
     <td>The type list for the persistent application user interface object. Valid values include SHS, YTS, or TEZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A collection of tags for the persistent application user interface object.</td>
 </tr>
@@ -161,14 +161,14 @@ Describes a persistent application user interface.
 
 ```sql
 SELECT
-AuthorId,
-CreationTime,
-LastModifiedTime,
-LastStateChangeReason,
-PersistentAppUIId,
-PersistentAppUIStatus,
-PersistentAppUITypeList,
-Tags
+author_id,
+creation_time,
+last_modified_time,
+last_state_change_reason,
+persistent_app_ui_id,
+persistent_app_ui_status,
+persistent_app_ui_type_list,
+tags
 FROM aws.emr.persistent_app_uis
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,8 +207,8 @@ SELECT
 '{{ ProfilerType }}',
 '{{ region }}'
 RETURNING
-PersistentAppUIId,
-RuntimeRoleEnabledCluster
+persistent_app_ui_id,
+runtime_role_enabled_cluster
 ;
 ```
 </TabItem>

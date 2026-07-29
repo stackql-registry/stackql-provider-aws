@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the virtual private cloud (VPC) owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrBlocks" /></td>
+    <td><CopyableCode code="cidr_blocks" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the VPC is first added to the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the VPC was last updated by the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC. (pattern: &lt;code&gt;^vpc-&#91;-a-f0-9&#93;&#123;8&#125;(&#91;-a-f0-9&#93;&#123;9&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcName" /></td>
+    <td><CopyableCode code="vpc_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VPC at the time it is added to the environment. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -164,13 +164,13 @@ Lists all Amazon Web Services Migration Hub Refactor Spaces service virtual priv
 
 ```sql
 SELECT
-AccountId,
-CidrBlocks,
-CreatedTime,
-EnvironmentId,
-LastUpdatedTime,
-VpcId,
-VpcName
+account_id,
+cidr_blocks,
+created_time,
+environment_id,
+last_updated_time,
+vpc_id,
+vpc_name
 FROM aws.migration_hub_refactor_spaces.environment_vpcs
 WHERE environment_identifier = '{{ environment_identifier }}' -- required
 AND region = '{{ region }}' -- required

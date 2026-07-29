@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the service-specific credential were created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the service specific credential expires. This field is only present for Bedrock API keys and CloudWatch Logs API keys that were created with an expiration period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCredentialAlias" /></td>
+    <td><CopyableCode code="service_credential_alias" /></td>
     <td><code>string</code></td>
     <td>For Bedrock API keys and CloudWatch Logs API keys, this is the public portion of the credential that includes the IAM user name and a suffix containing version and creation information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service associated with the service-specific credential.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceSpecificCredentialId" /></td>
+    <td><CopyableCode code="service_specific_credential_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the service-specific credential.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUserName" /></td>
+    <td><CopyableCode code="service_user_name" /></td>
     <td><code>string</code></td>
     <td>The generated user name for the service-specific credential.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the service-specific credential. Active means that the key is valid for API calls, while Inactive means it is not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IAM user associated with the service-specific credential.</td>
 </tr>
@@ -232,14 +232,14 @@ Returns information about the service-specific credentials associated with the s
 
 ```sql
 SELECT
-CreateDate,
-ExpirationDate,
-ServiceCredentialAlias,
-ServiceName,
-ServiceSpecificCredentialId,
-ServiceUserName,
-Status,
-UserName
+create_date,
+expiration_date,
+service_credential_alias,
+service_name,
+service_specific_credential_id,
+service_user_name,
+status,
+user_name
 FROM aws.iam.service_specific_credentials
 WHERE region = '{{ region }}' -- required
 AND UserName = '{{ UserName }}'
@@ -279,16 +279,16 @@ SELECT
 '{{ region }}',
 '{{ CredentialAgeDays }}'
 RETURNING
-CreateDate,
-ExpirationDate,
-ServiceCredentialAlias,
-ServiceCredentialSecret,
-ServiceName,
-ServicePassword,
-ServiceSpecificCredentialId,
-ServiceUserName,
-Status,
-UserName
+create_date,
+expiration_date,
+service_credential_alias,
+service_credential_secret,
+service_name,
+service_password,
+service_specific_credential_id,
+service_user_name,
+status,
+user_name
 ;
 ```
 </TabItem>

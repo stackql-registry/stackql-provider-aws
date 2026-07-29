@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationCidrBlock" /></td>
+    <td><CopyableCode code="destination_cidr_block" /></td>
     <td><code>string</code></td>
     <td>The destination CIDR block assigned to the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationPortRange" /></td>
+    <td><CopyableCode code="destination_port_range" /></td>
     <td><code>string</code></td>
     <td>The destination port range assigned to the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>integer</code></td>
     <td>The protocol assigned to the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleAction" /></td>
+    <td><CopyableCode code="rule_action" /></td>
     <td><code>string</code></td>
     <td>The action assigned to the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleNumber" /></td>
+    <td><CopyableCode code="rule_number" /></td>
     <td><code>integer</code></td>
     <td>The rule number of the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceCidrBlock" /></td>
+    <td><CopyableCode code="source_cidr_block" /></td>
     <td><code>string</code></td>
     <td>The source CIDR block assigned to the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourcePortRange" /></td>
+    <td><CopyableCode code="source_port_range" /></td>
     <td><code>string</code></td>
     <td>The source port range assigned to the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Tags on Traffic Mirroring filter rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficDirection" /></td>
+    <td><CopyableCode code="traffic_direction" /></td>
     <td><code>string</code></td>
     <td>The traffic direction assigned to the Traffic Mirror rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficMirrorFilterId" /></td>
+    <td><CopyableCode code="traffic_mirror_filter_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Traffic Mirror filter that the rule is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficMirrorFilterRuleId" /></td>
+    <td><CopyableCode code="traffic_mirror_filter_rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Traffic Mirror rule.</td>
 </tr>
@@ -320,18 +320,18 @@ Describe traffic mirror filters that determine the traffic that is mirrored.
 
 ```sql
 SELECT
-Description,
-DestinationCidrBlock,
-DestinationPortRange,
-Protocol,
-RuleAction,
-RuleNumber,
-SourceCidrBlock,
-SourcePortRange,
-Tags,
-TrafficDirection,
-TrafficMirrorFilterId,
-TrafficMirrorFilterRuleId
+description,
+destination_cidr_block,
+destination_port_range,
+protocol,
+rule_action,
+rule_number,
+source_cidr_block,
+source_port_range,
+tags,
+traffic_direction,
+traffic_mirror_filter_id,
+traffic_mirror_filter_rule_id
 FROM aws.ec2.traffic_mirror_filter_rules
 WHERE region = '{{ region }}' -- required
 AND TrafficMirrorFilterRuleId = '{{ TrafficMirrorFilterRuleId }}'
@@ -392,18 +392,18 @@ SELECT
 '{{ ClientToken }}',
 '{{ TagSpecification }}'
 RETURNING
-Description,
-DestinationCidrBlock,
-DestinationPortRange,
-Protocol,
-RuleAction,
-RuleNumber,
-SourceCidrBlock,
-SourcePortRange,
-Tags,
-TrafficDirection,
-TrafficMirrorFilterId,
-TrafficMirrorFilterRuleId
+description,
+destination_cidr_block,
+destination_port_range,
+protocol,
+rule_action,
+rule_number,
+source_cidr_block,
+source_port_range,
+tags,
+traffic_direction,
+traffic_mirror_filter_id,
+traffic_mirror_filter_rule_id
 ;
 ```
 </TabItem>
@@ -498,18 +498,18 @@ AND Description = '{{ Description}}'
 AND RemoveField = '{{ RemoveField}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-Description,
-DestinationCidrBlock,
-DestinationPortRange,
-Protocol,
-RuleAction,
-RuleNumber,
-SourceCidrBlock,
-SourcePortRange,
-Tags,
-TrafficDirection,
-TrafficMirrorFilterId,
-TrafficMirrorFilterRuleId;
+description,
+destination_cidr_block,
+destination_port_range,
+protocol,
+rule_action,
+rule_number,
+source_cidr_block,
+source_port_range,
+tags,
+traffic_direction,
+traffic_mirror_filter_id,
+traffic_mirror_filter_rule_id;
 ```
 </TabItem>
 </Tabs>

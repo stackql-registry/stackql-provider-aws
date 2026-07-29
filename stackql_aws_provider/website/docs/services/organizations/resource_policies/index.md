@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The policy text of the resource policy. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePolicySummary" /></td>
+    <td><CopyableCode code="resource_policy_summary" /></td>
     <td><code>object</code></td>
     <td>A structure that contains resource policy ID and Amazon Resource Name (ARN).</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves information about a resource policy. You can only call this operation 
 
 ```sql
 SELECT
-Content,
-ResourcePolicySummary
+content,
+resource_policy_summary
 FROM aws.organizations.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,7 +169,7 @@ WHERE
 region = '{{ region }}' --required
 AND Content = '{{ Content }}' --required
 RETURNING
-ResourcePolicy;
+resource_policy;
 ```
 </TabItem>
 </Tabs>

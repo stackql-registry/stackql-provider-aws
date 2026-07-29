@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MatchPredicates" /></td>
+    <td><CopyableCode code="match_predicates" /></td>
     <td><code>array</code></td>
     <td>The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or SqlInjectionMatchSet object that you want to include in a RateBasedRule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description for the metrics for a RateBasedRule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the RateBasedRule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description for a RateBasedRule. You can't change the name of a RateBasedRule after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RateKey" /></td>
+    <td><CopyableCode code="rate_key" /></td>
     <td><code>string</code></td>
     <td>The field that AWS WAF uses to determine if requests are likely arriving from single source and thus subject to rate monitoring. The only valid value for RateKey is IP. IP indicates that requests arriving from the same IP address are subject to the RateLimit that is specified in the RateBasedRule. (IP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RateLimit" /></td>
+    <td><CopyableCode code="rate_limit" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. If the number of requests exceeds the RateLimit and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a RateBasedRule. You use RuleId to get more information about a RateBasedRule (see GetRateBasedRule), update a RateBasedRule (see UpdateRateBasedRule), insert a RateBasedRule into a WebACL or delete one from a WebACL (see UpdateWebACL), or delete a RateBasedRule from AWS WAF (see DeleteRateBasedRule). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If you have more Rules than the number that you specified for Limit in the request, the response includes a NextMarker value. To list more Rules, submit another ListRateBasedRules request, and specify the NextMarker value from the response in the NextMarker value in the next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>An array of RuleSummary objects.</td>
 </tr>
@@ -198,12 +198,12 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-MatchPredicates,
-MetricName,
-Name,
-RateKey,
-RateLimit,
-RuleId
+match_predicates,
+metric_name,
+name,
+rate_key,
+rate_limit,
+rule_id
 FROM aws.waf_regional.rate_based_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -215,8 +215,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-NextMarker,
-Rules
+next_marker,
+rules
 FROM aws.waf_regional.rate_based_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -257,8 +257,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ChangeToken,
-Rule
+change_token,
+rule
 ;
 ```
 </TabItem>
@@ -327,7 +327,7 @@ AND ChangeToken = '{{ ChangeToken }}' --required
 AND Updates = '{{ Updates }}' --required
 AND RateLimit = '{{ RateLimit }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

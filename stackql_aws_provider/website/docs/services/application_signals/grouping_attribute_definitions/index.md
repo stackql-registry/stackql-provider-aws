@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupingAttributeDefinitions" /></td>
+    <td><CopyableCode code="grouping_attribute_definitions" /></td>
     <td><code>array</code></td>
     <td>An array of structures, where each structure contains information about one grouping attribute definition, including the grouping name, source keys, and default values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Include this value in your next use of this API to get the next set of grouping attribute definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the grouping configuration was last updated. When used in a raw HTTP Query API, it is formatted as epoch time in seconds.</td>
 </tr>
@@ -144,9 +144,9 @@ Returns the current grouping configuration for this account, including all custo
 
 ```sql
 SELECT
-GroupingAttributeDefinitions,
-NextToken,
-UpdatedAt
+grouping_attribute_definitions,
+next_token,
+updated_at
 FROM aws.application_signals.grouping_attribute_definitions
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

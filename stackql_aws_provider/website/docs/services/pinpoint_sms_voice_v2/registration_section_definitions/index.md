@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisplayHints" /></td>
+    <td><CopyableCode code="display_hints" /></td>
     <td><code>object</code></td>
     <td>The path to the section of the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SectionPath" /></td>
+    <td><CopyableCode code="section_path" /></td>
     <td><code>string</code></td>
     <td>The path to the section of the registration. (pattern: &lt;code&gt;&#91;A-Za-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the specified registration section definitions. You can use DescribeRe
 
 ```sql
 SELECT
-DisplayHints,
-SectionPath
+display_hints,
+section_path
 FROM aws.pinpoint_sms_voice_v2.registration_section_definitions
 WHERE region = '{{ region }}' -- required
 ;

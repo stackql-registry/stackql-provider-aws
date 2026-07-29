@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Mapping" /></td>
+    <td><CopyableCode code="mapping" /></td>
     <td><code>array</code></td>
     <td>A list of mappings to the specified targets.</td>
 </tr>
@@ -119,7 +119,7 @@ Creates mappings.
 
 ```sql
 SELECT
-Mapping
+mapping
 FROM aws.glue.mappings
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time (in Unix time) of the data deletion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataDeletionJobArn" /></td>
+    <td><CopyableCode code="data_deletion_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data deletion job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>Describes the data source that contains the data to upload to a dataset, or the list of records to delete from Amazon Personalize.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset group the job deletes records from. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a data deletion job fails, provides the reason why.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the data deletion job. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) the data deletion job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numDeleted" /></td>
+    <td><CopyableCode code="num_deleted" /></td>
     <td><code>integer</code></td>
     <td>The number of records deleted by a COMPLETED job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that has permissions to read from the Amazon S3 data source. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataDeletionJobs" /></td>
+    <td><CopyableCode code="data_deletion_jobs" /></td>
     <td><code>array</code></td>
     <td>The list of data deletion jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token for getting the next set of data deletion jobs (if they exist). (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,1500&#125;&lt;/code&gt;)</td>
 </tr>
@@ -204,15 +204,15 @@ Describes the data deletion job created by CreateDataDeletionJob, including the 
 
 ```sql
 SELECT
-creationDateTime,
-dataDeletionJobArn,
-dataSource,
-datasetGroupArn,
-failureReason,
-jobName,
-lastUpdatedDateTime,
-numDeleted,
-roleArn,
+creation_date_time,
+data_deletion_job_arn,
+data_source,
+dataset_group_arn,
+failure_reason,
+job_name,
+last_updated_date_time,
+num_deleted,
+role_arn,
 status
 FROM aws.personalize.data_deletion_jobs
 WHERE region = '{{ region }}' -- required
@@ -225,8 +225,8 @@ Returns a list of data deletion jobs for a dataset group ordered by creation tim
 
 ```sql
 SELECT
-dataDeletionJobs,
-nextToken
+data_deletion_jobs,
+next_token
 FROM aws.personalize.data_deletion_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,7 +265,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-dataDeletionJobArn
+data_deletion_job_arn
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="countsByGroup" /></td>
+    <td><CopyableCode code="counts_by_group" /></td>
     <td><code>array</code></td>
     <td>An array of objects, one for each group of findings that matches the filter criteria specified in the request.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves (queries) aggregated statistical data about findings.
 
 ```sql
 SELECT
-countsByGroup
+counts_by_group
 FROM aws.macie2.finding_statistics
 WHERE region = '{{ region }}' -- required
 ;

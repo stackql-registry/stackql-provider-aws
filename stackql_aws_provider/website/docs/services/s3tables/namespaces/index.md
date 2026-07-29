@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the namespace was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that created the namespace. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceId" /></td>
+    <td><CopyableCode code="namespace_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that owns the namespcace. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBucketId" /></td>
+    <td><CopyableCode code="table_bucket_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the table bucket containing this namespace.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the namespace was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that created the namespace. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceId" /></td>
+    <td><CopyableCode code="namespace_id" /></td>
     <td><code>string</code></td>
     <td>The system-assigned unique identifier for the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that owns the namespace. (pattern: &lt;code&gt;&#91;0-9&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableBucketId" /></td>
+    <td><CopyableCode code="table_bucket_id" /></td>
     <td><code>string</code></td>
     <td>The system-assigned unique identifier for the table bucket that contains this namespace.</td>
 </tr>
@@ -236,12 +236,12 @@ Gets details about a namespace. For more information, see Table namespaces in th
 
 ```sql
 SELECT
-createdAt,
-createdBy,
+created_at,
+created_by,
 namespace,
-namespaceId,
-ownerAccountId,
-tableBucketId
+namespace_id,
+owner_account_id,
+table_bucket_id
 FROM aws.s3tables.namespaces
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -255,12 +255,12 @@ Lists the namespaces within a table bucket. For more information, see Table name
 
 ```sql
 SELECT
-createdAt,
-createdBy,
+created_at,
+created_by,
 namespace,
-namespaceId,
-ownerAccountId,
-tableBucketId
+namespace_id,
+owner_account_id,
+table_bucket_id
 FROM aws.s3tables.namespaces
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -298,7 +298,7 @@ SELECT
 '{{ region }}'
 RETURNING
 namespace,
-tableBucketARN
+table_bucket_arn
 ;
 ```
 </TabItem>

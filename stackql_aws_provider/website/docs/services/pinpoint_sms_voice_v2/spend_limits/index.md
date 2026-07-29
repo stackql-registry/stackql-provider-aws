@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EnforcedLimit" /></td>
+    <td><CopyableCode code="enforced_limit" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum amount of money, in US dollars, that you want to be able to spend sending messages each month. This value has to be less than or equal to the amount in MaxLimit. To use this custom limit, Overridden must be set to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxLimit" /></td>
+    <td><CopyableCode code="max_limit" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum amount of money that you are able to spend to send messages each month, in US dollars.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the SpendLimit. (TEXT_MESSAGE_MONTHLY_SPEND_LIMIT, VOICE_MESSAGE_MONTHLY_SPEND_LIMIT, MEDIA_MESSAGE_MONTHLY_SPEND_LIMIT, NOTIFY_MESSAGE_MONTHLY_SPEND_LIMIT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Overridden" /></td>
+    <td><CopyableCode code="overridden" /></td>
     <td><code>boolean</code></td>
     <td>When set to True, the value that has been specified in the EnforcedLimit is used to determine the maximum amount in US dollars that can be spent to send messages each month, in US dollars.</td>
 </tr>
@@ -134,10 +134,10 @@ Describes the current monthly spend limits for sending voice and text messages. 
 
 ```sql
 SELECT
-EnforcedLimit,
-MaxLimit,
-Name,
-Overridden
+enforced_limit,
+max_limit,
+name,
+overridden
 FROM aws.pinpoint_sms_voice_v2.spend_limits
 WHERE region = '{{ region }}' -- required
 ;

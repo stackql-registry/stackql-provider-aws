@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionDefinitionId" /></td>
+    <td><CopyableCode code="action_definition_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the action definition. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the action. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolveTo" /></td>
+    <td><CopyableCode code="resolve_to" /></td>
     <td><code>object</code></td>
     <td>The detailed resource this execution summary resolves to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResource" /></td>
+    <td><CopyableCode code="target_resource" /></td>
     <td><code>object</code></td>
     <td>The resource the action will be taken on. This can include asset-based resources and computation model resources.</td>
 </tr>
@@ -85,32 +85,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionDefinitionId" /></td>
+    <td><CopyableCode code="action_definition_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the action definition. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the action. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionPayload" /></td>
+    <td><CopyableCode code="action_payload" /></td>
     <td><code>object</code></td>
     <td>The JSON payload of the action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionTime" /></td>
+    <td><CopyableCode code="execution_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the action was executed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolveTo" /></td>
+    <td><CopyableCode code="resolve_to" /></td>
     <td><code>object</code></td>
     <td>The detailed resource this action resolves to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetResource" /></td>
+    <td><CopyableCode code="target_resource" /></td>
     <td><code>object</code></td>
     <td>The resource the action will be taken on.</td>
 </tr>
@@ -222,10 +222,10 @@ Retrieves a paginated list of actions for a specific target resource.
 
 ```sql
 SELECT
-actionDefinitionId,
-actionId,
-resolveTo,
-targetResource
+action_definition_id,
+action_id,
+resolve_to,
+target_resource
 FROM aws.iotsitewise.actions
 WHERE targetResourceType = '{{ targetResourceType }}' -- required
 AND targetResourceId = '{{ targetResourceId }}' -- required
@@ -243,12 +243,12 @@ Retrieves information about an action.
 
 ```sql
 SELECT
-actionDefinitionId,
-actionId,
-actionPayload,
-executionTime,
-resolveTo,
-targetResource
+action_definition_id,
+action_id,
+action_payload,
+execution_time,
+resolve_to,
+target_resource
 FROM aws.iotsitewise.actions
 WHERE action_id = '{{ action_id }}' -- required
 AND region = '{{ region }}' -- required

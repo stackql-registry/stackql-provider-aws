@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateIdentifier" /></td>
+    <td><CopyableCode code="certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique key that identifies a certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateType" /></td>
+    <td><CopyableCode code="certificate_type" /></td>
     <td><code>string</code></td>
     <td>The type of the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOverride" /></td>
+    <td><CopyableCode code="customer_override" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether there is an override for the default certificate identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOverrideValidTill" /></td>
+    <td><CopyableCode code="customer_override_valid_till" /></td>
     <td><code>string</code></td>
     <td>If there is an override for the default certificate identifier, when the override expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Thumbprint" /></td>
+    <td><CopyableCode code="thumbprint" /></td>
     <td><code>string</code></td>
     <td>The thumbprint of the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidFrom" /></td>
+    <td><CopyableCode code="valid_from" /></td>
     <td><code>string</code></td>
     <td>The starting date from which the certificate is valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidTill" /></td>
+    <td><CopyableCode code="valid_till" /></td>
     <td><code>string</code></td>
     <td>The final date that the certificate continues to be valid.</td>
 </tr>
@@ -186,14 +186,14 @@ Lists the set of certificate authority (CA) certificates provided by Amazon RDS 
 
 ```sql
 SELECT
-CertificateArn,
-CertificateIdentifier,
-CertificateType,
-CustomerOverride,
-CustomerOverrideValidTill,
-Thumbprint,
-ValidFrom,
-ValidTill
+certificate_arn,
+certificate_identifier,
+certificate_type,
+customer_override,
+customer_override_valid_till,
+thumbprint,
+valid_from,
+valid_till
 FROM aws.rds.certificates
 WHERE region = '{{ region }}' -- required
 AND CertificateIdentifier = '{{ CertificateIdentifier }}'
@@ -227,14 +227,14 @@ region = '{{ region }}' --required
 AND CertificateIdentifier = '{{ CertificateIdentifier}}'
 AND RemoveCustomerOverride = {{ RemoveCustomerOverride}}
 RETURNING
-CertificateArn,
-CertificateIdentifier,
-CertificateType,
-CustomerOverride,
-CustomerOverrideValidTill,
-Thumbprint,
-ValidFrom,
-ValidTill;
+certificate_arn,
+certificate_identifier,
+certificate_type,
+customer_override,
+customer_override_valid_till,
+thumbprint,
+valid_from,
+valid_till;
 ```
 </TabItem>
 </Tabs>

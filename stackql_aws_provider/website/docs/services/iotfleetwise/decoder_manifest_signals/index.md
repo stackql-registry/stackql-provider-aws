@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="canSignal" /></td>
+    <td><CopyableCode code="can_signal" /></td>
     <td><code>object</code></td>
     <td>Information about signal decoder using the Controller Area Network (CAN) protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDecodingSignal" /></td>
+    <td><CopyableCode code="custom_decoding_signal" /></td>
     <td><code>object</code></td>
     <td>Information about a custom signal decoder. Access to certain Amazon Web Services IoT FleetWise features is currently gated. For more information, see Amazon Web Services Region and feature availability in the Amazon Web Services IoT FleetWise Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fullyQualifiedName" /></td>
+    <td><CopyableCode code="fully_qualified_name" /></td>
     <td><code>string</code></td>
     <td>The fully qualified name of a signal decoder as defined in a vehicle model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interfaceId" /></td>
+    <td><CopyableCode code="interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a network interface that specifies what network protocol a vehicle follows. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9_.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageSignal" /></td>
+    <td><CopyableCode code="message_signal" /></td>
     <td><code>object</code></td>
     <td>The decoding information for a specific message which supports higher order data types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="obdSignal" /></td>
+    <td><CopyableCode code="obd_signal" /></td>
     <td><code>object</code></td>
     <td>Information about signal decoder using the on-board diagnostic (OBD) II protocol.</td>
 </tr>
@@ -149,12 +149,12 @@ A list of information about signal decoders specified in a decoder manifest. Thi
 
 ```sql
 SELECT
-canSignal,
-customDecodingSignal,
-fullyQualifiedName,
-interfaceId,
-messageSignal,
-obdSignal,
+can_signal,
+custom_decoding_signal,
+fully_qualified_name,
+interface_id,
+message_signal,
+obd_signal,
 type_
 FROM aws.iotfleetwise.decoder_manifest_signals
 WHERE region = '{{ region }}' -- required

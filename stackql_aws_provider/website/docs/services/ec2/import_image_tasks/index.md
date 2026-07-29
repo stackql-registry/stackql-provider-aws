@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Architecture" /></td>
+    <td><CopyableCode code="architecture" /></td>
     <td><code>string</code></td>
     <td>The architecture of the virtual machine. Valid values: i386 | x86_64 | arm64</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BootMode" /></td>
+    <td><CopyableCode code="boot_mode" /></td>
     <td><code>string</code></td>
     <td>The boot mode of the virtual machine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the import task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the image is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hypervisor" /></td>
+    <td><CopyableCode code="hypervisor" /></td>
     <td><code>string</code></td>
     <td>The target hypervisor for the import task. Valid values: xen</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Machine Image (AMI) of the imported virtual machine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportTaskId" /></td>
+    <td><CopyableCode code="import_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the import image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the KMS key that was used to create the encrypted image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseSpecifications" /></td>
+    <td><CopyableCode code="license_specifications" /></td>
     <td><code>string</code></td>
     <td>The ARNs of the license configurations that are associated with the import image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseType" /></td>
+    <td><CopyableCode code="license_type" /></td>
     <td><code>string</code></td>
     <td>The license type of the virtual machine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The description string for the import image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>string</code></td>
     <td>The percentage of progress of the import image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotDetails" /></td>
+    <td><CopyableCode code="snapshot_details" /></td>
     <td><code>string</code></td>
     <td>Information about the snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A brief status for the import image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A descriptive status message for the import image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the import image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageOperation" /></td>
+    <td><CopyableCode code="usage_operation" /></td>
     <td><code>string</code></td>
     <td>The usage operation value.</td>
 </tr>
@@ -224,23 +224,23 @@ Displays details about an import virtual machine or import snapshot tasks that a
 
 ```sql
 SELECT
-Architecture,
-BootMode,
-Description,
-Encrypted,
-Hypervisor,
-ImageId,
-ImportTaskId,
-KmsKeyId,
-LicenseSpecifications,
-LicenseType,
-Platform,
-Progress,
-SnapshotDetails,
-Status,
-StatusMessage,
-Tags,
-UsageOperation
+architecture,
+boot_mode,
+description,
+encrypted,
+hypervisor,
+image_id,
+import_task_id,
+kms_key_id,
+license_specifications,
+license_type,
+platform,
+progress,
+snapshot_details,
+status,
+status_message,
+tags,
+usage_operation
 FROM aws.ec2.import_image_tasks
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

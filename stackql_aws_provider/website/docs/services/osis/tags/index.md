@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with the given pipeline.</td>
 </tr>
@@ -138,7 +138,7 @@ Lists all resource tags associated with an OpenSearch Ingestion pipeline. For mo
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.osis.tags
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

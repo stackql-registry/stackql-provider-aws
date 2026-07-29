@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the resource.</td>
 </tr>
@@ -144,8 +144,8 @@ Gets information about the resources that are associated with the specified mana
 
 ```sql
 SELECT
-ResourceId,
-ResourceOwner
+resource_id,
+resource_owner
 FROM aws.ec2.managed_prefix_list_associations
 WHERE PrefixListId = '{{ PrefixListId }}' -- required
 AND region = '{{ region }}' -- required

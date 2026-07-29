@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationDefinitions" /></td>
+    <td><CopyableCode code="configuration_definitions" /></td>
     <td><code>array</code></td>
     <td>The configuration definitions association with the configuration manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The datetime stamp when the configuration manager was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The datetime stamp when the configuration manager was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagerArn" /></td>
+    <td><CopyableCode code="manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the configuration manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusSummaries" /></td>
+    <td><CopyableCode code="status_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of the state of the configuration manager. This includes deployment statuses, association statuses, drift statuses, health checks, and more.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Key-value pairs of metadata to assign to the configuration manager.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationDefinitionSummaries" /></td>
+    <td><CopyableCode code="configuration_definition_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of the Quick Setup configuration definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagerArn" /></td>
+    <td><CopyableCode code="manager_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Quick Setup configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusSummaries" /></td>
+    <td><CopyableCode code="status_summaries" /></td>
     <td><code>array</code></td>
     <td>Summaries of the state of the configuration manager. These summaries include an aggregate of the statuses from the configuration definition associated with the configuration manager. This includes deployment statuses, association statuses, drift statuses, health checks, and more.</td>
 </tr>
@@ -228,14 +228,14 @@ Returns a configuration manager.
 
 ```sql
 SELECT
-ConfigurationDefinitions,
-CreatedAt,
-Description,
-LastModifiedAt,
-ManagerArn,
-Name,
-StatusSummaries,
-Tags
+configuration_definitions,
+created_at,
+description,
+last_modified_at,
+manager_arn,
+name,
+status_summaries,
+tags
 FROM aws.ssm_quicksetup.configuration_managers
 WHERE manager_arn = '{{ manager_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -248,11 +248,11 @@ Returns Quick Setup configuration managers.
 
 ```sql
 SELECT
-ConfigurationDefinitionSummaries,
-Description,
-ManagerArn,
-Name,
-StatusSummaries
+configuration_definition_summaries,
+description,
+manager_arn,
+name,
+status_summaries
 FROM aws.ssm_quicksetup.configuration_managers
 WHERE region = '{{ region }}' -- required
 ;
@@ -289,7 +289,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ManagerArn
+manager_arn
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyText" /></td>
+    <td><CopyableCode code="policy_text" /></td>
     <td><code>string</code></td>
     <td>The JSON text of the permissions policy for a registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The registry ID associated with the request. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves the permissions policy for a registry.
 
 ```sql
 SELECT
-policyText,
-registryId
+policy_text,
+registry_id
 FROM aws.ecr.registry_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,8 +168,8 @@ WHERE
 region = '{{ region }}' --required
 AND policyText = '{{ policyText }}' --required
 RETURNING
-policyText,
-registryId;
+policy_text,
+registry_id;
 ```
 </TabItem>
 </Tabs>

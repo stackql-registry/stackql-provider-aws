@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="itemList" /></td>
+    <td><CopyableCode code="item_list" /></td>
     <td><code>array</code></td>
     <td>A list of recommendations sorted in descending order by prediction score. There can be a maximum of 500 items in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recommendation.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of recommended items. For campaigns, the campaign's Amazon Resour
 
 ```sql
 SELECT
-itemList,
-recommendationId
+item_list,
+recommendation_id
 FROM aws.personalize_runtime.recommendations
 WHERE region = '{{ region }}' -- required
 ;

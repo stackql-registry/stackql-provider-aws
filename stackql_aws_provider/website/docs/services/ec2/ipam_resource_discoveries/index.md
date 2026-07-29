@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The resource discovery description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryArn" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_arn" /></td>
     <td><code>string</code></td>
     <td>The resource discovery Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryId" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_id" /></td>
     <td><code>string</code></td>
     <td>The resource discovery ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryRegion" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_region" /></td>
     <td><code>string</code></td>
     <td>The resource discovery Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Defines if the resource discovery is the default. The default resource discovery is the resource discovery automatically created when you create an IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingRegions" /></td>
+    <td><CopyableCode code="operating_regions" /></td>
     <td><code>string</code></td>
     <td>The operating Regions for the resource discovery. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitExclusions" /></td>
+    <td><CopyableCode code="organizational_unit_exclusions" /></td>
     <td><code>string</code></td>
     <td>If your IPAM is integrated with Amazon Web Services Organizations and you add an organizational unit (OU) exclusion, IPAM will not manage the IP addresses in accounts in that OU exclusion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The lifecycle state of the resource discovery. create-in-progress - Resource discovery is being created. create-complete - Resource discovery creation is complete. create-failed - Resource discovery creation has failed. modify-in-progress - Resource discovery is being modified. modify-complete - Resource discovery modification is complete. modify-failed - Resource discovery modification has failed. delete-in-progress - Resource discovery is being deleted. delete-complete - Resource discovery deletion is complete. delete-failed - Resource discovery deletion has failed. isolate-in-progress - Amazon Web Services account that created the resource discovery has been removed and the resource discovery is being isolated. isolate-complete - Resource discovery isolation is complete. restore-in-progress - Amazon Web Services account that created the resource discovery and was isolated has been restored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your Amazon Web Services costs.</td>
 </tr>
@@ -279,16 +279,16 @@ Describes IPAM resource discoveries. A resource discovery is an IPAM component t
 
 ```sql
 SELECT
-Description,
-IpamResourceDiscoveryArn,
-IpamResourceDiscoveryId,
-IpamResourceDiscoveryRegion,
-IsDefault,
-OperatingRegions,
-OrganizationalUnitExclusions,
-OwnerId,
-State,
-Tags
+description,
+ipam_resource_discovery_arn,
+ipam_resource_discovery_id,
+ipam_resource_discovery_region,
+is_default,
+operating_regions,
+organizational_unit_exclusions,
+owner_id,
+state,
+tags
 FROM aws.ec2.ipam_resource_discoveries
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -332,16 +332,16 @@ SELECT
 '{{ TagSpecification }}',
 '{{ ClientToken }}'
 RETURNING
-Description,
-IpamResourceDiscoveryArn,
-IpamResourceDiscoveryId,
-IpamResourceDiscoveryRegion,
-IsDefault,
-OperatingRegions,
-OrganizationalUnitExclusions,
-OwnerId,
-State,
-Tags
+description,
+ipam_resource_discovery_arn,
+ipam_resource_discovery_id,
+ipam_resource_discovery_region,
+is_default,
+operating_regions,
+organizational_unit_exclusions,
+owner_id,
+state,
+tags
 ;
 ```
 </TabItem>
@@ -405,17 +405,17 @@ AND DryRun = {{ DryRun}}
 AND TagSpecification = '{{ TagSpecification}}'
 AND ClientToken = '{{ ClientToken}}'
 RETURNING
-IpamArn,
-IpamId,
-IpamRegion,
-IpamResourceDiscoveryAssociationArn,
-IpamResourceDiscoveryAssociationId,
-IpamResourceDiscoveryId,
-IsDefault,
-OwnerId,
-ResourceDiscoveryStatus,
-State,
-Tags;
+ipam_arn,
+ipam_id,
+ipam_region,
+ipam_resource_discovery_association_arn,
+ipam_resource_discovery_association_id,
+ipam_resource_discovery_id,
+is_default,
+owner_id,
+resource_discovery_status,
+state,
+tags;
 ```
 </TabItem>
 <TabItem value="disassociate_ipam_resource_discovery">
@@ -431,17 +431,17 @@ IpamResourceDiscoveryAssociationId = '{{ IpamResourceDiscoveryAssociationId }}' 
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-IpamArn,
-IpamId,
-IpamRegion,
-IpamResourceDiscoveryAssociationArn,
-IpamResourceDiscoveryAssociationId,
-IpamResourceDiscoveryId,
-IsDefault,
-OwnerId,
-ResourceDiscoveryStatus,
-State,
-Tags;
+ipam_arn,
+ipam_id,
+ipam_region,
+ipam_resource_discovery_association_arn,
+ipam_resource_discovery_association_id,
+ipam_resource_discovery_id,
+is_default,
+owner_id,
+resource_discovery_status,
+state,
+tags;
 ```
 </TabItem>
 <TabItem value="modify_ipam_resource_discovery">
@@ -462,16 +462,16 @@ AND RemoveOperatingRegion = '{{ RemoveOperatingRegion}}'
 AND AddOrganizationalUnitExclusion = '{{ AddOrganizationalUnitExclusion}}'
 AND RemoveOrganizationalUnitExclusion = '{{ RemoveOrganizationalUnitExclusion}}'
 RETURNING
-Description,
-IpamResourceDiscoveryArn,
-IpamResourceDiscoveryId,
-IpamResourceDiscoveryRegion,
-IsDefault,
-OperatingRegions,
-OrganizationalUnitExclusions,
-OwnerId,
-State,
-Tags;
+description,
+ipam_resource_discovery_arn,
+ipam_resource_discovery_id,
+ipam_resource_discovery_region,
+is_default,
+operating_regions,
+organizational_unit_exclusions,
+owner_id,
+state,
+tags;
 ```
 </TabItem>
 </Tabs>

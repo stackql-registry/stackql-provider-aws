@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MembershipDatasources" /></td>
+    <td><CopyableCode code="membership_datasources" /></td>
     <td><code>array</code></td>
     <td>Details on the data source package history for an member of the behavior graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedGraphs" /></td>
+    <td><CopyableCode code="unprocessed_graphs" /></td>
     <td><code>array</code></td>
     <td>Graphs that data source package information could not be retrieved for.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets information on the data source package history for an account.
 
 ```sql
 SELECT
-MembershipDatasources,
-UnprocessedGraphs
+membership_datasources,
+unprocessed_graphs
 FROM aws.detective.membership_datasources
 WHERE region = '{{ region }}' -- required
 ;

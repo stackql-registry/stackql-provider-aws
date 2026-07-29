@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Resource" /></td>
+    <td><CopyableCode code="resource" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource (for example, a custom action). (pattern: &lt;code&gt;arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Lists resources associated with a channel configuration.
 
 ```sql
 SELECT
-Resource
+resource
 FROM aws.chatbot.associations
 WHERE region = '{{ region }}' -- required
 ;

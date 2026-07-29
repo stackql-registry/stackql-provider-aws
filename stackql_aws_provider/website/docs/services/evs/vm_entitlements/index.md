@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectorId" /></td>
+    <td><CopyableCode code="connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the connector associated with the entitlement. (pattern: &lt;code&gt;(cnctr-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the environment. (pattern: &lt;code&gt;(env-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDetail" /></td>
+    <td><CopyableCode code="error_detail" /></td>
     <td><code>object</code></td>
     <td>The error details associated with the entitlement, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSyncedAt" /></td>
+    <td><CopyableCode code="last_synced_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the entitlement was last synced.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the entitlement started.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the entitlement. (CREATING, CREATED, DELETED, AT_RISK, ENTITLEMENT_REMOVED, CREATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stoppedAt" /></td>
+    <td><CopyableCode code="stopped_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the entitlement stopped.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of entitlement. (WINDOWS_SERVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vmId" /></td>
+    <td><CopyableCode code="vm_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the virtual machine. (pattern: &lt;code&gt;vm-&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vmName" /></td>
+    <td><CopyableCode code="vm_name" /></td>
     <td><code>string</code></td>
     <td>The name of the virtual machine.</td>
 </tr>
@@ -164,16 +164,16 @@ Lists the Windows Server License entitlements for virtual machines in an Amazon 
 
 ```sql
 SELECT
-connectorId,
-environmentId,
-errorDetail,
-lastSyncedAt,
-startedAt,
+connector_id,
+environment_id,
+error_detail,
+last_synced_at,
+started_at,
 status,
-stoppedAt,
+stopped_at,
 type_,
-vmId,
-vmName
+vm_id,
+vm_name
 FROM aws.evs.vm_entitlements
 WHERE region = '{{ region }}' -- required
 ;

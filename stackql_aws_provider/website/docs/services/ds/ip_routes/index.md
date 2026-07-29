@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddedDateTime" /></td>
+    <td><CopyableCode code="added_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the address block was added to the directory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrIp" /></td>
+    <td><CopyableCode code="cidr_ip" /></td>
     <td><code>string</code></td>
     <td>IP address block in the IpRoute. (pattern: &lt;code&gt;^((&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#123;2&#125;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)\.)&#123;3&#125;(&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#123;2&#125;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)(\/(&#91;1-9&#93;|&#91;1-2&#93;&#91;0-9&#93;|3&#91;0-2&#93;))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrIpv6" /></td>
+    <td><CopyableCode code="cidr_ipv_6" /></td>
     <td><code>string</code></td>
     <td>IPv6 address block in the IpRoute. (pattern: &lt;code&gt;^(((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;7&#125;&#91;0-9a-fA-F&#93;&#123;1,4&#125;)|((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,7&#125;:)|((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,6&#125;:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)|((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,5&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,2&#125;)|((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,4&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,3&#125;)|((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,3&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,4&#125;)|((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,2&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,5&#125;)|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:((:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,6&#125;))|(:((:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,7&#125;|:)))\/(12&#91;0-8&#93;|1&#91;01&#93;&#91;0-9&#93;|&#91;1-9&#93;?&#91;0-9&#93;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the IpRouteInfo. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9_&#93;)&#91;\\a-zA-Z0-9_@#%*+=:?./!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>Identifier (ID) of the directory associated with the IP addresses. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpRouteStatusMsg" /></td>
+    <td><CopyableCode code="ip_route_status_msg" /></td>
     <td><code>string</code></td>
     <td>The status of the IP address block. (Adding, Added, Removing, Removed, AddFailed, RemoveFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpRouteStatusReason" /></td>
+    <td><CopyableCode code="ip_route_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the IpRouteStatusMsg.</td>
 </tr>
@@ -163,13 +163,13 @@ Lists the address blocks that you have added to a directory.
 
 ```sql
 SELECT
-AddedDateTime,
-CidrIp,
-CidrIpv6,
-Description,
-DirectoryId,
-IpRouteStatusMsg,
-IpRouteStatusReason
+added_date_time,
+cidr_ip,
+cidr_ipv_6,
+description,
+directory_id,
+ip_route_status_msg,
+ip_route_status_reason
 FROM aws.ds.ip_routes
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the requested media. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\.\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Payload" /></td>
+    <td><CopyableCode code="payload" /></td>
     <td><code>string (byte)</code></td>
     <td>The payload that Kinesis Video Streams returns is a sequence of chunks from the specified stream. For information about the chunks, see PutMedia. The chunks that Kinesis Video Streams returns in the GetMediaForFragmentList call also include the following additional Matroska (MKV) tags: AWS_KINESISVIDEO_FRAGMENT_NUMBER - Fragment number returned in the chunk. AWS_KINESISVIDEO_SERVER_SIDE_TIMESTAMP - Server-side timestamp of the fragment. AWS_KINESISVIDEO_PRODUCER_SIDE_TIMESTAMP - Producer-side timestamp of the fragment. The following tags will be included if an exception occurs: AWS_KINESISVIDEO_FRAGMENT_NUMBER - The number of the fragment that threw the exception AWS_KINESISVIDEO_EXCEPTION_ERROR_CODE - The integer code of the AWS_KINESISVIDEO_EXCEPTION_MESSAGE - A text description of the exception</td>
 </tr>
@@ -124,8 +124,8 @@ Gets media for a list of fragments (specified by fragment number) from the archi
 
 ```sql
 SELECT
-ContentType,
-Payload
+content_type,
+payload
 FROM aws.kinesis_video_archived_media.media_for_fragment_lists
 WHERE region = '{{ region }}' -- required
 ;

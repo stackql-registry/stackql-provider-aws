@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupVaultName" /></td>
+    <td><CopyableCode code="backup_vault_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backup vault where the tiering configuration applies. Use * to apply to all backup vaults. (pattern: &lt;code&gt;^(\*|&#91;a-zA-Z0-9\-\_&#93;&#123;2,50&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a tiering configuration was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>This is a unique string that identifies the request and allows failed requests to be retried without the risk of running the operation twice.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a tiering configuration was updated, in Unix format and Coordinated Universal Time (UTC). The value of LastUpdatedTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSelection" /></td>
+    <td><CopyableCode code="resource_selection" /></td>
     <td><code>array</code></td>
     <td>An array of resource selection objects that specify which resources are included in the tiering configuration and their tiering settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TieringConfigurationArn" /></td>
+    <td><CopyableCode code="tiering_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies the tiering configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TieringConfigurationName" /></td>
+    <td><CopyableCode code="tiering_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the tiering configuration. This cannot be changed after creation, and it must consist of only alphanumeric characters and underscores. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupVaultName" /></td>
+    <td><CopyableCode code="backup_vault_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backup vault where the tiering configuration applies. Use * to apply to all backup vaults. (pattern: &lt;code&gt;^(\*|&#91;a-zA-Z0-9\-\_&#93;&#123;2,50&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a tiering configuration was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a tiering configuration was updated, in Unix format and Coordinated Universal Time (UTC). The value of LastUpdatedTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TieringConfigurationArn" /></td>
+    <td><CopyableCode code="tiering_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies the tiering configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TieringConfigurationName" /></td>
+    <td><CopyableCode code="tiering_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the tiering configuration. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -233,13 +233,13 @@ Returns TieringConfiguration details for the specified TieringConfigurationName.
 
 ```sql
 SELECT
-BackupVaultName,
-CreationTime,
-CreatorRequestId,
-LastUpdatedTime,
-ResourceSelection,
-TieringConfigurationArn,
-TieringConfigurationName
+backup_vault_name,
+creation_time,
+creator_request_id,
+last_updated_time,
+resource_selection,
+tiering_configuration_arn,
+tiering_configuration_name
 FROM aws.backup.tiering_configurations
 WHERE tiering_configuration_name = '{{ tiering_configuration_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -252,11 +252,11 @@ Returns a list of tiering configurations.
 
 ```sql
 SELECT
-BackupVaultName,
-CreationTime,
-LastUpdatedTime,
-TieringConfigurationArn,
-TieringConfigurationName
+backup_vault_name,
+creation_time,
+last_updated_time,
+tiering_configuration_arn,
+tiering_configuration_name
 FROM aws.backup.tiering_configurations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -293,9 +293,9 @@ SELECT
 '{{ CreatorRequestId }}',
 '{{ region }}'
 RETURNING
-CreationTime,
-TieringConfigurationArn,
-TieringConfigurationName
+creation_time,
+tiering_configuration_arn,
+tiering_configuration_name
 ;
 ```
 </TabItem>
@@ -348,10 +348,10 @@ tiering_configuration_name = '{{ tiering_configuration_name }}' --required
 AND region = '{{ region }}' --required
 AND TieringConfiguration = '{{ TieringConfiguration }}' --required
 RETURNING
-CreationTime,
-LastUpdatedTime,
-TieringConfigurationArn,
-TieringConfigurationName;
+creation_time,
+last_updated_time,
+tiering_configuration_arn,
+tiering_configuration_name;
 ```
 </TabItem>
 </Tabs>

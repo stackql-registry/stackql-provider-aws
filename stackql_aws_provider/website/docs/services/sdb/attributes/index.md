@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlternateNameEncoding" /></td>
+    <td><CopyableCode code="alternate_name_encoding" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlternateValueEncoding" /></td>
+    <td><CopyableCode code="alternate_value_encoding" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the attribute.</td>
 </tr>
@@ -197,10 +197,10 @@ Returns all of the attributes associated with the specified item. Optionally, th
 
 ```sql
 SELECT
-AlternateNameEncoding,
-AlternateValueEncoding,
-Name,
-Value
+alternate_name_encoding,
+alternate_value_encoding,
+name,
+value
 FROM aws.sdb.attributes
 WHERE DomainName = '{{ DomainName }}' -- required
 AND ItemName = '{{ ItemName }}' -- required

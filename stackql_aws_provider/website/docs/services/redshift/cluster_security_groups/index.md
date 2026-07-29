@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterSecurityGroupName" /></td>
+    <td><CopyableCode code="cluster_security_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster security group to which the operation was applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EC2SecurityGroups" /></td>
+    <td><CopyableCode code="ec2_security_groups" /></td>
     <td><code>string</code></td>
     <td>A list of EC2 security groups that are permitted to access clusters associated with this cluster security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IPRanges" /></td>
+    <td><CopyableCode code="ip_ranges" /></td>
     <td><code>string</code></td>
     <td>A list of IP ranges (CIDR blocks) that are permitted to access clusters associated with this cluster security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the cluster security group.</td>
 </tr>
@@ -222,11 +222,11 @@ Returns information about Amazon Redshift security groups. If the name of a secu
 
 ```sql
 SELECT
-ClusterSecurityGroupName,
-Description,
-EC2SecurityGroups,
-IPRanges,
-Tags
+cluster_security_group_name,
+description,
+ec2_security_groups,
+ip_ranges,
+tags
 FROM aws.redshift.cluster_security_groups
 WHERE region = '{{ region }}' -- required
 AND ClusterSecurityGroupName = '{{ ClusterSecurityGroupName }}'
@@ -266,11 +266,11 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-ClusterSecurityGroupName,
-Description,
-EC2SecurityGroups,
-IPRanges,
-Tags
+cluster_security_group_name,
+description,
+ec2_security_groups,
+ip_ranges,
+tags
 ;
 ```
 </TabItem>
@@ -322,11 +322,11 @@ AND CIDRIP = '{{ CIDRIP}}'
 AND EC2SecurityGroupName = '{{ EC2SecurityGroupName}}'
 AND EC2SecurityGroupOwnerId = '{{ EC2SecurityGroupOwnerId}}'
 RETURNING
-ClusterSecurityGroupName,
-Description,
-EC2SecurityGroups,
-IPRanges,
-Tags;
+cluster_security_group_name,
+description,
+ec2_security_groups,
+ip_ranges,
+tags;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the configuration of summary metrics. (Enabled, Disabled)</td>
 </tr>
@@ -126,7 +126,7 @@ Get the metric configuration status for this AWS account.
 
 ```sql
 SELECT
-Status
+status
 FROM aws.iotwireless.metric_configurations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>TheAmazon resource name (ARN) of the tagged resource group. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:resource-groups:&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)+-\d&#123;1&#125;:&#91;0-9&#93;&#123;12&#125;:group/(&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the specified resource group.</td>
 </tr>
@@ -143,8 +143,8 @@ Returns a list of tags that are associated with a resource group, specified by a
 
 ```sql
 SELECT
-Arn,
-Tags
+arn,
+tags
 FROM aws.resource_groups.tags
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

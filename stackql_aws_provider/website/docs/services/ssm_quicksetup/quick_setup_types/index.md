@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="QuickSetupTypeList" /></td>
+    <td><CopyableCode code="quick_setup_type_list" /></td>
     <td><code>array</code></td>
     <td>An array of Quick Setup types.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the available Quick Setup types.
 
 ```sql
 SELECT
-QuickSetupTypeList
+quick_setup_type_list
 FROM aws.ssm_quicksetup.quick_setup_types
 WHERE region = '{{ region }}' -- required
 ;

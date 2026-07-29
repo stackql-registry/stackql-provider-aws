@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code indicating the reason for failure when the report status is FAILED. This field is only present when the status is FAILED. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>A detailed error message describing the failure when the report status is FAILED. This field is only present when the status is FAILED. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedAt" /></td>
+    <td><CopyableCode code="generated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the report was generated, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates more results are available. Include this token in the next request to retrieve the next page of results. If this field is not present, you have retrieved all available results. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9/+&#93;*=&#123;0,2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quotas" /></td>
+    <td><CopyableCode code="quotas" /></td>
     <td><code>array</code></td>
     <td>A list of quota utilization records, sorted by utilization percentage in descending order. Each record includes the quota code, service code, service name, quota name, namespace, utilization percentage, default value, applied value, and whether the quota is adjustable. Up to 1,000 records are returned per page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the quota utilization report. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the report generation. Possible values are: PENDING - The report generation is in progress. Retry this operation after a few seconds. IN_PROGRESS - The report is being processed. Continue polling until the status changes to COMPLETED. COMPLETED - The report is ready and quota utilization data is available in the response. FAILED - The report generation failed. Check the ErrorCode and ErrorMessage fields for details. (PENDING, IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalCount" /></td>
+    <td><CopyableCode code="total_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of quotas included in the report across all pages.</td>
 </tr>
@@ -154,14 +154,14 @@ Retrieves the quota utilization report for your Amazon Web Services account. Thi
 
 ```sql
 SELECT
-ErrorCode,
-ErrorMessage,
-GeneratedAt,
-NextToken,
-Quotas,
-ReportId,
-Status,
-TotalCount
+error_code,
+error_message,
+generated_at,
+next_token,
+quotas,
+report_id,
+status,
+total_count
 FROM aws.service_quotas.quota_utilization_reports
 WHERE region = '{{ region }}' -- required
 ;

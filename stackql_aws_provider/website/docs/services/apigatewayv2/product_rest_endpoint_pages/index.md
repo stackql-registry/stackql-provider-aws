@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisplayContent" /></td>
+    <td><CopyableCode code="display_content" /></td>
     <td><code>object</code></td>
     <td>The content of the product REST endpoint page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the product REST endpoint page was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductRestEndpointPageArn" /></td>
+    <td><CopyableCode code="product_rest_endpoint_page_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the product REST endpoint page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductRestEndpointPageId" /></td>
+    <td><CopyableCode code="product_rest_endpoint_page_id" /></td>
     <td><code>string</code></td>
     <td>The product REST endpoint page identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RawDisplayContent" /></td>
+    <td><CopyableCode code="raw_display_content" /></td>
     <td><code>string</code></td>
     <td>The raw display content of the product REST endpoint page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestEndpointIdentifier" /></td>
+    <td><CopyableCode code="rest_endpoint_identifier" /></td>
     <td><code>object</code></td>
     <td>The REST API endpoint identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the product REST endpoint page. (AVAILABLE, IN_PROGRESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusException" /></td>
+    <td><CopyableCode code="status_exception" /></td>
     <td><code>object</code></td>
     <td>The status exception information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TryItState" /></td>
+    <td><CopyableCode code="try_it_state" /></td>
     <td><code>string</code></td>
     <td>Represents the try it state for a product REST endpoint page. (ENABLED, DISABLED)</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint of the product REST endpoint page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the product REST endpoint page was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationName" /></td>
+    <td><CopyableCode code="operation_name" /></td>
     <td><code>string</code></td>
     <td>The operation name of the product REST endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductRestEndpointPageArn" /></td>
+    <td><CopyableCode code="product_rest_endpoint_page_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the product REST endpoint page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductRestEndpointPageId" /></td>
+    <td><CopyableCode code="product_rest_endpoint_page_id" /></td>
     <td><code>string</code></td>
     <td>The product REST endpoint page identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestEndpointIdentifier" /></td>
+    <td><CopyableCode code="rest_endpoint_identifier" /></td>
     <td><code>object</code></td>
     <td>The REST API endpoint identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (AVAILABLE, IN_PROGRESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusException" /></td>
+    <td><CopyableCode code="status_exception" /></td>
     <td><code>object</code></td>
     <td>The status exception information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TryItState" /></td>
+    <td><CopyableCode code="try_it_state" /></td>
     <td><code>string</code></td>
     <td>Represents the try it state for a product REST endpoint page. (ENABLED, DISABLED)</td>
 </tr>
@@ -278,15 +278,15 @@ Gets a product REST endpoint page.
 
 ```sql
 SELECT
-DisplayContent,
-LastModified,
-ProductRestEndpointPageArn,
-ProductRestEndpointPageId,
-RawDisplayContent,
-RestEndpointIdentifier,
-Status,
-StatusException,
-TryItState
+display_content,
+last_modified,
+product_rest_endpoint_page_arn,
+product_rest_endpoint_page_id,
+raw_display_content,
+rest_endpoint_identifier,
+status,
+status_exception,
+try_it_state
 FROM aws.apigatewayv2.product_rest_endpoint_pages
 WHERE portal_product_id = '{{ portal_product_id }}' -- required
 AND product_rest_endpoint_page_id = '{{ product_rest_endpoint_page_id }}' -- required
@@ -302,15 +302,15 @@ Lists the product REST endpoint pages of a portal product.
 
 ```sql
 SELECT
-Endpoint,
-LastModified,
-OperationName,
-ProductRestEndpointPageArn,
-ProductRestEndpointPageId,
-RestEndpointIdentifier,
-Status,
-StatusException,
-TryItState
+endpoint,
+last_modified,
+operation_name,
+product_rest_endpoint_page_arn,
+product_rest_endpoint_page_id,
+rest_endpoint_identifier,
+status,
+status_exception,
+try_it_state
 FROM aws.apigatewayv2.product_rest_endpoint_pages
 WHERE portal_product_id = '{{ portal_product_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -351,14 +351,14 @@ SELECT
 '{{ portal_product_id }}',
 '{{ region }}'
 RETURNING
-DisplayContent,
-LastModified,
-ProductRestEndpointPageArn,
-ProductRestEndpointPageId,
-RestEndpointIdentifier,
-Status,
-StatusException,
-TryItState
+display_content,
+last_modified,
+product_rest_endpoint_page_arn,
+product_rest_endpoint_page_id,
+rest_endpoint_identifier,
+status,
+status_exception,
+try_it_state
 ;
 ```
 </TabItem>
@@ -424,14 +424,14 @@ portal_product_id = '{{ portal_product_id }}' --required
 AND product_rest_endpoint_page_id = '{{ product_rest_endpoint_page_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DisplayContent,
-LastModified,
-ProductRestEndpointPageArn,
-ProductRestEndpointPageId,
-RestEndpointIdentifier,
-Status,
-StatusException,
-TryItState;
+display_content,
+last_modified,
+product_rest_endpoint_page_arn,
+product_rest_endpoint_page_id,
+rest_endpoint_identifier,
+status,
+status_exception,
+try_it_state;
 ```
 </TabItem>
 </Tabs>

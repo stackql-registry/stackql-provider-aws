@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelFlows" /></td>
+    <td><CopyableCode code="channel_flows" /></td>
     <td><code>array</code></td>
     <td>The information about each channel flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested channels are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelFlowArn" /></td>
+    <td><CopyableCode code="channel_flow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel flow. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the channel flow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a channel flow was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel flow. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u007E\u0085\u00A0-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Processors" /></td>
+    <td><CopyableCode code="processors" /></td>
     <td><code>array</code></td>
     <td>Information about the processor Lambda functions.</td>
 </tr>
@@ -244,8 +244,8 @@ Returns a paginated lists of all the channel flows created under a single Chime.
 
 ```sql
 SELECT
-ChannelFlows,
-NextToken
+channel_flows,
+next_token
 FROM aws.chime_sdk_messaging.channel_flows
 WHERE `app-instance-arn` = '{{ app-instance-arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -260,11 +260,11 @@ Returns the full details of a channel flow in an Amazon Chime AppInstance. This 
 
 ```sql
 SELECT
-ChannelFlowArn,
-CreatedTimestamp,
-LastUpdatedTimestamp,
-Name,
-Processors
+channel_flow_arn,
+created_timestamp,
+last_updated_timestamp,
+name,
+processors
 FROM aws.chime_sdk_messaging.channel_flows
 WHERE channel_flow_arn = '{{ channel_flow_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -304,7 +304,7 @@ SELECT
 '{{ ClientRequestToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ChannelFlowArn
+channel_flow_arn
 ;
 ```
 </TabItem>
@@ -381,7 +381,7 @@ AND region = '{{ region }}' --required
 AND Processors = '{{ Processors }}' --required
 AND Name = '{{ Name }}' --required
 RETURNING
-ChannelFlowArn;
+channel_flow_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_channel_flow">

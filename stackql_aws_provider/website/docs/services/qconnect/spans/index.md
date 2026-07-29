@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>UUID of the Connect AI Assistant resource (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -60,47 +60,47 @@ The following fields are returned by `SELECT` queries:
     <td>Span-specific contextual attributes</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Operation end time in milliseconds since epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originRequestId" /></td>
+    <td><CopyableCode code="origin_request_id" /></td>
     <td><code>string</code></td>
     <td>The origin request identifier for end-to-end tracing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentSpanId" /></td>
+    <td><CopyableCode code="parent_span_id" /></td>
     <td><code>string</code></td>
     <td>Parent span identifier for hierarchy. Null for root spans. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The service request ID that initiated the operation (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>UUID of the Connect AI Session resource (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spanId" /></td>
+    <td><CopyableCode code="span_id" /></td>
     <td><code>string</code></td>
     <td>Unique span identifier (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spanName" /></td>
+    <td><CopyableCode code="span_name" /></td>
     <td><code>string</code></td>
     <td>Service-defined operation name (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spanType" /></td>
+    <td><CopyableCode code="span_type" /></td>
     <td><code>string</code></td>
     <td>Operation relationship type (CLIENT, SERVER, INTERNAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Operation start time in milliseconds since epoch</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>Span completion status (OK, ERROR, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDescription" /></td>
+    <td><CopyableCode code="status_description" /></td>
     <td><code>string</code></td>
     <td>Human-readable error description when status is ERROR or TIMEOUT</td>
 </tr>
@@ -199,19 +199,19 @@ Retrieves AI agent execution traces for a session, providing granular visibility
 
 ```sql
 SELECT
-assistantId,
+assistant_id,
 attributes,
-endTimestamp,
-originRequestId,
-parentSpanId,
-requestId,
-sessionId,
-spanId,
-spanName,
-spanType,
-startTimestamp,
+end_timestamp,
+origin_request_id,
+parent_span_id,
+request_id,
+session_id,
+span_id,
+span_name,
+span_type,
+start_timestamp,
 status,
-statusDescription
+status_description
 FROM aws.qconnect.spans
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND session_id = '{{ session_id }}' -- required

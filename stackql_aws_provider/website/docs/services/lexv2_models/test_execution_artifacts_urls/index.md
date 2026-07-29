@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="downloadArtifactsUrl" /></td>
+    <td><CopyableCode code="download_artifacts_url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed Amazon S3 URL to download completed test execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testExecutionId" /></td>
+    <td><CopyableCode code="test_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the completed test execution. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ The pre-signed Amazon S3 URL to download the test execution result artifacts.
 
 ```sql
 SELECT
-downloadArtifactsUrl,
-testExecutionId
+download_artifacts_url,
+test_execution_id
 FROM aws.lexv2_models.test_execution_artifacts_urls
 WHERE test_execution_id = '{{ test_execution_id }}' -- required
 AND region = '{{ region }}' -- required

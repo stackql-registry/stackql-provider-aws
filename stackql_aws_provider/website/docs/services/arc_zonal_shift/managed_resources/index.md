@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appliedWeights" /></td>
+    <td><CopyableCode code="applied_weights" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs that indicate whether resources are active in Availability Zones or not. The key name is the Availability Zone where the resource is deployed. The value is 1 or 0.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>An array of the autoshifts that are active for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="practiceRunConfiguration" /></td>
+    <td><CopyableCode code="practice_run_configuration" /></td>
     <td><code>object</code></td>
     <td>The practice run configuration for zonal autoshift that's associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="zonalAutoshiftStatus" /></td>
+    <td><CopyableCode code="zonal_autoshift_status" /></td>
     <td><code>string</code></td>
     <td>The status for zonal autoshift for a resource. When the autoshift status is ENABLED, Amazon Web Services shifts traffic for a resource away from an Availability Zone, on your behalf, when Amazon Web Services determines that there's an issue in the Availability Zone that could potentially affect customers. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="zonalShifts" /></td>
+    <td><CopyableCode code="zonal_shifts" /></td>
     <td><code>array</code></td>
     <td>The zonal shifts that are currently active for a resource.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the managed resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appliedWeights" /></td>
+    <td><CopyableCode code="applied_weights" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs that indicate whether resources are active in Availability Zones or not. The key name is the Availability Zone where the resource is deployed. The value is 1 or 0.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>An array of the autoshifts that have been completed for a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>array</code></td>
     <td>The Availability Zones that a resource is deployed in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="practiceRunStatus" /></td>
+    <td><CopyableCode code="practice_run_status" /></td>
     <td><code>string</code></td>
     <td>This status tracks whether a practice run configuration exists for a resource. When you configure a practice run for a resource so that a practice run configuration exists, ARC sets this value to ENABLED. If a you have not configured a practice run for the resource, or delete a practice run configuration, ARC sets the value to DISABLED. ARC updates this status; you can't set a practice run status to ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="zonalAutoshiftStatus" /></td>
+    <td><CopyableCode code="zonal_autoshift_status" /></td>
     <td><code>string</code></td>
     <td>The status of autoshift for a resource. When you configure zonal autoshift for a resource, you can set the value of the status to ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="zonalShifts" /></td>
+    <td><CopyableCode code="zonal_shifts" /></td>
     <td><code>array</code></td>
     <td>An array of the zonal shifts for a resource.</td>
 </tr>
@@ -228,12 +228,12 @@ Get information about a resource that's been registered for zonal shifts with Am
 ```sql
 SELECT
 name,
-appliedWeights,
+applied_weights,
 arn,
 autoshifts,
-practiceRunConfiguration,
-zonalAutoshiftStatus,
-zonalShifts
+practice_run_configuration,
+zonal_autoshift_status,
+zonal_shifts
 FROM aws.arc_zonal_shift.managed_resources
 WHERE resource_identifier = '{{ resource_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,13 +247,13 @@ Lists all the resources in your Amazon Web Services account in this Amazon Web S
 ```sql
 SELECT
 name,
-appliedWeights,
+applied_weights,
 arn,
 autoshifts,
-availabilityZones,
-practiceRunStatus,
-zonalAutoshiftStatus,
-zonalShifts
+availability_zones,
+practice_run_status,
+zonal_autoshift_status,
+zonal_shifts
 FROM aws.arc_zonal_shift.managed_resources
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name displayed for the user in Amazon CodeCatalyst.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="primaryEmail" /></td>
+    <td><CopyableCode code="primary_email" /></td>
     <td><code>object</code></td>
     <td>The email address provided by the user when they signed up.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated unique ID of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user as displayed in Amazon CodeCatalyst.</td>
 </tr>
@@ -149,10 +149,10 @@ Returns information about a user.
 
 ```sql
 SELECT
-displayName,
-primaryEmail,
-userId,
-userName,
+display_name,
+primary_email,
+user_id,
+user_name,
 version
 FROM aws.codecatalyst.user_details
 WHERE region = '{{ region }}' -- required

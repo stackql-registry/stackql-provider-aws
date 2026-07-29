@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cidr" /></td>
+    <td><CopyableCode code="cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR block that was selected and synchronized in this resolver version.</td>
 </tr>
@@ -144,7 +144,7 @@ Retrieves the CIDR entries for a specific version of an IPAM prefix list resolve
 
 ```sql
 SELECT
-Cidr
+cidr
 FROM aws.ec2.ipam_prefix_list_resolver_version_entries
 WHERE IpamPrefixListResolverId = '{{ IpamPrefixListResolverId }}' -- required
 AND IpamPrefixListResolverVersion = '{{ IpamPrefixListResolverVersion }}' -- required

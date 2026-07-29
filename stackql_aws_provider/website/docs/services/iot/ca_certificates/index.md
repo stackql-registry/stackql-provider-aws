@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certificateDescription" /></td>
+    <td><CopyableCode code="certificate_description" /></td>
     <td><code>object</code></td>
     <td>The CA certificate description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationConfig" /></td>
+    <td><CopyableCode code="registration_config" /></td>
     <td><code>object</code></td>
     <td>Information about the registration configuration.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the CA certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateId" /></td>
+    <td><CopyableCode code="certificate_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the CA certificate. (pattern: &lt;code&gt;(0x)?&#91;a-fA-F0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the CA certificate was created.</td>
 </tr>
@@ -233,8 +233,8 @@ Describes a registered CA certificate. Requires permission to access the Describ
 
 ```sql
 SELECT
-certificateDescription,
-registrationConfig
+certificate_description,
+registration_config
 FROM aws.iot.ca_certificates
 WHERE ca_certificate_id = '{{ ca_certificate_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,9 +247,9 @@ Lists the CA certificates registered for your Amazon Web Services account. The r
 
 ```sql
 SELECT
-certificateArn,
-certificateId,
-creationDate,
+certificate_arn,
+certificate_id,
+creation_date,
 status
 FROM aws.iot.ca_certificates
 WHERE region = '{{ region }}' -- required
@@ -297,8 +297,8 @@ SELECT
 '{{ setAsActive }}',
 '{{ allowAutoRegistration }}'
 RETURNING
-certificateArn,
-certificateId
+certificate_arn,
+certificate_id
 ;
 ```
 </TabItem>

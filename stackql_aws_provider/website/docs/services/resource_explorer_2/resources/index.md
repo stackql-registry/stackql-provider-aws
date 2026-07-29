@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastReportedAt" /></td>
+    <td><CopyableCode code="last_reported_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that Resource Explorer last queried this resource and updated the index with the latest information about the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwningAccountId" /></td>
+    <td><CopyableCode code="owning_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Properties" /></td>
+    <td><CopyableCode code="properties" /></td>
     <td><code>array</code></td>
     <td>A structure with additional type-specific details about the resource. These properties can be added by turning on integration between Resource Explorer and other Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region in which the resource was created and exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Service" /></td>
+    <td><CopyableCode code="service" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service that owns the resource and is responsible for creating and updating it.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns a list of resources and their details that match the specified criteria.
 
 ```sql
 SELECT
-Arn,
-LastReportedAt,
-OwningAccountId,
-Properties,
-Region,
-ResourceType,
-Service
+arn,
+last_reported_at,
+owning_account_id,
+properties,
+region,
+resource_type,
+service
 FROM aws.resource_explorer_2.resources
 WHERE region = '{{ region }}' -- required
 ;

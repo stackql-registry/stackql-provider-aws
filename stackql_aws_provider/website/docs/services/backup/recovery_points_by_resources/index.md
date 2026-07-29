@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregatedScanResult" /></td>
+    <td><CopyableCode code="aggregated_scan_result" /></td>
     <td><code>object</code></td>
     <td>Contains the latest scanning results against the recovery point and currently include FailedScan, Findings, LastComputed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupSizeBytes" /></td>
+    <td><CopyableCode code="backup_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of a backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupVaultName" /></td>
+    <td><CopyableCode code="backup_vault_name" /></td>
     <td><code>string</code></td>
     <td>The name of a logical container where backups are stored. Backup vaults are identified by names that are unique to the account used to create them and the Amazon Web Services Region where they are created. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;&#123;2,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a recovery point is created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The server-side encryption key that is used to protect your backups; for example, arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionKeyType" /></td>
+    <td><CopyableCode code="encryption_key_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption key used for the recovery point. Valid values are CUSTOMER_MANAGED_KMS_KEY for customer-managed keys or Amazon Web Services_OWNED_KMS_KEY for Amazon Web Services-owned keys. (AWS_OWNED_KMS_KEY, CUSTOMER_MANAGED_KMS_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatus" /></td>
+    <td><CopyableCode code="index_status" /></td>
     <td><code>string</code></td>
     <td>This is the current status for the backup index associated with the specified recovery point. Statuses are: PENDING | ACTIVE | FAILED | DELETING A recovery point with an index that has the status of ACTIVE can be included in a search. (PENDING, ACTIVE, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatusMessage" /></td>
+    <td><CopyableCode code="index_status_message" /></td>
     <td><code>string</code></td>
     <td>A string in the form of a detailed message explaining the status of a backup index associated with the recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsParent" /></td>
+    <td><CopyableCode code="is_parent" /></td>
     <td><code>boolean</code></td>
     <td>This is a boolean value indicating this is a parent (composite) recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentRecoveryPointArn" /></td>
+    <td><CopyableCode code="parent_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the parent (composite) recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryPointArn" /></td>
+    <td><CopyableCode code="recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The non-unique name of the resource that belongs to the specified backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A status code specifying the state of the recovery point. (COMPLETED, PARTIAL, DELETING, EXPIRED, AVAILABLE, STOPPED, CREATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message explaining the current status of the recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultType" /></td>
+    <td><CopyableCode code="vault_type" /></td>
     <td><code>string</code></td>
     <td>The type of vault in which the described recovery point is stored. (BACKUP_VAULT, LOGICALLY_AIR_GAPPED_BACKUP_VAULT, RESTORE_ACCESS_BACKUP_VAULT)</td>
 </tr>
@@ -209,21 +209,21 @@ The information about the recovery points of the type specified by a resource Am
 
 ```sql
 SELECT
-AggregatedScanResult,
-BackupSizeBytes,
-BackupVaultName,
-CreationDate,
-EncryptionKeyArn,
-EncryptionKeyType,
-IndexStatus,
-IndexStatusMessage,
-IsParent,
-ParentRecoveryPointArn,
-RecoveryPointArn,
-ResourceName,
-Status,
-StatusMessage,
-VaultType
+aggregated_scan_result,
+backup_size_bytes,
+backup_vault_name,
+creation_date,
+encryption_key_arn,
+encryption_key_type,
+index_status,
+index_status_message,
+is_parent,
+parent_recovery_point_arn,
+recovery_point_arn,
+resource_name,
+status,
+status_message,
+vault_type
 FROM aws.backup.recovery_points_by_resources
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

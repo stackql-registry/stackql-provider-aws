@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="storageClass" /></td>
+    <td><CopyableCode code="storage_class" /></td>
     <td><code>string</code></td>
     <td>The storage class for the table or table bucket. Valid values include storage classes optimized for different access patterns and cost profiles. (STANDARD, INTELLIGENT_TIERING)</td>
 </tr>
@@ -131,7 +131,7 @@ Retrieves the storage class configuration for a specific table. This allows you 
 
 ```sql
 SELECT
-storageClass
+storage_class
 FROM aws.s3tables.table_bucket_storage_class
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND region = '{{ region }}' -- required

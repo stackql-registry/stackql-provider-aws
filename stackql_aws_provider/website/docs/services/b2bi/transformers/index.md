@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the name of the transformer, used to identify it. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,512&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for creation date and time of the transformer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ediType" /></td>
+    <td><CopyableCode code="edi_type" /></td>
     <td><code>object</code></td>
     <td>Returns the details for the EDI standard that is being used for the transformer. Currently, only X12 is supported. X12 is a set of standards and corresponding messages that define specific business documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileFormat" /></td>
+    <td><CopyableCode code="file_format" /></td>
     <td><code>string</code></td>
     <td>Returns that the currently supported file formats for EDI transformations are JSON and XML. (XML, JSON, NOT_USED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputConversion" /></td>
+    <td><CopyableCode code="input_conversion" /></td>
     <td><code>object</code></td>
     <td>Returns the InputConversion object, which contains the format options for the inbound transformation.</td>
 </tr>
@@ -81,27 +81,27 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the structure that contains the mapping template and its language (either XSLT or JSONATA).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mappingTemplate" /></td>
+    <td><CopyableCode code="mapping_template" /></td>
     <td><code>string</code></td>
     <td>Returns the mapping template for the transformer. This template is used to map the parsed EDI file using JSONata or XSLT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for last time the transformer was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConversion" /></td>
+    <td><CopyableCode code="output_conversion" /></td>
     <td><code>object</code></td>
     <td>Returns the OutputConversion object, which contains the format options for the outbound transformation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleDocument" /></td>
+    <td><CopyableCode code="sample_document" /></td>
     <td><code>string</code></td>
     <td>Returns a sample EDI document that is used by a transformer as a guide for processing the EDI data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleDocuments" /></td>
+    <td><CopyableCode code="sample_documents" /></td>
     <td><code>object</code></td>
     <td>Returns a structure that contains the Amazon S3 bucket and an array of the corresponding keys used to identify the location for your sample documents.</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the state of the newly created transformer. The transformer can be either active or inactive. For the transformer to be used in a capability, its status must active. (active, inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transformerArn" /></td>
+    <td><CopyableCode code="transformer_arn" /></td>
     <td><code>string</code></td>
     <td>Returns an Amazon Resource Name (ARN) for a specific Amazon Web Services resource, such as a capability, partnership, profile, or transformer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transformerId" /></td>
+    <td><CopyableCode code="transformer_id" /></td>
     <td><code>string</code></td>
     <td>Returns the system-assigned unique identifier for the transformer. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -140,22 +140,22 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the descriptive name for the transformer. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,512&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp indicating when the transformer was created. For example, 2023-07-20T19:58:44.624Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ediType" /></td>
+    <td><CopyableCode code="edi_type" /></td>
     <td><code>object</code></td>
     <td>Returns the details for the EDI standard that is being used for the transformer. Currently, only X12 is supported. X12 is a set of standards and corresponding messages that define specific business documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileFormat" /></td>
+    <td><CopyableCode code="file_format" /></td>
     <td><code>string</code></td>
     <td>Returns that the currently supported file formats for EDI transformations are JSON and XML. (XML, JSON, NOT_USED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputConversion" /></td>
+    <td><CopyableCode code="input_conversion" /></td>
     <td><code>object</code></td>
     <td>Returns a structure that contains the format options for the transformation.</td>
 </tr>
@@ -165,27 +165,27 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the structure that contains the mapping template and its language (either XSLT or JSONATA).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mappingTemplate" /></td>
+    <td><CopyableCode code="mapping_template" /></td>
     <td><code>string</code></td>
     <td>Returns the mapping template for the transformer. This template is used to map the parsed EDI file using JSONata or XSLT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp representing the date and time for the most recent change for the transformer object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConversion" /></td>
+    <td><CopyableCode code="output_conversion" /></td>
     <td><code>object</code></td>
     <td>Returns the OutputConversion object, which contains the format options for the outbound transformation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleDocument" /></td>
+    <td><CopyableCode code="sample_document" /></td>
     <td><code>string</code></td>
     <td>Returns a sample EDI document that is used by a transformer as a guide for processing the EDI data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleDocuments" /></td>
+    <td><CopyableCode code="sample_documents" /></td>
     <td><code>object</code></td>
     <td>Returns a structure that contains the Amazon S3 bucket and an array of the corresponding keys used to identify the location for your sample documents.</td>
 </tr>
@@ -195,7 +195,7 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the state of the newly created transformer. The transformer can be either active or inactive. For the transformer to be used in a capability, its status must active. (active, inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transformerId" /></td>
+    <td><CopyableCode code="transformer_id" /></td>
     <td><code>string</code></td>
     <td>Returns the system-assigned unique identifier for the transformer. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -301,19 +301,19 @@ Retrieves the details for the transformer specified by the transformer ID. A tra
 ```sql
 SELECT
 name,
-createdAt,
-ediType,
-fileFormat,
-inputConversion,
+created_at,
+edi_type,
+file_format,
+input_conversion,
 mapping,
-mappingTemplate,
-modifiedAt,
-outputConversion,
-sampleDocument,
-sampleDocuments,
+mapping_template,
+modified_at,
+output_conversion,
+sample_document,
+sample_documents,
 status,
-transformerArn,
-transformerId
+transformer_arn,
+transformer_id
 FROM aws.b2bi.transformers
 WHERE region = '{{ region }}' -- required
 ;
@@ -326,18 +326,18 @@ Lists the available transformers. A transformer can take an EDI file as input an
 ```sql
 SELECT
 name,
-createdAt,
-ediType,
-fileFormat,
-inputConversion,
+created_at,
+edi_type,
+file_format,
+input_conversion,
 mapping,
-mappingTemplate,
-modifiedAt,
-outputConversion,
-sampleDocument,
-sampleDocuments,
+mapping_template,
+modified_at,
+output_conversion,
+sample_document,
+sample_documents,
 status,
-transformerId
+transformer_id
 FROM aws.b2bi.transformers
 WHERE region = '{{ region }}' -- required
 ;
@@ -389,18 +389,18 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-createdAt,
-ediType,
-fileFormat,
-inputConversion,
+created_at,
+edi_type,
+file_format,
+input_conversion,
 mapping,
-mappingTemplate,
-outputConversion,
-sampleDocument,
-sampleDocuments,
+mapping_template,
+output_conversion,
+sample_document,
+sample_documents,
 status,
-transformerArn,
-transformerId
+transformer_arn,
+transformer_id
 ;
 ```
 </TabItem>
@@ -549,19 +549,19 @@ region = '{{ region }}' --required
 AND transformerId = '{{ transformerId }}' --required
 RETURNING
 name,
-createdAt,
-ediType,
-fileFormat,
-inputConversion,
+created_at,
+edi_type,
+file_format,
+input_conversion,
 mapping,
-mappingTemplate,
-modifiedAt,
-outputConversion,
-sampleDocument,
-sampleDocuments,
+mapping_template,
+modified_at,
+output_conversion,
+sample_document,
+sample_documents,
 status,
-transformerArn,
-transformerId;
+transformer_arn,
+transformer_id;
 ```
 </TabItem>
 </Tabs>

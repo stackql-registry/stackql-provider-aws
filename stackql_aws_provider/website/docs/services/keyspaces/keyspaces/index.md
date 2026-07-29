@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="keyspaceName" /></td>
+    <td><CopyableCode code="keyspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the keyspace. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationGroupStatuses" /></td>
+    <td><CopyableCode code="replication_group_statuses" /></td>
     <td><code>array</code></td>
     <td>A list of all Regions the keyspace is replicated in after the update keyspace operation and their status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationRegions" /></td>
+    <td><CopyableCode code="replication_regions" /></td>
     <td><code>array</code></td>
     <td>If the replicationStrategy of the keyspace is MULTI_REGION, a list of replication Regions is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationStrategy" /></td>
+    <td><CopyableCode code="replication_strategy" /></td>
     <td><code>string</code></td>
     <td>Returns the replication strategy of the keyspace. The options are SINGLE_REGION or MULTI_REGION. (SINGLE_REGION, MULTI_REGION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Returns the ARN of the keyspace. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):cassandra:.+.*&lt;/code&gt;)</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="keyspaceName" /></td>
+    <td><CopyableCode code="keyspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the keyspace. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationRegions" /></td>
+    <td><CopyableCode code="replication_regions" /></td>
     <td><code>array</code></td>
     <td>If the replicationStrategy of the keyspace is MULTI_REGION, a list of replication Regions is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationStrategy" /></td>
+    <td><CopyableCode code="replication_strategy" /></td>
     <td><code>string</code></td>
     <td>This property specifies if a keyspace is a single Region keyspace or a multi-Region keyspace. The available values are SINGLE_REGION or MULTI_REGION. (SINGLE_REGION, MULTI_REGION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the keyspace in the format of an Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):cassandra:.+.*&lt;/code&gt;)</td>
 </tr>
@@ -203,11 +203,11 @@ Returns the name of the specified keyspace, the Amazon Resource Name (ARN), the 
 
 ```sql
 SELECT
-keyspaceName,
-replicationGroupStatuses,
-replicationRegions,
-replicationStrategy,
-resourceArn
+keyspace_name,
+replication_group_statuses,
+replication_regions,
+replication_strategy,
+resource_arn
 FROM aws.keyspaces.keyspaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -219,10 +219,10 @@ The ListKeyspaces operation returns a list of keyspaces.
 
 ```sql
 SELECT
-keyspaceName,
-replicationRegions,
-replicationStrategy,
-resourceArn
+keyspace_name,
+replication_regions,
+replication_strategy,
+resource_arn
 FROM aws.keyspaces.keyspaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -257,7 +257,7 @@ SELECT
 '{{ replicationSpecification }}',
 '{{ region }}'
 RETURNING
-resourceArn
+resource_arn
 ;
 ```
 </TabItem>
@@ -315,7 +315,7 @@ region = '{{ region }}' --required
 AND keyspaceName = '{{ keyspaceName }}' --required
 AND replicationSpecification = '{{ replicationSpecification }}' --required
 RETURNING
-resourceArn;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

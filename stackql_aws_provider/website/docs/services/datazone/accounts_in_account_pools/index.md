@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountName" /></td>
+    <td><CopyableCode code="aws_account_name" /></td>
     <td><code>string</code></td>
     <td>The account name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedRegions" /></td>
+    <td><CopyableCode code="supported_regions" /></td>
     <td><code>array</code></td>
     <td>The regions supported for an account within an account pool.</td>
 </tr>
@@ -149,9 +149,9 @@ Lists the accounts in the specified account pool.
 
 ```sql
 SELECT
-awsAccountId,
-awsAccountName,
-supportedRegions
+aws_account_id,
+aws_account_name,
+supported_regions
 FROM aws.datazone.accounts_in_account_pools
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Table" /></td>
+    <td><CopyableCode code="table" /></td>
     <td><code>object</code></td>
     <td>The table in question.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The ID value that identifies this table version. A VersionId is a string representation of an integer. Each version is incremented by 1. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves a specified version of a table.
 
 ```sql
 SELECT
-Table,
-VersionId
+table,
+version_id
 FROM aws.glue.table_versions
 WHERE region = '{{ region }}' -- required
 ;

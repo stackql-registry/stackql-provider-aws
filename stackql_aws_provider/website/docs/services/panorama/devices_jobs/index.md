@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeviceJobs" /></td>
+    <td><CopyableCode code="device_jobs" /></td>
     <td><code>array</code></td>
     <td>A list of jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
@@ -139,8 +139,8 @@ Returns a list of jobs.
 
 ```sql
 SELECT
-DeviceJobs,
-NextToken
+device_jobs,
+next_token
 FROM aws.panorama.devices_jobs
 WHERE region = '{{ region }}' -- required
 AND DeviceId = '{{ DeviceId }}'

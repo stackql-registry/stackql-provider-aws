@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>integer</code></td>
     <td>The status code of the response.</td>
 </tr>
@@ -143,7 +143,7 @@ List all tags associated with a resource, such as a phone number or WABA.
 
 ```sql
 SELECT
-statusCode,
+status_code,
 tags
 FROM aws.socialmessaging.tags
 WHERE resourceArn = '{{ resourceArn }}' -- required
@@ -177,7 +177,7 @@ region = '{{ region }}' --required
 AND resourceArn = '{{ resourceArn }}' --required
 AND tags = '{{ tags }}' --required
 RETURNING
-statusCode;
+status_code;
 ```
 </TabItem>
 <TabItem value="untag_resource">
@@ -194,7 +194,7 @@ region = '{{ region }}' --required
 AND resourceArn = '{{ resourceArn }}' --required
 AND tagKeys = '{{ tagKeys }}' --required
 RETURNING
-statusCode;
+status_code;
 ```
 </TabItem>
 </Tabs>

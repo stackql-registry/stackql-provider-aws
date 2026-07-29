@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveAvailabilityZoneCount" /></td>
+    <td><CopyableCode code="active_availability_zone_count" /></td>
     <td><code>string</code></td>
     <td>The number of active Availability Zones configured for the domain. If the service is unable to fetch this information, it will return NotAvailable. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneCount" /></td>
+    <td><CopyableCode code="availability_zone_count" /></td>
     <td><code>string</code></td>
     <td>The number of Availability Zones configured for the domain. If the service is unable to fetch this information, it will return NotAvailable. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterHealth" /></td>
+    <td><CopyableCode code="cluster_health" /></td>
     <td><code>string</code></td>
     <td>The current health status of your cluster. Red - At least one primary shard is not allocated to any node. Yellow - All primary shards are allocated to nodes, but some replicas aren’t. Green - All primary shards and their replicas are allocated to nodes. NotAvailable - Unable to retrieve cluster health. (Red, Yellow, Green, NotAvailable)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataNodeCount" /></td>
+    <td><CopyableCode code="data_node_count" /></td>
     <td><code>string</code></td>
     <td>The number of data nodes configured for the domain. If the service is unable to fetch this information, it will return NotAvailable. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedMaster" /></td>
+    <td><CopyableCode code="dedicated_master" /></td>
     <td><code>boolean</code></td>
     <td>A boolean that indicates if dedicated master nodes are activated for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainState" /></td>
+    <td><CopyableCode code="domain_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the domain. Processing - The domain has updates in progress. Active - Requested changes have been processed and deployed to the domain. (Active, Processing, NotAvailable)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentInformation" /></td>
+    <td><CopyableCode code="environment_information" /></td>
     <td><code>array</code></td>
     <td>A list of EnvironmentInfo for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterEligibleNodeCount" /></td>
+    <td><CopyableCode code="master_eligible_node_count" /></td>
     <td><code>string</code></td>
     <td>The number of nodes that can be elected as a master node. If dedicated master nodes is turned on, this value is the number of dedicated master nodes configured for the domain. If the service is unable to fetch this information, it will return NotAvailable. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterNode" /></td>
+    <td><CopyableCode code="master_node" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the domain has an elected master node. Available - The domain has an elected master node. UnAvailable - The master node hasn't yet been elected, and a quorum to elect a new master node hasn't been reached. (Available, UnAvailable)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandByAvailabilityZoneCount" /></td>
+    <td><CopyableCode code="stand_by_availability_zone_count" /></td>
     <td><code>string</code></td>
     <td>The number of standby Availability Zones configured for the domain. If the service is unable to fetch this information, it will return NotAvailable. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalShards" /></td>
+    <td><CopyableCode code="total_shards" /></td>
     <td><code>string</code></td>
     <td>The total number of primary and replica shards for the domain. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalUnAssignedShards" /></td>
+    <td><CopyableCode code="total_un_assigned_shards" /></td>
     <td><code>string</code></td>
     <td>The total number of primary and replica shards not allocated to any of the nodes for the cluster. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmNodeCount" /></td>
+    <td><CopyableCode code="warm_node_count" /></td>
     <td><code>string</code></td>
     <td>The number of warm nodes configured for the domain. (pattern: &lt;code&gt;^((\d+)|(NotAvailable))$&lt;/code&gt;)</td>
 </tr>
@@ -184,19 +184,19 @@ Returns information about domain and node health, the standby Availability Zone,
 
 ```sql
 SELECT
-ActiveAvailabilityZoneCount,
-AvailabilityZoneCount,
-ClusterHealth,
-DataNodeCount,
-DedicatedMaster,
-DomainState,
-EnvironmentInformation,
-MasterEligibleNodeCount,
-MasterNode,
-StandByAvailabilityZoneCount,
-TotalShards,
-TotalUnAssignedShards,
-WarmNodeCount
+active_availability_zone_count,
+availability_zone_count,
+cluster_health,
+data_node_count,
+dedicated_master,
+domain_state,
+environment_information,
+master_eligible_node_count,
+master_node,
+stand_by_availability_zone_count,
+total_shards,
+total_un_assigned_shards,
+warm_node_count
 FROM aws.opensearch.domain_healths
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

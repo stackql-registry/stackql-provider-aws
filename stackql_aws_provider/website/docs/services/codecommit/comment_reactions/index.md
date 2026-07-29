@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An enumeration token that can be used in a request to return the next batch of the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reactionsForComment" /></td>
+    <td><CopyableCode code="reactions_for_comment" /></td>
     <td><code>array</code></td>
     <td>An array of reactions to the specified comment.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns information about reactions to a specified comment ID. Reactions from us
 
 ```sql
 SELECT
-nextToken,
-reactionsForComment
+next_token,
+reactions_for_comment
 FROM aws.codecommit.comment_reactions
 WHERE region = '{{ region }}' -- required
 ;

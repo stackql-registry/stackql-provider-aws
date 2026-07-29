@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthenticationUrl" /></td>
+    <td><CopyableCode code="authentication_url" /></td>
     <td><code>string</code></td>
     <td>The URL where the customer will sign in to the identity provider. This URL contains the authorize endpoint for the Cognito UserPool used in the authentication.</td>
 </tr>
@@ -124,7 +124,7 @@ Retrieves the AuthenticationUrl for the current authentication session for the A
 
 ```sql
 SELECT
-AuthenticationUrl
+authentication_url
 FROM aws.connectparticipant.authentication_urls
 WHERE `X-Amz-Bearer` = '{{ X-Amz-Bearer }}' -- required
 AND region = '{{ region }}' -- required

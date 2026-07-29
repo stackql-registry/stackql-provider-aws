@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>array</code></td>
     <td>A list of actions performed when the rule criteria is met.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the V2 automation rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Criteria" /></td>
+    <td><CopyableCode code="criteria" /></td>
     <td><code>object</code></td>
     <td>The filtering type and configuration of the V2 automation rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the automation rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the V2 automation rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the V2 automation rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the V2 automation rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleOrder" /></td>
+    <td><CopyableCode code="rule_order" /></td>
     <td><code>number (float)</code></td>
     <td>The value for the rule priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleStatus" /></td>
+    <td><CopyableCode code="rule_status" /></td>
     <td><code>string</code></td>
     <td>The status of the V2 automation automation rule. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the V2 automation rule was updated.</td>
 </tr>
@@ -190,16 +190,16 @@ Returns an automation rule for the V2 service.
 
 ```sql
 SELECT
-Actions,
-CreatedAt,
-Criteria,
-Description,
-RuleArn,
-RuleId,
-RuleName,
-RuleOrder,
-RuleStatus,
-UpdatedAt
+actions,
+created_at,
+criteria,
+description,
+rule_arn,
+rule_id,
+rule_name,
+rule_order,
+rule_status,
+updated_at
 FROM aws.securityhub.automation_rule_v2s
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,8 +245,8 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-RuleArn,
-RuleId
+rule_arn,
+rule_id
 ;
 ```
 </TabItem>

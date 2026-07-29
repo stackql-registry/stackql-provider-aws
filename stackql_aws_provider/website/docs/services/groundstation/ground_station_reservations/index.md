@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="antennaName" /></td>
+    <td><CopyableCode code="antenna_name" /></td>
     <td><code>string</code></td>
     <td>Name of an antenna. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-._:=&#93;&#123;4,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>End time of a ground station reservation in UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groundStationId" /></td>
+    <td><CopyableCode code="ground_station_id" /></td>
     <td><code>string</code></td>
     <td>ID of a ground station. (pattern: &lt;code&gt;&#91; a-zA-Z0-9-._:=&#93;&#123;4,97&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservationDetails" /></td>
+    <td><CopyableCode code="reservation_details" /></td>
     <td><code>object</code></td>
     <td>Details of a ground station reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservationType" /></td>
+    <td><CopyableCode code="reservation_type" /></td>
     <td><code>string</code></td>
     <td>Type of a ground station reservation. (MAINTENANCE, CONTACT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time of a ground station reservation in UTC.</td>
 </tr>
@@ -174,12 +174,12 @@ Returns a list of reservations for a specified ground station.
 
 ```sql
 SELECT
-antennaName,
-endTime,
-groundStationId,
-reservationDetails,
-reservationType,
-startTime
+antenna_name,
+end_time,
+ground_station_id,
+reservation_details,
+reservation_type,
+start_time
 FROM aws.groundstation.ground_station_reservations
 WHERE ground_station_id = '{{ ground_station_id }}' -- required
 AND startTime = '{{ startTime }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceTypeManagementPreference" /></td>
+    <td><CopyableCode code="resource_type_management_preference" /></td>
     <td><code>object</code></td>
     <td>Returns whether Backup fully manages the backups for a resource type. For the benefits of full Backup management, see Full Backup management. For a list of resource types and whether each supports full Backup management, see the Feature availability by resource table. If "DynamoDB":false, you can enable full Backup management for DynamoDB backup by enabling Backup's advanced DynamoDB backup features.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTypeOptInPreference" /></td>
+    <td><CopyableCode code="resource_type_opt_in_preference" /></td>
     <td><code>object</code></td>
     <td>The services along with the opt-in preferences in the Region.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the current service opt-in settings for the Region. If service opt-in is
 
 ```sql
 SELECT
-ResourceTypeManagementPreference,
-ResourceTypeOptInPreference
+resource_type_management_preference,
+resource_type_opt_in_preference
 FROM aws.backup.region_settings
 WHERE region = '{{ region }}' -- required
 ;

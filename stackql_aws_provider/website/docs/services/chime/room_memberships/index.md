@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoomMemberships" /></td>
+    <td><CopyableCode code="room_memberships" /></td>
     <td><code>array</code></td>
     <td>The room membership details.</td>
 </tr>
@@ -170,8 +170,8 @@ Lists the membership details for the specified room in an Amazon Chime Enterpris
 
 ```sql
 SELECT
-NextToken,
-RoomMemberships
+next_token,
+room_memberships
 FROM aws.chime.room_memberships
 WHERE account_id = '{{ account_id }}' -- required
 AND room_id = '{{ room_id }}' -- required
@@ -212,7 +212,7 @@ SELECT
 '{{ room_id }}',
 '{{ region }}'
 RETURNING
-RoomMembership
+room_membership
 ;
 ```
 </TabItem>
@@ -263,7 +263,7 @@ AND room_id = '{{ room_id }}' --required
 AND member_id = '{{ member_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RoomMembership;
+room_membership;
 ```
 </TabItem>
 </Tabs>

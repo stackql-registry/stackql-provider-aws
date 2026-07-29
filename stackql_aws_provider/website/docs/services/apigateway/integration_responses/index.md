@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentHandling" /></td>
+    <td><CopyableCode code="content_handling" /></td>
     <td><code>string</code></td>
     <td>Specifies how to handle response payload content type conversions. Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors: If this property is not defined, the response payload will be passed through from the integration response to the method response without modification. (CONVERT_TO_BINARY, CONVERT_TO_TEXT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of method.response.header.&#123;name&#125;, where name is a valid and unique header name. The mapped non-static value must match the pattern of integration.response.header.&#123;name&#125; or integration.response.body.&#123;JSON-expression&#125;, where name is a valid and unique response header name and JSON-expression is a valid JSON expression without the $ prefix.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseTemplates" /></td>
+    <td><CopyableCode code="response_templates" /></td>
     <td><code>object</code></td>
     <td>Specifies the templates used to transform the integration response body. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="selectionPattern" /></td>
+    <td><CopyableCode code="selection_pattern" /></td>
     <td><code>string</code></td>
     <td>Specifies the regular expression (regex) pattern used to choose an integration response based on the response from the back end. For example, if the success response returns nothing and the error response returns some string, you could use the .+ regex to match error response. However, make sure that the error response does not contain any newline (\n) character in such cases. If the back end is an Lambda function, the Lambda function error header is matched. For all other HTTP and Amazon Web Services back ends, the HTTP status code is matched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The status code. (pattern: &lt;code&gt;&#91;1-5&#93;\d\d&lt;/code&gt;)</td>
 </tr>
@@ -180,11 +180,11 @@ Represents a get integration response.
 
 ```sql
 SELECT
-contentHandling,
-responseParameters,
-responseTemplates,
-selectionPattern,
-statusCode
+content_handling,
+response_parameters,
+response_templates,
+selection_pattern,
+status_code
 FROM aws.apigateway.integration_responses
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND resource_id = '{{ resource_id }}' -- required
@@ -220,11 +220,11 @@ AND http_method = '{{ http_method }}' --required
 AND status_code = '{{ status_code }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-contentHandling,
-responseParameters,
-responseTemplates,
-selectionPattern,
-statusCode;
+content_handling,
+response_parameters,
+response_templates,
+selection_pattern,
+status_code;
 ```
 </TabItem>
 </Tabs>
@@ -256,11 +256,11 @@ AND http_method = '{{ http_method }}' --required
 AND status_code = '{{ status_code }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-contentHandling,
-responseParameters,
-responseTemplates,
-selectionPattern,
-statusCode;
+content_handling,
+response_parameters,
+response_templates,
+selection_pattern,
+status_code;
 ```
 </TabItem>
 </Tabs>

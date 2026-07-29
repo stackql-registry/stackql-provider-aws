@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The CIS scan configuration's owner ID. (pattern: &lt;code&gt;\d&#123;12&#125;|o-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanConfigurationArn" /></td>
+    <td><CopyableCode code="scan_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The CIS scan configuration's scan configuration ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-cn)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;:&#91;0-9&#93;&#123;12&#125;:owner/(o-&#91;a-z0-9&#93;+|&#91;0-9&#93;&#123;12&#125;)/cis-configuration/&#91;0-9a-fA-F-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanName" /></td>
+    <td><CopyableCode code="scan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the CIS scan configuration.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>A schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityLevel" /></td>
+    <td><CopyableCode code="security_level" /></td>
     <td><code>string</code></td>
     <td>The CIS scan configuration's security level. (LEVEL_1, LEVEL_2)</td>
 </tr>
@@ -170,11 +170,11 @@ Lists CIS scan configurations.
 
 ```sql
 SELECT
-ownerId,
-scanConfigurationArn,
-scanName,
+owner_id,
+scan_configuration_arn,
+scan_name,
 schedule,
-securityLevel,
+security_level,
 tags,
 targets
 FROM aws.inspector2.cis_scan_configurations
@@ -215,7 +215,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-scanConfigurationArn
+scan_configuration_arn
 ;
 ```
 </TabItem>
@@ -291,7 +291,7 @@ WHERE
 region = '{{ region }}' --required
 AND scanConfigurationArn = '{{ scanConfigurationArn }}' --required
 RETURNING
-scanConfigurationArn;
+scan_configuration_arn;
 ```
 </TabItem>
 </Tabs>

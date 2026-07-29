@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivatedRules" /></td>
+    <td><CopyableCode code="activated_rules" /></td>
     <td><code>array</code></td>
     <td>An array of ActivatedRules objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If you have more ActivatedRules than the number that you specified for Limit in the request, the response includes a NextMarker value. To list more ActivatedRules, submit another ListActivatedRulesInRuleGroup request, and specify the NextMarker value from the response in the NextMarker value in the next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-ActivatedRules,
-NextMarker
+activated_rules,
+next_marker
 FROM aws.waf_regional.activated_rules_in_rule_groups
 WHERE region = '{{ region }}' -- required
 ;

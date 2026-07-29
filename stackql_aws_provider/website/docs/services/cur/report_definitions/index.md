@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalArtifacts" /></td>
+    <td><CopyableCode code="additional_artifacts" /></td>
     <td><code>array</code></td>
     <td>A list of manifests that you want Amazon Web Services to create for this report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdditionalSchemaElements" /></td>
+    <td><CopyableCode code="additional_schema_elements" /></td>
     <td><code>array</code></td>
     <td>A list of strings that indicate additional content that Amazon Web Services includes in the report, such as individual resource IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingViewArn" /></td>
+    <td><CopyableCode code="billing_view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name of the billing view. The BillingViewArn is needed to create Amazon Web Services Cost and Usage Report for each billing group maintained in the Amazon Web Services Billing Conductor service. The BillingViewArn for a billing group can be constructed as: arn:aws:billing::payer-account-id:billingview/billing-group-primary-account-id (pattern: &lt;code&gt;(arn:aws(-cn)?:billing::&#91;0-9&#93;&#123;12&#125;:billingview/)?&#91;a-zA-Z0-9_\+=\.\-@&#93;.&#123;1,30&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Compression" /></td>
+    <td><CopyableCode code="compression" /></td>
     <td><code>string</code></td>
     <td>The compression format that Amazon Web Services uses for the report. (ZIP, GZIP, Parquet)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format that Amazon Web Services saves the report in. (textORcsv, Parquet)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshClosedReports" /></td>
+    <td><CopyableCode code="refresh_closed_reports" /></td>
     <td><code>boolean</code></td>
     <td>Whether you want Amazon Web Services to update your reports after they have been finalized if Amazon Web Services detects charges related to previous months. These charges can include refunds, credits, or support fees.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportName" /></td>
+    <td><CopyableCode code="report_name" /></td>
     <td><code>string</code></td>
     <td>The name of the report that you want to create. The name must be unique, is case sensitive, and can't include spaces. (pattern: &lt;code&gt;&#91;0-9A-Za-z!\-_.*\'()&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportStatus" /></td>
+    <td><CopyableCode code="report_status" /></td>
     <td><code>object</code></td>
     <td>The status of the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportVersioning" /></td>
+    <td><CopyableCode code="report_versioning" /></td>
     <td><code>string</code></td>
     <td>Whether you want Amazon Web Services to overwrite the previous version of each report or to deliver the report in addition to the previous versions. (CREATE_NEW_REPORT, OVERWRITE_REPORT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Bucket" /></td>
+    <td><CopyableCode code="s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket where Amazon Web Services delivers the report. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Prefix" /></td>
+    <td><CopyableCode code="s3_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix that Amazon Web Services adds to the report name when Amazon Web Services delivers the report. Your prefix can't include spaces. (pattern: &lt;code&gt;&#91;0-9A-Za-z!\-_.*\'()/&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Region" /></td>
+    <td><CopyableCode code="s3_region" /></td>
     <td><code>string</code></td>
     <td>The region of the S3 bucket that Amazon Web Services delivers the report into. (af-south-1, ap-east-1, ap-south-1, ap-south-2, ap-southeast-1, ap-southeast-2, ap-southeast-3, ap-northeast-1, ap-northeast-2, ap-northeast-3, ca-central-1, eu-central-1, eu-central-2, eu-west-1, eu-west-2, eu-west-3, eu-north-1, eu-south-1, eu-south-2, me-central-1, me-south-1, sa-east-1, us-east-1, us-east-2, us-west-1, us-west-2, cn-north-1, cn-northwest-1)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeUnit" /></td>
+    <td><CopyableCode code="time_unit" /></td>
     <td><code>string</code></td>
     <td>The length of time covered by the report. (HOURLY, DAILY, MONTHLY)</td>
 </tr>
@@ -200,19 +200,19 @@ Lists the Amazon Web Services Cost and Usage Report available to this account.
 
 ```sql
 SELECT
-AdditionalArtifacts,
-AdditionalSchemaElements,
-BillingViewArn,
-Compression,
-Format,
-RefreshClosedReports,
-ReportName,
-ReportStatus,
-ReportVersioning,
-S3Bucket,
-S3Prefix,
-S3Region,
-TimeUnit
+additional_artifacts,
+additional_schema_elements,
+billing_view_arn,
+compression,
+format,
+refresh_closed_reports,
+report_name,
+report_status,
+report_versioning,
+s3_bucket,
+s3_prefix,
+s3_region,
+time_unit
 FROM aws.cur.report_definitions
 WHERE region = '{{ region }}' -- required
 ;

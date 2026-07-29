@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with the slot. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot associated with the slot. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the slot was created.</td>
 </tr>
@@ -71,52 +71,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description specified for the slot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentId" /></td>
+    <td><CopyableCode code="intent_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the intent associated with the slot. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the slot was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The language and locale specified for the slot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="multipleValuesSetting" /></td>
+    <td><CopyableCode code="multiple_values_setting" /></td>
     <td><code>object</code></td>
     <td>Indicates whether a slot can return multiple values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="obfuscationSetting" /></td>
+    <td><CopyableCode code="obfuscation_setting" /></td>
     <td><code>object</code></td>
     <td>Determines whether Amazon Lex obscures slot values in conversation logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotId" /></td>
+    <td><CopyableCode code="slot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier generated for the slot. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotName" /></td>
+    <td><CopyableCode code="slot_name" /></td>
     <td><code>string</code></td>
     <td>The name specified for the slot. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotTypeId" /></td>
+    <td><CopyableCode code="slot_type_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the slot type that determines the values entered into the slot. (pattern: &lt;code&gt;^((AMAZON\.)&#91;a-zA-Z_&#93;+?|&#91;0-9a-zA-Z&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subSlotSetting" /></td>
+    <td><CopyableCode code="sub_slot_setting" /></td>
     <td><code>object</code></td>
     <td>Specifications for the constituent sub slots and the expression for the composite slot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="valueElicitationSetting" /></td>
+    <td><CopyableCode code="value_elicitation_setting" /></td>
     <td><code>object</code></td>
     <td>Specifies the elicitation setting details eliciting a slot.</td>
 </tr>
@@ -135,32 +135,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot that contains the slots. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that contains the slots. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentId" /></td>
+    <td><CopyableCode code="intent_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the intent that contains the slots. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The language and locale of the slots in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListSlots operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListSlots operation request to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotSummaries" /></td>
+    <td><CopyableCode code="slot_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the slots that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter of the request. If there are more slots available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
@@ -283,20 +283,20 @@ Gets metadata information about a slot.
 
 ```sql
 SELECT
-botId,
-botVersion,
-creationDateTime,
+bot_id,
+bot_version,
+creation_date_time,
 description,
-intentId,
-lastUpdatedDateTime,
-localeId,
-multipleValuesSetting,
-obfuscationSetting,
-slotId,
-slotName,
-slotTypeId,
-subSlotSetting,
-valueElicitationSetting
+intent_id,
+last_updated_date_time,
+locale_id,
+multiple_values_setting,
+obfuscation_setting,
+slot_id,
+slot_name,
+slot_type_id,
+sub_slot_setting,
+value_elicitation_setting
 FROM aws.lexv2_models.slots
 WHERE slot_id = '{{ slot_id }}' -- required
 AND bot_id = '{{ bot_id }}' -- required
@@ -313,12 +313,12 @@ Gets a list of slots that match the specified criteria.
 
 ```sql
 SELECT
-botId,
-botVersion,
-intentId,
-localeId,
-nextToken,
-slotSummaries
+bot_id,
+bot_version,
+intent_id,
+locale_id,
+next_token,
+slot_summaries
 FROM aws.lexv2_models.slots
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -373,19 +373,19 @@ SELECT
 '{{ intent_id }}',
 '{{ region }}'
 RETURNING
-botId,
-botVersion,
-creationDateTime,
+bot_id,
+bot_version,
+creation_date_time,
 description,
-intentId,
-localeId,
-multipleValuesSetting,
-obfuscationSetting,
-slotId,
-slotName,
-slotTypeId,
-subSlotSetting,
-valueElicitationSetting
+intent_id,
+locale_id,
+multiple_values_setting,
+obfuscation_setting,
+slot_id,
+slot_name,
+slot_type_id,
+sub_slot_setting,
+value_elicitation_setting
 ;
 ```
 </TabItem>
@@ -651,20 +651,20 @@ AND region = '{{ region }}' --required
 AND slotName = '{{ slotName }}' --required
 AND valueElicitationSetting = '{{ valueElicitationSetting }}' --required
 RETURNING
-botId,
-botVersion,
-creationDateTime,
+bot_id,
+bot_version,
+creation_date_time,
 description,
-intentId,
-lastUpdatedDateTime,
-localeId,
-multipleValuesSetting,
-obfuscationSetting,
-slotId,
-slotName,
-slotTypeId,
-subSlotSetting,
-valueElicitationSetting;
+intent_id,
+last_updated_date_time,
+locale_id,
+multiple_values_setting,
+obfuscation_setting,
+slot_id,
+slot_name,
+slot_type_id,
+sub_slot_setting,
+value_elicitation_setting;
 ```
 </TabItem>
 </Tabs>

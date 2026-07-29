@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the objective. (pattern: &lt;code&gt;arn:(aws(?:&#91;-a-z&#93;*)?):controlcatalog:::objective/&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the objective was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the objective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>object</code></td>
     <td>The domain that the objective belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the objective was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the objective.</td>
 </tr>
@@ -154,12 +154,12 @@ Returns a paginated list of objectives from the Control Catalog. You can apply a
 
 ```sql
 SELECT
-Arn,
-CreateTime,
-Description,
-Domain,
-LastUpdateTime,
-Name
+arn,
+create_time,
+description,
+domain,
+last_update_time,
+name
 FROM aws.controlcatalog.objectives
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

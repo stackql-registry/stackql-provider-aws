@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DelegatedAdminResourcePolicy" /></td>
+    <td><CopyableCode code="delegated_admin_resource_policy" /></td>
     <td><code>string</code></td>
     <td>The default resource-based policy that is automatically generated for the delegated administrator of an Organizations organization. This policy will be evaluated in tandem with any policy you submit for the resource. For more information about this policy, see Default resource policy for delegated administrators.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the CloudTrail event data store, dashboard, or channel attached to resource-based policy. Example event data store ARN format: arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE Example dashboard ARN format: arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash Example channel ARN format: arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890 (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>A JSON-formatted string that contains the resource-based policy attached to the CloudTrail event data store, dashboard, or channel.</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves the JSON text of the resource-based policy document attached to the Cl
 
 ```sql
 SELECT
-DelegatedAdminResourcePolicy,
-ResourceArn,
-ResourcePolicy
+delegated_admin_resource_policy,
+resource_arn,
+resource_policy
 FROM aws.cloudtrail.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,9 +176,9 @@ region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 AND ResourcePolicy = '{{ ResourcePolicy }}' --required
 RETURNING
-DelegatedAdminResourcePolicy,
-ResourceArn,
-ResourcePolicy;
+delegated_admin_resource_policy,
+resource_arn,
+resource_policy;
 ```
 </TabItem>
 </Tabs>

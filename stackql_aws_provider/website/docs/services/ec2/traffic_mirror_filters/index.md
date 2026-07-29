@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the Traffic Mirror filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressFilterRules" /></td>
+    <td><CopyableCode code="egress_filter_rules" /></td>
     <td><code>string</code></td>
     <td>Information about the egress rules that are associated with the Traffic Mirror filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressFilterRules" /></td>
+    <td><CopyableCode code="ingress_filter_rules" /></td>
     <td><code>string</code></td>
     <td>Information about the ingress rules that are associated with the Traffic Mirror filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkServices" /></td>
+    <td><CopyableCode code="network_services" /></td>
     <td><code>string</code></td>
     <td>The network service traffic that is associated with the Traffic Mirror filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the Traffic Mirror filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficMirrorFilterId" /></td>
+    <td><CopyableCode code="traffic_mirror_filter_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Traffic Mirror filter.</td>
 </tr>
@@ -220,12 +220,12 @@ Describes one or more Traffic Mirror filters.
 
 ```sql
 SELECT
-Description,
-EgressFilterRules,
-IngressFilterRules,
-NetworkServices,
-Tags,
-TrafficMirrorFilterId
+description,
+egress_filter_rules,
+ingress_filter_rules,
+network_services,
+tags,
+traffic_mirror_filter_id
 FROM aws.ec2.traffic_mirror_filters
 WHERE region = '{{ region }}' -- required
 AND TrafficMirrorFilterId = '{{ TrafficMirrorFilterId }}'
@@ -267,12 +267,12 @@ SELECT
 '{{ DryRun }}',
 '{{ ClientToken }}'
 RETURNING
-Description,
-EgressFilterRules,
-IngressFilterRules,
-NetworkServices,
-Tags,
-TrafficMirrorFilterId
+description,
+egress_filter_rules,
+ingress_filter_rules,
+network_services,
+tags,
+traffic_mirror_filter_id
 ;
 ```
 </TabItem>
@@ -329,12 +329,12 @@ AND AddNetworkService = '{{ AddNetworkService}}'
 AND RemoveNetworkService = '{{ RemoveNetworkService}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-Description,
-EgressFilterRules,
-IngressFilterRules,
-NetworkServices,
-Tags,
-TrafficMirrorFilterId;
+description,
+egress_filter_rules,
+ingress_filter_rules,
+network_services,
+tags,
+traffic_mirror_filter_id;
 ```
 </TabItem>
 </Tabs>

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Ip" /></td>
+    <td><CopyableCode code="ip" /></td>
     <td><code>string</code></td>
     <td>A dedicated IP address that is associated with your Amazon Pinpoint account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolName" /></td>
+    <td><CopyableCode code="pool_name" /></td>
     <td><code>string</code></td>
     <td>The name of a dedicated IP pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmupPercentage" /></td>
+    <td><CopyableCode code="warmup_percentage" /></td>
     <td><code>integer</code></td>
     <td>Indicates how complete the dedicated IP warm-up process is. When this value equals 1, the address has completed the warm-up process and is ready for use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmupStatus" /></td>
+    <td><CopyableCode code="warmup_status" /></td>
     <td><code>string</code></td>
     <td>The warm-up status of a dedicated IP address. The status can have one of the following values: IN_PROGRESS – The IP address isn't ready to use because the dedicated IP warm-up process is ongoing. DONE – The dedicated IP warm-up process is complete, and the IP address is ready to use. (IN_PROGRESS, DONE)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Ip" /></td>
+    <td><CopyableCode code="ip" /></td>
     <td><code>string</code></td>
     <td>A dedicated IP address that is associated with your Amazon Pinpoint account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolName" /></td>
+    <td><CopyableCode code="pool_name" /></td>
     <td><code>string</code></td>
     <td>The name of a dedicated IP pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmupPercentage" /></td>
+    <td><CopyableCode code="warmup_percentage" /></td>
     <td><code>integer</code></td>
     <td>Indicates how complete the dedicated IP warm-up process is. When this value equals 1, the address has completed the warm-up process and is ready for use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmupStatus" /></td>
+    <td><CopyableCode code="warmup_status" /></td>
     <td><code>string</code></td>
     <td>The warm-up status of a dedicated IP address. The status can have one of the following values: IN_PROGRESS – The IP address isn't ready to use because the dedicated IP warm-up process is ongoing. DONE – The dedicated IP warm-up process is complete, and the IP address is ready to use. (IN_PROGRESS, DONE)</td>
 </tr>
@@ -211,10 +211,10 @@ Get information about a dedicated IP address, including the name of the dedicate
 
 ```sql
 SELECT
-Ip,
-PoolName,
-WarmupPercentage,
-WarmupStatus
+ip,
+pool_name,
+warmup_percentage,
+warmup_status
 FROM aws.pinpoint_email.dedicated_ips
 WHERE ip = '{{ ip }}' -- required
 AND region = '{{ region }}' -- required
@@ -227,10 +227,10 @@ List the dedicated IP addresses that are associated with your Amazon Pinpoint ac
 
 ```sql
 SELECT
-Ip,
-PoolName,
-WarmupPercentage,
-WarmupStatus
+ip,
+pool_name,
+warmup_percentage,
+warmup_status
 FROM aws.pinpoint_email.dedicated_ips
 WHERE region = '{{ region }}' -- required
 AND PoolName = '{{ PoolName }}'

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path that is referenced from the root.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>array</code></td>
     <td>List of policy objects.</td>
 </tr>
@@ -143,8 +143,8 @@ Lists all policies from the root of the Directory to the object specified. If th
 
 ```sql
 SELECT
-Path,
-Policies
+path,
+policies
 FROM aws.clouddirectory.policies
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

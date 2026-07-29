@@ -61,37 +61,37 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the linked WhatsApp Business Account. (pattern: &lt;code&gt;arn:.*:waba/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventDestinations" /></td>
+    <td><CopyableCode code="event_destinations" /></td>
     <td><code>array</code></td>
     <td>The event destinations for the linked WhatsApp Business Account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkDate" /></td>
+    <td><CopyableCode code="link_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the WhatsApp Business Account was linked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="marketingMessagesOnboardingStatus" /></td>
+    <td><CopyableCode code="marketing_messages_onboarding_status" /></td>
     <td><code>string</code></td>
     <td>The onboarding status for the Marketing Messages API. This value is fetched from Meta and indicates whether the WhatsApp Business Account is onboarded for Meta's Marketing Messages API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="phoneNumbers" /></td>
+    <td><CopyableCode code="phone_numbers" /></td>
     <td><code>array</code></td>
     <td>The phone numbers associated with the Linked WhatsApp Business Account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationStatus" /></td>
+    <td><CopyableCode code="registration_status" /></td>
     <td><code>string</code></td>
     <td>The registration status of the linked WhatsApp Business Account. (COMPLETE, INCOMPLETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wabaId" /></td>
+    <td><CopyableCode code="waba_id" /></td>
     <td><code>string</code></td>
     <td>The WhatsApp Business Account ID from meta.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wabaName" /></td>
+    <td><CopyableCode code="waba_name" /></td>
     <td><code>string</code></td>
     <td>The name of the linked WhatsApp Business Account.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the linked WhatsApp Business Account. (pattern: &lt;code&gt;arn:.*:waba/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventDestinations" /></td>
+    <td><CopyableCode code="event_destinations" /></td>
     <td><code>array</code></td>
     <td>The event destinations for the linked WhatsApp Business Account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkDate" /></td>
+    <td><CopyableCode code="link_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the WhatsApp Business Account was linked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="marketingMessagesOnboardingStatus" /></td>
+    <td><CopyableCode code="marketing_messages_onboarding_status" /></td>
     <td><code>string</code></td>
     <td>The onboarding status for the Marketing Messages API. This value is fetched from Meta and indicates whether the WhatsApp Business Account is onboarded for Meta's Marketing Messages API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationStatus" /></td>
+    <td><CopyableCode code="registration_status" /></td>
     <td><code>string</code></td>
     <td>The registration status of the linked WhatsApp Business Account. (COMPLETE, INCOMPLETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wabaId" /></td>
+    <td><CopyableCode code="waba_id" /></td>
     <td><code>string</code></td>
     <td>The WhatsApp Business Account ID provided by Meta.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wabaName" /></td>
+    <td><CopyableCode code="waba_name" /></td>
     <td><code>string</code></td>
     <td>The name of the linked WhatsApp Business Account.</td>
 </tr>
@@ -239,13 +239,13 @@ Get the details of your linked WhatsApp Business Account.
 SELECT
 id,
 arn,
-eventDestinations,
-linkDate,
-marketingMessagesOnboardingStatus,
-phoneNumbers,
-registrationStatus,
-wabaId,
-wabaName
+event_destinations,
+link_date,
+marketing_messages_onboarding_status,
+phone_numbers,
+registration_status,
+waba_id,
+waba_name
 FROM aws.socialmessaging.linked_whats_app_business_accounts
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -260,12 +260,12 @@ List all WhatsApp Business Accounts linked to your Amazon Web Services account.
 SELECT
 id,
 arn,
-eventDestinations,
-linkDate,
-marketingMessagesOnboardingStatus,
-registrationStatus,
-wabaId,
-wabaName
+event_destinations,
+link_date,
+marketing_messages_onboarding_status,
+registration_status,
+waba_id,
+waba_name
 FROM aws.socialmessaging.linked_whats_app_business_accounts
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

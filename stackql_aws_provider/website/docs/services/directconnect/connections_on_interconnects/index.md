@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -125,7 +125,7 @@ Deprecated. Use DescribeHostedConnections instead. Lists the connections that ha
 ```sql
 SELECT
 connections,
-nextToken
+next_token
 FROM aws.directconnect.connections_on_interconnects
 WHERE region = '{{ region }}' -- required
 ;

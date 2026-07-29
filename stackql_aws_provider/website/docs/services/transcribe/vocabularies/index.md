@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DownloadUri" /></td>
+    <td><CopyableCode code="download_uri" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 location where the custom vocabulary is stored; use this URI to view or download the custom vocabulary. (pattern: &lt;code&gt;(s3:​//|http(s*):​//).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If VocabularyState is FAILED, FailureReason contains information about why the custom vocabulary request failed. See also: Common Errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code you selected for your custom vocabulary. (af-ZA, ar-AE, ar-SA, da-DK, de-CH, de-DE, en-AB, en-AU, en-GB, en-IE, en-IN, en-US, en-WL, es-ES, es-US, fa-IR, fr-CA, fr-FR, he-IL, hi-IN, id-ID, it-IT, ja-JP, ko-KR, ms-MY, nl-NL, pt-BR, pt-PT, ru-RU, ta-IN, te-IN, tr-TR, zh-CN, zh-TW, th-TH, en-ZA, en-NZ, vi-VN, sv-SE, ab-GE, ast-ES, az-AZ, ba-RU, be-BY, bg-BG, bn-IN, bs-BA, ca-ES, ckb-IQ, ckb-IR, cs-CZ, cy-WL, el-GR, et-EE, et-ET, eu-ES, fi-FI, gl-ES, gu-IN, ha-NG, hr-HR, hu-HU, hy-AM, is-IS, ka-GE, kab-DZ, kk-KZ, kn-IN, ky-KG, lg-IN, lt-LT, lv-LV, mhr-RU, mi-NZ, mk-MK, ml-IN, mn-MN, mr-IN, mt-MT, no-NO, or-IN, pa-IN, pl-PL, ps-AF, ro-RO, rw-RW, si-LK, sk-SK, sl-SI, so-SO, sr-RS, su-ID, sw-BI, sw-KE, sw-RW, sw-TZ, sw-UG, tl-PH, tt-RU, ug-CN, uk-UA, uz-UZ, wo-SN, zh-HK, zu-ZA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified custom vocabulary was last modified. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.761000-07:00 represents 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VocabularyName" /></td>
+    <td><CopyableCode code="vocabulary_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom vocabulary you requested information about. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VocabularyState" /></td>
+    <td><CopyableCode code="vocabulary_state" /></td>
     <td><code>string</code></td>
     <td>The processing state of your custom vocabulary. If the state is READY, you can use the custom vocabulary in a StartTranscriptionJob request. (PENDING, READY, FAILED)</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If NextToken is present in your response, it indicates that not all results are displayed. To view the next set of results, copy the string associated with the NextToken parameter in your results output, then run your request again including NextToken with the value of the copied string. Repeat as needed to view all your results. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Lists all custom vocabularies that have the status specified in your request. Vocabularies are ordered by creation date, with the newest vocabulary first. (PENDING, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vocabularies" /></td>
+    <td><CopyableCode code="vocabularies" /></td>
     <td><code>array</code></td>
     <td>Provides information about the custom vocabularies that match the criteria specified in your request.</td>
 </tr>
@@ -203,12 +203,12 @@ Provides information about the specified custom vocabulary. To view the status o
 
 ```sql
 SELECT
-DownloadUri,
-FailureReason,
-LanguageCode,
-LastModifiedTime,
-VocabularyName,
-VocabularyState
+download_uri,
+failure_reason,
+language_code,
+last_modified_time,
+vocabulary_name,
+vocabulary_state
 FROM aws.transcribe.vocabularies
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,9 +220,9 @@ Provides a list of custom vocabularies that match the specified criteria. If no 
 
 ```sql
 SELECT
-NextToken,
-Status,
-Vocabularies
+next_token,
+status,
+vocabularies
 FROM aws.transcribe.vocabularies
 WHERE region = '{{ region }}' -- required
 ;
@@ -263,11 +263,11 @@ SELECT
 '{{ DataAccessRoleArn }}',
 '{{ region }}'
 RETURNING
-FailureReason,
-LanguageCode,
-LastModifiedTime,
-VocabularyName,
-VocabularyState
+failure_reason,
+language_code,
+last_modified_time,
+vocabulary_name,
+vocabulary_state
 ;
 ```
 </TabItem>
@@ -338,10 +338,10 @@ region = '{{ region }}' --required
 AND VocabularyName = '{{ VocabularyName }}' --required
 AND LanguageCode = '{{ LanguageCode }}' --required
 RETURNING
-LanguageCode,
-LastModifiedTime,
-VocabularyName,
-VocabularyState;
+language_code,
+last_modified_time,
+vocabulary_name,
+vocabulary_state;
 ```
 </TabItem>
 </Tabs>

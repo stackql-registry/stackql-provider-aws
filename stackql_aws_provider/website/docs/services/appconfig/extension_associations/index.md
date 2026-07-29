@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The system-generated Amazon Resource Name (ARN) for the extension. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtensionArn" /></td>
+    <td><CopyableCode code="extension_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the extension defined in the association. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtensionVersionNumber" /></td>
+    <td><CopyableCode code="extension_version_number" /></td>
     <td><code>integer</code></td>
     <td>The version number for the extension defined in the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID for the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>The parameter names and values defined in the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARNs of applications, configuration profiles, or environments defined in the association. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExtensionArn" /></td>
+    <td><CopyableCode code="extension_arn" /></td>
     <td><code>string</code></td>
     <td>The system-generated Amazon Resource Name (ARN) for the extension. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The extension association ID. This ID is used to call other ExtensionAssociation API actions such as GetExtensionAssociation or DeleteExtensionAssociation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARNs of applications, configuration profiles, or environments defined in the association. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -233,12 +233,12 @@ Returns information about an AppConfig extension association. For more informati
 
 ```sql
 SELECT
-Arn,
-ExtensionArn,
-ExtensionVersionNumber,
-Id,
-Parameters,
-ResourceArn
+arn,
+extension_arn,
+extension_version_number,
+id,
+parameters,
+resource_arn
 FROM aws.appconfig.extension_associations
 WHERE extension_association_id = '{{ extension_association_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -251,9 +251,9 @@ Lists all AppConfig extension associations in the account. For more information 
 
 ```sql
 SELECT
-ExtensionArn,
-Id,
-ResourceArn
+extension_arn,
+id,
+resource_arn
 FROM aws.appconfig.extension_associations
 WHERE region = '{{ region }}' -- required
 AND resource_identifier = '{{ resource_identifier }}'
@@ -297,12 +297,12 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-ExtensionArn,
-ExtensionVersionNumber,
-Id,
-Parameters,
-ResourceArn
+arn,
+extension_arn,
+extension_version_number,
+id,
+parameters,
+resource_arn
 ;
 ```
 </TabItem>
@@ -350,12 +350,12 @@ WHERE
 extension_association_id = '{{ extension_association_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-ExtensionArn,
-ExtensionVersionNumber,
-Id,
-Parameters,
-ResourceArn;
+arn,
+extension_arn,
+extension_version_number,
+id,
+parameters,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

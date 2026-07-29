@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The page token to use to retrieve the next set of results. If there are no additional results, this value is null. (pattern: &lt;code&gt;&#91;\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionedProductPlanDetails" /></td>
+    <td><CopyableCode code="provisioned_product_plan_details" /></td>
     <td><code>object</code></td>
     <td>Information about the plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceChanges" /></td>
+    <td><CopyableCode code="resource_changes" /></td>
     <td><code>array</code></td>
     <td>Information about the resource changes that will occur when the plan is executed.</td>
 </tr>
@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PlanId" /></td>
+    <td><CopyableCode code="plan_id" /></td>
     <td><code>string</code></td>
     <td>The plan identifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlanName" /></td>
+    <td><CopyableCode code="plan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlanType" /></td>
+    <td><CopyableCode code="plan_type" /></td>
     <td><code>string</code></td>
     <td>The plan type. (CLOUDFORMATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionProductId" /></td>
+    <td><CopyableCode code="provision_product_id" /></td>
     <td><code>string</code></td>
     <td>The product identifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionProductName" /></td>
+    <td><CopyableCode code="provision_product_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name of the provisioned product. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9._-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactId" /></td>
+    <td><CopyableCode code="provisioning_artifact_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the provisioning artifact. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -196,9 +196,9 @@ Gets information about the resource changes for the specified plan.
 
 ```sql
 SELECT
-NextPageToken,
-ProvisionedProductPlanDetails,
-ResourceChanges
+next_page_token,
+provisioned_product_plan_details,
+resource_changes
 FROM aws.servicecatalog.provisioned_product_plans
 WHERE region = '{{ region }}' -- required
 ;
@@ -210,12 +210,12 @@ Lists the plans for the specified provisioned product or all plans to which the 
 
 ```sql
 SELECT
-PlanId,
-PlanName,
-PlanType,
-ProvisionProductId,
-ProvisionProductName,
-ProvisioningArtifactId
+plan_id,
+plan_name,
+plan_type,
+provision_product_id,
+provision_product_name,
+provisioning_artifact_id
 FROM aws.servicecatalog.provisioned_product_plans
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,11 +266,11 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-PlanId,
-PlanName,
-ProvisionProductId,
-ProvisionedProductName,
-ProvisioningArtifactId
+plan_id,
+plan_name,
+provision_product_id,
+provisioned_product_name,
+provisioning_artifact_id
 ;
 ```
 </TabItem>

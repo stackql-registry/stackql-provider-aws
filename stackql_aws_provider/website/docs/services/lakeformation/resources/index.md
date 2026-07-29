@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExpectedResourceOwnerAccount" /></td>
+    <td><CopyableCode code="expected_resource_owner_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that owns the Glue tables associated with specific Amazon S3 locations. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HybridAccessEnabled" /></td>
+    <td><CopyableCode code="hybrid_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the data access of tables pointing to the location can be managed by both Lake Formation permissions as well as Amazon S3 bucket policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role that registered a resource. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;*:role/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationStatus" /></td>
+    <td><CopyableCode code="verification_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the registered role has sufficient permissions to access registered Amazon S3 location. Verification Status can be one of the following: VERIFIED - Registered role has sufficient permissions to access registered Amazon S3 location. NOT_VERIFIED - Registered role does not have sufficient permissions to access registered Amazon S3 location. VERIFICATION_FAILED - Unable to verify if the registered role can access the registered Amazon S3 location. (VERIFIED, VERIFICATION_FAILED, NOT_VERIFIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WithFederation" /></td>
+    <td><CopyableCode code="with_federation" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not the resource is a federated resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WithPrivilegedAccess" /></td>
+    <td><CopyableCode code="with_privileged_access" /></td>
     <td><code>boolean</code></td>
     <td>Grants the calling principal the permissions to perform all supported Lake Formation operations on the registered data location.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, if this is not the first call to retrieve these resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceInfoList" /></td>
+    <td><CopyableCode code="resource_info_list" /></td>
     <td><code>array</code></td>
     <td>A summary of the data lake resources.</td>
 </tr>
@@ -222,14 +222,14 @@ Retrieves the current data access role for the given resource registered in Lake
 
 ```sql
 SELECT
-ExpectedResourceOwnerAccount,
-HybridAccessEnabled,
-LastModified,
-ResourceArn,
-RoleArn,
-VerificationStatus,
-WithFederation,
-WithPrivilegedAccess
+expected_resource_owner_account,
+hybrid_access_enabled,
+last_modified,
+resource_arn,
+role_arn,
+verification_status,
+with_federation,
+with_privileged_access
 FROM aws.lakeformation.resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,8 +241,8 @@ Lists the resources registered to be managed by the Data Catalog.
 
 ```sql
 SELECT
-NextToken,
-ResourceInfoList
+next_token,
+resource_info_list
 FROM aws.lakeformation.resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -339,7 +339,7 @@ region = '{{ region }}' --required
 AND Resource = '{{ Resource }}' --required
 AND LFTags = '{{ LFTags }}' --required
 RETURNING
-Failures;
+failures;
 ```
 </TabItem>
 <TabItem value="update_resource">

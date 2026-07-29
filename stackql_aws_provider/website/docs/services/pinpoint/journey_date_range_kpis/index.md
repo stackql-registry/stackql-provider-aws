@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the metric applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date and time of the date range that was used to filter the query results, in extended ISO 8601 format. The date range is inclusive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JourneyId" /></td>
+    <td><CopyableCode code="journey_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the journey that the metric applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KpiName" /></td>
+    <td><CopyableCode code="kpi_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric, also referred to as a key performance indicator (KPI), that the data was retrieved for. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen. For a list of possible values, see the Amazon Pinpoint Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KpiResult" /></td>
+    <td><CopyableCode code="kpi_result" /></td>
     <td><code>object</code></td>
     <td>An array of objects that contains the results of the query. Each object contains the value for the metric and metadata about that value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null for the Journey Engagement Metrics resource because the resource returns all results in a single page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The first date and time of the date range that was used to filter the query results, in extended ISO 8601 format. The date range is inclusive.</td>
 </tr>
@@ -184,13 +184,13 @@ Retrieves (queries) pre-aggregated data for a standard engagement metric that ap
 
 ```sql
 SELECT
-ApplicationId,
-EndTime,
-JourneyId,
-KpiName,
-KpiResult,
-NextToken,
-StartTime
+application_id,
+end_time,
+journey_id,
+kpi_name,
+kpi_result,
+next_token,
+start_time
 FROM aws.pinpoint.journey_date_range_kpis
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `journey-id` = '{{ journey-id }}' -- required

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Conditions" /></td>
+    <td><CopyableCode code="conditions" /></td>
     <td><code>string</code></td>
     <td>The conditions that determine which CIDRs are selected by this rule. Conditions specify criteria such as resource type, tags, account IDs, and Regions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamScopeId" /></td>
+    <td><CopyableCode code="ipam_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM scope from which to select CIDRs. This determines whether to select from public or private IP address space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>For rules of type ipam-resource-cidr, this is the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleType" /></td>
+    <td><CopyableCode code="rule_type" /></td>
     <td><code>string</code></td>
     <td>The type of CIDR selection rule. Valid values include include for selecting CIDRs that match the conditions, and exclude for excluding CIDRs that match the conditions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StaticCidr" /></td>
+    <td><CopyableCode code="static_cidr" /></td>
     <td><code>string</code></td>
     <td>A fixed list of CIDRs that do not change (like a manual list replicated across Regions).</td>
 </tr>
@@ -164,11 +164,11 @@ Retrieves the CIDR selection rules for an IPAM prefix list resolver. Use this op
 
 ```sql
 SELECT
-Conditions,
-IpamScopeId,
-ResourceType,
-RuleType,
-StaticCidr
+conditions,
+ipam_scope_id,
+resource_type,
+rule_type,
+static_cidr
 FROM aws.ec2.ipam_prefix_list_resolver_rules
 WHERE IpamPrefixListResolverId = '{{ IpamPrefixListResolverId }}' -- required
 AND region = '{{ region }}' -- required

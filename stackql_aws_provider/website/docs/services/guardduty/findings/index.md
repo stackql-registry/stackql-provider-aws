@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Findings" /></td>
+    <td><CopyableCode code="findings" /></td>
     <td><code>array</code></td>
     <td>A list of findings.</td>
 </tr>
@@ -180,7 +180,7 @@ Describes Amazon GuardDuty findings specified by finding IDs.
 
 ```sql
 SELECT
-Findings
+findings
 FROM aws.guardduty.findings
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required

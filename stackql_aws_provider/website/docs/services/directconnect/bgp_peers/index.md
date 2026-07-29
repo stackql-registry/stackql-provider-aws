@@ -112,7 +112,7 @@ SELECT
 '{{ newBGPPeer }}',
 '{{ region }}'
 RETURNING
-virtualInterface
+virtual_interface
 ;
 ```
 </TabItem>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The app ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackendEnvironmentName" /></td>
+    <td><CopyableCode code="backend_environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>If the request fails, this error is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceConfig" /></td>
+    <td><CopyableCode code="resource_config" /></td>
     <td><code>object</code></td>
     <td>Defines the resource configuration when creating an auth resource in your Amplify project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of this resource.</td>
 </tr>
@@ -170,11 +170,11 @@ Gets a backend auth details.
 
 ```sql
 SELECT
-AppId,
-BackendEnvironmentName,
-Error,
-ResourceConfig,
-ResourceName
+app_id,
+backend_environment_name,
+error,
+resource_config,
+resource_name
 FROM aws.amplifybackend.backend_auths
 WHERE app_id = '{{ app_id }}' -- required
 AND backend_environment_name = '{{ backend_environment_name }}' -- required
@@ -213,12 +213,12 @@ SELECT
 '{{ app_id }}',
 '{{ region }}'
 RETURNING
-AppId,
-BackendEnvironmentName,
-Error,
-JobId,
-Operation,
-Status
+app_id,
+backend_environment_name,
+error,
+job_id,
+operation,
+status
 ;
 ```
 </TabItem>
@@ -329,12 +329,12 @@ AND region = '{{ region }}' --required
 AND ResourceConfig = '{{ ResourceConfig }}' --required
 AND ResourceName = '{{ ResourceName }}' --required
 RETURNING
-AppId,
-BackendEnvironmentName,
-Error,
-JobId,
-Operation,
-Status;
+app_id,
+backend_environment_name,
+error,
+job_id,
+operation,
+status;
 ```
 </TabItem>
 </Tabs>

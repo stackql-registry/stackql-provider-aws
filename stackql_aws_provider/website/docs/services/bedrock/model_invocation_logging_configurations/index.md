@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="audioDataDeliveryEnabled" /></td>
+    <td><CopyableCode code="audio_data_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Set to include audio data in the log delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudWatchConfig" /></td>
+    <td><CopyableCode code="cloud_watch_config" /></td>
     <td><code>object</code></td>
     <td>CloudWatch logging configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="embeddingDataDeliveryEnabled" /></td>
+    <td><CopyableCode code="embedding_data_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Set to include embeddings data in the log delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageDataDeliveryEnabled" /></td>
+    <td><CopyableCode code="image_data_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Set to include image data in the log delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Config" /></td>
+    <td><CopyableCode code="s_3_config" /></td>
     <td><code>object</code></td>
     <td>S3 configuration for storing log data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="textDataDeliveryEnabled" /></td>
+    <td><CopyableCode code="text_data_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Set to include text data in the log delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="videoDataDeliveryEnabled" /></td>
+    <td><CopyableCode code="video_data_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Set to include video data in the log delivery.</td>
 </tr>
@@ -163,13 +163,13 @@ Get the current configuration values for model invocation logging.
 
 ```sql
 SELECT
-audioDataDeliveryEnabled,
-cloudWatchConfig,
-embeddingDataDeliveryEnabled,
-imageDataDeliveryEnabled,
-s3Config,
-textDataDeliveryEnabled,
-videoDataDeliveryEnabled
+audio_data_delivery_enabled,
+cloud_watch_config,
+embedding_data_delivery_enabled,
+image_data_delivery_enabled,
+s_3_config,
+text_data_delivery_enabled,
+video_data_delivery_enabled
 FROM aws.bedrock.model_invocation_logging_configurations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aiPromptSummary" /></td>
+    <td><CopyableCode code="ai_prompt_summary" /></td>
     <td><code>object</code></td>
     <td>The summary of the AI Prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number for this AI Prompt version.</td>
 </tr>
@@ -168,8 +168,8 @@ Lists AI Prompt versions.
 
 ```sql
 SELECT
-aiPromptSummary,
-versionNumber
+ai_prompt_summary,
+version_number
 FROM aws.qconnect.ai_prompt_versions
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND ai_prompt_id = '{{ ai_prompt_id }}' -- required
@@ -211,8 +211,8 @@ SELECT
 '{{ ai_prompt_id }}',
 '{{ region }}'
 RETURNING
-aiPrompt,
-versionNumber
+ai_prompt,
+version_number
 ;
 ```
 </TabItem>

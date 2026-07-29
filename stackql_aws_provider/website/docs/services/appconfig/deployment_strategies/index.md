@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeploymentDurationInMinutes" /></td>
+    <td><CopyableCode code="deployment_duration_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>Total amount of time the deployment lasted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the deployment strategy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinalBakeTimeInMinutes" /></td>
+    <td><CopyableCode code="final_bake_time_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that AppConfig monitored for alarms before considering the deployment to be complete and no longer eligible for automatic rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthFactor" /></td>
+    <td><CopyableCode code="growth_factor" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of targets that received a deployed configuration during each interval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthType" /></td>
+    <td><CopyableCode code="growth_type" /></td>
     <td><code>string</code></td>
     <td>The algorithm used to define how percentage grew over time. (LINEAR, EXPONENTIAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The deployment strategy ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment strategy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicateTo" /></td>
+    <td><CopyableCode code="replicate_to" /></td>
     <td><code>string</code></td>
     <td>Save the deployment strategy to a Systems Manager (SSM) document. (NONE, SSM_DOCUMENT)</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeploymentDurationInMinutes" /></td>
+    <td><CopyableCode code="deployment_duration_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>Total amount of time the deployment lasted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the deployment strategy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinalBakeTimeInMinutes" /></td>
+    <td><CopyableCode code="final_bake_time_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time that AppConfig monitored for alarms before considering the deployment to be complete and no longer eligible for automatic rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthFactor" /></td>
+    <td><CopyableCode code="growth_factor" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of targets that received a deployed configuration during each interval.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrowthType" /></td>
+    <td><CopyableCode code="growth_type" /></td>
     <td><code>string</code></td>
     <td>The algorithm used to define how percentage grew over time. (LINEAR, EXPONENTIAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The deployment strategy ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment strategy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicateTo" /></td>
+    <td><CopyableCode code="replicate_to" /></td>
     <td><code>string</code></td>
     <td>Save the deployment strategy to a Systems Manager (SSM) document. (NONE, SSM_DOCUMENT)</td>
 </tr>
@@ -253,14 +253,14 @@ Retrieves information about a deployment strategy. A deployment strategy defines
 
 ```sql
 SELECT
-DeploymentDurationInMinutes,
-Description,
-FinalBakeTimeInMinutes,
-GrowthFactor,
-GrowthType,
-Id,
-Name,
-ReplicateTo
+deployment_duration_in_minutes,
+description,
+final_bake_time_in_minutes,
+growth_factor,
+growth_type,
+id,
+name,
+replicate_to
 FROM aws.appconfig.deployment_strategies
 WHERE deployment_strategy_id = '{{ deployment_strategy_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,14 +273,14 @@ Lists deployment strategies.
 
 ```sql
 SELECT
-DeploymentDurationInMinutes,
-Description,
-FinalBakeTimeInMinutes,
-GrowthFactor,
-GrowthType,
-Id,
-Name,
-ReplicateTo
+deployment_duration_in_minutes,
+description,
+final_bake_time_in_minutes,
+growth_factor,
+growth_type,
+id,
+name,
+replicate_to
 FROM aws.appconfig.deployment_strategies
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -327,14 +327,14 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DeploymentDurationInMinutes,
-Description,
-FinalBakeTimeInMinutes,
-GrowthFactor,
-GrowthType,
-Id,
-Name,
-ReplicateTo
+deployment_duration_in_minutes,
+description,
+final_bake_time_in_minutes,
+growth_factor,
+growth_type,
+id,
+name,
+replicate_to
 ;
 ```
 </TabItem>
@@ -394,14 +394,14 @@ WHERE
 deployment_strategy_id = '{{ deployment_strategy_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DeploymentDurationInMinutes,
-Description,
-FinalBakeTimeInMinutes,
-GrowthFactor,
-GrowthType,
-Id,
-Name,
-ReplicateTo;
+deployment_duration_in_minutes,
+description,
+final_bake_time_in_minutes,
+growth_factor,
+growth_type,
+id,
+name,
+replicate_to;
 ```
 </TabItem>
 </Tabs>

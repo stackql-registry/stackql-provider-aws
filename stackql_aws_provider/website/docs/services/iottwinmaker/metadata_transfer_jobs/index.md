@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="metadataTransferJobSummaries" /></td>
+    <td><CopyableCode code="metadata_transfer_job_summaries" /></td>
     <td><code>array</code></td>
     <td>The metadata transfer job summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata transfer job ARN. (pattern: &lt;code&gt;arn:((aws)|(aws-cn)|(aws-us-gov)):iottwinmaker:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:&#91;\/a-zA-Z0-9_\-\.:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The metadata transfer job's creation DateTime property.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>The &#91;link to action&#93; metadata transfer job destination configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataTransferJobId" /></td>
+    <td><CopyableCode code="metadata_transfer_job_id" /></td>
     <td><code>string</code></td>
     <td>The metadata transfer job Id. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataTransferJobRole" /></td>
+    <td><CopyableCode code="metadata_transfer_job_role" /></td>
     <td><code>string</code></td>
     <td>The metadata transfer job's role. (pattern: &lt;code&gt;arn:((aws)|(aws-cn)|(aws-us-gov)):iam::&#91;0-9&#93;&#123;12&#125;:role/.*&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata transfer job's progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportUrl" /></td>
+    <td><CopyableCode code="report_url" /></td>
     <td><code>string</code></td>
     <td>The metadata transfer job's report URL. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata transfer job's status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The metadata transfer job's update DateTime property.</td>
 </tr>
@@ -221,8 +221,8 @@ Lists the metadata transfer jobs.
 
 ```sql
 SELECT
-metadataTransferJobSummaries,
-nextToken
+metadata_transfer_job_summaries,
+next_token
 FROM aws.iottwinmaker.metadata_transfer_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,16 +235,16 @@ Gets a nmetadata transfer job.
 ```sql
 SELECT
 arn,
-creationDateTime,
+creation_date_time,
 description,
 destination,
-metadataTransferJobId,
-metadataTransferJobRole,
+metadata_transfer_job_id,
+metadata_transfer_job_role,
 progress,
-reportUrl,
+report_url,
 sources,
 status,
-updateDateTime
+update_date_time
 FROM aws.iottwinmaker.metadata_transfer_jobs
 WHERE metadata_transfer_job_id = '{{ metadata_transfer_job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -283,8 +283,8 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-creationDateTime,
-metadataTransferJobId,
+creation_date_time,
+metadata_transfer_job_id,
 status
 ;
 ```

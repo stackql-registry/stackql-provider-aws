@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The time when the report generation ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Bucket" /></td>
+    <td><CopyableCode code="s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket where the report is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Prefix" /></td>
+    <td><CopyableCode code="s3_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix for your S3 object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time when the report generation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The root ID, organizational unit ID, or account ID. Format: For root: r-ab12 For OU: ou-ab12-cdef1234 For account: 123456789012</td>
 </tr>
@@ -174,14 +174,14 @@ Describes the metadata of an account status report, including the status of the 
 
 ```sql
 SELECT
-EndTime,
-ReportId,
-S3Bucket,
-S3Prefix,
-StartTime,
-Status,
-Tags,
-TargetId
+end_time,
+report_id,
+s3_bucket,
+s3_prefix,
+start_time,
+status,
+tags,
+target_id
 FROM aws.ec2.declarative_policies_reports
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the data store was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatastoreArn" /></td>
+    <td><CopyableCode code="datastore_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) used in the creation of the data store. (pattern: &lt;code&gt;^arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:&#91;a-zA-Z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:datastore/.+?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatastoreEndpoint" /></td>
+    <td><CopyableCode code="datastore_endpoint" /></td>
     <td><code>string</code></td>
     <td>The AWS endpoint for the data store. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;0,10000&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatastoreId" /></td>
+    <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
     <td>The data store identifier. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatastoreName" /></td>
+    <td><CopyableCode code="datastore_name" /></td>
     <td><code>string</code></td>
     <td>The data store name. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatastoreStatus" /></td>
+    <td><CopyableCode code="datastore_status" /></td>
     <td><code>string</code></td>
     <td>The data store status. (CREATING, ACTIVE, DELETING, DELETED, CREATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatastoreTypeVersion" /></td>
+    <td><CopyableCode code="datastore_type_version" /></td>
     <td><code>string</code></td>
     <td>The FHIR release version supported by the data store. Current support is for version R4. (R4)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCause" /></td>
+    <td><CopyableCode code="error_cause" /></td>
     <td><code>object</code></td>
     <td>The error cause for the current data store operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityProviderConfiguration" /></td>
+    <td><CopyableCode code="identity_provider_configuration" /></td>
     <td><code>object</code></td>
     <td>The identity provider selected during data store creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreloadDataConfig" /></td>
+    <td><CopyableCode code="preload_data_config" /></td>
     <td><code>object</code></td>
     <td>The preloaded Synthea data configuration for the data store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SseConfiguration" /></td>
+    <td><CopyableCode code="sse_configuration" /></td>
     <td><code>object</code></td>
     <td>The server-side encryption key configuration for a customer provided encryption key.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatastorePropertiesList" /></td>
+    <td><CopyableCode code="datastore_properties_list" /></td>
     <td><code>array</code></td>
     <td>The properties associated with all listed data stores.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -216,17 +216,17 @@ Get properties for a FHIR-enabled data store.
 
 ```sql
 SELECT
-CreatedAt,
-DatastoreArn,
-DatastoreEndpoint,
-DatastoreId,
-DatastoreName,
-DatastoreStatus,
-DatastoreTypeVersion,
-ErrorCause,
-IdentityProviderConfiguration,
-PreloadDataConfig,
-SseConfiguration
+created_at,
+datastore_arn,
+datastore_endpoint,
+datastore_id,
+datastore_name,
+datastore_status,
+datastore_type_version,
+error_cause,
+identity_provider_configuration,
+preload_data_config,
+sse_configuration
 FROM aws.healthlake.fhir_datastores
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,8 +238,8 @@ List all FHIR-enabled data stores in a user’s account, regardless of data stor
 
 ```sql
 SELECT
-DatastorePropertiesList,
-NextToken
+datastore_properties_list,
+next_token
 FROM aws.healthlake.fhir_datastores
 WHERE region = '{{ region }}' -- required
 ;
@@ -282,10 +282,10 @@ SELECT
 '{{ IdentityProviderConfiguration }}',
 '{{ region }}'
 RETURNING
-DatastoreArn,
-DatastoreEndpoint,
-DatastoreId,
-DatastoreStatus
+datastore_arn,
+datastore_endpoint,
+datastore_id,
+datastore_status
 ;
 ```
 </TabItem>

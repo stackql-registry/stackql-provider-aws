@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the environment. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Web Services account in which an environment exists. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountRegion" /></td>
+    <td><CopyableCode code="aws_account_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region in which an environment exists. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;4,10&#125;-\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the environment.</td>
 </tr>
@@ -86,27 +86,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone domain in which the environment exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentConfigurationId" /></td>
+    <td><CopyableCode code="environment_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The configuration ID with which the environment is created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentConfigurationName" /></td>
+    <td><CopyableCode code="environment_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The configuration name with which the environment is created. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentProfileId" /></td>
+    <td><CopyableCode code="environment_profile_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the environment profile with which the environment was created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;0,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the project in which the environment exists. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the environment. (ACTIVE, CREATING, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED, VALIDATION_FAILED, SUSPENDED, DISABLED, EXPIRED, DELETED, INACCESSIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the environment was updated.</td>
 </tr>
@@ -150,27 +150,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the environment. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account where the environment exists. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountRegion" /></td>
+    <td><CopyableCode code="aws_account_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services region where the environment exists. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;4,10&#125;-\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentProperties" /></td>
+    <td><CopyableCode code="deployment_properties" /></td>
     <td><code>object</code></td>
     <td>The deployment properties of the environment.</td>
 </tr>
@@ -180,47 +180,47 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain where the environment exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentActions" /></td>
+    <td><CopyableCode code="environment_actions" /></td>
     <td><code>array</code></td>
     <td>The actions of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentBlueprintId" /></td>
+    <td><CopyableCode code="environment_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint with which the environment is created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentConfigurationId" /></td>
+    <td><CopyableCode code="environment_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The configuration ID that is used to create the environment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentConfigurationName" /></td>
+    <td><CopyableCode code="environment_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The configuration name that is used to create the environment. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentProfileId" /></td>
+    <td><CopyableCode code="environment_profile_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment profile with which the environment is created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;0,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="glossaryTerms" /></td>
+    <td><CopyableCode code="glossary_terms" /></td>
     <td><code>array</code></td>
     <td>The business glossary terms that can be used in this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeployment" /></td>
+    <td><CopyableCode code="last_deployment" /></td>
     <td><code>object</code></td>
     <td>The details of the last deployment of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone project in which this environment is created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -230,12 +230,12 @@ The following fields are returned by `SELECT` queries:
     <td>The provider of this Amazon DataZone environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedResources" /></td>
+    <td><CopyableCode code="provisioned_resources" /></td>
     <td><code>array</code></td>
     <td>The provisioned resources of this Amazon DataZone environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningProperties" /></td>
+    <td><CopyableCode code="provisioning_properties" /></td>
     <td><code>object</code></td>
     <td>The provisioning properties of an environment blueprint.</td>
 </tr>
@@ -245,12 +245,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of this Amazon DataZone environment. (ACTIVE, CREATING, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED, VALIDATION_FAILED, SUSPENDED, DISABLED, EXPIRED, DELETED, INACCESSIBLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this environment was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userParameters" /></td>
+    <td><CopyableCode code="user_parameters" /></td>
     <td><code>array</code></td>
     <td>The user parameters of this Amazon DataZone environment.</td>
 </tr>
@@ -434,19 +434,19 @@ Lists Amazon DataZone environments.
 SELECT
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
 description,
-domainId,
-environmentConfigurationId,
-environmentConfigurationName,
-environmentProfileId,
-projectId,
+domain_id,
+environment_configuration_id,
+environment_configuration_name,
+environment_profile_id,
+project_id,
 provider,
 status,
-updatedAt
+updated_at
 FROM aws.datazone.environments
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND projectIdentifier = '{{ projectIdentifier }}' -- required
@@ -471,27 +471,27 @@ Gets an Amazon DataZone environment.
 SELECT
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
-deploymentProperties,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
+deployment_properties,
 description,
-domainId,
-environmentActions,
-environmentBlueprintId,
-environmentConfigurationId,
-environmentConfigurationName,
-environmentProfileId,
-glossaryTerms,
-lastDeployment,
-projectId,
+domain_id,
+environment_actions,
+environment_blueprint_id,
+environment_configuration_id,
+environment_configuration_name,
+environment_profile_id,
+glossary_terms,
+last_deployment,
+project_id,
 provider,
-provisionedResources,
-provisioningProperties,
+provisioned_resources,
+provisioning_properties,
 status,
-updatedAt,
-userParameters
+updated_at,
+user_parameters
 FROM aws.datazone.environments
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -550,27 +550,27 @@ SELECT
 RETURNING
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
-deploymentProperties,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
+deployment_properties,
 description,
-domainId,
-environmentActions,
-environmentBlueprintId,
-environmentConfigurationId,
-environmentConfigurationName,
-environmentProfileId,
-glossaryTerms,
-lastDeployment,
-projectId,
+domain_id,
+environment_actions,
+environment_blueprint_id,
+environment_configuration_id,
+environment_configuration_name,
+environment_profile_id,
+glossary_terms,
+last_deployment,
+project_id,
 provider,
-provisionedResources,
-provisioningProperties,
+provisioned_resources,
+provisioning_properties,
 status,
-updatedAt,
-userParameters
+updated_at,
+user_parameters
 ;
 ```
 </TabItem>
@@ -662,27 +662,27 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
-deploymentProperties,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
+deployment_properties,
 description,
-domainId,
-environmentActions,
-environmentBlueprintId,
-environmentConfigurationId,
-environmentConfigurationName,
-environmentProfileId,
-glossaryTerms,
-lastDeployment,
-projectId,
+domain_id,
+environment_actions,
+environment_blueprint_id,
+environment_configuration_id,
+environment_configuration_name,
+environment_profile_id,
+glossary_terms,
+last_deployment,
+project_id,
 provider,
-provisionedResources,
-provisioningProperties,
+provisioned_resources,
+provisioning_properties,
 status,
-updatedAt,
-userParameters;
+updated_at,
+user_parameters;
 ```
 </TabItem>
 </Tabs>

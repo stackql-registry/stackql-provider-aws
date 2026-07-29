@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Index" /></td>
+    <td><CopyableCode code="index" /></td>
     <td><code>object</code></td>
     <td>The status information for the Resource Explorer index in this Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region for which this status information applies. (pattern: &lt;code&gt;&#91;a-z-&#93;+-&#91;a-z&#93;+-&#91;0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="View" /></td>
+    <td><CopyableCode code="view" /></td>
     <td><code>object</code></td>
     <td>The status information for the Resource Explorer view in this Region.</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves the status and details of a Resource Explorer setup operation. This op
 
 ```sql
 SELECT
-Index,
-Region,
-View
+index,
+region,
+view
 FROM aws.resource_explorer_2.resource_explorer_setups
 WHERE region = '{{ region }}' -- required
 ;
@@ -180,7 +180,7 @@ SELECT
 '{{ ViewName }}' /* required */,
 '{{ region }}'
 RETURNING
-TaskId
+task_id
 ;
 ```
 </TabItem>

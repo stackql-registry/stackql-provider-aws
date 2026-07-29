@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="buildWorkflowId" /></td>
+    <td><CopyableCode code="build_workflow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the build workflow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-?&#91;a-f0-9&#93;&#123;4&#125;-?4&#91;a-f0-9&#93;&#123;3&#125;-?&#91;89ab&#93;&#91;a-f0-9&#93;&#123;3&#125;-?&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildWorkflowType" /></td>
+    <td><CopyableCode code="build_workflow_type" /></td>
     <td><code>string</code></td>
     <td>The type of build workflow being executed (e.g., DOCUMENT_INGESTION, POLICY_REPAIR). (INGEST_CONTENT, REFINE_POLICY, IMPORT_POLICY, GENERATE_FIDELITY_REPORT, GENERATE_POLICY_SCENARIOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the build workflow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentContentType" /></td>
+    <td><CopyableCode code="document_content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the source document (e.g., text/plain, application/pdf). (pdf, txt)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentDescription" /></td>
+    <td><CopyableCode code="document_description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of the document's content and how it should be used in the policy generation process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentName" /></td>
+    <td><CopyableCode code="document_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source document used in the build workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Automated Reasoning policy. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the build workflow (e.g., RUNNING, COMPLETED, FAILED, CANCELLED). (SCHEDULED, CANCEL_REQUESTED, PREPROCESSING, BUILDING, TESTING, COMPLETED, FAILED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the build workflow was last updated.</td>
 </tr>
@@ -110,22 +110,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="buildWorkflowId" /></td>
+    <td><CopyableCode code="build_workflow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the build workflow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-?&#91;a-f0-9&#93;&#123;4&#125;-?4&#91;a-f0-9&#93;&#123;3&#125;-?&#91;89ab&#93;&#91;a-f0-9&#93;&#123;3&#125;-?&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildWorkflowType" /></td>
+    <td><CopyableCode code="build_workflow_type" /></td>
     <td><code>string</code></td>
     <td>The type of build workflow (e.g., DOCUMENT_INGESTION, POLICY_REPAIR). (INGEST_CONTENT, REFINE_POLICY, IMPORT_POLICY, GENERATE_FIDELITY_REPORT, GENERATE_POLICY_SCENARIOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the build workflow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Automated Reasoning policy associated with this build workflow. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the build workflow (e.g., RUNNING, COMPLETED, FAILED, CANCELLED). (SCHEDULED, CANCEL_REQUESTED, PREPROCESSING, BUILDING, TESTING, COMPLETED, FAILED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the build workflow was last updated.</td>
 </tr>
@@ -244,15 +244,15 @@ Retrieves detailed information about an Automated Reasoning policy build workflo
 
 ```sql
 SELECT
-buildWorkflowId,
-buildWorkflowType,
-createdAt,
-documentContentType,
-documentDescription,
-documentName,
-policyArn,
+build_workflow_id,
+build_workflow_type,
+created_at,
+document_content_type,
+document_description,
+document_name,
+policy_arn,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock.automated_reasoning_policy_build_workflows
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND build_workflow_id = '{{ build_workflow_id }}' -- required
@@ -266,12 +266,12 @@ Lists all build workflows for an Automated Reasoning policy, showing the history
 
 ```sql
 SELECT
-buildWorkflowId,
-buildWorkflowType,
-createdAt,
-policyArn,
+build_workflow_id,
+build_workflow_type,
+created_at,
+policy_arn,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock.automated_reasoning_policy_build_workflows
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND region = '{{ region }}' -- required

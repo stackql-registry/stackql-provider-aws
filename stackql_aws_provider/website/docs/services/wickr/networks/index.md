@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessLevel" /></td>
+    <td><CopyableCode code="access_level" /></td>
     <td><code>string</code></td>
     <td>The access level of the network (STANDARD or PREMIUM), which determines available features and capabilities. (STANDARD, PREMIUM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Web Services KMS customer managed key used for encrypting sensitive data in the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="freeTrialExpiration" /></td>
+    <td><CopyableCode code="free_trial_expiration" /></td>
     <td><code>string</code></td>
     <td>The expiration date and time for the network's free trial period, if applicable. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="migrationState" /></td>
+    <td><CopyableCode code="migration_state" /></td>
     <td><code>integer</code></td>
     <td>The SSO redirect URI migration state, managed by the SSO redirect migration wizard. Values: 0 (not started), 1 (in progress), or 2 (completed).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkArn" /></td>
+    <td><CopyableCode code="network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkId" /></td>
+    <td><CopyableCode code="network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkName" /></td>
+    <td><CopyableCode code="network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -110,42 +110,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessLevel" /></td>
+    <td><CopyableCode code="access_level" /></td>
     <td><code>string</code></td>
     <td>The access level of the network (STANDARD or PREMIUM), which determines available features and capabilities. (STANDARD, PREMIUM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKeyArn" /></td>
+    <td><CopyableCode code="encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Web Services KMS customer managed key used for encrypting sensitive data in the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="freeTrialExpiration" /></td>
+    <td><CopyableCode code="free_trial_expiration" /></td>
     <td><code>string</code></td>
     <td>The expiration date and time for the network's free trial period, if applicable. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="migrationState" /></td>
+    <td><CopyableCode code="migration_state" /></td>
     <td><code>integer</code></td>
     <td>The SSO redirect URI migration state, managed by the SSO redirect migration wizard. Values: 0 (not started), 1 (in progress), or 2 (completed).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkArn" /></td>
+    <td><CopyableCode code="network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkId" /></td>
+    <td><CopyableCode code="network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkName" /></td>
+    <td><CopyableCode code="network_name" /></td>
     <td><code>string</code></td>
     <td>The name of the network. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -351,14 +351,14 @@ Retrieves detailed information about a specific Wickr network, including its con
 
 ```sql
 SELECT
-accessLevel,
-awsAccountId,
-encryptionKeyArn,
-freeTrialExpiration,
-migrationState,
-networkArn,
-networkId,
-networkName,
+access_level,
+aws_account_id,
+encryption_key_arn,
+free_trial_expiration,
+migration_state,
+network_arn,
+network_id,
+network_name,
 standing
 FROM aws.wickr.networks
 WHERE network_id = '{{ network_id }}' -- required
@@ -372,14 +372,14 @@ Retrieves a paginated list of all Wickr networks associated with your Amazon Web
 
 ```sql
 SELECT
-accessLevel,
-awsAccountId,
-encryptionKeyArn,
-freeTrialExpiration,
-migrationState,
-networkArn,
-networkId,
-networkName,
+access_level,
+aws_account_id,
+encryption_key_arn,
+free_trial_expiration,
+migration_state,
+network_arn,
+network_id,
+network_name,
 standing
 FROM aws.wickr.networks
 WHERE region = '{{ region }}' -- required
@@ -433,20 +433,20 @@ SELECT
 '{{ network_id }}',
 '{{ region }}'
 RETURNING
-applicationId,
-applicationName,
-caCertificate,
-clientId,
-clientSecret,
-companyId,
-customUsername,
-extraAuthParams,
+application_id,
+application_name,
+ca_certificate,
+client_id,
+client_secret,
+company_id,
+custom_username,
+extra_auth_params,
 issuer,
-redirectUrl,
+redirect_url,
 scopes,
 secret,
-ssoTokenBufferMinutes,
-userId
+sso_token_buffer_minutes,
+user_id
 ;
 ```
 </TabItem>
@@ -471,18 +471,18 @@ SELECT
 '{{ network_id }}',
 '{{ region }}'
 RETURNING
-authorizationEndpoint,
-endSessionEndpoint,
-grantTypesSupported,
+authorization_endpoint,
+end_session_endpoint,
+grant_types_supported,
 issuer,
-logoutEndpoint,
-microsoftMultiRefreshToken,
-responseTypesSupported,
-revocationEndpoint,
-scopesSupported,
-tokenEndpoint,
-tokenEndpointAuthMethodsSupported,
-userinfoEndpoint
+logout_endpoint,
+microsoft_multi_refresh_token,
+response_types_supported,
+revocation_endpoint,
+scopes_supported,
+token_endpoint,
+token_endpoint_auth_methods_supported,
+userinfo_endpoint
 ;
 ```
 </TabItem>
@@ -505,9 +505,9 @@ SELECT
 '{{ encryptionKeyArn }}',
 '{{ region }}'
 RETURNING
-encryptionKeyArn,
-networkId,
-networkName
+encryption_key_arn,
+network_id,
+network_name
 ;
 ```
 </TabItem>

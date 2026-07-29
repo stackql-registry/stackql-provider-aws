@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adaptiveIngestion" /></td>
+    <td><CopyableCode code="adaptive_ingestion" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, ingest new data into IoT SiteWise storage. Measurements with notifications, metrics and transforms are computed. If set to false, historical data is ingested into IoT SiteWise as is.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deleteFilesAfterImport" /></td>
+    <td><CopyableCode code="delete_files_after_import" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, your data files is deleted from S3, after ingestion into IoT SiteWise storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorReportLocation" /></td>
+    <td><CopyableCode code="error_report_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 destination where errors associated with the job creation request are saved.</td>
 </tr>
@@ -71,37 +71,37 @@ The following fields are returned by `SELECT` queries:
     <td>The files in the specified Amazon S3 bucket that contain your data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobConfiguration" /></td>
+    <td><CopyableCode code="job_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains the configuration information of a job, such as the file format used to save data in Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobCreationDate" /></td>
+    <td><CopyableCode code="job_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the job was created, in Unix epoch TIME.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobLastUpdateDate" /></td>
+    <td><CopyableCode code="job_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the job was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The unique name that helps identify the job request. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobRoleArn" /></td>
+    <td><CopyableCode code="job_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that allows IoT SiteWise to read Amazon S3 data. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the bulk import job can be one of following values: PENDING – IoT SiteWise is waiting for the current bulk import job to finish. CANCELLED – The bulk import job has been canceled. RUNNING – IoT SiteWise is processing your request to import your data from Amazon S3. COMPLETED – IoT SiteWise successfully completed your request to import data from Amazon S3. FAILED – IoT SiteWise couldn't process your request to import data from Amazon S3. You can use logs saved in the specified error report location in Amazon S3 to troubleshoot issues. COMPLETED_WITH_FAILURES – IoT SiteWise completed your request to import data from Amazon S3 with errors. You can use logs saved in the specified error report location in Amazon S3 to troubleshoot issues. (PENDING, CANCELLED, RUNNING, COMPLETED, FAILED, COMPLETED_WITH_FAILURES)</td>
 </tr>
@@ -234,17 +234,17 @@ Retrieves information about a bulk import job request. For more information, see
 
 ```sql
 SELECT
-adaptiveIngestion,
-deleteFilesAfterImport,
-errorReportLocation,
+adaptive_ingestion,
+delete_files_after_import,
+error_report_location,
 files,
-jobConfiguration,
-jobCreationDate,
-jobId,
-jobLastUpdateDate,
-jobName,
-jobRoleArn,
-jobStatus
+job_configuration,
+job_creation_date,
+job_id,
+job_last_update_date,
+job_name,
+job_role_arn,
+job_status
 FROM aws.iotsitewise.bulk_import_jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -305,9 +305,9 @@ SELECT
 {{ deleteFilesAfterImport }},
 '{{ region }}'
 RETURNING
-jobId,
-jobName,
-jobStatus
+job_id,
+job_name,
+job_status
 ;
 ```
 </TabItem>

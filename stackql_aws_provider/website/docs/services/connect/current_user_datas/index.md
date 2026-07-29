@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateTotalCount" /></td>
+    <td><CopyableCode code="approximate_total_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total count of the result, regardless of the current page size.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserDataList" /></td>
+    <td><CopyableCode code="user_data_list" /></td>
     <td><code>array</code></td>
     <td>A list of the user data that is returned.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets the real-time active user data from the specified Amazon Connect instance.
 
 ```sql
 SELECT
-ApproximateTotalCount,
-NextToken,
-UserDataList
+approximate_total_count,
+next_token,
+user_data_list
 FROM aws.connect.current_user_datas
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

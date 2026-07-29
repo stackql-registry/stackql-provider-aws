@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blob" /></td>
+    <td><CopyableCode code="blob" /></td>
     <td><code>string (byte)</code></td>
     <td>The blob represents a map image as a jpeg for the GetStaticMap API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>Header that instructs caching configuration for the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Header that represents the format of the response. The response returns the following as the HTTP body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The static map's Etag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingBucket" /></td>
+    <td><CopyableCode code="pricing_bucket" /></td>
     <td><code>string</code></td>
     <td>The pricing bucket for which the request is charged at.</td>
 </tr>
@@ -239,11 +239,11 @@ This operation is not supported in ap-southeast-1 and ap-southeast-5 regions for
 
 ```sql
 SELECT
-Blob,
-CacheControl,
-ContentType,
-ETag,
-PricingBucket
+blob,
+cache_control,
+content_type,
+e_tag,
+pricing_bucket
 FROM aws.geo_maps.static_maps
 WHERE height = '{{ height }}' -- required
 AND file_name = '{{ file_name }}' -- required

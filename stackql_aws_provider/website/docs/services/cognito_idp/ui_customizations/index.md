@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CSS" /></td>
+    <td><CopyableCode code="css" /></td>
     <td><code>string</code></td>
     <td>The CSS values in the UI customization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CSSVersion" /></td>
+    <td><CopyableCode code="css_version" /></td>
     <td><code>string</code></td>
     <td>The CSS version number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientId" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
     <td>The app client ID for your UI customization. When this value isn't present, the customization applies to all user pool app clients that don't have client-level settings.. (pattern: &lt;code&gt;&#91;\w+&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageUrl" /></td>
+    <td><CopyableCode code="image_url" /></td>
     <td><code>string</code></td>
     <td>A URL path to the hosted logo image of your UI customization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool with hosted UI customizations. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -156,13 +156,13 @@ Given a user pool ID or app client, returns information about classic hosted UI 
 
 ```sql
 SELECT
-CSS,
-CSSVersion,
-ClientId,
-CreationDate,
-ImageUrl,
-LastModifiedDate,
-UserPoolId
+css,
+css_version,
+client_id,
+creation_date,
+image_url,
+last_modified_date,
+user_pool_id
 FROM aws.cognito_idp.ui_customizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,7 +194,7 @@ WHERE
 region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
-UICustomization;
+ui_customization;
 ```
 </TabItem>
 </Tabs>

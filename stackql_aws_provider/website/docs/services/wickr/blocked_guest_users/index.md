@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The username of the blocked guest user. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usernameHash" /></td>
+    <td><CopyableCode code="username_hash" /></td>
     <td><code>string</code></td>
     <td>The unique username hash identifier for the blocked guest user. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -172,7 +172,7 @@ SELECT
 admin,
 modified,
 username,
-usernameHash
+username_hash
 FROM aws.wickr.blocked_guest_users
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required

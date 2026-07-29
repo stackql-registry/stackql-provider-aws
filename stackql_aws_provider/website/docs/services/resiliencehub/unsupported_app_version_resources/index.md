@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolutionId" /></td>
+    <td><CopyableCode code="resolution_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for a specific resolution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unsupportedResources" /></td>
+    <td><CopyableCode code="unsupported_resources" /></td>
     <td><code>array</code></td>
     <td>The unsupported resources for the application.</td>
 </tr>
@@ -129,9 +129,9 @@ Lists the resources that are not currently supported in Resilience Hub. An unsup
 
 ```sql
 SELECT
-nextToken,
-resolutionId,
-unsupportedResources
+next_token,
+resolution_id,
+unsupported_resources
 FROM aws.resiliencehub.unsupported_app_version_resources
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the commitment modification. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitmentAction" /></td>
+    <td><CopyableCode code="commitment_action" /></td>
     <td><code>object</code></td>
     <td>The specific commitment action taken in this modification.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The group identifier for the commitment modification. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageAccountId" /></td>
+    <td><CopyableCode code="usage_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with this commitment modification. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -135,9 +135,9 @@ Lists the input commitment modifications associated with a bill estimate.
 ```sql
 SELECT
 id,
-commitmentAction,
+commitment_action,
 group,
-usageAccountId
+usage_account_id
 FROM aws.bcm_pricing_calculator.bill_estimate_input_commitment_modifications
 WHERE region = '{{ region }}' -- required
 ;

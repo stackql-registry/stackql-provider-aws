@@ -100,8 +100,8 @@ Entries = '{{ Entries }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Entries,
-FailedEntryCount;
+entries,
+failed_entry_count;
 ```
 </TabItem>
 </Tabs>

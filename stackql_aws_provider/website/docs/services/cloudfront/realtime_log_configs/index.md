@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether there are more real-time log configurations than are contained in this list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>Contains the list of real-time log configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>This parameter indicates where this list of real-time log configurations begins. This list includes real-time log configurations that occur after the marker.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of real-time log configurations requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more items in the list than are in this response, this element is present. It contains the value that you should use in the Marker field of a subsequent request to continue listing real-time log configurations where you left off.</td>
 </tr>
@@ -177,11 +177,11 @@ Gets a list of real-time log configurations. You can optionally specify the maxi
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker
+is_truncated,
+items,
+marker,
+max_items,
+next_marker
 FROM aws.cloudfront.realtime_log_configs
 WHERE region = '{{ region }}' -- required
 AND MaxItems = '{{ MaxItems }}'
@@ -220,11 +220,11 @@ SELECT
 {{ SamplingRate }} /* required */,
 '{{ region }}'
 RETURNING
-ARN,
-EndPoints,
-Fields,
-Name,
-SamplingRate
+arn,
+end_points,
+fields,
+name,
+sampling_rate
 ;
 ```
 </TabItem>
@@ -278,11 +278,11 @@ SamplingRate = {{ SamplingRate }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-ARN,
-EndPoints,
-Fields,
-Name,
-SamplingRate;
+arn,
+end_points,
+fields,
+name,
+sampling_rate;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuditReportStatus" /></td>
+    <td><CopyableCode code="audit_report_status" /></td>
     <td><code>string</code></td>
     <td>Specifies whether report creation is in progress, has succeeded, or has failed. (CREATING, SUCCESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketName" /></td>
+    <td><CopyableCode code="s3_bucket_name" /></td>
     <td><code>string</code></td>
     <td>Name of the S3 bucket that contains the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Key" /></td>
+    <td><CopyableCode code="s3_key" /></td>
     <td><code>string</code></td>
     <td>S3 key that uniquely identifies the report file in your S3 bucket.</td>
 </tr>
@@ -141,10 +141,10 @@ Lists information about a specific audit report created by calling the CreateCer
 
 ```sql
 SELECT
-AuditReportStatus,
-CreatedAt,
-S3BucketName,
-S3Key
+audit_report_status,
+created_at,
+s3_bucket_name,
+s3_key
 FROM aws.acm_pca.certificate_authority_audit_reports
 WHERE region = '{{ region }}' -- required
 ;
@@ -179,8 +179,8 @@ SELECT
 '{{ AuditReportResponseFormat }}' /* required */,
 '{{ region }}'
 RETURNING
-AuditReportId,
-S3Key
+audit_report_id,
+s3_key
 ;
 ```
 </TabItem>

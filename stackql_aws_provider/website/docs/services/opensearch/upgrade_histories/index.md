@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeHistories" /></td>
+    <td><CopyableCode code="upgrade_histories" /></td>
     <td><code>array</code></td>
     <td>A list of objects corresponding to each upgrade or upgrade eligibility check performed on a domain.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieves the complete history of the last 10 upgrades performed on an Amazon Op
 
 ```sql
 SELECT
-NextToken,
-UpgradeHistories
+next_token,
+upgrade_histories
 FROM aws.opensearch.upgrade_histories
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>string</code></td>
     <td>If the CreateBucketMetadataTableConfiguration request succeeds, but S3 Metadata was unable to create the table, this structure contains the error code and error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataTableConfigurationResult" /></td>
+    <td><CopyableCode code="metadata_table_configuration_result" /></td>
     <td><code>string</code></td>
     <td>The V1 S3 Metadata configuration for a general purpose bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the metadata table. The status values are: CREATING - The metadata table is in the process of being created in the specified table bucket. ACTIVE - The metadata table has been created successfully, and records are being delivered to the table. FAILED - Amazon S3 is unable to create the metadata table, or Amazon S3 is unable to deliver records. See ErrorDetails for details.</td>
 </tr>
@@ -163,9 +163,9 @@ We recommend that you retrieve your S3 Metadata configurations by using the V2 G
 
 ```sql
 SELECT
-Error,
-MetadataTableConfigurationResult,
-Status
+error,
+metadata_table_configuration_result,
+status
 FROM aws.s3.bucket_metadata_table_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

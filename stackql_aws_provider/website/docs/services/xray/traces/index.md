@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>number (double)</code></td>
     <td>The length of time in seconds between the start time of the earliest segment that started and the end time of the last segment that completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the request that generated the trace's segments and subsegments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LimitExceeded" /></td>
+    <td><CopyableCode code="limit_exceeded" /></td>
     <td><code>boolean</code></td>
     <td>LimitExceeded is set to true when the trace has exceeded the Trace document size limit. For more information about this limit and other X-Ray limits and quotas, see Amazon Web Services X-Ray endpoints and quotas.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Segments" /></td>
+    <td><CopyableCode code="segments" /></td>
     <td><code>array</code></td>
     <td>Segment documents for the segments and subsegments that comprise the trace.</td>
 </tr>
@@ -155,10 +155,10 @@ You cannot find traces through this API if Transaction Search is enabled since t
 
 ```sql
 SELECT
-Duration,
-Id,
-LimitExceeded,
-Segments
+duration,
+id,
+limit_exceeded,
+segments
 FROM aws.xray.traces
 WHERE region = '{{ region }}' -- required
 ;
@@ -187,7 +187,7 @@ WHERE
 region = '{{ region }}' --required
 AND TraceSegmentDocuments = '{{ TraceSegmentDocuments }}' --required
 RETURNING
-UnprocessedTraceSegments;
+unprocessed_trace_segments;
 ```
 </TabItem>
 </Tabs>

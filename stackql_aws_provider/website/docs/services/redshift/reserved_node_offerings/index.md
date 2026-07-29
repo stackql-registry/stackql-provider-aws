@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the compute nodes offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration, in seconds, for which the offering will reserve the node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number</code></td>
     <td>The upfront fixed charge you will pay to purchase the specific reserved node offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type offered by the reserved node offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>The anticipated utilization of the reserved node, as defined in the reserved node offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringCharges" /></td>
+    <td><CopyableCode code="recurring_charges" /></td>
     <td><code>string</code></td>
     <td>The charge to your account regardless of whether you are creating any clusters using the node offering. Recurring charges are only in effect for heavy-utilization reserved nodes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodeOfferingId" /></td>
+    <td><CopyableCode code="reserved_node_offering_id" /></td>
     <td><code>string</code></td>
     <td>The offering identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodeOfferingType" /></td>
+    <td><CopyableCode code="reserved_node_offering_type" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number</code></td>
     <td>The rate you are charged for each hour the cluster that is using the offering is running.</td>
 </tr>
@@ -191,15 +191,15 @@ Returns a list of the available reserved node offerings by Amazon Redshift with 
 
 ```sql
 SELECT
-CurrencyCode,
-Duration,
-FixedPrice,
-NodeType,
-OfferingType,
-RecurringCharges,
-ReservedNodeOfferingId,
-ReservedNodeOfferingType,
-UsagePrice
+currency_code,
+duration,
+fixed_price,
+node_type,
+offering_type,
+recurring_charges,
+reserved_node_offering_id,
+reserved_node_offering_type,
+usage_price
 FROM aws.redshift.reserved_node_offerings
 WHERE region = '{{ region }}' -- required
 AND ReservedNodeOfferingId = '{{ ReservedNodeOfferingId }}'

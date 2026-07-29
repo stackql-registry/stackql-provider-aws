@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HubV2Arn" /></td>
+    <td><CopyableCode code="hub_v2_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the service resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscribedAt" /></td>
+    <td><CopyableCode code="subscribed_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when the service was enabled in the account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns details about the service resource in your account.
 
 ```sql
 SELECT
-HubV2Arn,
-SubscribedAt
+hub_v2_arn,
+subscribed_at
 FROM aws.securityhub.security_hub_v2s
 WHERE region = '{{ region }}' -- required
 ;

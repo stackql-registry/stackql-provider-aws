@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="downloadUrl" /></td>
+    <td><CopyableCode code="download_url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed Amazon S3 download URL for the requested layer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="layerDigest" /></td>
+    <td><CopyableCode code="layer_digest" /></td>
     <td><code>string</code></td>
     <td>The digest of the image layer to download. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_+.&#93;+:&#91;a-fA-F0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer.
 
 ```sql
 SELECT
-downloadUrl,
-layerDigest
+download_url,
+layer_digest
 FROM aws.ecr.download_url_for_layers
 WHERE region = '{{ region }}' -- required
 ;

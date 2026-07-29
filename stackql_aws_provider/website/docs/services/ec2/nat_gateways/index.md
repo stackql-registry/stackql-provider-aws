@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachedAppliances" /></td>
+    <td><CopyableCode code="attached_appliances" /></td>
     <td><code>string</code></td>
     <td>The proxy appliances attached to the NAT Gateway for filtering and inspecting traffic to prevent data exfiltration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoProvisionZones" /></td>
+    <td><CopyableCode code="auto_provision_zones" /></td>
     <td><code>string</code></td>
     <td>For regional NAT gateways only: Indicates whether Amazon Web Services automatically manages AZ coverage. When enabled, the NAT gateway associates EIPs in all AZs where your VPC has subnets to handle outbound NAT traffic, expands to new AZs when you create subnets there, and retracts from AZs where you've removed all subnets. When disabled, you must manually manage which AZs the NAT gateway supports and their corresponding EIPs. A regional NAT gateway is a single NAT Gateway that works across multiple availability zones (AZs) in your VPC, providing redundancy, scalability and availability across all the AZs in a Region. For more information, see Regional NAT gateways for automatic multi-AZ expansion in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoScalingIps" /></td>
+    <td><CopyableCode code="auto_scaling_ips" /></td>
     <td><code>string</code></td>
     <td>For regional NAT gateways only: Indicates whether Amazon Web Services automatically allocates additional Elastic IP addresses (EIPs) in an AZ when the NAT gateway needs more ports due to increased concurrent connections to a single destination from that AZ. For more information, see Regional NAT gateways for automatic multi-AZ expansion in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityMode" /></td>
+    <td><CopyableCode code="availability_mode" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this is a zonal (single-AZ) or regional (multi-AZ) NAT gateway. A zonal NAT gateway is a NAT Gateway that provides redundancy and scalability within a single availability zone. A regional NAT gateway is a single NAT Gateway that works across multiple availability zones (AZs) in your VPC, providing redundancy, scalability and availability across all the AZs in a Region. For more information, see Regional NAT gateways for automatic multi-AZ expansion in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectivityType" /></td>
+    <td><CopyableCode code="connectivity_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the NAT gateway supports public or private connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the NAT gateway was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeleteTime" /></td>
+    <td><CopyableCode code="delete_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the NAT gateway was deleted, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>If the NAT gateway could not be created, specifies the error code for the failure. (InsufficientFreeAddressesInSubnet | Gateway.NotAttached | InvalidAllocationID.NotFound | Resource.AlreadyAssociated | InternalError | InvalidSubnetID.NotFound)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>If the NAT gateway could not be created, specifies the error message for the failure, that corresponds to the error code. For InsufficientFreeAddressesInSubnet: "Subnet has insufficient free addresses to create this NAT gateway" For Gateway.NotAttached: "Network vpc-xxxxxxxx has no Internet gateway attached" For InvalidAllocationID.NotFound: "Elastic IP address eipalloc-xxxxxxxx could not be associated with this NAT gateway" For Resource.AlreadyAssociated: "Elastic IP address eipalloc-xxxxxxxx is already associated" For InternalError: "Network interface eni-xxxxxxxx, created and used internally by this NAT gateway is in an invalid state. Please try again." For InvalidSubnetID.NotFound: "The specified subnet subnet-xxxxxxxx does not exist or could not be found."</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NatGatewayAddresses" /></td>
+    <td><CopyableCode code="nat_gateway_addresses" /></td>
     <td><code>string</code></td>
     <td>Information about the IP addresses and network interface associated with the NAT gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NatGatewayId" /></td>
+    <td><CopyableCode code="nat_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the NAT gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionedBandwidth" /></td>
+    <td><CopyableCode code="provisioned_bandwidth" /></td>
     <td><code>string</code></td>
     <td>Reserved. If you need to sustain traffic greater than the documented limits, contact Amazon Web Services Support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteTableId" /></td>
+    <td><CopyableCode code="route_table_id" /></td>
     <td><code>string</code></td>
     <td>For regional NAT gateways only, this is the ID of the NAT gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the NAT gateway. pending: The NAT gateway is being created and is not ready to process traffic. failed: The NAT gateway could not be created. Check the failureCode and failureMessage fields for the reason. available: The NAT gateway is able to process traffic. This status remains until you delete the NAT gateway, and does not indicate the health of the NAT gateway. deleting: The NAT gateway is in the process of being terminated and may still be processing traffic. deleted: The NAT gateway has been terminated and is no longer processing traffic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet in which the NAT gateway is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the NAT gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC in which the NAT gateway is located.</td>
 </tr>
@@ -366,23 +366,23 @@ Describes your NAT gateways. The default is to describe all your NAT gateways. A
 
 ```sql
 SELECT
-AttachedAppliances,
-AutoProvisionZones,
-AutoScalingIps,
-AvailabilityMode,
-ConnectivityType,
-CreateTime,
-DeleteTime,
-FailureCode,
-FailureMessage,
-NatGatewayAddresses,
-NatGatewayId,
-ProvisionedBandwidth,
-RouteTableId,
-State,
-SubnetId,
-Tags,
-VpcId
+attached_appliances,
+auto_provision_zones,
+auto_scaling_ips,
+availability_mode,
+connectivity_type,
+create_time,
+delete_time,
+failure_code,
+failure_message,
+nat_gateway_addresses,
+nat_gateway_id,
+provisioned_bandwidth,
+route_table_id,
+state,
+subnet_id,
+tags,
+vpc_id
 FROM aws.ec2.nat_gateways
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -442,23 +442,23 @@ SELECT
 '{{ SecondaryPrivateIpAddress }}',
 '{{ SecondaryPrivateIpAddressCount }}'
 RETURNING
-AttachedAppliances,
-AutoProvisionZones,
-AutoScalingIps,
-AvailabilityMode,
-ConnectivityType,
-CreateTime,
-DeleteTime,
-FailureCode,
-FailureMessage,
-NatGatewayAddresses,
-NatGatewayId,
-ProvisionedBandwidth,
-RouteTableId,
-State,
-SubnetId,
-Tags,
-VpcId
+attached_appliances,
+auto_provision_zones,
+auto_scaling_ips,
+availability_mode,
+connectivity_type,
+create_time,
+delete_time,
+failure_code,
+failure_message,
+nat_gateway_addresses,
+nat_gateway_id,
+provisioned_bandwidth,
+route_table_id,
+state,
+subnet_id,
+tags,
+vpc_id
 ;
 ```
 </TabItem>
@@ -556,8 +556,8 @@ AND DryRun = {{ DryRun}}
 AND AvailabilityZone = '{{ AvailabilityZone}}'
 AND AvailabilityZoneId = '{{ AvailabilityZoneId}}'
 RETURNING
-NatGatewayAddresses,
-NatGatewayId;
+nat_gateway_addresses,
+nat_gateway_id;
 ```
 </TabItem>
 <TabItem value="disassociate_nat_gateway_address">
@@ -575,8 +575,8 @@ AND region = '{{ region }}' --required
 AND MaxDrainDurationSeconds = '{{ MaxDrainDurationSeconds}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-NatGatewayAddresses,
-NatGatewayId;
+nat_gateway_addresses,
+nat_gateway_id;
 ```
 </TabItem>
 <TabItem value="unassign_private_nat_gateway_address">
@@ -594,8 +594,8 @@ AND region = '{{ region }}' --required
 AND MaxDrainDurationSeconds = '{{ MaxDrainDurationSeconds}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-NatGatewayAddresses,
-NatGatewayId;
+nat_gateway_addresses,
+nat_gateway_id;
 ```
 </TabItem>
 <TabItem value="assign_private_nat_gateway_address">
@@ -613,8 +613,8 @@ AND PrivateIpAddress = '{{ PrivateIpAddress}}'
 AND PrivateIpAddressCount = '{{ PrivateIpAddressCount}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-NatGatewayAddresses,
-NatGatewayId;
+nat_gateway_addresses,
+nat_gateway_id;
 ```
 </TabItem>
 </Tabs>

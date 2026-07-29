@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppliedSchemaArn" /></td>
+    <td><CopyableCode code="applied_schema_arn" /></td>
     <td><code>string</code></td>
     <td>Current applied schema ARN, including the minor version in use if one was provided.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns current applied schema version ARN, including the minor version in use.
 
 ```sql
 SELECT
-AppliedSchemaArn
+applied_schema_arn
 FROM aws.clouddirectory.applied_schema_versions
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FirewallFailOpen" /></td>
+    <td><CopyableCode code="firewall_fail_open" /></td>
     <td><code>string</code></td>
     <td>Determines how DNS Firewall operates during failures, for example when all traffic that is sent to DNS Firewall fails to receive a reply. By default, fail open is disabled, which means the failure mode is closed. This approach favors security over availability. DNS Firewall returns a failure error when it is unable to properly evaluate a query. If you enable this option, the failure mode is open. This approach favors availability over security. DNS Firewall allows queries to proceed if it is unable to properly evaluate them. This behavior is only enforced for VPCs that have at least one DNS Firewall rule group association. (ENABLED, DISABLED, USE_LOCAL_RESOURCE_SETTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the firewall configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the VPC that this firewall configuration applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC that this firewall configuration applies to.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FirewallFailOpen" /></td>
+    <td><CopyableCode code="firewall_fail_open" /></td>
     <td><code>string</code></td>
     <td>Determines how DNS Firewall operates during failures, for example when all traffic that is sent to DNS Firewall fails to receive a reply. By default, fail open is disabled, which means the failure mode is closed. This approach favors security over availability. DNS Firewall returns a failure error when it is unable to properly evaluate a query. If you enable this option, the failure mode is open. This approach favors availability over security. DNS Firewall allows queries to proceed if it is unable to properly evaluate them. This behavior is only enforced for VPCs that have at least one DNS Firewall rule group association. (ENABLED, DISABLED, USE_LOCAL_RESOURCE_SETTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the firewall configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the VPC that this firewall configuration applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC that this firewall configuration applies to.</td>
 </tr>
@@ -184,10 +184,10 @@ Retrieves the configuration of the firewall behavior provided by DNS Firewall fo
 
 ```sql
 SELECT
-FirewallFailOpen,
-Id,
-OwnerId,
-ResourceId
+firewall_fail_open,
+id,
+owner_id,
+resource_id
 FROM aws.route53resolver.firewall_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,10 +199,10 @@ Retrieves the firewall configurations that you have defined. DNS Firewall uses t
 
 ```sql
 SELECT
-FirewallFailOpen,
-Id,
-OwnerId,
-ResourceId
+firewall_fail_open,
+id,
+owner_id,
+resource_id
 FROM aws.route53resolver.firewall_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,7 +233,7 @@ region = '{{ region }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
 AND FirewallFailOpen = '{{ FirewallFailOpen }}' --required
 RETURNING
-FirewallConfig;
+firewall_config;
 ```
 </TabItem>
 </Tabs>

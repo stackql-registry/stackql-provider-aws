@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>An optional category you create to organize your presets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for preset creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description you create for each preset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds when the preset was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name you create for each preset. Each name must be unique within your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>Settings for preset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the user. (SYSTEM, CUSTOM)</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An identifier for this resource that is unique within all of AWS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>An optional category you create to organize your presets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds for preset creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description you create for each preset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp in epoch seconds when the preset was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name you create for each preset. Each name must be unique within your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>Settings for preset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the user. (SYSTEM, CUSTOM)</td>
 </tr>
@@ -268,14 +268,14 @@ Retrieve the JSON for a specific preset.
 
 ```sql
 SELECT
-Arn,
-Category,
-CreatedAt,
-Description,
-LastUpdated,
-Name,
-Settings,
-Type
+arn,
+category,
+created_at,
+description,
+last_updated,
+name,
+settings,
+type
 FROM aws.mediaconvert.presets
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,14 +288,14 @@ Retrieve a JSON array of up to twenty of your presets. This will return the pres
 
 ```sql
 SELECT
-Arn,
-Category,
-CreatedAt,
-Description,
-LastUpdated,
-Name,
-Settings,
-Type
+arn,
+category,
+created_at,
+description,
+last_updated,
+name,
+settings,
+type
 FROM aws.mediaconvert.presets
 WHERE region = '{{ region }}' -- required
 AND category = '{{ category }}'
@@ -339,7 +339,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Preset
+preset
 ;
 ```
 </TabItem>
@@ -1161,7 +1161,7 @@ WHERE
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Preset;
+preset;
 ```
 </TabItem>
 </Tabs>

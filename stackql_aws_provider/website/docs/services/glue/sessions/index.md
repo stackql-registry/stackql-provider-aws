@@ -50,102 +50,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Command" /></td>
+    <td><CopyableCode code="command" /></td>
     <td><code>object</code></td>
     <td>The command object.See SessionCommand.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that this session is completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Connections" /></td>
+    <td><CopyableCode code="connections" /></td>
     <td><code>object</code></td>
     <td>The number of connections used for the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date when the session was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DPUSeconds" /></td>
+    <td><CopyableCode code="dpu_seconds" /></td>
     <td><code>number (double)</code></td>
     <td>The DPUs consumed by the session (formula: ExecutionTime * MaxCapacity).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultArguments" /></td>
+    <td><CopyableCode code="default_arguments" /></td>
     <td><code>object</code></td>
     <td>A map array of key-value pairs. Max is 75 pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the session. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message displayed during the session. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionTime" /></td>
+    <td><CopyableCode code="execution_time" /></td>
     <td><code>number (double)</code></td>
     <td>The total time the session ran for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlueVersion" /></td>
+    <td><CopyableCode code="glue_version" /></td>
     <td><code>string</code></td>
     <td>The Glue version determines the versions of Apache Spark and Python that Glue supports. The GlueVersion must be greater than 2.0. (pattern: &lt;code&gt;^(\w+\.)+\w+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the session. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdleTimeout" /></td>
+    <td><CopyableCode code="idle_timeout" /></td>
     <td><code>integer</code></td>
     <td>The number of minutes when idle before the session times out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>number (double)</code></td>
     <td>The number of Glue data processing units (DPUs) that can be allocated when the job runs. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB memory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of workers of a defined WorkerType to use for the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileName" /></td>
+    <td><CopyableCode code="profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of an Glue usage profile associated with the session. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>number (double)</code></td>
     <td>The code execution progress of the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the IAM role associated with the Session. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::&#91;0-9&#93;*:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>The name of the SecurityConfiguration structure to be used with the session. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The session status. (PROVISIONING, READY, FAILED, TIMEOUT, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerType" /></td>
+    <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of predefined worker that is allocated when a session runs. Accepts a value of G.1X, G.2X, G.4X, or G.8X for Spark sessions. Accepts the value Z.2X for Ray sessions. (Standard, G.1X, G.2X, G.025X, G.4X, G.8X, Z.2X)</td>
 </tr>
@@ -249,26 +249,26 @@ Retrieves the session.
 
 ```sql
 SELECT
-Command,
-CompletedOn,
-Connections,
-CreatedOn,
-DPUSeconds,
-DefaultArguments,
-Description,
-ErrorMessage,
-ExecutionTime,
-GlueVersion,
-Id,
-IdleTimeout,
-MaxCapacity,
-NumberOfWorkers,
-ProfileName,
-Progress,
-Role,
-SecurityConfiguration,
-Status,
-WorkerType
+command,
+completed_on,
+connections,
+created_on,
+dpu_seconds,
+default_arguments,
+description,
+error_message,
+execution_time,
+glue_version,
+id,
+idle_timeout,
+max_capacity,
+number_of_workers,
+profile_name,
+progress,
+role,
+security_configuration,
+status,
+worker_type
 FROM aws.glue.sessions
 WHERE region = '{{ region }}' -- required
 ;
@@ -327,7 +327,7 @@ SELECT
 '{{ RequestOrigin }}',
 '{{ region }}'
 RETURNING
-Session
+session
 ;
 ```
 </TabItem>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSetArn" /></td>
+    <td><CopyableCode code="data_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSetId" /></td>
+    <td><CopyableCode code="data_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the dataset that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A list of resource permissions on the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -156,11 +156,11 @@ Describes the permissions on a dataset. The permissions resource is arn:aws:quic
 
 ```sql
 SELECT
-DataSetArn,
-DataSetId,
-Permissions,
-RequestId,
-Status
+data_set_arn,
+data_set_id,
+permissions,
+request_id,
+status
 FROM aws.quicksight.data_set_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND data_set_id = '{{ data_set_id }}' -- required
@@ -193,10 +193,10 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND data_set_id = '{{ data_set_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DataSetArn,
-DataSetId,
-RequestId,
-Status;
+data_set_arn,
+data_set_id,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

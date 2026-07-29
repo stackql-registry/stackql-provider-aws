@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LocalGatewayId" /></td>
+    <td><CopyableCode code="local_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the local gateway.</td>
 </tr>
@@ -164,11 +164,11 @@ Describes one or more local gateways. By default, all local gateways are describ
 
 ```sql
 SELECT
-LocalGatewayId,
-OutpostArn,
-OwnerId,
-State,
-Tags
+local_gateway_id,
+outpost_arn,
+owner_id,
+state,
+tags
 FROM aws.ec2.local_gateways
 WHERE region = '{{ region }}' -- required
 AND LocalGatewayId = '{{ LocalGatewayId }}'

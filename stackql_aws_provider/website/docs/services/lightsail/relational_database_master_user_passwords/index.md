@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the specified version of the master user password was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterUserPassword" /></td>
+    <td><CopyableCode code="master_user_password" /></td>
     <td><code>string</code></td>
     <td>The master user password for the password version specified.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the current, previous, or pending versions of the master user password f
 
 ```sql
 SELECT
-createdAt,
-masterUserPassword
+created_at,
+master_user_password
 FROM aws.lightsail.relational_database_master_user_passwords
 WHERE region = '{{ region }}' -- required
 ;

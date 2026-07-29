@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GlobalSettings" /></td>
+    <td><CopyableCode code="global_settings" /></td>
     <td><code>object</code></td>
     <td>The status of the flags isCrossAccountBackupEnabled, isMpaEnabled ('Mpa' refers to multi-party approval), and isDelegatedAdministratorEnabled. isCrossAccountBackupEnabled: Allow accounts in your organization to copy backups to other accounts. isMpaEnabled: Add cross-account access to your organization with the option to assign a Multi-party approval team to a logically air-gapped vault. isDelegatedAdministratorEnabled: Allow Backup to automatically synchronize delegated administrator permissions with Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the supported flags were last updated. This update is in Unix format and Coordinated Universal Time (UTC). The value of LastUpdateTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
@@ -131,8 +131,8 @@ Describes whether the Amazon Web Services account has enabled different cross-ac
 
 ```sql
 SELECT
-GlobalSettings,
-LastUpdateTime
+global_settings,
+last_update_time
 FROM aws.backup.global_settings
 WHERE region = '{{ region }}' -- required
 ;

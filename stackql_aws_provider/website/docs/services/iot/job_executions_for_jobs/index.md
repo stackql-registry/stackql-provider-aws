@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="jobExecutionSummary" /></td>
+    <td><CopyableCode code="job_execution_summary" /></td>
     <td><code>object</code></td>
     <td>Contains a subset of information about a job execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingArn" /></td>
+    <td><CopyableCode code="thing_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the thing on which the job execution is running.</td>
 </tr>
@@ -144,8 +144,8 @@ Lists the job executions for a job. Requires permission to access the ListJobExe
 
 ```sql
 SELECT
-jobExecutionSummary,
-thingArn
+job_execution_summary,
+thing_arn
 FROM aws.iot.job_executions_for_jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required

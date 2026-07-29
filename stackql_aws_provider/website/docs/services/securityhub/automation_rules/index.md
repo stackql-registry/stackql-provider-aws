@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>A list of rule details for the provided rule ARNs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedAutomationRules" /></td>
+    <td><CopyableCode code="unprocessed_automation_rules" /></td>
     <td><code>array</code></td>
     <td>A list of objects containing RuleArn, ErrorCode, and ErrorMessage. This parameter tells you which automation rules the request didn't retrieve and why.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutomationRulesMetadata" /></td>
+    <td><CopyableCode code="automation_rules_metadata" /></td>
     <td><code>array</code></td>
     <td>Metadata for rules in the calling account. The response includes rules with a RuleStatus of ENABLED and DISABLED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token for the response.</td>
 </tr>
@@ -188,8 +188,8 @@ Retrieves a list of details for automation rules based on rule Amazon Resource N
 
 ```sql
 SELECT
-Rules,
-UnprocessedAutomationRules
+rules,
+unprocessed_automation_rules
 FROM aws.securityhub.automation_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,8 +201,8 @@ A list of automation rules and their metadata for the calling account.
 
 ```sql
 SELECT
-AutomationRulesMetadata,
-NextToken
+automation_rules_metadata,
+next_token
 FROM aws.securityhub.automation_rules
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -249,7 +249,7 @@ SELECT
 '{{ Actions }}' /* required */,
 '{{ region }}'
 RETURNING
-RuleArn
+rule_arn
 ;
 ```
 </TabItem>

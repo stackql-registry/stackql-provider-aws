@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationState" /></td>
+    <td><CopyableCode code="configuration_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalAddress" /></td>
+    <td><CopyableCode code="local_address" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address assigned to the local gateway virtual interface on the Outpost side.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Outpost Amazon Resource Number (ARN) for the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>The Outpost ID for the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostLagId" /></td>
+    <td><CopyableCode code="outpost_lag_id" /></td>
     <td><code>string</code></td>
     <td>The link aggregation group (LAG) ID for the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the service link virtual interface..</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerAddress" /></td>
+    <td><CopyableCode code="peer_address" /></td>
     <td><code>string</code></td>
     <td>The IPv4 peer address for the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerBgpAsn" /></td>
+    <td><CopyableCode code="peer_bgp_asn" /></td>
     <td><code>integer</code></td>
     <td>The ASN for the Border Gateway Protocol (BGP) associated with the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceLinkVirtualInterfaceArn" /></td>
+    <td><CopyableCode code="service_link_virtual_interface_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) for the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceLinkVirtualInterfaceId" /></td>
+    <td><CopyableCode code="service_link_virtual_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags associated with the service link virtual interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vlan" /></td>
+    <td><CopyableCode code="vlan" /></td>
     <td><code>integer</code></td>
     <td>The virtual local area network for the service link virtual interface.</td>
 </tr>
@@ -199,18 +199,18 @@ Describes the Outpost service link virtual interfaces.
 
 ```sql
 SELECT
-ConfigurationState,
-LocalAddress,
-OutpostArn,
-OutpostId,
-OutpostLagId,
-OwnerId,
-PeerAddress,
-PeerBgpAsn,
-ServiceLinkVirtualInterfaceArn,
-ServiceLinkVirtualInterfaceId,
-Tags,
-Vlan
+configuration_state,
+local_address,
+outpost_arn,
+outpost_id,
+outpost_lag_id,
+owner_id,
+peer_address,
+peer_bgp_asn,
+service_link_virtual_interface_arn,
+service_link_virtual_interface_id,
+tags,
+vlan
 FROM aws.ec2.service_link_virtual_interfaces
 WHERE region = '{{ region }}' -- required
 AND ServiceLinkVirtualInterfaceId = '{{ ServiceLinkVirtualInterfaceId }}'

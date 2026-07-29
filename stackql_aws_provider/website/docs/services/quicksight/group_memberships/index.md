@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupMember" /></td>
+    <td><CopyableCode code="group_member" /></td>
     <td><code>object</code></td>
     <td>A member of an Quick Sight group. Currently, group members must be users. Groups can't be members of another group. .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the group member (user).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberName" /></td>
+    <td><CopyableCode code="member_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group member (user). (pattern: &lt;code&gt;&#91;\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -206,9 +206,9 @@ Use the DescribeGroupMembership operation to determine if a user is a member of 
 
 ```sql
 SELECT
-GroupMember,
-RequestId,
-Status
+group_member,
+request_id,
+status
 FROM aws.quicksight.group_memberships
 WHERE member_name = '{{ member_name }}' -- required
 AND group_name = '{{ group_name }}' -- required
@@ -224,8 +224,8 @@ Lists member users in a group.
 
 ```sql
 SELECT
-Arn,
-MemberName
+arn,
+member_name
 FROM aws.quicksight.group_memberships
 WHERE group_name = '{{ group_name }}' -- required
 AND aws_account_id = '{{ aws_account_id }}' -- required
@@ -267,9 +267,9 @@ SELECT
 '{{ namespace }}',
 '{{ region }}'
 RETURNING
-GroupMember,
-RequestId,
-Status
+group_member,
+request_id,
+status
 ;
 ```
 </TabItem>

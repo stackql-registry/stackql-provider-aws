@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="notFound" /></td>
+    <td><CopyableCode code="not_found" /></td>
     <td><code>array</code></td>
     <td>List of target domain IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetDomains" /></td>
+    <td><CopyableCode code="target_domains" /></td>
     <td><code>array</code></td>
     <td>The list of target domains that were found.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name of the target domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetDomainId" /></td>
+    <td><CopyableCode code="target_domain_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the target domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="verificationStatus" /></td>
+    <td><CopyableCode code="verification_status" /></td>
     <td><code>string</code></td>
     <td>The current verification status of the target domain. (PENDING, VERIFIED, FAILED, UNREACHABLE)</td>
 </tr>
@@ -190,8 +190,8 @@ Retrieves information about one or more target domains.
 
 ```sql
 SELECT
-notFound,
-targetDomains
+not_found,
+target_domains
 FROM aws.securityagent.target_domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,9 +203,9 @@ Returns a paginated list of target domain summaries in your account.
 
 ```sql
 SELECT
-domainName,
-targetDomainId,
-verificationStatus
+domain_name,
+target_domain_id,
+verification_status
 FROM aws.securityagent.target_domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -240,13 +240,13 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
-domainName,
-targetDomainId,
-verificationDetails,
-verificationStatus,
-verificationStatusReason,
-verifiedAt
+created_at,
+domain_name,
+target_domain_id,
+verification_details,
+verification_status,
+verification_status_reason,
+verified_at
 ;
 ```
 </TabItem>
@@ -297,13 +297,13 @@ region = '{{ region }}' --required
 AND targetDomainId = '{{ targetDomainId }}' --required
 AND verificationMethod = '{{ verificationMethod }}' --required
 RETURNING
-createdAt,
-domainName,
-targetDomainId,
-verificationDetails,
-verificationStatus,
-verificationStatusReason,
-verifiedAt;
+created_at,
+domain_name,
+target_domain_id,
+verification_details,
+verification_status,
+verification_status_reason,
+verified_at;
 ```
 </TabItem>
 </Tabs>

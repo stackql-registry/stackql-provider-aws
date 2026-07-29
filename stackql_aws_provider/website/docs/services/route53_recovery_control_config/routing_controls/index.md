@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ControlPanelArn" /></td>
+    <td><CopyableCode code="control_panel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the control panel that includes the routing control. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the routing control. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the routing control owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlArn" /></td>
+    <td><CopyableCode code="routing_control_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the routing control. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The deployment status of a routing control. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION. (PENDING, DEPLOYED, PENDING_DELETION)</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ControlPanelArn" /></td>
+    <td><CopyableCode code="control_panel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the control panel that includes the routing control. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the routing control. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the routing control owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlArn" /></td>
+    <td><CopyableCode code="routing_control_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the routing control. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The deployment status of a routing control. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION. (PENDING, DEPLOYED, PENDING_DELETION)</td>
 </tr>
@@ -228,11 +228,11 @@ Displays details about a routing control. A routing control has one of two state
 
 ```sql
 SELECT
-ControlPanelArn,
-Name,
-Owner,
-RoutingControlArn,
-Status
+control_panel_arn,
+name,
+owner,
+routing_control_arn,
+status
 FROM aws.route53_recovery_control_config.routing_controls
 WHERE routing_control_arn = '{{ routing_control_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,11 +245,11 @@ Returns an array of routing controls for a control panel. A routing control is a
 
 ```sql
 SELECT
-ControlPanelArn,
-Name,
-Owner,
-RoutingControlArn,
-Status
+control_panel_arn,
+name,
+owner,
+routing_control_arn,
+status
 FROM aws.route53_recovery_control_config.routing_controls
 WHERE control_panel_arn = '{{ control_panel_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -289,7 +289,7 @@ SELECT
 '{{ RoutingControlName }}' /* required */,
 '{{ region }}'
 RETURNING
-RoutingControl
+routing_control
 ;
 ```
 </TabItem>
@@ -337,7 +337,7 @@ region = '{{ region }}' --required
 AND RoutingControlArn = '{{ RoutingControlArn }}' --required
 AND RoutingControlName = '{{ RoutingControlName }}' --required
 RETURNING
-RoutingControl;
+routing_control;
 ```
 </TabItem>
 </Tabs>

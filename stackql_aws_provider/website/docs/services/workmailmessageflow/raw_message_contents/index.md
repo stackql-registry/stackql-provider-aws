@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="messageContent" /></td>
+    <td><CopyableCode code="message_content" /></td>
     <td><code>string (byte)</code></td>
     <td>The raw content of the email message, in MIME format.</td>
 </tr>
@@ -131,7 +131,7 @@ Retrieves the raw content of an in-transit email message, in MIME format.
 
 ```sql
 SELECT
-messageContent
+message_content
 FROM aws.workmailmessageflow.raw_message_contents
 WHERE message_id = '{{ message_id }}' -- required
 AND region = '{{ region }}' -- required

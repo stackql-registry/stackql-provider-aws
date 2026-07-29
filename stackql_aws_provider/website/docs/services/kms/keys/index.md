@@ -51,132 +51,132 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AWSAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The twelve-digit account ID of the Amazon Web Services account that owns the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key. For examples, see Key Management Service (KMS) in the Example ARNs section of the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudHsmClusterId" /></td>
+    <td><CopyableCode code="cloud_hsm_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The cluster ID of the CloudHSM cluster that contains the key material for the KMS key. When you create a KMS key in an CloudHSM custom key store, KMS creates the key material for the KMS key in the associated CloudHSM cluster. This field is present only when the KMS key is created in an CloudHSM key store. (pattern: &lt;code&gt;cluster-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the KMS key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentKeyMaterialId" /></td>
+    <td><CopyableCode code="current_key_material_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the current key material. This value is present for symmetric encryption keys with AWS_KMS or EXTERNAL origin. These KMS keys support automatic or on-demand key rotation and can have multiple key materials associated with them. KMS uses the current key material for both encryption and decryption, and the non-current key material for decryption operations only. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomKeyStoreId" /></td>
+    <td><CopyableCode code="custom_key_store_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the custom key store that contains the KMS key. This field is present only when the KMS key is created in a custom key store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerMasterKeySpec" /></td>
+    <td><CopyableCode code="customer_master_key_spec" /></td>
     <td><code>string</code></td>
     <td>Instead, use the KeySpec field. The KeySpec and CustomerMasterKeySpec fields have the same value. We recommend that you use the KeySpec field in your code. However, to avoid breaking changes, KMS supports both fields. (RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, ECC_SECG_P256K1, SYMMETRIC_DEFAULT, HMAC_224, HMAC_256, HMAC_384, HMAC_512, SM2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionDate" /></td>
+    <td><CopyableCode code="deletion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time after which KMS deletes this KMS key. This value is present only when the KMS key is scheduled for deletion, that is, when its KeyState is PendingDeletion. When the primary key in a multi-Region key is scheduled for deletion but still has replica keys, its key state is PendingReplicaDeletion and the length of its waiting period is displayed in the PendingDeletionWindowInDays field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the KMS key is enabled. When KeyState is Enabled this value is true, otherwise it is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionAlgorithms" /></td>
+    <td><CopyableCode code="encryption_algorithms" /></td>
     <td><code>array</code></td>
     <td>The encryption algorithms that the KMS key supports. You cannot use the KMS key with other encryption algorithms within KMS. This value is present only when the KeyUsage of the KMS key is ENCRYPT_DECRYPT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationModel" /></td>
+    <td><CopyableCode code="expiration_model" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the KMS key's key material expires. This value is present only when Origin is EXTERNAL, otherwise this value is omitted. (KEY_MATERIAL_EXPIRES, KEY_MATERIAL_DOES_NOT_EXPIRE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyAgreementAlgorithms" /></td>
+    <td><CopyableCode code="key_agreement_algorithms" /></td>
     <td><code>array</code></td>
     <td>The key agreement algorithm used to derive a shared secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyManager" /></td>
+    <td><CopyableCode code="key_manager" /></td>
     <td><code>string</code></td>
     <td>The manager of the KMS key. KMS keys in your Amazon Web Services account are either customer managed or Amazon Web Services managed. For more information about the difference, see KMS keys in the Key Management Service Developer Guide. (AWS, CUSTOMER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeySpec" /></td>
+    <td><CopyableCode code="key_spec" /></td>
     <td><code>string</code></td>
     <td>Describes the type of key material in the KMS key. (RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, ECC_SECG_P256K1, SYMMETRIC_DEFAULT, HMAC_224, HMAC_256, HMAC_384, HMAC_512, SM2, ML_DSA_44, ML_DSA_65, ML_DSA_87, ECC_NIST_EDWARDS25519)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyState" /></td>
+    <td><CopyableCode code="key_state" /></td>
     <td><code>string</code></td>
     <td>The current status of the KMS key. For more information about how key state affects the use of a KMS key, see Key states of KMS keys in the Key Management Service Developer Guide. (Creating, Enabled, Disabled, PendingDeletion, PendingImport, PendingReplicaDeletion, Unavailable, Updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyUsage" /></td>
+    <td><CopyableCode code="key_usage" /></td>
     <td><code>string</code></td>
     <td>The cryptographic operations for which you can use the KMS key. (SIGN_VERIFY, ENCRYPT_DECRYPT, GENERATE_VERIFY_MAC, KEY_AGREEMENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacAlgorithms" /></td>
+    <td><CopyableCode code="mac_algorithms" /></td>
     <td><code>array</code></td>
     <td>The message authentication code (MAC) algorithm that the HMAC KMS key supports. This value is present only when the KeyUsage of the KMS key is GENERATE_VERIFY_MAC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegion" /></td>
+    <td><CopyableCode code="multi_region" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the KMS key is a multi-Region (True) or regional (False) key. This value is True for multi-Region primary and replica keys and False for regional KMS keys. For more information about multi-Region keys, see Multi-Region keys in KMS in the Key Management Service Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegionConfiguration" /></td>
+    <td><CopyableCode code="multi_region_configuration" /></td>
     <td><code>object</code></td>
     <td>Lists the primary and replica keys in same multi-Region key. This field is present only when the value of the MultiRegion field is True. For more information about any listed KMS key, use the DescribeKey operation. MultiRegionKeyType indicates whether the KMS key is a PRIMARY or REPLICA key. PrimaryKey displays the key ARN and Region of the primary key. This field displays the current KMS key if it is the primary key. ReplicaKeys displays the key ARNs and Regions of all replica keys. This field includes the current KMS key if it is a replica key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Origin" /></td>
+    <td><CopyableCode code="origin" /></td>
     <td><code>string</code></td>
     <td>The source of the key material for the KMS key. When this value is AWS_KMS, KMS created the key material. When this value is EXTERNAL, the key material was imported or the KMS key doesn't have any key material. When this value is AWS_CLOUDHSM, the key material was created in the CloudHSM cluster associated with a custom key store. (AWS_KMS, EXTERNAL, AWS_CLOUDHSM, EXTERNAL_KEY_STORE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingDeletionWindowInDays" /></td>
+    <td><CopyableCode code="pending_deletion_window_in_days" /></td>
     <td><code>integer</code></td>
     <td>The waiting period before the primary key in a multi-Region key is deleted. This waiting period begins when the last of its replica keys is deleted. This value is present only when the KeyState of the KMS key is PendingReplicaDeletion. That indicates that the KMS key is the primary key in a multi-Region key, it is scheduled for deletion, and it still has existing replica keys. When a single-Region KMS key or a multi-Region replica key is scheduled for deletion, its deletion date is displayed in the DeletionDate field. However, when the primary key in a multi-Region key is scheduled for deletion, its waiting period doesn't begin until all of its replica keys are deleted. This value displays that waiting period. When the last replica key in the multi-Region key is deleted, the KeyState of the scheduled primary key changes from PendingReplicaDeletion to PendingDeletion and the deletion date appears in the DeletionDate field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningAlgorithms" /></td>
+    <td><CopyableCode code="signing_algorithms" /></td>
     <td><code>array</code></td>
     <td>The signing algorithms that the KMS key supports. You cannot use the KMS key with other signing algorithms within KMS. This field appears only when the KeyUsage of the KMS key is SIGN_VERIFY.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidTo" /></td>
+    <td><CopyableCode code="valid_to" /></td>
     <td><code>string (date-time)</code></td>
     <td>The earliest time at which any imported key material permanently associated with this KMS key expires. When a key material expires, KMS deletes the key material and the KMS key becomes unusable. This value is present only for KMS keys whose Origin is EXTERNAL and the ExpirationModel is KEY_MATERIAL_EXPIRES, otherwise this value is omitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="XksKeyConfiguration" /></td>
+    <td><CopyableCode code="xks_key_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the external key that is associated with a KMS key in an external key store. For more information, see External key in the Key Management Service Developer Guide.</td>
 </tr>
@@ -195,12 +195,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KeyArn" /></td>
+    <td><CopyableCode code="key_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the key.</td>
 </tr>
@@ -438,32 +438,32 @@ Provides detailed information about a KMS key. You can run DescribeKey on a cust
 
 ```sql
 SELECT
-AWSAccountId,
-Arn,
-CloudHsmClusterId,
-CreationDate,
-CurrentKeyMaterialId,
-CustomKeyStoreId,
-CustomerMasterKeySpec,
-DeletionDate,
-Description,
-Enabled,
-EncryptionAlgorithms,
-ExpirationModel,
-KeyAgreementAlgorithms,
-KeyId,
-KeyManager,
-KeySpec,
-KeyState,
-KeyUsage,
-MacAlgorithms,
-MultiRegion,
-MultiRegionConfiguration,
-Origin,
-PendingDeletionWindowInDays,
-SigningAlgorithms,
-ValidTo,
-XksKeyConfiguration
+aws_account_id,
+arn,
+cloud_hsm_cluster_id,
+creation_date,
+current_key_material_id,
+custom_key_store_id,
+customer_master_key_spec,
+deletion_date,
+description,
+enabled,
+encryption_algorithms,
+expiration_model,
+key_agreement_algorithms,
+key_id,
+key_manager,
+key_spec,
+key_state,
+key_usage,
+mac_algorithms,
+multi_region,
+multi_region_configuration,
+origin,
+pending_deletion_window_in_days,
+signing_algorithms,
+valid_to,
+xks_key_configuration
 FROM aws.kms.keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -475,8 +475,8 @@ Gets a list of all KMS keys in the caller's Amazon Web Services account and Regi
 
 ```sql
 SELECT
-KeyArn,
-KeyId
+key_arn,
+key_id
 FROM aws.kms.keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -527,7 +527,7 @@ SELECT
 '{{ XksKeyId }}',
 '{{ region }}'
 RETURNING
-KeyMetadata
+key_metadata
 ;
 ```
 </TabItem>

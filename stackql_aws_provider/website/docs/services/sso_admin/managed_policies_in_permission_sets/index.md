@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Web Services managed policy. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the Amazon Web Services General Reference. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:iam::aws:policy((/&#91;A-Za-z0-9\.,\+@=_-&#93;+)*)/(&#91;A-Za-z0-9\.,\+=@_-&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services managed policy.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the Amazon Web Services managed policy that is attached to a specified per
 
 ```sql
 SELECT
-Arn,
-Name
+arn,
+name
 FROM aws.sso_admin.managed_policies_in_permission_sets
 WHERE region = '{{ region }}' -- required
 ;

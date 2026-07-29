@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the media type of the resource. (text/plain)</td>
 </tr>
@@ -129,7 +129,7 @@ Gets the content of the network service descriptor. A network service descriptor
 
 ```sql
 SELECT
-contentType,
+content_type,
 nsd
 FROM aws.tnb.sol_network_package_descriptors
 WHERE nsd_info_id = '{{ nsd_info_id }}' -- required

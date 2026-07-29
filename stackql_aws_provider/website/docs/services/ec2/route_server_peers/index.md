@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BfdStatus" /></td>
+    <td><CopyableCode code="bfd_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the BFD session with this peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BgpOptions" /></td>
+    <td><CopyableCode code="bgp_options" /></td>
     <td><code>string</code></td>
     <td>The BGP configuration options for this peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BgpStatus" /></td>
+    <td><CopyableCode code="bgp_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the BGP session with this peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointEniAddress" /></td>
+    <td><CopyableCode code="endpoint_eni_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the Elastic network interface for the route server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointEniId" /></td>
+    <td><CopyableCode code="endpoint_eni_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Elastic network interface for the route server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for any failure in peer creation or operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeerAddress" /></td>
+    <td><CopyableCode code="peer_address" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address of the peer device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteServerEndpointId" /></td>
+    <td><CopyableCode code="route_server_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the route server endpoint associated with this peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteServerId" /></td>
+    <td><CopyableCode code="route_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the route server associated with this peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteServerPeerId" /></td>
+    <td><CopyableCode code="route_server_peer_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the route server peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the route server peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet containing the route server peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the route server peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC containing the route server peer.</td>
 </tr>
@@ -248,20 +248,20 @@ Describes one or more route server peers. A route server peer is a session betwe
 
 ```sql
 SELECT
-BfdStatus,
-BgpOptions,
-BgpStatus,
-EndpointEniAddress,
-EndpointEniId,
-FailureReason,
-PeerAddress,
-RouteServerEndpointId,
-RouteServerId,
-RouteServerPeerId,
-State,
-SubnetId,
-Tags,
-VpcId
+bfd_status,
+bgp_options,
+bgp_status,
+endpoint_eni_address,
+endpoint_eni_id,
+failure_reason,
+peer_address,
+route_server_endpoint_id,
+route_server_id,
+route_server_peer_id,
+state,
+subnet_id,
+tags,
+vpc_id
 FROM aws.ec2.route_server_peers
 WHERE region = '{{ region }}' -- required
 AND RouteServerPeerId = '{{ RouteServerPeerId }}'
@@ -305,20 +305,20 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-BfdStatus,
-BgpOptions,
-BgpStatus,
-EndpointEniAddress,
-EndpointEniId,
-FailureReason,
-PeerAddress,
-RouteServerEndpointId,
-RouteServerId,
-RouteServerPeerId,
-State,
-SubnetId,
-Tags,
-VpcId
+bfd_status,
+bgp_options,
+bgp_status,
+endpoint_eni_address,
+endpoint_eni_id,
+failure_reason,
+peer_address,
+route_server_endpoint_id,
+route_server_id,
+route_server_peer_id,
+state,
+subnet_id,
+tags,
+vpc_id
 ;
 ```
 </TabItem>

@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster where the cluster policy is applied. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSchedulerConfigArn" /></td>
+    <td><CopyableCode code="cluster_scheduler_config_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster policy. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:cluster-scheduler-config/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSchedulerConfigId" /></td>
+    <td><CopyableCode code="cluster_scheduler_config_id" /></td>
     <td><code>string</code></td>
     <td>ID of the cluster policy. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSchedulerConfigVersion" /></td>
+    <td><CopyableCode code="cluster_scheduler_config_version" /></td>
     <td><code>integer</code></td>
     <td>Version of the cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the cluster policy. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Failure reason of the cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time of the cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the cluster policy. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchedulerConfig" /></td>
+    <td><CopyableCode code="scheduler_config" /></td>
     <td><code>object</code></td>
     <td>Cluster policy configuration. This policy is used for task prioritization and fair-share allocation. This helps prioritize critical workloads and distributes idle compute across entities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the cluster policy. (Creating, CreateFailed, CreateRollbackFailed, Created, Updating, UpdateFailed, UpdateRollbackFailed, Updated, Deleting, DeleteFailed, DeleteRollbackFailed, Deleted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Additional details about the status of the cluster policy. This field provides context when the policy is in a non-active state, such as during creation, updates, or if failures occur.</td>
 </tr>
@@ -135,42 +135,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSchedulerConfigArn" /></td>
+    <td><CopyableCode code="cluster_scheduler_config_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster policy. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:cluster-scheduler-config/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSchedulerConfigId" /></td>
+    <td><CopyableCode code="cluster_scheduler_config_id" /></td>
     <td><code>string</code></td>
     <td>ID of the cluster policy. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterSchedulerConfigVersion" /></td>
+    <td><CopyableCode code="cluster_scheduler_config_version" /></td>
     <td><code>integer</code></td>
     <td>Version of the cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time of the cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the cluster policy. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the cluster policy. (Creating, CreateFailed, CreateRollbackFailed, Created, Updating, UpdateFailed, UpdateRollbackFailed, Updated, Deleting, DeleteFailed, DeleteRollbackFailed, Deleted)</td>
 </tr>
@@ -268,20 +268,20 @@ Description of the cluster policy. This policy is used for task prioritization a
 
 ```sql
 SELECT
-ClusterArn,
-ClusterSchedulerConfigArn,
-ClusterSchedulerConfigId,
-ClusterSchedulerConfigVersion,
-CreatedBy,
-CreationTime,
-Description,
-FailureReason,
-LastModifiedBy,
-LastModifiedTime,
-Name,
-SchedulerConfig,
-Status,
-StatusDetails
+cluster_arn,
+cluster_scheduler_config_arn,
+cluster_scheduler_config_id,
+cluster_scheduler_config_version,
+created_by,
+creation_time,
+description,
+failure_reason,
+last_modified_by,
+last_modified_time,
+name,
+scheduler_config,
+status,
+status_details
 FROM aws.sagemaker.cluster_scheduler_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -293,14 +293,14 @@ List the cluster policy configurations.
 
 ```sql
 SELECT
-ClusterArn,
-ClusterSchedulerConfigArn,
-ClusterSchedulerConfigId,
-ClusterSchedulerConfigVersion,
-CreationTime,
-LastModifiedTime,
-Name,
-Status
+cluster_arn,
+cluster_scheduler_config_arn,
+cluster_scheduler_config_id,
+cluster_scheduler_config_version,
+creation_time,
+last_modified_time,
+name,
+status
 FROM aws.sagemaker.cluster_scheduler_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -339,8 +339,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ClusterSchedulerConfigArn,
-ClusterSchedulerConfigId
+cluster_scheduler_config_arn,
+cluster_scheduler_config_id
 ;
 ```
 </TabItem>
@@ -409,8 +409,8 @@ region = '{{ region }}' --required
 AND ClusterSchedulerConfigId = '{{ ClusterSchedulerConfigId }}' --required
 AND TargetVersion = '{{ TargetVersion }}' --required
 RETURNING
-ClusterSchedulerConfigArn,
-ClusterSchedulerConfigVersion;
+cluster_scheduler_config_arn,
+cluster_scheduler_config_version;
 ```
 </TabItem>
 </Tabs>

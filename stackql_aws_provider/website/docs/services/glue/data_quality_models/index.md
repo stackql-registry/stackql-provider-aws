@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data quality model training completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The training failure reason. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data quality model training started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The training status of the data quality model. (RUNNING, SUCCEEDED, FAILED)</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieve the training status of the model along with more information (Completed
 
 ```sql
 SELECT
-CompletedOn,
-FailureReason,
-StartedOn,
-Status
+completed_on,
+failure_reason,
+started_on,
+status
 FROM aws.glue.data_quality_models
 WHERE region = '{{ region }}' -- required
 ;

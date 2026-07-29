@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>A list of DataQualityResult objects representing the data quality results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultsNotFound" /></td>
+    <td><CopyableCode code="results_not_found" /></td>
     <td><code>array</code></td>
     <td>A list of result IDs for which results were not found.</td>
 </tr>
@@ -76,77 +76,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregatedMetrics" /></td>
+    <td><CopyableCode code="aggregated_metrics" /></td>
     <td><code>object</code></td>
     <td>A summary of DataQualityAggregatedMetrics objects showing the total counts of processed rows and rules, including their pass/fail statistics based on row-level results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnalyzerResults" /></td>
+    <td><CopyableCode code="analyzer_results" /></td>
     <td><code>array</code></td>
     <td>A list of DataQualityAnalyzerResult objects representing the results for each analyzer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the run for this data quality result was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>The table associated with the data quality result, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationContext" /></td>
+    <td><CopyableCode code="evaluation_context" /></td>
     <td><code>string</code></td>
     <td>In the context of a job in Glue Studio, each node in the canvas is typically assigned some sort of name and data quality nodes will have names. In the case of multiple nodes, the evaluationContext can differentiate the nodes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The job name associated with the data quality result, if any. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobRunId" /></td>
+    <td><CopyableCode code="job_run_id" /></td>
     <td><code>string</code></td>
     <td>The job run ID associated with the data quality result, if any. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Observations" /></td>
+    <td><CopyableCode code="observations" /></td>
     <td><code>array</code></td>
     <td>A list of DataQualityObservation objects representing the observations generated after evaluating the rules and analyzers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>The Profile ID for the data quality result. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultId" /></td>
+    <td><CopyableCode code="result_id" /></td>
     <td><code>string</code></td>
     <td>A unique result ID for the data quality result. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleResults" /></td>
+    <td><CopyableCode code="rule_results" /></td>
     <td><code>array</code></td>
     <td>A list of DataQualityRuleResult objects representing the results for each rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RulesetEvaluationRunId" /></td>
+    <td><CopyableCode code="ruleset_evaluation_run_id" /></td>
     <td><code>string</code></td>
     <td>The unique run ID associated with the ruleset evaluation. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RulesetName" /></td>
+    <td><CopyableCode code="ruleset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the ruleset associated with the data quality result. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Score" /></td>
+    <td><CopyableCode code="score" /></td>
     <td><code>number (double)</code></td>
     <td>An aggregate data quality score. Represents the ratio of rules that passed to the total number of rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the run for this data quality result started.</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token, if more results are available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>A list of DataQualityResultDescription objects.</td>
 </tr>
@@ -255,8 +255,8 @@ Retrieves a list of data quality results for the specified result IDs.
 
 ```sql
 SELECT
-Results,
-ResultsNotFound
+results,
+results_not_found
 FROM aws.glue.data_quality_results
 WHERE region = '{{ region }}' -- required
 ;
@@ -268,21 +268,21 @@ Retrieves the result of a data quality rule evaluation.
 
 ```sql
 SELECT
-AggregatedMetrics,
-AnalyzerResults,
-CompletedOn,
-DataSource,
-EvaluationContext,
-JobName,
-JobRunId,
-Observations,
-ProfileId,
-ResultId,
-RuleResults,
-RulesetEvaluationRunId,
-RulesetName,
-Score,
-StartedOn
+aggregated_metrics,
+analyzer_results,
+completed_on,
+data_source,
+evaluation_context,
+job_name,
+job_run_id,
+observations,
+profile_id,
+result_id,
+rule_results,
+ruleset_evaluation_run_id,
+ruleset_name,
+score,
+started_on
 FROM aws.glue.data_quality_results
 WHERE region = '{{ region }}' -- required
 ;
@@ -294,8 +294,8 @@ Returns all data quality execution results for your account.
 
 ```sql
 SELECT
-NextToken,
-Results
+next_token,
+results
 FROM aws.glue.data_quality_results
 WHERE region = '{{ region }}' -- required
 ;

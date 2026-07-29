@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the Api. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-\ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiArn" /></td>
+    <td><CopyableCode code="api_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Api.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The Api ID.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The DNS records for the API. This will include an HTTP and a real-time endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventConfig" /></td>
+    <td><CopyableCode code="event_config" /></td>
     <td><code>object</code></td>
     <td>Describes the authorization configuration for connections, message publishing, message subscriptions, and logging for an Event API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerContact" /></td>
+    <td><CopyableCode code="owner_contact" /></td>
     <td><code>string</code></td>
     <td>The owner contact information for the Api (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-\ \.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="wafWebAclArn" /></td>
+    <td><CopyableCode code="waf_web_acl_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the WAF web access control list (web ACL) associated with this Api, if one exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xrayEnabled" /></td>
+    <td><CopyableCode code="xray_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether to use X-Ray tracing for this Api.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the Api. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-\ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiArn" /></td>
+    <td><CopyableCode code="api_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Api.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiId" /></td>
+    <td><CopyableCode code="api_id" /></td>
     <td><code>string</code></td>
     <td>The Api ID.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The DNS records for the API. This will include an HTTP and a real-time endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventConfig" /></td>
+    <td><CopyableCode code="event_config" /></td>
     <td><code>object</code></td>
     <td>Describes the authorization configuration for connections, message publishing, message subscriptions, and logging for an Event API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerContact" /></td>
+    <td><CopyableCode code="owner_contact" /></td>
     <td><code>string</code></td>
     <td>The owner contact information for the Api (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-\ \.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="wafWebAclArn" /></td>
+    <td><CopyableCode code="waf_web_acl_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the WAF web access control list (web ACL) associated with this Api, if one exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xrayEnabled" /></td>
+    <td><CopyableCode code="xray_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether to use X-Ray tracing for this Api.</td>
 </tr>
@@ -307,15 +307,15 @@ Retrieves an Api object.
 ```sql
 SELECT
 name,
-apiArn,
-apiId,
+api_arn,
+api_id,
 created,
 dns,
-eventConfig,
-ownerContact,
+event_config,
+owner_contact,
 tags,
-wafWebAclArn,
-xrayEnabled
+waf_web_acl_arn,
+xray_enabled
 FROM aws.appsync.apis
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -329,15 +329,15 @@ Lists the APIs in your AppSync account. ListApis returns only the high level API
 ```sql
 SELECT
 name,
-apiArn,
-apiId,
+api_arn,
+api_id,
 created,
 dns,
-eventConfig,
-ownerContact,
+event_config,
+owner_contact,
 tags,
-wafWebAclArn,
-xrayEnabled
+waf_web_acl_arn,
+xray_enabled
 FROM aws.appsync.apis
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -472,7 +472,7 @@ domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 AND apiId = '{{ apiId }}' --required
 RETURNING
-apiAssociation;
+api_association;
 ```
 </TabItem>
 <TabItem value="disassociate_api">

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Any failures associated with the call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskSets" /></td>
+    <td><CopyableCode code="task_sets" /></td>
     <td><code>array</code></td>
     <td>The list of task sets described.</td>
 </tr>
@@ -153,7 +153,7 @@ Describes the task sets in the specified cluster and service. This is used when 
 ```sql
 SELECT
 failures,
-taskSets
+task_sets
 FROM aws.ecs.task_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -208,7 +208,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-taskSet
+task_set
 ;
 ```
 </TabItem>
@@ -332,7 +332,7 @@ AND service = '{{ service }}' --required
 AND taskSet = '{{ taskSet }}' --required
 AND scale = '{{ scale }}' --required
 RETURNING
-taskSet;
+task_set;
 ```
 </TabItem>
 <TabItem value="update_service_primary_task_set">
@@ -351,7 +351,7 @@ AND cluster = '{{ cluster }}' --required
 AND service = '{{ service }}' --required
 AND primaryTaskSet = '{{ primaryTaskSet }}' --required
 RETURNING
-taskSet;
+task_set;
 ```
 </TabItem>
 </Tabs>

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessTier" /></td>
+    <td><CopyableCode code="access_tier" /></td>
     <td><code>string</code></td>
     <td>The access tier that you want your objects or files transferred into. This only applies when using the location as a transfer destination. For more information, see Access tiers. (HOT, COOL, ARCHIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AgentArns" /></td>
+    <td><CopyableCode code="agent_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the DataSync agents that can connect with your Azure Blob Storage container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationType" /></td>
+    <td><CopyableCode code="authentication_type" /></td>
     <td><code>string</code></td>
     <td>The authentication method DataSync uses to access your Azure Blob Storage. DataSync can access blob storage using a shared access signature (SAS). (SAS, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlobType" /></td>
+    <td><CopyableCode code="blob_type" /></td>
     <td><code>string</code></td>
     <td>The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Currently, DataSync only supports moving data into Azure Blob Storage as block blobs. For more information on blob types, see the Azure Blob Storage documentation. (BLOCK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CmkSecretConfig" /></td>
+    <td><CopyableCode code="cmk_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as an authentication token that DataSync uses to access a specific storage location, with a customer-managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that your Azure Blob Storage transfer location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomSecretConfig" /></td>
+    <td><CopyableCode code="custom_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a customer-managed secret, such as an authentication token that DataSync uses to access a specific storage location, with a customer-managed Identity and Access Management (IAM) role that provides access to the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of your Azure Blob Storage transfer location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URL of the Azure Blob Storage container involved in your transfer. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedSecretConfig" /></td>
+    <td><CopyableCode code="managed_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as an authentication token that DataSync uses to access a specific storage location. DataSync uses the default Amazon Web Services-managed KMS key to encrypt this secret in Secrets Manager.</td>
 </tr>
@@ -178,16 +178,16 @@ Provides details about how an DataSync transfer location for Microsoft Azure Blo
 
 ```sql
 SELECT
-AccessTier,
-AgentArns,
-AuthenticationType,
-BlobType,
-CmkSecretConfig,
-CreationTime,
-CustomSecretConfig,
-LocationArn,
-LocationUri,
-ManagedSecretConfig
+access_tier,
+agent_arns,
+authentication_type,
+blob_type,
+cmk_secret_config,
+creation_time,
+custom_secret_config,
+location_arn,
+location_uri,
+managed_secret_config
 FROM aws.datasync.location_azure_blobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,7 +236,7 @@ SELECT
 '{{ CustomSecretConfig }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

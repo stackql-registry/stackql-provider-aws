@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the virtual cluster. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/virtualclusters\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerProvider" /></td>
+    <td><CopyableCode code="container_provider" /></td>
     <td><code>object</code></td>
     <td>The information about the container provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the virtual cluster is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityConfigurationId" /></td>
+    <td><CopyableCode code="security_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security configuration. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the virtual cluster. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/virtualclusters\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerProvider" /></td>
+    <td><CopyableCode code="container_provider" /></td>
     <td><code>object</code></td>
     <td>The information about the container provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the virtual cluster is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityConfigurationId" /></td>
+    <td><CopyableCode code="security_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security configuration. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -298,9 +298,9 @@ SELECT
 id,
 name,
 arn,
-containerProvider,
-createdAt,
-securityConfigurationId,
+container_provider,
+created_at,
+security_configuration_id,
 state,
 tags
 FROM aws.emr_containers.virtual_clusters
@@ -318,9 +318,9 @@ SELECT
 id,
 name,
 arn,
-containerProvider,
-createdAt,
-securityConfigurationId,
+container_provider,
+created_at,
+security_configuration_id,
 state,
 tags
 FROM aws.emr_containers.virtual_clusters

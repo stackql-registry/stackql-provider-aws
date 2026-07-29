@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessRole" /></td>
+    <td><CopyableCode code="access_role" /></td>
     <td><code>string</code></td>
     <td>Connectors are used to send files using either the AS2 or SFTP protocol. For the access role, provide the Amazon Resource Name (ARN) of the Identity and Access Management role to use. For AS2 connectors With AS2, you can send files by calling StartFileTransfer and specifying the file paths in the request parameter, SendFilePaths. We use the file’s parent directory (for example, for --send-file-paths /bucket/dir/file.txt, parent directory is /bucket/dir/) to temporarily store a processed AS2 message file, store the MDN when we receive them from the partner, and write a final JSON file containing relevant metadata of the transmission. So, the AccessRole needs to provide read and write access to the parent directory of the file location used in the StartFileTransfer request. Additionally, you need to provide read and write access to the parent directory of the files that you intend to send with StartFileTransfer. If you are using Basic authentication for your AS2 connector, the access role requires the secretsmanager:GetSecretValue permission for the secret. If the secret is encrypted using a customer-managed key instead of the Amazon Web Services managed key in Secrets Manager, then the role also needs the kms:Decrypt permission for that key. For SFTP connectors Make sure that the access role provides read and write access to the parent directory of the file location that's used in the StartFileTransfer request. Additionally, make sure that the role provides secretsmanager:GetSecretValue permission to Secrets Manager. (pattern: &lt;code&gt;arn:.*role/\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) for the connector. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="As2Config" /></td>
+    <td><CopyableCode code="as_2_config" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the parameters for an AS2 connector object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorId" /></td>
+    <td><CopyableCode code="connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the connector. (pattern: &lt;code&gt;c-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressConfig" /></td>
+    <td><CopyableCode code="egress_config" /></td>
     <td><code>object</code></td>
     <td>Current egress configuration of the connector, showing how traffic is routed to the SFTP server. Contains VPC Lattice settings when using VPC_LATTICE egress type. When using the VPC_LATTICE egress type, Transfer Family uses a managed Service Network to simplify the resource sharing process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressType" /></td>
+    <td><CopyableCode code="egress_type" /></td>
     <td><code>string</code></td>
     <td>Type of egress configuration for the connector. SERVICE_MANAGED uses Transfer Family managed NAT gateways, while VPC_LATTICE routes traffic through customer VPCs using VPC Lattice. (SERVICE_MANAGED, VPC_LATTICE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message providing details when the connector is in ERRORED status. Contains information to help troubleshoot connector creation or operation failures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>IP address type for the connector's network connections. When set to IPV4, the connector uses IPv4 addresses only. When set to DUALSTACK, the connector supports both IPv4 and IPv6 addresses, with IPv6 preferred when available. (IPV4, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingRole" /></td>
+    <td><CopyableCode code="logging_role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that allows a connector to turn on CloudWatch logging for Amazon S3 events. When set, you can view connector activity in your CloudWatch logs. (pattern: &lt;code&gt;arn:.*role/\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityPolicyName" /></td>
+    <td><CopyableCode code="security_policy_name" /></td>
     <td><code>string</code></td>
     <td>The text name of the security policy for the specified connector. (pattern: &lt;code&gt;TransferSFTPConnectorSecurityPolicy-&#91;A-Za-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceManagedEgressIpAddresses" /></td>
+    <td><CopyableCode code="service_managed_egress_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>The list of egress IP addresses of this connector. These IP addresses are assigned automatically when you create the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SftpConfig" /></td>
+    <td><CopyableCode code="sftp_config" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the parameters for an SFTP connector object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current status of the connector. PENDING indicates creation/update in progress, ACTIVE means ready for operations, and ERRORED indicates a failure requiring attention. (ACTIVE, ERRORED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs that can be used to group and search for connectors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The URL of the partner's AS2 or SFTP endpoint. When creating AS2 connectors or service-managed SFTP connectors (connectors without egress configuration), you must provide a URL to specify the remote server endpoint. For VPC Lattice type connectors, the URL must be null.</td>
 </tr>
@@ -140,17 +140,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified connector. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorId" /></td>
+    <td><CopyableCode code="connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the connector. (pattern: &lt;code&gt;c-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The URL of the partner's AS2 or SFTP endpoint. When creating AS2 connectors or service-managed SFTP connectors (connectors without egress configuration), you must provide a URL to specify the remote server endpoint. For VPC Lattice type connectors, the URL must be null.</td>
 </tr>
@@ -283,21 +283,21 @@ Describes the connector that's identified by the ConnectorId.
 
 ```sql
 SELECT
-AccessRole,
-Arn,
-As2Config,
-ConnectorId,
-EgressConfig,
-EgressType,
-ErrorMessage,
-IpAddressType,
-LoggingRole,
-SecurityPolicyName,
-ServiceManagedEgressIpAddresses,
-SftpConfig,
-Status,
-Tags,
-Url
+access_role,
+arn,
+as_2_config,
+connector_id,
+egress_config,
+egress_type,
+error_message,
+ip_address_type,
+logging_role,
+security_policy_name,
+service_managed_egress_ip_addresses,
+sftp_config,
+status,
+tags,
+url
 FROM aws.transfer.connectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -309,9 +309,9 @@ Lists the connectors for the specified Region.
 
 ```sql
 SELECT
-Arn,
-ConnectorId,
-Url
+arn,
+connector_id,
+url
 FROM aws.transfer.connectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -358,7 +358,7 @@ SELECT
 '{{ IpAddressType }}',
 '{{ region }}'
 RETURNING
-ConnectorId
+connector_id
 ;
 ```
 </TabItem>
@@ -464,7 +464,7 @@ WHERE
 region = '{{ region }}' --required
 AND ConnectorId = '{{ ConnectorId }}' --required
 RETURNING
-ConnectorId;
+connector_id;
 ```
 </TabItem>
 </Tabs>

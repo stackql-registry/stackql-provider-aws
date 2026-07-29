@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the metric stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the metric stream was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExcludeFilters" /></td>
+    <td><CopyableCode code="exclude_filters" /></td>
     <td><code>array</code></td>
     <td>If this array of metric namespaces is present, then these namespaces are the only metric namespaces that are not streamed by this metric stream. In this case, all other metric namespaces in the account are streamed by this metric stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirehoseArn" /></td>
+    <td><CopyableCode code="firehose_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Kinesis Data Firehose delivery stream that is used by this metric stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeFilters" /></td>
+    <td><CopyableCode code="include_filters" /></td>
     <td><code>array</code></td>
     <td>If this array of metric namespaces is present, then these namespaces are the only metric namespaces that are streamed by this metric stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeLinkedAccountsMetrics" /></td>
+    <td><CopyableCode code="include_linked_accounts_metrics" /></td>
     <td><code>boolean</code></td>
     <td>If this is true and this metric stream is in a monitoring account, then the stream includes metrics from source accounts that the monitoring account is linked to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of the most recent update to the metric stream's configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputFormat" /></td>
+    <td><CopyableCode code="output_format" /></td>
     <td><code>string</code></td>
     <td>The output format for the stream. Valid values are json, opentelemetry1.0, and opentelemetry0.7. For more information about metric stream output formats, see Metric streams output formats. (json, opentelemetry0.7, opentelemetry1.0)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that is used by this metric stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the metric stream. The possible values are running and stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatisticsConfigurations" /></td>
+    <td><CopyableCode code="statistics_configurations" /></td>
     <td><code>array</code></td>
     <td>Each entry in this array displays information about one or more metrics that include additional statistics in the metric stream. For more information about the additional statistics, see CloudWatch statistics definitions.</td>
 </tr>
@@ -209,18 +209,18 @@ Returns information about the metric stream that you specify.
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-ExcludeFilters,
-FirehoseArn,
-IncludeFilters,
-IncludeLinkedAccountsMetrics,
-LastUpdateDate,
-Name,
-OutputFormat,
-RoleArn,
-State,
-StatisticsConfigurations
+arn,
+creation_date,
+exclude_filters,
+firehose_arn,
+include_filters,
+include_linked_accounts_metrics,
+last_update_date,
+name,
+output_format,
+role_arn,
+state,
+statistics_configurations
 FROM aws.cloudwatch.metric_streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,7 +259,7 @@ AND FirehoseArn = '{{ FirehoseArn }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 AND OutputFormat = '{{ OutputFormat }}' --required
 RETURNING
-Arn;
+arn;
 ```
 </TabItem>
 </Tabs>

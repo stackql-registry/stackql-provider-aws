@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="currentPricingPlan" /></td>
+    <td><CopyableCode code="current_pricing_plan" /></td>
     <td><code>object</code></td>
     <td>The chosen pricing plan for the current billing cycle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingPricingPlan" /></td>
+    <td><CopyableCode code="pending_pricing_plan" /></td>
     <td><code>object</code></td>
     <td>The pending pricing plan.</td>
 </tr>
@@ -131,8 +131,8 @@ Gets the pricing plan.
 
 ```sql
 SELECT
-currentPricingPlan,
-pendingPricingPlan
+current_pricing_plan,
+pending_pricing_plan
 FROM aws.iottwinmaker.pricing_plans
 WHERE region = '{{ region }}' -- required
 ;
@@ -162,8 +162,8 @@ WHERE
 region = '{{ region }}' --required
 AND pricingMode = '{{ pricingMode }}' --required
 RETURNING
-currentPricingPlan,
-pendingPricingPlan;
+current_pricing_plan,
+pending_pricing_plan;
 ```
 </TabItem>
 </Tabs>

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComplianceType" /></td>
+    <td><CopyableCode code="compliance_type" /></td>
     <td><code>string</code></td>
     <td>The compliance type. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;\w+|Custom:&#91;a-zA-Z0-9_\-&#93;\w+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompliantSummary" /></td>
+    <td><CopyableCode code="compliant_summary" /></td>
     <td><code>object</code></td>
     <td>A list of items that are compliant for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionSummary" /></td>
+    <td><CopyableCode code="execution_summary" /></td>
     <td><code>object</code></td>
     <td>Information about the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonCompliantSummary" /></td>
+    <td><CopyableCode code="non_compliant_summary" /></td>
     <td><code>object</code></td>
     <td>A list of items that aren't compliant for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverallSeverity" /></td>
+    <td><CopyableCode code="overall_severity" /></td>
     <td><code>string</code></td>
     <td>The highest severity item found for the resource. The resource is compliant for this item. (CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The compliance status for the resource. (COMPLIANT, NON_COMPLIANT)</td>
 </tr>
@@ -154,14 +154,14 @@ Returns a resource-level summary count. The summary includes information about c
 
 ```sql
 SELECT
-ComplianceType,
-CompliantSummary,
-ExecutionSummary,
-NonCompliantSummary,
-OverallSeverity,
-ResourceId,
-ResourceType,
-Status
+compliance_type,
+compliant_summary,
+execution_summary,
+non_compliant_summary,
+overall_severity,
+resource_id,
+resource_type,
+status
 FROM aws.ssm.resource_compliance_summaries
 WHERE region = '{{ region }}' -- required
 ;

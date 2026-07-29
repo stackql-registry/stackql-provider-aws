@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time launch template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The principal that created the launch template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultVersionNumber" /></td>
+    <td><CopyableCode code="default_version_number" /></td>
     <td><code>integer</code></td>
     <td>The version number of the default version of the launch template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersionNumber" /></td>
+    <td><CopyableCode code="latest_version_number" /></td>
     <td><code>integer</code></td>
     <td>The version number of the latest version of the launch template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplateId" /></td>
+    <td><CopyableCode code="launch_template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the launch template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplateName" /></td>
+    <td><CopyableCode code="launch_template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the launch template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the launch template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the launch template.</td>
 </tr>
@@ -245,14 +245,14 @@ Describes one or more launch templates.
 
 ```sql
 SELECT
-CreateTime,
-CreatedBy,
-DefaultVersionNumber,
-LatestVersionNumber,
-LaunchTemplateId,
-LaunchTemplateName,
-Operator,
-Tags
+create_time,
+created_by,
+default_version_number,
+latest_version_number,
+launch_template_id,
+launch_template_name,
+operator,
+tags
 FROM aws.ec2.launch_templates
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -302,14 +302,14 @@ SELECT
 '{{ Operator }}',
 '{{ TagSpecification }}'
 RETURNING
-CreateTime,
-CreatedBy,
-DefaultVersionNumber,
-LatestVersionNumber,
-LaunchTemplateId,
-LaunchTemplateName,
-Operator,
-Tags
+create_time,
+created_by,
+default_version_number,
+latest_version_number,
+launch_template_id,
+launch_template_name,
+operator,
+tags
 ;
 ```
 </TabItem>
@@ -377,14 +377,14 @@ AND LaunchTemplateId = '{{ LaunchTemplateId}}'
 AND LaunchTemplateName = '{{ LaunchTemplateName}}'
 AND SetDefaultVersion = '{{ SetDefaultVersion}}'
 RETURNING
-CreateTime,
-CreatedBy,
-DefaultVersionNumber,
-LatestVersionNumber,
-LaunchTemplateId,
-LaunchTemplateName,
-Operator,
-Tags;
+create_time,
+created_by,
+default_version_number,
+latest_version_number,
+launch_template_id,
+launch_template_name,
+operator,
+tags;
 ```
 </TabItem>
 </Tabs>

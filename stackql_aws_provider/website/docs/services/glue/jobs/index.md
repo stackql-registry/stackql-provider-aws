@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Jobs" /></td>
+    <td><CopyableCode code="jobs" /></td>
     <td><code>array</code></td>
     <td>A list of job definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobsNotFound" /></td>
+    <td><CopyableCode code="jobs_not_found" /></td>
     <td><code>array</code></td>
     <td>A list of names of jobs not found.</td>
 </tr>
@@ -76,137 +76,137 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedCapacity" /></td>
+    <td><CopyableCode code="allocated_capacity" /></td>
     <td><code>integer</code></td>
     <td>This field is deprecated. Use MaxCapacity instead. The number of Glue data processing units (DPUs) allocated to runs of this job. You can allocate a minimum of 2 DPUs; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the Glue pricing page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeGenConfigurationNodes" /></td>
+    <td><CopyableCode code="code_gen_configuration_nodes" /></td>
     <td><code>object</code></td>
     <td>The representation of a directed acyclic graph on which both the Glue Studio visual component and Glue Studio code generation is based.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Command" /></td>
+    <td><CopyableCode code="command" /></td>
     <td><code>object</code></td>
     <td>The JobCommand that runs this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Connections" /></td>
+    <td><CopyableCode code="connections" /></td>
     <td><code>object</code></td>
     <td>The connections used for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date that this job definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultArguments" /></td>
+    <td><CopyableCode code="default_arguments" /></td>
     <td><code>object</code></td>
     <td>The default arguments for every run of this job, specified as name-value pairs. You can specify arguments here that your own job-execution script consumes, as well as arguments that Glue itself consumes. Job arguments may be logged. Do not pass plaintext secrets as arguments. Retrieve secrets from a Glue Connection, Secrets Manager or other secret management mechanism if you intend to keep them within the Job. For information about how to specify and consume your own Job arguments, see the Calling Glue APIs in Python topic in the developer guide. For information about the arguments you can provide to this field when configuring Spark jobs, see the Special Parameters Used by Glue topic in the developer guide. For information about the arguments you can provide to this field when configuring Ray jobs, see Using job parameters in Ray jobs in the developer guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionClass" /></td>
+    <td><CopyableCode code="execution_class" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the job is run with a standard or flexible execution class. The standard execution class is ideal for time-sensitive workloads that require fast job startup and dedicated resources. The flexible execution class is appropriate for time-insensitive jobs whose start and completion times may vary. Only jobs with Glue version 3.0 and above and command type glueetl will be allowed to set ExecutionClass to FLEX. The flexible execution class is available for Spark jobs. (FLEX, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionProperty" /></td>
+    <td><CopyableCode code="execution_property" /></td>
     <td><code>object</code></td>
     <td>An ExecutionProperty specifying the maximum number of concurrent runs allowed for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlueVersion" /></td>
+    <td><CopyableCode code="glue_version" /></td>
     <td><code>string</code></td>
     <td>In Spark jobs, GlueVersion determines the versions of Apache Spark and Python that Glue available in a job. The Python version indicates the version supported for jobs of type Spark. Ray jobs should set GlueVersion to 4.0 or greater. However, the versions of Ray, Python and additional libraries available in your Ray job are determined by the Runtime parameter of the Job command. For more information about the available Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide. Jobs that are created without specifying a Glue version default to Glue 5.1. (pattern: &lt;code&gt;^(\w+\.)+\w+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobMode" /></td>
+    <td><CopyableCode code="job_mode" /></td>
     <td><code>string</code></td>
     <td>A mode that describes how a job was created. Valid values are: SCRIPT - The job was created using the Glue Studio script editor. VISUAL - The job was created using the Glue Studio visual editor. NOTEBOOK - The job was created using an interactive sessions notebook. When the JobMode field is missing or null, SCRIPT is assigned as the default value. (SCRIPT, VISUAL, NOTEBOOK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobRunQueuingEnabled" /></td>
+    <td><CopyableCode code="job_run_queuing_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether job run queuing is enabled for the job runs for this job. A value of true means job run queuing is enabled for the job runs. If false or not populated, the job runs will not be considered for queueing. If this field does not match the value set in the job run, then the value from the job run field will be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last point in time when this job definition was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>This field is reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>string</code></td>
     <td>This field specifies a day of the week and hour for a maintenance window for streaming jobs. Glue periodically performs maintenance activities. During these maintenance windows, Glue will need to restart your streaming jobs. Glue will restart the job within 3 hours of the specified maintenance window. For instance, if you set up the maintenance window for Monday at 10:00AM GMT, your jobs will be restarted between 10:00AM GMT to 1:00PM GMT. (pattern: &lt;code&gt;^(Sun|Mon|Tue|Wed|Thu|Fri|Sat):(&#91;01&#93;?&#91;0-9&#93;|2&#91;0-3&#93;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>number (double)</code></td>
     <td>For Glue version 1.0 or earlier jobs, using the standard worker type, the number of Glue data processing units (DPUs) that can be allocated when this job runs. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the Glue pricing page. For Glue version 2.0 or later jobs, you cannot specify a Maximum capacity. Instead, you should specify a Worker type and the Number of workers. Do not set MaxCapacity if using WorkerType and NumberOfWorkers. The value that can be allocated for MaxCapacity depends on whether you are running a Python shell job, an Apache Spark ETL job, or an Apache Spark streaming ETL job: When you specify a Python shell job (JobCommand.Name="pythonshell"), you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU. When you specify an Apache Spark ETL job (JobCommand.Name="glueetl") or Apache Spark streaming ETL job (JobCommand.Name="gluestreaming"), you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job type cannot have a fractional DPU allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxRetries" /></td>
+    <td><CopyableCode code="max_retries" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of times to retry this job after a JobRun fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name you assign to this job definition. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonOverridableArguments" /></td>
+    <td><CopyableCode code="non_overridable_arguments" /></td>
     <td><code>object</code></td>
     <td>Arguments for this job that are not overridden when providing job arguments in a job run, specified as name-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationProperty" /></td>
+    <td><CopyableCode code="notification_property" /></td>
     <td><code>object</code></td>
     <td>Specifies configuration properties of a job notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of workers of a defined workerType that are allocated when a job runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileName" /></td>
+    <td><CopyableCode code="profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of an Glue usage profile associated with the job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the IAM role associated with this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>The name of the SecurityConfiguration structure to be used with this job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceControlDetails" /></td>
+    <td><CopyableCode code="source_control_details" /></td>
     <td><code>object</code></td>
     <td>The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeout" /></td>
+    <td><CopyableCode code="timeout" /></td>
     <td><code>integer</code></td>
     <td>The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. Jobs must have timeout values less than 7 days or 10080 minutes. Otherwise, the jobs will throw an exception. When the value is left blank, the timeout is defaulted to 2,880 minutes for Glue version 4.0 and earlier, or 480 minutes for Glue version 5.0 and later. Any existing Glue jobs that had a timeout value greater than 7 days will be defaulted to 7 days. For instance if you have specified a timeout of 20 days for a batch job, it will be stopped on the 7th day. For streaming jobs, if you have set up a maintenance window, it will be restarted during the maintenance window after 7 days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerType" /></td>
+    <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of predefined worker that is allocated when a job runs. Glue provides multiple worker types to accommodate different workload requirements: G Worker Types (General-purpose compute workers): G.1X: 1 DPU (4 vCPUs, 16 GB memory, 94GB disk) G.2X: 2 DPU (8 vCPUs, 32 GB memory, 138GB disk) G.4X: 4 DPU (16 vCPUs, 64 GB memory, 256GB disk) G.8X: 8 DPU (32 vCPUs, 128 GB memory, 512GB disk) G.12X: 12 DPU (48 vCPUs, 192 GB memory, 768GB disk) G.16X: 16 DPU (64 vCPUs, 256 GB memory, 1024GB disk) R Worker Types (Memory-optimized workers): R.1X: 1 M-DPU (4 vCPUs, 32 GB memory) R.2X: 2 M-DPU (8 vCPUs, 64 GB memory) R.4X: 4 M-DPU (16 vCPUs, 128 GB memory) R.8X: 8 M-DPU (32 vCPUs, 256 GB memory) (Standard, G.1X, G.2X, G.025X, G.4X, G.8X, Z.2X)</td>
 </tr>
@@ -225,137 +225,137 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedCapacity" /></td>
+    <td><CopyableCode code="allocated_capacity" /></td>
     <td><code>integer</code></td>
     <td>This field is deprecated. Use MaxCapacity instead. The number of Glue data processing units (DPUs) allocated to runs of this job. You can allocate a minimum of 2 DPUs; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the Glue pricing page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CodeGenConfigurationNodes" /></td>
+    <td><CopyableCode code="code_gen_configuration_nodes" /></td>
     <td><code>object</code></td>
     <td>The representation of a directed acyclic graph on which both the Glue Studio visual component and Glue Studio code generation is based.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Command" /></td>
+    <td><CopyableCode code="command" /></td>
     <td><code>object</code></td>
     <td>The JobCommand that runs this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Connections" /></td>
+    <td><CopyableCode code="connections" /></td>
     <td><code>object</code></td>
     <td>The connections used for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date that this job definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultArguments" /></td>
+    <td><CopyableCode code="default_arguments" /></td>
     <td><code>object</code></td>
     <td>The default arguments for every run of this job, specified as name-value pairs. You can specify arguments here that your own job-execution script consumes, as well as arguments that Glue itself consumes. Job arguments may be logged. Do not pass plaintext secrets as arguments. Retrieve secrets from a Glue Connection, Secrets Manager or other secret management mechanism if you intend to keep them within the Job. For information about how to specify and consume your own Job arguments, see the Calling Glue APIs in Python topic in the developer guide. For information about the arguments you can provide to this field when configuring Spark jobs, see the Special Parameters Used by Glue topic in the developer guide. For information about the arguments you can provide to this field when configuring Ray jobs, see Using job parameters in Ray jobs in the developer guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionClass" /></td>
+    <td><CopyableCode code="execution_class" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the job is run with a standard or flexible execution class. The standard execution class is ideal for time-sensitive workloads that require fast job startup and dedicated resources. The flexible execution class is appropriate for time-insensitive jobs whose start and completion times may vary. Only jobs with Glue version 3.0 and above and command type glueetl will be allowed to set ExecutionClass to FLEX. The flexible execution class is available for Spark jobs. (FLEX, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionProperty" /></td>
+    <td><CopyableCode code="execution_property" /></td>
     <td><code>object</code></td>
     <td>An ExecutionProperty specifying the maximum number of concurrent runs allowed for this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlueVersion" /></td>
+    <td><CopyableCode code="glue_version" /></td>
     <td><code>string</code></td>
     <td>In Spark jobs, GlueVersion determines the versions of Apache Spark and Python that Glue available in a job. The Python version indicates the version supported for jobs of type Spark. Ray jobs should set GlueVersion to 4.0 or greater. However, the versions of Ray, Python and additional libraries available in your Ray job are determined by the Runtime parameter of the Job command. For more information about the available Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide. Jobs that are created without specifying a Glue version default to Glue 5.1. (pattern: &lt;code&gt;^(\w+\.)+\w+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobMode" /></td>
+    <td><CopyableCode code="job_mode" /></td>
     <td><code>string</code></td>
     <td>A mode that describes how a job was created. Valid values are: SCRIPT - The job was created using the Glue Studio script editor. VISUAL - The job was created using the Glue Studio visual editor. NOTEBOOK - The job was created using an interactive sessions notebook. When the JobMode field is missing or null, SCRIPT is assigned as the default value. (SCRIPT, VISUAL, NOTEBOOK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobRunQueuingEnabled" /></td>
+    <td><CopyableCode code="job_run_queuing_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether job run queuing is enabled for the job runs for this job. A value of true means job run queuing is enabled for the job runs. If false or not populated, the job runs will not be considered for queueing. If this field does not match the value set in the job run, then the value from the job run field will be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last point in time when this job definition was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>This field is reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>string</code></td>
     <td>This field specifies a day of the week and hour for a maintenance window for streaming jobs. Glue periodically performs maintenance activities. During these maintenance windows, Glue will need to restart your streaming jobs. Glue will restart the job within 3 hours of the specified maintenance window. For instance, if you set up the maintenance window for Monday at 10:00AM GMT, your jobs will be restarted between 10:00AM GMT to 1:00PM GMT. (pattern: &lt;code&gt;^(Sun|Mon|Tue|Wed|Thu|Fri|Sat):(&#91;01&#93;?&#91;0-9&#93;|2&#91;0-3&#93;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>number (double)</code></td>
     <td>For Glue version 1.0 or earlier jobs, using the standard worker type, the number of Glue data processing units (DPUs) that can be allocated when this job runs. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the Glue pricing page. For Glue version 2.0 or later jobs, you cannot specify a Maximum capacity. Instead, you should specify a Worker type and the Number of workers. Do not set MaxCapacity if using WorkerType and NumberOfWorkers. The value that can be allocated for MaxCapacity depends on whether you are running a Python shell job, an Apache Spark ETL job, or an Apache Spark streaming ETL job: When you specify a Python shell job (JobCommand.Name="pythonshell"), you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU. When you specify an Apache Spark ETL job (JobCommand.Name="glueetl") or Apache Spark streaming ETL job (JobCommand.Name="gluestreaming"), you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job type cannot have a fractional DPU allocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxRetries" /></td>
+    <td><CopyableCode code="max_retries" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of times to retry this job after a JobRun fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name you assign to this job definition. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonOverridableArguments" /></td>
+    <td><CopyableCode code="non_overridable_arguments" /></td>
     <td><code>object</code></td>
     <td>Arguments for this job that are not overridden when providing job arguments in a job run, specified as name-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationProperty" /></td>
+    <td><CopyableCode code="notification_property" /></td>
     <td><code>object</code></td>
     <td>Specifies configuration properties of a job notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfWorkers" /></td>
+    <td><CopyableCode code="number_of_workers" /></td>
     <td><code>integer</code></td>
     <td>The number of workers of a defined workerType that are allocated when a job runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileName" /></td>
+    <td><CopyableCode code="profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of an Glue usage profile associated with the job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the IAM role associated with this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfiguration" /></td>
+    <td><CopyableCode code="security_configuration" /></td>
     <td><code>string</code></td>
     <td>The name of the SecurityConfiguration structure to be used with this job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceControlDetails" /></td>
+    <td><CopyableCode code="source_control_details" /></td>
     <td><code>object</code></td>
     <td>The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeout" /></td>
+    <td><CopyableCode code="timeout" /></td>
     <td><code>integer</code></td>
     <td>The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. Jobs must have timeout values less than 7 days or 10080 minutes. Otherwise, the jobs will throw an exception. When the value is left blank, the timeout is defaulted to 2,880 minutes for Glue version 4.0 and earlier, or 480 minutes for Glue version 5.0 and later. Any existing Glue jobs that had a timeout value greater than 7 days will be defaulted to 7 days. For instance if you have specified a timeout of 20 days for a batch job, it will be stopped on the 7th day. For streaming jobs, if you have set up a maintenance window, it will be restarted during the maintenance window after 7 days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerType" /></td>
+    <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of predefined worker that is allocated when a job runs. Glue provides multiple worker types to accommodate different workload requirements: G Worker Types (General-purpose compute workers): G.1X: 1 DPU (4 vCPUs, 16 GB memory, 94GB disk) G.2X: 2 DPU (8 vCPUs, 32 GB memory, 138GB disk) G.4X: 4 DPU (16 vCPUs, 64 GB memory, 256GB disk) G.8X: 8 DPU (32 vCPUs, 128 GB memory, 512GB disk) G.12X: 12 DPU (48 vCPUs, 192 GB memory, 768GB disk) G.16X: 16 DPU (64 vCPUs, 256 GB memory, 1024GB disk) R Worker Types (Memory-optimized workers): R.1X: 1 M-DPU (4 vCPUs, 32 GB memory) R.2X: 2 M-DPU (8 vCPUs, 64 GB memory) R.4X: 4 M-DPU (16 vCPUs, 128 GB memory) R.8X: 8 M-DPU (32 vCPUs, 256 GB memory) (Standard, G.1X, G.2X, G.025X, G.4X, G.8X, Z.2X)</td>
 </tr>
@@ -496,8 +496,8 @@ Returns a list of resource metadata for a given list of job names. After calling
 
 ```sql
 SELECT
-Jobs,
-JobsNotFound
+jobs,
+jobs_not_found
 FROM aws.glue.jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -509,33 +509,33 @@ Retrieves an existing job definition.
 
 ```sql
 SELECT
-AllocatedCapacity,
-CodeGenConfigurationNodes,
-Command,
-Connections,
-CreatedOn,
-DefaultArguments,
-Description,
-ExecutionClass,
-ExecutionProperty,
-GlueVersion,
-JobMode,
-JobRunQueuingEnabled,
-LastModifiedOn,
-LogUri,
-MaintenanceWindow,
-MaxCapacity,
-MaxRetries,
-Name,
-NonOverridableArguments,
-NotificationProperty,
-NumberOfWorkers,
-ProfileName,
-Role,
-SecurityConfiguration,
-SourceControlDetails,
-Timeout,
-WorkerType
+allocated_capacity,
+code_gen_configuration_nodes,
+command,
+connections,
+created_on,
+default_arguments,
+description,
+execution_class,
+execution_property,
+glue_version,
+job_mode,
+job_run_queuing_enabled,
+last_modified_on,
+log_uri,
+maintenance_window,
+max_capacity,
+max_retries,
+name,
+non_overridable_arguments,
+notification_property,
+number_of_workers,
+profile_name,
+role,
+security_configuration,
+source_control_details,
+timeout,
+worker_type
 FROM aws.glue.jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -547,33 +547,33 @@ Retrieves all current job definitions.
 
 ```sql
 SELECT
-AllocatedCapacity,
-CodeGenConfigurationNodes,
-Command,
-Connections,
-CreatedOn,
-DefaultArguments,
-Description,
-ExecutionClass,
-ExecutionProperty,
-GlueVersion,
-JobMode,
-JobRunQueuingEnabled,
-LastModifiedOn,
-LogUri,
-MaintenanceWindow,
-MaxCapacity,
-MaxRetries,
-Name,
-NonOverridableArguments,
-NotificationProperty,
-NumberOfWorkers,
-ProfileName,
-Role,
-SecurityConfiguration,
-SourceControlDetails,
-Timeout,
-WorkerType
+allocated_capacity,
+code_gen_configuration_nodes,
+command,
+connections,
+created_on,
+default_arguments,
+description,
+execution_class,
+execution_property,
+glue_version,
+job_mode,
+job_run_queuing_enabled,
+last_modified_on,
+log_uri,
+maintenance_window,
+max_capacity,
+max_retries,
+name,
+non_overridable_arguments,
+notification_property,
+number_of_workers,
+profile_name,
+role,
+security_configuration,
+source_control_details,
+timeout,
+worker_type
 FROM aws.glue.jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -652,7 +652,7 @@ SELECT
 '{{ MaintenanceWindow }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -812,7 +812,7 @@ region = '{{ region }}' --required
 AND JobName = '{{ JobName }}' --required
 AND JobUpdate = '{{ JobUpdate }}' --required
 RETURNING
-JobName;
+job_name;
 ```
 </TabItem>
 <TabItem value="update_job_from_source_control">
@@ -834,7 +834,7 @@ AuthToken = '{{ AuthToken }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-JobName;
+job_name;
 ```
 </TabItem>
 </Tabs>

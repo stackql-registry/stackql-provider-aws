@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that contains the customer managed key registration specified in the request. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyRegistration" /></td>
+    <td><CopyableCode code="key_registration" /></td>
     <td><code>array</code></td>
     <td>A list of RegisteredCustomerManagedKey objects in a Quick Sight account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QDataKey" /></td>
+    <td><CopyableCode code="q_data_key" /></td>
     <td><code>object</code></td>
     <td>A list of QDataKey objects in a Quick Sight account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -156,11 +156,11 @@ Describes all customer managed key registrations in a Quick Sight account.
 
 ```sql
 SELECT
-AwsAccountId,
-KeyRegistration,
-QDataKey,
-RequestId,
-Status
+aws_account_id,
+key_registration,
+q_data_key,
+request_id,
+status
 FROM aws.quicksight.key_registrations
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -192,9 +192,9 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 AND KeyRegistration = '{{ KeyRegistration }}' --required
 RETURNING
-FailedKeyRegistration,
-RequestId,
-SuccessfulKeyRegistration;
+failed_key_registration,
+request_id,
+successful_key_registration;
 ```
 </TabItem>
 </Tabs>

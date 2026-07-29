@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of key:value pairs that are assigned to the container.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a list of the tags assigned to the specified container.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.mediastore.tags
 WHERE region = '{{ region }}' -- required
 ;

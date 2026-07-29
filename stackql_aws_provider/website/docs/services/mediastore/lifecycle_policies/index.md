@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LifecyclePolicy" /></td>
+    <td><CopyableCode code="lifecycle_policy" /></td>
     <td><code>string</code></td>
     <td>The object lifecycle policy that is assigned to the container. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the object lifecycle policy that is assigned to a container.
 
 ```sql
 SELECT
-LifecyclePolicy
+lifecycle_policy
 FROM aws.mediastore.lifecycle_policies
 WHERE region = '{{ region }}' -- required
 ;

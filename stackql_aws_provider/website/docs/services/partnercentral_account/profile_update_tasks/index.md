@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the profile update task. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+:partnercentral:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:catalog/&#91;A-Za-z-_&#93;+/partner/partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier for the partner account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the profile update task was completed or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetailList" /></td>
+    <td><CopyableCode code="error_detail_list" /></td>
     <td><code>array</code></td>
     <td>A list of error details if any errors occurred during the profile update task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the partner account. (pattern: &lt;code&gt;partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the profile update task was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the profile update task (in progress, completed, failed, etc.). (IN_PROGRESS, CANCELED, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskDetails" /></td>
+    <td><CopyableCode code="task_details" /></td>
     <td><code>object</code></td>
     <td>The details of the profile update task including what changes are being made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the profile update task. (pattern: &lt;code&gt;pprofiletask-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
@@ -159,15 +159,15 @@ Retrieves information about a specific profile update task.
 
 ```sql
 SELECT
-Arn,
-Catalog,
-EndedAt,
-ErrorDetailList,
-Id,
-StartedAt,
-Status,
-TaskDetails,
-TaskId
+arn,
+catalog,
+ended_at,
+error_detail_list,
+id,
+started_at,
+status,
+task_details,
+task_id
 FROM aws.partnercentral_account.profile_update_tasks
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).</td>
 </tr>
@@ -138,8 +138,8 @@ List the tags for Config resource.
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.config.tags
 WHERE region = '{{ region }}' -- required
 ;

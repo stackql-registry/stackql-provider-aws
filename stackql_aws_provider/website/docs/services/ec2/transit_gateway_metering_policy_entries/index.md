@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MeteredAccount" /></td>
+    <td><CopyableCode code="metered_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID to which the metered traffic is attributed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MeteringPolicyRule" /></td>
+    <td><CopyableCode code="metering_policy_rule" /></td>
     <td><code>string</code></td>
     <td>The metering policy rule that defines traffic matching criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyRuleNumber" /></td>
+    <td><CopyableCode code="policy_rule_number" /></td>
     <td><code>string</code></td>
     <td>The rule number of the metering policy entry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the metering policy entry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateEffectiveAt" /></td>
+    <td><CopyableCode code="update_effective_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when the metering policy entry update becomes effective.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when the metering policy entry was last updated.</td>
 </tr>
@@ -238,12 +238,12 @@ Retrieves the entries for a transit gateway metering policy.
 
 ```sql
 SELECT
-MeteredAccount,
-MeteringPolicyRule,
-PolicyRuleNumber,
-State,
-UpdateEffectiveAt,
-UpdatedAt
+metered_account,
+metering_policy_rule,
+policy_rule_number,
+state,
+update_effective_at,
+updated_at
 FROM aws.ec2.transit_gateway_metering_policy_entries
 WHERE TransitGatewayMeteringPolicyId = '{{ TransitGatewayMeteringPolicyId }}' -- required
 AND region = '{{ region }}' -- required
@@ -303,12 +303,12 @@ SELECT
 '{{ Protocol }}',
 '{{ DryRun }}'
 RETURNING
-MeteredAccount,
-MeteringPolicyRule,
-PolicyRuleNumber,
-State,
-UpdateEffectiveAt,
-UpdatedAt
+metered_account,
+metering_policy_rule,
+policy_rule_number,
+state,
+update_effective_at,
+updated_at
 ;
 ```
 </TabItem>

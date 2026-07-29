@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier for the deployment resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiSummary" /></td>
+    <td><CopyableCode code="api_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the RestApi at the date and time that the deployment resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the deployment resource was created.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier for the deployment resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiSummary" /></td>
+    <td><CopyableCode code="api_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the RestApi at the date and time that the deployment resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the deployment resource was created.</td>
 </tr>
@@ -224,8 +224,8 @@ Gets information about a Deployment resource.
 ```sql
 SELECT
 id,
-apiSummary,
-createdDate,
+api_summary,
+created_date,
 description
 FROM aws.apigateway.deployments
 WHERE restapi_id = '{{ restapi_id }}' -- required
@@ -242,8 +242,8 @@ Gets information about a Deployments collection.
 ```sql
 SELECT
 id,
-apiSummary,
-createdDate,
+api_summary,
+created_date,
 description
 FROM aws.apigateway.deployments
 WHERE restapi_id = '{{ restapi_id }}' -- required
@@ -295,8 +295,8 @@ SELECT
 '{{ region }}'
 RETURNING
 id,
-apiSummary,
-createdDate,
+api_summary,
+created_date,
 description
 ;
 ```
@@ -364,8 +364,8 @@ AND deployment_id = '{{ deployment_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 id,
-apiSummary,
-createdDate,
+api_summary,
+created_date,
 description;
 ```
 </TabItem>

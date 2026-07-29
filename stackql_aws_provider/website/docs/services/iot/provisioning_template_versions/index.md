@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the provisioning template version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDefaultVersion" /></td>
+    <td><CopyableCode code="is_default_version" /></td>
     <td><code>boolean</code></td>
     <td>True if the provisioning template version is the default version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateBody" /></td>
+    <td><CopyableCode code="template_body" /></td>
     <td><code>string</code></td>
     <td>The JSON formatted contents of the provisioning template version. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>integer</code></td>
     <td>The provisioning template version ID.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the provisioning template version was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDefaultVersion" /></td>
+    <td><CopyableCode code="is_default_version" /></td>
     <td><code>boolean</code></td>
     <td>True if the provisioning template version is the default version, otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>integer</code></td>
     <td>The ID of the fleet provisioning template version.</td>
 </tr>
@@ -211,10 +211,10 @@ Returns information about a provisioning template version. Requires permission t
 
 ```sql
 SELECT
-creationDate,
-isDefaultVersion,
-templateBody,
-versionId
+creation_date,
+is_default_version,
+template_body,
+version_id
 FROM aws.iot.provisioning_template_versions
 WHERE template_name = '{{ template_name }}' -- required
 AND version_id = '{{ version_id }}' -- required
@@ -228,9 +228,9 @@ A list of provisioning template versions. Requires permission to access the List
 
 ```sql
 SELECT
-creationDate,
-isDefaultVersion,
-versionId
+creation_date,
+is_default_version,
+version_id
 FROM aws.iot.provisioning_template_versions
 WHERE template_name = '{{ template_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,10 +268,10 @@ SELECT
 '{{ region }}',
 '{{ setAsDefault }}'
 RETURNING
-isDefaultVersion,
-templateArn,
-templateName,
-versionId
+is_default_version,
+template_arn,
+template_name,
+version_id
 ;
 ```
 </TabItem>

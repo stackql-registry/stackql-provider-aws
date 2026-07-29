@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IndexedAttributes" /></td>
+    <td><CopyableCode code="indexed_attributes" /></td>
     <td><code>array</code></td>
     <td>The indexed attribute values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectIdentifier" /></td>
+    <td><CopyableCode code="object_identifier" /></td>
     <td><code>string</code></td>
     <td>In response to ListIndex, the ObjectIdentifier of the object attached to the index. In response to ListAttachedIndices, the ObjectIdentifier of the index attached to the object. This field will always contain the ObjectIdentifier of the object on the opposite side of the attachment specified in the query.</td>
 </tr>
@@ -155,8 +155,8 @@ Lists objects attached to the specified index.
 
 ```sql
 SELECT
-IndexedAttributes,
-ObjectIdentifier
+indexed_attributes,
+object_identifier
 FROM aws.clouddirectory.indexes
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required
@@ -197,7 +197,7 @@ SELECT
 '{{ x-amz-data-partition }}',
 '{{ region }}'
 RETURNING
-ObjectIdentifier
+object_identifier
 ;
 ```
 </TabItem>
@@ -255,7 +255,7 @@ AND region = '{{ region }}' --required
 AND IndexReference = '{{ IndexReference }}' --required
 AND TargetReference = '{{ TargetReference }}' --required
 RETURNING
-AttachedObjectIdentifier;
+attached_object_identifier;
 ```
 </TabItem>
 </Tabs>

@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>An entity that defines the scope of audit evidence collected by Audit Manager. An Audit Manager assessment is an implementation of an Audit Manager framework.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userRole" /></td>
+    <td><CopyableCode code="user_role" /></td>
     <td><code>object</code></td>
     <td>The wrapper that contains the Audit Manager role information of the current user. This includes the role type and IAM Amazon Resource Name (ARN).</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assessmentMetadata" /></td>
+    <td><CopyableCode code="assessment_metadata" /></td>
     <td><code>array</code></td>
     <td>The metadata that the ListAssessments API returns for each assessment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -244,7 +244,7 @@ Gets information about a specified assessment.
 ```sql
 SELECT
 assessment,
-userRole
+user_role
 FROM aws.auditmanager.assessments
 WHERE assessment_id = '{{ assessment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -257,8 +257,8 @@ Returns a list of current and past assessments from Audit Manager.
 
 ```sql
 SELECT
-assessmentMetadata,
-nextToken
+assessment_metadata,
+next_token
 FROM aws.auditmanager.assessments
 WHERE region = '{{ region }}' -- required
 AND status = '{{ status }}'
@@ -376,7 +376,7 @@ AND region = '{{ region }}' --required
 AND status = '{{ status }}' --required
 AND comment = '{{ comment }}' --required
 RETURNING
-controlSet;
+control_set;
 ```
 </TabItem>
 <TabItem value="update_assessment">

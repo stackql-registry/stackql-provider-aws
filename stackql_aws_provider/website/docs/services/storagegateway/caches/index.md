@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheAllocatedInBytes" /></td>
+    <td><CopyableCode code="cache_allocated_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of cache in bytes allocated to a gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheDirtyPercentage" /></td>
+    <td><CopyableCode code="cache_dirty_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>The file share's contribution to the overall percentage of the gateway's cache that has not been persisted to Amazon Web Services. The sample is taken at the end of the reporting period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheHitPercentage" /></td>
+    <td><CopyableCode code="cache_hit_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>Percent of application read operations from the file shares that are served from cache. The sample is taken at the end of the reporting period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheMissPercentage" /></td>
+    <td><CopyableCode code="cache_miss_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>Percent of application read operations from the file shares that are not served from cache. The sample is taken at the end of the reporting period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheUsedPercentage" /></td>
+    <td><CopyableCode code="cache_used_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>Percent use of the gateway's cache storage. This metric applies only to the gateway-cached volume setup. The sample is taken at the end of the reporting period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiskIds" /></td>
+    <td><CopyableCode code="disk_ids" /></td>
     <td><code>array</code></td>
     <td>An array of strings that identify disks that are to be configured as working storage. Each string has a minimum length of 1 and maximum length of 300. You can get the disk IDs from the ListLocalDisks API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
@@ -170,13 +170,13 @@ Returns information about the cache of a gateway. This operation is only support
 
 ```sql
 SELECT
-CacheAllocatedInBytes,
-CacheDirtyPercentage,
-CacheHitPercentage,
-CacheMissPercentage,
-CacheUsedPercentage,
-DiskIds,
-GatewayARN
+cache_allocated_in_bytes,
+cache_dirty_percentage,
+cache_hit_percentage,
+cache_miss_percentage,
+cache_used_percentage,
+disk_ids,
+gateway_arn
 FROM aws.storagegateway.caches
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,7 +207,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND DiskIds = '{{ DiskIds }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

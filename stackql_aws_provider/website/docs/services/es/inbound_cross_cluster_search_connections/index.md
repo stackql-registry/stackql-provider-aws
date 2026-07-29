@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CrossClusterSearchConnections" /></td>
+    <td><CopyableCode code="cross_cluster_search_connections" /></td>
     <td><code>array</code></td>
     <td>Consists of list of InboundCrossClusterSearchConnection matching the specified filter criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results.</td>
 </tr>
@@ -136,8 +136,8 @@ Lists all the inbound cross-cluster search connections for a destination domain.
 
 ```sql
 SELECT
-CrossClusterSearchConnections,
-NextToken
+cross_cluster_search_connections,
+next_token
 FROM aws.es.inbound_cross_cluster_search_connections
 WHERE region = '{{ region }}' -- required
 ;

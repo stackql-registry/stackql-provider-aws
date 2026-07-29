@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationsInfo" /></td>
+    <td><CopyableCode code="applications_info" /></td>
     <td><code>array</code></td>
     <td>Information about the applications.</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The application name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computePlatform" /></td>
+    <td><CopyableCode code="compute_platform" /></td>
     <td><code>string</code></td>
     <td>The destination platform type for deployment of the application (Lambda or Server). (Server, Lambda, ECS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gitHubAccountName" /></td>
+    <td><CopyableCode code="git_hub_account_name" /></td>
     <td><code>string</code></td>
     <td>The name for a connection to a GitHub account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkedToGitHub" /></td>
+    <td><CopyableCode code="linked_to_git_hub" /></td>
     <td><code>boolean</code></td>
     <td>True if the user has authenticated with GitHub for the specified application. Otherwise, false.</td>
 </tr>
@@ -221,7 +221,7 @@ Gets information about one or more applications. The maximum number of applicati
 
 ```sql
 SELECT
-applicationsInfo
+applications_info
 FROM aws.codedeploy.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,12 +233,12 @@ Gets information about an application.
 
 ```sql
 SELECT
-applicationId,
-applicationName,
-computePlatform,
-createTime,
-gitHubAccountName,
-linkedToGitHub
+application_id,
+application_name,
+compute_platform,
+create_time,
+git_hub_account_name,
+linked_to_git_hub
 FROM aws.codedeploy.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -285,7 +285,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-applicationId
+application_id
 ;
 ```
 </TabItem>

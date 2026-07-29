@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID of the farm member. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The identity store ID of the farm member. (pattern: &lt;code&gt;d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipLevel" /></td>
+    <td><CopyableCode code="membership_level" /></td>
     <td><code>string</code></td>
     <td>The farm member's membership level. (VIEWER, CONTRIBUTOR, OWNER, MANAGER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalId" /></td>
+    <td><CopyableCode code="principal_id" /></td>
     <td><code>string</code></td>
     <td>The principal ID of the farm member. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalType" /></td>
+    <td><CopyableCode code="principal_type" /></td>
     <td><code>string</code></td>
     <td>The principal type of the farm member. (USER, GROUP)</td>
 </tr>
@@ -154,11 +154,11 @@ Lists the members of a farm.
 
 ```sql
 SELECT
-farmId,
-identityStoreId,
-membershipLevel,
-principalId,
-principalType
+farm_id,
+identity_store_id,
+membership_level,
+principal_id,
+principal_type
 FROM aws.deadline.farm_members
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required

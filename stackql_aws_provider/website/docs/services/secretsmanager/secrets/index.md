@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the secret was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletedDate" /></td>
+    <td><CopyableCode code="deleted_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the secret is scheduled for deletion. If it is not scheduled for deletion, this field is omitted. When you delete a secret, Secrets Manager requires a recovery window of at least 7 days before deleting the secret. Some time after the deleted date, Secrets Manager deletes the secret, including all of its versions. If a secret is scheduled for deletion, then its details, including the encrypted secret value, is not accessible. To cancel a scheduled deletion and restore access to the secret, use RestoreSecret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalSecretRotationMetadata" /></td>
+    <td><CopyableCode code="external_secret_rotation_metadata" /></td>
     <td><code>array</code></td>
     <td>The metadata needed to successfully rotate a managed external secret. A list of key value pairs in JSON format specified by the partner. For more information about the required information, see Managed external secrets partners.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalSecretRotationRoleArn" /></td>
+    <td><CopyableCode code="external_secret_rotation_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role that allows Secrets Manager to rotate a secret held by a third-party partner. For more information, see Security and permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The key ID or alias ARN of the KMS key that Secrets Manager uses to encrypt the secret value. If the secret is encrypted with the Amazon Web Services managed key aws/secretsmanager, this field is omitted. Secrets created using the console use an KMS key ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessedDate" /></td>
+    <td><CopyableCode code="last_accessed_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the secret was last accessed in the Region. This field is omitted if the secret has never been retrieved in the Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastChangedDate" /></td>
+    <td><CopyableCode code="last_changed_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date and time that this secret was modified in any way.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRotatedDate" /></td>
+    <td><CopyableCode code="last_rotated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date and time that Secrets Manager rotated the secret. If the secret isn't configured for rotation or rotation has been disabled, Secrets Manager returns null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextRotationDate" /></td>
+    <td><CopyableCode code="next_rotation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The next rotation is scheduled to occur on or before this date. If the secret isn't configured for rotation or rotation has been disabled, Secrets Manager returns null. If rotation fails, Secrets Manager retries the entire rotation process multiple times. If rotation is unsuccessful, this date may be in the past. This date represents the latest date that rotation will occur, but it is not an approximate rotation date. In some cases, for example if you turn off automatic rotation and then turn it back on, the next rotation may occur much sooner than this date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwningService" /></td>
+    <td><CopyableCode code="owning_service" /></td>
     <td><code>string</code></td>
     <td>The ID of the service that created this secret. For more information, see Secrets managed by other Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryRegion" /></td>
+    <td><CopyableCode code="primary_region" /></td>
     <td><code>string</code></td>
     <td>The Region the secret is in. If a secret is replicated to other Regions, the replicas are listed in ReplicationStatus. (pattern: &lt;code&gt;^(&#91;a-z&#93;+-)+\d+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationStatus" /></td>
+    <td><CopyableCode code="replication_status" /></td>
     <td><code>array</code></td>
     <td>A list of the replicas of this secret and their status: Failed, which indicates that the replica was not created. InProgress, which indicates that Secrets Manager is in the process of creating the replica. InSync, which indicates that the replica was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationEnabled" /></td>
+    <td><CopyableCode code="rotation_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether automatic rotation is turned on for this secret. If the secret has never been configured for rotation, Secrets Manager returns null. To turn on rotation, use RotateSecret. To turn off rotation, use CancelRotateSecret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationLambdaARN" /></td>
+    <td><CopyableCode code="rotation_lambda_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Lambda function that Secrets Manager invokes to rotate the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationRules" /></td>
+    <td><CopyableCode code="rotation_rules" /></td>
     <td><code>object</code></td>
     <td>The rotation schedule and Lambda function for this secret. If the secret previously had rotation turned on, but it is now turned off, this field shows the previous rotation schedule and rotation function. If the secret never had rotation turned on, this field is omitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of tags attached to the secret. To add tags to a secret, use TagResource. To remove tags, use UntagResource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The exact string that identifies the partner that holds the external secret. For more information, see Using Secrets Manager managed external secrets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionIdsToStages" /></td>
+    <td><CopyableCode code="version_ids_to_stages" /></td>
     <td><code>object</code></td>
     <td>A list of the versions of the secret that have staging labels attached. Versions that don't have staging labels are considered deprecated and Secrets Manager can delete them. Secrets Manager uses staging labels to indicate the status of a secret version during rotation. The three staging labels for rotation are: AWSCURRENT, which indicates the current version of the secret. AWSPENDING, which indicates the version of the secret that contains new secret information that will become the next current version when rotation finishes. During rotation, Secrets Manager creates an AWSPENDING version ID before creating the new secret version. To check if a secret version exists, call GetSecretValue. AWSPREVIOUS, which indicates the previous current version of the secret. You can use this as the last known good version. For more information about rotation and staging labels, see How rotation works.</td>
 </tr>
@@ -170,102 +170,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when a secret was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletedDate" /></td>
+    <td><CopyableCode code="deleted_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the deletion of the secret occurred. Not present on active secrets. The secret can be recovered until the number of days in the recovery window has passed, as specified in the RecoveryWindowInDays parameter of the DeleteSecret operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The user-provided description of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalSecretRotationMetadata" /></td>
+    <td><CopyableCode code="external_secret_rotation_metadata" /></td>
     <td><code>array</code></td>
     <td>The metadata needed to successfully rotate a managed external secret. A list of key value pairs in JSON format specified by the partner. For more information about the required information, see Managed external secrets partners.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalSecretRotationRoleArn" /></td>
+    <td><CopyableCode code="external_secret_rotation_role_arn" /></td>
     <td><code>string</code></td>
     <td>The role that Secrets Manager assumes to call APIs required to perform the rotation. For more information about the required information, see Managed external secrets partners.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key that Secrets Manager uses to encrypt the secret value. If the secret is encrypted with the Amazon Web Services managed key aws/secretsmanager, this field is omitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessedDate" /></td>
+    <td><CopyableCode code="last_accessed_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the secret was last accessed in the Region. This field is omitted if the secret has never been retrieved in the Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastChangedDate" /></td>
+    <td><CopyableCode code="last_changed_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date and time that this secret was modified in any way.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRotatedDate" /></td>
+    <td><CopyableCode code="last_rotated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is null if the secret hasn't ever rotated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextRotationDate" /></td>
+    <td><CopyableCode code="next_rotation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The next rotation is scheduled to occur on or before this date. If the secret isn't configured for rotation or rotation has been disabled, Secrets Manager returns null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwningService" /></td>
+    <td><CopyableCode code="owning_service" /></td>
     <td><code>string</code></td>
     <td>Returns the name of the service that created the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryRegion" /></td>
+    <td><CopyableCode code="primary_region" /></td>
     <td><code>string</code></td>
     <td>The Region where Secrets Manager originated the secret. (pattern: &lt;code&gt;^(&#91;a-z&#93;+-)+\d+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationEnabled" /></td>
+    <td><CopyableCode code="rotation_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether automatic, scheduled rotation is enabled for this secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationLambdaARN" /></td>
+    <td><CopyableCode code="rotation_lambda_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of an Amazon Web Services Lambda function invoked by Secrets Manager to rotate and expire the secret either automatically per the schedule or manually by a call to RotateSecret .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationRules" /></td>
+    <td><CopyableCode code="rotation_rules" /></td>
     <td><code>object</code></td>
     <td>A structure that defines the rotation configuration for the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretVersionsToStages" /></td>
+    <td><CopyableCode code="secret_versions_to_stages" /></td>
     <td><code>object</code></td>
     <td>A list of all of the currently assigned SecretVersionStage staging labels and the SecretVersionId attached to each one. Staging labels are used to keep track of the different versions during the rotation process. A version that does not have any SecretVersionStage is considered deprecated and subject to deletion. Such versions are not included in this list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of user-defined tags associated with the secret. To add tags to a secret, use TagResource . To remove tags, use UntagResource .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The exact string that identifies the third-party partner that holds the external secret. For more information, see Managed external secret partners.</td>
 </tr>
@@ -412,27 +412,27 @@ Retrieves the details of a secret. It does not include the encrypted secret valu
 
 ```sql
 SELECT
-ARN,
-CreatedDate,
-DeletedDate,
-Description,
-ExternalSecretRotationMetadata,
-ExternalSecretRotationRoleArn,
-KmsKeyId,
-LastAccessedDate,
-LastChangedDate,
-LastRotatedDate,
-Name,
-NextRotationDate,
-OwningService,
-PrimaryRegion,
-ReplicationStatus,
-RotationEnabled,
-RotationLambdaARN,
-RotationRules,
-Tags,
-Type,
-VersionIdsToStages
+arn,
+created_date,
+deleted_date,
+description,
+external_secret_rotation_metadata,
+external_secret_rotation_role_arn,
+kms_key_id,
+last_accessed_date,
+last_changed_date,
+last_rotated_date,
+name,
+next_rotation_date,
+owning_service,
+primary_region,
+replication_status,
+rotation_enabled,
+rotation_lambda_arn,
+rotation_rules,
+tags,
+type,
+version_ids_to_stages
 FROM aws.secretsmanager.secrets
 WHERE region = '{{ region }}' -- required
 ;
@@ -444,26 +444,26 @@ Lists the secrets that are stored by Secrets Manager in the Amazon Web Services 
 
 ```sql
 SELECT
-ARN,
-CreatedDate,
-DeletedDate,
-Description,
-ExternalSecretRotationMetadata,
-ExternalSecretRotationRoleArn,
-KmsKeyId,
-LastAccessedDate,
-LastChangedDate,
-LastRotatedDate,
-Name,
-NextRotationDate,
-OwningService,
-PrimaryRegion,
-RotationEnabled,
-RotationLambdaARN,
-RotationRules,
-SecretVersionsToStages,
-Tags,
-Type
+arn,
+created_date,
+deleted_date,
+description,
+external_secret_rotation_metadata,
+external_secret_rotation_role_arn,
+kms_key_id,
+last_accessed_date,
+last_changed_date,
+last_rotated_date,
+name,
+next_rotation_date,
+owning_service,
+primary_region,
+rotation_enabled,
+rotation_lambda_arn,
+rotation_rules,
+secret_versions_to_stages,
+tags,
+type
 FROM aws.secretsmanager.secrets
 WHERE region = '{{ region }}' -- required
 ;
@@ -512,10 +512,10 @@ SELECT
 '{{ Type }}',
 '{{ region }}'
 RETURNING
-ARN,
-Name,
-ReplicationStatus,
-VersionId
+arn,
+name,
+replication_status,
+version_id
 ;
 ```
 </TabItem>
@@ -601,8 +601,8 @@ region = '{{ region }}' --required
 AND SecretId = '{{ SecretId }}' --required
 AND RemoveReplicaRegions = '{{ RemoveReplicaRegions }}' --required
 RETURNING
-ARN,
-ReplicationStatus;
+arn,
+replication_status;
 ```
 </TabItem>
 <TabItem value="update_secret_version_stage">
@@ -621,8 +621,8 @@ region = '{{ region }}' --required
 AND SecretId = '{{ SecretId }}' --required
 AND VersionStage = '{{ VersionStage }}' --required
 RETURNING
-ARN,
-Name;
+arn,
+name;
 ```
 </TabItem>
 <TabItem value="update_secret">
@@ -643,9 +643,9 @@ WHERE
 region = '{{ region }}' --required
 AND SecretId = '{{ SecretId }}' --required
 RETURNING
-ARN,
-Name,
-VersionId;
+arn,
+name,
+version_id;
 ```
 </TabItem>
 </Tabs>

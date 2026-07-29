@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="logGroupFields" /></td>
+    <td><CopyableCode code="log_group_fields" /></td>
     <td><code>array</code></td>
     <td>The array of fields found in the query. Each object in the array contains the name of the field, along with the percentage of time it appeared in the log events that were queried.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns a list of the fields that are included in log events in the specified lo
 
 ```sql
 SELECT
-logGroupFields
+log_group_fields
 FROM aws.logs.log_group_fields
 WHERE region = '{{ region }}' -- required
 ;

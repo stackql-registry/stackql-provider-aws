@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateDurationSeconds" /></td>
+    <td><CopyableCode code="approximate_duration_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The approximate duration of this program, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApproximateStartTime" /></td>
+    <td><CopyableCode code="approximate_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The approximate time that the program will start playing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Audiences" /></td>
+    <td><CopyableCode code="audiences" /></td>
     <td><code>array</code></td>
     <td>The list of audiences defined in ScheduleEntry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel that uses this schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LiveSourceName" /></td>
+    <td><CopyableCode code="live_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the live source used for the program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgramName" /></td>
+    <td><CopyableCode code="program_name" /></td>
     <td><code>string</code></td>
     <td>The name of the program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleAdBreaks" /></td>
+    <td><CopyableCode code="schedule_ad_breaks" /></td>
     <td><code>array</code></td>
     <td>The schedule's ad break properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleEntryType" /></td>
+    <td><CopyableCode code="schedule_entry_type" /></td>
     <td><code>string</code></td>
     <td>The type of schedule entry. (PROGRAM, FILLER_SLATE, ALTERNATE_MEDIA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VodSourceName" /></td>
+    <td><CopyableCode code="vod_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VOD source.</td>
 </tr>
@@ -194,17 +194,17 @@ Retrieves information about your channel's schedule.
 
 ```sql
 SELECT
-ApproximateDurationSeconds,
-ApproximateStartTime,
-Arn,
-Audiences,
-ChannelName,
-LiveSourceName,
-ProgramName,
-ScheduleAdBreaks,
-ScheduleEntryType,
-SourceLocationName,
-VodSourceName
+approximate_duration_seconds,
+approximate_start_time,
+arn,
+audiences,
+channel_name,
+live_source_name,
+program_name,
+schedule_ad_breaks,
+schedule_entry_type,
+source_location_name,
+vod_source_name
 FROM aws.mediatailor.channel_schedules
 WHERE channel_name = '{{ channel_name }}' -- required
 AND region = '{{ region }}' -- required

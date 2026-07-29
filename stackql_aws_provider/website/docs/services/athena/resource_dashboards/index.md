@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>The Live UI/Persistence UI url for a session.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets the Live UI/Persistence UI for a session.
 
 ```sql
 SELECT
-Url
+url
 FROM aws.athena.resource_dashboards
 WHERE region = '{{ region }}' -- required
 ;

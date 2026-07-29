@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in the which the Elastic Graphics accelerator resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticGpuHealth" /></td>
+    <td><CopyableCode code="elastic_gpu_health" /></td>
     <td><code>string</code></td>
     <td>The status of the Elastic Graphics accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticGpuId" /></td>
+    <td><CopyableCode code="elastic_gpu_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Elastic Graphics accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticGpuState" /></td>
+    <td><CopyableCode code="elastic_gpu_state" /></td>
     <td><code>string</code></td>
     <td>The state of the Elastic Graphics accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticGpuType" /></td>
+    <td><CopyableCode code="elastic_gpu_type" /></td>
     <td><code>string</code></td>
     <td>The type of Elastic Graphics accelerator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance to which the Elastic Graphics accelerator is attached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the Elastic Graphics accelerator.</td>
 </tr>
@@ -174,13 +174,13 @@ Amazon Elastic Graphics reached end of life on January 8, 2024. Describes the El
 
 ```sql
 SELECT
-AvailabilityZone,
-ElasticGpuHealth,
-ElasticGpuId,
-ElasticGpuState,
-ElasticGpuType,
-InstanceId,
-Tags
+availability_zone,
+elastic_gpu_health,
+elastic_gpu_id,
+elastic_gpu_state,
+elastic_gpu_type,
+instance_id,
+tags
 FROM aws.ec2.elastic_gpus
 WHERE region = '{{ region }}' -- required
 AND ElasticGpuId = '{{ ElasticGpuId }}'

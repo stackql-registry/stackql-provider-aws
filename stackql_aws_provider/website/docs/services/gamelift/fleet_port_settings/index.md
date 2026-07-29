@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FleetArn" /></td>
+    <td><CopyableCode code="fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers fleet resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the fleet that was requested. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InboundPermissions" /></td>
+    <td><CopyableCode code="inbound_permissions" /></td>
     <td><code>array</code></td>
     <td>The port settings for the requested fleet ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
     <td>The requested fleet location, expressed as an Amazon Web Services Region code, such as us-west-2. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateStatus" /></td>
+    <td><CopyableCode code="update_status" /></td>
     <td><code>string</code></td>
     <td>The current status of updates to the fleet's port settings in the requested fleet location. A status of PENDING_UPDATE indicates that an update was requested for the fleet but has not yet been completed for the location. (PENDING_UPDATE)</td>
 </tr>
@@ -146,11 +146,11 @@ This API works with the following fleet types: EC2, Container Retrieves a fleet'
 
 ```sql
 SELECT
-FleetArn,
-FleetId,
-InboundPermissions,
-Location,
-UpdateStatus
+fleet_arn,
+fleet_id,
+inbound_permissions,
+location,
+update_status
 FROM aws.gamelift.fleet_port_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,8 +181,8 @@ WHERE
 region = '{{ region }}' --required
 AND FleetId = '{{ FleetId }}' --required
 RETURNING
-FleetArn,
-FleetId;
+fleet_arn,
+fleet_id;
 ```
 </TabItem>
 </Tabs>

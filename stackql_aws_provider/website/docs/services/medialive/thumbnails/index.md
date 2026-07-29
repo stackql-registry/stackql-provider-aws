@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ThumbnailDetails" /></td>
+    <td><CopyableCode code="thumbnail_details" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfThumbnailDetail</td>
 </tr>
@@ -134,7 +134,7 @@ Describe the latest thumbnails data.
 
 ```sql
 SELECT
-ThumbnailDetails
+thumbnail_details
 FROM aws.medialive.thumbnails
 WHERE channel_id = '{{ channel_id }}' -- required
 AND pipelineId = '{{ pipelineId }}' -- required

@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier for a protected query instance. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeConfiguration" /></td>
+    <td><CopyableCode code="compute_configuration" /></td>
     <td><code>object</code></td>
     <td>The compute configuration for the protected query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the protected query was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="differentialPrivacy" /></td>
+    <td><CopyableCode code="differential_privacy" /></td>
     <td><code>object</code></td>
     <td>The sensitivity parameters of the differential privacy results of the protected query.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>An error thrown by the protected query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the membership. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the membership. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>The result of the protected query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resultConfiguration" /></td>
+    <td><CopyableCode code="result_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains any details needed to write the query results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sqlParameters" /></td>
+    <td><CopyableCode code="sql_parameters" /></td>
     <td><code>object</code></td>
     <td>The protected query SQL parameters.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ID of the protected query. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the protected query was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the membership that initiated the protected query. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the membership that initiated the protected query. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="receiverConfigurations" /></td>
+    <td><CopyableCode code="receiver_configurations" /></td>
     <td><code>array</code></td>
     <td>The receiver configuration.</td>
 </tr>
@@ -260,15 +260,15 @@ Returns query processing metadata.
 ```sql
 SELECT
 id,
-computeConfiguration,
-createTime,
-differentialPrivacy,
+compute_configuration,
+create_time,
+differential_privacy,
 error,
-membershipArn,
-membershipId,
+membership_arn,
+membership_id,
 result,
-resultConfiguration,
-sqlParameters,
+result_configuration,
+sql_parameters,
 statistics,
 status
 FROM aws.cleanrooms.protected_queries
@@ -285,10 +285,10 @@ Lists protected queries, sorted by the most recent query.
 ```sql
 SELECT
 id,
-createTime,
-membershipArn,
-membershipId,
-receiverConfigurations,
+create_time,
+membership_arn,
+membership_id,
+receiver_configurations,
 status
 FROM aws.cleanrooms.protected_queries
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
@@ -324,7 +324,7 @@ AND protected_query_identifier = '{{ protected_query_identifier }}' --required
 AND region = '{{ region }}' --required
 AND targetStatus = '{{ targetStatus }}' --required
 RETURNING
-protectedQuery;
+protected_query;
 ```
 </TabItem>
 </Tabs>

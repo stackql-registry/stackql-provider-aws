@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeofenceId" /></td>
+    <td><CopyableCode code="geofence_id" /></td>
     <td><code>string</code></td>
     <td>The geofence identifier. (pattern: &lt;code&gt;&#91;-._\p&#123;L&#125;\p&#123;N&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeofenceProperties" /></td>
+    <td><CopyableCode code="geofence_properties" /></td>
     <td><code>object</code></td>
     <td>User defined properties of the geofence. A property is a key-value pair stored with the geofence and added to any geofence event triggered with that geofence. Format: "key" : "value"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Geometry" /></td>
+    <td><CopyableCode code="geometry" /></td>
     <td><code>object</code></td>
     <td>Contains the geofence geometry details describing the position of the geofence. Can be a circle, a polygon, or a multipolygon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Identifies the state of the geofence. A geofence will hold one of the following states: ACTIVE — The geofence has been indexed by the system. PENDING — The geofence is being processed by the system. FAILED — The geofence failed to be indexed by the system. DELETED — The geofence has been deleted from the system index. DELETING — The geofence is being deleted from the system index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the geofence collection was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the geofence was stored in a geofence collection in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeofenceId" /></td>
+    <td><CopyableCode code="geofence_id" /></td>
     <td><code>string</code></td>
     <td>The geofence identifier. (pattern: &lt;code&gt;&#91;-._\p&#123;L&#125;\p&#123;N&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeofenceProperties" /></td>
+    <td><CopyableCode code="geofence_properties" /></td>
     <td><code>object</code></td>
     <td>User defined properties of the geofence. A property is a key-value pair stored with the geofence and added to any geofence event triggered with that geofence. Format: "key" : "value"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Geometry" /></td>
+    <td><CopyableCode code="geometry" /></td>
     <td><code>object</code></td>
     <td>Contains the geofence geometry details. A geofence geometry can be a circle, a polygon, or a multipolygon. Polygon and MultiPolygon geometries can be defined using their respective parameters, or encoded in Geobuf format using the Geobuf parameter. Including multiple geometry types in the same request will return a validation error. Amazon Location doesn't currently support polygons that cross the antimeridian.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Identifies the state of the geofence. A geofence will hold one of the following states: ACTIVE — The geofence has been indexed by the system. PENDING — The geofence is being processed by the system. FAILED — The geofence failed to be indexed by the system. DELETED — The geofence has been deleted from the system index. DELETING — The geofence is being deleted from the system index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
@@ -228,12 +228,12 @@ Retrieves the geofence details from a geofence collection. The returned geometry
 
 ```sql
 SELECT
-CreateTime,
-GeofenceId,
-GeofenceProperties,
-Geometry,
-Status,
-UpdateTime
+create_time,
+geofence_id,
+geofence_properties,
+geometry,
+status,
+update_time
 FROM aws.location.geofences
 WHERE collection_name = '{{ collection_name }}' -- required
 AND geofence_id = '{{ geofence_id }}' -- required
@@ -247,12 +247,12 @@ Lists geofences stored in a given geofence collection.
 
 ```sql
 SELECT
-CreateTime,
-GeofenceId,
-GeofenceProperties,
-Geometry,
-Status,
-UpdateTime
+create_time,
+geofence_id,
+geofence_properties,
+geometry,
+status,
+update_time
 FROM aws.location.geofences
 WHERE collection_name = '{{ collection_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -284,9 +284,9 @@ collection_name = '{{ collection_name }}' --required
 AND geofence_id = '{{ geofence_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreateTime,
-GeofenceId,
-UpdateTime;
+create_time,
+geofence_id,
+update_time;
 ```
 </TabItem>
 </Tabs>

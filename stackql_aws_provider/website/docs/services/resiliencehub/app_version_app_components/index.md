@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:partition:resiliencehub:region:account:app/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appComponent" /></td>
+    <td><CopyableCode code="app_component" /></td>
     <td><code>object</code></td>
     <td>Defines an Application Component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>string</code></td>
     <td>Resilience Hub application version. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:partition:resiliencehub:region:account:app/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appComponents" /></td>
+    <td><CopyableCode code="app_components" /></td>
     <td><code>array</code></td>
     <td>Defines an Application Component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>string</code></td>
     <td>Resilience Hub application version. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -193,9 +193,9 @@ Describes an Application Component in the Resilience Hub application.
 
 ```sql
 SELECT
-appArn,
-appComponent,
-appVersion
+app_arn,
+app_component,
+app_version
 FROM aws.resiliencehub.app_version_app_components
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,10 +207,10 @@ Lists all the Application Components in the Resilience Hub application.
 
 ```sql
 SELECT
-appArn,
-appComponents,
-appVersion,
-nextToken
+app_arn,
+app_components,
+app_version,
+next_token
 FROM aws.resiliencehub.app_version_app_components
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,9 +251,9 @@ SELECT
 '{{ type }}' /* required */,
 '{{ region }}'
 RETURNING
-appArn,
-appComponent,
-appVersion
+app_arn,
+app_component,
+app_version
 ;
 ```
 </TabItem>
@@ -308,9 +308,9 @@ region = '{{ region }}' --required
 AND appArn = '{{ appArn }}' --required
 AND id = '{{ id }}' --required
 RETURNING
-appArn,
-appComponent,
-appVersion;
+app_arn,
+app_component,
+app_version;
 ```
 </TabItem>
 </Tabs>

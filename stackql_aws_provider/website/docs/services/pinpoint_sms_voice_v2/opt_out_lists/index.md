@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the OutOutList was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptOutListArn" /></td>
+    <td><CopyableCode code="opt_out_list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the OptOutList.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptOutListName" /></td>
+    <td><CopyableCode code="opt_out_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OptOutList. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -143,9 +143,9 @@ Describes the specified opt-out list or all opt-out lists in your account. If yo
 
 ```sql
 SELECT
-CreatedTimestamp,
-OptOutListArn,
-OptOutListName
+created_timestamp,
+opt_out_list_arn,
+opt_out_list_name
 FROM aws.pinpoint_sms_voice_v2.opt_out_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -180,10 +180,10 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-CreatedTimestamp,
-OptOutListArn,
-OptOutListName,
-Tags
+created_timestamp,
+opt_out_list_arn,
+opt_out_list_name,
+tags
 ;
 ```
 </TabItem>

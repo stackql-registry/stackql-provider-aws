@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the group. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:synthetics:&#91;a-z&#93;&#123;2,4&#125;(-&#91;a-z&#93;&#123;2,4&#125;)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:group:&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the group was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of key-value pairs that are associated with the canary.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>array</code></td>
     <td>An array of structures that each contain information about one group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there is more data available. You can use this token in a subsequent ListGroups operation to retrieve the next set of results.</td>
 </tr>
@@ -210,12 +210,12 @@ Returns information about one group. Groups are a global resource, so you can us
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Id,
-LastModifiedTime,
-Name,
-Tags
+arn,
+created_time,
+id,
+last_modified_time,
+name,
+tags
 FROM aws.synthetics.groups
 WHERE group_identifier = '{{ group_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,8 +228,8 @@ Returns a list of all groups in the account, displaying their names, unique IDs,
 
 ```sql
 SELECT
-Groups,
-NextToken
+groups,
+next_token
 FROM aws.synthetics.groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -262,7 +262,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Group
+group
 ;
 ```
 </TabItem>

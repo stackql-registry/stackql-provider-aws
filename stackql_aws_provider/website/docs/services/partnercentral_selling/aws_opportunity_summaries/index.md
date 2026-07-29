@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>Specifies the catalog in which the AWS Opportunity exists. This is the environment (e.g., AWS or Sandbox) where the opportunity is being managed. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Customer" /></td>
+    <td><CopyableCode code="customer" /></td>
     <td><code>object</code></td>
     <td>Provides details about the customer associated with the AWS Opportunity, including account information, industry, and other customer data. These details help partners understand the business context of the opportunity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Insights" /></td>
+    <td><CopyableCode code="insights" /></td>
     <td><code>object</code></td>
     <td>Provides insights into the AWS Opportunity, including engagement score and recommended actions that AWS suggests for the partner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvolvementType" /></td>
+    <td><CopyableCode code="involvement_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the type of involvement AWS has in the opportunity, such as direct cosell or advisory support. This field helps partners understand the role AWS plays in advancing the opportunity. (For Visibility Only, Co-Sell)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvolvementTypeChangeReason" /></td>
+    <td><CopyableCode code="involvement_type_change_reason" /></td>
     <td><code>string</code></td>
     <td>Provides a reason for any changes in the involvement type of AWS in the opportunity. This field is used to track why the level of AWS engagement has changed from For Visibility Only to Co-sell offering transparency into the partnership dynamics. (Expansion Opportunity, Change in Deal Information, Customer Requested, Technical Complexity, Risk Mitigation)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycle" /></td>
+    <td><CopyableCode code="life_cycle" /></td>
     <td><code>object</code></td>
     <td>Contains lifecycle information for the AWS Opportunity, including review status, stage, and target close date. This field is crucial for partners to monitor the progression of the opportunity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpportunityTeam" /></td>
+    <td><CopyableCode code="opportunity_team" /></td>
     <td><code>array</code></td>
     <td>Details the AWS opportunity team, including members involved. This information helps partners know who from AWS is engaged and what their role is.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Origin" /></td>
+    <td><CopyableCode code="origin" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the AWS Opportunity originated from AWS or the partner. This helps distinguish between opportunities that were sourced by AWS and those referred by the partner. (AWS Referral, Partner Referral)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Project" /></td>
+    <td><CopyableCode code="project" /></td>
     <td><code>object</code></td>
     <td>Provides details about the project associated with the AWS Opportunity, including the customer’s business problem, expected outcomes, and project scope. This information is crucial for understanding the broader context of the opportunity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedEntityIds" /></td>
+    <td><CopyableCode code="related_entity_ids" /></td>
     <td><code>object</code></td>
     <td>Lists related entity identifiers, such as AWS products or partner solutions, associated with the AWS Opportunity. These identifiers provide additional context and help partners understand which AWS services are involved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedOpportunityId" /></td>
+    <td><CopyableCode code="related_opportunity_id" /></td>
     <td><code>string</code></td>
     <td>Provides the unique identifier of the related partner opportunity, allowing partners to link the AWS Opportunity to their corresponding opportunity in their CRM system. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>Defines the visibility level for the AWS Opportunity. Use Full visibility for most cases, while Limited visibility is reserved for special programs or sensitive opportunities. (Full, Limited)</td>
 </tr>
@@ -174,18 +174,18 @@ Retrieves a summary of an AWS Opportunity. This summary includes high-level deta
 
 ```sql
 SELECT
-Catalog,
-Customer,
-Insights,
-InvolvementType,
-InvolvementTypeChangeReason,
-LifeCycle,
-OpportunityTeam,
-Origin,
-Project,
-RelatedEntityIds,
-RelatedOpportunityId,
-Visibility
+catalog,
+customer,
+insights,
+involvement_type,
+involvement_type_change_reason,
+life_cycle,
+opportunity_team,
+origin,
+project,
+related_entity_ids,
+related_opportunity_id,
+visibility
 FROM aws.partnercentral_selling.aws_opportunity_summaries
 WHERE region = '{{ region }}' -- required
 ;

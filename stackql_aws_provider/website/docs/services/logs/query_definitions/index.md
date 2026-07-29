@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryDefinitions" /></td>
+    <td><CopyableCode code="query_definitions" /></td>
     <td><code>array</code></td>
     <td>The list of query definitions that match your request.</td>
 </tr>
@@ -138,8 +138,8 @@ This operation returns a paginated list of your saved CloudWatch Logs Insights q
 
 ```sql
 SELECT
-nextToken,
-queryDefinitions
+next_token,
+query_definitions
 FROM aws.logs.query_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -175,7 +175,7 @@ region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 AND queryString = '{{ queryString }}' --required
 RETURNING
-queryDefinitionId;
+query_definition_id;
 ```
 </TabItem>
 </Tabs>

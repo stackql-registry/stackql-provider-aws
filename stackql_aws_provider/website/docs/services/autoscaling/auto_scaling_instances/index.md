@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID where the instance is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>string</code></td>
     <td>The last reported health status of this instance. Healthy means that the instance is healthy and should remain in service. Unhealthy means that the instance is unhealthy and Amazon EC2 Auto Scaling should terminate and replace it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Machine Image (AMI) associated with the instance. This field shows the current AMI ID of the instance's root volume. It may differ from the original AMI used when the instance was first launched. This field appears for: Instances with root volume replacements through Instance Refresh Instances launched with AMI overrides This field won't appear for: Existing instances launched from Launch Templates without overrides Existing instances that didn’t have their root volume replaced through Instance Refresh</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type of the EC2 instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchConfigurationName" /></td>
+    <td><CopyableCode code="launch_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The launch configuration used to launch the instance. This value is not available if you attached the instance to the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplate" /></td>
+    <td><CopyableCode code="launch_template" /></td>
     <td><code>string</code></td>
     <td>The launch template for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleState" /></td>
+    <td><CopyableCode code="lifecycle_state" /></td>
     <td><code>string</code></td>
     <td>The lifecycle state for the instance. The Quarantined state is not used. For more information, see Amazon EC2 Auto Scaling instance lifecycle in the Amazon EC2 Auto Scaling User Guide. Valid values: Pending | Pending:Wait | Pending:Proceed | Quarantined | InService | Terminating | Terminating:Wait | Terminating:Proceed | Terminating:Retained | Terminated | Detaching | Detached | EnteringStandby | Standby | ReplacingRootVolume | ReplacingRootVolume:Wait | ReplacingRootVolume:Proceed | RootVolumeReplaced | Warmed:Pending | Warmed:Pending:Wait | Warmed:Pending:Proceed | Warmed:Pending:Retained | Warmed:Terminating | Warmed:Terminating:Wait | Warmed:Terminating:Proceed | Warmed:Terminating:Retained | Warmed:Terminated | Warmed:Stopped | Warmed:Running | Warmed:Hibernated</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedFromScaleIn" /></td>
+    <td><CopyableCode code="protected_from_scale_in" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WeightedCapacity" /></td>
+    <td><CopyableCode code="weighted_capacity" /></td>
     <td><code>string</code></td>
     <td>The number of capacity units contributed by the instance based on its instance type. Valid Range: Minimum value of 1. Maximum value of 999.</td>
 </tr>
@@ -189,18 +189,18 @@ Gets information about the Auto Scaling instances in the account and Region.
 
 ```sql
 SELECT
-AutoScalingGroupName,
-AvailabilityZone,
-AvailabilityZoneId,
-HealthStatus,
-ImageId,
-InstanceId,
-InstanceType,
-LaunchConfigurationName,
-LaunchTemplate,
-LifecycleState,
-ProtectedFromScaleIn,
-WeightedCapacity
+auto_scaling_group_name,
+availability_zone,
+availability_zone_id,
+health_status,
+image_id,
+instance_id,
+instance_type,
+launch_configuration_name,
+launch_template,
+lifecycle_state,
+protected_from_scale_in,
+weighted_capacity
 FROM aws.autoscaling.auto_scaling_instances
 WHERE region = '{{ region }}' -- required
 AND InstanceIds = '{{ InstanceIds }}'

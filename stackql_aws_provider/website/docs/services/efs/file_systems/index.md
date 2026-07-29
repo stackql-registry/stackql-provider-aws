@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The unique and consistent identifier of the Availability Zone in which the file system is located, and is valid only for One Zone file systems. For example, use1-az1 is an Availability Zone ID for the us-east-1 Amazon Web Services Region, and it has the same location in every Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneName" /></td>
+    <td><CopyableCode code="availability_zone_name" /></td>
     <td><code>string</code></td>
     <td>Describes the Amazon Web Services Availability Zone in which the file system is located, and is valid only for One Zone file systems. For more information, see Using EFS storage classes in the Amazon EFS User Guide. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the file system was created, in seconds (since 1970-01-01T00:00:00Z).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationToken" /></td>
+    <td><CopyableCode code="creation_token" /></td>
     <td><code>string</code></td>
     <td>The opaque string specified in the request. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that, if true, indicates that the file system is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemArn" /></td>
+    <td><CopyableCode code="file_system_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the EFS file system, in the format arn:aws:elasticfilesystem:region:account-id:file-system/file-system-id . Example with sample data: arn:aws:elasticfilesystem:us-west-2:1111333322228888:file-system/fs-01234567</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file system, assigned by Amazon EFS. (pattern: &lt;code&gt;^(arn:aws&#91;-a-z&#93;*:elasticfilesystem:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;8,40&#125;|fs-&#91;0-9a-f&#93;&#123;8,40&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemProtection" /></td>
+    <td><CopyableCode code="file_system_protection" /></td>
     <td><code>object</code></td>
     <td>Describes the protection on the file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of an KMS key used to protect the encrypted file system. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;|mrk-&#91;0-9a-f&#93;&#123;32&#125;|alias/&#91;a-zA-Z0-9/_-&#93;+|(arn:aws&#91;-a-z&#93;*:kms:&#91;a-z0-9-&#93;+:\d&#123;12&#125;:((key/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;)|(key/mrk-&#91;0-9a-f&#93;&#123;32&#125;)|(alias/&#91;a-zA-Z0-9/_-&#93;+))))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycleState" /></td>
+    <td><CopyableCode code="life_cycle_state" /></td>
     <td><code>string</code></td>
     <td>The lifecycle phase of the file system. (creating, available, updating, deleting, deleted, error)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>You can add tags to a file system, including a Name tag. For more information, see CreateFileSystem. If the file system has a Name tag, Amazon EFS returns the value in this field. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfMountTargets" /></td>
+    <td><CopyableCode code="number_of_mount_targets" /></td>
     <td><code>integer</code></td>
     <td>The current number of mount targets that the file system has. For more information, see CreateMountTarget.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that created the file system. (pattern: &lt;code&gt;^(\d&#123;12&#125;)|(\d&#123;4&#125;-\d&#123;4&#125;-\d&#123;4&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceMode" /></td>
+    <td><CopyableCode code="performance_mode" /></td>
     <td><code>string</code></td>
     <td>The performance mode of the file system. (generalPurpose, maxIO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionedThroughputInMibps" /></td>
+    <td><CopyableCode code="provisioned_throughput_in_mibps" /></td>
     <td><code>number (double)</code></td>
     <td>The amount of provisioned throughput, measured in MiBps, for the file system. Valid for file systems using ThroughputMode set to provisioned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>object</code></td>
     <td>The latest known metered size (in bytes) of data stored in the file system, in its Value field, and the time at which that size was determined in its Timestamp field. The Timestamp value is the integer number of seconds since 1970-01-01T00:00:00Z. The SizeInBytes value doesn't represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, SizeInBytes represents actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not the exact size that the file system was at any point in time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the file system, presented as an array of Tag objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThroughputMode" /></td>
+    <td><CopyableCode code="throughput_mode" /></td>
     <td><code>string</code></td>
     <td>Displays the file system's throughput mode. For more information, see Throughput modes in the Amazon EFS User Guide. (bursting, provisioned, elastic)</td>
 </tr>
@@ -257,24 +257,24 @@ Returns the description of a specific Amazon EFS file system if either the file 
 
 ```sql
 SELECT
-AvailabilityZoneId,
-AvailabilityZoneName,
-CreationTime,
-CreationToken,
-Encrypted,
-FileSystemArn,
-FileSystemId,
-FileSystemProtection,
-KmsKeyId,
-LifeCycleState,
-Name,
-NumberOfMountTargets,
-OwnerId,
-PerformanceMode,
-ProvisionedThroughputInMibps,
-SizeInBytes,
-Tags,
-ThroughputMode
+availability_zone_id,
+availability_zone_name,
+creation_time,
+creation_token,
+encrypted,
+file_system_arn,
+file_system_id,
+file_system_protection,
+kms_key_id,
+life_cycle_state,
+name,
+number_of_mount_targets,
+owner_id,
+performance_mode,
+provisioned_throughput_in_mibps,
+size_in_bytes,
+tags,
+throughput_mode
 FROM aws.efs.file_systems
 WHERE region = '{{ region }}' -- required
 AND MaxItems = '{{ MaxItems }}'
@@ -325,24 +325,24 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AvailabilityZoneId,
-AvailabilityZoneName,
-CreationTime,
-CreationToken,
-Encrypted,
-FileSystemArn,
-FileSystemId,
-FileSystemProtection,
-KmsKeyId,
-LifeCycleState,
-Name,
-NumberOfMountTargets,
-OwnerId,
-PerformanceMode,
-ProvisionedThroughputInMibps,
-SizeInBytes,
-Tags,
-ThroughputMode
+availability_zone_id,
+availability_zone_name,
+creation_time,
+creation_token,
+encrypted,
+file_system_arn,
+file_system_id,
+file_system_protection,
+kms_key_id,
+life_cycle_state,
+name,
+number_of_mount_targets,
+owner_id,
+performance_mode,
+provisioned_throughput_in_mibps,
+size_in_bytes,
+tags,
+throughput_mode
 ;
 ```
 </TabItem>
@@ -403,24 +403,24 @@ WHERE
 file_system_id = '{{ file_system_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AvailabilityZoneId,
-AvailabilityZoneName,
-CreationTime,
-CreationToken,
-Encrypted,
-FileSystemArn,
-FileSystemId,
-FileSystemProtection,
-KmsKeyId,
-LifeCycleState,
-Name,
-NumberOfMountTargets,
-OwnerId,
-PerformanceMode,
-ProvisionedThroughputInMibps,
-SizeInBytes,
-Tags,
-ThroughputMode;
+availability_zone_id,
+availability_zone_name,
+creation_time,
+creation_token,
+encrypted,
+file_system_arn,
+file_system_id,
+file_system_protection,
+kms_key_id,
+life_cycle_state,
+name,
+number_of_mount_targets,
+owner_id,
+performance_mode,
+provisioned_throughput_in_mibps,
+size_in_bytes,
+tags,
+throughput_mode;
 ```
 </TabItem>
 </Tabs>

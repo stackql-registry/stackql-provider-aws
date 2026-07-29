@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the reservation in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number (double)</code></td>
     <td>The fixed price charged for this reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type for the reserved nodes. For more information, see Supported node types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>The offering type of this reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringCharges" /></td>
+    <td><CopyableCode code="recurring_charges" /></td>
     <td><code>array</code></td>
     <td>The recurring price charged to run this reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodesOfferingId" /></td>
+    <td><CopyableCode code="reserved_nodes_offering_id" /></td>
     <td><code>string</code></td>
     <td>The offering identifier.</td>
 </tr>
@@ -151,12 +151,12 @@ Lists available reserved node offerings.
 
 ```sql
 SELECT
-Duration,
-FixedPrice,
-NodeType,
-OfferingType,
-RecurringCharges,
-ReservedNodesOfferingId
+duration,
+fixed_price,
+node_type,
+offering_type,
+recurring_charges,
+reserved_nodes_offering_id
 FROM aws.memorydb.reserved_nodes_offerings
 WHERE region = '{{ region }}' -- required
 ;

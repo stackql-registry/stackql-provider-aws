@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>The detail returned for each webhook, such as the webhook authentication type and filter rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The number code of the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The text of the error message about the webhook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastTriggered" /></td>
+    <td><CopyableCode code="last_triggered" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time a webhook was last successfully triggered, in timestamp format.</td>
 </tr>
@@ -179,9 +179,9 @@ Gets a listing of all the webhooks in this Amazon Web Services Region for this a
 SELECT
 arn,
 definition,
-errorCode,
-errorMessage,
-lastTriggered,
+error_code,
+error_message,
+last_triggered,
 tags,
 url
 FROM aws.codepipeline.webhooks

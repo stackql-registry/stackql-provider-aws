@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ADM" /></td>
+    <td><CopyableCode code="adm" /></td>
     <td><code>object</code></td>
     <td>The message template that's used for the ADM (Amazon Device Messaging) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="APNS" /></td>
+    <td><CopyableCode code="apns" /></td>
     <td><code>object</code></td>
     <td>The message template that's used for the APNs (Apple Push Notification service) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Baidu" /></td>
+    <td><CopyableCode code="baidu" /></td>
     <td><code>object</code></td>
     <td>The message template that's used for the Baidu (Baidu Cloud Push) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the message template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Default" /></td>
+    <td><CopyableCode code="default" /></td>
     <td><code>object</code></td>
     <td>The default message template that's used for push notification channels.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultSubstitutions" /></td>
+    <td><CopyableCode code="default_substitutions" /></td>
     <td><code>string</code></td>
     <td>The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GCM" /></td>
+    <td><CopyableCode code="gcm" /></td>
     <td><code>object</code></td>
     <td>The message template that's used for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the message template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderId" /></td>
+    <td><CopyableCode code="recommender_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the recommender model that's used by the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateDescription" /></td>
+    <td><CopyableCode code="template_description" /></td>
     <td><code>string</code></td>
     <td>The custom description of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The type of channel that the message template is designed for. For a push notification template, this value is PUSH. (EMAIL, SMS, VOICE, PUSH, INAPP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.</td>
 </tr>
@@ -225,20 +225,20 @@ Retrieves the content and settings of a message template for messages that are s
 
 ```sql
 SELECT
-ADM,
-APNS,
-Arn,
-Baidu,
-CreationDate,
-Default,
-DefaultSubstitutions,
-GCM,
-LastModifiedDate,
-RecommenderId,
-TemplateDescription,
-TemplateName,
-TemplateType,
-Version,
+adm,
+apns,
+arn,
+baidu,
+creation_date,
+default,
+default_substitutions,
+gcm,
+last_modified_date,
+recommender_id,
+template_description,
+template_name,
+template_type,
+version,
 tags
 FROM aws.pinpoint.push_templates
 WHERE `template-name` = '{{ template-name }}' -- required
@@ -274,7 +274,7 @@ SELECT
 '{{ template-name }}',
 '{{ region }}'
 RETURNING
-CreateTemplateMessageBody
+create_template_message_body
 ;
 ```
 </TabItem>
@@ -370,7 +370,7 @@ AND PushNotificationTemplateRequest = '{{ PushNotificationTemplateRequest }}' --
 AND `create-new-version` = {{ create-new-version}}
 AND version = '{{ version}}'
 RETURNING
-MessageBody;
+message_body;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LimitsByRole" /></td>
+    <td><CopyableCode code="limits_by_role" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -134,7 +134,7 @@ Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion.
 
 ```sql
 SELECT
-LimitsByRole
+limits_by_role
 FROM aws.es.elasticsearch_instance_type_limits
 WHERE instance_type = '{{ instance_type }}' -- required
 AND elasticsearch_version = '{{ elasticsearch_version }}' -- required

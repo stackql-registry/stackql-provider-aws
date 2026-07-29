@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExcludePaths" /></td>
+    <td><CopyableCode code="exclude_paths" /></td>
     <td><code>string</code></td>
     <td>The paths to exclude.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchPaths" /></td>
+    <td><CopyableCode code="match_paths" /></td>
     <td><code>string</code></td>
     <td>The paths to match.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeId" /></td>
+    <td><CopyableCode code="network_insights_access_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Network Access Scope.</td>
 </tr>
@@ -139,9 +139,9 @@ Gets the content for the specified Network Access Scope.
 
 ```sql
 SELECT
-ExcludePaths,
-MatchPaths,
-NetworkInsightsAccessScopeId
+exclude_paths,
+match_paths,
+network_insights_access_scope_id
 FROM aws.ec2.network_insights_access_scope_contents
 WHERE NetworkInsightsAccessScopeId = '{{ NetworkInsightsAccessScopeId }}' -- required
 AND region = '{{ region }}' -- required

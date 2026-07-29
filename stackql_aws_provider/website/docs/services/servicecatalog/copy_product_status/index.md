@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CopyProductStatus" /></td>
+    <td><CopyableCode code="copy_product_status" /></td>
     <td><code>string</code></td>
     <td>The status of the copy product operation. (SUCCEEDED, IN_PROGRESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetail" /></td>
+    <td><CopyableCode code="status_detail" /></td>
     <td><code>string</code></td>
     <td>The status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetProductId" /></td>
+    <td><CopyableCode code="target_product_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the copied product. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Gets the status of the specified copy product operation.
 
 ```sql
 SELECT
-CopyProductStatus,
-StatusDetail,
-TargetProductId
+copy_product_status,
+status_detail,
+target_product_id
 FROM aws.servicecatalog.copy_product_status
 WHERE region = '{{ region }}' -- required
 ;

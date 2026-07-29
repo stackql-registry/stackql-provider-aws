@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when a block list for query suggestions was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the block list. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message containing details if there are issues processing the block list. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSizeBytes" /></td>
+    <td><CopyableCode code="file_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The current size of the block list text file in S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the block list. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexId" /></td>
+    <td><CopyableCode code="index_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the index for the block list. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ItemCount" /></td>
+    <td><CopyableCode code="item_count" /></td>
     <td><code>integer</code></td>
     <td>The current number of valid, non-empty words or phrases in the block list text file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the block list. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM (Identity and Access Management) role used by Amazon Kendra to access the block list text file in S3. The role needs S3 read permissions to your file in S3 and needs to give STS (Security Token Service) assume role permissions to Amazon Kendra. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceS3Path" /></td>
+    <td><CopyableCode code="source_s3_path" /></td>
     <td><code>object</code></td>
     <td>Information required to find a specific file in an Amazon S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the block list. When the value is ACTIVE, the block list is ready for use. (ACTIVE, CREATING, DELETING, UPDATING, ACTIVE_BUT_UPDATE_FAILED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when a block list for query suggestions was last updated.</td>
 </tr>
@@ -202,18 +202,18 @@ Gets information about a block list used for query suggestions for an index. Thi
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-ErrorMessage,
-FileSizeBytes,
-Id,
-IndexId,
-ItemCount,
-Name,
-RoleArn,
-SourceS3Path,
-Status,
-UpdatedAt
+created_at,
+description,
+error_message,
+file_size_bytes,
+id,
+index_id,
+item_count,
+name,
+role_arn,
+source_s3_path,
+status,
+updated_at
 FROM aws.kendra.query_suggestions_block_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,7 +256,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

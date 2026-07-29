@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the router input. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerInput:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the router input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThumbnailDetails" /></td>
+    <td><CopyableCode code="thumbnail_details" /></td>
     <td><code>object</code></td>
     <td>The details of the thumbnail associated with the router input, including the thumbnail image, timecode, timestamp, and any associated error messages.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves the thumbnail for a router input in AWS Elemental MediaConnect.
 
 ```sql
 SELECT
-Arn,
-Name,
-ThumbnailDetails
+arn,
+name,
+thumbnail_details
 FROM aws.mediaconnect.router_input_thumbnails
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

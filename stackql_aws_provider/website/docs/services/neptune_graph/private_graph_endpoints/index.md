@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the private endpoint. (CREATING, AVAILABLE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The subnet IDs involved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the private endpoint. (pattern: &lt;code&gt;vpce-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC where the private endpoint is located. (pattern: &lt;code&gt;vpc-&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the private graph endpoint. (CREATING, AVAILABLE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The subnet IDs associated with the private graph endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC endpoint. (pattern: &lt;code&gt;vpce-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC in which the private graph endpoint is located. (pattern: &lt;code&gt;vpc-&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -212,9 +212,9 @@ Retrieves information about a specified private endpoint.
 ```sql
 SELECT
 status,
-subnetIds,
-vpcEndpointId,
-vpcId
+subnet_ids,
+vpc_endpoint_id,
+vpc_id
 FROM aws.neptune_graph.private_graph_endpoints
 WHERE graph_identifier = '{{ graph_identifier }}' -- required
 AND vpc_id = '{{ vpc_id }}' -- required
@@ -229,9 +229,9 @@ Lists private endpoints for a specified Neptune Analytics graph.
 ```sql
 SELECT
 status,
-subnetIds,
-vpcEndpointId,
-vpcId
+subnet_ids,
+vpc_endpoint_id,
+vpc_id
 FROM aws.neptune_graph.private_graph_endpoints
 WHERE graph_identifier = '{{ graph_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -272,9 +272,9 @@ SELECT
 '{{ region }}'
 RETURNING
 status,
-subnetIds,
-vpcEndpointId,
-vpcId
+subnet_ids,
+vpc_endpoint_id,
+vpc_id
 ;
 ```
 </TabItem>

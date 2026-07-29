@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Readiness" /></td>
+    <td><CopyableCode code="readiness" /></td>
     <td><code>string</code></td>
     <td>The readiness status of this readiness check. (READY, NOT_READY, UNKNOWN, NOT_AUTHORIZED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadinessCheckName" /></td>
+    <td><CopyableCode code="readiness_check_name" /></td>
     <td><code>string</code></td>
     <td>The name of a readiness check.</td>
 </tr>
@@ -139,8 +139,8 @@ Displays a summary of information about a recovery group's readiness status. Inc
 
 ```sql
 SELECT
-Readiness,
-ReadinessCheckName
+readiness,
+readiness_check_name
 FROM aws.route53_recovery_readiness.recovery_group_readiness_summaries
 WHERE recovery_group_name = '{{ recovery_group_name }}' -- required
 AND region = '{{ region }}' -- required

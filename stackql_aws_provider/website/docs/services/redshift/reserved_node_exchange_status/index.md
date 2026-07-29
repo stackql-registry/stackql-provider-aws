@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestTime" /></td>
+    <td><CopyableCode code="request_time" /></td>
     <td><code>string</code></td>
     <td>A date and time that indicate when the reserved-node exchange was requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedNodeExchangeRequestId" /></td>
+    <td><CopyableCode code="reserved_node_exchange_request_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the reserved-node exchange request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceReservedNodeCount" /></td>
+    <td><CopyableCode code="source_reserved_node_count" /></td>
     <td><code>integer</code></td>
     <td>The source reserved-node count in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceReservedNodeId" /></td>
+    <td><CopyableCode code="source_reserved_node_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the source reserved node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceReservedNodeType" /></td>
+    <td><CopyableCode code="source_reserved_node_type" /></td>
     <td><code>string</code></td>
     <td>The source reserved-node type, for example ra3.4xlarge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the reserved-node exchange request. Statuses include in-progress and requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetReservedNodeCount" /></td>
+    <td><CopyableCode code="target_reserved_node_count" /></td>
     <td><code>integer</code></td>
     <td>The count of target reserved nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetReservedNodeOfferingId" /></td>
+    <td><CopyableCode code="target_reserved_node_offering_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the target reserved node offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetReservedNodeType" /></td>
+    <td><CopyableCode code="target_reserved_node_type" /></td>
     <td><code>string</code></td>
     <td>The node type of the target reserved node, for example ra3.4xlarge.</td>
 </tr>
@@ -179,15 +179,15 @@ Returns exchange status details and associated metadata for a reserved-node exch
 
 ```sql
 SELECT
-RequestTime,
-ReservedNodeExchangeRequestId,
-SourceReservedNodeCount,
-SourceReservedNodeId,
-SourceReservedNodeType,
-Status,
-TargetReservedNodeCount,
-TargetReservedNodeOfferingId,
-TargetReservedNodeType
+request_time,
+reserved_node_exchange_request_id,
+source_reserved_node_count,
+source_reserved_node_id,
+source_reserved_node_type,
+status,
+target_reserved_node_count,
+target_reserved_node_offering_id,
+target_reserved_node_type
 FROM aws.redshift.reserved_node_exchange_status
 WHERE region = '{{ region }}' -- required
 AND ReservedNodeId = '{{ ReservedNodeId }}'

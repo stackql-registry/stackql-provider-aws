@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>A kms key ID. (pattern: &lt;code&gt;arn:aws(-(us-gov|cn))?:kms:(&#91;a-z0-9&#93;&#91;-.a-z0-9&#93;&#123;0,62&#125;)?:&#91;0-9&#93;&#123;12&#125;?:key/((&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;)|(mrk-&#91;0-9a-zA-Z&#93;&#123;32&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -136,7 +136,7 @@ Gets an encryption key.
 
 ```sql
 SELECT
-kmsKeyId
+kms_key_id
 FROM aws.inspector2.encryption_keys
 WHERE scanType = '{{ scanType }}' -- required
 AND resourceType = '{{ resourceType }}' -- required

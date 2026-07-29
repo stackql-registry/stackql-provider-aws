@@ -121,7 +121,7 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-NotebookId
+notebook_id
 ;
 ```
 </TabItem>

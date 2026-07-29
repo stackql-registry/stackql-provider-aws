@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The category type of the target signing platform. (AWSIoT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the target signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxSizeInMB" /></td>
+    <td><CopyableCode code="max_size_in_mb" /></td>
     <td><code>integer</code></td>
     <td>The maximum size (in MB) of the payload that can be signed by the target platform.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>A list of partner entities that use the target signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformId" /></td>
+    <td><CopyableCode code="platform_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the target signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revocationSupported" /></td>
+    <td><CopyableCode code="revocation_supported" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether signatures generated for the signing platform can be revoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingConfiguration" /></td>
+    <td><CopyableCode code="signing_configuration" /></td>
     <td><code>object</code></td>
     <td>A list of configurations applied to the target platform at signing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingImageFormat" /></td>
+    <td><CopyableCode code="signing_image_format" /></td>
     <td><code>object</code></td>
     <td>The format of the target platform's signing image.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The category of a signing platform. (AWSIoT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of a signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxSizeInMB" /></td>
+    <td><CopyableCode code="max_size_in_mb" /></td>
     <td><code>integer</code></td>
     <td>The maximum size (in MB) of code that can be signed by a signing platform.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>Any partner entities linked to a signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="platformId" /></td>
+    <td><CopyableCode code="platform_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revocationSupported" /></td>
+    <td><CopyableCode code="revocation_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether revocation is supported for the platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingConfiguration" /></td>
+    <td><CopyableCode code="signing_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of a signing platform. This includes the designated hash algorithm and encryption algorithm of a signing platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signingImageFormat" /></td>
+    <td><CopyableCode code="signing_image_format" /></td>
     <td><code>object</code></td>
     <td>The image format of a AWS Signer platform or profile.</td>
 </tr>
@@ -258,13 +258,13 @@ Returns information on a specific signing platform.
 ```sql
 SELECT
 category,
-displayName,
-maxSizeInMB,
+display_name,
+max_size_in_mb,
 partner,
-platformId,
-revocationSupported,
-signingConfiguration,
-signingImageFormat,
+platform_id,
+revocation_supported,
+signing_configuration,
+signing_image_format,
 target
 FROM aws.signer.signing_platforms
 WHERE platform_id = '{{ platform_id }}' -- required
@@ -279,13 +279,13 @@ Lists all signing platforms available in AWS Signer that match the request param
 ```sql
 SELECT
 category,
-displayName,
-maxSizeInMB,
+display_name,
+max_size_in_mb,
 partner,
-platformId,
-revocationSupported,
-signingConfiguration,
-signingImageFormat,
+platform_id,
+revocation_supported,
+signing_configuration,
+signing_image_format,
 target
 FROM aws.signer.signing_platforms
 WHERE region = '{{ region }}' -- required

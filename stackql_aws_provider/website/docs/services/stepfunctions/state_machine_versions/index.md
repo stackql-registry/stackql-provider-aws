@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineVersions" /></td>
+    <td><CopyableCode code="state_machine_versions" /></td>
     <td><code>array</code></td>
     <td>Versions for the state machine.</td>
 </tr>
@@ -131,8 +131,8 @@ Lists versions for the specified state machine Amazon Resource Name (ARN). The r
 
 ```sql
 SELECT
-nextToken,
-stateMachineVersions
+next_token,
+state_machine_versions
 FROM aws.stepfunctions.state_machine_versions
 WHERE region = '{{ region }}' -- required
 ;

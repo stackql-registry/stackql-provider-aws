@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Address" /></td>
+    <td><CopyableCode code="address" /></td>
     <td><code>string</code></td>
     <td>The DNS address of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The cluster identifier of the cluster associated with the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointCreateTime" /></td>
+    <td><CopyableCode code="endpoint_create_time" /></td>
     <td><code>string</code></td>
     <td>The time (UTC) that the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointStatus" /></td>
+    <td><CopyableCode code="endpoint_status" /></td>
     <td><code>string</code></td>
     <td>The status of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port number on which the cluster accepts incoming connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroupName" /></td>
+    <td><CopyableCode code="subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The subnet group name where Amazon Redshift chooses to deploy the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpoint" /></td>
+    <td><CopyableCode code="vpc_endpoint" /></td>
     <td><code>string</code></td>
     <td>The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>string</code></td>
     <td>The security groups associated with the endpoint.</td>
 </tr>
@@ -264,16 +264,16 @@ Describes a Redshift-managed VPC endpoint.
 
 ```sql
 SELECT
-Address,
-ClusterIdentifier,
-EndpointCreateTime,
-EndpointName,
-EndpointStatus,
-Port,
-ResourceOwner,
-SubnetGroupName,
-VpcEndpoint,
-VpcSecurityGroups
+address,
+cluster_identifier,
+endpoint_create_time,
+endpoint_name,
+endpoint_status,
+port,
+resource_owner,
+subnet_group_name,
+vpc_endpoint,
+vpc_security_groups
 FROM aws.redshift.endpoint_access
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'
@@ -318,16 +318,16 @@ SELECT
 '{{ ResourceOwner }}',
 '{{ VpcSecurityGroupIds }}'
 RETURNING
-Address,
-ClusterIdentifier,
-EndpointCreateTime,
-EndpointName,
-EndpointStatus,
-Port,
-ResourceOwner,
-SubnetGroupName,
-VpcEndpoint,
-VpcSecurityGroups
+address,
+cluster_identifier,
+endpoint_create_time,
+endpoint_name,
+endpoint_status,
+port,
+resource_owner,
+subnet_group_name,
+vpc_endpoint,
+vpc_security_groups
 ;
 ```
 </TabItem>
@@ -387,15 +387,15 @@ AND region = '{{ region }}' --required
 AND ClusterIdentifier = '{{ ClusterIdentifier}}'
 AND VpcIds = '{{ VpcIds}}'
 RETURNING
-AllowedAllVPCs,
-AllowedVPCs,
-AuthorizeTime,
-ClusterIdentifier,
-ClusterStatus,
-EndpointCount,
-Grantee,
-Grantor,
-Status;
+allowed_all_vpcs,
+allowed_vpcs,
+authorize_time,
+cluster_identifier,
+cluster_status,
+endpoint_count,
+grantee,
+grantor,
+status;
 ```
 </TabItem>
 <TabItem value="modify_endpoint_access">
@@ -411,16 +411,16 @@ EndpointName = '{{ EndpointName }}' --required
 AND region = '{{ region }}' --required
 AND VpcSecurityGroupIds = '{{ VpcSecurityGroupIds}}'
 RETURNING
-Address,
-ClusterIdentifier,
-EndpointCreateTime,
-EndpointName,
-EndpointStatus,
-Port,
-ResourceOwner,
-SubnetGroupName,
-VpcEndpoint,
-VpcSecurityGroups;
+address,
+cluster_identifier,
+endpoint_create_time,
+endpoint_name,
+endpoint_status,
+port,
+resource_owner,
+subnet_group_name,
+vpc_endpoint,
+vpc_security_groups;
 ```
 </TabItem>
 <TabItem value="revoke_endpoint_access">
@@ -438,15 +438,15 @@ AND Account = '{{ Account}}'
 AND VpcIds = '{{ VpcIds}}'
 AND Force = {{ Force}}
 RETURNING
-AllowedAllVPCs,
-AllowedVPCs,
-AuthorizeTime,
-ClusterIdentifier,
-ClusterStatus,
-EndpointCount,
-Grantee,
-Grantor,
-Status;
+allowed_all_vpcs,
+allowed_vpcs,
+authorize_time,
+cluster_identifier,
+cluster_status,
+endpoint_count,
+grantee,
+grantor,
+status;
 ```
 </TabItem>
 </Tabs>

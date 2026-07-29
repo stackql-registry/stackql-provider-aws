@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the message template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultSubstitutions" /></td>
+    <td><CopyableCode code="default_substitutions" /></td>
     <td><code>string</code></td>
     <td>The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Headers" /></td>
+    <td><CopyableCode code="headers" /></td>
     <td><code>array</code></td>
     <td>The list of MessageHeaders for the email. You can have up to 15 Headers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HtmlPart" /></td>
+    <td><CopyableCode code="html_part" /></td>
     <td><code>string</code></td>
     <td>The message body, in HTML format, that's used in email messages that are based on the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the message template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderId" /></td>
+    <td><CopyableCode code="recommender_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the recommender model that's used by the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subject" /></td>
+    <td><CopyableCode code="subject" /></td>
     <td><code>string</code></td>
     <td>The subject line, or title, that's used in email messages that are based on the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateDescription" /></td>
+    <td><CopyableCode code="template_description" /></td>
     <td><code>string</code></td>
     <td>The custom description of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The type of channel that the message template is designed for. For an email template, this value is EMAIL. (EMAIL, SMS, VOICE, PUSH, INAPP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TextPart" /></td>
+    <td><CopyableCode code="text_part" /></td>
     <td><code>string</code></td>
     <td>The message body, in plain text format, that's used in email messages that are based on the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.</td>
 </tr>
@@ -220,19 +220,19 @@ Retrieves the content and settings of a message template for messages that are s
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-DefaultSubstitutions,
-Headers,
-HtmlPart,
-LastModifiedDate,
-RecommenderId,
-Subject,
-TemplateDescription,
-TemplateName,
-TemplateType,
-TextPart,
-Version,
+arn,
+creation_date,
+default_substitutions,
+headers,
+html_part,
+last_modified_date,
+recommender_id,
+subject,
+template_description,
+template_name,
+template_type,
+text_part,
+version,
 tags
 FROM aws.pinpoint.email_templates
 WHERE `template-name` = '{{ template-name }}' -- required
@@ -268,7 +268,7 @@ SELECT
 '{{ template-name }}',
 '{{ region }}'
 RETURNING
-CreateTemplateMessageBody
+create_template_message_body
 ;
 ```
 </TabItem>
@@ -326,7 +326,7 @@ AND EmailTemplateRequest = '{{ EmailTemplateRequest }}' --required
 AND `create-new-version` = {{ create-new-version}}
 AND version = '{{ version}}'
 RETURNING
-MessageBody;
+message_body;
 ```
 </TabItem>
 </Tabs>

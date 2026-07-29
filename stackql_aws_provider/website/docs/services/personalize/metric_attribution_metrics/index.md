@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The metric's event type.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The attribute's expression. Available functions are SUM() or SAMPLECOUNT(). For SUM() functions, provide the dataset type (either Interactions or Items) and column to sum as a parameter. For example SUM(Items.PRICE).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The metric's name. The name helps you identify the metric in Amazon CloudWatch or Amazon S3.</td>
 </tr>
@@ -129,9 +129,9 @@ Lists the metrics for the metric attribution.
 
 ```sql
 SELECT
-eventType,
+event_type,
 expression,
-metricName
+metric_name
 FROM aws.personalize.metric_attribution_metrics
 WHERE region = '{{ region }}' -- required
 ;

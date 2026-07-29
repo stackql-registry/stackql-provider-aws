@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoUpdateStartDate" /></td>
+    <td><CopyableCode code="auto_update_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date at which the service update will be automatically applied</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster to which the service update applies</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Provides details of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the engine for which a service update is available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodesUpdated" /></td>
+    <td><CopyableCode code="nodes_updated" /></td>
     <td><code>string</code></td>
     <td>A list of nodes updated by the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReleaseDate" /></td>
+    <td><CopyableCode code="release_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the service update is initially available</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateName" /></td>
+    <td><CopyableCode code="service_update_name" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the service update (available, in-progress, complete, scheduled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Reflects the nature of the service update (security-update)</td>
 </tr>
@@ -159,15 +159,15 @@ Returns details of the service updates.
 
 ```sql
 SELECT
-AutoUpdateStartDate,
-ClusterName,
-Description,
-Engine,
-NodesUpdated,
-ReleaseDate,
-ServiceUpdateName,
-Status,
-Type
+auto_update_start_date,
+cluster_name,
+description,
+engine,
+nodes_updated,
+release_date,
+service_update_name,
+status,
+type
 FROM aws.memorydb.service_updates
 WHERE region = '{{ region }}' -- required
 ;

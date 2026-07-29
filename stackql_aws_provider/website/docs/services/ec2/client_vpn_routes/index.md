@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientVpnEndpointId" /></td>
+    <td><CopyableCode code="client_vpn_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Client VPN endpoint with which the route is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A brief description of the route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationCidr" /></td>
+    <td><CopyableCode code="destination_cidr" /></td>
     <td><code>string</code></td>
     <td>The IPv4 address range, in CIDR notation, of the route destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Origin" /></td>
+    <td><CopyableCode code="origin" /></td>
     <td><code>string</code></td>
     <td>Indicates how the route was associated with the Client VPN endpoint. associate indicates that the route was automatically added when the target network was associated with the Client VPN endpoint. add-route indicates that the route was manually added using the CreateClientVpnRoute action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the route.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetSubnet" /></td>
+    <td><CopyableCode code="target_subnet" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet through which traffic is routed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Transit Gateway attachment, if the route targets a Transit Gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The route type.</td>
 </tr>
@@ -213,14 +213,14 @@ Describes the routes for the specified Client VPN endpoint.
 
 ```sql
 SELECT
-ClientVpnEndpointId,
-Description,
-DestinationCidr,
-Origin,
-Status,
-TargetSubnet,
-TransitGatewayAttachmentId,
-Type
+client_vpn_endpoint_id,
+description,
+destination_cidr,
+origin,
+status,
+target_subnet,
+transit_gateway_attachment_id,
+type
 FROM aws.ec2.client_vpn_routes
 WHERE ClientVpnEndpointId = '{{ ClientVpnEndpointId }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,8 +266,8 @@ SELECT
 '{{ ClientToken }}',
 '{{ DryRun }}'
 RETURNING
-Code,
-Message
+code,
+message
 ;
 ```
 </TabItem>

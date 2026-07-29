@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GrantTime" /></td>
+    <td><CopyableCode code="grant_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Qualification was granted to the Worker. If the Worker's Qualification was revoked, and then re-granted based on a new Qualification request, GrantTime is the date and time of the last call to the AcceptQualificationRequest operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegerValue" /></td>
+    <td><CopyableCode code="integer_value" /></td>
     <td><code>integer</code></td>
     <td>The value (score) of the Qualification, if the Qualification has an integer value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocaleValue" /></td>
+    <td><CopyableCode code="locale_value" /></td>
     <td><code>object</code></td>
     <td>The Locale data structure represents a geographical region or location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualificationTypeId" /></td>
+    <td><CopyableCode code="qualification_type_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Qualification type for the Qualification. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Qualification. Valid values are Granted | Revoked. (Granted, Revoked)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Worker who possesses the Qualification. (pattern: &lt;code&gt;^A&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ The ListWorkersWithQualificationType operation returns all of the Workers that h
 
 ```sql
 SELECT
-GrantTime,
-IntegerValue,
-LocaleValue,
-QualificationTypeId,
-Status,
-WorkerId
+grant_time,
+integer_value,
+locale_value,
+qualification_type_id,
+status,
+worker_id
 FROM aws.mturk.workers_with_qualification_types
 WHERE region = '{{ region }}' -- required
 ;

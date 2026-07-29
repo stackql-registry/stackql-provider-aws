@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the domain. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetSizeBytes" /></td>
+    <td><CopyableCode code="asset_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total size of all assets in the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that represents the date and time the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>The ARN of an Key Management Service (KMS) key associated with a domain. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services account ID that owns the domain. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryCount" /></td>
+    <td><CopyableCode code="repository_count" /></td>
     <td><code>integer</code></td>
     <td>The number of repositories in the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3BucketArn" /></td>
+    <td><CopyableCode code="s_3_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon S3 bucket that is used to store package assets in the domain. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the domain. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that contains the date and time the domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionKey" /></td>
+    <td><CopyableCode code="encryption_key" /></td>
     <td><code>string</code></td>
     <td>The key used to encrypt the domain. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -238,12 +238,12 @@ Returns a DomainDescription object that contains information about the requested
 SELECT
 name,
 arn,
-assetSizeBytes,
-createdTime,
-encryptionKey,
+asset_size_bytes,
+created_time,
+encryption_key,
 owner,
-repositoryCount,
-s3BucketArn,
+repository_count,
+s_3_bucket_arn,
 status
 FROM aws.codeartifact.domains
 WHERE domain = '{{ domain }}' -- required
@@ -260,8 +260,8 @@ Returns a list of DomainSummary objects for all domains owned by the Amazon Web 
 SELECT
 name,
 arn,
-createdTime,
-encryptionKey,
+created_time,
+encryption_key,
 owner,
 status
 FROM aws.codeartifact.domains

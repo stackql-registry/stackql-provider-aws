@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
     <td>The display name of the registered service. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;P&#125;\p&#123;S&#125;\p&#123;Z&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessibleResources" /></td>
+    <td><CopyableCode code="accessible_resources" /></td>
     <td><code>array</code></td>
     <td>List of accessible resources for this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="additionalServiceDetails" /></td>
+    <td><CopyableCode code="additional_service_details" /></td>
     <td><code>object</code></td>
     <td>Additional details specific to the service type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AWS Key Management Service (AWS KMS) customer managed key that's used to encrypt resources. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:kms:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="privateConnectionName" /></td>
+    <td><CopyableCode code="private_connection_name" /></td>
     <td><code>string</code></td>
     <td>Unique name for a Private Connection within an account. (pattern: &lt;code&gt;&#91;a-z0-9&#93;(&#91;a-z0-9-&#93;*&#91;a-z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a registered service (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceType" /></td>
+    <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>The service type e.g github or dynatrace (github, slack, azure, azuredevops, dynatrace, servicenow, pagerduty, gitlab, eventChannel, mcpservernewrelic, mcpservergrafana, mcpserverdatadog, mcpserver, mcpserversplunk, azureidentity)</td>
 </tr>
@@ -260,12 +260,12 @@ List a list of registered service on the account level.
 ```sql
 SELECT
 name,
-accessibleResources,
-additionalServiceDetails,
-kmsKeyArn,
-privateConnectionName,
-serviceId,
-serviceType
+accessible_resources,
+additional_service_details,
+kms_key_arn,
+private_connection_name,
+service_id,
+service_type
 FROM aws.devops_agent.services
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -309,9 +309,9 @@ SELECT
 '{{ service }}',
 '{{ region }}'
 RETURNING
-additionalStep,
-kmsKeyArn,
-serviceId,
+additional_step,
+kms_key_arn,
+service_id,
 tags
 ;
 ```

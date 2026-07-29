@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Address" /></td>
+    <td><CopyableCode code="address" /></td>
     <td><code>string</code></td>
     <td>The address that Amazon Web Services sends budget notifications to, either an SNS topic or an email. When you create a subscriber, the value of Address can't contain line breaks. (pattern: &lt;code&gt;(.*&#91;\n\r\t\f\ &#93;?)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionType" /></td>
+    <td><CopyableCode code="subscription_type" /></td>
     <td><code>string</code></td>
     <td>The type of notification that Amazon Web Services sends to a subscriber. (SNS, EMAIL)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the subscribers that are associated with a notification.
 
 ```sql
 SELECT
-Address,
-SubscriptionType
+address,
+subscription_type
 FROM aws.budgets.subscribers_for_notifications
 WHERE region = '{{ region }}' -- required
 ;

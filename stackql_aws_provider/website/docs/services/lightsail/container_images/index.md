@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="containerImages" /></td>
+    <td><CopyableCode code="container_images" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe container images that are registered to the container service.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns the container images that are registered to your Amazon Lightsail contai
 
 ```sql
 SELECT
-containerImages
+container_images
 FROM aws.lightsail.container_images
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,7 +168,7 @@ SELECT
 '{{ digest }}' /* required */,
 '{{ region }}'
 RETURNING
-containerImage
+container_image
 ;
 ```
 </TabItem>

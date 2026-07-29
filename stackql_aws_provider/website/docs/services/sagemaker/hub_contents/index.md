@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that hub content was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentSchemaVersion" /></td>
+    <td><CopyableCode code="document_schema_version" /></td>
     <td><code>string</code></td>
     <td>The document schema version for the hub content. (pattern: &lt;code&gt;\d&#123;1,4&#125;.\d&#123;1,4&#125;.\d&#123;1,4&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason if importing hub content failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubArn" /></td>
+    <td><CopyableCode code="hub_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hub that contains the content. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentArn" /></td>
+    <td><CopyableCode code="hub_content_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hub content. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentDependencies" /></td>
+    <td><CopyableCode code="hub_content_dependencies" /></td>
     <td><code>array</code></td>
     <td>The location of any dependencies that the hub content has, such as scripts, model artifacts, datasets, or notebooks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentDescription" /></td>
+    <td><CopyableCode code="hub_content_description" /></td>
     <td><code>string</code></td>
     <td>A description of the hub content. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentDisplayName" /></td>
+    <td><CopyableCode code="hub_content_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the hub content. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentDocument" /></td>
+    <td><CopyableCode code="hub_content_document" /></td>
     <td><code>string</code></td>
     <td>The hub content document that describes information about the hub content such as type, associated containers, scripts, and more. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentMarkdown" /></td>
+    <td><CopyableCode code="hub_content_markdown" /></td>
     <td><code>string</code></td>
     <td>A string that provides a description of the hub content. This string can include links, tables, and standard markdown formating.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentName" /></td>
+    <td><CopyableCode code="hub_content_name" /></td>
     <td><code>string</code></td>
     <td>The name of the hub content. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentSearchKeywords" /></td>
+    <td><CopyableCode code="hub_content_search_keywords" /></td>
     <td><code>array</code></td>
     <td>The searchable keywords for the hub content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentStatus" /></td>
+    <td><CopyableCode code="hub_content_status" /></td>
     <td><code>string</code></td>
     <td>The status of the hub content. (Available, Importing, Deleting, ImportFailed, DeleteFailed, PendingImport, PendingDelete)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentType" /></td>
+    <td><CopyableCode code="hub_content_type" /></td>
     <td><code>string</code></td>
     <td>The type of hub content. (Model, Notebook, ModelReference, DataSet, JsonDoc)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubContentVersion" /></td>
+    <td><CopyableCode code="hub_content_version" /></td>
     <td><code>string</code></td>
     <td>The version of the hub content. (pattern: &lt;code&gt;\d&#123;1,4&#125;.\d&#123;1,4&#125;.\d&#123;1,4&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubName" /></td>
+    <td><CopyableCode code="hub_name" /></td>
     <td><code>string</code></td>
     <td>The name of the hub that contains the content. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of the hub content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferenceMinVersion" /></td>
+    <td><CopyableCode code="reference_min_version" /></td>
     <td><code>string</code></td>
     <td>The minimum version of the hub content. (pattern: &lt;code&gt;\d&#123;1,4&#125;.\d&#123;1,4&#125;.\d&#123;1,4&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SageMakerPublicHubContentArn" /></td>
+    <td><CopyableCode code="sage_maker_public_hub_content_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the public hub content. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:sagemaker:\w+(?:-\w+)+:aws:hub-content\/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;\/Model\/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportStatus" /></td>
+    <td><CopyableCode code="support_status" /></td>
     <td><code>string</code></td>
     <td>The support status of the hub content. (Supported, Deprecated, Restricted)</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HubContentSummaries" /></td>
+    <td><CopyableCode code="hub_content_summaries" /></td>
     <td><code>array</code></td>
     <td>The summaries of the listed hub content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, SageMaker returns this token. To retrieve the next set of hub content, use it in the subsequent request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -289,26 +289,26 @@ Describe the content of a hub.
 
 ```sql
 SELECT
-CreationTime,
-DocumentSchemaVersion,
-FailureReason,
-HubArn,
-HubContentArn,
-HubContentDependencies,
-HubContentDescription,
-HubContentDisplayName,
-HubContentDocument,
-HubContentMarkdown,
-HubContentName,
-HubContentSearchKeywords,
-HubContentStatus,
-HubContentType,
-HubContentVersion,
-HubName,
-LastModifiedTime,
-ReferenceMinVersion,
-SageMakerPublicHubContentArn,
-SupportStatus
+creation_time,
+document_schema_version,
+failure_reason,
+hub_arn,
+hub_content_arn,
+hub_content_dependencies,
+hub_content_description,
+hub_content_display_name,
+hub_content_document,
+hub_content_markdown,
+hub_content_name,
+hub_content_search_keywords,
+hub_content_status,
+hub_content_type,
+hub_content_version,
+hub_name,
+last_modified_time,
+reference_min_version,
+sage_maker_public_hub_content_arn,
+support_status
 FROM aws.sagemaker.hub_contents
 WHERE region = '{{ region }}' -- required
 ;
@@ -320,8 +320,8 @@ List the contents of a hub.
 
 ```sql
 SELECT
-HubContentSummaries,
-NextToken
+hub_content_summaries,
+next_token
 FROM aws.sagemaker.hub_contents
 WHERE region = '{{ region }}' -- required
 ;
@@ -365,8 +365,8 @@ SELECT
 '{{ NextToken }}',
 '{{ region }}'
 RETURNING
-AuthorizedUrlConfigs,
-NextToken
+authorized_url_configs,
+next_token
 ;
 ```
 </TabItem>
@@ -391,8 +391,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-HubArn,
-HubContentArn
+hub_arn,
+hub_content_arn
 ;
 ```
 </TabItem>
@@ -487,8 +487,8 @@ AND HubContentName = '{{ HubContentName }}' --required
 AND HubContentType = '{{ HubContentType }}' --required
 AND HubContentVersion = '{{ HubContentVersion }}' --required
 RETURNING
-HubArn,
-HubContentArn;
+hub_arn,
+hub_content_arn;
 ```
 </TabItem>
 <TabItem value="update_hub_content_reference">
@@ -508,8 +508,8 @@ AND HubName = '{{ HubName }}' --required
 AND HubContentName = '{{ HubContentName }}' --required
 AND HubContentType = '{{ HubContentType }}' --required
 RETURNING
-HubArn,
-HubContentArn;
+hub_arn,
+hub_content_arn;
 ```
 </TabItem>
 </Tabs>

@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the data product is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the data product.</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain where the data product lives. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstRevisionCreatedAt" /></td>
+    <td><CopyableCode code="first_revision_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the first revision of the data product is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="firstRevisionCreatedBy" /></td>
+    <td><CopyableCode code="first_revision_created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the first revision of the data product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formsOutput" /></td>
+    <td><CopyableCode code="forms_output" /></td>
     <td><code>array</code></td>
     <td>The metadata forms of the data product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="glossaryTerms" /></td>
+    <td><CopyableCode code="glossary_terms" /></td>
     <td><code>array</code></td>
     <td>The glossary terms of the data product.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The data assets of the data product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the owning project of the data product. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -215,16 +215,16 @@ Gets the data product. Prerequisites: The data product ID must exist. The domain
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-firstRevisionCreatedAt,
-firstRevisionCreatedBy,
-formsOutput,
-glossaryTerms,
+domain_id,
+first_revision_created_at,
+first_revision_created_by,
+forms_output,
+glossary_terms,
 items_,
-owningProjectId,
+owning_project_id,
 revision,
 status
 FROM aws.datazone.data_products
@@ -276,16 +276,16 @@ SELECT
 RETURNING
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-firstRevisionCreatedAt,
-firstRevisionCreatedBy,
-formsOutput,
-glossaryTerms,
+domain_id,
+first_revision_created_at,
+first_revision_created_by,
+forms_output,
+glossary_terms,
 items_,
-owningProjectId,
+owning_project_id,
 revision,
 status
 ;

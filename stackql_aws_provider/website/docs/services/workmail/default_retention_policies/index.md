@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The retention policy description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FolderConfigurations" /></td>
+    <td><CopyableCode code="folder_configurations" /></td>
     <td><code>array</code></td>
     <td>The retention policy folder configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The retention policy ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The retention policy name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Gets the default retention policy details for the specified organization.
 
 ```sql
 SELECT
-Description,
-FolderConfigurations,
-Id,
-Name
+description,
+folder_configurations,
+id,
+name
 FROM aws.workmail.default_retention_policies
 WHERE region = '{{ region }}' -- required
 ;

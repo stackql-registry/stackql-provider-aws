@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agreementCancellationRequestId" /></td>
+    <td><CopyableCode code="agreement_cancellation_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the cancellation request. (pattern: &lt;code&gt;acr-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement associated with this cancellation request. Use DescribeAgreement to retrieve full agreement details. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the cancellation request was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The detailed description of the cancellation reason, if provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reasonCode" /></td>
+    <td><CopyableCode code="reason_code" /></td>
     <td><code>string</code></td>
     <td>The reason code provided for the cancellation. (INCORRECT_TERMS_ACCEPTED, REPLACING_AGREEMENT, TEST_AGREEMENT, ALTERNATIVE_PROCUREMENT_CHANNEL, PRODUCT_DISCONTINUED, UNINTENDED_RENEWAL, BUYER_DISSATISFACTION, OTHER)</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the cancellation request. (PENDING_APPROVAL, APPROVED, REJECTED, CANCELLED, VALIDATION_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message providing additional context about the cancellation request status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the cancellation request was last updated.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agreementCancellationRequestId" /></td>
+    <td><CopyableCode code="agreement_cancellation_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the cancellation request. (pattern: &lt;code&gt;acr-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementId" /></td>
+    <td><CopyableCode code="agreement_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agreement associated with this cancellation request. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agreementType" /></td>
+    <td><CopyableCode code="agreement_type" /></td>
     <td><code>string</code></td>
     <td>The type of agreement. (pattern: &lt;code&gt;&#91;A-Za-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The catalog in which the agreement was created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the cancellation request was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reasonCode" /></td>
+    <td><CopyableCode code="reason_code" /></td>
     <td><code>string</code></td>
     <td>The reason code provided for the cancellation. (INCORRECT_TERMS_ACCEPTED, REPLACING_AGREEMENT, TEST_AGREEMENT, ALTERNATIVE_PROCUREMENT_CHANNEL, PRODUCT_DISCONTINUED, UNINTENDED_RENEWAL, BUYER_DISSATISFACTION, OTHER)</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the cancellation request. Possible values include PENDING_APPROVAL, APPROVED, REJECTED, CANCELLED, and VALIDATION_FAILED. (PENDING_APPROVAL, APPROVED, REJECTED, CANCELLED, VALIDATION_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the cancellation request was last updated.</td>
 </tr>
@@ -217,14 +217,14 @@ Retrieves detailed information about a specific agreement cancellation request. 
 
 ```sql
 SELECT
-agreementCancellationRequestId,
-agreementId,
-createdAt,
+agreement_cancellation_request_id,
+agreement_id,
+created_at,
 description,
-reasonCode,
+reason_code,
 status,
-statusMessage,
-updatedAt
+status_message,
+updated_at
 FROM aws.marketplace_agreement.agreement_cancellation_requests
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,14 +236,14 @@ Lists agreement cancellation requests available to you as a seller or buyer. Bot
 
 ```sql
 SELECT
-agreementCancellationRequestId,
-agreementId,
-agreementType,
+agreement_cancellation_request_id,
+agreement_id,
+agreement_type,
 catalog,
-createdAt,
-reasonCode,
+created_at,
+reason_code,
 status,
-updatedAt
+updated_at
 FROM aws.marketplace_agreement.agreement_cancellation_requests
 WHERE region = '{{ region }}' -- required
 ;

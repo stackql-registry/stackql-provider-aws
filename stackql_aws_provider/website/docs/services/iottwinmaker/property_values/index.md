@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propertyValues" /></td>
+    <td><CopyableCode code="property_values" /></td>
     <td><code>object</code></td>
     <td>An object that maps strings to the properties and latest property values in the response. Each string in the mapping must be unique to this object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tabularPropertyValues" /></td>
+    <td><CopyableCode code="tabular_property_values" /></td>
     <td><code>array</code></td>
     <td>A table of property values.</td>
 </tr>
@@ -141,9 +141,9 @@ Gets the property values for a component, component type, entity, or workspace. 
 
 ```sql
 SELECT
-nextToken,
-propertyValues,
-tabularPropertyValues
+next_token,
+property_values,
+tabular_property_values
 FROM aws.iottwinmaker.property_values
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required

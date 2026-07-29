@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>ImportTask arn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string</code></td>
     <td>Import task creation datetime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endDateTime" /></td>
+    <td><CopyableCode code="end_date_time" /></td>
     <td><code>string</code></td>
     <td>Import task end datetime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importID" /></td>
+    <td><CopyableCode code="import_id" /></td>
     <td><code>string</code></td>
     <td>Import task id. (pattern: &lt;code&gt;import-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="progressPercentage" /></td>
+    <td><CopyableCode code="progress_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>Import task progress percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3BucketSource" /></td>
+    <td><CopyableCode code="s_3_bucket_source" /></td>
     <td><code>object</code></td>
     <td>Import task s3 bucket source.</td>
 </tr>
@@ -167,11 +167,11 @@ List imports.
 ```sql
 SELECT
 arn,
-creationDateTime,
-endDateTime,
-importID,
-progressPercentage,
-s3BucketSource,
+creation_date_time,
+end_date_time,
+import_id,
+progress_percentage,
+s_3_bucket_source,
 status,
 summary,
 tags

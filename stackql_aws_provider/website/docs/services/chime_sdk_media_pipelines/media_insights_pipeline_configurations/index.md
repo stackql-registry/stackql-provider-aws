@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Elements" /></td>
+    <td><CopyableCode code="elements" /></td>
     <td><code>array</code></td>
     <td>The elements in the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaInsightsPipelineConfigurationArn" /></td>
+    <td><CopyableCode code="media_insights_pipeline_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the configuration. (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaInsightsPipelineConfigurationId" /></td>
+    <td><CopyableCode code="media_insights_pipeline_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the configuration. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaInsightsPipelineConfigurationName" /></td>
+    <td><CopyableCode code="media_insights_pipeline_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RealTimeAlertConfiguration" /></td>
+    <td><CopyableCode code="real_time_alert_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the configuration settings for real-time alerts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceAccessRoleArn" /></td>
+    <td><CopyableCode code="resource_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role used by the service to access Amazon Web Services resources. (pattern: &lt;code&gt;^arn&#91;\/\:\-\_\.a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration was last updated.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MediaInsightsPipelineConfigurations" /></td>
+    <td><CopyableCode code="media_insights_pipeline_configurations" /></td>
     <td><code>array</code></td>
     <td>The requested list of media insights pipeline configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to return the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -230,14 +230,14 @@ Gets the configuration settings for a media insights pipeline.
 
 ```sql
 SELECT
-CreatedTimestamp,
-Elements,
-MediaInsightsPipelineConfigurationArn,
-MediaInsightsPipelineConfigurationId,
-MediaInsightsPipelineConfigurationName,
-RealTimeAlertConfiguration,
-ResourceAccessRoleArn,
-UpdatedTimestamp
+created_timestamp,
+elements,
+media_insights_pipeline_configuration_arn,
+media_insights_pipeline_configuration_id,
+media_insights_pipeline_configuration_name,
+real_time_alert_configuration,
+resource_access_role_arn,
+updated_timestamp
 FROM aws.chime_sdk_media_pipelines.media_insights_pipeline_configurations
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -250,8 +250,8 @@ Lists the available media insights pipeline configurations.
 
 ```sql
 SELECT
-MediaInsightsPipelineConfigurations,
-NextToken
+media_insights_pipeline_configurations,
+next_token
 FROM aws.chime_sdk_media_pipelines.media_insights_pipeline_configurations
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -295,7 +295,7 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-MediaInsightsPipelineConfiguration
+media_insights_pipeline_configuration
 ;
 ```
 </TabItem>
@@ -324,7 +324,7 @@ SELECT
 '{{ ClientRequestToken }}',
 '{{ region }}'
 RETURNING
-MediaInsightsPipeline
+media_insights_pipeline
 ;
 ```
 </TabItem>
@@ -486,7 +486,7 @@ AND region = '{{ region }}' --required
 AND ResourceAccessRoleArn = '{{ ResourceAccessRoleArn }}' --required
 AND Elements = '{{ Elements }}' --required
 RETURNING
-MediaInsightsPipelineConfiguration;
+media_insights_pipeline_configuration;
 ```
 </TabItem>
 </Tabs>

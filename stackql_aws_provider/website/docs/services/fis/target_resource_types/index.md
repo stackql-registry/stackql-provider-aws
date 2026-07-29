@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The parameters for the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the resource type. (pattern: &lt;code&gt;&#91;\s\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -179,7 +179,7 @@ Gets information about the specified resource type.
 SELECT
 description,
 parameters,
-resourceType
+resource_type
 FROM aws.fis.target_resource_types
 WHERE resource_type = '{{ resource_type }}' -- required
 AND region = '{{ region }}' -- required
@@ -193,7 +193,7 @@ Lists the target resource types.
 ```sql
 SELECT
 description,
-resourceType
+resource_type
 FROM aws.fis.target_resource_types
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

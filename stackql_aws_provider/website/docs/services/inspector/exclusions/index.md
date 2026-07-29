@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the exclusions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedItems" /></td>
+    <td><CopyableCode code="failed_items" /></td>
     <td><code>object</code></td>
     <td>Exclusion details that cannot be described. An error code is provided for each failed item.</td>
 </tr>
@@ -153,7 +153,7 @@ Describes the exclusions that are specified by the exclusions' ARNs.
 ```sql
 SELECT
 exclusions,
-failedItems
+failed_items
 FROM aws.inspector.exclusions
 WHERE region = '{{ region }}' -- required
 ;

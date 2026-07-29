@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the campaign. (pattern: &lt;code&gt;arn:aws:iotfleetwise:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:campaign/&#91;a-zA-Z\d\-_:&#93;&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collectionScheme" /></td>
+    <td><CopyableCode code="collection_scheme" /></td>
     <td><code>object</code></td>
     <td>Information about the data collection scheme associated with the campaign.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>Whether to compress signals before transmitting data to Amazon Web Services IoT FleetWise. If OFF is specified, the signals aren't compressed. If it's not specified, SNAPPY is used. (OFF, SNAPPY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the campaign was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataDestinationConfigs" /></td>
+    <td><CopyableCode code="data_destination_configs" /></td>
     <td><code>array</code></td>
     <td>The destination where the campaign sends data. You can send data to an MQTT topic, or store it in Amazon S3 or Amazon Timestream. MQTT is the publish/subscribe messaging protocol used by Amazon Web Services IoT to communicate with your devices. Amazon S3 optimizes the cost of data storage and provides additional mechanisms to use vehicle data, such as data lakes, centralized data storage, data processing pipelines, and analytics. You can use Amazon Timestream to access and analyze time series data, and Timestream to query vehicle data so that you can identify trends and patterns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataExtraDimensions" /></td>
+    <td><CopyableCode code="data_extra_dimensions" /></td>
     <td><code>array</code></td>
     <td>A list of vehicle attributes associated with the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataPartitions" /></td>
+    <td><CopyableCode code="data_partitions" /></td>
     <td><code>array</code></td>
     <td>The data partitions associated with the signals collected from the vehicle.</td>
 </tr>
@@ -96,22 +96,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the campaign. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="diagnosticsMode" /></td>
+    <td><CopyableCode code="diagnostics_mode" /></td>
     <td><code>string</code></td>
     <td>Option for a vehicle to send diagnostic trouble codes to Amazon Web Services IoT FleetWise. (OFF, SEND_ACTIVE_DTCS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiryTime" /></td>
+    <td><CopyableCode code="expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the campaign expires, in seconds since epoch (January 1, 1970 at midnight UTC time). Vehicle data won't be collected after the campaign expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the campaign was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postTriggerCollectionDuration" /></td>
+    <td><CopyableCode code="post_trigger_collection_duration" /></td>
     <td><code>integer (int64)</code></td>
     <td>How long (in seconds) to collect raw data after a triggering event initiates the collection.</td>
 </tr>
@@ -121,27 +121,27 @@ The following fields are returned by `SELECT` queries:
     <td>A number indicating the priority of one campaign over another campaign for a certain vehicle or fleet. A campaign with the lowest value is deployed to vehicles before any other campaigns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a signal catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalsToCollect" /></td>
+    <td><CopyableCode code="signals_to_collect" /></td>
     <td><code>array</code></td>
     <td>Information about a list of signals to collect data on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalsToFetch" /></td>
+    <td><CopyableCode code="signals_to_fetch" /></td>
     <td><code>array</code></td>
     <td>Information about a list of signals to fetch data from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spoolingMode" /></td>
+    <td><CopyableCode code="spooling_mode" /></td>
     <td><code>string</code></td>
     <td>Whether to store collected data after a vehicle lost a connection with the cloud. After a connection is re-established, the data is automatically forwarded to Amazon Web Services IoT FleetWise. (OFF, TO_DISK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in milliseconds, to deliver a campaign after it was approved.</td>
 </tr>
@@ -151,7 +151,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the campaign. The status can be one of: CREATING, WAITING_FOR_APPROVAL, RUNNING, and SUSPENDED. (CREATING, WAITING_FOR_APPROVAL, RUNNING, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the vehicle or the fleet targeted by the campaign.</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of a campaign. (pattern: &lt;code&gt;arn:aws:iotfleetwise:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:campaign/&#91;a-zA-Z\d\-_:&#93;&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the campaign was created.</td>
 </tr>
@@ -190,12 +190,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the campaign. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the campaign was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalCatalogArn" /></td>
+    <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the signal catalog associated with the campaign.</td>
 </tr>
@@ -205,7 +205,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of a campaign. The status can be one of the following: CREATING - Amazon Web Services IoT FleetWise is processing your request to create the campaign. WAITING_FOR_APPROVAL - After a campaign is created, it enters the WAITING_FOR_APPROVAL state. To allow Amazon Web Services IoT FleetWise to deploy the campaign to the target vehicle or fleet, use the API operation to approve the campaign. RUNNING - The campaign is active. SUSPENDED - The campaign is suspended. To resume the campaign, use the API operation. (CREATING, WAITING_FOR_APPROVAL, RUNNING, SUSPENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a vehicle or fleet to which the campaign is deployed.</td>
 </tr>
@@ -305,25 +305,25 @@ Retrieves information about a campaign. Access to certain Amazon Web Services Io
 SELECT
 name,
 arn,
-collectionScheme,
+collection_scheme,
 compression,
-creationTime,
-dataDestinationConfigs,
-dataExtraDimensions,
-dataPartitions,
+creation_time,
+data_destination_configs,
+data_extra_dimensions,
+data_partitions,
 description,
-diagnosticsMode,
-expiryTime,
-lastModificationTime,
-postTriggerCollectionDuration,
+diagnostics_mode,
+expiry_time,
+last_modification_time,
+post_trigger_collection_duration,
 priority,
-signalCatalogArn,
-signalsToCollect,
-signalsToFetch,
-spoolingMode,
-startTime,
+signal_catalog_arn,
+signals_to_collect,
+signals_to_fetch,
+spooling_mode,
+start_time,
 status,
-targetArn
+target_arn
 FROM aws.iotfleetwise.campaigns
 WHERE region = '{{ region }}' -- required
 ;
@@ -337,12 +337,12 @@ Lists information about created campaigns. This API operation uses pagination. S
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastModificationTime,
-signalCatalogArn,
+last_modification_time,
+signal_catalog_arn,
 status,
-targetArn
+target_arn
 FROM aws.iotfleetwise.campaigns
 WHERE region = '{{ region }}' -- required
 ;

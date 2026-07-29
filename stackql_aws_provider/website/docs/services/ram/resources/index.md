@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the resource was associated with the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date an time when the association between the resource and the resource share was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceGroupArn" /></td>
+    <td><CopyableCode code="resource_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource group. This value is available only if the resource is part of a resource group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceRegionScope" /></td>
+    <td><CopyableCode code="resource_region_scope" /></td>
     <td><code>string</code></td>
     <td>Specifies the scope of visibility of this resource: REGIONAL – The resource can be accessed only by using requests that target the Amazon Web Services Region in which the resource exists. GLOBAL – The resource can be accessed from any Amazon Web Services Region. (REGIONAL, GLOBAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource share this resource is associated with.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the resource. (AVAILABLE, ZONAL_RESOURCE_INACCESSIBLE, LIMIT_EXCEEDED, UNAVAILABLE, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message about the status of the resource.</td>
 </tr>
@@ -160,13 +160,13 @@ Lists the resources that you added to a resource share or the resources that are
 ```sql
 SELECT
 arn,
-creationTime,
-lastUpdatedTime,
-resourceGroupArn,
-resourceRegionScope,
-resourceShareArn,
+creation_time,
+last_updated_time,
+resource_group_arn,
+resource_region_scope,
+resource_share_arn,
 status,
-statusMessage,
+status_message,
 type_
 FROM aws.ram.resources
 WHERE region = '{{ region }}' -- required

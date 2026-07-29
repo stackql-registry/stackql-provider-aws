@@ -52,67 +52,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedAccessControlHierarchyGroupId" /></td>
+    <td><CopyableCode code="allowed_access_control_hierarchy_group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the hierarchy group that a security profile uses to restrict access to resources in Amazon Connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllowedAccessControlTags" /></td>
+    <td><CopyableCode code="allowed_access_control_tags" /></td>
     <td><code>object</code></td>
     <td>The list of tags that a security profile uses to restrict access to resources in Amazon Connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GranularAccessControlConfiguration" /></td>
+    <td><CopyableCode code="granular_access_control_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains granular access control configuration for security profiles, including data table access permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HierarchyRestrictedResources" /></td>
+    <td><CopyableCode code="hierarchy_restricted_resources" /></td>
     <td><code>array</code></td>
     <td>The list of resources that a security profile applies hierarchy restrictions to in Amazon Connect. Following are acceptable ResourceNames: User.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationResourceId" /></td>
+    <td><CopyableCode code="organization_resource_id" /></td>
     <td><code>string</code></td>
     <td>The organization resource identifier for the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityProfileName" /></td>
+    <td><CopyableCode code="security_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name for the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagRestrictedResources" /></td>
+    <td><CopyableCode code="tag_restricted_resources" /></td>
     <td><code>array</code></td>
     <td>The list of resources that a security profile applies tag restrictions to in Amazon Connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -131,27 +131,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the security profile.</td>
 </tr>
@@ -170,32 +170,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationResourceId" /></td>
+    <td><CopyableCode code="organization_resource_id" /></td>
     <td><code>string</code></td>
     <td>The organization resource identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityProfileName" /></td>
+    <td><CopyableCode code="security_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the security profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -347,19 +347,19 @@ Gets basic information about the security profile. For information about securit
 
 ```sql
 SELECT
-AllowedAccessControlHierarchyGroupId,
-AllowedAccessControlTags,
-Arn,
-Description,
-GranularAccessControlConfiguration,
-HierarchyRestrictedResources,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-OrganizationResourceId,
-SecurityProfileName,
-TagRestrictedResources,
-Tags
+allowed_access_control_hierarchy_group_id,
+allowed_access_control_tags,
+arn,
+description,
+granular_access_control_configuration,
+hierarchy_restricted_resources,
+id,
+last_modified_region,
+last_modified_time,
+organization_resource_id,
+security_profile_name,
+tag_restricted_resources,
+tags
 FROM aws.connect.security_profiles
 WHERE security_profile_id = '{{ security_profile_id }}' -- required
 AND instance_id = '{{ instance_id }}' -- required
@@ -373,11 +373,11 @@ Provides summary information about the security profiles for the specified Amazo
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.security_profiles
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -392,12 +392,12 @@ Searches security profiles in an Amazon Connect instance, with optional filterin
 
 ```sql
 SELECT
-Arn,
-Description,
-Id,
-OrganizationResourceId,
-SecurityProfileName,
-Tags
+arn,
+description,
+id,
+organization_resource_id,
+security_profile_name,
+tags
 FROM aws.connect.security_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -450,8 +450,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-SecurityProfileArn,
-SecurityProfileId
+security_profile_arn,
+security_profile_id
 ;
 ```
 </TabItem>

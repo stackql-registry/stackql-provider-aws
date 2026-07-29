@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalyzedResourceCount" /></td>
+    <td><CopyableCode code="analyzed_resource_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of resources that DevOps Guru is monitoring in your account that are specified by an Amazon Web Services CloudFormation stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Insight" /></td>
+    <td><CopyableCode code="insight" /></td>
     <td><code>object</code></td>
     <td>Information about the health of the Amazon Web Services resources in your account that are specified by an Amazon Web Services CloudFormation stack, including the number of open proactive, open reactive insights, and the Mean Time to Recover (MTTR) of closed insights.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the CloudFormation stack. (pattern: &lt;code&gt;^&#91;a-zA-Z*&#93;+&#91;a-zA-Z0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -139,9 +139,9 @@ Returns the number of open proactive insights, open reactive insights, and the M
 
 ```sql
 SELECT
-AnalyzedResourceCount,
-Insight,
-StackName
+analyzed_resource_count,
+insight,
+stack_name
 FROM aws.devops_guru.resource_collection_healths
 WHERE resource_collection_type = '{{ resource_collection_type }}' -- required
 AND region = '{{ region }}' -- required

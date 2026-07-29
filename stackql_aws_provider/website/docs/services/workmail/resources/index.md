@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BookingOptions" /></td>
+    <td><CopyableCode code="booking_options" /></td>
     <td><code>object</code></td>
     <td>The booking options for the described resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisabledDate" /></td>
+    <td><CopyableCode code="disabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when a resource was disabled from WorkMail, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email of the described resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._%+-&#93;&#123;1,64&#125;@&#91;a-zA-Z0-9.-&#93;+\.&#91;a-zA-Z-&#93;&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledDate" /></td>
+    <td><CopyableCode code="enabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when a resource was enabled for WorkMail, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HiddenFromGlobalAddressList" /></td>
+    <td><CopyableCode code="hidden_from_global_address_list" /></td>
     <td><code>boolean</code></td>
     <td>If enabled, the resource is hidden from the global address list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the described resource. (pattern: &lt;code&gt;&#91;\w\-.&#93;+(@&#91;a-zA-Z0-9.\-&#93;+\.&#91;a-zA-Z0-9-&#93;&#123;2,&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the described resource. (pattern: &lt;code&gt;^r-&#91;0-9a-f&#93;&#123;32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the resource: enabled (registered to WorkMail), disabled (deregistered or never registered to WorkMail), or deleted. (ENABLED, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the described resource. (ROOM, EQUIPMENT)</td>
 </tr>
@@ -115,42 +115,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Resource description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisabledDate" /></td>
+    <td><CopyableCode code="disabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date indicating when the resource was disabled from WorkMail use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email of the resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._%+-&#93;&#123;1,64&#125;@&#91;a-zA-Z0-9.-&#93;+\.&#91;a-zA-Z-&#93;&#123;2,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledDate" /></td>
+    <td><CopyableCode code="enabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date indicating when the resource was enabled for WorkMail use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource. (pattern: &lt;code&gt;&#91;\w\-.&#93;+(@&#91;a-zA-Z0-9.\-&#93;+\.&#91;a-zA-Z0-9-&#93;&#123;2,&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the resource, which can be ENABLED, DISABLED, or DELETED. (ENABLED, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource: equipment or room. (ROOM, EQUIPMENT)</td>
 </tr>
@@ -262,16 +262,16 @@ Returns the data available for the resource.
 
 ```sql
 SELECT
-BookingOptions,
-Description,
-DisabledDate,
-Email,
-EnabledDate,
-HiddenFromGlobalAddressList,
-Name,
-ResourceId,
-State,
-Type
+booking_options,
+description,
+disabled_date,
+email,
+enabled_date,
+hidden_from_global_address_list,
+name,
+resource_id,
+state,
+type
 FROM aws.workmail.resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,14 +283,14 @@ Returns summaries of the organization's resources.
 
 ```sql
 SELECT
-Description,
-DisabledDate,
-Email,
-EnabledDate,
-Id,
-Name,
-State,
-Type
+description,
+disabled_date,
+email,
+enabled_date,
+id,
+name,
+state,
+type
 FROM aws.workmail.resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -329,7 +329,7 @@ SELECT
 {{ HiddenFromGlobalAddressList }},
 '{{ region }}'
 RETURNING
-ResourceId
+resource_id
 ;
 ```
 </TabItem>

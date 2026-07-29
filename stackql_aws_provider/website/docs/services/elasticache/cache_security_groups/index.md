@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the cache security group,</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheSecurityGroupName" /></td>
+    <td><CopyableCode code="cache_security_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cache security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the cache security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EC2SecurityGroups" /></td>
+    <td><CopyableCode code="ec2_security_groups" /></td>
     <td><code>string</code></td>
     <td>A list of Amazon EC2 security groups that are associated with this cache security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon account ID of the cache security group owner.</td>
 </tr>
@@ -207,11 +207,11 @@ Returns a list of cache security group descriptions. If a cache security group n
 
 ```sql
 SELECT
-ARN,
-CacheSecurityGroupName,
-Description,
-EC2SecurityGroups,
-OwnerId
+arn,
+cache_security_group_name,
+description,
+ec2_security_groups,
+owner_id
 FROM aws.elasticache.cache_security_groups
 WHERE region = '{{ region }}' -- required
 AND CacheSecurityGroupName = '{{ CacheSecurityGroupName }}'
@@ -249,11 +249,11 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-ARN,
-CacheSecurityGroupName,
-Description,
-EC2SecurityGroups,
-OwnerId
+arn,
+cache_security_group_name,
+description,
+ec2_security_groups,
+owner_id
 ;
 ```
 </TabItem>
@@ -304,11 +304,11 @@ AND EC2SecurityGroupName = '{{ EC2SecurityGroupName }}' --required
 AND EC2SecurityGroupOwnerId = '{{ EC2SecurityGroupOwnerId }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ARN,
-CacheSecurityGroupName,
-Description,
-EC2SecurityGroups,
-OwnerId;
+arn,
+cache_security_group_name,
+description,
+ec2_security_groups,
+owner_id;
 ```
 </TabItem>
 </Tabs>

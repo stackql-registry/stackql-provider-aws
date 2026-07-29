@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventData" /></td>
+    <td><CopyableCode code="event_data" /></td>
     <td><code>string</code></td>
     <td>A short description of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the timeline event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventReferences" /></td>
+    <td><CopyableCode code="event_references" /></td>
     <td><code>array</code></td>
     <td>A list of references in a TimelineEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of event that occurred. Currently Incident Manager supports only the Custom Event and Note types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventUpdatedTime" /></td>
+    <td><CopyableCode code="event_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the timeline event was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incidentRecordArn" /></td>
+    <td><CopyableCode code="incident_record_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the incident that the event occurred during. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The timeline event ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventReferences" /></td>
+    <td><CopyableCode code="event_references" /></td>
     <td><code>array</code></td>
     <td>A list of references in a TimelineEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of event. The timeline event must be Custom Event or Note.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventUpdatedTime" /></td>
+    <td><CopyableCode code="event_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the timeline event was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="incidentRecordArn" /></td>
+    <td><CopyableCode code="incident_record_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the incident that the event happened during. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;*:(&#91;0-9&#93;&#123;12&#125;)?:.+$&lt;/code&gt;)</td>
 </tr>
@@ -233,13 +233,13 @@ Retrieves a timeline event based on its ID and incident record.
 
 ```sql
 SELECT
-eventData,
-eventId,
-eventReferences,
-eventTime,
-eventType,
-eventUpdatedTime,
-incidentRecordArn
+event_data,
+event_id,
+event_references,
+event_time,
+event_type,
+event_updated_time,
+incident_record_arn
 FROM aws.ssm_incidents.timeline_events
 WHERE eventId = '{{ eventId }}' -- required
 AND incidentRecordArn = '{{ incidentRecordArn }}' -- required
@@ -253,12 +253,12 @@ Lists timeline events for the specified incident record.
 
 ```sql
 SELECT
-eventId,
-eventReferences,
-eventTime,
-eventType,
-eventUpdatedTime,
-incidentRecordArn
+event_id,
+event_references,
+event_time,
+event_type,
+event_updated_time,
+incident_record_arn
 FROM aws.ssm_incidents.timeline_events
 WHERE region = '{{ region }}' -- required
 ;
@@ -299,8 +299,8 @@ SELECT
 '{{ incidentRecordArn }}' /* required */,
 '{{ region }}'
 RETURNING
-eventId,
-incidentRecordArn
+event_id,
+incident_record_arn
 ;
 ```
 </TabItem>

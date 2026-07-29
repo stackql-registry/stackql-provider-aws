@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregationAuthorizationArn" /></td>
+    <td><CopyableCode code="aggregation_authorization_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the aggregation object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizedAccountId" /></td>
+    <td><CopyableCode code="authorized_account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account ID of the account authorized to aggregate data. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizedAwsRegion" /></td>
+    <td><CopyableCode code="authorized_aws_region" /></td>
     <td><code>string</code></td>
     <td>The region authorized to collect aggregated data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp when the aggregation authorization was created.</td>
 </tr>
@@ -148,10 +148,10 @@ Returns a list of authorizations granted to various aggregator accounts and regi
 
 ```sql
 SELECT
-AggregationAuthorizationArn,
-AuthorizedAccountId,
-AuthorizedAwsRegion,
-CreationTime
+aggregation_authorization_arn,
+authorized_account_id,
+authorized_aws_region,
+creation_time
 FROM aws.config.aggregation_authorizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -183,7 +183,7 @@ region = '{{ region }}' --required
 AND AuthorizedAccountId = '{{ AuthorizedAccountId }}' --required
 AND AuthorizedAwsRegion = '{{ AuthorizedAwsRegion }}' --required
 RETURNING
-AggregationAuthorization;
+aggregation_authorization;
 ```
 </TabItem>
 </Tabs>

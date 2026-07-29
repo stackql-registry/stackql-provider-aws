@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscoveryRegion" /></td>
+    <td><CopyableCode code="discovery_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region that the account information is returned from. An account can be discovered in multiple regions and will have a separate discovered account for each Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The resource discovery failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAttemptedDiscoveryTime" /></td>
+    <td><CopyableCode code="last_attempted_discovery_time" /></td>
     <td><code>string</code></td>
     <td>The last attempted resource discovery time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulDiscoveryTime" /></td>
+    <td><CopyableCode code="last_successful_discovery_time" /></td>
     <td><code>string</code></td>
     <td>The last successful resource discovery time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of an Organizational Unit in Amazon Web Services Organizations.</td>
 </tr>
@@ -174,12 +174,12 @@ Gets IPAM discovered accounts. A discovered account is an Amazon Web Services ac
 
 ```sql
 SELECT
-AccountId,
-DiscoveryRegion,
-FailureReason,
-LastAttemptedDiscoveryTime,
-LastSuccessfulDiscoveryTime,
-OrganizationalUnitId
+account_id,
+discovery_region,
+failure_reason,
+last_attempted_discovery_time,
+last_successful_discovery_time,
+organizational_unit_id
 FROM aws.ec2.ipam_discovered_accounts
 WHERE IpamResourceDiscoveryId = '{{ IpamResourceDiscoveryId }}' -- required
 AND DiscoveryRegion = '{{ DiscoveryRegion }}' -- required

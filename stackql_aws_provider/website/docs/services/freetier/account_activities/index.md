@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activityId" /></td>
+    <td><CopyableCode code="activity_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier that identifies the activity. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the activity is completed. This field appears only for activities in the COMPLETED state.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>Provides detailed information about the activity and its expected outcomes. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedTimeToCompleteInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_to_complete_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The estimated time to complete the activity. This is the duration in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time by which the activity must be completed to receive a reward.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instructionsUrl" /></td>
+    <td><CopyableCode code="instructions_url" /></td>
     <td><code>string</code></td>
     <td>The URL resource that provides guidance on activity requirements and completion. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>A reward granted upon activity completion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the activity started. This field appears only for activities in the IN_PROGRESS or COMPLETED states.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activityId" /></td>
+    <td><CopyableCode code="activity_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier that identifies the activity. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -207,14 +207,14 @@ Returns a specific activity record that is available to the customer.
 
 ```sql
 SELECT
-activityId,
-completedAt,
+activity_id,
+completed_at,
 description,
-estimatedTimeToCompleteInMinutes,
-expiresAt,
-instructionsUrl,
+estimated_time_to_complete_in_minutes,
+expires_at,
+instructions_url,
 reward,
-startedAt,
+started_at,
 status,
 title_
 FROM aws.freetier.account_activities
@@ -228,7 +228,7 @@ Returns a list of activities that are available. This operation supports paginat
 
 ```sql
 SELECT
-activityId,
+activity_id,
 reward,
 status,
 title_

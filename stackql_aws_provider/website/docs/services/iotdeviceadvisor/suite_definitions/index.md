@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date (in Unix epoch time) when the suite definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date (in Unix epoch time) when the suite definition was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersion" /></td>
+    <td><CopyableCode code="latest_version" /></td>
     <td><code>string</code></td>
     <td>Latest suite definition version of the suite definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteDefinitionArn" /></td>
+    <td><CopyableCode code="suite_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the suite definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteDefinitionConfiguration" /></td>
+    <td><CopyableCode code="suite_definition_configuration" /></td>
     <td><code>object</code></td>
     <td>Gets the suite definition configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteDefinitionId" /></td>
+    <td><CopyableCode code="suite_definition_id" /></td>
     <td><code>string</code></td>
     <td>Suite definition ID of the suite definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteDefinitionVersion" /></td>
+    <td><CopyableCode code="suite_definition_version" /></td>
     <td><code>string</code></td>
     <td>Suite definition version of the suite definition.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token used to get the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suiteDefinitionInformationList" /></td>
+    <td><CopyableCode code="suite_definition_information_list" /></td>
     <td><code>array</code></td>
     <td>An array of objects that provide summaries of information about the suite definitions in the list.</td>
 </tr>
@@ -247,13 +247,13 @@ Gets information about a Device Advisor test suite. Requires permission to acces
 
 ```sql
 SELECT
-createdAt,
-lastModifiedAt,
-latestVersion,
-suiteDefinitionArn,
-suiteDefinitionConfiguration,
-suiteDefinitionId,
-suiteDefinitionVersion,
+created_at,
+last_modified_at,
+latest_version,
+suite_definition_arn,
+suite_definition_configuration,
+suite_definition_id,
+suite_definition_version,
 tags
 FROM aws.iotdeviceadvisor.suite_definitions
 WHERE suite_definition_id = '{{ suite_definition_id }}' -- required
@@ -268,8 +268,8 @@ Lists the Device Advisor test suites you have created. Requires permission to ac
 
 ```sql
 SELECT
-nextToken,
-suiteDefinitionInformationList
+next_token,
+suite_definition_information_list
 FROM aws.iotdeviceadvisor.suite_definitions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -306,10 +306,10 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-createdAt,
-suiteDefinitionArn,
-suiteDefinitionId,
-suiteDefinitionName
+created_at,
+suite_definition_arn,
+suite_definition_id,
+suite_definition_name
 ;
 ```
 </TabItem>
@@ -366,12 +366,12 @@ suite_definition_id = '{{ suite_definition_id }}' --required
 AND region = '{{ region }}' --required
 AND suiteDefinitionConfiguration = '{{ suiteDefinitionConfiguration }}' --required
 RETURNING
-createdAt,
-lastUpdatedAt,
-suiteDefinitionArn,
-suiteDefinitionId,
-suiteDefinitionName,
-suiteDefinitionVersion;
+created_at,
+last_updated_at,
+suite_definition_arn,
+suite_definition_id,
+suite_definition_name,
+suite_definition_version;
 ```
 </TabItem>
 </Tabs>

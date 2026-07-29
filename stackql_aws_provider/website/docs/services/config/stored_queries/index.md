@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A unique description for the query. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expression" /></td>
+    <td><CopyableCode code="expression" /></td>
     <td><code>string</code></td>
     <td>The expression of the query. For example, SELECT resourceId, resourceType, supplementaryConfiguration.BucketVersioningConfiguration.status WHERE resourceType = 'AWS::S3::Bucket' AND supplementaryConfiguration.BucketVersioningConfiguration.status = 'Off'. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryArn" /></td>
+    <td><CopyableCode code="query_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the query. For example, arn:partition:service:region:account-id:resource-type/resource-name/resource-id. (pattern: &lt;code&gt;^arn:aws&#91;a-z\-&#93;*:config:&#91;a-z\-\d&#93;+:\d+:stored-query/&#91;a-zA-Z0-9-_&#93;+/query-&#91;a-zA-Z\d-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryId" /></td>
+    <td><CopyableCode code="query_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the query. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryName" /></td>
+    <td><CopyableCode code="query_name" /></td>
     <td><code>string</code></td>
     <td>The name of the query. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the previous paginated request didn't return all of the remaining results, the response object's NextToken parameter value is set to a token. To retrieve the next set of results, call this operation again and assign that token to the request object's NextToken parameter. If there are no remaining results, the previous response object's NextToken parameter is set to null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoredQueryMetadata" /></td>
+    <td><CopyableCode code="stored_query_metadata" /></td>
     <td><code>array</code></td>
     <td>A list of StoredQueryMetadata objects.</td>
 </tr>
@@ -186,11 +186,11 @@ Returns the details of a specific stored query.
 
 ```sql
 SELECT
-Description,
-Expression,
-QueryArn,
-QueryId,
-QueryName
+description,
+expression,
+query_arn,
+query_id,
+query_name
 FROM aws.config.stored_queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,8 +202,8 @@ Lists the stored queries for a single Amazon Web Services account and a single A
 
 ```sql
 SELECT
-NextToken,
-StoredQueryMetadata
+next_token,
+stored_query_metadata
 FROM aws.config.stored_queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,7 +233,7 @@ WHERE
 region = '{{ region }}' --required
 AND StoredQuery = '{{ StoredQuery }}' --required
 RETURNING
-QueryArn;
+query_arn;
 ```
 </TabItem>
 </Tabs>

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the project displayed to users in Amazon CodeCatalyst.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name displayed to users of the project in Amazon CodeCatalyst.</td>
 </tr>
@@ -229,8 +229,8 @@ Returns information about a project.
 SELECT
 name,
 description,
-displayName,
-spaceName
+display_name,
+space_name
 FROM aws.codecatalyst.projects
 WHERE space_name = '{{ space_name }}' -- required
 AND name = '{{ name }}' -- required
@@ -246,7 +246,7 @@ Retrieves a list of projects.
 SELECT
 name,
 description,
-displayName
+display_name
 FROM aws.codecatalyst.projects
 WHERE space_name = '{{ space_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -284,8 +284,8 @@ SELECT
 RETURNING
 name,
 description,
-displayName,
-spaceName
+display_name,
+space_name
 ;
 ```
 </TabItem>
@@ -333,8 +333,8 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 description,
-displayName,
-spaceName;
+display_name,
+space_name;
 ```
 </TabItem>
 </Tabs>

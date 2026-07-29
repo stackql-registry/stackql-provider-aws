@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProductViewSummary" /></td>
+    <td><CopyableCode code="product_view_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information about the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifacts" /></td>
+    <td><CopyableCode code="provisioning_artifacts" /></td>
     <td><code>array</code></td>
     <td>Information about the provisioning artifacts for the product.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets information about the specified product.
 
 ```sql
 SELECT
-ProductViewSummary,
-ProvisioningArtifacts
+product_view_summary,
+provisioning_artifacts
 FROM aws.servicecatalog.product_views
 WHERE region = '{{ region }}' -- required
 ;

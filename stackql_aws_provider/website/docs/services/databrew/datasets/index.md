@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who created the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The file format of a dataset that is created from an Amazon S3 file or folder. (CSV, JSON, PARQUET, EXCEL, ORC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FormatOptions" /></td>
+    <td><CopyableCode code="format_options" /></td>
     <td><code>object</code></td>
     <td>Represents a set of options that define the structure of either comma-separated value (CSV), Excel, or JSON input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Input" /></td>
+    <td><CopyableCode code="input" /></td>
     <td><code>object</code></td>
     <td>Represents information on how DataBrew can find data, in either the Glue Data Catalog or Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who last modified the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the dataset was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PathOptions" /></td>
+    <td><CopyableCode code="path_options" /></td>
     <td><code>object</code></td>
     <td>Represents a set of options that define how DataBrew selects files for a given Amazon S3 path in a dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The location of the data for this dataset, Amazon S3 or the Glue Data Catalog. (S3, DATA-CATALOG, DATABASE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags associated with this dataset.</td>
 </tr>
@@ -125,67 +125,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The file format of a dataset that is created from an Amazon S3 file or folder. (CSV, JSON, PARQUET, EXCEL, ORC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FormatOptions" /></td>
+    <td><CopyableCode code="format_options" /></td>
     <td><code>object</code></td>
     <td>Represents a set of options that define the structure of either comma-separated value (CSV), Excel, or JSON input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Input" /></td>
+    <td><CopyableCode code="input" /></td>
     <td><code>object</code></td>
     <td>Represents information on how DataBrew can find data, in either the Glue Data Catalog or Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last modified the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modification date and time of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PathOptions" /></td>
+    <td><CopyableCode code="path_options" /></td>
     <td><code>object</code></td>
     <td>Represents a set of options that define how DataBrew selects files for a given Amazon S3 path in a dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) for the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The location of the data for the dataset, either Amazon S3 or the Glue Data Catalog. (S3, DATA-CATALOG, DATABASE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags that have been applied to the dataset.</td>
 </tr>
@@ -298,18 +298,18 @@ Returns the definition of a specific DataBrew dataset.
 
 ```sql
 SELECT
-CreateDate,
-CreatedBy,
-Format,
-FormatOptions,
-Input,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-PathOptions,
-ResourceArn,
-Source,
-Tags
+create_date,
+created_by,
+format,
+format_options,
+input,
+last_modified_by,
+last_modified_date,
+name,
+path_options,
+resource_arn,
+source,
+tags
 FROM aws.databrew.datasets
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -322,19 +322,19 @@ Lists all of the DataBrew datasets.
 
 ```sql
 SELECT
-AccountId,
-CreateDate,
-CreatedBy,
-Format,
-FormatOptions,
-Input,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-PathOptions,
-ResourceArn,
-Source,
-Tags
+account_id,
+create_date,
+created_by,
+format,
+format_options,
+input,
+last_modified_by,
+last_modified_date,
+name,
+path_options,
+resource_arn,
+source,
+tags
 FROM aws.databrew.datasets
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -377,7 +377,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -478,7 +478,7 @@ WHERE
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

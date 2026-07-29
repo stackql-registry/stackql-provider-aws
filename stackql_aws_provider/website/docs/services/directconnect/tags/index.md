@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>Information about the tags.</td>
 </tr>
@@ -133,7 +133,7 @@ Describes the tags associated with the specified Direct Connect resources.
 
 ```sql
 SELECT
-resourceTags
+resource_tags
 FROM aws.directconnect.tags
 WHERE region = '{{ region }}' -- required
 ;

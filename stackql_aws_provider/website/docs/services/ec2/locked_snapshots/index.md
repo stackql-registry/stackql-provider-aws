@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoolOffPeriod" /></td>
+    <td><CopyableCode code="cool_off_period" /></td>
     <td><code>integer</code></td>
     <td>The compliance mode cooling-off period, in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoolOffPeriodExpiresOn" /></td>
+    <td><CopyableCode code="cool_off_period_expires_on" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the compliance mode cooling-off period expires, in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockCreatedOn" /></td>
+    <td><CopyableCode code="lock_created_on" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the snapshot was locked, in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockDuration" /></td>
+    <td><CopyableCode code="lock_duration" /></td>
     <td><code>integer</code></td>
     <td>The period of time for which the snapshot is locked, in days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockDurationStartTime" /></td>
+    <td><CopyableCode code="lock_duration_start_time" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the lock duration started, in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ). If you lock a snapshot that is in the pending state, the lock duration starts only once the snapshot enters the completed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockExpiresOn" /></td>
+    <td><CopyableCode code="lock_expires_on" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the lock will expire, in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockState" /></td>
+    <td><CopyableCode code="lock_state" /></td>
     <td><code>string</code></td>
     <td>The state of the snapshot lock. Valid states include: compliance-cooloff - The snapshot has been locked in compliance mode but it is still within the cooling-off period. The snapshot can't be deleted, but it can be unlocked and the lock settings can be modified by users with appropriate permissions. governance - The snapshot is locked in governance mode. The snapshot can't be deleted, but it can be unlocked and the lock settings can be modified by users with appropriate permissions. compliance - The snapshot is locked in compliance mode and the cooling-off period has expired. The snapshot can't be unlocked or deleted. The lock duration can only be increased by users with appropriate permissions. expired - The snapshot was locked in compliance or governance mode but the lock duration has expired. The snapshot is not locked and can be deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the Amazon Web Services account that owns the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot.</td>
 </tr>
@@ -184,15 +184,15 @@ Describes the lock status for a snapshot.
 
 ```sql
 SELECT
-CoolOffPeriod,
-CoolOffPeriodExpiresOn,
-LockCreatedOn,
-LockDuration,
-LockDurationStartTime,
-LockExpiresOn,
-LockState,
-OwnerId,
-SnapshotId
+cool_off_period,
+cool_off_period_expires_on,
+lock_created_on,
+lock_duration,
+lock_duration_start_time,
+lock_expires_on,
+lock_state,
+owner_id,
+snapshot_id
 FROM aws.ec2.locked_snapshots
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

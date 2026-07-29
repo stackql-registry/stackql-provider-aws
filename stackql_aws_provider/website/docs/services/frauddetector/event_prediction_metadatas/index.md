@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="detectorId" /></td>
+    <td><CopyableCode code="detector_id" /></td>
     <td><code>string</code></td>
     <td>The detector ID. (pattern: &lt;code&gt;^&#91;0-9a-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorVersionId" /></td>
+    <td><CopyableCode code="detector_version_id" /></td>
     <td><code>string</code></td>
     <td>The detector version ID. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorVersionStatus" /></td>
+    <td><CopyableCode code="detector_version_status" /></td>
     <td><code>string</code></td>
     <td>The status of the detector version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityId" /></td>
+    <td><CopyableCode code="entity_id" /></td>
     <td><code>string</code></td>
     <td>The entity ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityType" /></td>
+    <td><CopyableCode code="entity_type" /></td>
     <td><code>string</code></td>
     <td>The entity type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatedExternalModels" /></td>
+    <td><CopyableCode code="evaluated_external_models" /></td>
     <td><code>array</code></td>
     <td>External (Amazon SageMaker) models that were evaluated for generating predictions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluatedModelVersions" /></td>
+    <td><CopyableCode code="evaluated_model_versions" /></td>
     <td><code>array</code></td>
     <td>Model versions that were evaluated for generating predictions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The event ID. (pattern: &lt;code&gt;^&#91;0-9a-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp for when the prediction was generated for the associated event ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTypeName" /></td>
+    <td><CopyableCode code="event_type_name" /></td>
     <td><code>string</code></td>
     <td>The event type associated with the detector specified for this prediction. (pattern: &lt;code&gt;^&#91;0-9a-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventVariables" /></td>
+    <td><CopyableCode code="event_variables" /></td>
     <td><code>array</code></td>
     <td>A list of event variables that influenced the prediction scores.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The outcomes of the matched rule, based on the rule execution mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="predictionTimestamp" /></td>
+    <td><CopyableCode code="prediction_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp that defines when the prediction was generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleExecutionMode" /></td>
+    <td><CopyableCode code="rule_execution_mode" /></td>
     <td><code>string</code></td>
     <td>The execution mode of the rule used for evaluating variable values. (ALL_MATCHED, FIRST_MATCHED)</td>
 </tr>
@@ -189,20 +189,20 @@ Gets details of the past fraud predictions for the specified event ID, event typ
 
 ```sql
 SELECT
-detectorId,
-detectorVersionId,
-detectorVersionStatus,
-entityId,
-entityType,
-evaluatedExternalModels,
-evaluatedModelVersions,
-eventId,
-eventTimestamp,
-eventTypeName,
-eventVariables,
+detector_id,
+detector_version_id,
+detector_version_status,
+entity_id,
+entity_type,
+evaluated_external_models,
+evaluated_model_versions,
+event_id,
+event_timestamp,
+event_type_name,
+event_variables,
 outcomes,
-predictionTimestamp,
-ruleExecutionMode,
+prediction_timestamp,
+rule_execution_mode,
 rules
 FROM aws.frauddetector.event_prediction_metadatas
 WHERE region = '{{ region }}' -- required

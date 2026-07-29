@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastStatus" /></td>
+    <td><CopyableCode code="last_status" /></td>
     <td><code>string</code></td>
     <td>The status reported by the last sync. (Successful, Failed, InProgress)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulSyncTime" /></td>
+    <td><CopyableCode code="last_successful_sync_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the sync operations returned a status of SUCCESSFUL (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSyncStatusMessage" /></td>
+    <td><CopyableCode code="last_sync_status_message" /></td>
     <td><code>string</code></td>
     <td>The status message details reported by the last sync.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSyncTime" /></td>
+    <td><CopyableCode code="last_sync_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the configuration attempted to sync (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Destination" /></td>
+    <td><CopyableCode code="s3_destination" /></td>
     <td><code>object</code></td>
     <td>Configuration information for the target S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncCreatedTime" /></td>
+    <td><CopyableCode code="sync_created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the configuration was created (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncLastModifiedTime" /></td>
+    <td><CopyableCode code="sync_last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource data sync was changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncName" /></td>
+    <td><CopyableCode code="sync_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource data sync.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncSource" /></td>
+    <td><CopyableCode code="sync_source" /></td>
     <td><code>object</code></td>
     <td>Information about the source where the data was synchronized.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncType" /></td>
+    <td><CopyableCode code="sync_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource data sync. If SyncType is SyncToDestination, then the resource data sync synchronizes data to an S3 bucket. If the SyncType is SyncFromSource then the resource data sync synchronizes data from Organizations or from multiple Amazon Web Services Regions.</td>
 </tr>
@@ -185,16 +185,16 @@ Lists your resource data sync configurations. Includes information about the las
 
 ```sql
 SELECT
-LastStatus,
-LastSuccessfulSyncTime,
-LastSyncStatusMessage,
-LastSyncTime,
-S3Destination,
-SyncCreatedTime,
-SyncLastModifiedTime,
-SyncName,
-SyncSource,
-SyncType
+last_status,
+last_successful_sync_time,
+last_sync_status_message,
+last_sync_time,
+s3_destination,
+sync_created_time,
+sync_last_modified_time,
+sync_name,
+sync_source,
+sync_type
 FROM aws.ssm.resource_data_syncs
 WHERE region = '{{ region }}' -- required
 ;

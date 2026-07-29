@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token for paginating the returned list of tokens, returned if the current segment of the list is not the last.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageOptimizerList" /></td>
+    <td><CopyableCode code="storage_optimizer_list" /></td>
     <td><code>array</code></td>
     <td>A list of the storage optimizers associated with a table.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns the configuration of all storage optimizers associated with a specified 
 
 ```sql
 SELECT
-NextToken,
-StorageOptimizerList
+next_token,
+storage_optimizer_list
 FROM aws.lakeformation.table_storage_optimizers
 WHERE region = '{{ region }}' -- required
 ;
@@ -166,7 +166,7 @@ AND DatabaseName = '{{ DatabaseName }}' --required
 AND TableName = '{{ TableName }}' --required
 AND StorageOptimizerConfig = '{{ StorageOptimizerConfig }}' --required
 RETURNING
-Result;
+result;
 ```
 </TabItem>
 </Tabs>

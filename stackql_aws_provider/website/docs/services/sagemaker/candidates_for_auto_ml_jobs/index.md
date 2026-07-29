@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CandidateName" /></td>
+    <td><CopyableCode code="candidate_name" /></td>
     <td><code>string</code></td>
     <td>The name of the candidate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CandidateProperties" /></td>
+    <td><CopyableCode code="candidate_properties" /></td>
     <td><code>object</code></td>
     <td>The properties of an AutoML candidate job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CandidateStatus" /></td>
+    <td><CopyableCode code="candidate_status" /></td>
     <td><code>string</code></td>
     <td>The candidate's status. (Completed, InProgress, Failed, Stopped, Stopping)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CandidateSteps" /></td>
+    <td><CopyableCode code="candidate_steps" /></td>
     <td><code>array</code></td>
     <td>Information about the candidate's steps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinalAutoMLJobObjectiveMetric" /></td>
+    <td><CopyableCode code="final_auto_ml_job_objective_metric" /></td>
     <td><code>object</code></td>
     <td>The best candidate result from an AutoML training job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceContainerDefinitions" /></td>
+    <td><CopyableCode code="inference_container_definitions" /></td>
     <td><code>object</code></td>
     <td>The mapping of all supported processing unit (CPU, GPU, etc...) to inference container definitions for the candidate. This field is populated for the AutoML jobs V2 (for example, for jobs created by calling CreateAutoMLJobV2) related to image or text classification problem types only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceContainers" /></td>
+    <td><CopyableCode code="inference_containers" /></td>
     <td><code>array</code></td>
     <td>Information about the recommended inference container definitions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectiveStatus" /></td>
+    <td><CopyableCode code="objective_status" /></td>
     <td><code>string</code></td>
     <td>The objective's status. (Succeeded, Pending, Failed)</td>
 </tr>
@@ -174,18 +174,18 @@ List the candidates created for the job.
 
 ```sql
 SELECT
-CandidateName,
-CandidateProperties,
-CandidateStatus,
-CandidateSteps,
-CreationTime,
-EndTime,
-FailureReason,
-FinalAutoMLJobObjectiveMetric,
-InferenceContainerDefinitions,
-InferenceContainers,
-LastModifiedTime,
-ObjectiveStatus
+candidate_name,
+candidate_properties,
+candidate_status,
+candidate_steps,
+creation_time,
+end_time,
+failure_reason,
+final_auto_ml_job_objective_metric,
+inference_container_definitions,
+inference_containers,
+last_modified_time,
+objective_status
 FROM aws.sagemaker.candidates_for_auto_ml_jobs
 WHERE region = '{{ region }}' -- required
 ;

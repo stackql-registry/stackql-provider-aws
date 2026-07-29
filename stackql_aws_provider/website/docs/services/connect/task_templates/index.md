@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Constraints" /></td>
+    <td><CopyableCode code="constraints" /></td>
     <td><code>object</code></td>
     <td>Describes constraints that apply to the template fields.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactFlowId" /></td>
+    <td><CopyableCode code="contact_flow_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the flow that runs by default when a task is created by referencing this template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Defaults" /></td>
+    <td><CopyableCode code="defaults" /></td>
     <td><code>object</code></td>
     <td>Describes default values for fields on a template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>array</code></td>
     <td>Fields that are part of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfAssignFlowId" /></td>
+    <td><CopyableCode code="self_assign_flow_id" /></td>
     <td><code>string</code></td>
     <td>The ContactFlowId for the flow that will be run if this template is used to create a self-assigned task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Marks a template as ACTIVE or INACTIVE for a task to refer to it. Tasks can only be created from ACTIVE templates. If a template is marked as INACTIVE, then a task that refers to this template cannot be created. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -135,37 +135,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Marks a template as ACTIVE or INACTIVE for a task to refer to it. Tasks can only be created from ACTIVE templates. If a template is marked as INACTIVE, then a task that refers to this template cannot be created. (ACTIVE, INACTIVE)</td>
 </tr>
@@ -298,20 +298,20 @@ Gets details about a specific task template in the specified Amazon Connect inst
 
 ```sql
 SELECT
-Arn,
-Constraints,
-ContactFlowId,
-CreatedTime,
-Defaults,
-Description,
-Fields,
-Id,
-InstanceId,
-LastModifiedTime,
-Name,
-SelfAssignFlowId,
-Status,
-Tags
+arn,
+constraints,
+contact_flow_id,
+created_time,
+defaults,
+description,
+fields,
+id,
+instance_id,
+last_modified_time,
+name,
+self_assign_flow_id,
+status,
+tags
 FROM aws.connect.task_templates
 WHERE instance_id = '{{ instance_id }}' -- required
 AND task_template_id = '{{ task_template_id }}' -- required
@@ -326,13 +326,13 @@ Lists task templates for the specified Amazon Connect instance.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Description,
-Id,
-LastModifiedTime,
-Name,
-Status
+arn,
+created_time,
+description,
+id,
+last_modified_time,
+name,
+status
 FROM aws.connect.task_templates
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -386,8 +386,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>
@@ -477,19 +477,19 @@ task_template_id = '{{ task_template_id }}' --required
 AND instance_id = '{{ instance_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-Constraints,
-ContactFlowId,
-CreatedTime,
-Defaults,
-Description,
-Fields,
-Id,
-InstanceId,
-LastModifiedTime,
-Name,
-SelfAssignFlowId,
-Status;
+arn,
+constraints,
+contact_flow_id,
+created_time,
+defaults,
+description,
+fields,
+id,
+instance_id,
+last_modified_time,
+name,
+self_assign_flow_id,
+status;
 ```
 </TabItem>
 </Tabs>

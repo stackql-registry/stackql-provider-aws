@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregationConfigurations" /></td>
+    <td><CopyableCode code="aggregation_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of aggregation configurations that are configured for the trail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextKeySelectors" /></td>
+    <td><CopyableCode code="context_key_selectors" /></td>
     <td><code>array</code></td>
     <td>The list of context key selectors that are configured for the event data store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventDataStoreArn" /></td>
+    <td><CopyableCode code="event_data_store_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) or ID suffix of the ARN of the event data store for which the event configuration settings are returned. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._/\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxEventSize" /></td>
+    <td><CopyableCode code="max_event_size" /></td>
     <td><code>string</code></td>
     <td>The maximum allowed size for events stored in the specified event data store. (Standard, Large)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrailARN" /></td>
+    <td><CopyableCode code="trail_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trail for which the event configuration settings are returned.</td>
 </tr>
@@ -146,11 +146,11 @@ Retrieves the current event configuration settings for the specified event data 
 
 ```sql
 SELECT
-AggregationConfigurations,
-ContextKeySelectors,
-EventDataStoreArn,
-MaxEventSize,
-TrailARN
+aggregation_configurations,
+context_key_selectors,
+event_data_store_arn,
+max_event_size,
+trail_arn
 FROM aws.cloudtrail.event_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -182,11 +182,11 @@ AggregationConfigurations = '{{ AggregationConfigurations }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-AggregationConfigurations,
-ContextKeySelectors,
-EventDataStoreArn,
-MaxEventSize,
-TrailARN;
+aggregation_configurations,
+context_key_selectors,
+event_data_store_arn,
+max_event_size,
+trail_arn;
 ```
 </TabItem>
 </Tabs>

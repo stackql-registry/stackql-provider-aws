@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="identityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The identity store ID. (pattern: &lt;code&gt;d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipLevel" /></td>
+    <td><CopyableCode code="membership_level" /></td>
     <td><code>string</code></td>
     <td>The queue member's membership level. (VIEWER, CONTRIBUTOR, OWNER, MANAGER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalId" /></td>
+    <td><CopyableCode code="principal_id" /></td>
     <td><code>string</code></td>
     <td>The principal ID of the queue member. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalType" /></td>
+    <td><CopyableCode code="principal_type" /></td>
     <td><code>string</code></td>
     <td>The principal type of the queue member. (USER, GROUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The queue ID. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -164,12 +164,12 @@ Lists the members in a queue.
 
 ```sql
 SELECT
-farmId,
-identityStoreId,
-membershipLevel,
-principalId,
-principalType,
-queueId
+farm_id,
+identity_store_id,
+membership_level,
+principal_id,
+principal_type,
+queue_id
 FROM aws.deadline.queue_members
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required

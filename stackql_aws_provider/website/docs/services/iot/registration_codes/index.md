@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="registrationCode" /></td>
+    <td><CopyableCode code="registration_code" /></td>
     <td><code>string</code></td>
     <td>The CA certificate registration code. (pattern: &lt;code&gt;(0x)?&#91;a-fA-F0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -126,7 +126,7 @@ Gets a registration code used to register a CA certificate with IoT. IoT will cr
 
 ```sql
 SELECT
-registrationCode
+registration_code
 FROM aws.iot.registration_codes
 WHERE region = '{{ region }}' -- required
 ;

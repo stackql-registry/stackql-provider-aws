@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The reference to an Amazon Web Services-managed certificate that will be used by edge-optimized endpoint or private endpoint for this domain name. Certificate Manager is the only supported source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateName" /></td>
+    <td><CopyableCode code="certificate_name" /></td>
     <td><code>string</code></td>
     <td>The name of the certificate that will be used by edge-optimized endpoint or private endpoint for this domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateUploadDate" /></td>
+    <td><CopyableCode code="certificate_upload_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the certificate that was used by edge-optimized endpoint or private endpoint for this domain name was uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="distributionDomainName" /></td>
+    <td><CopyableCode code="distribution_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name of the Amazon CloudFront distribution associated with this custom domain name for an edge-optimized endpoint. You set up this association when adding a DNS record pointing the custom domain name to this distribution name. For more information about CloudFront distributions, see the Amazon CloudFront documentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="distributionHostedZoneId" /></td>
+    <td><CopyableCode code="distribution_hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The region-agnostic Amazon Route 53 Hosted Zone ID of the edge-optimized endpoint. The valid value is Z2FDTNDATAQYW2 for all the regions. For more information, see Set up a Regional Custom Domain Name and AWS Regions and Endpoints for API Gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name as an API host name, for example, my-api.example.com.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameArn" /></td>
+    <td><CopyableCode code="domain_name_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameId" /></td>
+    <td><CopyableCode code="domain_name_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the domain name resource. Supported only for private custom domain names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameStatus" /></td>
+    <td><CopyableCode code="domain_name_status" /></td>
     <td><code>string</code></td>
     <td>The status of the DomainName migration. The valid values are AVAILABLE and UPDATING. If the status is UPDATING, the domain cannot be modified further until the existing operation is complete. If it is AVAILABLE, the domain can be updated. (AVAILABLE, UPDATING, PENDING, PENDING_CERTIFICATE_REIMPORT, PENDING_OWNERSHIP_VERIFICATION, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameStatusMessage" /></td>
+    <td><CopyableCode code="domain_name_status_message" /></td>
     <td><code>string</code></td>
     <td>An optional text message containing detailed information about status of the DomainName migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointAccessMode" /></td>
+    <td><CopyableCode code="endpoint_access_mode" /></td>
     <td><code>string</code></td>
     <td>The endpoint access mode of the DomainName. (BASIC, STRICT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointConfiguration" /></td>
+    <td><CopyableCode code="endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>The endpoint configuration to indicate the types of endpoints an API (RestApi) or its custom domain name (DomainName) has and the IP address types that can invoke it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managementPolicy" /></td>
+    <td><CopyableCode code="management_policy" /></td>
     <td><code>string</code></td>
     <td>A stringified JSON policy document that applies to the API Gateway Management service for this DomainName. This policy document controls access for access association sources to create domain name access associations with this DomainName. Supported only for private custom domain names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mutualTlsAuthentication" /></td>
+    <td><CopyableCode code="mutual_tls_authentication" /></td>
     <td><code>object</code></td>
     <td>The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway performs two-way authentication between the client and the server. Clients must present a trusted certificate to access your API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownershipVerificationCertificateArn" /></td>
+    <td><CopyableCode code="ownership_verification_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the regionalCertificateArn.</td>
 </tr>
@@ -131,32 +131,32 @@ The following fields are returned by `SELECT` queries:
     <td>A stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalCertificateArn" /></td>
+    <td><CopyableCode code="regional_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The reference to an Amazon Web Services-managed certificate that will be used for validating the regional domain name. Certificate Manager is the only supported source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalCertificateName" /></td>
+    <td><CopyableCode code="regional_certificate_name" /></td>
     <td><code>string</code></td>
     <td>The name of the certificate that will be used for validating the regional domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalDomainName" /></td>
+    <td><CopyableCode code="regional_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name associated with the regional endpoint for this custom domain name. You set up this association by adding a DNS record that points the custom domain name to this regional domain name. The regional domain name is returned by API Gateway when you create a regional endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalHostedZoneId" /></td>
+    <td><CopyableCode code="regional_hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The region-specific Amazon Route 53 Hosted Zone ID of the regional endpoint. For more information, see Set up a Regional Custom Domain Name and AWS Regions and Endpoints for API Gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routingMode" /></td>
+    <td><CopyableCode code="routing_mode" /></td>
     <td><code>string</code></td>
     <td>The routing mode for this domain name. The routing mode determines how API Gateway sends traffic from your custom domain name to your private APIs. (BASE_PATH_MAPPING_ONLY, ROUTING_RULE_ONLY, ROUTING_RULE_THEN_BASE_PATH_MAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityPolicy" /></td>
+    <td><CopyableCode code="security_policy" /></td>
     <td><code>string</code></td>
     <td>The Transport Layer Security (TLS) version + cipher suite for this DomainName. (TLS_1_0, TLS_1_2, SecurityPolicy_TLS13_1_3_2025_09, SecurityPolicy_TLS13_1_3_FIPS_2025_09, SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_PQ_2025_09, SecurityPolicy_TLS13_1_2_2021_06, SecurityPolicy_TLS13_2025_EDGE, SecurityPolicy_TLS12_PFS_2025_EDGE, SecurityPolicy_TLS12_2018_EDGE)</td>
 </tr>
@@ -180,77 +180,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The reference to an Amazon Web Services-managed certificate that will be used by edge-optimized endpoint or private endpoint for this domain name. Certificate Manager is the only supported source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateName" /></td>
+    <td><CopyableCode code="certificate_name" /></td>
     <td><code>string</code></td>
     <td>The name of the certificate that will be used by edge-optimized endpoint or private endpoint for this domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateUploadDate" /></td>
+    <td><CopyableCode code="certificate_upload_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the certificate that was used by edge-optimized endpoint or private endpoint for this domain name was uploaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="distributionDomainName" /></td>
+    <td><CopyableCode code="distribution_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name of the Amazon CloudFront distribution associated with this custom domain name for an edge-optimized endpoint. You set up this association when adding a DNS record pointing the custom domain name to this distribution name. For more information about CloudFront distributions, see the Amazon CloudFront documentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="distributionHostedZoneId" /></td>
+    <td><CopyableCode code="distribution_hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The region-agnostic Amazon Route 53 Hosted Zone ID of the edge-optimized endpoint. The valid value is Z2FDTNDATAQYW2 for all the regions. For more information, see Set up a Regional Custom Domain Name and AWS Regions and Endpoints for API Gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name as an API host name, for example, my-api.example.com.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameArn" /></td>
+    <td><CopyableCode code="domain_name_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameId" /></td>
+    <td><CopyableCode code="domain_name_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the domain name resource. Supported only for private custom domain names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameStatus" /></td>
+    <td><CopyableCode code="domain_name_status" /></td>
     <td><code>string</code></td>
     <td>The status of the DomainName migration. The valid values are AVAILABLE and UPDATING. If the status is UPDATING, the domain cannot be modified further until the existing operation is complete. If it is AVAILABLE, the domain can be updated. (AVAILABLE, UPDATING, PENDING, PENDING_CERTIFICATE_REIMPORT, PENDING_OWNERSHIP_VERIFICATION, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameStatusMessage" /></td>
+    <td><CopyableCode code="domain_name_status_message" /></td>
     <td><code>string</code></td>
     <td>An optional text message containing detailed information about status of the DomainName migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointAccessMode" /></td>
+    <td><CopyableCode code="endpoint_access_mode" /></td>
     <td><code>string</code></td>
     <td>The endpoint access mode of the DomainName. (BASIC, STRICT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endpointConfiguration" /></td>
+    <td><CopyableCode code="endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>The endpoint configuration to indicate the types of endpoints an API (RestApi) or its custom domain name (DomainName) has and the IP address types that can invoke it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managementPolicy" /></td>
+    <td><CopyableCode code="management_policy" /></td>
     <td><code>string</code></td>
     <td>A stringified JSON policy document that applies to the API Gateway Management service for this DomainName. This policy document controls access for access association sources to create domain name access associations with this DomainName. Supported only for private custom domain names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mutualTlsAuthentication" /></td>
+    <td><CopyableCode code="mutual_tls_authentication" /></td>
     <td><code>object</code></td>
     <td>The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway performs two-way authentication between the client and the server. Clients must present a trusted certificate to access your API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownershipVerificationCertificateArn" /></td>
+    <td><CopyableCode code="ownership_verification_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the regionalCertificateArn.</td>
 </tr>
@@ -260,32 +260,32 @@ The following fields are returned by `SELECT` queries:
     <td>A stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalCertificateArn" /></td>
+    <td><CopyableCode code="regional_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The reference to an Amazon Web Services-managed certificate that will be used for validating the regional domain name. Certificate Manager is the only supported source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalCertificateName" /></td>
+    <td><CopyableCode code="regional_certificate_name" /></td>
     <td><code>string</code></td>
     <td>The name of the certificate that will be used for validating the regional domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalDomainName" /></td>
+    <td><CopyableCode code="regional_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name associated with the regional endpoint for this custom domain name. You set up this association by adding a DNS record that points the custom domain name to this regional domain name. The regional domain name is returned by API Gateway when you create a regional endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalHostedZoneId" /></td>
+    <td><CopyableCode code="regional_hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The region-specific Amazon Route 53 Hosted Zone ID of the regional endpoint. For more information, see Set up a Regional Custom Domain Name and AWS Regions and Endpoints for API Gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routingMode" /></td>
+    <td><CopyableCode code="routing_mode" /></td>
     <td><code>string</code></td>
     <td>The routing mode for this domain name. The routing mode determines how API Gateway sends traffic from your custom domain name to your private APIs. (BASE_PATH_MAPPING_ONLY, ROUTING_RULE_ONLY, ROUTING_RULE_THEN_BASE_PATH_MAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityPolicy" /></td>
+    <td><CopyableCode code="security_policy" /></td>
     <td><code>string</code></td>
     <td>The Transport Layer Security (TLS) version + cipher suite for this DomainName. (TLS_1_0, TLS_1_2, SecurityPolicy_TLS13_1_3_2025_09, SecurityPolicy_TLS13_1_3_FIPS_2025_09, SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09, SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09, SecurityPolicy_TLS13_1_2_PQ_2025_09, SecurityPolicy_TLS13_1_2_2021_06, SecurityPolicy_TLS13_2025_EDGE, SecurityPolicy_TLS12_PFS_2025_EDGE, SecurityPolicy_TLS12_2018_EDGE)</td>
 </tr>
@@ -430,28 +430,28 @@ Represents a domain name that is contained in a simpler, more intuitive URL that
 
 ```sql
 SELECT
-certificateArn,
-certificateName,
-certificateUploadDate,
-distributionDomainName,
-distributionHostedZoneId,
-domainName,
-domainNameArn,
-domainNameId,
-domainNameStatus,
-domainNameStatusMessage,
-endpointAccessMode,
-endpointConfiguration,
-managementPolicy,
-mutualTlsAuthentication,
-ownershipVerificationCertificateArn,
+certificate_arn,
+certificate_name,
+certificate_upload_date,
+distribution_domain_name,
+distribution_hosted_zone_id,
+domain_name,
+domain_name_arn,
+domain_name_id,
+domain_name_status,
+domain_name_status_message,
+endpoint_access_mode,
+endpoint_configuration,
+management_policy,
+mutual_tls_authentication,
+ownership_verification_certificate_arn,
 policy,
-regionalCertificateArn,
-regionalCertificateName,
-regionalDomainName,
-regionalHostedZoneId,
-routingMode,
-securityPolicy,
+regional_certificate_arn,
+regional_certificate_name,
+regional_domain_name,
+regional_hosted_zone_id,
+routing_mode,
+security_policy,
 tags
 FROM aws.apigateway.domain_names
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -466,28 +466,28 @@ Represents a collection of DomainName resources.
 
 ```sql
 SELECT
-certificateArn,
-certificateName,
-certificateUploadDate,
-distributionDomainName,
-distributionHostedZoneId,
-domainName,
-domainNameArn,
-domainNameId,
-domainNameStatus,
-domainNameStatusMessage,
-endpointAccessMode,
-endpointConfiguration,
-managementPolicy,
-mutualTlsAuthentication,
-ownershipVerificationCertificateArn,
+certificate_arn,
+certificate_name,
+certificate_upload_date,
+distribution_domain_name,
+distribution_hosted_zone_id,
+domain_name,
+domain_name_arn,
+domain_name_id,
+domain_name_status,
+domain_name_status_message,
+endpoint_access_mode,
+endpoint_configuration,
+management_policy,
+mutual_tls_authentication,
+ownership_verification_certificate_arn,
 policy,
-regionalCertificateArn,
-regionalCertificateName,
-regionalDomainName,
-regionalHostedZoneId,
-routingMode,
-securityPolicy,
+regional_certificate_arn,
+regional_certificate_name,
+regional_domain_name,
+regional_hosted_zone_id,
+routing_mode,
+security_policy,
 tags
 FROM aws.apigateway.domain_names
 WHERE region = '{{ region }}' -- required
@@ -552,28 +552,28 @@ SELECT
 '{{ routingMode }}',
 '{{ region }}'
 RETURNING
-certificateArn,
-certificateName,
-certificateUploadDate,
-distributionDomainName,
-distributionHostedZoneId,
-domainName,
-domainNameArn,
-domainNameId,
-domainNameStatus,
-domainNameStatusMessage,
-endpointAccessMode,
-endpointConfiguration,
-managementPolicy,
-mutualTlsAuthentication,
-ownershipVerificationCertificateArn,
+certificate_arn,
+certificate_name,
+certificate_upload_date,
+distribution_domain_name,
+distribution_hosted_zone_id,
+domain_name,
+domain_name_arn,
+domain_name_id,
+domain_name_status,
+domain_name_status_message,
+endpoint_access_mode,
+endpoint_configuration,
+management_policy,
+mutual_tls_authentication,
+ownership_verification_certificate_arn,
 policy,
-regionalCertificateArn,
-regionalCertificateName,
-regionalDomainName,
-regionalHostedZoneId,
-routingMode,
-securityPolicy,
+regional_certificate_arn,
+regional_certificate_name,
+regional_domain_name,
+regional_hosted_zone_id,
+routing_mode,
+security_policy,
 tags
 ;
 ```
@@ -659,28 +659,28 @@ domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 AND domainNameId = '{{ domainNameId}}'
 RETURNING
-certificateArn,
-certificateName,
-certificateUploadDate,
-distributionDomainName,
-distributionHostedZoneId,
-domainName,
-domainNameArn,
-domainNameId,
-domainNameStatus,
-domainNameStatusMessage,
-endpointAccessMode,
-endpointConfiguration,
-managementPolicy,
-mutualTlsAuthentication,
-ownershipVerificationCertificateArn,
+certificate_arn,
+certificate_name,
+certificate_upload_date,
+distribution_domain_name,
+distribution_hosted_zone_id,
+domain_name,
+domain_name_arn,
+domain_name_id,
+domain_name_status,
+domain_name_status_message,
+endpoint_access_mode,
+endpoint_configuration,
+management_policy,
+mutual_tls_authentication,
+ownership_verification_certificate_arn,
 policy,
-regionalCertificateArn,
-regionalCertificateName,
-regionalDomainName,
-regionalHostedZoneId,
-routingMode,
-securityPolicy,
+regional_certificate_arn,
+regional_certificate_name,
+regional_domain_name,
+regional_hosted_zone_id,
+routing_mode,
+security_policy,
 tags;
 ```
 </TabItem>

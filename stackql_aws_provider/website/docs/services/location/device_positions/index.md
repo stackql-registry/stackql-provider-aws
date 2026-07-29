@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DevicePositions" /></td>
+    <td><CopyableCode code="device_positions" /></td>
     <td><code>array</code></td>
     <td>Contains device position details such as the device ID, position, and timestamps for when the position was received and sampled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>Contains error details for each device that failed to send its position to the tracker resource.</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Accuracy" /></td>
+    <td><CopyableCode code="accuracy" /></td>
     <td><code>object</code></td>
     <td>The accuracy of the device position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The device whose position you retrieved. (pattern: &lt;code&gt;&#91;-._\p&#123;L&#125;\p&#123;N&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Position" /></td>
+    <td><CopyableCode code="position" /></td>
     <td><code>array</code></td>
     <td>The last known device position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PositionProperties" /></td>
+    <td><CopyableCode code="position_properties" /></td>
     <td><code>object</code></td>
     <td>The properties associated with the position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceivedTime" /></td>
+    <td><CopyableCode code="received_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the tracker resource received the device position. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampleTime" /></td>
+    <td><CopyableCode code="sample_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the device's position was determined. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Accuracy" /></td>
+    <td><CopyableCode code="accuracy" /></td>
     <td><code>object</code></td>
     <td>The accuracy of the device position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the device for this position. (pattern: &lt;code&gt;&#91;-._\p&#123;L&#125;\p&#123;N&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Position" /></td>
+    <td><CopyableCode code="position" /></td>
     <td><code>array</code></td>
     <td>The last known device position. Empty if no positions currently stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PositionProperties" /></td>
+    <td><CopyableCode code="position_properties" /></td>
     <td><code>object</code></td>
     <td>The properties associated with the position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampleTime" /></td>
+    <td><CopyableCode code="sample_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the device position was determined. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -235,8 +235,8 @@ Lists the latest device positions for requested devices.
 
 ```sql
 SELECT
-DevicePositions,
-Errors
+device_positions,
+errors
 FROM aws.location.device_positions
 WHERE tracker_name = '{{ tracker_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -249,12 +249,12 @@ Retrieves a device's most recent position according to its sample time. Device p
 
 ```sql
 SELECT
-Accuracy,
-DeviceId,
-Position,
-PositionProperties,
-ReceivedTime,
-SampleTime
+accuracy,
+device_id,
+position,
+position_properties,
+received_time,
+sample_time
 FROM aws.location.device_positions
 WHERE tracker_name = '{{ tracker_name }}' -- required
 AND device_id = '{{ device_id }}' -- required
@@ -268,11 +268,11 @@ A batch request to retrieve all device positions.
 
 ```sql
 SELECT
-Accuracy,
-DeviceId,
-Position,
-PositionProperties,
-SampleTime
+accuracy,
+device_id,
+position,
+position_properties,
+sample_time
 FROM aws.location.device_positions
 WHERE tracker_name = '{{ tracker_name }}' -- required
 AND region = '{{ region }}' -- required

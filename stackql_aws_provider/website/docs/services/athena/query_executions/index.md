@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="QueryExecutions" /></td>
+    <td><CopyableCode code="query_executions" /></td>
     <td><code>array</code></td>
     <td>Information about a query execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedQueryExecutionIds" /></td>
+    <td><CopyableCode code="unprocessed_query_execution_ids" /></td>
     <td><code>array</code></td>
     <td>Information about the query executions that failed to run.</td>
 </tr>
@@ -76,72 +76,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>object</code></td>
     <td>The engine version that executed the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionParameters" /></td>
+    <td><CopyableCode code="execution_parameters" /></td>
     <td><code>array</code></td>
     <td>A list of values for the parameters in a query. The values are applied sequentially to the parameters in the query in the order in which the parameters occur. The list of parameters is not returned in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedQueryResultsConfiguration" /></td>
+    <td><CopyableCode code="managed_query_results_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for storing results in Athena owned storage, which includes whether this feature is enabled; whether encryption configuration, if any, is used for encrypting query results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Query" /></td>
+    <td><CopyableCode code="query" /></td>
     <td><code>string</code></td>
     <td>The SQL query statements which the query execution ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryExecutionContext" /></td>
+    <td><CopyableCode code="query_execution_context" /></td>
     <td><code>object</code></td>
     <td>The database in which the query execution occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryExecutionId" /></td>
+    <td><CopyableCode code="query_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for each query execution. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryResultsS3AccessGrantsConfiguration" /></td>
+    <td><CopyableCode code="query_results_s3_access_grants_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies whether Amazon S3 access grants are enabled for query results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultConfiguration" /></td>
+    <td><CopyableCode code="result_configuration" /></td>
     <td><code>object</code></td>
     <td>The location in Amazon S3 where query and calculation results are stored and the encryption option, if any, used for query results. These are known as "client-side settings". If workgroup settings override client-side settings, then the query uses the location for the query results and the encryption configuration that are specified for the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultReuseConfiguration" /></td>
+    <td><CopyableCode code="result_reuse_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the query result reuse behavior that was used for the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatementType" /></td>
+    <td><CopyableCode code="statement_type" /></td>
     <td><code>string</code></td>
     <td>The type of query statement that was run. DDL indicates DDL query statements. DML indicates DML (Data Manipulation Language) query statements, such as CREATE TABLE AS SELECT. UTILITY indicates query statements other than DDL and DML, such as SHOW CREATE TABLE, EXPLAIN, DESCRIBE, or SHOW TABLES. (DDL, DML, UTILITY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistics" /></td>
+    <td><CopyableCode code="statistics" /></td>
     <td><code>object</code></td>
     <td>Query execution statistics, such as the amount of data scanned, the amount of time that the query took to process, and the type of statement that was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubstatementType" /></td>
+    <td><CopyableCode code="substatement_type" /></td>
     <td><code>string</code></td>
     <td>The kind of query statement that was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkGroup" /></td>
+    <td><CopyableCode code="work_group" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup in which the query ran. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
@@ -245,8 +245,8 @@ Returns the details of a single query execution or a list of up to 50 query exec
 
 ```sql
 SELECT
-QueryExecutions,
-UnprocessedQueryExecutionIds
+query_executions,
+unprocessed_query_execution_ids
 FROM aws.athena.query_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,20 +258,20 @@ Returns information about a single execution of a query if you have access to th
 
 ```sql
 SELECT
-EngineVersion,
-ExecutionParameters,
-ManagedQueryResultsConfiguration,
-Query,
-QueryExecutionContext,
-QueryExecutionId,
-QueryResultsS3AccessGrantsConfiguration,
-ResultConfiguration,
-ResultReuseConfiguration,
-StatementType,
-Statistics,
-Status,
-SubstatementType,
-WorkGroup
+engine_version,
+execution_parameters,
+managed_query_results_configuration,
+query,
+query_execution_context,
+query_execution_id,
+query_results_s3_access_grants_configuration,
+result_configuration,
+result_reuse_configuration,
+statement_type,
+statistics,
+status,
+substatement_type,
+work_group
 FROM aws.athena.query_executions
 WHERE region = '{{ region }}' -- required
 ;

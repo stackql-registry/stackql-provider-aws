@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone or Local Zone of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageMetadata" /></td>
+    <td><CopyableCode code="image_metadata" /></td>
     <td><code>string</code></td>
     <td>Information about the AMI used to launch the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTime" /></td>
+    <td><CopyableCode code="launch_time" /></td>
     <td><code>string</code></td>
     <td>The time the instance was launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZoneId" /></td>
+    <td><CopyableCode code="zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone or Local Zone of the instance.</td>
 </tr>
@@ -189,16 +189,16 @@ Describes the AMI that was used to launch an instance, even if the AMI is deprec
 
 ```sql
 SELECT
-AvailabilityZone,
-ImageMetadata,
-InstanceId,
-InstanceType,
-LaunchTime,
-Operator,
-OwnerId,
-State,
-Tags,
-ZoneId
+availability_zone,
+image_metadata,
+instance_id,
+instance_type,
+launch_time,
+operator,
+owner_id,
+state,
+tags,
+zone_id
 FROM aws.ec2.instance_image_metadatas
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

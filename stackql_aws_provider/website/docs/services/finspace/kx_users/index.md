@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamRole" /></td>
+    <td><CopyableCode code="iam_role" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN that is associated with the user. (pattern: &lt;code&gt;^arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userArn" /></td>
+    <td><CopyableCode code="user_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs and how to use ARNs in policies, see IAM Identifiers in the IAM User Guide. (pattern: &lt;code&gt;^arn:aws:finspace:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:\d+:kxEnvironment/&#91;0-9A-Za-z_-&#93;&#123;1,128&#125;/kxUser/&#91;0-9A-Za-z_-&#93;&#123;1,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the user. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;1,26&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -213,10 +213,10 @@ Retrieves information about the specified kdb user.
 
 ```sql
 SELECT
-environmentId,
-iamRole,
-userArn,
-userName
+environment_id,
+iam_role,
+user_arn,
+user_name
 FROM aws.finspace.kx_users
 WHERE user_name = '{{ user_name }}' -- required
 AND environment_id = '{{ environment_id }}' -- required
@@ -230,7 +230,7 @@ Lists all the users in a kdb environment.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 users
 FROM aws.finspace.kx_users
 WHERE environment_id = '{{ environment_id }}' -- required
@@ -273,10 +273,10 @@ SELECT
 '{{ environment_id }}',
 '{{ region }}'
 RETURNING
-environmentId,
-iamRole,
-userArn,
-userName
+environment_id,
+iam_role,
+user_arn,
+user_name
 ;
 ```
 </TabItem>
@@ -328,10 +328,10 @@ AND user_name = '{{ user_name }}' --required
 AND region = '{{ region }}' --required
 AND iamRole = '{{ iamRole }}' --required
 RETURNING
-environmentId,
-iamRole,
-userArn,
-userName;
+environment_id,
+iam_role,
+user_arn,
+user_name;
 ```
 </TabItem>
 </Tabs>

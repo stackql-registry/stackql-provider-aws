@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of status information for each replication destination, including the current state, last successful update, and any error messages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceTableArn" /></td>
+    <td><CopyableCode code="source_table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source table being replicated. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9_-&#93;&#123;3,63&#125;/table/&#91;a-zA-Z0-9-_&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ Retrieves the replication status for a table, including the status of replicatio
 ```sql
 SELECT
 destinations,
-sourceTableArn
+source_table_arn
 FROM aws.s3tables.table_replication_status
 WHERE tableArn = '{{ tableArn }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="User" /></td>
+    <td><CopyableCode code="user" /></td>
     <td><code>object</code></td>
     <td>The user name.</td>
 </tr>
@@ -80,57 +80,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Active" /></td>
+    <td><CopyableCode code="active" /></td>
     <td><code>boolean</code></td>
     <td>The active status of user. When you create an Quick Sight user that's not an IAM user or an Active Directory user, that user is inactive until they sign in and provide a password.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomPermissionsName" /></td>
+    <td><CopyableCode code="custom_permissions_name" /></td>
     <td><code>string</code></td>
     <td>The custom permissions profile associated with this user. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9+=,.@_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The user's email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalLoginFederationProviderType" /></td>
+    <td><CopyableCode code="external_login_federation_provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of supported external login provider that provides identity to let the user federate into Quick Sight with an associated IAM role. The type can be one of the following. COGNITO: Amazon Cognito. The provider URL is cognito-identity.amazonaws.com. CUSTOM_OIDC: Custom OpenID Connect (OIDC) provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalLoginFederationProviderUrl" /></td>
+    <td><CopyableCode code="external_login_federation_provider_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the external login provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalLoginId" /></td>
+    <td><CopyableCode code="external_login_id" /></td>
     <td><code>string</code></td>
     <td>The identity ID for the user in the external login provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>The type of identity authentication used by the user. (IAM, QUICKSIGHT, IAM_IDENTITY_CENTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalId" /></td>
+    <td><CopyableCode code="principal_id" /></td>
     <td><code>string</code></td>
     <td>The principal ID of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>The Quick Sight role for the user. The user role can be one of the following:. READER: A user who has read-only access to dashboards. AUTHOR: A user who can create data sources, datasets, analyses, and dashboards. ADMIN: A user who is an author, who can also manage Amazon Quick Sight settings. READER_PRO: Reader Pro adds Generative BI capabilities to the Reader role. Reader Pros have access to Amazon Q in Quick Sight, can build stories with Amazon Q, and can generate executive summaries from dashboards. AUTHOR_PRO: Author Pro adds Generative BI capabilities to the Author role. Author Pros can author dashboards with natural language with Amazon Q, build stories with Amazon Q, create Topics for Q&A, and generate executive summaries from dashboards. ADMIN_PRO: Admin Pros are Author Pros who can also manage Quick Sight administrative settings. Admin Pro users are billed at Author Pro pricing. RESTRICTED_READER: This role isn't currently available for use. RESTRICTED_AUTHOR: This role isn't currently available for use. (ADMIN, AUTHOR, READER, RESTRICTED_AUTHOR, RESTRICTED_READER, ADMIN_PRO, AUTHOR_PRO, READER_PRO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The user's user name. This value is required if you are registering a user that will be managed in Quick Sight. In the output, the value for UserName is N/A when the value for IdentityType is IAM and the corresponding IAM user is deleted. (pattern: &lt;code&gt;&#91;\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -272,9 +272,9 @@ Returns information about a user, given the user name.
 
 ```sql
 SELECT
-RequestId,
-Status,
-User
+request_id,
+status,
+user
 FROM aws.quicksight.users
 WHERE user_name = '{{ user_name }}' -- required
 AND aws_account_id = '{{ aws_account_id }}' -- required
@@ -289,17 +289,17 @@ Returns a list of all of the Amazon Quick Sight users belonging to this account.
 
 ```sql
 SELECT
-Active,
-Arn,
-CustomPermissionsName,
-Email,
-ExternalLoginFederationProviderType,
-ExternalLoginFederationProviderUrl,
-ExternalLoginId,
-IdentityType,
-PrincipalId,
-Role,
-UserName
+active,
+arn,
+custom_permissions_name,
+email,
+external_login_federation_provider_type,
+external_login_federation_provider_url,
+external_login_id,
+identity_type,
+principal_id,
+role,
+user_name
 FROM aws.quicksight.users
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -358,10 +358,10 @@ SELECT
 '{{ namespace }}',
 '{{ region }}'
 RETURNING
-RequestId,
-Status,
-User,
-UserInvitationUrl
+request_id,
+status,
+user,
+user_invitation_url
 ;
 ```
 </TabItem>
@@ -439,9 +439,9 @@ AND aws_account_id = '{{ aws_account_id }}' --required
 AND namespace = '{{ namespace }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RequestId,
-Status,
-User;
+request_id,
+status,
+user;
 ```
 </TabItem>
 </Tabs>

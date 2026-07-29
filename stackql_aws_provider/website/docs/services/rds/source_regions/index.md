@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint for the source Amazon Web Services Region endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the source Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsDBInstanceAutomatedBackupsReplication" /></td>
+    <td><CopyableCode code="supports_db_instance_automated_backups_replication" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the source Amazon Web Services Region supports replicating automated backups to the current Amazon Web Services Region.</td>
 </tr>
@@ -154,10 +154,10 @@ Returns a list of the source Amazon Web Services Regions where the current Amazo
 
 ```sql
 SELECT
-Endpoint,
-RegionName,
-Status,
-SupportsDBInstanceAutomatedBackupsReplication
+endpoint,
+region_name,
+status,
+supports_db_instance_automated_backups_replication
 FROM aws.rds.source_regions
 WHERE region = '{{ region }}' -- required
 AND RegionName = '{{ RegionName }}'

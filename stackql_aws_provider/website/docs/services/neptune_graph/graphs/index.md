@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN associated with the graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildNumber" /></td>
+    <td><CopyableCode code="build_number" /></td>
     <td><code>string</code></td>
     <td>The build number of the graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the graph was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>If true, deletion protection is enabled for the graph.</td>
 </tr>
@@ -86,27 +86,27 @@ The following fields are returned by `SELECT` queries:
     <td>The graph endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used to encrypt and decrypt graph data. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedMemory" /></td>
+    <td><CopyableCode code="provisioned_memory" /></td>
     <td><code>integer</code></td>
     <td>The number of memory-optimized Neptune Capacity Units (m-NCUs) allocated to the graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicConnectivity" /></td>
+    <td><CopyableCode code="public_connectivity" /></td>
     <td><code>boolean</code></td>
     <td>If true, the graph has a public endpoint, otherwise not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicaCount" /></td>
+    <td><CopyableCode code="replica_count" /></td>
     <td><code>integer</code></td>
     <td>The number of replicas for the graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceSnapshotId" /></td>
+    <td><CopyableCode code="source_snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot from which the graph was created, if it was created from a snapshot. (pattern: &lt;code&gt;gs-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -116,12 +116,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the graph. (CREATING, AVAILABLE, DELETING, RESETTING, UPDATING, SNAPSHOTTING, FAILED, IMPORTING, STARTING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the graph has this status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorSearchConfiguration" /></td>
+    <td><CopyableCode code="vector_search_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the number of dimensions for vector embeddings loaded into the graph. Max = 65535</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN associated with the graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>If true, deletion protection is enabled for the graph.</td>
 </tr>
@@ -165,22 +165,22 @@ The following fields are returned by `SELECT` queries:
     <td>The graph endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used to encrypt and decrypt graph data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedMemory" /></td>
+    <td><CopyableCode code="provisioned_memory" /></td>
     <td><code>integer</code></td>
     <td>The number of memory-optimized Neptune Capacity Units (m-NCUs) allocated to the graph.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publicConnectivity" /></td>
+    <td><CopyableCode code="public_connectivity" /></td>
     <td><code>boolean</code></td>
     <td>If true, the graph has a public endpoint, otherwise not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicaCount" /></td>
+    <td><CopyableCode code="replica_count" /></td>
     <td><code>integer</code></td>
     <td>The number of replicas for the graph.</td>
 </tr>
@@ -351,18 +351,18 @@ SELECT
 id,
 name,
 arn,
-buildNumber,
-createTime,
-deletionProtection,
+build_number,
+create_time,
+deletion_protection,
 endpoint,
-kmsKeyIdentifier,
-provisionedMemory,
-publicConnectivity,
-replicaCount,
-sourceSnapshotId,
+kms_key_identifier,
+provisioned_memory,
+public_connectivity,
+replica_count,
+source_snapshot_id,
 status,
-statusReason,
-vectorSearchConfiguration
+status_reason,
+vector_search_configuration
 FROM aws.neptune_graph.graphs
 WHERE graph_identifier = '{{ graph_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -378,12 +378,12 @@ SELECT
 id,
 name,
 arn,
-deletionProtection,
+deletion_protection,
 endpoint,
-kmsKeyIdentifier,
-provisionedMemory,
-publicConnectivity,
-replicaCount,
+kms_key_identifier,
+provisioned_memory,
+public_connectivity,
+replica_count,
 status
 FROM aws.neptune_graph.graphs
 WHERE region = '{{ region }}' -- required
@@ -434,18 +434,18 @@ RETURNING
 id,
 name,
 arn,
-buildNumber,
-createTime,
-deletionProtection,
+build_number,
+create_time,
+deletion_protection,
 endpoint,
-kmsKeyIdentifier,
-provisionedMemory,
-publicConnectivity,
-replicaCount,
-sourceSnapshotId,
+kms_key_identifier,
+provisioned_memory,
+public_connectivity,
+replica_count,
+source_snapshot_id,
 status,
-statusReason,
-vectorSearchConfiguration
+status_reason,
+vector_search_configuration
 ;
 ```
 </TabItem>
@@ -507,18 +507,18 @@ RETURNING
 id,
 name,
 arn,
-buildNumber,
-createTime,
-deletionProtection,
+build_number,
+create_time,
+deletion_protection,
 endpoint,
-kmsKeyIdentifier,
-provisionedMemory,
-publicConnectivity,
-replicaCount,
-sourceSnapshotId,
+kms_key_identifier,
+provisioned_memory,
+public_connectivity,
+replica_count,
+source_snapshot_id,
 status,
-statusReason,
-vectorSearchConfiguration;
+status_reason,
+vector_search_configuration;
 ```
 </TabItem>
 </Tabs>

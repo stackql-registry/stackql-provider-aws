@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="customerProfiles" /></td>
+    <td><CopyableCode code="customer_profiles" /></td>
     <td><code>object</code></td>
     <td>Customer Profiles integration summary</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>Lambda integration summary</td>
 </tr>
 <tr>
-    <td><CopyableCode code="qConnect" /></td>
+    <td><CopyableCode code="q_connect" /></td>
     <td><code>object</code></td>
     <td>Q Connect integration summary</td>
 </tr>
@@ -158,9 +158,9 @@ Provides summary information about the integration under the specified Connect i
 
 ```sql
 SELECT
-customerProfiles,
+customer_profiles,
 lambda,
-qConnect
+q_connect
 FROM aws.connectcampaignsv2.connect_instance_integrations
 WHERE connect_instance_id = '{{ connect_instance_id }}' -- required
 AND region = '{{ region }}' -- required

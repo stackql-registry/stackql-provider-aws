@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of a read set. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for when a direct upload was created.</td>
 </tr>
@@ -65,32 +65,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a read set. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generatedFrom" /></td>
+    <td><CopyableCode code="generated_from" /></td>
     <td><code>string</code></td>
     <td>The source of an uploaded part. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="referenceArn" /></td>
+    <td><CopyableCode code="reference_arn" /></td>
     <td><code>string</code></td>
     <td>The source's reference ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleId" /></td>
+    <td><CopyableCode code="sample_id" /></td>
     <td><code>string</code></td>
     <td>The read set source's sample ID. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sequenceStoreId" /></td>
+    <td><CopyableCode code="sequence_store_id" /></td>
     <td><code>string</code></td>
     <td>The sequence store ID used for the multipart upload. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceFileType" /></td>
+    <td><CopyableCode code="source_file_type" /></td>
     <td><code>string</code></td>
     <td>The type of file the read set originated from. (FASTQ, BAM, CRAM, UBAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subjectId" /></td>
+    <td><CopyableCode code="subject_id" /></td>
     <td><code>string</code></td>
     <td>The read set source's subject ID. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>Any tags you wish to add to a read set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadId" /></td>
+    <td><CopyableCode code="upload_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the initiated multipart upload. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -192,16 +192,16 @@ Lists in-progress multipart read set uploads for a sequence store and returns it
 ```sql
 SELECT
 name,
-creationTime,
+creation_time,
 description,
-generatedFrom,
-referenceArn,
-sampleId,
-sequenceStoreId,
-sourceFileType,
-subjectId,
+generated_from,
+reference_arn,
+sample_id,
+sequence_store_id,
+source_file_type,
+subject_id,
 tags,
-uploadId
+upload_id
 FROM aws.omics.multipart_read_set_uploads
 WHERE sequence_store_id = '{{ sequence_store_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -254,16 +254,16 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-creationTime,
+creation_time,
 description,
-generatedFrom,
-referenceArn,
-sampleId,
-sequenceStoreId,
-sourceFileType,
-subjectId,
+generated_from,
+reference_arn,
+sample_id,
+sequence_store_id,
+source_file_type,
+subject_id,
 tags,
-uploadId
+upload_id
 ;
 ```
 </TabItem>

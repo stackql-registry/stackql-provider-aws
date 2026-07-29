@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityInBytes" /></td>
+    <td><CopyableCode code="capacity_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Amazon S3 capacity of the outpost in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique Amazon Resource Name (ARN) for the outpost. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):outposts:&#91;a-z\-0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:outpost/(op-&#91;a-f0-9&#93;&#123;17&#125;|ec2)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique identifier for the outpost. (pattern: &lt;code&gt;^(op-&#91;a-f0-9&#93;&#123;17&#125;|\d&#123;12&#125;|ec2)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Returns the Amazon Web Services account ID of the outpost owner. Useful for comparing owned versus shared outposts. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3OutpostArn" /></td>
+    <td><CopyableCode code="s3_outpost_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique S3 on Outposts ARN for use with Resource Access Manager (RAM). (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):s3-outposts:&#91;a-z\-0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:outpost/(op-&#91;a-f0-9&#93;&#123;17&#125;|\d&#123;12&#125;)/s3$&lt;/code&gt;)</td>
 </tr>
@@ -149,11 +149,11 @@ Lists the Outposts with S3 on Outposts capacity for your Amazon Web Services acc
 
 ```sql
 SELECT
-CapacityInBytes,
-OutpostArn,
-OutpostId,
-OwnerId,
-S3OutpostArn
+capacity_in_bytes,
+outpost_arn,
+outpost_id,
+owner_id,
+s3_outpost_arn
 FROM aws.s3outposts.outposts_with_s3s
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

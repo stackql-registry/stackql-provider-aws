@@ -101,7 +101,7 @@ WHERE
 region = '{{ region }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 RETURNING
-AssociatedAt;
+associated_at;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>Name of the AWS region. (pattern: &lt;code&gt;&#91;-0-9a-z&#93;&#123;1,31&#125;&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves a list of AWS regions supported by Amazon WorkSpaces Instances, enabli
 
 ```sql
 SELECT
-RegionName
+region_name
 FROM aws.workspaces_instances.regions
 WHERE region = '{{ region }}' -- required
 ;

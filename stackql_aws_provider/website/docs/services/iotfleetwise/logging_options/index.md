@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon CloudWatch Logs group the operation sends data to. (pattern: &lt;code&gt;&#91;\.\-_\/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logType" /></td>
+    <td><CopyableCode code="log_type" /></td>
     <td><code>string</code></td>
     <td>The type of log to send data to Amazon CloudWatch Logs. (OFF, ERROR)</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the logging options.
 
 ```sql
 SELECT
-logGroupName,
-logType
+log_group_name,
+log_type
 FROM aws.iotfleetwise.logging_options
 WHERE region = '{{ region }}' -- required
 ;

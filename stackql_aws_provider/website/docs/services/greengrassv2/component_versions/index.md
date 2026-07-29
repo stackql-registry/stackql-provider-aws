@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the component version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentName" /></td>
+    <td><CopyableCode code="component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentVersion" /></td>
+    <td><CopyableCode code="component_version" /></td>
     <td><code>string</code></td>
     <td>The version of the component.</td>
 </tr>
@@ -152,8 +152,8 @@ Retrieves a paginated list of all versions for a component. Greater versions are
 ```sql
 SELECT
 arn,
-componentName,
-componentVersion
+component_name,
+component_version
 FROM aws.greengrassv2.component_versions
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -194,9 +194,9 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-componentName,
-componentVersion,
-creationTimestamp,
+component_name,
+component_version,
+creation_timestamp,
 status
 ;
 ```

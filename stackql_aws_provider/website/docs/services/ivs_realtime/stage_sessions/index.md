@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>ISO 8601 timestamp (returned as a string) when the stage session ended. This is null if the stage is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>ID of the session within the stage. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>ISO 8601 timestamp (returned as a string) when this stage session began.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more stage sessions than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageSessions" /></td>
+    <td><CopyableCode code="stage_sessions" /></td>
     <td><code>array</code></td>
     <td>List of matching stage sessions.</td>
 </tr>
@@ -162,9 +162,9 @@ Gets information for the specified stage session.
 
 ```sql
 SELECT
-endTime,
-sessionId,
-startTime
+end_time,
+session_id,
+start_time
 FROM aws.ivs_realtime.stage_sessions
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,8 +176,8 @@ Gets all sessions for a specified stage.
 
 ```sql
 SELECT
-nextToken,
-stageSessions
+next_token,
+stage_sessions
 FROM aws.ivs_realtime.stage_sessions
 WHERE region = '{{ region }}' -- required
 ;

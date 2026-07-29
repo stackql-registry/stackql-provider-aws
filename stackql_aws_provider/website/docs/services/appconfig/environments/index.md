@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The environment ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Monitors" /></td>
+    <td><CopyableCode code="monitors" /></td>
     <td><code>array</code></td>
     <td>Amazon CloudWatch alarms monitored during the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the environment. An environment can be in one of the following states: READY_FOR_DEPLOYMENT, DEPLOYING, ROLLING_BACK, or ROLLED_BACK (READY_FOR_DEPLOYMENT, DEPLOYING, ROLLING_BACK, ROLLED_BACK, REVERTED)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The environment ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Monitors" /></td>
+    <td><CopyableCode code="monitors" /></td>
     <td><code>array</code></td>
     <td>Amazon CloudWatch alarms monitored during the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the environment. An environment can be in one of the following states: READY_FOR_DEPLOYMENT, DEPLOYING, ROLLING_BACK, or ROLLED_BACK (READY_FOR_DEPLOYMENT, DEPLOYING, ROLLING_BACK, ROLLED_BACK, REVERTED)</td>
 </tr>
@@ -243,12 +243,12 @@ Retrieves information about an environment. An environment is a deployment group
 
 ```sql
 SELECT
-ApplicationId,
-Description,
-Id,
-Monitors,
-Name,
-State
+application_id,
+description,
+id,
+monitors,
+name,
+state
 FROM aws.appconfig.environments
 WHERE application_id = '{{ application_id }}' -- required
 AND environment_id = '{{ environment_id }}' -- required
@@ -262,12 +262,12 @@ Lists the environments for an application.
 
 ```sql
 SELECT
-ApplicationId,
-Description,
-Id,
-Monitors,
-Name,
-State
+application_id,
+description,
+id,
+monitors,
+name,
+state
 FROM aws.appconfig.environments
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -309,12 +309,12 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-Description,
-Id,
-Monitors,
-Name,
-State
+application_id,
+description,
+id,
+monitors,
+name,
+state
 ;
 ```
 </TabItem>
@@ -368,12 +368,12 @@ application_id = '{{ application_id }}' --required
 AND environment_id = '{{ environment_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApplicationId,
-Description,
-Id,
-Monitors,
-Name,
-State;
+application_id,
+description,
+id,
+monitors,
+name,
+state;
 ```
 </TabItem>
 </Tabs>

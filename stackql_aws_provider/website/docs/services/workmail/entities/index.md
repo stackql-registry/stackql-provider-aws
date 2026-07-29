@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EntityId" /></td>
+    <td><CopyableCode code="entity_id" /></td>
     <td><code>string</code></td>
     <td>The entity ID under which the entity exists.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Username, GroupName, or ResourceName based on entity type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Entity type. (GROUP, USER, RESOURCE)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns basic details about an entity in WorkMail.
 
 ```sql
 SELECT
-EntityId,
-Name,
-Type
+entity_id,
+name,
+type
 FROM aws.workmail.entities
 WHERE region = '{{ region }}' -- required
 ;

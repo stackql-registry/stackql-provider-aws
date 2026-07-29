@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The pricing plan Amazon Resource Names (ARN). This can be used to uniquely identify a pricing plan. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::(aws|&#91;0-9&#93;&#123;12&#125;):pricingplan/)?(BasicPricingPlan|Passthrough|&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time when the pricing plan was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The pricing plan description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The most recent time when the pricing plan was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of a pricing plan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\+=\.\-@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The pricing rules count that's currently associated with this pricing plan list element.</td>
 </tr>
@@ -170,12 +170,12 @@ A paginated call to get pricing plans for the given billing period. If you don't
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-Description,
-LastModifiedTime,
-Name,
-Size
+arn,
+creation_time,
+description,
+last_modified_time,
+name,
+size
 FROM aws.billingconductor.pricing_plans
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,7 +214,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>
@@ -266,11 +266,11 @@ Description = '{{ Description }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-Description,
-LastModifiedTime,
-Name,
-Size;
+arn,
+description,
+last_modified_time,
+name,
+size;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="collectionSummaries" /></td>
+    <td><CopyableCode code="collection_summaries" /></td>
     <td><code>array</code></td>
     <td>Details about each collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page.</td>
 </tr>
@@ -152,8 +152,8 @@ Lists all OpenSearch Serverless collections. For more information, see Creating 
 
 ```sql
 SELECT
-collectionSummaries,
-nextToken
+collection_summaries,
+next_token
 FROM aws.opensearchserverless.collections
 WHERE region = '{{ region }}' -- required
 ;
@@ -200,7 +200,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-createCollectionDetail
+create_collection_detail
 ;
 ```
 </TabItem>
@@ -284,7 +284,7 @@ WHERE
 region = '{{ region }}' --required
 AND id = '{{ id }}' --required
 RETURNING
-updateCollectionDetail;
+update_collection_detail;
 ```
 </TabItem>
 </Tabs>

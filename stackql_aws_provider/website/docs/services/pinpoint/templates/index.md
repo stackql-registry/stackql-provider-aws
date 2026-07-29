@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each message template that's associated with your Amazon Pinpoint account and meets any filter criteria that you specified in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -161,8 +161,8 @@ Retrieves information about all the message templates that are associated with y
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.templates
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -197,7 +197,7 @@ AND `template-type` = '{{ template-type }}' --required
 AND region = '{{ region }}' --required
 AND TemplateActiveVersionRequest = '{{ TemplateActiveVersionRequest }}' --required
 RETURNING
-MessageBody;
+message_body;
 ```
 </TabItem>
 </Tabs>

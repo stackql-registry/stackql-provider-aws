@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AWSAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account that you created the user pool in. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudFrontDistribution" /></td>
+    <td><CopyableCode code="cloud_front_distribution" /></td>
     <td><code>string</code></td>
     <td>The Amazon CloudFront endpoint that hosts your custom domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDomainConfig" /></td>
+    <td><CopyableCode code="custom_domain_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for a custom domain that hosts the sign-up and sign-in webpages for your application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain string. For custom domains, this is the fully-qualified domain name, such as auth.example.com. For Amazon Cognito prefix domains, this is the prefix alone, such as auth. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;(?:&#91;a-z0-9\-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedLoginVersion" /></td>
+    <td><CopyableCode code="managed_login_version" /></td>
     <td><code>integer</code></td>
     <td>The version of managed login branding that you want to apply to your domain. A value of 1 indicates hosted UI (classic) branding and a version of 2 indicates managed login branding. Managed login requires that your user pool be configured for any feature plan other than Lite.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Bucket" /></td>
+    <td><CopyableCode code="s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 bucket where the static files for this domain are stored. (pattern: &lt;code&gt;^&#91;0-9A-Za-z\.\-_&#93;*(?&lt;!\.)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The domain status. (CREATING, DELETING, UPDATING, ACTIVE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool that the domain is attached to. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The app version.</td>
 </tr>
@@ -180,15 +180,15 @@ Given a user pool domain name, returns information about the domain configuratio
 
 ```sql
 SELECT
-AWSAccountId,
-CloudFrontDistribution,
-CustomDomainConfig,
-Domain,
-ManagedLoginVersion,
-S3Bucket,
-Status,
-UserPoolId,
-Version
+aws_account_id,
+cloud_front_distribution,
+custom_domain_config,
+domain,
+managed_login_version,
+s3_bucket,
+status,
+user_pool_id,
+version
 FROM aws.cognito_idp.user_pool_domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,8 +225,8 @@ SELECT
 '{{ CustomDomainConfig }}',
 '{{ region }}'
 RETURNING
-CloudFrontDomain,
-ManagedLoginVersion
+cloud_front_domain,
+managed_login_version
 ;
 ```
 </TabItem>
@@ -285,8 +285,8 @@ region = '{{ region }}' --required
 AND Domain = '{{ Domain }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
-CloudFrontDomain,
-ManagedLoginVersion;
+cloud_front_domain,
+managed_login_version;
 ```
 </TabItem>
 </Tabs>

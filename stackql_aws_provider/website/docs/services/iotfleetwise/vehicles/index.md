@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>Static information about a vehicle in a key-value pair. For example: "engineType" : "1.3 L R2"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the vehicle was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decoderManifestArn" /></td>
+    <td><CopyableCode code="decoder_manifest_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a decoder manifest associated with the vehicle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the vehicle was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelManifestArn" /></td>
+    <td><CopyableCode code="model_manifest_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a vehicle model (model manifest) associated with the vehicle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateTemplates" /></td>
+    <td><CopyableCode code="state_templates" /></td>
     <td><code>array</code></td>
     <td>State templates associated with the vehicle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vehicleName" /></td>
+    <td><CopyableCode code="vehicle_name" /></td>
     <td><code>string</code></td>
     <td>The ID of the vehicle. (pattern: &lt;code&gt;&#91;a-zA-Z\d\-_:&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
     <td>Static information about a vehicle in a key-value pair. For example: "engineType" : "1.3 L R2"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the vehicle was created in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decoderManifestArn" /></td>
+    <td><CopyableCode code="decoder_manifest_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a decoder manifest associated with the vehicle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the vehicle was last updated in seconds since epoch (January 1, 1970 at midnight UTC time).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelManifestArn" /></td>
+    <td><CopyableCode code="model_manifest_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a vehicle model (model manifest) associated with the vehicle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vehicleName" /></td>
+    <td><CopyableCode code="vehicle_name" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the vehicle. (pattern: &lt;code&gt;&#91;a-zA-Z\d\-_:&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -235,12 +235,12 @@ Retrieves information about a vehicle.
 SELECT
 arn,
 attributes,
-creationTime,
-decoderManifestArn,
-lastModificationTime,
-modelManifestArn,
-stateTemplates,
-vehicleName
+creation_time,
+decoder_manifest_arn,
+last_modification_time,
+model_manifest_arn,
+state_templates,
+vehicle_name
 FROM aws.iotfleetwise.vehicles
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,11 +254,11 @@ Retrieves a list of summaries of created vehicles. This API operation uses pagin
 SELECT
 arn,
 attributes,
-creationTime,
-decoderManifestArn,
-lastModificationTime,
-modelManifestArn,
-vehicleName
+creation_time,
+decoder_manifest_arn,
+last_modification_time,
+model_manifest_arn,
+vehicle_name
 FROM aws.iotfleetwise.vehicles
 WHERE region = '{{ region }}' -- required
 ;
@@ -302,8 +302,8 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-thingArn,
-vehicleName
+thing_arn,
+vehicle_name
 ;
 ```
 </TabItem>
@@ -387,7 +387,7 @@ region = '{{ region }}' --required
 AND vehicleName = '{{ vehicleName }}' --required
 RETURNING
 arn,
-vehicleName;
+vehicle_name;
 ```
 </TabItem>
 </Tabs>

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArchiveArn" /></td>
+    <td><CopyableCode code="archive_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the archive. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:.+\/.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveName" /></td>
+    <td><CopyableCode code="archive_name" /></td>
     <td><code>string</code></td>
     <td>The name of the archive. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the archive was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the archive. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventCount" /></td>
+    <td><CopyableCode code="event_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of events in the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventPattern" /></td>
+    <td><CopyableCode code="event_pattern" /></td>
     <td><code>string</code></td>
     <td>The event pattern used to filter events sent to the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSourceArn" /></td>
+    <td><CopyableCode code="event_source_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the event source associated with the archive. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:.+\/.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the KMS customer managed key for EventBridge to use to encrypt this archive, if one has been specified. For more information, see Encrypting archives in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-/:&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionDays" /></td>
+    <td><CopyableCode code="retention_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days to retain events for in the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeBytes" /></td>
+    <td><CopyableCode code="size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the archive in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the archive. (ENABLED, DISABLED, CREATING, UPDATING, CREATE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the archive is in the state. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Archives" /></td>
+    <td><CopyableCode code="archives" /></td>
     <td><code>array</code></td>
     <td>An array of Archive objects that include details about an archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token indicating there are more results available. If there are no more results, no token is included in the response. The value of nextToken is a unique pagination token for each page. To retrieve the next page of results, make the call again using the returned token. Keep all other arguments unchanged. Using an expired pagination token results in an HTTP 400 InvalidToken error.</td>
 </tr>
@@ -228,18 +228,18 @@ Retrieves details about an archive.
 
 ```sql
 SELECT
-ArchiveArn,
-ArchiveName,
-CreationTime,
-Description,
-EventCount,
-EventPattern,
-EventSourceArn,
-KmsKeyIdentifier,
-RetentionDays,
-SizeBytes,
-State,
-StateReason
+archive_arn,
+archive_name,
+creation_time,
+description,
+event_count,
+event_pattern,
+event_source_arn,
+kms_key_identifier,
+retention_days,
+size_bytes,
+state,
+state_reason
 FROM aws.events.archives
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,8 +251,8 @@ Lists your archives. You can either list all the archives or you can provide a p
 
 ```sql
 SELECT
-Archives,
-NextToken
+archives,
+next_token
 FROM aws.events.archives
 WHERE region = '{{ region }}' -- required
 ;
@@ -293,10 +293,10 @@ SELECT
 '{{ KmsKeyIdentifier }}',
 '{{ region }}'
 RETURNING
-ArchiveArn,
-CreationTime,
-State,
-StateReason
+archive_arn,
+creation_time,
+state,
+state_reason
 ;
 ```
 </TabItem>
@@ -362,10 +362,10 @@ WHERE
 region = '{{ region }}' --required
 AND ArchiveName = '{{ ArchiveName }}' --required
 RETURNING
-ArchiveArn,
-CreationTime,
-State,
-StateReason;
+archive_arn,
+creation_time,
+state,
+state_reason;
 ```
 </TabItem>
 </Tabs>

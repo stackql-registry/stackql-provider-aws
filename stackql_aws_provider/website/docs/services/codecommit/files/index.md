@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="blobId" /></td>
+    <td><CopyableCode code="blob_id" /></td>
     <td><code>string</code></td>
     <td>The blob ID of the object that represents the file content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitId" /></td>
+    <td><CopyableCode code="commit_id" /></td>
     <td><code>string</code></td>
     <td>The full commit ID of the commit that contains the content returned by GetFile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileContent" /></td>
+    <td><CopyableCode code="file_content" /></td>
     <td><code>string (byte)</code></td>
     <td>The base-64 encoded binary data object that represents the content of the file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileMode" /></td>
+    <td><CopyableCode code="file_mode" /></td>
     <td><code>string</code></td>
     <td>The extrapolated file mode permissions of the blob. Valid values include strings such as EXECUTABLE and not numeric values. The file mode permissions returned by this API are not the standard file mode permission values, such as 100644, but rather extrapolated values. See the supported return values. (EXECUTABLE, NORMAL, SYMLINK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filePath" /></td>
+    <td><CopyableCode code="file_path" /></td>
     <td><code>string</code></td>
     <td>The fully qualified path to the specified file. Returns the name and extension of the file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSize" /></td>
+    <td><CopyableCode code="file_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the contents of the file, in bytes.</td>
 </tr>
@@ -158,12 +158,12 @@ Returns the base-64 encoded contents of a specified file and its metadata.
 
 ```sql
 SELECT
-blobId,
-commitId,
-fileContent,
-fileMode,
-filePath,
-fileSize
+blob_id,
+commit_id,
+file_content,
+file_mode,
+file_path,
+file_size
 FROM aws.codecommit.files
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,9 +203,9 @@ AND branchName = '{{ branchName }}' --required
 AND fileContent = '{{ fileContent }}' --required
 AND filePath = '{{ filePath }}' --required
 RETURNING
-blobId,
-commitId,
-treeId;
+blob_id,
+commit_id,
+tree_id;
 ```
 </TabItem>
 </Tabs>

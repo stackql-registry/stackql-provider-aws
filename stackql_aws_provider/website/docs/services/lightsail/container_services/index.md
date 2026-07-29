@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="containerServices" /></td>
+    <td><CopyableCode code="container_services" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe one or more container services.</td>
 </tr>
@@ -147,7 +147,7 @@ Returns information about one or more of your Amazon Lightsail container service
 
 ```sql
 SELECT
-containerServices
+container_services
 FROM aws.lightsail.container_services
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,7 +191,7 @@ SELECT
 '{{ privateRegistryAccess }}',
 '{{ region }}'
 RETURNING
-containerService
+container_service
 ;
 ```
 </TabItem>
@@ -206,7 +206,7 @@ region
 SELECT 
 '{{ region }}'
 RETURNING
-registryLogin
+registry_login
 ;
 ```
 </TabItem>
@@ -293,7 +293,7 @@ WHERE
 region = '{{ region }}' --required
 AND serviceName = '{{ serviceName }}' --required
 RETURNING
-containerService;
+container_service;
 ```
 </TabItem>
 </Tabs>

@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autonomousDataStoragePercentage" /></td>
+    <td><CopyableCode code="autonomous_data_storage_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of data storage currently in use for Autonomous Databases in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autonomousDataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="autonomous_data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableAutonomousDataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="available_autonomous_data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The available data storage space for Autonomous Databases in the Autonomous VM cluster, in TB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableContainerDatabases" /></td>
+    <td><CopyableCode code="available_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous CDBs that you can create with the currently available storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableCpus" /></td>
+    <td><CopyableCode code="available_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPU cores available for allocation to Autonomous Databases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudAutonomousVmClusterArn" /></td>
+    <td><CopyableCode code="cloud_autonomous_vm_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudAutonomousVmClusterId" /></td>
+    <td><CopyableCode code="cloud_autonomous_vm_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Autonomous VM cluster. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureArn" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Cloud Exadata Infrastructure containing this Autonomous VM cluster. (pattern: &lt;code&gt;arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-z0-9-_&#93;&#123;6,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureId" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Cloud Exadata Infrastructure containing this Autonomous VM cluster. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeModel" /></td>
+    <td><CopyableCode code="compute_model" /></td>
     <td><code>string</code></td>
     <td>The compute model of the Autonomous VM cluster: ECPU or OCPU. (ECPU, OCPU)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCoreCount" /></td>
+    <td><CopyableCode code="cpu_core_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCoreCountPerNode" /></td>
+    <td><CopyableCode code="cpu_core_count_per_node" /></td>
     <td><code>integer</code></td>
     <td>The number of CPU cores enabled per node in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuPercentage" /></td>
+    <td><CopyableCode code="cpu_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of total CPU cores currently in use in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Autonomous VM cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataStorageSizeInGBs" /></td>
+    <td><CopyableCode code="data_storage_size_in_gbs" /></td>
     <td><code>number (double)</code></td>
     <td>The total data storage allocated to the Autonomous VM cluster, in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The total data storage allocated to the Autonomous VM cluster, in TB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The local node storage allocated to the Autonomous VM cluster, in gigabytes (GB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServers" /></td>
+    <td><CopyableCode code="db_servers" /></td>
     <td><code>array</code></td>
     <td>The list of database servers associated with the Autonomous VM cluster.</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>The user-provided description of the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the Autonomous VM cluster. (pattern: &lt;code&gt;&#91;a-zA-Z_&#93;(?!.*--)&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -156,7 +156,7 @@ The following fields are returned by `SELECT` queries:
     <td>The domain name for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exadataStorageInTBsLowestScaledValue" /></td>
+    <td><CopyableCode code="exadata_storage_in_t_bs_lowest_scaled_value" /></td>
     <td><code>number (double)</code></td>
     <td>The minimum value to which you can scale down the Exadata storage, in TB.</td>
 </tr>
@@ -166,57 +166,57 @@ The following fields are returned by `SELECT` queries:
     <td>The hostname for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamRoles" /></td>
+    <td><CopyableCode code="iam_roles" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services Identity and Access Management (IAM) service roles associated with the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isMtlsEnabledVmCluster" /></td>
+    <td><CopyableCode code="is_mtls_enabled_vm_cluster" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The Oracle license model that applies to the Autonomous VM cluster. (BRING_YOUR_OWN_LICENSE, LICENSE_INCLUDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>object</code></td>
     <td>The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxAcdsLowestScaledValue" /></td>
+    <td><CopyableCode code="max_acds_lowest_scaled_value" /></td>
     <td><code>integer</code></td>
     <td>The minimum value to which you can scale down the maximum number of Autonomous CDBs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryPerOracleComputeUnitInGBs" /></td>
+    <td><CopyableCode code="memory_per_oracle_compute_unit_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of memory allocated per Oracle Compute Unit, in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeInGBs" /></td>
+    <td><CopyableCode code="memory_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of memory allocated to the Autonomous VM cluster, in gigabytes (GB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeCount" /></td>
+    <td><CopyableCode code="node_count" /></td>
     <td><code>integer</code></td>
     <td>The number of database server nodes in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nonProvisionableAutonomousContainerDatabases" /></td>
+    <td><CopyableCode code="non_provisionable_autonomous_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous CDBs that can't be provisioned because of resource constraints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor associated with this Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociUrl" /></td>
+    <td><CopyableCode code="oci_url" /></td>
     <td><code>string</code></td>
     <td>The URL for accessing the OCI console page for this Autonomous VM cluster.</td>
 </tr>
@@ -226,52 +226,52 @@ The following fields are returned by `SELECT` queries:
     <td>The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkArn" /></td>
+    <td><CopyableCode code="odb_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB network associated with this Autonomous VM cluster. (pattern: &lt;code&gt;arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-z0-9-_&#93;&#123;6,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkId" /></td>
+    <td><CopyableCode code="odb_network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the ODB network associated with this Autonomous VM cluster. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The progress of the current operation on the Autonomous VM cluster, as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionableAutonomousContainerDatabases" /></td>
+    <td><CopyableCode code="provisionable_autonomous_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous CDBs that can be provisioned in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedAutonomousContainerDatabases" /></td>
+    <td><CopyableCode code="provisioned_autonomous_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous CDBs currently provisioned in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedCpus" /></td>
+    <td><CopyableCode code="provisioned_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPU cores currently provisioned in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reclaimableCpus" /></td>
+    <td><CopyableCode code="reclaimable_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPU cores that can be reclaimed from terminated or scaled-down Autonomous Databases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservedCpus" /></td>
+    <td><CopyableCode code="reserved_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPU cores reserved for system operations and redundancy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanListenerPortNonTls" /></td>
+    <td><CopyableCode code="scan_listener_port_non_tls" /></td>
     <td><code>integer</code></td>
     <td>The SCAN listener port for non-TLS (TCP) protocol. The default is 1521.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanListenerPortTls" /></td>
+    <td><CopyableCode code="scan_listener_port_tls" /></td>
     <td><code>integer</code></td>
     <td>The SCAN listener port for TLS (TCP) protocol. The default is 2484.</td>
 </tr>
@@ -286,27 +286,27 @@ The following fields are returned by `SELECT` queries:
     <td>The current state of the Autonomous VM cluster. Possible values include CREATING, AVAILABLE, UPDATING, DELETING, DELETED, FAILED. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the current status of the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeDatabaseSslCertificateExpires" /></td>
+    <td><CopyableCode code="time_database_ssl_certificate_expires" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date and time of the database SSL certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeOrdsCertificateExpires" /></td>
+    <td><CopyableCode code="time_ords_certificate_expires" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date and time of the Oracle REST Data Services (ORDS) certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The time zone of the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalContainerDatabases" /></td>
+    <td><CopyableCode code="total_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The total number of Autonomous Container Databases that can be created with the allocated local storage.</td>
 </tr>
@@ -325,92 +325,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autonomousDataStoragePercentage" /></td>
+    <td><CopyableCode code="autonomous_data_storage_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of data storage currently in use for Autonomous Databases in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autonomousDataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="autonomous_data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The total data storage allocated for Autonomous Databases in the Autonomous VM cluster, in TB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableAutonomousDataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="available_autonomous_data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The available data storage for Autonomous Databases in the Autonomous VM cluster, in TB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableContainerDatabases" /></td>
+    <td><CopyableCode code="available_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous Container Databases that you can create with the currently available storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableCpus" /></td>
+    <td><CopyableCode code="available_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPU cores available for allocation to Autonomous Databases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudAutonomousVmClusterArn" /></td>
+    <td><CopyableCode code="cloud_autonomous_vm_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudAutonomousVmClusterId" /></td>
+    <td><CopyableCode code="cloud_autonomous_vm_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Autonomous VM cluster. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_~.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureArn" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Exadata infrastructure containing this Autonomous VM cluster. (pattern: &lt;code&gt;arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-z0-9-_&#93;&#123;6,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cloudExadataInfrastructureId" /></td>
+    <td><CopyableCode code="cloud_exadata_infrastructure_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Exadata infrastructure containing this Autonomous VM cluster. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeModel" /></td>
+    <td><CopyableCode code="compute_model" /></td>
     <td><code>string</code></td>
     <td>The compute model of the Autonomous VM cluster: ECPU or OCPU. (ECPU, OCPU)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCoreCount" /></td>
+    <td><CopyableCode code="cpu_core_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of CPU cores in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCoreCountPerNode" /></td>
+    <td><CopyableCode code="cpu_core_count_per_node" /></td>
     <td><code>integer</code></td>
     <td>The number of CPU cores per node in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuPercentage" /></td>
+    <td><CopyableCode code="cpu_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage of total CPU cores currently in use in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Autonomous VM cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataStorageSizeInGBs" /></td>
+    <td><CopyableCode code="data_storage_size_in_gbs" /></td>
     <td><code>number (double)</code></td>
     <td>The total data storage allocated to the Autonomous VM cluster, in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataStorageSizeInTBs" /></td>
+    <td><CopyableCode code="data_storage_size_in_tbs" /></td>
     <td><code>number (double)</code></td>
     <td>The total data storage allocated to the Autonomous VM cluster, in TB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbNodeStorageSizeInGBs" /></td>
+    <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The local node storage allocated to the Autonomous VM cluster, in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbServers" /></td>
+    <td><CopyableCode code="db_servers" /></td>
     <td><code>array</code></td>
     <td>The list of database servers associated with the Autonomous VM cluster.</td>
 </tr>
@@ -420,7 +420,7 @@ The following fields are returned by `SELECT` queries:
     <td>The user-provided description of the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name for the Autonomous VM cluster. (pattern: &lt;code&gt;&#91;a-zA-Z_&#93;(?!.*--)&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -430,7 +430,7 @@ The following fields are returned by `SELECT` queries:
     <td>The domain name for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exadataStorageInTBsLowestScaledValue" /></td>
+    <td><CopyableCode code="exadata_storage_in_t_bs_lowest_scaled_value" /></td>
     <td><code>number (double)</code></td>
     <td>The lowest value to which Exadata storage can be scaled down, in TB.</td>
 </tr>
@@ -440,57 +440,57 @@ The following fields are returned by `SELECT` queries:
     <td>The host name for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamRoles" /></td>
+    <td><CopyableCode code="iam_roles" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services Identity and Access Management (IAM) service roles associated with the Autonomous VM cluster in the summary information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isMtlsEnabledVmCluster" /></td>
+    <td><CopyableCode code="is_mtls_enabled_vm_cluster" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="licenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The Oracle license model that applies to the Autonomous VM cluster. (BRING_YOUR_OWN_LICENSE, LICENSE_INCLUDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceWindow" /></td>
+    <td><CopyableCode code="maintenance_window" /></td>
     <td><code>object</code></td>
     <td>The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxAcdsLowestScaledValue" /></td>
+    <td><CopyableCode code="max_acds_lowest_scaled_value" /></td>
     <td><code>integer</code></td>
     <td>The lowest value to which you can scale down the maximum number of Autonomous CDBs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryPerOracleComputeUnitInGBs" /></td>
+    <td><CopyableCode code="memory_per_oracle_compute_unit_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The amount of memory allocated per Oracle Compute Unit (OCU), in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memorySizeInGBs" /></td>
+    <td><CopyableCode code="memory_size_in_gbs" /></td>
     <td><code>integer</code></td>
     <td>The total amount of memory allocated to the Autonomous VM cluster, in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeCount" /></td>
+    <td><CopyableCode code="node_count" /></td>
     <td><code>integer</code></td>
     <td>The number of database server nodes in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nonProvisionableAutonomousContainerDatabases" /></td>
+    <td><CopyableCode code="non_provisionable_autonomous_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous CDBs that can't be provisioned because of resource constraints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociResourceAnchorName" /></td>
+    <td><CopyableCode code="oci_resource_anchor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OCI resource anchor associated with this Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociUrl" /></td>
+    <td><CopyableCode code="oci_url" /></td>
     <td><code>string</code></td>
     <td>The URL for accessing the OCI console page for this Autonomous VM cluster.</td>
 </tr>
@@ -500,52 +500,52 @@ The following fields are returned by `SELECT` queries:
     <td>The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkArn" /></td>
+    <td><CopyableCode code="odb_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB network associated with this Autonomous VM cluster. (pattern: &lt;code&gt;arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-z0-9-_&#93;&#123;6,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkId" /></td>
+    <td><CopyableCode code="odb_network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the ODB network associated with this Autonomous VM cluster. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The progress of the current operation on the Autonomous VM cluster, as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionableAutonomousContainerDatabases" /></td>
+    <td><CopyableCode code="provisionable_autonomous_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous CDBs that you can provision in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedAutonomousContainerDatabases" /></td>
+    <td><CopyableCode code="provisioned_autonomous_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The number of Autonomous Container Databases currently provisioned in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedCpus" /></td>
+    <td><CopyableCode code="provisioned_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPUs currently provisioned in the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reclaimableCpus" /></td>
+    <td><CopyableCode code="reclaimable_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPUs that can be reclaimed from terminated or scaled-down Autonomous Databases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reservedCpus" /></td>
+    <td><CopyableCode code="reserved_cpus" /></td>
     <td><code>number (float)</code></td>
     <td>The number of CPUs reserved for system operations and redundancy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanListenerPortNonTls" /></td>
+    <td><CopyableCode code="scan_listener_port_non_tls" /></td>
     <td><code>integer</code></td>
     <td>The SCAN listener port for non-TLS (TCP) protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scanListenerPortTls" /></td>
+    <td><CopyableCode code="scan_listener_port_tls" /></td>
     <td><code>integer</code></td>
     <td>The SCAN listener port for TLS (TCP) protocol.</td>
 </tr>
@@ -560,27 +560,27 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the Autonomous VM cluster. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the current status of the Autonomous VM cluster, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeDatabaseSslCertificateExpires" /></td>
+    <td><CopyableCode code="time_database_ssl_certificate_expires" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date and time of the database SSL certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeOrdsCertificateExpires" /></td>
+    <td><CopyableCode code="time_ords_certificate_expires" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date and time of the Oracle REST Data Services (ORDS) certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The time zone of the Autonomous VM cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalContainerDatabases" /></td>
+    <td><CopyableCode code="total_container_databases" /></td>
     <td><code>integer</code></td>
     <td>The total number of Autonomous Container Databases that can be created in the Autonomous VM cluster.</td>
 </tr>
@@ -671,58 +671,58 @@ Gets information about a specific Autonomous VM cluster.
 
 ```sql
 SELECT
-autonomousDataStoragePercentage,
-autonomousDataStorageSizeInTBs,
-availableAutonomousDataStorageSizeInTBs,
-availableContainerDatabases,
-availableCpus,
-cloudAutonomousVmClusterArn,
-cloudAutonomousVmClusterId,
-cloudExadataInfrastructureArn,
-cloudExadataInfrastructureId,
-computeModel,
-cpuCoreCount,
-cpuCoreCountPerNode,
-cpuPercentage,
-createdAt,
-dataStorageSizeInGBs,
-dataStorageSizeInTBs,
-dbNodeStorageSizeInGBs,
-dbServers,
+autonomous_data_storage_percentage,
+autonomous_data_storage_size_in_tbs,
+available_autonomous_data_storage_size_in_tbs,
+available_container_databases,
+available_cpus,
+cloud_autonomous_vm_cluster_arn,
+cloud_autonomous_vm_cluster_id,
+cloud_exadata_infrastructure_arn,
+cloud_exadata_infrastructure_id,
+compute_model,
+cpu_core_count,
+cpu_core_count_per_node,
+cpu_percentage,
+created_at,
+data_storage_size_in_gbs,
+data_storage_size_in_tbs,
+db_node_storage_size_in_gbs,
+db_servers,
 description,
-displayName,
+display_name,
 domain,
-exadataStorageInTBsLowestScaledValue,
+exadata_storage_in_t_bs_lowest_scaled_value,
 hostname,
-iamRoles,
-isMtlsEnabledVmCluster,
-licenseModel,
-maintenanceWindow,
-maxAcdsLowestScaledValue,
-memoryPerOracleComputeUnitInGBs,
-memorySizeInGBs,
-nodeCount,
-nonProvisionableAutonomousContainerDatabases,
-ociResourceAnchorName,
-ociUrl,
+iam_roles,
+is_mtls_enabled_vm_cluster,
+license_model,
+maintenance_window,
+max_acds_lowest_scaled_value,
+memory_per_oracle_compute_unit_in_gbs,
+memory_size_in_gbs,
+node_count,
+non_provisionable_autonomous_container_databases,
+oci_resource_anchor_name,
+oci_url,
 ocid,
-odbNetworkArn,
-odbNetworkId,
-percentProgress,
-provisionableAutonomousContainerDatabases,
-provisionedAutonomousContainerDatabases,
-provisionedCpus,
-reclaimableCpus,
-reservedCpus,
-scanListenerPortNonTls,
-scanListenerPortTls,
+odb_network_arn,
+odb_network_id,
+percent_progress,
+provisionable_autonomous_container_databases,
+provisioned_autonomous_container_databases,
+provisioned_cpus,
+reclaimable_cpus,
+reserved_cpus,
+scan_listener_port_non_tls,
+scan_listener_port_tls,
 shape,
 status,
-statusReason,
-timeDatabaseSslCertificateExpires,
-timeOrdsCertificateExpires,
-timeZone,
-totalContainerDatabases
+status_reason,
+time_database_ssl_certificate_expires,
+time_ords_certificate_expires,
+time_zone,
+total_container_databases
 FROM aws.odb.cloud_autonomous_vm_clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -734,58 +734,58 @@ Lists all Autonomous VM clusters in a specified Cloud Exadata infrastructure.
 
 ```sql
 SELECT
-autonomousDataStoragePercentage,
-autonomousDataStorageSizeInTBs,
-availableAutonomousDataStorageSizeInTBs,
-availableContainerDatabases,
-availableCpus,
-cloudAutonomousVmClusterArn,
-cloudAutonomousVmClusterId,
-cloudExadataInfrastructureArn,
-cloudExadataInfrastructureId,
-computeModel,
-cpuCoreCount,
-cpuCoreCountPerNode,
-cpuPercentage,
-createdAt,
-dataStorageSizeInGBs,
-dataStorageSizeInTBs,
-dbNodeStorageSizeInGBs,
-dbServers,
+autonomous_data_storage_percentage,
+autonomous_data_storage_size_in_tbs,
+available_autonomous_data_storage_size_in_tbs,
+available_container_databases,
+available_cpus,
+cloud_autonomous_vm_cluster_arn,
+cloud_autonomous_vm_cluster_id,
+cloud_exadata_infrastructure_arn,
+cloud_exadata_infrastructure_id,
+compute_model,
+cpu_core_count,
+cpu_core_count_per_node,
+cpu_percentage,
+created_at,
+data_storage_size_in_gbs,
+data_storage_size_in_tbs,
+db_node_storage_size_in_gbs,
+db_servers,
 description,
-displayName,
+display_name,
 domain,
-exadataStorageInTBsLowestScaledValue,
+exadata_storage_in_t_bs_lowest_scaled_value,
 hostname,
-iamRoles,
-isMtlsEnabledVmCluster,
-licenseModel,
-maintenanceWindow,
-maxAcdsLowestScaledValue,
-memoryPerOracleComputeUnitInGBs,
-memorySizeInGBs,
-nodeCount,
-nonProvisionableAutonomousContainerDatabases,
-ociResourceAnchorName,
-ociUrl,
+iam_roles,
+is_mtls_enabled_vm_cluster,
+license_model,
+maintenance_window,
+max_acds_lowest_scaled_value,
+memory_per_oracle_compute_unit_in_gbs,
+memory_size_in_gbs,
+node_count,
+non_provisionable_autonomous_container_databases,
+oci_resource_anchor_name,
+oci_url,
 ocid,
-odbNetworkArn,
-odbNetworkId,
-percentProgress,
-provisionableAutonomousContainerDatabases,
-provisionedAutonomousContainerDatabases,
-provisionedCpus,
-reclaimableCpus,
-reservedCpus,
-scanListenerPortNonTls,
-scanListenerPortTls,
+odb_network_arn,
+odb_network_id,
+percent_progress,
+provisionable_autonomous_container_databases,
+provisioned_autonomous_container_databases,
+provisioned_cpus,
+reclaimable_cpus,
+reserved_cpus,
+scan_listener_port_non_tls,
+scan_listener_port_tls,
 shape,
 status,
-statusReason,
-timeDatabaseSslCertificateExpires,
-timeOrdsCertificateExpires,
-timeZone,
-totalContainerDatabases
+status_reason,
+time_database_ssl_certificate_expires,
+time_ords_certificate_expires,
+time_zone,
+total_container_databases
 FROM aws.odb.cloud_autonomous_vm_clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -848,10 +848,10 @@ SELECT
 {{ totalContainerDatabases }} /* required */,
 '{{ region }}'
 RETURNING
-cloudAutonomousVmClusterId,
-displayName,
+cloud_autonomous_vm_cluster_id,
+display_name,
 status,
-statusReason
+status_reason
 ;
 ```
 </TabItem>

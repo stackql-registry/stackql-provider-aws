@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BridgeArn" /></td>
+    <td><CopyableCode code="bridge_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BridgeMessages" /></td>
+    <td><CopyableCode code="bridge_messages" /></td>
     <td><code>array</code></td>
     <td>Messages with details about the bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BridgeState" /></td>
+    <td><CopyableCode code="bridge_state" /></td>
     <td><code>string</code></td>
     <td>The state of the bridge. (CREATING, STANDBY, STARTING, DEPLOYING, ACTIVE, STOPPING, DELETING, DELETED, START_FAILED, START_PENDING, STOP_FAILED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressGatewayBridge" /></td>
+    <td><CopyableCode code="egress_gateway_bridge" /></td>
     <td><code>object</code></td>
     <td>An egress bridge is a cloud-to-ground bridge. The content comes from an existing MediaConnect flow and is delivered to your premises.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressGatewayBridge" /></td>
+    <td><CopyableCode code="ingress_gateway_bridge" /></td>
     <td><code>object</code></td>
     <td>An ingress bridge is a ground-to-cloud bridge. The content originates at your premises and is delivered to the cloud.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
     <td>The outputs on this bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlacementArn" /></td>
+    <td><CopyableCode code="placement_arn" /></td>
     <td><code>string</code></td>
     <td>The placement Amazon Resource Number (ARN) of the bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceFailoverConfig" /></td>
+    <td><CopyableCode code="source_failover_config" /></td>
     <td><code>object</code></td>
     <td>The settings for source failover.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sources" /></td>
+    <td><CopyableCode code="sources" /></td>
     <td><code>array</code></td>
     <td>The sources on this bridge.</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BridgeArn" /></td>
+    <td><CopyableCode code="bridge_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BridgeState" /></td>
+    <td><CopyableCode code="bridge_state" /></td>
     <td><code>string</code></td>
     <td>The state of the bridge. (CREATING, STANDBY, STARTING, DEPLOYING, ACTIVE, STOPPING, DELETING, DELETED, START_FAILED, START_PENDING, STOP_FAILED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BridgeType" /></td>
+    <td><CopyableCode code="bridge_type" /></td>
     <td><code>string</code></td>
     <td>The type of the bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the bridge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlacementArn" /></td>
+    <td><CopyableCode code="placement_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the gateway associated with the bridge.</td>
 </tr>
@@ -312,16 +312,16 @@ Displays the details of a bridge.
 
 ```sql
 SELECT
-BridgeArn,
-BridgeMessages,
-BridgeState,
-EgressGatewayBridge,
-IngressGatewayBridge,
-Name,
-Outputs,
-PlacementArn,
-SourceFailoverConfig,
-Sources
+bridge_arn,
+bridge_messages,
+bridge_state,
+egress_gateway_bridge,
+ingress_gateway_bridge,
+name,
+outputs,
+placement_arn,
+source_failover_config,
+sources
 FROM aws.mediaconnect.bridges
 WHERE bridge_arn = '{{ bridge_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -334,11 +334,11 @@ Displays a list of bridges that are associated with this account and an optional
 
 ```sql
 SELECT
-BridgeArn,
-BridgeState,
-BridgeType,
-Name,
-PlacementArn
+bridge_arn,
+bridge_state,
+bridge_type,
+name,
+placement_arn
 FROM aws.mediaconnect.bridges
 WHERE region = '{{ region }}' -- required
 AND filterArn = '{{ filterArn }}'
@@ -384,7 +384,7 @@ SELECT
 '{{ Sources }}',
 '{{ region }}'
 RETURNING
-Bridge
+bridge
 ;
 ```
 </TabItem>
@@ -474,8 +474,8 @@ bridge_arn = '{{ bridge_arn }}' --required
 AND output_name = '{{ output_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-BridgeArn,
-OutputName;
+bridge_arn,
+output_name;
 ```
 </TabItem>
 <TabItem value="remove_bridge_source">
@@ -491,8 +491,8 @@ bridge_arn = '{{ bridge_arn }}' --required
 AND source_name = '{{ source_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-BridgeArn,
-SourceName;
+bridge_arn,
+source_name;
 ```
 </TabItem>
 <TabItem value="update_bridge_state">
@@ -508,8 +508,8 @@ bridge_arn = '{{ bridge_arn }}' --required
 AND region = '{{ region }}' --required
 AND DesiredState = '{{ DesiredState }}' --required
 RETURNING
-BridgeArn,
-DesiredState;
+bridge_arn,
+desired_state;
 ```
 </TabItem>
 <TabItem value="update_bridge">
@@ -526,7 +526,7 @@ WHERE
 bridge_arn = '{{ bridge_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Bridge;
+bridge;
 ```
 </TabItem>
 </Tabs>

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the event integration. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBridgeBus" /></td>
+    <td><CopyableCode code="event_bridge_bus" /></td>
     <td><code>string</code></td>
     <td>The EventBridge bus. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventFilter" /></td>
+    <td><CopyableCode code="event_filter" /></td>
     <td><code>object</code></td>
     <td>The event filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventIntegrationArn" /></td>
+    <td><CopyableCode code="event_integration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the event integration. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event integration. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The event integration description. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBridgeBus" /></td>
+    <td><CopyableCode code="event_bridge_bus" /></td>
     <td><code>string</code></td>
     <td>The Amazon EventBridge bus for the event integration. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventFilter" /></td>
+    <td><CopyableCode code="event_filter" /></td>
     <td><code>object</code></td>
     <td>The event filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventIntegrationArn" /></td>
+    <td><CopyableCode code="event_integration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the event integration. (pattern: &lt;code&gt;^arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event integration. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\._\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -233,12 +233,12 @@ Returns information about the event integration.
 
 ```sql
 SELECT
-Description,
-EventBridgeBus,
-EventFilter,
-EventIntegrationArn,
-Name,
-Tags
+description,
+event_bridge_bus,
+event_filter,
+event_integration_arn,
+name,
+tags
 FROM aws.appintegrations.event_integrations
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -251,12 +251,12 @@ Returns a paginated list of event integrations in the account.
 
 ```sql
 SELECT
-Description,
-EventBridgeBus,
-EventFilter,
-EventIntegrationArn,
-Name,
-Tags
+description,
+event_bridge_bus,
+event_filter,
+event_integration_arn,
+name,
+tags
 FROM aws.appintegrations.event_integrations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -299,7 +299,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-EventIntegrationArn
+event_integration_arn
 ;
 ```
 </TabItem>

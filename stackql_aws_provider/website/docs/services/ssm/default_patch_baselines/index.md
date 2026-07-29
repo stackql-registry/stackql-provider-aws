@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaselineId" /></td>
+    <td><CopyableCode code="baseline_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the default patch baseline. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-:/&#93;&#123;20,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>The operating system for the returned patch baseline. (WINDOWS, AMAZON_LINUX, AMAZON_LINUX_2, AMAZON_LINUX_2022, UBUNTU, REDHAT_ENTERPRISE_LINUX, SUSE, CENTOS, ORACLE_LINUX, DEBIAN, MACOS, RASPBIAN, ROCKY_LINUX, ALMA_LINUX, AMAZON_LINUX_2023)</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the default patch baseline. Amazon Web Services Systems Manager suppor
 
 ```sql
 SELECT
-BaselineId,
-OperatingSystem
+baseline_id,
+operating_system
 FROM aws.ssm.default_patch_baselines
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ SELECT
 '{{ BaselineId }}' /* required */,
 '{{ region }}'
 RETURNING
-BaselineId
+baseline_id
 ;
 ```
 </TabItem>

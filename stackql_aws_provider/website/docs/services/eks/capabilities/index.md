@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityName" /></td>
+    <td><CopyableCode code="capability_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the capability within the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon EKS cluster that contains this capability.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration settings for the capability. The structure varies depending on the capability type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp in seconds for when the capability was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletePropagationPolicy" /></td>
+    <td><CopyableCode code="delete_propagation_policy" /></td>
     <td><code>string</code></td>
     <td>The delete propagation policy for the capability. Currently, the only supported value is RETAIN, which keeps all resources managed by the capability when the capability is deleted. (RETAIN)</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>Health information for the capability, including any issues that may be affecting its operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp in seconds for when the capability was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that the capability uses to interact with Amazon Web Services services.</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityName" /></td>
+    <td><CopyableCode code="capability_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the capability within the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp in seconds for when the capability was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp in seconds for when the capability was last modified.</td>
 </tr>
@@ -279,14 +279,14 @@ Returns detailed information about a specific managed capability in your Amazon 
 ```sql
 SELECT
 arn,
-capabilityName,
-clusterName,
+capability_name,
+cluster_name,
 configuration,
-createdAt,
-deletePropagationPolicy,
+created_at,
+delete_propagation_policy,
 health,
-modifiedAt,
-roleArn,
+modified_at,
+role_arn,
 status,
 tags,
 type_,
@@ -305,9 +305,9 @@ Lists all managed capabilities in your Amazon EKS cluster. You can use this oper
 ```sql
 SELECT
 arn,
-capabilityName,
-createdAt,
-modifiedAt,
+capability_name,
+created_at,
+modified_at,
 status,
 type_,
 version

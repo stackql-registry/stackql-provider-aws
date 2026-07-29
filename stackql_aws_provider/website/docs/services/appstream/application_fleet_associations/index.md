@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationFleetAssociations" /></td>
+    <td><CopyableCode code="application_fleet_associations" /></td>
     <td><code>array</code></td>
     <td>The application fleet associations in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list that describes one or more application fleet associations. Eith
 
 ```sql
 SELECT
-ApplicationFleetAssociations,
-NextToken
+application_fleet_associations,
+next_token
 FROM aws.appstream.application_fleet_associations
 WHERE region = '{{ region }}' -- required
 ;

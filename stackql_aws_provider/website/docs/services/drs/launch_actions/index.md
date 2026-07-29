@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>Launch action name. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9 /_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionCode" /></td>
+    <td><CopyableCode code="action_code" /></td>
     <td><code>string</code></td>
     <td>Launch action code. (pattern: &lt;code&gt;(&#91;A-Za-z0-9-/:&#93;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>Launch action Id. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionVersion" /></td>
+    <td><CopyableCode code="action_version" /></td>
     <td><code>string</code></td>
     <td>Launch action version. (pattern: &lt;code&gt;(\$DEFAULT|\$LATEST|&#91;0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -184,9 +184,9 @@ Lists resource launch actions.
 ```sql
 SELECT
 name,
-actionCode,
-actionId,
-actionVersion,
+action_code,
+action_id,
+action_version,
 active,
 category,
 description,
@@ -242,16 +242,16 @@ AND category = '{{ category }}' --required
 AND description = '{{ description }}' --required
 RETURNING
 name,
-actionCode,
-actionId,
-actionVersion,
+action_code,
+action_id,
+action_version,
 active,
 category,
 description,
 optional,
 order,
 parameters,
-resourceId,
+resource_id,
 type_;
 ```
 </TabItem>

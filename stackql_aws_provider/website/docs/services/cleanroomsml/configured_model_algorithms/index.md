@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configured model algorithm. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmArn" /></td>
+    <td><CopyableCode code="configured_model_algorithm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured model algorithm. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-model-algorithm/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured model algorithm was created.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured model algorithm. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inferenceContainerConfig" /></td>
+    <td><CopyableCode code="inference_container_config" /></td>
     <td><code>object</code></td>
     <td>Provides configuration information for the inference container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key. This key is used to encrypt and decrypt customer-owned data in the configured ML model and associated data. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:kms:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service role that was used to create the configured model algorithm. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>The optional metadata that you applied to the resource to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. The following basic restrictions apply to tags: Maximum number of tags per resource - 50. For each resource, each tag key must be unique, and each tag key can have only one value. Maximum key length - 128 Unicode characters in UTF-8. Maximum value length - 256 Unicode characters in UTF-8. If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys and values are case sensitive. Do not use aws:, AWS:, or any upper or lowercase combination of such as a prefix for keys as it is reserved for AWS use. You cannot edit or delete tag keys with this prefix. Values can have this prefix. If a tag value has aws as its prefix but the key does not, then Clean Rooms ML considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not count against your tags per resource limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingContainerConfig" /></td>
+    <td><CopyableCode code="training_container_config" /></td>
     <td><code>object</code></td>
     <td>Provides configuration information for the dockerized container where the model algorithm is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured model algorithm was updated.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configured model algorithm. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmArn" /></td>
+    <td><CopyableCode code="configured_model_algorithm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured model algorithm. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-model-algorithm/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configured model algorithm was created.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the configured model algorithm. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the configured model algorithm was updated.</td>
 </tr>
@@ -242,15 +242,15 @@ Returns information about a configured model algorithm.
 ```sql
 SELECT
 name,
-configuredModelAlgorithmArn,
-createTime,
+configured_model_algorithm_arn,
+create_time,
 description,
-inferenceContainerConfig,
-kmsKeyArn,
-roleArn,
+inference_container_config,
+kms_key_arn,
+role_arn,
 tags,
-trainingContainerConfig,
-updateTime
+training_container_config,
+update_time
 FROM aws.cleanroomsml.configured_model_algorithms
 WHERE configured_model_algorithm_arn = '{{ configured_model_algorithm_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -264,10 +264,10 @@ Returns a list of configured model algorithms.
 ```sql
 SELECT
 name,
-configuredModelAlgorithmArn,
-createTime,
+configured_model_algorithm_arn,
+create_time,
 description,
-updateTime
+update_time
 FROM aws.cleanroomsml.configured_model_algorithms
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -312,7 +312,7 @@ SELECT
 '{{ kmsKeyArn }}',
 '{{ region }}'
 RETURNING
-configuredModelAlgorithmArn
+configured_model_algorithm_arn
 ;
 ```
 </TabItem>

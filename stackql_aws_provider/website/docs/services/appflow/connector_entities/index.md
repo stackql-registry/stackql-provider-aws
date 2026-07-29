@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectorEntityFields" /></td>
+    <td><CopyableCode code="connector_entity_fields" /></td>
     <td><code>array</code></td>
     <td>Describes the fields for that connector entity. For example, for an account entity, the fields would be account name, account ID, and so on.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectorEntityMap" /></td>
+    <td><CopyableCode code="connector_entity_map" /></td>
     <td><code>object</code></td>
     <td>The response of ListConnectorEntities lists entities grouped by category. This map's key represents the group name, and its value contains the list of entities belonging to that group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that you specify in your next ListConnectorEntities operation to get the next page of results in paginated response. The ListConnectorEntities operation provides this token if the response is too big for the page size. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -152,7 +152,7 @@ Provides details regarding the entity used with the connector, with a descriptio
 
 ```sql
 SELECT
-connectorEntityFields
+connector_entity_fields
 FROM aws.appflow.connector_entities
 WHERE region = '{{ region }}' -- required
 ;
@@ -164,8 +164,8 @@ Returns the list of available connector entities supported by Amazon AppFlow. Fo
 
 ```sql
 SELECT
-connectorEntityMap,
-nextToken
+connector_entity_map,
+next_token
 FROM aws.appflow.connector_entities
 WHERE region = '{{ region }}' -- required
 ;

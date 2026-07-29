@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedSet" /></td>
+    <td><CopyableCode code="failed_set" /></td>
     <td><code>array</code></td>
     <td>Error messages for any events that could not be retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="successfulSet" /></td>
+    <td><CopyableCode code="successful_set" /></td>
     <td><code>array</code></td>
     <td>Information about the events that could be retrieved.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns detailed information about one or more specified events. Information inc
 
 ```sql
 SELECT
-failedSet,
-successfulSet
+failed_set,
+successful_set
 FROM aws.health.event_details
 WHERE region = '{{ region }}' -- required
 ;

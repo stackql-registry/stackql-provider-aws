@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResultStream" /></td>
+    <td><CopyableCode code="result_stream" /></td>
     <td><code>string (byte)</code></td>
     <td>Rows returned from the GetWorkUnitResults operation as a stream of Apache Arrow v1.0 messages.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the work units resulting from the query. Work units can be executed in a
 
 ```sql
 SELECT
-ResultStream
+result_stream
 FROM aws.lakeformation.work_unit_results
 WHERE region = '{{ region }}' -- required
 ;

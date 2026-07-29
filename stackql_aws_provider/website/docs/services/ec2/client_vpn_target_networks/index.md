@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneIds" /></td>
+    <td><CopyableCode code="availability_zone_ids" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone IDs for the target network association, if the Client VPN endpoint uses a Transit Gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone names for the target network association, if the Client VPN endpoint uses a Transit Gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientVpnEndpointId" /></td>
+    <td><CopyableCode code="client_vpn_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Client VPN endpoint with which the target network is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>string</code></td>
     <td>The IDs of the security groups applied to the target network association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the target network association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetNetworkId" /></td>
+    <td><CopyableCode code="target_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet specified as the target network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC in which the target network (subnet) is located.</td>
 </tr>
@@ -223,14 +223,14 @@ Describes the target networks associated with the specified Client VPN endpoint.
 
 ```sql
 SELECT
-AssociationId,
-AvailabilityZoneIds,
-AvailabilityZones,
-ClientVpnEndpointId,
-SecurityGroups,
-Status,
-TargetNetworkId,
-VpcId
+association_id,
+availability_zone_ids,
+availability_zones,
+client_vpn_endpoint_id,
+security_groups,
+status,
+target_network_id,
+vpc_id
 FROM aws.ec2.client_vpn_target_networks
 WHERE ClientVpnEndpointId = '{{ ClientVpnEndpointId }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,8 +268,8 @@ AND AssociationId = '{{ AssociationId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-AssociationId,
-Status;
+association_id,
+status;
 ```
 </TabItem>
 <TabItem value="associate_client_vpn_target_network">
@@ -289,8 +289,8 @@ AND DryRun = {{ DryRun}}
 AND AvailabilityZone = '{{ AvailabilityZone}}'
 AND AvailabilityZoneId = '{{ AvailabilityZoneId}}'
 RETURNING
-AssociationId,
-Status;
+association_id,
+status;
 ```
 </TabItem>
 </Tabs>

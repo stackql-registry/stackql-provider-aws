@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assessmentTargets" /></td>
+    <td><CopyableCode code="assessment_targets" /></td>
     <td><code>array</code></td>
     <td>Information about the assessment targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedItems" /></td>
+    <td><CopyableCode code="failed_items" /></td>
     <td><code>object</code></td>
     <td>Assessment target details that cannot be described. An error code is provided for each failed item.</td>
 </tr>
@@ -173,8 +173,8 @@ Describes the assessment targets that are specified by the ARNs of the assessmen
 
 ```sql
 SELECT
-assessmentTargets,
-failedItems
+assessment_targets,
+failed_items
 FROM aws.inspector.assessment_targets
 WHERE region = '{{ region }}' -- required
 ;
@@ -219,7 +219,7 @@ SELECT
 '{{ resourceGroupArn }}',
 '{{ region }}'
 RETURNING
-assessmentTargetArn
+assessment_target_arn
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configuredTableArn" /></td>
+    <td><CopyableCode code="configured_table_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the configured table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredTableId" /></td>
+    <td><CopyableCode code="configured_table_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the configured table. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table analysis rule was created.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of configured table analysis rule. (AGGREGATION, LIST, CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table analysis rule was last updated.</td>
 </tr>
@@ -175,12 +175,12 @@ Retrieves a configured table analysis rule.
 
 ```sql
 SELECT
-configuredTableArn,
-configuredTableId,
-createTime,
+configured_table_arn,
+configured_table_id,
+create_time,
 policy,
 type_,
-updateTime
+update_time
 FROM aws.cleanrooms.configured_table_analysis_rules
 WHERE configured_table_identifier = '{{ configured_table_identifier }}' -- required
 AND analysis_rule_type = '{{ analysis_rule_type }}' -- required
@@ -217,7 +217,7 @@ SELECT
 '{{ configured_table_identifier }}',
 '{{ region }}'
 RETURNING
-analysisRule
+analysis_rule
 ;
 ```
 </TabItem>
@@ -305,7 +305,7 @@ AND analysis_rule_type = '{{ analysis_rule_type }}' --required
 AND region = '{{ region }}' --required
 AND analysisRulePolicy = '{{ analysisRulePolicy }}' --required
 RETURNING
-analysisRule;
+analysis_rule;
 ```
 </TabItem>
 </Tabs>

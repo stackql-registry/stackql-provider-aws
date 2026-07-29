@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Connect contact channels this quick response applies to. The supported contact channel types include Chat.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The media type of the quick response content. Use application/x.quickresponse;format=plain for quick response written in plain text. Use application/x.quickresponse;format=markdown for quick response written in richtext. (pattern: &lt;code&gt;(application/x\.quickresponse;format=(plain|markdown))&lt;/code&gt;)</td>
 </tr>
@@ -72,7 +72,7 @@ The following fields are returned by `SELECT` queries:
     <td>The contents of the quick response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the quick response was created.</td>
 </tr>
@@ -82,22 +82,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the quick response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupingConfiguration" /></td>
+    <td><CopyableCode code="grouping_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information of the grouping of Amazon Q in Connect users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>Whether the quick response is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. Can be either the ID or the ARN. URLs cannot contain the ARN. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -107,27 +107,27 @@ The following fields are returned by `SELECT` queries:
     <td>The language code value for the language in which the quick response is written. The supported language codes include de_DE, en_US, es_ES, fr_FR, id_ID, it_IT, ja_JP, ko_KR, pt_BR, zh_CN, zh_TW</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the quick response data. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+?:&#91;a-z-&#93;+?:&#91;a-z0-9-&#93;*?:(&#91;0-9&#93;&#123;12&#125;)?:&#91;a-zA-Z0-9-:/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the quick response data was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickResponseArn" /></td>
+    <td><CopyableCode code="quick_response_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quick response. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickResponseId" /></td>
+    <td><CopyableCode code="quick_response_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the quick response. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shortcutKey" /></td>
+    <td><CopyableCode code="shortcut_key" /></td>
     <td><code>string</code></td>
     <td>The shortcut key of the quick response. The value should be unique across the knowledge base.</td>
 </tr>
@@ -161,12 +161,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the quick response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attributesInterpolated" /></td>
+    <td><CopyableCode code="attributes_interpolated" /></td>
     <td><code>array</code></td>
     <td>The user defined contact attributes that are resolved when the search result is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attributesNotInterpolated" /></td>
+    <td><CopyableCode code="attributes_not_interpolated" /></td>
     <td><code>array</code></td>
     <td>The user defined contact attributes that are not resolved when the search result is returned.</td>
 </tr>
@@ -176,7 +176,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Connect contact channels this quick response applies to. The supported contact channel types include Chat.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The media type of the quick response content. Use application/x.quickresponse;format=plain for quick response written in plain text. Use application/x.quickresponse;format=markdown for quick response written in richtext. (pattern: &lt;code&gt;(application/x\.quickresponse;format=(plain|markdown))&lt;/code&gt;)</td>
 </tr>
@@ -186,7 +186,7 @@ The following fields are returned by `SELECT` queries:
     <td>The contents of the quick response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the quick response was created.</td>
 </tr>
@@ -196,22 +196,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the quick response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupingConfiguration" /></td>
+    <td><CopyableCode code="grouping_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information of the grouping of Amazon Q in Connect users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>Whether the quick response is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. Can be either the ID or the ARN. URLs cannot contain the ARN. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -221,27 +221,27 @@ The following fields are returned by `SELECT` queries:
     <td>The language code value for the language in which the quick response is written.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the quick response search result data. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+?:&#91;a-z-&#93;+?:&#91;a-z0-9-&#93;*?:(&#91;0-9&#93;&#123;12&#125;)?:&#91;a-zA-Z0-9-:/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the quick response search result data was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickResponseArn" /></td>
+    <td><CopyableCode code="quick_response_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quick response. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickResponseId" /></td>
+    <td><CopyableCode code="quick_response_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the quick response. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shortcutKey" /></td>
+    <td><CopyableCode code="shortcut_key" /></td>
     <td><code>string</code></td>
     <td>The shortcut key of the quick response. The value should be unique across the knowledge base.</td>
 </tr>
@@ -280,12 +280,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Connect contact channels this quick response applies to. The supported contact channel types include Chat.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The media type of the quick response content. Use application/x.quickresponse;format=plain for quick response written in plain text. Use application/x.quickresponse;format=markdown for quick response written in richtext. (pattern: &lt;code&gt;(application/x\.quickresponse;format=(plain|markdown))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the quick response was created.</td>
 </tr>
@@ -295,37 +295,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the quick response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>Whether the quick response is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the quick response data. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+?:&#91;a-z-&#93;+?:&#91;a-z0-9-&#93;*?:(&#91;0-9&#93;&#123;12&#125;)?:&#91;a-zA-Z0-9-:/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the quick response summary was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickResponseArn" /></td>
+    <td><CopyableCode code="quick_response_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quick response. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quickResponseId" /></td>
+    <td><CopyableCode code="quick_response_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the quick response. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -463,20 +463,20 @@ Retrieves the quick response.
 SELECT
 name,
 channels,
-contentType,
+content_type,
 contents,
-createdTime,
+created_time,
 description,
-groupingConfiguration,
-isActive,
-knowledgeBaseArn,
-knowledgeBaseId,
+grouping_configuration,
+is_active,
+knowledge_base_arn,
+knowledge_base_id,
 language,
-lastModifiedBy,
-lastModifiedTime,
-quickResponseArn,
-quickResponseId,
-shortcutKey,
+last_modified_by,
+last_modified_time,
+quick_response_arn,
+quick_response_id,
+shortcut_key,
 status,
 tags
 FROM aws.qconnect.quick_responses
@@ -493,23 +493,23 @@ Searches existing Amazon Q in Connect quick responses in an Amazon Q in Connect 
 ```sql
 SELECT
 name,
-attributesInterpolated,
-attributesNotInterpolated,
+attributes_interpolated,
+attributes_not_interpolated,
 channels,
-contentType,
+content_type,
 contents,
-createdTime,
+created_time,
 description,
-groupingConfiguration,
-isActive,
-knowledgeBaseArn,
-knowledgeBaseId,
+grouping_configuration,
+is_active,
+knowledge_base_arn,
+knowledge_base_id,
 language,
-lastModifiedBy,
-lastModifiedTime,
-quickResponseArn,
-quickResponseId,
-shortcutKey,
+last_modified_by,
+last_modified_time,
+quick_response_arn,
+quick_response_id,
+shortcut_key,
 status,
 tags
 FROM aws.qconnect.quick_responses
@@ -528,16 +528,16 @@ Lists information about quick response.
 SELECT
 name,
 channels,
-contentType,
-createdTime,
+content_type,
+created_time,
 description,
-isActive,
-knowledgeBaseArn,
-knowledgeBaseId,
-lastModifiedBy,
-lastModifiedTime,
-quickResponseArn,
-quickResponseId,
+is_active,
+knowledge_base_arn,
+knowledge_base_id,
+last_modified_by,
+last_modified_time,
+quick_response_arn,
+quick_response_id,
 status,
 tags
 FROM aws.qconnect.quick_responses
@@ -595,7 +595,7 @@ SELECT
 '{{ knowledge_base_id }}',
 '{{ region }}'
 RETURNING
-quickResponse
+quick_response
 ;
 ```
 </TabItem>
@@ -679,7 +679,7 @@ knowledge_base_id = '{{ knowledge_base_id }}' --required
 AND quick_response_id = '{{ quick_response_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-quickResponse;
+quick_response;
 ```
 </TabItem>
 </Tabs>

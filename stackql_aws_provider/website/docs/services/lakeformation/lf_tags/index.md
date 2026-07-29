@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagKey" /></td>
+    <td><CopyableCode code="tag_key" /></td>
     <td><code>string</code></td>
     <td>The key-name for the LF-tag. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@%&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagValues" /></td>
+    <td><CopyableCode code="tag_values" /></td>
     <td><code>array</code></td>
     <td>A list of possible values an attribute can take.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagKey" /></td>
+    <td><CopyableCode code="tag_key" /></td>
     <td><code>string</code></td>
     <td>The key-name for the LF-tag. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@%&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagValues" /></td>
+    <td><CopyableCode code="tag_values" /></td>
     <td><code>array</code></td>
     <td>A list of possible values an attribute can take.</td>
 </tr>
@@ -188,9 +188,9 @@ Returns an LF-tag definition.
 
 ```sql
 SELECT
-CatalogId,
-TagKey,
-TagValues
+catalog_id,
+tag_key,
+tag_values
 FROM aws.lakeformation.lf_tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,9 +202,9 @@ Lists LF-tags that the requester has permission to view.
 
 ```sql
 SELECT
-CatalogId,
-TagKey,
-TagValues
+catalog_id,
+tag_key,
+tag_values
 FROM aws.lakeformation.lf_tags
 WHERE region = '{{ region }}' -- required
 ;

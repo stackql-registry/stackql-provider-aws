@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApprovalDate" /></td>
+    <td><CopyableCode code="approval_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the restore access backup vault was approved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the restore access backup vault was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRevokeRequest" /></td>
+    <td><CopyableCode code="latest_revoke_request" /></td>
     <td><code>object</code></td>
     <td>Information about the latest request to revoke access to this backup vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreAccessBackupVaultArn" /></td>
+    <td><CopyableCode code="restore_access_backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the restore access backup vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultState" /></td>
+    <td><CopyableCode code="vault_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the restore access backup vault. (CREATING, AVAILABLE, FAILED)</td>
 </tr>
@@ -178,11 +178,11 @@ Returns a list of restore access backup vaults associated with a specified backu
 
 ```sql
 SELECT
-ApprovalDate,
-CreationDate,
-LatestRevokeRequest,
-RestoreAccessBackupVaultArn,
-VaultState
+approval_date,
+creation_date,
+latest_revoke_request,
+restore_access_backup_vault_arn,
+vault_state
 FROM aws.backup.restore_access_backup_vaults
 WHERE backup_vault_name = '{{ backup_vault_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -224,10 +224,10 @@ SELECT
 '{{ RequesterComment }}',
 '{{ region }}'
 RETURNING
-CreationDate,
-RestoreAccessBackupVaultArn,
-RestoreAccessBackupVaultName,
-VaultState
+creation_date,
+restore_access_backup_vault_arn,
+restore_access_backup_vault_name,
+vault_state
 ;
 ```
 </TabItem>

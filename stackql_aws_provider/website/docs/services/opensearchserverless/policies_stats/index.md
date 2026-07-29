@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessPolicyStats" /></td>
+    <td><CopyableCode code="access_policy_stats" /></td>
     <td><code>object</code></td>
     <td>Information about the data access policies in your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecyclePolicyStats" /></td>
+    <td><CopyableCode code="lifecycle_policy_stats" /></td>
     <td><code>object</code></td>
     <td>Information about the lifecycle policies in your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityConfigStats" /></td>
+    <td><CopyableCode code="security_config_stats" /></td>
     <td><code>object</code></td>
     <td>Information about the security configurations in your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityPolicyStats" /></td>
+    <td><CopyableCode code="security_policy_stats" /></td>
     <td><code>object</code></td>
     <td>Information about the security policies in your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalPolicyCount" /></td>
+    <td><CopyableCode code="total_policy_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of OpenSearch Serverless security policies and configurations in your account.</td>
 </tr>
@@ -139,11 +139,11 @@ Returns statistical information about your OpenSearch Serverless access policies
 
 ```sql
 SELECT
-AccessPolicyStats,
-LifecyclePolicyStats,
-SecurityConfigStats,
-SecurityPolicyStats,
-TotalPolicyCount
+access_policy_stats,
+lifecycle_policy_stats,
+security_config_stats,
+security_policy_stats,
+total_policy_count
 FROM aws.opensearchserverless.policies_stats
 WHERE region = '{{ region }}' -- required
 ;

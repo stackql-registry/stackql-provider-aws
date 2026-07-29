@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>UUID of the agent. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="presignedLogUrl" /></td>
+    <td><CopyableCode code="presigned_log_url" /></td>
     <td><code>string</code></td>
     <td>Presigned URL for uploading agent task response logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>GUID of the agent task. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -139,9 +139,9 @@ For use by AWS Ground Station Agent and shouldn't be called directly. Gets a pre
 
 ```sql
 SELECT
-agentId,
-presignedLogUrl,
-taskId
+agent_id,
+presigned_log_url,
+task_id
 FROM aws.groundstation.agent_task_response_urls
 WHERE agent_id = '{{ agent_id }}' -- required
 AND task_id = '{{ task_id }}' -- required

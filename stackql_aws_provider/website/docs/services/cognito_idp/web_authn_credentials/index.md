@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>array</code></td>
     <td>A list of registered passkeys for a user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The identifier that Amazon Cognito returned with the previous request to this operation. When you include a pagination token in your request, Amazon Cognito returns the next set of items in the list. By use of this token, you can paginate through the full list of items. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Generates a list of the currently signed-in user's registered passkey, or WebAut
 
 ```sql
 SELECT
-Credentials,
-NextToken
+credentials,
+next_token
 FROM aws.cognito_idp.web_authn_credentials
 WHERE region = '{{ region }}' -- required
 ;

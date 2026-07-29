@@ -107,9 +107,9 @@ AND SyncType = '{{ SyncType }}' --required
 AND ResourceName = '{{ ResourceName }}' --required
 AND ResolvedReason = '{{ ResolvedReason }}' --required
 RETURNING
-ParentResourceName,
-ResourceName,
-SyncBlocker;
+parent_resource_name,
+resource_name,
+sync_blocker;
 ```
 </TabItem>
 </Tabs>

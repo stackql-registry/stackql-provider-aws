@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConversionTaskId" /></td>
+    <td><CopyableCode code="conversion_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the conversion task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string</code></td>
     <td>The time when the task expires. If the upload isn't complete before the expiration time, we automatically cancel the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportInstance" /></td>
+    <td><CopyableCode code="import_instance" /></td>
     <td><code>string</code></td>
     <td>If the task is for importing an instance, this contains information about the import instance task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportVolume" /></td>
+    <td><CopyableCode code="import_volume" /></td>
     <td><code>string</code></td>
     <td>If the task is for importing a volume, this contains information about the import volume task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the conversion task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message related to the conversion task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the task.</td>
 </tr>
@@ -176,13 +176,13 @@ Describes the specified conversion tasks or all your conversion tasks. For more 
 
 ```sql
 SELECT
-ConversionTaskId,
-ExpirationTime,
-ImportInstance,
-ImportVolume,
-State,
-StatusMessage,
-Tags
+conversion_task_id,
+expiration_time,
+import_instance,
+import_volume,
+state,
+status_message,
+tags
 FROM aws.ec2.conversion_tasks
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

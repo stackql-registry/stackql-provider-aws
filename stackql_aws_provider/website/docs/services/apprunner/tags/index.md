@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of the tag key-value pairs that are associated with the resource.</td>
 </tr>
@@ -133,7 +133,7 @@ List tags that are associated with for an App Runner resource. The response cont
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.apprunner.tags
 WHERE region = '{{ region }}' -- required
 ;

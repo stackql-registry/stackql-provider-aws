@@ -57,12 +57,12 @@ The following fields are returned by `SELECT` queries:
     <td>The results of the Search action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When the number of results is greater than the default value for the MaxResults parameter, or if you explicitly specify a value for MaxResults that is less than the number of results, the response includes a pagination token named NextToken. You can specify this NextToken value in a subsequent call to Search to list the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalMatchCount" /></td>
+    <td><CopyableCode code="total_match_count" /></td>
     <td><code>integer</code></td>
     <td>Total number of search results.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the specified Amazon DataZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the Amazon DataZone domain was created.</td>
 </tr>
@@ -106,42 +106,42 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Amazon DataZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainExecutionRole" /></td>
+    <td><CopyableCode code="domain_execution_role" /></td>
     <td><code>string</code></td>
     <td>The domain execution role with which the Amazon DataZone domain is created. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:role(/&#91;a-zA-Z0-9+=,.@_-&#93;+)*/&#91;a-zA-Z0-9+=,.@_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainVersion" /></td>
+    <td><CopyableCode code="domain_version" /></td>
     <td><code>string</code></td>
     <td>The version of the domain. (V1, V2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Web Services Key Management Service (KMS) key that is used to encrypt the Amazon DataZone domain, metadata, and reporting data. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the Amazon DataZone domain was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalUrl" /></td>
+    <td><CopyableCode code="portal_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the data portal for this Amazon DataZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rootDomainUnitId" /></td>
+    <td><CopyableCode code="root_domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the root domain in Amazon Datazone. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The service role of the domain. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:role(/&#91;a-zA-Z0-9+=,.@_-&#93;+)*/&#91;a-zA-Z0-9+=,.@_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="singleSignOn" /></td>
+    <td><CopyableCode code="single_sign_on" /></td>
     <td><code>object</code></td>
     <td>The single sign-on details in Amazon DataZone.</td>
 </tr>
@@ -185,7 +185,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the Amazon DataZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when a Amazon DataZone domain was created.</td>
 </tr>
@@ -195,22 +195,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of an Amazon DataZone domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainVersion" /></td>
+    <td><CopyableCode code="domain_version" /></td>
     <td><code>string</code></td>
     <td>The domain version. (V1, V2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when a Amazon DataZone domain was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedAccountId" /></td>
+    <td><CopyableCode code="managed_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Web Services account that manages the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalUrl" /></td>
+    <td><CopyableCode code="portal_url" /></td>
     <td><code>string</code></td>
     <td>The data portal URL for the Amazon DataZone domain.</td>
 </tr>
@@ -454,8 +454,8 @@ Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful 
 ```sql
 SELECT
 items_,
-nextToken,
-totalMatchCount
+next_token,
+total_match_count
 FROM aws.datazone.domains
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -471,16 +471,16 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 description,
-domainExecutionRole,
-domainVersion,
-kmsKeyIdentifier,
-lastUpdatedAt,
-portalUrl,
-rootDomainUnitId,
-serviceRole,
-singleSignOn,
+domain_execution_role,
+domain_version,
+kms_key_identifier,
+last_updated_at,
+portal_url,
+root_domain_unit_id,
+service_role,
+single_sign_on,
 status,
 tags
 FROM aws.datazone.domains
@@ -498,12 +498,12 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 description,
-domainVersion,
-lastUpdatedAt,
-managedAccountId,
-portalUrl,
+domain_version,
+last_updated_at,
+managed_account_id,
+portal_url,
 status
 FROM aws.datazone.domains
 WHERE region = '{{ region }}' -- required
@@ -558,13 +558,13 @@ id,
 name,
 arn,
 description,
-domainExecutionRole,
-domainVersion,
-kmsKeyIdentifier,
-portalUrl,
-rootDomainUnitId,
-serviceRole,
-singleSignOn,
+domain_execution_role,
+domain_version,
+kms_key_identifier,
+portal_url,
+root_domain_unit_id,
+service_role,
+single_sign_on,
 status,
 tags
 ;
@@ -671,11 +671,11 @@ RETURNING
 id,
 name,
 description,
-domainExecutionRole,
-lastUpdatedAt,
-rootDomainUnitId,
-serviceRole,
-singleSignOn;
+domain_execution_role,
+last_updated_at,
+root_domain_unit_id,
+service_role,
+single_sign_on;
 ```
 </TabItem>
 </Tabs>

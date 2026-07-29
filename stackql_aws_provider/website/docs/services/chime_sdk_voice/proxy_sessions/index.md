@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>array</code></td>
     <td>The proxy session capabilities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The created time stamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedTimestamp" /></td>
+    <td><CopyableCode code="ended_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ended time stamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiryMinutes" /></td>
+    <td><CopyableCode code="expiry_minutes" /></td>
     <td><code>integer</code></td>
     <td>The number of minutes allowed for the proxy session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeoMatchLevel" /></td>
+    <td><CopyableCode code="geo_match_level" /></td>
     <td><code>string</code></td>
     <td>The preference for matching the country or area code of the proxy phone number with that of the first participant. (Country, AreaCode)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeoMatchParams" /></td>
+    <td><CopyableCode code="geo_match_params" /></td>
     <td><code>object</code></td>
     <td>The country and area code for a proxy phone number in a proxy phone session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The proxy session name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberSelectionBehavior" /></td>
+    <td><CopyableCode code="number_selection_behavior" /></td>
     <td><code>string</code></td>
     <td>The preference for proxy phone number reuse, or stickiness, between the same participants across sessions. (PreferSticky, AvoidSticky)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Participants" /></td>
+    <td><CopyableCode code="participants" /></td>
     <td><code>array</code></td>
     <td>The proxy session participants.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProxySessionId" /></td>
+    <td><CopyableCode code="proxy_session_id" /></td>
     <td><code>string</code></td>
     <td>The proxy session ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The proxy session status. (Open, InProgress, Closed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The updated time stamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceConnectorId" /></td>
+    <td><CopyableCode code="voice_connector_id" /></td>
     <td><code>string</code></td>
     <td>The Voice Connector ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProxySessions" /></td>
+    <td><CopyableCode code="proxy_sessions" /></td>
     <td><code>array</code></td>
     <td>The proxy sessions' details.</td>
 </tr>
@@ -258,19 +258,19 @@ Retrieves the specified proxy session details for the specified Amazon Chime SDK
 
 ```sql
 SELECT
-Capabilities,
-CreatedTimestamp,
-EndedTimestamp,
-ExpiryMinutes,
-GeoMatchLevel,
-GeoMatchParams,
-Name,
-NumberSelectionBehavior,
-Participants,
-ProxySessionId,
-Status,
-UpdatedTimestamp,
-VoiceConnectorId
+capabilities,
+created_timestamp,
+ended_timestamp,
+expiry_minutes,
+geo_match_level,
+geo_match_params,
+name,
+number_selection_behavior,
+participants,
+proxy_session_id,
+status,
+updated_timestamp,
+voice_connector_id
 FROM aws.chime_sdk_voice.proxy_sessions
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND proxy_session_id = '{{ proxy_session_id }}' -- required
@@ -284,8 +284,8 @@ Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector.
 
 ```sql
 SELECT
-NextToken,
-ProxySessions
+next_token,
+proxy_sessions
 FROM aws.chime_sdk_voice.proxy_sessions
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -334,7 +334,7 @@ SELECT
 '{{ voice_connector_id }}',
 '{{ region }}'
 RETURNING
-ProxySession
+proxy_session
 ;
 ```
 </TabItem>
@@ -400,7 +400,7 @@ AND proxy_session_id = '{{ proxy_session_id }}' --required
 AND region = '{{ region }}' --required
 AND Capabilities = '{{ Capabilities }}' --required
 RETURNING
-ProxySession;
+proxy_session;
 ```
 </TabItem>
 </Tabs>

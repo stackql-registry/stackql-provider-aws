@@ -52,32 +52,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomInstructions" /></td>
+    <td><CopyableCode code="custom_instructions" /></td>
     <td><code>object</code></td>
     <td>Instructions that provide additional guidance and context for response generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Topic" /></td>
+    <td><CopyableCode code="topic" /></td>
     <td><code>object</code></td>
     <td>A structure that describes the details of a topic, such as its name, description, and associated data sets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicId" /></td>
+    <td><CopyableCode code="topic_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the topic that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.\\+&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -96,22 +96,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicId" /></td>
+    <td><CopyableCode code="topic_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the topic. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.\\+&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserExperienceVersion" /></td>
+    <td><CopyableCode code="user_experience_version" /></td>
     <td><code>string</code></td>
     <td>The user experience version of the topic. (LEGACY, NEW_READER_EXPERIENCE)</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or null if there are no more results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicsSummaries" /></td>
+    <td><CopyableCode code="topics_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of topic summaries.</td>
 </tr>
@@ -285,12 +285,12 @@ Describes a topic.
 
 ```sql
 SELECT
-Arn,
-CustomInstructions,
-RequestId,
-Status,
-Topic,
-TopicId
+arn,
+custom_instructions,
+request_id,
+status,
+topic,
+topic_id
 FROM aws.quicksight.topics
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND topic_id = '{{ topic_id }}' -- required
@@ -304,10 +304,10 @@ Searches for any Q topic that exists in an Quick account.
 
 ```sql
 SELECT
-Arn,
-Name,
-TopicId,
-UserExperienceVersion
+arn,
+name,
+topic_id,
+user_experience_version
 FROM aws.quicksight.topics
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -320,10 +320,10 @@ Lists all of the topics within an account.
 
 ```sql
 SELECT
-NextToken,
-RequestId,
-Status,
-TopicsSummaries
+next_token,
+request_id,
+status,
+topics_summaries
 FROM aws.quicksight.topics
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -367,11 +367,11 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-RefreshArn,
-RequestId,
-Status,
-TopicId
+arn,
+refresh_arn,
+request_id,
+status,
+topic_id
 ;
 ```
 </TabItem>
@@ -448,11 +448,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND topic_id = '{{ topic_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-RefreshArn,
-RequestId,
-Status,
-TopicId;
+arn,
+refresh_arn,
+request_id,
+status,
+topic_id;
 ```
 </TabItem>
 </Tabs>

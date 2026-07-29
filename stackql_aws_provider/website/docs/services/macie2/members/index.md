@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="administratorAccountId" /></td>
+    <td><CopyableCode code="administrator_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the administrator account.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The email address for the account. This value is null if the account is associated with the administrator account through Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invitedAt" /></td>
+    <td><CopyableCode code="invited_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie membership invitation hasn't been sent to the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterAccountId" /></td>
+    <td><CopyableCode code="master_account_id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) The Amazon Web Services account ID for the administrator account. This property has been replaced by the administratorAccountId property and is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the relationship between the account and the administrator account. (Enabled, Paused, Invited, Created, Removed, Resigned, EmailVerificationInProgress, EmailVerificationFailed, RegionDisabled, AccountSuspended)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of key-value pairs that specifies which tags (keys and values) are associated with the account in Amazon Macie.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the relationship between the account and the administrator account.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="administratorAccountId" /></td>
+    <td><CopyableCode code="administrator_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the administrator account.</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>The email address for the account. This value is null if the account is associated with the administrator account through Organizations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invitedAt" /></td>
+    <td><CopyableCode code="invited_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie membership invitation hasn't been sent to the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterAccountId" /></td>
+    <td><CopyableCode code="master_account_id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) The Amazon Web Services account ID for the administrator account. This property has been replaced by the administratorAccountId property and is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the relationship between the account and the administrator account. (Enabled, Paused, Invited, Created, Removed, Resigned, EmailVerificationInProgress, EmailVerificationFailed, RegionDisabled, AccountSuspended)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of key-value pairs that specifies which tags (keys and values) are associated with the account in Amazon Macie.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the relationship between the account and the administrator account.</td>
 </tr>
@@ -275,15 +275,15 @@ Retrieves information about an account that's associated with an Amazon Macie ad
 
 ```sql
 SELECT
-accountId,
-administratorAccountId,
+account_id,
+administrator_account_id,
 arn,
 email,
-invitedAt,
-masterAccountId,
-relationshipStatus,
+invited_at,
+master_account_id,
+relationship_status,
 tags,
-updatedAt
+updated_at
 FROM aws.macie2.members
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -296,15 +296,15 @@ Retrieves information about the accounts that are associated with an Amazon Maci
 
 ```sql
 SELECT
-accountId,
-administratorAccountId,
+account_id,
+administrator_account_id,
 arn,
 email,
-invitedAt,
-masterAccountId,
-relationshipStatus,
+invited_at,
+master_account_id,
+relationship_status,
 tags,
-updatedAt
+updated_at
 FROM aws.macie2.members
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

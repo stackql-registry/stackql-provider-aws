@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeliveryChannelsStatus" /></td>
+    <td><CopyableCode code="delivery_channels_status" /></td>
     <td><code>array</code></td>
     <td>A list that contains the status of a specified delivery channel.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the current status of the specified delivery channel. If a delivery chan
 
 ```sql
 SELECT
-DeliveryChannelsStatus
+delivery_channels_status
 FROM aws.config.delivery_channel_status
 WHERE region = '{{ region }}' -- required
 ;

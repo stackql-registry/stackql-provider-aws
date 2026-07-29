@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the associated resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the associated resource (user or routing profile).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the associated resource. (pattern: &lt;code&gt;.*\\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource associated with the workspace. Valid values are: USER and ROUTING_PROFILE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceArn" /></td>
+    <td><CopyableCode code="workspace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the workspace.</td>
 </tr>
@@ -144,12 +144,12 @@ Searches for workspace associations with users or routing profiles based on vari
 
 ```sql
 SELECT
-ResourceArn,
-ResourceId,
-ResourceName,
-ResourceType,
-WorkspaceArn,
-WorkspaceId
+resource_arn,
+resource_id,
+resource_name,
+resource_type,
+workspace_arn,
+workspace_id
 FROM aws.connect.workspace_associations
 WHERE region = '{{ region }}' -- required
 ;

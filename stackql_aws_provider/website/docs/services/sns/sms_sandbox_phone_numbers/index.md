@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The destination phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The destination phone number's verification status.</td>
 </tr>
@@ -158,8 +158,8 @@ Lists the calling Amazon Web Services account's current verified and pending des
 
 ```sql
 SELECT
-PhoneNumber,
-Status
+phone_number,
+status
 FROM aws.sns.sms_sandbox_phone_numbers
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataLakes" /></td>
+    <td><CopyableCode code="data_lakes" /></td>
     <td><code>array</code></td>
     <td>Retrieves the Security Lake configuration object.</td>
 </tr>
@@ -159,7 +159,7 @@ Retrieves the Amazon Security Lake configuration object for the specified Amazon
 
 ```sql
 SELECT
-dataLakes
+data_lakes
 FROM aws.securitylake.data_lakes
 WHERE region = '{{ region }}' -- required
 AND regions = '{{ regions }}'
@@ -196,7 +196,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-dataLakes
+data_lakes
 ;
 ```
 </TabItem>
@@ -273,7 +273,7 @@ WHERE
 region = '{{ region }}' --required
 AND configurations = '{{ configurations }}' --required
 RETURNING
-dataLakes;
+data_lakes;
 ```
 </TabItem>
 </Tabs>

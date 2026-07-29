@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="detectorDebugOptions" /></td>
+    <td><CopyableCode code="detector_debug_options" /></td>
     <td><code>array</code></td>
     <td>Information that identifies those detector models and their detectors (instances) for which the logging level is given.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The logging level. (ERROR, INFO, DEBUG)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role that grants permission to AWS IoT Events to perform logging.</td>
 </tr>
@@ -141,10 +141,10 @@ Retrieves the current settings of the AWS IoT Events logging options.
 
 ```sql
 SELECT
-detectorDebugOptions,
+detector_debug_options,
 enabled,
 level,
-roleArn
+role_arn
 FROM aws.iotevents.logging_options
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of associations between code repositories and scan configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the NextToken value returned from the previous request to continue listing results after the first page.</td>
 </tr>
@@ -135,7 +135,7 @@ Lists the associations between code repositories and Amazon Inspector code secur
 ```sql
 SELECT
 associations,
-nextToken
+next_token
 FROM aws.inspector2.code_security_scan_configuration_associations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

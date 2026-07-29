@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RoutingControlArn" /></td>
+    <td><CopyableCode code="routing_control_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the response. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:.\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlName" /></td>
+    <td><CopyableCode code="routing_control_name" /></td>
     <td><code>string</code></td>
     <td>The routing control name. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlState" /></td>
+    <td><CopyableCode code="routing_control_state" /></td>
     <td><code>string</code></td>
     <td>The state of the routing control. (On, Off)</td>
 </tr>
@@ -143,9 +143,9 @@ Get the state for a routing control. A routing control is a simple on/off switch
 
 ```sql
 SELECT
-RoutingControlArn,
-RoutingControlName,
-RoutingControlState
+routing_control_arn,
+routing_control_name,
+routing_control_state
 FROM aws.route53_recovery_cluster.routing_control_states
 WHERE region = '{{ region }}' -- required
 ;

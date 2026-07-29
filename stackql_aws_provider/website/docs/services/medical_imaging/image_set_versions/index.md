@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImageSetWorkflowStatus" /></td>
+    <td><CopyableCode code="image_set_workflow_status" /></td>
     <td><code>string</code></td>
     <td>The image set workflow status. (CREATED, COPIED, COPYING, COPYING_WITH_READ_ONLY_ACCESS, COPY_FAILED, UPDATING, UPDATING_FOR_STUDY_CONSISTENCY, UPDATED, UPDATE_FAILED, DELETING, DELETED, IMPORTING, IMPORTED, IMPORT_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the image set properties were created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the image set properties were deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetId" /></td>
+    <td><CopyableCode code="image_set_id" /></td>
     <td><code>string</code></td>
     <td>The image set identifier. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetState" /></td>
+    <td><CopyableCode code="image_set_state" /></td>
     <td><code>string</code></td>
     <td>The image set state. (ACTIVE, LOCKED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPrimary" /></td>
+    <td><CopyableCode code="is_primary" /></td>
     <td><code>boolean</code></td>
     <td>The flag to determine whether the image set is primary or not.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
     <td>Contains details on overrides used when creating the returned version of an image set. For example, if forced exists, the forced flag was used when creating the image set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the image set properties were updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The image set version identifier. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -184,16 +184,16 @@ List image set versions.
 
 ```sql
 SELECT
-ImageSetWorkflowStatus,
-createdAt,
-deletedAt,
-imageSetId,
-imageSetState,
-isPrimary,
+image_set_workflow_status,
+created_at,
+deleted_at,
+image_set_id,
+image_set_state,
+is_primary,
 message,
 overrides,
-updatedAt,
-versionId
+updated_at,
+version_id
 FROM aws.medical_imaging.image_set_versions
 WHERE datastore_id = '{{ datastore_id }}' -- required
 AND image_set_id = '{{ image_set_id }}' -- required

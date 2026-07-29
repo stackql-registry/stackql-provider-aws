@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="abortConfig" /></td>
+    <td><CopyableCode code="abort_config" /></td>
     <td><code>object</code></td>
     <td>The criteria that determine when and how a job abort takes place.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in seconds since the epoch, when the job template was created.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the job template. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationPackageVersions" /></td>
+    <td><CopyableCode code="destination_package_versions" /></td>
     <td><code>array</code></td>
     <td>The package version Amazon Resource Names (ARNs) that are installed on the device when the job successfully completes. The package version must be in either the Published or Deprecated state when the job deploys. For more information, see Package version lifecycle. Note:The following Length Constraints relates to a single ARN. Up to 25 package version ARNs are allowed.</td>
 </tr>
@@ -76,42 +76,42 @@ The following fields are returned by `SELECT` queries:
     <td>The job document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentSource" /></td>
+    <td><CopyableCode code="document_source" /></td>
     <td><code>string</code></td>
     <td>An S3 link to the job document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobExecutionsRetryConfig" /></td>
+    <td><CopyableCode code="job_executions_retry_config" /></td>
     <td><code>object</code></td>
     <td>The configuration that determines how many retries are allowed for each failure type for a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobExecutionsRolloutConfig" /></td>
+    <td><CopyableCode code="job_executions_rollout_config" /></td>
     <td><code>object</code></td>
     <td>Allows you to create a staged rollout of a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobTemplateArn" /></td>
+    <td><CopyableCode code="job_template_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the job template. (pattern: &lt;code&gt;^arn:&#91;!-~&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobTemplateId" /></td>
+    <td><CopyableCode code="job_template_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the job template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceWindows" /></td>
+    <td><CopyableCode code="maintenance_windows" /></td>
     <td><code>array</code></td>
     <td>Allows you to configure an optional maintenance window for the rollout of a job document to all devices in the target group for a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="presignedUrlConfig" /></td>
+    <td><CopyableCode code="presigned_url_config" /></td>
     <td><code>object</code></td>
     <td>Configuration for pre-signed S3 URLs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutConfig" /></td>
+    <td><CopyableCode code="timeout_config" /></td>
     <td><code>object</code></td>
     <td>Specifies the amount of time each device has to finish its execution of the job. A timer is started when the job execution status is set to IN_PROGRESS. If the job execution status is not set to another terminal state before the timer expires, it will be automatically set to TIMED_OUT.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in seconds since the epoch, when the job template was created.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the job template. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobTemplateArn" /></td>
+    <td><CopyableCode code="job_template_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the job template. (pattern: &lt;code&gt;^arn:&#91;!-~&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobTemplateId" /></td>
+    <td><CopyableCode code="job_template_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the job template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -251,19 +251,19 @@ Returns information about a job template.
 
 ```sql
 SELECT
-abortConfig,
-createdAt,
+abort_config,
+created_at,
 description,
-destinationPackageVersions,
+destination_package_versions,
 document,
-documentSource,
-jobExecutionsRetryConfig,
-jobExecutionsRolloutConfig,
-jobTemplateArn,
-jobTemplateId,
-maintenanceWindows,
-presignedUrlConfig,
-timeoutConfig
+document_source,
+job_executions_retry_config,
+job_executions_rollout_config,
+job_template_arn,
+job_template_id,
+maintenance_windows,
+presigned_url_config,
+timeout_config
 FROM aws.iot.job_templates
 WHERE job_template_id = '{{ job_template_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -276,10 +276,10 @@ Returns a list of job templates. Requires permission to access the ListJobTempla
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-jobTemplateArn,
-jobTemplateId
+job_template_arn,
+job_template_id
 FROM aws.iot.job_templates
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -336,8 +336,8 @@ SELECT
 '{{ job_template_id }}',
 '{{ region }}'
 RETURNING
-jobTemplateArn,
-jobTemplateId
+job_template_arn,
+job_template_id
 ;
 ```
 </TabItem>

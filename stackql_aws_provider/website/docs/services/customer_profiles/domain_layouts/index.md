@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the layout was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the layout</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the layout (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-\s&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>If set to true for a layout, this layout will be used by default to view data. If set to false, then the layout will not be used by default, but it can be used to view data by explicitly selecting it in the console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the layout was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Layout" /></td>
+    <td><CopyableCode code="layout" /></td>
     <td><code>string</code></td>
     <td>A customizable layout that can be used to view data under a Customer Profiles domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayoutDefinitionName" /></td>
+    <td><CopyableCode code="layout_definition_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the layout. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayoutType" /></td>
+    <td><CopyableCode code="layout_type" /></td>
     <td><code>string</code></td>
     <td>The type of layout that can be used to view data under a Customer Profiles domain. (PROFILE_EXPLORER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version used to create layout.</td>
 </tr>
@@ -115,42 +115,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the layout was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the layout</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the layout (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-\s&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>If set to true for a layout, this layout will be used by default to view data. If set to false, then layout will not be used by default but it can be used to view data by explicit selection on UI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the layout was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayoutDefinitionName" /></td>
+    <td><CopyableCode code="layout_definition_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the layout. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LayoutType" /></td>
+    <td><CopyableCode code="layout_type" /></td>
     <td><code>string</code></td>
     <td>The type of layout that can be used to view data under customer profiles domain. (PROFILE_EXPLORER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -268,16 +268,16 @@ Gets the layout to view data for a specific domain. This API can only be invoked
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-DisplayName,
-IsDefault,
-LastUpdatedAt,
-Layout,
-LayoutDefinitionName,
-LayoutType,
-Tags,
-Version
+created_at,
+description,
+display_name,
+is_default,
+last_updated_at,
+layout,
+layout_definition_name,
+layout_type,
+tags,
+version
 FROM aws.customer_profiles.domain_layouts
 WHERE domain_name = '{{ domain_name }}' -- required
 AND layout_definition_name = '{{ layout_definition_name }}' -- required
@@ -291,14 +291,14 @@ Lists the existing layouts that can be used to view data for a specific domain. 
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-DisplayName,
-IsDefault,
-LastUpdatedAt,
-LayoutDefinitionName,
-LayoutType,
-Tags
+created_at,
+description,
+display_name,
+is_default,
+last_updated_at,
+layout_definition_name,
+layout_type,
+tags
 FROM aws.customer_profiles.domain_layouts
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -346,16 +346,16 @@ SELECT
 '{{ layout_definition_name }}',
 '{{ region }}'
 RETURNING
-CreatedAt,
-Description,
-DisplayName,
-IsDefault,
-LastUpdatedAt,
-Layout,
-LayoutDefinitionName,
-LayoutType,
-Tags,
-Version
+created_at,
+description,
+display_name,
+is_default,
+last_updated_at,
+layout,
+layout_definition_name,
+layout_type,
+tags,
+version
 ;
 ```
 </TabItem>
@@ -417,16 +417,16 @@ domain_name = '{{ domain_name }}' --required
 AND layout_definition_name = '{{ layout_definition_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreatedAt,
-Description,
-DisplayName,
-IsDefault,
-LastUpdatedAt,
-Layout,
-LayoutDefinitionName,
-LayoutType,
-Tags,
-Version;
+created_at,
+description,
+display_name,
+is_default,
+last_updated_at,
+layout,
+layout_definition_name,
+layout_type,
+tags,
+version;
 ```
 </TabItem>
 </Tabs>

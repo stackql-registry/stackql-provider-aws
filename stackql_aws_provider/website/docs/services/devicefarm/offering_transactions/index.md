@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The cost of an offering transaction.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date on which an offering transaction was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offeringPromotionId" /></td>
+    <td><CopyableCode code="offering_promotion_id" /></td>
     <td><code>string</code></td>
     <td>The ID that corresponds to a device offering promotion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offeringStatus" /></td>
+    <td><CopyableCode code="offering_status" /></td>
     <td><code>object</code></td>
     <td>The status of an offering transaction.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transactionId" /></td>
+    <td><CopyableCode code="transaction_id" /></td>
     <td><code>string</code></td>
     <td>The transaction ID of the offering transaction.</td>
 </tr>
@@ -140,10 +140,10 @@ Returns a list of all historical purchases, renewals, and system renewal transac
 ```sql
 SELECT
 cost,
-createdOn,
-offeringPromotionId,
-offeringStatus,
-transactionId
+created_on,
+offering_promotion_id,
+offering_status,
+transaction_id
 FROM aws.devicefarm.offering_transactions
 WHERE region = '{{ region }}' -- required
 ;

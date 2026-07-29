@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountLinked" /></td>
+    <td><CopyableCode code="account_linked" /></td>
     <td><code>boolean</code></td>
     <td>Whether the partner account is linked to the AWS account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sidewalk" /></td>
+    <td><CopyableCode code="sidewalk" /></td>
     <td><code>object</code></td>
     <td>Information about a Sidewalk account.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sidewalk" /></td>
+    <td><CopyableCode code="sidewalk" /></td>
     <td><code>array</code></td>
     <td>The Sidewalk account credentials.</td>
 </tr>
@@ -198,8 +198,8 @@ Gets information about a partner account. If PartnerAccountId and PartnerType ar
 
 ```sql
 SELECT
-AccountLinked,
-Sidewalk
+account_linked,
+sidewalk
 FROM aws.iotwireless.partner_accounts
 WHERE partner_account_id = '{{ partner_account_id }}' -- required
 AND partnerType = '{{ partnerType }}' -- required
@@ -213,8 +213,8 @@ Lists the partner accounts associated with your AWS account.
 
 ```sql
 SELECT
-NextToken,
-Sidewalk
+next_token,
+sidewalk
 FROM aws.iotwireless.partner_accounts
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -261,8 +261,8 @@ Tags = '{{ Tags }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-Sidewalk;
+arn,
+sidewalk;
 ```
 </TabItem>
 </Tabs>

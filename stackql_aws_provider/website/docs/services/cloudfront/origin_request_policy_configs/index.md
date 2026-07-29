@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>A comment to describe the origin request policy. The comment cannot be longer than 128 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CookiesConfig" /></td>
+    <td><CopyableCode code="cookies_config" /></td>
     <td><code>string</code></td>
     <td>The cookies from viewer requests to include in origin requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HeadersConfig" /></td>
+    <td><CopyableCode code="headers_config" /></td>
     <td><code>string</code></td>
     <td>The HTTP headers to include in origin requests. These can include headers from viewer requests and additional headers added by CloudFront.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A unique name to identify the origin request policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryStringsConfig" /></td>
+    <td><CopyableCode code="query_strings_config" /></td>
     <td><code>string</code></td>
     <td>The URL query strings from viewer requests to include in origin requests.</td>
 </tr>
@@ -144,11 +144,11 @@ Gets an origin request policy configuration. To get an origin request policy con
 
 ```sql
 SELECT
-Comment,
-CookiesConfig,
-HeadersConfig,
-Name,
-QueryStringsConfig
+comment,
+cookies_config,
+headers_config,
+name,
+query_strings_config
 FROM aws.cloudfront.origin_request_policy_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

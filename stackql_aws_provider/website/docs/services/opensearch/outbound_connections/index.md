@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Connections" /></td>
+    <td><CopyableCode code="connections" /></td>
     <td><code>array</code></td>
     <td>List of outbound connections that match the filter criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
@@ -143,8 +143,8 @@ Lists all the outbound cross-cluster connections for a local (source) Amazon Ope
 
 ```sql
 SELECT
-Connections,
-NextToken
+connections,
+next_token
 FROM aws.opensearch.outbound_connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -183,13 +183,13 @@ SELECT
 '{{ ConnectionProperties }}',
 '{{ region }}'
 RETURNING
-ConnectionAlias,
-ConnectionId,
-ConnectionMode,
-ConnectionProperties,
-ConnectionStatus,
-LocalDomainInfo,
-RemoteDomainInfo
+connection_alias,
+connection_id,
+connection_mode,
+connection_properties,
+connection_status,
+local_domain_info,
+remote_domain_info
 ;
 ```
 </TabItem>

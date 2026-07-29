@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>UUID of agent. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskingDocument" /></td>
+    <td><CopyableCode code="tasking_document" /></td>
     <td><code>string</code></td>
     <td>Tasking document for agent.</td>
 </tr>
@@ -129,8 +129,8 @@ For use by AWS Ground Station Agent and shouldn't be called directly. Gets the l
 
 ```sql
 SELECT
-agentId,
-taskingDocument
+agent_id,
+tasking_document
 FROM aws.groundstation.agent_configurations
 WHERE agent_id = '{{ agent_id }}' -- required
 AND region = '{{ region }}' -- required

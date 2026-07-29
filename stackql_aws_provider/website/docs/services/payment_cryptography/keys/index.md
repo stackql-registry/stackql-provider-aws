@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTimestamp" /></td>
+    <td><CopyableCode code="create_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletePendingTimestamp" /></td>
+    <td><CopyableCode code="delete_pending_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time after which Amazon Web Services Payment Cryptography will delete the key. This value is present only when KeyState is DELETE_PENDING and the key is scheduled for deletion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeleteTimestamp" /></td>
+    <td><CopyableCode code="delete_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time after which Amazon Web Services Payment Cryptography will delete the key. This value is present only when when the KeyState is DELETE_COMPLETE and the Amazon Web Services Payment Cryptography key is deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeriveKeyUsage" /></td>
+    <td><CopyableCode code="derive_key_usage" /></td>
     <td><code>string</code></td>
     <td>The cryptographic usage of an ECDH derived key as deﬁned in section A.5.2 of the TR-31 spec. (TR31_B0_BASE_DERIVATION_KEY, TR31_C0_CARD_VERIFICATION_KEY, TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY, TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS, TR31_E1_EMV_MKEY_CONFIDENTIALITY, TR31_E2_EMV_MKEY_INTEGRITY, TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS, TR31_E5_EMV_MKEY_CARD_PERSONALIZATION, TR31_E6_EMV_MKEY_OTHER, TR31_K0_KEY_ENCRYPTION_KEY, TR31_K1_KEY_BLOCK_PROTECTION_KEY, TR31_M3_ISO_9797_3_MAC_KEY, TR31_M1_ISO_9797_1_MAC_KEY, TR31_M6_ISO_9797_5_CMAC_KEY, TR31_M7_HMAC_KEY, TR31_P0_PIN_ENCRYPTION_KEY, TR31_P1_PIN_GENERATION_KEY, TR31_V1_IBM3624_PIN_VERIFICATION_KEY, TR31_V2_VISA_PIN_VERIFICATION_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the key is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Exportable" /></td>
+    <td><CopyableCode code="exportable" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the key is exportable. This data is immutable after the key is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyArn" /></td>
+    <td><CopyableCode code="key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the key. (pattern: &lt;code&gt;arn:aws:payment-cryptography:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,16&#125;-&#91;0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;0-9a-zA-Z&#93;&#123;16,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyAttributes" /></td>
+    <td><CopyableCode code="key_attributes" /></td>
     <td><code>object</code></td>
     <td>The role of the key, the algorithm it supports, and the cryptographic operations allowed with the key. This data is immutable after the key is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyCheckValue" /></td>
+    <td><CopyableCode code="key_check_value" /></td>
     <td><code>string</code></td>
     <td>The key check value (KCV) is used to check if all parties holding a given key have the same key or to detect that a key has changed. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyCheckValueAlgorithm" /></td>
+    <td><CopyableCode code="key_check_value_algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm that Amazon Web Services Payment Cryptography uses to calculate the key check value (KCV). It is used to validate the key integrity. For TDES keys, the KCV is computed by encrypting 8 bytes, each with value of zero, with the key to be checked and retaining the 3 highest order bytes of the encrypted result. For AES keys, the KCV is computed using a CMAC algorithm where the input data is 16 bytes of zero and retaining the 3 highest order bytes of the encrypted result. (CMAC, ANSI_X9_24, HMAC, SHA_1)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyOrigin" /></td>
+    <td><CopyableCode code="key_origin" /></td>
     <td><code>string</code></td>
     <td>The source of the key material. For keys created within Amazon Web Services Payment Cryptography, the value is AWS_PAYMENT_CRYPTOGRAPHY. For keys imported into Amazon Web Services Payment Cryptography, the value is EXTERNAL. (EXTERNAL, AWS_PAYMENT_CRYPTOGRAPHY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyState" /></td>
+    <td><CopyableCode code="key_state" /></td>
     <td><code>string</code></td>
     <td>The state of key that is being created or deleted. (CREATE_IN_PROGRESS, CREATE_COMPLETE, DELETE_PENDING, DELETE_COMPLETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MpaStatus" /></td>
+    <td><CopyableCode code="mpa_status" /></td>
     <td><code>object</code></td>
     <td>The Multi-Party Approval (MPA) status for the key, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegionKeyType" /></td>
+    <td><CopyableCode code="multi_region_key_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this key is a Multi-Region key and its role in the Multi-Region key hierarchy. Multi-Region replication keys allow the same key material to be used across multiple Amazon Web Services Regions. This field specifies whether the key is a Primary Region key (PRK) (which can be replicated to other Amazon Web Services Regions) or a Replica Region key (RRK) (which is a copy of a PRK in another Region). For more information, see Multi-Region key replication. (PRIMARY, REPLICA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryRegion" /></td>
+    <td><CopyableCode code="primary_region" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services Region identifier in the standard format (e.g., us-east-1, eu-west-1). Used to specify regions for key replication operations. The region must be a valid Amazon Web Services Region where Amazon Web Services Payment Cryptography is available. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,16&#125;-&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationStatus" /></td>
+    <td><CopyableCode code="replication_status" /></td>
     <td><code>object</code></td>
     <td>Information about the replication status of the key across different Amazon Web Services Regions. This field provides details about the current state of key replication, including any status messages or operational information. It helps track the progress and health of key replication operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageStartTimestamp" /></td>
+    <td><CopyableCode code="usage_start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time after which Amazon Web Services Payment Cryptography will start using the key material for cryptographic operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageStopTimestamp" /></td>
+    <td><CopyableCode code="usage_stop_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time after which Amazon Web Services Payment Cryptography will stop using the key material for cryptographic operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsingDefaultReplicationRegions" /></td>
+    <td><CopyableCode code="using_default_replication_regions" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this key is using the account's default replication regions configuration for Multi-Region key replication. When set to true, the key automatically replicates to the regions specified in the account's default replication settings. When set to false, the key has a custom replication configuration that overrides the account defaults.</td>
 </tr>
@@ -160,42 +160,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the key is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Exportable" /></td>
+    <td><CopyableCode code="exportable" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the key is exportable. This data is immutable after the key is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyArn" /></td>
+    <td><CopyableCode code="key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the key. (pattern: &lt;code&gt;arn:aws:payment-cryptography:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,16&#125;-&#91;0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;0-9a-zA-Z&#93;&#123;16,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyAttributes" /></td>
+    <td><CopyableCode code="key_attributes" /></td>
     <td><code>object</code></td>
     <td>The role of the key, the algorithm it supports, and the cryptographic operations allowed with the key. This data is immutable after the key is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyCheckValue" /></td>
+    <td><CopyableCode code="key_check_value" /></td>
     <td><code>string</code></td>
     <td>The key check value (KCV) is used to check if all parties holding a given key have the same key or to detect that a key has changed. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyState" /></td>
+    <td><CopyableCode code="key_state" /></td>
     <td><code>string</code></td>
     <td>The state of an Amazon Web Services Payment Cryptography that is being created or deleted. (CREATE_IN_PROGRESS, CREATE_COMPLETE, DELETE_PENDING, DELETE_COMPLETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiRegionKeyType" /></td>
+    <td><CopyableCode code="multi_region_key_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this key is a Multi-Region key and its role in the Multi-Region key hierarchy. Multi-Region replication keys allow the same key material to be used across multiple Amazon Web Services Regions. This field specifies whether the key is a Primary Region key (PRK) (which can be replicated to other Amazon Web Services Regions) or a Replica Region key (RRK) (which is a copy of a PRK in another Region). For more information, see Multi-Region key replication. (PRIMARY, REPLICA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryRegion" /></td>
+    <td><CopyableCode code="primary_region" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services Region identifier in the standard format (e.g., us-east-1, eu-west-1). Used to specify regions for key replication operations. The region must be a valid Amazon Web Services Region where Amazon Web Services Payment Cryptography is available. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,16&#125;-&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -314,25 +314,25 @@ Gets the key metadata for an Amazon Web Services Payment Cryptography key, inclu
 
 ```sql
 SELECT
-CreateTimestamp,
-DeletePendingTimestamp,
-DeleteTimestamp,
-DeriveKeyUsage,
-Enabled,
-Exportable,
-KeyArn,
-KeyAttributes,
-KeyCheckValue,
-KeyCheckValueAlgorithm,
-KeyOrigin,
-KeyState,
-MpaStatus,
-MultiRegionKeyType,
-PrimaryRegion,
-ReplicationStatus,
-UsageStartTimestamp,
-UsageStopTimestamp,
-UsingDefaultReplicationRegions
+create_timestamp,
+delete_pending_timestamp,
+delete_timestamp,
+derive_key_usage,
+enabled,
+exportable,
+key_arn,
+key_attributes,
+key_check_value,
+key_check_value_algorithm,
+key_origin,
+key_state,
+mpa_status,
+multi_region_key_type,
+primary_region,
+replication_status,
+usage_start_timestamp,
+usage_stop_timestamp,
+using_default_replication_regions
 FROM aws.payment_cryptography.keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -344,14 +344,14 @@ Lists the keys in the caller's Amazon Web Services account and Amazon Web Servic
 
 ```sql
 SELECT
-Enabled,
-Exportable,
-KeyArn,
-KeyAttributes,
-KeyCheckValue,
-KeyState,
-MultiRegionKeyType,
-PrimaryRegion
+enabled,
+exportable,
+key_arn,
+key_attributes,
+key_check_value,
+key_state,
+multi_region_key_type,
+primary_region
 FROM aws.payment_cryptography.keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -394,7 +394,7 @@ SELECT
 '{{ ReplicationRegions }}',
 '{{ region }}'
 RETURNING
-Key
+key
 ;
 ```
 </TabItem>
@@ -480,7 +480,7 @@ region = '{{ region }}' --required
 AND KeyIdentifier = '{{ KeyIdentifier }}' --required
 AND ReplicationRegions = '{{ ReplicationRegions }}' --required
 RETURNING
-Key;
+key;
 ```
 </TabItem>
 </Tabs>

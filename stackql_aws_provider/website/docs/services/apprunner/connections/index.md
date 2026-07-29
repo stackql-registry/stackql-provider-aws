@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionSummaryList" /></td>
+    <td><CopyableCode code="connection_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of summary information records for connections. In a paginated request, the request returns up to MaxResults records for each call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. Returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Returns a list of App Runner connections that are associated with your Amazon We
 
 ```sql
 SELECT
-ConnectionSummaryList,
-NextToken
+connection_summary_list,
+next_token
 FROM aws.apprunner.connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -174,7 +174,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Connection
+connection
 ;
 ```
 </TabItem>

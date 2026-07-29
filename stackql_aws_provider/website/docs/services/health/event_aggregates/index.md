@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregateValue" /></td>
+    <td><CopyableCode code="aggregate_value" /></td>
     <td><code>string</code></td>
     <td>The issue type for the associated count.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns the number of events of each event type (issue, scheduled change, and ac
 
 ```sql
 SELECT
-aggregateValue,
+aggregate_value,
 count
 FROM aws.health.event_aggregates
 WHERE region = '{{ region }}' -- required

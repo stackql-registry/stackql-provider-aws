@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date when the monitor was created. (pattern: &lt;code&gt;(\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;)(T\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;Z)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DimensionalValueCount" /></td>
+    <td><CopyableCode code="dimensional_value_count" /></td>
     <td><code>integer</code></td>
     <td>The value for evaluated dimensions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastEvaluatedDate" /></td>
+    <td><CopyableCode code="last_evaluated_date" /></td>
     <td><code>string</code></td>
     <td>The date when the monitor last evaluated for anomalies. (pattern: &lt;code&gt;(\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;)(T\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;Z)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string</code></td>
     <td>The date when the monitor was last updated. (pattern: &lt;code&gt;(\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;)(T\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;Z)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) value. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorDimension" /></td>
+    <td><CopyableCode code="monitor_dimension" /></td>
     <td><code>string</code></td>
     <td>For customer managed monitors, do not specify this field. For Amazon Web Services managed monitors, this field controls which cost dimension is automatically analyzed by the monitor. For TAG and COST_CATEGORY dimensions, you must also specify MonitorSpecification to configure the specific tag or cost category key to analyze. (SERVICE, LINKED_ACCOUNT, TAG, COST_CATEGORY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorSpecification" /></td>
+    <td><CopyableCode code="monitor_specification" /></td>
     <td><code>object</code></td>
     <td>An Expression object used to control what costs the monitor analyzes for anomalies. For Amazon Web Services managed monitors: If MonitorDimension is SERVICE or LINKED_ACCOUNT, do not specify this field If MonitorDimension is TAG, set this field to &#123; "Tags": &#123; "Key": "your tag key" &#125; &#125; If MonitorDimension is COST_CATEGORY, set this field to &#123; "CostCategories": &#123; "Key": "your cost category key" &#125; &#125; For customer managed monitors: To track linked accounts, set this field to &#123; "Dimensions": &#123; "Key": "LINKED_ACCOUNT", "Values": &#91; "your list of up to 10 account IDs" &#93; &#125; &#125; To track cost allocation tags, set this field to &#123; "Tags": &#123; "Key": "your tag key", "Values": &#91; "your list of up to 10 tag values" &#93; &#125; &#125; To track cost categories, set this field to&#123; "CostCategories": &#123; "Key": "your cost category key", "Values": &#91; "your cost category value" &#93; &#125; &#125;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorType" /></td>
+    <td><CopyableCode code="monitor_type" /></td>
     <td><code>string</code></td>
     <td>The type of the monitor. Set this to DIMENSIONAL for an Amazon Web Services managed monitor. Amazon Web Services managed monitors automatically track up to the top 5,000 values by cost within a dimension of your choosing. Each dimension value is evaluated independently. If you start incurring cost in a new value of your chosen dimension, it will automatically be analyzed by an Amazon Web Services managed monitor. Set this to CUSTOM for a customer managed monitor. Customer managed monitors let you select specific dimension values that get monitored in aggregate. For more information about monitor types, see Monitor types in the Billing and Cost Management User Guide. (DIMENSIONAL, CUSTOM)</td>
 </tr>
@@ -180,15 +180,15 @@ Retrieves the cost anomaly monitor definitions for your account. You can filter 
 
 ```sql
 SELECT
-CreationDate,
-DimensionalValueCount,
-LastEvaluatedDate,
-LastUpdatedDate,
-MonitorArn,
-MonitorDimension,
-MonitorName,
-MonitorSpecification,
-MonitorType
+creation_date,
+dimensional_value_count,
+last_evaluated_date,
+last_updated_date,
+monitor_arn,
+monitor_dimension,
+monitor_name,
+monitor_specification,
+monitor_type
 FROM aws.ce.anomaly_monitors
 WHERE region = '{{ region }}' -- required
 ;
@@ -221,7 +221,7 @@ SELECT
 '{{ ResourceTags }}',
 '{{ region }}'
 RETURNING
-MonitorArn
+monitor_arn
 ;
 ```
 </TabItem>
@@ -594,7 +594,7 @@ WHERE
 region = '{{ region }}' --required
 AND MonitorArn = '{{ MonitorArn }}' --required
 RETURNING
-MonitorArn;
+monitor_arn;
 ```
 </TabItem>
 </Tabs>

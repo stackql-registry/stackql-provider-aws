@@ -107,8 +107,8 @@ SELECT
 '{{ Language }}',
 '{{ region }}'
 RETURNING
-PythonScript,
-ScalaCode
+python_script,
+scala_code
 ;
 ```
 </TabItem>

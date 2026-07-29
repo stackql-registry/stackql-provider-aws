@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration specifies details about how the anomaly detection model is to be trained, including time ranges to exclude from use for training the model, and the time zone to use for the metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Dimensions" /></td>
+    <td><CopyableCode code="dimensions" /></td>
     <td><code>array</code></td>
     <td>The metric dimensions associated with the anomaly detection model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricCharacteristics" /></td>
+    <td><CopyableCode code="metric_characteristics" /></td>
     <td><code>object</code></td>
     <td>This object includes parameters that you can use to provide information about your metric to CloudWatch to help it build more accurate anomaly detection models. Currently, it includes the PeriodicSpikes parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricMathAnomalyDetector" /></td>
+    <td><CopyableCode code="metric_math_anomaly_detector" /></td>
     <td><code>object</code></td>
     <td>The CloudWatch metric math expression for this anomaly detector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metric associated with the anomaly detection model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>The namespace of the metric associated with the anomaly detection model. (pattern: &lt;code&gt;&#91;^:&#93;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SingleMetricAnomalyDetector" /></td>
+    <td><CopyableCode code="single_metric_anomaly_detector" /></td>
     <td><code>object</code></td>
     <td>The CloudWatch metric and statistic for this anomaly detector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Stat" /></td>
+    <td><CopyableCode code="stat" /></td>
     <td><code>string</code></td>
     <td>The statistic associated with the anomaly detection model. (pattern: &lt;code&gt;(SampleCount|Average|Sum|Minimum|Maximum|IQM|(p|tc|tm|ts|wm)(\d&#123;1,2&#125;(\.\d&#123;0,10&#125;)?|100)|&#91;ou&#93;\d+(\.\d*)?)(_E|_L|_H)?|(TM|TC|TS|WM)\(((((\d&#123;1,2&#125;)(\.\d&#123;0,10&#125;)?|100(\.0&#123;0,10&#125;)?)%)?:((\d&#123;1,2&#125;)(\.\d&#123;0,10&#125;)?|100(\.0&#123;0,10&#125;)?)%|((\d&#123;1,2&#125;)(\.\d&#123;0,10&#125;)?|100(\.0&#123;0,10&#125;)?)%:(((\d&#123;1,2&#125;)(\.\d&#123;0,10&#125;)?|100(\.0&#123;0,10&#125;)?)%)?)\)|(TM|TC|TS|WM|PR)\(((\d+(\.\d&#123;0,10&#125;)?|(\d+(\.\d&#123;0,10&#125;)?&#91;Ee&#93;&#91;+-&#93;?\d+)):((\d+(\.\d&#123;0,10&#125;)?|(\d+(\.\d&#123;0,10&#125;)?&#91;Ee&#93;&#91;+-&#93;?\d+)))?|((\d+(\.\d&#123;0,10&#125;)?|(\d+(\.\d&#123;0,10&#125;)?&#91;Ee&#93;&#91;+-&#93;?\d+)))?:(\d+(\.\d&#123;0,10&#125;)?|(\d+(\.\d&#123;0,10&#125;)?&#91;Ee&#93;&#91;+-&#93;?\d+)))\)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateValue" /></td>
+    <td><CopyableCode code="state_value" /></td>
     <td><code>string</code></td>
     <td>The current status of the anomaly detector's training. (PENDING_TRAINING, TRAINED_INSUFFICIENT_DATA, TRAINED)</td>
 </tr>
@@ -173,15 +173,15 @@ Lists the anomaly detection models that you have created in your account. For si
 
 ```sql
 SELECT
-Configuration,
-Dimensions,
-MetricCharacteristics,
-MetricMathAnomalyDetector,
-MetricName,
-Namespace,
-SingleMetricAnomalyDetector,
-Stat,
-StateValue
+configuration,
+dimensions,
+metric_characteristics,
+metric_math_anomaly_detector,
+metric_name,
+namespace,
+single_metric_anomaly_detector,
+stat,
+state_value
 FROM aws.cloudwatch.anomaly_detectors
 WHERE region = '{{ region }}' -- required
 ;

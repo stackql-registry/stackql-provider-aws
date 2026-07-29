@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>When the exclusion was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionTimestamp" /></td>
+    <td><CopyableCode code="deletion_timestamp" /></td>
     <td><code>string</code></td>
     <td>When the exclusion was deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExclusionId" /></td>
+    <td><CopyableCode code="exclusion_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the exclusion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InternetGatewayExclusionMode" /></td>
+    <td><CopyableCode code="internet_gateway_exclusion_mode" /></td>
     <td><code>string</code></td>
     <td>The exclusion mode for internet gateway traffic. allow-bidirectional: Allow all internet traffic to and from the excluded VPCs and subnets. allow-egress: Allow outbound internet traffic from the excluded VPCs and subnets. Block inbound internet traffic to the excluded VPCs and subnets. Only applies when VPC Block Public Access is set to Bidirectional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_update_timestamp" /></td>
     <td><code>string</code></td>
     <td>When the exclusion was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current exclusion state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the exclusion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the exclusion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>tag - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.</td>
 </tr>
@@ -230,15 +230,15 @@ Describe VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a mode
 
 ```sql
 SELECT
-CreationTimestamp,
-DeletionTimestamp,
-ExclusionId,
-InternetGatewayExclusionMode,
-LastUpdateTimestamp,
-Reason,
-ResourceArn,
-State,
-Tags
+creation_timestamp,
+deletion_timestamp,
+exclusion_id,
+internet_gateway_exclusion_mode,
+last_update_timestamp,
+reason,
+resource_arn,
+state,
+tags
 FROM aws.ec2.vpc_block_public_access_exclusions
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -282,15 +282,15 @@ SELECT
 '{{ VpcId }}',
 '{{ TagSpecification }}'
 RETURNING
-CreationTimestamp,
-DeletionTimestamp,
-ExclusionId,
-InternetGatewayExclusionMode,
-LastUpdateTimestamp,
-Reason,
-ResourceArn,
-State,
-Tags
+creation_timestamp,
+deletion_timestamp,
+exclusion_id,
+internet_gateway_exclusion_mode,
+last_update_timestamp,
+reason,
+resource_arn,
+state,
+tags
 ;
 ```
 </TabItem>
@@ -349,15 +349,15 @@ AND InternetGatewayExclusionMode = '{{ InternetGatewayExclusionMode }}' --requir
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-CreationTimestamp,
-DeletionTimestamp,
-ExclusionId,
-InternetGatewayExclusionMode,
-LastUpdateTimestamp,
-Reason,
-ResourceArn,
-State,
-Tags;
+creation_timestamp,
+deletion_timestamp,
+exclusion_id,
+internet_gateway_exclusion_mode,
+last_update_timestamp,
+reason,
+resource_arn,
+state,
+tags;
 ```
 </TabItem>
 </Tabs>

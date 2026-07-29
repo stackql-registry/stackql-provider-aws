@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dataset. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*/dataset/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetS3Uri" /></td>
+    <td><CopyableCode code="dataset_s3_uri" /></td>
     <td><code>string</code></td>
     <td>The S3 URI where the dataset is stored. (pattern: &lt;code&gt;s3:​//&#91;a-z0-9&#93;&#91;\.\-a-z0-9&#93;&#123;1,61&#125;&#91;a-z0-9&#93;(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetType" /></td>
+    <td><CopyableCode code="dataset_type" /></td>
     <td><code>string</code></td>
     <td>The dataset type (training data or test data). (TRAIN, TEST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the dataset. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9_&#93;)&#91;\\a-zA-Z0-9_@#%*+=:?./!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the data from the dataset becomes available in the data lake.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the status of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfDocuments" /></td>
+    <td><CopyableCode code="number_of_documents" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of documents in the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The dataset status. While the system creates the dataset, the status is CREATING. When the dataset is ready to use, the status changes to COMPLETED. (CREATING, COMPLETED, FAILED)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatasetPropertiesList" /></td>
+    <td><CopyableCode code="dataset_properties_list" /></td>
     <td><code>array</code></td>
     <td>The dataset properties list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Identifies the next page of results to return.</td>
 </tr>
@@ -204,16 +204,16 @@ Returns information about the dataset that you specify. For more information abo
 
 ```sql
 SELECT
-CreationTime,
-DatasetArn,
-DatasetName,
-DatasetS3Uri,
-DatasetType,
-Description,
-EndTime,
-Message,
-NumberOfDocuments,
-Status
+creation_time,
+dataset_arn,
+dataset_name,
+dataset_s3_uri,
+dataset_type,
+description,
+end_time,
+message,
+number_of_documents,
+status
 FROM aws.comprehend.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,8 +225,8 @@ List the datasets that you have configured in this Region. For more information 
 
 ```sql
 SELECT
-DatasetPropertiesList,
-NextToken
+dataset_properties_list,
+next_token
 FROM aws.comprehend.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -269,7 +269,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DatasetArn
+dataset_arn
 ;
 ```
 </TabItem>

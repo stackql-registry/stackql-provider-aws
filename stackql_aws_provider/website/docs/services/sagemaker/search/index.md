@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the result of the previous Search request was truncated, the response includes a NextToken. To retrieve the next set of results, use the token in the next request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>A list of SearchRecord objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalHits" /></td>
+    <td><CopyableCode code="total_hits" /></td>
     <td><code>object</code></td>
     <td>The total number of matching results.</td>
 </tr>
@@ -129,9 +129,9 @@ Finds SageMaker resources that match a search query. Matching resources are retu
 
 ```sql
 SELECT
-NextToken,
-Results,
-TotalHits
+next_token,
+results,
+total_hits
 FROM aws.sagemaker.search
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountsWithProvisionedRestoreAccess" /></td>
+    <td><CopyableCode code="accounts_with_provisioned_restore_access" /></td>
     <td><code>array</code></td>
     <td>All of the Amazon Web Services accounts that have access to restore a snapshot to a provisioned cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountsWithRestoreAccess" /></td>
+    <td><CopyableCode code="accounts_with_restore_access" /></td>
     <td><code>array</code></td>
     <td>All of the Amazon Web Services accounts that have access to restore a snapshot to a namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actualIncrementalBackupSizeInMegaBytes" /></td>
+    <td><CopyableCode code="actual_incremental_backup_size_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The size of the incremental backup in megabytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretArn" /></td>
+    <td><CopyableCode code="admin_password_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the namespace's admin user credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretKmsKeyId" /></td>
+    <td><CopyableCode code="admin_password_secret_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key used to encrypt and store the namespace's admin credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminUsername" /></td>
+    <td><CopyableCode code="admin_username" /></td>
     <td><code>string</code></td>
     <td>The username of the database within a snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupProgressInMegaBytes" /></td>
+    <td><CopyableCode code="backup_progress_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The size in megabytes of the data that has been backed up to a snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentBackupRateInMegaBytesPerSecond" /></td>
+    <td><CopyableCode code="current_backup_rate_in_mega_bytes_per_second" /></td>
     <td><code>number (double)</code></td>
     <td>The rate at which data is backed up into a snapshot in megabytes per second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="elapsedTimeInSeconds" /></td>
+    <td><CopyableCode code="elapsed_time_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of time it took to back up data into a snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedSecondsToCompletion" /></td>
+    <td><CopyableCode code="estimated_seconds_to_completion" /></td>
     <td><code>integer (int64)</code></td>
     <td>The estimated amount of seconds until the snapshot completes backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the KMS key used to encrypt the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the namespace the snapshot was created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namepsace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The owner Amazon Web Services; account of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotArn" /></td>
+    <td><CopyableCode code="snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotRemainingDays" /></td>
+    <td><CopyableCode code="snapshot_remaining_days" /></td>
     <td><code>integer</code></td>
     <td>The amount of days until the snapshot is deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotRetentionPeriod" /></td>
+    <td><CopyableCode code="snapshot_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The period of time, in days, of how long the snapshot is retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotRetentionStartTime" /></td>
+    <td><CopyableCode code="snapshot_retention_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when data within the snapshot started getting retained.</td>
 </tr>
@@ -156,7 +156,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the snapshot. (AVAILABLE, CREATING, DELETED, CANCELLED, FAILED, COPYING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalBackupSizeInMegaBytes" /></td>
+    <td><CopyableCode code="total_backup_size_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The total size, in megabytes, of how big the snapshot is.</td>
 </tr>
@@ -175,102 +175,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountsWithProvisionedRestoreAccess" /></td>
+    <td><CopyableCode code="accounts_with_provisioned_restore_access" /></td>
     <td><code>array</code></td>
     <td>All of the Amazon Web Services accounts that have access to restore a snapshot to a provisioned cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountsWithRestoreAccess" /></td>
+    <td><CopyableCode code="accounts_with_restore_access" /></td>
     <td><code>array</code></td>
     <td>All of the Amazon Web Services accounts that have access to restore a snapshot to a namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actualIncrementalBackupSizeInMegaBytes" /></td>
+    <td><CopyableCode code="actual_incremental_backup_size_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The size of the incremental backup in megabytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretArn" /></td>
+    <td><CopyableCode code="admin_password_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the namespace's admin user credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminPasswordSecretKmsKeyId" /></td>
+    <td><CopyableCode code="admin_password_secret_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key used to encrypt and store the namespace's admin credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adminUsername" /></td>
+    <td><CopyableCode code="admin_username" /></td>
     <td><code>string</code></td>
     <td>The username of the database within a snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupProgressInMegaBytes" /></td>
+    <td><CopyableCode code="backup_progress_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The size in megabytes of the data that has been backed up to a snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentBackupRateInMegaBytesPerSecond" /></td>
+    <td><CopyableCode code="current_backup_rate_in_mega_bytes_per_second" /></td>
     <td><code>number (double)</code></td>
     <td>The rate at which data is backed up into a snapshot in megabytes per second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="elapsedTimeInSeconds" /></td>
+    <td><CopyableCode code="elapsed_time_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of time it took to back up data into a snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedSecondsToCompletion" /></td>
+    <td><CopyableCode code="estimated_seconds_to_completion" /></td>
     <td><code>integer (int64)</code></td>
     <td>The estimated amount of seconds until the snapshot completes backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the KMS key used to encrypt the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the namespace the snapshot was created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namepsace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The owner Amazon Web Services; account of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotArn" /></td>
+    <td><CopyableCode code="snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotRemainingDays" /></td>
+    <td><CopyableCode code="snapshot_remaining_days" /></td>
     <td><code>integer</code></td>
     <td>The amount of days until the snapshot is deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotRetentionPeriod" /></td>
+    <td><CopyableCode code="snapshot_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The period of time, in days, of how long the snapshot is retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotRetentionStartTime" /></td>
+    <td><CopyableCode code="snapshot_retention_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when data within the snapshot started getting retained.</td>
 </tr>
@@ -280,7 +280,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the snapshot. (AVAILABLE, CREATING, DELETED, CANCELLED, FAILED, COPYING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalBackupSizeInMegaBytes" /></td>
+    <td><CopyableCode code="total_backup_size_in_mega_bytes" /></td>
     <td><code>number (double)</code></td>
     <td>The total size, in megabytes, of how big the snapshot is.</td>
 </tr>
@@ -378,28 +378,28 @@ Returns information about a specific snapshot.
 
 ```sql
 SELECT
-accountsWithProvisionedRestoreAccess,
-accountsWithRestoreAccess,
-actualIncrementalBackupSizeInMegaBytes,
-adminPasswordSecretArn,
-adminPasswordSecretKmsKeyId,
-adminUsername,
-backupProgressInMegaBytes,
-currentBackupRateInMegaBytesPerSecond,
-elapsedTimeInSeconds,
-estimatedSecondsToCompletion,
-kmsKeyId,
-namespaceArn,
-namespaceName,
-ownerAccount,
-snapshotArn,
-snapshotCreateTime,
-snapshotName,
-snapshotRemainingDays,
-snapshotRetentionPeriod,
-snapshotRetentionStartTime,
+accounts_with_provisioned_restore_access,
+accounts_with_restore_access,
+actual_incremental_backup_size_in_mega_bytes,
+admin_password_secret_arn,
+admin_password_secret_kms_key_id,
+admin_username,
+backup_progress_in_mega_bytes,
+current_backup_rate_in_mega_bytes_per_second,
+elapsed_time_in_seconds,
+estimated_seconds_to_completion,
+kms_key_id,
+namespace_arn,
+namespace_name,
+owner_account,
+snapshot_arn,
+snapshot_create_time,
+snapshot_name,
+snapshot_remaining_days,
+snapshot_retention_period,
+snapshot_retention_start_time,
 status,
-totalBackupSizeInMegaBytes
+total_backup_size_in_mega_bytes
 FROM aws.redshift_serverless.snapshots
 WHERE region = '{{ region }}' -- required
 ;
@@ -411,28 +411,28 @@ Returns a list of snapshots.
 
 ```sql
 SELECT
-accountsWithProvisionedRestoreAccess,
-accountsWithRestoreAccess,
-actualIncrementalBackupSizeInMegaBytes,
-adminPasswordSecretArn,
-adminPasswordSecretKmsKeyId,
-adminUsername,
-backupProgressInMegaBytes,
-currentBackupRateInMegaBytesPerSecond,
-elapsedTimeInSeconds,
-estimatedSecondsToCompletion,
-kmsKeyId,
-namespaceArn,
-namespaceName,
-ownerAccount,
-snapshotArn,
-snapshotCreateTime,
-snapshotName,
-snapshotRemainingDays,
-snapshotRetentionPeriod,
-snapshotRetentionStartTime,
+accounts_with_provisioned_restore_access,
+accounts_with_restore_access,
+actual_incremental_backup_size_in_mega_bytes,
+admin_password_secret_arn,
+admin_password_secret_kms_key_id,
+admin_username,
+backup_progress_in_mega_bytes,
+current_backup_rate_in_mega_bytes_per_second,
+elapsed_time_in_seconds,
+estimated_seconds_to_completion,
+kms_key_id,
+namespace_arn,
+namespace_name,
+owner_account,
+snapshot_arn,
+snapshot_create_time,
+snapshot_name,
+snapshot_remaining_days,
+snapshot_retention_period,
+snapshot_retention_start_time,
 status,
-totalBackupSizeInMegaBytes
+total_backup_size_in_mega_bytes
 FROM aws.redshift_serverless.snapshots
 WHERE region = '{{ region }}' -- required
 ;

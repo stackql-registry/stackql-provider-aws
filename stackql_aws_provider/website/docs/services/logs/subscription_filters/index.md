@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applyOnTransformedLogs" /></td>
+    <td><CopyableCode code="apply_on_transformed_logs" /></td>
     <td><code>boolean</code></td>
     <td>This parameter is valid only for log groups that have an active log transformer. For more information about log transformers, see PutTransformer. If this value is true, the subscription filter is applied on the transformed version of the log events instead of the original ingested log events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the destination.</td>
 </tr>
@@ -70,32 +70,32 @@ The following fields are returned by `SELECT` queries:
     <td>The method used to distribute log data to the destination, which can be either random or grouped by log stream. (Random, ByLogStream)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="emitSystemFields" /></td>
+    <td><CopyableCode code="emit_system_fields" /></td>
     <td><code>array</code></td>
     <td>The list of system fields that are included in the log events sent to the subscription destination. Returns the emitSystemFields value if it was specified when the subscription filter was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fieldSelectionCriteria" /></td>
+    <td><CopyableCode code="field_selection_criteria" /></td>
     <td><code>string</code></td>
     <td>The filter expression that specifies which log events are processed by this subscription filter based on system fields. Returns the fieldSelectionCriteria value if it was specified when the subscription filter was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterName" /></td>
+    <td><CopyableCode code="filter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the subscription filter. (pattern: &lt;code&gt;&#91;^:*&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterPattern" /></td>
+    <td><CopyableCode code="filter_pattern" /></td>
     <td><code>string</code></td>
     <td>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log group. (pattern: &lt;code&gt;&#91;\.\-_/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
@@ -178,16 +178,16 @@ Lists the subscription filters for the specified log group. You can list all the
 
 ```sql
 SELECT
-applyOnTransformedLogs,
-creationTime,
-destinationArn,
+apply_on_transformed_logs,
+creation_time,
+destination_arn,
 distribution,
-emitSystemFields,
-fieldSelectionCriteria,
-filterName,
-filterPattern,
-logGroupName,
-roleArn
+emit_system_fields,
+field_selection_criteria,
+filter_name,
+filter_pattern,
+log_group_name,
+role_arn
 FROM aws.logs.subscription_filters
 WHERE region = '{{ region }}' -- required
 ;

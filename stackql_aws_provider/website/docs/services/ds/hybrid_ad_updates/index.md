@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HybridAdministratorAccount" /></td>
+    <td><CopyableCode code="hybrid_administrator_account" /></td>
     <td><code>array</code></td>
     <td>A list of update activities related to hybrid directory administrator account changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SelfManagedInstances" /></td>
+    <td><CopyableCode code="self_managed_instances" /></td>
     <td><code>array</code></td>
     <td>A list of update activities related to the self-managed instances with SSM in the self-managed instances with SSM hybrid directory configuration.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves information about update activities for a hybrid directory. This opera
 
 ```sql
 SELECT
-HybridAdministratorAccount,
-SelfManagedInstances
+hybrid_administrator_account,
+self_managed_instances
 FROM aws.ds.hybrid_ad_updates
 WHERE region = '{{ region }}' -- required
 ;

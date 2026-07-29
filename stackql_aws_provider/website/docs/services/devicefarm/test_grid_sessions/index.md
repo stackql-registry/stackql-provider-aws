@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testGridSessions" /></td>
+    <td><CopyableCode code="test_grid_sessions" /></td>
     <td><code>array</code></td>
     <td>The sessions that match the criteria in a ListTestGridSessionsRequest.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the session. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingMinutes" /></td>
+    <td><CopyableCode code="billing_minutes" /></td>
     <td><code>number (double)</code></td>
     <td>The number of billed minutes that were used for this session.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The time the session ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="seleniumProperties" /></td>
+    <td><CopyableCode code="selenium_properties" /></td>
     <td><code>string</code></td>
     <td>A JSON object of options and parameters passed to the Selenium WebDriver.</td>
 </tr>
@@ -177,8 +177,8 @@ Retrieves a list of sessions for a TestGridProject.
 
 ```sql
 SELECT
-nextToken,
-testGridSessions
+next_token,
+test_grid_sessions
 FROM aws.devicefarm.test_grid_sessions
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,10 +191,10 @@ A session is an instance of a browser created through a RemoteWebDriver with the
 ```sql
 SELECT
 arn,
-billingMinutes,
+billing_minutes,
 created,
 ended,
-seleniumProperties,
+selenium_properties,
 status
 FROM aws.devicefarm.test_grid_sessions
 WHERE region = '{{ region }}' -- required

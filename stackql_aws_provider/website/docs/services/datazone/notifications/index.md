@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionLink" /></td>
+    <td><CopyableCode code="action_link" /></td>
     <td><code>string</code></td>
     <td>The action link included in the notification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when a notification was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainIdentifier" /></td>
+    <td><CopyableCode code="domain_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of a Amazon DataZone domain in which the notification exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the notification. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notification was last updated.</td>
 </tr>
@@ -209,11 +209,11 @@ Lists all Amazon DataZone notifications.
 
 ```sql
 SELECT
-actionLink,
-creationTimestamp,
-domainIdentifier,
+action_link,
+creation_timestamp,
+domain_identifier,
 identifier,
-lastUpdatedTimestamp,
+last_updated_timestamp,
 message,
 metadata,
 status,

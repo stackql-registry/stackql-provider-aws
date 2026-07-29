@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Assets" /></td>
+    <td><CopyableCode code="assets" /></td>
     <td><code>array</code></td>
     <td>An array of image files that you want to apply to roles like backgrounds, logos, and icons. Each object must also indicate whether it is for dark mode, light mode, or browser-adaptive mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedLoginBrandingId" /></td>
+    <td><CopyableCode code="managed_login_branding_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the managed login branding style. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;4&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;89abAB&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Settings" /></td>
+    <td><CopyableCode code="settings" /></td>
     <td><code>object</code></td>
     <td>A JSON file, encoded as a Document type, with the the settings that you want to apply to your style. The following components are not currently implemented and reserved for future use: signUp instructions sessionTimerDisplay languageSelector (for localization, see Managed login localization)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseCognitoProvidedValues" /></td>
+    <td><CopyableCode code="use_cognito_provided_values" /></td>
     <td><code>boolean</code></td>
     <td>When true, applies the default branding style options. This option reverts to default style options that are managed by Amazon Cognito. You can modify them later in the branding editor. When you specify true for this option, you must also omit values for Settings and Assets in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The user pool where the branding style is assigned. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -149,13 +149,13 @@ Given the ID of a user pool app client, returns detailed information about the s
 
 ```sql
 SELECT
-Assets,
-CreationDate,
-LastModifiedDate,
-ManagedLoginBrandingId,
-Settings,
-UseCognitoProvidedValues,
-UserPoolId
+assets,
+creation_date,
+last_modified_date,
+managed_login_branding_id,
+settings,
+use_cognito_provided_values,
+user_pool_id
 FROM aws.cognito_idp.managed_login_branding_by_clients
 WHERE region = '{{ region }}' -- required
 ;

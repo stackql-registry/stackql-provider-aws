@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the IndexFieldType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of domain configuration option.</td>
 </tr>
@@ -151,8 +151,8 @@ Gets information about the index fields configured for the search domain. Can be
 
 ```sql
 SELECT
-Options,
-Status
+options,
+status
 FROM aws.cloudsearch.index_fields
 WHERE DomainName = '{{ DomainName }}' -- required
 AND region = '{{ region }}' -- required

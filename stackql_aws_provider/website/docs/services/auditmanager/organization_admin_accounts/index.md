@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="adminAccountId" /></td>
+    <td><CopyableCode code="admin_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the administrator account. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationId" /></td>
+    <td><CopyableCode code="organization_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the organization. (pattern: &lt;code&gt;o-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Gets the name of the delegated Amazon Web Services administrator account for a s
 
 ```sql
 SELECT
-adminAccountId,
-organizationId
+admin_account_id,
+organization_id
 FROM aws.auditmanager.organization_admin_accounts
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,8 +170,8 @@ SELECT
 '{{ adminAccountId }}' /* required */,
 '{{ region }}'
 RETURNING
-adminAccountId,
-organizationId
+admin_account_id,
+organization_id
 ;
 ```
 </TabItem>

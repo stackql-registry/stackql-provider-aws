@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp at object creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fargateProfileArn" /></td>
+    <td><CopyableCode code="fargate_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The full Amazon Resource Name (ARN) of the Fargate profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fargateProfileName" /></td>
+    <td><CopyableCode code="fargate_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Fargate profile.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The health status of the Fargate profile. If there are issues with your Fargate profile's health, they are listed here.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="podExecutionRoleArn" /></td>
+    <td><CopyableCode code="pod_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Pod execution role to use for any Pod that matches the selectors in the Fargate profile. For more information, see Pod execution role in the Amazon EKS User Guide.</td>
 </tr>
@@ -226,12 +226,12 @@ Describes an Fargate profile.
 
 ```sql
 SELECT
-clusterName,
-createdAt,
-fargateProfileArn,
-fargateProfileName,
+cluster_name,
+created_at,
+fargate_profile_arn,
+fargate_profile_name,
 health,
-podExecutionRoleArn,
+pod_execution_role_arn,
 selectors,
 status,
 subnets,
@@ -295,7 +295,7 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-fargateProfile
+fargate_profile
 ;
 ```
 </TabItem>

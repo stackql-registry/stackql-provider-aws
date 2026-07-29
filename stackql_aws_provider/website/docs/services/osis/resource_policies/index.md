@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The resource-based policy document in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource. (pattern: &lt;code&gt;^arn:(aws|aws\-cn|aws\-us\-gov|aws\-iso|aws\-iso\-b):osis:.+:pipeline\/.+$&lt;/code&gt;)</td>
 </tr>
@@ -143,8 +143,8 @@ Retrieves the resource-based policy attached to an OpenSearch Ingestion resource
 
 ```sql
 SELECT
-Policy,
-ResourceArn
+policy,
+resource_arn
 FROM aws.osis.resource_policies
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -174,8 +174,8 @@ WHERE
 resource_arn = '{{ resource_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Policy,
-ResourceArn;
+policy,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

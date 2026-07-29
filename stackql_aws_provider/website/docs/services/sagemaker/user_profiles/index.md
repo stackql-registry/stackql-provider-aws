@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HomeEfsFileSystemUid" /></td>
+    <td><CopyableCode code="home_efs_file_system_uid" /></td>
     <td><code>string</code></td>
     <td>The ID of the user's profile in the Amazon Elastic File System volume. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SingleSignOnUserIdentifier" /></td>
+    <td><CopyableCode code="single_sign_on_user_identifier" /></td>
     <td><code>string</code></td>
     <td>The IAM Identity Center user identifier. (pattern: &lt;code&gt;UserName&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SingleSignOnUserValue" /></td>
+    <td><CopyableCode code="single_sign_on_user_value" /></td>
     <td><code>string</code></td>
     <td>The IAM Identity Center user value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleting, Failed, InService, Pending, Updating, Update_Failed, Delete_Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserProfileArn" /></td>
+    <td><CopyableCode code="user_profile_arn" /></td>
     <td><code>string</code></td>
     <td>The user profile Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:user-profile/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserProfileName" /></td>
+    <td><CopyableCode code="user_profile_name" /></td>
     <td><code>string</code></td>
     <td>The user profile name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserSettings" /></td>
+    <td><CopyableCode code="user_settings" /></td>
     <td><code>object</code></td>
     <td>A collection of settings.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status. (Deleting, Failed, InService, Pending, Updating, Update_Failed, Delete_Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserProfileName" /></td>
+    <td><CopyableCode code="user_profile_name" /></td>
     <td><code>string</code></td>
     <td>The user profile name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -245,17 +245,17 @@ Describes a user profile. For more information, see CreateUserProfile.
 
 ```sql
 SELECT
-CreationTime,
-DomainId,
-FailureReason,
-HomeEfsFileSystemUid,
-LastModifiedTime,
-SingleSignOnUserIdentifier,
-SingleSignOnUserValue,
-Status,
-UserProfileArn,
-UserProfileName,
-UserSettings
+creation_time,
+domain_id,
+failure_reason,
+home_efs_file_system_uid,
+last_modified_time,
+single_sign_on_user_identifier,
+single_sign_on_user_value,
+status,
+user_profile_arn,
+user_profile_name,
+user_settings
 FROM aws.sagemaker.user_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -267,11 +267,11 @@ Lists user profiles.
 
 ```sql
 SELECT
-CreationTime,
-DomainId,
-LastModifiedTime,
-Status,
-UserProfileName
+creation_time,
+domain_id,
+last_modified_time,
+status,
+user_profile_name
 FROM aws.sagemaker.user_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -312,7 +312,7 @@ SELECT
 '{{ UserSettings }}',
 '{{ region }}'
 RETURNING
-UserProfileArn
+user_profile_arn
 ;
 ```
 </TabItem>
@@ -538,7 +538,7 @@ region = '{{ region }}' --required
 AND DomainId = '{{ DomainId }}' --required
 AND UserProfileName = '{{ UserProfileName }}' --required
 RETURNING
-UserProfileArn;
+user_profile_arn;
 ```
 </TabItem>
 </Tabs>

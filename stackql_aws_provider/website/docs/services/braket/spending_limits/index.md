@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the spending limit was created, in epoch seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quantum device associated with this spending limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queuedSpend" /></td>
+    <td><CopyableCode code="queued_spend" /></td>
     <td><code>string</code></td>
     <td>The amount currently queued for spending on the device, in USD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spendingLimit" /></td>
+    <td><CopyableCode code="spending_limit" /></td>
     <td><code>string</code></td>
     <td>The maximum spending amount allowed for the device during the specified time period, in USD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spendingLimitArn" /></td>
+    <td><CopyableCode code="spending_limit_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the spending limit. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:braket:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:spending-limit/.*&lt;/code&gt;)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tags associated with the spending limit. Each tag consists of a key and an optional value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timePeriod" /></td>
+    <td><CopyableCode code="time_period" /></td>
     <td><code>object</code></td>
     <td>Defines a time range for spending limits, specifying when the limit is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalSpend" /></td>
+    <td><CopyableCode code="total_spend" /></td>
     <td><code>string</code></td>
     <td>The total amount spent on the device so far during the current time period, in USD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the spending limit was last modified, in epoch seconds.</td>
 </tr>
@@ -185,15 +185,15 @@ Searches and lists spending limits based on specified filters. This operation su
 
 ```sql
 SELECT
-createdAt,
-deviceArn,
-queuedSpend,
-spendingLimit,
-spendingLimitArn,
+created_at,
+device_arn,
+queued_spend,
+spending_limit,
+spending_limit_arn,
 tags,
-timePeriod,
-totalSpend,
-updatedAt
+time_period,
+total_spend,
+updated_at
 FROM aws.braket.spending_limits
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,7 +232,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-spendingLimitArn
+spending_limit_arn
 ;
 ```
 </TabItem>

@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that Cloud Map assigns to the service when you create it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The value of CreateDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccount" /></td>
+    <td><CopyableCode code="created_by_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that created the service. If this isn't your account ID, it is the ID of account of the namespace owner or of another account with which the namespace has been shared. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that identifies the request and that allows failed requests to be retried without the risk of running the operation twice. CreatorRequestId can be any unique string (for example, a date/timestamp).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsConfig" /></td>
+    <td><CopyableCode code="dns_config" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains information about the Route 53 DNS records that you want Cloud Map to create when you register an instance. The record types of a service can only be changed by deleting the service and recreating it with a new Dnsconfig.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckConfig" /></td>
+    <td><CopyableCode code="health_check_config" /></td>
     <td><code>object</code></td>
     <td>Public DNS and HTTP namespaces only. A complex type that contains settings for an optional health check. If you specify settings for a health check, Cloud Map associates the health check with the records that you specify in DnsConfig. For information about the charges for health checks, see Amazon Route 53 Pricing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckCustomConfig" /></td>
+    <td><CopyableCode code="health_check_custom_config" /></td>
     <td><code>object</code></td>
     <td>A complex type that contains information about an optional custom health check. If you specify a health check configuration, you can specify either HealthCheckCustomConfig or HealthCheckConfig but not both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID that Cloud Map assigned to the service when you created it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances that are currently associated with the service. Instances that were previously associated with the service but that are deleted aren't included in the count. The count might not reflect pending registrations and deregistrations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the service. (pattern: &lt;code&gt;((?=^.&#123;1,127&#125;$)^(&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,61&#125;&#91;a-zA-Z0-9_&#93;|&#91;a-zA-Z0-9&#93;)(\.(&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,61&#125;&#91;a-zA-Z0-9_&#93;|&#91;a-zA-Z0-9&#93;))*$)|(^\.$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NamespaceId" /></td>
+    <td><CopyableCode code="namespace_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the namespace that was used to create the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwner" /></td>
+    <td><CopyableCode code="resource_owner" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that created the namespace with which the service is associated. If this isn't your account ID, it is the ID of the account that shared the namespace with your account. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Describes the systems that can be used to discover the service instances. DNS_HTTP The service instances can be discovered using either DNS queries or the DiscoverInstances API operation. HTTP The service instances can only be discovered using the DiscoverInstances API operation. DNS Reserved. (HTTP, DNS_HTTP, DNS)</td>
 </tr>
@@ -212,20 +212,20 @@ Gets the settings for a specified service.
 
 ```sql
 SELECT
-Arn,
-CreateDate,
-CreatedByAccount,
-CreatorRequestId,
-Description,
-DnsConfig,
-HealthCheckConfig,
-HealthCheckCustomConfig,
-Id,
-InstanceCount,
-Name,
-NamespaceId,
-ResourceOwner,
-Type
+arn,
+create_date,
+created_by_account,
+creator_request_id,
+description,
+dns_config,
+health_check_config,
+health_check_custom_config,
+id,
+instance_count,
+name,
+namespace_id,
+resource_owner,
+type
 FROM aws.servicediscovery.services
 WHERE region = '{{ region }}' -- required
 ;
@@ -272,7 +272,7 @@ SELECT
 '{{ Type }}',
 '{{ region }}'
 RETURNING
-Service
+service
 ;
 ```
 </TabItem>
@@ -358,7 +358,7 @@ Service = '{{ Service }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-OperationId;
+operation_id;
 ```
 </TabItem>
 </Tabs>

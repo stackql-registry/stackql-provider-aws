@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationSummaryList" /></td>
+    <td><CopyableCode code="operation_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of operation summary information records. In a paginated request, the request returns up to MaxResults records for each call.</td>
 </tr>
@@ -124,8 +124,8 @@ Return a list of operations that occurred on an App Runner service. The resultin
 
 ```sql
 SELECT
-NextToken,
-OperationSummaryList
+next_token,
+operation_summary_list
 FROM aws.apprunner.operations
 WHERE region = '{{ region }}' -- required
 ;

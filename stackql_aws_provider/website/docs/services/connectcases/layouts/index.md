@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Object to store union of different versions of layout content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp at which the resource was created.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>Denotes whether or not the resource has been deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp at which the resource was created or last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="layoutArn" /></td>
+    <td><CopyableCode code="layout_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the newly created layout.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="layoutId" /></td>
+    <td><CopyableCode code="layout_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the layout.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The layouts for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
@@ -230,11 +230,11 @@ Returns the details for the requested layout.
 SELECT
 name,
 content,
-createdTime,
+created_time,
 deleted,
-lastModifiedTime,
-layoutArn,
-layoutId,
+last_modified_time,
+layout_arn,
+layout_id,
 tags
 FROM aws.connectcases.layouts
 WHERE domain_id = '{{ domain_id }}' -- required
@@ -250,7 +250,7 @@ Lists all layouts in the given cases domain. Each list item is a condensed summa
 ```sql
 SELECT
 layouts,
-nextToken
+next_token
 FROM aws.connectcases.layouts
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,8 +288,8 @@ SELECT
 '{{ domain_id }}',
 '{{ region }}'
 RETURNING
-layoutArn,
-layoutId
+layout_arn,
+layout_id
 ;
 ```
 </TabItem>

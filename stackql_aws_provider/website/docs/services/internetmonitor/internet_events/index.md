@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientLocation" /></td>
+    <td><CopyableCode code="client_location" /></td>
     <td><code>object</code></td>
     <td>The impacted location, such as a city, where clients access Amazon Web Services application resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the internet event ended. If the event hasn't ended yet, this value is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventArn" /></td>
+    <td><CopyableCode code="event_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the internet event. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The internally-generated identifier of an internet event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventStatus" /></td>
+    <td><CopyableCode code="event_status" /></td>
     <td><code>string</code></td>
     <td>The status of the internet event. (ACTIVE, RESOLVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of network impairment. (AVAILABILITY, PERFORMANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the internet event started.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientLocation" /></td>
+    <td><CopyableCode code="client_location" /></td>
     <td><code>object</code></td>
     <td>The impacted location, such as a city, that Amazon Web Services clients access application resources from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when an internet event ended. If the event hasn't ended yet, this value is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventArn" /></td>
+    <td><CopyableCode code="event_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the internet event. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The internally-generated identifier of an internet event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventStatus" /></td>
+    <td><CopyableCode code="event_status" /></td>
     <td><code>string</code></td>
     <td>The status of an internet event. (ACTIVE, RESOLVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of network impairment. (AVAILABILITY, PERFORMANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when an internet event started.</td>
 </tr>
@@ -242,13 +242,13 @@ Gets information that Amazon CloudWatch Internet Monitor has generated about an 
 
 ```sql
 SELECT
-ClientLocation,
-EndedAt,
-EventArn,
-EventId,
-EventStatus,
-EventType,
-StartedAt
+client_location,
+ended_at,
+event_arn,
+event_id,
+event_status,
+event_type,
+started_at
 FROM aws.internetmonitor.internet_events
 WHERE event_id = '{{ event_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -261,13 +261,13 @@ Lists internet events that cause performance or availability issues for client l
 
 ```sql
 SELECT
-ClientLocation,
-EndedAt,
-EventArn,
-EventId,
-EventStatus,
-EventType,
-StartedAt
+client_location,
+ended_at,
+event_arn,
+event_id,
+event_status,
+event_type,
+started_at
 FROM aws.internetmonitor.internet_events
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

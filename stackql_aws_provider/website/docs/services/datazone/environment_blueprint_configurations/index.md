@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this blueprint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain where this blueprint exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enabledRegions" /></td>
+    <td><CopyableCode code="enabled_regions" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services regions in which this blueprint is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentBlueprintId" /></td>
+    <td><CopyableCode code="environment_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the blueprint. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentRolePermissionBoundary" /></td>
+    <td><CopyableCode code="environment_role_permission_boundary" /></td>
     <td><code>string</code></td>
     <td>The environment role permissions boundary. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::(aws|\d&#123;12&#125;):policy/&#91;\w+=,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="manageAccessRoleArn" /></td>
+    <td><CopyableCode code="manage_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the manage access role with which this blueprint is created. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:role(/&#91;a-zA-Z0-9+=,.@_-&#93;+)*/&#91;a-zA-Z0-9+=,.@_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningConfigurations" /></td>
+    <td><CopyableCode code="provisioning_configurations" /></td>
     <td><code>array</code></td>
     <td>The provisioning configuration of a blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningRoleArn" /></td>
+    <td><CopyableCode code="provisioning_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the provisioning role with which this blueprint is created. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:role(/&#91;a-zA-Z0-9+=,.@_-&#93;+)*/&#91;a-zA-Z0-9+=,.@_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalParameters" /></td>
+    <td><CopyableCode code="regional_parameters" /></td>
     <td><code>object</code></td>
     <td>The regional parameters of the blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this blueprint was upated.</td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when an environment blueprint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone domain in which an environment blueprint exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enabledRegions" /></td>
+    <td><CopyableCode code="enabled_regions" /></td>
     <td><code>array</code></td>
     <td>The enabled Amazon Web Services Regions specified in a blueprint configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentBlueprintId" /></td>
+    <td><CopyableCode code="environment_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the environment blueprint. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentRolePermissionBoundary" /></td>
+    <td><CopyableCode code="environment_role_permission_boundary" /></td>
     <td><code>string</code></td>
     <td>The environment role permission boundary. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::(aws|\d&#123;12&#125;):policy/&#91;\w+=,.@-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="manageAccessRoleArn" /></td>
+    <td><CopyableCode code="manage_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the manage access role specified in the environment blueprint configuration. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:role(/&#91;a-zA-Z0-9+=,.@_-&#93;+)*/&#91;a-zA-Z0-9+=,.@_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningConfigurations" /></td>
+    <td><CopyableCode code="provisioning_configurations" /></td>
     <td><code>array</code></td>
     <td>The provisioning configuration of a blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisioningRoleArn" /></td>
+    <td><CopyableCode code="provisioning_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the provisioning role specified in the environment blueprint configuration. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:role(/&#91;a-zA-Z0-9+=,.@_-&#93;+)*/&#91;a-zA-Z0-9+=,.@_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionalParameters" /></td>
+    <td><CopyableCode code="regional_parameters" /></td>
     <td><code>object</code></td>
     <td>The regional parameters of the environment blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the environment blueprint was updated.</td>
 </tr>
@@ -271,16 +271,16 @@ Gets the blueprint configuration in Amazon DataZone.
 
 ```sql
 SELECT
-createdAt,
-domainId,
-enabledRegions,
-environmentBlueprintId,
-environmentRolePermissionBoundary,
-manageAccessRoleArn,
-provisioningConfigurations,
-provisioningRoleArn,
-regionalParameters,
-updatedAt
+created_at,
+domain_id,
+enabled_regions,
+environment_blueprint_id,
+environment_role_permission_boundary,
+manage_access_role_arn,
+provisioning_configurations,
+provisioning_role_arn,
+regional_parameters,
+updated_at
 FROM aws.datazone.environment_blueprint_configurations
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND environment_blueprint_identifier = '{{ environment_blueprint_identifier }}' -- required
@@ -294,16 +294,16 @@ Lists blueprint configurations for a Amazon DataZone environment.
 
 ```sql
 SELECT
-createdAt,
-domainId,
-enabledRegions,
-environmentBlueprintId,
-environmentRolePermissionBoundary,
-manageAccessRoleArn,
-provisioningConfigurations,
-provisioningRoleArn,
-regionalParameters,
-updatedAt
+created_at,
+domain_id,
+enabled_regions,
+environment_blueprint_id,
+environment_role_permission_boundary,
+manage_access_role_arn,
+provisioning_configurations,
+provisioning_role_arn,
+regional_parameters,
+updated_at
 FROM aws.datazone.environment_blueprint_configurations
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -343,16 +343,16 @@ AND environment_blueprint_identifier = '{{ environment_blueprint_identifier }}' 
 AND region = '{{ region }}' --required
 AND enabledRegions = '{{ enabledRegions }}' --required
 RETURNING
-createdAt,
-domainId,
-enabledRegions,
-environmentBlueprintId,
-environmentRolePermissionBoundary,
-manageAccessRoleArn,
-provisioningConfigurations,
-provisioningRoleArn,
-regionalParameters,
-updatedAt;
+created_at,
+domain_id,
+enabled_regions,
+environment_blueprint_id,
+environment_role_permission_boundary,
+manage_access_role_arn,
+provisioning_configurations,
+provisioning_role_arn,
+regional_parameters,
+updated_at;
 ```
 </TabItem>
 </Tabs>

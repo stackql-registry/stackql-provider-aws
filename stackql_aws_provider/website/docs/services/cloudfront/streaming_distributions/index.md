@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) for the distribution. For example: arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012 is your Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActiveTrustedSigners" /></td>
+    <td><CopyableCode code="active_trusted_signers" /></td>
     <td><code>string</code></td>
     <td>A complex type that lists the Amazon Web Services accounts, if any, that you included in the TrustedSigners complex type for this distribution. These are the accounts that you want to allow to create signed URLs for private content. The Signer complex type lists the Amazon Web Services account number of the trusted signer or self if the signer is the Amazon Web Services account that created the distribution. The Signer element also includes the IDs of any active CloudFront key pairs that are associated with the trusted signer's Amazon Web Services account. If no KeyPairId element appears for a Signer, that signer can't create signed URLs. For more information, see Serving Private Content through CloudFront in the Amazon CloudFront Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name that corresponds to the streaming distribution, for example, s5c39gqb8ow64r.cloudfront.net.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the RTMP distribution. For example: EGTXBD79EXAMPLE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the distribution was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the RTMP distribution. When the status is Deployed, the distribution's information is propagated to all CloudFront edge locations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamingDistributionConfig" /></td>
+    <td><CopyableCode code="streaming_distribution_config" /></td>
     <td><code>string</code></td>
     <td>The current configuration information for the RTMP distribution.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether more streaming distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains one StreamingDistributionSummary element for each distribution that was created by the current Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>The value you provided for the Marker request parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The value you provided for the MaxItems request parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your RTMP distributions where they left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of streaming distributions that were created by the current Amazon Web Services account.</td>
 </tr>
@@ -243,13 +243,13 @@ Gets information about a specified RTMP distribution, including the distribution
 
 ```sql
 SELECT
-ARN,
-ActiveTrustedSigners,
-DomainName,
-Id,
-LastModifiedTime,
-Status,
-StreamingDistributionConfig
+arn,
+active_trusted_signers,
+domain_name,
+id,
+last_modified_time,
+status,
+streaming_distribution_config
 FROM aws.cloudfront.streaming_distributions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,12 +262,12 @@ List streaming distributions.
 
 ```sql
 SELECT
-IsTruncated,
-Items,
-Marker,
-MaxItems,
-NextMarker,
-Quantity
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.streaming_distributions
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -300,13 +300,13 @@ SELECT
 '{{ StreamingDistributionConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-ARN,
-ActiveTrustedSigners,
-DomainName,
-Id,
-LastModifiedTime,
-Status,
-StreamingDistributionConfig
+arn,
+active_trusted_signers,
+domain_name,
+id,
+last_modified_time,
+status,
+streaming_distribution_config
 ;
 ```
 </TabItem>
@@ -370,13 +370,13 @@ AND region = '{{ region }}' --required
 AND StreamingDistributionConfig = '{{ StreamingDistributionConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-ARN,
-ActiveTrustedSigners,
-DomainName,
-Id,
-LastModifiedTime,
-Status,
-StreamingDistributionConfig;
+arn,
+active_trusted_signers,
+domain_name,
+id,
+last_modified_time,
+status,
+streaming_distribution_config;
 ```
 </TabItem>
 </Tabs>

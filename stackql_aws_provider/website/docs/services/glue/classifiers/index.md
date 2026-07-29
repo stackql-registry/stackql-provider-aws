@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CsvClassifier" /></td>
+    <td><CopyableCode code="csv_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier for comma-separated values (CSV).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrokClassifier" /></td>
+    <td><CopyableCode code="grok_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier that uses grok.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JsonClassifier" /></td>
+    <td><CopyableCode code="json_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier for JSON content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="XMLClassifier" /></td>
+    <td><CopyableCode code="xml_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier for XML content.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CsvClassifier" /></td>
+    <td><CopyableCode code="csv_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier for comma-separated values (CSV).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrokClassifier" /></td>
+    <td><CopyableCode code="grok_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier that uses grok.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JsonClassifier" /></td>
+    <td><CopyableCode code="json_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier for JSON content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="XMLClassifier" /></td>
+    <td><CopyableCode code="xml_classifier" /></td>
     <td><code>object</code></td>
     <td>A classifier for XML content.</td>
 </tr>
@@ -198,10 +198,10 @@ Retrieve a classifier by name.
 
 ```sql
 SELECT
-CsvClassifier,
-GrokClassifier,
-JsonClassifier,
-XMLClassifier
+csv_classifier,
+grok_classifier,
+json_classifier,
+xml_classifier
 FROM aws.glue.classifiers
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,10 +213,10 @@ Lists all classifier objects in the Data Catalog.
 
 ```sql
 SELECT
-CsvClassifier,
-GrokClassifier,
-JsonClassifier,
-XMLClassifier
+csv_classifier,
+grok_classifier,
+json_classifier,
+xml_classifier
 FROM aws.glue.classifiers
 WHERE region = '{{ region }}' -- required
 ;

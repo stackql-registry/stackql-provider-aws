@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>A service-generated name for the DB instance based on the customer-supplied name for the DB cluster. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9&#93;*(-&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage allocated for your DB storage type in GiB (gibibytes).</td>
 </tr>
@@ -70,17 +70,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbInstanceType" /></td>
+    <td><CopyableCode code="db_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB instance type to run InfluxDB on. (db.influx.medium, db.influx.large, db.influx.xlarge, db.influx.2xlarge, db.influx.4xlarge, db.influx.8xlarge, db.influx.12xlarge, db.influx.16xlarge, db.influx.24xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbStorageType" /></td>
+    <td><CopyableCode code="db_storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type for your DB instance. (InfluxIOIncludedT1, InfluxIOIncludedT2, InfluxIOIncludedT3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the deployment type if applicable. (SINGLE_AZ, WITH_MULTIAZ_STANDBY)</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint used to connect to InfluxDB. The default InfluxDB port is 8086.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceMode" /></td>
+    <td><CopyableCode code="instance_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies the DB instance's role in the cluster. (PRIMARY, STANDBY, REPLICA, INGEST, QUERY, COMPACT, PROCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceModes" /></td>
+    <td><CopyableCode code="instance_modes" /></td>
     <td><code>array</code></td>
     <td>Specifies the DB instance's roles in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the network type of the Timestream for InfluxDB instance is IPv4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols. (IPV4, DUAL)</td>
 </tr>
@@ -181,15 +181,15 @@ Returns a list of Timestream for InfluxDB clusters.
 SELECT
 id,
 name,
-allocatedStorage,
+allocated_storage,
 arn,
-dbInstanceType,
-dbStorageType,
-deploymentType,
+db_instance_type,
+db_storage_type,
+deployment_type,
 endpoint,
-instanceMode,
-instanceModes,
-networkType,
+instance_mode,
+instance_modes,
+network_type,
 port,
 status
 FROM aws.timestream_influxdb.db_instances_for_clusters

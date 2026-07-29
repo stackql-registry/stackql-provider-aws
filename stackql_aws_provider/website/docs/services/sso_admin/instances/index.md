@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionConfigurationDetails" /></td>
+    <td><CopyableCode code="encryption_configuration_details" /></td>
     <td><code>object</code></td>
     <td>Contains the encryption configuration for your IAM Identity Center instance, including the encryption status, KMS key type, and KMS key ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the identity store that is connected to the instance of IAM Identity Center. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the instance of IAM Identity Center under which the operation will run. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the Amazon Web Services General Reference. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso:::instance/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Specifies the instance name. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Web Services account for which the instance was created. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the instance. (CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_IN_PROGRESS, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Provides additional context about the current status of the IAM Identity Center instance. This field is particularly useful when an instance is in a non-ACTIVE state, such as CREATE_FAILED. When an instance fails to create or update, this field contains information about the cause, which may include issues with KMS key configuration, permission problems with the specified KMS key, or service-related errors. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -105,37 +105,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Identity Center instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreId" /></td>
+    <td><CopyableCode code="identity_store_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the identity store that is connected to the Identity Center instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the Amazon Web Services General Reference. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso:::instance/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Identity Center instance. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID number of the owner of the Identity Center instance. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of this Identity Center instance. (CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_IN_PROGRESS, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Provides additional context about the current status of the IAM Identity Center instance. This field is particularly useful when an instance is in a non-ACTIVE state, such as CREATE_FAILED. When an instance creation fails, this field contains information about the cause, which may include issues with KMS key configuration or insufficient permissions. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -233,14 +233,14 @@ Returns the details of an instance of IAM Identity Center. The status can be one
 
 ```sql
 SELECT
-CreatedDate,
-EncryptionConfigurationDetails,
-IdentityStoreId,
-InstanceArn,
-Name,
-OwnerAccountId,
-Status,
-StatusReason
+created_date,
+encryption_configuration_details,
+identity_store_id,
+instance_arn,
+name,
+owner_account_id,
+status,
+status_reason
 FROM aws.sso_admin.instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,13 +252,13 @@ Lists the details of the organization and account instances of IAM Identity Cent
 
 ```sql
 SELECT
-CreatedDate,
-IdentityStoreId,
-InstanceArn,
-Name,
-OwnerAccountId,
-Status,
-StatusReason
+created_date,
+identity_store_id,
+instance_arn,
+name,
+owner_account_id,
+status,
+status_reason
 FROM aws.sso_admin.instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -293,7 +293,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-InstanceArn
+instance_arn
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>The list of mobile device access rules that exist under the specified WorkMail organization.</td>
 </tr>
@@ -140,7 +140,7 @@ Lists the mobile device access rules for the specified WorkMail organization.
 
 ```sql
 SELECT
-Rules
+rules
 FROM aws.workmail.mobile_device_access_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -195,7 +195,7 @@ SELECT
 '{{ NotDeviceUserAgents }}',
 '{{ region }}'
 RETURNING
-MobileDeviceAccessRuleId
+mobile_device_access_rule_id
 ;
 ```
 </TabItem>

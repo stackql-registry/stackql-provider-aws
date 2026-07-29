@@ -103,7 +103,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResultToken = '{{ ResultToken }}' --required
 RETURNING
-FailedEvaluations;
+failed_evaluations;
 ```
 </TabItem>
 </Tabs>

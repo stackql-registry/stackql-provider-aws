@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MigrationTaskName" /></td>
+    <td><CopyableCode code="migration_task_name" /></td>
     <td><code>string</code></td>
     <td>Unique identifier that references the migration task. Do not store personal data in this field. (pattern: &lt;code&gt;&#91;^:|&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressUpdateStream" /></td>
+    <td><CopyableCode code="progress_update_stream" /></td>
     <td><code>string</code></td>
     <td>A name that identifies the vendor of the migration tool being used. (pattern: &lt;code&gt;&#91;^/:|\000-\037&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceAttributeList" /></td>
+    <td><CopyableCode code="resource_attribute_list" /></td>
     <td><code>array</code></td>
     <td>Information about the resource that is being migrated. This data will be used to map the task to a resource in the Application Discovery Service repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Task" /></td>
+    <td><CopyableCode code="task" /></td>
     <td><code>object</code></td>
     <td>Task object encapsulating task information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task was gathered.</td>
 </tr>
@@ -90,32 +90,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MigrationTaskName" /></td>
+    <td><CopyableCode code="migration_task_name" /></td>
     <td><code>string</code></td>
     <td>Unique identifier that references the migration task. Do not store personal data in this field. (pattern: &lt;code&gt;&#91;^:|&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressPercent" /></td>
+    <td><CopyableCode code="progress_percent" /></td>
     <td><code>integer</code></td>
     <td>Indication of the percentage completion of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressUpdateStream" /></td>
+    <td><CopyableCode code="progress_update_stream" /></td>
     <td><code>string</code></td>
     <td>An AWS resource used for access control. It should uniquely identify the migration tool as it is used for all updates made by the tool. (pattern: &lt;code&gt;&#91;^/:|\000-\037&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the task. (NOT_STARTED, IN_PROGRESS, FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetail" /></td>
+    <td><CopyableCode code="status_detail" /></td>
     <td><code>string</code></td>
     <td>Detail information of what is being done within the overall status state. (pattern: &lt;code&gt;^.&#123;0,2500&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the task was gathered.</td>
 </tr>
@@ -213,11 +213,11 @@ Retrieves a list of all attributes associated with a specific migration task.
 
 ```sql
 SELECT
-MigrationTaskName,
-ProgressUpdateStream,
-ResourceAttributeList,
-Task,
-UpdateDateTime
+migration_task_name,
+progress_update_stream,
+resource_attribute_list,
+task,
+update_date_time
 FROM aws.mgh.migration_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -229,12 +229,12 @@ Lists all, or filtered by resource name, migration tasks associated with the use
 
 ```sql
 SELECT
-MigrationTaskName,
-ProgressPercent,
-ProgressUpdateStream,
-Status,
-StatusDetail,
-UpdateDateTime
+migration_task_name,
+progress_percent,
+progress_update_stream,
+status,
+status_detail,
+update_date_time
 FROM aws.mgh.migration_tasks
 WHERE region = '{{ region }}' -- required
 ;

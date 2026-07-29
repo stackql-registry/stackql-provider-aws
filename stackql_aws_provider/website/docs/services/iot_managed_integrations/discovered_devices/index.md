@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthenticationMaterial" /></td>
+    <td><CopyableCode code="authentication_material" /></td>
     <td><code>string</code></td>
     <td>The authentication material required for connecting to the discovered device, such as credentials or tokens. (pattern: &lt;code&gt;&#91;0-9A-Za-z!#$%&()*\+\-;&lt;=&gt;?@^_`&#123;|&#125;~\/: &#123;&#125;,\\"&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Brand" /></td>
+    <td><CopyableCode code="brand" /></td>
     <td><code>string</code></td>
     <td>The brand of the discovered device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDeviceId" /></td>
+    <td><CopyableCode code="connector_device_id" /></td>
     <td><code>string</code></td>
     <td>The third-party device identifier as defined by the connector. This identifier must not contain personal identifiable information (PII). (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorDeviceName" /></td>
+    <td><CopyableCode code="connector_device_name" /></td>
     <td><code>string</code></td>
     <td>The name of the device as defined by the connector or third-party system. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125; ._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceTypes" /></td>
+    <td><CopyableCode code="device_types" /></td>
     <td><code>array</code></td>
     <td>The list of device types or categories that the discovered device belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DiscoveredAt" /></td>
+    <td><CopyableCode code="discovered_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the device was discovered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the managed thing created for this discovered device, if one exists. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Model" /></td>
+    <td><CopyableCode code="model" /></td>
     <td><code>string</code></td>
     <td>The model of the discovered device. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Modification" /></td>
+    <td><CopyableCode code="modification" /></td>
     <td><code>string</code></td>
     <td>The status of the discovered device, indicating whether it has been added, removed, or modified since the last discovery. (DISCOVERED, UPDATED, NO_CHANGE)</td>
 </tr>
@@ -174,15 +174,15 @@ Lists all devices discovered during a specific device discovery task.
 
 ```sql
 SELECT
-AuthenticationMaterial,
-Brand,
-ConnectorDeviceId,
-ConnectorDeviceName,
-DeviceTypes,
-DiscoveredAt,
-ManagedThingId,
-Model,
-Modification
+authentication_material,
+brand,
+connector_device_id,
+connector_device_name,
+device_types,
+discovered_at,
+managed_thing_id,
+model,
+modification
 FROM aws.iot_managed_integrations.discovered_devices
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

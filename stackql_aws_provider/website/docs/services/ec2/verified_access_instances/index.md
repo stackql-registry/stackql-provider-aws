@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CidrEndpointsCustomSubDomain" /></td>
+    <td><CopyableCode code="cidr_endpoints_custom_sub_domain" /></td>
     <td><code>string</code></td>
     <td>The custom subdomain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description for the Amazon Web Services Verified Access instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FipsEnabled" /></td>
+    <td><CopyableCode code="fips_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether support for Federal Information Processing Standards (FIPS) is enabled on the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The last updated time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessInstanceId" /></td>
+    <td><CopyableCode code="verified_access_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Verified Access instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedAccessTrustProviders" /></td>
+    <td><CopyableCode code="verified_access_trust_providers" /></td>
     <td><code>string</code></td>
     <td>The IDs of the Amazon Web Services Verified Access trust providers.</td>
 </tr>
@@ -237,14 +237,14 @@ Describes the specified Amazon Web Services Verified Access instances.
 
 ```sql
 SELECT
-CidrEndpointsCustomSubDomain,
-CreationTime,
-Description,
-FipsEnabled,
-LastUpdatedTime,
-Tags,
-VerifiedAccessInstanceId,
-VerifiedAccessTrustProviders
+cidr_endpoints_custom_sub_domain,
+creation_time,
+description,
+fips_enabled,
+last_updated_time,
+tags,
+verified_access_instance_id,
+verified_access_trust_providers
 FROM aws.ec2.verified_access_instances
 WHERE region = '{{ region }}' -- required
 AND VerifiedAccessInstanceId = '{{ VerifiedAccessInstanceId }}'
@@ -290,14 +290,14 @@ SELECT
 '{{ FIPSEnabled }}',
 '{{ CidrEndpointsCustomSubDomain }}'
 RETURNING
-CidrEndpointsCustomSubDomain,
-CreationTime,
-Description,
-FipsEnabled,
-LastUpdatedTime,
-Tags,
-VerifiedAccessInstanceId,
-VerifiedAccessTrustProviders
+cidr_endpoints_custom_sub_domain,
+creation_time,
+description,
+fips_enabled,
+last_updated_time,
+tags,
+verified_access_instance_id,
+verified_access_trust_providers
 ;
 ```
 </TabItem>
@@ -363,14 +363,14 @@ AND DryRun = {{ DryRun}}
 AND ClientToken = '{{ ClientToken}}'
 AND CidrEndpointsCustomSubDomain = '{{ CidrEndpointsCustomSubDomain}}'
 RETURNING
-CidrEndpointsCustomSubDomain,
-CreationTime,
-Description,
-FipsEnabled,
-LastUpdatedTime,
-Tags,
-VerifiedAccessInstanceId,
-VerifiedAccessTrustProviders;
+cidr_endpoints_custom_sub_domain,
+creation_time,
+description,
+fips_enabled,
+last_updated_time,
+tags,
+verified_access_instance_id,
+verified_access_trust_providers;
 ```
 </TabItem>
 </Tabs>

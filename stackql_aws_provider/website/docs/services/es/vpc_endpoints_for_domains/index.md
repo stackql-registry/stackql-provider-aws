@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointSummaryList" /></td>
+    <td><CopyableCode code="vpc_endpoint_summary_list" /></td>
     <td><code>array</code></td>
     <td>Provides list of VpcEndpointSummary summarizing details of the VPC endpoints.</td>
 </tr>
@@ -134,8 +134,8 @@ Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a 
 
 ```sql
 SELECT
-NextToken,
-VpcEndpointSummaryList
+next_token,
+vpc_endpoint_summary_list
 FROM aws.es.vpc_endpoints_for_domains
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

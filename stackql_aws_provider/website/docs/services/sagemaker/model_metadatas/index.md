@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The machine learning domain of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Framework" /></td>
+    <td><CopyableCode code="framework" /></td>
     <td><code>string</code></td>
     <td>The machine learning framework of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkVersion" /></td>
+    <td><CopyableCode code="framework_version" /></td>
     <td><code>string</code></td>
     <td>The framework version of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Model" /></td>
+    <td><CopyableCode code="model" /></td>
     <td><code>string</code></td>
     <td>The name of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Task" /></td>
+    <td><CopyableCode code="task" /></td>
     <td><code>string</code></td>
     <td>The machine learning task of the model.</td>
 </tr>
@@ -139,11 +139,11 @@ Lists the domain, framework, task, and model name of standard machine learning m
 
 ```sql
 SELECT
-Domain,
-Framework,
-FrameworkVersion,
-Model,
-Task
+domain,
+framework,
+framework_version,
+model,
+task
 FROM aws.sagemaker.model_metadatas
 WHERE region = '{{ region }}' -- required
 ;

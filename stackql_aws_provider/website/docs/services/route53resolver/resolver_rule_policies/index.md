@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResolverRulePolicy" /></td>
+    <td><CopyableCode code="resolver_rule_policy" /></td>
     <td><code>string</code></td>
     <td>The Resolver rule policy for the rule that you specified in a GetResolverRulePolicy request.</td>
 </tr>
@@ -126,7 +126,7 @@ Gets information about the Resolver rule policy for a specified rule. A Resolver
 
 ```sql
 SELECT
-ResolverRulePolicy
+resolver_rule_policy
 FROM aws.route53resolver.resolver_rule_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -157,7 +157,7 @@ region = '{{ region }}' --required
 AND Arn = '{{ Arn }}' --required
 AND ResolverRulePolicy = '{{ ResolverRulePolicy }}' --required
 RETURNING
-ReturnValue;
+return_value;
 ```
 </TabItem>
 </Tabs>

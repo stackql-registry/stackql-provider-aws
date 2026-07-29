@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The optional job run name. This doesn't have to be unique. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application the job is running on. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -71,62 +71,62 @@ The following fields are returned by `SELECT` queries:
     <td>The attempt of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attemptCreatedAt" /></td>
+    <td><CopyableCode code="attempt_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the job run attempt was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attemptUpdatedAt" /></td>
+    <td><CopyableCode code="attempt_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the job run attempt was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billedResourceUtilization" /></td>
+    <td><CopyableCode code="billed_resource_utilization" /></td>
     <td><code>object</code></td>
     <td>The aggregate vCPU, memory, and storage that Amazon Web Services has billed for the job run. The billed resources include a 1-minute minimum usage for workers, plus additional storage over 20 GB per worker. Note that billed resources do not include usage for idle pre-initialized workers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationOverrides" /></td>
+    <td><CopyableCode code="configuration_overrides" /></td>
     <td><code>object</code></td>
     <td>The configuration settings that are used to override default configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job was terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionIamPolicy" /></td>
+    <td><CopyableCode code="execution_iam_policy" /></td>
     <td><code>object</code></td>
     <td>Optional IAM policy. The resulting job IAM role permissions will be an intersection of the policies passed and the policy associated with your job execution role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The execution role ARN of the job run. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):iam::(&#91;0-9&#93;&#123;12&#125;):(role((\u002F)|(\u002F&#91;\u0021-\u007F&#93;+\u002F))&#91;\w+=,.@-&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionTimeoutMinutes" /></td>
+    <td><CopyableCode code="execution_timeout_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Returns the job run timeout value from the StartJobRun call. If no timeout was specified, then it returns the default timeout of 720 minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobDriver" /></td>
+    <td><CopyableCode code="job_driver" /></td>
     <td><code>object</code></td>
     <td>The job driver for the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobRunId" /></td>
+    <td><CopyableCode code="job_run_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the job run. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -136,27 +136,27 @@ The following fields are returned by `SELECT` queries:
     <td>The mode of the job run. (BATCH, STREAMING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration for customer VPC connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queuedDurationMilliseconds" /></td>
+    <td><CopyableCode code="queued_duration_milliseconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total time for a job in the QUEUED state in milliseconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The Amazon EMR release associated with the application your job is running on. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retryPolicy" /></td>
+    <td><CopyableCode code="retry_policy" /></td>
     <td><code>object</code></td>
     <td>The retry policy of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job moved to the RUNNING state.</td>
 </tr>
@@ -166,7 +166,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the job run. (SUBMITTED, PENDING, SCHEDULED, RUNNING, SUCCESS, FAILED, CANCELLING, CANCELLED, QUEUED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>The state details of the job run. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -176,17 +176,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tags assigned to the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalExecutionDurationSeconds" /></td>
+    <td><CopyableCode code="total_execution_duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>The job run total execution duration in seconds. This field is only available for job runs in a COMPLETED, FAILED, or CANCELLED state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResourceUtilization" /></td>
+    <td><CopyableCode code="total_resource_utilization" /></td>
     <td><code>object</code></td>
     <td>The aggregate vCPU, memory, and storage resources used from the time the job starts to execute, until the time the job terminates, rounded up to the nearest second.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run was updated.</td>
 </tr>
@@ -215,7 +215,7 @@ The following fields are returned by `SELECT` queries:
     <td>The optional job run name. This doesn't have to be unique. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application the job is running on. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -230,27 +230,27 @@ The following fields are returned by `SELECT` queries:
     <td>The attempt number of the job run execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attemptCreatedAt" /></td>
+    <td><CopyableCode code="attempt_created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the job run attempt was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attemptUpdatedAt" /></td>
+    <td><CopyableCode code="attempt_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the job run attempt was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The execution role ARN of the job run. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):iam::(&#91;0-9&#93;&#123;12&#125;):(role((\u002F)|(\u002F&#91;\u0021-\u007F&#93;+\u002F))&#91;\w+=,.@-&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -260,7 +260,7 @@ The following fields are returned by `SELECT` queries:
     <td>The mode of the job run. (BATCH, STREAMING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseLabel" /></td>
+    <td><CopyableCode code="release_label" /></td>
     <td><code>string</code></td>
     <td>The Amazon EMR release associated with the application your job is running on. (pattern: &lt;code&gt;&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -270,7 +270,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the job run. (SUBMITTED, PENDING, SCHEDULED, RUNNING, SUCCESS, FAILED, CANCELLING, CANCELLED, QUEUED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDetails" /></td>
+    <td><CopyableCode code="state_details" /></td>
     <td><code>string</code></td>
     <td>The state details of the job run. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -280,7 +280,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of job run, such as Spark or Hive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run was last updated.</td>
 </tr>
@@ -403,33 +403,33 @@ Displays detailed information about a job run.
 ```sql
 SELECT
 name,
-applicationId,
+application_id,
 arn,
 attempt,
-attemptCreatedAt,
-attemptUpdatedAt,
-billedResourceUtilization,
-configurationOverrides,
-createdAt,
-createdBy,
-endedAt,
-executionIamPolicy,
-executionRole,
-executionTimeoutMinutes,
-jobDriver,
-jobRunId,
+attempt_created_at,
+attempt_updated_at,
+billed_resource_utilization,
+configuration_overrides,
+created_at,
+created_by,
+ended_at,
+execution_iam_policy,
+execution_role,
+execution_timeout_minutes,
+job_driver,
+job_run_id,
 mode,
-networkConfiguration,
-queuedDurationMilliseconds,
-releaseLabel,
-retryPolicy,
-startedAt,
+network_configuration,
+queued_duration_milliseconds,
+release_label,
+retry_policy,
+started_at,
 state,
-stateDetails,
+state_details,
 tags,
-totalExecutionDurationSeconds,
-totalResourceUtilization,
-updatedAt
+total_execution_duration_seconds,
+total_resource_utilization,
+updated_at
 FROM aws.emr_serverless.job_runs
 WHERE application_id = '{{ application_id }}' -- required
 AND job_run_id = '{{ job_run_id }}' -- required
@@ -446,20 +446,20 @@ Lists job runs based on a set of parameters.
 SELECT
 id,
 name,
-applicationId,
+application_id,
 arn,
 attempt,
-attemptCreatedAt,
-attemptUpdatedAt,
-createdAt,
-createdBy,
-executionRole,
+attempt_created_at,
+attempt_updated_at,
+created_at,
+created_by,
+execution_role,
 mode,
-releaseLabel,
+release_label,
 state,
-stateDetails,
+state_details,
 type_,
-updatedAt
+updated_at
 FROM aws.emr_serverless.job_runs
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

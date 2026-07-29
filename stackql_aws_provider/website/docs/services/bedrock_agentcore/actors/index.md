@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actorId" /></td>
+    <td><CopyableCode code="actor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the actor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_/&#93;*(?::&#91;a-zA-Z0-9-_/&#93;+)*&#91;a-zA-Z0-9-_/&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -124,7 +124,7 @@ Lists all actors in an AgentCore Memory resource. We recommend using pagination 
 
 ```sql
 SELECT
-actorId
+actor_id
 FROM aws.bedrock_agentcore.actors
 WHERE memory_id = '{{ memory_id }}' -- required
 AND region = '{{ region }}' -- required

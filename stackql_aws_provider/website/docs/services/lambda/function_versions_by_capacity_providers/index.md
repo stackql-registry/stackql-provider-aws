@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FunctionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the function version. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the function version. (Pending, Active, Inactive, Failed, Deactivating, Deactivated, ActiveNonInvocable, Deleting)</td>
 </tr>
@@ -139,8 +139,8 @@ Returns a list of function versions that are configured to use a specific capaci
 
 ```sql
 SELECT
-FunctionArn,
-State
+function_arn,
+state
 FROM aws.lambda.function_versions_by_capacity_providers
 WHERE capacity_provider_name = '{{ capacity_provider_name }}' -- required
 AND region = '{{ region }}' -- required

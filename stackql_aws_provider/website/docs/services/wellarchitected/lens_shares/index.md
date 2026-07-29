@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LensShareSummaries" /></td>
+    <td><CopyableCode code="lens_share_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of lens share summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
@@ -173,8 +173,8 @@ List the lens shares associated with the lens.
 
 ```sql
 SELECT
-LensShareSummaries,
-NextToken
+lens_share_summaries,
+next_token
 FROM aws.wellarchitected.lens_shares
 WHERE lens_alias = '{{ lens_alias }}' -- required
 AND region = '{{ region }}' -- required
@@ -214,7 +214,7 @@ SELECT
 '{{ lens_alias }}',
 '{{ region }}'
 RETURNING
-ShareId
+share_id
 ;
 ```
 </TabItem>

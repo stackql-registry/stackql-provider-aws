@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>A name for the configured table. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedColumns" /></td>
+    <td><CopyableCode code="allowed_columns" /></td>
     <td><code>array</code></td>
     <td>The columns within the underlying Glue table that can be used within collaborations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisMethod" /></td>
+    <td><CopyableCode code="analysis_method" /></td>
     <td><code>string</code></td>
     <td>The analysis method for the configured table. DIRECT_QUERY allows SQL queries to be run directly on this table. DIRECT_JOB allows PySpark jobs to be run directly on this table. MULTIPLE allows both SQL queries and PySpark jobs to be run directly on this table. (DIRECT_QUERY, DIRECT_JOB, MULTIPLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisRuleTypes" /></td>
+    <td><CopyableCode code="analysis_rule_types" /></td>
     <td><code>array</code></td>
     <td>The types of analysis rules associated with this configured table. Currently, only one analysis rule may be associated with a configured table.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN for the configured table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table was created.</td>
 </tr>
@@ -91,17 +91,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description for the configured table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="selectedAnalysisMethods" /></td>
+    <td><CopyableCode code="selected_analysis_methods" /></td>
     <td><code>array</code></td>
     <td>The selected analysis methods for the configured table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableReference" /></td>
+    <td><CopyableCode code="table_reference" /></td>
     <td><code>object</code></td>
     <td>A pointer to the dataset that underlies this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table was last updated</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configured table. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisMethod" /></td>
+    <td><CopyableCode code="analysis_method" /></td>
     <td><code>string</code></td>
     <td>The analysis method for the configured tables. DIRECT_QUERY allows SQL queries to be run directly on this table. DIRECT_JOB allows PySpark jobs to be run directly on this table. MULTIPLE allows both SQL queries and PySpark jobs to be run directly on this table. (DIRECT_QUERY, DIRECT_JOB, MULTIPLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisRuleTypes" /></td>
+    <td><CopyableCode code="analysis_rule_types" /></td>
     <td><code>array</code></td>
     <td>The types of analysis rules associated with this configured table.</td>
 </tr>
@@ -145,17 +145,17 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN of the configured table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="selectedAnalysisMethods" /></td>
+    <td><CopyableCode code="selected_analysis_methods" /></td>
     <td><code>array</code></td>
     <td>The selected analysis methods for the configured table summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table was last updated.</td>
 </tr>
@@ -270,15 +270,15 @@ Retrieves a configured table.
 SELECT
 id,
 name,
-allowedColumns,
-analysisMethod,
-analysisRuleTypes,
+allowed_columns,
+analysis_method,
+analysis_rule_types,
 arn,
-createTime,
+create_time,
 description,
-selectedAnalysisMethods,
-tableReference,
-updateTime
+selected_analysis_methods,
+table_reference,
+update_time
 FROM aws.cleanrooms.configured_tables
 WHERE configured_table_identifier = '{{ configured_table_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -293,12 +293,12 @@ Lists configured tables.
 SELECT
 id,
 name,
-analysisMethod,
-analysisRuleTypes,
+analysis_method,
+analysis_rule_types,
 arn,
-createTime,
-selectedAnalysisMethods,
-updateTime
+create_time,
+selected_analysis_methods,
+update_time
 FROM aws.cleanrooms.configured_tables
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -343,7 +343,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-configuredTable
+configured_table
 ;
 ```
 </TabItem>
@@ -428,7 +428,7 @@ WHERE
 configured_table_identifier = '{{ configured_table_identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-configuredTable;
+configured_table;
 ```
 </TabItem>
 </Tabs>

@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the flow log was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliverCrossAccountRole" /></td>
+    <td><CopyableCode code="deliver_cross_account_role" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that allows the service to publish flow logs across accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliverLogsErrorMessage" /></td>
+    <td><CopyableCode code="deliver_logs_error_message" /></td>
     <td><code>string</code></td>
     <td>Information about the error that occurred. Rate limited indicates that CloudWatch Logs throttling has been applied for one or more network interfaces, or that you've reached the limit on the number of log groups that you can create. Access error indicates that the IAM role associated with the flow log does not have sufficient permissions to publish to CloudWatch Logs. Unknown error indicates an internal error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliverLogsPermissionArn" /></td>
+    <td><CopyableCode code="deliver_logs_permission_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role allows the service to publish logs to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliverLogsStatus" /></td>
+    <td><CopyableCode code="deliver_logs_status" /></td>
     <td><code>string</code></td>
     <td>The status of the logs delivery (SUCCESS | FAILED).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationOptions" /></td>
+    <td><CopyableCode code="destination_options" /></td>
     <td><code>string</code></td>
     <td>The destination options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowLogId" /></td>
+    <td><CopyableCode code="flow_log_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the flow log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowLogStatus" /></td>
+    <td><CopyableCode code="flow_log_status" /></td>
     <td><code>string</code></td>
     <td>The status of the flow log (ACTIVE).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogDestination" /></td>
+    <td><CopyableCode code="log_destination" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the destination for the flow log data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogDestinationType" /></td>
+    <td><CopyableCode code="log_destination_type" /></td>
     <td><code>string</code></td>
     <td>The type of destination for the flow log data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogFormat" /></td>
+    <td><CopyableCode code="log_format" /></td>
     <td><code>string</code></td>
     <td>The format of the flow log record.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the flow log group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxAggregationInterval" /></td>
+    <td><CopyableCode code="max_aggregation_interval" /></td>
     <td><code>integer</code></td>
     <td>The maximum interval of time, in seconds, during which a flow of packets is captured and aggregated into a flow log record. When a network interface is attached to a Nitro-based instance, the aggregation interval is always 60 seconds (1 minute) or less, regardless of the specified value. Valid Values: 60 | 600</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource being monitored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the flow log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficType" /></td>
+    <td><CopyableCode code="traffic_type" /></td>
     <td><code>string</code></td>
     <td>The type of traffic captured for the flow log.</td>
 </tr>
@@ -303,22 +303,22 @@ Describes one or more flow logs. To view the published flow log records, you mus
 
 ```sql
 SELECT
-CreationTime,
-DeliverCrossAccountRole,
-DeliverLogsErrorMessage,
-DeliverLogsPermissionArn,
-DeliverLogsStatus,
-DestinationOptions,
-FlowLogId,
-FlowLogStatus,
-LogDestination,
-LogDestinationType,
-LogFormat,
-LogGroupName,
-MaxAggregationInterval,
-ResourceId,
-Tags,
-TrafficType
+creation_time,
+deliver_cross_account_role,
+deliver_logs_error_message,
+deliver_logs_permission_arn,
+deliver_logs_status,
+destination_options,
+flow_log_id,
+flow_log_status,
+log_destination,
+log_destination_type,
+log_format,
+log_group_name,
+max_aggregation_interval,
+resource_id,
+tags,
+traffic_type
 FROM aws.ec2.flow_logs
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -380,9 +380,9 @@ SELECT
 '{{ MaxAggregationInterval }}',
 '{{ DestinationOptions }}'
 RETURNING
-ClientToken,
-FlowLogIds,
-Unsuccessful
+client_token,
+flow_log_ids,
+unsuccessful
 ;
 ```
 </TabItem>

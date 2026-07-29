@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>An array of errors that occurred when retrieving the requested router network interfaces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouterNetworkInterfaces" /></td>
+    <td><CopyableCode code="router_network_interfaces" /></td>
     <td><code>array</code></td>
     <td>An array of router network interfaces that were successfully retrieved.</td>
 </tr>
@@ -76,62 +76,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the router network interface. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerNetworkInterface:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedInputCount" /></td>
+    <td><CopyableCode code="associated_input_count" /></td>
     <td><code>integer</code></td>
     <td>The number of router inputs associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedOutputCount" /></td>
+    <td><CopyableCode code="associated_output_count" /></td>
     <td><code>integer</code></td>
     <td>The number of router outputs associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for a router network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router network interface was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the router network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the router network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceType" /></td>
+    <td><CopyableCode code="network_interface_type" /></td>
     <td><code>string</code></td>
     <td>The type of the router network interface. (PUBLIC, VPC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the router network interface is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the router network interface. (CREATING, ACTIVE, UPDATING, DELETING, ERROR, RECOVERING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Key-value pairs that can be used to tag and organize this router network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router network interface was last updated.</td>
 </tr>
@@ -150,52 +150,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the router network interface. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerNetworkInterface:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedInputCount" /></td>
+    <td><CopyableCode code="associated_input_count" /></td>
     <td><code>integer</code></td>
     <td>The number of router inputs associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedOutputCount" /></td>
+    <td><CopyableCode code="associated_output_count" /></td>
     <td><code>integer</code></td>
     <td>The number of router outputs associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the network interface was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the router network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the router network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceType" /></td>
+    <td><CopyableCode code="network_interface_type" /></td>
     <td><code>string</code></td>
     <td>The type of the router network interface. (PUBLIC, VPC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the router network interface is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the router network interface. (CREATING, ACTIVE, UPDATING, DELETING, ERROR, RECOVERING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router network interface was last updated.</td>
 </tr>
@@ -321,8 +321,8 @@ Retrieves information about multiple router network interfaces in AWS Elemental 
 
 ```sql
 SELECT
-Errors,
-RouterNetworkInterfaces
+errors,
+router_network_interfaces
 FROM aws.mediaconnect.router_network_interfaces
 WHERE arns = '{{ arns }}' -- required
 AND region = '{{ region }}' -- required
@@ -335,18 +335,18 @@ Retrieves information about a specific router network interface in AWS Elemental
 
 ```sql
 SELECT
-Arn,
-AssociatedInputCount,
-AssociatedOutputCount,
-Configuration,
-CreatedAt,
-Id,
-Name,
-NetworkInterfaceType,
-RegionName,
-State,
-Tags,
-UpdatedAt
+arn,
+associated_input_count,
+associated_output_count,
+configuration,
+created_at,
+id,
+name,
+network_interface_type,
+region_name,
+state,
+tags,
+updated_at
 FROM aws.mediaconnect.router_network_interfaces
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -359,16 +359,16 @@ Retrieves a list of router network interfaces in AWS Elemental MediaConnect.
 
 ```sql
 SELECT
-Arn,
-AssociatedInputCount,
-AssociatedOutputCount,
-CreatedAt,
-Id,
-Name,
-NetworkInterfaceType,
-RegionName,
-State,
-UpdatedAt
+arn,
+associated_input_count,
+associated_output_count,
+created_at,
+id,
+name,
+network_interface_type,
+region_name,
+state,
+updated_at
 FROM aws.mediaconnect.router_network_interfaces
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -409,7 +409,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-RouterNetworkInterface
+router_network_interface
 ;
 ```
 </TabItem>
@@ -467,7 +467,7 @@ WHERE
 arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RouterNetworkInterface;
+router_network_interface;
 ```
 </TabItem>
 </Tabs>

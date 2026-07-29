@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Describes whether email sending is enabled or disabled for your Amazon SES account in the current Amazon Web Services Region.</td>
 </tr>
@@ -131,7 +131,7 @@ Returns the email sending status of the Amazon SES account for the current Regio
 
 ```sql
 SELECT
-Enabled
+enabled
 FROM aws.ses.account_sending_enableds
 WHERE region = '{{ region }}' -- required
 ;

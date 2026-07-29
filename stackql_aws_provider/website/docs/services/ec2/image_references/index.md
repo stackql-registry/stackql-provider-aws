@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource referencing the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the referenced image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource referencing the image.</td>
 </tr>
@@ -159,9 +159,9 @@ Describes your Amazon Web Services resources that are referencing the specified 
 
 ```sql
 SELECT
-Arn,
-ImageId,
-ResourceType
+arn,
+image_id,
+resource_type
 FROM aws.ec2.image_references
 WHERE ImageId = '{{ ImageId }}' -- required
 AND region = '{{ region }}' -- required

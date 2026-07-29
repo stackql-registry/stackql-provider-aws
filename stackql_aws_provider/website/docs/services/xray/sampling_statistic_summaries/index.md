@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BorrowCount" /></td>
+    <td><CopyableCode code="borrow_count" /></td>
     <td><code>integer</code></td>
     <td>The number of requests recorded with borrowed reservoir quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestCount" /></td>
+    <td><CopyableCode code="request_count" /></td>
     <td><code>integer</code></td>
     <td>The number of requests that matched the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleName" /></td>
+    <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the sampling rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampledCount" /></td>
+    <td><CopyableCode code="sampled_count" /></td>
     <td><code>integer</code></td>
     <td>The number of requests recorded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the reporting window.</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves information about recent sampling results for all sampling rules.
 
 ```sql
 SELECT
-BorrowCount,
-RequestCount,
-RuleName,
-SampledCount,
-Timestamp
+borrow_count,
+request_count,
+rule_name,
+sampled_count,
+timestamp
 FROM aws.xray.sampling_statistic_summaries
 WHERE region = '{{ region }}' -- required
 ;

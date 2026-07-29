@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key for the tag. May not be null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The tag's value. May be null.</td>
 </tr>
@@ -153,8 +153,8 @@ Lists all tags currently on a named resource. A tag is a key-value pair where th
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.elasticache.tags
 WHERE ResourceName = '{{ ResourceName }}' -- required
 AND region = '{{ region }}' -- required
@@ -186,7 +186,7 @@ ResourceName = '{{ ResourceName }}' --required
 AND Tags = '{{ Tags }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-TagList;
+tag_list;
 ```
 </TabItem>
 <TabItem value="remove_tags_from_resource">
@@ -202,7 +202,7 @@ ResourceName = '{{ ResourceName }}' --required
 AND TagKeys = '{{ TagKeys }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-TagList;
+tag_list;
 ```
 </TabItem>
 </Tabs>

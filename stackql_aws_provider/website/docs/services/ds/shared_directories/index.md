@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDateTime" /></td>
+    <td><CopyableCode code="created_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the shared directory was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the shared directory was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the directory owner account, which contains the directory that has been shared to the consumer account. (pattern: &lt;code&gt;^(\d&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerDirectoryId" /></td>
+    <td><CopyableCode code="owner_directory_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the directory in the directory owner account. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareMethod" /></td>
+    <td><CopyableCode code="share_method" /></td>
     <td><code>string</code></td>
     <td>The method used when sharing a directory to determine whether the directory should be shared within your Amazon Web Services organization (ORGANIZATIONS) or with any Amazon Web Services account by sending a shared directory request (HANDSHAKE). (ORGANIZATIONS, HANDSHAKE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareNotes" /></td>
+    <td><CopyableCode code="share_notes" /></td>
     <td><code>string</code></td>
     <td>A directory share request that is sent by the directory owner to the directory consumer. The request includes a typed message to help the directory consumer administrator determine whether to approve or reject the share invitation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>Current directory status of the shared Managed Microsoft AD directory. (Shared, PendingAcceptance, Rejected, Rejecting, RejectFailed, Sharing, ShareFailed, Deleted, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SharedAccountId" /></td>
+    <td><CopyableCode code="shared_account_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the directory consumer account that has access to the shared directory (OwnerDirectoryId) in the directory owner account. (pattern: &lt;code&gt;^(\d&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SharedDirectoryId" /></td>
+    <td><CopyableCode code="shared_directory_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -173,15 +173,15 @@ Returns the shared directories in your account.
 
 ```sql
 SELECT
-CreatedDateTime,
-LastUpdatedDateTime,
-OwnerAccountId,
-OwnerDirectoryId,
-ShareMethod,
-ShareNotes,
-ShareStatus,
-SharedAccountId,
-SharedDirectoryId
+created_date_time,
+last_updated_date_time,
+owner_account_id,
+owner_directory_id,
+share_method,
+share_notes,
+share_status,
+shared_account_id,
+shared_directory_id
 FROM aws.ds.shared_directories
 WHERE region = '{{ region }}' -- required
 ;

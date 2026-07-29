@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next token for subsequent requests.</td>
 </tr>
@@ -138,7 +138,7 @@ Lists all tags associated with the resource. This is a paginated API. To get the
 
 ```sql
 SELECT
-nextToken,
+next_token,
 tags
 FROM aws.frauddetector.tags
 WHERE region = '{{ region }}' -- required

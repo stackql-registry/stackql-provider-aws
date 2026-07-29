@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InsightEvents" /></td>
+    <td><CopyableCode code="insight_events" /></td>
     <td><code>array</code></td>
     <td>A detailed description of the event. This includes the time of the event, client and root cause impact statistics, and the top anomalous service at the time of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Use this token to retrieve the next page of insight events.</td>
 </tr>
@@ -124,8 +124,8 @@ X-Ray reevaluates insights periodically until they're resolved, and records each
 
 ```sql
 SELECT
-InsightEvents,
-NextToken
+insight_events,
+next_token
 FROM aws.xray.insight_events
 WHERE region = '{{ region }}' -- required
 ;

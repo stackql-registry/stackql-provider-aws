@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateTotalCount" /></td>
+    <td><CopyableCode code="approximate_total_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total count of the result, regardless of the current page size.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSnapshotTime" /></td>
+    <td><CopyableCode code="data_snapshot_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the metrics were retrieved and cached for pagination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricResults" /></td>
+    <td><CopyableCode code="metric_results" /></td>
     <td><code>array</code></td>
     <td>Information about the real-time metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results. The token expires after 5 minutes from the time it is created. Subsequent requests that use the token must use the same request parameters as the request that generated the token.</td>
 </tr>
@@ -139,10 +139,10 @@ Gets the real-time metric data from the specified Amazon Connect instance. For a
 
 ```sql
 SELECT
-ApproximateTotalCount,
-DataSnapshotTime,
-MetricResults,
-NextToken
+approximate_total_count,
+data_snapshot_time,
+metric_results,
+next_token
 FROM aws.connect.current_metric_datas
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

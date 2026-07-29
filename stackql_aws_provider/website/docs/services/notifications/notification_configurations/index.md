@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the NotificationConfiguration. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationDuration" /></td>
+    <td><CopyableCode code="aggregation_duration" /></td>
     <td><code>string</code></td>
     <td>The aggregation preference of the NotificationConfiguration. Values: LONG Aggregate notifications for long periods of time (12 hours). SHORT Aggregate notifications for short periods of time (5 minutes). NONE Don't aggregate notifications. (LONG, SHORT, NONE)</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the resource. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the NotificationConfiguration.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the NotificationConfiguration. Supports RFC 3986's unreserved characters. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationDuration" /></td>
+    <td><CopyableCode code="aggregation_duration" /></td>
     <td><code>string</code></td>
     <td>The aggregation preference of the NotificationConfiguration. Values: LONG Aggregate notifications for long periods of time (12 hours). SHORT Aggregate notifications for short periods of time (5 minutes). NONE Don't aggregate notifications. (LONG, SHORT, NONE)</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the NotificationConfiguration resource. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the NotificationConfiguration.</td>
 </tr>
@@ -264,9 +264,9 @@ Returns a specified NotificationConfiguration.
 ```sql
 SELECT
 name,
-aggregationDuration,
+aggregation_duration,
 arn,
-creationTime,
+creation_time,
 description,
 status,
 subtype
@@ -283,9 +283,9 @@ Returns a list of abbreviated NotificationConfigurations according to specified 
 ```sql
 SELECT
 name,
-aggregationDuration,
+aggregation_duration,
 arn,
-creationTime,
+creation_time,
 description,
 status,
 subtype

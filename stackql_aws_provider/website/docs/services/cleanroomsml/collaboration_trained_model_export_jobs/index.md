@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the trained model export job. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationIdentifier" /></td>
+    <td><CopyableCode code="collaboration_identifier" /></td>
     <td><code>string</code></td>
     <td>The collaboration ID of the collaboration that contains the trained model export job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the trained model export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the member that created the trained model. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the trained model. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the member that created the trained model export job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfiguration" /></td>
+    <td><CopyableCode code="output_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the output of the trained model export job.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the trained model. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the status of a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelArn" /></td>
+    <td><CopyableCode code="trained_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trained model that is being exported. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/trained-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelVersionIdentifier" /></td>
+    <td><CopyableCode code="trained_model_version_identifier" /></td>
     <td><code>string</code></td>
     <td>The version identifier of the trained model that was exported in this job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the trained model export job was updated.</td>
 </tr>
@@ -200,17 +200,17 @@ Returns a list of the export jobs for a trained model in a collaboration.
 ```sql
 SELECT
 name,
-collaborationIdentifier,
-createTime,
-creatorAccountId,
+collaboration_identifier,
+create_time,
+creator_account_id,
 description,
-membershipIdentifier,
-outputConfiguration,
+membership_identifier,
+output_configuration,
 status,
-statusDetails,
-trainedModelArn,
-trainedModelVersionIdentifier,
-updateTime
+status_details,
+trained_model_arn,
+trained_model_version_identifier,
+update_time
 FROM aws.cleanroomsml.collaboration_trained_model_export_jobs
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND trained_model_arn = '{{ trained_model_arn }}' -- required

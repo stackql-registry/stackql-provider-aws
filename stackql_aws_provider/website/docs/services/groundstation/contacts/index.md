@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contactId" /></td>
+    <td><CopyableCode code="contact_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a contact. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contactStatus" /></td>
+    <td><CopyableCode code="contact_status" /></td>
     <td><code>string</code></td>
     <td>Status of a contact. (SCHEDULING, FAILED_TO_SCHEDULE, SCHEDULED, CANCELLED, AWS_CANCELLED, PREPASS, PASS, POSTPASS, COMPLETED, FAILED, AVAILABLE, CANCELLING, AWS_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>End time of a contact in UTC.</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ephemeris that determines antenna pointing for the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message of a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groundStation" /></td>
+    <td><CopyableCode code="ground_station" /></td>
     <td><code>string</code></td>
     <td>Name of a ground station.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maximumElevation" /></td>
+    <td><CopyableCode code="maximum_elevation" /></td>
     <td><code>object</code></td>
     <td>Maximum elevation angle of a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="missionProfileArn" /></td>
+    <td><CopyableCode code="mission_profile_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a mission profile. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:mission-profile/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postPassEndTime" /></td>
+    <td><CopyableCode code="post_pass_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>End time in UTC of the post-pass period, at which you receive a CloudWatch event indicating the pass has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="prePassStartTime" /></td>
+    <td><CopyableCode code="pre_pass_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time in UTC of the pre-pass period, at which you receive a CloudWatch event indicating an upcoming pass.</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>Region of a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="satelliteArn" /></td>
+    <td><CopyableCode code="satellite_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a satellite. (pattern: &lt;code&gt;arn:aws:groundstation:(&#91;-a-z0-9&#93;&#123;1,50&#125;)?:&#91;0-9&#93;&#123;12&#125;:satellite/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time of a contact in UTC.</td>
 </tr>
@@ -126,12 +126,12 @@ The following fields are returned by `SELECT` queries:
     <td>Version information for a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibilityEndTime" /></td>
+    <td><CopyableCode code="visibility_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Projected time in UTC your satellite will set below the receive mask. This time is based on the satellite's current active ephemeris for future contacts and the ephemeris that was active during contact execution for completed contacts. This field is not present for contacts with a SCHEDULING or SCHEDULED status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibilityStartTime" /></td>
+    <td><CopyableCode code="visibility_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Projected time in UTC your satellite will rise above the receive mask. This time is based on the satellite's current active ephemeris for future contacts and the ephemeris that was active during contact execution for completed contacts. This field is not present for contacts with a SCHEDULING or SCHEDULED status.</td>
 </tr>
@@ -150,22 +150,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contactId" /></td>
+    <td><CopyableCode code="contact_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a contact. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contactStatus" /></td>
+    <td><CopyableCode code="contact_status" /></td>
     <td><code>string</code></td>
     <td>Status of a contact. (SCHEDULING, FAILED_TO_SCHEDULE, SCHEDULED, CANCELLED, AWS_CANCELLED, PREPASS, PASS, POSTPASS, COMPLETED, FAILED, AVAILABLE, CANCELLING, AWS_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataflowList" /></td>
+    <td><CopyableCode code="dataflow_list" /></td>
     <td><code>array</code></td>
     <td>List describing source and destination details for each dataflow edge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>End time of a contact in UTC.</td>
 </tr>
@@ -175,32 +175,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ephemeris that determines antenna pointing directions for the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message for a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groundStation" /></td>
+    <td><CopyableCode code="ground_station" /></td>
     <td><code>string</code></td>
     <td>Ground station for a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maximumElevation" /></td>
+    <td><CopyableCode code="maximum_elevation" /></td>
     <td><code>object</code></td>
     <td>Maximum elevation angle of a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="missionProfileArn" /></td>
+    <td><CopyableCode code="mission_profile_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a mission profile. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:mission-profile/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postPassEndTime" /></td>
+    <td><CopyableCode code="post_pass_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>End time in UTC of the post-pass period, at which you receive a CloudWatch event indicating the pass has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="prePassStartTime" /></td>
+    <td><CopyableCode code="pre_pass_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time in UTC of the pre-pass period, at which you receive a CloudWatch event indicating an upcoming pass.</td>
 </tr>
@@ -210,12 +210,12 @@ The following fields are returned by `SELECT` queries:
     <td>Region where the ReserveContact API was called to schedule this contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="satelliteArn" /></td>
+    <td><CopyableCode code="satellite_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a satellite. (pattern: &lt;code&gt;arn:aws:groundstation:(&#91;-a-z0-9&#93;&#123;1,50&#125;)?:&#91;0-9&#93;&#123;12&#125;:satellite/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time of a contact in UTC.</td>
 </tr>
@@ -225,7 +225,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags assigned to a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackingOverrides" /></td>
+    <td><CopyableCode code="tracking_overrides" /></td>
     <td><code>object</code></td>
     <td>Tracking configuration overrides specified when the contact was reserved.</td>
 </tr>
@@ -235,12 +235,12 @@ The following fields are returned by `SELECT` queries:
     <td>Version information for a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibilityEndTime" /></td>
+    <td><CopyableCode code="visibility_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Projected time in UTC your satellite will set below the receive mask. This time is based on the satellite's current active ephemeris for future contacts and the ephemeris that was active during contact execution for completed contacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibilityStartTime" /></td>
+    <td><CopyableCode code="visibility_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Projected time in UTC your satellite will rise above the receive mask. This time is based on the satellite's current active ephemeris for future contacts and the ephemeris that was active during contact execution for completed contacts.</td>
 </tr>
@@ -336,23 +336,23 @@ Returns a list of contacts. If statusList contains AVAILABLE, the request must i
 
 ```sql
 SELECT
-contactId,
-contactStatus,
-endTime,
+contact_id,
+contact_status,
+end_time,
 ephemeris,
-errorMessage,
-groundStation,
-maximumElevation,
-missionProfileArn,
-postPassEndTime,
-prePassStartTime,
+error_message,
+ground_station,
+maximum_elevation,
+mission_profile_arn,
+post_pass_end_time,
+pre_pass_start_time,
 region,
-satelliteArn,
-startTime,
+satellite_arn,
+start_time,
 tags,
 version,
-visibilityEndTime,
-visibilityStartTime
+visibility_end_time,
+visibility_start_time
 FROM aws.groundstation.contacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -364,25 +364,25 @@ Describes an existing contact.
 
 ```sql
 SELECT
-contactId,
-contactStatus,
-dataflowList,
-endTime,
+contact_id,
+contact_status,
+dataflow_list,
+end_time,
 ephemeris,
-errorMessage,
-groundStation,
-maximumElevation,
-missionProfileArn,
-postPassEndTime,
-prePassStartTime,
+error_message,
+ground_station,
+maximum_elevation,
+mission_profile_arn,
+post_pass_end_time,
+pre_pass_start_time,
 region,
-satelliteArn,
-startTime,
+satellite_arn,
+start_time,
 tags,
-trackingOverrides,
+tracking_overrides,
 version,
-visibilityEndTime,
-visibilityStartTime
+visibility_end_time,
+visibility_start_time
 FROM aws.groundstation.contacts
 WHERE contact_id = '{{ contact_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -414,8 +414,8 @@ WHERE
 contact_id = '{{ contact_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-contactId,
-versionId;
+contact_id,
+version_id;
 ```
 </TabItem>
 </Tabs>

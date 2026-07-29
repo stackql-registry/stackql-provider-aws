@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AWSLocation" /></td>
+    <td><CopyableCode code="aws_location" /></td>
     <td><code>object</code></td>
     <td>Specifies a location in Amazon Web Services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the site was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the device. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the device. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the device. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>object</code></td>
     <td>Describes a location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Model" /></td>
+    <td><CopyableCode code="model" /></td>
     <td><code>string</code></td>
     <td>The device model. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The device serial number. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The site ID. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The device state. (PENDING, AVAILABLE, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags for the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The device type. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vendor" /></td>
+    <td><CopyableCode code="vendor" /></td>
     <td><code>string</code></td>
     <td>The device vendor. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -235,20 +235,20 @@ Gets information about one or more of your devices in a global network.
 
 ```sql
 SELECT
-AWSLocation,
-CreatedAt,
-Description,
-DeviceArn,
-DeviceId,
-GlobalNetworkId,
-Location,
-Model,
-SerialNumber,
-SiteId,
-State,
-Tags,
-Type,
-Vendor
+aws_location,
+created_at,
+description,
+device_arn,
+device_id,
+global_network_id,
+location,
+model,
+serial_number,
+site_id,
+state,
+tags,
+type,
+vendor
 FROM aws.networkmanager.devices
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -302,7 +302,7 @@ SELECT
 '{{ global_network_id }}',
 '{{ region }}'
 RETURNING
-Device
+device
 ;
 ```
 </TabItem>
@@ -380,7 +380,7 @@ global_network_id = '{{ global_network_id }}' --required
 AND device_id = '{{ device_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Device;
+device;
 ```
 </TabItem>
 </Tabs>

@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was created.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's description. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sseConfig" /></td>
+    <td><CopyableCode code="sse_config" /></td>
     <td><code>object</code></td>
     <td>Server-side encryption (SSE) settings for a store.</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the store was created.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The store's description. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sseConfig" /></td>
+    <td><CopyableCode code="sse_config" /></td>
     <td><code>object</code></td>
     <td>Server-side encryption (SSE) settings for a store.</td>
 </tr>
@@ -229,9 +229,9 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-sseConfig
+sse_config
 FROM aws.omics.reference_stores
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,9 +247,9 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-sseConfig
+sse_config
 FROM aws.omics.reference_stores
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -293,9 +293,9 @@ RETURNING
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-sseConfig
+sse_config
 ;
 ```
 </TabItem>

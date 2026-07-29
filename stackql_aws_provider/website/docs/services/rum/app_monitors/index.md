@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppMonitorConfiguration" /></td>
+    <td><CopyableCode code="app_monitor_configuration" /></td>
     <td><code>object</code></td>
     <td>This structure contains much of the configuration data for the app monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string</code></td>
     <td>The date and time that this app monitor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomEvents" /></td>
+    <td><CopyableCode code="custom_events" /></td>
     <td><code>object</code></td>
     <td>A structure that contains information about custom events for this app monitor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataStorage" /></td>
+    <td><CopyableCode code="data_storage" /></td>
     <td><code>object</code></td>
     <td>A structure that contains information about whether this app monitor stores a copy of the telemetry data that RUM collects using CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeobfuscationConfiguration" /></td>
+    <td><CopyableCode code="deobfuscation_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the configuration for how an app monitor can deobfuscate stack traces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The top-level internet domain name for which your application has administrative authority. (pattern: &lt;code&gt;(localhost)$|^((25&#91;0-5&#93;|2&#91;0-4&#93;&#91;0-9&#93;|&#91;01&#93;?&#91;0-9&#93;&#91;0-9&#93;?)\.)&#123;3&#125;(25&#91;0-5&#93;|2&#91;0-4&#93;&#91;0-9&#93;|&#91;01&#93;?&#91;0-9&#93;&#91;0-9&#93;?)$|(?=^&#91;a-zA-Z0-9\.\*-&#93;&#123;4,253&#125;$)(?!.*\.-)(?!.*-\.)(?!.*\.\.)(?!.*&#91;^\.&#93;&#123;64,&#125;)^(\*\.)?(?!&#91;-\.\*&#93;)&#91;^\*&#93;&#123;1,&#125;\.(\*|(?!.*--)(?=.*&#91;a-zA-Z&#93;)&#91;^\*&#93;&#123;1,&#125;&#91;^\*-&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainList" /></td>
+    <td><CopyableCode code="domain_list" /></td>
     <td><code>array</code></td>
     <td>List the domain names for which your application has administrative authority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of this app monitor. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time of the most recent changes to this app monitor's configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the app monitor. (pattern: &lt;code&gt;(?!\.)&#91;\.\-_#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The platform type for this app monitor. Valid values are Web for web applications , Android for Android applications, and iOS for IOS applications. (Web, Android, iOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the app monitor. (CREATED, DELETING, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of tag keys and values associated with this app monitor.</td>
 </tr>
@@ -130,32 +130,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string</code></td>
     <td>The date and time that the app monitor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of this app monitor. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
     <td>The date and time of the most recent changes to this app monitor's configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of this app monitor. (pattern: &lt;code&gt;(?!\.)&#91;\.\-_#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The platform type for this app monitor. Valid values are Web for web applications, Android for Android applications, and iOS for IOS applications. (Web, Android, iOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of this app monitor. (CREATED, DELETING, ACTIVE)</td>
 </tr>
@@ -268,19 +268,19 @@ Retrieves the complete configuration information for one app monitor.
 
 ```sql
 SELECT
-AppMonitorConfiguration,
-Created,
-CustomEvents,
-DataStorage,
-DeobfuscationConfiguration,
-Domain,
-DomainList,
-Id,
-LastModified,
-Name,
-Platform,
-State,
-Tags
+app_monitor_configuration,
+created,
+custom_events,
+data_storage,
+deobfuscation_configuration,
+domain,
+domain_list,
+id,
+last_modified,
+name,
+platform,
+state,
+tags
 FROM aws.rum.app_monitors
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -293,12 +293,12 @@ Returns a list of the Amazon CloudWatch RUM app monitors in the account.
 
 ```sql
 SELECT
-Created,
-Id,
-LastModified,
-Name,
-Platform,
-State
+created,
+id,
+last_modified,
+name,
+platform,
+state
 FROM aws.rum.app_monitors
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -347,7 +347,7 @@ SELECT
 '{{ Platform }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

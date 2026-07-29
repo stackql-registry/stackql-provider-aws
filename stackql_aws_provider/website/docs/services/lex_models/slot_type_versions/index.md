@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the slot type. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the slot type was created.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the slot type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the slot type was updated. When you create a resource, the creation date and last updated date are the same.</td>
 </tr>
@@ -174,9 +174,9 @@ Gets information about all versions of a slot type. The GetSlotTypeVersions oper
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
+last_updated_date,
 version
 FROM aws.lex_models.slot_type_versions
 WHERE name = '{{ name }}' -- required
@@ -215,13 +215,13 @@ SELECT
 RETURNING
 name,
 checksum,
-createdDate,
+created_date,
 description,
-enumerationValues,
-lastUpdatedDate,
-parentSlotTypeSignature,
-slotTypeConfigurations,
-valueSelectionStrategy,
+enumeration_values,
+last_updated_date,
+parent_slot_type_signature,
+slot_type_configurations,
+value_selection_strategy,
 version
 ;
 ```

@@ -50,132 +50,132 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage (in gigabytes) that is allocated for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsNameServers" /></td>
+    <td><CopyableCode code="dns_name_servers" /></td>
     <td><code>string</code></td>
     <td>The DNS name servers supported for the replication instance to access your on-premise source or target database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The engine version number of the replication instance. If an engine version number is not specified when a replication instance is created, the default is the latest engine version available. When modifying a major engine version of an instance, also set AllowMajorVersionUpgrade to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FreeUntil" /></td>
+    <td><CopyableCode code="free_until" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration date of the free replication instance that is part of the Free DMS program.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCreateTime" /></td>
+    <td><CopyableCode code="instance_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the replication instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KerberosAuthenticationSettings" /></td>
+    <td><CopyableCode code="kerberos_authentication_settings" /></td>
     <td><code>object</code></td>
     <td>Specifies the settings required for kerberos authentication when replicating an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>An KMS key identifier that is used to encrypt the data on the replication instance. If you don't specify a value for the KmsKeyId parameter, then DMS uses your default encryption key. KMS creates the default encryption key for your Amazon Web Services account. Your Amazon Web Services account has a different default encryption key for each Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZ" /></td>
+    <td><CopyableCode code="multi_az" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the replication instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the Multi-AZ parameter is set to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP address protocol used by a replication instance, such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>object</code></td>
     <td>The pending modification values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The maintenance window times for the replication instance. Any pending upgrades to the replication instance are performed during this time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Specifies the accessibility options for the replication instance. A value of true represents an instance with a public IP address. A value of false represents an instance with a private IP address. The default value is true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceArn" /></td>
+    <td><CopyableCode code="replication_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceClass" /></td>
+    <td><CopyableCode code="replication_instance_class" /></td>
     <td><code>string</code></td>
     <td>The compute and memory capacity of the replication instance as defined for the specified replication instance class. It is a required parameter, although a default value is pre-selected in the DMS console. For more information on the settings and capacities for the available replication instance classes, see Selecting the right DMS replication instance for your migration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceIdentifier" /></td>
+    <td><CopyableCode code="replication_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>The replication instance identifier is a required parameter. This parameter is stored as a lowercase string. Constraints: Must contain 1-63 alphanumeric characters or hyphens. First character must be a letter. Cannot end with a hyphen or contain two consecutive hyphens. Example: myrepinstance</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceIpv6Addresses" /></td>
+    <td><CopyableCode code="replication_instance_ipv_6_addresses" /></td>
     <td><code>array</code></td>
     <td>One or more IPv6 addresses for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstancePrivateIpAddress" /></td>
+    <td><CopyableCode code="replication_instance_private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The private IP address of the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstancePrivateIpAddresses" /></td>
+    <td><CopyableCode code="replication_instance_private_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>One or more private IP addresses for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstancePublicIpAddress" /></td>
+    <td><CopyableCode code="replication_instance_public_ip_address" /></td>
     <td><code>string</code></td>
     <td>The public IP address of the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstancePublicIpAddresses" /></td>
+    <td><CopyableCode code="replication_instance_public_ip_addresses" /></td>
     <td><code>array</code></td>
     <td>One or more public IP addresses for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationInstanceStatus" /></td>
+    <td><CopyableCode code="replication_instance_status" /></td>
     <td><code>string</code></td>
     <td>The status of the replication instance. The possible return values include: "available" "creating" "deleted" "deleting" "failed" "modifying" "upgrading" "rebooting" "resetting-master-credentials" "storage-full" "incompatible-credentials" "incompatible-network" "maintenance"</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationSubnetGroup" /></td>
+    <td><CopyableCode code="replication_subnet_group" /></td>
     <td><code>object</code></td>
     <td>The subnet group for the replication instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryAvailabilityZone" /></td>
+    <td><CopyableCode code="secondary_availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the standby replication instance in a Multi-AZ deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>array</code></td>
     <td>The VPC security group for the instance.</td>
 </tr>
@@ -279,32 +279,32 @@ Returns information about replication instances for your account in the current 
 
 ```sql
 SELECT
-AllocatedStorage,
-AutoMinorVersionUpgrade,
-AvailabilityZone,
-DnsNameServers,
-EngineVersion,
-FreeUntil,
-InstanceCreateTime,
-KerberosAuthenticationSettings,
-KmsKeyId,
-MultiAZ,
-NetworkType,
-PendingModifiedValues,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-ReplicationInstanceArn,
-ReplicationInstanceClass,
-ReplicationInstanceIdentifier,
-ReplicationInstanceIpv6Addresses,
-ReplicationInstancePrivateIpAddress,
-ReplicationInstancePrivateIpAddresses,
-ReplicationInstancePublicIpAddress,
-ReplicationInstancePublicIpAddresses,
-ReplicationInstanceStatus,
-ReplicationSubnetGroup,
-SecondaryAvailabilityZone,
-VpcSecurityGroups
+allocated_storage,
+auto_minor_version_upgrade,
+availability_zone,
+dns_name_servers,
+engine_version,
+free_until,
+instance_create_time,
+kerberos_authentication_settings,
+kms_key_id,
+multi_az,
+network_type,
+pending_modified_values,
+preferred_maintenance_window,
+publicly_accessible,
+replication_instance_arn,
+replication_instance_class,
+replication_instance_identifier,
+replication_instance_ipv_6_addresses,
+replication_instance_private_ip_address,
+replication_instance_private_ip_addresses,
+replication_instance_public_ip_address,
+replication_instance_public_ip_addresses,
+replication_instance_status,
+replication_subnet_group,
+secondary_availability_zone,
+vpc_security_groups
 FROM aws.dms.replication_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -367,7 +367,7 @@ SELECT
 '{{ KerberosAuthenticationSettings }}',
 '{{ region }}'
 RETURNING
-ReplicationInstance
+replication_instance
 ;
 ```
 </TabItem>
@@ -492,7 +492,7 @@ WHERE
 region = '{{ region }}' --required
 AND ReplicationInstanceArn = '{{ ReplicationInstanceArn }}' --required
 RETURNING
-ReplicationInstance;
+replication_instance;
 ```
 </TabItem>
 </Tabs>

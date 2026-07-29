@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VpcPeeringAuthorizations" /></td>
+    <td><CopyableCode code="vpc_peering_authorizations" /></td>
     <td><code>array</code></td>
     <td>A collection of objects that describe all valid VPC peering operations for the current Amazon Web Services account.</td>
 </tr>
@@ -133,7 +133,7 @@ This API works with the following fleet types: EC2 Retrieves valid VPC peering a
 
 ```sql
 SELECT
-VpcPeeringAuthorizations
+vpc_peering_authorizations
 FROM aws.gamelift.vpc_peering_authorizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -166,7 +166,7 @@ SELECT
 '{{ PeerVpcId }}' /* required */,
 '{{ region }}'
 RETURNING
-VpcPeeringAuthorization
+vpc_peering_authorization
 ;
 ```
 </TabItem>

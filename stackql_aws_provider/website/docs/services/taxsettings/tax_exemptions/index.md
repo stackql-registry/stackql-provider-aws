@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedAccounts" /></td>
+    <td><CopyableCode code="failed_accounts" /></td>
     <td><code>array</code></td>
     <td>The list of accounts that failed to get tax exemptions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taxExemptionDetailsMap" /></td>
+    <td><CopyableCode code="tax_exemption_details_map" /></td>
     <td><code>object</code></td>
     <td>The tax exemption details map of accountId and tax exemption details.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to retrieve the next set of results. (pattern: &lt;code&gt;^&#91;-A-Za-z0-9_+\=\/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taxExemptionDetailsMap" /></td>
+    <td><CopyableCode code="tax_exemption_details_map" /></td>
     <td><code>object</code></td>
     <td>The tax exemption details map of accountId and tax exemption details.</td>
 </tr>
@@ -164,8 +164,8 @@ Get the active tax exemptions for a given list of accounts. The IAM action is ta
 
 ```sql
 SELECT
-failedAccounts,
-taxExemptionDetailsMap
+failed_accounts,
+tax_exemption_details_map
 FROM aws.taxsettings.tax_exemptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,8 +177,8 @@ Retrieves the tax exemption of accounts listed in a consolidated billing family.
 
 ```sql
 SELECT
-nextToken,
-taxExemptionDetailsMap
+next_token,
+tax_exemption_details_map
 FROM aws.taxsettings.tax_exemptions
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,7 +213,7 @@ AND authority = '{{ authority }}' --required
 AND exemptionCertificate = '{{ exemptionCertificate }}' --required
 AND exemptionType = '{{ exemptionType }}' --required
 RETURNING
-caseId;
+case_id;
 ```
 </TabItem>
 </Tabs>

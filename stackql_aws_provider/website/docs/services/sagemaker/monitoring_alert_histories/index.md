@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlertStatus" /></td>
+    <td><CopyableCode code="alert_status" /></td>
     <td><code>string</code></td>
     <td>The current alert status of an alert. (InAlert, OK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the first alert transition occurred in an alert history. An alert transition can be from status InAlert to OK, or from OK to InAlert.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringAlertName" /></td>
+    <td><CopyableCode code="monitoring_alert_name" /></td>
     <td><code>string</code></td>
     <td>The name of a monitoring alert. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleName" /></td>
+    <td><CopyableCode code="monitoring_schedule_name" /></td>
     <td><code>string</code></td>
     <td>The name of a monitoring schedule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Gets a list of past alerts in a model monitoring schedule.
 
 ```sql
 SELECT
-AlertStatus,
-CreationTime,
-MonitoringAlertName,
-MonitoringScheduleName
+alert_status,
+creation_time,
+monitoring_alert_name,
+monitoring_schedule_name
 FROM aws.sagemaker.monitoring_alert_histories
 WHERE region = '{{ region }}' -- required
 ;

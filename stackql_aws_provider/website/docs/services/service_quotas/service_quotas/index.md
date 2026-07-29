@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Adjustable" /></td>
+    <td><CopyableCode code="adjustable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the quota value can be increased.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The quota description. (pattern: &lt;code&gt;^.&#123;0,350&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorReason" /></td>
+    <td><CopyableCode code="error_reason" /></td>
     <td><code>object</code></td>
     <td>The error code and error reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalQuota" /></td>
+    <td><CopyableCode code="global_quota" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the quota is global.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>object</code></td>
     <td>The period of time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaAppliedAtLevel" /></td>
+    <td><CopyableCode code="quota_applied_at_level" /></td>
     <td><code>string</code></td>
     <td>Filters the response to return applied quota values for the ACCOUNT, RESOURCE, or ALL levels. ACCOUNT is the default. (ACCOUNT, RESOURCE, ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaArn" /></td>
+    <td><CopyableCode code="quota_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaCode" /></td>
+    <td><CopyableCode code="quota_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota identifier. To find the quota code for a specific quota, use the ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you want. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaContext" /></td>
+    <td><CopyableCode code="quota_context" /></td>
     <td><code>object</code></td>
     <td>The context for this service quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaName" /></td>
+    <td><CopyableCode code="quota_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the ListServices operation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the service name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Unit" /></td>
+    <td><CopyableCode code="unit" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageMetric" /></td>
+    <td><CopyableCode code="usage_metric" /></td>
     <td><code>object</code></td>
     <td>Information about the measurement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>number (double)</code></td>
     <td>The quota value.</td>
 </tr>
@@ -140,77 +140,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Adjustable" /></td>
+    <td><CopyableCode code="adjustable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the quota value can be increased.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The quota description. (pattern: &lt;code&gt;^.&#123;0,350&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorReason" /></td>
+    <td><CopyableCode code="error_reason" /></td>
     <td><code>object</code></td>
     <td>The error code and error reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalQuota" /></td>
+    <td><CopyableCode code="global_quota" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the quota is global.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>object</code></td>
     <td>The period of time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaAppliedAtLevel" /></td>
+    <td><CopyableCode code="quota_applied_at_level" /></td>
     <td><code>string</code></td>
     <td>Filters the response to return applied quota values for the ACCOUNT, RESOURCE, or ALL levels. ACCOUNT is the default. (ACCOUNT, RESOURCE, ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaArn" /></td>
+    <td><CopyableCode code="quota_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaCode" /></td>
+    <td><CopyableCode code="quota_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota identifier. To find the quota code for a specific quota, use the ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you want. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaContext" /></td>
+    <td><CopyableCode code="quota_context" /></td>
     <td><code>object</code></td>
     <td>The context for this service quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaName" /></td>
+    <td><CopyableCode code="quota_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the ListServices operation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the service name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Unit" /></td>
+    <td><CopyableCode code="unit" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageMetric" /></td>
+    <td><CopyableCode code="usage_metric" /></td>
     <td><code>object</code></td>
     <td>Information about the measurement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>number (double)</code></td>
     <td>The quota value.</td>
 </tr>
@@ -308,21 +308,21 @@ Retrieves the applied quota value for the specified account-level or resource-le
 
 ```sql
 SELECT
-Adjustable,
-Description,
-ErrorReason,
-GlobalQuota,
-Period,
-QuotaAppliedAtLevel,
-QuotaArn,
-QuotaCode,
-QuotaContext,
-QuotaName,
-ServiceCode,
-ServiceName,
-Unit,
-UsageMetric,
-Value
+adjustable,
+description,
+error_reason,
+global_quota,
+period,
+quota_applied_at_level,
+quota_arn,
+quota_code,
+quota_context,
+quota_name,
+service_code,
+service_name,
+unit,
+usage_metric,
+value
 FROM aws.service_quotas.service_quotas
 WHERE region = '{{ region }}' -- required
 ;
@@ -334,21 +334,21 @@ Lists the applied quota values for the specified Amazon Web Services service. Fo
 
 ```sql
 SELECT
-Adjustable,
-Description,
-ErrorReason,
-GlobalQuota,
-Period,
-QuotaAppliedAtLevel,
-QuotaArn,
-QuotaCode,
-QuotaContext,
-QuotaName,
-ServiceCode,
-ServiceName,
-Unit,
-UsageMetric,
-Value
+adjustable,
+description,
+error_reason,
+global_quota,
+period,
+quota_applied_at_level,
+quota_arn,
+quota_code,
+quota_context,
+quota_name,
+service_code,
+service_name,
+unit,
+usage_metric,
+value
 FROM aws.service_quotas.service_quotas
 WHERE region = '{{ region }}' -- required
 ;
@@ -406,7 +406,7 @@ AND ServiceCode = '{{ ServiceCode }}' --required
 AND AwsRegion = '{{ AwsRegion }}' --required
 AND DesiredValue = '{{ DesiredValue }}' --required
 RETURNING
-ServiceQuotaIncreaseRequestInTemplate;
+service_quota_increase_request_in_template;
 ```
 </TabItem>
 </Tabs>

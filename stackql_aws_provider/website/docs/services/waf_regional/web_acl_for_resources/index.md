@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebACLId" /></td>
+    <td><CopyableCode code="web_acl_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a WebACL. You use WebACLId to get information about a WebACL (see GetWebACL), update a WebACL (see UpdateWebACL), and delete a WebACL from AWS WAF (see DeleteWebACL). WebACLId is returned by CreateWebACL and by ListWebACLs. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ This is AWS WAF Classic Regional documentation. For more information, see AWS WA
 
 ```sql
 SELECT
-Name,
-WebACLId
+name,
+web_acl_id
 FROM aws.waf_regional.web_acl_for_resources
 WHERE region = '{{ region }}' -- required
 ;

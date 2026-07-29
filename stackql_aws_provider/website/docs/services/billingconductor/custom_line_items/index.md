@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account in which this custom line item will be applied to. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARNs) for custom line items. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:customlineitem/)?&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationSize" /></td>
+    <td><CopyableCode code="association_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of resources that are associated to the custom line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingGroupArn" /></td>
+    <td><CopyableCode code="billing_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that references the billing group where the custom line item applies to. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:billinggroup/)?&#91;a-zA-Z0-9&#93;&#123;10,12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChargeDetails" /></td>
+    <td><CopyableCode code="charge_details" /></td>
     <td><code>object</code></td>
     <td>A representation of the charge details of a custom line item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputationRule" /></td>
+    <td><CopyableCode code="computation_rule" /></td>
     <td><code>string</code></td>
     <td>The display settings of the custom line item (ITEMIZED, CONSOLIDATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The custom line item's charge value currency. Only one of the valid values can be used. (USD, CNY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The custom line item's description. This is shown on the Bills page in association with the charge value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The most recent time when the custom line item was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The custom line item's name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\+=\.\-@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PresentationDetails" /></td>
+    <td><CopyableCode code="presentation_details" /></td>
     <td><code>object</code></td>
     <td>An object that defines how custom line item charges are presented in the bill, containing specifications for service presentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductCode" /></td>
+    <td><CopyableCode code="product_code" /></td>
     <td><code>string</code></td>
     <td>The product code that's associated with the custom line item.</td>
 </tr>
@@ -205,19 +205,19 @@ A paginated call to get a list of all custom line items (FFLIs) for the given bi
 
 ```sql
 SELECT
-AccountId,
-Arn,
-AssociationSize,
-BillingGroupArn,
-ChargeDetails,
-ComputationRule,
-CreationTime,
-CurrencyCode,
-Description,
-LastModifiedTime,
-Name,
-PresentationDetails,
-ProductCode
+account_id,
+arn,
+association_size,
+billing_group_arn,
+charge_details,
+computation_rule,
+creation_time,
+currency_code,
+description,
+last_modified_time,
+name,
+presentation_details,
+product_code
 FROM aws.billingconductor.custom_line_items
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,7 +266,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>
@@ -353,13 +353,13 @@ BillingPeriodRange = '{{ BillingPeriodRange }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-AssociationSize,
-BillingGroupArn,
-ChargeDetails,
-Description,
-LastModifiedTime,
-Name;
+arn,
+association_size,
+billing_group_arn,
+charge_details,
+description,
+last_modified_time,
+name;
 ```
 </TabItem>
 </Tabs>

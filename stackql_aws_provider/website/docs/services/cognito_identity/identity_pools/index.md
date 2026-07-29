@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowClassicFlow" /></td>
+    <td><CopyableCode code="allow_classic_flow" /></td>
     <td><code>boolean</code></td>
     <td>Enables or disables the Basic (Classic) authentication flow. For more information, see Identity Pools (Federated Identities) Authentication Flow in the Amazon Cognito Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllowUnauthenticatedIdentities" /></td>
+    <td><CopyableCode code="allow_unauthenticated_identities" /></td>
     <td><code>boolean</code></td>
     <td>TRUE if the identity pool supports unauthenticated logins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CognitoIdentityProviders" /></td>
+    <td><CopyableCode code="cognito_identity_providers" /></td>
     <td><code>array</code></td>
     <td>A list representing an Amazon Cognito user pool and its client ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeveloperProviderName" /></td>
+    <td><CopyableCode code="developer_provider_name" /></td>
     <td><code>string</code></td>
     <td>The "domain" by which Cognito will refer to your users. (pattern: &lt;code&gt;&#91;\w._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>An identity pool ID in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolName" /></td>
+    <td><CopyableCode code="identity_pool_name" /></td>
     <td><code>string</code></td>
     <td>A string that you provide. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolTags" /></td>
+    <td><CopyableCode code="identity_pool_tags" /></td>
     <td><code>object</code></td>
     <td>The tags that are assigned to the identity pool. A tag is a label that you can apply to identity pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenIdConnectProviderARNs" /></td>
+    <td><CopyableCode code="open_id_connect_provider_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the OpenID Connect providers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SamlProviderARNs" /></td>
+    <td><CopyableCode code="saml_provider_arns" /></td>
     <td><code>array</code></td>
     <td>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedLoginProviders" /></td>
+    <td><CopyableCode code="supported_login_providers" /></td>
     <td><code>object</code></td>
     <td>Optional key:value pairs mapping provider names to provider app IDs.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>An identity pool ID in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolName" /></td>
+    <td><CopyableCode code="identity_pool_name" /></td>
     <td><code>string</code></td>
     <td>A string that you provide. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -225,16 +225,16 @@ Gets details about a particular identity pool, including the pool name, ID descr
 
 ```sql
 SELECT
-AllowClassicFlow,
-AllowUnauthenticatedIdentities,
-CognitoIdentityProviders,
-DeveloperProviderName,
-IdentityPoolId,
-IdentityPoolName,
-IdentityPoolTags,
-OpenIdConnectProviderARNs,
-SamlProviderARNs,
-SupportedLoginProviders
+allow_classic_flow,
+allow_unauthenticated_identities,
+cognito_identity_providers,
+developer_provider_name,
+identity_pool_id,
+identity_pool_name,
+identity_pool_tags,
+open_id_connect_provider_arns,
+saml_provider_arns,
+supported_login_providers
 FROM aws.cognito_identity.identity_pools
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,8 +246,8 @@ Lists all of the Cognito identity pools registered for your account. You must us
 
 ```sql
 SELECT
-IdentityPoolId,
-IdentityPoolName
+identity_pool_id,
+identity_pool_name
 FROM aws.cognito_identity.identity_pools
 WHERE region = '{{ region }}' -- required
 ;
@@ -294,16 +294,16 @@ SELECT
 '{{ IdentityPoolTags }}',
 '{{ region }}'
 RETURNING
-AllowClassicFlow,
-AllowUnauthenticatedIdentities,
-CognitoIdentityProviders,
-DeveloperProviderName,
-IdentityPoolId,
-IdentityPoolName,
-IdentityPoolTags,
-OpenIdConnectProviderARNs,
-SamlProviderARNs,
-SupportedLoginProviders
+allow_classic_flow,
+allow_unauthenticated_identities,
+cognito_identity_providers,
+developer_provider_name,
+identity_pool_id,
+identity_pool_name,
+identity_pool_tags,
+open_id_connect_provider_arns,
+saml_provider_arns,
+supported_login_providers
 ;
 ```
 </TabItem>
@@ -393,16 +393,16 @@ AND IdentityPoolId = '{{ IdentityPoolId }}' --required
 AND IdentityPoolName = '{{ IdentityPoolName }}' --required
 AND AllowUnauthenticatedIdentities = {{ AllowUnauthenticatedIdentities }} --required
 RETURNING
-AllowClassicFlow,
-AllowUnauthenticatedIdentities,
-CognitoIdentityProviders,
-DeveloperProviderName,
-IdentityPoolId,
-IdentityPoolName,
-IdentityPoolTags,
-OpenIdConnectProviderARNs,
-SamlProviderARNs,
-SupportedLoginProviders;
+allow_classic_flow,
+allow_unauthenticated_identities,
+cognito_identity_providers,
+developer_provider_name,
+identity_pool_id,
+identity_pool_name,
+identity_pool_tags,
+open_id_connect_provider_arns,
+saml_provider_arns,
+supported_login_providers;
 ```
 </TabItem>
 </Tabs>

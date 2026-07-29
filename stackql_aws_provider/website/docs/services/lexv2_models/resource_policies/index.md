@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>The JSON structure that contains the resource policy. For more information about the contents of a JSON policy document, see IAM JSON policy reference .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the bot or bot alias that the resource policy is attached to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The current revision of the resource policy. Use the revision ID to make sure that you are updating the most current version of a resource policy when you add a policy statement to a resource, delete a resource, or update a resource. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -180,8 +180,8 @@ Gets the resource policy and policy revision for a bot or bot alias.
 ```sql
 SELECT
 policy,
-resourceArn,
-revisionId
+resource_arn,
+revision_id
 FROM aws.lexv2_models.resource_policies
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -226,8 +226,8 @@ SELECT
 '{{ region }}',
 '{{ expectedRevisionId }}'
 RETURNING
-resourceArn,
-revisionId
+resource_arn,
+revision_id
 ;
 ```
 </TabItem>
@@ -246,8 +246,8 @@ SELECT
 '{{ resource_arn }}',
 '{{ region }}'
 RETURNING
-resourceArn,
-revisionId
+resource_arn,
+revision_id
 ;
 ```
 </TabItem>
@@ -310,8 +310,8 @@ AND region = '{{ region }}' --required
 AND policy = '{{ policy }}' --required
 AND expectedRevisionId = '{{ expectedRevisionId}}'
 RETURNING
-resourceArn,
-revisionId;
+resource_arn,
+revision_id;
 ```
 </TabItem>
 </Tabs>

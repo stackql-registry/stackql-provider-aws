@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Jobs" /></td>
+    <td><CopyableCode code="jobs" /></td>
     <td><code>array</code></td>
     <td>List of jobs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Use this string to request the next batch of jobs via the StartJobsQuery API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the jobs query. (SUBMITTED, PROGRESSING, COMPLETE, ERROR)</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieve a JSON array of up to twenty of your most recent jobs matched by a jobs
 
 ```sql
 SELECT
-Jobs,
-NextToken,
-Status
+jobs,
+next_token,
+status
 FROM aws.mediaconvert.jobs_query_results
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

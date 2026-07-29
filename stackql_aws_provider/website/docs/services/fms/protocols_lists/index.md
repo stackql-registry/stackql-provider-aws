@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProtocolsList" /></td>
+    <td><CopyableCode code="protocols_list" /></td>
     <td><code>object</code></td>
     <td>Information about the specified Firewall Manager protocols list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtocolsListArn" /></td>
+    <td><CopyableCode code="protocols_list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified protocols list. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ListArn" /></td>
+    <td><CopyableCode code="list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified protocols list. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListId" /></td>
+    <td><CopyableCode code="list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the specified protocols list. (pattern: &lt;code&gt;^&#91;a-z0-9A-Z-&#93;&#123;36&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListName" /></td>
+    <td><CopyableCode code="list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the specified protocols list. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtocolsList" /></td>
+    <td><CopyableCode code="protocols_list" /></td>
     <td><code>array</code></td>
     <td>An array of protocols in the Firewall Manager protocols list.</td>
 </tr>
@@ -181,8 +181,8 @@ Returns information about the specified Firewall Manager protocols list.
 
 ```sql
 SELECT
-ProtocolsList,
-ProtocolsListArn
+protocols_list,
+protocols_list_arn
 FROM aws.fms.protocols_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,10 +194,10 @@ Returns an array of ProtocolsListDataSummary objects.
 
 ```sql
 SELECT
-ListArn,
-ListId,
-ListName,
-ProtocolsList
+list_arn,
+list_id,
+list_name,
+protocols_list
 FROM aws.fms.protocols_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,8 +227,8 @@ WHERE
 region = '{{ region }}' --required
 AND ProtocolsList = '{{ ProtocolsList }}' --required
 RETURNING
-ProtocolsList,
-ProtocolsListArn;
+protocols_list,
+protocols_list_arn;
 ```
 </TabItem>
 </Tabs>

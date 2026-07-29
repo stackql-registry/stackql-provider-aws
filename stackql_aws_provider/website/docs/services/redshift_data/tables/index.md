@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the column.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="columnDefault" /></td>
+    <td><CopyableCode code="column_default" /></td>
     <td><code>string</code></td>
     <td>The default value of the column.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isCaseSensitive" /></td>
+    <td><CopyableCode code="is_case_sensitive" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether the column is case-sensitive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isCurrency" /></td>
+    <td><CopyableCode code="is_currency" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether the column contains currency values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSigned" /></td>
+    <td><CopyableCode code="is_signed" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether an integer column is signed.</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The scale value of a decimal number column.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema that contains the table that includes the column.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table that includes the column.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The database-specific data type of the column.</td>
 </tr>
@@ -218,18 +218,18 @@ Describes the detailed information about a table from metadata in the cluster. T
 ```sql
 SELECT
 name,
-columnDefault,
-isCaseSensitive,
-isCurrency,
-isSigned,
+column_default,
+is_case_sensitive,
+is_currency,
+is_signed,
 label,
 length,
 nullable_,
 precision,
 scale,
-schemaName,
-tableName,
-typeName
+schema_name,
+table_name,
+type_name
 FROM aws.redshift_data.tables
 WHERE region = '{{ region }}' -- required
 ;

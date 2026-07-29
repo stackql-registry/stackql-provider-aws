@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestCaseExecutions" /></td>
+    <td><CopyableCode code="test_case_executions" /></td>
     <td><code>array</code></td>
     <td>An array of test case execution summary objects.</td>
 </tr>
@@ -164,8 +164,8 @@ Lists all test case executions and allows filtering by test case id, test case n
 
 ```sql
 SELECT
-NextToken,
-TestCaseExecutions
+next_token,
+test_case_executions
 FROM aws.connect.test_case_executions
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

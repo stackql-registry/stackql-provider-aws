@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GraphList" /></td>
+    <td><CopyableCode code="graph_list" /></td>
     <td><code>array</code></td>
     <td>A list of behavior graphs that the account is an administrator account for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more behavior graphs remaining in the results, then this is the pagination token to use to request the next page of behavior graphs.</td>
 </tr>
@@ -173,8 +173,8 @@ Returns the list of behavior graphs that the calling account is an administrator
 
 ```sql
 SELECT
-GraphList,
-NextToken
+graph_list,
+next_token
 FROM aws.detective.graphs
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,7 +205,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-GraphArn
+graph_arn
 ;
 ```
 </TabItem>

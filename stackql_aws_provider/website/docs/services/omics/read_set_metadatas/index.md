@@ -65,17 +65,17 @@ The following fields are returned by `SELECT` queries:
     <td>The read set's ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationJobId" /></td>
+    <td><CopyableCode code="creation_job_id" /></td>
     <td><code>string</code></td>
     <td>The read set's creation job ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the read set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationType" /></td>
+    <td><CopyableCode code="creation_type" /></td>
     <td><code>string</code></td>
     <td>The creation type of the read set. (IMPORT, UPLOAD)</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The entity tag (ETag) is a hash of the object meant to represent its semantic content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileType" /></td>
+    <td><CopyableCode code="file_type" /></td>
     <td><code>string</code></td>
     <td>The read set's file type. (FASTQ, BAM, CRAM, UBAM)</td>
 </tr>
@@ -100,22 +100,22 @@ The following fields are returned by `SELECT` queries:
     <td>The read set's files.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="referenceArn" /></td>
+    <td><CopyableCode code="reference_arn" /></td>
     <td><code>string</code></td>
     <td>The read set's genome reference ARN. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleId" /></td>
+    <td><CopyableCode code="sample_id" /></td>
     <td><code>string</code></td>
     <td>The read set's sample ID. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sequenceInformation" /></td>
+    <td><CopyableCode code="sequence_information" /></td>
     <td><code>object</code></td>
     <td>The read set's sequence information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sequenceStoreId" /></td>
+    <td><CopyableCode code="sequence_store_id" /></td>
     <td><code>string</code></td>
     <td>The read set's sequence store ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The read set's status. (ARCHIVED, ACTIVATING, ACTIVE, DELETING, DELETED, PROCESSING_UPLOAD, UPLOAD_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for a read set. It provides more detail as to why the read set has a status. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subjectId" /></td>
+    <td><CopyableCode code="subject_id" /></td>
     <td><code>string</code></td>
     <td>The read set's subject ID. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -212,20 +212,20 @@ SELECT
 id,
 name,
 arn,
-creationJobId,
-creationTime,
-creationType,
+creation_job_id,
+creation_time,
+creation_type,
 description,
 etag,
-fileType,
+file_type,
 files,
-referenceArn,
-sampleId,
-sequenceInformation,
-sequenceStoreId,
+reference_arn,
+sample_id,
+sequence_information,
+sequence_store_id,
 status,
-statusMessage,
-subjectId
+status_message,
+subject_id
 FROM aws.omics.read_set_metadatas
 WHERE id = '{{ id }}' -- required
 AND sequence_store_id = '{{ sequence_store_id }}' -- required

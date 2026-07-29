@@ -55,37 +55,37 @@ The following fields are returned by `SELECT` queries:
     <td>Object specifying a channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the channel went offline. This is an ISO 8601 timestamp; note that this is returned as a string. For live streams, this is NULL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestConfiguration" /></td>
+    <td><CopyableCode code="ingest_configuration" /></td>
     <td><code>object</code></td>
     <td>The properties of the incoming RTMP stream. Note: ingestConfiguration is deprecated in favor of ingestConfigurations but retained to ensure backward compatibility. If multitrack is not enabled, ingestConfiguration and ingestConfigurations contain the same data, namely information about Track0 (the sole track). If multitrack is enabled, ingestConfiguration contains data for only the first track (Track0) and ingestConfigurations contains data for all tracks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestConfigurations" /></td>
+    <td><CopyableCode code="ingest_configurations" /></td>
     <td><code>object</code></td>
     <td>The properties of the incoming RTMP stream. If multitrack is enabled, ingestConfigurations contains data for all tracks; otherwise, it contains data only for Track0 (the sole track).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordingConfiguration" /></td>
+    <td><CopyableCode code="recording_configuration" /></td>
     <td><code>object</code></td>
     <td>An object representing a configuration to record a channel stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the channel went live. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamId" /></td>
+    <td><CopyableCode code="stream_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for a live or previously live stream in the specified channel. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="truncatedEvents" /></td>
+    <td><CopyableCode code="truncated_events" /></td>
     <td><code>array</code></td>
     <td>List of Amazon IVS events that the stream encountered. The list is sorted by most recent events and contains up to 500 events. For Amazon IVS events, see Using Amazon EventBridge with Amazon IVS.</td>
 </tr>
@@ -162,13 +162,13 @@ Gets metadata on a specified stream.
 ```sql
 SELECT
 channel,
-endTime,
-ingestConfiguration,
-ingestConfigurations,
-recordingConfiguration,
-startTime,
-streamId,
-truncatedEvents
+end_time,
+ingest_configuration,
+ingest_configurations,
+recording_configuration,
+start_time,
+stream_id,
+truncated_events
 FROM aws.ivs.stream_sessions
 WHERE region = '{{ region }}' -- required
 ;

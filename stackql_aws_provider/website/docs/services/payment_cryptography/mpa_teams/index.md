@@ -112,7 +112,7 @@ region = '{{ region }}' --required
 AND Action = '{{ Action }}' --required
 AND MpaTeamArn = '{{ MpaTeamArn }}' --required
 RETURNING
-MpaTeamAssociation;
+mpa_team_association;
 ```
 </TabItem>
 <TabItem value="disassociate_mpa_team">
@@ -128,7 +128,7 @@ WHERE
 region = '{{ region }}' --required
 AND Action = '{{ Action }}' --required
 RETURNING
-MpaTeamAssociation;
+mpa_team_association;
 ```
 </TabItem>
 </Tabs>

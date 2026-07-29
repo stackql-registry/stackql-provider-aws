@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>Time the report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the report generator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastReportGenerationTime" /></td>
+    <td><CopyableCode code="last_report_generation_time" /></td>
     <td><code>string</code></td>
     <td>Time the last report was generated at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRunFailureReason" /></td>
+    <td><CopyableCode code="last_run_failure_reason" /></td>
     <td><code>string</code></td>
     <td>Failure message for the last report generation attempt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRunStatus" /></td>
+    <td><CopyableCode code="last_run_status" /></td>
     <td><code>string</code></td>
     <td>Status of the last report generation attempt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseManagerReportGeneratorArn" /></td>
+    <td><CopyableCode code="license_manager_report_generator_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the report generator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportContext" /></td>
+    <td><CopyableCode code="report_context" /></td>
     <td><code>object</code></td>
     <td>License configuration type for this generator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportCreatorAccount" /></td>
+    <td><CopyableCode code="report_creator_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID used to create the report generator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportFrequency" /></td>
+    <td><CopyableCode code="report_frequency" /></td>
     <td><code>object</code></td>
     <td>Details about how frequently reports are generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportGeneratorName" /></td>
+    <td><CopyableCode code="report_generator_name" /></td>
     <td><code>string</code></td>
     <td>Name of the report generator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportType" /></td>
+    <td><CopyableCode code="report_type" /></td>
     <td><code>array</code></td>
     <td>Type of reports that are generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Location" /></td>
+    <td><CopyableCode code="s3_location" /></td>
     <td><code>object</code></td>
     <td>Details of the S3 bucket that report generator reports are published to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Tags associated with the report generator.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportGenerators" /></td>
+    <td><CopyableCode code="report_generators" /></td>
     <td><code>array</code></td>
     <td>A report generator that creates periodic reports about your license configurations.</td>
 </tr>
@@ -233,19 +233,19 @@ Gets information about the specified report generator.
 
 ```sql
 SELECT
-CreateTime,
-Description,
-LastReportGenerationTime,
-LastRunFailureReason,
-LastRunStatus,
-LicenseManagerReportGeneratorArn,
-ReportContext,
-ReportCreatorAccount,
-ReportFrequency,
-ReportGeneratorName,
-ReportType,
-S3Location,
-Tags
+create_time,
+description,
+last_report_generation_time,
+last_run_failure_reason,
+last_run_status,
+license_manager_report_generator_arn,
+report_context,
+report_creator_account,
+report_frequency,
+report_generator_name,
+report_type,
+s3_location,
+tags
 FROM aws.license_manager.license_manager_report_generators
 WHERE region = '{{ region }}' -- required
 ;
@@ -257,8 +257,8 @@ Lists the report generators for your account.
 
 ```sql
 SELECT
-NextToken,
-ReportGenerators
+next_token,
+report_generators
 FROM aws.license_manager.license_manager_report_generators
 WHERE region = '{{ region }}' -- required
 ;
@@ -301,7 +301,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LicenseManagerReportGeneratorArn
+license_manager_report_generator_arn
 ;
 ```
 </TabItem>

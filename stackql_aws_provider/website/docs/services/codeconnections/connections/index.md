@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionArn" /></td>
+    <td><CopyableCode code="connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connection. The ARN is used as the connection reference when the connection is shared between Amazon Web Services services. The ARN is never reused if the connection is deleted. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:.+:.+:&#91;0-9&#93;&#123;12&#125;:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionName" /></td>
+    <td><CopyableCode code="connection_name" /></td>
     <td><code>string</code></td>
     <td>The name of the connection. Connection names must be unique in an Amazon Web Services account. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionStatus" /></td>
+    <td><CopyableCode code="connection_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the connection. (PENDING, AVAILABLE, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostArn" /></td>
+    <td><CopyableCode code="host_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the host associated with the connection. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:(codestar-connections|codeconnections):.+:&#91;0-9&#93;&#123;12&#125;:host\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the external provider where your third-party code repository is configured. For Bitbucket, this is the account ID of the owner of the Bitbucket repository. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The name of the external provider where your third-party code repository is configured. (Bitbucket, GitHub, GitHubEnterpriseServer, GitLab, GitLabSelfManaged, AzureDevOps)</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Connections" /></td>
+    <td><CopyableCode code="connections" /></td>
     <td><code>array</code></td>
     <td>A list of connections and the details for each connection, such as status, owner, and provider type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that can be used in the next ListConnections call. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -191,12 +191,12 @@ Returns the connection ARN and details such as status, owner, and provider type.
 
 ```sql
 SELECT
-ConnectionArn,
-ConnectionName,
-ConnectionStatus,
-HostArn,
-OwnerAccountId,
-ProviderType
+connection_arn,
+connection_name,
+connection_status,
+host_arn,
+owner_account_id,
+provider_type
 FROM aws.codeconnections.connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -208,8 +208,8 @@ Lists the connections associated with your account.
 
 ```sql
 SELECT
-Connections,
-NextToken
+connections,
+next_token
 FROM aws.codeconnections.connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,8 +246,8 @@ SELECT
 '{{ HostArn }}',
 '{{ region }}'
 RETURNING
-ConnectionArn,
-Tags
+connection_arn,
+tags
 ;
 ```
 </TabItem>

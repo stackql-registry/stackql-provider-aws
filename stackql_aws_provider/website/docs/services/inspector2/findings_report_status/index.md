@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>Contains details of the Amazon S3 bucket and KMS key used to export findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code of the report. (INTERNAL_ERROR, INVALID_PERMISSIONS, NO_FINDINGS_FOUND, BUCKET_NOT_FOUND, INCOMPATIBLE_BUCKET_REGION, MALFORMED_KMS_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message of the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterCriteria" /></td>
+    <td><CopyableCode code="filter_criteria" /></td>
     <td><code>object</code></td>
     <td>Details on the criteria used to define the filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the report. (pattern: &lt;code&gt;.*\b&#91;a-f0-9&#93;&#123;8&#125;\b-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-\b&#91;a-f0-9&#93;&#123;12&#125;\b.*&lt;/code&gt;)</td>
 </tr>
@@ -145,10 +145,10 @@ Gets the status of a findings report.
 ```sql
 SELECT
 destination,
-errorCode,
-errorMessage,
-filterCriteria,
-reportId,
+error_code,
+error_message,
+filter_criteria,
+report_id,
 status
 FROM aws.inspector2.findings_report_status
 WHERE region = '{{ region }}' -- required

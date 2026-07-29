@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaseModelVersion" /></td>
+    <td><CopyableCode code="base_model_version" /></td>
     <td><code>string</code></td>
     <td>The base detection model version used to create the project version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillableTrainingTimeInSeconds" /></td>
+    <td><CopyableCode code="billable_training_time_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The duration, in seconds, that you were billed for a successful training of the model version. This value is only returned if the model version has been successfully trained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix datetime for the date and time that training started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationResult" /></td>
+    <td><CopyableCode code="evaluation_result" /></td>
     <td><code>object</code></td>
     <td>The training results. EvaluationResult is only returned if training is successful.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Feature" /></td>
+    <td><CopyableCode code="feature" /></td>
     <td><code>string</code></td>
     <td>The feature that was customized. (CONTENT_MODERATION, CUSTOM_LABELS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureConfig" /></td>
+    <td><CopyableCode code="feature_config" /></td>
     <td><code>object</code></td>
     <td>Feature specific configuration that was applied during training.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifer for the AWS Key Management Service key (AWS KMS key) that was used to encrypt the model during training. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,2048&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestSummary" /></td>
+    <td><CopyableCode code="manifest_summary" /></td>
     <td><code>object</code></td>
     <td>The S3 bucket that contains an Amazon Sagemaker Ground Truth format manifest file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxInferenceUnits" /></td>
+    <td><CopyableCode code="max_inference_units" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of inference units Amazon Rekognition uses to auto-scale the model. Applies only to Custom Labels projects. For more information, see StartProjectVersion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinInferenceUnits" /></td>
+    <td><CopyableCode code="min_inference_units" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of inference units used by the model. Applies only to Custom Labels projects. For more information, see StartProjectVersion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The location where training results are saved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectVersionArn" /></td>
+    <td><CopyableCode code="project_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the project version. (pattern: &lt;code&gt;(^arn:&#91;a-z\d-&#93;+:rekognition:&#91;a-z\d-&#93;+:\d&#123;12&#125;:project\/&#91;a-zA-Z0-9_.\-&#93;&#123;1,255&#125;\/version\/&#91;a-zA-Z0-9_.\-&#93;&#123;1,255&#125;\/&#91;0-9&#93;+$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceProjectVersionArn" /></td>
+    <td><CopyableCode code="source_project_version_arn" /></td>
     <td><code>string</code></td>
     <td>If the model version was copied from a different project, SourceProjectVersionArn contains the ARN of the source model version. (pattern: &lt;code&gt;(^arn:&#91;a-z\d-&#93;+:rekognition:&#91;a-z\d-&#93;+:\d&#123;12&#125;:project\/&#91;a-zA-Z0-9_.\-&#93;&#123;1,255&#125;\/version\/&#91;a-zA-Z0-9_.\-&#93;&#123;1,255&#125;\/&#91;0-9&#93;+$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the model version. (TRAINING_IN_PROGRESS, TRAINING_COMPLETED, TRAINING_FAILED, STARTING, RUNNING, FAILED, STOPPING, STOPPED, DELETING, COPYING_IN_PROGRESS, COPYING_COMPLETED, COPYING_FAILED, DEPRECATED, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A descriptive message for an error or warning that occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestingDataResult" /></td>
+    <td><CopyableCode code="testing_data_result" /></td>
     <td><code>object</code></td>
     <td>Contains information about the testing results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingDataResult" /></td>
+    <td><CopyableCode code="training_data_result" /></td>
     <td><code>object</code></td>
     <td>Contains information about the training results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingEndTimestamp" /></td>
+    <td><CopyableCode code="training_end_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix date and time that training of the model ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>A user-provided description of the project version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_. ()':,;?&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -230,25 +230,25 @@ Lists and describes the versions of an Amazon Rekognition project. You can speci
 
 ```sql
 SELECT
-BaseModelVersion,
-BillableTrainingTimeInSeconds,
-CreationTimestamp,
-EvaluationResult,
-Feature,
-FeatureConfig,
-KmsKeyId,
-ManifestSummary,
-MaxInferenceUnits,
-MinInferenceUnits,
-OutputConfig,
-ProjectVersionArn,
-SourceProjectVersionArn,
-Status,
-StatusMessage,
-TestingDataResult,
-TrainingDataResult,
-TrainingEndTimestamp,
-VersionDescription
+base_model_version,
+billable_training_time_in_seconds,
+creation_timestamp,
+evaluation_result,
+feature,
+feature_config,
+kms_key_id,
+manifest_summary,
+max_inference_units,
+min_inference_units,
+output_config,
+project_version_arn,
+source_project_version_arn,
+status,
+status_message,
+testing_data_result,
+training_data_result,
+training_end_timestamp,
+version_description
 FROM aws.rekognition.project_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -295,7 +295,7 @@ SELECT
 '{{ FeatureConfig }}',
 '{{ region }}'
 RETURNING
-ProjectVersionArn
+project_version_arn
 ;
 ```
 </TabItem>

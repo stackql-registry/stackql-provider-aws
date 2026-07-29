@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="managementAccountRateTypeSelections" /></td>
+    <td><CopyableCode code="management_account_rate_type_selections" /></td>
     <td><code>array</code></td>
     <td>The preferred rate types for the management account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberAccountRateTypeSelections" /></td>
+    <td><CopyableCode code="member_account_rate_type_selections" /></td>
     <td><code>array</code></td>
     <td>The preferred rate types for member accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="standaloneAccountRateTypeSelections" /></td>
+    <td><CopyableCode code="standalone_account_rate_type_selections" /></td>
     <td><code>array</code></td>
     <td>The preferred rate types for a standalone account.</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves the current preferences for Pricing Calculator.
 
 ```sql
 SELECT
-managementAccountRateTypeSelections,
-memberAccountRateTypeSelections,
-standaloneAccountRateTypeSelections
+management_account_rate_type_selections,
+member_account_rate_type_selections,
+standalone_account_rate_type_selections
 FROM aws.bcm_pricing_calculator.preferences
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,9 +168,9 @@ standaloneAccountRateTypeSelections = '{{ standaloneAccountRateTypeSelections }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-managementAccountRateTypeSelections,
-memberAccountRateTypeSelections,
-standaloneAccountRateTypeSelections;
+management_account_rate_type_selections,
+member_account_rate_type_selections,
+standalone_account_rate_type_selections;
 ```
 </TabItem>
 </Tabs>

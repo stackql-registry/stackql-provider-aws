@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the connectorV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorId" /></td>
+    <td><CopyableCode code="connector_id" /></td>
     <td><code>string</code></td>
     <td>The UUID of the connectorV2 to identify connectorV2 resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>ISO 8601 UTC timestamp for the time create the connectorV2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the connectorV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Health" /></td>
+    <td><CopyableCode code="health" /></td>
     <td><code>object</code></td>
     <td>The current health status for connectorV2</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of KMS key used for the connectorV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>ISO 8601 UTC timestamp for the time update the connectorV2 connectorStatus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the connectorV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderDetail" /></td>
+    <td><CopyableCode code="provider_detail" /></td>
     <td><code>object</code></td>
     <td>The third-party provider detail for a service configuration.</td>
 </tr>
@@ -192,15 +192,15 @@ Grants permission to retrieve details for a connectorV2 based on connector id.
 
 ```sql
 SELECT
-ConnectorArn,
-ConnectorId,
-CreatedAt,
-Description,
-Health,
-KmsKeyArn,
-LastUpdatedAt,
-Name,
-ProviderDetail
+connector_arn,
+connector_id,
+created_at,
+description,
+health,
+kms_key_arn,
+last_updated_at,
+name,
+provider_detail
 FROM aws.securityhub.connector_v2s
 WHERE connector_id = '{{ connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -235,8 +235,8 @@ SELECT
 '{{ AuthState }}' /* required */,
 '{{ region }}'
 RETURNING
-ConnectorArn,
-ConnectorId
+connector_arn,
+connector_id
 ;
 ```
 </TabItem>
@@ -263,10 +263,10 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-AuthUrl,
-ConnectorArn,
-ConnectorId,
-ConnectorStatus
+auth_url,
+connector_arn,
+connector_id,
+connector_status
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Kinesis Video Stream resource, associated with the stream. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the associated resource for the kinesis video stream.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the most current information about the stream. The streamName or streamA
 
 ```sql
 SELECT
-ARN,
-Type
+arn,
+type
 FROM aws.kinesisvideo.mapped_resource_configurations
 WHERE region = '{{ region }}' -- required
 ;

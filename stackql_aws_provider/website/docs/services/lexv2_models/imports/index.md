@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the import was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>If the importStatus field is Failed, this provides one or more reasons for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importId" /></td>
+    <td><CopyableCode code="import_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the described import. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importStatus" /></td>
+    <td><CopyableCode code="import_status" /></td>
     <td><code>string</code></td>
     <td>The status of the import process. When the status is Completed the resource is imported and ready for use. (InProgress, Completed, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importedResourceId" /></td>
+    <td><CopyableCode code="imported_resource_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier that Amazon Lex assigned to the resource created by the import. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z_&#93;)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importedResourceName" /></td>
+    <td><CopyableCode code="imported_resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the imported resource. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the import was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mergeStrategy" /></td>
+    <td><CopyableCode code="merge_strategy" /></td>
     <td><code>string</code></td>
     <td>The strategy used when there was a name conflict between the imported resource and an existing resource. When the merge strategy is FailOnConflict existing resources are not overwritten and the import fails. (Overwrite, FailOnConflict, Append)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>The specifications of the imported bot, bot locale, or custom vocabulary.</td>
 </tr>
@@ -110,27 +110,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned by Amazon Lex to the bot. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that was imported. It will always be DRAFT. (pattern: &lt;code&gt;^DRAFT$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importSummaries" /></td>
+    <td><CopyableCode code="import_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the imports that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter. If there are more imports available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The locale specified in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListImports operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListImports operation request to get the next page of results.</td>
 </tr>
@@ -226,15 +226,15 @@ Gets information about a specific import.
 
 ```sql
 SELECT
-creationDateTime,
-failureReasons,
-importId,
-importStatus,
-importedResourceId,
-importedResourceName,
-lastUpdatedDateTime,
-mergeStrategy,
-resourceSpecification
+creation_date_time,
+failure_reasons,
+import_id,
+import_status,
+imported_resource_id,
+imported_resource_name,
+last_updated_date_time,
+merge_strategy,
+resource_specification
 FROM aws.lexv2_models.imports
 WHERE import_id = '{{ import_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,11 +247,11 @@ Lists the imports for a bot, bot locale, or custom vocabulary. Imports are kept 
 
 ```sql
 SELECT
-botId,
-botVersion,
-importSummaries,
-localeId,
-nextToken
+bot_id,
+bot_version,
+import_summaries,
+locale_id,
+next_token
 FROM aws.lexv2_models.imports
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>A list of tags attached to a domain.</td>
 </tr>
@@ -138,7 +138,7 @@ Returns all resource tags for an Amazon OpenSearch Service domain, data source, 
 
 ```sql
 SELECT
-TagList
+tag_list
 FROM aws.opensearch.tags
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

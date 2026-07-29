@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KeyCertificate" /></td>
+    <td><CopyableCode code="key_certificate" /></td>
     <td><code>string</code></td>
     <td>The public key component of the asymmetric key pair in a certificate PEM format (base64 encoded). It is signed by the root certificate authority (CA). The certificate is valid for 90 days from the time it is issued. The service returns a cached certificate if one exists with at least 30 days of remaining validity. Otherwise, a new 90-day certificate is issued. (pattern: &lt;code&gt;&#91;^\&#91;;\&#93;&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyCertificateChain" /></td>
+    <td><CopyableCode code="key_certificate_chain" /></td>
     <td><code>string</code></td>
     <td>The root certificate authority (CA) that signed the public key certificate in PEM format (base64 encoded) of the asymmetric key pair. (pattern: &lt;code&gt;&#91;^\&#91;;\&#93;&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Gets the public key certificate of the asymmetric key pair that exists within Am
 
 ```sql
 SELECT
-KeyCertificate,
-KeyCertificateChain
+key_certificate,
+key_certificate_chain
 FROM aws.payment_cryptography.public_key_certificates
 WHERE region = '{{ region }}' -- required
 ;

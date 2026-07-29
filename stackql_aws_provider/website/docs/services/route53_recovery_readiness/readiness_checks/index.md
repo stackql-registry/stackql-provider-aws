@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ReadinessCheckArn" /></td>
+    <td><CopyableCode code="readiness_check_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with a readiness check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadinessCheckName" /></td>
+    <td><CopyableCode code="readiness_check_name" /></td>
     <td><code>string</code></td>
     <td>Name of a readiness check. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSet" /></td>
+    <td><CopyableCode code="resource_set" /></td>
     <td><code>string</code></td>
     <td>Name of the resource set to be checked. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ReadinessCheckArn" /></td>
+    <td><CopyableCode code="readiness_check_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with a readiness check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadinessCheckName" /></td>
+    <td><CopyableCode code="readiness_check_name" /></td>
     <td><code>string</code></td>
     <td>Name of a readiness check. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSet" /></td>
+    <td><CopyableCode code="resource_set" /></td>
     <td><code>string</code></td>
     <td>Name of the resource set to be checked. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -213,10 +213,10 @@ Gets details about a readiness check.
 
 ```sql
 SELECT
-ReadinessCheckArn,
-ReadinessCheckName,
-ResourceSet,
-Tags
+readiness_check_arn,
+readiness_check_name,
+resource_set,
+tags
 FROM aws.route53_recovery_readiness.readiness_checks
 WHERE readiness_check_name = '{{ readiness_check_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,10 +229,10 @@ Lists the readiness checks for an account.
 
 ```sql
 SELECT
-ReadinessCheckArn,
-ReadinessCheckName,
-ResourceSet,
-Tags
+readiness_check_arn,
+readiness_check_name,
+resource_set,
+tags
 FROM aws.route53_recovery_readiness.readiness_checks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -269,10 +269,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ReadinessCheckArn,
-ReadinessCheckName,
-ResourceSet,
-Tags
+readiness_check_arn,
+readiness_check_name,
+resource_set,
+tags
 ;
 ```
 </TabItem>
@@ -319,10 +319,10 @@ readiness_check_name = '{{ readiness_check_name }}' --required
 AND region = '{{ region }}' --required
 AND ResourceSetName = '{{ ResourceSetName }}' --required
 RETURNING
-ReadinessCheckArn,
-ReadinessCheckName,
-ResourceSet,
-Tags;
+readiness_check_arn,
+readiness_check_name,
+resource_set,
+tags;
 ```
 </TabItem>
 </Tabs>

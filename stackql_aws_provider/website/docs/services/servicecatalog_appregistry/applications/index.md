@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the application. The name must be unique in the region in which you are creating the application. (pattern: &lt;code&gt;&#91;-.\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationTag" /></td>
+    <td><CopyableCode code="application_tag" /></td>
     <td><code>object</code></td>
     <td>A key-value pair that identifies an associated resource.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon resource name (ARN) that specifies the application across services. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:servicecatalog:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:/applications/&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedResourceCount" /></td>
+    <td><CopyableCode code="associated_resource_count" /></td>
     <td><code>integer</code></td>
     <td>The number of top-level resources that were registered as part of this application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment when the application was created.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The information about the integration of the application with other services, such as Resource Groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment when the application was last updated.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon resource name (ARN) that specifies the application across services. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:servicecatalog:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:/applications/&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment when the application was created.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 formatted timestamp of the moment when the application was last updated.</td>
 </tr>
@@ -255,13 +255,13 @@ Retrieves metadata information about one of your applications. The application c
 SELECT
 id,
 name,
-applicationTag,
+application_tag,
 arn,
-associatedResourceCount,
-creationTime,
+associated_resource_count,
+creation_time,
 description,
 integrations,
-lastUpdateTime,
+last_update_time,
 tags
 FROM aws.servicecatalog_appregistry.applications
 WHERE application = '{{ application }}' -- required
@@ -278,9 +278,9 @@ SELECT
 id,
 name,
 arn,
-creationTime,
+creation_time,
 description,
-lastUpdateTime
+last_update_time
 FROM aws.servicecatalog_appregistry.applications
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

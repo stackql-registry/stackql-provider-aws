@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured audience model. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelPolicy" /></td>
+    <td><CopyableCode code="configured_audience_model_policy" /></td>
     <td><code>string</code></td>
     <td>The configured audience model policy. This is a JSON IAM resource policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyHash" /></td>
+    <td><CopyableCode code="policy_hash" /></td>
     <td><code>string</code></td>
     <td>A cryptographic hash of the contents of the policy used to prevent unexpected concurrent modification of the policy. (pattern: &lt;code&gt;&#91;0-9a-f&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -148,9 +148,9 @@ Returns information about a configured audience model policy.
 
 ```sql
 SELECT
-configuredAudienceModelArn,
-configuredAudienceModelPolicy,
-policyHash
+configured_audience_model_arn,
+configured_audience_model_policy,
+policy_hash
 FROM aws.cleanroomsml.configured_audience_model_policies
 WHERE configured_audience_model_arn = '{{ configured_audience_model_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -183,8 +183,8 @@ configured_audience_model_arn = '{{ configured_audience_model_arn }}' --required
 AND region = '{{ region }}' --required
 AND configuredAudienceModelPolicy = '{{ configuredAudienceModelPolicy }}' --required
 RETURNING
-configuredAudienceModelPolicy,
-policyHash;
+configured_audience_model_policy,
+policy_hash;
 ```
 </TabItem>
 </Tabs>

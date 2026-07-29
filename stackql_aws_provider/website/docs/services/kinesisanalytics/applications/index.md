@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationARN" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the application. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationCode" /></td>
+    <td><CopyableCode code="application_code" /></td>
     <td><code>string</code></td>
     <td>Returns the application code that you provided to perform data analysis on any of the in-application streams in your application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationDescription" /></td>
+    <td><CopyableCode code="application_description" /></td>
     <td><code>string</code></td>
     <td>Description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>Name of the application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationStatus" /></td>
+    <td><CopyableCode code="application_status" /></td>
     <td><code>string</code></td>
     <td>Status of the application. (DELETING, STARTING, STOPPING, READY, RUNNING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionId" /></td>
+    <td><CopyableCode code="application_version_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>Provides the current application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchLoggingOptionDescriptions" /></td>
+    <td><CopyableCode code="cloud_watch_logging_option_descriptions" /></td>
     <td><code>array</code></td>
     <td>Describes the CloudWatch log streams that are configured to receive application messages. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see Working with Amazon CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTimestamp" /></td>
+    <td><CopyableCode code="create_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time stamp when the application version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDescriptions" /></td>
+    <td><CopyableCode code="input_descriptions" /></td>
     <td><code>array</code></td>
     <td>Describes the application input configuration. For more information, see Configuring Application Input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time stamp when the application was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputDescriptions" /></td>
+    <td><CopyableCode code="output_descriptions" /></td>
     <td><code>array</code></td>
     <td>Describes the application output configuration. For more information, see Configuring Application Output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferenceDataSourceDescriptions" /></td>
+    <td><CopyableCode code="reference_data_source_descriptions" /></td>
     <td><code>array</code></td>
     <td>Describes reference data sources configured for the application. For more information, see Configuring Application Input.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationSummaries" /></td>
+    <td><CopyableCode code="application_summaries" /></td>
     <td><code>array</code></td>
     <td>List of ApplicationSummary objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasMoreApplications" /></td>
+    <td><CopyableCode code="has_more_applications" /></td>
     <td><code>boolean</code></td>
     <td>Returns true if there are more applications to retrieve.</td>
 </tr>
@@ -305,18 +305,18 @@ This documentation is for version 1 of the Amazon Kinesis Data Analytics API, wh
 
 ```sql
 SELECT
-ApplicationARN,
-ApplicationCode,
-ApplicationDescription,
-ApplicationName,
-ApplicationStatus,
-ApplicationVersionId,
-CloudWatchLoggingOptionDescriptions,
-CreateTimestamp,
-InputDescriptions,
-LastUpdateTimestamp,
-OutputDescriptions,
-ReferenceDataSourceDescriptions
+application_arn,
+application_code,
+application_description,
+application_name,
+application_status,
+application_version_id,
+cloud_watch_logging_option_descriptions,
+create_timestamp,
+input_descriptions,
+last_update_timestamp,
+output_descriptions,
+reference_data_source_descriptions
 FROM aws.kinesisanalytics.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -328,8 +328,8 @@ This documentation is for version 1 of the Amazon Kinesis Data Analytics API, wh
 
 ```sql
 SELECT
-ApplicationSummaries,
-HasMoreApplications
+application_summaries,
+has_more_applications
 FROM aws.kinesisanalytics.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -372,7 +372,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ApplicationSummary
+application_summary
 ;
 ```
 </TabItem>

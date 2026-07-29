@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the RegexPatternSet. You can't change Name after you create a RegexPatternSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexPatternSetId" /></td>
+    <td><CopyableCode code="regex_pattern_set_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the RegexPatternSet. You use RegexPatternSetId to get information about a RegexPatternSet, update a RegexPatternSet, remove a RegexPatternSet from a RegexMatchSet, and delete a RegexPatternSet from AWS WAF. RegexMatchSetId is returned by CreateRegexPatternSet and by ListRegexPatternSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexPatternStrings" /></td>
+    <td><CopyableCode code="regex_pattern_strings" /></td>
     <td><code>array</code></td>
     <td>Specifies the regular expression (regex) patterns that you want AWS WAF to search for, such as B&#91;a@&#93;dB&#91;o0&#93;t.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A friendly name or description of the RegexPatternSet. You can't change Name after you create a RegexPatternSet. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegexPatternSetId" /></td>
+    <td><CopyableCode code="regex_pattern_set_id" /></td>
     <td><code>string</code></td>
     <td>The RegexPatternSetId for a RegexPatternSet. You use RegexPatternSetId to get information about a RegexPatternSet, update a RegexPatternSet, remove a RegexPatternSet from a RegexMatchSet, and delete a RegexPatternSet from AWS WAF. RegexPatternSetId is returned by CreateRegexPatternSet and by ListRegexPatternSets. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -183,9 +183,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-Name,
-RegexPatternSetId,
-RegexPatternStrings
+name,
+regex_pattern_set_id,
+regex_pattern_strings
 FROM aws.waf.regex_pattern_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-Name,
-RegexPatternSetId
+name,
+regex_pattern_set_id
 FROM aws.waf.regex_pattern_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,8 +231,8 @@ SELECT
 '{{ ChangeToken }}' /* required */,
 '{{ region }}'
 RETURNING
-ChangeToken,
-RegexPatternSet
+change_token,
+regex_pattern_set
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ AND RegexPatternSetId = '{{ RegexPatternSetId }}' --required
 AND Updates = '{{ Updates }}' --required
 AND ChangeToken = '{{ ChangeToken }}' --required
 RETURNING
-ChangeToken;
+change_token;
 ```
 </TabItem>
 </Tabs>

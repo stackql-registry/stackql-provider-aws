@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CalculatedAt" /></td>
+    <td><CopyableCode code="calculated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when this statistics was calculated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistics" /></td>
+    <td><CopyableCode code="statistics" /></td>
     <td><code>object</code></td>
     <td>The statistics.</td>
 </tr>
@@ -139,8 +139,8 @@ The GetObjectTypeAttributeValues API delivers statistical insights about attribu
 
 ```sql
 SELECT
-CalculatedAt,
-Statistics
+calculated_at,
+statistics
 FROM aws.customer_profiles.object_type_attribute_statistics
 WHERE domain_name = '{{ domain_name }}' -- required
 AND object_type_name = '{{ object_type_name }}' -- required

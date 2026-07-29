@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token indicating there are more results available. If there are no more results, no token is included in the response. The value of nextToken is a unique pagination token for each page. To retrieve the next page of results, make the call again using the returned token. Keep all other arguments unchanged. Using an expired pagination token results in an HTTP 400 InvalidToken error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartnerEventSources" /></td>
+    <td><CopyableCode code="partner_event_sources" /></td>
     <td><code>array</code></td>
     <td>The list of partner event sources returned by the operation.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the event source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event source.</td>
 </tr>
@@ -171,8 +171,8 @@ An SaaS partner can use this operation to list all the partner event source name
 
 ```sql
 SELECT
-NextToken,
-PartnerEventSources
+next_token,
+partner_event_sources
 FROM aws.events.partner_event_sources
 WHERE region = '{{ region }}' -- required
 ;
@@ -184,8 +184,8 @@ An SaaS partner can use this operation to list details about a partner event sou
 
 ```sql
 SELECT
-Arn,
-Name
+arn,
+name
 FROM aws.events.partner_event_sources
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,7 +218,7 @@ SELECT
 '{{ Account }}' /* required */,
 '{{ region }}'
 RETURNING
-EventSourceArn
+event_source_arn
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type that the readiness rule applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleDescription" /></td>
+    <td><CopyableCode code="rule_description" /></td>
     <td><code>string</code></td>
     <td>The description of a readiness rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the readiness rule.</td>
 </tr>
@@ -144,9 +144,9 @@ Lists all readiness rules, or lists the readiness rules for a specific resource 
 
 ```sql
 SELECT
-ResourceType,
-RuleDescription,
-RuleId
+resource_type,
+rule_description,
+rule_id
 FROM aws.route53_recovery_readiness.rules
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

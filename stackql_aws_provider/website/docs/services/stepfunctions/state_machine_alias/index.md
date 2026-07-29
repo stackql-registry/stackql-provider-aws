@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the state machine alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the state machine alias was created.</td>
 </tr>
@@ -65,17 +65,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routingConfiguration" /></td>
+    <td><CopyableCode code="routing_configuration" /></td>
     <td><code>array</code></td>
     <td>The routing configuration of the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineAliasArn" /></td>
+    <td><CopyableCode code="state_machine_alias_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the state machine alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDate" /></td>
+    <td><CopyableCode code="update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the state machine alias was last updated. For a newly created state machine, this is the same as the creation date.</td>
 </tr>
@@ -166,11 +166,11 @@ Returns details about a state machine alias. Related operations: CreateStateMach
 ```sql
 SELECT
 name,
-creationDate,
+creation_date,
 description,
-routingConfiguration,
-stateMachineAliasArn,
-updateDate
+routing_configuration,
+state_machine_alias_arn,
+update_date
 FROM aws.stepfunctions.state_machine_alias
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,8 +205,8 @@ SELECT
 '{{ routingConfiguration }}' /* required */,
 '{{ region }}'
 RETURNING
-creationDate,
-stateMachineAliasArn
+creation_date,
+state_machine_alias_arn
 ;
 ```
 </TabItem>
@@ -260,7 +260,7 @@ WHERE
 region = '{{ region }}' --required
 AND stateMachineAliasArn = '{{ stateMachineAliasArn }}' --required
 RETURNING
-updateDate;
+update_date;
 ```
 </TabItem>
 </Tabs>

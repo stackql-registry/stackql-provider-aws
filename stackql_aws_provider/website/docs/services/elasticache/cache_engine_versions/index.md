@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheEngineDescription" /></td>
+    <td><CopyableCode code="cache_engine_description" /></td>
     <td><code>string</code></td>
     <td>The description of the cache engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheEngineVersionDescription" /></td>
+    <td><CopyableCode code="cache_engine_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the cache engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheParameterGroupFamily" /></td>
+    <td><CopyableCode code="cache_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the cache parameter group family associated with this cache engine. Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 | redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.x | redis7</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the cache engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the cache engine.</td>
 </tr>
@@ -169,11 +169,11 @@ Returns a list of the available cache engines and their versions.
 
 ```sql
 SELECT
-CacheEngineDescription,
-CacheEngineVersionDescription,
-CacheParameterGroupFamily,
-Engine,
-EngineVersion
+cache_engine_description,
+cache_engine_version_description,
+cache_parameter_group_family,
+engine,
+engine_version
 FROM aws.elasticache.cache_engine_versions
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

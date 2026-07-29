@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that an export job completed, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that an export job was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportJobArn" /></td>
+    <td><CopyableCode code="export_job_arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) that uniquely identifies the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportJobIdentifier" /></td>
+    <td><CopyableCode code="export_job_identifier" /></td>
     <td><code>string</code></td>
     <td>This is the unique string that identifies the specified export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportSpecification" /></td>
+    <td><CopyableCode code="export_specification" /></td>
     <td><code>object</code></td>
     <td>The export specification consists of the destination S3 bucket to which the search results were exported, along with the destination prefix.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchJobArn" /></td>
+    <td><CopyableCode code="search_job_arn" /></td>
     <td><code>string</code></td>
     <td>The unique string that identifies the Amazon Resource Name (ARN) of the specified search job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>This is the current status of the export job. (RUNNING, FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A status message is a string that is returned for search job with a status of FAILED, along with steps to remedy and retry the operation.</td>
 </tr>
@@ -105,37 +105,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>This is a timestamp of the time the export job compeleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>This is a timestamp of the time the export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportJobArn" /></td>
+    <td><CopyableCode code="export_job_arn" /></td>
     <td><code>string</code></td>
     <td>This is the unique ARN (Amazon Resource Name) that belongs to the new export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportJobIdentifier" /></td>
+    <td><CopyableCode code="export_job_identifier" /></td>
     <td><code>string</code></td>
     <td>This is the unique string that identifies a specific export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchJobArn" /></td>
+    <td><CopyableCode code="search_job_arn" /></td>
     <td><code>string</code></td>
     <td>The unique string that identifies the Amazon Resource Name (ARN) of the specified search job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the export job is one of the following: CREATED; RUNNING; FAILED; or COMPLETED. (RUNNING, FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A status message is a string that is returned for an export job. A status message is included for any status other than COMPLETED without issues.</td>
 </tr>
@@ -237,14 +237,14 @@ This operation retrieves the metadata of an export job. An export job is an oper
 
 ```sql
 SELECT
-CompletionTime,
-CreationTime,
-ExportJobArn,
-ExportJobIdentifier,
-ExportSpecification,
-SearchJobArn,
-Status,
-StatusMessage
+completion_time,
+creation_time,
+export_job_arn,
+export_job_identifier,
+export_specification,
+search_job_arn,
+status,
+status_message
 FROM aws.backupsearch.search_result_export_jobs
 WHERE export_job_identifier = '{{ export_job_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -257,13 +257,13 @@ This operation exports search results of a search job to a specified destination
 
 ```sql
 SELECT
-CompletionTime,
-CreationTime,
-ExportJobArn,
-ExportJobIdentifier,
-SearchJobArn,
-Status,
-StatusMessage
+completion_time,
+creation_time,
+export_job_arn,
+export_job_identifier,
+search_job_arn,
+status,
+status_message
 FROM aws.backupsearch.search_result_export_jobs
 WHERE region = '{{ region }}' -- required
 AND Status = '{{ Status }}'

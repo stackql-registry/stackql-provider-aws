@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomEventData" /></td>
+    <td><CopyableCode code="custom_event_data" /></td>
     <td><code>string</code></td>
     <td>Information that is added to all events that are related to this game session queue. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>A list of fleets and/or fleet aliases that can be used to fulfill game session placement requests in the queue. Destinations are identified by either a fleet ARN or a fleet alias ARN, and are listed in order of placement preference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilterConfiguration" /></td>
+    <td><CopyableCode code="filter_configuration" /></td>
     <td><code>object</code></td>
     <td>A list of locations where a queue is allowed to place new game sessions. Locations are specified in the form of Amazon Web Services Region codes, such as us-west-2. If this parameter is not set, game sessions can be placed in any queue location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameSessionQueueArn" /></td>
+    <td><CopyableCode code="game_session_queue_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers game session queue resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::gamesessionqueue/&lt;queue name&gt;. In a Amazon GameLift Servers game session queue ARN, the resource ID matches the Name value. (pattern: &lt;code&gt;^arn:.*:gamesessionqueue\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with game session queue. Queue names must be unique within each Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationTarget" /></td>
+    <td><CopyableCode code="notification_target" /></td>
     <td><code>string</code></td>
     <td>An SNS topic ARN that is set up to receive game session placement notifications. See Setting up notifications for game session placement. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*(\.fifo)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlayerLatencyPolicies" /></td>
+    <td><CopyableCode code="player_latency_policies" /></td>
     <td><code>array</code></td>
     <td>A set of policies that enforce a sliding cap on player latency when processing game sessions placement requests. Use multiple policies to gradually relax the cap over time if Amazon GameLift Servers can't make a placement. Policies are evaluated in order starting with the lowest maximum latency value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriorityConfiguration" /></td>
+    <td><CopyableCode code="priority_configuration" /></td>
     <td><code>object</code></td>
     <td>Custom settings to use when prioritizing destinations and locations for game session placements. This configuration replaces the FleetIQ default prioritization process. Priority types that are not explicitly named will be automatically applied at the end of the prioritization process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeoutInSeconds" /></td>
+    <td><CopyableCode code="timeout_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status. The minimum value is 10 and the maximum value is 600.</td>
 </tr>
@@ -180,15 +180,15 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-CustomEventData,
-Destinations,
-FilterConfiguration,
-GameSessionQueueArn,
-Name,
-NotificationTarget,
-PlayerLatencyPolicies,
-PriorityConfiguration,
-TimeoutInSeconds
+custom_event_data,
+destinations,
+filter_configuration,
+game_session_queue_arn,
+name,
+notification_target,
+player_latency_policies,
+priority_configuration,
+timeout_in_seconds
 FROM aws.gamelift.game_session_queues
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,7 +235,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-GameSessionQueue
+game_session_queue
 ;
 ```
 </TabItem>
@@ -326,7 +326,7 @@ NotificationTarget = '{{ NotificationTarget }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-GameSessionQueue;
+game_session_queue;
 ```
 </TabItem>
 </Tabs>

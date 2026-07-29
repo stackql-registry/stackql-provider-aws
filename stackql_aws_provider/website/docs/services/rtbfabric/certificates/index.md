@@ -122,8 +122,8 @@ AND region = '{{ region }}' --required
 AND acmCertificateArn = '{{ acmCertificateArn }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-acmCertificateArn,
-gatewayId,
+acm_certificate_arn,
+gateway_id,
 status;
 ```
 </TabItem>
@@ -140,8 +140,8 @@ gateway_id = '{{ gateway_id }}' --required
 AND acmCertificateArn = '{{ acmCertificateArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-acmCertificateArn,
-gatewayId,
+acm_certificate_arn,
+gateway_id,
 status;
 ```
 </TabItem>

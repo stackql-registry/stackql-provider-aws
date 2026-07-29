@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the traffic distribution group. (pattern: &lt;code&gt;^arn:(aws|aws-us-gov):connect:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;:&#91;0-9&#93;&#123;1,20&#125;:traffic-distribution-group/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the traffic distribution group. (pattern: &lt;code&gt;(^&#91;\S&#93;.*&#91;\S&#93;$)|(^&#91;\S&#93;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(aws|aws-us-gov):connect:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9-&#93;&#123;1&#125;:&#91;0-9&#93;&#123;1,20&#125;:instance/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Whether this is the default traffic distribution group created during instance replication. The default traffic distribution group cannot be deleted by the DeleteTrafficDistributionGroup API. The default traffic distribution group is deleted as part of the process for deleting a replica. The SignInConfig distribution is available only on a default TrafficDistributionGroup (see the IsDefault parameter in the TrafficDistributionGroup data type). If you call UpdateTrafficDistribution with a modified SignInConfig and a non-default TrafficDistributionGroup, an InvalidRequestException is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the traffic distribution group. (pattern: &lt;code&gt;(^&#91;\S&#93;.*&#91;\S&#93;$)|(^&#91;\S&#93;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the traffic distribution group. CREATION_IN_PROGRESS means the previous CreateTrafficDistributionGroup operation is still in progress and has not yet completed. ACTIVE means the previous CreateTrafficDistributionGroup operation has succeeded. CREATION_FAILED indicates that the previous CreateTrafficDistributionGroup operation has failed. PENDING_DELETION means the previous DeleteTrafficDistributionGroup operation is still in progress and has not yet completed. DELETION_FAILED means the previous DeleteTrafficDistributionGroup operation has failed. UPDATE_IN_PROGRESS means the previous UpdateTrafficDistribution operation is still in progress and has not yet completed. (CREATION_IN_PROGRESS, ACTIVE, CREATION_FAILED, PENDING_DELETION, DELETION_FAILED, UPDATE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -105,32 +105,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the traffic distribution group. (pattern: &lt;code&gt;^arn:(aws|aws-us-gov):connect:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;:&#91;0-9&#93;&#123;1,20&#125;:traffic-distribution-group/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the traffic distribution group. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):connect:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9-&#93;&#123;1&#125;:&#91;0-9&#93;&#123;1,20&#125;:instance/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Whether this is the default traffic distribution group created during instance replication. The default traffic distribution group cannot be deleted by the DeleteTrafficDistributionGroup API. The default traffic distribution group is deleted as part of the process for deleting a replica.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the traffic distribution group. (pattern: &lt;code&gt;(^&#91;\S&#93;.*&#91;\S&#93;$)|(^&#91;\S&#93;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the traffic distribution group. CREATION_IN_PROGRESS means the previous CreateTrafficDistributionGroup operation is still in progress and has not yet completed. ACTIVE means the previous CreateTrafficDistributionGroup operation has succeeded. CREATION_FAILED indicates that the previous CreateTrafficDistributionGroup operation has failed. PENDING_DELETION means the previous DeleteTrafficDistributionGroup operation is still in progress and has not yet completed. DELETION_FAILED means the previous DeleteTrafficDistributionGroup operation has failed. UPDATE_IN_PROGRESS means the previous UpdateTrafficDistributionGroup operation is still in progress and has not yet completed. (CREATION_IN_PROGRESS, ACTIVE, CREATION_FAILED, PENDING_DELETION, DELETION_FAILED, UPDATE_IN_PROGRESS)</td>
 </tr>
@@ -241,14 +241,14 @@ Gets details and status of a traffic distribution group.
 
 ```sql
 SELECT
-Arn,
-Description,
-Id,
-InstanceArn,
-IsDefault,
-Name,
-Status,
-Tags
+arn,
+description,
+id,
+instance_arn,
+is_default,
+name,
+status,
+tags
 FROM aws.connect.traffic_distribution_groups
 WHERE traffic_distribution_group_id = '{{ traffic_distribution_group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -261,12 +261,12 @@ Lists traffic distribution groups.
 
 ```sql
 SELECT
-Arn,
-Id,
-InstanceArn,
-IsDefault,
-Name,
-Status
+arn,
+id,
+instance_arn,
+is_default,
+name,
+status
 FROM aws.connect.traffic_distribution_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -308,8 +308,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

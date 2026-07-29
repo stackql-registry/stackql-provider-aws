@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthToken" /></td>
+    <td><CopyableCode code="auth_token" /></td>
     <td><code>string</code></td>
     <td>A valid temporary authentication token. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeArn" /></td>
+    <td><CopyableCode code="compute_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to an Amazon GameLift Servers compute resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::compute/compute-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeName" /></td>
+    <td><CopyableCode code="compute_name" /></td>
     <td><code>string</code></td>
     <td>The name of the compute resource that the authentication token is issued to. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?$|^arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTimestamp" /></td>
+    <td><CopyableCode code="expiration_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The amount of time until the authentication token is no longer valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetArn" /></td>
+    <td><CopyableCode code="fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers fleet resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the fleet that the compute is registered to. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$|^arn:.*:&#91;a-z&#93;*fleet\/&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ This API works with the following fleet types: EC2, Anywhere, Container Requests
 
 ```sql
 SELECT
-AuthToken,
-ComputeArn,
-ComputeName,
-ExpirationTimestamp,
-FleetArn,
-FleetId
+auth_token,
+compute_arn,
+compute_name,
+expiration_timestamp,
+fleet_arn,
+fleet_id
 FROM aws.gamelift.compute_auth_tokens
 WHERE region = '{{ region }}' -- required
 ;

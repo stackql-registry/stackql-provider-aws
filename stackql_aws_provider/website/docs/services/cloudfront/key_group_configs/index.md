@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>A comment to describe the key group. The comment cannot be longer than 128 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>A list of the identifiers of the public keys in the key group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A name to identify the key group.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets a key group configuration. To get a key group configuration, you must provi
 
 ```sql
 SELECT
-Comment,
-Items,
-Name
+comment,
+items,
+name
 FROM aws.cloudfront.key_group_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

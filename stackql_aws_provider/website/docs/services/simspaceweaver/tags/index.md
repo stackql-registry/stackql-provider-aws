@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of tags for the resource.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists all tags on a SimSpace Weaver resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.simspaceweaver.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

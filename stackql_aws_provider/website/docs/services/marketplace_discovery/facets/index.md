@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="listingFacets" /></td>
+    <td><CopyableCode code="listing_facets" /></td>
     <td><code>object</code></td>
     <td>A map of facet types to their corresponding facet values. Each facet value includes a display name, internal value, and count of matching listings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If nextToken is returned, there are more results available. Make the call again using the returned token to retrieve the next page. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResults" /></td>
+    <td><CopyableCode code="total_results" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of listings matching the search criteria.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns available facet values for filtering listings, such as categories, prici
 
 ```sql
 SELECT
-listingFacets,
-nextToken,
-totalResults
+listing_facets,
+next_token,
+total_results
 FROM aws.marketplace_discovery.facets
 WHERE region = '{{ region }}' -- required
 ;

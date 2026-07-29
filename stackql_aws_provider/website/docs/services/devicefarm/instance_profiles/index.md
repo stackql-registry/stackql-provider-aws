@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the instance profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="excludeAppPackagesFromCleanup" /></td>
+    <td><CopyableCode code="exclude_app_packages_from_cleanup" /></td>
     <td><code>array</code></td>
     <td>An array of strings containing the list of app packages that should not be cleaned up from the device after a test run completes. The list of packages is considered only if you set packageCleanup to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageCleanup" /></td>
+    <td><CopyableCode code="package_cleanup" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, Device Farm removes app packages after a test run. The default value is false for private devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rebootAfterUse" /></td>
+    <td><CopyableCode code="reboot_after_use" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, Device Farm reboots the instance after a test run. The default value is true.</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the instance profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="excludeAppPackagesFromCleanup" /></td>
+    <td><CopyableCode code="exclude_app_packages_from_cleanup" /></td>
     <td><code>array</code></td>
     <td>An array of strings containing the list of app packages that should not be cleaned up from the device after a test run completes. The list of packages is considered only if you set packageCleanup to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageCleanup" /></td>
+    <td><CopyableCode code="package_cleanup" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, Device Farm removes app packages after a test run. The default value is false for private devices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rebootAfterUse" /></td>
+    <td><CopyableCode code="reboot_after_use" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, Device Farm reboots the instance after a test run. The default value is true.</td>
 </tr>
@@ -221,9 +221,9 @@ SELECT
 name,
 arn,
 description,
-excludeAppPackagesFromCleanup,
-packageCleanup,
-rebootAfterUse
+exclude_app_packages_from_cleanup,
+package_cleanup,
+reboot_after_use
 FROM aws.devicefarm.instance_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,9 +238,9 @@ SELECT
 name,
 arn,
 description,
-excludeAppPackagesFromCleanup,
-packageCleanup,
-rebootAfterUse
+exclude_app_packages_from_cleanup,
+package_cleanup,
+reboot_after_use
 FROM aws.devicefarm.instance_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -279,7 +279,7 @@ SELECT
 {{ rebootAfterUse }},
 '{{ region }}'
 RETURNING
-instanceProfile
+instance_profile
 ;
 ```
 </TabItem>
@@ -343,7 +343,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-instanceProfile;
+instance_profile;
 ```
 </TabItem>
 </Tabs>

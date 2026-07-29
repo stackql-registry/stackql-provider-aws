@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the Global Resolver. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure idempotency. This means that making the same request multiple times with the same clientToken has the same result every time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Global Resolver was created.</td>
 </tr>
@@ -81,27 +81,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Global Resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The hostname used by the customers' DNS clients for certification validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type configured for the Global Resolver. (IPV4, DUAL_STACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv4Addresses" /></td>
+    <td><CopyableCode code="ipv_4_addresses" /></td>
     <td><code>array</code></td>
     <td>List of anycast IPv4 addresses associated with the Global Resolver instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv6Addresses" /></td>
+    <td><CopyableCode code="ipv_6_addresses" /></td>
     <td><code>array</code></td>
     <td>List of anycast IPv6 addresses associated with the Global Resolver instance. This field is only populated when ipAddressType is DUAL_STACK.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="observabilityRegion" /></td>
+    <td><CopyableCode code="observability_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Regions in which the users' Global Resolver query resolution logs will be propagated.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The operational status of the Global Resolver. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Global Resolver was updated.</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the global resolver. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The unique string that identifies the request and ensures idempotency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the global resolver was created.</td>
 </tr>
@@ -165,27 +165,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the global resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsName" /></td>
+    <td><CopyableCode code="dns_name" /></td>
     <td><code>string</code></td>
     <td>The DNS name of the global resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type configured for the global resolver. (IPV4, DUAL_STACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv4Addresses" /></td>
+    <td><CopyableCode code="ipv_4_addresses" /></td>
     <td><code>array</code></td>
     <td>The IPv4 addresses assigned to the global resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv6Addresses" /></td>
+    <td><CopyableCode code="ipv_6_addresses" /></td>
     <td><code>array</code></td>
     <td>The IPv6 addresses assigned to the global resolver. This field is only populated when ipAddressType is DUAL_STACK.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="observabilityRegion" /></td>
+    <td><CopyableCode code="observability_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where observability data is collected for the global resolver.</td>
 </tr>
@@ -200,7 +200,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the global resolver. (CREATING, OPERATIONAL, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the global resolver was last updated.</td>
 </tr>
@@ -316,17 +316,17 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnsName,
-ipAddressType,
-ipv4Addresses,
-ipv6Addresses,
-observabilityRegion,
+dns_name,
+ip_address_type,
+ipv_4_addresses,
+ipv_6_addresses,
+observability_region,
 regions,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.global_resolvers
 WHERE global_resolver_id = '{{ global_resolver_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -342,17 +342,17 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnsName,
-ipAddressType,
-ipv4Addresses,
-ipv6Addresses,
-observabilityRegion,
+dns_name,
+ip_address_type,
+ipv_4_addresses,
+ipv_6_addresses,
+observability_region,
 regions,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.global_resolvers
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -400,17 +400,17 @@ RETURNING
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnsName,
-ipAddressType,
-ipv4Addresses,
-ipv6Addresses,
-observabilityRegion,
+dns_name,
+ip_address_type,
+ipv_4_addresses,
+ipv_6_addresses,
+observability_region,
 regions,
 status,
-updatedAt
+updated_at
 ;
 ```
 </TabItem>
@@ -471,17 +471,17 @@ RETURNING
 id,
 name,
 arn,
-clientToken,
-createdAt,
+client_token,
+created_at,
 description,
-dnsName,
-ipAddressType,
-ipv4Addresses,
-ipv6Addresses,
-observabilityRegion,
+dns_name,
+ip_address_type,
+ipv_4_addresses,
+ipv_6_addresses,
+observability_region,
 regions,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

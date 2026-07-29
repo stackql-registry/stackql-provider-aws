@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthenticationMode" /></td>
+    <td><CopyableCode code="authentication_mode" /></td>
     <td><code>string</code></td>
     <td>The authentication mode used in WorkMail. (IDENTITY_PROVIDER_ONLY, IDENTITY_PROVIDER_AND_DIRECTORY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityCenterConfiguration" /></td>
+    <td><CopyableCode code="identity_center_configuration" /></td>
     <td><code>object</code></td>
     <td>The details of the IAM Identity Center configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersonalAccessTokenConfiguration" /></td>
+    <td><CopyableCode code="personal_access_token_configuration" /></td>
     <td><code>object</code></td>
     <td>The details of the Personal Access Token configuration.</td>
 </tr>
@@ -143,9 +143,9 @@ Returns detailed information on the current IdC setup for the WorkMail organizat
 
 ```sql
 SELECT
-AuthenticationMode,
-IdentityCenterConfiguration,
-PersonalAccessTokenConfiguration
+authentication_mode,
+identity_center_configuration,
+personal_access_token_configuration
 FROM aws.workmail.identity_provider_configurations
 WHERE region = '{{ region }}' -- required
 ;

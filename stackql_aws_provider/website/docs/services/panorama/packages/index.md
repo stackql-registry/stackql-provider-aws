@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The package's ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the package was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageId" /></td>
+    <td><CopyableCode code="package_id" /></td>
     <td><code>string</code></td>
     <td>The package's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The package's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadAccessPrincipalArns" /></td>
+    <td><CopyableCode code="read_access_principal_arns" /></td>
     <td><code>array</code></td>
     <td>ARNs of accounts that have read access to the package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageLocation" /></td>
+    <td><CopyableCode code="storage_location" /></td>
     <td><code>object</code></td>
     <td>The package's storage location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The package's tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WriteAccessPrincipalArns" /></td>
+    <td><CopyableCode code="write_access_principal_arns" /></td>
     <td><code>array</code></td>
     <td>ARNs of accounts that have write access to the package.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Packages" /></td>
+    <td><CopyableCode code="packages" /></td>
     <td><code>array</code></td>
     <td>A list of packages.</td>
 </tr>
@@ -221,14 +221,14 @@ Returns information about a package.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-PackageId,
-PackageName,
-ReadAccessPrincipalArns,
-StorageLocation,
-Tags,
-WriteAccessPrincipalArns
+arn,
+created_time,
+package_id,
+package_name,
+read_access_principal_arns,
+storage_location,
+tags,
+write_access_principal_arns
 FROM aws.panorama.packages
 WHERE package_id = '{{ package_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -241,8 +241,8 @@ Returns a list of packages.
 
 ```sql
 SELECT
-NextToken,
-Packages
+next_token,
+packages
 FROM aws.panorama.packages
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -277,9 +277,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-PackageId,
-StorageLocation
+arn,
+package_id,
+storage_location
 ;
 ```
 </TabItem>

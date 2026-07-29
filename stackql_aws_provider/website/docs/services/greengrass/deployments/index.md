@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentArn" /></td>
+    <td><CopyableCode code="deployment_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid. (NewDeployment, Redeployment, ResetDeployment, ForceResetDeployment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the group for this deployment.</td>
 </tr>
@@ -173,11 +173,11 @@ Returns a history of deployments for the group.
 
 ```sql
 SELECT
-CreatedAt,
-DeploymentArn,
-DeploymentId,
-DeploymentType,
-GroupArn
+created_at,
+deployment_arn,
+deployment_id,
+deployment_type,
+group_arn
 FROM aws.greengrass.deployments
 WHERE group_id = '{{ group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -219,8 +219,8 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-DeploymentArn,
-DeploymentId
+deployment_arn,
+deployment_id
 ;
 ```
 </TabItem>

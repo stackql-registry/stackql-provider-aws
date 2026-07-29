@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DashboardArn" /></td>
+    <td><CopyableCode code="dashboard_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardBody" /></td>
+    <td><CopyableCode code="dashboard_body" /></td>
     <td><code>string</code></td>
     <td>The detailed information about the dashboard, including what widgets are included and their location on the dashboard. For more information about the DashboardBody syntax, see Dashboard Body Structure and Syntax.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardName" /></td>
+    <td><CopyableCode code="dashboard_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dashboard.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DashboardArn" /></td>
+    <td><CopyableCode code="dashboard_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashboardName" /></td>
+    <td><CopyableCode code="dashboard_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dashboard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of when the dashboard was last modified, either by an API call or through the console. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the dashboard, in bytes.</td>
 </tr>
@@ -186,9 +186,9 @@ Displays the details of the dashboard that you specify. To copy an existing dash
 
 ```sql
 SELECT
-DashboardArn,
-DashboardBody,
-DashboardName
+dashboard_arn,
+dashboard_body,
+dashboard_name
 FROM aws.cloudwatch.dashboards
 WHERE region = '{{ region }}' -- required
 ;
@@ -200,10 +200,10 @@ Returns a list of the dashboards for your account. If you include DashboardNameP
 
 ```sql
 SELECT
-DashboardArn,
-DashboardName,
-LastModified,
-Size
+dashboard_arn,
+dashboard_name,
+last_modified,
+size
 FROM aws.cloudwatch.dashboards
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,7 +235,7 @@ region = '{{ region }}' --required
 AND DashboardName = '{{ DashboardName }}' --required
 AND DashboardBody = '{{ DashboardBody }}' --required
 RETURNING
-DashboardValidationMessages;
+dashboard_validation_messages;
 ```
 </TabItem>
 </Tabs>

@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The binary file, or asset, that is downloaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetName" /></td>
+    <td><CopyableCode code="asset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the asset that is downloaded. (pattern: &lt;code&gt;\P&#123;C&#125;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageVersion" /></td>
+    <td><CopyableCode code="package_version" /></td>
     <td><code>string</code></td>
     <td>A string that contains the package version (for example, 3.5.2). (pattern: &lt;code&gt;&#91;^#/\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageVersionRevision" /></td>
+    <td><CopyableCode code="package_version_revision" /></td>
     <td><code>string</code></td>
     <td>The name of the package version revision that contains the downloaded asset. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -228,9 +228,9 @@ Returns an asset (or file) that is in a package. For example, for a Maven packag
 ```sql
 SELECT
 asset,
-assetName,
-packageVersion,
-packageVersionRevision
+asset_name,
+package_version,
+package_version_revision
 FROM aws.codeartifact.package_version_assets
 WHERE domain = '{{ domain }}' -- required
 AND repository = '{{ repository }}' -- required

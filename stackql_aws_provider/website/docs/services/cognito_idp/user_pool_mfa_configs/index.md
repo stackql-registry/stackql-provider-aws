@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EmailMfaConfiguration" /></td>
+    <td><CopyableCode code="email_mfa_configuration" /></td>
     <td><code>object</code></td>
     <td>Shows configuration for user pool email message MFA and sign-in with one-time passwords (OTPs). Includes the subject and body of the email message template for sign-in and MFA messages. To activate this setting, your user pool must be in the Essentials tier or higher.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MfaConfiguration" /></td>
+    <td><CopyableCode code="mfa_configuration" /></td>
     <td><code>string</code></td>
     <td>Displays the state of multi-factor authentication (MFA) as on, off, or optional. When ON, all users must set up MFA before they can sign in. When OPTIONAL, your application must make a client-side determination of whether a user wants to register an MFA device. For user pools with adaptive authentication with threat protection, choose OPTIONAL. When MfaConfiguration is OPTIONAL, managed login doesn't automatically prompt users to set up MFA. Amazon Cognito generates MFA prompts in API responses and in managed login for users who have chosen and configured a preferred MFA factor. (OFF, ON, OPTIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SmsMfaConfiguration" /></td>
+    <td><CopyableCode code="sms_mfa_configuration" /></td>
     <td><code>object</code></td>
     <td>Shows user pool configuration for SMS message MFA. Includes the message template and the SMS message sending configuration for Amazon SNS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareTokenMfaConfiguration" /></td>
+    <td><CopyableCode code="software_token_mfa_configuration" /></td>
     <td><code>object</code></td>
     <td>Shows user pool configuration for time-based one-time password (TOTP) MFA. Includes TOTP enabled or disabled state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAuthnConfiguration" /></td>
+    <td><CopyableCode code="web_authn_configuration" /></td>
     <td><code>object</code></td>
     <td>Shows user pool configuration for sign-in with passkey authenticators such as biometric devices and security keys. Includes relying-party configuration, user-verification requirements, and whether passkeys can satisfy MFA requirements.</td>
 </tr>
@@ -146,11 +146,11 @@ Given a user pool ID, returns configuration for sign-in with WebAuthn authentica
 
 ```sql
 SELECT
-EmailMfaConfiguration,
-MfaConfiguration,
-SmsMfaConfiguration,
-SoftwareTokenMfaConfiguration,
-WebAuthnConfiguration
+email_mfa_configuration,
+mfa_configuration,
+sms_mfa_configuration,
+software_token_mfa_configuration,
+web_authn_configuration
 FROM aws.cognito_idp.user_pool_mfa_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -184,11 +184,11 @@ WHERE
 region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
-EmailMfaConfiguration,
-MfaConfiguration,
-SmsMfaConfiguration,
-SoftwareTokenMfaConfiguration,
-WebAuthnConfiguration;
+email_mfa_configuration,
+mfa_configuration,
+sms_mfa_configuration,
+software_token_mfa_configuration,
+web_authn_configuration;
 ```
 </TabItem>
 </Tabs>

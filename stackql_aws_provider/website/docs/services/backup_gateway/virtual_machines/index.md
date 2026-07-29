@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HostName" /></td>
+    <td><CopyableCode code="host_name" /></td>
     <td><code>string</code></td>
     <td>The host name of the virtual machine. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HypervisorId" /></td>
+    <td><CopyableCode code="hypervisor_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual machine's hypervisor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastBackupDate" /></td>
+    <td><CopyableCode code="last_backup_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date a virtual machine was backed up, in Unix format and UTC time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the virtual machine. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path of the virtual machine. (pattern: &lt;code&gt;&#91;^\x00&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the virtual machine. For example, arn:aws:backup-gateway:us-west-1:0000000000000:vm/vm-0000ABCDEFGIJKL. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VmwareTags" /></td>
+    <td><CopyableCode code="vmware_tags" /></td>
     <td><code>array</code></td>
     <td>These are the details of the VMware tags associated with the specified virtual machine.</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HostName" /></td>
+    <td><CopyableCode code="host_name" /></td>
     <td><code>string</code></td>
     <td>The host name of the virtual machine. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HypervisorId" /></td>
+    <td><CopyableCode code="hypervisor_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual machine's hypervisor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastBackupDate" /></td>
+    <td><CopyableCode code="last_backup_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date a virtual machine was backed up, in Unix format and UTC time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the virtual machine. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path of the virtual machine. (pattern: &lt;code&gt;&#91;^\x00&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the virtual machine. For example, arn:aws:backup-gateway:us-west-1:0000000000000:vm/vm-0000ABCDEFGIJKL. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -209,13 +209,13 @@ By providing the ARN (Amazon Resource Name), this API returns the virtual machin
 
 ```sql
 SELECT
-HostName,
-HypervisorId,
-LastBackupDate,
-Name,
-Path,
-ResourceArn,
-VmwareTags
+host_name,
+hypervisor_id,
+last_backup_date,
+name,
+path,
+resource_arn,
+vmware_tags
 FROM aws.backup_gateway.virtual_machines
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,12 +227,12 @@ Lists your virtual machines.
 
 ```sql
 SELECT
-HostName,
-HypervisorId,
-LastBackupDate,
-Name,
-Path,
-ResourceArn
+host_name,
+hypervisor_id,
+last_backup_date,
+name,
+path,
+resource_arn
 FROM aws.backup_gateway.virtual_machines
 WHERE region = '{{ region }}' -- required
 ;

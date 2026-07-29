@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupByResults" /></td>
+    <td><CopyableCode code="group_by_results" /></td>
     <td><code>array</code></td>
     <td>Aggregated statistics about security findings based on specified grouping criteria.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns aggregated statistical data about findings. You can use the Scopes param
 
 ```sql
 SELECT
-GroupByResults
+group_by_results
 FROM aws.securityhub.finding_statistics_v2s
 WHERE region = '{{ region }}' -- required
 ;

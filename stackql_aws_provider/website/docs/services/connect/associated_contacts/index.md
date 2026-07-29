@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactSummaryList" /></td>
+    <td><CopyableCode code="contact_summary_list" /></td>
     <td><code>array</code></td>
     <td>List of the contact summary for all the contacts in contact tree associated with unique identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -144,8 +144,8 @@ Provides information about contact tree, a list of associated contacts with a un
 
 ```sql
 SELECT
-ContactSummaryList,
-NextToken
+contact_summary_list,
+next_token
 FROM aws.connect.associated_contacts
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contactId = '{{ contactId }}' -- required

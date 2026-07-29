@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SummaryMetricQueryResults" /></td>
+    <td><CopyableCode code="summary_metric_query_results" /></td>
     <td><code>array</code></td>
     <td>The list of summary metrics that were retrieved.</td>
 </tr>
@@ -119,7 +119,7 @@ Get the summary metrics for this AWS account.
 
 ```sql
 SELECT
-SummaryMetricQueryResults
+summary_metric_query_results
 FROM aws.iotwireless.metrics
 WHERE region = '{{ region }}' -- required
 ;

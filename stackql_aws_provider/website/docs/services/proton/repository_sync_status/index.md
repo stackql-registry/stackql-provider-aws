@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Detail data for sync attempt events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the sync attempt started.</td>
 </tr>
@@ -130,7 +130,7 @@ Get the sync status of a repository used for Proton template sync. For more info
 ```sql
 SELECT
 events,
-startedAt,
+started_at,
 status
 FROM aws.proton.repository_sync_status
 WHERE region = '{{ region }}' -- required

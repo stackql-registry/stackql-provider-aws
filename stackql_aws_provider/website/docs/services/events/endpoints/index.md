@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the endpoint you asked for information about. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:endpoint\/&#91;/\.\-_A-Za-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the endpoint you asked for information about was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the endpoint you asked for information about. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the endpoint you asked for information about. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+&#91;\.&#93;&#91;A-Za-z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointUrl" /></td>
+    <td><CopyableCode code="endpoint_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the endpoint you asked for information about. (pattern: &lt;code&gt;^(https:​//)?&#91;\.\-a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventBuses" /></td>
+    <td><CopyableCode code="event_buses" /></td>
     <td><code>array</code></td>
     <td>The event buses being used by the endpoint you asked for information about.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the endpoint you asked for information about was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint you asked for information about. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationConfig" /></td>
+    <td><CopyableCode code="replication_config" /></td>
     <td><code>object</code></td>
     <td>Whether replication is enabled or disabled for the endpoint you asked for information about.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role used by the endpoint you asked for information about. (pattern: &lt;code&gt;^arn:aws&#91;a-z-&#93;*:iam::\d&#123;12&#125;:role\/&#91;\w+=,.@/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingConfig" /></td>
+    <td><CopyableCode code="routing_config" /></td>
     <td><code>object</code></td>
     <td>The routing configuration of the endpoint you asked for information about.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the endpoint you asked for information about. (ACTIVE, CREATING, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the endpoint you asked for information about is in its current state. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -207,19 +207,19 @@ Get the information about an existing global endpoint. For more information abou
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-Description,
-EndpointId,
-EndpointUrl,
-EventBuses,
-LastModifiedTime,
-Name,
-ReplicationConfig,
-RoleArn,
-RoutingConfig,
-State,
-StateReason
+arn,
+creation_time,
+description,
+endpoint_id,
+endpoint_url,
+event_buses,
+last_modified_time,
+name,
+replication_config,
+role_arn,
+routing_config,
+state,
+state_reason
 FROM aws.events.endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -260,13 +260,13 @@ SELECT
 '{{ RoleArn }}',
 '{{ region }}'
 RETURNING
-Arn,
-EventBuses,
-Name,
-ReplicationConfig,
-RoleArn,
-RoutingConfig,
-State
+arn,
+event_buses,
+name,
+replication_config,
+role_arn,
+routing_config,
+state
 ;
 ```
 </TabItem>
@@ -339,15 +339,15 @@ RoleArn = '{{ RoleArn }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-EndpointId,
-EndpointUrl,
-EventBuses,
-Name,
-ReplicationConfig,
-RoleArn,
-RoutingConfig,
-State;
+arn,
+endpoint_id,
+endpoint_url,
+event_buses,
+name,
+replication_config,
+role_arn,
+routing_config,
+state;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoScalingGroupRecommendations" /></td>
+    <td><CopyableCode code="auto_scaling_group_recommendations" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe Auto Scaling group recommendations.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe errors of the request. For example, an error is returned if you request recommendations for an unsupported Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to advance to the next page of Auto Scaling group recommendations. This value is null when there are no more pages of Auto Scaling group recommendations to return.</td>
 </tr>
@@ -136,9 +136,9 @@ Returns Auto Scaling group recommendations. Compute Optimizer generates recommen
 
 ```sql
 SELECT
-autoScalingGroupRecommendations,
+auto_scaling_group_recommendations,
 errors,
-nextToken
+next_token
 FROM aws.compute_optimizer.auto_scaling_group_recommendations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The tag key. Tag keys must be unique per resource. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The tag value. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the tags for the specified SageMaker resource.
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.sagemaker.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,7 +169,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-Tags;
+tags;
 ```
 </TabItem>
 </Tabs>

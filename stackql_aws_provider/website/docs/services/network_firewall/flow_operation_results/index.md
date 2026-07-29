@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Age" /></td>
+    <td><CopyableCode code="age" /></td>
     <td><code>integer</code></td>
     <td>Returned as info about age of the flows identified by the flow operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ByteCount" /></td>
+    <td><CopyableCode code="byte_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Returns the number of bytes received or transmitted in a specific flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationAddress" /></td>
+    <td><CopyableCode code="destination_address" /></td>
     <td><code>object</code></td>
     <td>A single IP address specification. This is used in the MatchAttributes source and destination specifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationPort" /></td>
+    <td><CopyableCode code="destination_port" /></td>
     <td><code>string</code></td>
     <td>The destination port to inspect for. You can specify an individual port, for example 1994 and you can specify a port range, for example 1990:1994. To match with any port, specify ANY. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PacketCount" /></td>
+    <td><CopyableCode code="packet_count" /></td>
     <td><code>integer</code></td>
     <td>Returns the total number of data packets received or transmitted in a flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The protocols to inspect for, specified using the assigned internet protocol number (IANA) for each protocol. If not specified, this matches with any protocol. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceAddress" /></td>
+    <td><CopyableCode code="source_address" /></td>
     <td><code>object</code></td>
     <td>A single IP address specification. This is used in the MatchAttributes source and destination specifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourcePort" /></td>
+    <td><CopyableCode code="source_port" /></td>
     <td><code>string</code></td>
     <td>The source port to inspect for. You can specify an individual port, for example 1994 and you can specify a port range, for example 1990:1994. To match with any port, specify ANY. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -154,14 +154,14 @@ Returns the results of a specific flow operation. Flow operations let you manage
 
 ```sql
 SELECT
-Age,
-ByteCount,
-DestinationAddress,
-DestinationPort,
-PacketCount,
-Protocol,
-SourceAddress,
-SourcePort
+age,
+byte_count,
+destination_address,
+destination_port,
+packet_count,
+protocol,
+source_address,
+source_port
 FROM aws.network_firewall.flow_operation_results
 WHERE region = '{{ region }}' -- required
 ;

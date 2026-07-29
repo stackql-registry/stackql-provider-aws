@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CognitoConfig" /></td>
+    <td><CopyableCode code="cognito_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of an Amazon Cognito workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the workforce is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason your workforce failed. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type you specify - either IPv4 only or dualstack (IPv4 and IPv6) - to support your labeling workforce. (ipv4, dualstack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date that UpdateWorkforce was used to successfully add one or more IP address ranges (CIDRs) to a private workforce's allow list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OidcConfig" /></td>
+    <td><CopyableCode code="oidc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of an OIDC Identity Provider (IdP) private workforce.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIpConfig" /></td>
+    <td><CopyableCode code="source_ip_config" /></td>
     <td><code>object</code></td>
     <td>A list of IP address ranges (CIDRs). Used to create an allow list of IP addresses for a private workforce. Workers will only be able to log in to their worker portal from an IP address within this range. By default, a workforce isn't restricted to specific IP addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of your workforce. (Initializing, Updating, Deleting, Failed, Active)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubDomain" /></td>
+    <td><CopyableCode code="sub_domain" /></td>
     <td><code>string</code></td>
     <td>The subdomain for your OIDC Identity Provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceArn" /></td>
+    <td><CopyableCode code="workforce_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the private workforce. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workforce/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceName" /></td>
+    <td><CopyableCode code="workforce_name" /></td>
     <td><code>string</code></td>
     <td>The name of the private workforce. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9\-&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceVpcConfig" /></td>
+    <td><CopyableCode code="workforce_vpc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of a VPC workforce.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CognitoConfig" /></td>
+    <td><CopyableCode code="cognito_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of an Amazon Cognito workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the workforce is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason your workforce failed. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type you specify - either IPv4 only or dualstack (IPv4 and IPv6) - to support your labeling workforce. (ipv4, dualstack)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date that UpdateWorkforce was used to successfully add one or more IP address ranges (CIDRs) to a private workforce's allow list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OidcConfig" /></td>
+    <td><CopyableCode code="oidc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of an OIDC Identity Provider (IdP) private workforce.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIpConfig" /></td>
+    <td><CopyableCode code="source_ip_config" /></td>
     <td><code>object</code></td>
     <td>A list of IP address ranges (CIDRs). Used to create an allow list of IP addresses for a private workforce. Workers will only be able to log in to their worker portal from an IP address within this range. By default, a workforce isn't restricted to specific IP addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of your workforce. (Initializing, Updating, Deleting, Failed, Active)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubDomain" /></td>
+    <td><CopyableCode code="sub_domain" /></td>
     <td><code>string</code></td>
     <td>The subdomain for your OIDC Identity Provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceArn" /></td>
+    <td><CopyableCode code="workforce_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the private workforce. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:workforce/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceName" /></td>
+    <td><CopyableCode code="workforce_name" /></td>
     <td><code>string</code></td>
     <td>The name of the private workforce. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9\-&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkforceVpcConfig" /></td>
+    <td><CopyableCode code="workforce_vpc_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of a VPC workforce.</td>
 </tr>
@@ -278,18 +278,18 @@ Lists private workforce information, including workforce name, Amazon Resource N
 
 ```sql
 SELECT
-CognitoConfig,
-CreateDate,
-FailureReason,
-IpAddressType,
-LastUpdatedDate,
-OidcConfig,
-SourceIpConfig,
-Status,
-SubDomain,
-WorkforceArn,
-WorkforceName,
-WorkforceVpcConfig
+cognito_config,
+create_date,
+failure_reason,
+ip_address_type,
+last_updated_date,
+oidc_config,
+source_ip_config,
+status,
+sub_domain,
+workforce_arn,
+workforce_name,
+workforce_vpc_config
 FROM aws.sagemaker.workforces
 WHERE region = '{{ region }}' -- required
 ;
@@ -301,18 +301,18 @@ Use this operation to list all private and vendor workforces in an Amazon Web Se
 
 ```sql
 SELECT
-CognitoConfig,
-CreateDate,
-FailureReason,
-IpAddressType,
-LastUpdatedDate,
-OidcConfig,
-SourceIpConfig,
-Status,
-SubDomain,
-WorkforceArn,
-WorkforceName,
-WorkforceVpcConfig
+cognito_config,
+create_date,
+failure_reason,
+ip_address_type,
+last_updated_date,
+oidc_config,
+source_ip_config,
+status,
+sub_domain,
+workforce_arn,
+workforce_name,
+workforce_vpc_config
 FROM aws.sagemaker.workforces
 WHERE region = '{{ region }}' -- required
 ;
@@ -355,7 +355,7 @@ SELECT
 '{{ IpAddressType }}',
 '{{ region }}'
 RETURNING
-WorkforceArn
+workforce_arn
 ;
 ```
 </TabItem>
@@ -447,7 +447,7 @@ WHERE
 region = '{{ region }}' --required
 AND WorkforceName = '{{ WorkforceName }}' --required
 RETURNING
-Workforce;
+workforce;
 ```
 </TabItem>
 </Tabs>

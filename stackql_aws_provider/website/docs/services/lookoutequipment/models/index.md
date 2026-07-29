@@ -51,212 +51,212 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccumulatedInferenceDataEndTime" /></td>
+    <td><CopyableCode code="accumulated_inference_data_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the end time of the inference data that has been accumulated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccumulatedInferenceDataStartTime" /></td>
+    <td><CopyableCode code="accumulated_inference_data_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the start time of the inference data that has been accumulated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActiveModelVersion" /></td>
+    <td><CopyableCode code="active_model_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The name of the model version used by the inference schedular when running a scheduled inference execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActiveModelVersionArn" /></td>
+    <td><CopyableCode code="active_model_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model version used by the inference scheduler when running a scheduled inference execution. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+\/model-version\/&#91;0-9&#93;&#123;1,&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time and date at which the machine learning model was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataPreProcessingConfiguration" /></td>
+    <td><CopyableCode code="data_pre_processing_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration is the TargetSamplingRate, which is the sampling rate of the data after post processing by Amazon Lookout for Equipment. For example, if you provide data that has been collected at a 1 second level and you want the system to resample the data at a 1 minute rate before training, the TargetSamplingRate is 1 minute. When providing a value for the TargetSamplingRate, you must attach the prefix "PT" to the rate you want. The value for a 1 second rate is therefore PT1S, the value for a 15 minute rate is PT15M, and the value for a 1 hour rate is PT1H</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resouce Name (ARN) of the dataset used to create the machine learning model being described. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:dataset\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset being used by the machine learning being described. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationDataEndTime" /></td>
+    <td><CopyableCode code="evaluation_data_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time reference in the dataset that was used to end the subset of evaluation data for the machine learning model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationDataStartTime" /></td>
+    <td><CopyableCode code="evaluation_data_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time reference in the dataset that was used to begin the subset of evaluation data for the machine learning model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedReason" /></td>
+    <td><CopyableCode code="failed_reason" /></td>
     <td><code>string</code></td>
     <td>If the training of the machine learning model failed, this indicates the reason for that failure. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;1,5000&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportJobEndTime" /></td>
+    <td><CopyableCode code="import_job_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the import job was completed. This field appears if the active model version was imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportJobStartTime" /></td>
+    <td><CopyableCode code="import_job_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the import job was started. This field appears if the active model version was imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelsInputConfiguration" /></td>
+    <td><CopyableCode code="labels_input_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies configuration information about the labels input, including its S3 location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the last time the machine learning model was updated. The type of update is not specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestScheduledRetrainingAvailableDataInDays" /></td>
+    <td><CopyableCode code="latest_scheduled_retraining_available_data_in_days" /></td>
     <td><code>integer</code></td>
     <td>Indicates the number of days of data used in the most recent scheduled retraining run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestScheduledRetrainingFailedReason" /></td>
+    <td><CopyableCode code="latest_scheduled_retraining_failed_reason" /></td>
     <td><code>string</code></td>
     <td>If the model version was generated by retraining and the training failed, this indicates the reason for that failure. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;1,5000&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestScheduledRetrainingModelVersion" /></td>
+    <td><CopyableCode code="latest_scheduled_retraining_model_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>Indicates the most recent model version that was generated by retraining.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestScheduledRetrainingStartTime" /></td>
+    <td><CopyableCode code="latest_scheduled_retraining_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the start time of the most recent scheduled retraining run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestScheduledRetrainingStatus" /></td>
+    <td><CopyableCode code="latest_scheduled_retraining_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the most recent scheduled retraining run. (IN_PROGRESS, SUCCESS, FAILED, IMPORT_IN_PROGRESS, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the machine learning model being described. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelDiagnosticsOutputConfiguration" /></td>
+    <td><CopyableCode code="model_diagnostics_output_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information for the model's pointwise model diagnostics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelMetrics" /></td>
+    <td><CopyableCode code="model_metrics" /></td>
     <td><code>string</code></td>
     <td>The Model Metrics show an aggregated summary of the model's performance within the evaluation time range. This is the JSON content of the metrics created when evaluating the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the machine learning model being described. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelQuality" /></td>
+    <td><CopyableCode code="model_quality" /></td>
     <td><code>string</code></td>
     <td>Provides a quality assessment for a model that uses labels. If Lookout for Equipment determines that the model quality is poor based on training metrics, the value is POOR_QUALITY_DETECTED. Otherwise, the value is QUALITY_THRESHOLD_MET. If the model is unlabeled, the model quality can't be assessed and the value of ModelQuality is CANNOT_DETERMINE_QUALITY. In this situation, you can get a model quality assessment by adding labels to the input dataset and retraining the model. For information about using labels with your models, see Understanding labeling. For information about improving the quality of a model, see Best practices with Amazon Lookout for Equipment. (QUALITY_THRESHOLD_MET, CANNOT_DETERMINE_QUALITY, POOR_QUALITY_DETECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelVersionActivatedAt" /></td>
+    <td><CopyableCode code="model_version_activated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the active model version was activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextScheduledRetrainingStartDate" /></td>
+    <td><CopyableCode code="next_scheduled_retraining_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the date and time that the next scheduled retraining run will start on. Lookout for Equipment truncates the time you provide to the nearest UTC day.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OffCondition" /></td>
+    <td><CopyableCode code="off_condition" /></td>
     <td><code>string</code></td>
     <td>Indicates that the asset associated with this sensor has been shut off. As long as this condition is met, Lookout for Equipment will not use data from this asset for training, evaluation, or inference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousActiveModelVersion" /></td>
+    <td><CopyableCode code="previous_active_model_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The model version that was set as the active model version prior to the current active model version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousActiveModelVersionArn" /></td>
+    <td><CopyableCode code="previous_active_model_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the model version that was set as the active model version prior to the current active model version. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+\/model-version\/&#91;0-9&#93;&#123;1,&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousModelVersionActivatedAt" /></td>
+    <td><CopyableCode code="previous_model_version_activated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the previous active model version was activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriorModelMetrics" /></td>
+    <td><CopyableCode code="prior_model_metrics" /></td>
     <td><code>string</code></td>
     <td>If the model version was retrained, this field shows a summary of the performance of the prior model on the new training range. You can use the information in this JSON-formatted object to compare the new model version and the prior model version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrainingSchedulerStatus" /></td>
+    <td><CopyableCode code="retraining_scheduler_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the retraining scheduler. (PENDING, RUNNING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a role with permission to access the data source for the machine learning model being described. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>string</code></td>
     <td>A JSON description of the data that is in each time series dataset, including names, column names, and data types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideKmsKeyId" /></td>
+    <td><CopyableCode code="server_side_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Provides the identifier of the KMS key used to encrypt model data by Amazon Lookout for Equipment. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:kms:&#91;a-z0-9\-&#93;*:\d&#123;12&#125;:&#91;\w\-\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceModelVersionArn" /></td>
+    <td><CopyableCode code="source_model_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source model version. This field appears if the active model version was imported. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+\/model-version\/&#91;0-9&#93;&#123;1,&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the current status of the model being described. Status describes the status of the most recent action of the model. (IN_PROGRESS, SUCCESS, FAILED, IMPORT_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingDataEndTime" /></td>
+    <td><CopyableCode code="training_data_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time reference in the dataset that was used to end the subset of training data for the machine learning model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingDataStartTime" /></td>
+    <td><CopyableCode code="training_data_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time reference in the dataset that was used to begin the subset of training data for the machine learning model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingExecutionEndTime" /></td>
+    <td><CopyableCode code="training_execution_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time at which the training of the machine learning model was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingExecutionStartTime" /></td>
+    <td><CopyableCode code="training_execution_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the time at which the training of the machine learning model began.</td>
 </tr>
@@ -275,12 +275,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ModelSummaries" /></td>
+    <td><CopyableCode code="model_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides information on the specified model, including created time, model and dataset ARNs, and status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of machine learning models. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -399,48 +399,48 @@ Provides a JSON containing the overall information about a specific machine lear
 
 ```sql
 SELECT
-AccumulatedInferenceDataEndTime,
-AccumulatedInferenceDataStartTime,
-ActiveModelVersion,
-ActiveModelVersionArn,
-CreatedAt,
-DataPreProcessingConfiguration,
-DatasetArn,
-DatasetName,
-EvaluationDataEndTime,
-EvaluationDataStartTime,
-FailedReason,
-ImportJobEndTime,
-ImportJobStartTime,
-LabelsInputConfiguration,
-LastUpdatedTime,
-LatestScheduledRetrainingAvailableDataInDays,
-LatestScheduledRetrainingFailedReason,
-LatestScheduledRetrainingModelVersion,
-LatestScheduledRetrainingStartTime,
-LatestScheduledRetrainingStatus,
-ModelArn,
-ModelDiagnosticsOutputConfiguration,
-ModelMetrics,
-ModelName,
-ModelQuality,
-ModelVersionActivatedAt,
-NextScheduledRetrainingStartDate,
-OffCondition,
-PreviousActiveModelVersion,
-PreviousActiveModelVersionArn,
-PreviousModelVersionActivatedAt,
-PriorModelMetrics,
-RetrainingSchedulerStatus,
-RoleArn,
-Schema,
-ServerSideKmsKeyId,
-SourceModelVersionArn,
-Status,
-TrainingDataEndTime,
-TrainingDataStartTime,
-TrainingExecutionEndTime,
-TrainingExecutionStartTime
+accumulated_inference_data_end_time,
+accumulated_inference_data_start_time,
+active_model_version,
+active_model_version_arn,
+created_at,
+data_pre_processing_configuration,
+dataset_arn,
+dataset_name,
+evaluation_data_end_time,
+evaluation_data_start_time,
+failed_reason,
+import_job_end_time,
+import_job_start_time,
+labels_input_configuration,
+last_updated_time,
+latest_scheduled_retraining_available_data_in_days,
+latest_scheduled_retraining_failed_reason,
+latest_scheduled_retraining_model_version,
+latest_scheduled_retraining_start_time,
+latest_scheduled_retraining_status,
+model_arn,
+model_diagnostics_output_configuration,
+model_metrics,
+model_name,
+model_quality,
+model_version_activated_at,
+next_scheduled_retraining_start_date,
+off_condition,
+previous_active_model_version,
+previous_active_model_version_arn,
+previous_model_version_activated_at,
+prior_model_metrics,
+retraining_scheduler_status,
+role_arn,
+schema,
+server_side_kms_key_id,
+source_model_version_arn,
+status,
+training_data_end_time,
+training_data_start_time,
+training_execution_end_time,
+training_execution_start_time
 FROM aws.lookoutequipment.models
 WHERE region = '{{ region }}' -- required
 ;
@@ -452,8 +452,8 @@ Generates a list of all models in the account, including model name and ARN, dat
 
 ```sql
 SELECT
-ModelSummaries,
-NextToken
+model_summaries,
+next_token
 FROM aws.lookoutequipment.models
 WHERE region = '{{ region }}' -- required
 ;
@@ -512,8 +512,8 @@ SELECT
 '{{ ModelDiagnosticsOutputConfiguration }}',
 '{{ region }}'
 RETURNING
-ModelArn,
-Status
+model_arn,
+status
 ;
 ```
 </TabItem>

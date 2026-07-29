@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of retrievable results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReturnSize" /></td>
+    <td><CopyableCode code="return_size" /></td>
     <td><code>integer</code></td>
     <td>The number of query results that Amazon Web Services returns at a time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags that match your request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalSize" /></td>
+    <td><CopyableCode code="total_size" /></td>
     <td><code>integer</code></td>
     <td>The total number of query results.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>A list of tag key value pairs that are associated with the resource.</td>
 </tr>
@@ -176,10 +176,10 @@ Queries for available tag keys and tag values for a specified period. You can se
 
 ```sql
 SELECT
-NextPageToken,
-ReturnSize,
-Tags,
-TotalSize
+next_page_token,
+return_size,
+tags,
+total_size
 FROM aws.ce.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,7 +191,7 @@ Returns a list of resource tags associated with the resource specified by the Am
 
 ```sql
 SELECT
-ResourceTags
+resource_tags
 FROM aws.ce.tags
 WHERE region = '{{ region }}' -- required
 ;

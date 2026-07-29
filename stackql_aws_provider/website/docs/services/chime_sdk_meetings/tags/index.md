@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags requested for the specified resource.</td>
 </tr>
@@ -138,7 +138,7 @@ Returns a list of the tags available for the specified resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.chime_sdk_meetings.tags
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

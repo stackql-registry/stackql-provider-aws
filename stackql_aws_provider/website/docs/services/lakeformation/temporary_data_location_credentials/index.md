@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessibleDataLocations" /></td>
+    <td><CopyableCode code="accessible_data_locations" /></td>
     <td><code>array</code></td>
     <td>Refers to the Amazon S3 locations that can be accessed through the GetTemporaryCredentialsForLocation API operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>object</code></td>
     <td>A temporary set of credentials for an Lake Formation user. These credentials are scoped down to only access the raw data sources that the user has access to. The temporary security credentials consist of an access key and a session token. The access key consists of an access key ID and a secret key. When the credentials are created, they are associated with an IAM access control policy that limits what the user can do when using the credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CredentialsScope" /></td>
+    <td><CopyableCode code="credentials_scope" /></td>
     <td><code>string</code></td>
     <td>The credential scope is determined by the caller's Lake Formation permission on the associated table. Credential scope can be either: READ - Provides read-only access to the data location. READ_WRITE - Provides both read and write access to the data location. (READ, READWRITE)</td>
 </tr>
@@ -129,9 +129,9 @@ Allows a user or application in a secure environment to access data in a specifi
 
 ```sql
 SELECT
-AccessibleDataLocations,
-Credentials,
-CredentialsScope
+accessible_data_locations,
+credentials,
+credentials_scope
 FROM aws.lakeformation.temporary_data_location_credentials
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="integrationDetails" /></td>
+    <td><CopyableCode code="integration_details" /></td>
     <td><code>object</code></td>
     <td>A structure that contains information about the integration configuration. For an integration with OpenSearch Service, this includes information about OpenSearch Service resources such as the collection, the workspace, and policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationName" /></td>
+    <td><CopyableCode code="integration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the integration. (pattern: &lt;code&gt;&#91;\.\-_/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationStatus" /></td>
+    <td><CopyableCode code="integration_status" /></td>
     <td><code>string</code></td>
     <td>The current status of this integration. (PROVISIONING, ACTIVE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationType" /></td>
+    <td><CopyableCode code="integration_type" /></td>
     <td><code>string</code></td>
     <td>The type of integration. Integrations with OpenSearch Service have the type OPENSEARCH. (OPENSEARCH)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="integrationSummaries" /></td>
+    <td><CopyableCode code="integration_summaries" /></td>
     <td><code>array</code></td>
     <td>An array, where each object in the array contains information about one CloudWatch Logs integration in this account.</td>
 </tr>
@@ -190,10 +190,10 @@ Returns information about one integration between CloudWatch Logs and OpenSearch
 
 ```sql
 SELECT
-integrationDetails,
-integrationName,
-integrationStatus,
-integrationType
+integration_details,
+integration_name,
+integration_status,
+integration_type
 FROM aws.logs.integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,7 +205,7 @@ Returns a list of integrations between CloudWatch Logs and other services in thi
 
 ```sql
 SELECT
-integrationSummaries
+integration_summaries
 FROM aws.logs.integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -282,8 +282,8 @@ AND integrationName = '{{ integrationName }}' --required
 AND resourceConfig = '{{ resourceConfig }}' --required
 AND integrationType = '{{ integrationType }}' --required
 RETURNING
-integrationName,
-integrationStatus;
+integration_name,
+integration_status;
 ```
 </TabItem>
 </Tabs>

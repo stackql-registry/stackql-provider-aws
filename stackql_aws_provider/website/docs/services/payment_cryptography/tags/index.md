@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the tag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the tag.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the tags for an Amazon Web Services resource. This is a paginated operatio
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.payment_cryptography.tags
 WHERE region = '{{ region }}' -- required
 ;

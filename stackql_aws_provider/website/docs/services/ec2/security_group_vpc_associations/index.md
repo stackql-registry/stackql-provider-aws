@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The association's security group ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupOwnerId" /></td>
+    <td><CopyableCode code="group_owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The association's state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The association's state reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The association's VPC ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcOwnerId" /></td>
+    <td><CopyableCode code="vpc_owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the VPC.</td>
 </tr>
@@ -164,12 +164,12 @@ Describes security group VPC associations made with AssociateSecurityGroupVpc.
 
 ```sql
 SELECT
-GroupId,
-GroupOwnerId,
-State,
-StateReason,
-VpcId,
-VpcOwnerId
+group_id,
+group_owner_id,
+state,
+state_reason,
+vpc_id,
+vpc_owner_id
 FROM aws.ec2.security_group_vpc_associations
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogItemId" /></td>
+    <td><CopyableCode code="catalog_item_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the catalog item. (pattern: &lt;code&gt;OR-&#91;A-Z0-9&#93;&#123;7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EC2Capacities" /></td>
+    <td><CopyableCode code="ec2_capacities" /></td>
     <td><code>array</code></td>
     <td>Information about the EC2 capacity of an item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ItemStatus" /></td>
+    <td><CopyableCode code="item_status" /></td>
     <td><code>string</code></td>
     <td>The status of a catalog item. (AVAILABLE, DISCONTINUED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PowerKva" /></td>
+    <td><CopyableCode code="power_kva" /></td>
     <td><code>number (float)</code></td>
     <td>Information about the power draw of an item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedStorage" /></td>
+    <td><CopyableCode code="supported_storage" /></td>
     <td><code>array</code></td>
     <td>The supported storage options for the catalog item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedUplinkGbps" /></td>
+    <td><CopyableCode code="supported_uplink_gbps" /></td>
     <td><code>array</code></td>
     <td>The uplink speed this catalog item requires for the connection to the Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WeightLbs" /></td>
+    <td><CopyableCode code="weight_lbs" /></td>
     <td><code>integer</code></td>
     <td>The weight of the item in pounds.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogItemId" /></td>
+    <td><CopyableCode code="catalog_item_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the catalog item. (pattern: &lt;code&gt;OR-&#91;A-Z0-9&#93;&#123;7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EC2Capacities" /></td>
+    <td><CopyableCode code="ec2_capacities" /></td>
     <td><code>array</code></td>
     <td>Information about the EC2 capacity of an item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ItemStatus" /></td>
+    <td><CopyableCode code="item_status" /></td>
     <td><code>string</code></td>
     <td>The status of a catalog item. (AVAILABLE, DISCONTINUED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PowerKva" /></td>
+    <td><CopyableCode code="power_kva" /></td>
     <td><code>number (float)</code></td>
     <td>Information about the power draw of an item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedStorage" /></td>
+    <td><CopyableCode code="supported_storage" /></td>
     <td><code>array</code></td>
     <td>The supported storage options for the catalog item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedUplinkGbps" /></td>
+    <td><CopyableCode code="supported_uplink_gbps" /></td>
     <td><code>array</code></td>
     <td>The uplink speed this catalog item requires for the connection to the Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WeightLbs" /></td>
+    <td><CopyableCode code="weight_lbs" /></td>
     <td><code>integer</code></td>
     <td>The weight of the item in pounds.</td>
 </tr>
@@ -237,13 +237,13 @@ Gets information about the specified catalog item.
 
 ```sql
 SELECT
-CatalogItemId,
-EC2Capacities,
-ItemStatus,
-PowerKva,
-SupportedStorage,
-SupportedUplinkGbps,
-WeightLbs
+catalog_item_id,
+ec2_capacities,
+item_status,
+power_kva,
+supported_storage,
+supported_uplink_gbps,
+weight_lbs
 FROM aws.outposts.catalog_items
 WHERE catalog_item_id = '{{ catalog_item_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -256,13 +256,13 @@ Lists the items in the catalog. Use filters to return specific results. If you s
 
 ```sql
 SELECT
-CatalogItemId,
-EC2Capacities,
-ItemStatus,
-PowerKva,
-SupportedStorage,
-SupportedUplinkGbps,
-WeightLbs
+catalog_item_id,
+ec2_capacities,
+item_status,
+power_kva,
+supported_storage,
+supported_uplink_gbps,
+weight_lbs
 FROM aws.outposts.catalog_items
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

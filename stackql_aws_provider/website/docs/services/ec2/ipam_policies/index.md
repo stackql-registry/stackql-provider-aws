@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IpamId" /></td>
+    <td><CopyableCode code="ipam_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM this policy belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPolicyArn" /></td>
+    <td><CopyableCode code="ipam_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IPAM policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPolicyId" /></td>
+    <td><CopyableCode code="ipam_policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPolicyRegion" /></td>
+    <td><CopyableCode code="ipam_policy_region" /></td>
     <td><code>string</code></td>
     <td>The Region of the IPAM policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The account ID that owns the IPAM policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the IPAM policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>A message about the state of the IPAM policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the IPAM policy.</td>
 </tr>
@@ -213,14 +213,14 @@ Describes one or more IPAM policies. An IPAM policy is a set of rules that defin
 
 ```sql
 SELECT
-IpamId,
-IpamPolicyArn,
-IpamPolicyId,
-IpamPolicyRegion,
-OwnerId,
-State,
-StateMessage,
-Tags
+ipam_id,
+ipam_policy_arn,
+ipam_policy_id,
+ipam_policy_region,
+owner_id,
+state,
+state_message,
+tags
 FROM aws.ec2.ipam_policies
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -262,14 +262,14 @@ SELECT
 '{{ TagSpecification }}',
 '{{ ClientToken }}'
 RETURNING
-IpamId,
-IpamPolicyArn,
-IpamPolicyId,
-IpamPolicyRegion,
-OwnerId,
-State,
-StateMessage,
-Tags
+ipam_id,
+ipam_policy_arn,
+ipam_policy_id,
+ipam_policy_region,
+owner_id,
+state,
+state_message,
+tags
 ;
 ```
 </TabItem>

@@ -136,7 +136,7 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-ImageId
+image_id
 ;
 ```
 </TabItem>

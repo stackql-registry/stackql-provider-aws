@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CostCategoryArn" /></td>
+    <td><CopyableCode code="cost_category_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for your cost category. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;-a-zA-Z0-9/:_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultValue" /></td>
+    <td><CopyableCode code="default_value" /></td>
     <td><code>string</code></td>
     <td>The default value for the cost category. (pattern: &lt;code&gt;^(?! )&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;Z&#125;-_&#93;*(?&lt;! )$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveEnd" /></td>
+    <td><CopyableCode code="effective_end" /></td>
     <td><code>string</code></td>
     <td>The effective end date of your cost category. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveStart" /></td>
+    <td><CopyableCode code="effective_start" /></td>
     <td><code>string</code></td>
     <td>The effective start date of your cost category. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the cost category. (pattern: &lt;code&gt;^(?! )&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;Z&#125;-_&#93;*(?&lt;! )$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingStatus" /></td>
+    <td><CopyableCode code="processing_status" /></td>
     <td><code>array</code></td>
     <td>The list of processing statuses for Cost Management products for a specific cost category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleVersion" /></td>
+    <td><CopyableCode code="rule_version" /></td>
     <td><code>string</code></td>
     <td>The rule schema version in this particular cost category. (CostCategoryExpression.v1)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>The rules are processed in order. If there are multiple rules that match the line item, then the first rule to match is used to determine that cost category value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SplitChargeRules" /></td>
+    <td><CopyableCode code="split_charge_rules" /></td>
     <td><code>array</code></td>
     <td>The split charge rules that are used to allocate your charges between your cost category values.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CostCategoryArn" /></td>
+    <td><CopyableCode code="cost_category_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for your cost category. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;-a-zA-Z0-9/:_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultValue" /></td>
+    <td><CopyableCode code="default_value" /></td>
     <td><code>string</code></td>
     <td>The default value for the cost category. (pattern: &lt;code&gt;^(?! )&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;Z&#125;-_&#93;*(?&lt;! )$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveEnd" /></td>
+    <td><CopyableCode code="effective_end" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EffectiveStart" /></td>
+    <td><CopyableCode code="effective_start" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the cost category. (pattern: &lt;code&gt;^(?! )&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;Z&#125;-_&#93;*(?&lt;! )$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfRules" /></td>
+    <td><CopyableCode code="number_of_rules" /></td>
     <td><code>integer</code></td>
     <td>The number of rules that are associated with a specific cost category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessingStatus" /></td>
+    <td><CopyableCode code="processing_status" /></td>
     <td><code>array</code></td>
     <td>The list of processing statuses for Cost Management products for a specific cost category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedResourceTypes" /></td>
+    <td><CopyableCode code="supported_resource_types" /></td>
     <td><code>array</code></td>
     <td>The resource types supported by a specific cost category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>array</code></td>
     <td>A list of unique cost category values in a specific cost category.</td>
 </tr>
@@ -248,15 +248,15 @@ Returns the name, Amazon Resource Name (ARN), rules, definition, and effective d
 
 ```sql
 SELECT
-CostCategoryArn,
-DefaultValue,
-EffectiveEnd,
-EffectiveStart,
-Name,
-ProcessingStatus,
-RuleVersion,
-Rules,
-SplitChargeRules
+cost_category_arn,
+default_value,
+effective_end,
+effective_start,
+name,
+processing_status,
+rule_version,
+rules,
+split_charge_rules
 FROM aws.ce.cost_category_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -268,15 +268,15 @@ Returns the name, Amazon Resource Name (ARN), NumberOfRules and effective dates 
 
 ```sql
 SELECT
-CostCategoryArn,
-DefaultValue,
-EffectiveEnd,
-EffectiveStart,
-Name,
-NumberOfRules,
-ProcessingStatus,
-SupportedResourceTypes,
-Values
+cost_category_arn,
+default_value,
+effective_end,
+effective_start,
+name,
+number_of_rules,
+processing_status,
+supported_resource_types,
+values
 FROM aws.ce.cost_category_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -319,8 +319,8 @@ SELECT
 '{{ ResourceTags }}',
 '{{ region }}'
 RETURNING
-CostCategoryArn,
-EffectiveStart
+cost_category_arn,
+effective_start
 ;
 ```
 </TabItem>
@@ -721,8 +721,8 @@ AND CostCategoryArn = '{{ CostCategoryArn }}' --required
 AND RuleVersion = '{{ RuleVersion }}' --required
 AND Rules = '{{ Rules }}' --required
 RETURNING
-CostCategoryArn,
-EffectiveStart;
+cost_category_arn,
+effective_start;
 ```
 </TabItem>
 </Tabs>

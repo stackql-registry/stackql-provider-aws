@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the theme.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the Amplify app associated with the theme.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the theme was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment that is a part of the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the theme was modified.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the theme.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the app associated with the theme summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment that is part of the Amplify app.</td>
 </tr>
@@ -262,10 +262,10 @@ Returns an existing theme for an Amplify app.
 SELECT
 id,
 name,
-appId,
-createdAt,
-environmentName,
-modifiedAt,
+app_id,
+created_at,
+environment_name,
+modified_at,
 overrides,
 tags,
 values
@@ -285,8 +285,8 @@ Retrieves a list of themes for a specified Amplify app and backend environment.
 SELECT
 id,
 name,
-appId,
-environmentName
+app_id,
+environment_name
 FROM aws.amplifyuibuilder.themes
 WHERE app_id = '{{ app_id }}' -- required
 AND environment_name = '{{ environment_name }}' -- required

@@ -56,37 +56,37 @@ The following fields are returned by `SELECT` queries:
     <td>The import file task id returned in the response of StartImportFileTask. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the import task completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importName" /></td>
+    <td><CopyableCode code="import_name" /></td>
     <td><code>string</code></td>
     <td>The name of the import task given in StartImportFileTask. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputS3Bucket" /></td>
+    <td><CopyableCode code="input_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket where import file is located. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&#91;0-9a-z\.\-&#93;*&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputS3Key" /></td>
+    <td><CopyableCode code="input_s3_key" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 key name of the import file. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfRecordsFailed" /></td>
+    <td><CopyableCode code="number_of_records_failed" /></td>
     <td><code>integer</code></td>
     <td>The number of records that failed to be imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfRecordsSuccess" /></td>
+    <td><CopyableCode code="number_of_records_success" /></td>
     <td><code>integer</code></td>
     <td>The number of records successfully imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time of the import task.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>Status of import file task. (ImportInProgress, ImportFailed, ImportPartialSuccess, ImportSuccess, DeleteInProgress, DeleteFailed, DeletePartialSuccess, DeleteSuccess)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReportS3Bucket" /></td>
+    <td><CopyableCode code="status_report_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket name for status report of import task. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&#91;0-9a-z\.\-&#93;*&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReportS3Key" /></td>
+    <td><CopyableCode code="status_report_s3_key" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 key name for status report of import task. The report contains details about whether each record imported successfully or why it did not. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -125,37 +125,37 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the import file task. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the import task completes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importName" /></td>
+    <td><CopyableCode code="import_name" /></td>
     <td><code>string</code></td>
     <td>The name of the import task given in StartImportFileTask. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputS3Bucket" /></td>
+    <td><CopyableCode code="input_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket where the import file is located. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&#91;0-9a-z\.\-&#93;*&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputS3Key" /></td>
+    <td><CopyableCode code="input_s3_key" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 key name of the import file. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfRecordsFailed" /></td>
+    <td><CopyableCode code="number_of_records_failed" /></td>
     <td><code>integer</code></td>
     <td>The number of records that failed to be imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numberOfRecordsSuccess" /></td>
+    <td><CopyableCode code="number_of_records_success" /></td>
     <td><code>integer</code></td>
     <td>The number of records successfully imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Start time of the import task.</td>
 </tr>
@@ -165,12 +165,12 @@ The following fields are returned by `SELECT` queries:
     <td>Status of import file task. (ImportInProgress, ImportFailed, ImportPartialSuccess, ImportSuccess, DeleteInProgress, DeleteFailed, DeletePartialSuccess, DeleteSuccess)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReportS3Bucket" /></td>
+    <td><CopyableCode code="status_report_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket name for status report of import task. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&#91;0-9a-z\.\-&#93;*&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReportS3Key" /></td>
+    <td><CopyableCode code="status_report_s3_key" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 key name for status report of import task. The report contains details about whether each record imported successfully or why it did not. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -263,16 +263,16 @@ Retrieves the details about a specific import task.
 ```sql
 SELECT
 id,
-completionTime,
-importName,
-inputS3Bucket,
-inputS3Key,
-numberOfRecordsFailed,
-numberOfRecordsSuccess,
-startTime,
+completion_time,
+import_name,
+input_s3_bucket,
+input_s3_key,
+number_of_records_failed,
+number_of_records_success,
+start_time,
 status,
-statusReportS3Bucket,
-statusReportS3Key
+status_report_s3_bucket,
+status_report_s3_key
 FROM aws.migrationhubstrategy.import_file_tasks
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -286,16 +286,16 @@ Retrieves a list of all the imports performed.
 ```sql
 SELECT
 id,
-completionTime,
-importName,
-inputS3Bucket,
-inputS3Key,
-numberOfRecordsFailed,
-numberOfRecordsSuccess,
-startTime,
+completion_time,
+import_name,
+input_s3_bucket,
+input_s3_key,
+number_of_records_failed,
+number_of_records_success,
+start_time,
 status,
-statusReportS3Bucket,
-statusReportS3Key
+status_report_s3_bucket,
+status_report_s3_key
 FROM aws.migrationhubstrategy.import_file_tasks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The IAM policy that is attached to the specified rule group. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -133,7 +133,7 @@ Returns the IAM policy that is attached to the specified rule group. You must be
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.wafv2.permission_policies
 WHERE region = '{{ region }}' -- required
 ;

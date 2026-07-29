@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AverageDownloadRateLimitInBitsPerSec" /></td>
+    <td><CopyableCode code="average_download_rate_limit_in_bits_per_sec" /></td>
     <td><code>integer (int64)</code></td>
     <td>The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AverageUploadRateLimitInBitsPerSec" /></td>
+    <td><CopyableCode code="average_upload_rate_limit_in_bits_per_sec" /></td>
     <td><code>integer (int64)</code></td>
     <td>The average upload bandwidth rate limit in bits per second. This field does not appear in the response if the upload rate limit is not set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
@@ -143,9 +143,9 @@ Returns the bandwidth rate limits of a gateway. By default, these limits are not
 
 ```sql
 SELECT
-AverageDownloadRateLimitInBitsPerSec,
-AverageUploadRateLimitInBitsPerSec,
-GatewayARN
+average_download_rate_limit_in_bits_per_sec,
+average_upload_rate_limit_in_bits_per_sec,
+gateway_arn
 FROM aws.storagegateway.bandwidth_rate_limits
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,7 +176,7 @@ WHERE
 region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

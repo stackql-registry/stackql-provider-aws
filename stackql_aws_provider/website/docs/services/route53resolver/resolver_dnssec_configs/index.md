@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for a configuration for DNSSEC validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The owner account ID of the virtual private cloud (VPC) for a configuration for DNSSEC validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC) that you're configuring the DNSSEC validation status for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationStatus" /></td>
+    <td><CopyableCode code="validation_status" /></td>
     <td><code>string</code></td>
     <td>The validation status for a DNSSEC configuration. The status can be one of the following: ENABLING: DNSSEC validation is being enabled but is not complete. ENABLED: DNSSEC validation is enabled. DISABLING: DNSSEC validation is being disabled but is not complete. DISABLED DNSSEC validation is disabled. (ENABLING, ENABLED, DISABLING, DISABLED, UPDATING_TO_USE_LOCAL_RESOURCE_SETTING, USE_LOCAL_RESOURCE_SETTING)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for a configuration for DNSSEC validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The owner account ID of the virtual private cloud (VPC) for a configuration for DNSSEC validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC) that you're configuring the DNSSEC validation status for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationStatus" /></td>
+    <td><CopyableCode code="validation_status" /></td>
     <td><code>string</code></td>
     <td>The validation status for a DNSSEC configuration. The status can be one of the following: ENABLING: DNSSEC validation is being enabled but is not complete. ENABLED: DNSSEC validation is enabled. DISABLING: DNSSEC validation is being disabled but is not complete. DISABLED DNSSEC validation is disabled. (ENABLING, ENABLED, DISABLING, DISABLED, UPDATING_TO_USE_LOCAL_RESOURCE_SETTING, USE_LOCAL_RESOURCE_SETTING)</td>
 </tr>
@@ -184,10 +184,10 @@ Gets DNSSEC validation information for a specified resource.
 
 ```sql
 SELECT
-Id,
-OwnerId,
-ResourceId,
-ValidationStatus
+id,
+owner_id,
+resource_id,
+validation_status
 FROM aws.route53resolver.resolver_dnssec_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,10 +199,10 @@ Lists the configurations for DNSSEC validation that are associated with the curr
 
 ```sql
 SELECT
-Id,
-OwnerId,
-ResourceId,
-ValidationStatus
+id,
+owner_id,
+resource_id,
+validation_status
 FROM aws.route53resolver.resolver_dnssec_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,7 +233,7 @@ region = '{{ region }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
 AND Validation = '{{ Validation }}' --required
 RETURNING
-ResolverDNSSECConfig;
+resolver_dnssec_config;
 ```
 </TabItem>
 </Tabs>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cidr" /></td>
+    <td><CopyableCode code="cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask) and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Details related to why an IPAM pool CIDR failed to be provisioned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPoolCidrId" /></td>
+    <td><CopyableCode code="ipam_pool_cidr_id" /></td>
     <td><code>string</code></td>
     <td>The IPAM pool CIDR ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetmaskLength" /></td>
+    <td><CopyableCode code="netmask_length" /></td>
     <td><code>integer</code></td>
     <td>The netmask length of the CIDR you'd like to provision to a pool. Can be used for provisioning Amazon-provided IPv6 CIDRs to top-level pools and for provisioning CIDRs to pools with source pools. Cannot be used to provision BYOIP CIDRs to top-level pools. "NetmaskLength" or "Cidr" is required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the CIDR.</td>
 </tr>
@@ -235,11 +235,11 @@ Get the CIDRs provisioned to an IPAM pool.
 
 ```sql
 SELECT
-Cidr,
-FailureReason,
-IpamPoolCidrId,
-NetmaskLength,
-State
+cidr,
+failure_reason,
+ipam_pool_cidr_id,
+netmask_length,
+state
 FROM aws.ec2.ipam_pool_cidrs
 WHERE IpamPoolId = '{{ IpamPoolId }}' -- required
 AND region = '{{ region }}' -- required
@@ -281,13 +281,13 @@ AND PreviewNextCidr = {{ PreviewNextCidr}}
 AND AllowedCidr = '{{ AllowedCidr}}'
 AND DisallowedCidr = '{{ DisallowedCidr}}'
 RETURNING
-Cidr,
-Description,
-IpamPoolAllocationId,
-ResourceId,
-ResourceOwner,
-ResourceRegion,
-ResourceType;
+cidr,
+description,
+ipam_pool_allocation_id,
+resource_id,
+resource_owner,
+resource_region,
+resource_type;
 ```
 </TabItem>
 </Tabs>

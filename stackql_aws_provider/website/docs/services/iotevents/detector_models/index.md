@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="detectorModelConfiguration" /></td>
+    <td><CopyableCode code="detector_model_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about how the detector is configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="detectorModelDefinition" /></td>
+    <td><CopyableCode code="detector_model_definition" /></td>
     <td><code>object</code></td>
     <td>Information that defines how a detector operates.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="detectorModelSummaries" /></td>
+    <td><CopyableCode code="detector_model_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information about the detector models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can use to return the next set of results, or null if there are no more results.</td>
 </tr>
@@ -198,8 +198,8 @@ Describes a detector model. If the version parameter is not specified, informati
 
 ```sql
 SELECT
-detectorModelConfiguration,
-detectorModelDefinition
+detector_model_configuration,
+detector_model_definition
 FROM aws.iotevents.detector_models
 WHERE detector_model_name = '{{ detector_model_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -213,8 +213,8 @@ Lists the detector models you have created. Only the metadata associated with ea
 
 ```sql
 SELECT
-detectorModelSummaries,
-nextToken
+detector_model_summaries,
+next_token
 FROM aws.iotevents.detector_models
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -259,7 +259,7 @@ SELECT
 '{{ evaluationMethod }}',
 '{{ region }}'
 RETURNING
-detectorModelConfiguration
+detector_model_configuration
 ;
 ```
 </TabItem>
@@ -344,7 +344,7 @@ AND region = '{{ region }}' --required
 AND detectorModelDefinition = '{{ detectorModelDefinition }}' --required
 AND roleArn = '{{ roleArn }}' --required
 RETURNING
-detectorModelConfiguration;
+detector_model_configuration;
 ```
 </TabItem>
 </Tabs>

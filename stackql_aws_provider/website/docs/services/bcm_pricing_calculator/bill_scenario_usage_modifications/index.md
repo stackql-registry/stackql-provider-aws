@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the usage modification. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The availability zone associated with this usage modification, if applicable. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The group identifier for the usage modification. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="historicalUsage" /></td>
+    <td><CopyableCode code="historical_usage" /></td>
     <td><code>object</code></td>
     <td>Historical usage data associated with this modification, if available.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
     <td>The modified usage quantities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service code for this usage modification. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageAccountId" /></td>
+    <td><CopyableCode code="usage_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with this usage modification. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>The type of usage being modified. (pattern: &lt;code&gt;&#91;-a-zA-Z0-9\.\-_:, \/()&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -165,15 +165,15 @@ Lists the usage modifications associated with a bill scenario.
 ```sql
 SELECT
 id,
-availabilityZone,
+availability_zone,
 group,
-historicalUsage,
+historical_usage,
 location,
 operation,
 quantities,
-serviceCode,
-usageAccountId,
-usageType
+service_code,
+usage_account_id,
+usage_type
 FROM aws.bcm_pricing_calculator.bill_scenario_usage_modifications
 WHERE region = '{{ region }}' -- required
 ;

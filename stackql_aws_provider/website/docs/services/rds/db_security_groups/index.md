@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBSecurityGroupArn" /></td>
+    <td><CopyableCode code="db_security_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSecurityGroupDescription" /></td>
+    <td><CopyableCode code="db_security_group_description" /></td>
     <td><code>string</code></td>
     <td>Provides the description of the DB security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSecurityGroupName" /></td>
+    <td><CopyableCode code="db_security_group_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the DB security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EC2SecurityGroups" /></td>
+    <td><CopyableCode code="ec2_security_groups" /></td>
     <td><code>string</code></td>
     <td>Contains a list of EC2SecurityGroup elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IPRanges" /></td>
+    <td><CopyableCode code="ip_ranges" /></td>
     <td><code>string</code></td>
     <td>Contains a list of IPRange elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Provides the Amazon Web Services ID of the owner of a specific DB security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VpcId of the DB security group.</td>
 </tr>
@@ -232,13 +232,13 @@ Returns a list of DBSecurityGroup descriptions. If a DBSecurityGroupName is spec
 
 ```sql
 SELECT
-DBSecurityGroupArn,
-DBSecurityGroupDescription,
-DBSecurityGroupName,
-EC2SecurityGroups,
-IPRanges,
-OwnerId,
-VpcId
+db_security_group_arn,
+db_security_group_description,
+db_security_group_name,
+ec2_security_groups,
+ip_ranges,
+owner_id,
+vpc_id
 FROM aws.rds.db_security_groups
 WHERE region = '{{ region }}' -- required
 AND DBSecurityGroupName = '{{ DBSecurityGroupName }}'
@@ -277,13 +277,13 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-DBSecurityGroupArn,
-DBSecurityGroupDescription,
-DBSecurityGroupName,
-EC2SecurityGroups,
-IPRanges,
-OwnerId,
-VpcId
+db_security_group_arn,
+db_security_group_description,
+db_security_group_name,
+ec2_security_groups,
+ip_ranges,
+owner_id,
+vpc_id
 ;
 ```
 </TabItem>
@@ -335,13 +335,13 @@ AND EC2SecurityGroupName = '{{ EC2SecurityGroupName}}'
 AND EC2SecurityGroupId = '{{ EC2SecurityGroupId}}'
 AND EC2SecurityGroupOwnerId = '{{ EC2SecurityGroupOwnerId}}'
 RETURNING
-DBSecurityGroupArn,
-DBSecurityGroupDescription,
-DBSecurityGroupName,
-EC2SecurityGroups,
-IPRanges,
-OwnerId,
-VpcId;
+db_security_group_arn,
+db_security_group_description,
+db_security_group_name,
+ec2_security_groups,
+ip_ranges,
+owner_id,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedIps" /></td>
+    <td><CopyableCode code="allowed_ips" /></td>
     <td><code>array</code></td>
     <td>A list of IP address range strings that are allowed to access the Amazon Connect instance. For more information about how to configure IP addresses, see Configure IP address based access control in the Amazon Connect Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the authentication profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlockedIps" /></td>
+    <td><CopyableCode code="blocked_ips" /></td>
     <td><code>array</code></td>
     <td>A list of IP address range strings that are blocked from accessing the Amazon Connect instance. For more information about how to configure IP addresses, see Configure IP address based access control in the Amazon Connect Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the authentication profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the authentication profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the authentication profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Shows whether the authentication profile is the default authentication profile for the Amazon Connect instance. The default authentication profile applies to all agents in an Amazon Connect instance, unless overridden by another authentication profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the authentication profile was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the authentication profile was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSessionDuration" /></td>
+    <td><CopyableCode code="max_session_duration" /></td>
     <td><code>integer</code></td>
     <td>The long lived session duration for users logged in to Amazon Connect, in minutes. After this time period, users must log in again. For more information, see Configure the session duration in the Amazon Connect Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the authentication profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeriodicSessionDuration" /></td>
+    <td><CopyableCode code="periodic_session_duration" /></td>
     <td><code>integer</code></td>
     <td>The short lived session duration configuration for users logged in to Amazon Connect, in minutes. This value determines the maximum possible time before an agent is authenticated. For more information, see Configure the session duration in the Amazon Connect Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionInactivityDuration" /></td>
+    <td><CopyableCode code="session_inactivity_duration" /></td>
     <td><code>integer</code></td>
     <td>The period, in minutes, before an agent is automatically signed out of the contact center when they go inactive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionInactivityHandlingEnabled" /></td>
+    <td><CopyableCode code="session_inactivity_handling_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Determines if automatic logout on user inactivity is enabled.</td>
 </tr>
@@ -135,32 +135,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the authentication profile summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the authentication profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Shows whether the authentication profile is the default authentication profile for the Amazon Connect instance. The default authentication profile applies to all agents in an Amazon Connect instance, unless overridden by another authentication profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region when the authentication profile summary was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the authentication profile summary was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the authentication profile summary.</td>
 </tr>
@@ -264,20 +264,20 @@ This API is in preview release for Amazon Connect and is subject to change. To r
 
 ```sql
 SELECT
-AllowedIps,
-Arn,
-BlockedIps,
-CreatedTime,
-Description,
-Id,
-IsDefault,
-LastModifiedRegion,
-LastModifiedTime,
-MaxSessionDuration,
-Name,
-PeriodicSessionDuration,
-SessionInactivityDuration,
-SessionInactivityHandlingEnabled
+allowed_ips,
+arn,
+blocked_ips,
+created_time,
+description,
+id,
+is_default,
+last_modified_region,
+last_modified_time,
+max_session_duration,
+name,
+periodic_session_duration,
+session_inactivity_duration,
+session_inactivity_handling_enabled
 FROM aws.connect.authentication_profiles
 WHERE authentication_profile_id = '{{ authentication_profile_id }}' -- required
 AND instance_id = '{{ instance_id }}' -- required
@@ -291,12 +291,12 @@ This API is in preview release for Amazon Connect and is subject to change. To r
 
 ```sql
 SELECT
-Arn,
-Id,
-IsDefault,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+is_default,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.authentication_profiles
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

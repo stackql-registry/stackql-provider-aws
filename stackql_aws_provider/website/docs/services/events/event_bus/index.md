@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the account permitted to write events to the current account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the event bus was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeadLetterConfig" /></td>
+    <td><CopyableCode code="dead_letter_config" /></td>
     <td><code>object</code></td>
     <td>Configuration details of the Amazon SQS queue for EventBridge to use as a dead-letter queue (DLQ). For more information, see Using dead-letter queues to process undelivered events in the EventBridge User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The event bus description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the KMS customer managed key for EventBridge to use to encrypt events on this event bus, if one has been specified. For more information, see Data encryption in EventBridge in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-/:&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the event bus was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogConfig" /></td>
+    <td><CopyableCode code="log_config" /></td>
     <td><code>object</code></td>
     <td>The logging configuration settings for the event bus. For more information, see Configuring logs for event buses in the EventBridge User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event bus. Currently, this is always default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy that enables the external account to send events to your account.</td>
 </tr>
@@ -180,15 +180,15 @@ Displays details about an event bus in your account. This can include the extern
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-DeadLetterConfig,
-Description,
-KmsKeyIdentifier,
-LastModifiedTime,
-LogConfig,
-Name,
-Policy
+arn,
+creation_time,
+dead_letter_config,
+description,
+kms_key_identifier,
+last_modified_time,
+log_config,
+name,
+policy
 FROM aws.events.event_bus
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,11 +231,11 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DeadLetterConfig,
-Description,
-EventBusArn,
-KmsKeyIdentifier,
-LogConfig
+dead_letter_config,
+description,
+event_bus_arn,
+kms_key_identifier,
+log_config
 ;
 ```
 </TabItem>
@@ -309,12 +309,12 @@ LogConfig = '{{ LogConfig }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-DeadLetterConfig,
-Description,
-KmsKeyIdentifier,
-LogConfig,
-Name;
+arn,
+dead_letter_config,
+description,
+kms_key_identifier,
+log_config,
+name;
 ```
 </TabItem>
 </Tabs>

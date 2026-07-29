@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequesterAccountId" /></td>
+    <td><CopyableCode code="requester_account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account ID of the account requesting to aggregate data. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterAwsRegion" /></td>
+    <td><CopyableCode code="requester_aws_region" /></td>
     <td><code>string</code></td>
     <td>The region requesting to aggregate data.</td>
 </tr>
@@ -131,8 +131,8 @@ Returns a list of all pending aggregation requests.
 
 ```sql
 SELECT
-RequesterAccountId,
-RequesterAwsRegion
+requester_account_id,
+requester_aws_region
 FROM aws.config.pending_aggregation_requests
 WHERE region = '{{ region }}' -- required
 ;

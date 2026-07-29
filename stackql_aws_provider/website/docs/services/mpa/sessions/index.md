@@ -51,122 +51,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionCompletionStrategy" /></td>
+    <td><CopyableCode code="action_completion_strategy" /></td>
     <td><code>string</code></td>
     <td>Strategy for executing the protected operation. AUTO_COMPLETION_UPON_APPROVAL means the operation is automatically executed using the requester's permissions, if approved. (AUTO_COMPLETION_UPON_APPROVAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>Name of the protected operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdditionalSecurityRequirements" /></td>
+    <td><CopyableCode code="additional_security_requirements" /></td>
     <td><code>array</code></td>
     <td>A list of AdditionalSecurityRequirement applied to the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalStrategy" /></td>
+    <td><CopyableCode code="approval_strategy" /></td>
     <td><code>object</code></td>
     <td>An ApprovalStrategyResponse object. Contains details for how the team grants approval</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalTeamArn" /></td>
+    <td><CopyableCode code="approval_team_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the approval team. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:mpa:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:approval-team/&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalTeamName" /></td>
+    <td><CopyableCode code="approval_team_name" /></td>
     <td><code>string</code></td>
     <td>Name of the approval team. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApproverResponses" /></td>
+    <td><CopyableCode code="approver_responses" /></td>
     <td><code>array</code></td>
     <td>An array of GetSessionResponseApproverResponse objects. Contains details for approver responses in the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the session completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description for the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>Status for the protected operation. For example, if the operation is PENDING. (EXECUTED, FAILED, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the session will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiationTime" /></td>
+    <td><CopyableCode code="initiation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the session was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>Metadata for the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfApprovers" /></td>
+    <td><CopyableCode code="number_of_approvers" /></td>
     <td><code>integer</code></td>
     <td>Total number of approvers in the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedResourceArn" /></td>
+    <td><CopyableCode code="protected_resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the protected operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterAccountId" /></td>
+    <td><CopyableCode code="requester_account_id" /></td>
     <td><code>string</code></td>
     <td>ID for the account that made the operation request. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterComment" /></td>
+    <td><CopyableCode code="requester_comment" /></td>
     <td><code>string</code></td>
     <td>Message from the account that made the operation request</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterPrincipalArn" /></td>
+    <td><CopyableCode code="requester_principal_arn" /></td>
     <td><code>string</code></td>
     <td>IAM principal that made the operation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterRegion" /></td>
+    <td><CopyableCode code="requester_region" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services Region where the operation request originated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterServicePrincipal" /></td>
+    <td><CopyableCode code="requester_service_principal" /></td>
     <td><code>string</code></td>
     <td>Service principal for the service associated with the protected operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the session. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:mpa:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:session/&#91;a-zA-Z0-9._-&#93;+/&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the session. For example, if the team has approved the requested operation. (PENDING, CANCELLED, APPROVED, FAILED, CREATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>Status code of the session. (REJECTED, EXPIRED, CONFIGURATION_CHANGED, ALL_APPROVERS_IN_SESSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Message describing the status for session.</td>
 </tr>
@@ -185,92 +185,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionCompletionStrategy" /></td>
+    <td><CopyableCode code="action_completion_strategy" /></td>
     <td><code>string</code></td>
     <td>Strategy for executing the protected operation. AUTO_COMPLETION_UPON_APPROVAL means the operation is executed automatically using the requester's permissions, if approved. (AUTO_COMPLETION_UPON_APPROVAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>Name of the protected operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdditionalSecurityRequirements" /></td>
+    <td><CopyableCode code="additional_security_requirements" /></td>
     <td><code>array</code></td>
     <td>A list of AdditionalSecurityRequirement applied to the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalTeamArn" /></td>
+    <td><CopyableCode code="approval_team_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the approval team. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:mpa:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:approval-team/&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalTeamName" /></td>
+    <td><CopyableCode code="approval_team_name" /></td>
     <td><code>string</code></td>
     <td>Name of the approval team. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the session was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description for the team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the session was expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiationTime" /></td>
+    <td><CopyableCode code="initiation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the session was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedResourceArn" /></td>
+    <td><CopyableCode code="protected_resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the protected operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterAccountId" /></td>
+    <td><CopyableCode code="requester_account_id" /></td>
     <td><code>string</code></td>
     <td>ID for the account that made the operation request. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterPrincipalArn" /></td>
+    <td><CopyableCode code="requester_principal_arn" /></td>
     <td><code>string</code></td>
     <td>IAM principal that made the operation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterRegion" /></td>
+    <td><CopyableCode code="requester_region" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services Region where the operation request originated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterServicePrincipal" /></td>
+    <td><CopyableCode code="requester_service_principal" /></td>
     <td><code>string</code></td>
     <td>Service principal for the service associated with the protected operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionArn" /></td>
+    <td><CopyableCode code="session_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) for the session. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:mpa:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:session/&#91;a-zA-Z0-9._-&#93;+/&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status for the protected operation. For example, if the operation is PENDING. (PENDING, CANCELLED, APPROVED, FAILED, CREATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>Status code of the session. (REJECTED, EXPIRED, CONFIGURATION_CHANGED, ALL_APPROVERS_IN_SESSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Message describing the status for session.</td>
 </tr>
@@ -364,30 +364,30 @@ Returns details for an approval session. For more information, see Session in th
 
 ```sql
 SELECT
-ActionCompletionStrategy,
-ActionName,
-AdditionalSecurityRequirements,
-ApprovalStrategy,
-ApprovalTeamArn,
-ApprovalTeamName,
-ApproverResponses,
-CompletionTime,
-Description,
-ExecutionStatus,
-ExpirationTime,
-InitiationTime,
-Metadata,
-NumberOfApprovers,
-ProtectedResourceArn,
-RequesterAccountId,
-RequesterComment,
-RequesterPrincipalArn,
-RequesterRegion,
-RequesterServicePrincipal,
-SessionArn,
-Status,
-StatusCode,
-StatusMessage
+action_completion_strategy,
+action_name,
+additional_security_requirements,
+approval_strategy,
+approval_team_arn,
+approval_team_name,
+approver_responses,
+completion_time,
+description,
+execution_status,
+expiration_time,
+initiation_time,
+metadata,
+number_of_approvers,
+protected_resource_arn,
+requester_account_id,
+requester_comment,
+requester_principal_arn,
+requester_region,
+requester_service_principal,
+session_arn,
+status,
+status_code,
+status_message
 FROM aws.mpa.sessions
 WHERE session_arn = '{{ session_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -400,24 +400,24 @@ Returns a list of approval sessions. For more information, see Session in the Mu
 
 ```sql
 SELECT
-ActionCompletionStrategy,
-ActionName,
-AdditionalSecurityRequirements,
-ApprovalTeamArn,
-ApprovalTeamName,
-CompletionTime,
-Description,
-ExpirationTime,
-InitiationTime,
-ProtectedResourceArn,
-RequesterAccountId,
-RequesterPrincipalArn,
-RequesterRegion,
-RequesterServicePrincipal,
-SessionArn,
-Status,
-StatusCode,
-StatusMessage
+action_completion_strategy,
+action_name,
+additional_security_requirements,
+approval_team_arn,
+approval_team_name,
+completion_time,
+description,
+expiration_time,
+initiation_time,
+protected_resource_arn,
+requester_account_id,
+requester_principal_arn,
+requester_region,
+requester_service_principal,
+session_arn,
+status,
+status_code,
+status_message
 FROM aws.mpa.sessions
 WHERE approval_team_arn = '{{ approval_team_arn }}' -- required
 AND region = '{{ region }}' -- required

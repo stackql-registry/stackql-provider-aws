@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnswerKey" /></td>
+    <td><CopyableCode code="answer_key" /></td>
     <td><code>string</code></td>
     <td>The answers to the Qualification test specified in the Test parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoGranted" /></td>
+    <td><CopyableCode code="auto_granted" /></td>
     <td><code>boolean</code></td>
     <td>Specifies that requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test. Valid values are True | False.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoGrantedValue" /></td>
+    <td><CopyableCode code="auto_granted_value" /></td>
     <td><code>integer</code></td>
     <td>The Qualification integer value to use for automatically granted Qualifications, if AutoGranted is true. This is 1 by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Qualification type was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A long description for the Qualification type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsRequestable" /></td>
+    <td><CopyableCode code="is_requestable" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the Qualification type is one that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test. This value is False for Qualifications assigned automatically by the system. Valid values are True | False.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Keywords" /></td>
+    <td><CopyableCode code="keywords" /></td>
     <td><code>string</code></td>
     <td>One or more words or phrases that describe theQualification type, separated by commas. The Keywords make the type easier to find using a search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Qualification type. The type name is used to identify the type, and to find the type using a Qualification type search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualificationTypeId" /></td>
+    <td><CopyableCode code="qualification_type_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the Qualification type. A Qualification type is given a Qualification type ID when you call the CreateQualificationType operation. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualificationTypeStatus" /></td>
+    <td><CopyableCode code="qualification_type_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Qualification type. A Qualification type's status determines if users can apply to receive a Qualification of this type, and if HITs can be created with requirements based on this type. Valid values are Active | Inactive. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetryDelayInSeconds" /></td>
+    <td><CopyableCode code="retry_delay_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of time, in seconds, Workers must wait after taking the Qualification test before they can take it again. Workers can take a Qualification test multiple times if they were not granted the Qualification from a previous attempt, or if the test offers a gradient score and they want a better score. If not specified, retries are disabled and Workers can request a Qualification only once.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Test" /></td>
+    <td><CopyableCode code="test" /></td>
     <td><code>string</code></td>
     <td>The questions for a Qualification test associated with this Qualification type that a user can take to obtain a Qualification of this type. This parameter must be specified if AnswerKey is present. A Qualification type cannot have both a specified Test parameter and an AutoGranted value of true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestDurationInSeconds" /></td>
+    <td><CopyableCode code="test_duration_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of time, in seconds, given to a Worker to complete the Qualification test, beginning from the time the Worker requests the Qualification.</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnswerKey" /></td>
+    <td><CopyableCode code="answer_key" /></td>
     <td><code>string</code></td>
     <td>The answers to the Qualification test specified in the Test parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoGranted" /></td>
+    <td><CopyableCode code="auto_granted" /></td>
     <td><code>boolean</code></td>
     <td>Specifies that requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test. Valid values are True | False.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoGrantedValue" /></td>
+    <td><CopyableCode code="auto_granted_value" /></td>
     <td><code>integer</code></td>
     <td>The Qualification integer value to use for automatically granted Qualifications, if AutoGranted is true. This is 1 by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Qualification type was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A long description for the Qualification type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsRequestable" /></td>
+    <td><CopyableCode code="is_requestable" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the Qualification type is one that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test. This value is False for Qualifications assigned automatically by the system. Valid values are True | False.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Keywords" /></td>
+    <td><CopyableCode code="keywords" /></td>
     <td><code>string</code></td>
     <td>One or more words or phrases that describe theQualification type, separated by commas. The Keywords make the type easier to find using a search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Qualification type. The type name is used to identify the type, and to find the type using a Qualification type search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualificationTypeId" /></td>
+    <td><CopyableCode code="qualification_type_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the Qualification type. A Qualification type is given a Qualification type ID when you call the CreateQualificationType operation. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualificationTypeStatus" /></td>
+    <td><CopyableCode code="qualification_type_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Qualification type. A Qualification type's status determines if users can apply to receive a Qualification of this type, and if HITs can be created with requirements based on this type. Valid values are Active | Inactive. (Active, Inactive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetryDelayInSeconds" /></td>
+    <td><CopyableCode code="retry_delay_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of time, in seconds, Workers must wait after taking the Qualification test before they can take it again. Workers can take a Qualification test multiple times if they were not granted the Qualification from a previous attempt, or if the test offers a gradient score and they want a better score. If not specified, retries are disabled and Workers can request a Qualification only once.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Test" /></td>
+    <td><CopyableCode code="test" /></td>
     <td><code>string</code></td>
     <td>The questions for a Qualification test associated with this Qualification type that a user can take to obtain a Qualification of this type. This parameter must be specified if AnswerKey is present. A Qualification type cannot have both a specified Test parameter and an AutoGranted value of true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TestDurationInSeconds" /></td>
+    <td><CopyableCode code="test_duration_in_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of time, in seconds, given to a Worker to complete the Qualification test, beginning from the time the Worker requests the Qualification.</td>
 </tr>
@@ -302,19 +302,19 @@ The GetQualificationTypeoperation retrieves information about a Qualification ty
 
 ```sql
 SELECT
-AnswerKey,
-AutoGranted,
-AutoGrantedValue,
-CreationTime,
-Description,
-IsRequestable,
-Keywords,
-Name,
-QualificationTypeId,
-QualificationTypeStatus,
-RetryDelayInSeconds,
-Test,
-TestDurationInSeconds
+answer_key,
+auto_granted,
+auto_granted_value,
+creation_time,
+description,
+is_requestable,
+keywords,
+name,
+qualification_type_id,
+qualification_type_status,
+retry_delay_in_seconds,
+test,
+test_duration_in_seconds
 FROM aws.mturk.qualification_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -326,19 +326,19 @@ The ListQualificationTypes operation returns a list of Qualification types, filt
 
 ```sql
 SELECT
-AnswerKey,
-AutoGranted,
-AutoGrantedValue,
-CreationTime,
-Description,
-IsRequestable,
-Keywords,
-Name,
-QualificationTypeId,
-QualificationTypeStatus,
-RetryDelayInSeconds,
-Test,
-TestDurationInSeconds
+answer_key,
+auto_granted,
+auto_granted_value,
+creation_time,
+description,
+is_requestable,
+keywords,
+name,
+qualification_type_id,
+qualification_type_status,
+retry_delay_in_seconds,
+test,
+test_duration_in_seconds
 FROM aws.mturk.qualification_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -387,7 +387,7 @@ SELECT
 {{ AutoGrantedValue }},
 '{{ region }}'
 RETURNING
-QualificationType
+qualification_type
 ;
 ```
 </TabItem>
@@ -492,7 +492,7 @@ WHERE
 region = '{{ region }}' --required
 AND QualificationTypeId = '{{ QualificationTypeId }}' --required
 RETURNING
-QualificationType;
+qualification_type;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoveragesByTime" /></td>
+    <td><CopyableCode code="coverages_by_time" /></td>
     <td><code>array</code></td>
     <td>The amount of time that your reservations covered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of retrievable results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Total" /></td>
+    <td><CopyableCode code="total" /></td>
     <td><code>object</code></td>
     <td>The total amount of instance usage that a reservation covered.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves the reservation coverage for your account, which you can use to see ho
 
 ```sql
 SELECT
-CoveragesByTime,
-NextPageToken,
-Total
+coverages_by_time,
+next_page_token,
+total
 FROM aws.ce.reservation_coverages
 WHERE region = '{{ region }}' -- required
 ;

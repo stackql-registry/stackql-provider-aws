@@ -52,37 +52,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromptARN" /></td>
+    <td><CopyableCode code="prompt_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromptId" /></td>
+    <td><CopyableCode code="prompt_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -101,27 +101,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the prompt.</td>
 </tr>
@@ -140,37 +140,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this resource was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromptARN" /></td>
+    <td><CopyableCode code="prompt_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromptId" /></td>
+    <td><CopyableCode code="prompt_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
@@ -296,13 +296,13 @@ Describes the prompt.
 
 ```sql
 SELECT
-Description,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-PromptARN,
-PromptId,
-Tags
+description,
+last_modified_region,
+last_modified_time,
+name,
+prompt_arn,
+prompt_id,
+tags
 FROM aws.connect.prompts
 WHERE instance_id = '{{ instance_id }}' -- required
 AND prompt_id = '{{ prompt_id }}' -- required
@@ -316,11 +316,11 @@ Provides information about the prompts for the specified Amazon Connect instance
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.prompts
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -335,13 +335,13 @@ Searches prompts in an Amazon Connect instance, with optional filtering.
 
 ```sql
 SELECT
-Description,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-PromptARN,
-PromptId,
-Tags
+description,
+last_modified_region,
+last_modified_time,
+name,
+prompt_arn,
+prompt_id,
+tags
 FROM aws.connect.prompts
 WHERE region = '{{ region }}' -- required
 ;
@@ -380,8 +380,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-PromptARN,
-PromptId
+prompt_arn,
+prompt_id
 ;
 ```
 </TabItem>
@@ -433,8 +433,8 @@ instance_id = '{{ instance_id }}' --required
 AND prompt_id = '{{ prompt_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-PromptARN,
-PromptId;
+prompt_arn,
+prompt_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NumberOfRevokedEntries" /></td>
+    <td><CopyableCode code="number_of_revoked_entries" /></td>
     <td><code>integer</code></td>
     <td>The number of revoked certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevocationId" /></td>
+    <td><CopyableCode code="revocation_id" /></td>
     <td><code>integer</code></td>
     <td>The revocation ID of a revocation file in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevocationType" /></td>
+    <td><CopyableCode code="revocation_type" /></td>
     <td><code>string</code></td>
     <td>The type of revocation file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustStoreArn" /></td>
+    <td><CopyableCode code="trust_store_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trust store.</td>
 </tr>
@@ -178,10 +178,10 @@ Describes the revocation files in use by the specified trust store or revocation
 
 ```sql
 SELECT
-NumberOfRevokedEntries,
-RevocationId,
-RevocationType,
-TrustStoreArn
+number_of_revoked_entries,
+revocation_id,
+revocation_type,
+trust_store_arn
 FROM aws.elbv2.trust_store_revocations
 WHERE TrustStoreArn = '{{ TrustStoreArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -232,10 +232,10 @@ TrustStoreArn = '{{ TrustStoreArn }}' --required
 AND region = '{{ region }}' --required
 AND RevocationContents = '{{ RevocationContents}}'
 RETURNING
-NumberOfRevokedEntries,
-RevocationId,
-RevocationType,
-TrustStoreArn;
+number_of_revoked_entries,
+revocation_id,
+revocation_type,
+trust_store_arn;
 ```
 </TabItem>
 </Tabs>

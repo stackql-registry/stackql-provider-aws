@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CodeReviewArn" /></td>
+    <td><CopyableCode code="code_review_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the CodeReview object. (pattern: &lt;code&gt;^arn:aws&#91;^:\s&#93;*:codeguru-reviewer:&#91;^:\s&#93;+:&#91;\d&#93;&#123;12&#125;:&#91;a-z-&#93;+:&#91;\w-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the feedback was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimeStamp" /></td>
+    <td><CopyableCode code="last_updated_time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the feedback was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reactions" /></td>
+    <td><CopyableCode code="reactions" /></td>
     <td><code>array</code></td>
     <td>List for storing reactions. Reactions are utf-8 text code for emojis. You can send an empty list to clear off all your feedback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The recommendation ID that can be used to track the provided recommendations. Later on it can be used to collect the feedback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user that made the API call. The UserId is an IAM principal that can be specified as an Amazon Web Services account ID or an Amazon Resource Name (ARN). For more information, see Specifying a Principal in the Amazon Web Services Identity and Access Management User Guide.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationFeedbackSummaries" /></td>
+    <td><CopyableCode code="recommendation_feedback_summaries" /></td>
     <td><code>array</code></td>
     <td>Recommendation feedback summaries corresponding to the code review ARN.</td>
 </tr>
@@ -219,12 +219,12 @@ Describes the customer feedback for a CodeGuru Reviewer recommendation.
 
 ```sql
 SELECT
-CodeReviewArn,
-CreatedTimeStamp,
-LastUpdatedTimeStamp,
-Reactions,
-RecommendationId,
-UserId
+code_review_arn,
+created_time_stamp,
+last_updated_time_stamp,
+reactions,
+recommendation_id,
+user_id
 FROM aws.codeguru_reviewer.recommendation_feedbacks
 WHERE code_review_arn = '{{ code_review_arn }}' -- required
 AND RecommendationId = '{{ RecommendationId }}' -- required
@@ -239,8 +239,8 @@ Returns a list of RecommendationFeedbackSummary objects that contain customer re
 
 ```sql
 SELECT
-NextToken,
-RecommendationFeedbackSummaries
+next_token,
+recommendation_feedback_summaries
 FROM aws.codeguru_reviewer.recommendation_feedbacks
 WHERE code_review_arn = '{{ code_review_arn }}' -- required
 AND region = '{{ region }}' -- required

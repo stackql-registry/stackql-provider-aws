@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>A list of unique attribute values sorted on the basis of LastUpdatedAt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token from the previous call to call ListObjectTypeAttributeValues.</td>
 </tr>
@@ -149,8 +149,8 @@ The ListObjectTypeAttributeValues API provides access to the most recent distinc
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.object_type_attribute_values
 WHERE domain_name = '{{ domain_name }}' -- required
 AND object_type_name = '{{ object_type_name }}' -- required

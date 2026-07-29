@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the plan. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:arc-region-switch::&#91;0-9&#93;&#123;12&#125;:plan/(&#91;a-zA-Z0-9&#93;(?:&#91;a-zA-Z0-9-&#93;&#123;0,30&#125;&#91;a-zA-Z0-9&#93;)?):(&#91;a-z0-9&#93;&#123;6&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedAlarms" /></td>
+    <td><CopyableCode code="associated_alarms" /></td>
     <td><code>object</code></td>
     <td>The associated application health alarms for a plan.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description for a plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The execution role for a plan. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z0-9-&#93;*:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The owner of a plan. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="primaryRegion" /></td>
+    <td><CopyableCode code="primary_region" /></td>
     <td><code>string</code></td>
     <td>The primary Region for a plan. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z-&#93;+-\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryApproach" /></td>
+    <td><CopyableCode code="recovery_approach" /></td>
     <td><code>string</code></td>
     <td>The recovery approach for a Region switch plan, which can be active/active (activeActive) or active/passive (activePassive). (activeActive, activePassive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryTimeObjectiveMinutes" /></td>
+    <td><CopyableCode code="recovery_time_objective_minutes" /></td>
     <td><code>integer</code></td>
     <td>The recovery time objective for a plan.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Regions for a plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportConfiguration" /></td>
+    <td><CopyableCode code="report_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for automatic report generation for plan executions. When configured, Region switch automatically generates a report after each plan execution that includes execution events, plan configuration, and CloudWatch alarm states.</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The triggers for a plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the plan was last updated.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of a Region switch plan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(?:&#91;a-zA-Z0-9-&#93;&#123;0,30&#125;&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activePlanExecution" /></td>
+    <td><CopyableCode code="active_plan_execution" /></td>
     <td><code>string</code></td>
     <td>Specifies if this is the active plan execution at this time.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of a Region switch plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The execution role is a way to categorize a Region switch plan.</td>
 </tr>
@@ -170,17 +170,17 @@ The following fields are returned by `SELECT` queries:
     <td>The owner of a Region switch plan. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="primaryRegion" /></td>
+    <td><CopyableCode code="primary_region" /></td>
     <td><code>string</code></td>
     <td>The primary Region for a plan. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z-&#93;+-\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryApproach" /></td>
+    <td><CopyableCode code="recovery_approach" /></td>
     <td><code>string</code></td>
     <td>The recovery approach for a Region switch plan, which can be active/active (activeActive) or active/passive (activePassive). (activeActive, activePassive)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryTimeObjectiveMinutes" /></td>
+    <td><CopyableCode code="recovery_time_objective_minutes" /></td>
     <td><code>integer</code></td>
     <td>The recovery time objective that you've specified.</td>
 </tr>
@@ -190,7 +190,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region specified for a Region switch plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the plan execution was last updated.</td>
 </tr>
@@ -309,17 +309,17 @@ Retrieves detailed information about a Region switch plan. You must specify the 
 SELECT
 name,
 arn,
-associatedAlarms,
+associated_alarms,
 description,
-executionRole,
+execution_role,
 owner,
-primaryRegion,
-recoveryApproach,
-recoveryTimeObjectiveMinutes,
+primary_region,
+recovery_approach,
+recovery_time_objective_minutes,
 regions,
-reportConfiguration,
+report_configuration,
 triggers,
-updatedAt,
+updated_at,
 version,
 workflows
 FROM aws.arc_region_switch.plans
@@ -334,16 +334,16 @@ Lists all Region switch plans in your Amazon Web Services account.
 ```sql
 SELECT
 name,
-activePlanExecution,
+active_plan_execution,
 arn,
 description,
-executionRole,
+execution_role,
 owner,
-primaryRegion,
-recoveryApproach,
-recoveryTimeObjectiveMinutes,
+primary_region,
+recovery_approach,
+recovery_time_objective_minutes,
 regions,
-updatedAt,
+updated_at,
 version
 FROM aws.arc_region_switch.plans
 WHERE region = '{{ region }}' -- required

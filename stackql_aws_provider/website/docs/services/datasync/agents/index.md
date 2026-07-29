@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentArn" /></td>
+    <td><CopyableCode code="agent_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the agent. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/agent-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the agent was activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of service endpoint that your agent is connected to. (PUBLIC, PRIVATE_LINK, FIPS, FIPS_PRIVATE_LINK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastConnectionTime" /></td>
+    <td><CopyableCode code="last_connection_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the agent was communicating with the DataSync service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the agent. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s+=._:@/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>object</code></td>
     <td>The platform-related details about the agent, such as the version number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateLinkConfig" /></td>
+    <td><CopyableCode code="private_link_config" /></td>
     <td><code>object</code></td>
     <td>The network configuration that the agent uses when connecting to a VPC service endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the agent. If the status is ONLINE, the agent is configured properly and ready to use. If the status is OFFLINE, the agent has been out of contact with DataSync for five minutes or longer. This can happen for a few reasons. For more information, see What do I do if my agent is offline? (ONLINE, OFFLINE)</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentArn" /></td>
+    <td><CopyableCode code="agent_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a DataSync agent. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/agent-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of an agent. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\s+=._:@/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>object</code></td>
     <td>The platform-related details about the agent, such as the version number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of an agent. If the status is ONLINE, the agent is configured properly and ready to use. If the status is OFFLINE, the agent has been out of contact with DataSync for five minutes or longer. This can happen for a few reasons. For more information, see What do I do if my agent is offline? (ONLINE, OFFLINE)</td>
 </tr>
@@ -218,14 +218,14 @@ Returns information about an DataSync agent, such as its name, service endpoint 
 
 ```sql
 SELECT
-AgentArn,
-CreationTime,
-EndpointType,
-LastConnectionTime,
-Name,
-Platform,
-PrivateLinkConfig,
-Status
+agent_arn,
+creation_time,
+endpoint_type,
+last_connection_time,
+name,
+platform,
+private_link_config,
+status
 FROM aws.datasync.agents
 WHERE region = '{{ region }}' -- required
 ;
@@ -237,10 +237,10 @@ Returns a list of DataSync agents that belong to an Amazon Web Services account 
 
 ```sql
 SELECT
-AgentArn,
-Name,
-Platform,
-Status
+agent_arn,
+name,
+platform,
+status
 FROM aws.datasync.agents
 WHERE region = '{{ region }}' -- required
 ;
@@ -281,7 +281,7 @@ SELECT
 '{{ SecurityGroupArns }}',
 '{{ region }}'
 RETURNING
-AgentArn
+agent_arn
 ;
 ```
 </TabItem>

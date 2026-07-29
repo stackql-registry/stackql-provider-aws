@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the token. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure idempotency. This means that making the same request multiple times with the same clientToken has the same result every time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the token was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsViewId" /></td>
+    <td><CopyableCode code="dns_view_id" /></td>
     <td><code>string</code></td>
     <td>ID of the DNS view the token is associated to. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The token's expiration time and date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="globalResolverId" /></td>
+    <td><CopyableCode code="global_resolver_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Global Resolver. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The operational status of the token. (CREATING, OPERATIONAL, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date the token was created.</td>
 </tr>
@@ -135,22 +135,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the token. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;1,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;-.a-z0-9&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the token was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dnsViewId" /></td>
+    <td><CopyableCode code="dns_view_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the DNS view associated with the token. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresAt" /></td>
+    <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the token expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="globalResolverId" /></td>
+    <td><CopyableCode code="global_resolver_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global resolver associated with the token. (pattern: &lt;code&gt;&#91;-.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the token. (CREATING, OPERATIONAL, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the token was last updated.</td>
 </tr>
@@ -286,13 +286,13 @@ SELECT
 id,
 name,
 arn,
-clientToken,
-createdAt,
-dnsViewId,
-expiresAt,
-globalResolverId,
+client_token,
+created_at,
+dns_view_id,
+expires_at,
+global_resolver_id,
 status,
-updatedAt,
+updated_at,
 value
 FROM aws.route53globalresolver.access_tokens
 WHERE access_token_id = '{{ access_token_id }}' -- required
@@ -309,12 +309,12 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-dnsViewId,
-expiresAt,
-globalResolverId,
+created_at,
+dns_view_id,
+expires_at,
+global_resolver_id,
 status,
-updatedAt
+updated_at
 FROM aws.route53globalresolver.access_tokens
 WHERE dns_view_id = '{{ dns_view_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -360,10 +360,10 @@ RETURNING
 id,
 name,
 arn,
-clientToken,
-createdAt,
-dnsViewId,
-expiresAt,
+client_token,
+created_at,
+dns_view_id,
+expires_at,
 status,
 value
 ;

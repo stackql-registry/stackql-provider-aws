@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that tells when the lifecycle configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that tells when the lifecycle configuration was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookInstanceLifecycleConfigArn" /></td>
+    <td><CopyableCode code="notebook_instance_lifecycle_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the lifecycle configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookInstanceLifecycleConfigName" /></td>
+    <td><CopyableCode code="notebook_instance_lifecycle_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the lifecycle configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnCreate" /></td>
+    <td><CopyableCode code="on_create" /></td>
     <td><code>array</code></td>
     <td>The shell script that runs only once, when you create a notebook instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnStart" /></td>
+    <td><CopyableCode code="on_start" /></td>
     <td><code>array</code></td>
     <td>The shell script that runs every time you start a notebook instance, including when you create the notebook instance.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that tells when the lifecycle configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that tells when the lifecycle configuration was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookInstanceLifecycleConfigArn" /></td>
+    <td><CopyableCode code="notebook_instance_lifecycle_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the lifecycle configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookInstanceLifecycleConfigName" /></td>
+    <td><CopyableCode code="notebook_instance_lifecycle_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the lifecycle configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
@@ -208,12 +208,12 @@ Returns a description of a notebook instance lifecycle configuration. For inform
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-NotebookInstanceLifecycleConfigArn,
-NotebookInstanceLifecycleConfigName,
-OnCreate,
-OnStart
+creation_time,
+last_modified_time,
+notebook_instance_lifecycle_config_arn,
+notebook_instance_lifecycle_config_name,
+on_create,
+on_start
 FROM aws.sagemaker.notebook_instance_lifecycle_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -225,10 +225,10 @@ Lists notebook instance lifestyle configurations created with the CreateNotebook
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-NotebookInstanceLifecycleConfigArn,
-NotebookInstanceLifecycleConfigName
+creation_time,
+last_modified_time,
+notebook_instance_lifecycle_config_arn,
+notebook_instance_lifecycle_config_name
 FROM aws.sagemaker.notebook_instance_lifecycle_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,7 +265,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-NotebookInstanceLifecycleConfigArn
+notebook_instance_lifecycle_config_arn
 ;
 ```
 </TabItem>

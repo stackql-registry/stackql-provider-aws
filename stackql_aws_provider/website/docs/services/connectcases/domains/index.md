@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the Cases domain. (pattern: &lt;code&gt;.*&#91;\S&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the Cases domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainArn" /></td>
+    <td><CopyableCode code="domain_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Cases domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Cases domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainStatus" /></td>
+    <td><CopyableCode code="domain_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Cases domain. (Active, CreationInProgress, CreationFailed)</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Cases domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
@@ -207,10 +207,10 @@ Returns information about a specific domain if it exists.
 ```sql
 SELECT
 name,
-createdTime,
-domainArn,
-domainId,
-domainStatus,
+created_time,
+domain_arn,
+domain_id,
+domain_status,
 tags
 FROM aws.connectcases.domains
 WHERE domain_id = '{{ domain_id }}' -- required
@@ -225,7 +225,7 @@ Lists all cases domains in the Amazon Web Services account. Each list item is a 
 ```sql
 SELECT
 domains,
-nextToken
+next_token
 FROM aws.connectcases.domains
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -258,9 +258,9 @@ SELECT
 '{{ name }}' /* required */,
 '{{ region }}'
 RETURNING
-domainArn,
-domainId,
-domainStatus
+domain_arn,
+domain_id,
+domain_status
 ;
 ```
 </TabItem>

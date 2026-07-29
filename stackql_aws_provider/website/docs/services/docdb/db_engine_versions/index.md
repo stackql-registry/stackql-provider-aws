@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBEngineDescription" /></td>
+    <td><CopyableCode code="db_engine_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBEngineVersionDescription" /></td>
+    <td><CopyableCode code="db_engine_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBParameterGroupFamily" /></td>
+    <td><CopyableCode code="db_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter group family for the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportableLogTypes" /></td>
+    <td><CopyableCode code="exportable_log_types" /></td>
     <td><code>string</code></td>
     <td>The types of logs that the database engine has available for export to Amazon CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2FeaturesSupport" /></td>
+    <td><CopyableCode code="serverless_v2_features_support" /></td>
     <td><code>string</code></td>
     <td>Specifies any Amazon DocumentDB Serverless properties or limits that differ between Amazon DocumentDB engine versions. You can test the values of this attribute when deciding which Amazon DocumentDB version to use in a new or upgraded cluster. You can also retrieve the version of an existing cluster and check whether that version supports certain Amazon DocumentDB Serverless features before you attempt to use those features.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedCACertificateIdentifiers" /></td>
+    <td><CopyableCode code="supported_ca_certificate_identifiers" /></td>
     <td><code>string</code></td>
     <td>A list of the supported CA certificate identifiers. For more information, see Updating Your Amazon DocumentDB TLS Certificates and Encrypting Data in Transit in the Amazon DocumentDB Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsCertificateRotationWithoutRestart" /></td>
+    <td><CopyableCode code="supports_certificate_rotation_without_restart" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the engine version supports rotating the server certificate without rebooting the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportsLogExportsToCloudwatchLogs" /></td>
+    <td><CopyableCode code="supports_log_exports_to_cloudwatch_logs" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether the engine version supports exporting the log types specified by ExportableLogTypes to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidUpgradeTarget" /></td>
+    <td><CopyableCode code="valid_upgrade_target" /></td>
     <td><code>string</code></td>
     <td>A list of engine versions that this database engine version can be upgraded to.</td>
 </tr>
@@ -214,17 +214,17 @@ Returns a list of the available engines.
 
 ```sql
 SELECT
-DBEngineDescription,
-DBEngineVersionDescription,
-DBParameterGroupFamily,
-Engine,
-EngineVersion,
-ExportableLogTypes,
-ServerlessV2FeaturesSupport,
-SupportedCACertificateIdentifiers,
-SupportsCertificateRotationWithoutRestart,
-SupportsLogExportsToCloudwatchLogs,
-ValidUpgradeTarget
+db_engine_description,
+db_engine_version_description,
+db_parameter_group_family,
+engine,
+engine_version,
+exportable_log_types,
+serverless_v2_features_support,
+supported_ca_certificate_identifiers,
+supports_certificate_rotation_without_restart,
+supports_log_exports_to_cloudwatch_logs,
+valid_upgrade_target
 FROM aws.docdb.db_engine_versions
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

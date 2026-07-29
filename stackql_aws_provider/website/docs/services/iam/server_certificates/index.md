@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateBody" /></td>
+    <td><CopyableCode code="certificate_body" /></td>
     <td><code>string</code></td>
     <td>The contents of the public key certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateChain" /></td>
+    <td><CopyableCode code="certificate_chain" /></td>
     <td><code>string</code></td>
     <td>The contents of the public key certificate chain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerCertificateMetadata" /></td>
+    <td><CopyableCode code="server_certificate_metadata" /></td>
     <td><code>string</code></td>
     <td>The meta information of the server certificate, such as its name, path, ID, and ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the server certificate. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
@@ -85,32 +85,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) specifying the server certificate. For more information about ARNs and how to use them in policies, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expiration" /></td>
+    <td><CopyableCode code="expiration" /></td>
     <td><code>string</code></td>
     <td>The date on which the certificate is set to expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the server certificate. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerCertificateId" /></td>
+    <td><CopyableCode code="server_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the server certificate. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerCertificateName" /></td>
+    <td><CopyableCode code="server_certificate_name" /></td>
     <td><code>string</code></td>
     <td>The name that identifies the server certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UploadDate" /></td>
+    <td><CopyableCode code="upload_date" /></td>
     <td><code>string</code></td>
     <td>The date when the server certificate was uploaded.</td>
 </tr>
@@ -263,10 +263,10 @@ Retrieves information about the specified server certificate stored in IAM. For 
 
 ```sql
 SELECT
-CertificateBody,
-CertificateChain,
-ServerCertificateMetadata,
-Tags
+certificate_body,
+certificate_chain,
+server_certificate_metadata,
+tags
 FROM aws.iam.server_certificates
 WHERE ServerCertificateName = '{{ ServerCertificateName }}' -- required
 AND region = '{{ region }}' -- required
@@ -279,12 +279,12 @@ Lists the server certificates stored in IAM that have the specified path prefix.
 
 ```sql
 SELECT
-Arn,
-Expiration,
-Path,
-ServerCertificateId,
-ServerCertificateName,
-UploadDate
+arn,
+expiration,
+path,
+server_certificate_id,
+server_certificate_name,
+upload_date
 FROM aws.iam.server_certificates
 WHERE region = '{{ region }}' -- required
 AND PathPrefix = '{{ PathPrefix }}'

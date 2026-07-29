@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date when the Scheduled Instance was purchased.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HourlyPrice" /></td>
+    <td><CopyableCode code="hourly_price" /></td>
     <td><code>string</code></td>
     <td>The hourly price for a single instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkPlatform" /></td>
+    <td><CopyableCode code="network_platform" /></td>
     <td><code>string</code></td>
     <td>The network platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextSlotStartTime" /></td>
+    <td><CopyableCode code="next_slot_start_time" /></td>
     <td><code>string</code></td>
     <td>The time for the next schedule to start.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The platform (Linux/UNIX or Windows).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousSlotEndTime" /></td>
+    <td><CopyableCode code="previous_slot_end_time" /></td>
     <td><code>string</code></td>
     <td>The time that the previous schedule ended or will end.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recurrence" /></td>
+    <td><CopyableCode code="recurrence" /></td>
     <td><code>string</code></td>
     <td>The schedule recurrence.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledInstanceId" /></td>
+    <td><CopyableCode code="scheduled_instance_id" /></td>
     <td><code>string</code></td>
     <td>The Scheduled Instance ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlotDurationInHours" /></td>
+    <td><CopyableCode code="slot_duration_in_hours" /></td>
     <td><code>integer</code></td>
     <td>The number of hours in the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TermEndDate" /></td>
+    <td><CopyableCode code="term_end_date" /></td>
     <td><code>string</code></td>
     <td>The end date for the Scheduled Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TermStartDate" /></td>
+    <td><CopyableCode code="term_start_date" /></td>
     <td><code>string</code></td>
     <td>The start date for the Scheduled Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalScheduledInstanceHours" /></td>
+    <td><CopyableCode code="total_scheduled_instance_hours" /></td>
     <td><code>integer</code></td>
     <td>The total number of hours for a single instance for the entire term.</td>
 </tr>
@@ -258,21 +258,21 @@ Describes the specified Scheduled Instances or all your Scheduled Instances.
 
 ```sql
 SELECT
-AvailabilityZone,
-CreateDate,
-HourlyPrice,
-InstanceCount,
-InstanceType,
-NetworkPlatform,
-NextSlotStartTime,
-Platform,
-PreviousSlotEndTime,
-Recurrence,
-ScheduledInstanceId,
-SlotDurationInHours,
-TermEndDate,
-TermStartDate,
-TotalScheduledInstanceHours
+availability_zone,
+create_date,
+hourly_price,
+instance_count,
+instance_type,
+network_platform,
+next_slot_start_time,
+platform,
+previous_slot_end_time,
+recurrence,
+scheduled_instance_id,
+slot_duration_in_hours,
+term_end_date,
+term_start_date,
+total_scheduled_instance_hours
 FROM aws.ec2.scheduled_instances
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

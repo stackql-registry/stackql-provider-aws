@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The resource-based policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the current revision of the policy.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns the resource-based IAM policy for a function, version, or alias.
 
 ```sql
 SELECT
-Policy,
-RevisionId
+policy,
+revision_id
 FROM aws.lambda.policies
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required

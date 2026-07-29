@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the storage profile. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSystemLocations" /></td>
+    <td><CopyableCode code="file_system_locations" /></td>
     <td><code>array</code></td>
     <td>The location of the files for the storage profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osFamily" /></td>
+    <td><CopyableCode code="os_family" /></td>
     <td><code>string</code></td>
     <td>The operating system (OS) for the storage profile. (WINDOWS, LINUX, MACOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageProfileId" /></td>
+    <td><CopyableCode code="storage_profile_id" /></td>
     <td><code>string</code></td>
     <td>The storage profile ID. (pattern: &lt;code&gt;sp-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the storage profile summary to update. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osFamily" /></td>
+    <td><CopyableCode code="os_family" /></td>
     <td><code>string</code></td>
     <td>The operating system (OS) family. (WINDOWS, LINUX, MACOS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageProfileId" /></td>
+    <td><CopyableCode code="storage_profile_id" /></td>
     <td><code>string</code></td>
     <td>The storage profile ID. (pattern: &lt;code&gt;sp-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -238,14 +238,14 @@ Gets a storage profile.
 
 ```sql
 SELECT
-createdAt,
-createdBy,
-displayName,
-fileSystemLocations,
-osFamily,
-storageProfileId,
-updatedAt,
-updatedBy
+created_at,
+created_by,
+display_name,
+file_system_locations,
+os_family,
+storage_profile_id,
+updated_at,
+updated_by
 FROM aws.deadline.storage_profiles
 WHERE farm_id = '{{ farm_id }}' -- required
 AND storage_profile_id = '{{ storage_profile_id }}' -- required
@@ -259,9 +259,9 @@ Lists storage profiles.
 
 ```sql
 SELECT
-displayName,
-osFamily,
-storageProfileId
+display_name,
+os_family,
+storage_profile_id
 FROM aws.deadline.storage_profiles
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -303,7 +303,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-storageProfileId
+storage_profile_id
 ;
 ```
 </TabItem>

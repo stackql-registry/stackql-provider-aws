@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Accounts" /></td>
+    <td><CopyableCode code="accounts" /></td>
     <td><code>array</code></td>
     <td>The member accounts which were included in a request and were processed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedAccounts" /></td>
+    <td><CopyableCode code="unprocessed_accounts" /></td>
     <td><code>array</code></td>
     <td>The member account that was included in a request but for which the request could not be processed.</td>
 </tr>
@@ -129,8 +129,8 @@ Provides the number of days left for each data source used in the free trial per
 
 ```sql
 SELECT
-Accounts,
-UnprocessedAccounts
+accounts,
+unprocessed_accounts
 FROM aws.guardduty.remaining_free_trial_days
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required

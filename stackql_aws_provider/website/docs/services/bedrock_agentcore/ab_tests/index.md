@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the A/B test. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="abTestArn" /></td>
+    <td><CopyableCode code="ab_test_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the A/B test. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:ab-test/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="abTestId" /></td>
+    <td><CopyableCode code="ab_test_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the A/B test. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the A/B test was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentRunId" /></td>
+    <td><CopyableCode code="current_run_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the current run of the A/B test.</td>
 </tr>
@@ -81,32 +81,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the A/B test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>The error details if the A/B test encountered failures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationConfig" /></td>
+    <td><CopyableCode code="evaluation_config" /></td>
     <td><code>object</code></td>
     <td>The evaluation configuration for an A/B test, specifying which online evaluation configurations to use for measuring variant performance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The execution status indicating whether the A/B test is currently running. (PAUSED, RUNNING, STOPPED, NOT_STARTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway used for traffic splitting. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:gateway/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayFilter" /></td>
+    <td><CopyableCode code="gateway_filter" /></td>
     <td><code>object</code></td>
     <td>A filter to restrict which gateway target paths are included in the A/B test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxDurationExpiresAt" /></td>
+    <td><CopyableCode code="max_duration_expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the A/B test will automatically expire.</td>
 </tr>
@@ -116,12 +116,12 @@ The following fields are returned by `SELECT` queries:
     <td>The statistical results of the A/B test, including per-evaluator metrics and significance analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN used by the A/B test. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the A/B test was started.</td>
 </tr>
@@ -131,12 +131,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the A/B test. (CREATING, ACTIVE, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING, DELETE_FAILED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stoppedAt" /></td>
+    <td><CopyableCode code="stopped_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the A/B test was stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the A/B test was last updated.</td>
 </tr>
@@ -165,17 +165,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the A/B test. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="abTestArn" /></td>
+    <td><CopyableCode code="ab_test_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the A/B test. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:ab-test/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="abTestId" /></td>
+    <td><CopyableCode code="ab_test_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the A/B test. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the A/B test was created.</td>
 </tr>
@@ -185,12 +185,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the A/B test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The execution status of the A/B test. (PAUSED, RUNNING, STOPPED, NOT_STARTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway used for traffic splitting. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:gateway/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -200,7 +200,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the A/B test. (CREATING, ACTIVE, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING, DELETE_FAILED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the A/B test was last updated.</td>
 </tr>
@@ -314,23 +314,23 @@ Retrieves detailed information about an A/B test, including its configuration, s
 ```sql
 SELECT
 name,
-abTestArn,
-abTestId,
-createdAt,
-currentRunId,
+ab_test_arn,
+ab_test_id,
+created_at,
+current_run_id,
 description,
-errorDetails,
-evaluationConfig,
-executionStatus,
-gatewayArn,
-gatewayFilter,
-maxDurationExpiresAt,
+error_details,
+evaluation_config,
+execution_status,
+gateway_arn,
+gateway_filter,
+max_duration_expires_at,
 results,
-roleArn,
-startedAt,
+role_arn,
+started_at,
 status,
-stoppedAt,
-updatedAt,
+stopped_at,
+updated_at,
 variants
 FROM aws.bedrock_agentcore.ab_tests
 WHERE ab_test_id = '{{ ab_test_id }}' -- required
@@ -345,14 +345,14 @@ Lists all A/B tests in the account.
 ```sql
 SELECT
 name,
-abTestArn,
-abTestId,
-createdAt,
+ab_test_arn,
+ab_test_id,
+created_at,
 description,
-executionStatus,
-gatewayArn,
+execution_status,
+gateway_arn,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore.ab_tests
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -402,10 +402,10 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-abTestArn,
-abTestId,
-createdAt,
-executionStatus,
+ab_test_arn,
+ab_test_id,
+created_at,
+execution_status,
 status
 ;
 ```
@@ -487,11 +487,11 @@ WHERE
 ab_test_id = '{{ ab_test_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-abTestArn,
-abTestId,
-executionStatus,
+ab_test_arn,
+ab_test_id,
+execution_status,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

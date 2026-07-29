@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account that invoked the evaluation. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationDataSourceId" /></td>
+    <td><CopyableCode code="evaluation_data_source_id" /></td>
     <td><code>string</code></td>
     <td>The DataSource used for this evaluation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationId" /></td>
+    <td><CopyableCode code="evaluation_id" /></td>
     <td><code>string</code></td>
     <td>The evaluation ID which is same as the EvaluationId in the request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataLocationS3" /></td>
+    <td><CopyableCode code="input_data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3). (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogUri" /></td>
+    <td><CopyableCode code="log_uri" /></td>
     <td><code>string</code></td>
     <td>A link to the file that contains logs of the CreateEvaluation operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelId" /></td>
+    <td><CopyableCode code="ml_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the MLModel that was the focus of the evaluation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the most recent details about evaluating the MLModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the Evaluation. (pattern: &lt;code&gt;.*\S.*|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceMetrics" /></td>
+    <td><CopyableCode code="performance_metrics" /></td>
     <td><code>object</code></td>
     <td>Measurements of how well the MLModel performed using observations referenced by the DataSource. One of the following metric is returned based on the type of the MLModel: BinaryAUC: A binary MLModel uses the Area Under the Curve (AUC) technique to measure performance. RegressionRMSE: A regression MLModel uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable. MulticlassAvgFScore: A multiclass MLModel uses the F1 score technique to measure performance. For more information about performance metrics, please see the Amazon Machine Learning Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the evaluation. This element can have one of the following values: PENDING - Amazon Machine Language (Amazon ML) submitted a request to evaluate an MLModel. INPROGRESS - The evaluation is underway. FAILED - The request to evaluate an MLModel did not run to completion. It is not usable. COMPLETED - The evaluation process completed successfully. DELETED - The Evaluation is marked as deleted. It is not usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
@@ -140,72 +140,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeTime" /></td>
+    <td><CopyableCode code="compute_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Long integer type that is a 64-bit signed number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByIamUser" /></td>
+    <td><CopyableCode code="created_by_iam_user" /></td>
     <td><code>string</code></td>
     <td>The AWS user account that invoked the evaluation. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account. (pattern: &lt;code&gt;arn:aws:iam::&#91;0-9&#93;+:((user/.+)|(root))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationDataSourceId" /></td>
+    <td><CopyableCode code="evaluation_data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the DataSource that is used to evaluate the MLModel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationId" /></td>
+    <td><CopyableCode code="evaluation_id" /></td>
     <td><code>string</code></td>
     <td>The ID that is assigned to the Evaluation at creation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedAt" /></td>
+    <td><CopyableCode code="finished_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataLocationS3" /></td>
+    <td><CopyableCode code="input_data_location_s3" /></td>
     <td><code>string</code></td>
     <td>The location and name of the data in Amazon Simple Storage Server (Amazon S3) that is used in the evaluation. (pattern: &lt;code&gt;s3:​//(&#91;^/&#93;+)(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLModelId" /></td>
+    <td><CopyableCode code="ml_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the MLModel that is the focus of the evaluation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the most recent details about evaluating the MLModel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A user-supplied name or description of the Evaluation. (pattern: &lt;code&gt;.*\S.*|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceMetrics" /></td>
+    <td><CopyableCode code="performance_metrics" /></td>
     <td><code>object</code></td>
     <td>Measurements of how well the MLModel performed, using observations referenced by the DataSource. One of the following metrics is returned, based on the type of the MLModel: BinaryAUC: A binary MLModel uses the Area Under the Curve (AUC) technique to measure performance. RegressionRMSE: A regression MLModel uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable. MulticlassAvgFScore: A multiclass MLModel uses the F1 score technique to measure performance. For more information about performance metrics, please see the Amazon Machine Learning Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp represented in epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the evaluation. This element can have one of the following values: PENDING - Amazon Machine Learning (Amazon ML) submitted a request to evaluate an MLModel. INPROGRESS - The evaluation is underway. FAILED - The request to evaluate an MLModel did not run to completion. It is not usable. COMPLETED - The evaluation process completed successfully. DELETED - The Evaluation is marked as deleted. It is not usable. (PENDING, INPROGRESS, FAILED, COMPLETED, DELETED)</td>
 </tr>
@@ -303,21 +303,21 @@ Returns an Evaluation that includes metadata as well as the current status of th
 
 ```sql
 SELECT
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-EvaluationDataSourceId,
-EvaluationId,
-FinishedAt,
-InputDataLocationS3,
-LastUpdatedAt,
-LogUri,
-MLModelId,
-Message,
-Name,
-PerformanceMetrics,
-StartedAt,
-Status
+compute_time,
+created_at,
+created_by_iam_user,
+evaluation_data_source_id,
+evaluation_id,
+finished_at,
+input_data_location_s3,
+last_updated_at,
+log_uri,
+ml_model_id,
+message,
+name,
+performance_metrics,
+started_at,
+status
 FROM aws.machinelearning.evaluations
 WHERE region = '{{ region }}' -- required
 ;
@@ -329,20 +329,20 @@ Returns a list of DescribeEvaluations that match the search criteria in the requ
 
 ```sql
 SELECT
-ComputeTime,
-CreatedAt,
-CreatedByIamUser,
-EvaluationDataSourceId,
-EvaluationId,
-FinishedAt,
-InputDataLocationS3,
-LastUpdatedAt,
-MLModelId,
-Message,
-Name,
-PerformanceMetrics,
-StartedAt,
-Status
+compute_time,
+created_at,
+created_by_iam_user,
+evaluation_data_source_id,
+evaluation_id,
+finished_at,
+input_data_location_s3,
+last_updated_at,
+ml_model_id,
+message,
+name,
+performance_metrics,
+started_at,
+status
 FROM aws.machinelearning.evaluations
 WHERE region = '{{ region }}' -- required
 ;
@@ -379,7 +379,7 @@ SELECT
 '{{ EvaluationDataSourceId }}' /* required */,
 '{{ region }}'
 RETURNING
-EvaluationId
+evaluation_id
 ;
 ```
 </TabItem>
@@ -435,7 +435,7 @@ region = '{{ region }}' --required
 AND EvaluationId = '{{ EvaluationId }}' --required
 AND EvaluationName = '{{ EvaluationName }}' --required
 RETURNING
-EvaluationId;
+evaluation_id;
 ```
 </TabItem>
 </Tabs>

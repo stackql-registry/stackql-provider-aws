@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The function's tags.</td>
 </tr>
@@ -143,7 +143,7 @@ Returns a function, event source mapping, or code signing configuration's tags. 
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.lambda.tags
 WHERE resource = '{{ resource }}' -- required
 AND region = '{{ region }}' -- required

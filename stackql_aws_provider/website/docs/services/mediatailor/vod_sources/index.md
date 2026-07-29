@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdBreakOpportunities" /></td>
+    <td><CopyableCode code="ad_break_opportunities" /></td>
     <td><code>array</code></td>
     <td>The ad break opportunities within the VOD source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the VOD source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the VOD source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpPackageConfigurations" /></td>
+    <td><CopyableCode code="http_package_configurations" /></td>
     <td><code>array</code></td>
     <td>The VOD source's HTTP package configuration settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of the VOD source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source location associated with the VOD source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the VOD source. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VodSourceName" /></td>
+    <td><CopyableCode code="vod_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VOD source.</td>
 </tr>
@@ -105,37 +105,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the VOD source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the VOD source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HttpPackageConfigurations" /></td>
+    <td><CopyableCode code="http_package_configurations" /></td>
     <td><code>array</code></td>
     <td>The VOD source's HTTP package configuration settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the VOD source was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLocationName" /></td>
+    <td><CopyableCode code="source_location_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source location that the VOD source is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the VOD source. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VodSourceName" /></td>
+    <td><CopyableCode code="vod_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the VOD source.</td>
 </tr>
@@ -253,14 +253,14 @@ Provides details about a specific video on demand (VOD) source in a specific sou
 
 ```sql
 SELECT
-AdBreakOpportunities,
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-SourceLocationName,
-Tags,
-VodSourceName
+ad_break_opportunities,
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+source_location_name,
+tags,
+vod_source_name
 FROM aws.mediatailor.vod_sources
 WHERE source_location_name = '{{ source_location_name }}' -- required
 AND vod_source_name = '{{ vod_source_name }}' -- required
@@ -274,13 +274,13 @@ Lists the VOD sources contained in a source location. A source represents a piec
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-SourceLocationName,
-Tags,
-VodSourceName
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+source_location_name,
+tags,
+vod_source_name
 FROM aws.mediatailor.vod_sources
 WHERE source_location_name = '{{ source_location_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -320,13 +320,13 @@ SELECT
 '{{ vod_source_name }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-SourceLocationName,
-Tags,
-VodSourceName
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+source_location_name,
+tags,
+vod_source_name
 ;
 ```
 </TabItem>
@@ -381,13 +381,13 @@ AND vod_source_name = '{{ vod_source_name }}' --required
 AND region = '{{ region }}' --required
 AND HttpPackageConfigurations = '{{ HttpPackageConfigurations }}' --required
 RETURNING
-Arn,
-CreationTime,
-HttpPackageConfigurations,
-LastModifiedTime,
-SourceLocationName,
-Tags,
-VodSourceName;
+arn,
+creation_time,
+http_package_configurations,
+last_modified_time,
+source_location_name,
+tags,
+vod_source_name;
 ```
 </TabItem>
 </Tabs>

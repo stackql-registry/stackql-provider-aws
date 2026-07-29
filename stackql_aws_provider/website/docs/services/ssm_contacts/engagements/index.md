@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the escalation plan or contacts involved in the engagement. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>The secure content of the message that was sent to the contact. Use this field for engagements to VOICE and EMAIL. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementArn" /></td>
+    <td><CopyableCode code="engagement_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the engagement. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncidentId" /></td>
+    <td><CopyableCode code="incident_id" /></td>
     <td><code>string</code></td>
     <td>The ARN of the incident in which the engagement occurred. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicContent" /></td>
+    <td><CopyableCode code="public_content" /></td>
     <td><code>string</code></td>
     <td>The insecure content of the message that was sent to the contact. Use this field for engagements to SMS. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicSubject" /></td>
+    <td><CopyableCode code="public_subject" /></td>
     <td><code>string</code></td>
     <td>The insecure subject of the message that was sent to the contact. Use this field for engagements to SMS. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sender" /></td>
+    <td><CopyableCode code="sender" /></td>
     <td><code>string</code></td>
     <td>The user that started the engagement. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the engagement started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StopTime" /></td>
+    <td><CopyableCode code="stop_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the engagement ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subject" /></td>
+    <td><CopyableCode code="subject" /></td>
     <td><code>string</code></td>
     <td>The secure subject of the message that was sent to the contact. Use this field for engagements to VOICE and EMAIL. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the escalation plan or contact that Incident Manager is engaging. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementArn" /></td>
+    <td><CopyableCode code="engagement_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the engagement. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncidentId" /></td>
+    <td><CopyableCode code="incident_id" /></td>
     <td><code>string</code></td>
     <td>The ARN of the incident that's engaging the contact. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sender" /></td>
+    <td><CopyableCode code="sender" /></td>
     <td><code>string</code></td>
     <td>The user that started the engagement. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the engagement began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StopTime" /></td>
+    <td><CopyableCode code="stop_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the engagement ended.</td>
 </tr>
@@ -217,16 +217,16 @@ Incident Manager uses engagements to engage contacts and escalation plans during
 
 ```sql
 SELECT
-ContactArn,
-Content,
-EngagementArn,
-IncidentId,
-PublicContent,
-PublicSubject,
-Sender,
-StartTime,
-StopTime,
-Subject
+contact_arn,
+content,
+engagement_arn,
+incident_id,
+public_content,
+public_subject,
+sender,
+start_time,
+stop_time,
+subject
 FROM aws.ssm_contacts.engagements
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,12 +238,12 @@ Lists all engagements that have happened in an incident.
 
 ```sql
 SELECT
-ContactArn,
-EngagementArn,
-IncidentId,
-Sender,
-StartTime,
-StopTime
+contact_arn,
+engagement_arn,
+incident_id,
+sender,
+start_time,
+stop_time
 FROM aws.ssm_contacts.engagements
 WHERE region = '{{ region }}' -- required
 ;

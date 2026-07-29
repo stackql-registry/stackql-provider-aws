@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="logLevel" /></td>
+    <td><CopyableCode code="log_level" /></td>
     <td><code>string</code></td>
     <td>The logging level. (DEBUG, INFO, ERROR, WARN, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that grants access.</td>
 </tr>
@@ -131,8 +131,8 @@ Gets the logging options. NOTE: use of this command is not recommended. Use GetV
 
 ```sql
 SELECT
-logLevel,
-roleArn
+log_level,
+role_arn
 FROM aws.iot.logging_options
 WHERE region = '{{ region }}' -- required
 ;

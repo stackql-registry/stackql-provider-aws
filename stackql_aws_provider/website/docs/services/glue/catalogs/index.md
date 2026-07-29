@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowFullTableExternalDataAccess" /></td>
+    <td><CopyableCode code="allow_full_table_external_data_access" /></td>
     <td><code>string</code></td>
     <td>Allows third-party engines to access data in Amazon S3 locations that are registered with Lake Formation. (True, False)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the catalog. To grant access to the default catalog, this field should not be provided. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CatalogProperties" /></td>
+    <td><CopyableCode code="catalog_properties" /></td>
     <td><code>object</code></td>
     <td>A CatalogProperties object that specifies data lake access properties and other custom properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDatabaseDefaultPermissions" /></td>
+    <td><CopyableCode code="create_database_default_permissions" /></td>
     <td><code>array</code></td>
     <td>An array of PrincipalPermissions objects. Creates a set of default permissions on the database(s) for principals. Used by Amazon Web Services Lake Formation. Not used in the normal course of Glue operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTableDefaultPermissions" /></td>
+    <td><CopyableCode code="create_table_default_permissions" /></td>
     <td><code>array</code></td>
     <td>An array of PrincipalPermissions objects. Creates a set of default permissions on the table(s) for principals. Used by Amazon Web Services Lake Formation. Not used in the normal course of Glue operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the catalog was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description string, not more than 2048 bytes long, matching the URI address multi-line string pattern. A description of the catalog. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederatedCatalog" /></td>
+    <td><CopyableCode code="federated_catalog" /></td>
     <td><code>object</code></td>
     <td>A FederatedCatalog object that points to an entity outside the Glue Data Catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the catalog. Cannot be the same as the account ID. (pattern: &lt;code&gt;^(?!(.*&#91;.\/\\&#93;|aws:)).*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>A map array of key-value pairs that define parameters and properties of the catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) assigned to the catalog resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetRedshiftCatalog" /></td>
+    <td><CopyableCode code="target_redshift_catalog" /></td>
     <td><code>object</code></td>
     <td>A TargetRedshiftCatalog object that describes a target catalog for database resource linking.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the catalog was last updated.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogList" /></td>
+    <td><CopyableCode code="catalog_list" /></td>
     <td><code>array</code></td>
     <td>An array of Catalog objects. A list of Catalog objects from the specified parent catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token for paginating the returned list of tokens, returned if the current segment of the list is not the last.</td>
 </tr>
@@ -240,19 +240,19 @@ The name of the Catalog to retrieve. This should be all lowercase.
 
 ```sql
 SELECT
-AllowFullTableExternalDataAccess,
-CatalogId,
-CatalogProperties,
-CreateDatabaseDefaultPermissions,
-CreateTableDefaultPermissions,
-CreateTime,
-Description,
-FederatedCatalog,
-Name,
-Parameters,
-ResourceArn,
-TargetRedshiftCatalog,
-UpdateTime
+allow_full_table_external_data_access,
+catalog_id,
+catalog_properties,
+create_database_default_permissions,
+create_table_default_permissions,
+create_time,
+description,
+federated_catalog,
+name,
+parameters,
+resource_arn,
+target_redshift_catalog,
+update_time
 FROM aws.glue.catalogs
 WHERE region = '{{ region }}' -- required
 ;
@@ -264,8 +264,8 @@ Retrieves all catalogs defined in a catalog in the Glue Data Catalog. For a Reds
 
 ```sql
 SELECT
-CatalogList,
-NextToken
+catalog_list,
+next_token
 FROM aws.glue.catalogs
 WHERE region = '{{ region }}' -- required
 ;

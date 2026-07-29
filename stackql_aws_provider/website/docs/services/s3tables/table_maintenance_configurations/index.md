@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Details about the maintenance configuration for the table bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableARN" /></td>
+    <td><CopyableCode code="table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the table. (pattern: &lt;code&gt;(arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9_-&#93;&#123;3,63&#125;/table/&#91;a-zA-Z0-9-_&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -152,7 +152,7 @@ Gets details about the maintenance configuration of a table. For more informatio
 ```sql
 SELECT
 configuration,
-tableARN
+table_arn
 FROM aws.s3tables.table_maintenance_configurations
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND namespace = '{{ namespace }}' -- required

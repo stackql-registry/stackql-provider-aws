@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SlackTeamId" /></td>
+    <td><CopyableCode code="slack_team_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Slack workspace authorized with AWS Chatbot. (pattern: &lt;code&gt;&#91;0-9A-Z&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlackTeamName" /></td>
+    <td><CopyableCode code="slack_team_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Slack workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Either ENABLED or DISABLED. The resource returns DISABLED if the organization's AWS Chatbot policy has explicitly denied that configuration. For example, if Amazon Chime is disabled. (pattern: &lt;code&gt;(ENABLED|DISABLED)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Provided if State is DISABLED. Provides context as to why the resource is disabled.</td>
 </tr>
@@ -141,10 +141,10 @@ List all authorized Slack workspaces connected to the AWS Account onboarded with
 
 ```sql
 SELECT
-SlackTeamId,
-SlackTeamName,
-State,
-StateReason
+slack_team_id,
+slack_team_name,
+state,
+state_reason
 FROM aws.chatbot.slack_workspaces
 WHERE region = '{{ region }}' -- required
 ;

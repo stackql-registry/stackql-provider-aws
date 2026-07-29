@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the engagement retrieved. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Contexts" /></td>
+    <td><CopyableCode code="contexts" /></td>
     <td><code>array</code></td>
     <td>A list of context objects associated with the engagement. Each context provides additional information related to the Engagement, such as customer projects or documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Engagement was created, presented in ISO 8601 format (UTC). For example: "2023-05-01T20:37:46Z". This timestamp helps track the lifecycle of the Engagement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the user who originally created the engagement. This field helps in tracking the origin of the engagement. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A more detailed description of the engagement. This provides additional context or information about the engagement's purpose or scope. (pattern: &lt;code&gt;(?s).&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique resource identifier of the engagement retrieved. (pattern: &lt;code&gt;eng-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberCount" /></td>
+    <td><CopyableCode code="member_count" /></td>
     <td><code>integer</code></td>
     <td>Specifies the current count of members participating in the Engagement. This count includes all active members regardless of their roles or permissions within the Engagement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the engagement was last modified, in ISO 8601 format (UTC). Example: "2023-05-01T20:37:46Z". This helps track the most recent changes to the engagement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedBy" /></td>
+    <td><CopyableCode code="modified_by" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the user who last modified the engagement. This field helps track who made the most recent changes to the engagement. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of the engagement. It provides a brief, descriptive name for the engagement that is meaningful and easily recognizable. (pattern: &lt;code&gt;(?s).&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
@@ -115,47 +115,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the created Engagement. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextTypes" /></td>
+    <td><CopyableCode code="context_types" /></td>
     <td><code>array</code></td>
     <td>An array of context types associated with the engagement, such as "CustomerProject" or "Lead". This provides a quick overview of the types of contexts included in the engagement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Engagement was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The AWS Account ID of the Engagement creator. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Engagement. (pattern: &lt;code&gt;eng-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberCount" /></td>
+    <td><CopyableCode code="member_count" /></td>
     <td><code>integer</code></td>
     <td>The number of members in the Engagement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp indicating when the engagement was last modified, in ISO 8601 format (UTC). Example: "2023-05-01T20:37:46Z".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedBy" /></td>
+    <td><CopyableCode code="modified_by" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the user who last modified the engagement. This field helps track who made the most recent changes to the engagement. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title of the Engagement. (pattern: &lt;code&gt;(?s).&#123;1,40&#125;&lt;/code&gt;)</td>
 </tr>
@@ -281,16 +281,16 @@ Use this action to retrieve the engagement record for a given EngagementIdentifi
 
 ```sql
 SELECT
-Arn,
-Contexts,
-CreatedAt,
-CreatedBy,
-Description,
-Id,
-MemberCount,
-ModifiedAt,
-ModifiedBy,
-Title
+arn,
+contexts,
+created_at,
+created_by,
+description,
+id,
+member_count,
+modified_at,
+modified_by,
+title
 FROM aws.partnercentral_selling.engagements
 WHERE region = '{{ region }}' -- required
 ;
@@ -302,15 +302,15 @@ This action allows users to retrieve a list of Engagement records from Partner C
 
 ```sql
 SELECT
-Arn,
-ContextTypes,
-CreatedAt,
-CreatedBy,
-Id,
-MemberCount,
-ModifiedAt,
-ModifiedBy,
-Title
+arn,
+context_types,
+created_at,
+created_by,
+id,
+member_count,
+modified_at,
+modified_by,
+title
 FROM aws.partnercentral_selling.engagements
 WHERE region = '{{ region }}' -- required
 ;
@@ -350,10 +350,10 @@ SELECT
 '{{ Payload }}' /* required */,
 '{{ region }}'
 RETURNING
-ContextId,
-EngagementArn,
-EngagementId,
-EngagementLastModifiedAt
+context_id,
+engagement_arn,
+engagement_id,
+engagement_last_modified_at
 ;
 ```
 </TabItem>
@@ -378,9 +378,9 @@ SELECT
 '{{ Contexts }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id,
-ModifiedAt
+arn,
+id,
+modified_at
 ;
 ```
 </TabItem>
@@ -538,10 +538,10 @@ AND EngagementLastModifiedAt = '{{ EngagementLastModifiedAt }}' --required
 AND Type = '{{ Type }}' --required
 AND Payload = '{{ Payload }}' --required
 RETURNING
-ContextId,
-EngagementArn,
-EngagementId,
-EngagementLastModifiedAt;
+context_id,
+engagement_arn,
+engagement_id,
+engagement_last_modified_at;
 ```
 </TabItem>
 </Tabs>

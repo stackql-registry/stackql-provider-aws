@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone of the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv4CidrBlockAssociations" /></td>
+    <td><CopyableCode code="ipv_4_cidr_block_associations" /></td>
     <td><code>string</code></td>
     <td>Information about the IPv4 CIDR blocks associated with the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryNetworkId" /></td>
+    <td><CopyableCode code="secondary_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryNetworkType" /></td>
+    <td><CopyableCode code="secondary_network_type" /></td>
     <td><code>string</code></td>
     <td>The type of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondarySubnetArn" /></td>
+    <td><CopyableCode code="secondary_subnet_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondarySubnetId" /></td>
+    <td><CopyableCode code="secondary_subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current state of the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the secondary subnet.</td>
 </tr>
@@ -243,17 +243,17 @@ Describes one or more of your secondary subnets.
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-Ipv4CidrBlockAssociations,
-OwnerId,
-SecondaryNetworkId,
-SecondaryNetworkType,
-SecondarySubnetArn,
-SecondarySubnetId,
-State,
-StateReason,
-Tags
+availability_zone,
+availability_zone_id,
+ipv_4_cidr_block_associations,
+owner_id,
+secondary_network_id,
+secondary_network_type,
+secondary_subnet_arn,
+secondary_subnet_id,
+state,
+state_reason,
+tags
 FROM aws.ec2.secondary_subnets
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -301,17 +301,17 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-AvailabilityZone,
-AvailabilityZoneId,
-Ipv4CidrBlockAssociations,
-OwnerId,
-SecondaryNetworkId,
-SecondaryNetworkType,
-SecondarySubnetArn,
-SecondarySubnetId,
-State,
-StateReason,
-Tags
+availability_zone,
+availability_zone_id,
+ipv_4_cidr_block_associations,
+owner_id,
+secondary_network_id,
+secondary_network_type,
+secondary_subnet_arn,
+secondary_subnet_id,
+state,
+state_reason,
+tags
 ;
 ```
 </TabItem>

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the availability configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateModified" /></td>
+    <td><CopyableCode code="date_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the availability configuration was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>Displays the domain to which the provider applies. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EwsProvider" /></td>
+    <td><CopyableCode code="ews_provider" /></td>
     <td><code>object</code></td>
     <td>If ProviderType is EWS, then this field contains RedactedEwsAvailabilityProvider. Otherwise, it is not required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LambdaProvider" /></td>
+    <td><CopyableCode code="lambda_provider" /></td>
     <td><code>object</code></td>
     <td>If ProviderType is LAMBDA then this field contains LambdaAvailabilityProvider. Otherwise, it is not required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>Displays the provider type that applies to this domain. (EWS, LAMBDA)</td>
 </tr>
@@ -165,12 +165,12 @@ List all the AvailabilityConfiguration's for the given WorkMail organization.
 
 ```sql
 SELECT
-DateCreated,
-DateModified,
-DomainName,
-EwsProvider,
-LambdaProvider,
-ProviderType
+date_created,
+date_modified,
+domain_name,
+ews_provider,
+lambda_provider,
+provider_type
 FROM aws.workmail.availability_configurations
 WHERE region = '{{ region }}' -- required
 ;

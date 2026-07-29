@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the NotificationHubOverview was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastActivationTime" /></td>
+    <td><CopyableCode code="last_activation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time this NotificationHub had an ACTIVE status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationHubRegion" /></td>
+    <td><CopyableCode code="notification_hub_region" /></td>
     <td><code>string</code></td>
     <td>The Region of the resource. (pattern: &lt;code&gt;(&#91;a-z&#93;&#123;1,2&#125;)-(&#91;a-z&#93;&#123;1,15&#125;-)+(&#91;0-9&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummary" /></td>
+    <td><CopyableCode code="status_summary" /></td>
     <td><code>object</code></td>
     <td>The status summary of the resource.</td>
 </tr>
@@ -163,10 +163,10 @@ Returns a list of NotificationHubs.
 
 ```sql
 SELECT
-creationTime,
-lastActivationTime,
-notificationHubRegion,
-statusSummary
+creation_time,
+last_activation_time,
+notification_hub_region,
+status_summary
 FROM aws.notifications.notification_hubs
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -199,10 +199,10 @@ SELECT
 '{{ notificationHubRegion }}' /* required */,
 '{{ region }}'
 RETURNING
-creationTime,
-lastActivationTime,
-notificationHubRegion,
-statusSummary
+creation_time,
+last_activation_time,
+notification_hub_region,
+status_summary
 ;
 ```
 </TabItem>

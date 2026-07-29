@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>Name for the application. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:partition:resiliencehub:region:account:app/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentSchedule" /></td>
+    <td><CopyableCode code="assessment_schedule" /></td>
     <td><code>string</code></td>
     <td>Assessment execution schedule with 'Daily' or 'Disabled' values. (Disabled, Daily)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsApplicationArn" /></td>
+    <td><CopyableCode code="aws_application_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of Resource Groups group that is integrated with an AppRegistry application. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="complianceStatus" /></td>
+    <td><CopyableCode code="compliance_status" /></td>
     <td><code>string</code></td>
     <td>Current status of compliance for the resiliency policy. (PolicyBreached, PolicyMet, NotAssessed, ChangesDetected, NotApplicable, MissingPolicy)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the application was created.</td>
 </tr>
@@ -86,52 +86,52 @@ The following fields are returned by `SELECT` queries:
     <td>Optional description for an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="driftStatus" /></td>
+    <td><CopyableCode code="drift_status" /></td>
     <td><code>string</code></td>
     <td>Indicates if compliance drifts (deviations) were detected while running an assessment for your application. (NotChecked, NotDetected, Detected)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventSubscriptions" /></td>
+    <td><CopyableCode code="event_subscriptions" /></td>
     <td><code>array</code></td>
     <td>The list of events you would like to subscribe and get notification for. Currently, Resilience Hub supports notifications only for Drift detected and Scheduled assessment failure events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAppComplianceEvaluationTime" /></td>
+    <td><CopyableCode code="last_app_compliance_evaluation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time the most recent compliance evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDriftEvaluationTime" /></td>
+    <td><CopyableCode code="last_drift_evaluation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the last time that a drift was evaluated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastResiliencyScoreEvaluationTime" /></td>
+    <td><CopyableCode code="last_resiliency_score_evaluation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time the most recent resiliency score evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="permissionModel" /></td>
+    <td><CopyableCode code="permission_model" /></td>
     <td><code>object</code></td>
     <td>Defines the roles and credentials that Resilience Hub would use while creating the application, importing its resources, and running an assessment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the resiliency policy. The format for this ARN is: arn:partition:resiliencehub:region:account:resiliency-policy/policy-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resiliencyScore" /></td>
+    <td><CopyableCode code="resiliency_score" /></td>
     <td><code>number (double)</code></td>
     <td>Current resiliency score for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rpoInSecs" /></td>
+    <td><CopyableCode code="rpo_in_secs" /></td>
     <td><code>integer</code></td>
     <td>Recovery Point Objective (RPO) in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rtoInSecs" /></td>
+    <td><CopyableCode code="rto_in_secs" /></td>
     <td><code>integer</code></td>
     <td>Recovery Time Objective (RTO) in seconds.</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appSummaries" /></td>
+    <td><CopyableCode code="app_summaries" /></td>
     <td><code>array</code></td>
     <td>Summaries for the Resilience Hub application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -332,22 +332,22 @@ Describes an Resilience Hub application.
 ```sql
 SELECT
 name,
-appArn,
-assessmentSchedule,
-awsApplicationArn,
-complianceStatus,
-creationTime,
+app_arn,
+assessment_schedule,
+aws_application_arn,
+compliance_status,
+creation_time,
 description,
-driftStatus,
-eventSubscriptions,
-lastAppComplianceEvaluationTime,
-lastDriftEvaluationTime,
-lastResiliencyScoreEvaluationTime,
-permissionModel,
-policyArn,
-resiliencyScore,
-rpoInSecs,
-rtoInSecs,
+drift_status,
+event_subscriptions,
+last_app_compliance_evaluation_time,
+last_drift_evaluation_time,
+last_resiliency_score_evaluation_time,
+permission_model,
+policy_arn,
+resiliency_score,
+rpo_in_secs,
+rto_in_secs,
 status,
 tags
 FROM aws.resiliencehub.apps
@@ -361,8 +361,8 @@ Lists your Resilience Hub applications. You can filter applications using only o
 
 ```sql
 SELECT
-appSummaries,
-nextToken
+app_summaries,
+next_token
 FROM aws.resiliencehub.apps
 WHERE region = '{{ region }}' -- required
 AND appArn = '{{ appArn }}'

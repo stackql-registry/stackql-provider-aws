@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attempt" /></td>
+    <td><CopyableCode code="attempt" /></td>
     <td><code>integer</code></td>
     <td>The number of times that DataBrew has attempted to run the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job completed processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataCatalogOutputs" /></td>
+    <td><CopyableCode code="data_catalog_outputs" /></td>
     <td><code>array</code></td>
     <td>One or more artifacts that represent the Glue Data Catalog output from running the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseOutputs" /></td>
+    <td><CopyableCode code="database_outputs" /></td>
     <td><code>array</code></td>
     <td>Represents a list of JDBC database output objects which defines the output destination for a DataBrew recipe job to write into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset for the job to process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>A message indicating an error (if any) that was encountered when the job ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionTime" /></td>
+    <td><CopyableCode code="execution_time" /></td>
     <td><code>integer</code></td>
     <td>The amount of time, in seconds, during which the job run consumed resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the job being processed during this run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobSample" /></td>
+    <td><CopyableCode code="job_sample" /></td>
     <td><code>object</code></td>
     <td>A sample configuration for profile jobs only, which determines the number of rows on which the profile job is run. If a JobSample value isn't provided, the default is used. The default value is CUSTOM_ROWS for the mode parameter and 20,000 for the size parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of an Amazon CloudWatch log group, where the job writes diagnostic messages when it runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogSubscription" /></td>
+    <td><CopyableCode code="log_subscription" /></td>
     <td><code>string</code></td>
     <td>The current status of Amazon CloudWatch logging for the job run. (ENABLE, DISABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
     <td>One or more output artifacts from a job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileConfiguration" /></td>
+    <td><CopyableCode code="profile_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for profile jobs. Configuration can be used to select columns, do evaluations, and override default parameters of evaluations. When configuration is undefined, the profile job will apply default settings to all supported columns.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeReference" /></td>
+    <td><CopyableCode code="recipe_reference" /></td>
     <td><code>object</code></td>
     <td>Represents the name and version of a DataBrew recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedBy" /></td>
+    <td><CopyableCode code="started_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who started the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the job run entity itself. (STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationConfigurations" /></td>
+    <td><CopyableCode code="validation_configurations" /></td>
     <td><code>array</code></td>
     <td>List of validation configurations that are applied to the profile job.</td>
 </tr>
@@ -160,92 +160,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attempt" /></td>
+    <td><CopyableCode code="attempt" /></td>
     <td><code>integer</code></td>
     <td>The number of times that DataBrew has attempted to run the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job completed processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataCatalogOutputs" /></td>
+    <td><CopyableCode code="data_catalog_outputs" /></td>
     <td><code>array</code></td>
     <td>One or more artifacts that represent the Glue Data Catalog output from running the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseOutputs" /></td>
+    <td><CopyableCode code="database_outputs" /></td>
     <td><code>array</code></td>
     <td>Represents a list of JDBC database output objects which defines the output destination for a DataBrew recipe job to write into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset for the job to process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>A message indicating an error (if any) that was encountered when the job ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionTime" /></td>
+    <td><CopyableCode code="execution_time" /></td>
     <td><code>integer</code></td>
     <td>The amount of time, in seconds, during which a job run consumed resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the job being processed during this run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobSample" /></td>
+    <td><CopyableCode code="job_sample" /></td>
     <td><code>object</code></td>
     <td>A sample configuration for profile jobs only, which determines the number of rows on which the profile job is run. If a JobSample value isn't provided, the default is used. The default value is CUSTOM_ROWS for the mode parameter and 20,000 for the size parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of an Amazon CloudWatch log group, where the job writes diagnostic messages when it runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogSubscription" /></td>
+    <td><CopyableCode code="log_subscription" /></td>
     <td><code>string</code></td>
     <td>The current status of Amazon CloudWatch logging for the job run. (ENABLE, DISABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
     <td>One or more output artifacts from a job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeReference" /></td>
+    <td><CopyableCode code="recipe_reference" /></td>
     <td><code>object</code></td>
     <td>Represents the name and version of a DataBrew recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedBy" /></td>
+    <td><CopyableCode code="started_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who initiated the job run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the job run entity itself. (STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationConfigurations" /></td>
+    <td><CopyableCode code="validation_configurations" /></td>
     <td><code>array</code></td>
     <td>List of validation configurations that are applied to the profile job run.</td>
 </tr>
@@ -342,25 +342,25 @@ Represents one run of a DataBrew job.
 
 ```sql
 SELECT
-Attempt,
-CompletedOn,
-DataCatalogOutputs,
-DatabaseOutputs,
-DatasetName,
-ErrorMessage,
-ExecutionTime,
-JobName,
-JobSample,
-LogGroupName,
-LogSubscription,
-Outputs,
-ProfileConfiguration,
-RecipeReference,
-RunId,
-StartedBy,
-StartedOn,
-State,
-ValidationConfigurations
+attempt,
+completed_on,
+data_catalog_outputs,
+database_outputs,
+dataset_name,
+error_message,
+execution_time,
+job_name,
+job_sample,
+log_group_name,
+log_subscription,
+outputs,
+profile_configuration,
+recipe_reference,
+run_id,
+started_by,
+started_on,
+state,
+validation_configurations
 FROM aws.databrew.job_runs
 WHERE name = '{{ name }}' -- required
 AND run_id = '{{ run_id }}' -- required
@@ -374,24 +374,24 @@ Lists all of the previous runs of a particular DataBrew job.
 
 ```sql
 SELECT
-Attempt,
-CompletedOn,
-DataCatalogOutputs,
-DatabaseOutputs,
-DatasetName,
-ErrorMessage,
-ExecutionTime,
-JobName,
-JobSample,
-LogGroupName,
-LogSubscription,
-Outputs,
-RecipeReference,
-RunId,
-StartedBy,
-StartedOn,
-State,
-ValidationConfigurations
+attempt,
+completed_on,
+data_catalog_outputs,
+database_outputs,
+dataset_name,
+error_message,
+execution_time,
+job_name,
+job_sample,
+log_group_name,
+log_subscription,
+outputs,
+recipe_reference,
+run_id,
+started_by,
+started_on,
+state,
+validation_configurations
 FROM aws.databrew.job_runs
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required

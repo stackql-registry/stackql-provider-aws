@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SnowballLimit" /></td>
+    <td><CopyableCode code="snowball_limit" /></td>
     <td><code>integer</code></td>
     <td>The service limit for number of Snow devices this account can have at once. The default service limit is 1 (one).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnowballsInUse" /></td>
+    <td><CopyableCode code="snowballs_in_use" /></td>
     <td><code>integer</code></td>
     <td>The number of Snow devices that this account is currently using.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns information about the Snow Family service limit for your account, and al
 
 ```sql
 SELECT
-SnowballLimit,
-SnowballsInUse
+snowball_limit,
+snowballs_in_use
 FROM aws.snowball.snowball_usages
 WHERE region = '{{ region }}' -- required
 ;

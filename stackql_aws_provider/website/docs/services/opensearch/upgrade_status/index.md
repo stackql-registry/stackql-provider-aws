@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="StepStatus" /></td>
+    <td><CopyableCode code="step_status" /></td>
     <td><code>string</code></td>
     <td>The status of the current step that an upgrade is on. (IN_PROGRESS, SUCCEEDED, SUCCEEDED_WITH_ISSUES, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeName" /></td>
+    <td><CopyableCode code="upgrade_name" /></td>
     <td><code>string</code></td>
     <td>A string that describes the update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeStep" /></td>
+    <td><CopyableCode code="upgrade_step" /></td>
     <td><code>string</code></td>
     <td>One of three steps that an upgrade or upgrade eligibility check goes through. (PRE_UPGRADE_CHECK, SNAPSHOT, UPGRADE)</td>
 </tr>
@@ -134,9 +134,9 @@ Returns the most recent status of the last upgrade or upgrade eligibility check 
 
 ```sql
 SELECT
-StepStatus,
-UpgradeName,
-UpgradeStep
+step_status,
+upgrade_name,
+upgrade_step
 FROM aws.opensearch.upgrade_status
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

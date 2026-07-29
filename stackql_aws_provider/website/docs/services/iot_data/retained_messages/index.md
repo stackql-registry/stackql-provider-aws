@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Epoch date and time, in milliseconds, when the retained message was stored by IoT.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The topic name to which the retained message was published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userProperties" /></td>
+    <td><CopyableCode code="user_properties" /></td>
     <td><code>string (byte)</code></td>
     <td>A base64-encoded JSON string that includes an array of JSON objects, or null if the retained message doesn't include any user properties. The following example userProperties parameter is a JSON string that represents two user properties. Note that it will be base64-encoded: &#91;&#123;"deviceName": "alpha"&#125;, &#123;"deviceCnt": "45"&#125;&#93;</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Epoch date and time, in milliseconds, when the retained message was stored by IoT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="payloadSize" /></td>
+    <td><CopyableCode code="payload_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the retained message's payload in bytes.</td>
 </tr>
@@ -197,11 +197,11 @@ Gets the details of a single retained message for the specified topic. This acti
 
 ```sql
 SELECT
-lastModifiedTime,
+last_modified_time,
 payload,
 qos,
 topic,
-userProperties
+user_properties
 FROM aws.iot_data.retained_messages
 WHERE topic = '{{ topic }}' -- required
 AND region = '{{ region }}' -- required
@@ -214,8 +214,8 @@ Lists summary information about the retained messages stored for the account. Th
 
 ```sql
 SELECT
-lastModifiedTime,
-payloadSize,
+last_modified_time,
+payload_size,
 qos,
 topic
 FROM aws.iot_data.retained_messages

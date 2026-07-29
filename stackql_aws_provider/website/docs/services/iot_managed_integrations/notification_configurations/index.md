@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the notification configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationName" /></td>
+    <td><CopyableCode code="destination_name" /></td>
     <td><code>string</code></td>
     <td>The name of the destination for the notification configuration. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125; ._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of event triggering a device notification to the customer-managed destination. (DEVICE_COMMAND, DEVICE_COMMAND_REQUEST, DEVICE_DISCOVERY_STATUS, DEVICE_EVENT, DEVICE_LIFE_CYCLE, DEVICE_STATE, DEVICE_OTA, DEVICE_WSS, CONNECTOR_ASSOCIATION, ACCOUNT_ASSOCIATION, CONNECTOR_ERROR_REPORT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A set of key/value pairs that are used to manage the notification configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the notification configuration was last updated.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationName" /></td>
+    <td><CopyableCode code="destination_name" /></td>
     <td><code>string</code></td>
     <td>The name of the destination for the notification configuration. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125; ._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of event triggering a device notification to the customer-managed destination. (DEVICE_COMMAND, DEVICE_COMMAND_REQUEST, DEVICE_DISCOVERY_STATUS, DEVICE_EVENT, DEVICE_LIFE_CYCLE, DEVICE_STATE, DEVICE_OTA, DEVICE_WSS, CONNECTOR_ASSOCIATION, ACCOUNT_ASSOCIATION, CONNECTOR_ERROR_REPORT)</td>
 </tr>
@@ -208,11 +208,11 @@ Get a notification configuration for a specified event type.
 
 ```sql
 SELECT
-CreatedAt,
-DestinationName,
-EventType,
-Tags,
-UpdatedAt
+created_at,
+destination_name,
+event_type,
+tags,
+updated_at
 FROM aws.iot_managed_integrations.notification_configurations
 WHERE event_type = '{{ event_type }}' -- required
 AND region = '{{ region }}' -- required
@@ -225,8 +225,8 @@ List all notification configurations.
 
 ```sql
 SELECT
-DestinationName,
-EventType
+destination_name,
+event_type
 FROM aws.iot_managed_integrations.notification_configurations
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -265,7 +265,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-EventType
+event_type
 ;
 ```
 </TabItem>

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the resource share was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The account ID for the data owner. The owner creates the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalSubscriber" /></td>
+    <td><CopyableCode code="principal_subscriber" /></td>
     <td><code>string</code></td>
     <td>The principal subscriber is the account that is sharing the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Arn of the shared resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the shared resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shareId" /></td>
+    <td><CopyableCode code="share_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shareName" /></td>
+    <td><CopyableCode code="share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource share. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the share. (PENDING, ACTIVATING, ACTIVE, DELETING, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for a resource share. It provides additional details about the share status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the resource share update.</td>
 </tr>
@@ -115,37 +115,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the resource share was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The account ID for the data owner. The owner creates the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalSubscriber" /></td>
+    <td><CopyableCode code="principal_subscriber" /></td>
     <td><code>string</code></td>
     <td>The principal subscriber is the account that is sharing the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Arn of the shared resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the shared resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shareId" /></td>
+    <td><CopyableCode code="share_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shareName" /></td>
+    <td><CopyableCode code="share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource share. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the share. (PENDING, ACTIVATING, ACTIVE, DELETING, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for a resource share. It provides additional details about the share status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the resource share update.</td>
 </tr>
@@ -273,16 +273,16 @@ Retrieves the metadata for the specified resource share.
 
 ```sql
 SELECT
-creationTime,
-ownerId,
-principalSubscriber,
-resourceArn,
-resourceId,
-shareId,
-shareName,
+creation_time,
+owner_id,
+principal_subscriber,
+resource_arn,
+resource_id,
+share_id,
+share_name,
 status,
-statusMessage,
-updateTime
+status_message,
+update_time
 FROM aws.omics.shares
 WHERE share_id = '{{ share_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -295,16 +295,16 @@ Retrieves the resource shares associated with an account. Use the filter paramet
 
 ```sql
 SELECT
-creationTime,
-ownerId,
-principalSubscriber,
-resourceArn,
-resourceId,
-shareId,
-shareName,
+creation_time,
+owner_id,
+principal_subscriber,
+resource_arn,
+resource_id,
+share_id,
+share_name,
 status,
-statusMessage,
-updateTime
+status_message,
+update_time
 FROM aws.omics.shares
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -341,8 +341,8 @@ SELECT
 '{{ shareName }}',
 '{{ region }}'
 RETURNING
-shareId,
-shareName,
+share_id,
+share_name,
 status
 ;
 ```

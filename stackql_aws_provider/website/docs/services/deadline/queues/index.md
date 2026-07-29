@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="allowedStorageProfileIds" /></td>
+    <td><CopyableCode code="allowed_storage_profile_ids" /></td>
     <td><code>array</code></td>
     <td>The storage profile IDs for the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockedReason" /></td>
+    <td><CopyableCode code="blocked_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the queue was blocked. (NO_BUDGET_CONFIGURED, BUDGET_THRESHOLD_REACHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultBudgetAction" /></td>
+    <td><CopyableCode code="default_budget_action" /></td>
     <td><code>string</code></td>
     <td>The default action taken on a queue if a budget wasn't configured. (NONE, STOP_SCHEDULING_AND_COMPLETE_TASKS, STOP_SCHEDULING_AND_CANCEL_TASKS)</td>
 </tr>
@@ -81,42 +81,42 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the queue. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the queue. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID for the queue. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobAttachmentSettings" /></td>
+    <td><CopyableCode code="job_attachment_settings" /></td>
     <td><code>object</code></td>
     <td>The job attachment settings. These are the Amazon S3 bucket name and the Amazon S3 prefix.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobRunAsUser" /></td>
+    <td><CopyableCode code="job_run_as_user" /></td>
     <td><code>object</code></td>
     <td>Identifies the user for a job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The queue ID. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requiredFileSystemLocationNames" /></td>
+    <td><CopyableCode code="required_file_system_location_names" /></td>
     <td><code>array</code></td>
     <td>A list of the required file system location names in the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):iam::\d&#123;12&#125;:role(/&#91;!-.0-~&#93;+)*/&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schedulingConfiguration" /></td>
+    <td><CopyableCode code="scheduling_configuration" /></td>
     <td><code>object</code></td>
     <td>The scheduling configuration for a queue. Defines the strategy used to assign workers to jobs.</td>
 </tr>
@@ -126,12 +126,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the queue. ACTIVE–The queue is active. SCHEDULING–The queue is scheduling. SCHEDULING_BLOCKED–The queue scheduling is blocked. See the provided reason. (IDLE, SCHEDULING, SCHEDULING_BLOCKED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -150,37 +150,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="blockedReason" /></td>
+    <td><CopyableCode code="blocked_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the queue is blocked, if applicable. (NO_BUDGET_CONFIGURED, BUDGET_THRESHOLD_REACHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that created this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultBudgetAction" /></td>
+    <td><CopyableCode code="default_budget_action" /></td>
     <td><code>string</code></td>
     <td>The default action taken on a queue summary if a budget wasn't configured. (NONE, STOP_SCHEDULING_AND_COMPLETE_TASKS, STOP_SCHEDULING_AND_CANCEL_TASKS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the queue summary to update. This field can store any content. Escape or encode this content before displaying it on a webpage or any other system that might interpret the content of this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="farmId" /></td>
+    <td><CopyableCode code="farm_id" /></td>
     <td><code>string</code></td>
     <td>The farm ID. (pattern: &lt;code&gt;farm-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The queue ID. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -190,12 +190,12 @@ The following fields are returned by `SELECT` queries:
     <td>That status of the queue. (IDLE, SCHEDULING, SCHEDULING_BLOCKED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
@@ -361,23 +361,23 @@ Gets a queue.
 
 ```sql
 SELECT
-allowedStorageProfileIds,
-blockedReason,
-createdAt,
-createdBy,
-defaultBudgetAction,
+allowed_storage_profile_ids,
+blocked_reason,
+created_at,
+created_by,
+default_budget_action,
 description,
-displayName,
-farmId,
-jobAttachmentSettings,
-jobRunAsUser,
-queueId,
-requiredFileSystemLocationNames,
-roleArn,
-schedulingConfiguration,
+display_name,
+farm_id,
+job_attachment_settings,
+job_run_as_user,
+queue_id,
+required_file_system_location_names,
+role_arn,
+scheduling_configuration,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.deadline.queues
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -391,16 +391,16 @@ Lists queues.
 
 ```sql
 SELECT
-blockedReason,
-createdAt,
-createdBy,
-defaultBudgetAction,
-displayName,
-farmId,
-queueId,
+blocked_reason,
+created_at,
+created_by,
+default_budget_action,
+display_name,
+farm_id,
+queue_id,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.deadline.queues
 WHERE farm_id = '{{ farm_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -458,7 +458,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amz-Client-Token }}'
 RETURNING
-queueId
+queue_id
 ;
 ```
 </TabItem>

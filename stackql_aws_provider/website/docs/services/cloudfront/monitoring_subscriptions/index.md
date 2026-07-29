@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RealtimeMetricsSubscriptionConfig" /></td>
+    <td><CopyableCode code="realtime_metrics_subscription_config" /></td>
     <td><code>string</code></td>
     <td>A subscription configuration for additional CloudWatch metrics.</td>
 </tr>
@@ -138,7 +138,7 @@ Gets information about whether additional CloudWatch metrics are enabled for the
 
 ```sql
 SELECT
-RealtimeMetricsSubscriptionConfig
+realtime_metrics_subscription_config
 FROM aws.cloudfront.monitoring_subscriptions
 WHERE distribution_id = '{{ distribution_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -172,7 +172,7 @@ SELECT
 '{{ distribution_id }}',
 '{{ region }}'
 RETURNING
-RealtimeMetricsSubscriptionConfig
+realtime_metrics_subscription_config
 ;
 ```
 </TabItem>

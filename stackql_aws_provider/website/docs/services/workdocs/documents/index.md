@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomMetadata" /></td>
+    <td><CopyableCode code="custom_metadata" /></td>
     <td><code>object</code></td>
     <td>The custom metadata on the document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata details of the document.</td>
 </tr>
@@ -165,8 +165,8 @@ Retrieves details of a document.
 
 ```sql
 SELECT
-CustomMetadata,
-Metadata
+custom_metadata,
+metadata
 FROM aws.workdocs.documents
 WHERE document_id = '{{ document_id }}' -- required
 AND region = '{{ region }}' -- required

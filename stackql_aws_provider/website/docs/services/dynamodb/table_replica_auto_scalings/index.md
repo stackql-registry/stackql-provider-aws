@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Replicas" /></td>
+    <td><CopyableCode code="replicas" /></td>
     <td><code>array</code></td>
     <td>Represents replicas of the global table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableStatus" /></td>
+    <td><CopyableCode code="table_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the table: CREATING - The table is being created. UPDATING - The table is being updated. DELETING - The table is being deleted. ACTIVE - The table is ready for use. (CREATING, UPDATING, DELETING, ACTIVE, INACCESSIBLE_ENCRYPTION_CREDENTIALS, ARCHIVING, ARCHIVED, REPLICATION_NOT_AUTHORIZED)</td>
 </tr>
@@ -136,9 +136,9 @@ Describes auto scaling settings across replicas of the global table at once.
 
 ```sql
 SELECT
-Replicas,
-TableName,
-TableStatus
+replicas,
+table_name,
+table_status
 FROM aws.dynamodb.table_replica_auto_scalings
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,7 +170,7 @@ WHERE
 region = '{{ region }}' --required
 AND TableName = '{{ TableName }}' --required
 RETURNING
-TableAutoScalingDescription;
+table_auto_scaling_description;
 ```
 </TabItem>
 </Tabs>

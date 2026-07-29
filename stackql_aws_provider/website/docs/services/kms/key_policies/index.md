@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>A key policy document in JSON format. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the key policy. The only valid value is default. (pattern: &lt;code&gt;&#91;\w&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Gets a key policy attached to the specified KMS key. Cross-account use: No. You 
 
 ```sql
 SELECT
-Policy,
-PolicyName
+policy,
+policy_name
 FROM aws.kms.key_policies
 WHERE region = '{{ region }}' -- required
 ;

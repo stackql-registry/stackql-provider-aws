@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentCard" /></td>
+    <td><CopyableCode code="agent_card" /></td>
     <td><code>object</code></td>
     <td>An agent card document that contains metadata and capabilities for an AgentCore Runtime agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runtimeSessionId" /></td>
+    <td><CopyableCode code="runtime_session_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the session associated with the AgentCore Runtime agent. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>integer</code></td>
     <td>The status code of the request.</td>
 </tr>
@@ -144,9 +144,9 @@ Retrieves the A2A agent card associated with an AgentCore Runtime agent.
 
 ```sql
 SELECT
-agentCard,
-runtimeSessionId,
-statusCode
+agent_card,
+runtime_session_id,
+status_code
 FROM aws.bedrock_agentcore.agent_cards
 WHERE agent_runtime_arn = '{{ agent_runtime_arn }}' -- required
 AND region = '{{ region }}' -- required

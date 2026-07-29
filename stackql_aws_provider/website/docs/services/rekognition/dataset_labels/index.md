@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LabelName" /></td>
+    <td><CopyableCode code="label_name" /></td>
     <td><code>string</code></td>
     <td>The name of the label. (pattern: &lt;code&gt;.&#123;1,&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelStats" /></td>
+    <td><CopyableCode code="label_stats" /></td>
     <td><code>object</code></td>
     <td>Statistics about the label.</td>
 </tr>
@@ -124,8 +124,8 @@ This operation applies only to Amazon Rekognition Custom Labels. Lists the label
 
 ```sql
 SELECT
-LabelName,
-LabelStats
+label_name,
+label_stats
 FROM aws.rekognition.dataset_labels
 WHERE region = '{{ region }}' -- required
 ;

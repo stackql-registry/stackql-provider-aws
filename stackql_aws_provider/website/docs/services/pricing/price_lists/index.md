@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The three alphabetical character ISO-4217 currency code the Price List files are denominated in. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;3&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileFormats" /></td>
+    <td><CopyableCode code="file_formats" /></td>
     <td><code>array</code></td>
     <td>The format you want to retrieve your Price List files. The FileFormat can be obtained from the ListPriceList response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriceListArn" /></td>
+    <td><CopyableCode code="price_list_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier that maps to where your Price List files are located. PriceListArn can be obtained from the ListPriceList response. (pattern: &lt;code&gt;arn:&#91;A-Za-z0-9&#93;&#91;-.A-Za-z0-9&#93;&#123;0,62&#125;:pricing:::price-list/&#91;A-Za-z0-9+_/.-&#93;&#123;1,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionCode" /></td>
+    <td><CopyableCode code="region_code" /></td>
     <td><code>string</code></td>
     <td>This is used to filter the Price List by Amazon Web Services Region. For example, to get the price list only for the US East (N. Virginia) Region, use us-east-1. If nothing is specified, you retrieve price lists for all applicable Regions. The available RegionCode list can be retrieved from GetAttributeValues API.</td>
 </tr>
@@ -134,10 +134,10 @@ This feature is in preview release and is subject to change. Your use of Amazon 
 
 ```sql
 SELECT
-CurrencyCode,
-FileFormats,
-PriceListArn,
-RegionCode
+currency_code,
+file_formats,
+price_list_arn,
+region_code
 FROM aws.pricing.price_lists
 WHERE region = '{{ region }}' -- required
 ;

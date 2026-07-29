@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the package group. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contactInfo" /></td>
+    <td><CopyableCode code="contact_info" /></td>
     <td><code>string</code></td>
     <td>The contact information of the package group. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that represents the date and time the package group was created.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the package group. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain that contains the package group. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9\-&#93;&#123;0,48&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainOwner" /></td>
+    <td><CopyableCode code="domain_owner" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account number of the Amazon Web Services account that owns the domain. It does not include dashes or spaces. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originConfiguration" /></td>
+    <td><CopyableCode code="origin_configuration" /></td>
     <td><code>object</code></td>
     <td>The package group origin configuration that determines how package versions can enter repositories.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the package group. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contactInfo" /></td>
+    <td><CopyableCode code="contact_info" /></td>
     <td><code>string</code></td>
     <td>The contact information of the package group. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that represents the date and time the repository was created.</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the package group. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain that contains the package group. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9\-&#93;&#123;0,48&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainOwner" /></td>
+    <td><CopyableCode code="domain_owner" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account number of the Amazon Web Services account that owns the domain. It does not include dashes or spaces. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="originConfiguration" /></td>
+    <td><CopyableCode code="origin_configuration" /></td>
     <td><code>object</code></td>
     <td>Details about the package origin configuration of a package group.</td>
 </tr>
@@ -286,12 +286,12 @@ Returns a PackageGroupDescription object that contains information about the req
 ```sql
 SELECT
 arn,
-contactInfo,
-createdTime,
+contact_info,
+created_time,
 description,
-domainName,
-domainOwner,
-originConfiguration,
+domain_name,
+domain_owner,
+origin_configuration,
 parent,
 pattern_
 FROM aws.codeartifact.package_groups
@@ -309,12 +309,12 @@ Returns a list of package groups in the requested domain.
 ```sql
 SELECT
 arn,
-contactInfo,
-createdTime,
+contact_info,
+created_time,
 description,
-domainName,
-domainOwner,
-originConfiguration,
+domain_name,
+domain_owner,
+origin_configuration,
 parent,
 pattern_
 FROM aws.codeartifact.package_groups
@@ -362,7 +362,7 @@ SELECT
 '{{ region }}',
 '{{ domain-owner }}'
 RETURNING
-packageGroup
+package_group
 ;
 ```
 </TabItem>
@@ -422,7 +422,7 @@ AND region = '{{ region }}' --required
 AND packageGroup = '{{ packageGroup }}' --required
 AND `domain-owner` = '{{ domain-owner}}'
 RETURNING
-packageGroup;
+package_group;
 ```
 </TabItem>
 <TabItem value="update_package_group_origin_configuration">
@@ -441,8 +441,8 @@ AND `package-group` = '{{ package-group }}' --required
 AND region = '{{ region }}' --required
 AND `domain-owner` = '{{ domain-owner}}'
 RETURNING
-allowedRepositoryUpdates,
-packageGroup;
+allowed_repository_updates,
+package_group;
 ```
 </TabItem>
 </Tabs>

@@ -51,117 +51,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnywhereSettings" /></td>
+    <td><CopyableCode code="anywhere_settings" /></td>
     <td><code>object</code></td>
     <td>Anywhere settings for this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CdiInputSpecification" /></td>
+    <td><CopyableCode code="cdi_input_specification" /></td>
     <td><code>object</code></td>
     <td>Placeholder documentation for CdiInputSpecification</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelClass" /></td>
+    <td><CopyableCode code="channel_class" /></td>
     <td><code>string</code></td>
     <td>A standard channel has two encoding pipelines and a single pipeline channel only has one. (STANDARD, SINGLE_PIPELINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelEngineVersion" /></td>
+    <td><CopyableCode code="channel_engine_version" /></td>
     <td><code>object</code></td>
     <td>Placeholder documentation for ChannelEngineVersionResponse</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelSecurityGroups" /></td>
+    <td><CopyableCode code="channel_security_groups" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfOutputDestination</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressEndpoints" /></td>
+    <td><CopyableCode code="egress_endpoints" /></td>
     <td><code>array</code></td>
     <td>The endpoints where outgoing connections initiate from</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncoderSettings" /></td>
+    <td><CopyableCode code="encoder_settings" /></td>
     <td><code>object</code></td>
     <td>Encoder Settings</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceSettings" /></td>
+    <td><CopyableCode code="inference_settings" /></td>
     <td><code>object</code></td>
     <td>Include this setting to include Elemental Inference features in this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputAttachments" /></td>
+    <td><CopyableCode code="input_attachments" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfInputAttachment</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputSpecification" /></td>
+    <td><CopyableCode code="input_specification" /></td>
     <td><code>object</code></td>
     <td>Placeholder documentation for InputSpecification</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkedChannelSettings" /></td>
+    <td><CopyableCode code="linked_channel_settings" /></td>
     <td><code>object</code></td>
     <td>Linked Channel Settings for this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogLevel" /></td>
+    <td><CopyableCode code="log_level" /></td>
     <td><code>string</code></td>
     <td>The log level the user wants for their channel. (ERROR, WARNING, INFO, DEBUG, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Maintenance" /></td>
+    <td><CopyableCode code="maintenance" /></td>
     <td><code>object</code></td>
     <td>Maintenance settings for this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDetails" /></td>
+    <td><CopyableCode code="pipeline_details" /></td>
     <td><code>array</code></td>
     <td>Runtime details for the pipelines of a running channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelinesRunningCount" /></td>
+    <td><CopyableCode code="pipelines_running_count" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for ChannelState (CREATING, CREATE_FAILED, IDLE, STARTING, RUNNING, RECOVERING, STOPPING, DELETING, DELETED, UPDATING, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vpc" /></td>
+    <td><CopyableCode code="vpc" /></td>
     <td><code>object</code></td>
     <td>Settings for VPC output</td>
 </tr>
@@ -180,112 +180,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnywhereSettings" /></td>
+    <td><CopyableCode code="anywhere_settings" /></td>
     <td><code>object</code></td>
     <td>AnywhereSettings settings for this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CdiInputSpecification" /></td>
+    <td><CopyableCode code="cdi_input_specification" /></td>
     <td><code>object</code></td>
     <td>Placeholder documentation for CdiInputSpecification</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelClass" /></td>
+    <td><CopyableCode code="channel_class" /></td>
     <td><code>string</code></td>
     <td>A standard channel has two encoding pipelines and a single pipeline channel only has one. (STANDARD, SINGLE_PIPELINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelEngineVersion" /></td>
+    <td><CopyableCode code="channel_engine_version" /></td>
     <td><code>object</code></td>
     <td>The engine version that you requested for this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelSecurityGroups" /></td>
+    <td><CopyableCode code="channel_security_groups" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfOutputDestination</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressEndpoints" /></td>
+    <td><CopyableCode code="egress_endpoints" /></td>
     <td><code>array</code></td>
     <td>The endpoints where outgoing connections initiate from</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceSettings" /></td>
+    <td><CopyableCode code="inference_settings" /></td>
     <td><code>object</code></td>
     <td>Include this setting to include Elemental Inference features in this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputAttachments" /></td>
+    <td><CopyableCode code="input_attachments" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfInputAttachment</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputSpecification" /></td>
+    <td><CopyableCode code="input_specification" /></td>
     <td><code>object</code></td>
     <td>Placeholder documentation for InputSpecification</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkedChannelSettings" /></td>
+    <td><CopyableCode code="linked_channel_settings" /></td>
     <td><code>object</code></td>
     <td>Linked Channel Settings for this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogLevel" /></td>
+    <td><CopyableCode code="log_level" /></td>
     <td><code>string</code></td>
     <td>The log level the user wants for their channel. (ERROR, WARNING, INFO, DEBUG, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Maintenance" /></td>
+    <td><CopyableCode code="maintenance" /></td>
     <td><code>object</code></td>
     <td>Maintenance settings for this channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelinesRunningCount" /></td>
+    <td><CopyableCode code="pipelines_running_count" /></td>
     <td><code>integer</code></td>
     <td>The number of currently healthy pipelines.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for ChannelState (CREATING, CREATE_FAILED, IDLE, STARTING, RUNNING, RECOVERING, STOPPING, DELETING, DELETED, UPDATING, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsedChannelEngineVersions" /></td>
+    <td><CopyableCode code="used_channel_engine_versions" /></td>
     <td><code>array</code></td>
     <td>The engine version that the running pipelines are using.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vpc" /></td>
+    <td><CopyableCode code="vpc" /></td>
     <td><code>object</code></td>
     <td>Settings for any VPC outputs.</td>
 </tr>
@@ -433,29 +433,29 @@ Gets details about a channel
 
 ```sql
 SELECT
-AnywhereSettings,
-Arn,
-CdiInputSpecification,
-ChannelClass,
-ChannelEngineVersion,
-ChannelSecurityGroups,
-Destinations,
-EgressEndpoints,
-EncoderSettings,
-Id,
-InferenceSettings,
-InputAttachments,
-InputSpecification,
-LinkedChannelSettings,
-LogLevel,
-Maintenance,
-Name,
-PipelineDetails,
-PipelinesRunningCount,
-RoleArn,
-State,
-Tags,
-Vpc
+anywhere_settings,
+arn,
+cdi_input_specification,
+channel_class,
+channel_engine_version,
+channel_security_groups,
+destinations,
+egress_endpoints,
+encoder_settings,
+id,
+inference_settings,
+input_attachments,
+input_specification,
+linked_channel_settings,
+log_level,
+maintenance,
+name,
+pipeline_details,
+pipelines_running_count,
+role_arn,
+state,
+tags,
+vpc
 FROM aws.medialive.channels
 WHERE channel_id = '{{ channel_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -468,28 +468,28 @@ Produces list of channels that have been created
 
 ```sql
 SELECT
-AnywhereSettings,
-Arn,
-CdiInputSpecification,
-ChannelClass,
-ChannelEngineVersion,
-ChannelSecurityGroups,
-Destinations,
-EgressEndpoints,
-Id,
-InferenceSettings,
-InputAttachments,
-InputSpecification,
-LinkedChannelSettings,
-LogLevel,
-Maintenance,
-Name,
-PipelinesRunningCount,
-RoleArn,
-State,
-Tags,
-UsedChannelEngineVersions,
-Vpc
+anywhere_settings,
+arn,
+cdi_input_specification,
+channel_class,
+channel_engine_version,
+channel_security_groups,
+destinations,
+egress_endpoints,
+id,
+inference_settings,
+input_attachments,
+input_specification,
+linked_channel_settings,
+log_level,
+maintenance,
+name,
+pipelines_running_count,
+role_arn,
+state,
+tags,
+used_channel_engine_versions,
+vpc
 FROM aws.medialive.channels
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -560,7 +560,7 @@ SELECT
 '{{ InferenceSettings }}',
 '{{ region }}'
 RETURNING
-Channel
+channel
 ;
 ```
 </TabItem>
@@ -1366,7 +1366,7 @@ channel_id = '{{ channel_id }}' --required
 AND region = '{{ region }}' --required
 AND ChannelClass = '{{ ChannelClass }}' --required
 RETURNING
-Channel;
+channel;
 ```
 </TabItem>
 <TabItem value="update_channel">
@@ -1396,7 +1396,7 @@ WHERE
 channel_id = '{{ channel_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Channel;
+channel;
 ```
 </TabItem>
 </Tabs>

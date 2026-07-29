@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LineItems" /></td>
+    <td><CopyableCode code="line_items" /></td>
     <td><code>array</code></td>
     <td>The line items for the order</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderFulfilledDate" /></td>
+    <td><CopyableCode code="order_fulfilled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The fulfillment date of the order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderId" /></td>
+    <td><CopyableCode code="order_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the order. (pattern: &lt;code&gt;oo-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderSubmissionDate" /></td>
+    <td><CopyableCode code="order_submission_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The submission date for the order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderType" /></td>
+    <td><CopyableCode code="order_type" /></td>
     <td><code>string</code></td>
     <td>The type of order. (OUTPOST, REPLACEMENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost in the order. (pattern: &lt;code&gt;^op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentOption" /></td>
+    <td><CopyableCode code="payment_option" /></td>
     <td><code>string</code></td>
     <td>The payment option for the order. (ALL_UPFRONT, NO_UPFRONT, PARTIAL_UPFRONT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentTerm" /></td>
+    <td><CopyableCode code="payment_term" /></td>
     <td><code>string</code></td>
     <td>The payment term. (THREE_YEARS, ONE_YEAR, FIVE_YEARS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the order. PREPARING - Order is received and being prepared. IN_PROGRESS - Order is either being built or shipped. To get more details, see the line item status. DELIVERED - Order was delivered to the Outpost site. COMPLETED - Order is complete. CANCELLED - Order is cancelled. ERROR - Customer should contact support. The following status are deprecated: RECEIVED, PENDING, PROCESSING, INSTALLING, and FULFILLED. (RECEIVED, PENDING, PROCESSING, INSTALLING, FULFILLED, CANCELLED, PREPARING, IN_PROGRESS, DELIVERED, COMPLETED, ERROR)</td>
 </tr>
@@ -110,37 +110,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LineItemCountsByStatus" /></td>
+    <td><CopyableCode code="line_item_counts_by_status" /></td>
     <td><code>object</code></td>
     <td>The status of all line items in the order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderFulfilledDate" /></td>
+    <td><CopyableCode code="order_fulfilled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The fulfilment date for the order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderId" /></td>
+    <td><CopyableCode code="order_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the order. (pattern: &lt;code&gt;oo-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderSubmissionDate" /></td>
+    <td><CopyableCode code="order_submission_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The submission date for the order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderType" /></td>
+    <td><CopyableCode code="order_type" /></td>
     <td><code>string</code></td>
     <td>The type of order. (OUTPOST, REPLACEMENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost. (pattern: &lt;code&gt;^op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the order. PREPARING - Order is received and is being prepared. IN_PROGRESS - Order is either being built, shipped, or installed. For more information, see the LineItem status. COMPLETED - Order is complete. CANCELLED - Order is cancelled. ERROR - Customer should contact support. The following statuses are deprecated: RECEIVED, PENDING, PROCESSING, INSTALLING, and FULFILLED. (RECEIVED, PENDING, PROCESSING, INSTALLING, FULFILLED, CANCELLED, PREPARING, IN_PROGRESS, DELIVERED, COMPLETED, ERROR)</td>
 </tr>
@@ -251,15 +251,15 @@ Gets information about the specified order.
 
 ```sql
 SELECT
-LineItems,
-OrderFulfilledDate,
-OrderId,
-OrderSubmissionDate,
-OrderType,
-OutpostId,
-PaymentOption,
-PaymentTerm,
-Status
+line_items,
+order_fulfilled_date,
+order_id,
+order_submission_date,
+order_type,
+outpost_id,
+payment_option,
+payment_term,
+status
 FROM aws.outposts.orders
 WHERE order_id = '{{ order_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -272,13 +272,13 @@ Lists the Outpost orders for your Amazon Web Services account.
 
 ```sql
 SELECT
-LineItemCountsByStatus,
-OrderFulfilledDate,
-OrderId,
-OrderSubmissionDate,
-OrderType,
-OutpostId,
-Status
+line_item_counts_by_status,
+order_fulfilled_date,
+order_id,
+order_submission_date,
+order_type,
+outpost_id,
+status
 FROM aws.outposts.orders
 WHERE region = '{{ region }}' -- required
 AND OutpostIdentifierFilter = '{{ OutpostIdentifierFilter }}'
@@ -318,7 +318,7 @@ SELECT
 '{{ PaymentTerm }}',
 '{{ region }}'
 RETURNING
-Order
+order
 ;
 ```
 </TabItem>

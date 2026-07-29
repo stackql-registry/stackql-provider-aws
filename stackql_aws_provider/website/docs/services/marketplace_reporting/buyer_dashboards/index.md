@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dashboardIdentifier" /></td>
+    <td><CopyableCode code="dashboard_identifier" /></td>
     <td><code>string</code></td>
     <td>The ARN of the returned dashboard. (pattern: &lt;code&gt;arn:aws:aws-marketplace::&#91;0-9&#93;&#123;12&#125;:AWSMarketplace/ReportingData/(Agreement_V1/Dashboard/AgreementSummary_V1|BillingEvent_V1/Dashboard/CostAnalysis_V1)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="embedUrl" /></td>
+    <td><CopyableCode code="embed_url" /></td>
     <td><code>string</code></td>
     <td>The dashboard's embedding URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="embeddingDomains" /></td>
+    <td><CopyableCode code="embedding_domains" /></td>
     <td><code>array</code></td>
     <td>The fully qualified domains specified in the request. The domains enable access to the generated URL that is then embedded. You can list up to two domains or subdomains in each API call. To include all subdomains under a specific domain, use *. For example, https:​//*.amazon.com includes all subdomains under https:​//aws.amazon.com.</td>
 </tr>
@@ -129,9 +129,9 @@ Generates an embedding URL for an Amazon QuickSight dashboard for an anonymous u
 
 ```sql
 SELECT
-dashboardIdentifier,
-embedUrl,
-embeddingDomains
+dashboard_identifier,
+embed_url,
+embedding_domains
 FROM aws.marketplace_reporting.buyer_dashboards
 WHERE region = '{{ region }}' -- required
 ;

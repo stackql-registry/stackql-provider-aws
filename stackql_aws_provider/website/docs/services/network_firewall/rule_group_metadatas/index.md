@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Capacity" /></td>
+    <td><CopyableCode code="capacity" /></td>
     <td><code>integer</code></td>
     <td>The maximum operating resources that this rule group can use. Rule group capacity is fixed at creation. When you update a rule group, you are limited to this capacity. When you reference a rule group from a firewall policy, Network Firewall reserves this capacity for the rule group. You can retrieve the capacity that would be required for a rule group before you create the rule group by calling CreateRuleGroup with DryRun set to TRUE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Returns the metadata objects for the specified rule group. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp indicating when the rule group was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListingName" /></td>
+    <td><CopyableCode code="listing_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the product listing for this rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductId" /></td>
+    <td><CopyableCode code="product_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the product listing associated with this rule group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleGroupArn" /></td>
+    <td><CopyableCode code="rule_group_arn" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the rule group. You can't change the name of a rule group after you create it. You must specify the ARN or the name, and you can specify both. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleGroupName" /></td>
+    <td><CopyableCode code="rule_group_name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the rule group. You can't change the name of a rule group after you create it. You must specify the ARN or the name, and you can specify both. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatefulRuleOptions" /></td>
+    <td><CopyableCode code="stateful_rule_options" /></td>
     <td><code>object</code></td>
     <td>Additional options governing how Network Firewall handles the rule group. You can only use these for stateful rule groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it contains stateless rules. If it is stateful, it contains stateful rules. This setting is required for requests that do not include the RuleGroupARN. (STATELESS, STATEFUL, STATEFUL_DOMAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VendorName" /></td>
+    <td><CopyableCode code="vendor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services Marketplace vendor that provides this rule group.</td>
 </tr>
@@ -164,16 +164,16 @@ High-level information about a rule group, returned by operations like create an
 
 ```sql
 SELECT
-Capacity,
-Description,
-LastModifiedTime,
-ListingName,
-ProductId,
-RuleGroupArn,
-RuleGroupName,
-StatefulRuleOptions,
-Type,
-VendorName
+capacity,
+description,
+last_modified_time,
+listing_name,
+product_id,
+rule_group_arn,
+rule_group_name,
+stateful_rule_options,
+type,
+vendor_name
 FROM aws.network_firewall.rule_group_metadatas
 WHERE region = '{{ region }}' -- required
 ;

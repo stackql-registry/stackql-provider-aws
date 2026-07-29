@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalInfo" /></td>
+    <td><CopyableCode code="additional_info" /></td>
     <td><code>object</code></td>
     <td>Other information about the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>object</code></td>
     <td>Information that identifies the noncompliant resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource. (DEVICE_CERTIFICATE, CA_CERTIFICATE, IOT_POLICY, COGNITO_IDENTITY_POOL, CLIENT_ID, ACCOUNT_SETTINGS, ROLE_ALIAS, IAM_ROLE, ISSUER_CERTIFICATE)</td>
 </tr>
@@ -144,9 +144,9 @@ The related resources of an Audit finding. The following resources can be return
 
 ```sql
 SELECT
-additionalInfo,
-resourceIdentifier,
-resourceType
+additional_info,
+resource_identifier,
+resource_type
 FROM aws.iot.related_resources_for_audit_findings
 WHERE findingId = '{{ findingId }}' -- required
 AND region = '{{ region }}' -- required

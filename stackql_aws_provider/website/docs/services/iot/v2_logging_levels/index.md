@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="logLevel" /></td>
+    <td><CopyableCode code="log_level" /></td>
     <td><code>string</code></td>
     <td>The logging level. (DEBUG, INFO, ERROR, WARN, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logTarget" /></td>
+    <td><CopyableCode code="log_target" /></td>
     <td><code>object</code></td>
     <td>A log target</td>
 </tr>
@@ -163,8 +163,8 @@ Lists logging levels. Requires permission to access the ListV2LoggingLevels acti
 
 ```sql
 SELECT
-logLevel,
-logTarget
+log_level,
+log_target
 FROM aws.iot.v2_logging_levels
 WHERE region = '{{ region }}' -- required
 AND targetType = '{{ targetType }}'

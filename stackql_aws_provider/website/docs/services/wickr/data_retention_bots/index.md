@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botExists" /></td>
+    <td><CopyableCode code="bot_exists" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a data retention bot exists in the network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botName" /></td>
+    <td><CopyableCode code="bot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the data retention bot. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isBotActive" /></td>
+    <td><CopyableCode code="is_bot_active" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the data retention bot is active and operational.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDataRetentionBotRegistered" /></td>
+    <td><CopyableCode code="is_data_retention_bot_registered" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the data retention bot has been registered with the network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDataRetentionServiceEnabled" /></td>
+    <td><CopyableCode code="is_data_retention_service_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the data retention service is enabled for the network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPubkeyMsgAcked" /></td>
+    <td><CopyableCode code="is_pubkey_msg_acked" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the public key message has been acknowledged by the bot.</td>
 </tr>
@@ -170,12 +170,12 @@ Retrieves information about the data retention bot in a Wickr network, including
 
 ```sql
 SELECT
-botExists,
-botName,
-isBotActive,
-isDataRetentionBotRegistered,
-isDataRetentionServiceEnabled,
-isPubkeyMsgAcked
+bot_exists,
+bot_name,
+is_bot_active,
+is_data_retention_bot_registered,
+is_data_retention_service_enabled,
+is_pubkey_msg_acked
 FROM aws.wickr.data_retention_bots
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required

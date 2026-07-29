@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a framework is created, in ISO 8601 representation. The value of CreationTime is accurate to milliseconds. For example, 2020-07-10T15:00:00.000-08:00 represents the 10th of July 2020 at 3:00 PM 8 hours behind UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The deployment status of a framework. The statuses are: CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS | COMPLETED | FAILED</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkArn" /></td>
+    <td><CopyableCode code="framework_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format of the ARN depends on the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkControls" /></td>
+    <td><CopyableCode code="framework_controls" /></td>
     <td><code>array</code></td>
     <td>The controls that make up the framework. Each control in the list has a name, input parameters, and scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkDescription" /></td>
+    <td><CopyableCode code="framework_description" /></td>
     <td><code>string</code></td>
     <td>An optional description of the framework. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkName" /></td>
+    <td><CopyableCode code="framework_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of a framework. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;_a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkStatus" /></td>
+    <td><CopyableCode code="framework_status" /></td>
     <td><code>string</code></td>
     <td>A framework consists of one or more controls. Each control governs a resource, such as backup plans, backup selections, backup vaults, or recovery points. You can also turn Config recording on or off for each resource. The statuses are: ACTIVE when recording is turned on for all resources governed by the framework. PARTIALLY_ACTIVE when recording is turned off for at least one resource governed by the framework. INACTIVE when recording is turned off for all resources governed by the framework. UNAVAILABLE when Backup is unable to validate recording status at this time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdempotencyToken" /></td>
+    <td><CopyableCode code="idempotency_token" /></td>
     <td><code>string</code></td>
     <td>A customer-chosen string that you can use to distinguish between otherwise identical calls to DescribeFrameworkOutput. Retrying a successful request with the same idempotency token results in a success message with no action taken.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Frameworks" /></td>
+    <td><CopyableCode code="frameworks" /></td>
     <td><code>array</code></td>
     <td>The frameworks with details for each framework, including the framework name, Amazon Resource Name (ARN), description, number of controls, creation time, and deployment status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</td>
 </tr>
@@ -223,14 +223,14 @@ Returns the framework details for the specified FrameworkName.
 
 ```sql
 SELECT
-CreationTime,
-DeploymentStatus,
-FrameworkArn,
-FrameworkControls,
-FrameworkDescription,
-FrameworkName,
-FrameworkStatus,
-IdempotencyToken
+creation_time,
+deployment_status,
+framework_arn,
+framework_controls,
+framework_description,
+framework_name,
+framework_status,
+idempotency_token
 FROM aws.backup.frameworks
 WHERE framework_name = '{{ framework_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -243,8 +243,8 @@ Returns a list of all frameworks for an Amazon Web Services account and Amazon W
 
 ```sql
 SELECT
-Frameworks,
-NextToken
+frameworks,
+next_token
 FROM aws.backup.frameworks
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -285,8 +285,8 @@ SELECT
 '{{ FrameworkTags }}',
 '{{ region }}'
 RETURNING
-FrameworkArn,
-FrameworkName
+framework_arn,
+framework_name
 ;
 ```
 </TabItem>
@@ -344,9 +344,9 @@ WHERE
 framework_name = '{{ framework_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CreationTime,
-FrameworkArn,
-FrameworkName;
+creation_time,
+framework_arn,
+framework_name;
 ```
 </TabItem>
 </Tabs>

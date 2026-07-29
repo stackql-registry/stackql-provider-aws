@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the custom plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the custom plugin was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customPluginArn" /></td>
+    <td><CopyableCode code="custom_plugin_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customPluginState" /></td>
+    <td><CopyableCode code="custom_plugin_state" /></td>
     <td><code>string</code></td>
     <td>The state of the custom plugin. (CREATING, CREATE_FAILED, ACTIVE, UPDATING, UPDATE_FAILED, DELETING)</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the custom plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestRevision" /></td>
+    <td><CopyableCode code="latest_revision" /></td>
     <td><code>object</code></td>
     <td>The latest successfully created revision of the custom plugin. If there are no successfully created revisions, this field will be absent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateDescription" /></td>
+    <td><CopyableCode code="state_description" /></td>
     <td><code>object</code></td>
     <td>Details about the state of a custom plugin.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the custom plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the custom plugin was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customPluginArn" /></td>
+    <td><CopyableCode code="custom_plugin_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customPluginState" /></td>
+    <td><CopyableCode code="custom_plugin_state" /></td>
     <td><code>string</code></td>
     <td>The state of the custom plugin. (CREATING, CREATE_FAILED, ACTIVE, UPDATING, UPDATE_FAILED, DELETING)</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the custom plugin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestRevision" /></td>
+    <td><CopyableCode code="latest_revision" /></td>
     <td><code>object</code></td>
     <td>The latest revision of the custom plugin.</td>
 </tr>
@@ -237,12 +237,12 @@ A summary description of the custom plugin.
 ```sql
 SELECT
 name,
-creationTime,
-customPluginArn,
-customPluginState,
+creation_time,
+custom_plugin_arn,
+custom_plugin_state,
 description,
-latestRevision,
-stateDescription
+latest_revision,
+state_description
 FROM aws.kafkaconnect.custom_plugins
 WHERE custom_plugin_arn = '{{ custom_plugin_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -256,11 +256,11 @@ Returns a list of all of the custom plugins in this account and Region.
 ```sql
 SELECT
 name,
-creationTime,
-customPluginArn,
-customPluginState,
+creation_time,
+custom_plugin_arn,
+custom_plugin_state,
 description,
-latestRevision
+latest_revision
 FROM aws.kafkaconnect.custom_plugins
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -303,8 +303,8 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-customPluginArn,
-customPluginState,
+custom_plugin_arn,
+custom_plugin_state,
 revision
 ;
 ```

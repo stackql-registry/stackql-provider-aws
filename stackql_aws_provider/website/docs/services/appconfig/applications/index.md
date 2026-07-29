@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The application name.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The application name.</td>
 </tr>
@@ -232,9 +232,9 @@ Retrieves information about an application.
 
 ```sql
 SELECT
-Description,
-Id,
-Name
+description,
+id,
+name
 FROM aws.appconfig.applications
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -247,9 +247,9 @@ Lists all applications in your Amazon Web Services account.
 
 ```sql
 SELECT
-Description,
-Id,
-Name
+description,
+id,
+name
 FROM aws.appconfig.applications
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -286,9 +286,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Description,
-Id,
-Name
+description,
+id,
+name
 ;
 ```
 </TabItem>
@@ -333,9 +333,9 @@ WHERE
 application_id = '{{ application_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Description,
-Id,
-Name;
+description,
+id,
+name;
 ```
 </TabItem>
 </Tabs>

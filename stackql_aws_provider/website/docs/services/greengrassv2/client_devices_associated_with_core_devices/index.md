@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationTimestamp" /></td>
+    <td><CopyableCode code="association_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the client device was associated, expressed in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IoT thing that represents the associated client device.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieves a paginated list of client devices that are associated with a core dev
 
 ```sql
 SELECT
-associationTimestamp,
-thingName
+association_timestamp,
+thing_name
 FROM aws.greengrassv2.client_devices_associated_with_core_devices
 WHERE core_device_thing_name = '{{ core_device_thing_name }}' -- required
 AND region = '{{ region }}' -- required

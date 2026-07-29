@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blob" /></td>
+    <td><CopyableCode code="blob" /></td>
     <td><code>string (byte)</code></td>
     <td>This Blob contains the body of the style descriptor which is in application/json format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>Header that instructs caching configuration for the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Header that represents the format of the response. The response returns the following as the HTTP body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The style descriptor's Etag.</td>
 </tr>
@@ -179,10 +179,10 @@ GetStyleDescriptor returns information about the style. For more information, se
 
 ```sql
 SELECT
-Blob,
-CacheControl,
-ContentType,
-ETag
+blob,
+cache_control,
+content_type,
+e_tag
 FROM aws.geo_maps.style_descriptors
 WHERE style = '{{ style }}' -- required
 AND region = '{{ region }}' -- required

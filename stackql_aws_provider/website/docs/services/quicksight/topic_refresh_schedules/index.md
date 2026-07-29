@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshSchedule" /></td>
+    <td><CopyableCode code="refresh_schedule" /></td>
     <td><code>object</code></td>
     <td>A structure that represents a topic refresh schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicId" /></td>
+    <td><CopyableCode code="topic_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the topic that contains the refresh schedule that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.\\+&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RefreshSchedules" /></td>
+    <td><CopyableCode code="refresh_schedules" /></td>
     <td><code>array</code></td>
     <td>The list of topic refresh schedules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicId" /></td>
+    <td><CopyableCode code="topic_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the topic that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.\\+&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -228,12 +228,12 @@ Deletes a topic refresh schedule.
 
 ```sql
 SELECT
-DatasetArn,
-RefreshSchedule,
-RequestId,
-Status,
-TopicArn,
-TopicId
+dataset_arn,
+refresh_schedule,
+request_id,
+status,
+topic_arn,
+topic_id
 FROM aws.quicksight.topic_refresh_schedules
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND topic_id = '{{ topic_id }}' -- required
@@ -248,11 +248,11 @@ Lists all of the refresh schedules for a topic.
 
 ```sql
 SELECT
-RefreshSchedules,
-RequestId,
-Status,
-TopicArn,
-TopicId
+refresh_schedules,
+request_id,
+status,
+topic_arn,
+topic_id
 FROM aws.quicksight.topic_refresh_schedules
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND topic_id = '{{ topic_id }}' -- required
@@ -293,11 +293,11 @@ SELECT
 '{{ topic_id }}',
 '{{ region }}'
 RETURNING
-DatasetArn,
-RequestId,
-Status,
-TopicArn,
-TopicId
+dataset_arn,
+request_id,
+status,
+topic_arn,
+topic_id
 ;
 ```
 </TabItem>
@@ -358,11 +358,11 @@ AND dataset_id = '{{ dataset_id }}' --required
 AND region = '{{ region }}' --required
 AND RefreshSchedule = '{{ RefreshSchedule }}' --required
 RETURNING
-DatasetArn,
-RequestId,
-Status,
-TopicArn,
-TopicId;
+dataset_arn,
+request_id,
+status,
+topic_arn,
+topic_id;
 ```
 </TabItem>
 </Tabs>

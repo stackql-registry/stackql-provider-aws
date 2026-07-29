@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="configurationId" /></td>
+    <td><CopyableCode code="configuration_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated unique ID for the trigger.</td>
 </tr>
@@ -138,7 +138,7 @@ Gets information about triggers configured for a repository.
 
 ```sql
 SELECT
-configurationId,
+configuration_id,
 triggers
 FROM aws.codecommit.repository_triggers
 WHERE region = '{{ region }}' -- required
@@ -170,7 +170,7 @@ region = '{{ region }}' --required
 AND repositoryName = '{{ repositoryName }}' --required
 AND triggers = '{{ triggers }}' --required
 RETURNING
-configurationId;
+configuration_id;
 ```
 </TabItem>
 </Tabs>

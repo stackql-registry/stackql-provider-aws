@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryName" /></td>
+    <td><CopyableCode code="registry_name" /></td>
     <td><code>string</code></td>
     <td>The name of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the registry.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RegistryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistryName" /></td>
+    <td><CopyableCode code="registry_name" /></td>
     <td><code>string</code></td>
     <td>The name of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the registry.</td>
 </tr>
@@ -240,10 +240,10 @@ Describes the registry.
 
 ```sql
 SELECT
-Description,
-RegistryArn,
-RegistryName,
-Tags
+description,
+registry_arn,
+registry_name,
+tags
 FROM aws.schemas.registries
 WHERE registry_name = '{{ registry_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -256,9 +256,9 @@ List the registries.
 
 ```sql
 SELECT
-RegistryArn,
-RegistryName,
-Tags
+registry_arn,
+registry_name,
+tags
 FROM aws.schemas.registries
 WHERE region = '{{ region }}' -- required
 AND limit = '{{ limit }}'
@@ -297,10 +297,10 @@ SELECT
 '{{ registry_name }}',
 '{{ region }}'
 RETURNING
-Description,
-RegistryArn,
-RegistryName,
-Tags
+description,
+registry_arn,
+registry_name,
+tags
 ;
 ```
 </TabItem>
@@ -347,10 +347,10 @@ WHERE
 registry_name = '{{ registry_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Description,
-RegistryArn,
-RegistryName,
-Tags;
+description,
+registry_arn,
+registry_name,
+tags;
 ```
 </TabItem>
 </Tabs>

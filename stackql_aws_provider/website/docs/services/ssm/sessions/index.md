@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessType" /></td>
+    <td><CopyableCode code="access_type" /></td>
     <td><code>string</code></td>
     <td>Standard access type is the default for Session Manager sessions. JustInTime is the access type for Just-in-time node access. (Standard, JustInTime)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Details" /></td>
+    <td><CopyableCode code="details" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentName" /></td>
+    <td><CopyableCode code="document_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Session Manager SSM document used to define the parameters and plugin settings for the session. For example, SSM-SessionManagerRunShell. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in ISO-8601 Extended format, when the session was terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSessionDuration" /></td>
+    <td><CopyableCode code="max_session_duration" /></td>
     <td><code>string</code></td>
     <td>The maximum duration of a session before it terminates. (pattern: &lt;code&gt;^(&#91;1-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;&#91;0-9&#93;|1&#91;0-4&#93;&#91;0-3&#93;&#91;0-9&#93;|1440)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputUrl" /></td>
+    <td><CopyableCode code="output_url" /></td>
     <td><code>object</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services user that started the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The reason for connecting to the instance. (pattern: &lt;code&gt;^.&#123;1,256&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in ISO-8601 Extended format, when the session began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the session. For example, "Connected" or "Terminated". (Connected, Connecting, Disconnected, Terminated, Terminating, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>The managed node that the Session Manager session connected to.</td>
 </tr>
@@ -181,18 +181,18 @@ Retrieves a list of all active sessions (both connected and disconnected) or ter
 
 ```sql
 SELECT
-AccessType,
-Details,
-DocumentName,
-EndDate,
-MaxSessionDuration,
-OutputUrl,
-Owner,
-Reason,
-SessionId,
-StartDate,
-Status,
-Target
+access_type,
+details,
+document_name,
+end_date,
+max_session_duration,
+output_url,
+owner,
+reason,
+session_id,
+start_date,
+status,
+target
 FROM aws.ssm.sessions
 WHERE region = '{{ region }}' -- required
 ;

@@ -52,52 +52,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the workspace. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the workspace was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workspace was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the workspace. (pattern: &lt;code&gt;.*\\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Theme" /></td>
+    <td><CopyableCode code="theme" /></td>
     <td><code>object</code></td>
     <td>Contains theme configuration for a workspace, supporting both light and dark modes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title displayed for the workspace. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>Controls who can access the workspace. Valid values are: ALL (all users), ASSIGNED (only assigned users and routing profiles), and NONE (not visible). (ALL, ASSIGNED, NONE)</td>
 </tr>
@@ -116,27 +116,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the workspace was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workspace was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the workspace. (pattern: &lt;code&gt;.*\\S.*&lt;/code&gt;)</td>
 </tr>
@@ -155,42 +155,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workspace was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the workspace. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the workspace. (pattern: &lt;code&gt;.*\\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title displayed for the workspace. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>The visibility setting of the workspace. (ALL, ASSIGNED, NONE)</td>
 </tr>
@@ -351,16 +351,16 @@ Retrieves details about a workspace, including its configuration and metadata.
 
 ```sql
 SELECT
-Arn,
-Description,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name,
-Tags,
-Theme,
-Title,
-Visibility
+arn,
+description,
+id,
+last_modified_region,
+last_modified_time,
+name,
+tags,
+theme,
+title,
+visibility
 FROM aws.connect.workspaces
 WHERE instance_id = '{{ instance_id }}' -- required
 AND workspace_id = '{{ workspace_id }}' -- required
@@ -374,11 +374,11 @@ Lists the workspaces in an Amazon Connect instance.
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.workspaces
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -393,14 +393,14 @@ Searches workspaces based on name, description, visibility, or tags.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-Id,
-Name,
-Tags,
-Title,
-Visibility
+arn,
+created_at,
+description,
+id,
+name,
+tags,
+title,
+visibility
 FROM aws.connect.workspaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -441,8 +441,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-WorkspaceArn,
-WorkspaceId
+workspace_arn,
+workspace_id
 ;
 ```
 </TabItem>
@@ -558,8 +558,8 @@ AND workspace_id = '{{ workspace_id }}' --required
 AND region = '{{ region }}' --required
 AND ResourceArns = '{{ ResourceArns }}' --required
 RETURNING
-FailedList,
-SuccessfulList;
+failed_list,
+successful_list;
 ```
 </TabItem>
 <TabItem value="update_workspace_metadata">

@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data source. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceArn" /></td>
+    <td><CopyableCode code="data_source_arn" /></td>
     <td><code>string</code></td>
     <td>The data source Amazon Resource Name (ARN).</td>
 </tr>
@@ -66,47 +66,47 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dynamodbConfig" /></td>
+    <td><CopyableCode code="dynamodb_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Amazon DynamoDB data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="elasticsearchConfig" /></td>
+    <td><CopyableCode code="elasticsearch_config" /></td>
     <td><code>object</code></td>
     <td>Describes an OpenSearch data source configuration. As of September 2021, Amazon Elasticsearch service is Amazon OpenSearch Service. This configuration is deprecated. For new data sources, use OpenSearchServiceDataSourceConfig to specify an OpenSearch data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventBridgeConfig" /></td>
+    <td><CopyableCode code="event_bridge_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Amazon EventBridge bus data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpConfig" /></td>
+    <td><CopyableCode code="http_config" /></td>
     <td><code>object</code></td>
     <td>Describes an HTTP data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaConfig" /></td>
+    <td><CopyableCode code="lambda_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Lambda data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsConfig" /></td>
+    <td><CopyableCode code="metrics_config" /></td>
     <td><code>string</code></td>
     <td>Enables or disables enhanced data source metrics for specified data sources. Note that metricsConfig won't be used unless the dataSourceLevelMetricsBehavior value is set to PER_DATA_SOURCE_METRICS. If the dataSourceLevelMetricsBehavior is set to FULL_REQUEST_DATA_SOURCE_METRICS instead, metricsConfig will be ignored. However, you can still set its value. metricsConfig can be ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="openSearchServiceConfig" /></td>
+    <td><CopyableCode code="open_search_service_config" /></td>
     <td><code>object</code></td>
     <td>Describes an OpenSearch data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationalDatabaseConfig" /></td>
+    <td><CopyableCode code="relational_database_config" /></td>
     <td><code>object</code></td>
     <td>Describes a relational database data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceRoleArn" /></td>
+    <td><CopyableCode code="service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management (IAM) service role Amazon Resource Name (ARN) for the data source. The system assumes this role when accessing the data source.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data source. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceArn" /></td>
+    <td><CopyableCode code="data_source_arn" /></td>
     <td><code>string</code></td>
     <td>The data source Amazon Resource Name (ARN).</td>
 </tr>
@@ -145,47 +145,47 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dynamodbConfig" /></td>
+    <td><CopyableCode code="dynamodb_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Amazon DynamoDB data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="elasticsearchConfig" /></td>
+    <td><CopyableCode code="elasticsearch_config" /></td>
     <td><code>object</code></td>
     <td>Describes an OpenSearch data source configuration. As of September 2021, Amazon Elasticsearch service is Amazon OpenSearch Service. This configuration is deprecated. For new data sources, use OpenSearchServiceDataSourceConfig to specify an OpenSearch data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventBridgeConfig" /></td>
+    <td><CopyableCode code="event_bridge_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Amazon EventBridge bus data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="httpConfig" /></td>
+    <td><CopyableCode code="http_config" /></td>
     <td><code>object</code></td>
     <td>Describes an HTTP data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaConfig" /></td>
+    <td><CopyableCode code="lambda_config" /></td>
     <td><code>object</code></td>
     <td>Describes an Lambda data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsConfig" /></td>
+    <td><CopyableCode code="metrics_config" /></td>
     <td><code>string</code></td>
     <td>Enables or disables enhanced data source metrics for specified data sources. Note that metricsConfig won't be used unless the dataSourceLevelMetricsBehavior value is set to PER_DATA_SOURCE_METRICS. If the dataSourceLevelMetricsBehavior is set to FULL_REQUEST_DATA_SOURCE_METRICS instead, metricsConfig will be ignored. However, you can still set its value. metricsConfig can be ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="openSearchServiceConfig" /></td>
+    <td><CopyableCode code="open_search_service_config" /></td>
     <td><code>object</code></td>
     <td>Describes an OpenSearch data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationalDatabaseConfig" /></td>
+    <td><CopyableCode code="relational_database_config" /></td>
     <td><code>object</code></td>
     <td>Describes a relational database data source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceRoleArn" /></td>
+    <td><CopyableCode code="service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management (IAM) service role Amazon Resource Name (ARN) for the data source. The system assumes this role when accessing the data source.</td>
 </tr>
@@ -316,17 +316,17 @@ Retrieves a DataSource object.
 ```sql
 SELECT
 name,
-dataSourceArn,
+data_source_arn,
 description,
-dynamodbConfig,
-elasticsearchConfig,
-eventBridgeConfig,
-httpConfig,
-lambdaConfig,
-metricsConfig,
-openSearchServiceConfig,
-relationalDatabaseConfig,
-serviceRoleArn,
+dynamodb_config,
+elasticsearch_config,
+event_bridge_config,
+http_config,
+lambda_config,
+metrics_config,
+open_search_service_config,
+relational_database_config,
+service_role_arn,
 type_
 FROM aws.appsync.data_sources
 WHERE api_id = '{{ api_id }}' -- required
@@ -342,17 +342,17 @@ Lists the data sources for a given API.
 ```sql
 SELECT
 name,
-dataSourceArn,
+data_source_arn,
 description,
-dynamodbConfig,
-elasticsearchConfig,
-eventBridgeConfig,
-httpConfig,
-lambdaConfig,
-metricsConfig,
-openSearchServiceConfig,
-relationalDatabaseConfig,
-serviceRoleArn,
+dynamodb_config,
+elasticsearch_config,
+event_bridge_config,
+http_config,
+lambda_config,
+metrics_config,
+open_search_service_config,
+relational_database_config,
+service_role_arn,
 type_
 FROM aws.appsync.data_sources
 WHERE api_id = '{{ api_id }}' -- required
@@ -411,7 +411,7 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-dataSource
+data_source
 ;
 ```
 </TabItem>
@@ -531,7 +531,7 @@ AND name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 AND type = '{{ type }}' --required
 RETURNING
-dataSource;
+data_source;
 ```
 </TabItem>
 </Tabs>

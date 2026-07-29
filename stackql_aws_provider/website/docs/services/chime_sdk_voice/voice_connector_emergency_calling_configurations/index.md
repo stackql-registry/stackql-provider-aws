@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DNIS" /></td>
+    <td><CopyableCode code="dnis" /></td>
     <td><code>array</code></td>
     <td>The Dialed Number Identification Service (DNIS) emergency calling configuration details.</td>
 </tr>
@@ -138,7 +138,7 @@ Retrieves the emergency calling configuration details for the specified Voice Co
 
 ```sql
 SELECT
-DNIS
+dnis
 FROM aws.chime_sdk_voice.voice_connector_emergency_calling_configurations
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -169,7 +169,7 @@ voice_connector_id = '{{ voice_connector_id }}' --required
 AND region = '{{ region }}' --required
 AND EmergencyCallingConfiguration = '{{ EmergencyCallingConfiguration }}' --required
 RETURNING
-EmergencyCallingConfiguration;
+emergency_calling_configuration;
 ```
 </TabItem>
 </Tabs>

@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientIp" /></td>
+    <td><CopyableCode code="client_ip" /></td>
     <td><code>string</code></td>
     <td>The IP address of the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientIpv6Address" /></td>
+    <td><CopyableCode code="client_ipv_6_address" /></td>
     <td><code>string</code></td>
     <td>The IPv6 address assigned to the client connection when using a dual-stack Client VPN endpoint. This field is only populated when the endpoint is configured for dual-stack addressing, and the client is using IPv6 for connectivity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientVpnEndpointId" /></td>
+    <td><CopyableCode code="client_vpn_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Client VPN endpoint to which the client is connected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CommonName" /></td>
+    <td><CopyableCode code="common_name" /></td>
     <td><code>string</code></td>
     <td>The common name associated with the client. This is either the name of the client certificate, or the Active Directory user name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionEndTime" /></td>
+    <td><CopyableCode code="connection_end_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the client connection was terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionEstablishedTime" /></td>
+    <td><CopyableCode code="connection_established_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the client connection was established.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the client connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressBytes" /></td>
+    <td><CopyableCode code="egress_bytes" /></td>
     <td><code>string</code></td>
     <td>The number of bytes received by the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressPackets" /></td>
+    <td><CopyableCode code="egress_packets" /></td>
     <td><code>string</code></td>
     <td>The number of packets received by the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressBytes" /></td>
+    <td><CopyableCode code="ingress_bytes" /></td>
     <td><code>string</code></td>
     <td>The number of bytes sent by the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngressPackets" /></td>
+    <td><CopyableCode code="ingress_packets" /></td>
     <td><code>string</code></td>
     <td>The number of packets sent by the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PostureComplianceStatuses" /></td>
+    <td><CopyableCode code="posture_compliance_statuses" /></td>
     <td><code>string</code></td>
     <td>The statuses returned by the client connect handler for posture compliance, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the client connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The current date and time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The username of the client who established the client connection. This information is only provided if Active Directory client authentication is used.</td>
 </tr>
@@ -231,21 +231,21 @@ Describes active client connections and connections that have been terminated wi
 
 ```sql
 SELECT
-ClientIp,
-ClientIpv6Address,
-ClientVpnEndpointId,
-CommonName,
-ConnectionEndTime,
-ConnectionEstablishedTime,
-ConnectionId,
-EgressBytes,
-EgressPackets,
-IngressBytes,
-IngressPackets,
-PostureComplianceStatuses,
-Status,
-Timestamp,
-Username
+client_ip,
+client_ipv_6_address,
+client_vpn_endpoint_id,
+common_name,
+connection_end_time,
+connection_established_time,
+connection_id,
+egress_bytes,
+egress_packets,
+ingress_bytes,
+ingress_packets,
+posture_compliance_statuses,
+status,
+timestamp,
+username
 FROM aws.ec2.client_vpn_connections
 WHERE ClientVpnEndpointId = '{{ ClientVpnEndpointId }}' -- required
 AND region = '{{ region }}' -- required

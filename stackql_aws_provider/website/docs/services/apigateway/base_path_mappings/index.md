@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="basePath" /></td>
+    <td><CopyableCode code="base_path" /></td>
     <td><code>string</code></td>
     <td>The base path name that callers of the API must provide as part of the URL after the domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="restApiId" /></td>
+    <td><CopyableCode code="rest_api_id" /></td>
     <td><code>string</code></td>
     <td>The string identifier of the associated RestApi.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="basePath" /></td>
+    <td><CopyableCode code="base_path" /></td>
     <td><code>string</code></td>
     <td>The base path name that callers of the API must provide as part of the URL after the domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="restApiId" /></td>
+    <td><CopyableCode code="rest_api_id" /></td>
     <td><code>string</code></td>
     <td>The string identifier of the associated RestApi.</td>
 </tr>
@@ -213,8 +213,8 @@ Describe a BasePathMapping resource.
 
 ```sql
 SELECT
-basePath,
-restApiId,
+base_path,
+rest_api_id,
 stage
 FROM aws.apigateway.base_path_mappings
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -230,8 +230,8 @@ Represents a collection of BasePathMapping resources.
 
 ```sql
 SELECT
-basePath,
-restApiId,
+base_path,
+rest_api_id,
 stage
 FROM aws.apigateway.base_path_mappings
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -275,8 +275,8 @@ SELECT
 '{{ region }}',
 '{{ domainNameId }}'
 RETURNING
-basePath,
-restApiId,
+base_path,
+rest_api_id,
 stage
 ;
 ```
@@ -330,8 +330,8 @@ AND base_path = '{{ base_path }}' --required
 AND region = '{{ region }}' --required
 AND domainNameId = '{{ domainNameId}}'
 RETURNING
-basePath,
-restApiId,
+base_path,
+rest_api_id,
 stage;
 ```
 </TabItem>

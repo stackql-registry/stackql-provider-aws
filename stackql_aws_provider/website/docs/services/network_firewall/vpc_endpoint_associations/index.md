@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VpcEndpointAssociation" /></td>
+    <td><CopyableCode code="vpc_endpoint_association" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for the VPC endpoint association. These settings include the firewall and the VPC and subnet to use for the firewall endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointAssociationStatus" /></td>
+    <td><CopyableCode code="vpc_endpoint_association_status" /></td>
     <td><code>object</code></td>
     <td>Detailed information about the current status of a VpcEndpointAssociation. You can retrieve this by calling DescribeVpcEndpointAssociation and providing the VPC endpoint association ARN.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VpcEndpointAssociationArn" /></td>
+    <td><CopyableCode code="vpc_endpoint_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a VPC endpoint association. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
@@ -166,8 +166,8 @@ Returns the data object for the specified VPC endpoint association.
 
 ```sql
 SELECT
-VpcEndpointAssociation,
-VpcEndpointAssociationStatus
+vpc_endpoint_association,
+vpc_endpoint_association_status
 FROM aws.network_firewall.vpc_endpoint_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -179,7 +179,7 @@ Retrieves the metadata for the VPC endpoint associations that you have defined. 
 
 ```sql
 SELECT
-VpcEndpointAssociationArn
+vpc_endpoint_association_arn
 FROM aws.network_firewall.vpc_endpoint_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,8 +218,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-VpcEndpointAssociation,
-VpcEndpointAssociationStatus
+vpc_endpoint_association,
+vpc_endpoint_association_status
 ;
 ```
 </TabItem>

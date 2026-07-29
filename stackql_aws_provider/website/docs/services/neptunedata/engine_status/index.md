@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dbEngineVersion" /></td>
+    <td><CopyableCode code="db_engine_version" /></td>
     <td><code>string</code></td>
     <td>Set to the Neptune engine version running on your DB cluster. If this engine version has been manually patched since it was released, the version number is prefixed by Patch-.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dfeQueryEngine" /></td>
+    <td><CopyableCode code="dfe_query_engine" /></td>
     <td><code>string</code></td>
     <td>Set to enabled if the DFE engine is fully enabled, or to viaQueryHint (the default) if the DFE engine is only used with queries that have the useDFE query hint set to true.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about the Gremlin query language available on your cluster. Specifically, it contains a version field that specifies the current TinkerPop version being used by the engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="labMode" /></td>
+    <td><CopyableCode code="lab_mode" /></td>
     <td><code>object</code></td>
     <td>Contains Lab Mode settings being used by the engine.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>Set to reader if the instance is a read-replica, or to writer if the instance is the primary instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollingBackTrxCount" /></td>
+    <td><CopyableCode code="rolling_back_trx_count" /></td>
     <td><code>integer</code></td>
     <td>If there are transactions being rolled back, this field is set to the number of such transactions. If there are none, the field doesn't appear at all.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollingBackTrxEarliestStartTime" /></td>
+    <td><CopyableCode code="rolling_back_trx_earliest_start_time" /></td>
     <td><code>string</code></td>
     <td>Set to the start time of the earliest transaction being rolled back. If no transactions are being rolled back, the field doesn't appear at all.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about the SPARQL query language available on your cluster. Specifically, it contains a version field that specifies the current SPARQL version being used by the engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>Set to the UTC time at which the current server process started.</td>
 </tr>
@@ -179,18 +179,18 @@ Retrieves the status of the graph database on the host. When invoking this opera
 
 ```sql
 SELECT
-dbEngineVersion,
-dfeQueryEngine,
+db_engine_version,
+dfe_query_engine,
 features,
 gremlin,
-labMode,
+lab_mode,
 opencypher,
 role,
-rollingBackTrxCount,
-rollingBackTrxEarliestStartTime,
+rolling_back_trx_count,
+rolling_back_trx_earliest_start_time,
 settings,
 sparql,
-startTime,
+start_time,
 status
 FROM aws.neptunedata.engine_status
 WHERE region = '{{ region }}' -- required

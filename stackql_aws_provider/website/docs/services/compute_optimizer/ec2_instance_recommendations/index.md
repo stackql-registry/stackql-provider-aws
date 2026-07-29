@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe errors of the request. For example, an error is returned if you request recommendations for an instance of an unsupported instance family.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceRecommendations" /></td>
+    <td><CopyableCode code="instance_recommendations" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe instance recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to advance to the next page of instance recommendations. This value is null when there are no more pages of instance recommendations to return.</td>
 </tr>
@@ -137,8 +137,8 @@ Returns Amazon EC2 instance recommendations. Compute Optimizer generates recomme
 ```sql
 SELECT
 errors,
-instanceRecommendations,
-nextToken
+instance_recommendations,
+next_token
 FROM aws.compute_optimizer.ec2_instance_recommendations
 WHERE region = '{{ region }}' -- required
 ;

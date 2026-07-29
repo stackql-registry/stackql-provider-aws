@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>A document that defines an entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flowActionsRoleArn" /></td>
+    <td><CopyableCode code="flow_actions_role_arn" /></td>
     <td><code>string</code></td>
     <td>The AWS Identity and Access Management (IAM) role that AWS IoT Things Graph assumes during flow execution in a cloud deployment. This role must have read and write permissionss to AWS Lambda and AWS IoT and to any other AWS services that the flow uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsConfiguration" /></td>
+    <td><CopyableCode code="metrics_configuration" /></td>
     <td><code>object</code></td>
     <td>An object that specifies whether cloud metrics are collected in a deployment and, if so, what role is used to collect metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3BucketName" /></td>
+    <td><CopyableCode code="s_3_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Simple Storage Service bucket where information about a system instance is stored.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>An object that contains summary information about a system instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validatedDependencyRevisions" /></td>
+    <td><CopyableCode code="validated_dependency_revisions" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain all of the IDs and revision numbers of workflows and systems that are used in a system instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validatedNamespaceVersion" /></td>
+    <td><CopyableCode code="validated_namespace_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the user's namespace against which the system instance was validated.</td>
 </tr>
@@ -110,22 +110,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the system instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the system instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="greengrassGroupId" /></td>
+    <td><CopyableCode code="greengrass_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Greengrass group where the system instance is deployed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="greengrassGroupName" /></td>
+    <td><CopyableCode code="greengrass_group_name" /></td>
     <td><code>string</code></td>
     <td>The ID of the Greengrass group where the system instance is deployed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="greengrassGroupVersionId" /></td>
+    <td><CopyableCode code="greengrass_group_version_id" /></td>
     <td><code>string</code></td>
     <td>The version of the Greengrass group where the system instance is deployed.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The target of the system instance. (GREENGRASS, CLOUD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the system instance was last updated.</td>
 </tr>
@@ -232,12 +232,12 @@ Gets a system instance.
 ```sql
 SELECT
 definition,
-flowActionsRoleArn,
-metricsConfiguration,
-s3BucketName,
+flow_actions_role_arn,
+metrics_configuration,
+s_3_bucket_name,
 summary,
-validatedDependencyRevisions,
-validatedNamespaceVersion
+validated_dependency_revisions,
+validated_namespace_version
 FROM aws.iotthingsgraph.system_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,13 +251,13 @@ Searches for system instances in the user's account.
 SELECT
 id,
 arn,
-createdAt,
-greengrassGroupId,
-greengrassGroupName,
-greengrassGroupVersionId,
+created_at,
+greengrass_group_id,
+greengrass_group_name,
+greengrass_group_version_id,
 status,
 target,
-updatedAt
+updated_at
 FROM aws.iotthingsgraph.system_instances
 WHERE region = '{{ region }}' -- required
 ;

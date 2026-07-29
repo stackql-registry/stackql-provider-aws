@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressFamily" /></td>
+    <td><CopyableCode code="address_family" /></td>
     <td><code>string</code></td>
     <td>The address family (IPv4 or IPv6) for the IPAM prefix list resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the IPAM prefix list resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamArn" /></td>
+    <td><CopyableCode code="ipam_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IPAM associated with this resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPrefixListResolverArn" /></td>
+    <td><CopyableCode code="ipam_prefix_list_resolver_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IPAM prefix list resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPrefixListResolverId" /></td>
+    <td><CopyableCode code="ipam_prefix_list_resolver_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM prefix list resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamRegion" /></td>
+    <td><CopyableCode code="ipam_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the associated IPAM is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastVersionCreationStatus" /></td>
+    <td><CopyableCode code="last_version_creation_status" /></td>
     <td><code>string</code></td>
     <td>The status for the last time a version was created. Each version is a snapshot of what CIDRs matched your rules at that moment in time. The version number increments every time the CIDR list changes due to infrastructure changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastVersionCreationStatusMessage" /></td>
+    <td><CopyableCode code="last_version_creation_status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for the last time a version was created. Each version is a snapshot of what CIDRs matched your rules at that moment in time. The version number increments every time the CIDR list changes due to infrastructure changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the IPAM prefix list resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the IPAM prefix list resolver. Valid values include create-in-progress, create-complete, create-failed, modify-in-progress, modify-complete, modify-failed, delete-in-progress, delete-complete, and delete-failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the IPAM prefix list resolver.</td>
 </tr>
@@ -250,17 +250,17 @@ Describes one or more IPAM prefix list resolvers. Use this operation to view the
 
 ```sql
 SELECT
-AddressFamily,
-Description,
-IpamArn,
-IpamPrefixListResolverArn,
-IpamPrefixListResolverId,
-IpamRegion,
-LastVersionCreationStatus,
-LastVersionCreationStatusMessage,
-OwnerId,
-State,
-Tags
+address_family,
+description,
+ipam_arn,
+ipam_prefix_list_resolver_arn,
+ipam_prefix_list_resolver_id,
+ipam_region,
+last_version_creation_status,
+last_version_creation_status_message,
+owner_id,
+state,
+tags
 FROM aws.ec2.ipam_prefix_list_resolvers
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -308,17 +308,17 @@ SELECT
 '{{ TagSpecification }}',
 '{{ ClientToken }}'
 RETURNING
-AddressFamily,
-Description,
-IpamArn,
-IpamPrefixListResolverArn,
-IpamPrefixListResolverId,
-IpamRegion,
-LastVersionCreationStatus,
-LastVersionCreationStatusMessage,
-OwnerId,
-State,
-Tags
+address_family,
+description,
+ipam_arn,
+ipam_prefix_list_resolver_arn,
+ipam_prefix_list_resolver_id,
+ipam_region,
+last_version_creation_status,
+last_version_creation_status_message,
+owner_id,
+state,
+tags
 ;
 ```
 </TabItem>
@@ -385,17 +385,17 @@ AND DryRun = {{ DryRun}}
 AND Description = '{{ Description}}'
 AND Rule = '{{ Rule}}'
 RETURNING
-AddressFamily,
-Description,
-IpamArn,
-IpamPrefixListResolverArn,
-IpamPrefixListResolverId,
-IpamRegion,
-LastVersionCreationStatus,
-LastVersionCreationStatusMessage,
-OwnerId,
-State,
-Tags;
+address_family,
+description,
+ipam_arn,
+ipam_prefix_list_resolver_arn,
+ipam_prefix_list_resolver_id,
+ipam_region,
+last_version_creation_status,
+last_version_creation_status_message,
+owner_id,
+state,
+tags;
 ```
 </TabItem>
 </Tabs>

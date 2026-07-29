@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessToken" /></td>
+    <td><CopyableCode code="access_token" /></td>
     <td><code>string</code></td>
     <td>Your user's access token. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_=.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresIn" /></td>
+    <td><CopyableCode code="expires_in" /></td>
     <td><code>integer</code></td>
     <td>The expiration period of the authentication result in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdToken" /></td>
+    <td><CopyableCode code="id_token" /></td>
     <td><code>string</code></td>
     <td>Your user's ID token. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_=.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NewDeviceMetadata" /></td>
+    <td><CopyableCode code="new_device_metadata" /></td>
     <td><code>object</code></td>
     <td>The new device metadata from an authentication result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshToken" /></td>
+    <td><CopyableCode code="refresh_token" /></td>
     <td><code>string</code></td>
     <td>Your user's refresh token. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_=.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TokenType" /></td>
+    <td><CopyableCode code="token_type" /></td>
     <td><code>string</code></td>
     <td>The intended use of the token, for example Bearer.</td>
 </tr>
@@ -144,12 +144,12 @@ Given a refresh token, issues new ID, access, and optionally refresh tokens for 
 
 ```sql
 SELECT
-AccessToken,
-ExpiresIn,
-IdToken,
-NewDeviceMetadata,
-RefreshToken,
-TokenType
+access_token,
+expires_in,
+id_token,
+new_device_metadata,
+refresh_token,
+token_type
 FROM aws.cognito_idp.tokens_from_refresh_tokens
 WHERE region = '{{ region }}' -- required
 ;

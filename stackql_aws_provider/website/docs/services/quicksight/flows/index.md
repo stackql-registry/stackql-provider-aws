@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the principal who created the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time this flow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowId" /></td>
+    <td><CopyableCode code="flow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedAt" /></td>
+    <td><CopyableCode code="last_published_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time this flow was published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedBy" /></td>
+    <td><CopyableCode code="last_published_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the last principal who published the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the last principal who updated the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time this flow was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishState" /></td>
+    <td><CopyableCode code="publish_state" /></td>
     <td><code>string</code></td>
     <td>The publish state for the flow. The valid values are DRAFT, PUBLISHED, or PENDING_APPROVAL. (PUBLISHED, DRAFT, PENDING_APPROVAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunCount" /></td>
+    <td><CopyableCode code="run_count" /></td>
     <td><code>integer</code></td>
     <td>The number of runs done for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of users who have used the flow.</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the principal who created the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time this flow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowId" /></td>
+    <td><CopyableCode code="flow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the flow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedAt" /></td>
+    <td><CopyableCode code="last_published_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time this flow was published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPublishedBy" /></td>
+    <td><CopyableCode code="last_published_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the last principal who published the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the last principal who updated the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time this flow was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishState" /></td>
+    <td><CopyableCode code="publish_state" /></td>
     <td><code>string</code></td>
     <td>The publish state for the flow. The valid values are DRAFT, PUBLISHED, or PENDING_APPROVAL. (PUBLISHED, DRAFT, PENDING_APPROVAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunCount" /></td>
+    <td><CopyableCode code="run_count" /></td>
     <td><code>integer</code></td>
     <td>The number of runs done for the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserCount" /></td>
+    <td><CopyableCode code="user_count" /></td>
     <td><code>integer</code></td>
     <td>The number of users who have used the flow.</td>
 </tr>
@@ -282,19 +282,19 @@ Search for the flows in an Amazon Web Services account.
 
 ```sql
 SELECT
-Arn,
-CreatedBy,
-CreatedTime,
-Description,
-FlowId,
-LastPublishedAt,
-LastPublishedBy,
-LastUpdatedBy,
-LastUpdatedTime,
-Name,
-PublishState,
-RunCount,
-UserCount
+arn,
+created_by,
+created_time,
+description,
+flow_id,
+last_published_at,
+last_published_by,
+last_updated_by,
+last_updated_time,
+name,
+publish_state,
+run_count,
+user_count
 FROM aws.quicksight.flows
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -307,19 +307,19 @@ Lists flows in an Amazon Web Services account.
 
 ```sql
 SELECT
-Arn,
-CreatedBy,
-CreatedTime,
-Description,
-FlowId,
-LastPublishedAt,
-LastPublishedBy,
-LastUpdatedBy,
-LastUpdatedTime,
-Name,
-PublishState,
-RunCount,
-UserCount
+arn,
+created_by,
+created_time,
+description,
+flow_id,
+last_published_at,
+last_published_by,
+last_updated_by,
+last_updated_time,
+name,
+publish_state,
+run_count,
+user_count
 FROM aws.quicksight.flows
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required

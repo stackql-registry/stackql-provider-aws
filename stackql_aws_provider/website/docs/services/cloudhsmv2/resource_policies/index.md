@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy attached to a resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the resource policy document attached to a given resource. Cross-accou
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.cloudhsmv2.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -162,8 +162,8 @@ Policy = '{{ Policy }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Policy,
-ResourceArn;
+policy,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

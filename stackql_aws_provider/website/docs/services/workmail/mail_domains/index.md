@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DkimVerificationStatus" /></td>
+    <td><CopyableCode code="dkim_verification_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of a DKIM verification. (PENDING, VERIFIED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the domain is the default domain for your organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsTestDomain" /></td>
+    <td><CopyableCode code="is_test_domain" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the domain is a test domain provided by WorkMail, or a custom domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnershipVerificationStatus" /></td>
+    <td><CopyableCode code="ownership_verification_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the domain ownership verification. (PENDING, VERIFIED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Records" /></td>
+    <td><CopyableCode code="records" /></td>
     <td><code>array</code></td>
     <td>A list of the DNS records that WorkMail recommends adding in your DNS provider for the best user experience. The records configure your domain with DMARC, SPF, DKIM, and direct incoming email traffic to SES. See admin guide for more details.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MailDomains" /></td>
+    <td><CopyableCode code="mail_domains" /></td>
     <td><code>array</code></td>
     <td>The list of mail domain summaries, specifying domains that exist in the specified WorkMail organization, along with the information about whether the domain is or isn't the default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. The value becomes null when there are no more results to return. (pattern: &lt;code&gt;&#91;\S\s&#93;*|&#91;a-zA-Z0-9/+=&#93;&#123;1,1024&#125;&lt;/code&gt;)</td>
 </tr>
@@ -193,11 +193,11 @@ Gets details for a mail domain, including domain records required to configure y
 
 ```sql
 SELECT
-DkimVerificationStatus,
-IsDefault,
-IsTestDomain,
-OwnershipVerificationStatus,
-Records
+dkim_verification_status,
+is_default,
+is_test_domain,
+ownership_verification_status,
+records
 FROM aws.workmail.mail_domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,8 +209,8 @@ Lists the mail domains in a given WorkMail organization.
 
 ```sql
 SELECT
-MailDomains,
-NextToken
+mail_domains,
+next_token
 FROM aws.workmail.mail_domains
 WHERE region = '{{ region }}' -- required
 ;

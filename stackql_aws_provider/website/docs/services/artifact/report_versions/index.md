@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>Name for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="acceptanceType" /></td>
+    <td><CopyableCode code="acceptance_type" /></td>
     <td><code>string</code></td>
     <td>Acceptance type for report. (PASSTHROUGH, EXPLICIT)</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>Category for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="companyName" /></td>
+    <td><CopyableCode code="company_name" /></td>
     <td><code>string</code></td>
     <td>Associated company name for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
     <td>Description for the report resource. (pattern: &lt;code&gt;&#91;^&lt;&gt;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="periodEnd" /></td>
+    <td><CopyableCode code="period_end" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating the report resource effective end.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="periodStart" /></td>
+    <td><CopyableCode code="period_start" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp indicating the report resource effective start.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productName" /></td>
+    <td><CopyableCode code="product_name" /></td>
     <td><code>string</code></td>
     <td>Associated product name for the report resource. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>Current state of the report resource. (PUBLISHED, UNPUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The message associated with the current upload state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadState" /></td>
+    <td><CopyableCode code="upload_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the document upload. (PROCESSING, COMPLETE, FAILED, FAULT)</td>
 </tr>
@@ -206,18 +206,18 @@ List available report versions for a given report.
 SELECT
 id,
 name,
-acceptanceType,
+acceptance_type,
 arn,
 category,
-companyName,
+company_name,
 description,
-periodEnd,
-periodStart,
-productName,
+period_end,
+period_start,
+product_name,
 series,
 state,
-statusMessage,
-uploadState,
+status_message,
+upload_state,
 version
 FROM aws.artifact.report_versions
 WHERE reportId = '{{ reportId }}' -- required

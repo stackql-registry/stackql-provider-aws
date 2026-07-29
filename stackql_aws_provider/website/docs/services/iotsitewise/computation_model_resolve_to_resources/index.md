@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resolveTo" /></td>
+    <td><CopyableCode code="resolve_to" /></td>
     <td><code>object</code></td>
     <td>The detailed resource this execution summary resolves to.</td>
 </tr>
@@ -134,7 +134,7 @@ Lists all distinct resources that are resolved from the executed actions of the 
 
 ```sql
 SELECT
-resolveTo
+resolve_to
 FROM aws.iotsitewise.computation_model_resolve_to_resources
 WHERE computation_model_id = '{{ computation_model_id }}' -- required
 AND region = '{{ region }}' -- required

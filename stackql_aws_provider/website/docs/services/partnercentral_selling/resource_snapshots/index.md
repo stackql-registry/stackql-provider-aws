@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the resource snapshot. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog in which the snapshot was created. Matches the Catalog specified in the request. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the snapshot was created, in ISO 8601 format (e.g., "2023-06-01T14:30:00Z"). This allows for precise tracking of when the snapshot was taken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the principal (user or role) who created the snapshot. This helps in tracking the origin of the snapshot. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementId" /></td>
+    <td><CopyableCode code="engagement_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the engagement associated with this snapshot. Matches the EngagementIdentifier specified in the request. (pattern: &lt;code&gt;eng-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Payload" /></td>
+    <td><CopyableCode code="payload" /></td>
     <td><code>object</code></td>
     <td>Represents the payload of a resource snapshot. This structure is designed to accommodate different types of resource snapshots, currently supporting opportunity summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the specific resource that was snapshotted. Matches the ResourceIdentifier specified in the request. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSnapshotTemplateName" /></td>
+    <td><CopyableCode code="resource_snapshot_template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the view used for this snapshot. This is the same as the template name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;3,80&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource that was snapshotted. Matches the ResourceType specified in the request. (Opportunity)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>integer</code></td>
     <td>The revision number of this snapshot. This is a positive integer that is sequential and unique within the context of a resource view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetMemberAccounts" /></td>
+    <td><CopyableCode code="target_member_accounts" /></td>
     <td><code>array</code></td>
     <td>Target member accounts associated with the resource snapshot.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the snapshot. This globally unique identifier can be used for cross-service references and in IAM policies. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the entity that owns the resource from which the snapshot was created. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the specific resource snapshotted. The format might vary depending on the ResourceType. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSnapshotTemplateName" /></td>
+    <td><CopyableCode code="resource_snapshot_template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the template used to create the snapshot. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;3,80&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource snapshotted. (Opportunity)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>integer</code></td>
     <td>The revision number of the snapshot. This integer value is incremented each time the snapshot is updated, allowing for version tracking of the resource snapshot.</td>
 </tr>
@@ -243,17 +243,17 @@ Use this action to retrieve a specific snapshot record.
 
 ```sql
 SELECT
-Arn,
-Catalog,
-CreatedAt,
-CreatedBy,
-EngagementId,
-Payload,
-ResourceId,
-ResourceSnapshotTemplateName,
-ResourceType,
-Revision,
-TargetMemberAccounts
+arn,
+catalog,
+created_at,
+created_by,
+engagement_id,
+payload,
+resource_id,
+resource_snapshot_template_name,
+resource_type,
+revision,
+target_member_accounts
 FROM aws.partnercentral_selling.resource_snapshots
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,12 +265,12 @@ Retrieves a list of resource view snapshots based on specified criteria. This op
 
 ```sql
 SELECT
-Arn,
-CreatedBy,
-ResourceId,
-ResourceSnapshotTemplateName,
-ResourceType,
-Revision
+arn,
+created_by,
+resource_id,
+resource_snapshot_template_name,
+resource_type,
+revision
 FROM aws.partnercentral_selling.resource_snapshots
 WHERE region = '{{ region }}' -- required
 ;
@@ -311,8 +311,8 @@ SELECT
 '{{ ClientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-Arn,
-Revision
+arn,
+revision
 ;
 ```
 </TabItem>

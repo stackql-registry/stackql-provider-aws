@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>Playback-restriction-policy name. The value does not need to be unique. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedCountries" /></td>
+    <td><CopyableCode code="allowed_countries" /></td>
     <td><code>array</code></td>
     <td>A list of country codes that control geoblocking restriction. Allowed values are the officially assigned ISO 3166-1 alpha-2 codes. Default: All countries (an empty array).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedOrigins" /></td>
+    <td><CopyableCode code="allowed_origins" /></td>
     <td><code>array</code></td>
     <td>A list of origin sites that control CORS restriction. Allowed values are the same as valid values of the Origin header defined at https:​//developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin. Default: All origins (an empty array).</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>Playback-restriction-policy ARN (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:playback-restriction-policy/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableStrictOriginEnforcement" /></td>
+    <td><CopyableCode code="enable_strict_origin_enforcement" /></td>
     <td><code>boolean</code></td>
     <td>Whether channel playback is constrained by origin site. Default: false.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more channels than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="playbackRestrictionPolicies" /></td>
+    <td><CopyableCode code="playback_restriction_policies" /></td>
     <td><code>array</code></td>
     <td>List of the matching policies.</td>
 </tr>
@@ -199,10 +199,10 @@ Gets the specified playback restriction policy.
 ```sql
 SELECT
 name,
-allowedCountries,
-allowedOrigins,
+allowed_countries,
+allowed_origins,
 arn,
-enableStrictOriginEnforcement,
+enable_strict_origin_enforcement,
 tags
 FROM aws.ivs.playback_restriction_policies
 WHERE region = '{{ region }}' -- required
@@ -215,8 +215,8 @@ Gets summary information about playback restriction policies.
 
 ```sql
 SELECT
-nextToken,
-playbackRestrictionPolicies
+next_token,
+playback_restriction_policies
 FROM aws.ivs.playback_restriction_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,7 +255,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-playbackRestrictionPolicy
+playback_restriction_policy
 ;
 ```
 </TabItem>
@@ -309,7 +309,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-playbackRestrictionPolicy;
+playback_restriction_policy;
 ```
 </TabItem>
 </Tabs>

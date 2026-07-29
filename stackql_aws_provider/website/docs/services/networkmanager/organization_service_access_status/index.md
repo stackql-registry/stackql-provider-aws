@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountStatusList" /></td>
+    <td><CopyableCode code="account_status_list" /></td>
     <td><code>array</code></td>
     <td>The current service-linked role (SLR) deployment status for an Amazon Web Services Organization's accounts. This will be either SUCCEEDED or IN_PROGRESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationAwsServiceAccessStatus" /></td>
+    <td><CopyableCode code="organization_aws_service_access_status" /></td>
     <td><code>string</code></td>
     <td>The status of the organization's AWS service access. This will be ENABLED or DISABLED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationId" /></td>
+    <td><CopyableCode code="organization_id" /></td>
     <td><code>string</code></td>
     <td>The ID of an Amazon Web Services Organization. (pattern: &lt;code&gt;^o-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SLRDeploymentStatus" /></td>
+    <td><CopyableCode code="slr_deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the SLR deployment for the account. This will be either SUCCEEDED or IN_PROGRESS.</td>
 </tr>
@@ -144,10 +144,10 @@ Gets the status of the Service Linked Role (SLR) deployment for the accounts in 
 
 ```sql
 SELECT
-AccountStatusList,
-OrganizationAwsServiceAccessStatus,
-OrganizationId,
-SLRDeploymentStatus
+account_status_list,
+organization_aws_service_access_status,
+organization_id,
+slr_deployment_status
 FROM aws.networkmanager.organization_service_access_status
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

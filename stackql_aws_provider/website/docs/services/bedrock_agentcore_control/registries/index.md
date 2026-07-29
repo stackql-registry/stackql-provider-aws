@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the registry. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_\-\.\/&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="approvalConfiguration" /></td>
+    <td><CopyableCode code="approval_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for the registry record approval workflow. Controls whether records added to the registry require explicit approval before becoming active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerConfiguration" /></td>
+    <td><CopyableCode code="authorizer_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents inbound authorization configuration options used to authenticate incoming requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>The type of authorizer used by the registry. This controls the authorization method for the Search and Invoke APIs used by consumers. CUSTOM_JWT - Authorize with a bearer token. AWS_IAM - Authorize with your Amazon Web Services IAM credentials. (CUSTOM_JWT, AWS_IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry was created.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the registry. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the registry. Possible values include CREATING, READY, UPDATING, CREATE_FAILED, UPDATE_FAILED, DELETING, and DELETE_FAILED. (CREATING, READY, UPDATING, CREATE_FAILED, UPDATE_FAILED, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status, typically set when the status is a failure state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry was last updated.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the registry. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_\-\.\/&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>The type of authorizer used by the registry. This controls the authorization method for the Search and Invoke APIs used by consumers. CUSTOM_JWT - Authorize with a bearer token. AWS_IAM - Authorize with your Amazon Web Services IAM credentials. (CUSTOM_JWT, AWS_IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry was created.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the registry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryArn" /></td>
+    <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the registry. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the registry. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the registry. Possible values include CREATING, READY, UPDATING, CREATE_FAILED, UPDATE_FAILED, DELETING, and DELETE_FAILED. (CREATING, READY, UPDATING, CREATE_FAILED, UPDATE_FAILED, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status, typically set when the status is a failure state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry was last updated.</td>
 </tr>
@@ -284,16 +284,16 @@ Retrieves information about a specific registry.
 ```sql
 SELECT
 name,
-approvalConfiguration,
-authorizerConfiguration,
-authorizerType,
-createdAt,
+approval_configuration,
+authorizer_configuration,
+authorizer_type,
+created_at,
 description,
-registryArn,
-registryId,
+registry_arn,
+registry_id,
 status,
-statusReason,
-updatedAt
+status_reason,
+updated_at
 FROM aws.bedrock_agentcore_control.registries
 WHERE registry_id = '{{ registry_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -307,14 +307,14 @@ Lists all registries in the account. You can optionally filter results by status
 ```sql
 SELECT
 name,
-authorizerType,
-createdAt,
+authorizer_type,
+created_at,
 description,
-registryArn,
-registryId,
+registry_arn,
+registry_id,
 status,
-statusReason,
-updatedAt
+status_reason,
+updated_at
 FROM aws.bedrock_agentcore_control.registries
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -359,7 +359,7 @@ SELECT
 '{{ approvalConfiguration }}',
 '{{ region }}'
 RETURNING
-registryArn
+registry_arn
 ;
 ```
 </TabItem>
@@ -459,16 +459,16 @@ registry_id = '{{ registry_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
-approvalConfiguration,
-authorizerConfiguration,
-authorizerType,
-createdAt,
+approval_configuration,
+authorizer_configuration,
+authorizer_type,
+created_at,
 description,
-registryArn,
-registryId,
+registry_arn,
+registry_id,
 status,
-statusReason,
-updatedAt;
+status_reason,
+updated_at;
 ```
 </TabItem>
 </Tabs>

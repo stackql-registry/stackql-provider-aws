@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MaxNumberOfAutoScalingGroups" /></td>
+    <td><CopyableCode code="max_number_of_auto_scaling_groups" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of groups allowed for your account. The default is 200 groups per Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxNumberOfLaunchConfigurations" /></td>
+    <td><CopyableCode code="max_number_of_launch_configurations" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of launch configurations allowed for your account. The default is 200 launch configurations per Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAutoScalingGroups" /></td>
+    <td><CopyableCode code="number_of_auto_scaling_groups" /></td>
     <td><code>integer</code></td>
     <td>The current number of groups for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfLaunchConfigurations" /></td>
+    <td><CopyableCode code="number_of_launch_configurations" /></td>
     <td><code>integer</code></td>
     <td>The current number of launch configurations for your account.</td>
 </tr>
@@ -134,10 +134,10 @@ Describes the current Amazon EC2 Auto Scaling resource quotas for your account. 
 
 ```sql
 SELECT
-MaxNumberOfAutoScalingGroups,
-MaxNumberOfLaunchConfigurations,
-NumberOfAutoScalingGroups,
-NumberOfLaunchConfigurations
+max_number_of_auto_scaling_groups,
+max_number_of_launch_configurations,
+number_of_auto_scaling_groups,
+number_of_launch_configurations
 FROM aws.autoscaling.account_limits
 WHERE region = '{{ region }}' -- required
 ;

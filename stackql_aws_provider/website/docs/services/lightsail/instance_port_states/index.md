@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="portStates" /></td>
+    <td><CopyableCode code="port_states" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the firewall port states for the specified instance.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the firewall port states for a specific Amazon Lightsail instance, the I
 
 ```sql
 SELECT
-portStates
+port_states
 FROM aws.lightsail.instance_port_states
 WHERE region = '{{ region }}' -- required
 ;

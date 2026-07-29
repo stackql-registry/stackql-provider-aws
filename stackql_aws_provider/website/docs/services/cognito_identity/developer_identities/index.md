@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeveloperUserIdentifierList" /></td>
+    <td><CopyableCode code="developer_user_identifier_list" /></td>
     <td><code>array</code></td>
     <td>This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token. The first call you make will have NextToken set to null. After that the service will return NextToken values as needed. For example, let's say you make a request with MaxResults set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves the IdentityID associated with a DeveloperUserIdentifier or the list o
 
 ```sql
 SELECT
-DeveloperUserIdentifierList,
-IdentityId,
-NextToken
+developer_user_identifier_list,
+identity_id,
+next_token
 FROM aws.cognito_identity.developer_identities
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledActions" /></td>
+    <td><CopyableCode code="scheduled_actions" /></td>
     <td><code>array</code></td>
     <td>A list of actions that are scheduled for the domain.</td>
 </tr>
@@ -146,8 +146,8 @@ Retrieves a list of configuration changes that are scheduled for a domain. These
 
 ```sql
 SELECT
-NextToken,
-ScheduledActions
+next_token,
+scheduled_actions
 FROM aws.opensearch.scheduled_actions
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -185,7 +185,7 @@ AND ActionID = '{{ ActionID }}' --required
 AND ActionType = '{{ ActionType }}' --required
 AND ScheduleAt = '{{ ScheduleAt }}' --required
 RETURNING
-ScheduledAction;
+scheduled_action;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Disabled" /></td>
+    <td><CopyableCode code="disabled" /></td>
     <td><code>boolean</code></td>
     <td>When origination settings are disabled, inbound calls are not enabled for your Amazon Chime SDK Voice Connector. This parameter is not required, but you must specify this parameter or Routes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>array</code></td>
     <td>The call distribution properties defined for your SIP hosts. Valid range: Minimum value of 1. Maximum value of 20. This parameter is not required, but you must specify this parameter or Disabled.</td>
 </tr>
@@ -143,8 +143,8 @@ Retrieves the origination settings for the specified Voice Connector.
 
 ```sql
 SELECT
-Disabled,
-Routes
+disabled,
+routes
 FROM aws.chime_sdk_voice.voice_connector_originations
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -174,7 +174,7 @@ WHERE
 voice_connector_id = '{{ voice_connector_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Origination;
+origination;
 ```
 </TabItem>
 </Tabs>

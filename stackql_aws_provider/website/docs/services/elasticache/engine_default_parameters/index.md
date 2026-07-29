@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheNodeTypeSpecificParameters" /></td>
+    <td><CopyableCode code="cache_node_type_specific_parameters" /></td>
     <td><code>string</code></td>
     <td>A list of parameters specific to a particular cache node type. Each element in the list contains detailed information about one parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheParameterGroupFamily" /></td>
+    <td><CopyableCode code="cache_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the cache parameter group family to which the engine default parameters apply. Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 | redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.0 | redis6.x | redis7</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Provides an identifier to allow retrieval of paginated results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>Contains a list of engine default parameters.</td>
 </tr>
@@ -149,10 +149,10 @@ Returns the default engine and system parameter information for the specified ca
 
 ```sql
 SELECT
-CacheNodeTypeSpecificParameters,
-CacheParameterGroupFamily,
-Marker,
-Parameters
+cache_node_type_specific_parameters,
+cache_parameter_group_family,
+marker,
+parameters
 FROM aws.elasticache.engine_default_parameters
 WHERE CacheParameterGroupFamily = '{{ CacheParameterGroupFamily }}' -- required
 AND region = '{{ region }}' -- required

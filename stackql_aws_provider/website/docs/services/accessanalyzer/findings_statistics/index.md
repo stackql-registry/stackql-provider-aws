@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="findingsStatistics" /></td>
+    <td><CopyableCode code="findings_statistics" /></td>
     <td><code>array</code></td>
     <td>A group of external access or unused access findings statistics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the retrieval of the findings statistics was last updated. If the findings statistics have not been previously retrieved for the specified analyzer, this field will not be populated.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list of aggregated finding statistics for an external access or unus
 
 ```sql
 SELECT
-findingsStatistics,
-lastUpdatedAt
+findings_statistics,
+last_updated_at
 FROM aws.accessanalyzer.findings_statistics
 WHERE region = '{{ region }}' -- required
 ;

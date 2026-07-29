@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The point where pagination should resume when the response returns only partial results. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slackWorkspaceConfigurations" /></td>
+    <td><CopyableCode code="slack_workspace_configurations" /></td>
     <td><code>array</code></td>
     <td>The configurations for a Slack workspace.</td>
 </tr>
@@ -131,8 +131,8 @@ Lists the Slack workspace configurations for an Amazon Web Services account.
 
 ```sql
 SELECT
-nextToken,
-slackWorkspaceConfigurations
+next_token,
+slack_workspace_configurations
 FROM aws.support_app.slack_workspace_configurations
 WHERE region = '{{ region }}' -- required
 ;

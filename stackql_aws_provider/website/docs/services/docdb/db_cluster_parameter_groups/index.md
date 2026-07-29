@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBClusterParameterGroupArn" /></td>
+    <td><CopyableCode code="db_cluster_parameter_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the cluster parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterParameterGroupName" /></td>
+    <td><CopyableCode code="db_cluster_parameter_group_name" /></td>
     <td><code>string</code></td>
     <td>Provides the name of the cluster parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBParameterGroupFamily" /></td>
+    <td><CopyableCode code="db_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>Provides the name of the parameter group family that this cluster parameter group is compatible with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Provides the customer-specified description for this cluster parameter group.</td>
 </tr>
@@ -200,10 +200,10 @@ Returns a list of DBClusterParameterGroup descriptions. If a DBClusterParameterG
 
 ```sql
 SELECT
-DBClusterParameterGroupArn,
-DBClusterParameterGroupName,
-DBParameterGroupFamily,
-Description
+db_cluster_parameter_group_arn,
+db_cluster_parameter_group_name,
+db_parameter_group_family,
+description
 FROM aws.docdb.db_cluster_parameter_groups
 WHERE region = '{{ region }}' -- required
 AND DBClusterParameterGroupName = '{{ DBClusterParameterGroupName }}'
@@ -244,10 +244,10 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-DBClusterParameterGroupArn,
-DBClusterParameterGroupName,
-DBParameterGroupFamily,
-Description
+db_cluster_parameter_group_arn,
+db_cluster_parameter_group_name,
+db_parameter_group_family,
+description
 ;
 ```
 </TabItem>
@@ -300,7 +300,7 @@ DBClusterParameterGroupName = '{{ DBClusterParameterGroupName }}' --required
 AND region = '{{ region }}' --required
 AND Parameters = '{{ Parameters}}'
 RETURNING
-DBClusterParameterGroupName;
+db_cluster_parameter_group_name;
 ```
 </TabItem>
 </Tabs>

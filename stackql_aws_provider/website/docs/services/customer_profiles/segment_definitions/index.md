@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the segment definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the segment definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the segment definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentDefinitionArn" /></td>
+    <td><CopyableCode code="segment_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The arn of the segment definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentDefinitionName" /></td>
+    <td><CopyableCode code="segment_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the segment definition. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentGroups" /></td>
+    <td><CopyableCode code="segment_groups" /></td>
     <td><code>object</code></td>
     <td>Contains all groups of the segment definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentSort" /></td>
+    <td><CopyableCode code="segment_sort" /></td>
     <td><code>object</code></td>
     <td>Defines how segments should be sorted and ordered in the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentSqlQuery" /></td>
+    <td><CopyableCode code="segment_sql_query" /></td>
     <td><code>string</code></td>
     <td>The segment SQL query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentType" /></td>
+    <td><CopyableCode code="segment_type" /></td>
     <td><code>string</code></td>
     <td>The segment type. Classic : Segments created using traditional SegmentGroup structure Enhanced : Segments created using SQL queries (CLASSIC, ENHANCED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -115,37 +115,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the segment definition was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the segment definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>Display name of the segment definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentDefinitionArn" /></td>
+    <td><CopyableCode code="segment_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The arn of the segment definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentDefinitionName" /></td>
+    <td><CopyableCode code="segment_definition_name" /></td>
     <td><code>string</code></td>
     <td>Name of the segment definition. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentType" /></td>
+    <td><CopyableCode code="segment_type" /></td>
     <td><code>string</code></td>
     <td>The segment type. Classic : Segments created using traditional SegmentGroup structure Enhanced : Segments created using SQL queries (CLASSIC, ENHANCED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags belonging to the segment definition.</td>
 </tr>
@@ -256,16 +256,16 @@ Gets a segment definition from the domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-DisplayName,
-SegmentDefinitionArn,
-SegmentDefinitionName,
-SegmentGroups,
-SegmentSort,
-SegmentSqlQuery,
-SegmentType,
-Tags
+created_at,
+description,
+display_name,
+segment_definition_arn,
+segment_definition_name,
+segment_groups,
+segment_sort,
+segment_sql_query,
+segment_type,
+tags
 FROM aws.customer_profiles.segment_definitions
 WHERE domain_name = '{{ domain_name }}' -- required
 AND segment_definition_name = '{{ segment_definition_name }}' -- required
@@ -279,13 +279,13 @@ Lists all segment definitions under a domain.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-DisplayName,
-SegmentDefinitionArn,
-SegmentDefinitionName,
-SegmentType,
-Tags
+created_at,
+description,
+display_name,
+segment_definition_arn,
+segment_definition_name,
+segment_type,
+tags
 FROM aws.customer_profiles.segment_definitions
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -333,12 +333,12 @@ SELECT
 '{{ segment_definition_name }}',
 '{{ region }}'
 RETURNING
-CreatedAt,
-Description,
-DisplayName,
-SegmentDefinitionArn,
-SegmentDefinitionName,
-Tags
+created_at,
+description,
+display_name,
+segment_definition_arn,
+segment_definition_name,
+tags
 ;
 ```
 </TabItem>

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationProviderArn" /></td>
+    <td><CopyableCode code="application_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the application provider. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::aws:applicationProvider/&#91;a-zA-Z0-9-/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayData" /></td>
+    <td><CopyableCode code="display_data" /></td>
     <td><code>object</code></td>
     <td>A structure with details about the display data for the application provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederationProtocol" /></td>
+    <td><CopyableCode code="federation_protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol used to federate to the application provider. (SAML, OAUTH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceServerConfig" /></td>
+    <td><CopyableCode code="resource_server_config" /></td>
     <td><code>object</code></td>
     <td>A structure with details about the receiving application.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationProviderArn" /></td>
+    <td><CopyableCode code="application_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the application provider. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::aws:applicationProvider/&#91;a-zA-Z0-9-/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayData" /></td>
+    <td><CopyableCode code="display_data" /></td>
     <td><code>object</code></td>
     <td>A structure that describes how IAM Identity Center represents the application provider in the portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederationProtocol" /></td>
+    <td><CopyableCode code="federation_protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol that the application provider uses to perform federation. (SAML, OAUTH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceServerConfig" /></td>
+    <td><CopyableCode code="resource_server_config" /></td>
     <td><code>object</code></td>
     <td>A structure that describes the application provider's resource server.</td>
 </tr>
@@ -177,10 +177,10 @@ Retrieves details about a provider that can be used to connect an Amazon Web Ser
 
 ```sql
 SELECT
-ApplicationProviderArn,
-DisplayData,
-FederationProtocol,
-ResourceServerConfig
+application_provider_arn,
+display_data,
+federation_protocol,
+resource_server_config
 FROM aws.sso_admin.application_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -192,10 +192,10 @@ Lists the application providers configured in the IAM Identity Center identity s
 
 ```sql
 SELECT
-ApplicationProviderArn,
-DisplayData,
-FederationProtocol,
-ResourceServerConfig
+application_provider_arn,
+display_data,
+federation_protocol,
+resource_server_config
 FROM aws.sso_admin.application_providers
 WHERE region = '{{ region }}' -- required
 ;

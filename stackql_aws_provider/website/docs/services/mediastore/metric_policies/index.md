@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContainerLevelMetrics" /></td>
+    <td><CopyableCode code="container_level_metrics" /></td>
     <td><code>string</code></td>
     <td>A setting to enable or disable metrics at the container level. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricPolicyRules" /></td>
+    <td><CopyableCode code="metric_policy_rules" /></td>
     <td><code>array</code></td>
     <td>A parameter that holds an array of rules that enable metrics at the object level. This parameter is optional, but if you choose to include it, you must also include at least one rule. By default, you can include up to five rules. You can also request a quota increase to allow up to 300 rules per policy.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the metric policy for the specified container.
 
 ```sql
 SELECT
-ContainerLevelMetrics,
-MetricPolicyRules
+container_level_metrics,
+metric_policy_rules
 FROM aws.mediastore.metric_policies
 WHERE region = '{{ region }}' -- required
 ;

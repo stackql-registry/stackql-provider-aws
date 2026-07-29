@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ObservationList" /></td>
+    <td><CopyableCode code="observation_list" /></td>
     <td><code>array</code></td>
     <td>The list of observations related to the problem.</td>
 </tr>
@@ -119,7 +119,7 @@ Describes the anomalies or errors associated with the problem.
 
 ```sql
 SELECT
-ObservationList
+observation_list
 FROM aws.application_insights.problem_observations
 WHERE region = '{{ region }}' -- required
 ;

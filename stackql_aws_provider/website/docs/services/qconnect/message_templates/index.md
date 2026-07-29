@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
     <td>The message template attachments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="attributeTypes" /></td>
+    <td><CopyableCode code="attribute_types" /></td>
     <td><code>array</code></td>
     <td>The types of attributes contain the message template.</td>
 </tr>
@@ -72,7 +72,7 @@ The following fields are returned by `SELECT` queries:
     <td>The channel of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelSubtype" /></td>
+    <td><CopyableCode code="channel_subtype" /></td>
     <td><code>string</code></td>
     <td>The channel subtype this message template applies to. (EMAIL, SMS, WHATSAPP, PUSH)</td>
 </tr>
@@ -82,12 +82,12 @@ The following fields are returned by `SELECT` queries:
     <td>The container of message template content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the message template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultAttributes" /></td>
+    <td><CopyableCode code="default_attributes" /></td>
     <td><code>object</code></td>
     <td>The attributes that are used with the message template.</td>
 </tr>
@@ -97,22 +97,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the message template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupingConfiguration" /></td>
+    <td><CopyableCode code="grouping_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information of the grouping of Amazon Q in Connect users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>Whether the version of the message template is activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -122,32 +122,32 @@ The following fields are returned by `SELECT` queries:
     <td>The language code value for the language in which the quick response is written. The supported language codes include de_DE, en_US, es_ES, fr_FR, id_ID, it_IT, ja_JP, ko_KR, pt_BR, zh_CN, zh_TW</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the message template data. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+?:&#91;a-z-&#93;+?:&#91;a-z0-9-&#93;*?:(&#91;0-9&#93;&#123;12&#125;)?:&#91;a-zA-Z0-9-:/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the message template data was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageTemplateArn" /></td>
+    <td><CopyableCode code="message_template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the message template. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;(:&#91;A-Z0-9_$&#93;+)&#123;0,1&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageTemplateContentSha256" /></td>
+    <td><CopyableCode code="message_template_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>The checksum value of the message template content that is referenced by the $LATEST qualifier. It can be returned in MessageTemplateData or ExtendedMessageTemplateData. It’s calculated by content, language, defaultAttributes and Attachments of the message template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageTemplateId" /></td>
+    <td><CopyableCode code="message_template_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the message template. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceConfigurationSummary" /></td>
+    <td><CopyableCode code="source_configuration_summary" /></td>
     <td><code>object</code></td>
     <td>The source configuration summary of the message template.</td>
 </tr>
@@ -157,7 +157,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the message template version.</td>
 </tr>
@@ -186,12 +186,12 @@ The following fields are returned by `SELECT` queries:
     <td>The channel of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelSubtype" /></td>
+    <td><CopyableCode code="channel_subtype" /></td>
     <td><code>string</code></td>
     <td>The channel subtype this message template applies to. (EMAIL, SMS, WHATSAPP, PUSH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the message template was created.</td>
 </tr>
@@ -201,22 +201,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the message template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupingConfiguration" /></td>
+    <td><CopyableCode code="grouping_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information of the grouping of Amazon Q in Connect users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>Whether the version of the message template is activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -226,27 +226,27 @@ The following fields are returned by `SELECT` queries:
     <td>The language code value for the language in which the quick response is written. The supported language codes include de_DE, en_US, es_ES, fr_FR, id_ID, it_IT, ja_JP, ko_KR, pt_BR, zh_CN, zh_TW</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the message template data. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+?:&#91;a-z-&#93;+?:&#91;a-z0-9-&#93;*?:(&#91;0-9&#93;&#123;12&#125;)?:&#91;a-zA-Z0-9-:/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the message template data was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageTemplateArn" /></td>
+    <td><CopyableCode code="message_template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the message template. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;(:&#91;A-Z0-9_$&#93;+)&#123;0,1&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageTemplateId" /></td>
+    <td><CopyableCode code="message_template_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the message template. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceConfigurationSummary" /></td>
+    <td><CopyableCode code="source_configuration_summary" /></td>
     <td><code>object</code></td>
     <td>The source configuration summary of the message template.</td>
 </tr>
@@ -256,7 +256,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the message template version.</td>
 </tr>
@@ -280,7 +280,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the message template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeVersionNumber" /></td>
+    <td><CopyableCode code="active_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the message template version that is activated.</td>
 </tr>
@@ -290,12 +290,12 @@ The following fields are returned by `SELECT` queries:
     <td>The channel this message template applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelSubtype" /></td>
+    <td><CopyableCode code="channel_subtype" /></td>
     <td><code>string</code></td>
     <td>The channel subtype this message template applies to. (EMAIL, SMS, WHATSAPP, PUSH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the message template was created.</td>
 </tr>
@@ -305,37 +305,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the message template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseArn" /></td>
+    <td><CopyableCode code="knowledge_base_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the knowledge base. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the knowledge base. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the message template data. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+?:&#91;a-z-&#93;+?:&#91;a-z0-9-&#93;*?:(&#91;0-9&#93;&#123;12&#125;)?:&#91;a-zA-Z0-9-:/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the message template data was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageTemplateArn" /></td>
+    <td><CopyableCode code="message_template_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the message template. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;(:&#91;A-Z0-9_$&#93;+)&#123;0,1&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageTemplateId" /></td>
+    <td><CopyableCode code="message_template_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the message template. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceConfiguration" /></td>
+    <td><CopyableCode code="source_configuration" /></td>
     <td><code>object</code></td>
     <td>The container of message template source configuration.</td>
 </tr>
@@ -501,26 +501,26 @@ Retrieves the Amazon Q in Connect message template. The message template identif
 SELECT
 name,
 attachments,
-attributeTypes,
+attribute_types,
 channel,
-channelSubtype,
+channel_subtype,
 content,
-createdTime,
-defaultAttributes,
+created_time,
+default_attributes,
 description,
-groupingConfiguration,
-isActive,
-knowledgeBaseArn,
-knowledgeBaseId,
+grouping_configuration,
+is_active,
+knowledge_base_arn,
+knowledge_base_id,
 language,
-lastModifiedBy,
-lastModifiedTime,
-messageTemplateArn,
-messageTemplateContentSha256,
-messageTemplateId,
-sourceConfigurationSummary,
+last_modified_by,
+last_modified_time,
+message_template_arn,
+message_template_content_sha_256,
+message_template_id,
+source_configuration_summary,
 tags,
-versionNumber
+version_number
 FROM aws.qconnect.message_templates
 WHERE message_template_id = '{{ message_template_id }}' -- required
 AND knowledge_base_id = '{{ knowledge_base_id }}' -- required
@@ -536,21 +536,21 @@ Searches for Amazon Q in Connect message templates in the specified knowledge ba
 SELECT
 name,
 channel,
-channelSubtype,
-createdTime,
+channel_subtype,
+created_time,
 description,
-groupingConfiguration,
-isActive,
-knowledgeBaseArn,
-knowledgeBaseId,
+grouping_configuration,
+is_active,
+knowledge_base_arn,
+knowledge_base_id,
 language,
-lastModifiedBy,
-lastModifiedTime,
-messageTemplateArn,
-messageTemplateId,
-sourceConfigurationSummary,
+last_modified_by,
+last_modified_time,
+message_template_arn,
+message_template_id,
+source_configuration_summary,
 tags,
-versionNumber
+version_number
 FROM aws.qconnect.message_templates
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -566,18 +566,18 @@ Lists all the available Amazon Q in Connect message templates for the specified 
 ```sql
 SELECT
 name,
-activeVersionNumber,
+active_version_number,
 channel,
-channelSubtype,
-createdTime,
+channel_subtype,
+created_time,
 description,
-knowledgeBaseArn,
-knowledgeBaseId,
-lastModifiedBy,
-lastModifiedTime,
-messageTemplateArn,
-messageTemplateId,
-sourceConfiguration,
+knowledge_base_arn,
+knowledge_base_id,
+last_modified_by,
+last_modified_time,
+message_template_arn,
+message_template_id,
+source_configuration,
 tags
 FROM aws.qconnect.message_templates
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
@@ -660,7 +660,7 @@ SELECT
 '{{ knowledge_base_id }}',
 '{{ region }}'
 RETURNING
-messageTemplate
+message_template
 ;
 ```
 </TabItem>
@@ -882,7 +882,7 @@ knowledge_base_id = '{{ knowledge_base_id }}' --required
 AND message_template_id = '{{ message_template_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-messageTemplate;
+message_template;
 ```
 </TabItem>
 </Tabs>

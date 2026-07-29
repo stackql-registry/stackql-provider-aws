@@ -108,9 +108,9 @@ region = '{{ region }}' --required
 AND TargetResource = '{{ TargetResource }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-Domain,
-ETag,
-ResourceId;
+domain,
+e_tag,
+resource_id;
 ```
 </TabItem>
 </Tabs>

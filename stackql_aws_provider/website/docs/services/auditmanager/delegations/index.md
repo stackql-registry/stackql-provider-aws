@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of delegations that the GetDelegations API returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ Gets a list of delegations from an audit owner to a delegate.
 ```sql
 SELECT
 delegations,
-nextToken
+next_token
 FROM aws.auditmanager.delegations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

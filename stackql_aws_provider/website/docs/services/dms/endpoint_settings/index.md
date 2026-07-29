@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointSettings" /></td>
+    <td><CopyableCode code="endpoint_settings" /></td>
     <td><code>array</code></td>
     <td>Descriptions of the endpoint settings available for your source or target database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns information about the possible endpoint settings available when you crea
 
 ```sql
 SELECT
-EndpointSettings,
-Marker
+endpoint_settings,
+marker
 FROM aws.dms.endpoint_settings
 WHERE region = '{{ region }}' -- required
 ;

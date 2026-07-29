@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Timestamp showing when this policy was last updated, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The details of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyScope" /></td>
+    <td><CopyableCode code="policy_scope" /></td>
     <td><code>string</code></td>
     <td>Specifies scope of the resource policy. Valid values are ACCOUNT or RESOURCE. (ACCOUNT, RESOURCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the CloudWatch Logs resource to which the resource policy is attached. Only populated for resource-scoped policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision ID of the resource policy. Only populated for resource-scoped policies.</td>
 </tr>
@@ -158,12 +158,12 @@ Lists the resource policies in this account.
 
 ```sql
 SELECT
-lastUpdatedTime,
-policyDocument,
-policyName,
-policyScope,
-resourceArn,
-revisionId
+last_updated_time,
+policy_document,
+policy_name,
+policy_scope,
+resource_arn,
+revision_id
 FROM aws.logs.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,8 +194,8 @@ expectedRevisionId = '{{ expectedRevisionId }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-resourcePolicy,
-revisionId;
+resource_policy,
+revision_id;
 ```
 </TabItem>
 </Tabs>

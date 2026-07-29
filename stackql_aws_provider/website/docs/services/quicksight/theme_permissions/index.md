@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A list of resource permissions set on the theme.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeArn" /></td>
+    <td><CopyableCode code="theme_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the theme.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeId" /></td>
+    <td><CopyableCode code="theme_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the theme. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -156,11 +156,11 @@ Describes the read and write permissions for a theme.
 
 ```sql
 SELECT
-Permissions,
-RequestId,
-Status,
-ThemeArn,
-ThemeId
+permissions,
+request_id,
+status,
+theme_arn,
+theme_id
 FROM aws.quicksight.theme_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND theme_id = '{{ theme_id }}' -- required
@@ -193,11 +193,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND theme_id = '{{ theme_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Permissions,
-RequestId,
-Status,
-ThemeArn,
-ThemeId;
+permissions,
+request_id,
+status,
+theme_arn,
+theme_id;
 ```
 </TabItem>
 </Tabs>

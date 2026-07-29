@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Asn" /></td>
+    <td><CopyableCode code="asn" /></td>
     <td><code>string</code></td>
     <td>A public 2-byte or 4-byte ASN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamId" /></td>
+    <td><CopyableCode code="ipam_id" /></td>
     <td><code>string</code></td>
     <td>An IPAM ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The provisioning state of the BYOASN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message.</td>
 </tr>
@@ -197,10 +197,10 @@ Describes your Autonomous System Numbers (ASNs), their provisioning statuses, an
 
 ```sql
 SELECT
-Asn,
-IpamId,
-State,
-StatusMessage
+asn,
+ipam_id,
+state,
+status_message
 FROM aws.ec2.ipam_byoasns
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -237,10 +237,10 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND Asn = '{{ Asn}}'
 RETURNING
-Asn,
-IpamId,
-State,
-StatusMessage;
+asn,
+ipam_id,
+state,
+status_message;
 ```
 </TabItem>
 <TabItem value="deprovision_ipam_byoasn">
@@ -257,10 +257,10 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND Asn = '{{ Asn}}'
 RETURNING
-Asn,
-IpamId,
-State,
-StatusMessage;
+asn,
+ipam_id,
+state,
+status_message;
 ```
 </TabItem>
 <TabItem value="associate_ipam_byoasn">
@@ -277,10 +277,10 @@ AND DryRun = {{ DryRun}}
 AND Asn = '{{ Asn}}'
 AND Cidr = '{{ Cidr}}'
 RETURNING
-Asn,
-Cidr,
-State,
-StatusMessage;
+asn,
+cidr,
+state,
+status_message;
 ```
 </TabItem>
 </Tabs>

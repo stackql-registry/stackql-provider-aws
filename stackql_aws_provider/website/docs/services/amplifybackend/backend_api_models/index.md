@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ModelIntrospectionSchema" /></td>
+    <td><CopyableCode code="model_introspection_schema" /></td>
     <td><code>string</code></td>
     <td>Stringified JSON of the model introspection schema for an existing backend API resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Models" /></td>
+    <td><CopyableCode code="models" /></td>
     <td><code>string</code></td>
     <td>Stringified JSON of the datastore model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the request. (LATEST, STALE)</td>
 </tr>
@@ -146,9 +146,9 @@ Gets a model introspection schema for an existing backend API resource.
 
 ```sql
 SELECT
-ModelIntrospectionSchema,
-Models,
-Status
+model_introspection_schema,
+models,
+status
 FROM aws.amplifybackend.backend_api_models
 WHERE app_id = '{{ app_id }}' -- required
 AND backend_environment_name = '{{ backend_environment_name }}' -- required

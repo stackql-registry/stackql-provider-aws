@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the export job was created.</td>
 </tr>
@@ -60,22 +60,22 @@ The following fields are returned by `SELECT` queries:
     <td>An object that describes the destination of the export file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for an export job failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The identification number of the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the export job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the exported recommendations. (Ec2Instance, AutoScalingGroup, EbsVolume, LambdaFunction, NotApplicable, EcsService, License, RdsDBInstance, AuroraDBClusterStorage, Idle)</td>
 </tr>
@@ -149,12 +149,12 @@ Describes recommendation export jobs created in the last seven days. Use the Exp
 
 ```sql
 SELECT
-creationTimestamp,
+creation_timestamp,
 destination,
-failureReason,
-jobId,
-lastUpdatedTimestamp,
-resourceType,
+failure_reason,
+job_id,
+last_updated_timestamp,
+resource_type,
 status
 FROM aws.compute_optimizer.recommendation_export_jobs
 WHERE region = '{{ region }}' -- required

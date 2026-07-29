@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Content" /></td>
+    <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
     <td>Contains the credential report. The report is Base64-encoded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedTime" /></td>
+    <td><CopyableCode code="generated_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the credential report was created, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportFormat" /></td>
+    <td><CopyableCode code="report_format" /></td>
     <td><code>string</code></td>
     <td>The format (MIME type) of the credential report.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves a credential report for the Amazon Web Services account. For more info
 
 ```sql
 SELECT
-Content,
-GeneratedTime,
-ReportFormat
+content,
+generated_time,
+report_format
 FROM aws.iam.credential_reports
 WHERE region = '{{ region }}' -- required
 ;

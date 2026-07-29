@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeId" /></td>
+    <td><CopyableCode code="attribute_id" /></td>
     <td><code>string</code></td>
     <td>The summary's attribute ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>The summary's attribute name. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The summary's last modified region. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The summary's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockVersion" /></td>
+    <td><CopyableCode code="lock_version" /></td>
     <td><code>object</code></td>
     <td>The summary's lock version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryValues" /></td>
+    <td><CopyableCode code="primary_values" /></td>
     <td><code>array</code></td>
     <td>The summary's primary values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecordId" /></td>
+    <td><CopyableCode code="record_id" /></td>
     <td><code>string</code></td>
     <td>The summary's record ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The summary's value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueType" /></td>
+    <td><CopyableCode code="value_type" /></td>
     <td><code>string</code></td>
     <td>The summary's value type. (TEXT, NUMBER, BOOLEAN, TEXT_LIST, NUMBER_LIST)</td>
 </tr>
@@ -186,15 +186,15 @@ Lists values stored in a data table with optional filtering by record IDs or pri
 
 ```sql
 SELECT
-AttributeId,
-AttributeName,
-LastModifiedRegion,
-LastModifiedTime,
-LockVersion,
-PrimaryValues,
-RecordId,
-Value,
-ValueType
+attribute_id,
+attribute_name,
+last_modified_region,
+last_modified_time,
+lock_version,
+primary_values,
+record_id,
+value,
+value_type
 FROM aws.connect.data_table_values
 WHERE instance_id = '{{ instance_id }}' -- required
 AND data_table_id = '{{ data_table_id }}' -- required

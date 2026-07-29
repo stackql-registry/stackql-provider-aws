@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The conditions that must be met for the rule to apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the rule was created.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the gateway rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway that the rule belongs to. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:gateway/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The priority of the rule. Rules are evaluated in order of priority, with lower numbers evaluated first.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway rule. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>System-managed metadata for rules created by automated processes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the rule was last updated.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The conditions that must be met for the rule to apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the rule was created.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the gateway rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway that the rule belongs to. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:gateway/(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,48&#125;-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The priority of the rule. Rules are evaluated in order of priority, with lower numbers evaluated first.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway rule. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>System-managed metadata for rules created by automated processes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the rule was last updated.</td>
 </tr>
@@ -280,14 +280,14 @@ Retrieves detailed information about a specific gateway rule.
 SELECT
 actions,
 conditions,
-createdAt,
+created_at,
 description,
-gatewayArn,
+gateway_arn,
 priority,
-ruleId,
+rule_id,
 status,
 system,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.gateway_rules
 WHERE gateway_identifier = '{{ gateway_identifier }}' -- required
 AND rule_id = '{{ rule_id }}' -- required
@@ -303,14 +303,14 @@ Lists all rules for a gateway.
 SELECT
 actions,
 conditions,
-createdAt,
+created_at,
 description,
-gatewayArn,
+gateway_arn,
 priority,
-ruleId,
+rule_id,
 status,
 system,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore_control.gateway_rules
 WHERE gateway_identifier = '{{ gateway_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -356,11 +356,11 @@ SELECT
 RETURNING
 actions,
 conditions,
-createdAt,
+created_at,
 description,
-gatewayArn,
+gateway_arn,
 priority,
-ruleId,
+rule_id,
 status,
 system
 ;
@@ -450,14 +450,14 @@ AND region = '{{ region }}' --required
 RETURNING
 actions,
 conditions,
-createdAt,
+created_at,
 description,
-gatewayArn,
+gateway_arn,
 priority,
-ruleId,
+rule_id,
 status,
 system,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

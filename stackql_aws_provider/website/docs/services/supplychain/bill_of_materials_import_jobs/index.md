@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The BillOfMaterialsImportJob instanceId. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The BillOfMaterialsImportJob jobId. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>When the BillOfMaterialsImportJob has reached a terminal state, there will be a message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3uri" /></td>
+    <td><CopyableCode code="s_3uri" /></td>
     <td><code>string</code></td>
     <td>The S3 URI from which the CSV is read. (pattern: &lt;code&gt;&#91;sS&#93;3:​//&#91;a-z0-9&#93;&#91;a-z0-9.-&#93;&#123;1,61&#125;&#91;a-z0-9&#93;/.+&lt;/code&gt;)</td>
 </tr>
@@ -156,10 +156,10 @@ Get status and details of a BillOfMaterialsImportJob.
 
 ```sql
 SELECT
-instanceId,
-jobId,
+instance_id,
+job_id,
 message,
-s3uri,
+s_3uri,
 status
 FROM aws.supplychain.bill_of_materials_import_jobs
 WHERE instance_id = '{{ instance_id }}' -- required
@@ -197,7 +197,7 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-jobId
+job_id
 ;
 ```
 </TabItem>

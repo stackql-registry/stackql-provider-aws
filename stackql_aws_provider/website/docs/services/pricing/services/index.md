@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeNames" /></td>
+    <td><CopyableCode code="attribute_names" /></td>
     <td><code>array</code></td>
     <td>The attributes that are available for this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>The code for the Amazon Web Services service.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the metadata for one service or a list of the metadata for all services.
 
 ```sql
 SELECT
-AttributeNames,
-ServiceCode
+attribute_names,
+service_code
 FROM aws.pricing.services
 WHERE region = '{{ region }}' -- required
 ;

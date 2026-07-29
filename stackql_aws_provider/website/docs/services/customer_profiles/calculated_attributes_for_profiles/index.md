@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The list of calculated attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token from the previous call to ListCalculatedAttributesForProfile.</td>
 </tr>
@@ -144,8 +144,8 @@ Retrieve a list of calculated attributes for a customer profile.
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.calculated_attributes_for_profiles
 WHERE domain_name = '{{ domain_name }}' -- required
 AND profile_id = '{{ profile_id }}' -- required

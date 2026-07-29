@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time that the request was sent to the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>The specific operation for the asynchronous request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestParameters" /></td>
+    <td><CopyableCode code="request_parameters" /></td>
     <td><code>string</code></td>
     <td>The parameters associated with the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestStatus" /></td>
+    <td><CopyableCode code="request_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestTokenARN" /></td>
+    <td><CopyableCode code="request_token_arn" /></td>
     <td><code>string</code></td>
     <td>The request token associated with the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseDetails" /></td>
+    <td><CopyableCode code="response_details" /></td>
     <td><code>string</code></td>
     <td>The details of the response.</td>
 </tr>
@@ -154,12 +154,12 @@ This operation is not supported by directory buckets. Retrieves the status of an
 
 ```sql
 SELECT
-CreationTime,
-Operation,
-RequestParameters,
-RequestStatus,
-RequestTokenARN,
-ResponseDetails
+creation_time,
+operation,
+request_parameters,
+request_status,
+request_token_arn,
+response_details
 FROM aws.s3control.multi_region_access_point_operations
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND request_token = '{{ request_token }}' -- required

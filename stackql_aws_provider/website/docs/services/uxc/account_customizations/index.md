@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountColor" /></td>
+    <td><CopyableCode code="account_color" /></td>
     <td><code>string</code></td>
     <td>The account color preference. A value of none indicates that you have not set a color. (none, pink, purple, darkBlue, lightBlue, teal, green, yellow, orange, red)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibleRegions" /></td>
+    <td><CopyableCode code="visible_regions" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon Web Services Region codes that are visible to the account in the Amazon Web Services Management Console. A value of null indicates that you have not configured this feature and all Regions are visible. For a list of valid Region codes, see Amazon Web Services Regions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibleServices" /></td>
+    <td><CopyableCode code="visible_services" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon Web Services service identifiers that are visible to the account in the Amazon Web Services Management Console. A value of null indicates that you have not configured this feature and all services are visible. For valid service identifiers, call ListServices.</td>
 </tr>
@@ -136,9 +136,9 @@ Returns the current account customization settings, including account color, vis
 
 ```sql
 SELECT
-accountColor,
-visibleRegions,
-visibleServices
+account_color,
+visible_regions,
+visible_services
 FROM aws.uxc.account_customizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,9 +168,9 @@ visibleRegions = '{{ visibleRegions }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-accountColor,
-visibleRegions,
-visibleServices;
+account_color,
+visible_regions,
+visible_services;
 ```
 </TabItem>
 </Tabs>

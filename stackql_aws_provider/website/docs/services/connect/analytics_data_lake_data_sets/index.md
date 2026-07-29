@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>An array of successful results: DataSetId, DataSetName. This is a paginated API, so nextToken is given if there are more results to be returned.</td>
 </tr>
@@ -139,8 +139,8 @@ Lists the data lake datasets available to associate with for a given Amazon Conn
 
 ```sql
 SELECT
-NextToken,
-Results
+next_token,
+results
 FROM aws.connect.analytics_data_lake_data_sets
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

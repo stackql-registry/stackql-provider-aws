@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>The domain endpoint options configured for the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the configured domain endpoint options.</td>
 </tr>
@@ -146,8 +146,8 @@ Returns the domain's endpoint options, specifically whether all requests to the 
 
 ```sql
 SELECT
-Options,
-Status
+options,
+status
 FROM aws.cloudsearch.domain_endpoint_options
 WHERE DomainName = '{{ DomainName }}' -- required
 AND region = '{{ region }}' -- required
@@ -179,8 +179,8 @@ DomainName = '{{ DomainName }}' --required
 AND DomainEndpointOptions = '{{ DomainEndpointOptions }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Options,
-Status;
+options,
+status;
 ```
 </TabItem>
 </Tabs>

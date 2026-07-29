@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressNumber" /></td>
+    <td><CopyableCode code="address_number" /></td>
     <td><code>string</code></td>
     <td>The numerical portion of an address, such as a building number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Categories" /></td>
+    <td><CopyableCode code="categories" /></td>
     <td><code>array</code></td>
     <td>The Amazon Location categories that describe this Place. For more information about using categories, including a list of Amazon Location categories, see Categories and filtering, in the Amazon Location Service developer guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Country" /></td>
+    <td><CopyableCode code="country" /></td>
     <td><code>string</code></td>
     <td>A country/region specified using ISO 3166 3-digit country/region code. For example, CAN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Geometry" /></td>
+    <td><CopyableCode code="geometry" /></td>
     <td><code>object</code></td>
     <td>Places uses a point geometry to specify a location or a Place.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Interpolated" /></td>
+    <td><CopyableCode code="interpolated" /></td>
     <td><code>boolean</code></td>
     <td>True if the result is interpolated from other known places. False if the Place is a known place. Not returned when the partner does not provide the information. For example, returns False for an address location that is found in the partner data, but returns True if an address does not exist in the partner data and its location is calculated by interpolating between other known addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>The full name and address of the point of interest such as a city, region, or country. For example, 123 Any Street, Any Town, USA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Municipality" /></td>
+    <td><CopyableCode code="municipality" /></td>
     <td><code>string</code></td>
     <td>A name for a local area, such as a city or town name. For example, Toronto.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Neighborhood" /></td>
+    <td><CopyableCode code="neighborhood" /></td>
     <td><code>string</code></td>
     <td>The name of a community district. For example, Downtown.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PostalCode" /></td>
+    <td><CopyableCode code="postal_code" /></td>
     <td><code>string</code></td>
     <td>A group of numbers and letters in a country-specific format, which accompanies the address for the purpose of identifying a location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>A name for an area or geographical division, such as a province or state name. For example, British Columbia.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Street" /></td>
+    <td><CopyableCode code="street" /></td>
     <td><code>string</code></td>
     <td>The name for a street or a road to identify a location. For example, Main Street.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubMunicipality" /></td>
+    <td><CopyableCode code="sub_municipality" /></td>
     <td><code>string</code></td>
     <td>An area that's part of a larger municipality. For example, Blissville is a submunicipality in the Queen County in New York. This property supported by Esri and OpenData. The Esri property is district, and the OpenData property is borough.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubRegion" /></td>
+    <td><CopyableCode code="sub_region" /></td>
     <td><code>string</code></td>
     <td>A county, or an area that's part of a larger region. For example, Metro Vancouver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupplementalCategories" /></td>
+    <td><CopyableCode code="supplemental_categories" /></td>
     <td><code>array</code></td>
     <td>Categories from the data provider that describe the Place that are not mapped to any Amazon Location categories.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>object</code></td>
     <td>The time zone in which the Place is located. Returned only when using HERE or Grab as the selected partner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnitNumber" /></td>
+    <td><CopyableCode code="unit_number" /></td>
     <td><code>string</code></td>
     <td>For addresses with multiple units, the unit identifier. Can include numbers and letters, for example 3B or Unit 123. Returned only for a place index that uses Esri or Grab as a data provider. Is not returned for SearchPlaceIndexForPosition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnitType" /></td>
+    <td><CopyableCode code="unit_type" /></td>
     <td><code>string</code></td>
     <td>For addresses with a UnitNumber, the type of unit. For example, Apartment. Returned only for a place index that uses Esri as a data provider.</td>
 </tr>
@@ -219,23 +219,23 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-AddressNumber,
-Categories,
-Country,
-Geometry,
-Interpolated,
-Label,
-Municipality,
-Neighborhood,
-PostalCode,
-Region,
-Street,
-SubMunicipality,
-SubRegion,
-SupplementalCategories,
-TimeZone,
-UnitNumber,
-UnitType
+address_number,
+categories,
+country,
+geometry,
+interpolated,
+label,
+municipality,
+neighborhood,
+postal_code,
+region,
+street,
+sub_municipality,
+sub_region,
+supplemental_categories,
+time_zone,
+unit_number,
+unit_type
 FROM aws.location.places
 WHERE index_name = '{{ index_name }}' -- required
 AND place_id = '{{ place_id }}' -- required

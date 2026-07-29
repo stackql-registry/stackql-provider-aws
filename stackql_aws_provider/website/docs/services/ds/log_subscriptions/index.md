@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>Identifier (ID) of the directory that you want to associate with the log subscription. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log group. (pattern: &lt;code&gt;&#91;-._/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionCreatedDateTime" /></td>
+    <td><CopyableCode code="subscription_created_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the log subscription was created.</td>
 </tr>
@@ -143,9 +143,9 @@ Lists the active log subscriptions for the Amazon Web Services account.
 
 ```sql
 SELECT
-DirectoryId,
-LogGroupName,
-SubscriptionCreatedDateTime
+directory_id,
+log_group_name,
+subscription_created_date_time
 FROM aws.ds.log_subscriptions
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,142 +50,142 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>For all database engines except Amazon Aurora, AllocatedStorage specifies the allocated storage size in gibibytes (GiB). For Aurora, AllocatedStorage always returns 1, because Aurora DB cluster storage size isn't fixed, but instead automatically adjusts as needed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>The Availability Zones where instances in the DB cluster can be created. For information on Amazon Web Services Regions and Availability Zones, see Regions and Availability Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsBackupRecoveryPointArn" /></td>
+    <td><CopyableCode code="aws_backup_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The retention period for the automated backups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the DB cluster was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterArn" /></td>
+    <td><CopyableCode code="db_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the source DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterAutomatedBackupsArn" /></td>
+    <td><CopyableCode code="db_cluster_automated_backups_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the automated backups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier for the source DB cluster, which can't be changed and which is unique to an Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbClusterResourceId" /></td>
+    <td><CopyableCode code="db_cluster_resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID for the source DB cluster, which can't be changed and which is unique to an Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the database engine for this automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineMode" /></td>
+    <td><CopyableCode code="engine_mode" /></td>
     <td><code>string</code></td>
     <td>The engine mode of the database engine for the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the database engine for the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iops" /></td>
+    <td><CopyableCode code="iops" /></td>
     <td><code>integer</code></td>
     <td>The IOPS (I/O operations per second) value for the automated backup. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key ID for an automated backup. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The license model information for this DB cluster automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master user name of the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port number that the automated backup used for connections. Default: Inherits from the source DB cluster Valid Values: 1150-65535</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region associated with the automated backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreWindow" /></td>
+    <td><CopyableCode code="restore_window" /></td>
     <td><code>string</code></td>
     <td>Earliest and latest time an instance can be restored to:</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A list of status information for an automated backup: retained - Automated backups for deleted clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the source DB cluster is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncryptionType" /></td>
+    <td><CopyableCode code="storage_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used to protect data at rest in the automated backup. Possible values: none - The automated backup is not encrypted. sse-rds - The automated backup is encrypted using an Amazon Web Services owned KMS key. sse-kms - The automated backup is encrypted using a customer managed KMS key or Amazon Web Services managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageThroughput" /></td>
+    <td><CopyableCode code="storage_throughput" /></td>
     <td><code>integer</code></td>
     <td>The storage throughput for the automated backup. The throughput is automatically set based on the IOPS that you provision, and is not configurable. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type associated with the DB cluster. This setting is only for non-Aurora Multi-AZ DB clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC ID associated with the DB cluster.</td>
 </tr>
@@ -291,34 +291,34 @@ Displays backups for both current and deleted DB clusters. For example, use this
 
 ```sql
 SELECT
-AllocatedStorage,
-AvailabilityZones,
-AwsBackupRecoveryPointArn,
-BackupRetentionPeriod,
-ClusterCreateTime,
-DBClusterArn,
-DBClusterAutomatedBackupsArn,
-DBClusterIdentifier,
-DbClusterResourceId,
-Engine,
-EngineMode,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-Iops,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-Port,
-PreferredBackupWindow,
-Region,
-RestoreWindow,
-Status,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-VpcId
+allocated_storage,
+availability_zones,
+aws_backup_recovery_point_arn,
+backup_retention_period,
+cluster_create_time,
+db_cluster_arn,
+db_cluster_automated_backups_arn,
+db_cluster_identifier,
+db_cluster_resource_id,
+engine,
+engine_mode,
+engine_version,
+iam_database_authentication_enabled,
+iops,
+kms_key_id,
+license_model,
+master_username,
+port,
+preferred_backup_window,
+region,
+restore_window,
+status,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+vpc_id
 FROM aws.rds.db_cluster_automated_backups
 WHERE region = '{{ region }}' -- required
 AND DbClusterResourceId = '{{ DbClusterResourceId }}'

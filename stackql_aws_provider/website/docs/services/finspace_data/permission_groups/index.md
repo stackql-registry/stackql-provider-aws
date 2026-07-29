@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the permission group. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationPermissions" /></td>
+    <td><CopyableCode code="application_permissions" /></td>
     <td><code>array</code></td>
     <td>Indicates the permissions that are granted to a specific group for accessing the FinSpace application. When assigning application permissions, be aware that the permission ManageUsersAndGroups allows users to grant themselves or others access to any functionality in their FinSpace environment's application. It should only be granted to trusted users. CreateDataset – Group members can create new datasets. ManageClusters – Group members can manage Apache Spark clusters from FinSpace notebooks. ManageUsersAndGroups – Group members can manage users and permission groups. This is a privileged permission that allows users to grant themselves or others access to any functionality in the application. It should only be granted to trusted users. ManageAttributeSets – Group members can manage attribute sets. ViewAuditData – Group members can view audit data. AccessNotebooks – Group members will have access to FinSpace notebooks. GetTemporaryCredentials – Group members can get temporary API credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description for the permission group. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipStatus" /></td>
+    <td><CopyableCode code="membership_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the user within a permission group. ADDITION_IN_PROGRESS – The user is currently being added to the permission group. ADDITION_SUCCESS – The user is successfully added to the permission group. REMOVAL_IN_PROGRESS – The user is currently being removed from the permission group. (ADDITION_IN_PROGRESS, ADDITION_SUCCESS, REMOVAL_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="permissionGroupId" /></td>
+    <td><CopyableCode code="permission_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the permission group. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the permission group. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationPermissions" /></td>
+    <td><CopyableCode code="application_permissions" /></td>
     <td><code>array</code></td>
     <td>Indicates the permissions that are granted to a specific group for accessing the FinSpace application. When assigning application permissions, be aware that the permission ManageUsersAndGroups allows users to grant themselves or others access to any functionality in their FinSpace environment's application. It should only be granted to trusted users. CreateDataset – Group members can create new datasets. ManageClusters – Group members can manage Apache Spark clusters from FinSpace notebooks. ManageUsersAndGroups – Group members can manage users and permission groups. This is a privileged permission that allows users to grant themselves or others access to any functionality in the application. It should only be granted to trusted users. ManageAttributeSets – Group members can manage attribute sets. ViewAuditData – Group members can view audit data. AccessNotebooks – Group members will have access to FinSpace notebooks. GetTemporaryCredentials – Group members can get temporary API credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
     <td>A brief description for the permission group. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipStatus" /></td>
+    <td><CopyableCode code="membership_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the user within a permission group. ADDITION_IN_PROGRESS – The user is currently being added to the permission group. ADDITION_SUCCESS – The user is successfully added to the permission group. REMOVAL_IN_PROGRESS – The user is currently being removed from the permission group. (ADDITION_IN_PROGRESS, ADDITION_SUCCESS, REMOVAL_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="permissionGroupId" /></td>
+    <td><CopyableCode code="permission_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the permission group. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -268,12 +268,12 @@ Lists all available permission groups in FinSpace.
 ```sql
 SELECT
 name,
-applicationPermissions,
-createTime,
+application_permissions,
+create_time,
 description,
-lastModifiedTime,
-membershipStatus,
-permissionGroupId
+last_modified_time,
+membership_status,
+permission_group_id
 FROM aws.finspace_data.permission_groups
 WHERE maxResults = '{{ maxResults }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,12 +288,12 @@ Retrieves the details of a specific permission group.
 ```sql
 SELECT
 name,
-applicationPermissions,
-createTime,
+application_permissions,
+create_time,
 description,
-lastModifiedTime,
-membershipStatus,
-permissionGroupId
+last_modified_time,
+membership_status,
+permission_group_id
 FROM aws.finspace_data.permission_groups
 WHERE permission_group_id = '{{ permission_group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -331,7 +331,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-permissionGroupId
+permission_group_id
 ;
 ```
 </TabItem>
@@ -382,7 +382,7 @@ permission_group_id = '{{ permission_group_id }}' --required
 AND user_id = '{{ user_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-statusCode;
+status_code;
 ```
 </TabItem>
 <TabItem value="update_permission_group">
@@ -400,7 +400,7 @@ WHERE
 permission_group_id = '{{ permission_group_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-permissionGroupId;
+permission_group_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalLanguageCodes" /></td>
+    <td><CopyableCode code="additional_language_codes" /></td>
     <td><code>array</code></td>
     <td>Additional codes for languages available for the specified voice in addition to its default language. For example, the default language for Aditi is Indian English (en-IN) because it was first used for that language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the code hi-IN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Gender" /></td>
+    <td><CopyableCode code="gender" /></td>
     <td><code>string</code></td>
     <td>Gender of the voice. (Female, Male)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Amazon Polly assigned voice ID. This is the ID that you specify when calling the SynthesizeSpeech operation. (Aditi, Amy, Astrid, Bianca, Brian, Camila, Carla, Carmen, Celine, Chantal, Conchita, Cristiano, Dora, Emma, Enrique, Ewa, Filiz, Gabrielle, Geraint, Giorgio, Gwyneth, Hans, Ines, Ivy, Jacek, Jan, Joanna, Joey, Justin, Karl, Kendra, Kevin, Kimberly, Lea, Liv, Lotte, Lucia, Lupe, Mads, Maja, Marlene, Mathieu, Matthew, Maxim, Mia, Miguel, Mizuki, Naja, Nicole, Olivia, Penelope, Raveena, Ricardo, Ruben, Russell, Salli, Seoyeon, Takumi, Tatyana, Vicki, Vitoria, Zeina, Zhiyu, Aria, Ayanda, Arlet, Hannah, Arthur, Daniel, Liam, Pedro, Kajal, Hiujin, Laura, Elin, Ida, Suvi, Ola, Hala, Andres, Sergio, Remi, Adriano, Thiago, Ruth, Stephen, Kazuha, Tomoko, Niamh, Sofie, Lisa, Isabelle, Zayd, Danielle, Gregory, Burcu, Jitka, Sabrina, Jasmine, Jihye, Ambre, Beatrice, Florian, Lennart, Lorenzo, Tiffany)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>Language code of the voice. (arb, cmn-CN, cy-GB, da-DK, de-DE, en-AU, en-GB, en-GB-WLS, en-IN, en-US, es-ES, es-MX, es-US, fr-CA, fr-FR, is-IS, it-IT, ja-JP, hi-IN, ko-KR, nb-NO, nl-NL, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sv-SE, tr-TR, en-NZ, en-ZA, ca-ES, de-AT, yue-CN, ar-AE, fi-FI, en-IE, nl-BE, fr-BE, cs-CZ, de-CH, en-SG)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageName" /></td>
+    <td><CopyableCode code="language_name" /></td>
     <td><code>string</code></td>
     <td>Human readable name of the language in English.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedEngines" /></td>
+    <td><CopyableCode code="supported_engines" /></td>
     <td><code>array</code></td>
     <td>Specifies which engines (standard, neural, long-form or generative) are supported by a given voice.</td>
 </tr>
@@ -183,13 +183,13 @@ Returns the list of voices that are available for use when requesting speech syn
 
 ```sql
 SELECT
-AdditionalLanguageCodes,
-Gender,
-Id,
-LanguageCode,
-LanguageName,
-Name,
-SupportedEngines
+additional_language_codes,
+gender,
+id,
+language_code,
+language_name,
+name,
+supported_engines
 FROM aws.polly.voices
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

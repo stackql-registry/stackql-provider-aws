@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a rotation override was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a rotation override ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NewContactIds" /></td>
+    <td><CopyableCode code="new_contact_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the contacts assigned to the override of the on-call rotation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationOverrideId" /></td>
+    <td><CopyableCode code="rotation_override_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the override to an on-call rotation. (pattern: &lt;code&gt;(&#91;a-fA-Z0-9&#93;&#123;8,11&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;)&#123;1&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a rotation override begins.</td>
 </tr>
@@ -90,32 +90,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the override was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the override ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NewContactIds" /></td>
+    <td><CopyableCode code="new_contact_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the contacts assigned to the override of the on-call rotation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationArn" /></td>
+    <td><CopyableCode code="rotation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the on-call rotation that was overridden. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationOverrideId" /></td>
+    <td><CopyableCode code="rotation_override_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the override to an on-call rotation. (pattern: &lt;code&gt;(&#91;a-fA-Z0-9&#93;&#123;8,11&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;)&#123;1&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the override goes into effect.</td>
 </tr>
@@ -206,11 +206,11 @@ Retrieves a list of overrides currently specified for an on-call rotation.
 
 ```sql
 SELECT
-CreateTime,
-EndTime,
-NewContactIds,
-RotationOverrideId,
-StartTime
+create_time,
+end_time,
+new_contact_ids,
+rotation_override_id,
+start_time
 FROM aws.ssm_contacts.rotation_overrides
 WHERE region = '{{ region }}' -- required
 ;
@@ -222,12 +222,12 @@ Retrieves information about an override to an on-call rotation.
 
 ```sql
 SELECT
-CreateTime,
-EndTime,
-NewContactIds,
-RotationArn,
-RotationOverrideId,
-StartTime
+create_time,
+end_time,
+new_contact_ids,
+rotation_arn,
+rotation_override_id,
+start_time
 FROM aws.ssm_contacts.rotation_overrides
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,7 +266,7 @@ SELECT
 '{{ IdempotencyToken }}',
 '{{ region }}'
 RETURNING
-RotationOverrideId
+rotation_override_id
 ;
 ```
 </TabItem>

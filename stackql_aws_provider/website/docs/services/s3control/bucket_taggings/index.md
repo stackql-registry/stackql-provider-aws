@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagSet" /></td>
+    <td><CopyableCode code="tag_set" /></td>
     <td><code>string</code></td>
     <td>The tags set of the Outposts bucket.</td>
 </tr>
@@ -143,7 +143,7 @@ This action gets an Amazon S3 on Outposts bucket's tags. To get an S3 bucket tag
 
 ```sql
 SELECT
-TagSet
+tag_set
 FROM aws.s3control.bucket_taggings
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CodeBlock" /></td>
+    <td><CopyableCode code="code_block" /></td>
     <td><code>string</code></td>
     <td>The unencrypted code that was executed for the calculation.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the unencrypted code that was executed for the calculation.
 
 ```sql
 SELECT
-CodeBlock
+code_block
 FROM aws.athena.calculation_execution_codes
 WHERE region = '{{ region }}' -- required
 ;

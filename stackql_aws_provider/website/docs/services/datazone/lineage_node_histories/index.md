@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the data lineage node was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the data lineage node.</td>
 </tr>
@@ -75,37 +75,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain of the data lineage node. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The event timestamp of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceIdentifier" /></td>
+    <td><CopyableCode code="source_identifier" /></td>
     <td><code>string</code></td>
     <td>The alternate ID of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the type of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeRevision" /></td>
+    <td><CopyableCode code="type_revision" /></td>
     <td><code>string</code></td>
     <td>The type of the revision of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the data lineage node was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who updated the data lineage node.</td>
 </tr>
@@ -216,16 +216,16 @@ Lists the history of the specified data lineage node.
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-eventTimestamp,
-sourceIdentifier,
-typeName,
-typeRevision,
-updatedAt,
-updatedBy
+domain_id,
+event_timestamp,
+source_identifier,
+type_name,
+type_revision,
+updated_at,
+updated_by
 FROM aws.datazone.lineage_node_histories
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required

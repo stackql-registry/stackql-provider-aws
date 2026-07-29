@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeConfigurations" /></td>
+    <td><CopyableCode code="active_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of active service configurations for the Express service.</td>
 </tr>
@@ -60,27 +60,27 @@ The following fields are returned by `SELECT` queries:
     <td>The short name or full ARN of the cluster that hosts the Express service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for when the Express service was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentDeployment" /></td>
+    <td><CopyableCode code="current_deployment" /></td>
     <td><code>string</code></td>
     <td>The current deployment configuration for the Express service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="infrastructureRoleArn" /></td>
+    <td><CopyableCode code="infrastructure_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the infrastructure role that manages Amazon Web Services resources for the Express service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN that identifies the Express service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Express service.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata applied to the Express service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for when the Express service was last updated.</td>
 </tr>
@@ -185,16 +185,16 @@ Retrieves detailed information about an Express service, including current statu
 
 ```sql
 SELECT
-activeConfigurations,
+active_configurations,
 cluster,
-createdAt,
-currentDeployment,
-infrastructureRoleArn,
-serviceArn,
-serviceName,
+created_at,
+current_deployment,
+infrastructure_role_arn,
+service_arn,
+service_name,
 status,
 tags,
-updatedAt
+updated_at
 FROM aws.ecs.express_gateway_services
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,132 +51,132 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>string</code></td>
     <td>The capabilities allowed in the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetId" /></td>
+    <td><CopyableCode code="change_set_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the change set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time at which the stack was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionMode" /></td>
+    <td><CopyableCode code="deletion_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies the deletion mode for the stack. Possible values are: STANDARD - Use the standard behavior. Specifying this value is the same as not specifying this parameter. FORCE_DELETE_STACK - Delete the stack if it's stuck in a DELETE_FAILED state due to resource deletion failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionTime" /></td>
+    <td><CopyableCode code="deletion_time" /></td>
     <td><code>string</code></td>
     <td>The time the stack was deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A user-defined description associated with the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetailedStatus" /></td>
+    <td><CopyableCode code="detailed_status" /></td>
     <td><code>string</code></td>
     <td>The detailed status of the resource or stack. If CONFIGURATION_COMPLETE is present, the resource or resource configuration phase has completed and the stabilization of the resources is in progress. The StackSets CONFIGURATION_COMPLETE when all of the resources in the stack have reached that event. For more information, see Understand CloudFormation stack creation events in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableRollback" /></td>
+    <td><CopyableCode code="disable_rollback" /></td>
     <td><code>boolean</code></td>
     <td>Boolean to enable or disable rollback on stack creation failures: true: disable rollback. false: enable rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftInformation" /></td>
+    <td><CopyableCode code="drift_information" /></td>
     <td><code>string</code></td>
     <td>Information about whether a stack's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see Detect unmanaged configuration changes to stacks and resources with drift detection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableTerminationProtection" /></td>
+    <td><CopyableCode code="enable_termination_protection" /></td>
     <td><code>boolean</code></td>
     <td>Whether termination protection is enabled for the stack. For nested stacks, termination protection is set on the root stack and can't be changed directly on the nested stack. For more information, see Protect a CloudFormation stack from being deleted in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastOperations" /></td>
+    <td><CopyableCode code="last_operations" /></td>
     <td><code>string</code></td>
     <td>Information about the most recent operations performed on this stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The time the stack was last updated. This field will only be returned if the stack has been updated at least once.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationARNs" /></td>
+    <td><CopyableCode code="notification_arns" /></td>
     <td><code>string</code></td>
     <td>Amazon SNS topic Amazon Resource Names (ARNs) to which stack related events are published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>string</code></td>
     <td>A list of output structures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>A list of Parameter structures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentId" /></td>
+    <td><CopyableCode code="parent_id" /></td>
     <td><code>string</code></td>
     <td>For nested stacks, the stack ID of the direct parent of this stack. For the first level of nested stacks, the root stack is also the parent stack. For more information, see Nested stacks in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetainExceptOnCreate" /></td>
+    <td><CopyableCode code="retain_except_on_create" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of Retain. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleARN" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role that's associated with the stack. During a stack operation, CloudFormation uses this role's credentials to make calls on your behalf.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RollbackConfiguration" /></td>
+    <td><CopyableCode code="rollback_configuration" /></td>
     <td><code>string</code></td>
     <td>The rollback triggers for CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootId" /></td>
+    <td><CopyableCode code="root_id" /></td>
     <td><code>string</code></td>
     <td>For nested stacks, the stack ID of the top-level stack to which the nested stack ultimately belongs. For more information, see Nested stacks in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name associated with the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackStatus" /></td>
+    <td><CopyableCode code="stack_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackStatusReason" /></td>
+    <td><CopyableCode code="stack_status_reason" /></td>
     <td><code>string</code></td>
     <td>Success/failure message associated with the stack status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of Tags that specify information about the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeoutInMinutes" /></td>
+    <td><CopyableCode code="timeout_in_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time within which stack creation should complete.</td>
 </tr>
@@ -195,62 +195,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time the stack was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionTime" /></td>
+    <td><CopyableCode code="deletion_time" /></td>
     <td><code>string</code></td>
     <td>The time the stack was deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DriftInformation" /></td>
+    <td><CopyableCode code="drift_information" /></td>
     <td><code>string</code></td>
     <td>Summarizes information about whether a stack's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see Detect unmanaged configuration changes to stacks and resources with drift detection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastOperations" /></td>
+    <td><CopyableCode code="last_operations" /></td>
     <td><code>string</code></td>
     <td>Information about the most recent operations performed on this stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The time the stack was last updated. This field will only be returned if the stack has been updated at least once.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentId" /></td>
+    <td><CopyableCode code="parent_id" /></td>
     <td><code>string</code></td>
     <td>For nested stacks, the stack ID of the direct parent of this stack. For the first level of nested stacks, the root stack is also the parent stack. For more information, see Nested stacks in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootId" /></td>
+    <td><CopyableCode code="root_id" /></td>
     <td><code>string</code></td>
     <td>For nested stacks, the stack ID of the top-level stack to which the nested stack ultimately belongs. For more information, see Nested stacks in the CloudFormation User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>Unique stack identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name associated with the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackStatus" /></td>
+    <td><CopyableCode code="stack_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackStatusReason" /></td>
+    <td><CopyableCode code="stack_status_reason" /></td>
     <td><code>string</code></td>
     <td>Success/Failure message associated with the stack status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateDescription" /></td>
+    <td><CopyableCode code="template_description" /></td>
     <td><code>string</code></td>
     <td>The template description of the template used to create the stack.</td>
 </tr>
@@ -594,32 +594,32 @@ Returns the description for the specified stack; if no stack name was specified,
 
 ```sql
 SELECT
-Capabilities,
-ChangeSetId,
-CreationTime,
-DeletionMode,
-DeletionTime,
-Description,
-DetailedStatus,
-DisableRollback,
-DriftInformation,
-EnableTerminationProtection,
-LastOperations,
-LastUpdatedTime,
-NotificationARNs,
-Outputs,
-Parameters,
-ParentId,
-RetainExceptOnCreate,
-RoleARN,
-RollbackConfiguration,
-RootId,
-StackId,
-StackName,
-StackStatus,
-StackStatusReason,
-Tags,
-TimeoutInMinutes
+capabilities,
+change_set_id,
+creation_time,
+deletion_mode,
+deletion_time,
+description,
+detailed_status,
+disable_rollback,
+drift_information,
+enable_termination_protection,
+last_operations,
+last_updated_time,
+notification_arns,
+outputs,
+parameters,
+parent_id,
+retain_except_on_create,
+role_arn,
+rollback_configuration,
+root_id,
+stack_id,
+stack_name,
+stack_status,
+stack_status_reason,
+tags,
+timeout_in_minutes
 FROM aws.cloudformation.stacks
 WHERE StackName = '{{ StackName }}' -- required
 AND region = '{{ region }}' -- required
@@ -633,18 +633,18 @@ Returns the summary information for stacks whose status matches the specified St
 
 ```sql
 SELECT
-CreationTime,
-DeletionTime,
-DriftInformation,
-LastOperations,
-LastUpdatedTime,
-ParentId,
-RootId,
-StackId,
-StackName,
-StackStatus,
-StackStatusReason,
-TemplateDescription
+creation_time,
+deletion_time,
+drift_information,
+last_operations,
+last_updated_time,
+parent_id,
+root_id,
+stack_id,
+stack_name,
+stack_status,
+stack_status_reason,
+template_description
 FROM aws.cloudformation.stacks
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

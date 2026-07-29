@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComplianceType" /></td>
+    <td><CopyableCode code="compliance_type" /></td>
     <td><code>string</code></td>
     <td>Compliance of the Config rule. (COMPLIANT, NON_COMPLIANT, INSUFFICIENT_DATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleName" /></td>
+    <td><CopyableCode code="config_rule_name" /></td>
     <td><code>string</code></td>
     <td>Name of the Config rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Controls" /></td>
+    <td><CopyableCode code="controls" /></td>
     <td><code>array</code></td>
     <td>Controls for the conformance pack. A control is a process to prevent or detect problems while meeting objectives. A control can align with a specific compliance regime or map to internal controls defined by an organization.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns compliance details for each rule in that conformance pack. You must prov
 
 ```sql
 SELECT
-ComplianceType,
-ConfigRuleName,
-Controls
+compliance_type,
+config_rule_name,
+controls
 FROM aws.config.conformance_pack_compliances
 WHERE region = '{{ region }}' -- required
 ;

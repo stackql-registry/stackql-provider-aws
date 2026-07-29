@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the notify configuration was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultTemplateId" /></td>
+    <td><CopyableCode code="default_template_id" /></td>
     <td><code>string</code></td>
     <td>The default template identifier associated with the notify configuration. (pattern: &lt;code&gt;(&#91;A-Za-z0-9_-&#93;*|UNSET_DEFAULT_TEMPLATE)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>When set to true deletion protection is enabled. By default this is set to false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name associated with the notify configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9_ -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledChannels" /></td>
+    <td><CopyableCode code="enabled_channels" /></td>
     <td><code>array</code></td>
     <td>An array of channels enabled for the notify configuration. Supported values include SMS and VOICE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledCountries" /></td>
+    <td><CopyableCode code="enabled_countries" /></td>
     <td><code>array</code></td>
     <td>An array of two-character ISO country codes, in ISO 3166-1 alpha-2 format, that are enabled for the notify configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotifyConfigurationArn" /></td>
+    <td><CopyableCode code="notify_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the notify configuration. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotifyConfigurationId" /></td>
+    <td><CopyableCode code="notify_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the notify configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the pool associated with the notify configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RejectionReason" /></td>
+    <td><CopyableCode code="rejection_reason" /></td>
     <td><code>string</code></td>
     <td>The reason the notify configuration was rejected, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the notify configuration. (PENDING, ACTIVE, REJECTED, REQUIRES_VERIFICATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The tier of the notify configuration. (BASIC, ADVANCED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TierUpgradeStatus" /></td>
+    <td><CopyableCode code="tier_upgrade_status" /></td>
     <td><code>string</code></td>
     <td>The tier upgrade status of the notify configuration. (BASIC, PENDING_UPGRADE, ADVANCED, REJECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseCase" /></td>
+    <td><CopyableCode code="use_case" /></td>
     <td><code>string</code></td>
     <td>The use case for the notify configuration. (CODE_VERIFICATION)</td>
 </tr>
@@ -219,20 +219,20 @@ Describes the specified notify configurations or all notify configurations in yo
 
 ```sql
 SELECT
-CreatedTimestamp,
-DefaultTemplateId,
-DeletionProtectionEnabled,
-DisplayName,
-EnabledChannels,
-EnabledCountries,
-NotifyConfigurationArn,
-NotifyConfigurationId,
-PoolId,
-RejectionReason,
-Status,
-Tier,
-TierUpgradeStatus,
-UseCase
+created_timestamp,
+default_template_id,
+deletion_protection_enabled,
+display_name,
+enabled_channels,
+enabled_countries,
+notify_configuration_arn,
+notify_configuration_id,
+pool_id,
+rejection_reason,
+status,
+tier,
+tier_upgrade_status,
+use_case
 FROM aws.pinpoint_sms_voice_v2.notify_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -279,21 +279,21 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreatedTimestamp,
-DefaultTemplateId,
-DeletionProtectionEnabled,
-DisplayName,
-EnabledChannels,
-EnabledCountries,
-NotifyConfigurationArn,
-NotifyConfigurationId,
-PoolId,
-RejectionReason,
-Status,
-Tags,
-Tier,
-TierUpgradeStatus,
-UseCase
+created_timestamp,
+default_template_id,
+deletion_protection_enabled,
+display_name,
+enabled_channels,
+enabled_countries,
+notify_configuration_arn,
+notify_configuration_id,
+pool_id,
+rejection_reason,
+status,
+tags,
+tier,
+tier_upgrade_status,
+use_case
 ;
 ```
 </TabItem>
@@ -377,20 +377,20 @@ WHERE
 region = '{{ region }}' --required
 AND NotifyConfigurationId = '{{ NotifyConfigurationId }}' --required
 RETURNING
-CreatedTimestamp,
-DefaultTemplateId,
-DeletionProtectionEnabled,
-DisplayName,
-EnabledChannels,
-EnabledCountries,
-NotifyConfigurationArn,
-NotifyConfigurationId,
-PoolId,
-RejectionReason,
-Status,
-Tier,
-TierUpgradeStatus,
-UseCase;
+created_timestamp,
+default_template_id,
+deletion_protection_enabled,
+display_name,
+enabled_channels,
+enabled_countries,
+notify_configuration_arn,
+notify_configuration_id,
+pool_id,
+rejection_reason,
+status,
+tier,
+tier_upgrade_status,
+use_case;
 ```
 </TabItem>
 </Tabs>

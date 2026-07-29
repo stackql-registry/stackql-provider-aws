@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="cancelRequested" /></td>
+    <td><CopyableCode code="cancel_requested" /></td>
     <td><code>boolean</code></td>
     <td>Set to true if a cancellation is requested for this workflow execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="closeStatus" /></td>
+    <td><CopyableCode code="close_status" /></td>
     <td><code>string</code></td>
     <td>If the execution status is closed then this specifies how the execution was closed: COMPLETED – the execution was successfully completed. CANCELED – the execution was canceled.Cancellation allows the implementation to gracefully clean up before the execution is closed. TERMINATED – the execution was force terminated. FAILED – the execution failed to complete. TIMED_OUT – the execution did not complete in the alloted time and was automatically timed out. CONTINUED_AS_NEW – the execution is logically continued. This means the current execution was completed and a new execution was started to carry on the workflow. (COMPLETED, FAILED, CANCELED, TERMINATED, CONTINUED_AS_NEW, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="closeTimestamp" /></td>
+    <td><CopyableCode code="close_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the workflow execution was closed. Set only if the execution status is CLOSED.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The workflow execution this information is about.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the execution. (OPEN, CLOSED)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>If this workflow execution is a child of another execution then contains the workflow execution that started this execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the execution was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>The list of tags associated with the workflow execution. Tags can be used to identify and list workflow executions of interest through the visibility APIs. A workflow execution can have a maximum of 5 tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowType" /></td>
+    <td><CopyableCode code="workflow_type" /></td>
     <td><code>object</code></td>
     <td>The type of the workflow execution.</td>
 </tr>
@@ -166,15 +166,15 @@ Returns a list of open workflow executions in the specified domain that meet the
 
 ```sql
 SELECT
-cancelRequested,
-closeStatus,
-closeTimestamp,
+cancel_requested,
+close_status,
+close_timestamp,
 execution,
-executionStatus,
+execution_status,
 parent,
-startTimestamp,
-tagList,
-workflowType
+start_timestamp,
+tag_list,
+workflow_type
 FROM aws.swf.open_workflow_executions
 WHERE region = '{{ region }}' -- required
 ;

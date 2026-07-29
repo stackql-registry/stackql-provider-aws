@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the destination is CloudWatch or Evidently. (CloudWatch, Evidently)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>If the destination is Evidently, this specifies the ARN of the Evidently experiment that receives the metrics. (pattern: &lt;code&gt;.*arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>This field appears only when the destination is Evidently. It specifies the ARN of the IAM role that is used to write to the Evidently experiment that receives the metrics. (pattern: &lt;code&gt;.*arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
@@ -168,9 +168,9 @@ Returns a list of destinations that you have created to receive RUM extended met
 
 ```sql
 SELECT
-Destination,
-DestinationArn,
-IamRoleArn
+destination,
+destination_arn,
+iam_role_arn
 FROM aws.rum.rum_metrics_destinations
 WHERE app_monitor_name = '{{ app_monitor_name }}' -- required
 AND region = '{{ region }}' -- required

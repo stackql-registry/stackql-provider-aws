@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the trusted token issuer configuration. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedTokenIssuerArn" /></td>
+    <td><CopyableCode code="trusted_token_issuer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trusted token issuer configuration. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::\d&#123;12&#125;:trustedTokenIssuer/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/tti-&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedTokenIssuerConfiguration" /></td>
+    <td><CopyableCode code="trusted_token_issuer_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure the describes the settings that apply of this trusted token issuer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedTokenIssuerType" /></td>
+    <td><CopyableCode code="trusted_token_issuer_type" /></td>
     <td><code>string</code></td>
     <td>The type of the trusted token issuer. (OIDC_JWT)</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the trusted token issuer configuration in the instance of IAM Identity Center. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedTokenIssuerArn" /></td>
+    <td><CopyableCode code="trusted_token_issuer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the trusted token issuer configuration in the instance of IAM Identity Center. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::\d&#123;12&#125;:trustedTokenIssuer/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/tti-&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedTokenIssuerType" /></td>
+    <td><CopyableCode code="trusted_token_issuer_type" /></td>
     <td><code>string</code></td>
     <td>The type of trusted token issuer. (OIDC_JWT)</td>
 </tr>
@@ -193,10 +193,10 @@ Retrieves details about a trusted token issuer configuration stored in an instan
 
 ```sql
 SELECT
-Name,
-TrustedTokenIssuerArn,
-TrustedTokenIssuerConfiguration,
-TrustedTokenIssuerType
+name,
+trusted_token_issuer_arn,
+trusted_token_issuer_configuration,
+trusted_token_issuer_type
 FROM aws.sso_admin.trusted_token_issuers
 WHERE region = '{{ region }}' -- required
 ;
@@ -208,9 +208,9 @@ Lists all the trusted token issuers configured in an instance of IAM Identity Ce
 
 ```sql
 SELECT
-Name,
-TrustedTokenIssuerArn,
-TrustedTokenIssuerType
+name,
+trusted_token_issuer_arn,
+trusted_token_issuer_type
 FROM aws.sso_admin.trusted_token_issuers
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,7 +251,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TrustedTokenIssuerArn
+trusted_token_issuer_arn
 ;
 ```
 </TabItem>

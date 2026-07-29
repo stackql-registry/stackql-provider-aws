@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="executionArn" /></td>
+    <td><CopyableCode code="execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the execution in which the Map Run was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionCounts" /></td>
+    <td><CopyableCode code="execution_counts" /></td>
     <td><code>object</code></td>
     <td>A JSON object that contains information about the total number of child workflow executions for the Map Run, and the count of child workflow executions for each status, such as failed and succeeded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="itemCounts" /></td>
+    <td><CopyableCode code="item_counts" /></td>
     <td><code>object</code></td>
     <td>A JSON object that contains information about the total number of items, and the item count for each processing status, such as pending and failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapRunArn" /></td>
+    <td><CopyableCode code="map_run_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies a Map Run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxConcurrency" /></td>
+    <td><CopyableCode code="max_concurrency" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of child workflow executions configured to run in parallel for the Map Run at the same time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveCount" /></td>
+    <td><CopyableCode code="redrive_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times you've redriven a Map Run. If you have not yet redriven a Map Run, the redriveCount is 0. This count is only updated if you successfully redrive a Map Run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveDate" /></td>
+    <td><CopyableCode code="redrive_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date a Map Run was last redriven. If you have not yet redriven a Map Run, the redriveDate is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the Map Run was started.</td>
 </tr>
@@ -96,17 +96,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the Map Run. (RUNNING, SUCCEEDED, FAILED, ABORTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopDate" /></td>
+    <td><CopyableCode code="stop_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the Map Run was stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="toleratedFailureCount" /></td>
+    <td><CopyableCode code="tolerated_failure_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum number of failed child workflow executions before the Map Run fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="toleratedFailurePercentage" /></td>
+    <td><CopyableCode code="tolerated_failure_percentage" /></td>
     <td><code>number (float)</code></td>
     <td>The maximum percentage of failed child workflow executions before the Map Run fails.</td>
 </tr>
@@ -125,27 +125,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="executionArn" /></td>
+    <td><CopyableCode code="execution_arn" /></td>
     <td><code>string</code></td>
     <td>The executionArn of the execution from which the Map Run was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapRunArn" /></td>
+    <td><CopyableCode code="map_run_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Map Run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date on which the Map Run started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineArn" /></td>
+    <td><CopyableCode code="state_machine_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the executed state machine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopDate" /></td>
+    <td><CopyableCode code="stop_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date on which the Map Run stopped.</td>
 </tr>
@@ -229,18 +229,18 @@ Provides information about a Map Run's configuration, progress, and results. If 
 
 ```sql
 SELECT
-executionArn,
-executionCounts,
-itemCounts,
-mapRunArn,
-maxConcurrency,
-redriveCount,
-redriveDate,
-startDate,
+execution_arn,
+execution_counts,
+item_counts,
+map_run_arn,
+max_concurrency,
+redrive_count,
+redrive_date,
+start_date,
 status,
-stopDate,
-toleratedFailureCount,
-toleratedFailurePercentage
+stop_date,
+tolerated_failure_count,
+tolerated_failure_percentage
 FROM aws.stepfunctions.map_runs
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,11 +252,11 @@ Lists all Map Runs that were started by a given state machine execution. Use thi
 
 ```sql
 SELECT
-executionArn,
-mapRunArn,
-startDate,
-stateMachineArn,
-stopDate
+execution_arn,
+map_run_arn,
+start_date,
+state_machine_arn,
+stop_date
 FROM aws.stepfunctions.map_runs
 WHERE region = '{{ region }}' -- required
 ;

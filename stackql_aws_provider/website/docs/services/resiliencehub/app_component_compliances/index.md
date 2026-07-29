@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="componentCompliances" /></td>
+    <td><CopyableCode code="component_compliances" /></td>
     <td><code>array</code></td>
     <td>The compliances for an Resilience Hub Application Component, returned as an object. This object contains the names of the Application Components, compliances, costs, resiliency scores, outage scores, and more.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the compliances for an Resilience Hub Application Component.
 
 ```sql
 SELECT
-componentCompliances,
-nextToken
+component_compliances,
+next_token
 FROM aws.resiliencehub.app_component_compliances
 WHERE region = '{{ region }}' -- required
 ;

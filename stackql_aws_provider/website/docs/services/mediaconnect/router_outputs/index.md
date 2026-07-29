@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>An array of errors that occurred when retrieving the requested router outputs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouterOutputs" /></td>
+    <td><CopyableCode code="router_outputs" /></td>
     <td><code>array</code></td>
     <td>An array of router outputs that were successfully retrieved.</td>
 </tr>
@@ -76,117 +76,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the router output. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerOutput:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration settings for a router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router output was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceConfiguration" /></td>
+    <td><CopyableCode code="maintenance_configuration" /></td>
     <td><code>object</code></td>
     <td>The maintenance configuration settings applied to this router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceSchedule" /></td>
+    <td><CopyableCode code="maintenance_schedule" /></td>
     <td><code>object</code></td>
     <td>The current maintenance schedule details for this router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceScheduleType" /></td>
+    <td><CopyableCode code="maintenance_schedule_type" /></td>
     <td><code>string</code></td>
     <td>The type of maintenance schedule currently in effect for this router output. (WINDOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceType" /></td>
+    <td><CopyableCode code="maintenance_type" /></td>
     <td><code>string</code></td>
     <td>The type of maintenance configuration applied to this router output. (PREFERRED_DAY_TIME, DEFAULT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumBitrate" /></td>
+    <td><CopyableCode code="maximum_bitrate" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum bitrate for the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>array</code></td>
     <td>The messages associated with the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputType" /></td>
+    <td><CopyableCode code="output_type" /></td>
     <td><code>string</code></td>
     <td>The type of the router output. (STANDARD, MEDIACONNECT_FLOW, MEDIALIVE_INPUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the router output is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutedInputArn" /></td>
+    <td><CopyableCode code="routed_input_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the router input associated with the output. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerInput:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutedState" /></td>
+    <td><CopyableCode code="routed_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the association between the router output and its input. (ROUTED, ROUTING, UNROUTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingScope" /></td>
+    <td><CopyableCode code="routing_scope" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the router output is configured for Regional or global routing. (REGIONAL, GLOBAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The overall state of the router output. (CREATING, STANDBY, STARTING, ACTIVE, STOPPING, DELETING, UPDATING, ERROR, RECOVERING, MIGRATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamDetails" /></td>
+    <td><CopyableCode code="stream_details" /></td>
     <td><code>object</code></td>
     <td>Information about the router output's stream, including connection state and destination details. The specific details provided vary based on the router output type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Key-value pairs that can be used to tag and organize this router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The tier level of the router output. (OUTPUT_100, OUTPUT_50, OUTPUT_20)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router output was last updated.</td>
 </tr>
@@ -205,87 +205,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the router output. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerOutput:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router output was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceSchedule" /></td>
+    <td><CopyableCode code="maintenance_schedule" /></td>
     <td><code>object</code></td>
     <td>The details of the maintenance schedule for the listed router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceScheduleType" /></td>
+    <td><CopyableCode code="maintenance_schedule_type" /></td>
     <td><code>string</code></td>
     <td>The type of maintenance schedule currently associated with the listed router output. (WINDOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaximumBitrate" /></td>
+    <td><CopyableCode code="maximum_bitrate" /></td>
     <td><code>integer (int64)</code></td>
     <td>The maximum bitrate of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageCount" /></td>
+    <td><CopyableCode code="message_count" /></td>
     <td><code>integer</code></td>
     <td>The number of messages associated with the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the router output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceArn" /></td>
+    <td><CopyableCode code="network_interface_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the network interface associated with the router output. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerNetworkInterface:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputType" /></td>
+    <td><CopyableCode code="output_type" /></td>
     <td><code>string</code></td>
     <td>The type of the router output. (STANDARD, MEDIACONNECT_FLOW, MEDIALIVE_INPUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The AAmazon Web Services Region where the router output is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutedInputArn" /></td>
+    <td><CopyableCode code="routed_input_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the router input associated with the output. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*):mediaconnect:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:routerInput:&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutedState" /></td>
+    <td><CopyableCode code="routed_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the association between the router output and its input. (ROUTED, ROUTING, UNROUTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingScope" /></td>
+    <td><CopyableCode code="routing_scope" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the router output is configured for Regional or global routing. (REGIONAL, GLOBAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The overall state of the router output. (CREATING, STANDBY, STARTING, ACTIVE, STOPPING, DELETING, UPDATING, ERROR, RECOVERING, MIGRATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router output was last updated.</td>
 </tr>
@@ -423,8 +423,8 @@ Retrieves information about multiple router outputs in AWS Elemental MediaConnec
 
 ```sql
 SELECT
-Errors,
-RouterOutputs
+errors,
+router_outputs
 FROM aws.mediaconnect.router_outputs
 WHERE arns = '{{ arns }}' -- required
 AND region = '{{ region }}' -- required
@@ -437,29 +437,29 @@ Retrieves information about a specific router output in AWS Elemental MediaConne
 
 ```sql
 SELECT
-Arn,
-AvailabilityZone,
-Configuration,
-CreatedAt,
-Id,
-IpAddress,
-MaintenanceConfiguration,
-MaintenanceSchedule,
-MaintenanceScheduleType,
-MaintenanceType,
-MaximumBitrate,
-Messages,
-Name,
-OutputType,
-RegionName,
-RoutedInputArn,
-RoutedState,
-RoutingScope,
-State,
-StreamDetails,
-Tags,
-Tier,
-UpdatedAt
+arn,
+availability_zone,
+configuration,
+created_at,
+id,
+ip_address,
+maintenance_configuration,
+maintenance_schedule,
+maintenance_schedule_type,
+maintenance_type,
+maximum_bitrate,
+messages,
+name,
+output_type,
+region_name,
+routed_input_arn,
+routed_state,
+routing_scope,
+state,
+stream_details,
+tags,
+tier,
+updated_at
 FROM aws.mediaconnect.router_outputs
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -472,23 +472,23 @@ Retrieves a list of router outputs in AWS Elemental MediaConnect.
 
 ```sql
 SELECT
-Arn,
-AvailabilityZone,
-CreatedAt,
-Id,
-MaintenanceSchedule,
-MaintenanceScheduleType,
-MaximumBitrate,
-MessageCount,
-Name,
-NetworkInterfaceArn,
-OutputType,
-RegionName,
-RoutedInputArn,
-RoutedState,
-RoutingScope,
-State,
-UpdatedAt
+arn,
+availability_zone,
+created_at,
+id,
+maintenance_schedule,
+maintenance_schedule_type,
+maximum_bitrate,
+message_count,
+name,
+network_interface_arn,
+output_type,
+region_name,
+routed_input_arn,
+routed_state,
+routing_scope,
+state,
+updated_at
 FROM aws.mediaconnect.router_outputs
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -539,7 +539,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-RouterOutput
+router_output
 ;
 ```
 </TabItem>
@@ -655,7 +655,7 @@ WHERE
 arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RouterOutput;
+router_output;
 ```
 </TabItem>
 </Tabs>

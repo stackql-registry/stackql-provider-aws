@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the node. For more information about ARNs and their format, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:.+:.+:.+:.+:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the node exists. Required for Ethereum nodes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the node was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FrameworkAttributes" /></td>
+    <td><CopyableCode code="framework_attributes" /></td>
     <td><code>object</code></td>
     <td>Attributes of the blockchain framework being used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type of the node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the customer managed key in Key Management Service (KMS) that the node uses for encryption at rest. If the value of this parameter is "AWS Owned KMS Key", the node uses an Amazon Web Services owned KMS key for encryption. The node inherits this parameter from the member that it belongs to. For more information, see Encryption at Rest in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide. Applies only to Hyperledger Fabric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogPublishingConfiguration" /></td>
+    <td><CopyableCode code="log_publishing_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberId" /></td>
+    <td><CopyableCode code="member_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the member to which the node belongs. Applies only to Hyperledger Fabric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkId" /></td>
+    <td><CopyableCode code="network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network that the node is on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateDB" /></td>
+    <td><CopyableCode code="state_db" /></td>
     <td><code>string</code></td>
     <td>The state database that the node uses. Values are LevelDB or CouchDB. Applies only to Hyperledger Fabric. (LevelDB, CouchDB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the node. CREATING - The Amazon Web Services account is in the process of creating a node. AVAILABLE - The node has been created and can participate in the network. UNHEALTHY - The node is impaired and might not function as expected. Amazon Managed Blockchain automatically finds nodes in this state and tries to recover them. If a node is recoverable, it returns to AVAILABLE. Otherwise, it moves to FAILED status. CREATE_FAILED - The Amazon Web Services account attempted to create a node and creation failed. UPDATING - The node is in the process of being updated. DELETING - The node is in the process of being deleted. DELETED - The node can no longer participate on the network. FAILED - The node is no longer functional, cannot be recovered, and must be deleted. INACCESSIBLE_ENCRYPTION_KEY - The node is impaired and might not function as expected because it cannot access the specified customer managed key in KMS for encryption at rest. Either the KMS key was disabled or deleted, or the grants on the key were revoked. The effect of disabling or deleting a key or of revoking a grant isn't immediate. It might take some time for the node resource to discover that the key is inaccessible. When a resource is in this state, we recommend deleting and recreating the resource. (CREATING, AVAILABLE, UNHEALTHY, CREATE_FAILED, UPDATING, DELETING, DELETED, FAILED, INACCESSIBLE_ENCRYPTION_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags assigned to the node. Each tag consists of a key and optional value. For more information about tags, see Tagging Resources in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that indicates the next set of results to retrieve.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Nodes" /></td>
+    <td><CopyableCode code="nodes" /></td>
     <td><code>array</code></td>
     <td>An array of NodeSummary objects that contain configuration properties for each node.</td>
 </tr>
@@ -263,19 +263,19 @@ Returns detailed information about a node. Applies to Hyperledger Fabric and Eth
 
 ```sql
 SELECT
-Arn,
-AvailabilityZone,
-CreationDate,
-FrameworkAttributes,
-Id,
-InstanceType,
-KmsKeyArn,
-LogPublishingConfiguration,
-MemberId,
-NetworkId,
-StateDB,
-Status,
-Tags
+arn,
+availability_zone,
+creation_date,
+framework_attributes,
+id,
+instance_type,
+kms_key_arn,
+log_publishing_configuration,
+member_id,
+network_id,
+state_db,
+status,
+tags
 FROM aws.managedblockchain.nodes
 WHERE network_id = '{{ network_id }}' -- required
 AND node_id = '{{ node_id }}' -- required
@@ -290,8 +290,8 @@ Returns information about the nodes within a network. Applies to Hyperledger Fab
 
 ```sql
 SELECT
-NextToken,
-Nodes
+next_token,
+nodes
 FROM aws.managedblockchain.nodes
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -335,7 +335,7 @@ SELECT
 '{{ network_id }}',
 '{{ region }}'
 RETURNING
-NodeId
+node_id
 ;
 ```
 </TabItem>

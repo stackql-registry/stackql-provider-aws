@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A name that you can use to identify the ephemeris. (pattern: &lt;code&gt;&#91; a-zA-Z0-9_:-&#93;&#123;1,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the ephemeris was uploaded in UTC.</td>
 </tr>
@@ -65,17 +65,17 @@ The following fields are returned by `SELECT` queries:
     <td>Whether or not the ephemeris is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ephemerisId" /></td>
+    <td><CopyableCode code="ephemeris_id" /></td>
     <td><code>string</code></td>
     <td>The AWS Ground Station ephemeris ID. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorReasons" /></td>
+    <td><CopyableCode code="error_reasons" /></td>
     <td><code>array</code></td>
     <td>Detailed error information for ephemerides with INVALID status. Provides specific error codes and messages to help diagnose validation failures.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invalidReason" /></td>
+    <td><CopyableCode code="invalid_reason" /></td>
     <td><code>string</code></td>
     <td>Reason that an ephemeris failed validation. Appears only when the status is INVALID. (METADATA_INVALID, TIME_RANGE_INVALID, TRAJECTORY_INVALID, KMS_KEY_INVALID, VALIDATION_ERROR)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>A priority score that determines which ephemeris to use when multiple ephemerides overlap. Higher numbers take precedence. The default is 1. Must be 1 or greater.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="satelliteId" /></td>
+    <td><CopyableCode code="satellite_id" /></td>
     <td><code>string</code></td>
     <td>The AWS Ground Station satellite ID associated with ephemeris. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the ephemeris. (VALIDATING, INVALID, ERROR, ENABLED, DISABLED, EXPIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="suppliedData" /></td>
+    <td><CopyableCode code="supplied_data" /></td>
     <td><code>object</code></td>
     <td>Supplied ephemeris data.</td>
 </tr>
@@ -196,15 +196,15 @@ Retrieve information about an existing ephemeris.
 ```sql
 SELECT
 name,
-creationTime,
+creation_time,
 enabled,
-ephemerisId,
-errorReasons,
-invalidReason,
+ephemeris_id,
+error_reasons,
+invalid_reason,
 priority,
-satelliteId,
+satellite_id,
 status,
-suppliedData,
+supplied_data,
 tags
 FROM aws.groundstation.ephemeris
 WHERE ephemeris_id = '{{ ephemeris_id }}' -- required
@@ -251,7 +251,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-ephemerisId
+ephemeris_id
 ;
 ```
 </TabItem>
@@ -342,7 +342,7 @@ ephemeris_id = '{{ ephemeris_id }}' --required
 AND region = '{{ region }}' --required
 AND enabled = {{ enabled }} --required
 RETURNING
-ephemerisId;
+ephemeris_id;
 ```
 </TabItem>
 </Tabs>

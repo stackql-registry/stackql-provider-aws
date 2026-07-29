@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventTopics" /></td>
+    <td><CopyableCode code="event_topics" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon SNS topic names that receive status messages from the specified Directory ID.</td>
 </tr>
@@ -133,7 +133,7 @@ Obtains information about which Amazon SNS topics receive status messages from t
 
 ```sql
 SELECT
-EventTopics
+event_topics
 FROM aws.ds.event_topics
 WHERE region = '{{ region }}' -- required
 ;

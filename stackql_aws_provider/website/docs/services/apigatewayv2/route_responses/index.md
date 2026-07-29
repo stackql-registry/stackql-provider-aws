@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ModelSelectionExpression" /></td>
+    <td><CopyableCode code="model_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseModels" /></td>
+    <td><CopyableCode code="response_models" /></td>
     <td><code>object</code></td>
     <td>Represents the response models of a route response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>Represents the response parameters of a route response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteResponseId" /></td>
+    <td><CopyableCode code="route_response_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteResponseKey" /></td>
+    <td><CopyableCode code="route_response_key" /></td>
     <td><code>string</code></td>
     <td>After evaluating a selection expression, the result is compared against one or more selection keys to find a matching key. See Selection Expressions for a list of expressions and each expression's associated selection key type.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ModelSelectionExpression" /></td>
+    <td><CopyableCode code="model_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseModels" /></td>
+    <td><CopyableCode code="response_models" /></td>
     <td><code>object</code></td>
     <td>Represents the response models of a route response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>Represents the response parameters of a route response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteResponseId" /></td>
+    <td><CopyableCode code="route_response_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteResponseKey" /></td>
+    <td><CopyableCode code="route_response_key" /></td>
     <td><code>string</code></td>
     <td>After evaluating a selection expression, the result is compared against one or more selection keys to find a matching key. See Selection Expressions for a list of expressions and each expression's associated selection key type.</td>
 </tr>
@@ -233,11 +233,11 @@ Gets a RouteResponse.
 
 ```sql
 SELECT
-ModelSelectionExpression,
-ResponseModels,
-ResponseParameters,
-RouteResponseId,
-RouteResponseKey
+model_selection_expression,
+response_models,
+response_parameters,
+route_response_id,
+route_response_key
 FROM aws.apigatewayv2.route_responses
 WHERE api_id = '{{ api_id }}' -- required
 AND route_id = '{{ route_id }}' -- required
@@ -252,11 +252,11 @@ Gets the RouteResponses for a Route.
 
 ```sql
 SELECT
-ModelSelectionExpression,
-ResponseModels,
-ResponseParameters,
-RouteResponseId,
-RouteResponseKey
+model_selection_expression,
+response_models,
+response_parameters,
+route_response_id,
+route_response_key
 FROM aws.apigatewayv2.route_responses
 WHERE api_id = '{{ api_id }}' -- required
 AND route_id = '{{ route_id }}' -- required
@@ -301,11 +301,11 @@ SELECT
 '{{ route_id }}',
 '{{ region }}'
 RETURNING
-ModelSelectionExpression,
-ResponseModels,
-ResponseParameters,
-RouteResponseId,
-RouteResponseKey
+model_selection_expression,
+response_models,
+response_parameters,
+route_response_id,
+route_response_key
 ;
 ```
 </TabItem>
@@ -370,11 +370,11 @@ AND route_id = '{{ route_id }}' --required
 AND route_response_id = '{{ route_response_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ModelSelectionExpression,
-ResponseModels,
-ResponseParameters,
-RouteResponseId,
-RouteResponseKey;
+model_selection_expression,
+response_models,
+response_parameters,
+route_response_id,
+route_response_key;
 ```
 </TabItem>
 </Tabs>

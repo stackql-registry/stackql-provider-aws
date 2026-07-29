@@ -105,11 +105,11 @@ SELECT
 '{{ iamResources }}',
 '{{ region }}'
 RETURNING
-creationTime,
-iamResources,
-lastModificationTime,
-registerAccountStatus,
-timestreamResources
+creation_time,
+iam_resources,
+last_modification_time,
+register_account_status,
+timestream_resources
 ;
 ```
 </TabItem>

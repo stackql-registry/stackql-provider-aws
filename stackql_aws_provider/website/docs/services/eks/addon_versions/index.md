@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="addonName" /></td>
+    <td><CopyableCode code="addon_name" /></td>
     <td><code>string</code></td>
     <td>The name of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addonVersions" /></td>
+    <td><CopyableCode code="addon_versions" /></td>
     <td><code>array</code></td>
     <td>An object representing information about available add-on versions and compatible Kubernetes versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultNamespace" /></td>
+    <td><CopyableCode code="default_namespace" /></td>
     <td><code>string</code></td>
     <td>The default Kubernetes namespace where this addon is typically installed if no custom namespace is specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="marketplaceInformation" /></td>
+    <td><CopyableCode code="marketplace_information" /></td>
     <td><code>object</code></td>
     <td>Information about the add-on from the Amazon Web Services Marketplace.</td>
 </tr>
@@ -184,10 +184,10 @@ Describes the versions for an add-on. Information such as the Kubernetes version
 
 ```sql
 SELECT
-addonName,
-addonVersions,
-defaultNamespace,
-marketplaceInformation,
+addon_name,
+addon_versions,
+default_namespace,
+marketplace_information,
 owner,
 publisher,
 type_

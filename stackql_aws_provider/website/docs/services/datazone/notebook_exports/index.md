@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the notebook export. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook export completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook export was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who started the notebook export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon SageMaker Unified Studio domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
     <td>The error details if the notebook export failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileFormat" /></td>
+    <td><CopyableCode code="file_format" /></td>
     <td><code>string</code></td>
     <td>The file format of the notebook export. (PDF, IPYNB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notebookId" /></td>
+    <td><CopyableCode code="notebook_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the notebook. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputLocation" /></td>
+    <td><CopyableCode code="output_location" /></td>
     <td><code>object</code></td>
     <td>The output location of the exported notebook in Amazon Simple Storage Service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the project that owns the notebook. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -180,15 +180,15 @@ Gets the details of a notebook export in Amazon SageMaker Unified Studio.
 ```sql
 SELECT
 id,
-completedAt,
-createdAt,
-createdBy,
-domainId,
+completed_at,
+created_at,
+created_by,
+domain_id,
 error,
-fileFormat,
-notebookId,
-outputLocation,
-owningProjectId,
+file_format,
+notebook_id,
+output_location,
+owning_project_id,
 status
 FROM aws.datazone.notebook_exports
 WHERE domain_identifier = '{{ domain_identifier }}' -- required

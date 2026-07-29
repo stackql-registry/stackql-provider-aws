@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The application associated with the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment associated with this event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventDate" /></td>
+    <td><CopyableCode code="event_date" /></td>
     <td><code>string</code></td>
     <td>The date when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The event message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformArn" /></td>
+    <td><CopyableCode code="platform_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The web service request ID for the activity of this event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity level of this event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration associated with this event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionLabel" /></td>
+    <td><CopyableCode code="version_label" /></td>
     <td><code>string</code></td>
     <td>The release label for the application version associated with this event.</td>
 </tr>
@@ -219,15 +219,15 @@ Returns list of event descriptions matching criteria up to the last 6 weeks. Thi
 
 ```sql
 SELECT
-ApplicationName,
-EnvironmentName,
-EventDate,
-Message,
-PlatformArn,
-RequestId,
-Severity,
-TemplateName,
-VersionLabel
+application_name,
+environment_name,
+event_date,
+message,
+platform_arn,
+request_id,
+severity,
+template_name,
+version_label
 FROM aws.elasticbeanstalk.events
 WHERE region = '{{ region }}' -- required
 AND ApplicationName = '{{ ApplicationName }}'

@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the configuration of a target group. For more information, see Target groups in the Amazon VPC Lattice User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the target group was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>The failure code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>The failure message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the target group was last updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceArns" /></td>
+    <td><CopyableCode code="service_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the service.</td>
 </tr>
@@ -135,22 +135,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN (Amazon Resource Name) of the target group. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:targetgroup/tg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the target group was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP address used for the target group. The possible values are IPV4 and IPV6. This is an optional parameter. If not specified, the default is IPV4. (IPV4, IPV6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaEventStructureVersion" /></td>
+    <td><CopyableCode code="lambda_event_structure_version" /></td>
     <td><code>string</code></td>
     <td>The version of the event structure that your Lambda function receives. Supported only if the target group type is LAMBDA. (V1, V2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the target group was last updated, in ISO-8601 format.</td>
 </tr>
@@ -165,7 +165,7 @@ The following fields are returned by `SELECT` queries:
     <td>The protocol of the target group. (HTTP, HTTPS, TCP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceArns" /></td>
+    <td><CopyableCode code="service_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the service.</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The target group type. (IP, LAMBDA, INSTANCE, ALB)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcIdentifier" /></td>
+    <td><CopyableCode code="vpc_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC of the target group. (pattern: &lt;code&gt;vpc-((&#91;0-9a-z&#93;&#123;8&#125;)|(&#91;0-9a-z&#93;&#123;17&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -307,11 +307,11 @@ id,
 name,
 arn,
 config,
-createdAt,
-failureCode,
-failureMessage,
-lastUpdatedAt,
-serviceArns,
+created_at,
+failure_code,
+failure_message,
+last_updated_at,
+service_arns,
 status,
 type_
 FROM aws.vpc_lattice.target_groups
@@ -329,16 +329,16 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-ipAddressType,
-lambdaEventStructureVersion,
-lastUpdatedAt,
+created_at,
+ip_address_type,
+lambda_event_structure_version,
+last_updated_at,
 port,
 protocol,
-serviceArns,
+service_arns,
 status,
 type_,
-vpcIdentifier
+vpc_identifier
 FROM aws.vpc_lattice.target_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

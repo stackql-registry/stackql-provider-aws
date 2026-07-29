@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountLevelBpaSync" /></td>
+    <td><CopyableCode code="account_level_bpa_sync" /></td>
     <td><code>object</code></td>
     <td>An object that describes the synchronization status of the Amazon S3 account-level block public access feature for your Lightsail buckets. For more information about this feature and how it affects Lightsail buckets, see Block public access for buckets in Amazon Lightsail.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe buckets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetBuckets request and specify the next page token using the pageToken parameter.</td>
 </tr>
@@ -157,9 +157,9 @@ Returns information about one or more Amazon Lightsail buckets. The information 
 
 ```sql
 SELECT
-accountLevelBpaSync,
+account_level_bpa_sync,
 buckets,
-nextPageToken
+next_page_token
 FROM aws.lightsail.buckets
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description that can be free-form text to record additional detail about the artifact for clarity or for later reference. (pattern: &lt;code&gt;^.&#123;0,500&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies the result of a migration task. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+:&#91;a-z0-9-&#93;+:(?:&#91;a-z0-9-&#93;+|):(?:&#91;0-9&#93;&#123;12&#125;|):.*&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the created artifacts attached to a given migration task in an update stre
 
 ```sql
 SELECT
-Description,
-Name
+description,
+name
 FROM aws.mgh.created_artifacts
 WHERE region = '{{ region }}' -- required
 ;

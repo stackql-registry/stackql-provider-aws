@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the export was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationDetails" /></td>
+    <td><CopyableCode code="destination_details" /></td>
     <td><code>object</code></td>
     <td>Details regarding the Kinesis stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventStreamArn" /></td>
+    <td><CopyableCode code="event_stream_arn" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the event stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The operational state of destination stream for export. (RUNNING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppedSince" /></td>
+    <td><CopyableCode code="stopped_since" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the State changed to STOPPED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationSummary" /></td>
+    <td><CopyableCode code="destination_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information about the Kinesis data stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventStreamArn" /></td>
+    <td><CopyableCode code="event_stream_arn" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the event stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventStreamName" /></td>
+    <td><CopyableCode code="event_stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event stream. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The operational state of destination stream for export. (RUNNING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppedSince" /></td>
+    <td><CopyableCode code="stopped_since" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the State changed to STOPPED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
@@ -241,13 +241,13 @@ Returns information about the specified event stream in a specific domain.
 
 ```sql
 SELECT
-CreatedAt,
-DestinationDetails,
-DomainName,
-EventStreamArn,
-State,
-StoppedSince,
-Tags
+created_at,
+destination_details,
+domain_name,
+event_stream_arn,
+state,
+stopped_since,
+tags
 FROM aws.customer_profiles.event_streams
 WHERE domain_name = '{{ domain_name }}' -- required
 AND event_stream_name = '{{ event_stream_name }}' -- required
@@ -261,13 +261,13 @@ Returns a list of all the event streams in a specific domain.
 
 ```sql
 SELECT
-DestinationSummary,
-DomainName,
-EventStreamArn,
-EventStreamName,
-State,
-StoppedSince,
-Tags
+destination_summary,
+domain_name,
+event_stream_arn,
+event_stream_name,
+state,
+stopped_since,
+tags
 FROM aws.customer_profiles.event_streams
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -307,8 +307,8 @@ SELECT
 '{{ event_stream_name }}',
 '{{ region }}'
 RETURNING
-EventStreamArn,
-Tags
+event_stream_arn,
+tags
 ;
 ```
 </TabItem>

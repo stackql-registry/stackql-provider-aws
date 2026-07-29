@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Required. The ARN associated with the resource you want to list tags on. (pattern: &lt;code&gt;^arn:&#91;\w+=/,.@-&#93;+:aws-marketplace:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Required. A list of objects specifying each key name and value. Number of objects allowed: 1-50.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists all tags that have been added to a resource (either an entity or change se
 
 ```sql
 SELECT
-ResourceArn,
-Tags
+resource_arn,
+tags
 FROM aws.marketplace_catalog.tags
 WHERE region = '{{ region }}' -- required
 ;

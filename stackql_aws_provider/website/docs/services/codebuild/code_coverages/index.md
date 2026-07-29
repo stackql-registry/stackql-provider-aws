@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the code coverage report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchCoveragePercentage" /></td>
+    <td><CopyableCode code="branch_coverage_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of branches that are covered by your tests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchesCovered" /></td>
+    <td><CopyableCode code="branches_covered" /></td>
     <td><code>integer</code></td>
     <td>The number of conditional branches that are covered by your tests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchesMissed" /></td>
+    <td><CopyableCode code="branches_missed" /></td>
     <td><code>integer</code></td>
     <td>The number of conditional branches that are not covered by your tests.</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time that the tests were run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filePath" /></td>
+    <td><CopyableCode code="file_path" /></td>
     <td><code>string</code></td>
     <td>The path of the test report file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineCoveragePercentage" /></td>
+    <td><CopyableCode code="line_coverage_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>The percentage of lines that are covered by your tests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linesCovered" /></td>
+    <td><CopyableCode code="lines_covered" /></td>
     <td><code>integer</code></td>
     <td>The number of lines that are covered by your tests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linesMissed" /></td>
+    <td><CopyableCode code="lines_missed" /></td>
     <td><code>integer</code></td>
     <td>The number of lines that are not covered by your tests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportARN" /></td>
+    <td><CopyableCode code="report_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the report.</td>
 </tr>
@@ -165,15 +165,15 @@ Retrieves one or more code coverage reports.
 ```sql
 SELECT
 id,
-branchCoveragePercentage,
-branchesCovered,
-branchesMissed,
+branch_coverage_percentage,
+branches_covered,
+branches_missed,
 expired,
-filePath,
-lineCoveragePercentage,
-linesCovered,
-linesMissed,
-reportARN
+file_path,
+line_coverage_percentage,
+lines_covered,
+lines_missed,
+report_arn
 FROM aws.codebuild.code_coverages
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC time stamp of the creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductARN" /></td>
+    <td><CopyableCode code="product_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductViewSummary" /></td>
+    <td><CopyableCode code="product_view_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information about the product view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceConnection" /></td>
+    <td><CopyableCode code="source_connection" /></td>
     <td><code>object</code></td>
     <td>A top level ProductViewDetail response containing details about the product’s connection. Service Catalog returns this field for the CreateProduct, UpdateProduct, DescribeProductAsAdmin, and SearchProductAsAdmin APIs. This response contains the same fields as the ConnectionParameters request, with the addition of the LastSync response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the product. AVAILABLE - The product is ready for use. CREATING - Product creation has started; the product is not ready for use. FAILED - An action failed. (AVAILABLE, CREATING, FAILED)</td>
 </tr>
@@ -139,11 +139,11 @@ Gets information about the products for the specified portfolio or all products.
 
 ```sql
 SELECT
-CreatedTime,
-ProductARN,
-ProductViewSummary,
-SourceConnection,
-Status
+created_time,
+product_arn,
+product_view_summary,
+source_connection,
+status
 FROM aws.servicecatalog.products_as_admins
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="entityAggregates" /></td>
+    <td><CopyableCode code="entity_aggregates" /></td>
     <td><code>array</code></td>
     <td>The number of entities that are affected by each of the specified events.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the number of entities that are affected by each of the specified events
 
 ```sql
 SELECT
-entityAggregates
+entity_aggregates
 FROM aws.health.entity_aggregates
 WHERE region = '{{ region }}' -- required
 ;

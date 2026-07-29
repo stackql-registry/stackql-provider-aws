@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource. Note that the tgw-peering resource type has been deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableAnnouncementId" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_announcement_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway route table announcement.</td>
 </tr>
@@ -164,11 +164,11 @@ Gets information about the route table propagations for the specified transit ga
 
 ```sql
 SELECT
-ResourceId,
-ResourceType,
-State,
-TransitGatewayAttachmentId,
-TransitGatewayRouteTableAnnouncementId
+resource_id,
+resource_type,
+state,
+transit_gateway_attachment_id,
+transit_gateway_route_table_announcement_id
 FROM aws.ec2.transit_gateway_route_table_propagations
 WHERE TransitGatewayRouteTableId = '{{ TransitGatewayRouteTableId }}' -- required
 AND region = '{{ region }}' -- required

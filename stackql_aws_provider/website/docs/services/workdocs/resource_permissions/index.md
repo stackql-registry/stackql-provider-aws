@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Roles" /></td>
+    <td><CopyableCode code="roles" /></td>
     <td><code>array</code></td>
     <td>The permission information for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of resource. (USER, GROUP, INVITE, ANONYMOUS, ORGANIZATION)</td>
 </tr>
@@ -185,9 +185,9 @@ Describes the permissions of a specified resource.
 
 ```sql
 SELECT
-Id,
-Roles,
-Type
+id,
+roles,
+type
 FROM aws.workdocs.resource_permissions
 WHERE resource_id = '{{ resource_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -226,7 +226,7 @@ AND region = '{{ region }}' --required
 AND Principals = '{{ Principals }}' --required
 AND Authentication = '{{ Authentication}}'
 RETURNING
-ShareResults;
+share_results;
 ```
 </TabItem>
 <TabItem value="remove_resource_permission">

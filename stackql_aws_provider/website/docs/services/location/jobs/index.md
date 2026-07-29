@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>Action performed by the job. (ValidateAddress)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionOptions" /></td>
+    <td><CopyableCode code="action_options" /></td>
     <td><code>object</code></td>
     <td>Additional options for configuring job action parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Job creation time in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sss.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Job completion time in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sss. Only returned for jobs in a terminal status: Completed | Failed | Cancelled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Error information if the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>IAM role used for permissions when running the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputOptions" /></td>
+    <td><CopyableCode code="input_options" /></td>
     <td><code>object</code></td>
     <td>Input configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the specified job. (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*):geo(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*))(:&#91;0-9&#93;+):((\*)|(&#91;-a-z&#93;+&#91;/&#93;&#91;*-._\w&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>Unique job identifier. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Job name (if provided during creation). (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputOptions" /></td>
+    <td><CopyableCode code="output_options" /></td>
     <td><code>object</code></td>
     <td>Output configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current job status. (Pending, Running, Completed, Failed, Cancelling, Cancelled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags and corresponding values associated with the specified job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last update time in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sss.</td>
 </tr>
@@ -135,67 +135,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>Action performed by the job. (ValidateAddress)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionOptions" /></td>
+    <td><CopyableCode code="action_options" /></td>
     <td><code>object</code></td>
     <td>Additional options for configuring job action parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Job creation time in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sss.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Job completion time in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sss. Only returned for jobs in a terminal status: Completed | Failed | Cancelled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Error information if the job failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>IAM role used for job execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputOptions" /></td>
+    <td><CopyableCode code="input_options" /></td>
     <td><code>object</code></td>
     <td>Input configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the job. (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*):geo(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*))(:&#91;0-9&#93;+):((\*)|(&#91;-a-z&#93;+&#91;/&#93;&#91;*-._\w&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>Unique job identifier. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Job name (if provided during creation). (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputOptions" /></td>
+    <td><CopyableCode code="output_options" /></td>
     <td><code>object</code></td>
     <td>Output configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current job status. (Pending, Running, Completed, Failed, Cancelling, Cancelled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last update time in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sss.</td>
 </tr>
@@ -277,20 +277,20 @@ GetJob retrieves detailed information about a specific job, including its curren
 
 ```sql
 SELECT
-Action,
-ActionOptions,
-CreatedAt,
-EndedAt,
-Error,
-ExecutionRoleArn,
-InputOptions,
-JobArn,
-JobId,
-Name,
-OutputOptions,
-Status,
-Tags,
-UpdatedAt
+action,
+action_options,
+created_at,
+ended_at,
+error,
+execution_role_arn,
+input_options,
+job_arn,
+job_id,
+name,
+output_options,
+status,
+tags,
+updated_at
 FROM aws.location.jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -303,19 +303,19 @@ ListJobs retrieves a list of jobs with optional filtering and pagination support
 
 ```sql
 SELECT
-Action,
-ActionOptions,
-CreatedAt,
-EndedAt,
-Error,
-ExecutionRoleArn,
-InputOptions,
-JobArn,
-JobId,
-Name,
-OutputOptions,
-Status,
-UpdatedAt
+action,
+action_options,
+created_at,
+ended_at,
+error,
+execution_role_arn,
+input_options,
+job_arn,
+job_id,
+name,
+output_options,
+status,
+updated_at
 FROM aws.location.jobs
 WHERE region = '{{ region }}' -- required
 ;

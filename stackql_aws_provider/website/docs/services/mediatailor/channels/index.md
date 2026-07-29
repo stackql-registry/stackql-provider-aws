@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Audiences" /></td>
+    <td><CopyableCode code="audiences" /></td>
     <td><code>array</code></td>
     <td>The list of audiences defined in channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelState" /></td>
+    <td><CopyableCode code="channel_state" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the channel is in a running state or not. (RUNNING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FillerSlate" /></td>
+    <td><CopyableCode code="filler_slate" /></td>
     <td><code>object</code></td>
     <td>Slate VOD source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the channel was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The log configuration for the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
     <td>The channel's output properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackMode" /></td>
+    <td><CopyableCode code="playback_mode" /></td>
     <td><code>string</code></td>
     <td>The channel's playback mode.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the channel. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The channel's tier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeShiftConfiguration" /></td>
+    <td><CopyableCode code="time_shift_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for time-shifted viewing.</td>
 </tr>
@@ -130,62 +130,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Audiences" /></td>
+    <td><CopyableCode code="audiences" /></td>
     <td><code>array</code></td>
     <td>The list of audiences defined in channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelState" /></td>
+    <td><CopyableCode code="channel_state" /></td>
     <td><code>string</code></td>
     <td>Returns the state whether the channel is running or not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FillerSlate" /></td>
+    <td><CopyableCode code="filler_slate" /></td>
     <td><code>object</code></td>
     <td>Slate VOD source configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the channel was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The log configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
     <td>The channel's output properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackMode" /></td>
+    <td><CopyableCode code="playback_mode" /></td>
     <td><code>string</code></td>
     <td>The type of playback mode for this channel. LINEAR - Programs play back-to-back only once. LOOP - Programs play back-to-back in an endless loop. When the last program in the schedule plays, playback loops back to the first program in the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags to assign to the channel. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The tier for this channel. STANDARD tier channels can contain live programs.</td>
 </tr>
@@ -319,19 +319,19 @@ Describes a channel. For information about MediaTailor channels, see Working wit
 
 ```sql
 SELECT
-Arn,
-Audiences,
-ChannelName,
-ChannelState,
-CreationTime,
-FillerSlate,
-LastModifiedTime,
-LogConfiguration,
-Outputs,
-PlaybackMode,
-Tags,
-Tier,
-TimeShiftConfiguration
+arn,
+audiences,
+channel_name,
+channel_state,
+creation_time,
+filler_slate,
+last_modified_time,
+log_configuration,
+outputs,
+playback_mode,
+tags,
+tier,
+time_shift_configuration
 FROM aws.mediatailor.channels
 WHERE channel_name = '{{ channel_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -344,18 +344,18 @@ Retrieves information about the channels that are associated with the current AW
 
 ```sql
 SELECT
-Arn,
-Audiences,
-ChannelName,
-ChannelState,
-CreationTime,
-FillerSlate,
-LastModifiedTime,
-LogConfiguration,
-Outputs,
-PlaybackMode,
-Tags,
-Tier
+arn,
+audiences,
+channel_name,
+channel_state,
+creation_time,
+filler_slate,
+last_modified_time,
+log_configuration,
+outputs,
+playback_mode,
+tags,
+tier
 FROM aws.mediatailor.channels
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -402,18 +402,18 @@ SELECT
 '{{ channel_name }}',
 '{{ region }}'
 RETURNING
-Arn,
-Audiences,
-ChannelName,
-ChannelState,
-CreationTime,
-FillerSlate,
-LastModifiedTime,
-Outputs,
-PlaybackMode,
-Tags,
-Tier,
-TimeShiftConfiguration
+arn,
+audiences,
+channel_name,
+channel_state,
+creation_time,
+filler_slate,
+last_modified_time,
+outputs,
+playback_mode,
+tags,
+tier,
+time_shift_configuration
 ;
 ```
 </TabItem>
@@ -494,18 +494,18 @@ WHERE
 channel_name = '{{ channel_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-Audiences,
-ChannelName,
-ChannelState,
-CreationTime,
-FillerSlate,
-LastModifiedTime,
-Outputs,
-PlaybackMode,
-Tags,
-Tier,
-TimeShiftConfiguration;
+arn,
+audiences,
+channel_name,
+channel_state,
+creation_time,
+filler_slate,
+last_modified_time,
+outputs,
+playback_mode,
+tags,
+tier,
+time_shift_configuration;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="currentSubscription" /></td>
+    <td><CopyableCode code="current_subscription" /></td>
     <td><code>object</code></td>
     <td>The type of your current Amazon Q Business subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextSubscription" /></td>
+    <td><CopyableCode code="next_subscription" /></td>
     <td><code>object</code></td>
     <td>The type of the Amazon Q Business subscription for the next month.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>A user or group in the IAM Identity Center instance connected to the Amazon Q Business application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionArn" /></td>
+    <td><CopyableCode code="subscription_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q Business subscription that was updated. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business subscription to be updated.</td>
 </tr>
@@ -180,11 +180,11 @@ Lists all subscriptions created in an Amazon Q Business application.
 
 ```sql
 SELECT
-currentSubscription,
-nextSubscription,
+current_subscription,
+next_subscription,
 principal,
-subscriptionArn,
-subscriptionId
+subscription_arn,
+subscription_id
 FROM aws.qbusiness.subscriptions
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -224,10 +224,10 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-currentSubscription,
-nextSubscription,
-subscriptionArn,
-subscriptionId
+current_subscription,
+next_subscription,
+subscription_arn,
+subscription_id
 ;
 ```
 </TabItem>
@@ -281,9 +281,9 @@ AND subscription_id = '{{ subscription_id }}' --required
 AND region = '{{ region }}' --required
 AND type = '{{ type }}' --required
 RETURNING
-currentSubscription,
-nextSubscription,
-subscriptionArn;
+current_subscription,
+next_subscription,
+subscription_arn;
 ```
 </TabItem>
 </Tabs>

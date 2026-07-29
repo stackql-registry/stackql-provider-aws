@@ -50,167 +50,167 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the cache cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AtRestEncryptionEnabled" /></td>
+    <td><CopyableCode code="at_rest_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables encryption at-rest when set to true. You cannot modify the value of AtRestEncryptionEnabled after the cluster is created. To enable at-rest encryption on a cluster you must set AtRestEncryptionEnabled to true when you create a cluster. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthTokenEnabled" /></td>
+    <td><CopyableCode code="auth_token_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables using an AuthToken (password) when issuing Valkey or Redis OSS commands. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthTokenLastModifiedDate" /></td>
+    <td><CopyableCode code="auth_token_last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date the auth token was last modified</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>If you are running Valkey or Redis OSS engine version 6.0 or later, set this parameter to yes if you want to opt-in to the next auto minor version upgrade campaign. This parameter is disabled for previous versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheClusterCreateTime" /></td>
+    <td><CopyableCode code="cache_cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheClusterId" /></td>
+    <td><CopyableCode code="cache_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The user-supplied identifier of the cluster. This identifier is a unique key that identifies a cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheClusterStatus" /></td>
+    <td><CopyableCode code="cache_cluster_status" /></td>
     <td><code>string</code></td>
     <td>The current state of this cluster, one of the following values: available, creating, deleted, deleting, incompatible-network, modifying, rebooting cluster nodes, restore-failed, or snapshotting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheNodeType" /></td>
+    <td><CopyableCode code="cache_node_type" /></td>
     <td><code>string</code></td>
     <td>The name of the compute and memory capacity node type for the cluster. The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts. General purpose: Current generation: M7g node types: cache.m7g.large, cache.m7g.xlarge, cache.m7g.2xlarge, cache.m7g.4xlarge, cache.m7g.8xlarge, cache.m7g.12xlarge, cache.m7g.16xlarge For region availability, see Supported Node Types M6g node types (available only for Redis OSS engine version 5.0.6 onward and for Memcached engine version 1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge, cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available only for Redis OSS engine version 5.0.6 onward and Memcached engine version 1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3 node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types: cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not recommended. Existing clusters are still supported but creation of new clusters is not supported for these types.) T1 node types: cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge Compute optimized: Previous generation: (not recommended. Existing clusters are still supported but creation of new clusters is not supported for these types.) C1 node types: cache.c1.xlarge Memory optimized: Current generation: R7g node types: cache.r7g.large, cache.r7g.xlarge, cache.r7g.2xlarge, cache.r7g.4xlarge, cache.r7g.8xlarge, cache.r7g.12xlarge, cache.r7g.16xlarge For region availability, see Supported Node Types R6g node types (available only for Redis OSS engine version 5.0.6 onward and for Memcached engine version 1.5.16 onward): cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge, cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation: (not recommended. Existing clusters are still supported but creation of new clusters is not supported for these types.) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge Additional node type info All current generation instance types are created in Amazon VPC by default. Valkey or Redis OSS append-only files (AOF) are not supported for T1 or T2 instances. Valkey or Redis OSS Multi-AZ with automatic failover is not supported on T1 instances. The configuration variables appendonly and appendfsync are not supported on Valkey, or on Redis OSS version 2.8.22 and later.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheNodes" /></td>
+    <td><CopyableCode code="cache_nodes" /></td>
     <td><code>string</code></td>
     <td>A list of cache nodes that are members of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheParameterGroup" /></td>
+    <td><CopyableCode code="cache_parameter_group" /></td>
     <td><code>string</code></td>
     <td>Status of the cache parameter group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheSecurityGroups" /></td>
+    <td><CopyableCode code="cache_security_groups" /></td>
     <td><code>string</code></td>
     <td>A list of cache security group elements, composed of name and status sub-elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheSubnetGroupName" /></td>
+    <td><CopyableCode code="cache_subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cache subnet group associated with the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientDownloadLandingPage" /></td>
+    <td><CopyableCode code="client_download_landing_page" /></td>
     <td><code>string</code></td>
     <td>The URL of the web page where you can download the latest ElastiCache client library.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationEndpoint" /></td>
+    <td><CopyableCode code="configuration_endpoint" /></td>
     <td><code>string</code></td>
     <td>Represents a Memcached cluster endpoint which can be used by an application to connect to any node in the cluster. The configuration endpoint will always have .cfg in it. Example: mem-3.9dvc4r.cfg.usw2.cache.amazonaws.com:11211</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the cache engine (memcached or redis) to be used for this cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the cache engine that is used in this cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpDiscovery" /></td>
+    <td><CopyableCode code="ip_discovery" /></td>
     <td><code>string</code></td>
     <td>The network type associated with the cluster, either ipv4 | ipv6. IPv6 is supported for workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to 7.1 or Memcached engine version 1.6.6 and above on all instances built on the Nitro system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogDeliveryConfigurations" /></td>
+    <td><CopyableCode code="log_delivery_configurations" /></td>
     <td><code>string</code></td>
     <td>Returns the destination, format and type of the logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>Must be either ipv4 | ipv6 | dual_stack. IPv6 is supported for workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 7.1 or Memcached engine version 1.6.6 and above on all instances built on the Nitro system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationConfiguration" /></td>
+    <td><CopyableCode code="notification_configuration" /></td>
     <td><code>string</code></td>
     <td>Describes a notification topic and its status. Notification topics are used for publishing ElastiCache events to subscribers using Amazon Simple Notification Service (SNS).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumCacheNodes" /></td>
+    <td><CopyableCode code="num_cache_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of cache nodes in the cluster. For clusters running Valkey or Redis OSS, this value must be 1. For clusters running Memcached, this value must be between 1 and 40.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>A group of settings that are applied to the cluster in the future, or that are currently being applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredAvailabilityZone" /></td>
+    <td><CopyableCode code="preferred_availability_zone" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone in which the cluster is located or "Multiple" if the cache nodes are located in different Availability Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for ddd are: sun mon tue wed thu fri sat Example: sun:23:00-mon:01:30</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredOutpostArn" /></td>
+    <td><CopyableCode code="preferred_outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The outpost ARN in which the cache cluster is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationGroupId" /></td>
+    <td><CopyableCode code="replication_group_id" /></td>
     <td><code>string</code></td>
     <td>The replication group to which this cluster belongs. If this field is empty, the cluster is not associated with any replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationGroupLogDeliveryEnabled" /></td>
+    <td><CopyableCode code="replication_group_log_delivery_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value indicating whether log delivery is enabled for the replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>string</code></td>
     <td>A list of VPC Security Groups associated with the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotRetentionLimit" /></td>
+    <td><CopyableCode code="snapshot_retention_limit" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which ElastiCache retains automatic cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, a snapshot that was taken today is retained for 5 days before being deleted. If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotWindow" /></td>
+    <td><CopyableCode code="snapshot_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cluster. Example: 05:00-09:00</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitEncryptionEnabled" /></td>
+    <td><CopyableCode code="transit_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables in-transit encryption when set to true. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitEncryptionMode" /></td>
+    <td><CopyableCode code="transit_encryption_mode" /></td>
     <td><code>string</code></td>
     <td>A setting that allows you to migrate your clients to use in-transit encryption, with no downtime.</td>
 </tr>
@@ -522,39 +522,39 @@ Returns information about all provisioned clusters if no cluster identifier is s
 
 ```sql
 SELECT
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-AuthTokenLastModifiedDate,
-AutoMinorVersionUpgrade,
-CacheClusterCreateTime,
-CacheClusterId,
-CacheClusterStatus,
-CacheNodeType,
-CacheNodes,
-CacheParameterGroup,
-CacheSecurityGroups,
-CacheSubnetGroupName,
-ClientDownloadLandingPage,
-ConfigurationEndpoint,
-Engine,
-EngineVersion,
-IpDiscovery,
-LogDeliveryConfigurations,
-NetworkType,
-NotificationConfiguration,
-NumCacheNodes,
-PendingModifiedValues,
-PreferredAvailabilityZone,
-PreferredMaintenanceWindow,
-PreferredOutpostArn,
-ReplicationGroupId,
-ReplicationGroupLogDeliveryEnabled,
-SecurityGroups,
-SnapshotRetentionLimit,
-SnapshotWindow,
-TransitEncryptionEnabled,
-TransitEncryptionMode
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+auth_token_last_modified_date,
+auto_minor_version_upgrade,
+cache_cluster_create_time,
+cache_cluster_id,
+cache_cluster_status,
+cache_node_type,
+cache_nodes,
+cache_parameter_group,
+cache_security_groups,
+cache_subnet_group_name,
+client_download_landing_page,
+configuration_endpoint,
+engine,
+engine_version,
+ip_discovery,
+log_delivery_configurations,
+network_type,
+notification_configuration,
+num_cache_nodes,
+pending_modified_values,
+preferred_availability_zone,
+preferred_maintenance_window,
+preferred_outpost_arn,
+replication_group_id,
+replication_group_log_delivery_enabled,
+security_groups,
+snapshot_retention_limit,
+snapshot_window,
+transit_encryption_enabled,
+transit_encryption_mode
 FROM aws.elasticache.cache_clusters
 WHERE region = '{{ region }}' -- required
 AND CacheClusterId = '{{ CacheClusterId }}'
@@ -648,39 +648,39 @@ SELECT
 '{{ NetworkType }}',
 '{{ IpDiscovery }}'
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-AuthTokenLastModifiedDate,
-AutoMinorVersionUpgrade,
-CacheClusterCreateTime,
-CacheClusterId,
-CacheClusterStatus,
-CacheNodeType,
-CacheNodes,
-CacheParameterGroup,
-CacheSecurityGroups,
-CacheSubnetGroupName,
-ClientDownloadLandingPage,
-ConfigurationEndpoint,
-Engine,
-EngineVersion,
-IpDiscovery,
-LogDeliveryConfigurations,
-NetworkType,
-NotificationConfiguration,
-NumCacheNodes,
-PendingModifiedValues,
-PreferredAvailabilityZone,
-PreferredMaintenanceWindow,
-PreferredOutpostArn,
-ReplicationGroupId,
-ReplicationGroupLogDeliveryEnabled,
-SecurityGroups,
-SnapshotRetentionLimit,
-SnapshotWindow,
-TransitEncryptionEnabled,
-TransitEncryptionMode
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+auth_token_last_modified_date,
+auto_minor_version_upgrade,
+cache_cluster_create_time,
+cache_cluster_id,
+cache_cluster_status,
+cache_node_type,
+cache_nodes,
+cache_parameter_group,
+cache_security_groups,
+cache_subnet_group_name,
+client_download_landing_page,
+configuration_endpoint,
+engine,
+engine_version,
+ip_discovery,
+log_delivery_configurations,
+network_type,
+notification_configuration,
+num_cache_nodes,
+pending_modified_values,
+preferred_availability_zone,
+preferred_maintenance_window,
+preferred_outpost_arn,
+replication_group_id,
+replication_group_log_delivery_enabled,
+security_groups,
+snapshot_retention_limit,
+snapshot_window,
+transit_encryption_enabled,
+transit_encryption_mode
 ;
 ```
 </TabItem>
@@ -859,39 +859,39 @@ AND LogDeliveryConfigurations = '{{ LogDeliveryConfigurations}}'
 AND IpDiscovery = '{{ IpDiscovery}}'
 AND ScaleConfig = '{{ ScaleConfig}}'
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-AuthTokenLastModifiedDate,
-AutoMinorVersionUpgrade,
-CacheClusterCreateTime,
-CacheClusterId,
-CacheClusterStatus,
-CacheNodeType,
-CacheNodes,
-CacheParameterGroup,
-CacheSecurityGroups,
-CacheSubnetGroupName,
-ClientDownloadLandingPage,
-ConfigurationEndpoint,
-Engine,
-EngineVersion,
-IpDiscovery,
-LogDeliveryConfigurations,
-NetworkType,
-NotificationConfiguration,
-NumCacheNodes,
-PendingModifiedValues,
-PreferredAvailabilityZone,
-PreferredMaintenanceWindow,
-PreferredOutpostArn,
-ReplicationGroupId,
-ReplicationGroupLogDeliveryEnabled,
-SecurityGroups,
-SnapshotRetentionLimit,
-SnapshotWindow,
-TransitEncryptionEnabled,
-TransitEncryptionMode;
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+auth_token_last_modified_date,
+auto_minor_version_upgrade,
+cache_cluster_create_time,
+cache_cluster_id,
+cache_cluster_status,
+cache_node_type,
+cache_nodes,
+cache_parameter_group,
+cache_security_groups,
+cache_subnet_group_name,
+client_download_landing_page,
+configuration_endpoint,
+engine,
+engine_version,
+ip_discovery,
+log_delivery_configurations,
+network_type,
+notification_configuration,
+num_cache_nodes,
+pending_modified_values,
+preferred_availability_zone,
+preferred_maintenance_window,
+preferred_outpost_arn,
+replication_group_id,
+replication_group_log_delivery_enabled,
+security_groups,
+snapshot_retention_limit,
+snapshot_window,
+transit_encryption_enabled,
+transit_encryption_mode;
 ```
 </TabItem>
 </Tabs>

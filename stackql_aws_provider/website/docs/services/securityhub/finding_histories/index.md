@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FindingCreated" /></td>
+    <td><CopyableCode code="finding_created" /></td>
     <td><code>boolean</code></td>
     <td>Identifies whether the event marks the creation of a new finding. A value of True means that the finding is newly created. A value of False means that the finding isn’t newly created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingIdentifier" /></td>
+    <td><CopyableCode code="finding_identifier" /></td>
     <td><code>object</code></td>
     <td>Identifies which finding to get the finding history for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token for pagination purposes. Provide this token in the subsequent request to GetFindingsHistory to get up to an additional 100 results of history for the same finding that you specified in your initial request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateSource" /></td>
+    <td><CopyableCode code="update_source" /></td>
     <td><code>object</code></td>
     <td>Identifies the source of the event that changed the finding. For example, an integrated Amazon Web Services service or third-party partner integration may call BatchImportFindings , or an Security Hub CSPM customer may call BatchUpdateFindings .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when Security Hub CSPM processed the updated finding record. For more information about the validation and formatting of timestamp fields in Security Hub CSPM, see Timestamps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Updates" /></td>
+    <td><CopyableCode code="updates" /></td>
     <td><code>array</code></td>
     <td>An array of objects that provides details about the finding change event, including the Amazon Web Services Security Finding Format (ASFF) field that changed, the value of the field before the change, and the value of the field after the change.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns the history of a Security Hub CSPM finding. The history includes changes
 
 ```sql
 SELECT
-FindingCreated,
-FindingIdentifier,
-NextToken,
-UpdateSource,
-UpdateTime,
-Updates
+finding_created,
+finding_identifier,
+next_token,
+update_source,
+update_time,
+updates
 FROM aws.securityhub.finding_histories
 WHERE region = '{{ region }}' -- required
 ;

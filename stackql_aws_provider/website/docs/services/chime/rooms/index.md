@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the room creator. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The room creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The room name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoomId" /></td>
+    <td><CopyableCode code="room_id" /></td>
     <td><code>string</code></td>
     <td>The room ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The room update timestamp, in ISO 8601 format.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rooms" /></td>
+    <td><CopyableCode code="rooms" /></td>
     <td><code>array</code></td>
     <td>The room details.</td>
 </tr>
@@ -223,12 +223,12 @@ Retrieves room details, such as the room name, for a room in an Amazon Chime Ent
 
 ```sql
 SELECT
-AccountId,
-CreatedBy,
-CreatedTimestamp,
-Name,
-RoomId,
-UpdatedTimestamp
+account_id,
+created_by,
+created_timestamp,
+name,
+room_id,
+updated_timestamp
 FROM aws.chime.rooms
 WHERE account_id = '{{ account_id }}' -- required
 AND room_id = '{{ room_id }}' -- required
@@ -242,8 +242,8 @@ Lists the room details for the specified Amazon Chime Enterprise account. Option
 
 ```sql
 SELECT
-NextToken,
-Rooms
+next_token,
+rooms
 FROM aws.chime.rooms
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -282,7 +282,7 @@ SELECT
 '{{ account_id }}',
 '{{ region }}'
 RETURNING
-Room
+room
 ;
 ```
 </TabItem>
@@ -328,7 +328,7 @@ account_id = '{{ account_id }}' --required
 AND room_id = '{{ room_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Room;
+room;
 ```
 </TabItem>
 </Tabs>

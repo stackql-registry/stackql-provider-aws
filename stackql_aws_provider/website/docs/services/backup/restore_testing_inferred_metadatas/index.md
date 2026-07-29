@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InferredMetadata" /></td>
+    <td><CopyableCode code="inferred_metadata" /></td>
     <td><code>object</code></td>
     <td>This is a string map of the metadata inferred from the request.</td>
 </tr>
@@ -134,7 +134,7 @@ This request returns the minimal required set of metadata needed to start a rest
 
 ```sql
 SELECT
-InferredMetadata
+inferred_metadata
 FROM aws.backup.restore_testing_inferred_metadatas
 WHERE BackupVaultName = '{{ BackupVaultName }}' -- required
 AND RecoveryPointArn = '{{ RecoveryPointArn }}' -- required

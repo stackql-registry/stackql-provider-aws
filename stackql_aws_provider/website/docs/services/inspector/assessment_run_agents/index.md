@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentHealth" /></td>
+    <td><CopyableCode code="agent_health" /></td>
     <td><code>string</code></td>
     <td>The current health state of the agent. (HEALTHY, UNHEALTHY, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentHealthCode" /></td>
+    <td><CopyableCode code="agent_health_code" /></td>
     <td><code>string</code></td>
     <td>The detailed health state of the agent. (IDLE, RUNNING, SHUTDOWN, UNHEALTHY, THROTTLED, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentHealthDetails" /></td>
+    <td><CopyableCode code="agent_health_details" /></td>
     <td><code>string</code></td>
     <td>The description for the agent health code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account of the EC2 instance where the agent is installed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentRunArn" /></td>
+    <td><CopyableCode code="assessment_run_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the assessment run that is associated with the agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoScalingGroup" /></td>
+    <td><CopyableCode code="auto_scaling_group" /></td>
     <td><code>string</code></td>
     <td>The Auto Scaling group of the EC2 instance that is specified by the agent ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="telemetryMetadata" /></td>
+    <td><CopyableCode code="telemetry_metadata" /></td>
     <td><code>array</code></td>
     <td>The Amazon Inspector application data metrics that are collected by the agent.</td>
 </tr>
@@ -149,13 +149,13 @@ Lists the agents of the assessment runs that are specified by the ARNs of the as
 
 ```sql
 SELECT
-agentHealth,
-agentHealthCode,
-agentHealthDetails,
-agentId,
-assessmentRunArn,
-autoScalingGroup,
-telemetryMetadata
+agent_health,
+agent_health_code,
+agent_health_details,
+agent_id,
+assessment_run_arn,
+auto_scaling_group,
+telemetry_metadata
 FROM aws.inspector.assessment_run_agents
 WHERE region = '{{ region }}' -- required
 ;

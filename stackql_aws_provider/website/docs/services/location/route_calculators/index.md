@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CalculatorArn" /></td>
+    <td><CopyableCode code="calculator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a resource across Amazon Web Services. Format example: arn:aws:geo:region:account-id:route-calculator/ExampleCalculator (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*):geo(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*))(:&#91;0-9&#93;+):((\*)|(&#91;-a-z&#93;+&#91;/&#93;&#91;*-._\w&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CalculatorName" /></td>
+    <td><CopyableCode code="calculator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the route calculator resource being described. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. For example, 2020–07-2T12:15:20.000Z+01:00</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>The data provider of traffic and road network data. Indicates one of the available providers: Esri Grab Here For more information about data providers, see Amazon Location Service data providers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description of the route calculator resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with route calculator resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the route calculator resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. For example, 2020–07-2T12:15:20.000Z+01:00</td>
 </tr>
@@ -105,32 +105,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CalculatorName" /></td>
+    <td><CopyableCode code="calculator_name" /></td>
     <td><code>string</code></td>
     <td>The name of the route calculator resource. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. For example, 2020–07-2T12:15:20.000Z+01:00</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>The data provider of traffic and road network data. Indicates one of the available providers: Esri Grab Here For more information about data providers, see Amazon Location Service data providers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description of the route calculator resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the route calculator resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. For example, 2020–07-2T12:15:20.000Z+01:00</td>
 </tr>
@@ -233,14 +233,14 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-CalculatorArn,
-CalculatorName,
-CreateTime,
-DataSource,
-Description,
-PricingPlan,
-Tags,
-UpdateTime
+calculator_arn,
+calculator_name,
+create_time,
+data_source,
+description,
+pricing_plan,
+tags,
+update_time
 FROM aws.location.route_calculators
 WHERE calculator_name = '{{ calculator_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,12 +253,12 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-CalculatorName,
-CreateTime,
-DataSource,
-Description,
-PricingPlan,
-UpdateTime
+calculator_name,
+create_time,
+data_source,
+description,
+pricing_plan,
+update_time
 FROM aws.location.route_calculators
 WHERE region = '{{ region }}' -- required
 ;
@@ -297,9 +297,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CalculatorArn,
-CalculatorName,
-CreateTime
+calculator_arn,
+calculator_name,
+create_time
 ;
 ```
 </TabItem>
@@ -349,9 +349,9 @@ WHERE
 calculator_name = '{{ calculator_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CalculatorArn,
-CalculatorName,
-UpdateTime;
+calculator_arn,
+calculator_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

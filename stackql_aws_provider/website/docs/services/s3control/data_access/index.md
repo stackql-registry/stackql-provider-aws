@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>string</code></td>
     <td>The temporary credential token that S3 Access Grants vends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Grantee" /></td>
+    <td><CopyableCode code="grantee" /></td>
     <td><code>string</code></td>
     <td>The user, group, or role that was granted access to the S3 location scope. For directory identities, this API also returns the grants of the IAM role used for the identity-aware request. For more information on identity-aware sessions, see Granting permissions to use identity-aware console sessions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchedGrantTarget" /></td>
+    <td><CopyableCode code="matched_grant_target" /></td>
     <td><code>string</code></td>
     <td>The S3 URI path of the data to which you are being granted temporary access credentials.</td>
 </tr>
@@ -164,9 +164,9 @@ Returns a temporary access credential from S3 Access Grants to the grantee or cl
 
 ```sql
 SELECT
-Credentials,
-Grantee,
-MatchedGrantTarget
+credentials,
+grantee,
+matched_grant_target
 FROM aws.s3control.data_access
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND target = '{{ target }}' -- required

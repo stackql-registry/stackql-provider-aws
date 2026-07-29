@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>The data provider of geospatial data. Values can be one of the following: Esri Grab Here For more information about data providers, see Amazon Location Service data providers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceConfiguration" /></td>
+    <td><CopyableCode code="data_source_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the data storage option chosen for requesting Places. When using Amazon Location Places: If using HERE Technologies as a data provider, you can't store results for locations in Japan by setting IntendedUse to Storage. parameter. Under the MobileAssetTracking or MobilAssetManagement pricing plan, you can't store results from your place index resources by setting IntendedUse to Storage. This returns a validation exception error. For more information, see the AWS Service Terms for Amazon Location Service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description for the place index resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexArn" /></td>
+    <td><CopyableCode code="index_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across Amazon Web Services. Format example: arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*):geo(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*))(:&#91;0-9&#93;+):((\*)|(&#91;-a-z&#93;+&#91;/&#93;&#91;*-._\w&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The name of the place index resource being described. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with place index resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the place index resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>The data provider of geospatial data. Values can be one of the following: Esri Grab Here For more information about data providers, see Amazon Location Service data providers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description for the place index resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The name of the place index resource. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the place index resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -238,15 +238,15 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-CreateTime,
-DataSource,
-DataSourceConfiguration,
-Description,
-IndexArn,
-IndexName,
-PricingPlan,
-Tags,
-UpdateTime
+create_time,
+data_source,
+data_source_configuration,
+description,
+index_arn,
+index_name,
+pricing_plan,
+tags,
+update_time
 FROM aws.location.place_indexes
 WHERE index_name = '{{ index_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -259,12 +259,12 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-CreateTime,
-DataSource,
-Description,
-IndexName,
-PricingPlan,
-UpdateTime
+create_time,
+data_source,
+description,
+index_name,
+pricing_plan,
+update_time
 FROM aws.location.place_indexes
 WHERE region = '{{ region }}' -- required
 ;
@@ -305,9 +305,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreateTime,
-IndexArn,
-IndexName
+create_time,
+index_arn,
+index_name
 ;
 ```
 </TabItem>
@@ -363,9 +363,9 @@ WHERE
 index_name = '{{ index_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-IndexArn,
-IndexName,
-UpdateTime;
+index_arn,
+index_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

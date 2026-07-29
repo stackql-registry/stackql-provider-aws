@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivationStatus" /></td>
+    <td><CopyableCode code="activation_status" /></td>
     <td><code>string</code></td>
     <td>A Boolean value indicating if the contact channel has been activated or not. (ACTIVATED, NOT_ACTIVATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the contact that the channel belongs to. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactChannelArn" /></td>
+    <td><CopyableCode code="contact_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the contact channel. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryAddress" /></td>
+    <td><CopyableCode code="delivery_address" /></td>
     <td><code>object</code></td>
     <td>The details that Incident Manager uses when trying to engage the contact channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the contact channel (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of contact channel. The type is SMS, VOICE, or EMAIL. (SMS, VOICE, EMAIL)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivationStatus" /></td>
+    <td><CopyableCode code="activation_status" /></td>
     <td><code>string</code></td>
     <td>A Boolean value describing if the contact channel has been activated or not. If the contact channel isn't activated, Incident Manager can't engage the contact through it. (ACTIVATED, NOT_ACTIVATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the contact that contains the contact channel. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactChannelArn" /></td>
+    <td><CopyableCode code="contact_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the contact channel. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryAddress" /></td>
+    <td><CopyableCode code="delivery_address" /></td>
     <td><code>object</code></td>
     <td>The details that Incident Manager uses when trying to engage the contact channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the contact channel. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the contact channel. Incident Manager supports three contact methods: SMS VOICE EMAIL (SMS, VOICE, EMAIL)</td>
 </tr>
@@ -225,12 +225,12 @@ List details about a specific contact channel.
 
 ```sql
 SELECT
-ActivationStatus,
-ContactArn,
-ContactChannelArn,
-DeliveryAddress,
-Name,
-Type
+activation_status,
+contact_arn,
+contact_channel_arn,
+delivery_address,
+name,
+type
 FROM aws.ssm_contacts.contact_channels
 WHERE region = '{{ region }}' -- required
 ;
@@ -242,12 +242,12 @@ Lists all contact channels for the specified contact.
 
 ```sql
 SELECT
-ActivationStatus,
-ContactArn,
-ContactChannelArn,
-DeliveryAddress,
-Name,
-Type
+activation_status,
+contact_arn,
+contact_channel_arn,
+delivery_address,
+name,
+type
 FROM aws.ssm_contacts.contact_channels
 WHERE region = '{{ region }}' -- required
 ;
@@ -288,7 +288,7 @@ SELECT
 '{{ IdempotencyToken }}',
 '{{ region }}'
 RETURNING
-ContactChannelArn
+contact_channel_arn
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IpamPolicyDocuments" /></td>
+    <td><CopyableCode code="ipam_policy_documents" /></td>
     <td><code>string</code></td>
     <td>The IPAM policy documents containing the allocation rules. Allocation rules are optional configurations within an IPAM policy that map Amazon Web Services resource types to specific IPAM pools. If no rules are defined, the resource types default to using Amazon-provided IP addresses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results.</td>
 </tr>
@@ -176,8 +176,8 @@ Gets the allocation rules for an IPAM policy. An IPAM policy is a set of rules t
 
 ```sql
 SELECT
-IpamPolicyDocuments,
-NextToken
+ipam_policy_documents,
+next_token
 FROM aws.ec2.ipam_policy_allocation_rules
 WHERE IpamPolicyId = '{{ IpamPolicyId }}' -- required
 AND region = '{{ region }}' -- required
@@ -217,10 +217,10 @@ AND DryRun = {{ DryRun}}
 AND Locale = '{{ Locale}}'
 AND AllocationRule = '{{ AllocationRule}}'
 RETURNING
-AllocationRules,
-IpamPolicyId,
-Locale,
-ResourceType;
+allocation_rules,
+ipam_policy_id,
+locale,
+resource_type;
 ```
 </TabItem>
 </Tabs>

@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="anonymizedOutput" /></td>
+    <td><CopyableCode code="anonymized_output" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether output data from the provider is anonymized. A value of TRUE means the output will be anonymized and you can't relate the data that comes back from the provider to the identifying input. A value of FALSE means the output won't be anonymized and you can relate the data that comes back from the provider to your source data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerComponentSchema" /></td>
+    <td><CopyableCode code="provider_component_schema" /></td>
     <td><code>object</code></td>
     <td>Input schema for the provider service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerConfigurationDefinition" /></td>
+    <td><CopyableCode code="provider_configuration_definition" /></td>
     <td><code>object</code></td>
     <td>The definition of the provider configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerEndpointConfiguration" /></td>
+    <td><CopyableCode code="provider_endpoint_configuration" /></td>
     <td><code>object</code></td>
     <td>The required configuration fields to use with the provider service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerEntityOutputDefinition" /></td>
+    <td><CopyableCode code="provider_entity_output_definition" /></td>
     <td><code>object</code></td>
     <td>The definition of the provider entity output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerIdNameSpaceConfiguration" /></td>
+    <td><CopyableCode code="provider_id_name_space_configuration" /></td>
     <td><code>object</code></td>
     <td>The provider configuration required for different ID namespace types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerIntermediateDataAccessConfiguration" /></td>
+    <td><CopyableCode code="provider_intermediate_data_access_configuration" /></td>
     <td><code>object</code></td>
     <td>The Amazon Web Services accounts and the S3 permissions that are required by some providers to create an S3 bucket for intermediate data storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerJobConfiguration" /></td>
+    <td><CopyableCode code="provider_job_configuration" /></td>
     <td><code>object</code></td>
     <td>Provider service job configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>The name of the provider. This name is typically the company name. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceArn" /></td>
+    <td><CopyableCode code="provider_service_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the provider service. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):(entityresolution):(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;)::providerservice/(&#91;a-zA-Z0-9_-&#93;&#123;1,255&#125;)/(&#91;a-zA-Z0-9_-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceDisplayName" /></td>
+    <td><CopyableCode code="provider_service_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the provider service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceName" /></td>
+    <td><CopyableCode code="provider_service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the product that the provider service provides. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceType" /></td>
+    <td><CopyableCode code="provider_service_type" /></td>
     <td><code>string</code></td>
     <td>The type of provider service. (ASSIGNMENT, ID_MAPPING)</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="providerName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>The name of the provider. This name is typically the company name. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceArn" /></td>
+    <td><CopyableCode code="provider_service_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) that Entity Resolution generated for the providerService. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn):(entityresolution):(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,10&#125;-&#91;0-9&#93;)::providerservice/(&#91;a-zA-Z0-9_-&#93;&#123;1,255&#125;)/(&#91;a-zA-Z0-9_-&#93;&#123;1,255&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceDisplayName" /></td>
+    <td><CopyableCode code="provider_service_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the provider service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceName" /></td>
+    <td><CopyableCode code="provider_service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the product that the provider service provides. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="providerServiceType" /></td>
+    <td><CopyableCode code="provider_service_type" /></td>
     <td><code>string</code></td>
     <td>The type of provider service. (ASSIGNMENT, ID_MAPPING)</td>
 </tr>
@@ -252,19 +252,19 @@ Returns the ProviderService of a given name.
 
 ```sql
 SELECT
-anonymizedOutput,
-providerComponentSchema,
-providerConfigurationDefinition,
-providerEndpointConfiguration,
-providerEntityOutputDefinition,
-providerIdNameSpaceConfiguration,
-providerIntermediateDataAccessConfiguration,
-providerJobConfiguration,
-providerName,
-providerServiceArn,
-providerServiceDisplayName,
-providerServiceName,
-providerServiceType
+anonymized_output,
+provider_component_schema,
+provider_configuration_definition,
+provider_endpoint_configuration,
+provider_entity_output_definition,
+provider_id_name_space_configuration,
+provider_intermediate_data_access_configuration,
+provider_job_configuration,
+provider_name,
+provider_service_arn,
+provider_service_display_name,
+provider_service_name,
+provider_service_type
 FROM aws.entityresolution.provider_services
 WHERE provider_name = '{{ provider_name }}' -- required
 AND provider_service_name = '{{ provider_service_name }}' -- required
@@ -278,11 +278,11 @@ Returns a list of all the ProviderServices that are available in this Amazon Web
 
 ```sql
 SELECT
-providerName,
-providerServiceArn,
-providerServiceDisplayName,
-providerServiceName,
-providerServiceType
+provider_name,
+provider_service_arn,
+provider_service_display_name,
+provider_service_name,
+provider_service_type
 FROM aws.entityresolution.provider_services
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

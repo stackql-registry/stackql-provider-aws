@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationType" /></td>
+    <td><CopyableCode code="application_type" /></td>
     <td><code>string</code></td>
     <td>The type of application being created. Valid values are None or Lakehouse. Use Lakehouse to enable Amazon Redshift federated permissions on cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizedTokenIssuerList" /></td>
+    <td><CopyableCode code="authorized_token_issuer_list" /></td>
     <td><code>string</code></td>
     <td>The authorized token issuer list for the Amazon Redshift IAM Identity Center application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the Amazon Redshift IAM Identity Center application. It has the required permissions to be assumed and invoke the IDC Identity Center API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdcDisplayName" /></td>
+    <td><CopyableCode code="idc_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name for the Amazon Redshift IAM Identity Center application. It appears on the console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdcInstanceArn" /></td>
+    <td><CopyableCode code="idc_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the IAM Identity Center instance that Redshift integrates with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdcManagedApplicationArn" /></td>
+    <td><CopyableCode code="idc_managed_application_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the Amazon Redshift IAM Identity Center application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdcOnboardStatus" /></td>
+    <td><CopyableCode code="idc_onboard_status" /></td>
     <td><code>string</code></td>
     <td>The onboarding status for the Amazon Redshift IAM Identity Center application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityNamespace" /></td>
+    <td><CopyableCode code="identity_namespace" /></td>
     <td><code>string</code></td>
     <td>The identity namespace for the Amazon Redshift IAM Identity Center application. It determines which managed application verifies the connection token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedshiftIdcApplicationArn" /></td>
+    <td><CopyableCode code="redshift_idc_application_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the Redshift application that integrates with IAM Identity Center.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RedshiftIdcApplicationName" /></td>
+    <td><CopyableCode code="redshift_idc_application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Redshift application in IAM Identity Center.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceIntegrations" /></td>
+    <td><CopyableCode code="service_integrations" /></td>
     <td><code>string</code></td>
     <td>A list of service integrations for the Redshift IAM Identity Center application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SsoTagKeys" /></td>
+    <td><CopyableCode code="sso_tag_keys" /></td>
     <td><code>string</code></td>
     <td>A list of tags keys that Redshift Identity Center applications copy to IAM Identity Center. For each input key, the tag corresponding to the key-value pair is propagated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags.</td>
 </tr>
@@ -280,19 +280,19 @@ Lists the Amazon Redshift IAM Identity Center applications.
 
 ```sql
 SELECT
-ApplicationType,
-AuthorizedTokenIssuerList,
-IamRoleArn,
-IdcDisplayName,
-IdcInstanceArn,
-IdcManagedApplicationArn,
-IdcOnboardStatus,
-IdentityNamespace,
-RedshiftIdcApplicationArn,
-RedshiftIdcApplicationName,
-ServiceIntegrations,
-SsoTagKeys,
-Tags
+application_type,
+authorized_token_issuer_list,
+iam_role_arn,
+idc_display_name,
+idc_instance_arn,
+idc_managed_application_arn,
+idc_onboard_status,
+identity_namespace,
+redshift_idc_application_arn,
+redshift_idc_application_name,
+service_integrations,
+sso_tag_keys,
+tags
 FROM aws.redshift.redshift_idc_applications
 WHERE region = '{{ region }}' -- required
 AND RedshiftIdcApplicationArn = '{{ RedshiftIdcApplicationArn }}'
@@ -344,19 +344,19 @@ SELECT
 '{{ Tags }}',
 '{{ SsoTagKeys }}'
 RETURNING
-ApplicationType,
-AuthorizedTokenIssuerList,
-IamRoleArn,
-IdcDisplayName,
-IdcInstanceArn,
-IdcManagedApplicationArn,
-IdcOnboardStatus,
-IdentityNamespace,
-RedshiftIdcApplicationArn,
-RedshiftIdcApplicationName,
-ServiceIntegrations,
-SsoTagKeys,
-Tags
+application_type,
+authorized_token_issuer_list,
+iam_role_arn,
+idc_display_name,
+idc_instance_arn,
+idc_managed_application_arn,
+idc_onboard_status,
+identity_namespace,
+redshift_idc_application_arn,
+redshift_idc_application_name,
+service_integrations,
+sso_tag_keys,
+tags
 ;
 ```
 </TabItem>
@@ -435,19 +435,19 @@ AND IdcDisplayName = '{{ IdcDisplayName}}'
 AND AuthorizedTokenIssuerList = '{{ AuthorizedTokenIssuerList}}'
 AND ServiceIntegrations = '{{ ServiceIntegrations}}'
 RETURNING
-ApplicationType,
-AuthorizedTokenIssuerList,
-IamRoleArn,
-IdcDisplayName,
-IdcInstanceArn,
-IdcManagedApplicationArn,
-IdcOnboardStatus,
-IdentityNamespace,
-RedshiftIdcApplicationArn,
-RedshiftIdcApplicationName,
-ServiceIntegrations,
-SsoTagKeys,
-Tags;
+application_type,
+authorized_token_issuer_list,
+iam_role_arn,
+idc_display_name,
+idc_instance_arn,
+idc_managed_application_arn,
+idc_onboard_status,
+identity_namespace,
+redshift_idc_application_arn,
+redshift_idc_application_name,
+service_integrations,
+sso_tag_keys,
+tags;
 ```
 </TabItem>
 </Tabs>

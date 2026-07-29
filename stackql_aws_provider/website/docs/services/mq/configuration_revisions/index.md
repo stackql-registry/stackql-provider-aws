@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationId" /></td>
+    <td><CopyableCode code="configuration_id" /></td>
     <td><code>string</code></td>
     <td>Required. The unique ID that Amazon MQ generates for the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>Required. The date and time of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Data" /></td>
+    <td><CopyableCode code="data" /></td>
     <td><code>string</code></td>
     <td>Amazon MQ for ActiveMQ: the base64-encoded XML configuration. Amazon MQ for RabbitMQ: base64-encoded Cuttlefish.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationId" /></td>
+    <td><CopyableCode code="configuration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID that Amazon MQ generates for the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxResults" /></td>
+    <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of configuration revisions that can be returned per page (20 by default). This value must be an integer from 5 to 100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revisions" /></td>
+    <td><CopyableCode code="revisions" /></td>
     <td><code>array</code></td>
     <td>The list of all revisions for the specified configuration.</td>
 </tr>
@@ -197,10 +197,10 @@ Returns the specified configuration revision for the specified configuration.
 
 ```sql
 SELECT
-ConfigurationId,
-Created,
-Data,
-Description
+configuration_id,
+created,
+data,
+description
 FROM aws.mq.configuration_revisions
 WHERE `configuration-id` = '{{ configuration-id }}' -- required
 AND `configuration-revision` = '{{ configuration-revision }}' -- required
@@ -214,10 +214,10 @@ Returns a list of all revisions for the specified configuration.
 
 ```sql
 SELECT
-ConfigurationId,
-MaxResults,
-NextToken,
-Revisions
+configuration_id,
+max_results,
+next_token,
+revisions
 FROM aws.mq.configuration_revisions
 WHERE `configuration-id` = '{{ configuration-id }}' -- required
 AND region = '{{ region }}' -- required

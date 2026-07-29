@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>The list of tags.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags for a specified resource.
 
 ```sql
 SELECT
-TagList
+tag_list
 FROM aws.networkmanager.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

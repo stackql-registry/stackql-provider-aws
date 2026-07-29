@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Statements" /></td>
+    <td><CopyableCode code="statements" /></td>
     <td><code>array</code></td>
     <td>An array of policy statements applied to the application.</td>
 </tr>
@@ -131,7 +131,7 @@ Retrieves the policy for the application.
 
 ```sql
 SELECT
-Statements
+statements
 FROM aws.serverlessrepo.application_policies
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -161,7 +161,7 @@ WHERE
 application_id = '{{ application_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Statements;
+statements;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClassicLinkDnsSupported" /></td>
+    <td><CopyableCode code="classic_link_dns_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether ClassicLink DNS support is enabled for the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -139,8 +139,8 @@ This action is deprecated. Describes the ClassicLink DNS support status of one o
 
 ```sql
 SELECT
-ClassicLinkDnsSupported,
-VpcId
+classic_link_dns_supported,
+vpc_id
 FROM aws.ec2.vpc_classic_link_dns_supports
 WHERE region = '{{ region }}' -- required
 AND VpcIds = '{{ VpcIds }}'

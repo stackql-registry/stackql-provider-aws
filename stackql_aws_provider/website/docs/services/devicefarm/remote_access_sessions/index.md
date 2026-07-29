@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the remote access session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appUpload" /></td>
+    <td><CopyableCode code="app_upload" /></td>
     <td><code>string</code></td>
     <td>The ARN for the app to be installed onto your device. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the remote access session. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingMethod" /></td>
+    <td><CopyableCode code="billing_method" /></td>
     <td><code>string</code></td>
     <td>The billing method of the remote access session. Possible values include METERED or UNMETERED. For more information about metered devices, see AWS Device Farm terminology. (METERED, UNMETERED)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The device (phone or tablet) used in the remote access session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceMinutes" /></td>
+    <td><CopyableCode code="device_minutes" /></td>
     <td><code>object</code></td>
     <td>The number of minutes a device is used in a remote access session (including setup and teardown minutes).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceProxy" /></td>
+    <td><CopyableCode code="device_proxy" /></td>
     <td><code>object</code></td>
     <td>The device proxy configured for the remote access session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceUdid" /></td>
+    <td><CopyableCode code="device_udid" /></td>
     <td><code>string</code></td>
     <td>Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote access session. Remote debugging is no longer supported.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>Represents the remote endpoints for viewing and controlling a device during a remote access session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the instance. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="interactionMode" /></td>
+    <td><CopyableCode code="interaction_mode" /></td>
     <td><code>string</code></td>
     <td>The interaction mode of the remote access session. Changing the interactive mode of remote access sessions is no longer available. (INTERACTIVE, NO_VIDEO, VIDEO_ONLY)</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>The result of the remote access session. Can be any of the following: PENDING. PASSED. WARNED. FAILED. SKIPPED. ERRORED. STOPPED. (PENDING, PASSED, WARNED, FAILED, SKIPPED, ERRORED, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="skipAppResign" /></td>
+    <td><CopyableCode code="skip_app_resign" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see Do you modify my app? in the AWS Device Farm FAQs.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time the remote access session was stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC security groups and subnets that are attached to a project.</td>
 </tr>
@@ -243,25 +243,25 @@ Returns a link to a currently running remote access session.
 ```sql
 SELECT
 name,
-appUpload,
+app_upload,
 arn,
-billingMethod,
+billing_method,
 created,
 device,
-deviceMinutes,
-deviceProxy,
-deviceUdid,
+device_minutes,
+device_proxy,
+device_udid,
 endpoint,
 endpoints,
-instanceArn,
-interactionMode,
+instance_arn,
+interaction_mode,
 message,
 result,
-skipAppResign,
+skip_app_resign,
 started,
 status,
 stopped,
-vpcConfig
+vpc_config
 FROM aws.devicefarm.remote_access_sessions
 WHERE region = '{{ region }}' -- required
 ;
@@ -306,7 +306,7 @@ SELECT
 {{ skipAppResign }},
 '{{ region }}'
 RETURNING
-remoteAccessSession
+remote_access_session
 ;
 ```
 </TabItem>

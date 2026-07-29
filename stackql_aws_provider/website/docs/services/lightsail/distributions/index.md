@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of objects that describe your distributions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetDistributions request and specify the next page token using the pageToken parameter.</td>
 </tr>
@@ -167,7 +167,7 @@ Returns information about one or more of your Amazon Lightsail content delivery 
 ```sql
 SELECT
 distributions,
-nextPageToken
+next_page_token
 FROM aws.lightsail.distributions
 WHERE region = '{{ region }}' -- required
 ;

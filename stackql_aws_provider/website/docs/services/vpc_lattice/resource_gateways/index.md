@@ -66,42 +66,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the resource gateway. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourcegateway/rgw-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the resource gateway was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP address for the resource gateway. (IPV4, IPV6, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv4AddressesPerEni" /></td>
+    <td><CopyableCode code="ipv_4_addresses_per_eni" /></td>
     <td><code>integer</code></td>
     <td>The number of IPv4 addresses in each ENI for the resource gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the resource gateway was last updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The AWS service that manages the resource gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigDnsResolution" /></td>
+    <td><CopyableCode code="resource_config_dns_resolution" /></td>
     <td><code>string</code></td>
     <td>The DNS resolution type for resource configurations that are associated with this resource gateway. (IN_VPC, PUBLIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The security group IDs associated with the resource gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceManaged" /></td>
+    <td><CopyableCode code="service_managed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the resource gateway is managed by an AWS service.</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status for the resource gateway. (ACTIVE, CREATE_IN_PROGRESS, UPDATE_IN_PROGRESS, DELETE_IN_PROGRESS, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the VPC subnets for resource gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the resource gateway. (pattern: &lt;code&gt;vpc-((&#91;0-9a-z&#93;&#123;8&#125;)|(&#91;0-9a-z&#93;&#123;17&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -150,32 +150,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the resource gateway. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourcegateway/rgw-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the VPC endpoint association was created, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP address used by the resource gateway. (IPV4, IPV6, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipv4AddressesPerEni" /></td>
+    <td><CopyableCode code="ipv_4_addresses_per_eni" /></td>
     <td><code>integer</code></td>
     <td>The number of IPv4 addresses in each ENI for the resource gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date and time that the resource gateway was updated, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceConfigDnsResolution" /></td>
+    <td><CopyableCode code="resource_config_dns_resolution" /></td>
     <td><code>string</code></td>
     <td>The DNS resolution type for resource configurations that are associated with this resource gateway. (IN_VPC, PUBLIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the security groups applied to the resource gateway.</td>
 </tr>
@@ -185,12 +185,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the resource gateway. (ACTIVE, CREATE_IN_PROGRESS, UPDATE_IN_PROGRESS, DELETE_IN_PROGRESS, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the VPC subnets for the resource gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcIdentifier" /></td>
+    <td><CopyableCode code="vpc_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC for the resource gateway. (pattern: &lt;code&gt;vpc-((&#91;0-9a-z&#93;&#123;8&#125;)|(&#91;0-9a-z&#93;&#123;17&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -306,17 +306,17 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-ipAddressType,
-ipv4AddressesPerEni,
-lastUpdatedAt,
-managedBy,
-resourceConfigDnsResolution,
-securityGroupIds,
-serviceManaged,
+created_at,
+ip_address_type,
+ipv_4_addresses_per_eni,
+last_updated_at,
+managed_by,
+resource_config_dns_resolution,
+security_group_ids,
+service_managed,
 status,
-subnetIds,
-vpcId
+subnet_ids,
+vpc_id
 FROM aws.vpc_lattice.resource_gateways
 WHERE resource_gateway_identifier = '{{ resource_gateway_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -332,15 +332,15 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-ipAddressType,
-ipv4AddressesPerEni,
-lastUpdatedAt,
-resourceConfigDnsResolution,
-securityGroupIds,
+created_at,
+ip_address_type,
+ipv_4_addresses_per_eni,
+last_updated_at,
+resource_config_dns_resolution,
+security_group_ids,
 status,
-subnetIds,
-vpcIdentifier
+subnet_ids,
+vpc_identifier
 FROM aws.vpc_lattice.resource_gateways
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -392,13 +392,13 @@ RETURNING
 id,
 name,
 arn,
-ipAddressType,
-ipv4AddressesPerEni,
-resourceConfigDnsResolution,
-securityGroupIds,
+ip_address_type,
+ipv_4_addresses_per_eni,
+resource_config_dns_resolution,
+security_group_ids,
 status,
-subnetIds,
-vpcIdentifier
+subnet_ids,
+vpc_identifier
 ;
 ```
 </TabItem>
@@ -461,11 +461,11 @@ RETURNING
 id,
 name,
 arn,
-ipAddressType,
-securityGroupIds,
+ip_address_type,
+security_group_ids,
 status,
-subnetIds,
-vpcId;
+subnet_ids,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

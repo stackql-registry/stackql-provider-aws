@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Detail" /></td>
+    <td><CopyableCode code="detail" /></td>
     <td><code>string</code></td>
     <td>Contains more details about the message status. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The message status value. (SENT, PENDING, FAILED, DENIED)</td>
 </tr>
@@ -144,8 +144,8 @@ Gets message status for a specified messageId. Use this API to determine the int
 
 ```sql
 SELECT
-Detail,
-Value
+detail,
+value
 FROM aws.chime_sdk_messaging.channel_message_status
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND message_id = '{{ message_id }}' -- required

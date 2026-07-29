@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the component was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The component deployment status. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>The message associated with the component deployment status.</td>
 </tr>
@@ -81,52 +81,52 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Proton environment that this component is associated with. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment of this component. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastClientRequestToken" /></td>
+    <td><CopyableCode code="last_client_request_token" /></td>
     <td><code>string</code></td>
     <td>The last token the client requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentAttemptedAt" /></td>
+    <td><CopyableCode code="last_deployment_attempted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a deployment of the component was last attempted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentSucceededAt" /></td>
+    <td><CopyableCode code="last_deployment_succeeded_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the component was last deployed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the component was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment of this component. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceInstanceName" /></td>
+    <td><CopyableCode code="service_instance_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service instance that this component is attached to. Provided when a component is attached to a service instance. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service that serviceInstanceName is associated with. Provided when a component is attached to a service instance. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceSpec" /></td>
+    <td><CopyableCode code="service_spec" /></td>
     <td><code>string</code></td>
     <td>The service spec that the component uses to access service inputs. Provided when a component is attached to a service instance.</td>
 </tr>
@@ -155,57 +155,57 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the component was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The component deployment status. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>The message associated with the component deployment status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Proton environment that this component is associated with. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment of this component. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentAttemptedAt" /></td>
+    <td><CopyableCode code="last_deployment_attempted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a deployment of the component was last attempted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentSucceededAt" /></td>
+    <td><CopyableCode code="last_deployment_succeeded_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the component was last deployed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the component was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment of this component. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceInstanceName" /></td>
+    <td><CopyableCode code="service_instance_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service instance that this component is attached to. Provided when a component is attached to a service instance. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service that serviceInstanceName is associated with. Provided when a component is attached to a service instance. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -312,20 +312,20 @@ Get detailed data for a component. For more information about components, see Pr
 SELECT
 name,
 arn,
-createdAt,
-deploymentStatus,
-deploymentStatusMessage,
+created_at,
+deployment_status,
+deployment_status_message,
 description,
-environmentName,
-lastAttemptedDeploymentId,
-lastClientRequestToken,
-lastDeploymentAttemptedAt,
-lastDeploymentSucceededAt,
-lastModifiedAt,
-lastSucceededDeploymentId,
-serviceInstanceName,
-serviceName,
-serviceSpec
+environment_name,
+last_attempted_deployment_id,
+last_client_request_token,
+last_deployment_attempted_at,
+last_deployment_succeeded_at,
+last_modified_at,
+last_succeeded_deployment_id,
+service_instance_name,
+service_name,
+service_spec
 FROM aws.proton.components
 WHERE region = '{{ region }}' -- required
 ;
@@ -339,17 +339,17 @@ List components with summary data. You can filter the result list by environment
 SELECT
 name,
 arn,
-createdAt,
-deploymentStatus,
-deploymentStatusMessage,
-environmentName,
-lastAttemptedDeploymentId,
-lastDeploymentAttemptedAt,
-lastDeploymentSucceededAt,
-lastModifiedAt,
-lastSucceededDeploymentId,
-serviceInstanceName,
-serviceName
+created_at,
+deployment_status,
+deployment_status_message,
+environment_name,
+last_attempted_deployment_id,
+last_deployment_attempted_at,
+last_deployment_succeeded_at,
+last_modified_at,
+last_succeeded_deployment_id,
+service_instance_name,
+service_name
 FROM aws.proton.components
 WHERE region = '{{ region }}' -- required
 ;

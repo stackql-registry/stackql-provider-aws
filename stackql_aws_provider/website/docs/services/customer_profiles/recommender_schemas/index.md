@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the recommender schema was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>object</code></td>
     <td>A map of dataset type to column definitions included in the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderSchemaName" /></td>
+    <td><CopyableCode code="recommender_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender schema. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the recommender schema. (ACTIVE, DELETING)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the recommender schema was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>object</code></td>
     <td>A map of dataset type to column definitions included in the schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommenderSchemaName" /></td>
+    <td><CopyableCode code="recommender_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the recommender schema. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current operational status of the recommender schema. (ACTIVE, DELETING)</td>
 </tr>
@@ -211,10 +211,10 @@ Retrieves information about a specific recommender schema in a domain.
 
 ```sql
 SELECT
-CreatedAt,
-Fields,
-RecommenderSchemaName,
-Status
+created_at,
+fields,
+recommender_schema_name,
+status
 FROM aws.customer_profiles.recommender_schemas
 WHERE domain_name = '{{ domain_name }}' -- required
 AND recommender_schema_name = '{{ recommender_schema_name }}' -- required
@@ -228,10 +228,10 @@ Returns a list of recommender schemas in the specified domain.
 
 ```sql
 SELECT
-CreatedAt,
-Fields,
-RecommenderSchemaName,
-Status
+created_at,
+fields,
+recommender_schema_name,
+status
 FROM aws.customer_profiles.recommender_schemas
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -271,12 +271,12 @@ SELECT
 '{{ recommender_schema_name }}',
 '{{ region }}'
 RETURNING
-CreatedAt,
-Fields,
-RecommenderSchemaArn,
-RecommenderSchemaName,
-Status,
-Tags
+created_at,
+fields,
+recommender_schema_arn,
+recommender_schema_name,
+status,
+tags
 ;
 ```
 </TabItem>

@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The minimum aggregated field value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stdDeviation" /></td>
+    <td><CopyableCode code="std_deviation" /></td>
     <td><code>number (double)</code></td>
     <td>The standard deviation of the aggregated field values.</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The sum of the aggregated field values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sumOfSquares" /></td>
+    <td><CopyableCode code="sum_of_squares" /></td>
     <td><code>number (double)</code></td>
     <td>The sum of the squares of the aggregated field values.</td>
 </tr>
@@ -158,9 +158,9 @@ average,
 count,
 maximum_,
 minimum_,
-stdDeviation,
+std_deviation,
 sum,
-sumOfSquares,
+sum_of_squares,
 variance
 FROM aws.iot.statistics
 WHERE region = '{{ region }}' -- required

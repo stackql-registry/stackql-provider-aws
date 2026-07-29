@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to include in another request to get the next page of items. This value is null when there are no more items to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonCompliantResources" /></td>
+    <td><CopyableCode code="non_compliant_resources" /></td>
     <td><code>string</code></td>
     <td>Information about resources that are blocking encryption enforcement.</td>
 </tr>
@@ -144,8 +144,8 @@ Gets information about resources in a VPC that are blocking encryption enforceme
 
 ```sql
 SELECT
-NextToken,
-NonCompliantResources
+next_token,
+non_compliant_resources
 FROM aws.ec2.vpc_resources_blocking_encryption_enforcements
 WHERE VpcId = '{{ VpcId }}' -- required
 AND region = '{{ region }}' -- required

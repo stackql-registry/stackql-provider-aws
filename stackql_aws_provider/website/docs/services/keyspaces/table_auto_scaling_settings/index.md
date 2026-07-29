@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoScalingSpecification" /></td>
+    <td><CopyableCode code="auto_scaling_specification" /></td>
     <td><code>object</code></td>
     <td>The auto scaling settings of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="keyspaceName" /></td>
+    <td><CopyableCode code="keyspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the keyspace. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicaSpecifications" /></td>
+    <td><CopyableCode code="replica_specifications" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services Region specific settings of a multi-Region table. Returns the settings for all Regions the table is replicated in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the table. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):cassandra:.+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Returns auto scaling related settings of the specified table in JSON format. If 
 
 ```sql
 SELECT
-autoScalingSpecification,
-keyspaceName,
-replicaSpecifications,
-resourceArn,
-tableName
+auto_scaling_specification,
+keyspace_name,
+replica_specifications,
+resource_arn,
+table_name
 FROM aws.keyspaces.table_auto_scaling_settings
 WHERE region = '{{ region }}' -- required
 ;

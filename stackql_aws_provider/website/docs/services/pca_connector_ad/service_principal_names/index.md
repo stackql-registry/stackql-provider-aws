@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateConnector.html. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service principal name was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryRegistrationArn" /></td>
+    <td><CopyableCode code="directory_registration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateDirectoryRegistration. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:directory-registration\/d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a service principal name. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information for the status of a service principal name if the status is failed. (DIRECTORY_ACCESS_DENIED, DIRECTORY_NOT_REACHABLE, DIRECTORY_RESOURCE_NOT_FOUND, SPN_EXISTS_ON_DIFFERENT_AD_OBJECT, SPN_LIMIT_EXCEEDED, INTERNAL_FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service principal name was updated.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateConnector. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service principal name was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryRegistrationArn" /></td>
+    <td><CopyableCode code="directory_registration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateDirectoryRegistration. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:directory-registration\/d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a service principal name. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information for the status of a service principal name if the status is failed. (DIRECTORY_ACCESS_DENIED, DIRECTORY_NOT_REACHABLE, DIRECTORY_RESOURCE_NOT_FOUND, SPN_EXISTS_ON_DIFFERENT_AD_OBJECT, SPN_LIMIT_EXCEEDED, INTERNAL_FAILURE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the service principal name was updated.</td>
 </tr>
@@ -231,12 +231,12 @@ Lists the service principal name that the connector uses to authenticate with Ac
 
 ```sql
 SELECT
-ConnectorArn,
-CreatedAt,
-DirectoryRegistrationArn,
-Status,
-StatusReason,
-UpdatedAt
+connector_arn,
+created_at,
+directory_registration_arn,
+status,
+status_reason,
+updated_at
 FROM aws.pca_connector_ad.service_principal_names
 WHERE connector_arn = '{{ connector_arn }}' -- required
 AND directory_registration_arn = '{{ directory_registration_arn }}' -- required
@@ -250,12 +250,12 @@ Lists the service principal names that the connector uses to authenticate with A
 
 ```sql
 SELECT
-ConnectorArn,
-CreatedAt,
-DirectoryRegistrationArn,
-Status,
-StatusReason,
-UpdatedAt
+connector_arn,
+created_at,
+directory_registration_arn,
+status,
+status_reason,
+updated_at
 FROM aws.pca_connector_ad.service_principal_names
 WHERE directory_registration_arn = '{{ directory_registration_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the logging configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupArn" /></td>
+    <td><CopyableCode code="log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the CloudWatch log group to which the vended log data will be published. (pattern: &lt;code&gt;arn:aws&#91;a-z0-9-&#93;*:logs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:log-group:&#91;A-Za-z0-9\.\-\_\#/&#93;&#123;1,512&#125;\:\*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the logging configuration was most recently changed.</td>
 </tr>
@@ -170,9 +170,9 @@ Returns complete information about the current rules and alerting logging config
 
 ```sql
 SELECT
-createdAt,
-logGroupArn,
-modifiedAt,
+created_at,
+log_group_arn,
+modified_at,
 status,
 workspace
 FROM aws.amp.logging_configurations

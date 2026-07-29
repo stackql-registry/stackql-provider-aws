@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomAmiList" /></td>
+    <td><CopyableCode code="custom_ami_list" /></td>
     <td><code>string</code></td>
     <td>The custom AMIs supported by the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date when the platform version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The date when the platform version was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Frameworks" /></td>
+    <td><CopyableCode code="frameworks" /></td>
     <td><code>string</code></td>
     <td>The frameworks supported by the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Maintainer" /></td>
+    <td><CopyableCode code="maintainer" /></td>
     <td><code>string</code></td>
     <td>Information about the maintainer of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystemName" /></td>
+    <td><CopyableCode code="operating_system_name" /></td>
     <td><code>string</code></td>
     <td>The operating system used by the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystemVersion" /></td>
+    <td><CopyableCode code="operating_system_version" /></td>
     <td><code>string</code></td>
     <td>The version of the operating system used by the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformArn" /></td>
+    <td><CopyableCode code="platform_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformBranchLifecycleState" /></td>
+    <td><CopyableCode code="platform_branch_lifecycle_state" /></td>
     <td><code>string</code></td>
     <td>The state of the platform version's branch in its lifecycle. Possible values: Beta | Supported | Deprecated | Retired</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformBranchName" /></td>
+    <td><CopyableCode code="platform_branch_name" /></td>
     <td><code>string</code></td>
     <td>The platform branch to which the platform version belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformCategory" /></td>
+    <td><CopyableCode code="platform_category" /></td>
     <td><code>string</code></td>
     <td>The category of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformLifecycleState" /></td>
+    <td><CopyableCode code="platform_lifecycle_state" /></td>
     <td><code>string</code></td>
     <td>The state of the platform version in its lifecycle. Possible values: Recommended | null If a null value is returned, the platform version isn't the recommended one for its branch. Each platform branch has a single recommended platform version, typically the most recent one.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformName" /></td>
+    <td><CopyableCode code="platform_name" /></td>
     <td><code>string</code></td>
     <td>The name of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformOwner" /></td>
+    <td><CopyableCode code="platform_owner" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the person who created the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformStatus" /></td>
+    <td><CopyableCode code="platform_status" /></td>
     <td><code>string</code></td>
     <td>The status of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformVersion" /></td>
+    <td><CopyableCode code="platform_version" /></td>
     <td><code>string</code></td>
     <td>The version of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgrammingLanguages" /></td>
+    <td><CopyableCode code="programming_languages" /></td>
     <td><code>string</code></td>
     <td>The programming languages supported by the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SolutionStackName" /></td>
+    <td><CopyableCode code="solution_stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the solution stack used by the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedAddonList" /></td>
+    <td><CopyableCode code="supported_addon_list" /></td>
     <td><code>string</code></td>
     <td>The additions supported by the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedTierList" /></td>
+    <td><CopyableCode code="supported_tier_list" /></td>
     <td><code>string</code></td>
     <td>The tiers supported by the platform version.</td>
 </tr>
@@ -290,27 +290,27 @@ Describes a platform version. Provides full details. Compare to ListPlatformVers
 
 ```sql
 SELECT
-CustomAmiList,
-DateCreated,
-DateUpdated,
-Description,
-Frameworks,
-Maintainer,
-OperatingSystemName,
-OperatingSystemVersion,
-PlatformArn,
-PlatformBranchLifecycleState,
-PlatformBranchName,
-PlatformCategory,
-PlatformLifecycleState,
-PlatformName,
-PlatformOwner,
-PlatformStatus,
-PlatformVersion,
-ProgrammingLanguages,
-SolutionStackName,
-SupportedAddonList,
-SupportedTierList
+custom_ami_list,
+date_created,
+date_updated,
+description,
+frameworks,
+maintainer,
+operating_system_name,
+operating_system_version,
+platform_arn,
+platform_branch_lifecycle_state,
+platform_branch_name,
+platform_category,
+platform_lifecycle_state,
+platform_name,
+platform_owner,
+platform_status,
+platform_version,
+programming_languages,
+solution_stack_name,
+supported_addon_list,
+supported_tier_list
 FROM aws.elasticbeanstalk.platform_versions
 WHERE region = '{{ region }}' -- required
 AND PlatformArn = '{{ PlatformArn }}'
@@ -352,8 +352,8 @@ SELECT
 '{{ OptionSettings }}',
 '{{ Tags }}'
 RETURNING
-Builder,
-PlatformSummary
+builder,
+platform_summary
 ;
 ```
 </TabItem>

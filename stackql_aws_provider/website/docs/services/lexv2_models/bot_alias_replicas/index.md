@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botAliasReplicaSummaries" /></td>
+    <td><CopyableCode code="bot_alias_replica_summaries" /></td>
     <td><code>array</code></td>
     <td>The summary information of the replicated bot created from the source bot alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique bot ID of the replicated bot created from the source bot alias. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next token for the replicated bots created from the source bot alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicaRegion" /></td>
+    <td><CopyableCode code="replica_region" /></td>
     <td><code>string</code></td>
     <td>The region that contains the replicated bots. Minimum value = 2, maximum value = 25.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceRegion" /></td>
+    <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
     <td>The region that contains the replicated bots. Minimum value = 2, maximum value = 25.</td>
 </tr>
@@ -149,11 +149,11 @@ The action to list the replicated bots created from the source bot alias.
 
 ```sql
 SELECT
-botAliasReplicaSummaries,
-botId,
-nextToken,
-replicaRegion,
-sourceRegion
+bot_alias_replica_summaries,
+bot_id,
+next_token,
+replica_region,
+source_region
 FROM aws.lexv2_models.bot_alias_replicas
 WHERE bot_id = '{{ bot_id }}' -- required
 AND replica_region = '{{ replica_region }}' -- required

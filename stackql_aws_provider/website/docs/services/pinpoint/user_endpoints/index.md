@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each endpoint that's associated with the user ID.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves information about all the endpoints that are associated with a specifi
 
 ```sql
 SELECT
-Item
+item
 FROM aws.pinpoint.user_endpoints
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `user-id` = '{{ user-id }}' -- required

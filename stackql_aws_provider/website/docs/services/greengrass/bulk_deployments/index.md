@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BulkDeploymentArn" /></td>
+    <td><CopyableCode code="bulk_deployment_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the bulk deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BulkDeploymentId" /></td>
+    <td><CopyableCode code="bulk_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the bulk deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time, in ISO format, when the deployment was created.</td>
 </tr>
@@ -139,9 +139,9 @@ Returns a list of bulk deployments.
 
 ```sql
 SELECT
-BulkDeploymentArn,
-BulkDeploymentId,
-CreatedAt
+bulk_deployment_arn,
+bulk_deployment_id,
+created_at
 FROM aws.greengrass.bulk_deployments
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

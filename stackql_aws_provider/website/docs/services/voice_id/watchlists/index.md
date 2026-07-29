@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the watchlist was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultWatchlist" /></td>
+    <td><CopyableCode code="default_watchlist" /></td>
     <td><code>boolean</code></td>
     <td>Whether the specified watchlist is the default watchlist of a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the watchlist. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain that contains the watchlist. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the watchlist. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the watchlist was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WatchlistId" /></td>
+    <td><CopyableCode code="watchlist_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the watchlist. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the watchlist was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultWatchlist" /></td>
+    <td><CopyableCode code="default_watchlist" /></td>
     <td><code>boolean</code></td>
     <td>Whether the specified watchlist is the default watchlist of a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the watchlist. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain that contains the watchlist. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the watchlist. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the watchlist was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WatchlistId" /></td>
+    <td><CopyableCode code="watchlist_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the watchlist. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -228,13 +228,13 @@ Describes the specified watchlist.
 
 ```sql
 SELECT
-CreatedAt,
-DefaultWatchlist,
-Description,
-DomainId,
-Name,
-UpdatedAt,
-WatchlistId
+created_at,
+default_watchlist,
+description,
+domain_id,
+name,
+updated_at,
+watchlist_id
 FROM aws.voice_id.watchlists
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,13 +246,13 @@ Lists all watchlists in a specified domain.
 
 ```sql
 SELECT
-CreatedAt,
-DefaultWatchlist,
-Description,
-DomainId,
-Name,
-UpdatedAt,
-WatchlistId
+created_at,
+default_watchlist,
+description,
+domain_id,
+name,
+updated_at,
+watchlist_id
 FROM aws.voice_id.watchlists
 WHERE region = '{{ region }}' -- required
 ;
@@ -289,7 +289,7 @@ SELECT
 '{{ Name }}',
 '{{ region }}'
 RETURNING
-Watchlist
+watchlist
 ;
 ```
 </TabItem>
@@ -347,7 +347,7 @@ region = '{{ region }}' --required
 AND DomainId = '{{ DomainId }}' --required
 AND WatchlistId = '{{ WatchlistId }}' --required
 RETURNING
-Watchlist;
+watchlist;
 ```
 </TabItem>
 </Tabs>

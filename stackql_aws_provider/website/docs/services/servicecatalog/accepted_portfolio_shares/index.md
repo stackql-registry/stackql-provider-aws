@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN assigned to the portfolio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The UTC time stamp of the creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the portfolio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name to use for display purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The portfolio identifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>The name of the portfolio provider.</td>
 </tr>
@@ -144,12 +144,12 @@ Lists all imported portfolios for which account-to-account shares were accepted 
 
 ```sql
 SELECT
-ARN,
-CreatedTime,
-Description,
-DisplayName,
-Id,
-ProviderName
+arn,
+created_time,
+description,
+display_name,
+id,
+provider_name
 FROM aws.servicecatalog.accepted_portfolio_shares
 WHERE region = '{{ region }}' -- required
 ;

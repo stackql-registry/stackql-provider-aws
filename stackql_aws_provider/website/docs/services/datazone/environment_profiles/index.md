@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the environment profile. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account where this environment profile exists. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountRegion" /></td>
+    <td><CopyableCode code="aws_account_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services region where this environment profile exists. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;4,10&#125;-\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this environment profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created this environment profile.</td>
 </tr>
@@ -86,27 +86,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the environment profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which this environment profile exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentBlueprintId" /></td>
+    <td><CopyableCode code="environment_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the blueprint with which this environment profile is created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone project in which this environment profile is created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this environment profile was upated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userParameters" /></td>
+    <td><CopyableCode code="user_parameters" /></td>
     <td><code>array</code></td>
     <td>The user parameters of the environment profile.</td>
 </tr>
@@ -135,22 +135,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the environment profile. (pattern: &lt;code&gt;&#91;\w -&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of an Amazon Web Services account in which an environment profile exists. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="awsAccountRegion" /></td>
+    <td><CopyableCode code="aws_account_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region in which an environment profile exists. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;4,10&#125;-\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when an environment profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the environment profile.</td>
 </tr>
@@ -160,22 +160,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the environment profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone domain in which the environment profile exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentBlueprintId" /></td>
+    <td><CopyableCode code="environment_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a blueprint with which an environment profile is created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a project in which an environment profile exists. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the environment profile was updated.</td>
 </tr>
@@ -320,16 +320,16 @@ Gets an evinronment profile in Amazon DataZone.
 SELECT
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
 description,
-domainId,
-environmentBlueprintId,
-projectId,
-updatedAt,
-userParameters
+domain_id,
+environment_blueprint_id,
+project_id,
+updated_at,
+user_parameters
 FROM aws.datazone.environment_profiles
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -345,15 +345,15 @@ Lists Amazon DataZone environment profiles.
 SELECT
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
 description,
-domainId,
-environmentBlueprintId,
-projectId,
-updatedAt
+domain_id,
+environment_blueprint_id,
+project_id,
+updated_at
 FROM aws.datazone.environment_profiles
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -408,16 +408,16 @@ SELECT
 RETURNING
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
 description,
-domainId,
-environmentBlueprintId,
-projectId,
-updatedAt,
-userParameters
+domain_id,
+environment_blueprint_id,
+project_id,
+updated_at,
+user_parameters
 ;
 ```
 </TabItem>
@@ -481,16 +481,16 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-awsAccountId,
-awsAccountRegion,
-createdAt,
-createdBy,
+aws_account_id,
+aws_account_region,
+created_at,
+created_by,
 description,
-domainId,
-environmentBlueprintId,
-projectId,
-updatedAt,
-userParameters;
+domain_id,
+environment_blueprint_id,
+project_id,
+updated_at,
+user_parameters;
 ```
 </TabItem>
 </Tabs>

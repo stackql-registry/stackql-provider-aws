@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the version of a service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compatibleEnvironmentTemplates" /></td>
+    <td><CopyableCode code="compatible_environment_templates" /></td>
     <td><code>array</code></td>
     <td>An array of compatible environment template names for the major version of a service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the version of a service template was created.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the version of a service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the version of a service template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="majorVersion" /></td>
+    <td><CopyableCode code="major_version" /></td>
     <td><code>string</code></td>
     <td>The latest major version that's associated with the version of a service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minorVersion" /></td>
+    <td><CopyableCode code="minor_version" /></td>
     <td><code>string</code></td>
     <td>The minor version of a service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedMinorVersion" /></td>
+    <td><CopyableCode code="recommended_minor_version" /></td>
     <td><code>string</code></td>
     <td>The recommended minor version of the service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The service template version status. (REGISTRATION_IN_PROGRESS, REGISTRATION_FAILED, DRAFT, PUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A service template version status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedComponentSources" /></td>
+    <td><CopyableCode code="supported_component_sources" /></td>
     <td><code>array</code></td>
     <td>An array of supported component sources. Components with supported sources can be attached to service instances based on this service template version. For more information about components, see Proton components in the Proton User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the version of a service template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the version of a service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the version of a service template was created.</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the version of a service template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the version of a service template was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="majorVersion" /></td>
+    <td><CopyableCode code="major_version" /></td>
     <td><code>string</code></td>
     <td>The latest major version that's associated with the version of a service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minorVersion" /></td>
+    <td><CopyableCode code="minor_version" /></td>
     <td><code>string</code></td>
     <td>The minor version of a service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedMinorVersion" /></td>
+    <td><CopyableCode code="recommended_minor_version" /></td>
     <td><code>string</code></td>
     <td>The recommended minor version of the service template. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -170,12 +170,12 @@ The following fields are returned by `SELECT` queries:
     <td>The service template minor version status. (REGISTRATION_IN_PROGRESS, REGISTRATION_FAILED, DRAFT, PUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A service template minor version status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -274,18 +274,18 @@ Get detailed data for a major or minor version of a service template.
 ```sql
 SELECT
 arn,
-compatibleEnvironmentTemplates,
-createdAt,
+compatible_environment_templates,
+created_at,
 description,
-lastModifiedAt,
-majorVersion,
-minorVersion,
-recommendedMinorVersion,
+last_modified_at,
+major_version,
+minor_version,
+recommended_minor_version,
 schema,
 status,
-statusMessage,
-supportedComponentSources,
-templateName
+status_message,
+supported_component_sources,
+template_name
 FROM aws.proton.service_template_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -298,15 +298,15 @@ List major or minor versions of a service template with detail data.
 ```sql
 SELECT
 arn,
-createdAt,
+created_at,
 description,
-lastModifiedAt,
-majorVersion,
-minorVersion,
-recommendedMinorVersion,
+last_modified_at,
+major_version,
+minor_version,
+recommended_minor_version,
 status,
-statusMessage,
-templateName
+status_message,
+template_name
 FROM aws.proton.service_template_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -351,7 +351,7 @@ SELECT
 '{{ templateName }}' /* required */,
 '{{ region }}'
 RETURNING
-serviceTemplateVersion
+service_template_version
 ;
 ```
 </TabItem>
@@ -437,7 +437,7 @@ AND majorVersion = '{{ majorVersion }}' --required
 AND minorVersion = '{{ minorVersion }}' --required
 AND templateName = '{{ templateName }}' --required
 RETURNING
-serviceTemplateVersion;
+service_template_version;
 ```
 </TabItem>
 </Tabs>

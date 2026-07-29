@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token indicating there are more results available. If there are no more results, no token is included in the response. The value of nextToken is a unique pagination token for each page. To retrieve the next page of results, make the call again using the returned token. Keep all other arguments unchanged. Using an expired pagination token results in an HTTP 400 InvalidToken error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartnerEventSourceAccounts" /></td>
+    <td><CopyableCode code="partner_event_source_accounts" /></td>
     <td><code>array</code></td>
     <td>The list of partner event sources returned by the operation.</td>
 </tr>
@@ -124,8 +124,8 @@ An SaaS partner can use this operation to display the Amazon Web Services accoun
 
 ```sql
 SELECT
-NextToken,
-PartnerEventSourceAccounts
+next_token,
+partner_event_source_accounts
 FROM aws.events.partner_event_source_accounts
 WHERE region = '{{ region }}' -- required
 ;

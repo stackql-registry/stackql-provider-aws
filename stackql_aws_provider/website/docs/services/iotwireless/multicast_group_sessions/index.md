@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DlDr" /></td>
+    <td><CopyableCode code="dl_dr" /></td>
     <td><code>integer</code></td>
     <td>Downlink data rate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DlFreq" /></td>
+    <td><CopyableCode code="dl_freq" /></td>
     <td><code>integer</code></td>
     <td>Downlink frequency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PingSlotPeriod" /></td>
+    <td><CopyableCode code="ping_slot_period" /></td>
     <td><code>integer</code></td>
     <td>The PingSlotPeriod value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionStartTime" /></td>
+    <td><CopyableCode code="session_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of when the multicast group session is to start.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionTimeout" /></td>
+    <td><CopyableCode code="session_timeout" /></td>
     <td><code>integer</code></td>
     <td>How long before a multicast group session is to timeout. We recommend that you provide a timeout value that is a power-of-two (such as 64, 128, 256). If a non-power-of-two value is provided, it will automatically be rounded up to the next supported power-of-two within the allowed range.</td>
 </tr>
@@ -144,11 +144,11 @@ Gets information about a multicast group session.
 
 ```sql
 SELECT
-DlDr,
-DlFreq,
-PingSlotPeriod,
-SessionStartTime,
-SessionTimeout
+dl_dr,
+dl_freq,
+ping_slot_period,
+session_start_time,
+session_timeout
 FROM aws.iotwireless.multicast_group_sessions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConditionalForwarders" /></td>
+    <td><CopyableCode code="conditional_forwarders" /></td>
     <td><code>array</code></td>
     <td>The list of conditional forwarders that have been created.</td>
 </tr>
@@ -140,7 +140,7 @@ Obtains information about the conditional forwarders for this account. If no inp
 
 ```sql
 SELECT
-ConditionalForwarders
+conditional_forwarders
 FROM aws.ds.conditional_forwarders
 WHERE region = '{{ region }}' -- required
 ;

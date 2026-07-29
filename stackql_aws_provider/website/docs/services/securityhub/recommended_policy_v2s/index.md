@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="UnusedPermissions" /></td>
+    <td><CopyableCode code="unused_permissions" /></td>
     <td><code>object</code></td>
     <td>A recommended step to remediate an unused permissions finding.</td>
 </tr>
@@ -134,7 +134,7 @@ Retrieves the recommended policy to remediate a Security Hub finding. GetRecomme
 
 ```sql
 SELECT
-UnusedPermissions
+unused_permissions
 FROM aws.securityhub.recommended_policy_v2s
 WHERE metadata_uid = '{{ metadata_uid }}' -- required
 AND region = '{{ region }}' -- required

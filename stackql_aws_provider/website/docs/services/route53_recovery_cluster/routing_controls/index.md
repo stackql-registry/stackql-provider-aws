@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ControlPanelArn" /></td>
+    <td><CopyableCode code="control_panel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the control panel where the routing control is located. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:.\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ControlPanelName" /></td>
+    <td><CopyableCode code="control_panel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the control panel where the routing control is located. Only ASCII characters are supported for control panel names. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the routing control owner. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlArn" /></td>
+    <td><CopyableCode code="routing_control_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the routing control. (pattern: &lt;code&gt;^&#91;A-Za-z0-9:.\/_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlName" /></td>
+    <td><CopyableCode code="routing_control_name" /></td>
     <td><code>string</code></td>
     <td>The name of the routing control. (pattern: &lt;code&gt;^\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingControlState" /></td>
+    <td><CopyableCode code="routing_control_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the routing control. When a routing control state is set to ON, traffic flows to a cell. When the state is set to OFF, traffic does not flow. (On, Off)</td>
 </tr>
@@ -144,12 +144,12 @@ List routing control names and Amazon Resource Names (ARNs), as well as the rout
 
 ```sql
 SELECT
-ControlPanelArn,
-ControlPanelName,
-Owner,
-RoutingControlArn,
-RoutingControlName,
-RoutingControlState
+control_panel_arn,
+control_panel_name,
+owner,
+routing_control_arn,
+routing_control_name,
+routing_control_state
 FROM aws.route53_recovery_cluster.routing_controls
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastCheckedTimestamp" /></td>
+    <td><CopyableCode code="last_checked_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the resource was last checked for readiness, in ISO-8601 format, UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Messages" /></td>
+    <td><CopyableCode code="messages" /></td>
     <td><code>array</code></td>
     <td>Details about the resource's readiness.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Readiness" /></td>
+    <td><CopyableCode code="readiness" /></td>
     <td><code>string</code></td>
     <td>The readiness at rule level. (READY, NOT_READY, UNKNOWN, NOT_AUTHORIZED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the rule.</td>
 </tr>
@@ -154,10 +154,10 @@ Gets individual readiness status for a readiness check. To see the overall readi
 
 ```sql
 SELECT
-LastCheckedTimestamp,
-Messages,
-Readiness,
-RuleId
+last_checked_timestamp,
+messages,
+readiness,
+rule_id
 FROM aws.route53_recovery_readiness.readiness_check_resource_status
 WHERE readiness_check_name = '{{ readiness_check_name }}' -- required
 AND resource_identifier = '{{ resource_identifier }}' -- required

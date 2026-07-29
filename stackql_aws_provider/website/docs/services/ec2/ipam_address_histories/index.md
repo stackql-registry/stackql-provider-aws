@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceCidr" /></td>
+    <td><CopyableCode code="resource_cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceComplianceStatus" /></td>
+    <td><CopyableCode code="resource_compliance_status" /></td>
     <td><code>string</code></td>
     <td>The compliance status of a resource. For more information on compliance statuses, see Monitor CIDR usage by resource in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOverlapStatus" /></td>
+    <td><CopyableCode code="resource_overlap_status" /></td>
     <td><code>string</code></td>
     <td>The overlap status of an IPAM resource. The overlap status tells you if the CIDR for a resource overlaps with another CIDR in the scope. For more information on overlap statuses, see Monitor CIDR usage by resource in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceRegion" /></td>
+    <td><CopyableCode code="resource_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampledEndTime" /></td>
+    <td><CopyableCode code="sampled_end_time" /></td>
     <td><code>string</code></td>
     <td>Sampled end time of the resource-to-CIDR association within the IPAM scope. Changes are picked up in periodic snapshots, so the end time may have occurred before this specific time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampledStartTime" /></td>
+    <td><CopyableCode code="sampled_start_time" /></td>
     <td><code>string</code></td>
     <td>Sampled start time of the resource-to-CIDR association within the IPAM scope. Changes are picked up in periodic snapshots, so the start time may have occurred before this specific time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC ID of the resource.</td>
 </tr>
@@ -209,17 +209,17 @@ Retrieve historical information about a CIDR within an IPAM scope. For more info
 
 ```sql
 SELECT
-ResourceCidr,
-ResourceComplianceStatus,
-ResourceId,
-ResourceName,
-ResourceOverlapStatus,
-ResourceOwnerId,
-ResourceRegion,
-ResourceType,
-SampledEndTime,
-SampledStartTime,
-VpcId
+resource_cidr,
+resource_compliance_status,
+resource_id,
+resource_name,
+resource_overlap_status,
+resource_owner_id,
+resource_region,
+resource_type,
+sampled_end_time,
+sampled_start_time,
+vpc_id
 FROM aws.ec2.ipam_address_histories
 WHERE IpamScopeId = '{{ IpamScopeId }}' -- required
 AND region = '{{ region }}' -- required

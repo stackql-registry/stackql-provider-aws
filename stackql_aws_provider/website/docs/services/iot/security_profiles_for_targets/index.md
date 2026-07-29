@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="securityProfileIdentifier" /></td>
+    <td><CopyableCode code="security_profile_identifier" /></td>
     <td><code>object</code></td>
     <td>Identifying information for a Device Defender security profile.</td>
 </tr>
@@ -144,7 +144,7 @@ Lists the Device Defender security profiles attached to a target (thing group). 
 
 ```sql
 SELECT
-securityProfileIdentifier,
+security_profile_identifier,
 target
 FROM aws.iot.security_profiles_for_targets
 WHERE securityProfileTargetArn = '{{ securityProfileTargetArn }}' -- required

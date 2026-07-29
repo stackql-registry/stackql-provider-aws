@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockData" /></td>
+    <td><CopyableCode code="block_data" /></td>
     <td><code>string (byte)</code></td>
     <td>The data content of the block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Checksum" /></td>
+    <td><CopyableCode code="checksum" /></td>
     <td><code>string</code></td>
     <td>The checksum generated for the block, which is Base64 encoded. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+/=&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChecksumAlgorithm" /></td>
+    <td><CopyableCode code="checksum_algorithm" /></td>
     <td><code>string</code></td>
     <td>The algorithm used to generate the checksum for the block, such as SHA256. (SHA256) (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataLength" /></td>
+    <td><CopyableCode code="data_length" /></td>
     <td><code>integer</code></td>
     <td>The size of the data in the block.</td>
 </tr>
@@ -85,27 +85,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlockSize" /></td>
+    <td><CopyableCode code="block_size" /></td>
     <td><code>integer</code></td>
     <td>The size of the blocks in the snapshot, in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Blocks" /></td>
+    <td><CopyableCode code="blocks" /></td>
     <td><code>array</code></td>
     <td>An array of objects containing information about the blocks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiryTime" /></td>
+    <td><CopyableCode code="expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the BlockToken expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+/=&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeSize" /></td>
+    <td><CopyableCode code="volume_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the volume in GB.</td>
 </tr>
@@ -239,10 +239,10 @@ Returns the data in a block in an Amazon Elastic Block Store snapshot. You shoul
 
 ```sql
 SELECT
-BlockData,
-Checksum,
-ChecksumAlgorithm,
-DataLength
+block_data,
+checksum,
+checksum_algorithm,
+data_length
 FROM aws.ebs.snapshot_blocks
 WHERE snapshot_id = '{{ snapshot_id }}' -- required
 AND block_index = '{{ block_index }}' -- required
@@ -257,11 +257,11 @@ Returns information about the blocks in an Amazon Elastic Block Store snapshot. 
 
 ```sql
 SELECT
-BlockSize,
-Blocks,
-ExpiryTime,
-NextToken,
-VolumeSize
+block_size,
+blocks,
+expiry_time,
+next_token,
+volume_size
 FROM aws.ebs.snapshot_blocks
 WHERE snapshot_id = '{{ snapshot_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -300,8 +300,8 @@ AND region = '{{ region }}' --required
 AND BlockData = '{{ BlockData }}' --required
 AND `x-amz-Progress` = '{{ x-amz-Progress}}'
 RETURNING
-Checksum,
-ChecksumAlgorithm;
+checksum,
+checksum_algorithm;
 ```
 </TabItem>
 </Tabs>

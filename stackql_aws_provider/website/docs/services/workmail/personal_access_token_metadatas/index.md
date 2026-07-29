@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the Personal Access Token ID was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateLastUsed" /></td>
+    <td><CopyableCode code="date_last_used" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the Personal Access Token ID was last used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpiresTime" /></td>
+    <td><CopyableCode code="expires_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Personal Access Token ID will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The Personal Access Token name. (pattern: &lt;code&gt;&#91;^\x00-\x1F\x7F\x3C\x3E\x5C&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersonalAccessTokenId" /></td>
+    <td><CopyableCode code="personal_access_token_id" /></td>
     <td><code>string</code></td>
     <td>The Personal Access Token ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scopes" /></td>
+    <td><CopyableCode code="scopes" /></td>
     <td><code>array</code></td>
     <td>Lists all the Personal Access Token permissions for a mailbox.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The WorkMail User ID.</td>
 </tr>
@@ -149,13 +149,13 @@ Requests details of a specific Personal Access Token within the WorkMail organiz
 
 ```sql
 SELECT
-DateCreated,
-DateLastUsed,
-ExpiresTime,
-Name,
-PersonalAccessTokenId,
-Scopes,
-UserId
+date_created,
+date_last_used,
+expires_time,
+name,
+personal_access_token_id,
+scopes,
+user_id
 FROM aws.workmail.personal_access_token_metadatas
 WHERE region = '{{ region }}' -- required
 ;

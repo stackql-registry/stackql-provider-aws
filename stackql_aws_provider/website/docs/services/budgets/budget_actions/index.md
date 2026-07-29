@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the user. It's a 12-digit number. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>object</code></td>
     <td>A budget action resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BudgetName" /></td>
+    <td><CopyableCode code="budget_name" /></td>
     <td><code>string</code></td>
     <td>A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -150,9 +150,9 @@ Describes a budget action detail.
 
 ```sql
 SELECT
-AccountId,
-Action,
-BudgetName
+account_id,
+action,
+budget_name
 FROM aws.budgets.budget_actions
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,9 +201,9 @@ SELECT
 '{{ ResourceTags }}',
 '{{ region }}'
 RETURNING
-AccountId,
-ActionId,
-BudgetName
+account_id,
+action_id,
+budget_name
 ;
 ```
 </TabItem>
@@ -317,10 +317,10 @@ AND AccountId = '{{ AccountId }}' --required
 AND BudgetName = '{{ BudgetName }}' --required
 AND ActionId = '{{ ActionId }}' --required
 RETURNING
-AccountId,
-BudgetName,
-NewAction,
-OldAction;
+account_id,
+budget_name,
+new_action,
+old_action;
 ```
 </TabItem>
 </Tabs>

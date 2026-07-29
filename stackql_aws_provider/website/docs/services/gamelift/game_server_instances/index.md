@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GameServerGroupArn" /></td>
+    <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
     <td>A generated unique identifier for the game server group that includes the game server instance. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GameServerGroupName" /></td>
+    <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
     <td>A developer-defined identifier for the game server group that includes the game server instance. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the instance where the game server is running. This ID is available in the instance metadata. EC2 instance IDs use a 17-character format, for example: i-1234567890abcdef0. (pattern: &lt;code&gt;^i-&#91;0-9a-zA-Z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceStatus" /></td>
+    <td><CopyableCode code="instance_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the game server instance (ACTIVE, DRAINING, SPOT_TERMINATING)</td>
 </tr>
@@ -134,10 +134,10 @@ This API works with the following fleet types: EC2 (FleetIQ) Retrieves status in
 
 ```sql
 SELECT
-GameServerGroupArn,
-GameServerGroupName,
-InstanceId,
-InstanceStatus
+game_server_group_arn,
+game_server_group_name,
+instance_id,
+instance_status
 FROM aws.gamelift.game_server_instances
 WHERE region = '{{ region }}' -- required
 ;

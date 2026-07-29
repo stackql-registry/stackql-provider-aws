@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallingRegions" /></td>
+    <td><CopyableCode code="calling_regions" /></td>
     <td><code>array</code></td>
     <td>The countries to which calls are allowed, in ISO 3166-1 alpha-2 format. Required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CidrAllowedList" /></td>
+    <td><CopyableCode code="cidr_allowed_list" /></td>
     <td><code>array</code></td>
     <td>The IP addresses allowed to make calls, in CIDR format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CpsLimit" /></td>
+    <td><CopyableCode code="cps_limit" /></td>
     <td><code>integer</code></td>
     <td>The limit on calls per second. Max value based on account service quota. Default value of 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultPhoneNumber" /></td>
+    <td><CopyableCode code="default_phone_number" /></td>
     <td><code>string</code></td>
     <td>The default outbound calling number. (pattern: &lt;code&gt;^\+?&#91;1-9&#93;\d&#123;1,14&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Disabled" /></td>
+    <td><CopyableCode code="disabled" /></td>
     <td><code>boolean</code></td>
     <td>When termination is disabled, outbound calls cannot be made.</td>
 </tr>
@@ -158,11 +158,11 @@ Retrieves the termination setting details for the specified Voice Connector.
 
 ```sql
 SELECT
-CallingRegions,
-CidrAllowedList,
-CpsLimit,
-DefaultPhoneNumber,
-Disabled
+calling_regions,
+cidr_allowed_list,
+cps_limit,
+default_phone_number,
+disabled
 FROM aws.chime_sdk_voice.voice_connector_terminations
 WHERE voice_connector_id = '{{ voice_connector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -192,7 +192,7 @@ WHERE
 voice_connector_id = '{{ voice_connector_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Termination;
+termination;
 ```
 </TabItem>
 </Tabs>

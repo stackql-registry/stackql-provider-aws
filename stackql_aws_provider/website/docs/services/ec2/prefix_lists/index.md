@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cidrs" /></td>
+    <td><CopyableCode code="cidrs" /></td>
     <td><code>string</code></td>
     <td>The IP address range of the Amazon Web Services service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListId" /></td>
+    <td><CopyableCode code="prefix_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the prefix.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListName" /></td>
+    <td><CopyableCode code="prefix_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the prefix.</td>
 </tr>
@@ -154,9 +154,9 @@ Describes available Amazon Web Services services in a prefix list format, which 
 
 ```sql
 SELECT
-Cidrs,
-PrefixListId,
-PrefixListName
+cidrs,
+prefix_list_id,
+prefix_list_name
 FROM aws.ec2.prefix_lists
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

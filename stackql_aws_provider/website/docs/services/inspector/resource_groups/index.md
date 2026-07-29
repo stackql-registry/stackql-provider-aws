@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedItems" /></td>
+    <td><CopyableCode code="failed_items" /></td>
     <td><code>object</code></td>
     <td>Resource group details that cannot be described. An error code is provided for each failed item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceGroups" /></td>
+    <td><CopyableCode code="resource_groups" /></td>
     <td><code>array</code></td>
     <td>Information about a resource group.</td>
 </tr>
@@ -131,8 +131,8 @@ Describes the resource groups that are specified by the ARNs of the resource gro
 
 ```sql
 SELECT
-failedItems,
-resourceGroups
+failed_items,
+resource_groups
 FROM aws.inspector.resource_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ SELECT
 '{{ resourceGroupTags }}' /* required */,
 '{{ region }}'
 RETURNING
-resourceGroupArn
+resource_group_arn
 ;
 ```
 </TabItem>

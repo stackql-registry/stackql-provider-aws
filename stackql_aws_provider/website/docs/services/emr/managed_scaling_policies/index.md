@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComputeLimits" /></td>
+    <td><CopyableCode code="compute_limits" /></td>
     <td><code>object</code></td>
     <td>The Amazon EC2 unit limits for a managed scaling policy. The managed scaling activity of a cluster is not allowed to go above or below these limits. The limit only applies to the core and task nodes. The master node cannot be scaled after initial configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingStrategy" /></td>
+    <td><CopyableCode code="scaling_strategy" /></td>
     <td><code>string</code></td>
     <td>Determines whether a custom scaling utilization performance index can be set. Possible values include ADVANCED or DEFAULT. (DEFAULT, ADVANCED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UtilizationPerformanceIndex" /></td>
+    <td><CopyableCode code="utilization_performance_index" /></td>
     <td><code>integer</code></td>
     <td>An integer value that represents an advanced scaling strategy. Setting a higher value optimizes for performance. Setting a lower value optimizes for resource conservation. Setting the value to 50 balances performance and resource conservation. Possible values are 1, 25, 50, 75, and 100.</td>
 </tr>
@@ -143,9 +143,9 @@ Fetches the attached managed scaling policy for an Amazon EMR cluster.
 
 ```sql
 SELECT
-ComputeLimits,
-ScalingStrategy,
-UtilizationPerformanceIndex
+compute_limits,
+scaling_strategy,
+utilization_performance_index
 FROM aws.emr.managed_scaling_policies
 WHERE region = '{{ region }}' -- required
 ;

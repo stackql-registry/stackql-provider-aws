@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountDefaultStatus" /></td>
+    <td><CopyableCode code="account_default_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this MLflow app is the default for the entire account. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the MLflow App. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:mlflow-app/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArtifactStoreUri" /></td>
+    <td><CopyableCode code="artifact_store_uri" /></td>
     <td><code>string</code></td>
     <td>The S3 URI of the general purpose bucket used as the MLflow App artifact store. (pattern: &lt;code&gt;(https|s3):​//(&#91;^/&#93;+)/?(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the MLflow App was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultDomainIdList" /></td>
+    <td><CopyableCode code="default_domain_id_list" /></td>
     <td><code>array</code></td>
     <td>List of SageMaker Domain IDs for which this MLflow App is the default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the MLflow App was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceStatus" /></td>
+    <td><CopyableCode code="maintenance_status" /></td>
     <td><code>string</code></td>
     <td>Current maintenance status of the MLflow App. (MaintenanceInProgress, MaintenanceComplete, MaintenanceFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MlflowVersion" /></td>
+    <td><CopyableCode code="mlflow_version" /></td>
     <td><code>string</code></td>
     <td>The MLflow version used. (pattern: &lt;code&gt;&#91;0-9&#93;*.&#91;0-9&#93;*.&#91;0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelRegistrationMode" /></td>
+    <td><CopyableCode code="model_registration_mode" /></td>
     <td><code>string</code></td>
     <td>Whether automatic registration of new MLflow models to the SageMaker Model Registry is enabled. (AutoModelRegistrationEnabled, AutoModelRegistrationDisabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the MLflow App. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current creation status of the described MLflow App. (Creating, Created, CreateFailed, Updating, Updated, UpdateFailed, Deleting, DeleteFailed, Deleted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WeeklyMaintenanceWindowStart" /></td>
+    <td><CopyableCode code="weekly_maintenance_window_start" /></td>
     <td><code>string</code></td>
     <td>The day and time of the week when weekly maintenance occurs. (pattern: &lt;code&gt;(Mon|Tue|Wed|Thu|Fri|Sat|Sun):(&#91;01&#93;\d|2&#91;0-3&#93;):(&#91;0-5&#93;\d)&lt;/code&gt;)</td>
 </tr>
@@ -217,21 +217,21 @@ Returns information about an MLflow App.
 
 ```sql
 SELECT
-AccountDefaultStatus,
-Arn,
-ArtifactStoreUri,
-CreatedBy,
-CreationTime,
-DefaultDomainIdList,
-LastModifiedBy,
-LastModifiedTime,
-MaintenanceStatus,
-MlflowVersion,
-ModelRegistrationMode,
-Name,
-RoleArn,
-Status,
-WeeklyMaintenanceWindowStart
+account_default_status,
+arn,
+artifact_store_uri,
+created_by,
+creation_time,
+default_domain_id_list,
+last_modified_by,
+last_modified_time,
+maintenance_status,
+mlflow_version,
+model_registration_mode,
+name,
+role_arn,
+status,
+weekly_maintenance_window_start
 FROM aws.sagemaker.mlflow_apps
 WHERE region = '{{ region }}' -- required
 ;
@@ -276,7 +276,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>
@@ -356,7 +356,7 @@ AccountDefaultStatus = '{{ AccountDefaultStatus }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn;
+arn;
 ```
 </TabItem>
 </Tabs>

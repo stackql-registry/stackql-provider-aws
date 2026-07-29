@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that uniquely identifies this delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationArn" /></td>
+    <td><CopyableCode code="delivery_destination_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the delivery destination that is associated with this delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationType" /></td>
+    <td><CopyableCode code="delivery_destination_type" /></td>
     <td><code>string</code></td>
     <td>Displays whether the delivery destination associated with this delivery is CloudWatch Logs, Amazon S3, Firehose, or X-Ray. (S3, CWL, FH, XRAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliverySourceName" /></td>
+    <td><CopyableCode code="delivery_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the delivery source that is associated with this delivery. (pattern: &lt;code&gt;&#91;\w-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fieldDelimiter" /></td>
+    <td><CopyableCode code="field_delimiter" /></td>
     <td><code>string</code></td>
     <td>The field delimiter that is used between record fields when the final output format of a delivery is in Plain, W3C, or Raw format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordFields" /></td>
+    <td><CopyableCode code="record_fields" /></td>
     <td><code>array</code></td>
     <td>The record fields used in this delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3DeliveryConfiguration" /></td>
+    <td><CopyableCode code="s_3_delivery_configuration" /></td>
     <td><code>object</code></td>
     <td>This structure contains delivery configurations that apply only when the delivery destination resource is an S3 bucket.</td>
 </tr>
@@ -120,32 +120,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) that uniquely identifies this delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationArn" /></td>
+    <td><CopyableCode code="delivery_destination_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the delivery destination that is associated with this delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryDestinationType" /></td>
+    <td><CopyableCode code="delivery_destination_type" /></td>
     <td><code>string</code></td>
     <td>Displays whether the delivery destination associated with this delivery is CloudWatch Logs, Amazon S3, Firehose, or X-Ray. (S3, CWL, FH, XRAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliverySourceName" /></td>
+    <td><CopyableCode code="delivery_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the delivery source that is associated with this delivery. (pattern: &lt;code&gt;&#91;\w-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fieldDelimiter" /></td>
+    <td><CopyableCode code="field_delimiter" /></td>
     <td><code>string</code></td>
     <td>The field delimiter that is used between record fields when the final output format of a delivery is in Plain, W3C, or Raw format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordFields" /></td>
+    <td><CopyableCode code="record_fields" /></td>
     <td><code>array</code></td>
     <td>The record fields used in this delivery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3DeliveryConfiguration" /></td>
+    <td><CopyableCode code="s_3_delivery_configuration" /></td>
     <td><code>object</code></td>
     <td>This structure contains delivery configurations that apply only when the delivery destination resource is an S3 bucket.</td>
 </tr>
@@ -250,12 +250,12 @@ Returns complete information about one logical delivery. A delivery is a connect
 SELECT
 id,
 arn,
-deliveryDestinationArn,
-deliveryDestinationType,
-deliverySourceName,
-fieldDelimiter,
-recordFields,
-s3DeliveryConfiguration,
+delivery_destination_arn,
+delivery_destination_type,
+delivery_source_name,
+field_delimiter,
+record_fields,
+s_3_delivery_configuration,
 tags
 FROM aws.logs.deliveries
 WHERE region = '{{ region }}' -- required
@@ -270,12 +270,12 @@ Retrieves a list of the deliveries that have been created in the account. A deli
 SELECT
 id,
 arn,
-deliveryDestinationArn,
-deliveryDestinationType,
-deliverySourceName,
-fieldDelimiter,
-recordFields,
-s3DeliveryConfiguration,
+delivery_destination_arn,
+delivery_destination_type,
+delivery_source_name,
+field_delimiter,
+record_fields,
+s_3_delivery_configuration,
 tags
 FROM aws.logs.deliveries
 WHERE region = '{{ region }}' -- required

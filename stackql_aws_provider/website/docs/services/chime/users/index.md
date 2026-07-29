@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlexaForBusinessMetadata" /></td>
+    <td><CopyableCode code="alexa_for_business_metadata" /></td>
     <td><code>object</code></td>
     <td>The Alexa for Business metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitedOn" /></td>
+    <td><CopyableCode code="invited_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the user is invited to the Amazon Chime account, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseType" /></td>
+    <td><CopyableCode code="license_type" /></td>
     <td><code>string</code></td>
     <td>The license type for the user. (Basic, Plus, Pro, ProTrial)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersonalPIN" /></td>
+    <td><CopyableCode code="personal_pin" /></td>
     <td><code>string</code></td>
     <td>The user's personal meeting PIN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryEmail" /></td>
+    <td><CopyableCode code="primary_email" /></td>
     <td><code>string</code></td>
     <td>The primary email address of the user. (pattern: &lt;code&gt;.+@.+\..+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryProvisionedNumber" /></td>
+    <td><CopyableCode code="primary_provisioned_number" /></td>
     <td><code>string</code></td>
     <td>The primary phone number associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegisteredOn" /></td>
+    <td><CopyableCode code="registered_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the user is registered, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserInvitationStatus" /></td>
+    <td><CopyableCode code="user_invitation_status" /></td>
     <td><code>string</code></td>
     <td>The user invite status. (Pending, Accepted, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserRegistrationStatus" /></td>
+    <td><CopyableCode code="user_registration_status" /></td>
     <td><code>string</code></td>
     <td>The user registration status. (Unregistered, Registered, Suspended)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserType" /></td>
+    <td><CopyableCode code="user_type" /></td>
     <td><code>string</code></td>
     <td>The user type. (PrivateUser, SharedDevice)</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlexaForBusinessMetadata" /></td>
+    <td><CopyableCode code="alexa_for_business_metadata" /></td>
     <td><code>object</code></td>
     <td>The Alexa for Business metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitedOn" /></td>
+    <td><CopyableCode code="invited_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the user is invited to the Amazon Chime account, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseType" /></td>
+    <td><CopyableCode code="license_type" /></td>
     <td><code>string</code></td>
     <td>The license type for the user. (Basic, Plus, Pro, ProTrial)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersonalPIN" /></td>
+    <td><CopyableCode code="personal_pin" /></td>
     <td><code>string</code></td>
     <td>The user's personal meeting PIN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryEmail" /></td>
+    <td><CopyableCode code="primary_email" /></td>
     <td><code>string</code></td>
     <td>The primary email address of the user. (pattern: &lt;code&gt;.+@.+\..+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrimaryProvisionedNumber" /></td>
+    <td><CopyableCode code="primary_provisioned_number" /></td>
     <td><code>string</code></td>
     <td>The primary phone number associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegisteredOn" /></td>
+    <td><CopyableCode code="registered_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the user is registered, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserInvitationStatus" /></td>
+    <td><CopyableCode code="user_invitation_status" /></td>
     <td><code>string</code></td>
     <td>The user invite status. (Pending, Accepted, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserRegistrationStatus" /></td>
+    <td><CopyableCode code="user_registration_status" /></td>
     <td><code>string</code></td>
     <td>The user registration status. (Unregistered, Registered, Suspended)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserType" /></td>
+    <td><CopyableCode code="user_type" /></td>
     <td><code>string</code></td>
     <td>The user type. (PrivateUser, SharedDevice)</td>
 </tr>
@@ -332,19 +332,19 @@ Retrieves details for the specified user ID, such as primary email address, lice
 
 ```sql
 SELECT
-AccountId,
-AlexaForBusinessMetadata,
-DisplayName,
-InvitedOn,
-LicenseType,
-PersonalPIN,
-PrimaryEmail,
-PrimaryProvisionedNumber,
-RegisteredOn,
-UserId,
-UserInvitationStatus,
-UserRegistrationStatus,
-UserType
+account_id,
+alexa_for_business_metadata,
+display_name,
+invited_on,
+license_type,
+personal_pin,
+primary_email,
+primary_provisioned_number,
+registered_on,
+user_id,
+user_invitation_status,
+user_registration_status,
+user_type
 FROM aws.chime.users
 WHERE account_id = '{{ account_id }}' -- required
 AND user_id = '{{ user_id }}' -- required
@@ -358,19 +358,19 @@ Lists the users that belong to the specified Amazon Chime account. You can speci
 
 ```sql
 SELECT
-AccountId,
-AlexaForBusinessMetadata,
-DisplayName,
-InvitedOn,
-LicenseType,
-PersonalPIN,
-PrimaryEmail,
-PrimaryProvisionedNumber,
-RegisteredOn,
-UserId,
-UserInvitationStatus,
-UserRegistrationStatus,
-UserType
+account_id,
+alexa_for_business_metadata,
+display_name,
+invited_on,
+license_type,
+personal_pin,
+primary_email,
+primary_provisioned_number,
+registered_on,
+user_id,
+user_invitation_status,
+user_registration_status,
+user_type
 FROM aws.chime.users
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -412,7 +412,7 @@ SELECT
 '{{ account_id }}',
 '{{ region }}'
 RETURNING
-User
+user
 ;
 ```
 </TabItem>
@@ -479,7 +479,7 @@ account_id = '{{ account_id }}' --required
 AND user_id = '{{ user_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-User;
+user;
 ```
 </TabItem>
 </Tabs>

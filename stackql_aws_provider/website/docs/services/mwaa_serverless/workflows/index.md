@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow was created, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefinitionS3Location" /></td>
+    <td><CopyableCode code="definition_s3_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location of the workflow definition file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the workflow. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration for the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the Amazon Managed Workflows for Apache Airflow Serverless engine that this workflow uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingConfiguration" /></td>
+    <td><CopyableCode code="logging_configuration" /></td>
     <td><code>object</code></td>
     <td>The logging configuration for the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow was last modified, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration for the workflow execution environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used for workflow execution. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:iam::&#91;0-9&#93;&#123;12&#125;:role(/&#91;a-zA-Z0-9+=,.@_\-&#93;&#123;1,512&#125;)*?/&#91;a-zA-Z0-9+=,.@_\-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleConfiguration" /></td>
+    <td><CopyableCode code="schedule_configuration" /></td>
     <td><code>object</code></td>
     <td>The schedule configuration for the workflow, including cron expressions for automated execution. Amazon Managed Workflows for Apache Airflow Serverless uses EventBridge Scheduler for cost-effective, timezone-aware scheduling. When a workflow includes schedule information in its YAML definition, the service automatically configures the appropriate triggers for automated execution. Only one version of a workflow can have an active schedule at any given time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerMode" /></td>
+    <td><CopyableCode code="trigger_mode" /></td>
     <td><code>string</code></td>
     <td>The trigger mode for the workflow execution. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:airflow-serverless:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;):(&#91;0-9&#93;&#123;12&#125;):workflow/(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\.\-_&#93;&#123;0,254&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowDefinition" /></td>
+    <td><CopyableCode code="workflow_definition" /></td>
     <td><code>string</code></td>
     <td>The workflow definition content. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowStatus" /></td>
+    <td><CopyableCode code="workflow_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the workflow. (READY, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowVersion" /></td>
+    <td><CopyableCode code="workflow_version" /></td>
     <td><code>string</code></td>
     <td>The version identifier of the workflow. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -145,42 +145,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow was created, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the workflow. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow was last modified, in ISO 8601 date-time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerMode" /></td>
+    <td><CopyableCode code="trigger_mode" /></td>
     <td><code>string</code></td>
     <td>The trigger mode for the workflow execution. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:airflow-serverless:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;):(&#91;0-9&#93;&#123;12&#125;):workflow/(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\.\-_&#93;&#123;0,254&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowStatus" /></td>
+    <td><CopyableCode code="workflow_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the workflow. (READY, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowVersion" /></td>
+    <td><CopyableCode code="workflow_version" /></td>
     <td><code>string</code></td>
     <td>The version identifier of the workflow. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -292,22 +292,22 @@ Retrieves detailed information about a workflow, including its configuration, st
 
 ```sql
 SELECT
-CreatedAt,
-DefinitionS3Location,
-Description,
-EncryptionConfiguration,
-EngineVersion,
-LoggingConfiguration,
-ModifiedAt,
-Name,
-NetworkConfiguration,
-RoleArn,
-ScheduleConfiguration,
-TriggerMode,
-WorkflowArn,
-WorkflowDefinition,
-WorkflowStatus,
-WorkflowVersion
+created_at,
+definition_s3_location,
+description,
+encryption_configuration,
+engine_version,
+logging_configuration,
+modified_at,
+name,
+network_configuration,
+role_arn,
+schedule_configuration,
+trigger_mode,
+workflow_arn,
+workflow_definition,
+workflow_status,
+workflow_version
 FROM aws.mwaa_serverless.workflows
 WHERE region = '{{ region }}' -- required
 ;
@@ -319,14 +319,14 @@ Lists all workflows in your account, with optional pagination support. This oper
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-ModifiedAt,
-Name,
-TriggerMode,
-WorkflowArn,
-WorkflowStatus,
-WorkflowVersion
+created_at,
+description,
+modified_at,
+name,
+trigger_mode,
+workflow_arn,
+workflow_status,
+workflow_version
 FROM aws.mwaa_serverless.workflows
 WHERE region = '{{ region }}' -- required
 ;
@@ -377,13 +377,13 @@ SELECT
 '{{ TriggerMode }}',
 '{{ region }}'
 RETURNING
-CreatedAt,
-IsLatestVersion,
-RevisionId,
-Warnings,
-WorkflowArn,
-WorkflowStatus,
-WorkflowVersion
+created_at,
+is_latest_version,
+revision_id,
+warnings,
+workflow_arn,
+workflow_status,
+workflow_version
 ;
 ```
 </TabItem>
@@ -484,10 +484,10 @@ AND WorkflowArn = '{{ WorkflowArn }}' --required
 AND DefinitionS3Location = '{{ DefinitionS3Location }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 RETURNING
-ModifiedAt,
-Warnings,
-WorkflowArn,
-WorkflowVersion;
+modified_at,
+warnings,
+workflow_arn,
+workflow_version;
 ```
 </TabItem>
 </Tabs>

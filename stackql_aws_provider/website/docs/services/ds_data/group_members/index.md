@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MemberType" /></td>
+    <td><CopyableCode code="member_type" /></td>
     <td><code>string</code></td>
     <td>The AD type of the member object. (USER, GROUP, COMPUTER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SAMAccountName" /></td>
+    <td><CopyableCode code="sam_account_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group member. (pattern: &lt;code&gt;^&#91;^:;|=+"*?&lt;&gt;/\\,\&#91;\&#93;@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SID" /></td>
+    <td><CopyableCode code="sid" /></td>
     <td><code>string</code></td>
     <td>The unique security identifier (SID) of the group member.</td>
 </tr>
@@ -148,9 +148,9 @@ Returns member information for the specified group. This operation supports pagi
 
 ```sql
 SELECT
-MemberType,
-SAMAccountName,
-SID
+member_type,
+sam_account_name,
+sid
 FROM aws.ds_data.group_members
 WHERE DirectoryId = '{{ DirectoryId }}' -- required
 AND region = '{{ region }}' -- required

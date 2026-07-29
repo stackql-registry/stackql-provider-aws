@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="existingTenancyActivationLink" /></td>
+    <td><CopyableCode code="existing_tenancy_activation_link" /></td>
     <td><code>string</code></td>
     <td>The existing OCI tenancy activation link for your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="newTenancyActivationLink" /></td>
+    <td><CopyableCode code="new_tenancy_activation_link" /></td>
     <td><code>string</code></td>
     <td>A new OCI tenancy activation link for your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ociIdentityDomain" /></td>
+    <td><CopyableCode code="oci_identity_domain" /></td>
     <td><code>object</code></td>
     <td>The Oracle Cloud Infrastructure (OCI) identity domain information in the onboarding status response.</td>
 </tr>
@@ -134,9 +134,9 @@ Returns the tenancy activation link and onboarding status for your Amazon Web Se
 
 ```sql
 SELECT
-existingTenancyActivationLink,
-newTenancyActivationLink,
-ociIdentityDomain,
+existing_tenancy_activation_link,
+new_tenancy_activation_link,
+oci_identity_domain,
 status
 FROM aws.odb.oci_onboarding_status
 WHERE region = '{{ region }}' -- required

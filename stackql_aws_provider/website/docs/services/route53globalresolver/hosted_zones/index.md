@@ -124,12 +124,12 @@ AND name = '{{ name }}' --required
 RETURNING
 id,
 name,
-createdAt,
-hostedZoneId,
-hostedZoneName,
-resourceArn,
+created_at,
+hosted_zone_id,
+hosted_zone_name,
+resource_arn,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 <TabItem value="disassociate_hosted_zone">
@@ -147,12 +147,12 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-createdAt,
-hostedZoneId,
-hostedZoneName,
-resourceArn,
+created_at,
+hosted_zone_id,
+hosted_zone_name,
+resource_arn,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

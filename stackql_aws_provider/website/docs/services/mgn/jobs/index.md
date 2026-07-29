@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>the ARN of the specific Job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string</code></td>
     <td>Job creation time. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endDateTime" /></td>
+    <td><CopyableCode code="end_date_time" /></td>
     <td><code>string</code></td>
     <td>Job end time. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="initiatedBy" /></td>
+    <td><CopyableCode code="initiated_by" /></td>
     <td><code>string</code></td>
     <td>Job initiated by field. (START_TEST, START_CUTOVER, DIAGNOSTIC, TERMINATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>Job ID. (pattern: &lt;code&gt;mgnjob-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="participatingServers" /></td>
+    <td><CopyableCode code="participating_servers" /></td>
     <td><code>array</code></td>
     <td>Servers participating in a specific Job.</td>
 </tr>
@@ -167,11 +167,11 @@ Returns a list of Jobs. Use the JobsID and fromDate and toData filters to limit 
 ```sql
 SELECT
 arn,
-creationDateTime,
-endDateTime,
-initiatedBy,
-jobID,
-participatingServers,
+creation_date_time,
+end_date_time,
+initiated_by,
+job_id,
+participating_servers,
 status,
 tags,
 type_

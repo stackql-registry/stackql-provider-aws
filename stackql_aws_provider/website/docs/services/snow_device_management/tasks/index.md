@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the task was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the CreateTask operation was called.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description provided of the task and managed devices. (pattern: &lt;code&gt;&#91;A-Za-z0-9 _.,!#&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the state of the task was last updated.</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The managed devices that the task was sent to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the task.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>Optional metadata that you assign to a resource. You can use tags to categorize a resource in different ways, such as by purpose, owner, or environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The task ID.</td>
 </tr>
@@ -236,15 +236,15 @@ Checks the metadata for a given task on a device.
 
 ```sql
 SELECT
-completedAt,
-createdAt,
+completed_at,
+created_at,
 description,
-lastUpdatedAt,
+last_updated_at,
 state,
 tags,
 targets,
-taskArn,
-taskId
+task_arn,
+task_id
 FROM aws.snow_device_management.tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -259,8 +259,8 @@ Returns a list of tasks that can be filtered by state.
 SELECT
 state,
 tags,
-taskArn,
-taskId
+task_arn,
+task_id
 FROM aws.snow_device_management.tasks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -302,8 +302,8 @@ SELECT
 '{{ targets }}' /* required */,
 '{{ region }}'
 RETURNING
-taskArn,
-taskId
+task_arn,
+task_id
 ;
 ```
 </TabItem>

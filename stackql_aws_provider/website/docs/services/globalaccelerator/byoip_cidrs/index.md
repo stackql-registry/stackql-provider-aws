@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cidr" /></td>
+    <td><CopyableCode code="cidr" /></td>
     <td><code>string</code></td>
     <td>The address range, in CIDR notation. For more information, see Bring your own IP addresses (BYOIP) in the Global Accelerator Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Events" /></td>
+    <td><CopyableCode code="events" /></td>
     <td><code>array</code></td>
     <td>A history of status changes for an IP address range that you bring to Global Accelerator through bring your own IP address (BYOIP).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the address pool. (PENDING_PROVISIONING, READY, PENDING_ADVERTISING, ADVERTISING, PENDING_WITHDRAWING, PENDING_DEPROVISIONING, DEPROVISIONED, FAILED_PROVISION, FAILED_ADVERTISING, FAILED_WITHDRAW, FAILED_DEPROVISION)</td>
 </tr>
@@ -157,9 +157,9 @@ Lists the IP address ranges that were specified in calls to ProvisionByoipCidr, 
 
 ```sql
 SELECT
-Cidr,
-Events,
-State
+cidr,
+events,
+state
 FROM aws.globalaccelerator.byoip_cidrs
 WHERE region = '{{ region }}' -- required
 ;
@@ -190,7 +190,7 @@ WHERE
 region = '{{ region }}' --required
 AND CidrAuthorizationContext = '{{ CidrAuthorizationContext }}' --required
 RETURNING
-ByoipCidr;
+byoip_cidr;
 ```
 </TabItem>
 <TabItem value="advertise_byoip_cidr">
@@ -204,7 +204,7 @@ Cidr = '{{ Cidr }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-ByoipCidr;
+byoip_cidr;
 ```
 </TabItem>
 </Tabs>

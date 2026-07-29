@@ -107,8 +107,8 @@ id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 AND dialRequests = '{{ dialRequests }}' --required
 RETURNING
-failedRequests,
-successfulRequests;
+failed_requests,
+successful_requests;
 ```
 </TabItem>
 </Tabs>

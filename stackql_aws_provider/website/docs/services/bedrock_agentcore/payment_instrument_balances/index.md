@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="paymentInstrumentId" /></td>
+    <td><CopyableCode code="payment_instrument_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the payment instrument. (pattern: &lt;code&gt;payment-instrument-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenBalance" /></td>
+    <td><CopyableCode code="token_balance" /></td>
     <td><code>object</code></td>
     <td>The balance of the supported token on the requested chain.</td>
 </tr>
@@ -134,8 +134,8 @@ Get the balance of a payment instrument
 
 ```sql
 SELECT
-paymentInstrumentId,
-tokenBalance
+payment_instrument_id,
+token_balance
 FROM aws.bedrock_agentcore.payment_instrument_balances
 WHERE region = '{{ region }}' -- required
 AND `X-Amzn-Bedrock-AgentCore-Payments-User-Id` = '{{ X-Amzn-Bedrock-AgentCore-Payments-User-Id }}'

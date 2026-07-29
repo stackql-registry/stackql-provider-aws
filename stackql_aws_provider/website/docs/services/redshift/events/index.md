@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Date" /></td>
+    <td><CopyableCode code="date" /></td>
     <td><code>string</code></td>
     <td>The date and time of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventCategories" /></td>
+    <td><CopyableCode code="event_categories" /></td>
     <td><code>string</code></td>
     <td>A list of the event categories. Values: Configuration, Management, Monitoring, Security, Pending</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The text of this event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the event. Values: ERROR, INFO</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIdentifier" /></td>
+    <td><CopyableCode code="source_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier for the source of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source type for this event.</td>
 </tr>
@@ -184,13 +184,13 @@ Returns events related to clusters, security groups, snapshots, and parameter gr
 
 ```sql
 SELECT
-Date,
-EventCategories,
-EventId,
-Message,
-Severity,
-SourceIdentifier,
-SourceType
+date,
+event_categories,
+event_id,
+message,
+severity,
+source_identifier,
+source_type
 FROM aws.redshift.events
 WHERE region = '{{ region }}' -- required
 AND SourceIdentifier = '{{ SourceIdentifier }}'

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A cloudwatch alarm template group's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -100,42 +100,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A cloudwatch alarm template group's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A cloudwatch alarm template group's id. AWS provided template groups have ids that start with `aws-`</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateCount" /></td>
+    <td><CopyableCode code="template_count" /></td>
     <td><code>integer</code></td>
     <td>The number of templates in a group.</td>
 </tr>
@@ -258,13 +258,13 @@ Retrieves the specified cloudwatch alarm template group.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-Id,
-ModifiedAt,
-Name,
-Tags
+arn,
+created_at,
+description,
+id,
+modified_at,
+name,
+tags
 FROM aws.medialive.cloud_watch_alarm_template_groups
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,14 +277,14 @@ Lists cloudwatch alarm template groups.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-Id,
-ModifiedAt,
-Name,
-Tags,
-TemplateCount
+arn,
+created_at,
+description,
+id,
+modified_at,
+name,
+tags,
+template_count
 FROM aws.medialive.cloud_watch_alarm_template_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -325,13 +325,13 @@ SELECT
 '{{ RequestId }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedAt,
-Description,
-Id,
-ModifiedAt,
-Name,
-Tags
+arn,
+created_at,
+description,
+id,
+modified_at,
+name,
+tags
 ;
 ```
 </TabItem>
@@ -385,13 +385,13 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-CreatedAt,
-Description,
-Id,
-ModifiedAt,
-Name,
-Tags;
+arn,
+created_at,
+description,
+id,
+modified_at,
+name,
+tags;
 ```
 </TabItem>
 </Tabs>

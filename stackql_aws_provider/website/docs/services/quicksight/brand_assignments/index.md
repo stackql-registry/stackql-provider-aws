@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BrandArn" /></td>
+    <td><CopyableCode code="brand_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the brand.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
@@ -143,8 +143,8 @@ Describes a brand assignment.
 
 ```sql
 SELECT
-BrandArn,
-RequestId
+brand_arn,
+request_id
 FROM aws.quicksight.brand_assignments
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -175,8 +175,8 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 AND BrandArn = '{{ BrandArn }}' --required
 RETURNING
-BrandArn,
-RequestId;
+brand_arn,
+request_id;
 ```
 </TabItem>
 </Tabs>

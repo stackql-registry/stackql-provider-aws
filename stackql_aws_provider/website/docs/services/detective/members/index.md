@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MemberDetails" /></td>
+    <td><CopyableCode code="member_details" /></td>
     <td><code>array</code></td>
     <td>The member account details that Detective is returning in response to the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedAccounts" /></td>
+    <td><CopyableCode code="unprocessed_accounts" /></td>
     <td><code>array</code></td>
     <td>The requested member accounts for which Detective was unable to return member details. For each account, provides the reason why the request could not be processed.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MemberDetails" /></td>
+    <td><CopyableCode code="member_details" /></td>
     <td><code>array</code></td>
     <td>The list of member accounts in the behavior graph. For invited accounts, the results include member accounts that did not pass verification and member accounts that have not yet accepted the invitation to the behavior graph. The results do not include member accounts that were removed from the behavior graph. For the organization behavior graph, the results do not include organization accounts that the Detective administrator account has not enabled as member accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more member accounts remaining in the results, then use this pagination token to request the next page of member accounts.</td>
 </tr>
@@ -171,8 +171,8 @@ Returns the membership details for specified member accounts for a behavior grap
 
 ```sql
 SELECT
-MemberDetails,
-UnprocessedAccounts
+member_details,
+unprocessed_accounts
 FROM aws.detective.members
 WHERE region = '{{ region }}' -- required
 ;
@@ -184,8 +184,8 @@ Retrieves the list of member accounts for a behavior graph. For invited accounts
 
 ```sql
 SELECT
-MemberDetails,
-NextToken
+member_details,
+next_token
 FROM aws.detective.members
 WHERE region = '{{ region }}' -- required
 ;
@@ -222,8 +222,8 @@ SELECT
 '{{ Accounts }}' /* required */,
 '{{ region }}'
 RETURNING
-Members,
-UnprocessedAccounts
+members,
+unprocessed_accounts
 ;
 ```
 </TabItem>

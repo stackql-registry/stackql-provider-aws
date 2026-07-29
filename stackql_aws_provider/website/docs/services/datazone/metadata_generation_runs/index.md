@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the metadata generation run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the metadata generation run was start.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who started the metadata generation run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain the metadata generation run of which you want to get. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project that owns the assets for which you're running metadata generation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The asset for which you're generating metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeStats" /></td>
+    <td><CopyableCode code="type_stats" /></td>
     <td><code>array</code></td>
     <td>The type stats included in the metadata generation run output details.</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the metadata generation run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the metadata generation run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the metadata generation run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the metadata generation run was created. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project that owns the asset for which the metadata generation was ran. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -268,13 +268,13 @@ Gets a metadata generation run in Amazon DataZone. Prerequisites: Valid domain a
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-domainId,
-owningProjectId,
+created_at,
+created_by,
+domain_id,
+owning_project_id,
 status,
 target,
-typeStats,
+type_stats,
 type_,
 types
 FROM aws.datazone.metadata_generation_runs
@@ -292,10 +292,10 @@ Lists all metadata generation runs. Metadata generation runs represent automated
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-domainId,
-owningProjectId,
+created_at,
+created_by,
+domain_id,
+owning_project_id,
 status,
 target,
 type_,

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeContexts" /></td>
+    <td><CopyableCode code="active_contexts" /></td>
     <td><code>array</code></td>
     <td>A list of active contexts for the session. A context can be set when an intent is fulfilled or by calling the PostContent, PostText, or PutSession operation. You can use a context to control the intents that can follow up an intent, or to modify the operation of your application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dialogAction" /></td>
+    <td><CopyableCode code="dialog_action" /></td>
     <td><code>object</code></td>
     <td>Describes the next action that the bot should take in its interaction with the user and provides information about the context in which the action takes place. Use the DialogAction data type to set the interaction to a specific state, or to return the interaction to a previous state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recentIntentSummaryView" /></td>
+    <td><CopyableCode code="recent_intent_summary_view" /></td>
     <td><code>array</code></td>
     <td>An array of information about the intents used in the session. The array can contain a maximum of three summaries. If more than three intents are used in the session, the recentIntentSummaryView operation contains information about the last three intents used. If you set the checkpointLabelFilter parameter in the request, the array contains only the intents with the specified label.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionAttributes" /></td>
+    <td><CopyableCode code="session_attributes" /></td>
     <td><code>object</code></td>
     <td>Map of key/value pairs representing the session-specific context information. It contains application information passed between Amazon Lex and a client application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the session.</td>
 </tr>
@@ -178,11 +178,11 @@ Returns session information for a specified bot, alias, and user ID.
 
 ```sql
 SELECT
-activeContexts,
-dialogAction,
-recentIntentSummaryView,
-sessionAttributes,
-sessionId
+active_contexts,
+dialog_action,
+recent_intent_summary_view,
+session_attributes,
+session_id
 FROM aws.lex_runtime.sessions
 WHERE bot_name = '{{ bot_name }}' -- required
 AND bot_alias = '{{ bot_alias }}' -- required
@@ -221,17 +221,17 @@ AND user_id = '{{ user_id }}' --required
 AND region = '{{ region }}' --required
 AND Accept = '{{ Accept}}'
 RETURNING
-activeContexts,
-audioStream,
-contentType,
-dialogState,
-encodedMessage,
-intentName,
+active_contexts,
+audio_stream,
+content_type,
+dialog_state,
+encoded_message,
+intent_name,
 message,
-messageFormat,
-sessionAttributes,
-sessionId,
-slotToElicit,
+message_format,
+session_attributes,
+session_id,
+slot_to_elicit,
 slots;
 ```
 </TabItem>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BranchName" /></td>
+    <td><CopyableCode code="branch_name" /></td>
     <td><code>string</code></td>
     <td>The name of the platform branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BranchOrder" /></td>
+    <td><CopyableCode code="branch_order" /></td>
     <td><code>integer</code></td>
     <td>An ordinal number that designates the order in which platform branches have been added to a platform. This can be helpful, for example, if your code calls the ListPlatformBranches action and then displays a list of platform branches. A larger BranchOrder value designates a newer platform branch within the platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleState" /></td>
+    <td><CopyableCode code="lifecycle_state" /></td>
     <td><code>string</code></td>
     <td>The support life cycle state of the platform branch. Possible values: beta | supported | deprecated | retired</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformName" /></td>
+    <td><CopyableCode code="platform_name" /></td>
     <td><code>string</code></td>
     <td>The name of the platform to which this platform branch belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedTierList" /></td>
+    <td><CopyableCode code="supported_tier_list" /></td>
     <td><code>string</code></td>
     <td>The environment tiers that platform versions in this branch support. Possible values: WebServer/Standard | Worker/SQS/HTTP</td>
 </tr>
@@ -154,11 +154,11 @@ Lists the platform branches available for your account in an AWS Region. Provide
 
 ```sql
 SELECT
-BranchName,
-BranchOrder,
-LifecycleState,
-PlatformName,
-SupportedTierList
+branch_name,
+branch_order,
+lifecycle_state,
+platform_name,
+supported_tier_list
 FROM aws.elasticbeanstalk.platform_branches
 WHERE region = '{{ region }}' -- required
 AND Filters = '{{ Filters }}'

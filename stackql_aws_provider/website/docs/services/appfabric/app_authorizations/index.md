@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appAuthorizationArn" /></td>
+    <td><CopyableCode code="app_authorization_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the app authorization. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appBundleArn" /></td>
+    <td><CopyableCode code="app_bundle_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the app bundle for the app authorization. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authType" /></td>
+    <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
     <td>The authorization type. (oauth2, apiKey)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authUrl" /></td>
+    <td><CopyableCode code="auth_url" /></td>
     <td><code>string</code></td>
     <td>The application URL for the OAuth flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the app authorization was created.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about an application tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the app authorization was last updated.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appAuthorizationArn" /></td>
+    <td><CopyableCode code="app_authorization_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the app authorization. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appBundleArn" /></td>
+    <td><CopyableCode code="app_bundle_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the app bundle for the app authorization. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about an application tenant, such as the application display name and identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp for when the app authorization was last updated.</td>
 </tr>
@@ -266,15 +266,15 @@ Returns information about an app authorization.
 ```sql
 SELECT
 app,
-appAuthorizationArn,
-appBundleArn,
-authType,
-authUrl,
-createdAt,
+app_authorization_arn,
+app_bundle_arn,
+auth_type,
+auth_url,
+created_at,
 persona,
 status,
 tenant,
-updatedAt
+updated_at
 FROM aws.appfabric.app_authorizations
 WHERE app_bundle_identifier = '{{ app_bundle_identifier }}' -- required
 AND app_authorization_identifier = '{{ app_authorization_identifier }}' -- required
@@ -289,11 +289,11 @@ Returns a list of all app authorizations configured for an app bundle.
 ```sql
 SELECT
 app,
-appAuthorizationArn,
-appBundleArn,
+app_authorization_arn,
+app_bundle_arn,
 status,
 tenant,
-updatedAt
+updated_at
 FROM aws.appfabric.app_authorizations
 WHERE app_bundle_identifier = '{{ app_bundle_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -339,7 +339,7 @@ SELECT
 '{{ app_bundle_identifier }}',
 '{{ region }}'
 RETURNING
-appAuthorization
+app_authorization
 ;
 ```
 </TabItem>
@@ -408,7 +408,7 @@ app_bundle_identifier = '{{ app_bundle_identifier }}' --required
 AND app_authorization_identifier = '{{ app_authorization_identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-appAuthorization;
+app_authorization;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="investigationGroupArn" /></td>
+    <td><CopyableCode code="investigation_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the investigation group that you want to view the policy of. (pattern: &lt;code&gt;arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):aiops:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:investigation-group\/&#91;A-Za-z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
@@ -143,7 +143,7 @@ Returns the JSON of the IAM resource policy associated with the specified invest
 
 ```sql
 SELECT
-investigationGroupArn,
+investigation_group_arn,
 policy
 FROM aws.aiops.investigation_group_policies
 WHERE identifier = '{{ identifier }}' -- required
@@ -175,7 +175,7 @@ identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 AND policy = '{{ policy }}' --required
 RETURNING
-investigationGroupArn;
+investigation_group_arn;
 ```
 </TabItem>
 </Tabs>

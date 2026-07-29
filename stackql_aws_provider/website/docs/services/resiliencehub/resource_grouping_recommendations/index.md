@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="confidenceLevel" /></td>
+    <td><CopyableCode code="confidence_level" /></td>
     <td><code>string</code></td>
     <td>Indicates the confidence level of Resilience Hub on the grouping recommendation. (High, Medium)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the creation time of the grouping recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupingAppComponent" /></td>
+    <td><CopyableCode code="grouping_app_component" /></td>
     <td><code>object</code></td>
     <td>Indicates the name of the recommended Application Component (AppComponent).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupingRecommendationId" /></td>
+    <td><CopyableCode code="grouping_recommendation_id" /></td>
     <td><code>string</code></td>
     <td>Indicates all the reasons available for rejecting a grouping recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationReasons" /></td>
+    <td><CopyableCode code="recommendation_reasons" /></td>
     <td><code>array</code></td>
     <td>Indicates all the reasons available for rejecting a grouping recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rejectionReason" /></td>
+    <td><CopyableCode code="rejection_reason" /></td>
     <td><code>string</code></td>
     <td>Indicates the reason you had selected while rejecting a grouping recommendation. (DistinctBusinessPurpose, SeparateDataConcern, DistinctUserGroupHandling, Other)</td>
 </tr>
@@ -195,12 +195,12 @@ Lists the resource grouping recommendations suggested by Resilience Hub for your
 
 ```sql
 SELECT
-confidenceLevel,
-creationTime,
-groupingAppComponent,
-groupingRecommendationId,
-recommendationReasons,
-rejectionReason,
+confidence_level,
+creation_time,
+grouping_app_component,
+grouping_recommendation_id,
+recommendation_reasons,
+rejection_reason,
 resources,
 score,
 status

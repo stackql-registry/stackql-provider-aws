@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>Provides the list of Amazon EC2 Availability Zones that instances in the cluster snapshot can be restored in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the time when the cluster was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the cluster identifier of the cluster that this cluster snapshot was created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotArn" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the identifier for the cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Provides the version of the database engine for this cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If StorageEncrypted is true, the KMS key identifier for the encrypted cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>Provides the master user name for the cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>integer</code></td>
     <td>Specifies the percentage of the estimated data that has been transferred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>Specifies the port that the cluster was listening on at the time of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string</code></td>
     <td>Provides the time when the snapshot was taken, in UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>Provides the type of the cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDBClusterSnapshotArn" /></td>
+    <td><CopyableCode code="source_db_cluster_snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>If the cluster snapshot was copied from a source cluster snapshot, the ARN for the source cluster snapshot; otherwise, a null value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of this cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the cluster snapshot is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>Storage type associated with your cluster snapshot For information on storage types for Amazon DocumentDB clusters, see Cluster storage configurations in the Amazon DocumentDB Developer Guide. Valid values for storage type - standard | iopt1 Default value is standard</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the virtual private cloud (VPC) ID that is associated with the cluster snapshot.</td>
 </tr>
@@ -273,24 +273,24 @@ Returns information about cluster snapshots. This API operation supports paginat
 
 ```sql
 SELECT
-AvailabilityZones,
-ClusterCreateTime,
-DBClusterIdentifier,
-DBClusterSnapshotArn,
-DBClusterSnapshotIdentifier,
-Engine,
-EngineVersion,
-KmsKeyId,
-MasterUsername,
-PercentProgress,
-Port,
-SnapshotCreateTime,
-SnapshotType,
-SourceDBClusterSnapshotArn,
-Status,
-StorageEncrypted,
-StorageType,
-VpcId
+availability_zones,
+cluster_create_time,
+db_cluster_identifier,
+db_cluster_snapshot_arn,
+db_cluster_snapshot_identifier,
+engine,
+engine_version,
+kms_key_id,
+master_username,
+percent_progress,
+port,
+snapshot_create_time,
+snapshot_type,
+source_db_cluster_snapshot_arn,
+status,
+storage_encrypted,
+storage_type,
+vpc_id
 FROM aws.docdb.db_cluster_snapshots
 WHERE region = '{{ region }}' -- required
 AND DBClusterIdentifier = '{{ DBClusterIdentifier }}'
@@ -333,24 +333,24 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-AvailabilityZones,
-ClusterCreateTime,
-DBClusterIdentifier,
-DBClusterSnapshotArn,
-DBClusterSnapshotIdentifier,
-Engine,
-EngineVersion,
-KmsKeyId,
-MasterUsername,
-PercentProgress,
-Port,
-SnapshotCreateTime,
-SnapshotType,
-SourceDBClusterSnapshotArn,
-Status,
-StorageEncrypted,
-StorageType,
-VpcId
+availability_zones,
+cluster_create_time,
+db_cluster_identifier,
+db_cluster_snapshot_arn,
+db_cluster_snapshot_identifier,
+engine,
+engine_version,
+kms_key_id,
+master_username,
+percent_progress,
+port,
+snapshot_create_time,
+snapshot_type,
+source_db_cluster_snapshot_arn,
+status,
+storage_encrypted,
+storage_type,
+vpc_id
 ;
 ```
 </TabItem>

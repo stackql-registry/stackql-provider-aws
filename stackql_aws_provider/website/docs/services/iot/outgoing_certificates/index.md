@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The certificate ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateId" /></td>
+    <td><CopyableCode code="certificate_id" /></td>
     <td><code>string</code></td>
     <td>The certificate ID. (pattern: &lt;code&gt;(0x)?&#91;a-fA-F0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The certificate creation date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transferDate" /></td>
+    <td><CopyableCode code="transfer_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the transfer was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transferMessage" /></td>
+    <td><CopyableCode code="transfer_message" /></td>
     <td><code>string</code></td>
     <td>The transfer message. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transferredTo" /></td>
+    <td><CopyableCode code="transferred_to" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account to which the transfer was made. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -159,12 +159,12 @@ Lists certificates that are being transferred but not yet accepted. Requires per
 
 ```sql
 SELECT
-certificateArn,
-certificateId,
-creationDate,
-transferDate,
-transferMessage,
-transferredTo
+certificate_arn,
+certificate_id,
+creation_date,
+transfer_date,
+transfer_message,
+transferred_to
 FROM aws.iot.outgoing_certificates
 WHERE region = '{{ region }}' -- required
 AND pageSize = '{{ pageSize }}'

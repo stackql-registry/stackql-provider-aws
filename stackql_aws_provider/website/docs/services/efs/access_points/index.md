@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessPointArn" /></td>
+    <td><CopyableCode code="access_point_arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) associated with the access point. (pattern: &lt;code&gt;^arn:aws&#91;-a-z&#93;*:elasticfilesystem:&#91;0-9a-z-:&#93;+:access-point/fsap-&#91;0-9a-f&#93;&#123;8,40&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessPointId" /></td>
+    <td><CopyableCode code="access_point_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the access point, assigned by Amazon EFS. (pattern: &lt;code&gt;^(arn:aws&#91;-a-z&#93;*:elasticfilesystem:&#91;0-9a-z-:&#93;+:access-point/fsap-&#91;0-9a-f&#93;&#123;8,40&#125;|fsap-&#91;0-9a-f&#93;&#123;8,40&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The opaque string specified in the request to ensure idempotent creation. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the EFS file system that the access point applies to. (pattern: &lt;code&gt;^(arn:aws&#91;-a-z&#93;*:elasticfilesystem:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;8,40&#125;|fs-&#91;0-9a-f&#93;&#123;8,40&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycleState" /></td>
+    <td><CopyableCode code="life_cycle_state" /></td>
     <td><code>string</code></td>
     <td>Identifies the lifecycle phase of the access point. (creating, available, updating, deleting, deleted, error)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the access point. This is the value of the Name tag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the Amazon Web Services account that owns the access point resource. (pattern: &lt;code&gt;^(\d&#123;12&#125;)|(\d&#123;4&#125;-\d&#123;4&#125;-\d&#123;4&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PosixUser" /></td>
+    <td><CopyableCode code="posix_user" /></td>
     <td><code>object</code></td>
     <td>The full POSIX identity, including the user ID, group ID, and any secondary group IDs, on the access point that is used for all file system operations performed by NFS clients using the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootDirectory" /></td>
+    <td><CopyableCode code="root_directory" /></td>
     <td><code>object</code></td>
     <td>Specifies the directory on the Amazon EFS file system that the access point provides access to. The access point exposes the specified file system path as the root directory of your file system to applications using the access point. NFS clients using the access point can only access data in the access point's RootDirectory and its subdirectories.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the access point, presented as an array of Tag objects.</td>
 </tr>
@@ -203,16 +203,16 @@ Returns the description of a specific Amazon EFS access point if the AccessPoint
 
 ```sql
 SELECT
-AccessPointArn,
-AccessPointId,
-ClientToken,
-FileSystemId,
-LifeCycleState,
-Name,
-OwnerId,
-PosixUser,
-RootDirectory,
-Tags
+access_point_arn,
+access_point_id,
+client_token,
+file_system_id,
+life_cycle_state,
+name,
+owner_id,
+posix_user,
+root_directory,
+tags
 FROM aws.efs.access_points
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -255,16 +255,16 @@ SELECT
 '{{ RootDirectory }}',
 '{{ region }}'
 RETURNING
-AccessPointArn,
-AccessPointId,
-ClientToken,
-FileSystemId,
-LifeCycleState,
-Name,
-OwnerId,
-PosixUser,
-RootDirectory,
-Tags
+access_point_arn,
+access_point_id,
+client_token,
+file_system_id,
+life_cycle_state,
+name,
+owner_id,
+posix_user,
+root_directory,
+tags
 ;
 ```
 </TabItem>

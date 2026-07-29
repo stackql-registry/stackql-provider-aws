@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A map of tag keys and values associated with the global resource.</td>
 </tr>
@@ -164,7 +164,7 @@ Lists the tags associated with a global resource in AWS Elemental MediaConnect. 
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.mediaconnect.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>Units for duration, e.g. 'MONTHS' (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>Offering type, e.g. 'NO_UPFRONT' (NO_UPFRONT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>Resource configuration details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>Units for duration, e.g. 'MONTHS' (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>Offering type, e.g. 'NO_UPFRONT' (NO_UPFRONT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>Resource configuration details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
@@ -319,17 +319,17 @@ Get details for an offering.
 
 ```sql
 SELECT
-Arn,
-CurrencyCode,
-Duration,
-DurationUnits,
-FixedPrice,
-OfferingDescription,
-OfferingId,
-OfferingType,
-Region,
-ResourceSpecification,
-UsagePrice
+arn,
+currency_code,
+duration,
+duration_units,
+fixed_price,
+offering_description,
+offering_id,
+offering_type,
+region,
+resource_specification,
+usage_price
 FROM aws.medialive.offerings
 WHERE offering_id = '{{ offering_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -342,17 +342,17 @@ List offerings available for purchase.
 
 ```sql
 SELECT
-Arn,
-CurrencyCode,
-Duration,
-DurationUnits,
-FixedPrice,
-OfferingDescription,
-OfferingId,
-OfferingType,
-Region,
-ResourceSpecification,
-UsagePrice
+arn,
+currency_code,
+duration,
+duration_units,
+fixed_price,
+offering_description,
+offering_id,
+offering_type,
+region,
+resource_specification,
+usage_price
 FROM aws.medialive.offerings
 WHERE region = '{{ region }}' -- required
 AND channelClass = '{{ channelClass }}'

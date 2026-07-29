@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="amiType" /></td>
+    <td><CopyableCode code="ami_type" /></td>
     <td><code>string</code></td>
     <td>If the node group was deployed using a launch template with a custom AMI, then this is CUSTOM. For node groups that weren't deployed using a launch template, this is the AMI type that was specified in the node group configuration. (AL2_x86_64, AL2_x86_64_GPU, AL2_ARM_64, CUSTOM, BOTTLEROCKET_ARM_64, BOTTLEROCKET_x86_64, BOTTLEROCKET_ARM_64_FIPS, BOTTLEROCKET_x86_64_FIPS, BOTTLEROCKET_ARM_64_NVIDIA, BOTTLEROCKET_x86_64_NVIDIA, BOTTLEROCKET_ARM_64_NVIDIA_FIPS, BOTTLEROCKET_x86_64_NVIDIA_FIPS, WINDOWS_CORE_2019_x86_64, WINDOWS_FULL_2019_x86_64, WINDOWS_CORE_2022_x86_64, WINDOWS_FULL_2022_x86_64, WINDOWS_CORE_2025_x86_64, WINDOWS_FULL_2025_x86_64, AL2023_x86_64_STANDARD, AL2023_ARM_64_STANDARD, AL2023_x86_64_NEURON, AL2023_x86_64_NVIDIA, AL2023_ARM_64_NVIDIA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capacityType" /></td>
+    <td><CopyableCode code="capacity_type" /></td>
     <td><code>string</code></td>
     <td>The capacity type of your managed node group. (ON_DEMAND, SPOT, CAPACITY_BLOCK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of your cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp at object creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="diskSize" /></td>
+    <td><CopyableCode code="disk_size" /></td>
     <td><code>integer</code></td>
     <td>If the node group wasn't deployed with a launch template, then this is the disk size in the node group configuration. If the node group was deployed with a launch template, then this is null.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The health status of the node group. If there are issues with your node group's health, they are listed here.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceTypes" /></td>
+    <td><CopyableCode code="instance_types" /></td>
     <td><code>array</code></td>
     <td>If the node group wasn't deployed with a launch template, then this is the instance type that is associated with the node group. If the node group was deployed with a launch template, then this is null.</td>
 </tr>
@@ -91,42 +91,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Kubernetes labels applied to the nodes in the node group. Only labels that are applied with the Amazon EKS API are shown here. There may be other Kubernetes labels applied to the nodes in this group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchTemplate" /></td>
+    <td><CopyableCode code="launch_template" /></td>
     <td><code>object</code></td>
     <td>An object representing a node group launch template specification. The launch template can't include SubnetId , IamInstanceProfile , RequestSpotInstances , HibernationOptions , or TerminateInstances , or the node group deployment or update will fail. For more information about launch templates, see CreateLaunchTemplate in the Amazon EC2 API Reference. For more information about using launch templates with Amazon EKS, see Customizing managed nodes with launch templates in the Amazon EKS User Guide. You must specify either the launch template ID or the launch template name in the request, but not both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp for the last modification to the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeRepairConfig" /></td>
+    <td><CopyableCode code="node_repair_config" /></td>
     <td><code>object</code></td>
     <td>The node auto repair configuration for the node group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodeRole" /></td>
+    <td><CopyableCode code="node_role" /></td>
     <td><code>string</code></td>
     <td>The IAM role associated with your node group. The Amazon EKS node kubelet daemon makes calls to Amazon Web Services APIs on your behalf. Nodes receive permissions for these API calls through an IAM instance profile and associated policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodegroupArn" /></td>
+    <td><CopyableCode code="nodegroup_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the managed node group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nodegroupName" /></td>
+    <td><CopyableCode code="nodegroup_name" /></td>
     <td><code>string</code></td>
     <td>The name associated with an Amazon EKS managed node group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseVersion" /></td>
+    <td><CopyableCode code="release_version" /></td>
     <td><code>string</code></td>
     <td>If the node group was deployed using a launch template with a custom AMI, then this is the AMI ID that was specified in the launch template. For node groups that weren't deployed using a launch template, this is the version of the Amazon EKS optimized AMI that the node group was deployed with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteAccess" /></td>
+    <td><CopyableCode code="remote_access" /></td>
     <td><code>object</code></td>
     <td>An object representing the remote access configuration for the managed node group.</td>
 </tr>
@@ -136,7 +136,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resources associated with the node group, such as Auto Scaling groups and security groups for remote access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scalingConfig" /></td>
+    <td><CopyableCode code="scaling_config" /></td>
     <td><code>object</code></td>
     <td>An object representing the scaling configuration details for the Auto Scaling group that is associated with your node group. When creating a node group, you must specify all or none of the properties. When updating a node group, you can specify any or none of the properties.</td>
 </tr>
@@ -161,7 +161,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Kubernetes taints to be applied to the nodes in the node group when they are created. Effect is one of No_Schedule, Prefer_No_Schedule, or No_Execute. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. For more information, see Node taints on managed node groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateConfig" /></td>
+    <td><CopyableCode code="update_config" /></td>
     <td><code>object</code></td>
     <td>The node group update configuration. An Amazon EKS managed node group updates by replacing nodes with new nodes of newer AMI versions in parallel. You choose the maximum unavailable and the update strategy.</td>
 </tr>
@@ -171,7 +171,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Kubernetes version of the managed node group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warmPoolConfig" /></td>
+    <td><CopyableCode code="warm_pool_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for an Amazon EC2 Auto Scaling warm pool attached to an Amazon EKS managed node group. Warm pools maintain pre-initialized EC2 instances alongside your Auto Scaling group that have already completed the bootup initialization process and can be kept in a Stopped, Running, or Hibernated state.</td>
 </tr>
@@ -315,31 +315,31 @@ Describes a managed node group.
 
 ```sql
 SELECT
-amiType,
-capacityType,
-clusterName,
-createdAt,
-diskSize,
+ami_type,
+capacity_type,
+cluster_name,
+created_at,
+disk_size,
 health,
-instanceTypes,
+instance_types,
 labels,
-launchTemplate,
-modifiedAt,
-nodeRepairConfig,
-nodeRole,
-nodegroupArn,
-nodegroupName,
-releaseVersion,
-remoteAccess,
+launch_template,
+modified_at,
+node_repair_config,
+node_role,
+nodegroup_arn,
+nodegroup_name,
+release_version,
+remote_access,
 resources,
-scalingConfig,
+scaling_config,
 status,
 subnets,
 tags,
 taints,
-updateConfig,
+update_config,
 version,
-warmPoolConfig
+warm_pool_config
 FROM aws.eks.nodegroups
 WHERE name = '{{ name }}' -- required
 AND nodegroup_name = '{{ nodegroup_name }}' -- required

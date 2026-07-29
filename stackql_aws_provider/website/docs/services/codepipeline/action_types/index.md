@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the executor for an action type that was created with any supported integration model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputArtifactDetails" /></td>
+    <td><CopyableCode code="input_artifact_details" /></td>
     <td><code>object</code></td>
     <td>Details for the artifacts, such as application files, to be worked on by the action. For example, the minimum and maximum number of input artifacts allowed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputArtifactDetails" /></td>
+    <td><CopyableCode code="output_artifact_details" /></td>
     <td><code>object</code></td>
     <td>Details for the output artifacts, such as a built application, that are the result of the action. For example, the minimum and maximum number of output artifacts allowed.</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>Represents information about an action type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionConfigurationProperties" /></td>
+    <td><CopyableCode code="action_configuration_properties" /></td>
     <td><code>array</code></td>
     <td>The configuration properties for the action type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputArtifactDetails" /></td>
+    <td><CopyableCode code="input_artifact_details" /></td>
     <td><code>object</code></td>
     <td>The details of the input artifact for the action, such as its commit ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputArtifactDetails" /></td>
+    <td><CopyableCode code="output_artifact_details" /></td>
     <td><code>object</code></td>
     <td>The details of the output artifact of the action, such as its commit ID.</td>
 </tr>
@@ -240,8 +240,8 @@ SELECT
 id,
 description,
 executor,
-inputArtifactDetails,
-outputArtifactDetails,
+input_artifact_details,
+output_artifact_details,
 permissions,
 properties_,
 urls
@@ -257,9 +257,9 @@ Gets a summary of all CodePipeline action types associated with your account.
 ```sql
 SELECT
 id,
-actionConfigurationProperties,
-inputArtifactDetails,
-outputArtifactDetails,
+action_configuration_properties,
+input_artifact_details,
+output_artifact_details,
 settings
 FROM aws.codepipeline.action_types
 WHERE region = '{{ region }}' -- required
@@ -305,7 +305,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-actionType,
+action_type,
 tags
 ;
 ```

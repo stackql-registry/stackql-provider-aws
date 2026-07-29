@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="collectionGroupSummaries" /></td>
+    <td><CopyableCode code="collection_group_summaries" /></td>
     <td><code>array</code></td>
     <td>Details about each collection group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page.</td>
 </tr>
@@ -152,8 +152,8 @@ Returns a list of collection groups. For more information, see Creating and mana
 
 ```sql
 SELECT
-collectionGroupSummaries,
-nextToken
+collection_group_summaries,
+next_token
 FROM aws.opensearchserverless.collection_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,7 +194,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-createCollectionGroupDetail
+create_collection_group_detail
 ;
 ```
 </TabItem>
@@ -266,7 +266,7 @@ WHERE
 region = '{{ region }}' --required
 AND id = '{{ id }}' --required
 RETURNING
-updateCollectionGroupDetail;
+update_collection_group_detail;
 ```
 </TabItem>
 </Tabs>

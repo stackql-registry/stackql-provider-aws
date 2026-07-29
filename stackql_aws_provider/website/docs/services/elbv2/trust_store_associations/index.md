@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
@@ -146,7 +146,7 @@ Describes all resources associated with the specified trust store.
 
 ```sql
 SELECT
-ResourceArn
+resource_arn
 FROM aws.elbv2.trust_store_associations
 WHERE TrustStoreArn = '{{ TrustStoreArn }}' -- required
 AND region = '{{ region }}' -- required

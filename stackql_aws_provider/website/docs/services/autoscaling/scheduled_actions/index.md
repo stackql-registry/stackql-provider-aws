@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredCapacity" /></td>
+    <td><CopyableCode code="desired_capacity" /></td>
     <td><code>integer</code></td>
     <td>The desired capacity is the initial capacity of the Auto Scaling group after the scheduled action runs and the capacity it attempts to maintain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The date and time in UTC for the recurring schedule to end. For example, "2019-06-01T00:00:00Z".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxSize" /></td>
+    <td><CopyableCode code="max_size" /></td>
     <td><code>integer</code></td>
     <td>The maximum size of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinSize" /></td>
+    <td><CopyableCode code="min_size" /></td>
     <td><code>integer</code></td>
     <td>The minimum size of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recurrence" /></td>
+    <td><CopyableCode code="recurrence" /></td>
     <td><code>string</code></td>
     <td>The recurring schedule for the action, in Unix cron syntax format. When StartTime and EndTime are specified with Recurrence, they form the boundaries of when the recurring action starts and stops.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledActionARN" /></td>
+    <td><CopyableCode code="scheduled_action_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the scheduled action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledActionName" /></td>
+    <td><CopyableCode code="scheduled_action_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scheduled action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The date and time in UTC for this action to start. For example, "2019-06-01T00:00:00Z".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Time" /></td>
+    <td><CopyableCode code="time" /></td>
     <td><code>string</code></td>
     <td>This property is no longer used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The time zone for the cron expression.</td>
 </tr>
@@ -216,17 +216,17 @@ Gets information about the scheduled actions that haven't run or that have not r
 
 ```sql
 SELECT
-AutoScalingGroupName,
-DesiredCapacity,
-EndTime,
-MaxSize,
-MinSize,
-Recurrence,
-ScheduledActionARN,
-ScheduledActionName,
-StartTime,
-Time,
-TimeZone
+auto_scaling_group_name,
+desired_capacity,
+end_time,
+max_size,
+min_size,
+recurrence,
+scheduled_action_arn,
+scheduled_action_name,
+start_time,
+time,
+time_zone
 FROM aws.autoscaling.scheduled_actions
 WHERE region = '{{ region }}' -- required
 AND AutoScalingGroupName = '{{ AutoScalingGroupName }}'

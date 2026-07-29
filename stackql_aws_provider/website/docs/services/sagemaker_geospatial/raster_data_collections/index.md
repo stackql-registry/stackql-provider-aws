@@ -52,42 +52,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the raster data collection. (pattern: &lt;code&gt;^arn:aws&#91;a-z-&#93;&#123;0,12&#125;:sagemaker-geospatial:&#91;a-z0-9-&#93;&#123;1,25&#125;:&#91;0-9&#93;&#123;12&#125;:raster-data-collection/(public|premium|user)/&#91;a-z0-9&#93;&#123;12,&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DescriptionPageUrl" /></td>
+    <td><CopyableCode code="description_page_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the description page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageSourceBands" /></td>
+    <td><CopyableCode code="image_source_bands" /></td>
     <td><code>array</code></td>
     <td>The list of image source bands in the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedFilters" /></td>
+    <td><CopyableCode code="supported_filters" /></td>
     <td><code>array</code></td>
     <td>The filters supported by the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Each tag consists of a key and a value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The raster data collection type. (PUBLIC, PREMIUM, USER)</td>
 </tr>
@@ -106,17 +106,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateResultCount" /></td>
+    <td><CopyableCode code="approximate_result_count" /></td>
     <td><code>integer</code></td>
     <td>Approximate number of results in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>List of items matching the Raster DataCollectionQuery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the previous response was truncated, you receive this token. Use it in your next request to receive the next set of results.</td>
 </tr>
@@ -135,37 +135,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the raster data collection. (pattern: &lt;code&gt;^arn:aws&#91;a-z-&#93;&#123;0,12&#125;:sagemaker-geospatial:&#91;a-z0-9-&#93;&#123;1,25&#125;:&#91;0-9&#93;&#123;12&#125;:raster-data-collection/(public|premium|user)/&#91;a-z0-9&#93;&#123;12,&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DescriptionPageUrl" /></td>
+    <td><CopyableCode code="description_page_url" /></td>
     <td><code>string</code></td>
     <td>The description URL of the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedFilters" /></td>
+    <td><CopyableCode code="supported_filters" /></td>
     <td><code>array</code></td>
     <td>The list of filters supported by the raster data collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Each tag consists of a key and a value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of raster data collection. (PUBLIC, PREMIUM, USER)</td>
 </tr>
@@ -265,14 +265,14 @@ Use this operation to get details of a specific raster data collection.
 
 ```sql
 SELECT
-Arn,
-Description,
-DescriptionPageUrl,
-ImageSourceBands,
-Name,
-SupportedFilters,
-Tags,
-Type
+arn,
+description,
+description_page_url,
+image_source_bands,
+name,
+supported_filters,
+tags,
+type
 FROM aws.sagemaker_geospatial.raster_data_collections
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -285,9 +285,9 @@ Allows you run image query on a specific raster data collection to get a list of
 
 ```sql
 SELECT
-ApproximateResultCount,
-Items,
-NextToken
+approximate_result_count,
+items,
+next_token
 FROM aws.sagemaker_geospatial.raster_data_collections
 WHERE region = '{{ region }}' -- required
 ;
@@ -299,13 +299,13 @@ Use this operation to get raster data collections.
 
 ```sql
 SELECT
-Arn,
-Description,
-DescriptionPageUrl,
-Name,
-SupportedFilters,
-Tags,
-Type
+arn,
+description,
+description_page_url,
+name,
+supported_filters,
+tags,
+type
 FROM aws.sagemaker_geospatial.raster_data_collections
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>The information about each channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token returned from previous API requests until the number of channels is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -76,62 +76,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelArn" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a channel. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelFlowArn" /></td>
+    <td><CopyableCode code="channel_flow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the channel flow. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>The details of a user or bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the AppInstanceUser created the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElasticChannelConfiguration" /></td>
+    <td><CopyableCode code="elastic_channel_configuration" /></td>
     <td><code>object</code></td>
     <td>The attributes required to configure and create an elastic channel. An elastic channel can support a maximum of 1-million members.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationSettings" /></td>
+    <td><CopyableCode code="expiration_settings" /></td>
     <td><code>object</code></td>
     <td>Settings that control the interval after which a channel is deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastMessageTimestamp" /></td>
+    <td><CopyableCode code="last_message_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a member sent the last message in the channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a channel was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>string</code></td>
     <td>The channel's metadata. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>The mode of the channel. (UNRESTRICTED, RESTRICTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of a channel. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u007E\u0085\u00A0-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Privacy" /></td>
+    <td><CopyableCode code="privacy" /></td>
     <td><code>string</code></td>
     <td>The channel's privacy setting. (PUBLIC, PRIVATE)</td>
 </tr>
@@ -150,12 +150,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>A list of the channels in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token returned from previous API responses until the number of channels is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -336,8 +336,8 @@ Lists all Channels created under a single Chime App as a paginated list. You can
 
 ```sql
 SELECT
-Channels,
-NextToken
+channels,
+next_token
 FROM aws.chime_sdk_messaging.channels
 WHERE `app-instance-arn` = '{{ app-instance-arn }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
@@ -354,18 +354,18 @@ Returns the full details of a channel in an Amazon Chime AppInstance. The x-amz-
 
 ```sql
 SELECT
-ChannelArn,
-ChannelFlowArn,
-CreatedBy,
-CreatedTimestamp,
-ElasticChannelConfiguration,
-ExpirationSettings,
-LastMessageTimestamp,
-LastUpdatedTimestamp,
-Metadata,
-Mode,
-Name,
-Privacy
+channel_arn,
+channel_flow_arn,
+created_by,
+created_timestamp,
+elastic_channel_configuration,
+expiration_settings,
+last_message_timestamp,
+last_updated_timestamp,
+metadata,
+mode,
+name,
+privacy
 FROM aws.chime_sdk_messaging.channels
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
@@ -379,8 +379,8 @@ Allows the ChimeBearer to search channels by channel members. Users or bots can 
 
 ```sql
 SELECT
-Channels,
-NextToken
+channels,
+next_token
 FROM aws.chime_sdk_messaging.channels
 WHERE region = '{{ region }}' -- required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}'
@@ -438,7 +438,7 @@ SELECT
 '{{ x-amz-chime-bearer }}',
 '{{ region }}'
 RETURNING
-ChannelArn
+channel_arn
 ;
 ```
 </TabItem>
@@ -521,7 +521,7 @@ channel_arn = '{{ channel_arn }}' --required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ChannelArn;
+channel_arn;
 ```
 </TabItem>
 </Tabs>
@@ -548,8 +548,8 @@ channel_arn = '{{ channel_arn }}' --required
 AND region = '{{ region }}' --required
 AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer}}'
 RETURNING
-ChannelArn,
-ExpirationSettings;
+channel_arn,
+expiration_settings;
 ```
 </TabItem>
 </Tabs>

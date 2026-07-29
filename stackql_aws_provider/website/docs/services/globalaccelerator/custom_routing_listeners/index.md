@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ListenerArn" /></td>
+    <td><CopyableCode code="listener_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the listener.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortRanges" /></td>
+    <td><CopyableCode code="port_ranges" /></td>
     <td><code>array</code></td>
     <td>The port range to support for connections from clients to your accelerator. Separately, you set port ranges for endpoints. For more information, see About endpoints for custom routing accelerators.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ListenerArn" /></td>
+    <td><CopyableCode code="listener_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the listener.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortRanges" /></td>
+    <td><CopyableCode code="port_ranges" /></td>
     <td><code>array</code></td>
     <td>The port range to support for connections from clients to your accelerator. Separately, you set port ranges for endpoints. For more information, see About endpoints for custom routing accelerators.</td>
 </tr>
@@ -178,8 +178,8 @@ The description of a listener for a custom routing accelerator.
 
 ```sql
 SELECT
-ListenerArn,
-PortRanges
+listener_arn,
+port_ranges
 FROM aws.globalaccelerator.custom_routing_listeners
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,8 +191,8 @@ List the listeners for a custom routing accelerator.
 
 ```sql
 SELECT
-ListenerArn,
-PortRanges
+listener_arn,
+port_ranges
 FROM aws.globalaccelerator.custom_routing_listeners
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,7 +227,7 @@ SELECT
 '{{ IdempotencyToken }}' /* required */,
 '{{ region }}'
 RETURNING
-Listener
+listener
 ;
 ```
 </TabItem>
@@ -281,7 +281,7 @@ region = '{{ region }}' --required
 AND ListenerArn = '{{ ListenerArn }}' --required
 AND PortRanges = '{{ PortRanges }}' --required
 RETURNING
-Listener;
+listener;
 ```
 </TabItem>
 </Tabs>

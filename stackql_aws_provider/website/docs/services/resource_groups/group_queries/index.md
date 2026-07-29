@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group that is associated with the specified resource query. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceQuery" /></td>
+    <td><CopyableCode code="resource_query" /></td>
     <td><code>object</code></td>
     <td>The query you can use to define a resource group or a search for resources. A ResourceQuery specifies both a query Type and a Query string as JSON string objects. See the examples section for example JSON strings. For more information about creating a resource group with a resource query, see Build queries and groups in Resource Groups in the Resource Groups User Guide When you combine all of the elements together into a single string, any double quotes that are embedded inside another double quote pair must be escaped by preceding the embedded double quote with a backslash character (\). For example, a complete ResourceQuery parameter must be formatted like the following CLI parameter example: --resource-query '&#123;"Type":"TAG_FILTERS_1_0","Query":"&#123;\"ResourceTypeFilters\":&#91;\"AWS::AllSupported\"&#93;,\"TagFilters\":&#91;&#123;\"Key\":\"Stage\",\"Values\":&#91;\"Test\"&#93;&#125;&#93;&#125;"&#125;' In the preceding example, all of the double quote characters in the value part of the Query element must be escaped because the value itself is surrounded by double quotes. For more information, see Quoting strings in the Command Line Interface User Guide. For the complete list of resource types that you can use in the array value for ResourceTypeFilters, see Resources you can use with Resource Groups and Tag Editor in the Resource Groups User Guide. For example: "ResourceTypeFilters":&#91;"AWS::S3::Bucket", "AWS::EC2::Instance"&#93;</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves the resource query associated with the specified resource group. For m
 
 ```sql
 SELECT
-GroupName,
-ResourceQuery
+group_name,
+resource_query
 FROM aws.resource_groups.group_queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceQuery = '{{ ResourceQuery }}' --required
 RETURNING
-GroupQuery;
+group_query;
 ```
 </TabItem>
 </Tabs>

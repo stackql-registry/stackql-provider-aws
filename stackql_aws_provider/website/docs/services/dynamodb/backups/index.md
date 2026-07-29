@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupDetails" /></td>
+    <td><CopyableCode code="backup_details" /></td>
     <td><code>object</code></td>
     <td>Contains the details of the backup created for the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceTableDetails" /></td>
+    <td><CopyableCode code="source_table_details" /></td>
     <td><code>object</code></td>
     <td>Contains the details of the table when the backup was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceTableFeatureDetails" /></td>
+    <td><CopyableCode code="source_table_feature_details" /></td>
     <td><code>object</code></td>
     <td>Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs, streams, TTL.</td>
 </tr>
@@ -80,52 +80,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupArn" /></td>
+    <td><CopyableCode code="backup_arn" /></td>
     <td><code>string</code></td>
     <td>ARN associated with the backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupCreationDateTime" /></td>
+    <td><CopyableCode code="backup_creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time at which the backup was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupExpiryDateTime" /></td>
+    <td><CopyableCode code="backup_expiry_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time at which the automatic on-demand backup created by DynamoDB will expire. This SYSTEM on-demand backup expires automatically 35 days after its creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupName" /></td>
+    <td><CopyableCode code="backup_name" /></td>
     <td><code>string</code></td>
     <td>Name of the specified backup. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupSizeBytes" /></td>
+    <td><CopyableCode code="backup_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Size of the backup in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupStatus" /></td>
+    <td><CopyableCode code="backup_status" /></td>
     <td><code>string</code></td>
     <td>Backup can be in one of the following states: CREATING, ACTIVE, DELETED. (CREATING, DELETED, AVAILABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupType" /></td>
+    <td><CopyableCode code="backup_type" /></td>
     <td><code>string</code></td>
     <td>BackupType: USER - You create and manage these using the on-demand backup feature. SYSTEM - If you delete a table with point-in-time recovery enabled, a SYSTEM backup is automatically created and is retained for 35 days (at no additional cost). System backups allow you to restore the deleted table to the state it was in just before the point of deletion. AWS_BACKUP - On-demand backup created by you from Backup service. (USER, SYSTEM, AWS_BACKUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableArn" /></td>
+    <td><CopyableCode code="table_arn" /></td>
     <td><code>string</code></td>
     <td>ARN associated with the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableId" /></td>
+    <td><CopyableCode code="table_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the table. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>Name of the table. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -216,9 +216,9 @@ Describes an existing backup of a table. You can call DescribeBackup at a maximu
 
 ```sql
 SELECT
-BackupDetails,
-SourceTableDetails,
-SourceTableFeatureDetails
+backup_details,
+source_table_details,
+source_table_feature_details
 FROM aws.dynamodb.backups
 WHERE region = '{{ region }}' -- required
 ;
@@ -230,16 +230,16 @@ List DynamoDB backups that are associated with an Amazon Web Services account an
 
 ```sql
 SELECT
-BackupArn,
-BackupCreationDateTime,
-BackupExpiryDateTime,
-BackupName,
-BackupSizeBytes,
-BackupStatus,
-BackupType,
-TableArn,
-TableId,
-TableName
+backup_arn,
+backup_creation_date_time,
+backup_expiry_date_time,
+backup_name,
+backup_size_bytes,
+backup_status,
+backup_type,
+table_arn,
+table_id,
+table_name
 FROM aws.dynamodb.backups
 WHERE region = '{{ region }}' -- required
 ;
@@ -272,7 +272,7 @@ SELECT
 '{{ BackupName }}' /* required */,
 '{{ region }}'
 RETURNING
-BackupDetails
+backup_details
 ;
 ```
 </TabItem>

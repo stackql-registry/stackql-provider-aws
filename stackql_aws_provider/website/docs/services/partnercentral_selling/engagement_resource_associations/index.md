@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>Indicates the environment in which the resource and engagement exist. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the entity that owns the resource. Identifies the account responsible for or having primary control over the resource. (pattern: &lt;code&gt;(&#91;0-9&#93;&#123;12&#125;|\w&#123;1,12&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngagementId" /></td>
+    <td><CopyableCode code="engagement_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the engagement associated with the resource. (pattern: &lt;code&gt;eng-&#91;0-9a-z&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the specific resource. Varies depending on the resource type. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Categorizes the type of resource associated with the engagement. (Opportunity)</td>
 </tr>
@@ -139,11 +139,11 @@ Lists the associations between resources and engagements where the caller is a m
 
 ```sql
 SELECT
-Catalog,
-CreatedBy,
-EngagementId,
-ResourceId,
-ResourceType
+catalog,
+created_by,
+engagement_id,
+resource_id,
+resource_type
 FROM aws.partnercentral_selling.engagement_resource_associations
 WHERE region = '{{ region }}' -- required
 ;

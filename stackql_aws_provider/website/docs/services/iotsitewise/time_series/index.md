@@ -55,42 +55,42 @@ The following fields are returned by `SELECT` queries:
     <td>The alias that identifies the time series. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset in which the asset property was created. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the time series. If you specify STRUCT, you must also specify dataTypeSpec to identify the type of the structure for this time series. (STRING, INTEGER, DOUBLE, BOOLEAN, STRUCT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataTypeSpec" /></td>
+    <td><CopyableCode code="data_type_spec" /></td>
     <td><code>string</code></td>
     <td>The data type of the structure for this time series. This parameter is required for time series that have the STRUCT data type. The options for this parameter depend on the type of the composite model in which you created the asset property that is associated with your time series. Use AWS/ALARM_STATE for alarm state in alarm composite models. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propertyId" /></td>
+    <td><CopyableCode code="property_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset property, in UUID format. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeSeriesArn" /></td>
+    <td><CopyableCode code="time_series_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the time series, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:time-series/$&#123;TimeSeriesId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeSeriesCreationDate" /></td>
+    <td><CopyableCode code="time_series_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the time series was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeSeriesId" /></td>
+    <td><CopyableCode code="time_series_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the time series.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeSeriesLastUpdateDate" /></td>
+    <td><CopyableCode code="time_series_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the time series was last updated, in Unix epoch time.</td>
 </tr>
@@ -209,14 +209,14 @@ Retrieves information about a time series (data stream). To identify a time seri
 ```sql
 SELECT
 alias,
-assetId,
-dataType,
-dataTypeSpec,
-propertyId,
-timeSeriesArn,
-timeSeriesCreationDate,
-timeSeriesId,
-timeSeriesLastUpdateDate
+asset_id,
+data_type,
+data_type_spec,
+property_id,
+time_series_arn,
+time_series_creation_date,
+time_series_id,
+time_series_last_update_date
 FROM aws.iotsitewise.time_series
 WHERE region = '{{ region }}' -- required
 AND alias = '{{ alias }}'

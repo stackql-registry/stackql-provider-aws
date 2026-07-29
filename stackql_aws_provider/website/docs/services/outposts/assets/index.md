@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset. An Outpost asset can be a single server within an Outposts rack or an Outposts server configuration. (pattern: &lt;code&gt;^(\w+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetLocation" /></td>
+    <td><CopyableCode code="asset_location" /></td>
     <td><code>object</code></td>
     <td>The position of an asset in a rack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssetType" /></td>
+    <td><CopyableCode code="asset_type" /></td>
     <td><code>string</code></td>
     <td>The type of the asset. (COMPUTE, STORAGE, POWERSHELF, SWITCH, NETWORKING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeAttributes" /></td>
+    <td><CopyableCode code="compute_attributes" /></td>
     <td><code>object</code></td>
     <td>Information about compute hardware assets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RackId" /></td>
+    <td><CopyableCode code="rack_id" /></td>
     <td><code>string</code></td>
     <td>The rack ID of the asset. (pattern: &lt;code&gt;^&#91;\S \n&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -176,11 +176,11 @@ Lists the hardware assets for the specified Outpost. Use filters to return speci
 
 ```sql
 SELECT
-AssetId,
-AssetLocation,
-AssetType,
-ComputeAttributes,
-RackId
+asset_id,
+asset_location,
+asset_type,
+compute_attributes,
+rack_id
 FROM aws.outposts.assets
 WHERE outpost_id = '{{ outpost_id }}' -- required
 AND region = '{{ region }}' -- required

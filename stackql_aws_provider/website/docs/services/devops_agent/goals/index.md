@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceArn" /></td>
+    <td><CopyableCode code="agent_space_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the agent space containing this goal</td>
 </tr>
@@ -60,37 +60,37 @@ The following fields are returned by `SELECT` queries:
     <td>Content of the goal</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this goal was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationSchedule" /></td>
+    <td><CopyableCode code="evaluation_schedule" /></td>
     <td><code>object</code></td>
     <td>Goal Schedule. Allows to schedule the goal to run periodically, as well as disable a goal temporarily</td>
 </tr>
 <tr>
-    <td><CopyableCode code="goalId" /></td>
+    <td><CopyableCode code="goal_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this goal</td>
 </tr>
 <tr>
-    <td><CopyableCode code="goalType" /></td>
+    <td><CopyableCode code="goal_type" /></td>
     <td><code>string</code></td>
     <td>Type of goal based on its origin (CUSTOMER_DEFINED, ONCALL_REPORT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastEvaluatedAt" /></td>
+    <td><CopyableCode code="last_evaluated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when the goal was last evaluated</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSuccessfulTaskId" /></td>
+    <td><CopyableCode code="last_successful_task_id" /></td>
     <td><code>string</code></td>
     <td>ID of the most recent successful task associated with this goal</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastTaskId" /></td>
+    <td><CopyableCode code="last_task_id" /></td>
     <td><code>string</code></td>
     <td>ID of the most recent task associated with this goal</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The title of the goal</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this goal was last updated</td>
 </tr>
@@ -196,18 +196,18 @@ Lists goals in the specified agent space with optional filtering
 
 ```sql
 SELECT
-agentSpaceArn,
+agent_space_arn,
 content,
-createdAt,
-evaluationSchedule,
-goalId,
-goalType,
-lastEvaluatedAt,
-lastSuccessfulTaskId,
-lastTaskId,
+created_at,
+evaluation_schedule,
+goal_id,
+goal_type,
+last_evaluated_at,
+last_successful_task_id,
+last_task_id,
 status,
 title_,
-updatedAt,
+updated_at,
 version
 FROM aws.devops_agent.goals
 WHERE agent_space_id = '{{ agent_space_id }}' -- required

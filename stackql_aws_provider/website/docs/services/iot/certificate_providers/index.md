@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountDefaultForOperations" /></td>
+    <td><CopyableCode code="account_default_for_operations" /></td>
     <td><code>array</code></td>
     <td>A list of the operations that the certificate provider will use to generate certificates. Valid value: CreateCertificateFromCsr.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateProviderArn" /></td>
+    <td><CopyableCode code="certificate_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the certificate provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateProviderName" /></td>
+    <td><CopyableCode code="certificate_provider_name" /></td>
     <td><code>string</code></td>
     <td>The name of the certificate provider. (pattern: &lt;code&gt;&#91;\w=,@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date-time string that indicates when the certificate provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionArn" /></td>
+    <td><CopyableCode code="lambda_function_arn" /></td>
     <td><code>string</code></td>
     <td>The Lambda function ARN that's associated with the certificate provider. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date-time string that indicates when the certificate provider was last updated.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="certificateProviders" /></td>
+    <td><CopyableCode code="certificate_providers" /></td>
     <td><code>array</code></td>
     <td>The list of certificate providers in your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;&#91;A-Za-z0-9+/&#93;+=&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
@@ -213,12 +213,12 @@ Describes a certificate provider. Requires permission to access the DescribeCert
 
 ```sql
 SELECT
-accountDefaultForOperations,
-certificateProviderArn,
-certificateProviderName,
-creationDate,
-lambdaFunctionArn,
-lastModifiedDate
+account_default_for_operations,
+certificate_provider_arn,
+certificate_provider_name,
+creation_date,
+lambda_function_arn,
+last_modified_date
 FROM aws.iot.certificate_providers
 WHERE certificate_provider_name = '{{ certificate_provider_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -231,8 +231,8 @@ Lists all your certificate providers in your Amazon Web Services account. Requir
 
 ```sql
 SELECT
-certificateProviders,
-nextToken
+certificate_providers,
+next_token
 FROM aws.iot.certificate_providers
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -273,8 +273,8 @@ SELECT
 '{{ certificate_provider_name }}',
 '{{ region }}'
 RETURNING
-certificateProviderArn,
-certificateProviderName
+certificate_provider_arn,
+certificate_provider_name
 ;
 ```
 </TabItem>
@@ -327,8 +327,8 @@ WHERE
 certificate_provider_name = '{{ certificate_provider_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-certificateProviderArn,
-certificateProviderName;
+certificate_provider_arn,
+certificate_provider_name;
 ```
 </TabItem>
 </Tabs>

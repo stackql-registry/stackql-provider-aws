@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assessmentTemplates" /></td>
+    <td><CopyableCode code="assessment_templates" /></td>
     <td><code>array</code></td>
     <td>Information about the assessment templates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedItems" /></td>
+    <td><CopyableCode code="failed_items" /></td>
     <td><code>object</code></td>
     <td>Assessment template details that cannot be described. An error code is provided for each failed item.</td>
 </tr>
@@ -166,8 +166,8 @@ Describes the assessment templates that are specified by the ARNs of the assessm
 
 ```sql
 SELECT
-assessmentTemplates,
-failedItems
+assessment_templates,
+failed_items
 FROM aws.inspector.assessment_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,7 +218,7 @@ SELECT
 '{{ userAttributesForFindings }}',
 '{{ region }}'
 RETURNING
-assessmentTemplateArn
+assessment_template_arn
 ;
 ```
 </TabItem>

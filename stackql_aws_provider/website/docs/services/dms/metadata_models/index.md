@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>string</code></td>
     <td>The SQL text of the metadata model. This field might not be populated for some metadata models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataModelName" /></td>
+    <td><CopyableCode code="metadata_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the metadata model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataModelType" /></td>
+    <td><CopyableCode code="metadata_model_type" /></td>
     <td><code>string</code></td>
     <td>The type of the metadata model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetMetadataModels" /></td>
+    <td><CopyableCode code="target_metadata_models" /></td>
     <td><code>array</code></td>
     <td>A list of counterpart metadata models in the target. This field is populated only when Origin is SOURCE and after the object has been converted by DMS Schema Conversion.</td>
 </tr>
@@ -197,10 +197,10 @@ Gets detailed information about the specified metadata model, including its defi
 
 ```sql
 SELECT
-Definition,
-MetadataModelName,
-MetadataModelType,
-TargetMetadataModels
+definition,
+metadata_model_name,
+metadata_model_type,
+target_metadata_models
 FROM aws.dms.metadata_models
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>Name of the domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the last change was made in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Message about the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationId" /></td>
+    <td><CopyableCode code="operation_id" /></td>
     <td><code>string</code></td>
     <td>Identifier returned to track the requested action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the requested operation in the system. (SUBMITTED, IN_PROGRESS, ERROR, SUCCESSFUL, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusFlag" /></td>
+    <td><CopyableCode code="status_flag" /></td>
     <td><code>string</code></td>
     <td>Automatically checks whether there are no outstanding operations on domains that need customer attention. Valid values are: PENDING_ACCEPTANCE: The operation is waiting for acceptance from the account that is receiving the domain. PENDING_CUSTOMER_ACTION: The operation is waiting for customer action, for example, returning an email. PENDING_AUTHORIZATION: The operation is waiting for the form of authorization. For more information, see ResendOperationAuthorization. PENDING_PAYMENT_VERIFICATION: The operation is waiting for the payment method to validate. PENDING_SUPPORT_CASE: The operation includes a support case and is waiting for its resolution. (PENDING_ACCEPTANCE, PENDING_CUSTOMER_ACTION, PENDING_AUTHORIZATION, PENDING_PAYMENT_VERIFICATION, PENDING_SUPPORT_CASE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmittedDate" /></td>
+    <td><CopyableCode code="submitted_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the request was submitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Type of the action requested. (REGISTER_DOMAIN, DELETE_DOMAIN, TRANSFER_IN_DOMAIN, UPDATE_DOMAIN_CONTACT, UPDATE_NAMESERVER, CHANGE_PRIVACY_PROTECTION, DOMAIN_LOCK, ENABLE_AUTORENEW, DISABLE_AUTORENEW, ADD_DNSSEC, REMOVE_DNSSEC, EXPIRE_DOMAIN, TRANSFER_OUT_DOMAIN, CHANGE_DOMAIN_OWNER, RENEW_DOMAIN, PUSH_DOMAIN, INTERNAL_TRANSFER_OUT_DOMAIN, INTERNAL_TRANSFER_IN_DOMAIN, RELEASE_TO_GANDI, TRANSFER_ON_RENEW, RESTORE_DOMAIN)</td>
 </tr>
@@ -161,14 +161,14 @@ Returns information about all of the operations that return an operation ID and 
 
 ```sql
 SELECT
-DomainName,
-LastUpdatedDate,
-Message,
-OperationId,
-Status,
-StatusFlag,
-SubmittedDate,
-Type
+domain_name,
+last_updated_date,
+message,
+operation_id,
+status,
+status_flag,
+submitted_date,
+type
 FROM aws.route53domains.operations
 WHERE region = '{{ region }}' -- required
 ;

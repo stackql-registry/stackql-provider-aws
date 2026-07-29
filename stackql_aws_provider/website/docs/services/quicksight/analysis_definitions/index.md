@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalysisId" /></td>
+    <td><CopyableCode code="analysis_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the analysis described. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>The definition of an analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>Errors associated with the analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatus" /></td>
+    <td><CopyableCode code="resource_status" /></td>
     <td><code>string</code></td>
     <td>Status associated with the analysis. CREATION_IN_PROGRESS CREATION_SUCCESSFUL CREATION_FAILED UPDATE_IN_PROGRESS UPDATE_SUCCESSFUL UPDATE_FAILED DELETED (CREATION_IN_PROGRESS, CREATION_SUCCESSFUL, CREATION_FAILED, UPDATE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThemeArn" /></td>
+    <td><CopyableCode code="theme_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the theme of the analysis.</td>
 </tr>
@@ -164,14 +164,14 @@ Provides a detailed description of the definition of an analysis. If you do not 
 
 ```sql
 SELECT
-AnalysisId,
-Definition,
-Errors,
-Name,
-RequestId,
-ResourceStatus,
-Status,
-ThemeArn
+analysis_id,
+definition,
+errors,
+name,
+request_id,
+resource_status,
+status,
+theme_arn
 FROM aws.quicksight.analysis_definitions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND analysis_id = '{{ analysis_id }}' -- required

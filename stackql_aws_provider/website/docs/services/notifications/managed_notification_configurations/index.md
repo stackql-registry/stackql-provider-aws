@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;&#91;^\u0001-\u001F\u007F-\u009F&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subCategory" /></td>
+    <td><CopyableCode code="sub_category" /></td>
     <td><code>string</code></td>
     <td>The subCategory of the ManagedNotificationConfiguration.</td>
 </tr>
@@ -220,7 +220,7 @@ name,
 arn,
 category,
 description,
-subCategory
+sub_category
 FROM aws.notifications.managed_notification_configurations
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

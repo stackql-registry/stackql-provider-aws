@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="conversationId" /></td>
+    <td><CopyableCode code="conversation_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q Business conversation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the conversation.</td>
 </tr>
@@ -173,8 +173,8 @@ Lists one or more Amazon Q Business conversations.
 
 ```sql
 SELECT
-conversationId,
-startTime,
+conversation_id,
+start_time,
 title_
 FROM aws.qbusiness.conversations
 WHERE application_id = '{{ application_id }}' -- required

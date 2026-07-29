@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="completedTimestamp" /></td>
+    <td><CopyableCode code="completed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this automation event step completed execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="estimatedMonthlySavings" /></td>
+    <td><CopyableCode code="estimated_monthly_savings" /></td>
     <td><code>object</code></td>
     <td>Contains information about estimated monthly cost savings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the automation event this step belongs to. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the resource being acted upon in this step. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when this automation event step started execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepId" /></td>
+    <td><CopyableCode code="step_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this step. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepStatus" /></td>
+    <td><CopyableCode code="step_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the step. (Ready, InProgress, Complete, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepType" /></td>
+    <td><CopyableCode code="step_type" /></td>
     <td><code>string</code></td>
     <td>The type of step. (CreateEbsSnapshot, DeleteEbsVolume, ModifyEbsVolume, CreateEbsVolume)</td>
 </tr>
@@ -154,14 +154,14 @@ Lists the steps for a specific automation event. You can only list steps for eve
 
 ```sql
 SELECT
-completedTimestamp,
-estimatedMonthlySavings,
-eventId,
-resourceId,
-startTimestamp,
-stepId,
-stepStatus,
-stepType
+completed_timestamp,
+estimated_monthly_savings,
+event_id,
+resource_id,
+start_timestamp,
+step_id,
+step_status,
+step_type
 FROM aws.compute_optimizer_automation.automation_event_steps
 WHERE region = '{{ region }}' -- required
 ;

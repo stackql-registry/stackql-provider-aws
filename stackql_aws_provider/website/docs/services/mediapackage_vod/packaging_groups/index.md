@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateAssetCount" /></td>
+    <td><CopyableCode code="approximate_asset_count" /></td>
     <td><code>integer</code></td>
     <td>The approximate asset count of the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Authorization" /></td>
+    <td><CopyableCode code="authorization" /></td>
     <td><code>object</code></td>
     <td>CDN Authorization credentials</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time the PackagingGroup was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The fully qualified domain name for Assets in the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressAccessLogs" /></td>
+    <td><CopyableCode code="egress_access_logs" /></td>
     <td><code>object</code></td>
     <td>Configure egress access logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateAssetCount" /></td>
+    <td><CopyableCode code="approximate_asset_count" /></td>
     <td><code>integer</code></td>
     <td>The approximate asset count of the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Authorization" /></td>
+    <td><CopyableCode code="authorization" /></td>
     <td><code>object</code></td>
     <td>CDN Authorization credentials</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time the PackagingGroup was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The fully qualified domain name for Assets in the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressAccessLogs" /></td>
+    <td><CopyableCode code="egress_access_logs" /></td>
     <td><code>object</code></td>
     <td>Configure egress access logging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the PackagingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -253,14 +253,14 @@ Returns a description of a MediaPackage VOD PackagingGroup resource.
 
 ```sql
 SELECT
-ApproximateAssetCount,
-Arn,
-Authorization,
-CreatedAt,
-DomainName,
-EgressAccessLogs,
-Id,
-Tags
+approximate_asset_count,
+arn,
+authorization,
+created_at,
+domain_name,
+egress_access_logs,
+id,
+tags
 FROM aws.mediapackage_vod.packaging_groups
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,14 +273,14 @@ Returns a collection of MediaPackage VOD PackagingGroup resources.
 
 ```sql
 SELECT
-ApproximateAssetCount,
-Arn,
-Authorization,
-CreatedAt,
-DomainName,
-EgressAccessLogs,
-Id,
-Tags
+approximate_asset_count,
+arn,
+authorization,
+created_at,
+domain_name,
+egress_access_logs,
+id,
+tags
 FROM aws.mediapackage_vod.packaging_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -319,13 +319,13 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Authorization,
-CreatedAt,
-DomainName,
-EgressAccessLogs,
-Id,
-Tags
+arn,
+authorization,
+created_at,
+domain_name,
+egress_access_logs,
+id,
+tags
 ;
 ```
 </TabItem>
@@ -380,14 +380,14 @@ WHERE
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApproximateAssetCount,
-Arn,
-Authorization,
-CreatedAt,
-DomainName,
-EgressAccessLogs,
-Id,
-Tags;
+approximate_asset_count,
+arn,
+authorization,
+created_at,
+domain_name,
+egress_access_logs,
+id,
+tags;
 ```
 </TabItem>
 </Tabs>

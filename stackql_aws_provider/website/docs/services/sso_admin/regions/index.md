@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddedDate" /></td>
+    <td><CopyableCode code="added_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the Region was added to the IAM Identity Center instance. For the primary Region, this is the IAM Identity Center instance creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsPrimaryRegion" /></td>
+    <td><CopyableCode code="is_primary_region" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the primary Region where the IAM Identity Center instance was originally enabled. For more information on the difference between the primary Region and additional Regions, see IAM Identity Center User Guide</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region name. (pattern: &lt;code&gt;(&#91;a-z&#93;+-)&#123;2,3&#125;\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the Region. Valid values are ACTIVE (Region is operational), ADDING (Region replication workflow is in progress), or REMOVING (Region removal workflow is in progress). (ACTIVE, ADDING, REMOVING)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddedDate" /></td>
+    <td><CopyableCode code="added_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the Region was added to the IAM Identity Center instance. For the primary Region, this is the instance creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsPrimaryRegion" /></td>
+    <td><CopyableCode code="is_primary_region" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the primary Region where the IAM Identity Center instance was originally enabled. The primary Region cannot be removed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region name. (pattern: &lt;code&gt;(&#91;a-z&#93;+-)&#123;2,3&#125;\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the Region. Valid values are ACTIVE (Region is operational), ADDING (Region extension workflow is in progress), or REMOVING (Region removal workflow is in progress). (ACTIVE, ADDING, REMOVING)</td>
 </tr>
@@ -191,10 +191,10 @@ Retrieves details about a specific Region enabled in an IAM Identity Center inst
 
 ```sql
 SELECT
-AddedDate,
-IsPrimaryRegion,
-RegionName,
-Status
+added_date,
+is_primary_region,
+region_name,
+status
 FROM aws.sso_admin.regions
 WHERE region = '{{ region }}' -- required
 ;
@@ -206,10 +206,10 @@ Lists all enabled Regions of an IAM Identity Center instance, including those th
 
 ```sql
 SELECT
-AddedDate,
-IsPrimaryRegion,
-RegionName,
-Status
+added_date,
+is_primary_region,
+region_name,
+status
 FROM aws.sso_admin.regions
 WHERE region = '{{ region }}' -- required
 ;
@@ -240,7 +240,7 @@ region = '{{ region }}' --required
 AND InstanceArn = '{{ InstanceArn }}' --required
 AND RegionName = '{{ RegionName }}' --required
 RETURNING
-Status;
+status;
 ```
 </TabItem>
 </Tabs>

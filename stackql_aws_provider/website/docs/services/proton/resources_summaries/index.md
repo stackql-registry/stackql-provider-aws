@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The total number of components in the Amazon Web Services account. The semantics of the components field are different from the semantics of results for other infrastructure-provisioning resources. That's because at this time components don't have associated templates, therefore they don't have the concept of staleness. The components object will only contain total and failed members.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentTemplates" /></td>
+    <td><CopyableCode code="environment_templates" /></td>
     <td><code>object</code></td>
     <td>The total number of environment templates in the Amazon Web Services account. The environmentTemplates object will only contain total members.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The staleness counts for Proton pipelines in the Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceInstances" /></td>
+    <td><CopyableCode code="service_instances" /></td>
     <td><code>object</code></td>
     <td>The staleness counts for Proton service instances in the Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceTemplates" /></td>
+    <td><CopyableCode code="service_templates" /></td>
     <td><code>object</code></td>
     <td>The total number of service templates in the Amazon Web Services account. The serviceTemplates object will only contain total members.</td>
 </tr>
@@ -150,11 +150,11 @@ Get counts of Proton resources. For infrastructure-provisioning resources (envir
 ```sql
 SELECT
 components,
-environmentTemplates,
+environment_templates,
 environments,
 pipelines,
-serviceInstances,
-serviceTemplates,
+service_instances,
+service_templates,
 services
 FROM aws.proton.resources_summaries
 WHERE region = '{{ region }}' -- required

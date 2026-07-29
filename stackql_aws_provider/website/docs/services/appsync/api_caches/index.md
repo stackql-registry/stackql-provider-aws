@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="apiCachingBehavior" /></td>
+    <td><CopyableCode code="api_caching_behavior" /></td>
     <td><code>string</code></td>
     <td>Caching behavior. FULL_REQUEST_CACHING: All requests from the same user are cached. Individual resolvers are automatically cached. All API calls will try to return responses from the cache. PER_RESOLVER_CACHING: Individual resolvers that you specify are cached. OPERATION_LEVEL_CACHING: Full requests are cached together and returned without executing resolvers. (FULL_REQUEST_CACHING, PER_RESOLVER_CACHING, OPERATION_LEVEL_CACHING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="atRestEncryptionEnabled" /></td>
+    <td><CopyableCode code="at_rest_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>At-rest encryption flag for cache. You cannot update this setting after creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="healthMetricsConfig" /></td>
+    <td><CopyableCode code="health_metrics_config" /></td>
     <td><code>string</code></td>
     <td>Controls how cache health metrics will be emitted to CloudWatch. Cache health metrics include: NetworkBandwidthOutAllowanceExceeded: The network packets dropped because the throughput exceeded the aggregated bandwidth limit. This is useful for diagnosing bottlenecks in a cache configuration. EngineCPUUtilization: The CPU utilization (percentage) allocated to the Redis process. This is useful for diagnosing bottlenecks in a cache configuration. Metrics will be recorded by API ID. You can set the value to ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The cache instance status. AVAILABLE: The instance is available for use. CREATING: The instance is currently creating. DELETING: The instance is currently deleting. MODIFYING: The instance is currently modifying. FAILED: The instance has failed creation. (AVAILABLE, CREATING, DELETING, MODIFYING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transitEncryptionEnabled" /></td>
+    <td><CopyableCode code="transit_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Transit encryption flag when connecting to cache. You cannot update this setting after creation.</td>
 </tr>
@@ -175,11 +175,11 @@ Retrieves an ApiCache object.
 
 ```sql
 SELECT
-apiCachingBehavior,
-atRestEncryptionEnabled,
-healthMetricsConfig,
+api_caching_behavior,
+at_rest_encryption_enabled,
+health_metrics_config,
 status,
-transitEncryptionEnabled,
+transit_encryption_enabled,
 ttl,
 type_
 FROM aws.appsync.api_caches
@@ -225,7 +225,7 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-apiCache
+api_cache
 ;
 ```
 </TabItem>
@@ -287,7 +287,7 @@ AND ttl = '{{ ttl }}' --required
 AND apiCachingBehavior = '{{ apiCachingBehavior }}' --required
 AND type = '{{ type }}' --required
 RETURNING
-apiCache;
+api_cache;
 ```
 </TabItem>
 </Tabs>

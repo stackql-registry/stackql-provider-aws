@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Context" /></td>
+    <td><CopyableCode code="context" /></td>
     <td><code>string</code></td>
     <td>The identity context information for the user. This is an identity token that should be used as the ContextAssertion parameter in the STS AssumeRole API call to obtain identity enhanced Amazon Web Services credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves the identity context for a Quick Sight user in a specified namespace, 
 
 ```sql
 SELECT
-Context,
-RequestId,
-Status
+context,
+request_id,
+status
 FROM aws.quicksight.identity_contexts
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required

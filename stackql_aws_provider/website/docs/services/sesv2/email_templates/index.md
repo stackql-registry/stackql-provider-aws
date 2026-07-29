@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) that are associated with the email template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateContent" /></td>
+    <td><CopyableCode code="template_content" /></td>
     <td><code>object</code></td>
     <td>The content of the email, composed of a subject line, an HTML part, and a text-only part.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the template. You will refer to this name when you send email using the SendEmail or SendBulkEmail operations.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token indicating that there are additional email templates available to be listed. Pass this token to a subsequent ListEmailTemplates call to retrieve the next 10 email templates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplatesMetadata" /></td>
+    <td><CopyableCode code="templates_metadata" /></td>
     <td><code>array</code></td>
     <td>An array the contains the name and creation time stamp for each template in your Amazon SES account.</td>
 </tr>
@@ -198,9 +198,9 @@ Displays the template object (which includes the subject line, HTML part and tex
 
 ```sql
 SELECT
-Tags,
-TemplateContent,
-TemplateName
+tags,
+template_content,
+template_name
 FROM aws.sesv2.email_templates
 WHERE template_name = '{{ template_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -213,8 +213,8 @@ Lists the email templates present in your Amazon SES account in the current Amaz
 
 ```sql
 SELECT
-NextToken,
-TemplatesMetadata
+next_token,
+templates_metadata
 FROM aws.sesv2.email_templates
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

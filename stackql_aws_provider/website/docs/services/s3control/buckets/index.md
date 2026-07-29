@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Bucket" /></td>
+    <td><CopyableCode code="bucket" /></td>
     <td><code>string</code></td>
     <td>The Outposts bucket requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The creation date of the Outposts bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAccessBlockEnabled" /></td>
+    <td><CopyableCode code="public_access_block_enabled" /></td>
     <td><code>boolean</code></td>
     <td></td>
 </tr>
@@ -193,9 +193,9 @@ Gets an Amazon S3 on Outposts bucket. For more information, see Using Amazon S3 
 
 ```sql
 SELECT
-Bucket,
-CreationDate,
-PublicAccessBlockEnabled
+bucket,
+creation_date,
+public_access_block_enabled
 FROM aws.s3control.buckets
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required
@@ -246,8 +246,8 @@ SELECT
 '{{ x-amz-bucket-object-lock-enabled }}',
 '{{ x-amz-outpost-id }}'
 RETURNING
-BucketArn,
-Location
+bucket_arn,
+location
 ;
 ```
 </TabItem>

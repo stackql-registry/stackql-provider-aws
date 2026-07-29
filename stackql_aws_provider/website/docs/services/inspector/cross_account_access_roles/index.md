@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="registeredAt" /></td>
+    <td><CopyableCode code="registered_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the cross-account access role was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.</td>
 </tr>
@@ -136,8 +136,8 @@ Describes the IAM role that enables Amazon Inspector to access your AWS account.
 
 ```sql
 SELECT
-registeredAt,
-roleArn,
+registered_at,
+role_arn,
 valid
 FROM aws.inspector.cross_account_access_roles
 WHERE region = '{{ region }}' -- required

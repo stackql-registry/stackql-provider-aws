@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="caseId" /></td>
+    <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
     <td>The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-12345678910-2013-c4c1d2bf33c5cf47</td>
 </tr>
 <tr>
-    <td><CopyableCode code="categoryCode" /></td>
+    <td><CopyableCode code="category_code" /></td>
     <td><code>string</code></td>
     <td>The category of problem for the support case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ccEmailAddresses" /></td>
+    <td><CopyableCode code="cc_email_addresses" /></td>
     <td><code>array</code></td>
     <td>The email addresses that receive copies of communication about the case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayId" /></td>
+    <td><CopyableCode code="display_id" /></td>
     <td><code>string</code></td>
     <td>The ID displayed for the case in the Amazon Web Services Support Center. This is a numeric string.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
     <td>The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the language parameter if you want support in that language.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recentCommunications" /></td>
+    <td><CopyableCode code="recent_communications" /></td>
     <td><code>object</code></td>
     <td>The five most recent communications between you and Amazon Web Services Support Center, including the IDs of any attachments to the communications. Also includes a nextToken that you can use to retrieve earlier communications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>The code for the Amazon Web Services service. You can get a list of codes and the corresponding service names by calling DescribeServices.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="severityCode" /></td>
+    <td><CopyableCode code="severity_code" /></td>
     <td><code>string</code></td>
     <td>The code for the severity level returned by the call to DescribeSeverityLevels.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
     <td>The subject line for the case in the Amazon Web Services Support Center.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submittedBy" /></td>
+    <td><CopyableCode code="submitted_by" /></td>
     <td><code>string</code></td>
     <td>The email address of the account that submitted the case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeCreated" /></td>
+    <td><CopyableCode code="time_created" /></td>
     <td><code>string</code></td>
     <td>The time that the case was created in the Amazon Web Services Support Center.</td>
 </tr>
@@ -188,18 +188,18 @@ Returns a list of cases that you specify by passing one or more case IDs. You ca
 
 ```sql
 SELECT
-caseId,
-categoryCode,
-ccEmailAddresses,
-displayId,
+case_id,
+category_code,
+cc_email_addresses,
+display_id,
 language,
-recentCommunications,
-serviceCode,
-severityCode,
+recent_communications,
+service_code,
+severity_code,
 status,
 subject,
-submittedBy,
-timeCreated
+submitted_by,
+time_created
 FROM aws.support.cases
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,7 +246,7 @@ SELECT
 '{{ attachmentSetId }}',
 '{{ region }}'
 RETURNING
-caseId
+case_id
 ;
 ```
 </TabItem>

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a restore testing selection was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 201812:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>This identifies the request and allows failed requests to be retried without the risk of running the operation twice. If the request includes a CreatorRequestId that matches an existing backup plan, that plan is returned. This parameter is optional. If used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the target resource; for example:arn:aws:iam::123456789012:role/S3Access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedResourceArns" /></td>
+    <td><CopyableCode code="protected_resource_arns" /></td>
     <td><code>array</code></td>
     <td>You can include specific ARNs, such as ProtectedResourceArns: &#91;"arn:aws:...", "arn:aws:..."&#93; or you can include a wildcard: ProtectedResourceArns: &#91;"*"&#93;, but not both.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedResourceConditions" /></td>
+    <td><CopyableCode code="protected_resource_conditions" /></td>
     <td><code>object</code></td>
     <td>In a resource testing selection, this parameter filters by specific conditions such as StringEquals or StringNotEquals.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedResourceType" /></td>
+    <td><CopyableCode code="protected_resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource included in a resource testing selection; for example, an Amazon EBS volume or an Amazon RDS database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreMetadataOverrides" /></td>
+    <td><CopyableCode code="restore_metadata_overrides" /></td>
     <td><code>object</code></td>
     <td>You can override certain restore metadata keys by including the parameter RestoreMetadataOverrides in the body of RestoreTestingSelection. Key values are not case sensitive. See the complete list of restore testing inferred metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingPlanName" /></td>
+    <td><CopyableCode code="restore_testing_plan_name" /></td>
     <td><code>string</code></td>
     <td>The RestoreTestingPlanName is a unique string that is the name of the restore testing plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingSelectionName" /></td>
+    <td><CopyableCode code="restore_testing_selection_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the restore testing selection that belongs to the related restore testing plan. The name consists of only alphanumeric characters and underscores. Maximum length is 50.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationWindowHours" /></td>
+    <td><CopyableCode code="validation_window_hours" /></td>
     <td><code>integer</code></td>
     <td>This is amount of hours (1 to 168) available to run a validation script on the data. The data will be deleted upon the completion of the validation script or the end of the specified retention period, whichever comes first.</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a restore testing selection was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26,2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the target resource; for example: arn:aws:iam::123456789012:role/S3Access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedResourceType" /></td>
+    <td><CopyableCode code="protected_resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Web Services resource included in a restore testing selection; for example, an Amazon EBS volume or an Amazon RDS database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingPlanName" /></td>
+    <td><CopyableCode code="restore_testing_plan_name" /></td>
     <td><code>string</code></td>
     <td>Unique string that is the name of the restore testing plan. The name cannot be changed after creation. The name must consist of only alphanumeric characters and underscores. Maximum length is 50.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingSelectionName" /></td>
+    <td><CopyableCode code="restore_testing_selection_name" /></td>
     <td><code>string</code></td>
     <td>Unique name of a restore testing selection. The name consists of only alphanumeric characters and underscores. Maximum length is 50.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationWindowHours" /></td>
+    <td><CopyableCode code="validation_window_hours" /></td>
     <td><code>integer</code></td>
     <td>This value represents the time, in hours, data is retained after a restore test so that optional validation can be completed. Accepted value is an integer between 0 and 168 (the hourly equivalent of seven days).</td>
 </tr>
@@ -258,16 +258,16 @@ Returns RestoreTestingSelection, which displays resources and elements of the re
 
 ```sql
 SELECT
-CreationTime,
-CreatorRequestId,
-IamRoleArn,
-ProtectedResourceArns,
-ProtectedResourceConditions,
-ProtectedResourceType,
-RestoreMetadataOverrides,
-RestoreTestingPlanName,
-RestoreTestingSelectionName,
-ValidationWindowHours
+creation_time,
+creator_request_id,
+iam_role_arn,
+protected_resource_arns,
+protected_resource_conditions,
+protected_resource_type,
+restore_metadata_overrides,
+restore_testing_plan_name,
+restore_testing_selection_name,
+validation_window_hours
 FROM aws.backup.restore_testing_selections
 WHERE restore_testing_plan_name = '{{ restore_testing_plan_name }}' -- required
 AND restore_testing_selection_name = '{{ restore_testing_selection_name }}' -- required
@@ -281,12 +281,12 @@ Returns a list of restore testing selections. Can be filtered by MaxResults and 
 
 ```sql
 SELECT
-CreationTime,
-IamRoleArn,
-ProtectedResourceType,
-RestoreTestingPlanName,
-RestoreTestingSelectionName,
-ValidationWindowHours
+creation_time,
+iam_role_arn,
+protected_resource_type,
+restore_testing_plan_name,
+restore_testing_selection_name,
+validation_window_hours
 FROM aws.backup.restore_testing_selections
 WHERE restore_testing_plan_name = '{{ restore_testing_plan_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -324,10 +324,10 @@ SELECT
 '{{ restore_testing_plan_name }}',
 '{{ region }}'
 RETURNING
-CreationTime,
-RestoreTestingPlanArn,
-RestoreTestingPlanName,
-RestoreTestingSelectionName
+creation_time,
+restore_testing_plan_arn,
+restore_testing_plan_name,
+restore_testing_selection_name
 ;
 ```
 </TabItem>
@@ -390,11 +390,11 @@ AND restore_testing_selection_name = '{{ restore_testing_selection_name }}' --re
 AND region = '{{ region }}' --required
 AND RestoreTestingSelection = '{{ RestoreTestingSelection }}' --required
 RETURNING
-CreationTime,
-RestoreTestingPlanArn,
-RestoreTestingPlanName,
-RestoreTestingSelectionName,
-UpdateTime;
+creation_time,
+restore_testing_plan_arn,
+restore_testing_plan_name,
+restore_testing_selection_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

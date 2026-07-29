@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="instanceTypeEsxVersions" /></td>
+    <td><CopyableCode code="instance_type_esx_versions" /></td>
     <td><code>array</code></td>
     <td>A list of EC2 instance types and their available ESX versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vcfVersions" /></td>
+    <td><CopyableCode code="vcf_versions" /></td>
     <td><code>array</code></td>
     <td>A list of VCF versions with their availability status, default ESX version, and instance types.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns information about VCF versions, ESX versions and EC2 instance types prov
 
 ```sql
 SELECT
-instanceTypeEsxVersions,
-vcfVersions
+instance_type_esx_versions,
+vcf_versions
 FROM aws.evs.versions
 WHERE region = '{{ region }}' -- required
 ;

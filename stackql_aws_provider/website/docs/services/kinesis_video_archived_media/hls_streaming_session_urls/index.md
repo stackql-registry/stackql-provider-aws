@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HLSStreamingSessionURL" /></td>
+    <td><CopyableCode code="hls_streaming_session_url" /></td>
     <td><code>string</code></td>
     <td>The URL (containing the session token) that a media player can use to retrieve the HLS master playlist.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves an HTTP Live Streaming (HLS) URL for the stream. You can then open the
 
 ```sql
 SELECT
-HLSStreamingSessionURL
+hls_streaming_session_url
 FROM aws.kinesis_video_archived_media.hls_streaming_session_urls
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdminAccountId" /></td>
+    <td><CopyableCode code="admin_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdminStatus" /></td>
+    <td><CopyableCode code="admin_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the account is enabled as the delegated administrator. (ENABLED, DISABLE_IN_PROGRESS)</td>
 </tr>
@@ -134,8 +134,8 @@ Lists the accounts designated as GuardDuty delegated administrators. Only the or
 
 ```sql
 SELECT
-AdminAccountId,
-AdminStatus
+admin_account_id,
+admin_status
 FROM aws.guardduty.organization_admin_accounts
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

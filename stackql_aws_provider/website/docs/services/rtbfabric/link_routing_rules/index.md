@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>Conditions bag for a routing rule. All non-null fields must match (AND logic). At least one field must be set (enforced by CP).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the routing rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the gateway. (pattern: &lt;code&gt;rtb-gw-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="linkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the link. (pattern: &lt;code&gt;link-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>WAF-style evaluation priority. Lower number = evaluated first (priority 1 before 10). Gaps are allowed (1, 10, 20 is valid). Must be between 1 and 1000 inclusive. Uniqueness per link among non-deleted rules is enforced at the API layer (HTTP 409 on conflict).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>Identifier for a routing rule (pattern: &lt;code&gt;rule-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of the key-value pairs for the tag or tags assigned to the specified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the routing rule was last updated.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>Conditions bag for a routing rule. All non-null fields must match (AND logic). At least one field must be set (enforced by CP).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the routing rule was created.</td>
 </tr>
@@ -125,7 +125,7 @@ The following fields are returned by `SELECT` queries:
     <td>WAF-style evaluation priority. Lower number = evaluated first (priority 1 before 10). Gaps are allowed (1, 10, 20 is valid). Must be between 1 and 1000 inclusive. Uniqueness per link among non-deleted rules is enforced at the API layer (HTTP 409 on conflict).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>Identifier for a routing rule (pattern: &lt;code&gt;rule-&#91;a-z0-9-&#93;&#123;1,25&#125;&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the routing rule. (CREATION_IN_PROGRESS, ACTIVE, UPDATE_IN_PROGRESS, DELETION_IN_PROGRESS, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the routing rule was last updated.</td>
 </tr>
@@ -259,14 +259,14 @@ Retrieves the details of a routing rule for a link.
 ```sql
 SELECT
 conditions,
-createdAt,
-gatewayId,
-linkId,
+created_at,
+gateway_id,
+link_id,
 priority,
-ruleId,
+rule_id,
 status,
 tags,
-updatedAt
+updated_at
 FROM aws.rtbfabric.link_routing_rules
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND link_id = '{{ link_id }}' -- required
@@ -282,11 +282,11 @@ Lists the routing rules for a link.
 ```sql
 SELECT
 conditions,
-createdAt,
+created_at,
 priority,
-ruleId,
+rule_id,
 status,
-updatedAt
+updated_at
 FROM aws.rtbfabric.link_routing_rules
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND link_id = '{{ link_id }}' -- required
@@ -331,8 +331,8 @@ SELECT
 '{{ link_id }}',
 '{{ region }}'
 RETURNING
-createdAt,
-ruleId,
+created_at,
+rule_id,
 status
 ;
 ```
@@ -402,9 +402,9 @@ AND region = '{{ region }}' --required
 AND priority = '{{ priority }}' --required
 AND conditions = '{{ conditions }}' --required
 RETURNING
-ruleId,
+rule_id,
 status,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

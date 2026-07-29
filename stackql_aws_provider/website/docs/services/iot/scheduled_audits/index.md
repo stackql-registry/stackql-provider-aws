@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dayOfMonth" /></td>
+    <td><CopyableCode code="day_of_month" /></td>
     <td><code>string</code></td>
     <td>The day of the month on which the scheduled audit takes place. This is will be 1 through 31 or LAST. If days 29-31 are specified, and the month does not have that many days, the audit takes place on the LAST day of the month. (pattern: &lt;code&gt;^(&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)$|^LAST$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dayOfWeek" /></td>
+    <td><CopyableCode code="day_of_week" /></td>
     <td><code>string</code></td>
     <td>The day of the week on which the scheduled audit takes place, either one of SUN, MON, TUE, WED, THU, FRI, or SAT. (SUN, MON, TUE, WED, THU, FRI, SAT)</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>How often the scheduled audit takes place, either one of DAILY, WEEKLY, BIWEEKLY, or MONTHLY. The start time of each audit is determined by the system. (DAILY, WEEKLY, BIWEEKLY, MONTHLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledAuditArn" /></td>
+    <td><CopyableCode code="scheduled_audit_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the scheduled audit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledAuditName" /></td>
+    <td><CopyableCode code="scheduled_audit_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scheduled audit. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetCheckNames" /></td>
+    <td><CopyableCode code="target_check_names" /></td>
     <td><code>array</code></td>
     <td>Which checks are performed during the scheduled audit. Checks must be enabled for your account. (Use DescribeAccountAuditConfiguration to see the list of all checks, including those that are enabled or use UpdateAccountAuditConfiguration to select which checks are enabled.)</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dayOfMonth" /></td>
+    <td><CopyableCode code="day_of_month" /></td>
     <td><code>string</code></td>
     <td>The day of the month on which the scheduled audit is run (if the frequency is "MONTHLY"). If days 29-31 are specified, and the month does not have that many days, the audit takes place on the "LAST" day of the month. (pattern: &lt;code&gt;^(&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)$|^LAST$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dayOfWeek" /></td>
+    <td><CopyableCode code="day_of_week" /></td>
     <td><code>string</code></td>
     <td>The day of the week on which the scheduled audit is run (if the frequency is "WEEKLY" or "BIWEEKLY"). (SUN, MON, TUE, WED, THU, FRI, SAT)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>How often the scheduled audit occurs. (DAILY, WEEKLY, BIWEEKLY, MONTHLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledAuditArn" /></td>
+    <td><CopyableCode code="scheduled_audit_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the scheduled audit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledAuditName" /></td>
+    <td><CopyableCode code="scheduled_audit_name" /></td>
     <td><code>string</code></td>
     <td>The name of the scheduled audit. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -228,12 +228,12 @@ Gets information about a scheduled audit. Requires permission to access the Desc
 
 ```sql
 SELECT
-dayOfMonth,
-dayOfWeek,
+day_of_month,
+day_of_week,
 frequency,
-scheduledAuditArn,
-scheduledAuditName,
-targetCheckNames
+scheduled_audit_arn,
+scheduled_audit_name,
+target_check_names
 FROM aws.iot.scheduled_audits
 WHERE scheduled_audit_name = '{{ scheduled_audit_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -246,11 +246,11 @@ Lists all of your scheduled audits. Requires permission to access the ListSchedu
 
 ```sql
 SELECT
-dayOfMonth,
-dayOfWeek,
+day_of_month,
+day_of_week,
 frequency,
-scheduledAuditArn,
-scheduledAuditName
+scheduled_audit_arn,
+scheduled_audit_name
 FROM aws.iot.scheduled_audits
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -293,7 +293,7 @@ SELECT
 '{{ scheduled_audit_name }}',
 '{{ region }}'
 RETURNING
-scheduledAuditArn
+scheduled_audit_arn
 ;
 ```
 </TabItem>
@@ -352,7 +352,7 @@ WHERE
 scheduled_audit_name = '{{ scheduled_audit_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-scheduledAuditArn;
+scheduled_audit_arn;
 ```
 </TabItem>
 </Tabs>

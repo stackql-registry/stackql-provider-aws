@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AIBenchmarkJobArn" /></td>
+    <td><CopyableCode code="ai_benchmark_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AI benchmark job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:ai-benchmark-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIBenchmarkJobName" /></td>
+    <td><CopyableCode code="ai_benchmark_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AI benchmark job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIBenchmarkJobStatus" /></td>
+    <td><CopyableCode code="ai_benchmark_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the AI benchmark job. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIWorkloadConfigIdentifier" /></td>
+    <td><CopyableCode code="ai_workload_config_identifier" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the AI workload configuration used for this benchmark job. (pattern: &lt;code&gt;(arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;a-z\-&#93;*/)?(&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9\-&#93;)&#123;0,62&#125;)(?&lt;!-)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BenchmarkTarget" /></td>
+    <td><CopyableCode code="benchmark_target" /></td>
     <td><code>object</code></td>
     <td>The target endpoint that was benchmarked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the benchmark job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the benchmark job completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the benchmark job failed, the reason it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfig" /></td>
+    <td><CopyableCode code="network_config" /></td>
     <td><code>object</code></td>
     <td>The network configuration for the benchmark job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration for the benchmark job, including the Amazon S3 output location and CloudWatch log information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role used by the benchmark job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the benchmark job started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the benchmark job.</td>
 </tr>
@@ -130,32 +130,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AIBenchmarkJobArn" /></td>
+    <td><CopyableCode code="ai_benchmark_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the benchmark job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:ai-benchmark-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIBenchmarkJobName" /></td>
+    <td><CopyableCode code="ai_benchmark_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the benchmark job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIBenchmarkJobStatus" /></td>
+    <td><CopyableCode code="ai_benchmark_job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the benchmark job. (InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIWorkloadConfigName" /></td>
+    <td><CopyableCode code="ai_workload_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AI workload configuration used by the benchmark job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the benchmark job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the benchmark job completed.</td>
 </tr>
@@ -253,19 +253,19 @@ Returns details of an AI benchmark job, including its status, configuration, tar
 
 ```sql
 SELECT
-AIBenchmarkJobArn,
-AIBenchmarkJobName,
-AIBenchmarkJobStatus,
-AIWorkloadConfigIdentifier,
-BenchmarkTarget,
-CreationTime,
-EndTime,
-FailureReason,
-NetworkConfig,
-OutputConfig,
-RoleArn,
-StartTime,
-Tags
+ai_benchmark_job_arn,
+ai_benchmark_job_name,
+ai_benchmark_job_status,
+ai_workload_config_identifier,
+benchmark_target,
+creation_time,
+end_time,
+failure_reason,
+network_config,
+output_config,
+role_arn,
+start_time,
+tags
 FROM aws.sagemaker.ai_benchmark_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -277,12 +277,12 @@ Returns a list of AI benchmark jobs in your account. You can filter the results 
 
 ```sql
 SELECT
-AIBenchmarkJobArn,
-AIBenchmarkJobName,
-AIBenchmarkJobStatus,
-AIWorkloadConfigName,
-CreationTime,
-EndTime
+ai_benchmark_job_arn,
+ai_benchmark_job_name,
+ai_benchmark_job_status,
+ai_workload_config_name,
+creation_time,
+end_time
 FROM aws.sagemaker.ai_benchmark_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -325,7 +325,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AIBenchmarkJobArn
+ai_benchmark_job_arn
 ;
 ```
 </TabItem>

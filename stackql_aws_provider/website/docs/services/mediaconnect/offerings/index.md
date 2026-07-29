@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The type of currency that is used for billing. The currencyCode used for all reservations is US dollars.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The length of time that your reservation would be active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement for the duration of the offering. (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingArn" /></td>
+    <td><CopyableCode code="offering_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>A description of the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricePerUnit" /></td>
+    <td><CopyableCode code="price_per_unit" /></td>
     <td><code>string</code></td>
     <td>The cost of a single unit. This value, in combination with priceUnits, makes up the rate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriceUnits" /></td>
+    <td><CopyableCode code="price_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement that is used for billing. This value, in combination with pricePerUnit, makes up the rate. (HOURLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>A definition of the amount of outbound bandwidth that you would be reserving if you purchase the offering.</td>
 </tr>
@@ -105,42 +105,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The type of currency that is used for billing. The currencyCode used for all reservations is US dollars.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The length of time that your reservation would be active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement for the duration of the offering. (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingArn" /></td>
+    <td><CopyableCode code="offering_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>A description of the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricePerUnit" /></td>
+    <td><CopyableCode code="price_per_unit" /></td>
     <td><code>string</code></td>
     <td>The cost of a single unit. This value, in combination with priceUnits, makes up the rate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriceUnits" /></td>
+    <td><CopyableCode code="price_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement that is used for billing. This value, in combination with pricePerUnit, makes up the rate. (HOURLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>A definition of the amount of outbound bandwidth that you would be reserving if you purchase the offering.</td>
 </tr>
@@ -232,14 +232,14 @@ Displays the details of an offering. The response includes the offering descript
 
 ```sql
 SELECT
-CurrencyCode,
-Duration,
-DurationUnits,
-OfferingArn,
-OfferingDescription,
-PricePerUnit,
-PriceUnits,
-ResourceSpecification
+currency_code,
+duration,
+duration_units,
+offering_arn,
+offering_description,
+price_per_unit,
+price_units,
+resource_specification
 FROM aws.mediaconnect.offerings
 WHERE offering_arn = '{{ offering_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -252,14 +252,14 @@ Displays a list of all offerings that are available to this account in the curre
 
 ```sql
 SELECT
-CurrencyCode,
-Duration,
-DurationUnits,
-OfferingArn,
-OfferingDescription,
-PricePerUnit,
-PriceUnits,
-ResourceSpecification
+currency_code,
+duration,
+duration_units,
+offering_arn,
+offering_description,
+price_per_unit,
+price_units,
+resource_specification
 FROM aws.mediaconnect.offerings
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

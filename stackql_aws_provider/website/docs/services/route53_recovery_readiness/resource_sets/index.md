@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceSetArn" /></td>
+    <td><CopyableCode code="resource_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the resource set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSetName" /></td>
+    <td><CopyableCode code="resource_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource set. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSetType" /></td>
+    <td><CopyableCode code="resource_set_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the resources in the resource set. Enter one of the following values for resource type: AWS::ApiGateway::Stage, AWS::ApiGatewayV2::Stage, AWS::AutoScaling::AutoScalingGroup, AWS::CloudWatch::Alarm, AWS::EC2::CustomerGateway, AWS::DynamoDB::Table, AWS::EC2::Volume, AWS::ElasticLoadBalancing::LoadBalancer, AWS::ElasticLoadBalancingV2::LoadBalancer, AWS::Lambda::Function, AWS::MSK::Cluster, AWS::RDS::DBCluster, AWS::Route53::HealthCheck, AWS::SQS::Queue, AWS::SNS::Topic, AWS::SNS::Subscription, AWS::EC2::VPC, AWS::EC2::VPNConnection, AWS::EC2::VPNGateway, AWS::Route53RecoveryReadiness::DNSTargetResource (pattern: &lt;code&gt;AWS::&#91;A-Za-z0-9&#93;+::&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>A list of resource objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceSetArn" /></td>
+    <td><CopyableCode code="resource_set_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the resource set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSetName" /></td>
+    <td><CopyableCode code="resource_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource set. (pattern: &lt;code&gt;\A&#91;a-zA-Z0-9_&#93;+\z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSetType" /></td>
+    <td><CopyableCode code="resource_set_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the resources in the resource set. Enter one of the following values for resource type: AWS::ApiGateway::Stage, AWS::ApiGatewayV2::Stage, AWS::AutoScaling::AutoScalingGroup, AWS::CloudWatch::Alarm, AWS::EC2::CustomerGateway, AWS::DynamoDB::Table, AWS::EC2::Volume, AWS::ElasticLoadBalancing::LoadBalancer, AWS::ElasticLoadBalancingV2::LoadBalancer, AWS::Lambda::Function, AWS::MSK::Cluster, AWS::RDS::DBCluster, AWS::Route53::HealthCheck, AWS::SQS::Queue, AWS::SNS::Topic, AWS::SNS::Subscription, AWS::EC2::VPC, AWS::EC2::VPNConnection, AWS::EC2::VPNGateway, AWS::Route53RecoveryReadiness::DNSTargetResource (pattern: &lt;code&gt;AWS::&#91;A-Za-z0-9&#93;+::&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>A list of resource objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -223,11 +223,11 @@ Displays the details about a resource set, including a list of the resources in 
 
 ```sql
 SELECT
-ResourceSetArn,
-ResourceSetName,
-ResourceSetType,
-Resources,
-Tags
+resource_set_arn,
+resource_set_name,
+resource_set_type,
+resources,
+tags
 FROM aws.route53_recovery_readiness.resource_sets
 WHERE resource_set_name = '{{ resource_set_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -240,11 +240,11 @@ Lists the resource sets in an account.
 
 ```sql
 SELECT
-ResourceSetArn,
-ResourceSetName,
-ResourceSetType,
-Resources,
-Tags
+resource_set_arn,
+resource_set_name,
+resource_set_type,
+resources,
+tags
 FROM aws.route53_recovery_readiness.resource_sets
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -283,11 +283,11 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ResourceSetArn,
-ResourceSetName,
-ResourceSetType,
-Resources,
-Tags
+resource_set_arn,
+resource_set_name,
+resource_set_type,
+resources,
+tags
 ;
 ```
 </TabItem>
@@ -351,11 +351,11 @@ resource_set_name = '{{ resource_set_name }}' --required
 AND region = '{{ region }}' --required
 AND ResourceSetType = '{{ ResourceSetType }}' --required
 RETURNING
-ResourceSetArn,
-ResourceSetName,
-ResourceSetType,
-Resources,
-Tags;
+resource_set_arn,
+resource_set_name,
+resource_set_type,
+resources,
+tags;
 ```
 </TabItem>
 </Tabs>

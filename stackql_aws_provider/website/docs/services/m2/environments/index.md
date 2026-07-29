@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the runtime environment. Must be unique within the account. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actualCapacity" /></td>
+    <td><CopyableCode code="actual_capacity" /></td>
     <td><code>integer</code></td>
     <td>The number of instances included in the runtime environment. A standalone runtime environment has a maximum of one instance. Currently, a high availability runtime environment has a maximum of two instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the runtime environment was created.</td>
 </tr>
@@ -71,67 +71,67 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the runtime environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The target platform for the runtime environment. (microfocus, bluage)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the runtime engine. (pattern: &lt;code&gt;^\S&#123;1,10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the runtime environment. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;|):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the runtime environment. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="highAvailabilityConfig" /></td>
+    <td><CopyableCode code="high_availability_config" /></td>
     <td><code>object</code></td>
     <td>Defines the details of a high availability configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of instance underlying the runtime environment. (pattern: &lt;code&gt;^\S&#123;1,20&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a customer managed key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loadBalancerArn" /></td>
+    <td><CopyableCode code="load_balancer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the load balancer used with the runtime environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type supported by the runtime environment. (ipv4, dual)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingMaintenance" /></td>
+    <td><CopyableCode code="pending_maintenance" /></td>
     <td><code>object</code></td>
     <td>Indicates the pending maintenance scheduled on this environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The maintenance window for the runtime environment. If you don't provide a value for the maintenance window, the service assigns a random value. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publiclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Whether applications running in this runtime environment are publicly accessible.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifiers of the security groups assigned to this runtime environment.</td>
 </tr>
@@ -141,17 +141,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the runtime environment. If the Amazon Web Services Mainframe Modernization environment is missing a connection to the customer owned dependent resource, the status will be Unhealthy. (Creating, Available, Updating, Deleting, Failed, UnHealthy)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the reported status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageConfigurations" /></td>
+    <td><CopyableCode code="storage_configurations" /></td>
     <td><code>array</code></td>
     <td>The storage configurations defined for the runtime environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The unique identifiers of the subnets assigned to this runtime environment.</td>
 </tr>
@@ -161,7 +161,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags defined for this runtime environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the VPC used with this runtime environment. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -185,37 +185,37 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the runtime environment. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the runtime environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The target platform for the runtime environment. (microfocus, bluage)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the runtime engine. (pattern: &lt;code&gt;^\S&#123;1,10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentArn" /></td>
+    <td><CopyableCode code="environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a particular runtime environment. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;|):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a particular runtime environment. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type of the runtime environment. (pattern: &lt;code&gt;^\S&#123;1,20&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type supported by the runtime environment. (ipv4, dual)</td>
 </tr>
@@ -356,28 +356,28 @@ Describes a specific runtime environment.
 ```sql
 SELECT
 name,
-actualCapacity,
-creationTime,
+actual_capacity,
+creation_time,
 description,
-engineType,
-engineVersion,
-environmentArn,
-environmentId,
-highAvailabilityConfig,
-instanceType,
-kmsKeyId,
-loadBalancerArn,
-networkType,
-pendingMaintenance,
-preferredMaintenanceWindow,
-publiclyAccessible,
-securityGroupIds,
+engine_type,
+engine_version,
+environment_arn,
+environment_id,
+high_availability_config,
+instance_type,
+kms_key_id,
+load_balancer_arn,
+network_type,
+pending_maintenance,
+preferred_maintenance_window,
+publicly_accessible,
+security_group_ids,
 status,
-statusReason,
-storageConfigurations,
-subnetIds,
+status_reason,
+storage_configurations,
+subnet_ids,
 tags,
-vpcId
+vpc_id
 FROM aws.m2.environments
 WHERE environment_id = '{{ environment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -391,13 +391,13 @@ Lists the runtime environments.
 ```sql
 SELECT
 name,
-creationTime,
-engineType,
-engineVersion,
-environmentArn,
-environmentId,
-instanceType,
-networkType,
+creation_time,
+engine_type,
+engine_version,
+environment_arn,
+environment_id,
+instance_type,
+network_type,
 status
 FROM aws.m2.environments
 WHERE region = '{{ region }}' -- required
@@ -461,7 +461,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-environmentId
+environment_id
 ;
 ```
 </TabItem>
@@ -549,7 +549,7 @@ WHERE
 environment_id = '{{ environment_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-environmentId;
+environment_id;
 ```
 </TabItem>
 </Tabs>

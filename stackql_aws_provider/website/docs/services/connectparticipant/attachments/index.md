@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachmentSizeInBytes" /></td>
+    <td><CopyableCode code="attachment_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the attachment in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Url" /></td>
+    <td><CopyableCode code="url" /></td>
     <td><code>string</code></td>
     <td>This is the pre-signed URL that can be used for uploading the file to Amazon S3 when used in response to StartAttachmentUpload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UrlExpiry" /></td>
+    <td><CopyableCode code="url_expiry" /></td>
     <td><code>string</code></td>
     <td>The expiration time of the URL in ISO timestamp. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.</td>
 </tr>
@@ -148,9 +148,9 @@ Provides a pre-signed URL for download of a completed attachment. This is an asy
 
 ```sql
 SELECT
-AttachmentSizeInBytes,
-Url,
-UrlExpiry
+attachment_size_in_bytes,
+url,
+url_expiry
 FROM aws.connectparticipant.attachments
 WHERE `X-Amz-Bearer` = '{{ X-Amz-Bearer }}' -- required
 AND region = '{{ region }}' -- required

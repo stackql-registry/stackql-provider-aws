@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessLogSettings" /></td>
+    <td><CopyableCode code="access_log_settings" /></td>
     <td><code>object</code></td>
     <td>Settings for logging access in a stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a stage is managed by API Gateway. If you created an API using quick create, the $default stage is managed by API Gateway. You can't modify the $default stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoDeploy" /></td>
+    <td><CopyableCode code="auto_deploy" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether updates to an API automatically trigger a new deployment. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientCertificateId" /></td>
+    <td><CopyableCode code="client_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stage was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultRouteSettings" /></td>
+    <td><CopyableCode code="default_route_settings" /></td>
     <td><code>object</code></td>
     <td>Represents a collection of route settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDeploymentStatusMessage" /></td>
+    <td><CopyableCode code="last_deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>Describes the status of the last deployment of a stage. Supported only for stages with autoDeploy enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stage was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteSettings" /></td>
+    <td><CopyableCode code="route_settings" /></td>
     <td><code>object</code></td>
     <td>Route settings for the stage, by routeKey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StageName" /></td>
+    <td><CopyableCode code="stage_name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StageVariables" /></td>
+    <td><CopyableCode code="stage_variables" /></td>
     <td><code>object</code></td>
     <td>A map that defines the stage variables for a stage resource. Variable names can have alphanumeric and underscore characters, and the values must match &#91;A-Za-z0-9-._~:/?#&=,&#93;+.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
@@ -135,72 +135,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessLogSettings" /></td>
+    <td><CopyableCode code="access_log_settings" /></td>
     <td><code>object</code></td>
     <td>Settings for logging access in a stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a stage is managed by API Gateway. If you created an API using quick create, the $default stage is managed by API Gateway. You can't modify the $default stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoDeploy" /></td>
+    <td><CopyableCode code="auto_deploy" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether updates to an API automatically trigger a new deployment. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientCertificateId" /></td>
+    <td><CopyableCode code="client_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stage was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultRouteSettings" /></td>
+    <td><CopyableCode code="default_route_settings" /></td>
     <td><code>object</code></td>
     <td>Represents a collection of route settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDeploymentStatusMessage" /></td>
+    <td><CopyableCode code="last_deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>Describes the status of the last deployment of a stage. Supported only for stages with autoDeploy enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stage was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteSettings" /></td>
+    <td><CopyableCode code="route_settings" /></td>
     <td><code>object</code></td>
     <td>Route settings for the stage, by routeKey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StageName" /></td>
+    <td><CopyableCode code="stage_name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StageVariables" /></td>
+    <td><CopyableCode code="stage_variables" /></td>
     <td><code>object</code></td>
     <td>A map that defines the stage variables for a stage resource. Variable names can have alphanumeric and underscore characters, and the values must match &#91;A-Za-z0-9-._~:/?#&=,&#93;+.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
@@ -325,20 +325,20 @@ Gets a Stage.
 
 ```sql
 SELECT
-AccessLogSettings,
-ApiGatewayManaged,
-AutoDeploy,
-ClientCertificateId,
-CreatedDate,
-DefaultRouteSettings,
-DeploymentId,
-Description,
-LastDeploymentStatusMessage,
-LastUpdatedDate,
-RouteSettings,
-StageName,
-StageVariables,
-Tags
+access_log_settings,
+api_gateway_managed,
+auto_deploy,
+client_certificate_id,
+created_date,
+default_route_settings,
+deployment_id,
+description,
+last_deployment_status_message,
+last_updated_date,
+route_settings,
+stage_name,
+stage_variables,
+tags
 FROM aws.apigatewayv2.stages
 WHERE api_id = '{{ api_id }}' -- required
 AND stage_name = '{{ stage_name }}' -- required
@@ -352,20 +352,20 @@ Gets the Stages for an API.
 
 ```sql
 SELECT
-AccessLogSettings,
-ApiGatewayManaged,
-AutoDeploy,
-ClientCertificateId,
-CreatedDate,
-DefaultRouteSettings,
-DeploymentId,
-Description,
-LastDeploymentStatusMessage,
-LastUpdatedDate,
-RouteSettings,
-StageName,
-StageVariables,
-Tags
+access_log_settings,
+api_gateway_managed,
+auto_deploy,
+client_certificate_id,
+created_date,
+default_route_settings,
+deployment_id,
+description,
+last_deployment_status_message,
+last_updated_date,
+route_settings,
+stage_name,
+stage_variables,
+tags
 FROM aws.apigatewayv2.stages
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -419,20 +419,20 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-AccessLogSettings,
-ApiGatewayManaged,
-AutoDeploy,
-ClientCertificateId,
-CreatedDate,
-DefaultRouteSettings,
-DeploymentId,
-Description,
-LastDeploymentStatusMessage,
-LastUpdatedDate,
-RouteSettings,
-StageName,
-StageVariables,
-Tags
+access_log_settings,
+api_gateway_managed,
+auto_deploy,
+client_certificate_id,
+created_date,
+default_route_settings,
+deployment_id,
+description,
+last_deployment_status_message,
+last_updated_date,
+route_settings,
+stage_name,
+stage_variables,
+tags
 ;
 ```
 </TabItem>
@@ -526,20 +526,20 @@ api_id = '{{ api_id }}' --required
 AND stage_name = '{{ stage_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AccessLogSettings,
-ApiGatewayManaged,
-AutoDeploy,
-ClientCertificateId,
-CreatedDate,
-DefaultRouteSettings,
-DeploymentId,
-Description,
-LastDeploymentStatusMessage,
-LastUpdatedDate,
-RouteSettings,
-StageName,
-StageVariables,
-Tags;
+access_log_settings,
+api_gateway_managed,
+auto_deploy,
+client_certificate_id,
+created_date,
+default_route_settings,
+deployment_id,
+description,
+last_deployment_status_message,
+last_updated_date,
+route_settings,
+stage_name,
+stage_variables,
+tags;
 ```
 </TabItem>
 </Tabs>

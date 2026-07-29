@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Config" /></td>
+    <td><CopyableCode code="config" /></td>
     <td><code>object</code></td>
     <td>Information about notification channels you have configured with DevOps Guru. The one supported notification channel is Amazon Simple Notification Service (Amazon SNS).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of a notification channel. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -143,8 +143,8 @@ Returns a list of notification channels configured for DevOps Guru. Each notific
 
 ```sql
 SELECT
-Config,
-Id
+config,
+id
 FROM aws.devops_guru.notification_channels
 WHERE region = '{{ region }}' -- required
 ;
@@ -186,7 +186,7 @@ Config = '{{ Config }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Id;
+id;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to retrieve the next set of results. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>An optional list of tags to associate with the specified export. Each tag consists of a key and a value, and each key must be unique for the resource.</td>
 </tr>
@@ -138,8 +138,8 @@ List tags associated with an existing data export.
 
 ```sql
 SELECT
-NextToken,
-ResourceTags
+next_token,
+resource_tags
 FROM aws.bcm_data_exports.tags
 WHERE region = '{{ region }}' -- required
 ;

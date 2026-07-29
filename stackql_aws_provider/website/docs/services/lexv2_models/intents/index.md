@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot associated with the intent. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot associated with the intent. (pattern: &lt;code&gt;^DRAFT$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the intent was created.</td>
 </tr>
@@ -71,92 +71,92 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dialogCodeHook" /></td>
+    <td><CopyableCode code="dialog_code_hook" /></td>
     <td><code>object</code></td>
     <td>Settings that determine the Lambda function that Amazon Lex uses for processing user responses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fulfillmentCodeHook" /></td>
+    <td><CopyableCode code="fulfillment_code_hook" /></td>
     <td><code>object</code></td>
     <td>Determines if a Lambda function should be invoked for a specific intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="initialResponseSetting" /></td>
+    <td><CopyableCode code="initial_response_setting" /></td>
     <td><code>object</code></td>
     <td>Configuration setting for a response sent to the user before Amazon Lex starts eliciting slots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputContexts" /></td>
+    <td><CopyableCode code="input_contexts" /></td>
     <td><code>array</code></td>
     <td>A list of contexts that must be active for the intent to be considered for sending to the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentClosingSetting" /></td>
+    <td><CopyableCode code="intent_closing_setting" /></td>
     <td><code>object</code></td>
     <td>Provides a statement the Amazon Lex conveys to the user when the intent is successfully fulfilled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentConfirmationSetting" /></td>
+    <td><CopyableCode code="intent_confirmation_setting" /></td>
     <td><code>object</code></td>
     <td>Provides a prompt for making sure that the user is ready for the intent to be fulfilled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentDisplayName" /></td>
+    <td><CopyableCode code="intent_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name specified for the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentId" /></td>
+    <td><CopyableCode code="intent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned to the intent when it was created. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentName" /></td>
+    <td><CopyableCode code="intent_name" /></td>
     <td><code>string</code></td>
     <td>The name specified for the intent. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kendraConfiguration" /></td>
+    <td><CopyableCode code="kendra_configuration" /></td>
     <td><code>object</code></td>
     <td>Provides configuration information for the AMAZON.KendraSearchIntent intent. When you use this intent, Amazon Lex searches the specified Amazon Kendra index and returns documents from the index that match the user's utterance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the date and time that the intent was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The language and locale specified for the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputContexts" /></td>
+    <td><CopyableCode code="output_contexts" /></td>
     <td><code>array</code></td>
     <td>A list of contexts that are activated when the intent is fulfilled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentIntentSignature" /></td>
+    <td><CopyableCode code="parent_intent_signature" /></td>
     <td><code>string</code></td>
     <td>The identifier of the built-in intent that this intent is derived from, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="qInConnectIntentConfiguration" /></td>
+    <td><CopyableCode code="q_in_connect_intent_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration details of the Qinconnect intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="qnAIntentConfiguration" /></td>
+    <td><CopyableCode code="qn_a_intent_configuration" /></td>
     <td><code>object</code></td>
     <td>Details about the the configuration of the built-in Amazon.QnAIntent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleUtterances" /></td>
+    <td><CopyableCode code="sample_utterances" /></td>
     <td><code>array</code></td>
     <td>User utterances that trigger this intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slotPriorities" /></td>
+    <td><CopyableCode code="slot_priorities" /></td>
     <td><code>array</code></td>
     <td>The list that determines the priority that slots should be elicited from the user.</td>
 </tr>
@@ -175,27 +175,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot that contains the intent. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that contains the intent. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="intentSummaries" /></td>
+    <td><CopyableCode code="intent_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the intents that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter of the request. If there are more intents available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The language and locale of the intents in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListIntents operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListIntents operation request to get the next page of results.</td>
 </tr>
@@ -313,28 +313,28 @@ Returns metadata about an intent.
 
 ```sql
 SELECT
-botId,
-botVersion,
-creationDateTime,
+bot_id,
+bot_version,
+creation_date_time,
 description,
-dialogCodeHook,
-fulfillmentCodeHook,
-initialResponseSetting,
-inputContexts,
-intentClosingSetting,
-intentConfirmationSetting,
-intentDisplayName,
-intentId,
-intentName,
-kendraConfiguration,
-lastUpdatedDateTime,
-localeId,
-outputContexts,
-parentIntentSignature,
-qInConnectIntentConfiguration,
-qnAIntentConfiguration,
-sampleUtterances,
-slotPriorities
+dialog_code_hook,
+fulfillment_code_hook,
+initial_response_setting,
+input_contexts,
+intent_closing_setting,
+intent_confirmation_setting,
+intent_display_name,
+intent_id,
+intent_name,
+kendra_configuration,
+last_updated_date_time,
+locale_id,
+output_contexts,
+parent_intent_signature,
+q_in_connect_intent_configuration,
+qn_a_intent_configuration,
+sample_utterances,
+slot_priorities
 FROM aws.lexv2_models.intents
 WHERE intent_id = '{{ intent_id }}' -- required
 AND bot_id = '{{ bot_id }}' -- required
@@ -350,11 +350,11 @@ Get a list of intents that meet the specified criteria.
 
 ```sql
 SELECT
-botId,
-botVersion,
-intentSummaries,
-localeId,
-nextToken
+bot_id,
+bot_version,
+intent_summaries,
+locale_id,
+next_token
 FROM aws.lexv2_models.intents
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -422,26 +422,26 @@ SELECT
 '{{ locale_id }}',
 '{{ region }}'
 RETURNING
-botId,
-botVersion,
-creationDateTime,
+bot_id,
+bot_version,
+creation_date_time,
 description,
-dialogCodeHook,
-fulfillmentCodeHook,
-initialResponseSetting,
-inputContexts,
-intentClosingSetting,
-intentConfirmationSetting,
-intentDisplayName,
-intentId,
-intentName,
-kendraConfiguration,
-localeId,
-outputContexts,
-parentIntentSignature,
-qInConnectIntentConfiguration,
-qnAIntentConfiguration,
-sampleUtterances
+dialog_code_hook,
+fulfillment_code_hook,
+initial_response_setting,
+input_contexts,
+intent_closing_setting,
+intent_confirmation_setting,
+intent_display_name,
+intent_id,
+intent_name,
+kendra_configuration,
+locale_id,
+output_contexts,
+parent_intent_signature,
+q_in_connect_intent_configuration,
+qn_a_intent_configuration,
+sample_utterances
 ;
 ```
 </TabItem>
@@ -1312,28 +1312,28 @@ AND locale_id = '{{ locale_id }}' --required
 AND region = '{{ region }}' --required
 AND intentName = '{{ intentName }}' --required
 RETURNING
-botId,
-botVersion,
-creationDateTime,
+bot_id,
+bot_version,
+creation_date_time,
 description,
-dialogCodeHook,
-fulfillmentCodeHook,
-initialResponseSetting,
-inputContexts,
-intentClosingSetting,
-intentConfirmationSetting,
-intentDisplayName,
-intentId,
-intentName,
-kendraConfiguration,
-lastUpdatedDateTime,
-localeId,
-outputContexts,
-parentIntentSignature,
-qInConnectIntentConfiguration,
-qnAIntentConfiguration,
-sampleUtterances,
-slotPriorities;
+dialog_code_hook,
+fulfillment_code_hook,
+initial_response_setting,
+input_contexts,
+intent_closing_setting,
+intent_confirmation_setting,
+intent_display_name,
+intent_id,
+intent_name,
+kendra_configuration,
+last_updated_date_time,
+locale_id,
+output_contexts,
+parent_intent_signature,
+q_in_connect_intent_configuration,
+qn_a_intent_configuration,
+sample_utterances,
+slot_priorities;
 ```
 </TabItem>
 </Tabs>

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Proxy" /></td>
+    <td><CopyableCode code="proxy" /></td>
     <td><code>object</code></td>
     <td>Proxy attached to a NAT gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateToken" /></td>
+    <td><CopyableCode code="update_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the proxy. The token marks the state of the proxy resource at the time of the request. To make changes to the proxy, you provide the token in your request. Network Firewall uses the token to ensure that the proxy hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the proxy again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a proxy. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the proxy. You can't change the name of a proxy after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -178,8 +178,8 @@ Returns the data objects for the specified proxy.
 
 ```sql
 SELECT
-Proxy,
-UpdateToken
+proxy,
+update_token
 FROM aws.network_firewall.proxies
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,8 +191,8 @@ Retrieves the metadata for the proxies that you have defined. Depending on your 
 
 ```sql
 SELECT
-Arn,
-Name
+arn,
+name
 FROM aws.network_firewall.proxies
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,8 +235,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Proxy,
-UpdateToken
+proxy,
+update_token
 ;
 ```
 </TabItem>
@@ -315,8 +315,8 @@ region = '{{ region }}' --required
 AND NatGatewayId = '{{ NatGatewayId }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-Proxy,
-UpdateToken;
+proxy,
+update_token;
 ```
 </TabItem>
 </Tabs>

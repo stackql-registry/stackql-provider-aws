@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VpcPeeringConnections" /></td>
+    <td><CopyableCode code="vpc_peering_connections" /></td>
     <td><code>array</code></td>
     <td>A collection of VPC peering connection records that match the request.</td>
 </tr>
@@ -133,7 +133,7 @@ This API works with the following fleet types: EC2 Retrieves information on VPC 
 
 ```sql
 SELECT
-VpcPeeringConnections
+vpc_peering_connections
 FROM aws.gamelift.vpc_peering_connections
 WHERE region = '{{ region }}' -- required
 ;

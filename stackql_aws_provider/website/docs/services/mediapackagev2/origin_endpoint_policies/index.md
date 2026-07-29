@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CdnAuthConfiguration" /></td>
+    <td><CopyableCode code="cdn_auth_configuration" /></td>
     <td><code>object</code></td>
     <td>The settings for using authorization headers between the MediaPackage endpoint and your CDN. For information about CDN authorization, see CDN authorization in Elemental MediaPackage in the MediaPackage user guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel. The name is the primary identifier for the channel, and must be unique for your account in the AWS Region and channel group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginEndpointName" /></td>
+    <td><CopyableCode code="origin_endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the origin endpoint. The name is the primary identifier for the origin endpoint, and and must be unique for your account in the AWS Region and channel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The policy assigned to the origin endpoint.</td>
 </tr>
@@ -168,11 +168,11 @@ Retrieves the specified origin endpoint policy that's configured in AWS Elementa
 
 ```sql
 SELECT
-CdnAuthConfiguration,
-ChannelGroupName,
-ChannelName,
-OriginEndpointName,
-Policy
+cdn_auth_configuration,
+channel_group_name,
+channel_name,
+origin_endpoint_name,
+policy
 FROM aws.mediapackagev2.origin_endpoint_policies
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND channel_name = '{{ channel_name }}' -- required

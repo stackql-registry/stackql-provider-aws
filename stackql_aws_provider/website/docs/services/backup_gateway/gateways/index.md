@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeprecationDate" /></td>
+    <td><CopyableCode code="deprecation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date after which this gateway will not receive software updates for new features and bug fixes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayDisplayName" /></td>
+    <td><CopyableCode code="gateway_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the gateway. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayType" /></td>
+    <td><CopyableCode code="gateway_type" /></td>
     <td><code>string</code></td>
     <td>The type of the gateway type. (BACKUP_VM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HypervisorId" /></td>
+    <td><CopyableCode code="hypervisor_id" /></td>
     <td><code>string</code></td>
     <td>The hypervisor ID of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSeenTime" /></td>
+    <td><CopyableCode code="last_seen_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Details showing the last time Backup gateway communicated with the cloud, in Unix format and UTC time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceStartTime" /></td>
+    <td><CopyableCode code="maintenance_start_time" /></td>
     <td><code>object</code></td>
     <td>Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone. Can be weekly or monthly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextUpdateAvailabilityTime" /></td>
+    <td><CopyableCode code="next_update_availability_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Details showing the next update availability time of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareVersion" /></td>
+    <td><CopyableCode code="software_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the software running on the gateway appliance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpoint" /></td>
+    <td><CopyableCode code="vpc_endpoint" /></td>
     <td><code>string</code></td>
     <td>The DNS name for the virtual private cloud (VPC) endpoint the gateway uses to connect to the cloud for backup gateway.</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GatewayArn" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayDisplayName" /></td>
+    <td><CopyableCode code="gateway_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the gateway. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayType" /></td>
+    <td><CopyableCode code="gateway_type" /></td>
     <td><code>string</code></td>
     <td>The type of the gateway. (BACKUP_VM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HypervisorId" /></td>
+    <td><CopyableCode code="hypervisor_id" /></td>
     <td><code>string</code></td>
     <td>The hypervisor ID of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSeenTime" /></td>
+    <td><CopyableCode code="last_seen_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time Backup gateway communicated with the gateway, in Unix format and UTC time.</td>
 </tr>
@@ -261,16 +261,16 @@ By providing the ARN (Amazon Resource Name), this API returns the gateway.
 
 ```sql
 SELECT
-DeprecationDate,
-GatewayArn,
-GatewayDisplayName,
-GatewayType,
-HypervisorId,
-LastSeenTime,
-MaintenanceStartTime,
-NextUpdateAvailabilityTime,
-SoftwareVersion,
-VpcEndpoint
+deprecation_date,
+gateway_arn,
+gateway_display_name,
+gateway_type,
+hypervisor_id,
+last_seen_time,
+maintenance_start_time,
+next_update_availability_time,
+software_version,
+vpc_endpoint
 FROM aws.backup_gateway.gateways
 WHERE region = '{{ region }}' -- required
 ;
@@ -282,11 +282,11 @@ Lists backup gateways owned by an Amazon Web Services account in an Amazon Web S
 
 ```sql
 SELECT
-GatewayArn,
-GatewayDisplayName,
-GatewayType,
-HypervisorId,
-LastSeenTime
+gateway_arn,
+gateway_display_name,
+gateway_type,
+hypervisor_id,
+last_seen_time
 FROM aws.backup_gateway.gateways
 WHERE region = '{{ region }}' -- required
 ;
@@ -323,7 +323,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-GatewayArn
+gateway_arn
 ;
 ```
 </TabItem>
@@ -383,7 +383,7 @@ region = '{{ region }}' --required
 AND GatewayArn = '{{ GatewayArn }}' --required
 AND ServerArn = '{{ ServerArn }}' --required
 RETURNING
-GatewayArn;
+gateway_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_gateway_from_server">
@@ -398,7 +398,7 @@ WHERE
 region = '{{ region }}' --required
 AND GatewayArn = '{{ GatewayArn }}' --required
 RETURNING
-GatewayArn;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>
@@ -430,7 +430,7 @@ AND GatewayArn = '{{ GatewayArn }}' --required
 AND HourOfDay = '{{ HourOfDay }}' --required
 AND MinuteOfHour = '{{ MinuteOfHour }}' --required
 RETURNING
-GatewayArn;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactChannelArn" /></td>
+    <td><CopyableCode code="contact_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the contact channel Incident Manager engaged. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceiptInfo" /></td>
+    <td><CopyableCode code="receipt_info" /></td>
     <td><code>string</code></td>
     <td>Information provided during the page acknowledgement. (pattern: &lt;code&gt;^&#91;.\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceiptTime" /></td>
+    <td><CopyableCode code="receipt_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time receipt was SENT, DELIVERED, or READ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceiptType" /></td>
+    <td><CopyableCode code="receipt_type" /></td>
     <td><code>string</code></td>
     <td>The type follows the engagement cycle, SENT, DELIVERED, and READ. (DELIVERED, ERROR, READ, SENT, STOP)</td>
 </tr>
@@ -134,10 +134,10 @@ Lists all of the engagements to contact channels that have been acknowledged.
 
 ```sql
 SELECT
-ContactChannelArn,
-ReceiptInfo,
-ReceiptTime,
-ReceiptType
+contact_channel_arn,
+receipt_info,
+receipt_time,
+receipt_type
 FROM aws.ssm_contacts.page_receipts
 WHERE region = '{{ region }}' -- required
 ;

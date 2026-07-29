@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>Indicates the Retention mode for the specified object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetainUntilDate" /></td>
+    <td><CopyableCode code="retain_until_date" /></td>
     <td><code>string</code></td>
     <td>The date on which this Object Lock Retention will expire.</td>
 </tr>
@@ -171,8 +171,8 @@ This operation is not supported for directory buckets. Retrieves an object's ret
 
 ```sql
 SELECT
-Mode,
-RetainUntilDate
+mode,
+retain_until_date
 FROM aws.s3.object_retentions
 WHERE bucket = '{{ bucket }}' -- required
 AND key = '{{ key }}' -- required

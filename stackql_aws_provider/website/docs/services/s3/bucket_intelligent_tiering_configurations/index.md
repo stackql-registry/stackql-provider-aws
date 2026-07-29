@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>Specifies a bucket filter. The configuration only includes objects that meet the filter's criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID used to identify the S3 Intelligent-Tiering configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tierings" /></td>
+    <td><CopyableCode code="tierings" /></td>
     <td><code>string</code></td>
     <td>Specifies the S3 Intelligent-Tiering storage class tier of the configuration.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>Specifies a bucket filter. The configuration only includes objects that meet the filter's criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID used to identify the S3 Intelligent-Tiering configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tierings" /></td>
+    <td><CopyableCode code="tierings" /></td>
     <td><code>string</code></td>
     <td>Specifies the S3 Intelligent-Tiering storage class tier of the configuration.</td>
 </tr>
@@ -211,10 +211,10 @@ This operation is not supported for directory buckets. Gets the S3 Intelligent-T
 
 ```sql
 SELECT
-Filter,
-Id,
-Status,
-Tierings
+filter,
+id,
+status,
+tierings
 FROM aws.s3.bucket_intelligent_tiering_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND id = '{{ id }}' -- required
@@ -229,10 +229,10 @@ This operation is not supported for directory buckets. Lists the S3 Intelligent-
 
 ```sql
 SELECT
-Filter,
-Id,
-Status,
-Tierings
+filter,
+id,
+status,
+tierings
 FROM aws.s3.bucket_intelligent_tiering_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

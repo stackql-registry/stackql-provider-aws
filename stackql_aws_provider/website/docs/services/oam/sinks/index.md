@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the sink.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The random ID string that Amazon Web Services generated as part of the sink ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the sink.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the sink.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the sink.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The random ID string that Amazon Web Services generated as part of the sink ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the sink.</td>
 </tr>
@@ -186,10 +186,10 @@ Returns complete information about one monitoring account sink. To use this oper
 
 ```sql
 SELECT
-Arn,
-Id,
-Name,
-Tags
+arn,
+id,
+name,
+tags
 FROM aws.oam.sinks
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,9 +201,9 @@ Use this operation in a monitoring account to return the list of sinks created i
 
 ```sql
 SELECT
-Arn,
-Id,
-Name
+arn,
+id,
+name
 FROM aws.oam.sinks
 WHERE region = '{{ region }}' -- required
 ;
@@ -236,10 +236,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id,
-Name,
-Tags
+arn,
+id,
+name,
+tags
 ;
 ```
 </TabItem>

@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiId" /></td>
+    <td><CopyableCode code="ami_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Machine Image (AMI) ID associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostId" /></td>
+    <td><CopyableCode code="host_id" /></td>
     <td><code>string</code></td>
     <td>Dedicated Host ID where the resource is running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>EC2 instance type of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MarketplaceProductCodes" /></td>
+    <td><CopyableCode code="marketplace_product_codes" /></td>
     <td><code>array</code></td>
     <td>List of Marketplace product codes associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>Platform of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformVersion" /></td>
+    <td><CopyableCode code="platform_version" /></td>
     <td><code>string</code></td>
     <td>Platform version of the resource in the inventory.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>Region where the resource is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwningAccountId" /></td>
+    <td><CopyableCode code="resource_owning_account_id" /></td>
     <td><code>string</code></td>
     <td>ID of the account that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Type of resource. (EC2_INSTANCE, EC2_HOST, EC2_AMI, RDS, SYSTEMS_MANAGER_MANAGED_INSTANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageOperation" /></td>
+    <td><CopyableCode code="usage_operation" /></td>
     <td><code>string</code></td>
     <td>Usage operation value that corresponds to the license type for billing purposes.</td>
 </tr>
@@ -174,18 +174,18 @@ Lists resources managed using Systems Manager inventory.
 
 ```sql
 SELECT
-AmiId,
-HostId,
-InstanceType,
-MarketplaceProductCodes,
-Platform,
-PlatformVersion,
-Region,
-ResourceArn,
-ResourceId,
-ResourceOwningAccountId,
-ResourceType,
-UsageOperation
+ami_id,
+host_id,
+instance_type,
+marketplace_product_codes,
+platform,
+platform_version,
+region,
+resource_arn,
+resource_id,
+resource_owning_account_id,
+resource_type,
+usage_operation
 FROM aws.license_manager.resource_inventories
 WHERE region = '{{ region }}' -- required
 ;

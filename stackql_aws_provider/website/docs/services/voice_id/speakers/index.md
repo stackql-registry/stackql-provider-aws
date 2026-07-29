@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when the speaker was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerSpeakerId" /></td>
+    <td><CopyableCode code="customer_speaker_id" /></td>
     <td><code>string</code></td>
     <td>The client-provided identifier for the speaker. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain that contains the speaker. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedSpeakerId" /></td>
+    <td><CopyableCode code="generated_speaker_id" /></td>
     <td><code>string</code></td>
     <td>The service-generated identifier for the speaker. (pattern: &lt;code&gt;^id#&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessedAt" /></td>
+    <td><CopyableCode code="last_accessed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the speaker was last accessed for enrollment, re-enrollment or a successful authentication. This timestamp is accurate to one hour.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the speaker. (ENROLLED, EXPIRED, OPTED_OUT, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of the speaker's last update.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp showing the speaker's creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerSpeakerId" /></td>
+    <td><CopyableCode code="customer_speaker_id" /></td>
     <td><code>string</code></td>
     <td>The client-provided identifier for the speaker. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the domain that contains the speaker. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedSpeakerId" /></td>
+    <td><CopyableCode code="generated_speaker_id" /></td>
     <td><code>string</code></td>
     <td>The service-generated identifier for the speaker. (pattern: &lt;code&gt;^id#&#91;a-zA-Z0-9&#93;&#123;22&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessedAt" /></td>
+    <td><CopyableCode code="last_accessed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the speaker was last accessed for enrollment, re-enrollment or a successful authentication. This timestamp is accurate to one hour.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the speaker. (ENROLLED, EXPIRED, OPTED_OUT, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp showing the speaker's last update.</td>
 </tr>
@@ -228,13 +228,13 @@ Describes the specified speaker.
 
 ```sql
 SELECT
-CreatedAt,
-CustomerSpeakerId,
-DomainId,
-GeneratedSpeakerId,
-LastAccessedAt,
-Status,
-UpdatedAt
+created_at,
+customer_speaker_id,
+domain_id,
+generated_speaker_id,
+last_accessed_at,
+status,
+updated_at
 FROM aws.voice_id.speakers
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,13 +246,13 @@ Lists all speakers in a specified domain.
 
 ```sql
 SELECT
-CreatedAt,
-CustomerSpeakerId,
-DomainId,
-GeneratedSpeakerId,
-LastAccessedAt,
-Status,
-UpdatedAt
+created_at,
+customer_speaker_id,
+domain_id,
+generated_speaker_id,
+last_accessed_at,
+status,
+updated_at
 FROM aws.voice_id.speakers
 WHERE region = '{{ region }}' -- required
 ;

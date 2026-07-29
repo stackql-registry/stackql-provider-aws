@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the workload identity. (pattern: &lt;code&gt;&#91;A-Za-z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allowedResourceOauth2ReturnUrls" /></td>
+    <td><CopyableCode code="allowed_resource_oauth_2_return_urls" /></td>
     <td><code>array</code></td>
     <td>The list of allowed OAuth2 return URLs for resources associated with this workload identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workload identity was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workload identity was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadIdentityArn" /></td>
+    <td><CopyableCode code="workload_identity_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workload identity.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the workload identity. (pattern: &lt;code&gt;&#91;A-Za-z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadIdentityArn" /></td>
+    <td><CopyableCode code="workload_identity_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workload identity.</td>
 </tr>
@@ -194,10 +194,10 @@ Retrieves information about a workload identity.
 ```sql
 SELECT
 name,
-allowedResourceOauth2ReturnUrls,
-createdTime,
-lastUpdatedTime,
-workloadIdentityArn
+allowed_resource_oauth_2_return_urls,
+created_time,
+last_updated_time,
+workload_identity_arn
 FROM aws.bedrock_agentcore_control.workload_identities
 WHERE region = '{{ region }}' -- required
 ;
@@ -210,7 +210,7 @@ Lists all workload identities in your account.
 ```sql
 SELECT
 name,
-workloadIdentityArn
+workload_identity_arn
 FROM aws.bedrock_agentcore_control.workload_identities
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,8 +246,8 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-allowedResourceOauth2ReturnUrls,
-workloadIdentityArn
+allowed_resource_oauth_2_return_urls,
+workload_identity_arn
 ;
 ```
 </TabItem>
@@ -294,10 +294,10 @@ region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 RETURNING
 name,
-allowedResourceOauth2ReturnUrls,
-createdTime,
-lastUpdatedTime,
-workloadIdentityArn;
+allowed_resource_oauth_2_return_urls,
+created_time,
+last_updated_time,
+workload_identity_arn;
 ```
 </TabItem>
 </Tabs>

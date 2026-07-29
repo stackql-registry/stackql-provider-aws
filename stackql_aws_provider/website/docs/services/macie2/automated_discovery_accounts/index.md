@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the account.</td>
 </tr>
@@ -146,7 +146,7 @@ Retrieves the status of automated sensitive data discovery for one or more accou
 
 ```sql
 SELECT
-accountId,
+account_id,
 status
 FROM aws.macie2.automated_discovery_accounts
 WHERE region = '{{ region }}' -- required

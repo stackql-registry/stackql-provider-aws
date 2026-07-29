@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSourceArn" /></td>
+    <td><CopyableCode code="data_source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data source. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>A list of resource permissions on the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -156,11 +156,11 @@ Describes the resource permissions for a data source.
 
 ```sql
 SELECT
-DataSourceArn,
-DataSourceId,
-Permissions,
-RequestId,
-Status
+data_source_arn,
+data_source_id,
+permissions,
+request_id,
+status
 FROM aws.quicksight.data_source_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND data_source_id = '{{ data_source_id }}' -- required
@@ -193,10 +193,10 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND data_source_id = '{{ data_source_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DataSourceArn,
-DataSourceId,
-RequestId,
-Status;
+data_source_arn,
+data_source_id,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

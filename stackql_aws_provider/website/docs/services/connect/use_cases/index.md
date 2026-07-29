@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="UseCaseArn" /></td>
+    <td><CopyableCode code="use_case_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the use case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseCaseId" /></td>
+    <td><CopyableCode code="use_case_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the use case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseCaseType" /></td>
+    <td><CopyableCode code="use_case_type" /></td>
     <td><code>string</code></td>
     <td>The type of use case to associate to the integration association. Each integration association can have only one of each use case type. (RULES_EVALUATION, CONNECT_CAMPAIGNS)</td>
 </tr>
@@ -168,9 +168,9 @@ Lists the use cases for the integration association.
 
 ```sql
 SELECT
-UseCaseArn,
-UseCaseId,
-UseCaseType
+use_case_arn,
+use_case_id,
+use_case_type
 FROM aws.connect.use_cases
 WHERE instance_id = '{{ instance_id }}' -- required
 AND integration_association_id = '{{ integration_association_id }}' -- required
@@ -211,8 +211,8 @@ SELECT
 '{{ integration_association_id }}',
 '{{ region }}'
 RETURNING
-UseCaseArn,
-UseCaseId
+use_case_arn,
+use_case_id
 ;
 ```
 </TabItem>

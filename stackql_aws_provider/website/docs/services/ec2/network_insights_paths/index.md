@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
     <td>The time stamp when the path was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>The ID of the destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationArn" /></td>
+    <td><CopyableCode code="destination_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationIp" /></td>
+    <td><CopyableCode code="destination_ip" /></td>
     <td><code>string</code></td>
     <td>The IP address of the destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationPort" /></td>
+    <td><CopyableCode code="destination_port" /></td>
     <td><code>integer</code></td>
     <td>The destination port.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilterAtDestination" /></td>
+    <td><CopyableCode code="filter_at_destination" /></td>
     <td><code>string</code></td>
     <td>Scopes the analysis to network paths that match specific filters at the destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilterAtSource" /></td>
+    <td><CopyableCode code="filter_at_source" /></td>
     <td><code>string</code></td>
     <td>Scopes the analysis to network paths that match specific filters at the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsPathArn" /></td>
+    <td><CopyableCode code="network_insights_path_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsPathId" /></td>
+    <td><CopyableCode code="network_insights_path_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The ID of the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIp" /></td>
+    <td><CopyableCode code="source_ip" /></td>
     <td><code>string</code></td>
     <td>The IP address of the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags associated with the path.</td>
 </tr>
@@ -278,20 +278,20 @@ Describes one or more of your paths.
 
 ```sql
 SELECT
-CreatedDate,
-Destination,
-DestinationArn,
-DestinationIp,
-DestinationPort,
-FilterAtDestination,
-FilterAtSource,
-NetworkInsightsPathArn,
-NetworkInsightsPathId,
-Protocol,
-Source,
-SourceArn,
-SourceIp,
-Tags
+created_date,
+destination,
+destination_arn,
+destination_ip,
+destination_port,
+filter_at_destination,
+filter_at_source,
+network_insights_path_arn,
+network_insights_path_id,
+protocol,
+source,
+source_arn,
+source_ip,
+tags
 FROM aws.ec2.network_insights_paths
 WHERE region = '{{ region }}' -- required
 AND NetworkInsightsPathId = '{{ NetworkInsightsPathId }}'
@@ -347,20 +347,20 @@ SELECT
 '{{ FilterAtSource }}',
 '{{ FilterAtDestination }}'
 RETURNING
-CreatedDate,
-Destination,
-DestinationArn,
-DestinationIp,
-DestinationPort,
-FilterAtDestination,
-FilterAtSource,
-NetworkInsightsPathArn,
-NetworkInsightsPathId,
-Protocol,
-Source,
-SourceArn,
-SourceIp,
-Tags
+created_date,
+destination,
+destination_arn,
+destination_ip,
+destination_port,
+filter_at_destination,
+filter_at_source,
+network_insights_path_arn,
+network_insights_path_id,
+protocol,
+source,
+source_arn,
+source_ip,
+tags
 ;
 ```
 </TabItem>

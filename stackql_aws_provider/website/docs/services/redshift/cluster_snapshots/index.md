@@ -50,187 +50,187 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountsWithRestoreAccess" /></td>
+    <td><CopyableCode code="accounts_with_restore_access" /></td>
     <td><code>string</code></td>
     <td>A list of the Amazon Web Services accounts authorized to restore the snapshot. Returns null if no accounts are authorized. Visible only to the snapshot owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActualIncrementalBackupSizeInMegaBytes" /></td>
+    <td><CopyableCode code="actual_incremental_backup_size_in_mega_bytes" /></td>
     <td><code>number</code></td>
     <td>The size of the incremental backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupProgressInMegaBytes" /></td>
+    <td><CopyableCode code="backup_progress_in_mega_bytes" /></td>
     <td><code>number</code></td>
     <td>The number of megabytes that have been transferred to the snapshot backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>The time (UTC) when the cluster was originally created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the cluster for which the snapshot was taken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterVersion" /></td>
+    <td><CopyableCode code="cluster_version" /></td>
     <td><code>string</code></td>
     <td>The version ID of the Amazon Redshift engine that is running on the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentBackupRateInMegaBytesPerSecond" /></td>
+    <td><CopyableCode code="current_backup_rate_in_mega_bytes_per_second" /></td>
     <td><code>number</code></td>
     <td>The number of megabytes per second being transferred to the snapshot backup. Returns 0 for a completed backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBName" /></td>
+    <td><CopyableCode code="db_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database that was created when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ElapsedTimeInSeconds" /></td>
+    <td><CopyableCode code="elapsed_time_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The amount of time an in-progress snapshot backup has been running, or the amount of time it took a completed backup to finish.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>If true, the data in the snapshot is encrypted at rest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptedWithHSM" /></td>
+    <td><CopyableCode code="encrypted_with_hsm" /></td>
     <td><code>boolean</code></td>
     <td>A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster. true indicates that the data is encrypted using HSM keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineFullVersion" /></td>
+    <td><CopyableCode code="engine_full_version" /></td>
     <td><code>string</code></td>
     <td>The cluster version of the cluster used to create the snapshot. For example, 1.0.15503.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnhancedVpcRouting" /></td>
+    <td><CopyableCode code="enhanced_vpc_routing" /></td>
     <td><code>boolean</code></td>
     <td>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide. If this option is true, enhanced VPC routing is enabled. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedSecondsToCompletion" /></td>
+    <td><CopyableCode code="estimated_seconds_to_completion" /></td>
     <td><code>integer</code></td>
     <td>The estimate of the time remaining before the snapshot backup will complete. Returns 0 for a completed backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster from which the snapshot was taken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceTrackName" /></td>
+    <td><CopyableCode code="maintenance_track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the maintenance track for the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManualSnapshotRemainingDays" /></td>
+    <td><CopyableCode code="manual_snapshot_remaining_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days until a manual snapshot will pass its retention period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManualSnapshotRetentionPeriod" /></td>
+    <td><CopyableCode code="manual_snapshot_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. The value must be either -1 or an integer between 1 and 3,653.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterPasswordSecretArn" /></td>
+    <td><CopyableCode code="master_password_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the cluster's admin user credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterPasswordSecretKmsKeyId" /></td>
+    <td><CopyableCode code="master_password_secret_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key used to encrypt and store the cluster's admin credentials secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The admin user name for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeType" /></td>
+    <td><CopyableCode code="node_type" /></td>
     <td><code>string</code></td>
     <td>The node type of the nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfNodes" /></td>
+    <td><CopyableCode code="number_of_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>For manual snapshots, the Amazon Web Services account used to create or copy the snapshot. For automatic snapshots, the owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port that the cluster is listening on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestorableNodeTypes" /></td>
+    <td><CopyableCode code="restorable_node_types" /></td>
     <td><code>string</code></td>
     <td>The list of node types that this cluster snapshot is able to restore into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotArn" /></td>
+    <td><CopyableCode code="snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string</code></td>
     <td>The time (in UTC format) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this exact time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotIdentifier" /></td>
+    <td><CopyableCode code="snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>The snapshot identifier that is provided in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotRetentionStartTime" /></td>
+    <td><CopyableCode code="snapshot_retention_start_time" /></td>
     <td><code>string</code></td>
     <td>A timestamp representing the start of the retention period for the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>The snapshot type. Snapshots created using CreateClusterSnapshot and CopyClusterSnapshot are of type "manual".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceRegion" /></td>
+    <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
     <td>The source region from which the snapshot was copied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The snapshot status. The value of the status depends on the API operation used: CreateClusterSnapshot and CopyClusterSnapshot returns status as "creating". DescribeClusterSnapshots returns status as "creating", "available", "final snapshot", or "failed". DeleteClusterSnapshot returns status as "deleted".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalBackupSizeInMegaBytes" /></td>
+    <td><CopyableCode code="total_backup_size_in_mega_bytes" /></td>
     <td><code>number</code></td>
     <td>The size of the complete set of backup data that would be used to restore the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the output.</td>
 </tr>
@@ -439,43 +439,43 @@ Returns one or more snapshot objects, which contain metadata about your cluster 
 
 ```sql
 SELECT
-AccountsWithRestoreAccess,
-ActualIncrementalBackupSizeInMegaBytes,
-AvailabilityZone,
-BackupProgressInMegaBytes,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterVersion,
-CurrentBackupRateInMegaBytesPerSecond,
-DBName,
-ElapsedTimeInSeconds,
-Encrypted,
-EncryptedWithHSM,
-EngineFullVersion,
-EnhancedVpcRouting,
-EstimatedSecondsToCompletion,
-KmsKeyId,
-MaintenanceTrackName,
-ManualSnapshotRemainingDays,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-NodeType,
-NumberOfNodes,
-OwnerAccount,
-Port,
-RestorableNodeTypes,
-SnapshotArn,
-SnapshotCreateTime,
-SnapshotIdentifier,
-SnapshotRetentionStartTime,
-SnapshotType,
-SourceRegion,
-Status,
-Tags,
-TotalBackupSizeInMegaBytes,
-VpcId
+accounts_with_restore_access,
+actual_incremental_backup_size_in_mega_bytes,
+availability_zone,
+backup_progress_in_mega_bytes,
+cluster_create_time,
+cluster_identifier,
+cluster_version,
+current_backup_rate_in_mega_bytes_per_second,
+db_name,
+elapsed_time_in_seconds,
+encrypted,
+encrypted_with_hsm,
+engine_full_version,
+enhanced_vpc_routing,
+estimated_seconds_to_completion,
+kms_key_id,
+maintenance_track_name,
+manual_snapshot_remaining_days,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+node_type,
+number_of_nodes,
+owner_account,
+port,
+restorable_node_types,
+snapshot_arn,
+snapshot_create_time,
+snapshot_identifier,
+snapshot_retention_start_time,
+snapshot_type,
+source_region,
+status,
+tags,
+total_backup_size_in_mega_bytes,
+vpc_id
 FROM aws.redshift.cluster_snapshots
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'
@@ -525,43 +525,43 @@ SELECT
 '{{ ManualSnapshotRetentionPeriod }}',
 '{{ Tags }}'
 RETURNING
-AccountsWithRestoreAccess,
-ActualIncrementalBackupSizeInMegaBytes,
-AvailabilityZone,
-BackupProgressInMegaBytes,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterVersion,
-CurrentBackupRateInMegaBytesPerSecond,
-DBName,
-ElapsedTimeInSeconds,
-Encrypted,
-EncryptedWithHSM,
-EngineFullVersion,
-EnhancedVpcRouting,
-EstimatedSecondsToCompletion,
-KmsKeyId,
-MaintenanceTrackName,
-ManualSnapshotRemainingDays,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-NodeType,
-NumberOfNodes,
-OwnerAccount,
-Port,
-RestorableNodeTypes,
-SnapshotArn,
-SnapshotCreateTime,
-SnapshotIdentifier,
-SnapshotRetentionStartTime,
-SnapshotType,
-SourceRegion,
-Status,
-Tags,
-TotalBackupSizeInMegaBytes,
-VpcId
+accounts_with_restore_access,
+actual_incremental_backup_size_in_mega_bytes,
+availability_zone,
+backup_progress_in_mega_bytes,
+cluster_create_time,
+cluster_identifier,
+cluster_version,
+current_backup_rate_in_mega_bytes_per_second,
+db_name,
+elapsed_time_in_seconds,
+encrypted,
+encrypted_with_hsm,
+engine_full_version,
+enhanced_vpc_routing,
+estimated_seconds_to_completion,
+kms_key_id,
+maintenance_track_name,
+manual_snapshot_remaining_days,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+node_type,
+number_of_nodes,
+owner_account,
+port,
+restorable_node_types,
+snapshot_arn,
+snapshot_create_time,
+snapshot_identifier,
+snapshot_retention_start_time,
+snapshot_type,
+source_region,
+status,
+tags,
+total_backup_size_in_mega_bytes,
+vpc_id
 ;
 ```
 </TabItem>
@@ -615,43 +615,43 @@ AND region = '{{ region }}' --required
 AND ManualSnapshotRetentionPeriod = '{{ ManualSnapshotRetentionPeriod}}'
 AND Force = {{ Force}}
 RETURNING
-AccountsWithRestoreAccess,
-ActualIncrementalBackupSizeInMegaBytes,
-AvailabilityZone,
-BackupProgressInMegaBytes,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterVersion,
-CurrentBackupRateInMegaBytesPerSecond,
-DBName,
-ElapsedTimeInSeconds,
-Encrypted,
-EncryptedWithHSM,
-EngineFullVersion,
-EnhancedVpcRouting,
-EstimatedSecondsToCompletion,
-KmsKeyId,
-MaintenanceTrackName,
-ManualSnapshotRemainingDays,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-NodeType,
-NumberOfNodes,
-OwnerAccount,
-Port,
-RestorableNodeTypes,
-SnapshotArn,
-SnapshotCreateTime,
-SnapshotIdentifier,
-SnapshotRetentionStartTime,
-SnapshotType,
-SourceRegion,
-Status,
-Tags,
-TotalBackupSizeInMegaBytes,
-VpcId;
+accounts_with_restore_access,
+actual_incremental_backup_size_in_mega_bytes,
+availability_zone,
+backup_progress_in_mega_bytes,
+cluster_create_time,
+cluster_identifier,
+cluster_version,
+current_backup_rate_in_mega_bytes_per_second,
+db_name,
+elapsed_time_in_seconds,
+encrypted,
+encrypted_with_hsm,
+engine_full_version,
+enhanced_vpc_routing,
+estimated_seconds_to_completion,
+kms_key_id,
+maintenance_track_name,
+manual_snapshot_remaining_days,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+node_type,
+number_of_nodes,
+owner_account,
+port,
+restorable_node_types,
+snapshot_arn,
+snapshot_create_time,
+snapshot_identifier,
+snapshot_retention_start_time,
+snapshot_type,
+source_region,
+status,
+tags,
+total_backup_size_in_mega_bytes,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

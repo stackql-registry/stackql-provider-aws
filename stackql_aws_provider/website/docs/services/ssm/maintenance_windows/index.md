@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowUnassociatedTargets" /></td>
+    <td><CopyableCode code="allow_unassociated_targets" /></td>
     <td><code>boolean</code></td>
     <td>Whether targets must be registered with the maintenance window before tasks can be defined for those targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the maintenance window was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Cutoff" /></td>
+    <td><CopyableCode code="cutoff" /></td>
     <td><code>integer</code></td>
     <td>The number of hours before the end of the maintenance window that Amazon Web Services Systems Manager stops scheduling new tasks for execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the maintenance window in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the maintenance window is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become inactive. The maintenance window won't run after this specified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedDate" /></td>
+    <td><CopyableCode code="modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the maintenance window was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the maintenance window. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextExecutionTime" /></td>
+    <td><CopyableCode code="next_execution_time" /></td>
     <td><code>string</code></td>
     <td>The next time the maintenance window will actually run, taking into account any specified times for the maintenance window to become active or inactive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>The schedule of the maintenance window in the form of a cron or rate expression.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleOffset" /></td>
+    <td><CopyableCode code="schedule_offset" /></td>
     <td><code>integer</code></td>
     <td>The number of days to wait to run a maintenance window after the scheduled cron expression date and time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleTimezone" /></td>
+    <td><CopyableCode code="schedule_timezone" /></td>
     <td><code>string</code></td>
     <td>The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the Time Zone Database on the IANA website.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become active. The maintenance window won't run before this specified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowId" /></td>
+    <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the created maintenance window. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -140,62 +140,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cutoff" /></td>
+    <td><CopyableCode code="cutoff" /></td>
     <td><code>integer</code></td>
     <td>The number of hours before the end of the maintenance window that Amazon Web Services Systems Manager stops scheduling new tasks for execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the maintenance window in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the maintenance window is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become inactive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the maintenance window. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextExecutionTime" /></td>
+    <td><CopyableCode code="next_execution_time" /></td>
     <td><code>string</code></td>
     <td>The next time the maintenance window will actually run, taking into account any specified times for the maintenance window to become active or inactive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>The schedule of the maintenance window in the form of a cron or rate expression.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleOffset" /></td>
+    <td><CopyableCode code="schedule_offset" /></td>
     <td><code>integer</code></td>
     <td>The number of days to wait to run a maintenance window after the scheduled cron expression date and time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleTimezone" /></td>
+    <td><CopyableCode code="schedule_timezone" /></td>
     <td><code>string</code></td>
     <td>The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers Authority (IANA) format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowId" /></td>
+    <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -328,21 +328,21 @@ Retrieves a maintenance window.
 
 ```sql
 SELECT
-AllowUnassociatedTargets,
-CreatedDate,
-Cutoff,
-Description,
-Duration,
-Enabled,
-EndDate,
-ModifiedDate,
-Name,
-NextExecutionTime,
-Schedule,
-ScheduleOffset,
-ScheduleTimezone,
-StartDate,
-WindowId
+allow_unassociated_targets,
+created_date,
+cutoff,
+description,
+duration,
+enabled,
+end_date,
+modified_date,
+name,
+next_execution_time,
+schedule,
+schedule_offset,
+schedule_timezone,
+start_date,
+window_id
 FROM aws.ssm.maintenance_windows
 WHERE region = '{{ region }}' -- required
 ;
@@ -354,18 +354,18 @@ Retrieves the maintenance windows in an Amazon Web Services account.
 
 ```sql
 SELECT
-Cutoff,
-Description,
-Duration,
-Enabled,
-EndDate,
-Name,
-NextExecutionTime,
-Schedule,
-ScheduleOffset,
-ScheduleTimezone,
-StartDate,
-WindowId
+cutoff,
+description,
+duration,
+enabled,
+end_date,
+name,
+next_execution_time,
+schedule,
+schedule_offset,
+schedule_timezone,
+start_date,
+window_id
 FROM aws.ssm.maintenance_windows
 WHERE region = '{{ region }}' -- required
 ;
@@ -410,7 +410,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-WindowTargetId
+window_target_id
 ;
 ```
 </TabItem>
@@ -457,7 +457,7 @@ SELECT
 '{{ AlarmConfiguration }}',
 '{{ region }}'
 RETURNING
-WindowTaskId
+window_task_id
 ;
 ```
 </TabItem>
@@ -496,7 +496,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-WindowId
+window_id
 ;
 ```
 </TabItem>
@@ -695,18 +695,18 @@ WHERE
 region = '{{ region }}' --required
 AND WindowId = '{{ WindowId }}' --required
 RETURNING
-AllowUnassociatedTargets,
-Cutoff,
-Description,
-Duration,
-Enabled,
-EndDate,
-Name,
-Schedule,
-ScheduleOffset,
-ScheduleTimezone,
-StartDate,
-WindowId;
+allow_unassociated_targets,
+cutoff,
+description,
+duration,
+enabled,
+end_date,
+name,
+schedule,
+schedule_offset,
+schedule_timezone,
+start_date,
+window_id;
 ```
 </TabItem>
 </Tabs>

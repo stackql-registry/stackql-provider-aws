@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssetName" /></td>
+    <td><CopyableCode code="asset_name" /></td>
     <td><code>string</code></td>
     <td>The node's asset name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>The node's category. (BUSINESS_LOGIC, ML_MODEL, MEDIA_SOURCE, MEDIA_SINK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the node was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The node's description. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the node was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The node's name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeId" /></td>
+    <td><CopyableCode code="node_id" /></td>
     <td><code>string</code></td>
     <td>The node's ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeInterface" /></td>
+    <td><CopyableCode code="node_interface" /></td>
     <td><code>object</code></td>
     <td>The node's interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The account ID of the node's owner. (pattern: &lt;code&gt;^&#91;0-9a-z\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageArn" /></td>
+    <td><CopyableCode code="package_arn" /></td>
     <td><code>string</code></td>
     <td>The node's ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageId" /></td>
+    <td><CopyableCode code="package_id" /></td>
     <td><code>string</code></td>
     <td>The node's package ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The node's package name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageVersion" /></td>
+    <td><CopyableCode code="package_version" /></td>
     <td><code>string</code></td>
     <td>The node's package version. (pattern: &lt;code&gt;^(&#91;0-9&#93;+)\.(&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PatchVersion" /></td>
+    <td><CopyableCode code="patch_version" /></td>
     <td><code>string</code></td>
     <td>The node's patch version. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that's included if more results are available. (pattern: &lt;code&gt;^.+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Nodes" /></td>
+    <td><CopyableCode code="nodes" /></td>
     <td><code>array</code></td>
     <td>A list of nodes.</td>
 </tr>
@@ -262,20 +262,20 @@ Returns information about a node.
 
 ```sql
 SELECT
-AssetName,
-Category,
-CreatedTime,
-Description,
-LastUpdatedTime,
-Name,
-NodeId,
-NodeInterface,
-OwnerAccount,
-PackageArn,
-PackageId,
-PackageName,
-PackageVersion,
-PatchVersion
+asset_name,
+category,
+created_time,
+description,
+last_updated_time,
+name,
+node_id,
+node_interface,
+owner_account,
+package_arn,
+package_id,
+package_name,
+package_version,
+patch_version
 FROM aws.panorama.nodes
 WHERE node_id = '{{ node_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -289,8 +289,8 @@ Returns a list of nodes.
 
 ```sql
 SELECT
-NextToken,
-Nodes
+next_token,
+nodes
 FROM aws.panorama.nodes
 WHERE region = '{{ region }}' -- required
 AND category = '{{ category }}'

@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the audience generation job. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceGenerationJobArn" /></td>
+    <td><CopyableCode code="audience_generation_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the audience generation job. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:audience-generation-job/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the collaboration that this audience generation job is associated with. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured audience model used for this audience generation job. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the audience generation job was created.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the audience generation job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="includeSeedInOutput" /></td>
+    <td><CopyableCode code="include_seed_in_output" /></td>
     <td><code>boolean</code></td>
     <td>Configure whether the seed users are included in the output audience. By default, Clean Rooms ML removes seed users from the output audience. If you specify TRUE, the seed users will appear first in the output. Clean Rooms ML does not explicitly reveal whether a user was in the seed, but the recipient of the audience will know that the first minimumSeedSize count of users are from the seed.</td>
 </tr>
@@ -91,17 +91,17 @@ The following fields are returned by `SELECT` queries:
     <td>The relevance scores for different audience sizes and the recall score of the generated audience.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protectedQueryIdentifier" /></td>
+    <td><CopyableCode code="protected_query_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the protected query for this audience generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="seedAudience" /></td>
+    <td><CopyableCode code="seed_audience" /></td>
     <td><code>object</code></td>
     <td>The seed audience that was used for this audience generation job. This field will be null if the account calling the API is the account that started this audience generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedBy" /></td>
+    <td><CopyableCode code="started_by" /></td>
     <td><code>string</code></td>
     <td>The AWS account that started this audience generation job. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the audience generation job. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>object</code></td>
     <td>Details about the status of a resource.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags that are associated to this audience generation job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the audience generation job was updated.</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the audience generation job. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="audienceGenerationJobArn" /></td>
+    <td><CopyableCode code="audience_generation_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the audience generation job. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:audience-generation-job/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the collaboration that contains this audience generation job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredAudienceModelArn" /></td>
+    <td><CopyableCode code="configured_audience_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured audience model that was used for this audience generation job. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:configured-audience-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the audience generation job was created.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the audience generation job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedBy" /></td>
+    <td><CopyableCode code="started_by" /></td>
     <td><code>string</code></td>
     <td>The AWS Account that submitted the job. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the audience generation job. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the audience generation job was updated.</td>
 </tr>
@@ -297,20 +297,20 @@ Returns information about an audience generation job.
 ```sql
 SELECT
 name,
-audienceGenerationJobArn,
-collaborationId,
-configuredAudienceModelArn,
-createTime,
+audience_generation_job_arn,
+collaboration_id,
+configured_audience_model_arn,
+create_time,
 description,
-includeSeedInOutput,
+include_seed_in_output,
 metrics,
-protectedQueryIdentifier,
-seedAudience,
-startedBy,
+protected_query_identifier,
+seed_audience,
+started_by,
 status,
-statusDetails,
+status_details,
 tags,
-updateTime
+update_time
 FROM aws.cleanroomsml.audience_generation_jobs
 WHERE audience_generation_job_arn = '{{ audience_generation_job_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -324,14 +324,14 @@ Returns a list of audience generation jobs.
 ```sql
 SELECT
 name,
-audienceGenerationJobArn,
-collaborationId,
-configuredAudienceModelArn,
-createTime,
+audience_generation_job_arn,
+collaboration_id,
+configured_audience_model_arn,
+create_time,
 description,
-startedBy,
+started_by,
 status,
-updateTime
+update_time
 FROM aws.cleanroomsml.audience_generation_jobs
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

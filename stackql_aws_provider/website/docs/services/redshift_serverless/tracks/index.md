@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="trackName" /></td>
+    <td><CopyableCode code="track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the track. Valid values are current and trailing. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTargets" /></td>
+    <td><CopyableCode code="update_targets" /></td>
     <td><code>array</code></td>
     <td>An array of UpdateTarget objects to update with the track.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupVersion" /></td>
+    <td><CopyableCode code="workgroup_version" /></td>
     <td><code>string</code></td>
     <td>The workgroup version number for the workgroup release.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="trackName" /></td>
+    <td><CopyableCode code="track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the track. Valid values are current and trailing. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTargets" /></td>
+    <td><CopyableCode code="update_targets" /></td>
     <td><code>array</code></td>
     <td>An array of UpdateTarget objects to update with the track.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupVersion" /></td>
+    <td><CopyableCode code="workgroup_version" /></td>
     <td><code>string</code></td>
     <td>The workgroup version number for the workgroup release.</td>
 </tr>
@@ -167,9 +167,9 @@ Get the Redshift Serverless version for a specified track.
 
 ```sql
 SELECT
-trackName,
-updateTargets,
-workgroupVersion
+track_name,
+update_targets,
+workgroup_version
 FROM aws.redshift_serverless.tracks
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,9 +181,9 @@ List the Amazon Redshift Serverless versions.
 
 ```sql
 SELECT
-trackName,
-updateTargets,
-workgroupVersion
+track_name,
+update_targets,
+workgroup_version
 FROM aws.redshift_serverless.tracks
 WHERE region = '{{ region }}' -- required
 ;

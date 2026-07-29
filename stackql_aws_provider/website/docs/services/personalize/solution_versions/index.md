@@ -56,62 +56,62 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the solution version. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that this version of the solution was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset group providing the training data. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The event type (for example, 'click' or 'like') that is used for training the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If training a solution version fails, the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the solution was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performAutoML" /></td>
+    <td><CopyableCode code="perform_auto_ml" /></td>
     <td><code>boolean</code></td>
     <td>When true, Amazon Personalize searches for the most optimal recipe according to the solution configuration. When false (the default), Amazon Personalize uses recipeArn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performHPO" /></td>
+    <td><CopyableCode code="perform_hpo" /></td>
     <td><code>boolean</code></td>
     <td>Whether to perform hyperparameter optimization (HPO) on the chosen recipe. The default is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="performIncrementalUpdate" /></td>
+    <td><CopyableCode code="perform_incremental_update" /></td>
     <td><code>boolean</code></td>
     <td>Whether the solution version should perform an incremental update. When set to true, the training will process only the data that has changed since the latest training, similar to when trainingMode is set to UPDATE. This can only be used with solution versions that use the User-Personalization recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeArn" /></td>
+    <td><CopyableCode code="recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the recipe used in the solution. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionArn" /></td>
+    <td><CopyableCode code="solution_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the solution. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionConfig" /></td>
+    <td><CopyableCode code="solution_config" /></td>
     <td><code>object</code></td>
     <td>Describes the configuration properties for the solution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionVersionArn" /></td>
+    <td><CopyableCode code="solution_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the solution version. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -121,22 +121,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the solution version. A solution version can be in one of the following states: CREATE PENDING CREATE IN_PROGRESS ACTIVE CREATE FAILED CREATE STOPPING CREATE STOPPED</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingHours" /></td>
+    <td><CopyableCode code="training_hours" /></td>
     <td><code>number (double)</code></td>
     <td>The time used to train the model. You are billed for the time it takes to train a model. This field is visible only after Amazon Personalize successfully trains a model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingMode" /></td>
+    <td><CopyableCode code="training_mode" /></td>
     <td><code>string</code></td>
     <td>The scope of training to be performed when creating the solution version. A FULL training considers all of the data in your dataset group. An UPDATE processes only the data that has changed since the latest training. Only solution versions created with the User-Personalization recipe can use UPDATE. (FULL, UPDATE, AUTOTRAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingType" /></td>
+    <td><CopyableCode code="training_type" /></td>
     <td><code>string</code></td>
     <td>Whether the solution version was created automatically or manually. (AUTOMATIC, MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tunedHPOParams" /></td>
+    <td><CopyableCode code="tuned_hpo_params" /></td>
     <td><code>object</code></td>
     <td>If hyperparameter optimization was performed, contains the hyperparameter values of the best performing model.</td>
 </tr>
@@ -155,22 +155,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that this version of a solution was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a solution version fails, the reason behind the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the solution version was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionVersionArn" /></td>
+    <td><CopyableCode code="solution_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the solution version. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -180,12 +180,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the solution version. A solution version can be in one of the following states: CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingMode" /></td>
+    <td><CopyableCode code="training_mode" /></td>
     <td><code>string</code></td>
     <td>The scope of training to be performed when creating the solution version. A FULL training considers all of the data in your dataset group. An UPDATE processes only the data that has changed since the latest training. Only solution versions created with the User-Personalization recipe can use UPDATE. (FULL, UPDATE, AUTOTRAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingType" /></td>
+    <td><CopyableCode code="training_type" /></td>
     <td><code>string</code></td>
     <td>Whether the solution version was created automatically or manually. (AUTOMATIC, MANUAL)</td>
 </tr>
@@ -277,23 +277,23 @@ Describes a specific version of a solution. For more information on solutions, s
 ```sql
 SELECT
 name,
-creationDateTime,
-datasetGroupArn,
-eventType,
-failureReason,
-lastUpdatedDateTime,
-performAutoML,
-performHPO,
-performIncrementalUpdate,
-recipeArn,
-solutionArn,
-solutionConfig,
-solutionVersionArn,
+creation_date_time,
+dataset_group_arn,
+event_type,
+failure_reason,
+last_updated_date_time,
+perform_auto_ml,
+perform_hpo,
+perform_incremental_update,
+recipe_arn,
+solution_arn,
+solution_config,
+solution_version_arn,
 status,
-trainingHours,
-trainingMode,
-trainingType,
-tunedHPOParams
+training_hours,
+training_mode,
+training_type,
+tuned_hpo_params
 FROM aws.personalize.solution_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -305,13 +305,13 @@ Returns a list of solution versions for the given solution. When a solution is n
 
 ```sql
 SELECT
-creationDateTime,
-failureReason,
-lastUpdatedDateTime,
-solutionVersionArn,
+creation_date_time,
+failure_reason,
+last_updated_date_time,
+solution_version_arn,
 status,
-trainingMode,
-trainingType
+training_mode,
+training_type
 FROM aws.personalize.solution_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -348,7 +348,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-solutionVersionArn
+solution_version_arn
 ;
 ```
 </TabItem>

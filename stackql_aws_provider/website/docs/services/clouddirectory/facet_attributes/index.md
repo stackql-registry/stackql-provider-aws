@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeDefinition" /></td>
+    <td><CopyableCode code="attribute_definition" /></td>
     <td><code>object</code></td>
     <td>A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See Attribute References for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttributeReference" /></td>
+    <td><CopyableCode code="attribute_reference" /></td>
     <td><code>object</code></td>
     <td>An attribute reference that is associated with the attribute. See Attribute References for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the facet attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._:-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequiredBehavior" /></td>
+    <td><CopyableCode code="required_behavior" /></td>
     <td><code>string</code></td>
     <td>The required behavior of the FacetAttribute. (REQUIRED_ALWAYS, NOT_REQUIRED)</td>
 </tr>
@@ -139,10 +139,10 @@ Retrieves attributes attached to the facet.
 
 ```sql
 SELECT
-AttributeDefinition,
-AttributeReference,
-Name,
-RequiredBehavior
+attribute_definition,
+attribute_reference,
+name,
+required_behavior
 FROM aws.clouddirectory.facet_attributes
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

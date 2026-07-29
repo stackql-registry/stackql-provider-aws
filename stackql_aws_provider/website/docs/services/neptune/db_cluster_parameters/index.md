@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedValues" /></td>
+    <td><CopyableCode code="allowed_values" /></td>
     <td><code>string</code></td>
     <td>Specifies the valid range of values for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplyMethod" /></td>
+    <td><CopyableCode code="apply_method" /></td>
     <td><code>string</code></td>
     <td>Indicates when to apply parameter updates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplyType" /></td>
+    <td><CopyableCode code="apply_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the engine specific parameters type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the valid data type for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Provides a description of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsModifiable" /></td>
+    <td><CopyableCode code="is_modifiable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether (true) or not (false) the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The earliest engine version to which the parameter can apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterName" /></td>
+    <td><CopyableCode code="parameter_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterValue" /></td>
+    <td><CopyableCode code="parameter_value" /></td>
     <td><code>string</code></td>
     <td>Specifies the value of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>Indicates the source of the parameter value.</td>
 </tr>
@@ -233,16 +233,16 @@ Returns the detailed parameter list for a particular DB cluster parameter group.
 
 ```sql
 SELECT
-AllowedValues,
-ApplyMethod,
-ApplyType,
-DataType,
-Description,
-IsModifiable,
-MinimumEngineVersion,
-ParameterName,
-ParameterValue,
-Source
+allowed_values,
+apply_method,
+apply_type,
+data_type,
+description,
+is_modifiable,
+minimum_engine_version,
+parameter_name,
+parameter_value,
+source
 FROM aws.neptune.db_cluster_parameters
 WHERE DBClusterParameterGroupName = '{{ DBClusterParameterGroupName }}' -- required
 AND region = '{{ region }}' -- required

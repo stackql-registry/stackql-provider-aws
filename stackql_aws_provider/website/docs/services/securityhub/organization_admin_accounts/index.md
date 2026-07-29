@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account identifier of the Security Hub CSPM administrator account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the Security Hub CSPM administrator account. Indicates whether the account is currently enabled as a Security Hub CSPM administrator. (ENABLED, DISABLE_IN_PROGRESS)</td>
 </tr>
@@ -139,8 +139,8 @@ Lists the Security Hub CSPM administrator accounts. Can only be called by the or
 
 ```sql
 SELECT
-AccountId,
-Status
+account_id,
+status
 FROM aws.securityhub.organization_admin_accounts
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

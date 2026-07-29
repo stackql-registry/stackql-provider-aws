@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainNames" /></td>
+    <td><CopyableCode code="domain_names" /></td>
     <td><code>string</code></td>
     <td>The names of the search domains owned by an account.</td>
 </tr>
@@ -119,7 +119,7 @@ Lists all search domains owned by an account.
 
 ```sql
 SELECT
-DomainNames
+domain_names
 FROM aws.cloudsearch.domain_names
 WHERE region = '{{ region }}' -- required
 ;

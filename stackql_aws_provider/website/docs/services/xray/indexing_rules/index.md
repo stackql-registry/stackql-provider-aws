@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IndexingRules" /></td>
+    <td><CopyableCode code="indexing_rules" /></td>
     <td><code>array</code></td>
     <td>Retrieves all indexing rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Specify the pagination token returned by a previous request to retrieve the next page of indexes.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves all indexing rules. Indexing rules are used to determine the server-si
 
 ```sql
 SELECT
-IndexingRules,
-NextToken
+indexing_rules,
+next_token
 FROM aws.xray.indexing_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 AND Rule = '{{ Rule }}' --required
 RETURNING
-IndexingRule;
+indexing_rule;
 ```
 </TabItem>
 </Tabs>

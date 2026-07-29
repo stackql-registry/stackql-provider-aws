@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the organization. (pattern: &lt;code&gt;arn:aws:workmail:&#91;a-z0-9-&#93;*:&#91;a-z0-9-&#93;+:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The alias for an organization. (pattern: &lt;code&gt;^(?!d-)(&#91;\da-zA-Z&#93;+)(&#91;-&#93;&#91;\da-zA-Z&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedDate" /></td>
+    <td><CopyableCode code="completed_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date at which the organization became usable in the WorkMail context, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultMailDomain" /></td>
+    <td><CopyableCode code="default_mail_domain" /></td>
     <td><code>string</code></td>
     <td>The default mail domain associated with the organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the directory associated with an WorkMail organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryType" /></td>
+    <td><CopyableCode code="directory_type" /></td>
     <td><code>string</code></td>
     <td>The type of directory associated with the WorkMail organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>(Optional) The error message indicating if unexpected behavior was encountered with regards to the organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InteroperabilityEnabled" /></td>
+    <td><CopyableCode code="interoperability_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if interoperability is enabled for this organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MigrationAdmin" /></td>
+    <td><CopyableCode code="migration_admin" /></td>
     <td><code>string</code></td>
     <td>The user ID of the migration admin if migration is enabled for the organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationId" /></td>
+    <td><CopyableCode code="organization_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of an organization. (pattern: &lt;code&gt;^m-&#91;0-9a-f&#93;&#123;32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of an organization.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The alias associated with the organization. (pattern: &lt;code&gt;^(?!d-)(&#91;\da-zA-Z&#93;+)(&#91;-&#93;&#91;\da-zA-Z&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultMailDomain" /></td>
+    <td><CopyableCode code="default_mail_domain" /></td>
     <td><code>string</code></td>
     <td>The default email domain associated with the organization. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message associated with the organization. It is only present if unexpected behavior has occurred with regards to the organization. It provides insight or solutions regarding unexpected behavior.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationId" /></td>
+    <td><CopyableCode code="organization_id" /></td>
     <td><code>string</code></td>
     <td>The identifier associated with the organization. (pattern: &lt;code&gt;^m-&#91;0-9a-f&#93;&#123;32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state associated with the organization.</td>
 </tr>
@@ -315,17 +315,17 @@ Provides more information regarding a given organization based on its identifier
 
 ```sql
 SELECT
-ARN,
-Alias,
-CompletedDate,
-DefaultMailDomain,
-DirectoryId,
-DirectoryType,
-ErrorMessage,
-InteroperabilityEnabled,
-MigrationAdmin,
-OrganizationId,
-State
+arn,
+alias,
+completed_date,
+default_mail_domain,
+directory_id,
+directory_type,
+error_message,
+interoperability_enabled,
+migration_admin,
+organization_id,
+state
 FROM aws.workmail.organizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -337,11 +337,11 @@ Returns summaries of the customer's organizations.
 
 ```sql
 SELECT
-Alias,
-DefaultMailDomain,
-ErrorMessage,
-OrganizationId,
-State
+alias,
+default_mail_domain,
+error_message,
+organization_id,
+state
 FROM aws.workmail.organizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -422,7 +422,7 @@ SELECT
 {{ EnableInteroperability }},
 '{{ region }}'
 RETURNING
-OrganizationId
+organization_id
 ;
 ```
 </TabItem>

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time for the test set data.</td>
 </tr>
@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the test set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time for the last update of the test set data.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the test set is audio or text data. (Text, Audio)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numTurns" /></td>
+    <td><CopyableCode code="num_turns" /></td>
     <td><code>integer</code></td>
     <td>The total number of agent and user turn in the test set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The roleARN used for any operation in the test set to access resources in the Amazon Web Services account. (pattern: &lt;code&gt;^arn:aws:iam::&#91;0-9&#93;&#123;12&#125;:role/.*$&lt;/code&gt;)</td>
 </tr>
@@ -86,17 +86,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the test set. (Importing, PendingAnnotation, Deleting, ValidationError, Ready)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageLocation" /></td>
+    <td><CopyableCode code="storage_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 storage location for the test set data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetId" /></td>
+    <td><CopyableCode code="test_set_id" /></td>
     <td><code>string</code></td>
     <td>The test set Id for the test set response. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetName" /></td>
+    <td><CopyableCode code="test_set_name" /></td>
     <td><code>string</code></td>
     <td>The test set name of the test set. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListTestSets operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListTestSets operation request to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSets" /></td>
+    <td><CopyableCode code="test_sets" /></td>
     <td><code>array</code></td>
     <td>The selected test sets in a list of test sets.</td>
 </tr>
@@ -230,16 +230,16 @@ Gets metadata information about the test set.
 
 ```sql
 SELECT
-creationDateTime,
+creation_date_time,
 description,
-lastUpdatedDateTime,
+last_updated_date_time,
 modality,
-numTurns,
-roleArn,
+num_turns,
+role_arn,
 status,
-storageLocation,
-testSetId,
-testSetName
+storage_location,
+test_set_id,
+test_set_name
 FROM aws.lexv2_models.test_sets
 WHERE test_set_id = '{{ test_set_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -252,8 +252,8 @@ The list of the test sets
 
 ```sql
 SELECT
-nextToken,
-testSets
+next_token,
+test_sets
 FROM aws.lexv2_models.test_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -284,16 +284,16 @@ test_set_id = '{{ test_set_id }}' --required
 AND region = '{{ region }}' --required
 AND testSetName = '{{ testSetName }}' --required
 RETURNING
-creationDateTime,
+creation_date_time,
 description,
-lastUpdatedDateTime,
+last_updated_date_time,
 modality,
-numTurns,
-roleArn,
+num_turns,
+role_arn,
 status,
-storageLocation,
-testSetId,
-testSetName;
+storage_location,
+test_set_id,
+test_set_name;
 ```
 </TabItem>
 </Tabs>

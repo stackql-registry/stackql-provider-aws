@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>Information about destination processing for this query execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message if the query execution failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The execution status of the scheduled query run. (Running, InvalidQuery, Complete, Failed, Timeout)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queryId" /></td>
+    <td><CopyableCode code="query_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this query execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="triggeredTimestamp" /></td>
+    <td><CopyableCode code="triggered_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the scheduled query execution was triggered.</td>
 </tr>
@@ -140,10 +140,10 @@ Retrieves the execution history of a scheduled query within a specified time ran
 ```sql
 SELECT
 destinations,
-errorMessage,
-executionStatus,
-queryId,
-triggeredTimestamp
+error_message,
+execution_status,
+query_id,
+triggered_timestamp
 FROM aws.logs.scheduled_query_histories
 WHERE region = '{{ region }}' -- required
 ;

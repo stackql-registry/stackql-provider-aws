@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LicenseOperationFailureList" /></td>
+    <td><CopyableCode code="license_operation_failure_list" /></td>
     <td><code>array</code></td>
     <td>License configuration operations that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the license configuration operations that failed.
 
 ```sql
 SELECT
-LicenseOperationFailureList,
-NextToken
+license_operation_failure_list,
+next_token
 FROM aws.license_manager.failures_for_license_configuration_operations
 WHERE region = '{{ region }}' -- required
 ;

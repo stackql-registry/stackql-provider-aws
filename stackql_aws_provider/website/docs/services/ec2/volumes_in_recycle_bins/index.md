@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone for the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone for the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time stamp when volume creation was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iops" /></td>
+    <td><CopyableCode code="iops" /></td>
     <td><code>integer</code></td>
     <td>The number of I/O operations per second (IOPS) for the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The service provider that manages the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Outpost on which the volume is stored. For more information, see Amazon EBS volumes on Outposts in the Amazon EBS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecycleBinEnterTime" /></td>
+    <td><CopyableCode code="recycle_bin_enter_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the volume entered the Recycle Bin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecycleBinExitTime" /></td>
+    <td><CopyableCode code="recycle_bin_exit_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the volume is to be permanently deleted from the Recycle Bin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Size" /></td>
+    <td><CopyableCode code="size" /></td>
     <td><code>integer</code></td>
     <td>The size of the volume, in GiB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The snapshot from which the volume was created, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceVolumeId" /></td>
+    <td><CopyableCode code="source_volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Throughput" /></td>
+    <td><CopyableCode code="throughput" /></td>
     <td><code>integer</code></td>
     <td>The throughput that the volume supports, in MiB/s.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeType" /></td>
+    <td><CopyableCode code="volume_type" /></td>
     <td><code>string</code></td>
     <td>The volume type.</td>
 </tr>
@@ -209,21 +209,21 @@ Lists one or more volumes that are currently in the Recycle Bin.
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CreateTime,
-Iops,
-Operator,
-OutpostArn,
-RecycleBinEnterTime,
-RecycleBinExitTime,
-Size,
-SnapshotId,
-SourceVolumeId,
-State,
-Throughput,
-VolumeId,
-VolumeType
+availability_zone,
+availability_zone_id,
+create_time,
+iops,
+operator,
+outpost_arn,
+recycle_bin_enter_time,
+recycle_bin_exit_time,
+size,
+snapshot_id,
+source_volume_id,
+state,
+throughput,
+volume_id,
+volume_type
 FROM aws.ec2.volumes_in_recycle_bins
 WHERE region = '{{ region }}' -- required
 AND VolumeId = '{{ VolumeId }}'

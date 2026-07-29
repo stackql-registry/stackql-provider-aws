@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="logRecord" /></td>
+    <td><CopyableCode code="log_record" /></td>
     <td><code>object</code></td>
     <td>The requested log event, as a JSON string.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves all of the fields and values of a single log event. All fields are ret
 
 ```sql
 SELECT
-logRecord
+log_record
 FROM aws.logs.log_records
 WHERE region = '{{ region }}' -- required
 ;

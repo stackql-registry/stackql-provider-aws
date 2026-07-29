@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorizedColumns" /></td>
+    <td><CopyableCode code="authorized_columns" /></td>
     <td><code>array</code></td>
     <td>A list of column names that the user has been granted access to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsRegisteredWithLakeFormation" /></td>
+    <td><CopyableCode code="is_registered_with_lake_formation" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that indicates whether the partition location is registered with Lake Formation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Partition" /></td>
+    <td><CopyableCode code="partition" /></td>
     <td><code>object</code></td>
     <td>Represents a slice of table data.</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves partition metadata from the Data Catalog that contains unfiltered meta
 
 ```sql
 SELECT
-AuthorizedColumns,
-IsRegisteredWithLakeFormation,
-Partition
+authorized_columns,
+is_registered_with_lake_formation,
+partition
 FROM aws.glue.unfiltered_partition_metadatas
 WHERE region = '{{ region }}' -- required
 ;

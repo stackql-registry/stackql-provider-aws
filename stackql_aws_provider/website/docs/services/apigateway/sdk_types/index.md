@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of an SdkType instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationProperties" /></td>
+    <td><CopyableCode code="configuration_properties" /></td>
     <td><code>array</code></td>
     <td>A list of configuration properties of an SdkType.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of an SdkType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="friendlyName" /></td>
+    <td><CopyableCode code="friendly_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name of an SdkType instance.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of an SdkType instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationProperties" /></td>
+    <td><CopyableCode code="configuration_properties" /></td>
     <td><code>array</code></td>
     <td>A list of configuration properties of an SdkType.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of an SdkType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="friendlyName" /></td>
+    <td><CopyableCode code="friendly_name" /></td>
     <td><code>string</code></td>
     <td>The user-friendly name of an SdkType instance.</td>
 </tr>
@@ -193,9 +193,9 @@ Gets an SDK type.
 ```sql
 SELECT
 id,
-configurationProperties,
+configuration_properties,
 description,
-friendlyName
+friendly_name
 FROM aws.apigateway.sdk_types
 WHERE sdktype_id = '{{ sdktype_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -209,9 +209,9 @@ Gets SDK types
 ```sql
 SELECT
 id,
-configurationProperties,
+configuration_properties,
 description,
-friendlyName
+friendly_name
 FROM aws.apigateway.sdk_types
 WHERE region = '{{ region }}' -- required
 AND position = '{{ position }}'

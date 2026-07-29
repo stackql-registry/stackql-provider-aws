@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="categorySpecificSummary" /></td>
+    <td><CopyableCode code="category_specific_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checkId" /></td>
+    <td><CopyableCode code="check_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Trusted Advisor check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="flaggedResources" /></td>
+    <td><CopyableCode code="flagged_resources" /></td>
     <td><code>array</code></td>
     <td>The details about each resource listed in the check result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourcesSummary" /></td>
+    <td><CopyableCode code="resources_summary" /></td>
     <td><code>object</code></td>
     <td>Details about Amazon Web Services resources that were analyzed in a call to Trusted Advisor DescribeTrustedAdvisorCheckSummaries.</td>
 </tr>
@@ -144,10 +144,10 @@ Returns the results of the Trusted Advisor check that has the specified check ID
 
 ```sql
 SELECT
-categorySpecificSummary,
-checkId,
-flaggedResources,
-resourcesSummary,
+category_specific_summary,
+check_id,
+flagged_resources,
+resources_summary,
 status,
 timestamp
 FROM aws.support.trusted_advisor_check_results

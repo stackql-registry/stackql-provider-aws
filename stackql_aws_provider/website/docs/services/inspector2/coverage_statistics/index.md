@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The number of resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupKey" /></td>
+    <td><CopyableCode code="group_key" /></td>
     <td><code>string</code></td>
     <td>The key associated with this group (SCAN_STATUS_CODE, SCAN_STATUS_REASON, ACCOUNT_ID, RESOURCE_TYPE, ECR_REPOSITORY_NAME)</td>
 </tr>
@@ -125,7 +125,7 @@ Lists Amazon Inspector coverage statistics for your environment.
 ```sql
 SELECT
 count,
-groupKey
+group_key
 FROM aws.inspector2.coverage_statistics
 WHERE region = '{{ region }}' -- required
 ;

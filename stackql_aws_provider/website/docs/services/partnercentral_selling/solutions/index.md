@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The SolutionBase structure provides essential information about a solution. (pattern: &lt;code&gt;S-&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>Specifies the catalog in which the solution is hosted, either AWS or Sandbox. This helps partners differentiate between live solutions and those in testing environments. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>Specifies the solution category, which helps to categorize and organize the solutions partners offer. Valid values: Software Product | Consulting Service | Hardware Product | Communications Product | Professional Service | Managed Service | Value-Added Resale Amazon Web Services Service | Distribution Service | Training Service | Merger and Acquisition Advising Service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the solution creation date. This is useful to track and audit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Enables the association of solutions (offerings) to opportunities. (pattern: &lt;code&gt;S-&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Specifies the solution name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the solution's current status, which indicates its state in the system. Valid values: Active | Inactive | Draft. The status helps partners and Amazon Web Services track the solution's lifecycle and availability. Filter for Active solutions for association to an opportunity. (Active, Inactive, Draft)</td>
 </tr>
@@ -149,13 +149,13 @@ Retrieves a list of Partner Solutions that the partner registered on Partner Cen
 
 ```sql
 SELECT
-Arn,
-Catalog,
-Category,
-CreatedDate,
-Id,
-Name,
-Status
+arn,
+catalog,
+category,
+created_date,
+id,
+name,
+status
 FROM aws.partnercentral_selling.solutions
 WHERE region = '{{ region }}' -- required
 ;

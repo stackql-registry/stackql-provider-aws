@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Information about the tags assigned to the retention rule.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags assigned to a retention rule.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.rbin.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

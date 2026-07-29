@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ebsSnapshots" /></td>
+    <td><CopyableCode code="ebs_snapshots" /></td>
     <td><code>array</code></td>
     <td>A list of EBS snapshots.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expectedTimestamp" /></td>
+    <td><CopyableCode code="expected_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp of when we expect the snapshot to be taken. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotID" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Recovery Snapshot. (pattern: &lt;code&gt;pit-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerID" /></td>
+    <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Source Server that the snapshot was taken for. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -139,10 +139,10 @@ Lists all Recovery Snapshots for a single Source Server.
 
 ```sql
 SELECT
-ebsSnapshots,
-expectedTimestamp,
-snapshotID,
-sourceServerID,
+ebs_snapshots,
+expected_timestamp,
+snapshot_id,
+source_server_id,
 timestamp
 FROM aws.drs.recovery_snapshots
 WHERE region = '{{ region }}' -- required

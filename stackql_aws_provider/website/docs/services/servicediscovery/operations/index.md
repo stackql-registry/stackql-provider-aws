@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the request was submitted, in Unix date/time format and Coordinated Universal Time (UTC). The value of CreateDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The code associated with ErrorMessage. Values for ErrorCode include the following: ACCESS_DENIED CANNOT_CREATE_HOSTED_ZONE EXPIRED_TOKEN HOSTED_ZONE_NOT_FOUND INTERNAL_FAILURE INVALID_CHANGE_BATCH THROTTLED_REQUEST</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>If the value of Status is FAIL, the reason that the operation failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the operation that you want to get information about.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccount" /></td>
+    <td><CopyableCode code="owner_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the namespace associated with the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the operation. Values include the following: SUBMITTED This is the initial state that occurs immediately after you submit a request. PENDING Cloud Map is performing the operation. SUCCESS The operation succeeded. FAIL The operation failed. For the failure reason, see ErrorMessage. (SUBMITTED, PENDING, SUCCESS, FAIL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>object</code></td>
     <td>The name of the target entity that's associated with the operation: NAMESPACE The namespace ID is returned in the ResourceId property. SERVICE The service ID is returned in the ResourceId property. INSTANCE The instance ID is returned in the ResourceId property.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The name of the operation that's associated with the specified ID. (CREATE_NAMESPACE, DELETE_NAMESPACE, UPDATE_NAMESPACE, UPDATE_SERVICE, REGISTER_INSTANCE, DEREGISTER_INSTANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateDate" /></td>
+    <td><CopyableCode code="update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the value of Status changed to the current value, in Unix date/time format and Coordinated Universal Time (UTC). The value of UpdateDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for an operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the operation. Values include the following: SUBMITTED: This is the initial state immediately after you submit a request. PENDING: Cloud Map is performing the operation. SUCCESS: The operation succeeded. FAIL: The operation failed. For the failure reason, see ErrorMessage. (SUBMITTED, PENDING, SUCCESS, FAIL)</td>
 </tr>
@@ -192,15 +192,15 @@ Gets information about any operation that returns an operation ID in the respons
 
 ```sql
 SELECT
-CreateDate,
-ErrorCode,
-ErrorMessage,
-Id,
-OwnerAccount,
-Status,
-Targets,
-Type,
-UpdateDate
+create_date,
+error_code,
+error_message,
+id,
+owner_account,
+status,
+targets,
+type,
+update_date
 FROM aws.servicediscovery.operations
 WHERE region = '{{ region }}' -- required
 ;
@@ -212,8 +212,8 @@ Lists operations that match the criteria that you specify.
 
 ```sql
 SELECT
-Id,
-Status
+id,
+status
 FROM aws.servicediscovery.operations
 WHERE region = '{{ region }}' -- required
 ;

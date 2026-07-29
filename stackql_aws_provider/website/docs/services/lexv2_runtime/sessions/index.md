@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>A list of messages that were last sent to the user. The messages are ordered based on the order that your returned the messages from your Lambda function or the order that messages are defined in the bot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the returned session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionState" /></td>
+    <td><CopyableCode code="session_state" /></td>
     <td><code>object</code></td>
     <td>Represents the current state of the dialog between the user and the bot. You can use this to determine the progress of the conversation and what the next action might be.</td>
 </tr>
@@ -221,8 +221,8 @@ Returns session information for a specified bot, alias, and user. For example, y
 SELECT
 interpretations,
 messages,
-sessionId,
-sessionState
+session_id,
+session_state
 FROM aws.lexv2_runtime.sessions
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_alias_id = '{{ bot_alias_id }}' -- required
@@ -262,12 +262,12 @@ AND region = '{{ region }}' --required
 AND sessionState = '{{ sessionState }}' --required
 AND ResponseContentType = '{{ ResponseContentType}}'
 RETURNING
-audioStream,
-contentType,
+audio_stream,
+content_type,
 messages,
-requestAttributes,
-sessionId,
-sessionState;
+request_attributes,
+session_id,
+session_state;
 ```
 </TabItem>
 </Tabs>

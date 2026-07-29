@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the recommendation report generation task. See the response of StartRecommendationReportGeneration. (pattern: &lt;code&gt;&#91;0-9a-z-:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationReportDetails" /></td>
+    <td><CopyableCode code="recommendation_report_details" /></td>
     <td><code>object</code></td>
     <td>Detailed information about the recommendation report.</td>
 </tr>
@@ -130,7 +130,7 @@ Retrieves detailed information about the specified recommendation report.
 ```sql
 SELECT
 id,
-recommendationReportDetails
+recommendation_report_details
 FROM aws.migrationhubstrategy.recommendation_report_details
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

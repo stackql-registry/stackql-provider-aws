@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The phone number order creation time stamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FocDate" /></td>
+    <td><CopyableCode code="foc_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Firm Order Commitment (FOC) date for phone number porting orders. This field is null if a phone number order is not a porting order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderType" /></td>
+    <td><CopyableCode code="order_type" /></td>
     <td><code>string</code></td>
     <td>The type of phone number being ordered, local or toll-free. (New, Porting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrderedPhoneNumbers" /></td>
+    <td><CopyableCode code="ordered_phone_numbers" /></td>
     <td><code>array</code></td>
     <td>The ordered phone number details, such as the phone number in E.164 format and the phone number status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberOrderId" /></td>
+    <td><CopyableCode code="phone_number_order_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the phone order. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductType" /></td>
+    <td><CopyableCode code="product_type" /></td>
     <td><code>string</code></td>
     <td>The phone number order product type. (VoiceConnector, SipMediaApplicationDialIn)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the phone number order. (Processing, Successful, Failed, Partial, PendingDocuments, Submitted, FOC, ChangeRequested, Exception, CancelRequested, Cancelled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The updated phone number order time stamp, in ISO 8601 format.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberOrders" /></td>
+    <td><CopyableCode code="phone_number_orders" /></td>
     <td><code>array</code></td>
     <td>The phone number order details.</td>
 </tr>
@@ -209,14 +209,14 @@ Retrieves details for the specified phone number order, such as the order creati
 
 ```sql
 SELECT
-CreatedTimestamp,
-FocDate,
-OrderType,
-OrderedPhoneNumbers,
-PhoneNumberOrderId,
-ProductType,
-Status,
-UpdatedTimestamp
+created_timestamp,
+foc_date,
+order_type,
+ordered_phone_numbers,
+phone_number_order_id,
+product_type,
+status,
+updated_timestamp
 FROM aws.chime_sdk_voice.phone_number_orders
 WHERE phone_number_order_id = '{{ phone_number_order_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -229,8 +229,8 @@ Lists the phone numbers for an administrator's Amazon Chime SDK account.
 
 ```sql
 SELECT
-NextToken,
-PhoneNumberOrders
+next_token,
+phone_number_orders
 FROM aws.chime_sdk_voice.phone_number_orders
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
@@ -267,7 +267,7 @@ SELECT
 '{{ Name }}',
 '{{ region }}'
 RETURNING
-PhoneNumberOrder
+phone_number_order
 ;
 ```
 </TabItem>

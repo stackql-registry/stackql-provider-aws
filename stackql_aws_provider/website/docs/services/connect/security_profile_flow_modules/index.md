@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlowModuleId" /></td>
+    <td><CopyableCode code="flow_module_id" /></td>
     <td><code>string</code></td>
     <td>If of Flow Modules invocable as tool</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Only Type we support is MCP. (MCP)</td>
 </tr>
@@ -144,8 +144,8 @@ A list of Flow Modules an AI Agent can invoke as a tool
 
 ```sql
 SELECT
-FlowModuleId,
-Type
+flow_module_id,
+type
 FROM aws.connect.security_profile_flow_modules
 WHERE security_profile_id = '{{ security_profile_id }}' -- required
 AND instance_id = '{{ instance_id }}' -- required

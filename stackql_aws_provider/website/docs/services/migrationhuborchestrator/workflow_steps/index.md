@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the step was created.</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the step ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStartTime" /></td>
+    <td><CopyableCode code="last_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the workflow was last started.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The next step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noOfSrvCompleted" /></td>
+    <td><CopyableCode code="no_of_srv_completed" /></td>
     <td><code>integer</code></td>
     <td>The number of servers that have been migrated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noOfSrvFailed" /></td>
+    <td><CopyableCode code="no_of_srv_failed" /></td>
     <td><code>integer</code></td>
     <td>The number of servers that have failed to migrate.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The previous step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scriptOutputLocation" /></td>
+    <td><CopyableCode code="script_output_location" /></td>
     <td><code>string</code></td>
     <td>The output location of the script.</td>
 </tr>
@@ -116,42 +116,42 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the step. (AWAITING_DEPENDENCIES, SKIPPED, READY, IN_PROGRESS, COMPLETED, FAILED, PAUSED, USER_ATTENTION_REQUIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepActionType" /></td>
+    <td><CopyableCode code="step_action_type" /></td>
     <td><code>string</code></td>
     <td>The action type of the step. You must run and update the status of a manual step for the workflow to continue after the completion of the step. (MANUAL, AUTOMATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepGroupId" /></td>
+    <td><CopyableCode code="step_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the step group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepId" /></td>
+    <td><CopyableCode code="step_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepTarget" /></td>
+    <td><CopyableCode code="step_target" /></td>
     <td><code>array</code></td>
     <td>The servers on which a step will be run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalNoOfSrv" /></td>
+    <td><CopyableCode code="total_no_of_srv" /></td>
     <td><code>integer</code></td>
     <td>The total number of servers that have been migrated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowStepAutomationConfiguration" /></td>
+    <td><CopyableCode code="workflow_step_automation_configuration" /></td>
     <td><code>object</code></td>
     <td>The custom script to run tests on source or target environments.</td>
 </tr>
@@ -185,12 +185,12 @@ The following fields are returned by `SELECT` queries:
     <td>The next step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noOfSrvCompleted" /></td>
+    <td><CopyableCode code="no_of_srv_completed" /></td>
     <td><code>integer</code></td>
     <td>The number of servers that have been migrated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noOfSrvFailed" /></td>
+    <td><CopyableCode code="no_of_srv_failed" /></td>
     <td><code>integer</code></td>
     <td>The number of servers that have failed to migrate.</td>
 </tr>
@@ -205,7 +205,7 @@ The following fields are returned by `SELECT` queries:
     <td>The previous step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scriptLocation" /></td>
+    <td><CopyableCode code="script_location" /></td>
     <td><code>string</code></td>
     <td>The location of the script.</td>
 </tr>
@@ -215,22 +215,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the step. (AWAITING_DEPENDENCIES, SKIPPED, READY, IN_PROGRESS, COMPLETED, FAILED, PAUSED, USER_ATTENTION_REQUIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of the migration workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepActionType" /></td>
+    <td><CopyableCode code="step_action_type" /></td>
     <td><code>string</code></td>
     <td>The action type of the step. You must run and update the status of a manual step for the workflow to continue after the completion of the step. (MANUAL, AUTOMATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stepId" /></td>
+    <td><CopyableCode code="step_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalNoOfSrv" /></td>
+    <td><CopyableCode code="total_no_of_srv" /></td>
     <td><code>integer</code></td>
     <td>The total number of servers that have been migrated.</td>
 </tr>
@@ -364,26 +364,26 @@ Get a step in the migration workflow.
 ```sql
 SELECT
 name,
-creationTime,
+creation_time,
 description,
-endTime,
-lastStartTime,
+end_time,
+last_start_time,
 next,
-noOfSrvCompleted,
-noOfSrvFailed,
+no_of_srv_completed,
+no_of_srv_failed,
 outputs,
 owner,
 previous,
-scriptOutputLocation,
+script_output_location,
 status,
-statusMessage,
-stepActionType,
-stepGroupId,
-stepId,
-stepTarget,
-totalNoOfSrv,
-workflowId,
-workflowStepAutomationConfiguration
+status_message,
+step_action_type,
+step_group_id,
+step_id,
+step_target,
+total_no_of_srv,
+workflow_id,
+workflow_step_automation_configuration
 FROM aws.migrationhuborchestrator.workflow_steps
 WHERE workflowId = '{{ workflowId }}' -- required
 AND stepGroupId = '{{ stepGroupId }}' -- required
@@ -401,16 +401,16 @@ SELECT
 name,
 description,
 next,
-noOfSrvCompleted,
-noOfSrvFailed,
+no_of_srv_completed,
+no_of_srv_failed,
 owner,
 previous,
-scriptLocation,
+script_location,
 status,
-statusMessage,
-stepActionType,
-stepId,
-totalNoOfSrv
+status_message,
+step_action_type,
+step_id,
+total_no_of_srv
 FROM aws.migrationhuborchestrator.workflow_steps
 WHERE workflow_id = '{{ workflow_id }}' -- required
 AND step_group_id = '{{ step_group_id }}' -- required
@@ -465,8 +465,8 @@ SELECT
 RETURNING
 id,
 name,
-stepGroupId,
-workflowId
+step_group_id,
+workflow_id
 ;
 ```
 </TabItem>
@@ -561,8 +561,8 @@ AND workflowId = '{{ workflowId }}' --required
 RETURNING
 id,
 name,
-stepGroupId,
-workflowId;
+step_group_id,
+workflow_id;
 ```
 </TabItem>
 </Tabs>

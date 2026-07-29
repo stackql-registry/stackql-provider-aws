@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the tagged ML object. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the tagged ML object. (BatchPrediction, DataSource, Evaluation, MLModel)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with the ML object.</td>
 </tr>
@@ -143,9 +143,9 @@ Describes one or more of the tags for your Amazon ML object.
 
 ```sql
 SELECT
-ResourceId,
-ResourceType,
-Tags
+resource_id,
+resource_type,
+tags
 FROM aws.machinelearning.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,8 +177,8 @@ region = '{{ region }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
 AND ResourceType = '{{ ResourceType }}' --required
 RETURNING
-ResourceId,
-ResourceType;
+resource_id,
+resource_type;
 ```
 </TabItem>
 </Tabs>

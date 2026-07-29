@@ -55,62 +55,62 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the log group. This version of the ARN includes a trailing :* after the log group name. Use this version to refer to the ARN in IAM policies when specifying permissions for most API actions. The exception is when specifying permissions for TagResource, UntagResource, and ListTagsForResource. The permissions for those three actions require the ARN version that doesn't include a trailing :*.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bearerTokenAuthenticationEnabled" /></td>
+    <td><CopyableCode code="bearer_token_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether bearer token authentication is enabled for this log group. When enabled, bearer token authentication is allowed on operations until it is explicitly disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The creation time of the log group, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataProtectionStatus" /></td>
+    <td><CopyableCode code="data_protection_status" /></td>
     <td><code>string</code></td>
     <td>Displays whether this log group has a protection policy, or whether it had one in the past. For more information, see PutDataProtectionPolicy. (ACTIVATED, DELETED, ARCHIVED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether deletion protection is enabled for this log group. When enabled, deletion protection blocks all deletion operations until it is explicitly disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inheritedProperties" /></td>
+    <td><CopyableCode code="inherited_properties" /></td>
     <td><code>array</code></td>
     <td>Displays all the properties that this log group has inherited from account-level settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupArn" /></td>
+    <td><CopyableCode code="log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the log group. This version of the ARN doesn't include a trailing :* after the log group name. Use this version to refer to the ARN in the following situations: In the logGroupIdentifier input field in many CloudWatch Logs APIs. In the resourceArn field in tagging APIs In IAM policies, when specifying permissions for TagResource, UntagResource, and ListTagsForResource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupClass" /></td>
+    <td><CopyableCode code="log_group_class" /></td>
     <td><code>string</code></td>
     <td>This specifies the log group class for this log group. There are three classes: The Standard log class supports all CloudWatch Logs features. The Infrequent Access log class supports a subset of CloudWatch Logs features and incurs lower costs. Use the Delivery log class only for delivering Lambda logs to store in Amazon S3 or Amazon Data Firehose. Log events in log groups in the Delivery class are kept in CloudWatch Logs for only one day. This log class doesn't offer rich CloudWatch Logs capabilities such as CloudWatch Logs Insights queries. For details about the features supported by the Standard and Infrequent Access classes, see Log classes (STANDARD, INFREQUENT_ACCESS, DELIVERY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logGroupName" /></td>
+    <td><CopyableCode code="log_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the log group. (pattern: &lt;code&gt;&#91;\.\-_/#A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricFilterCount" /></td>
+    <td><CopyableCode code="metric_filter_count" /></td>
     <td><code>integer</code></td>
     <td>The number of metric filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retentionInDays" /></td>
+    <td><CopyableCode code="retention_in_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, and 3653. To set a log group so that its log events do not expire, use DeleteRetentionPolicy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storedBytes" /></td>
+    <td><CopyableCode code="stored_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of bytes stored.</td>
 </tr>
@@ -229,18 +229,18 @@ Returns information about log groups, including data sources that ingest into ea
 ```sql
 SELECT
 arn,
-bearerTokenAuthenticationEnabled,
-creationTime,
-dataProtectionStatus,
-deletionProtectionEnabled,
-inheritedProperties,
-kmsKeyId,
-logGroupArn,
-logGroupClass,
-logGroupName,
-metricFilterCount,
-retentionInDays,
-storedBytes
+bearer_token_authentication_enabled,
+creation_time,
+data_protection_status,
+deletion_protection_enabled,
+inherited_properties,
+kms_key_id,
+log_group_arn,
+log_group_class,
+log_group_name,
+metric_filter_count,
+retention_in_days,
+stored_bytes
 FROM aws.logs.log_groups
 WHERE region = '{{ region }}' -- required
 ;

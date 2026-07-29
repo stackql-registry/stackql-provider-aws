@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LakeFormationOptInsInfoList" /></td>
+    <td><CopyableCode code="lake_formation_opt_ins_info_list" /></td>
     <td><code>array</code></td>
     <td>A list of principal-resource pairs that have Lake Formation permissins enforced.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, if this is not the first call to retrieve this list.</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieve the current list of resources and principals that are opt in to enforce
 
 ```sql
 SELECT
-LakeFormationOptInsInfoList,
-NextToken
+lake_formation_opt_ins_info_list,
+next_token
 FROM aws.lakeformation.lake_formation_opt_ins
 WHERE region = '{{ region }}' -- required
 ;

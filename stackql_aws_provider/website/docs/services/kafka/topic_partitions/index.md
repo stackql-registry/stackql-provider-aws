@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Isr" /></td>
+    <td><CopyableCode code="isr" /></td>
     <td><code>array</code></td>
     <td>The list of in-sync replica broker IDs for the partition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Leader" /></td>
+    <td><CopyableCode code="leader" /></td>
     <td><code>integer</code></td>
     <td>The leader broker ID for the partition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Partition" /></td>
+    <td><CopyableCode code="partition" /></td>
     <td><code>integer</code></td>
     <td>The partition ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Replicas" /></td>
+    <td><CopyableCode code="replicas" /></td>
     <td><code>array</code></td>
     <td>The list of replica broker IDs for the partition.</td>
 </tr>
@@ -154,10 +154,10 @@ Returns partition details of this topic on a MSK cluster.
 
 ```sql
 SELECT
-Isr,
-Leader,
-Partition,
-Replicas
+isr,
+leader,
+partition,
+replicas
 FROM aws.kafka.topic_partitions
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND topic_name = '{{ topic_name }}' -- required

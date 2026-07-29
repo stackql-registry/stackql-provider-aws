@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountQuotaName" /></td>
+    <td><CopyableCode code="account_quota_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon RDS quota for this Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Max" /></td>
+    <td><CopyableCode code="max" /></td>
     <td><code>integer</code></td>
     <td>The maximum allowed value for the quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Used" /></td>
+    <td><CopyableCode code="used" /></td>
     <td><code>integer</code></td>
     <td>The amount currently used toward the quota maximum.</td>
 </tr>
@@ -129,9 +129,9 @@ Lists all of the attributes for a customer account. The attributes include Amazo
 
 ```sql
 SELECT
-AccountQuotaName,
-Max,
-Used
+account_quota_name,
+max,
+used
 FROM aws.rds.account_attributes
 WHERE region = '{{ region }}' -- required
 ;

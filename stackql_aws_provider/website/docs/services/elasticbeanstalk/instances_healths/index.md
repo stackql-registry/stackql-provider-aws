@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationMetrics" /></td>
+    <td><CopyableCode code="application_metrics" /></td>
     <td><code>string</code></td>
     <td>Request metrics from your application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The availability zone in which the instance runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Causes" /></td>
+    <td><CopyableCode code="causes" /></td>
     <td><code>string</code></td>
     <td>Represents the causes, which provide more information about the current health status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Color" /></td>
+    <td><CopyableCode code="color" /></td>
     <td><code>string</code></td>
     <td>Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see Health Colors and Statuses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Deployment" /></td>
+    <td><CopyableCode code="deployment" /></td>
     <td><code>string</code></td>
     <td>Information about the most recent deployment to an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>string</code></td>
     <td>Returns the health status of the specified instance. For more information, see Health Colors and Statuses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EC2 instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance's type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchedAt" /></td>
+    <td><CopyableCode code="launched_at" /></td>
     <td><code>string</code></td>
     <td>The time at which the EC2 instance was launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="System" /></td>
+    <td><CopyableCode code="system" /></td>
     <td><code>string</code></td>
     <td>Operating system metrics from the instance.</td>
 </tr>
@@ -184,16 +184,16 @@ Retrieves detailed information about the health of instances in your AWS Elastic
 
 ```sql
 SELECT
-ApplicationMetrics,
-AvailabilityZone,
-Causes,
-Color,
-Deployment,
-HealthStatus,
-InstanceId,
-InstanceType,
-LaunchedAt,
-System
+application_metrics,
+availability_zone,
+causes,
+color,
+deployment,
+health_status,
+instance_id,
+instance_type,
+launched_at,
+system
 FROM aws.elasticbeanstalk.instances_healths
 WHERE region = '{{ region }}' -- required
 AND EnvironmentName = '{{ EnvironmentName }}'

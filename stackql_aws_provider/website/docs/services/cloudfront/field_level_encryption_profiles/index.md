@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FieldLevelEncryptionProfileConfig" /></td>
+    <td><CopyableCode code="field_level_encryption_profile_config" /></td>
     <td><code>string</code></td>
     <td>A complex data type that includes the profile name and the encryption entities for the field-level encryption profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID for a field-level encryption profile configuration which includes a set of profiles that specify certain selected data fields to be encrypted by specific public keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The last time the field-level encryption profile was updated.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>The field-level encryption profile items.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of field-level encryption profiles you want in the response body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more elements to be listed, this element is present and contains the value that you can use for the Marker request parameter to continue listing your profiles where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of field-level encryption profiles.</td>
 </tr>
@@ -213,9 +213,9 @@ Get the field-level encryption profile information.
 
 ```sql
 SELECT
-FieldLevelEncryptionProfileConfig,
-Id,
-LastModifiedTime
+field_level_encryption_profile_config,
+id,
+last_modified_time
 FROM aws.cloudfront.field_level_encryption_profiles
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -228,10 +228,10 @@ Request a list of field-level encryption profiles that have been created in Clou
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.field_level_encryption_profiles
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -264,9 +264,9 @@ SELECT
 '{{ FieldLevelEncryptionProfileConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-FieldLevelEncryptionProfileConfig,
-Id,
-LastModifiedTime
+field_level_encryption_profile_config,
+id,
+last_modified_time
 ;
 ```
 </TabItem>
@@ -322,9 +322,9 @@ AND region = '{{ region }}' --required
 AND FieldLevelEncryptionProfileConfig = '{{ FieldLevelEncryptionProfileConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-FieldLevelEncryptionProfileConfig,
-Id,
-LastModifiedTime;
+field_level_encryption_profile_config,
+id,
+last_modified_time;
 ```
 </TabItem>
 </Tabs>

@@ -55,72 +55,72 @@ The following fields are returned by `SELECT` queries:
     <td>The system-generated unique ID of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The code of the error, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventCategory" /></td>
+    <td><CopyableCode code="event_category" /></td>
     <td><code>string</code></td>
     <td>The category for the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventName" /></td>
+    <td><CopyableCode code="event_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventSource" /></td>
+    <td><CopyableCode code="event_source" /></td>
     <td><code>string</code></td>
     <td>The source of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the event took place, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The type of the event. (READONLY, MUTATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectInformation" /></td>
+    <td><CopyableCode code="project_information" /></td>
     <td><code>object</code></td>
     <td>Information about the project where the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated unique ID of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestPayload" /></td>
+    <td><CopyableCode code="request_payload" /></td>
     <td><code>object</code></td>
     <td>Information about the payload of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responsePayload" /></td>
+    <td><CopyableCode code="response_payload" /></td>
     <td><code>object</code></td>
     <td>Information about the payload of the response, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceIpAddress" /></td>
+    <td><CopyableCode code="source_ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the user whose actions are recorded in the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userAgent" /></td>
+    <td><CopyableCode code="user_agent" /></td>
     <td><code>string</code></td>
     <td>The user agent whose actions are recorded in the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userIdentity" /></td>
+    <td><CopyableCode code="user_identity" /></td>
     <td><code>object</code></td>
     <td>The system-generated unique ID of the user whose actions are recorded in the event.</td>
 </tr>
@@ -195,20 +195,20 @@ Retrieves a list of events that occurred during a specific time in a space. You 
 ```sql
 SELECT
 id,
-errorCode,
-eventCategory,
-eventName,
-eventSource,
-eventTime,
-eventType,
-operationType,
-projectInformation,
-requestId,
-requestPayload,
-responsePayload,
-sourceIpAddress,
-userAgent,
-userIdentity
+error_code,
+event_category,
+event_name,
+event_source,
+event_time,
+event_type,
+operation_type,
+project_information,
+request_id,
+request_payload,
+response_payload,
+source_ip_address,
+user_agent,
+user_identity
 FROM aws.codecatalyst.event_logs
 WHERE space_name = '{{ space_name }}' -- required
 AND region = '{{ region }}' -- required

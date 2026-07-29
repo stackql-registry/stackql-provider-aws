@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the template was last created.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the template. (CREATED, READY, PENDING_CREATION, CREATING, CREATION_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message of retrieving migration workflow templates.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The tags added to the migration workflow template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>&gt;The Amazon Resource Name (ARN) of the migration workflow template. The format for an Migration Hub Orchestrator template ARN is arn:aws:migrationhub-orchestrator:region:account:template/template-abcd1234. For more information about ARNs, see Amazon Resource Names (ARNs) in the AWS General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateClass" /></td>
+    <td><CopyableCode code="template_class" /></td>
     <td><code>string</code></td>
     <td>The class of the migration workflow template. The available template classes are: A2C MGN SAP_MULTI SQL_EC2 SQL_RDS VMIE</td>
 </tr>
@@ -260,15 +260,15 @@ Get the template you want to use for creating a migration workflow.
 SELECT
 id,
 name,
-creationTime,
+creation_time,
 description,
 inputs,
 owner,
 status,
-statusMessage,
+status_message,
 tags,
-templateArn,
-templateClass,
+template_arn,
+template_class,
 tools
 FROM aws.migrationhuborchestrator.templates
 WHERE id = '{{ id }}' -- required
@@ -328,8 +328,8 @@ SELECT
 '{{ region }}'
 RETURNING
 tags,
-templateArn,
-templateId
+template_arn,
+template_id
 ;
 ```
 </TabItem>
@@ -383,8 +383,8 @@ id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 tags,
-templateArn,
-templateId;
+template_arn,
+template_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>A list of Availability Zones for an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceClass" /></td>
+    <td><CopyableCode code="db_instance_class" /></td>
     <td><code>string</code></td>
     <td>The instance class for an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The engine type of an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The engine version of an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The license model for an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type to associate with the DB cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vpc" /></td>
+    <td><CopyableCode code="vpc" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether an instance is in a virtual private cloud (VPC).</td>
 </tr>
@@ -189,13 +189,13 @@ Returns a list of orderable instance options for the specified engine.
 
 ```sql
 SELECT
-AvailabilityZones,
-DBInstanceClass,
-Engine,
-EngineVersion,
-LicenseModel,
-StorageType,
-Vpc
+availability_zones,
+db_instance_class,
+engine,
+engine_version,
+license_model,
+storage_type,
+vpc
 FROM aws.docdb.orderable_db_instance_options
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'

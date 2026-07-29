@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComponentId" /></td>
+    <td><CopyableCode code="component_id" /></td>
     <td><code>string</code></td>
     <td>The component id of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastCheckedTimestamp" /></td>
+    <td><CopyableCode code="last_checked_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time (UTC) that the resource was last checked for readiness, in ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Readiness" /></td>
+    <td><CopyableCode code="readiness" /></td>
     <td><code>string</code></td>
     <td>The readiness of a resource. (READY, NOT_READY, UNKNOWN, NOT_AUTHORIZED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
@@ -149,10 +149,10 @@ Gets the readiness status for an individual readiness check. To see the overall 
 
 ```sql
 SELECT
-ComponentId,
-LastCheckedTimestamp,
-Readiness,
-ResourceArn
+component_id,
+last_checked_timestamp,
+readiness,
+resource_arn
 FROM aws.route53_recovery_readiness.readiness_check_status
 WHERE readiness_check_name = '{{ readiness_check_name }}' -- required
 AND region = '{{ region }}' -- required

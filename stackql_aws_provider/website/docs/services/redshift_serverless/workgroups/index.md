@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseCapacity" /></td>
+    <td><CopyableCode code="base_capacity" /></td>
     <td><code>integer</code></td>
     <td>The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configParameters" /></td>
+    <td><CopyableCode code="config_parameters" /></td>
     <td><code>array</code></td>
     <td>An array of parameters to set for advanced control over a database. The options are auto_mv, datestyle, enable_case_sensitive_identifier, enable_user_activity_logging, query_group, search_path, require_ssl, use_fips_ssl, and either wlm_json_configuration or query monitoring metrics that let you define performance boundaries. You can either specify individual query monitoring metrics (such as max_scan_row_count, max_query_execution_time) or use wlm_json_configuration to define query queues with rules, but not both. If you're using wlm_json_configuration, the maximum size of parameterValue is 8000 characters. For more information about query monitoring rules and available metrics, see Query monitoring metrics for Amazon Redshift Serverless.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date of the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crossAccountVpcs" /></td>
+    <td><CopyableCode code="cross_account_vpcs" /></td>
     <td><code>array</code></td>
     <td>A list of VPCs. Each entry is the unique identifier of a virtual private cloud with access to Amazon Redshift Serverless. If all of the VPCs for the grantee are allowed, it shows an asterisk.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainCertificateArn" /></td>
+    <td><CopyableCode code="custom_domain_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The custom domain name’s certificate Amazon resource name (ARN). (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainCertificateExpiryTime" /></td>
+    <td><CopyableCode code="custom_domain_certificate_expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration time for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name associated with the workgroup. (pattern: &lt;code&gt;^(((?!-)&#91;A-Za-z0-9-&#93;&#123;0,62&#125;&#91;A-Za-z0-9&#93;)\.)+((?!-)&#91;A-Za-z0-9-&#93;&#123;1,62&#125;&#91;A-Za-z0-9&#93;)$&lt;/code&gt;)</td>
 </tr>
@@ -91,37 +91,37 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint that is created from the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enhancedVpcRouting" /></td>
+    <td><CopyableCode code="enhanced_vpc_routing" /></td>
     <td><code>boolean</code></td>
     <td>The value that specifies whether to enable enhanced virtual private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="extraComputeForAutomaticOptimization" /></td>
+    <td><CopyableCode code="extra_compute_for_automatic_optimization" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value that, if true, indicates that the workgroup allocates additional compute resources to run automatic optimization operations. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type that the workgroup supports. Possible values are ipv4 and dualstack. (pattern: &lt;code&gt;^(ipv4|dualstack)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>integer</code></td>
     <td>The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve queries. The max capacity is specified in RPUs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The namespace the workgroup is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="patchVersion" /></td>
+    <td><CopyableCode code="patch_version" /></td>
     <td><code>string</code></td>
     <td>The patch version of your Amazon Redshift Serverless workgroup. For more information about patch versions, see Cluster versions for Amazon Redshift.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingTrackName" /></td>
+    <td><CopyableCode code="pending_track_name" /></td>
     <td><code>string</code></td>
     <td>The name for the track that you want to assign to the workgroup. When the track changes, the workgroup is switched to the latest workgroup release available for the track. At this point, the track name is applied. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -131,17 +131,17 @@ The following fields are returned by `SELECT` queries:
     <td>The custom port to use when connecting to a workgroup. Valid port ranges are 5431-5455 and 8191-8215. The default is 5439.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pricePerformanceTarget" /></td>
+    <td><CopyableCode code="price_performance_target" /></td>
     <td><code>object</code></td>
     <td>An object that represents the price performance target settings for the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publiclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>A value that specifies whether the workgroup can be accessible from a public network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>An array of security group IDs to associate with the workgroup.</td>
 </tr>
@@ -151,32 +151,32 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the workgroup. (CREATING, AVAILABLE, MODIFYING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>An array of subnet IDs the workgroup is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackName" /></td>
+    <td><CopyableCode code="track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the track for the workgroup. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupArn" /></td>
+    <td><CopyableCode code="workgroup_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that links to the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupId" /></td>
+    <td><CopyableCode code="workgroup_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupVersion" /></td>
+    <td><CopyableCode code="workgroup_version" /></td>
     <td><code>string</code></td>
     <td>The Amazon Redshift Serverless version of your workgroup. For more information about Amazon Redshift Serverless versions, seeCluster versions for Amazon Redshift.</td>
 </tr>
@@ -195,37 +195,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseCapacity" /></td>
+    <td><CopyableCode code="base_capacity" /></td>
     <td><code>integer</code></td>
     <td>The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configParameters" /></td>
+    <td><CopyableCode code="config_parameters" /></td>
     <td><code>array</code></td>
     <td>An array of parameters to set for advanced control over a database. The options are auto_mv, datestyle, enable_case_sensitive_identifier, enable_user_activity_logging, query_group, search_path, require_ssl, use_fips_ssl, and either wlm_json_configuration or query monitoring metrics that let you define performance boundaries. You can either specify individual query monitoring metrics (such as max_scan_row_count, max_query_execution_time) or use wlm_json_configuration to define query queues with rules, but not both. If you're using wlm_json_configuration, the maximum size of parameterValue is 8000 characters. For more information about query monitoring rules and available metrics, see Query monitoring metrics for Amazon Redshift Serverless.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date of the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crossAccountVpcs" /></td>
+    <td><CopyableCode code="cross_account_vpcs" /></td>
     <td><code>array</code></td>
     <td>A list of VPCs. Each entry is the unique identifier of a virtual private cloud with access to Amazon Redshift Serverless. If all of the VPCs for the grantee are allowed, it shows an asterisk.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainCertificateArn" /></td>
+    <td><CopyableCode code="custom_domain_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The custom domain name’s certificate Amazon resource name (ARN). (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainCertificateExpiryTime" /></td>
+    <td><CopyableCode code="custom_domain_certificate_expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration time for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name associated with the workgroup. (pattern: &lt;code&gt;^(((?!-)&#91;A-Za-z0-9-&#93;&#123;0,62&#125;&#91;A-Za-z0-9&#93;)\.)+((?!-)&#91;A-Za-z0-9-&#93;&#123;1,62&#125;&#91;A-Za-z0-9&#93;)$&lt;/code&gt;)</td>
 </tr>
@@ -235,37 +235,37 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint that is created from the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enhancedVpcRouting" /></td>
+    <td><CopyableCode code="enhanced_vpc_routing" /></td>
     <td><code>boolean</code></td>
     <td>The value that specifies whether to enable enhanced virtual private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="extraComputeForAutomaticOptimization" /></td>
+    <td><CopyableCode code="extra_compute_for_automatic_optimization" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value that, if true, indicates that the workgroup allocates additional compute resources to run automatic optimization operations. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type that the workgroup supports. Possible values are ipv4 and dualstack. (pattern: &lt;code&gt;^(ipv4|dualstack)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxCapacity" /></td>
+    <td><CopyableCode code="max_capacity" /></td>
     <td><code>integer</code></td>
     <td>The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve queries. The max capacity is specified in RPUs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The namespace the workgroup is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="patchVersion" /></td>
+    <td><CopyableCode code="patch_version" /></td>
     <td><code>string</code></td>
     <td>The patch version of your Amazon Redshift Serverless workgroup. For more information about patch versions, see Cluster versions for Amazon Redshift.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingTrackName" /></td>
+    <td><CopyableCode code="pending_track_name" /></td>
     <td><code>string</code></td>
     <td>The name for the track that you want to assign to the workgroup. When the track changes, the workgroup is switched to the latest workgroup release available for the track. At this point, the track name is applied. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -275,17 +275,17 @@ The following fields are returned by `SELECT` queries:
     <td>The custom port to use when connecting to a workgroup. Valid port ranges are 5431-5455 and 8191-8215. The default is 5439.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pricePerformanceTarget" /></td>
+    <td><CopyableCode code="price_performance_target" /></td>
     <td><code>object</code></td>
     <td>An object that represents the price performance target settings for the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publiclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>A value that specifies whether the workgroup can be accessible from a public network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>An array of security group IDs to associate with the workgroup.</td>
 </tr>
@@ -295,32 +295,32 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the workgroup. (CREATING, AVAILABLE, MODIFYING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>An array of subnet IDs the workgroup is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackName" /></td>
+    <td><CopyableCode code="track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the track for the workgroup. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupArn" /></td>
+    <td><CopyableCode code="workgroup_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that links to the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupId" /></td>
+    <td><CopyableCode code="workgroup_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupVersion" /></td>
+    <td><CopyableCode code="workgroup_version" /></td>
     <td><code>string</code></td>
     <td>The Amazon Redshift Serverless version of your workgroup. For more information about Amazon Redshift Serverless versions, seeCluster versions for Amazon Redshift.</td>
 </tr>
@@ -418,32 +418,32 @@ Returns information about a specific workgroup.
 
 ```sql
 SELECT
-baseCapacity,
-configParameters,
-creationDate,
-crossAccountVpcs,
-customDomainCertificateArn,
-customDomainCertificateExpiryTime,
-customDomainName,
+base_capacity,
+config_parameters,
+creation_date,
+cross_account_vpcs,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_time,
+custom_domain_name,
 endpoint,
-enhancedVpcRouting,
-extraComputeForAutomaticOptimization,
-ipAddressType,
-maxCapacity,
-namespaceName,
-patchVersion,
-pendingTrackName,
+enhanced_vpc_routing,
+extra_compute_for_automatic_optimization,
+ip_address_type,
+max_capacity,
+namespace_name,
+patch_version,
+pending_track_name,
 port,
-pricePerformanceTarget,
-publiclyAccessible,
-securityGroupIds,
+price_performance_target,
+publicly_accessible,
+security_group_ids,
 status,
-subnetIds,
-trackName,
-workgroupArn,
-workgroupId,
-workgroupName,
-workgroupVersion
+subnet_ids,
+track_name,
+workgroup_arn,
+workgroup_id,
+workgroup_name,
+workgroup_version
 FROM aws.redshift_serverless.workgroups
 WHERE region = '{{ region }}' -- required
 ;
@@ -455,32 +455,32 @@ Returns information about a list of specified workgroups.
 
 ```sql
 SELECT
-baseCapacity,
-configParameters,
-creationDate,
-crossAccountVpcs,
-customDomainCertificateArn,
-customDomainCertificateExpiryTime,
-customDomainName,
+base_capacity,
+config_parameters,
+creation_date,
+cross_account_vpcs,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_time,
+custom_domain_name,
 endpoint,
-enhancedVpcRouting,
-extraComputeForAutomaticOptimization,
-ipAddressType,
-maxCapacity,
-namespaceName,
-patchVersion,
-pendingTrackName,
+enhanced_vpc_routing,
+extra_compute_for_automatic_optimization,
+ip_address_type,
+max_capacity,
+namespace_name,
+patch_version,
+pending_track_name,
 port,
-pricePerformanceTarget,
-publiclyAccessible,
-securityGroupIds,
+price_performance_target,
+publicly_accessible,
+security_group_ids,
 status,
-subnetIds,
-trackName,
-workgroupArn,
-workgroupId,
-workgroupName,
-workgroupVersion
+subnet_ids,
+track_name,
+workgroup_arn,
+workgroup_id,
+workgroup_name,
+workgroup_version
 FROM aws.redshift_serverless.workgroups
 WHERE region = '{{ region }}' -- required
 ;

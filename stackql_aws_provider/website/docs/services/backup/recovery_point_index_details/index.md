@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupVaultArn" /></td>
+    <td><CopyableCode code="backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies the backup vault where the recovery point index is stored. For example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexCompletionDate" /></td>
+    <td><CopyableCode code="index_completion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a backup index finished creation, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexCreationDate" /></td>
+    <td><CopyableCode code="index_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a backup index was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexDeletionDate" /></td>
+    <td><CopyableCode code="index_deletion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a backup index was deleted, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatus" /></td>
+    <td><CopyableCode code="index_status" /></td>
     <td><code>string</code></td>
     <td>This is the current status for the backup index associated with the specified recovery point. Statuses are: PENDING | ACTIVE | FAILED | DELETING A recovery point with an index that has the status of ACTIVE can be included in a search. (PENDING, ACTIVE, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatusMessage" /></td>
+    <td><CopyableCode code="index_status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed message explaining the status of a backup index associated with the recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryPointArn" /></td>
+    <td><CopyableCode code="recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceResourceArn" /></td>
+    <td><CopyableCode code="source_resource_arn" /></td>
     <td><code>string</code></td>
     <td>A string of the Amazon Resource Name (ARN) that uniquely identifies the source resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalItemsIndexed" /></td>
+    <td><CopyableCode code="total_items_indexed" /></td>
     <td><code>integer (int64)</code></td>
     <td>Count of items within the backup index associated with the recovery point.</td>
 </tr>
@@ -169,15 +169,15 @@ This operation returns the metadata and details specific to the backup index ass
 
 ```sql
 SELECT
-BackupVaultArn,
-IndexCompletionDate,
-IndexCreationDate,
-IndexDeletionDate,
-IndexStatus,
-IndexStatusMessage,
-RecoveryPointArn,
-SourceResourceArn,
-TotalItemsIndexed
+backup_vault_arn,
+index_completion_date,
+index_creation_date,
+index_deletion_date,
+index_status,
+index_status_message,
+recovery_point_arn,
+source_resource_arn,
+total_items_indexed
 FROM aws.backup.recovery_point_index_details
 WHERE backup_vault_name = '{{ backup_vault_name }}' -- required
 AND recovery_point_arn = '{{ recovery_point_arn }}' -- required

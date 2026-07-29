@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountIds" /></td>
+    <td><CopyableCode code="account_ids" /></td>
     <td><code>array</code></td>
     <td>Information about the Amazon Web Services accounts with access to the portfolio.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The page token to use to retrieve the next set of results. If there are no additional results, this value is null. (pattern: &lt;code&gt;&#91;\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the account IDs that have access to the specified portfolio. A delegated a
 
 ```sql
 SELECT
-AccountIds,
-NextPageToken
+account_ids,
+next_page_token
 FROM aws.servicecatalog.portfolio_access
 WHERE region = '{{ region }}' -- required
 ;

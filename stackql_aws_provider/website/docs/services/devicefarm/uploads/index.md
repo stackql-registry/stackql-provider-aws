@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The upload's category. Allowed values include: CURATED: An upload managed by AWS Device Farm. PRIVATE: An upload managed by the AWS Device Farm customer. (CURATED, PRIVATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The upload's content type (for example, application/octet-stream).</td>
 </tr>
@@ -195,7 +195,7 @@ SELECT
 name,
 arn,
 category,
-contentType,
+content_type,
 created,
 message,
 metadata,

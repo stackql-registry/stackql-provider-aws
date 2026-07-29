@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>The attribute name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The items returned as part of the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>integer</code></td>
     <td>The status code for the response.</td>
 </tr>
@@ -144,10 +144,10 @@ Fetch the possible attribute values given the attribute name.
 
 ```sql
 SELECT
-AttributeName,
-DomainName,
-Items,
-StatusCode
+attribute_name,
+domain_name,
+items,
+status_code
 FROM aws.customer_profiles.profile_attribute_values
 WHERE domain_name = '{{ domain_name }}' -- required
 AND attribute_name = '{{ attribute_name }}' -- required

@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedValues" /></td>
+    <td><CopyableCode code="allowed_values" /></td>
     <td><code>string</code></td>
     <td>A range of values within which the parameter can be set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeType" /></td>
+    <td><CopyableCode code="change_type" /></td>
     <td><code>string</code></td>
     <td>The conditions under which changes to this parameter can be applied. For example, requires-reboot indicates that a new value for this parameter will only take effect if a node is rebooted. (IMMEDIATE, REQUIRES_REBOOT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the parameter. For example, integer:</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the parameter</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsModifiable" /></td>
+    <td><CopyableCode code="is_modifiable" /></td>
     <td><code>string</code></td>
     <td>Whether the customer is allowed to modify the parameter. (TRUE, FALSE, CONDITIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeTypeSpecificValues" /></td>
+    <td><CopyableCode code="node_type_specific_values" /></td>
     <td><code>array</code></td>
     <td>A list of node types, and specific parameter values for each node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterName" /></td>
+    <td><CopyableCode code="parameter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterType" /></td>
+    <td><CopyableCode code="parameter_type" /></td>
     <td><code>string</code></td>
     <td>Determines whether the parameter can be applied to any nodes, or only nodes of a particular type. (DEFAULT, NODE_TYPE_SPECIFIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterValue" /></td>
+    <td><CopyableCode code="parameter_value" /></td>
     <td><code>string</code></td>
     <td>The value for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>How the parameter is defined. For example, system denotes a system-defined parameter.</td>
 </tr>
@@ -164,16 +164,16 @@ Returns the default system parameter information for the DAX caching software.
 
 ```sql
 SELECT
-AllowedValues,
-ChangeType,
-DataType,
-Description,
-IsModifiable,
-NodeTypeSpecificValues,
-ParameterName,
-ParameterType,
-ParameterValue,
-Source
+allowed_values,
+change_type,
+data_type,
+description,
+is_modifiable,
+node_type_specific_values,
+parameter_name,
+parameter_type,
+parameter_value,
+source
 FROM aws.dax.default_parameters
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HealthCheckCount" /></td>
+    <td><CopyableCode code="health_check_count" /></td>
     <td><code>integer</code></td>
     <td>The number of health checks associated with the current Amazon Web Services account.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the number of health checks that are associated with the current Amazo
 
 ```sql
 SELECT
-HealthCheckCount
+health_check_count
 FROM aws.route53.health_check_counts
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Members" /></td>
+    <td><CopyableCode code="members" /></td>
     <td><code>array</code></td>
     <td>A list of members.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedAccounts" /></td>
+    <td><CopyableCode code="unprocessed_accounts" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain the unprocessed account and a result string that explains why it was unprocessed.</td>
 </tr>
@@ -75,42 +75,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdministratorId" /></td>
+    <td><CopyableCode code="administrator_id" /></td>
     <td><code>string</code></td>
     <td>The administrator account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetectorId" /></td>
+    <td><CopyableCode code="detector_id" /></td>
     <td><code>string</code></td>
     <td>The detector ID of the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email address of the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitedAt" /></td>
+    <td><CopyableCode code="invited_at" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the invitation was sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterId" /></td>
+    <td><CopyableCode code="master_id" /></td>
     <td><code>string</code></td>
     <td>The administrator account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The status of the relationship between the member and the administrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string</code></td>
     <td>The last-updated timestamp of the member.</td>
 </tr>
@@ -249,8 +249,8 @@ Retrieves GuardDuty member accounts (of the current GuardDuty administrator acco
 
 ```sql
 SELECT
-Members,
-UnprocessedAccounts
+members,
+unprocessed_accounts
 FROM aws.guardduty.members
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -263,14 +263,14 @@ Lists details about all member accounts for the current GuardDuty administrator 
 
 ```sql
 SELECT
-AccountId,
-AdministratorId,
-DetectorId,
-Email,
-InvitedAt,
-MasterId,
-RelationshipStatus,
-UpdatedAt
+account_id,
+administrator_id,
+detector_id,
+email,
+invited_at,
+master_id,
+relationship_status,
+updated_at
 FROM aws.guardduty.members
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -307,7 +307,7 @@ SELECT
 '{{ detector_id }}',
 '{{ region }}'
 RETURNING
-UnprocessedAccounts
+unprocessed_accounts
 ;
 ```
 </TabItem>
@@ -353,7 +353,7 @@ detector_id = '{{ detector_id }}' --required
 AND region = '{{ region }}' --required
 AND AccountIds = '{{ AccountIds }}' --required
 RETURNING
-UnprocessedAccounts;
+unprocessed_accounts;
 ```
 </TabItem>
 </Tabs>

@@ -115,7 +115,7 @@ AND Username = '{{ Username }}' --required
 AND InstanceId = '{{ InstanceId }}' --required
 AND IdentityProvider = '{{ IdentityProvider }}' --required
 RETURNING
-InstanceUserSummary;
+instance_user_summary;
 ```
 </TabItem>
 <TabItem value="disassociate_user">
@@ -133,7 +133,7 @@ Domain = '{{ Domain }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-InstanceUserSummary;
+instance_user_summary;
 ```
 </TabItem>
 </Tabs>

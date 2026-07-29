@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The access point policy associated with the specified access point.</td>
 </tr>
@@ -143,7 +143,7 @@ Returns the access point policy associated with the specified access point. The 
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.s3control.access_point_policies
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

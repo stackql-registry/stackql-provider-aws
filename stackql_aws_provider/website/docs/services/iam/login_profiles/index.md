@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date when the password for the user was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PasswordResetRequired" /></td>
+    <td><CopyableCode code="password_reset_required" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the user is required to set a new password on next sign-in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user, which can be used for signing in to the Amazon Web Services Management Console.</td>
 </tr>
@@ -170,9 +170,9 @@ Retrieves the user name for the specified IAM user. A login profile is created w
 
 ```sql
 SELECT
-CreateDate,
-PasswordResetRequired,
-UserName
+create_date,
+password_reset_required,
+user_name
 FROM aws.iam.login_profiles
 WHERE region = '{{ region }}' -- required
 AND UserName = '{{ UserName }}'
@@ -208,9 +208,9 @@ SELECT
 '{{ Password }}',
 '{{ PasswordResetRequired }}'
 RETURNING
-CreateDate,
-PasswordResetRequired,
-UserName
+create_date,
+password_reset_required,
+user_name
 ;
 ```
 </TabItem>

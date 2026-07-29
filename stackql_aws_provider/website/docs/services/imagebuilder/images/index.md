@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The image object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestVersionReferences" /></td>
+    <td><CopyableCode code="latest_version_references" /></td>
     <td><code>object</code></td>
     <td>The resource ARNs with different wildcard variations of semantic versioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of a specific version of an Image Builder image. Semantic versioning is included in each object's Amazon Resource Name (ARN), at the level that applies to that object as follows: Versionless ARNs and Name ARNs do not include specific values in any of the nodes. The nodes are either left off entirely, or they are specified as wildcards, for example: x.x.x. Version ARNs have only the first three nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code> Build version ARNs have all four nodes, and point to a specific build for a specific version of an object. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildType" /></td>
+    <td><CopyableCode code="build_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the type of build that created this image. The build can be initiated in the following ways: USER_INITIATED – A manual pipeline build request. SCHEDULED – A pipeline build initiated by a cron expression in the Image Builder pipeline, or from EventBridge. IMPORT – A VM import created the image to use as the base image for the recipe. IMPORT_ISO – An ISO disk import created the image. (USER_INITIATED, SCHEDULED, IMPORT, IMPORT_ISO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date on which this specific version of the Image Builder image was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSource" /></td>
+    <td><CopyableCode code="image_source" /></td>
     <td><code>string</code></td>
     <td>The origin of the base image that Image Builder used to build this image. (AMAZON_MANAGED, AWS_MARKETPLACE, IMPORTED, CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osVersion" /></td>
+    <td><CopyableCode code="os_version" /></td>
     <td><code>string</code></td>
     <td>The operating system version of the Amazon EC2 build instance. For example, Amazon Linux 2, Ubuntu 18, or Microsoft Windows Server 2019.</td>
 </tr>
@@ -229,8 +229,8 @@ Gets an image.
 ```sql
 SELECT
 image,
-latestVersionReferences,
-requestId
+latest_version_references,
+request_id
 FROM aws.imagebuilder.images
 WHERE imageBuildVersionArn = '{{ imageBuildVersionArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -245,10 +245,10 @@ Returns the list of images that you have access to. Newly created images can tak
 SELECT
 name,
 arn,
-buildType,
-dateCreated,
-imageSource,
-osVersion,
+build_type,
+date_created,
+image_source,
+os_version,
 owner,
 platform,
 type_,
@@ -305,10 +305,10 @@ SELECT
 '{{ loggingConfiguration }}',
 '{{ region }}'
 RETURNING
-clientToken,
-imageBuildVersionArn,
-latestVersionReferences,
-requestId
+client_token,
+image_build_version_arn,
+latest_version_references,
+request_id
 ;
 ```
 </TabItem>

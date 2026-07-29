@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerProperties" /></td>
+    <td><CopyableCode code="server_properties" /></td>
     <td><code>string (byte)</code></td>
     <td>Contents of the server.properties file. When using the API, you must ensure that the contents of the file are base64 encoded. When using the AWS Management Console, the SDK, or the AWS CLI, the contents of server.properties can be in plaintext.</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the configuration revision was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number.</td>
 </tr>
@@ -197,11 +197,11 @@ Returns a description of this revision of the configuration.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-Description,
-Revision,
-ServerProperties
+arn,
+creation_time,
+description,
+revision,
+server_properties
 FROM aws.kafka.configuration_revisions
 WHERE arn = '{{ arn }}' -- required
 AND revision = '{{ revision }}' -- required
@@ -215,9 +215,9 @@ Returns a list of all the MSK configurations in this Region.
 
 ```sql
 SELECT
-CreationTime,
-Description,
-Revision
+creation_time,
+description,
+revision
 FROM aws.kafka.configuration_revisions
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

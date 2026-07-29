@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentArn" /></td>
+    <td><CopyableCode code="agent_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the agent that the version belongs to. (pattern: &lt;code&gt;arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:agent/&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentCollaboration" /></td>
+    <td><CopyableCode code="agent_collaboration" /></td>
     <td><code>string</code></td>
     <td>The agent's collaboration settings. (SUPERVISOR, SUPERVISOR_ROUTER, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentId" /></td>
+    <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent that the version belongs to. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentName" /></td>
+    <td><CopyableCode code="agent_name" /></td>
     <td><code>string</code></td>
     <td>The name of the agent that the version belongs to. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentResourceRoleArn" /></td>
+    <td><CopyableCode code="agent_resource_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role with permissions to invoke API operations on the agent. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentStatus" /></td>
+    <td><CopyableCode code="agent_status" /></td>
     <td><code>string</code></td>
     <td>The status of the agent that the version belongs to. (CREATING, PREPARING, PREPARED, NOT_PREPARED, DELETING, FAILED, VERSIONING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerEncryptionKeyArn" /></td>
+    <td><CopyableCode code="customer_encryption_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key that encrypts the agent. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -96,22 +96,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>A list of reasons that the API operation on the version failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="foundationModel" /></td>
+    <td><CopyableCode code="foundation_model" /></td>
     <td><code>string</code></td>
     <td>The foundation model that the version invokes. (pattern: &lt;code&gt;(arn:aws(-&#91;^:&#93;&#123;1,12&#125;)?:(bedrock|sagemaker):&#91;a-z0-9-&#93;&#123;1,20&#125;:(&#91;0-9&#93;&#123;12&#125;)?:(&#91;a-z-&#93;+/)?)?(&#91;a-zA-Z0-9.-&#93;&#123;1,63&#125;)&#123;0,2&#125;((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?(/&#91;a-z0-9&#93;&#123;1,12&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardrailConfiguration" /></td>
+    <td><CopyableCode code="guardrail_configuration" /></td>
     <td><code>object</code></td>
     <td>Details about a guardrail associated with a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="idleSessionTTLInSeconds" /></td>
+    <td><CopyableCode code="idle_session_ttl_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>The number of seconds for which Amazon Bedrock keeps information about a user's conversation with the agent. A user interaction remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Bedrock deletes any data provided before the timeout.</td>
 </tr>
@@ -121,22 +121,22 @@ The following fields are returned by `SELECT` queries:
     <td>The instructions provided to the agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryConfiguration" /></td>
+    <td><CopyableCode code="memory_configuration" /></td>
     <td><code>object</code></td>
     <td>Details of the memory configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="promptOverrideConfiguration" /></td>
+    <td><CopyableCode code="prompt_override_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains configurations to override prompts in different parts of an agent sequence. For more information, see Advanced prompts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendedActions" /></td>
+    <td><CopyableCode code="recommended_actions" /></td>
     <td><code>array</code></td>
     <td>A list of recommended actions to take for the failed API operation on the version to succeed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the version was last updated.</td>
 </tr>
@@ -160,22 +160,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentName" /></td>
+    <td><CopyableCode code="agent_name" /></td>
     <td><code>string</code></td>
     <td>The name of the agent to which the version belongs. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentStatus" /></td>
+    <td><CopyableCode code="agent_status" /></td>
     <td><code>string</code></td>
     <td>The status of the agent to which the version belongs. (CREATING, PREPARING, PREPARED, NOT_PREPARED, DELETING, FAILED, VERSIONING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentVersion" /></td>
+    <td><CopyableCode code="agent_version" /></td>
     <td><code>string</code></td>
     <td>The version of the agent. (pattern: &lt;code&gt;(DRAFT|&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the version was created.</td>
 </tr>
@@ -185,12 +185,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the version of the agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardrailConfiguration" /></td>
+    <td><CopyableCode code="guardrail_configuration" /></td>
     <td><code>object</code></td>
     <td>Details about a guardrail associated with a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the version was last updated.</td>
 </tr>
@@ -289,24 +289,24 @@ Gets details about a version of an agent.
 
 ```sql
 SELECT
-agentArn,
-agentCollaboration,
-agentId,
-agentName,
-agentResourceRoleArn,
-agentStatus,
-createdAt,
-customerEncryptionKeyArn,
+agent_arn,
+agent_collaboration,
+agent_id,
+agent_name,
+agent_resource_role_arn,
+agent_status,
+created_at,
+customer_encryption_key_arn,
 description,
-failureReasons,
-foundationModel,
-guardrailConfiguration,
-idleSessionTTLInSeconds,
+failure_reasons,
+foundation_model,
+guardrail_configuration,
+idle_session_ttl_in_seconds,
 instruction,
-memoryConfiguration,
-promptOverrideConfiguration,
-recommendedActions,
-updatedAt,
+memory_configuration,
+prompt_override_configuration,
+recommended_actions,
+updated_at,
 version
 FROM aws.bedrock_agent.agent_versions
 WHERE agent_id = '{{ agent_id }}' -- required
@@ -321,13 +321,13 @@ Lists the versions of an agent and information about each version.
 
 ```sql
 SELECT
-agentName,
-agentStatus,
-agentVersion,
-createdAt,
+agent_name,
+agent_status,
+agent_version,
+created_at,
 description,
-guardrailConfiguration,
-updatedAt
+guardrail_configuration,
+updated_at
 FROM aws.bedrock_agent.agent_versions
 WHERE agent_id = '{{ agent_id }}' -- required
 AND region = '{{ region }}' -- required

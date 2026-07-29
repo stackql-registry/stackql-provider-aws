@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TargetSelectionRules" /></td>
+    <td><CopyableCode code="target_selection_rules" /></td>
     <td><code>string</code></td>
     <td>The JSON string representing the counterpart selection rules in the target.</td>
 </tr>
@@ -119,7 +119,7 @@ Converts source selection rules into their target counterparts for schema conver
 
 ```sql
 SELECT
-TargetSelectionRules
+target_selection_rules
 FROM aws.dms.target_selection_rules
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>Object Lambda Access Point resource policy document.</td>
 </tr>
@@ -143,7 +143,7 @@ This operation is not supported by directory buckets. Returns the resource polic
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.s3control.access_point_policy_for_object_lambdas
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

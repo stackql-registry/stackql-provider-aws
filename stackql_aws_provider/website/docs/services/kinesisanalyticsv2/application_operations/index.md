@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationVersionChangeDetails" /></td>
+    <td><CopyableCode code="application_version_change_details" /></td>
     <td><code>object</code></td>
     <td>Contains information about the version changes that the operation applied to the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the operation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>The type of operation that is performed on an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationFailureDetails" /></td>
+    <td><CopyableCode code="operation_failure_details" /></td>
     <td><code>object</code></td>
     <td>Provides a description of the operation failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationStatus" /></td>
+    <td><CopyableCode code="operation_status" /></td>
     <td><code>string</code></td>
     <td>The status of the operation. (IN_PROGRESS, CANCELLED, SUCCESSFUL, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the operation was created.</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the operation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>The type of operation that is performed on an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationId" /></td>
+    <td><CopyableCode code="operation_id" /></td>
     <td><code>string</code></td>
     <td>The operation ID of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationStatus" /></td>
+    <td><CopyableCode code="operation_status" /></td>
     <td><code>string</code></td>
     <td>The status of the operation. (IN_PROGRESS, CANCELLED, SUCCESSFUL, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the operation was created.</td>
 </tr>
@@ -192,12 +192,12 @@ Provides a detailed description of a specified application operation. To see a l
 
 ```sql
 SELECT
-ApplicationVersionChangeDetails,
-EndTime,
-Operation,
-OperationFailureDetails,
-OperationStatus,
-StartTime
+application_version_change_details,
+end_time,
+operation,
+operation_failure_details,
+operation_status,
+start_time
 FROM aws.kinesisanalyticsv2.application_operations
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,11 +209,11 @@ Lists all the operations performed for the specified application such as UpdateA
 
 ```sql
 SELECT
-EndTime,
-Operation,
-OperationId,
-OperationStatus,
-StartTime
+end_time,
+operation,
+operation_id,
+operation_status,
+start_time
 FROM aws.kinesisanalyticsv2.application_operations
 WHERE region = '{{ region }}' -- required
 ;

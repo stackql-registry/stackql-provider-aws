@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Answers" /></td>
+    <td><CopyableCode code="answers" /></td>
     <td><code>array</code></td>
     <td>The definition of all Answers in the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the topic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicId" /></td>
+    <td><CopyableCode code="topic_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the topic that contains the reviewed answer that you want to list. This ID is unique per Amazon Web Services Region for each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.\\+&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -149,11 +149,11 @@ Lists all reviewed answers for a Q Topic.
 
 ```sql
 SELECT
-Answers,
-RequestId,
-Status,
-TopicArn,
-TopicId
+answers,
+request_id,
+status,
+topic_arn,
+topic_id
 FROM aws.quicksight.topic_reviewed_answers
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND topic_id = '{{ topic_id }}' -- required

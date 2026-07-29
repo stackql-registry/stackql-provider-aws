@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>array</code></td>
     <td>The resulting action based on matching a routing rules condition. Only InvokeApi is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Conditions" /></td>
+    <td><CopyableCode code="conditions" /></td>
     <td><code>array</code></td>
     <td>The conditions of the routing rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The routing rule priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingRuleArn" /></td>
+    <td><CopyableCode code="routing_rule_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingRuleId" /></td>
+    <td><CopyableCode code="routing_rule_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>array</code></td>
     <td>The routing rule action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Conditions" /></td>
+    <td><CopyableCode code="conditions" /></td>
     <td><code>array</code></td>
     <td>The routing rule condition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The routing rule priority.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingRuleArn" /></td>
+    <td><CopyableCode code="routing_rule_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingRuleId" /></td>
+    <td><CopyableCode code="routing_rule_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
@@ -233,11 +233,11 @@ Gets a routing rule.
 
 ```sql
 SELECT
-Actions,
-Conditions,
-Priority,
-RoutingRuleArn,
-RoutingRuleId
+actions,
+conditions,
+priority,
+routing_rule_arn,
+routing_rule_id
 FROM aws.apigatewayv2.routing_rules
 WHERE domain_name = '{{ domain_name }}' -- required
 AND routing_rule_id = '{{ routing_rule_id }}' -- required
@@ -252,11 +252,11 @@ Lists routing rules.
 
 ```sql
 SELECT
-Actions,
-Conditions,
-Priority,
-RoutingRuleArn,
-RoutingRuleId
+actions,
+conditions,
+priority,
+routing_rule_arn,
+routing_rule_id
 FROM aws.apigatewayv2.routing_rules
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -299,11 +299,11 @@ SELECT
 '{{ region }}',
 '{{ domainNameId }}'
 RETURNING
-Actions,
-Conditions,
-Priority,
-RoutingRuleArn,
-RoutingRuleId
+actions,
+conditions,
+priority,
+routing_rule_arn,
+routing_rule_id
 ;
 ```
 </TabItem>
@@ -371,11 +371,11 @@ AND routing_rule_id = '{{ routing_rule_id }}' --required
 AND region = '{{ region }}' --required
 AND domainNameId = '{{ domainNameId}}'
 RETURNING
-Actions,
-Conditions,
-Priority,
-RoutingRuleArn,
-RoutingRuleId;
+actions,
+conditions,
+priority,
+routing_rule_arn,
+routing_rule_id;
 ```
 </TabItem>
 </Tabs>

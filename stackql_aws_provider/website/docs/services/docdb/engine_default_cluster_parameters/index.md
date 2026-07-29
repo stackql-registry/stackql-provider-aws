@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBParameterGroupFamily" /></td>
+    <td><CopyableCode code="db_parameter_group_family" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster parameter group family to return the engine parameter information for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>The parameters of a particular cluster parameter group family.</td>
 </tr>
@@ -149,9 +149,9 @@ Returns the default engine and system parameter information for the cluster data
 
 ```sql
 SELECT
-DBParameterGroupFamily,
-Marker,
-Parameters
+db_parameter_group_family,
+marker,
+parameters
 FROM aws.docdb.engine_default_cluster_parameters
 WHERE DBParameterGroupFamily = '{{ DBParameterGroupFamily }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastUsedDate" /></td>
+    <td><CopyableCode code="last_used_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the access key was most recently used. This field is null in the following situations: The user does not have an access key. An access key exists but has not been used since IAM began tracking this information. There is no sign-in data associated with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where this access key was most recently used. The value for this field is "N/A" in the following situations: The user does not have an access key. An access key exists but has not been used since IAM began tracking this information. There is no sign-in data associated with the user. For more information about Amazon Web Services Regions, see Regions and endpoints in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services service with which this access key was most recently used. The value of this field is "N/A" in the following situations: The user does not have an access key. An access key exists but has not been used since IAM started tracking this information. There is no sign-in data associated with the user.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves information about when the specified access key was last used. The inf
 
 ```sql
 SELECT
-LastUsedDate,
-Region,
-ServiceName
+last_used_date,
+region,
+service_name
 FROM aws.iam.access_key_last_useds
 WHERE AccessKeyId = '{{ AccessKeyId }}' -- required
 AND region = '{{ region }}' -- required

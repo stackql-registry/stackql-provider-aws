@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlternateContactType" /></td>
+    <td><CopyableCode code="alternate_contact_type" /></td>
     <td><code>string</code></td>
     <td>The type of alternate contact. (BILLING, OPERATIONS, SECURITY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address associated with this alternate contact. (pattern: &lt;code&gt;&#91;\s&#93;*&#91;\w+=.#|!&-&#93;+@&#91;\w.-&#93;+\.&#91;\w&#93;+&#91;\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name associated with this alternate contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number associated with this alternate contact. (pattern: &lt;code&gt;&#91;\s0-9()+-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>The title associated with this alternate contact.</td>
 </tr>
@@ -153,11 +153,11 @@ Retrieves the specified alternate contact attached to an Amazon Web Services acc
 
 ```sql
 SELECT
-AlternateContactType,
-EmailAddress,
-Name,
-PhoneNumber,
-Title
+alternate_contact_type,
+email_address,
+name,
+phone_number,
+title
 FROM aws.account.alternate_contacts
 WHERE region = '{{ region }}' -- required
 ;

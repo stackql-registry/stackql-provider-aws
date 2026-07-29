@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs that are assigned to a resource, usually for the purpose of grouping and searching for items. Tags are metadata that you define.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists all of the tags associated with the Amazon Resource Name (ARN) that you sp
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.chatbot.tags
 WHERE region = '{{ region }}' -- required
 ;

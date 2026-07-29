@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>Describes the strength of the association between the package and package group. A strong match can be thought of as an exact match, and a weak match can be thought of as a variation match, for example, the package name matches a variation of the package group pattern. For more information about package group pattern matching, including strong and weak matches, see Package group definition syntax and matching behavior in the CodeArtifact User Guide. (STRONG, WEAK)</td>
 </tr>
@@ -164,7 +164,7 @@ Returns a list of packages associated with the requested package group. For info
 
 ```sql
 SELECT
-associationType,
+association_type,
 format_,
 namespace,
 package

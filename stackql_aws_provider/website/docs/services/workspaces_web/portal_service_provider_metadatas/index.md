@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="portalArn" /></td>
+    <td><CopyableCode code="portal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the web portal. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceProviderSamlMetadata" /></td>
+    <td><CopyableCode code="service_provider_saml_metadata" /></td>
     <td><code>string</code></td>
     <td>The service provider SAML metadata. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ Gets the service provider metadata.
 
 ```sql
 SELECT
-portalArn,
-serviceProviderSamlMetadata
+portal_arn,
+service_provider_saml_metadata
 FROM aws.workspaces_web.portal_service_provider_metadatas
 WHERE portal_arn = '{{ portal_arn }}' -- required
 AND region = '{{ region }}' -- required

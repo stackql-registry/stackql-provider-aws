@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="apiMode" /></td>
+    <td><CopyableCode code="api_mode" /></td>
     <td><code>string</code></td>
     <td>Indicates whether we use streaming or non-streaming APIs are used for the test set execution. For streaming, StartConversation Amazon Lex Runtime API is used. Whereas for non-streaming, RecognizeUtterance and RecognizeText Amazon Lex Runtime API is used. (Streaming, NonStreaming)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The execution creation date and time for the test set execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>Reasons for the failure of the test set execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the last update for the execution.</td>
 </tr>
@@ -76,27 +76,27 @@ The following fields are returned by `SELECT` queries:
     <td>The target bot for the test set execution details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testExecutionId" /></td>
+    <td><CopyableCode code="test_execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution Id for the test set execution. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testExecutionModality" /></td>
+    <td><CopyableCode code="test_execution_modality" /></td>
     <td><code>string</code></td>
     <td>Indicates whether test set is audio or text. (Text, Audio)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testExecutionStatus" /></td>
+    <td><CopyableCode code="test_execution_status" /></td>
     <td><code>string</code></td>
     <td>The test execution status for the test execution. (Pending, Waiting, InProgress, Completed, Failed, Stopping, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetId" /></td>
+    <td><CopyableCode code="test_set_id" /></td>
     <td><code>string</code></td>
     <td>The test set Id for the test set execution. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetName" /></td>
+    <td><CopyableCode code="test_set_name" /></td>
     <td><code>string</code></td>
     <td>The test set name of the test set execution. (pattern: &lt;code&gt;^(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListTestExecutions operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListTestExecutions operation request to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testExecutions" /></td>
+    <td><CopyableCode code="test_executions" /></td>
     <td><code>array</code></td>
     <td>The list of test executions.</td>
 </tr>
@@ -202,16 +202,16 @@ Gets metadata information about the test execution.
 
 ```sql
 SELECT
-apiMode,
-creationDateTime,
-failureReasons,
-lastUpdatedDateTime,
+api_mode,
+creation_date_time,
+failure_reasons,
+last_updated_date_time,
 target,
-testExecutionId,
-testExecutionModality,
-testExecutionStatus,
-testSetId,
-testSetName
+test_execution_id,
+test_execution_modality,
+test_execution_status,
+test_set_id,
+test_set_name
 FROM aws.lexv2_models.test_executions
 WHERE test_execution_id = '{{ test_execution_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -224,8 +224,8 @@ The list of test set executions.
 
 ```sql
 SELECT
-nextToken,
-testExecutions
+next_token,
+test_executions
 FROM aws.lexv2_models.test_executions
 WHERE region = '{{ region }}' -- required
 ;

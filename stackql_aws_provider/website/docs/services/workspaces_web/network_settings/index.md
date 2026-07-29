@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedPortalArns" /></td>
+    <td><CopyableCode code="associated_portal_arns" /></td>
     <td><code>array</code></td>
     <td>A list of web portal ARNs that this network settings is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkSettingsArn" /></td>
+    <td><CopyableCode code="network_settings_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the network settings. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;a-zA-Z0-9&#93;&#123;1,12&#125;:&#91;a-zA-Z&#93;+(\/&#91;a-fA-F0-9\-&#93;&#123;36&#125;)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>array</code></td>
     <td>One or more security groups used to control access from streaming instances to your VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>array</code></td>
     <td>The subnets in which network interfaces are created to connect streaming instances to your VPC. At least two of these subnets must be in different availability zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC that streaming instances will connect to. (pattern: &lt;code&gt;vpc-&#91;0-9a-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="networkSettings" /></td>
+    <td><CopyableCode code="network_settings" /></td>
     <td><code>array</code></td>
     <td>The network settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token used to retrieve the next page of results for this operation. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -232,11 +232,11 @@ Gets the network settings.
 
 ```sql
 SELECT
-associatedPortalArns,
-networkSettingsArn,
-securityGroupIds,
-subnetIds,
-vpcId
+associated_portal_arns,
+network_settings_arn,
+security_group_ids,
+subnet_ids,
+vpc_id
 FROM aws.workspaces_web.network_settings
 WHERE network_settings_arn = '{{ network_settings_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -249,8 +249,8 @@ Retrieves a list of network settings.
 
 ```sql
 SELECT
-networkSettings,
-nextToken
+network_settings,
+next_token
 FROM aws.workspaces_web.network_settings
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -291,7 +291,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-networkSettingsArn
+network_settings_arn
 ;
 ```
 </TabItem>
@@ -346,8 +346,8 @@ portal_arn = '{{ portal_arn }}' --required
 AND networkSettingsArn = '{{ networkSettingsArn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-networkSettingsArn,
-portalArn;
+network_settings_arn,
+portal_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_network_settings">
@@ -378,7 +378,7 @@ WHERE
 network_settings_arn = '{{ network_settings_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-networkSettings;
+network_settings;
 ```
 </TabItem>
 </Tabs>

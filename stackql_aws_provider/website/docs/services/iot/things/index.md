@@ -56,32 +56,32 @@ The following fields are returned by `SELECT` queries:
     <td>The thing attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="billingGroupName" /></td>
+    <td><CopyableCode code="billing_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the billing group the thing belongs to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultClientId" /></td>
+    <td><CopyableCode code="default_client_id" /></td>
     <td><code>string</code></td>
     <td>The default MQTT client ID. For a typical device, the thing name is also used as the default MQTT client ID. Although we don’t require a mapping between a thing's registry name and its use of MQTT client IDs, certificates, or shadow state, we recommend that you choose a thing name and use it as the MQTT client ID for the registry and the Device Shadow service. This lets you better organize your IoT fleet without removing the flexibility of the underlying device certificate model or shadows.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingArn" /></td>
+    <td><CopyableCode code="thing_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the thing to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingId" /></td>
+    <td><CopyableCode code="thing_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the thing to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeName" /></td>
+    <td><CopyableCode code="thing_type_name" /></td>
     <td><code>string</code></td>
     <td>The thing type name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>A list of thing attributes which are name-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingArn" /></td>
+    <td><CopyableCode code="thing_arn" /></td>
     <td><code>string</code></td>
     <td>The thing ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingTypeName" /></td>
+    <td><CopyableCode code="thing_type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing type, if the thing has been associated with a type. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -290,12 +290,12 @@ Gets information about the specified thing. Requires permission to access the De
 ```sql
 SELECT
 attributes,
-billingGroupName,
-defaultClientId,
-thingArn,
-thingId,
-thingName,
-thingTypeName,
+billing_group_name,
+default_client_id,
+thing_arn,
+thing_id,
+thing_name,
+thing_type_name,
 version
 FROM aws.iot.things
 WHERE thing_name = '{{ thing_name }}' -- required
@@ -310,9 +310,9 @@ Lists your things. Use the attributeName and attributeValue parameters to filter
 ```sql
 SELECT
 attributes,
-thingArn,
-thingName,
-thingTypeName,
+thing_arn,
+thing_name,
+thing_type_name,
 version
 FROM aws.iot.things
 WHERE region = '{{ region }}' -- required
@@ -357,9 +357,9 @@ SELECT
 '{{ thing_name }}',
 '{{ region }}'
 RETURNING
-thingArn,
-thingId,
-thingName
+thing_arn,
+thing_id,
+thing_name
 ;
 ```
 </TabItem>
@@ -378,8 +378,8 @@ SELECT
 '{{ parameters }}',
 '{{ region }}'
 RETURNING
-certificatePem,
-resourceArns
+certificate_pem,
+resource_arns
 ;
 ```
 </TabItem>

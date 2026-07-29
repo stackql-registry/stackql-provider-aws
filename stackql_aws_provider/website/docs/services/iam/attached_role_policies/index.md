@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PolicyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. For more information about ARNs, go to Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the attached policy.</td>
 </tr>
@@ -144,8 +144,8 @@ Lists all managed policies that are attached to the specified IAM role. An IAM r
 
 ```sql
 SELECT
-PolicyArn,
-PolicyName
+policy_arn,
+policy_name
 FROM aws.iam.attached_role_policies
 WHERE RoleName = '{{ RoleName }}' -- required
 AND region = '{{ region }}' -- required

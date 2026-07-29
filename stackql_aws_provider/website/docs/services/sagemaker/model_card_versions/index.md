@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the model card version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time date and time that the model card version was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardArn" /></td>
+    <td><CopyableCode code="model_card_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model card. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-card/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardName" /></td>
+    <td><CopyableCode code="model_card_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model card. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardStatus" /></td>
+    <td><CopyableCode code="model_card_status" /></td>
     <td><code>string</code></td>
     <td>The approval status of the model card version within your organization. Different organizations might have different criteria for model card review and approval. Draft: The model card is a work in progress. PendingReview: The model card is pending review. Approved: The model card is approved. Archived: The model card is archived. No more updates should be made to the model card, but it can still be exported. (Draft, PendingReview, Approved, Archived)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelCardVersion" /></td>
+    <td><CopyableCode code="model_card_version" /></td>
     <td><code>integer</code></td>
     <td>A version of the model card.</td>
 </tr>
@@ -144,12 +144,12 @@ List existing versions of an Amazon SageMaker Model Card.
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-ModelCardArn,
-ModelCardName,
-ModelCardStatus,
-ModelCardVersion
+creation_time,
+last_modified_time,
+model_card_arn,
+model_card_name,
+model_card_status,
+model_card_version
 FROM aws.sagemaker.model_card_versions
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The date and time when the phone number was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iso2CountryCode" /></td>
+    <td><CopyableCode code="iso_2_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code for the country or region, in ISO 3166-1 alpha-2 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberCapabilities" /></td>
+    <td><CopyableCode code="number_capabilities" /></td>
     <td><code>string</code></td>
     <td>The capabilities of each phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteType" /></td>
+    <td><CopyableCode code="route_type" /></td>
     <td><code>string</code></td>
     <td>The list of supported routes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the phone number.</td>
 </tr>
@@ -154,12 +154,12 @@ Lists the calling Amazon Web Services account's dedicated origination numbers an
 
 ```sql
 SELECT
-CreatedAt,
-Iso2CountryCode,
-NumberCapabilities,
-PhoneNumber,
-RouteType,
-Status
+created_at,
+iso_2_country_code,
+number_capabilities,
+phone_number,
+route_type,
+status
 FROM aws.sns.origination_numbers
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

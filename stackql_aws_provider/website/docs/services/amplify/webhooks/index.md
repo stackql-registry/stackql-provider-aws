@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token. If non-null, the pagination token is returned in a result. Pass its value in another request to retrieve more entries. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of an Amplify app. (pattern: &lt;code&gt;d&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchName" /></td>
+    <td><CopyableCode code="branch_name" /></td>
     <td><code>string</code></td>
     <td>The name for a branch that is part of an Amplify app. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify created the webhook in your Git repository.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description for a webhook. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify updated the webhook in your Git repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webhookArn" /></td>
+    <td><CopyableCode code="webhook_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the webhook.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webhookId" /></td>
+    <td><CopyableCode code="webhook_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the webhook. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webhookUrl" /></td>
+    <td><CopyableCode code="webhook_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the webhook.</td>
 </tr>
@@ -228,7 +228,7 @@ Returns a list of webhooks for an Amplify app.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 webhooks
 FROM aws.amplify.webhooks
 WHERE app_id = '{{ app_id }}' -- required
@@ -244,14 +244,14 @@ Returns the webhook information that corresponds to a specified webhook ID.
 
 ```sql
 SELECT
-appId,
-branchName,
-createTime,
+app_id,
+branch_name,
+create_time,
 description,
-updateTime,
-webhookArn,
-webhookId,
-webhookUrl
+update_time,
+webhook_arn,
+webhook_id,
+webhook_url
 FROM aws.amplify.webhooks
 WHERE webhook_id = '{{ webhook_id }}' -- required
 AND region = '{{ region }}' -- required

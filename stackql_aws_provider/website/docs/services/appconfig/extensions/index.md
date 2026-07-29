@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>object</code></td>
     <td>The actions defined in the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The system-generated Amazon Resource Name (ARN) for the extension. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Information about the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID of the extension. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The extension name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer</code></td>
     <td>The extension version number.</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The system-generated Amazon Resource Name (ARN) for the extension. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Information about the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID of the extension. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The extension name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer</code></td>
     <td>The extension version number.</td>
 </tr>
@@ -253,13 +253,13 @@ Returns information about an AppConfig extension.
 
 ```sql
 SELECT
-Actions,
-Arn,
-Description,
-Id,
-Name,
-Parameters,
-VersionNumber
+actions,
+arn,
+description,
+id,
+name,
+parameters,
+version_number
 FROM aws.appconfig.extensions
 WHERE extension_identifier = '{{ extension_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -273,11 +273,11 @@ Lists all custom and Amazon Web Services authored AppConfig extensions in the ac
 
 ```sql
 SELECT
-Arn,
-Description,
-Id,
-Name,
-VersionNumber
+arn,
+description,
+id,
+name,
+version_number
 FROM aws.appconfig.extensions
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -321,13 +321,13 @@ SELECT
 '{{ region }}',
 '{{ Latest-Version-Number }}'
 RETURNING
-Actions,
-Arn,
-Description,
-Id,
-Name,
-Parameters,
-VersionNumber
+actions,
+arn,
+description,
+id,
+name,
+parameters,
+version_number
 ;
 ```
 </TabItem>
@@ -382,13 +382,13 @@ WHERE
 extension_identifier = '{{ extension_identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Actions,
-Arn,
-Description,
-Id,
-Name,
-Parameters,
-VersionNumber;
+actions,
+arn,
+description,
+id,
+name,
+parameters,
+version_number;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the data export configuration report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration as part of the data export configuration details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isExportEnabled" /></td>
+    <td><CopyableCode code="is_export_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the export is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3TableBucketArn" /></td>
+    <td><CopyableCode code="s_3_table_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 table bucket ARN as part of the data export configuration details.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the data export configuration. (COMPLETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the data export configuration report was updated.</td>
 </tr>
@@ -163,12 +163,12 @@ Gets data export configuration details.
 
 ```sql
 SELECT
-createdAt,
-encryptionConfiguration,
-isExportEnabled,
-s3TableBucketArn,
+created_at,
+encryption_configuration,
+is_export_enabled,
+s_3_table_bucket_arn,
 status,
-updatedAt
+updated_at
 FROM aws.datazone.data_export_configurations
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required

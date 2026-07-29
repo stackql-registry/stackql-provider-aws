@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:partition:resiliencehub:region:account:app/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>string</code></td>
     <td>Version of an application. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentArn" /></td>
+    <td><CopyableCode code="assessment_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the assessment. The format for this ARN is: arn:partition:resiliencehub:region:account:app-assessment/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentName" /></td>
+    <td><CopyableCode code="assessment_name" /></td>
     <td><code>string</code></td>
     <td>Name of the assessment. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assessmentStatus" /></td>
+    <td><CopyableCode code="assessment_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the assessment for the resiliency policy. (Pending, InProgress, Failed, Success)</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>Application compliance against the resiliency policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="complianceStatus" /></td>
+    <td><CopyableCode code="compliance_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the compliance for the resiliency policy. (PolicyBreached, PolicyMet, NotApplicable, MissingPolicy)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>Cost for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="driftStatus" /></td>
+    <td><CopyableCode code="drift_status" /></td>
     <td><code>string</code></td>
     <td>Indicates if compliance drifts (deviations) were detected while running an assessment for your application. (NotChecked, NotDetected, Detected)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>End time for the action.</td>
 </tr>
@@ -116,17 +116,17 @@ The following fields are returned by `SELECT` queries:
     <td>Resiliency policy of an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resiliencyScore" /></td>
+    <td><CopyableCode code="resiliency_score" /></td>
     <td><code>object</code></td>
     <td>Current resiliency score for an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceErrorsDetails" /></td>
+    <td><CopyableCode code="resource_errors_details" /></td>
     <td><code>object</code></td>
     <td>A resource error object containing a list of errors retrieving an application's resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Starting time for the action.</td>
 </tr>
@@ -141,7 +141,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags assigned to the resource. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key/value pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>Version name of the published application. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assessmentSummaries" /></td>
+    <td><CopyableCode code="assessment_summaries" /></td>
     <td><code>array</code></td>
     <td>The summaries for the specified assessments, returned as an object. This object includes application versions, associated Amazon Resource Numbers (ARNs), cost, messages, resiliency scores, and more.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -289,25 +289,25 @@ Describes an assessment for an Resilience Hub application.
 
 ```sql
 SELECT
-appArn,
-appVersion,
-assessmentArn,
-assessmentName,
-assessmentStatus,
+app_arn,
+app_version,
+assessment_arn,
+assessment_name,
+assessment_status,
 compliance,
-complianceStatus,
+compliance_status,
 cost,
-driftStatus,
-endTime,
+drift_status,
+end_time,
 invoker,
 message,
 policy,
-resiliencyScore,
-resourceErrorsDetails,
-startTime,
+resiliency_score,
+resource_errors_details,
+start_time,
 summary,
 tags,
-versionName
+version_name
 FROM aws.resiliencehub.app_assessments
 WHERE region = '{{ region }}' -- required
 ;
@@ -319,8 +319,8 @@ Lists the assessments for an Resilience Hub application. You can use request par
 
 ```sql
 SELECT
-assessmentSummaries,
-nextToken
+assessment_summaries,
+next_token
 FROM aws.resiliencehub.app_assessments
 WHERE region = '{{ region }}' -- required
 AND appArn = '{{ appArn }}'

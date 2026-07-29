@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IpamPolicyEnabled" /></td>
+    <td><CopyableCode code="ipam_policy_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the IPAM policy is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPolicyId" /></td>
+    <td><CopyableCode code="ipam_policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the enabled IPAM policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the IPAM policy.</td>
 </tr>
@@ -134,9 +134,9 @@ Gets the enabled IPAM policy. An IPAM policy is a set of rules that define how p
 
 ```sql
 SELECT
-IpamPolicyEnabled,
-IpamPolicyId,
-ManagedBy
+ipam_policy_enabled,
+ipam_policy_id,
+managed_by
 FROM aws.ec2.enabled_ipam_policies
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

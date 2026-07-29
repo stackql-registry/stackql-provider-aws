@@ -55,27 +55,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name for the database bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the database bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cpuCount" /></td>
+    <td><CopyableCode code="cpu_count" /></td>
     <td><code>integer</code></td>
     <td>The number of virtual CPUs (vCPUs) for the database bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="diskSizeInGb" /></td>
+    <td><CopyableCode code="disk_size_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The size of the disk for the database bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isActive" /></td>
+    <td><CopyableCode code="is_active" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the database bundle is active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isEncrypted" /></td>
+    <td><CopyableCode code="is_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the database bundle is encrypted.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The cost of the database bundle in US currency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ramSizeInGb" /></td>
+    <td><CopyableCode code="ram_size_in_gb" /></td>
     <td><code>number (float)</code></td>
     <td>The amount of RAM in GB (for example, 2.0) for the database bundle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="transferPerMonthInGb" /></td>
+    <td><CopyableCode code="transfer_per_month_in_gb" /></td>
     <td><code>integer</code></td>
     <td>The data transfer rate per month in GB for the database bundle.</td>
 </tr>
@@ -160,14 +160,14 @@ Returns the list of bundles that are available in Amazon Lightsail. A bundle des
 ```sql
 SELECT
 name,
-bundleId,
-cpuCount,
-diskSizeInGb,
-isActive,
-isEncrypted,
+bundle_id,
+cpu_count,
+disk_size_in_gb,
+is_active,
+is_encrypted,
 price,
-ramSizeInGb,
-transferPerMonthInGb
+ram_size_in_gb,
+transfer_per_month_in_gb
 FROM aws.lightsail.relational_database_bundles
 WHERE region = '{{ region }}' -- required
 ;

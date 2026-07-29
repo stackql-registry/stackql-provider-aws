@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="shardIterator" /></td>
+    <td><CopyableCode code="shard_iterator" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the shard iterator. This value is used in the GetRecords operation to retrieve data records from the specified shard. Each shard iterator expires 15 minutes after it is returned to the requester.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns a shard iterator that serves as a bookmark for reading data from a speci
 
 ```sql
 SELECT
-shardIterator
+shard_iterator
 FROM aws.keyspacesstreams.shard_iterators
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessScope" /></td>
+    <td><CopyableCode code="access_scope" /></td>
     <td><code>object</code></td>
     <td>The scope of an AccessPolicy that's associated to an AccessEntry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedAt" /></td>
+    <td><CopyableCode code="associated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the AccessPolicy was associated with an AccessEntry.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp for the last modification to the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AccessPolicy.</td>
 </tr>
@@ -154,10 +154,10 @@ Lists the access policies associated with an access entry.
 
 ```sql
 SELECT
-accessScope,
-associatedAt,
-modifiedAt,
-policyArn
+access_scope,
+associated_at,
+modified_at,
+policy_arn
 FROM aws.eks.associated_access_policies
 WHERE name = '{{ name }}' -- required
 AND principal_arn = '{{ principal_arn }}' -- required

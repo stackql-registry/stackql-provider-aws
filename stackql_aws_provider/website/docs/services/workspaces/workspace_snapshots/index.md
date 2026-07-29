@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RebuildSnapshots" /></td>
+    <td><CopyableCode code="rebuild_snapshots" /></td>
     <td><code>array</code></td>
     <td>Information about the snapshots that can be used to rebuild a WorkSpace. These snapshots include the user volume.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreSnapshots" /></td>
+    <td><CopyableCode code="restore_snapshots" /></td>
     <td><code>array</code></td>
     <td>Information about the snapshots that can be used to restore a WorkSpace. These snapshots include both the root volume and the user volume.</td>
 </tr>
@@ -124,8 +124,8 @@ Describes the snapshots for the specified WorkSpace.
 
 ```sql
 SELECT
-RebuildSnapshots,
-RestoreSnapshots
+rebuild_snapshots,
+restore_snapshots
 FROM aws.workspaces.workspace_snapshots
 WHERE region = '{{ region }}' -- required
 ;

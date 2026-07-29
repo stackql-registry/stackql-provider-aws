@@ -55,192 +55,192 @@ The following fields are returned by `SELECT` queries:
     <td>The id of the event. Events are numbered sequentially, starting at one.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityFailedEventDetails" /></td>
+    <td><CopyableCode code="activity_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an activity that failed during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityScheduleFailedEventDetails" /></td>
+    <td><CopyableCode code="activity_schedule_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an activity schedule event that failed during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityScheduledEventDetails" /></td>
+    <td><CopyableCode code="activity_scheduled_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an activity scheduled during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityStartedEventDetails" /></td>
+    <td><CopyableCode code="activity_started_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the start of an activity during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activitySucceededEventDetails" /></td>
+    <td><CopyableCode code="activity_succeeded_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an activity that successfully terminated during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityTimedOutEventDetails" /></td>
+    <td><CopyableCode code="activity_timed_out_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an activity timeout that occurred during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="evaluationFailedEventDetails" /></td>
+    <td><CopyableCode code="evaluation_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an evaluation failure that occurred while processing a state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionAbortedEventDetails" /></td>
+    <td><CopyableCode code="execution_aborted_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an abort of an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionFailedEventDetails" /></td>
+    <td><CopyableCode code="execution_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an execution failure event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRedrivenEventDetails" /></td>
+    <td><CopyableCode code="execution_redriven_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the redrive attempt of an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStartedEventDetails" /></td>
+    <td><CopyableCode code="execution_started_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the start of the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionSucceededEventDetails" /></td>
+    <td><CopyableCode code="execution_succeeded_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the successful termination of the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionTimedOutEventDetails" /></td>
+    <td><CopyableCode code="execution_timed_out_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the execution timeout that occurred during the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionFailedEventDetails" /></td>
+    <td><CopyableCode code="lambda_function_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a Lambda function that failed during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionScheduleFailedEventDetails" /></td>
+    <td><CopyableCode code="lambda_function_schedule_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a failed Lambda function schedule event that occurred during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionScheduledEventDetails" /></td>
+    <td><CopyableCode code="lambda_function_scheduled_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a Lambda function scheduled during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionStartFailedEventDetails" /></td>
+    <td><CopyableCode code="lambda_function_start_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a lambda function that failed to start during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionSucceededEventDetails" /></td>
+    <td><CopyableCode code="lambda_function_succeeded_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a Lambda function that terminated successfully during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionTimedOutEventDetails" /></td>
+    <td><CopyableCode code="lambda_function_timed_out_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a Lambda function timeout that occurred during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapIterationAbortedEventDetails" /></td>
+    <td><CopyableCode code="map_iteration_aborted_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an iteration of a Map state that was aborted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapIterationFailedEventDetails" /></td>
+    <td><CopyableCode code="map_iteration_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an iteration of a Map state that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapIterationStartedEventDetails" /></td>
+    <td><CopyableCode code="map_iteration_started_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an iteration of a Map state that was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapIterationSucceededEventDetails" /></td>
+    <td><CopyableCode code="map_iteration_succeeded_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an iteration of a Map state that succeeded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapRunFailedEventDetails" /></td>
+    <td><CopyableCode code="map_run_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains error and cause details about a Map Run that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapRunRedrivenEventDetails" /></td>
+    <td><CopyableCode code="map_run_redriven_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the redrive attempt of a Map Run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapRunStartedEventDetails" /></td>
+    <td><CopyableCode code="map_run_started_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details, such as mapRunArn, and the start date and time of a Map Run. mapRunArn is the Amazon Resource Name (ARN) of the Map Run that was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapStateStartedEventDetails" /></td>
+    <td><CopyableCode code="map_state_started_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about Map state that was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="previousEventId" /></td>
+    <td><CopyableCode code="previous_event_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>The id of the previous event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateEnteredEventDetails" /></td>
+    <td><CopyableCode code="state_entered_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a state entered during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateExitedEventDetails" /></td>
+    <td><CopyableCode code="state_exited_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about an exit from a state during an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskFailedEventDetails" /></td>
+    <td><CopyableCode code="task_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about the failure of a task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskScheduledEventDetails" /></td>
+    <td><CopyableCode code="task_scheduled_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a task that was scheduled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStartFailedEventDetails" /></td>
+    <td><CopyableCode code="task_start_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a task that failed to start.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStartedEventDetails" /></td>
+    <td><CopyableCode code="task_started_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a task that was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskSubmitFailedEventDetails" /></td>
+    <td><CopyableCode code="task_submit_failed_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a task that where the submit failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskSubmittedEventDetails" /></td>
+    <td><CopyableCode code="task_submitted_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a submitted task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskSucceededEventDetails" /></td>
+    <td><CopyableCode code="task_succeeded_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a task that succeeded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskTimedOutEventDetails" /></td>
+    <td><CopyableCode code="task_timed_out_event_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a task that timed out.</td>
 </tr>
@@ -320,44 +320,44 @@ Returns the history of the specified execution as a list of events. By default, 
 ```sql
 SELECT
 id,
-activityFailedEventDetails,
-activityScheduleFailedEventDetails,
-activityScheduledEventDetails,
-activityStartedEventDetails,
-activitySucceededEventDetails,
-activityTimedOutEventDetails,
-evaluationFailedEventDetails,
-executionAbortedEventDetails,
-executionFailedEventDetails,
-executionRedrivenEventDetails,
-executionStartedEventDetails,
-executionSucceededEventDetails,
-executionTimedOutEventDetails,
-lambdaFunctionFailedEventDetails,
-lambdaFunctionScheduleFailedEventDetails,
-lambdaFunctionScheduledEventDetails,
-lambdaFunctionStartFailedEventDetails,
-lambdaFunctionSucceededEventDetails,
-lambdaFunctionTimedOutEventDetails,
-mapIterationAbortedEventDetails,
-mapIterationFailedEventDetails,
-mapIterationStartedEventDetails,
-mapIterationSucceededEventDetails,
-mapRunFailedEventDetails,
-mapRunRedrivenEventDetails,
-mapRunStartedEventDetails,
-mapStateStartedEventDetails,
-previousEventId,
-stateEnteredEventDetails,
-stateExitedEventDetails,
-taskFailedEventDetails,
-taskScheduledEventDetails,
-taskStartFailedEventDetails,
-taskStartedEventDetails,
-taskSubmitFailedEventDetails,
-taskSubmittedEventDetails,
-taskSucceededEventDetails,
-taskTimedOutEventDetails,
+activity_failed_event_details,
+activity_schedule_failed_event_details,
+activity_scheduled_event_details,
+activity_started_event_details,
+activity_succeeded_event_details,
+activity_timed_out_event_details,
+evaluation_failed_event_details,
+execution_aborted_event_details,
+execution_failed_event_details,
+execution_redriven_event_details,
+execution_started_event_details,
+execution_succeeded_event_details,
+execution_timed_out_event_details,
+lambda_function_failed_event_details,
+lambda_function_schedule_failed_event_details,
+lambda_function_scheduled_event_details,
+lambda_function_start_failed_event_details,
+lambda_function_succeeded_event_details,
+lambda_function_timed_out_event_details,
+map_iteration_aborted_event_details,
+map_iteration_failed_event_details,
+map_iteration_started_event_details,
+map_iteration_succeeded_event_details,
+map_run_failed_event_details,
+map_run_redriven_event_details,
+map_run_started_event_details,
+map_state_started_event_details,
+previous_event_id,
+state_entered_event_details,
+state_exited_event_details,
+task_failed_event_details,
+task_scheduled_event_details,
+task_start_failed_event_details,
+task_started_event_details,
+task_submit_failed_event_details,
+task_submitted_event_details,
+task_succeeded_event_details,
+task_timed_out_event_details,
 timestamp,
 type_
 FROM aws.stepfunctions.execution_histories

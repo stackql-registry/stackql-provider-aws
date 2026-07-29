@@ -122,7 +122,7 @@ SELECT
 '{{ Name }}' /* required */,
 '{{ region }}'
 RETURNING
-SchemaArn
+schema_arn
 ;
 ```
 </TabItem>
@@ -163,7 +163,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 RETURNING
-SchemaArn;
+schema_arn;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The format in which the image frame information is returned to the customer. Default is application/octet-stream. If the stored transfer syntax is 1.2.840.10008.1.2.1, the returned contentType is application/octet-stream. If the stored transfer syntax is 1.2.840.10008.1.2.4.50, the returned contentType is image/jpeg. If the stored transfer syntax is 1.2.840.10008.1.2.4.91, the returned contentType is image/j2c. If the stored transfer syntax is MPEG2, 1.2.840.10008.1.2.4.100, 1.2.840.10008.1.2.4.100.1, 1.2.840.10008.1.2.4.101, or 1.2.840.10008.1.2.4.101.1, the returned contentType is video/mpeg. If the stored transfer syntax is MPEG-4 AVC/H.264, UID 1.2.840.10008.1.2.4.102, 1.2.840.10008.1.2.4.102.1, 1.2.840.10008.1.2.4.103, 1.2.840.10008.1.2.4.103.1, 1.2.840.10008.1.2.4.104, 1.2.840.10008.1.2.4.104.1, 1.2.840.10008.1.2.4.105, 1.2.840.10008.1.2.4.105.1, 1.2.840.10008.1.2.4.106, or 1.2.840.10008.1.2.4.106.1, the returned contentType is video/mp4. If the stored transfer syntax is HEVC/H.265, UID 1.2.840.10008.1.2.4.107 or 1.2.840.10008.1.2.4.108, the returned contentType is video/H256. If the stored transfer syntax is 1.2.840.10008.1.2.4.202 or if the stored transfer syntax is missing, the returned contentType is image/jph. If the stored transfer syntax is 1.2.840.10008.1.2.4.203, the returned contentType is image/jphc. If the stored transfer syntax is 1.2.840.10008.1.2.4.112 the returned contentType is image/jxl.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageFrameBlob" /></td>
+    <td><CopyableCode code="image_frame_blob" /></td>
     <td><code>string (byte)</code></td>
     <td>The blob containing the aggregated image frame information.</td>
 </tr>
@@ -134,8 +134,8 @@ Get an image frame (pixel data) for an image set.
 
 ```sql
 SELECT
-contentType,
-imageFrameBlob
+content_type,
+image_frame_blob
 FROM aws.medical_imaging.image_frames
 WHERE datastore_id = '{{ datastore_id }}' -- required
 AND image_set_id = '{{ image_set_id }}' -- required

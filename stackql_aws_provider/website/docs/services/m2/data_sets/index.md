@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSetName" /></td>
+    <td><CopyableCode code="data_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the data set. (pattern: &lt;code&gt;^\S&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSetOrg" /></td>
+    <td><CopyableCode code="data_set_org" /></td>
     <td><code>string</code></td>
     <td>The type of data set. The only supported value is VSAM. (pattern: &lt;code&gt;^\S&#123;1,20&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The format of the data set. (pattern: &lt;code&gt;^\S&#123;1,20&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastReferencedTime" /></td>
+    <td><CopyableCode code="last_referenced_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the data set was referenced.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the data set was updated.</td>
 </tr>
@@ -169,12 +169,12 @@ Lists the data sets imported for a specific application. In Amazon Web Services 
 
 ```sql
 SELECT
-creationTime,
-dataSetName,
-dataSetOrg,
+creation_time,
+data_set_name,
+data_set_org,
 format_,
-lastReferencedTime,
-lastUpdatedTime
+last_referenced_time,
+last_updated_time
 FROM aws.m2.data_sets
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

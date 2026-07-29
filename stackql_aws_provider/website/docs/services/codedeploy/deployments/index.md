@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentsInfo" /></td>
+    <td><CopyableCode code="deployments_info" /></td>
     <td><code>array</code></td>
     <td>Information about the deployments.</td>
 </tr>
@@ -71,37 +71,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalDeploymentStatusInfo" /></td>
+    <td><CopyableCode code="additional_deployment_status_info" /></td>
     <td><code>string</code></td>
     <td>Provides information about the results of a deployment, such as whether instances in the original environment in a blue/green deployment were not terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The application name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoRollbackConfiguration" /></td>
+    <td><CopyableCode code="auto_rollback_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the automatic rollback configuration associated with the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blueGreenDeploymentConfiguration" /></td>
+    <td><CopyableCode code="blue_green_deployment_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about blue/green deployment options for this deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completeTime" /></td>
+    <td><CopyableCode code="complete_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the deployment was complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computePlatform" /></td>
+    <td><CopyableCode code="compute_platform" /></td>
     <td><code>string</code></td>
     <td>The destination platform type for the deployment (Lambda, Server, or ECS). (Server, Lambda, ECS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the deployment was created.</td>
 </tr>
@@ -111,32 +111,32 @@ The following fields are returned by `SELECT` queries:
     <td>The means by which the deployment was created: user: A user created the deployment. autoscaling: Amazon EC2 Auto Scaling created the deployment. codeDeployRollback: A rollback process created the deployment. CodeDeployAutoUpdate: An auto-update process created the deployment when it detected outdated Amazon EC2 instances. (user, autoscaling, codeDeployRollback, CodeDeploy, CodeDeployAutoUpdate, CloudFormation, CloudFormationRollback, autoscalingTermination)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentConfigName" /></td>
+    <td><CopyableCode code="deployment_config_name" /></td>
     <td><code>string</code></td>
     <td>The deployment configuration name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentGroupName" /></td>
+    <td><CopyableCode code="deployment_group_name" /></td>
     <td><code>string</code></td>
     <td>The deployment group name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of a deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentOverview" /></td>
+    <td><CopyableCode code="deployment_overview" /></td>
     <td><code>object</code></td>
     <td>A summary of the deployment status of the instances in the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessages" /></td>
+    <td><CopyableCode code="deployment_status_messages" /></td>
     <td><code>array</code></td>
     <td>Messages that contain information about the status of a deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStyle" /></td>
+    <td><CopyableCode code="deployment_style" /></td>
     <td><code>object</code></td>
     <td>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</td>
 </tr>
@@ -146,47 +146,47 @@ The following fields are returned by `SELECT` queries:
     <td>A comment about the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInformation" /></td>
+    <td><CopyableCode code="error_information" /></td>
     <td><code>object</code></td>
     <td>Information about any error associated with this deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for an external resource (for example, a CloudFormation stack ID) that is linked to this deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileExistsBehavior" /></td>
+    <td><CopyableCode code="file_exists_behavior" /></td>
     <td><code>string</code></td>
     <td>Information about how CodeDeploy handles files that already exist in a deployment target location but weren't part of the previous successful deployment. DISALLOW: The deployment fails. This is also the default behavior if no option is specified. OVERWRITE: The version of the file from the application revision currently being deployed replaces the version already on the instance. RETAIN: The version of the file already on the instance is kept and used as part of the new deployment. (DISALLOW, OVERWRITE, RETAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ignoreApplicationStopFailures" /></td>
+    <td><CopyableCode code="ignore_application_stop_failures" /></td>
     <td><code>boolean</code></td>
     <td>If true, then if an ApplicationStop, BeforeBlockTraffic, or AfterBlockTraffic deployment lifecycle event to an instance fails, then the deployment continues to the next deployment lifecycle event. For example, if ApplicationStop fails, the deployment continues with DownloadBundle. If BeforeBlockTraffic fails, the deployment continues with BlockTraffic. If AfterBlockTraffic fails, the deployment continues with ApplicationStop. If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment fails. If deployment to that instance is part of an overall deployment and the number of healthy hosts is not less than the minimum number of healthy hosts, then a deployment to the next instance is attempted. During a deployment, the CodeDeploy agent runs the scripts specified for ApplicationStop, BeforeBlockTraffic, and AfterBlockTraffic in the AppSpec file from the previous successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one of these scripts contains an error and does not run successfully, the deployment can fail. If the cause of the failure is a script from the last successful deployment that will never run successfully, create a new deployment and use ignoreApplicationStopFailures to specify that the ApplicationStop, BeforeBlockTraffic, and AfterBlockTraffic failures should be ignored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceTerminationWaitTimeStarted" /></td>
+    <td><CopyableCode code="instance_termination_wait_time_started" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the wait period set for the termination of instances in the original environment has started. Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the termination wait period starts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loadBalancerInfo" /></td>
+    <td><CopyableCode code="load_balancer_info" /></td>
     <td><code>object</code></td>
     <td>Information about the load balancer used in the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="overrideAlarmConfiguration" /></td>
+    <td><CopyableCode code="override_alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about alarms associated with a deployment or deployment group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="previousRevision" /></td>
+    <td><CopyableCode code="previous_revision" /></td>
     <td><code>object</code></td>
     <td>Information about the location of an application revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedDeployments" /></td>
+    <td><CopyableCode code="related_deployments" /></td>
     <td><code>object</code></td>
     <td>Information about deployments related to the specified deployment.</td>
 </tr>
@@ -196,12 +196,12 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the location of an application revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollbackInfo" /></td>
+    <td><CopyableCode code="rollback_info" /></td>
     <td><code>object</code></td>
     <td>Information about a deployment rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the deployment was deployed to the deployment group. In some cases, the reported value of the start time might be later than the complete time. This is due to differences in the clock settings of backend servers that participate in the deployment process.</td>
 </tr>
@@ -211,12 +211,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current state of the deployment as a whole. (Created, Queued, InProgress, Baking, Succeeded, Failed, Stopped, Ready)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetInstances" /></td>
+    <td><CopyableCode code="target_instances" /></td>
     <td><code>object</code></td>
     <td>Information about the instances that belong to the replacement environment in a blue/green deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateOutdatedInstancesOnly" /></td>
+    <td><CopyableCode code="update_outdated_instances_only" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether only instances that are not running the latest application revision are to be deployed to.</td>
 </tr>
@@ -334,7 +334,7 @@ Gets information about one or more deployments. The maximum number of deployment
 
 ```sql
 SELECT
-deploymentsInfo
+deployments_info
 FROM aws.codedeploy.deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -346,36 +346,36 @@ Gets information about a deployment. The content property of the appSpecContent 
 
 ```sql
 SELECT
-additionalDeploymentStatusInfo,
-applicationName,
-autoRollbackConfiguration,
-blueGreenDeploymentConfiguration,
-completeTime,
-computePlatform,
-createTime,
+additional_deployment_status_info,
+application_name,
+auto_rollback_configuration,
+blue_green_deployment_configuration,
+complete_time,
+compute_platform,
+create_time,
 creator,
-deploymentConfigName,
-deploymentGroupName,
-deploymentId,
-deploymentOverview,
-deploymentStatusMessages,
-deploymentStyle,
+deployment_config_name,
+deployment_group_name,
+deployment_id,
+deployment_overview,
+deployment_status_messages,
+deployment_style,
 description,
-errorInformation,
-externalId,
-fileExistsBehavior,
-ignoreApplicationStopFailures,
-instanceTerminationWaitTimeStarted,
-loadBalancerInfo,
-overrideAlarmConfiguration,
-previousRevision,
-relatedDeployments,
+error_information,
+external_id,
+file_exists_behavior,
+ignore_application_stop_failures,
+instance_termination_wait_time_started,
+load_balancer_info,
+override_alarm_configuration,
+previous_revision,
+related_deployments,
 revision,
-rollbackInfo,
-startTime,
+rollback_info,
+start_time,
 status,
-targetInstances,
-updateOutdatedInstancesOnly
+target_instances,
+update_outdated_instances_only
 FROM aws.codedeploy.deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -438,7 +438,7 @@ SELECT
 '{{ overrideAlarmConfiguration }}',
 '{{ region }}'
 RETURNING
-deploymentId
+deployment_id
 ;
 ```
 </TabItem>

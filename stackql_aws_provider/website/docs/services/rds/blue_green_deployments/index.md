@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlueGreenDeploymentIdentifier" /></td>
+    <td><CopyableCode code="blue_green_deployment_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the blue/green deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlueGreenDeploymentName" /></td>
+    <td><CopyableCode code="blue_green_deployment_name" /></td>
     <td><code>string</code></td>
     <td>The user-supplied name of the blue/green deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The time when the blue/green deployment was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeleteTime" /></td>
+    <td><CopyableCode code="delete_time" /></td>
     <td><code>string</code></td>
     <td>The time when the blue/green deployment was deleted, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The source database for the blue/green deployment. Before switchover, the source database is the production database in the blue environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the blue/green deployment. Valid Values: PROVISIONING - Resources are being created in the green environment. AVAILABLE - Resources are available in the green environment. SWITCHOVER_IN_PROGRESS - The deployment is being switched from the blue environment to the green environment. SWITCHOVER_COMPLETED - Switchover from the blue environment to the green environment is complete. INVALID_CONFIGURATION - Resources in the green environment are invalid, so switchover isn't possible. SWITCHOVER_FAILED - Switchover was attempted but failed. DELETING - The blue/green deployment is being deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the blue/green deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SwitchoverDetails" /></td>
+    <td><CopyableCode code="switchover_details" /></td>
     <td><code>string</code></td>
     <td>The details about each source and target resource in the blue/green deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>The target database for the blue/green deployment. Before switchover, the target database is the clone database in the green environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tasks" /></td>
+    <td><CopyableCode code="tasks" /></td>
     <td><code>string</code></td>
     <td>Either tasks to be performed or tasks that have been completed on the target database before switchover.</td>
 </tr>
@@ -285,17 +285,17 @@ Describes one or more blue/green deployments. For more information, see Using Am
 
 ```sql
 SELECT
-BlueGreenDeploymentIdentifier,
-BlueGreenDeploymentName,
-CreateTime,
-DeleteTime,
-Source,
-Status,
-StatusDetails,
-SwitchoverDetails,
-TagList,
-Target,
-Tasks
+blue_green_deployment_identifier,
+blue_green_deployment_name,
+create_time,
+delete_time,
+source,
+status,
+status_details,
+switchover_details,
+tag_list,
+target,
+tasks
 FROM aws.rds.blue_green_deployments
 WHERE region = '{{ region }}' -- required
 AND BlueGreenDeploymentIdentifier = '{{ BlueGreenDeploymentIdentifier }}'
@@ -352,17 +352,17 @@ SELECT
 '{{ TargetAllocatedStorage }}',
 '{{ TargetStorageThroughput }}'
 RETURNING
-BlueGreenDeploymentIdentifier,
-BlueGreenDeploymentName,
-CreateTime,
-DeleteTime,
-Source,
-Status,
-StatusDetails,
-SwitchoverDetails,
-TagList,
-Target,
-Tasks
+blue_green_deployment_identifier,
+blue_green_deployment_name,
+create_time,
+delete_time,
+source,
+status,
+status_details,
+switchover_details,
+tag_list,
+target,
+tasks
 ;
 ```
 </TabItem>

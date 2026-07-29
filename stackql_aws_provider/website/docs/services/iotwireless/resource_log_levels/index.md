@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogLevel" /></td>
+    <td><CopyableCode code="log_level" /></td>
     <td><code>string</code></td>
     <td>The log level for a log message. The log levels can be disabled, or set to ERROR to display less verbose logs containing only error information, or to INFO for more detailed logs. (INFO, ERROR, DISABLED)</td>
 </tr>
@@ -143,7 +143,7 @@ Fetches the log-level override, if any, for a given resource ID and resource typ
 
 ```sql
 SELECT
-LogLevel
+log_level
 FROM aws.iotwireless.resource_log_levels
 WHERE resource_identifier = '{{ resource_identifier }}' -- required
 AND resourceType = '{{ resourceType }}' -- required

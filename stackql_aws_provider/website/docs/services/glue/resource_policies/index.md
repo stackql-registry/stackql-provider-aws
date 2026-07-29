@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyHash" /></td>
+    <td><CopyableCode code="policy_hash" /></td>
     <td><code>string</code></td>
     <td>Contains the hash value associated with this policy. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyInJson" /></td>
+    <td><CopyableCode code="policy_in_json" /></td>
     <td><code>string</code></td>
     <td>Contains the requested policy document, in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the policy was last updated.</td>
 </tr>
@@ -155,10 +155,10 @@ Retrieves the resource policies set on individual resources by Resource Access M
 
 ```sql
 SELECT
-CreateTime,
-PolicyHash,
-PolicyInJson,
-UpdateTime
+create_time,
+policy_hash,
+policy_in_json,
+update_time
 FROM aws.glue.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,7 +191,7 @@ WHERE
 region = '{{ region }}' --required
 AND PolicyInJson = '{{ PolicyInJson }}' --required
 RETURNING
-PolicyHash;
+policy_hash;
 ```
 </TabItem>
 </Tabs>

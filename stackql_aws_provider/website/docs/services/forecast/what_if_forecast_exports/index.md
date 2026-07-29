@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the what-if forecast export was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The destination for an export job. Provide an S3 path, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the location, and an Key Management Service (KMS) key (optional).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The approximate time remaining to complete the what-if forecast export, in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format of the exported data, CSV or PARQUET. (pattern: &lt;code&gt;^CSV|PARQUET$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the what-if forecast. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED The Status of the what-if forecast export must be ACTIVE before you can access the forecast export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastArns" /></td>
+    <td><CopyableCode code="what_if_forecast_arns" /></td>
     <td><code>array</code></td>
     <td>An array of Amazon Resource Names (ARNs) that represent all of the what-if forecasts exported in this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastExportArn" /></td>
+    <td><CopyableCode code="what_if_forecast_export_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if forecast export. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastExportName" /></td>
+    <td><CopyableCode code="what_if_forecast_export_name" /></td>
     <td><code>string</code></td>
     <td>The name of the what-if forecast export. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -115,42 +115,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the what-if forecast export was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The destination for an export job. Provide an S3 path, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the location, and an Key Management Service (KMS) key (optional).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the what-if forecast export. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED The Status of the what-if analysis must be ACTIVE before you can access the analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastArns" /></td>
+    <td><CopyableCode code="what_if_forecast_arns" /></td>
     <td><code>array</code></td>
     <td>An array of Amazon Resource Names (ARNs) that define the what-if forecasts included in the export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastExportArn" /></td>
+    <td><CopyableCode code="what_if_forecast_export_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if forecast export. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastExportName" /></td>
+    <td><CopyableCode code="what_if_forecast_export_name" /></td>
     <td><code>string</code></td>
     <td>The what-if forecast export name. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -241,16 +241,16 @@ Describes the what-if forecast export created using the CreateWhatIfForecastExpo
 
 ```sql
 SELECT
-CreationTime,
-Destination,
-EstimatedTimeRemainingInMinutes,
-Format,
-LastModificationTime,
-Message,
-Status,
-WhatIfForecastArns,
-WhatIfForecastExportArn,
-WhatIfForecastExportName
+creation_time,
+destination,
+estimated_time_remaining_in_minutes,
+format,
+last_modification_time,
+message,
+status,
+what_if_forecast_arns,
+what_if_forecast_export_arn,
+what_if_forecast_export_name
 FROM aws.forecast.what_if_forecast_exports
 WHERE region = '{{ region }}' -- required
 ;
@@ -262,14 +262,14 @@ Returns a list of what-if forecast exports created using the CreateWhatIfForecas
 
 ```sql
 SELECT
-CreationTime,
-Destination,
-LastModificationTime,
-Message,
-Status,
-WhatIfForecastArns,
-WhatIfForecastExportArn,
-WhatIfForecastExportName
+creation_time,
+destination,
+last_modification_time,
+message,
+status,
+what_if_forecast_arns,
+what_if_forecast_export_arn,
+what_if_forecast_export_name
 FROM aws.forecast.what_if_forecast_exports
 WHERE region = '{{ region }}' -- required
 ;
@@ -308,7 +308,7 @@ SELECT
 '{{ Format }}',
 '{{ region }}'
 RETURNING
-WhatIfForecastExportArn
+what_if_forecast_export_arn
 ;
 ```
 </TabItem>

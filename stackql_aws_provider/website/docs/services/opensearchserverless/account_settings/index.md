@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="capacityLimits" /></td>
+    <td><CopyableCode code="capacity_limits" /></td>
     <td><code>object</code></td>
     <td>The maximum capacity limits for all OpenSearch Serverless collections, in OpenSearch Compute Units (OCUs). These limits are used to scale your collections based on the current workload. For more information, see Managing capacity limits for Amazon OpenSearch Serverless.</td>
 </tr>
@@ -126,7 +126,7 @@ Returns account-level settings related to OpenSearch Serverless.
 
 ```sql
 SELECT
-capacityLimits
+capacity_limits
 FROM aws.opensearchserverless.account_settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -154,7 +154,7 @@ capacityLimits = '{{ capacityLimits }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-accountSettingsDetail;
+account_settings_detail;
 ```
 </TabItem>
 </Tabs>

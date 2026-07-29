@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the specified media pipeline.</td>
 </tr>
@@ -138,7 +138,7 @@ Lists the tags available for a media pipeline.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.chime_sdk_media_pipelines.tags
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required

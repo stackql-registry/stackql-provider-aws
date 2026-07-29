@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Network instance ARN. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-b|aws-us-gov):tnb:(&#91;a-z&#93;&#123;2&#125;(-(gov|isob|iso))?-(east|west|north|south|central)&#123;1,2&#125;-&#91;0-9&#93;):\d&#123;12&#125;:(network-instance/ni-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lcmOpInfo" /></td>
+    <td><CopyableCode code="lcm_op_info" /></td>
     <td><code>object</code></td>
     <td>Lifecycle management operation details on the network instance. Lifecycle management operations are deploy, update, or delete operations.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of a network instance. A network instance is a single network created in Amazon Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceDescription" /></td>
+    <td><CopyableCode code="ns_instance_description" /></td>
     <td><code>string</code></td>
     <td>Network instance description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceName" /></td>
+    <td><CopyableCode code="ns_instance_name" /></td>
     <td><code>string</code></td>
     <td>Network instance name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsState" /></td>
+    <td><CopyableCode code="ns_state" /></td>
     <td><code>string</code></td>
     <td>Network instance state. (INSTANTIATED, NOT_INSTANTIATED, UPDATED, IMPAIRED, UPDATE_FAILED, STOPPED, DELETED, INSTANTIATE_IN_PROGRESS, INTENT_TO_UPDATE_IN_PROGRESS, UPDATE_IN_PROGRESS, TERMINATE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdId" /></td>
+    <td><CopyableCode code="nsd_id" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor ID. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdInfoId" /></td>
+    <td><CopyableCode code="nsd_info_id" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor info ID. (pattern: &lt;code&gt;^np-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -130,27 +130,27 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of the network instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceDescription" /></td>
+    <td><CopyableCode code="ns_instance_description" /></td>
     <td><code>string</code></td>
     <td>Human-readable description of the network instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsInstanceName" /></td>
+    <td><CopyableCode code="ns_instance_name" /></td>
     <td><code>string</code></td>
     <td>Human-readable name of the network instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsState" /></td>
+    <td><CopyableCode code="ns_state" /></td>
     <td><code>string</code></td>
     <td>The state of the network instance. (INSTANTIATED, NOT_INSTANTIATED, UPDATED, IMPAIRED, UPDATE_FAILED, STOPPED, DELETED, INSTANTIATE_IN_PROGRESS, INTENT_TO_UPDATE_IN_PROGRESS, UPDATE_IN_PROGRESS, TERMINATE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdId" /></td>
+    <td><CopyableCode code="nsd_id" /></td>
     <td><code>string</code></td>
     <td>ID of the network service descriptor in the network package. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdInfoId" /></td>
+    <td><CopyableCode code="nsd_info_id" /></td>
     <td><code>string</code></td>
     <td>ID of the network service descriptor in the network package. (pattern: &lt;code&gt;^np-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -272,13 +272,13 @@ Gets the details of the network instance. A network instance is a single network
 SELECT
 id,
 arn,
-lcmOpInfo,
+lcm_op_info,
 metadata,
-nsInstanceDescription,
-nsInstanceName,
-nsState,
-nsdId,
-nsdInfoId,
+ns_instance_description,
+ns_instance_name,
+ns_state,
+nsd_id,
+nsd_info_id,
 tags
 FROM aws.tnb.sol_network_instances
 WHERE ns_instance_id = '{{ ns_instance_id }}' -- required
@@ -295,11 +295,11 @@ SELECT
 id,
 arn,
 metadata,
-nsInstanceDescription,
-nsInstanceName,
-nsState,
-nsdId,
-nsdInfoId
+ns_instance_description,
+ns_instance_name,
+ns_state,
+nsd_id,
+nsd_info_id
 FROM aws.tnb.sol_network_instances
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -340,8 +340,8 @@ SELECT
 RETURNING
 id,
 arn,
-nsInstanceName,
-nsdInfoId,
+ns_instance_name,
+nsd_info_id,
 tags
 ;
 ```
@@ -392,7 +392,7 @@ ns_instance_id = '{{ ns_instance_id }}' --required
 AND region = '{{ region }}' --required
 AND updateType = '{{ updateType }}' --required
 RETURNING
-nsLcmOpOccId,
+ns_lcm_op_occ_id,
 tags;
 ```
 </TabItem>

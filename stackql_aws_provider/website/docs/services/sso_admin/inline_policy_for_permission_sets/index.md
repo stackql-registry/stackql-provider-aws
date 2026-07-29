@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InlinePolicy" /></td>
+    <td><CopyableCode code="inline_policy" /></td>
     <td><code>string</code></td>
     <td>The inline policy that is attached to the permission set. For Length Constraints, if a valid ARN is provided for a permission set, it is possible for an empty inline policy to be returned. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Obtains the inline policy assigned to the permission set.
 
 ```sql
 SELECT
-InlinePolicy
+inline_policy
 FROM aws.sso_admin.inline_policy_for_permission_sets
 WHERE region = '{{ region }}' -- required
 ;

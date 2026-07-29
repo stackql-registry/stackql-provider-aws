@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlpnPolicy" /></td>
+    <td><CopyableCode code="alpn_policy" /></td>
     <td><code>string</code></td>
     <td>&#91;TLS listener&#93; The name of the Application-Layer Protocol Negotiation (ALPN) policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Certificates" /></td>
+    <td><CopyableCode code="certificates" /></td>
     <td><code>string</code></td>
     <td>&#91;HTTPS or TLS listener&#93; The default certificate for the listener.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultActions" /></td>
+    <td><CopyableCode code="default_actions" /></td>
     <td><code>string</code></td>
     <td>The default actions for the listener.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListenerArn" /></td>
+    <td><CopyableCode code="listener_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the listener.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoadBalancerArn" /></td>
+    <td><CopyableCode code="load_balancer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MutualAuthentication" /></td>
+    <td><CopyableCode code="mutual_authentication" /></td>
     <td><code>string</code></td>
     <td>The mutual authentication configuration information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>The port on which the load balancer is listening.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol for connections from clients to the load balancer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SslPolicy" /></td>
+    <td><CopyableCode code="ssl_policy" /></td>
     <td><code>string</code></td>
     <td>&#91;HTTPS or TLS listener&#93; The security policy that defines which protocols and ciphers are supported.</td>
 </tr>
@@ -255,15 +255,15 @@ Describes the specified listeners or the listeners for the specified Application
 
 ```sql
 SELECT
-AlpnPolicy,
-Certificates,
-DefaultActions,
-ListenerArn,
-LoadBalancerArn,
-MutualAuthentication,
-Port,
-Protocol,
-SslPolicy
+alpn_policy,
+certificates,
+default_actions,
+listener_arn,
+load_balancer_arn,
+mutual_authentication,
+port,
+protocol,
+ssl_policy
 FROM aws.elbv2.listeners
 WHERE region = '{{ region }}' -- required
 AND LoadBalancerArn = '{{ LoadBalancerArn }}'

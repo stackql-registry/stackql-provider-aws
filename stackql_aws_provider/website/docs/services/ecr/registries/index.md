@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The registry ID associated with the request. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicationConfiguration" /></td>
+    <td><CopyableCode code="replication_configuration" /></td>
     <td><code>object</code></td>
     <td>The replication configuration for the registry.</td>
 </tr>
@@ -124,8 +124,8 @@ Describes the settings for a registry. The replication configuration for a repos
 
 ```sql
 SELECT
-registryId,
-replicationConfiguration
+registry_id,
+replication_configuration
 FROM aws.ecr.registries
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecycleBinEnterTime" /></td>
+    <td><CopyableCode code="recycle_bin_enter_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the AMI entered the Recycle Bin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecycleBinExitTime" /></td>
+    <td><CopyableCode code="recycle_bin_exit_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the AMI is to be permanently deleted from the Recycle Bin.</td>
 </tr>
@@ -159,11 +159,11 @@ Lists one or more AMIs that are currently in the Recycle Bin. For more informati
 
 ```sql
 SELECT
-Description,
-ImageId,
-Name,
-RecycleBinEnterTime,
-RecycleBinExitTime
+description,
+image_id,
+name,
+recycle_bin_enter_time,
+recycle_bin_exit_time
 FROM aws.ec2.images_in_recycle_bins
 WHERE region = '{{ region }}' -- required
 AND ImageId = '{{ ImageId }}'

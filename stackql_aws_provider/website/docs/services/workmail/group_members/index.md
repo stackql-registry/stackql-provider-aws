@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisabledDate" /></td>
+    <td><CopyableCode code="disabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date indicating when the member was disabled from WorkMail use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledDate" /></td>
+    <td><CopyableCode code="enabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date indicating when the member was enabled for WorkMail use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the member, which can be ENABLED, DISABLED, or DELETED. (ENABLED, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>A member can be a user or group. (GROUP, USER)</td>
 </tr>
@@ -144,12 +144,12 @@ Returns an overview of the members of a group. Users and groups can be members o
 
 ```sql
 SELECT
-DisabledDate,
-EnabledDate,
-Id,
-Name,
-State,
-Type
+disabled_date,
+enabled_date,
+id,
+name,
+state,
+type
 FROM aws.workmail.group_members
 WHERE region = '{{ region }}' -- required
 ;

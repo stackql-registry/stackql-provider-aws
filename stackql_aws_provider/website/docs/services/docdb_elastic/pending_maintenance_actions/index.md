@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="pendingMaintenanceActionDetails" /></td>
+    <td><CopyableCode code="pending_maintenance_action_details" /></td>
     <td><code>array</code></td>
     <td>Provides information about a pending maintenance action for a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon DocumentDB Amazon Resource Name (ARN) of the resource to which the pending maintenance action applies.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="pendingMaintenanceActionDetails" /></td>
+    <td><CopyableCode code="pending_maintenance_action_details" /></td>
     <td><code>array</code></td>
     <td>Provides information about a pending maintenance action for a resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon DocumentDB Amazon Resource Name (ARN) of the resource to which the pending maintenance action applies.</td>
 </tr>
@@ -172,8 +172,8 @@ Retrieves all maintenance actions that are pending.
 
 ```sql
 SELECT
-pendingMaintenanceActionDetails,
-resourceArn
+pending_maintenance_action_details,
+resource_arn
 FROM aws.docdb_elastic.pending_maintenance_actions
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -186,8 +186,8 @@ Retrieves a list of all maintenance actions that are pending.
 
 ```sql
 SELECT
-pendingMaintenanceActionDetails,
-resourceArn
+pending_maintenance_action_details,
+resource_arn
 FROM aws.docdb_elastic.pending_maintenance_actions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

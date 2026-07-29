@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>When the test was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceMinutes" /></td>
+    <td><CopyableCode code="device_minutes" /></td>
     <td><code>object</code></td>
     <td>Represents the total (metered or unmetered) minutes used by the test.</td>
 </tr>
@@ -187,7 +187,7 @@ name,
 arn,
 counters,
 created,
-deviceMinutes,
+device_minutes,
 message,
 result,
 started,

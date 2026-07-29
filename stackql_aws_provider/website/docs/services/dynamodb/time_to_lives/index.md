@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>The name of the TTL attribute for items in the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeToLiveStatus" /></td>
+    <td><CopyableCode code="time_to_live_status" /></td>
     <td><code>string</code></td>
     <td>The TTL status for the table. (ENABLING, DISABLING, ENABLED, DISABLED)</td>
 </tr>
@@ -131,8 +131,8 @@ Gives a description of the Time to Live (TTL) status on the specified table.
 
 ```sql
 SELECT
-AttributeName,
-TimeToLiveStatus
+attribute_name,
+time_to_live_status
 FROM aws.dynamodb.time_to_lives
 WHERE region = '{{ region }}' -- required
 ;
@@ -163,7 +163,7 @@ region = '{{ region }}' --required
 AND TableName = '{{ TableName }}' --required
 AND TimeToLiveSpecification = '{{ TimeToLiveSpecification }}' --required
 RETURNING
-TimeToLiveSpecification;
+time_to_live_specification;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RouteServerId" /></td>
+    <td><CopyableCode code="route_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the associated route server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the associated VPC.</td>
 </tr>
@@ -139,9 +139,9 @@ Gets information about the associations for the specified route server. A route 
 
 ```sql
 SELECT
-RouteServerId,
-State,
-VpcId
+route_server_id,
+state,
+vpc_id
 FROM aws.ec2.route_server_associations
 WHERE RouteServerId = '{{ RouteServerId }}' -- required
 AND region = '{{ region }}' -- required

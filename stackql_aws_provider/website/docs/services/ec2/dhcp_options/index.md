@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DhcpConfigurations" /></td>
+    <td><CopyableCode code="dhcp_configurations" /></td>
     <td><code>string</code></td>
     <td>The DHCP options in the set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DhcpOptionsId" /></td>
+    <td><CopyableCode code="dhcp_options_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the set of DHCP options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the DHCP options set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the DHCP options set.</td>
 </tr>
@@ -200,10 +200,10 @@ Describes your DHCP option sets. The default is to describe all your DHCP option
 
 ```sql
 SELECT
-DhcpConfigurations,
-DhcpOptionsId,
-OwnerId,
-Tags
+dhcp_configurations,
+dhcp_options_id,
+owner_id,
+tags
 FROM aws.ec2.dhcp_options
 WHERE region = '{{ region }}' -- required
 AND DhcpOptionsId = '{{ DhcpOptionsId }}'
@@ -243,10 +243,10 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-DhcpConfigurations,
-DhcpOptionsId,
-OwnerId,
-Tags
+dhcp_configurations,
+dhcp_options_id,
+owner_id,
+tags
 ;
 ```
 </TabItem>

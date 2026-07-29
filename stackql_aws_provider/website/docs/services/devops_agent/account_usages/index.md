@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="monthlyAccountEvaluationHours" /></td>
+    <td><CopyableCode code="monthly_account_evaluation_hours" /></td>
     <td><code>object</code></td>
     <td>Monthly evaluation hours usage and limit for an account</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyAccountInvestigationHours" /></td>
+    <td><CopyableCode code="monthly_account_investigation_hours" /></td>
     <td><code>object</code></td>
     <td>Monthly investigation hours usage and limit for an account</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyAccountOnDemandHours" /></td>
+    <td><CopyableCode code="monthly_account_on_demand_hours" /></td>
     <td><code>object</code></td>
     <td>Monthly on-demand hours usage and limit for an account</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monthlyAccountSystemLearningHours" /></td>
+    <td><CopyableCode code="monthly_account_system_learning_hours" /></td>
     <td><code>object</code></td>
     <td>Monthly system learning hours usage and limit for an account</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usagePeriodEndTime" /></td>
+    <td><CopyableCode code="usage_period_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the usage tracking period</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usagePeriodStartTime" /></td>
+    <td><CopyableCode code="usage_period_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the usage tracking period</td>
 </tr>
@@ -144,12 +144,12 @@ Retrieves monthly account usage metrics and limits for the AWS account.
 
 ```sql
 SELECT
-monthlyAccountEvaluationHours,
-monthlyAccountInvestigationHours,
-monthlyAccountOnDemandHours,
-monthlyAccountSystemLearningHours,
-usagePeriodEndTime,
-usagePeriodStartTime
+monthly_account_evaluation_hours,
+monthly_account_investigation_hours,
+monthly_account_on_demand_hours,
+monthly_account_system_learning_hours,
+usage_period_end_time,
+usage_period_start_time
 FROM aws.devops_agent.account_usages
 WHERE region = '{{ region }}' -- required
 ;

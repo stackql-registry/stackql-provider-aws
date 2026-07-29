@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each activity that was performed by the campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -144,8 +144,8 @@ Retrieves information about all the activities for a campaign.
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.campaign_activities
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `campaign-id` = '{{ campaign-id }}' -- required

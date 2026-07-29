@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetricResults" /></td>
+    <td><CopyableCode code="metric_results" /></td>
     <td><code>array</code></td>
     <td>Information about the metrics requested in the API request If no grouping is specified, a summary of metric data is returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets metric data from the specified Amazon Connect instance. GetMetricDataV2 off
 
 ```sql
 SELECT
-MetricResults,
-NextToken
+metric_results,
+next_token
 FROM aws.connect.metric_data_v2s
 WHERE region = '{{ region }}' -- required
 ;

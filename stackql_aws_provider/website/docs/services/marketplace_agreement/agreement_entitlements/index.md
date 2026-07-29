@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="licenseArn" /></td>
+    <td><CopyableCode code="license_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AWS License Manager license associated with the entitlement. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationToken" /></td>
+    <td><CopyableCode code="registration_token" /></td>
     <td><code>string</code></td>
     <td>A short-lived token required by acceptors to register their account with the product provider. The token is only valid for 30 minutes after creation and is only applicable for purchase agreements. (pattern: &lt;code&gt;&#91;A-Za-z0-9+/=.:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current state of an entitlement. (PROVISIONED, SCHEDULED, PENDING, FAILED, DEPROVISIONED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasonCode" /></td>
+    <td><CopyableCode code="status_reason_code" /></td>
     <td><code>string</code></td>
     <td>Provides more information about the status of an entitlement. (PROVISIONING_IN_PROGRESS, FUTURE_START_DATE, INVALID_PAYMENT_INSTRUMENT, INCOMPATIBLE_CURRENCY, ACCOUNT_SUSPENDED, UNSUPPORTED_OPERATION, AGREEMENT_INACTIVE, AGREEMENT_ACTIVE, PRODUCT_RESTRICTED)</td>
 </tr>
@@ -144,11 +144,11 @@ Obtains details about the entitlements of an agreement.
 
 ```sql
 SELECT
-licenseArn,
-registrationToken,
+license_arn,
+registration_token,
 resource,
 status,
-statusReasonCode,
+status_reason_code,
 type_
 FROM aws.marketplace_agreement.agreement_entitlements
 WHERE region = '{{ region }}' -- required

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blob" /></td>
+    <td><CopyableCode code="blob" /></td>
     <td><code>string (byte)</code></td>
     <td>The Glyph, as a binary blob.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>Header that instructs caching configuration for the client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Header that represents the format of the response. The response returns the following as the HTTP body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The glyph's Etag.</td>
 </tr>
@@ -144,10 +144,10 @@ GetGlyphs returns the map's glyphs. For more information, see Style labels with 
 
 ```sql
 SELECT
-Blob,
-CacheControl,
-ContentType,
-ETag
+blob,
+cache_control,
+content_type,
+e_tag
 FROM aws.geo_maps.glyphs
 WHERE font_stack = '{{ font_stack }}' -- required
 AND font_unicode_range = '{{ font_unicode_range }}' -- required

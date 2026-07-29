@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExclusionsAllowed" /></td>
+    <td><CopyableCode code="exclusions_allowed" /></td>
     <td><code>string</code></td>
     <td>Determines if exclusions are allowed. If you have enabled VPC BPA at the Organization level, exclusions may be not-allowed. Otherwise, they are allowed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InternetGatewayBlockMode" /></td>
+    <td><CopyableCode code="internet_gateway_block_mode" /></td>
     <td><code>string</code></td>
     <td>The current mode of VPC BPA. off: VPC BPA is not enabled and traffic is allowed to and from internet gateways and egress-only internet gateways in this Region. block-bidirectional: Block all traffic to and from internet gateways and egress-only internet gateways in this Region (except for excluded VPCs and subnets). block-ingress: Block all internet traffic to the VPCs in this Region (except for VPCs or subnets which are excluded). Only traffic to and from NAT gateways and egress-only internet gateways is allowed because these gateways only allow outbound connections to be established.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_update_timestamp" /></td>
     <td><code>string</code></td>
     <td>The last time the VPC BPA mode was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The entity that manages the state of VPC BPA. Possible values include: account - The state is managed by the account. declarative-policy - The state is managed by a declarative policy and can't be modified by the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of VPC BPA.</td>
 </tr>
@@ -171,14 +171,14 @@ Describe VPC Block Public Access (BPA) options. VPC Block Public Access (BPA) en
 
 ```sql
 SELECT
-AwsAccountId,
-AwsRegion,
-ExclusionsAllowed,
-InternetGatewayBlockMode,
-LastUpdateTimestamp,
-ManagedBy,
-Reason,
-State
+aws_account_id,
+aws_region,
+exclusions_allowed,
+internet_gateway_block_mode,
+last_update_timestamp,
+managed_by,
+reason,
+state
 FROM aws.ec2.vpc_block_public_access_options
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -209,14 +209,14 @@ InternetGatewayBlockMode = '{{ InternetGatewayBlockMode }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-AwsAccountId,
-AwsRegion,
-ExclusionsAllowed,
-InternetGatewayBlockMode,
-LastUpdateTimestamp,
-ManagedBy,
-Reason,
-State;
+aws_account_id,
+aws_region,
+exclusions_allowed,
+internet_gateway_block_mode,
+last_update_timestamp,
+managed_by,
+reason,
+state;
 ```
 </TabItem>
 </Tabs>

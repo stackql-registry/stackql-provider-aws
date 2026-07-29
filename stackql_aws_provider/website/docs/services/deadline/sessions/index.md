@@ -52,22 +52,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID for the session. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostProperties" /></td>
+    <td><CopyableCode code="host_properties" /></td>
     <td><code>object</code></td>
     <td>Provides the Amazon EC2 properties of the host.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatus" /></td>
+    <td><CopyableCode code="lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status of the session. (STARTED, UPDATE_IN_PROGRESS, UPDATE_SUCCEEDED, UPDATE_FAILED, ENDED)</td>
 </tr>
@@ -77,37 +77,37 @@ The following fields are returned by `SELECT` queries:
     <td>The session log.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The session ID. (pattern: &lt;code&gt;session-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetLifecycleStatus" /></td>
+    <td><CopyableCode code="target_lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status with which the session started. (ENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The worker ID for the session. (pattern: &lt;code&gt;worker-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerLog" /></td>
+    <td><CopyableCode code="worker_log" /></td>
     <td><code>object</code></td>
     <td>The worker log for the session.</td>
 </tr>
@@ -126,47 +126,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource ended running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fleetId" /></td>
+    <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
     <td>The fleet ID. (pattern: &lt;code&gt;fleet-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatus" /></td>
+    <td><CopyableCode code="lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status for the session. (STARTED, UPDATE_IN_PROGRESS, UPDATE_SUCCEEDED, UPDATE_FAILED, ENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The session ID. (pattern: &lt;code&gt;session-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetLifecycleStatus" /></td>
+    <td><CopyableCode code="target_lifecycle_status" /></td>
     <td><code>string</code></td>
     <td>The target life cycle status for the session. (ENDED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user or system that updated this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The worker ID. (pattern: &lt;code&gt;worker-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -324,18 +324,18 @@ Gets a session.
 
 ```sql
 SELECT
-endedAt,
-fleetId,
-hostProperties,
-lifecycleStatus,
+ended_at,
+fleet_id,
+host_properties,
+lifecycle_status,
 log,
-sessionId,
-startedAt,
-targetLifecycleStatus,
-updatedAt,
-updatedBy,
-workerId,
-workerLog
+session_id,
+started_at,
+target_lifecycle_status,
+updated_at,
+updated_by,
+worker_id,
+worker_log
 FROM aws.deadline.sessions
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
@@ -351,15 +351,15 @@ Lists sessions.
 
 ```sql
 SELECT
-endedAt,
-fleetId,
-lifecycleStatus,
-sessionId,
-startedAt,
-targetLifecycleStatus,
-updatedAt,
-updatedBy,
-workerId
+ended_at,
+fleet_id,
+lifecycle_status,
+session_id,
+started_at,
+target_lifecycle_status,
+updated_at,
+updated_by,
+worker_id
 FROM aws.deadline.sessions
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required

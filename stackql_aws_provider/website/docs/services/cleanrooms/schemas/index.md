@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>A name for the schema. The schema relation is referred to by this name when queried by a protected query. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;((&#91;a-zA-Z0-9_ &#93;+-)*(&#91;a-zA-Z0-9_ &#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisMethod" /></td>
+    <td><CopyableCode code="analysis_method" /></td>
     <td><code>string</code></td>
     <td>The analysis method for the schema. DIRECT_QUERY allows SQL queries to be run directly on this table. DIRECT_JOB allows PySpark jobs to be run directly on this table. MULTIPLE allows both SQL queries and PySpark jobs to be run directly on this table. (DIRECT_QUERY, DIRECT_JOB, MULTIPLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisRuleTypes" /></td>
+    <td><CopyableCode code="analysis_rule_types" /></td>
     <td><code>array</code></td>
     <td>The analysis rule types that are associated with the schema. Currently, only one entry is present.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) for the collaboration that the schema belongs to. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the collaboration that the schema belongs to. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>The columns for the relation that this schema represents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schema was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique account ID for the Amazon Web Services account that owns the schema. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -121,27 +121,27 @@ The following fields are returned by `SELECT` queries:
     <td>A description for the schema. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partitionKeys" /></td>
+    <td><CopyableCode code="partition_keys" /></td>
     <td><code>array</code></td>
     <td>The partition keys for the dataset underlying this schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema resource. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership\/&#91;\d\w-&#93;+\/(configuredtableassociation|idmappingtable)\/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaStatusDetails" /></td>
+    <td><CopyableCode code="schema_status_details" /></td>
     <td><code>array</code></td>
     <td>Details about the status of the schema. Currently, only one entry is present.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaTypeProperties" /></td>
+    <td><CopyableCode code="schema_type_properties" /></td>
     <td><code>object</code></td>
     <td>The schema type properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="selectedAnalysisMethods" /></td>
+    <td><CopyableCode code="selected_analysis_methods" /></td>
     <td><code>array</code></td>
     <td>The selected analysis methods for the schema.</td>
 </tr>
@@ -151,7 +151,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of schema. (TABLE, ID_MAPPING_TABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the schema was updated.</td>
 </tr>
@@ -175,42 +175,42 @@ The following fields are returned by `SELECT` queries:
     <td>The name for the schema object. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;((&#91;a-zA-Z0-9_ &#93;+-)*(&#91;a-zA-Z0-9_ &#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisMethod" /></td>
+    <td><CopyableCode code="analysis_method" /></td>
     <td><code>string</code></td>
     <td>The analysis method for the associated schema. DIRECT_QUERY allows SQL queries to be run directly on this table. DIRECT_JOB allows PySpark jobs to be run directly on this table. MULTIPLE allows both SQL queries and PySpark jobs to be run directly on this table. (DIRECT_QUERY, DIRECT_JOB, MULTIPLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisRuleTypes" /></td>
+    <td><CopyableCode code="analysis_rule_types" /></td>
     <td><code>array</code></td>
     <td>The types of analysis rules that are associated with this schema object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the collaboration that the schema belongs to. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the collaboration that the schema belongs to. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the schema object was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique account ID for the Amazon Web Services account that owns the schema. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schema summary resource. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership\/&#91;\d\w-&#93;+\/(configuredtableassociation|idmappingtable)\/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="selectedAnalysisMethods" /></td>
+    <td><CopyableCode code="selected_analysis_methods" /></td>
     <td><code>array</code></td>
     <td>The selected analysis methods for the schema.</td>
 </tr>
@@ -220,7 +220,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of schema object. (TABLE, ID_MAPPING_TABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the schema object was last updated.</td>
 </tr>
@@ -345,21 +345,21 @@ Retrieves the schema for a relation within a collaboration.
 ```sql
 SELECT
 name,
-analysisMethod,
-analysisRuleTypes,
-collaborationArn,
-collaborationId,
+analysis_method,
+analysis_rule_types,
+collaboration_arn,
+collaboration_id,
 columns,
-createTime,
-creatorAccountId,
+create_time,
+creator_account_id,
 description,
-partitionKeys,
-resourceArn,
-schemaStatusDetails,
-schemaTypeProperties,
-selectedAnalysisMethods,
+partition_keys,
+resource_arn,
+schema_status_details,
+schema_type_properties,
+selected_analysis_methods,
 type_,
-updateTime
+update_time
 FROM aws.cleanrooms.schemas
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND name = '{{ name }}' -- required
@@ -374,16 +374,16 @@ Lists the schemas for relations within a collaboration.
 ```sql
 SELECT
 name,
-analysisMethod,
-analysisRuleTypes,
-collaborationArn,
-collaborationId,
-createTime,
-creatorAccountId,
-resourceArn,
-selectedAnalysisMethods,
+analysis_method,
+analysis_rule_types,
+collaboration_arn,
+collaboration_id,
+create_time,
+creator_account_id,
+resource_arn,
+selected_analysis_methods,
 type_,
-updateTime
+update_time
 FROM aws.cleanrooms.schemas
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required

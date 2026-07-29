@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessControlAllowOrigin" /></td>
+    <td><CopyableCode code="access_control_allow_origin" /></td>
     <td><code>string</code></td>
     <td>See Access-Control-Allow-Origin in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessControlExposeHeaders" /></td>
+    <td><CopyableCode code="access_control_expose_headers" /></td>
     <td><code>string</code></td>
     <td>See Access-Control-Expose-Headers in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheControl" /></td>
+    <td><CopyableCode code="cache_control" /></td>
     <td><code>string</code></td>
     <td>See Cache-Control in the MDN Web Docs.</td>
 </tr>
@@ -72,7 +72,7 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentSecurityPolicy" /></td>
+    <td><CopyableCode code="content_security_policy" /></td>
     <td><code>string</code></td>
     <td>See Content-Security-Policy in the MDN Web Docs.</td>
 </tr>
@@ -82,17 +82,17 @@ The following fields are returned by `SELECT` queries:
     <td>Each error object is related to a specific ARN in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="strictTransportSecurity" /></td>
+    <td><CopyableCode code="strict_transport_security" /></td>
     <td><code>string</code></td>
     <td>See Strict-Transport-Security in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xContentTypeOptions" /></td>
+    <td><CopyableCode code="x_content_type_options" /></td>
     <td><code>string</code></td>
     <td>See X-Content-Type-Options in the MDN Web Docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="xFrameOptions" /></td>
+    <td><CopyableCode code="x_frame_options" /></td>
     <td><code>string</code></td>
     <td>See X-Frame-Options in the MDN Web Docs.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>Channel name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adConfigurationArn" /></td>
+    <td><CopyableCode code="ad_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the ad configuration associated with the channel. (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:ad-configuration/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -131,37 +131,37 @@ The following fields are returned by `SELECT` queries:
     <td>Whether the channel is private (enabled for playback authorization). Default: false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerFormat" /></td>
+    <td><CopyableCode code="container_format" /></td>
     <td><code>string</code></td>
     <td>Indicates which content-packaging format is used (MPEG-TS or fMP4). If multitrackInputConfiguration is specified and enabled is true, then containerFormat is required and must be set to FRAGMENTED_MP4. Otherwise, containerFormat may be set to TS or FRAGMENTED_MP4. Default: TS. (TS, FRAGMENTED_MP4)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestEndpoint" /></td>
+    <td><CopyableCode code="ingest_endpoint" /></td>
     <td><code>string</code></td>
     <td>Channel ingest endpoint, part of the definition of an ingest server, used when you set up streaming software.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="insecureIngest" /></td>
+    <td><CopyableCode code="insecure_ingest" /></td>
     <td><code>boolean</code></td>
     <td>Whether the channel allows insecure RTMP ingest. Default: false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latencyMode" /></td>
+    <td><CopyableCode code="latency_mode" /></td>
     <td><code>string</code></td>
     <td>Channel latency mode. Use NORMAL to broadcast and deliver live video up to Full HD. Use LOW for near-real-time interaction with viewers. Default: LOW. (NORMAL, LOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="multitrackInputConfiguration" /></td>
+    <td><CopyableCode code="multitrack_input_configuration" /></td>
     <td><code>object</code></td>
     <td>Object specifying multitrack input configuration. Default: no multitrack input configuration is specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="playbackRestrictionPolicyArn" /></td>
+    <td><CopyableCode code="playback_restriction_policy_arn" /></td>
     <td><code>string</code></td>
     <td>Playback-restriction-policy ARN. A valid ARN value here both specifies the ARN and enables playback restriction. Default: "" (empty string, no playback restriction policy is applied). (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:playback-restriction-policy/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="playbackUrl" /></td>
+    <td><CopyableCode code="playback_url" /></td>
     <td><code>string</code></td>
     <td>Channel playback URL.</td>
 </tr>
@@ -171,7 +171,7 @@ The following fields are returned by `SELECT` queries:
     <td>Optional transcode preset for the channel. This is selectable only for ADVANCED_HD and ADVANCED_SD channel types. For those channel types, the default preset is HIGHER_BANDWIDTH_DELIVERY. For other channel types (BASIC and STANDARD), preset is the empty string (""). (HIGHER_BANDWIDTH_DELIVERY, CONSTRAINED_BANDWIDTH_DELIVERY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordingConfigurationArn" /></td>
+    <td><CopyableCode code="recording_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>Recording-configuration ARN. A valid ARN value here both specifies the ARN and enables recording. Default: "" (empty string, recording is disabled). (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:recording-configuration/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -210,7 +210,7 @@ The following fields are returned by `SELECT` queries:
     <td>Channel name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="adConfigurationArn" /></td>
+    <td><CopyableCode code="ad_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the ad configuration associated with the channel. (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:ad-configuration/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -225,17 +225,17 @@ The following fields are returned by `SELECT` queries:
     <td>Whether the channel is private (enabled for playback authorization). Default: false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="insecureIngest" /></td>
+    <td><CopyableCode code="insecure_ingest" /></td>
     <td><code>boolean</code></td>
     <td>Whether the channel allows insecure RTMP ingest. Default: false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latencyMode" /></td>
+    <td><CopyableCode code="latency_mode" /></td>
     <td><code>string</code></td>
     <td>Channel latency mode. Use NORMAL to broadcast and deliver live video up to Full HD. Use LOW for near-real-time interaction with viewers. Default: LOW. (NORMAL, LOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="playbackRestrictionPolicyArn" /></td>
+    <td><CopyableCode code="playback_restriction_policy_arn" /></td>
     <td><code>string</code></td>
     <td>Playback-restriction-policy ARN. A valid ARN value here both specifies the ARN and enables playback restriction. Default: "" (empty string, no playback restriction policy is applied). (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:playback-restriction-policy/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -245,7 +245,7 @@ The following fields are returned by `SELECT` queries:
     <td>Optional transcode preset for the channel. This is selectable only for ADVANCED_HD and ADVANCED_SD channel types. For those channel types, the default preset is HIGHER_BANDWIDTH_DELIVERY. For other channel types (BASIC and STANDARD), preset is the empty string (""). (HIGHER_BANDWIDTH_DELIVERY, CONSTRAINED_BANDWIDTH_DELIVERY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordingConfigurationArn" /></td>
+    <td><CopyableCode code="recording_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>Recording-configuration ARN. A valid ARN value here both specifies the ARN and enables recording. Default: "" (empty string, recording is disabled). (pattern: &lt;code&gt;^$|^arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:recording-configuration/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -389,15 +389,15 @@ Performs GetChannel on multiple ARNs simultaneously.
 
 ```sql
 SELECT
-accessControlAllowOrigin,
-accessControlExposeHeaders,
-cacheControl,
+access_control_allow_origin,
+access_control_expose_headers,
+cache_control,
 channels,
-contentSecurityPolicy,
+content_security_policy,
 errors,
-strictTransportSecurity,
-xContentTypeOptions,
-xFrameOptions
+strict_transport_security,
+x_content_type_options,
+x_frame_options
 FROM aws.ivs.channels
 WHERE region = '{{ region }}' -- required
 ;
@@ -410,18 +410,18 @@ Gets the channel configuration for the specified channel ARN. See also BatchGetC
 ```sql
 SELECT
 name,
-adConfigurationArn,
+ad_configuration_arn,
 arn,
 authorized,
-containerFormat,
-ingestEndpoint,
-insecureIngest,
-latencyMode,
-multitrackInputConfiguration,
-playbackRestrictionPolicyArn,
-playbackUrl,
+container_format,
+ingest_endpoint,
+insecure_ingest,
+latency_mode,
+multitrack_input_configuration,
+playback_restriction_policy_arn,
+playback_url,
 preset,
-recordingConfigurationArn,
+recording_configuration_arn,
 srt,
 tags,
 type_
@@ -437,14 +437,14 @@ Gets summary information about all channels in your account, in the Amazon Web S
 ```sql
 SELECT
 name,
-adConfigurationArn,
+ad_configuration_arn,
 arn,
 authorized,
-insecureIngest,
-latencyMode,
-playbackRestrictionPolicyArn,
+insecure_ingest,
+latency_mode,
+playback_restriction_policy_arn,
 preset,
-recordingConfigurationArn,
+recording_configuration_arn,
 tags,
 type_
 FROM aws.ivs.channels
@@ -500,7 +500,7 @@ SELECT
 '{{ region }}'
 RETURNING
 channel,
-streamKey
+stream_key
 ;
 ```
 </TabItem>

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the scheduled report. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:bcm-dashboards::&#91;0-9&#93;&#123;12&#125;:scheduled-report/(\*|&#91;-a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the scheduled report was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardArn" /></td>
+    <td><CopyableCode code="dashboard_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dashboard associated with the scheduled report. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:bcm-dashboards::&#91;0-9&#93;&#123;12&#125;:dashboard/(\*|&#91;-a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -76,37 +76,37 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the scheduled report's purpose or contents. (pattern: &lt;code&gt;(?!.* &#123;2&#125;)&#91; a-zA-Z0-9.,!?;:@#$%&\-_/\\&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="healthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>object</code></td>
     <td>The health status of the scheduled report at last refresh time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastExecutionAt" /></td>
+    <td><CopyableCode code="last_execution_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the most recent execution of the scheduled report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleConfig" /></td>
+    <td><CopyableCode code="schedule_config" /></td>
     <td><code>object</code></td>
     <td>The schedule configuration that defines when and how often the report is generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduledReportExecutionRoleArn" /></td>
+    <td><CopyableCode code="scheduled_report_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that the scheduled report uses to execute. Amazon Web Services Billing and Cost Management Dashboards will assume this IAM role while executing the scheduled report. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:iam::&#91;0-9&#93;&#123;12&#125;:role/&#91;a-zA-Z0-9+=,.@_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the scheduled report was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="widgetDateRangeOverride" /></td>
+    <td><CopyableCode code="widget_date_range_override" /></td>
     <td><code>object</code></td>
     <td>Defines a time period with explicit start and end times for data queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="widgetIds" /></td>
+    <td><CopyableCode code="widget_ids" /></td>
     <td><code>array</code></td>
     <td>The list of widget identifiers included in the scheduled report.</td>
 </tr>
@@ -135,22 +135,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the scheduled report. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:bcm-dashboards::&#91;0-9&#93;&#123;12&#125;:scheduled-report/(\*|&#91;-a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardArn" /></td>
+    <td><CopyableCode code="dashboard_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dashboard associated with the scheduled report. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:bcm-dashboards::&#91;0-9&#93;&#123;12&#125;:dashboard/(\*|&#91;-a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="healthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>object</code></td>
     <td>The health status of the scheduled report as of its last refresh time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>The schedule expression that defines when the report runs. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleExpressionTimeZone" /></td>
+    <td><CopyableCode code="schedule_expression_time_zone" /></td>
     <td><code>string</code></td>
     <td>The time zone for the schedule expression, for example, UTC. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the schedule: ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="widgetIds" /></td>
+    <td><CopyableCode code="widget_ids" /></td>
     <td><code>array</code></td>
     <td>The list of widget identifiers included in the scheduled report.</td>
 </tr>
@@ -260,16 +260,16 @@ Retrieves the configuration and metadata of a specified scheduled report.
 SELECT
 name,
 arn,
-createdAt,
-dashboardArn,
+created_at,
+dashboard_arn,
 description,
-healthStatus,
-lastExecutionAt,
-scheduleConfig,
-scheduledReportExecutionRoleArn,
-updatedAt,
-widgetDateRangeOverride,
-widgetIds
+health_status,
+last_execution_at,
+schedule_config,
+scheduled_report_execution_role_arn,
+updated_at,
+widget_date_range_override,
+widget_ids
 FROM aws.bcm_dashboards.scheduled_reports
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,12 +283,12 @@ Returns a list of scheduled reports in your account.
 SELECT
 name,
 arn,
-dashboardArn,
-healthStatus,
-scheduleExpression,
-scheduleExpressionTimeZone,
+dashboard_arn,
+health_status,
+schedule_expression,
+schedule_expression_time_zone,
 state,
-widgetIds
+widget_ids
 FROM aws.bcm_dashboards.scheduled_reports
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateSigningRequest" /></td>
+    <td><CopyableCode code="certificate_signing_request" /></td>
     <td><code>string</code></td>
     <td>The certificate signing request generated using the key pair associated with the key identifier. (pattern: &lt;code&gt;&#91;^\&#91;;\&#93;&lt;&gt;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Creates a certificate signing request (CSR) from a key pair.
 
 ```sql
 SELECT
-CertificateSigningRequest
+certificate_signing_request
 FROM aws.payment_cryptography.certificate_signing_requests
 WHERE region = '{{ region }}' -- required
 ;

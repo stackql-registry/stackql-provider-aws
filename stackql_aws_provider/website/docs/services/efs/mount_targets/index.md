@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The unique and consistent identifier of the Availability Zone that the mount target resides in. For example, use1-az1 is an AZ ID for the us-east-1 Region and it has the same location in every Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneName" /></td>
+    <td><CopyableCode code="availability_zone_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone in which the mount target is located. Availability Zones are independently mapped to names for each Amazon Web Services account. For example, the Availability Zone us-east-1a for your Amazon Web Services account might not be the same location as us-east-1a for another Amazon Web Services account. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemId" /></td>
+    <td><CopyableCode code="file_system_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the file system for which the mount target is intended. (pattern: &lt;code&gt;^(arn:aws&#91;-a-z&#93;*:elasticfilesystem:&#91;0-9a-z-:&#93;+:file-system/fs-&#91;0-9a-f&#93;&#123;8,40&#125;|fs-&#91;0-9a-f&#93;&#123;8,40&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>Address at which the file system can be mounted by using the mount target. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;\.&#91;0-9&#93;&#123;1,3&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Address" /></td>
+    <td><CopyableCode code="ipv_6_address" /></td>
     <td><code>string</code></td>
     <td>The IPv6 address for the mount target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycleState" /></td>
+    <td><CopyableCode code="life_cycle_state" /></td>
     <td><code>string</code></td>
     <td>Lifecycle state of the mount target. (creating, available, updating, deleting, deleted, error)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MountTargetId" /></td>
+    <td><CopyableCode code="mount_target_id" /></td>
     <td><code>string</code></td>
     <td>System-assigned mount target ID. (pattern: &lt;code&gt;^fsmt-&#91;0-9a-f&#93;&#123;8,40&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network interface that Amazon EFS created when it created the mount target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID that owns the resource. (pattern: &lt;code&gt;^(\d&#123;12&#125;)|(\d&#123;4&#125;-\d&#123;4&#125;-\d&#123;4&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the mount target's subnet. (pattern: &lt;code&gt;^subnet-&#91;0-9a-f&#93;&#123;8,40&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The virtual private cloud (VPC) ID that the mount target is configured in.</td>
 </tr>
@@ -213,17 +213,17 @@ Returns the descriptions of all the current mount targets, or a specific mount t
 
 ```sql
 SELECT
-AvailabilityZoneId,
-AvailabilityZoneName,
-FileSystemId,
-IpAddress,
-Ipv6Address,
-LifeCycleState,
-MountTargetId,
-NetworkInterfaceId,
-OwnerId,
-SubnetId,
-VpcId
+availability_zone_id,
+availability_zone_name,
+file_system_id,
+ip_address,
+ipv_6_address,
+life_cycle_state,
+mount_target_id,
+network_interface_id,
+owner_id,
+subnet_id,
+vpc_id
 FROM aws.efs.mount_targets
 WHERE region = '{{ region }}' -- required
 AND MaxItems = '{{ MaxItems }}'
@@ -269,17 +269,17 @@ SELECT
 '{{ SecurityGroups }}',
 '{{ region }}'
 RETURNING
-AvailabilityZoneId,
-AvailabilityZoneName,
-FileSystemId,
-IpAddress,
-Ipv6Address,
-LifeCycleState,
-MountTargetId,
-NetworkInterfaceId,
-OwnerId,
-SubnetId,
-VpcId
+availability_zone_id,
+availability_zone_name,
+file_system_id,
+ip_address,
+ipv_6_address,
+life_cycle_state,
+mount_target_id,
+network_interface_id,
+owner_id,
+subnet_id,
+vpc_id
 ;
 ```
 </TabItem>

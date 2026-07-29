@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique pagination token that makes it possible to display the next page of results. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords. If Marker is returned by a previous response, there are more results available. The value of Marker is a unique pagination token for each page. To retrieve the next page, make the call again using the returned token and keeping all other arguments unchanged.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MigrationProjects" /></td>
+    <td><CopyableCode code="migration_projects" /></td>
     <td><code>array</code></td>
     <td>A description of migration projects.</td>
 </tr>
@@ -152,8 +152,8 @@ Returns a paginated list of migration projects for your account in the current r
 
 ```sql
 SELECT
-Marker,
-MigrationProjects
+marker,
+migration_projects
 FROM aws.dms.migration_projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,7 +198,7 @@ SELECT
 '{{ SchemaConversionApplicationAttributes }}',
 '{{ region }}'
 RETURNING
-MigrationProject
+migration_project
 ;
 ```
 </TabItem>
@@ -286,7 +286,7 @@ WHERE
 region = '{{ region }}' --required
 AND MigrationProjectIdentifier = '{{ MigrationProjectIdentifier }}' --required
 RETURNING
-MigrationProject;
+migration_project;
 ```
 </TabItem>
 </Tabs>

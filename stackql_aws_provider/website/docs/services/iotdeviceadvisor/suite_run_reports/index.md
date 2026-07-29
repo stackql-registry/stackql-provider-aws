@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="qualificationReportDownloadUrl" /></td>
+    <td><CopyableCode code="qualification_report_download_url" /></td>
     <td><code>string</code></td>
     <td>Download URL of the qualification report.</td>
 </tr>
@@ -129,7 +129,7 @@ Gets a report download link for a successful Device Advisor qualifying test suit
 
 ```sql
 SELECT
-qualificationReportDownloadUrl
+qualification_report_download_url
 FROM aws.iotdeviceadvisor.suite_run_reports
 WHERE suite_definition_id = '{{ suite_definition_id }}' -- required
 AND suite_run_id = '{{ suite_run_id }}' -- required

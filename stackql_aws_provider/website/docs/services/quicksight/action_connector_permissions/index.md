@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionConnectorId" /></td>
+    <td><CopyableCode code="action_connector_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the action connector. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the action connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permissions" /></td>
+    <td><CopyableCode code="permissions" /></td>
     <td><code>array</code></td>
     <td>The list of permissions associated with the action connector, including the principals and their allowed actions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status code of the request.</td>
 </tr>
@@ -156,11 +156,11 @@ Retrieves the permissions configuration for an action connector, showing which u
 
 ```sql
 SELECT
-ActionConnectorId,
-Arn,
-Permissions,
-RequestId,
-Status
+action_connector_id,
+arn,
+permissions,
+request_id,
+status
 FROM aws.quicksight.action_connector_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND action_connector_id = '{{ action_connector_id }}' -- required
@@ -193,11 +193,11 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND action_connector_id = '{{ action_connector_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ActionConnectorId,
-Arn,
-Permissions,
-RequestId,
-Status;
+action_connector_id,
+arn,
+permissions,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>List of tags returned by the operation.</td>
 </tr>
@@ -143,7 +143,7 @@ This operation returns the tags for a resource type.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.backupsearch.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

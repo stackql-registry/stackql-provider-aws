@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Effect" /></td>
+    <td><CopyableCode code="effect" /></td>
     <td><code>string</code></td>
     <td>Effect of the impersonation role on the target user based on its rules. Available effects are ALLOW or DENY. (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MatchedRules" /></td>
+    <td><CopyableCode code="matched_rules" /></td>
     <td><code>array</code></td>
     <td>A list of the rules that match the input and produce the configured effect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The impersonation role type. (FULL_ACCESS, READ_ONLY)</td>
 </tr>
@@ -129,9 +129,9 @@ Tests whether the given impersonation role can impersonate a target user.
 
 ```sql
 SELECT
-Effect,
-MatchedRules,
-Type
+effect,
+matched_rules,
+type
 FROM aws.workmail.impersonation_role_effects
 WHERE region = '{{ region }}' -- required
 ;

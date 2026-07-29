@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachment" /></td>
+    <td><CopyableCode code="attachment" /></td>
     <td><code>string</code></td>
     <td>The attachment information for the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone of the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacAddress" /></td>
+    <td><CopyableCode code="mac_address" /></td>
     <td><code>string</code></td>
     <td>The MAC address of the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateIpv4Addresses" /></td>
+    <td><CopyableCode code="private_ipv_4_addresses" /></td>
     <td><code>string</code></td>
     <td>The private IPv4 addresses associated with the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryInterfaceArn" /></td>
+    <td><CopyableCode code="secondary_interface_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryInterfaceId" /></td>
+    <td><CopyableCode code="secondary_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryInterfaceType" /></td>
+    <td><CopyableCode code="secondary_interface_type" /></td>
     <td><code>string</code></td>
     <td>The type of secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryNetworkId" /></td>
+    <td><CopyableCode code="secondary_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryNetworkType" /></td>
+    <td><CopyableCode code="secondary_network_type" /></td>
     <td><code>string</code></td>
     <td>The type of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondarySubnetId" /></td>
+    <td><CopyableCode code="secondary_subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the secondary subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDestCheck" /></td>
+    <td><CopyableCode code="source_dest_check" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether source/destination checking is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the secondary interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the secondary interface.</td>
 </tr>
@@ -214,21 +214,21 @@ Describes one or more of your secondary interfaces.
 
 ```sql
 SELECT
-Attachment,
-AvailabilityZone,
-AvailabilityZoneId,
-MacAddress,
-OwnerId,
-PrivateIpv4Addresses,
-SecondaryInterfaceArn,
-SecondaryInterfaceId,
-SecondaryInterfaceType,
-SecondaryNetworkId,
-SecondaryNetworkType,
-SecondarySubnetId,
-SourceDestCheck,
-Status,
-Tags
+attachment,
+availability_zone,
+availability_zone_id,
+mac_address,
+owner_id,
+private_ipv_4_addresses,
+secondary_interface_arn,
+secondary_interface_id,
+secondary_interface_type,
+secondary_network_id,
+secondary_network_type,
+secondary_subnet_id,
+source_dest_check,
+status,
+tags
 FROM aws.ec2.secondary_interfaces
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

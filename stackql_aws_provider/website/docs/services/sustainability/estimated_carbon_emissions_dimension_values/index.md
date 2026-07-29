@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Dimension" /></td>
+    <td><CopyableCode code="dimension" /></td>
     <td><code>string</code></td>
     <td>Specifies the dimensions available for grouping and filtering emissions data. (USAGE_ACCOUNT_ID, REGION, SERVICE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value for the specified dimension. Valid values vary based on the dimension type (e.g., us-east-1 for the REGION dimension, AmazonEC2 for the SERVICE dimension).</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the possible dimension values available for a customer's account. We rec
 
 ```sql
 SELECT
-Dimension,
-Value
+dimension,
+value
 FROM aws.sustainability.estimated_carbon_emissions_dimension_values
 WHERE region = '{{ region }}' -- required
 ;

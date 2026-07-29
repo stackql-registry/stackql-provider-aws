@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code returned by the namespace deletion task. (VALIDATION_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error code returned by the namespace deletion task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the namespace that is being deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the namespace that is being deleted.</td>
 </tr>
@@ -139,10 +139,10 @@ Gets the status of a namespace deletion task.
 
 ```sql
 SELECT
-errorCode,
-errorMessage,
-namespaceArn,
-namespaceName,
+error_code,
+error_message,
+namespace_arn,
+namespace_name,
 status
 FROM aws.iotthingsgraph.namespace_deletion_status
 WHERE region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Dimensions" /></td>
+    <td><CopyableCode code="dimensions" /></td>
     <td><code>array</code></td>
     <td>The details for the requested dimensions.</td>
 </tr>
@@ -119,7 +119,7 @@ Get the attributes of the specified dimension group for a DB instance or data so
 
 ```sql
 SELECT
-Dimensions
+dimensions
 FROM aws.pi.dimension_key_details
 WHERE region = '{{ region }}' -- required
 ;

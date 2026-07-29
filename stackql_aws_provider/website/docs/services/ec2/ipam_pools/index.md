@@ -50,122 +50,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressFamily" /></td>
+    <td><CopyableCode code="address_family" /></td>
     <td><code>string</code></td>
     <td>The address family of the pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocationDefaultNetmaskLength" /></td>
+    <td><CopyableCode code="allocation_default_netmask_length" /></td>
     <td><code>integer</code></td>
     <td>The default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is 10.0.0.0/8 and you enter 16 here, new allocations will default to 10.0.0.0/16.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocationMaxNetmaskLength" /></td>
+    <td><CopyableCode code="allocation_max_netmask_length" /></td>
     <td><code>integer</code></td>
     <td>The maximum netmask length possible for CIDR allocations in this IPAM pool to be compliant. The maximum netmask length must be greater than the minimum netmask length. Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask lengths for IPv6 addresses are 0 - 128.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocationMinNetmaskLength" /></td>
+    <td><CopyableCode code="allocation_min_netmask_length" /></td>
     <td><code>integer</code></td>
     <td>The minimum netmask length required for CIDR allocations in this IPAM pool to be compliant. The minimum netmask length must be less than the maximum netmask length. Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask lengths for IPv6 addresses are 0 - 128.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocationResourceTags" /></td>
+    <td><CopyableCode code="allocation_resource_tags" /></td>
     <td><code>string</code></td>
     <td>Tags that are required for resources that use CIDRs from this IPAM pool. Resources that do not have these tags will not be allowed to allocate space from the pool. If the resources have their tags changed after they have allocated space or if the allocation tagging requirements are changed on the pool, the resource may be marked as noncompliant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoImport" /></td>
+    <td><CopyableCode code="auto_import" /></td>
     <td><code>boolean</code></td>
     <td>If selected, IPAM will continuously look for resources within the CIDR range of this pool and automatically import them as allocations into your IPAM. The CIDRs that will be allocated for these resources must not already be allocated to other resources in order for the import to succeed. IPAM will import a CIDR regardless of its compliance with the pool's allocation rules, so a resource might be imported and subsequently marked as noncompliant. If IPAM discovers multiple CIDRs that overlap, IPAM will import the largest CIDR only. If IPAM discovers multiple CIDRs with matching CIDRs, IPAM will randomly import one of them only. A locale must be set on the pool for this feature to work.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsService" /></td>
+    <td><CopyableCode code="aws_service" /></td>
     <td><code>string</code></td>
     <td>Limits which service in Amazon Web Services that the pool can be used in. "ec2", for example, allows users to use space for Elastic IP addresses and VPCs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the IPAM pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamArn" /></td>
+    <td><CopyableCode code="ipam_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPoolArn" /></td>
+    <td><CopyableCode code="ipam_pool_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IPAM pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPoolId" /></td>
+    <td><CopyableCode code="ipam_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamRegion" /></td>
+    <td><CopyableCode code="ipam_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region of the IPAM pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamScopeArn" /></td>
+    <td><CopyableCode code="ipam_scope_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the scope of the IPAM pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamScopeType" /></td>
+    <td><CopyableCode code="ipam_scope_type" /></td>
     <td><code>string</code></td>
     <td>In IPAM, a scope is the highest-level container within IPAM. An IPAM contains two default scopes. Each scope represents the IP space for a single network. The private scope is intended for all private IP address space. The public scope is intended for all public IP address space. Scopes enable you to reuse IP addresses across multiple unconnected networks without causing IP address overlap or conflict.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Locale" /></td>
+    <td><CopyableCode code="locale" /></td>
     <td><code>string</code></td>
     <td>The locale of the IPAM pool. The locale for the pool should be one of the following: An Amazon Web Services Region where you want this IPAM pool to be available for allocations. The network border group for an Amazon Web Services Local Zone where you want this IPAM pool to be available for allocations (supported Local Zones). This option is only available for IPAM IPv4 pools in the public scope. If you choose an Amazon Web Services Region for locale that has not been configured as an operating Region for the IPAM, you'll get an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the IPAM pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolDepth" /></td>
+    <td><CopyableCode code="pool_depth" /></td>
     <td><code>integer</code></td>
     <td>The depth of pools in your IPAM pool. The pool depth quota is 10. For more information, see Quotas in IPAM in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIpSource" /></td>
+    <td><CopyableCode code="public_ip_source" /></td>
     <td><code>string</code></td>
     <td>The IP address source for pools in the public scope. Only used for provisioning IP address CIDRs to pools in the public scope. Default is BYOIP. For more information, see Create IPv6 pools in the Amazon VPC IPAM User Guide. By default, you can add only one Amazon-provided IPv6 CIDR block to a top-level IPv6 pool. For information on increasing the default limit, see Quotas for your IPAM in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAdvertisable" /></td>
+    <td><CopyableCode code="publicly_advertisable" /></td>
     <td><code>boolean</code></td>
     <td>Determines if a pool is publicly advertisable. This option is not available for pools with AddressFamily set to ipv4.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIpamPoolId" /></td>
+    <td><CopyableCode code="source_ipam_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source IPAM pool. You can use this option to create an IPAM pool within an existing source pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceResource" /></td>
+    <td><CopyableCode code="source_resource" /></td>
     <td><code>string</code></td>
     <td>The resource used to provision CIDRs to a resource planning pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the IPAM pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>The state message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.</td>
 </tr>
@@ -385,30 +385,30 @@ Get information about your IPAM pools.
 
 ```sql
 SELECT
-AddressFamily,
-AllocationDefaultNetmaskLength,
-AllocationMaxNetmaskLength,
-AllocationMinNetmaskLength,
-AllocationResourceTags,
-AutoImport,
-AwsService,
-Description,
-IpamArn,
-IpamPoolArn,
-IpamPoolId,
-IpamRegion,
-IpamScopeArn,
-IpamScopeType,
-Locale,
-OwnerId,
-PoolDepth,
-PublicIpSource,
-PubliclyAdvertisable,
-SourceIpamPoolId,
-SourceResource,
-State,
-StateMessage,
-Tags
+address_family,
+allocation_default_netmask_length,
+allocation_max_netmask_length,
+allocation_min_netmask_length,
+allocation_resource_tags,
+auto_import,
+aws_service,
+description,
+ipam_arn,
+ipam_pool_arn,
+ipam_pool_id,
+ipam_region,
+ipam_scope_arn,
+ipam_scope_type,
+locale,
+owner_id,
+pool_depth,
+public_ip_source,
+publicly_advertisable,
+source_ipam_pool_id,
+source_resource,
+state,
+state_message,
+tags
 FROM aws.ec2.ipam_pools
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -476,30 +476,30 @@ SELECT
 '{{ PublicIpSource }}',
 '{{ SourceResource }}'
 RETURNING
-AddressFamily,
-AllocationDefaultNetmaskLength,
-AllocationMaxNetmaskLength,
-AllocationMinNetmaskLength,
-AllocationResourceTags,
-AutoImport,
-AwsService,
-Description,
-IpamArn,
-IpamPoolArn,
-IpamPoolId,
-IpamRegion,
-IpamScopeArn,
-IpamScopeType,
-Locale,
-OwnerId,
-PoolDepth,
-PublicIpSource,
-PubliclyAdvertisable,
-SourceIpamPoolId,
-SourceResource,
-State,
-StateMessage,
-Tags
+address_family,
+allocation_default_netmask_length,
+allocation_max_netmask_length,
+allocation_min_netmask_length,
+allocation_resource_tags,
+auto_import,
+aws_service,
+description,
+ipam_arn,
+ipam_pool_arn,
+ipam_pool_id,
+ipam_region,
+ipam_scope_arn,
+ipam_scope_type,
+locale,
+owner_id,
+pool_depth,
+public_ip_source,
+publicly_advertisable,
+source_ipam_pool_id,
+source_resource,
+state,
+state_message,
+tags
 ;
 ```
 </TabItem>
@@ -612,30 +612,30 @@ AND ClearAllocationDefaultNetmaskLength = {{ ClearAllocationDefaultNetmaskLength
 AND AddAllocationResourceTag = '{{ AddAllocationResourceTag}}'
 AND RemoveAllocationResourceTag = '{{ RemoveAllocationResourceTag}}'
 RETURNING
-AddressFamily,
-AllocationDefaultNetmaskLength,
-AllocationMaxNetmaskLength,
-AllocationMinNetmaskLength,
-AllocationResourceTags,
-AutoImport,
-AwsService,
-Description,
-IpamArn,
-IpamPoolArn,
-IpamPoolId,
-IpamRegion,
-IpamScopeArn,
-IpamScopeType,
-Locale,
-OwnerId,
-PoolDepth,
-PublicIpSource,
-PubliclyAdvertisable,
-SourceIpamPoolId,
-SourceResource,
-State,
-StateMessage,
-Tags;
+address_family,
+allocation_default_netmask_length,
+allocation_max_netmask_length,
+allocation_min_netmask_length,
+allocation_resource_tags,
+auto_import,
+aws_service,
+description,
+ipam_arn,
+ipam_pool_arn,
+ipam_pool_id,
+ipam_region,
+ipam_scope_arn,
+ipam_scope_type,
+locale,
+owner_id,
+pool_depth,
+public_ip_source,
+publicly_advertisable,
+source_ipam_pool_id,
+source_resource,
+state,
+state_message,
+tags;
 ```
 </TabItem>
 </Tabs>

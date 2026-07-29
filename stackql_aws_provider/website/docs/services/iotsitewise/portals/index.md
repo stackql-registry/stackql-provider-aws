@@ -56,82 +56,82 @@ The following fields are returned by `SELECT` queries:
     <td>Contains the configuration information of an alarm created in an IoT SiteWise Monitor portal. You can use the alarm to monitor an asset property and get notified when the asset property value is outside a specified range. For more information, see Monitoring with alarms in the IoT SiteWise Application Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationSenderEmail" /></td>
+    <td><CopyableCode code="notification_sender_email" /></td>
     <td><code>string</code></td>
     <td>The email address that sends alarm notifications. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-\.\+&#93;+@&#91;a-zA-Z0-9_\-\.\+&#93;+\.&#91;a-zA-Z&#93;&#123;2,&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalArn" /></td>
+    <td><CopyableCode code="portal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the portal, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:portal/$&#123;PortalId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalAuthMode" /></td>
+    <td><CopyableCode code="portal_auth_mode" /></td>
     <td><code>string</code></td>
     <td>The service to use to authenticate users to the portal. (IAM, SSO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalClientId" /></td>
+    <td><CopyableCode code="portal_client_id" /></td>
     <td><code>string</code></td>
     <td>The IAM Identity Center application generated client ID (used with IAM Identity Center API operations). IoT SiteWise includes portalClientId for only portals that use IAM Identity Center to authenticate users. (pattern: &lt;code&gt;^&#91;!-~&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalContactEmail" /></td>
+    <td><CopyableCode code="portal_contact_email" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services administrator's contact email address. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-\.\+&#93;+@&#91;a-zA-Z0-9_\-\.\+&#93;+\.&#91;a-zA-Z&#93;&#123;2,&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalCreationDate" /></td>
+    <td><CopyableCode code="portal_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the portal was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalDescription" /></td>
+    <td><CopyableCode code="portal_description" /></td>
     <td><code>string</code></td>
     <td>The portal's description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalId" /></td>
+    <td><CopyableCode code="portal_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the portal. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalLastUpdateDate" /></td>
+    <td><CopyableCode code="portal_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the portal was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalLogoImageLocation" /></td>
+    <td><CopyableCode code="portal_logo_image_location" /></td>
     <td><code>object</code></td>
     <td>The portal's logo image, which is available at a URL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalName" /></td>
+    <td><CopyableCode code="portal_name" /></td>
     <td><code>string</code></td>
     <td>The name of the portal. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalStartUrl" /></td>
+    <td><CopyableCode code="portal_start_url" /></td>
     <td><code>string</code></td>
     <td>The URL for the IoT SiteWise Monitor portal. You can use this URL to access portals that use IAM Identity Center for authentication. For portals that use IAM for authentication, you must use the IoT SiteWise console to get a URL that you can use to access the portal. (pattern: &lt;code&gt;^(http|https)\:​//\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalStatus" /></td>
+    <td><CopyableCode code="portal_status" /></td>
     <td><code>object</code></td>
     <td>Contains information about the current status of a portal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalType" /></td>
+    <td><CopyableCode code="portal_type" /></td>
     <td><code>string</code></td>
     <td>Define the type of portal. The value for IoT SiteWise Monitor (Classic) is SITEWISE_PORTAL_V1. The value for IoT SiteWise Monitor (AI-aware) is SITEWISE_PORTAL_V2. (SITEWISE_PORTAL_V1, SITEWISE_PORTAL_V2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalTypeConfiguration" /></td>
+    <td><CopyableCode code="portal_type_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration entry associated with the specific portal type. The value for IoT SiteWise Monitor (Classic) is SITEWISE_PORTAL_V1. The value for IoT SiteWise Monitor (AI-aware) is SITEWISE_PORTAL_V2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the service role that allows the portal's users to access your IoT SiteWise resources on your behalf. For more information, see Using service roles for IoT SiteWise Monitor in the IoT SiteWise User Guide. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.\+=,@&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the portal. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the portal was created, in Unix epoch time.</td>
 </tr>
@@ -170,22 +170,22 @@ The following fields are returned by `SELECT` queries:
     <td>The portal's description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the portal was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="portalType" /></td>
+    <td><CopyableCode code="portal_type" /></td>
     <td><code>string</code></td>
     <td>Define the type of portal. The value for IoT SiteWise Monitor (Classic) is SITEWISE_PORTAL_V1. The value for IoT SiteWise Monitor (AI-aware) is SITEWISE_PORTAL_V2. (SITEWISE_PORTAL_V1, SITEWISE_PORTAL_V2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the service role that allows the portal's users to access your IoT SiteWise resources on your behalf. For more information, see Using service roles for IoT SiteWise Monitor in the IoT SiteWise User Guide. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.\+=,@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startUrl" /></td>
+    <td><CopyableCode code="start_url" /></td>
     <td><code>string</code></td>
     <td>The URL for the IoT SiteWise Monitor portal. You can use this URL to access portals that use IAM Identity Center for authentication. For portals that use IAM for authentication, you must use the IoT SiteWise console to get a URL that you can use to access the portal. (pattern: &lt;code&gt;^(http|https)\:​//\S+&lt;/code&gt;)</td>
 </tr>
@@ -309,22 +309,22 @@ Retrieves information about a portal.
 ```sql
 SELECT
 alarms,
-notificationSenderEmail,
-portalArn,
-portalAuthMode,
-portalClientId,
-portalContactEmail,
-portalCreationDate,
-portalDescription,
-portalId,
-portalLastUpdateDate,
-portalLogoImageLocation,
-portalName,
-portalStartUrl,
-portalStatus,
-portalType,
-portalTypeConfiguration,
-roleArn
+notification_sender_email,
+portal_arn,
+portal_auth_mode,
+portal_client_id,
+portal_contact_email,
+portal_creation_date,
+portal_description,
+portal_id,
+portal_last_update_date,
+portal_logo_image_location,
+portal_name,
+portal_start_url,
+portal_status,
+portal_type,
+portal_type_configuration,
+role_arn
 FROM aws.iotsitewise.portals
 WHERE portal_id = '{{ portal_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -339,12 +339,12 @@ Retrieves a paginated list of IoT SiteWise Monitor portals.
 SELECT
 id,
 name,
-creationDate,
+creation_date,
 description,
-lastUpdateDate,
-portalType,
-roleArn,
-startUrl,
+last_update_date,
+portal_type,
+role_arn,
+start_url,
 status
 FROM aws.iotsitewise.portals
 WHERE region = '{{ region }}' -- required
@@ -400,11 +400,11 @@ SELECT
 '{{ portalTypeConfiguration }}',
 '{{ region }}'
 RETURNING
-portalArn,
-portalId,
-portalStartUrl,
-portalStatus,
-ssoApplicationId
+portal_arn,
+portal_id,
+portal_start_url,
+portal_status,
+sso_application_id
 ;
 ```
 </TabItem>
@@ -488,7 +488,7 @@ AND portalName = '{{ portalName }}' --required
 AND portalContactEmail = '{{ portalContactEmail }}' --required
 AND roleArn = '{{ roleArn }}' --required
 RETURNING
-portalStatus;
+portal_status;
 ```
 </TabItem>
 </Tabs>

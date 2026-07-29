@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a voice tone analysis task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which a voice tone analysis task was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceToneAnalysisTaskId" /></td>
+    <td><CopyableCode code="voice_tone_analysis_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the voice tone analysis task. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VoiceToneAnalysisTaskStatus" /></td>
+    <td><CopyableCode code="voice_tone_analysis_task_status" /></td>
     <td><code>string</code></td>
     <td>The status of a voice tone analysis task. (NotStarted, Initializing, InProgress, Failed, Stopping, Stopped)</td>
 </tr>
@@ -144,10 +144,10 @@ Retrieves the details of a voice tone analysis task.
 
 ```sql
 SELECT
-CreatedTimestamp,
-UpdatedTimestamp,
-VoiceToneAnalysisTaskId,
-VoiceToneAnalysisTaskStatus
+created_timestamp,
+updated_timestamp,
+voice_tone_analysis_task_id,
+voice_tone_analysis_task_status
 FROM aws.chime_sdk_media_pipelines.voice_tone_analysis_tasks
 WHERE identifier = '{{ identifier }}' -- required
 AND voice_tone_analysis_task_id = '{{ voice_tone_analysis_task_id }}' -- required

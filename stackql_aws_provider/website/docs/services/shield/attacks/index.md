@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttackCounters" /></td>
+    <td><CopyableCode code="attack_counters" /></td>
     <td><code>array</code></td>
     <td>List of counters that describe the attack for the specified time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttackId" /></td>
+    <td><CopyableCode code="attack_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the attack. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttackProperties" /></td>
+    <td><CopyableCode code="attack_properties" /></td>
     <td><code>array</code></td>
     <td>The array of objects that provide details of the Shield event. For infrastructure layer events (L3 and L4 events), you can view metrics for top contributors in Amazon CloudWatch metrics. For more information, see Shield metrics and alarms in the WAF Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the attack ended, in Unix time in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mitigations" /></td>
+    <td><CopyableCode code="mitigations" /></td>
     <td><code>array</code></td>
     <td>List of mitigation actions taken for the attack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the resource that was attacked. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the attack started, in Unix time in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubResources" /></td>
+    <td><CopyableCode code="sub_resources" /></td>
     <td><code>array</code></td>
     <td>If applicable, additional detail about the resource being attacked, for example, IP address or URL.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttackId" /></td>
+    <td><CopyableCode code="attack_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the attack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttackVectors" /></td>
+    <td><CopyableCode code="attack_vectors" /></td>
     <td><code>array</code></td>
     <td>The list of attacks for a specified time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time of the attack, in Unix time in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the resource that was attacked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the attack, in Unix time in seconds.</td>
 </tr>
@@ -202,14 +202,14 @@ Describes the details of a DDoS attack.
 
 ```sql
 SELECT
-AttackCounters,
-AttackId,
-AttackProperties,
-EndTime,
-Mitigations,
-ResourceArn,
-StartTime,
-SubResources
+attack_counters,
+attack_id,
+attack_properties,
+end_time,
+mitigations,
+resource_arn,
+start_time,
+sub_resources
 FROM aws.shield.attacks
 WHERE region = '{{ region }}' -- required
 ;
@@ -221,11 +221,11 @@ Returns all ongoing DDoS attacks or all DDoS attacks during a specified time per
 
 ```sql
 SELECT
-AttackId,
-AttackVectors,
-EndTime,
-ResourceArn,
-StartTime
+attack_id,
+attack_vectors,
+end_time,
+resource_arn,
+start_time
 FROM aws.shield.attacks
 WHERE region = '{{ region }}' -- required
 ;

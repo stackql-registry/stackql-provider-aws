@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelId" /></td>
+    <td><CopyableCode code="asset_model_composite_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a composite model on this asset model. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelType" /></td>
+    <td><CopyableCode code="asset_model_composite_model_type" /></td>
     <td><code>string</code></td>
     <td>The composite model type. Valid values are AWS/ALARM, CUSTOM, or AWS/L4E_ANOMALY. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelId" /></td>
+    <td><CopyableCode code="asset_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset model, in UUID format. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -144,9 +144,9 @@ Retrieves a paginated list of composition relationships for an asset model of ty
 
 ```sql
 SELECT
-assetModelCompositeModelId,
-assetModelCompositeModelType,
-assetModelId
+asset_model_composite_model_id,
+asset_model_composite_model_type,
+asset_model_id
 FROM aws.iotsitewise.composition_relationships
 WHERE asset_model_id = '{{ asset_model_id }}' -- required
 AND region = '{{ region }}' -- required

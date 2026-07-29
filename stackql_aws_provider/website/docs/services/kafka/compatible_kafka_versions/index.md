@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompatibleKafkaVersions" /></td>
+    <td><CopyableCode code="compatible_kafka_versions" /></td>
     <td><code>array</code></td>
     <td>A list of CompatibleKafkaVersion objects.</td>
 </tr>
@@ -124,7 +124,7 @@ Gets the Apache Kafka versions to which you can update the MSK cluster.
 
 ```sql
 SELECT
-CompatibleKafkaVersions
+compatible_kafka_versions
 FROM aws.kafka.compatible_kafka_versions
 WHERE region = '{{ region }}' -- required
 AND clusterArn = '{{ clusterArn }}'

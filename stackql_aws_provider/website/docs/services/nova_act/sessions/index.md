@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the session. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -146,7 +146,7 @@ Lists all sessions within a specific workflow run.
 
 ```sql
 SELECT
-sessionId
+session_id
 FROM aws.nova_act.sessions
 WHERE workflow_definition_name = '{{ workflow_definition_name }}' -- required
 AND workflow_run_id = '{{ workflow_run_id }}' -- required
@@ -185,7 +185,7 @@ SELECT
 '{{ workflow_run_id }}',
 '{{ region }}'
 RETURNING
-sessionId
+session_id
 ;
 ```
 </TabItem>

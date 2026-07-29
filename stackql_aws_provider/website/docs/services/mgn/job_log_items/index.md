@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>Job log event. (JOB_START, SERVER_SKIPPED, CLEANUP_START, CLEANUP_END, CLEANUP_FAIL, SNAPSHOT_START, SNAPSHOT_END, SNAPSHOT_FAIL, USING_PREVIOUS_SNAPSHOT, CONVERSION_START, CONVERSION_END, CONVERSION_FAIL, LAUNCH_START, LAUNCH_FAILED, JOB_CANCEL, JOB_END)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventData" /></td>
+    <td><CopyableCode code="event_data" /></td>
     <td><code>object</code></td>
     <td>Job event data</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logDateTime" /></td>
+    <td><CopyableCode code="log_date_time" /></td>
     <td><code>string</code></td>
     <td>Job log event date and time. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
@@ -130,8 +130,8 @@ Retrieves detailed job log items with paging.
 ```sql
 SELECT
 event,
-eventData,
-logDateTime
+event_data,
+log_date_time
 FROM aws.mgn.job_log_items
 WHERE region = '{{ region }}' -- required
 ;

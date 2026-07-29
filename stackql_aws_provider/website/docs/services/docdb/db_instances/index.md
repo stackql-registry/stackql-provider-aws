@@ -50,152 +50,152 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>Does not apply. This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the Availability Zone that the instance is located in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>Specifies the number of days for which automatic snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CACertificateIdentifier" /></td>
+    <td><CopyableCode code="ca_certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the CA certificate for this DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateDetails" /></td>
+    <td><CopyableCode code="certificate_details" /></td>
     <td><code>string</code></td>
     <td>The details of the DB instance's server certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyTagsToSnapshot" /></td>
+    <td><CopyableCode code="copy_tags_to_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether to copy tags from the DB instance to snapshots of the DB instance. By default, tags are not copied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains the name of the cluster that the instance is a member of if the instance is a member of a cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceArn" /></td>
+    <td><CopyableCode code="db_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceClass" /></td>
+    <td><CopyableCode code="db_instance_class" /></td>
     <td><code>string</code></td>
     <td>Contains the name of the compute and memory capacity class of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceIdentifier" /></td>
+    <td><CopyableCode code="db_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains a user-provided database identifier. This identifier is the unique key that identifies an instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceStatus" /></td>
+    <td><CopyableCode code="db_instance_status" /></td>
     <td><code>string</code></td>
     <td>Specifies the current state of this database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroup" /></td>
+    <td><CopyableCode code="db_subnet_group" /></td>
     <td><code>string</code></td>
     <td>Specifies information on the subnet group that is associated with the instance, including the name, description, and subnets in the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbiResourceId" /></td>
+    <td><CopyableCode code="dbi_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region-unique, immutable identifier for the instance. This identifier is found in CloudTrail log entries whenever the KMS key for the instance is accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledCloudwatchLogsExports" /></td>
+    <td><CopyableCode code="enabled_cloudwatch_logs_exports" /></td>
     <td><code>string</code></td>
     <td>A list of log types that this instance is configured to export to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>Specifies the connection endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>Provides the name of the database engine to be used for this instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Indicates the database engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCreateTime" /></td>
+    <td><CopyableCode code="instance_create_time" /></td>
     <td><code>string</code></td>
     <td>Provides the date and time that the instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If StorageEncrypted is true, the KMS key identifier for the encrypted instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRestorableTime" /></td>
+    <td><CopyableCode code="latest_restorable_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the latest time to which a database can be restored with point-in-time restore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>Specifies that changes to the instance are pending. This element is included only when changes are pending. Specific changes are identified by subelements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsEnabled" /></td>
+    <td><CopyableCode code="performance_insights_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Set to true if Amazon RDS Performance Insights is enabled for the DB instance, and otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsKMSKeyId" /></td>
+    <td><CopyableCode code="performance_insights_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromotionTier" /></td>
+    <td><CopyableCode code="promotion_tier" /></td>
     <td><code>integer</code></td>
     <td>A value that specifies the order in which an Amazon DocumentDB replica is promoted to the primary instance after a failure of the existing primary instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Not supported. Amazon DocumentDB does not currently support public endpoints. The value of PubliclyAccessible is always false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusInfos" /></td>
+    <td><CopyableCode code="status_infos" /></td>
     <td><code>string</code></td>
     <td>The status of a read replica. If the instance is not a read replica, this is blank.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether or not the instance is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>string</code></td>
     <td>Provides a list of VPC security group elements that the instance belongs to.</td>
 </tr>
@@ -402,36 +402,36 @@ Returns information about provisioned Amazon DocumentDB instances. This API supp
 
 ```sql
 SELECT
-AutoMinorVersionUpgrade,
-AvailabilityZone,
-BackupRetentionPeriod,
-CACertificateIdentifier,
-CertificateDetails,
-CopyTagsToSnapshot,
-DBClusterIdentifier,
-DBInstanceArn,
-DBInstanceClass,
-DBInstanceIdentifier,
-DBInstanceStatus,
-DBSubnetGroup,
-DbiResourceId,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineVersion,
-InstanceCreateTime,
-KmsKeyId,
-LatestRestorableTime,
-PendingModifiedValues,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-PromotionTier,
-PubliclyAccessible,
-StatusInfos,
-StorageEncrypted,
-VpcSecurityGroups
+auto_minor_version_upgrade,
+availability_zone,
+backup_retention_period,
+ca_certificate_identifier,
+certificate_details,
+copy_tags_to_snapshot,
+db_cluster_identifier,
+db_instance_arn,
+db_instance_class,
+db_instance_identifier,
+db_instance_status,
+db_subnet_group,
+dbi_resource_id,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_version,
+instance_create_time,
+kms_key_id,
+latest_restorable_time,
+pending_modified_values,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+preferred_backup_window,
+preferred_maintenance_window,
+promotion_tier,
+publicly_accessible,
+status_infos,
+storage_encrypted,
+vpc_security_groups
 FROM aws.docdb.db_instances
 WHERE region = '{{ region }}' -- required
 AND DBInstanceIdentifier = '{{ DBInstanceIdentifier }}'
@@ -490,36 +490,36 @@ SELECT
 '{{ PerformanceInsightsKMSKeyId }}',
 '{{ CACertificateIdentifier }}'
 RETURNING
-AutoMinorVersionUpgrade,
-AvailabilityZone,
-BackupRetentionPeriod,
-CACertificateIdentifier,
-CertificateDetails,
-CopyTagsToSnapshot,
-DBClusterIdentifier,
-DBInstanceArn,
-DBInstanceClass,
-DBInstanceIdentifier,
-DBInstanceStatus,
-DBSubnetGroup,
-DbiResourceId,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineVersion,
-InstanceCreateTime,
-KmsKeyId,
-LatestRestorableTime,
-PendingModifiedValues,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-PromotionTier,
-PubliclyAccessible,
-StatusInfos,
-StorageEncrypted,
-VpcSecurityGroups
+auto_minor_version_upgrade,
+availability_zone,
+backup_retention_period,
+ca_certificate_identifier,
+certificate_details,
+copy_tags_to_snapshot,
+db_cluster_identifier,
+db_instance_arn,
+db_instance_class,
+db_instance_identifier,
+db_instance_status,
+db_subnet_group,
+dbi_resource_id,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_version,
+instance_create_time,
+kms_key_id,
+latest_restorable_time,
+pending_modified_values,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+preferred_backup_window,
+preferred_maintenance_window,
+promotion_tier,
+publicly_accessible,
+status_infos,
+storage_encrypted,
+vpc_security_groups
 ;
 ```
 </TabItem>
@@ -617,36 +617,36 @@ AND EnablePerformanceInsights = {{ EnablePerformanceInsights}}
 AND PerformanceInsightsKMSKeyId = '{{ PerformanceInsightsKMSKeyId}}'
 AND CertificateRotationRestart = {{ CertificateRotationRestart}}
 RETURNING
-AutoMinorVersionUpgrade,
-AvailabilityZone,
-BackupRetentionPeriod,
-CACertificateIdentifier,
-CertificateDetails,
-CopyTagsToSnapshot,
-DBClusterIdentifier,
-DBInstanceArn,
-DBInstanceClass,
-DBInstanceIdentifier,
-DBInstanceStatus,
-DBSubnetGroup,
-DbiResourceId,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineVersion,
-InstanceCreateTime,
-KmsKeyId,
-LatestRestorableTime,
-PendingModifiedValues,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-PromotionTier,
-PubliclyAccessible,
-StatusInfos,
-StorageEncrypted,
-VpcSecurityGroups;
+auto_minor_version_upgrade,
+availability_zone,
+backup_retention_period,
+ca_certificate_identifier,
+certificate_details,
+copy_tags_to_snapshot,
+db_cluster_identifier,
+db_instance_arn,
+db_instance_class,
+db_instance_identifier,
+db_instance_status,
+db_subnet_group,
+dbi_resource_id,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_version,
+instance_create_time,
+kms_key_id,
+latest_restorable_time,
+pending_modified_values,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+preferred_backup_window,
+preferred_maintenance_window,
+promotion_tier,
+publicly_accessible,
+status_infos,
+storage_encrypted,
+vpc_security_groups;
 ```
 </TabItem>
 </Tabs>

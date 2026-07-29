@@ -51,152 +51,152 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>The details for the CloudWatch alarm you want to apply to an automation or command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplyOnlyAtCronInterval" /></td>
+    <td><CopyableCode code="apply_only_at_cron_interval" /></td>
     <td><code>boolean</code></td>
     <td>By default, when you create a new associations, the system runs it immediately after it is created and then according to the schedule you specified. Specify this option if you don't want an association to run immediately after you create it. This parameter isn't supported for rate expressions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationDispatchAssumeRole" /></td>
+    <td><CopyableCode code="association_dispatch_assume_role" /></td>
     <td><code>string</code></td>
     <td>A role used by association to take actions on your behalf. State Manager will assume this role and call required APIs when dispatching configurations to nodes. If not specified, service-linked role for Systems Manager will be used by default. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The association ID. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationName" /></td>
+    <td><CopyableCode code="association_name" /></td>
     <td><code>string</code></td>
     <td>The association name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationVersion" /></td>
+    <td><CopyableCode code="association_version" /></td>
     <td><code>string</code></td>
     <td>The association version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST)|(&#91;1-9&#93;&#91;0-9&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomationTargetParameterName" /></td>
+    <td><CopyableCode code="automation_target_parameter_name" /></td>
     <td><code>string</code></td>
     <td>Choose the parameter that will define how your automation will branch out. This target is required for associations that use an Automation runbook and target resources by using rate controls. Automation is a tool in Amazon Web Services Systems Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CalendarNames" /></td>
+    <td><CopyableCode code="calendar_names" /></td>
     <td><code>array</code></td>
     <td>The names or Amazon Resource Names (ARNs) of the Change Calendar type documents your associations are gated under. The associations only run when that change calendar is open. For more information, see Amazon Web Services Systems Manager Change Calendar in the Amazon Web Services Systems Manager User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComplianceSeverity" /></td>
+    <td><CopyableCode code="compliance_severity" /></td>
     <td><code>string</code></td>
     <td>The severity level that is assigned to the association. (CRITICAL, HIGH, MEDIUM, LOW, UNSPECIFIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Date" /></td>
+    <td><CopyableCode code="date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the association was made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>The document version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The number of hours that an association can run on specified targets. After the resulting cutoff time passes, associations that are currently running are cancelled, and no pending executions are started on remaining targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The managed node ID. (pattern: &lt;code&gt;(^i-(\w&#123;8&#125;|\w&#123;17&#125;)$)|(^mi-\w&#123;17&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionDate" /></td>
+    <td><CopyableCode code="last_execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date on which the association was last run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulExecutionDate" /></td>
+    <td><CopyableCode code="last_successful_execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date on which the association was successfully run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateAssociationDate" /></td>
+    <td><CopyableCode code="last_update_association_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the association was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrency" /></td>
+    <td><CopyableCode code="max_concurrency" /></td>
     <td><code>string</code></td>
     <td>The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which means all targets run the association at the same time. If a new managed node starts and attempts to run an association while Systems Manager is running MaxConcurrency associations, the association is allowed to run. During the next association interval, the new managed node will process its association within the limit specified for MaxConcurrency. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;1-9&#93;&#91;0-9&#93;%|&#91;1-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxErrors" /></td>
+    <td><CopyableCode code="max_errors" /></td>
     <td><code>string</code></td>
     <td>The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops sending requests when the fourth error is received. If you specify 0, then the system stops sending requests after the first error is returned. If you run an association on 50 managed nodes and set MaxError to 10%, then the system stops sending the request when the sixth error is received. Executions that are already running an association when MaxErrors is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won't be more than max-errors failed executions, set MaxConcurrency to 1 so that executions proceed one at a time. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;0&#93;|&#91;1-9&#93;&#91;0-9&#93;%|&#91;0-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the SSM document. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.:/&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputLocation" /></td>
+    <td><CopyableCode code="output_location" /></td>
     <td><code>object</code></td>
     <td>An S3 bucket where you want to store the output details of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Overview" /></td>
+    <td><CopyableCode code="overview" /></td>
     <td><code>object</code></td>
     <td>Information about the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>A description of the parameters for a document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>A cron expression that specifies a schedule when the association runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleOffset" /></td>
+    <td><CopyableCode code="schedule_offset" /></td>
     <td><code>integer</code></td>
     <td>Number of days to wait after the scheduled day to run an association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The association status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncCompliance" /></td>
+    <td><CopyableCode code="sync_compliance" /></td>
     <td><code>string</code></td>
     <td>The mode for generating association compliance. You can specify AUTO or MANUAL. In AUTO mode, the system uses the status of the association execution to determine the compliance status. If the association execution runs successfully, then the association is COMPLIANT. If the association execution doesn't run successfully, the association is NON-COMPLIANT. In MANUAL mode, you must specify the AssociationId as a parameter for the PutComplianceItems API operation. In this case, compliance data isn't managed by State Manager, a tool in Amazon Web Services Systems Manager. It is managed by your direct call to the PutComplianceItems API operation. By default, all associations use AUTO mode. (AUTO, MANUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetLocations" /></td>
+    <td><CopyableCode code="target_locations" /></td>
     <td><code>array</code></td>
     <td>The combination of Amazon Web Services Regions and Amazon Web Services accounts where you want to run the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetMaps" /></td>
+    <td><CopyableCode code="target_maps" /></td>
     <td><code>array</code></td>
     <td>A key-value mapping of document parameters to target resources. Both Targets and TargetMaps can't be specified together.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>The managed nodes targeted by the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggeredAlarms" /></td>
+    <td><CopyableCode code="triggered_alarms" /></td>
     <td><code>array</code></td>
     <td>The CloudWatch alarm that was invoked during the association.</td>
 </tr>
@@ -215,67 +215,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationName" /></td>
+    <td><CopyableCode code="association_name" /></td>
     <td><code>string</code></td>
     <td>The association name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationVersion" /></td>
+    <td><CopyableCode code="association_version" /></td>
     <td><code>string</code></td>
     <td>The association version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST)|(&#91;1-9&#93;&#91;0-9&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>The version of the document used in the association. If you change a document version for a State Manager association, Systems Manager immediately runs the association unless you previously specifed the apply-only-at-cron-interval parameter. State Manager doesn't support running associations that use a new version of a document if that document is shared from another account. State Manager always runs the default version of a document if shared from another account, even though the Systems Manager console shows that a new version was processed. If you want to run an association using a new version of a document shared form another account, you must set the document version to default. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The number of hours that an association can run on specified targets. After the resulting cutoff time passes, associations that are currently running are cancelled, and no pending executions are started on remaining targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The managed node ID. (pattern: &lt;code&gt;(^i-(\w&#123;8&#125;|\w&#123;17&#125;)$)|(^mi-\w&#123;17&#125;$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionDate" /></td>
+    <td><CopyableCode code="last_execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date on which the association was last run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the SSM document. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.:/&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Overview" /></td>
+    <td><CopyableCode code="overview" /></td>
     <td><code>object</code></td>
     <td>Information about the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>A cron expression that specifies a schedule when the association runs. The schedule runs in Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleOffset" /></td>
+    <td><CopyableCode code="schedule_offset" /></td>
     <td><code>integer</code></td>
     <td>Number of days to wait after the scheduled day to run an association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetMaps" /></td>
+    <td><CopyableCode code="target_maps" /></td>
     <td><code>array</code></td>
     <td>A key-value mapping of document parameters to target resources. Both Targets and TargetMaps can't be specified together.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>The managed nodes targeted by the request to create an association. You can target all managed nodes in an Amazon Web Services account by specifying the InstanceIds key with a value of *.</td>
 </tr>
@@ -394,36 +394,36 @@ Describes the association for the specified target or managed node. If you creat
 
 ```sql
 SELECT
-AlarmConfiguration,
-ApplyOnlyAtCronInterval,
-AssociationDispatchAssumeRole,
-AssociationId,
-AssociationName,
-AssociationVersion,
-AutomationTargetParameterName,
-CalendarNames,
-ComplianceSeverity,
-Date,
-DocumentVersion,
-Duration,
-InstanceId,
-LastExecutionDate,
-LastSuccessfulExecutionDate,
-LastUpdateAssociationDate,
-MaxConcurrency,
-MaxErrors,
-Name,
-OutputLocation,
-Overview,
-Parameters,
-ScheduleExpression,
-ScheduleOffset,
-Status,
-SyncCompliance,
-TargetLocations,
-TargetMaps,
-Targets,
-TriggeredAlarms
+alarm_configuration,
+apply_only_at_cron_interval,
+association_dispatch_assume_role,
+association_id,
+association_name,
+association_version,
+automation_target_parameter_name,
+calendar_names,
+compliance_severity,
+date,
+document_version,
+duration,
+instance_id,
+last_execution_date,
+last_successful_execution_date,
+last_update_association_date,
+max_concurrency,
+max_errors,
+name,
+output_location,
+overview,
+parameters,
+schedule_expression,
+schedule_offset,
+status,
+sync_compliance,
+target_locations,
+target_maps,
+targets,
+triggered_alarms
 FROM aws.ssm.associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -435,19 +435,19 @@ Returns all State Manager associations in the current Amazon Web Services accoun
 
 ```sql
 SELECT
-AssociationId,
-AssociationName,
-AssociationVersion,
-DocumentVersion,
-Duration,
-InstanceId,
-LastExecutionDate,
-Name,
-Overview,
-ScheduleExpression,
-ScheduleOffset,
-TargetMaps,
-Targets
+association_id,
+association_name,
+association_version,
+document_version,
+duration,
+instance_id,
+last_execution_date,
+name,
+overview,
+schedule_expression,
+schedule_offset,
+target_maps,
+targets
 FROM aws.ssm.associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -481,8 +481,8 @@ SELECT
 '{{ AssociationDispatchAssumeRole }}',
 '{{ region }}'
 RETURNING
-Failed,
-Successful
+failed,
+successful
 ;
 ```
 </TabItem>
@@ -541,7 +541,7 @@ SELECT
 '{{ AssociationDispatchAssumeRole }}',
 '{{ region }}'
 RETURNING
-AssociationDescription
+association_description
 ;
 ```
 </TabItem>
@@ -730,7 +730,7 @@ region = '{{ region }}' --required
 AND InstanceId = '{{ InstanceId }}' --required
 AND AssociationStatus = '{{ AssociationStatus }}' --required
 RETURNING
-AssociationDescription;
+association_description;
 ```
 </TabItem>
 <TabItem value="update_association">
@@ -766,7 +766,7 @@ WHERE
 region = '{{ region }}' --required
 AND AssociationId = '{{ AssociationId }}' --required
 RETURNING
-AssociationDescription;
+association_description;
 ```
 </TabItem>
 </Tabs>

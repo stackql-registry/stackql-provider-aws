@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeType" /></td>
+    <td><CopyableCode code="attribute_type" /></td>
     <td><code>string</code></td>
     <td>The type of attribute. (INBOUND_CALLS, OUTBOUND_CALLS, CONTACTFLOW_LOGS, CONTACT_LENS, AUTO_RESOLVE_BEST_VOICES, USE_CUSTOM_TTS_VOICES, EARLY_MEDIA, MULTI_PARTY_CONFERENCE, HIGH_VOLUME_OUTBOUND, ENHANCED_CONTACT_MONITORING, ENHANCED_CHAT_MONITORING, MULTI_PARTY_CHAT_CONFERENCE, MESSAGE_STREAMING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the attribute.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeType" /></td>
+    <td><CopyableCode code="attribute_type" /></td>
     <td><code>string</code></td>
     <td>The type of attribute. (INBOUND_CALLS, OUTBOUND_CALLS, CONTACTFLOW_LOGS, CONTACT_LENS, AUTO_RESOLVE_BEST_VOICES, USE_CUSTOM_TTS_VOICES, EARLY_MEDIA, MULTI_PARTY_CONFERENCE, HIGH_VOLUME_OUTBOUND, ENHANCED_CONTACT_MONITORING, ENHANCED_CHAT_MONITORING, MULTI_PARTY_CHAT_CONFERENCE, MESSAGE_STREAMING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the attribute.</td>
 </tr>
@@ -184,8 +184,8 @@ This API is in preview release for Amazon Connect and is subject to change. Desc
 
 ```sql
 SELECT
-AttributeType,
-Value
+attribute_type,
+value
 FROM aws.connect.instance_attributes
 WHERE instance_id = '{{ instance_id }}' -- required
 AND attribute_type = '{{ attribute_type }}' -- required
@@ -199,8 +199,8 @@ This API is in preview release for Amazon Connect and is subject to change. Retu
 
 ```sql
 SELECT
-AttributeType,
-Value
+attribute_type,
+value
 FROM aws.connect.instance_attributes
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

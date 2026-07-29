@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceleratorArn" /></td>
+    <td><CopyableCode code="accelerator_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom routing accelerator that you have port mappings for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AcceleratorSocketAddresses" /></td>
+    <td><CopyableCode code="accelerator_socket_addresses" /></td>
     <td><code>array</code></td>
     <td>The IP address/port combinations (sockets) that map to a given destination socket address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationSocketAddress" /></td>
+    <td><CopyableCode code="destination_socket_address" /></td>
     <td><code>object</code></td>
     <td>An IP address/port combination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationTrafficState" /></td>
+    <td><CopyableCode code="destination_traffic_state" /></td>
     <td><code>string</code></td>
     <td>Indicates whether or not a port mapping destination can receive traffic. The value is either ALLOW, if traffic is allowed to the destination, or DENY, if traffic is not allowed to the destination. (ALLOW, DENY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupArn" /></td>
+    <td><CopyableCode code="endpoint_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointGroupRegion" /></td>
+    <td><CopyableCode code="endpoint_group_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region for the endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointId" /></td>
+    <td><CopyableCode code="endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the virtual private cloud (VPC) subnet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type that an accelerator supports. For a custom routing accelerator, the value must be IPV4. (IPV4, DUAL_STACK)</td>
 </tr>
@@ -154,14 +154,14 @@ List the port mappings for a specific EC2 instance (destination) in a VPC subnet
 
 ```sql
 SELECT
-AcceleratorArn,
-AcceleratorSocketAddresses,
-DestinationSocketAddress,
-DestinationTrafficState,
-EndpointGroupArn,
-EndpointGroupRegion,
-EndpointId,
-IpAddressType
+accelerator_arn,
+accelerator_socket_addresses,
+destination_socket_address,
+destination_traffic_state,
+endpoint_group_arn,
+endpoint_group_region,
+endpoint_id,
+ip_address_type
 FROM aws.globalaccelerator.custom_routing_port_mappings_by_destinations
 WHERE region = '{{ region }}' -- required
 ;

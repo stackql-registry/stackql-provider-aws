@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the resource, if any, associated with the feed being queried.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataEndpoints" /></td>
+    <td><CopyableCode code="data_endpoints" /></td>
     <td><code>array</code></td>
     <td>The dataEndpoints of the feed being queried.</td>
 </tr>
@@ -256,7 +256,7 @@ id,
 name,
 arn,
 association,
-dataEndpoints,
+data_endpoints,
 outputs,
 status,
 tags
@@ -317,7 +317,7 @@ id,
 name,
 arn,
 association,
-dataEndpoints,
+data_endpoints,
 outputs,
 status,
 tags
@@ -400,7 +400,7 @@ id,
 name,
 arn,
 association,
-dataEndpoints,
+data_endpoints,
 outputs,
 status,
 tags;

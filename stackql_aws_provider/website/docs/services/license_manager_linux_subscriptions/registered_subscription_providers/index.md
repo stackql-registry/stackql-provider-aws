@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastSuccessfulDataRetrievalTime" /></td>
+    <td><CopyableCode code="last_successful_data_retrieval_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp from the last time License Manager retrieved subscription details from your registered third-party Linux subscription provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretArn" /></td>
+    <td><CopyableCode code="secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the third-party access secret stored in Secrets Manager for the BYOL registration resource specified in the request. (pattern: &lt;code&gt;^arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:secretsmanager:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:secret:&#91;^/&#93;&#123;1,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderArn" /></td>
+    <td><CopyableCode code="subscription_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the BYOL registration resource specified in the request. (pattern: &lt;code&gt;^arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,510&#125;/&#91;a-z0-9-\.&#93;&#123;1,510&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderSource" /></td>
+    <td><CopyableCode code="subscription_provider_source" /></td>
     <td><code>string</code></td>
     <td>The subscription provider for the BYOL registration resource specified in the request. (RedHat)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderStatus" /></td>
+    <td><CopyableCode code="subscription_provider_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Linux subscription provider access token from the last successful subscription data request. (ACTIVE, INVALID, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderStatusMessage" /></td>
+    <td><CopyableCode code="subscription_provider_status_message" /></td>
     <td><code>string</code></td>
     <td>The detailed message from your subscription provider token status.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastSuccessfulDataRetrievalTime" /></td>
+    <td><CopyableCode code="last_successful_data_retrieval_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp from the last time that License Manager accessed third-party subscription data for your account from your registered Linux subscription provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretArn" /></td>
+    <td><CopyableCode code="secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Secrets Manager secret that stores your registered Linux subscription provider access token. For RHEL account subscriptions, this is the offline token. (pattern: &lt;code&gt;^arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:secretsmanager:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:secret:&#91;^/&#93;&#123;1,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderArn" /></td>
+    <td><CopyableCode code="subscription_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Linux subscription provider resource that you registered. (pattern: &lt;code&gt;^arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;1,510&#125;/&#91;a-z0-9-\.&#93;&#123;1,510&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderSource" /></td>
+    <td><CopyableCode code="subscription_provider_source" /></td>
     <td><code>string</code></td>
     <td>A supported third-party Linux subscription provider. License Manager currently supports Red Hat subscriptions. (RedHat)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderStatus" /></td>
+    <td><CopyableCode code="subscription_provider_status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of your registered Linux subscription provider access token from the last time License Manager retrieved subscription data. For RHEL account subscriptions, this is the status of the offline token. (ACTIVE, INVALID, PENDING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionProviderStatusMessage" /></td>
+    <td><CopyableCode code="subscription_provider_status_message" /></td>
     <td><code>string</code></td>
     <td>A detailed message that's associated with your BYOL subscription provider token status.</td>
 </tr>
@@ -197,12 +197,12 @@ Get details for a Bring Your Own License (BYOL) subscription that's registered t
 
 ```sql
 SELECT
-LastSuccessfulDataRetrievalTime,
-SecretArn,
-SubscriptionProviderArn,
-SubscriptionProviderSource,
-SubscriptionProviderStatus,
-SubscriptionProviderStatusMessage
+last_successful_data_retrieval_time,
+secret_arn,
+subscription_provider_arn,
+subscription_provider_source,
+subscription_provider_status,
+subscription_provider_status_message
 FROM aws.license_manager_linux_subscriptions.registered_subscription_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,12 +214,12 @@ List Bring Your Own License (BYOL) subscription registration resources for your 
 
 ```sql
 SELECT
-LastSuccessfulDataRetrievalTime,
-SecretArn,
-SubscriptionProviderArn,
-SubscriptionProviderSource,
-SubscriptionProviderStatus,
-SubscriptionProviderStatusMessage
+last_successful_data_retrieval_time,
+secret_arn,
+subscription_provider_arn,
+subscription_provider_source,
+subscription_provider_status,
+subscription_provider_status_message
 FROM aws.license_manager_linux_subscriptions.registered_subscription_providers
 WHERE region = '{{ region }}' -- required
 ;

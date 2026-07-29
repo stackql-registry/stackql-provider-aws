@@ -56,62 +56,62 @@ The following fields are returned by `SELECT` queries:
     <td>The name for the Amplify app. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amplify app. (pattern: &lt;code&gt;d&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoBranchCreationConfig" /></td>
+    <td><CopyableCode code="auto_branch_creation_config" /></td>
     <td><code>object</code></td>
     <td>Describes the automated branch creation configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoBranchCreationPatterns" /></td>
+    <td><CopyableCode code="auto_branch_creation_patterns" /></td>
     <td><code>array</code></td>
     <td>Describes the automated branch creation glob patterns for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="basicAuthCredentials" /></td>
+    <td><CopyableCode code="basic_auth_credentials" /></td>
     <td><code>string</code></td>
     <td>The basic authorization credentials for branches for the Amplify app. You must base64-encode the authorization credentials and provide them in the format user:password. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildSpec" /></td>
+    <td><CopyableCode code="build_spec" /></td>
     <td><code>string</code></td>
     <td>The build specification (build spec) file for an Amplify app build. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheConfig" /></td>
+    <td><CopyableCode code="cache_config" /></td>
     <td><code>object</code></td>
     <td>Describes the cache configuration for an Amplify app. For more information about how Amplify applies an optimal cache configuration for your app based on the type of content that is being served, see Managing cache configuration in the Amplify User guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeRoleArn" /></td>
+    <td><CopyableCode code="compute_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role for an SSR app. The Compute role allows the Amplify Hosting compute service to securely access specific Amazon Web Services resources based on the role's permissions. For more information about the SSR Compute role, see Adding an SSR Compute role in the Amplify User Guide. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify created the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customHeaders" /></td>
+    <td><CopyableCode code="custom_headers" /></td>
     <td><code>string</code></td>
     <td>Describes the custom HTTP headers for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customRules" /></td>
+    <td><CopyableCode code="custom_rules" /></td>
     <td><code>array</code></td>
     <td>Describes the custom redirect and rewrite rules for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultDomain" /></td>
+    <td><CopyableCode code="default_domain" /></td>
     <td><code>string</code></td>
     <td>The default domain for the Amplify app.</td>
 </tr>
@@ -121,37 +121,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableAutoBranchCreation" /></td>
+    <td><CopyableCode code="enable_auto_branch_creation" /></td>
     <td><code>boolean</code></td>
     <td>Enables automated branch creation for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBasicAuth" /></td>
+    <td><CopyableCode code="enable_basic_auth" /></td>
     <td><code>boolean</code></td>
     <td>Enables basic authorization for the Amplify app's branches.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBranchAutoBuild" /></td>
+    <td><CopyableCode code="enable_branch_auto_build" /></td>
     <td><code>boolean</code></td>
     <td>Enables the auto-building of branches for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBranchAutoDeletion" /></td>
+    <td><CopyableCode code="enable_branch_auto_deletion" /></td>
     <td><code>boolean</code></td>
     <td>Automatically disconnect a branch in the Amplify console when you delete a branch from your Git repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>The environment variables for the Amplify app. For a list of the environment variables that are accessible to Amplify by default, see Amplify Environment variables in the Amplify Hosting User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamServiceRoleArn" /></td>
+    <td><CopyableCode code="iam_service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobConfig" /></td>
+    <td><CopyableCode code="job_config" /></td>
     <td><code>object</code></td>
     <td>Describes the configuration details that apply to the jobs for an Amplify app. Use JobConfig to apply configuration to jobs, such as customizing the build instance size when you create or update an Amplify app. For more information about customizable build instances, see Custom build instances in the Amplify User Guide.</td>
 </tr>
@@ -161,7 +161,7 @@ The following fields are returned by `SELECT` queries:
     <td>The platform for the Amplify app. For a static app, set the platform type to WEB. For a dynamic server-side rendered (SSR) app, set the platform type to WEB_COMPUTE. For an app requiring Amplify Hosting's original SSR support only, set the platform type to WEB_DYNAMIC. If you are deploying an SSG only app with Next.js 14 or later, you must use the platform type WEB_COMPUTE. (WEB, WEB_DYNAMIC, WEB_COMPUTE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productionBranch" /></td>
+    <td><CopyableCode code="production_branch" /></td>
     <td><code>object</code></td>
     <td>Describes the information about a production branch of the Amplify app.</td>
 </tr>
@@ -171,7 +171,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Git repository for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryCloneMethod" /></td>
+    <td><CopyableCode code="repository_clone_method" /></td>
     <td><code>string</code></td>
     <td>This is for internal use. The Amplify service uses this parameter to specify the authentication protocol to use to access the Git repository for an Amplify app. Amplify specifies TOKEN for a GitHub repository, SIGV4 for an Amazon Web Services CodeCommit repository, and SSH for GitLab and Bitbucket repositories. (SSH, TOKEN, SIGV4)</td>
 </tr>
@@ -181,17 +181,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tag for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify updated the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wafConfiguration" /></td>
+    <td><CopyableCode code="waf_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the Firewall configuration for the Amplify app. Firewall support enables you to protect your hosted applications with a direct integration with WAF.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webhookCreateTime" /></td>
+    <td><CopyableCode code="webhook_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify created the webhook in your Git repository.</td>
 </tr>
@@ -215,62 +215,62 @@ The following fields are returned by `SELECT` queries:
     <td>The name for the Amplify app. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amplify app. (pattern: &lt;code&gt;d&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoBranchCreationConfig" /></td>
+    <td><CopyableCode code="auto_branch_creation_config" /></td>
     <td><code>object</code></td>
     <td>Describes the automated branch creation configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoBranchCreationPatterns" /></td>
+    <td><CopyableCode code="auto_branch_creation_patterns" /></td>
     <td><code>array</code></td>
     <td>Describes the automated branch creation glob patterns for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="basicAuthCredentials" /></td>
+    <td><CopyableCode code="basic_auth_credentials" /></td>
     <td><code>string</code></td>
     <td>The basic authorization credentials for branches for the Amplify app. You must base64-encode the authorization credentials and provide them in the format user:password. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildSpec" /></td>
+    <td><CopyableCode code="build_spec" /></td>
     <td><code>string</code></td>
     <td>The build specification (build spec) file for an Amplify app build. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheConfig" /></td>
+    <td><CopyableCode code="cache_config" /></td>
     <td><code>object</code></td>
     <td>Describes the cache configuration for an Amplify app. For more information about how Amplify applies an optimal cache configuration for your app based on the type of content that is being served, see Managing cache configuration in the Amplify User guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeRoleArn" /></td>
+    <td><CopyableCode code="compute_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role for an SSR app. The Compute role allows the Amplify Hosting compute service to securely access specific Amazon Web Services resources based on the role's permissions. For more information about the SSR Compute role, see Adding an SSR Compute role in the Amplify User Guide. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify created the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customHeaders" /></td>
+    <td><CopyableCode code="custom_headers" /></td>
     <td><code>string</code></td>
     <td>Describes the custom HTTP headers for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customRules" /></td>
+    <td><CopyableCode code="custom_rules" /></td>
     <td><code>array</code></td>
     <td>Describes the custom redirect and rewrite rules for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultDomain" /></td>
+    <td><CopyableCode code="default_domain" /></td>
     <td><code>string</code></td>
     <td>The default domain for the Amplify app.</td>
 </tr>
@@ -280,37 +280,37 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableAutoBranchCreation" /></td>
+    <td><CopyableCode code="enable_auto_branch_creation" /></td>
     <td><code>boolean</code></td>
     <td>Enables automated branch creation for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBasicAuth" /></td>
+    <td><CopyableCode code="enable_basic_auth" /></td>
     <td><code>boolean</code></td>
     <td>Enables basic authorization for the Amplify app's branches.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBranchAutoBuild" /></td>
+    <td><CopyableCode code="enable_branch_auto_build" /></td>
     <td><code>boolean</code></td>
     <td>Enables the auto-building of branches for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBranchAutoDeletion" /></td>
+    <td><CopyableCode code="enable_branch_auto_deletion" /></td>
     <td><code>boolean</code></td>
     <td>Automatically disconnect a branch in the Amplify console when you delete a branch from your Git repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>The environment variables for the Amplify app. For a list of the environment variables that are accessible to Amplify by default, see Amplify Environment variables in the Amplify Hosting User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="iamServiceRoleArn" /></td>
+    <td><CopyableCode code="iam_service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobConfig" /></td>
+    <td><CopyableCode code="job_config" /></td>
     <td><code>object</code></td>
     <td>Describes the configuration details that apply to the jobs for an Amplify app. Use JobConfig to apply configuration to jobs, such as customizing the build instance size when you create or update an Amplify app. For more information about customizable build instances, see Custom build instances in the Amplify User Guide.</td>
 </tr>
@@ -320,7 +320,7 @@ The following fields are returned by `SELECT` queries:
     <td>The platform for the Amplify app. For a static app, set the platform type to WEB. For a dynamic server-side rendered (SSR) app, set the platform type to WEB_COMPUTE. For an app requiring Amplify Hosting's original SSR support only, set the platform type to WEB_DYNAMIC. If you are deploying an SSG only app with Next.js 14 or later, you must use the platform type WEB_COMPUTE. (WEB, WEB_DYNAMIC, WEB_COMPUTE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productionBranch" /></td>
+    <td><CopyableCode code="production_branch" /></td>
     <td><code>object</code></td>
     <td>Describes the information about a production branch of the Amplify app.</td>
 </tr>
@@ -330,7 +330,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Git repository for the Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryCloneMethod" /></td>
+    <td><CopyableCode code="repository_clone_method" /></td>
     <td><code>string</code></td>
     <td>This is for internal use. The Amplify service uses this parameter to specify the authentication protocol to use to access the Git repository for an Amplify app. Amplify specifies TOKEN for a GitHub repository, SIGV4 for an Amazon Web Services CodeCommit repository, and SSH for GitLab and Bitbucket repositories. (SSH, TOKEN, SIGV4)</td>
 </tr>
@@ -340,17 +340,17 @@ The following fields are returned by `SELECT` queries:
     <td>The tag for the Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify updated the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wafConfiguration" /></td>
+    <td><CopyableCode code="waf_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the Firewall configuration for the Amplify app. Firewall support enables you to protect your hosted applications with a direct integration with WAF.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webhookCreateTime" /></td>
+    <td><CopyableCode code="webhook_create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify created the webhook in your Git repository.</td>
 </tr>
@@ -471,34 +471,34 @@ Returns an existing Amplify app specified by an app ID.
 ```sql
 SELECT
 name,
-appArn,
-appId,
-autoBranchCreationConfig,
-autoBranchCreationPatterns,
-basicAuthCredentials,
-buildSpec,
-cacheConfig,
-computeRoleArn,
-createTime,
-customHeaders,
-customRules,
-defaultDomain,
+app_arn,
+app_id,
+auto_branch_creation_config,
+auto_branch_creation_patterns,
+basic_auth_credentials,
+build_spec,
+cache_config,
+compute_role_arn,
+create_time,
+custom_headers,
+custom_rules,
+default_domain,
 description,
-enableAutoBranchCreation,
-enableBasicAuth,
-enableBranchAutoBuild,
-enableBranchAutoDeletion,
-environmentVariables,
-iamServiceRoleArn,
-jobConfig,
+enable_auto_branch_creation,
+enable_basic_auth,
+enable_branch_auto_build,
+enable_branch_auto_deletion,
+environment_variables,
+iam_service_role_arn,
+job_config,
 platform,
-productionBranch,
+production_branch,
 repository,
-repositoryCloneMethod,
+repository_clone_method,
 tags,
-updateTime,
-wafConfiguration,
-webhookCreateTime
+update_time,
+waf_configuration,
+webhook_create_time
 FROM aws.amplify.apps
 WHERE app_id = '{{ app_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -512,34 +512,34 @@ Returns a list of the existing Amplify apps.
 ```sql
 SELECT
 name,
-appArn,
-appId,
-autoBranchCreationConfig,
-autoBranchCreationPatterns,
-basicAuthCredentials,
-buildSpec,
-cacheConfig,
-computeRoleArn,
-createTime,
-customHeaders,
-customRules,
-defaultDomain,
+app_arn,
+app_id,
+auto_branch_creation_config,
+auto_branch_creation_patterns,
+basic_auth_credentials,
+build_spec,
+cache_config,
+compute_role_arn,
+create_time,
+custom_headers,
+custom_rules,
+default_domain,
 description,
-enableAutoBranchCreation,
-enableBasicAuth,
-enableBranchAutoBuild,
-enableBranchAutoDeletion,
-environmentVariables,
-iamServiceRoleArn,
-jobConfig,
+enable_auto_branch_creation,
+enable_basic_auth,
+enable_branch_auto_build,
+enable_branch_auto_deletion,
+environment_variables,
+iam_service_role_arn,
+job_config,
 platform,
-productionBranch,
+production_branch,
 repository,
-repositoryCloneMethod,
+repository_clone_method,
 tags,
-updateTime,
-wafConfiguration,
-webhookCreateTime
+update_time,
+waf_configuration,
+webhook_create_time
 FROM aws.amplify.apps
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

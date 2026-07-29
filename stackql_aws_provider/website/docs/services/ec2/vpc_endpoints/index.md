@@ -50,127 +50,127 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time that the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsEntries" /></td>
+    <td><CopyableCode code="dns_entries" /></td>
     <td><code>string</code></td>
     <td>(Interface endpoint) The DNS entries for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsOptions" /></td>
+    <td><CopyableCode code="dns_options" /></td>
     <td><code>string</code></td>
     <td>The DNS options for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>Reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>string</code></td>
     <td>(Interface endpoint) Information about the security groups that are associated with the network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpAddressType" /></td>
+    <td><CopyableCode code="ip_address_type" /></td>
     <td><code>string</code></td>
     <td>The IP address type for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv4Prefixes" /></td>
+    <td><CopyableCode code="ipv_4_prefixes" /></td>
     <td><code>string</code></td>
     <td>Array of IPv4 prefixes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6Prefixes" /></td>
+    <td><CopyableCode code="ipv_6_prefixes" /></td>
     <td><code>string</code></td>
     <td>Array of IPv6 prefixes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastError" /></td>
+    <td><CopyableCode code="last_error" /></td>
     <td><code>string</code></td>
     <td>The last error that occurred for endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceIds" /></td>
+    <td><CopyableCode code="network_interface_ids" /></td>
     <td><code>string</code></td>
     <td>(Interface endpoint) The network interfaces for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The policy document associated with the endpoint, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsEnabled" /></td>
+    <td><CopyableCode code="private_dns_enabled" /></td>
     <td><code>boolean</code></td>
     <td>(Interface endpoint) Indicates whether the VPC is associated with a private hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterManaged" /></td>
+    <td><CopyableCode code="requester_managed" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the endpoint is being managed by its service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceConfigurationArn" /></td>
+    <td><CopyableCode code="resource_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteTableIds" /></td>
+    <td><CopyableCode code="route_table_ids" /></td>
     <td><code>string</code></td>
     <td>(Gateway endpoint) The IDs of the route tables associated with the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service to which the endpoint is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceNetworkArn" /></td>
+    <td><CopyableCode code="service_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRegion" /></td>
+    <td><CopyableCode code="service_region" /></td>
     <td><code>string</code></td>
     <td>The Region where the service is hosted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>string</code></td>
     <td>(Interface endpoint) The subnets for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointId" /></td>
+    <td><CopyableCode code="vpc_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcEndpointType" /></td>
+    <td><CopyableCode code="vpc_endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC to which the endpoint is associated.</td>
 </tr>
@@ -405,31 +405,31 @@ Describes your VPC endpoints. The default is to describe all your VPC endpoints.
 
 ```sql
 SELECT
-CreationTimestamp,
-DnsEntries,
-DnsOptions,
-FailureReason,
-Groups,
-IpAddressType,
-Ipv4Prefixes,
-Ipv6Prefixes,
-LastError,
-NetworkInterfaceIds,
-OwnerId,
-PolicyDocument,
-PrivateDnsEnabled,
-RequesterManaged,
-ResourceConfigurationArn,
-RouteTableIds,
-ServiceName,
-ServiceNetworkArn,
-ServiceRegion,
-State,
-SubnetIds,
-Tags,
-VpcEndpointId,
-VpcEndpointType,
-VpcId
+creation_timestamp,
+dns_entries,
+dns_options,
+failure_reason,
+groups,
+ip_address_type,
+ipv_4_prefixes,
+ipv_6_prefixes,
+last_error,
+network_interface_ids,
+owner_id,
+policy_document,
+private_dns_enabled,
+requester_managed,
+resource_configuration_arn,
+route_table_ids,
+service_name,
+service_network_arn,
+service_region,
+state,
+subnet_ids,
+tags,
+vpc_endpoint_id,
+vpc_endpoint_type,
+vpc_id
 FROM aws.ec2.vpc_endpoints
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -497,31 +497,31 @@ SELECT
 '{{ ResourceConfigurationArn }}',
 '{{ ServiceRegion }}'
 RETURNING
-CreationTimestamp,
-DnsEntries,
-DnsOptions,
-FailureReason,
-Groups,
-IpAddressType,
-Ipv4Prefixes,
-Ipv6Prefixes,
-LastError,
-NetworkInterfaceIds,
-OwnerId,
-PolicyDocument,
-PrivateDnsEnabled,
-RequesterManaged,
-ResourceConfigurationArn,
-RouteTableIds,
-ServiceName,
-ServiceNetworkArn,
-ServiceRegion,
-State,
-SubnetIds,
-Tags,
-VpcEndpointId,
-VpcEndpointType,
-VpcId
+creation_timestamp,
+dns_entries,
+dns_options,
+failure_reason,
+groups,
+ip_address_type,
+ipv_4_prefixes,
+ipv_6_prefixes,
+last_error,
+network_interface_ids,
+owner_id,
+policy_document,
+private_dns_enabled,
+requester_managed,
+resource_configuration_arn,
+route_table_ids,
+service_name,
+service_network_arn,
+service_region,
+state,
+subnet_ids,
+tags,
+vpc_endpoint_id,
+vpc_endpoint_type,
+vpc_id
 ;
 ```
 </TabItem>
@@ -639,7 +639,7 @@ AND DnsOptions = '{{ DnsOptions}}'
 AND PrivateDnsEnabled = {{ PrivateDnsEnabled}}
 AND SubnetConfiguration = '{{ SubnetConfiguration}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

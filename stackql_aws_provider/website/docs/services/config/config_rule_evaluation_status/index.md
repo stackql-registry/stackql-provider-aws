@@ -50,77 +50,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigRuleArn" /></td>
+    <td><CopyableCode code="config_rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleId" /></td>
+    <td><CopyableCode code="config_rule_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleName" /></td>
+    <td><CopyableCode code="config_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Config rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstActivatedTime" /></td>
+    <td><CopyableCode code="first_activated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that you first activated the Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstEvaluationStarted" /></td>
+    <td><CopyableCode code="first_evaluation_started" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Config has evaluated your resources against the rule at least once. true - Config has evaluated your Amazon Web Services resources against the rule at least once. false - Config has not finished evaluating your Amazon Web Services resources against the rule at least once.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDeactivatedTime" /></td>
+    <td><CopyableCode code="last_deactivated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that you last turned off the Config rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDebugLogDeliveryStatus" /></td>
+    <td><CopyableCode code="last_debug_log_delivery_status" /></td>
     <td><code>string</code></td>
     <td>The status of the last attempted delivery of a debug log for your Config Custom Policy rules. Either Successful or Failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDebugLogDeliveryStatusReason" /></td>
+    <td><CopyableCode code="last_debug_log_delivery_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason Config was not able to deliver a debug log. This is for the last failed attempt to retrieve a debug log for your Config Custom Policy rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDebugLogDeliveryTime" /></td>
+    <td><CopyableCode code="last_debug_log_delivery_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time Config last attempted to deliver a debug log for your Config Custom Policy rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastErrorCode" /></td>
+    <td><CopyableCode code="last_error_code" /></td>
     <td><code>string</code></td>
     <td>The error code that Config returned when the rule last failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastErrorMessage" /></td>
+    <td><CopyableCode code="last_error_message" /></td>
     <td><code>string</code></td>
     <td>The error message that Config returned when the rule last failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailedEvaluationTime" /></td>
+    <td><CopyableCode code="last_failed_evaluation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that Config last failed to evaluate your Amazon Web Services resources against the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastFailedInvocationTime" /></td>
+    <td><CopyableCode code="last_failed_invocation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that Config last failed to invoke the Config rule to evaluate your Amazon Web Services resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulEvaluationTime" /></td>
+    <td><CopyableCode code="last_successful_evaluation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that Config last successfully evaluated your Amazon Web Services resources against the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfulInvocationTime" /></td>
+    <td><CopyableCode code="last_successful_invocation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that Config last successfully invoked the Config rule to evaluate your Amazon Web Services resources.</td>
 </tr>
@@ -189,21 +189,21 @@ Returns status information for each of your Config managed rules. The status inc
 
 ```sql
 SELECT
-ConfigRuleArn,
-ConfigRuleId,
-ConfigRuleName,
-FirstActivatedTime,
-FirstEvaluationStarted,
-LastDeactivatedTime,
-LastDebugLogDeliveryStatus,
-LastDebugLogDeliveryStatusReason,
-LastDebugLogDeliveryTime,
-LastErrorCode,
-LastErrorMessage,
-LastFailedEvaluationTime,
-LastFailedInvocationTime,
-LastSuccessfulEvaluationTime,
-LastSuccessfulInvocationTime
+config_rule_arn,
+config_rule_id,
+config_rule_name,
+first_activated_time,
+first_evaluation_started,
+last_deactivated_time,
+last_debug_log_delivery_status,
+last_debug_log_delivery_status_reason,
+last_debug_log_delivery_time,
+last_error_code,
+last_error_message,
+last_failed_evaluation_time,
+last_failed_invocation_time,
+last_successful_evaluation_time,
+last_successful_invocation_time
 FROM aws.config.config_rule_evaluation_status
 WHERE region = '{{ region }}' -- required
 ;

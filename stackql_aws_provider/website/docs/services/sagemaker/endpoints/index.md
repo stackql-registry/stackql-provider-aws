@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AsyncInferenceConfig" /></td>
+    <td><CopyableCode code="async_inference_config" /></td>
     <td><code>object</code></td>
     <td>Returns the description of an endpoint configuration created using the CreateEndpointConfig API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataCaptureConfig" /></td>
+    <td><CopyableCode code="data_capture_config" /></td>
     <td><code>object</code></td>
     <td>The currently active data capture configuration used by your Endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:endpoint/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointConfigName" /></td>
+    <td><CopyableCode code="endpoint_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint configuration associated with this endpoint. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>Name of the endpoint. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointStatus" /></td>
+    <td><CopyableCode code="endpoint_status" /></td>
     <td><code>string</code></td>
     <td>The status of the endpoint. OutOfService: Endpoint is not available to take incoming requests. Creating: CreateEndpoint is executing. Updating: UpdateEndpoint or UpdateEndpointWeightsAndCapacities is executing. SystemUpdating: Endpoint is undergoing maintenance and cannot be updated or deleted or re-scaled until it has completed. This maintenance operation does not change any customer-specified values such as VPC config, KMS encryption, model, instance type, or instance count. RollingBack: Endpoint fails to scale up or down or change its variant weight and is in the process of rolling back to its previous configuration. Once the rollback completes, endpoint returns to an InService status. This transitional status only applies to an endpoint that has autoscaling enabled and is undergoing variant weight or capacity changes as part of an UpdateEndpointWeightsAndCapacities call or when the UpdateEndpointWeightsAndCapacities operation is called explicitly. InService: Endpoint is available to process incoming requests. Deleting: DeleteEndpoint is executing. Failed: Endpoint could not be created, updated, or re-scaled. Use the FailureReason value returned by DescribeEndpoint for information about the failure. DeleteEndpoint is the only operation that can be performed on a failed endpoint. UpdateRollbackFailed: Both the rolling deployment and auto-rollback failed. Your endpoint is in service with a mix of the old and new endpoint configurations. For information about how to remedy this issue and restore the endpoint's status to InService, see Rolling Deployments. (OutOfService, Creating, Updating, SystemUpdating, RollingBack, InService, Deleting, Failed, UpdateRollbackFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainerConfig" /></td>
+    <td><CopyableCode code="explainer_config" /></td>
     <td><code>object</code></td>
     <td>The configuration parameters for an explainer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the status of the endpoint is Failed, the reason why it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastDeploymentConfig" /></td>
+    <td><CopyableCode code="last_deployment_config" /></td>
     <td><code>object</code></td>
     <td>The deployment configuration for an endpoint, which contains the desired deployment strategy and rollback configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the endpoint was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricsConfig" /></td>
+    <td><CopyableCode code="metrics_config" /></td>
     <td><code>object</code></td>
     <td>The configuration parameters for utilization metrics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingDeploymentSummary" /></td>
+    <td><CopyableCode code="pending_deployment_summary" /></td>
     <td><code>object</code></td>
     <td>Returns the summary of an in-progress deployment. This field is only returned when the endpoint is creating or updating with a new endpoint configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductionVariants" /></td>
+    <td><CopyableCode code="production_variants" /></td>
     <td><code>array</code></td>
     <td>An array of ProductionVariantSummary objects, one for each model hosted behind this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShadowProductionVariants" /></td>
+    <td><CopyableCode code="shadow_production_variants" /></td>
     <td><code>array</code></td>
     <td>An array of ProductionVariantSummary objects, one for each model that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on ProductionVariants.</td>
 </tr>
@@ -140,27 +140,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the endpoint was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointArn" /></td>
+    <td><CopyableCode code="endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the endpoint. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:endpoint/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointStatus" /></td>
+    <td><CopyableCode code="endpoint_status" /></td>
     <td><code>string</code></td>
     <td>The status of the endpoint. OutOfService: Endpoint is not available to take incoming requests. Creating: CreateEndpoint is executing. Updating: UpdateEndpoint or UpdateEndpointWeightsAndCapacities is executing. SystemUpdating: Endpoint is undergoing maintenance and cannot be updated or deleted or re-scaled until it has completed. This maintenance operation does not change any customer-specified values such as VPC config, KMS encryption, model, instance type, or instance count. RollingBack: Endpoint fails to scale up or down or change its variant weight and is in the process of rolling back to its previous configuration. Once the rollback completes, endpoint returns to an InService status. This transitional status only applies to an endpoint that has autoscaling enabled and is undergoing variant weight or capacity changes as part of an UpdateEndpointWeightsAndCapacities call or when the UpdateEndpointWeightsAndCapacities operation is called explicitly. InService: Endpoint is available to process incoming requests. Deleting: DeleteEndpoint is executing. Failed: Endpoint could not be created, updated, or re-scaled. Use DescribeEndpointOutput$FailureReason for information about the failure. DeleteEndpoint is the only operation that can be performed on a failed endpoint. To get a list of endpoints with a specified status, use the StatusEquals filter with a call to ListEndpoints. (OutOfService, Creating, Updating, SystemUpdating, RollingBack, InService, Deleting, Failed, UpdateRollbackFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that shows when the endpoint was last modified.</td>
 </tr>
@@ -265,21 +265,21 @@ Returns the description of an endpoint.
 
 ```sql
 SELECT
-AsyncInferenceConfig,
-CreationTime,
-DataCaptureConfig,
-EndpointArn,
-EndpointConfigName,
-EndpointName,
-EndpointStatus,
-ExplainerConfig,
-FailureReason,
-LastDeploymentConfig,
-LastModifiedTime,
-MetricsConfig,
-PendingDeploymentSummary,
-ProductionVariants,
-ShadowProductionVariants
+async_inference_config,
+creation_time,
+data_capture_config,
+endpoint_arn,
+endpoint_config_name,
+endpoint_name,
+endpoint_status,
+explainer_config,
+failure_reason,
+last_deployment_config,
+last_modified_time,
+metrics_config,
+pending_deployment_summary,
+production_variants,
+shadow_production_variants
 FROM aws.sagemaker.endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,11 +291,11 @@ Lists endpoints.
 
 ```sql
 SELECT
-CreationTime,
-EndpointArn,
-EndpointName,
-EndpointStatus,
-LastModifiedTime
+creation_time,
+endpoint_arn,
+endpoint_name,
+endpoint_status,
+last_modified_time
 FROM aws.sagemaker.endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -332,7 +332,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-EndpointArn
+endpoint_arn
 ;
 ```
 </TabItem>
@@ -419,7 +419,7 @@ region = '{{ region }}' --required
 AND EndpointName = '{{ EndpointName }}' --required
 AND EndpointConfigName = '{{ EndpointConfigName }}' --required
 RETURNING
-EndpointArn;
+endpoint_arn;
 ```
 </TabItem>
 <TabItem value="update_endpoint_weights_and_capacities">
@@ -436,7 +436,7 @@ region = '{{ region }}' --required
 AND EndpointName = '{{ EndpointName }}' --required
 AND DesiredWeightsAndCapacities = '{{ DesiredWeightsAndCapacities }}' --required
 RETURNING
-EndpointArn;
+endpoint_arn;
 ```
 </TabItem>
 </Tabs>

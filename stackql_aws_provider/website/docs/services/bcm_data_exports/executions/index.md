@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID for this specific execution. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>object</code></td>
     <td>The status of this specific execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Export" /></td>
+    <td><CopyableCode code="export" /></td>
     <td><code>object</code></td>
     <td>The export data for this specific execution. This export data is a snapshot from when the execution was generated. The data could be different from the current export data if the export was updated since the execution was generated.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID for this specific execution. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>object</code></td>
     <td>The status of this specific execution.</td>
 </tr>
@@ -162,9 +162,9 @@ Exports data based on the source data update.
 
 ```sql
 SELECT
-ExecutionId,
-ExecutionStatus,
-Export
+execution_id,
+execution_status,
+export
 FROM aws.bcm_data_exports.executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -176,8 +176,8 @@ Lists the historical executions for the export.
 
 ```sql
 SELECT
-ExecutionId,
-ExecutionStatus
+execution_id,
+execution_status
 FROM aws.bcm_data_exports.executions
 WHERE region = '{{ region }}' -- required
 ;

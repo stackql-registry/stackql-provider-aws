@@ -107,7 +107,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-agentId
+agent_id
 ;
 ```
 </TabItem>

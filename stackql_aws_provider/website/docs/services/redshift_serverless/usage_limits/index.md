@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The limit amount. If time-based, this amount is in RPUs consumed per hour. If data-based, this amount is in terabytes (TB). The value must be a positive number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="breachAction" /></td>
+    <td><CopyableCode code="breach_action" /></td>
     <td><code>string</code></td>
     <td>The action that Amazon Redshift Serverless takes when the limit is reached. (log, emit-metric, deactivate)</td>
 </tr>
@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly. (daily, weekly, monthly)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the Amazon Redshift Serverless resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageLimitArn" /></td>
+    <td><CopyableCode code="usage_limit_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource associated with the usage limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageLimitId" /></td>
+    <td><CopyableCode code="usage_limit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the usage limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon Redshift Serverless feature to limit. (serverless-compute, cross-region-datasharing)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The limit amount. If time-based, this amount is in RPUs consumed per hour. If data-based, this amount is in terabytes (TB). The value must be a positive number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="breachAction" /></td>
+    <td><CopyableCode code="breach_action" /></td>
     <td><code>string</code></td>
     <td>The action that Amazon Redshift Serverless takes when the limit is reached. (log, emit-metric, deactivate)</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly. (daily, weekly, monthly)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the Amazon Redshift Serverless resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageLimitArn" /></td>
+    <td><CopyableCode code="usage_limit_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource associated with the usage limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageLimitId" /></td>
+    <td><CopyableCode code="usage_limit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the usage limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon Redshift Serverless feature to limit. (serverless-compute, cross-region-datasharing)</td>
 </tr>
@@ -229,12 +229,12 @@ Returns information about a usage limit.
 ```sql
 SELECT
 amount,
-breachAction,
+breach_action,
 period,
-resourceArn,
-usageLimitArn,
-usageLimitId,
-usageType
+resource_arn,
+usage_limit_arn,
+usage_limit_id,
+usage_type
 FROM aws.redshift_serverless.usage_limits
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,12 +247,12 @@ Lists all usage limits within Amazon Redshift Serverless.
 ```sql
 SELECT
 amount,
-breachAction,
+breach_action,
 period,
-resourceArn,
-usageLimitArn,
-usageLimitId,
-usageType
+resource_arn,
+usage_limit_arn,
+usage_limit_id,
+usage_type
 FROM aws.redshift_serverless.usage_limits
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,7 +291,7 @@ SELECT
 '{{ usageType }}' /* required */,
 '{{ region }}'
 RETURNING
-usageLimit
+usage_limit
 ;
 ```
 </TabItem>
@@ -354,7 +354,7 @@ WHERE
 region = '{{ region }}' --required
 AND usageLimitId = '{{ usageLimitId }}' --required
 RETURNING
-usageLimit;
+usage_limit;
 ```
 </TabItem>
 </Tabs>

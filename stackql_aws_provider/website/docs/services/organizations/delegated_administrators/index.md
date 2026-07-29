@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the delegated administrator's account. (pattern: &lt;code&gt;^arn:aws:organizations::\d&#123;12&#125;:account\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DelegationEnabledDate" /></td>
+    <td><CopyableCode code="delegation_enabled_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the account was made a delegated administrator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Email" /></td>
+    <td><CopyableCode code="email" /></td>
     <td><code>string</code></td>
     <td>The email address that is associated with the delegated administrator's Amazon Web Services account. (pattern: &lt;code&gt;&#91;^\s@&#93;+@&#91;^\s@&#93;+\.&#91;^\s@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the delegated administrator's account. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JoinedMethod" /></td>
+    <td><CopyableCode code="joined_method" /></td>
     <td><code>string</code></td>
     <td>The method by which the delegated administrator's account joined the organization. (INVITED, CREATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JoinedTimestamp" /></td>
+    <td><CopyableCode code="joined_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the delegated administrator's account became a part of the organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the delegated administrator's account. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Each state represents a specific phase in the account lifecycle. Use this information to manage account access, automate workflows, or trigger actions based on account state changes. For more information about account states and their implications, see Monitor the state of your Amazon Web Services accounts in the Organizations User Guide. (PENDING_ACTIVATION, ACTIVE, SUSPENDED, PENDING_CLOSURE, CLOSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the delegated administrator's account in the organization. (ACTIVE, SUSPENDED, PENDING_CLOSURE)</td>
 </tr>
@@ -173,15 +173,15 @@ Lists the Amazon Web Services accounts that are designated as delegated administ
 
 ```sql
 SELECT
-Arn,
-DelegationEnabledDate,
-Email,
-Id,
-JoinedMethod,
-JoinedTimestamp,
-Name,
-State,
-Status
+arn,
+delegation_enabled_date,
+email,
+id,
+joined_method,
+joined_timestamp,
+name,
+state,
+status
 FROM aws.organizations.delegated_administrators
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name that uniquely identifies this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Timestream table was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Timestream database that contains this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Timestream table was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MagneticStoreWriteProperties" /></td>
+    <td><CopyableCode code="magnetic_store_write_properties" /></td>
     <td><code>object</code></td>
     <td>Contains properties to set on the table when enabling magnetic store writes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionProperties" /></td>
+    <td><CopyableCode code="retention_properties" /></td>
     <td><code>object</code></td>
     <td>The retention duration for the memory store and magnetic store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>object</code></td>
     <td>The schema of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Timestream table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableStatus" /></td>
+    <td><CopyableCode code="table_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the table: DELETING - The table is being deleted. ACTIVE - The table is ready for use. (ACTIVE, DELETING, RESTORING)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to specify where to start paginating. This is the NextToken from a previously truncated response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tables" /></td>
+    <td><CopyableCode code="tables" /></td>
     <td><code>array</code></td>
     <td>A list of tables.</td>
 </tr>
@@ -213,15 +213,15 @@ Returns information about the table, including the table name, database name, re
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-DatabaseName,
-LastUpdatedTime,
-MagneticStoreWriteProperties,
-RetentionProperties,
-Schema,
-TableName,
-TableStatus
+arn,
+creation_time,
+database_name,
+last_updated_time,
+magnetic_store_write_properties,
+retention_properties,
+schema,
+table_name,
+table_status
 FROM aws.timestream_write.tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,8 +233,8 @@ Provides a list of tables, along with the name, status, and retention properties
 
 ```sql
 SELECT
-NextToken,
-Tables
+next_token,
+tables
 FROM aws.timestream_write.tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,7 +275,7 @@ SELECT
 '{{ Schema }}',
 '{{ region }}'
 RETURNING
-Table
+table
 ;
 ```
 </TabItem>
@@ -357,7 +357,7 @@ region = '{{ region }}' --required
 AND DatabaseName = '{{ DatabaseName }}' --required
 AND TableName = '{{ TableName }}' --required
 RETURNING
-Table;
+table;
 ```
 </TabItem>
 </Tabs>

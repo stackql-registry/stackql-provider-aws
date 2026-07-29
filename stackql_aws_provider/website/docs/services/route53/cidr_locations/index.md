@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LocationName" /></td>
+    <td><CopyableCode code="location_name" /></td>
     <td><code>string</code></td>
     <td>A string that specifies a location name.</td>
 </tr>
@@ -134,7 +134,7 @@ Returns a paginated list of CIDR locations for the given collection (metadata on
 
 ```sql
 SELECT
-LocationName
+location_name
 FROM aws.route53.cidr_locations
 WHERE cidr_collection_id = '{{ cidr_collection_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextPageCount" /></td>
+    <td><CopyableCode code="next_page_count" /></td>
     <td><code>string</code></td>
     <td>(Discontinued) Returns the number of pages of results that remain. In releases prior to June 12, 2017, this parameter returned null by the API. It is now discontinued, and the API returns the next page token parameter instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetOperationsForResource request and specify the next page token using the pageToken parameter.</td>
 </tr>
@@ -129,8 +129,8 @@ Gets operations for a specific resource (an instance or a static IP).
 
 ```sql
 SELECT
-nextPageCount,
-nextPageToken,
+next_page_count,
+next_page_token,
 operations
 FROM aws.lightsail.operations_for_resources
 WHERE region = '{{ region }}' -- required

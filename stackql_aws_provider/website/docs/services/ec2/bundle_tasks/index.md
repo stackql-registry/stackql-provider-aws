@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BundleId" /></td>
+    <td><CopyableCode code="bundle_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the bundle task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BundleTaskError" /></td>
+    <td><CopyableCode code="bundle_task_error" /></td>
     <td><code>string</code></td>
     <td>If the task fails, a description of the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance associated with this bundle task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>string</code></td>
     <td>The level of task completion, as a percent (for example, 20%).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time this task started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Storage" /></td>
+    <td><CopyableCode code="storage" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 storage locations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string</code></td>
     <td>The time of the most recent update for the task.</td>
 </tr>
@@ -169,14 +169,14 @@ Describes the specified bundle tasks or all of your bundle tasks. Completed bund
 
 ```sql
 SELECT
-BundleId,
-BundleTaskError,
-InstanceId,
-Progress,
-StartTime,
-State,
-Storage,
-UpdateTime
+bundle_id,
+bundle_task_error,
+instance_id,
+progress,
+start_time,
+state,
+storage,
+update_time
 FROM aws.ec2.bundle_tasks
 WHERE region = '{{ region }}' -- required
 AND BundleId = '{{ BundleId }}'

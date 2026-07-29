@@ -75,52 +75,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commitId" /></td>
+    <td><CopyableCode code="commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID from a third-party repository provider for the job. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitMessage" /></td>
+    <td><CopyableCode code="commit_message" /></td>
     <td><code>string</code></td>
     <td>The commit message from a third-party repository provider for the job. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitTime" /></td>
+    <td><CopyableCode code="commit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The commit date and time for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end date and time for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the job. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>The type for the job. If the value is RELEASE, the job was manually released from its source by using the StartJob API. This value is available only for apps that are connected to a repository. If the value is RETRY, the job was manually retried using the StartJob API. If the value is WEB_HOOK, the job was automatically triggered by webhooks. If the value is MANUAL, the job is for a manually deployed app. Manually deployed apps are not connected to a Git repository. (RELEASE, RETRY, MANUAL, WEB_HOOK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceUrl" /></td>
+    <td><CopyableCode code="source_url" /></td>
     <td><code>string</code></td>
     <td>The source URL for the files to deploy. The source URL can be either an HTTP GET URL that is publicly accessible and downloads a single .zip file, or an Amazon S3 bucket and prefix. (pattern: &lt;code&gt;^(s3|https|http):​//.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceUrlType" /></td>
+    <td><CopyableCode code="source_url_type" /></td>
     <td><code>string</code></td>
     <td>The type of source specified by the sourceURL. If the value is ZIP, the source is a .zip file. If the value is BUCKET_PREFIX, the source is an Amazon S3 bucket and prefix. If no value is specified, the default is ZIP. (ZIP, BUCKET_PREFIX)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date and time for the job.</td>
 </tr>
@@ -250,16 +250,16 @@ Lists the jobs for a branch of an Amplify app.
 
 ```sql
 SELECT
-commitId,
-commitMessage,
-commitTime,
-endTime,
-jobArn,
-jobId,
-jobType,
-sourceUrl,
-sourceUrlType,
-startTime,
+commit_id,
+commit_message,
+commit_time,
+end_time,
+job_arn,
+job_id,
+job_type,
+source_url,
+source_url_type,
+start_time,
 status
 FROM aws.amplify.jobs
 WHERE app_id = '{{ app_id }}' -- required

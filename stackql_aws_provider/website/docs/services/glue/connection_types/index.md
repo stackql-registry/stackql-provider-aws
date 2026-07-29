@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AthenaConnectionProperties" /></td>
+    <td><CopyableCode code="athena_connection_properties" /></td>
     <td><code>object</code></td>
     <td>Connection properties specific to the Athena compute environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationConfiguration" /></td>
+    <td><CopyableCode code="authentication_configuration" /></td>
     <td><code>object</code></td>
     <td>The type of authentication used for the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>object</code></td>
     <td>The supported authentication types, data interface types (compute environments), and data operations of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComputeEnvironmentConfigurations" /></td>
+    <td><CopyableCode code="compute_environment_configurations" /></td>
     <td><code>object</code></td>
     <td>The compute environments that are supported by the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionOptions" /></td>
+    <td><CopyableCode code="connection_options" /></td>
     <td><code>object</code></td>
     <td>Returns properties that can be set when creating a connection in the ConnectionInput.ConnectionProperties. ConnectionOptions defines parameters that can be set in a Spark ETL script in the connection options map passed to a dataframe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionProperties" /></td>
+    <td><CopyableCode code="connection_properties" /></td>
     <td><code>object</code></td>
     <td>Connection properties which are common across compute environments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionType" /></td>
+    <td><CopyableCode code="connection_type" /></td>
     <td><code>string</code></td>
     <td>The name of the connection type. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the connection type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalConnectionRequirements" /></td>
+    <td><CopyableCode code="physical_connection_requirements" /></td>
     <td><code>object</code></td>
     <td>Physical requirements for a connection, such as VPC, Subnet and Security Group specifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PythonConnectionProperties" /></td>
+    <td><CopyableCode code="python_connection_properties" /></td>
     <td><code>object</code></td>
     <td>Connection properties specific to the Python compute environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestConfiguration" /></td>
+    <td><CopyableCode code="rest_configuration" /></td>
     <td><code>object</code></td>
     <td>HTTP request and response configuration, validation endpoint, and entity configurations for REST based data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SparkConnectionProperties" /></td>
+    <td><CopyableCode code="spark_connection_properties" /></td>
     <td><code>object</code></td>
     <td>Connection properties specific to the Spark compute environment.</td>
 </tr>
@@ -125,42 +125,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>object</code></td>
     <td>The supported authentication types, data interface types (compute environments), and data operations of the connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Categories" /></td>
+    <td><CopyableCode code="categories" /></td>
     <td><code>array</code></td>
     <td>A list of categories that this connection type belongs to. Categories help users filter and find appropriate connection types based on their use cases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionType" /></td>
+    <td><CopyableCode code="connection_type" /></td>
     <td><code>string</code></td>
     <td>The name of the connection type. (JDBC, SFTP, MONGODB, KAFKA, NETWORK, MARKETPLACE, CUSTOM, SALESFORCE, VIEW_VALIDATION_REDSHIFT, VIEW_VALIDATION_ATHENA, GOOGLEADS, GOOGLESHEETS, GOOGLEANALYTICS4, SERVICENOW, MARKETO, SAPODATA, ZENDESK, JIRACLOUD, NETSUITEERP, HUBSPOT, FACEBOOKADS, INSTAGRAMADS, ZOHOCRM, SALESFORCEPARDOT, SALESFORCEMARKETINGCLOUD, ADOBEANALYTICS, SLACK, LINKEDIN, MIXPANEL, ASANA, STRIPE, SMARTSHEET, DATADOG, WOOCOMMERCE, INTERCOM, SNAPCHATADS, PAYPAL, QUICKBOOKS, FACEBOOKPAGEINSIGHTS, FRESHDESK, TWILIO, DOCUSIGNMONITOR, FRESHSALES, ZOOM, GOOGLESEARCHCONSOLE, SALESFORCECOMMERCECLOUD, SAPCONCUR, DYNATRACE, MICROSOFTDYNAMIC365FINANCEANDOPS, MICROSOFTTEAMS, BLACKBAUDRAISEREDGENXT, MAILCHIMP, GITLAB, PENDO, PRODUCTBOARD, CIRCLECI, PIPEDIVE, SENDGRID, AZURECOSMOS, AZURESQL, BIGQUERY, BLACKBAUD, CLOUDERAHIVE, CLOUDERAIMPALA, CLOUDWATCH, CLOUDWATCHMETRICS, CMDB, DATALAKEGEN2, DB2, DB2AS400, DOCUMENTDB, DOMO, DYNAMODB, GOOGLECLOUDSTORAGE, HBASE, KUSTOMER, MICROSOFTDYNAMICS365CRM, MONDAY, MYSQL, OKTA, OPENSEARCH, ORACLE, PIPEDRIVE, POSTGRESQL, SAPHANA, SQLSERVER, SYNAPSE, TERADATA, TERADATANOS, TIMESTREAM, TPCDS, VERTICA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionTypeVariants" /></td>
+    <td><CopyableCode code="connection_type_variants" /></td>
     <td><code>array</code></td>
     <td>A list of variants available for this connection type. Different variants may provide specialized configurations for specific use cases or implementations of the same general connection type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the connection type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name for the connection type that is displayed in the Glue console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogoUrl" /></td>
+    <td><CopyableCode code="logo_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the logo associated with a connection type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Vendor" /></td>
+    <td><CopyableCode code="vendor" /></td>
     <td><code>string</code></td>
     <td>The name of the vendor or provider that created or maintains this connection type.</td>
 </tr>
@@ -251,18 +251,18 @@ The DescribeConnectionType API provides full details of the supported options fo
 
 ```sql
 SELECT
-AthenaConnectionProperties,
-AuthenticationConfiguration,
-Capabilities,
-ComputeEnvironmentConfigurations,
-ConnectionOptions,
-ConnectionProperties,
-ConnectionType,
-Description,
-PhysicalConnectionRequirements,
-PythonConnectionProperties,
-RestConfiguration,
-SparkConnectionProperties
+athena_connection_properties,
+authentication_configuration,
+capabilities,
+compute_environment_configurations,
+connection_options,
+connection_properties,
+connection_type,
+description,
+physical_connection_requirements,
+python_connection_properties,
+rest_configuration,
+spark_connection_properties
 FROM aws.glue.connection_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -274,14 +274,14 @@ The ListConnectionTypes API provides a discovery mechanism to learn available co
 
 ```sql
 SELECT
-Capabilities,
-Categories,
-ConnectionType,
-ConnectionTypeVariants,
-Description,
-DisplayName,
-LogoUrl,
-Vendor
+capabilities,
+categories,
+connection_type,
+connection_type_variants,
+description,
+display_name,
+logo_url,
+vendor
 FROM aws.glue.connection_types
 WHERE region = '{{ region }}' -- required
 ;
@@ -324,7 +324,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ConnectionTypeArn
+connection_type_arn
 ;
 ```
 </TabItem>

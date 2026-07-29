@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the insights refresh operation ended.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The message associated with the insights refresh operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the insights refresh operation started.</td>
 </tr>
@@ -139,9 +139,9 @@ Returns the status of the latest on-demand cluster insights refresh operation.
 
 ```sql
 SELECT
-endedAt,
+ended_at,
 message,
-startedAt,
+started_at,
 status
 FROM aws.eks.insights_refreshes
 WHERE name = '{{ name }}' -- required

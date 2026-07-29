@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about the configuration of an analyzer for an Amazon Web Services organization or account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp for the time at which the analyzer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastResourceAnalyzed" /></td>
+    <td><CopyableCode code="last_resource_analyzed" /></td>
     <td><code>string</code></td>
     <td>The resource that was most recently analyzed by the analyzer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastResourceAnalyzedAt" /></td>
+    <td><CopyableCode code="last_resource_analyzed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the most recently analyzed resource was analyzed.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the analyzer. An Active analyzer successfully monitors supported resources and generates new findings. The analyzer is Disabled when a user action, such as removing trusted access for Identity and Access Management Access Analyzer from Organizations, causes the analyzer to stop generating new findings. The status is Creating when the analyzer creation is in progress and Failed when the analyzer creation has failed. (ACTIVE, CREATING, DISABLED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>The statusReason provides more details about the current status of the analyzer. For example, if the creation for the analyzer fails, a Failed status is returned. For an analyzer with organization as the type, this failure can be due to an issue with creating the service-linked roles required in the member accounts of the Amazon Web Services organization.</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about the configuration of an analyzer for an Amazon Web Services organization or account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp for the time at which the analyzer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastResourceAnalyzed" /></td>
+    <td><CopyableCode code="last_resource_analyzed" /></td>
     <td><code>string</code></td>
     <td>The resource that was most recently analyzed by the analyzer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastResourceAnalyzedAt" /></td>
+    <td><CopyableCode code="last_resource_analyzed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the most recently analyzed resource was analyzed.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the analyzer. An Active analyzer successfully monitors supported resources and generates new findings. The analyzer is Disabled when a user action, such as removing trusted access for Identity and Access Management Access Analyzer from Organizations, causes the analyzer to stop generating new findings. The status is Creating when the analyzer creation is in progress and Failed when the analyzer creation has failed. (ACTIVE, CREATING, DISABLED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>The statusReason provides more details about the current status of the analyzer. For example, if the creation for the analyzer fails, a Failed status is returned. For an analyzer with organization as the type, this failure can be due to an issue with creating the service-linked roles required in the member accounts of the Amazon Web Services organization.</td>
 </tr>
@@ -300,11 +300,11 @@ SELECT
 name,
 arn,
 configuration,
-createdAt,
-lastResourceAnalyzed,
-lastResourceAnalyzedAt,
+created_at,
+last_resource_analyzed,
+last_resource_analyzed_at,
 status,
-statusReason,
+status_reason,
 tags,
 type_
 FROM aws.accessanalyzer.analyzers
@@ -322,11 +322,11 @@ SELECT
 name,
 arn,
 configuration,
-createdAt,
-lastResourceAnalyzed,
-lastResourceAnalyzedAt,
+created_at,
+last_resource_analyzed,
+last_resource_analyzed_at,
 status,
-statusReason,
+status_reason,
 tags,
 type_
 FROM aws.accessanalyzer.analyzers

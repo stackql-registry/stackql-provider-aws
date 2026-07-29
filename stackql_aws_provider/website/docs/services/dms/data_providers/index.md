@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataProviders" /></td>
+    <td><CopyableCode code="data_providers" /></td>
     <td><code>array</code></td>
     <td>A description of data providers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>Specifies the unique pagination token that makes it possible to display the next page of results. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords. If Marker is returned by a previous response, there are more results available. The value of Marker is a unique pagination token for each page. To retrieve the next page, make the call again using the returned token and keeping all other arguments unchanged.</td>
 </tr>
@@ -145,8 +145,8 @@ Returns a paginated list of data providers for your account in the current regio
 
 ```sql
 SELECT
-DataProviders,
-Marker
+data_providers,
+marker
 FROM aws.dms.data_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -187,7 +187,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DataProvider
+data_provider
 ;
 ```
 </TabItem>
@@ -347,7 +347,7 @@ WHERE
 region = '{{ region }}' --required
 AND DataProviderIdentifier = '{{ DataProviderIdentifier }}' --required
 RETURNING
-DataProvider;
+data_provider;
 ```
 </TabItem>
 </Tabs>

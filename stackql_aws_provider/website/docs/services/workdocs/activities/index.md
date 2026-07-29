@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CommentMetadata" /></td>
+    <td><CopyableCode code="comment_metadata" /></td>
     <td><code>object</code></td>
     <td>Metadata of the commenting activity. This is an optional field and is filled for commenting activities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Initiator" /></td>
+    <td><CopyableCode code="initiator" /></td>
     <td><code>object</code></td>
     <td>The user who performed the action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsIndirectActivity" /></td>
+    <td><CopyableCode code="is_indirect_activity" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether an activity is indirect or direct. An indirect activity results from a direct activity performed on a parent resource. For example, sharing a parent folder (the direct activity) shares all of the subfolders and documents within the parent folder (the indirect activity).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationId" /></td>
+    <td><CopyableCode code="organization_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the organization. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalParent" /></td>
+    <td><CopyableCode code="original_parent" /></td>
     <td><code>object</code></td>
     <td>The original parent of the resource. This is an optional field and is filled for move activities.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Participants" /></td>
+    <td><CopyableCode code="participants" /></td>
     <td><code>object</code></td>
     <td>The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceMetadata" /></td>
+    <td><CopyableCode code="resource_metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata of the resource involved in the user action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeStamp" /></td>
+    <td><CopyableCode code="time_stamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the action was performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The activity type. (DOCUMENT_CHECKED_IN, DOCUMENT_CHECKED_OUT, DOCUMENT_RENAMED, DOCUMENT_VERSION_UPLOADED, DOCUMENT_VERSION_DELETED, DOCUMENT_VERSION_VIEWED, DOCUMENT_VERSION_DOWNLOADED, DOCUMENT_RECYCLED, DOCUMENT_RESTORED, DOCUMENT_REVERTED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, DOCUMENT_SHARE_PERMISSION_CHANGED, DOCUMENT_SHAREABLE_LINK_CREATED, DOCUMENT_SHAREABLE_LINK_REMOVED, DOCUMENT_SHAREABLE_LINK_PERMISSION_CHANGED, DOCUMENT_MOVED, DOCUMENT_COMMENT_ADDED, DOCUMENT_COMMENT_DELETED, DOCUMENT_ANNOTATION_ADDED, DOCUMENT_ANNOTATION_DELETED, FOLDER_CREATED, FOLDER_DELETED, FOLDER_RENAMED, FOLDER_RECYCLED, FOLDER_RESTORED, FOLDER_SHARED, FOLDER_UNSHARED, FOLDER_SHARE_PERMISSION_CHANGED, FOLDER_SHAREABLE_LINK_CREATED, FOLDER_SHAREABLE_LINK_REMOVED, FOLDER_SHAREABLE_LINK_PERMISSION_CHANGED, FOLDER_MOVED)</td>
 </tr>
@@ -209,15 +209,15 @@ Describes the user activities in a specified time period.
 
 ```sql
 SELECT
-CommentMetadata,
-Initiator,
-IsIndirectActivity,
-OrganizationId,
-OriginalParent,
-Participants,
-ResourceMetadata,
-TimeStamp,
-Type
+comment_metadata,
+initiator,
+is_indirect_activity,
+organization_id,
+original_parent,
+participants,
+resource_metadata,
+time_stamp,
+type
 FROM aws.workdocs.activities
 WHERE region = '{{ region }}' -- required
 AND Authentication = '{{ Authentication }}'

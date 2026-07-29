@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientCertificateId" /></td>
+    <td><CopyableCode code="client_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the client certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the client certificate was created.</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the client certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the client certificate will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pemEncodedCertificate" /></td>
+    <td><CopyableCode code="pem_encoded_certificate" /></td>
     <td><code>string</code></td>
     <td>The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientCertificateId" /></td>
+    <td><CopyableCode code="client_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the client certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the client certificate was created.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the client certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the client certificate will expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pemEncodedCertificate" /></td>
+    <td><CopyableCode code="pem_encoded_certificate" /></td>
     <td><code>string</code></td>
     <td>The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .</td>
 </tr>
@@ -226,11 +226,11 @@ Gets information about the current ClientCertificate resource.
 
 ```sql
 SELECT
-clientCertificateId,
-createdDate,
+client_certificate_id,
+created_date,
 description,
-expirationDate,
-pemEncodedCertificate,
+expiration_date,
+pem_encoded_certificate,
 tags
 FROM aws.apigateway.client_certificates
 WHERE clientcertificate_id = '{{ clientcertificate_id }}' -- required
@@ -244,11 +244,11 @@ Gets a collection of ClientCertificate resources.
 
 ```sql
 SELECT
-clientCertificateId,
-createdDate,
+client_certificate_id,
+created_date,
 description,
-expirationDate,
-pemEncodedCertificate,
+expiration_date,
+pem_encoded_certificate,
 tags
 FROM aws.apigateway.client_certificates
 WHERE region = '{{ region }}' -- required
@@ -280,11 +280,11 @@ WHERE
 clientcertificate_id = '{{ clientcertificate_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-clientCertificateId,
-createdDate,
+client_certificate_id,
+created_date,
 description,
-expirationDate,
-pemEncodedCertificate,
+expiration_date,
+pem_encoded_certificate,
 tags;
 ```
 </TabItem>

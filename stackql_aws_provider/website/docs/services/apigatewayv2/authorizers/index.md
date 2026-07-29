@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorizerCredentialsArn" /></td>
+    <td><CopyableCode code="authorizer_credentials_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerId" /></td>
+    <td><CopyableCode code="authorizer_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerPayloadFormatVersion" /></td>
+    <td><CopyableCode code="authorizer_payload_format_version" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerResultTtlInSeconds" /></td>
+    <td><CopyableCode code="authorizer_result_ttl_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>An integer with a value between &#91;0-3600&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs). (REQUEST, JWT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerUri" /></td>
+    <td><CopyableCode code="authorizer_uri" /></td>
     <td><code>string</code></td>
     <td>A string representation of a URI with a length between &#91;1-2048&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableSimpleResponses" /></td>
+    <td><CopyableCode code="enable_simple_responses" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a Lambda authorizer returns a response in a simple format. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySource" /></td>
+    <td><CopyableCode code="identity_source" /></td>
     <td><code>array</code></td>
     <td>The identity source for which authorization is requested. For the REQUEST authorizer, this is required when authorization caching is enabled. The value is a comma-separated string of one or more mapping expressions of the specified request parameters. For example, if an Auth header, a Name query string parameter are defined as identity sources, this value is $method.request.header.Auth, $method.request.querystring.Name. These parameters will be used to derive the authorization caching key and to perform runtime validation of the REQUEST authorizer by verifying all of the identity-related request parameters are present, not null and non-empty. Only when this is true does the authorizer invoke the authorizer Lambda function, otherwise, it returns a 401 Unauthorized response without calling the Lambda function. The valid value is a string of comma-separated mapping expressions of the specified request parameters. When the authorization caching is not enabled, this property is optional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityValidationExpression" /></td>
+    <td><CopyableCode code="identity_validation_expression" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JwtConfiguration" /></td>
+    <td><CopyableCode code="jwt_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents the configuration of a JWT authorizer. Required for the JWT authorizer type. Supported only for HTTP APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorizerCredentialsArn" /></td>
+    <td><CopyableCode code="authorizer_credentials_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerId" /></td>
+    <td><CopyableCode code="authorizer_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerPayloadFormatVersion" /></td>
+    <td><CopyableCode code="authorizer_payload_format_version" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerResultTtlInSeconds" /></td>
+    <td><CopyableCode code="authorizer_result_ttl_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>An integer with a value between &#91;0-3600&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerType" /></td>
+    <td><CopyableCode code="authorizer_type" /></td>
     <td><code>string</code></td>
     <td>The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs). (REQUEST, JWT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerUri" /></td>
+    <td><CopyableCode code="authorizer_uri" /></td>
     <td><code>string</code></td>
     <td>A string representation of a URI with a length between &#91;1-2048&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableSimpleResponses" /></td>
+    <td><CopyableCode code="enable_simple_responses" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a Lambda authorizer returns a response in a simple format. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentitySource" /></td>
+    <td><CopyableCode code="identity_source" /></td>
     <td><code>array</code></td>
     <td>The identity source for which authorization is requested. For the REQUEST authorizer, this is required when authorization caching is enabled. The value is a comma-separated string of one or more mapping expressions of the specified request parameters. For example, if an Auth header, a Name query string parameter are defined as identity sources, this value is $method.request.header.Auth, $method.request.querystring.Name. These parameters will be used to derive the authorization caching key and to perform runtime validation of the REQUEST authorizer by verifying all of the identity-related request parameters are present, not null and non-empty. Only when this is true does the authorizer invoke the authorizer Lambda function, otherwise, it returns a 401 Unauthorized response without calling the Lambda function. The valid value is a string of comma-separated mapping expressions of the specified request parameters. When the authorization caching is not enabled, this property is optional.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityValidationExpression" /></td>
+    <td><CopyableCode code="identity_validation_expression" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JwtConfiguration" /></td>
+    <td><CopyableCode code="jwt_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents the configuration of a JWT authorizer. Required for the JWT authorizer type. Supported only for HTTP APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
@@ -300,17 +300,17 @@ Gets an Authorizer.
 
 ```sql
 SELECT
-AuthorizerCredentialsArn,
-AuthorizerId,
-AuthorizerPayloadFormatVersion,
-AuthorizerResultTtlInSeconds,
-AuthorizerType,
-AuthorizerUri,
-EnableSimpleResponses,
-IdentitySource,
-IdentityValidationExpression,
-JwtConfiguration,
-Name
+authorizer_credentials_arn,
+authorizer_id,
+authorizer_payload_format_version,
+authorizer_result_ttl_in_seconds,
+authorizer_type,
+authorizer_uri,
+enable_simple_responses,
+identity_source,
+identity_validation_expression,
+jwt_configuration,
+name
 FROM aws.apigatewayv2.authorizers
 WHERE api_id = '{{ api_id }}' -- required
 AND authorizer_id = '{{ authorizer_id }}' -- required
@@ -324,17 +324,17 @@ Gets the Authorizers for an API.
 
 ```sql
 SELECT
-AuthorizerCredentialsArn,
-AuthorizerId,
-AuthorizerPayloadFormatVersion,
-AuthorizerResultTtlInSeconds,
-AuthorizerType,
-AuthorizerUri,
-EnableSimpleResponses,
-IdentitySource,
-IdentityValidationExpression,
-JwtConfiguration,
-Name
+authorizer_credentials_arn,
+authorizer_id,
+authorizer_payload_format_version,
+authorizer_result_ttl_in_seconds,
+authorizer_type,
+authorizer_uri,
+enable_simple_responses,
+identity_source,
+identity_validation_expression,
+jwt_configuration,
+name
 FROM aws.apigatewayv2.authorizers
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -388,17 +388,17 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-AuthorizerCredentialsArn,
-AuthorizerId,
-AuthorizerPayloadFormatVersion,
-AuthorizerResultTtlInSeconds,
-AuthorizerType,
-AuthorizerUri,
-EnableSimpleResponses,
-IdentitySource,
-IdentityValidationExpression,
-JwtConfiguration,
-Name
+authorizer_credentials_arn,
+authorizer_id,
+authorizer_payload_format_version,
+authorizer_result_ttl_in_seconds,
+authorizer_type,
+authorizer_uri,
+enable_simple_responses,
+identity_source,
+identity_validation_expression,
+jwt_configuration,
+name
 ;
 ```
 </TabItem>
@@ -492,17 +492,17 @@ api_id = '{{ api_id }}' --required
 AND authorizer_id = '{{ authorizer_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AuthorizerCredentialsArn,
-AuthorizerId,
-AuthorizerPayloadFormatVersion,
-AuthorizerResultTtlInSeconds,
-AuthorizerType,
-AuthorizerUri,
-EnableSimpleResponses,
-IdentitySource,
-IdentityValidationExpression,
-JwtConfiguration,
-Name;
+authorizer_credentials_arn,
+authorizer_id,
+authorizer_payload_format_version,
+authorizer_result_ttl_in_seconds,
+authorizer_type,
+authorizer_uri,
+enable_simple_responses,
+identity_source,
+identity_validation_expression,
+jwt_configuration,
+name;
 ```
 </TabItem>
 </Tabs>

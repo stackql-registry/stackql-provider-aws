@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CalculatedAttributeValues" /></td>
+    <td><CopyableCode code="calculated_attribute_values" /></td>
     <td><code>array</code></td>
     <td>List of calculated attribute values retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConditionOverrides" /></td>
+    <td><CopyableCode code="condition_overrides" /></td>
     <td><code>object</code></td>
     <td>An object to override the original condition block of a calculated attribute.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>List of errors for calculated attribute values that could not be retrieved.</td>
 </tr>
@@ -80,27 +80,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CalculatedAttributeName" /></td>
+    <td><CopyableCode code="calculated_attribute_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the calculated attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the calculated attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-\s&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDataPartial" /></td>
+    <td><CopyableCode code="is_data_partial" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the calculated attribute’s value is based on partial data. If data is partial, it is set to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastObjectTimestamp" /></td>
+    <td><CopyableCode code="last_object_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the newest object included in the calculated attribute calculation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value of the calculated attribute.</td>
 </tr>
@@ -192,9 +192,9 @@ Fetch the possible attribute values given the attribute name.
 
 ```sql
 SELECT
-CalculatedAttributeValues,
-ConditionOverrides,
-Errors
+calculated_attribute_values,
+condition_overrides,
+errors
 FROM aws.customer_profiles.calculated_attribute_for_profiles
 WHERE calculated_attribute_name = '{{ calculated_attribute_name }}' -- required
 AND domain_name = '{{ domain_name }}' -- required
@@ -208,11 +208,11 @@ Retrieve a calculated attribute for a customer profile.
 
 ```sql
 SELECT
-CalculatedAttributeName,
-DisplayName,
-IsDataPartial,
-LastObjectTimestamp,
-Value
+calculated_attribute_name,
+display_name,
+is_data_partial,
+last_object_timestamp,
+value
 FROM aws.customer_profiles.calculated_attribute_for_profiles
 WHERE domain_name = '{{ domain_name }}' -- required
 AND profile_id = '{{ profile_id }}' -- required

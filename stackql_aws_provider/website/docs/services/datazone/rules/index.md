@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the rule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The timestamp at which the rule was last updated.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The revision of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleType" /></td>
+    <td><CopyableCode code="rule_type" /></td>
     <td><code>string</code></td>
     <td>The type of the rule. (METADATA_FORM_ENFORCEMENT, GLOSSARY_TERM_ENFORCEMENT)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>The target of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The target type of the rule. (DOMAIN_UNIT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the rule was last updated.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The action of the rule. (CREATE_LISTING_CHANGE_SET, CREATE_SUBSCRIPTION_REQUEST)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the rule.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the rule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The timestamp at which the rule was last updated.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The revision of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleType" /></td>
+    <td><CopyableCode code="rule_type" /></td>
     <td><code>string</code></td>
     <td>The type of the rule. (METADATA_FORM_ENFORCEMENT, GLOSSARY_TERM_ENFORCEMENT)</td>
 </tr>
@@ -175,12 +175,12 @@ The following fields are returned by `SELECT` queries:
     <td>The target of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetType" /></td>
+    <td><CopyableCode code="target_type" /></td>
     <td><code>string</code></td>
     <td>The target type of the rule. (DOMAIN_UNIT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the rule was last updated.</td>
 </tr>
@@ -346,13 +346,13 @@ SELECT
 name,
 action,
 identifier,
-lastUpdatedBy,
+last_updated_by,
 revision,
-ruleType,
+rule_type,
 scope,
 target,
-targetType,
-updatedAt
+target_type,
+updated_at
 FROM aws.datazone.rules
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND target_type = '{{ target_type }}' -- required
@@ -377,18 +377,18 @@ Gets the details of a rule in Amazon DataZone. A rule is a formal agreement that
 SELECT
 name,
 action,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
 detail,
 identifier,
-lastUpdatedBy,
+last_updated_by,
 revision,
-ruleType,
+rule_type,
 scope,
 target,
-targetType,
-updatedAt
+target_type,
+updated_at
 FROM aws.datazone.rules
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -438,15 +438,15 @@ SELECT
 RETURNING
 name,
 action,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
 detail,
 identifier,
-ruleType,
+rule_type,
 scope,
 target,
-targetType
+target_type
 ;
 ```
 </TabItem>
@@ -534,17 +534,17 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 action,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
 detail,
 identifier,
-lastUpdatedBy,
+last_updated_by,
 revision,
-ruleType,
+rule_type,
 scope,
 target,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

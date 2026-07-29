@@ -119,7 +119,7 @@ SELECT
 '{{ identity_id }}',
 '{{ region }}'
 RETURNING
-DeviceId
+device_id
 ;
 ```
 </TabItem>

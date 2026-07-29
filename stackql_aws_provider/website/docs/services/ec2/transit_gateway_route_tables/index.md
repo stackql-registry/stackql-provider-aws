@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultAssociationRouteTable" /></td>
+    <td><CopyableCode code="default_association_route_table" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default association route table for the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultPropagationRouteTable" /></td>
+    <td><CopyableCode code="default_propagation_route_table" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether this is the default propagation route table for the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayRouteTableId" /></td>
+    <td><CopyableCode code="transit_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway route table.</td>
 </tr>
@@ -246,13 +246,13 @@ Describes one or more transit gateway route tables. By default, all transit gate
 
 ```sql
 SELECT
-CreationTime,
-DefaultAssociationRouteTable,
-DefaultPropagationRouteTable,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayRouteTableId
+creation_time,
+default_association_route_table,
+default_propagation_route_table,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_route_table_id
 FROM aws.ec2.transit_gateway_route_tables
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayRouteTableIds = '{{ TransitGatewayRouteTableIds }}'
@@ -292,13 +292,13 @@ SELECT
 '{{ TagSpecifications }}',
 '{{ DryRun }}'
 RETURNING
-CreationTime,
-DefaultAssociationRouteTable,
-DefaultPropagationRouteTable,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayRouteTableId
+creation_time,
+default_association_route_table,
+default_propagation_route_table,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_route_table_id
 ;
 ```
 </TabItem>
@@ -349,11 +349,11 @@ AND TransitGatewayAttachmentId = '{{ TransitGatewayAttachmentId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-ResourceId,
-ResourceType,
-State,
-TransitGatewayAttachmentId,
-TransitGatewayRouteTableId;
+resource_id,
+resource_type,
+state,
+transit_gateway_attachment_id,
+transit_gateway_route_table_id;
 ```
 </TabItem>
 </Tabs>

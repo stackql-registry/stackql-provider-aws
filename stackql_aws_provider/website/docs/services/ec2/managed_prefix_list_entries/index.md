@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cidr" /></td>
+    <td><CopyableCode code="cidr" /></td>
     <td><code>string</code></td>
     <td>The CIDR block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description.</td>
 </tr>
@@ -149,8 +149,8 @@ Gets information about the entries for a specified managed prefix list.
 
 ```sql
 SELECT
-Cidr,
-Description
+cidr,
+description
 FROM aws.ec2.managed_prefix_list_entries
 WHERE PrefixListId = '{{ PrefixListId }}' -- required
 AND region = '{{ region }}' -- required

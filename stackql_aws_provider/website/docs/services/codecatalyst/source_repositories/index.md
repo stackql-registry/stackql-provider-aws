@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the source repository. (pattern: &lt;code&gt;(?!.*&#91;.&#93;git$)&#91;\w\-.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the source repository was created, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the source repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the source repository was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project in the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the source repository. (pattern: &lt;code&gt;(?!.*&#91;.&#93;git$)&#91;\w\-.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the source repository was created, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the repository, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the source repository was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
@@ -222,11 +222,11 @@ Returns information about a source repository.
 ```sql
 SELECT
 name,
-createdTime,
+created_time,
 description,
-lastUpdatedTime,
-projectName,
-spaceName
+last_updated_time,
+project_name,
+space_name
 FROM aws.codecatalyst.source_repositories
 WHERE space_name = '{{ space_name }}' -- required
 AND project_name = '{{ project_name }}' -- required
@@ -243,9 +243,9 @@ Retrieves a list of source repositories in a project.
 SELECT
 id,
 name,
-createdTime,
+created_time,
 description,
-lastUpdatedTime
+last_updated_time
 FROM aws.codecatalyst.source_repositories
 WHERE space_name = '{{ space_name }}' -- required
 AND project_name = '{{ project_name }}' -- required
@@ -286,8 +286,8 @@ SELECT
 RETURNING
 name,
 description,
-projectName,
-spaceName
+project_name,
+space_name
 ;
 ```
 </TabItem>

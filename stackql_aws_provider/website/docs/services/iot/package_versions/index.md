@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata that were added to the package version that can be used to define a package version’s configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the package version was created.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>The package version description. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorReason" /></td>
+    <td><CopyableCode code="error_reason" /></td>
     <td><code>string</code></td>
     <td>Error reason for a package version failure during creation or update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the package version was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The name of the software package. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageVersionArn" /></td>
+    <td><CopyableCode code="package_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the package version. (pattern: &lt;code&gt;^arn:&#91;!-~&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>A specific software bill of matrerials associated with a software package version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sbomValidationStatus" /></td>
+    <td><CopyableCode code="sbom_validation_status" /></td>
     <td><code>string</code></td>
     <td>The status of the validation for a new software bill of materials added to a software package version. (IN_PROGRESS, FAILED, SUCCEEDED)</td>
 </tr>
@@ -111,7 +111,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status associated to the package version. For more information, see Package version lifecycle. (DRAFT, PUBLISHED, DEPRECATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the package version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the package version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the package version was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageName" /></td>
+    <td><CopyableCode code="package_name" /></td>
     <td><code>string</code></td>
     <td>The name of the associated software package. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the package version. For more information, see Package version lifecycle. (DRAFT, PUBLISHED, DEPRECATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the target package version. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -294,17 +294,17 @@ Gets information about the specified package version. Requires permission to acc
 SELECT
 artifact,
 attributes,
-creationDate,
+creation_date,
 description,
-errorReason,
-lastModifiedDate,
-packageName,
-packageVersionArn,
+error_reason,
+last_modified_date,
+package_name,
+package_version_arn,
 recipe,
 sbom,
-sbomValidationStatus,
+sbom_validation_status,
 status,
-versionName
+version_name
 FROM aws.iot.package_versions
 WHERE package_name = '{{ package_name }}' -- required
 AND version_name = '{{ version_name }}' -- required
@@ -318,11 +318,11 @@ Lists the software package versions associated to the account. Requires permissi
 
 ```sql
 SELECT
-creationDate,
-lastModifiedDate,
-packageName,
+creation_date,
+last_modified_date,
+package_name,
 status,
-versionName
+version_name
 FROM aws.iot.package_versions
 WHERE package_name = '{{ package_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -373,11 +373,11 @@ SELECT
 RETURNING
 attributes,
 description,
-errorReason,
-packageName,
-packageVersionArn,
+error_reason,
+package_name,
+package_version_arn,
 status,
-versionName
+version_name
 ;
 ```
 </TabItem>
@@ -445,10 +445,10 @@ AND region = '{{ region }}' --required
 AND sbom = '{{ sbom }}' --required
 AND clientToken = '{{ clientToken}}'
 RETURNING
-packageName,
+package_name,
 sbom,
-sbomValidationStatus,
-versionName;
+sbom_validation_status,
+version_name;
 ```
 </TabItem>
 <TabItem value="update_package_version">

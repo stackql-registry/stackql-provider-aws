@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Arn of vCenter client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datacenterName" /></td>
+    <td><CopyableCode code="datacenter_name" /></td>
     <td><code>string</code></td>
     <td>Datacenter name of vCenter client.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>Hostname of vCenter client .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSeenDatetime" /></td>
+    <td><CopyableCode code="last_seen_datetime" /></td>
     <td><code>string</code></td>
     <td>Last seen time of vCenter client. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceServerTags" /></td>
+    <td><CopyableCode code="source_server_tags" /></td>
     <td><code>object</code></td>
     <td>Tags for Source Server of vCenter client.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>Tags for vCenter client.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vcenterClientID" /></td>
+    <td><CopyableCode code="vcenter_client_id" /></td>
     <td><code>string</code></td>
     <td>ID of vCenter client. (pattern: &lt;code&gt;vcc-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vcenterUUID" /></td>
+    <td><CopyableCode code="vcenter_uuid" /></td>
     <td><code>string</code></td>
     <td>Vcenter UUID of vCenter client.</td>
 </tr>
@@ -172,13 +172,13 @@ Returns a list of the installed vCenter clients.
 ```sql
 SELECT
 arn,
-datacenterName,
+datacenter_name,
 hostname,
-lastSeenDatetime,
-sourceServerTags,
+last_seen_datetime,
+source_server_tags,
 tags,
-vcenterClientID,
-vcenterUUID
+vcenter_client_id,
+vcenter_uuid
 FROM aws.mgn.vcenter_clients
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

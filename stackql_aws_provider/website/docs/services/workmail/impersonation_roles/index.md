@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the impersonation role was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateModified" /></td>
+    <td><CopyableCode code="date_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the impersonation role was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The impersonation role description. (pattern: &lt;code&gt;&#91;^\x00-\x09\x0B\x0C\x0E-\x1F\x7F\x3C\x3E\x5C&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImpersonationRoleId" /></td>
+    <td><CopyableCode code="impersonation_role_id" /></td>
     <td><code>string</code></td>
     <td>The impersonation role ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The impersonation role name. (pattern: &lt;code&gt;&#91;^\x00-\x1F\x7F\x3C\x3E\x5C&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td>The list of rules for the given impersonation role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The impersonation role type. (FULL_ACCESS, READ_ONLY)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to retrieve the next page of results. The value is null when there are no results to return. (pattern: &lt;code&gt;&#91;\S\s&#93;*|&#91;a-zA-Z0-9/+=&#93;&#123;1,1024&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Roles" /></td>
+    <td><CopyableCode code="roles" /></td>
     <td><code>array</code></td>
     <td>The list of impersonation roles under the given WorkMail organization.</td>
 </tr>
@@ -210,13 +210,13 @@ Gets the impersonation role details for the given WorkMail organization.
 
 ```sql
 SELECT
-DateCreated,
-DateModified,
-Description,
-ImpersonationRoleId,
-Name,
-Rules,
-Type
+date_created,
+date_modified,
+description,
+impersonation_role_id,
+name,
+rules,
+type
 FROM aws.workmail.impersonation_roles
 WHERE region = '{{ region }}' -- required
 ;
@@ -228,8 +228,8 @@ Lists all the impersonation roles for the given WorkMail organization.
 
 ```sql
 SELECT
-NextToken,
-Roles
+next_token,
+roles
 FROM aws.workmail.impersonation_roles
 WHERE region = '{{ region }}' -- required
 ;
@@ -270,7 +270,7 @@ SELECT
 '{{ Rules }}',
 '{{ region }}'
 RETURNING
-ImpersonationRoleId
+impersonation_role_id
 ;
 ```
 </TabItem>

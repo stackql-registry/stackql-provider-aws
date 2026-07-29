@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name that uniquely identifies this database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the database was created, calculated from the Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Timestream database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the KMS key used to encrypt the data stored in the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this database was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableCount" /></td>
+    <td><CopyableCode code="table_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of tables found within a Timestream database.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Databases" /></td>
+    <td><CopyableCode code="databases" /></td>
     <td><code>array</code></td>
     <td>A list of database names.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token. This parameter is returned when the response is truncated.</td>
 </tr>
@@ -205,12 +205,12 @@ Returns information about the database, including the database name, time that t
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-DatabaseName,
-KmsKeyId,
-LastUpdatedTime,
-TableCount
+arn,
+creation_time,
+database_name,
+kms_key_id,
+last_updated_time,
+table_count
 FROM aws.timestream_write.databases
 WHERE region = '{{ region }}' -- required
 ;
@@ -222,8 +222,8 @@ Returns a list of your Timestream databases. Service quotas apply. See code samp
 
 ```sql
 SELECT
-Databases,
-NextToken
+databases,
+next_token
 FROM aws.timestream_write.databases
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,7 +258,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Database
+database
 ;
 ```
 </TabItem>
@@ -312,7 +312,7 @@ region = '{{ region }}' --required
 AND DatabaseName = '{{ DatabaseName }}' --required
 AND KmsKeyId = '{{ KmsKeyId }}' --required
 RETURNING
-Database;
+database;
 ```
 </TabItem>
 </Tabs>

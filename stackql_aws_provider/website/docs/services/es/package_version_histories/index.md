@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageID" /></td>
+    <td><CopyableCode code="package_id" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageVersionHistoryList" /></td>
+    <td><CopyableCode code="package_version_history_list" /></td>
     <td><code>array</code></td>
     <td>List of PackageVersionHistory objects.</td>
 </tr>
@@ -144,9 +144,9 @@ Returns a list of versions of the package, along with their creation time and co
 
 ```sql
 SELECT
-NextToken,
-PackageID,
-PackageVersionHistoryList
+next_token,
+package_id,
+package_version_history_list
 FROM aws.es.package_version_histories
 WHERE package_id = '{{ package_id }}' -- required
 AND region = '{{ region }}' -- required

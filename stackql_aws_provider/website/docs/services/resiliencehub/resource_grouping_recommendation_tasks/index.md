@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error that occurred while generating a grouping recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupingId" /></td>
+    <td><CopyableCode code="grouping_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the grouping recommendation task.</td>
 </tr>
@@ -129,8 +129,8 @@ Describes the resource grouping recommendation tasks run by Resilience Hub for y
 
 ```sql
 SELECT
-errorMessage,
-groupingId,
+error_message,
+grouping_id,
 status
 FROM aws.resiliencehub.resource_grouping_recommendation_tasks
 WHERE region = '{{ region }}' -- required

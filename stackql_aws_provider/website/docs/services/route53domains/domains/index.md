@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoRenew" /></td>
+    <td><CopyableCode code="auto_renew" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the domain is automatically renewed upon expiration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain that the summary information applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expiry" /></td>
+    <td><CopyableCode code="expiry" /></td>
     <td><code>string (date-time)</code></td>
     <td>Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransferLock" /></td>
+    <td><CopyableCode code="transfer_lock" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a domain is locked from unauthorized transfer to another party.</td>
 </tr>
@@ -295,10 +295,10 @@ This operation returns all the domain names registered with Amazon Route 53 for 
 
 ```sql
 SELECT
-AutoRenew,
-DomainName,
-Expiry,
-TransferLock
+auto_renew,
+domain_name,
+expiry,
+transfer_lock
 FROM aws.route53domains.domains
 WHERE region = '{{ region }}' -- required
 ;
@@ -351,7 +351,7 @@ SELECT
 {{ PrivacyProtectBillingContact }},
 '{{ region }}'
 RETURNING
-OperationId
+operation_id
 ;
 ```
 </TabItem>
@@ -506,7 +506,7 @@ region = '{{ region }}' --required
 AND DomainName = '{{ DomainName }}' --required
 AND SigningAttributes = '{{ SigningAttributes }}' --required
 RETURNING
-OperationId;
+operation_id;
 ```
 </TabItem>
 <TabItem value="disassociate_delegation_signer_from_domain">
@@ -523,7 +523,7 @@ region = '{{ region }}' --required
 AND DomainName = '{{ DomainName }}' --required
 AND Id = '{{ Id }}' --required
 RETURNING
-OperationId;
+operation_id;
 ```
 </TabItem>
 <TabItem value="update_domain_nameservers">
@@ -541,7 +541,7 @@ region = '{{ region }}' --required
 AND DomainName = '{{ DomainName }}' --required
 AND Nameservers = '{{ Nameservers }}' --required
 RETURNING
-OperationId;
+operation_id;
 ```
 </TabItem>
 <TabItem value="update_domain_contact">
@@ -561,7 +561,7 @@ WHERE
 region = '{{ region }}' --required
 AND DomainName = '{{ DomainName }}' --required
 RETURNING
-OperationId;
+operation_id;
 ```
 </TabItem>
 </Tabs>

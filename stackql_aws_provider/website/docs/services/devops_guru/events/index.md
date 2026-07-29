@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>The source, AWS_CLOUD_TRAIL or AWS_CODE_DEPLOY, where DevOps Guru analysis found the event. (AWS_CLOUD_TRAIL, AWS_CODE_DEPLOY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventClass" /></td>
+    <td><CopyableCode code="event_class" /></td>
     <td><code>string</code></td>
     <td>The class of the event. The class specifies what the event is related to, such as an infrastructure change, a deployment, or a schema change. (INFRASTRUCTURE, DEPLOYMENT, SECURITY_CHANGE, CONFIG_CHANGE, SCHEMA_CHANGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSource" /></td>
+    <td><CopyableCode code="event_source" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services source that emitted the event. (pattern: &lt;code&gt;^&#91;a-z&#93;+&#91;a-z0-9&#93;*\.amazonaws\.com|aws\.events$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceCollection" /></td>
+    <td><CopyableCode code="resource_collection" /></td>
     <td><code>object</code></td>
     <td>A collection of Amazon Web Services resources supported by DevOps Guru. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag key. You can specify up to 500 Amazon Web Services CloudFormation stacks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resources" /></td>
+    <td><CopyableCode code="resources" /></td>
     <td><code>array</code></td>
     <td>An EventResource object that contains information about the resource that emitted the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Time" /></td>
+    <td><CopyableCode code="time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A Timestamp that specifies the time the event occurred.</td>
 </tr>
@@ -154,14 +154,14 @@ Returns a list of the events emitted by the resources that are evaluated by DevO
 
 ```sql
 SELECT
-DataSource,
-EventClass,
-EventSource,
-Id,
-Name,
-ResourceCollection,
-Resources,
-Time
+data_source,
+event_class,
+event_source,
+id,
+name,
+resource_collection,
+resources,
+time
 FROM aws.devops_guru.events
 WHERE region = '{{ region }}' -- required
 ;

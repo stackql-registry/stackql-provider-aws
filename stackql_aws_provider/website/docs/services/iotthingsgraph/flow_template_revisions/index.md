@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the workflow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionNumber" /></td>
+    <td><CopyableCode code="revision_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The revision number of the workflow.</td>
 </tr>
@@ -136,8 +136,8 @@ Gets revisions of the specified workflow. Only the last 100 revisions are stored
 SELECT
 id,
 arn,
-createdAt,
-revisionNumber
+created_at,
+revision_number
 FROM aws.iotthingsgraph.flow_template_revisions
 WHERE region = '{{ region }}' -- required
 ;

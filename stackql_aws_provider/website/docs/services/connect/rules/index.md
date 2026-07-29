@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>array</code></td>
     <td>A list of actions to be run when the rule is triggered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Function" /></td>
+    <td><CopyableCode code="function" /></td>
     <td><code>string</code></td>
     <td>The conditions of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedBy" /></td>
+    <td><CopyableCode code="last_updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for the when the rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the rule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishStatus" /></td>
+    <td><CopyableCode code="publish_status" /></td>
     <td><code>string</code></td>
     <td>The publish status of the rule. (DRAFT, PUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerEventSource" /></td>
+    <td><CopyableCode code="trigger_event_source" /></td>
     <td><code>object</code></td>
     <td>The name of the event source. This field is required if TriggerEventSource is one of the following values: OnZendeskTicketCreate | OnZendeskTicketStatusUpdate | OnSalesforceCaseCreate | OnContactEvaluationSubmit | OnMetricDataUpdate.</td>
 </tr>
@@ -120,42 +120,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionSummaries" /></td>
+    <td><CopyableCode code="action_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of ActionTypes associated with a rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventSourceName" /></td>
+    <td><CopyableCode code="event_source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the event source. (OnPostCallAnalysisAvailable, OnRealTimeCallAnalysisAvailable, OnRealTimeChatAnalysisAvailable, OnPostChatAnalysisAvailable, OnEmailAnalysisAvailable, OnZendeskTicketCreate, OnZendeskTicketStatusUpdate, OnSalesforceCaseCreate, OnContactEvaluationSubmit, OnMetricDataUpdate, OnCaseCreate, OnCaseUpdate, OnSlaBreach, OnAlertUpdate, OnSchedulePublish, OnScheduleUpdate, OnScheduleTimeOffRequestActivity)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the rule was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the rule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishStatus" /></td>
+    <td><CopyableCode code="publish_status" /></td>
     <td><code>string</code></td>
     <td>The publish status of the rule. (DRAFT, PUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleArn" /></td>
+    <td><CopyableCode code="rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleId" /></td>
+    <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the rule.</td>
 </tr>
@@ -283,17 +283,17 @@ Describes a rule for the specified Amazon Connect instance.
 
 ```sql
 SELECT
-Actions,
-CreatedTime,
-Function,
-LastUpdatedBy,
-LastUpdatedTime,
-Name,
-PublishStatus,
-RuleArn,
-RuleId,
-Tags,
-TriggerEventSource
+actions,
+created_time,
+function,
+last_updated_by,
+last_updated_time,
+name,
+publish_status,
+rule_arn,
+rule_id,
+tags,
+trigger_event_source
 FROM aws.connect.rules
 WHERE instance_id = '{{ instance_id }}' -- required
 AND rule_id = '{{ rule_id }}' -- required
@@ -307,14 +307,14 @@ List all rules for the specified Amazon Connect instance.
 
 ```sql
 SELECT
-ActionSummaries,
-CreatedTime,
-EventSourceName,
-LastUpdatedTime,
-Name,
-PublishStatus,
-RuleArn,
-RuleId
+action_summaries,
+created_time,
+event_source_name,
+last_updated_time,
+name,
+publish_status,
+rule_arn,
+rule_id
 FROM aws.connect.rules
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -362,8 +362,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-RuleArn,
-RuleId
+rule_arn,
+rule_id
 ;
 ```
 </TabItem>

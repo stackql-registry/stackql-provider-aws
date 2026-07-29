@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateTotalCount" /></td>
+    <td><CopyableCode code="approximate_total_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of email addresses which matched your search query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddresses" /></td>
+    <td><CopyableCode code="email_addresses" /></td>
     <td><code>array</code></td>
     <td>List of email addresses matching SearchFilter and SearchCriteria</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -129,9 +129,9 @@ Searches email address in an instance, with optional filtering.
 
 ```sql
 SELECT
-ApproximateTotalCount,
-EmailAddresses,
-NextToken
+approximate_total_count,
+email_addresses,
+next_token
 FROM aws.connect.email_addresses
 WHERE region = '{{ region }}' -- required
 ;

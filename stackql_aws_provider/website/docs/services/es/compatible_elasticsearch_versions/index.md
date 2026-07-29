@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompatibleElasticsearchVersions" /></td>
+    <td><CopyableCode code="compatible_elasticsearch_versions" /></td>
     <td><code>array</code></td>
     <td>A map of compatible Elasticsearch versions returned as part of the GetCompatibleElasticsearchVersions operation.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns a list of upgrade compatible Elastisearch versions. You can optionally p
 
 ```sql
 SELECT
-CompatibleElasticsearchVersions
+compatible_elasticsearch_versions
 FROM aws.es.compatible_elasticsearch_versions
 WHERE region = '{{ region }}' -- required
 AND domainName = '{{ domainName }}'

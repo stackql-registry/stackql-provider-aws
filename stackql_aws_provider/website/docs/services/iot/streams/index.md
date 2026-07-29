@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the stream was created.</td>
 </tr>
@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>The files to stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date when the stream was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>An IAM role IoT assumes to access your S3 files.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamArn" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The stream ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamId" /></td>
+    <td><CopyableCode code="stream_id" /></td>
     <td><code>string</code></td>
     <td>The stream ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamVersion" /></td>
+    <td><CopyableCode code="stream_version" /></td>
     <td><code>integer</code></td>
     <td>The stream version.</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the stream. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamArn" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The stream ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamId" /></td>
+    <td><CopyableCode code="stream_id" /></td>
     <td><code>string</code></td>
     <td>The stream ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamVersion" /></td>
+    <td><CopyableCode code="stream_version" /></td>
     <td><code>integer</code></td>
     <td>The stream version.</td>
 </tr>
@@ -238,14 +238,14 @@ Gets information about a stream. Requires permission to access the DescribeStrea
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
 files,
-lastUpdatedAt,
-roleArn,
-streamArn,
-streamId,
-streamVersion
+last_updated_at,
+role_arn,
+stream_arn,
+stream_id,
+stream_version
 FROM aws.iot.streams
 WHERE stream_id = '{{ stream_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -259,9 +259,9 @@ Lists all of the streams in your Amazon Web Services account. Requires permissio
 ```sql
 SELECT
 description,
-streamArn,
-streamId,
-streamVersion
+stream_arn,
+stream_id,
+stream_version
 FROM aws.iot.streams
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -304,9 +304,9 @@ SELECT
 '{{ region }}'
 RETURNING
 description,
-streamArn,
-streamId,
-streamVersion
+stream_arn,
+stream_id,
+stream_version
 ;
 ```
 </TabItem>
@@ -365,9 +365,9 @@ stream_id = '{{ stream_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 description,
-streamArn,
-streamId,
-streamVersion;
+stream_arn,
+stream_id,
+stream_version;
 ```
 </TabItem>
 </Tabs>

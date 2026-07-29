@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Branch" /></td>
+    <td><CopyableCode code="branch" /></td>
     <td><code>string</code></td>
     <td>The branch associated with a specific sync configuration. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigFile" /></td>
+    <td><CopyableCode code="config_file" /></td>
     <td><code>string</code></td>
     <td>The file path to the configuration file associated with a specific sync configuration. The path should point to an actual file in the sync configurations linked repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The owner ID for the repository associated with a specific sync configuration, such as the owner ID in GitHub. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The connection provider type associated with a specific sync configuration, such as GitHub. (Bitbucket, GitHub, GitHubEnterpriseServer, GitLab, GitLabSelfManaged)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishDeploymentStatus" /></td>
+    <td><CopyableCode code="publish_deployment_status" /></td>
     <td><code>string</code></td>
     <td>Whether to enable or disable publishing of deployment status to source providers. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RepositoryLinkId" /></td>
+    <td><CopyableCode code="repository_link_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the repository link associated with a specific sync configuration. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\b-&#91;0-9a-fA-F&#93;&#123;4&#125;\b-&#91;0-9a-fA-F&#93;&#123;4&#125;\b-&#91;0-9a-fA-F&#93;&#123;4&#125;\b-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RepositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The name of the repository associated with a specific sync configuration. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The name of the connection resource associated with a specific sync configuration. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role associated with a specific sync configuration. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:iam::\d&#123;12&#125;:role/&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncType" /></td>
+    <td><CopyableCode code="sync_type" /></td>
     <td><code>string</code></td>
     <td>The type of sync for a specific sync configuration. (CFN_STACK_SYNC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggerResourceUpdateOn" /></td>
+    <td><CopyableCode code="trigger_resource_update_on" /></td>
     <td><code>string</code></td>
     <td>When to trigger Git sync to begin the stack update. (ANY_CHANGE, FILE_CHANGE)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An enumeration token that allows the operation to batch the next results of the operation. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SyncConfigurations" /></td>
+    <td><CopyableCode code="sync_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of repository sync definitions returned by the request.</td>
 </tr>
@@ -223,17 +223,17 @@ Returns details about a sync configuration, including the sync type and resource
 
 ```sql
 SELECT
-Branch,
-ConfigFile,
-OwnerId,
-ProviderType,
-PublishDeploymentStatus,
-RepositoryLinkId,
-RepositoryName,
-ResourceName,
-RoleArn,
-SyncType,
-TriggerResourceUpdateOn
+branch,
+config_file,
+owner_id,
+provider_type,
+publish_deployment_status,
+repository_link_id,
+repository_name,
+resource_name,
+role_arn,
+sync_type,
+trigger_resource_update_on
 FROM aws.codestar_connections.sync_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,8 +245,8 @@ Returns a list of sync configurations for a specified repository.
 
 ```sql
 SELECT
-NextToken,
-SyncConfigurations
+next_token,
+sync_configurations
 FROM aws.codestar_connections.sync_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,7 +291,7 @@ SELECT
 '{{ TriggerResourceUpdateOn }}',
 '{{ region }}'
 RETURNING
-SyncConfiguration
+sync_configuration
 ;
 ```
 </TabItem>
@@ -372,7 +372,7 @@ region = '{{ region }}' --required
 AND ResourceName = '{{ ResourceName }}' --required
 AND SyncType = '{{ SyncType }}' --required
 RETURNING
-SyncConfiguration;
+sync_configuration;
 ```
 </TabItem>
 </Tabs>

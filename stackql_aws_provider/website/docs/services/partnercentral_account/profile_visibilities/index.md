@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the partner account. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;+:partnercentral:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:catalog/&#91;A-Za-z-_&#93;+/partner/partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Catalog" /></td>
+    <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>The catalog identifier for the partner account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the partner account. (pattern: &lt;code&gt;partner-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProfileId" /></td>
+    <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the partner profile. (pattern: &lt;code&gt;pprofile-&#91;A-Za-z0-9&#93;&#123;13&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Visibility" /></td>
+    <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>The visibility setting for the partner profile (public, private, restricted, etc.). (PRIVATE, PUBLIC)</td>
 </tr>
@@ -146,11 +146,11 @@ Retrieves the visibility settings for a partner profile, determining who can see
 
 ```sql
 SELECT
-Arn,
-Catalog,
-Id,
-ProfileId,
-Visibility
+arn,
+catalog,
+id,
+profile_id,
+visibility
 FROM aws.partnercentral_account.profile_visibilities
 WHERE region = '{{ region }}' -- required
 ;
@@ -181,11 +181,11 @@ WHERE
 region = '{{ region }}' --required
 AND Identifier = '{{ Identifier }}' --required
 RETURNING
-Arn,
-Catalog,
-Id,
-ProfileId,
-Visibility;
+arn,
+catalog,
+id,
+profile_id,
+visibility;
 ```
 </TabItem>
 </Tabs>

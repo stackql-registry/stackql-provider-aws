@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FirewallPolicyId" /></td>
+    <td><CopyableCode code="firewall_policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the specified firewall policy. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallPolicyName" /></td>
+    <td><CopyableCode code="firewall_policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the specified firewall policy. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list of all of the third-party firewall policies that are associated
 
 ```sql
 SELECT
-FirewallPolicyId,
-FirewallPolicyName
+firewall_policy_id,
+firewall_policy_name
 FROM aws.fms.third_party_firewall_firewall_policies
 WHERE region = '{{ region }}' -- required
 ;

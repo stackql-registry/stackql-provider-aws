@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the Security Lake account for which logs are collected.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventClasses" /></td>
+    <td><CopyableCode code="event_classes" /></td>
     <td><code>array</code></td>
     <td>The Open Cybersecurity Schema Framework (OCSF) event classes describes the type of data that the custom source will send to Security Lake. For the list of supported event classes, see Supported OCSF Event classes in the Amazon Security Lake User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceName" /></td>
+    <td><CopyableCode code="source_name" /></td>
     <td><code>string</code></td>
     <td>The supported Amazon Web Services services from which logs and events are collected. Amazon Security Lake supports log and event collection for natively supported Amazon Web Services services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceStatuses" /></td>
+    <td><CopyableCode code="source_statuses" /></td>
     <td><code>array</code></td>
     <td>The log status for the Security Lake account.</td>
 </tr>
@@ -135,9 +135,9 @@ Retrieves a snapshot of the current Region, including whether Amazon Security La
 ```sql
 SELECT
 account,
-eventClasses,
-sourceName,
-sourceStatuses
+event_classes,
+source_name,
+source_statuses
 FROM aws.securitylake.data_lake_sources
 WHERE region = '{{ region }}' -- required
 ;

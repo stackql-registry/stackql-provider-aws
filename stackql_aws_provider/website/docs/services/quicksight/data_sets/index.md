@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataSet" /></td>
+    <td><CopyableCode code="data_set" /></td>
     <td><code>object</code></td>
     <td>Information on the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -81,57 +81,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ColumnLevelPermissionRulesApplied" /></td>
+    <td><CopyableCode code="column_level_permission_rules_applied" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates if the dataset has column level permission configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSetId" /></td>
+    <td><CopyableCode code="data_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportMode" /></td>
+    <td><CopyableCode code="import_mode" /></td>
     <td><code>string</code></td>
     <td>A value that indicates whether you want to import the data into SPICE. (SPICE, DIRECT_QUERY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this dataset was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A display name for the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowLevelPermissionDataSet" /></td>
+    <td><CopyableCode code="row_level_permission_data_set" /></td>
     <td><code>object</code></td>
     <td>Information about a dataset that contains permissions for row-level security (RLS). The permissions dataset maps fields to users or groups. For more information, see Using Row-Level Security (RLS) to Restrict Access to a Dataset in the Quick Sight User Guide. The option to deny permissions by setting PermissionPolicy to DENY_ACCESS is not supported for new RLS datasets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowLevelPermissionDataSetMap" /></td>
+    <td><CopyableCode code="row_level_permission_data_set_map" /></td>
     <td><code>object</code></td>
     <td>The row-level security configuration for the dataset in the new data preparation experience.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowLevelPermissionTagConfigurationApplied" /></td>
+    <td><CopyableCode code="row_level_permission_tag_configuration_applied" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not the row level permission tags are applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseAs" /></td>
+    <td><CopyableCode code="use_as" /></td>
     <td><code>string</code></td>
     <td>The usage of the dataset. (RLS_RULES)</td>
 </tr>
@@ -150,57 +150,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ColumnLevelPermissionRulesApplied" /></td>
+    <td><CopyableCode code="column_level_permission_rules_applied" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates if the dataset has column level permission configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSetId" /></td>
+    <td><CopyableCode code="data_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportMode" /></td>
+    <td><CopyableCode code="import_mode" /></td>
     <td><code>string</code></td>
     <td>A value that indicates whether you want to import the data into SPICE. (SPICE, DIRECT_QUERY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that this dataset was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A display name for the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowLevelPermissionDataSet" /></td>
+    <td><CopyableCode code="row_level_permission_data_set" /></td>
     <td><code>object</code></td>
     <td>Information about a dataset that contains permissions for row-level security (RLS). The permissions dataset maps fields to users or groups. For more information, see Using Row-Level Security (RLS) to Restrict Access to a Dataset in the Quick Sight User Guide. The option to deny permissions by setting PermissionPolicy to DENY_ACCESS is not supported for new RLS datasets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowLevelPermissionDataSetMap" /></td>
+    <td><CopyableCode code="row_level_permission_data_set_map" /></td>
     <td><code>object</code></td>
     <td>The row-level security configuration for the dataset in the new data preparation experience.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RowLevelPermissionTagConfigurationApplied" /></td>
+    <td><CopyableCode code="row_level_permission_tag_configuration_applied" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not the row level permission tags are applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseAs" /></td>
+    <td><CopyableCode code="use_as" /></td>
     <td><code>string</code></td>
     <td>The usage of the dataset. (RLS_RULES)</td>
 </tr>
@@ -326,9 +326,9 @@ Describes a dataset. This operation doesn't support datasets that include upload
 
 ```sql
 SELECT
-DataSet,
-RequestId,
-Status
+data_set,
+request_id,
+status
 FROM aws.quicksight.data_sets
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND data_set_id = '{{ data_set_id }}' -- required
@@ -342,17 +342,17 @@ Use the SearchDataSets operation to search for datasets that belong to an accoun
 
 ```sql
 SELECT
-Arn,
-ColumnLevelPermissionRulesApplied,
-CreatedTime,
-DataSetId,
-ImportMode,
-LastUpdatedTime,
-Name,
-RowLevelPermissionDataSet,
-RowLevelPermissionDataSetMap,
-RowLevelPermissionTagConfigurationApplied,
-UseAs
+arn,
+column_level_permission_rules_applied,
+created_time,
+data_set_id,
+import_mode,
+last_updated_time,
+name,
+row_level_permission_data_set,
+row_level_permission_data_set_map,
+row_level_permission_tag_configuration_applied,
+use_as
 FROM aws.quicksight.data_sets
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -365,17 +365,17 @@ Lists all of the datasets belonging to the current Amazon Web Services account i
 
 ```sql
 SELECT
-Arn,
-ColumnLevelPermissionRulesApplied,
-CreatedTime,
-DataSetId,
-ImportMode,
-LastUpdatedTime,
-Name,
-RowLevelPermissionDataSet,
-RowLevelPermissionDataSetMap,
-RowLevelPermissionTagConfigurationApplied,
-UseAs
+arn,
+column_level_permission_rules_applied,
+created_time,
+data_set_id,
+import_mode,
+last_updated_time,
+name,
+row_level_permission_data_set,
+row_level_permission_data_set_map,
+row_level_permission_tag_configuration_applied,
+use_as
 FROM aws.quicksight.data_sets
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -447,12 +447,12 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-DataSetId,
-IngestionArn,
-IngestionId,
-RequestId,
-Status
+arn,
+data_set_id,
+ingestion_arn,
+ingestion_id,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -623,12 +623,12 @@ AND region = '{{ region }}' --required
 AND PhysicalTableMap = '{{ PhysicalTableMap }}' --required
 AND ImportMode = '{{ ImportMode }}' --required
 RETURNING
-Arn,
-DataSetId,
-IngestionArn,
-IngestionId,
-RequestId,
-Status;
+arn,
+data_set_id,
+ingestion_arn,
+ingestion_id,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

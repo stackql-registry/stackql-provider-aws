@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The arn of the namespace. (pattern: &lt;code&gt;arn:aws:scn(?::(&#91;a-z0-9-&#93;+):(&#91;0-9&#93;+):instance)?/(&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#91;-_./A-Za-z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the namespace.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of the namespace.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The arn of the namespace. (pattern: &lt;code&gt;arn:aws:scn(?::(&#91;a-z0-9-&#93;+):(&#91;0-9&#93;+):instance)?/(&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#91;-_./A-Za-z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the namespace.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of the namespace.</td>
 </tr>
@@ -240,10 +240,10 @@ Enables you to programmatically view an Amazon Web Services Supply Chain data la
 SELECT
 name,
 arn,
-createdTime,
+created_time,
 description,
-instanceId,
-lastModifiedTime
+instance_id,
+last_modified_time
 FROM aws.supplychain.data_lake_namespaces
 WHERE instance_id = '{{ instance_id }}' -- required
 AND name = '{{ name }}' -- required
@@ -259,10 +259,10 @@ Enables you to programmatically view the list of Amazon Web Services Supply Chai
 SELECT
 name,
 arn,
-createdTime,
+created_time,
 description,
-instanceId,
-lastModifiedTime
+instance_id,
+last_modified_time
 FROM aws.supplychain.data_lake_namespaces
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessEndpoint" /></td>
+    <td><CopyableCode code="access_endpoint" /></td>
     <td><code>string</code></td>
     <td>The AccessEndpoint is the URL that you provide to your users for them to interact with the Transfer Family web app. You can specify a custom URL or use the default value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the web app. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DescribedEndpointDetails" /></td>
+    <td><CopyableCode code="described_endpoint_details" /></td>
     <td><code>object</code></td>
     <td>The endpoint configuration details for the web app, including VPC settings if the endpoint is hosted within a VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DescribedIdentityProviderDetails" /></td>
+    <td><CopyableCode code="described_identity_provider_details" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the details for the identity provider used by the web app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint hosting the web app. Valid values are PUBLIC for publicly accessible endpoints and VPC for VPC-hosted endpoints that provide network isolation. (PUBLIC, VPC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs that can be used to group and search for web apps. Tags are metadata attached to web apps for any purpose.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAppEndpoint" /></td>
+    <td><CopyableCode code="web_app_endpoint" /></td>
     <td><code>string</code></td>
     <td>The WebAppEndpoint is the unique URL for your Transfer Family web app. This is the value that you use when you configure Origins on CloudFront.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAppEndpointPolicy" /></td>
+    <td><CopyableCode code="web_app_endpoint_policy" /></td>
     <td><code>string</code></td>
     <td>Setting for the type of endpoint policy for the web app. The default value is STANDARD. If your web app was created in an Amazon Web Services GovCloud (US) Region, the value of this parameter can be FIPS, which indicates the web app endpoint is FIPS-compliant. (FIPS, STANDARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAppId" /></td>
+    <td><CopyableCode code="web_app_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the web app. (pattern: &lt;code&gt;webapp-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAppUnits" /></td>
+    <td><CopyableCode code="web_app_units" /></td>
     <td><code>object</code></td>
     <td>A union that contains the value for number of concurrent connections or the user sessions on your web app.</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessEndpoint" /></td>
+    <td><CopyableCode code="access_endpoint" /></td>
     <td><code>string</code></td>
     <td>The AccessEndpoint is the URL that you provide to your users for them to interact with the Transfer Family web app. You can specify a custom URL or use the default value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the web app. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint hosting the web app. Valid values are PUBLIC for publicly accessible endpoints and VPC for VPC-hosted endpoints. (PUBLIC, VPC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAppEndpoint" /></td>
+    <td><CopyableCode code="web_app_endpoint" /></td>
     <td><code>string</code></td>
     <td>The WebAppEndpoint is the unique URL for your Transfer Family web app. This is the value that you use when you configure Origins on CloudFront.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebAppId" /></td>
+    <td><CopyableCode code="web_app_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the web app. (pattern: &lt;code&gt;webapp-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -233,16 +233,16 @@ Describes the web app that's identified by WebAppId. The response includes endpo
 
 ```sql
 SELECT
-AccessEndpoint,
-Arn,
-DescribedEndpointDetails,
-DescribedIdentityProviderDetails,
-EndpointType,
-Tags,
-WebAppEndpoint,
-WebAppEndpointPolicy,
-WebAppId,
-WebAppUnits
+access_endpoint,
+arn,
+described_endpoint_details,
+described_identity_provider_details,
+endpoint_type,
+tags,
+web_app_endpoint,
+web_app_endpoint_policy,
+web_app_id,
+web_app_units
 FROM aws.transfer.web_apps
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,11 +254,11 @@ Lists all web apps associated with your Amazon Web Services account for your cur
 
 ```sql
 SELECT
-AccessEndpoint,
-Arn,
-EndpointType,
-WebAppEndpoint,
-WebAppId
+access_endpoint,
+arn,
+endpoint_type,
+web_app_endpoint,
+web_app_id
 FROM aws.transfer.web_apps
 WHERE region = '{{ region }}' -- required
 ;
@@ -299,7 +299,7 @@ SELECT
 '{{ EndpointDetails }}',
 '{{ region }}'
 RETURNING
-WebAppId
+web_app_id
 ;
 ```
 </TabItem>
@@ -379,7 +379,7 @@ WHERE
 region = '{{ region }}' --required
 AND WebAppId = '{{ WebAppId }}' --required
 RETURNING
-WebAppId;
+web_app_id;
 ```
 </TabItem>
 </Tabs>

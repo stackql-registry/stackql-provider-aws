@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The identifier of a customer managed key used for exported data set encryption.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the task. (Creating, Running, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>If dataset export failed, the failure reason will show here.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>A summary of the status of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The task identifier. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -156,11 +156,11 @@ Gets the status of a data set import task initiated with the CreateDataSetExport
 
 ```sql
 SELECT
-kmsKeyArn,
+kms_key_arn,
 status,
-statusReason,
+status_reason,
 summary,
-taskId
+task_id
 FROM aws.m2.data_set_export_tasks
 WHERE application_id = '{{ application_id }}' -- required
 AND task_id = '{{ task_id }}' -- required
@@ -199,7 +199,7 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-taskId
+task_id
 ;
 ```
 </TabItem>

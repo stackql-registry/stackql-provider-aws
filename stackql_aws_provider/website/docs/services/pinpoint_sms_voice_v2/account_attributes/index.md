@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the account attribute. (ACCOUNT_TIER, DEFAULT_PROTECT_CONFIGURATION_ID)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The value associated with the account attribute name.</td>
 </tr>
@@ -124,8 +124,8 @@ Describes attributes of your Amazon Web Services account. The supported account 
 
 ```sql
 SELECT
-Name,
-Value
+name,
+value
 FROM aws.pinpoint_sms_voice_v2.account_attributes
 WHERE region = '{{ region }}' -- required
 ;

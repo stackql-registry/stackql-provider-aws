@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the what-if forecast was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The approximate time remaining to complete the what-if forecast, in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastTypes" /></td>
+    <td><CopyableCode code="forecast_types" /></td>
     <td><code>array</code></td>
     <td>The quantiles at which probabilistic forecasts are generated. You can specify up to five quantiles per what-if forecast in the CreateWhatIfForecast operation. If you didn't specify quantiles, the default values are &#91;"0.1", "0.5", "0.9"&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the what-if forecast. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED The Status of the what-if forecast must be ACTIVE before you can access the forecast. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeSeriesReplacementsDataSource" /></td>
+    <td><CopyableCode code="time_series_replacements_data_source" /></td>
     <td><code>object</code></td>
     <td>An array of S3Config, Schema, and Format elements that describe the replacement time series.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeSeriesTransformations" /></td>
+    <td><CopyableCode code="time_series_transformations" /></td>
     <td><code>array</code></td>
     <td>An array of Action and TimeSeriesConditions elements that describe what transformations were applied to which time series.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfAnalysisArn" /></td>
+    <td><CopyableCode code="what_if_analysis_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if analysis that contains this forecast. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastArn" /></td>
+    <td><CopyableCode code="what_if_forecast_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if forecast. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastName" /></td>
+    <td><CopyableCode code="what_if_forecast_name" /></td>
     <td><code>string</code></td>
     <td>The name of the what-if forecast. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -120,37 +120,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the what-if forecast was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the what-if forecast. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED The Status of the what-if analysis must be ACTIVE before you can access the analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfAnalysisArn" /></td>
+    <td><CopyableCode code="what_if_analysis_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if analysis that contains this what-if forecast. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastArn" /></td>
+    <td><CopyableCode code="what_if_forecast_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the what-if forecast. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhatIfForecastName" /></td>
+    <td><CopyableCode code="what_if_forecast_name" /></td>
     <td><code>string</code></td>
     <td>The name of the what-if forecast. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -241,17 +241,17 @@ Describes the what-if forecast created using the CreateWhatIfForecast operation.
 
 ```sql
 SELECT
-CreationTime,
-EstimatedTimeRemainingInMinutes,
-ForecastTypes,
-LastModificationTime,
-Message,
-Status,
-TimeSeriesReplacementsDataSource,
-TimeSeriesTransformations,
-WhatIfAnalysisArn,
-WhatIfForecastArn,
-WhatIfForecastName
+creation_time,
+estimated_time_remaining_in_minutes,
+forecast_types,
+last_modification_time,
+message,
+status,
+time_series_replacements_data_source,
+time_series_transformations,
+what_if_analysis_arn,
+what_if_forecast_arn,
+what_if_forecast_name
 FROM aws.forecast.what_if_forecasts
 WHERE region = '{{ region }}' -- required
 ;
@@ -263,13 +263,13 @@ Returns a list of what-if forecasts created using the CreateWhatIfForecast opera
 
 ```sql
 SELECT
-CreationTime,
-LastModificationTime,
-Message,
-Status,
-WhatIfAnalysisArn,
-WhatIfForecastArn,
-WhatIfForecastName
+creation_time,
+last_modification_time,
+message,
+status,
+what_if_analysis_arn,
+what_if_forecast_arn,
+what_if_forecast_name
 FROM aws.forecast.what_if_forecasts
 WHERE region = '{{ region }}' -- required
 ;
@@ -308,7 +308,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-WhatIfForecastArn
+what_if_forecast_arn
 ;
 ```
 </TabItem>

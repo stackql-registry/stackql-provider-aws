@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountInfo" /></td>
+    <td><CopyableCode code="account_info" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the following elements: Your Quick Sight account name. The edition of Quick Sight that your account is using. The notification email address that is associated with the Amazon Quick Sight account. The authentication type of the Quick Sight account. The status of the Quick Sight account's subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -148,9 +148,9 @@ Use the DescribeAccountSubscription operation to receive a description of an Qui
 
 ```sql
 SELECT
-AccountInfo,
-RequestId,
-Status
+account_info,
+request_id,
+status
 FROM aws.quicksight.account_subscriptions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -218,9 +218,9 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-RequestId,
-SignupResponse,
-Status
+request_id,
+signup_response,
+status
 ;
 ```
 </TabItem>

@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the data lineage node was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the data lineage node.</td>
 </tr>
@@ -75,52 +75,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain where you're getting the data lineage node. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="downstreamNodes" /></td>
+    <td><CopyableCode code="downstream_nodes" /></td>
     <td><code>array</code></td>
     <td>The downsteam nodes of the specified data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the event described in the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="formsOutput" /></td>
+    <td><CopyableCode code="forms_output" /></td>
     <td><code>array</code></td>
     <td>The metadata of the specified data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceIdentifier" /></td>
+    <td><CopyableCode code="source_identifier" /></td>
     <td><code>string</code></td>
     <td>The source identifier of the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The name of the type of the specified data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeRevision" /></td>
+    <td><CopyableCode code="type_revision" /></td>
     <td><code>string</code></td>
     <td>The revision type of the specified data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the data lineage node was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The user who updated the data lineage node.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="upstreamNodes" /></td>
+    <td><CopyableCode code="upstream_nodes" /></td>
     <td><code>array</code></td>
     <td>The upstream nodes of the specified data lineage node.</td>
 </tr>
@@ -206,19 +206,19 @@ Gets the data lineage node.
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
-downstreamNodes,
-eventTimestamp,
-formsOutput,
-sourceIdentifier,
-typeName,
-typeRevision,
-updatedAt,
-updatedBy,
-upstreamNodes
+domain_id,
+downstream_nodes,
+event_timestamp,
+forms_output,
+source_identifier,
+type_name,
+type_revision,
+updated_at,
+updated_by,
+upstream_nodes
 FROM aws.datazone.lineage_nodes
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required

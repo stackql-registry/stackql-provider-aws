@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EventInformation" /></td>
+    <td><CopyableCode code="event_information" /></td>
     <td><code>string</code></td>
     <td>Information about the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The event type. error - An error with the Spot Fleet request. fleetRequestChange - A change in the status or configuration of the Spot Fleet request. instanceChange - An instance was launched or terminated. Information - An informational event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time of the event, in UTC format (for example, YYYY-MM-DDTHH:MM:SSZ).</td>
 </tr>
@@ -159,9 +159,9 @@ Describes the events for the specified Spot Fleet request during the specified t
 
 ```sql
 SELECT
-EventInformation,
-EventType,
-Timestamp
+event_information,
+event_type,
+timestamp
 FROM aws.ec2.spot_fleet_request_histories
 WHERE SpotFleetRequestId = '{{ SpotFleetRequestId }}' -- required
 AND StartTime = '{{ StartTime }}' -- required

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Inputs" /></td>
+    <td><CopyableCode code="inputs" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Input Security Group. (IDLE, IN_USE, UPDATING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhitelistRules" /></td>
+    <td><CopyableCode code="whitelist_rules" /></td>
     <td><code>array</code></td>
     <td>Whitelist rules and their sync status</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Inputs" /></td>
+    <td><CopyableCode code="inputs" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Input Security Group. (IDLE, IN_USE, UPDATING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WhitelistRules" /></td>
+    <td><CopyableCode code="whitelist_rules" /></td>
     <td><code>array</code></td>
     <td>Whitelist rules and their sync status</td>
 </tr>
@@ -243,13 +243,13 @@ Produces a summary of an Input Security Group
 
 ```sql
 SELECT
-Arn,
-Channels,
-Id,
-Inputs,
-State,
-Tags,
-WhitelistRules
+arn,
+channels,
+id,
+inputs,
+state,
+tags,
+whitelist_rules
 FROM aws.medialive.input_security_groups
 WHERE input_security_group_id = '{{ input_security_group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,13 +262,13 @@ Produces a list of Input Security Groups for an account
 
 ```sql
 SELECT
-Arn,
-Channels,
-Id,
-Inputs,
-State,
-Tags,
-WhitelistRules
+arn,
+channels,
+id,
+inputs,
+state,
+tags,
+whitelist_rules
 FROM aws.medialive.input_security_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -303,7 +303,7 @@ SELECT
 '{{ WhitelistRules }}',
 '{{ region }}'
 RETURNING
-SecurityGroup
+security_group
 ;
 ```
 </TabItem>
@@ -351,7 +351,7 @@ WHERE
 input_security_group_id = '{{ input_security_group_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-SecurityGroup;
+security_group;
 ```
 </TabItem>
 </Tabs>

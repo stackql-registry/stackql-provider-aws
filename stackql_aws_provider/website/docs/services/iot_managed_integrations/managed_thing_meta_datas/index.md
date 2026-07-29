@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The managed thing id. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetaData" /></td>
+    <td><CopyableCode code="meta_data" /></td>
     <td><code>object</code></td>
     <td>The metadata for the managed thing.</td>
 </tr>
@@ -129,8 +129,8 @@ Get the metadata information for a managed thing. The managedThing metadata para
 
 ```sql
 SELECT
-ManagedThingId,
-MetaData
+managed_thing_id,
+meta_data
 FROM aws.iot_managed_integrations.managed_thing_meta_datas
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

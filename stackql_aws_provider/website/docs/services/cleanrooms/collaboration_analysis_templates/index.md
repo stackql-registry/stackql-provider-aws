@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="collaborationAnalysisTemplates" /></td>
+    <td><CopyableCode code="collaboration_analysis_templates" /></td>
     <td><code>array</code></td>
     <td>The retrieved list of analysis templates within a collaboration.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the analysis template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;((&#91;a-zA-Z0-9_ &#93;+-)*(&#91;a-zA-Z0-9_ &#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisParameters" /></td>
+    <td><CopyableCode code="analysis_parameters" /></td>
     <td><code>array</code></td>
     <td>The analysis parameters that have been specified in the analysis template.</td>
 </tr>
@@ -96,22 +96,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the analysis template. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/analysistemplate/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the analysis template’s associated collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the collaboration that the analysis templates belong to. Currently accepts collaboration ID. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the analysis template within a collaboration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Currently only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the analysis template. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessageConfiguration" /></td>
+    <td><CopyableCode code="error_message_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration that specifies the level of detail in error messages returned by analyses using this template. When set to DETAILED, error messages include more information to help troubleshoot issues with PySpark jobs. Detailed error messages may expose underlying data, including sensitive information. Recommended for faster troubleshooting in development and testing environments.</td>
 </tr>
@@ -141,17 +141,17 @@ The following fields are returned by `SELECT` queries:
     <td>The source of the analysis template within a collaboration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceMetadata" /></td>
+    <td><CopyableCode code="source_metadata" /></td>
     <td><code>object</code></td>
     <td>The source metadata for the collaboration analysis template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syntheticDataParameters" /></td>
+    <td><CopyableCode code="synthetic_data_parameters" /></td>
     <td><code>object</code></td>
     <td>The synthetic data generation parameters configured for this collaboration analysis template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the analysis template in the collaboration was last updated.</td>
 </tr>
@@ -190,22 +190,22 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the analysis template. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/analysistemplate/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationArn" /></td>
+    <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the analysis template’s associated collaboration. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the collaboration that the analysis templates belong to. Currently accepts collaboration ID. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the summary of the analysis template in a collaboration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Currently only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
@@ -215,12 +215,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the analysis template. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSyntheticData" /></td>
+    <td><CopyableCode code="is_synthetic_data" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if this collaboration analysis template uses synthetic data generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the summary of the analysis template in the collaboration was last updated.</td>
 </tr>
@@ -325,7 +325,7 @@ Retrieves multiple analysis templates within a collaboration by their Amazon Res
 
 ```sql
 SELECT
-collaborationAnalysisTemplates,
+collaboration_analysis_templates,
 errors
 FROM aws.cleanrooms.collaboration_analysis_templates
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
@@ -341,20 +341,20 @@ Retrieves an analysis template within a collaboration.
 SELECT
 id,
 name,
-analysisParameters,
+analysis_parameters,
 arn,
-collaborationArn,
-collaborationId,
-createTime,
-creatorAccountId,
+collaboration_arn,
+collaboration_id,
+create_time,
+creator_account_id,
 description,
-errorMessageConfiguration,
+error_message_configuration,
 format_,
 schema,
 source,
-sourceMetadata,
-syntheticDataParameters,
-updateTime,
+source_metadata,
+synthetic_data_parameters,
+update_time,
 validations
 FROM aws.cleanrooms.collaboration_analysis_templates
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
@@ -372,13 +372,13 @@ SELECT
 id,
 name,
 arn,
-collaborationArn,
-collaborationId,
-createTime,
-creatorAccountId,
+collaboration_arn,
+collaboration_id,
+create_time,
+creator_account_id,
 description,
-isSyntheticData,
-updateTime
+is_synthetic_data,
+update_time
 FROM aws.cleanrooms.collaboration_analysis_templates
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required

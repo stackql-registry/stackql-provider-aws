@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CollectionArn" /></td>
+    <td><CopyableCode code="collection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)&#123;2&#125;(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*)?)&#123;2&#125;:(&#91;^/&#93;.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CollectionName" /></td>
+    <td><CopyableCode code="collection_name" /></td>
     <td><code>string</code></td>
     <td>The name of the geofence collection. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the geofence resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description for the geofence collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeofenceCount" /></td>
+    <td><CopyableCode code="geofence_count" /></td>
     <td><code>integer</code></td>
     <td>The number of geofences in the geofence collection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>A key identifier for an Amazon Web Services KMS customer managed key assigned to the Amazon Location resource</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlanDataSource" /></td>
+    <td><CopyableCode code="pricing_plan_data_source" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns an empty string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Displays the key, value pairs of tags associated with this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the geofence collection was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CollectionName" /></td>
+    <td><CopyableCode code="collection_name" /></td>
     <td><code>string</code></td>
     <td>The name of the geofence collection. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the geofence collection</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlanDataSource" /></td>
+    <td><CopyableCode code="pricing_plan_data_source" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns an empty string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies a timestamp for when the resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ</td>
 </tr>
@@ -243,16 +243,16 @@ Retrieves the geofence collection details.
 
 ```sql
 SELECT
-CollectionArn,
-CollectionName,
-CreateTime,
-Description,
-GeofenceCount,
-KmsKeyId,
-PricingPlan,
-PricingPlanDataSource,
-Tags,
-UpdateTime
+collection_arn,
+collection_name,
+create_time,
+description,
+geofence_count,
+kms_key_id,
+pricing_plan,
+pricing_plan_data_source,
+tags,
+update_time
 FROM aws.location.geofence_collections
 WHERE collection_name = '{{ collection_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -265,12 +265,12 @@ Lists geofence collections in your Amazon Web Services account.
 
 ```sql
 SELECT
-CollectionName,
-CreateTime,
-Description,
-PricingPlan,
-PricingPlanDataSource,
-UpdateTime
+collection_name,
+create_time,
+description,
+pricing_plan,
+pricing_plan_data_source,
+update_time
 FROM aws.location.geofence_collections
 WHERE region = '{{ region }}' -- required
 ;
@@ -311,9 +311,9 @@ SELECT
 '{{ KmsKeyId }}',
 '{{ region }}'
 RETURNING
-CollectionArn,
-CollectionName,
-CreateTime
+collection_arn,
+collection_name,
+create_time
 ;
 ```
 </TabItem>
@@ -366,9 +366,9 @@ WHERE
 collection_name = '{{ collection_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CollectionArn,
-CollectionName,
-UpdateTime;
+collection_arn,
+collection_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

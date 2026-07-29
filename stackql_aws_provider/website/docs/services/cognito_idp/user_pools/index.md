@@ -51,172 +51,172 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountRecoverySetting" /></td>
+    <td><CopyableCode code="account_recovery_setting" /></td>
     <td><code>object</code></td>
     <td>The available verified method a user can use to recover their password when they call ForgotPassword. You can use this setting to define a preferred method when a user has more than one method available. With this setting, SMS doesn't qualify for a valid password recovery mechanism if the user also has SMS multi-factor authentication (MFA) activated. In the absence of this setting, Amazon Cognito uses the legacy behavior to determine the recovery method where SMS is preferred through email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdminCreateUserConfig" /></td>
+    <td><CopyableCode code="admin_create_user_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for AdminCreateUser requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AliasAttributes" /></td>
+    <td><CopyableCode code="alias_attributes" /></td>
     <td><code>array</code></td>
     <td>Attributes supported as an alias for this user pool. An alias is an attribute that users can enter as an alternative username. Possible values: phone_number, email, or preferred_username.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user pool. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:&#91;\w+=/,.@-&#93;+:(&#91;\w+=/,.@-&#93;*)?:&#91;0-9&#93;+:&#91;\w+=/,.@-&#93;+(:&#91;\w+=/,.@-&#93;+)?(:&#91;\w+=/,.@-&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoVerifiedAttributes" /></td>
+    <td><CopyableCode code="auto_verified_attributes" /></td>
     <td><code>array</code></td>
     <td>The attributes that are auto-verified in a user pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomDomain" /></td>
+    <td><CopyableCode code="custom_domain" /></td>
     <td><code>string</code></td>
     <td>A custom domain name that you provide to Amazon Cognito. This parameter applies only if you use a custom domain to host the sign-up and sign-in pages for your application. An example of a custom domain name might be auth.example.com. For more information about adding a custom domain to your user pool, see Using Your Own Domain for the Hosted UI. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;(?:&#91;a-z0-9\-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>string</code></td>
     <td>When active, DeletionProtection prevents accidental deletion of your user pool. Before you can delete a user pool that you have protected against deletion, you must deactivate this feature. When you try to delete a protected user pool in a DeleteUserPool API request, Amazon Cognito returns an InvalidParameterException error. To delete a protected user pool, send a new DeleteUserPool request after you deactivate deletion protection in an UpdateUserPool API request. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceConfiguration" /></td>
+    <td><CopyableCode code="device_configuration" /></td>
     <td><code>object</code></td>
     <td>The device-remembering configuration for a user pool. A null value indicates that you have deactivated device remembering in your user pool. When you provide a value for any DeviceConfiguration field, you activate the Amazon Cognito device-remembering feature.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The domain prefix, if the user pool has a domain associated with it. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;(?:&#91;a-z0-9\-&#93;&#123;0,61&#125;&#91;a-z0-9&#93;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailConfiguration" /></td>
+    <td><CopyableCode code="email_configuration" /></td>
     <td><code>object</code></td>
     <td>The email configuration of your user pool. The email configuration type sets your preferred sending method, Amazon Web Services Region, and sender for messages from your user pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailConfigurationFailure" /></td>
+    <td><CopyableCode code="email_configuration_failure" /></td>
     <td><code>string</code></td>
     <td>Deprecated. Review error codes from API requests with EventSource:cognito-idp.amazonaws.com in CloudTrail for information about problems with user pool email configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailVerificationMessage" /></td>
+    <td><CopyableCode code="email_verification_message" /></td>
     <td><code>string</code></td>
     <td>This parameter is no longer used. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\s*&#93;*\&#123;####\&#125;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\s*&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailVerificationSubject" /></td>
+    <td><CopyableCode code="email_verification_subject" /></td>
     <td><code>string</code></td>
     <td>This parameter is no longer used. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedNumberOfUsers" /></td>
+    <td><CopyableCode code="estimated_number_of_users" /></td>
     <td><code>integer</code></td>
     <td>A number estimating the size of the user pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LambdaConfig" /></td>
+    <td><CopyableCode code="lambda_config" /></td>
     <td><code>object</code></td>
     <td>A collection of user pool Lambda triggers. Amazon Cognito invokes triggers at several possible stages of user pool operations. Triggers can modify the outcome of the operations that invoked them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MfaConfiguration" /></td>
+    <td><CopyableCode code="mfa_configuration" /></td>
     <td><code>string</code></td>
     <td>Can be one of the following values: OFF - MFA tokens aren't required and can't be specified during user registration. ON - MFA tokens are required for all user registrations. You can only specify required when you're initially creating a user pool. OPTIONAL - Users have the option when registering to create an MFA token. (OFF, ON, OPTIONAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the user pool. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>object</code></td>
     <td>A list of user pool policies. Contains the policy that sets password-complexity requirements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaAttributes" /></td>
+    <td><CopyableCode code="schema_attributes" /></td>
     <td><code>array</code></td>
     <td>A list of the user attributes and their properties in your user pool. The attribute schema contains standard attributes, custom attributes with a custom: prefix, and developer attributes with a dev: prefix. For more information, see User pool attributes. Developer-only attributes are a legacy feature of user pools, and are read-only to all app clients. You can create and update developer-only attributes only with IAM-authenticated API operations. Use app client read/write permissions instead.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SmsAuthenticationMessage" /></td>
+    <td><CopyableCode code="sms_authentication_message" /></td>
     <td><code>string</code></td>
     <td>The contents of the SMS authentication message. (pattern: &lt;code&gt;.*\&#123;####\&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SmsConfiguration" /></td>
+    <td><CopyableCode code="sms_configuration" /></td>
     <td><code>object</code></td>
     <td>User pool configuration for delivery of SMS messages with Amazon Simple Notification Service. To send SMS messages with Amazon SNS in the Amazon Web Services Region that you want, the Amazon Cognito user pool uses an Identity and Access Management (IAM) role in your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SmsConfigurationFailure" /></td>
+    <td><CopyableCode code="sms_configuration_failure" /></td>
     <td><code>string</code></td>
     <td>The reason why the SMS configuration can't send the messages to your users. This message might include comma-separated values to describe why your SMS configuration can't send messages to user pool end users. InvalidSmsRoleAccessPolicyException The Identity and Access Management role that Amazon Cognito uses to send SMS messages isn't properly configured. For more information, see SmsConfigurationType. SNSSandbox The Amazon Web Services account is in the SNS SMS Sandbox and messages will only reach verified end users. This parameter won’t get populated with SNSSandbox if the user creating the user pool doesn’t have SNS permissions. To learn how to move your Amazon Web Services account out of the sandbox, see Moving out of the SMS sandbox.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SmsVerificationMessage" /></td>
+    <td><CopyableCode code="sms_verification_message" /></td>
     <td><code>string</code></td>
     <td>This parameter is no longer used. (pattern: &lt;code&gt;.*\&#123;####\&#125;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>This parameter is no longer used. (Enabled, Disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserAttributeUpdateSettings" /></td>
+    <td><CopyableCode code="user_attribute_update_settings" /></td>
     <td><code>object</code></td>
     <td>The settings for updates to user attributes. These settings include the property AttributesRequireVerificationBeforeUpdate, a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For more information, see Verifying updates to email addresses and phone numbers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolAddOns" /></td>
+    <td><CopyableCode code="user_pool_add_ons" /></td>
     <td><code>object</code></td>
     <td>Contains settings for activation of threat protection, including the operating mode and additional authentication types. To log user security information but take no action, set to AUDIT. To configure automatic security responses to potentially unwanted traffic to your user pool, set to ENFORCED. For more information, see Adding advanced security to a user pool. To activate this setting, your user pool must be on the Plus tier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolTags" /></td>
+    <td><CopyableCode code="user_pool_tags" /></td>
     <td><code>object</code></td>
     <td>The tags that are assigned to the user pool. A tag is a label that you can apply to user pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolTier" /></td>
+    <td><CopyableCode code="user_pool_tier" /></td>
     <td><code>string</code></td>
     <td>The user pool feature plan, or tier. This parameter determines the eligibility of the user pool for features like managed login, access-token customization, and threat protection. Defaults to ESSENTIALS. (LITE, ESSENTIALS, PLUS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsernameAttributes" /></td>
+    <td><CopyableCode code="username_attributes" /></td>
     <td><code>array</code></td>
     <td>Specifies whether a user can use an email address or phone number as a username when they sign up.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsernameConfiguration" /></td>
+    <td><CopyableCode code="username_configuration" /></td>
     <td><code>object</code></td>
     <td>Case sensitivity of the username input for the selected sign-in option. When case sensitivity is set to False (case insensitive), users can sign in with any combination of capital and lowercase letters. For example, username, USERNAME, or UserName, or for email, email@example.com or EMaiL@eXamplE.Com. For most use cases, set case sensitivity to False (case insensitive) as a best practice. When usernames and email addresses are case insensitive, Amazon Cognito treats any variation in case as the same user, and prevents a case variation from being assigned to the same attribute for a different user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationMessageTemplate" /></td>
+    <td><CopyableCode code="verification_message_template" /></td>
     <td><code>object</code></td>
     <td>The template for the verification message that your user pool delivers to users who set an email address or phone number attribute.</td>
 </tr>
@@ -235,32 +235,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The user pool ID. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LambdaConfig" /></td>
+    <td><CopyableCode code="lambda_config" /></td>
     <td><code>object</code></td>
     <td>A collection of user pool Lambda triggers. Amazon Cognito invokes triggers at several possible stages of user pool operations. Triggers can modify the outcome of the operations that invoked them.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The user pool name. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The user pool status. (Enabled, Disabled)</td>
 </tr>
@@ -547,40 +547,40 @@ Given a user pool ID, returns configuration information. This operation is usefu
 
 ```sql
 SELECT
-AccountRecoverySetting,
-AdminCreateUserConfig,
-AliasAttributes,
-Arn,
-AutoVerifiedAttributes,
-CreationDate,
-CustomDomain,
-DeletionProtection,
-DeviceConfiguration,
-Domain,
-EmailConfiguration,
-EmailConfigurationFailure,
-EmailVerificationMessage,
-EmailVerificationSubject,
-EstimatedNumberOfUsers,
-Id,
-LambdaConfig,
-LastModifiedDate,
-MfaConfiguration,
-Name,
-Policies,
-SchemaAttributes,
-SmsAuthenticationMessage,
-SmsConfiguration,
-SmsConfigurationFailure,
-SmsVerificationMessage,
-Status,
-UserAttributeUpdateSettings,
-UserPoolAddOns,
-UserPoolTags,
-UserPoolTier,
-UsernameAttributes,
-UsernameConfiguration,
-VerificationMessageTemplate
+account_recovery_setting,
+admin_create_user_config,
+alias_attributes,
+arn,
+auto_verified_attributes,
+creation_date,
+custom_domain,
+deletion_protection,
+device_configuration,
+domain,
+email_configuration,
+email_configuration_failure,
+email_verification_message,
+email_verification_subject,
+estimated_number_of_users,
+id,
+lambda_config,
+last_modified_date,
+mfa_configuration,
+name,
+policies,
+schema_attributes,
+sms_authentication_message,
+sms_configuration,
+sms_configuration_failure,
+sms_verification_message,
+status,
+user_attribute_update_settings,
+user_pool_add_ons,
+user_pool_tags,
+user_pool_tier,
+username_attributes,
+username_configuration,
+verification_message_template
 FROM aws.cognito_idp.user_pools
 WHERE region = '{{ region }}' -- required
 ;
@@ -592,12 +592,12 @@ Lists user pools and their details in the current Amazon Web Services account. A
 
 ```sql
 SELECT
-CreationDate,
-Id,
-LambdaConfig,
-LastModifiedDate,
-Name,
-Status
+creation_date,
+id,
+lambda_config,
+last_modified_date,
+name,
+status
 FROM aws.cognito_idp.user_pools
 WHERE region = '{{ region }}' -- required
 ;
@@ -674,7 +674,7 @@ SELECT
 '{{ UserPoolTier }}',
 '{{ region }}'
 RETURNING
-UserPool
+user_pool
 ;
 ```
 </TabItem>

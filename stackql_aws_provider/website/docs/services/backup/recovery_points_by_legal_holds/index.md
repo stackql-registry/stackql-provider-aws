@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupVaultName" /></td>
+    <td><CopyableCode code="backup_vault_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backup vault (the logical container in which backups are stored). (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;&#123;2,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryPointArn" /></td>
+    <td><CopyableCode code="recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the parent (composite) recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies a saved resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services resource type that is saved as a recovery point. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -149,10 +149,10 @@ This action returns recovery point ARNs (Amazon Resource Names) of the specified
 
 ```sql
 SELECT
-BackupVaultName,
-RecoveryPointArn,
-ResourceArn,
-ResourceType
+backup_vault_name,
+recovery_point_arn,
+resource_arn,
+resource_type
 FROM aws.backup.recovery_points_by_legal_holds
 WHERE legal_hold_id = '{{ legal_hold_id }}' -- required
 AND region = '{{ region }}' -- required

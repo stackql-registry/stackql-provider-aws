@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the contact or escalation plan. The alias is unique and identifiable. (pattern: &lt;code&gt;^&#91;a-z0-9_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the contact or escalation plan. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The full name of the contact or escalation plan. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Plan" /></td>
+    <td><CopyableCode code="plan" /></td>
     <td><code>object</code></td>
     <td>Details about the specific timing or stages and targets of the escalation plan or engagement plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of contact. (PERSONAL, ESCALATION, ONCALL_SCHEDULE)</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The unique and identifiable alias of the contact or escalation plan. (pattern: &lt;code&gt;^&#91;a-z0-9_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactArn" /></td>
+    <td><CopyableCode code="contact_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the contact or escalation plan. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The full name of the contact or escalation plan. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of contact. PERSONAL: A single, individual contact. ESCALATION: An escalation plan. ONCALL_SCHEDULE: An on-call schedule. (PERSONAL, ESCALATION, ONCALL_SCHEDULE)</td>
 </tr>
@@ -217,11 +217,11 @@ Retrieves information about the specified contact or escalation plan.
 
 ```sql
 SELECT
-Alias,
-ContactArn,
-DisplayName,
-Plan,
-Type
+alias,
+contact_arn,
+display_name,
+plan,
+type
 FROM aws.ssm_contacts.contacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,10 +233,10 @@ Lists all contacts and escalation plans in Incident Manager.
 
 ```sql
 SELECT
-Alias,
-ContactArn,
-DisplayName,
-Type
+alias,
+contact_arn,
+display_name,
+type
 FROM aws.ssm_contacts.contacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -277,7 +277,7 @@ SELECT
 '{{ IdempotencyToken }}',
 '{{ region }}'
 RETURNING
-ContactArn
+contact_arn
 ;
 ```
 </TabItem>

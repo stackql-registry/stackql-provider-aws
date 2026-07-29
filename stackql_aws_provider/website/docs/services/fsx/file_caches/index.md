@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FileCaches" /></td>
+    <td><CopyableCode code="file_caches" /></td>
     <td><code>array</code></td>
     <td>The response object for the DescribeFileCaches operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>(Optional) Opaque pagination token returned from a previous operation (String). If present, this token indicates from what point you can continue processing the request, where the previous NextToken value left off. (pattern: &lt;code&gt;^(?:&#91;A-Za-z0-9+\/&#93;&#123;4&#125;)*(?:&#91;A-Za-z0-9+\/&#93;&#123;2&#125;==|&#91;A-Za-z0-9+\/&#93;&#123;3&#125;=)?$&lt;/code&gt;)</td>
 </tr>
@@ -145,8 +145,8 @@ Returns the description of a specific Amazon File Cache resource, if a FileCache
 
 ```sql
 SELECT
-FileCaches,
-NextToken
+file_caches,
+next_token
 FROM aws.fsx.file_caches
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,7 +197,7 @@ SELECT
 '{{ DataRepositoryAssociations }}',
 '{{ region }}'
 RETURNING
-FileCache
+file_cache
 ;
 ```
 </TabItem>
@@ -298,7 +298,7 @@ WHERE
 region = '{{ region }}' --required
 AND FileCacheId = '{{ FileCacheId }}' --required
 RETURNING
-FileCache;
+file_cache;
 ```
 </TabItem>
 </Tabs>

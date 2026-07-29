@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MFADelete" /></td>
+    <td><CopyableCode code="mfa_delete" /></td>
     <td><code>string</code></td>
     <td>Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is returned only if the bucket has been configured with MFA delete. If MFA delete has never been configured for the bucket, this element is not returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The versioning state of the S3 on Outposts bucket.</td>
 </tr>
@@ -146,8 +146,8 @@ This operation returns the versioning state for S3 on Outposts buckets only. To 
 
 ```sql
 SELECT
-MFADelete,
-Status
+mfa_delete,
+status
 FROM aws.s3control.bucket_versionings
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

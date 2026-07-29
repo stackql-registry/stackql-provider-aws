@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Amount" /></td>
+    <td><CopyableCode code="amount" /></td>
     <td><code>integer</code></td>
     <td>The limit amount. If time-based, this amount is in minutes. If data-based, this amount is in terabytes (TB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BreachAction" /></td>
+    <td><CopyableCode code="breach_action" /></td>
     <td><code>string</code></td>
     <td>The action that Amazon Redshift takes when the limit is reached. Possible values are: log - To log an event in a system table. The default is log. emit-metric - To emit CloudWatch metrics. disable - To disable the feature until the next usage period begins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the cluster with a usage limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureType" /></td>
+    <td><CopyableCode code="feature_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon Redshift feature to which the limit applies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LimitType" /></td>
+    <td><CopyableCode code="limit_type" /></td>
     <td><code>string</code></td>
     <td>The type of limit. Depending on the feature type, this can be based on a time duration or data size.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>string</code></td>
     <td>The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tag instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageLimitId" /></td>
+    <td><CopyableCode code="usage_limit_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the usage limit.</td>
 </tr>
@@ -250,14 +250,14 @@ Shows usage limits on a cluster. Results are filtered based on the combination o
 
 ```sql
 SELECT
-Amount,
-BreachAction,
-ClusterIdentifier,
-FeatureType,
-LimitType,
-Period,
-Tags,
-UsageLimitId
+amount,
+breach_action,
+cluster_identifier,
+feature_type,
+limit_type,
+period,
+tags,
+usage_limit_id
 FROM aws.redshift.usage_limits
 WHERE region = '{{ region }}' -- required
 AND UsageLimitId = '{{ UsageLimitId }}'
@@ -307,14 +307,14 @@ SELECT
 '{{ BreachAction }}',
 '{{ Tags }}'
 RETURNING
-Amount,
-BreachAction,
-ClusterIdentifier,
-FeatureType,
-LimitType,
-Period,
-Tags,
-UsageLimitId
+amount,
+breach_action,
+cluster_identifier,
+feature_type,
+limit_type,
+period,
+tags,
+usage_limit_id
 ;
 ```
 </TabItem>
@@ -379,14 +379,14 @@ AND region = '{{ region }}' --required
 AND Amount = '{{ Amount}}'
 AND BreachAction = '{{ BreachAction}}'
 RETURNING
-Amount,
-BreachAction,
-ClusterIdentifier,
-FeatureType,
-LimitType,
-Period,
-Tags,
-UsageLimitId;
+amount,
+breach_action,
+cluster_identifier,
+feature_type,
+limit_type,
+period,
+tags,
+usage_limit_id;
 ```
 </TabItem>
 </Tabs>

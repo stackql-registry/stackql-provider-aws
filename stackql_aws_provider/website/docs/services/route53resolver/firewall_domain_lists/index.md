@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the domain list was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainCount" /></td>
+    <td><CopyableCode code="domain_count" /></td>
     <td><code>integer</code></td>
     <td>The number of domain names that are specified in the domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedOwnerName" /></td>
+    <td><CopyableCode code="managed_owner_name" /></td>
     <td><code>string</code></td>
     <td>The owner of the list, used only for lists that are not managed by you. For example, the managed domain list AWSManagedDomainsMalwareDomainList has the managed owner name Route 53 Resolver DNS Firewall.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the domain list was last modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain list. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the domain list. (COMPLETE, COMPLETE_IMPORT_FAILED, IMPORTING, DELETING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Additional information about the status of the list, if available.</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall domain list metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedOwnerName" /></td>
+    <td><CopyableCode code="managed_owner_name" /></td>
     <td><code>string</code></td>
     <td>The owner of the list, used only for lists that are not managed by you. For example, the managed domain list AWSManagedDomainsMalwareDomainList has the managed owner name Route 53 Resolver DNS Firewall.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain list. (pattern: &lt;code&gt;(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -226,16 +226,16 @@ Retrieves the specified firewall domain list.
 
 ```sql
 SELECT
-Arn,
-CreationTime,
-CreatorRequestId,
-DomainCount,
-Id,
-ManagedOwnerName,
-ModificationTime,
-Name,
-Status,
-StatusMessage
+arn,
+creation_time,
+creator_request_id,
+domain_count,
+id,
+managed_owner_name,
+modification_time,
+name,
+status,
+status_message
 FROM aws.route53resolver.firewall_domain_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -247,11 +247,11 @@ Retrieves the firewall domain lists that you have defined. For each firewall dom
 
 ```sql
 SELECT
-Arn,
-CreatorRequestId,
-Id,
-ManagedOwnerName,
-Name
+arn,
+creator_request_id,
+id,
+managed_owner_name,
+name
 FROM aws.route53resolver.firewall_domain_lists
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,7 +286,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-FirewallDomainList
+firewall_domain_list
 ;
 ```
 </TabItem>

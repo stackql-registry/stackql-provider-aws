@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EbsVolumes" /></td>
+    <td><CopyableCode code="ebs_volumes" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon EBS volumes that are attached to this instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ec2InstanceId" /></td>
+    <td><CopyableCode code="ec_2_instance_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the instance in Amazon EC2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the instance in Amazon EMR.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceFleetId" /></td>
+    <td><CopyableCode code="instance_fleet_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the instance fleet to which an Amazon EC2 instance belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceGroupId" /></td>
+    <td><CopyableCode code="instance_group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the instance group to which this instance belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instance type, for example m3.xlarge. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Market" /></td>
+    <td><CopyableCode code="market" /></td>
     <td><code>string</code></td>
     <td>The instance purchasing option. Valid values are ON_DEMAND or SPOT. (ON_DEMAND, SPOT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsName" /></td>
+    <td><CopyableCode code="private_dns_name" /></td>
     <td><code>string</code></td>
     <td>The private DNS name of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateIpAddress" /></td>
+    <td><CopyableCode code="private_ip_address" /></td>
     <td><code>string</code></td>
     <td>The private IP address of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicDnsName" /></td>
+    <td><CopyableCode code="public_dns_name" /></td>
     <td><code>string</code></td>
     <td>The public DNS name of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIpAddress" /></td>
+    <td><CopyableCode code="public_ip_address" /></td>
     <td><code>string</code></td>
     <td>The public IP address of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current status of the instance.</td>
 </tr>
@@ -174,18 +174,18 @@ Provides information for all active Amazon EC2 instances and Amazon EC2 instance
 
 ```sql
 SELECT
-EbsVolumes,
-Ec2InstanceId,
-Id,
-InstanceFleetId,
-InstanceGroupId,
-InstanceType,
-Market,
-PrivateDnsName,
-PrivateIpAddress,
-PublicDnsName,
-PublicIpAddress,
-Status
+ebs_volumes,
+ec_2_instance_id,
+id,
+instance_fleet_id,
+instance_group_id,
+instance_type,
+market,
+private_dns_name,
+private_ip_address,
+public_dns_name,
+public_ip_address,
+status
 FROM aws.emr.instances
 WHERE region = '{{ region }}' -- required
 ;

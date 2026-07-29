@@ -50,107 +50,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessEndpoints" /></td>
+    <td><CopyableCode code="access_endpoints" /></td>
     <td><code>array</code></td>
     <td>The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image builder only through the specified endpoints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppstreamAgentVersion" /></td>
+    <td><CopyableCode code="appstream_agent_version" /></td>
     <td><code>string</code></td>
     <td>The version of the WorkSpaces Applications agent that is currently being used by the image builder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the image builder. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp when the image builder was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisableIMDSV1" /></td>
+    <td><CopyableCode code="disable_imdsv1" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Instance Metadata Service Version 1 (IMDSv1) is disabled for the image builder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The image builder name to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainJoinInfo" /></td>
+    <td><CopyableCode code="domain_join_info" /></td>
     <td><code>object</code></td>
     <td>The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableDefaultInternetAccess" /></td>
+    <td><CopyableCode code="enable_default_internet_access" /></td>
     <td><code>boolean</code></td>
     <td>Enables or disables default internet access for the image builder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls the AWS Security Token Service (STS) AssumeRole API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. WorkSpaces Applications retrieves the temporary credentials and creates the appstream_machine_role credential profile on the instance. For more information, see Using an IAM Role to Grant Permissions to Applications and Scripts Running on WorkSpaces Applications Streaming Instances in the Amazon WorkSpaces Applications Administration Guide. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageArn" /></td>
+    <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the image from which this builder was created. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageBuilderErrors" /></td>
+    <td><CopyableCode code="image_builder_errors" /></td>
     <td><code>array</code></td>
     <td>The image builder errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type for the image builder. The following instance types are available: stream.standard.small stream.standard.medium stream.standard.large stream.compute.large stream.compute.xlarge stream.compute.2xlarge stream.compute.4xlarge stream.compute.8xlarge stream.memory.large stream.memory.xlarge stream.memory.2xlarge stream.memory.4xlarge stream.memory.8xlarge stream.memory.z1d.large stream.memory.z1d.xlarge stream.memory.z1d.2xlarge stream.memory.z1d.3xlarge stream.memory.z1d.6xlarge stream.memory.z1d.12xlarge stream.graphics.g4dn.xlarge stream.graphics.g4dn.2xlarge stream.graphics.g4dn.4xlarge stream.graphics.g4dn.8xlarge stream.graphics.g4dn.12xlarge stream.graphics.g4dn.16xlarge stream.graphics.g5.xlarge stream.graphics.g5.2xlarge stream.graphics.g5.4xlarge stream.graphics.g5.8xlarge stream.graphics.g5.16xlarge stream.graphics.g5.12xlarge stream.graphics.g5.24xlarge stream.graphics.g6.xlarge stream.graphics.g6.2xlarge stream.graphics.g6.4xlarge stream.graphics.g6.8xlarge stream.graphics.g6.16xlarge stream.graphics.g6.12xlarge stream.graphics.g6.24xlarge stream.graphics.gr6.4xlarge stream.graphics.gr6.8xlarge stream.graphics.g6f.large stream.graphics.g6f.xlarge stream.graphics.g6f.2xlarge stream.graphics.g6f.4xlarge stream.graphics.gr6f.4xlarge</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestAppstreamAgentVersion" /></td>
+    <td><CopyableCode code="latest_appstream_agent_version" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the image builder is using the latest WorkSpaces Applications agent version or not. (TRUE, FALSE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the image builder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkAccessConfiguration" /></td>
+    <td><CopyableCode code="network_access_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the network details of the fleet or image builder instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The operating system platform of the image builder. (WINDOWS, WINDOWS_SERVER_2016, WINDOWS_SERVER_2019, WINDOWS_SERVER_2022, WINDOWS_SERVER_2025, AMAZON_LINUX2, RHEL8, ROCKY_LINUX8, UBUNTU_PRO_2404)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootVolumeConfig" /></td>
+    <td><CopyableCode code="root_volume_config" /></td>
     <td><code>object</code></td>
     <td>The current configuration of the root volume for the image builder, including the storage size in GB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the image builder. (PENDING, UPDATING_AGENT, RUNNING, STOPPING, STOPPED, REBOOTING, SNAPSHOTTING, DELETING, FAILED, UPDATING, PENDING_QUALIFICATION, PENDING_SYNCING_APPS, SYNCING_APPS, PENDING_IMAGE_IMPORT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateChangeReason" /></td>
+    <td><CopyableCode code="state_change_reason" /></td>
     <td><code>object</code></td>
     <td>The reason why the last state change occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>The VPC configuration of the image builder.</td>
 </tr>
@@ -261,27 +261,27 @@ Retrieves a list that describes one or more specified image builders, if the ima
 
 ```sql
 SELECT
-AccessEndpoints,
-AppstreamAgentVersion,
-Arn,
-CreatedTime,
-Description,
-DisableIMDSV1,
-DisplayName,
-DomainJoinInfo,
-EnableDefaultInternetAccess,
-IamRoleArn,
-ImageArn,
-ImageBuilderErrors,
-InstanceType,
-LatestAppstreamAgentVersion,
-Name,
-NetworkAccessConfiguration,
-Platform,
-RootVolumeConfig,
-State,
-StateChangeReason,
-VpcConfig
+access_endpoints,
+appstream_agent_version,
+arn,
+created_time,
+description,
+disable_imdsv1,
+display_name,
+domain_join_info,
+enable_default_internet_access,
+iam_role_arn,
+image_arn,
+image_builder_errors,
+instance_type,
+latest_appstream_agent_version,
+name,
+network_access_configuration,
+platform,
+root_volume_config,
+state,
+state_change_reason,
+vpc_config
 FROM aws.appstream.image_builders
 WHERE region = '{{ region }}' -- required
 ;
@@ -345,7 +345,7 @@ SELECT
 {{ DisableIMDSV1 }},
 '{{ region }}'
 RETURNING
-ImageBuilder
+image_builder
 ;
 ```
 </TabItem>
@@ -364,8 +364,8 @@ SELECT
 {{ Validity }},
 '{{ region }}'
 RETURNING
-Expires,
-StreamingURL
+expires,
+streaming_url
 ;
 ```
 </TabItem>

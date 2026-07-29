@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessPointArn" /></td>
+    <td><CopyableCode code="access_point_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The name or alias of the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Bucket" /></td>
+    <td><CopyableCode code="bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the bucket associated with the specified access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BucketAccountId" /></td>
+    <td><CopyableCode code="bucket_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the S3 bucket associated with this access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the specified access point was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data source of the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceType" /></td>
+    <td><CopyableCode code="data_source_type" /></td>
     <td><code>string</code></td>
     <td>The type of the data source that the access point is attached to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>string</code></td>
     <td>The VPC endpoint for the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the specified access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkOrigin" /></td>
+    <td><CopyableCode code="network_origin" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this access point allows access from the public internet. If VpcConfiguration is specified for this access point, then NetworkOrigin is VPC, and the access point doesn't allow access from the public internet. Otherwise, NetworkOrigin is Internet, and the access point allows access from the public internet, subject to the access point and bucket access policies. This will always be true for an Amazon S3 on Outposts access point</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAccessBlockConfiguration" /></td>
+    <td><CopyableCode code="public_access_block_configuration" /></td>
     <td><code>string</code></td>
     <td>The PublicAccessBlock configuration that you want to apply to this Amazon S3 account. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide. This data type is not supported for Amazon S3 on Outposts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfiguration" /></td>
+    <td><CopyableCode code="vpc_configuration" /></td>
     <td><code>string</code></td>
     <td>Contains the virtual private cloud (VPC) configuration for the specified access point. This element is empty if this access point is an Amazon S3 on Outposts access point that is used by other Amazon Web Services services.</td>
 </tr>
@@ -125,47 +125,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessPointArn" /></td>
+    <td><CopyableCode code="access_point_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The name or alias of the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Bucket" /></td>
+    <td><CopyableCode code="bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the bucket associated with this access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BucketAccountId" /></td>
+    <td><CopyableCode code="bucket_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the S3 bucket associated with this access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the data source of the access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSourceType" /></td>
+    <td><CopyableCode code="data_source_type" /></td>
     <td><code>string</code></td>
     <td>The type of the data source that the access point is attached to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of this access point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkOrigin" /></td>
+    <td><CopyableCode code="network_origin" /></td>
     <td><code>string</code></td>
     <td>Indicates whether this access point allows access from the public internet. If VpcConfiguration is specified for this access point, then NetworkOrigin is VPC, and the access point doesn't allow access from the public internet. Otherwise, NetworkOrigin is Internet, and the access point allows access from the public internet, subject to the access point and bucket access policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfiguration" /></td>
+    <td><CopyableCode code="vpc_configuration" /></td>
     <td><code>string</code></td>
     <td>The virtual private cloud (VPC) configuration for this access point, if one exists. This element is empty if this access point is an Amazon S3 on Outposts access point that is used by other Amazon Web Services services.</td>
 </tr>
@@ -291,18 +291,18 @@ Returns configuration information about the specified access point. All Amazon S
 
 ```sql
 SELECT
-AccessPointArn,
-Alias,
-Bucket,
-BucketAccountId,
-CreationDate,
-DataSourceId,
-DataSourceType,
-Endpoints,
-Name,
-NetworkOrigin,
-PublicAccessBlockConfiguration,
-VpcConfiguration
+access_point_arn,
+alias,
+bucket,
+bucket_account_id,
+creation_date,
+data_source_id,
+data_source_type,
+endpoints,
+name,
+network_origin,
+public_access_block_configuration,
+vpc_configuration
 FROM aws.s3control.access_points
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required
@@ -316,15 +316,15 @@ This operation is not supported by directory buckets. Returns a list of the acce
 
 ```sql
 SELECT
-AccessPointArn,
-Alias,
-Bucket,
-BucketAccountId,
-DataSourceId,
-DataSourceType,
-Name,
-NetworkOrigin,
-VpcConfiguration
+access_point_arn,
+alias,
+bucket,
+bucket_account_id,
+data_source_id,
+data_source_type,
+name,
+network_origin,
+vpc_configuration
 FROM aws.s3control.access_points
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -375,8 +375,8 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-AccessPointArn,
-Alias
+access_point_arn,
+alias
 ;
 ```
 </TabItem>

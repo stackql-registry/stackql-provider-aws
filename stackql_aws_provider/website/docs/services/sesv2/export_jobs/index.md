@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedTimestamp" /></td>
+    <td><CopyableCode code="completed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the export job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportDataSource" /></td>
+    <td><CopyableCode code="export_data_source" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about the data source of the export job. It can only contain one of MetricsDataSource or MessageInsightsDataSource object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportDestination" /></td>
+    <td><CopyableCode code="export_destination" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about the destination of the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportSourceType" /></td>
+    <td><CopyableCode code="export_source_type" /></td>
     <td><code>string</code></td>
     <td>The type of source of the export job. (METRICS_DATA, MESSAGE_INSIGHTS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureInfo" /></td>
+    <td><CopyableCode code="failure_info" /></td>
     <td><code>object</code></td>
     <td>The failure details about an export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>A string that represents a job ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the export job. (CREATED, PROCESSING, COMPLETED, FAILED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistics" /></td>
+    <td><CopyableCode code="statistics" /></td>
     <td><code>object</code></td>
     <td>The statistics about the export job.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ExportJobs" /></td>
+    <td><CopyableCode code="export_jobs" /></td>
     <td><code>array</code></td>
     <td>A list of the export job summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A string token indicating that there might be additional export jobs available to be listed. Use this token to a subsequent call to ListExportJobs with the same parameters to retrieve the next page of export jobs.</td>
 </tr>
@@ -204,15 +204,15 @@ Provides information about an export job.
 
 ```sql
 SELECT
-CompletedTimestamp,
-CreatedTimestamp,
-ExportDataSource,
-ExportDestination,
-ExportSourceType,
-FailureInfo,
-JobId,
-JobStatus,
-Statistics
+completed_timestamp,
+created_timestamp,
+export_data_source,
+export_destination,
+export_source_type,
+failure_info,
+job_id,
+job_status,
+statistics
 FROM aws.sesv2.export_jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -225,8 +225,8 @@ Lists all of the export jobs.
 
 ```sql
 SELECT
-ExportJobs,
-NextToken
+export_jobs,
+next_token
 FROM aws.sesv2.export_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,7 +259,7 @@ SELECT
 '{{ ExportDestination }}' /* required */,
 '{{ region }}'
 RETURNING
-JobId
+job_id
 ;
 ```
 </TabItem>

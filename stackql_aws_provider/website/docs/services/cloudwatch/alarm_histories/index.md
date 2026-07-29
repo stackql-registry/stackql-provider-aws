@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmContributorAttributes" /></td>
+    <td><CopyableCode code="alarm_contributor_attributes" /></td>
     <td><code>object</code></td>
     <td>A map of attributes that describe the alarm contributor associated with this history item, providing context about the contributor's characteristics at the time of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmContributorId" /></td>
+    <td><CopyableCode code="alarm_contributor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the alarm contributor associated with this history item, if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmName" /></td>
+    <td><CopyableCode code="alarm_name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name for the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlarmType" /></td>
+    <td><CopyableCode code="alarm_type" /></td>
     <td><code>string</code></td>
     <td>The type of alarm, either metric alarm or composite alarm. (CompositeAlarm, MetricAlarm)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HistoryData" /></td>
+    <td><CopyableCode code="history_data" /></td>
     <td><code>string</code></td>
     <td>Data about the alarm, in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HistoryItemType" /></td>
+    <td><CopyableCode code="history_item_type" /></td>
     <td><code>string</code></td>
     <td>The type of alarm history item. (ConfigurationUpdate, StateUpdate, Action, AlarmContributorStateUpdate, AlarmContributorAction)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HistorySummary" /></td>
+    <td><CopyableCode code="history_summary" /></td>
     <td><code>string</code></td>
     <td>A summary of the alarm history, in text format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp for the alarm history item.</td>
 </tr>
@@ -154,14 +154,14 @@ Retrieves the history for the specified alarm. You can filter the results by dat
 
 ```sql
 SELECT
-AlarmContributorAttributes,
-AlarmContributorId,
-AlarmName,
-AlarmType,
-HistoryData,
-HistoryItemType,
-HistorySummary,
-Timestamp
+alarm_contributor_attributes,
+alarm_contributor_id,
+alarm_name,
+alarm_type,
+history_data,
+history_item_type,
+history_summary,
+timestamp
 FROM aws.cloudwatch.alarm_histories
 WHERE region = '{{ region }}' -- required
 ;

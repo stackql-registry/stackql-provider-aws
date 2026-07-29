@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InvitationsCount" /></td>
+    <td><CopyableCode code="invitations_count" /></td>
     <td><code>integer</code></td>
     <td>The number of received invitations.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the count of all GuardDuty membership invitations that were sent to the 
 
 ```sql
 SELECT
-InvitationsCount
+invitations_count
 FROM aws.guardduty.invitations_counts
 WHERE region = '{{ region }}' -- required
 ;

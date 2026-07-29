@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackageDetailsList" /></td>
+    <td><CopyableCode code="package_details_list" /></td>
     <td><code>array</code></td>
     <td>List of PackageDetails objects.</td>
 </tr>
@@ -169,8 +169,8 @@ Describes all packages available to Amazon ES. Includes options for filtering, l
 
 ```sql
 SELECT
-NextToken,
-PackageDetailsList
+next_token,
+package_details_list
 FROM aws.es.packages
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,7 +207,7 @@ SELECT
 '{{ PackageSource }}' /* required */,
 '{{ region }}'
 RETURNING
-PackageDetails
+package_details
 ;
 ```
 </TabItem>
@@ -260,7 +260,7 @@ package_id = '{{ package_id }}' --required
 AND domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DomainPackageDetails;
+domain_package_details;
 ```
 </TabItem>
 <TabItem value="update_package">
@@ -279,7 +279,7 @@ region = '{{ region }}' --required
 AND PackageID = '{{ PackageID }}' --required
 AND PackageSource = '{{ PackageSource }}' --required
 RETURNING
-PackageDetails;
+package_details;
 ```
 </TabItem>
 </Tabs>

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DedicatedTenancyAccountType" /></td>
+    <td><CopyableCode code="dedicated_tenancy_account_type" /></td>
     <td><code>string</code></td>
     <td>The type of linked account. (SOURCE_ACCOUNT, TARGET_ACCOUNT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedTenancyManagementCidrRange" /></td>
+    <td><CopyableCode code="dedicated_tenancy_management_cidr_range" /></td>
     <td><code>string</code></td>
     <td>The IP address range, specified as an IPv4 CIDR block, used for the management network interface. The management network interface is connected to a secure Amazon WorkSpaces management network. It is used for interactive streaming of the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon WorkSpaces to manage the WorkSpace. (pattern: &lt;code&gt;(^(&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#91;0-9&#93;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)\.(&#91;0-9&#93;|&#91;1-9&#93;&#91;0-9&#93;|1&#91;0-9&#93;&#91;0-9&#93;|2&#91;0-4&#93;&#91;0-9&#93;|25&#91;0-5&#93;)\.0\.0)(\/(16$))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedTenancySupport" /></td>
+    <td><CopyableCode code="dedicated_tenancy_support" /></td>
     <td><code>string</code></td>
     <td>The status of BYOL (whether BYOL is enabled or disabled). (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The text message to describe the status of BYOL.</td>
 </tr>
@@ -141,10 +141,10 @@ Retrieves a list that describes the configuration of Bring Your Own License (BYO
 
 ```sql
 SELECT
-DedicatedTenancyAccountType,
-DedicatedTenancyManagementCidrRange,
-DedicatedTenancySupport,
-Message
+dedicated_tenancy_account_type,
+dedicated_tenancy_management_cidr_range,
+dedicated_tenancy_support,
+message
 FROM aws.workspaces.accounts
 WHERE region = '{{ region }}' -- required
 ;
@@ -173,7 +173,7 @@ DedicatedTenancyManagementCidrRange = '{{ DedicatedTenancyManagementCidrRange }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Message;
+message;
 ```
 </TabItem>
 </Tabs>

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon ECS resource name. (serviceLongArnFormat, taskLongArnFormat, containerInstanceLongArnFormat, awsvpcTrunking, containerInsights, fargateFIPSMode, tagResourceAuthorization, fargateTaskRetirementWaitPeriod, guardDutyActivate, defaultLogDriverMode, fargateEventWindows)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalArn" /></td>
+    <td><CopyableCode code="principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the principal. It can be a user, role, or the root user. If this field is omitted, the authenticated user is assumed.</td>
 </tr>
@@ -156,7 +156,7 @@ Lists the account settings for a specified principal.
 ```sql
 SELECT
 name,
-principalArn,
+principal_arn,
 type_,
 value
 FROM aws.ecs.account_settings

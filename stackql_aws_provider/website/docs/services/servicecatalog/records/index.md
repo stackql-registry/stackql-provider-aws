@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The page token to use to retrieve the next set of results. If there are no additional results, this value is null. (pattern: &lt;code&gt;&#91;\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecordDetail" /></td>
+    <td><CopyableCode code="record_detail" /></td>
     <td><code>object</code></td>
     <td>Information about the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecordOutputs" /></td>
+    <td><CopyableCode code="record_outputs" /></td>
     <td><code>array</code></td>
     <td>Information about the product created as the result of a request. For example, the output for a CloudFormation-backed product that creates an S3 bucket would include the S3 bucket URL.</td>
 </tr>
@@ -150,9 +150,9 @@ Gets information about the specified request operation. Use this operation after
 
 ```sql
 SELECT
-NextPageToken,
-RecordDetail,
-RecordOutputs
+next_page_token,
+record_detail,
+record_outputs
 FROM aws.servicecatalog.records
 WHERE region = '{{ region }}' -- required
 ;

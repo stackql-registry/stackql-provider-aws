@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoSubDomainCreationPatterns" /></td>
+    <td><CopyableCode code="auto_sub_domain_creation_patterns" /></td>
     <td><code>array</code></td>
     <td>Sets branch patterns for automatic subdomain creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoSubDomainIAMRole" /></td>
+    <td><CopyableCode code="auto_sub_domain_iam_role" /></td>
     <td><code>string</code></td>
     <td>The required AWS Identity and Access Management (IAM) service role for the Amazon Resource Name (ARN) for automatically creating subdomains. (pattern: &lt;code&gt;^$|^arn:aws:iam::\d&#123;12&#125;:role.+&lt;/code&gt;)</td>
 </tr>
@@ -66,42 +66,42 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the SSL/TLS certificate for the domain association. This can be your own custom certificate or the default certificate that Amplify provisions for you. If you are updating your domain to use a different certificate, certificate points to the new certificate that is being created instead of the current active certificate. Otherwise, certificate points to the current active certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateVerificationDNSRecord" /></td>
+    <td><CopyableCode code="certificate_verification_dns_record" /></td>
     <td><code>string</code></td>
     <td>The DNS record for certificate verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainAssociationArn" /></td>
+    <td><CopyableCode code="domain_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the domain association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain. (pattern: &lt;code&gt;^(((?!-)&#91;A-Za-z0-9-&#93;&#123;0,62&#125;&#91;A-Za-z0-9&#93;)\.)+((?!-)&#91;A-Za-z0-9-&#93;&#123;1,62&#125;&#91;A-Za-z0-9&#93;)(\.)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainStatus" /></td>
+    <td><CopyableCode code="domain_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the domain association. (PENDING_VERIFICATION, IN_PROGRESS, AVAILABLE, IMPORTING_CUSTOM_CERTIFICATE, PENDING_DEPLOYMENT, AWAITING_APP_CNAME, FAILED, CREATING, REQUESTING_CERTIFICATE, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableAutoSubDomain" /></td>
+    <td><CopyableCode code="enable_auto_sub_domain" /></td>
     <td><code>boolean</code></td>
     <td>Enables the automated creation of subdomains for branches.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information that describes why the domain association is in the current state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subDomains" /></td>
+    <td><CopyableCode code="sub_domains" /></td>
     <td><code>array</code></td>
     <td>The subdomains for the domain association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateStatus" /></td>
+    <td><CopyableCode code="update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the domain update operation that is currently in progress. The following list describes the valid update states. REQUESTING_CERTIFICATE The certificate is in the process of being updated. PENDING_VERIFICATION Indicates that an Amplify managed certificate is in the process of being verified. This occurs during the creation of a custom domain or when a custom domain is updated to use a managed certificate. IMPORTING_CUSTOM_CERTIFICATE Indicates that an Amplify custom certificate is in the process of being imported. This occurs during the creation of a custom domain or when a custom domain is updated to use a custom certificate. PENDING_DEPLOYMENT Indicates that the subdomain or certificate changes are being propagated. AWAITING_APP_CNAME Amplify is waiting for CNAME records corresponding to subdomains to be propagated. If your custom domain is on Route 53, Amplify handles this for you automatically. For more information about custom domains, see Setting up custom domains in the Amplify Hosting User Guide. UPDATE_COMPLETE The certificate has been associated with a domain. UPDATE_FAILED The certificate has failed to be provisioned or associated, and there is no existing active certificate to roll back to. (REQUESTING_CERTIFICATE, PENDING_VERIFICATION, IMPORTING_CUSTOM_CERTIFICATE, PENDING_DEPLOYMENT, AWAITING_APP_CNAME, UPDATE_COMPLETE, UPDATE_FAILED)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoSubDomainCreationPatterns" /></td>
+    <td><CopyableCode code="auto_sub_domain_creation_patterns" /></td>
     <td><code>array</code></td>
     <td>Sets branch patterns for automatic subdomain creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoSubDomainIAMRole" /></td>
+    <td><CopyableCode code="auto_sub_domain_iam_role" /></td>
     <td><code>string</code></td>
     <td>The required AWS Identity and Access Management (IAM) service role for the Amazon Resource Name (ARN) for automatically creating subdomains. (pattern: &lt;code&gt;^$|^arn:aws:iam::\d&#123;12&#125;:role.+&lt;/code&gt;)</td>
 </tr>
@@ -135,42 +135,42 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the SSL/TLS certificate for the domain association. This can be your own custom certificate or the default certificate that Amplify provisions for you. If you are updating your domain to use a different certificate, certificate points to the new certificate that is being created instead of the current active certificate. Otherwise, certificate points to the current active certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateVerificationDNSRecord" /></td>
+    <td><CopyableCode code="certificate_verification_dns_record" /></td>
     <td><code>string</code></td>
     <td>The DNS record for certificate verification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainAssociationArn" /></td>
+    <td><CopyableCode code="domain_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the domain association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain. (pattern: &lt;code&gt;^(((?!-)&#91;A-Za-z0-9-&#93;&#123;0,62&#125;&#91;A-Za-z0-9&#93;)\.)+((?!-)&#91;A-Za-z0-9-&#93;&#123;1,62&#125;&#91;A-Za-z0-9&#93;)(\.)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainStatus" /></td>
+    <td><CopyableCode code="domain_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the domain association. (PENDING_VERIFICATION, IN_PROGRESS, AVAILABLE, IMPORTING_CUSTOM_CERTIFICATE, PENDING_DEPLOYMENT, AWAITING_APP_CNAME, FAILED, CREATING, REQUESTING_CERTIFICATE, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableAutoSubDomain" /></td>
+    <td><CopyableCode code="enable_auto_sub_domain" /></td>
     <td><code>boolean</code></td>
     <td>Enables the automated creation of subdomains for branches.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information that describes why the domain association is in the current state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subDomains" /></td>
+    <td><CopyableCode code="sub_domains" /></td>
     <td><code>array</code></td>
     <td>The subdomains for the domain association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateStatus" /></td>
+    <td><CopyableCode code="update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the domain update operation that is currently in progress. The following list describes the valid update states. REQUESTING_CERTIFICATE The certificate is in the process of being updated. PENDING_VERIFICATION Indicates that an Amplify managed certificate is in the process of being verified. This occurs during the creation of a custom domain or when a custom domain is updated to use a managed certificate. IMPORTING_CUSTOM_CERTIFICATE Indicates that an Amplify custom certificate is in the process of being imported. This occurs during the creation of a custom domain or when a custom domain is updated to use a custom certificate. PENDING_DEPLOYMENT Indicates that the subdomain or certificate changes are being propagated. AWAITING_APP_CNAME Amplify is waiting for CNAME records corresponding to subdomains to be propagated. If your custom domain is on Route 53, Amplify handles this for you automatically. For more information about custom domains, see Setting up custom domains in the Amplify Hosting User Guide. UPDATE_COMPLETE The certificate has been associated with a domain. UPDATE_FAILED The certificate has failed to be provisioned or associated, and there is no existing active certificate to roll back to. (REQUESTING_CERTIFICATE, PENDING_VERIFICATION, IMPORTING_CUSTOM_CERTIFICATE, PENDING_DEPLOYMENT, AWAITING_APP_CNAME, UPDATE_COMPLETE, UPDATE_FAILED)</td>
 </tr>
@@ -288,17 +288,17 @@ Returns the domain information for an Amplify app.
 
 ```sql
 SELECT
-autoSubDomainCreationPatterns,
-autoSubDomainIAMRole,
+auto_sub_domain_creation_patterns,
+auto_sub_domain_iam_role,
 certificate,
-certificateVerificationDNSRecord,
-domainAssociationArn,
-domainName,
-domainStatus,
-enableAutoSubDomain,
-statusReason,
-subDomains,
-updateStatus
+certificate_verification_dns_record,
+domain_association_arn,
+domain_name,
+domain_status,
+enable_auto_sub_domain,
+status_reason,
+sub_domains,
+update_status
 FROM aws.amplify.domain_associations
 WHERE app_id = '{{ app_id }}' -- required
 AND domain_name = '{{ domain_name }}' -- required
@@ -312,17 +312,17 @@ Returns the domain associations for an Amplify app.
 
 ```sql
 SELECT
-autoSubDomainCreationPatterns,
-autoSubDomainIAMRole,
+auto_sub_domain_creation_patterns,
+auto_sub_domain_iam_role,
 certificate,
-certificateVerificationDNSRecord,
-domainAssociationArn,
-domainName,
-domainStatus,
-enableAutoSubDomain,
-statusReason,
-subDomains,
-updateStatus
+certificate_verification_dns_record,
+domain_association_arn,
+domain_name,
+domain_status,
+enable_auto_sub_domain,
+status_reason,
+sub_domains,
+update_status
 FROM aws.amplify.domain_associations
 WHERE app_id = '{{ app_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -368,7 +368,7 @@ SELECT
 '{{ app_id }}',
 '{{ region }}'
 RETURNING
-domainAssociation
+domain_association
 ;
 ```
 </TabItem>
@@ -433,7 +433,7 @@ app_id = '{{ app_id }}' --required
 AND domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-domainAssociation;
+domain_association;
 ```
 </TabItem>
 </Tabs>

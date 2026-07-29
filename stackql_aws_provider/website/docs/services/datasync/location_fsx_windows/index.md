@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CmkSecretConfig" /></td>
+    <td><CopyableCode code="cmk_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as a Password that DataSync uses to access a specific storage location, with a customer-managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the FSx for Windows File Server location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomSecretConfig" /></td>
+    <td><CopyableCode code="custom_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a customer-managed secret, such as a Password that DataSync uses to access a specific storage location, with a customer-managed Identity and Access Management (IAM) role that provides access to the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Domain" /></td>
+    <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
     <td>The name of the Microsoft Active Directory domain that the FSx for Windows File Server file system belongs to. (pattern: &lt;code&gt;^&#91;A-Za-z0-9&#93;((\.|-+)?&#91;A-Za-z0-9&#93;)&#123;0,252&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the FSx for Windows File Server location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The uniform resource identifier (URI) of the FSx for Windows File Server location. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedSecretConfig" /></td>
+    <td><CopyableCode code="managed_secret_config" /></td>
     <td><code>object</code></td>
     <td>Describes configuration information for a DataSync-managed secret, such as a Password that DataSync uses to access a specific storage location. DataSync uses the default Amazon Web Services-managed KMS key to encrypt this secret in Secrets Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupArns" /></td>
+    <td><CopyableCode code="security_group_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the Amazon EC2 security groups that provide access to your file system's preferred subnet. For information about configuring security groups for file system access, see the Amazon FSx for Windows File Server User Guide .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="User" /></td>
+    <td><CopyableCode code="user" /></td>
     <td><code>string</code></td>
     <td>The user with the permissions to mount and access the FSx for Windows File Server file system. (pattern: &lt;code&gt;^&#91;^\x22\x5B\x5D/\\:;|=,+*?\x3C\x3E&#93;&#123;1,104&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -173,15 +173,15 @@ Provides details about how an DataSync transfer location for an Amazon FSx for W
 
 ```sql
 SELECT
-CmkSecretConfig,
-CreationTime,
-CustomSecretConfig,
-Domain,
-LocationArn,
-LocationUri,
-ManagedSecretConfig,
-SecurityGroupArns,
-User
+cmk_secret_config,
+creation_time,
+custom_secret_config,
+domain,
+location_arn,
+location_uri,
+managed_secret_config,
+security_group_arns,
+user
 FROM aws.datasync.location_fsx_windows
 WHERE region = '{{ region }}' -- required
 ;
@@ -228,7 +228,7 @@ SELECT
 '{{ CustomSecretConfig }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

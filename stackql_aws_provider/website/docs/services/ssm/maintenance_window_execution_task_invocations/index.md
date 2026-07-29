@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the task finished running on the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationId" /></td>
+    <td><CopyableCode code="invocation_id" /></td>
     <td><code>string</code></td>
     <td>The invocation ID. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerInformation" /></td>
+    <td><CopyableCode code="owner_information" /></td>
     <td><code>string</code></td>
     <td>User-provided value to be included in any Amazon CloudWatch Events or Amazon EventBridge events raised while running tasks for these targets in this maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>The parameters used at the time that the task ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the task started running on the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The task status for an invocation. (PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, CANCELLED, SKIPPED_OVERLAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>The details explaining the status. Details are only available for certain status values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskExecutionId" /></td>
+    <td><CopyableCode code="task_execution_id" /></td>
     <td><code>string</code></td>
     <td>The task execution ID. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>Retrieves the task type for a maintenance window. (RUN_COMMAND, AUTOMATION, STEP_FUNCTIONS, LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowExecutionId" /></td>
+    <td><CopyableCode code="window_execution_id" /></td>
     <td><code>string</code></td>
     <td>The maintenance window execution ID. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowTargetId" /></td>
+    <td><CopyableCode code="window_target_id" /></td>
     <td><code>string</code></td>
     <td>The maintenance window target ID.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the invocation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the action performed in the service that actually handled the task invocation. If the task type is RUN_COMMAND, this value is the command ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationId" /></td>
+    <td><CopyableCode code="invocation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the task invocation. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerInformation" /></td>
+    <td><CopyableCode code="owner_information" /></td>
     <td><code>string</code></td>
     <td>User-provided value that was specified when the target was registered with the maintenance window. This was also included in any Amazon CloudWatch Events events raised during the task invocation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>string</code></td>
     <td>The parameters that were provided for the invocation when it was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the invocation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task invocation. (PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, CANCELLED, SKIPPED_OVERLAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>The details explaining the status of the task invocation. Not available for all status values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskExecutionId" /></td>
+    <td><CopyableCode code="task_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the specific task execution in the maintenance window execution. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>The task type. (RUN_COMMAND, AUTOMATION, STEP_FUNCTIONS, LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowExecutionId" /></td>
+    <td><CopyableCode code="window_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window execution that ran the task. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowTargetId" /></td>
+    <td><CopyableCode code="window_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the target definition in this maintenance window the invocation was performed for.</td>
 </tr>
@@ -257,18 +257,18 @@ Retrieves information about a specific task running on a specific target.
 
 ```sql
 SELECT
-EndTime,
-ExecutionId,
-InvocationId,
-OwnerInformation,
-Parameters,
-StartTime,
-Status,
-StatusDetails,
-TaskExecutionId,
-TaskType,
-WindowExecutionId,
-WindowTargetId
+end_time,
+execution_id,
+invocation_id,
+owner_information,
+parameters,
+start_time,
+status,
+status_details,
+task_execution_id,
+task_type,
+window_execution_id,
+window_target_id
 FROM aws.ssm.maintenance_window_execution_task_invocations
 WHERE region = '{{ region }}' -- required
 ;
@@ -280,18 +280,18 @@ Retrieves the individual task executions (one per target) for a particular task 
 
 ```sql
 SELECT
-EndTime,
-ExecutionId,
-InvocationId,
-OwnerInformation,
-Parameters,
-StartTime,
-Status,
-StatusDetails,
-TaskExecutionId,
-TaskType,
-WindowExecutionId,
-WindowTargetId
+end_time,
+execution_id,
+invocation_id,
+owner_information,
+parameters,
+start_time,
+status,
+status_details,
+task_execution_id,
+task_type,
+window_execution_id,
+window_target_id
 FROM aws.ssm.maintenance_window_execution_task_invocations
 WHERE region = '{{ region }}' -- required
 ;

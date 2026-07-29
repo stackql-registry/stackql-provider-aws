@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the dashboard (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dashboard was created, in Unix epoch time.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The dashboard's description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dashboard was last updated, in Unix epoch time.</td>
 </tr>
@@ -90,42 +90,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dashboardArn" /></td>
+    <td><CopyableCode code="dashboard_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dashboard, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:dashboard/$&#123;DashboardId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardCreationDate" /></td>
+    <td><CopyableCode code="dashboard_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dashboard was created, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardDefinition" /></td>
+    <td><CopyableCode code="dashboard_definition" /></td>
     <td><code>string</code></td>
     <td>The dashboard's definition JSON literal. For detailed information, see Creating dashboards (CLI) in the IoT SiteWise User Guide. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardDescription" /></td>
+    <td><CopyableCode code="dashboard_description" /></td>
     <td><code>string</code></td>
     <td>The dashboard's description. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardId" /></td>
+    <td><CopyableCode code="dashboard_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the dashboard. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardLastUpdateDate" /></td>
+    <td><CopyableCode code="dashboard_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dashboard was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dashboardName" /></td>
+    <td><CopyableCode code="dashboard_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dashboard. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project that the dashboard is in. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -250,9 +250,9 @@ Retrieves a paginated list of dashboards for an IoT SiteWise Monitor project.
 SELECT
 id,
 name,
-creationDate,
+creation_date,
 description,
-lastUpdateDate
+last_update_date
 FROM aws.iotsitewise.dashboards
 WHERE projectId = '{{ projectId }}' -- required
 AND region = '{{ region }}' -- required
@@ -267,14 +267,14 @@ Retrieves information about a dashboard.
 
 ```sql
 SELECT
-dashboardArn,
-dashboardCreationDate,
-dashboardDefinition,
-dashboardDescription,
-dashboardId,
-dashboardLastUpdateDate,
-dashboardName,
-projectId
+dashboard_arn,
+dashboard_creation_date,
+dashboard_definition,
+dashboard_description,
+dashboard_id,
+dashboard_last_update_date,
+dashboard_name,
+project_id
 FROM aws.iotsitewise.dashboards
 WHERE dashboard_id = '{{ dashboard_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -316,8 +316,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-dashboardArn,
-dashboardId
+dashboard_arn,
+dashboard_id
 ;
 ```
 </TabItem>

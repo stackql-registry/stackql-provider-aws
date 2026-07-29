@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HookInvocationCount" /></td>
+    <td><CopyableCode code="hook_invocation_count" /></td>
     <td><code>integer</code></td>
     <td>Is either null, if no Hooks invoke for the resource, or contains the number of Hooks that will invoke for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceChange" /></td>
+    <td><CopyableCode code="resource_change" /></td>
     <td><code>string</code></td>
     <td>A ResourceChange structure that describes the resource and action that CloudFormation will perform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of entity that CloudFormation changes. Resource This change is for a resource.</td>
 </tr>
@@ -80,67 +80,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeSetId" /></td>
+    <td><CopyableCode code="change_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the change set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeSetName" /></td>
+    <td><CopyableCode code="change_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the change set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The start time when the change set was created, in UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Descriptive information about the change set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>If the change set execution status is AVAILABLE, you can execute the change set. If you can't execute the change set, the status indicates why. For example, a change set might be in an UNAVAILABLE state because CloudFormation is still creating it or in an OBSOLETE state because the stack was already updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportExistingResources" /></td>
+    <td><CopyableCode code="import_existing_resources" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if the change set imports resources that already exist.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeNestedStacks" /></td>
+    <td><CopyableCode code="include_nested_stacks" /></td>
     <td><code>boolean</code></td>
     <td>Specifies the current setting of IncludeNestedStacks for the change set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentChangeSetId" /></td>
+    <td><CopyableCode code="parent_change_set_id" /></td>
     <td><code>string</code></td>
     <td>The parent change set ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RootChangeSetId" /></td>
+    <td><CopyableCode code="root_change_set_id" /></td>
     <td><code>string</code></td>
     <td>The root change set ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackId" /></td>
+    <td><CopyableCode code="stack_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the stack with which the change set is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackName" /></td>
+    <td><CopyableCode code="stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stack with which the change set is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The state of the change set, such as CREATE_PENDING, CREATE_COMPLETE, or FAILED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A description of the change set's status. For example, if your change set is in the FAILED state, CloudFormation shows the error message.</td>
 </tr>
@@ -368,9 +368,9 @@ Returns the inputs for the change set and a list of changes that CloudFormation 
 
 ```sql
 SELECT
-HookInvocationCount,
-ResourceChange,
-Type
+hook_invocation_count,
+resource_change,
+type
 FROM aws.cloudformation.change_sets
 WHERE ChangeSetName = '{{ ChangeSetName }}' -- required
 AND region = '{{ region }}' -- required
@@ -386,19 +386,19 @@ Returns the ID and status of each active change set for a stack. For example, Cl
 
 ```sql
 SELECT
-ChangeSetId,
-ChangeSetName,
-CreationTime,
-Description,
-ExecutionStatus,
-ImportExistingResources,
-IncludeNestedStacks,
-ParentChangeSetId,
-RootChangeSetId,
-StackId,
-StackName,
-Status,
-StatusReason
+change_set_id,
+change_set_name,
+creation_time,
+description,
+execution_status,
+import_existing_resources,
+include_nested_stacks,
+parent_change_set_id,
+root_change_set_id,
+stack_id,
+stack_name,
+status,
+status_reason
 FROM aws.cloudformation.change_sets
 WHERE StackName = '{{ StackName }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DisplayContent" /></td>
+    <td><CopyableCode code="display_content" /></td>
     <td><code>object</code></td>
     <td>The content of the product page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the product page was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductPageArn" /></td>
+    <td><CopyableCode code="product_page_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the product page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductPageId" /></td>
+    <td><CopyableCode code="product_page_id" /></td>
     <td><code>string</code></td>
     <td>The product page identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the product page was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PageTitle" /></td>
+    <td><CopyableCode code="page_title" /></td>
     <td><code>string</code></td>
     <td>The page title.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductPageArn" /></td>
+    <td><CopyableCode code="product_page_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the product page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductPageId" /></td>
+    <td><CopyableCode code="product_page_id" /></td>
     <td><code>string</code></td>
     <td>The product page identifier. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -223,10 +223,10 @@ Gets a product page of a portal product.
 
 ```sql
 SELECT
-DisplayContent,
-LastModified,
-ProductPageArn,
-ProductPageId
+display_content,
+last_modified,
+product_page_arn,
+product_page_id
 FROM aws.apigatewayv2.product_pages
 WHERE portal_product_id = '{{ portal_product_id }}' -- required
 AND product_page_id = '{{ product_page_id }}' -- required
@@ -241,10 +241,10 @@ Lists the product pages for a portal product.
 
 ```sql
 SELECT
-LastModified,
-PageTitle,
-ProductPageArn,
-ProductPageId
+last_modified,
+page_title,
+product_page_arn,
+product_page_id
 FROM aws.apigatewayv2.product_pages
 WHERE portal_product_id = '{{ portal_product_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -281,10 +281,10 @@ SELECT
 '{{ portal_product_id }}',
 '{{ region }}'
 RETURNING
-DisplayContent,
-LastModified,
-ProductPageArn,
-ProductPageId
+display_content,
+last_modified,
+product_page_arn,
+product_page_id
 ;
 ```
 </TabItem>
@@ -332,10 +332,10 @@ portal_product_id = '{{ portal_product_id }}' --required
 AND product_page_id = '{{ product_page_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-DisplayContent,
-LastModified,
-ProductPageArn,
-ProductPageId;
+display_content,
+last_modified,
+product_page_arn,
+product_page_id;
 ```
 </TabItem>
 </Tabs>

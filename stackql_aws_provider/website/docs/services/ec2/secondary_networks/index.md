@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Ipv4CidrBlockAssociations" /></td>
+    <td><CopyableCode code="ipv_4_cidr_block_associations" /></td>
     <td><code>string</code></td>
     <td>Information about the IPv4 CIDR blocks associated with the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryNetworkArn" /></td>
+    <td><CopyableCode code="secondary_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryNetworkId" /></td>
+    <td><CopyableCode code="secondary_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current state of the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the secondary network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the secondary network.</td>
 </tr>
@@ -218,14 +218,14 @@ Describes one or more secondary networks.
 
 ```sql
 SELECT
-Ipv4CidrBlockAssociations,
-OwnerId,
-SecondaryNetworkArn,
-SecondaryNetworkId,
-State,
-StateReason,
-Tags,
-Type
+ipv_4_cidr_block_associations,
+owner_id,
+secondary_network_arn,
+secondary_network_id,
+state,
+state_reason,
+tags,
+type
 FROM aws.ec2.secondary_networks
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -269,14 +269,14 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-Ipv4CidrBlockAssociations,
-OwnerId,
-SecondaryNetworkArn,
-SecondaryNetworkId,
-State,
-StateReason,
-Tags,
-Type
+ipv_4_cidr_block_associations,
+owner_id,
+secondary_network_arn,
+secondary_network_id,
+state,
+state_reason,
+tags,
+type
 ;
 ```
 </TabItem>

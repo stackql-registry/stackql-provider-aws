@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>The details for the CloudWatch alarm you want to apply to an automation or command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the task execution completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrency" /></td>
+    <td><CopyableCode code="max_concurrency" /></td>
     <td><code>string</code></td>
     <td>The defined maximum number of task executions that could be run in parallel. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;1-9&#93;&#91;0-9&#93;%|&#91;1-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxErrors" /></td>
+    <td><CopyableCode code="max_errors" /></td>
     <td><code>string</code></td>
     <td>The defined maximum number of task execution errors allowed before scheduling of the task execution would have been stopped. (pattern: &lt;code&gt;^(&#91;1-9&#93;&#91;0-9&#93;*|&#91;0&#93;|&#91;1-9&#93;&#91;0-9&#93;%|&#91;0-9&#93;%|100%)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The priority of the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The role that was assumed when running the task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the task execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task. (PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, CANCELLED, SKIPPED_OVERLAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>The details explaining the status. Not available for all status values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the task that ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskExecutionId" /></td>
+    <td><CopyableCode code="task_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the specific task execution in the maintenance window task that was retrieved. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskParameters" /></td>
+    <td><CopyableCode code="task_parameters" /></td>
     <td><code>array</code></td>
     <td>The parameters passed to the task when it was run. TaskParameters has been deprecated. To specify parameters to pass to a task when it runs, instead use the Parameters option in the TaskInvocationParameters structure. For information about how Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters. The map has the following format: Key: string, between 1 and 255 characters Value: an array of strings, each between 1 and 255 characters</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggeredAlarms" /></td>
+    <td><CopyableCode code="triggered_alarms" /></td>
     <td><code>array</code></td>
     <td>The CloudWatch alarms that were invoked by the maintenance window task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of task that was run. (RUN_COMMAND, AUTOMATION, STEP_FUNCTIONS, LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowExecutionId" /></td>
+    <td><CopyableCode code="window_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window execution that includes the task. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -140,52 +140,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlarmConfiguration" /></td>
+    <td><CopyableCode code="alarm_configuration" /></td>
     <td><code>object</code></td>
     <td>The details for the CloudWatch alarm you want to apply to an automation or command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the task execution finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the task execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task execution. (PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, CANCELLED, SKIPPED_OVERLAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>The details explaining the status of the task execution. Not available for all status values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskArn" /></td>
+    <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the task that ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskExecutionId" /></td>
+    <td><CopyableCode code="task_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the specific task execution in the maintenance window execution. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskType" /></td>
+    <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
     <td>The type of task that ran. (RUN_COMMAND, AUTOMATION, STEP_FUNCTIONS, LAMBDA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggeredAlarms" /></td>
+    <td><CopyableCode code="triggered_alarms" /></td>
     <td><code>array</code></td>
     <td>The CloudWatch alarm that was invoked by the maintenance window task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowExecutionId" /></td>
+    <td><CopyableCode code="window_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window execution that ran the task. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -262,21 +262,21 @@ Retrieves the details about a specific task run as part of a maintenance window 
 
 ```sql
 SELECT
-AlarmConfiguration,
-EndTime,
-MaxConcurrency,
-MaxErrors,
-Priority,
-ServiceRole,
-StartTime,
-Status,
-StatusDetails,
-TaskArn,
-TaskExecutionId,
-TaskParameters,
-TriggeredAlarms,
-Type,
-WindowExecutionId
+alarm_configuration,
+end_time,
+max_concurrency,
+max_errors,
+priority,
+service_role,
+start_time,
+status,
+status_details,
+task_arn,
+task_execution_id,
+task_parameters,
+triggered_alarms,
+type,
+window_execution_id
 FROM aws.ssm.maintenance_window_execution_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -288,16 +288,16 @@ For a given maintenance window execution, lists the tasks that were run.
 
 ```sql
 SELECT
-AlarmConfiguration,
-EndTime,
-StartTime,
-Status,
-StatusDetails,
-TaskArn,
-TaskExecutionId,
-TaskType,
-TriggeredAlarms,
-WindowExecutionId
+alarm_configuration,
+end_time,
+start_time,
+status,
+status_details,
+task_arn,
+task_execution_id,
+task_type,
+triggered_alarms,
+window_execution_id
 FROM aws.ssm.maintenance_window_execution_tasks
 WHERE region = '{{ region }}' -- required
 ;

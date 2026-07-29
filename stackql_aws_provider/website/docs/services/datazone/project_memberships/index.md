@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The designated role of a project member. (PROJECT_OWNER, PROJECT_CONTRIBUTOR, PROJECT_CATALOG_VIEWER, PROJECT_CATALOG_CONSUMER, PROJECT_CATALOG_STEWARD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memberDetails" /></td>
+    <td><CopyableCode code="member_details" /></td>
     <td><code>object</code></td>
     <td>The membership details of a project member.</td>
 </tr>
@@ -169,7 +169,7 @@ Lists all members of the specified project.
 ```sql
 SELECT
 designation,
-memberDetails
+member_details
 FROM aws.datazone.project_memberships
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND project_identifier = '{{ project_identifier }}' -- required

@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the deployment event. (CANCELED, CANCELING, COMPLETED, CREATED, FAILED, IN_PROGRESS, PENDING, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason of the deployment event status.</td>
 </tr>
@@ -142,7 +142,7 @@ SELECT
 name,
 description,
 status,
-statusReason,
+status_reason,
 timestamp
 FROM aws.launch_wizard.deployment_events
 WHERE region = '{{ region }}' -- required

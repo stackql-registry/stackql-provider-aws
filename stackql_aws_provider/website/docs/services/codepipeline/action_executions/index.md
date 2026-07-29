@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionExecutionId" /></td>
+    <td><CopyableCode code="action_execution_id" /></td>
     <td><code>string</code></td>
     <td>The action execution ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="actionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>The name of the action. (pattern: &lt;code&gt;&#91;A-Za-z0-9.@\-_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>Input details for the action execution, such as role ARN, Region, and input artifacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last update time of the action execution.</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
     <td>Output details for the action execution, such as the action execution result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineExecutionId" /></td>
+    <td><CopyableCode code="pipeline_execution_id" /></td>
     <td><code>string</code></td>
     <td>The pipeline execution ID for the action execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineVersion" /></td>
+    <td><CopyableCode code="pipeline_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the pipeline where the action was run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageName" /></td>
+    <td><CopyableCode code="stage_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stage that contains the action. (pattern: &lt;code&gt;&#91;A-Za-z0-9.@\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time of the action execution.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the action execution. Status categories are InProgress, Succeeded, and Failed. (InProgress, Abandoned, Succeeded, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The ARN of the user who changed the pipeline execution details.</td>
 </tr>
@@ -169,17 +169,17 @@ Lists the action executions that have occurred in a pipeline.
 
 ```sql
 SELECT
-actionExecutionId,
-actionName,
+action_execution_id,
+action_name,
 input,
-lastUpdateTime,
+last_update_time,
 output,
-pipelineExecutionId,
-pipelineVersion,
-stageName,
-startTime,
+pipeline_execution_id,
+pipeline_version,
+stage_name,
+start_time,
 status,
-updatedBy
+updated_by
 FROM aws.codepipeline.action_executions
 WHERE region = '{{ region }}' -- required
 ;

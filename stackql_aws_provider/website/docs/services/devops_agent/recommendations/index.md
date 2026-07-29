@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="additionalContext" /></td>
+    <td><CopyableCode code="additional_context" /></td>
     <td><code>string</code></td>
     <td>Additional context for recommendation</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentSpaceArn" /></td>
+    <td><CopyableCode code="agent_space_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the agent space this recommendation belongs to</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>Content of the recommendation</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this recommendation was created</td>
 </tr>
 <tr>
-    <td><CopyableCode code="goalId" /></td>
+    <td><CopyableCode code="goal_id" /></td>
     <td><code>string</code></td>
     <td>ID of the goal this recommendation is associated with</td>
 </tr>
 <tr>
-    <td><CopyableCode code="goalVersion" /></td>
+    <td><CopyableCode code="goal_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>Version of the goal at the time this recommendation was generated</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>Priority level of the recommendation (HIGH, MEDIUM, LOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this recommendation</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>Current status of the recommendation (PROPOSED, ACCEPTED, REJECTED, CLOSED, COMPLETED, UPDATE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>ID of the task that generated the recommendation</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The title of the recommendation</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp when this recommendation was last updated</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for retrieving the next page of results, if more results are available</td>
 </tr>
@@ -234,18 +234,18 @@ Retrieves a specific recommendation by its ID
 
 ```sql
 SELECT
-additionalContext,
-agentSpaceArn,
+additional_context,
+agent_space_arn,
 content,
-createdAt,
-goalId,
-goalVersion,
+created_at,
+goal_id,
+goal_version,
 priority,
-recommendationId,
+recommendation_id,
 status,
-taskId,
+task_id,
 title_,
-updatedAt,
+updated_at,
 version
 FROM aws.devops_agent.recommendations
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
@@ -261,7 +261,7 @@ Lists recommendations for the specified agent space
 
 ```sql
 SELECT
-nextToken,
+next_token,
 recommendations
 FROM aws.devops_agent.recommendations
 WHERE agent_space_id = '{{ agent_space_id }}' -- required

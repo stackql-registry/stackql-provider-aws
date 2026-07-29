@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the metric applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JourneyId" /></td>
+    <td><CopyableCode code="journey_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the journey that the metric applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastEvaluatedTime" /></td>
+    <td><CopyableCode code="last_evaluated_time" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when Amazon Pinpoint last evaluated the journey and updated the data for the metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>object</code></td>
     <td>A JSON object that contains the results of the query. For information about the structure and contents of the results, see the Amazon Pinpoint Developer Guide.</td>
 </tr>
@@ -154,10 +154,10 @@ Retrieves (queries) pre-aggregated data for a standard execution metric that app
 
 ```sql
 SELECT
-ApplicationId,
-JourneyId,
-LastEvaluatedTime,
-Metrics
+application_id,
+journey_id,
+last_evaluated_time,
+metrics
 FROM aws.pinpoint.journey_execution_metrics
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `journey-id` = '{{ journey-id }}' -- required

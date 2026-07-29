@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the time at which the inference scheduler was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataDelayOffsetInMinutes" /></td>
+    <td><CopyableCode code="data_delay_offset_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>A period of time (in minutes) by which inference on the data is delayed after the data starts. For instance, if you select an offset delay time of five minutes, inference will not begin on the data until the first data measurement after the five minute mark. For example, if five minutes is selected, the inference scheduler will wake up at the configured frequency with the additional five minute delay time to check the customer S3 bucket. The customer can upload data at the same frequency and they don't need to stop and restart the scheduler when uploading new data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataInputConfiguration" /></td>
+    <td><CopyableCode code="data_input_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies configuration information for the input data for the inference scheduler, including delimiter, format, and dataset location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataOutputConfiguration" /></td>
+    <td><CopyableCode code="data_output_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies information for the output results for the inference scheduler, including the output S3 location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataUploadFrequency" /></td>
+    <td><CopyableCode code="data_upload_frequency" /></td>
     <td><code>string</code></td>
     <td>Specifies how often data is uploaded to the source S3 bucket for the input data. This value is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes. (PT5M, PT10M, PT15M, PT30M, PT1H)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceSchedulerArn" /></td>
+    <td><CopyableCode code="inference_scheduler_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the inference scheduler being described. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:inference-scheduler\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceSchedulerName" /></td>
+    <td><CopyableCode code="inference_scheduler_name" /></td>
     <td><code>string</code></td>
     <td>The name of the inference scheduler being described. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestInferenceResult" /></td>
+    <td><CopyableCode code="latest_inference_result" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the latest execution for the inference scheduler was Anomalous (anomalous events found) or Normal (no anomalous events found). (ANOMALOUS, NORMAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the machine learning model of the inference scheduler being described. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:model\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the machine learning model of the inference scheduler being described. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a role with permission to access the data source for the inference scheduler being described. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideKmsKeyId" /></td>
+    <td><CopyableCode code="server_side_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Provides the identifier of the KMS key used to encrypt inference scheduler data by Amazon Lookout for Equipment. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:kms:&#91;a-z0-9\-&#93;*:\d&#123;12&#125;:&#91;\w\-\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the inference scheduler. (PENDING, RUNNING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the time at which the inference scheduler was last updated, if it was.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InferenceSchedulerSummaries" /></td>
+    <td><CopyableCode code="inference_scheduler_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides information about the specified inference scheduler, including data upload frequency, model name and ARN, and status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of inference schedulers. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -252,20 +252,20 @@ Specifies information about the inference scheduler being used, including name, 
 
 ```sql
 SELECT
-CreatedAt,
-DataDelayOffsetInMinutes,
-DataInputConfiguration,
-DataOutputConfiguration,
-DataUploadFrequency,
-InferenceSchedulerArn,
-InferenceSchedulerName,
-LatestInferenceResult,
-ModelArn,
-ModelName,
-RoleArn,
-ServerSideKmsKeyId,
-Status,
-UpdatedAt
+created_at,
+data_delay_offset_in_minutes,
+data_input_configuration,
+data_output_configuration,
+data_upload_frequency,
+inference_scheduler_arn,
+inference_scheduler_name,
+latest_inference_result,
+model_arn,
+model_name,
+role_arn,
+server_side_kms_key_id,
+status,
+updated_at
 FROM aws.lookoutequipment.inference_schedulers
 WHERE region = '{{ region }}' -- required
 ;
@@ -277,8 +277,8 @@ Retrieves a list of all inference schedulers currently available for your accoun
 
 ```sql
 SELECT
-InferenceSchedulerSummaries,
-NextToken
+inference_scheduler_summaries,
+next_token
 FROM aws.lookoutequipment.inference_schedulers
 WHERE region = '{{ region }}' -- required
 ;
@@ -327,10 +327,10 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-InferenceSchedulerArn,
-InferenceSchedulerName,
-ModelQuality,
-Status
+inference_scheduler_arn,
+inference_scheduler_name,
+model_quality,
+status
 ;
 ```
 </TabItem>

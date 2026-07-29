@@ -51,117 +51,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdConditioningConfiguration" /></td>
+    <td><CopyableCode code="ad_conditioning_configuration" /></td>
     <td><code>object</code></td>
     <td>The setting that indicates what conditioning MediaTailor will perform on ads that the ad decision server (ADS) returns, and what priority MediaTailor uses when inserting ads.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdDecisionServerConfiguration" /></td>
+    <td><CopyableCode code="ad_decision_server_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for customizing HTTP requests to the ad decision server (ADS). This includes settings for request method, headers, body content, and compression options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdDecisionServerUrl" /></td>
+    <td><CopyableCode code="ad_decision_server_url" /></td>
     <td><code>string</code></td>
     <td>The URL for the ad decision server (ADS). This includes the specification of static parameters and placeholders for dynamic parameters. AWS Elemental MediaTailor substitutes player-specific and session-specific parameters as needed when calling the ADS. Alternately, for testing, you can provide a static VAST URL. The maximum length is 25,000 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailSuppression" /></td>
+    <td><CopyableCode code="avail_suppression" /></td>
     <td><code>object</code></td>
     <td>The configuration for avail suppression, also known as ad suppression. For more information about ad suppression, see Ad Suppression.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Bumper" /></td>
+    <td><CopyableCode code="bumper" /></td>
     <td><code>object</code></td>
     <td>The configuration for bumpers. Bumpers are short audio or video clips that play at the start or before the end of an ad break. To learn more about bumpers, see Bumpers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CdnConfiguration" /></td>
+    <td><CopyableCode code="cdn_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for using a content delivery network (CDN), like Amazon CloudFront, for content and ad segment management.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationAliases" /></td>
+    <td><CopyableCode code="configuration_aliases" /></td>
     <td><code>object</code></td>
     <td>The player parameters and aliases used as dynamic variables during session initialization. For more information, see Domain Variables.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashConfiguration" /></td>
+    <td><CopyableCode code="dash_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for DASH content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionMapping" /></td>
+    <td><CopyableCode code="function_mapping" /></td>
     <td><code>object</code></td>
     <td>A map of lifecycle hook event names to function identifiers. The function mapping specifies which function MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION and PRE_ADS_REQUEST. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsConfiguration" /></td>
+    <td><CopyableCode code="hls_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for HLS content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsertionMode" /></td>
+    <td><CopyableCode code="insertion_mode" /></td>
     <td><code>string</code></td>
     <td>The setting that controls whether players can use stitched or guided ad insertion. The default, STITCHED_ONLY, forces all player sessions to use stitched (server-side) ad insertion. Choosing PLAYER_SELECT allows players to select either stitched or guided ad insertion at session-initialization time. The default for players that do not specify an insertion mode is stitched. (STITCHED_ONLY, PLAYER_SELECT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LivePreRollConfiguration" /></td>
+    <td><CopyableCode code="live_pre_roll_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for pre-roll ad insertion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration that defines where AWS Elemental MediaTailor sends logs for the playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestProcessingRules" /></td>
+    <td><CopyableCode code="manifest_processing_rules" /></td>
     <td><code>object</code></td>
     <td>The configuration for manifest processing rules. Manifest processing rules enable customization of the personalized manifests created by MediaTailor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersonalizationThresholdSeconds" /></td>
+    <td><CopyableCode code="personalization_threshold_seconds" /></td>
     <td><code>integer</code></td>
     <td>Defines the maximum duration of underfilled ad time (in seconds) allowed in an ad break. If the duration of underfilled ad time exceeds the personalization threshold, then the personalization of the ad break is abandoned and the underlying content is shown. This feature applies to ad replacement in live and VOD streams, rather than ad insertion, because it relies on an underlying content stream. For more information about ad break behavior, including ad replacement and insertion, see Ad Behavior in AWS Elemental MediaTailor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackConfigurationArn" /></td>
+    <td><CopyableCode code="playback_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackEndpointPrefix" /></td>
+    <td><CopyableCode code="playback_endpoint_prefix" /></td>
     <td><code>string</code></td>
     <td>The URL that the player accesses to get a manifest from AWS Elemental MediaTailor. This session will use server-side reporting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionInitializationEndpointPrefix" /></td>
+    <td><CopyableCode code="session_initialization_endpoint_prefix" /></td>
     <td><code>string</code></td>
     <td>The URL that the player uses to initialize a session that uses client-side reporting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlateAdUrl" /></td>
+    <td><CopyableCode code="slate_ad_url" /></td>
     <td><code>string</code></td>
     <td>The URL for a high-quality video asset to transcode and use to fill in time that's not used by ads. AWS Elemental MediaTailor shows the slate to fill in gaps in media content. Configuring the slate is optional for non-VPAID playback configurations. For VPAID, the slate is required because MediaTailor provides it in the slots designated for dynamic ad content. The slate must be a high-quality asset that contains both audio and video.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the playback configuration. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TranscodeProfileName" /></td>
+    <td><CopyableCode code="transcode_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name that is used to associate this playback configuration with a custom transcode profile. This overrides the dynamic transcoding defaults of MediaTailor. Use this only if you have already set up custom profiles with the help of AWS Support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VideoContentSourceUrl" /></td>
+    <td><CopyableCode code="video_content_source_url" /></td>
     <td><code>string</code></td>
     <td>The URL prefix for the parent manifest for the stream, minus the asset ID. The maximum length is 512 characters.</td>
 </tr>
@@ -180,117 +180,117 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdConditioningConfiguration" /></td>
+    <td><CopyableCode code="ad_conditioning_configuration" /></td>
     <td><code>object</code></td>
     <td>The setting that indicates what conditioning MediaTailor will perform on ads that the ad decision server (ADS) returns, and what priority MediaTailor uses when inserting ads.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdDecisionServerConfiguration" /></td>
+    <td><CopyableCode code="ad_decision_server_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration parameters for customizing HTTP requests sent to the ad decision server (ADS). This allows you to specify the HTTP method, headers, request body, and compression settings for ADS requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdDecisionServerUrl" /></td>
+    <td><CopyableCode code="ad_decision_server_url" /></td>
     <td><code>string</code></td>
     <td>The URL for the ad decision server (ADS). This includes the specification of static parameters and placeholders for dynamic parameters. AWS Elemental MediaTailor substitutes player-specific and session-specific parameters as needed when calling the ADS. Alternately, for testing you can provide a static VAST URL. The maximum length is 25,000 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailSuppression" /></td>
+    <td><CopyableCode code="avail_suppression" /></td>
     <td><code>object</code></td>
     <td>The configuration for avail suppression, also known as ad suppression. For more information about ad suppression, see Ad Suppression.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Bumper" /></td>
+    <td><CopyableCode code="bumper" /></td>
     <td><code>object</code></td>
     <td>The configuration for bumpers. Bumpers are short audio or video clips that play at the start or before the end of an ad break. To learn more about bumpers, see Bumpers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CdnConfiguration" /></td>
+    <td><CopyableCode code="cdn_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for using a content delivery network (CDN), like Amazon CloudFront, for content and ad segment management.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationAliases" /></td>
+    <td><CopyableCode code="configuration_aliases" /></td>
     <td><code>object</code></td>
     <td>The player parameters and aliases used as dynamic variables during session initialization. For more information, see Domain Variables.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DashConfiguration" /></td>
+    <td><CopyableCode code="dash_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a DASH source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionMapping" /></td>
+    <td><CopyableCode code="function_mapping" /></td>
     <td><code>object</code></td>
     <td>A map of lifecycle hook event names to function identifiers. The function mapping specifies which function MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION and PRE_ADS_REQUEST. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HlsConfiguration" /></td>
+    <td><CopyableCode code="hls_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for HLS content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsertionMode" /></td>
+    <td><CopyableCode code="insertion_mode" /></td>
     <td><code>string</code></td>
     <td>The setting that controls whether players can use stitched or guided ad insertion. The default, STITCHED_ONLY, forces all player sessions to use stitched (server-side) ad insertion. Choosing PLAYER_SELECT allows players to select either stitched or guided ad insertion at session-initialization time. The default for players that do not specify an insertion mode is stitched. (STITCHED_ONLY, PLAYER_SELECT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LivePreRollConfiguration" /></td>
+    <td><CopyableCode code="live_pre_roll_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for pre-roll ad insertion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogConfiguration" /></td>
+    <td><CopyableCode code="log_configuration" /></td>
     <td><code>object</code></td>
     <td>Defines where AWS Elemental MediaTailor sends logs for the playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestProcessingRules" /></td>
+    <td><CopyableCode code="manifest_processing_rules" /></td>
     <td><code>object</code></td>
     <td>The configuration for manifest processing rules. Manifest processing rules enable customization of the personalized manifests created by MediaTailor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The identifier for the playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersonalizationThresholdSeconds" /></td>
+    <td><CopyableCode code="personalization_threshold_seconds" /></td>
     <td><code>integer</code></td>
     <td>Defines the maximum duration of underfilled ad time (in seconds) allowed in an ad break. If the duration of underfilled ad time exceeds the personalization threshold, then the personalization of the ad break is abandoned and the underlying content is shown. This feature applies to ad replacement in live and VOD streams, rather than ad insertion, because it relies on an underlying content stream. For more information about ad break behavior, including ad replacement and insertion, see Ad Behavior in AWS Elemental MediaTailor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackConfigurationArn" /></td>
+    <td><CopyableCode code="playback_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the playback configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlaybackEndpointPrefix" /></td>
+    <td><CopyableCode code="playback_endpoint_prefix" /></td>
     <td><code>string</code></td>
     <td>The URL that the player accesses to get a manifest from AWS Elemental MediaTailor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionInitializationEndpointPrefix" /></td>
+    <td><CopyableCode code="session_initialization_endpoint_prefix" /></td>
     <td><code>string</code></td>
     <td>The URL that the player uses to initialize a session that uses client-side reporting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlateAdUrl" /></td>
+    <td><CopyableCode code="slate_ad_url" /></td>
     <td><code>string</code></td>
     <td>The URL for a video asset to transcode and use to fill in time that's not used by ads. AWS Elemental MediaTailor shows the slate to fill in gaps in media content. Configuring the slate is optional for non-VPAID playback configurations. For VPAID, the slate is required because MediaTailor provides it in the slots designated for dynamic ad content. The slate must be a high-quality asset that contains both audio and video.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags to assign to the playback configuration. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TranscodeProfileName" /></td>
+    <td><CopyableCode code="transcode_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name that is used to associate this playback configuration with a custom transcode profile. This overrides the dynamic transcoding defaults of MediaTailor. Use this only if you have already set up custom profiles with the help of AWS Support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VideoContentSourceUrl" /></td>
+    <td><CopyableCode code="video_content_source_url" /></td>
     <td><code>string</code></td>
     <td>The URL prefix for the parent manifest for the stream, minus the asset ID. The maximum length is 512 characters.</td>
 </tr>
@@ -403,29 +403,29 @@ Retrieves a playback configuration. For information about MediaTailor configurat
 
 ```sql
 SELECT
-AdConditioningConfiguration,
-AdDecisionServerConfiguration,
-AdDecisionServerUrl,
-AvailSuppression,
-Bumper,
-CdnConfiguration,
-ConfigurationAliases,
-DashConfiguration,
-FunctionMapping,
-HlsConfiguration,
-InsertionMode,
-LivePreRollConfiguration,
-LogConfiguration,
-ManifestProcessingRules,
-Name,
-PersonalizationThresholdSeconds,
-PlaybackConfigurationArn,
-PlaybackEndpointPrefix,
-SessionInitializationEndpointPrefix,
-SlateAdUrl,
-Tags,
-TranscodeProfileName,
-VideoContentSourceUrl
+ad_conditioning_configuration,
+ad_decision_server_configuration,
+ad_decision_server_url,
+avail_suppression,
+bumper,
+cdn_configuration,
+configuration_aliases,
+dash_configuration,
+function_mapping,
+hls_configuration,
+insertion_mode,
+live_pre_roll_configuration,
+log_configuration,
+manifest_processing_rules,
+name,
+personalization_threshold_seconds,
+playback_configuration_arn,
+playback_endpoint_prefix,
+session_initialization_endpoint_prefix,
+slate_ad_url,
+tags,
+transcode_profile_name,
+video_content_source_url
 FROM aws.mediatailor.playback_configurations
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -438,29 +438,29 @@ Retrieves existing playback configurations. For information about MediaTailor co
 
 ```sql
 SELECT
-AdConditioningConfiguration,
-AdDecisionServerConfiguration,
-AdDecisionServerUrl,
-AvailSuppression,
-Bumper,
-CdnConfiguration,
-ConfigurationAliases,
-DashConfiguration,
-FunctionMapping,
-HlsConfiguration,
-InsertionMode,
-LivePreRollConfiguration,
-LogConfiguration,
-ManifestProcessingRules,
-Name,
-PersonalizationThresholdSeconds,
-PlaybackConfigurationArn,
-PlaybackEndpointPrefix,
-SessionInitializationEndpointPrefix,
-SlateAdUrl,
-Tags,
-TranscodeProfileName,
-VideoContentSourceUrl
+ad_conditioning_configuration,
+ad_decision_server_configuration,
+ad_decision_server_url,
+avail_suppression,
+bumper,
+cdn_configuration,
+configuration_aliases,
+dash_configuration,
+function_mapping,
+hls_configuration,
+insertion_mode,
+live_pre_roll_configuration,
+log_configuration,
+manifest_processing_rules,
+name,
+personalization_threshold_seconds,
+playback_configuration_arn,
+playback_endpoint_prefix,
+session_initialization_endpoint_prefix,
+slate_ad_url,
+tags,
+transcode_profile_name,
+video_content_source_url
 FROM aws.mediatailor.playback_configurations
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -507,29 +507,29 @@ FunctionMapping = '{{ FunctionMapping }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-AdConditioningConfiguration,
-AdDecisionServerConfiguration,
-AdDecisionServerUrl,
-AvailSuppression,
-Bumper,
-CdnConfiguration,
-ConfigurationAliases,
-DashConfiguration,
-FunctionMapping,
-HlsConfiguration,
-InsertionMode,
-LivePreRollConfiguration,
-LogConfiguration,
-ManifestProcessingRules,
-Name,
-PersonalizationThresholdSeconds,
-PlaybackConfigurationArn,
-PlaybackEndpointPrefix,
-SessionInitializationEndpointPrefix,
-SlateAdUrl,
-Tags,
-TranscodeProfileName,
-VideoContentSourceUrl;
+ad_conditioning_configuration,
+ad_decision_server_configuration,
+ad_decision_server_url,
+avail_suppression,
+bumper,
+cdn_configuration,
+configuration_aliases,
+dash_configuration,
+function_mapping,
+hls_configuration,
+insertion_mode,
+live_pre_roll_configuration,
+log_configuration,
+manifest_processing_rules,
+name,
+personalization_threshold_seconds,
+playback_configuration_arn,
+playback_endpoint_prefix,
+session_initialization_endpoint_prefix,
+slate_ad_url,
+tags,
+transcode_profile_name,
+video_content_source_url;
 ```
 </TabItem>
 </Tabs>

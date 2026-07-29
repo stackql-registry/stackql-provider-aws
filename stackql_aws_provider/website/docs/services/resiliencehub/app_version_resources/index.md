@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appArn" /></td>
+    <td><CopyableCode code="app_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:partition:resiliencehub:region:account:app/app-id. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference guide. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appVersion" /></td>
+    <td><CopyableCode code="app_version" /></td>
     <td><code>string</code></td>
     <td>Resilience Hub application version. (pattern: &lt;code&gt;^\S&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="physicalResource" /></td>
+    <td><CopyableCode code="physical_resource" /></td>
     <td><code>object</code></td>
     <td>Defines a physical resource. A physical resource is a resource that exists in your account. It can be identified using an Amazon Resource Name (ARN) or a Resilience Hub-native identifier.</td>
 </tr>
@@ -164,9 +164,9 @@ Describes a resource of the Resilience Hub application. This API accepts only on
 
 ```sql
 SELECT
-appArn,
-appVersion,
-physicalResource
+app_arn,
+app_version,
+physical_resource
 FROM aws.resiliencehub.app_version_resources
 WHERE region = '{{ region }}' -- required
 ;
@@ -215,9 +215,9 @@ SELECT
 '{{ resourceType }}' /* required */,
 '{{ region }}'
 RETURNING
-appArn,
-appVersion,
-physicalResource
+app_arn,
+app_version,
+physical_resource
 ;
 ```
 </TabItem>
@@ -292,9 +292,9 @@ WHERE
 region = '{{ region }}' --required
 AND appArn = '{{ appArn }}' --required
 RETURNING
-appArn,
-appVersion,
-physicalResource;
+app_arn,
+app_version,
+physical_resource;
 ```
 </TabItem>
 </Tabs>

@@ -121,7 +121,7 @@ AND TargetObjectReference = '{{ TargetObjectReference }}' --required
 AND TypedLinkFacet = '{{ TypedLinkFacet }}' --required
 AND Attributes = '{{ Attributes }}' --required
 RETURNING
-TypedLinkSpecifier;
+typed_link_specifier;
 ```
 </TabItem>
 <TabItem value="detach_typed_link">

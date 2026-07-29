@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachments" /></td>
+    <td><CopyableCode code="attachments" /></td>
     <td><code>string</code></td>
     <td>Information about the attachment of the egress-only internet gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressOnlyInternetGatewayId" /></td>
+    <td><CopyableCode code="egress_only_internet_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the egress-only internet gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the egress-only internet gateway.</td>
 </tr>
@@ -188,9 +188,9 @@ Describes your egress-only internet gateways. The default is to describe all you
 
 ```sql
 SELECT
-Attachments,
-EgressOnlyInternetGatewayId,
-Tags
+attachments,
+egress_only_internet_gateway_id,
+tags
 FROM aws.ec2.egress_only_internet_gateways
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -232,9 +232,9 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-Attachments,
-EgressOnlyInternetGatewayId,
-Tags
+attachments,
+egress_only_internet_gateway_id,
+tags
 ;
 ```
 </TabItem>

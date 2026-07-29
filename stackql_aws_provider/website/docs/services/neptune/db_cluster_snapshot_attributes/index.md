@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotAttributes" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_attributes" /></td>
     <td><code>string</code></td>
     <td>The list of attributes and values for the manual DB cluster snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterSnapshotIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the manual DB cluster snapshot that the attributes apply to.</td>
 </tr>
@@ -151,8 +151,8 @@ Returns a list of DB cluster snapshot attribute names and values for a manual DB
 
 ```sql
 SELECT
-DBClusterSnapshotAttributes,
-DBClusterSnapshotIdentifier
+db_cluster_snapshot_attributes,
+db_cluster_snapshot_identifier
 FROM aws.neptune.db_cluster_snapshot_attributes
 WHERE DBClusterSnapshotIdentifier = '{{ DBClusterSnapshotIdentifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -185,8 +185,8 @@ AND region = '{{ region }}' --required
 AND ValuesToAdd = '{{ ValuesToAdd}}'
 AND ValuesToRemove = '{{ ValuesToRemove}}'
 RETURNING
-DBClusterSnapshotAttributes,
-DBClusterSnapshotIdentifier;
+db_cluster_snapshot_attributes,
+db_cluster_snapshot_identifier;
 ```
 </TabItem>
 </Tabs>

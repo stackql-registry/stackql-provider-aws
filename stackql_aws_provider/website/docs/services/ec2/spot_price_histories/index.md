@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductDescription" /></td>
+    <td><CopyableCode code="product_description" /></td>
     <td><code>string</code></td>
     <td>A general description of the AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpotPrice" /></td>
+    <td><CopyableCode code="spot_price" /></td>
     <td><code>string</code></td>
     <td>The maximum price per unit hour that you are willing to pay for a Spot Instance. We do not recommend using this parameter because it can lead to increased interruptions. If you do not specify this parameter, you will pay the current Spot price. If you specify a maximum price, your instances will be interrupted more frequently than if you do not specify this parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time the request was created, in UTC format (for example, YYYY-MM-DDTHH:MM:SSZ).</td>
 </tr>
@@ -194,12 +194,12 @@ Describes the Spot price history. For more information, see Spot Instance pricin
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-InstanceType,
-ProductDescription,
-SpotPrice,
-Timestamp
+availability_zone,
+availability_zone_id,
+instance_type,
+product_description,
+spot_price,
+timestamp
 FROM aws.ec2.spot_price_histories
 WHERE region = '{{ region }}' -- required
 AND AvailabilityZoneId = '{{ AvailabilityZoneId }}'

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>object</code></td>
     <td>The credentials to use for federation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SignInUrl" /></td>
+    <td><CopyableCode code="sign_in_url" /></td>
     <td><code>string</code></td>
     <td>The URL to sign into the user's instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserArn" /></td>
+    <td><CopyableCode code="user_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the user. This can be the ID or the ARN of the user.</td>
 </tr>
@@ -139,10 +139,10 @@ Supports SAML sign-in for Amazon Connect. Retrieves a token for federation. The 
 
 ```sql
 SELECT
-Credentials,
-SignInUrl,
-UserArn,
-UserId
+credentials,
+sign_in_url,
+user_arn,
+user_id
 FROM aws.connect.federation_tokens
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

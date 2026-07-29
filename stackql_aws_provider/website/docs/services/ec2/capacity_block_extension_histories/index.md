@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID of the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionDurationHours" /></td>
+    <td><CopyableCode code="capacity_block_extension_duration_hours" /></td>
     <td><code>integer</code></td>
     <td>The duration of the Capacity Block extension in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionEndDate" /></td>
+    <td><CopyableCode code="capacity_block_extension_end_date" /></td>
     <td><code>string</code></td>
     <td>The end date of the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionOfferingId" /></td>
+    <td><CopyableCode code="capacity_block_extension_offering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block extension offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionPurchaseDate" /></td>
+    <td><CopyableCode code="capacity_block_extension_purchase_date" /></td>
     <td><code>string</code></td>
     <td>The date when the Capacity Block extension was purchased.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionStartDate" /></td>
+    <td><CopyableCode code="capacity_block_extension_start_date" /></td>
     <td><code>string</code></td>
     <td>The start date of the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockExtensionStatus" /></td>
+    <td><CopyableCode code="capacity_block_extension_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Capacity Block extension. A Capacity Block extension can have one of the following statuses: payment-pending - The Capacity Block extension payment is processing. If your payment can't be processed within 12 hours, the Capacity Block extension is failed. payment-failed - Payment for the Capacity Block extension request was not successful. payment-succeeded - Payment for the Capacity Block extension request was successful. You receive an invoice that reflects the one-time upfront payment. In the invoice, you can associate the paid amount with the Capacity Block reservation ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationId" /></td>
+    <td><CopyableCode code="capacity_reservation_id" /></td>
     <td><code>string</code></td>
     <td>The reservation ID of the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency of the payment for the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances in the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type of the Capacity Block extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpfrontFee" /></td>
+    <td><CopyableCode code="upfront_fee" /></td>
     <td><code>string</code></td>
     <td>The total price to be paid up front.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZoneType" /></td>
+    <td><CopyableCode code="zone_type" /></td>
     <td><code>string</code></td>
     <td>The type of zone where the Capacity Block extension is located.</td>
 </tr>
@@ -209,20 +209,20 @@ Describes the events for the specified Capacity Block extension during the speci
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CapacityBlockExtensionDurationHours,
-CapacityBlockExtensionEndDate,
-CapacityBlockExtensionOfferingId,
-CapacityBlockExtensionPurchaseDate,
-CapacityBlockExtensionStartDate,
-CapacityBlockExtensionStatus,
-CapacityReservationId,
-CurrencyCode,
-InstanceCount,
-InstanceType,
-UpfrontFee,
-ZoneType
+availability_zone,
+availability_zone_id,
+capacity_block_extension_duration_hours,
+capacity_block_extension_end_date,
+capacity_block_extension_offering_id,
+capacity_block_extension_purchase_date,
+capacity_block_extension_start_date,
+capacity_block_extension_status,
+capacity_reservation_id,
+currency_code,
+instance_count,
+instance_type,
+upfront_fee,
+zone_type
 FROM aws.ec2.capacity_block_extension_histories
 WHERE region = '{{ region }}' -- required
 AND CapacityReservationId = '{{ CapacityReservationId }}'

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FacetStyle" /></td>
+    <td><CopyableCode code="facet_style" /></td>
     <td><code>string</code></td>
     <td>There are two different styles that you can define on any given facet, Static and Dynamic. For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations. (STATIC, DYNAMIC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Facet. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectType" /></td>
+    <td><CopyableCode code="object_type" /></td>
     <td><code>string</code></td>
     <td>The object type that is associated with the facet. See CreateFacetRequest$ObjectType for more details. (NODE, LEAF_NODE, POLICY, INDEX)</td>
 </tr>
@@ -190,9 +190,9 @@ Gets details of the Facet, such as facet name, attributes, Rules, or ObjectType.
 
 ```sql
 SELECT
-FacetStyle,
-Name,
-ObjectType
+facet_style,
+name,
+object_type
 FROM aws.clouddirectory.facets
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

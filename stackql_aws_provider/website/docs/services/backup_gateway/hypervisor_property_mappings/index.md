@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HypervisorArn" /></td>
+    <td><CopyableCode code="hypervisor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hypervisor. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):iam::(&#91;0-9&#93;+):role/(\S+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VmwareToAwsTagMappings" /></td>
+    <td><CopyableCode code="vmware_to_aws_tag_mappings" /></td>
     <td><code>array</code></td>
     <td>This is a display of the mappings of VMware tags to the Amazon Web Services tags.</td>
 </tr>
@@ -136,9 +136,9 @@ This action retrieves the property mappings for the specified hypervisor. A hype
 
 ```sql
 SELECT
-HypervisorArn,
-IamRoleArn,
-VmwareToAwsTagMappings
+hypervisor_arn,
+iam_role_arn,
+vmware_to_aws_tag_mappings
 FROM aws.backup_gateway.hypervisor_property_mappings
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,7 +171,7 @@ AND HypervisorArn = '{{ HypervisorArn }}' --required
 AND VmwareToAwsTagMappings = '{{ VmwareToAwsTagMappings }}' --required
 AND IamRoleArn = '{{ IamRoleArn }}' --required
 RETURNING
-HypervisorArn;
+hypervisor_arn;
 ```
 </TabItem>
 </Tabs>

@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The computer architecture of the core device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="coreDeviceThingName" /></td>
+    <td><CopyableCode code="core_device_thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the core device. This is also the name of the IoT thing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="coreVersion" /></td>
+    <td><CopyableCode code="core_version" /></td>
     <td><code>string</code></td>
     <td>The version of the IoT Greengrass Core software that the core device runs. This version is equivalent to the version of the Greengrass nucleus component that runs on the core device. For more information, see the Greengrass nucleus component in the IoT Greengrass V2 Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStatusUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_status_update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the core device's status last updated, expressed in ISO 8601 format.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The computer architecture of the core device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="coreDeviceThingName" /></td>
+    <td><CopyableCode code="core_device_thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the core device. This is also the name of the IoT thing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStatusUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_status_update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the core device's status last updated, expressed in ISO 8601 format.</td>
 </tr>
@@ -245,9 +245,9 @@ Retrieves metadata for a Greengrass core device. IoT Greengrass relies on indivi
 ```sql
 SELECT
 architecture,
-coreDeviceThingName,
-coreVersion,
-lastStatusUpdateTimestamp,
+core_device_thing_name,
+core_version,
+last_status_update_timestamp,
 platform,
 runtime,
 status,
@@ -265,8 +265,8 @@ Retrieves a paginated list of Greengrass core devices. IoT Greengrass relies on 
 ```sql
 SELECT
 architecture,
-coreDeviceThingName,
-lastStatusUpdateTimestamp,
+core_device_thing_name,
+last_status_update_timestamp,
 platform,
 runtime,
 status

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComplianceType" /></td>
+    <td><CopyableCode code="compliance_type" /></td>
     <td><code>string</code></td>
     <td>The compliance type. For example, Association (for a State Manager association), Patch, or Custom:string are all valid compliance types. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\-&#93;\w+|Custom:&#91;a-zA-Z0-9_\-&#93;\w+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Details" /></td>
+    <td><CopyableCode code="details" /></td>
     <td><code>object</code></td>
     <td>A "Key": "Value" tag combination for the compliance item.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionSummary" /></td>
+    <td><CopyableCode code="execution_summary" /></td>
     <td><code>object</code></td>
     <td>A summary for the compliance item. The summary includes an execution ID, the execution type (for example, command), and the execution time. For State Manager associations, the ExecutionTime value represents when the compliance status was captured and aggregated by the Systems Manager service, not necessarily when the underlying association was executed on the managed node. State Manager updates compliance status for all associations on an instance whenever any association executes, which means multiple associations may show the same execution time even if they were executed at different times.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>An ID for the compliance item. For example, if the compliance item is a Windows patch, the ID could be the number of the KB article; for example: KB4010320.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>An ID for the resource. For a managed node, this is the node ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource. ManagedInstance is currently the only supported resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the compliance status. Severity can be one of the following: Critical, High, Medium, Low, Informational, Unspecified. (CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the compliance item. An item is either COMPLIANT, NON_COMPLIANT, or an empty string (for Windows patches that aren't applicable). (COMPLIANT, NON_COMPLIANT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>A title for the compliance item. For example, if the compliance item is a Windows patch, the title could be the title of the KB article for the patch; for example: Security Update for Active Directory Federation Services.</td>
 </tr>
@@ -166,15 +166,15 @@ For a specified resource ID, this API operation returns a list of compliance sta
 
 ```sql
 SELECT
-ComplianceType,
-Details,
-ExecutionSummary,
-Id,
-ResourceId,
-ResourceType,
-Severity,
-Status,
-Title
+compliance_type,
+details,
+execution_summary,
+id,
+resource_id,
+resource_type,
+severity,
+status,
+title
 FROM aws.ssm.compliance_items
 WHERE region = '{{ region }}' -- required
 ;

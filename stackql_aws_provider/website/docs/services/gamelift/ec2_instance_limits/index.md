@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EC2InstanceLimits" /></td>
+    <td><CopyableCode code="ec2_instance_limits" /></td>
     <td><code>array</code></td>
     <td>The maximum number of instances for the specified instance type.</td>
 </tr>
@@ -119,7 +119,7 @@ This API works with the following fleet types: EC2 Retrieves the instance limits
 
 ```sql
 SELECT
-EC2InstanceLimits
+ec2_instance_limits
 FROM aws.gamelift.ec2_instance_limits
 WHERE region = '{{ region }}' -- required
 ;

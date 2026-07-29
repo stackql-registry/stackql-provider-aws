@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Invitations" /></td>
+    <td><CopyableCode code="invitations" /></td>
     <td><code>array</code></td>
     <td>The list of behavior graphs for which the member account has open or accepted invitations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more behavior graphs remaining in the results, then this is the pagination token to use to request the next page of behavior graphs.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the list of open and accepted behavior graph invitations for the membe
 
 ```sql
 SELECT
-Invitations,
-NextToken
+invitations,
+next_token
 FROM aws.detective.invitations
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCConnection" /></td>
+    <td><CopyableCode code="vpc_connection" /></td>
     <td><code>object</code></td>
     <td>A response object that provides information for the specified VPC connection.</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or null if there are no more results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCConnectionSummaries" /></td>
+    <td><CopyableCode code="vpc_connection_summaries" /></td>
     <td><code>array</code></td>
     <td>A VPCConnectionSummaries object that returns a summary of VPC connection objects.</td>
 </tr>
@@ -213,9 +213,9 @@ Describes a VPC connection.
 
 ```sql
 SELECT
-RequestId,
-Status,
-VPCConnection
+request_id,
+status,
+vpc_connection
 FROM aws.quicksight.vpc_connections
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND vpc_connection_id = '{{ vpc_connection_id }}' -- required
@@ -229,10 +229,10 @@ Lists all of the VPC connections in the current set Amazon Web Services Region o
 
 ```sql
 SELECT
-NextToken,
-RequestId,
-Status,
-VPCConnectionSummaries
+next_token,
+request_id,
+status,
+vpc_connection_summaries
 FROM aws.quicksight.vpc_connections
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -280,12 +280,12 @@ SELECT
 '{{ aws_account_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-AvailabilityStatus,
-CreationStatus,
-RequestId,
-Status,
-VPCConnectionId
+arn,
+availability_status,
+creation_status,
+request_id,
+status,
+vpc_connection_id
 ;
 ```
 </TabItem>
@@ -354,12 +354,12 @@ AND SubnetIds = '{{ SubnetIds }}' --required
 AND SecurityGroupIds = '{{ SecurityGroupIds }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 RETURNING
-Arn,
-AvailabilityStatus,
-RequestId,
-Status,
-UpdateStatus,
-VPCConnectionId;
+arn,
+availability_status,
+request_id,
+status,
+update_status,
+vpc_connection_id;
 ```
 </TabItem>
 </Tabs>

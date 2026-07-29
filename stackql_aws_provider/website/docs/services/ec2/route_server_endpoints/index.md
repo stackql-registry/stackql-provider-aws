@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EniAddress" /></td>
+    <td><CopyableCode code="eni_address" /></td>
     <td><code>string</code></td>
     <td>The IP address of the Elastic network interface for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EniId" /></td>
+    <td><CopyableCode code="eni_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Elastic network interface for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for any failure in endpoint creation or operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteServerEndpointId" /></td>
+    <td><CopyableCode code="route_server_endpoint_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the route server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteServerId" /></td>
+    <td><CopyableCode code="route_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the route server associated with this endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the route server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subnet to place the route server endpoint into.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the route server endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC containing the endpoint.</td>
 </tr>
@@ -223,15 +223,15 @@ Describes one or more route server endpoints. A route server endpoint is an Amaz
 
 ```sql
 SELECT
-EniAddress,
-EniId,
-FailureReason,
-RouteServerEndpointId,
-RouteServerId,
-State,
-SubnetId,
-Tags,
-VpcId
+eni_address,
+eni_id,
+failure_reason,
+route_server_endpoint_id,
+route_server_id,
+state,
+subnet_id,
+tags,
+vpc_id
 FROM aws.ec2.route_server_endpoints
 WHERE region = '{{ region }}' -- required
 AND RouteServerEndpointId = '{{ RouteServerEndpointId }}'
@@ -275,15 +275,15 @@ SELECT
 '{{ DryRun }}',
 '{{ TagSpecification }}'
 RETURNING
-EniAddress,
-EniId,
-FailureReason,
-RouteServerEndpointId,
-RouteServerId,
-State,
-SubnetId,
-Tags,
-VpcId
+eni_address,
+eni_id,
+failure_reason,
+route_server_endpoint_id,
+route_server_id,
+state,
+subnet_id,
+tags,
+vpc_id
 ;
 ```
 </TabItem>

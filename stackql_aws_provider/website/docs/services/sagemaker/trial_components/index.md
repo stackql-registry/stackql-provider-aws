@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the component as displayed. If DisplayName isn't specified, TrialComponentName is displayed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputArtifacts" /></td>
+    <td><CopyableCode code="input_artifacts" /></td>
     <td><code>object</code></td>
     <td>The input artifacts of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LineageGroupArn" /></td>
+    <td><CopyableCode code="lineage_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the lineage group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:lineage-group/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataProperties" /></td>
+    <td><CopyableCode code="metadata_properties" /></td>
     <td><code>object</code></td>
     <td>Metadata properties of the tracking entity, trial, or trial component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>array</code></td>
     <td>The metrics for the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputArtifacts" /></td>
+    <td><CopyableCode code="output_artifacts" /></td>
     <td><code>object</code></td>
     <td>The output artifacts of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>The hyperparameters of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>The Amazon Resource Name (ARN) of the source and, optionally, the job type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sources" /></td>
+    <td><CopyableCode code="sources" /></td>
     <td><code>array</code></td>
     <td>A list of ARNs and, if applicable, job types for multiple sources of an experiment run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The status of the component. States include: InProgress Completed Failed</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialComponentArn" /></td>
+    <td><CopyableCode code="trial_component_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trial component. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:experiment-trial-component/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialComponentName" /></td>
+    <td><CopyableCode code="trial_component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the trial component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
@@ -155,57 +155,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the component as displayed. If DisplayName isn't specified, TrialComponentName is displayed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the component started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The status of the component. States include: InProgress Completed Failed</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialComponentArn" /></td>
+    <td><CopyableCode code="trial_component_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trial component. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:experiment-trial-component/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialComponentName" /></td>
+    <td><CopyableCode code="trial_component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the trial component. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialComponentSource" /></td>
+    <td><CopyableCode code="trial_component_source" /></td>
     <td><code>object</code></td>
     <td>The Amazon Resource Name (ARN) and job type of the source of a trial component.</td>
 </tr>
@@ -317,24 +317,24 @@ Provides a list of a trials component's properties.
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-DisplayName,
-EndTime,
-InputArtifacts,
-LastModifiedBy,
-LastModifiedTime,
-LineageGroupArn,
-MetadataProperties,
-Metrics,
-OutputArtifacts,
-Parameters,
-Source,
-Sources,
-StartTime,
-Status,
-TrialComponentArn,
-TrialComponentName
+created_by,
+creation_time,
+display_name,
+end_time,
+input_artifacts,
+last_modified_by,
+last_modified_time,
+lineage_group_arn,
+metadata_properties,
+metrics,
+output_artifacts,
+parameters,
+source,
+sources,
+start_time,
+status,
+trial_component_arn,
+trial_component_name
 FROM aws.sagemaker.trial_components
 WHERE region = '{{ region }}' -- required
 ;
@@ -346,17 +346,17 @@ Lists the trial components in your account. You can sort the list by trial compo
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-DisplayName,
-EndTime,
-LastModifiedBy,
-LastModifiedTime,
-StartTime,
-Status,
-TrialComponentArn,
-TrialComponentName,
-TrialComponentSource
+created_by,
+creation_time,
+display_name,
+end_time,
+last_modified_by,
+last_modified_time,
+start_time,
+status,
+trial_component_arn,
+trial_component_name,
+trial_component_source
 FROM aws.sagemaker.trial_components
 WHERE region = '{{ region }}' -- required
 ;
@@ -405,7 +405,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TrialComponentArn
+trial_component_arn
 ;
 ```
 </TabItem>
@@ -494,8 +494,8 @@ region = '{{ region }}' --required
 AND TrialComponentName = '{{ TrialComponentName }}' --required
 AND TrialName = '{{ TrialName }}' --required
 RETURNING
-TrialArn,
-TrialComponentArn;
+trial_arn,
+trial_component_arn;
 ```
 </TabItem>
 <TabItem value="update_trial_component">
@@ -520,7 +520,7 @@ WHERE
 region = '{{ region }}' --required
 AND TrialComponentName = '{{ TrialComponentName }}' --required
 RETURNING
-TrialComponentArn;
+trial_component_arn;
 ```
 </TabItem>
 </Tabs>

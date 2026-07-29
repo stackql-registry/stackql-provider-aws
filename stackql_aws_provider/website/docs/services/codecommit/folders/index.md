@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commitId" /></td>
+    <td><CopyableCode code="commit_id" /></td>
     <td><code>string</code></td>
     <td>The full commit ID used as a reference for the returned version of the folder content.</td>
 </tr>
@@ -60,27 +60,27 @@ The following fields are returned by `SELECT` queries:
     <td>The list of files in the specified folder, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="folderPath" /></td>
+    <td><CopyableCode code="folder_path" /></td>
     <td><code>string</code></td>
     <td>The fully qualified path of the folder whose contents are returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subFolders" /></td>
+    <td><CopyableCode code="sub_folders" /></td>
     <td><code>array</code></td>
     <td>The list of folders that exist under the specified folder, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subModules" /></td>
+    <td><CopyableCode code="sub_modules" /></td>
     <td><code>array</code></td>
     <td>The list of submodules in the specified folder, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="symbolicLinks" /></td>
+    <td><CopyableCode code="symbolic_links" /></td>
     <td><code>array</code></td>
     <td>The list of symbolic links to other files and folders in the specified folder, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="treeId" /></td>
+    <td><CopyableCode code="tree_id" /></td>
     <td><code>string</code></td>
     <td>The full SHA-1 pointer of the tree information for the commit that contains the folder.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns the contents of a specified folder in a repository.
 
 ```sql
 SELECT
-commitId,
+commit_id,
 files,
-folderPath,
-subFolders,
-subModules,
-symbolicLinks,
-treeId
+folder_path,
+sub_folders,
+sub_modules,
+symbolic_links,
+tree_id
 FROM aws.codecommit.folders
 WHERE region = '{{ region }}' -- required
 ;

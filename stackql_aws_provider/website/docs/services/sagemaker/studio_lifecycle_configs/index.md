@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the Amazon SageMaker AI Studio Lifecycle Configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>This value is equivalent to CreationTime because Amazon SageMaker AI Studio Lifecycle Configurations are immutable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioLifecycleConfigAppType" /></td>
+    <td><CopyableCode code="studio_lifecycle_config_app_type" /></td>
     <td><code>string</code></td>
     <td>The App type that the Lifecycle Configuration is attached to. (JupyterServer, KernelGateway, CodeEditor, JupyterLab)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioLifecycleConfigArn" /></td>
+    <td><CopyableCode code="studio_lifecycle_config_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Lifecycle Configuration to describe. (pattern: &lt;code&gt;(arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:studio-lifecycle-config/.*|None)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioLifecycleConfigContent" /></td>
+    <td><CopyableCode code="studio_lifecycle_config_content" /></td>
     <td><code>string</code></td>
     <td>The content of your Amazon SageMaker AI Studio Lifecycle Configuration script. (pattern: &lt;code&gt;&#91;\S\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioLifecycleConfigName" /></td>
+    <td><CopyableCode code="studio_lifecycle_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon SageMaker AI Studio Lifecycle Configuration that is described. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the Amazon SageMaker AI Studio Lifecycle Configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>This value is equivalent to CreationTime because Amazon SageMaker AI Studio Lifecycle Configurations are immutable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioLifecycleConfigAppType" /></td>
+    <td><CopyableCode code="studio_lifecycle_config_app_type" /></td>
     <td><code>string</code></td>
     <td>The App type to which the Lifecycle Configuration is attached. (JupyterServer, KernelGateway, CodeEditor, JupyterLab)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioLifecycleConfigArn" /></td>
+    <td><CopyableCode code="studio_lifecycle_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Lifecycle Configuration. (pattern: &lt;code&gt;(arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:studio-lifecycle-config/.*|None)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioLifecycleConfigName" /></td>
+    <td><CopyableCode code="studio_lifecycle_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon SageMaker AI Studio Lifecycle Configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
@@ -206,12 +206,12 @@ Describes the Amazon SageMaker AI Studio Lifecycle Configuration.
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-StudioLifecycleConfigAppType,
-StudioLifecycleConfigArn,
-StudioLifecycleConfigContent,
-StudioLifecycleConfigName
+creation_time,
+last_modified_time,
+studio_lifecycle_config_app_type,
+studio_lifecycle_config_arn,
+studio_lifecycle_config_content,
+studio_lifecycle_config_name
 FROM aws.sagemaker.studio_lifecycle_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -223,11 +223,11 @@ Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your Amazon Web
 
 ```sql
 SELECT
-CreationTime,
-LastModifiedTime,
-StudioLifecycleConfigAppType,
-StudioLifecycleConfigArn,
-StudioLifecycleConfigName
+creation_time,
+last_modified_time,
+studio_lifecycle_config_app_type,
+studio_lifecycle_config_arn,
+studio_lifecycle_config_name
 FROM aws.sagemaker.studio_lifecycle_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -264,7 +264,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-StudioLifecycleConfigArn
+studio_lifecycle_config_arn
 ;
 ```
 </TabItem>

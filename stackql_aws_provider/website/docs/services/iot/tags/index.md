@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The tag's key. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The tag's value.</td>
 </tr>
@@ -148,8 +148,8 @@ Lists the tags (metadata) you have assigned to the resource. Requires permission
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.iot.tags
 WHERE resourceArn = '{{ resourceArn }}' -- required
 AND region = '{{ region }}' -- required

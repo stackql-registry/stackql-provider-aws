@@ -50,457 +50,457 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActivityStreamEngineNativeAuditFieldsIncluded" /></td>
+    <td><CopyableCode code="activity_stream_engine_native_audit_fields_included" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether engine-native audit fields are included in the database activity stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamKinesisStreamName" /></td>
+    <td><CopyableCode code="activity_stream_kinesis_stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Kinesis data stream used for the database activity stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamKmsKeyId" /></td>
+    <td><CopyableCode code="activity_stream_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key identifier used for encrypting messages in the database activity stream. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamMode" /></td>
+    <td><CopyableCode code="activity_stream_mode" /></td>
     <td><code>string</code></td>
     <td>The mode of the database activity stream. Database events such as a change or access generate an activity stream event. RDS for Oracle always handles these events asynchronously.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamPolicyStatus" /></td>
+    <td><CopyableCode code="activity_stream_policy_status" /></td>
     <td><code>string</code></td>
     <td>The status of the policy state of the activity stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActivityStreamStatus" /></td>
+    <td><CopyableCode code="activity_stream_status" /></td>
     <td><code>string</code></td>
     <td>The status of the database activity stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AdditionalStorageVolumes" /></td>
+    <td><CopyableCode code="additional_storage_volumes" /></td>
     <td><code>string</code></td>
     <td>The additional storage volumes associated with the DB instance. RDS supports additional storage volumes for RDS for Oracle and RDS for SQL Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage in gibibytes (GiB) allocated for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedRoles" /></td>
+    <td><CopyableCode code="associated_roles" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Identity and Access Management (IAM) roles associated with the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether minor version patches are applied automatically. For more information about automatic minor version upgrades, see Automatically upgrading the minor engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomaticRestartTime" /></td>
+    <td><CopyableCode code="automatic_restart_time" /></td>
     <td><code>string</code></td>
     <td>The time when a stopped DB instance is restarted automatically.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomationMode" /></td>
+    <td><CopyableCode code="automation_mode" /></td>
     <td><code>string</code></td>
     <td>The automation mode of the RDS Custom DB instance: full or all paused. If full, the DB instance automates monitoring and instance recovery. If all paused, the instance pauses automation for the duration set by --resume-full-automation-mode-minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The name of the Availability Zone where the DB instance is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsBackupRecoveryPointArn" /></td>
+    <td><CopyableCode code="aws_backup_recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which automatic DB snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupTarget" /></td>
+    <td><CopyableCode code="backup_target" /></td>
     <td><code>string</code></td>
     <td>The location where automated backups and manual snapshots are stored: Dedicated Local Zones, Amazon Web Services Outposts or the Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CACertificateIdentifier" /></td>
+    <td><CopyableCode code="ca_certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the CA certificate for this DB instance. For more information, see Using SSL/TLS to encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateDetails" /></td>
+    <td><CopyableCode code="certificate_details" /></td>
     <td><code>string</code></td>
     <td>The details of the DB instance's server certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CharacterSetName" /></td>
+    <td><CopyableCode code="character_set_name" /></td>
     <td><code>string</code></td>
     <td>If present, specifies the name of the character set that this instance is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyTagsToSnapshot" /></td>
+    <td><CopyableCode code="copy_tags_to_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether tags are copied from the DB instance to snapshots of the DB instance. This setting doesn't apply to Amazon Aurora DB instances. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB instance has no effect on the DB cluster setting. For more information, see DBCluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomIamInstanceProfile" /></td>
+    <td><CopyableCode code="custom_iam_instance_profile" /></td>
     <td><code>string</code></td>
     <td>The instance profile associated with the underlying Amazon EC2 instance of an RDS Custom DB instance. The instance profile must meet the following requirements: The profile must exist in your account. The profile must have an IAM role that Amazon EC2 has permissions to assume. The instance profile name and the associated IAM role name must start with the prefix AWSRDSCustom. For the list of permissions required for the IAM role, see Configure IAM and your VPC in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerOwnedIpEnabled" /></td>
+    <td><CopyableCode code="customer_owned_ip_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a customer-owned IP address (CoIP) is enabled for an RDS on Outposts DB instance. A CoIP provides local or external connectivity to resources in your Outpost subnets through your on-premises network. For some use cases, a CoIP can provide lower latency for connections to the DB instance from outside of its virtual private cloud (VPC) on your local network. For more information about RDS on Outposts, see Working with Amazon RDS on Amazon Web Services Outposts in the Amazon RDS User Guide. For more information about CoIPs, see Customer-owned IP addresses in the Amazon Web Services Outposts User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>If the DB instance is a member of a DB cluster, indicates the name of the DB cluster that the DB instance is a member of.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceArn" /></td>
+    <td><CopyableCode code="db_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceAutomatedBackupsReplications" /></td>
+    <td><CopyableCode code="db_instance_automated_backups_replications" /></td>
     <td><code>string</code></td>
     <td>The list of replicated automated backups associated with the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceClass" /></td>
+    <td><CopyableCode code="db_instance_class" /></td>
     <td><code>string</code></td>
     <td>The name of the compute and memory capacity class of the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceIdentifier" /></td>
+    <td><CopyableCode code="db_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>The user-supplied database identifier. This identifier is the unique key that identifies a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceStatus" /></td>
+    <td><CopyableCode code="db_instance_status" /></td>
     <td><code>string</code></td>
     <td>The current state of this database. For information about DB instance statuses, see Viewing DB instance status in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBName" /></td>
+    <td><CopyableCode code="db_name" /></td>
     <td><code>string</code></td>
     <td>The initial database name that you provided (if required) when you created the DB instance. This name is returned for the life of your DB instance. For an RDS for Oracle CDB instance, the name identifies the PDB rather than the CDB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBParameterGroups" /></td>
+    <td><CopyableCode code="db_parameter_groups" /></td>
     <td><code>string</code></td>
     <td>The list of DB parameter groups applied to this DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSecurityGroups" /></td>
+    <td><CopyableCode code="db_security_groups" /></td>
     <td><code>string</code></td>
     <td>A list of DB security group elements containing DBSecurityGroup.Name and DBSecurityGroup.Status subelements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroup" /></td>
+    <td><CopyableCode code="db_subnet_group" /></td>
     <td><code>string</code></td>
     <td>Information about the subnet group associated with the DB instance, including the name, description, and subnets in the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSystemId" /></td>
+    <td><CopyableCode code="db_system_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle system ID (Oracle SID) for a container database (CDB). The Oracle SID is also the name of the CDB. This setting is only valid for RDS Custom DB instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseInsightsMode" /></td>
+    <td><CopyableCode code="database_insights_mode" /></td>
     <td><code>string</code></td>
     <td>The mode of Database Insights that is enabled for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbInstancePort" /></td>
+    <td><CopyableCode code="db_instance_port" /></td>
     <td><code>integer</code></td>
     <td>The port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a different port than the DB cluster port.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbiResourceId" /></td>
+    <td><CopyableCode code="dbi_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region-unique, immutable identifier for the DB instance. This identifier is found in Amazon Web Services CloudTrail log entries whenever the Amazon Web Services KMS key for the DB instance is accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedLogVolume" /></td>
+    <td><CopyableCode code="dedicated_log_volume" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance has a dedicated log volume (DLV) enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance has deletion protection enabled. The database can't be deleted when deletion protection is enabled. For more information, see Deleting a DB Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainMemberships" /></td>
+    <td><CopyableCode code="domain_memberships" /></td>
     <td><code>string</code></td>
     <td>The Active Directory Domain membership records associated with the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledCloudwatchLogsExports" /></td>
+    <td><CopyableCode code="enabled_cloudwatch_logs_exports" /></td>
     <td><code>string</code></td>
     <td>A list of log types that this DB instance is configured to export to CloudWatch Logs. Log types vary by DB engine. For information about the log types for each DB engine, see Monitoring Amazon RDS log files in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The connection endpoint for the DB instance. The endpoint might not be shown for instances with the status of creating.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The database engine used for this DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineLifecycleSupport" /></td>
+    <td><CopyableCode code="engine_lifecycle_support" /></td>
     <td><code>string</code></td>
     <td>The lifecycle type for the DB instance. For more information, see CreateDBInstance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnhancedMonitoringResourceArn" /></td>
+    <td><CopyableCode code="enhanced_monitoring_resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring metrics data for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled for the DB instance. For a list of engine versions that support IAM database authentication, see IAM database authentication in the Amazon RDS User Guide and IAM database authentication in Aurora in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCreateTime" /></td>
+    <td><CopyableCode code="instance_create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the DB instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iops" /></td>
+    <td><CopyableCode code="iops" /></td>
     <td><code>integer</code></td>
     <td>The Provisioned IOPS (I/O operations per second) value for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsStorageConfigUpgradeAvailable" /></td>
+    <td><CopyableCode code="is_storage_config_upgrade_available" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether an upgrade is recommended for the storage file system configuration on the DB instance. To migrate to the preferred configuration, you can either create a blue/green deployment, or create a read replica from the DB instance. For more information, see Upgrading the storage file system for a DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If StorageEncrypted is enabled, the Amazon Web Services KMS key identifier for the encrypted DB instance. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRestorableTime" /></td>
+    <td><CopyableCode code="latest_restorable_time" /></td>
     <td><code>string</code></td>
     <td>The latest time to which a database in this DB instance can be restored with point-in-time restore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>The license model information for this DB instance. This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ListenerEndpoint" /></td>
+    <td><CopyableCode code="listener_endpoint" /></td>
     <td><code>string</code></td>
     <td>The listener connection endpoint for SQL Server Always On.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUserSecret" /></td>
+    <td><CopyableCode code="master_user_secret" /></td>
     <td><code>string</code></td>
     <td>The secret managed by RDS in Amazon Web Services Secrets Manager for the master user password. For more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master username for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxAllocatedStorage" /></td>
+    <td><CopyableCode code="max_allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The upper limit in gibibytes (GiB) to which Amazon RDS can automatically scale the storage of the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringInterval" /></td>
+    <td><CopyableCode code="monitoring_interval" /></td>
     <td><code>integer</code></td>
     <td>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringRoleArn" /></td>
+    <td><CopyableCode code="monitoring_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZ" /></td>
+    <td><CopyableCode code="multi_az" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance is a Multi-AZ deployment. This setting doesn't apply to RDS Custom DB instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiTenant" /></td>
+    <td><CopyableCode code="multi_tenant" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the DB instance is in the multi-tenant configuration (TRUE) or the single-tenant configuration (FALSE).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NcharCharacterSetName" /></td>
+    <td><CopyableCode code="nchar_character_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the NCHAR character set for the Oracle DB instance. This character set specifies the Unicode encoding for data stored in table columns of type NCHAR, NCLOB, or NVARCHAR2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The network type of the DB instance. The network type is determined by the DBSubnetGroup specified for the DB instance. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6 protocols (DUAL). For more information, see Working with a DB instance in a VPC in the Amazon RDS User Guide and Working with a DB instance in a VPC in the Amazon Aurora User Guide. Valid Values: IPV4 | DUAL</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupMemberships" /></td>
+    <td><CopyableCode code="option_group_memberships" /></td>
     <td><code>string</code></td>
     <td>The list of option group memberships for this DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>Information about pending changes to the DB instance. This information is returned only when there are pending changes. Specific changes are identified by subelements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>string</code></td>
     <td>The progress of the storage optimization operation as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsEnabled" /></td>
+    <td><CopyableCode code="performance_insights_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Performance Insights is enabled for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsKMSKeyId" /></td>
+    <td><CopyableCode code="performance_insights_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS key identifier for encryption of Performance Insights data. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformanceInsightsRetentionPeriod" /></td>
+    <td><CopyableCode code="performance_insights_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days to retain Performance Insights data. Valid Values: 7 month * 31, where month is a number of months from 1-23. Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessorFeatures" /></td>
+    <td><CopyableCode code="processor_features" /></td>
     <td><code>string</code></td>
     <td>The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PromotionTier" /></td>
+    <td><CopyableCode code="promotion_tier" /></td>
     <td><code>integer</code></td>
     <td>The order of priority in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see Fault Tolerance for an Aurora DB Cluster in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PubliclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance is publicly accessible. When the DB instance is publicly accessible and you connect from outside of the DB instance's virtual private cloud (VPC), its Domain Name System (DNS) endpoint resolves to the public IP address. When you connect from within the same VPC as the DB instance, the endpoint resolves to the private IP address. Access to the DB cluster is ultimately controlled by the security group it uses. That public access isn't permitted if the security group assigned to the DB cluster doesn't permit it. When the DB instance isn't publicly accessible, it is an internal DB instance with a DNS name that resolves to a private IP address. For more information, see CreateDBInstance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaDBClusterIdentifiers" /></td>
+    <td><CopyableCode code="read_replica_db_cluster_identifiers" /></td>
     <td><code>string</code></td>
     <td>The identifiers of Aurora DB clusters to which the RDS DB instance is replicated as a read replica. For example, when you create an Aurora read replica of an RDS for MySQL DB instance, the Aurora MySQL DB cluster for the Aurora read replica is shown. This output doesn't contain information about cross-Region Aurora read replicas. Currently, each RDS DB instance can have only one Aurora read replica.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaDBInstanceIdentifiers" /></td>
+    <td><CopyableCode code="read_replica_db_instance_identifiers" /></td>
     <td><code>string</code></td>
     <td>The identifiers of the read replicas associated with this DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaSourceDBClusterIdentifier" /></td>
+    <td><CopyableCode code="read_replica_source_db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the source DB cluster if this DB instance is a read replica.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaSourceDBInstanceIdentifier" /></td>
+    <td><CopyableCode code="read_replica_source_db_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the source DB instance if this DB instance is a read replica.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicaMode" /></td>
+    <td><CopyableCode code="replica_mode" /></td>
     <td><code>string</code></td>
     <td>The open mode of a Db2 or an Oracle read replica. The default is open-read-only. For more information, see Working with replicas for Amazon RDS for Db2 and Working with read replicas for Amazon RDS for Oracle in the Amazon RDS User Guide. This attribute is only supported in RDS for Db2, RDS for Oracle, and RDS Custom for Oracle.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResumeFullAutomationModeTime" /></td>
+    <td><CopyableCode code="resume_full_automation_mode_time" /></td>
     <td><code>string</code></td>
     <td>The number of minutes to pause the automation. When the time period ends, RDS Custom resumes full automation. The minimum value is 60 (default). The maximum value is 1,440.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecondaryAvailabilityZone" /></td>
+    <td><CopyableCode code="secondary_availability_zone" /></td>
     <td><code>string</code></td>
     <td>If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusInfos" /></td>
+    <td><CopyableCode code="status_infos" /></td>
     <td><code>string</code></td>
     <td>The status of a read replica. If the DB instance isn't a read replica, the value is blank.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncryptionType" /></td>
+    <td><CopyableCode code="storage_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used to protect data at rest in the DB instance. Possible values: none - The DB instance is not encrypted. sse-rds - The DB instance is encrypted using an Amazon Web Services owned KMS key. sse-kms - The DB instance is encrypted using a customer managed KMS key or Amazon Web Services managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageThroughput" /></td>
+    <td><CopyableCode code="storage_throughput" /></td>
     <td><code>integer</code></td>
     <td>The storage throughput for the DB instance. This setting applies only to the gp3 storage type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type associated with the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageVolumeStatus" /></td>
+    <td><CopyableCode code="storage_volume_status" /></td>
     <td><code>string</code></td>
     <td>The detailed status information for storage volumes associated with the DB instance. This information helps identify which specific volume is causing the instance to be in a storage-full state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TdeCredentialArn" /></td>
+    <td><CopyableCode code="tde_credential_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN from the key store with which the instance is associated for TDE encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timezone" /></td>
+    <td><CopyableCode code="timezone" /></td>
     <td><code>string</code></td>
     <td>The time zone of the DB instance. In most cases, the Timezone element is empty. Timezone content appears only for RDS for Db2 and RDS for SQL Server DB instances that were created with a time zone specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeRolloutOrder" /></td>
+    <td><CopyableCode code="upgrade_rollout_order" /></td>
     <td><code>string</code></td>
     <td>This data type represents the order in which the instances are upgraded. &#91;first&#93; - Typically used for development or testing environments. &#91;second&#93; - Default order for resources not specifically configured. &#91;last&#93; - Usually reserved for production environments.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>string</code></td>
     <td>The list of Amazon EC2 VPC security groups that the DB instance belongs to.</td>
 </tr>
@@ -1219,97 +1219,97 @@ Describes provisioned RDS instances. This API supports pagination. This operatio
 
 ```sql
 SELECT
-ActivityStreamEngineNativeAuditFieldsIncluded,
-ActivityStreamKinesisStreamName,
-ActivityStreamKmsKeyId,
-ActivityStreamMode,
-ActivityStreamPolicyStatus,
-ActivityStreamStatus,
-AdditionalStorageVolumes,
-AllocatedStorage,
-AssociatedRoles,
-AutoMinorVersionUpgrade,
-AutomaticRestartTime,
-AutomationMode,
-AvailabilityZone,
-AwsBackupRecoveryPointArn,
-BackupRetentionPeriod,
-BackupTarget,
-CACertificateIdentifier,
-CertificateDetails,
-CharacterSetName,
-CopyTagsToSnapshot,
-CustomIamInstanceProfile,
-CustomerOwnedIpEnabled,
-DBClusterIdentifier,
-DBInstanceArn,
-DBInstanceAutomatedBackupsReplications,
-DBInstanceClass,
-DBInstanceIdentifier,
-DBInstanceStatus,
-DBName,
-DBParameterGroups,
-DBSecurityGroups,
-DBSubnetGroup,
-DBSystemId,
-DatabaseInsightsMode,
-DbInstancePort,
-DbiResourceId,
-DedicatedLogVolume,
-DeletionProtection,
-DomainMemberships,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-EnhancedMonitoringResourceArn,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-IsStorageConfigUpgradeAvailable,
-KmsKeyId,
-LatestRestorableTime,
-LicenseModel,
-ListenerEndpoint,
-MasterUserSecret,
-MasterUsername,
-MaxAllocatedStorage,
-MonitoringInterval,
-MonitoringRoleArn,
-MultiAZ,
-MultiTenant,
-NcharCharacterSetName,
-NetworkType,
-OptionGroupMemberships,
-PendingModifiedValues,
-PercentProgress,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PerformanceInsightsRetentionPeriod,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-ProcessorFeatures,
-PromotionTier,
-PubliclyAccessible,
-ReadReplicaDBClusterIdentifiers,
-ReadReplicaDBInstanceIdentifiers,
-ReadReplicaSourceDBClusterIdentifier,
-ReadReplicaSourceDBInstanceIdentifier,
-ReplicaMode,
-ResumeFullAutomationModeTime,
-SecondaryAvailabilityZone,
-StatusInfos,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-StorageVolumeStatus,
-TagList,
-TdeCredentialArn,
-Timezone,
-UpgradeRolloutOrder,
-VpcSecurityGroups
+activity_stream_engine_native_audit_fields_included,
+activity_stream_kinesis_stream_name,
+activity_stream_kms_key_id,
+activity_stream_mode,
+activity_stream_policy_status,
+activity_stream_status,
+additional_storage_volumes,
+allocated_storage,
+associated_roles,
+auto_minor_version_upgrade,
+automatic_restart_time,
+automation_mode,
+availability_zone,
+aws_backup_recovery_point_arn,
+backup_retention_period,
+backup_target,
+ca_certificate_identifier,
+certificate_details,
+character_set_name,
+copy_tags_to_snapshot,
+custom_iam_instance_profile,
+customer_owned_ip_enabled,
+db_cluster_identifier,
+db_instance_arn,
+db_instance_automated_backups_replications,
+db_instance_class,
+db_instance_identifier,
+db_instance_status,
+db_name,
+db_parameter_groups,
+db_security_groups,
+db_subnet_group,
+db_system_id,
+database_insights_mode,
+db_instance_port,
+dbi_resource_id,
+dedicated_log_volume,
+deletion_protection,
+domain_memberships,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+enhanced_monitoring_resource_arn,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+is_storage_config_upgrade_available,
+kms_key_id,
+latest_restorable_time,
+license_model,
+listener_endpoint,
+master_user_secret,
+master_username,
+max_allocated_storage,
+monitoring_interval,
+monitoring_role_arn,
+multi_az,
+multi_tenant,
+nchar_character_set_name,
+network_type,
+option_group_memberships,
+pending_modified_values,
+percent_progress,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+performance_insights_retention_period,
+preferred_backup_window,
+preferred_maintenance_window,
+processor_features,
+promotion_tier,
+publicly_accessible,
+read_replica_db_cluster_identifiers,
+read_replica_db_instance_identifiers,
+read_replica_source_db_cluster_identifier,
+read_replica_source_db_instance_identifier,
+replica_mode,
+resume_full_automation_mode_time,
+secondary_availability_zone,
+status_infos,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+storage_volume_status,
+tag_list,
+tde_credential_arn,
+timezone,
+upgrade_rollout_order,
+vpc_security_groups
 FROM aws.rds.db_instances
 WHERE region = '{{ region }}' -- required
 AND DBInstanceIdentifier = '{{ DBInstanceIdentifier }}'
@@ -1477,97 +1477,97 @@ SELECT
 '{{ TagSpecifications }}',
 '{{ MasterUserAuthenticationType }}'
 RETURNING
-ActivityStreamEngineNativeAuditFieldsIncluded,
-ActivityStreamKinesisStreamName,
-ActivityStreamKmsKeyId,
-ActivityStreamMode,
-ActivityStreamPolicyStatus,
-ActivityStreamStatus,
-AdditionalStorageVolumes,
-AllocatedStorage,
-AssociatedRoles,
-AutoMinorVersionUpgrade,
-AutomaticRestartTime,
-AutomationMode,
-AvailabilityZone,
-AwsBackupRecoveryPointArn,
-BackupRetentionPeriod,
-BackupTarget,
-CACertificateIdentifier,
-CertificateDetails,
-CharacterSetName,
-CopyTagsToSnapshot,
-CustomIamInstanceProfile,
-CustomerOwnedIpEnabled,
-DBClusterIdentifier,
-DBInstanceArn,
-DBInstanceAutomatedBackupsReplications,
-DBInstanceClass,
-DBInstanceIdentifier,
-DBInstanceStatus,
-DBName,
-DBParameterGroups,
-DBSecurityGroups,
-DBSubnetGroup,
-DBSystemId,
-DatabaseInsightsMode,
-DbInstancePort,
-DbiResourceId,
-DedicatedLogVolume,
-DeletionProtection,
-DomainMemberships,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-EnhancedMonitoringResourceArn,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-IsStorageConfigUpgradeAvailable,
-KmsKeyId,
-LatestRestorableTime,
-LicenseModel,
-ListenerEndpoint,
-MasterUserSecret,
-MasterUsername,
-MaxAllocatedStorage,
-MonitoringInterval,
-MonitoringRoleArn,
-MultiAZ,
-MultiTenant,
-NcharCharacterSetName,
-NetworkType,
-OptionGroupMemberships,
-PendingModifiedValues,
-PercentProgress,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PerformanceInsightsRetentionPeriod,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-ProcessorFeatures,
-PromotionTier,
-PubliclyAccessible,
-ReadReplicaDBClusterIdentifiers,
-ReadReplicaDBInstanceIdentifiers,
-ReadReplicaSourceDBClusterIdentifier,
-ReadReplicaSourceDBInstanceIdentifier,
-ReplicaMode,
-ResumeFullAutomationModeTime,
-SecondaryAvailabilityZone,
-StatusInfos,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-StorageVolumeStatus,
-TagList,
-TdeCredentialArn,
-Timezone,
-UpgradeRolloutOrder,
-VpcSecurityGroups
+activity_stream_engine_native_audit_fields_included,
+activity_stream_kinesis_stream_name,
+activity_stream_kms_key_id,
+activity_stream_mode,
+activity_stream_policy_status,
+activity_stream_status,
+additional_storage_volumes,
+allocated_storage,
+associated_roles,
+auto_minor_version_upgrade,
+automatic_restart_time,
+automation_mode,
+availability_zone,
+aws_backup_recovery_point_arn,
+backup_retention_period,
+backup_target,
+ca_certificate_identifier,
+certificate_details,
+character_set_name,
+copy_tags_to_snapshot,
+custom_iam_instance_profile,
+customer_owned_ip_enabled,
+db_cluster_identifier,
+db_instance_arn,
+db_instance_automated_backups_replications,
+db_instance_class,
+db_instance_identifier,
+db_instance_status,
+db_name,
+db_parameter_groups,
+db_security_groups,
+db_subnet_group,
+db_system_id,
+database_insights_mode,
+db_instance_port,
+dbi_resource_id,
+dedicated_log_volume,
+deletion_protection,
+domain_memberships,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+enhanced_monitoring_resource_arn,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+is_storage_config_upgrade_available,
+kms_key_id,
+latest_restorable_time,
+license_model,
+listener_endpoint,
+master_user_secret,
+master_username,
+max_allocated_storage,
+monitoring_interval,
+monitoring_role_arn,
+multi_az,
+multi_tenant,
+nchar_character_set_name,
+network_type,
+option_group_memberships,
+pending_modified_values,
+percent_progress,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+performance_insights_retention_period,
+preferred_backup_window,
+preferred_maintenance_window,
+processor_features,
+promotion_tier,
+publicly_accessible,
+read_replica_db_cluster_identifiers,
+read_replica_db_instance_identifiers,
+read_replica_source_db_cluster_identifier,
+read_replica_source_db_instance_identifier,
+replica_mode,
+resume_full_automation_mode_time,
+secondary_availability_zone,
+status_infos,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+storage_volume_status,
+tag_list,
+tde_credential_arn,
+timezone,
+upgrade_rollout_order,
+vpc_security_groups
 ;
 ```
 </TabItem>
@@ -1680,97 +1680,97 @@ SELECT
 '{{ AdditionalStorageVolumes }}',
 '{{ TagSpecifications }}'
 RETURNING
-ActivityStreamEngineNativeAuditFieldsIncluded,
-ActivityStreamKinesisStreamName,
-ActivityStreamKmsKeyId,
-ActivityStreamMode,
-ActivityStreamPolicyStatus,
-ActivityStreamStatus,
-AdditionalStorageVolumes,
-AllocatedStorage,
-AssociatedRoles,
-AutoMinorVersionUpgrade,
-AutomaticRestartTime,
-AutomationMode,
-AvailabilityZone,
-AwsBackupRecoveryPointArn,
-BackupRetentionPeriod,
-BackupTarget,
-CACertificateIdentifier,
-CertificateDetails,
-CharacterSetName,
-CopyTagsToSnapshot,
-CustomIamInstanceProfile,
-CustomerOwnedIpEnabled,
-DBClusterIdentifier,
-DBInstanceArn,
-DBInstanceAutomatedBackupsReplications,
-DBInstanceClass,
-DBInstanceIdentifier,
-DBInstanceStatus,
-DBName,
-DBParameterGroups,
-DBSecurityGroups,
-DBSubnetGroup,
-DBSystemId,
-DatabaseInsightsMode,
-DbInstancePort,
-DbiResourceId,
-DedicatedLogVolume,
-DeletionProtection,
-DomainMemberships,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-EnhancedMonitoringResourceArn,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-IsStorageConfigUpgradeAvailable,
-KmsKeyId,
-LatestRestorableTime,
-LicenseModel,
-ListenerEndpoint,
-MasterUserSecret,
-MasterUsername,
-MaxAllocatedStorage,
-MonitoringInterval,
-MonitoringRoleArn,
-MultiAZ,
-MultiTenant,
-NcharCharacterSetName,
-NetworkType,
-OptionGroupMemberships,
-PendingModifiedValues,
-PercentProgress,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PerformanceInsightsRetentionPeriod,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-ProcessorFeatures,
-PromotionTier,
-PubliclyAccessible,
-ReadReplicaDBClusterIdentifiers,
-ReadReplicaDBInstanceIdentifiers,
-ReadReplicaSourceDBClusterIdentifier,
-ReadReplicaSourceDBInstanceIdentifier,
-ReplicaMode,
-ResumeFullAutomationModeTime,
-SecondaryAvailabilityZone,
-StatusInfos,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-StorageVolumeStatus,
-TagList,
-TdeCredentialArn,
-Timezone,
-UpgradeRolloutOrder,
-VpcSecurityGroups
+activity_stream_engine_native_audit_fields_included,
+activity_stream_kinesis_stream_name,
+activity_stream_kms_key_id,
+activity_stream_mode,
+activity_stream_policy_status,
+activity_stream_status,
+additional_storage_volumes,
+allocated_storage,
+associated_roles,
+auto_minor_version_upgrade,
+automatic_restart_time,
+automation_mode,
+availability_zone,
+aws_backup_recovery_point_arn,
+backup_retention_period,
+backup_target,
+ca_certificate_identifier,
+certificate_details,
+character_set_name,
+copy_tags_to_snapshot,
+custom_iam_instance_profile,
+customer_owned_ip_enabled,
+db_cluster_identifier,
+db_instance_arn,
+db_instance_automated_backups_replications,
+db_instance_class,
+db_instance_identifier,
+db_instance_status,
+db_name,
+db_parameter_groups,
+db_security_groups,
+db_subnet_group,
+db_system_id,
+database_insights_mode,
+db_instance_port,
+dbi_resource_id,
+dedicated_log_volume,
+deletion_protection,
+domain_memberships,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+enhanced_monitoring_resource_arn,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+is_storage_config_upgrade_available,
+kms_key_id,
+latest_restorable_time,
+license_model,
+listener_endpoint,
+master_user_secret,
+master_username,
+max_allocated_storage,
+monitoring_interval,
+monitoring_role_arn,
+multi_az,
+multi_tenant,
+nchar_character_set_name,
+network_type,
+option_group_memberships,
+pending_modified_values,
+percent_progress,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+performance_insights_retention_period,
+preferred_backup_window,
+preferred_maintenance_window,
+processor_features,
+promotion_tier,
+publicly_accessible,
+read_replica_db_cluster_identifiers,
+read_replica_db_instance_identifiers,
+read_replica_source_db_cluster_identifier,
+read_replica_source_db_instance_identifier,
+replica_mode,
+resume_full_automation_mode_time,
+secondary_availability_zone,
+status_infos,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+storage_volume_status,
+tag_list,
+tde_credential_arn,
+timezone,
+upgrade_rollout_order,
+vpc_security_groups
 ;
 ```
 </TabItem>
@@ -2177,97 +2177,97 @@ AND AdditionalStorageVolumes = '{{ AdditionalStorageVolumes}}'
 AND TagSpecifications = '{{ TagSpecifications}}'
 AND MasterUserAuthenticationType = '{{ MasterUserAuthenticationType}}'
 RETURNING
-ActivityStreamEngineNativeAuditFieldsIncluded,
-ActivityStreamKinesisStreamName,
-ActivityStreamKmsKeyId,
-ActivityStreamMode,
-ActivityStreamPolicyStatus,
-ActivityStreamStatus,
-AdditionalStorageVolumes,
-AllocatedStorage,
-AssociatedRoles,
-AutoMinorVersionUpgrade,
-AutomaticRestartTime,
-AutomationMode,
-AvailabilityZone,
-AwsBackupRecoveryPointArn,
-BackupRetentionPeriod,
-BackupTarget,
-CACertificateIdentifier,
-CertificateDetails,
-CharacterSetName,
-CopyTagsToSnapshot,
-CustomIamInstanceProfile,
-CustomerOwnedIpEnabled,
-DBClusterIdentifier,
-DBInstanceArn,
-DBInstanceAutomatedBackupsReplications,
-DBInstanceClass,
-DBInstanceIdentifier,
-DBInstanceStatus,
-DBName,
-DBParameterGroups,
-DBSecurityGroups,
-DBSubnetGroup,
-DBSystemId,
-DatabaseInsightsMode,
-DbInstancePort,
-DbiResourceId,
-DedicatedLogVolume,
-DeletionProtection,
-DomainMemberships,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineLifecycleSupport,
-EngineVersion,
-EnhancedMonitoringResourceArn,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-IsStorageConfigUpgradeAvailable,
-KmsKeyId,
-LatestRestorableTime,
-LicenseModel,
-ListenerEndpoint,
-MasterUserSecret,
-MasterUsername,
-MaxAllocatedStorage,
-MonitoringInterval,
-MonitoringRoleArn,
-MultiAZ,
-MultiTenant,
-NcharCharacterSetName,
-NetworkType,
-OptionGroupMemberships,
-PendingModifiedValues,
-PercentProgress,
-PerformanceInsightsEnabled,
-PerformanceInsightsKMSKeyId,
-PerformanceInsightsRetentionPeriod,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-ProcessorFeatures,
-PromotionTier,
-PubliclyAccessible,
-ReadReplicaDBClusterIdentifiers,
-ReadReplicaDBInstanceIdentifiers,
-ReadReplicaSourceDBClusterIdentifier,
-ReadReplicaSourceDBInstanceIdentifier,
-ReplicaMode,
-ResumeFullAutomationModeTime,
-SecondaryAvailabilityZone,
-StatusInfos,
-StorageEncrypted,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-StorageVolumeStatus,
-TagList,
-TdeCredentialArn,
-Timezone,
-UpgradeRolloutOrder,
-VpcSecurityGroups;
+activity_stream_engine_native_audit_fields_included,
+activity_stream_kinesis_stream_name,
+activity_stream_kms_key_id,
+activity_stream_mode,
+activity_stream_policy_status,
+activity_stream_status,
+additional_storage_volumes,
+allocated_storage,
+associated_roles,
+auto_minor_version_upgrade,
+automatic_restart_time,
+automation_mode,
+availability_zone,
+aws_backup_recovery_point_arn,
+backup_retention_period,
+backup_target,
+ca_certificate_identifier,
+certificate_details,
+character_set_name,
+copy_tags_to_snapshot,
+custom_iam_instance_profile,
+customer_owned_ip_enabled,
+db_cluster_identifier,
+db_instance_arn,
+db_instance_automated_backups_replications,
+db_instance_class,
+db_instance_identifier,
+db_instance_status,
+db_name,
+db_parameter_groups,
+db_security_groups,
+db_subnet_group,
+db_system_id,
+database_insights_mode,
+db_instance_port,
+dbi_resource_id,
+dedicated_log_volume,
+deletion_protection,
+domain_memberships,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_lifecycle_support,
+engine_version,
+enhanced_monitoring_resource_arn,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+is_storage_config_upgrade_available,
+kms_key_id,
+latest_restorable_time,
+license_model,
+listener_endpoint,
+master_user_secret,
+master_username,
+max_allocated_storage,
+monitoring_interval,
+monitoring_role_arn,
+multi_az,
+multi_tenant,
+nchar_character_set_name,
+network_type,
+option_group_memberships,
+pending_modified_values,
+percent_progress,
+performance_insights_enabled,
+performance_insights_kms_key_id,
+performance_insights_retention_period,
+preferred_backup_window,
+preferred_maintenance_window,
+processor_features,
+promotion_tier,
+publicly_accessible,
+read_replica_db_cluster_identifiers,
+read_replica_db_instance_identifiers,
+read_replica_source_db_cluster_identifier,
+read_replica_source_db_instance_identifier,
+replica_mode,
+resume_full_automation_mode_time,
+secondary_availability_zone,
+status_infos,
+storage_encrypted,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+storage_volume_status,
+tag_list,
+tde_credential_arn,
+timezone,
+upgrade_rollout_order,
+vpc_security_groups;
 ```
 </TabItem>
 </Tabs>

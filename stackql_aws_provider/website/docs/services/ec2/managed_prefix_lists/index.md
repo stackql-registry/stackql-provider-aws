@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AddressFamily" /></td>
+    <td><CopyableCode code="address_family" /></td>
     <td><code>string</code></td>
     <td>The IP address version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPrefixListResolverSyncEnabled" /></td>
+    <td><CopyableCode code="ipam_prefix_list_resolver_sync_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether synchronization with an IPAM prefix list resolver is enabled for this managed prefix list. When enabled, the prefix list CIDRs are automatically updated based on the resolver's CIDR selection rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamPrefixListResolverTargetId" /></td>
+    <td><CopyableCode code="ipam_prefix_list_resolver_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM prefix list resolver target associated with this managed prefix list. When set, this prefix list becomes an IPAM managed prefix list. An IPAM-managed prefix list is a customer-managed prefix list that has been associated with an IPAM prefix list resolver target. When a prefix list becomes IPAM managed, its CIDRs are automatically synchronized based on the IPAM prefix list resolver's CIDR selection rules, and direct CIDR modifications are restricted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxEntries" /></td>
+    <td><CopyableCode code="max_entries" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of entries for the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the owner of the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListArn" /></td>
+    <td><CopyableCode code="prefix_list_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListId" /></td>
+    <td><CopyableCode code="prefix_list_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixListName" /></td>
+    <td><CopyableCode code="prefix_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>The state message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the prefix list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version of the prefix list.</td>
 </tr>
@@ -302,18 +302,18 @@ Describes your managed prefix lists and any Amazon Web Services-managed prefix l
 
 ```sql
 SELECT
-AddressFamily,
-IpamPrefixListResolverSyncEnabled,
-IpamPrefixListResolverTargetId,
-MaxEntries,
-OwnerId,
-PrefixListArn,
-PrefixListId,
-PrefixListName,
-State,
-StateMessage,
-Tags,
-Version
+address_family,
+ipam_prefix_list_resolver_sync_enabled,
+ipam_prefix_list_resolver_target_id,
+max_entries,
+owner_id,
+prefix_list_arn,
+prefix_list_id,
+prefix_list_name,
+state,
+state_message,
+tags,
+version
 FROM aws.ec2.managed_prefix_lists
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -361,18 +361,18 @@ SELECT
 '{{ TagSpecification }}',
 '{{ ClientToken }}'
 RETURNING
-AddressFamily,
-IpamPrefixListResolverSyncEnabled,
-IpamPrefixListResolverTargetId,
-MaxEntries,
-OwnerId,
-PrefixListArn,
-PrefixListId,
-PrefixListName,
-State,
-StateMessage,
-Tags,
-Version
+address_family,
+ipam_prefix_list_resolver_sync_enabled,
+ipam_prefix_list_resolver_target_id,
+max_entries,
+owner_id,
+prefix_list_arn,
+prefix_list_id,
+prefix_list_name,
+state,
+state_message,
+tags,
+version
 ;
 ```
 </TabItem>
@@ -442,18 +442,18 @@ AND RemoveEntry = '{{ RemoveEntry}}'
 AND MaxEntries = '{{ MaxEntries}}'
 AND IpamPrefixListResolverSyncEnabled = {{ IpamPrefixListResolverSyncEnabled}}
 RETURNING
-AddressFamily,
-IpamPrefixListResolverSyncEnabled,
-IpamPrefixListResolverTargetId,
-MaxEntries,
-OwnerId,
-PrefixListArn,
-PrefixListId,
-PrefixListName,
-State,
-StateMessage,
-Tags,
-Version;
+address_family,
+ipam_prefix_list_resolver_sync_enabled,
+ipam_prefix_list_resolver_target_id,
+max_entries,
+owner_id,
+prefix_list_arn,
+prefix_list_id,
+prefix_list_name,
+state,
+state_message,
+tags,
+version;
 ```
 </TabItem>
 </Tabs>

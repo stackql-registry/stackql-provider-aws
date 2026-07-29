@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceOwnerId" /></td>
+    <td><CopyableCode code="resource_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the transit gateway multicast domain association resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource, for example a VPC attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnet" /></td>
+    <td><CopyableCode code="subnet" /></td>
     <td><code>string</code></td>
     <td>The subnet associated with the transit gateway multicast domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway attachment.</td>
 </tr>
@@ -193,11 +193,11 @@ Gets information about the associations for the transit gateway multicast domain
 
 ```sql
 SELECT
-ResourceId,
-ResourceOwnerId,
-ResourceType,
-Subnet,
-TransitGatewayAttachmentId
+resource_id,
+resource_owner_id,
+resource_type,
+subnet,
+transit_gateway_attachment_id
 FROM aws.ec2.transit_gateway_multicast_domain_associations
 WHERE TransitGatewayMulticastDomainId = '{{ TransitGatewayMulticastDomainId }}' -- required
 AND region = '{{ region }}' -- required

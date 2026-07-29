@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>Logging-configuration ARN, from the request (if identifier was an ARN). (pattern: &lt;code&gt;arn:aws:ivschat:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:logging-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the logging configuration was created. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConfiguration" /></td>
+    <td><CopyableCode code="destination_configuration" /></td>
     <td><code>object</code></td>
     <td>A complex type that describes a location where chat logs will be stored. Each member represents the configuration of one log destination. For logging, you define only one type of destination (for CloudWatch Logs, Kinesis Firehose, or S3).</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags attached to the resource. Array of maps, each of the form string:string (key:value).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time of the logging configuration’s last update. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="loggingConfigurations" /></td>
+    <td><CopyableCode code="logging_configurations" /></td>
     <td><code>array</code></td>
     <td>List of the matching logging configurations (summary information only). There is only one type of destination (cloudWatchLogs, firehose, or s3) in a destinationConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more logging configurations than maxResults, use nextToken in the request to get the next set.</td>
 </tr>
@@ -211,11 +211,11 @@ SELECT
 id,
 name,
 arn,
-createTime,
-destinationConfiguration,
+create_time,
+destination_configuration,
 state,
 tags,
-updateTime
+update_time
 FROM aws.ivschat.logging_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,8 +227,8 @@ Gets summary information about all your logging configurations in the AWS region
 
 ```sql
 SELECT
-loggingConfigurations,
-nextToken
+logging_configurations,
+next_token
 FROM aws.ivschat.logging_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,11 +266,11 @@ RETURNING
 id,
 name,
 arn,
-createTime,
-destinationConfiguration,
+create_time,
+destination_configuration,
 state,
 tags,
-updateTime
+update_time
 ;
 ```
 </TabItem>
@@ -327,11 +327,11 @@ RETURNING
 id,
 name,
 arn,
-createTime,
-destinationConfiguration,
+create_time,
+destination_configuration,
 state,
 tags,
-updateTime;
+update_time;
 ```
 </TabItem>
 </Tabs>

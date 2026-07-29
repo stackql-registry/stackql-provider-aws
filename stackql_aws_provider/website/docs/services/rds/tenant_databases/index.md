@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CharacterSetName" /></td>
+    <td><CopyableCode code="character_set_name" /></td>
     <td><code>string</code></td>
     <td>The character set of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceIdentifier" /></td>
+    <td><CopyableCode code="db_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the DB instance that contains the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbiResourceId" /></td>
+    <td><CopyableCode code="dbi_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region-unique, immutable identifier for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether deletion protection is enabled for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUserSecret" /></td>
+    <td><CopyableCode code="master_user_secret" /></td>
     <td><code>string</code></td>
     <td>Contains the secret managed by RDS in Amazon Web Services Secrets Manager for the master user password. For more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS User Guide and Password management with Amazon Web Services Secrets Manager in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master username of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NcharCharacterSetName" /></td>
+    <td><CopyableCode code="nchar_character_set_name" /></td>
     <td><code>string</code></td>
     <td>The NCHAR character set name of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>Information about pending changes for a tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantDBName" /></td>
+    <td><CopyableCode code="tenant_db_name" /></td>
     <td><code>string</code></td>
     <td>The database name of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantDatabaseARN" /></td>
+    <td><CopyableCode code="tenant_database_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantDatabaseCreateTime" /></td>
+    <td><CopyableCode code="tenant_database_create_time" /></td>
     <td><code>string</code></td>
     <td>The creation time of the tenant database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TenantDatabaseResourceId" /></td>
+    <td><CopyableCode code="tenant_database_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region-unique, immutable identifier for the tenant database.</td>
 </tr>
@@ -295,20 +295,20 @@ Describes the tenant databases in a DB instance that uses the multi-tenant confi
 
 ```sql
 SELECT
-CharacterSetName,
-DBInstanceIdentifier,
-DbiResourceId,
-DeletionProtection,
-MasterUserSecret,
-MasterUsername,
-NcharCharacterSetName,
-PendingModifiedValues,
-Status,
-TagList,
-TenantDBName,
-TenantDatabaseARN,
-TenantDatabaseCreateTime,
-TenantDatabaseResourceId
+character_set_name,
+db_instance_identifier,
+dbi_resource_id,
+deletion_protection,
+master_user_secret,
+master_username,
+nchar_character_set_name,
+pending_modified_values,
+status,
+tag_list,
+tenant_db_name,
+tenant_database_arn,
+tenant_database_create_time,
+tenant_database_resource_id
 FROM aws.rds.tenant_databases
 WHERE region = '{{ region }}' -- required
 AND DBInstanceIdentifier = '{{ DBInstanceIdentifier }}'
@@ -360,20 +360,20 @@ SELECT
 '{{ MasterUserSecretKmsKeyId }}',
 '{{ Tags }}'
 RETURNING
-CharacterSetName,
-DBInstanceIdentifier,
-DbiResourceId,
-DeletionProtection,
-MasterUserSecret,
-MasterUsername,
-NcharCharacterSetName,
-PendingModifiedValues,
-Status,
-TagList,
-TenantDBName,
-TenantDatabaseARN,
-TenantDatabaseCreateTime,
-TenantDatabaseResourceId
+character_set_name,
+db_instance_identifier,
+dbi_resource_id,
+deletion_protection,
+master_user_secret,
+master_username,
+nchar_character_set_name,
+pending_modified_values,
+status,
+tag_list,
+tenant_db_name,
+tenant_database_arn,
+tenant_database_create_time,
+tenant_database_resource_id
 ;
 ```
 </TabItem>
@@ -448,20 +448,20 @@ AND ManageMasterUserPassword = {{ ManageMasterUserPassword}}
 AND RotateMasterUserPassword = {{ RotateMasterUserPassword}}
 AND MasterUserSecretKmsKeyId = '{{ MasterUserSecretKmsKeyId}}'
 RETURNING
-CharacterSetName,
-DBInstanceIdentifier,
-DbiResourceId,
-DeletionProtection,
-MasterUserSecret,
-MasterUsername,
-NcharCharacterSetName,
-PendingModifiedValues,
-Status,
-TagList,
-TenantDBName,
-TenantDatabaseARN,
-TenantDatabaseCreateTime,
-TenantDatabaseResourceId;
+character_set_name,
+db_instance_identifier,
+dbi_resource_id,
+deletion_protection,
+master_user_secret,
+master_username,
+nchar_character_set_name,
+pending_modified_values,
+status,
+tag_list,
+tenant_db_name,
+tenant_database_arn,
+tenant_database_create_time,
+tenant_database_resource_id;
 ```
 </TabItem>
 </Tabs>

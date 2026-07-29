@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the custom data identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the custom data identifier was created.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The custom description of the custom data identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ignoreWords" /></td>
+    <td><CopyableCode code="ignore_words" /></td>
     <td><code>array</code></td>
     <td>An array that lists specific character sequences (ignore words) to exclude from the results. If the text matched by the regular expression contains any string in this array, Amazon Macie ignores it. Ignore words are case sensitive.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array that lists specific character sequences (keywords), one of which must precede and be within proximity (maximumMatchDistance) of the regular expression to match. Keywords aren't case sensitive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maximumMatchDistance" /></td>
+    <td><CopyableCode code="maximum_match_distance" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of characters that can exist between the end of at least one complete character sequence specified by the keywords array and the end of the text that matches the regex pattern. If a complete keyword precedes all the text that matches the pattern and the keyword is within the specified distance, Amazon Macie includes the result. Otherwise, Macie excludes the result.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The regular expression (regex) that defines the pattern to match.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="severityLevels" /></td>
+    <td><CopyableCode code="severity_levels" /></td>
     <td><code>array</code></td>
     <td>The severity to assign to findings that the custom data identifier produces, based on the number of occurrences of text that matches the custom data identifier's detection criteria. You can specify as many as three SeverityLevel objects in this array, one for each severity: LOW, MEDIUM, or HIGH. If you specify more than one, the occurrences thresholds must be in ascending order by severity, moving from LOW to HIGH. For example, 1 for LOW, 50 for MEDIUM, and 100 for HIGH. If an S3 object contains fewer occurrences than the lowest specified threshold, Amazon Macie doesn't create a finding. If you don't specify any values for this array, Macie creates findings for S3 objects that contain at least one occurrence of text that matches the detection criteria, and Macie automatically assigns the MEDIUM severity to those findings.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the custom data identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the custom data identifier was created.</td>
 </tr>
@@ -251,14 +251,14 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 deleted,
 description,
-ignoreWords,
+ignore_words,
 keywords,
-maximumMatchDistance,
+maximum_match_distance,
 regex,
-severityLevels,
+severity_levels,
 tags
 FROM aws.macie2.custom_data_identifiers
 WHERE id = '{{ id }}' -- required
@@ -275,7 +275,7 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 description
 FROM aws.macie2.custom_data_identifiers
 WHERE region = '{{ region }}' -- required
@@ -323,7 +323,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-customDataIdentifierId
+custom_data_identifier_id
 ;
 ```
 </TabItem>

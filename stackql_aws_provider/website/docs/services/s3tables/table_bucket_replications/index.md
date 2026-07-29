@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The replication configuration for the table bucket, including the IAM role and replication rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionToken" /></td>
+    <td><CopyableCode code="version_token" /></td>
     <td><code>string</code></td>
     <td>A version token that represents the current state of the replication configuration. Use this token when updating the configuration to ensure consistency.</td>
 </tr>
@@ -149,7 +149,7 @@ Retrieves the replication configuration for a table bucket.This operation return
 ```sql
 SELECT
 configuration,
-versionToken
+version_token
 FROM aws.s3tables.table_bucket_replications
 WHERE tableBucketARN = '{{ tableBucketARN }}' -- required
 AND region = '{{ region }}' -- required
@@ -182,7 +182,7 @@ AND configuration = '{{ configuration }}' --required
 AND versionToken = '{{ versionToken}}'
 RETURNING
 status,
-versionToken;
+version_token;
 ```
 </TabItem>
 </Tabs>

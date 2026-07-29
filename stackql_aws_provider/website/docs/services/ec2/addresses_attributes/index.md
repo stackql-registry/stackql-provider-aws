@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocationId" /></td>
+    <td><CopyableCode code="allocation_id" /></td>
     <td><code>string</code></td>
     <td>&#91;EC2-VPC&#93; The allocation ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PtrRecord" /></td>
+    <td><CopyableCode code="ptr_record" /></td>
     <td><code>string</code></td>
     <td>The pointer (PTR) record for the IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PtrRecordUpdate" /></td>
+    <td><CopyableCode code="ptr_record_update" /></td>
     <td><code>string</code></td>
     <td>The updated PTR record for the IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicIp" /></td>
+    <td><CopyableCode code="public_ip" /></td>
     <td><code>string</code></td>
     <td>The public IP address.</td>
 </tr>
@@ -159,10 +159,10 @@ Describes the attributes of the specified Elastic IP addresses. For requirements
 
 ```sql
 SELECT
-AllocationId,
-PtrRecord,
-PtrRecordUpdate,
-PublicIp
+allocation_id,
+ptr_record,
+ptr_record_update,
+public_ip
 FROM aws.ec2.addresses_attributes
 WHERE region = '{{ region }}' -- required
 AND AllocationId = '{{ AllocationId }}'

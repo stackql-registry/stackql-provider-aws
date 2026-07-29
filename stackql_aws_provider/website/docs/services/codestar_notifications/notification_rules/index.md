@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the notification rule. (pattern: &lt;code&gt;^arn:aws&#91;^:\s&#93;*:codestar-notifications:&#91;^:\s&#93;+:\d&#123;12&#125;:notificationrule\/(.*\S)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The name or email alias of the person who created the notification rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the notification rule was created, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetailType" /></td>
+    <td><CopyableCode code="detail_type" /></td>
     <td><code>string</code></td>
     <td>The level of detail included in the notifications for this resource. BASIC will include only the contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental information provided by CodeStar Notifications and/or the service for the resource for which the notification is created. (BASIC, FULL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTypes" /></td>
+    <td><CopyableCode code="event_types" /></td>
     <td><code>array</code></td>
     <td>A list of the event types associated with the notification rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the notification rule was most recently updated, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the notification rule. (pattern: &lt;code&gt;&#91;A-Za-z0-9\-_ &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Resource" /></td>
+    <td><CopyableCode code="resource" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource associated with the notification rule. (pattern: &lt;code&gt;^arn:aws&#91;^:\s&#93;*:&#91;^:\s&#93;*:&#91;^:\s&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;^\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the notification rule. Valid statuses are on (sending notifications) or off (not sending notifications). (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with the notification rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>A list of the Amazon Q Developer in chat applications topics and Amazon Q Developer in chat applications clients associated with the notification rule.</td>
 </tr>
@@ -197,17 +197,17 @@ Returns information about a specified notification rule.
 
 ```sql
 SELECT
-Arn,
-CreatedBy,
-CreatedTimestamp,
-DetailType,
-EventTypes,
-LastModifiedTimestamp,
-Name,
-Resource,
-Status,
-Tags,
-Targets
+arn,
+created_by,
+created_timestamp,
+detail_type,
+event_types,
+last_modified_timestamp,
+name,
+resource,
+status,
+tags,
+targets
 FROM aws.codestar_notifications.notification_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,7 +252,7 @@ SELECT
 '{{ Status }}',
 '{{ region }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>

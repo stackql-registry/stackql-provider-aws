@@ -60,42 +60,42 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the image. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildType" /></td>
+    <td><CopyableCode code="build_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the type of build that created this image. The build can be initiated in the following ways: USER_INITIATED – A manual pipeline build request. SCHEDULED – A pipeline build initiated by a cron expression in the Image Builder pipeline, or from EventBridge. IMPORT – A VM import created the image to use as the base image for the recipe. IMPORT_ISO – An ISO disk import created the image. (USER_INITIATED, SCHEDULED, IMPORT, IMPORT_ISO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date on which Image Builder created this image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deprecationTime" /></td>
+    <td><CopyableCode code="deprecation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when deprecation occurs for an image resource. This can be a past or future date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSource" /></td>
+    <td><CopyableCode code="image_source" /></td>
     <td><code>string</code></td>
     <td>The origin of the base image that Image Builder used to build this image. (AMAZON_MANAGED, AWS_MARKETPLACE, IMPORTED, CUSTOM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleExecutionId" /></td>
+    <td><CopyableCode code="lifecycle_execution_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the last runtime instance of the lifecycle policy to take action on the image. (pattern: &lt;code&gt;^lce-&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loggingConfiguration" /></td>
+    <td><CopyableCode code="logging_configuration" /></td>
     <td><code>object</code></td>
     <td>The logging configuration that's defined for the image. Image Builder uses the defined settings to direct execution log output during image creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="osVersion" /></td>
+    <td><CopyableCode code="os_version" /></td>
     <td><code>string</code></td>
     <td>The operating system version of the instances that launch from this image. For example, Amazon Linux 2, Ubuntu 18, or Microsoft Windows Server 2019.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputResources" /></td>
+    <td><CopyableCode code="output_resources" /></td>
     <td><code>object</code></td>
     <td>The output resources that Image Builder produced when it created this image.</td>
 </tr>
@@ -203,14 +203,14 @@ Returns a list of image build versions.
 SELECT
 name,
 arn,
-buildType,
-dateCreated,
-deprecationTime,
-imageSource,
-lifecycleExecutionId,
-loggingConfiguration,
-osVersion,
-outputResources,
+build_type,
+date_created,
+deprecation_time,
+image_source,
+lifecycle_execution_id,
+logging_configuration,
+os_version,
+output_resources,
 owner,
 platform,
 state,

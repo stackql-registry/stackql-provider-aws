@@ -51,172 +51,172 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AirflowConfigurationOptions" /></td>
+    <td><CopyableCode code="airflow_configuration_options" /></td>
     <td><code>object</code></td>
     <td>A list of key-value pairs containing the Apache Airflow configuration options attached to your environment. For more information, refer to Apache Airflow configuration options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AirflowVersion" /></td>
+    <td><CopyableCode code="airflow_version" /></td>
     <td><code>string</code></td>
     <td>The Apache Airflow version on your environment. Valid values: 2.7.2, 2.8.1, 2.9.2, 2.10.1, 2.10.3, 2.11.0, and 3.0.6. (pattern: &lt;code&gt;&#91;0-9a-z.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon MWAA environment. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)?:airflow:&#91;a-z0-9\-&#93;+:\d&#123;12&#125;:environment/\w+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CeleryExecutorQueue" /></td>
+    <td><CopyableCode code="celery_executor_queue" /></td>
     <td><code>string</code></td>
     <td>The queue ARN for the environment's Celery Executor. Amazon MWAA uses a Celery Executor to distribute tasks across multiple workers. When you create an environment in a shared VPC, you must provide access to the Celery Executor queue from your VPC. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)?:sqs:&#91;a-z0-9\-&#93;+:\d&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The day and time the environment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DagS3Path" /></td>
+    <td><CopyableCode code="dag_s3_path" /></td>
     <td><code>string</code></td>
     <td>The relative path to the DAGs folder in your Amazon S3 bucket. For example, s3:​//mwaa-environment/dags. For more information, refer to Adding or updating DAGs. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseVpcEndpointService" /></td>
+    <td><CopyableCode code="database_vpc_endpoint_service" /></td>
     <td><code>string</code></td>
     <td>The VPC endpoint for the environment's Amazon RDS database. (pattern: &lt;code&gt;(&#91;a-z.-&#93;+)?com\.amazonaws\.vpce\.&#91;a-z0-9\-&#93;+\.&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointManagement" /></td>
+    <td><CopyableCode code="endpoint_management" /></td>
     <td><code>string</code></td>
     <td>Defines whether the VPC endpoints configured for the environment are created, and managed, by the customer or by Amazon MWAA. If set to SERVICE, Amazon MWAA will create and manage the required VPC endpoints in your VPC. If set to CUSTOMER, you must create, and manage, the VPC endpoints in your VPC. (CUSTOMER, SERVICE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentClass" /></td>
+    <td><CopyableCode code="environment_class" /></td>
     <td><code>string</code></td>
     <td>The environment class type. Valid values: mw1.micro, mw1.small, mw1.medium, mw1.large, mw1.xlarge, and mw1.2xlarge. For more information, refer to Amazon MWAA environment class.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the execution role in IAM that allows MWAA to access Amazon Web Services resources in your environment. For example, arn:aws:iam::123456789:role/my-execution-role. For more information, refer to Amazon MWAA Execution role. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKey" /></td>
+    <td><CopyableCode code="kms_key" /></td>
     <td><code>string</code></td>
     <td>The KMS encryption key used to encrypt the data in your environment. (pattern: &lt;code&gt;(((arn:aws(-&#91;a-z&#93;+)?:kms:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-\d:\d+:)?key\/)?&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;|(arn:aws(-&#91;a-z&#93;+)?:kms:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-\d:\d+:)?alias/.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdate" /></td>
+    <td><CopyableCode code="last_update" /></td>
     <td><code>object</code></td>
     <td>The status of the last update on the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingConfiguration" /></td>
+    <td><CopyableCode code="logging_configuration" /></td>
     <td><code>object</code></td>
     <td>The Apache Airflow logs published to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxWebservers" /></td>
+    <td><CopyableCode code="max_webservers" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of web servers that you want to run in your environment. Amazon MWAA scales the number of Apache Airflow web servers up to the number you specify for MaxWebservers when you interact with your Apache Airflow environment using Apache Airflow REST API, or the Apache Airflow CLI. For example, in scenarios where your workload requires network calls to the Apache Airflow REST API with a high transaction-per-second (TPS) rate, Amazon MWAA will increase the number of web servers up to the number set in MaxWebserers. As TPS rates decrease Amazon MWAA disposes of the additional web servers, and scales down to the number set in MinxWebserers. Valid values: For environments larger than mw1.micro, accepts values from 2 to 5. Defaults to 2 for all environment sizes except mw1.micro, which defaults to 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxWorkers" /></td>
+    <td><CopyableCode code="max_workers" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of workers that run in your environment. For example, 20.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinWebservers" /></td>
+    <td><CopyableCode code="min_webservers" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of web servers that you want to run in your environment. Amazon MWAA scales the number of Apache Airflow web servers up to the number you specify for MaxWebservers when you interact with your Apache Airflow environment using Apache Airflow REST API, or the Apache Airflow CLI. As the transaction-per-second rate, and the network load, decrease, Amazon MWAA disposes of the additional web servers, and scales down to the number set in MinxWebserers. Valid values: For environments larger than mw1.micro, accepts values from 2 to 5. Defaults to 2 for all environment sizes except mw1.micro, which defaults to 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinWorkers" /></td>
+    <td><CopyableCode code="min_workers" /></td>
     <td><code>integer</code></td>
     <td>The minimum number of workers that run in your environment. For example, 2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon MWAA environment. For example, MyMWAAEnvironment. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;0-9a-zA-Z-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>Describes the VPC networking components used to secure and enable network traffic between the Amazon Web Services resources for your environment. For more information, refer to About networking on Amazon MWAA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PluginsS3ObjectVersion" /></td>
+    <td><CopyableCode code="plugins_s3_object_version" /></td>
     <td><code>string</code></td>
     <td>The version of the plugins.zip file in your Amazon S3 bucket. You must specify the version ID that Amazon S3 assigns to the file. Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are no more than 1,024 bytes long. The following is an example: 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo For more information, refer to Installing custom plugins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PluginsS3Path" /></td>
+    <td><CopyableCode code="plugins_s3_path" /></td>
     <td><code>string</code></td>
     <td>The relative path to the file in your Amazon S3 bucket. For example, s3:​//mwaa-environment/plugins.zip. For more information, refer to Installing custom plugins. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequirementsS3ObjectVersion" /></td>
+    <td><CopyableCode code="requirements_s3_object_version" /></td>
     <td><code>string</code></td>
     <td>The version of the requirements.txt file on your Amazon S3 bucket. You must specify the version ID that Amazon S3 assigns to the file. Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are no more than 1,024 bytes long. The following is an example: 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo For more information, refer to Installing Python dependencies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequirementsS3Path" /></td>
+    <td><CopyableCode code="requirements_s3_path" /></td>
     <td><code>string</code></td>
     <td>The relative path to the requirements.txt file in your Amazon S3 bucket. For example, s3:​//mwaa-environment/requirements.txt. For more information, refer to Installing Python dependencies. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedulers" /></td>
+    <td><CopyableCode code="schedulers" /></td>
     <td><code>integer</code></td>
     <td>The number of Apache Airflow schedulers that run in your Amazon MWAA environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceRoleArn" /></td>
+    <td><CopyableCode code="service_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the service-linked role of the environment. For more information, refer to Amazon MWAA Service-linked role. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBucketArn" /></td>
+    <td><CopyableCode code="source_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG code and supporting files are stored. For example, arn:aws:s3:::my-airflow-bucket-unique-name. For more information, refer to Create an Amazon S3 bucket for Amazon MWAA. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)?:s3:::&#91;a-z0-9.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartupScriptS3ObjectVersion" /></td>
+    <td><CopyableCode code="startup_script_s3_object_version" /></td>
     <td><code>string</code></td>
     <td>The version of the startup shell script in your Amazon S3 bucket. You must specify the version ID that Amazon S3 assigns to the file. Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are no more than 1,024 bytes long. The following is an example: 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo For more information, refer to Using a startup script.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartupScriptS3Path" /></td>
+    <td><CopyableCode code="startup_script_s3_path" /></td>
     <td><code>string</code></td>
     <td>The relative path to the startup shell script in your Amazon S3 bucket. For example, s3:​//mwaa-environment/startup.sh. Amazon MWAA runs the script as your environment starts, and before running the Apache Airflow process. You can use this script to install dependencies, modify Apache Airflow configuration options, and set environment variables. For more information, refer to Using a startup script.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Amazon MWAA environment. Valid values: CREATING - The request to create the environment is in progress. CREATING_SNAPSHOT - The request to update environment details, or upgrade the environment version, is in progress and Amazon MWAA is creating a storage volume snapshot of the Amazon RDS database cluster associated with the environment. A database snapshot is a backup created at a specific point in time. Amazon MWAA uses snapshots to recover environment metadata if the process to update or upgrade an environment fails. CREATE_FAILED - The request to create the environment failed and the environment was not created. AVAILABLE - The request was successful and the environment is ready to use. PENDING - The request was successful, but the process to create the environment is paused until you create the required VPC endpoints in your VPC. After you create the VPC endpoints, the process resumes. UPDATING - The request to update the environment is in progress. ROLLING_BACK - The request to update environment details or upgrade the environment version failed and Amazon MWAA is restoring the environment using the latest storage volume snapshot. DELETING - The request to delete the environment is in progress. DELETED - The request to delete the environment is complete, and the environment has been deleted. UNAVAILABLE - The request failed, but the environment did not return to its previous state and is not stable. UPDATE_FAILED - The request to update the environment failed and the environment was restored to its previous state successfully and is ready to use. MAINTENANCE - The environment is undergoing maintenance. Depending on the type of work Amazon MWAA is performing, your environment might be unavailable during this process. Note that as part of the maintenance work, Amazon MWAA performs with a GRACEFUL workerReplacementStrategy . You can review our troubleshooting guide for a list of common errors and their solutions. For more information, refer to Amazon MWAA troubleshooting. (CREATING, CREATE_FAILED, AVAILABLE, UPDATING, DELETING, DELETED, UNAVAILABLE, UPDATE_FAILED, ROLLING_BACK, CREATING_SNAPSHOT, PENDING, MAINTENANCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The key-value tag pairs associated to your environment. For example, "Environment": "Staging". For more information, refer to Tagging Amazon Web Services resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebserverAccessMode" /></td>
+    <td><CopyableCode code="webserver_access_mode" /></td>
     <td><code>string</code></td>
     <td>The Apache Airflow web server access mode. For more information, refer to Apache Airflow access modes. (PRIVATE_ONLY, PUBLIC_ONLY, PUBLIC_AND_PRIVATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebserverUrl" /></td>
+    <td><CopyableCode code="webserver_url" /></td>
     <td><code>string</code></td>
     <td>The Apache Airflow web server host name for the Amazon MWAA environment. For more information, refer to Accessing the Apache Airflow UI. (pattern: &lt;code&gt;https:​//.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebserverVpcEndpointService" /></td>
+    <td><CopyableCode code="webserver_vpc_endpoint_service" /></td>
     <td><code>string</code></td>
     <td>The VPC endpoint for the environment's web server. (pattern: &lt;code&gt;(&#91;a-z.-&#93;+)?com\.amazonaws\.vpce\.&#91;a-z0-9\-&#93;+\.&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WeeklyMaintenanceWindowStart" /></td>
+    <td><CopyableCode code="weekly_maintenance_window_start" /></td>
     <td><code>string</code></td>
     <td>The day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. For example: TUE:03:30. (pattern: &lt;code&gt;.*(MON|TUE|WED|THU|FRI|SAT|SUN):(&#91;01&#93;\d|2&#91;0-3&#93;):(00|30).*&lt;/code&gt;)</td>
 </tr>
@@ -360,40 +360,40 @@ Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 
 ```sql
 SELECT
-AirflowConfigurationOptions,
-AirflowVersion,
-Arn,
-CeleryExecutorQueue,
-CreatedAt,
-DagS3Path,
-DatabaseVpcEndpointService,
-EndpointManagement,
-EnvironmentClass,
-ExecutionRoleArn,
-KmsKey,
-LastUpdate,
-LoggingConfiguration,
-MaxWebservers,
-MaxWorkers,
-MinWebservers,
-MinWorkers,
-Name,
-NetworkConfiguration,
-PluginsS3ObjectVersion,
-PluginsS3Path,
-RequirementsS3ObjectVersion,
-RequirementsS3Path,
-Schedulers,
-ServiceRoleArn,
-SourceBucketArn,
-StartupScriptS3ObjectVersion,
-StartupScriptS3Path,
-Status,
-Tags,
-WebserverAccessMode,
-WebserverUrl,
-WebserverVpcEndpointService,
-WeeklyMaintenanceWindowStart
+airflow_configuration_options,
+airflow_version,
+arn,
+celery_executor_queue,
+created_at,
+dag_s3_path,
+database_vpc_endpoint_service,
+endpoint_management,
+environment_class,
+execution_role_arn,
+kms_key,
+last_update,
+logging_configuration,
+max_webservers,
+max_workers,
+min_webservers,
+min_workers,
+name,
+network_configuration,
+plugins_s3_object_version,
+plugins_s3_path,
+requirements_s3_object_version,
+requirements_s3_path,
+schedulers,
+service_role_arn,
+source_bucket_arn,
+startup_script_s3_object_version,
+startup_script_s3_path,
+status,
+tags,
+webserver_access_mode,
+webserver_url,
+webserver_vpc_endpoint_service,
+weekly_maintenance_window_start
 FROM aws.mwaa.environments
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -487,7 +487,7 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>
@@ -622,7 +622,7 @@ WHERE
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn;
+arn;
 ```
 </TabItem>
 </Tabs>

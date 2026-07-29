@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EncryptionType" /></td>
+    <td><CopyableCode code="encryption_type" /></td>
     <td><code>string</code></td>
     <td>The server-side encryption type used on the stream. This parameter can be one of the following values: NONE: Do not encrypt the records in the stream. KMS: Use server-side encryption on the records in the stream using a customer-managed Amazon Web Services KMS key. (NONE, KMS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnhancedMonitoring" /></td>
+    <td><CopyableCode code="enhanced_monitoring" /></td>
     <td><code>array</code></td>
     <td>Represents the current enhanced monitoring settings of the stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasMoreShards" /></td>
+    <td><CopyableCode code="has_more_shards" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, more shards in the stream are available to describe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The GUID for the customer-managed Amazon Web Services KMS key to use for encryption. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams by specifying the alias aws/kinesis. Key ARN example: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012 Alias ARN example: arn:aws:kms:us-east-1:123456789012:alias/MyAliasName Globally unique key ID example: 12345678-1234-1234-1234-123456789012 Alias name example: alias/MyAliasName Master key owned by Kinesis Data Streams: alias/aws/kinesis</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionPeriodHours" /></td>
+    <td><CopyableCode code="retention_period_hours" /></td>
     <td><code>integer</code></td>
     <td>The current retention period, in hours. Minimum value of 24. Maximum value of 168.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Shards" /></td>
+    <td><CopyableCode code="shards" /></td>
     <td><code>array</code></td>
     <td>The shards that comprise the stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamARN" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the stream being described. (pattern: &lt;code&gt;arn:aws.*:kinesis:.*:\d&#123;12&#125;:stream/\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamCreationTimestamp" /></td>
+    <td><CopyableCode code="stream_creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The approximate time that the stream was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamModeDetails" /></td>
+    <td><CopyableCode code="stream_mode_details" /></td>
     <td><code>object</code></td>
     <td>Specifies the capacity mode to which you want to set your data stream. Currently, in Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamName" /></td>
+    <td><CopyableCode code="stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stream being described. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamStatus" /></td>
+    <td><CopyableCode code="stream_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the stream being described. The stream status is one of the following states: CREATING - The stream is being created. Kinesis Data Streams immediately returns and sets StreamStatus to CREATING. DELETING - The stream is being deleted. The specified stream is in the DELETING state until Kinesis Data Streams completes the deletion. ACTIVE - The stream exists and is ready for read and write operations or deletion. You should perform read and write operations only on an ACTIVE stream. UPDATING - Shards in the stream are being merged or split. Read and write operations continue to work while the stream is in the UPDATING state. (CREATING, DELETING, ACTIVE, UPDATING)</td>
 </tr>
@@ -239,17 +239,17 @@ Describes the specified Kinesis data stream. This API has been revised. It's hig
 
 ```sql
 SELECT
-EncryptionType,
-EnhancedMonitoring,
-HasMoreShards,
-KeyId,
-RetentionPeriodHours,
-Shards,
-StreamARN,
-StreamCreationTimestamp,
-StreamModeDetails,
-StreamName,
-StreamStatus
+encryption_type,
+enhanced_monitoring,
+has_more_shards,
+key_id,
+retention_period_hours,
+shards,
+stream_arn,
+stream_creation_timestamp,
+stream_mode_details,
+stream_name,
+stream_status
 FROM aws.kinesis.streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -384,9 +384,9 @@ WHERE
 region = '{{ region }}' --required
 AND WarmThroughputMiBps = '{{ WarmThroughputMiBps }}' --required
 RETURNING
-StreamARN,
-StreamName,
-WarmThroughput;
+stream_arn,
+stream_name,
+warm_throughput;
 ```
 </TabItem>
 </Tabs>

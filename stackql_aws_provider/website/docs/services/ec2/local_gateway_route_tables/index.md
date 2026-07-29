@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LocalGatewayId" /></td>
+    <td><CopyableCode code="local_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableArn" /></td>
+    <td><CopyableCode code="local_gateway_route_table_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableId" /></td>
+    <td><CopyableCode code="local_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>The mode of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Information about the state change.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the local gateway route table.</td>
 </tr>
@@ -218,15 +218,15 @@ Describes one or more local gateway route tables. By default, all local gateway 
 
 ```sql
 SELECT
-LocalGatewayId,
-LocalGatewayRouteTableArn,
-LocalGatewayRouteTableId,
-Mode,
-OutpostArn,
-OwnerId,
-State,
-StateReason,
-Tags
+local_gateway_id,
+local_gateway_route_table_arn,
+local_gateway_route_table_id,
+mode,
+outpost_arn,
+owner_id,
+state,
+state_reason,
+tags
 FROM aws.ec2.local_gateway_route_tables
 WHERE region = '{{ region }}' -- required
 AND LocalGatewayRouteTableId = '{{ LocalGatewayRouteTableId }}'
@@ -268,15 +268,15 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-LocalGatewayId,
-LocalGatewayRouteTableArn,
-LocalGatewayRouteTableId,
-Mode,
-OutpostArn,
-OwnerId,
-State,
-StateReason,
-Tags
+local_gateway_id,
+local_gateway_route_table_arn,
+local_gateway_route_table_id,
+mode,
+outpost_arn,
+owner_id,
+state,
+state_reason,
+tags
 ;
 ```
 </TabItem>

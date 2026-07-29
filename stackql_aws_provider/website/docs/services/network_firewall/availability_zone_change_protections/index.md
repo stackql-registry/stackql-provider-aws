@@ -104,10 +104,10 @@ WHERE
 region = '{{ region }}' --required
 AND AvailabilityZoneChangeProtection = {{ AvailabilityZoneChangeProtection }} --required
 RETURNING
-AvailabilityZoneChangeProtection,
-FirewallArn,
-FirewallName,
-UpdateToken;
+availability_zone_change_protection,
+firewall_arn,
+firewall_name,
+update_token;
 ```
 </TabItem>
 </Tabs>

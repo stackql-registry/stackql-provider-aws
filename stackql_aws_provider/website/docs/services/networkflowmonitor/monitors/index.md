@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the monitor was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localResources" /></td>
+    <td><CopyableCode code="local_resources" /></td>
     <td><code>array</code></td>
     <td>The local resources to monitor. A local resource in a workload is the location of the hosts where the Network Flow Monitor agent is installed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the monitor was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitor. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorStatus" /></td>
+    <td><CopyableCode code="monitor_status" /></td>
     <td><code>string</code></td>
     <td>The status of a monitor. The status can be one of the following PENDING: The monitor is in the process of being created. ACTIVE: The monitor is active. INACTIVE: The monitor is inactive. ERROR: Monitor creation failed due to an error. DELETING: The monitor is in the process of being deleted. (PENDING, ACTIVE, INACTIVE, ERROR, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="remoteResources" /></td>
+    <td><CopyableCode code="remote_resources" /></td>
     <td><code>array</code></td>
     <td>The remote resources to monitor. A remote resource is the other endpoint specified for the network flow of a workload, with a local resource. For example, Amazon Dynamo DB can be a remote resource.</td>
 </tr>
@@ -105,17 +105,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="monitorArn" /></td>
+    <td><CopyableCode code="monitor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitor. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorName" /></td>
+    <td><CopyableCode code="monitor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitor. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="monitorStatus" /></td>
+    <td><CopyableCode code="monitor_status" /></td>
     <td><code>string</code></td>
     <td>The status of a monitor. The status can be one of the following PENDING: The monitor is in the process of being created. ACTIVE: The monitor is active. INACTIVE: The monitor is inactive. ERROR: Monitor creation failed due to an error. DELETING: The monitor is in the process of being deleted. (PENDING, ACTIVE, INACTIVE, ERROR, DELETING)</td>
 </tr>
@@ -252,13 +252,13 @@ Gets information about a monitor in Network Flow Monitor based on a monitor name
 
 ```sql
 SELECT
-createdAt,
-localResources,
-modifiedAt,
-monitorArn,
-monitorName,
-monitorStatus,
-remoteResources,
+created_at,
+local_resources,
+modified_at,
+monitor_arn,
+monitor_name,
+monitor_status,
+remote_resources,
 tags
 FROM aws.networkflowmonitor.monitors
 WHERE monitor_name = '{{ monitor_name }}' -- required
@@ -272,9 +272,9 @@ List all monitors in an account. Optionally, you can list only monitors that hav
 
 ```sql
 SELECT
-monitorArn,
-monitorName,
-monitorStatus
+monitor_arn,
+monitor_name,
+monitor_status
 FROM aws.networkflowmonitor.monitors
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -318,13 +318,13 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-createdAt,
-localResources,
-modifiedAt,
-monitorArn,
-monitorName,
-monitorStatus,
-remoteResources,
+created_at,
+local_resources,
+modified_at,
+monitor_arn,
+monitor_name,
+monitor_status,
+remote_resources,
 tags
 ;
 ```
@@ -383,13 +383,13 @@ WHERE
 monitor_name = '{{ monitor_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-createdAt,
-localResources,
-modifiedAt,
-monitorArn,
-monitorName,
-monitorStatus,
-remoteResources,
+created_at,
+local_resources,
+modified_at,
+monitor_arn,
+monitor_name,
+monitor_status,
+remote_resources,
 tags;
 ```
 </TabItem>

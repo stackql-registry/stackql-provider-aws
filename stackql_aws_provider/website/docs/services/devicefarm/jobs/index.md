@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The device (phone or tablet).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceMinutes" /></td>
+    <td><CopyableCode code="device_minutes" /></td>
     <td><code>object</code></td>
     <td>Represents the total (metered or unmetered) minutes used by the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the instance. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>The job's type. Allowed values include the following: BUILTIN_FUZZ APPIUM_JAVA_JUNIT APPIUM_JAVA_TESTNG APPIUM_PYTHON APPIUM_NODE APPIUM_RUBY APPIUM_WEB_JAVA_JUNIT APPIUM_WEB_JAVA_TESTNG APPIUM_WEB_PYTHON APPIUM_WEB_NODE APPIUM_WEB_RUBY INSTRUMENTATION XCTEST XCTEST_UI (BUILTIN_FUZZ, APPIUM_JAVA_JUNIT, APPIUM_JAVA_TESTNG, APPIUM_PYTHON, APPIUM_NODE, APPIUM_RUBY, APPIUM_WEB_JAVA_JUNIT, APPIUM_WEB_JAVA_TESTNG, APPIUM_WEB_PYTHON, APPIUM_WEB_NODE, APPIUM_WEB_RUBY, INSTRUMENTATION, XCTEST, XCTEST_UI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="videoCapture" /></td>
+    <td><CopyableCode code="video_capture" /></td>
     <td><code>boolean</code></td>
     <td>This value is set to true if video capture is enabled. Otherwise, it is set to false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="videoEndpoint" /></td>
+    <td><CopyableCode code="video_endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint for streaming device video.</td>
 </tr>
@@ -201,16 +201,16 @@ arn,
 counters,
 created,
 device,
-deviceMinutes,
-instanceArn,
+device_minutes,
+instance_arn,
 message,
 result,
 started,
 status,
 stopped,
 type_,
-videoCapture,
-videoEndpoint
+video_capture,
+video_endpoint
 FROM aws.devicefarm.jobs
 WHERE region = '{{ region }}' -- required
 ;

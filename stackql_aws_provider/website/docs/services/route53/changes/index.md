@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>A comment you can provide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>This element contains an ID that you use when performing a GetChange action to get detailed information about the change.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the request. PENDING indicates that this request has not yet been applied to all Amazon Route 53 DNS servers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmittedAt" /></td>
+    <td><CopyableCode code="submitted_at" /></td>
     <td><code>string</code></td>
     <td>The date and time that the change request was submitted in ISO 8601 format and Coordinated Universal Time (UTC). For example, the value 2017-03-27T17:48:16.751Z represents March 27, 2017 at 17:48:16.751 UTC.</td>
 </tr>
@@ -168,10 +168,10 @@ Returns the current status of a change batch request. The status is one of the f
 
 ```sql
 SELECT
-Comment,
-Id,
-Status,
-SubmittedAt
+comment,
+id,
+status,
+submitted_at
 FROM aws.route53.changes
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

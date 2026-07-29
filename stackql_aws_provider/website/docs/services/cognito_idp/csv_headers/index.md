@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CSVHeader" /></td>
+    <td><CopyableCode code="csv_header" /></td>
     <td><code>array</code></td>
     <td>A comma-separated list of attributes from your user pool. Save this output to a .csv file and populate it with the attributes of the users that you want to import.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the requested user pool. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Given a user pool ID, generates a comma-separated value (CSV) list populated wit
 
 ```sql
 SELECT
-CSVHeader,
-UserPoolId
+csv_header,
+user_pool_id
 FROM aws.cognito_idp.csv_headers
 WHERE region = '{{ region }}' -- required
 ;

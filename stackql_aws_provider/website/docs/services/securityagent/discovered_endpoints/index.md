@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent space associated with the discovered endpoint.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The HTTP operation associated with the discovered endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pentestJobId" /></td>
+    <td><CopyableCode code="pentest_job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the pentest job that discovered the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the task that discovered the endpoint.</td>
 </tr>
@@ -149,12 +149,12 @@ Returns a paginated list of endpoints discovered during a pentest job execution.
 
 ```sql
 SELECT
-agentSpaceId,
+agent_space_id,
 description,
 evidence,
 operation,
-pentestJobId,
-taskId,
+pentest_job_id,
+task_id,
 uri
 FROM aws.securityagent.discovered_endpoints
 WHERE region = '{{ region }}' -- required

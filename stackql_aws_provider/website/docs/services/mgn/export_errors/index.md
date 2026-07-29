@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorData" /></td>
+    <td><CopyableCode code="error_data" /></td>
     <td><code>object</code></td>
     <td>Export task error data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorDateTime" /></td>
+    <td><CopyableCode code="error_date_time" /></td>
     <td><code>string</code></td>
     <td>Export task error datetime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ List export errors.
 
 ```sql
 SELECT
-errorData,
-errorDateTime
+error_data,
+error_date_time
 FROM aws.mgn.export_errors
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>If you used Amazon EC2 to create the key pair, this is the date and time when the key was created, in ISO 8601 date-time format, in the UTC time zone. If you imported an existing key pair to Amazon EC2, this is the date and time the key was imported, in ISO 8601 date-time format, in the UTC time zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyFingerprint" /></td>
+    <td><CopyableCode code="key_fingerprint" /></td>
     <td><code>string</code></td>
     <td>If you used CreateKeyPair to create the key pair: For RSA key pairs, the key fingerprint is the SHA-1 digest of the DER encoded private key. For ED25519 key pairs, the key fingerprint is the base64-encoded SHA-256 digest, which is the default for OpenSSH, starting with OpenSSH 6.8. If you used ImportKeyPair to provide Amazon Web Services the public key: For RSA key pairs, the key fingerprint is the MD5 public key fingerprint as specified in section 4 of RFC4716. For ED25519 key pairs, the key fingerprint is the base64-encoded SHA-256 digest, which is the default for OpenSSH, starting with OpenSSH 6.8.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyName" /></td>
+    <td><CopyableCode code="key_name" /></td>
     <td><code>string</code></td>
     <td>The name of the key pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyPairId" /></td>
+    <td><CopyableCode code="key_pair_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the key pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyType" /></td>
+    <td><CopyableCode code="key_type" /></td>
     <td><code>string</code></td>
     <td>The type of key pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKey" /></td>
+    <td><CopyableCode code="public_key" /></td>
     <td><code>string</code></td>
     <td>The public key material.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags applied to the key pair.</td>
 </tr>
@@ -208,13 +208,13 @@ Describes the specified key pairs or all of your key pairs. For more information
 
 ```sql
 SELECT
-CreateTime,
-KeyFingerprint,
-KeyName,
-KeyPairId,
-KeyType,
-PublicKey,
-Tags
+create_time,
+key_fingerprint,
+key_name,
+key_pair_id,
+key_type,
+public_key,
+tags
 FROM aws.ec2.key_pairs
 WHERE region = '{{ region }}' -- required
 AND KeyName = '{{ KeyName }}'
@@ -258,11 +258,11 @@ SELECT
 '{{ KeyFormat }}',
 '{{ DryRun }}'
 RETURNING
-KeyFingerprint,
-KeyMaterial,
-KeyName,
-KeyPairId,
-Tags
+key_fingerprint,
+key_material,
+key_name,
+key_pair_id,
+tags
 ;
 ```
 </TabItem>

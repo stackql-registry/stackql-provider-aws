@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EnableMonitoringDashboard" /></td>
+    <td><CopyableCode code="enable_monitoring_dashboard" /></td>
     <td><code>boolean</code></td>
     <td>A boolean that reflects whether or not the firewall monitoring dashboard is enabled on a firewall. Returns TRUE when the firewall monitoring dashboard is enabled on the firewall. Returns FALSE when the firewall monitoring dashboard is not enabled on the firewall.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirewallArn" /></td>
+    <td><CopyableCode code="firewall_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the firewall. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingConfiguration" /></td>
+    <td><CopyableCode code="logging_configuration" /></td>
     <td><code>object</code></td>
     <td>Defines how Network Firewall performs logging for a Firewall.</td>
 </tr>
@@ -136,9 +136,9 @@ Returns the logging configuration for the specified firewall.
 
 ```sql
 SELECT
-EnableMonitoringDashboard,
-FirewallArn,
-LoggingConfiguration
+enable_monitoring_dashboard,
+firewall_arn,
+logging_configuration
 FROM aws.network_firewall.logging_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,10 +169,10 @@ EnableMonitoringDashboard = {{ EnableMonitoringDashboard }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-EnableMonitoringDashboard,
-FirewallArn,
-FirewallName,
-LoggingConfiguration;
+enable_monitoring_dashboard,
+firewall_arn,
+firewall_name,
+logging_configuration;
 ```
 </TabItem>
 </Tabs>

@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The namespace of the package version that contains the returned dependencies. The package component that specifies its namespace depends on its type. For example: The namespace is required when listing dependencies from package versions of the following formats: Maven The namespace of a Maven package version is its groupId. The namespace of an npm package version is its scope. Python and NuGet package versions do not contain a corresponding component, package versions of those formats do not have a namespace. (pattern: &lt;code&gt;&#91;^#/\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The version of the package that is specified in the request. (pattern: &lt;code&gt;&#91;^#/\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionRevision" /></td>
+    <td><CopyableCode code="version_revision" /></td>
     <td><code>string</code></td>
     <td>The current revision associated with the package version. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -192,10 +192,10 @@ SELECT
 dependencies,
 format_,
 namespace,
-nextToken,
+next_token,
 package,
 version,
-versionRevision
+version_revision
 FROM aws.codeartifact.package_version_dependencies
 WHERE domain = '{{ domain }}' -- required
 AND repository = '{{ repository }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedProducts" /></td>
+    <td><CopyableCode code="managed_products" /></td>
     <td><code>array</code></td>
     <td>High-level information for the managed rule groups owned by the specified vendor.</td>
 </tr>
@@ -119,7 +119,7 @@ Provides high-level information for the managed rule groups owned by a specific 
 
 ```sql
 SELECT
-ManagedProducts
+managed_products
 FROM aws.wafv2.managed_products_by_vendors
 WHERE region = '{{ region }}' -- required
 ;

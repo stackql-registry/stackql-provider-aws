@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionFunctionSummary" /></td>
+    <td><CopyableCode code="connection_function_summary" /></td>
     <td><code>string</code></td>
     <td>The connection function's summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The version identifier for the current version of the connection function.</td>
 </tr>
@@ -75,42 +75,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionFunctionArn" /></td>
+    <td><CopyableCode code="connection_function_arn" /></td>
     <td><code>string</code></td>
     <td>The connection function Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionFunctionConfig" /></td>
+    <td><CopyableCode code="connection_function_config" /></td>
     <td><code>string</code></td>
     <td>Contains configuration information about a CloudFront function.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string</code></td>
     <td>The connection function created time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The connection function ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The connection function last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The connection function name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Stage" /></td>
+    <td><CopyableCode code="stage" /></td>
     <td><code>string</code></td>
     <td>The connection function stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The connection function status.</td>
 </tr>
@@ -235,8 +235,8 @@ Describes a connection function.
 
 ```sql
 SELECT
-ConnectionFunctionSummary,
-ETag
+connection_function_summary,
+e_tag
 FROM aws.cloudfront.connection_functions
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -250,14 +250,14 @@ Lists connection functions.
 
 ```sql
 SELECT
-ConnectionFunctionArn,
-ConnectionFunctionConfig,
-CreatedTime,
-Id,
-LastModifiedTime,
-Name,
-Stage,
-Status
+connection_function_arn,
+connection_function_config,
+created_time,
+id,
+last_modified_time,
+name,
+stage,
+status
 FROM aws.cloudfront.connection_functions
 WHERE region = '{{ region }}' -- required
 ;
@@ -294,9 +294,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ConnectionFunctionSummary,
-ETag,
-Location
+connection_function_summary,
+e_tag,
+location
 ;
 ```
 </TabItem>
@@ -359,8 +359,8 @@ AND region = '{{ region }}' --required
 AND ConnectionFunctionConfig = '{{ ConnectionFunctionConfig }}' --required
 AND ConnectionFunctionCode = '{{ ConnectionFunctionCode }}' --required
 RETURNING
-ConnectionFunctionSummary,
-ETag;
+connection_function_summary,
+e_tag;
 ```
 </TabItem>
 </Tabs>

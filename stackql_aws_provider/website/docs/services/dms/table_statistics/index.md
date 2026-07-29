@@ -50,142 +50,142 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppliedDdls" /></td>
+    <td><CopyableCode code="applied_ddls" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of data definition language (DDL) statements used to build and modify the structure of your tables applied on the target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppliedDeletes" /></td>
+    <td><CopyableCode code="applied_deletes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of delete actions applied on a target table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppliedInserts" /></td>
+    <td><CopyableCode code="applied_inserts" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of insert actions applied on a target table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppliedUpdates" /></td>
+    <td><CopyableCode code="applied_updates" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of update actions applied on a target table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ddls" /></td>
+    <td><CopyableCode code="ddls" /></td>
     <td><code>integer (int64)</code></td>
     <td>The data definition language (DDL) used to build and modify the structure of your tables.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Deletes" /></td>
+    <td><CopyableCode code="deletes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of delete actions performed on a table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullLoadCondtnlChkFailedRows" /></td>
+    <td><CopyableCode code="full_load_condtnl_chk_failed_rows" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of rows that failed conditional checks during the full load operation (valid only for migrations where DynamoDB is the target).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullLoadEndTime" /></td>
+    <td><CopyableCode code="full_load_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the full load operation completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullLoadErrorRows" /></td>
+    <td><CopyableCode code="full_load_error_rows" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of rows that failed to load during the full load operation (valid only for migrations where DynamoDB is the target).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullLoadReloaded" /></td>
+    <td><CopyableCode code="full_load_reloaded" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates if the table was reloaded (true) or loaded as part of a new full load operation (false).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullLoadRows" /></td>
+    <td><CopyableCode code="full_load_rows" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of rows added during the full load operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullLoadStartTime" /></td>
+    <td><CopyableCode code="full_load_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the full load operation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Inserts" /></td>
+    <td><CopyableCode code="inserts" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of insert actions performed on a table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time a table was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResyncProgress" /></td>
+    <td><CopyableCode code="resync_progress" /></td>
     <td><code>number (double)</code></td>
     <td>Calculates the percentage of failed validations that were successfully resynced to the system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResyncRowsAttempted" /></td>
+    <td><CopyableCode code="resync_rows_attempted" /></td>
     <td><code>integer (int64)</code></td>
     <td>Records the total number of mismatched data rows where the system attempted to apply fixes in the target database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResyncRowsFailed" /></td>
+    <td><CopyableCode code="resync_rows_failed" /></td>
     <td><code>integer (int64)</code></td>
     <td>Records the total number of mismatched data rows where fix attempts failed in the target database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResyncRowsSucceeded" /></td>
+    <td><CopyableCode code="resync_rows_succeeded" /></td>
     <td><code>integer (int64)</code></td>
     <td>Records the total number of mismatched data rows where fixes were successfully applied in the target database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResyncState" /></td>
+    <td><CopyableCode code="resync_state" /></td>
     <td><code>string</code></td>
     <td>Records the current state of table resynchronization in the migration task. This parameter can have the following values: Not enabled – Resync is not enabled for the table in the migration task. Pending – The tables are waiting for resync. In progress – Resync in progress for some records in the table. No primary key – The table could not be resynced because it has no primary key. Last resync at: date/time – Resync session is finished at time. Time provided in UTC format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaName" /></td>
+    <td><CopyableCode code="schema_name" /></td>
     <td><code>string</code></td>
     <td>The schema name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableState" /></td>
+    <td><CopyableCode code="table_state" /></td>
     <td><code>string</code></td>
     <td>The state of the tables described. Valid states: Table does not exist | Before load | Full load | Table completed | Table cancelled | Table error | Table is being reloaded</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Updates" /></td>
+    <td><CopyableCode code="updates" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of update actions performed on a table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationFailedRecords" /></td>
+    <td><CopyableCode code="validation_failed_records" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that failed validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationPendingRecords" /></td>
+    <td><CopyableCode code="validation_pending_records" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that have yet to be validated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationState" /></td>
+    <td><CopyableCode code="validation_state" /></td>
     <td><code>string</code></td>
     <td>The validation state of the table. This parameter can have the following values: Not enabled – Validation isn't enabled for the table in the migration task. Pending records – Some records in the table are waiting for validation. Mismatched records – Some records in the table don't match between the source and target. Suspended records – Some records in the table couldn't be validated. No primary key –The table couldn't be validated because it has no primary key. Table error – The table wasn't validated because it's in an error state and some data wasn't migrated. Validated – All rows in the table are validated. If the table is updated, the status can change from Validated. Error – The table couldn't be validated because of an unexpected error. Pending validation – The table is waiting validation. Preparing table – Preparing the table enabled in the migration task for validation. Pending revalidation – All rows in the table are pending validation after the table was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationStateDetails" /></td>
+    <td><CopyableCode code="validation_state_details" /></td>
     <td><code>string</code></td>
     <td>Additional details about the state of validation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationSuspendedRecords" /></td>
+    <td><CopyableCode code="validation_suspended_records" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of records that couldn't be validated.</td>
 </tr>
@@ -254,34 +254,34 @@ Returns table statistics on the database migration task, including table name, r
 
 ```sql
 SELECT
-AppliedDdls,
-AppliedDeletes,
-AppliedInserts,
-AppliedUpdates,
-Ddls,
-Deletes,
-FullLoadCondtnlChkFailedRows,
-FullLoadEndTime,
-FullLoadErrorRows,
-FullLoadReloaded,
-FullLoadRows,
-FullLoadStartTime,
-Inserts,
-LastUpdateTime,
-ResyncProgress,
-ResyncRowsAttempted,
-ResyncRowsFailed,
-ResyncRowsSucceeded,
-ResyncState,
-SchemaName,
-TableName,
-TableState,
-Updates,
-ValidationFailedRecords,
-ValidationPendingRecords,
-ValidationState,
-ValidationStateDetails,
-ValidationSuspendedRecords
+applied_ddls,
+applied_deletes,
+applied_inserts,
+applied_updates,
+ddls,
+deletes,
+full_load_condtnl_chk_failed_rows,
+full_load_end_time,
+full_load_error_rows,
+full_load_reloaded,
+full_load_rows,
+full_load_start_time,
+inserts,
+last_update_time,
+resync_progress,
+resync_rows_attempted,
+resync_rows_failed,
+resync_rows_succeeded,
+resync_state,
+schema_name,
+table_name,
+table_state,
+updates,
+validation_failed_records,
+validation_pending_records,
+validation_state,
+validation_state_details,
+validation_suspended_records
 FROM aws.dms.table_statistics
 WHERE region = '{{ region }}' -- required
 ;

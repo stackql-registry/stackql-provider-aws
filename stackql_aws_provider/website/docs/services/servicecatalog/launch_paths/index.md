@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConstraintSummaries" /></td>
+    <td><CopyableCode code="constraint_summaries" /></td>
     <td><code>array</code></td>
     <td>The constraints on the portfolio-product relationship.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the product path. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the portfolio that contains the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with this product path.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists the paths to the specified product. A path describes how the user gets acc
 
 ```sql
 SELECT
-ConstraintSummaries,
-Id,
-Name,
-Tags
+constraint_summaries,
+id,
+name,
+tags
 FROM aws.servicecatalog.launch_paths
 WHERE region = '{{ region }}' -- required
 ;

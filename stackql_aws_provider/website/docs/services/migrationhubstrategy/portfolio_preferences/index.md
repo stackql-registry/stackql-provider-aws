@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationMode" /></td>
+    <td><CopyableCode code="application_mode" /></td>
     <td><code>string</code></td>
     <td>The classification for application component types. (ALL, KNOWN, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationPreferences" /></td>
+    <td><CopyableCode code="application_preferences" /></td>
     <td><code>object</code></td>
     <td>The transformation preferences for non-database applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databasePreferences" /></td>
+    <td><CopyableCode code="database_preferences" /></td>
     <td><code>object</code></td>
     <td>The transformation preferences for database applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="prioritizeBusinessGoals" /></td>
+    <td><CopyableCode code="prioritize_business_goals" /></td>
     <td><code>object</code></td>
     <td>The rank of business goals based on priority.</td>
 </tr>
@@ -141,10 +141,10 @@ Retrieves your migration and modernization preferences.
 
 ```sql
 SELECT
-applicationMode,
-applicationPreferences,
-databasePreferences,
-prioritizeBusinessGoals
+application_mode,
+application_preferences,
+database_preferences,
+prioritize_business_goals
 FROM aws.migrationhubstrategy.portfolio_preferences
 WHERE region = '{{ region }}' -- required
 ;

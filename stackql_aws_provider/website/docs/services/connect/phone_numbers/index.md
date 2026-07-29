@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance that phone numbers are claimed to. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number. Phone numbers are formatted &#91;+&#93; &#91;country code&#93; &#91;subscriber number including area code&#93;. (pattern: &lt;code&gt;\\+&#91;1-9&#93;\\d&#123;1,14&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberArn" /></td>
+    <td><CopyableCode code="phone_number_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberCountryCode" /></td>
+    <td><CopyableCode code="phone_number_country_code" /></td>
     <td><code>string</code></td>
     <td>The ISO country code. (AF, AL, DZ, AS, AD, AO, AI, AQ, AG, AR, AM, AW, AU, AT, AZ, BS, BH, BD, BB, BY, BE, BZ, BJ, BM, BT, BO, BA, BW, BR, IO, VG, BN, BG, BF, BI, KH, CM, CA, CV, KY, CF, TD, CL, CN, CX, CC, CO, KM, CK, CR, HR, CU, CW, CY, CZ, CD, DK, DJ, DM, DO, TL, EC, EG, SV, GQ, ER, EE, ET, FK, FO, FJ, FI, FR, PF, GA, GM, GE, DE, GH, GI, GR, GL, GD, GU, GT, GG, GN, GW, GY, HT, HN, HK, HU, IS, IN, ID, IR, IQ, IE, IM, IL, IT, CI, JM, JP, JE, JO, KZ, KE, KI, KW, KG, LA, LV, LB, LS, LR, LY, LI, LT, LU, MO, MK, MG, MW, MY, MV, ML, MT, MH, MR, MU, YT, MX, FM, MD, MC, MN, ME, MS, MA, MZ, MM, NA, NR, NP, NL, AN, NC, NZ, NI, NE, NG, NU, KP, MP, NO, OM, PK, PW, PA, PG, PY, PE, PH, PN, PL, PT, PR, QA, CG, RE, RO, RU, RW, BL, SH, KN, LC, MF, PM, VC, WS, SM, ST, SA, SN, RS, SC, SL, SG, SX, SK, SI, SB, SO, ZA, KR, ES, LK, SD, SR, SJ, SZ, SE, CH, SY, TW, TJ, TZ, TH, TG, TK, TO, TT, TN, TR, TM, TC, TV, VI, UG, UA, AE, GB, US, UY, UZ, VU, VA, VE, VN, WF, EH, YE, ZM, ZW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberDescription" /></td>
+    <td><CopyableCode code="phone_number_description" /></td>
     <td><code>string</code></td>
     <td>The description of the phone number. (pattern: &lt;code&gt;^&#91;\W\S_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberId" /></td>
+    <td><CopyableCode code="phone_number_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberStatus" /></td>
+    <td><CopyableCode code="phone_number_status" /></td>
     <td><code>object</code></td>
     <td>The status of the phone number. CLAIMED means the previous ClaimPhoneNumber or UpdatePhoneNumber operation succeeded. IN_PROGRESS means a ClaimPhoneNumber, UpdatePhoneNumber, or UpdatePhoneNumberMetadata operation is still in progress and has not yet completed. You can call DescribePhoneNumber at a later time to verify if the previous operation has completed. FAILED indicates that the previous ClaimPhoneNumber or UpdatePhoneNumber operation has failed. It will include a message indicating the failure reason. A common reason for a failure may be that the TargetArn value you are claiming or updating a phone number to has reached its limit of total claimed numbers. If you received a FAILED status from a ClaimPhoneNumber API call, you have one day to retry claiming the phone number before the number is released back to the inventory for other customers to claim. You will not be billed for the phone number during the 1-day period if number claiming fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberType" /></td>
+    <td><CopyableCode code="phone_number_type" /></td>
     <td><code>string</code></td>
     <td>The type of phone number. (TOLL_FREE, DID, UIFN, SHARED, THIRD_PARTY_TF, THIRD_PARTY_DID, SHORT_CODE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourcePhoneNumberArn" /></td>
+    <td><CopyableCode code="source_phone_number_arn" /></td>
     <td><code>string</code></td>
     <td>The claimed phone number ARN that was previously imported from the external service, such as Amazon Web Services End User Messaging. If it is from Amazon Web Services End User Messaging, it looks like the ARN of the phone number that was imported from Amazon Web Services End User Messaging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetArn" /></td>
+    <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for Amazon Connect instances or traffic distribution groups that phone number inbound traffic is routed through.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the phone number.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number. (pattern: &lt;code&gt;\\+&#91;1-9&#93;\\d&#123;1,14&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberCountryCode" /></td>
+    <td><CopyableCode code="phone_number_country_code" /></td>
     <td><code>string</code></td>
     <td>The ISO country code. (AF, AL, DZ, AS, AD, AO, AI, AQ, AG, AR, AM, AW, AU, AT, AZ, BS, BH, BD, BB, BY, BE, BZ, BJ, BM, BT, BO, BA, BW, BR, IO, VG, BN, BG, BF, BI, KH, CM, CA, CV, KY, CF, TD, CL, CN, CX, CC, CO, KM, CK, CR, HR, CU, CW, CY, CZ, CD, DK, DJ, DM, DO, TL, EC, EG, SV, GQ, ER, EE, ET, FK, FO, FJ, FI, FR, PF, GA, GM, GE, DE, GH, GI, GR, GL, GD, GU, GT, GG, GN, GW, GY, HT, HN, HK, HU, IS, IN, ID, IR, IQ, IE, IM, IL, IT, CI, JM, JP, JE, JO, KZ, KE, KI, KW, KG, LA, LV, LB, LS, LR, LY, LI, LT, LU, MO, MK, MG, MW, MY, MV, ML, MT, MH, MR, MU, YT, MX, FM, MD, MC, MN, ME, MS, MA, MZ, MM, NA, NR, NP, NL, AN, NC, NZ, NI, NE, NG, NU, KP, MP, NO, OM, PK, PW, PA, PG, PY, PE, PH, PN, PL, PT, PR, QA, CG, RE, RO, RU, RW, BL, SH, KN, LC, MF, PM, VC, WS, SM, ST, SA, SN, RS, SC, SL, SG, SX, SK, SI, SB, SO, ZA, KR, ES, LK, SD, SR, SJ, SZ, SE, CH, SY, TW, TJ, TZ, TH, TG, TK, TO, TT, TN, TR, TM, TC, TV, VI, UG, UA, AE, GB, US, UY, UZ, VU, VA, VE, VN, WF, EH, YE, ZM, ZW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumberType" /></td>
+    <td><CopyableCode code="phone_number_type" /></td>
     <td><code>string</code></td>
     <td>The type of phone number. (TOLL_FREE, DID, UIFN, SHARED, THIRD_PARTY_TF, THIRD_PARTY_DID, SHORT_CODE)</td>
 </tr>
@@ -273,17 +273,17 @@ Gets details and status of a phone number that’s claimed to your Amazon Connec
 
 ```sql
 SELECT
-InstanceId,
-PhoneNumber,
-PhoneNumberArn,
-PhoneNumberCountryCode,
-PhoneNumberDescription,
-PhoneNumberId,
-PhoneNumberStatus,
-PhoneNumberType,
-SourcePhoneNumberArn,
-Tags,
-TargetArn
+instance_id,
+phone_number,
+phone_number_arn,
+phone_number_country_code,
+phone_number_description,
+phone_number_id,
+phone_number_status,
+phone_number_type,
+source_phone_number_arn,
+tags,
+target_arn
 FROM aws.connect.phone_numbers
 WHERE phone_number_id = '{{ phone_number_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -296,11 +296,11 @@ Provides information about the phone numbers for the specified Amazon Connect in
 
 ```sql
 SELECT
-Arn,
-Id,
-PhoneNumber,
-PhoneNumberCountryCode,
-PhoneNumberType
+arn,
+id,
+phone_number,
+phone_number_country_code,
+phone_number_type
 FROM aws.connect.phone_numbers
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

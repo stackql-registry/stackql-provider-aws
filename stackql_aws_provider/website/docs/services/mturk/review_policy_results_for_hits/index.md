@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssignmentReviewPolicy" /></td>
+    <td><CopyableCode code="assignment_review_policy" /></td>
     <td><code>object</code></td>
     <td>The name of the Assignment-level Review Policy. This contains only the PolicyName element.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssignmentReviewReport" /></td>
+    <td><CopyableCode code="assignment_review_report" /></td>
     <td><code>object</code></td>
     <td>Contains both ReviewResult and ReviewAction elements for an Assignment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HITId" /></td>
+    <td><CopyableCode code="hit_id" /></td>
     <td><code>string</code></td>
     <td>The HITId of the HIT for which results have been returned. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HITReviewPolicy" /></td>
+    <td><CopyableCode code="hit_review_policy" /></td>
     <td><code>object</code></td>
     <td>The name of the HIT-level Review Policy. This contains only the PolicyName element.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HITReviewReport" /></td>
+    <td><CopyableCode code="hit_review_report" /></td>
     <td><code>object</code></td>
     <td>Contains both ReviewResult and ReviewAction elements for a particular HIT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the previous response was incomplete (because there is more data to retrieve), Amazon Mechanical Turk returns a pagination token in the response. You can use this pagination token to retrieve the next set of results.</td>
 </tr>
@@ -144,12 +144,12 @@ The ListReviewPolicyResultsForHIT operation retrieves the computed results and t
 
 ```sql
 SELECT
-AssignmentReviewPolicy,
-AssignmentReviewReport,
-HITId,
-HITReviewPolicy,
-HITReviewReport,
-NextToken
+assignment_review_policy,
+assignment_review_report,
+hit_id,
+hit_review_policy,
+hit_review_report,
+next_token
 FROM aws.mturk.review_policy_results_for_hits
 WHERE region = '{{ region }}' -- required
 ;

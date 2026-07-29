@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the dataset. The format is arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:dataset/$&#123;DatasetId&#125;. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The dataset creation date, in Unix epoch time.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description about the dataset, and its functionality. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dataset was last updated, in Unix epoch time.</td>
 </tr>
@@ -100,47 +100,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="datasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dataset. The format is arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:dataset/$&#123;DatasetId&#125;. (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetCreationDate" /></td>
+    <td><CopyableCode code="dataset_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The dataset creation date, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetDescription" /></td>
+    <td><CopyableCode code="dataset_description" /></td>
     <td><code>string</code></td>
     <td>A description about the dataset, and its functionality. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetId" /></td>
+    <td><CopyableCode code="dataset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the dataset. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetLastUpdateDate" /></td>
+    <td><CopyableCode code="dataset_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the dataset was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetSource" /></td>
+    <td><CopyableCode code="dataset_source" /></td>
     <td><code>object</code></td>
     <td>The data source for the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetStatus" /></td>
+    <td><CopyableCode code="dataset_status" /></td>
     <td><code>object</code></td>
     <td>The status of the dataset. This contains the state and any error messages. State is CREATING after a successfull call to this API, and any associated error message. The state is ACTIVE when ready to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetVersion" /></td>
+    <td><CopyableCode code="dataset_version" /></td>
     <td><code>string</code></td>
     <td>The version of the dataset. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -266,9 +266,9 @@ SELECT
 id,
 name,
 arn,
-creationDate,
+creation_date,
 description,
-lastUpdateDate,
+last_update_date,
 status
 FROM aws.iotsitewise.datasets
 WHERE sourceType = '{{ sourceType }}' -- required
@@ -284,15 +284,15 @@ Retrieves information about a dataset.
 
 ```sql
 SELECT
-datasetArn,
-datasetCreationDate,
-datasetDescription,
-datasetId,
-datasetLastUpdateDate,
-datasetName,
-datasetSource,
-datasetStatus,
-datasetVersion
+dataset_arn,
+dataset_creation_date,
+dataset_description,
+dataset_id,
+dataset_last_update_date,
+dataset_name,
+dataset_source,
+dataset_status,
+dataset_version
 FROM aws.iotsitewise.datasets
 WHERE dataset_id = '{{ dataset_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -334,9 +334,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-datasetArn,
-datasetId,
-datasetStatus
+dataset_arn,
+dataset_id,
+dataset_status
 ;
 ```
 </TabItem>
@@ -399,9 +399,9 @@ AND region = '{{ region }}' --required
 AND datasetName = '{{ datasetName }}' --required
 AND datasetSource = '{{ datasetSource }}' --required
 RETURNING
-datasetArn,
-datasetId,
-datasetStatus;
+dataset_arn,
+dataset_id,
+dataset_status;
 ```
 </TabItem>
 </Tabs>

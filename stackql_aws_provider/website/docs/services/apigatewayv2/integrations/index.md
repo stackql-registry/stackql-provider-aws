@@ -51,102 +51,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether an integration is managed by API Gateway. If you created an API using using quick create, the resulting integration is managed by API Gateway. You can update a managed integration, but you can't delete it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionType" /></td>
+    <td><CopyableCode code="connection_type" /></td>
     <td><code>string</code></td>
     <td>Represents a connection type. (INTERNET, VPC_LINK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentHandlingStrategy" /></td>
+    <td><CopyableCode code="content_handling_strategy" /></td>
     <td><code>string</code></td>
     <td>Specifies how to handle response payload content type conversions. Supported only for WebSocket APIs. (CONVERT_TO_BINARY, CONVERT_TO_TEXT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CredentialsArn" /></td>
+    <td><CopyableCode code="credentials_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationId" /></td>
+    <td><CopyableCode code="integration_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationMethod" /></td>
+    <td><CopyableCode code="integration_method" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationResponseSelectionExpression" /></td>
+    <td><CopyableCode code="integration_response_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationSubtype" /></td>
+    <td><CopyableCode code="integration_subtype" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationType" /></td>
+    <td><CopyableCode code="integration_type" /></td>
     <td><code>string</code></td>
     <td>Represents an API method integration type. (AWS, HTTP, MOCK, HTTP_PROXY, AWS_PROXY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationUri" /></td>
+    <td><CopyableCode code="integration_uri" /></td>
     <td><code>string</code></td>
     <td>A string representation of a URI with a length between &#91;1-2048&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PassthroughBehavior" /></td>
+    <td><CopyableCode code="passthrough_behavior" /></td>
     <td><code>string</code></td>
     <td>Represents passthrough behavior for an integration response. Supported only for WebSocket APIs. (WHEN_NO_MATCH, NEVER, WHEN_NO_TEMPLATES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PayloadFormatVersion" /></td>
+    <td><CopyableCode code="payload_format_version" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestParameters" /></td>
+    <td><CopyableCode code="request_parameters" /></td>
     <td><code>object</code></td>
     <td>For WebSocket APIs, a key-value map specifying request parameters that are passed from the method request to the backend. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the backend. The method request parameter value must match the pattern of method.request.&#123;location&#125;.&#123;name&#125; , where &#123;location&#125; is querystring, path, or header; and &#123;name&#125; must be a valid and unique method request parameter name. For HTTP API integrations with a specified integrationSubtype, request parameters are a key-value map specifying parameters that are passed to AWS_PROXY integrations. You can provide static values, or map request data, stage variables, or context variables that are evaluated at runtime. To learn more, see Working with AWS service integrations for HTTP APIs. For HTTP API integrations, without a specified integrationSubtype request parameters are a key-value map specifying how to transform HTTP requests before sending them to backend integrations. The key should follow the pattern <code>&lt;action&gt;</code>:&lt;header|querystring|path&gt;.`&lt;location&gt;`. The action can be append, overwrite or remove. For values, you can provide static values, or map request data, stage variables, or context variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestTemplates" /></td>
+    <td><CopyableCode code="request_templates" /></td>
     <td><code>object</code></td>
     <td>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend integration before returning the response to clients. Specify a key-value map from a selection key to response parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key must match pattern <code>&lt;action&gt;</code>:<code>&lt;header&gt;</code>.`&lt;location&gt;` or overwrite.statuscode. The action can be append, overwrite or remove. The value can be a static value, or map to response data, stage variables, or context variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateSelectionExpression" /></td>
+    <td><CopyableCode code="template_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeoutInMillis" /></td>
+    <td><CopyableCode code="timeout_in_millis" /></td>
     <td><code>integer</code></td>
     <td>An integer with a value between &#91;50-30000&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TlsConfig" /></td>
+    <td><CopyableCode code="tls_config" /></td>
     <td><code>object</code></td>
     <td>The TLS configuration for a private integration. If you specify a TLS configuration, private integration traffic uses the HTTPS protocol. Supported only for HTTP APIs.</td>
 </tr>
@@ -165,102 +165,102 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether an integration is managed by API Gateway. If you created an API using using quick create, the resulting integration is managed by API Gateway. You can update a managed integration, but you can't delete it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionType" /></td>
+    <td><CopyableCode code="connection_type" /></td>
     <td><code>string</code></td>
     <td>Represents a connection type. (INTERNET, VPC_LINK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentHandlingStrategy" /></td>
+    <td><CopyableCode code="content_handling_strategy" /></td>
     <td><code>string</code></td>
     <td>Specifies how to handle response payload content type conversions. Supported only for WebSocket APIs. (CONVERT_TO_BINARY, CONVERT_TO_TEXT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CredentialsArn" /></td>
+    <td><CopyableCode code="credentials_arn" /></td>
     <td><code>string</code></td>
     <td>Represents an Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationId" /></td>
+    <td><CopyableCode code="integration_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationMethod" /></td>
+    <td><CopyableCode code="integration_method" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationResponseSelectionExpression" /></td>
+    <td><CopyableCode code="integration_response_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationSubtype" /></td>
+    <td><CopyableCode code="integration_subtype" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationType" /></td>
+    <td><CopyableCode code="integration_type" /></td>
     <td><code>string</code></td>
     <td>Represents an API method integration type. (AWS, HTTP, MOCK, HTTP_PROXY, AWS_PROXY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationUri" /></td>
+    <td><CopyableCode code="integration_uri" /></td>
     <td><code>string</code></td>
     <td>A string representation of a URI with a length between &#91;1-2048&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PassthroughBehavior" /></td>
+    <td><CopyableCode code="passthrough_behavior" /></td>
     <td><code>string</code></td>
     <td>Represents passthrough behavior for an integration response. Supported only for WebSocket APIs. (WHEN_NO_MATCH, NEVER, WHEN_NO_TEMPLATES)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PayloadFormatVersion" /></td>
+    <td><CopyableCode code="payload_format_version" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestParameters" /></td>
+    <td><CopyableCode code="request_parameters" /></td>
     <td><code>object</code></td>
     <td>For WebSocket APIs, a key-value map specifying request parameters that are passed from the method request to the backend. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the backend. The method request parameter value must match the pattern of method.request.&#123;location&#125;.&#123;name&#125; , where &#123;location&#125; is querystring, path, or header; and &#123;name&#125; must be a valid and unique method request parameter name. For HTTP API integrations with a specified integrationSubtype, request parameters are a key-value map specifying parameters that are passed to AWS_PROXY integrations. You can provide static values, or map request data, stage variables, or context variables that are evaluated at runtime. To learn more, see Working with AWS service integrations for HTTP APIs. For HTTP API integrations, without a specified integrationSubtype request parameters are a key-value map specifying how to transform HTTP requests before sending them to backend integrations. The key should follow the pattern <code>&lt;action&gt;</code>:&lt;header|querystring|path&gt;.`&lt;location&gt;`. The action can be append, overwrite or remove. For values, you can provide static values, or map request data, stage variables, or context variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestTemplates" /></td>
+    <td><CopyableCode code="request_templates" /></td>
     <td><code>object</code></td>
     <td>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend integration before returning the response to clients. Specify a key-value map from a selection key to response parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key must match pattern <code>&lt;action&gt;</code>:<code>&lt;header&gt;</code>.`&lt;location&gt;` or overwrite.statuscode. The action can be append, overwrite or remove. The value can be a static value, or map to response data, stage variables, or context variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateSelectionExpression" /></td>
+    <td><CopyableCode code="template_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeoutInMillis" /></td>
+    <td><CopyableCode code="timeout_in_millis" /></td>
     <td><code>integer</code></td>
     <td>An integer with a value between &#91;50-30000&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TlsConfig" /></td>
+    <td><CopyableCode code="tls_config" /></td>
     <td><code>object</code></td>
     <td>The TLS configuration for a private integration. If you specify a TLS configuration, private integration traffic uses the HTTPS protocol. Supported only for HTTP APIs.</td>
 </tr>
@@ -378,26 +378,26 @@ Gets an Integration.
 
 ```sql
 SELECT
-ApiGatewayManaged,
-ConnectionId,
-ConnectionType,
-ContentHandlingStrategy,
-CredentialsArn,
-Description,
-IntegrationId,
-IntegrationMethod,
-IntegrationResponseSelectionExpression,
-IntegrationSubtype,
-IntegrationType,
-IntegrationUri,
-PassthroughBehavior,
-PayloadFormatVersion,
-RequestParameters,
-RequestTemplates,
-ResponseParameters,
-TemplateSelectionExpression,
-TimeoutInMillis,
-TlsConfig
+api_gateway_managed,
+connection_id,
+connection_type,
+content_handling_strategy,
+credentials_arn,
+description,
+integration_id,
+integration_method,
+integration_response_selection_expression,
+integration_subtype,
+integration_type,
+integration_uri,
+passthrough_behavior,
+payload_format_version,
+request_parameters,
+request_templates,
+response_parameters,
+template_selection_expression,
+timeout_in_millis,
+tls_config
 FROM aws.apigatewayv2.integrations
 WHERE api_id = '{{ api_id }}' -- required
 AND integration_id = '{{ integration_id }}' -- required
@@ -411,26 +411,26 @@ Gets the Integrations for an API.
 
 ```sql
 SELECT
-ApiGatewayManaged,
-ConnectionId,
-ConnectionType,
-ContentHandlingStrategy,
-CredentialsArn,
-Description,
-IntegrationId,
-IntegrationMethod,
-IntegrationResponseSelectionExpression,
-IntegrationSubtype,
-IntegrationType,
-IntegrationUri,
-PassthroughBehavior,
-PayloadFormatVersion,
-RequestParameters,
-RequestTemplates,
-ResponseParameters,
-TemplateSelectionExpression,
-TimeoutInMillis,
-TlsConfig
+api_gateway_managed,
+connection_id,
+connection_type,
+content_handling_strategy,
+credentials_arn,
+description,
+integration_id,
+integration_method,
+integration_response_selection_expression,
+integration_subtype,
+integration_type,
+integration_uri,
+passthrough_behavior,
+payload_format_version,
+request_parameters,
+request_templates,
+response_parameters,
+template_selection_expression,
+timeout_in_millis,
+tls_config
 FROM aws.apigatewayv2.integrations
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -498,26 +498,26 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-ApiGatewayManaged,
-ConnectionId,
-ConnectionType,
-ContentHandlingStrategy,
-CredentialsArn,
-Description,
-IntegrationId,
-IntegrationMethod,
-IntegrationResponseSelectionExpression,
-IntegrationSubtype,
-IntegrationType,
-IntegrationUri,
-PassthroughBehavior,
-PayloadFormatVersion,
-RequestParameters,
-RequestTemplates,
-ResponseParameters,
-TemplateSelectionExpression,
-TimeoutInMillis,
-TlsConfig
+api_gateway_managed,
+connection_id,
+connection_type,
+content_handling_strategy,
+credentials_arn,
+description,
+integration_id,
+integration_method,
+integration_response_selection_expression,
+integration_subtype,
+integration_type,
+integration_uri,
+passthrough_behavior,
+payload_format_version,
+request_parameters,
+request_templates,
+response_parameters,
+template_selection_expression,
+timeout_in_millis,
+tls_config
 ;
 ```
 </TabItem>
@@ -648,26 +648,26 @@ api_id = '{{ api_id }}' --required
 AND integration_id = '{{ integration_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApiGatewayManaged,
-ConnectionId,
-ConnectionType,
-ContentHandlingStrategy,
-CredentialsArn,
-Description,
-IntegrationId,
-IntegrationMethod,
-IntegrationResponseSelectionExpression,
-IntegrationSubtype,
-IntegrationType,
-IntegrationUri,
-PassthroughBehavior,
-PayloadFormatVersion,
-RequestParameters,
-RequestTemplates,
-ResponseParameters,
-TemplateSelectionExpression,
-TimeoutInMillis,
-TlsConfig;
+api_gateway_managed,
+connection_id,
+connection_type,
+content_handling_strategy,
+credentials_arn,
+description,
+integration_id,
+integration_method,
+integration_response_selection_expression,
+integration_subtype,
+integration_type,
+integration_uri,
+passthrough_behavior,
+payload_format_version,
+request_parameters,
+request_templates,
+response_parameters,
+template_selection_expression,
+timeout_in_millis,
+tls_config;
 ```
 </TabItem>
 </Tabs>

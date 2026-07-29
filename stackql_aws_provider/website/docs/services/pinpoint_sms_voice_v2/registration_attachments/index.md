@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachmentStatus" /></td>
+    <td><CopyableCode code="attachment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the registration attachment. UPLOAD_IN_PROGRESS The attachment is being uploaded. UPLOAD_COMPLETE The attachment has been uploaded. UPLOAD_FAILED The attachment failed to uploaded. DELETED The attachment has been deleted.. (UPLOAD_IN_PROGRESS, UPLOAD_COMPLETE, UPLOAD_FAILED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentUploadErrorReason" /></td>
+    <td><CopyableCode code="attachment_upload_error_reason" /></td>
     <td><code>string</code></td>
     <td>A description of why the upload didn't successfully complete. (INTERNAL_ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachmentUrl" /></td>
+    <td><CopyableCode code="attachment_url" /></td>
     <td><code>string</code></td>
     <td>The URL to the document that's associated with the registration attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the registration attachment was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationAttachmentArn" /></td>
+    <td><CopyableCode code="registration_attachment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the registration attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegistrationAttachmentId" /></td>
+    <td><CopyableCode code="registration_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the registration attachment.</td>
 </tr>
@@ -158,12 +158,12 @@ Retrieves the specified registration attachments or all registration attachments
 
 ```sql
 SELECT
-AttachmentStatus,
-AttachmentUploadErrorReason,
-AttachmentUrl,
-CreatedTimestamp,
-RegistrationAttachmentArn,
-RegistrationAttachmentId
+attachment_status,
+attachment_upload_error_reason,
+attachment_url,
+created_timestamp,
+registration_attachment_arn,
+registration_attachment_id
 FROM aws.pinpoint_sms_voice_v2.registration_attachments
 WHERE region = '{{ region }}' -- required
 ;
@@ -200,11 +200,11 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-AttachmentStatus,
-CreatedTimestamp,
-RegistrationAttachmentArn,
-RegistrationAttachmentId,
-Tags
+attachment_status,
+created_timestamp,
+registration_attachment_arn,
+registration_attachment_id,
+tags
 ;
 ```
 </TabItem>

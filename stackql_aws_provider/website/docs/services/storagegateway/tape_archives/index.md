@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the archiving of the virtual tape was completed. The default timestamp format is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KMSKey" /></td>
+    <td><CopyableCode code="kms_key" /></td>
     <td><code>string</code></td>
     <td>Optional. The Amazon Resource Name (ARN) of a symmetric customer master key (CMK) used for Amazon S3 server-side encryption. Storage Gateway does not support asymmetric CMKs. This value must be set if KMSEncrypted is true, or if EncryptionType is SseKms or DsseKms. (pattern: &lt;code&gt;(^arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):kms:(&#91;a-zA-Z0-9-&#93;+):(&#91;0-9&#93;+):(key|alias)/(\S+)$)|(^alias/(\S+)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolEntryDate" /></td>
+    <td><CopyableCode code="pool_entry_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the tape entered the custom tape pool. The default timestamp format is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolId" /></td>
+    <td><CopyableCode code="pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the pool that was used to archive the tape. The tapes in this pool are archived in the S3 storage class that is associated with the pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetentionStartDate" /></td>
+    <td><CopyableCode code="retention_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the archived tape is subject to tape retention lock, the date that the archived tape started being retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrievedTo" /></td>
+    <td><CopyableCode code="retrieved_to" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeARN" /></td>
+    <td><CopyableCode code="tape_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an archived virtual tape. (pattern: &lt;code&gt;arn:(aws(|-cn|-us-gov|-iso&#91;A-Za-z0-9_-&#93;*|-eusc)):storagegateway:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;+:tape\/&#91;0-9A-Z&#93;&#123;5,16&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeBarcode" /></td>
+    <td><CopyableCode code="tape_barcode" /></td>
     <td><code>string</code></td>
     <td>The barcode that identifies the archived virtual tape. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeCreatedDate" /></td>
+    <td><CopyableCode code="tape_created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the virtual tape was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeSizeInBytes" /></td>
+    <td><CopyableCode code="tape_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of the archived virtual tape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeStatus" /></td>
+    <td><CopyableCode code="tape_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the archived virtual tape.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TapeUsedInBytes" /></td>
+    <td><CopyableCode code="tape_used_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size, in bytes, of data stored on the virtual tape. This value is not available for tapes created prior to May 13, 2015.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Worm" /></td>
+    <td><CopyableCode code="worm" /></td>
     <td><code>boolean</code></td>
     <td>Set to true if the archived tape is stored as write-once-read-many (WORM).</td>
 </tr>
@@ -186,19 +186,19 @@ Returns a description of specified virtual tapes in the virtual tape shelf (VTS)
 
 ```sql
 SELECT
-CompletionTime,
-KMSKey,
-PoolEntryDate,
-PoolId,
-RetentionStartDate,
-RetrievedTo,
-TapeARN,
-TapeBarcode,
-TapeCreatedDate,
-TapeSizeInBytes,
-TapeStatus,
-TapeUsedInBytes,
-Worm
+completion_time,
+kms_key,
+pool_entry_date,
+pool_id,
+retention_start_date,
+retrieved_to,
+tape_arn,
+tape_barcode,
+tape_created_date,
+tape_size_in_bytes,
+tape_status,
+tape_used_in_bytes,
+worm
 FROM aws.storagegateway.tape_archives
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="acceptRanges" /></td>
+    <td><CopyableCode code="accept_ranges" /></td>
     <td><code>string</code></td>
     <td>Indicates the range units accepted. For more information, see RFC2616.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="archiveDescription" /></td>
+    <td><CopyableCode code="archive_description" /></td>
     <td><code>string</code></td>
     <td>The description of an archive.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The checksum of the data in the response. This header is returned only when retrieving the output for an archive retrieval job. Furthermore, this header appears only under the following conditions: You get the entire range of the archive. You request a range to return of the archive that starts and ends on a multiple of 1 MB. For example, if you have an 3.1 MB archive and you specify a range to return that starts at 1 MB and ends at 2 MB, then the x-amz-sha256-tree-hash is returned as a response header. You request a range of the archive to return that starts on a multiple of 1 MB and goes to the end of the archive. For example, if you have a 3.1 MB archive and you specify a range that starts at 2 MB and ends at 3.1 MB (the end of the archive), then the x-amz-sha256-tree-hash is returned as a response header.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentRange" /></td>
+    <td><CopyableCode code="content_range" /></td>
     <td><code>string</code></td>
     <td>The range of bytes returned by Amazon Glacier. If only partial output is downloaded, the response provides the range of bytes Amazon Glacier returned. For example, bytes 0-1048575/8388608 returns the first 1 MB from 8 MB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The Content-Type depends on whether the job output is an archive or a vault inventory. For archive data, the Content-Type is application/octet-stream. For vault inventory, if you requested CSV format when you initiated the job, the Content-Type is text/csv. Otherwise, by default, vault inventory is returned as JSON, and the Content-Type is application/json.</td>
 </tr>
@@ -169,12 +169,12 @@ This operation downloads the output of the job you initiated using InitiateJob. 
 
 ```sql
 SELECT
-acceptRanges,
-archiveDescription,
+accept_ranges,
+archive_description,
 body,
 checksum,
-contentRange,
-contentType,
+content_range,
+content_type,
 status
 FROM aws.glacier.job_outputs
 WHERE account_id = '{{ account_id }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndpointAddress" /></td>
+    <td><CopyableCode code="endpoint_address" /></td>
     <td><code>string</code></td>
     <td>The IoT managed integrations dedicated, custom endpoint for the device to route traffic through. (pattern: &lt;code&gt;&#91;A-Za-z0-9._@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -126,7 +126,7 @@ Returns the IoT managed integrations custom endpoint.
 
 ```sql
 SELECT
-EndpointAddress
+endpoint_address
 FROM aws.iot_managed_integrations.custom_endpoints
 WHERE region = '{{ region }}' -- required
 ;
@@ -155,7 +155,7 @@ region
 SELECT 
 '{{ region }}'
 RETURNING
-EndpointAddress
+endpoint_address
 ;
 ```
 </TabItem>

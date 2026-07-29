@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The allow lists, custom data identifiers, and managed data identifiers that are explicitly included (used) when performing automated sensitive data discovery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sensitivityInspectionTemplateId" /></td>
+    <td><CopyableCode code="sensitivity_inspection_template_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the template.</td>
 </tr>
@@ -198,7 +198,7 @@ name,
 description,
 excludes,
 includes,
-sensitivityInspectionTemplateId
+sensitivity_inspection_template_id
 FROM aws.macie2.sensitivity_inspection_templates
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="caseRules" /></td>
+    <td><CopyableCode code="case_rules" /></td>
     <td><code>array</code></td>
     <td>A list of detailed case rule information.</td>
 </tr>
@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of case rule errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unprocessedCaseRules" /></td>
+    <td><CopyableCode code="unprocessed_case_rules" /></td>
     <td><code>array</code></td>
     <td>A list of unprocessed case rule identifiers.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>Name of the case rule. (pattern: &lt;code&gt;.*&#91;\S&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseRuleArn" /></td>
+    <td><CopyableCode code="case_rule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the case rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caseRuleId" /></td>
+    <td><CopyableCode code="case_rule_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of a case rule.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>Description of a case rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleType" /></td>
+    <td><CopyableCode code="rule_type" /></td>
     <td><code>string</code></td>
     <td>Possible types for a rule. (Required, Hidden, FieldOptions)</td>
 </tr>
@@ -218,9 +218,9 @@ Gets a batch of case rules. In the Amazon Connect admin website, case rules are 
 
 ```sql
 SELECT
-caseRules,
+case_rules,
 errors,
-unprocessedCaseRules
+unprocessed_case_rules
 FROM aws.connectcases.case_rules
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -234,10 +234,10 @@ Lists all case rules in a Cases domain. In the Amazon Connect admin website, cas
 ```sql
 SELECT
 name,
-caseRuleArn,
-caseRuleId,
+case_rule_arn,
+case_rule_id,
 description,
-ruleType
+rule_type
 FROM aws.connectcases.case_rules
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,8 +277,8 @@ SELECT
 '{{ domain_id }}',
 '{{ region }}'
 RETURNING
-caseRuleArn,
-caseRuleId
+case_rule_arn,
+case_rule_id
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EntityRecognizerSummariesList" /></td>
+    <td><CopyableCode code="entity_recognizer_summaries_list" /></td>
     <td><code>array</code></td>
     <td>The list entity recognizer summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Identifies the next page of results to return.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets a list of summaries for the entity recognizers that you have created.
 
 ```sql
 SELECT
-EntityRecognizerSummariesList,
-NextToken
+entity_recognizer_summaries_list,
+next_token
 FROM aws.comprehend.entity_recognizer_summaries
 WHERE region = '{{ region }}' -- required
 ;

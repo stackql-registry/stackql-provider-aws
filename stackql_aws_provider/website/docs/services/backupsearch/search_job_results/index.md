@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EBSResultItem" /></td>
+    <td><CopyableCode code="ebs_result_item" /></td>
     <td><code>object</code></td>
     <td>These are items returned in the search results of an Amazon EBS search.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3ResultItem" /></td>
+    <td><CopyableCode code="s3_result_item" /></td>
     <td><code>object</code></td>
     <td>These are items returned in the search results of an Amazon S3 search.</td>
 </tr>
@@ -139,8 +139,8 @@ This operation returns a list of a specified search job.
 
 ```sql
 SELECT
-EBSResultItem,
-S3ResultItem
+ebs_result_item,
+s3_result_item
 FROM aws.backupsearch.search_job_results
 WHERE search_job_identifier = '{{ search_job_identifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -61,32 +61,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the deployment was deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentArn" /></td>
+    <td><CopyableCode code="deployment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the deployment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="patternName" /></td>
+    <td><CopyableCode code="pattern_name" /></td>
     <td><code>string</code></td>
     <td>The pattern name of the deployment. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceGroup" /></td>
+    <td><CopyableCode code="resource_group" /></td>
     <td><code>string</code></td>
     <td>The resource group of the deployment.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the tags attached to a deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the deployment</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the deployment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="patternName" /></td>
+    <td><CopyableCode code="pattern_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload deployment pattern. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -155,7 +155,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the deployment. (COMPLETED, CREATING, DELETE_IN_PROGRESS, DELETE_INITIATING, DELETE_FAILED, DELETED, FAILED, IN_PROGRESS, VALIDATING, UPDATE_IN_PROGRESS, UPDATE_COMPLETED, UPDATE_FAILED, UPDATE_ROLLBACK_COMPLETED, UPDATE_ROLLBACK_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadName" /></td>
+    <td><CopyableCode code="workload_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workload. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -255,16 +255,16 @@ Returns information about the deployment.
 SELECT
 id,
 name,
-createdAt,
-deletedAt,
-deploymentArn,
-modifiedAt,
-patternName,
-resourceGroup,
+created_at,
+deleted_at,
+deployment_arn,
+modified_at,
+pattern_name,
+resource_group,
 specifications,
 status,
 tags,
-workloadName
+workload_name
 FROM aws.launch_wizard.deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -278,11 +278,11 @@ Lists the deployments that have been created.
 SELECT
 id,
 name,
-createdAt,
-modifiedAt,
-patternName,
+created_at,
+modified_at,
+pattern_name,
 status,
-workloadName
+workload_name
 FROM aws.launch_wizard.deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -323,7 +323,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-deploymentId
+deployment_id
 ;
 ```
 </TabItem>

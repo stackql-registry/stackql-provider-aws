@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date at which the upload was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>array</code></td>
     <td>The reason for an upload failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceArn" /></td>
+    <td><CopyableCode code="namespace_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the upload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the upload's namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceVersion" /></td>
+    <td><CopyableCode code="namespace_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version of the user's namespace. Defaults to the latest version of the user's namespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadId" /></td>
+    <td><CopyableCode code="upload_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the upload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uploadStatus" /></td>
+    <td><CopyableCode code="upload_status" /></td>
     <td><code>string</code></td>
     <td>The status of the upload. The initial status is IN_PROGRESS. The response show all validation failures if the upload fails. (IN_PROGRESS, SUCCEEDED, FAILED)</td>
 </tr>
@@ -149,13 +149,13 @@ Gets the status of the specified upload.
 
 ```sql
 SELECT
-createdDate,
-failureReason,
-namespaceArn,
-namespaceName,
-namespaceVersion,
-uploadId,
-uploadStatus
+created_date,
+failure_reason,
+namespace_arn,
+namespace_name,
+namespace_version,
+upload_id,
+upload_status
 FROM aws.iotthingsgraph.upload_status
 WHERE region = '{{ region }}' -- required
 ;

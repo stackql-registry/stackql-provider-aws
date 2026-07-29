@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttendeeId" /></td>
+    <td><CopyableCode code="attendee_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime SDK attendee ID. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Capabilities" /></td>
+    <td><CopyableCode code="capabilities" /></td>
     <td><code>object</code></td>
     <td>The capabilities assigned to an attendee: audio, video, or content. You use the capabilities with a set of values that control what the capabilities can do, such as SendReceive data. For more information about those values, see . When using capabilities, be aware of these corner cases: If you specify MeetingFeatures:Video:MaxResolution:None when you create a meeting, all API requests that include SendReceive, Send, or Receive for AttendeeCapabilities:Video will be rejected with ValidationError 400. If you specify MeetingFeatures:Content:MaxResolution:None when you create a meeting, all API requests that include SendReceive, Send, or Receive for AttendeeCapabilities:Content will be rejected with ValidationError 400. You can't set content capabilities to SendReceive or Receive unless you also set video capabilities to SendReceive or Receive. If you don't set the video capability to receive, the response will contain an HTTP 400 Bad Request status code. However, you can set your video capability to receive and you set your content capability to not receive. If meeting features is defined as Video:MaxResolution:None but Content:MaxResolution is defined as something other than None and attendee capabilities are not defined in the API request, then the default attendee video capability is set to Receive and attendee content capability is set to SendReceive. This is because content SendReceive requires video to be at least Receive. When you change an audio capability from None or Receive to Send or SendReceive , and if the attendee left their microphone unmuted, audio will flow from the attendee to the other meeting participants. When you change a video or content capability from None or Receive to Send or SendReceive , and if the attendee turned on their video or content streams, remote attendees can receive those streams, but only after media renegotiation between the client and the Amazon Chime back-end server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalUserId" /></td>
+    <td><CopyableCode code="external_user_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application. Pattern: &#91;-_&@+=,()&#123;&#125;\&#91;\&#93;\/«».:|'"#a-zA-Z0-9À-ÿ\s&#93;* Values that begin with aws: are reserved. You can't configure a value that uses this prefix. Case insensitive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JoinToken" /></td>
+    <td><CopyableCode code="join_token" /></td>
     <td><code>string</code></td>
     <td>The join token used by the Amazon Chime SDK attendee.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attendees" /></td>
+    <td><CopyableCode code="attendees" /></td>
     <td><code>array</code></td>
     <td>The Amazon Chime SDK attendee information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results.</td>
 </tr>
@@ -215,10 +215,10 @@ Gets the Amazon Chime SDK attendee details for a specified meeting ID and attend
 
 ```sql
 SELECT
-AttendeeId,
-Capabilities,
-ExternalUserId,
-JoinToken
+attendee_id,
+capabilities,
+external_user_id,
+join_token
 FROM aws.chime_sdk_meetings.attendees
 WHERE meeting_id = '{{ meeting_id }}' -- required
 AND attendee_id = '{{ attendee_id }}' -- required
@@ -232,8 +232,8 @@ Lists the attendees for the specified Amazon Chime SDK meeting. For more informa
 
 ```sql
 SELECT
-Attendees,
-NextToken
+attendees,
+next_token
 FROM aws.chime_sdk_meetings.attendees
 WHERE meeting_id = '{{ meeting_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,9 +288,9 @@ SELECT
 '{{ MediaPlacementNetworkType }}',
 '{{ region }}'
 RETURNING
-Attendees,
-Errors,
-Meeting
+attendees,
+errors,
+meeting
 ;
 ```
 </TabItem>
@@ -311,7 +311,7 @@ SELECT
 '{{ meeting_id }}',
 '{{ region }}'
 RETURNING
-Attendee
+attendee
 ;
 ```
 </TabItem>
@@ -409,7 +409,7 @@ AND attendee_id = '{{ attendee_id }}' --required
 AND region = '{{ region }}' --required
 AND Capabilities = '{{ Capabilities }}' --required
 RETURNING
-Attendee;
+attendee;
 ```
 </TabItem>
 </Tabs>

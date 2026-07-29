@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of a resource. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:&#91;a-z0-9\-&#93;*:(&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)+-\d&#123;1&#125;)?:(&#91;0-9&#93;&#123;12&#125;)?:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of a resource, such as AWS::EC2::Instance. (pattern: &lt;code&gt;AWS::&#91;a-zA-Z0-9&#93;+::\w+&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Returns a list of Amazon resource names (ARNs) of the resources that are members
 
 ```sql
 SELECT
-ResourceArn,
-ResourceType
+resource_arn,
+resource_type
 FROM aws.resource_groups.group_resources
 WHERE region = '{{ region }}' -- required
 ;

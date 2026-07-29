@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID of the transit gateway attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type for the transit gateway policy table association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway policy table association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayPolicyTableId" /></td>
+    <td><CopyableCode code="transit_gateway_policy_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway policy table.</td>
 </tr>
@@ -164,11 +164,11 @@ Gets a list of the transit gateway policy table associations.
 
 ```sql
 SELECT
-ResourceId,
-ResourceType,
-State,
-TransitGatewayAttachmentId,
-TransitGatewayPolicyTableId
+resource_id,
+resource_type,
+state,
+transit_gateway_attachment_id,
+transit_gateway_policy_table_id
 FROM aws.ec2.transit_gateway_policy_table_associations
 WHERE TransitGatewayPolicyTableId = '{{ TransitGatewayPolicyTableId }}' -- required
 AND region = '{{ region }}' -- required

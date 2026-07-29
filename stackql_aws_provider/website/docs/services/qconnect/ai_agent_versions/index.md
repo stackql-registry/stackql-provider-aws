@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aiAgentSummary" /></td>
+    <td><CopyableCode code="ai_agent_summary" /></td>
     <td><code>object</code></td>
     <td>The summary of the AI Agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number for this AI Agent version.</td>
 </tr>
@@ -168,8 +168,8 @@ List AI Agent versions.
 
 ```sql
 SELECT
-aiAgentSummary,
-versionNumber
+ai_agent_summary,
+version_number
 FROM aws.qconnect.ai_agent_versions
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND ai_agent_id = '{{ ai_agent_id }}' -- required
@@ -211,8 +211,8 @@ SELECT
 '{{ ai_agent_id }}',
 '{{ region }}'
 RETURNING
-aiAgent,
-versionNumber
+ai_agent,
+version_number
 ;
 ```
 </TabItem>

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveModelArn" /></td>
+    <td><CopyableCode code="active_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the active model version. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:(document-classifier|entity-recognizer)/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the flywheel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend permission to access the flywheel data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataLakeS3Uri" /></td>
+    <td><CopyableCode code="data_lake_s3_uri" /></td>
     <td><code>string</code></td>
     <td>Amazon S3 URI of the data lake location. (pattern: &lt;code&gt;s3:​//&#91;a-z0-9&#93;&#91;\.\-a-z0-9&#93;&#123;1,61&#125;&#91;a-z0-9&#93;(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSecurityConfig" /></td>
+    <td><CopyableCode code="data_security_config" /></td>
     <td><code>object</code></td>
     <td>Data security configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlywheelArn" /></td>
+    <td><CopyableCode code="flywheel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the flywheel. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:flywheel/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last modified time for the flywheel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestFlywheelIteration" /></td>
+    <td><CopyableCode code="latest_flywheel_iteration" /></td>
     <td><code>string</code></td>
     <td>The most recent flywheel iteration. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;8&#125;T&#91;0-9&#93;&#123;6&#125;Z&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the status of the flywheel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelType" /></td>
+    <td><CopyableCode code="model_type" /></td>
     <td><code>string</code></td>
     <td>Model type of the flywheel's model. (DOCUMENT_CLASSIFIER, ENTITY_RECOGNIZER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the flywheel. (CREATING, ACTIVE, UPDATING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskConfig" /></td>
+    <td><CopyableCode code="task_config" /></td>
     <td><code>object</code></td>
     <td>Configuration about the model associated with a flywheel.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlywheelSummaryList" /></td>
+    <td><CopyableCode code="flywheel_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of flywheel properties retrieved by the service in response to the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Identifies the next page of results to return.</td>
 </tr>
@@ -235,18 +235,18 @@ Provides configuration information about the flywheel. For more information abou
 
 ```sql
 SELECT
-ActiveModelArn,
-CreationTime,
-DataAccessRoleArn,
-DataLakeS3Uri,
-DataSecurityConfig,
-FlywheelArn,
-LastModifiedTime,
-LatestFlywheelIteration,
-Message,
-ModelType,
-Status,
-TaskConfig
+active_model_arn,
+creation_time,
+data_access_role_arn,
+data_lake_s3_uri,
+data_security_config,
+flywheel_arn,
+last_modified_time,
+latest_flywheel_iteration,
+message,
+model_type,
+status,
+task_config
 FROM aws.comprehend.flywheels
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,8 +258,8 @@ Gets a list of the flywheels that you have created.
 
 ```sql
 SELECT
-FlywheelSummaryList,
-NextToken
+flywheel_summary_list,
+next_token
 FROM aws.comprehend.flywheels
 WHERE region = '{{ region }}' -- required
 ;
@@ -306,8 +306,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ActiveModelArn,
-FlywheelArn
+active_model_arn,
+flywheel_arn
 ;
 ```
 </TabItem>
@@ -403,7 +403,7 @@ WHERE
 region = '{{ region }}' --required
 AND FlywheelArn = '{{ FlywheelArn }}' --required
 RETURNING
-FlywheelProperties;
+flywheel_properties;
 ```
 </TabItem>
 </Tabs>

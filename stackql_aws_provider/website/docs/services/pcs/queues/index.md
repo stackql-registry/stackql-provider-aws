@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The unique Amazon Resource Name (ARN) of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the cluster of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeNodeGroupConfigurations" /></td>
+    <td><CopyableCode code="compute_node_group_configurations" /></td>
     <td><code>array</code></td>
     <td>The list of compute node group configurations associated with the queue. Queues assign jobs to associated compute node groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>array</code></td>
     <td>The list of errors that occurred during queue provisioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slurmConfiguration" /></td>
+    <td><CopyableCode code="slurm_configuration" /></td>
     <td><code>object</code></td>
     <td>Additional options related to the Slurm scheduler.</td>
 </tr>
@@ -130,17 +130,17 @@ The following fields are returned by `SELECT` queries:
     <td>The unique Amazon Resource Name (ARN) of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the cluster of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was modified.</td>
 </tr>
@@ -246,12 +246,12 @@ SELECT
 id,
 name,
 arn,
-clusterId,
-computeNodeGroupConfigurations,
-createdAt,
-errorInfo,
-modifiedAt,
-slurmConfiguration,
+cluster_id,
+compute_node_group_configurations,
+created_at,
+error_info,
+modified_at,
+slurm_configuration,
 status
 FROM aws.pcs.queues
 WHERE region = '{{ region }}' -- required
@@ -267,9 +267,9 @@ SELECT
 id,
 name,
 arn,
-clusterId,
-createdAt,
-modifiedAt,
+cluster_id,
+created_at,
+modified_at,
 status
 FROM aws.pcs.queues
 WHERE region = '{{ region }}' -- required

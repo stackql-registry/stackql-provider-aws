@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of this SLO. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):application-signals:&#91;^:&#93;*:&#91;^:&#93;*:slo/&#91;0-9A-Za-z&#93;&#91;-._0-9A-Za-z &#93;&#123;0,126&#125;&#91;0-9A-Za-z&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoInvestigationEnabled" /></td>
+    <td><CopyableCode code="auto_investigation_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether DevOps Agent will automatically investigate this SLO when it is breached</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BurnRateConfigurations" /></td>
+    <td><CopyableCode code="burn_rate_configurations" /></td>
     <td><code>array</code></td>
     <td>Each object in this array defines the length of the look-back window used to calculate one burn rate metric for this SLO. The burn rate measures how fast the service is consuming the error budget, relative to the attainment goal of the SLO.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that this SLO was created. When used in a raw HTTP Query API, it is formatted as yyyy-MM-dd'T'HH:mm:ss. For example, 2019-07-01T23:59:59.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description that you created for this SLO.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationType" /></td>
+    <td><CopyableCode code="evaluation_type" /></td>
     <td><code>string</code></td>
     <td>Displays whether this is a period-based SLO or a request-based SLO. (PeriodBased, RequestBased)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Goal" /></td>
+    <td><CopyableCode code="goal" /></td>
     <td><code>object</code></td>
     <td>This structure contains the attributes that determine the goal of an SLO. This includes the time period for evaluation and the attainment threshold.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this SLO was most recently updated. When used in a raw HTTP Query API, it is formatted as yyyy-MM-dd'T'HH:mm:ss. For example, 2019-07-01T23:59:59.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricSourceType" /></td>
+    <td><CopyableCode code="metric_source_type" /></td>
     <td><code>string</code></td>
     <td>Displays the SLI metric source type for this SLO. Supported types are: Service operation Service dependency Service CloudWatch metric AppMonitor Canary (ServiceOperation, CloudWatchMetric, ServiceDependency, AppMonitor, Canary, Service)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of this SLO. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#91;-._0-9A-Za-z &#93;&#123;0,126&#125;&#91;0-9A-Za-z&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestBasedSli" /></td>
+    <td><CopyableCode code="request_based_sli" /></td>
     <td><code>object</code></td>
     <td>This structure contains information about the performance metric that a request-based SLO monitors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sli" /></td>
+    <td><CopyableCode code="sli" /></td>
     <td><code>object</code></td>
     <td>A structure containing information about the performance metric that this SLO monitors, if this is a period-based SLO.</td>
 </tr>
@@ -125,52 +125,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of this service level objective. (pattern: &lt;code&gt;arn:(aws|aws-us-gov):application-signals:&#91;^:&#93;*:&#91;^:&#93;*:slo/&#91;0-9A-Za-z&#93;&#91;-._0-9A-Za-z &#93;&#123;0,126&#125;&#91;0-9A-Za-z&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompositeSliConfig" /></td>
+    <td><CopyableCode code="composite_sli_config" /></td>
     <td><code>object</code></td>
     <td>The composite SLI configuration for service-level SLOs that monitor multiple operations of a service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that this service level objective was created. It is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DependencyConfig" /></td>
+    <td><CopyableCode code="dependency_config" /></td>
     <td><code>object</code></td>
     <td>Identifies the dependency using the DependencyKeyAttributes and DependencyOperationName. When creating a service dependency SLO, you must specify the KeyAttributes of the service, and the DependencyConfig for the dependency. You can specify the OperationName of the service, from which it calls the dependency. Alternatively, you can exclude OperationName and the SLO will monitor all of the service's operations that call the dependency.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationType" /></td>
+    <td><CopyableCode code="evaluation_type" /></td>
     <td><code>string</code></td>
     <td>Displays whether this is a period-based SLO or a request-based SLO. (PeriodBased, RequestBased)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyAttributes" /></td>
+    <td><CopyableCode code="key_attributes" /></td>
     <td><code>object</code></td>
     <td>This is a string-to-string map. It can include the following fields. Type designates the type of object this service level objective is for. ResourceType specifies the type of the resource. This field is used only when the value of the Type field is Resource or AWS::Resource. Name specifies the name of the object. This is used only if the value of the Type field is Service, RemoteService, or AWS::Service. Identifier identifies the resource objects of this resource. This is used only if the value of the Type field is Resource or AWS::Resource. Environment specifies the location where this object is hosted, or what it belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricSource" /></td>
+    <td><CopyableCode code="metric_source" /></td>
     <td><code>object</code></td>
     <td>Identifies the metric source for SLOs on resources other than Application Signals services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricSourceType" /></td>
+    <td><CopyableCode code="metric_source_type" /></td>
     <td><code>string</code></td>
     <td>Displays the SLI metric source type for this SLO. Supported types are: Service operation Service dependency Service CloudWatch metric AppMonitor Canary (ServiceOperation, CloudWatchMetric, ServiceDependency, AppMonitor, Canary, Service)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the service level objective. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#91;-._0-9A-Za-z &#93;&#123;0,126&#125;&#91;0-9A-Za-z&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationName" /></td>
+    <td><CopyableCode code="operation_name" /></td>
     <td><code>string</code></td>
     <td>If this service level objective is specific to a single operation, this field displays the name of that operation.</td>
 </tr>
@@ -298,18 +298,18 @@ Returns information about one SLO created in the account.
 
 ```sql
 SELECT
-Arn,
-AutoInvestigationEnabled,
-BurnRateConfigurations,
-CreatedTime,
-Description,
-EvaluationType,
-Goal,
-LastUpdatedTime,
-MetricSourceType,
-Name,
-RequestBasedSli,
-Sli
+arn,
+auto_investigation_enabled,
+burn_rate_configurations,
+created_time,
+description,
+evaluation_type,
+goal,
+last_updated_time,
+metric_source_type,
+name,
+request_based_sli,
+sli
 FROM aws.application_signals.service_level_objectives
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -322,16 +322,16 @@ Returns a list of SLOs created in this account.
 
 ```sql
 SELECT
-Arn,
-CompositeSliConfig,
-CreatedTime,
-DependencyConfig,
-EvaluationType,
-KeyAttributes,
-MetricSource,
-MetricSourceType,
-Name,
-OperationName
+arn,
+composite_sli_config,
+created_time,
+dependency_config,
+evaluation_type,
+key_attributes,
+metric_source,
+metric_source_type,
+name,
+operation_name
 FROM aws.application_signals.service_level_objectives
 WHERE region = '{{ region }}' -- required
 AND OperationName = '{{ OperationName }}'
@@ -383,7 +383,7 @@ SELECT
 {{ AutoInvestigationEnabled }},
 '{{ region }}'
 RETURNING
-Slo
+slo
 ;
 ```
 </TabItem>
@@ -558,7 +558,7 @@ WHERE
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Slo;
+slo;
 ```
 </TabItem>
 </Tabs>

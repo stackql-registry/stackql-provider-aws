@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The alias for the Multi-Region Access Point. For more information about the distinction between the name and the alias of an Multi-Region Access Point, see Rules for naming Amazon S3 Multi-Region Access Points.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>When the Multi-Region Access Point create request was received.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Multi-Region Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAccessBlock" /></td>
+    <td><CopyableCode code="public_access_block" /></td>
     <td><code>string</code></td>
     <td>The PublicAccessBlock configuration that you want to apply to this Amazon S3 account. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide. This data type is not supported for Amazon S3 on Outposts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Regions" /></td>
+    <td><CopyableCode code="regions" /></td>
     <td><code>string</code></td>
     <td>A collection of the Regions and buckets associated with the Multi-Region Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the Multi-Region Access Point. CREATING and DELETING are temporary states that exist while the request is propagating and being completed. If a Multi-Region Access Point has a status of PARTIALLY_CREATED, you can retry creation or send a request to delete the Multi-Region Access Point. If a Multi-Region Access Point has a status of PARTIALLY_DELETED, you can retry a delete request to finish the deletion of the Multi-Region Access Point.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The alias for the Multi-Region Access Point. For more information about the distinction between the name and the alias of an Multi-Region Access Point, see Rules for naming Amazon S3 Multi-Region Access Points.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>When the Multi-Region Access Point create request was received.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Multi-Region Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAccessBlock" /></td>
+    <td><CopyableCode code="public_access_block" /></td>
     <td><code>string</code></td>
     <td>The PublicAccessBlock configuration that you want to apply to this Amazon S3 account. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide. This data type is not supported for Amazon S3 on Outposts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Regions" /></td>
+    <td><CopyableCode code="regions" /></td>
     <td><code>string</code></td>
     <td>A collection of the Regions and buckets associated with the Multi-Region Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the Multi-Region Access Point. CREATING and DELETING are temporary states that exist while the request is propagating and being completed. If a Multi-Region Access Point has a status of PARTIALLY_CREATED, you can retry creation or send a request to delete the Multi-Region Access Point. If a Multi-Region Access Point has a status of PARTIALLY_DELETED, you can retry a delete request to finish the deletion of the Multi-Region Access Point.</td>
 </tr>
@@ -231,12 +231,12 @@ This operation is not supported by directory buckets. Returns configuration info
 
 ```sql
 SELECT
-Alias,
-CreatedAt,
-Name,
-PublicAccessBlock,
-Regions,
-Status
+alias,
+created_at,
+name,
+public_access_block,
+regions,
+status
 FROM aws.s3control.multi_region_access_points
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required
@@ -250,12 +250,12 @@ This operation is not supported by directory buckets. Returns a list of the Mult
 
 ```sql
 SELECT
-Alias,
-CreatedAt,
-Name,
-PublicAccessBlock,
-Regions,
-Status
+alias,
+created_at,
+name,
+public_access_block,
+regions,
+status
 FROM aws.s3control.multi_region_access_points
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -293,7 +293,7 @@ SELECT
 '{{ x-amz-account-id }}',
 '{{ region }}'
 RETURNING
-RequestTokenARN
+request_token_arn
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasId" /></td>
+    <td><CopyableCode code="alias_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the connection alias. (pattern: &lt;code&gt;^wsca-&#91;0-9a-z&#93;&#123;8,63&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionAliasPermissions" /></td>
+    <td><CopyableCode code="connection_alias_permissions" /></td>
     <td><code>array</code></td>
     <td>The permissions associated with a connection alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -136,9 +136,9 @@ Describes the permissions that the owner of a connection alias has granted to an
 
 ```sql
 SELECT
-AliasId,
-ConnectionAliasPermissions,
-NextToken
+alias_id,
+connection_alias_permissions,
+next_token
 FROM aws.workspaces.connection_alias_permissions
 WHERE region = '{{ region }}' -- required
 ;

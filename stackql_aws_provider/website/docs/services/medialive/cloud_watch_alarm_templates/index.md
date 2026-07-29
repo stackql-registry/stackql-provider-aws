@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A cloudwatch alarm template's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComparisonOperator" /></td>
+    <td><CopyableCode code="comparison_operator" /></td>
     <td><code>string</code></td>
     <td>The comparison operator used to compare the specified statistic and the threshold. (GreaterThanOrEqualToThreshold, GreaterThanThreshold, LessThanThreshold, LessThanOrEqualToThreshold)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatapointsToAlarm" /></td>
+    <td><CopyableCode code="datapoints_to_alarm" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integerMin1</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationPeriods" /></td>
+    <td><CopyableCode code="evaluation_periods" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integerMin1</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin7Max11PatternAws097</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMax64</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integerMin10Max86400</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistic" /></td>
+    <td><CopyableCode code="statistic" /></td>
     <td><code>string</code></td>
     <td>The statistic to apply to the alarm's metric data. (SampleCount, Average, Sum, Minimum, Maximum)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetResourceType" /></td>
+    <td><CopyableCode code="target_resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type this template should dynamically generate cloudwatch metric alarms for. (CLOUDFRONT_DISTRIBUTION, MEDIALIVE_MULTIPLEX, MEDIALIVE_CHANNEL, MEDIALIVE_INPUT_DEVICE, MEDIAPACKAGE_CHANNEL, MEDIAPACKAGE_ORIGIN_ENDPOINT, MEDIACONNECT_FLOW, S3_BUCKET, MEDIATAILOR_PLAYBACK_CONFIGURATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Threshold" /></td>
+    <td><CopyableCode code="threshold" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TreatMissingData" /></td>
+    <td><CopyableCode code="treat_missing_data" /></td>
     <td><code>string</code></td>
     <td>Specifies how missing data points are treated when evaluating the alarm's condition. (notBreaching, breaching, ignore, missing)</td>
 </tr>
@@ -150,87 +150,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>A cloudwatch alarm template's ARN (Amazon Resource Name)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComparisonOperator" /></td>
+    <td><CopyableCode code="comparison_operator" /></td>
     <td><code>string</code></td>
     <td>The comparison operator used to compare the specified statistic and the threshold. (GreaterThanOrEqualToThreshold, GreaterThanThreshold, LessThanThreshold, LessThanOrEqualToThreshold)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatapointsToAlarm" /></td>
+    <td><CopyableCode code="datapoints_to_alarm" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integerMin1</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin0Max1024</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationPeriods" /></td>
+    <td><CopyableCode code="evaluation_periods" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integerMin1</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>A cloudwatch alarm template group's id. AWS provided template groups have ids that start with `aws-`</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A cloudwatch alarm template's id. AWS provided templates have ids that start with `aws-`</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMax64</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Placeholder documentation for __timestampIso8601</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __stringMin1Max255PatternS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Period" /></td>
+    <td><CopyableCode code="period" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integerMin10Max86400</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistic" /></td>
+    <td><CopyableCode code="statistic" /></td>
     <td><code>string</code></td>
     <td>The statistic to apply to the alarm's metric data. (SampleCount, Average, Sum, Minimum, Maximum)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetResourceType" /></td>
+    <td><CopyableCode code="target_resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type this template should dynamically generate cloudwatch metric alarms for. (CLOUDFRONT_DISTRIBUTION, MEDIALIVE_MULTIPLEX, MEDIALIVE_CHANNEL, MEDIALIVE_INPUT_DEVICE, MEDIAPACKAGE_CHANNEL, MEDIAPACKAGE_ORIGIN_ENDPOINT, MEDIACONNECT_FLOW, S3_BUCKET, MEDIATAILOR_PLAYBACK_CONFIGURATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Threshold" /></td>
+    <td><CopyableCode code="threshold" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TreatMissingData" /></td>
+    <td><CopyableCode code="treat_missing_data" /></td>
     <td><code>string</code></td>
     <td>Specifies how missing data points are treated when evaluating the alarm's condition. (notBreaching, breaching, ignore, missing)</td>
 </tr>
@@ -358,23 +358,23 @@ Retrieves the specified cloudwatch alarm template.
 
 ```sql
 SELECT
-Arn,
-ComparisonOperator,
-CreatedAt,
-DatapointsToAlarm,
-Description,
-EvaluationPeriods,
-GroupId,
-Id,
-MetricName,
-ModifiedAt,
-Name,
-Period,
-Statistic,
-Tags,
-TargetResourceType,
-Threshold,
-TreatMissingData
+arn,
+comparison_operator,
+created_at,
+datapoints_to_alarm,
+description,
+evaluation_periods,
+group_id,
+id,
+metric_name,
+modified_at,
+name,
+period,
+statistic,
+tags,
+target_resource_type,
+threshold,
+treat_missing_data
 FROM aws.medialive.cloud_watch_alarm_templates
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -387,23 +387,23 @@ Lists cloudwatch alarm templates.
 
 ```sql
 SELECT
-Arn,
-ComparisonOperator,
-CreatedAt,
-DatapointsToAlarm,
-Description,
-EvaluationPeriods,
-GroupId,
-Id,
-MetricName,
-ModifiedAt,
-Name,
-Period,
-Statistic,
-Tags,
-TargetResourceType,
-Threshold,
-TreatMissingData
+arn,
+comparison_operator,
+created_at,
+datapoints_to_alarm,
+description,
+evaluation_periods,
+group_id,
+id,
+metric_name,
+modified_at,
+name,
+period,
+statistic,
+tags,
+target_resource_type,
+threshold,
+treat_missing_data
 FROM aws.medialive.cloud_watch_alarm_templates
 WHERE region = '{{ region }}' -- required
 AND groupIdentifier = '{{ groupIdentifier }}'
@@ -465,23 +465,23 @@ SELECT
 '{{ RequestId }}',
 '{{ region }}'
 RETURNING
-Arn,
-ComparisonOperator,
-CreatedAt,
-DatapointsToAlarm,
-Description,
-EvaluationPeriods,
-GroupId,
-Id,
-MetricName,
-ModifiedAt,
-Name,
-Period,
-Statistic,
-Tags,
-TargetResourceType,
-Threshold,
-TreatMissingData
+arn,
+comparison_operator,
+created_at,
+datapoints_to_alarm,
+description,
+evaluation_periods,
+group_id,
+id,
+metric_name,
+modified_at,
+name,
+period,
+statistic,
+tags,
+target_resource_type,
+threshold,
+treat_missing_data
 ;
 ```
 </TabItem>
@@ -590,23 +590,23 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-ComparisonOperator,
-CreatedAt,
-DatapointsToAlarm,
-Description,
-EvaluationPeriods,
-GroupId,
-Id,
-MetricName,
-ModifiedAt,
-Name,
-Period,
-Statistic,
-Tags,
-TargetResourceType,
-Threshold,
-TreatMissingData;
+arn,
+comparison_operator,
+created_at,
+datapoints_to_alarm,
+description,
+evaluation_periods,
+group_id,
+id,
+metric_name,
+modified_at,
+name,
+period,
+statistic,
+tags,
+target_resource_type,
+threshold,
+treat_missing_data;
 ```
 </TabItem>
 </Tabs>

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="customDomainCertificateArn" /></td>
+    <td><CopyableCode code="custom_domain_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The custom domain name’s certificate Amazon resource name (ARN). (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainCertificateExpiryTime" /></td>
+    <td><CopyableCode code="custom_domain_certificate_expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration time for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name associated with the workgroup. (pattern: &lt;code&gt;^(((?!-)&#91;A-Za-z0-9-&#93;&#123;0,62&#125;&#91;A-Za-z0-9&#93;)\.)+((?!-)&#91;A-Za-z0-9-&#93;&#123;1,62&#125;&#91;A-Za-z0-9&#93;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup associated with the database. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="customDomainCertificateArn" /></td>
+    <td><CopyableCode code="custom_domain_certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The custom domain name’s certificate Amazon resource name (ARN). (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainCertificateExpiryTime" /></td>
+    <td><CopyableCode code="custom_domain_certificate_expiry_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration time for the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomainName" /></td>
+    <td><CopyableCode code="custom_domain_name" /></td>
     <td><code>string</code></td>
     <td>The custom domain name associated with the workgroup. (pattern: &lt;code&gt;^(((?!-)&#91;A-Za-z0-9-&#93;&#123;0,62&#125;&#91;A-Za-z0-9&#93;)\.)+((?!-)&#91;A-Za-z0-9-&#93;&#123;1,62&#125;&#91;A-Za-z0-9&#93;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup associated with the database. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -198,10 +198,10 @@ Gets information about a specific custom domain association.
 
 ```sql
 SELECT
-customDomainCertificateArn,
-customDomainCertificateExpiryTime,
-customDomainName,
-workgroupName
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_time,
+custom_domain_name,
+workgroup_name
 FROM aws.redshift_serverless.custom_domain_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,10 +213,10 @@ Lists custom domain associations for Amazon Redshift Serverless.
 
 ```sql
 SELECT
-customDomainCertificateArn,
-customDomainCertificateExpiryTime,
-customDomainName,
-workgroupName
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_time,
+custom_domain_name,
+workgroup_name
 FROM aws.redshift_serverless.custom_domain_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,10 +251,10 @@ SELECT
 '{{ workgroupName }}' /* required */,
 '{{ region }}'
 RETURNING
-customDomainCertificateArn,
-customDomainCertificateExpiryTime,
-customDomainName,
-workgroupName
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_time,
+custom_domain_name,
+workgroup_name
 ;
 ```
 </TabItem>
@@ -308,10 +308,10 @@ AND customDomainCertificateArn = '{{ customDomainCertificateArn }}' --required
 AND customDomainName = '{{ customDomainName }}' --required
 AND workgroupName = '{{ workgroupName }}' --required
 RETURNING
-customDomainCertificateArn,
-customDomainCertificateExpiryTime,
-customDomainName,
-workgroupName;
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_time,
+custom_domain_name,
+workgroup_name;
 ```
 </TabItem>
 </Tabs>

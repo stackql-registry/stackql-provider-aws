@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the specified symmetric encryption KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyRotationEnabled" /></td>
+    <td><CopyableCode code="key_rotation_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that specifies whether key rotation is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextRotationDate" /></td>
+    <td><CopyableCode code="next_rotation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The next date that KMS will automatically rotate the key material.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnDemandRotationStartDate" /></td>
+    <td><CopyableCode code="on_demand_rotation_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Identifies the date and time that an in progress on-demand rotation was initiated. KMS uses a background process to perform rotations. As a result, there might be a slight delay between initiating on-demand key rotation and the rotation's completion. Once the on-demand rotation is complete, KMS removes this field from the response. You can use ListKeyRotations to view the details of the completed on-demand rotation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationPeriodInDays" /></td>
+    <td><CopyableCode code="rotation_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days between each automatic rotation. The default value is 365 days.</td>
 </tr>
@@ -139,11 +139,11 @@ Provides detailed information about the rotation status for a KMS key, including
 
 ```sql
 SELECT
-KeyId,
-KeyRotationEnabled,
-NextRotationDate,
-OnDemandRotationStartDate,
-RotationPeriodInDays
+key_id,
+key_rotation_enabled,
+next_rotation_date,
+on_demand_rotation_start_date,
+rotation_period_in_days
 FROM aws.kms.key_rotation_status
 WHERE region = '{{ region }}' -- required
 ;

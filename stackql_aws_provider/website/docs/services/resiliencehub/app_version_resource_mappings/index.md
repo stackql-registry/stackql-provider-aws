@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceMappings" /></td>
+    <td><CopyableCode code="resource_mappings" /></td>
     <td><code>array</code></td>
     <td>Mappings used to map logical resources from the template to physical resources. You can use the mapping type CFN_STACK if the application template uses a logical stack name. Or you can map individual resources by using the mapping type RESOURCE. We recommend using the mapping type CFN_STACK if the application is backed by a CloudFormation stack.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists how the resources in an application version are mapped/sourced from. Mappi
 
 ```sql
 SELECT
-nextToken,
-resourceMappings
+next_token,
+resource_mappings
 FROM aws.resiliencehub.app_version_resource_mappings
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,9 +171,9 @@ region = '{{ region }}' --required
 AND appArn = '{{ appArn }}' --required
 AND resourceMappings = '{{ resourceMappings }}' --required
 RETURNING
-appArn,
-appVersion,
-resourceMappings;
+app_arn,
+app_version,
+resource_mappings;
 ```
 </TabItem>
 <TabItem value="remove_draft_app_version_resource_mappings">
@@ -194,8 +194,8 @@ WHERE
 region = '{{ region }}' --required
 AND appArn = '{{ appArn }}' --required
 RETURNING
-appArn,
-appVersion;
+app_arn,
+app_version;
 ```
 </TabItem>
 </Tabs>

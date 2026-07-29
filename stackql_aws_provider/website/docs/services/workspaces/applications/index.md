@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Applications" /></td>
+    <td><CopyableCode code="applications" /></td>
     <td><code>array</code></td>
     <td>List of information about the specified applications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If you received a NextToken from a previous call that was paginated, provide this token to receive the next set of results.</td>
 </tr>
@@ -145,8 +145,8 @@ Describes the specified applications by filtering based on their compute types, 
 
 ```sql
 SELECT
-Applications,
-NextToken
+applications,
+next_token
 FROM aws.workspaces.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -177,7 +177,7 @@ region = '{{ region }}' --required
 AND WorkspaceId = '{{ WorkspaceId }}' --required
 AND ApplicationId = '{{ ApplicationId }}' --required
 RETURNING
-Association;
+association;
 ```
 </TabItem>
 </Tabs>

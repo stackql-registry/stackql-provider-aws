@@ -122,7 +122,7 @@ SELECT
 '{{ ConsumerIdentifiers }}',
 '{{ region }}'
 RETURNING
-Status
+status
 ;
 ```
 </TabItem>

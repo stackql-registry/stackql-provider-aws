@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationConfig" /></td>
+    <td><CopyableCode code="application_config" /></td>
     <td><code>object</code></td>
     <td>Configuration settings for the SageMaker Partner AI App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the SageMaker Partner AI App that was described. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:partner-app\/app-&#91;A-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthType" /></td>
+    <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
     <td>The authorization type that users use to access the SageMaker Partner AI App. (IAM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableUpgrade" /></td>
+    <td><CopyableCode code="available_upgrade" /></td>
     <td><code>object</code></td>
     <td>A map of available minor version upgrades for the SageMaker Partner AI App. The key is the semantic version number, and the value is a list of release notes for that version. A null value indicates no upgrades are available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BaseUrl" /></td>
+    <td><CopyableCode code="base_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the SageMaker Partner AI App that the Application SDK uses to support in-app calls for the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the SageMaker Partner AI App was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentVersionEolDate" /></td>
+    <td><CopyableCode code="current_version_eol_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end-of-life date for the current version of the SageMaker Partner AI App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableAutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="enable_auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the SageMaker Partner AI App is configured for automatic minor version upgrades during scheduled maintenance windows.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableIamSessionBasedIdentity" /></td>
+    <td><CopyableCode code="enable_iam_session_based_identity" /></td>
     <td><code>boolean</code></td>
     <td>When set to TRUE, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the authenticated IAM user as the identity of the SageMaker Partner AI App user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>This is an error field object that contains the error code and the reason for an operation failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role associated with the SageMaker Partner AI App. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services KMS customer managed key used to encrypt the data at rest associated with SageMaker Partner AI Apps. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the SageMaker Partner AI App was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaintenanceConfig" /></td>
+    <td><CopyableCode code="maintenance_config" /></td>
     <td><code>object</code></td>
     <td>Maintenance configuration settings for the SageMaker Partner AI App.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the SageMaker Partner AI App. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the SageMaker Partner AI App. Creating: SageMaker AI is creating the partner AI app. The partner AI app is not available during creation. Updating: SageMaker AI is updating the partner AI app. The partner AI app is not available when updating. Deleting: SageMaker AI is deleting the partner AI app. The partner AI app is not available during deletion. Available: The partner AI app is provisioned and accessible. Failed: The partner AI app is in a failed state and isn't available. SageMaker AI is investigating the issue. For further guidance, contact Amazon Web Services Support. UpdateFailed: The partner AI app couldn't be updated but is available. Deleted: The partner AI app is permanently deleted and not available. (Creating, Updating, Deleting, Available, Failed, UpdateFailed, Deleted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The instance type and size of the cluster attached to the SageMaker Partner AI App. (pattern: &lt;code&gt;(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of SageMaker Partner AI App. Must be one of the following: lakera-guard, comet, deepchecks-llm-evaluation, or fiddler. (lakera-guard, comet, deepchecks-llm-evaluation, fiddler)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of the SageMaker Partner AI App. (pattern: &lt;code&gt;(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
@@ -244,25 +244,25 @@ Gets information about a SageMaker Partner AI App.
 
 ```sql
 SELECT
-ApplicationConfig,
-Arn,
-AuthType,
-AvailableUpgrade,
-BaseUrl,
-CreationTime,
-CurrentVersionEolDate,
-EnableAutoMinorVersionUpgrade,
-EnableIamSessionBasedIdentity,
-Error,
-ExecutionRoleArn,
-KmsKeyId,
-LastModifiedTime,
-MaintenanceConfig,
-Name,
-Status,
-Tier,
-Type,
-Version
+application_config,
+arn,
+auth_type,
+available_upgrade,
+base_url,
+creation_time,
+current_version_eol_date,
+enable_auto_minor_version_upgrade,
+enable_iam_session_based_identity,
+error,
+execution_role_arn,
+kms_key_id,
+last_modified_time,
+maintenance_config,
+name,
+status,
+tier,
+type,
+version
 FROM aws.sagemaker.partner_apps
 WHERE region = '{{ region }}' -- required
 ;
@@ -316,7 +316,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>
@@ -337,7 +337,7 @@ SELECT
 {{ SessionExpirationDurationInSeconds }},
 '{{ region }}'
 RETURNING
-Url
+url
 ;
 ```
 </TabItem>
@@ -455,7 +455,7 @@ Tags = '{{ Tags }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn;
+arn;
 ```
 </TabItem>
 </Tabs>

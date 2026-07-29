@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalAccounts" /></td>
+    <td><CopyableCode code="additional_accounts" /></td>
     <td><code>string</code></td>
     <td>The member accounts that contain resources that the path can traverse.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlternatePathHints" /></td>
+    <td><CopyableCode code="alternate_path_hints" /></td>
     <td><code>string</code></td>
     <td>Potential intermediate components.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Explanations" /></td>
+    <td><CopyableCode code="explanations" /></td>
     <td><code>string</code></td>
     <td>The explanations. For more information, see Reachability Analyzer explanation codes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilterInArns" /></td>
+    <td><CopyableCode code="filter_in_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARN) of the resources that the path must traverse.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilterOutArns" /></td>
+    <td><CopyableCode code="filter_out_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARN) of the resources that the path must ignore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForwardPathComponents" /></td>
+    <td><CopyableCode code="forward_path_components" /></td>
     <td><code>string</code></td>
     <td>The components in the path from source to destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAnalysisArn" /></td>
+    <td><CopyableCode code="network_insights_analysis_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the network insights analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAnalysisId" /></td>
+    <td><CopyableCode code="network_insights_analysis_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the network insights analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsPathId" /></td>
+    <td><CopyableCode code="network_insights_path_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkPathFound" /></td>
+    <td><CopyableCode code="network_path_found" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the destination is reachable from the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReturnPathComponents" /></td>
+    <td><CopyableCode code="return_path_components" /></td>
     <td><code>string</code></td>
     <td>The components in the path from destination to source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The time the analysis started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the network insights analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message, if the status is failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuggestedAccounts" /></td>
+    <td><CopyableCode code="suggested_accounts" /></td>
     <td><code>string</code></td>
     <td>Potential intermediate accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarningMessage" /></td>
+    <td><CopyableCode code="warning_message" /></td>
     <td><code>string</code></td>
     <td>The warning message.</td>
 </tr>
@@ -239,23 +239,23 @@ Describes one or more of your network insights analyses.
 
 ```sql
 SELECT
-AdditionalAccounts,
-AlternatePathHints,
-Explanations,
-FilterInArns,
-FilterOutArns,
-ForwardPathComponents,
-NetworkInsightsAnalysisArn,
-NetworkInsightsAnalysisId,
-NetworkInsightsPathId,
-NetworkPathFound,
-ReturnPathComponents,
-StartDate,
-Status,
-StatusMessage,
-SuggestedAccounts,
-Tags,
-WarningMessage
+additional_accounts,
+alternate_path_hints,
+explanations,
+filter_in_arns,
+filter_out_arns,
+forward_path_components,
+network_insights_analysis_arn,
+network_insights_analysis_id,
+network_insights_path_id,
+network_path_found,
+return_path_components,
+start_date,
+status,
+status_message,
+suggested_accounts,
+tags,
+warning_message
 FROM aws.ec2.network_insights_analyses
 WHERE region = '{{ region }}' -- required
 AND NetworkInsightsAnalysisId = '{{ NetworkInsightsAnalysisId }}'

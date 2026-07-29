@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocationStrategy" /></td>
+    <td><CopyableCode code="allocation_strategy" /></td>
     <td><code>string</code></td>
     <td>The strategy used by the Capacity Reservation Fleet to determine which of the specified instance types to use. For more information, see For more information, see Allocation strategy in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationFleetArn" /></td>
+    <td><CopyableCode code="capacity_reservation_fleet_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Capacity Reservation Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationFleetId" /></td>
+    <td><CopyableCode code="capacity_reservation_fleet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the Capacity Reservation Fleet was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the Capacity Reservation Fleet expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceMatchCriteria" /></td>
+    <td><CopyableCode code="instance_match_criteria" /></td>
     <td><code>string</code></td>
     <td>Indicates the type of instance launches that the Capacity Reservation Fleet accepts. All Capacity Reservations in the Fleet inherit this instance matching criteria. Currently, Capacity Reservation Fleets support open instance matching criteria only. This means that instances that have matching attributes (instance type, platform, and Availability Zone) run in the Capacity Reservations automatically. Instances do not need to explicitly target a Capacity Reservation Fleet to use its reserved capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceTypeSpecifications" /></td>
+    <td><CopyableCode code="instance_type_specifications" /></td>
     <td><code>string</code></td>
     <td>Information about the instance types for which to reserve the capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Capacity Reservation Fleet. Possible states include: submitted - The Capacity Reservation Fleet request has been submitted and Amazon Elastic Compute Cloud is preparing to create the Capacity Reservations. modifying - The Capacity Reservation Fleet is being modified. The Fleet remains in this state until the modification is complete. active - The Capacity Reservation Fleet has fulfilled its total target capacity and it is attempting to maintain this capacity. The Fleet remains in this state until it is modified or deleted. partially_fulfilled - The Capacity Reservation Fleet has partially fulfilled its total target capacity. There is insufficient Amazon EC2 to fulfill the total target capacity. The Fleet is attempting to asynchronously fulfill its total target capacity. expiring - The Capacity Reservation Fleet has reach its end date and it is in the process of expiring. One or more of its Capacity reservations might still be active. expired - The Capacity Reservation Fleet has reach its end date. The Fleet and its Capacity Reservations are expired. The Fleet can't create new Capacity Reservations. cancelling - The Capacity Reservation Fleet is in the process of being cancelled. One or more of its Capacity reservations might still be active. cancelled - The Capacity Reservation Fleet has been manually cancelled. The Fleet and its Capacity Reservations are cancelled and the Fleet can't create new Capacity Reservations. failed - The Capacity Reservation Fleet failed to reserve capacity for the specified instance types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the Capacity Reservation Fleet.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tenancy" /></td>
+    <td><CopyableCode code="tenancy" /></td>
     <td><code>string</code></td>
     <td>The tenancy of the Capacity Reservation Fleet. Tenancies include: default - The Capacity Reservation Fleet is created on hardware that is shared with other Amazon Web Services accounts. dedicated - The Capacity Reservation Fleet is created on single-tenant hardware that is dedicated to a single Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalFulfilledCapacity" /></td>
+    <td><CopyableCode code="total_fulfilled_capacity" /></td>
     <td><code>number</code></td>
     <td>The capacity units that have been fulfilled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalTargetCapacity" /></td>
+    <td><CopyableCode code="total_target_capacity" /></td>
     <td><code>integer</code></td>
     <td>The total number of capacity units for which the Capacity Reservation Fleet reserves capacity. For more information, see Total target capacity in the Amazon EC2 User Guide.</td>
 </tr>
@@ -275,18 +275,18 @@ Describes one or more Capacity Reservation Fleets.
 
 ```sql
 SELECT
-AllocationStrategy,
-CapacityReservationFleetArn,
-CapacityReservationFleetId,
-CreateTime,
-EndDate,
-InstanceMatchCriteria,
-InstanceTypeSpecifications,
-State,
-Tags,
-Tenancy,
-TotalFulfilledCapacity,
-TotalTargetCapacity
+allocation_strategy,
+capacity_reservation_fleet_arn,
+capacity_reservation_fleet_id,
+create_time,
+end_date,
+instance_match_criteria,
+instance_type_specifications,
+state,
+tags,
+tenancy,
+total_fulfilled_capacity,
+total_target_capacity
 FROM aws.ec2.capacity_reservation_fleets
 WHERE region = '{{ region }}' -- required
 AND CapacityReservationFleetId = '{{ CapacityReservationFleetId }}'
@@ -338,17 +338,17 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-AllocationStrategy,
-CapacityReservationFleetId,
-CreateTime,
-EndDate,
-FleetCapacityReservations,
-InstanceMatchCriteria,
-State,
-Tags,
-Tenancy,
-TotalFulfilledCapacity,
-TotalTargetCapacity
+allocation_strategy,
+capacity_reservation_fleet_id,
+create_time,
+end_date,
+fleet_capacity_reservations,
+instance_match_criteria,
+state,
+tags,
+tenancy,
+total_fulfilled_capacity,
+total_target_capacity
 ;
 ```
 </TabItem>
@@ -424,7 +424,7 @@ AND EndDate = '{{ EndDate}}'
 AND DryRun = {{ DryRun}}
 AND RemoveEndDate = {{ RemoveEndDate}}
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

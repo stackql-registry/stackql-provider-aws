@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID of the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityBlockId" /></td>
+    <td><CopyableCode code="capacity_block_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationIds" /></td>
+    <td><CopyableCode code="capacity_reservation_ids" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the Capacity Block was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the Capacity Block expires. When a Capacity Block expires, all instances in the Capacity Block are terminated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the Capacity Block was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UltraserverType" /></td>
+    <td><CopyableCode code="ultraserver_type" /></td>
     <td><code>string</code></td>
     <td>The EC2 UltraServer type of the Capacity Block.</td>
 </tr>
@@ -189,16 +189,16 @@ Describes details about Capacity Blocks in the Amazon Web Services Region that y
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CapacityBlockId,
-CapacityReservationIds,
-CreateDate,
-EndDate,
-StartDate,
-State,
-Tags,
-UltraserverType
+availability_zone,
+availability_zone_id,
+capacity_block_id,
+capacity_reservation_ids,
+create_date,
+end_date,
+start_date,
+state,
+tags,
+ultraserver_type
 FROM aws.ec2.capacity_blocks
 WHERE region = '{{ region }}' -- required
 AND CapacityBlockId = '{{ CapacityBlockId }}'

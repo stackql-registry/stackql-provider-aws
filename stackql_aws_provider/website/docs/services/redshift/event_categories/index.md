@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Events" /></td>
+    <td><CopyableCode code="events" /></td>
     <td><code>string</code></td>
     <td>The events in the event category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source type, such as cluster or cluster-snapshot, that the returned categories belong to.</td>
 </tr>
@@ -129,8 +129,8 @@ Displays a list of event categories for all event source types, or for a specifi
 
 ```sql
 SELECT
-Events,
-SourceType
+events,
+source_type
 FROM aws.redshift.event_categories
 WHERE region = '{{ region }}' -- required
 AND SourceType = '{{ SourceType }}'

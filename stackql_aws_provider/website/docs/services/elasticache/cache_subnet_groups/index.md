@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the cache subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheSubnetGroupDescription" /></td>
+    <td><CopyableCode code="cache_subnet_group_description" /></td>
     <td><code>string</code></td>
     <td>The description of the cache subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheSubnetGroupName" /></td>
+    <td><CopyableCode code="cache_subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cache subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>string</code></td>
     <td>A list of subnets associated with the cache subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedNetworkTypes" /></td>
+    <td><CopyableCode code="supported_network_types" /></td>
     <td><code>string</code></td>
     <td>Either ipv4 | ipv6 | dual_stack. IPv6 is supported for workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to 7.1 or Memcached engine version 1.6.6 and above on all instances built on the Nitro system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet group.</td>
 </tr>
@@ -210,12 +210,12 @@ Returns a list of cache subnet group descriptions. If a subnet group name is spe
 
 ```sql
 SELECT
-ARN,
-CacheSubnetGroupDescription,
-CacheSubnetGroupName,
-Subnets,
-SupportedNetworkTypes,
-VpcId
+arn,
+cache_subnet_group_description,
+cache_subnet_group_name,
+subnets,
+supported_network_types,
+vpc_id
 FROM aws.elasticache.cache_subnet_groups
 WHERE region = '{{ region }}' -- required
 AND CacheSubnetGroupName = '{{ CacheSubnetGroupName }}'
@@ -255,12 +255,12 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-ARN,
-CacheSubnetGroupDescription,
-CacheSubnetGroupName,
-Subnets,
-SupportedNetworkTypes,
-VpcId
+arn,
+cache_subnet_group_description,
+cache_subnet_group_name,
+subnets,
+supported_network_types,
+vpc_id
 ;
 ```
 </TabItem>
@@ -313,12 +313,12 @@ AND region = '{{ region }}' --required
 AND CacheSubnetGroupDescription = '{{ CacheSubnetGroupDescription}}'
 AND SubnetIds = '{{ SubnetIds}}'
 RETURNING
-ARN,
-CacheSubnetGroupDescription,
-CacheSubnetGroupName,
-Subnets,
-SupportedNetworkTypes,
-VpcId;
+arn,
+cache_subnet_group_description,
+cache_subnet_group_name,
+subnets,
+supported_network_types,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An enumeration token that allows the operation to batch the next results of the operation.</td>
 </tr>
@@ -138,7 +138,7 @@ Gets information about Amazon Web Servicestags for a specified Amazon Resource N
 
 ```sql
 SELECT
-nextToken,
+next_token,
 tags
 FROM aws.codecommit.tags
 WHERE region = '{{ region }}' -- required

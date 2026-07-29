@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the API Key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API Key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerId" /></td>
+    <td><CopyableCode code="customer_id" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies whether the API Key can be used by callers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API Key was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageKeys" /></td>
+    <td><CopyableCode code="stage_keys" /></td>
     <td><code>array</code></td>
     <td>A list of Stage resources that are associated with the ApiKey resource.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the API Key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API Key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customerId" /></td>
+    <td><CopyableCode code="customer_id" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies whether the API Key can be used by callers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the API Key was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageKeys" /></td>
+    <td><CopyableCode code="stage_keys" /></td>
     <td><code>array</code></td>
     <td>A list of Stage resources that are associated with the ApiKey resource.</td>
 </tr>
@@ -312,12 +312,12 @@ Gets information about the current ApiKey resource.
 SELECT
 id,
 name,
-createdDate,
-customerId,
+created_date,
+customer_id,
 description,
 enabled,
-lastUpdatedDate,
-stageKeys,
+last_updated_date,
+stage_keys,
 tags,
 value
 FROM aws.apigateway.api_keys
@@ -335,12 +335,12 @@ Gets information about the current ApiKeys resource.
 SELECT
 id,
 name,
-createdDate,
-customerId,
+created_date,
+customer_id,
 description,
 enabled,
-lastUpdatedDate,
-stageKeys,
+last_updated_date,
+stage_keys,
 tags,
 value
 FROM aws.apigateway.api_keys
@@ -394,12 +394,12 @@ SELECT
 RETURNING
 id,
 name,
-createdDate,
-customerId,
+created_date,
+customer_id,
 description,
 enabled,
-lastUpdatedDate,
-stageKeys,
+last_updated_date,
+stage_keys,
 tags,
 value
 ;
@@ -459,12 +459,12 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 name,
-createdDate,
-customerId,
+created_date,
+customer_id,
 description,
 enabled,
-lastUpdatedDate,
-stageKeys,
+last_updated_date,
+stage_keys,
 tags,
 value;
 ```

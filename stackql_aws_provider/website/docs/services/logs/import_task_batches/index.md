@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="importBatches" /></td>
+    <td><CopyableCode code="import_batches" /></td>
     <td><code>array</code></td>
     <td>The list of import batches that match the request filters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importId" /></td>
+    <td><CopyableCode code="import_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the import task. (pattern: &lt;code&gt;&#91;\-a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="importSourceArn" /></td>
+    <td><CopyableCode code="import_source_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the source being imported from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
@@ -134,10 +134,10 @@ Gets detailed information about the individual batches within an import task, in
 
 ```sql
 SELECT
-importBatches,
-importId,
-importSourceArn,
-nextToken
+import_batches,
+import_id,
+import_source_arn,
+next_token
 FROM aws.logs.import_task_batches
 WHERE region = '{{ region }}' -- required
 ;

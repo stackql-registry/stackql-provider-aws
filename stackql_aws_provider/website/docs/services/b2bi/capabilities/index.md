@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the name of the capability, used to identify it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityArn" /></td>
+    <td><CopyableCode code="capability_arn" /></td>
     <td><code>string</code></td>
     <td>Returns an Amazon Resource Name (ARN) for a specific Amazon Web Services resource, such as a capability, partnership, profile, or transformer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityId" /></td>
+    <td><CopyableCode code="capability_id" /></td>
     <td><code>string</code></td>
     <td>Returns a system-assigned unique identifier for the capability. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>Returns a structure that contains the details for a capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for creation date and time of the capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instructionsDocuments" /></td>
+    <td><CopyableCode code="instructions_documents" /></td>
     <td><code>array</code></td>
     <td>Returns one or more locations in Amazon S3, each specifying an EDI document that can be used with this capability. Each item contains the name of the bucket and the key, to identify the document's location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for last time the capability was modified.</td>
 </tr>
@@ -110,17 +110,17 @@ The following fields are returned by `SELECT` queries:
     <td>The display name of the capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityId" /></td>
+    <td><CopyableCode code="capability_id" /></td>
     <td><code>string</code></td>
     <td>Returns a system-assigned unique identifier for the capability. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp for creation date and time of the capability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Returns a timestamp that identifies the most recent date and time that the capability was modified.</td>
 </tr>
@@ -224,12 +224,12 @@ Retrieves the details for the specified capability. A trading capability contain
 ```sql
 SELECT
 name,
-capabilityArn,
-capabilityId,
+capability_arn,
+capability_id,
 configuration,
-createdAt,
-instructionsDocuments,
-modifiedAt,
+created_at,
+instructions_documents,
+modified_at,
 type_
 FROM aws.b2bi.capabilities
 WHERE region = '{{ region }}' -- required
@@ -243,9 +243,9 @@ Lists the capabilities associated with your Amazon Web Services account for your
 ```sql
 SELECT
 name,
-capabilityId,
-createdAt,
-modifiedAt,
+capability_id,
+created_at,
+modified_at,
 type_
 FROM aws.b2bi.capabilities
 WHERE region = '{{ region }}' -- required
@@ -288,11 +288,11 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-capabilityArn,
-capabilityId,
+capability_arn,
+capability_id,
 configuration,
-createdAt,
-instructionsDocuments,
+created_at,
+instructions_documents,
 type_
 ;
 ```
@@ -377,12 +377,12 @@ region = '{{ region }}' --required
 AND capabilityId = '{{ capabilityId }}' --required
 RETURNING
 name,
-capabilityArn,
-capabilityId,
+capability_arn,
+capability_id,
 configuration,
-createdAt,
-instructionsDocuments,
-modifiedAt,
+created_at,
+instructions_documents,
+modified_at,
 type_;
 ```
 </TabItem>

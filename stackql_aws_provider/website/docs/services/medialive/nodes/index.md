@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelPlacementGroups" /></td>
+    <td><CopyableCode code="channel_placement_groups" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionState" /></td>
+    <td><CopyableCode code="connection_state" /></td>
     <td><code>string</code></td>
     <td>The current connection state of the Node. (CONNECTED, DISCONNECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeInterfaceMappings" /></td>
+    <td><CopyableCode code="node_interface_mappings" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOfNodeInterfaceMapping</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>Used in CreateNodeRequest, CreateNodeRegistrationScriptRequest, DescribeNodeResult, DescribeNodeSummary, UpdateNodeRequest. (BACKUP, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SdiSourceMappings" /></td>
+    <td><CopyableCode code="sdi_source_mappings" /></td>
     <td><code>array</code></td>
     <td>An array of SDI source mappings. Each mapping connects one logical SdiSource to the physical SDI card and port that the physical SDI source uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Node. (CREATED, REGISTERING, READY_TO_ACTIVATE, REGISTRATION_FAILED, ACTIVATION_FAILED, ACTIVE, READY, IN_USE, DEREGISTERING, DRAINING, DEREGISTRATION_FAILED, DEREGISTERED)</td>
 </tr>
@@ -120,62 +120,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelPlacementGroups" /></td>
+    <td><CopyableCode code="channel_placement_groups" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionState" /></td>
+    <td><CopyableCode code="connection_state" /></td>
     <td><code>string</code></td>
     <td>The current connection state of the Node. (CONNECTED, DISCONNECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedInstanceId" /></td>
+    <td><CopyableCode code="managed_instance_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeInterfaceMappings" /></td>
+    <td><CopyableCode code="node_interface_mappings" /></td>
     <td><code>array</code></td>
     <td>Documentation update needed</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Role" /></td>
+    <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
     <td>Used in CreateNodeRequest, CreateNodeRegistrationScriptRequest, DescribeNodeResult, DescribeNodeSummary, UpdateNodeRequest. (BACKUP, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SdiSourceMappings" /></td>
+    <td><CopyableCode code="sdi_source_mappings" /></td>
     <td><code>array</code></td>
     <td>An array of SDI source mappings. Each mapping connects one logical SdiSource to the physical SDI card and port that the physical SDI source uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the Node. (CREATED, REGISTERING, READY_TO_ACTIVATE, REGISTRATION_FAILED, ACTIVATION_FAILED, ACTIVE, READY, IN_USE, DEREGISTERING, DRAINING, DEREGISTRATION_FAILED, DEREGISTERED)</td>
 </tr>
@@ -307,17 +307,17 @@ Get details about a Node in the specified Cluster.
 
 ```sql
 SELECT
-Arn,
-ChannelPlacementGroups,
-ClusterId,
-ConnectionState,
-Id,
-InstanceArn,
-Name,
-NodeInterfaceMappings,
-Role,
-SdiSourceMappings,
-State
+arn,
+channel_placement_groups,
+cluster_id,
+connection_state,
+id,
+instance_arn,
+name,
+node_interface_mappings,
+role,
+sdi_source_mappings,
+state
 FROM aws.medialive.nodes
 WHERE cluster_id = '{{ cluster_id }}' -- required
 AND node_id = '{{ node_id }}' -- required
@@ -331,18 +331,18 @@ Retrieve the list of Nodes.
 
 ```sql
 SELECT
-Arn,
-ChannelPlacementGroups,
-ClusterId,
-ConnectionState,
-Id,
-InstanceArn,
-ManagedInstanceId,
-Name,
-NodeInterfaceMappings,
-Role,
-SdiSourceMappings,
-State
+arn,
+channel_placement_groups,
+cluster_id,
+connection_state,
+id,
+instance_arn,
+managed_instance_id,
+name,
+node_interface_mappings,
+role,
+sdi_source_mappings,
+state
 FROM aws.medialive.nodes
 WHERE cluster_id = '{{ cluster_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -386,17 +386,17 @@ SELECT
 '{{ cluster_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-ChannelPlacementGroups,
-ClusterId,
-ConnectionState,
-Id,
-InstanceArn,
-Name,
-NodeInterfaceMappings,
-Role,
-SdiSourceMappings,
-State
+arn,
+channel_placement_groups,
+cluster_id,
+connection_state,
+id,
+instance_arn,
+name,
+node_interface_mappings,
+role,
+sdi_source_mappings,
+state
 ;
 ```
 </TabItem>
@@ -464,17 +464,17 @@ cluster_id = '{{ cluster_id }}' --required
 AND node_id = '{{ node_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-ChannelPlacementGroups,
-ClusterId,
-ConnectionState,
-Id,
-InstanceArn,
-Name,
-NodeInterfaceMappings,
-Role,
-SdiSourceMappings,
-State;
+arn,
+channel_placement_groups,
+cluster_id,
+connection_state,
+id,
+instance_arn,
+name,
+node_interface_mappings,
+role,
+sdi_source_mappings,
+state;
 ```
 </TabItem>
 </Tabs>

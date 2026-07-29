@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="addonName" /></td>
+    <td><CopyableCode code="addon_name" /></td>
     <td><code>string</code></td>
     <td>The name of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addonVersion" /></td>
+    <td><CopyableCode code="addon_version" /></td>
     <td><code>string</code></td>
     <td>The version of the add-on. The version must match one of the versions returned by DescribeAddonVersions .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationSchema" /></td>
+    <td><CopyableCode code="configuration_schema" /></td>
     <td><code>string</code></td>
     <td>A JSON schema that's used to validate the configuration values you provide when an add-on is created or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="podIdentityConfiguration" /></td>
+    <td><CopyableCode code="pod_identity_configuration" /></td>
     <td><code>array</code></td>
     <td>The Kubernetes service account name used by the add-on, and any suggested IAM policies. Use this information to create an IAM Role for the add-on.</td>
 </tr>
@@ -144,10 +144,10 @@ Returns configuration options.
 
 ```sql
 SELECT
-addonName,
-addonVersion,
-configurationSchema,
-podIdentityConfiguration
+addon_name,
+addon_version,
+configuration_schema,
+pod_identity_configuration
 FROM aws.eks.addon_configurations
 WHERE addonName = '{{ addonName }}' -- required
 AND addonVersion = '{{ addonVersion }}' -- required

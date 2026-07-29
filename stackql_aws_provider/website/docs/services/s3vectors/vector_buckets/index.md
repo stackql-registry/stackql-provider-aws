@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the vector bucket was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration for a vector bucket or index. By default, if you don't specify, all new vectors in Amazon S3 vector buckets use server-side encryption with Amazon S3 managed keys (SSE-S3), specifically AES256. You can optionally override bucket level encryption settings, and set a specific encryption configuration for a vector index at the time of index creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorBucketArn" /></td>
+    <td><CopyableCode code="vector_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vector bucket. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:s3vectors:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorBucketName" /></td>
+    <td><CopyableCode code="vector_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vector bucket.</td>
 </tr>
@@ -85,17 +85,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date and time when the vector bucket was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorBucketArn" /></td>
+    <td><CopyableCode code="vector_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vector bucket. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:s3vectors:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorBucketName" /></td>
+    <td><CopyableCode code="vector_bucket_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vector bucket.</td>
 </tr>
@@ -186,10 +186,10 @@ Returns vector bucket attributes. To specify the bucket, you must use either the
 
 ```sql
 SELECT
-creationTime,
-encryptionConfiguration,
-vectorBucketArn,
-vectorBucketName
+creation_time,
+encryption_configuration,
+vector_bucket_arn,
+vector_bucket_name
 FROM aws.s3vectors.vector_buckets
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,9 +201,9 @@ Returns a list of all the vector buckets that are owned by the authenticated sen
 
 ```sql
 SELECT
-creationTime,
-vectorBucketArn,
-vectorBucketName
+creation_time,
+vector_bucket_arn,
+vector_bucket_name
 FROM aws.s3vectors.vector_buckets
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,7 +238,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-vectorBucketArn
+vector_bucket_arn
 ;
 ```
 </TabItem>

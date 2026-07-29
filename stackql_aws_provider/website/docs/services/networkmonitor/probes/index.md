@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="addressFamily" /></td>
+    <td><CopyableCode code="address_family" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the IP address is IPV4 or IPV6. (IPV4, IPV6)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date that the probe was created.</td>
 </tr>
@@ -65,27 +65,27 @@ The following fields are returned by `SELECT` queries:
     <td>The destination IP address for the monitor. This must be either an IPv4 or IPv6 address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationPort" /></td>
+    <td><CopyableCode code="destination_port" /></td>
     <td><code>integer</code></td>
     <td>The port associated with the destination. This is required only if the protocol is TCP and must be a number between 1 and 65536.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date that the probe was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packetSize" /></td>
+    <td><CopyableCode code="packet_size" /></td>
     <td><code>integer</code></td>
     <td>The size of the packets sent between the source and destination. This must be a number between 56 and 8500.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="probeArn" /></td>
+    <td><CopyableCode code="probe_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the probe. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="probeId" /></td>
+    <td><CopyableCode code="probe_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the probe for which details are returned. (pattern: &lt;code&gt;probe-&#91;a-z0-9A-Z-&#93;&#123;21,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The protocol used for the network traffic between the source and destination. This must be either TCP or ICMP. (TCP, ICMP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the probe. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The list of key-value pairs assigned to the probe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the source VPC or subnet. (pattern: &lt;code&gt;vpc-&#91;a-zA-Z0-9&#93;&#123;8,32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -210,19 +210,19 @@ Returns the details about a probe. This action requires both the monitorName and
 
 ```sql
 SELECT
-addressFamily,
-createdAt,
+address_family,
+created_at,
 destination,
-destinationPort,
-modifiedAt,
-packetSize,
-probeArn,
-probeId,
+destination_port,
+modified_at,
+packet_size,
+probe_arn,
+probe_id,
 protocol,
-sourceArn,
+source_arn,
 state,
 tags,
-vpcId
+vpc_id
 FROM aws.networkmonitor.probes
 WHERE monitor_name = '{{ monitor_name }}' -- required
 AND probe_id = '{{ probe_id }}' -- required
@@ -261,19 +261,19 @@ SELECT
 '{{ monitor_name }}',
 '{{ region }}'
 RETURNING
-addressFamily,
-createdAt,
+address_family,
+created_at,
 destination,
-destinationPort,
-modifiedAt,
-packetSize,
-probeArn,
-probeId,
+destination_port,
+modified_at,
+packet_size,
+probe_arn,
+probe_id,
 protocol,
-sourceArn,
+source_arn,
 state,
 tags,
-vpcId
+vpc_id
 ;
 ```
 </TabItem>
@@ -333,19 +333,19 @@ monitor_name = '{{ monitor_name }}' --required
 AND probe_id = '{{ probe_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-addressFamily,
-createdAt,
+address_family,
+created_at,
 destination,
-destinationPort,
-modifiedAt,
-packetSize,
-probeArn,
-probeId,
+destination_port,
+modified_at,
+packet_size,
+probe_arn,
+probe_id,
 protocol,
-sourceArn,
+source_arn,
 state,
 tags,
-vpcId;
+vpc_id;
 ```
 </TabItem>
 </Tabs>

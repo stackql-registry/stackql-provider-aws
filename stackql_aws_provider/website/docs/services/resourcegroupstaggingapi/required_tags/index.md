@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudFormationResourceTypes" /></td>
+    <td><CopyableCode code="cloud_formation_resource_types" /></td>
     <td><code>array</code></td>
     <td>Describes the CloudFormation resource type assigned the required tag keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportingTagKeys" /></td>
+    <td><CopyableCode code="reporting_tag_keys" /></td>
     <td><code>array</code></td>
     <td>These tag keys are marked as required in the report_required_tag_for block of the effective tag policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>Describes the resource type for the required tag keys.</td>
 </tr>
@@ -129,9 +129,9 @@ Lists the required tags for supported resource types in an Amazon Web Services a
 
 ```sql
 SELECT
-CloudFormationResourceTypes,
-ReportingTagKeys,
-ResourceType
+cloud_formation_resource_types,
+reporting_tag_keys,
+resource_type
 FROM aws.resourcegroupstaggingapi.required_tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,127 +51,127 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Data Catalog in which the table resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the table definition was created in the Data Catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The person or entity who created the table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database where the table metadata resides. For Hive compatibility, this must be all lowercase. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederatedTable" /></td>
+    <td><CopyableCode code="federated_table" /></td>
     <td><code>object</code></td>
     <td>A FederatedTable structure that references an entity outside the Glue Data Catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsMaterializedView" /></td>
+    <td><CopyableCode code="is_materialized_view" /></td>
     <td><code>boolean</code></td>
     <td>Indicates a table is a MaterializedView.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsMultiDialectView" /></td>
+    <td><CopyableCode code="is_multi_dialect_view" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the view supports the SQL dialects of one or more different query engines and can therefore be read by those engines.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsRegisteredWithLakeFormation" /></td>
+    <td><CopyableCode code="is_registered_with_lake_formation" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the table has been registered with Lake Formation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAccessTime" /></td>
+    <td><CopyableCode code="last_access_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the table was accessed. This is usually taken from HDFS, and might not be reliable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAnalyzedTime" /></td>
+    <td><CopyableCode code="last_analyzed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that column statistics were computed for this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The table name. For Hive compatibility, this must be entirely lowercase. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>These key-value pairs define properties associated with the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionKeys" /></td>
+    <td><CopyableCode code="partition_keys" /></td>
     <td><code>array</code></td>
     <td>A list of columns by which the table is partitioned. Only primitive types are supported as partition keys. When you create a table used by Amazon Athena, and you do not specify any partitionKeys, you must at least set the value of partitionKeys to an empty list. For example: "PartitionKeys": &#91;&#93;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Retention" /></td>
+    <td><CopyableCode code="retention" /></td>
     <td><code>integer</code></td>
     <td>The retention time for this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>Indicates the the state of an asynchronous change to a table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageDescriptor" /></td>
+    <td><CopyableCode code="storage_descriptor" /></td>
     <td><code>object</code></td>
     <td>A storage descriptor containing information about the physical storage of this table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableType" /></td>
+    <td><CopyableCode code="table_type" /></td>
     <td><code>string</code></td>
     <td>The type of this table. Glue will create tables with the EXTERNAL_TABLE type. Other services, such as Athena, may create tables with additional table types. Glue related table types: EXTERNAL_TABLE Hive compatible attribute - indicates a non-Hive managed table. GOVERNED Used by Lake Formation. The Glue Data Catalog understands GOVERNED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetTable" /></td>
+    <td><CopyableCode code="target_table" /></td>
     <td><code>object</code></td>
     <td>A TableIdentifier structure that describes a target table for resource linking.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the table was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the table version. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ViewDefinition" /></td>
+    <td><CopyableCode code="view_definition" /></td>
     <td><code>object</code></td>
     <td>A structure that contains all the information that defines the view, including the dialect or dialects for the view, and the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ViewExpandedText" /></td>
+    <td><CopyableCode code="view_expanded_text" /></td>
     <td><code>string</code></td>
     <td>Included for Apache Hive compatibility. Not used in the normal course of Glue operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ViewOriginalText" /></td>
+    <td><CopyableCode code="view_original_text" /></td>
     <td><code>string</code></td>
     <td>Included for Apache Hive compatibility. Not used in the normal course of Glue operations. If the table is a VIRTUAL_VIEW, certain Athena configuration encoded in base64.</td>
 </tr>
@@ -190,12 +190,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, present if the current list segment is not the last.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableList" /></td>
+    <td><CopyableCode code="table_list" /></td>
     <td><code>array</code></td>
     <td>A list of the requested Table objects. The SearchTables response returns only the tables that you have access to.</td>
 </tr>
@@ -300,31 +300,31 @@ Retrieves the Table definition in a Data Catalog for a specified table.
 
 ```sql
 SELECT
-CatalogId,
-CreateTime,
-CreatedBy,
-DatabaseName,
-Description,
-FederatedTable,
-IsMaterializedView,
-IsMultiDialectView,
-IsRegisteredWithLakeFormation,
-LastAccessTime,
-LastAnalyzedTime,
-Name,
-Owner,
-Parameters,
-PartitionKeys,
-Retention,
-Status,
-StorageDescriptor,
-TableType,
-TargetTable,
-UpdateTime,
-VersionId,
-ViewDefinition,
-ViewExpandedText,
-ViewOriginalText
+catalog_id,
+create_time,
+created_by,
+database_name,
+description,
+federated_table,
+is_materialized_view,
+is_multi_dialect_view,
+is_registered_with_lake_formation,
+last_access_time,
+last_analyzed_time,
+name,
+owner,
+parameters,
+partition_keys,
+retention,
+status,
+storage_descriptor,
+table_type,
+target_table,
+update_time,
+version_id,
+view_definition,
+view_expanded_text,
+view_original_text
 FROM aws.glue.tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -336,8 +336,8 @@ Searches a set of tables based on properties in the table metadata as well as on
 
 ```sql
 SELECT
-NextToken,
-TableList
+next_token,
+table_list
 FROM aws.glue.tables
 WHERE region = '{{ region }}' -- required
 ;

@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token to be used in subsequent requests.</td>
 </tr>
@@ -191,7 +191,7 @@ Gets all of the variables or the specific variable. This is a paginated API. Pro
 
 ```sql
 SELECT
-nextToken,
+next_token,
 variables
 FROM aws.frauddetector.variables
 WHERE region = '{{ region }}' -- required

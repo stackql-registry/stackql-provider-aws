@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationPermissions" /></td>
+    <td><CopyableCode code="application_permissions" /></td>
     <td><code>array</code></td>
     <td>The permissions that the agent is granted on the application. For third-party applications, only the ACCESS permission is supported. For MCP Servers, the permissions are tool Identifiers accepted by MCP Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>Namespace of the application that you want to give access to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Type of Application. (MCP, THIRD_PARTY_APPLICATION)</td>
 </tr>
@@ -149,9 +149,9 @@ Returns a list of third-party applications or MCP Servers in a specific security
 
 ```sql
 SELECT
-ApplicationPermissions,
-Namespace,
-Type
+application_permissions,
+namespace,
+type
 FROM aws.connect.security_profile_applications
 WHERE security_profile_id = '{{ security_profile_id }}' -- required
 AND instance_id = '{{ instance_id }}' -- required

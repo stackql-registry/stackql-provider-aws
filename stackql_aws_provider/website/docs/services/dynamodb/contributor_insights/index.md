@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContributorInsightsMode" /></td>
+    <td><CopyableCode code="contributor_insights_mode" /></td>
     <td><code>string</code></td>
     <td>The mode of CloudWatch Contributor Insights for DynamoDB that determines which events are emitted. Can be set to track all access and throttled events or throttled events only. (ACCESSED_AND_THROTTLED_KEYS, THROTTLED_KEYS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContributorInsightsRuleList" /></td>
+    <td><CopyableCode code="contributor_insights_rule_list" /></td>
     <td><code>array</code></td>
     <td>List of names of the associated contributor insights rules.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContributorInsightsStatus" /></td>
+    <td><CopyableCode code="contributor_insights_status" /></td>
     <td><code>string</code></td>
     <td>Current status of contributor insights. (ENABLING, ENABLED, DISABLING, DISABLED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureException" /></td>
+    <td><CopyableCode code="failure_exception" /></td>
     <td><code>object</code></td>
     <td>Returns information about the last failure that was encountered. The most common exceptions for a FAILED status are: LimitExceededException - Per-account Amazon CloudWatch Contributor Insights rule limit reached. Please disable Contributor Insights for other tables/indexes OR disable Contributor Insights rules before retrying. AccessDeniedException - Amazon CloudWatch Contributor Insights rules cannot be modified due to insufficient permissions. AccessDeniedException - Failed to create service-linked role for Contributor Insights due to insufficient permissions. InternalServerError - Failed to create Amazon CloudWatch Contributor Insights rules. Please retry request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The name of the global secondary index being described. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateDateTime" /></td>
+    <td><CopyableCode code="last_update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Timestamp of the last time the status was changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table being described. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContributorInsightsSummaries" /></td>
+    <td><CopyableCode code="contributor_insights_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of ContributorInsightsSummary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to go to the next page if there is one.</td>
 </tr>
@@ -189,13 +189,13 @@ Returns information about contributor insights for a given table or global secon
 
 ```sql
 SELECT
-ContributorInsightsMode,
-ContributorInsightsRuleList,
-ContributorInsightsStatus,
-FailureException,
-IndexName,
-LastUpdateDateTime,
-TableName
+contributor_insights_mode,
+contributor_insights_rule_list,
+contributor_insights_status,
+failure_exception,
+index_name,
+last_update_date_time,
+table_name
 FROM aws.dynamodb.contributor_insights
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,8 +207,8 @@ Returns a list of ContributorInsightsSummary for a table and all its global seco
 
 ```sql
 SELECT
-ContributorInsightsSummaries,
-NextToken
+contributor_insights_summaries,
+next_token
 FROM aws.dynamodb.contributor_insights
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,10 +241,10 @@ region = '{{ region }}' --required
 AND TableName = '{{ TableName }}' --required
 AND ContributorInsightsAction = '{{ ContributorInsightsAction }}' --required
 RETURNING
-ContributorInsightsMode,
-ContributorInsightsStatus,
-IndexName,
-TableName;
+contributor_insights_mode,
+contributor_insights_status,
+index_name,
+table_name;
 ```
 </TabItem>
 </Tabs>

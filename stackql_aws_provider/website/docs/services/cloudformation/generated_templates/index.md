@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogicalResourceId" /></td>
+    <td><CopyableCode code="logical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The logical id for this resource in the final generated template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>string</code></td>
     <td>A list of up to 256 key-value pairs that identifies the resource in the generated template. The key is the name of one of the primary identifiers for the resource. (Primary identifiers are specified in the primaryIdentifier list in the resource schema.) The value is the value of that primary identifier. For example, for a AWS::DynamoDB::Table resource, the primary identifiers is TableName so the key-value pair could be "TableName": "MyDDBTable". For more information, see primaryIdentifier in the CloudFormation Command Line Interface (CLI) User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatus" /></td>
+    <td><CopyableCode code="resource_status" /></td>
     <td><code>string</code></td>
     <td>Status of the processing of a resource in a generated template. InProgress The resource processing is still in progress. Complete The resource processing is complete. Pending The resource processing is pending. Failed The resource processing has failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceStatusReason" /></td>
+    <td><CopyableCode code="resource_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the resource detail, providing more information if a failure happened.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource, such as AWS::DynamoDB::Table. For the list of supported resources, see Resource type support for imports and drift detection In the CloudFormation User Guide</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>string</code></td>
     <td>The warnings generated for this resource.</td>
 </tr>
@@ -95,37 +95,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time the generated template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedTemplateId" /></td>
+    <td><CopyableCode code="generated_template_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the generated template. The format is arn:$&#123;Partition&#125;:cloudformation:$&#123;Region&#125;:$&#123;Account&#125;:generatedtemplate/$&#123;Id&#125;. For example, arn:aws:cloudformation:us-east-1:123456789012:generatedtemplate/2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeneratedTemplateName" /></td>
+    <td><CopyableCode code="generated_template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the generated template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string</code></td>
     <td>The time the generated template was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfResources" /></td>
+    <td><CopyableCode code="number_of_resources" /></td>
     <td><code>integer</code></td>
     <td>The number of resources in the generated template. This is a total of resources in pending, in-progress, completed, and failed states.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the template generation. Supported values are: CreatePending - the creation of the template is pending. CreateInProgress - the creation of the template is in progress. DeletePending - the deletion of the template is pending. DeleteInProgress - the deletion of the template is in progress. UpdatePending - the update of the template is pending. UpdateInProgress - the update of the template is in progress. Failed - the template operation failed. Complete - the template operation is complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current template generation status. This will provide more details if a failure happened.</td>
 </tr>
@@ -285,12 +285,12 @@ Describes a generated template. The output includes details about the progress o
 
 ```sql
 SELECT
-LogicalResourceId,
-ResourceIdentifier,
-ResourceStatus,
-ResourceStatusReason,
-ResourceType,
-Warnings
+logical_resource_id,
+resource_identifier,
+resource_status,
+resource_status_reason,
+resource_type,
+warnings
 FROM aws.cloudformation.generated_templates
 WHERE GeneratedTemplateName = '{{ GeneratedTemplateName }}' -- required
 AND region = '{{ region }}' -- required
@@ -303,13 +303,13 @@ Lists your generated templates in this Region.
 
 ```sql
 SELECT
-CreationTime,
-GeneratedTemplateId,
-GeneratedTemplateName,
-LastUpdatedTime,
-NumberOfResources,
-Status,
-StatusReason
+creation_time,
+generated_template_id,
+generated_template_name,
+last_updated_time,
+number_of_resources,
+status,
+status_reason
 FROM aws.cloudformation.generated_templates
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

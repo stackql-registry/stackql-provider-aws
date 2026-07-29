@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoreNetworkArn" /></td>
+    <td><CopyableCode code="core_network_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a core network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the core network for the peering request. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the attachment peer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeLocation" /></td>
+    <td><CopyableCode code="edge_location" /></td>
     <td><code>string</code></td>
     <td>The edge location for the peer. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationErrors" /></td>
+    <td><CopyableCode code="last_modification_errors" /></td>
     <td><code>array</code></td>
     <td>Describes the error associated with the Connect peer request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account owner. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeeringId" /></td>
+    <td><CopyableCode code="peering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the peering attachment. (pattern: &lt;code&gt;^peering-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PeeringType" /></td>
+    <td><CopyableCode code="peering_type" /></td>
     <td><code>string</code></td>
     <td>The type of peering. This will be TRANSIT_GATEWAY. (TRANSIT_GATEWAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The resource ARN of the peer. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the peering connection. (CREATING, FAILED, AVAILABLE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of key-value tags associated with the peering.</td>
 </tr>
@@ -211,17 +211,17 @@ Lists the peerings for a core network.
 
 ```sql
 SELECT
-CoreNetworkArn,
-CoreNetworkId,
-CreatedAt,
-EdgeLocation,
-LastModificationErrors,
-OwnerAccountId,
-PeeringId,
-PeeringType,
-ResourceArn,
-State,
-Tags
+core_network_arn,
+core_network_id,
+created_at,
+edge_location,
+last_modification_errors,
+owner_account_id,
+peering_id,
+peering_type,
+resource_arn,
+state,
+tags
 FROM aws.networkmanager.peerings
 WHERE region = '{{ region }}' -- required
 AND coreNetworkId = '{{ coreNetworkId }}'

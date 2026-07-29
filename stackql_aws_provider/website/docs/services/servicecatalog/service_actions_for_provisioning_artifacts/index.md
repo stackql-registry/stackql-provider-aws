@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefinitionType" /></td>
+    <td><CopyableCode code="definition_type" /></td>
     <td><code>string</code></td>
     <td>The self-service action definition type. For example, SSM_AUTOMATION. (SSM_AUTOMATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The self-service action description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The self-service action identifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The self-service action name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a paginated list of self-service actions associated with the specified P
 
 ```sql
 SELECT
-DefinitionType,
-Description,
-Id,
-Name
+definition_type,
+description,
+id,
+name
 FROM aws.servicecatalog.service_actions_for_provisioning_artifacts
 WHERE region = '{{ region }}' -- required
 ;

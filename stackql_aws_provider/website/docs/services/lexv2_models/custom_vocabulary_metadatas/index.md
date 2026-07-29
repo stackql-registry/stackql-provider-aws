@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot that contains the custom vocabulary. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that contains the custom vocabulary to describe. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the custom vocabulary was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customVocabularyStatus" /></td>
+    <td><CopyableCode code="custom_vocabulary_status" /></td>
     <td><code>string</code></td>
     <td>The status of the custom vocabulary. If the status is Ready the custom vocabulary is ready to use. (Ready, Deleting, Exporting, Importing, Creating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the custom vocabulary was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The locale that contains the custom vocabulary to describe.</td>
 </tr>
@@ -159,12 +159,12 @@ Provides metadata information about a custom vocabulary.
 
 ```sql
 SELECT
-botId,
-botVersion,
-creationDateTime,
-customVocabularyStatus,
-lastUpdatedDateTime,
-localeId
+bot_id,
+bot_version,
+creation_date_time,
+custom_vocabulary_status,
+last_updated_date_time,
+locale_id
 FROM aws.lexv2_models.custom_vocabulary_metadatas
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required

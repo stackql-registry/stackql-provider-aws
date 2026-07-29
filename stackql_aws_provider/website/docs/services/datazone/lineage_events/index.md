@@ -56,17 +56,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the lineage event. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the lineage event was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the lineage event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The lineage event details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time of the lineage event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processingStatus" /></td>
+    <td><CopyableCode code="processing_status" /></td>
     <td><code>string</code></td>
     <td>The progressing status of the lineage event. (REQUESTED, PROCESSING, SUCCESS, FAILED)</td>
 </tr>
@@ -105,32 +105,32 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the data lineage event. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;14&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which data lineage event was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the data lineage event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The domain ID of the lineage event. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventSummary" /></td>
+    <td><CopyableCode code="event_summary" /></td>
     <td><code>object</code></td>
     <td>The summary of the data lineate event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time of the data lineage event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processingStatus" /></td>
+    <td><CopyableCode code="processing_status" /></td>
     <td><code>string</code></td>
     <td>The processing status of the data lineage event. (REQUESTED, PROCESSING, SUCCESS, FAILED)</td>
 </tr>
@@ -248,12 +248,12 @@ Describes the lineage event.
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-domainId,
+created_at,
+created_by,
+domain_id,
 event,
-eventTime,
-processingStatus
+event_time,
+processing_status
 FROM aws.datazone.lineage_events
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -268,12 +268,12 @@ Lists lineage events.
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-domainId,
-eventSummary,
-eventTime,
-processingStatus
+created_at,
+created_by,
+domain_id,
+event_summary,
+event_time,
+processing_status
 FROM aws.datazone.lineage_events
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required

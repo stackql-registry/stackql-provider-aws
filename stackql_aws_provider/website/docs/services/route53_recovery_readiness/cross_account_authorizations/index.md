@@ -181,7 +181,7 @@ SELECT
 '{{ CrossAccountAuthorization }}' /* required */,
 '{{ region }}'
 RETURNING
-CrossAccountAuthorization
+cross_account_authorization
 ;
 ```
 </TabItem>

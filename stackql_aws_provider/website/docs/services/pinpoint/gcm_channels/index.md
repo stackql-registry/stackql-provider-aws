@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the GCM channel applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the GCM channel was enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Credential" /></td>
+    <td><CopyableCode code="credential" /></td>
     <td><code>string</code></td>
     <td>The Web API Key, also referred to as an API_KEY or server key, that you received from Google to communicate with Google services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultAuthenticationMethod" /></td>
+    <td><CopyableCode code="default_authentication_method" /></td>
     <td><code>string</code></td>
     <td>The default authentication method used for GCM. Values are either "TOKEN" or "KEY". Defaults to "KEY".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the GCM channel is enabled for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasCredential" /></td>
+    <td><CopyableCode code="has_credential" /></td>
     <td><code>boolean</code></td>
     <td>(Not used) This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasFcmServiceCredentials" /></td>
+    <td><CopyableCode code="has_fcm_service_credentials" /></td>
     <td><code>boolean</code></td>
     <td>Returns true if the JSON file provided by Google during registration process was used in the ServiceJson field of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>(Deprecated) An identifier for the GCM channel. This property is retained only for backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the GCM channel is archived.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The user who last modified the GCM channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the GCM channel was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The type of messaging or notification platform for the channel. For the GCM channel, this value is GCM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The current version of the GCM channel.</td>
 </tr>
@@ -198,19 +198,19 @@ Retrieves information about the status and settings of the GCM channel for an ap
 
 ```sql
 SELECT
-ApplicationId,
-CreationDate,
-Credential,
-DefaultAuthenticationMethod,
-Enabled,
-HasCredential,
-HasFcmServiceCredentials,
-Id,
-IsArchived,
-LastModifiedBy,
-LastModifiedDate,
-Platform,
-Version
+application_id,
+creation_date,
+credential,
+default_authentication_method,
+enabled,
+has_credential,
+has_fcm_service_credentials,
+id,
+is_archived,
+last_modified_by,
+last_modified_date,
+platform,
+version
 FROM aws.pinpoint.gcm_channels
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -241,7 +241,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND GCMChannelRequest = '{{ GCMChannelRequest }}' --required
 RETURNING
-GCMChannelResponse;
+gcm_channel_response;
 ```
 </TabItem>
 </Tabs>

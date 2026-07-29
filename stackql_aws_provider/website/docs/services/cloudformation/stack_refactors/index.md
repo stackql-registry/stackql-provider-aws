@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description to help you identify the refactor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStatus" /></td>
+    <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
     <td>The operation status that's provided after calling the ExecuteStackRefactor action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStatusReason" /></td>
+    <td><CopyableCode code="execution_status_reason" /></td>
     <td><code>string</code></td>
     <td>A detailed explanation for the stack refactor ExecutionStatus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackRefactorId" /></td>
+    <td><CopyableCode code="stack_refactor_id" /></td>
     <td><code>string</code></td>
     <td>The ID associated with the stack refactor created from the CreateStackRefactor action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The stack refactor operation status that's provided after calling the CreateStackRefactor action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A detailed explanation for the stack refactor Status.</td>
 </tr>
@@ -275,12 +275,12 @@ Lists all account stack refactor operations and their statuses.
 
 ```sql
 SELECT
-Description,
-ExecutionStatus,
-ExecutionStatusReason,
-StackRefactorId,
-Status,
-StatusReason
+description,
+execution_status,
+execution_status_reason,
+stack_refactor_id,
+status,
+status_reason
 FROM aws.cloudformation.stack_refactors
 WHERE region = '{{ region }}' -- required
 AND ExecutionStatusFilter = '{{ ExecutionStatusFilter }}'

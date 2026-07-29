@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsAccountNumber" /></td>
+    <td><CopyableCode code="aws_account_number" /></td>
     <td><code>string</code></td>
     <td>The AWS account number specified in the AccountSettings container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultJobTimeoutMinutes" /></td>
+    <td><CopyableCode code="default_job_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The default number of minutes (at the account level) a test run executes before it times out. The default value is 150 minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxJobTimeoutMinutes" /></td>
+    <td><CopyableCode code="max_job_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of minutes a test run executes before it times out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxSlots" /></td>
+    <td><CopyableCode code="max_slots" /></td>
     <td><code>object</code></td>
     <td>The maximum number of device slots that the AWS account can purchase. Each maximum is expressed as an offering-id:number pair, where the offering-id represents one of the IDs returned by the ListOfferings command.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="skipAppResign" /></td>
+    <td><CopyableCode code="skip_app_resign" /></td>
     <td><code>boolean</code></td>
     <td>When set to true, for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see Do you modify my app? in the AWS Device Farm FAQs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trialMinutes" /></td>
+    <td><CopyableCode code="trial_minutes" /></td>
     <td><code>object</code></td>
     <td>Information about an AWS account's usage of free trial device minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unmeteredDevices" /></td>
+    <td><CopyableCode code="unmetered_devices" /></td>
     <td><code>object</code></td>
     <td>Returns the unmetered devices you have purchased or want to purchase.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unmeteredRemoteAccessDevices" /></td>
+    <td><CopyableCode code="unmetered_remote_access_devices" /></td>
     <td><code>object</code></td>
     <td>Returns the unmetered remote access devices you have purchased or want to purchase.</td>
 </tr>
@@ -154,14 +154,14 @@ Returns the number of unmetered iOS or unmetered Android devices that have been 
 
 ```sql
 SELECT
-awsAccountNumber,
-defaultJobTimeoutMinutes,
-maxJobTimeoutMinutes,
-maxSlots,
-skipAppResign,
-trialMinutes,
-unmeteredDevices,
-unmeteredRemoteAccessDevices
+aws_account_number,
+default_job_timeout_minutes,
+max_job_timeout_minutes,
+max_slots,
+skip_app_resign,
+trial_minutes,
+unmetered_devices,
+unmetered_remote_access_devices
 FROM aws.devicefarm.account_settings
 WHERE region = '{{ region }}' -- required
 ;

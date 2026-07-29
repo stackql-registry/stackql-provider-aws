@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregatedUtterancesSummaries" /></td>
+    <td><CopyableCode code="aggregated_utterances_summaries" /></td>
     <td><code>array</code></td>
     <td>Summaries of the aggregated utterance data. Each response contains information about the number of times that the utterance was seen during the time period, whether it was detected or missed, and when it was seen during the time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationDuration" /></td>
+    <td><CopyableCode code="aggregation_duration" /></td>
     <td><code>object</code></td>
     <td>Provides parameters for setting the time window and duration for aggregating utterance data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationLastRefreshedDateTime" /></td>
+    <td><CopyableCode code="aggregation_last_refreshed_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date and time that the aggregated data was collected. The time period depends on the length of the aggregation window. Hours - for 1 hour time window, every half hour; otherwise every hour. Days - every 6 hours Weeks - for a one week time window, every 12 hours; otherwise, every day</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationWindowEndTime" /></td>
+    <td><CopyableCode code="aggregation_window_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the aggregation window ends. Only data collected between the start time and the end time are returned in the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aggregationWindowStartTime" /></td>
+    <td><CopyableCode code="aggregation_window_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the aggregation window begins. Only data collected after this time is returned in the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botAliasId" /></td>
+    <td><CopyableCode code="bot_alias_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot alias that contains the utterances. If you specified the bot version, the bot alias ID isn't returned. (pattern: &lt;code&gt;^(\bTSTALIASID\b|&#91;0-9a-zA-Z&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot that contains the utterances. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The identifier of the bot version that contains the utterances. If you specified the bot alias, the bot version isn't returned. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the language and locale that the utterances are in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListAggregatedUtterances operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListAggregatedUtterances operation request to get the next page of results.</td>
 </tr>
@@ -169,16 +169,16 @@ Provides a list of utterances that users have sent to the bot. Utterances are ag
 
 ```sql
 SELECT
-aggregatedUtterancesSummaries,
-aggregationDuration,
-aggregationLastRefreshedDateTime,
-aggregationWindowEndTime,
-aggregationWindowStartTime,
-botAliasId,
-botId,
-botVersion,
-localeId,
-nextToken
+aggregated_utterances_summaries,
+aggregation_duration,
+aggregation_last_refreshed_date_time,
+aggregation_window_end_time,
+aggregation_window_start_time,
+bot_alias_id,
+bot_id,
+bot_version,
+locale_id,
+next_token
 FROM aws.lexv2_models.aggregated_utterances
 WHERE bot_id = '{{ bot_id }}' -- required
 AND region = '{{ region }}' -- required

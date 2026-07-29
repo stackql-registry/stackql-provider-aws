@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Any failures associated with the call. If you decsribe a deployment with a service revision created before October 25, 2024, the call fails. The failure includes the service revision ARN and the reason set to MISSING.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceDeployments" /></td>
+    <td><CopyableCode code="service_deployments" /></td>
     <td><code>array</code></td>
     <td>The list of service deployments described.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The nextToken value to include in a future ListServiceDeployments request. When the results of a ListServiceDeployments request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceDeployments" /></td>
+    <td><CopyableCode code="service_deployments" /></td>
     <td><code>array</code></td>
     <td>An overview of the service deployment, including the following properties: The ARN of the service deployment. The ARN of the service being deployed. The ARN of the cluster that hosts the service in the service deployment. The time that the service deployment started. The time that the service deployment completed. The service deployment status. Information about why the service deployment is in the current state. The ARN of the service revision that is being deployed.</td>
 </tr>
@@ -158,7 +158,7 @@ Describes one or more of your service deployments. A service deployment happens 
 ```sql
 SELECT
 failures,
-serviceDeployments
+service_deployments
 FROM aws.ecs.service_deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,8 +170,8 @@ This operation lists all the service deployments that meet the specified filter 
 
 ```sql
 SELECT
-nextToken,
-serviceDeployments
+next_token,
+service_deployments
 FROM aws.ecs.service_deployments
 WHERE region = '{{ region }}' -- required
 ;

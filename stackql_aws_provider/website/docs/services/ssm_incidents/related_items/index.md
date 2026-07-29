@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="generatedId" /></td>
+    <td><CopyableCode code="generated_id" /></td>
     <td><code>string</code></td>
     <td>A unique ID for a RelatedItem. Don't specify this parameter when you add a RelatedItem by using the UpdateRelatedItems API action. (pattern: &lt;code&gt;^related-item/(ANALYSIS|INCIDENT|METRIC|PARENT|ATTACHMENT|OTHER|AUTOMATION|INVOLVED_RESOURCE|TASK)/(&#91;0-9&#93;|&#91;A-F&#93;)&#123;32&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -136,7 +136,7 @@ List all related items for an incident record.
 
 ```sql
 SELECT
-generatedId,
+generated_id,
 identifier,
 title_
 FROM aws.ssm_incidents.related_items

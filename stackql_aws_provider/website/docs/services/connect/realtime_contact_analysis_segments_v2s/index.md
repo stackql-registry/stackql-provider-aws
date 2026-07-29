@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channel" /></td>
+    <td><CopyableCode code="channel" /></td>
     <td><code>string</code></td>
     <td>The channel of the contact. Only CHAT is supported. This API does not support VOICE. If you attempt to use it for the VOICE channel, an InvalidRequestException error occurs. (VOICE, CHAT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Segments" /></td>
+    <td><CopyableCode code="segments" /></td>
     <td><code>array</code></td>
     <td>An analyzed transcript or category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of real-time contact analysis. (IN_PROGRESS, FAILED, COMPLETED)</td>
 </tr>
@@ -144,10 +144,10 @@ Provides a list of analysis segments for a real-time chat analysis session. This
 
 ```sql
 SELECT
-Channel,
-NextToken,
-Segments,
-Status
+channel,
+next_token,
+segments,
+status
 FROM aws.connect.realtime_contact_analysis_segments_v2s
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_id = '{{ contact_id }}' -- required

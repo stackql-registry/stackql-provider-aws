@@ -50,162 +50,162 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN (Amazon Resource Name) of the replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AtRestEncryptionEnabled" /></td>
+    <td><CopyableCode code="at_rest_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables encryption at-rest when set to true. You cannot modify the value of AtRestEncryptionEnabled after the cluster is created. To enable encryption at-rest on a cluster you must set AtRestEncryptionEnabled to true when you create a cluster. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthTokenEnabled" /></td>
+    <td><CopyableCode code="auth_token_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables using an AuthToken (password) when issuing Valkey or Redis OSS commands. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthTokenLastModifiedDate" /></td>
+    <td><CopyableCode code="auth_token_last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date the auth token was last modified</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMinorVersionUpgrade" /></td>
+    <td><CopyableCode code="auto_minor_version_upgrade" /></td>
     <td><code>boolean</code></td>
     <td>If you are running Valkey 7.2 and above, or Redis OSS engine version 6.0 and above, set this parameter to yes if you want to opt-in to the next auto minor version upgrade campaign. This parameter is disabled for previous versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomaticFailover" /></td>
+    <td><CopyableCode code="automatic_failover" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of automatic failover for this Valkey or Redis OSS replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheNodeType" /></td>
+    <td><CopyableCode code="cache_node_type" /></td>
     <td><code>string</code></td>
     <td>The name of the compute and memory capacity node type for each node in the replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterEnabled" /></td>
+    <td><CopyableCode code="cluster_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag indicating whether or not this replication group is cluster enabled; i.e., whether its data can be partitioned across multiple shards (API/CLI: node groups). Valid values: true | false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterMode" /></td>
+    <td><CopyableCode code="cluster_mode" /></td>
     <td><code>string</code></td>
     <td>Enabled or Disabled. To modify cluster mode from Disabled to Enabled, you must first set the cluster mode to Compatible. Compatible mode allows your Valkey or Redis OSS clients to connect using both cluster mode enabled and cluster mode disabled. After you migrate all Valkey or Redis OSS clients to use cluster mode enabled, you can then complete cluster mode configuration and set the cluster mode to Enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationEndpoint" /></td>
+    <td><CopyableCode code="configuration_endpoint" /></td>
     <td><code>string</code></td>
     <td>The configuration endpoint for this replication group. Use the configuration endpoint to connect to this replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataTiering" /></td>
+    <td><CopyableCode code="data_tiering" /></td>
     <td><code>string</code></td>
     <td>Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes. For more information, see Data tiering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The user supplied description of the replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The engine used in a replication group. The options are valkey, memcached or redis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalReplicationGroupInfo" /></td>
+    <td><CopyableCode code="global_replication_group_info" /></td>
     <td><code>string</code></td>
     <td>The name of the Global datastore and role of this replication group in the Global datastore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpDiscovery" /></td>
+    <td><CopyableCode code="ip_discovery" /></td>
     <td><code>string</code></td>
     <td>The network type you choose when modifying a cluster, either ipv4 | ipv6. IPv6 is supported for workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to 7.1 or Memcached engine version 1.6.6 and above on all instances built on the Nitro system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the KMS key used to encrypt the disk in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LogDeliveryConfigurations" /></td>
+    <td><CopyableCode code="log_delivery_configurations" /></td>
     <td><code>string</code></td>
     <td>Returns the destination, format and type of the logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberClusters" /></td>
+    <td><CopyableCode code="member_clusters" /></td>
     <td><code>string</code></td>
     <td>The names of all the cache clusters that are part of this replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberClustersOutpostArns" /></td>
+    <td><CopyableCode code="member_clusters_outpost_arns" /></td>
     <td><code>string</code></td>
     <td>The outpost ARNs of the replication group's member clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZ" /></td>
+    <td><CopyableCode code="multi_az" /></td>
     <td><code>string</code></td>
     <td>A flag indicating if you have Multi-AZ enabled to enhance fault tolerance. For more information, see Minimizing Downtime: Multi-AZ</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>Must be either ipv4 | ipv6 | dual_stack. IPv6 is supported for workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to 7.1 or Memcached engine version 1.6.6 and above on all instances built on the Nitro system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeGroups" /></td>
+    <td><CopyableCode code="node_groups" /></td>
     <td><code>string</code></td>
     <td>A list of node groups in this replication group. For Valkey or Redis OSS (cluster mode disabled) replication groups, this is a single-element list. For Valkey or Redis OSS (cluster mode enabled) replication groups, the list contains an entry for each node group (shard).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>A group of settings to be applied to the replication group, either immediately or during the next maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationGroupCreateTime" /></td>
+    <td><CopyableCode code="replication_group_create_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationGroupId" /></td>
+    <td><CopyableCode code="replication_group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotRetentionLimit" /></td>
+    <td><CopyableCode code="snapshot_retention_limit" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which ElastiCache retains automatic cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, a snapshot that was taken today is retained for 5 days before being deleted. If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotWindow" /></td>
+    <td><CopyableCode code="snapshot_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard). Example: 05:00-09:00 If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range. This parameter is only valid if the Engine parameter is redis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshottingClusterId" /></td>
+    <td><CopyableCode code="snapshotting_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The cluster ID that is used as the daily snapshot source for the replication group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of this replication group - creating, available, modifying, deleting, create-failed, snapshotting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitEncryptionEnabled" /></td>
+    <td><CopyableCode code="transit_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables in-transit encryption when set to true. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitEncryptionMode" /></td>
+    <td><CopyableCode code="transit_encryption_mode" /></td>
     <td><code>string</code></td>
     <td>A setting that allows you to migrate your clients to use in-transit encryption, with no downtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserGroupIds" /></td>
+    <td><CopyableCode code="user_group_ids" /></td>
     <td><code>string</code></td>
     <td>The ID of the user group associated to the replication group.</td>
 </tr>
@@ -664,38 +664,38 @@ Returns information about a particular replication group. If no identifier is sp
 
 ```sql
 SELECT
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-AuthTokenLastModifiedDate,
-AutoMinorVersionUpgrade,
-AutomaticFailover,
-CacheNodeType,
-ClusterEnabled,
-ClusterMode,
-ConfigurationEndpoint,
-DataTiering,
-Description,
-Engine,
-GlobalReplicationGroupInfo,
-IpDiscovery,
-KmsKeyId,
-LogDeliveryConfigurations,
-MemberClusters,
-MemberClustersOutpostArns,
-MultiAZ,
-NetworkType,
-NodeGroups,
-PendingModifiedValues,
-ReplicationGroupCreateTime,
-ReplicationGroupId,
-SnapshotRetentionLimit,
-SnapshotWindow,
-SnapshottingClusterId,
-Status,
-TransitEncryptionEnabled,
-TransitEncryptionMode,
-UserGroupIds
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+auth_token_last_modified_date,
+auto_minor_version_upgrade,
+automatic_failover,
+cache_node_type,
+cluster_enabled,
+cluster_mode,
+configuration_endpoint,
+data_tiering,
+description,
+engine,
+global_replication_group_info,
+ip_discovery,
+kms_key_id,
+log_delivery_configurations,
+member_clusters,
+member_clusters_outpost_arns,
+multi_az,
+network_type,
+node_groups,
+pending_modified_values,
+replication_group_create_time,
+replication_group_id,
+snapshot_retention_limit,
+snapshot_window,
+snapshotting_cluster_id,
+status,
+transit_encryption_enabled,
+transit_encryption_mode,
+user_group_ids
 FROM aws.elasticache.replication_groups
 WHERE region = '{{ region }}' -- required
 AND ReplicationGroupId = '{{ ReplicationGroupId }}'
@@ -805,38 +805,38 @@ SELECT
 '{{ ClusterMode }}',
 '{{ ServerlessCacheSnapshotName }}'
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-AuthTokenLastModifiedDate,
-AutoMinorVersionUpgrade,
-AutomaticFailover,
-CacheNodeType,
-ClusterEnabled,
-ClusterMode,
-ConfigurationEndpoint,
-DataTiering,
-Description,
-Engine,
-GlobalReplicationGroupInfo,
-IpDiscovery,
-KmsKeyId,
-LogDeliveryConfigurations,
-MemberClusters,
-MemberClustersOutpostArns,
-MultiAZ,
-NetworkType,
-NodeGroups,
-PendingModifiedValues,
-ReplicationGroupCreateTime,
-ReplicationGroupId,
-SnapshotRetentionLimit,
-SnapshotWindow,
-SnapshottingClusterId,
-Status,
-TransitEncryptionEnabled,
-TransitEncryptionMode,
-UserGroupIds
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+auth_token_last_modified_date,
+auto_minor_version_upgrade,
+automatic_failover,
+cache_node_type,
+cluster_enabled,
+cluster_mode,
+configuration_endpoint,
+data_tiering,
+description,
+engine,
+global_replication_group_info,
+ip_discovery,
+kms_key_id,
+log_delivery_configurations,
+member_clusters,
+member_clusters_outpost_arns,
+multi_az,
+network_type,
+node_groups,
+pending_modified_values,
+replication_group_create_time,
+replication_group_id,
+snapshot_retention_limit,
+snapshot_window,
+snapshotting_cluster_id,
+status,
+transit_encryption_enabled,
+transit_encryption_mode,
+user_group_ids
 ;
 ```
 </TabItem>
@@ -1034,38 +1034,38 @@ AND ReshardingConfiguration = '{{ ReshardingConfiguration}}'
 AND NodeGroupsToRemove = '{{ NodeGroupsToRemove}}'
 AND NodeGroupsToRetain = '{{ NodeGroupsToRetain}}'
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-AuthTokenLastModifiedDate,
-AutoMinorVersionUpgrade,
-AutomaticFailover,
-CacheNodeType,
-ClusterEnabled,
-ClusterMode,
-ConfigurationEndpoint,
-DataTiering,
-Description,
-Engine,
-GlobalReplicationGroupInfo,
-IpDiscovery,
-KmsKeyId,
-LogDeliveryConfigurations,
-MemberClusters,
-MemberClustersOutpostArns,
-MultiAZ,
-NetworkType,
-NodeGroups,
-PendingModifiedValues,
-ReplicationGroupCreateTime,
-ReplicationGroupId,
-SnapshotRetentionLimit,
-SnapshotWindow,
-SnapshottingClusterId,
-Status,
-TransitEncryptionEnabled,
-TransitEncryptionMode,
-UserGroupIds;
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+auth_token_last_modified_date,
+auto_minor_version_upgrade,
+automatic_failover,
+cache_node_type,
+cluster_enabled,
+cluster_mode,
+configuration_endpoint,
+data_tiering,
+description,
+engine,
+global_replication_group_info,
+ip_discovery,
+kms_key_id,
+log_delivery_configurations,
+member_clusters,
+member_clusters_outpost_arns,
+multi_az,
+network_type,
+node_groups,
+pending_modified_values,
+replication_group_create_time,
+replication_group_id,
+snapshot_retention_limit,
+snapshot_window,
+snapshotting_cluster_id,
+status,
+transit_encryption_enabled,
+transit_encryption_mode,
+user_group_ids;
 ```
 </TabItem>
 <TabItem value="modify_replication_group">
@@ -1109,38 +1109,38 @@ AND TransitEncryptionEnabled = {{ TransitEncryptionEnabled}}
 AND TransitEncryptionMode = '{{ TransitEncryptionMode}}'
 AND ClusterMode = '{{ ClusterMode}}'
 RETURNING
-ARN,
-AtRestEncryptionEnabled,
-AuthTokenEnabled,
-AuthTokenLastModifiedDate,
-AutoMinorVersionUpgrade,
-AutomaticFailover,
-CacheNodeType,
-ClusterEnabled,
-ClusterMode,
-ConfigurationEndpoint,
-DataTiering,
-Description,
-Engine,
-GlobalReplicationGroupInfo,
-IpDiscovery,
-KmsKeyId,
-LogDeliveryConfigurations,
-MemberClusters,
-MemberClustersOutpostArns,
-MultiAZ,
-NetworkType,
-NodeGroups,
-PendingModifiedValues,
-ReplicationGroupCreateTime,
-ReplicationGroupId,
-SnapshotRetentionLimit,
-SnapshotWindow,
-SnapshottingClusterId,
-Status,
-TransitEncryptionEnabled,
-TransitEncryptionMode,
-UserGroupIds;
+arn,
+at_rest_encryption_enabled,
+auth_token_enabled,
+auth_token_last_modified_date,
+auto_minor_version_upgrade,
+automatic_failover,
+cache_node_type,
+cluster_enabled,
+cluster_mode,
+configuration_endpoint,
+data_tiering,
+description,
+engine,
+global_replication_group_info,
+ip_discovery,
+kms_key_id,
+log_delivery_configurations,
+member_clusters,
+member_clusters_outpost_arns,
+multi_az,
+network_type,
+node_groups,
+pending_modified_values,
+replication_group_create_time,
+replication_group_id,
+snapshot_retention_limit,
+snapshot_window,
+snapshotting_cluster_id,
+status,
+transit_encryption_enabled,
+transit_encryption_mode,
+user_group_ids;
 ```
 </TabItem>
 </Tabs>

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workflow run completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>This error message describes any error that may have occurred in starting the workflow run. Currently the only error message is "Concurrent runs exceeded for workflow: foo."</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Graph" /></td>
+    <td><CopyableCode code="graph" /></td>
     <td><code>object</code></td>
     <td>The graph representing all the Glue components that belong to the workflow as nodes and directed connections between them as edges.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the workflow that was run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousRunId" /></td>
+    <td><CopyableCode code="previous_run_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the previous workflow run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workflow run was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartingEventBatchCondition" /></td>
+    <td><CopyableCode code="starting_event_batch_condition" /></td>
     <td><code>object</code></td>
     <td>The batch condition that started the workflow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistics" /></td>
+    <td><CopyableCode code="statistics" /></td>
     <td><code>object</code></td>
     <td>The statistics of the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the workflow run. (RUNNING, COMPLETED, STOPPING, STOPPED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowRunId" /></td>
+    <td><CopyableCode code="workflow_run_id" /></td>
     <td><code>string</code></td>
     <td>The ID of this workflow run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowRunProperties" /></td>
+    <td><CopyableCode code="workflow_run_properties" /></td>
     <td><code>object</code></td>
     <td>The workflow run properties which were set during the run.</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workflow run completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>This error message describes any error that may have occurred in starting the workflow run. Currently the only error message is "Concurrent runs exceeded for workflow: foo."</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Graph" /></td>
+    <td><CopyableCode code="graph" /></td>
     <td><code>object</code></td>
     <td>The graph representing all the Glue components that belong to the workflow as nodes and directed connections between them as edges.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the workflow that was run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousRunId" /></td>
+    <td><CopyableCode code="previous_run_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the previous workflow run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workflow run was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartingEventBatchCondition" /></td>
+    <td><CopyableCode code="starting_event_batch_condition" /></td>
     <td><code>object</code></td>
     <td>The batch condition that started the workflow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statistics" /></td>
+    <td><CopyableCode code="statistics" /></td>
     <td><code>object</code></td>
     <td>The statistics of the run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the workflow run. (RUNNING, COMPLETED, STOPPING, STOPPED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowRunId" /></td>
+    <td><CopyableCode code="workflow_run_id" /></td>
     <td><code>string</code></td>
     <td>The ID of this workflow run. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowRunProperties" /></td>
+    <td><CopyableCode code="workflow_run_properties" /></td>
     <td><code>object</code></td>
     <td>The workflow run properties which were set during the run.</td>
 </tr>
@@ -247,17 +247,17 @@ Retrieves the metadata for a given workflow run. Job run history is accessible f
 
 ```sql
 SELECT
-CompletedOn,
-ErrorMessage,
-Graph,
-Name,
-PreviousRunId,
-StartedOn,
-StartingEventBatchCondition,
-Statistics,
-Status,
-WorkflowRunId,
-WorkflowRunProperties
+completed_on,
+error_message,
+graph,
+name,
+previous_run_id,
+started_on,
+starting_event_batch_condition,
+statistics,
+status,
+workflow_run_id,
+workflow_run_properties
 FROM aws.glue.workflow_runs
 WHERE region = '{{ region }}' -- required
 ;
@@ -269,17 +269,17 @@ Retrieves metadata for all runs of a given workflow.
 
 ```sql
 SELECT
-CompletedOn,
-ErrorMessage,
-Graph,
-Name,
-PreviousRunId,
-StartedOn,
-StartingEventBatchCondition,
-Statistics,
-Status,
-WorkflowRunId,
-WorkflowRunProperties
+completed_on,
+error_message,
+graph,
+name,
+previous_run_id,
+started_on,
+starting_event_batch_condition,
+statistics,
+status,
+workflow_run_id,
+workflow_run_properties
 FROM aws.glue.workflow_runs
 WHERE region = '{{ region }}' -- required
 ;

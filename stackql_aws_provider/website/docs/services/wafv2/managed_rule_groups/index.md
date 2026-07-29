@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailableLabels" /></td>
+    <td><CopyableCode code="available_labels" /></td>
     <td><code>array</code></td>
     <td>The labels that one or more rules in this rule group add to matching web requests. These labels are defined in the RuleLabels for a Rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Capacity" /></td>
+    <td><CopyableCode code="capacity" /></td>
     <td><code>integer (int64)</code></td>
     <td>The web ACL capacity units (WCUs) required for this rule group. WAF uses WCUs to calculate and control the operating resources that are used to run your rules, rule groups, and web ACLs. WAF calculates capacity differently for each rule type, to reflect the relative cost of each rule. Simple rules that cost little to run use fewer WCUs than more complex rules that use more processing power. Rule group capacity is fixed at creation, which helps users plan their web ACL WCU usage when they use a rule group. For more information, see WAF web ACL capacity units (WCU) in the WAF Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConsumedLabels" /></td>
+    <td><CopyableCode code="consumed_labels" /></td>
     <td><code>array</code></td>
     <td>The labels that one or more rules in this rule group match against in label match statements. These labels are defined in a LabelMatchStatement specification, in the Statement definition of a rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LabelNamespace" /></td>
+    <td><CopyableCode code="label_namespace" /></td>
     <td><code>string</code></td>
     <td>The label namespace prefix for this rule group. All labels added by rules in this rule group have this prefix. The syntax for the label namespace prefix for a managed rule group is the following: awswaf:managed:<code>&lt;vendor&gt;</code>:&lt;rule group name&gt;: When a rule with a label matches a web request, WAF adds the fully qualified label to the request. A fully qualified label is made up of the label namespace from the rule group or web ACL where the rule is defined and the label from the rule, separated by a colon: &lt;label namespace&gt;:&lt;label from rule&gt; (pattern: &lt;code&gt;^&#91;0-9A-Za-z_\-:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rules" /></td>
+    <td><CopyableCode code="rules" /></td>
     <td><code>array</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the Amazon Simple Notification Service SNS topic that's used to provide notification of changes to the managed rule group. You can subscribe to the SNS topic to receive notifications when the managed rule group is modified, such as for new versions and for version expiration. For more information, see the Amazon Simple Notification Service Developer Guide. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionName" /></td>
+    <td><CopyableCode code="version_name" /></td>
     <td><code>string</code></td>
     <td>The managed rule group's version. (pattern: &lt;code&gt;^&#91;\w#:\.\-/&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -149,13 +149,13 @@ Provides high-level information for a managed rule group, including descriptions
 
 ```sql
 SELECT
-AvailableLabels,
-Capacity,
-ConsumedLabels,
-LabelNamespace,
-Rules,
-SnsTopicArn,
-VersionName
+available_labels,
+capacity,
+consumed_labels,
+label_namespace,
+rules,
+sns_topic_arn,
+version_name
 FROM aws.wafv2.managed_rule_groups
 WHERE region = '{{ region }}' -- required
 ;

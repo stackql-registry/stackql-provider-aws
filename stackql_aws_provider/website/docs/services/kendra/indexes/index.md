@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityUnits" /></td>
+    <td><CopyableCode code="capacity_units" /></td>
     <td><code>object</code></td>
     <td>For Enterprise Edition indexes, you can choose to use additional capacity to meet the needs of your application. This contains the capacity units used for the index. A query or document storage capacity of zero indicates that the index is using the default capacity. For more information on the default capacity for an index and adjusting this, see Adjusting capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the index was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the index. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentMetadataConfigurations" /></td>
+    <td><CopyableCode code="document_metadata_configurations" /></td>
     <td><code>array</code></td>
     <td>Configuration information for document metadata or fields. Document metadata are fields or attributes associated with your documents. For example, the company department name associated with each document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Edition" /></td>
+    <td><CopyableCode code="edition" /></td>
     <td><code>string</code></td>
     <td>The Amazon Kendra edition used for the index. You decide the edition when you create the index. (DEVELOPER_EDITION, ENTERPRISE_EDITION, GEN_AI_ENTERPRISE_EDITION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>When the Status field value is FAILED, the ErrorMessage field contains a message that explains why. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the index. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatistics" /></td>
+    <td><CopyableCode code="index_statistics" /></td>
     <td><code>object</code></td>
     <td>Provides information about the number of FAQ questions and answers and the number of text documents indexed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the index. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that gives Amazon Kendra permission to write to your Amazon CloudWatch logs. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The identifier of the KMS customer master key (CMK) that is used to encrypt your data. Amazon Kendra doesn't support asymmetric CMKs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the index. When the value is ACTIVE, the index is ready for use. If the Status field value is FAILED, the ErrorMessage field contains a message that explains why. (CREATING, ACTIVE, DELETING, FAILED, UPDATING, SYSTEM_UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the index was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserContextPolicy" /></td>
+    <td><CopyableCode code="user_context_policy" /></td>
     <td><code>string</code></td>
     <td>The user context policy for the Amazon Kendra index. (ATTRIBUTE_FILTER, USER_TOKEN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserGroupResolutionConfiguration" /></td>
+    <td><CopyableCode code="user_group_resolution_configuration" /></td>
     <td><code>object</code></td>
     <td>Whether you have enabled IAM Identity Center identity source for your users and groups. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserTokenConfigurations" /></td>
+    <td><CopyableCode code="user_token_configurations" /></td>
     <td><code>array</code></td>
     <td>The user token configuration for the Amazon Kendra index.</td>
 </tr>
@@ -264,22 +264,22 @@ Gets information about an Amazon Kendra index.
 
 ```sql
 SELECT
-CapacityUnits,
-CreatedAt,
-Description,
-DocumentMetadataConfigurations,
-Edition,
-ErrorMessage,
-Id,
-IndexStatistics,
-Name,
-RoleArn,
-ServerSideEncryptionConfiguration,
-Status,
-UpdatedAt,
-UserContextPolicy,
-UserGroupResolutionConfiguration,
-UserTokenConfigurations
+capacity_units,
+created_at,
+description,
+document_metadata_configurations,
+edition,
+error_message,
+id,
+index_statistics,
+name,
+role_arn,
+server_side_encryption_configuration,
+status,
+updated_at,
+user_context_policy,
+user_group_resolution_configuration,
+user_token_configurations
 FROM aws.kendra.indexes
 WHERE region = '{{ region }}' -- required
 ;
@@ -328,7 +328,7 @@ SELECT
 '{{ UserGroupResolutionConfiguration }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>
@@ -428,7 +428,7 @@ region = '{{ region }}' --required
 AND IndexId = '{{ IndexId }}' --required
 AND Personas = '{{ Personas }}' --required
 RETURNING
-FailedEntityList;
+failed_entity_list;
 ```
 </TabItem>
 <TabItem value="disassociate_personas_from_entities">
@@ -446,7 +446,7 @@ region = '{{ region }}' --required
 AND IndexId = '{{ IndexId }}' --required
 AND EntityIds = '{{ EntityIds }}' --required
 RETURNING
-FailedEntityList;
+failed_entity_list;
 ```
 </TabItem>
 <TabItem value="update_index">

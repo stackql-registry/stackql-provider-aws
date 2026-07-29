@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DynamicScalingConfiguration" /></td>
+    <td><CopyableCode code="dynamic_scaling_configuration" /></td>
     <td><code>object</code></td>
     <td>An object with the recommended values for you to specify when creating an autoscaling policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of an endpoint benchmarked during a previously completed Inference Recommender job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceRecommendationsJobName" /></td>
+    <td><CopyableCode code="inference_recommendations_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of a previously completed Inference Recommender job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metric" /></td>
+    <td><CopyableCode code="metric" /></td>
     <td><code>object</code></td>
     <td>An object with a list of metrics that were benchmarked during the previously completed Inference Recommender job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The recommendation ID of a previously completed inference recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingPolicyObjective" /></td>
+    <td><CopyableCode code="scaling_policy_objective" /></td>
     <td><code>object</code></td>
     <td>An object representing the anticipated traffic pattern for an endpoint that you specified in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetCpuUtilizationPerCore" /></td>
+    <td><CopyableCode code="target_cpu_utilization_per_core" /></td>
     <td><code>integer</code></td>
     <td>The percentage of how much utilization you want an instance to use before autoscaling, which you specified in the request. The default value is 50%.</td>
 </tr>
@@ -149,13 +149,13 @@ Starts an Amazon SageMaker Inference Recommender autoscaling recommendation job.
 
 ```sql
 SELECT
-DynamicScalingConfiguration,
-EndpointName,
-InferenceRecommendationsJobName,
-Metric,
-RecommendationId,
-ScalingPolicyObjective,
-TargetCpuUtilizationPerCore
+dynamic_scaling_configuration,
+endpoint_name,
+inference_recommendations_job_name,
+metric,
+recommendation_id,
+scaling_policy_objective,
+target_cpu_utilization_per_core
 FROM aws.sagemaker.scaling_configuration_recommendations
 WHERE region = '{{ region }}' -- required
 ;

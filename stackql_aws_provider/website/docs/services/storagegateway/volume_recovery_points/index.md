@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeRecoveryPointInfos" /></td>
+    <td><CopyableCode code="volume_recovery_point_infos" /></td>
     <td><code>array</code></td>
     <td>An array of VolumeRecoveryPointInfo objects.</td>
 </tr>
@@ -131,8 +131,8 @@ Lists the recovery points for a specified gateway. This operation is only suppor
 
 ```sql
 SELECT
-GatewayARN,
-VolumeRecoveryPointInfos
+gateway_arn,
+volume_recovery_point_infos
 FROM aws.storagegateway.volume_recovery_points
 WHERE region = '{{ region }}' -- required
 ;
@@ -167,9 +167,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-SnapshotId,
-VolumeARN,
-VolumeRecoveryPointTime
+snapshot_id,
+volume_arn,
+volume_recovery_point_time
 ;
 ```
 </TabItem>

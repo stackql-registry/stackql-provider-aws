@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="From" /></td>
+    <td><CopyableCode code="from" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="To" /></td>
+    <td><CopyableCode code="to" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -169,8 +169,8 @@ Gets the network resource relationships for the specified global network.
 
 ```sql
 SELECT
-From,
-To
+from,
+to
 FROM aws.networkmanager.network_resource_relationships
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required

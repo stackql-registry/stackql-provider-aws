@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PreSignedUrl" /></td>
+    <td><CopyableCode code="pre_signed_url" /></td>
     <td><code>string</code></td>
     <td>Location of the requested game session logs, available for download. This URL is valid for 15 minutes, after which S3 will reject any download request using this URL. You can request a new URL any time within the 14-day period that the logs are retained.</td>
 </tr>
@@ -119,7 +119,7 @@ This API works with the following fleet types: EC2 Retrieves the location of sto
 
 ```sql
 SELECT
-PreSignedUrl
+pre_signed_url
 FROM aws.gamelift.game_session_log_urls
 WHERE region = '{{ region }}' -- required
 ;

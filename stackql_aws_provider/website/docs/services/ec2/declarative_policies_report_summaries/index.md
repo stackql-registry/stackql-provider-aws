@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeSummaries" /></td>
+    <td><CopyableCode code="attribute_summaries" /></td>
     <td><code>string</code></td>
     <td>The attributes described in the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The time when the report generation ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfAccounts" /></td>
+    <td><CopyableCode code="number_of_accounts" /></td>
     <td><code>integer</code></td>
     <td>The total number of accounts associated with the specified targetId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfFailedAccounts" /></td>
+    <td><CopyableCode code="number_of_failed_accounts" /></td>
     <td><code>integer</code></td>
     <td>The number of accounts where attributes could not be retrieved in any Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Bucket" /></td>
+    <td><CopyableCode code="s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon S3 bucket where the report is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Prefix" /></td>
+    <td><CopyableCode code="s3_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix for your S3 object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The time when the report generation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The root ID, organizational unit ID, or account ID. Format: For root: r-ab12 For OU: ou-ab12-cdef1234 For account: 123456789012</td>
 </tr>
@@ -169,15 +169,15 @@ Retrieves a summary of the account status report. To view the full report, downl
 
 ```sql
 SELECT
-AttributeSummaries,
-EndTime,
-NumberOfAccounts,
-NumberOfFailedAccounts,
-ReportId,
-S3Bucket,
-S3Prefix,
-StartTime,
-TargetId
+attribute_summaries,
+end_time,
+number_of_accounts,
+number_of_failed_accounts,
+report_id,
+s3_bucket,
+s3_prefix,
+start_time,
+target_id
 FROM aws.ec2.declarative_policies_report_summaries
 WHERE ReportId = '{{ ReportId }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the key value store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>A comment for the key value store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique Id for the key value store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The last-modified time of the key value store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the key value store.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the key value store.</td>
 </tr>
@@ -95,22 +95,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>The items of the key value store list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of items in the key value store list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>The next marker associated with the key value store list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The quantity of the key value store list.</td>
 </tr>
@@ -233,12 +233,12 @@ Specifies the key value store and its configuration.
 
 ```sql
 SELECT
-ARN,
-Comment,
-Id,
-LastModifiedTime,
-Name,
-Status
+arn,
+comment,
+id,
+last_modified_time,
+name,
+status
 FROM aws.cloudfront.key_value_stores
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -251,10 +251,10 @@ Specifies the key value stores to list.
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.key_value_stores
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -294,12 +294,12 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ARN,
-Comment,
-Id,
-LastModifiedTime,
-Name,
-Status
+arn,
+comment,
+id,
+last_modified_time,
+name,
+status
 ;
 ```
 </TabItem>
@@ -355,12 +355,12 @@ name = '{{ name }}' --required
 AND `If-Match` = '{{ If-Match }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ARN,
-Comment,
-Id,
-LastModifiedTime,
-Name,
-Status;
+arn,
+comment,
+id,
+last_modified_time,
+name,
+status;
 ```
 </TabItem>
 </Tabs>

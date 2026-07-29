@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DryRunConfig" /></td>
+    <td><CopyableCode code="dry_run_config" /></td>
     <td><code>object</code></td>
     <td>The current status of an OpenSearch Service domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DryRunProgressStatus" /></td>
+    <td><CopyableCode code="dry_run_progress_status" /></td>
     <td><code>object</code></td>
     <td>The current status of the dry run, including any validation errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DryRunResults" /></td>
+    <td><CopyableCode code="dry_run_results" /></td>
     <td><code>object</code></td>
     <td>The results of the dry run.</td>
 </tr>
@@ -144,9 +144,9 @@ Describes the progress of a pre-update dry run analysis on an Amazon OpenSearch 
 
 ```sql
 SELECT
-DryRunConfig,
-DryRunProgressStatus,
-DryRunResults
+dry_run_config,
+dry_run_progress_status,
+dry_run_results
 FROM aws.opensearch.dry_run_progress
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

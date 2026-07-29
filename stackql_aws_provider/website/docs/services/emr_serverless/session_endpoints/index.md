@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The output contains the ID of the application. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authToken" /></td>
+    <td><CopyableCode code="auth_token" /></td>
     <td><code>string</code></td>
     <td>Authentication token for accessing the session endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authTokenExpiresAt" /></td>
+    <td><CopyableCode code="auth_token_expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The expiration time of the authentication token.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint URL for connecting to the session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The output contains the ID of the session. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -149,11 +149,11 @@ Returns the session endpoint URL and a time-limited authentication token for the
 
 ```sql
 SELECT
-applicationId,
-authToken,
-authTokenExpiresAt,
+application_id,
+auth_token,
+auth_token_expires_at,
 endpoint,
-sessionId
+session_id
 FROM aws.emr_serverless.session_endpoints
 WHERE application_id = '{{ application_id }}' -- required
 AND session_id = '{{ session_id }}' -- required

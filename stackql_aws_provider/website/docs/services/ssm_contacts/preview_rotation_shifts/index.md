@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactIds" /></td>
+    <td><CopyableCode code="contact_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the contacts who are part of the shift rotation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a shift rotation ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShiftDetails" /></td>
+    <td><CopyableCode code="shift_details" /></td>
     <td><code>object</code></td>
     <td>Additional information about an on-call rotation shift.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a shift rotation begins.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of shift rotation. (REGULAR, OVERRIDDEN)</td>
 </tr>
@@ -139,11 +139,11 @@ Returns a list of shifts based on rotation configuration parameters. The Inciden
 
 ```sql
 SELECT
-ContactIds,
-EndTime,
-ShiftDetails,
-StartTime,
-Type
+contact_ids,
+end_time,
+shift_details,
+start_time,
+type
 FROM aws.ssm_contacts.preview_rotation_shifts
 WHERE region = '{{ region }}' -- required
 ;

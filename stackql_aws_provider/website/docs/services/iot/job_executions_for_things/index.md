@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="jobExecutionSummary" /></td>
+    <td><CopyableCode code="job_execution_summary" /></td>
     <td><code>object</code></td>
     <td>Contains a subset of information about a job execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier you assigned to this job when it was created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -154,8 +154,8 @@ Lists the job executions for the specified thing. Requires permission to access 
 
 ```sql
 SELECT
-jobExecutionSummary,
-jobId
+job_execution_summary,
+job_id
 FROM aws.iot.job_executions_for_things
 WHERE thing_name = '{{ thing_name }}' -- required
 AND region = '{{ region }}' -- required

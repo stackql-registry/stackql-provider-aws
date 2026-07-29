@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the recipe was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who created the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who last modified the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the recipe was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project associated with this recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishedBy" /></td>
+    <td><CopyableCode code="published_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who last published the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishedDate" /></td>
+    <td><CopyableCode code="published_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the recipe was last published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeVersion" /></td>
+    <td><CopyableCode code="recipe_version" /></td>
     <td><code>string</code></td>
     <td>The recipe version identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Steps" /></td>
+    <td><CopyableCode code="steps" /></td>
     <td><code>array</code></td>
     <td>One or more steps to be performed by the recipe. Each step consists of an action, and the conditions under which the action should succeed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags associated with this project.</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the recipe was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last modified the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modification date and time of the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name for the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project that the recipe is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishedBy" /></td>
+    <td><CopyableCode code="published_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who published the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishedDate" /></td>
+    <td><CopyableCode code="published_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the recipe was published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeVersion" /></td>
+    <td><CopyableCode code="recipe_version" /></td>
     <td><code>string</code></td>
     <td>The identifier for the version for the recipe. Must be one of the following: Numeric version (X.Y) - X and Y stand for major and minor version numbers. The maximum length of each is 6 digits, and neither can be negative values. Both X and Y are required, and "0.0" isn't a valid version. LATEST_WORKING - the most recent valid version being developed in a DataBrew project. LATEST_PUBLISHED - the most recent published version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Steps" /></td>
+    <td><CopyableCode code="steps" /></td>
     <td><code>array</code></td>
     <td>A list of steps that are defined by the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags that have been applied to the recipe.</td>
 </tr>
@@ -301,19 +301,19 @@ Returns the definition of a specific DataBrew recipe corresponding to a particul
 
 ```sql
 SELECT
-CreateDate,
-CreatedBy,
-Description,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-ProjectName,
-PublishedBy,
-PublishedDate,
-RecipeVersion,
-ResourceArn,
-Steps,
-Tags
+create_date,
+created_by,
+description,
+last_modified_by,
+last_modified_date,
+name,
+project_name,
+published_by,
+published_date,
+recipe_version,
+resource_arn,
+steps,
+tags
 FROM aws.databrew.recipes
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -327,19 +327,19 @@ Lists all of the DataBrew recipes that are defined.
 
 ```sql
 SELECT
-CreateDate,
-CreatedBy,
-Description,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-ProjectName,
-PublishedBy,
-PublishedDate,
-RecipeVersion,
-ResourceArn,
-Steps,
-Tags
+create_date,
+created_by,
+description,
+last_modified_by,
+last_modified_date,
+name,
+project_name,
+published_by,
+published_date,
+recipe_version,
+resource_arn,
+steps,
+tags
 FROM aws.databrew.recipes
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -379,7 +379,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -430,7 +430,7 @@ WHERE
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

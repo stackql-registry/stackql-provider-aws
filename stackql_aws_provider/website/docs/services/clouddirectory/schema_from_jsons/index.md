@@ -107,7 +107,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND Document = '{{ Document }}' --required
 RETURNING
-Arn;
+arn;
 ```
 </TabItem>
 </Tabs>

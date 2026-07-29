@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributesData" /></td>
+    <td><CopyableCode code="attributes_data" /></td>
     <td><code>string</code></td>
     <td>The attribute data attached to a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactListName" /></td>
+    <td><CopyableCode code="contact_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the contact list to which the contact belongs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp noting when the contact was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EmailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The contact's email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp noting the last time the contact's information was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicDefaultPreferences" /></td>
+    <td><CopyableCode code="topic_default_preferences" /></td>
     <td><code>array</code></td>
     <td>The default topic preferences applied to the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopicPreferences" /></td>
+    <td><CopyableCode code="topic_preferences" /></td>
     <td><code>array</code></td>
     <td>The contact's preference for being opted-in to or opted-out of a topic.&gt;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnsubscribeAll" /></td>
+    <td><CopyableCode code="unsubscribe_all" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value status noting if the contact is unsubscribed from all contact list topics.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Contacts" /></td>
+    <td><CopyableCode code="contacts" /></td>
     <td><code>array</code></td>
     <td>The contacts present in a specific contact list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A string token indicating that there might be additional contacts available to be listed. Copy this token to a subsequent call to ListContacts with the same parameters to retrieve the next page of contacts.</td>
 </tr>
@@ -218,14 +218,14 @@ Returns a contact from a contact list.
 
 ```sql
 SELECT
-AttributesData,
-ContactListName,
-CreatedTimestamp,
-EmailAddress,
-LastUpdatedTimestamp,
-TopicDefaultPreferences,
-TopicPreferences,
-UnsubscribeAll
+attributes_data,
+contact_list_name,
+created_timestamp,
+email_address,
+last_updated_timestamp,
+topic_default_preferences,
+topic_preferences,
+unsubscribe_all
 FROM aws.sesv2.contacts
 WHERE contact_list_name = '{{ contact_list_name }}' -- required
 AND email_address = '{{ email_address }}' -- required
@@ -239,8 +239,8 @@ Lists the contacts present in a specific contact list.
 
 ```sql
 SELECT
-Contacts,
-NextToken
+contacts,
+next_token
 FROM aws.sesv2.contacts
 WHERE contact_list_name = '{{ contact_list_name }}' -- required
 AND region = '{{ region }}' -- required

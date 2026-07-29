@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The model version ARN. (pattern: &lt;code&gt;^arn\:aws&#91;a-z-&#93;&#123;0,15&#125;\:frauddetector\:&#91;a-z0-9-&#93;&#123;3,20&#125;\:&#91;0-9&#93;&#123;12&#125;\:&#91;^\s&#93;&#123;2,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalEventsDetail" /></td>
+    <td><CopyableCode code="external_events_detail" /></td>
     <td><code>object</code></td>
     <td>The details of the external events data used for training the model version. This will be populated if the trainingDataSource is EXTERNAL_EVENTS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestedEventsDetail" /></td>
+    <td><CopyableCode code="ingested_events_detail" /></td>
     <td><code>object</code></td>
     <td>The details of the ingested events data used for training the model version. This will be populated if the trainingDataSource is INGESTED_EVENTS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The model ID. (pattern: &lt;code&gt;^&#91;0-9a-z_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelType" /></td>
+    <td><CopyableCode code="model_type" /></td>
     <td><code>string</code></td>
     <td>The model type. (ONLINE_FRAUD_INSIGHTS, TRANSACTION_FRAUD_INSIGHTS, ACCOUNT_TAKEOVER_INSIGHTS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelVersionNumber" /></td>
+    <td><CopyableCode code="model_version_number" /></td>
     <td><code>string</code></td>
     <td>The model version number. (pattern: &lt;code&gt;^&#91;1-9&#93;&#91;0-9&#93;&#123;0,3&#125;\.&#91;0-9&#93;&#123;1,2&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>The model version status. Possible values are: TRAINING_IN_PROGRESS TRAINING_COMPLETE ACTIVATE_REQUESTED ACTIVATE_IN_PROGRESS ACTIVE INACTIVATE_REQUESTED INACTIVATE_IN_PROGRESS INACTIVE ERROR</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDataSchema" /></td>
+    <td><CopyableCode code="training_data_schema" /></td>
     <td><code>object</code></td>
     <td>The training data schema.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDataSource" /></td>
+    <td><CopyableCode code="training_data_source" /></td>
     <td><code>string</code></td>
     <td>The training data source. (EXTERNAL_EVENTS, INGESTED_EVENTS)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="modelVersionDetails" /></td>
+    <td><CopyableCode code="model_version_details" /></td>
     <td><code>array</code></td>
     <td>The model version details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next token.</td>
 </tr>
@@ -221,14 +221,14 @@ Gets the details of the specified model version.
 ```sql
 SELECT
 arn,
-externalEventsDetail,
-ingestedEventsDetail,
-modelId,
-modelType,
-modelVersionNumber,
+external_events_detail,
+ingested_events_detail,
+model_id,
+model_type,
+model_version_number,
 status,
-trainingDataSchema,
-trainingDataSource
+training_data_schema,
+training_data_source
 FROM aws.frauddetector.model_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -240,8 +240,8 @@ Gets all of the model versions for the specified model type or for the specified
 
 ```sql
 SELECT
-modelVersionDetails,
-nextToken
+model_version_details,
+next_token
 FROM aws.frauddetector.model_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -284,9 +284,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-modelId,
-modelType,
-modelVersionNumber,
+model_id,
+model_type,
+model_version_number,
 status
 ;
 ```
@@ -394,9 +394,9 @@ AND modelId = '{{ modelId }}' --required
 AND modelType = '{{ modelType }}' --required
 AND majorVersionNumber = '{{ majorVersionNumber }}' --required
 RETURNING
-modelId,
-modelType,
-modelVersionNumber,
+model_id,
+model_type,
+model_version_number,
 status;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BrandDefinition" /></td>
+    <td><CopyableCode code="brand_definition" /></td>
     <td><code>object</code></td>
     <td>The definition of the brand.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrandDetail" /></td>
+    <td><CopyableCode code="brand_detail" /></td>
     <td><code>object</code></td>
     <td>The details of the brand.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
@@ -146,9 +146,9 @@ Describes the published version of the brand.
 
 ```sql
 SELECT
-BrandDefinition,
-BrandDetail,
-RequestId
+brand_definition,
+brand_detail,
+request_id
 FROM aws.quicksight.brand_published_versions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND brand_id = '{{ brand_id }}' -- required
@@ -181,8 +181,8 @@ AND brand_id = '{{ brand_id }}' --required
 AND region = '{{ region }}' --required
 AND VersionId = '{{ VersionId }}' --required
 RETURNING
-RequestId,
-VersionId;
+request_id,
+version_id;
 ```
 </TabItem>
 </Tabs>

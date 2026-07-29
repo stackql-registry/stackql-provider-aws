@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the directory. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If not null, token that indicates that more results are available. Pass this value for the NextToken parameter in a subsequent call to DescribeSettings to retrieve the next set of items.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SettingEntries" /></td>
+    <td><CopyableCode code="setting_entries" /></td>
     <td><code>array</code></td>
     <td>The list of SettingEntry objects that were retrieved. It is possible that this list contains less than the number of items specified in the Limit member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves information about the configurable settings for the specified director
 
 ```sql
 SELECT
-DirectoryId,
-NextToken,
-SettingEntries
+directory_id,
+next_token,
+setting_entries
 FROM aws.ds.settings
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,7 +169,7 @@ region = '{{ region }}' --required
 AND DirectoryId = '{{ DirectoryId }}' --required
 AND Settings = '{{ Settings }}' --required
 RETURNING
-DirectoryId;
+directory_id;
 ```
 </TabItem>
 </Tabs>

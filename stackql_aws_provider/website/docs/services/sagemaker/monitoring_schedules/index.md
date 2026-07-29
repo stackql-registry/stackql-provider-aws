@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the monitoring job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint for the monitoring job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>A string, up to one KB in size, that contains the reason a monitoring job failed, if it failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the monitoring job was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastMonitoringExecutionSummary" /></td>
+    <td><CopyableCode code="last_monitoring_execution_summary" /></td>
     <td><code>object</code></td>
     <td>Describes metadata on the last execution to run, if there was one.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleArn" /></td>
+    <td><CopyableCode code="monitoring_schedule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitoring schedule. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleConfig" /></td>
+    <td><CopyableCode code="monitoring_schedule_config" /></td>
     <td><code>object</code></td>
     <td>The configuration object that specifies the monitoring schedule and defines the monitoring job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleName" /></td>
+    <td><CopyableCode code="monitoring_schedule_name" /></td>
     <td><code>string</code></td>
     <td>Name of the monitoring schedule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleStatus" /></td>
+    <td><CopyableCode code="monitoring_schedule_status" /></td>
     <td><code>string</code></td>
     <td>The status of an monitoring job. (Pending, Failed, Scheduled, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringType" /></td>
+    <td><CopyableCode code="monitoring_type" /></td>
     <td><code>string</code></td>
     <td>The type of the monitoring job that this schedule runs. This is one of the following values. DATA_QUALITY - The schedule is for a data quality monitoring job. MODEL_QUALITY - The schedule is for a model quality monitoring job. MODEL_BIAS - The schedule is for a bias monitoring job. MODEL_EXPLAINABILITY - The schedule is for an explainability monitoring job. (DataQuality, ModelQuality, ModelBias, ModelExplainability)</td>
 </tr>
@@ -115,42 +115,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the monitoring schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointName" /></td>
+    <td><CopyableCode code="endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name of the endpoint using the monitoring schedule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the monitoring schedule was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringJobDefinitionName" /></td>
+    <td><CopyableCode code="monitoring_job_definition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitoring job definition that the schedule is for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleArn" /></td>
+    <td><CopyableCode code="monitoring_schedule_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the monitoring schedule. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleName" /></td>
+    <td><CopyableCode code="monitoring_schedule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the monitoring schedule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringScheduleStatus" /></td>
+    <td><CopyableCode code="monitoring_schedule_status" /></td>
     <td><code>string</code></td>
     <td>The status of the monitoring schedule. (Pending, Failed, Scheduled, Stopped)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitoringType" /></td>
+    <td><CopyableCode code="monitoring_type" /></td>
     <td><code>string</code></td>
     <td>The type of the monitoring job definition that the schedule is for. (DataQuality, ModelQuality, ModelBias, ModelExplainability)</td>
 </tr>
@@ -262,16 +262,16 @@ Describes the schedule for a monitoring job.
 
 ```sql
 SELECT
-CreationTime,
-EndpointName,
-FailureReason,
-LastModifiedTime,
-LastMonitoringExecutionSummary,
-MonitoringScheduleArn,
-MonitoringScheduleConfig,
-MonitoringScheduleName,
-MonitoringScheduleStatus,
-MonitoringType
+creation_time,
+endpoint_name,
+failure_reason,
+last_modified_time,
+last_monitoring_execution_summary,
+monitoring_schedule_arn,
+monitoring_schedule_config,
+monitoring_schedule_name,
+monitoring_schedule_status,
+monitoring_type
 FROM aws.sagemaker.monitoring_schedules
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,14 +283,14 @@ Returns list of all monitoring schedules.
 
 ```sql
 SELECT
-CreationTime,
-EndpointName,
-LastModifiedTime,
-MonitoringJobDefinitionName,
-MonitoringScheduleArn,
-MonitoringScheduleName,
-MonitoringScheduleStatus,
-MonitoringType
+creation_time,
+endpoint_name,
+last_modified_time,
+monitoring_job_definition_name,
+monitoring_schedule_arn,
+monitoring_schedule_name,
+monitoring_schedule_status,
+monitoring_type
 FROM aws.sagemaker.monitoring_schedules
 WHERE region = '{{ region }}' -- required
 ;
@@ -325,7 +325,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-MonitoringScheduleArn
+monitoring_schedule_arn
 ;
 ```
 </TabItem>
@@ -454,7 +454,7 @@ region = '{{ region }}' --required
 AND MonitoringScheduleName = '{{ MonitoringScheduleName }}' --required
 AND MonitoringScheduleConfig = '{{ MonitoringScheduleConfig }}' --required
 RETURNING
-MonitoringScheduleArn;
+monitoring_schedule_arn;
 ```
 </TabItem>
 </Tabs>

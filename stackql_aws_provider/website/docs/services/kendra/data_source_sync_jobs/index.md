@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="History" /></td>
+    <td><CopyableCode code="history" /></td>
     <td><code>array</code></td>
     <td>A history of synchronization jobs for the data source connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, Amazon Kendra returns this token that you can use in the subsequent request to retrieve the next set of jobs.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets statistics about synchronizing a data source connector.
 
 ```sql
 SELECT
-History,
-NextToken
+history,
+next_token
 FROM aws.kendra.data_source_sync_jobs
 WHERE region = '{{ region }}' -- required
 ;

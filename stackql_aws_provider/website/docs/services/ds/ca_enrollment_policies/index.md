@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CaEnrollmentPolicyStatus" /></td>
+    <td><CopyableCode code="ca_enrollment_policy_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the CA enrollment policy. This indicates if automatic certificate enrollment is currently active, inactive, or in a transitional state. Valid values: IN_PROGRESS - The policy is being activated T SUCCESS - The policy is active and automatic certificate enrollment is operational FAILED - The policy activation or deactivation failed DISABLING - The policy is being deactivated DISABLED - The policy is inactive and automatic certificate enrollment is not available IMPAIRED - Network connectivity is impaired. (InProgress, Success, Failed, Disabling, Disabled, Impaired)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CaEnrollmentPolicyStatusReason" /></td>
+    <td><CopyableCode code="ca_enrollment_policy_status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information explaining the current status of the CA enrollment policy, particularly useful when the policy is in an error or transitional state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the directory associated with this CA enrollment policy. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the CA enrollment policy was last modified or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PcaConnectorArn" /></td>
+    <td><CopyableCode code="pca_connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Web Services Private Certificate Authority (PCA) connector that is configured for automatic certificate enrollment in this directory. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves detailed information about the certificate authority (CA) enrollment p
 
 ```sql
 SELECT
-CaEnrollmentPolicyStatus,
-CaEnrollmentPolicyStatusReason,
-DirectoryId,
-LastUpdatedDateTime,
-PcaConnectorArn
+ca_enrollment_policy_status,
+ca_enrollment_policy_status_reason,
+directory_id,
+last_updated_date_time,
+pca_connector_arn
 FROM aws.ds.ca_enrollment_policies
 WHERE region = '{{ region }}' -- required
 ;

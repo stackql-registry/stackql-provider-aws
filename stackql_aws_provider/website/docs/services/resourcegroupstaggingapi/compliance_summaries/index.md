@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string</code></td>
     <td>The timestamp that shows when this summary was generated in this Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NonCompliantResources" /></td>
+    <td><CopyableCode code="non_compliant_resources" /></td>
     <td><code>integer (int64)</code></td>
     <td>The count of noncompliant resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region that the summary applies to. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services resource type. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetId" /></td>
+    <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The account identifier or the root identifier of the organization. If you don't know the root ID, you can call the Organizations ListRoots API. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetIdType" /></td>
+    <td><CopyableCode code="target_id_type" /></td>
     <td><code>string</code></td>
     <td>Whether the target is an account, an OU, or the organization root. (ACCOUNT, OU, ROOT)</td>
 </tr>
@@ -144,12 +144,12 @@ Returns a table that shows counts of resources that are noncompliant with their 
 
 ```sql
 SELECT
-LastUpdated,
-NonCompliantResources,
-Region,
-ResourceType,
-TargetId,
-TargetIdType
+last_updated,
+non_compliant_resources,
+region,
+resource_type,
+target_id,
+target_id_type
 FROM aws.resourcegroupstaggingapi.compliance_summaries
 WHERE region = '{{ region }}' -- required
 ;

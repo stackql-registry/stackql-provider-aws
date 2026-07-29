@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>A list of capabilities that the scene uses to render.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentLocation" /></td>
+    <td><CopyableCode code="content_location" /></td>
     <td><code>string</code></td>
     <td>The relative path that specifies the location of the content definition file. (pattern: &lt;code&gt;&#91;sS&#93;3:​//&#91;A-Za-z0-9._/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the scene was created.</td>
 </tr>
@@ -81,27 +81,27 @@ The following fields are returned by `SELECT` queries:
     <td>The SceneResponse error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generatedSceneMetadata" /></td>
+    <td><CopyableCode code="generated_scene_metadata" /></td>
     <td><code>object</code></td>
     <td>The generated scene metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sceneId" /></td>
+    <td><CopyableCode code="scene_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the scene. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sceneMetadata" /></td>
+    <td><CopyableCode code="scene_metadata" /></td>
     <td><code>object</code></td>
     <td>The response metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the scene was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workspace that contains the scene. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sceneSummaries" /></td>
+    <td><CopyableCode code="scene_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain information about the scenes.</td>
 </tr>
@@ -235,15 +235,15 @@ Retrieves information about a scene.
 SELECT
 arn,
 capabilities,
-contentLocation,
-creationDateTime,
+content_location,
+creation_date_time,
 description,
 error,
-generatedSceneMetadata,
-sceneId,
-sceneMetadata,
-updateDateTime,
-workspaceId
+generated_scene_metadata,
+scene_id,
+scene_metadata,
+update_date_time,
+workspace_id
 FROM aws.iottwinmaker.scenes
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND scene_id = '{{ scene_id }}' -- required
@@ -257,8 +257,8 @@ Lists all scenes in a workspace.
 
 ```sql
 SELECT
-nextToken,
-sceneSummaries
+next_token,
+scene_summaries
 FROM aws.iottwinmaker.scenes
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -303,7 +303,7 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-creationDateTime
+creation_date_time
 ;
 ```
 </TabItem>
@@ -361,7 +361,7 @@ workspace_id = '{{ workspace_id }}' --required
 AND scene_id = '{{ scene_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-updateDateTime;
+update_date_time;
 ```
 </TabItem>
 </Tabs>

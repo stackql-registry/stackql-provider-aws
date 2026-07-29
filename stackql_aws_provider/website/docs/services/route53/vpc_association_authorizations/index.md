@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VPCId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>(Private hosted zones only) The ID of an Amazon VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCRegion" /></td>
+    <td><CopyableCode code="vpc_region" /></td>
     <td><code>string</code></td>
     <td>(Private hosted zones only) The region that an Amazon VPC was created in.</td>
 </tr>
@@ -153,8 +153,8 @@ Gets a list of the VPCs that were created by other accounts and that can be asso
 
 ```sql
 SELECT
-VPCId,
-VPCRegion
+vpc_id,
+vpc_region
 FROM aws.route53.vpc_association_authorizations
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -190,8 +190,8 @@ SELECT
 '{{ id }}',
 '{{ region }}'
 RETURNING
-HostedZoneId,
-VPC
+hosted_zone_id,
+vpc
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="groupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The group ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="groupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The group name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -146,8 +146,8 @@ List the thing groups to which the specified thing belongs. Requires permission 
 
 ```sql
 SELECT
-groupArn,
-groupName
+group_arn,
+group_name
 FROM aws.iot.thing_groups_for_things
 WHERE thing_name = '{{ thing_name }}' -- required
 AND region = '{{ region }}' -- required

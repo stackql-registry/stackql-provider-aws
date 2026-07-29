@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the component type. (pattern: &lt;code&gt;arn:((aws)|(aws-cn)|(aws-us-gov)):iottwinmaker:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:&#91;\/a-zA-Z0-9_\-\.:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentTypeId" /></td>
+    <td><CopyableCode code="component_type_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the component type. (pattern: &lt;code&gt;&#91;a-zA-Z_\.\-0-9:&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentTypeName" /></td>
+    <td><CopyableCode code="component_type_name" /></td>
     <td><code>string</code></td>
     <td>The component type name. (pattern: &lt;code&gt;.*&#91;^\u0000-\u001F\u007F&#93;*.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compositeComponentTypes" /></td>
+    <td><CopyableCode code="composite_component_types" /></td>
     <td><code>object</code></td>
     <td>This is an object that maps strings to compositeComponentTypes of the componentType. CompositeComponentType is referenced by componentTypeId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the component type was created.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the component type. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="extendsFrom" /></td>
+    <td><CopyableCode code="extends_from" /></td>
     <td><code>array</code></td>
     <td>The name of the parent component type that this component type extends.</td>
 </tr>
@@ -91,27 +91,27 @@ The following fields are returned by `SELECT` queries:
     <td>An object that maps strings to the functions in the component type. Each string in the mapping must be unique to this object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAbstract" /></td>
+    <td><CopyableCode code="is_abstract" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that specifies whether the component type is abstract.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSchemaInitialized" /></td>
+    <td><CopyableCode code="is_schema_initialized" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that specifies whether the component type has a schema initializer and that the schema initializer has run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isSingleton" /></td>
+    <td><CopyableCode code="is_singleton" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value that specifies whether an entity can have more than one component of this type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propertyDefinitions" /></td>
+    <td><CopyableCode code="property_definitions" /></td>
     <td><code>object</code></td>
     <td>An object that maps strings to the property definitions in the component type. Each string in the mapping must be unique to this object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propertyGroups" /></td>
+    <td><CopyableCode code="property_groups" /></td>
     <td><code>object</code></td>
     <td>The maximum number of results to return at one time. The default is 25. Valid Range: Minimum value of 1. Maximum value of 250.</td>
 </tr>
@@ -121,17 +121,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the component type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncSource" /></td>
+    <td><CopyableCode code="sync_source" /></td>
     <td><code>string</code></td>
     <td>The syncSource of the SyncJob, if this entity was created by a SyncJob. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDateTime" /></td>
+    <td><CopyableCode code="update_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the component was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workspace that contains the component type. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -150,22 +150,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="componentTypeSummaries" /></td>
+    <td><CopyableCode code="component_type_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain information about the component types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxResults" /></td>
+    <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
     <td>Specifies the maximum number of results to display.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the workspace. (pattern: &lt;code&gt;&#91;a-zA-Z_0-9&#93;&#91;a-zA-Z_\-0-9&#93;*&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -274,22 +274,22 @@ Retrieves information about a component type.
 ```sql
 SELECT
 arn,
-componentTypeId,
-componentTypeName,
-compositeComponentTypes,
-creationDateTime,
+component_type_id,
+component_type_name,
+composite_component_types,
+creation_date_time,
 description,
-extendsFrom,
+extends_from,
 functions,
-isAbstract,
-isSchemaInitialized,
-isSingleton,
-propertyDefinitions,
-propertyGroups,
+is_abstract,
+is_schema_initialized,
+is_singleton,
+property_definitions,
+property_groups,
 status,
-syncSource,
-updateDateTime,
-workspaceId
+sync_source,
+update_date_time,
+workspace_id
 FROM aws.iottwinmaker.component_types
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND component_type_id = '{{ component_type_id }}' -- required
@@ -303,10 +303,10 @@ Lists all component types in a workspace.
 
 ```sql
 SELECT
-componentTypeSummaries,
-maxResults,
-nextToken,
-workspaceId
+component_type_summaries,
+max_results,
+next_token,
+workspace_id
 FROM aws.iottwinmaker.component_types
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -359,7 +359,7 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-creationDateTime,
+creation_date_time,
 state
 ;
 ```
@@ -432,9 +432,9 @@ AND component_type_id = '{{ component_type_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 arn,
-componentTypeId,
+component_type_id,
 state,
-workspaceId;
+workspace_id;
 ```
 </TabItem>
 </Tabs>

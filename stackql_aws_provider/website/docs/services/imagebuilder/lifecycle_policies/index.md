@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the lifecycle policy resource. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws):lifecycle-policy/&#91;a-z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when Image Builder created the lifecycle policy resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateLastRun" /></td>
+    <td><CopyableCode code="date_last_run" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for the last time Image Builder ran the lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when Image Builder updated the lifecycle policy resource.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>Optional description for the lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the IAM role that Image Builder uses to run the lifecycle policy. This is a custom role that you create. (pattern: &lt;code&gt;^(?:arn:aws(?:-&#91;a-z&#93;+)*:iam::&#91;0-9&#93;&#123;12&#125;:role/)?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyDetails" /></td>
+    <td><CopyableCode code="policy_details" /></td>
     <td><code>array</code></td>
     <td>The configuration details for a lifecycle policy resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceSelection" /></td>
+    <td><CopyableCode code="resource_selection" /></td>
     <td><code>object</code></td>
     <td>Resource selection criteria for the lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resources the lifecycle policy targets. (AMI_IMAGE, CONTAINER_IMAGE)</td>
 </tr>
@@ -135,17 +135,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the lifecycle policy summary resource. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws):lifecycle-policy/&#91;a-z0-9-_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when Image Builder created the lifecycle policy resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateLastRun" /></td>
+    <td><CopyableCode code="date_last_run" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for the last time Image Builder ran the lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when Image Builder updated the lifecycle policy resource.</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
     <td>Optional description for the lifecycle policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the IAM role that Image Builder uses to run the lifecycle policy. (pattern: &lt;code&gt;^(?:arn:aws(?:-&#91;a-z&#93;+)*:iam::&#91;0-9&#93;&#123;12&#125;:role/)?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resources the lifecycle policy targets. (AMI_IMAGE, CONTAINER_IMAGE)</td>
 </tr>
@@ -275,14 +275,14 @@ Get details for the specified image lifecycle policy.
 SELECT
 name,
 arn,
-dateCreated,
-dateLastRun,
-dateUpdated,
+date_created,
+date_last_run,
+date_updated,
 description,
-executionRole,
-policyDetails,
-resourceSelection,
-resourceType,
+execution_role,
+policy_details,
+resource_selection,
+resource_type,
 status,
 tags
 FROM aws.imagebuilder.lifecycle_policies
@@ -299,12 +299,12 @@ Get a list of lifecycle policies in your Amazon Web Services account.
 SELECT
 name,
 arn,
-dateCreated,
-dateLastRun,
-dateUpdated,
+date_created,
+date_last_run,
+date_updated,
 description,
-executionRole,
-resourceType,
+execution_role,
+resource_type,
 status,
 tags
 FROM aws.imagebuilder.lifecycle_policies
@@ -353,8 +353,8 @@ SELECT
 '{{ clientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-clientToken,
-lifecyclePolicyArn
+client_token,
+lifecycle_policy_arn
 ;
 ```
 </TabItem>
@@ -453,7 +453,7 @@ AND policyDetails = '{{ policyDetails }}' --required
 AND resourceSelection = '{{ resourceSelection }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-lifecyclePolicyArn;
+lifecycle_policy_arn;
 ```
 </TabItem>
 </Tabs>

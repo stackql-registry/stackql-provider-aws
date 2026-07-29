@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactIds" /></td>
+    <td><CopyableCode code="contact_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the contacts assigned to the on-call rotation team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the on-call rotation. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-\s\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recurrence" /></td>
+    <td><CopyableCode code="recurrence" /></td>
     <td><code>object</code></td>
     <td>Specifies how long a rotation lasts before restarting at the beginning of the shift order.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationArn" /></td>
+    <td><CopyableCode code="rotation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the on-call rotation. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The specified start time for the on-call rotation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZoneId" /></td>
+    <td><CopyableCode code="time_zone_id" /></td>
     <td><code>string</code></td>
     <td>The time zone that the rotation’s activity is based on, in Internet Assigned Numbers Authority (IANA) format. (pattern: &lt;code&gt;^&#91;:a-zA-Z0-9_\-\s\.\\/&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContactIds" /></td>
+    <td><CopyableCode code="contact_ids" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation team.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the rotation. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-\s\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recurrence" /></td>
+    <td><CopyableCode code="recurrence" /></td>
     <td><code>object</code></td>
     <td>Information about when an on-call rotation is in effect and how long the rotation period lasts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RotationArn" /></td>
+    <td><CopyableCode code="rotation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the rotation. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the rotation becomes active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZoneId" /></td>
+    <td><CopyableCode code="time_zone_id" /></td>
     <td><code>string</code></td>
     <td>The time zone the rotation’s activity is based on, in Internet Assigned Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". (pattern: &lt;code&gt;^&#91;:a-zA-Z0-9_\-\s\.\\/&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -218,12 +218,12 @@ Retrieves information about an on-call rotation.
 
 ```sql
 SELECT
-ContactIds,
-Name,
-Recurrence,
-RotationArn,
-StartTime,
-TimeZoneId
+contact_ids,
+name,
+recurrence,
+rotation_arn,
+start_time,
+time_zone_id
 FROM aws.ssm_contacts.rotations
 WHERE region = '{{ region }}' -- required
 ;
@@ -235,12 +235,12 @@ Retrieves a list of on-call rotations.
 
 ```sql
 SELECT
-ContactIds,
-Name,
-Recurrence,
-RotationArn,
-StartTime,
-TimeZoneId
+contact_ids,
+name,
+recurrence,
+rotation_arn,
+start_time,
+time_zone_id
 FROM aws.ssm_contacts.rotations
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,7 +283,7 @@ SELECT
 '{{ IdempotencyToken }}',
 '{{ region }}'
 RETURNING
-RotationArn
+rotation_arn
 ;
 ```
 </TabItem>

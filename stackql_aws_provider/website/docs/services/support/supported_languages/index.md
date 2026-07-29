@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="supportedLanguages" /></td>
+    <td><CopyableCode code="supported_languages" /></td>
     <td><code>array</code></td>
     <td>A JSON-formatted array that contains the available ISO 639-1 language codes.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns a list of supported languages for a specified categoryCode, issueType an
 
 ```sql
 SELECT
-supportedLanguages
+supported_languages
 FROM aws.support.supported_languages
 WHERE region = '{{ region }}' -- required
 ;

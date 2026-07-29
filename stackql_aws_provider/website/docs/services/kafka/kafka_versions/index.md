@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td> (ACTIVE, DEPRECATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
@@ -146,8 +146,8 @@ Returns a list of Apache Kafka versions.
 
 ```sql
 SELECT
-Status,
-Version
+status,
+version
 FROM aws.kafka.kafka_versions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -182,8 +182,8 @@ AND region = '{{ region }}' --required
 AND CurrentVersion = '{{ CurrentVersion }}' --required
 AND TargetKafkaVersion = '{{ TargetKafkaVersion }}' --required
 RETURNING
-ClusterArn,
-ClusterOperationArn;
+cluster_arn,
+cluster_operation_arn;
 ```
 </TabItem>
 </Tabs>

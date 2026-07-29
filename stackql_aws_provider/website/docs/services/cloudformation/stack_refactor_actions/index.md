@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The action that CloudFormation takes on the stack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description to help you identify the refactor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Detection" /></td>
+    <td><CopyableCode code="detection" /></td>
     <td><code>string</code></td>
     <td>The detection type is one of the following: Auto: CloudFormation figured out the mapping on its own. Manual: The customer provided the mapping in the ResourceMapping parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetectionReason" /></td>
+    <td><CopyableCode code="detection_reason" /></td>
     <td><code>string</code></td>
     <td>The description of the detection type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Entity" /></td>
+    <td><CopyableCode code="entity" /></td>
     <td><code>string</code></td>
     <td>The type that will be evaluated in the StackRefactorAction. The following are potential Entity types: Stack Resource</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhysicalResourceId" /></td>
+    <td><CopyableCode code="physical_resource_id" /></td>
     <td><code>string</code></td>
     <td>The name or unique identifier associated with the physical instance of the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceIdentifier" /></td>
+    <td><CopyableCode code="resource_identifier" /></td>
     <td><code>string</code></td>
     <td>A key-value pair that identifies the target resource. The key is an identifier property (for example, BucketName for AWS::S3::Bucket resources) and the value is the actual property value (for example, MyS3Bucket).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceMapping" /></td>
+    <td><CopyableCode code="resource_mapping" /></td>
     <td><code>string</code></td>
     <td>The mapping for the stack resource Source and stack resource Destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagResources" /></td>
+    <td><CopyableCode code="tag_resources" /></td>
     <td><code>string</code></td>
     <td>Assigns one or more tags to specified resources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UntagResources" /></td>
+    <td><CopyableCode code="untag_resources" /></td>
     <td><code>string</code></td>
     <td>Removes one or more tags to specified resources.</td>
 </tr>
@@ -179,16 +179,16 @@ Lists the stack refactor actions that will be taken after calling the ExecuteSta
 
 ```sql
 SELECT
-Action,
-Description,
-Detection,
-DetectionReason,
-Entity,
-PhysicalResourceId,
-ResourceIdentifier,
-ResourceMapping,
-TagResources,
-UntagResources
+action,
+description,
+detection,
+detection_reason,
+entity,
+physical_resource_id,
+resource_identifier,
+resource_mapping,
+tag_resources,
+untag_resources
 FROM aws.cloudformation.stack_refactor_actions
 WHERE StackRefactorId = '{{ StackRefactorId }}' -- required
 AND region = '{{ region }}' -- required

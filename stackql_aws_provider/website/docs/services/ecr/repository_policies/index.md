@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyText" /></td>
+    <td><CopyableCode code="policy_text" /></td>
     <td><code>string</code></td>
     <td>The JSON repository policy text associated with the repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registryId" /></td>
+    <td><CopyableCode code="registry_id" /></td>
     <td><code>string</code></td>
     <td>The registry ID associated with the request. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryName" /></td>
+    <td><CopyableCode code="repository_name" /></td>
     <td><code>string</code></td>
     <td>The repository name associated with the request. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*&lt;/code&gt;)</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves the repository policy for the specified repository.
 
 ```sql
 SELECT
-policyText,
-registryId,
-repositoryName
+policy_text,
+registry_id,
+repository_name
 FROM aws.ecr.repository_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -178,9 +178,9 @@ region = '{{ region }}' --required
 AND repositoryName = '{{ repositoryName }}' --required
 AND policyText = '{{ policyText }}' --required
 RETURNING
-policyText,
-registryId,
-repositoryName;
+policy_text,
+registry_id,
+repository_name;
 ```
 </TabItem>
 </Tabs>

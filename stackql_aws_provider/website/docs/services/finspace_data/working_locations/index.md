@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="s3Bucket" /></td>
+    <td><CopyableCode code="s_3_bucket" /></td>
     <td><code>string</code></td>
     <td>Returns the Amazon S3 bucket name for the working location. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Path" /></td>
+    <td><CopyableCode code="s_3_path" /></td>
     <td><code>string</code></td>
     <td>Returns the Amazon S3 Path for the working location. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Uri" /></td>
+    <td><CopyableCode code="s_3_uri" /></td>
     <td><code>string</code></td>
     <td>Returns the Amazon S3 URI for the working location. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ A temporary Amazon S3 location, where you can copy your files from a source loca
 
 ```sql
 SELECT
-s3Bucket,
-s3Path,
-s3Uri
+s_3_bucket,
+s_3_path,
+s_3_uri
 FROM aws.finspace_data.working_locations
 WHERE region = '{{ region }}' -- required
 ;

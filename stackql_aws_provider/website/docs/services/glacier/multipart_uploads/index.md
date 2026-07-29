@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArchiveDescription" /></td>
+    <td><CopyableCode code="archive_description" /></td>
     <td><code>string</code></td>
     <td>The description of the archive that was specified in the Initiate Multipart Upload request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The UTC time at which the multipart upload was initiated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultipartUploadId" /></td>
+    <td><CopyableCode code="multipart_upload_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a multipart upload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartSizeInBytes" /></td>
+    <td><CopyableCode code="part_size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The part size, in bytes, specified in the Initiate Multipart Upload request. This is the size of all the parts in the upload except the last part, which may be smaller than this size.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultARN" /></td>
+    <td><CopyableCode code="vault_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vault that contains the archive.</td>
 </tr>
@@ -159,11 +159,11 @@ This operation lists in-progress multipart uploads for the specified vault. An i
 
 ```sql
 SELECT
-ArchiveDescription,
-CreationDate,
-MultipartUploadId,
-PartSizeInBytes,
-VaultARN
+archive_description,
+creation_date,
+multipart_upload_id,
+part_size_in_bytes,
+vault_arn
 FROM aws.glacier.multipart_uploads
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required

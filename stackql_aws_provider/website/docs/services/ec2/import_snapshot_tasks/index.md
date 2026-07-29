@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the import snapshot task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportTaskId" /></td>
+    <td><CopyableCode code="import_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the import snapshot task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotTaskDetail" /></td>
+    <td><CopyableCode code="snapshot_task_detail" /></td>
     <td><code>string</code></td>
     <td>Describes an import snapshot task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the import snapshot task.</td>
 </tr>
@@ -159,10 +159,10 @@ Describes your import snapshot tasks.
 
 ```sql
 SELECT
-Description,
-ImportTaskId,
-SnapshotTaskDetail,
-Tags
+description,
+import_task_id,
+snapshot_task_detail,
+tags
 FROM aws.ec2.import_snapshot_tasks
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

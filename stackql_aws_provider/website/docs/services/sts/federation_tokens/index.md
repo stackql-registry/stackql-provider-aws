@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>string</code></td>
     <td>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token. The size of the security token that STS API operations return is not fixed. We strongly recommend that you make no assumptions about the maximum size.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FederatedUser" /></td>
+    <td><CopyableCode code="federated_user" /></td>
     <td><code>string</code></td>
     <td>Identifiers for the federated user associated with the credentials (such as arn:aws:sts::123456789012:federated-user/Bob or 123456789012:Bob). You can use the federated user's ARN in your resource-based policies, such as an Amazon S3 bucket policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackedPolicySize" /></td>
+    <td><CopyableCode code="packed_policy_size" /></td>
     <td><code>integer</code></td>
     <td>A percentage value that indicates the packed size of the session policies and session tags combined passed in the request. The request fails if the packed size is greater than 100 percent, which means the policies and tags exceeded the allowed space.</td>
 </tr>
@@ -154,9 +154,9 @@ Returns a set of temporary security credentials (consisting of an access key ID,
 
 ```sql
 SELECT
-Credentials,
-FederatedUser,
-PackedPolicySize
+credentials,
+federated_user,
+packed_policy_size
 FROM aws.sts.federation_tokens
 WHERE Name = '{{ Name }}' -- required
 AND region = '{{ region }}' -- required

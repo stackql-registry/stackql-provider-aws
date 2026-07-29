@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionName" /></td>
+    <td><CopyableCode code="action_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name that uniquely identifies the mitigation action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>The error code of a mitigation action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionEndDate" /></td>
+    <td><CopyableCode code="execution_end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date a mitigation action ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionStartDate" /></td>
+    <td><CopyableCode code="execution_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date a mitigation action was started.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a mitigation action. (IN_PROGRESS, SUCCESSFUL, FAILED, SKIPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the task. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingName" /></td>
+    <td><CopyableCode code="thing_name" /></td>
     <td><code>string</code></td>
     <td>The name of the thing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="violationId" /></td>
+    <td><CopyableCode code="violation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the violation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -194,15 +194,15 @@ Lists mitigation actions executions for a Device Defender ML Detect Security Pro
 
 ```sql
 SELECT
-actionName,
-errorCode,
-executionEndDate,
-executionStartDate,
+action_name,
+error_code,
+execution_end_date,
+execution_start_date,
 message,
 status,
-taskId,
-thingName,
-violationId
+task_id,
+thing_name,
+violation_id
 FROM aws.iot.detect_mitigation_actions_executions
 WHERE region = '{{ region }}' -- required
 AND taskId = '{{ taskId }}'

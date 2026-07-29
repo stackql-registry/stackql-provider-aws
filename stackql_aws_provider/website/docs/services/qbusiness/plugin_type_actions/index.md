@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionIdentifier" /></td>
+    <td><CopyableCode code="action_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of an Amazon Q Business plugin action.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of an Amazon Q Business plugin action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name assigned by Amazon Q Business to a plugin action. You can't modify this value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instructionExample" /></td>
+    <td><CopyableCode code="instruction_example" /></td>
     <td><code>string</code></td>
     <td>An Amazon Q Business suggested prompt and end user can use to invoke a plugin action. This value can be modified and sent as input to initiate an action. For example: Create a Jira task Create a chat assistant task to find the root cause of a specific incident</td>
 </tr>
@@ -149,10 +149,10 @@ Lists configured Amazon Q Business actions for any plugin type—both built-in a
 
 ```sql
 SELECT
-actionIdentifier,
+action_identifier,
 description,
-displayName,
-instructionExample
+display_name,
+instruction_example
 FROM aws.qbusiness.plugin_type_actions
 WHERE plugin_type = '{{ plugin_type }}' -- required
 AND region = '{{ region }}' -- required

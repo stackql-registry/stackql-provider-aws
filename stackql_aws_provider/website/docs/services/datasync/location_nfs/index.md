@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the NFS location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the NFS location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URI of the NFS location. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MountOptions" /></td>
+    <td><CopyableCode code="mount_options" /></td>
     <td><code>object</code></td>
     <td>Specifies how DataSync can access a location using the NFS protocol.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnPremConfig" /></td>
+    <td><CopyableCode code="on_prem_config" /></td>
     <td><code>object</code></td>
     <td>The DataSync agents that can connect to your Network File System (NFS) file server.</td>
 </tr>
@@ -153,11 +153,11 @@ Provides details about how an DataSync transfer location for a Network File Syst
 
 ```sql
 SELECT
-CreationTime,
-LocationArn,
-LocationUri,
-MountOptions,
-OnPremConfig
+creation_time,
+location_arn,
+location_uri,
+mount_options,
+on_prem_config
 FROM aws.datasync.location_nfs
 WHERE region = '{{ region }}' -- required
 ;
@@ -196,7 +196,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

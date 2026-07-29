@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HtmlPart" /></td>
+    <td><CopyableCode code="html_part" /></td>
     <td><code>string</code></td>
     <td>The HTML body of the email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubjectPart" /></td>
+    <td><CopyableCode code="subject_part" /></td>
     <td><code>string</code></td>
     <td>The subject line of the email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the template. You use this name when you send email using the SendTemplatedEmail or SendBulkTemplatedEmail operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TextPart" /></td>
+    <td><CopyableCode code="text_part" /></td>
     <td><code>string</code></td>
     <td>The email body that is visible to recipients whose email clients do not display HTML content.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string</code></td>
     <td>The time and date the template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the template.</td>
 </tr>
@@ -237,10 +237,10 @@ Displays the template object (which includes the Subject line, HTML part and tex
 
 ```sql
 SELECT
-HtmlPart,
-SubjectPart,
-TemplateName,
-TextPart
+html_part,
+subject_part,
+template_name,
+text_part
 FROM aws.ses.templates
 WHERE TemplateName = '{{ TemplateName }}' -- required
 AND region = '{{ region }}' -- required
@@ -253,8 +253,8 @@ Lists the email templates present in your Amazon SES account in the current Amaz
 
 ```sql
 SELECT
-CreatedTimestamp,
-Name
+created_timestamp,
+name
 FROM aws.ses.templates
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

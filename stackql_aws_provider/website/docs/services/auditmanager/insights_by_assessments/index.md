@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assessmentControlsCountByNoncompliantEvidence" /></td>
+    <td><CopyableCode code="assessment_controls_count_by_noncompliant_evidence" /></td>
     <td><code>integer</code></td>
     <td>The number of assessment controls that collected non-compliant evidence on the lastUpdated date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compliantEvidenceCount" /></td>
+    <td><CopyableCode code="compliant_evidence_count" /></td>
     <td><code>integer</code></td>
     <td>The number of compliance check evidence that Audit Manager classified as compliant. This includes evidence that was collected from Security Hub with a Pass ruling, or collected from Config with a Compliant ruling.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inconclusiveEvidenceCount" /></td>
+    <td><CopyableCode code="inconclusive_evidence_count" /></td>
     <td><code>integer</code></td>
     <td>The amount of evidence without a compliance check ruling. Evidence is inconclusive if the associated control uses Security Hub or Config as a data source and you didn't enable those services. This is also the case if a control uses a data source that doesn’t support compliance checks (for example, manual evidence, API calls, or CloudTrail). If evidence has a compliance check status of not applicable, it's classified as inconclusive in InsightsByAssessment data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdated" /></td>
+    <td><CopyableCode code="last_updated" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the assessment insights were last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="noncompliantEvidenceCount" /></td>
+    <td><CopyableCode code="noncompliant_evidence_count" /></td>
     <td><code>integer</code></td>
     <td>The number of compliance check evidence that Audit Manager classified as non-compliant. This includes evidence that was collected from Security Hub with a Fail ruling, or collected from Config with a Non-compliant ruling.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalAssessmentControlsCount" /></td>
+    <td><CopyableCode code="total_assessment_controls_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of controls in the assessment.</td>
 </tr>
@@ -149,12 +149,12 @@ Gets the latest analytics data for a specific active assessment.
 
 ```sql
 SELECT
-assessmentControlsCountByNoncompliantEvidence,
-compliantEvidenceCount,
-inconclusiveEvidenceCount,
-lastUpdated,
-noncompliantEvidenceCount,
-totalAssessmentControlsCount
+assessment_controls_count_by_noncompliant_evidence,
+compliant_evidence_count,
+inconclusive_evidence_count,
+last_updated,
+noncompliant_evidence_count,
+total_assessment_controls_count
 FROM aws.auditmanager.insights_by_assessments
 WHERE assessment_id = '{{ assessment_id }}' -- required
 AND region = '{{ region }}' -- required

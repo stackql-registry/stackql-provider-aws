@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="knownDependencyCount" /></td>
+    <td><CopyableCode code="known_dependency_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>Count of distinct servers that are one hop away from the given server.</td>
 </tr>
@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>List of distinct servers that are one hop away from the given server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token to retrieve the next set of results. For example, if you specified 100 IDs for ListServerNeighborsRequest$neighborConfigurationIds but set ListServerNeighborsRequest$maxResults to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves a list of servers that are one network hop away from a specified serve
 
 ```sql
 SELECT
-knownDependencyCount,
+known_dependency_count,
 neighbors,
-nextToken
+next_token
 FROM aws.discovery.server_neighbors
 WHERE region = '{{ region }}' -- required
 ;

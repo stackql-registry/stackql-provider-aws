@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaseLensVersion" /></td>
+    <td><CopyableCode code="base_lens_version" /></td>
     <td><code>string</code></td>
     <td>The base version of the lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestLensVersion" /></td>
+    <td><CopyableCode code="latest_lens_version" /></td>
     <td><code>string</code></td>
     <td>The latest version of the lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LensAlias" /></td>
+    <td><CopyableCode code="lens_alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the lens. For Amazon Web Services official lenses, this is either the lens alias, such as serverless, or the lens ARN, such as arn:aws:wellarchitected:us-east-1::lens/serverless. Note that some operations (such as ExportLens and CreateLensShare) are not permitted on Amazon Web Services official lenses. For custom lenses, this is the lens ARN, such as arn:aws:wellarchitected:us-west-2:123456789012:lens/0123456789abcdef01234567890abcdef. Each lens is identified by its LensSummary$LensAlias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LensArn" /></td>
+    <td><CopyableCode code="lens_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetLensVersion" /></td>
+    <td><CopyableCode code="target_lens_version" /></td>
     <td><code>string</code></td>
     <td>The target lens version for the lens.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDifferences" /></td>
+    <td><CopyableCode code="version_differences" /></td>
     <td><code>object</code></td>
     <td>The differences between the base and latest versions of the lens.</td>
 </tr>
@@ -159,12 +159,12 @@ Get lens version differences.
 
 ```sql
 SELECT
-BaseLensVersion,
-LatestLensVersion,
-LensAlias,
-LensArn,
-TargetLensVersion,
-VersionDifferences
+base_lens_version,
+latest_lens_version,
+lens_alias,
+lens_arn,
+target_lens_version,
+version_differences
 FROM aws.wellarchitected.lens_version_differences
 WHERE lens_alias = '{{ lens_alias }}' -- required
 AND region = '{{ region }}' -- required

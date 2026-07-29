@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the subscription. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the subscription exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retainPermissions" /></td>
+    <td><CopyableCode code="retain_permissions" /></td>
     <td><code>boolean</code></td>
     <td>The retain permissions of the subscription.</td>
 </tr>
@@ -81,27 +81,27 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the subscription. (APPROVED, REVOKED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribedListing" /></td>
+    <td><CopyableCode code="subscribed_listing" /></td>
     <td><code>object</code></td>
     <td>The details of the published asset for which the subscription grant is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribedPrincipal" /></td>
+    <td><CopyableCode code="subscribed_principal" /></td>
     <td><code>object</code></td>
     <td>The principal that has the subscription grant for the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionRequestId" /></td>
+    <td><CopyableCode code="subscription_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subscription request. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the subscription.</td>
 </tr>
@@ -125,22 +125,22 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the subscription. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon DataZone domain in which a subscription exists. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="retainPermissions" /></td>
+    <td><CopyableCode code="retain_permissions" /></td>
     <td><code>boolean</code></td>
     <td>The retain permissions included in the subscription.</td>
 </tr>
@@ -150,27 +150,27 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the subscription. (APPROVED, REVOKED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribedListing" /></td>
+    <td><CopyableCode code="subscribed_listing" /></td>
     <td><code>object</code></td>
     <td>The details of the published asset for which the subscription grant is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscribedPrincipal" /></td>
+    <td><CopyableCode code="subscribed_principal" /></td>
     <td><code>object</code></td>
     <td>The principal that has the subscription grant for the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="subscriptionRequestId" /></td>
+    <td><CopyableCode code="subscription_request_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the subscription request for the subscription. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the subscription was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the subscription.</td>
 </tr>
@@ -339,16 +339,16 @@ Gets a subscription in Amazon DataZone.
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-domainId,
-retainPermissions,
+created_at,
+created_by,
+domain_id,
+retain_permissions,
 status,
-subscribedListing,
-subscribedPrincipal,
-subscriptionRequestId,
-updatedAt,
-updatedBy
+subscribed_listing,
+subscribed_principal,
+subscription_request_id,
+updated_at,
+updated_by
 FROM aws.datazone.subscriptions
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -363,16 +363,16 @@ Lists subscriptions in Amazon DataZone.
 ```sql
 SELECT
 id,
-createdAt,
-createdBy,
-domainId,
-retainPermissions,
+created_at,
+created_by,
+domain_id,
+retain_permissions,
 status,
-subscribedListing,
-subscribedPrincipal,
-subscriptionRequestId,
-updatedAt,
-updatedBy
+subscribed_listing,
+subscribed_principal,
+subscription_request_id,
+updated_at,
+updated_by
 FROM aws.datazone.subscriptions
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -416,16 +416,16 @@ AND identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 id,
-createdAt,
-createdBy,
-domainId,
-retainPermissions,
+created_at,
+created_by,
+domain_id,
+retain_permissions,
 status,
-subscribedListing,
-subscribedPrincipal,
-subscriptionRequestId,
-updatedAt,
-updatedBy;
+subscribed_listing,
+subscribed_principal,
+subscription_request_id,
+updated_at,
+updated_by;
 ```
 </TabItem>
 </Tabs>

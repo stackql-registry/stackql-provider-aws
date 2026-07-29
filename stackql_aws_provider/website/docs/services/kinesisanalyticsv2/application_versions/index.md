@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationARN" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the application. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationConfigurationDescription" /></td>
+    <td><CopyableCode code="application_configuration_description" /></td>
     <td><code>object</code></td>
     <td>Describes details about the application code and starting parameters for a Managed Service for Apache Flink application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationDescription" /></td>
+    <td><CopyableCode code="application_description" /></td>
     <td><code>string</code></td>
     <td>The description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationMaintenanceConfigurationDescription" /></td>
+    <td><CopyableCode code="application_maintenance_configuration_description" /></td>
     <td><code>object</code></td>
     <td>The details of the maintenance configuration for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationMode" /></td>
+    <td><CopyableCode code="application_mode" /></td>
     <td><code>string</code></td>
     <td>To create a Managed Service for Apache Flink Studio notebook, you must set the mode to INTERACTIVE. However, for a Managed Service for Apache Flink application, the mode is optional. (STREAMING, INTERACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationStatus" /></td>
+    <td><CopyableCode code="application_status" /></td>
     <td><code>string</code></td>
     <td>The status of the application. (DELETING, STARTING, STOPPING, READY, RUNNING, UPDATING, AUTOSCALING, FORCE_STOPPING, ROLLING_BACK, MAINTENANCE, ROLLED_BACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionCreateTimestamp" /></td>
+    <td><CopyableCode code="application_version_create_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp that indicates when the application version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionId" /></td>
+    <td><CopyableCode code="application_version_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>Provides the current application version. Managed Service for Apache Flink updates the ApplicationVersionId each time you update the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionRolledBackFrom" /></td>
+    <td><CopyableCode code="application_version_rolled_back_from" /></td>
     <td><code>integer (int64)</code></td>
     <td>If you reverted the application using RollbackApplication, the application version when RollbackApplication was called.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionRolledBackTo" /></td>
+    <td><CopyableCode code="application_version_rolled_back_to" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version to which you want to roll back the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionUpdatedFrom" /></td>
+    <td><CopyableCode code="application_version_updated_from" /></td>
     <td><code>integer (int64)</code></td>
     <td>The previous application version before the latest application update. RollbackApplication reverts the application to this version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchLoggingOptionDescriptions" /></td>
+    <td><CopyableCode code="cloud_watch_logging_option_descriptions" /></td>
     <td><code>array</code></td>
     <td>Describes the application Amazon CloudWatch logging options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConditionalToken" /></td>
+    <td><CopyableCode code="conditional_token" /></td>
     <td><code>string</code></td>
     <td>A value you use to implement strong concurrency for application updates. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_+/=&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTimestamp" /></td>
+    <td><CopyableCode code="create_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The current timestamp when the application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The current timestamp when the application was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeEnvironment" /></td>
+    <td><CopyableCode code="runtime_environment" /></td>
     <td><code>string</code></td>
     <td>The runtime environment for the application. (SQL-1_0, FLINK-1_6, FLINK-1_8, ZEPPELIN-FLINK-1_0, FLINK-1_11, FLINK-1_13, ZEPPELIN-FLINK-2_0, FLINK-1_15, ZEPPELIN-FLINK-3_0, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceExecutionRole" /></td>
+    <td><CopyableCode code="service_execution_role" /></td>
     <td><code>string</code></td>
     <td>Specifies the IAM role that the application uses to access external resources. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationStatus" /></td>
+    <td><CopyableCode code="application_status" /></td>
     <td><code>string</code></td>
     <td>The status of the application. (DELETING, STARTING, STOPPING, READY, RUNNING, UPDATING, AUTOSCALING, FORCE_STOPPING, ROLLING_BACK, MAINTENANCE, ROLLED_BACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationVersionId" /></td>
+    <td><CopyableCode code="application_version_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>The ID of the application version. Managed Service for Apache Flink updates the ApplicationVersionId each time you update the application.</td>
 </tr>
@@ -237,24 +237,24 @@ Provides a detailed description of a specified version of the application. To se
 
 ```sql
 SELECT
-ApplicationARN,
-ApplicationConfigurationDescription,
-ApplicationDescription,
-ApplicationMaintenanceConfigurationDescription,
-ApplicationMode,
-ApplicationName,
-ApplicationStatus,
-ApplicationVersionCreateTimestamp,
-ApplicationVersionId,
-ApplicationVersionRolledBackFrom,
-ApplicationVersionRolledBackTo,
-ApplicationVersionUpdatedFrom,
-CloudWatchLoggingOptionDescriptions,
-ConditionalToken,
-CreateTimestamp,
-LastUpdateTimestamp,
-RuntimeEnvironment,
-ServiceExecutionRole
+application_arn,
+application_configuration_description,
+application_description,
+application_maintenance_configuration_description,
+application_mode,
+application_name,
+application_status,
+application_version_create_timestamp,
+application_version_id,
+application_version_rolled_back_from,
+application_version_rolled_back_to,
+application_version_updated_from,
+cloud_watch_logging_option_descriptions,
+conditional_token,
+create_timestamp,
+last_update_timestamp,
+runtime_environment,
+service_execution_role
 FROM aws.kinesisanalyticsv2.application_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,8 +266,8 @@ Lists all the versions for the specified application, including versions that we
 
 ```sql
 SELECT
-ApplicationStatus,
-ApplicationVersionId
+application_status,
+application_version_id
 FROM aws.kinesisanalyticsv2.application_versions
 WHERE region = '{{ region }}' -- required
 ;

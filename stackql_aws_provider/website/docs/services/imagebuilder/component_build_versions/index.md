@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the component. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changeDescription" /></td>
+    <td><CopyableCode code="change_description" /></td>
     <td><code>string</code></td>
     <td>The change description for the current version of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The original creation date of the component.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the current status of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportedOsVersions" /></td>
+    <td><CopyableCode code="supported_os_versions" /></td>
     <td><code>array</code></td>
     <td>The operating system (OS) version that the component supports. If the OS information is available, Image Builder performs a prefix match against the base image OS version during image recipe creation.</td>
 </tr>
@@ -186,15 +186,15 @@ Returns the list of component build versions for the specified component version
 SELECT
 name,
 arn,
-changeDescription,
-dateCreated,
+change_description,
+date_created,
 description,
 obfuscate,
 owner,
 platform,
 publisher,
 state,
-supportedOsVersions,
+supported_os_versions,
 tags,
 type_,
 version

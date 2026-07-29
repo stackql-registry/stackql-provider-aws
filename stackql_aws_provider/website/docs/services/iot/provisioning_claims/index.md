@@ -108,10 +108,10 @@ SELECT
 '{{ template_name }}',
 '{{ region }}'
 RETURNING
-certificateId,
-certificatePem,
+certificate_id,
+certificate_pem,
 expiration,
-keyPair
+key_pair
 ;
 ```
 </TabItem>

@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp that indicates when the stream was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataRetentionInHours" /></td>
+    <td><CopyableCode code="data_retention_in_hours" /></td>
     <td><code>integer</code></td>
     <td>How long the stream retains data, in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The name of the device that is associated with the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key that Kinesis Video Streams uses to encrypt data on the stream. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaType" /></td>
+    <td><CopyableCode code="media_type" /></td>
     <td><code>string</code></td>
     <td>The MediaType of the stream. (pattern: &lt;code&gt;&#91;\w\-\.\+&#93;+/&#91;\w\-\.\+&#93;+(,&#91;\w\-\.\+&#93;+/&#91;\w\-\.\+&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the stream. (CREATING, ACTIVE, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamARN" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the stream. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamName" /></td>
+    <td><CopyableCode code="stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp that indicates when the stream was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataRetentionInHours" /></td>
+    <td><CopyableCode code="data_retention_in_hours" /></td>
     <td><code>integer</code></td>
     <td>How long the stream retains data, in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceName" /></td>
+    <td><CopyableCode code="device_name" /></td>
     <td><code>string</code></td>
     <td>The name of the device that is associated with the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Key Management Service (KMS) key that Kinesis Video Streams uses to encrypt data on the stream. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaType" /></td>
+    <td><CopyableCode code="media_type" /></td>
     <td><code>string</code></td>
     <td>The MediaType of the stream. (pattern: &lt;code&gt;&#91;\w\-\.\+&#93;+/&#91;\w\-\.\+&#93;+(,&#91;\w\-\.\+&#93;+/&#91;\w\-\.\+&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the stream. (CREATING, ACTIVE, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamARN" /></td>
+    <td><CopyableCode code="stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the stream. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StreamName" /></td>
+    <td><CopyableCode code="stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -248,15 +248,15 @@ Returns the most current information about the specified stream. You must specif
 
 ```sql
 SELECT
-CreationTime,
-DataRetentionInHours,
-DeviceName,
-KmsKeyId,
-MediaType,
-Status,
-StreamARN,
-StreamName,
-Version
+creation_time,
+data_retention_in_hours,
+device_name,
+kms_key_id,
+media_type,
+status,
+stream_arn,
+stream_name,
+version
 FROM aws.kinesisvideo.streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -268,15 +268,15 @@ Returns an array of StreamInfo objects. Each object describes a stream. To retri
 
 ```sql
 SELECT
-CreationTime,
-DataRetentionInHours,
-DeviceName,
-KmsKeyId,
-MediaType,
-Status,
-StreamARN,
-StreamName,
-Version
+creation_time,
+data_retention_in_hours,
+device_name,
+kms_key_id,
+media_type,
+status,
+stream_arn,
+stream_name,
+version
 FROM aws.kinesisvideo.streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -319,7 +319,7 @@ SELECT
 '{{ StreamStorageConfiguration }}',
 '{{ region }}'
 RETURNING
-StreamARN
+stream_arn
 ;
 ```
 </TabItem>

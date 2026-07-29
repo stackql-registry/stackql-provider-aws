@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp indicating when SageMaker created the FeatureGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A free form description of the feature group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTimeFeatureName" /></td>
+    <td><CopyableCode code="event_time_feature_name" /></td>
     <td><code>string</code></td>
     <td>The name of the feature that stores the EventTime of a Record in a FeatureGroup. An EventTime is a point in time when a new event occurs that corresponds to the creation or update of a Record in a FeatureGroup. All Records in the FeatureGroup have a corresponding EventTime. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-_&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the FeatureGroup failed to be replicated in the OfflineStore. This is failure can occur because: The FeatureGroup could not be created in the OfflineStore. The FeatureGroup could not be deleted from the OfflineStore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureDefinitions" /></td>
+    <td><CopyableCode code="feature_definitions" /></td>
     <td><code>array</code></td>
     <td>A list of the Features in the FeatureGroup. Each feature is defined by a FeatureName and FeatureType.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupArn" /></td>
+    <td><CopyableCode code="feature_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the FeatureGroup. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:feature-group/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupName" /></td>
+    <td><CopyableCode code="feature_group_name" /></td>
     <td><code>string</code></td>
     <td>he name of the FeatureGroup. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;_-&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupStatus" /></td>
+    <td><CopyableCode code="feature_group_status" /></td>
     <td><code>string</code></td>
     <td>The status of the feature group. (Creating, Created, CreateFailed, Deleting, DeleteFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp indicating when the feature group was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateStatus" /></td>
+    <td><CopyableCode code="last_update_status" /></td>
     <td><code>object</code></td>
     <td>A value indicating whether the update made to the feature group was successful.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to resume pagination of the list of Features (FeatureDefinitions). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfflineStoreConfig" /></td>
+    <td><CopyableCode code="offline_store_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the offline store. It includes the following configurations: Amazon S3 location of the offline store. Configuration of the Glue data catalog. Table format of the offline store. Option to disable the automatic creation of a Glue table for the offline store. Encryption configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfflineStoreStatus" /></td>
+    <td><CopyableCode code="offline_store_status" /></td>
     <td><code>object</code></td>
     <td>The status of the OfflineStore. Notifies you if replicating data into the OfflineStore has failed. Returns either: Active or Blocked</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnlineStoreConfig" /></td>
+    <td><CopyableCode code="online_store_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for the OnlineStore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnlineStoreTotalSizeBytes" /></td>
+    <td><CopyableCode code="online_store_total_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the OnlineStore in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecordIdentifierFeatureName" /></td>
+    <td><CopyableCode code="record_identifier_feature_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Feature used for RecordIdentifier, whose value uniquely identifies a record stored in the feature store. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-_&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the OfflineStore if an OfflineStoreConfig is provided. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThroughputConfig" /></td>
+    <td><CopyableCode code="throughput_config" /></td>
     <td><code>object</code></td>
     <td>Active throughput configuration of the feature group. There are two modes: ON_DEMAND and PROVISIONED. With on-demand mode, you are charged for data reads and writes that your application performs on your feature group. You do not need to specify read and write throughput because Feature Store accommodates your workloads as they ramp up and down. You can switch a feature group to on-demand only once in a 24 hour period. With provisioned throughput mode, you specify the read and write capacity per second that you expect your application to require, and you are billed based on those limits. Exceeding provisioned throughput will result in your requests being throttled. Note: PROVISIONED throughput mode is supported only for feature groups that are offline-only, or use the Standard tier online store.</td>
 </tr>
@@ -155,27 +155,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp indicating the time of creation time of the FeatureGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupArn" /></td>
+    <td><CopyableCode code="feature_group_arn" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the FeatureGroup. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:feature-group/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupName" /></td>
+    <td><CopyableCode code="feature_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of FeatureGroup. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;_-&#93;*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeatureGroupStatus" /></td>
+    <td><CopyableCode code="feature_group_status" /></td>
     <td><code>string</code></td>
     <td>The status of a FeatureGroup. The status can be any of the following: Creating, Created, CreateFail, Deleting or DetailFail. (Creating, Created, CreateFailed, Deleting, DeleteFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfflineStoreStatus" /></td>
+    <td><CopyableCode code="offline_store_status" /></td>
     <td><code>object</code></td>
     <td>Notifies you if replicating data into the OfflineStore has failed. Returns either: Active or Blocked.</td>
 </tr>
@@ -273,24 +273,24 @@ Use this operation to describe a FeatureGroup. The response includes information
 
 ```sql
 SELECT
-CreationTime,
-Description,
-EventTimeFeatureName,
-FailureReason,
-FeatureDefinitions,
-FeatureGroupArn,
-FeatureGroupName,
-FeatureGroupStatus,
-LastModifiedTime,
-LastUpdateStatus,
-NextToken,
-OfflineStoreConfig,
-OfflineStoreStatus,
-OnlineStoreConfig,
-OnlineStoreTotalSizeBytes,
-RecordIdentifierFeatureName,
-RoleArn,
-ThroughputConfig
+creation_time,
+description,
+event_time_feature_name,
+failure_reason,
+feature_definitions,
+feature_group_arn,
+feature_group_name,
+feature_group_status,
+last_modified_time,
+last_update_status,
+next_token,
+offline_store_config,
+offline_store_status,
+online_store_config,
+online_store_total_size_bytes,
+record_identifier_feature_name,
+role_arn,
+throughput_config
 FROM aws.sagemaker.feature_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -302,11 +302,11 @@ List FeatureGroups based on given filter and order.
 
 ```sql
 SELECT
-CreationTime,
-FeatureGroupArn,
-FeatureGroupName,
-FeatureGroupStatus,
-OfflineStoreStatus
+creation_time,
+feature_group_arn,
+feature_group_name,
+feature_group_status,
+offline_store_status
 FROM aws.sagemaker.feature_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -355,7 +355,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-FeatureGroupArn
+feature_group_arn
 ;
 ```
 </TabItem>
@@ -464,7 +464,7 @@ WHERE
 region = '{{ region }}' --required
 AND FeatureGroupName = '{{ FeatureGroupName }}' --required
 RETURNING
-FeatureGroupArn;
+feature_group_arn;
 ```
 </TabItem>
 </Tabs>

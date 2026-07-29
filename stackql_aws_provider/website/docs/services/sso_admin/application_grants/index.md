@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthorizationCode" /></td>
+    <td><CopyableCode code="authorization_code" /></td>
     <td><code>object</code></td>
     <td>Configuration options for the authorization_code grant type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JwtBearer" /></td>
+    <td><CopyableCode code="jwt_bearer" /></td>
     <td><code>object</code></td>
     <td>Configuration options for the urn:ietf:params:oauth:grant-type:jwt-bearer grant type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshToken" /></td>
+    <td><CopyableCode code="refresh_token" /></td>
     <td><code>object</code></td>
     <td>Configuration options for the refresh_token grant type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TokenExchange" /></td>
+    <td><CopyableCode code="token_exchange" /></td>
     <td><code>object</code></td>
     <td>Configuration options for the urn:ietf:params:oauth:grant-type:token-exchange grant type.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Grant" /></td>
+    <td><CopyableCode code="grant" /></td>
     <td><code>object</code></td>
     <td>The configuration structure for the selected grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantType" /></td>
+    <td><CopyableCode code="grant_type" /></td>
     <td><code>string</code></td>
     <td>The type of the selected grant. (authorization_code, refresh_token, urn:ietf:params:oauth:grant-type:jwt-bearer, urn:ietf:params:oauth:grant-type:token-exchange)</td>
 </tr>
@@ -181,10 +181,10 @@ Retrieves details about an application grant.
 
 ```sql
 SELECT
-AuthorizationCode,
-JwtBearer,
-RefreshToken,
-TokenExchange
+authorization_code,
+jwt_bearer,
+refresh_token,
+token_exchange
 FROM aws.sso_admin.application_grants
 WHERE region = '{{ region }}' -- required
 ;
@@ -196,8 +196,8 @@ List the grants associated with an application.
 
 ```sql
 SELECT
-Grant,
-GrantType
+grant,
+grant_type
 FROM aws.sso_admin.application_grants
 WHERE region = '{{ region }}' -- required
 ;

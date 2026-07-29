@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. For more information about ARNs, go to Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AttachedManagedPolicies" /></td>
+    <td><CopyableCode code="attached_managed_policies" /></td>
     <td><code>string</code></td>
     <td>A list of the managed policies attached to the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the user was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupList" /></td>
+    <td><CopyableCode code="group_list" /></td>
     <td><code>string</code></td>
     <td>A list of IAM groups that the user is in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path to the user. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionsBoundary" /></td>
+    <td><CopyableCode code="permissions_boundary" /></td>
     <td><code>string</code></td>
     <td>The ARN of the policy used to set the permissions boundary for the user. For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are associated with the user. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The stable and unique string identifying the user. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name identifying the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPolicyList" /></td>
+    <td><CopyableCode code="user_policy_list" /></td>
     <td><code>string</code></td>
     <td>A list of the inline policies embedded in the user.</td>
 </tr>
@@ -179,16 +179,16 @@ Retrieves information about all IAM users, groups, roles, and policies in your A
 
 ```sql
 SELECT
-Arn,
-AttachedManagedPolicies,
-CreateDate,
-GroupList,
-Path,
-PermissionsBoundary,
-Tags,
-UserId,
-UserName,
-UserPolicyList
+arn,
+attached_managed_policies,
+create_date,
+group_list,
+path,
+permissions_boundary,
+tags,
+user_id,
+user_name,
+user_policy_list
 FROM aws.iam.account_authorization_details
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

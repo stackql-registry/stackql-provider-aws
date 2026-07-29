@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="engineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The type of target platform for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The version of the engine type used by the application.</td>
 </tr>
@@ -139,8 +139,8 @@ Lists the available engine versions.
 
 ```sql
 SELECT
-engineType,
-engineVersion
+engine_type,
+engine_version
 FROM aws.m2.engine_versions
 WHERE region = '{{ region }}' -- required
 AND engineType = '{{ engineType }}'

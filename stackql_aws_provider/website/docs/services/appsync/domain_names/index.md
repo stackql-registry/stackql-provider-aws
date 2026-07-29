@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appsyncDomainName" /></td>
+    <td><CopyableCode code="appsync_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name that AppSync provides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate. This can be an Certificate Manager (ACM) certificate or an Identity and Access Management (IAM) server certificate. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*:(acm|iam):&#91;a-z0-9-&#93;*:\d&#123;12&#125;:(certificate|server-certificate)/&#91;0-9A-Za-z_/-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the DomainName configuration. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name. (pattern: &lt;code&gt;^(\*&#91;\w\d-&#93;*\.)?(&#91;\w\d-&#93;+\.)+&#91;\w\d-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameArn" /></td>
+    <td><CopyableCode code="domain_name_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of your Amazon Route 53 hosted zone.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appsyncDomainName" /></td>
+    <td><CopyableCode code="appsync_domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name that AppSync provides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="certificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate. This can be an Certificate Manager (ACM) certificate or an Identity and Access Management (IAM) server certificate. (pattern: &lt;code&gt;^arn:&#91;a-z-&#93;*:(acm|iam):&#91;a-z0-9-&#93;*:\d&#123;12&#125;:(certificate|server-certificate)/&#91;0-9A-Za-z_/-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the DomainName configuration. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The domain name. (pattern: &lt;code&gt;^(\*&#91;\w\d-&#93;*\.)?(&#91;\w\d-&#93;+\.)+&#91;\w\d-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainNameArn" /></td>
+    <td><CopyableCode code="domain_name_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the domain name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of your Amazon Route 53 hosted zone.</td>
 </tr>
@@ -243,12 +243,12 @@ Retrieves a custom DomainName object.
 
 ```sql
 SELECT
-appsyncDomainName,
-certificateArn,
+appsync_domain_name,
+certificate_arn,
 description,
-domainName,
-domainNameArn,
-hostedZoneId,
+domain_name,
+domain_name_arn,
+hosted_zone_id,
 tags
 FROM aws.appsync.domain_names
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -262,12 +262,12 @@ Lists multiple custom domain names.
 
 ```sql
 SELECT
-appsyncDomainName,
-certificateArn,
+appsync_domain_name,
+certificate_arn,
 description,
-domainName,
-domainNameArn,
-hostedZoneId,
+domain_name,
+domain_name_arn,
+hosted_zone_id,
 tags
 FROM aws.appsync.domain_names
 WHERE region = '{{ region }}' -- required
@@ -307,7 +307,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-domainNameConfig
+domain_name_config
 ;
 ```
 </TabItem>
@@ -355,7 +355,7 @@ WHERE
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-domainNameConfig;
+domain_name_config;
 ```
 </TabItem>
 </Tabs>

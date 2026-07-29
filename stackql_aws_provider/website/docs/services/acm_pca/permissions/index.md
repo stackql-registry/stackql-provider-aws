@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>array</code></td>
     <td>The private CA actions that can be performed by the designated Amazon Web Services service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityArn" /></td>
+    <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the private CA from which the permission was issued. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm-pca:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;*:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the permission was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The name of the policy that is associated with the permission. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Principal" /></td>
+    <td><CopyableCode code="principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service or entity that holds the permission. At this time, the only valid principal is acm.amazonaws.com. (pattern: &lt;code&gt;&#91;^*&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceAccount" /></td>
+    <td><CopyableCode code="source_account" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that assigned the permission. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -158,12 +158,12 @@ List all permissions on a private CA, if any, granted to the Certificate Manager
 
 ```sql
 SELECT
-Actions,
-CertificateAuthorityArn,
-CreatedAt,
-Policy,
-Principal,
-SourceAccount
+actions,
+certificate_authority_arn,
+created_at,
+policy,
+principal,
+source_account
 FROM aws.acm_pca.permissions
 WHERE region = '{{ region }}' -- required
 ;

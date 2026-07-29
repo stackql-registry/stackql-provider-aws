@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>The position data destination that describes the AWS IoT rule that processes the device's position data for use by AWS IoT Core for LoRaWAN. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Solvers" /></td>
+    <td><CopyableCode code="solvers" /></td>
     <td><code>object</code></td>
     <td>The wrapper for the solver configuration details object.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PositionConfigurationList" /></td>
+    <td><CopyableCode code="position_configuration_list" /></td>
     <td><code>array</code></td>
     <td>A list of position configurations.</td>
 </tr>
@@ -189,8 +189,8 @@ Get position configuration for a given resource. This action is no longer suppor
 
 ```sql
 SELECT
-Destination,
-Solvers
+destination,
+solvers
 FROM aws.iotwireless.position_configurations
 WHERE resource_identifier = '{{ resource_identifier }}' -- required
 AND resourceType = '{{ resourceType }}' -- required
@@ -204,8 +204,8 @@ List position configurations for a given resource, such as positioning solvers. 
 
 ```sql
 SELECT
-NextToken,
-PositionConfigurationList
+next_token,
+position_configuration_list
 FROM aws.iotwireless.position_configurations
 WHERE region = '{{ region }}' -- required
 AND resourceType = '{{ resourceType }}'

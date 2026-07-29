@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Datapoints" /></td>
+    <td><CopyableCode code="datapoints" /></td>
     <td><code>array</code></td>
     <td>The data points for the specified metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>A label for the specified metric.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets statistics for the specified metric. The maximum number of data points retu
 
 ```sql
 SELECT
-Datapoints,
-Label
+datapoints,
+label
 FROM aws.cloudwatch.metric_statistics
 WHERE region = '{{ region }}' -- required
 ;

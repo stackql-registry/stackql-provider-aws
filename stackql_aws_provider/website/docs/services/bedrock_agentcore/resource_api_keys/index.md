@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="apiKey" /></td>
+    <td><CopyableCode code="api_key" /></td>
     <td><code>string</code></td>
     <td>The API key associated with the resource requested.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the API key associated with an API key credential provider.
 
 ```sql
 SELECT
-apiKey
+api_key
 FROM aws.bedrock_agentcore.resource_api_keys
 WHERE region = '{{ region }}' -- required
 ;

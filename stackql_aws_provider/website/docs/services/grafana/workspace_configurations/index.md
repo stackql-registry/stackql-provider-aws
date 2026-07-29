@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration string for the workspace that you requested. For more information about the format and configuration options available, see Working in your Grafana workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grafanaVersion" /></td>
+    <td><CopyableCode code="grafana_version" /></td>
     <td><code>string</code></td>
     <td>The supported Grafana version for the workspace.</td>
 </tr>
@@ -137,7 +137,7 @@ Gets the current configuration string for the given workspace.
 ```sql
 SELECT
 configuration,
-grafanaVersion
+grafana_version
 FROM aws.grafana.workspace_configurations
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required

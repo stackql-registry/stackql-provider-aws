@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectPeerId" /></td>
+    <td><CopyableCode code="connect_peer_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Connect peer. (pattern: &lt;code&gt;^connect-peer-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the device to connect to. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalNetworkId" /></td>
+    <td><CopyableCode code="global_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the global network. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkId" /></td>
+    <td><CopyableCode code="link_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the link. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Connect peer association. (PENDING, AVAILABLE, DELETING, DELETED)</td>
 </tr>
@@ -159,11 +159,11 @@ Returns information about a core network Connect peer associations.
 
 ```sql
 SELECT
-ConnectPeerId,
-DeviceId,
-GlobalNetworkId,
-LinkId,
-State
+connect_peer_id,
+device_id,
+global_network_id,
+link_id,
+state
 FROM aws.networkmanager.connect_peer_associations
 WHERE global_network_id = '{{ global_network_id }}' -- required
 AND region = '{{ region }}' -- required

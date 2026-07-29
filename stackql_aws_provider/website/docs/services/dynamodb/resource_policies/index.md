@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The resource-based policy document attached to the resource, which can be a table or stream, in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>A unique string that represents the revision ID of the policy. If you're comparing revision IDs, make sure to always use string comparison logic.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the resource-based policy document attached to the resource, which can b
 
 ```sql
 SELECT
-Policy,
-RevisionId
+policy,
+revision_id
 FROM aws.dynamodb.resource_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,7 +171,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-RevisionId;
+revision_id;
 ```
 </TabItem>
 </Tabs>

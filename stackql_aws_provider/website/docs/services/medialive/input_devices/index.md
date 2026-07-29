@@ -51,82 +51,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionState" /></td>
+    <td><CopyableCode code="connection_state" /></td>
     <td><code>string</code></td>
     <td>The state of the connection between the input device and AWS. (DISCONNECTED, CONNECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceSettingsSyncState" /></td>
+    <td><CopyableCode code="device_settings_sync_state" /></td>
     <td><code>string</code></td>
     <td>The status of the action to synchronize the device configuration. If you change the configuration of the input device (for example, the maximum bitrate), MediaLive sends the new data to the device. The device might not update itself immediately. SYNCED means the device has updated its configuration. SYNCING means that it has not updated its configuration. (SYNCED, SYNCING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceUpdateStatus" /></td>
+    <td><CopyableCode code="device_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of software on the input device. (UP_TO_DATE, NOT_UP_TO_DATE, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HdDeviceSettings" /></td>
+    <td><CopyableCode code="hd_device_settings" /></td>
     <td><code>object</code></td>
     <td>Settings that describe an input device that is type HD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacAddress" /></td>
+    <td><CopyableCode code="mac_address" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedialiveInputArns" /></td>
+    <td><CopyableCode code="medialive_input_arns" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkSettings" /></td>
+    <td><CopyableCode code="network_settings" /></td>
     <td><code>object</code></td>
     <td>The network settings for the input device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputType" /></td>
+    <td><CopyableCode code="output_type" /></td>
     <td><code>string</code></td>
     <td>The output attachment type of the input device. Specifies MEDIACONNECT_FLOW if this device is the source for a MediaConnect flow. Specifies MEDIALIVE_INPUT if this device is the source for a MediaLive input. (NONE, MEDIALIVE_INPUT, MEDIACONNECT_FLOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the input device. (HD, UHD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UhdDeviceSettings" /></td>
+    <td><CopyableCode code="uhd_device_settings" /></td>
     <td><code>object</code></td>
     <td>Settings that describe an input device that is type UHD.</td>
 </tr>
@@ -145,82 +145,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionState" /></td>
+    <td><CopyableCode code="connection_state" /></td>
     <td><code>string</code></td>
     <td>The state of the connection between the input device and AWS. (DISCONNECTED, CONNECTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceSettingsSyncState" /></td>
+    <td><CopyableCode code="device_settings_sync_state" /></td>
     <td><code>string</code></td>
     <td>The status of the action to synchronize the device configuration. If you change the configuration of the input device (for example, the maximum bitrate), MediaLive sends the new data to the device. The device might not update itself immediately. SYNCED means the device has updated its configuration. SYNCING means that it has not updated its configuration. (SYNCED, SYNCING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceUpdateStatus" /></td>
+    <td><CopyableCode code="device_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of software on the input device. (UP_TO_DATE, NOT_UP_TO_DATE, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HdDeviceSettings" /></td>
+    <td><CopyableCode code="hd_device_settings" /></td>
     <td><code>object</code></td>
     <td>Settings that describe an input device that is type HD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MacAddress" /></td>
+    <td><CopyableCode code="mac_address" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MedialiveInputArns" /></td>
+    <td><CopyableCode code="medialive_input_arns" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkSettings" /></td>
+    <td><CopyableCode code="network_settings" /></td>
     <td><code>object</code></td>
     <td>Network settings for the input device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputType" /></td>
+    <td><CopyableCode code="output_type" /></td>
     <td><code>string</code></td>
     <td>The output attachment type of the input device. Specifies MEDIACONNECT_FLOW if this device is the source for a MediaConnect flow. Specifies MEDIALIVE_INPUT if this device is the source for a MediaLive input. (NONE, MEDIALIVE_INPUT, MEDIACONNECT_FLOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SerialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the input device. (HD, UHD)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UhdDeviceSettings" /></td>
+    <td><CopyableCode code="uhd_device_settings" /></td>
     <td><code>object</code></td>
     <td>Settings that describe an input device that is type UHD.</td>
 </tr>
@@ -354,22 +354,22 @@ Gets the details for the input device
 
 ```sql
 SELECT
-Arn,
-AvailabilityZone,
-ConnectionState,
-DeviceSettingsSyncState,
-DeviceUpdateStatus,
-HdDeviceSettings,
-Id,
-MacAddress,
-MedialiveInputArns,
-Name,
-NetworkSettings,
-OutputType,
-SerialNumber,
-Tags,
-Type,
-UhdDeviceSettings
+arn,
+availability_zone,
+connection_state,
+device_settings_sync_state,
+device_update_status,
+hd_device_settings,
+id,
+mac_address,
+medialive_input_arns,
+name,
+network_settings,
+output_type,
+serial_number,
+tags,
+type,
+uhd_device_settings
 FROM aws.medialive.input_devices
 WHERE input_device_id = '{{ input_device_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -382,22 +382,22 @@ List input devices
 
 ```sql
 SELECT
-Arn,
-AvailabilityZone,
-ConnectionState,
-DeviceSettingsSyncState,
-DeviceUpdateStatus,
-HdDeviceSettings,
-Id,
-MacAddress,
-MedialiveInputArns,
-Name,
-NetworkSettings,
-OutputType,
-SerialNumber,
-Tags,
-Type,
-UhdDeviceSettings
+arn,
+availability_zone,
+connection_state,
+device_settings_sync_state,
+device_update_status,
+hd_device_settings,
+id,
+mac_address,
+medialive_input_arns,
+name,
+network_settings,
+output_type,
+serial_number,
+tags,
+type,
+uhd_device_settings
 FROM aws.medialive.input_devices
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -431,22 +431,22 @@ WHERE
 input_device_id = '{{ input_device_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-AvailabilityZone,
-ConnectionState,
-DeviceSettingsSyncState,
-DeviceUpdateStatus,
-HdDeviceSettings,
-Id,
-MacAddress,
-MedialiveInputArns,
-Name,
-NetworkSettings,
-OutputType,
-SerialNumber,
-Tags,
-Type,
-UhdDeviceSettings;
+arn,
+availability_zone,
+connection_state,
+device_settings_sync_state,
+device_update_status,
+hd_device_settings,
+id,
+mac_address,
+medialive_input_arns,
+name,
+network_settings,
+output_type,
+serial_number,
+tags,
+type,
+uhd_device_settings;
 ```
 </TabItem>
 </Tabs>

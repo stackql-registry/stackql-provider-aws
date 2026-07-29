@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientRequestId" /></td>
+    <td><CopyableCode code="client_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the API request that triggered this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the operation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the operation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Describes the error if the operation fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationArn" /></td>
+    <td><CopyableCode code="operation_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationState" /></td>
+    <td><CopyableCode code="operation_state" /></td>
     <td><code>string</code></td>
     <td>State of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationSteps" /></td>
+    <td><CopyableCode code="operation_steps" /></td>
     <td><code>array</code></td>
     <td>Steps completed during the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>Type of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceClusterInfo" /></td>
+    <td><CopyableCode code="source_cluster_info" /></td>
     <td><code>object</code></td>
     <td>Information about cluster attributes before a cluster is updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetClusterInfo" /></td>
+    <td><CopyableCode code="target_cluster_info" /></td>
     <td><code>object</code></td>
     <td>Information about cluster attributes after a cluster is updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectionInfo" /></td>
+    <td><CopyableCode code="vpc_connection_info" /></td>
     <td><code>object</code></td>
     <td>Description of the VPC connection for CreateVpcConnection and DeleteVpcConnection operations.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClientRequestId" /></td>
+    <td><CopyableCode code="client_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the API request that triggered this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the operation was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the operation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Describes the error if the operation fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationArn" /></td>
+    <td><CopyableCode code="operation_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationState" /></td>
+    <td><CopyableCode code="operation_state" /></td>
     <td><code>string</code></td>
     <td>State of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationSteps" /></td>
+    <td><CopyableCode code="operation_steps" /></td>
     <td><code>array</code></td>
     <td>Steps completed during the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>Type of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceClusterInfo" /></td>
+    <td><CopyableCode code="source_cluster_info" /></td>
     <td><code>object</code></td>
     <td>Information about cluster attributes before a cluster is updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetClusterInfo" /></td>
+    <td><CopyableCode code="target_cluster_info" /></td>
     <td><code>object</code></td>
     <td>Information about cluster attributes after a cluster is updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectionInfo" /></td>
+    <td><CopyableCode code="vpc_connection_info" /></td>
     <td><code>object</code></td>
     <td>Description of the VPC connection for CreateVpcConnection and DeleteVpcConnection operations.</td>
 </tr>
@@ -277,18 +277,18 @@ Returns a description of the cluster operation specified by the ARN.
 
 ```sql
 SELECT
-ClientRequestId,
-ClusterArn,
-CreationTime,
-EndTime,
-ErrorInfo,
-OperationArn,
-OperationState,
-OperationSteps,
-OperationType,
-SourceClusterInfo,
-TargetClusterInfo,
-VpcConnectionInfo
+client_request_id,
+cluster_arn,
+creation_time,
+end_time,
+error_info,
+operation_arn,
+operation_state,
+operation_steps,
+operation_type,
+source_cluster_info,
+target_cluster_info,
+vpc_connection_info
 FROM aws.kafka.cluster_operations
 WHERE cluster_operation_arn = '{{ cluster_operation_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -301,18 +301,18 @@ Returns a list of all the operations that have been performed on the specified M
 
 ```sql
 SELECT
-ClientRequestId,
-ClusterArn,
-CreationTime,
-EndTime,
-ErrorInfo,
-OperationArn,
-OperationState,
-OperationSteps,
-OperationType,
-SourceClusterInfo,
-TargetClusterInfo,
-VpcConnectionInfo
+client_request_id,
+cluster_arn,
+creation_time,
+end_time,
+error_info,
+operation_arn,
+operation_state,
+operation_steps,
+operation_type,
+source_cluster_info,
+target_cluster_info,
+vpc_connection_info
 FROM aws.kafka.cluster_operations
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required

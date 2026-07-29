@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedFeatures" /></td>
+    <td><CopyableCode code="allowed_features" /></td>
     <td><code>string</code></td>
     <td>A container for allowed features. Valid inputs are GetObject-Range, GetObject-PartNumber, HeadObject-Range, and HeadObject-PartNumber.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloudWatchMetricsEnabled" /></td>
+    <td><CopyableCode code="cloud_watch_metrics_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A container for whether the CloudWatch metrics configuration is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportingAccessPoint" /></td>
+    <td><CopyableCode code="supporting_access_point" /></td>
     <td><code>string</code></td>
     <td>Standard access point associated with the Object Lambda Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransformationConfigurations" /></td>
+    <td><CopyableCode code="transformation_configurations" /></td>
     <td><code>string</code></td>
     <td>A container for transformation configurations for an Object Lambda Access Point.</td>
 </tr>
@@ -151,10 +151,10 @@ This operation is not supported by directory buckets. Returns configuration for 
 
 ```sql
 SELECT
-AllowedFeatures,
-CloudWatchMetricsEnabled,
-SupportingAccessPoint,
-TransformationConfigurations
+allowed_features,
+cloud_watch_metrics_enabled,
+supporting_access_point,
+transformation_configurations
 FROM aws.s3control.access_point_configuration_for_object_lambdas
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required

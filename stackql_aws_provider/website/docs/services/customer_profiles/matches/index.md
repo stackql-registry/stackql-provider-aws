@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MatchGenerationDate" /></td>
+    <td><CopyableCode code="match_generation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp this version of Match Result generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Matches" /></td>
+    <td><CopyableCode code="matches" /></td>
     <td><code>array</code></td>
     <td>The list of matched profiles for this instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PotentialMatches" /></td>
+    <td><CopyableCode code="potential_matches" /></td>
     <td><code>integer</code></td>
     <td>The number of potential matches found.</td>
 </tr>
@@ -149,10 +149,10 @@ Before calling this API, use CreateDomain or UpdateDomain to enable identity res
 
 ```sql
 SELECT
-MatchGenerationDate,
-Matches,
-NextToken,
-PotentialMatches
+match_generation_date,
+matches,
+next_token,
+potential_matches
 FROM aws.customer_profiles.matches
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

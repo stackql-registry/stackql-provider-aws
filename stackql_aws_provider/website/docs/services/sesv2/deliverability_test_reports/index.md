@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeliverabilityTestReport" /></td>
+    <td><CopyableCode code="deliverability_test_report" /></td>
     <td><code>object</code></td>
     <td>An object that contains the results of the predictive inbox placement test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IspPlacements" /></td>
+    <td><CopyableCode code="isp_placements" /></td>
     <td><code>array</code></td>
     <td>An object that describes how the test email was handled by several email providers, including Gmail, Hotmail, Yahoo, AOL, and others.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>An object that contains the message that you sent when you performed this predictive inbox placement test.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverallPlacement" /></td>
+    <td><CopyableCode code="overall_placement" /></td>
     <td><code>object</code></td>
     <td>An object that specifies how many test messages that were sent during the predictive inbox placement test were delivered to recipients' inboxes, how many were sent to recipients' spam folders, and how many weren't delivered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) that are associated with the predictive inbox placement test.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeliverabilityTestReports" /></td>
+    <td><CopyableCode code="deliverability_test_reports" /></td>
     <td><code>array</code></td>
     <td>An object that contains a lists of predictive inbox placement tests that you've performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there are additional predictive inbox placement tests to list. To view additional predictive inbox placement tests, issue another request to ListDeliverabilityTestReports, and pass this token in the NextToken parameter.</td>
 </tr>
@@ -194,11 +194,11 @@ Retrieve the results of a predictive inbox placement test.
 
 ```sql
 SELECT
-DeliverabilityTestReport,
-IspPlacements,
-Message,
-OverallPlacement,
-Tags
+deliverability_test_report,
+isp_placements,
+message,
+overall_placement,
+tags
 FROM aws.sesv2.deliverability_test_reports
 WHERE report_id = '{{ report_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -211,8 +211,8 @@ Show a list of the predictive inbox placement tests that you've performed, regar
 
 ```sql
 SELECT
-DeliverabilityTestReports,
-NextToken
+deliverability_test_reports,
+next_token
 FROM aws.sesv2.deliverability_test_reports
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -251,8 +251,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DeliverabilityTestStatus,
-ReportId
+deliverability_test_status,
+report_id
 ;
 ```
 </TabItem>

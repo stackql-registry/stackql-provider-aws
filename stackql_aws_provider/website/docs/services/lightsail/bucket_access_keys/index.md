@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessKeys" /></td>
+    <td><CopyableCode code="access_keys" /></td>
     <td><code>array</code></td>
     <td>An object that describes the access keys for the specified bucket.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns the existing access key IDs for the specified Amazon Lightsail bucket. T
 
 ```sql
 SELECT
-accessKeys
+access_keys
 FROM aws.lightsail.bucket_access_keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -164,7 +164,7 @@ SELECT
 '{{ bucketName }}' /* required */,
 '{{ region }}'
 RETURNING
-accessKey,
+access_key,
 operations
 ;
 ```

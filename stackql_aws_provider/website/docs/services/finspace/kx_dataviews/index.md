@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeVersions" /></td>
+    <td><CopyableCode code="active_versions" /></td>
     <td><code>array</code></td>
     <td>The current active changeset versions of the database on the given dataview.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoUpdate" /></td>
+    <td><CopyableCode code="auto_update" /></td>
     <td><code>boolean</code></td>
     <td>The option to specify whether you want to apply all the future additions and corrections automatically to the dataview when new changesets are ingested. The default value is false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the availability zones. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="azMode" /></td>
+    <td><CopyableCode code="az_mode" /></td>
     <td><code>string</code></td>
     <td>The number of availability zones you want to assign per volume. Currently, FinSpace only supports SINGLE for volumes. This places dataview in a single AZ. (SINGLE, MULTI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changesetId" /></td>
+    <td><CopyableCode code="changeset_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the changeset that you want to use to ingest data. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the dataview was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="databaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database where you created the dataview. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataviewName" /></td>
+    <td><CopyableCode code="dataview_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the dataview. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
@@ -96,22 +96,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the dataview. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb environment, from where you want to retrieve the dataview details. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the dataview was updated in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readWrite" /></td>
+    <td><CopyableCode code="read_write" /></td>
     <td><code>boolean</code></td>
     <td>Returns True if the dataview is created as writeable and False otherwise.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="segmentConfigurations" /></td>
+    <td><CopyableCode code="segment_configurations" /></td>
     <td><code>array</code></td>
     <td>The configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of dataview creation. CREATING – The dataview creation is in progress. UPDATING – The dataview is in the process of being updated. ACTIVE – The dataview is active. (CREATING, ACTIVE, UPDATING, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The error message when a failed state occurs. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-\.\s&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kxDataviews" /></td>
+    <td><CopyableCode code="kx_dataviews" /></td>
     <td><code>array</code></td>
     <td>The list of kdb dataviews that are currently active for the given database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -273,21 +273,21 @@ Retrieves details of the dataview.
 
 ```sql
 SELECT
-activeVersions,
-autoUpdate,
-availabilityZoneId,
-azMode,
-changesetId,
-createdTimestamp,
-databaseName,
-dataviewName,
+active_versions,
+auto_update,
+availability_zone_id,
+az_mode,
+changeset_id,
+created_timestamp,
+database_name,
+dataview_name,
 description,
-environmentId,
-lastModifiedTimestamp,
-readWrite,
-segmentConfigurations,
+environment_id,
+last_modified_timestamp,
+read_write,
+segment_configurations,
 status,
-statusReason
+status_reason
 FROM aws.finspace.kx_dataviews
 WHERE environment_id = '{{ environment_id }}' -- required
 AND database_name = '{{ database_name }}' -- required
@@ -302,8 +302,8 @@ Returns a list of all the dataviews in the database.
 
 ```sql
 SELECT
-kxDataviews,
-nextToken
+kx_dataviews,
+next_token
 FROM aws.finspace.kx_dataviews
 WHERE environment_id = '{{ environment_id }}' -- required
 AND database_name = '{{ database_name }}' -- required
@@ -360,18 +360,18 @@ SELECT
 '{{ database_name }}',
 '{{ region }}'
 RETURNING
-autoUpdate,
-availabilityZoneId,
-azMode,
-changesetId,
-createdTimestamp,
-databaseName,
-dataviewName,
+auto_update,
+availability_zone_id,
+az_mode,
+changeset_id,
+created_timestamp,
+database_name,
+dataview_name,
 description,
-environmentId,
-lastModifiedTimestamp,
-readWrite,
-segmentConfigurations,
+environment_id,
+last_modified_timestamp,
+read_write,
+segment_configurations,
 status
 ;
 ```
@@ -446,19 +446,19 @@ AND dataview_name = '{{ dataview_name }}' --required
 AND region = '{{ region }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-activeVersions,
-autoUpdate,
-availabilityZoneId,
-azMode,
-changesetId,
-createdTimestamp,
-databaseName,
-dataviewName,
+active_versions,
+auto_update,
+availability_zone_id,
+az_mode,
+changeset_id,
+created_timestamp,
+database_name,
+dataview_name,
 description,
-environmentId,
-lastModifiedTimestamp,
-readWrite,
-segmentConfigurations,
+environment_id,
+last_modified_timestamp,
+read_write,
+segment_configurations,
 status;
 ```
 </TabItem>

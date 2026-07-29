@@ -52,72 +52,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the data table. Does not include version aliases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data table was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description of the data table's purpose and contents. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data table. Does not include version aliases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the data table was last modified, used for region replication. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data table or any of its properties were last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockVersion" /></td>
+    <td><CopyableCode code="lock_version" /></td>
     <td><code>object</code></td>
     <td>The lock version information used for optimistic locking and table versioning. Changes with each update to prevent concurrent modification conflicts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the data table. Must be unique within the instance and conform to Connect naming standards. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the data table. One of PUBLISHED or SAVED. (PUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Key-value pairs for attribute based access control (TBAC or ABAC) and organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The IANA timezone identifier used when resolving time based dynamic values. Required even if no time slices are specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueLockLevel" /></td>
+    <td><CopyableCode code="value_lock_level" /></td>
     <td><code>string</code></td>
     <td>The data level that concurrent value edits are locked on. One of DATA_TABLE, PRIMARY_VALUE, ATTRIBUTE, VALUE, and NONE. Determines how concurrent edits are handled when multiple users attempt to modify values simultaneously. (NONE, DATA_TABLE, PRIMARY_VALUE, ATTRIBUTE, VALUE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>A unique identifier and alias for customer managed versions (not $LATEST or $SAVED).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>A description of the customer managed version. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -136,27 +136,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The summary's ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The summary's ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The summary's last modified region. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The summary's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The summary's name. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -175,72 +175,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the data table. Does not include version aliases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data table was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>An optional description of the data table's purpose and contents. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the data table. Does not include version aliases.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedRegion" /></td>
+    <td><CopyableCode code="last_modified_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the data table was last modified, used for region replication. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data table or any of its properties were last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LockVersion" /></td>
+    <td><CopyableCode code="lock_version" /></td>
     <td><code>object</code></td>
     <td>The lock version information used for optimistic locking and table versioning. Changes with each update to prevent concurrent modification conflicts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The human-readable name of the data table. Must be unique within the instance and conform to Connect naming standards. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the data table. One of PUBLISHED or SAVED. (PUBLISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Key-value pairs for attribute based access control (TBAC or ABAC) and organization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The IANA timezone identifier used when resolving time based dynamic values. Required even if no time slices are specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueLockLevel" /></td>
+    <td><CopyableCode code="value_lock_level" /></td>
     <td><code>string</code></td>
     <td>The data level that concurrent value edits are locked on. One of DATA_TABLE, PRIMARY_VALUE, ATTRIBUTE, VALUE, and NONE. Determines how concurrent edits are handled when multiple users attempt to modify values simultaneously. (NONE, DATA_TABLE, PRIMARY_VALUE, ATTRIBUTE, VALUE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>A unique identifier and alias for customer managed versions (not $LATEST or $SAVED).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionDescription" /></td>
+    <td><CopyableCode code="version_description" /></td>
     <td><code>string</code></td>
     <td>A description of the customer managed version. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -394,20 +394,20 @@ Returns all properties for a data table except for attributes and values. All pr
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Description,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-LockVersion,
-Name,
-Status,
-Tags,
-TimeZone,
-ValueLockLevel,
-Version,
-VersionDescription
+arn,
+created_time,
+description,
+id,
+last_modified_region,
+last_modified_time,
+lock_version,
+name,
+status,
+tags,
+time_zone,
+value_lock_level,
+version,
+version_description
 FROM aws.connect.data_tables
 WHERE instance_id = '{{ instance_id }}' -- required
 AND data_table_id = '{{ data_table_id }}' -- required
@@ -421,11 +421,11 @@ Lists all data tables for the specified Amazon Connect instance. Returns summary
 
 ```sql
 SELECT
-Arn,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-Name
+arn,
+id,
+last_modified_region,
+last_modified_time,
+name
 FROM aws.connect.data_tables
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -440,20 +440,20 @@ Searches for data tables based on the table's ID, name, and description. In the 
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Description,
-Id,
-LastModifiedRegion,
-LastModifiedTime,
-LockVersion,
-Name,
-Status,
-Tags,
-TimeZone,
-ValueLockLevel,
-Version,
-VersionDescription
+arn,
+created_time,
+description,
+id,
+last_modified_region,
+last_modified_time,
+lock_version,
+name,
+status,
+tags,
+time_zone,
+value_lock_level,
+version,
+version_description
 FROM aws.connect.data_tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -496,9 +496,9 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id,
-LockVersion
+arn,
+id,
+lock_version
 ;
 ```
 </TabItem>
@@ -559,7 +559,7 @@ AND region = '{{ region }}' --required
 AND ValueLockLevel = '{{ ValueLockLevel }}' --required
 AND TimeZone = '{{ TimeZone }}' --required
 RETURNING
-LockVersion;
+lock_version;
 ```
 </TabItem>
 </Tabs>

@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who created the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The dataset associated with the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user who last modified the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the project was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenDate" /></td>
+    <td><CopyableCode code="open_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the project was opened.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenedBy" /></td>
+    <td><CopyableCode code="opened_by" /></td>
     <td><code>string</code></td>
     <td>The identifier (user name) of the user that opened the project for use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeName" /></td>
+    <td><CopyableCode code="recipe_name" /></td>
     <td><code>string</code></td>
     <td>The recipe associated with this job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Identity and Access Management (IAM) role to be assumed when DataBrew runs the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sample" /></td>
+    <td><CopyableCode code="sample" /></td>
     <td><code>object</code></td>
     <td>Represents the sample size and sampling type for DataBrew to use for interactive data analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionStatus" /></td>
+    <td><CopyableCode code="session_status" /></td>
     <td><code>string</code></td>
     <td>Describes the current state of the session: PROVISIONING - allocating resources for the session. INITIALIZING - getting the session ready for first use. ASSIGNED - the session is ready for use. (ASSIGNED, FAILED, INITIALIZING, PROVISIONING, READY, RECYCLING, ROTATING, TERMINATED, TERMINATING, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags associated with this project.</td>
 </tr>
@@ -135,72 +135,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who crated the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The dataset that the project is to act upon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last modified the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modification date and time for the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name of a project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenDate" /></td>
+    <td><CopyableCode code="open_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the project was opened.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenedBy" /></td>
+    <td><CopyableCode code="opened_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user that opened the project for use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecipeName" /></td>
+    <td><CopyableCode code="recipe_name" /></td>
     <td><code>string</code></td>
     <td>The name of a recipe that will be developed during a project session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role that will be assumed for this project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Sample" /></td>
+    <td><CopyableCode code="sample" /></td>
     <td><code>object</code></td>
     <td>Represents the sample size and sampling type for DataBrew to use for interactive data analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Metadata tags that have been applied to the project.</td>
 </tr>
@@ -327,20 +327,20 @@ Returns the definition of a specific DataBrew project.
 
 ```sql
 SELECT
-CreateDate,
-CreatedBy,
-DatasetName,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-OpenDate,
-OpenedBy,
-RecipeName,
-ResourceArn,
-RoleArn,
-Sample,
-SessionStatus,
-Tags
+create_date,
+created_by,
+dataset_name,
+last_modified_by,
+last_modified_date,
+name,
+open_date,
+opened_by,
+recipe_name,
+resource_arn,
+role_arn,
+sample,
+session_status,
+tags
 FROM aws.databrew.projects
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -353,20 +353,20 @@ Lists all of the DataBrew projects that are defined.
 
 ```sql
 SELECT
-AccountId,
-CreateDate,
-CreatedBy,
-DatasetName,
-LastModifiedBy,
-LastModifiedDate,
-Name,
-OpenDate,
-OpenedBy,
-RecipeName,
-ResourceArn,
-RoleArn,
-Sample,
-Tags
+account_id,
+create_date,
+created_by,
+dataset_name,
+last_modified_by,
+last_modified_date,
+name,
+open_date,
+opened_by,
+recipe_name,
+resource_arn,
+role_arn,
+sample,
+tags
 FROM aws.databrew.projects
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -409,7 +409,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -465,8 +465,8 @@ name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 RETURNING
-LastModifiedDate,
-Name;
+last_modified_date,
+name;
 ```
 </TabItem>
 </Tabs>

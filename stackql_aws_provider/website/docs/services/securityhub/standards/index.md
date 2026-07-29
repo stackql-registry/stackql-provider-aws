@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledByDefault" /></td>
+    <td><CopyableCode code="enabled_by_default" /></td>
     <td><code>boolean</code></td>
     <td>Whether the standard is enabled by default. When Security Hub CSPM is enabled from the console, if a standard is enabled by default, the check box for that standard is selected by default. When Security Hub CSPM is enabled using the EnableSecurityHub API operation, the standard is enabled by default unless EnableDefaultStandards is set to false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsArn" /></td>
+    <td><CopyableCode code="standards_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StandardsManagedBy" /></td>
+    <td><CopyableCode code="standards_managed_by" /></td>
     <td><code>object</code></td>
     <td>Provides details about the management of a standard.</td>
 </tr>
@@ -163,11 +163,11 @@ Returns a list of the available standards in Security Hub CSPM. For each standar
 
 ```sql
 SELECT
-Description,
-EnabledByDefault,
-Name,
-StandardsArn,
-StandardsManagedBy
+description,
+enabled_by_default,
+name,
+standards_arn,
+standards_managed_by
 FROM aws.securityhub.standards
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

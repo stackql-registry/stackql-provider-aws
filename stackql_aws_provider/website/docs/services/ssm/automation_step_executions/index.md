@@ -50,122 +50,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The action this step performs. The action determines the behavior of the step. (pattern: &lt;code&gt;^aws:&#91;a-zA-Z&#93;&#123;3,25&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionEndTime" /></td>
+    <td><CopyableCode code="execution_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If a step has finished execution, this contains the time the execution ended. If the step hasn't yet concluded, this field isn't populated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionStartTime" /></td>
+    <td><CopyableCode code="execution_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If a step has begun execution, this contains the time the step started. If the step is in Pending status, this field isn't populated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureDetails" /></td>
+    <td><CopyableCode code="failure_details" /></td>
     <td><code>object</code></td>
     <td>Information about the Automation failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>If a step failed, this message explains why the execution failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Inputs" /></td>
+    <td><CopyableCode code="inputs" /></td>
     <td><code>object</code></td>
     <td>Fully-resolved values passed into the step before execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsCritical" /></td>
+    <td><CopyableCode code="is_critical" /></td>
     <td><code>boolean</code></td>
     <td>The flag which can be used to help decide whether the failure of current step leads to the Automation failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsEnd" /></td>
+    <td><CopyableCode code="is_end" /></td>
     <td><code>boolean</code></td>
     <td>The flag which can be used to end automation no matter whether the step succeeds or fails.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxAttempts" /></td>
+    <td><CopyableCode code="max_attempts" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of tries to run the action of the step. The default value is 1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextStep" /></td>
+    <td><CopyableCode code="next_step" /></td>
     <td><code>string</code></td>
     <td>The next step after the step succeeds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OnFailure" /></td>
+    <td><CopyableCode code="on_failure" /></td>
     <td><code>string</code></td>
     <td>The action to take if the step fails. The default value is Abort.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Outputs" /></td>
+    <td><CopyableCode code="outputs" /></td>
     <td><code>object</code></td>
     <td>Returned values from the execution of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OverriddenParameters" /></td>
+    <td><CopyableCode code="overridden_parameters" /></td>
     <td><code>object</code></td>
     <td>A user-specified list of parameters to override when running a step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentStepDetails" /></td>
+    <td><CopyableCode code="parent_step_details" /></td>
     <td><code>object</code></td>
     <td>Information about the parent step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Response" /></td>
+    <td><CopyableCode code="response" /></td>
     <td><code>string</code></td>
     <td>A message associated with the response code for an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseCode" /></td>
+    <td><CopyableCode code="response_code" /></td>
     <td><code>string</code></td>
     <td>The response code returned by the execution of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepExecutionId" /></td>
+    <td><CopyableCode code="step_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of a step execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepName" /></td>
+    <td><CopyableCode code="step_name" /></td>
     <td><code>string</code></td>
     <td>The name of this execution step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepStatus" /></td>
+    <td><CopyableCode code="step_status" /></td>
     <td><code>string</code></td>
     <td>The execution status for this step. (Pending, InProgress, Waiting, Success, TimedOut, Cancelling, Cancelled, Failed, PendingApproval, Approved, Rejected, Scheduled, RunbookInProgress, PendingChangeCalendarOverride, ChangeCalendarOverrideApproved, ChangeCalendarOverrideRejected, CompletedWithSuccess, CompletedWithFailure, Exited)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetLocation" /></td>
+    <td><CopyableCode code="target_location" /></td>
     <td><code>object</code></td>
     <td>The combination of Amazon Web Services Regions and Amazon Web Services accounts targeted by the current Automation execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Targets" /></td>
+    <td><CopyableCode code="targets" /></td>
     <td><code>array</code></td>
     <td>The targets for the step execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeoutSeconds" /></td>
+    <td><CopyableCode code="timeout_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timeout seconds of the step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TriggeredAlarms" /></td>
+    <td><CopyableCode code="triggered_alarms" /></td>
     <td><code>array</code></td>
     <td>The CloudWatch alarms that were invoked by the automation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidNextSteps" /></td>
+    <td><CopyableCode code="valid_next_steps" /></td>
     <td><code>array</code></td>
     <td>Strategies used when step fails, we support Continue and Abort. Abort will fail the automation when the step fails. Continue will ignore the failure of current step and allow automation to run the next step. With conditional branching, we add step:stepName to support the automation to go to another specific step.</td>
 </tr>
@@ -234,30 +234,30 @@ Information about all active and terminated step executions in an Automation wor
 
 ```sql
 SELECT
-Action,
-ExecutionEndTime,
-ExecutionStartTime,
-FailureDetails,
-FailureMessage,
-Inputs,
-IsCritical,
-IsEnd,
-MaxAttempts,
-NextStep,
-OnFailure,
-Outputs,
-OverriddenParameters,
-ParentStepDetails,
-Response,
-ResponseCode,
-StepExecutionId,
-StepName,
-StepStatus,
-TargetLocation,
-Targets,
-TimeoutSeconds,
-TriggeredAlarms,
-ValidNextSteps
+action,
+execution_end_time,
+execution_start_time,
+failure_details,
+failure_message,
+inputs,
+is_critical,
+is_end,
+max_attempts,
+next_step,
+on_failure,
+outputs,
+overridden_parameters,
+parent_step_details,
+response,
+response_code,
+step_execution_id,
+step_name,
+step_status,
+target_location,
+targets,
+timeout_seconds,
+triggered_alarms,
+valid_next_steps
 FROM aws.ssm.automation_step_executions
 WHERE region = '{{ region }}' -- required
 ;

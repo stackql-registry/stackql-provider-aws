@@ -55,32 +55,32 @@ The following fields are returned by `SELECT` queries:
     <td>The size of the block on disk.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the data set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSetName" /></td>
+    <td><CopyableCode code="data_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of the data set. (pattern: &lt;code&gt;^\S&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSetOrg" /></td>
+    <td><CopyableCode code="data_set_org" /></td>
     <td><code>object</code></td>
     <td>The type of data set. The only supported value is VSAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileSize" /></td>
+    <td><CopyableCode code="file_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>File size of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastReferencedTime" /></td>
+    <td><CopyableCode code="last_referenced_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the data set was referenced.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the data set was updated.</td>
 </tr>
@@ -90,7 +90,7 @@ The following fields are returned by `SELECT` queries:
     <td>The location where the data set is stored. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordLength" /></td>
+    <td><CopyableCode code="record_length" /></td>
     <td><code>integer</code></td>
     <td>The length of records in the data set.</td>
 </tr>
@@ -170,14 +170,14 @@ Gets the details of a specific data set.
 ```sql
 SELECT
 blocksize,
-creationTime,
-dataSetName,
-dataSetOrg,
-fileSize,
-lastReferencedTime,
-lastUpdatedTime,
+creation_time,
+data_set_name,
+data_set_org,
+file_size,
+last_referenced_time,
+last_updated_time,
 location,
-recordLength
+record_length
 FROM aws.m2.data_set_details
 WHERE application_id = '{{ application_id }}' -- required
 AND data_set_name = '{{ data_set_name }}' -- required

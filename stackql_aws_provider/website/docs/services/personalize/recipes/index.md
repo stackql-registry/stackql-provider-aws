@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the recipe. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="algorithmArn" /></td>
+    <td><CopyableCode code="algorithm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the algorithm that Amazon Personalize uses to train the model. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the recipe was created.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the recipe.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="featureTransformationArn" /></td>
+    <td><CopyableCode code="feature_transformation_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the FeatureTransformation object. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the recipe was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeArn" /></td>
+    <td><CopyableCode code="recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recipe. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeType" /></td>
+    <td><CopyableCode code="recipe_type" /></td>
     <td><code>string</code></td>
     <td>One of the following values: PERSONALIZED_RANKING RELATED_ITEMS USER_PERSONALIZATION</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the recipe. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the recipe was created.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td>The domain of the recipe (if the recipe is a Domain dataset group use case). (ECOMMERCE, VIDEO_ON_DEMAND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the recipe was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recipeArn" /></td>
+    <td><CopyableCode code="recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recipe. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -213,13 +213,13 @@ Describes a recipe. A recipe contains three items: An algorithm that trains a mo
 ```sql
 SELECT
 name,
-algorithmArn,
-creationDateTime,
+algorithm_arn,
+creation_date_time,
 description,
-featureTransformationArn,
-lastUpdatedDateTime,
-recipeArn,
-recipeType,
+feature_transformation_arn,
+last_updated_date_time,
+recipe_arn,
+recipe_type,
 status
 FROM aws.personalize.recipes
 WHERE region = '{{ region }}' -- required
@@ -233,10 +233,10 @@ Returns a list of available recipes. The response provides the properties for ea
 ```sql
 SELECT
 name,
-creationDateTime,
+creation_date_time,
 domain,
-lastUpdatedDateTime,
-recipeArn,
+last_updated_date_time,
+recipe_arn,
 status
 FROM aws.personalize.recipes
 WHERE region = '{{ region }}' -- required

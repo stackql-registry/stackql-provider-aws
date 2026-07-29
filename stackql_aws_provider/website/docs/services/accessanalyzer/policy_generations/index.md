@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="completedOn" /></td>
+    <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when the policy generation was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The JobId that is returned by the StartPolicyGeneration operation. The JobId can be used with GetGeneratedPolicy to retrieve the generated policies or used with CancelPolicyGeneration to cancel the policy generation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="principalArn" /></td>
+    <td><CopyableCode code="principal_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM entity (user or role) for which you are generating a policy. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:iam::&#91;^:&#93;*:(role|user)/.&#123;1,576&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedOn" /></td>
+    <td><CopyableCode code="started_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when the policy generation started.</td>
 </tr>
@@ -154,10 +154,10 @@ Lists all of the policy generations requested in the last seven days.
 
 ```sql
 SELECT
-completedOn,
-jobId,
-principalArn,
-startedOn,
+completed_on,
+job_id,
+principal_arn,
+started_on,
 status
 FROM aws.accessanalyzer.policy_generations
 WHERE region = '{{ region }}' -- required

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of your security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferencingVpcId" /></td>
+    <td><CopyableCode code="referencing_vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC with the referencing security group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway (if applicable).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcPeeringConnectionId" /></td>
+    <td><CopyableCode code="vpc_peering_connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC peering connection (if applicable). For more information about security group referencing for peering connections, see Update your security groups to reference peer security groups in the VPC Peering Guide.</td>
 </tr>
@@ -144,10 +144,10 @@ Describes the VPCs on the other side of a VPC peering or Transit Gateway connect
 
 ```sql
 SELECT
-GroupId,
-ReferencingVpcId,
-TransitGatewayId,
-VpcPeeringConnectionId
+group_id,
+referencing_vpc_id,
+transit_gateway_id,
+vpc_peering_connection_id
 FROM aws.ec2.security_group_references
 WHERE GroupId = '{{ GroupId }}' -- required
 AND region = '{{ region }}' -- required

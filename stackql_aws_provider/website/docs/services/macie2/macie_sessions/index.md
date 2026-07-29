@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when the Amazon Macie account was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingPublishingFrequency" /></td>
+    <td><CopyableCode code="finding_publishing_frequency" /></td>
     <td><code>string</code></td>
     <td>The frequency with which Amazon Macie publishes updates to policy findings for an account. This includes publishing updates to Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events). For more information, see Monitoring and processing findings in the Amazon Macie User Guide. Valid values are: (FIFTEEN_MINUTES, ONE_HOUR, SIX_HOURS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceRole" /></td>
+    <td><CopyableCode code="service_role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service-linked role that allows Amazon Macie to monitor and analyze data in Amazon Web Services resources for the account.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of an Amazon Macie account. Valid values are: (PAUSED, ENABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status or configuration settings for the Amazon Macie account.</td>
 </tr>
@@ -146,11 +146,11 @@ Retrieves the status and configuration settings for an Amazon Macie account.
 
 ```sql
 SELECT
-createdAt,
-findingPublishingFrequency,
-serviceRole,
+created_at,
+finding_publishing_frequency,
+service_role,
 status,
-updatedAt
+updated_at
 FROM aws.macie2.macie_sessions
 WHERE region = '{{ region }}' -- required
 ;

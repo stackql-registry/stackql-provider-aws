@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Inputs" /></td>
+    <td><CopyableCode code="inputs" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>Used in SdiSource, CreateSdiSourceRequest, UpdateSdiSourceRequest. (QUADRANT, INTERLEAVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the SDI source is attached to an SDI input (IN_USE) or not (IDLE). (IDLE, IN_USE, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Used in SdiSource, CreateSdiSourceRequest, UpdateSdiSourceRequest. (SINGLE, QUAD)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Inputs" /></td>
+    <td><CopyableCode code="inputs" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>Used in SdiSource, CreateSdiSourceRequest, UpdateSdiSourceRequest. (QUADRANT, INTERLEAVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the SDI source is attached to an SDI input (IN_USE) or not (IDLE). (IDLE, IN_USE, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Used in SdiSource, CreateSdiSourceRequest, UpdateSdiSourceRequest. (SINGLE, QUAD)</td>
 </tr>
@@ -243,13 +243,13 @@ Gets details about a SdiSource.
 
 ```sql
 SELECT
-Arn,
-Id,
-Inputs,
-Mode,
-Name,
-State,
-Type
+arn,
+id,
+inputs,
+mode,
+name,
+state,
+type
 FROM aws.medialive.sdi_sources
 WHERE sdi_source_id = '{{ sdi_source_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -262,13 +262,13 @@ List all the SdiSources in the AWS account.
 
 ```sql
 SELECT
-Arn,
-Id,
-Inputs,
-Mode,
-Name,
-State,
-Type
+arn,
+id,
+inputs,
+mode,
+name,
+state,
+type
 FROM aws.medialive.sdi_sources
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -309,7 +309,7 @@ SELECT
 '{{ Type }}',
 '{{ region }}'
 RETURNING
-SdiSource
+sdi_source
 ;
 ```
 </TabItem>
@@ -371,7 +371,7 @@ WHERE
 sdi_source_id = '{{ sdi_source_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-SdiSource;
+sdi_source;
 ```
 </TabItem>
 </Tabs>

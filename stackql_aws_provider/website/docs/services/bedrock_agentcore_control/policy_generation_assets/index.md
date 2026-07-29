@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>Analysis findings and insights related to this specific generated policy asset. These findings may include validation results, potential issues, or recommendations for improvement to help users evaluate the quality and appropriateness of the generated policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyGenerationAssetId" /></td>
+    <td><CopyableCode code="policy_generation_asset_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this generated policy asset within the policy generation request. This ID can be used to reference specific generated policy options when creating actual policies from the generation results. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_&#93;*-&#91;a-z0-9_&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rawTextFragment" /></td>
+    <td><CopyableCode code="raw_text_fragment" /></td>
     <td><code>string</code></td>
     <td>The portion of the original natural language input that this generated policy asset addresses. This helps users understand which part of their policy description was translated into this specific Cedar policy statement, enabling better policy selection and refinement. When a single natural language input describes multiple authorization requirements, the generation process creates separate policy assets for each requirement, with each asset's rawTextFragment showing which requirement it addresses. Use this mapping to verify that all parts of your natural language input were correctly translated into Cedar policies.</td>
 </tr>
@@ -156,8 +156,8 @@ Retrieves a list of generated policy assets from a policy generation request wit
 SELECT
 definition,
 findings,
-policyGenerationAssetId,
-rawTextFragment
+policy_generation_asset_id,
+raw_text_fragment
 FROM aws.bedrock_agentcore_control.policy_generation_assets
 WHERE policy_generation_id = '{{ policy_generation_id }}' -- required
 AND policy_engine_id = '{{ policy_engine_id }}' -- required

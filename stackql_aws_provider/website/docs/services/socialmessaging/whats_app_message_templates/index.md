@@ -241,8 +241,8 @@ SELECT
 '{{ region }}'
 RETURNING
 category,
-metaTemplateId,
-templateStatus
+meta_template_id,
+template_status
 ;
 ```
 </TabItem>
@@ -262,8 +262,8 @@ SELECT
 '{{ region }}'
 RETURNING
 category,
-metaTemplateId,
-templateStatus
+meta_template_id,
+template_status
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ SELECT
 '{{ sourceS3File }}',
 '{{ region }}'
 RETURNING
-metaHeaderHandle
+meta_header_handle
 ;
 ```
 </TabItem>

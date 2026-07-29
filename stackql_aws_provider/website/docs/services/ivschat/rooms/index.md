@@ -66,27 +66,27 @@ The following fields are returned by `SELECT` queries:
     <td>Room ARN, from the request (if identifier was an ARN). (pattern: &lt;code&gt;arn:aws:ivschat:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:room/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time when the room was created. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loggingConfigurationIdentifiers" /></td>
+    <td><CopyableCode code="logging_configuration_identifiers" /></td>
     <td><code>array</code></td>
     <td>Array of logging configurations attached to the room.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maximumMessageLength" /></td>
+    <td><CopyableCode code="maximum_message_length" /></td>
     <td><code>integer</code></td>
     <td>Maximum number of characters in a single message. Messages are expected to be UTF-8 encoded and this limit applies specifically to rune/code-point count, not number of bytes. Default: 500.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maximumMessageRatePerSecond" /></td>
+    <td><CopyableCode code="maximum_message_rate_per_second" /></td>
     <td><code>integer</code></td>
     <td>Maximum number of messages per second that can be sent to the room (by all clients). Default: 10.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="messageReviewHandler" /></td>
+    <td><CopyableCode code="message_review_handler" /></td>
     <td><code>object</code></td>
     <td>Configuration information for optional message review.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags attached to the resource. Array of maps, each of the form string:string (key:value).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time of the room’s last update. This is an ISO 8601 timestamp; note that this is returned as a string.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more rooms than maxResults, use nextToken in the request to get the next set.</td>
 </tr>
@@ -249,13 +249,13 @@ SELECT
 id,
 name,
 arn,
-createTime,
-loggingConfigurationIdentifiers,
-maximumMessageLength,
-maximumMessageRatePerSecond,
-messageReviewHandler,
+create_time,
+logging_configuration_identifiers,
+maximum_message_length,
+maximum_message_rate_per_second,
+message_review_handler,
 tags,
-updateTime
+update_time
 FROM aws.ivschat.rooms
 WHERE region = '{{ region }}' -- required
 ;
@@ -267,7 +267,7 @@ Gets summary information about all your rooms in the AWS region where the API re
 
 ```sql
 SELECT
-nextToken,
+next_token,
 rooms
 FROM aws.ivschat.rooms
 WHERE region = '{{ region }}' -- required
@@ -308,9 +308,9 @@ SELECT
 '{{ attributes }}',
 '{{ region }}'
 RETURNING
-sessionExpirationTime,
+session_expiration_time,
 token,
-tokenExpirationTime
+token_expiration_time
 ;
 ```
 </TabItem>
@@ -340,13 +340,13 @@ RETURNING
 id,
 name,
 arn,
-createTime,
-loggingConfigurationIdentifiers,
-maximumMessageLength,
-maximumMessageRatePerSecond,
-messageReviewHandler,
+create_time,
+logging_configuration_identifiers,
+maximum_message_length,
+maximum_message_rate_per_second,
+message_review_handler,
 tags,
-updateTime
+update_time
 ;
 ```
 </TabItem>
@@ -420,13 +420,13 @@ RETURNING
 id,
 name,
 arn,
-createTime,
-loggingConfigurationIdentifiers,
-maximumMessageLength,
-maximumMessageRatePerSecond,
-messageReviewHandler,
+create_time,
+logging_configuration_identifiers,
+maximum_message_length,
+maximum_message_rate_per_second,
+message_review_handler,
 tags,
-updateTime;
+update_time;
 ```
 </TabItem>
 </Tabs>

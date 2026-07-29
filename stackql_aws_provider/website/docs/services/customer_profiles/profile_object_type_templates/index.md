@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowProfileCreation" /></td>
+    <td><CopyableCode code="allow_profile_creation" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a profile should be created when data is received if one doesn’t exist for an object of this type. The default is FALSE. If the AllowProfileCreation flag is set to FALSE, then the service tries to fetch a standard profile and associate this object with the profile. If it is set to TRUE, and if no match is found, then the service creates a new standard profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Fields" /></td>
+    <td><CopyableCode code="fields" /></td>
     <td><code>object</code></td>
     <td>A map of the name and ObjectType field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Keys" /></td>
+    <td><CopyableCode code="keys" /></td>
     <td><code>object</code></td>
     <td>A list of unique keys that can be used to map data to the profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLastUpdatedTimestampFormat" /></td>
+    <td><CopyableCode code="source_last_updated_timestamp_format" /></td>
     <td><code>string</code></td>
     <td>The format of your sourceLastUpdatedTimestamp that was previously set up.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceName" /></td>
+    <td><CopyableCode code="source_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source of the object template. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceObject" /></td>
+    <td><CopyableCode code="source_object" /></td>
     <td><code>string</code></td>
     <td>The source of the object template. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the object template. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>The list of ListProfileObjectType template instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token from the previous ListObjectTypeTemplates API call.</td>
 </tr>
@@ -197,13 +197,13 @@ Returns the template information for a specific object type. A template is a pre
 
 ```sql
 SELECT
-AllowProfileCreation,
-Fields,
-Keys,
-SourceLastUpdatedTimestampFormat,
-SourceName,
-SourceObject,
-TemplateId
+allow_profile_creation,
+fields,
+keys,
+source_last_updated_timestamp_format,
+source_name,
+source_object,
+template_id
 FROM aws.customer_profiles.profile_object_type_templates
 WHERE template_id = '{{ template_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -216,8 +216,8 @@ Lists all of the template information for object types.
 
 ```sql
 SELECT
-Items,
-NextToken
+items,
+next_token
 FROM aws.customer_profiles.profile_object_type_templates
 WHERE region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'

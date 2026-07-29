@@ -65,22 +65,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the network profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="downlinkBandwidthBits" /></td>
+    <td><CopyableCode code="downlink_bandwidth_bits" /></td>
     <td><code>integer (int64)</code></td>
     <td>The data throughput rate in bits per second, as an integer from 0 to 104857600.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="downlinkDelayMs" /></td>
+    <td><CopyableCode code="downlink_delay_ms" /></td>
     <td><code>integer (int64)</code></td>
     <td>Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="downlinkJitterMs" /></td>
+    <td><CopyableCode code="downlink_jitter_ms" /></td>
     <td><code>integer (int64)</code></td>
     <td>Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="downlinkLossPercent" /></td>
+    <td><CopyableCode code="downlink_loss_percent" /></td>
     <td><code>integer</code></td>
     <td>Proportion of received packets that fail to arrive from 0 to 100 percent.</td>
 </tr>
@@ -90,22 +90,22 @@ The following fields are returned by `SELECT` queries:
     <td>The type of network profile. Valid values are listed here. (CURATED, PRIVATE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uplinkBandwidthBits" /></td>
+    <td><CopyableCode code="uplink_bandwidth_bits" /></td>
     <td><code>integer (int64)</code></td>
     <td>The data throughput rate in bits per second, as an integer from 0 to 104857600.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uplinkDelayMs" /></td>
+    <td><CopyableCode code="uplink_delay_ms" /></td>
     <td><code>integer (int64)</code></td>
     <td>Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uplinkJitterMs" /></td>
+    <td><CopyableCode code="uplink_jitter_ms" /></td>
     <td><code>integer (int64)</code></td>
     <td>Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uplinkLossPercent" /></td>
+    <td><CopyableCode code="uplink_loss_percent" /></td>
     <td><code>integer</code></td>
     <td>Proportion of transmitted packets that fail to arrive from 0 to 100 percent.</td>
 </tr>
@@ -205,15 +205,15 @@ SELECT
 name,
 arn,
 description,
-downlinkBandwidthBits,
-downlinkDelayMs,
-downlinkJitterMs,
-downlinkLossPercent,
+downlink_bandwidth_bits,
+downlink_delay_ms,
+downlink_jitter_ms,
+downlink_loss_percent,
 type_,
-uplinkBandwidthBits,
-uplinkDelayMs,
-uplinkJitterMs,
-uplinkLossPercent
+uplink_bandwidth_bits,
+uplink_delay_ms,
+uplink_jitter_ms,
+uplink_loss_percent
 FROM aws.devicefarm.network_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,7 +266,7 @@ SELECT
 {{ downlinkLossPercent }},
 '{{ region }}'
 RETURNING
-networkProfile
+network_profile
 ;
 ```
 </TabItem>
@@ -364,7 +364,7 @@ WHERE
 region = '{{ region }}' --required
 AND arn = '{{ arn }}' --required
 RETURNING
-networkProfile;
+network_profile;
 ```
 </TabItem>
 </Tabs>

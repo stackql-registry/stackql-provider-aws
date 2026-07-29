@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="batchPredictions" /></td>
+    <td><CopyableCode code="batch_predictions" /></td>
     <td><code>array</code></td>
     <td>An array containing the details of each batch prediction job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next token for the subsequent request.</td>
 </tr>
@@ -138,8 +138,8 @@ Gets all batch prediction jobs or a specific job if you specify a job ID. This i
 
 ```sql
 SELECT
-batchPredictions,
-nextToken
+batch_predictions,
+next_token
 FROM aws.frauddetector.batch_prediction_jobs
 WHERE region = '{{ region }}' -- required
 ;

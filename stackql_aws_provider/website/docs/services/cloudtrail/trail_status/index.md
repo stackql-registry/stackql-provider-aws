@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsLogging" /></td>
+    <td><CopyableCode code="is_logging" /></td>
     <td><code>boolean</code></td>
     <td>Whether the CloudTrail trail is currently logging Amazon Web Services API calls.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestCloudWatchLogsDeliveryError" /></td>
+    <td><CopyableCode code="latest_cloud_watch_logs_delivery_error" /></td>
     <td><code>string</code></td>
     <td>Displays any CloudWatch Logs error that CloudTrail encountered when attempting to deliver logs to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestCloudWatchLogsDeliveryTime" /></td>
+    <td><CopyableCode code="latest_cloud_watch_logs_delivery_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Displays the most recent date and time when CloudTrail delivered logs to CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryAttemptSucceeded" /></td>
+    <td><CopyableCode code="latest_delivery_attempt_succeeded" /></td>
     <td><code>string</code></td>
     <td>This field is no longer in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryAttemptTime" /></td>
+    <td><CopyableCode code="latest_delivery_attempt_time" /></td>
     <td><code>string</code></td>
     <td>This field is no longer in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryError" /></td>
+    <td><CopyableCode code="latest_delivery_error" /></td>
     <td><code>string</code></td>
     <td>Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver log files to the designated bucket. For more information, see Error Responses in the Amazon S3 API Reference. This error occurs only when there is a problem with the destination S3 bucket, and does not occur for requests that time out. To resolve the issue, fix the bucket policy so that CloudTrail can write to the bucket; or create a new bucket and call UpdateTrail to specify the new bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDeliveryTime" /></td>
+    <td><CopyableCode code="latest_delivery_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the date and time that CloudTrail last delivered log files to an account's Amazon S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDigestDeliveryError" /></td>
+    <td><CopyableCode code="latest_digest_delivery_error" /></td>
     <td><code>string</code></td>
     <td>Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver a digest file to the designated bucket. For more information, see Error Responses in the Amazon S3 API Reference. This error occurs only when there is a problem with the destination S3 bucket, and does not occur for requests that time out. To resolve the issue, fix the bucket policy so that CloudTrail can write to the bucket; or create a new bucket and call UpdateTrail to specify the new bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestDigestDeliveryTime" /></td>
+    <td><CopyableCode code="latest_digest_delivery_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the date and time that CloudTrail last delivered a digest file to an account's Amazon S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestNotificationAttemptSucceeded" /></td>
+    <td><CopyableCode code="latest_notification_attempt_succeeded" /></td>
     <td><code>string</code></td>
     <td>This field is no longer in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestNotificationAttemptTime" /></td>
+    <td><CopyableCode code="latest_notification_attempt_time" /></td>
     <td><code>string</code></td>
     <td>This field is no longer in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestNotificationError" /></td>
+    <td><CopyableCode code="latest_notification_error" /></td>
     <td><code>string</code></td>
     <td>Displays any Amazon SNS error that CloudTrail encountered when attempting to send a notification. For more information about Amazon SNS errors, see the Amazon SNS Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestNotificationTime" /></td>
+    <td><CopyableCode code="latest_notification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the date and time of the most recent Amazon SNS notification that CloudTrail has written a new log file to an account's Amazon S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartLoggingTime" /></td>
+    <td><CopyableCode code="start_logging_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the most recent date and time when CloudTrail started recording API calls for an Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StopLoggingTime" /></td>
+    <td><CopyableCode code="stop_logging_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the most recent date and time when CloudTrail stopped recording API calls for an Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeLoggingStarted" /></td>
+    <td><CopyableCode code="time_logging_started" /></td>
     <td><code>string</code></td>
     <td>This field is no longer in use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeLoggingStopped" /></td>
+    <td><CopyableCode code="time_logging_stopped" /></td>
     <td><code>string</code></td>
     <td>This field is no longer in use.</td>
 </tr>
@@ -199,23 +199,23 @@ Returns a JSON-formatted list of information about the specified trail. Fields i
 
 ```sql
 SELECT
-IsLogging,
-LatestCloudWatchLogsDeliveryError,
-LatestCloudWatchLogsDeliveryTime,
-LatestDeliveryAttemptSucceeded,
-LatestDeliveryAttemptTime,
-LatestDeliveryError,
-LatestDeliveryTime,
-LatestDigestDeliveryError,
-LatestDigestDeliveryTime,
-LatestNotificationAttemptSucceeded,
-LatestNotificationAttemptTime,
-LatestNotificationError,
-LatestNotificationTime,
-StartLoggingTime,
-StopLoggingTime,
-TimeLoggingStarted,
-TimeLoggingStopped
+is_logging,
+latest_cloud_watch_logs_delivery_error,
+latest_cloud_watch_logs_delivery_time,
+latest_delivery_attempt_succeeded,
+latest_delivery_attempt_time,
+latest_delivery_error,
+latest_delivery_time,
+latest_digest_delivery_error,
+latest_digest_delivery_time,
+latest_notification_attempt_succeeded,
+latest_notification_attempt_time,
+latest_notification_error,
+latest_notification_time,
+start_logging_time,
+stop_logging_time,
+time_logging_started,
+time_logging_stopped
 FROM aws.cloudtrail.trail_status
 WHERE region = '{{ region }}' -- required
 ;

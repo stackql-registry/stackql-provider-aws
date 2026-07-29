@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventSubscriptions" /></td>
+    <td><CopyableCode code="event_subscriptions" /></td>
     <td><code>array</code></td>
     <td>The list of existing event subscriptions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the assessment template that is used during the event for which the SNS notification is sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="topicArn" /></td>
+    <td><CopyableCode code="topic_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.</td>
 </tr>
@@ -129,9 +129,9 @@ Lists all the event subscriptions for the assessment template that is specified 
 
 ```sql
 SELECT
-eventSubscriptions,
-resourceArn,
-topicArn
+event_subscriptions,
+resource_arn,
+topic_arn
 FROM aws.inspector.event_subscriptions
 WHERE region = '{{ region }}' -- required
 ;

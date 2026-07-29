@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="approvalRuleTemplateContent" /></td>
+    <td><CopyableCode code="approval_rule_template_content" /></td>
     <td><code>string</code></td>
     <td>The content of the approval rule template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="approvalRuleTemplateDescription" /></td>
+    <td><CopyableCode code="approval_rule_template_description" /></td>
     <td><code>string</code></td>
     <td>The description of the approval rule template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="approvalRuleTemplateId" /></td>
+    <td><CopyableCode code="approval_rule_template_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated ID of the approval rule template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="approvalRuleTemplateName" /></td>
+    <td><CopyableCode code="approval_rule_template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the approval rule template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the approval rule template was created, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the approval rule template was most recently changed, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedUser" /></td>
+    <td><CopyableCode code="last_modified_user" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who made the most recent changes to the approval rule template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleContentSha256" /></td>
+    <td><CopyableCode code="rule_content_sha_256" /></td>
     <td><code>string</code></td>
     <td>The SHA-256 hash signature for the content of the approval rule template.</td>
 </tr>
@@ -217,14 +217,14 @@ Returns information about a specified approval rule template.
 
 ```sql
 SELECT
-approvalRuleTemplateContent,
-approvalRuleTemplateDescription,
-approvalRuleTemplateId,
-approvalRuleTemplateName,
-creationDate,
-lastModifiedDate,
-lastModifiedUser,
-ruleContentSha256
+approval_rule_template_content,
+approval_rule_template_description,
+approval_rule_template_id,
+approval_rule_template_name,
+creation_date,
+last_modified_date,
+last_modified_user,
+rule_content_sha_256
 FROM aws.codecommit.approval_rule_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -271,7 +271,7 @@ SELECT
 '{{ approvalRuleTemplateDescription }}',
 '{{ region }}'
 RETURNING
-approvalRuleTemplate
+approval_rule_template
 ;
 ```
 </TabItem>
@@ -326,7 +326,7 @@ region = '{{ region }}' --required
 AND approvalRuleTemplateName = '{{ approvalRuleTemplateName }}' --required
 AND newRuleContent = '{{ newRuleContent }}' --required
 RETURNING
-approvalRuleTemplate;
+approval_rule_template;
 ```
 </TabItem>
 <TabItem value="update_approval_rule_template_description">
@@ -343,7 +343,7 @@ region = '{{ region }}' --required
 AND approvalRuleTemplateName = '{{ approvalRuleTemplateName }}' --required
 AND approvalRuleTemplateDescription = '{{ approvalRuleTemplateDescription }}' --required
 RETURNING
-approvalRuleTemplate;
+approval_rule_template;
 ```
 </TabItem>
 <TabItem value="update_approval_rule_template_name">
@@ -360,7 +360,7 @@ region = '{{ region }}' --required
 AND oldApprovalRuleTemplateName = '{{ oldApprovalRuleTemplateName }}' --required
 AND newApprovalRuleTemplateName = '{{ newApprovalRuleTemplateName }}' --required
 RETURNING
-approvalRuleTemplate;
+approval_rule_template;
 ```
 </TabItem>
 </Tabs>

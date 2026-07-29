@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the custom model deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customModelDeploymentArn" /></td>
+    <td><CopyableCode code="custom_model_deployment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom model deployment. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model-deployment/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the custom model deployment. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>If the deployment status is FAILED, this field contains a message describing the failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the custom model deployment was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom model associated with this deployment. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model/(imported|&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelDeploymentName" /></td>
+    <td><CopyableCode code="model_deployment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom model deployment. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the custom model deployment. Possible values are: CREATING - The deployment is being set up and prepared for inference. ACTIVE - The deployment is ready and available for inference requests. FAILED - The deployment failed to be created or became unavailable. (Creating, Active, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateDetails" /></td>
+    <td><CopyableCode code="update_details" /></td>
     <td><code>object</code></td>
     <td>Details about any pending or completed updates to the custom model deployment, including the new model ARN and update status.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the custom model deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customModelDeploymentArn" /></td>
+    <td><CopyableCode code="custom_model_deployment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom model deployment. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model-deployment/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customModelDeploymentName" /></td>
+    <td><CopyableCode code="custom_model_deployment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom model deployment. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>If the deployment status is FAILED, this field contains a message describing the failure reason.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the custom model deployment was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom model associated with this deployment. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
@@ -288,15 +288,15 @@ Retrieves information about a custom model deployment, including its status, con
 
 ```sql
 SELECT
-createdAt,
-customModelDeploymentArn,
+created_at,
+custom_model_deployment_arn,
 description,
-failureMessage,
-lastUpdatedAt,
-modelArn,
-modelDeploymentName,
+failure_message,
+last_updated_at,
+model_arn,
+model_deployment_name,
 status,
-updateDetails
+update_details
 FROM aws.bedrock.custom_model_deployments
 WHERE custom_model_deployment_identifier = '{{ custom_model_deployment_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -309,12 +309,12 @@ Lists custom model deployments in your account. You can filter the results by cr
 
 ```sql
 SELECT
-createdAt,
-customModelDeploymentArn,
-customModelDeploymentName,
-failureMessage,
-lastUpdatedAt,
-modelArn,
+created_at,
+custom_model_deployment_arn,
+custom_model_deployment_name,
+failure_message,
+last_updated_at,
+model_arn,
 status
 FROM aws.bedrock.custom_model_deployments
 WHERE region = '{{ region }}' -- required
@@ -363,7 +363,7 @@ SELECT
 '{{ clientRequestToken }}',
 '{{ region }}'
 RETURNING
-customModelDeploymentArn
+custom_model_deployment_arn
 ;
 ```
 </TabItem>
@@ -414,7 +414,7 @@ custom_model_deployment_identifier = '{{ custom_model_deployment_identifier }}' 
 AND region = '{{ region }}' --required
 AND modelArn = '{{ modelArn }}' --required
 RETURNING
-customModelDeploymentArn;
+custom_model_deployment_arn;
 ```
 </TabItem>
 </Tabs>

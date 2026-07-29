@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HapgArn" /></td>
+    <td><CopyableCode code="hapg_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the high-availability partition group. (pattern: &lt;code&gt;arn:aws(-iso)?:cloudhsm:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:hapg-&#91;0-9a-f&#93;&#123;8&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HapgSerial" /></td>
+    <td><CopyableCode code="hapg_serial" /></td>
     <td><code>string</code></td>
     <td>The serial number of the high-availability partition group. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmsLastActionFailed" /></td>
+    <td><CopyableCode code="hsms_last_action_failed" /></td>
     <td><code>array</code></td>
     <td>Contains a list of ARNs that identify the HSMs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmsPendingDeletion" /></td>
+    <td><CopyableCode code="hsms_pending_deletion" /></td>
     <td><code>array</code></td>
     <td>Contains a list of ARNs that identify the HSMs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmsPendingRegistration" /></td>
+    <td><CopyableCode code="hsms_pending_registration" /></td>
     <td><code>array</code></td>
     <td>Contains a list of ARNs that identify the HSMs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Label" /></td>
+    <td><CopyableCode code="label" /></td>
     <td><code>string</code></td>
     <td>The label for the high-availability partition group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string</code></td>
     <td>The date and time the high-availability partition group was last modified. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionSerialList" /></td>
+    <td><CopyableCode code="partition_serial_list" /></td>
     <td><code>array</code></td>
     <td>The list of partition serial numbers that belong to the high-availability partition group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the high-availability partition group. (READY, UPDATING, DEGRADED)</td>
 </tr>
@@ -208,15 +208,15 @@ This is documentation for AWS CloudHSM Classic. For more information, see AWS Cl
 
 ```sql
 SELECT
-HapgArn,
-HapgSerial,
-HsmsLastActionFailed,
-HsmsPendingDeletion,
-HsmsPendingRegistration,
-Label,
-LastModifiedTimestamp,
-PartitionSerialList,
-State
+hapg_arn,
+hapg_serial,
+hsms_last_action_failed,
+hsms_pending_deletion,
+hsms_pending_registration,
+label,
+last_modified_timestamp,
+partition_serial_list,
+state
 FROM aws.cloudhsm.hapgs
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,7 +259,7 @@ SELECT
 '{{ Label }}',
 '{{ region }}'
 RETURNING
-HapgArn
+hapg_arn
 ;
 ```
 </TabItem>
@@ -303,7 +303,7 @@ WHERE
 region = '{{ region }}' --required
 AND HapgArn = '{{ HapgArn }}' --required
 RETURNING
-HapgArn;
+hapg_arn;
 ```
 </TabItem>
 </Tabs>

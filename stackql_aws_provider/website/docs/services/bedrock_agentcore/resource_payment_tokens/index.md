@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="coinbaseCdpTokenResponse" /></td>
+    <td><CopyableCode code="coinbase_cdp_token_response" /></td>
     <td><code>object</code></td>
     <td>Coinbase CDP token response</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stripePrivyTokenResponse" /></td>
+    <td><CopyableCode code="stripe_privy_token_response" /></td>
     <td><code>object</code></td>
     <td>StripePrivy token response containing appId, basicAuthToken, and optionally authorizationSignature</td>
 </tr>
@@ -124,8 +124,8 @@ Generates authentication tokens for payment providers that use vendor-specific a
 
 ```sql
 SELECT
-coinbaseCdpTokenResponse,
-stripePrivyTokenResponse
+coinbase_cdp_token_response,
+stripe_privy_token_response
 FROM aws.bedrock_agentcore.resource_payment_tokens
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FlowArn" /></td>
+    <td><CopyableCode code="flow_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the flow that DescribeFlowSourceThumbnail was performed on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Thumbnail" /></td>
+    <td><CopyableCode code="thumbnail" /></td>
     <td><code>string</code></td>
     <td>Thumbnail Base64 string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThumbnailMessages" /></td>
+    <td><CopyableCode code="thumbnail_messages" /></td>
     <td><code>array</code></td>
     <td>Status code and messages about the flow source thumbnail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timecode" /></td>
+    <td><CopyableCode code="timecode" /></td>
     <td><code>string</code></td>
     <td>Timecode of thumbnail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when thumbnail was generated.</td>
 </tr>
@@ -144,11 +144,11 @@ Describes the thumbnail for the flow source.
 
 ```sql
 SELECT
-FlowArn,
-Thumbnail,
-ThumbnailMessages,
-Timecode,
-Timestamp
+flow_arn,
+thumbnail,
+thumbnail_messages,
+timecode,
+timestamp
 FROM aws.mediaconnect.flow_source_thumbnails
 WHERE flow_arn = '{{ flow_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Nodes" /></td>
+    <td><CopyableCode code="nodes" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the ChannelPlacementGroup. (UNASSIGNED, ASSIGNING, ASSIGNED, DELETING, DELETE_FAILED, DELETED, UNASSIGNING)</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Channels" /></td>
+    <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Nodes" /></td>
+    <td><CopyableCode code="nodes" /></td>
     <td><code>array</code></td>
     <td>Placeholder documentation for __listOf__string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the ChannelPlacementGroup. (UNASSIGNED, ASSIGNING, ASSIGNED, DELETING, DELETE_FAILED, DELETED, UNASSIGNING)</td>
 </tr>
@@ -248,13 +248,13 @@ Get details about a ChannelPlacementGroup.
 
 ```sql
 SELECT
-Arn,
-Channels,
-ClusterId,
-Id,
-Name,
-Nodes,
-State
+arn,
+channels,
+cluster_id,
+id,
+name,
+nodes,
+state
 FROM aws.medialive.channel_placement_groups
 WHERE channel_placement_group_id = '{{ channel_placement_group_id }}' -- required
 AND cluster_id = '{{ cluster_id }}' -- required
@@ -268,13 +268,13 @@ Retrieve the list of ChannelPlacementGroups in the specified Cluster.
 
 ```sql
 SELECT
-Arn,
-Channels,
-ClusterId,
-Id,
-Name,
-Nodes,
-State
+arn,
+channels,
+cluster_id,
+id,
+name,
+nodes,
+state
 FROM aws.medialive.channel_placement_groups
 WHERE cluster_id = '{{ cluster_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -316,13 +316,13 @@ SELECT
 '{{ cluster_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-Channels,
-ClusterId,
-Id,
-Name,
-Nodes,
-State
+arn,
+channels,
+cluster_id,
+id,
+name,
+nodes,
+state
 ;
 ```
 </TabItem>
@@ -382,13 +382,13 @@ channel_placement_group_id = '{{ channel_placement_group_id }}' --required
 AND cluster_id = '{{ cluster_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-Channels,
-ClusterId,
-Id,
-Name,
-Nodes,
-State;
+arn,
+channels,
+cluster_id,
+id,
+name,
+nodes,
+state;
 ```
 </TabItem>
 </Tabs>

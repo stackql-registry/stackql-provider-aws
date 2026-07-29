@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the trained model inference job. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationIdentifier" /></td>
+    <td><CopyableCode code="collaboration_identifier" /></td>
     <td><code>string</code></td>
     <td>The collaboration ID of the collaboration that contains the trained model inference job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredModelAlgorithmAssociationArn" /></td>
+    <td><CopyableCode code="configured_model_algorithm_association_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the configured model algorithm association that is used for the trained model inference job. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/configured-model-algorithm-association/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the trained model inference job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorAccountId" /></td>
+    <td><CopyableCode code="creator_account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID that created the trained model inference job. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the trained model inference job. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logsStatus" /></td>
+    <td><CopyableCode code="logs_status" /></td>
     <td><code>string</code></td>
     <td>The trained model inference job logs status. (PUBLISH_SUCCEEDED, PUBLISH_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logsStatusDetails" /></td>
+    <td><CopyableCode code="logs_status_details" /></td>
     <td><code>string</code></td>
     <td>Details about the logs status for the trained model inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipIdentifier" /></td>
+    <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the membership that contains the trained model inference job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsStatus" /></td>
+    <td><CopyableCode code="metrics_status" /></td>
     <td><code>string</code></td>
     <td>the trained model inference job metrics status. (PUBLISH_SUCCEEDED, PUBLISH_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsStatusDetails" /></td>
+    <td><CopyableCode code="metrics_status_details" /></td>
     <td><code>string</code></td>
     <td>Details about the metrics status for trained model inference job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfiguration" /></td>
+    <td><CopyableCode code="output_configuration" /></td>
     <td><code>object</code></td>
     <td>Returns output configuration information for the trained model inference job.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the trained model inference job. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, CANCEL_PENDING, CANCEL_IN_PROGRESS, CANCEL_FAILED, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelArn" /></td>
+    <td><CopyableCode code="trained_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trained model that is used for the trained model inference job. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/trained-model/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelInferenceJobArn" /></td>
+    <td><CopyableCode code="trained_model_inference_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trained model inference job. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/trained-model-inference-job/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainedModelVersionIdentifier" /></td>
+    <td><CopyableCode code="trained_model_version_identifier" /></td>
     <td><code>string</code></td>
     <td>The version identifier of the trained model that was used for inference in this job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent time at which the trained model inference job was updated.</td>
 </tr>
@@ -225,22 +225,22 @@ Returns a list of trained model inference jobs in a specified collaboration.
 ```sql
 SELECT
 name,
-collaborationIdentifier,
-configuredModelAlgorithmAssociationArn,
-createTime,
-creatorAccountId,
+collaboration_identifier,
+configured_model_algorithm_association_arn,
+create_time,
+creator_account_id,
 description,
-logsStatus,
-logsStatusDetails,
-membershipIdentifier,
-metricsStatus,
-metricsStatusDetails,
-outputConfiguration,
+logs_status,
+logs_status_details,
+membership_identifier,
+metrics_status,
+metrics_status_details,
+output_configuration,
 status,
-trainedModelArn,
-trainedModelInferenceJobArn,
-trainedModelVersionIdentifier,
-updateTime
+trained_model_arn,
+trained_model_inference_job_arn,
+trained_model_version_identifier,
+update_time
 FROM aws.cleanroomsml.collaboration_trained_model_inference_jobs
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoUpdate" /></td>
+    <td><CopyableCode code="auto_update" /></td>
     <td><code>string</code></td>
     <td>Indicates whether automatic retraining will be attempted for the versions of the project. Applies only to adapters. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp for the date and time that the project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Datasets" /></td>
+    <td><CopyableCode code="datasets" /></td>
     <td><code>array</code></td>
     <td>Information about the training and test datasets in the project.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Feature" /></td>
+    <td><CopyableCode code="feature" /></td>
     <td><code>string</code></td>
     <td>Specifies the project that is being customized. (CONTENT_MODERATION, CUSTOM_LABELS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectArn" /></td>
+    <td><CopyableCode code="project_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the project. (pattern: &lt;code&gt;(^arn:&#91;a-z\d-&#93;+:rekognition:&#91;a-z\d-&#93;+:\d&#123;12&#125;:project\/&#91;a-zA-Z0-9_.\-&#93;&#123;1,255&#125;\/&#91;0-9&#93;+$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the project. (CREATING, CREATED, DELETING)</td>
 </tr>
@@ -179,12 +179,12 @@ Gets information about your Rekognition projects. This operation requires permis
 
 ```sql
 SELECT
-AutoUpdate,
-CreationTimestamp,
-Datasets,
-Feature,
-ProjectArn,
-Status
+auto_update,
+creation_timestamp,
+datasets,
+feature,
+project_arn,
+status
 FROM aws.rekognition.projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -221,7 +221,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ProjectArn
+project_arn
 ;
 ```
 </TabItem>

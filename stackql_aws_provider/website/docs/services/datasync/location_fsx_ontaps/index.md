@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FsxFilesystemArn" /></td>
+    <td><CopyableCode code="fsx_filesystem_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the FSx for ONTAP file system. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):fsx:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:file-system/fs-&#91;0-9a-f&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the FSx for ONTAP file system location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The uniform resource identifier (URI) of the FSx for ONTAP file system location. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>object</code></td>
     <td>Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupArns" /></td>
+    <td><CopyableCode code="security_group_arns" /></td>
     <td><code>array</code></td>
     <td>The security groups that DataSync uses to access your FSx for ONTAP file system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageVirtualMachineArn" /></td>
+    <td><CopyableCode code="storage_virtual_machine_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the storage virtual machine (SVM) on your FSx for ONTAP file system where you're copying data to or from. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):fsx:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:storage-virtual-machine/fs-&#91;0-9a-f&#93;+/svm-&#91;0-9a-f&#93;&#123;17,&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -163,13 +163,13 @@ Provides details about how an DataSync transfer location for an Amazon FSx for N
 
 ```sql
 SELECT
-CreationTime,
-FsxFilesystemArn,
-LocationArn,
-LocationUri,
-Protocol,
-SecurityGroupArns,
-StorageVirtualMachineArn
+creation_time,
+fsx_filesystem_arn,
+location_arn,
+location_uri,
+protocol,
+security_group_arns,
+storage_virtual_machine_arn
 FROM aws.datasync.location_fsx_ontaps
 WHERE region = '{{ region }}' -- required
 ;
@@ -208,7 +208,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

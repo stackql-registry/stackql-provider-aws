@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the ODB peering connection was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the ODB peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkArn" /></td>
+    <td><CopyableCode code="odb_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB network that initiated the peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbPeeringConnectionArn" /></td>
+    <td><CopyableCode code="odb_peering_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB peering connection. Example: arn:aws:odb:us-east-1:123456789012:odb-peering-connection/odbpcx-abcdefgh12345678</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbPeeringConnectionId" /></td>
+    <td><CopyableCode code="odb_peering_connection_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the ODB peering connection. A sample ID is odbpcx-abcdefgh12345678. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbPeeringConnectionType" /></td>
+    <td><CopyableCode code="odb_peering_connection_type" /></td>
     <td><code>string</code></td>
     <td>The type of the ODB peering connection. Valid Values: ODB-VPC | ODB-ODB</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peerNetworkArn" /></td>
+    <td><CopyableCode code="peer_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the peer network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peerNetworkCidrs" /></td>
+    <td><CopyableCode code="peer_network_cidrs" /></td>
     <td><code>array</code></td>
     <td>The CIDR blocks associated with the peering connection. These CIDR blocks define the IP address ranges that can communicate through the peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage progress of the ODB peering connection creation or deletion.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the ODB peering connection. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the ODB peering connection.</td>
 </tr>
@@ -120,47 +120,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the ODB peering connection was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the ODB peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbNetworkArn" /></td>
+    <td><CopyableCode code="odb_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB network that initiated the peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbPeeringConnectionArn" /></td>
+    <td><CopyableCode code="odb_peering_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ODB peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbPeeringConnectionId" /></td>
+    <td><CopyableCode code="odb_peering_connection_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the ODB peering connection. A sample ID is odbpcx-abcdefgh12345678. (pattern: &lt;code&gt;(arn:(?:aws|aws-cn|aws-us-gov|aws-iso-&#123;0,1&#125;&#91;a-z&#93;&#123;0,1&#125;):&#91;a-z0-9-&#93;+:&#91;a-z0-9-&#93;*:&#91;0-9&#93;+:&#91;a-z0-9-&#93;+/&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;|&#91;a-zA-Z0-9_~.-&#93;&#123;6,64&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="odbPeeringConnectionType" /></td>
+    <td><CopyableCode code="odb_peering_connection_type" /></td>
     <td><code>string</code></td>
     <td>The type of the ODB peering connection. Valid Values: ODB-VPC | ODB-ODB</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peerNetworkArn" /></td>
+    <td><CopyableCode code="peer_network_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the peer network.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="peerNetworkCidrs" /></td>
+    <td><CopyableCode code="peer_network_cidrs" /></td>
     <td><code>array</code></td>
     <td>The CIDR blocks associated with the peering connection. These CIDR blocks define the IP address ranges that can communicate through the peering connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="percentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>number (float)</code></td>
     <td>The percentage progress of the ODB peering connection creation or deletion.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the ODB peering connection. (AVAILABLE, FAILED, PROVISIONING, TERMINATED, TERMINATING, UPDATING, MAINTENANCE_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the ODB peering connection.</td>
 </tr>
@@ -268,17 +268,17 @@ Retrieves information about an ODB peering connection.
 
 ```sql
 SELECT
-createdAt,
-displayName,
-odbNetworkArn,
-odbPeeringConnectionArn,
-odbPeeringConnectionId,
-odbPeeringConnectionType,
-peerNetworkArn,
-peerNetworkCidrs,
-percentProgress,
+created_at,
+display_name,
+odb_network_arn,
+odb_peering_connection_arn,
+odb_peering_connection_id,
+odb_peering_connection_type,
+peer_network_arn,
+peer_network_cidrs,
+percent_progress,
 status,
-statusReason
+status_reason
 FROM aws.odb.odb_peering_connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -290,17 +290,17 @@ Lists all ODB peering connections or those associated with a specific ODB networ
 
 ```sql
 SELECT
-createdAt,
-displayName,
-odbNetworkArn,
-odbPeeringConnectionArn,
-odbPeeringConnectionId,
-odbPeeringConnectionType,
-peerNetworkArn,
-peerNetworkCidrs,
-percentProgress,
+created_at,
+display_name,
+odb_network_arn,
+odb_peering_connection_arn,
+odb_peering_connection_id,
+odb_peering_connection_type,
+peer_network_arn,
+peer_network_cidrs,
+percent_progress,
 status,
-statusReason
+status_reason
 FROM aws.odb.odb_peering_connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -343,10 +343,10 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-displayName,
-odbPeeringConnectionId,
+display_name,
+odb_peering_connection_id,
 status,
-statusReason
+status_reason
 ;
 ```
 </TabItem>
@@ -417,10 +417,10 @@ WHERE
 region = '{{ region }}' --required
 AND odbPeeringConnectionId = '{{ odbPeeringConnectionId }}' --required
 RETURNING
-displayName,
-odbPeeringConnectionId,
+display_name,
+odb_peering_connection_id,
 status,
-statusReason;
+status_reason;
 ```
 </TabItem>
 </Tabs>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Authentication" /></td>
+    <td><CopyableCode code="authentication" /></td>
     <td><code>string</code></td>
     <td>Information about the auth scheme of Vpc Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the Vpc Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Owner of the Vpc Connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>State of the Vpc Connection. (CREATING, AVAILABLE, INACTIVE, DEACTIVATING, DELETING, FAILED, REJECTED, REJECTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectionArn" /></td>
+    <td><CopyableCode code="vpc_connection_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN that identifies the Vpc Connection.</td>
 </tr>
@@ -154,11 +154,11 @@ Returns a list of all the VPC connections in this Region.
 
 ```sql
 SELECT
-Authentication,
-CreationTime,
-Owner,
-State,
-VpcConnectionArn
+authentication,
+creation_time,
+owner,
+state,
+vpc_connection_arn
 FROM aws.kafka.client_vpc_connections
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required

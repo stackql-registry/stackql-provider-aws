@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the transit gateway policy table was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway policy table</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>he key-value pairs associated with the transit gateway policy table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayPolicyTableId" /></td>
+    <td><CopyableCode code="transit_gateway_policy_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway policy table.</td>
 </tr>
@@ -212,11 +212,11 @@ Describes one or more transit gateway route policy tables.
 
 ```sql
 SELECT
-CreationTime,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayPolicyTableId
+creation_time,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_policy_table_id
 FROM aws.ec2.transit_gateway_policy_tables
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayPolicyTableIds = '{{ TransitGatewayPolicyTableIds }}'
@@ -256,11 +256,11 @@ SELECT
 '{{ TagSpecifications }}',
 '{{ DryRun }}'
 RETURNING
-CreationTime,
-State,
-Tags,
-TransitGatewayId,
-TransitGatewayPolicyTableId
+creation_time,
+state,
+tags,
+transit_gateway_id,
+transit_gateway_policy_table_id
 ;
 ```
 </TabItem>
@@ -311,11 +311,11 @@ AND TransitGatewayAttachmentId = '{{ TransitGatewayAttachmentId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-ResourceId,
-ResourceType,
-State,
-TransitGatewayAttachmentId,
-TransitGatewayPolicyTableId;
+resource_id,
+resource_type,
+state,
+transit_gateway_attachment_id,
+transit_gateway_policy_table_id;
 ```
 </TabItem>
 </Tabs>

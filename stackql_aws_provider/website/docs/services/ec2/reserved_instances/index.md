@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the Reserved Instance can be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency of the Reserved Instance. It's specified using ISO 4217 standard currency codes. At this time, the only supported currency is USD.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the Reserved Instance, in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="End" /></td>
+    <td><CopyableCode code="end" /></td>
     <td><code>string</code></td>
     <td>The time when the Reserved Instance expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number</code></td>
     <td>The purchase price of the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCount" /></td>
+    <td><CopyableCode code="instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of reservations purchased.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceTenancy" /></td>
+    <td><CopyableCode code="instance_tenancy" /></td>
     <td><code>string</code></td>
     <td>The tenancy of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type on which the Reserved Instance can be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingClass" /></td>
+    <td><CopyableCode code="offering_class" /></td>
     <td><code>string</code></td>
     <td>The offering class of the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>The Reserved Instance offering type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductDescription" /></td>
+    <td><CopyableCode code="product_description" /></td>
     <td><code>string</code></td>
     <td>The Reserved Instance product platform description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecurringCharges" /></td>
+    <td><CopyableCode code="recurring_charges" /></td>
     <td><code>string</code></td>
     <td>The recurring charge tag assigned to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservedInstancesId" /></td>
+    <td><CopyableCode code="reserved_instances_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scope" /></td>
+    <td><CopyableCode code="scope" /></td>
     <td><code>string</code></td>
     <td>The scope of the Reserved Instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Start" /></td>
+    <td><CopyableCode code="start" /></td>
     <td><code>string</code></td>
     <td>The date and time the Reserved Instance started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Reserved Instance purchase.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number</code></td>
     <td>The usage price of the Reserved Instance, per hour.</td>
 </tr>
@@ -292,25 +292,25 @@ Describes one or more of the Reserved Instances that you purchased. For more inf
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CurrencyCode,
-Duration,
-End,
-FixedPrice,
-InstanceCount,
-InstanceTenancy,
-InstanceType,
-OfferingClass,
-OfferingType,
-ProductDescription,
-RecurringCharges,
-ReservedInstancesId,
-Scope,
-Start,
-State,
-Tags,
-UsagePrice
+availability_zone,
+availability_zone_id,
+currency_code,
+duration,
+end,
+fixed_price,
+instance_count,
+instance_tenancy,
+instance_type,
+offering_class,
+offering_type,
+product_description,
+recurring_charges,
+reserved_instances_id,
+scope,
+start,
+state,
+tags,
+usage_price
 FROM aws.ec2.reserved_instances
 WHERE region = '{{ region }}' -- required
 AND OfferingClass = '{{ OfferingClass }}'
@@ -346,7 +346,7 @@ AND ReservedInstancesConfigurationSetItemType = '{{ ReservedInstancesConfigurati
 AND region = '{{ region }}' --required
 AND ClientToken = '{{ ClientToken}}'
 RETURNING
-ReservedInstancesModificationId;
+reserved_instances_modification_id;
 ```
 </TabItem>
 </Tabs>

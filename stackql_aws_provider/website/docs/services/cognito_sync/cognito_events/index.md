@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Events" /></td>
+    <td><CopyableCode code="events" /></td>
     <td><code>object</code></td>
     <td>The Cognito Events returned from the GetCognitoEvents request</td>
 </tr>
@@ -131,7 +131,7 @@ Gets the events and the corresponding Lambda functions associated with an identi
 
 ```sql
 SELECT
-Events
+events
 FROM aws.cognito_sync.cognito_events
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND region = '{{ region }}' -- required

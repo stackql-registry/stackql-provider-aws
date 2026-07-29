@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChatConfigurationArn" /></td>
+    <td><CopyableCode code="chat_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the SlackChannelConfiguration. (pattern: &lt;code&gt;arn:aws:(wheatley|chatbot):&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationName" /></td>
+    <td><CopyableCode code="configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GuardrailPolicyArns" /></td>
+    <td><CopyableCode code="guardrail_policy_arns" /></td>
     <td><code>array</code></td>
     <td>The list of IAM policy ARNs that are applied as channel guardrails. The AWS managed AdministratorAccess policy is applied by default if this is not set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>A user-defined role that AWS Chatbot assumes. This is not the service-linked role. For more information, see IAM policies for AWS Chatbot in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingLevel" /></td>
+    <td><CopyableCode code="logging_level" /></td>
     <td><code>string</code></td>
     <td>Logging levels include ERROR, INFO, or NONE. (pattern: &lt;code&gt;(ERROR|INFO|NONE)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlackChannelId" /></td>
+    <td><CopyableCode code="slack_channel_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Slack channel. To get this ID, open Slack, right click on the channel name in the left pane, then choose Copy Link. The channel ID is the 9-character string at the end of the URL. For example, ABCBBLZZZ. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlackChannelName" /></td>
+    <td><CopyableCode code="slack_channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Slack channel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlackTeamId" /></td>
+    <td><CopyableCode code="slack_team_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Slack workspace authorized with Amazon Chime. (pattern: &lt;code&gt;&#91;0-9A-Z&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlackTeamName" /></td>
+    <td><CopyableCode code="slack_team_name" /></td>
     <td><code>string</code></td>
     <td>Name of the Slack workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArns" /></td>
+    <td><CopyableCode code="sns_topic_arns" /></td>
     <td><code>array</code></td>
     <td>The ARNs of the SNS topics that deliver notifications to AWS Chatbot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Either ENABLED or DISABLED. The resource returns DISABLED if the organization's AWS Chatbot policy has explicitly denied that configuration. For example, if Amazon Chime is disabled. (pattern: &lt;code&gt;(ENABLED|DISABLED)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Provided if State is DISABLED. Provides context as to why the resource is disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A map of tags assigned to a resource. A tag is a string-to-string map of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserAuthorizationRequired" /></td>
+    <td><CopyableCode code="user_authorization_required" /></td>
     <td><code>boolean</code></td>
     <td>Enables use of a user role requirement in your chat configuration.</td>
 </tr>
@@ -205,20 +205,20 @@ Lists Slack channel configurations optionally filtered by ChatConfigurationArn
 
 ```sql
 SELECT
-ChatConfigurationArn,
-ConfigurationName,
-GuardrailPolicyArns,
-IamRoleArn,
-LoggingLevel,
-SlackChannelId,
-SlackChannelName,
-SlackTeamId,
-SlackTeamName,
-SnsTopicArns,
-State,
-StateReason,
-Tags,
-UserAuthorizationRequired
+chat_configuration_arn,
+configuration_name,
+guardrail_policy_arns,
+iam_role_arn,
+logging_level,
+slack_channel_id,
+slack_channel_name,
+slack_team_id,
+slack_team_name,
+sns_topic_arns,
+state,
+state_reason,
+tags,
+user_authorization_required
 FROM aws.chatbot.slack_channel_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -267,7 +267,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ChannelConfiguration
+channel_configuration
 ;
 ```
 </TabItem>
@@ -337,7 +337,7 @@ region = '{{ region }}' --required
 AND ChatConfigurationArn = '{{ ChatConfigurationArn }}' --required
 AND SlackChannelId = '{{ SlackChannelId }}' --required
 RETURNING
-ChannelConfiguration;
+channel_configuration;
 ```
 </TabItem>
 </Tabs>

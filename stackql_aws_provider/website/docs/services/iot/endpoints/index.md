@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="endpointAddress" /></td>
+    <td><CopyableCode code="endpoint_address" /></td>
     <td><code>string</code></td>
     <td>The endpoint. The format of the endpoint is as follows: identifier.iot.region.amazonaws.com.</td>
 </tr>
@@ -124,7 +124,7 @@ Returns or creates a unique endpoint specific to the Amazon Web Services account
 
 ```sql
 SELECT
-endpointAddress
+endpoint_address
 FROM aws.iot.endpoints
 WHERE region = '{{ region }}' -- required
 AND endpointType = '{{ endpointType }}'

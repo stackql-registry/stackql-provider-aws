@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>ARN of the storage configuration. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:storage-configuration/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3" /></td>
+    <td><CopyableCode code="s_3" /></td>
     <td><code>object</code></td>
     <td>A complex type that describes an S3 location where recorded videos will be stored.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more storage configurations than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageConfigurations" /></td>
+    <td><CopyableCode code="storage_configurations" /></td>
     <td><code>array</code></td>
     <td>List of the matching storage configurations.</td>
 </tr>
@@ -183,7 +183,7 @@ Gets the storage configuration for the specified ARN.
 SELECT
 name,
 arn,
-s3,
+s_3,
 tags
 FROM aws.ivs_realtime.storage_configurations
 WHERE region = '{{ region }}' -- required
@@ -196,8 +196,8 @@ Gets summary information about all storage configurations in your account, in th
 
 ```sql
 SELECT
-nextToken,
-storageConfigurations
+next_token,
+storage_configurations
 FROM aws.ivs_realtime.storage_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -232,7 +232,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-storageConfiguration
+storage_configuration
 ;
 ```
 </TabItem>

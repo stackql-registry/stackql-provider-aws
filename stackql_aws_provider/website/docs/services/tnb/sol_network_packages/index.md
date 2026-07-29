@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>Metadata associated with a network package. A network package is a .zip file in CSAR (Cloud Service Archive) format defines the function packages you want to deploy and the Amazon Web Services infrastructure you want to deploy them on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdId" /></td>
+    <td><CopyableCode code="nsd_id" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor ID. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdName" /></td>
+    <td><CopyableCode code="nsd_name" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdOnboardingState" /></td>
+    <td><CopyableCode code="nsd_onboarding_state" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor onboarding state. (CREATED, ONBOARDED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdOperationalState" /></td>
+    <td><CopyableCode code="nsd_operational_state" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor operational state. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdUsageState" /></td>
+    <td><CopyableCode code="nsd_usage_state" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor usage state. (IN_USE, NOT_IN_USE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdVersion" /></td>
+    <td><CopyableCode code="nsd_version" /></td>
     <td><code>string</code></td>
     <td>Network service descriptor version.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your Amazon Web Services costs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfPkgIds" /></td>
+    <td><CopyableCode code="vnf_pkg_ids" /></td>
     <td><code>array</code></td>
     <td>Identifies the function package for the function package descriptor referenced by the onboarded network package.</td>
 </tr>
@@ -135,47 +135,47 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of the network package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdDesigner" /></td>
+    <td><CopyableCode code="nsd_designer" /></td>
     <td><code>string</code></td>
     <td>Designer of the onboarded network service descriptor in the network package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdId" /></td>
+    <td><CopyableCode code="nsd_id" /></td>
     <td><code>string</code></td>
     <td>ID of the network service descriptor on which the network package is based.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdInvariantId" /></td>
+    <td><CopyableCode code="nsd_invariant_id" /></td>
     <td><code>string</code></td>
     <td>Identifies a network service descriptor in a version independent manner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdName" /></td>
+    <td><CopyableCode code="nsd_name" /></td>
     <td><code>string</code></td>
     <td>Name of the onboarded network service descriptor in the network package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdOnboardingState" /></td>
+    <td><CopyableCode code="nsd_onboarding_state" /></td>
     <td><code>string</code></td>
     <td>Onboarding state of the network service descriptor in the network package. (CREATED, ONBOARDED, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdOperationalState" /></td>
+    <td><CopyableCode code="nsd_operational_state" /></td>
     <td><code>string</code></td>
     <td>Operational state of the network service descriptor in the network package. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdUsageState" /></td>
+    <td><CopyableCode code="nsd_usage_state" /></td>
     <td><code>string</code></td>
     <td>Usage state of the network service descriptor in the network package. (IN_USE, NOT_IN_USE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdVersion" /></td>
+    <td><CopyableCode code="nsd_version" /></td>
     <td><code>string</code></td>
     <td>Version of the onboarded network service descriptor in the network package.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vnfPkgIds" /></td>
+    <td><CopyableCode code="vnf_pkg_ids" /></td>
     <td><code>array</code></td>
     <td>Identifies the function package for the function package descriptor referenced by the onboarded network package.</td>
 </tr>
@@ -303,14 +303,14 @@ SELECT
 id,
 arn,
 metadata,
-nsdId,
-nsdName,
-nsdOnboardingState,
-nsdOperationalState,
-nsdUsageState,
-nsdVersion,
+nsd_id,
+nsd_name,
+nsd_onboarding_state,
+nsd_operational_state,
+nsd_usage_state,
+nsd_version,
 tags,
-vnfPkgIds
+vnf_pkg_ids
 FROM aws.tnb.sol_network_packages
 WHERE nsd_info_id = '{{ nsd_info_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -326,15 +326,15 @@ SELECT
 id,
 arn,
 metadata,
-nsdDesigner,
-nsdId,
-nsdInvariantId,
-nsdName,
-nsdOnboardingState,
-nsdOperationalState,
-nsdUsageState,
-nsdVersion,
-vnfPkgIds
+nsd_designer,
+nsd_id,
+nsd_invariant_id,
+nsd_name,
+nsd_onboarding_state,
+nsd_operational_state,
+nsd_usage_state,
+nsd_version,
+vnf_pkg_ids
 FROM aws.tnb.sol_network_packages
 WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
@@ -369,9 +369,9 @@ SELECT
 RETURNING
 id,
 arn,
-nsdOnboardingState,
-nsdOperationalState,
-nsdUsageState,
+nsd_onboarding_state,
+nsd_operational_state,
+nsd_usage_state,
 tags
 ;
 ```
@@ -413,7 +413,7 @@ nsd_info_id = '{{ nsd_info_id }}' --required
 AND region = '{{ region }}' --required
 AND nsdOperationalState = '{{ nsdOperationalState }}' --required
 RETURNING
-nsdOperationalState;
+nsd_operational_state;
 ```
 </TabItem>
 </Tabs>

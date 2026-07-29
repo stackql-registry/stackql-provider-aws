@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceptTime" /></td>
+    <td><CopyableCode code="accept_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the Worker accepted the assignment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Answer" /></td>
+    <td><CopyableCode code="answer" /></td>
     <td><code>string</code></td>
     <td>The Worker's answers submitted for the HIT contained in a QuestionFormAnswers document, if the Worker provides an answer. If the Worker does not provide any answers, Answer may contain a QuestionFormAnswers document, or Answer may be empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApprovalTime" /></td>
+    <td><CopyableCode code="approval_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the Worker has submitted results and the Requester has approved the results, ApprovalTime is the date and time the Requester approved the results. This value is omitted from the assignment if the Requester has not yet approved the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssignmentId" /></td>
+    <td><CopyableCode code="assignment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the assignment. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssignmentStatus" /></td>
+    <td><CopyableCode code="assignment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the assignment. (Submitted, Approved, Rejected)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoApprovalTime" /></td>
+    <td><CopyableCode code="auto_approval_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If results have been submitted, AutoApprovalTime is the date and time the results of the assignment results are considered Approved automatically if they have not already been explicitly approved or rejected by the Requester. This value is derived from the auto-approval delay specified by the Requester in the HIT. This value is omitted from the assignment if the Worker has not yet submitted results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Deadline" /></td>
+    <td><CopyableCode code="deadline" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the deadline for the assignment. This value is derived from the deadline specification for the HIT and the date and time the Worker accepted the HIT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HITId" /></td>
+    <td><CopyableCode code="hit_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the HIT. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RejectionTime" /></td>
+    <td><CopyableCode code="rejection_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the Worker has submitted results and the Requester has rejected the results, RejectionTime is the date and time the Requester rejected the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterFeedback" /></td>
+    <td><CopyableCode code="requester_feedback" /></td>
     <td><code>string</code></td>
     <td>The feedback string included with the call to the ApproveAssignment operation or the RejectAssignment operation, if the Requester approved or rejected the assignment and specified feedback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubmitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the Worker has submitted results, SubmitTime is the date and time the assignment was submitted. This value is omitted from the assignment if the Worker has not yet submitted results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Worker who accepted the HIT. (pattern: &lt;code&gt;^A&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -181,18 +181,18 @@ The ListAssignmentsForHIT operation retrieves completed assignments for a HIT. Y
 
 ```sql
 SELECT
-AcceptTime,
-Answer,
-ApprovalTime,
-AssignmentId,
-AssignmentStatus,
-AutoApprovalTime,
-Deadline,
-HITId,
-RejectionTime,
-RequesterFeedback,
-SubmitTime,
-WorkerId
+accept_time,
+answer,
+approval_time,
+assignment_id,
+assignment_status,
+auto_approval_time,
+deadline,
+hit_id,
+rejection_time,
+requester_feedback,
+submit_time,
+worker_id
 FROM aws.mturk.assignments_for_hits
 WHERE region = '{{ region }}' -- required
 ;

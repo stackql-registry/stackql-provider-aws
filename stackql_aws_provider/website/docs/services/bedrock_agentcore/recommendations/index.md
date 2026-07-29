@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the recommendation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_-&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the recommendation was created.</td>
 </tr>
@@ -66,22 +66,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationArn" /></td>
+    <td><CopyableCode code="recommendation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recommendation. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:recommendation/&#91;0-9a-zA-Z_-&#93;&#123;1,48&#125;-&#91;0-9A-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationConfig" /></td>
+    <td><CopyableCode code="recommendation_config" /></td>
     <td><code>object</code></td>
     <td>The configuration for the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the recommendation. (pattern: &lt;code&gt;&#91;0-9a-zA-Z_-&#93;&#123;1,48&#125;-&#91;0-9A-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationResult" /></td>
+    <td><CopyableCode code="recommendation_result" /></td>
     <td><code>object</code></td>
     <td>The result of the recommendation, containing the optimized system prompt or tool descriptions. Only present when the recommendation status is COMPLETED.</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of recommendation. (SYSTEM_PROMPT_RECOMMENDATION, TOOL_DESCRIPTION_RECOMMENDATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the recommendation was last updated.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the recommendation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_-&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the recommendation was created.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationArn" /></td>
+    <td><CopyableCode code="recommendation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recommendation. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:recommendation/&#91;0-9a-zA-Z_-&#93;&#123;1,48&#125;-&#91;0-9A-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recommendationId" /></td>
+    <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the recommendation. (pattern: &lt;code&gt;&#91;0-9a-zA-Z_-&#93;&#123;1,48&#125;-&#91;0-9A-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of recommendation. (SYSTEM_PROMPT_RECOMMENDATION, TOOL_DESCRIPTION_RECOMMENDATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the recommendation was last updated.</td>
 </tr>
@@ -255,15 +255,15 @@ Retrieves detailed information about a recommendation, including its configurati
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-recommendationArn,
-recommendationConfig,
-recommendationId,
-recommendationResult,
+recommendation_arn,
+recommendation_config,
+recommendation_id,
+recommendation_result,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore.recommendations
 WHERE recommendation_id = '{{ recommendation_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,13 +277,13 @@ Lists all recommendations in the account, with optional filtering by status.
 ```sql
 SELECT
 name,
-createdAt,
+created_at,
 description,
-recommendationArn,
-recommendationId,
+recommendation_arn,
+recommendation_id,
 status,
 type_,
-updatedAt
+updated_at
 FROM aws.bedrock_agentcore.recommendations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

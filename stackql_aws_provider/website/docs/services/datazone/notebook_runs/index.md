@@ -56,37 +56,37 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the notebook run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cellOrder" /></td>
+    <td><CopyableCode code="cell_order" /></td>
     <td><code>array</code></td>
     <td>The ordered list of cells in the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeConfiguration" /></td>
+    <td><CopyableCode code="compute_configuration" /></td>
     <td><code>object</code></td>
     <td>The compute configuration of the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who created the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon SageMaker Unified Studio domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentConfiguration" /></td>
+    <td><CopyableCode code="environment_configuration" /></td>
     <td><code>object</code></td>
     <td>The environment configuration for a notebook run in Amazon SageMaker Unified Studio.</td>
 </tr>
@@ -101,17 +101,17 @@ The following fields are returned by `SELECT` queries:
     <td>The metadata of the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>The network configuration of the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notebookId" /></td>
+    <td><CopyableCode code="notebook_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the notebook. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the project that owns the notebook run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -121,12 +121,12 @@ The following fields are returned by `SELECT` queries:
     <td>The sensitive parameters of the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleId" /></td>
+    <td><CopyableCode code="schedule_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the schedule associated with the notebook run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run started executing.</td>
 </tr>
@@ -136,27 +136,27 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the notebook run. (QUEUED, STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="storageConfiguration" /></td>
+    <td><CopyableCode code="storage_configuration" /></td>
     <td><code>object</code></td>
     <td>The storage configuration of the notebook run, including the Amazon Simple Storage Service path and KMS key ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutConfiguration" /></td>
+    <td><CopyableCode code="timeout_configuration" /></td>
     <td><code>object</code></td>
     <td>The timeout configuration of the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="triggerSource" /></td>
+    <td><CopyableCode code="trigger_source" /></td>
     <td><code>object</code></td>
     <td>The source that triggered the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who last updated the notebook run.</td>
 </tr>
@@ -180,42 +180,42 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the notebook run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who created the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon SageMaker Unified Studio domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notebookId" /></td>
+    <td><CopyableCode code="notebook_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the notebook. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="owningProjectId" /></td>
+    <td><CopyableCode code="owning_project_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the project that owns the notebook run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleId" /></td>
+    <td><CopyableCode code="schedule_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the schedule associated with the notebook run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startedAt" /></td>
+    <td><CopyableCode code="started_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run started executing.</td>
 </tr>
@@ -225,17 +225,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of a notebook run in Amazon SageMaker Unified Studio. (QUEUED, STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="triggerSource" /></td>
+    <td><CopyableCode code="trigger_source" /></td>
     <td><code>object</code></td>
     <td>The source that triggered the notebook run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook run was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user who last updated the notebook run.</td>
 </tr>
@@ -358,27 +358,27 @@ Gets the details of a notebook run in Amazon SageMaker Unified Studio.
 ```sql
 SELECT
 id,
-cellOrder,
-completedAt,
-computeConfiguration,
-createdAt,
-createdBy,
-domainId,
-environmentConfiguration,
+cell_order,
+completed_at,
+compute_configuration,
+created_at,
+created_by,
+domain_id,
+environment_configuration,
 error,
 metadata,
-networkConfiguration,
-notebookId,
-owningProjectId,
+network_configuration,
+notebook_id,
+owning_project_id,
 parameters,
-scheduleId,
-startedAt,
+schedule_id,
+started_at,
 status,
-storageConfiguration,
-timeoutConfiguration,
-triggerSource,
-updatedAt,
-updatedBy
+storage_configuration,
+timeout_configuration,
+trigger_source,
+updated_at,
+updated_by
 FROM aws.datazone.notebook_runs
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -393,18 +393,18 @@ Lists notebook runs in Amazon SageMaker Unified Studio.
 ```sql
 SELECT
 id,
-completedAt,
-createdAt,
-createdBy,
-domainId,
-notebookId,
-owningProjectId,
-scheduleId,
-startedAt,
+completed_at,
+created_at,
+created_by,
+domain_id,
+notebook_id,
+owning_project_id,
+schedule_id,
+started_at,
 status,
-triggerSource,
-updatedAt,
-updatedBy
+trigger_source,
+updated_at,
+updated_by
 FROM aws.datazone.notebook_runs
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND owningProjectIdentifier = '{{ owningProjectIdentifier }}' -- required

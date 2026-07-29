@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Date" /></td>
+    <td><CopyableCode code="date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A user-defined message associated with the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceName" /></td>
+    <td><CopyableCode code="source_name" /></td>
     <td><code>string</code></td>
     <td>The source of the event. For example, if the event occurred at the node level, the source would be the node ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the origin of this event - a cluster, a parameter group, a node ID, etc. (CLUSTER, PARAMETER_GROUP, SUBNET_GROUP)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns events related to DAX clusters and parameter groups. You can obtain even
 
 ```sql
 SELECT
-Date,
-Message,
-SourceName,
-SourceType
+date,
+message,
+source_name,
+source_type
 FROM aws.dax.events
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RunProperties" /></td>
+    <td><CopyableCode code="run_properties" /></td>
     <td><code>object</code></td>
     <td>The workflow run properties which were set during the specified run.</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves the workflow run properties which were set during the run.
 
 ```sql
 SELECT
-RunProperties
+run_properties
 FROM aws.glue.workflow_run_properties
 WHERE region = '{{ region }}' -- required
 ;

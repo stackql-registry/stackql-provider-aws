@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the code security integration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_$:.&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizationUrl" /></td>
+    <td><CopyableCode code="authorization_url" /></td>
     <td><code>string</code></td>
     <td>The URL used to authorize the integration with the repository provider. This is only returned if reauthorization is required to fix a connection issue. Otherwise, it is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the code security integration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationArn" /></td>
+    <td><CopyableCode code="integration_arn" /></td>
     <td><code>string</code></td>
     <td>arn:aws:inspector2:::codesecurity-integration/ (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:codesecurity-integration/&#91;a-f0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateOn" /></td>
+    <td><CopyableCode code="last_update_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the code security integration was last updated.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the code security integration. (PENDING, IN_PROGRESS, ACTIVE, INACTIVE, DISABLING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the code security integration.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of code security integration summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request. For subsequent calls, use the NextToken value returned from the previous request to continue listing results after the first page.</td>
 </tr>
@@ -224,12 +224,12 @@ Retrieves information about a code security integration.
 ```sql
 SELECT
 name,
-authorizationUrl,
-createdOn,
-integrationArn,
-lastUpdateOn,
+authorization_url,
+created_on,
+integration_arn,
+last_update_on,
 status,
-statusReason,
+status_reason,
 tags,
 type_
 FROM aws.inspector2.code_security_integrations
@@ -244,7 +244,7 @@ Lists all code security integrations in your account.
 ```sql
 SELECT
 integrations,
-nextToken
+next_token
 FROM aws.inspector2.code_security_integrations
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -283,8 +283,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-authorizationUrl,
-integrationArn,
+authorization_url,
+integration_arn,
 status
 ;
 ```
@@ -339,7 +339,7 @@ region = '{{ region }}' --required
 AND integrationArn = '{{ integrationArn }}' --required
 AND details = '{{ details }}' --required
 RETURNING
-integrationArn,
+integration_arn,
 status;
 ```
 </TabItem>

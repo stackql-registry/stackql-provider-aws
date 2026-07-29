@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="externalAccessDetails" /></td>
+    <td><CopyableCode code="external_access_details" /></td>
     <td><code>object</code></td>
     <td>The details for an external access analyzer finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="internalAccessDetails" /></td>
+    <td><CopyableCode code="internal_access_details" /></td>
     <td><code>object</code></td>
     <td>The details for an internal access analyzer finding. This contains information about access patterns identified within your Amazon Web Services organization or account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unusedIamRoleDetails" /></td>
+    <td><CopyableCode code="unused_iam_role_details" /></td>
     <td><code>object</code></td>
     <td>The details for an unused access analyzer finding with an unused IAM role finding type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unusedIamUserAccessKeyDetails" /></td>
+    <td><CopyableCode code="unused_iam_user_access_key_details" /></td>
     <td><code>object</code></td>
     <td>The details for an unused access analyzer finding with an unused IAM user access key finding type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unusedIamUserPasswordDetails" /></td>
+    <td><CopyableCode code="unused_iam_user_password_details" /></td>
     <td><code>object</code></td>
     <td>The details for an unused access analyzer finding with an unused IAM user password finding type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="unusedPermissionDetails" /></td>
+    <td><CopyableCode code="unused_permission_details" /></td>
     <td><code>object</code></td>
     <td>The details for an unused access analyzer finding with an unused permission finding type.</td>
 </tr>
@@ -164,12 +164,12 @@ Retrieves information about the specified finding. GetFinding and GetFindingV2 b
 
 ```sql
 SELECT
-externalAccessDetails,
-internalAccessDetails,
-unusedIamRoleDetails,
-unusedIamUserAccessKeyDetails,
-unusedIamUserPasswordDetails,
-unusedPermissionDetails
+external_access_details,
+internal_access_details,
+unused_iam_role_details,
+unused_iam_user_access_key_details,
+unused_iam_user_password_details,
+unused_permission_details
 FROM aws.accessanalyzer.finding_v2s
 WHERE analyzerArn = '{{ analyzerArn }}' -- required
 AND id = '{{ id }}' -- required

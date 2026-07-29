@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the media type of the resource. (application/zip)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nsdContent" /></td>
+    <td><CopyableCode code="nsd_content" /></td>
     <td><code>string (byte)</code></td>
     <td>Content of the network service descriptor in the network package.</td>
 </tr>
@@ -146,8 +146,8 @@ Gets the contents of a network package. A network package is a .zip file in CSAR
 
 ```sql
 SELECT
-contentType,
-nsdContent
+content_type,
+nsd_content
 FROM aws.tnb.sol_network_package_contents
 WHERE Accept = '{{ Accept }}' -- required
 AND nsd_info_id = '{{ nsd_info_id }}' -- required
@@ -183,10 +183,10 @@ RETURNING
 id,
 arn,
 metadata,
-nsdId,
-nsdName,
-nsdVersion,
-vnfPkgIds;
+nsd_id,
+nsd_name,
+nsd_version,
+vnf_pkg_ids;
 ```
 </TabItem>
 </Tabs>

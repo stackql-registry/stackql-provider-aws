@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DataTransferSubscriberFeePercent" /></td>
+    <td><CopyableCode code="data_transfer_subscriber_fee_percent" /></td>
     <td><code>integer</code></td>
     <td>Percentage from 0-100 of the data transfer cost to be billed to the subscriber.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntitlementArn" /></td>
+    <td><CopyableCode code="entitlement_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the entitlement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EntitlementName" /></td>
+    <td><CopyableCode code="entitlement_name" /></td>
     <td><code>string</code></td>
     <td>The name of the entitlement.</td>
 </tr>
@@ -170,9 +170,9 @@ Displays a list of all entitlements that have been granted to this account. This
 
 ```sql
 SELECT
-DataTransferSubscriberFeePercent,
-EntitlementArn,
-EntitlementName
+data_transfer_subscriber_fee_percent,
+entitlement_arn,
+entitlement_name
 FROM aws.mediaconnect.entitlements
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -204,8 +204,8 @@ entitlement_arn = '{{ entitlement_arn }}' --required
 AND flow_arn = '{{ flow_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-EntitlementArn,
-FlowArn;
+entitlement_arn,
+flow_arn;
 ```
 </TabItem>
 </Tabs>

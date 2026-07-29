@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) for the host key. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateImported" /></td>
+    <td><CopyableCode code="date_imported" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date on which the host key was added to the server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The text description for this host key. (pattern: &lt;code&gt;&#91;\p&#123;Print&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostKeyFingerprint" /></td>
+    <td><CopyableCode code="host_key_fingerprint" /></td>
     <td><code>string</code></td>
     <td>The public key fingerprint, which is a short sequence of bytes used to identify the longer public key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostKeyId" /></td>
+    <td><CopyableCode code="host_key_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the host key. (pattern: &lt;code&gt;hostkey-&#91;0-9a-f&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs that can be used to group and search for host keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The encryption algorithm that is used for the host key. The Type parameter is specified by using one of the following values: ssh-rsa ssh-ed25519 ecdsa-sha2-nistp256 ecdsa-sha2-nistp384 ecdsa-sha2-nistp521</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HostKeys" /></td>
+    <td><CopyableCode code="host_keys" /></td>
     <td><code>array</code></td>
     <td>Returns an array, where each item contains the details of a host key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Returns a token that you can use to call ListHostKeys again and receive additional results, if there are any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerId" /></td>
+    <td><CopyableCode code="server_id" /></td>
     <td><code>string</code></td>
     <td>Returns the server identifier that contains the listed host keys. (pattern: &lt;code&gt;s-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -201,13 +201,13 @@ Returns the details of the host key that's specified by the HostKeyId and Server
 
 ```sql
 SELECT
-Arn,
-DateImported,
-Description,
-HostKeyFingerprint,
-HostKeyId,
-Tags,
-Type
+arn,
+date_imported,
+description,
+host_key_fingerprint,
+host_key_id,
+tags,
+type
 FROM aws.transfer.host_keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -219,9 +219,9 @@ Returns a list of host keys for the server that's specified by the ServerId para
 
 ```sql
 SELECT
-HostKeys,
-NextToken,
-ServerId
+host_keys,
+next_token,
+server_id
 FROM aws.transfer.host_keys
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,8 +254,8 @@ AND ServerId = '{{ ServerId }}' --required
 AND HostKeyId = '{{ HostKeyId }}' --required
 AND Description = '{{ Description }}' --required
 RETURNING
-HostKeyId,
-ServerId;
+host_key_id,
+server_id;
 ```
 </TabItem>
 </Tabs>

@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationLogOutputUri" /></td>
+    <td><CopyableCode code="application_log_output_uri" /></td>
     <td><code>string</code></td>
     <td>An Amazon S3 URI to a bucket where you would like Amazon GameLift Streams to save application logs. Required if you specify one or more ApplicationLogPaths. (pattern: &lt;code&gt;$|^s3:​//(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9._-&#93;&#123;1,61&#125;&#91;a-zA-Z0-9&#93;)(/&#91;a-zA-Z0-9._-&#93;+)*/?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationLogPaths" /></td>
+    <td><CopyableCode code="application_log_paths" /></td>
     <td><code>array</code></td>
     <td>Locations of log files that your content generates during a stream session. Amazon GameLift Streams uploads log files to the Amazon S3 bucket that you specify in ApplicationLogOutputUri at the end of a stream session. To retrieve stored log files, call GetStreamSession and get the LogFileLocationUri.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationSourceUri" /></td>
+    <td><CopyableCode code="application_source_uri" /></td>
     <td><code>string</code></td>
     <td>The original Amazon S3 location of uploaded stream content for the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that's assigned to an application resource and uniquely identifies it across all Amazon Web Services Regions. Format is arn:aws:gameliftstreams:&#91;AWS Region&#93;:&#91;AWS account&#93;:application/&#91;resource ID&#93;. (pattern: &lt;code&gt;(^&#91;a-zA-Z0-9-&#93;+$)|(^arn:aws:gameliftstreams:(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedStreamGroups" /></td>
+    <td><CopyableCode code="associated_stream_groups" /></td>
     <td><code>array</code></td>
     <td>A set of stream groups that this application is associated with. You can use any of these stream groups to stream your application. This value is a set of Amazon Resource Names (ARNs) that uniquely identify stream group resources. Example ARN: arn:aws:gameliftstreams:us-west-2:111122223333:streamgroup/sg-1AB2C3De4.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was created. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A human-readable label for the application. You can edit this value. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.!+@/&#93;&#91;a-zA-Z0-9-_.!+@/ &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutablePath" /></td>
+    <td><CopyableCode code="executable_path" /></td>
     <td><code>string</code></td>
     <td>The relative path and file name of the executable file that launches the content for streaming.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A unique ID value that is assigned to the resource when it's created. Format example: a-9ZY8X7Wv6. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was last updated. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationStatuses" /></td>
+    <td><CopyableCode code="replication_statuses" /></td>
     <td><code>array</code></td>
     <td>A set of replication statuses for each location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeEnvironment" /></td>
+    <td><CopyableCode code="runtime_environment" /></td>
     <td><code>object</code></td>
     <td>Configuration settings that identify the operating system for an application resource. This can also include a compatibility layer and other drivers. A runtime environment can be one of the following: For Linux applications Ubuntu 22.04 LTS (Type=UBUNTU, Version=22_04_LTS) For Windows applications Microsoft Windows Server 2022 Base (Type=WINDOWS, Version=2022) Proton 10.0-4 (Type=PROTON, Version=20260204) Proton 9.0-2 (Type=PROTON, Version=20250516) Proton 8.0-5 (Type=PROTON, Version=20241007) Proton 8.0-2c (Type=PROTON, Version=20230704)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the application resource. Possible statuses include the following: INITIALIZED: Amazon GameLift Streams has received the request and is initiating the work flow to create an application. PROCESSING: The create application work flow is in process. Amazon GameLift Streams is copying the content and caching for future deployment in a stream group. READY: The application is ready to deploy in a stream group. ERROR: An error occurred when setting up the application. See StatusReason for more information. DELETING: Amazon GameLift Streams is in the process of deleting the application. (INITIALIZED, PROCESSING, READY, DELETING, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A short description of the status reason when the application is in ERROR status. (internalError, accessDenied, sourceModified)</td>
 </tr>
@@ -135,37 +135,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that's assigned to an application resource and uniquely identifies the application across all Amazon Web Services Regions. Format is arn:aws:gameliftstreams:&#91;AWS Region&#93;:&#91;AWS account&#93;:application/&#91;resource ID&#93;. (pattern: &lt;code&gt;(^&#91;a-zA-Z0-9-&#93;+$)|(^arn:aws:gameliftstreams:(&#91;^: &#93;*):(&#91;0-9&#93;&#123;12&#125;):(&#91;^: &#93;*)$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was created. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A human-readable label for the application. You can edit this value. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.!+@/&#93;&#91;a-zA-Z0-9-_.!+@/ &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>An ID that uniquely identifies the application resource. Example ID: a-9ZY8X7Wv6. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when this resource was last updated. Timestamps are expressed using in ISO8601 format, such as: 2022-12-27T22:29:40+00:00 (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeEnvironment" /></td>
+    <td><CopyableCode code="runtime_environment" /></td>
     <td><code>object</code></td>
     <td>Configuration settings that identify the operating system for an application resource. This can also include a compatibility layer and other drivers. A runtime environment can be one of the following: For Linux applications Ubuntu 22.04 LTS (Type=UBUNTU, Version=22_04_LTS) For Windows applications Microsoft Windows Server 2022 Base (Type=WINDOWS, Version=2022) Proton 10.0-4 (Type=PROTON, Version=20260204) Proton 9.0-2 (Type=PROTON, Version=20250516) Proton 8.0-5 (Type=PROTON, Version=20241007) Proton 8.0-2c (Type=PROTON, Version=20230704)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the application resource. Possible statuses include the following: INITIALIZED: Amazon GameLift Streams has received the request and is initiating the work flow to create an application. PROCESSING: The create application work flow is in process. Amazon GameLift Streams is copying the content and caching for future deployment in a stream group. READY: The application is ready to deploy in a stream group. ERROR: An error occurred when setting up the application. For more information about the error, call GetApplication and refer to StatusReason. DELETING: Amazon GameLift Streams is in the process of deleting the application. (INITIALIZED, PROCESSING, READY, DELETING, ERROR)</td>
 </tr>
@@ -299,20 +299,20 @@ Retrieves properties for an Amazon GameLift Streams application resource. Specif
 
 ```sql
 SELECT
-ApplicationLogOutputUri,
-ApplicationLogPaths,
-ApplicationSourceUri,
-Arn,
-AssociatedStreamGroups,
-CreatedAt,
-Description,
-ExecutablePath,
-Id,
-LastUpdatedAt,
-ReplicationStatuses,
-RuntimeEnvironment,
-Status,
-StatusReason
+application_log_output_uri,
+application_log_paths,
+application_source_uri,
+arn,
+associated_stream_groups,
+created_at,
+description,
+executable_path,
+id,
+last_updated_at,
+replication_statuses,
+runtime_environment,
+status,
+status_reason
 FROM aws.gameliftstreams.applications
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -325,13 +325,13 @@ Retrieves a list of all Amazon GameLift Streams applications that are associated
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-Id,
-LastUpdatedAt,
-RuntimeEnvironment,
-Status
+arn,
+created_at,
+description,
+id,
+last_updated_at,
+runtime_environment,
+status
 FROM aws.gameliftstreams.applications
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -378,20 +378,20 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ApplicationLogOutputUri,
-ApplicationLogPaths,
-ApplicationSourceUri,
-Arn,
-AssociatedStreamGroups,
-CreatedAt,
-Description,
-ExecutablePath,
-Id,
-LastUpdatedAt,
-ReplicationStatuses,
-RuntimeEnvironment,
-Status,
-StatusReason
+application_log_output_uri,
+application_log_paths,
+application_source_uri,
+arn,
+associated_stream_groups,
+created_at,
+description,
+executable_path,
+id,
+last_updated_at,
+replication_statuses,
+runtime_environment,
+status,
+status_reason
 ;
 ```
 </TabItem>
@@ -452,8 +452,8 @@ identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 AND ApplicationIdentifiers = '{{ ApplicationIdentifiers }}' --required
 RETURNING
-ApplicationArns,
-Arn;
+application_arns,
+arn;
 ```
 </TabItem>
 <TabItem value="update_application">
@@ -470,20 +470,20 @@ WHERE
 identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApplicationLogOutputUri,
-ApplicationLogPaths,
-ApplicationSourceUri,
-Arn,
-AssociatedStreamGroups,
-CreatedAt,
-Description,
-ExecutablePath,
-Id,
-LastUpdatedAt,
-ReplicationStatuses,
-RuntimeEnvironment,
-Status,
-StatusReason;
+application_log_output_uri,
+application_log_paths,
+application_source_uri,
+arn,
+associated_stream_groups,
+created_at,
+description,
+executable_path,
+id,
+last_updated_at,
+replication_statuses,
+runtime_environment,
+status,
+status_reason;
 ```
 </TabItem>
 </Tabs>

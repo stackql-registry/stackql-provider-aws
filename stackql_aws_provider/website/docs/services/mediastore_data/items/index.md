@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentLength" /></td>
+    <td><CopyableCode code="content_length" /></td>
     <td><code>integer (int64)</code></td>
     <td>The length of the item in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The content type of the item. (pattern: &lt;code&gt;^&#91;\w\-\/\.\+&#93;&#123;1,255&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The ETag that represents a unique instance of the item. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the item was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the item. (pattern: &lt;code&gt;&#91;A-Za-z0-9_\.\-\~&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The item type (folder or object). (OBJECT, FOLDER)</td>
 </tr>
@@ -159,12 +159,12 @@ Provides a list of metadata entries about folders and objects in the specified f
 
 ```sql
 SELECT
-ContentLength,
-ContentType,
-ETag,
-LastModified,
-Name,
-Type
+content_length,
+content_type,
+e_tag,
+last_modified,
+name,
+type
 FROM aws.mediastore_data.items
 WHERE region = '{{ region }}' -- required
 AND Path = '{{ Path }}'

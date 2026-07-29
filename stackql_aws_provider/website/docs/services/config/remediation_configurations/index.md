@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RemediationConfigurations" /></td>
+    <td><CopyableCode code="remediation_configurations" /></td>
     <td><code>array</code></td>
     <td>Returns a remediation configuration object.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns the details of one or more remediation configurations.
 
 ```sql
 SELECT
-RemediationConfigurations
+remediation_configurations
 FROM aws.config.remediation_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -162,7 +162,7 @@ WHERE
 region = '{{ region }}' --required
 AND RemediationConfigurations = '{{ RemediationConfigurations }}' --required
 RETURNING
-FailedBatches;
+failed_batches;
 ```
 </TabItem>
 </Tabs>

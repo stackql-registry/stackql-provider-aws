@@ -164,8 +164,8 @@ SELECT
 '{{ principalArn }}' /* required */,
 '{{ region }}'
 RETURNING
-createdAt,
-principalArn
+created_at,
+principal_arn
 ;
 ```
 </TabItem>

@@ -52,92 +52,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoEvaluationConfiguration" /></td>
+    <td><CopyableCode code="auto_evaluation_configuration" /></td>
     <td><code>object</code></td>
     <td>The automatic evaluation configuration of an evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation form was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormArn" /></td>
+    <td><CopyableCode code="evaluation_form_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the evaluation form resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormId" /></td>
+    <td><CopyableCode code="evaluation_form_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormVersion" /></td>
+    <td><CopyableCode code="evaluation_form_version" /></td>
     <td><code>integer</code></td>
     <td>A version of the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>array</code></td>
     <td>Items that are part of the evaluation form. The total number of sections and questions must not exceed 100 each. Questions must be contained in a section.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageConfiguration" /></td>
+    <td><CopyableCode code="language_configuration" /></td>
     <td><code>object</code></td>
     <td>Language configuration for an evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation form was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Locked" /></td>
+    <td><CopyableCode code="locked" /></td>
     <td><code>boolean</code></td>
     <td>The flag indicating whether the evaluation form is locked for changes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReviewConfiguration" /></td>
+    <td><CopyableCode code="review_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration settings for evaluation reviews.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScoringStrategy" /></td>
+    <td><CopyableCode code="scoring_strategy" /></td>
     <td><code>object</code></td>
     <td>Information about scoring strategy for an evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the evaluation form. (DRAFT, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetConfiguration" /></td>
+    <td><CopyableCode code="target_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration that specifies the target for an evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>A title of the evaluation form.</td>
 </tr>
@@ -156,57 +156,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveVersion" /></td>
+    <td><CopyableCode code="active_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the active evaluation form version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who created the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation form was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormArn" /></td>
+    <td><CopyableCode code="evaluation_form_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the evaluation form resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormId" /></td>
+    <td><CopyableCode code="evaluation_form_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastActivatedBy" /></td>
+    <td><CopyableCode code="last_activated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last activated the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastActivatedTime" /></td>
+    <td><CopyableCode code="last_activated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation form was last activated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user who last updated the evaluation form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the evaluation form was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestVersion" /></td>
+    <td><CopyableCode code="latest_version" /></td>
     <td><code>integer</code></td>
     <td>The version number of the latest evaluation form version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>A title of the evaluation form.</td>
 </tr>
@@ -225,17 +225,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApproximateTotalCount" /></td>
+    <td><CopyableCode code="approximate_total_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of evaluation forms that matched your search query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationFormSearchSummaryList" /></td>
+    <td><CopyableCode code="evaluation_form_search_summary_list" /></td>
     <td><code>array</code></td>
     <td>Information about the returned evaluation forms.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are additional results, this is the token for the next set of results.</td>
 </tr>
@@ -380,24 +380,24 @@ Describes an evaluation form in the specified Amazon Connect instance. If the ve
 
 ```sql
 SELECT
-AutoEvaluationConfiguration,
-CreatedBy,
-CreatedTime,
-Description,
-EvaluationFormArn,
-EvaluationFormId,
-EvaluationFormVersion,
-Items,
-LanguageConfiguration,
-LastModifiedBy,
-LastModifiedTime,
-Locked,
-ReviewConfiguration,
-ScoringStrategy,
-Status,
-Tags,
-TargetConfiguration,
-Title
+auto_evaluation_configuration,
+created_by,
+created_time,
+description,
+evaluation_form_arn,
+evaluation_form_id,
+evaluation_form_version,
+items,
+language_configuration,
+last_modified_by,
+last_modified_time,
+locked,
+review_configuration,
+scoring_strategy,
+status,
+tags,
+target_configuration,
+title
 FROM aws.connect.evaluation_forms
 WHERE instance_id = '{{ instance_id }}' -- required
 AND evaluation_form_id = '{{ evaluation_form_id }}' -- required
@@ -412,17 +412,17 @@ Lists evaluation forms in the specified Amazon Connect instance.
 
 ```sql
 SELECT
-ActiveVersion,
-CreatedBy,
-CreatedTime,
-EvaluationFormArn,
-EvaluationFormId,
-LastActivatedBy,
-LastActivatedTime,
-LastModifiedBy,
-LastModifiedTime,
-LatestVersion,
-Title
+active_version,
+created_by,
+created_time,
+evaluation_form_arn,
+evaluation_form_id,
+last_activated_by,
+last_activated_time,
+last_modified_by,
+last_modified_time,
+latest_version,
+title
 FROM aws.connect.evaluation_forms
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -437,9 +437,9 @@ Searches evaluation forms in an Amazon Connect instance, with optional filtering
 
 ```sql
 SELECT
-ApproximateTotalCount,
-EvaluationFormSearchSummaryList,
-NextToken
+approximate_total_count,
+evaluation_form_search_summary_list,
+next_token
 FROM aws.connect.evaluation_forms
 WHERE region = '{{ region }}' -- required
 ;
@@ -492,8 +492,8 @@ SELECT
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
-EvaluationFormArn,
-EvaluationFormId
+evaluation_form_arn,
+evaluation_form_id
 ;
 ```
 </TabItem>
@@ -655,9 +655,9 @@ AND region = '{{ region }}' --required
 AND EvaluationFormVersion = '{{ EvaluationFormVersion }}' --required
 AND Items = '{{ Items }}' --required
 RETURNING
-EvaluationFormArn,
-EvaluationFormId,
-EvaluationFormVersion;
+evaluation_form_arn,
+evaluation_form_id,
+evaluation_form_version;
 ```
 </TabItem>
 </Tabs>

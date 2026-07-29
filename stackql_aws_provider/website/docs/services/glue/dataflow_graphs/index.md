@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DagEdges" /></td>
+    <td><CopyableCode code="dag_edges" /></td>
     <td><code>array</code></td>
     <td>A list of the edges in the resulting DAG.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DagNodes" /></td>
+    <td><CopyableCode code="dag_nodes" /></td>
     <td><code>array</code></td>
     <td>A list of the nodes in the resulting DAG.</td>
 </tr>
@@ -124,8 +124,8 @@ Transforms a Python script into a directed acyclic graph (DAG).
 
 ```sql
 SELECT
-DagEdges,
-DagNodes
+dag_edges,
+dag_nodes
 FROM aws.glue.dataflow_graphs
 WHERE region = '{{ region }}' -- required
 ;

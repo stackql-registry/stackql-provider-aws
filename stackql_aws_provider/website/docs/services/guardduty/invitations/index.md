@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that the invitation was sent from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitationId" /></td>
+    <td><CopyableCode code="invitation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the invitation. This value is used to validate the inviter account to the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitedAt" /></td>
+    <td><CopyableCode code="invited_at" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the invitation was sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelationshipStatus" /></td>
+    <td><CopyableCode code="relationship_status" /></td>
     <td><code>string</code></td>
     <td>The status of the relationship between the inviter and invitee accounts.</td>
 </tr>
@@ -177,10 +177,10 @@ Lists all GuardDuty membership invitations that were sent to the current Amazon 
 
 ```sql
 SELECT
-AccountId,
-InvitationId,
-InvitedAt,
-RelationshipStatus
+account_id,
+invitation_id,
+invited_at,
+relationship_status
 FROM aws.guardduty.invitations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

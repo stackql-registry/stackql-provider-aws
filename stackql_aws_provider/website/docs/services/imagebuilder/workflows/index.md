@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="latestVersionReferences" /></td>
+    <td><CopyableCode code="latest_version_references" /></td>
     <td><code>object</code></td>
     <td>The resource ARNs with different wildcard variations of semantic versioning.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the workflow resource. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):workflow/(build|test|distribution)/&#91;a-z0-9-_&#93;+/&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The timestamp when Image Builder created the workflow version.</td>
 </tr>
@@ -208,7 +208,7 @@ Get a workflow resource object.
 
 ```sql
 SELECT
-latestVersionReferences,
+latest_version_references,
 workflow
 FROM aws.imagebuilder.workflows
 WHERE workflowBuildVersionArn = '{{ workflowBuildVersionArn }}' -- required
@@ -224,7 +224,7 @@ Lists workflow build versions based on filtering parameters.
 SELECT
 name,
 arn,
-dateCreated,
+date_created,
 description,
 owner,
 type_,
@@ -279,9 +279,9 @@ SELECT
 {{ dryRun }},
 '{{ region }}'
 RETURNING
-clientToken,
-latestVersionReferences,
-workflowBuildVersionArn
+client_token,
+latest_version_references,
+workflow_build_version_arn
 ;
 ```
 </TabItem>

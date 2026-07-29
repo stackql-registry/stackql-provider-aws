@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Identifier" /></td>
+    <td><CopyableCode code="identifier" /></td>
     <td><code>string</code></td>
     <td>A unique resource server identifier for the resource server. The identifier can be an API friendly name like solar-system-data. You can also set an API URL like https:​//solar-system-data-api.example.com as your identifier. Amazon Cognito represents scopes in the access token in the format $resource-server-identifier/$scope. Longer scope-identifier strings increase the size of your access tokens. (pattern: &lt;code&gt;&#91;\x21\x23-\x5B\x5D-\x7E&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource server. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scopes" /></td>
+    <td><CopyableCode code="scopes" /></td>
     <td><code>array</code></td>
     <td>A list of scopes that are defined for the resource server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool that contains the resource server configuration. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -162,10 +162,10 @@ Describes a resource server. For more information about resource servers, see Ac
 
 ```sql
 SELECT
-Identifier,
-Name,
-Scopes,
-UserPoolId
+identifier,
+name,
+scopes,
+user_pool_id
 FROM aws.cognito_idp.resource_servers
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,7 +202,7 @@ SELECT
 '{{ Scopes }}',
 '{{ region }}'
 RETURNING
-ResourceServer
+resource_server
 ;
 ```
 </TabItem>
@@ -261,7 +261,7 @@ WHERE
 region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
-ResourceServer;
+resource_server;
 ```
 </TabItem>
 </Tabs>

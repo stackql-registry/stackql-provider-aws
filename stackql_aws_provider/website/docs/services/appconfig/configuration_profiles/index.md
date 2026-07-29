@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The configuration profile description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The configuration profile ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name of the Key Management Service key to encrypt new configuration data versions in the AppConfig hosted configuration store. This attribute is only used for hosted configuration types. To encrypt data managed in other configuration stores, see the documentation for how to specify an KMS key for that particular service. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z&#93;+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:&#91;a-zA-Z0-9-_/:.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The Key Management Service key identifier (key ID, key alias, or key ARN) provided when the resource was created or updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URI location of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RetrievalRoleArn" /></td>
+    <td><CopyableCode code="retrieval_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of an IAM role with permission to access the configuration at the specified LocationUri. (pattern: &lt;code&gt;^((arn):(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov|aws-eusc):(iam)::\d&#123;12&#125;:role&#91;/&#93;.*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of configurations contained in the profile. AppConfig supports feature flags and freeform configurations. We recommend you create feature flag configurations to enable or disable new features and freeform configurations to distribute configurations to an application. When calling this API, enter one of the following values for Type: AWS.AppConfig.FeatureFlags AWS.Freeform (pattern: &lt;code&gt;^&#91;a-zA-Z\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Validators" /></td>
+    <td><CopyableCode code="validators" /></td>
     <td><code>array</code></td>
     <td>A list of methods for validating the configuration.</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The application ID. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the configuration profile. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URI location of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of configurations contained in the profile. AppConfig supports feature flags and freeform configurations. We recommend you create feature flag configurations to enable or disable new features and freeform configurations to distribute configurations to an application. When calling this API, enter one of the following values for Type: AWS.AppConfig.FeatureFlags AWS.Freeform (pattern: &lt;code&gt;^&#91;a-zA-Z\.&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidatorTypes" /></td>
+    <td><CopyableCode code="validator_types" /></td>
     <td><code>array</code></td>
     <td>The types of validators in the configuration profile.</td>
 </tr>
@@ -280,16 +280,16 @@ Retrieves information about a configuration profile.
 
 ```sql
 SELECT
-ApplicationId,
-Description,
-Id,
-KmsKeyArn,
-KmsKeyIdentifier,
-LocationUri,
-Name,
-RetrievalRoleArn,
-Type,
-Validators
+application_id,
+description,
+id,
+kms_key_arn,
+kms_key_identifier,
+location_uri,
+name,
+retrieval_role_arn,
+type,
+validators
 FROM aws.appconfig.configuration_profiles
 WHERE application_id = '{{ application_id }}' -- required
 AND configuration_profile_id = '{{ configuration_profile_id }}' -- required
@@ -303,12 +303,12 @@ Lists the configuration profiles for an application.
 
 ```sql
 SELECT
-ApplicationId,
-Id,
-LocationUri,
-Name,
-Type,
-ValidatorTypes
+application_id,
+id,
+location_uri,
+name,
+type,
+validator_types
 FROM aws.appconfig.configuration_profiles
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -359,16 +359,16 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-Description,
-Id,
-KmsKeyArn,
-KmsKeyIdentifier,
-LocationUri,
-Name,
-RetrievalRoleArn,
-Type,
-Validators
+application_id,
+description,
+id,
+kms_key_arn,
+kms_key_identifier,
+location_uri,
+name,
+retrieval_role_arn,
+type,
+validators
 ;
 ```
 </TabItem>
@@ -432,16 +432,16 @@ application_id = '{{ application_id }}' --required
 AND configuration_profile_id = '{{ configuration_profile_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApplicationId,
-Description,
-Id,
-KmsKeyArn,
-KmsKeyIdentifier,
-LocationUri,
-Name,
-RetrievalRoleArn,
-Type,
-Validators;
+application_id,
+description,
+id,
+kms_key_arn,
+kms_key_identifier,
+location_uri,
+name,
+retrieval_role_arn,
+type,
+validators;
 ```
 </TabItem>
 </Tabs>

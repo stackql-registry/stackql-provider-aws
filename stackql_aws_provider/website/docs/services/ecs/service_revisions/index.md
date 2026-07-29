@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Any failures associated with the call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceRevisions" /></td>
+    <td><CopyableCode code="service_revisions" /></td>
     <td><code>array</code></td>
     <td>The list of service revisions described.</td>
 </tr>
@@ -125,7 +125,7 @@ Describes one or more service revisions. A service revision is a version of the 
 ```sql
 SELECT
 failures,
-serviceRevisions
+service_revisions
 FROM aws.ecs.service_revisions
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the target account. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the target account. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an IAM role for the target account. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetAccountConfigurations" /></td>
+    <td><CopyableCode code="target_account_configurations" /></td>
     <td><code>array</code></td>
     <td>The target account configurations.</td>
 </tr>
@@ -177,9 +177,9 @@ Gets information about the specified target account configuration of the experim
 
 ```sql
 SELECT
-accountId,
+account_id,
 description,
-roleArn
+role_arn
 FROM aws.fis.experiment_target_account_configurations
 WHERE id = '{{ id }}' -- required
 AND account_id = '{{ account_id }}' -- required
@@ -193,8 +193,8 @@ Lists the target account configurations of the specified experiment.
 
 ```sql
 SELECT
-nextToken,
-targetAccountConfigurations
+next_token,
+target_account_configurations
 FROM aws.fis.experiment_target_account_configurations
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

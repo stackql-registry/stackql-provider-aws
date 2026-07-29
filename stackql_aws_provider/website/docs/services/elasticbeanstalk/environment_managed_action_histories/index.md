@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionDescription" /></td>
+    <td><CopyableCode code="action_description" /></td>
     <td><code>string</code></td>
     <td>A description of the managed action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the managed action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of the managed action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutedTime" /></td>
+    <td><CopyableCode code="executed_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the action started executing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureDescription" /></td>
+    <td><CopyableCode code="failure_description" /></td>
     <td><code>string</code></td>
     <td>If the action failed, a description of the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureType" /></td>
+    <td><CopyableCode code="failure_type" /></td>
     <td><code>string</code></td>
     <td>If the action failed, the type of failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FinishedTime" /></td>
+    <td><CopyableCode code="finished_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the action finished executing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the action.</td>
 </tr>
@@ -174,14 +174,14 @@ Lists an environment's completed and failed managed actions.
 
 ```sql
 SELECT
-ActionDescription,
-ActionId,
-ActionType,
-ExecutedTime,
-FailureDescription,
-FailureType,
-FinishedTime,
-Status
+action_description,
+action_id,
+action_type,
+executed_time,
+failure_description,
+failure_type,
+finished_time,
+status
 FROM aws.elasticbeanstalk.environment_managed_action_histories
 WHERE region = '{{ region }}' -- required
 AND EnvironmentId = '{{ EnvironmentId }}'

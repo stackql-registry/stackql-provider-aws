@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="attachedClusters" /></td>
+    <td><CopyableCode code="attached_clusters" /></td>
     <td><code>array</code></td>
     <td>A list of cluster identifiers that a volume is attached to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZoneIds" /></td>
+    <td><CopyableCode code="availability_zone_ids" /></td>
     <td><code>array</code></td>
     <td>The identifier of the availability zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="azMode" /></td>
+    <td><CopyableCode code="az_mode" /></td>
     <td><code>string</code></td>
     <td>The number of availability zones you want to assign per volume. Currently, FinSpace only supports SINGLE for volumes. This places dataview in a single AZ. (SINGLE, MULTI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
@@ -76,17 +76,17 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the volume. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9. &#93;&#123;1,1000&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the kdb environment, whose clusters can attach to the volume. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTimestamp" /></td>
+    <td><CopyableCode code="last_modified_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time that the volume was updated in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nas1Configuration" /></td>
+    <td><CopyableCode code="nas_1_configuration" /></td>
     <td><code>object</code></td>
     <td>The structure containing the size and type of the network attached storage (NAS_1) file system volume.</td>
 </tr>
@@ -96,22 +96,22 @@ The following fields are returned by `SELECT` queries:
     <td>The status of volume creation. CREATING – The volume creation is in progress. CREATE_FAILED – The volume creation has failed. ACTIVE – The volume is active. UPDATING – The volume is in the process of being updated. UPDATE_FAILED – The update action failed. UPDATED – The volume is successfully updated. DELETING – The volume is in the process of being deleted. DELETE_FAILED – The system failed to delete the volume. DELETED – The volume is successfully deleted. (CREATING, CREATE_FAILED, ACTIVE, UPDATING, UPDATED, UPDATE_FAILED, DELETING, DELETED, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The error message when a failed state occurs. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-\.\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="volumeArn" /></td>
+    <td><CopyableCode code="volume_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the volume. (pattern: &lt;code&gt;^arn:aws:finspace:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:\d+:kxEnvironment/&#91;0-9A-Za-z_-&#93;&#123;1,128&#125;(/kxSharedVolume/&#91;a-zA-Z0-9_-&#93;&#123;1,255&#125;)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="volumeName" /></td>
+    <td><CopyableCode code="volume_name" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the volume. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="volumeType" /></td>
+    <td><CopyableCode code="volume_type" /></td>
     <td><code>string</code></td>
     <td>The type of file system volume. Currently, FinSpace only supports NAS_1 volume type. (NAS_1)</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="kxVolumeSummaries" /></td>
+    <td><CopyableCode code="kx_volume_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of volumes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -263,19 +263,19 @@ Retrieves the information about the volume.
 
 ```sql
 SELECT
-attachedClusters,
-availabilityZoneIds,
-azMode,
-createdTimestamp,
+attached_clusters,
+availability_zone_ids,
+az_mode,
+created_timestamp,
 description,
-environmentId,
-lastModifiedTimestamp,
-nas1Configuration,
+environment_id,
+last_modified_timestamp,
+nas_1_configuration,
 status,
-statusReason,
-volumeArn,
-volumeName,
-volumeType
+status_reason,
+volume_arn,
+volume_name,
+volume_type
 FROM aws.finspace.kx_volumes
 WHERE environment_id = '{{ environment_id }}' -- required
 AND volume_name = '{{ volume_name }}' -- required
@@ -289,8 +289,8 @@ Lists all the volumes in a kdb environment.
 
 ```sql
 SELECT
-kxVolumeSummaries,
-nextToken
+kx_volume_summaries,
+next_token
 FROM aws.finspace.kx_volumes
 WHERE environment_id = '{{ environment_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -341,17 +341,17 @@ SELECT
 '{{ environment_id }}',
 '{{ region }}'
 RETURNING
-availabilityZoneIds,
-azMode,
-createdTimestamp,
+availability_zone_ids,
+az_mode,
+created_timestamp,
 description,
-environmentId,
-nas1Configuration,
+environment_id,
+nas_1_configuration,
 status,
-statusReason,
-volumeArn,
-volumeName,
-volumeType
+status_reason,
+volume_arn,
+volume_name,
+volume_type
 ;
 ```
 </TabItem>
@@ -418,19 +418,19 @@ environment_id = '{{ environment_id }}' --required
 AND volume_name = '{{ volume_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-attachedClusters,
-availabilityZoneIds,
-azMode,
-createdTimestamp,
+attached_clusters,
+availability_zone_ids,
+az_mode,
+created_timestamp,
 description,
-environmentId,
-lastModifiedTimestamp,
-nas1Configuration,
+environment_id,
+last_modified_timestamp,
+nas_1_configuration,
 status,
-statusReason,
-volumeArn,
-volumeName,
-volumeType;
+status_reason,
+volume_arn,
+volume_name,
+volume_type;
 ```
 </TabItem>
 </Tabs>

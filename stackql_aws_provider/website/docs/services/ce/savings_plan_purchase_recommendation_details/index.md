@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RecommendationDetailData" /></td>
+    <td><CopyableCode code="recommendation_detail_data" /></td>
     <td><code>object</code></td>
     <td>Contains detailed information about a specific Savings Plan recommendation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationDetailId" /></td>
+    <td><CopyableCode code="recommendation_detail_id" /></td>
     <td><code>string</code></td>
     <td>The ID that is associated with the Savings Plan recommendation. (pattern: &lt;code&gt;^&#91;\S\s&#93;&#123;8&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;4&#125;-&#91;\S\s&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the details for a Savings Plan recommendation. These details include t
 
 ```sql
 SELECT
-RecommendationDetailData,
-RecommendationDetailId
+recommendation_detail_data,
+recommendation_detail_id
 FROM aws.ce.savings_plan_purchase_recommendation_details
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationId" /></td>
+    <td><CopyableCode code="destination_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the publishing destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationProperties" /></td>
+    <td><CopyableCode code="destination_properties" /></td>
     <td><code>object</code></td>
     <td>Contains the Amazon Resource Name (ARN) of the resource to publish to, such as an S3 bucket, and the ARN of the KMS key to use to encrypt published findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DestinationType" /></td>
+    <td><CopyableCode code="destination_type" /></td>
     <td><code>string</code></td>
     <td>The type of publishing destination. Currently, only Amazon S3 buckets are supported. (S3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublishingFailureStartTimestamp" /></td>
+    <td><CopyableCode code="publishing_failure_start_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time, in epoch millisecond format, at which GuardDuty was first unable to publish findings to the destination.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the publishing destination. (PENDING_VERIFICATION, PUBLISHING, UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of the publishing destination resource.</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>A Destinations object that includes information about each publishing destination returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the NextToken value returned from the previous request to continue listing results after the first page.</td>
 </tr>
@@ -218,12 +218,12 @@ Returns information about the publishing destination specified by the provided d
 
 ```sql
 SELECT
-DestinationId,
-DestinationProperties,
-DestinationType,
-PublishingFailureStartTimestamp,
-Status,
-Tags
+destination_id,
+destination_properties,
+destination_type,
+publishing_failure_start_timestamp,
+status,
+tags
 FROM aws.guardduty.publishing_destinations
 WHERE detector_id = '{{ detector_id }}' -- required
 AND destination_id = '{{ destination_id }}' -- required
@@ -237,8 +237,8 @@ Returns a list of publishing destinations associated with the specified detector
 
 ```sql
 SELECT
-Destinations,
-NextToken
+destinations,
+next_token
 FROM aws.guardduty.publishing_destinations
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -280,7 +280,7 @@ SELECT
 '{{ detector_id }}',
 '{{ region }}'
 RETURNING
-DestinationId
+destination_id
 ;
 ```
 </TabItem>

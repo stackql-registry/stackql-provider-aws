@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BacktrackIdentifier" /></td>
+    <td><CopyableCode code="backtrack_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains the backtrack identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BacktrackRequestCreationTime" /></td>
+    <td><CopyableCode code="backtrack_request_creation_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the time at which the backtrack was requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BacktrackTo" /></td>
+    <td><CopyableCode code="backtrack_to" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the time to which the DB cluster was backtracked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BacktrackedFrom" /></td>
+    <td><CopyableCode code="backtracked_from" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the time from which the DB cluster was backtracked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains a user-supplied DB cluster identifier. This identifier is the unique key that identifies a DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the backtrack. This property returns one of the following values: applying - The backtrack is currently being applied to or rolled back from the DB cluster. completed - The backtrack has successfully been applied to or rolled back from the DB cluster. failed - An error occurred while the backtrack was applied to or rolled back from the DB cluster. pending - The backtrack is currently pending application to or rollback from the DB cluster.</td>
 </tr>
@@ -169,12 +169,12 @@ Returns information about backtracks for a DB cluster. For more information on A
 
 ```sql
 SELECT
-BacktrackIdentifier,
-BacktrackRequestCreationTime,
-BacktrackTo,
-BacktrackedFrom,
-DBClusterIdentifier,
-Status
+backtrack_identifier,
+backtrack_request_creation_time,
+backtrack_to,
+backtracked_from,
+db_cluster_identifier,
+status
 FROM aws.rds.db_cluster_backtracks
 WHERE DBClusterIdentifier = '{{ DBClusterIdentifier }}' -- required
 AND region = '{{ region }}' -- required

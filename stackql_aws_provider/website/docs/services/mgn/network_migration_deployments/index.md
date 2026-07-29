@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the job completed or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobID" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the deployer job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationDefinitionID" /></td>
+    <td><CopyableCode code="network_migration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration definition. (pattern: &lt;code&gt;nmd-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationExecutionID" /></td>
+    <td><CopyableCode code="network_migration_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -80,7 +80,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the deployer job. (PENDING, STARTED, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>Detailed status information about the job.</td>
 </tr>
@@ -149,13 +149,13 @@ Lists network migration deployment jobs and their current status.
 
 ```sql
 SELECT
-createdAt,
-endedAt,
-jobID,
-networkMigrationDefinitionID,
-networkMigrationExecutionID,
+created_at,
+ended_at,
+job_id,
+network_migration_definition_id,
+network_migration_execution_id,
 status,
-statusDetails
+status_details
 FROM aws.mgn.network_migration_deployments
 WHERE region = '{{ region }}' -- required
 ;

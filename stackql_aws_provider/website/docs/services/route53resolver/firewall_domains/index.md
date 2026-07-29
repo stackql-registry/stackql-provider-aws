@@ -166,10 +166,10 @@ AND FirewallDomainListId = '{{ FirewallDomainListId }}' --required
 AND Operation = '{{ Operation }}' --required
 AND Domains = '{{ Domains }}' --required
 RETURNING
-Id,
-Name,
-Status,
-StatusMessage;
+id,
+name,
+status,
+status_message;
 ```
 </TabItem>
 </Tabs>

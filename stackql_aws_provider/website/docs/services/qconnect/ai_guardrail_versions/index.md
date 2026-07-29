@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aiGuardrailSummary" /></td>
+    <td><CopyableCode code="ai_guardrail_summary" /></td>
     <td><code>object</code></td>
     <td>The summary of the AI Guardrail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number for this AI Guardrail version.</td>
 </tr>
@@ -163,8 +163,8 @@ Lists AI Guardrail versions.
 
 ```sql
 SELECT
-aiGuardrailSummary,
-versionNumber
+ai_guardrail_summary,
+version_number
 FROM aws.qconnect.ai_guardrail_versions
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND ai_guardrail_id = '{{ ai_guardrail_id }}' -- required
@@ -205,8 +205,8 @@ SELECT
 '{{ ai_guardrail_id }}',
 '{{ region }}'
 RETURNING
-aiGuardrail,
-versionNumber
+ai_guardrail,
+version_number
 ;
 ```
 </TabItem>

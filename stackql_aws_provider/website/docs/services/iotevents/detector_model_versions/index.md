@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="detectorModelVersionSummaries" /></td>
+    <td><CopyableCode code="detector_model_version_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information about the detector model versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can use to return the next set of results, or null if there are no more results.</td>
 </tr>
@@ -139,8 +139,8 @@ Lists all the versions of a detector model. Only the metadata associated with ea
 
 ```sql
 SELECT
-detectorModelVersionSummaries,
-nextToken
+detector_model_version_summaries,
+next_token
 FROM aws.iotevents.detector_model_versions
 WHERE detector_model_name = '{{ detector_model_name }}' -- required
 AND region = '{{ region }}' -- required

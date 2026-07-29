@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the resource being exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportTaskId" /></td>
+    <td><CopyableCode code="export_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportToS3Task" /></td>
+    <td><CopyableCode code="export_to_s3_task" /></td>
     <td><code>string</code></td>
     <td>Information about the export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceExportDetails" /></td>
+    <td><CopyableCode code="instance_export_details" /></td>
     <td><code>string</code></td>
     <td>Information about the instance to export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message related to the export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the export task.</td>
 </tr>
@@ -203,13 +203,13 @@ Describes the specified export instance tasks or all of your export instance tas
 
 ```sql
 SELECT
-Description,
-ExportTaskId,
-ExportToS3Task,
-InstanceExportDetails,
-State,
-StatusMessage,
-Tags
+description,
+export_task_id,
+export_to_s3_task,
+instance_export_details,
+state,
+status_message,
+tags
 FROM aws.ec2.export_tasks
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'
@@ -250,13 +250,13 @@ SELECT
 '{{ TagSpecification }}',
 '{{ Description }}'
 RETURNING
-Description,
-ExportTaskId,
-ExportToS3Task,
-InstanceExportDetails,
-State,
-StatusMessage,
-Tags
+description,
+export_task_id,
+export_to_s3_task,
+instance_export_details,
+state,
+status_message,
+tags
 ;
 ```
 </TabItem>

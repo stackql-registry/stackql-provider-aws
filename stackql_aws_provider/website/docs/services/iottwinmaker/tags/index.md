@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -148,7 +148,7 @@ Lists all tags associated with a resource.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 tags
 FROM aws.iottwinmaker.tags
 WHERE region = '{{ region }}' -- required

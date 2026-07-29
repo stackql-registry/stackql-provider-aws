@@ -50,112 +50,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CloudWatchLogGroupARN" /></td>
+    <td><CopyableCode code="cloud_watch_log_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that is used to monitor events in the gateway. This field only only exist and returns once it have been chosen and set by the SGW service, based on the OS version of the gateway VM</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeprecationDate" /></td>
+    <td><CopyableCode code="deprecation_date" /></td>
     <td><code>string</code></td>
     <td>Date after which this gateway will not receive software updates for new features and bug fixes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ec2InstanceId" /></td>
+    <td><CopyableCode code="ec_2_instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EC2 instance that was used to launch the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ec2InstanceRegion" /></td>
+    <td><CopyableCode code="ec_2_instance_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the Amazon EC2 instance is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of endpoint for your gateway. Valid Values: STANDARD | FIPS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayCapacity" /></td>
+    <td><CopyableCode code="gateway_capacity" /></td>
     <td><code>string</code></td>
     <td>Specifies the size of the gateway's metadata cache. (Small, Medium, Large)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayName" /></td>
+    <td><CopyableCode code="gateway_name" /></td>
     <td><code>string</code></td>
     <td>The name you configured for your gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayNetworkInterfaces" /></td>
+    <td><CopyableCode code="gateway_network_interfaces" /></td>
     <td><code>array</code></td>
     <td>A NetworkInterface array that contains descriptions of the gateway network interfaces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayState" /></td>
+    <td><CopyableCode code="gateway_state" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the operating state of the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayTimezone" /></td>
+    <td><CopyableCode code="gateway_timezone" /></td>
     <td><code>string</code></td>
     <td>A value that indicates the time zone configured for the gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayType" /></td>
+    <td><CopyableCode code="gateway_type" /></td>
     <td><code>string</code></td>
     <td>The type of the gateway. Amazon FSx File Gateway is no longer available to new customers. Existing customers of FSx File Gateway can continue to use the service normally. For capabilities similar to FSx File Gateway, visit this blog post.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostEnvironment" /></td>
+    <td><CopyableCode code="host_environment" /></td>
     <td><code>string</code></td>
     <td>The type of hardware or software platform on which the gateway is running. Tape Gateway is no longer available on Snow Family devices. (VMWARE, HYPER-V, EC2, KVM, OTHER, SNOWBALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostEnvironmentId" /></td>
+    <td><CopyableCode code="host_environment_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the specific instance of the host platform running the gateway. This value is only available for certain host environments, and its format depends on the host environment type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSoftwareUpdate" /></td>
+    <td><CopyableCode code="last_software_update" /></td>
     <td><code>string</code></td>
     <td>The date on which the last software update was applied to the gateway. If the gateway has never been updated, this field does not return a value in the response. This only only exist and returns once it have been chosen and set by the SGW service, based on the OS version of the gateway VM</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextUpdateAvailabilityDate" /></td>
+    <td><CopyableCode code="next_update_availability_date" /></td>
     <td><code>string</code></td>
     <td>The date on which an update to the gateway is available. This date is in the time zone of the gateway. If the gateway is not available for an update this field is not returned in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareUpdatesEndDate" /></td>
+    <td><CopyableCode code="software_updates_end_date" /></td>
     <td><code>string</code></td>
     <td>Date after which this gateway will not receive software updates for new features.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareVersion" /></td>
+    <td><CopyableCode code="software_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the software running on the gateway appliance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedGatewayCapacities" /></td>
+    <td><CopyableCode code="supported_gateway_capacities" /></td>
     <td><code>array</code></td>
     <td>A list of the metadata cache sizes that the gateway can support based on its current hardware specifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of up to 50 tags assigned to the gateway, sorted alphabetically by key name. Each tag is a key-value pair. For a gateway with more than 10 tags assigned, you can view all tags using the ListTagsForResource API operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VPCEndpoint" /></td>
+    <td><CopyableCode code="vpc_endpoint" /></td>
     <td><code>string</code></td>
     <td>The configuration settings for the virtual private cloud (VPC) endpoint for your gateway.</td>
 </tr>
@@ -231,28 +231,28 @@ Returns metadata about a gateway such as its name, network interfaces, time zone
 
 ```sql
 SELECT
-CloudWatchLogGroupARN,
-DeprecationDate,
-Ec2InstanceId,
-Ec2InstanceRegion,
-EndpointType,
-GatewayARN,
-GatewayCapacity,
-GatewayId,
-GatewayName,
-GatewayNetworkInterfaces,
-GatewayState,
-GatewayTimezone,
-GatewayType,
-HostEnvironment,
-HostEnvironmentId,
-LastSoftwareUpdate,
-NextUpdateAvailabilityDate,
-SoftwareUpdatesEndDate,
-SoftwareVersion,
-SupportedGatewayCapacities,
-Tags,
-VPCEndpoint
+cloud_watch_log_group_arn,
+deprecation_date,
+ec_2_instance_id,
+ec_2_instance_region,
+endpoint_type,
+gateway_arn,
+gateway_capacity,
+gateway_id,
+gateway_name,
+gateway_network_interfaces,
+gateway_state,
+gateway_timezone,
+gateway_type,
+host_environment,
+host_environment_id,
+last_software_update,
+next_update_availability_date,
+software_updates_end_date,
+software_version,
+supported_gateway_capacities,
+tags,
+vpc_endpoint
 FROM aws.storagegateway.gateway_informations
 WHERE region = '{{ region }}' -- required
 ;
@@ -285,8 +285,8 @@ WHERE
 region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 RETURNING
-GatewayARN,
-GatewayName;
+gateway_arn,
+gateway_name;
 ```
 </TabItem>
 </Tabs>

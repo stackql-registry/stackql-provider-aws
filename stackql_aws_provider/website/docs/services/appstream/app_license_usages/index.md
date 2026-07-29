@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppLicenseUsages" /></td>
+    <td><CopyableCode code="app_license_usages" /></td>
     <td><code>array</code></td>
     <td>Collection of license usage records.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for pagination of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves license included application usage information.
 
 ```sql
 SELECT
-AppLicenseUsages,
-NextToken
+app_license_usages,
+next_token
 FROM aws.appstream.app_license_usages
 WHERE region = '{{ region }}' -- required
 ;

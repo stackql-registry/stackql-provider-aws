@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>Indicates the media type of the resource. (text/plain)</td>
 </tr>
@@ -134,7 +134,7 @@ Gets a function package descriptor in a function package. A function package des
 
 ```sql
 SELECT
-contentType,
+content_type,
 vnfd
 FROM aws.tnb.sol_function_package_descriptors
 WHERE Accept = '{{ Accept }}' -- required

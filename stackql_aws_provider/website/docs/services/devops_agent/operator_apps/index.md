@@ -173,7 +173,7 @@ WHERE
 agent_space_id = '{{ agent_space_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-agentSpaceId,
+agent_space_id,
 idp;
 ```
 </TabItem>

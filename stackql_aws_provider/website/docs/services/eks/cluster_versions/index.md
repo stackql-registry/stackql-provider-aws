@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>The type of cluster this version is for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterVersion" /></td>
+    <td><CopyableCode code="cluster_version" /></td>
     <td><code>string</code></td>
     <td>The Kubernetes version for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultPlatformVersion" /></td>
+    <td><CopyableCode code="default_platform_version" /></td>
     <td><code>string</code></td>
     <td>Default platform version for this Kubernetes version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultVersion" /></td>
+    <td><CopyableCode code="default_version" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if this is a default version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endOfExtendedSupportDate" /></td>
+    <td><CopyableCode code="end_of_extended_support_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date when extended support ends for this version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endOfStandardSupportDate" /></td>
+    <td><CopyableCode code="end_of_standard_support_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date when standard support ends for this version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kubernetesPatchVersion" /></td>
+    <td><CopyableCode code="kubernetes_patch_version" /></td>
     <td><code>string</code></td>
     <td>The patch version of Kubernetes for this cluster version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="releaseDate" /></td>
+    <td><CopyableCode code="release_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The release date of this cluster version.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>This field is deprecated. Use versionStatus instead, as that field matches for input and output of this action. Current status of this cluster version. (unsupported, standard-support, extended-support)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionStatus" /></td>
+    <td><CopyableCode code="version_status" /></td>
     <td><code>string</code></td>
     <td>Current status of this cluster version. (UNSUPPORTED, STANDARD_SUPPORT, EXTENDED_SUPPORT)</td>
 </tr>
@@ -216,16 +216,16 @@ Lists available Kubernetes versions for Amazon EKS clusters.
 
 ```sql
 SELECT
-clusterType,
-clusterVersion,
-defaultPlatformVersion,
-defaultVersion,
-endOfExtendedSupportDate,
-endOfStandardSupportDate,
-kubernetesPatchVersion,
-releaseDate,
+cluster_type,
+cluster_version,
+default_platform_version,
+default_version,
+end_of_extended_support_date,
+end_of_standard_support_date,
+kubernetes_patch_version,
+release_date,
 status,
-versionStatus
+version_status
 FROM aws.eks.cluster_versions
 WHERE region = '{{ region }}' -- required
 AND clusterType = '{{ clusterType }}'

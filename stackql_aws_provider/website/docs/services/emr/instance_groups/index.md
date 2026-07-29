@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingPolicy" /></td>
+    <td><CopyableCode code="auto_scaling_policy" /></td>
     <td><code>object</code></td>
     <td>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates Amazon EC2 instances in response to the value of a CloudWatch metric. See PutAutoScalingPolicy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BidPrice" /></td>
+    <td><CopyableCode code="bid_price" /></td>
     <td><code>string</code></td>
     <td>The bid price for each Amazon EC2 Spot Instance type as defined by InstanceType. Expressed in USD. If neither BidPrice nor BidPriceAsPercentageOfOnDemandPrice is provided, BidPriceAsPercentageOfOnDemandPrice defaults to 100%.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Configurations" /></td>
+    <td><CopyableCode code="configurations" /></td>
     <td><code>array</code></td>
     <td>Amazon EMR releases 4.x or later. The list of configurations supplied for an Amazon EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationsVersion" /></td>
+    <td><CopyableCode code="configurations_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the requested configuration specification for this instance group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomAmiId" /></td>
+    <td><CopyableCode code="custom_ami_id" /></td>
     <td><code>string</code></td>
     <td>The custom AMI ID to use for the provisioned instance group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EbsBlockDevices" /></td>
+    <td><CopyableCode code="ebs_block_devices" /></td>
     <td><code>array</code></td>
     <td>The EBS block devices that are mapped to this instance group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EbsOptimized" /></td>
+    <td><CopyableCode code="ebs_optimized" /></td>
     <td><code>boolean</code></td>
     <td>If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the instance group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceGroupType" /></td>
+    <td><CopyableCode code="instance_group_type" /></td>
     <td><code>string</code></td>
     <td>The type of the instance group. Valid values are MASTER, CORE or TASK. (MASTER, CORE, TASK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instance type for all instances in the instance group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfullyAppliedConfigurations" /></td>
+    <td><CopyableCode code="last_successfully_applied_configurations" /></td>
     <td><code>array</code></td>
     <td>A list of configurations that were successfully applied for an instance group last time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastSuccessfullyAppliedConfigurationsVersion" /></td>
+    <td><CopyableCode code="last_successfully_applied_configurations_version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of a configuration specification that was successfully applied for an instance group last time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Market" /></td>
+    <td><CopyableCode code="market" /></td>
     <td><code>string</code></td>
     <td>The marketplace to provision instances for this group. Valid values are ON_DEMAND or SPOT. (ON_DEMAND, SPOT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the instance group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedInstanceCount" /></td>
+    <td><CopyableCode code="requested_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The target number of instances for the instance group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunningInstanceCount" /></td>
+    <td><CopyableCode code="running_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of instances currently running in this instance group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShrinkPolicy" /></td>
+    <td><CopyableCode code="shrink_policy" /></td>
     <td><code>object</code></td>
     <td>Policy for customizing shrink operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current status of the instance group.</td>
 </tr>
@@ -232,24 +232,24 @@ Provides all available details about the instance groups in a cluster.
 
 ```sql
 SELECT
-AutoScalingPolicy,
-BidPrice,
-Configurations,
-ConfigurationsVersion,
-CustomAmiId,
-EbsBlockDevices,
-EbsOptimized,
-Id,
-InstanceGroupType,
-InstanceType,
-LastSuccessfullyAppliedConfigurations,
-LastSuccessfullyAppliedConfigurationsVersion,
-Market,
-Name,
-RequestedInstanceCount,
-RunningInstanceCount,
-ShrinkPolicy,
-Status
+auto_scaling_policy,
+bid_price,
+configurations,
+configurations_version,
+custom_ami_id,
+ebs_block_devices,
+ebs_optimized,
+id,
+instance_group_type,
+instance_type,
+last_successfully_applied_configurations,
+last_successfully_applied_configurations_version,
+market,
+name,
+requested_instance_count,
+running_instance_count,
+shrink_policy,
+status
 FROM aws.emr.instance_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -282,9 +282,9 @@ region = '{{ region }}' --required
 AND InstanceGroups = '{{ InstanceGroups }}' --required
 AND JobFlowId = '{{ JobFlowId }}' --required
 RETURNING
-ClusterArn,
-InstanceGroupIds,
-JobFlowId;
+cluster_arn,
+instance_group_ids,
+job_flow_id;
 ```
 </TabItem>
 <TabItem value="remove_auto_scaling_policy">
@@ -342,10 +342,10 @@ AND ClusterId = '{{ ClusterId }}' --required
 AND InstanceGroupId = '{{ InstanceGroupId }}' --required
 AND AutoScalingPolicy = '{{ AutoScalingPolicy }}' --required
 RETURNING
-AutoScalingPolicy,
-ClusterArn,
-ClusterId,
-InstanceGroupId;
+auto_scaling_policy,
+cluster_arn,
+cluster_id,
+instance_group_id;
 ```
 </TabItem>
 </Tabs>

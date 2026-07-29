@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>string</code></td>
     <td>Attributes include the following: AppleCertificateExpiryDate – The expiry date of the SSL certificate used to configure certificate-based authentication. ApplePlatformTeamID – The Apple developer account ID used to configure token-based authentication. ApplePlatformBundleID – The app identifier used to configure token-based authentication. AuthenticationMethod – Returns the credential type used when sending push notifications from application to APNS/APNS_Sandbox, or application to GCM. APNS – Returns the token or certificate. GCM – Returns the token or key. EventEndpointCreated – Topic ARN to which EndpointCreated event notifications should be sent. EventEndpointDeleted – Topic ARN to which EndpointDeleted event notifications should be sent. EventEndpointUpdated – Topic ARN to which EndpointUpdate event notifications should be sent. EventDeliveryFailure – Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves the attributes of the platform application object for the supported pu
 
 ```sql
 SELECT
-Attributes
+attributes
 FROM aws.sns.platform_application_attributes
 WHERE PlatformApplicationArn = '{{ PlatformApplicationArn }}' -- required
 AND region = '{{ region }}' -- required

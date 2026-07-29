@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OutputStage" /></td>
+    <td><CopyableCode code="output_stage" /></td>
     <td><code>object</code></td>
     <td>Stage statistics such as input and output rows and bytes, execution time, and stage state. This information also includes substages and the query stage plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rows" /></td>
+    <td><CopyableCode code="rows" /></td>
     <td><code>object</code></td>
     <td>Statistics such as input rows and bytes read by the query, rows and bytes output by the query, and the number of rows written by the query.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeline" /></td>
+    <td><CopyableCode code="timeline" /></td>
     <td><code>object</code></td>
     <td>Timeline statistics such as query queue time, planning time, execution time, service processing time, and total execution time.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns query execution runtime statistics related to a single execution of a qu
 
 ```sql
 SELECT
-OutputStage,
-Rows,
-Timeline
+output_stage,
+rows,
+timeline
 FROM aws.athena.query_runtime_statistics
 WHERE region = '{{ region }}' -- required
 ;

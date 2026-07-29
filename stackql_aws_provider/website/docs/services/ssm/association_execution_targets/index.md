@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The association ID. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociationVersion" /></td>
+    <td><CopyableCode code="association_version" /></td>
     <td><code>string</code></td>
     <td>The association version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST)|(&#91;1-9&#93;&#91;0-9&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DetailedStatus" /></td>
+    <td><CopyableCode code="detailed_status" /></td>
     <td><code>string</code></td>
     <td>Detailed information about the execution status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The execution ID. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionDate" /></td>
+    <td><CopyableCode code="last_execution_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date of the last execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputSource" /></td>
+    <td><CopyableCode code="output_source" /></td>
     <td><code>object</code></td>
     <td>The location where the association details are saved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID, for example, the managed node ID where the association ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type, for example, EC2.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The association execution status.</td>
 </tr>
@@ -159,15 +159,15 @@ Views information about a specific execution of a specific association.
 
 ```sql
 SELECT
-AssociationId,
-AssociationVersion,
-DetailedStatus,
-ExecutionId,
-LastExecutionDate,
-OutputSource,
-ResourceId,
-ResourceType,
-Status
+association_id,
+association_version,
+detailed_status,
+execution_id,
+last_execution_date,
+output_source,
+resource_id,
+resource_type,
+status
 FROM aws.ssm.association_execution_targets
 WHERE region = '{{ region }}' -- required
 ;

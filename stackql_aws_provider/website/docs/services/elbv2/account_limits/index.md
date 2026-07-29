@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Max" /></td>
+    <td><CopyableCode code="max" /></td>
     <td><code>string</code></td>
     <td>The maximum value of the limit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the limit.</td>
 </tr>
@@ -134,8 +134,8 @@ Describes the current Elastic Load Balancing resource limits for your Amazon Web
 
 ```sql
 SELECT
-Max,
-Name
+max,
+name
 FROM aws.elbv2.account_limits
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'

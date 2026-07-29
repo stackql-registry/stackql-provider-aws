@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RuleGroup" /></td>
+    <td><CopyableCode code="rule_group" /></td>
     <td><code>object</code></td>
     <td>The object that defines the rules in a rule group. This, along with RuleGroupResponse, define the rule group. You can retrieve all objects for a rule group by calling DescribeRuleGroup. Network Firewall uses a rule group to inspect and control network traffic. You define stateless rule groups to inspect individual packets and you define stateful rule groups to inspect packets in the context of their traffic flow. To use a rule group, you include it by reference in an Network Firewall firewall policy, then you use the policy in a firewall. You can reference a rule group from more than one firewall policy, and you can use a firewall policy in more than one firewall.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleGroupResponse" /></td>
+    <td><CopyableCode code="rule_group_response" /></td>
     <td><code>object</code></td>
     <td>The high-level properties of a rule group. This, along with the RuleGroup, define the rule group. You can retrieve all objects for a rule group by calling DescribeRuleGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateToken" /></td>
+    <td><CopyableCode code="update_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the rule group. The token marks the state of the rule group resource at the time of the request. To make changes to the rule group, you provide the token in your request. Network Firewall uses the token to ensure that the rule group hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the rule group again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the rule group. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the rule group. You can't change the name of a rule group after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VendorName" /></td>
+    <td><CopyableCode code="vendor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services Marketplace seller that provides this rule group.</td>
 </tr>
@@ -188,9 +188,9 @@ Returns the data objects for the specified rule group.
 
 ```sql
 SELECT
-RuleGroup,
-RuleGroupResponse,
-UpdateToken
+rule_group,
+rule_group_response,
+update_token
 FROM aws.network_firewall.rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -202,9 +202,9 @@ Retrieves the metadata for the rule groups that you have defined. Depending on y
 
 ```sql
 SELECT
-Arn,
-Name,
-VendorName
+arn,
+name,
+vendor_name
 FROM aws.network_firewall.rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -257,8 +257,8 @@ SELECT
 '{{ SummaryConfiguration }}',
 '{{ region }}'
 RETURNING
-RuleGroupResponse,
-UpdateToken
+rule_group_response,
+update_token
 ;
 ```
 </TabItem>
@@ -399,8 +399,8 @@ WHERE
 region = '{{ region }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-RuleGroupResponse,
-UpdateToken;
+rule_group_response,
+update_token;
 ```
 </TabItem>
 </Tabs>

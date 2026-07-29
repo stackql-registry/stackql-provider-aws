@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="memberAccountDiscountVisibility" /></td>
+    <td><CopyableCode code="member_account_discount_visibility" /></td>
     <td><code>string</code></td>
     <td>Retrieves the status of the "member account discount visibility" preference. (All, None)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredCommitment" /></td>
+    <td><CopyableCode code="preferred_commitment" /></td>
     <td><code>object</code></td>
     <td>Retrieves the current preferences for how Reserved Instances and Savings Plans cost-saving opportunities are prioritized in terms of payment option and term length.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="savingsEstimationMode" /></td>
+    <td><CopyableCode code="savings_estimation_mode" /></td>
     <td><code>string</code></td>
     <td>Retrieves the status of the "savings estimation mode" preference. (BeforeDiscounts, AfterDiscounts)</td>
 </tr>
@@ -136,9 +136,9 @@ Returns a set of preferences for an account in order to add account-specific pre
 
 ```sql
 SELECT
-memberAccountDiscountVisibility,
-preferredCommitment,
-savingsEstimationMode
+member_account_discount_visibility,
+preferred_commitment,
+savings_estimation_mode
 FROM aws.cost_optimization_hub.preferences
 WHERE region = '{{ region }}' -- required
 ;
@@ -168,9 +168,9 @@ preferredCommitment = '{{ preferredCommitment }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-memberAccountDiscountVisibility,
-preferredCommitment,
-savingsEstimationMode;
+member_account_discount_visibility,
+preferred_commitment,
+savings_estimation_mode;
 ```
 </TabItem>
 </Tabs>

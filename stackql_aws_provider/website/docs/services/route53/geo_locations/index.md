@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContinentCode" /></td>
+    <td><CopyableCode code="continent_code" /></td>
     <td><code>string</code></td>
     <td>The two-letter code for the continent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContinentName" /></td>
+    <td><CopyableCode code="continent_name" /></td>
     <td><code>string</code></td>
     <td>The full name of the continent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CountryCode" /></td>
+    <td><CopyableCode code="country_code" /></td>
     <td><code>string</code></td>
     <td>The two-letter code for the country.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CountryName" /></td>
+    <td><CopyableCode code="country_name" /></td>
     <td><code>string</code></td>
     <td>The name of the country.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubdivisionCode" /></td>
+    <td><CopyableCode code="subdivision_code" /></td>
     <td><code>string</code></td>
     <td>The code for the subdivision, such as a particular state within the United States. For a list of US state abbreviations, see Appendix B: Two–Letter State and Possession Abbreviations on the United States Postal Service website. For a list of all supported subdivision codes, use the ListGeoLocations API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubdivisionName" /></td>
+    <td><CopyableCode code="subdivision_name" /></td>
     <td><code>string</code></td>
     <td>The full name of the subdivision. Route 53 currently supports only states in the United States.</td>
 </tr>
@@ -186,12 +186,12 @@ Gets information about whether a specified geographic location is supported for 
 
 ```sql
 SELECT
-ContinentCode,
-ContinentName,
-CountryCode,
-CountryName,
-SubdivisionCode,
-SubdivisionName
+continent_code,
+continent_name,
+country_code,
+country_name,
+subdivision_code,
+subdivision_name
 FROM aws.route53.geo_locations
 WHERE region = '{{ region }}' -- required
 AND continentcode = '{{ continentcode }}'

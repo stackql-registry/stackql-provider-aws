@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ID for the access preview. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyzerArn" /></td>
+    <td><CopyableCode code="analyzer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the analyzer used to generate the access preview. (pattern: &lt;code&gt;&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:analyzer/.&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of resource ARNs for the proposed resource configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the access preview was created.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the access preview. Creating - The access preview creation is in progress. Completed - The access preview is complete. You can preview findings for external access to the resource. Failed - The access preview creation has failed. (COMPLETED, CREATING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>Provides more details about the current status of the access preview. For example, if the creation of the access preview fails, a Failed status is returned. This failure can be due to an internal issue with the analysis or due to an invalid proposed resource configuration.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ID for the access preview. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyzerArn" /></td>
+    <td><CopyableCode code="analyzer_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the analyzer used to generate the access preview. (pattern: &lt;code&gt;&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:analyzer/.&#123;1,255&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the access preview was created.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the access preview. Creating - The access preview creation is in progress. Completed - The access preview is complete and previews the findings for external access to the resource. Failed - The access preview creation has failed. (COMPLETED, CREATING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>Provides more details about the current status of the access preview. For example, if the creation of the access preview fails, a Failed status is returned. This failure can be due to an internal issue with the analysis or due to an invalid proposed resource configuration.</td>
 </tr>
@@ -220,11 +220,11 @@ Retrieves information about an access preview for the specified analyzer.
 ```sql
 SELECT
 id,
-analyzerArn,
+analyzer_arn,
 configurations,
-createdAt,
+created_at,
 status,
-statusReason
+status_reason
 FROM aws.accessanalyzer.access_previews
 WHERE access_preview_id = '{{ access_preview_id }}' -- required
 AND analyzerArn = '{{ analyzerArn }}' -- required
@@ -239,10 +239,10 @@ Retrieves a list of access previews for the specified analyzer.
 ```sql
 SELECT
 id,
-analyzerArn,
-createdAt,
+analyzer_arn,
+created_at,
 status,
-statusReason
+status_reason
 FROM aws.accessanalyzer.access_previews
 WHERE analyzerArn = '{{ analyzerArn }}' -- required
 AND region = '{{ region }}' -- required

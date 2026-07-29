@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IkeVersion" /></td>
+    <td><CopyableCode code="ike_version" /></td>
     <td><code>string</code></td>
     <td>The version of the Internet Key Exchange (IKE) protocol being used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Phase1DHGroup" /></td>
+    <td><CopyableCode code="phase_1_dh_group" /></td>
     <td><code>integer</code></td>
     <td>The Diffie-Hellman group number being used in Phase 1 IKE negotiations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Phase1EncryptionAlgorithm" /></td>
+    <td><CopyableCode code="phase_1_encryption_algorithm" /></td>
     <td><code>string</code></td>
     <td>The encryption algorithm negotiated in Phase 1 IKE negotiations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Phase1IntegrityAlgorithm" /></td>
+    <td><CopyableCode code="phase_1_integrity_algorithm" /></td>
     <td><code>string</code></td>
     <td>The integrity algorithm negotiated in Phase 1 IKE negotiations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Phase2DHGroup" /></td>
+    <td><CopyableCode code="phase_2_dh_group" /></td>
     <td><code>integer</code></td>
     <td>The Diffie-Hellman group number being used in Phase 2 IKE negotiations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Phase2EncryptionAlgorithm" /></td>
+    <td><CopyableCode code="phase_2_encryption_algorithm" /></td>
     <td><code>string</code></td>
     <td>The encryption algorithm negotiated in Phase 2 IKE negotiations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Phase2IntegrityAlgorithm" /></td>
+    <td><CopyableCode code="phase_2_integrity_algorithm" /></td>
     <td><code>string</code></td>
     <td>The integrity algorithm negotiated in Phase 2 IKE negotiations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningStatus" /></td>
+    <td><CopyableCode code="provisioning_status" /></td>
     <td><code>string</code></td>
     <td>The current provisioning status of the VPN tunnel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningStatusReason" /></td>
+    <td><CopyableCode code="provisioning_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current provisioning status.</td>
 </tr>
@@ -174,15 +174,15 @@ Returns the currently negotiated security parameters for an active VPN tunnel, i
 
 ```sql
 SELECT
-IkeVersion,
-Phase1DHGroup,
-Phase1EncryptionAlgorithm,
-Phase1IntegrityAlgorithm,
-Phase2DHGroup,
-Phase2EncryptionAlgorithm,
-Phase2IntegrityAlgorithm,
-ProvisioningStatus,
-ProvisioningStatusReason
+ike_version,
+phase_1_dh_group,
+phase_1_encryption_algorithm,
+phase_1_integrity_algorithm,
+phase_2_dh_group,
+phase_2_encryption_algorithm,
+phase_2_integrity_algorithm,
+provisioning_status,
+provisioning_status_reason
 FROM aws.ec2.active_vpn_tunnel_status
 WHERE VpnConnectionId = '{{ VpnConnectionId }}' -- required
 AND VpnTunnelOutsideIpAddress = '{{ VpnTunnelOutsideIpAddress }}' -- required

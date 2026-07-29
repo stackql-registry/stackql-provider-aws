@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the account enrollment status was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the account enrollment status was last updated.</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves the enrollment status for an account. It can also return the list of a
 
 ```sql
 SELECT
-accountId,
-createdTimestamp,
-lastUpdatedTimestamp,
+account_id,
+created_timestamp,
+last_updated_timestamp,
 status
 FROM aws.cost_optimization_hub.enrollment_statuses
 WHERE region = '{{ region }}' -- required

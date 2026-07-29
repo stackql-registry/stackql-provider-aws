@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LicenseConfigurations" /></td>
+    <td><CopyableCode code="license_configurations" /></td>
     <td><code>array</code></td>
     <td>License configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists license configurations for an organization.
 
 ```sql
 SELECT
-LicenseConfigurations,
-NextToken
+license_configurations,
+next_token
 FROM aws.license_manager.license_configurations_for_organizations
 WHERE region = '{{ region }}' -- required
 ;

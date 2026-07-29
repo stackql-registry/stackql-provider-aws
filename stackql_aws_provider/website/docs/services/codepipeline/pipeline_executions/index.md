@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="artifactRevisions" /></td>
+    <td><CopyableCode code="artifact_revisions" /></td>
     <td><code>array</code></td>
     <td>A list of ArtifactRevision objects included in a pipeline execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionMode" /></td>
+    <td><CopyableCode code="execution_mode" /></td>
     <td><code>string</code></td>
     <td>The method that the pipeline will use to handle multiple executions. The default mode is SUPERSEDED. (QUEUED, SUPERSEDED, PARALLEL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionType" /></td>
+    <td><CopyableCode code="execution_type" /></td>
     <td><code>string</code></td>
     <td>The type of the pipeline execution. (STANDARD, ROLLBACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineExecutionId" /></td>
+    <td><CopyableCode code="pipeline_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the pipeline execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineName" /></td>
+    <td><CopyableCode code="pipeline_name" /></td>
     <td><code>string</code></td>
     <td>The name of the pipeline with the specified pipeline execution. (pattern: &lt;code&gt;&#91;A-Za-z0-9.@\-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineVersion" /></td>
+    <td><CopyableCode code="pipeline_version" /></td>
     <td><code>integer</code></td>
     <td>The version number of the pipeline with the specified pipeline execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollbackMetadata" /></td>
+    <td><CopyableCode code="rollback_metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata about the execution pertaining to stage rollback.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the pipeline execution. Cancelled: The pipeline’s definition was updated before the pipeline execution could be completed. InProgress: The pipeline execution is currently running. Stopped: The pipeline execution was manually stopped. For more information, see Stopped Executions. Stopping: The pipeline execution received a request to be manually stopped. Depending on the selected stop mode, the execution is either completing or abandoning in-progress actions. For more information, see Stopped Executions. Succeeded: The pipeline execution was completed successfully. Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution advanced and continued through the pipeline instead. For more information, see Superseded Executions. Failed: The pipeline execution was not completed successfully. (Cancelled, InProgress, Stopped, Stopping, Succeeded, Superseded, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummary" /></td>
+    <td><CopyableCode code="status_summary" /></td>
     <td><code>string</code></td>
     <td>A summary that contains a description of the pipeline execution status.</td>
 </tr>
@@ -120,37 +120,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="executionMode" /></td>
+    <td><CopyableCode code="execution_mode" /></td>
     <td><code>string</code></td>
     <td>The method that the pipeline will use to handle multiple executions. The default mode is SUPERSEDED. (QUEUED, SUPERSEDED, PARALLEL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionType" /></td>
+    <td><CopyableCode code="execution_type" /></td>
     <td><code>string</code></td>
     <td>Type of the pipeline execution. (STANDARD, ROLLBACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the last change to the pipeline execution, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineExecutionId" /></td>
+    <td><CopyableCode code="pipeline_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the pipeline execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rollbackMetadata" /></td>
+    <td><CopyableCode code="rollback_metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata for the stage execution to be rolled back.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceRevisions" /></td>
+    <td><CopyableCode code="source_revisions" /></td>
     <td><code>array</code></td>
     <td>A list of the source artifact revisions that initiated a pipeline execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the pipeline execution began, in timestamp format.</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the pipeline execution. InProgress: The pipeline execution is currently running. Stopped: The pipeline execution was manually stopped. For more information, see Stopped Executions. Stopping: The pipeline execution received a request to be manually stopped. Depending on the selected stop mode, the execution is either completing or abandoning in-progress actions. For more information, see Stopped Executions. Succeeded: The pipeline execution was completed successfully. Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution advanced and continued through the pipeline instead. For more information, see Superseded Executions. Failed: The pipeline execution was not completed successfully. (Cancelled, InProgress, Stopped, Stopping, Succeeded, Superseded, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusSummary" /></td>
+    <td><CopyableCode code="status_summary" /></td>
     <td><code>string</code></td>
     <td>Status summary for the pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopTrigger" /></td>
+    <td><CopyableCode code="stop_trigger" /></td>
     <td><code>object</code></td>
     <td>The interaction that stopped a pipeline execution.</td>
 </tr>
@@ -261,15 +261,15 @@ Returns information about an execution of a pipeline, including details about ar
 
 ```sql
 SELECT
-artifactRevisions,
-executionMode,
-executionType,
-pipelineExecutionId,
-pipelineName,
-pipelineVersion,
-rollbackMetadata,
+artifact_revisions,
+execution_mode,
+execution_type,
+pipeline_execution_id,
+pipeline_name,
+pipeline_version,
+rollback_metadata,
 status,
-statusSummary,
+status_summary,
 trigger,
 variables
 FROM aws.codepipeline.pipeline_executions
@@ -283,16 +283,16 @@ Gets a summary of the most recent executions for a pipeline. When applying the f
 
 ```sql
 SELECT
-executionMode,
-executionType,
-lastUpdateTime,
-pipelineExecutionId,
-rollbackMetadata,
-sourceRevisions,
-startTime,
+execution_mode,
+execution_type,
+last_update_time,
+pipeline_execution_id,
+rollback_metadata,
+source_revisions,
+start_time,
 status,
-statusSummary,
-stopTrigger,
+status_summary,
+stop_trigger,
 trigger
 FROM aws.codepipeline.pipeline_executions
 WHERE region = '{{ region }}' -- required

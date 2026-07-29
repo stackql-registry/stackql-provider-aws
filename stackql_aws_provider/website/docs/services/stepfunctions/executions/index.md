@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The error string if the state machine execution failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionArn" /></td>
+    <td><CopyableCode code="execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the execution.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The string that contains the JSON input data of the execution. Length constraints apply to the payload size, and are expressed as bytes in UTF-8 encoding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputDetails" /></td>
+    <td><CopyableCode code="input_details" /></td>
     <td><code>object</code></td>
     <td>Provides details about execution input or output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapRunArn" /></td>
+    <td><CopyableCode code="map_run_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies a Map Run, which dispatched this execution.</td>
 </tr>
@@ -91,47 +91,47 @@ The following fields are returned by `SELECT` queries:
     <td>The JSON output data of the execution. Length constraints apply to the payload size, and are expressed as bytes in UTF-8 encoding. This field is set only if the execution succeeds. If the execution fails, this field is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDetails" /></td>
+    <td><CopyableCode code="output_details" /></td>
     <td><code>object</code></td>
     <td>Provides details about execution input or output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveCount" /></td>
+    <td><CopyableCode code="redrive_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times you've redriven an execution. If you have not yet redriven an execution, the redriveCount is 0. This count is only updated if you successfully redrive an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveDate" /></td>
+    <td><CopyableCode code="redrive_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the execution was last redriven. If you have not yet redriven an execution, the redriveDate is null. The redriveDate is unavailable if you redrive a Map Run that starts child workflow executions of type EXPRESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveStatus" /></td>
+    <td><CopyableCode code="redrive_status" /></td>
     <td><code>string</code></td>
     <td>Indicates whether or not an execution can be redriven at a given point in time. For executions of type STANDARD, redriveStatus is NOT_REDRIVABLE if calling the RedriveExecution API action would return the ExecutionNotRedrivable error. For a Distributed Map that includes child workflows of type STANDARD, redriveStatus indicates whether or not the Map Run can redrive child workflow executions. For a Distributed Map that includes child workflows of type EXPRESS, redriveStatus indicates whether or not the Map Run can redrive child workflow executions. You can redrive failed or timed out EXPRESS workflows only if they're a part of a Map Run. When you redrive the Map Run, these workflows are restarted using the StartExecution API action. (REDRIVABLE, NOT_REDRIVABLE, REDRIVABLE_BY_MAP_RUN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveStatusReason" /></td>
+    <td><CopyableCode code="redrive_status_reason" /></td>
     <td><code>string</code></td>
     <td>When redriveStatus is NOT_REDRIVABLE, redriveStatusReason specifies the reason why an execution cannot be redriven. For executions of type STANDARD, or for a Distributed Map that includes child workflows of type STANDARD, redriveStatusReason can include one of the following reasons: State machine is in DELETING status. Execution is RUNNING and cannot be redriven. Execution is SUCCEEDED and cannot be redriven. Execution was started before the launch of RedriveExecution. Execution history event limit exceeded. Execution has exceeded the max execution time. Execution redrivable period exceeded. For a Distributed Map that includes child workflows of type EXPRESS, redriveStatusReason is only returned if the child workflows are not redrivable. This happens when the child workflow executions have completed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the execution is started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineAliasArn" /></td>
+    <td><CopyableCode code="state_machine_alias_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the state machine alias associated with the execution. The alias ARN is a combination of state machine ARN and the alias name separated by a colon (:). For example, stateMachineARN:PROD. If you start an execution from a StartExecution request with a state machine version ARN, this field will be null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineArn" /></td>
+    <td><CopyableCode code="state_machine_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the executed stated machine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineVersionArn" /></td>
+    <td><CopyableCode code="state_machine_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the state machine version associated with the execution. The version ARN is a combination of state machine ARN and the version number separated by a colon (:). For example, stateMachineARN:1. If you start an execution from a StartExecution request without specifying a state machine version or alias ARN, Step Functions returns a null value.</td>
 </tr>
@@ -141,12 +141,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the execution. (RUNNING, SUCCEEDED, FAILED, TIMED_OUT, ABORTED, PENDING_REDRIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopDate" /></td>
+    <td><CopyableCode code="stop_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the execution ended, the date the execution stopped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="traceHeader" /></td>
+    <td><CopyableCode code="trace_header" /></td>
     <td><code>string</code></td>
     <td>The X-Ray trace header that was passed to the execution. For X-Ray traces, all Amazon Web Services services use the X-Amzn-Trace-Id header from the HTTP request. Using the header is the preferred mechanism to identify a trace. StartExecution and StartSyncExecution API operations can also use traceHeader from the body of the request payload. If both sources are provided, Step Functions will use the header value (preferred) over the value in the request body. (pattern: &lt;code&gt;\p&#123;ASCII&#125;*&lt;/code&gt;)</td>
 </tr>
@@ -170,47 +170,47 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the execution. A name must not contain: white space brackets &lt; &gt; &#123; &#125; &#91; &#93; wildcard characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionArn" /></td>
+    <td><CopyableCode code="execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that identifies the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="itemCount" /></td>
+    <td><CopyableCode code="item_count" /></td>
     <td><code>integer</code></td>
     <td>The total number of items processed in a child workflow execution. This field is returned only if mapRunArn was specified in the ListExecutions API action. If stateMachineArn was specified in ListExecutions, the itemCount field isn't returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapRunArn" /></td>
+    <td><CopyableCode code="map_run_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a Map Run. This field is returned only if mapRunArn was specified in the ListExecutions API action. If stateMachineArn was specified in ListExecutions, the mapRunArn isn't returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveCount" /></td>
+    <td><CopyableCode code="redrive_count" /></td>
     <td><code>integer</code></td>
     <td>The number of times you've redriven an execution. If you have not yet redriven an execution, the redriveCount is 0. This count is only updated when you successfully redrive an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="redriveDate" /></td>
+    <td><CopyableCode code="redrive_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the execution was last redriven.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineAliasArn" /></td>
+    <td><CopyableCode code="state_machine_alias_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the state machine alias used to start an execution. If the state machine execution was started with an unqualified ARN or a version ARN, it returns null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineArn" /></td>
+    <td><CopyableCode code="state_machine_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the state machine that ran the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineVersionArn" /></td>
+    <td><CopyableCode code="state_machine_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the state machine version associated with the execution. If the state machine execution was started with an unqualified ARN, it returns null. If the execution was started using a stateMachineAliasArn, both the stateMachineAliasArn and stateMachineVersionArn parameters contain the respective values.</td>
 </tr>
@@ -220,7 +220,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the execution. (RUNNING, SUCCEEDED, FAILED, TIMED_OUT, ABORTED, PENDING_REDRIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stopDate" /></td>
+    <td><CopyableCode code="stop_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>If the execution already ended, the date the execution stopped.</td>
 </tr>
@@ -307,23 +307,23 @@ SELECT
 name,
 cause,
 error,
-executionArn,
+execution_arn,
 input,
-inputDetails,
-mapRunArn,
+input_details,
+map_run_arn,
 output,
-outputDetails,
-redriveCount,
-redriveDate,
-redriveStatus,
-redriveStatusReason,
-startDate,
-stateMachineAliasArn,
-stateMachineArn,
-stateMachineVersionArn,
+output_details,
+redrive_count,
+redrive_date,
+redrive_status,
+redrive_status_reason,
+start_date,
+state_machine_alias_arn,
+state_machine_arn,
+state_machine_version_arn,
 status,
-stopDate,
-traceHeader
+stop_date,
+trace_header
 FROM aws.stepfunctions.executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -336,17 +336,17 @@ Lists all executions of a state machine or a Map Run. You can list all execution
 ```sql
 SELECT
 name,
-executionArn,
-itemCount,
-mapRunArn,
-redriveCount,
-redriveDate,
-startDate,
-stateMachineAliasArn,
-stateMachineArn,
-stateMachineVersionArn,
+execution_arn,
+item_count,
+map_run_arn,
+redrive_count,
+redrive_date,
+start_date,
+state_machine_alias_arn,
+state_machine_arn,
+state_machine_version_arn,
 status,
-stopDate
+stop_date
 FROM aws.stepfunctions.executions
 WHERE region = '{{ region }}' -- required
 ;

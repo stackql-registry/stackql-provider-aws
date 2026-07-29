@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the test case.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="durationInNanoSeconds" /></td>
+    <td><CopyableCode code="duration_in_nano_seconds" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of nanoseconds it took to run this test case.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>A string that is applied to a series of related test cases. CodeBuild generates the prefix. The prefix depends on the framework used to generate the tests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportArn" /></td>
+    <td><CopyableCode code="report_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the report to which the test case belongs.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status returned by the test case after it was run. Valid statuses are SUCCEEDED, FAILED, ERROR, SKIPPED, and UNKNOWN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testRawDataPath" /></td>
+    <td><CopyableCode code="test_raw_data_path" /></td>
     <td><code>string</code></td>
     <td>The path to the raw data file that contains the test result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSuiteName" /></td>
+    <td><CopyableCode code="test_suite_name" /></td>
     <td><code>string</code></td>
     <td>The name of the test suite that the test case is a part of.</td>
 </tr>
@@ -160,14 +160,14 @@ Returns a list of details about test cases for a report.
 ```sql
 SELECT
 name,
-durationInNanoSeconds,
+duration_in_nano_seconds,
 expired,
 message,
 prefix,
-reportArn,
+report_arn,
 status,
-testRawDataPath,
-testSuiteName
+test_raw_data_path,
+test_suite_name
 FROM aws.codebuild.test_cases
 WHERE region = '{{ region }}' -- required
 ;

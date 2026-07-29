@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="capacityLimits" /></td>
+    <td><CopyableCode code="capacity_limits" /></td>
     <td><code>array</code></td>
     <td>A list that specifies the quantity and type of compute capacity allocated to the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobQueueArn" /></td>
+    <td><CopyableCode code="job_queue_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the job queue associated with the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preemptionConfiguration" /></td>
+    <td><CopyableCode code="preemption_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the preemption behavior for jobs in a quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quotaShareArn" /></td>
+    <td><CopyableCode code="quota_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quotaShareName" /></td>
+    <td><CopyableCode code="quota_share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceSharingConfiguration" /></td>
+    <td><CopyableCode code="resource_sharing_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies whether a quota share reserves, lends, or both lends and borrows idle compute capacity.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="capacityLimits" /></td>
+    <td><CopyableCode code="capacity_limits" /></td>
     <td><code>array</code></td>
     <td>A list that specifies the quantity and type of compute capacity allocated to the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobQueueArn" /></td>
+    <td><CopyableCode code="job_queue_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the job queue associated with the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preemptionConfiguration" /></td>
+    <td><CopyableCode code="preemption_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the preemption behavior for jobs in a quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quotaShareArn" /></td>
+    <td><CopyableCode code="quota_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quotaShareName" /></td>
+    <td><CopyableCode code="quota_share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the quota share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceSharingConfiguration" /></td>
+    <td><CopyableCode code="resource_sharing_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies whether a quota share reserves, lends, or both lends and borrows idle compute capacity.</td>
 </tr>
@@ -243,12 +243,12 @@ Returns a description of the specified quota share.
 
 ```sql
 SELECT
-capacityLimits,
-jobQueueArn,
-preemptionConfiguration,
-quotaShareArn,
-quotaShareName,
-resourceSharingConfiguration,
+capacity_limits,
+job_queue_arn,
+preemption_configuration,
+quota_share_arn,
+quota_share_name,
+resource_sharing_configuration,
 state,
 status,
 tags
@@ -263,12 +263,12 @@ Returns a list of Batch quota shares associated with a job queue.
 
 ```sql
 SELECT
-capacityLimits,
-jobQueueArn,
-preemptionConfiguration,
-quotaShareArn,
-quotaShareName,
-resourceSharingConfiguration,
+capacity_limits,
+job_queue_arn,
+preemption_configuration,
+quota_share_arn,
+quota_share_name,
+resource_sharing_configuration,
 state,
 status
 FROM aws.batch.quota_shares
@@ -313,8 +313,8 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-quotaShareArn,
-quotaShareName
+quota_share_arn,
+quota_share_name
 ;
 ```
 </TabItem>
@@ -380,8 +380,8 @@ WHERE
 region = '{{ region }}' --required
 AND quotaShareArn = '{{ quotaShareArn }}' --required
 RETURNING
-quotaShareArn,
-quotaShareName;
+quota_share_arn,
+quota_share_name;
 ```
 </TabItem>
 </Tabs>

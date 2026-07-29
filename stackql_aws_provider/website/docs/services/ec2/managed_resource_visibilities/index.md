@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DefaultVisibility" /></td>
+    <td><CopyableCode code="default_visibility" /></td>
     <td><code>string</code></td>
     <td>The default visibility setting for managed resources. A value of hidden indicates that managed resources are not included in Describe operation responses by default. A value of visible indicates that managed resources are included by default.</td>
 </tr>
@@ -136,7 +136,7 @@ Retrieves the managed resource visibility configuration for the account. The res
 
 ```sql
 SELECT
-DefaultVisibility
+default_visibility
 FROM aws.ec2.managed_resource_visibilities
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -167,7 +167,7 @@ DefaultVisibility = '{{ DefaultVisibility }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-DefaultVisibility;
+default_visibility;
 ```
 </TabItem>
 </Tabs>

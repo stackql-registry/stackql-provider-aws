@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the space displayed to users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the space exists. (pattern: &lt;code&gt;(us(?:-gov)?|af|ap|ca|cn|eu|sa)-(central|(?:north|south)?(?:east|west)?)-(\d+)&lt;/code&gt;)</td>
 </tr>
@@ -95,12 +95,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the space.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the space displayed to users.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="regionName" /></td>
+    <td><CopyableCode code="region_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the space exists. (pattern: &lt;code&gt;(us(?:-gov)?|af|ap|ca|cn|eu|sa)-(central|(?:north|south)?(?:east|west)?)-(\d+)&lt;/code&gt;)</td>
 </tr>
@@ -198,8 +198,8 @@ Returns information about an space.
 SELECT
 name,
 description,
-displayName,
-regionName
+display_name,
+region_name
 FROM aws.codecatalyst.spaces
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -214,8 +214,8 @@ Retrieves a list of spaces.
 SELECT
 name,
 description,
-displayName,
-regionName
+display_name,
+region_name
 FROM aws.codecatalyst.spaces
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,7 +246,7 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 description,
-displayName;
+display_name;
 ```
 </TabItem>
 </Tabs>

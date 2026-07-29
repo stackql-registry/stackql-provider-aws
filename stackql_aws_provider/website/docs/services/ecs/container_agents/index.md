@@ -102,7 +102,7 @@ WHERE
 region = '{{ region }}' --required
 AND containerInstance = '{{ containerInstance }}' --required
 RETURNING
-containerInstance;
+container_instance;
 ```
 </TabItem>
 </Tabs>

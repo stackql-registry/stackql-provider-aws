@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Active" /></td>
+    <td><CopyableCode code="active" /></td>
     <td><code>boolean</code></td>
     <td>The TagOption active state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The TagOption identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The TagOption key. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account Id of the owner account that created the TagOption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The TagOption value. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -181,11 +181,11 @@ Gets information about the specified TagOption.
 
 ```sql
 SELECT
-Active,
-Id,
-Key,
-Owner,
-Value
+active,
+id,
+key,
+owner,
+value
 FROM aws.servicecatalog.tag_options
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,7 +218,7 @@ SELECT
 '{{ Value }}',
 '{{ region }}'
 RETURNING
-TagOptionDetail
+tag_option_detail
 ;
 ```
 </TabItem>
@@ -281,7 +281,7 @@ Active = {{ Active }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-TagOptionDetail;
+tag_option_detail;
 ```
 </TabItem>
 </Tabs>

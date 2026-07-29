@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AnalyzeLendingModelVersion" /></td>
+    <td><CopyableCode code="analyze_lending_model_version" /></td>
     <td><code>string</code></td>
     <td>The current model version of the Analyze Lending API.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentMetadata" /></td>
+    <td><CopyableCode code="document_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the input document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the lending analysis job. (IN_PROGRESS, SUCCEEDED, FAILED, PARTIAL_SUCCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Returns if the lending analysis could not be completed. Contains explanation for what error occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Summary" /></td>
+    <td><CopyableCode code="summary" /></td>
     <td><code>object</code></td>
     <td>Contains summary information for documents grouped by type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Warnings" /></td>
+    <td><CopyableCode code="warnings" /></td>
     <td><code>array</code></td>
     <td>A list of warnings that occurred during the lending analysis operation.</td>
 </tr>
@@ -144,12 +144,12 @@ Gets summarized results for the StartLendingAnalysis operation, which analyzes t
 
 ```sql
 SELECT
-AnalyzeLendingModelVersion,
-DocumentMetadata,
-JobStatus,
-StatusMessage,
-Summary,
-Warnings
+analyze_lending_model_version,
+document_metadata,
+job_status,
+status_message,
+summary,
+warnings
 FROM aws.textract.lending_analysis_summaries
 WHERE region = '{{ region }}' -- required
 ;

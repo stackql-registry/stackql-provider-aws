@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code. (INTERNAL_ERROR, INVALID_PERMISSIONS, NO_FINDINGS_FOUND, BUCKET_NOT_FOUND, INCOMPATIBLE_BUCKET_REGION, MALFORMED_KMS_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filterCriteria" /></td>
+    <td><CopyableCode code="filter_criteria" /></td>
     <td><code>object</code></td>
     <td>The resource filter criteria for a Software bill of materials (SBOM) report.</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>The format of the software bill of materials (SBOM) report. (CYCLONEDX_1_4, SPDX_2_3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="reportId" /></td>
+    <td><CopyableCode code="report_id" /></td>
     <td><code>string</code></td>
     <td>The report ID of the software bill of materials (SBOM) report. (pattern: &lt;code&gt;.*\b&#91;a-f0-9&#93;&#123;8&#125;\b-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-\b&#91;a-f0-9&#93;&#123;12&#125;\b.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="s3Destination" /></td>
+    <td><CopyableCode code="s_3_destination" /></td>
     <td><code>object</code></td>
     <td>Contains details of the Amazon S3 bucket and KMS key used to export findings.</td>
 </tr>
@@ -156,12 +156,12 @@ Gets details of a software bill of materials (SBOM) report.
 
 ```sql
 SELECT
-errorCode,
-errorMessage,
-filterCriteria,
+error_code,
+error_message,
+filter_criteria,
 format_,
-reportId,
-s3Destination,
+report_id,
+s_3_destination,
 status
 FROM aws.inspector2.sbom_exports
 WHERE region = '{{ region }}' -- required
@@ -197,7 +197,7 @@ SELECT
 '{{ s3Destination }}' /* required */,
 '{{ region }}'
 RETURNING
-reportId
+report_id
 ;
 ```
 </TabItem>

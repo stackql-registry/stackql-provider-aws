@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TagKey" /></td>
+    <td><CopyableCode code="tag_key" /></td>
     <td><code>string</code></td>
     <td>The key of the tag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagValue" /></td>
+    <td><CopyableCode code="tag_value" /></td>
     <td><code>string</code></td>
     <td>The value of the tag.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns all tags on the specified KMS key. For general information about tags, i
 
 ```sql
 SELECT
-TagKey,
-TagValue
+tag_key,
+tag_value
 FROM aws.kms.resource_tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commitmentDuration" /></td>
+    <td><CopyableCode code="commitment_duration" /></td>
     <td><code>string</code></td>
     <td>Commitment duration of the Provisioned Throughput. (OneMonth, SixMonths)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitmentExpirationTime" /></td>
+    <td><CopyableCode code="commitment_expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the commitment term for the Provisioned Throughput expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the creation time for this Provisioned Throughput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredModelArn" /></td>
+    <td><CopyableCode code="desired_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model requested to be associated to this Provisioned Throughput. This value differs from the modelArn if updating hasn't completed. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredModelUnits" /></td>
+    <td><CopyableCode code="desired_model_units" /></td>
     <td><code>integer</code></td>
     <td>The number of model units that was requested for this Provisioned Throughput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>A failure message for any issues that occurred during creation, updating, or deletion of the Provisioned Throughput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="foundationModelArn" /></td>
+    <td><CopyableCode code="foundation_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the base model for which the Provisioned Throughput was created, or of the base model that the custom model for which the Provisioned Throughput was created was customized. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;::foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last time that this Provisioned Throughput was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model associated with this Provisioned Throughput. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelUnits" /></td>
+    <td><CopyableCode code="model_units" /></td>
     <td><code>integer</code></td>
     <td>The number of model units allocated to this Provisioned Throughput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedModelArn" /></td>
+    <td><CopyableCode code="provisioned_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Provisioned Throughput. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:provisioned-model/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedModelName" /></td>
+    <td><CopyableCode code="provisioned_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Provisioned Throughput. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+&lt;/code&gt;)</td>
 </tr>
@@ -130,57 +130,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="commitmentDuration" /></td>
+    <td><CopyableCode code="commitment_duration" /></td>
     <td><code>string</code></td>
     <td>The duration for which the Provisioned Throughput was committed. (OneMonth, SixMonths)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="commitmentExpirationTime" /></td>
+    <td><CopyableCode code="commitment_expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the commitment term of the Provisioned Throughput expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the Provisioned Throughput was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredModelArn" /></td>
+    <td><CopyableCode code="desired_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model requested to be associated to this Provisioned Throughput. This value differs from the modelArn if updating hasn't completed. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredModelUnits" /></td>
+    <td><CopyableCode code="desired_model_units" /></td>
     <td><code>integer</code></td>
     <td>The number of model units that was requested to be allocated to the Provisioned Throughput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="foundationModelArn" /></td>
+    <td><CopyableCode code="foundation_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the base model for which the Provisioned Throughput was created, or of the base model that the custom model for which the Provisioned Throughput was created was customized. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;::foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the Provisioned Throughput was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model associated with the Provisioned Throughput. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelUnits" /></td>
+    <td><CopyableCode code="model_units" /></td>
     <td><code>integer</code></td>
     <td>The number of model units allocated to the Provisioned Throughput.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedModelArn" /></td>
+    <td><CopyableCode code="provisioned_model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Provisioned Throughput. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:provisioned-model/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="provisionedModelName" /></td>
+    <td><CopyableCode code="provisioned_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Provisioned Throughput. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)+&lt;/code&gt;)</td>
 </tr>
@@ -333,18 +333,18 @@ Returns details for a Provisioned Throughput. For more information, see Provisio
 
 ```sql
 SELECT
-commitmentDuration,
-commitmentExpirationTime,
-creationTime,
-desiredModelArn,
-desiredModelUnits,
-failureMessage,
-foundationModelArn,
-lastModifiedTime,
-modelArn,
-modelUnits,
-provisionedModelArn,
-provisionedModelName,
+commitment_duration,
+commitment_expiration_time,
+creation_time,
+desired_model_arn,
+desired_model_units,
+failure_message,
+foundation_model_arn,
+last_modified_time,
+model_arn,
+model_units,
+provisioned_model_arn,
+provisioned_model_name,
 status
 FROM aws.bedrock.provisioned_model_throughputs
 WHERE provisioned_model_id = '{{ provisioned_model_id }}' -- required
@@ -358,17 +358,17 @@ Lists the Provisioned Throughputs in the account. For more information, see Prov
 
 ```sql
 SELECT
-commitmentDuration,
-commitmentExpirationTime,
-creationTime,
-desiredModelArn,
-desiredModelUnits,
-foundationModelArn,
-lastModifiedTime,
-modelArn,
-modelUnits,
-provisionedModelArn,
-provisionedModelName,
+commitment_duration,
+commitment_expiration_time,
+creation_time,
+desired_model_arn,
+desired_model_units,
+foundation_model_arn,
+last_modified_time,
+model_arn,
+model_units,
+provisioned_model_arn,
+provisioned_model_name,
 status
 FROM aws.bedrock.provisioned_model_throughputs
 WHERE region = '{{ region }}' -- required
@@ -419,7 +419,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-provisionedModelArn
+provisioned_model_arn
 ;
 ```
 </TabItem>

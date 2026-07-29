@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Alias" /></td>
+    <td><CopyableCode code="alias" /></td>
     <td><code>string</code></td>
     <td>The alias of the Object Lambda Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the specified Object Lambda Access Point was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Object Lambda Access Point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicAccessBlockConfiguration" /></td>
+    <td><CopyableCode code="public_access_block_configuration" /></td>
     <td><code>string</code></td>
     <td>Configuration to block all public access. This setting is turned on and can not be edited.</td>
 </tr>
@@ -158,10 +158,10 @@ This operation is not supported by directory buckets. Returns configuration info
 
 ```sql
 SELECT
-Alias,
-CreationDate,
-Name,
-PublicAccessBlockConfiguration
+alias,
+creation_date,
+name,
+public_access_block_configuration
 FROM aws.s3control.access_point_for_object_lambdas
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND name = '{{ name }}' -- required
@@ -198,8 +198,8 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-Alias,
-ObjectLambdaAccessPointArn
+alias,
+object_lambda_access_point_arn
 ;
 ```
 </TabItem>

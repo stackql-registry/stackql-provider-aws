@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GeoJsonPayload" /></td>
+    <td><CopyableCode code="geo_json_payload" /></td>
     <td><code>string (byte)</code></td>
     <td>The position information of the resource, displayed as a JSON payload. The payload is of type blob and uses the GeoJSON format, which a format that's used to encode geographic data structures. A sample payload contains the timestamp information, the WGS84 coordinates of the location, and the accuracy and confidence level. For more information and examples, see Resolve device location (console).</td>
 </tr>
@@ -119,7 +119,7 @@ Get estimated position information as a payload in GeoJSON format. The payload m
 
 ```sql
 SELECT
-GeoJsonPayload
+geo_json_payload
 FROM aws.iotwireless.position_estimates
 WHERE region = '{{ region }}' -- required
 ;

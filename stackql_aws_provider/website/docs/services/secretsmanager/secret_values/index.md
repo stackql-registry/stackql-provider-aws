@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that this version of the secret was created. If you don't specify which version in VersionId or VersionStage, then Secrets Manager uses the AWSCURRENT version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretBinary" /></td>
+    <td><CopyableCode code="secret_binary" /></td>
     <td><code>string (byte)</code></td>
     <td>The decrypted secret value, if the secret value was originally provided as binary data in the form of a byte array. When you retrieve a SecretBinary using the HTTP API, the Python SDK, or the Amazon Web Services CLI, the value is Base64-encoded. Otherwise, it is not encoded. If the secret was created by using the Secrets Manager console, or if the secret value was originally provided as a string, then this field is omitted. The secret value appears in SecretString instead. Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretString" /></td>
+    <td><CopyableCode code="secret_string" /></td>
     <td><code>string</code></td>
     <td>The decrypted secret value, if the secret value was originally provided as a string or through the Secrets Manager console. If this secret was created by using the console, then Secrets Manager stores the information as a JSON structure of key/value pairs. Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of this version of the secret.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionStages" /></td>
+    <td><CopyableCode code="version_stages" /></td>
     <td><code>array</code></td>
     <td>A list of all of the staging labels currently attached to this version of the secret.</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>A list of errors Secrets Manager encountered while attempting to retrieve individual secrets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Secrets Manager includes this value if there's more output available than what is included in the current response. This can occur even when the response includes no values at all, such as when you ask for a filtered view of a long list. To get the next results, call BatchGetSecretValue again with this value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretValues" /></td>
+    <td><CopyableCode code="secret_values" /></td>
     <td><code>array</code></td>
     <td>A list of secret values.</td>
 </tr>
@@ -194,13 +194,13 @@ Retrieves the contents of the encrypted fields SecretString or SecretBinary from
 
 ```sql
 SELECT
-ARN,
-CreatedDate,
-Name,
-SecretBinary,
-SecretString,
-VersionId,
-VersionStages
+arn,
+created_date,
+name,
+secret_binary,
+secret_string,
+version_id,
+version_stages
 FROM aws.secretsmanager.secret_values
 WHERE region = '{{ region }}' -- required
 ;
@@ -212,9 +212,9 @@ Retrieves the contents of the encrypted fields SecretString or SecretBinary for 
 
 ```sql
 SELECT
-Errors,
-NextToken,
-SecretValues
+errors,
+next_token,
+secret_values
 FROM aws.secretsmanager.secret_values
 WHERE region = '{{ region }}' -- required
 ;
@@ -248,10 +248,10 @@ WHERE
 region = '{{ region }}' --required
 AND SecretId = '{{ SecretId }}' --required
 RETURNING
-ARN,
-Name,
-VersionId,
-VersionStages;
+arn,
+name,
+version_id,
+version_stages;
 ```
 </TabItem>
 </Tabs>

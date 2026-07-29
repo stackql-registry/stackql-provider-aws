@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Action" /></td>
+    <td><CopyableCode code="action" /></td>
     <td><code>string</code></td>
     <td>The action taken for the change event. (ADD, MODIFY, REMOVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventTime" /></td>
+    <td><CopyableCode code="event_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for an event change in status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentifierPath" /></td>
+    <td><CopyableCode code="identifier_path" /></td>
     <td><code>string</code></td>
     <td>Uniquely identifies the path for a change within the changeset. For example, the IdentifierPath for a core network segment change might be "CORE_NETWORK_SEGMENT/us-east-1/devsegment". (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the core network change event. (NOT_STARTED, IN_PROGRESS, COMPLETE, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>Describes the type of change event. (CORE_NETWORK_SEGMENT, NETWORK_FUNCTION_GROUP, CORE_NETWORK_EDGE, ATTACHMENT_MAPPING, ATTACHMENT_ROUTE_PROPAGATION, ATTACHMENT_ROUTE_STATIC, ROUTING_POLICY, ROUTING_POLICY_SEGMENT_ASSOCIATION, ROUTING_POLICY_EDGE_ASSOCIATION, ROUTING_POLICY_ATTACHMENT_ASSOCIATION, CORE_NETWORK_CONFIGURATION, SEGMENTS_CONFIGURATION, SEGMENT_ACTIONS_CONFIGURATION, ATTACHMENT_POLICIES_CONFIGURATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Values" /></td>
+    <td><CopyableCode code="values" /></td>
     <td><code>object</code></td>
     <td>Details of the change event.</td>
 </tr>
@@ -164,12 +164,12 @@ Returns information about a core network change event.
 
 ```sql
 SELECT
-Action,
-EventTime,
-IdentifierPath,
-Status,
-Type,
-Values
+action,
+event_time,
+identifier_path,
+status,
+type,
+values
 FROM aws.networkmanager.core_network_change_events
 WHERE core_network_id = '{{ core_network_id }}' -- required
 AND policy_version_id = '{{ policy_version_id }}' -- required

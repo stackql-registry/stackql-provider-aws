@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupRetentionEnabled" /></td>
+    <td><CopyableCode code="backup_retention_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether automated backup retention is enabled for the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caCertificateIdentifier" /></td>
+    <td><CopyableCode code="ca_certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>The certificate associated with the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the database was created. Formatted in Unix time.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The database software (for example, MySQL). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The database engine version (for example, 5.7.23). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the hardware of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestRestorableTime" /></td>
+    <td><CopyableCode code="latest_restorable_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The latest point in time to which the database can be restored. Formatted in Unix time.</td>
 </tr>
@@ -101,67 +101,67 @@ The following fields are returned by `SELECT` queries:
     <td>The Region name and Availability Zone where the database is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterDatabaseName" /></td>
+    <td><CopyableCode code="master_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the master database created when the Lightsail database resource is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterEndpoint" /></td>
+    <td><CopyableCode code="master_endpoint" /></td>
     <td><code>object</code></td>
     <td>The master endpoint for the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master user name of the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterApplyStatus" /></td>
+    <td><CopyableCode code="parameter_apply_status" /></td>
     <td><code>string</code></td>
     <td>The status of parameter updates for the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingMaintenanceActions" /></td>
+    <td><CopyableCode code="pending_maintenance_actions" /></td>
     <td><code>array</code></td>
     <td>Describes the pending maintenance actions for the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>object</code></td>
     <td>Describes pending database value modifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created for the database (for example, 16:00-16:30). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The weekly time range during which system maintenance can occur on the database. In the format ddd:hh24:mi-ddd:hh24:mi. For example, Tue:17:00-Tue:17:30. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publiclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the database is publicly accessible.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationalDatabaseBlueprintId" /></td>
+    <td><CopyableCode code="relational_database_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID for the database. A blueprint describes the major engine version of a database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationalDatabaseBundleId" /></td>
+    <td><CopyableCode code="relational_database_bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle ID for the database. A bundle describes the performance specifications for your database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type for the database (for example, RelationalDatabase). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="secondaryAvailabilityZone" /></td>
+    <td><CopyableCode code="secondary_availability_zone" /></td>
     <td><code>string</code></td>
     <td>Describes the secondary Availability Zone of a high availability database. The secondary database is used for failover support of a high availability database.</td>
 </tr>
@@ -171,7 +171,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the current state of the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code for the database. Include this code in your email to support when you have questions about a database in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -205,17 +205,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backupRetentionEnabled" /></td>
+    <td><CopyableCode code="backup_retention_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether automated backup retention is enabled for the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="caCertificateIdentifier" /></td>
+    <td><CopyableCode code="ca_certificate_identifier" /></td>
     <td><code>string</code></td>
     <td>The certificate associated with the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the database was created. Formatted in Unix time.</td>
 </tr>
@@ -225,7 +225,7 @@ The following fields are returned by `SELECT` queries:
     <td>The database software (for example, MySQL). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The database engine version (for example, 5.7.23). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -235,7 +235,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the hardware of the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestRestorableTime" /></td>
+    <td><CopyableCode code="latest_restorable_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The latest point in time to which the database can be restored. Formatted in Unix time.</td>
 </tr>
@@ -245,67 +245,67 @@ The following fields are returned by `SELECT` queries:
     <td>The Region name and Availability Zone where the database is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterDatabaseName" /></td>
+    <td><CopyableCode code="master_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the master database created when the Lightsail database resource is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterEndpoint" /></td>
+    <td><CopyableCode code="master_endpoint" /></td>
     <td><code>object</code></td>
     <td>The master endpoint for the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="masterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>The master user name of the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parameterApplyStatus" /></td>
+    <td><CopyableCode code="parameter_apply_status" /></td>
     <td><code>string</code></td>
     <td>The status of parameter updates for the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingMaintenanceActions" /></td>
+    <td><CopyableCode code="pending_maintenance_actions" /></td>
     <td><code>array</code></td>
     <td>Describes the pending maintenance actions for the database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>object</code></td>
     <td>Describes pending database value modifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created for the database (for example, 16:00-16:30). (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="preferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>The weekly time range during which system maintenance can occur on the database. In the format ddd:hh24:mi-ddd:hh24:mi. For example, Tue:17:00-Tue:17:30. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publiclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the database is publicly accessible.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationalDatabaseBlueprintId" /></td>
+    <td><CopyableCode code="relational_database_blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The blueprint ID for the database. A blueprint describes the major engine version of a database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationalDatabaseBundleId" /></td>
+    <td><CopyableCode code="relational_database_bundle_id" /></td>
     <td><code>string</code></td>
     <td>The bundle ID for the database. A bundle describes the performance specifications for your database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The Lightsail resource type for the database (for example, RelationalDatabase). (ContainerService, Instance, StaticIp, KeyPair, InstanceSnapshot, Domain, PeeredVpc, LoadBalancer, LoadBalancerTlsCertificate, Disk, DiskSnapshot, RelationalDatabase, RelationalDatabaseSnapshot, ExportSnapshotRecord, CloudFormationStackRecord, Alarm, ContactMethod, Distribution, Certificate, Bucket)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="secondaryAvailabilityZone" /></td>
+    <td><CopyableCode code="secondary_availability_zone" /></td>
     <td><code>string</code></td>
     <td>Describes the secondary Availability Zone of a high availability database. The secondary database is used for failover support of a high availability database.</td>
 </tr>
@@ -315,7 +315,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the current state of the database. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportCode" /></td>
+    <td><CopyableCode code="support_code" /></td>
     <td><code>string</code></td>
     <td>The support code for the database. Include this code in your email to support when you have questions about a database in Lightsail. This code enables our support team to look up your Lightsail information more easily.</td>
 </tr>
@@ -448,29 +448,29 @@ Returns information about a specific database in Amazon Lightsail.
 SELECT
 name,
 arn,
-backupRetentionEnabled,
-caCertificateIdentifier,
-createdAt,
+backup_retention_enabled,
+ca_certificate_identifier,
+created_at,
 engine,
-engineVersion,
+engine_version,
 hardware,
-latestRestorableTime,
+latest_restorable_time,
 location,
-masterDatabaseName,
-masterEndpoint,
-masterUsername,
-parameterApplyStatus,
-pendingMaintenanceActions,
-pendingModifiedValues,
-preferredBackupWindow,
-preferredMaintenanceWindow,
-publiclyAccessible,
-relationalDatabaseBlueprintId,
-relationalDatabaseBundleId,
-resourceType,
-secondaryAvailabilityZone,
+master_database_name,
+master_endpoint,
+master_username,
+parameter_apply_status,
+pending_maintenance_actions,
+pending_modified_values,
+preferred_backup_window,
+preferred_maintenance_window,
+publicly_accessible,
+relational_database_blueprint_id,
+relational_database_bundle_id,
+resource_type,
+secondary_availability_zone,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.relational_databases
 WHERE region = '{{ region }}' -- required
@@ -485,29 +485,29 @@ Returns information about all of your databases in Amazon Lightsail.
 SELECT
 name,
 arn,
-backupRetentionEnabled,
-caCertificateIdentifier,
-createdAt,
+backup_retention_enabled,
+ca_certificate_identifier,
+created_at,
 engine,
-engineVersion,
+engine_version,
 hardware,
-latestRestorableTime,
+latest_restorable_time,
 location,
-masterDatabaseName,
-masterEndpoint,
-masterUsername,
-parameterApplyStatus,
-pendingMaintenanceActions,
-pendingModifiedValues,
-preferredBackupWindow,
-preferredMaintenanceWindow,
-publiclyAccessible,
-relationalDatabaseBlueprintId,
-relationalDatabaseBundleId,
-resourceType,
-secondaryAvailabilityZone,
+master_database_name,
+master_endpoint,
+master_username,
+parameter_apply_status,
+pending_maintenance_actions,
+pending_modified_values,
+preferred_backup_window,
+preferred_maintenance_window,
+publicly_accessible,
+relational_database_blueprint_id,
+relational_database_bundle_id,
+resource_type,
+secondary_availability_zone,
 state,
-supportCode,
+support_code,
 tags
 FROM aws.lightsail.relational_databases
 WHERE region = '{{ region }}' -- required

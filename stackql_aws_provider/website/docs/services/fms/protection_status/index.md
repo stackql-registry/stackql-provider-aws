@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdminAccountId" /></td>
+    <td><CopyableCode code="admin_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Firewall Manager administrator account for this policy. (pattern: &lt;code&gt;^&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Data" /></td>
+    <td><CopyableCode code="data" /></td>
     <td><code>string</code></td>
     <td>Details about the attack, including the following: Attack type Account ID ARN of the resource attacked Start time of the attack End time of the attack (ongoing attacks will not have an end time) The details are in JSON format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If you have more objects than the number that you specified for MaxResults in the request, the response includes a NextToken value. To list more objects, submit another GetProtectionStatus request, and specify the NextToken value from the response in the NextToken value in the next request. Amazon Web Services SDKs provide auto-pagination that identify NextToken in a response and make subsequent request calls automatically on your behalf. However, this feature is not supported by GetProtectionStatus. You must submit subsequent requests with NextToken using your own processes. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceType" /></td>
+    <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>The service type that is protected by the policy. Currently, this is always SHIELD_ADVANCED. (WAF, WAFV2, SHIELD_ADVANCED, SECURITY_GROUPS_COMMON, SECURITY_GROUPS_CONTENT_AUDIT, SECURITY_GROUPS_USAGE_AUDIT, NETWORK_FIREWALL, DNS_FIREWALL, THIRD_PARTY_FIREWALL, IMPORT_NETWORK_FIREWALL, NETWORK_ACL_COMMON)</td>
 </tr>
@@ -134,10 +134,10 @@ If you created a Shield Advanced policy, returns policy-level attack summary inf
 
 ```sql
 SELECT
-AdminAccountId,
-Data,
-NextToken,
-ServiceType
+admin_account_id,
+data,
+next_token,
+service_type
 FROM aws.fms.protection_status
 WHERE region = '{{ region }}' -- required
 ;

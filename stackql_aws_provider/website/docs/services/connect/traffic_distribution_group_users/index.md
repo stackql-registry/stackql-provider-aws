@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the user. This can be the ID or the ARN of the user.</td>
 </tr>
@@ -158,7 +158,7 @@ Lists traffic distribution group users.
 
 ```sql
 SELECT
-UserId
+user_id
 FROM aws.connect.traffic_distribution_group_users
 WHERE traffic_distribution_group_id = '{{ traffic_distribution_group_id }}' -- required
 AND region = '{{ region }}' -- required

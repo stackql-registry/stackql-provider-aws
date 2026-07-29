@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="afterBlob" /></td>
+    <td><CopyableCode code="after_blob" /></td>
     <td><code>object</code></td>
     <td>Information about an afterBlob data type object, including the ID, the file mode permission code, and the path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="beforeBlob" /></td>
+    <td><CopyableCode code="before_blob" /></td>
     <td><code>object</code></td>
     <td>Information about a beforeBlob data type object, including the ID, the file mode permission code, and the path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changeType" /></td>
+    <td><CopyableCode code="change_type" /></td>
     <td><code>string</code></td>
     <td>Whether the change type of the difference is an addition (A), deletion (D), or modification (M). (A, M, D)</td>
 </tr>
@@ -129,9 +129,9 @@ Returns information about the differences in a valid commit specifier (such as a
 
 ```sql
 SELECT
-afterBlob,
-beforeBlob,
-changeType
+after_blob,
+before_blob,
+change_type
 FROM aws.codecommit.differences
 WHERE region = '{{ region }}' -- required
 ;

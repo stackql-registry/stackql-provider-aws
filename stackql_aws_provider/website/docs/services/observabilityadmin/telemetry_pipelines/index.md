@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the telemetry pipeline. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>Defines the configuration for a pipeline, including how data flows from sources through processors to destinations. The configuration is specified in YAML format and must include a valid pipeline definition with required source and sink components. This pipeline enables end-to-end telemetry data collection, transformation, and delivery while supporting optional processing steps and extensions for enhanced functionality. The primary pipeline configuration section are: Source: Defines where log data originates from (S3 buckets, CloudWatch Logs, third-party APIs). Each pipeline must have exactly one source. Processors (optional): Transform, parse, and enrich log data as it flows through the pipeline. Processors are applied sequentially in the order they are defined. Sink: Defines the destination where processed log data is sent. Each pipeline must have exactly one sink. Extensions (optional): Provide additional functionality such as Amazon Web Services Secrets Manager integration for credential management. For more details on each configuration section see CloudWatch pipelines User Guide. Additional comprehensive configuration examples can be found in the CreateTelemetryPipeline API docs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the telemetry pipeline was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimeStamp" /></td>
+    <td><CopyableCode code="last_update_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the telemetry pipeline was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the telemetry pipeline. (pattern: &lt;code&gt;.*&#91;a-z&#93;&#91;a-z0-9\-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the telemetry pipeline. (CREATING, ACTIVE, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>Additional information about the pipeline status, including reasons for failure states.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The key-value pairs associated with the telemetry pipeline resource.</td>
 </tr>
@@ -105,37 +105,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the telemetry pipeline. (pattern: &lt;code&gt;arn:aws(&#91;a-z0-9\-&#93;+)?:(&#91;a-zA-Z0-9\-&#93;+):(&#91;a-z0-9\-&#93;+)?:(&#91;0-9&#93;&#123;12&#125;)?:(.+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationSummary" /></td>
+    <td><CopyableCode code="configuration_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the pipeline configuration components.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimeStamp" /></td>
+    <td><CopyableCode code="created_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the telemetry pipeline was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimeStamp" /></td>
+    <td><CopyableCode code="last_update_time_stamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp when the telemetry pipeline was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the telemetry pipeline. (pattern: &lt;code&gt;.*&#91;a-z&#93;&#91;a-z0-9\-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the telemetry pipeline. (CREATING, ACTIVE, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The key-value pairs associated with the telemetry pipeline resource.</td>
 </tr>
@@ -240,14 +240,14 @@ Retrieves information about a specific telemetry pipeline, including its configu
 
 ```sql
 SELECT
-Arn,
-Configuration,
-CreatedTimeStamp,
-LastUpdateTimeStamp,
-Name,
-Status,
-StatusReason,
-Tags
+arn,
+configuration,
+created_time_stamp,
+last_update_time_stamp,
+name,
+status,
+status_reason,
+tags
 FROM aws.observabilityadmin.telemetry_pipelines
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,13 +259,13 @@ Returns a list of telemetry pipelines in your account. Returns up to 100 results
 
 ```sql
 SELECT
-Arn,
-ConfigurationSummary,
-CreatedTimeStamp,
-LastUpdateTimeStamp,
-Name,
-Status,
-Tags
+arn,
+configuration_summary,
+created_time_stamp,
+last_update_time_stamp,
+name,
+status,
+tags
 FROM aws.observabilityadmin.telemetry_pipelines
 WHERE region = '{{ region }}' -- required
 ;
@@ -300,7 +300,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the image being exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExportImageTaskId" /></td>
+    <td><CopyableCode code="export_image_task_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the export image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Progress" /></td>
+    <td><CopyableCode code="progress" /></td>
     <td><code>string</code></td>
     <td>The percent complete of the export image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3ExportLocation" /></td>
+    <td><CopyableCode code="s3_export_location" /></td>
     <td><code>string</code></td>
     <td>Information about the destination Amazon S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the export image task. The possible values are active, completed, deleting, and deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for the export image task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the export image task.</td>
 </tr>
@@ -179,14 +179,14 @@ Describes the specified export image tasks or all of your export image tasks.
 
 ```sql
 SELECT
-Description,
-ExportImageTaskId,
-ImageId,
-Progress,
-S3ExportLocation,
-Status,
-StatusMessage,
-Tags
+description,
+export_image_task_id,
+image_id,
+progress,
+s3_export_location,
+status,
+status_message,
+tags
 FROM aws.ec2.export_image_tasks
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

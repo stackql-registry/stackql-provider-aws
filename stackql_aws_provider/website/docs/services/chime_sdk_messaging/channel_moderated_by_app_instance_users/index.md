@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelSummary" /></td>
+    <td><CopyableCode code="channel_summary" /></td>
     <td><code>object</code></td>
     <td>Summary of the details of a Channel.</td>
 </tr>
@@ -134,7 +134,7 @@ Returns the full details of a channel moderated by the specified AppInstanceUser
 
 ```sql
 SELECT
-ChannelSummary
+channel_summary
 FROM aws.chime_sdk_messaging.channel_moderated_by_app_instance_users
 WHERE channel_arn = '{{ channel_arn }}' -- required
 AND `app-instance-user-arn` = '{{ app-instance-user-arn }}' -- required

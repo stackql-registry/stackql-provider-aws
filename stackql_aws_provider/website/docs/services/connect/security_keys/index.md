@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the security key was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The key of the security key.</td>
 </tr>
@@ -168,9 +168,9 @@ This API is in preview release for Amazon Connect and is subject to change. Retu
 
 ```sql
 SELECT
-AssociationId,
-CreationTime,
-Key
+association_id,
+creation_time,
+key
 FROM aws.connect.security_keys
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -219,7 +219,7 @@ WHERE
 instance_id = '{{ instance_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AssociationId;
+association_id;
 ```
 </TabItem>
 </Tabs>

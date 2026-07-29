@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the export was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="downloadUrl" /></td>
+    <td><CopyableCode code="download_url" /></td>
     <td><code>string</code></td>
     <td>A pre-signed S3 URL that points to the bot or bot locale archive. The URL is only available for 5 minutes after calling the DescribeExport operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportId" /></td>
+    <td><CopyableCode code="export_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the described export. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportStatus" /></td>
+    <td><CopyableCode code="export_status" /></td>
     <td><code>string</code></td>
     <td>The status of the export. When the status is Complete the export archive file is available for download. (InProgress, Completed, Failed, Deleting)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>If the exportStatus is failed, contains one or more reasons why the export could not be completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fileFormat" /></td>
+    <td><CopyableCode code="file_format" /></td>
     <td><code>string</code></td>
     <td>The file format used in the files that describe the resource. (LexJson, TSV, CSV)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last date and time that the export was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>Provides information about the bot or bot locale that you want to export. You can specify the botExportSpecification or the botLocaleExportSpecification, but not both.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned to the bot by Amazon Lex. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot that was exported. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportSummaries" /></td>
+    <td><CopyableCode code="export_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information for the exports that meet the filter criteria specified in the request. The length of the list is specified in the maxResults parameter. If there are more exports available, the nextToken field contains a token to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The locale specified in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates whether there are more results to return in a response to the ListExports operation. If the nextToken field is present, you send the contents as the nextToken parameter of a ListExports operation request to get the next page of results.</td>
 </tr>
@@ -228,14 +228,14 @@ Gets information about a specific export.
 
 ```sql
 SELECT
-creationDateTime,
-downloadUrl,
-exportId,
-exportStatus,
-failureReasons,
-fileFormat,
-lastUpdatedDateTime,
-resourceSpecification
+creation_date_time,
+download_url,
+export_id,
+export_status,
+failure_reasons,
+file_format,
+last_updated_date_time,
+resource_specification
 FROM aws.lexv2_models.exports
 WHERE export_id = '{{ export_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -248,11 +248,11 @@ Lists the exports for a bot, bot locale, or custom vocabulary. Exports are kept 
 
 ```sql
 SELECT
-botId,
-botVersion,
-exportSummaries,
-localeId,
-nextToken
+bot_id,
+bot_version,
+export_summaries,
+locale_id,
+next_token
 FROM aws.lexv2_models.exports
 WHERE region = '{{ region }}' -- required
 ;
@@ -287,11 +287,11 @@ SELECT
 '{{ filePassword }}',
 '{{ region }}'
 RETURNING
-creationDateTime,
-exportId,
-exportStatus,
-fileFormat,
-resourceSpecification
+creation_date_time,
+export_id,
+export_status,
+file_format,
+resource_specification
 ;
 ```
 </TabItem>
@@ -351,12 +351,12 @@ WHERE
 export_id = '{{ export_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-creationDateTime,
-exportId,
-exportStatus,
-fileFormat,
-lastUpdatedDateTime,
-resourceSpecification;
+creation_date_time,
+export_id,
+export_status,
+file_format,
+last_updated_date_time,
+resource_specification;
 ```
 </TabItem>
 </Tabs>

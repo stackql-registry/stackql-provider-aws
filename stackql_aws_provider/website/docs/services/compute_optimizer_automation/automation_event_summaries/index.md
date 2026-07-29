@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The key identifier for this summary grouping.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timePeriod" /></td>
+    <td><CopyableCode code="time_period" /></td>
     <td><code>object</code></td>
     <td>The time period covered by this summary, with inclusive start time and exclusive end time.</td>
 </tr>
@@ -136,7 +136,7 @@ Provides a summary of automation events based on specified filters. Only events 
 SELECT
 dimensions,
 key,
-timePeriod,
+time_period,
 total
 FROM aws.compute_optimizer_automation.automation_event_summaries
 WHERE region = '{{ region }}' -- required

@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The version of the package with the requested readme file. (pattern: &lt;code&gt;&#91;^#/\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionRevision" /></td>
+    <td><CopyableCode code="version_revision" /></td>
     <td><code>string</code></td>
     <td>The current revision associated with the package version. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -184,7 +184,7 @@ namespace,
 package,
 readme,
 version,
-versionRevision
+version_revision
 FROM aws.codeartifact.package_version_readmes
 WHERE domain = '{{ domain }}' -- required
 AND repository = '{{ repository }}' -- required

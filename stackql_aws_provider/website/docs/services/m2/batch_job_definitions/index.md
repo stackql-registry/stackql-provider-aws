@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="fileBatchJobDefinition" /></td>
+    <td><CopyableCode code="file_batch_job_definition" /></td>
     <td><code>object</code></td>
     <td>Specifies a file containing a batch job definition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scriptBatchJobDefinition" /></td>
+    <td><CopyableCode code="script_batch_job_definition" /></td>
     <td><code>object</code></td>
     <td>A script containing a batch job definition.</td>
 </tr>
@@ -144,8 +144,8 @@ Lists all the available batch job definitions based on the batch job resources u
 
 ```sql
 SELECT
-fileBatchJobDefinition,
-scriptBatchJobDefinition
+file_batch_job_definition,
+script_batch_job_definition
 FROM aws.m2.batch_job_definitions
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required

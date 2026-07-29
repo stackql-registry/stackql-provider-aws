@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier for a protected job instance. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeConfiguration" /></td>
+    <td><CopyableCode code="compute_configuration" /></td>
     <td><code>object</code></td>
     <td>The compute configuration for the protected job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the protected job.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The error from the protected job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobParameters" /></td>
+    <td><CopyableCode code="job_parameters" /></td>
     <td><code>object</code></td>
     <td>The job parameters for the protected job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the membership. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>he identifier for the membership. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The result of the protected job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resultConfiguration" /></td>
+    <td><CopyableCode code="result_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains any details needed to write the job results.</td>
 </tr>
@@ -125,22 +125,22 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the protected job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the protected job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the membership that initiated the protected job. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the membership that initiated the protected job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="receiverConfigurations" /></td>
+    <td><CopyableCode code="receiver_configurations" /></td>
     <td><code>array</code></td>
     <td>The receiver configurations for the protected job.</td>
 </tr>
@@ -255,14 +255,14 @@ Returns job processing metadata.
 ```sql
 SELECT
 id,
-computeConfiguration,
-createTime,
+compute_configuration,
+create_time,
 error,
-jobParameters,
-membershipArn,
-membershipId,
+job_parameters,
+membership_arn,
+membership_id,
 result,
-resultConfiguration,
+result_configuration,
 statistics,
 status
 FROM aws.cleanrooms.protected_jobs
@@ -279,10 +279,10 @@ Lists protected jobs, sorted by most recent job.
 ```sql
 SELECT
 id,
-createTime,
-membershipArn,
-membershipId,
-receiverConfigurations,
+create_time,
+membership_arn,
+membership_id,
+receiver_configurations,
 status
 FROM aws.cleanrooms.protected_jobs
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
@@ -318,7 +318,7 @@ AND protected_job_identifier = '{{ protected_job_identifier }}' --required
 AND region = '{{ region }}' --required
 AND targetStatus = '{{ targetStatus }}' --required
 RETURNING
-protectedJob;
+protected_job;
 ```
 </TabItem>
 </Tabs>

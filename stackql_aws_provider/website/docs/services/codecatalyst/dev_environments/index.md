@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The user-specified alias for the Dev Environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorId" /></td>
+    <td><CopyableCode code="creator_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated unique ID of the user who created the Dev Environment.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the integrated development environment (IDE) configured for the Dev Environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inactivityTimeoutMinutes" /></td>
+    <td><CopyableCode code="inactivity_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time the Dev Environment will run without any activity detected before stopping, in minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instace type to use for the Dev Environment. (dev.standard1.small, dev.standard1.medium, dev.standard1.large, dev.standard1.xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Dev Environment was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="persistentStorage" /></td>
+    <td><CopyableCode code="persistent_storage" /></td>
     <td><code>object</code></td>
     <td>Information about the amount of storage allocated to the Dev Environment. By default, a Dev Environment is configured to have 16GB of persistent storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project in the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The source repository that contains the branch cloned into the Dev Environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the Dev Environment. (PENDING, RUNNING, STARTING, STOPPING, STOPPED, FAILED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConnectionName" /></td>
+    <td><CopyableCode code="vpc_connection_name" /></td>
     <td><code>string</code></td>
     <td>The name of the connection used to connect to Amazon VPC used when the Dev Environment was created, if any. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The user-specified alias for the Dev Environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creatorId" /></td>
+    <td><CopyableCode code="creator_id" /></td>
     <td><code>string</code></td>
     <td>The system-generated unique ID of the user who created the Dev Environment.</td>
 </tr>
@@ -155,27 +155,27 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the integrated development environment (IDE) configured for a Dev Environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inactivityTimeoutMinutes" /></td>
+    <td><CopyableCode code="inactivity_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Dev Environments consume compute minutes when running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon EC2 instace type used for the Dev Environment. (dev.standard1.small, dev.standard1.medium, dev.standard1.large, dev.standard1.xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Dev Environment was last updated, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="persistentStorage" /></td>
+    <td><CopyableCode code="persistent_storage" /></td>
     <td><code>object</code></td>
     <td>Information about the configuration of persistent storage for the Dev Environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project in the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -185,7 +185,7 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the repositories that will be cloned into the Dev Environment. If no rvalue is specified, no repository is cloned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="spaceName" /></td>
+    <td><CopyableCode code="space_name" /></td>
     <td><code>string</code></td>
     <td>The name of the space. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -195,12 +195,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the Dev Environment. (PENDING, RUNNING, STARTING, STOPPING, STOPPED, FAILED, DELETING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcConnectionName" /></td>
+    <td><CopyableCode code="vpc_connection_name" /></td>
     <td><code>string</code></td>
     <td>The name of the connection used to connect to Amazon VPC used when the Dev Environment was created, if any. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+(?:&#91;-_\.&#93;&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
@@ -334,18 +334,18 @@ Returns information about a Dev Environment for a source repository in a project
 SELECT
 id,
 alias,
-creatorId,
+creator_id,
 ides,
-inactivityTimeoutMinutes,
-instanceType,
-lastUpdatedTime,
-persistentStorage,
-projectName,
+inactivity_timeout_minutes,
+instance_type,
+last_updated_time,
+persistent_storage,
+project_name,
 repositories,
-spaceName,
+space_name,
 status,
-statusReason,
-vpcConnectionName
+status_reason,
+vpc_connection_name
 FROM aws.codecatalyst.dev_environments
 WHERE space_name = '{{ space_name }}' -- required
 AND project_name = '{{ project_name }}' -- required
@@ -362,18 +362,18 @@ Retrieves a list of Dev Environments in a project.
 SELECT
 id,
 alias,
-creatorId,
+creator_id,
 ides,
-inactivityTimeoutMinutes,
-instanceType,
-lastUpdatedTime,
-persistentStorage,
-projectName,
+inactivity_timeout_minutes,
+instance_type,
+last_updated_time,
+persistent_storage,
+project_name,
 repositories,
-spaceName,
+space_name,
 status,
-statusReason,
-vpcConnectionName
+status_reason,
+vpc_connection_name
 FROM aws.codecatalyst.dev_environments
 WHERE space_name = '{{ space_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -424,9 +424,9 @@ SELECT
 '{{ region }}'
 RETURNING
 id,
-projectName,
-spaceName,
-vpcConnectionName
+project_name,
+space_name,
+vpc_connection_name
 ;
 ```
 </TabItem>
@@ -502,12 +502,12 @@ AND region = '{{ region }}' --required
 RETURNING
 id,
 alias,
-clientToken,
+client_token,
 ides,
-inactivityTimeoutMinutes,
-instanceType,
-projectName,
-spaceName;
+inactivity_timeout_minutes,
+instance_type,
+project_name,
+space_name;
 ```
 </TabItem>
 </Tabs>

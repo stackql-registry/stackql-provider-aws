@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>The current number of hosted zones that you can associate with the specified reusable delegation set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Limit" /></td>
+    <td><CopyableCode code="limit" /></td>
     <td><code>string</code></td>
     <td>The current setting for the limit on hosted zones that you can associate with the specified reusable delegation set.</td>
 </tr>
@@ -134,8 +134,8 @@ Gets the maximum number of hosted zones that you can associate with the specifie
 
 ```sql
 SELECT
-Count,
-Limit
+count,
+limit
 FROM aws.route53.reusable_delegation_set_limits
 WHERE type = '{{ type }}' -- required
 AND id = '{{ id }}' -- required

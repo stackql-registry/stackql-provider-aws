@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBSubnetGroupArn" /></td>
+    <td><CopyableCode code="db_subnet_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroupDescription" /></td>
+    <td><CopyableCode code="db_subnet_group_description" /></td>
     <td><code>string</code></td>
     <td>Provides the description of the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroupName" /></td>
+    <td><CopyableCode code="db_subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroupStatus" /></td>
+    <td><CopyableCode code="subnet_group_status" /></td>
     <td><code>string</code></td>
     <td>Provides the status of the DB subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>string</code></td>
     <td>Contains a list of Subnet elements. The list of subnets shown here might not reflect the current state of your VPC. For the most up-to-date information, we recommend checking your VPC configuration directly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedNetworkTypes" /></td>
+    <td><CopyableCode code="supported_network_types" /></td>
     <td><code>string</code></td>
     <td>The network type of the DB subnet group. Valid values: IPV4 DUAL A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6 protocols (DUAL). For more information, see Working with a DB instance in a VPC in the Amazon RDS User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VpcId of the DB subnet group.</td>
 </tr>
@@ -215,13 +215,13 @@ Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specifie
 
 ```sql
 SELECT
-DBSubnetGroupArn,
-DBSubnetGroupDescription,
-DBSubnetGroupName,
-SubnetGroupStatus,
-Subnets,
-SupportedNetworkTypes,
-VpcId
+db_subnet_group_arn,
+db_subnet_group_description,
+db_subnet_group_name,
+subnet_group_status,
+subnets,
+supported_network_types,
+vpc_id
 FROM aws.rds.db_subnet_groups
 WHERE region = '{{ region }}' -- required
 AND DBSubnetGroupName = '{{ DBSubnetGroupName }}'
@@ -262,13 +262,13 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-DBSubnetGroupArn,
-DBSubnetGroupDescription,
-DBSubnetGroupName,
-SubnetGroupStatus,
-Subnets,
-SupportedNetworkTypes,
-VpcId
+db_subnet_group_arn,
+db_subnet_group_description,
+db_subnet_group_name,
+subnet_group_status,
+subnets,
+supported_network_types,
+vpc_id
 ;
 ```
 </TabItem>
@@ -321,13 +321,13 @@ AND SubnetIds = '{{ SubnetIds }}' --required
 AND region = '{{ region }}' --required
 AND DBSubnetGroupDescription = '{{ DBSubnetGroupDescription}}'
 RETURNING
-DBSubnetGroupArn,
-DBSubnetGroupDescription,
-DBSubnetGroupName,
-SubnetGroupStatus,
-Subnets,
-SupportedNetworkTypes,
-VpcId;
+db_subnet_group_arn,
+db_subnet_group_description,
+db_subnet_group_name,
+subnet_group_status,
+subnets,
+supported_network_types,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

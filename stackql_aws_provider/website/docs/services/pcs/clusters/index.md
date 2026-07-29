@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique Amazon Resource Name (ARN) of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
@@ -76,12 +76,12 @@ The following fields are returned by `SELECT` queries:
     <td>The list of endpoints available for interaction with the scheduler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>array</code></td>
     <td>The list of errors that occurred during cluster provisioning.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was modified.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The size of the cluster. SMALL: 32 compute nodes and 256 jobs MEDIUM: 512 compute nodes and 8192 jobs LARGE: 2048 compute nodes and 16,384 jobs (SMALL, MEDIUM, LARGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="slurmConfiguration" /></td>
+    <td><CopyableCode code="slurm_configuration" /></td>
     <td><code>object</code></td>
     <td>Additional options related to the Slurm scheduler.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
     <td>The unique Amazon Resource Name (ARN) of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the resource was modified.</td>
 </tr>
@@ -251,14 +251,14 @@ SELECT
 id,
 name,
 arn,
-createdAt,
+created_at,
 endpoints,
-errorInfo,
-modifiedAt,
+error_info,
+modified_at,
 networking,
 scheduler,
 size,
-slurmConfiguration,
+slurm_configuration,
 status
 FROM aws.pcs.clusters
 WHERE region = '{{ region }}' -- required
@@ -274,8 +274,8 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-modifiedAt,
+created_at,
+modified_at,
 status
 FROM aws.pcs.clusters
 WHERE region = '{{ region }}' -- required

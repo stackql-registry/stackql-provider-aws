@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The configurations of the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionCredentials" /></td>
+    <td><CopyableCode code="connection_credentials" /></td>
     <td><code>object</code></td>
     <td>Connection credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the connection.</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
     <td>Connection description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The domain ID of the connection. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainUnitId" /></td>
+    <td><CopyableCode code="domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The domain unit ID of the connection. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentUserRole" /></td>
+    <td><CopyableCode code="environment_user_role" /></td>
     <td><code>string</code></td>
     <td>The environment user role.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="physicalEndpoints" /></td>
+    <td><CopyableCode code="physical_endpoints" /></td>
     <td><code>array</code></td>
     <td>The physical endpoints of the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -145,32 +145,32 @@ The following fields are returned by `SELECT` queries:
     <td>The configurations of a connection summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectionId" /></td>
+    <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The domain ID of a connection. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainUnitId" /></td>
+    <td><CopyableCode code="domain_unit_id" /></td>
     <td><code>string</code></td>
     <td>The domain unit ID of a connection. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The environment ID of a connection. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="physicalEndpoints" /></td>
+    <td><CopyableCode code="physical_endpoints" /></td>
     <td><code>array</code></td>
     <td>The connection physical endpoints.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The connection project ID. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -345,15 +345,15 @@ Gets a connection. In Amazon DataZone, a connection enables you to connect your 
 SELECT
 name,
 configurations,
-connectionCredentials,
-connectionId,
+connection_credentials,
+connection_id,
 description,
-domainId,
-domainUnitId,
-environmentId,
-environmentUserRole,
-physicalEndpoints,
-projectId,
+domain_id,
+domain_unit_id,
+environment_id,
+environment_user_role,
+physical_endpoints,
+project_id,
 props,
 scope,
 type_
@@ -373,12 +373,12 @@ Lists connections. In Amazon DataZone, a connection enables you to connect your 
 SELECT
 name,
 configurations,
-connectionId,
-domainId,
-domainUnitId,
-environmentId,
-physicalEndpoints,
-projectId,
+connection_id,
+domain_id,
+domain_unit_id,
+environment_id,
+physical_endpoints,
+project_id,
 props,
 scope,
 type_
@@ -442,13 +442,13 @@ SELECT
 RETURNING
 name,
 configurations,
-connectionId,
+connection_id,
 description,
-domainId,
-domainUnitId,
-environmentId,
-physicalEndpoints,
-projectId,
+domain_id,
+domain_unit_id,
+environment_id,
+physical_endpoints,
+project_id,
 props,
 scope,
 type_
@@ -620,13 +620,13 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 configurations,
-connectionId,
+connection_id,
 description,
-domainId,
-domainUnitId,
-environmentId,
-physicalEndpoints,
-projectId,
+domain_id,
+domain_unit_id,
+environment_id,
+physical_endpoints,
+project_id,
 props,
 scope,
 type_;

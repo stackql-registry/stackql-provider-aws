@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>A map that defines 1-10 custom endpoint or user attributes, depending on the value for the RecommendationProviderIdType property. Each of these attributes temporarily stores a recommended item that's retrieved from the recommender model and sent to an AWS Lambda function for additional processing. Each attribute can be used as a message variable in a message template. This value is null if the configuration doesn't invoke an AWS Lambda function (RecommendationTransformerUri) to perform additional processing of recommendation data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date, in extended ISO 8601 format, when the configuration was created for the recommender model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The custom description of the configuration for the recommender model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the recommender model configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date, in extended ISO 8601 format, when the configuration for the recommender model was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The custom name of the configuration for the recommender model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationProviderIdType" /></td>
+    <td><CopyableCode code="recommendation_provider_id_type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon Pinpoint ID that's associated with unique user IDs in the recommender model. This value enables the model to use attribute and event data that’s specific to a particular endpoint or user in an Amazon Pinpoint application. Possible values are: PINPOINT_ENDPOINT_ID - Each user in the model is associated with a particular endpoint in Amazon Pinpoint. The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the default value. PINPOINT_USER_ID - Each user in the model is associated with a particular user and endpoint in Amazon Pinpoint. The data is correlated based on user IDs in Amazon Pinpoint. If this value is specified, an endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId) and an endpoint ID. Otherwise, messages won’t be sent to the user's endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationProviderRoleArn" /></td>
+    <td><CopyableCode code="recommendation_provider_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from the recommender model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationProviderUri" /></td>
+    <td><CopyableCode code="recommendation_provider_uri" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint retrieves the recommendation data from. This value is the ARN of an Amazon Personalize campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationTransformerUri" /></td>
+    <td><CopyableCode code="recommendation_transformer_uri" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to perform additional processing of recommendation data that it retrieves from the recommender model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationsDisplayName" /></td>
+    <td><CopyableCode code="recommendations_display_name" /></td>
     <td><code>string</code></td>
     <td>The custom display name for the standard endpoint or user attribute (RecommendationItems) that temporarily stores recommended items for each endpoint or user, depending on the value for the RecommendationProviderIdType property. This name appears in the Attribute finder of the template editor on the Amazon Pinpoint console. This value is null if the configuration doesn't invoke an AWS Lambda function (RecommendationTransformerUri) to perform additional processing of recommendation data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecommendationsPerMessage" /></td>
+    <td><CopyableCode code="recommendations_per_message" /></td>
     <td><code>integer</code></td>
     <td>The number of recommended items that are retrieved from the model for each endpoint or user, depending on the value for the RecommendationProviderIdType property. This number determines how many recommended items are available for use in message variables.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each recommender model configuration that's associated with your Amazon Pinpoint account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -243,18 +243,18 @@ Retrieves information about an Amazon Pinpoint configuration for a recommender m
 
 ```sql
 SELECT
-Attributes,
-CreationDate,
-Description,
-Id,
-LastModifiedDate,
-Name,
-RecommendationProviderIdType,
-RecommendationProviderRoleArn,
-RecommendationProviderUri,
-RecommendationTransformerUri,
-RecommendationsDisplayName,
-RecommendationsPerMessage
+attributes,
+creation_date,
+description,
+id,
+last_modified_date,
+name,
+recommendation_provider_id_type,
+recommendation_provider_role_arn,
+recommendation_provider_uri,
+recommendation_transformer_uri,
+recommendations_display_name,
+recommendations_per_message
 FROM aws.pinpoint.recommender_configurations
 WHERE `recommender-id` = '{{ recommender-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -267,8 +267,8 @@ Retrieves information about all the recommender model configurations that are as
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.recommender_configurations
 WHERE region = '{{ region }}' -- required
 AND `page-size` = '{{ page-size }}'
@@ -301,7 +301,7 @@ SELECT
 '{{ CreateRecommenderConfiguration }}' /* required */,
 '{{ region }}'
 RETURNING
-RecommenderConfigurationResponse
+recommender_configuration_response
 ;
 ```
 </TabItem>
@@ -353,7 +353,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND UpdateRecommenderConfiguration = '{{ UpdateRecommenderConfiguration }}' --required
 RETURNING
-RecommenderConfigurationResponse;
+recommender_configuration_response;
 ```
 </TabItem>
 </Tabs>

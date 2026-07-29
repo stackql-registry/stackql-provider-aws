@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="matchingBucket" /></td>
+    <td><CopyableCode code="matching_bucket" /></td>
     <td><code>object</code></td>
     <td>The details of an S3 bucket that Amazon Macie monitors and analyzes for your account.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves (queries) statistical data and other information about Amazon Web Serv
 
 ```sql
 SELECT
-matchingBucket
+matching_bucket
 FROM aws.macie2.resources
 WHERE region = '{{ region }}' -- required
 ;

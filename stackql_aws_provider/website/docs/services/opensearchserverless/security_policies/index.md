@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the policy. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>integer (int64)</code></td>
     <td>The date the policy was created.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the security policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>integer (int64)</code></td>
     <td>The timestamp of when the policy was last modified.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The JSON policy document without any whitespaces.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyVersion" /></td>
+    <td><CopyableCode code="policy_version" /></td>
     <td><code>string</code></td>
     <td>The version of the policy. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z+/&#93;&#123;4&#125;)*((&#91;0-9a-zA-Z+/&#93;&#123;2&#125;==)|(&#91;0-9a-zA-Z+/&#93;&#123;3&#125;=))?&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityPolicySummaries" /></td>
+    <td><CopyableCode code="security_policy_summaries" /></td>
     <td><code>array</code></td>
     <td>Details about the security policies in your account.</td>
 </tr>
@@ -204,11 +204,11 @@ Returns information about a configured OpenSearch Serverless security policy. Fo
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastModifiedDate,
+last_modified_date,
 policy,
-policyVersion,
+policy_version,
 type_
 FROM aws.opensearchserverless.security_policies
 WHERE region = '{{ region }}' -- required
@@ -221,8 +221,8 @@ Returns information about configured OpenSearch Serverless security policies.
 
 ```sql
 SELECT
-nextToken,
-securityPolicySummaries
+next_token,
+security_policy_summaries
 FROM aws.opensearchserverless.security_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -261,7 +261,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-securityPolicyDetail
+security_policy_detail
 ;
 ```
 </TabItem>
@@ -327,7 +327,7 @@ AND type = '{{ type }}' --required
 AND name = '{{ name }}' --required
 AND policyVersion = '{{ policyVersion }}' --required
 RETURNING
-securityPolicyDetail;
+security_policy_detail;
 ```
 </TabItem>
 </Tabs>

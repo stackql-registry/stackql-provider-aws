@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the capacity resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountName" /></td>
+    <td><CopyableCode code="account_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Web Services account that owns the capacity resource. This dimension is only available when Organizations access is enabled for Capacity Manager.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Availability Zone where the capacity resource is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceFamily" /></td>
+    <td><CopyableCode code="instance_family" /></td>
     <td><code>string</code></td>
     <td>The EC2 instance family of the capacity resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstancePlatform" /></td>
+    <td><CopyableCode code="instance_platform" /></td>
     <td><code>string</code></td>
     <td>The platform or operating system of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The specific EC2 instance type of the capacity resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationArn" /></td>
+    <td><CopyableCode code="reservation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the capacity reservation. This provides a unique identifier that can be used across Amazon Web Services services to reference the specific reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationCreateTimestamp" /></td>
+    <td><CopyableCode code="reservation_create_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the capacity reservation was originally created, in milliseconds since epoch. This differs from the start timestamp as reservations can be created before they become active.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationEndDateType" /></td>
+    <td><CopyableCode code="reservation_end_date_type" /></td>
     <td><code>string</code></td>
     <td>The type of end date for the capacity reservation. This indicates whether the reservation has a fixed end date, is open-ended, or follows a specific termination pattern.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationEndTimestamp" /></td>
+    <td><CopyableCode code="reservation_end_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the capacity reservation expires and is no longer available, in milliseconds since epoch. After this time, the reservation will not provide any capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationId" /></td>
+    <td><CopyableCode code="reservation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the capacity reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationInstanceMatchCriteria" /></td>
+    <td><CopyableCode code="reservation_instance_match_criteria" /></td>
     <td><code>string</code></td>
     <td>The instance matching criteria for the capacity reservation, determining how instances are matched to the reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationStartTimestamp" /></td>
+    <td><CopyableCode code="reservation_start_timestamp" /></td>
     <td><code>string</code></td>
     <td>The timestamp when the capacity reservation becomes active and available for use, in milliseconds since epoch. This is when the reservation begins providing capacity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationState" /></td>
+    <td><CopyableCode code="reservation_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the capacity reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationType" /></td>
+    <td><CopyableCode code="reservation_type" /></td>
     <td><code>string</code></td>
     <td>The type of capacity reservation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationUnusedFinancialOwner" /></td>
+    <td><CopyableCode code="reservation_unused_financial_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that is financially responsible for unused capacity reservation costs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceRegion" /></td>
+    <td><CopyableCode code="resource_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the capacity resource is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags associated with the capacity resource, represented as key-value pairs. Only tags that have been activated for monitoring via UpdateCapacityManagerMonitoredTagKeys are included.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tenancy" /></td>
+    <td><CopyableCode code="tenancy" /></td>
     <td><code>string</code></td>
     <td>The tenancy of the EC2 instances associated with this capacity dimension. Valid values are 'default' for shared tenancy, 'dedicated' for dedicated instances, or 'host' for dedicated hosts.</td>
 </tr>
@@ -249,25 +249,25 @@ Retrieves the available dimension values for capacity metrics within a specified
 
 ```sql
 SELECT
-AccountId,
-AccountName,
-AvailabilityZoneId,
-InstanceFamily,
-InstancePlatform,
-InstanceType,
-ReservationArn,
-ReservationCreateTimestamp,
-ReservationEndDateType,
-ReservationEndTimestamp,
-ReservationId,
-ReservationInstanceMatchCriteria,
-ReservationStartTimestamp,
-ReservationState,
-ReservationType,
-ReservationUnusedFinancialOwner,
-ResourceRegion,
-Tags,
-Tenancy
+account_id,
+account_name,
+availability_zone_id,
+instance_family,
+instance_platform,
+instance_type,
+reservation_arn,
+reservation_create_timestamp,
+reservation_end_date_type,
+reservation_end_timestamp,
+reservation_id,
+reservation_instance_match_criteria,
+reservation_start_timestamp,
+reservation_state,
+reservation_type,
+reservation_unused_financial_owner,
+resource_region,
+tags,
+tenancy
 FROM aws.ec2.capacity_manager_metric_dimensions
 WHERE GroupBy = '{{ GroupBy }}' -- required
 AND StartTime = '{{ StartTime }}' -- required

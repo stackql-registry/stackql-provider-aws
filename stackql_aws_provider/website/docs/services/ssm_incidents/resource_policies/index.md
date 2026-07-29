@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The JSON blob that describes the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyId" /></td>
+    <td><CopyableCode code="policy_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the resource policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ramResourceShareRegion" /></td>
+    <td><CopyableCode code="ram_resource_share_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region that policy allows resources to be used in.</td>
 </tr>
@@ -148,9 +148,9 @@ Retrieves the resource policies attached to the specified response plan.
 
 ```sql
 SELECT
-policyDocument,
-policyId,
-ramResourceShareRegion
+policy_document,
+policy_id,
+ram_resource_share_region
 FROM aws.ssm_incidents.resource_policies
 WHERE resourceArn = '{{ resourceArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -182,7 +182,7 @@ region = '{{ region }}' --required
 AND policy = '{{ policy }}' --required
 AND resourceArn = '{{ resourceArn }}' --required
 RETURNING
-policyId;
+policy_id;
 ```
 </TabItem>
 </Tabs>

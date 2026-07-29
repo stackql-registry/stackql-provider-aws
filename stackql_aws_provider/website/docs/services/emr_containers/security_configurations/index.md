@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN (Amazon Resource Name) of the security configuration. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/securityconfigurations\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityConfigurationData" /></td>
+    <td><CopyableCode code="security_configuration_data" /></td>
     <td><code>object</code></td>
     <td>Configurations related to the security configuration for the request.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN (Amazon Resource Name) of the security configuration. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/securityconfigurations\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the job run was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The user who created the job run. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):(iam|sts)::(\d&#123;12&#125;)?:&#91;\w/+=,.@-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="securityConfigurationData" /></td>
+    <td><CopyableCode code="security_configuration_data" /></td>
     <td><code>object</code></td>
     <td>Configurations related to the security configuration for the request.</td>
 </tr>
@@ -242,9 +242,9 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-createdBy,
-securityConfigurationData,
+created_at,
+created_by,
+security_configuration_data,
 tags
 FROM aws.emr_containers.security_configurations
 WHERE security_configuration_id = '{{ security_configuration_id }}' -- required
@@ -261,9 +261,9 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-createdBy,
-securityConfigurationData,
+created_at,
+created_by,
+security_configuration_data,
 tags
 FROM aws.emr_containers.security_configurations
 WHERE region = '{{ region }}' -- required

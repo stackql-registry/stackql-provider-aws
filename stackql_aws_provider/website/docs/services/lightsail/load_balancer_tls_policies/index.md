@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetLoadBalancerTlsPolicies request and specify the next page token using the pageToken parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tlsPolicies" /></td>
+    <td><CopyableCode code="tls_policies" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the TLS security policies that are available.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of TLS security policies that you can apply to Lightsail load bal
 
 ```sql
 SELECT
-nextPageToken,
-tlsPolicies
+next_page_token,
+tls_policies
 FROM aws.lightsail.load_balancer_tls_policies
 WHERE region = '{{ region }}' -- required
 ;

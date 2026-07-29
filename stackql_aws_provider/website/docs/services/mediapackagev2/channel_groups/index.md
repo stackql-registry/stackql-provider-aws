@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for your channel group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ETag" /></td>
+    <td><CopyableCode code="e_tag" /></td>
     <td><code>string</code></td>
     <td>The current Entity Tag (ETag) associated with this resource. The entity tag can be used to safely make concurrent updates to the resource. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressDomain" /></td>
+    <td><CopyableCode code="egress_domain" /></td>
     <td><code>string</code></td>
     <td>The output domain where the source stream should be sent. Integrate the domain with a downstream CDN (such as Amazon CloudFront) or playback device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel group was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The comma-separated list of tag key:value pairs assigned to the channel group.</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelGroupName" /></td>
+    <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Any descriptive information that you want to add to the channel group for future identification purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel group was modified.</td>
 </tr>
@@ -248,14 +248,14 @@ Retrieves the specified channel group that's configured in AWS Elemental MediaPa
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-CreatedAt,
-Description,
-ETag,
-EgressDomain,
-ModifiedAt,
-Tags
+arn,
+channel_group_name,
+created_at,
+description,
+e_tag,
+egress_domain,
+modified_at,
+tags
 FROM aws.mediapackagev2.channel_groups
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -268,11 +268,11 @@ Retrieves all channel groups that are configured in Elemental MediaPackage.
 
 ```sql
 SELECT
-Arn,
-ChannelGroupName,
-CreatedAt,
-Description,
-ModifiedAt
+arn,
+channel_group_name,
+created_at,
+description,
+modified_at
 FROM aws.mediapackagev2.channel_groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -311,14 +311,14 @@ SELECT
 '{{ region }}',
 '{{ x-amzn-client-token }}'
 RETURNING
-Arn,
-ChannelGroupName,
-CreatedAt,
-Description,
-ETag,
-EgressDomain,
-ModifiedAt,
-Tags
+arn,
+channel_group_name,
+created_at,
+description,
+e_tag,
+egress_domain,
+modified_at,
+tags
 ;
 ```
 </TabItem>
@@ -367,14 +367,14 @@ channel_group_name = '{{ channel_group_name }}' --required
 AND region = '{{ region }}' --required
 AND `x-amzn-update-if-match` = '{{ x-amzn-update-if-match}}'
 RETURNING
-Arn,
-ChannelGroupName,
-CreatedAt,
-Description,
-ETag,
-EgressDomain,
-ModifiedAt,
-Tags;
+arn,
+channel_group_name,
+created_at,
+description,
+e_tag,
+egress_domain,
+modified_at,
+tags;
 ```
 </TabItem>
 </Tabs>

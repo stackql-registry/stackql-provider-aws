@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code of the vocabulary entries. For a list of languages and their corresponding language codes, see What is Amazon Transcribe? (ar-AE, de-CH, de-DE, en-AB, en-AU, en-GB, en-IE, en-IN, en-US, en-WL, es-ES, es-US, fr-CA, fr-FR, hi-IN, it-IT, ja-JP, ko-KR, pt-BR, pt-PT, zh-CN, en-NZ, en-ZA, ca-ES, da-DK, fi-FI, id-ID, ms-MY, nl-NL, no-NO, pl-PL, sv-SE, tl-PH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VocabularyId" /></td>
+    <td><CopyableCode code="vocabulary_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the custom vocabulary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VocabularyName" /></td>
+    <td><CopyableCode code="vocabulary_name" /></td>
     <td><code>string</code></td>
     <td>A unique name of the custom vocabulary. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -151,10 +151,10 @@ Lists the default vocabularies for the specified Amazon Connect instance.
 
 ```sql
 SELECT
-InstanceId,
-LanguageCode,
-VocabularyId,
-VocabularyName
+instance_id,
+language_code,
+vocabulary_id,
+vocabulary_name
 FROM aws.connect.default_vocabularies
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required

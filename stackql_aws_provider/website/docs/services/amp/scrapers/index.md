@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the scraper. For example, arn:aws:aps:<code>&lt;region&gt;</code>:123456798012:scraper/s-example1-1234-abcd-5678-ef9012abcd34.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the scraper was created.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>Where to send the metrics from a scraper.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the scraper was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that provides permissions for the scraper to discover and collect metrics on your behalf. For example, arn:aws:iam::123456789012:role/service-role/AmazonGrafanaServiceRole-12example. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleConfiguration" /></td>
+    <td><CopyableCode code="role_configuration" /></td>
     <td><code>object</code></td>
     <td>Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scrapeConfiguration" /></td>
+    <td><CopyableCode code="scrape_configuration" /></td>
     <td><code>object</code></td>
     <td>A scrape configuration for a scraper, base 64 encoded. For more information, see Scraper configuration in the Amazon Managed Service for Prometheus User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scraperId" /></td>
+    <td><CopyableCode code="scraper_id" /></td>
     <td><code>string</code></td>
     <td>A scraper ID. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>A structure that contains the current status of the scraper.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>If there is a failure, the reason for the failure.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the scraper.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the scraper was created.</td>
 </tr>
@@ -150,22 +150,22 @@ The following fields are returned by `SELECT` queries:
     <td>Where to send the metrics from a scraper.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedAt" /></td>
+    <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the scraper was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that provides permissions for the scraper to discover and collect metrics on your behalf. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleConfiguration" /></td>
+    <td><CopyableCode code="role_configuration" /></td>
     <td><code>object</code></td>
     <td>Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scraperId" /></td>
+    <td><CopyableCode code="scraper_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the scraper. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#91;-.0-9A-Z_a-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -180,7 +180,7 @@ The following fields are returned by `SELECT` queries:
     <td>A structure that contains the current status of the scraper.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>If there is a failure, the reason for the failure.</td>
 </tr>
@@ -310,16 +310,16 @@ The DescribeScraper operation displays information about an existing scraper.
 SELECT
 alias,
 arn,
-createdAt,
+created_at,
 destination,
-lastModifiedAt,
-roleArn,
-roleConfiguration,
-scrapeConfiguration,
-scraperId,
+last_modified_at,
+role_arn,
+role_configuration,
+scrape_configuration,
+scraper_id,
 source,
 status,
-statusReason,
+status_reason,
 tags
 FROM aws.amp.scrapers
 WHERE scraper_id = '{{ scraper_id }}' -- required
@@ -335,15 +335,15 @@ The ListScrapers operation lists all of the scrapers in your account. This inclu
 SELECT
 alias,
 arn,
-createdAt,
+created_at,
 destination,
-lastModifiedAt,
-roleArn,
-roleConfiguration,
-scraperId,
+last_modified_at,
+role_arn,
+role_configuration,
+scraper_id,
 source,
 status,
-statusReason,
+status_reason,
 tags
 FROM aws.amp.scrapers
 WHERE region = '{{ region }}' -- required
@@ -391,7 +391,7 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-scraperId,
+scraper_id,
 status,
 tags
 ;
@@ -480,7 +480,7 @@ scraper_id = '{{ scraper_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 arn,
-scraperId,
+scraper_id,
 status,
 tags;
 ```

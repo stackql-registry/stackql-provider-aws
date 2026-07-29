@@ -55,52 +55,52 @@ The following fields are returned by `SELECT` queries:
     <td>ARN of the Launch Configuration Template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatePublicIpAddress" /></td>
+    <td><CopyableCode code="associate_public_ip_address" /></td>
     <td><code>boolean</code></td>
     <td>Associate public Ip address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bootMode" /></td>
+    <td><CopyableCode code="boot_mode" /></td>
     <td><code>string</code></td>
     <td>Launch configuration template boot mode. (LEGACY_BIOS, UEFI, USE_SOURCE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyPrivateIp" /></td>
+    <td><CopyableCode code="copy_private_ip" /></td>
     <td><code>boolean</code></td>
     <td>Copy private Ip.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="copyTags" /></td>
+    <td><CopyableCode code="copy_tags" /></td>
     <td><code>boolean</code></td>
     <td>Copy tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ec2LaunchTemplateID" /></td>
+    <td><CopyableCode code="ec_2_launch_template_id" /></td>
     <td><code>string</code></td>
     <td>EC2 launch template ID. (pattern: &lt;code&gt;lt-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableMapAutoTagging" /></td>
+    <td><CopyableCode code="enable_map_auto_tagging" /></td>
     <td><code>boolean</code></td>
     <td>Enable map auto tagging.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableParametersEncryption" /></td>
+    <td><CopyableCode code="enable_parameters_encryption" /></td>
     <td><code>boolean</code></td>
     <td>Enable parameters encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="largeVolumeConf" /></td>
+    <td><CopyableCode code="large_volume_conf" /></td>
     <td><code>object</code></td>
     <td>Launch template disk configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchConfigurationTemplateID" /></td>
+    <td><CopyableCode code="launch_configuration_template_id" /></td>
     <td><code>string</code></td>
     <td>ID of the Launch Configuration Template. (pattern: &lt;code&gt;lct-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="launchDisposition" /></td>
+    <td><CopyableCode code="launch_disposition" /></td>
     <td><code>string</code></td>
     <td>Launch disposition. (STOPPED, STARTED)</td>
 </tr>
@@ -110,27 +110,27 @@ The following fields are returned by `SELECT` queries:
     <td>Configure Licensing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mapAutoTaggingMpeID" /></td>
+    <td><CopyableCode code="map_auto_tagging_mpe_id" /></td>
     <td><code>string</code></td>
     <td>Launch configuration template map auto tagging MPE ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parametersEncryptionKey" /></td>
+    <td><CopyableCode code="parameters_encryption_key" /></td>
     <td><code>string</code></td>
     <td>Parameters encryption key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="postLaunchActions" /></td>
+    <td><CopyableCode code="post_launch_actions" /></td>
     <td><code>object</code></td>
     <td>Post Launch Actions to executed on the Test or Cutover instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="smallVolumeConf" /></td>
+    <td><CopyableCode code="small_volume_conf" /></td>
     <td><code>object</code></td>
     <td>Launch template disk configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="smallVolumeMaxSize" /></td>
+    <td><CopyableCode code="small_volume_max_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>Small volume maximum size.</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags of the Launch Configuration Template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetInstanceTypeRightSizingMethod" /></td>
+    <td><CopyableCode code="target_instance_type_right_sizing_method" /></td>
     <td><code>string</code></td>
     <td>Target instance type right-sizing method. (NONE, BASIC)</td>
 </tr>
@@ -231,24 +231,24 @@ Lists all Launch Configuration Templates, filtered by Launch Configuration Templ
 ```sql
 SELECT
 arn,
-associatePublicIpAddress,
-bootMode,
-copyPrivateIp,
-copyTags,
-ec2LaunchTemplateID,
-enableMapAutoTagging,
-enableParametersEncryption,
-largeVolumeConf,
-launchConfigurationTemplateID,
-launchDisposition,
+associate_public_ip_address,
+boot_mode,
+copy_private_ip,
+copy_tags,
+ec_2_launch_template_id,
+enable_map_auto_tagging,
+enable_parameters_encryption,
+large_volume_conf,
+launch_configuration_template_id,
+launch_disposition,
 licensing,
-mapAutoTaggingMpeID,
-parametersEncryptionKey,
-postLaunchActions,
-smallVolumeConf,
-smallVolumeMaxSize,
+map_auto_tagging_mpe_id,
+parameters_encryption_key,
+post_launch_actions,
+small_volume_conf,
+small_volume_max_size,
 tags,
-targetInstanceTypeRightSizingMethod
+target_instance_type_right_sizing_method
 FROM aws.mgn.launch_configuration_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -310,24 +310,24 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-associatePublicIpAddress,
-bootMode,
-copyPrivateIp,
-copyTags,
-ec2LaunchTemplateID,
-enableMapAutoTagging,
-enableParametersEncryption,
-largeVolumeConf,
-launchConfigurationTemplateID,
-launchDisposition,
+associate_public_ip_address,
+boot_mode,
+copy_private_ip,
+copy_tags,
+ec_2_launch_template_id,
+enable_map_auto_tagging,
+enable_parameters_encryption,
+large_volume_conf,
+launch_configuration_template_id,
+launch_disposition,
 licensing,
-mapAutoTaggingMpeID,
-parametersEncryptionKey,
-postLaunchActions,
-smallVolumeConf,
-smallVolumeMaxSize,
+map_auto_tagging_mpe_id,
+parameters_encryption_key,
+post_launch_actions,
+small_volume_conf,
+small_volume_max_size,
 tags,
-targetInstanceTypeRightSizingMethod
+target_instance_type_right_sizing_method
 ;
 ```
 </TabItem>
@@ -442,24 +442,24 @@ region = '{{ region }}' --required
 AND launchConfigurationTemplateID = '{{ launchConfigurationTemplateID }}' --required
 RETURNING
 arn,
-associatePublicIpAddress,
-bootMode,
-copyPrivateIp,
-copyTags,
-ec2LaunchTemplateID,
-enableMapAutoTagging,
-enableParametersEncryption,
-largeVolumeConf,
-launchConfigurationTemplateID,
-launchDisposition,
+associate_public_ip_address,
+boot_mode,
+copy_private_ip,
+copy_tags,
+ec_2_launch_template_id,
+enable_map_auto_tagging,
+enable_parameters_encryption,
+large_volume_conf,
+launch_configuration_template_id,
+launch_disposition,
 licensing,
-mapAutoTaggingMpeID,
-parametersEncryptionKey,
-postLaunchActions,
-smallVolumeConf,
-smallVolumeMaxSize,
+map_auto_tagging_mpe_id,
+parameters_encryption_key,
+post_launch_actions,
+small_volume_conf,
+small_volume_max_size,
 tags,
-targetInstanceTypeRightSizingMethod;
+target_instance_type_right_sizing_method;
 ```
 </TabItem>
 </Tabs>

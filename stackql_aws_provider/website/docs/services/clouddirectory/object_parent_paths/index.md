@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ObjectIdentifiers" /></td>
+    <td><CopyableCode code="object_identifiers" /></td>
     <td><code>array</code></td>
     <td>Lists ObjectIdentifiers starting from directory root to the object in the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Path" /></td>
+    <td><CopyableCode code="path" /></td>
     <td><code>string</code></td>
     <td>The path that is used to identify the object starting from directory root.</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves all available parent paths for any object type such as node, leaf node
 
 ```sql
 SELECT
-ObjectIdentifiers,
-Path
+object_identifiers,
+path
 FROM aws.clouddirectory.object_parent_paths
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

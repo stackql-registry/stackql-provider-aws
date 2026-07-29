@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessDetails" /></td>
+    <td><CopyableCode code="access_details" /></td>
     <td><code>string</code></td>
     <td>An object that contains details about the most recent attempt to access the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>string</code></td>
     <td>Contains information about the reason that the operation failed. This data type is used as a response element in the GetOrganizationsAccessReport, GetServiceLastAccessedDetails, and GetServiceLastAccessedDetailsWithEntities operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsTruncated" /></td>
+    <td><CopyableCode code="is_truncated" /></td>
     <td><code>boolean</code></td>
     <td>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the Marker request parameter to retrieve more items. Note that IAM might return fewer than the MaxItems number of results even when there are more results available. We recommend that you check IsTruncated after every call to ensure that you receive all your results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobCompletionDate" /></td>
+    <td><CopyableCode code="job_completion_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the generated report job was completed or failed. This field is null if the job is still in progress, as indicated by a job status value of IN_PROGRESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobCreationDate" /></td>
+    <td><CopyableCode code="job_creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 date-time format, when the report job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>When IsTruncated is true, this element is present and contains the value to use for the Marker parameter in a subsequent pagination request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfServicesAccessible" /></td>
+    <td><CopyableCode code="number_of_services_accessible" /></td>
     <td><code>integer</code></td>
     <td>The number of services that the applicable SCPs allow account principals to access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfServicesNotAccessed" /></td>
+    <td><CopyableCode code="number_of_services_not_accessed" /></td>
     <td><code>integer</code></td>
     <td>The number of services that account principals are allowed but did not attempt to access.</td>
 </tr>
@@ -179,15 +179,15 @@ Retrieves the service last accessed data report for Organizations that was previ
 
 ```sql
 SELECT
-AccessDetails,
-ErrorDetails,
-IsTruncated,
-JobCompletionDate,
-JobCreationDate,
-JobStatus,
-Marker,
-NumberOfServicesAccessible,
-NumberOfServicesNotAccessed
+access_details,
+error_details,
+is_truncated,
+job_completion_date,
+job_creation_date,
+job_status,
+marker,
+number_of_services_accessible,
+number_of_services_not_accessed
 FROM aws.iam.organizations_access_reports
 WHERE JobId = '{{ JobId }}' -- required
 AND region = '{{ region }}' -- required

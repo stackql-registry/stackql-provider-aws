@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="buildWorkflowAssets" /></td>
+    <td><CopyableCode code="build_workflow_assets" /></td>
     <td><code>object</code></td>
     <td>The requested build workflow asset. This is a union type that returns only one of the available asset types (logs, reports, or generated artifacts) based on the specific asset type requested in the API call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildWorkflowId" /></td>
+    <td><CopyableCode code="build_workflow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the build workflow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-?&#91;a-f0-9&#93;&#123;4&#125;-?4&#91;a-f0-9&#93;&#123;3&#125;-?&#91;89ab&#93;&#91;a-f0-9&#93;&#123;3&#125;-?&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Automated Reasoning policy. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
@@ -149,9 +149,9 @@ Retrieves the resulting assets from a completed Automated Reasoning policy build
 
 ```sql
 SELECT
-buildWorkflowAssets,
-buildWorkflowId,
-policyArn
+build_workflow_assets,
+build_workflow_id,
+policy_arn
 FROM aws.bedrock.automated_reasoning_policy_build_workflow_result_assets
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND build_workflow_id = '{{ build_workflow_id }}' -- required

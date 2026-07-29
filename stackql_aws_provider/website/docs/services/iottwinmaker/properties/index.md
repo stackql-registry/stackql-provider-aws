@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string that specifies the next page of property results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="propertySummaries" /></td>
+    <td><CopyableCode code="property_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects that contain information about the properties.</td>
 </tr>
@@ -129,8 +129,8 @@ This API lists the properties of a component.
 
 ```sql
 SELECT
-nextToken,
-propertySummaries
+next_token,
+property_summaries
 FROM aws.iottwinmaker.properties
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required

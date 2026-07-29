@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Mrap" /></td>
+    <td><CopyableCode code="mrap" /></td>
     <td><code>string</code></td>
     <td>The Multi-Region Access Point ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>string</code></td>
     <td>The different routes that make up the route configuration. Active routes return a value of 100, and passive routes return a value of 0.</td>
 </tr>
@@ -141,8 +141,8 @@ This operation is not supported by directory buckets. Returns the routing config
 
 ```sql
 SELECT
-Mrap,
-Routes
+mrap,
+routes
 FROM aws.s3control.multi_region_access_point_routes
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND mrap = '{{ mrap }}' -- required

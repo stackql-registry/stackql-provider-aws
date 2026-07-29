@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone where the domain controller is located.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the directory where the domain controller resides. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsIpAddr" /></td>
+    <td><CopyableCode code="dns_ip_addr" /></td>
     <td><code>string</code></td>
     <td>The IP address of the domain controller. (pattern: &lt;code&gt;^(?:(?:25&#91;0-5&#93;|2&#91;0-4&#93;&#91;0-9&#93;|&#91;01&#93;?&#91;0-9&#93;&#91;0-9&#93;?)\.)&#123;3&#125;(?:25&#91;0-5&#93;|2&#91;0-4&#93;&#91;0-9&#93;|&#91;01&#93;?&#91;0-9&#93;&#91;0-9&#93;?)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DnsIpv6Addr" /></td>
+    <td><CopyableCode code="dns_ipv_6_addr" /></td>
     <td><code>string</code></td>
     <td>The IPv6 address of the domain controller. (pattern: &lt;code&gt;^((&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;7,7&#125;&#91;0-9a-fA-F&#93;&#123;1,4&#125;|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,7&#125;:|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,6&#125;:&#91;0-9a-fA-F&#93;&#123;1,4&#125;|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,5&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,2&#125;|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,4&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,3&#125;|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,3&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,4&#125;|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,2&#125;(:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,5&#125;|&#91;0-9a-fA-F&#93;&#123;1,4&#125;:((:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,6&#125;)|:((:&#91;0-9a-fA-F&#93;&#123;1,4&#125;)&#123;1,7&#125;|:)|fe80:(:&#91;0-9a-fA-F&#93;&#123;0,4&#125;)&#123;0,4&#125;%&#91;0-9a-zA-Z&#93;&#123;1,&#125;|::(ffff(:0&#123;1,4&#125;)&#123;0,1&#125;:)&#123;0,1&#125;((25&#91;0-5&#93;|(2&#91;0-4&#93;|1&#123;0,1&#125;&#91;0-9&#93;)&#123;0,1&#125;&#91;0-9&#93;)\.)&#123;3&#125;(25&#91;0-5&#93;|(2&#91;0-4&#93;|1&#123;0,1&#125;&#91;0-9&#93;)&#123;0,1&#125;&#91;0-9&#93;)|(&#91;0-9a-fA-F&#93;&#123;1,4&#125;:)&#123;1,4&#125;:((25&#91;0-5&#93;|(2&#91;0-4&#93;|1&#123;0,1&#125;&#91;0-9&#93;)&#123;0,1&#125;&#91;0-9&#93;)\.)&#123;3&#125;(25&#91;0-5&#93;|(2&#91;0-4&#93;|1&#123;0,1&#125;&#91;0-9&#93;)&#123;0,1&#125;&#91;0-9&#93;))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainControllerId" /></td>
+    <td><CopyableCode code="domain_controller_id" /></td>
     <td><code>string</code></td>
     <td>Identifies a specific domain controller in the directory. (pattern: &lt;code&gt;^dc-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTime" /></td>
+    <td><CopyableCode code="launch_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies when the domain controller was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the domain controller. (Creating, Active, Impaired, Restoring, Deleting, Deleted, Failed, Updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusLastUpdatedDateTime" /></td>
+    <td><CopyableCode code="status_last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the status was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>A description of the domain controller state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>Identifier of the subnet in the VPC that contains the domain controller. (pattern: &lt;code&gt;^(subnet-&#91;0-9a-f&#93;&#123;8&#125;|subnet-&#91;0-9a-f&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the VPC that contains the domain controller. (pattern: &lt;code&gt;^(vpc-&#91;0-9a-f&#93;&#123;8&#125;|vpc-&#91;0-9a-f&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -176,17 +176,17 @@ Provides information about any domain controllers in your directory.
 
 ```sql
 SELECT
-AvailabilityZone,
-DirectoryId,
-DnsIpAddr,
-DnsIpv6Addr,
-DomainControllerId,
-LaunchTime,
-Status,
-StatusLastUpdatedDateTime,
-StatusReason,
-SubnetId,
-VpcId
+availability_zone,
+directory_id,
+dns_ip_addr,
+dns_ipv_6_addr,
+domain_controller_id,
+launch_time,
+status,
+status_last_updated_date_time,
+status_reason,
+subnet_id,
+vpc_id
 FROM aws.ds.domain_controllers
 WHERE region = '{{ region }}' -- required
 ;

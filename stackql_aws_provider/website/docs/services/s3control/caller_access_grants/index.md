@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity Center application associated with your Identity Center instance. If the grant includes an application ARN, the grantee can only access the S3 data through this application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantScope" /></td>
+    <td><CopyableCode code="grant_scope" /></td>
     <td><code>string</code></td>
     <td>The S3 path of the data to which you have been granted access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Permission" /></td>
+    <td><CopyableCode code="permission" /></td>
     <td><code>string</code></td>
     <td>The type of permission granted, which can be one of the following values: READ - Grants read-only access to the S3 data. WRITE - Grants write-only access to the S3 data. READWRITE - Grants both read and write access to the S3 data.</td>
 </tr>
@@ -154,9 +154,9 @@ Use this API to list the access grants that grant the caller access to Amazon S3
 
 ```sql
 SELECT
-ApplicationArn,
-GrantScope,
-Permission
+application_arn,
+grant_scope,
+permission
 FROM aws.s3control.caller_access_grants
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required

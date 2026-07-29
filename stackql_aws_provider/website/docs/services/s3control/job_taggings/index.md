@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The set of tags associated with the S3 Batch Operations job.</td>
 </tr>
@@ -143,7 +143,7 @@ Returns the tags on an S3 Batch Operations job. Permissions To use the GetJobTag
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.s3control.job_taggings
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND id = '{{ id }}' -- required

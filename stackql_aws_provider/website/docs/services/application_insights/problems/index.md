@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Problem" /></td>
+    <td><CopyableCode code="problem" /></td>
     <td><code>object</code></td>
     <td>Information about the problem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SNSNotificationArn" /></td>
+    <td><CopyableCode code="sns_notification_arn" /></td>
     <td><code>string</code></td>
     <td>The SNS notification topic ARN of the problem. (pattern: &lt;code&gt;^arn:aws(-\w+)*:&#91;\w\d-&#93;+:(&#91;\w\d-&#93;*)?:&#91;\w\d_-&#93;*(&#91;:/&#93;.+)*$&lt;/code&gt;)</td>
 </tr>
@@ -75,22 +75,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID for the resource group owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to retrieve the next page of results. This value is null when there are no more results to return. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProblemList" /></td>
+    <td><CopyableCode code="problem_list" /></td>
     <td><code>array</code></td>
     <td>The list of problems.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceGroupName" /></td>
+    <td><CopyableCode code="resource_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -174,8 +174,8 @@ Describes an application problem.
 
 ```sql
 SELECT
-Problem,
-SNSNotificationArn
+problem,
+sns_notification_arn
 FROM aws.application_insights.problems
 WHERE region = '{{ region }}' -- required
 ;
@@ -187,10 +187,10 @@ Lists the problems with your application.
 
 ```sql
 SELECT
-AccountId,
-NextToken,
-ProblemList,
-ResourceGroupName
+account_id,
+next_token,
+problem_list,
+resource_group_name
 FROM aws.application_insights.problems
 WHERE region = '{{ region }}' -- required
 ;

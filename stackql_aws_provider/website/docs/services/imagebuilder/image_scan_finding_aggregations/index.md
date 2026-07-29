@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountAggregation" /></td>
+    <td><CopyableCode code="account_aggregation" /></td>
     <td><code>object</code></td>
     <td>Returns an object that contains severity counts based on an account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageAggregation" /></td>
+    <td><CopyableCode code="image_aggregation" /></td>
     <td><code>object</code></td>
     <td>Returns an object that contains severity counts based on the Amazon Resource Name (ARN) for a specific image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imagePipelineAggregation" /></td>
+    <td><CopyableCode code="image_pipeline_aggregation" /></td>
     <td><code>object</code></td>
     <td>Returns an object that contains severity counts based on an image pipeline ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vulnerabilityIdAggregation" /></td>
+    <td><CopyableCode code="vulnerability_id_aggregation" /></td>
     <td><code>object</code></td>
     <td>Returns an object that contains severity counts based on vulnerability ID.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a list of image scan aggregations for your account. You can filter by th
 
 ```sql
 SELECT
-accountAggregation,
-imageAggregation,
-imagePipelineAggregation,
-vulnerabilityIdAggregation
+account_aggregation,
+image_aggregation,
+image_pipeline_aggregation,
+vulnerability_id_aggregation
 FROM aws.imagebuilder.image_scan_finding_aggregations
 WHERE region = '{{ region }}' -- required
 ;

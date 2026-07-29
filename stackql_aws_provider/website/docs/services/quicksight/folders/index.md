@@ -52,17 +52,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Folder" /></td>
+    <td><CopyableCode code="folder" /></td>
     <td><code>object</code></td>
     <td>Information about the folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -81,37 +81,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the folder was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FolderId" /></td>
+    <td><CopyableCode code="folder_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the folder. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FolderType" /></td>
+    <td><CopyableCode code="folder_type" /></td>
     <td><code>string</code></td>
     <td>The type of folder. (SHARED, RESTRICTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the folder was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SharingModel" /></td>
+    <td><CopyableCode code="sharing_model" /></td>
     <td><code>string</code></td>
     <td>The sharing scope of the folder. (ACCOUNT, NAMESPACE)</td>
 </tr>
@@ -130,37 +130,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the folder was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FolderId" /></td>
+    <td><CopyableCode code="folder_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the folder. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FolderType" /></td>
+    <td><CopyableCode code="folder_type" /></td>
     <td><code>string</code></td>
     <td>The type of folder. (SHARED, RESTRICTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the folder was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the folder.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SharingModel" /></td>
+    <td><CopyableCode code="sharing_model" /></td>
     <td><code>string</code></td>
     <td>The sharing scope of the folder. (ACCOUNT, NAMESPACE)</td>
 </tr>
@@ -310,9 +310,9 @@ Describes a folder.
 
 ```sql
 SELECT
-Folder,
-RequestId,
-Status
+folder,
+request_id,
+status
 FROM aws.quicksight.folders
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND folder_id = '{{ folder_id }}' -- required
@@ -326,13 +326,13 @@ Searches the subfolders in a folder.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-FolderId,
-FolderType,
-LastUpdatedTime,
-Name,
-SharingModel
+arn,
+created_time,
+folder_id,
+folder_type,
+last_updated_time,
+name,
+sharing_model
 FROM aws.quicksight.folders
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -345,13 +345,13 @@ Lists all folders in an account.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-FolderId,
-FolderType,
-LastUpdatedTime,
-Name,
-SharingModel
+arn,
+created_time,
+folder_id,
+folder_type,
+last_updated_time,
+name,
+sharing_model
 FROM aws.quicksight.folders
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -392,9 +392,9 @@ SELECT
 '{{ member_type }}',
 '{{ region }}'
 RETURNING
-FolderMember,
-RequestId,
-Status
+folder_member,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -425,10 +425,10 @@ SELECT
 '{{ folder_id }}',
 '{{ region }}'
 RETURNING
-Arn,
-FolderId,
-RequestId,
-Status
+arn,
+folder_id,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -497,10 +497,10 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND folder_id = '{{ folder_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Arn,
-FolderId,
-RequestId,
-Status;
+arn,
+folder_id,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

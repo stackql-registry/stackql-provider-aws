@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="addonArn" /></td>
+    <td><CopyableCode code="addon_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addonName" /></td>
+    <td><CopyableCode code="addon_name" /></td>
     <td><code>string</code></td>
     <td>The name of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="addonVersion" /></td>
+    <td><CopyableCode code="addon_version" /></td>
     <td><code>string</code></td>
     <td>The version of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of your cluster. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;&#91;A-Za-z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationValues" /></td>
+    <td><CopyableCode code="configuration_values" /></td>
     <td><code>string</code></td>
     <td>The configuration values that you provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp at object creation.</td>
 </tr>
@@ -86,17 +86,17 @@ The following fields are returned by `SELECT` queries:
     <td>An object that represents the health of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="marketplaceInformation" /></td>
+    <td><CopyableCode code="marketplace_information" /></td>
     <td><code>object</code></td>
     <td>Information about an Amazon EKS add-on from the Amazon Web Services Marketplace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp for the last modification to the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceConfig" /></td>
+    <td><CopyableCode code="namespace_config" /></td>
     <td><code>object</code></td>
     <td>The namespace configuration for the addon. This specifies the Kubernetes namespace where the addon is installed.</td>
 </tr>
@@ -106,7 +106,7 @@ The following fields are returned by `SELECT` queries:
     <td>The owner of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="podIdentityAssociations" /></td>
+    <td><CopyableCode code="pod_identity_associations" /></td>
     <td><code>array</code></td>
     <td>An array of EKS Pod Identity associations owned by the add-on. Each association maps a role to a service account in a namespace in the cluster. For more information, see Attach an IAM Role to an Amazon EKS add-on using EKS Pod Identity in the Amazon EKS User Guide.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>The publisher of the add-on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceAccountRoleArn" /></td>
+    <td><CopyableCode code="service_account_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that's bound to the Kubernetes ServiceAccount object that the add-on uses.</td>
 </tr>
@@ -268,20 +268,20 @@ Describes an Amazon EKS add-on.
 
 ```sql
 SELECT
-addonArn,
-addonName,
-addonVersion,
-clusterName,
-configurationValues,
-createdAt,
+addon_arn,
+addon_name,
+addon_version,
+cluster_name,
+configuration_values,
+created_at,
 health,
-marketplaceInformation,
-modifiedAt,
-namespaceConfig,
+marketplace_information,
+modified_at,
+namespace_config,
 owner,
-podIdentityAssociations,
+pod_identity_associations,
 publisher,
-serviceAccountRoleArn,
+service_account_role_arn,
 status,
 tags
 FROM aws.eks.addons

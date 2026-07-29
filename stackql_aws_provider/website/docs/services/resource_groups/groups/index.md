@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationTag" /></td>
+    <td><CopyableCode code="application_tag" /></td>
     <td><code>object</code></td>
     <td>A tag that defines the application group membership. This tag is only supported for application groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Criticality" /></td>
+    <td><CopyableCode code="criticality" /></td>
     <td><code>integer</code></td>
     <td>The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most critical, and a rank of 10 being least critical.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the resource group. (pattern: &lt;code&gt;&#91;\sa-zA-Z0-9_\.-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application group, which you can change at any time. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the resource group. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:resource-groups:&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)+-\d&#123;1&#125;:&#91;0-9&#93;&#123;12&#125;:group/(&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>A name, email address or other identifier for the person or group who is considered as the owner of this application group within your organization. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Criticality" /></td>
+    <td><CopyableCode code="criticality" /></td>
     <td><code>integer</code></td>
     <td>The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most critical, and a rank of 10 being least critical.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application group. (pattern: &lt;code&gt;&#91;\sa-zA-Z0-9_\.-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application group, which you can change at any time. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the resource group. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:resource-groups:&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)+-\d&#123;1&#125;:&#91;0-9&#93;&#123;12&#125;:group/(&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>A name, email address or other identifier for the person or group who is considered as the owner of this group within your organization. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
@@ -233,13 +233,13 @@ Returns information about a specified resource group. Minimum permissions To run
 
 ```sql
 SELECT
-ApplicationTag,
-Criticality,
-Description,
-DisplayName,
-GroupArn,
-Name,
-Owner
+application_tag,
+criticality,
+description,
+display_name,
+group_arn,
+name,
+owner
 FROM aws.resource_groups.groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,12 +251,12 @@ Returns a list of existing Resource Groups in your account. Minimum permissions 
 
 ```sql
 SELECT
-Criticality,
-Description,
-DisplayName,
-GroupArn,
-GroupName,
-Owner
+criticality,
+description,
+display_name,
+group_arn,
+group_name,
+owner
 FROM aws.resource_groups.groups
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -303,10 +303,10 @@ SELECT
 '{{ DisplayName }}',
 '{{ region }}'
 RETURNING
-Group,
-GroupConfiguration,
-ResourceQuery,
-Tags
+group,
+group_configuration,
+resource_query,
+tags
 ;
 ```
 </TabItem>
@@ -370,7 +370,7 @@ DisplayName = '{{ DisplayName }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Group;
+group;
 ```
 </TabItem>
 </Tabs>

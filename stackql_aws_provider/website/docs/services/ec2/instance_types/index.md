@@ -50,162 +50,162 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoRecoverySupported" /></td>
+    <td><CopyableCode code="auto_recovery_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Amazon CloudWatch action based recovery is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BareMetal" /></td>
+    <td><CopyableCode code="bare_metal" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance is a bare metal instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BurstablePerformanceSupported" /></td>
+    <td><CopyableCode code="burstable_performance_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance type is a burstable performance T instance type. For more information, see Burstable performance instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentGeneration" /></td>
+    <td><CopyableCode code="current_generation" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance type is current generation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedHostsSupported" /></td>
+    <td><CopyableCode code="dedicated_hosts_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether Dedicated Hosts are supported on the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EbsInfo" /></td>
+    <td><CopyableCode code="ebs_info" /></td>
     <td><code>string</code></td>
     <td>Describes the Amazon EBS settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FpgaInfo" /></td>
+    <td><CopyableCode code="fpga_info" /></td>
     <td><code>string</code></td>
     <td>Describes the FPGA accelerator settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FreeTierEligible" /></td>
+    <td><CopyableCode code="free_tier_eligible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance type is eligible for the free tier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GpuInfo" /></td>
+    <td><CopyableCode code="gpu_info" /></td>
     <td><code>string</code></td>
     <td>Describes the GPU accelerator settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HibernationSupported" /></td>
+    <td><CopyableCode code="hibernation_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether On-Demand hibernation is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hypervisor" /></td>
+    <td><CopyableCode code="hypervisor" /></td>
     <td><code>string</code></td>
     <td>The hypervisor for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InferenceAcceleratorInfo" /></td>
+    <td><CopyableCode code="inference_accelerator_info" /></td>
     <td><code>string</code></td>
     <td>Describes the Inference accelerator settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceStorageInfo" /></td>
+    <td><CopyableCode code="instance_storage_info" /></td>
     <td><code>string</code></td>
     <td>Describes the instance storage for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceStorageSupported" /></td>
+    <td><CopyableCode code="instance_storage_supported" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether instance storage is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type. For more information, see Instance types in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MediaAcceleratorInfo" /></td>
+    <td><CopyableCode code="media_accelerator_info" /></td>
     <td><code>string</code></td>
     <td>Describes the media accelerator settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemoryInfo" /></td>
+    <td><CopyableCode code="memory_info" /></td>
     <td><code>string</code></td>
     <td>Describes the memory for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInfo" /></td>
+    <td><CopyableCode code="network_info" /></td>
     <td><code>string</code></td>
     <td>Describes the network settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NeuronInfo" /></td>
+    <td><CopyableCode code="neuron_info" /></td>
     <td><code>string</code></td>
     <td>Describes the Neuron accelerator settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NitroEnclavesSupport" /></td>
+    <td><CopyableCode code="nitro_enclaves_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether Nitro Enclaves is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NitroTpmInfo" /></td>
+    <td><CopyableCode code="nitro_tpm_info" /></td>
     <td><code>string</code></td>
     <td>Describes the supported NitroTPM versions for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NitroTpmSupport" /></td>
+    <td><CopyableCode code="nitro_tpm_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether NitroTPM is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhcSupport" /></td>
+    <td><CopyableCode code="phc_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether a local Precision Time Protocol (PTP) hardware clock (PHC) is supported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlacementGroupInfo" /></td>
+    <td><CopyableCode code="placement_group_info" /></td>
     <td><code>string</code></td>
     <td>Describes the placement group settings for the instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessorInfo" /></td>
+    <td><CopyableCode code="processor_info" /></td>
     <td><code>string</code></td>
     <td>Describes the processor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RebootMigrationSupport" /></td>
+    <td><CopyableCode code="reboot_migration_support" /></td>
     <td><code>string</code></td>
     <td>Indicates whether reboot migration during a user-initiated reboot is supported for instances that have a scheduled system-reboot event. For more information, see Enable or disable reboot migration in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedBootModes" /></td>
+    <td><CopyableCode code="supported_boot_modes" /></td>
     <td><code>string</code></td>
     <td>The supported boot modes. For more information, see Boot modes in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedInRegion" /></td>
+    <td><CopyableCode code="supported_in_region" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance type is supported in the current Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedRootDeviceTypes" /></td>
+    <td><CopyableCode code="supported_root_device_types" /></td>
     <td><code>string</code></td>
     <td>The supported root device types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedUsageClasses" /></td>
+    <td><CopyableCode code="supported_usage_classes" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the instance type is offered for spot, On-Demand, or Capacity Blocks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedVirtualizationTypes" /></td>
+    <td><CopyableCode code="supported_virtualization_types" /></td>
     <td><code>string</code></td>
     <td>The supported virtualization types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VCpuInfo" /></td>
+    <td><CopyableCode code="v_cpu_info" /></td>
     <td><code>string</code></td>
     <td>Describes the vCPU configurations for the instance type.</td>
 </tr>
@@ -304,38 +304,38 @@ Describes the specified instance types. By default, all instance types for the c
 
 ```sql
 SELECT
-AutoRecoverySupported,
-BareMetal,
-BurstablePerformanceSupported,
-CurrentGeneration,
-DedicatedHostsSupported,
-EbsInfo,
-FpgaInfo,
-FreeTierEligible,
-GpuInfo,
-HibernationSupported,
-Hypervisor,
-InferenceAcceleratorInfo,
-InstanceStorageInfo,
-InstanceStorageSupported,
-InstanceType,
-MediaAcceleratorInfo,
-MemoryInfo,
-NetworkInfo,
-NeuronInfo,
-NitroEnclavesSupport,
-NitroTpmInfo,
-NitroTpmSupport,
-PhcSupport,
-PlacementGroupInfo,
-ProcessorInfo,
-RebootMigrationSupport,
-SupportedBootModes,
-SupportedInRegion,
-SupportedRootDeviceTypes,
-SupportedUsageClasses,
-SupportedVirtualizationTypes,
-VCpuInfo
+auto_recovery_supported,
+bare_metal,
+burstable_performance_supported,
+current_generation,
+dedicated_hosts_supported,
+ebs_info,
+fpga_info,
+free_tier_eligible,
+gpu_info,
+hibernation_supported,
+hypervisor,
+inference_accelerator_info,
+instance_storage_info,
+instance_storage_supported,
+instance_type,
+media_accelerator_info,
+memory_info,
+network_info,
+neuron_info,
+nitro_enclaves_support,
+nitro_tpm_info,
+nitro_tpm_support,
+phc_support,
+placement_group_info,
+processor_info,
+reboot_migration_support,
+supported_boot_modes,
+supported_in_region,
+supported_root_device_types,
+supported_usage_classes,
+supported_virtualization_types,
+v_cpu_info
 FROM aws.ec2.instance_types
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

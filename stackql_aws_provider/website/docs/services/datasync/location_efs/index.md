@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccessPointArn" /></td>
+    <td><CopyableCode code="access_point_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the access point that DataSync uses to access the Amazon EFS file system. For more information, see Accessing restricted file systems. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):elasticfilesystem:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:access-point/fsap-&#91;0-9a-f&#93;&#123;8,40&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the location was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ec2Config" /></td>
+    <td><CopyableCode code="ec_2_config" /></td>
     <td><code>object</code></td>
     <td>The subnet and security groups that DataSync uses to connect to one of your Amazon EFS file system's mount targets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSystemAccessRoleArn" /></td>
+    <td><CopyableCode code="file_system_access_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Identity and Access Management (IAM) role that allows DataSync to access your Amazon EFS file system. For more information, see Creating a DataSync IAM role for file system access. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):iam::&#91;0-9&#93;&#123;12&#125;:role/.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InTransitEncryption" /></td>
+    <td><CopyableCode code="in_transit_encryption" /></td>
     <td><code>string</code></td>
     <td>Indicates whether DataSync uses Transport Layer Security (TLS) encryption when transferring data to or from the Amazon EFS file system. (NONE, TLS1_2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationArn" /></td>
+    <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon EFS file system location. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:location/loc-&#91;0-9a-z&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocationUri" /></td>
+    <td><CopyableCode code="location_uri" /></td>
     <td><code>string</code></td>
     <td>The URL of the Amazon EFS file system location. (pattern: &lt;code&gt;^(efs|nfs|s3|smb|hdfs|fsx&#91;a-z0-9-&#93;+):​//&#91;a-zA-Z0-9.:/\-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -163,13 +163,13 @@ Provides details about how an DataSync transfer location for an Amazon EFS file 
 
 ```sql
 SELECT
-AccessPointArn,
-CreationTime,
-Ec2Config,
-FileSystemAccessRoleArn,
-InTransitEncryption,
-LocationArn,
-LocationUri
+access_point_arn,
+creation_time,
+ec_2_config,
+file_system_access_role_arn,
+in_transit_encryption,
+location_arn,
+location_uri
 FROM aws.datasync.location_efs
 WHERE region = '{{ region }}' -- required
 ;
@@ -212,7 +212,7 @@ SELECT
 '{{ InTransitEncryption }}',
 '{{ region }}'
 RETURNING
-LocationArn
+location_arn
 ;
 ```
 </TabItem>

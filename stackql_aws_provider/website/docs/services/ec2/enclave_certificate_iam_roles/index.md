@@ -125,9 +125,9 @@ AND RoleArn = '{{ RoleArn }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-CertificateS3BucketName,
-CertificateS3ObjectKey,
-EncryptionKmsKeyId;
+certificate_s3_bucket_name,
+certificate_s3_object_key,
+encryption_kms_key_id;
 ```
 </TabItem>
 </Tabs>

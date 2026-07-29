@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the CloudFront managed ACM certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateStatus" /></td>
+    <td><CopyableCode code="certificate_status" /></td>
     <td><code>string</code></td>
     <td>The status of the CloudFront managed ACM certificate. Your distribution tenant will be updated with the latest certificate status. When calling the UpdateDistributionTenant operation, use the latest value for the ETag.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationTokenDetails" /></td>
+    <td><CopyableCode code="validation_token_details" /></td>
     <td><code>string</code></td>
     <td>Contains details about the validation token of the specified CloudFront managed ACM certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidationTokenHost" /></td>
+    <td><CopyableCode code="validation_token_host" /></td>
     <td><code>string</code></td>
     <td>Contains details about the validation token host of the specified CloudFront managed ACM certificate. For cloudfront, CloudFront will automatically serve the validation token. Choose this mode if you can point the domain's DNS to CloudFront immediately. For self-hosted, you serve the validation token from your existing infrastructure. Choose this mode when you need to maintain current traffic flow while your certificate is being issued. You can place the validation token at the well-known path on your existing web server, wait for ACM to validate and issue the certificate, and then update your DNS to point to CloudFront. This setting only affects the initial certificate request. Once the DNS points to CloudFront, all future certificate renewals are automatically handled through CloudFront.</td>
 </tr>
@@ -139,10 +139,10 @@ Gets details about the CloudFront managed ACM certificate.
 
 ```sql
 SELECT
-CertificateArn,
-CertificateStatus,
-ValidationTokenDetails,
-ValidationTokenHost
+certificate_arn,
+certificate_status,
+validation_token_details,
+validation_token_host
 FROM aws.cloudfront.managed_certificate_details
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required

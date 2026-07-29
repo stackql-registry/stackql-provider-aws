@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssignmentId" /></td>
+    <td><CopyableCode code="assignment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the assignment associated with this bonus payment. (pattern: &lt;code&gt;^&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BonusAmount" /></td>
+    <td><CopyableCode code="bonus_amount" /></td>
     <td><code>string</code></td>
     <td>A string representing a currency amount. (pattern: &lt;code&gt;^&#91;0-9&#93;+(\.)?&#91;0-9&#93;&#123;0,2&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GrantTime" /></td>
+    <td><CopyableCode code="grant_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of when the bonus was granted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Reason" /></td>
+    <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
     <td>The Reason text given when the bonus was granted, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkerId" /></td>
+    <td><CopyableCode code="worker_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Worker to whom the bonus was paid. (pattern: &lt;code&gt;^A&#91;A-Z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ The ListBonusPayments operation retrieves the amounts of bonuses you have paid t
 
 ```sql
 SELECT
-AssignmentId,
-BonusAmount,
-GrantTime,
-Reason,
-WorkerId
+assignment_id,
+bonus_amount,
+grant_time,
+reason,
+worker_id
 FROM aws.mturk.bonus_payments
 WHERE region = '{{ region }}' -- required
 ;

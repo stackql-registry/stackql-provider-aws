@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttachedEbsStatus" /></td>
+    <td><CopyableCode code="attached_ebs_status" /></td>
     <td><code>string</code></td>
     <td>Reports impaired functionality that stems from an attached Amazon EBS volume that is unreachable and unable to complete I/O operations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Events" /></td>
+    <td><CopyableCode code="events" /></td>
     <td><code>string</code></td>
     <td>Any scheduled events associated with the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceState" /></td>
+    <td><CopyableCode code="instance_state" /></td>
     <td><code>string</code></td>
     <td>The intended state of the instance. DescribeInstanceStatus requires that an instance be in the running state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceStatus" /></td>
+    <td><CopyableCode code="instance_status" /></td>
     <td><code>string</code></td>
     <td>Reports impaired functionality that stems from issues internal to the instance, such as impaired reachability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The service provider that manages the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SystemStatus" /></td>
+    <td><CopyableCode code="system_status" /></td>
     <td><code>string</code></td>
     <td>Reports impaired functionality that stems from issues related to the systems that support an instance, such as hardware failures and network connectivity problems.</td>
 </tr>
@@ -236,16 +236,16 @@ Describes the status of the specified instances or all of your instances. By def
 
 ```sql
 SELECT
-AttachedEbsStatus,
-AvailabilityZone,
-AvailabilityZoneId,
-Events,
-InstanceId,
-InstanceState,
-InstanceStatus,
-Operator,
-OutpostArn,
-SystemStatus
+attached_ebs_status,
+availability_zone,
+availability_zone_id,
+events,
+instance_id,
+instance_state,
+instance_status,
+operator,
+outpost_arn,
+system_status
 FROM aws.ec2.instance_status
 WHERE region = '{{ region }}' -- required
 AND InstanceId = '{{ InstanceId }}'

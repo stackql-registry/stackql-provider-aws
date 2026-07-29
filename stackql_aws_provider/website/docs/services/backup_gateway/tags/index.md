@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource's tags that you listed. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):backup-gateway(:&#91;a-zA-Z-0-9&#93;+)&#123;3&#125;\/&#91;a-zA-Z-0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of the resource's tags.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the tags applied to the resource identified by its Amazon Resource Name (A
 
 ```sql
 SELECT
-ResourceArn,
-Tags
+resource_arn,
+tags
 FROM aws.backup_gateway.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,7 +171,7 @@ region = '{{ region }}' --required
 AND ResourceARN = '{{ ResourceARN }}' --required
 AND TagKeys = '{{ TagKeys }}' --required
 RETURNING
-ResourceARN;
+resource_arn;
 ```
 </TabItem>
 <TabItem value="tag_resource">
@@ -187,7 +187,7 @@ WHERE
 region = '{{ region }}' --required
 AND ResourceARN = '{{ ResourceARN }}' --required
 RETURNING
-ResourceARN;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

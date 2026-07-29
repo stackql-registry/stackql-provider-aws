@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the session mapping was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier (GUID) of the user or group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityName" /></td>
+    <td><CopyableCode code="identity_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user or group. For more information, see UserName and DisplayName in the IAM Identity Center Identity Store API Reference. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the identity mapped to the Amazon EMR Studio is a user or a group. (USER, GROUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the session mapping was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionPolicyArn" /></td>
+    <td><CopyableCode code="session_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the session policy associated with the user or group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioId" /></td>
+    <td><CopyableCode code="studio_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the session mapping was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>The globally unique identifier (GUID) of the user or group from the IAM Identity Center Identity Store. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityName" /></td>
+    <td><CopyableCode code="identity_name" /></td>
     <td><code>string</code></td>
     <td>The name of the user or group. For more information, see UserName and DisplayName in the IAM Identity Center Identity Store API Reference. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the identity mapped to the Amazon EMR Studio is a user or a group. (USER, GROUP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionPolicyArn" /></td>
+    <td><CopyableCode code="session_policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the session policy associated with the user or group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StudioId" /></td>
+    <td><CopyableCode code="studio_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon EMR Studio. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -223,13 +223,13 @@ Fetches mapping details for the specified Amazon EMR Studio and identity (user o
 
 ```sql
 SELECT
-CreationTime,
-IdentityId,
-IdentityName,
-IdentityType,
-LastModifiedTime,
-SessionPolicyArn,
-StudioId
+creation_time,
+identity_id,
+identity_name,
+identity_type,
+last_modified_time,
+session_policy_arn,
+studio_id
 FROM aws.emr.studio_session_mappings
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,12 +241,12 @@ Returns a list of all user or group session mappings for the Amazon EMR Studio s
 
 ```sql
 SELECT
-CreationTime,
-IdentityId,
-IdentityName,
-IdentityType,
-SessionPolicyArn,
-StudioId
+creation_time,
+identity_id,
+identity_name,
+identity_type,
+session_policy_arn,
+studio_id
 FROM aws.emr.studio_session_mappings
 WHERE region = '{{ region }}' -- required
 ;

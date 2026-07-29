@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aiAgentConfiguration" /></td>
+    <td><CopyableCode code="ai_agent_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the AI Agents (mapped by AI Agent Type to AI Agent version) that is set on the Amazon Q in Connect Assistant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q in Connect assistant. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q in Connect assistant. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityConfiguration" /></td>
+    <td><CopyableCode code="capability_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the Amazon Q in Connect assistant capability.</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationConfiguration" /></td>
+    <td><CopyableCode code="integration_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the Amazon Q in Connect assistant integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="orchestratorConfigurationList" /></td>
+    <td><CopyableCode code="orchestrator_configuration_list" /></td>
     <td><code>array</code></td>
     <td>The list of orchestrator configurations for the assistant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the customer managed key used for encryption.</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the assistant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aiAgentConfiguration" /></td>
+    <td><CopyableCode code="ai_agent_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the AI Agents (mapped by AI Agent Type to AI Agent version) that is set on the Amazon Q in Connect Assistant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q in Connect assistant. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q in Connect assistant. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityConfiguration" /></td>
+    <td><CopyableCode code="capability_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the Amazon Q in Connect assistant capability.</td>
 </tr>
@@ -155,17 +155,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the assistant. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationConfiguration" /></td>
+    <td><CopyableCode code="integration_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the Amazon Q in Connect assistant integration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="orchestratorConfigurationList" /></td>
+    <td><CopyableCode code="orchestrator_configuration_list" /></td>
     <td><code>array</code></td>
     <td>The list of orchestrator configurations for the assistant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration information for the customer managed key used for encryption.</td>
 </tr>
@@ -320,14 +320,14 @@ Retrieves information about an assistant.
 ```sql
 SELECT
 name,
-aiAgentConfiguration,
-assistantArn,
-assistantId,
-capabilityConfiguration,
+ai_agent_configuration,
+assistant_arn,
+assistant_id,
+capability_configuration,
 description,
-integrationConfiguration,
-orchestratorConfigurationList,
-serverSideEncryptionConfiguration,
+integration_configuration,
+orchestrator_configuration_list,
+server_side_encryption_configuration,
 status,
 tags,
 type_
@@ -344,14 +344,14 @@ Lists information about assistants.
 ```sql
 SELECT
 name,
-aiAgentConfiguration,
-assistantArn,
-assistantId,
-capabilityConfiguration,
+ai_agent_configuration,
+assistant_arn,
+assistant_id,
+capability_configuration,
 description,
-integrationConfiguration,
-orchestratorConfigurationList,
-serverSideEncryptionConfiguration,
+integration_configuration,
+orchestrator_configuration_list,
+server_side_encryption_configuration,
 status,
 tags,
 type_
@@ -456,11 +456,11 @@ AND targetId = '{{ targetId }}' --required
 AND targetType = '{{ targetType }}' --required
 AND contentFeedback = '{{ contentFeedback }}' --required
 RETURNING
-assistantArn,
-assistantId,
-contentFeedback,
-targetId,
-targetType;
+assistant_arn,
+assistant_id,
+content_feedback,
+target_id,
+target_type;
 ```
 </TabItem>
 </Tabs>

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the trial was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the trial as displayed. If DisplayName isn't specified, TrialName is displayed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExperimentName" /></td>
+    <td><CopyableCode code="experiment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the experiment the trial is part of. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the trial was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MetadataProperties" /></td>
+    <td><CopyableCode code="metadata_properties" /></td>
     <td><code>object</code></td>
     <td>Metadata properties of the tracking entity, trial, or trial component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>The Amazon Resource Name (ARN) of the source and, optionally, the job type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialArn" /></td>
+    <td><CopyableCode code="trial_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trial. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:experiment-trial/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialName" /></td>
+    <td><CopyableCode code="trial_name" /></td>
     <td><code>string</code></td>
     <td>The name of the trial. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
@@ -115,32 +115,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the trial was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the trial as displayed. If DisplayName isn't specified, TrialName is displayed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the trial was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialArn" /></td>
+    <td><CopyableCode code="trial_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the trial. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:experiment-trial/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialName" /></td>
+    <td><CopyableCode code="trial_name" /></td>
     <td><code>string</code></td>
     <td>The name of the trial. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,119&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrialSource" /></td>
+    <td><CopyableCode code="trial_source" /></td>
     <td><code>object</code></td>
     <td>The source of the trial.</td>
 </tr>
@@ -238,16 +238,16 @@ Provides a list of a trial's properties.
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-DisplayName,
-ExperimentName,
-LastModifiedBy,
-LastModifiedTime,
-MetadataProperties,
-Source,
-TrialArn,
-TrialName
+created_by,
+creation_time,
+display_name,
+experiment_name,
+last_modified_by,
+last_modified_time,
+metadata_properties,
+source,
+trial_arn,
+trial_name
 FROM aws.sagemaker.trials
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,12 +259,12 @@ Lists the trials in your account. Specify an experiment name to limit the list t
 
 ```sql
 SELECT
-CreationTime,
-DisplayName,
-LastModifiedTime,
-TrialArn,
-TrialName,
-TrialSource
+creation_time,
+display_name,
+last_modified_time,
+trial_arn,
+trial_name,
+trial_source
 FROM aws.sagemaker.trials
 WHERE region = '{{ region }}' -- required
 ;
@@ -303,7 +303,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TrialArn
+trial_arn
 ;
 ```
 </TabItem>
@@ -368,7 +368,7 @@ WHERE
 region = '{{ region }}' --required
 AND TrialName = '{{ TrialName }}' --required
 RETURNING
-TrialArn;
+trial_arn;
 ```
 </TabItem>
 </Tabs>

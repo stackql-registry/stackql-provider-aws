@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the WorkSpace Instance type. (pattern: &lt;code&gt;(&#91;a-z0-9-&#93;+)\.(&#91;a-z0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedInstanceConfigurations" /></td>
+    <td><CopyableCode code="supported_instance_configurations" /></td>
     <td><code>array</code></td>
     <td>Lists all valid combinations of tenancy, platform type, and billing mode supported for the specific WorkSpace Instance type. Contains the complete set of configuration options available for this instance type.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list of instance types supported by Amazon WorkSpaces Instances, ena
 
 ```sql
 SELECT
-InstanceType,
-SupportedInstanceConfigurations
+instance_type,
+supported_instance_configurations
 FROM aws.workspaces_instances.instance_types
 WHERE region = '{{ region }}' -- required
 ;

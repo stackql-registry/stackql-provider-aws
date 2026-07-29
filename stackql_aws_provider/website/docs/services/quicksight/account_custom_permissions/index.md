@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomPermissionsName" /></td>
+    <td><CopyableCode code="custom_permissions_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom permissions profile. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9+=,.@_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -148,9 +148,9 @@ Describes the custom permissions profile that is applied to an account.
 
 ```sql
 SELECT
-CustomPermissionsName,
-RequestId,
-Status
+custom_permissions_name,
+request_id,
+status
 FROM aws.quicksight.account_custom_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -181,8 +181,8 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 AND CustomPermissionsName = '{{ CustomPermissionsName }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

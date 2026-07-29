@@ -114,7 +114,7 @@ SELECT
 '{{ meeting_id }}',
 '{{ region }}'
 RETURNING
-TransactionId
+transaction_id
 ;
 ```
 </TabItem>

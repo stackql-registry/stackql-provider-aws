@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="invitationTimestamp" /></td>
+    <td><CopyableCode code="invitation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the invitation was sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="receiverAccountId" /></td>
+    <td><CopyableCode code="receiver_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that received the invitation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="receiverArn" /></td>
+    <td><CopyableCode code="receiver_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM user or role that received the invitation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareArn" /></td>
+    <td><CopyableCode code="resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource share</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareAssociations" /></td>
+    <td><CopyableCode code="resource_share_associations" /></td>
     <td><code>array</code></td>
     <td>To view the resources associated with a pending resource share invitation, use ListPendingInvitationResources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareInvitationArn" /></td>
+    <td><CopyableCode code="resource_share_invitation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the invitation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceShareName" /></td>
+    <td><CopyableCode code="resource_share_name" /></td>
     <td><code>string</code></td>
     <td>The name of the resource share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="senderAccountId" /></td>
+    <td><CopyableCode code="sender_account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that sent the invitation.</td>
 </tr>
@@ -159,14 +159,14 @@ Retrieves details about invitations that you have received for resource shares. 
 
 ```sql
 SELECT
-invitationTimestamp,
-receiverAccountId,
-receiverArn,
-resourceShareArn,
-resourceShareAssociations,
-resourceShareInvitationArn,
-resourceShareName,
-senderAccountId,
+invitation_timestamp,
+receiver_account_id,
+receiver_arn,
+resource_share_arn,
+resource_share_associations,
+resource_share_invitation_arn,
+resource_share_name,
+sender_account_id,
 status
 FROM aws.ram.resource_share_invitations
 WHERE region = '{{ region }}' -- required

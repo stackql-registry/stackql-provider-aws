@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeliveryChannels" /></td>
+    <td><CopyableCode code="delivery_channels" /></td>
     <td><code>array</code></td>
     <td>A list that contains the descriptions of the specified delivery channel.</td>
 </tr>
@@ -140,7 +140,7 @@ Returns details about the specified delivery channel. If a delivery channel is n
 
 ```sql
 SELECT
-DeliveryChannels
+delivery_channels
 FROM aws.config.delivery_channels
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BrandDefinition" /></td>
+    <td><CopyableCode code="brand_definition" /></td>
     <td><code>object</code></td>
     <td>The definition of the brand.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrandDetail" /></td>
+    <td><CopyableCode code="brand_detail" /></td>
     <td><code>object</code></td>
     <td>The details of the brand.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
@@ -80,37 +80,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the brand.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrandId" /></td>
+    <td><CopyableCode code="brand_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Quick brand. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrandName" /></td>
+    <td><CopyableCode code="brand_name" /></td>
     <td><code>string</code></td>
     <td>The name of the brand. (pattern: &lt;code&gt;&#91; -ÿ&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrandStatus" /></td>
+    <td><CopyableCode code="brand_status" /></td>
     <td><code>string</code></td>
     <td>The status of the brand. (CREATE_IN_PROGRESS, CREATE_SUCCEEDED, CREATE_FAILED, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the brand was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the brand. (pattern: &lt;code&gt;&#91; -ÿ&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the brand was last updated.</td>
 </tr>
@@ -233,9 +233,9 @@ Describes a brand.
 
 ```sql
 SELECT
-BrandDefinition,
-BrandDetail,
-RequestId
+brand_definition,
+brand_detail,
+request_id
 FROM aws.quicksight.brands
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND brand_id = '{{ brand_id }}' -- required
@@ -250,13 +250,13 @@ Lists all brands in an Quick Sight account.
 
 ```sql
 SELECT
-Arn,
-BrandId,
-BrandName,
-BrandStatus,
-CreatedTime,
-Description,
-LastUpdatedTime
+arn,
+brand_id,
+brand_name,
+brand_status,
+created_time,
+description,
+last_updated_time
 FROM aws.quicksight.brands
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -296,9 +296,9 @@ SELECT
 '{{ brand_id }}',
 '{{ region }}'
 RETURNING
-BrandDefinition,
-BrandDetail,
-RequestId
+brand_definition,
+brand_detail,
+request_id
 ;
 ```
 </TabItem>
@@ -412,9 +412,9 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND brand_id = '{{ brand_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-BrandDefinition,
-BrandDetail,
-RequestId;
+brand_definition,
+brand_detail,
+request_id;
 ```
 </TabItem>
 </Tabs>

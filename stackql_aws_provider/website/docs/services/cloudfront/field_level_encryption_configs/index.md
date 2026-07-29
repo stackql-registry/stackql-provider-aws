@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>A unique number that ensures the request can't be replayed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Comment" /></td>
+    <td><CopyableCode code="comment" /></td>
     <td><code>string</code></td>
     <td>An optional comment about the configuration. The comment cannot be longer than 128 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContentTypeProfileConfig" /></td>
+    <td><CopyableCode code="content_type_profile_config" /></td>
     <td><code>string</code></td>
     <td>A complex data type that specifies when to forward content if a content type isn't recognized and profiles to use as by default in a request if a query argument doesn't specify a profile to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryArgProfileConfig" /></td>
+    <td><CopyableCode code="query_arg_profile_config" /></td>
     <td><code>string</code></td>
     <td>A complex data type that specifies when to forward content if a profile isn't found and the profile that can be provided as a query argument in a request.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Items" /></td>
+    <td><CopyableCode code="items" /></td>
     <td><code>string</code></td>
     <td>An array of field-level encryption items.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxItems" /></td>
+    <td><CopyableCode code="max_items" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of elements you want in the response body.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If there are more elements to be listed, this element is present and contains the value that you can use for the Marker request parameter to continue listing your configurations where you left off.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Quantity" /></td>
+    <td><CopyableCode code="quantity" /></td>
     <td><code>integer</code></td>
     <td>The number of field-level encryption items.</td>
 </tr>
@@ -218,10 +218,10 @@ Get the field-level encryption configuration information.
 
 ```sql
 SELECT
-CallerReference,
-Comment,
-ContentTypeProfileConfig,
-QueryArgProfileConfig
+caller_reference,
+comment,
+content_type_profile_config,
+query_arg_profile_config
 FROM aws.cloudfront.field_level_encryption_configs
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -234,10 +234,10 @@ List all field-level encryption configurations that have been created in CloudFr
 
 ```sql
 SELECT
-Items,
-MaxItems,
-NextMarker,
-Quantity
+items,
+max_items,
+next_marker,
+quantity
 FROM aws.cloudfront.field_level_encryption_configs
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
@@ -270,9 +270,9 @@ SELECT
 '{{ FieldLevelEncryptionConfig }}' /* required */,
 '{{ region }}'
 RETURNING
-ETag,
-FieldLevelEncryption,
-Location
+e_tag,
+field_level_encryption,
+location
 ;
 ```
 </TabItem>
@@ -333,8 +333,8 @@ AND region = '{{ region }}' --required
 AND FieldLevelEncryptionConfig = '{{ FieldLevelEncryptionConfig }}' --required
 AND `If-Match` = '{{ If-Match}}'
 RETURNING
-ETag,
-FieldLevelEncryption;
+e_tag,
+field_level_encryption;
 ```
 </TabItem>
 </Tabs>

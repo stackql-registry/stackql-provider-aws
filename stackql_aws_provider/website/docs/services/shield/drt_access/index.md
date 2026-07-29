@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LogBucketList" /></td>
+    <td><CopyableCode code="log_bucket_list" /></td>
     <td><code>array</code></td>
     <td>The list of Amazon S3 buckets accessed by the SRT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role the SRT used to access your Amazon Web Services account. (pattern: &lt;code&gt;^arn:aws:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the current role and list of Amazon S3 log buckets used by the Shield Re
 
 ```sql
 SELECT
-LogBucketList,
-RoleArn
+log_bucket_list,
+role_arn
 FROM aws.shield.drt_access
 WHERE region = '{{ region }}' -- required
 ;

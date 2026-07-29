@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Information about errors that might have occurred during the API call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instancesSummary" /></td>
+    <td><CopyableCode code="instances_summary" /></td>
     <td><code>array</code></td>
     <td>Information about the instance.</td>
 </tr>
@@ -76,27 +76,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of a deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The instance ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>Information about which environment an instance belongs to in a blue/green deployment. BLUE: The instance is part of the original environment. GREEN: The instance is part of the replacement environment. (Blue, Green)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the instance information was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleEvents" /></td>
+    <td><CopyableCode code="lifecycle_events" /></td>
     <td><code>array</code></td>
     <td>A list of lifecycle events for this instance.</td>
 </tr>
@@ -205,8 +205,8 @@ This method works, but is deprecated. Use BatchGetDeploymentTargets instead. Ret
 
 ```sql
 SELECT
-errorMessage,
-instancesSummary
+error_message,
+instances_summary
 FROM aws.codedeploy.deployment_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -218,11 +218,11 @@ Gets information about an instance as part of a deployment.
 
 ```sql
 SELECT
-deploymentId,
-instanceId,
-instanceType,
-lastUpdatedAt,
-lifecycleEvents,
+deployment_id,
+instance_id,
+instance_type,
+last_updated_at,
+lifecycle_events,
 status
 FROM aws.codedeploy.deployment_instances
 WHERE region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="exclusionPreviews" /></td>
+    <td><CopyableCode code="exclusion_previews" /></td>
     <td><code>array</code></td>
     <td>Information about the exclusions included in the preview.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>When a response is generated, if there is more data to be listed, this parameters is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="previewStatus" /></td>
+    <td><CopyableCode code="preview_status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of the request to generate an exclusions preview. (WORK_IN_PROGRESS, COMPLETED)</td>
 </tr>
@@ -136,9 +136,9 @@ Retrieves the exclusions preview (a list of ExclusionPreview objects) specified 
 
 ```sql
 SELECT
-exclusionPreviews,
-nextToken,
-previewStatus
+exclusion_previews,
+next_token,
+preview_status
 FROM aws.inspector.exclusions_previews
 WHERE region = '{{ region }}' -- required
 ;
@@ -169,7 +169,7 @@ SELECT
 '{{ assessmentTemplateArn }}' /* required */,
 '{{ region }}'
 RETURNING
-previewToken
+preview_token
 ;
 ```
 </TabItem>

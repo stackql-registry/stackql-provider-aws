@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterType" /></td>
+    <td><CopyableCode code="cluster_type" /></td>
     <td><code>string</code></td>
     <td>Type of the backend cluster. (PROVISIONED, SERVERLESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the operation finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationArn" /></td>
+    <td><CopyableCode code="operation_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationState" /></td>
+    <td><CopyableCode code="operation_state" /></td>
     <td><code>string</code></td>
     <td>State of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>Type of the cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which operation was started.</td>
 </tr>
@@ -164,13 +164,13 @@ Returns a list of all the operations that have been performed on the specified M
 
 ```sql
 SELECT
-ClusterArn,
-ClusterType,
-EndTime,
-OperationArn,
-OperationState,
-OperationType,
-StartTime
+cluster_arn,
+cluster_type,
+end_time,
+operation_arn,
+operation_state,
+operation_type,
+start_time
 FROM aws.kafka.cluster_operations_v2s
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required

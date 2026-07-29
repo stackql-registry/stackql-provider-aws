@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="VpnConnectionDeviceSampleConfiguration" /></td>
+    <td><CopyableCode code="vpn_connection_device_sample_configuration" /></td>
     <td><code>string</code></td>
     <td>Sample configuration file for the specified customer gateway device.</td>
 </tr>
@@ -144,7 +144,7 @@ Download an Amazon Web Services-provided sample configuration file to be used wi
 
 ```sql
 SELECT
-VpnConnectionDeviceSampleConfiguration
+vpn_connection_device_sample_configuration
 FROM aws.ec2.vpn_connection_device_sample_configurations
 WHERE VpnConnectionId = '{{ VpnConnectionId }}' -- required
 AND VpnConnectionDeviceTypeId = '{{ VpnConnectionDeviceTypeId }}' -- required

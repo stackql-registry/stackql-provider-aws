@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the VPC link. The valid values are AVAILABLE, PENDING, DELETING, or FAILED. Deploying an API will wait if the status is PENDING and will fail if the status is DELETING. (AVAILABLE, PENDING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A description about the VPC link status.</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArns" /></td>
+    <td><CopyableCode code="target_arns" /></td>
     <td><code>array</code></td>
     <td>The ARN of the network load balancer of the VPC targeted by the VPC link. The network load balancer must be owned by the same Amazon Web Services account of the API owner.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the VPC link. The valid values are AVAILABLE, PENDING, DELETING, or FAILED. Deploying an API will wait if the status is PENDING and will fail if the status is DELETING. (AVAILABLE, PENDING, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A description about the VPC link status.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetArns" /></td>
+    <td><CopyableCode code="target_arns" /></td>
     <td><code>array</code></td>
     <td>The ARN of the network load balancer of the VPC targeted by the VPC link. The network load balancer must be owned by the same Amazon Web Services account of the API owner.</td>
 </tr>
@@ -247,9 +247,9 @@ id,
 name,
 description,
 status,
-statusMessage,
+status_message,
 tags,
-targetArns
+target_arns
 FROM aws.apigateway.vpc_links
 WHERE vpclink_id = '{{ vpclink_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,9 +266,9 @@ id,
 name,
 description,
 status,
-statusMessage,
+status_message,
 tags,
-targetArns
+target_arns
 FROM aws.apigateway.vpc_links
 WHERE region = '{{ region }}' -- required
 AND position = '{{ position }}'
@@ -311,9 +311,9 @@ id,
 name,
 description,
 status,
-statusMessage,
+status_message,
 tags,
-targetArns
+target_arns
 ;
 ```
 </TabItem>
@@ -364,9 +364,9 @@ id,
 name,
 description,
 status,
-statusMessage,
+status_message,
 tags,
-targetArns;
+target_arns;
 ```
 </TabItem>
 </Tabs>

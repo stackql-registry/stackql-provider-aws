@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IpamArn" /></td>
+    <td><CopyableCode code="ipam_arn" /></td>
     <td><code>string</code></td>
     <td>The IPAM ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamId" /></td>
+    <td><CopyableCode code="ipam_id" /></td>
     <td><code>string</code></td>
     <td>The IPAM ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamRegion" /></td>
+    <td><CopyableCode code="ipam_region" /></td>
     <td><code>string</code></td>
     <td>The IPAM home Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryAssociationArn" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_association_arn" /></td>
     <td><code>string</code></td>
     <td>The resource discovery association Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryAssociationId" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_association_id" /></td>
     <td><code>string</code></td>
     <td>The resource discovery association ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamResourceDiscoveryId" /></td>
+    <td><CopyableCode code="ipam_resource_discovery_id" /></td>
     <td><code>string</code></td>
     <td>The resource discovery ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Defines if the resource discovery is the default. When you create an IPAM, a default resource discovery is created for your IPAM and it's associated with your IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the resource discovery owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceDiscoveryStatus" /></td>
+    <td><CopyableCode code="resource_discovery_status" /></td>
     <td><code>string</code></td>
     <td>The resource discovery status. active - Connection or permissions required to read the results of the resource discovery are intact. not-found - Connection or permissions required to read the results of the resource discovery are broken. This may happen if the owner of the resource discovery stopped sharing it or deleted the resource discovery. Verify the resource discovery still exists and the Amazon Web Services RAM resource share is still intact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The lifecycle state of the association when you associate or disassociate a resource discovery. associate-in-progress - Resource discovery is being associated. associate-complete - Resource discovery association is complete. associate-failed - Resource discovery association has failed. disassociate-in-progress - Resource discovery is being disassociated. disassociate-complete - Resource discovery disassociation is complete. disassociate-failed - Resource discovery disassociation has failed. isolate-in-progress - Amazon Web Services account that created the resource discovery association has been removed and the resource discovery association is being isolated. isolate-complete - Resource discovery isolation is complete. restore-in-progress - Resource discovery is being restored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your Amazon Web Services costs.</td>
 </tr>
@@ -194,17 +194,17 @@ Describes resource discovery association with an Amazon VPC IPAM. An associated 
 
 ```sql
 SELECT
-IpamArn,
-IpamId,
-IpamRegion,
-IpamResourceDiscoveryAssociationArn,
-IpamResourceDiscoveryAssociationId,
-IpamResourceDiscoveryId,
-IsDefault,
-OwnerId,
-ResourceDiscoveryStatus,
-State,
-Tags
+ipam_arn,
+ipam_id,
+ipam_region,
+ipam_resource_discovery_association_arn,
+ipam_resource_discovery_association_id,
+ipam_resource_discovery_id,
+is_default,
+owner_id,
+resource_discovery_status,
+state,
+tags
 FROM aws.ec2.ipam_resource_discovery_associations
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

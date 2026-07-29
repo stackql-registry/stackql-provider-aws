@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmazonSideAsn" /></td>
+    <td><CopyableCode code="amazon_side_asn" /></td>
     <td><code>integer</code></td>
     <td>The Border Gateway Protocol (BGP) Autonomous System Number (ASN) for the appliance. Valid values are from 1 to 4294967295. We recommend using a private ASN in the 64512–65534 (16-bit ASN) or 4200000000–4294967294 (32-bit ASN) range.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersistRoutesDuration" /></td>
+    <td><CopyableCode code="persist_routes_duration" /></td>
     <td><code>integer</code></td>
     <td>The number of minutes a route server will wait after BGP is re-established to unpersist the routes in the FIB and RIB. Value must be in the range of 1-5. The default value is 1. Only valid if persistRoutesState is 'enabled'. If you set the duration to 1 minute, then when your network appliance re-establishes BGP with route server, it has 1 minute to relearn it's adjacent network and advertise those routes to route server before route server resumes normal functionality. In most cases, 1 minute is probably sufficient. If, however, you have concerns that your BGP network may not be capable of fully re-establishing and re-learning everything in 1 minute, you can increase the duration up to 5 minutes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PersistRoutesState" /></td>
+    <td><CopyableCode code="persist_routes_state" /></td>
     <td><code>string</code></td>
     <td>The current state of route persistence for the route server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteServerId" /></td>
+    <td><CopyableCode code="route_server_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the route server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsNotificationsEnabled" /></td>
+    <td><CopyableCode code="sns_notifications_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether SNS notifications are enabled for the route server. Enabling SNS notifications persists BGP status changes to an SNS topic provisioned by Amazon Web Services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the SNS topic where notifications are published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the route server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the route server.</td>
 </tr>
@@ -273,14 +273,14 @@ Describes one or more route servers. Amazon VPC Route Server simplifies routing 
 
 ```sql
 SELECT
-AmazonSideAsn,
-PersistRoutesDuration,
-PersistRoutesState,
-RouteServerId,
-SnsNotificationsEnabled,
-SnsTopicArn,
-State,
-Tags
+amazon_side_asn,
+persist_routes_duration,
+persist_routes_state,
+route_server_id,
+sns_notifications_enabled,
+sns_topic_arn,
+state,
+tags
 FROM aws.ec2.route_servers
 WHERE region = '{{ region }}' -- required
 AND RouteServerId = '{{ RouteServerId }}'
@@ -328,14 +328,14 @@ SELECT
 '{{ SnsNotificationsEnabled }}',
 '{{ TagSpecification }}'
 RETURNING
-AmazonSideAsn,
-PersistRoutesDuration,
-PersistRoutesState,
-RouteServerId,
-SnsNotificationsEnabled,
-SnsTopicArn,
-State,
-Tags
+amazon_side_asn,
+persist_routes_duration,
+persist_routes_state,
+route_server_id,
+sns_notifications_enabled,
+sns_topic_arn,
+state,
+tags
 ;
 ```
 </TabItem>
@@ -403,9 +403,9 @@ AND VpcId = '{{ VpcId }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-RouteServerId,
-State,
-VpcId;
+route_server_id,
+state,
+vpc_id;
 ```
 </TabItem>
 <TabItem value="modify_route_server">
@@ -424,14 +424,14 @@ AND PersistRoutesDuration = '{{ PersistRoutesDuration}}'
 AND SnsNotificationsEnabled = {{ SnsNotificationsEnabled}}
 AND DryRun = {{ DryRun}}
 RETURNING
-AmazonSideAsn,
-PersistRoutesDuration,
-PersistRoutesState,
-RouteServerId,
-SnsNotificationsEnabled,
-SnsTopicArn,
-State,
-Tags;
+amazon_side_asn,
+persist_routes_duration,
+persist_routes_state,
+route_server_id,
+sns_notifications_enabled,
+sns_topic_arn,
+state,
+tags;
 ```
 </TabItem>
 </Tabs>

@@ -50,97 +50,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the CreateAutoPredictor request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataConfig" /></td>
+    <td><CopyableCode code="data_config" /></td>
     <td><code>object</code></td>
     <td>The data configuration for your dataset group and any additional datasets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetImportJobArns" /></td>
+    <td><CopyableCode code="dataset_import_job_arns" /></td>
     <td><code>array</code></td>
     <td>An array of the ARNs of the dataset import jobs used to import training data for the predictor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionConfig" /></td>
+    <td><CopyableCode code="encryption_config" /></td>
     <td><code>object</code></td>
     <td>An Key Management Service (KMS) key and an Identity and Access Management (IAM) role that Amazon Forecast can assume to access the key. You can specify this optional object in the CreateDataset and CreatePredictor requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The estimated time remaining in minutes for the predictor training job to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExplainabilityInfo" /></td>
+    <td><CopyableCode code="explainability_info" /></td>
     <td><code>object</code></td>
     <td>Provides the status and ARN of the Predictor Explainability.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastDimensions" /></td>
+    <td><CopyableCode code="forecast_dimensions" /></td>
     <td><code>array</code></td>
     <td>An array of dimension (field) names that specify the attributes used to group your time series.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastFrequency" /></td>
+    <td><CopyableCode code="forecast_frequency" /></td>
     <td><code>string</code></td>
     <td>The frequency of predictions in a forecast. Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour), 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5 minutes), and 1min (1 minute). For example, "Y" indicates every year and "5min" indicates every five minutes. (pattern: &lt;code&gt;^Y|M|W|D|H|30min|15min|10min|5min|1min$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastHorizon" /></td>
+    <td><CopyableCode code="forecast_horizon" /></td>
     <td><code>integer</code></td>
     <td>The number of time-steps that the model predicts. The forecast horizon is also called the prediction length.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastTypes" /></td>
+    <td><CopyableCode code="forecast_types" /></td>
     <td><code>array</code></td>
     <td>The forecast types used during predictor training. Default value is &#91;"0.1","0.5","0.9"&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>In the event of an error, a message detailing the cause of the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MonitorInfo" /></td>
+    <td><CopyableCode code="monitor_info" /></td>
     <td><code>object</code></td>
     <td>A object with the Amazon Resource Name (ARN) and status of the monitor resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationMetric" /></td>
+    <td><CopyableCode code="optimization_metric" /></td>
     <td><code>string</code></td>
     <td>The accuracy metric used to optimize the predictor. (WAPE, RMSE, AverageWeightedQuantileLoss, MASE, MAPE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorArn" /></td>
+    <td><CopyableCode code="predictor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the predictor (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorName" /></td>
+    <td><CopyableCode code="predictor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the predictor. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferencePredictorSummary" /></td>
+    <td><CopyableCode code="reference_predictor_summary" /></td>
     <td><code>object</code></td>
     <td>The ARN and state of the reference predictor. This parameter is only valid for retrained or upgraded predictors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the predictor. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeAlignmentBoundary" /></td>
+    <td><CopyableCode code="time_alignment_boundary" /></td>
     <td><code>object</code></td>
     <td>The time boundary Forecast uses when aggregating data.</td>
 </tr>
@@ -216,25 +216,25 @@ Describes a predictor created using the CreateAutoPredictor operation.
 
 ```sql
 SELECT
-CreationTime,
-DataConfig,
-DatasetImportJobArns,
-EncryptionConfig,
-EstimatedTimeRemainingInMinutes,
-ExplainabilityInfo,
-ForecastDimensions,
-ForecastFrequency,
-ForecastHorizon,
-ForecastTypes,
-LastModificationTime,
-Message,
-MonitorInfo,
-OptimizationMetric,
-PredictorArn,
-PredictorName,
-ReferencePredictorSummary,
-Status,
-TimeAlignmentBoundary
+creation_time,
+data_config,
+dataset_import_job_arns,
+encryption_config,
+estimated_time_remaining_in_minutes,
+explainability_info,
+forecast_dimensions,
+forecast_frequency,
+forecast_horizon,
+forecast_types,
+last_modification_time,
+message,
+monitor_info,
+optimization_metric,
+predictor_arn,
+predictor_name,
+reference_predictor_summary,
+status,
+time_alignment_boundary
 FROM aws.forecast.auto_predictors
 WHERE region = '{{ region }}' -- required
 ;
@@ -289,7 +289,7 @@ SELECT
 '{{ TimeAlignmentBoundary }}',
 '{{ region }}'
 RETURNING
-PredictorArn
+predictor_arn
 ;
 ```
 </TabItem>

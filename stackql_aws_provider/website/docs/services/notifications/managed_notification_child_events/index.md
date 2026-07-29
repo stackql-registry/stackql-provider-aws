@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The content of the ManagedNotificationChildEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the ManagedNotificationChildEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedNotificationConfigurationArn" /></td>
+    <td><CopyableCode code="managed_notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration associated with the ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aggregateManagedNotificationEventArn" /></td>
+    <td><CopyableCode code="aggregate_managed_notification_event_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ManagedNotificationEvent that is associated with this ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childEvent" /></td>
+    <td><CopyableCode code="child_event" /></td>
     <td><code>object</code></td>
     <td>The content of the ManagedNotificationChildEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the ManagedNotificationChildEvent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedNotificationConfigurationArn" /></td>
+    <td><CopyableCode code="managed_notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>The Organizational Unit Id that an AWS account belongs to. (pattern: &lt;code&gt;(Root|r-&#91;0-9a-z&#93;&#123;4,32&#125;|ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relatedAccount" /></td>
+    <td><CopyableCode code="related_account" /></td>
     <td><code>string</code></td>
     <td>The account that related to the ManagedNotificationChildEvent. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -239,8 +239,8 @@ Returns the child event of a specific given ManagedNotificationEvent.
 SELECT
 arn,
 content,
-creationTime,
-managedNotificationConfigurationArn
+creation_time,
+managed_notification_configuration_arn
 FROM aws.notifications.managed_notification_child_events
 WHERE arn = '{{ arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -254,13 +254,13 @@ Returns a list of ManagedNotificationChildEvents for a specified aggregate Manag
 
 ```sql
 SELECT
-aggregateManagedNotificationEventArn,
+aggregate_managed_notification_event_arn,
 arn,
-childEvent,
-creationTime,
-managedNotificationConfigurationArn,
-organizationalUnitId,
-relatedAccount
+child_event,
+creation_time,
+managed_notification_configuration_arn,
+organizational_unit_id,
+related_account
 FROM aws.notifications.managed_notification_child_events
 WHERE aggregate_managed_notification_event_arn = '{{ aggregate_managed_notification_event_arn }}' -- required
 AND region = '{{ region }}' -- required

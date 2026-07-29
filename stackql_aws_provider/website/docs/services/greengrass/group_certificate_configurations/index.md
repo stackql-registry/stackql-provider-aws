@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityExpiryInMilliseconds" /></td>
+    <td><CopyableCode code="certificate_authority_expiry_in_milliseconds" /></td>
     <td><code>string</code></td>
     <td>The amount of time remaining before the certificate authority expires, in milliseconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateExpiryInMilliseconds" /></td>
+    <td><CopyableCode code="certificate_expiry_in_milliseconds" /></td>
     <td><code>string</code></td>
     <td>The amount of time remaining before the certificate expires, in milliseconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the group certificate configuration.</td>
 </tr>
@@ -141,9 +141,9 @@ Retrieves the current configuration for the CA used by the group.
 
 ```sql
 SELECT
-CertificateAuthorityExpiryInMilliseconds,
-CertificateExpiryInMilliseconds,
-GroupId
+certificate_authority_expiry_in_milliseconds,
+certificate_expiry_in_milliseconds,
+group_id
 FROM aws.greengrass.group_certificate_configurations
 WHERE group_id = '{{ group_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -173,9 +173,9 @@ WHERE
 group_id = '{{ group_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CertificateAuthorityExpiryInMilliseconds,
-CertificateExpiryInMilliseconds,
-GroupId;
+certificate_authority_expiry_in_milliseconds,
+certificate_expiry_in_milliseconds,
+group_id;
 ```
 </TabItem>
 </Tabs>

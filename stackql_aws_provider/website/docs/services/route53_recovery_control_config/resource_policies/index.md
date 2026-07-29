@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The resource policy. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -124,7 +124,7 @@ Get information about the resource policy for a cluster.
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.route53_recovery_control_config.resource_policies
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

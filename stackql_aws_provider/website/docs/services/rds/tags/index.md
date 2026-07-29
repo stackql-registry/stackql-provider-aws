@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and can't be prefixed with aws: or rds:. The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java regex: "^(&#91;\\p&#123;L&#125;\\p&#123;Z&#125;\\p&#123;N&#125;_.:/=+\\-@&#93;*)$").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and can't be prefixed with aws: or rds:. The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java regex: "^(&#91;\\p&#123;L&#125;\\p&#123;Z&#125;\\p&#123;N&#125;_.:/=+\\-@&#93;*)$").</td>
 </tr>
@@ -158,8 +158,8 @@ Lists all tags on an Amazon RDS resource. For an overview on tagging an Amazon R
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.rds.tags
 WHERE ResourceName = '{{ ResourceName }}' -- required
 AND region = '{{ region }}' -- required

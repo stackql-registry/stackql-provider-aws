@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigCred" /></td>
+    <td><CopyableCode code="config_cred" /></td>
     <td><code>string</code></td>
     <td>The certificate file containing the server.pem files of the HSMs. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigFile" /></td>
+    <td><CopyableCode code="config_file" /></td>
     <td><code>string</code></td>
     <td>The chrystoki.conf configuration file. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigType" /></td>
+    <td><CopyableCode code="config_type" /></td>
     <td><code>string</code></td>
     <td>The type of credentials. (pattern: &lt;code&gt;&#91;\w :+=./\\-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -129,9 +129,9 @@ This is documentation for AWS CloudHSM Classic. For more information, see AWS Cl
 
 ```sql
 SELECT
-ConfigCred,
-ConfigFile,
-ConfigType
+config_cred,
+config_file,
+config_type
 FROM aws.cloudhsm.configs
 WHERE region = '{{ region }}' -- required
 ;

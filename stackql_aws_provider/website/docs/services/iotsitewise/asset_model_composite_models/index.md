@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionDefinitions" /></td>
+    <td><CopyableCode code="action_definitions" /></td>
     <td><code>array</code></td>
     <td>The available actions for a composite model on this asset model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelDescription" /></td>
+    <td><CopyableCode code="asset_model_composite_model_description" /></td>
     <td><code>string</code></td>
     <td>The description for the composite model. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelExternalId" /></td>
+    <td><CopyableCode code="asset_model_composite_model_external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of a composite model on this asset model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelId" /></td>
+    <td><CopyableCode code="asset_model_composite_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a composite model on this asset model. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelName" /></td>
+    <td><CopyableCode code="asset_model_composite_model_name" /></td>
     <td><code>string</code></td>
     <td>The unique, friendly name for the composite model. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelPath" /></td>
+    <td><CopyableCode code="asset_model_composite_model_path" /></td>
     <td><code>array</code></td>
     <td>The path to the composite model listing the parent composite models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelProperties" /></td>
+    <td><CopyableCode code="asset_model_composite_model_properties" /></td>
     <td><code>array</code></td>
     <td>The property definitions of the composite model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelSummaries" /></td>
+    <td><CopyableCode code="asset_model_composite_model_summaries" /></td>
     <td><code>array</code></td>
     <td>The list of composite model summaries for the composite model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelCompositeModelType" /></td>
+    <td><CopyableCode code="asset_model_composite_model_type" /></td>
     <td><code>string</code></td>
     <td>The composite model type. Valid values are AWS/ALARM, CUSTOM, or AWS/L4E_ANOMALY. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetModelId" /></td>
+    <td><CopyableCode code="asset_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset model, in UUID format. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="compositionDetails" /></td>
+    <td><CopyableCode code="composition_details" /></td>
     <td><code>object</code></td>
     <td>Metadata for the composition relationship established by using composedAssetModelId in CreateAssetModelCompositeModel . For instance, an array detailing the path of the composition relationship for this composite model.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the composite model that this summary describes.. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalId" /></td>
+    <td><CopyableCode code="external_id" /></td>
     <td><code>string</code></td>
     <td>The external ID of a composite model on this asset model. For more information, see Using external IDs in the IoT SiteWise User Guide. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -288,17 +288,17 @@ Retrieves information about an asset model composite model (also known as an ass
 
 ```sql
 SELECT
-actionDefinitions,
-assetModelCompositeModelDescription,
-assetModelCompositeModelExternalId,
-assetModelCompositeModelId,
-assetModelCompositeModelName,
-assetModelCompositeModelPath,
-assetModelCompositeModelProperties,
-assetModelCompositeModelSummaries,
-assetModelCompositeModelType,
-assetModelId,
-compositionDetails
+action_definitions,
+asset_model_composite_model_description,
+asset_model_composite_model_external_id,
+asset_model_composite_model_id,
+asset_model_composite_model_name,
+asset_model_composite_model_path,
+asset_model_composite_model_properties,
+asset_model_composite_model_summaries,
+asset_model_composite_model_type,
+asset_model_id,
+composition_details
 FROM aws.iotsitewise.asset_model_composite_models
 WHERE asset_model_id = '{{ asset_model_id }}' -- required
 AND asset_model_composite_model_id = '{{ asset_model_composite_model_id }}' -- required
@@ -316,7 +316,7 @@ SELECT
 id,
 name,
 description,
-externalId,
+external_id,
 path,
 type_
 FROM aws.iotsitewise.asset_model_composite_models
@@ -377,9 +377,9 @@ SELECT
 '{{ If-None-Match }}',
 '{{ Match-For-Version-Type }}'
 RETURNING
-assetModelCompositeModelId,
-assetModelCompositeModelPath,
-assetModelStatus
+asset_model_composite_model_id,
+asset_model_composite_model_path,
+asset_model_status
 ;
 ```
 </TabItem>
@@ -498,8 +498,8 @@ AND `If-Match` = '{{ If-Match}}'
 AND `If-None-Match` = '{{ If-None-Match}}'
 AND `Match-For-Version-Type` = '{{ Match-For-Version-Type}}'
 RETURNING
-assetModelCompositeModelPath,
-assetModelStatus;
+asset_model_composite_model_path,
+asset_model_status;
 ```
 </TabItem>
 </Tabs>

@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsoCountryCode" /></td>
+    <td><CopyableCode code="iso_country_code" /></td>
     <td><code>string</code></td>
     <td>The two-character code, in ISO 3166-1 alpha-2 format, for the country or region. (pattern: &lt;code&gt;&#91;A-Z&#93;&#123;2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PhoneNumber" /></td>
+    <td><CopyableCode code="phone_number" /></td>
     <td><code>string</code></td>
     <td>The phone number associated with the registration in E.164 format. (pattern: &lt;code&gt;\+?&#91;1-9&#93;&#91;0-9&#93;&#123;1,18&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the origination identity that is associated with the registration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the origination identity. For example this could be a PhoneNumberId or SenderId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The origination identity type.</td>
 </tr>
@@ -146,11 +146,11 @@ Retrieve all of the origination identities that are associated with a registrati
 
 ```sql
 SELECT
-IsoCountryCode,
-PhoneNumber,
-ResourceArn,
-ResourceId,
-ResourceType
+iso_country_code,
+phone_number,
+resource_arn,
+resource_id,
+resource_type
 FROM aws.pinpoint_sms_voice_v2.registration_associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -183,14 +183,14 @@ SELECT
 '{{ ResourceId }}' /* required */,
 '{{ region }}'
 RETURNING
-IsoCountryCode,
-PhoneNumber,
-RegistrationArn,
-RegistrationId,
-RegistrationType,
-ResourceArn,
-ResourceId,
-ResourceType
+iso_country_code,
+phone_number,
+registration_arn,
+registration_id,
+registration_type,
+resource_arn,
+resource_id,
+resource_type
 ;
 ```
 </TabItem>

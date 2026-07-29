@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationComponent" /></td>
+    <td><CopyableCode code="application_component" /></td>
     <td><code>object</code></td>
     <td>Describes a standalone resource or similarly grouped resources that the application is made up of.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceList" /></td>
+    <td><CopyableCode code="resource_list" /></td>
     <td><code>array</code></td>
     <td>The list of resource ARNs that belong to the component.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationComponentList" /></td>
+    <td><CopyableCode code="application_component_list" /></td>
     <td><code>array</code></td>
     <td>The list of application components.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to request the next page of results. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -178,8 +178,8 @@ Describes a component and lists the resources that are grouped together in a com
 
 ```sql
 SELECT
-ApplicationComponent,
-ResourceList
+application_component,
+resource_list
 FROM aws.application_insights.components
 WHERE region = '{{ region }}' -- required
 ;
@@ -191,8 +191,8 @@ Lists the auto-grouped, standalone, and custom components of the application.
 
 ```sql
 SELECT
-ApplicationComponentList,
-NextToken
+application_component_list,
+next_token
 FROM aws.application_insights.components
 WHERE region = '{{ region }}' -- required
 ;

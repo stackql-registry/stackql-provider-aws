@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The unique system-generated ID of the job. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID associated with the job. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ Returns information about a job. Used for custom actions only. When this API is 
 ```sql
 SELECT
 id,
-accountId,
+account_id,
 data
 FROM aws.codepipeline.job_details
 WHERE region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID of the member account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="notificationConfigurationArn" /></td>
+    <td><CopyableCode code="notification_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the notification configuration associated with the member account. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationalUnitId" /></td>
+    <td><CopyableCode code="organizational_unit_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the organizational unit containing the member account. (pattern: &lt;code&gt;(Root|r-&#91;0-9a-z&#93;&#123;4,32&#125;|ou-&#91;0-9a-z&#93;&#123;4,32&#125;-&#91;a-z0-9&#93;&#123;8,32&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the member account. (ACTIVE, PENDING, INACTIVE, CREATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current status of the member account.</td>
 </tr>
@@ -169,11 +169,11 @@ Returns a list of member accounts associated with a notification configuration.
 
 ```sql
 SELECT
-accountId,
-notificationConfigurationArn,
-organizationalUnitId,
+account_id,
+notification_configuration_arn,
+organizational_unit_id,
 status,
-statusReason
+status_reason
 FROM aws.notifications.member_accounts
 WHERE notificationConfigurationArn = '{{ notificationConfigurationArn }}' -- required
 AND region = '{{ region }}' -- required

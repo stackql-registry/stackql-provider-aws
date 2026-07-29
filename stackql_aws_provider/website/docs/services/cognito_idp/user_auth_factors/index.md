@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfiguredUserAuthFactors" /></td>
+    <td><CopyableCode code="configured_user_auth_factors" /></td>
     <td><code>array</code></td>
     <td>The authentication types that are available to the user with USER_AUTH sign-in, for example &#91;"PASSWORD", "WEB_AUTHN"&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMfaSetting" /></td>
+    <td><CopyableCode code="preferred_mfa_setting" /></td>
     <td><code>string</code></td>
     <td>The challenge method that Amazon Cognito returns to the user in response to sign-in requests. Users can prefer SMS message, email message, or TOTP MFA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserMFASettingList" /></td>
+    <td><CopyableCode code="user_mfa_setting_list" /></td>
     <td><code>array</code></td>
     <td>The MFA options that are activated for the user. The possible values in this list are SMS_MFA, EMAIL_OTP, and SOFTWARE_TOKEN_MFA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Username" /></td>
+    <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
     <td>The name of the user who is eligible for the authentication factors in the response. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Lists the authentication options for the currently signed-in user. Returns the f
 
 ```sql
 SELECT
-ConfiguredUserAuthFactors,
-PreferredMfaSetting,
-UserMFASettingList,
-Username
+configured_user_auth_factors,
+preferred_mfa_setting,
+user_mfa_setting_list,
+username
 FROM aws.cognito_idp.user_auth_factors
 WHERE region = '{{ region }}' -- required
 ;

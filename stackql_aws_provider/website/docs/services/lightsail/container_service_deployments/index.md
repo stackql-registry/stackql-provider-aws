@@ -161,7 +161,7 @@ SELECT
 '{{ publicEndpoint }}',
 '{{ region }}'
 RETURNING
-containerService
+container_service
 ;
 ```
 </TabItem>

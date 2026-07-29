@@ -174,7 +174,7 @@ id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 AND state = '{{ state }}' --required
 RETURNING
-safetyLever;
+safety_lever;
 ```
 </TabItem>
 </Tabs>

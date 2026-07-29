@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The LAGs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -160,7 +160,7 @@ Describes all your link aggregation groups (LAG) or the specified LAG.
 ```sql
 SELECT
 lags,
-nextToken
+next_token
 FROM aws.directconnect.lags
 WHERE region = '{{ region }}' -- required
 ;
@@ -207,25 +207,25 @@ SELECT
 {{ requestMACSec }},
 '{{ region }}'
 RETURNING
-allowsHostedConnections,
-awsDevice,
-awsDeviceV2,
-awsLogicalDeviceId,
+allows_hosted_connections,
+aws_device,
+aws_device_v2,
+aws_logical_device_id,
 connections,
-connectionsBandwidth,
-encryptionMode,
-hasLogicalRedundancy,
-jumboFrameCapable,
-lagId,
-lagName,
-lagState,
+connections_bandwidth,
+encryption_mode,
+has_logical_redundancy,
+jumbo_frame_capable,
+lag_id,
+lag_name,
+lag_state,
 location,
-macSecCapable,
-macSecKeys,
-minimumLinks,
-numberOfConnections,
-ownerAccount,
-providerName,
+mac_sec_capable,
+mac_sec_keys,
+minimum_links,
+number_of_connections,
+owner_account,
+provider_name,
 region,
 tags
 ;
@@ -308,26 +308,26 @@ region = '{{ region }}' --required
 AND connectionId = '{{ connectionId }}' --required
 AND lagId = '{{ lagId }}' --required
 RETURNING
-awsDevice,
-awsDeviceV2,
-awsLogicalDeviceId,
+aws_device,
+aws_device_v2,
+aws_logical_device_id,
 bandwidth,
-connectionId,
-connectionName,
-connectionState,
-encryptionMode,
-hasLogicalRedundancy,
-jumboFrameCapable,
-lagId,
-loaIssueTime,
+connection_id,
+connection_name,
+connection_state,
+encryption_mode,
+has_logical_redundancy,
+jumbo_frame_capable,
+lag_id,
+loa_issue_time,
 location,
-macSecCapable,
-macSecKeys,
-ownerAccount,
-partnerInterconnectMacSecCapable,
-partnerName,
-portEncryptionStatus,
-providerName,
+mac_sec_capable,
+mac_sec_keys,
+owner_account,
+partner_interconnect_mac_sec_capable,
+partner_name,
+port_encryption_status,
+provider_name,
 region,
 tags,
 vlan;
@@ -348,25 +348,25 @@ WHERE
 region = '{{ region }}' --required
 AND lagId = '{{ lagId }}' --required
 RETURNING
-allowsHostedConnections,
-awsDevice,
-awsDeviceV2,
-awsLogicalDeviceId,
+allows_hosted_connections,
+aws_device,
+aws_device_v2,
+aws_logical_device_id,
 connections,
-connectionsBandwidth,
-encryptionMode,
-hasLogicalRedundancy,
-jumboFrameCapable,
-lagId,
-lagName,
-lagState,
+connections_bandwidth,
+encryption_mode,
+has_logical_redundancy,
+jumbo_frame_capable,
+lag_id,
+lag_name,
+lag_state,
 location,
-macSecCapable,
-macSecKeys,
-minimumLinks,
-numberOfConnections,
-ownerAccount,
-providerName,
+mac_sec_capable,
+mac_sec_keys,
+minimum_links,
+number_of_connections,
+owner_account,
+provider_name,
 region,
 tags;
 ```

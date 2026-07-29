@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time the pipeline was created, in timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionMode" /></td>
+    <td><CopyableCode code="execution_mode" /></td>
     <td><code>string</code></td>
     <td>The method that the pipeline will use to handle multiple executions. The default mode is SUPERSEDED. (QUEUED, SUPERSEDED, PARALLEL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineType" /></td>
+    <td><CopyableCode code="pipeline_type" /></td>
     <td><code>string</code></td>
     <td>CodePipeline provides the following pipeline types, which differ in characteristics and price, so that you can tailor your pipeline features and cost to the needs of your applications. V1 type pipelines have a JSON structure that contains standard pipeline, stage, and action-level parameters. V2 type pipelines have the same structure as a V1 type, along with additional parameters for release safety and trigger configuration. Including V2 parameters, such as triggers on Git tags, in the pipeline JSON when creating or updating a pipeline will result in the pipeline having the V2 type of pipeline and the associated costs. For information about pricing for CodePipeline, see Pricing. For information about which type of pipeline to choose, see What type of pipeline is right for me?. (V1, V2)</td>
 </tr>
@@ -262,8 +262,8 @@ Gets a summary of all of the pipelines associated with your account.
 SELECT
 name,
 created,
-executionMode,
-pipelineType,
+execution_mode,
+pipeline_type,
 updated,
 version
 FROM aws.codepipeline.pipelines
@@ -439,7 +439,7 @@ AND actionName = '{{ actionName }}' --required
 AND result = '{{ result }}' --required
 AND token = '{{ token }}' --required
 RETURNING
-approvedAt;
+approved_at;
 ```
 </TabItem>
 <TabItem value="put_action_revision">
@@ -460,8 +460,8 @@ AND stageName = '{{ stageName }}' --required
 AND actionName = '{{ actionName }}' --required
 AND actionRevision = '{{ actionRevision }}' --required
 RETURNING
-newRevision,
-pipelineExecutionId;
+new_revision,
+pipeline_execution_id;
 ```
 </TabItem>
 </Tabs>

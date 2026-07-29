@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="logEvents" /></td>
+    <td><CopyableCode code="log_events" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describe the log events of a container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetContainerLog request and specify the next page token using the pageToken parameter.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the log events of a container of your Amazon Lightsail container service
 
 ```sql
 SELECT
-logEvents,
-nextPageToken
+log_events,
+next_page_token
 FROM aws.lightsail.container_logs
 WHERE region = '{{ region }}' -- required
 ;

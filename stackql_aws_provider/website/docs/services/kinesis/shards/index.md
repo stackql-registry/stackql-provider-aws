@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdjacentParentShardId" /></td>
+    <td><CopyableCode code="adjacent_parent_shard_id" /></td>
     <td><code>string</code></td>
     <td>The shard ID of the shard adjacent to the shard's parent. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HashKeyRange" /></td>
+    <td><CopyableCode code="hash_key_range" /></td>
     <td><code>object</code></td>
     <td>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentShardId" /></td>
+    <td><CopyableCode code="parent_shard_id" /></td>
     <td><code>string</code></td>
     <td>The shard ID of the shard's parent. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SequenceNumberRange" /></td>
+    <td><CopyableCode code="sequence_number_range" /></td>
     <td><code>object</code></td>
     <td>The range of possible sequence numbers for the shard.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShardId" /></td>
+    <td><CopyableCode code="shard_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the shard within the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -160,11 +160,11 @@ Lists the shards in a stream and provides information about each shard. This ope
 
 ```sql
 SELECT
-AdjacentParentShardId,
-HashKeyRange,
-ParentShardId,
-SequenceNumberRange,
-ShardId
+adjacent_parent_shard_id,
+hash_key_range,
+parent_shard_id,
+sequence_number_range,
+shard_id
 FROM aws.kinesis.shards
 WHERE region = '{{ region }}' -- required
 ;
@@ -198,10 +198,10 @@ region = '{{ region }}' --required
 AND TargetShardCount = '{{ TargetShardCount }}' --required
 AND ScalingType = '{{ ScalingType }}' --required
 RETURNING
-CurrentShardCount,
-StreamARN,
-StreamName,
-TargetShardCount;
+current_shard_count,
+stream_arn,
+stream_name,
+target_shard_count;
 ```
 </TabItem>
 </Tabs>

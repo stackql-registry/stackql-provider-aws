@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="componentName" /></td>
+    <td><CopyableCode code="component_name" /></td>
     <td><code>string</code></td>
     <td>The name of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentVersion" /></td>
+    <td><CopyableCode code="component_version" /></td>
     <td><code>string</code></td>
     <td>The version of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isRoot" /></td>
+    <td><CopyableCode code="is_root" /></td>
     <td><code>boolean</code></td>
     <td>Whether or not the component is a root component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastInstallationSource" /></td>
+    <td><CopyableCode code="last_installation_source" /></td>
     <td><code>string</code></td>
     <td>The most recent deployment source that brought the component to the Greengrass core device. For a thing group deployment or thing deployment, the source will be the ID of the last deployment that contained the component. For local deployments it will be LOCAL. Any deployment will attempt to reinstall currently broken components on the device, which will update the last installation source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastReportedTimestamp" /></td>
+    <td><CopyableCode code="last_reported_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the Greengrass core device sent a message containing a component's state to the Amazon Web Services Cloud. A component does not need to see a state change for this field to update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStatusChangeTimestamp" /></td>
+    <td><CopyableCode code="last_status_change_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The status of how current the data is. This response is based off of component state changes. The status reflects component disruptions and deployments. If a component only sees a configuration update during a deployment, it might not undergo a state change and this status would not be updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleState" /></td>
+    <td><CopyableCode code="lifecycle_state" /></td>
     <td><code>string</code></td>
     <td>The lifecycle state of the component. (NEW, INSTALLED, STARTING, RUNNING, STOPPING, ERRORED, BROKEN, FINISHED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStateDetails" /></td>
+    <td><CopyableCode code="lifecycle_state_details" /></td>
     <td><code>string</code></td>
     <td>A detailed response about the lifecycle state of the component that explains the reason why a component has an error or is broken.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleStatusCodes" /></td>
+    <td><CopyableCode code="lifecycle_status_codes" /></td>
     <td><code>array</code></td>
     <td>The status codes that indicate the reason for failure whenever the lifecycleState has an error or is in a broken state. Greengrass nucleus v2.8.0 or later is required to get an accurate lifecycleStatusCodes response. This response can be inaccurate in earlier Greengrass nucleus versions.</td>
 </tr>
@@ -179,15 +179,15 @@ Retrieves a paginated list of the components that a Greengrass core device runs.
 
 ```sql
 SELECT
-componentName,
-componentVersion,
-isRoot,
-lastInstallationSource,
-lastReportedTimestamp,
-lastStatusChangeTimestamp,
-lifecycleState,
-lifecycleStateDetails,
-lifecycleStatusCodes
+component_name,
+component_version,
+is_root,
+last_installation_source,
+last_reported_timestamp,
+last_status_change_timestamp,
+lifecycle_state,
+lifecycle_state_details,
+lifecycle_status_codes
 FROM aws.greengrassv2.installed_components
 WHERE core_device_thing_name = '{{ core_device_thing_name }}' -- required
 AND region = '{{ region }}' -- required

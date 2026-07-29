@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="unusedPermissionsRecommendedStep" /></td>
+    <td><CopyableCode code="unused_permissions_recommended_step" /></td>
     <td><code>object</code></td>
     <td>A recommended step for an unused permissions finding.</td>
 </tr>
@@ -139,7 +139,7 @@ Retrieves information about a finding recommendation for the specified analyzer.
 
 ```sql
 SELECT
-unusedPermissionsRecommendedStep
+unused_permissions_recommended_step
 FROM aws.accessanalyzer.finding_recommendations
 WHERE analyzerArn = '{{ analyzerArn }}' -- required
 AND id = '{{ id }}' -- required

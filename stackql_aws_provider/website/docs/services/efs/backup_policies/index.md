@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Describes the status of the file system's backup policy. ENABLED – EFS is automatically backing up the file system. ENABLING – EFS is turning on automatic backups for the file system. DISABLED – Automatic back ups are turned off for the file system. DISABLING – EFS is turning off automatic backups for the file system. (ENABLED, ENABLING, DISABLED, DISABLING)</td>
 </tr>
@@ -131,7 +131,7 @@ Returns the backup policy for the specified EFS file system.
 
 ```sql
 SELECT
-Status
+status
 FROM aws.efs.backup_policies
 WHERE file_system_id = '{{ file_system_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -162,7 +162,7 @@ file_system_id = '{{ file_system_id }}' --required
 AND region = '{{ region }}' --required
 AND BackupPolicy = '{{ BackupPolicy }}' --required
 RETURNING
-BackupPolicy;
+backup_policy;
 ```
 </TabItem>
 </Tabs>

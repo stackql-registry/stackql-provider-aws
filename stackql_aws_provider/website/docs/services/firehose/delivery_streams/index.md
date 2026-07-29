@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTimestamp" /></td>
+    <td><CopyableCode code="create_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Firehose stream was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryStreamARN" /></td>
+    <td><CopyableCode code="delivery_stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Firehose stream. For more information, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces. (pattern: &lt;code&gt;arn:.*:firehose:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:deliverystream/&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryStreamEncryptionConfiguration" /></td>
+    <td><CopyableCode code="delivery_stream_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>Indicates the server-side encryption (SSE) status for the Firehose stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryStreamName" /></td>
+    <td><CopyableCode code="delivery_stream_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Firehose stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryStreamStatus" /></td>
+    <td><CopyableCode code="delivery_stream_status" /></td>
     <td><code>string</code></td>
     <td>The status of the Firehose stream. If the status of a Firehose stream is CREATING_FAILED, this status doesn't change, and you can't invoke CreateDeliveryStream again on it. However, you can invoke the DeleteDeliveryStream operation to delete it. (CREATING, CREATING_FAILED, DELETING, DELETING_FAILED, ACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryStreamType" /></td>
+    <td><CopyableCode code="delivery_stream_type" /></td>
     <td><code>string</code></td>
     <td>The Firehose stream type. This can be one of the following values: DirectPut: Provider applications access the Firehose stream directly. KinesisStreamAsSource: The Firehose stream uses a Kinesis data stream as a source. (DirectPut, KinesisStreamAsSource, MSKAsSource, DatabaseAsSource)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destinations" /></td>
+    <td><CopyableCode code="destinations" /></td>
     <td><code>array</code></td>
     <td>The destinations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureDescription" /></td>
+    <td><CopyableCode code="failure_description" /></td>
     <td><code>object</code></td>
     <td>Provides details in case one of the following operations fails due to an error related to KMS: CreateDeliveryStream, DeleteDeliveryStream, StartDeliveryStreamEncryption, StopDeliveryStreamEncryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasMoreDestinations" /></td>
+    <td><CopyableCode code="has_more_destinations" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether there are more destinations available to list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Firehose stream was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>object</code></td>
     <td>If the DeliveryStreamType parameter is KinesisStreamAsSource, a SourceDescription object describing the source Kinesis data stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VersionId" /></td>
+    <td><CopyableCode code="version_id" /></td>
     <td><code>string</code></td>
     <td>Each time the destination is updated for a Firehose stream, the version ID is changed, and the current version ID is required when updating the destination. This is so that the service knows it is applying the changes to the correct version of the delivery stream. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeliveryStreamNames" /></td>
+    <td><CopyableCode code="delivery_stream_names" /></td>
     <td><code>array</code></td>
     <td>The names of the Firehose streams.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HasMoreDeliveryStreams" /></td>
+    <td><CopyableCode code="has_more_delivery_streams" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether there are more Firehose streams available to list.</td>
 </tr>
@@ -256,18 +256,18 @@ Describes the specified Firehose stream and its status. For example, after your 
 
 ```sql
 SELECT
-CreateTimestamp,
-DeliveryStreamARN,
-DeliveryStreamEncryptionConfiguration,
-DeliveryStreamName,
-DeliveryStreamStatus,
-DeliveryStreamType,
-Destinations,
-FailureDescription,
-HasMoreDestinations,
-LastUpdateTimestamp,
-Source,
-VersionId
+create_timestamp,
+delivery_stream_arn,
+delivery_stream_encryption_configuration,
+delivery_stream_name,
+delivery_stream_status,
+delivery_stream_type,
+destinations,
+failure_description,
+has_more_destinations,
+last_update_timestamp,
+source,
+version_id
 FROM aws.firehose.delivery_streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -279,8 +279,8 @@ Lists your Firehose streams in alphabetical order of their names. The number of 
 
 ```sql
 SELECT
-DeliveryStreamNames,
-HasMoreDeliveryStreams
+delivery_stream_names,
+has_more_delivery_streams
 FROM aws.firehose.delivery_streams
 WHERE region = '{{ region }}' -- required
 ;
@@ -345,7 +345,7 @@ SELECT
 '{{ DatabaseSourceConfiguration }}',
 '{{ region }}'
 RETURNING
-DeliveryStreamARN
+delivery_stream_arn
 ;
 ```
 </TabItem>
@@ -1015,8 +1015,8 @@ region = '{{ region }}' --required
 AND DeliveryStreamName = '{{ DeliveryStreamName }}' --required
 AND Record = '{{ Record }}' --required
 RETURNING
-Encrypted,
-RecordId;
+encrypted,
+record_id;
 ```
 </TabItem>
 <TabItem value="put_record_batch">
@@ -1033,9 +1033,9 @@ region = '{{ region }}' --required
 AND DeliveryStreamName = '{{ DeliveryStreamName }}' --required
 AND Records = '{{ Records }}' --required
 RETURNING
-Encrypted,
-FailedPutCount,
-RequestResponses;
+encrypted,
+failed_put_count,
+request_responses;
 ```
 </TabItem>
 </Tabs>

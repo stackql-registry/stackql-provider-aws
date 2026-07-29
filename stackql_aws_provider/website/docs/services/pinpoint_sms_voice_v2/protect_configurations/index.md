@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountDefault" /></td>
+    <td><CopyableCode code="account_default" /></td>
     <td><code>boolean</code></td>
     <td>This is true if the protect configuration is set as your account default protect configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the protect configuration was created, in UNIX epoch time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtectionEnabled" /></td>
+    <td><CopyableCode code="deletion_protection_enabled" /></td>
     <td><code>boolean</code></td>
     <td>The status of deletion protection for the protect configuration. When set to true deletion protection is enabled. By default this is set to false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectConfigurationArn" /></td>
+    <td><CopyableCode code="protect_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the protect configuration. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectConfigurationId" /></td>
+    <td><CopyableCode code="protect_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the protect configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -188,11 +188,11 @@ Retrieves the protect configurations that match any of filters. If a filter isnâ
 
 ```sql
 SELECT
-AccountDefault,
-CreatedTimestamp,
-DeletionProtectionEnabled,
-ProtectConfigurationArn,
-ProtectConfigurationId
+account_default,
+created_timestamp,
+deletion_protection_enabled,
+protect_configuration_arn,
+protect_configuration_id
 FROM aws.pinpoint_sms_voice_v2.protect_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -227,12 +227,12 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AccountDefault,
-CreatedTimestamp,
-DeletionProtectionEnabled,
-ProtectConfigurationArn,
-ProtectConfigurationId,
-Tags
+account_default,
+created_timestamp,
+deletion_protection_enabled,
+protect_configuration_arn,
+protect_configuration_id,
+tags
 ;
 ```
 </TabItem>
@@ -287,10 +287,10 @@ region = '{{ region }}' --required
 AND ProtectConfigurationId = '{{ ProtectConfigurationId }}' --required
 AND ConfigurationSetName = '{{ ConfigurationSetName }}' --required
 RETURNING
-ConfigurationSetArn,
-ConfigurationSetName,
-ProtectConfigurationArn,
-ProtectConfigurationId;
+configuration_set_arn,
+configuration_set_name,
+protect_configuration_arn,
+protect_configuration_id;
 ```
 </TabItem>
 <TabItem value="update_protect_configuration">
@@ -306,11 +306,11 @@ WHERE
 region = '{{ region }}' --required
 AND ProtectConfigurationId = '{{ ProtectConfigurationId }}' --required
 RETURNING
-AccountDefault,
-CreatedTimestamp,
-DeletionProtectionEnabled,
-ProtectConfigurationArn,
-ProtectConfigurationId;
+account_default,
+created_timestamp,
+deletion_protection_enabled,
+protect_configuration_arn,
+protect_configuration_id;
 ```
 </TabItem>
 </Tabs>

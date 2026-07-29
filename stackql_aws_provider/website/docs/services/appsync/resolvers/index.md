@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="cachingConfig" /></td>
+    <td><CopyableCode code="caching_config" /></td>
     <td><code>object</code></td>
     <td>The caching configuration for a resolver that has caching activated.</td>
 </tr>
@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The resolver code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceName" /></td>
+    <td><CopyableCode code="data_source_name" /></td>
     <td><code>string</code></td>
     <td>The resolver data source name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fieldName" /></td>
+    <td><CopyableCode code="field_name" /></td>
     <td><code>string</code></td>
     <td>The resolver field name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -76,32 +76,32 @@ The following fields are returned by `SELECT` queries:
     <td>The resolver type. UNIT: A UNIT resolver type. A UNIT resolver is the default resolver type. You can use a UNIT resolver to run a GraphQL query against a single data source. PIPELINE: A PIPELINE resolver type. You can use a PIPELINE resolver to invoke a series of Function objects in a serial manner. You can use a pipeline resolver to run a GraphQL query against multiple data sources. (UNIT, PIPELINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxBatchSize" /></td>
+    <td><CopyableCode code="max_batch_size" /></td>
     <td><code>integer</code></td>
     <td>The maximum batching size for a resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsConfig" /></td>
+    <td><CopyableCode code="metrics_config" /></td>
     <td><code>string</code></td>
     <td>Enables or disables enhanced resolver metrics for specified resolvers. Note that metricsConfig won't be used unless the resolverLevelMetricsBehavior value is set to PER_RESOLVER_METRICS. If the resolverLevelMetricsBehavior is set to FULL_REQUEST_RESOLVER_METRICS instead, metricsConfig will be ignored. However, you can still set its value. metricsConfig can be ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineConfig" /></td>
+    <td><CopyableCode code="pipeline_config" /></td>
     <td><code>object</code></td>
     <td>The pipeline configuration for a resolver of kind PIPELINE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestMappingTemplate" /></td>
+    <td><CopyableCode code="request_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The request mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolverArn" /></td>
+    <td><CopyableCode code="resolver_arn" /></td>
     <td><code>string</code></td>
     <td>The resolver Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseMappingTemplate" /></td>
+    <td><CopyableCode code="response_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The response mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -111,12 +111,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes a runtime used by an Amazon Web Services AppSync pipeline resolver or Amazon Web Services AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncConfig" /></td>
+    <td><CopyableCode code="sync_config" /></td>
     <td><code>object</code></td>
     <td>Describes a Sync configuration for a resolver. Specifies which Conflict Detection strategy and Resolution strategy to use when the resolver is invoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The resolver type name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="cachingConfig" /></td>
+    <td><CopyableCode code="caching_config" /></td>
     <td><code>object</code></td>
     <td>The caching configuration for a resolver that has caching activated.</td>
 </tr>
@@ -145,12 +145,12 @@ The following fields are returned by `SELECT` queries:
     <td>The resolver code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceName" /></td>
+    <td><CopyableCode code="data_source_name" /></td>
     <td><code>string</code></td>
     <td>The resolver data source name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fieldName" /></td>
+    <td><CopyableCode code="field_name" /></td>
     <td><code>string</code></td>
     <td>The resolver field name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -160,32 +160,32 @@ The following fields are returned by `SELECT` queries:
     <td>The resolver type. UNIT: A UNIT resolver type. A UNIT resolver is the default resolver type. You can use a UNIT resolver to run a GraphQL query against a single data source. PIPELINE: A PIPELINE resolver type. You can use a PIPELINE resolver to invoke a series of Function objects in a serial manner. You can use a pipeline resolver to run a GraphQL query against multiple data sources. (UNIT, PIPELINE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maxBatchSize" /></td>
+    <td><CopyableCode code="max_batch_size" /></td>
     <td><code>integer</code></td>
     <td>The maximum batching size for a resolver.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricsConfig" /></td>
+    <td><CopyableCode code="metrics_config" /></td>
     <td><code>string</code></td>
     <td>Enables or disables enhanced resolver metrics for specified resolvers. Note that metricsConfig won't be used unless the resolverLevelMetricsBehavior value is set to PER_RESOLVER_METRICS. If the resolverLevelMetricsBehavior is set to FULL_REQUEST_RESOLVER_METRICS instead, metricsConfig will be ignored. However, you can still set its value. metricsConfig can be ENABLED or DISABLED. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pipelineConfig" /></td>
+    <td><CopyableCode code="pipeline_config" /></td>
     <td><code>object</code></td>
     <td>The pipeline configuration for a resolver of kind PIPELINE.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestMappingTemplate" /></td>
+    <td><CopyableCode code="request_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The request mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resolverArn" /></td>
+    <td><CopyableCode code="resolver_arn" /></td>
     <td><code>string</code></td>
     <td>The resolver Amazon Resource Name (ARN).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="responseMappingTemplate" /></td>
+    <td><CopyableCode code="response_mapping_template" /></td>
     <td><code>string</code></td>
     <td>The response mapping template. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -195,12 +195,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes a runtime used by an Amazon Web Services AppSync pipeline resolver or Amazon Web Services AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="syncConfig" /></td>
+    <td><CopyableCode code="sync_config" /></td>
     <td><code>object</code></td>
     <td>Describes a Sync configuration for a resolver. Specifies which Conflict Detection strategy and Resolution strategy to use when the resolver is invoked.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="typeName" /></td>
+    <td><CopyableCode code="type_name" /></td>
     <td><code>string</code></td>
     <td>The resolver type name. (pattern: &lt;code&gt;&#91;_A-Za-z&#93;&#91;_0-9A-Za-z&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -323,20 +323,20 @@ Retrieves a Resolver object.
 
 ```sql
 SELECT
-cachingConfig,
+caching_config,
 code,
-dataSourceName,
-fieldName,
+data_source_name,
+field_name,
 kind,
-maxBatchSize,
-metricsConfig,
-pipelineConfig,
-requestMappingTemplate,
-resolverArn,
-responseMappingTemplate,
+max_batch_size,
+metrics_config,
+pipeline_config,
+request_mapping_template,
+resolver_arn,
+response_mapping_template,
 runtime,
-syncConfig,
-typeName
+sync_config,
+type_name
 FROM aws.appsync.resolvers
 WHERE api_id = '{{ api_id }}' -- required
 AND type_name = '{{ type_name }}' -- required
@@ -351,20 +351,20 @@ Lists the resolvers for a given API and type.
 
 ```sql
 SELECT
-cachingConfig,
+caching_config,
 code,
-dataSourceName,
-fieldName,
+data_source_name,
+field_name,
 kind,
-maxBatchSize,
-metricsConfig,
-pipelineConfig,
-requestMappingTemplate,
-resolverArn,
-responseMappingTemplate,
+max_batch_size,
+metrics_config,
+pipeline_config,
+request_mapping_template,
+resolver_arn,
+response_mapping_template,
 runtime,
-syncConfig,
-typeName
+sync_config,
+type_name
 FROM aws.appsync.resolvers
 WHERE api_id = '{{ api_id }}' -- required
 AND type_name = '{{ type_name }}' -- required

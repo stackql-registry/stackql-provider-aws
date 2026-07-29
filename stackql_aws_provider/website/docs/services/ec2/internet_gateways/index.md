@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attachments" /></td>
+    <td><CopyableCode code="attachments" /></td>
     <td><code>string</code></td>
     <td>Any VPCs attached to the internet gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InternetGatewayId" /></td>
+    <td><CopyableCode code="internet_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the internet gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the internet gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the internet gateway.</td>
 </tr>
@@ -202,10 +202,10 @@ Describes your internet gateways. The default is to describe all your internet g
 
 ```sql
 SELECT
-Attachments,
-InternetGatewayId,
-OwnerId,
-Tags
+attachments,
+internet_gateway_id,
+owner_id,
+tags
 FROM aws.ec2.internet_gateways
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -243,10 +243,10 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-Attachments,
-InternetGatewayId,
-OwnerId,
-Tags
+attachments,
+internet_gateway_id,
+owner_id,
+tags
 ;
 ```
 </TabItem>

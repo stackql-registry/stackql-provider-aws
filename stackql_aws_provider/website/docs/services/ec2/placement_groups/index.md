@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GroupArn" /></td>
+    <td><CopyableCode code="group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the placement group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupId" /></td>
+    <td><CopyableCode code="group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the placement group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GroupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the placement group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkedGroupId" /></td>
+    <td><CopyableCode code="linked_group_id" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operator" /></td>
+    <td><CopyableCode code="operator" /></td>
     <td><code>string</code></td>
     <td>The service provider that manages the Placement Group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionCount" /></td>
+    <td><CopyableCode code="partition_count" /></td>
     <td><code>integer</code></td>
     <td>The number of partitions. Valid only if strategy is set to partition.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SpreadLevel" /></td>
+    <td><CopyableCode code="spread_level" /></td>
     <td><code>string</code></td>
     <td>The spread level for the placement group. Only Outpost placement groups can be spread across hosts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the placement group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Strategy" /></td>
+    <td><CopyableCode code="strategy" /></td>
     <td><code>string</code></td>
     <td>The placement strategy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags applied to the placement group.</td>
 </tr>
@@ -233,16 +233,16 @@ Describes the specified placement groups or all of your placement groups. To des
 
 ```sql
 SELECT
-GroupArn,
-GroupId,
-GroupName,
-LinkedGroupId,
-Operator,
-PartitionCount,
-SpreadLevel,
-State,
-Strategy,
-Tags
+group_arn,
+group_id,
+group_name,
+linked_group_id,
+operator,
+partition_count,
+spread_level,
+state,
+strategy,
+tags
 FROM aws.ec2.placement_groups
 WHERE region = '{{ region }}' -- required
 AND GroupId = '{{ GroupId }}'
@@ -291,16 +291,16 @@ SELECT
 '{{ GroupName }}',
 '{{ Strategy }}'
 RETURNING
-GroupArn,
-GroupId,
-GroupName,
-LinkedGroupId,
-Operator,
-PartitionCount,
-SpreadLevel,
-State,
-Strategy,
-Tags
+group_arn,
+group_id,
+group_name,
+linked_group_id,
+operator,
+partition_count,
+spread_level,
+state,
+strategy,
+tags
 ;
 ```
 </TabItem>

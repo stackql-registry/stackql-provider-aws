@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The cluster ARN. (pattern: &lt;code&gt;arn:aws(?:-&#91;a-z0-9-&#93;+)?:(?:ecs|eks):&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterDetails" /></td>
+    <td><CopyableCode code="cluster_details" /></td>
     <td><code>array</code></td>
     <td>Details about the cluster.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of clusters and metadata associated with an image.
 
 ```sql
 SELECT
-clusterArn,
-clusterDetails
+cluster_arn,
+cluster_details
 FROM aws.inspector2.clusters_for_images
 WHERE region = '{{ region }}' -- required
 ;

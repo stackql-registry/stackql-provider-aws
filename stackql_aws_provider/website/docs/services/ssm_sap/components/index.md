@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Component" /></td>
+    <td><CopyableCode code="component" /></td>
     <td><code>object</code></td>
     <td>The component of an application registered with AWS Systems Manager for SAP.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of a component.</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application. (pattern: &lt;code&gt;&#91;\w\d\.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the component summary. (pattern: &lt;code&gt;arn:(.+:)&#123;2,4&#125;.+$|^arn:(.+:)&#123;1,3&#125;.+\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComponentId" /></td>
+    <td><CopyableCode code="component_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the component. (pattern: &lt;code&gt;&#91;\w\d-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComponentType" /></td>
+    <td><CopyableCode code="component_type" /></td>
     <td><code>string</code></td>
     <td>The type of the component. (HANA, HANA_NODE, ABAP, ASCS, DIALOG, WEBDISP, WD, ERS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of the component.</td>
 </tr>
@@ -172,8 +172,8 @@ Gets the component of an application registered with AWS Systems Manager for SAP
 
 ```sql
 SELECT
-Component,
-Tags
+component,
+tags
 FROM aws.ssm_sap.components
 WHERE region = '{{ region }}' -- required
 ;
@@ -185,11 +185,11 @@ Lists all the components registered with AWS Systems Manager for SAP.
 
 ```sql
 SELECT
-ApplicationId,
-Arn,
-ComponentId,
-ComponentType,
-Tags
+application_id,
+arn,
+component_id,
+component_type,
+tags
 FROM aws.ssm_sap.components
 WHERE region = '{{ region }}' -- required
 ;

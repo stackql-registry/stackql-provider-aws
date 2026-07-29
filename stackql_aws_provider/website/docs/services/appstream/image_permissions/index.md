@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the private image. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_.-&#93;&#123;0,100&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SharedImagePermissionsList" /></td>
+    <td><CopyableCode code="shared_image_permissions_list" /></td>
     <td><code>array</code></td>
     <td>The permissions for a private image that you own.</td>
 </tr>
@@ -143,9 +143,9 @@ Retrieves a list that describes the permissions for shared AWS account IDs on a 
 
 ```sql
 SELECT
-Name,
-NextToken,
-SharedImagePermissionsList
+name,
+next_token,
+shared_image_permissions_list
 FROM aws.appstream.image_permissions
 WHERE region = '{{ region }}' -- required
 ;

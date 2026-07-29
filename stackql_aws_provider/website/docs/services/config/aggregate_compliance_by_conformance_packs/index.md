@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit Amazon Web Services account ID of the source account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The source Amazon Web Services Region from where the data is aggregated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Compliance" /></td>
+    <td><CopyableCode code="compliance" /></td>
     <td><code>object</code></td>
     <td>The compliance status of the conformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackName" /></td>
+    <td><CopyableCode code="conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the conformance pack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a list of the existing and deleted conformance packs and their associate
 
 ```sql
 SELECT
-AccountId,
-AwsRegion,
-Compliance,
-ConformancePackName
+account_id,
+aws_region,
+compliance,
+conformance_pack_name
 FROM aws.config.aggregate_compliance_by_conformance_packs
 WHERE region = '{{ region }}' -- required
 ;

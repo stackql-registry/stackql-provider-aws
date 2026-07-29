@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the model group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedConfiguration" /></td>
+    <td><CopyableCode code="managed_configuration" /></td>
     <td><code>object</code></td>
     <td>The managed configuration of the model package group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupArn" /></td>
+    <td><CopyableCode code="model_package_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-package-group/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupDescription" /></td>
+    <td><CopyableCode code="model_package_group_description" /></td>
     <td><code>string</code></td>
     <td>A description of the model group. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupName" /></td>
+    <td><CopyableCode code="model_package_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupStatus" /></td>
+    <td><CopyableCode code="model_package_group_status" /></td>
     <td><code>string</code></td>
     <td>The status of the model group. (Pending, InProgress, Completed, Failed, Deleting, DeleteFailed)</td>
 </tr>
@@ -100,32 +100,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the model group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedConfiguration" /></td>
+    <td><CopyableCode code="managed_configuration" /></td>
     <td><code>object</code></td>
     <td>The managed configuration of the model package group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupArn" /></td>
+    <td><CopyableCode code="model_package_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the model group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:model-package-group/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupDescription" /></td>
+    <td><CopyableCode code="model_package_group_description" /></td>
     <td><code>string</code></td>
     <td>A description of the model group. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupName" /></td>
+    <td><CopyableCode code="model_package_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the model group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelPackageGroupStatus" /></td>
+    <td><CopyableCode code="model_package_group_status" /></td>
     <td><code>string</code></td>
     <td>The status of the model group. (Pending, InProgress, Completed, Failed, Deleting, DeleteFailed)</td>
 </tr>
@@ -216,13 +216,13 @@ Gets a description for the specified model group.
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-ManagedConfiguration,
-ModelPackageGroupArn,
-ModelPackageGroupDescription,
-ModelPackageGroupName,
-ModelPackageGroupStatus
+created_by,
+creation_time,
+managed_configuration,
+model_package_group_arn,
+model_package_group_description,
+model_package_group_name,
+model_package_group_status
 FROM aws.sagemaker.model_package_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -234,12 +234,12 @@ Gets a list of the model groups in your Amazon Web Services account.
 
 ```sql
 SELECT
-CreationTime,
-ManagedConfiguration,
-ModelPackageGroupArn,
-ModelPackageGroupDescription,
-ModelPackageGroupName,
-ModelPackageGroupStatus
+creation_time,
+managed_configuration,
+model_package_group_arn,
+model_package_group_description,
+model_package_group_name,
+model_package_group_status
 FROM aws.sagemaker.model_package_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -276,7 +276,7 @@ SELECT
 '{{ ManagedConfiguration }}',
 '{{ region }}'
 RETURNING
-ModelPackageGroupArn
+model_package_group_arn
 ;
 ```
 </TabItem>

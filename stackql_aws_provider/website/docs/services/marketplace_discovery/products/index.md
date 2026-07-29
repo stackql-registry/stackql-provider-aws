@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The categories used to classify this product into logical groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deployedOnAws" /></td>
+    <td><CopyableCode code="deployed_on_aws" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the product is deployed on AWS infrastructure. (DEPLOYED, NOT_DEPLOYED, NOT_APPLICABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fulfillmentOptionSummaries" /></td>
+    <td><CopyableCode code="fulfillment_option_summaries" /></td>
     <td><code>array</code></td>
     <td>A summary of fulfillment options available for deploying or accessing the product, such as AMI, SaaS, or Container.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>A list of key features that the product offers to customers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logoThumbnailUrl" /></td>
+    <td><CopyableCode code="logo_thumbnail_url" /></td>
     <td><code>string</code></td>
     <td>The URL of the logo thumbnail image for the product. (pattern: &lt;code&gt;https?:​//.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="longDescription" /></td>
+    <td><CopyableCode code="long_description" /></td>
     <td><code>string</code></td>
     <td>A detailed description of what the product does, in paragraph format. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
     <td>The entity who manufactured the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productId" /></td>
+    <td><CopyableCode code="product_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the product. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="productName" /></td>
+    <td><CopyableCode code="product_name" /></td>
     <td><code>string</code></td>
     <td>The human-readable display name of the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="promotionalMedia" /></td>
+    <td><CopyableCode code="promotional_media" /></td>
     <td><code>array</code></td>
     <td>Embedded promotional media provided by the creator of the product, such as images and videos.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>Resources that provide further information about using the product or requesting support, such as documentation links, support contacts, and usage instructions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sellerEngagements" /></td>
+    <td><CopyableCode code="seller_engagements" /></td>
     <td><code>array</code></td>
     <td>Engagement options available to potential buyers, such as requesting a private offer or requesting a demo.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="shortDescription" /></td>
+    <td><CopyableCode code="short_description" /></td>
     <td><code>string</code></td>
     <td>A 1–3 sentence summary describing the key aspects of the product. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -186,18 +186,18 @@ Provides details about a product, such as descriptions, highlights, categories, 
 SELECT
 catalog,
 categories,
-deployedOnAws,
-fulfillmentOptionSummaries,
+deployed_on_aws,
+fulfillment_option_summaries,
 highlights,
-logoThumbnailUrl,
-longDescription,
+logo_thumbnail_url,
+long_description,
 manufacturer,
-productId,
-productName,
-promotionalMedia,
+product_id,
+product_name,
+promotional_media,
 resources,
-sellerEngagements,
-shortDescription
+seller_engagements,
+short_description
 FROM aws.marketplace_discovery.products
 WHERE region = '{{ region }}' -- required
 ;

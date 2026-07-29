@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedResource" /></td>
+    <td><CopyableCode code="associated_resource" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource to describe software associations. (pattern: &lt;code&gt;^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.\\-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token to use to retrieve the next page of results for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SoftwareAssociations" /></td>
+    <td><CopyableCode code="software_associations" /></td>
     <td><code>array</code></td>
     <td>Collection of license included applications association details including: License included application name and version information Deployment status (SoftwareDeploymentStatus enum) Error details for failed deployments Association timestamps</td>
 </tr>
@@ -129,9 +129,9 @@ Retrieves license included application associations for a specified resource.
 
 ```sql
 SELECT
-AssociatedResource,
-NextToken,
-SoftwareAssociations
+associated_resource,
+next_token,
+software_associations
 FROM aws.appstream.software_associations
 WHERE region = '{{ region }}' -- required
 ;

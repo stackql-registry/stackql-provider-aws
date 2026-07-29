@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrentActiveJob" /></td>
+    <td><CopyableCode code="current_active_job" /></td>
     <td><code>string</code></td>
     <td>The current active jobs on the device the long-term pricing type. (pattern: &lt;code&gt;(M|J)ID&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsLongTermPricingAutoRenew" /></td>
+    <td><CopyableCode code="is_long_term_pricing_auto_renew" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, specifies that the current long-term pricing type for the device should be automatically renewed before the long-term pricing contract expires.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobIds" /></td>
+    <td><CopyableCode code="job_ids" /></td>
     <td><code>array</code></td>
     <td>The IDs of the jobs that are associated with a long-term pricing type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LongTermPricingEndDate" /></td>
+    <td><CopyableCode code="long_term_pricing_end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end date the long-term pricing contract.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LongTermPricingId" /></td>
+    <td><CopyableCode code="long_term_pricing_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the long-term pricing type for the device. (pattern: &lt;code&gt;LTPID&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LongTermPricingStartDate" /></td>
+    <td><CopyableCode code="long_term_pricing_start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date of the long-term pricing contract.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LongTermPricingStatus" /></td>
+    <td><CopyableCode code="long_term_pricing_status" /></td>
     <td><code>string</code></td>
     <td>The status of the long-term pricing type. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LongTermPricingType" /></td>
+    <td><CopyableCode code="long_term_pricing_type" /></td>
     <td><code>string</code></td>
     <td>The type of long-term pricing that was selected for the device. (OneYear, ThreeYear, OneMonth)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplacementJob" /></td>
+    <td><CopyableCode code="replacement_job" /></td>
     <td><code>string</code></td>
     <td>A new device that replaces a device that is ordered with long-term pricing. (pattern: &lt;code&gt;(M|J)ID&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnowballType" /></td>
+    <td><CopyableCode code="snowball_type" /></td>
     <td><code>string</code></td>
     <td>The type of Snow Family devices associated with this long-term pricing job. (STANDARD, EDGE, EDGE_C, EDGE_CG, EDGE_S, SNC1_HDD, SNC1_SSD, V3_5C, V3_5S, RACK_5U_C)</td>
 </tr>
@@ -178,16 +178,16 @@ Lists all long-term pricing types.
 
 ```sql
 SELECT
-CurrentActiveJob,
-IsLongTermPricingAutoRenew,
-JobIds,
-LongTermPricingEndDate,
-LongTermPricingId,
-LongTermPricingStartDate,
-LongTermPricingStatus,
-LongTermPricingType,
-ReplacementJob,
-SnowballType
+current_active_job,
+is_long_term_pricing_auto_renew,
+job_ids,
+long_term_pricing_end_date,
+long_term_pricing_id,
+long_term_pricing_start_date,
+long_term_pricing_status,
+long_term_pricing_type,
+replacement_job,
+snowball_type
 FROM aws.snowball.long_term_pricings
 WHERE region = '{{ region }}' -- required
 ;
@@ -222,7 +222,7 @@ SELECT
 '{{ SnowballType }}' /* required */,
 '{{ region }}'
 RETURNING
-LongTermPricingId
+long_term_pricing_id
 ;
 ```
 </TabItem>

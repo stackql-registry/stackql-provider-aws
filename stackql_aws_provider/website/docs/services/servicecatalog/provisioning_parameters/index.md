@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConstraintSummaries" /></td>
+    <td><CopyableCode code="constraint_summaries" /></td>
     <td><code>array</code></td>
     <td>Information about the constraints used to provision the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactOutputKeys" /></td>
+    <td><CopyableCode code="provisioning_artifact_output_keys" /></td>
     <td><code>array</code></td>
     <td>A list of the keys and descriptions of the outputs. These outputs can be referenced from a provisioned product launched from this provisioning artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactOutputs" /></td>
+    <td><CopyableCode code="provisioning_artifact_outputs" /></td>
     <td><code>array</code></td>
     <td>The output of the provisioning artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactParameters" /></td>
+    <td><CopyableCode code="provisioning_artifact_parameters" /></td>
     <td><code>array</code></td>
     <td>Information about the parameters used to provision the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisioningArtifactPreferences" /></td>
+    <td><CopyableCode code="provisioning_artifact_preferences" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about preferences, such as Regions and accounts, for the provisioning artifact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagOptions" /></td>
+    <td><CopyableCode code="tag_options" /></td>
     <td><code>array</code></td>
     <td>Information about the TagOptions associated with the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageInstructions" /></td>
+    <td><CopyableCode code="usage_instructions" /></td>
     <td><code>array</code></td>
     <td>Any additional metadata specifically related to the provisioning of the product. For example, see the Version field of the CloudFormation template.</td>
 </tr>
@@ -149,13 +149,13 @@ Gets information about the configuration required to provision the specified pro
 
 ```sql
 SELECT
-ConstraintSummaries,
-ProvisioningArtifactOutputKeys,
-ProvisioningArtifactOutputs,
-ProvisioningArtifactParameters,
-ProvisioningArtifactPreferences,
-TagOptions,
-UsageInstructions
+constraint_summaries,
+provisioning_artifact_output_keys,
+provisioning_artifact_outputs,
+provisioning_artifact_parameters,
+provisioning_artifact_preferences,
+tag_options,
+usage_instructions
 FROM aws.servicecatalog.provisioning_parameters
 WHERE region = '{{ region }}' -- required
 ;

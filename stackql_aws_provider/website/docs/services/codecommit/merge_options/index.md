@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseCommitId" /></td>
+    <td><CopyableCode code="base_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the merge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationCommitId" /></td>
+    <td><CopyableCode code="destination_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the destination commit specifier that was used in the merge evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mergeOptions" /></td>
+    <td><CopyableCode code="merge_options" /></td>
     <td><code>array</code></td>
     <td>The merge option or strategy used to merge the code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceCommitId" /></td>
+    <td><CopyableCode code="source_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the source commit specifier that was used in the merge evaluation.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns information about the merge options available for merging two specified 
 
 ```sql
 SELECT
-baseCommitId,
-destinationCommitId,
-mergeOptions,
-sourceCommitId
+base_commit_id,
+destination_commit_id,
+merge_options,
+source_commit_id
 FROM aws.codecommit.merge_options
 WHERE region = '{{ region }}' -- required
 ;

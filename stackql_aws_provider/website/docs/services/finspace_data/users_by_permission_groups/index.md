@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates where a results page should begin.</td>
 </tr>
@@ -139,7 +139,7 @@ Lists details of all the users in a specific permission group.
 
 ```sql
 SELECT
-nextToken,
+next_token,
 users
 FROM aws.finspace_data.users_by_permission_groups
 WHERE permission_group_id = '{{ permission_group_id }}' -- required

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConstraintId" /></td>
+    <td><CopyableCode code="constraint_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the constraint. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the constraint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>The owner of the constraint. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortfolioId" /></td>
+    <td><CopyableCode code="portfolio_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the portfolio the product resides in. The constraint applies only to the instance of the product that lives within this portfolio. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProductId" /></td>
+    <td><CopyableCode code="product_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the product the constraint applies to. Note that a constraint applies to a specific instance of a product within a certain portfolio. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of constraint. LAUNCH NOTIFICATION STACKSET TEMPLATE</td>
 </tr>
@@ -144,12 +144,12 @@ Lists the constraints for the specified portfolio and product.
 
 ```sql
 SELECT
-ConstraintId,
-Description,
-Owner,
-PortfolioId,
-ProductId,
-Type
+constraint_id,
+description,
+owner,
+portfolio_id,
+product_id,
+type
 FROM aws.servicecatalog.constraints_for_portfolios
 WHERE region = '{{ region }}' -- required
 ;

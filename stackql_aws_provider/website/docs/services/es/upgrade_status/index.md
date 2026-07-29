@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="StepStatus" /></td>
+    <td><CopyableCode code="step_status" /></td>
     <td><code>string</code></td>
     <td>One of 4 statuses that a step can go through returned as part of the GetUpgradeStatusResponse object. The status can take one of the following values: In Progress Succeeded Succeeded with Issues Failed (IN_PROGRESS, SUCCEEDED, SUCCEEDED_WITH_ISSUES, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeName" /></td>
+    <td><CopyableCode code="upgrade_name" /></td>
     <td><code>string</code></td>
     <td>A string that describes the update briefly</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeStep" /></td>
+    <td><CopyableCode code="upgrade_step" /></td>
     <td><code>string</code></td>
     <td>Represents one of 3 steps that an Upgrade or Upgrade Eligibility Check does through: PreUpgradeCheck Snapshot Upgrade (PRE_UPGRADE_CHECK, SNAPSHOT, UPGRADE)</td>
 </tr>
@@ -134,9 +134,9 @@ Retrieves the latest status of the last upgrade or upgrade eligibility check tha
 
 ```sql
 SELECT
-StepStatus,
-UpgradeName,
-UpgradeStep
+step_status,
+upgrade_name,
+upgrade_step
 FROM aws.es.upgrade_status
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

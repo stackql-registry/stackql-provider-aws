@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Collection of tags associated with the WorkSpace Instance.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves tags for a WorkSpace Instance.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.workspaces_instances.tags
 WHERE region = '{{ region }}' -- required
 ;

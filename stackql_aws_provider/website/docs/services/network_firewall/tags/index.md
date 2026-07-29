@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>The part of the key:value pair that defines a tag. You can use a tag key to describe a category of information, such as "customer." Tag keys are case-sensitive. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The part of the key:value pair that defines a tag. You can use a tag value to describe a specific value within a category, such as "companyA" or "companyB." Tag values are case-sensitive. (pattern: &lt;code&gt;^.*$&lt;/code&gt;)</td>
 </tr>
@@ -138,8 +138,8 @@ Retrieves the tags associated with the specified resource. Tags are key:value pa
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.network_firewall.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredValue" /></td>
+    <td><CopyableCode code="desired_value" /></td>
     <td><code>number (double)</code></td>
     <td>The new, increased value of the quota.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalQuota" /></td>
+    <td><CopyableCode code="global_quota" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the quota is global.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaCode" /></td>
+    <td><CopyableCode code="quota_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota identifier. To find the quota code for a specific quota, use the ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you want. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuotaName" /></td>
+    <td><CopyableCode code="quota_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the quota name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCode" /></td>
+    <td><CopyableCode code="service_code" /></td>
     <td><code>string</code></td>
     <td>Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the ListServices operation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>Specifies the service name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Unit" /></td>
+    <td><CopyableCode code="unit" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement.</td>
 </tr>
@@ -154,14 +154,14 @@ Lists the quota increase requests in the specified quota request template.
 
 ```sql
 SELECT
-AwsRegion,
-DesiredValue,
-GlobalQuota,
-QuotaCode,
-QuotaName,
-ServiceCode,
-ServiceName,
-Unit
+aws_region,
+desired_value,
+global_quota,
+quota_code,
+quota_name,
+service_code,
+service_name,
+unit
 FROM aws.service_quotas.service_quota_increase_requests_in_templates
 WHERE region = '{{ region }}' -- required
 ;

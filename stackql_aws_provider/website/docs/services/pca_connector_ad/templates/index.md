@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateTemplate. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;\/template\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateConnector. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>Template configuration to define the information included in certificates. Define certificate validity and renewal periods, certificate request handling and enrollment options, key usage extensions, application policies, and cryptography settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the template. The template name must be unique. (pattern: &lt;code&gt;^(?!^\s+$)((?!&#91;\x5c'\x2b,;&lt;=&gt;#\x22&#93;)(&#91;\x20-\x7E&#93;))+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectIdentifier" /></td>
+    <td><CopyableCode code="object_identifier" /></td>
     <td><code>string</code></td>
     <td>Object identifier of a template. (pattern: &lt;code&gt;^(&#91;0-2&#93;)\.(&#91;0-9&#93;|(&#91;0-3&#93;&#91;0-9&#93;))(\.(&#91;0-9&#93;+))&#123;0,126&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicySchema" /></td>
+    <td><CopyableCode code="policy_schema" /></td>
     <td><code>integer</code></td>
     <td>The template schema version. Template schema versions can be v2, v3, or v4. The template configuration options change based on the template schema version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>object</code></td>
     <td>The revision version of the template. Template updates will increment the minor revision. Re-enrolling all certificate holders will increment the major revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the template. Status can be creating, active, deleting, or failed. (ACTIVE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the template was updated.</td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateTemplate. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;\/template\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectorArn" /></td>
+    <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateConnector. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>Template configuration to define the information included in certificates. Define certificate validity and renewal periods, certificate request handling and enrollment options, key usage extensions, application policies, and cryptography settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the templates. Template names must be unique. (pattern: &lt;code&gt;^(?!^\s+$)((?!&#91;\x5c'\x2b,;&lt;=&gt;#\x22&#93;)(&#91;\x20-\x7E&#93;))+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObjectIdentifier" /></td>
+    <td><CopyableCode code="object_identifier" /></td>
     <td><code>string</code></td>
     <td>Object identifier of a template. (pattern: &lt;code&gt;^(&#91;0-2&#93;)\.(&#91;0-9&#93;|(&#91;0-3&#93;&#91;0-9&#93;))(\.(&#91;0-9&#93;+))&#123;0,126&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicySchema" /></td>
+    <td><CopyableCode code="policy_schema" /></td>
     <td><code>integer</code></td>
     <td>The template schema version. Template schema versions can be v2, v3, or v4. The template configuration options change based on the template schema version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Revision" /></td>
+    <td><CopyableCode code="revision" /></td>
     <td><code>object</code></td>
     <td>The version of the template. Template updates will increment the minor revision. Re-enrolling all certificate holders will increment the major revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the template. Status can be creating, active, deleting, or failed. (ACTIVE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the template was updated.</td>
 </tr>
@@ -278,16 +278,16 @@ Lists the templates, if any, that are associated with a connector.
 
 ```sql
 SELECT
-Arn,
-ConnectorArn,
-CreatedAt,
-Definition,
-Name,
-ObjectIdentifier,
-PolicySchema,
-Revision,
-Status,
-UpdatedAt
+arn,
+connector_arn,
+created_at,
+definition,
+name,
+object_identifier,
+policy_schema,
+revision,
+status,
+updated_at
 FROM aws.pca_connector_ad.templates
 WHERE ConnectorArn = '{{ ConnectorArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -302,16 +302,16 @@ Retrieves a certificate template that the connector uses to issue certificates f
 
 ```sql
 SELECT
-Arn,
-ConnectorArn,
-CreatedAt,
-Definition,
-Name,
-ObjectIdentifier,
-PolicySchema,
-Revision,
-Status,
-UpdatedAt
+arn,
+connector_arn,
+created_at,
+definition,
+name,
+object_identifier,
+policy_schema,
+revision,
+status,
+updated_at
 FROM aws.pca_connector_ad.templates
 WHERE template_arn = '{{ template_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -351,7 +351,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-TemplateArn
+template_arn
 ;
 ```
 </TabItem>

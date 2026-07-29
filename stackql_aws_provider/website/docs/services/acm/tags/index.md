@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The key-value pairs that define the applied tags.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the tags that have been applied to the ACM certificate. Use the certificat
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.acm.tags
 WHERE region = '{{ region }}' -- required
 ;

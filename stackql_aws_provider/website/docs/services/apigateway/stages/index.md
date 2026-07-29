@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessLogSettings" /></td>
+    <td><CopyableCode code="access_log_settings" /></td>
     <td><code>object</code></td>
     <td>Settings for logging access in this stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheClusterEnabled" /></td>
+    <td><CopyableCode code="cache_cluster_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a cache cluster is enabled for the stage. To activate a method-level cache, set CachingEnabled to true for a method.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheClusterSize" /></td>
+    <td><CopyableCode code="cache_cluster_size" /></td>
     <td><code>string</code></td>
     <td>Returns the size of the CacheCluster. (0.5, 1.6, 6.1, 13.5, 28.4, 58.2, 118, 237)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cacheClusterStatus" /></td>
+    <td><CopyableCode code="cache_cluster_status" /></td>
     <td><code>string</code></td>
     <td>The status of the cache cluster for the stage, if enabled. (CREATE_IN_PROGRESS, AVAILABLE, DELETE_IN_PROGRESS, NOT_AVAILABLE, FLUSH_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="canarySettings" /></td>
+    <td><CopyableCode code="canary_settings" /></td>
     <td><code>object</code></td>
     <td>Configuration settings of a canary deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientCertificateId" /></td>
+    <td><CopyableCode code="client_certificate_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a client certificate for an API stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stage was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Deployment that the stage points to.</td>
 </tr>
@@ -96,22 +96,22 @@ The following fields are returned by `SELECT` queries:
     <td>The stage's description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="documentationVersion" /></td>
+    <td><CopyableCode code="documentation_version" /></td>
     <td><code>string</code></td>
     <td>The version of the associated API documentation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stage last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="methodSettings" /></td>
+    <td><CopyableCode code="method_settings" /></td>
     <td><code>object</code></td>
     <td>A map that defines the method settings for a Stage resource. Keys (designated as /&#123;method_setting_key below) are method paths defined as &#123;resource_path&#125;/&#123;http_method&#125; for an individual method override, or /\*/\* for overriding all methods in the stage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stageName" /></td>
+    <td><CopyableCode code="stage_name" /></td>
     <td><code>string</code></td>
     <td>The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is 128 characters.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The collection of tags. Each tag element is associated with a given resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tracingEnabled" /></td>
+    <td><CopyableCode code="tracing_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether active tracing with X-ray is enabled for the Stage.</td>
 </tr>
@@ -131,7 +131,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map that defines the stage variables for a Stage resource. Variable names can have alphanumeric and underscore characters, and the values must match &#91;A-Za-z0-9-._~:/?#&=,&#93;+.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webAclArn" /></td>
+    <td><CopyableCode code="web_acl_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the WebAcl associated with the Stage.</td>
 </tr>
@@ -277,23 +277,23 @@ Gets information about a Stage resource.
 
 ```sql
 SELECT
-accessLogSettings,
-cacheClusterEnabled,
-cacheClusterSize,
-cacheClusterStatus,
-canarySettings,
-clientCertificateId,
-createdDate,
-deploymentId,
+access_log_settings,
+cache_cluster_enabled,
+cache_cluster_size,
+cache_cluster_status,
+canary_settings,
+client_certificate_id,
+created_date,
+deployment_id,
 description,
-documentationVersion,
-lastUpdatedDate,
-methodSettings,
-stageName,
+documentation_version,
+last_updated_date,
+method_settings,
+stage_name,
 tags,
-tracingEnabled,
+tracing_enabled,
 variables,
-webAclArn
+web_acl_arn
 FROM aws.apigateway.stages
 WHERE restapi_id = '{{ restapi_id }}' -- required
 AND stage_name = '{{ stage_name }}' -- required
@@ -360,23 +360,23 @@ SELECT
 '{{ restapi_id }}',
 '{{ region }}'
 RETURNING
-accessLogSettings,
-cacheClusterEnabled,
-cacheClusterSize,
-cacheClusterStatus,
-canarySettings,
-clientCertificateId,
-createdDate,
-deploymentId,
+access_log_settings,
+cache_cluster_enabled,
+cache_cluster_size,
+cache_cluster_status,
+canary_settings,
+client_certificate_id,
+created_date,
+deployment_id,
 description,
-documentationVersion,
-lastUpdatedDate,
-methodSettings,
-stageName,
+documentation_version,
+last_updated_date,
+method_settings,
+stage_name,
 tags,
-tracingEnabled,
+tracing_enabled,
 variables,
-webAclArn
+web_acl_arn
 ;
 ```
 </TabItem>
@@ -447,23 +447,23 @@ restapi_id = '{{ restapi_id }}' --required
 AND stage_name = '{{ stage_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-accessLogSettings,
-cacheClusterEnabled,
-cacheClusterSize,
-cacheClusterStatus,
-canarySettings,
-clientCertificateId,
-createdDate,
-deploymentId,
+access_log_settings,
+cache_cluster_enabled,
+cache_cluster_size,
+cache_cluster_status,
+canary_settings,
+client_certificate_id,
+created_date,
+deployment_id,
 description,
-documentationVersion,
-lastUpdatedDate,
-methodSettings,
-stageName,
+documentation_version,
+last_updated_date,
+method_settings,
+stage_name,
 tags,
-tracingEnabled,
+tracing_enabled,
 variables,
-webAclArn;
+web_acl_arn;
 ```
 </TabItem>
 </Tabs>

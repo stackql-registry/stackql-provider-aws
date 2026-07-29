@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="collectorHealth" /></td>
+    <td><CopyableCode code="collector_health" /></td>
     <td><code>string</code></td>
     <td>Indicates the health of a collector. (COLLECTOR_HEALTHY, COLLECTOR_UNHEALTHY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collectorId" /></td>
+    <td><CopyableCode code="collector_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the collector. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collectorVersion" /></td>
+    <td><CopyableCode code="collector_version" /></td>
     <td><code>string</code></td>
     <td>Current version of the collector that is running in the environment that you specify. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationSummary" /></td>
+    <td><CopyableCode code="configuration_summary" /></td>
     <td><code>object</code></td>
     <td>Summary of the collector configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hostName" /></td>
+    <td><CopyableCode code="host_name" /></td>
     <td><code>string</code></td>
     <td>Hostname of the server that is hosting the collector. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ipAddress" /></td>
+    <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
     <td>IP address of the server that is hosting the collector. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastActivityTimeStamp" /></td>
+    <td><CopyableCode code="last_activity_time_stamp" /></td>
     <td><code>string</code></td>
     <td>Time when the collector last pinged the service. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registeredTimeStamp" /></td>
+    <td><CopyableCode code="registered_time_stamp" /></td>
     <td><code>string</code></td>
     <td>Time when the collector registered with the service. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -164,14 +164,14 @@ Retrieves a list of all the installed collectors.
 
 ```sql
 SELECT
-collectorHealth,
-collectorId,
-collectorVersion,
-configurationSummary,
-hostName,
-ipAddress,
-lastActivityTimeStamp,
-registeredTimeStamp
+collector_health,
+collector_id,
+collector_version,
+configuration_summary,
+host_name,
+ip_address,
+last_activity_time_stamp,
+registered_time_stamp
 FROM aws.migrationhubstrategy.collectors
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

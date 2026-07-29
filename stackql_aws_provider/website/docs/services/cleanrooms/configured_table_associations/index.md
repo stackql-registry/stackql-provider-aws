@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configured table association, in lowercase. The table is identified by this name when running protected queries against the underlying data. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;((&#91;a-zA-Z0-9_ &#93;+-)*(&#91;a-zA-Z0-9_ &#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisRuleTypes" /></td>
+    <td><CopyableCode code="analysis_rule_types" /></td>
     <td><code>array</code></td>
     <td>The analysis rule types for the configured table association.</td>
 </tr>
@@ -71,17 +71,17 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN for the configured table association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtableassociation/&#91;\d\w-&#93;+/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredTableArn" /></td>
+    <td><CopyableCode code="configured_table_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the configured table that the association refers to. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredTableId" /></td>
+    <td><CopyableCode code="configured_table_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the configured table that the association refers to. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table association was created.</td>
 </tr>
@@ -91,22 +91,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the configured table association. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the membership this configured table association belongs to. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the membership this configured table association belongs to. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The service will assume this role to access catalog metadata and query the table. (pattern: &lt;code&gt;arn:aws:iam::&#91;\w&#93;+:role/&#91;\w+=./@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table association was last updated.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configured table association. The table is identified by this name when running Protected Queries against the underlying data. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;((&#91;a-zA-Z0-9_ &#93;+-)*(&#91;a-zA-Z0-9_ &#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analysisRuleTypes" /></td>
+    <td><CopyableCode code="analysis_rule_types" /></td>
     <td><code>array</code></td>
     <td>The analysis rule types that are associated with the configured table associations in this summary.</td>
 </tr>
@@ -145,27 +145,27 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN for the configured table association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtableassociation/&#91;\d\w-&#93;+/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configuredTableId" /></td>
+    <td><CopyableCode code="configured_table_id" /></td>
     <td><code>string</code></td>
     <td>The unique configured table ID that this configured table association refers to. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table association was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the membership that the configured table association belongs to. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the membership that the configured table association belongs to. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the configured table association was last updated.</td>
 </tr>
@@ -285,16 +285,16 @@ Retrieves a configured table association.
 SELECT
 id,
 name,
-analysisRuleTypes,
+analysis_rule_types,
 arn,
-configuredTableArn,
-configuredTableId,
-createTime,
+configured_table_arn,
+configured_table_id,
+create_time,
 description,
-membershipArn,
-membershipId,
-roleArn,
-updateTime
+membership_arn,
+membership_id,
+role_arn,
+update_time
 FROM aws.cleanrooms.configured_table_associations
 WHERE configured_table_association_identifier = '{{ configured_table_association_identifier }}' -- required
 AND membership_identifier = '{{ membership_identifier }}' -- required
@@ -310,13 +310,13 @@ Lists configured table associations for a membership.
 SELECT
 id,
 name,
-analysisRuleTypes,
+analysis_rule_types,
 arn,
-configuredTableId,
-createTime,
-membershipArn,
-membershipId,
-updateTime
+configured_table_id,
+create_time,
+membership_arn,
+membership_id,
+update_time
 FROM aws.cleanrooms.configured_table_associations
 WHERE membership_identifier = '{{ membership_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -360,7 +360,7 @@ SELECT
 '{{ membership_identifier }}',
 '{{ region }}'
 RETURNING
-configuredTableAssociation
+configured_table_association
 ;
 ```
 </TabItem>
@@ -415,7 +415,7 @@ configured_table_association_identifier = '{{ configured_table_association_ident
 AND membership_identifier = '{{ membership_identifier }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-configuredTableAssociation;
+configured_table_association;
 ```
 </TabItem>
 </Tabs>

@@ -51,112 +51,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArtifactConfig" /></td>
+    <td><CopyableCode code="artifact_config" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the configuration for canary artifacts, including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArtifactS3Location" /></td>
+    <td><CopyableCode code="artifact_s3_location" /></td>
     <td><code>string</code></td>
     <td>The location in Amazon S3 where Synthetics stores artifacts from the runs of this canary. Artifacts include the log file, screenshots, and HAR files.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrowserConfigs" /></td>
+    <td><CopyableCode code="browser_configs" /></td>
     <td><code>array</code></td>
     <td>A structure that specifies the browser type to use for a canary run. CloudWatch Synthetics supports running canaries on both CHROME and FIREFOX browsers. If not specified, browserConfigs defaults to Chrome.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Code" /></td>
+    <td><CopyableCode code="code" /></td>
     <td><code>object</code></td>
     <td>This structure contains information about the canary's Lambda handler and where its code is stored by CloudWatch Synthetics.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DryRunConfig" /></td>
+    <td><CopyableCode code="dry_run_config" /></td>
     <td><code>object</code></td>
     <td>Returns the dry run configurations for a canary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineArn" /></td>
+    <td><CopyableCode code="engine_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Lambda function that is used as your canary's engine. For more information about Lambda ARN format, see Resources and Conditions for Lambda Actions. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2,4&#125;(-&#91;a-z&#93;&#123;2,4&#125;)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineConfigs" /></td>
+    <td><CopyableCode code="engine_configs" /></td>
     <td><code>array</code></td>
     <td>A list of engine configurations for the canary, one for each browser type that the canary is configured to run on. All runtime versions syn-nodejs-puppeteer-11.0 and above, and syn-nodejs-playwright-3.0 and above, use engineConfigs only. You can no longer use engineArn in these versions. Runtime versions older than syn-nodejs-puppeteer-11.0 and syn-nodejs-playwright-3.0 continue to support engineArn to ensure backward compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionRoleArn" /></td>
+    <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role used to run the canary. This role must include lambda.amazonaws.com as a principal in the trust policy. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureRetentionPeriodInDays" /></td>
+    <td><CopyableCode code="failure_retention_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days to retain data about failed runs of this canary. This setting affects the range of information returned by GetCanaryRuns, as well as the range of information displayed in the Synthetics console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of this canary. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the canary. (pattern: &lt;code&gt;^&#91;0-9a-z_\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProvisionedResourceCleanup" /></td>
+    <td><CopyableCode code="provisioned_resource_cleanup" /></td>
     <td><code>string</code></td>
     <td>Specifies whether to also delete the Lambda functions and layers used by this canary when the canary is deleted. If it is AUTOMATIC, the Lambda functions and layers will be deleted when the canary is deleted. If the value of this parameter is OFF, then the value of the DeleteLambda parameter of the DeleteCanary operation determines whether the Lambda functions and layers will be deleted. (AUTOMATIC, OFF)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunConfig" /></td>
+    <td><CopyableCode code="run_config" /></td>
     <td><code>object</code></td>
     <td>A structure that contains information about a canary run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuntimeVersion" /></td>
+    <td><CopyableCode code="runtime_version" /></td>
     <td><code>string</code></td>
     <td>Specifies the runtime version to use for the canary. For more information about runtime versions, see Canary Runtime Versions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>object</code></td>
     <td>A structure that contains information about how often the canary is to run, and when these runs are to stop.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>A structure that contains information about the canary's status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SuccessRetentionPeriodInDays" /></td>
+    <td><CopyableCode code="success_retention_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>The number of days to retain data about successful runs of this canary. This setting affects the range of information returned by GetCanaryRuns, as well as the range of information displayed in the Synthetics console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of key-value pairs that are associated with the canary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timeline" /></td>
+    <td><CopyableCode code="timeline" /></td>
     <td><code>object</code></td>
     <td>A structure that contains information about when the canary was created, modified, and most recently run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VisualReference" /></td>
+    <td><CopyableCode code="visual_reference" /></td>
     <td><code>object</code></td>
     <td>If this canary performs visual monitoring by comparing screenshots, this structure contains the ID of the canary run to use as the baseline for screenshots, and the coordinates of any parts of the screen to ignore during the visual monitoring comparison.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VisualReferences" /></td>
+    <td><CopyableCode code="visual_references" /></td>
     <td><code>array</code></td>
     <td>A list of visual reference configurations for the canary, one for each browser type that the canary is configured to run on. Visual references are used for visual monitoring comparisons. syn-nodejs-puppeteer-11.0 and above, and syn-nodejs-playwright-3.0 and above, only supports visualReferences. visualReference field is not supported. Versions older than syn-nodejs-puppeteer-11.0 supports both visualReference and visualReferences for backward compatibility. It is recommended to use visualReferences for consistency and future compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>If this canary is to test an endpoint in a VPC, this structure contains information about the subnets and security groups of the VPC endpoint. For more information, see Running a Canary in a VPC.</td>
 </tr>
@@ -175,12 +175,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Canaries" /></td>
+    <td><CopyableCode code="canaries" /></td>
     <td><code>array</code></td>
     <td>Returns an array. Each item in the array contains the full information about one canary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there is more data available. You can use this token in a subsequent DescribeCanaries operation to retrieve the next set of results.</td>
 </tr>
@@ -300,28 +300,28 @@ Retrieves complete information about one canary. You must specify the name of th
 
 ```sql
 SELECT
-ArtifactConfig,
-ArtifactS3Location,
-BrowserConfigs,
-Code,
-DryRunConfig,
-EngineArn,
-EngineConfigs,
-ExecutionRoleArn,
-FailureRetentionPeriodInDays,
-Id,
-Name,
-ProvisionedResourceCleanup,
-RunConfig,
-RuntimeVersion,
-Schedule,
-Status,
-SuccessRetentionPeriodInDays,
-Tags,
-Timeline,
-VisualReference,
-VisualReferences,
-VpcConfig
+artifact_config,
+artifact_s3_location,
+browser_configs,
+code,
+dry_run_config,
+engine_arn,
+engine_configs,
+execution_role_arn,
+failure_retention_period_in_days,
+id,
+name,
+provisioned_resource_cleanup,
+run_config,
+runtime_version,
+schedule,
+status,
+success_retention_period_in_days,
+tags,
+timeline,
+visual_reference,
+visual_references,
+vpc_config
 FROM aws.synthetics.canaries
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -335,8 +335,8 @@ This operation returns a list of the canaries in your account, along with full d
 
 ```sql
 SELECT
-Canaries,
-NextToken
+canaries,
+next_token
 FROM aws.synthetics.canaries
 WHERE region = '{{ region }}' -- required
 ;
@@ -395,7 +395,7 @@ SELECT
 '{{ ArtifactConfig }}',
 '{{ region }}'
 RETURNING
-Canary
+canary
 ;
 ```
 </TabItem>

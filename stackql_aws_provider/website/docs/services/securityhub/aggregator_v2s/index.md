@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AggregationRegion" /></td>
+    <td><CopyableCode code="aggregation_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where data is aggregated. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AggregatorV2Arn" /></td>
+    <td><CopyableCode code="aggregator_v2_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Aggregator V2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LinkedRegions" /></td>
+    <td><CopyableCode code="linked_regions" /></td>
     <td><code>array</code></td>
     <td>The list of Regions that are linked to the aggregation Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionLinkingMode" /></td>
+    <td><CopyableCode code="region_linking_mode" /></td>
     <td><code>string</code></td>
     <td>Determines how Regions are linked to an Aggregator V2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -160,10 +160,10 @@ Returns the configuration of the specified Aggregator V2.
 
 ```sql
 SELECT
-AggregationRegion,
-AggregatorV2Arn,
-LinkedRegions,
-RegionLinkingMode
+aggregation_region,
+aggregator_v2_arn,
+linked_regions,
+region_linking_mode
 FROM aws.securityhub.aggregator_v2s
 WHERE aggregator_v2_arn = '{{ aggregator_v2_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -201,10 +201,10 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-AggregationRegion,
-AggregatorV2Arn,
-LinkedRegions,
-RegionLinkingMode
+aggregation_region,
+aggregator_v2_arn,
+linked_regions,
+region_linking_mode
 ;
 ```
 </TabItem>
@@ -253,10 +253,10 @@ aggregator_v2_arn = '{{ aggregator_v2_arn }}' --required
 AND region = '{{ region }}' --required
 AND RegionLinkingMode = '{{ RegionLinkingMode }}' --required
 RETURNING
-AggregationRegion,
-AggregatorV2Arn,
-LinkedRegions,
-RegionLinkingMode;
+aggregation_region,
+aggregator_v2_arn,
+linked_regions,
+region_linking_mode;
 ```
 </TabItem>
 </Tabs>

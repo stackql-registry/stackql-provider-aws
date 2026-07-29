@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentDatabaseRevision" /></td>
+    <td><CopyableCode code="current_database_revision" /></td>
     <td><code>string</code></td>
     <td>A string representing the current cluster version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseRevisionReleaseDate" /></td>
+    <td><CopyableCode code="database_revision_release_date" /></td>
     <td><code>string</code></td>
     <td>The date on which the database revision was released.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RevisionTargets" /></td>
+    <td><CopyableCode code="revision_targets" /></td>
     <td><code>string</code></td>
     <td>A list of RevisionTarget objects, where each object describes the database revision that a cluster can be updated to.</td>
 </tr>
@@ -166,10 +166,10 @@ Returns an array of ClusterDbRevision objects.
 
 ```sql
 SELECT
-ClusterIdentifier,
-CurrentDatabaseRevision,
-DatabaseRevisionReleaseDate,
-RevisionTargets
+cluster_identifier,
+current_database_revision,
+database_revision_release_date,
+revision_targets
 FROM aws.redshift.cluster_db_revisions
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'
@@ -202,69 +202,69 @@ ClusterIdentifier = '{{ ClusterIdentifier }}' --required
 AND RevisionTarget = '{{ RevisionTarget }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AllowVersionUpgrade,
-AquaConfiguration,
-AutomatedSnapshotRetentionPeriod,
-AvailabilityZone,
-AvailabilityZoneRelocationStatus,
-CatalogArn,
-ClusterAvailabilityStatus,
-ClusterCreateTime,
-ClusterIdentifier,
-ClusterNamespaceArn,
-ClusterNodes,
-ClusterParameterGroups,
-ClusterPublicKey,
-ClusterRevisionNumber,
-ClusterSecurityGroups,
-ClusterSnapshotCopyStatus,
-ClusterStatus,
-ClusterSubnetGroupName,
-ClusterVersion,
-CustomDomainCertificateArn,
-CustomDomainCertificateExpiryDate,
-CustomDomainName,
-DBName,
-DataTransferProgress,
-DefaultIamRoleArn,
-DeferredMaintenanceWindows,
-ElasticIpStatus,
-ElasticResizeNumberOfNodeOptions,
-Encrypted,
-Endpoint,
-EnhancedVpcRouting,
-ExpectedNextSnapshotScheduleTime,
-ExpectedNextSnapshotScheduleTimeStatus,
-ExtraComputeForAutomaticOptimization,
-HsmStatus,
-IamRoles,
-IpAddressType,
-KmsKeyId,
-LakehouseRegistrationStatus,
-MaintenanceTrackName,
-ManualSnapshotRetentionPeriod,
-MasterPasswordSecretArn,
-MasterPasswordSecretKmsKeyId,
-MasterUsername,
-ModifyStatus,
-MultiAZ,
-MultiAZSecondary,
-NextMaintenanceWindowStartTime,
-NodeType,
-NumberOfNodes,
-PendingActions,
-PendingModifiedValues,
-PreferredMaintenanceWindow,
-PubliclyAccessible,
-ReservedNodeExchangeStatus,
-ResizeInfo,
-RestoreStatus,
-SnapshotScheduleIdentifier,
-SnapshotScheduleState,
-Tags,
-TotalStorageCapacityInMegaBytes,
-VpcId,
-VpcSecurityGroups;
+allow_version_upgrade,
+aqua_configuration,
+automated_snapshot_retention_period,
+availability_zone,
+availability_zone_relocation_status,
+catalog_arn,
+cluster_availability_status,
+cluster_create_time,
+cluster_identifier,
+cluster_namespace_arn,
+cluster_nodes,
+cluster_parameter_groups,
+cluster_public_key,
+cluster_revision_number,
+cluster_security_groups,
+cluster_snapshot_copy_status,
+cluster_status,
+cluster_subnet_group_name,
+cluster_version,
+custom_domain_certificate_arn,
+custom_domain_certificate_expiry_date,
+custom_domain_name,
+db_name,
+data_transfer_progress,
+default_iam_role_arn,
+deferred_maintenance_windows,
+elastic_ip_status,
+elastic_resize_number_of_node_options,
+encrypted,
+endpoint,
+enhanced_vpc_routing,
+expected_next_snapshot_schedule_time,
+expected_next_snapshot_schedule_time_status,
+extra_compute_for_automatic_optimization,
+hsm_status,
+iam_roles,
+ip_address_type,
+kms_key_id,
+lakehouse_registration_status,
+maintenance_track_name,
+manual_snapshot_retention_period,
+master_password_secret_arn,
+master_password_secret_kms_key_id,
+master_username,
+modify_status,
+multi_az,
+multi_az_secondary,
+next_maintenance_window_start_time,
+node_type,
+number_of_nodes,
+pending_actions,
+pending_modified_values,
+preferred_maintenance_window,
+publicly_accessible,
+reserved_node_exchange_status,
+resize_info,
+restore_status,
+snapshot_schedule_identifier,
+snapshot_schedule_state,
+tags,
+total_storage_capacity_in_mega_bytes,
+vpc_id,
+vpc_security_groups;
 ```
 </TabItem>
 </Tabs>

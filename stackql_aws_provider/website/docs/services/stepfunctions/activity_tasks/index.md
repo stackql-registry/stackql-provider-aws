@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The string that contains the JSON input data for the task. Length constraints apply to the payload size, and are expressed as bytes in UTF-8 encoding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskToken" /></td>
+    <td><CopyableCode code="task_token" /></td>
     <td><code>string</code></td>
     <td>A token that identifies the scheduled task. This token must be copied and included in subsequent calls to SendTaskHeartbeat, SendTaskSuccess or SendTaskFailure in order to report the progress or completion of the task.</td>
 </tr>
@@ -125,7 +125,7 @@ Used by workers to retrieve a task (with the specified activity ARN) which has b
 ```sql
 SELECT
 input,
-taskToken
+task_token
 FROM aws.stepfunctions.activity_tasks
 WHERE region = '{{ region }}' -- required
 ;

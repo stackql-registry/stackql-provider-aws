@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Annotation" /></td>
+    <td><CopyableCode code="annotation" /></td>
     <td><code>string</code></td>
     <td>Supplementary information about how the evaluation determined the compliance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ComplianceType" /></td>
+    <td><CopyableCode code="compliance_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether the Amazon Web Services resource complies with the Config rule that evaluated it. For the EvaluationResult data type, Config supports only the COMPLIANT, NON_COMPLIANT, and NOT_APPLICABLE values. Config does not support the INSUFFICIENT_DATA value for the EvaluationResult data type. (COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleInvokedTime" /></td>
+    <td><CopyableCode code="config_rule_invoked_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the Config rule evaluated the Amazon Web Services resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationResultIdentifier" /></td>
+    <td><CopyableCode code="evaluation_result_identifier" /></td>
     <td><code>object</code></td>
     <td>Uniquely identifies the evaluation result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultRecordedTime" /></td>
+    <td><CopyableCode code="result_recorded_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when Config recorded the evaluation result.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResultToken" /></td>
+    <td><CopyableCode code="result_token" /></td>
     <td><code>string</code></td>
     <td>An encrypted token that associates an evaluation with an Config rule. The token identifies the rule, the Amazon Web Services resource being evaluated, and the event that triggered the evaluation.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns the evaluation results for the specified Config rule. The results indica
 
 ```sql
 SELECT
-Annotation,
-ComplianceType,
-ConfigRuleInvokedTime,
-EvaluationResultIdentifier,
-ResultRecordedTime,
-ResultToken
+annotation,
+compliance_type,
+config_rule_invoked_time,
+evaluation_result_identifier,
+result_recorded_time,
+result_token
 FROM aws.config.compliance_details_by_config_rules
 WHERE region = '{{ region }}' -- required
 ;

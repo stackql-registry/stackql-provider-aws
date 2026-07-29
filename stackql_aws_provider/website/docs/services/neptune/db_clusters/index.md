@@ -50,227 +50,227 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>AllocatedStorage always returns 1, because Neptune DB cluster storage size is not fixed, but instead automatically adjusts as needed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedRoles" /></td>
+    <td><CopyableCode code="associated_roles" /></td>
     <td><code>string</code></td>
     <td>Provides a list of the Amazon Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other Amazon services on your behalf.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutomaticRestartTime" /></td>
+    <td><CopyableCode code="automatic_restart_time" /></td>
     <td><code>string</code></td>
     <td>Time at which the DB cluster will be automatically restarted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>Specifies the number of days for which automatic DB snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CharacterSetName" /></td>
+    <td><CopyableCode code="character_set_name" /></td>
     <td><code>string</code></td>
     <td>Not supported by Neptune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CloneGroupId" /></td>
+    <td><CopyableCode code="clone_group_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the clone group to which the DB cluster is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterCreateTime" /></td>
+    <td><CopyableCode code="cluster_create_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CopyTagsToSnapshot" /></td>
+    <td><CopyableCode code="copy_tags_to_snapshot" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, tags are copied to any snapshot of the DB cluster that is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CrossAccountClone" /></td>
+    <td><CopyableCode code="cross_account_clone" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, the DB cluster can be cloned across accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterArn" /></td>
+    <td><CopyableCode code="db_cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains a user-supplied DB cluster identifier. This identifier is the unique key that identifies a DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterMembers" /></td>
+    <td><CopyableCode code="db_cluster_members" /></td>
     <td><code>string</code></td>
     <td>Provides the list of instances that make up the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterOptionGroupMemberships" /></td>
+    <td><CopyableCode code="db_cluster_option_group_memberships" /></td>
     <td><code>string</code></td>
     <td>Not supported by Neptune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterParameterGroup" /></td>
+    <td><CopyableCode code="db_cluster_parameter_group" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the DB cluster parameter group for the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSubnetGroup" /></td>
+    <td><CopyableCode code="db_subnet_group" /></td>
     <td><code>string</code></td>
     <td>Specifies information on the subnet group associated with the DB cluster, including the name, description, and subnets in the subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>Contains the name of the initial database of this DB cluster that was provided at create time, if one was specified when the DB cluster was created. This same name is returned for the life of the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbClusterResourceId" /></td>
+    <td><CopyableCode code="db_cluster_resource_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Region-unique, immutable identifier for the DB cluster. This identifier is found in Amazon CloudTrail log entries whenever the Amazon KMS key for the DB cluster is accessed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletionProtection" /></td>
+    <td><CopyableCode code="deletion_protection" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether or not the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EarliestRestorableTime" /></td>
+    <td><CopyableCode code="earliest_restorable_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the earliest time to which a database can be restored with point-in-time restore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledCloudwatchLogsExports" /></td>
+    <td><CopyableCode code="enabled_cloudwatch_logs_exports" /></td>
     <td><code>string</code></td>
     <td>A list of the log types that this DB cluster is configured to export to CloudWatch Logs. Valid log types are: audit (to publish audit logs to CloudWatch) and slowquery (to publish slow-query logs to CloudWatch). See Publishing Neptune logs to Amazon CloudWatch logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>Specifies the connection endpoint for the primary instance of the DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>Provides the name of the database engine to be used for this DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Indicates the database engine version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalClusterIdentifier" /></td>
+    <td><CopyableCode code="global_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>Contains a user-supplied global database cluster identifier. This identifier is the unique key that identifies a global database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HostedZoneId" /></td>
+    <td><CopyableCode code="hosted_zone_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>True if mapping of Amazon Identity and Access Management (IAM) accounts to database accounts is enabled, and otherwise false.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IOOptimizedNextAllowedModificationTime" /></td>
+    <td><CopyableCode code="io_optimized_next_allowed_modification_time" /></td>
     <td><code>string</code></td>
     <td>The next time you can modify the DB cluster to use the iopt1 storage type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If StorageEncrypted is true, the Amazon KMS key identifier for the encrypted DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRestorableTime" /></td>
+    <td><CopyableCode code="latest_restorable_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the latest time to which a database can be restored with point-in-time restore.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>Not supported by Neptune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiAZ" /></td>
+    <td><CopyableCode code="multi_az" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the DB cluster has instances in multiple Availability Zones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingModifiedValues" /></td>
+    <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>This data type is used as a response element in the ModifyDBCluster operation and contains changes that will be applied during the next maintenance window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>string</code></td>
     <td>Specifies the progress of the operation as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>Specifies the port that the database engine is listening on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredMaintenanceWindow" /></td>
+    <td><CopyableCode code="preferred_maintenance_window" /></td>
     <td><code>string</code></td>
     <td>Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadReplicaIdentifiers" /></td>
+    <td><CopyableCode code="read_replica_identifiers" /></td>
     <td><code>string</code></td>
     <td>Contains one or more identifiers of the Read Replicas associated with this DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReaderEndpoint" /></td>
+    <td><CopyableCode code="reader_endpoint" /></td>
     <td><code>string</code></td>
     <td>The reader endpoint for the DB cluster. The reader endpoint for a DB cluster load-balances connections across the Read Replicas that are available in a DB cluster. As clients request new connections to the reader endpoint, Neptune distributes the connection requests among the Read Replicas in the DB cluster. This functionality can help balance your read workload across multiple Read Replicas in your DB cluster. If a failover occurs, and the Read Replica that you are connected to is promoted to be the primary instance, your connection is dropped. To continue sending your read workload to other Read Replicas in the cluster, you can then reconnect to the reader endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationSourceIdentifier" /></td>
+    <td><CopyableCode code="replication_source_identifier" /></td>
     <td><code>string</code></td>
     <td>Not supported by Neptune.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessV2ScalingConfiguration" /></td>
+    <td><CopyableCode code="serverless_v2_scaling_configuration" /></td>
     <td><code>string</code></td>
     <td>Shows the scaling configuration for a Neptune Serverless DB cluster. For more information, see Using Amazon Neptune Serverless in the Amazon Neptune User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the current state of this DB cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncrypted" /></td>
+    <td><CopyableCode code="storage_encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the DB cluster is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type used by the DB cluster. Valid Values: standard – ( the default ) Provides cost-effective database storage for applications with moderate to small I/O usage. iopt1 – Enables I/O-Optimized storage that's designed to meet the needs of I/O-intensive graph workloads that require predictable pricing with low I/O latency and consistent I/O throughput. Neptune I/O-Optimized storage is only available starting with engine release 1.3.0.0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcSecurityGroups" /></td>
+    <td><CopyableCode code="vpc_security_groups" /></td>
     <td><code>string</code></td>
     <td>Provides a list of VPC security groups that the DB cluster belongs to.</td>
 </tr>
@@ -661,51 +661,51 @@ Returns information about provisioned DB clusters, and supports pagination. This
 
 ```sql
 SELECT
-AllocatedStorage,
-AssociatedRoles,
-AutomaticRestartTime,
-AvailabilityZones,
-BackupRetentionPeriod,
-CharacterSetName,
-CloneGroupId,
-ClusterCreateTime,
-CopyTagsToSnapshot,
-CrossAccountClone,
-DBClusterArn,
-DBClusterIdentifier,
-DBClusterMembers,
-DBClusterOptionGroupMemberships,
-DBClusterParameterGroup,
-DBSubnetGroup,
-DatabaseName,
-DbClusterResourceId,
-DeletionProtection,
-EarliestRestorableTime,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineVersion,
-GlobalClusterIdentifier,
-HostedZoneId,
-IAMDatabaseAuthenticationEnabled,
-IOOptimizedNextAllowedModificationTime,
-KmsKeyId,
-LatestRestorableTime,
-MasterUsername,
-MultiAZ,
-PendingModifiedValues,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-ReadReplicaIdentifiers,
-ReaderEndpoint,
-ReplicationSourceIdentifier,
-ServerlessV2ScalingConfiguration,
-Status,
-StorageEncrypted,
-StorageType,
-VpcSecurityGroups
+allocated_storage,
+associated_roles,
+automatic_restart_time,
+availability_zones,
+backup_retention_period,
+character_set_name,
+clone_group_id,
+cluster_create_time,
+copy_tags_to_snapshot,
+cross_account_clone,
+db_cluster_arn,
+db_cluster_identifier,
+db_cluster_members,
+db_cluster_option_group_memberships,
+db_cluster_parameter_group,
+db_subnet_group,
+database_name,
+db_cluster_resource_id,
+deletion_protection,
+earliest_restorable_time,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_version,
+global_cluster_identifier,
+hosted_zone_id,
+iam_database_authentication_enabled,
+io_optimized_next_allowed_modification_time,
+kms_key_id,
+latest_restorable_time,
+master_username,
+multi_az,
+pending_modified_values,
+percent_progress,
+port,
+preferred_backup_window,
+preferred_maintenance_window,
+read_replica_identifiers,
+reader_endpoint,
+replication_source_identifier,
+serverless_v2_scaling_configuration,
+status,
+storage_encrypted,
+storage_type,
+vpc_security_groups
 FROM aws.neptune.db_clusters
 WHERE region = '{{ region }}' -- required
 AND DBClusterIdentifier = '{{ DBClusterIdentifier }}'
@@ -794,51 +794,51 @@ SELECT
 '{{ GlobalClusterIdentifier }}',
 '{{ StorageType }}'
 RETURNING
-AllocatedStorage,
-AssociatedRoles,
-AutomaticRestartTime,
-AvailabilityZones,
-BackupRetentionPeriod,
-CharacterSetName,
-CloneGroupId,
-ClusterCreateTime,
-CopyTagsToSnapshot,
-CrossAccountClone,
-DBClusterArn,
-DBClusterIdentifier,
-DBClusterMembers,
-DBClusterOptionGroupMemberships,
-DBClusterParameterGroup,
-DBSubnetGroup,
-DatabaseName,
-DbClusterResourceId,
-DeletionProtection,
-EarliestRestorableTime,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineVersion,
-GlobalClusterIdentifier,
-HostedZoneId,
-IAMDatabaseAuthenticationEnabled,
-IOOptimizedNextAllowedModificationTime,
-KmsKeyId,
-LatestRestorableTime,
-MasterUsername,
-MultiAZ,
-PendingModifiedValues,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-ReadReplicaIdentifiers,
-ReaderEndpoint,
-ReplicationSourceIdentifier,
-ServerlessV2ScalingConfiguration,
-Status,
-StorageEncrypted,
-StorageType,
-VpcSecurityGroups
+allocated_storage,
+associated_roles,
+automatic_restart_time,
+availability_zones,
+backup_retention_period,
+character_set_name,
+clone_group_id,
+cluster_create_time,
+copy_tags_to_snapshot,
+cross_account_clone,
+db_cluster_arn,
+db_cluster_identifier,
+db_cluster_members,
+db_cluster_option_group_memberships,
+db_cluster_parameter_group,
+db_subnet_group,
+database_name,
+db_cluster_resource_id,
+deletion_protection,
+earliest_restorable_time,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_version,
+global_cluster_identifier,
+hosted_zone_id,
+iam_database_authentication_enabled,
+io_optimized_next_allowed_modification_time,
+kms_key_id,
+latest_restorable_time,
+master_username,
+multi_az,
+pending_modified_values,
+percent_progress,
+port,
+preferred_backup_window,
+preferred_maintenance_window,
+read_replica_identifiers,
+reader_endpoint,
+replication_source_identifier,
+serverless_v2_scaling_configuration,
+status,
+storage_encrypted,
+storage_type,
+vpc_security_groups
 ;
 ```
 </TabItem>
@@ -1022,51 +1022,51 @@ AND CopyTagsToSnapshot = {{ CopyTagsToSnapshot}}
 AND ServerlessV2ScalingConfiguration = '{{ ServerlessV2ScalingConfiguration}}'
 AND StorageType = '{{ StorageType}}'
 RETURNING
-AllocatedStorage,
-AssociatedRoles,
-AutomaticRestartTime,
-AvailabilityZones,
-BackupRetentionPeriod,
-CharacterSetName,
-CloneGroupId,
-ClusterCreateTime,
-CopyTagsToSnapshot,
-CrossAccountClone,
-DBClusterArn,
-DBClusterIdentifier,
-DBClusterMembers,
-DBClusterOptionGroupMemberships,
-DBClusterParameterGroup,
-DBSubnetGroup,
-DatabaseName,
-DbClusterResourceId,
-DeletionProtection,
-EarliestRestorableTime,
-EnabledCloudwatchLogsExports,
-Endpoint,
-Engine,
-EngineVersion,
-GlobalClusterIdentifier,
-HostedZoneId,
-IAMDatabaseAuthenticationEnabled,
-IOOptimizedNextAllowedModificationTime,
-KmsKeyId,
-LatestRestorableTime,
-MasterUsername,
-MultiAZ,
-PendingModifiedValues,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-PreferredMaintenanceWindow,
-ReadReplicaIdentifiers,
-ReaderEndpoint,
-ReplicationSourceIdentifier,
-ServerlessV2ScalingConfiguration,
-Status,
-StorageEncrypted,
-StorageType,
-VpcSecurityGroups;
+allocated_storage,
+associated_roles,
+automatic_restart_time,
+availability_zones,
+backup_retention_period,
+character_set_name,
+clone_group_id,
+cluster_create_time,
+copy_tags_to_snapshot,
+cross_account_clone,
+db_cluster_arn,
+db_cluster_identifier,
+db_cluster_members,
+db_cluster_option_group_memberships,
+db_cluster_parameter_group,
+db_subnet_group,
+database_name,
+db_cluster_resource_id,
+deletion_protection,
+earliest_restorable_time,
+enabled_cloudwatch_logs_exports,
+endpoint,
+engine,
+engine_version,
+global_cluster_identifier,
+hosted_zone_id,
+iam_database_authentication_enabled,
+io_optimized_next_allowed_modification_time,
+kms_key_id,
+latest_restorable_time,
+master_username,
+multi_az,
+pending_modified_values,
+percent_progress,
+port,
+preferred_backup_window,
+preferred_maintenance_window,
+read_replica_identifiers,
+reader_endpoint,
+replication_source_identifier,
+serverless_v2_scaling_configuration,
+status,
+storage_encrypted,
+storage_type,
+vpc_security_groups;
 ```
 </TabItem>
 </Tabs>

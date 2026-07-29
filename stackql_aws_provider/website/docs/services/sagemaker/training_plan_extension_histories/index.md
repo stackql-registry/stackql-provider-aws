@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone of the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID of the extension. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;3&#125;\d-az\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency code for the upfront fee (e.g., USD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationHours" /></td>
+    <td><CopyableCode code="duration_hours" /></td>
     <td><code>integer</code></td>
     <td>The duration of the extension in hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndDate" /></td>
+    <td><CopyableCode code="end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end date of the extension period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExtendedAt" /></td>
+    <td><CopyableCode code="extended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the extension was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentStatus" /></td>
+    <td><CopyableCode code="payment_status" /></td>
     <td><code>string</code></td>
     <td>The payment processing status of the extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartDate" /></td>
+    <td><CopyableCode code="start_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start date of the extension period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the extension (e.g., Pending, Active, Scheduled, Failed, Expired).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingPlanExtensionOfferingId" /></td>
+    <td><CopyableCode code="training_plan_extension_offering_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the extension offering that was used to create this extension.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpfrontFee" /></td>
+    <td><CopyableCode code="upfront_fee" /></td>
     <td><code>string</code></td>
     <td>The upfront fee for the extension.</td>
 </tr>
@@ -169,17 +169,17 @@ Retrieves the extension history for a specified training plan. The response incl
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-CurrencyCode,
-DurationHours,
-EndDate,
-ExtendedAt,
-PaymentStatus,
-StartDate,
-Status,
-TrainingPlanExtensionOfferingId,
-UpfrontFee
+availability_zone,
+availability_zone_id,
+currency_code,
+duration_hours,
+end_date,
+extended_at,
+payment_status,
+start_date,
+status,
+training_plan_extension_offering_id,
+upfront_fee
 FROM aws.sagemaker.training_plan_extension_histories
 WHERE region = '{{ region }}' -- required
 ;

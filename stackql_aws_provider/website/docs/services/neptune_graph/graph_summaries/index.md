@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="graphSummary" /></td>
+    <td><CopyableCode code="graph_summary" /></td>
     <td><code>object</code></td>
     <td>The graph summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastStatisticsComputationTime" /></td>
+    <td><CopyableCode code="last_statistics_computation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, in ISO 8601 format, of the time at which Neptune Analytics last computed statistics.</td>
 </tr>
@@ -139,8 +139,8 @@ Gets a graph summary for a property graph.
 
 ```sql
 SELECT
-graphSummary,
-lastStatisticsComputationTime,
+graph_summary,
+last_statistics_computation_time,
 version
 FROM aws.neptune_graph.graph_summaries
 WHERE graphIdentifier = '{{ graphIdentifier }}' -- required

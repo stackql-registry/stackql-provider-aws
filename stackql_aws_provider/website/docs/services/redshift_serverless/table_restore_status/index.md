@@ -56,47 +56,47 @@ The following fields are returned by `SELECT` queries:
     <td>A message that explains the returned status. For example, if the status of the operation is FAILED, the message explains why the operation failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The namespace of the table being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="newTableName" /></td>
+    <td><CopyableCode code="new_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table to create from the restore operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="progressInMegaBytes" /></td>
+    <td><CopyableCode code="progress_in_mega_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of data restored to the new table so far, in megabytes (MB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryPointId" /></td>
+    <td><CopyableCode code="recovery_point_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recovery point being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestTime" /></td>
+    <td><CopyableCode code="request_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the table restore request was made, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the snapshot being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceDatabaseName" /></td>
+    <td><CopyableCode code="source_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source database being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceSchemaName" /></td>
+    <td><CopyableCode code="source_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source schema being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceTableName" /></td>
+    <td><CopyableCode code="source_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source table being restored from.</td>
 </tr>
@@ -106,27 +106,27 @@ The following fields are returned by `SELECT` queries:
     <td>A value that describes the current state of the table restore request. Possible values are SUCCEEDED, FAILED, CANCELED, PENDING, and IN_PROGRESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableRestoreRequestId" /></td>
+    <td><CopyableCode code="table_restore_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the RestoreTableFromSnapshot request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetDatabaseName" /></td>
+    <td><CopyableCode code="target_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database to restore to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetSchemaName" /></td>
+    <td><CopyableCode code="target_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema to restore to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalDataInMegaBytes" /></td>
+    <td><CopyableCode code="total_data_in_mega_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total amount of data to restore to the new table, in megabytes (MB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup being restored from.</td>
 </tr>
@@ -150,47 +150,47 @@ The following fields are returned by `SELECT` queries:
     <td>A message that explains the returned status. For example, if the status of the operation is FAILED, the message explains why the operation failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="namespaceName" /></td>
+    <td><CopyableCode code="namespace_name" /></td>
     <td><code>string</code></td>
     <td>The namespace of the table being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="newTableName" /></td>
+    <td><CopyableCode code="new_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table to create from the restore operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="progressInMegaBytes" /></td>
+    <td><CopyableCode code="progress_in_mega_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The amount of data restored to the new table so far, in megabytes (MB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recoveryPointId" /></td>
+    <td><CopyableCode code="recovery_point_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the recovery point being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestTime" /></td>
+    <td><CopyableCode code="request_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the table restore request was made, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="snapshotName" /></td>
+    <td><CopyableCode code="snapshot_name" /></td>
     <td><code>string</code></td>
     <td>The name of the snapshot being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceDatabaseName" /></td>
+    <td><CopyableCode code="source_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source database being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceSchemaName" /></td>
+    <td><CopyableCode code="source_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source schema being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceTableName" /></td>
+    <td><CopyableCode code="source_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source table being restored from.</td>
 </tr>
@@ -200,27 +200,27 @@ The following fields are returned by `SELECT` queries:
     <td>A value that describes the current state of the table restore request. Possible values are SUCCEEDED, FAILED, CANCELED, PENDING, and IN_PROGRESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableRestoreRequestId" /></td>
+    <td><CopyableCode code="table_restore_request_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the RestoreTableFromSnapshot request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetDatabaseName" /></td>
+    <td><CopyableCode code="target_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database to restore to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetSchemaName" /></td>
+    <td><CopyableCode code="target_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema to restore to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalDataInMegaBytes" /></td>
+    <td><CopyableCode code="total_data_in_mega_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total amount of data to restore to the new table, in megabytes (MB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workgroupName" /></td>
+    <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup being restored from.</td>
 </tr>
@@ -298,21 +298,21 @@ Returns information about a TableRestoreStatus object.
 ```sql
 SELECT
 message,
-namespaceName,
-newTableName,
-progressInMegaBytes,
-recoveryPointId,
-requestTime,
-snapshotName,
-sourceDatabaseName,
-sourceSchemaName,
-sourceTableName,
+namespace_name,
+new_table_name,
+progress_in_mega_bytes,
+recovery_point_id,
+request_time,
+snapshot_name,
+source_database_name,
+source_schema_name,
+source_table_name,
 status,
-tableRestoreRequestId,
-targetDatabaseName,
-targetSchemaName,
-totalDataInMegaBytes,
-workgroupName
+table_restore_request_id,
+target_database_name,
+target_schema_name,
+total_data_in_mega_bytes,
+workgroup_name
 FROM aws.redshift_serverless.table_restore_status
 WHERE region = '{{ region }}' -- required
 ;
@@ -325,21 +325,21 @@ Returns information about an array of TableRestoreStatus objects.
 ```sql
 SELECT
 message,
-namespaceName,
-newTableName,
-progressInMegaBytes,
-recoveryPointId,
-requestTime,
-snapshotName,
-sourceDatabaseName,
-sourceSchemaName,
-sourceTableName,
+namespace_name,
+new_table_name,
+progress_in_mega_bytes,
+recovery_point_id,
+request_time,
+snapshot_name,
+source_database_name,
+source_schema_name,
+source_table_name,
 status,
-tableRestoreRequestId,
-targetDatabaseName,
-targetSchemaName,
-totalDataInMegaBytes,
-workgroupName
+table_restore_request_id,
+target_database_name,
+target_schema_name,
+total_data_in_mega_bytes,
+workgroup_name
 FROM aws.redshift_serverless.table_restore_status
 WHERE region = '{{ region }}' -- required
 ;

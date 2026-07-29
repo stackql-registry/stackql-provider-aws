@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>PrincipalIdFormatARN description</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Statuses" /></td>
+    <td><CopyableCode code="statuses" /></td>
     <td><code>string</code></td>
     <td>PrincipalIdFormatStatuses description</td>
 </tr>
@@ -144,8 +144,8 @@ Describes the ID format settings for the root user and all IAM roles and IAM use
 
 ```sql
 SELECT
-Arn,
-Statuses
+arn,
+statuses
 FROM aws.ec2.principal_id_formats
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

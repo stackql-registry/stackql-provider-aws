@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="imagePipeline" /></td>
+    <td><CopyableCode code="image_pipeline" /></td>
     <td><code>object</code></td>
     <td>The image pipeline object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The request ID that uniquely identifies this request.</td>
 </tr>
@@ -85,32 +85,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the image pipeline. (pattern: &lt;code&gt;^arn:aws&#91;^:&#93;*:imagebuilder:&#91;^:&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|lifecycle-policy|workflow\/(?:build|test|distribution))/&#91;a-z0-9-_&#93;+(?:/(?:(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+)\.(?:x|&#91;0-9&#93;+))(?:/&#91;0-9&#93;+)?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="consecutiveFailures" /></td>
+    <td><CopyableCode code="consecutive_failures" /></td>
     <td><code>integer</code></td>
     <td>Image Builder tracks the number of consecutive failures for scheduled pipeline executions and takes one of the following actions each time it runs on a schedule: If the pipeline execution is successful, the number of consecutive failures resets to zero. If the pipeline execution fails, Image Builder increments the number of consecutive failures. If the failure count exceeds the limit defined in the AutoDisablePolicy, Image Builder disables the pipeline. The consecutive failure count is also reset to zero under the following conditions: The pipeline runs manually and succeeds. The pipeline configuration is updated. If the pipeline runs manually and fails, the count remains the same. The next scheduled run continues to increment where it left off before.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="containerRecipeArn" /></td>
+    <td><CopyableCode code="container_recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the container recipe that is used for this pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date on which this image pipeline was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateLastRun" /></td>
+    <td><CopyableCode code="date_last_run" /></td>
     <td><code>string</code></td>
     <td>This is no longer supported, and does not return a value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateNextRun" /></td>
+    <td><CopyableCode code="date_next_run" /></td>
     <td><code>string</code></td>
     <td>The next date when the pipeline is scheduled to run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The date on which this image pipeline was last updated.</td>
 </tr>
@@ -120,52 +120,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the image pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="distributionConfigurationArn" /></td>
+    <td><CopyableCode code="distribution_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the distribution configuration associated with this image pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enhancedImageMetadataEnabled" /></td>
+    <td><CopyableCode code="enhanced_image_metadata_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionRole" /></td>
+    <td><CopyableCode code="execution_role" /></td>
     <td><code>string</code></td>
     <td>The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions. (pattern: &lt;code&gt;^(?:arn:aws(?:-&#91;a-z&#93;+)*:iam::&#91;0-9&#93;&#123;12&#125;:role/)?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageRecipeArn" /></td>
+    <td><CopyableCode code="image_recipe_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the image recipe associated with this image pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageScanningConfiguration" /></td>
+    <td><CopyableCode code="image_scanning_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains settings for Image Builder image resource and container image scans.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTags" /></td>
+    <td><CopyableCode code="image_tags" /></td>
     <td><code>object</code></td>
     <td>The tags to be applied to the images produced by this pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTestsConfiguration" /></td>
+    <td><CopyableCode code="image_tests_configuration" /></td>
     <td><code>object</code></td>
     <td>Configure image tests for your pipeline build. Tests run after building the image, to verify that the AMI or container image is valid before distributing it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="infrastructureConfigurationArn" /></td>
+    <td><CopyableCode code="infrastructure_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the infrastructure configuration associated with this image pipeline.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRunStatus" /></td>
+    <td><CopyableCode code="last_run_status" /></td>
     <td><code>string</code></td>
     <td>The status of the last image that this pipeline built, such as BUILDING, TESTING, FAILED, or AVAILABLE. (PENDING, CREATING, BUILDING, TESTING, DISTRIBUTING, INTEGRATING, AVAILABLE, CANCELLED, FAILED, DEPRECATED, DELETED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="loggingConfiguration" /></td>
+    <td><CopyableCode code="logging_configuration" /></td>
     <td><code>object</code></td>
     <td>The logging configuration that's defined for pipeline execution.</td>
 </tr>
@@ -300,8 +300,8 @@ Gets an image pipeline.
 
 ```sql
 SELECT
-imagePipeline,
-requestId
+image_pipeline,
+request_id
 FROM aws.imagebuilder.image_pipelines
 WHERE imagePipelineArn = '{{ imagePipelineArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -316,23 +316,23 @@ Returns a list of image pipelines.
 SELECT
 name,
 arn,
-consecutiveFailures,
-containerRecipeArn,
-dateCreated,
-dateLastRun,
-dateNextRun,
-dateUpdated,
+consecutive_failures,
+container_recipe_arn,
+date_created,
+date_last_run,
+date_next_run,
+date_updated,
 description,
-distributionConfigurationArn,
-enhancedImageMetadataEnabled,
-executionRole,
-imageRecipeArn,
-imageScanningConfiguration,
-imageTags,
-imageTestsConfiguration,
-infrastructureConfigurationArn,
-lastRunStatus,
-loggingConfiguration,
+distribution_configuration_arn,
+enhanced_image_metadata_enabled,
+execution_role,
+image_recipe_arn,
+image_scanning_configuration,
+image_tags,
+image_tests_configuration,
+infrastructure_configuration_arn,
+last_run_status,
+logging_configuration,
 platform,
 schedule,
 status,
@@ -400,9 +400,9 @@ SELECT
 '{{ loggingConfiguration }}',
 '{{ region }}'
 RETURNING
-clientToken,
-imagePipelineArn,
-requestId
+client_token,
+image_pipeline_arn,
+request_id
 ;
 ```
 </TabItem>
@@ -518,9 +518,9 @@ AND imagePipelineArn = '{{ imagePipelineArn }}' --required
 AND infrastructureConfigurationArn = '{{ infrastructureConfigurationArn }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
-clientToken,
-imagePipelineArn,
-requestId;
+client_token,
+image_pipeline_arn,
+request_id;
 ```
 </TabItem>
 </Tabs>

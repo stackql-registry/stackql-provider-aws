@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time (in Unix time) of the dataset export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset to export. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetExportJobArn" /></td>
+    <td><CopyableCode code="dataset_export_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset export job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a dataset export job fails, provides the reason why.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestionMode" /></td>
+    <td><CopyableCode code="ingestion_mode" /></td>
     <td><code>string</code></td>
     <td>The data to export, based on how you imported the data. You can choose to export BULK data that you imported using a dataset import job, PUT data that you imported incrementally (using the console, PutEvents, PutUsers and PutItems operations), or ALL for both types. The default value is PUT. (BULK, PUT, ALL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the export job. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobOutput" /></td>
+    <td><CopyableCode code="job_output" /></td>
     <td><code>object</code></td>
     <td>The path to the Amazon S3 bucket where the job's output is stored. For example: s3:​//bucket-name/folder-name/</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) the status of the dataset export job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM service role that has permissions to add data to your output Amazon S3 bucket. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -115,27 +115,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the dataset export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetExportJobArn" /></td>
+    <td><CopyableCode code="dataset_export_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset export job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a dataset export job fails, the reason behind the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset export job. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the dataset export job status was last updated.</td>
 </tr>
@@ -224,15 +224,15 @@ Describes the dataset export job created by CreateDatasetExportJob, including th
 
 ```sql
 SELECT
-creationDateTime,
-datasetArn,
-datasetExportJobArn,
-failureReason,
-ingestionMode,
-jobName,
-jobOutput,
-lastUpdatedDateTime,
-roleArn,
+creation_date_time,
+dataset_arn,
+dataset_export_job_arn,
+failure_reason,
+ingestion_mode,
+job_name,
+job_output,
+last_updated_date_time,
+role_arn,
 status
 FROM aws.personalize.dataset_export_jobs
 WHERE region = '{{ region }}' -- required
@@ -245,11 +245,11 @@ Returns a list of dataset export jobs that use the given dataset. When a dataset
 
 ```sql
 SELECT
-creationDateTime,
-datasetExportJobArn,
-failureReason,
-jobName,
-lastUpdatedDateTime,
+creation_date_time,
+dataset_export_job_arn,
+failure_reason,
+job_name,
+last_updated_date_time,
 status
 FROM aws.personalize.dataset_export_jobs
 WHERE region = '{{ region }}' -- required
@@ -291,7 +291,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-datasetExportJobArn
+dataset_export_job_arn
 ;
 ```
 </TabItem>

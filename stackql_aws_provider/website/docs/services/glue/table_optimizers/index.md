@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The Catalog ID of the table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatabaseName" /></td>
+    <td><CopyableCode code="database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database in the catalog in which the table resides. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableOptimizer" /></td>
+    <td><CopyableCode code="table_optimizer" /></td>
     <td><code>object</code></td>
     <td>The optimizer associated with the specified table.</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Failures" /></td>
+    <td><CopyableCode code="failures" /></td>
     <td><code>array</code></td>
     <td>A list of errors from the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableOptimizers" /></td>
+    <td><CopyableCode code="table_optimizers" /></td>
     <td><code>array</code></td>
     <td>A list of BatchTableOptimizer objects.</td>
 </tr>
@@ -188,10 +188,10 @@ Returns the configuration of all optimizers associated with a specified table.
 
 ```sql
 SELECT
-CatalogId,
-DatabaseName,
-TableName,
-TableOptimizer
+catalog_id,
+database_name,
+table_name,
+table_optimizer
 FROM aws.glue.table_optimizers
 WHERE region = '{{ region }}' -- required
 ;
@@ -203,8 +203,8 @@ Returns the configuration for the specified table optimizers.
 
 ```sql
 SELECT
-Failures,
-TableOptimizers
+failures,
+table_optimizers
 FROM aws.glue.table_optimizers
 WHERE region = '{{ region }}' -- required
 ;

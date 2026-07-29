@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the edge deployment plan was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>The device fleet used for this edge deployment plan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentFailed" /></td>
+    <td><CopyableCode code="edge_deployment_failed" /></td>
     <td><code>integer</code></td>
     <td>The number of edge devices that failed the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPending" /></td>
+    <td><CopyableCode code="edge_deployment_pending" /></td>
     <td><code>integer</code></td>
     <td>The number of edge devices yet to pick up deployment, or in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPlanArn" /></td>
+    <td><CopyableCode code="edge_deployment_plan_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of edge deployment plan. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z\-&#93;*:\d&#123;12&#125;:edge-deployment/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPlanName" /></td>
+    <td><CopyableCode code="edge_deployment_plan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the edge deployment plan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentSuccess" /></td>
+    <td><CopyableCode code="edge_deployment_success" /></td>
     <td><code>integer</code></td>
     <td>The number of edge devices with the successful deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the edge deployment plan was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelConfigs" /></td>
+    <td><CopyableCode code="model_configs" /></td>
     <td><code>array</code></td>
     <td>List of models associated with the edge deployment plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token to use when calling the next set of stages in the edge deployment plan. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Stages" /></td>
+    <td><CopyableCode code="stages" /></td>
     <td><code>array</code></td>
     <td>List of stages in the edge deployment plan.</td>
 </tr>
@@ -120,42 +120,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the edge deployment plan was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceFleetName" /></td>
+    <td><CopyableCode code="device_fleet_name" /></td>
     <td><code>string</code></td>
     <td>The name of the device fleet used for the deployment. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentFailed" /></td>
+    <td><CopyableCode code="edge_deployment_failed" /></td>
     <td><code>integer</code></td>
     <td>The number of edge devices that failed the deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPending" /></td>
+    <td><CopyableCode code="edge_deployment_pending" /></td>
     <td><code>integer</code></td>
     <td>The number of edge devices yet to pick up the deployment, or in progress.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPlanArn" /></td>
+    <td><CopyableCode code="edge_deployment_plan_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the edge deployment plan. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z\-&#93;*:\d&#123;12&#125;:edge-deployment/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentPlanName" /></td>
+    <td><CopyableCode code="edge_deployment_plan_name" /></td>
     <td><code>string</code></td>
     <td>The name of the edge deployment plan. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeDeploymentSuccess" /></td>
+    <td><CopyableCode code="edge_deployment_success" /></td>
     <td><code>integer</code></td>
     <td>The number of edge devices with the successful deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the edge deployment plan was last updated.</td>
 </tr>
@@ -274,17 +274,17 @@ Describes an edge deployment plan with deployment status per stage.
 
 ```sql
 SELECT
-CreationTime,
-DeviceFleetName,
-EdgeDeploymentFailed,
-EdgeDeploymentPending,
-EdgeDeploymentPlanArn,
-EdgeDeploymentPlanName,
-EdgeDeploymentSuccess,
-LastModifiedTime,
-ModelConfigs,
-NextToken,
-Stages
+creation_time,
+device_fleet_name,
+edge_deployment_failed,
+edge_deployment_pending,
+edge_deployment_plan_arn,
+edge_deployment_plan_name,
+edge_deployment_success,
+last_modified_time,
+model_configs,
+next_token,
+stages
 FROM aws.sagemaker.edge_deployment_plans
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,14 +296,14 @@ Lists all edge deployment plans.
 
 ```sql
 SELECT
-CreationTime,
-DeviceFleetName,
-EdgeDeploymentFailed,
-EdgeDeploymentPending,
-EdgeDeploymentPlanArn,
-EdgeDeploymentPlanName,
-EdgeDeploymentSuccess,
-LastModifiedTime
+creation_time,
+device_fleet_name,
+edge_deployment_failed,
+edge_deployment_pending,
+edge_deployment_plan_arn,
+edge_deployment_plan_name,
+edge_deployment_success,
+last_modified_time
 FROM aws.sagemaker.edge_deployment_plans
 WHERE region = '{{ region }}' -- required
 ;
@@ -343,7 +343,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-EdgeDeploymentPlanArn
+edge_deployment_plan_arn
 ;
 ```
 </TabItem>

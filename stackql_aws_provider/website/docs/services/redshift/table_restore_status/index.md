@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Redshift cluster that the table is being restored to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>A description of the status of the table restore request. Status values include SUCCEEDED, FAILED, CANCELED, PENDING, IN_PROGRESS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NewTableName" /></td>
+    <td><CopyableCode code="new_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table to create as a result of the table restore request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressInMegaBytes" /></td>
+    <td><CopyableCode code="progress_in_mega_bytes" /></td>
     <td><code>integer</code></td>
     <td>The amount of data restored to the new table so far, in megabytes (MB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestTime" /></td>
+    <td><CopyableCode code="request_time" /></td>
     <td><code>string</code></td>
     <td>The time that the table restore request was made, in Universal Coordinated Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotIdentifier" /></td>
+    <td><CopyableCode code="snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the snapshot that the table is being restored from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDatabaseName" /></td>
+    <td><CopyableCode code="source_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source database that contains the table being restored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceSchemaName" /></td>
+    <td><CopyableCode code="source_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source schema that contains the table being restored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceTableName" /></td>
+    <td><CopyableCode code="source_table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the source table being restored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A value that describes the current state of the table restore request. Valid Values: SUCCEEDED, FAILED, CANCELED, PENDING, IN_PROGRESS</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TableRestoreRequestId" /></td>
+    <td><CopyableCode code="table_restore_request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the table restore request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetDatabaseName" /></td>
+    <td><CopyableCode code="target_database_name" /></td>
     <td><code>string</code></td>
     <td>The name of the database to restore the table to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetSchemaName" /></td>
+    <td><CopyableCode code="target_schema_name" /></td>
     <td><code>string</code></td>
     <td>The name of the schema to restore the table to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalDataInMegaBytes" /></td>
+    <td><CopyableCode code="total_data_in_mega_bytes" /></td>
     <td><code>integer</code></td>
     <td>The total amount of data to restore to the new table, in megabytes (MB).</td>
 </tr>
@@ -204,20 +204,20 @@ Lists the status of one or more table restore requests made using the RestoreTab
 
 ```sql
 SELECT
-ClusterIdentifier,
-Message,
-NewTableName,
-ProgressInMegaBytes,
-RequestTime,
-SnapshotIdentifier,
-SourceDatabaseName,
-SourceSchemaName,
-SourceTableName,
-Status,
-TableRestoreRequestId,
-TargetDatabaseName,
-TargetSchemaName,
-TotalDataInMegaBytes
+cluster_identifier,
+message,
+new_table_name,
+progress_in_mega_bytes,
+request_time,
+snapshot_identifier,
+source_database_name,
+source_schema_name,
+source_table_name,
+status,
+table_restore_request_id,
+target_database_name,
+target_schema_name,
+total_data_in_mega_bytes
 FROM aws.redshift.table_restore_status
 WHERE region = '{{ region }}' -- required
 AND ClusterIdentifier = '{{ ClusterIdentifier }}'

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="uniqueProblems" /></td>
+    <td><CopyableCode code="unique_problems" /></td>
     <td><code>object</code></td>
     <td>Information about the unique problems. Allowed values include: PENDING PASSED WARNED FAILED SKIPPED ERRORED STOPPED</td>
 </tr>
@@ -124,8 +124,8 @@ Gets information about unique problems, such as exceptions or crashes. Unique pr
 
 ```sql
 SELECT
-nextToken,
-uniqueProblems
+next_token,
+unique_problems
 FROM aws.devicefarm.unique_problems
 WHERE region = '{{ region }}' -- required
 ;

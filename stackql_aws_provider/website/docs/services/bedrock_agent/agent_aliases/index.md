@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentAliasId" /></td>
+    <td><CopyableCode code="agent_alias_id" /></td>
     <td><code>string</code></td>
     <td>Contains details about (pattern: &lt;code&gt;(\bTSTALIASID\b|&#91;0-9a-zA-Z&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentAliasName" /></td>
+    <td><CopyableCode code="agent_alias_name" /></td>
     <td><code>string</code></td>
     <td>The name of the alias. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentAliasStatus" /></td>
+    <td><CopyableCode code="agent_alias_status" /></td>
     <td><code>string</code></td>
     <td>The status of the alias. (CREATING, PREPARED, FAILED, UPDATING, DELETING, DISSOCIATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aliasInvocationState" /></td>
+    <td><CopyableCode code="alias_invocation_state" /></td>
     <td><code>string</code></td>
     <td>The invocation state for the agent alias. If the agent alias is running, the value is ACCEPT_INVOCATIONS. If the agent alias is paused, the value is REJECT_INVOCATIONS. Use the UpdateAgentAlias operation to change the invocation state. (ACCEPT_INVOCATIONS, REJECT_INVOCATIONS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the alias of the agent was created.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="routingConfiguration" /></td>
+    <td><CopyableCode code="routing_configuration" /></td>
     <td><code>array</code></td>
     <td>Contains details about the version of the agent with which the alias is associated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the alias was last updated.</td>
 </tr>
@@ -159,14 +159,14 @@ Lists the aliases of an agent and information about each one.
 
 ```sql
 SELECT
-agentAliasId,
-agentAliasName,
-agentAliasStatus,
-aliasInvocationState,
-createdAt,
+agent_alias_id,
+agent_alias_name,
+agent_alias_status,
+alias_invocation_state,
+created_at,
 description,
-routingConfiguration,
-updatedAt
+routing_configuration,
+updated_at
 FROM aws.bedrock_agent.agent_aliases
 WHERE agent_id = '{{ agent_id }}' -- required
 AND region = '{{ region }}' -- required

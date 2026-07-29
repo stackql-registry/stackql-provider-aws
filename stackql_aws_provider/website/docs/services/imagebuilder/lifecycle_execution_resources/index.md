@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account that owns the impacted resource.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The action to take for the identified resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ending timestamp from the lifecycle action that was applied to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageUris" /></td>
+    <td><CopyableCode code="image_uris" /></td>
     <td><code>array</code></td>
     <td>For an impacted container image, this identifies a list of URIs for associated container images distributed to ECR repositories.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Web Services Region where the lifecycle execution resource is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>Identifies the impacted resource. The resource ID depends on the type of resource, as follows. Image Builder image resources: Amazon Resource Name (ARN) Distributed AMIs: AMI ID Container images distributed to an ECR repository: image URI or SHA Digest</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of associated resource snapshots for the impacted resource if it’s an AMI.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The starting timestamp from the lifecycle action that was applied to the resource.</td>
 </tr>
@@ -159,14 +159,14 @@ List resources that the runtime instance of the image lifecycle identified for l
 
 ```sql
 SELECT
-accountId,
+account_id,
 action,
-endTime,
-imageUris,
+end_time,
+image_uris,
 region,
-resourceId,
+resource_id,
 snapshots,
-startTime,
+start_time,
 state
 FROM aws.imagebuilder.lifecycle_execution_resources
 WHERE region = '{{ region }}' -- required

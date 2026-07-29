@@ -56,37 +56,37 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the guardrail. (pattern: &lt;code&gt;&#91;0-9a-zA-Z-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="automatedReasoningPolicy" /></td>
+    <td><CopyableCode code="automated_reasoning_policy" /></td>
     <td><code>object</code></td>
     <td>The current Automated Reasoning policy configuration for the guardrail, if any is configured.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockedInputMessaging" /></td>
+    <td><CopyableCode code="blocked_input_messaging" /></td>
     <td><code>string</code></td>
     <td>The message that the guardrail returns when it blocks a prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="blockedOutputsMessaging" /></td>
+    <td><CopyableCode code="blocked_outputs_messaging" /></td>
     <td><code>string</code></td>
     <td>The message that the guardrail returns when it blocks a model response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentPolicy" /></td>
+    <td><CopyableCode code="content_policy" /></td>
     <td><code>object</code></td>
     <td>The content policy that was configured for the guardrail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contextualGroundingPolicy" /></td>
+    <td><CopyableCode code="contextual_grounding_policy" /></td>
     <td><code>object</code></td>
     <td>The contextual grounding policy used in the guardrail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the guardrail was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crossRegionDetails" /></td>
+    <td><CopyableCode code="cross_region_details" /></td>
     <td><code>object</code></td>
     <td>Details about the system-defined guardrail profile that you're using with your guardrail, including the guardrail profile ID and Amazon Resource Name (ARN).</td>
 </tr>
@@ -96,27 +96,27 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the guardrail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureRecommendations" /></td>
+    <td><CopyableCode code="failure_recommendations" /></td>
     <td><code>array</code></td>
     <td>Appears if the status of the guardrail is FAILED. A list of recommendations to carry out before retrying the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardrailArn" /></td>
+    <td><CopyableCode code="guardrail_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the guardrail. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:guardrail/&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="guardrailId" /></td>
+    <td><CopyableCode code="guardrail_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the guardrail. (pattern: &lt;code&gt;&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the KMS key that encrypts the guardrail. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sensitiveInformationPolicy" /></td>
+    <td><CopyableCode code="sensitive_information_policy" /></td>
     <td><code>object</code></td>
     <td>The sensitive information policy that was configured for the guardrail.</td>
 </tr>
@@ -126,17 +126,17 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the guardrail. (CREATING, UPDATING, VERSIONING, READY, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReasons" /></td>
+    <td><CopyableCode code="status_reasons" /></td>
     <td><code>array</code></td>
     <td>Appears if the status is FAILED. A list of reasons for why the guardrail failed to be created, updated, versioned, or deleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="topicPolicy" /></td>
+    <td><CopyableCode code="topic_policy" /></td>
     <td><code>object</code></td>
     <td>The topic policy that was configured for the guardrail.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the guardrail was updated.</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>The version of the guardrail. (pattern: &lt;code&gt;((&#91;1-9&#93;&#91;0-9&#93;&#123;0,7&#125;)|(DRAFT))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="wordPolicy" /></td>
+    <td><CopyableCode code="word_policy" /></td>
     <td><code>object</code></td>
     <td>The word policy that was configured for the guardrail.</td>
 </tr>
@@ -180,12 +180,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the guardrail. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:guardrail/&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the guardrail was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crossRegionDetails" /></td>
+    <td><CopyableCode code="cross_region_details" /></td>
     <td><code>object</code></td>
     <td>Details about the system-defined guardrail profile that you're using with your guardrail, including the guardrail profile ID and Amazon Resource Name (ARN).</td>
 </tr>
@@ -200,7 +200,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the guardrail. (CREATING, UPDATING, VERSIONING, READY, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the guardrail was last updated.</td>
 </tr>
@@ -336,25 +336,25 @@ Gets details about a guardrail. If you don't specify a version, the response ret
 ```sql
 SELECT
 name,
-automatedReasoningPolicy,
-blockedInputMessaging,
-blockedOutputsMessaging,
-contentPolicy,
-contextualGroundingPolicy,
-createdAt,
-crossRegionDetails,
+automated_reasoning_policy,
+blocked_input_messaging,
+blocked_outputs_messaging,
+content_policy,
+contextual_grounding_policy,
+created_at,
+cross_region_details,
 description,
-failureRecommendations,
-guardrailArn,
-guardrailId,
-kmsKeyArn,
-sensitiveInformationPolicy,
+failure_recommendations,
+guardrail_arn,
+guardrail_id,
+kms_key_arn,
+sensitive_information_policy,
 status,
-statusReasons,
-topicPolicy,
-updatedAt,
+status_reasons,
+topic_policy,
+updated_at,
 version,
-wordPolicy
+word_policy
 FROM aws.bedrock.guardrails
 WHERE guardrail_identifier = '{{ guardrail_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -371,11 +371,11 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-crossRegionDetails,
+created_at,
+cross_region_details,
 description,
 status,
-updatedAt,
+updated_at,
 version
 FROM aws.bedrock.guardrails
 WHERE region = '{{ region }}' -- required
@@ -437,9 +437,9 @@ SELECT
 '{{ clientRequestToken }}',
 '{{ region }}'
 RETURNING
-createdAt,
-guardrailArn,
-guardrailId,
+created_at,
+guardrail_arn,
+guardrail_id,
 version
 ;
 ```
@@ -461,7 +461,7 @@ SELECT
 '{{ guardrail_identifier }}',
 '{{ region }}'
 RETURNING
-guardrailId,
+guardrail_id,
 version
 ;
 ```
@@ -621,9 +621,9 @@ AND name = '{{ name }}' --required
 AND blockedInputMessaging = '{{ blockedInputMessaging }}' --required
 AND blockedOutputsMessaging = '{{ blockedOutputsMessaging }}' --required
 RETURNING
-guardrailArn,
-guardrailId,
-updatedAt,
+guardrail_arn,
+guardrail_id,
+updated_at,
 version;
 ```
 </TabItem>

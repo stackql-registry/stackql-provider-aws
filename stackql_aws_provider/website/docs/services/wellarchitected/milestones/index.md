@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Milestone" /></td>
+    <td><CopyableCode code="milestone" /></td>
     <td><code>object</code></td>
     <td>A milestone return object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the workload. This ID is unique within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MilestoneSummaries" /></td>
+    <td><CopyableCode code="milestone_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of milestone summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkloadId" /></td>
+    <td><CopyableCode code="workload_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the workload. This ID is unique within an Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
@@ -191,8 +191,8 @@ Get a milestone for an existing workload.
 
 ```sql
 SELECT
-Milestone,
-WorkloadId
+milestone,
+workload_id
 FROM aws.wellarchitected.milestones
 WHERE workload_id = '{{ workload_id }}' -- required
 AND milestone_number = '{{ milestone_number }}' -- required
@@ -206,9 +206,9 @@ List all milestones for an existing workload.
 
 ```sql
 SELECT
-MilestoneSummaries,
-NextToken,
-WorkloadId
+milestone_summaries,
+next_token,
+workload_id
 FROM aws.wellarchitected.milestones
 WHERE workload_id = '{{ workload_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -244,8 +244,8 @@ SELECT
 '{{ workload_id }}',
 '{{ region }}'
 RETURNING
-MilestoneNumber,
-WorkloadId
+milestone_number,
+workload_id
 ;
 ```
 </TabItem>

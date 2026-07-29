@@ -51,177 +51,177 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BytesCompressed" /></td>
+    <td><CopyableCode code="bytes_compressed" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of physical bytes that DataSync transfers over the network after compression (if compression is possible). This number is typically less than BytesTransferred unless the data isn't compressible.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BytesTransferred" /></td>
+    <td><CopyableCode code="bytes_transferred" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of bytes that DataSync sends to the network before compression (if compression is possible). For the number of bytes transferred over the network, see BytesCompressed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BytesWritten" /></td>
+    <td><CopyableCode code="bytes_written" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of logical bytes that DataSync actually writes to the destination location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the transfer task ends.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedBytesToTransfer" /></td>
+    <td><CopyableCode code="estimated_bytes_to_transfer" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of logical bytes that DataSync expects to write to the destination location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedFilesToDelete" /></td>
+    <td><CopyableCode code="estimated_files_to_delete" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of files, objects, and directories that DataSync expects to delete in your destination location. If you don't configure your task to delete data in the destination that isn't in the source, the value is always 0. For Enhanced mode tasks, this counter only includes files or objects. Directories are counted in EstimatedFoldersToDelete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedFilesToTransfer" /></td>
+    <td><CopyableCode code="estimated_files_to_transfer" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of files, objects, and directories that DataSync expects to transfer over the network. This value is calculated while DataSync prepares the transfer. How this gets calculated depends primarily on your task’s transfer mode configuration: If TranserMode is set to CHANGED - The calculation is based on comparing the content of the source and destination locations and determining the difference that needs to be transferred. The difference can include: Anything that's added or modified at the source location. Anything that's in both locations and modified at the destination after an initial transfer (unless OverwriteMode is set to NEVER). (Basic task mode only) The number of items that DataSync expects to delete (if PreserveDeletedFiles is set to REMOVE). If TranserMode is set to ALL - The calculation is based only on the items that DataSync finds at the source location. For Enhanced mode tasks, this counter only includes files or objects. Directories are counted in EstimatedFoldersToTransfer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedFoldersToDelete" /></td>
+    <td><CopyableCode code="estimated_folders_to_delete" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of directories that DataSync expects to delete in your destination location. If you don't configure your task to delete data in the destination that isn't in the source, the value is always 0. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedFoldersToTransfer" /></td>
+    <td><CopyableCode code="estimated_folders_to_transfer" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of directories that DataSync expects to transfer over the network. This value is calculated as DataSync prepares directories to transfer. How this gets calculated depends primarily on your task’s transfer mode configuration: If TranserMode is set to CHANGED - The calculation is based on comparing the content of the source and destination locations and determining the difference that needs to be transferred. The difference can include: Anything that's added or modified at the source location. Anything that's in both locations and modified at the destination after an initial transfer (unless OverwriteMode is set to NEVER). If TranserMode is set to ALL - The calculation is based only on the items that DataSync finds at the source location. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Excludes" /></td>
+    <td><CopyableCode code="excludes" /></td>
     <td><code>array</code></td>
     <td>A list of filter rules that exclude specific data during your transfer. For more information and examples, see Filtering data transferred by DataSync.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilesDeleted" /></td>
+    <td><CopyableCode code="files_deleted" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of files, objects, and directories that DataSync actually deletes in your destination location. If you don't configure your task to delete data in the destination that isn't in the source, the value is always 0. For Enhanced mode tasks, this counter only includes files or objects. Directories are counted in FoldersDeleted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilesFailed" /></td>
+    <td><CopyableCode code="files_failed" /></td>
     <td><code>object</code></td>
     <td>The number of files or objects that DataSync fails to prepare, transfer, verify, and delete during your task execution. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilesListed" /></td>
+    <td><CopyableCode code="files_listed" /></td>
     <td><code>object</code></td>
     <td>The number of files or objects that DataSync finds at your locations. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilesPrepared" /></td>
+    <td><CopyableCode code="files_prepared" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of files or objects that DataSync will attempt to transfer after comparing your source and destination locations. Applies only to Enhanced mode tasks. This counter isn't applicable if you configure your task to transfer all data. In that scenario, DataSync copies everything from the source to the destination without comparing differences between the locations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilesSkipped" /></td>
+    <td><CopyableCode code="files_skipped" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of files, objects, and directories that DataSync skips during your transfer. For Enhanced mode tasks, this counter only includes files or objects. Directories are counted in FoldersSkipped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilesTransferred" /></td>
+    <td><CopyableCode code="files_transferred" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of files, objects, and directories that DataSync actually transfers over the network. This value is updated periodically during your task execution when something is read from the source and sent over the network. If DataSync fails to transfer something, this value can be less than EstimatedFilesToTransfer. In some cases, this value can also be greater than EstimatedFilesToTransfer. This element is implementation-specific for some location types, so don't use it as an exact indication of what's transferring or to monitor your task execution. For Enhanced mode tasks, this counter only includes files or objects. Directories are counted in FoldersTransferred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilesVerified" /></td>
+    <td><CopyableCode code="files_verified" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of files, objects, and directories that DataSync verifies during your transfer. When you configure your task to verify only the data that's transferred, DataSync doesn't verify directories in some situations or files that fail to transfer. For Enhanced mode tasks, this counter only includes files or objects. Directories are counted in FoldersVerified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoldersDeleted" /></td>
+    <td><CopyableCode code="folders_deleted" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of directories that DataSync actually deletes in your destination location. If you don't configure your task to delete data in the destination that isn't in the source, the value is always 0. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoldersFailed" /></td>
+    <td><CopyableCode code="folders_failed" /></td>
     <td><code>object</code></td>
     <td>The number of directories that DataSync fails to list, prepare, transfer, verify, and delete during your task execution. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoldersListed" /></td>
+    <td><CopyableCode code="folders_listed" /></td>
     <td><code>object</code></td>
     <td>The number of directories that DataSync finds at your locations. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoldersPrepared" /></td>
+    <td><CopyableCode code="folders_prepared" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of directories that DataSync will attempt to transfer after comparing your source and destination locations. Applies only to Enhanced mode tasks. This counter isn't applicable if you configure your task to transfer all data. In that scenario, DataSync copies everything from the source to the destination without comparing differences between the locations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoldersSkipped" /></td>
+    <td><CopyableCode code="folders_skipped" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of directories that DataSync skips during your transfer. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoldersTransferred" /></td>
+    <td><CopyableCode code="folders_transferred" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of directories that DataSync actually transfers over the network. This value is updated periodically during your task execution when something is read from the source and sent over the network. If DataSync fails to transfer something, this value can be less than EstimatedFoldersToTransfer. In some cases, this value can also be greater than EstimatedFoldersToTransfer. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FoldersVerified" /></td>
+    <td><CopyableCode code="folders_verified" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of directories that DataSync verifies during your transfer. Applies only to Enhanced mode tasks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Includes" /></td>
+    <td><CopyableCode code="includes" /></td>
     <td><code>array</code></td>
     <td>A list of filter rules that include specific data during your transfer. For more information and examples, see Filtering data transferred by DataSync.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTime" /></td>
+    <td><CopyableCode code="launch_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the task execution actually begins. For non-queued tasks, LaunchTime and StartTime are typically the same. For queued tasks, LaunchTime is typically later than StartTime because previously queued tasks must finish running before newer tasks can begin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManifestConfig" /></td>
+    <td><CopyableCode code="manifest_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the manifest that lists the files or objects to transfer. For more information, see Specifying what DataSync transfers by using a manifest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>object</code></td>
     <td>Indicates how your transfer task is configured. These options include how DataSync handles files, objects, and their associated metadata during your transfer. You also can specify how to verify data integrity, set bandwidth limits for your task, among other options. Each option has a default value. Unless you need to, you don't have to configure any option before calling StartTaskExecution. You also can override your task options for each task execution. For example, you might want to adjust the LogLevel for an individual execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReportResult" /></td>
+    <td><CopyableCode code="report_result" /></td>
     <td><code>object</code></td>
     <td>Indicates whether DataSync generated a complete task report for your transfer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Result" /></td>
+    <td><CopyableCode code="result" /></td>
     <td><code>object</code></td>
     <td>The result of the task execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that DataSync sends the request to start the task execution. For non-queued tasks, LaunchTime and StartTime are typically the same. For queued tasks, LaunchTime is typically later than StartTime because previously queued tasks must finish running before newer tasks can begin.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the task execution. (QUEUED, CANCELLING, LAUNCHING, PREPARING, TRANSFERRING, VERIFYING, SUCCESS, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskExecutionArn" /></td>
+    <td><CopyableCode code="task_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the task execution that you wanted information about. TaskExecutionArn is hierarchical and includes TaskArn for the task that was executed. For example, a TaskExecution value with the ARN arn:aws:datasync:us-east-1:111222333444:task/task-0208075f79cedf4a2/execution/exec-08ef1e88ec491019b executed the task with the ARN arn:aws:datasync:us-east-1:111222333444:task/task-0208075f79cedf4a2. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:task/task-&#91;0-9a-f&#93;&#123;17&#125;/execution/exec-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskMode" /></td>
+    <td><CopyableCode code="task_mode" /></td>
     <td><code>string</code></td>
     <td>The task mode that you're using. For more information, see Choosing a task mode for your data transfer. (BASIC, ENHANCED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskReportConfig" /></td>
+    <td><CopyableCode code="task_report_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of your task report, which provides detailed information about for your DataSync transfer. For more information, see Creating a task report.</td>
 </tr>
@@ -240,17 +240,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of a task execution. For more information, see Task execution statuses. (QUEUED, CANCELLING, LAUNCHING, PREPARING, TRANSFERRING, VERIFYING, SUCCESS, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskExecutionArn" /></td>
+    <td><CopyableCode code="task_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a task execution. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:&#91;a-z\-0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:task/task-&#91;0-9a-f&#93;&#123;17&#125;/execution/exec-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskMode" /></td>
+    <td><CopyableCode code="task_mode" /></td>
     <td><code>string</code></td>
     <td>The task mode that you're using. For more information, see Choosing a task mode for your data transfer. (BASIC, ENHANCED)</td>
 </tr>
@@ -334,41 +334,41 @@ Provides information about an execution of your DataSync task. You can use this 
 
 ```sql
 SELECT
-BytesCompressed,
-BytesTransferred,
-BytesWritten,
-EndTime,
-EstimatedBytesToTransfer,
-EstimatedFilesToDelete,
-EstimatedFilesToTransfer,
-EstimatedFoldersToDelete,
-EstimatedFoldersToTransfer,
-Excludes,
-FilesDeleted,
-FilesFailed,
-FilesListed,
-FilesPrepared,
-FilesSkipped,
-FilesTransferred,
-FilesVerified,
-FoldersDeleted,
-FoldersFailed,
-FoldersListed,
-FoldersPrepared,
-FoldersSkipped,
-FoldersTransferred,
-FoldersVerified,
-Includes,
-LaunchTime,
-ManifestConfig,
-Options,
-ReportResult,
-Result,
-StartTime,
-Status,
-TaskExecutionArn,
-TaskMode,
-TaskReportConfig
+bytes_compressed,
+bytes_transferred,
+bytes_written,
+end_time,
+estimated_bytes_to_transfer,
+estimated_files_to_delete,
+estimated_files_to_transfer,
+estimated_folders_to_delete,
+estimated_folders_to_transfer,
+excludes,
+files_deleted,
+files_failed,
+files_listed,
+files_prepared,
+files_skipped,
+files_transferred,
+files_verified,
+folders_deleted,
+folders_failed,
+folders_listed,
+folders_prepared,
+folders_skipped,
+folders_transferred,
+folders_verified,
+includes,
+launch_time,
+manifest_config,
+options,
+report_result,
+result,
+start_time,
+status,
+task_execution_arn,
+task_mode,
+task_report_config
 FROM aws.datasync.task_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -380,9 +380,9 @@ Returns a list of executions for an DataSync transfer task.
 
 ```sql
 SELECT
-Status,
-TaskExecutionArn,
-TaskMode
+status,
+task_execution_arn,
+task_mode
 FROM aws.datasync.task_executions
 WHERE region = '{{ region }}' -- required
 ;

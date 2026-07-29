@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Lexicon" /></td>
+    <td><CopyableCode code="lexicon" /></td>
     <td><code>object</code></td>
     <td>Lexicon object that provides name and the string content of the lexicon.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LexiconAttributes" /></td>
+    <td><CopyableCode code="lexicon_attributes" /></td>
     <td><code>object</code></td>
     <td>Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>Provides lexicon metadata.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the lexicon. (pattern: &lt;code&gt;&#91;0-9A-Za-z&#93;&#123;1,20&#125;&lt;/code&gt;)</td>
 </tr>
@@ -181,8 +181,8 @@ Returns the content of the specified pronunciation lexicon stored in an Amazon W
 
 ```sql
 SELECT
-Lexicon,
-LexiconAttributes
+lexicon,
+lexicon_attributes
 FROM aws.polly.lexicons
 WHERE lexicon_name = '{{ lexicon_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -195,8 +195,8 @@ Returns a list of pronunciation lexicons stored in an Amazon Web Services Region
 
 ```sql
 SELECT
-Attributes,
-Name
+attributes,
+name
 FROM aws.polly.lexicons
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SourceReservedNode" /></td>
+    <td><CopyableCode code="source_reserved_node" /></td>
     <td><code>string</code></td>
     <td>Describes a reserved node. You can call the DescribeReservedNodeOfferings API to obtain the available reserved node offerings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetReservedNodeCount" /></td>
+    <td><CopyableCode code="target_reserved_node_count" /></td>
     <td><code>integer</code></td>
     <td>The target reserved-node count.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetReservedNodeOffering" /></td>
+    <td><CopyableCode code="target_reserved_node_offering" /></td>
     <td><code>string</code></td>
     <td>Describes a reserved node offering.</td>
 </tr>
@@ -154,9 +154,9 @@ Gets the configuration options for the reserved-node exchange. These options inc
 
 ```sql
 SELECT
-SourceReservedNode,
-TargetReservedNodeCount,
-TargetReservedNodeOffering
+source_reserved_node,
+target_reserved_node_count,
+target_reserved_node_offering
 FROM aws.redshift.reserved_node_exchange_configuration_options
 WHERE ActionType = '{{ ActionType }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="controlInsightsByAssessment" /></td>
+    <td><CopyableCode code="control_insights_by_assessment" /></td>
     <td><code>array</code></td>
     <td>The assessment control analytics data that the ListAssessmentControlInsightsByControlDomain API returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ Lists the latest analytics data for controls within a specific control domain an
 
 ```sql
 SELECT
-controlInsightsByAssessment,
-nextToken
+control_insights_by_assessment,
+next_token
 FROM aws.auditmanager.assessment_control_insights_by_control_domains
 WHERE controlDomainId = '{{ controlDomainId }}' -- required
 AND assessmentId = '{{ assessmentId }}' -- required

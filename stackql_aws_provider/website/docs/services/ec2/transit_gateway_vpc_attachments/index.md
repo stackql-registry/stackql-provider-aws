@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>The VPC attachment options.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the VPC attachment. Note that the initiating state has been deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the subnets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the VPC attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcOwnerId" /></td>
+    <td><CopyableCode code="vpc_owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the VPC.</td>
 </tr>
@@ -245,15 +245,15 @@ Describes one or more VPC attachments. By default, all VPC attachments are descr
 
 ```sql
 SELECT
-CreationTime,
-Options,
-State,
-SubnetIds,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-VpcId,
-VpcOwnerId
+creation_time,
+options,
+state,
+subnet_ids,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+vpc_id,
+vpc_owner_id
 FROM aws.ec2.transit_gateway_vpc_attachments
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayAttachmentIds = '{{ TransitGatewayAttachmentIds }}'
@@ -299,15 +299,15 @@ SELECT
 '{{ TagSpecifications }}',
 '{{ DryRun }}'
 RETURNING
-CreationTime,
-Options,
-State,
-SubnetIds,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-VpcId,
-VpcOwnerId
+creation_time,
+options,
+state,
+subnet_ids,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+vpc_id,
+vpc_owner_id
 ;
 ```
 </TabItem>
@@ -370,15 +370,15 @@ AND RemoveSubnetIds = '{{ RemoveSubnetIds}}'
 AND Options = '{{ Options}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-CreationTime,
-Options,
-State,
-SubnetIds,
-Tags,
-TransitGatewayAttachmentId,
-TransitGatewayId,
-VpcId,
-VpcOwnerId;
+creation_time,
+options,
+state,
+subnet_ids,
+tags,
+transit_gateway_attachment_id,
+transit_gateway_id,
+vpc_id,
+vpc_owner_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the thesaurus was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The thesaurus description. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>When the Status field value is FAILED, the ErrorMessage field provides more information. (pattern: &lt;code&gt;^\P&#123;C&#125;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FileSizeBytes" /></td>
+    <td><CopyableCode code="file_size_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The size of the thesaurus file in bytes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the thesaurus. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexId" /></td>
+    <td><CopyableCode code="index_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the index for the thesaurus. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The thesaurus name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>An IAM role that gives Amazon Kendra permissions to access thesaurus file specified in SourceS3Path. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceS3Path" /></td>
+    <td><CopyableCode code="source_s3_path" /></td>
     <td><code>object</code></td>
     <td>Information required to find a specific file in an Amazon S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the thesaurus. When the value is ACTIVE, queries are able to use the thesaurus. If the Status field value is FAILED, the ErrorMessage field provides more information. If the status is ACTIVE_BUT_UPDATE_FAILED, it means that Amazon Kendra could not ingest the new thesaurus file. The old thesaurus file is still active. (CREATING, ACTIVE, DELETING, UPDATING, ACTIVE_BUT_UPDATE_FAILED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SynonymRuleCount" /></td>
+    <td><CopyableCode code="synonym_rule_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of synonym rules in the thesaurus file.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TermCount" /></td>
+    <td><CopyableCode code="term_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of unique terms in the thesaurus file. For example, the synonyms a,b,c and a=&gt;d, the term count would be 4.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the thesaurus was last updated.</td>
 </tr>
@@ -200,19 +200,19 @@ Gets information about an Amazon Kendra thesaurus.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-ErrorMessage,
-FileSizeBytes,
-Id,
-IndexId,
-Name,
-RoleArn,
-SourceS3Path,
-Status,
-SynonymRuleCount,
-TermCount,
-UpdatedAt
+created_at,
+description,
+error_message,
+file_size_bytes,
+id,
+index_id,
+name,
+role_arn,
+source_s3_path,
+status,
+synonym_rule_count,
+term_count,
+updated_at
 FROM aws.kendra.thesaurus
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,7 +255,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-Id
+id
 ;
 ```
 </TabItem>

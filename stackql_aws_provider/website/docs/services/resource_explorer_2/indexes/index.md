@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon resource name (ARN) of the index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the index was originally created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the index was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatingFrom" /></td>
+    <td><CopyableCode code="replicating_from" /></td>
     <td><code>array</code></td>
     <td>This response value is present only if this index is Type=AGGREGATOR. A list of the Amazon Web Services Regions that replicate their content to the index in this Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicatingTo" /></td>
+    <td><CopyableCode code="replicating_to" /></td>
     <td><code>array</code></td>
     <td>This response value is present only if this index is Type=LOCAL. The Amazon Web Services Region that contains the aggregator index, if one exists. If an aggregator index does exist then the Region in which you called this operation replicates its index information to the Region specified in this response value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the index in this Amazon Web Services Region. (CREATING, ACTIVE, DELETING, DELETED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tag key and value pairs that are attached to the index.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the index in this Region. For information about the aggregator index and how it differs from a local index, see Turning on cross-Region search by creating an aggregator index. (LOCAL, AGGREGATOR)</td>
 </tr>
@@ -182,14 +182,14 @@ Retrieves details about the Amazon Web Services Resource Explorer index in the A
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-LastUpdatedAt,
-ReplicatingFrom,
-ReplicatingTo,
-State,
-Tags,
-Type
+arn,
+created_at,
+last_updated_at,
+replicating_from,
+replicating_to,
+state,
+tags,
+type
 FROM aws.resource_explorer_2.indexes
 WHERE region = '{{ region }}' -- required
 ;
@@ -222,9 +222,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedAt,
-State
+arn,
+created_at,
+state
 ;
 ```
 </TabItem>
@@ -266,10 +266,10 @@ Type = '{{ Type }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-LastUpdatedAt,
-State,
-Type;
+arn,
+last_updated_at,
+state,
+type;
 ```
 </TabItem>
 </Tabs>

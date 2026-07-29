@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Envelope" /></td>
+    <td><CopyableCode code="envelope" /></td>
     <td><code>object</code></td>
     <td>The SMTP envelope information of the email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MessageDownloadLink" /></td>
+    <td><CopyableCode code="message_download_link" /></td>
     <td><code>string</code></td>
     <td>A pre-signed URL to temporarily download the full message content.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>The metadata about the email.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a pre-signed URL that provides temporary download access to the specific
 
 ```sql
 SELECT
-Envelope,
-MessageDownloadLink,
-Metadata
+envelope,
+message_download_link,
+metadata
 FROM aws.mailmanager.archive_messages
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProactiveAnomaly" /></td>
+    <td><CopyableCode code="proactive_anomaly" /></td>
     <td><code>object</code></td>
     <td>A ProactiveAnomaly object that represents the requested anomaly.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReactiveAnomaly" /></td>
+    <td><CopyableCode code="reactive_anomaly" /></td>
     <td><code>object</code></td>
     <td>A ReactiveAnomaly object that represents the requested anomaly.</td>
 </tr>
@@ -134,8 +134,8 @@ Returns details about an anomaly that you specify using its ID.
 
 ```sql
 SELECT
-ProactiveAnomaly,
-ReactiveAnomaly
+proactive_anomaly,
+reactive_anomaly
 FROM aws.devops_guru.anomalies
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmazonCodeGuruProfiler" /></td>
+    <td><CopyableCode code="amazon_code_guru_profiler" /></td>
     <td><code>object</code></td>
     <td>Information about whether DevOps Guru is configured to consume recommendations which are generated from AWS CodeGuru Profiler.</td>
 </tr>
@@ -126,7 +126,7 @@ Returns the integration status of services that are integrated with DevOps Guru 
 
 ```sql
 SELECT
-AmazonCodeGuruProfiler
+amazon_code_guru_profiler
 FROM aws.devops_guru.event_sources_configs
 WHERE region = '{{ region }}' -- required
 ;

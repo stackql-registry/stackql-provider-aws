@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CompletedTimestamp" /></td>
+    <td><CopyableCode code="completed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of when the import job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp of when the import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedRecordsCount" /></td>
+    <td><CopyableCode code="failed_records_count" /></td>
     <td><code>integer</code></td>
     <td>The number of records that failed processing because of invalid input or other reasons.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureInfo" /></td>
+    <td><CopyableCode code="failure_info" /></td>
     <td><code>object</code></td>
     <td>The failure details about an import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportDataSource" /></td>
+    <td><CopyableCode code="import_data_source" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about the data source of the import job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportDestination" /></td>
+    <td><CopyableCode code="import_destination" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about the resource destination the import job is going to target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobId" /></td>
+    <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
     <td>A string that represents a job ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the import job. (CREATED, PROCESSING, COMPLETED, FAILED, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessedRecordsCount" /></td>
+    <td><CopyableCode code="processed_records_count" /></td>
     <td><code>integer</code></td>
     <td>The current number of records processed.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImportJobs" /></td>
+    <td><CopyableCode code="import_jobs" /></td>
     <td><code>array</code></td>
     <td>A list of the import job summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A string token indicating that there might be additional import jobs available to be listed. Copy this token to a subsequent call to ListImportJobs with the same parameters to retrieve the next page of import jobs.</td>
 </tr>
@@ -204,15 +204,15 @@ Provides information about an import job.
 
 ```sql
 SELECT
-CompletedTimestamp,
-CreatedTimestamp,
-FailedRecordsCount,
-FailureInfo,
-ImportDataSource,
-ImportDestination,
-JobId,
-JobStatus,
-ProcessedRecordsCount
+completed_timestamp,
+created_timestamp,
+failed_records_count,
+failure_info,
+import_data_source,
+import_destination,
+job_id,
+job_status,
+processed_records_count
 FROM aws.sesv2.import_jobs
 WHERE job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -225,8 +225,8 @@ Lists all of the import jobs.
 
 ```sql
 SELECT
-ImportJobs,
-NextToken
+import_jobs,
+next_token
 FROM aws.sesv2.import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -259,7 +259,7 @@ SELECT
 '{{ ImportDataSource }}' /* required */,
 '{{ region }}'
 RETURNING
-JobId
+job_id
 ;
 ```
 </TabItem>

@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseCommitId" /></td>
+    <td><CopyableCode code="base_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the merge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conflictMetadata" /></td>
+    <td><CopyableCode code="conflict_metadata" /></td>
     <td><code>object</code></td>
     <td>Contains metadata about the conflicts found in the merge.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationCommitId" /></td>
+    <td><CopyableCode code="destination_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the destination commit specifier that was used in the merge evaluation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mergeHunks" /></td>
+    <td><CopyableCode code="merge_hunks" /></td>
     <td><code>array</code></td>
     <td>A list of merge hunks of the differences between the files or lines.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An enumeration token that can be used in a request to return the next batch of the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceCommitId" /></td>
+    <td><CopyableCode code="source_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the source commit specifier that was used in the merge evaluation.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseCommitId" /></td>
+    <td><CopyableCode code="base_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the merge base.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conflictMetadataList" /></td>
+    <td><CopyableCode code="conflict_metadata_list" /></td>
     <td><code>array</code></td>
     <td>A list of metadata for any conflicting files. If the specified merge strategy is FAST_FORWARD_MERGE, this list is always empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationCommitId" /></td>
+    <td><CopyableCode code="destination_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the destination commit specifier that was used in the merge evaluation.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
     <td>A Boolean value that indicates whether the code is mergeable by the specified merge option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An enumeration token that can be used in a request to return the next batch of the results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceCommitId" /></td>
+    <td><CopyableCode code="source_commit_id" /></td>
     <td><code>string</code></td>
     <td>The commit ID of the source commit specifier that was used in the merge evaluation.</td>
 </tr>
@@ -204,12 +204,12 @@ Returns information about one or more merge conflicts in the attempted merge of 
 
 ```sql
 SELECT
-baseCommitId,
-conflictMetadata,
-destinationCommitId,
-mergeHunks,
-nextToken,
-sourceCommitId
+base_commit_id,
+conflict_metadata,
+destination_commit_id,
+merge_hunks,
+next_token,
+source_commit_id
 FROM aws.codecommit.merge_conflicts
 WHERE region = '{{ region }}' -- required
 ;
@@ -221,12 +221,12 @@ Returns information about merge conflicts between the before and after commit ID
 
 ```sql
 SELECT
-baseCommitId,
-conflictMetadataList,
-destinationCommitId,
+base_commit_id,
+conflict_metadata_list,
+destination_commit_id,
 mergeable,
-nextToken,
-sourceCommitId
+next_token,
+source_commit_id
 FROM aws.codecommit.merge_conflicts
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VCPUs" /></td>
+    <td><CopyableCode code="_vcpus" /></td>
     <td><code>integer</code></td>
     <td>The number of default VCPUs in an instance type.</td>
 </tr>
@@ -149,8 +149,8 @@ Gets the instance types that an Outpost can support in InstanceTypeCapacity. Thi
 
 ```sql
 SELECT
-InstanceType,
-VCPUs
+instance_type,
+_vcpus
 FROM aws.outposts.outpost_supported_instance_types
 WHERE outpost_id = '{{ outpost_id }}' -- required
 AND region = '{{ region }}' -- required

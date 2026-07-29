@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CorsPolicy" /></td>
+    <td><CopyableCode code="cors_policy" /></td>
     <td><code>array</code></td>
     <td>The CORS policy assigned to the container.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns the cross-origin resource sharing (CORS) configuration information that 
 
 ```sql
 SELECT
-CorsPolicy
+cors_policy
 FROM aws.mediastore.cors_policies
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="userAccessResultsList" /></td>
+    <td><CopyableCode code="user_access_results_list" /></td>
     <td><code>array</code></td>
     <td>Contains a list of user access results.</td>
 </tr>
@@ -126,7 +126,7 @@ Gets user access details in a batch request. This action polls data from the tas
 
 ```sql
 SELECT
-userAccessResultsList
+user_access_results_list
 FROM aws.appfabric.user_access_tasks
 WHERE region = '{{ region }}' -- required
 ;

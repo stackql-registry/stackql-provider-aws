@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="tlsCertificates" /></td>
+    <td><CopyableCode code="tls_certificates" /></td>
     <td><code>array</code></td>
     <td>An array of LoadBalancerTlsCertificate objects describing your SSL/TLS certificates.</td>
 </tr>
@@ -140,7 +140,7 @@ Returns information about the TLS certificates that are associated with the spec
 
 ```sql
 SELECT
-tlsCertificates
+tls_certificates
 FROM aws.lightsail.load_balancer_tls_certificates
 WHERE region = '{{ region }}' -- required
 ;

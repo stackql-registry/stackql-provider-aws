@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, Amazon Kendra returns this token that you can use in the subsequent request to retrieve the next set of thesauri.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThesaurusSummaryItems" /></td>
+    <td><CopyableCode code="thesaurus_summary_items" /></td>
     <td><code>array</code></td>
     <td>An array of summary information for a thesaurus or multiple thesauri.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists the thesauri for an index.
 
 ```sql
 SELECT
-NextToken,
-ThesaurusSummaryItems
+next_token,
+thesaurus_summary_items
 FROM aws.kendra.thesauris
 WHERE region = '{{ region }}' -- required
 ;

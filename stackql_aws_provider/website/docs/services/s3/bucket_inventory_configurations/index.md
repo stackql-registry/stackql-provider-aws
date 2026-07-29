@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>Contains information about where to publish the inventory results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID used to identify the inventory configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludedObjectVersions" /></td>
+    <td><CopyableCode code="included_object_versions" /></td>
     <td><code>string</code></td>
     <td>Object versions to include in the inventory list. If set to All, the list includes all the object versions, which adds the version-related fields VersionId, IsLatest, and DeleteMarker to the list. If set to Current, the list does not contain these version-related fields.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsEnabled" /></td>
+    <td><CopyableCode code="is_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the inventory is enabled or disabled. If set to True, an inventory list is generated. If set to False, no inventory list is generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionalFields" /></td>
+    <td><CopyableCode code="optional_fields" /></td>
     <td><code>string</code></td>
     <td>Contains the optional fields that are included in the inventory results. The following optional fields are supported for directory buckets Size | LastModifiedDate | StorageClass | ETag | IsMultipartUploaded | EncryptionStatus | BucketKeyStatus | ChecksumAlgorithm | LifecycleExpirationDate. Throws MalformedXML error if unsupported optional field is provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>Specifies the schedule for generating inventory results.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>Contains information about where to publish the inventory results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Filter" /></td>
+    <td><CopyableCode code="filter" /></td>
     <td><code>string</code></td>
     <td>Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID used to identify the inventory configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludedObjectVersions" /></td>
+    <td><CopyableCode code="included_object_versions" /></td>
     <td><code>string</code></td>
     <td>Object versions to include in the inventory list. If set to All, the list includes all the object versions, which adds the version-related fields VersionId, IsLatest, and DeleteMarker to the list. If set to Current, the list does not contain these version-related fields.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsEnabled" /></td>
+    <td><CopyableCode code="is_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the inventory is enabled or disabled. If set to True, an inventory list is generated. If set to False, no inventory list is generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionalFields" /></td>
+    <td><CopyableCode code="optional_fields" /></td>
     <td><code>string</code></td>
     <td>Contains the optional fields that are included in the inventory results. The following optional fields are supported for directory buckets Size | LastModifiedDate | StorageClass | ETag | IsMultipartUploaded | EncryptionStatus | BucketKeyStatus | ChecksumAlgorithm | LifecycleExpirationDate. Throws MalformedXML error if unsupported optional field is provided.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>string</code></td>
     <td>Specifies the schedule for generating inventory results.</td>
 </tr>
@@ -241,13 +241,13 @@ Returns an S3 Inventory configuration (identified by the inventory configuration
 
 ```sql
 SELECT
-Destination,
-Filter,
-Id,
-IncludedObjectVersions,
-IsEnabled,
-OptionalFields,
-Schedule
+destination,
+filter,
+id,
+included_object_versions,
+is_enabled,
+optional_fields,
+schedule
 FROM aws.s3.bucket_inventory_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND id = '{{ id }}' -- required
@@ -262,13 +262,13 @@ Returns a list of S3 Inventory configurations for the bucket. You can have up to
 
 ```sql
 SELECT
-Destination,
-Filter,
-Id,
-IncludedObjectVersions,
-IsEnabled,
-OptionalFields,
-Schedule
+destination,
+filter,
+id,
+included_object_versions,
+is_enabled,
+optional_fields,
+schedule
 FROM aws.s3.bucket_inventory_configurations
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

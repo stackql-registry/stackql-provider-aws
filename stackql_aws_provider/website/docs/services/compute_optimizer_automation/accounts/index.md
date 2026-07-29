@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the account's Automation enrollment status was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="organizationRuleMode" /></td>
+    <td><CopyableCode code="organization_rule_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the management account can create Automation rules that implement optimization actions for this account. (AnyAllowed, NoneAllowed)</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>The enrollment status of the account: Active, Inactive, Pending, or Failed. (Active, Inactive, Pending, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the current Automation enrollment status.</td>
 </tr>
@@ -153,11 +153,11 @@ Lists the accounts in your organization that are enrolled in Compute Optimizer a
 
 ```sql
 SELECT
-accountId,
-lastUpdatedTimestamp,
-organizationRuleMode,
+account_id,
+last_updated_timestamp,
+organization_rule_mode,
 status,
-statusReason
+status_reason
 FROM aws.compute_optimizer_automation.accounts
 WHERE region = '{{ region }}' -- required
 ;
@@ -187,7 +187,7 @@ WHERE
 region = '{{ region }}' --required
 AND accountIds = '{{ accountIds }}' --required
 RETURNING
-accountIds,
+account_ids,
 errors;
 ```
 </TabItem>

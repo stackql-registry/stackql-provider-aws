@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the Traffic Mirror session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><CopyableCode code="network_interface_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Traffic Mirror session's network interface.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the account that owns the Traffic Mirror session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PacketLength" /></td>
+    <td><CopyableCode code="packet_length" /></td>
     <td><code>integer</code></td>
     <td>The number of bytes in each packet to mirror. These are the bytes after the VXLAN header. To mirror a subset, set this to the length (in bytes) to mirror. For example, if you set this value to 100, then the first 100 bytes that meet the filter criteria are copied to the target. Do not specify this parameter when you want to mirror the entire packet</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SessionNumber" /></td>
+    <td><CopyableCode code="session_number" /></td>
     <td><code>integer</code></td>
     <td>The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. The first session with a matching filter is the one that mirrors the packets. Valid values are 1-32766.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the Traffic Mirror session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficMirrorFilterId" /></td>
+    <td><CopyableCode code="traffic_mirror_filter_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Traffic Mirror filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficMirrorSessionId" /></td>
+    <td><CopyableCode code="traffic_mirror_session_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the Traffic Mirror session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrafficMirrorTargetId" /></td>
+    <td><CopyableCode code="traffic_mirror_target_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Traffic Mirror target.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VirtualNetworkId" /></td>
+    <td><CopyableCode code="virtual_network_id" /></td>
     <td><code>integer</code></td>
     <td>The virtual network ID associated with the Traffic Mirror session.</td>
 </tr>
@@ -280,16 +280,16 @@ Describes one or more Traffic Mirror sessions. By default, all Traffic Mirror se
 
 ```sql
 SELECT
-Description,
-NetworkInterfaceId,
-OwnerId,
-PacketLength,
-SessionNumber,
-Tags,
-TrafficMirrorFilterId,
-TrafficMirrorSessionId,
-TrafficMirrorTargetId,
-VirtualNetworkId
+description,
+network_interface_id,
+owner_id,
+packet_length,
+session_number,
+tags,
+traffic_mirror_filter_id,
+traffic_mirror_session_id,
+traffic_mirror_target_id,
+virtual_network_id
 FROM aws.ec2.traffic_mirror_sessions
 WHERE region = '{{ region }}' -- required
 AND TrafficMirrorSessionId = '{{ TrafficMirrorSessionId }}'
@@ -343,16 +343,16 @@ SELECT
 '{{ DryRun }}',
 '{{ ClientToken }}'
 RETURNING
-Description,
-NetworkInterfaceId,
-OwnerId,
-PacketLength,
-SessionNumber,
-Tags,
-TrafficMirrorFilterId,
-TrafficMirrorSessionId,
-TrafficMirrorTargetId,
-VirtualNetworkId
+description,
+network_interface_id,
+owner_id,
+packet_length,
+session_number,
+tags,
+traffic_mirror_filter_id,
+traffic_mirror_session_id,
+traffic_mirror_target_id,
+virtual_network_id
 ;
 ```
 </TabItem>
@@ -434,16 +434,16 @@ AND Description = '{{ Description}}'
 AND RemoveField = '{{ RemoveField}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-Description,
-NetworkInterfaceId,
-OwnerId,
-PacketLength,
-SessionNumber,
-Tags,
-TrafficMirrorFilterId,
-TrafficMirrorSessionId,
-TrafficMirrorTargetId,
-VirtualNetworkId;
+description,
+network_interface_id,
+owner_id,
+packet_length,
+session_number,
+tags,
+traffic_mirror_filter_id,
+traffic_mirror_session_id,
+traffic_mirror_target_id,
+virtual_network_id;
 ```
 </TabItem>
 </Tabs>

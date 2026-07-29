@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags attached to the vault. Each tag is composed of a key and a value.</td>
 </tr>
@@ -143,7 +143,7 @@ This operation lists all the tags attached to a vault. The operation returns an 
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.glacier.tags
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required

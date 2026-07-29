@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CertificateArn" /></td>
+    <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the certificate is the default certificate. Do not set this value when specifying a certificate as an input. This value is not included in the output when describing a listener, but is included when describing listener certificates.</td>
 </tr>
@@ -158,8 +158,8 @@ Describes the default certificate and the certificate list for the specified HTT
 
 ```sql
 SELECT
-CertificateArn,
-IsDefault
+certificate_arn,
+is_default
 FROM aws.elbv2.listener_certificates
 WHERE ListenerArn = '{{ ListenerArn }}' -- required
 AND region = '{{ region }}' -- required

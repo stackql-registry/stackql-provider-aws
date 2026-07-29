@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when streaming access was granted to the Amazon Web Services service, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServicePrincipal" /></td>
+    <td><CopyableCode code="service_principal" /></td>
     <td><code>string</code></td>
     <td>The service principal of the Amazon Web Services service that has streaming access to your Resource Explorer data. A service principal is a unique identifier for an Amazon Web Services service.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of Amazon Web Services services that have been granted streaming 
 
 ```sql
 SELECT
-CreatedAt,
-ServicePrincipal
+created_at,
+service_principal
 FROM aws.resource_explorer_2.streaming_access_for_services
 WHERE region = '{{ region }}' -- required
 ;

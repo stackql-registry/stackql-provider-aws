@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application against which the configuration check was performed. (pattern: &lt;code&gt;&#91;\w\d\.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationCheckDescription" /></td>
+    <td><CopyableCode code="configuration_check_description" /></td>
     <td><code>string</code></td>
     <td>A description of the configuration check that was performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationCheckId" /></td>
+    <td><CopyableCode code="configuration_check_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the configuration check that was performed. (SAP_CHECK_01, SAP_CHECK_02, SAP_CHECK_03)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationCheckName" /></td>
+    <td><CopyableCode code="configuration_check_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration check that was performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration check operation completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the configuration check operation. (pattern: &lt;code&gt;&#91;&#123;&#93;?&#91;0-9a-fA-F&#93;&#123;8&#125;-(&#91;0-9a-fA-F&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-fA-F&#93;&#123;12&#125;&#91;&#125;&#93;?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleStatusCounts" /></td>
+    <td><CopyableCode code="rule_status_counts" /></td>
     <td><code>object</code></td>
     <td>A summary of all the rule results, showing counts for each status type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration check operation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the configuration check operation. (INPROGRESS, SUCCESS, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message providing additional details about the status of the configuration check operation.</td>
 </tr>
@@ -115,52 +115,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application against which the configuration check was performed. (pattern: &lt;code&gt;&#91;\w\d\.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationCheckDescription" /></td>
+    <td><CopyableCode code="configuration_check_description" /></td>
     <td><code>string</code></td>
     <td>A description of the configuration check that was performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationCheckId" /></td>
+    <td><CopyableCode code="configuration_check_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the configuration check that was performed. (SAP_CHECK_01, SAP_CHECK_02, SAP_CHECK_03)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationCheckName" /></td>
+    <td><CopyableCode code="configuration_check_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration check that was performed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration check operation completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the configuration check operation. (pattern: &lt;code&gt;&#91;&#123;&#93;?&#91;0-9a-fA-F&#93;&#123;8&#125;-(&#91;0-9a-fA-F&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-fA-F&#93;&#123;12&#125;&#91;&#125;&#93;?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RuleStatusCounts" /></td>
+    <td><CopyableCode code="rule_status_counts" /></td>
     <td><code>object</code></td>
     <td>A summary of all the rule results, showing counts for each status type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the configuration check operation started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the configuration check operation. (INPROGRESS, SUCCESS, ERROR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message providing additional details about the status of the configuration check operation.</td>
 </tr>
@@ -237,16 +237,16 @@ Gets the details of a configuration check operation by specifying the operation 
 
 ```sql
 SELECT
-ApplicationId,
-ConfigurationCheckDescription,
-ConfigurationCheckId,
-ConfigurationCheckName,
-EndTime,
-Id,
-RuleStatusCounts,
-StartTime,
-Status,
-StatusMessage
+application_id,
+configuration_check_description,
+configuration_check_id,
+configuration_check_name,
+end_time,
+id,
+rule_status_counts,
+start_time,
+status,
+status_message
 FROM aws.ssm_sap.configuration_check_operations
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,16 +258,16 @@ Lists the configuration check operations performed by AWS Systems Manager for SA
 
 ```sql
 SELECT
-ApplicationId,
-ConfigurationCheckDescription,
-ConfigurationCheckId,
-ConfigurationCheckName,
-EndTime,
-Id,
-RuleStatusCounts,
-StartTime,
-Status,
-StatusMessage
+application_id,
+configuration_check_description,
+configuration_check_id,
+configuration_check_name,
+end_time,
+id,
+rule_status_counts,
+start_time,
+status,
+status_message
 FROM aws.ssm_sap.configuration_check_operations
 WHERE region = '{{ region }}' -- required
 ;

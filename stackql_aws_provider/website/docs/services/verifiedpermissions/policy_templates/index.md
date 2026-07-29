@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the policy template, if one was assigned when the policy template was created or last updated. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy template was originally created.</td>
 </tr>
@@ -66,17 +66,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the policy template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy template was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy store that contains the policy template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyTemplateId" /></td>
+    <td><CopyableCode code="policy_template_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the policy template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the policy template, if one was assigned when the policy template was created or last updated. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy template was created.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description attached to the policy template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the policy template was most recently updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStoreId" /></td>
+    <td><CopyableCode code="policy_store_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the policy store that contains the template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyTemplateId" /></td>
+    <td><CopyableCode code="policy_template_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the policy template. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-/_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -224,11 +224,11 @@ Retrieve the details for the specified policy template in the specified policy s
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
-policyStoreId,
-policyTemplateId,
+last_updated_date,
+policy_store_id,
+policy_template_id,
 statement
 FROM aws.verifiedpermissions.policy_templates
 WHERE region = '{{ region }}' -- required
@@ -242,11 +242,11 @@ Returns a paginated list of all policy templates in the specified policy store.
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
-policyStoreId,
-policyTemplateId
+last_updated_date,
+policy_store_id,
+policy_template_id
 FROM aws.verifiedpermissions.policy_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -285,10 +285,10 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-createdDate,
-lastUpdatedDate,
-policyStoreId,
-policyTemplateId
+created_date,
+last_updated_date,
+policy_store_id,
+policy_template_id
 ;
 ```
 </TabItem>
@@ -352,10 +352,10 @@ AND policyStoreId = '{{ policyStoreId }}' --required
 AND policyTemplateId = '{{ policyTemplateId }}' --required
 AND statement = '{{ statement }}' --required
 RETURNING
-createdDate,
-lastUpdatedDate,
-policyStoreId,
-policyTemplateId;
+created_date,
+last_updated_date,
+policy_store_id,
+policy_template_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PopulationSize" /></td>
+    <td><CopyableCode code="population_size" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of requests from which GetSampledRequests got a sample of MaxItems requests. If PopulationSize is less than MaxItems, the sample includes every request that your AWS resource received during the specified time range.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampledRequests" /></td>
+    <td><CopyableCode code="sampled_requests" /></td>
     <td><code>array</code></td>
     <td>A complex type that contains detailed information about each of the requests in the sample.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeWindow" /></td>
+    <td><CopyableCode code="time_window" /></td>
     <td><code>object</code></td>
     <td>Usually, TimeWindow is the time range that you specified in the GetSampledRequests request. However, if your AWS resource received more than 5,000 requests during the time range that you specified in the request, GetSampledRequests returns the time range for the first 5,000 requests. Times are in Coordinated Universal Time (UTC) format.</td>
 </tr>
@@ -129,9 +129,9 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-PopulationSize,
-SampledRequests,
-TimeWindow
+population_size,
+sampled_requests,
+time_window
 FROM aws.waf.sampled_requests
 WHERE region = '{{ region }}' -- required
 ;

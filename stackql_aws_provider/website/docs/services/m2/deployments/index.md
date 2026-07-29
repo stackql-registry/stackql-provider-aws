@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationVersion" /></td>
+    <td><CopyableCode code="application_version" /></td>
     <td><code>integer</code></td>
     <td>The application version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the deployment. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the runtime environment. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -81,7 +81,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the deployment. (Deploying, Succeeded, Failed, Updating Deployment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the reported status.</td>
 </tr>
@@ -100,27 +100,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="applicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="applicationVersion" /></td>
+    <td><CopyableCode code="application_version" /></td>
     <td><code>integer</code></td>
     <td>The version of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the deployment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the deployment. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the runtime environment. (pattern: &lt;code&gt;^\S&#123;1,80&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the deployment. (Deploying, Succeeded, Failed, Updating Deployment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the reported status.</td>
 </tr>
@@ -234,13 +234,13 @@ Gets details of a specific deployment with a given deployment identifier.
 
 ```sql
 SELECT
-applicationId,
-applicationVersion,
-creationTime,
-deploymentId,
-environmentId,
+application_id,
+application_version,
+creation_time,
+deployment_id,
+environment_id,
 status,
-statusReason
+status_reason
 FROM aws.m2.deployments
 WHERE application_id = '{{ application_id }}' -- required
 AND deployment_id = '{{ deployment_id }}' -- required
@@ -254,13 +254,13 @@ Returns a list of all deployments of a specific application. A deployment is a c
 
 ```sql
 SELECT
-applicationId,
-applicationVersion,
-creationTime,
-deploymentId,
-environmentId,
+application_id,
+application_version,
+creation_time,
+deployment_id,
+environment_id,
 status,
-statusReason
+status_reason
 FROM aws.m2.deployments
 WHERE application_id = '{{ application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -300,7 +300,7 @@ SELECT
 '{{ application_id }}',
 '{{ region }}'
 RETURNING
-deploymentId
+deployment_id
 ;
 ```
 </TabItem>

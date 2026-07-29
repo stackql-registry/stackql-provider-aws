@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Aliases" /></td>
+    <td><CopyableCode code="aliases" /></td>
     <td><code>array</code></td>
     <td>A list of alternative identifiers for the control. These are human-readable designators, such as SH.S3.1. Several aliases can refer to the same control across different Amazon Web Services services or compliance frameworks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the control. (pattern: &lt;code&gt;arn:(aws(?:&#91;-a-z&#93;*)?):(controlcatalog|controltower):&#91;a-zA-Z0-9-&#93;*::control/&#91;0-9a-zA-Z_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Behavior" /></td>
+    <td><CopyableCode code="behavior" /></td>
     <td><code>string</code></td>
     <td>A term that identifies the control's functional behavior. One of Preventive, Detective, Proactive (PREVENTIVE, PROACTIVE, DETECTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that notes the time when the control was released (start of its life) as a governance capability in Amazon Web Services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of what the control does.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GovernedResources" /></td>
+    <td><CopyableCode code="governed_resources" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon Web Services resource types that are governed by this control. This information helps you understand which controls can govern certain types of resources, and conversely, which resources are affected when the control is implemented. The resources are represented as Amazon Web Services CloudFormation resource types. If GovernedResources cannot be represented by available CloudFormation resource types, it’s returned as an empty list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Implementation" /></td>
+    <td><CopyableCode code="implementation" /></td>
     <td><code>object</code></td>
     <td>Returns information about the control, as an ImplementationDetails object that shows the underlying implementation type for a control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>array</code></td>
     <td>Returns an array of ControlParameter objects that specify the parameters a control supports. An empty list is returned for controls that don’t support parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RegionConfiguration" /></td>
+    <td><CopyableCode code="region_configuration" /></td>
     <td><code>object</code></td>
     <td>Returns information about the control, including the scope of the control, if enabled, and the Regions in which the control is available for deployment. For more information about scope, see Global services. If you are applying controls through an Amazon Web Services Control Tower landing zone environment, remember that the values returned in the RegionConfiguration API operation are not related to the governed Regions in your landing zone. For example, if you are governing Regions A,B,and C while the control is available in Regions A, B, C, and D, you'd see a response with DeployableRegions of A, B, C, and D for a control with REGIONAL scope, even though you may not intend to deploy the control in Region D, because you do not govern it through your landing zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>An enumerated type, with the following possible values: (LOW, MEDIUM, HIGH, CRITICAL)</td>
 </tr>
@@ -120,47 +120,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Aliases" /></td>
+    <td><CopyableCode code="aliases" /></td>
     <td><code>array</code></td>
     <td>A list of alternative identifiers for the control. These are human-readable designators, such as SH.S3.1. Several aliases can refer to the same control across different Amazon Web Services services or compliance frameworks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the control. (pattern: &lt;code&gt;arn:(aws(?:&#91;-a-z&#93;*)?):(controlcatalog|controltower):&#91;a-zA-Z0-9-&#93;*::control/&#91;0-9a-zA-Z_\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Behavior" /></td>
+    <td><CopyableCode code="behavior" /></td>
     <td><code>string</code></td>
     <td>An enumerated type, with the following possible values: (PREVENTIVE, PROACTIVE, DETECTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that notes the time when the control was released (start of its life) as a governance capability in Amazon Web Services.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the control, as it may appear in the console. Describes the functionality of the control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GovernedResources" /></td>
+    <td><CopyableCode code="governed_resources" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon Web Services resource types that are governed by this control. This information helps you understand which controls can govern certain types of resources, and conversely, which resources are affected when the control is implemented. The resources are represented as Amazon Web Services CloudFormation resource types. If GovernedResources cannot be represented by available CloudFormation resource types, it’s returned as an empty list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Implementation" /></td>
+    <td><CopyableCode code="implementation" /></td>
     <td><code>object</code></td>
     <td>An object of type ImplementationSummary that describes how the control is implemented.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the control.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>An enumerated type, with the following possible values: (LOW, MEDIUM, HIGH, CRITICAL)</td>
 </tr>
@@ -247,17 +247,17 @@ Returns details about a specific control, most notably a list of Amazon Web Serv
 
 ```sql
 SELECT
-Aliases,
-Arn,
-Behavior,
-CreateTime,
-Description,
-GovernedResources,
-Implementation,
-Name,
-Parameters,
-RegionConfiguration,
-Severity
+aliases,
+arn,
+behavior,
+create_time,
+description,
+governed_resources,
+implementation,
+name,
+parameters,
+region_configuration,
+severity
 FROM aws.controlcatalog.controls
 WHERE region = '{{ region }}' -- required
 ;
@@ -269,15 +269,15 @@ Returns a paginated list of all available controls in the Control Catalog librar
 
 ```sql
 SELECT
-Aliases,
-Arn,
-Behavior,
-CreateTime,
-Description,
-GovernedResources,
-Implementation,
-Name,
-Severity
+aliases,
+arn,
+behavior,
+create_time,
+description,
+governed_resources,
+implementation,
+name,
+severity
 FROM aws.controlcatalog.controls
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

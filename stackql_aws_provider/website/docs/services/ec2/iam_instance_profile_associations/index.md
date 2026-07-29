@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamInstanceProfile" /></td>
+    <td><CopyableCode code="iam_instance_profile" /></td>
     <td><code>string</code></td>
     <td>The IAM instance profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the association.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The time the IAM instance profile was associated with the instance.</td>
 </tr>
@@ -176,11 +176,11 @@ Describes your IAM instance profile associations.
 
 ```sql
 SELECT
-AssociationId,
-IamInstanceProfile,
-InstanceId,
-State,
-Timestamp
+association_id,
+iam_instance_profile,
+instance_id,
+state,
+timestamp
 FROM aws.ec2.iam_instance_profile_associations
 WHERE region = '{{ region }}' -- required
 AND AssociationId = '{{ AssociationId }}'
@@ -214,11 +214,11 @@ IamInstanceProfile = '{{ IamInstanceProfile }}' --required
 AND AssociationId = '{{ AssociationId }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AssociationId,
-IamInstanceProfile,
-InstanceId,
-State,
-Timestamp;
+association_id,
+iam_instance_profile,
+instance_id,
+state,
+timestamp;
 ```
 </TabItem>
 </Tabs>

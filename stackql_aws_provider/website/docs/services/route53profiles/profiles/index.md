@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientToken" /></td>
+    <td><CopyableCode code="client_token" /></td>
     <td><code>string</code></td>
     <td>The ClientToken value that was assigned when the Profile was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the Profile was modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the Profile. (pattern: &lt;code&gt;^(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services account ID of the Profile owner.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>Sharing status for the Profile. (NOT_SHARED, SHARED_WITH_ME, SHARED_BY_ME)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status for the Profile. (COMPLETE, DELETING, UPDATING, CREATING, DELETED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>Status message that includes additiona information about the Profile.</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID of the Profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Name of the Profile. (pattern: &lt;code&gt;^(?!^&#91;0-9&#93;+$)(&#91;a-zA-Z0-9\-_' '&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareStatus" /></td>
+    <td><CopyableCode code="share_status" /></td>
     <td><code>string</code></td>
     <td>Share status of the Profile. (NOT_SHARED, SHARED_WITH_ME, SHARED_BY_ME)</td>
 </tr>
@@ -274,16 +274,16 @@ Returns information about a specified Route 53 Profile, such as whether whether 
 
 ```sql
 SELECT
-Arn,
-ClientToken,
-CreationTime,
-Id,
-ModificationTime,
-Name,
-OwnerId,
-ShareStatus,
-Status,
-StatusMessage
+arn,
+client_token,
+creation_time,
+id,
+modification_time,
+name,
+owner_id,
+share_status,
+status,
+status_message
 FROM aws.route53profiles.profiles
 WHERE profile_id = '{{ profile_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -296,10 +296,10 @@ Lists all the Route 53 Profiles associated with your Amazon Web Services account
 
 ```sql
 SELECT
-Arn,
-Id,
-Name,
-ShareStatus
+arn,
+id,
+name,
+share_status
 FROM aws.route53profiles.profiles
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -336,7 +336,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Profile
+profile
 ;
 ```
 </TabItem>
@@ -389,7 +389,7 @@ region = '{{ region }}' --required
 AND ProfileId = '{{ ProfileId }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
 RETURNING
-ProfileAssociation;
+profile_association;
 ```
 </TabItem>
 <TabItem value="associate_resource_to_profile">
@@ -408,7 +408,7 @@ region = '{{ region }}' --required
 AND ProfileId = '{{ ProfileId }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required
 RETURNING
-ProfileResourceAssociation;
+profile_resource_association;
 ```
 </TabItem>
 <TabItem value="disassociate_profile">
@@ -424,7 +424,7 @@ profile_id = '{{ profile_id }}' --required
 AND resource_id = '{{ resource_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ProfileAssociation;
+profile_association;
 ```
 </TabItem>
 <TabItem value="disassociate_resource_from_profile">
@@ -440,7 +440,7 @@ profile_id = '{{ profile_id }}' --required
 AND resource_arn = '{{ resource_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ProfileResourceAssociation;
+profile_resource_association;
 ```
 </TabItem>
 </Tabs>

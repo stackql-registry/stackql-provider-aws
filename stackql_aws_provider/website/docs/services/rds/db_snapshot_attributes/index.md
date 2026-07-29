@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DBSnapshotAttributes" /></td>
+    <td><CopyableCode code="db_snapshot_attributes" /></td>
     <td><code>string</code></td>
     <td>The list of attributes and values for the manual DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSnapshotIdentifier" /></td>
+    <td><CopyableCode code="db_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the manual DB snapshot that the attributes apply to.</td>
 </tr>
@@ -151,8 +151,8 @@ Returns a list of DB snapshot attribute names and values for a manual DB snapsho
 
 ```sql
 SELECT
-DBSnapshotAttributes,
-DBSnapshotIdentifier
+db_snapshot_attributes,
+db_snapshot_identifier
 FROM aws.rds.db_snapshot_attributes
 WHERE DBSnapshotIdentifier = '{{ DBSnapshotIdentifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -185,8 +185,8 @@ AND region = '{{ region }}' --required
 AND ValuesToAdd = '{{ ValuesToAdd}}'
 AND ValuesToRemove = '{{ ValuesToRemove}}'
 RETURNING
-DBSnapshotAttributes,
-DBSnapshotIdentifier;
+db_snapshot_attributes,
+db_snapshot_identifier;
 ```
 </TabItem>
 </Tabs>

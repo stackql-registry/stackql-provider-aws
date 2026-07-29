@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CoipAddressUsages" /></td>
+    <td><CopyableCode code="coip_address_usages" /></td>
     <td><code>string</code></td>
     <td>Information about the address usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoipPoolId" /></td>
+    <td><CopyableCode code="coip_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the customer-owned address pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalGatewayRouteTableId" /></td>
+    <td><CopyableCode code="local_gateway_route_table_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the local gateway route table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
@@ -159,10 +159,10 @@ Describes the allocations from the specified customer-owned address pool.
 
 ```sql
 SELECT
-CoipAddressUsages,
-CoipPoolId,
-LocalGatewayRouteTableId,
-NextToken
+coip_address_usages,
+coip_pool_id,
+local_gateway_route_table_id,
+next_token
 FROM aws.ec2.coip_pool_usages
 WHERE PoolId = '{{ PoolId }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="asOfTimestamp" /></td>
+    <td><CopyableCode code="as_of_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoUpdate" /></td>
+    <td><CopyableCode code="auto_update" /></td>
     <td><code>boolean</code></td>
     <td>Common Boolean data type</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataViewArn" /></td>
+    <td><CopyableCode code="data_view_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the Dataview.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataViewId" /></td>
+    <td><CopyableCode code="data_view_id" /></td>
     <td><code>string</code></td>
     <td>DataView ID</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetId" /></td>
+    <td><CopyableCode code="dataset_id" /></td>
     <td><code>string</code></td>
     <td>ID for a given Dataset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationTypeParams" /></td>
+    <td><CopyableCode code="destination_type_params" /></td>
     <td><code>object</code></td>
     <td>Structure for the Dataview destination type parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Information about an error that occurred for the Dataview.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partitionColumns" /></td>
+    <td><CopyableCode code="partition_columns" /></td>
     <td><code>array</code></td>
     <td>DataView Partition Column List</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sortColumns" /></td>
+    <td><CopyableCode code="sort_columns" /></td>
     <td><code>array</code></td>
     <td>DataView Sort Column List</td>
 </tr>
@@ -125,57 +125,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="asOfTimestamp" /></td>
+    <td><CopyableCode code="as_of_timestamp" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoUpdate" /></td>
+    <td><CopyableCode code="auto_update" /></td>
     <td><code>boolean</code></td>
     <td>Common Boolean data type</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataViewArn" /></td>
+    <td><CopyableCode code="data_view_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the Dataview.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataViewId" /></td>
+    <td><CopyableCode code="data_view_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Dataview.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetId" /></td>
+    <td><CopyableCode code="dataset_id" /></td>
     <td><code>string</code></td>
     <td>ID for a given Dataset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationTypeProperties" /></td>
+    <td><CopyableCode code="destination_type_properties" /></td>
     <td><code>object</code></td>
     <td>Structure for the Dataview destination type parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorInfo" /></td>
+    <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>The structure with error messages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partitionColumns" /></td>
+    <td><CopyableCode code="partition_columns" /></td>
     <td><code>array</code></td>
     <td>DataView Partition Column List</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sortColumns" /></td>
+    <td><CopyableCode code="sort_columns" /></td>
     <td><code>array</code></td>
     <td>DataView Sort Column List</td>
 </tr>
@@ -284,17 +284,17 @@ Gets information about a Dataview.
 
 ```sql
 SELECT
-asOfTimestamp,
-autoUpdate,
-createTime,
-dataViewArn,
-dataViewId,
-datasetId,
-destinationTypeParams,
-errorInfo,
-lastModifiedTime,
-partitionColumns,
-sortColumns,
+as_of_timestamp,
+auto_update,
+create_time,
+data_view_arn,
+data_view_id,
+dataset_id,
+destination_type_params,
+error_info,
+last_modified_time,
+partition_columns,
+sort_columns,
 status
 FROM aws.finspace_data.data_views
 WHERE dataview_id = '{{ dataview_id }}' -- required
@@ -309,17 +309,17 @@ Lists all available Dataviews for a Dataset.
 
 ```sql
 SELECT
-asOfTimestamp,
-autoUpdate,
-createTime,
-dataViewArn,
-dataViewId,
-datasetId,
-destinationTypeProperties,
-errorInfo,
-lastModifiedTime,
-partitionColumns,
-sortColumns,
+as_of_timestamp,
+auto_update,
+create_time,
+data_view_arn,
+data_view_id,
+dataset_id,
+destination_type_properties,
+error_info,
+last_modified_time,
+partition_columns,
+sort_columns,
 status
 FROM aws.finspace_data.data_views
 WHERE dataset_id = '{{ dataset_id }}' -- required
@@ -366,8 +366,8 @@ SELECT
 '{{ dataset_id }}',
 '{{ region }}'
 RETURNING
-dataViewId,
-datasetId
+data_view_id,
+dataset_id
 ;
 ```
 </TabItem>

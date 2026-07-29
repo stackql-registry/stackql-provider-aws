@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A text description of the HSM configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmConfigurationIdentifier" /></td>
+    <td><CopyableCode code="hsm_configuration_identifier" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Redshift HSM configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmIpAddress" /></td>
+    <td><CopyableCode code="hsm_ip_address" /></td>
     <td><code>string</code></td>
     <td>The IP address that the Amazon Redshift cluster must use to access the HSM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmPartitionName" /></td>
+    <td><CopyableCode code="hsm_partition_name" /></td>
     <td><code>string</code></td>
     <td>The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the HSM configuration.</td>
 </tr>
@@ -213,11 +213,11 @@ Returns information about the specified Amazon Redshift HSM configuration. If no
 
 ```sql
 SELECT
-Description,
-HsmConfigurationIdentifier,
-HsmIpAddress,
-HsmPartitionName,
-Tags
+description,
+hsm_configuration_identifier,
+hsm_ip_address,
+hsm_partition_name,
+tags
 FROM aws.redshift.hsm_configurations
 WHERE region = '{{ region }}' -- required
 AND HsmConfigurationIdentifier = '{{ HsmConfigurationIdentifier }}'
@@ -265,11 +265,11 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-Description,
-HsmConfigurationIdentifier,
-HsmIpAddress,
-HsmPartitionName,
-Tags
+description,
+hsm_configuration_identifier,
+hsm_ip_address,
+hsm_partition_name,
+tags
 ;
 ```
 </TabItem>

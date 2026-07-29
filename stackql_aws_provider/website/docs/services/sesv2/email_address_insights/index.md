@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Evaluations" /></td>
+    <td><CopyableCode code="evaluations" /></td>
     <td><code>object</code></td>
     <td>Specific validation checks performed on the email address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsValid" /></td>
+    <td><CopyableCode code="is_valid" /></td>
     <td><code>object</code></td>
     <td>Overall validity assessment with a conﬁdence verdict.</td>
 </tr>
@@ -124,8 +124,8 @@ Provides validation insights about a specific email address, including syntax va
 
 ```sql
 SELECT
-Evaluations,
-IsValid
+evaluations,
+is_valid
 FROM aws.sesv2.email_address_insights
 WHERE region = '{{ region }}' -- required
 ;

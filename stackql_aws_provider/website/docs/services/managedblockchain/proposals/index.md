@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Actions" /></td>
+    <td><CopyableCode code="actions" /></td>
     <td><code>object</code></td>
     <td>The actions to carry out if a proposal is APPROVED. Applies only to Hyperledger Fabric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the proposal. For more information about ARNs and their format, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:.+:.+:.+:.+:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the proposal was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the proposal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpirationDate" /></td>
+    <td><CopyableCode code="expiration_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the proposal expires. This is the CreationDate plus the ProposalDurationInHours that is specified in the ProposalThresholdPolicy. After this date and time, if members haven't cast enough votes to determine the outcome according to the voting policy, the proposal is EXPIRED and Actions aren't carried out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkId" /></td>
+    <td><CopyableCode code="network_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network for which the proposal is made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NoVoteCount" /></td>
+    <td><CopyableCode code="no_vote_count" /></td>
     <td><code>integer</code></td>
     <td>The current total of NO votes cast on the proposal by members.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutstandingVoteCount" /></td>
+    <td><CopyableCode code="outstanding_vote_count" /></td>
     <td><code>integer</code></td>
     <td>The number of votes remaining to be cast on the proposal by members. In other words, the number of members minus the sum of YES votes and NO votes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProposalId" /></td>
+    <td><CopyableCode code="proposal_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the proposal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProposedByMemberId" /></td>
+    <td><CopyableCode code="proposed_by_member_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the member that created the proposal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProposedByMemberName" /></td>
+    <td><CopyableCode code="proposed_by_member_name" /></td>
     <td><code>string</code></td>
     <td>The name of the member that created the proposal. (pattern: &lt;code&gt;^(?!-|&#91;0-9&#93;)(?!.*-$)(?!.*?--)&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the proposal. Values are as follows: IN_PROGRESS - The proposal is active and open for member voting. APPROVED - The proposal was approved with sufficient YES votes among members according to the VotingPolicy specified for the Network. The specified proposal actions are carried out. REJECTED - The proposal was rejected with insufficient YES votes among members according to the VotingPolicy specified for the Network. The specified ProposalActions aren't carried out. EXPIRED - Members didn't cast the number of votes required to determine the proposal outcome before the proposal expired. The specified ProposalActions aren't carried out. ACTION_FAILED - One or more of the specified ProposalActions in a proposal that was approved couldn't be completed because of an error. The ACTION_FAILED status occurs even if only one ProposalAction fails and other actions are successful. (IN_PROGRESS, APPROVED, REJECTED, EXPIRED, ACTION_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags assigned to the proposal. Each tag consists of a key and optional value. For more information about tags, see Tagging Resources in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="YesVoteCount" /></td>
+    <td><CopyableCode code="yes_vote_count" /></td>
     <td><code>integer</code></td>
     <td>The current total of YES votes cast on the proposal by members.</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token that indicates the next set of results to retrieve.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Proposals" /></td>
+    <td><CopyableCode code="proposals" /></td>
     <td><code>array</code></td>
     <td>The summary of each proposal made on the network.</td>
 </tr>
@@ -251,20 +251,20 @@ Returns detailed information about a proposal. Applies only to Hyperledger Fabri
 
 ```sql
 SELECT
-Actions,
-Arn,
-CreationDate,
-Description,
-ExpirationDate,
-NetworkId,
-NoVoteCount,
-OutstandingVoteCount,
-ProposalId,
-ProposedByMemberId,
-ProposedByMemberName,
-Status,
-Tags,
-YesVoteCount
+actions,
+arn,
+creation_date,
+description,
+expiration_date,
+network_id,
+no_vote_count,
+outstanding_vote_count,
+proposal_id,
+proposed_by_member_id,
+proposed_by_member_name,
+status,
+tags,
+yes_vote_count
 FROM aws.managedblockchain.proposals
 WHERE network_id = '{{ network_id }}' -- required
 AND proposal_id = '{{ proposal_id }}' -- required
@@ -278,8 +278,8 @@ Returns a list of proposals for the network. Applies only to Hyperledger Fabric.
 
 ```sql
 SELECT
-NextToken,
-Proposals
+next_token,
+proposals
 FROM aws.managedblockchain.proposals
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -323,7 +323,7 @@ SELECT
 '{{ network_id }}',
 '{{ region }}'
 RETURNING
-ProposalId
+proposal_id
 ;
 ```
 </TabItem>

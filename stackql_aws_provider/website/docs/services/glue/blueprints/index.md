@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blueprints" /></td>
+    <td><CopyableCode code="blueprints" /></td>
     <td><code>array</code></td>
     <td>Returns a list of blueprint as a Blueprints object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MissingBlueprints" /></td>
+    <td><CopyableCode code="missing_blueprints" /></td>
     <td><code>array</code></td>
     <td>Returns a list of BlueprintNames that were not found.</td>
 </tr>
@@ -75,52 +75,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlueprintLocation" /></td>
+    <td><CopyableCode code="blueprint_location" /></td>
     <td><code>string</code></td>
     <td>Specifies the path in Amazon S3 where the blueprint is published.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BlueprintServiceLocation" /></td>
+    <td><CopyableCode code="blueprint_service_location" /></td>
     <td><code>string</code></td>
     <td>Specifies a path in Amazon S3 where the blueprint is copied when you call CreateBlueprint/UpdateBlueprint to register the blueprint in Glue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the blueprint was registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastActiveDefinition" /></td>
+    <td><CopyableCode code="last_active_definition" /></td>
     <td><code>object</code></td>
     <td>When there are multiple versions of a blueprint and the latest version has some errors, this attribute indicates the last successful blueprint definition that is available with the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the blueprint was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the blueprint. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterSpec" /></td>
+    <td><CopyableCode code="parameter_spec" /></td>
     <td><code>string</code></td>
     <td>A JSON string that indicates the list of parameter specifications for the blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the blueprint registration. Creating — The blueprint registration is in progress. Active — The blueprint has been successfully registered. Updating — An update to the blueprint registration is in progress. Failed — The blueprint registration failed. (CREATING, ACTIVE, UPDATING, FAILED)</td>
 </tr>
@@ -232,8 +232,8 @@ Retrieves information about a list of blueprints.
 
 ```sql
 SELECT
-Blueprints,
-MissingBlueprints
+blueprints,
+missing_blueprints
 FROM aws.glue.blueprints
 WHERE region = '{{ region }}' -- required
 ;
@@ -245,16 +245,16 @@ Retrieves the details of a blueprint.
 
 ```sql
 SELECT
-BlueprintLocation,
-BlueprintServiceLocation,
-CreatedOn,
-Description,
-ErrorMessage,
-LastActiveDefinition,
-LastModifiedOn,
-Name,
-ParameterSpec,
-Status
+blueprint_location,
+blueprint_service_location,
+created_on,
+description,
+error_message,
+last_active_definition,
+last_modified_on,
+name,
+parameter_spec,
+status
 FROM aws.glue.blueprints
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,7 +291,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -347,7 +347,7 @@ WHERE
 region = '{{ region }}' --required
 AND BlueprintLocation = '{{ BlueprintLocation }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

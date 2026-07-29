@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the tunnel was created.</td>
 </tr>
@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the tunnel. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConfig" /></td>
+    <td><CopyableCode code="destination_config" /></td>
     <td><code>object</code></td>
     <td>The destination configuration that specifies the thing name of the destination device and a service name that the local proxy uses to connect to the destination application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationConnectionState" /></td>
+    <td><CopyableCode code="destination_connection_state" /></td>
     <td><code>object</code></td>
     <td>The connection state of the destination application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the tunnel was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceConnectionState" /></td>
+    <td><CopyableCode code="source_connection_state" /></td>
     <td><code>object</code></td>
     <td>The connection state of the source application.</td>
 </tr>
@@ -91,17 +91,17 @@ The following fields are returned by `SELECT` queries:
     <td>A list of tag metadata associated with the secure tunnel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timeoutConfig" /></td>
+    <td><CopyableCode code="timeout_config" /></td>
     <td><code>object</code></td>
     <td>Timeout configuration for the tunnel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tunnelArn" /></td>
+    <td><CopyableCode code="tunnel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of a tunnel.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tunnelId" /></td>
+    <td><CopyableCode code="tunnel_id" /></td>
     <td><code>string</code></td>
     <td>A unique alpha-numeric ID that identifies a tunnel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\-+=:&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to get the next set of results, or null if there are no additional results. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_=-&#93;&#123;1,4096&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tunnelSummaries" /></td>
+    <td><CopyableCode code="tunnel_summaries" /></td>
     <td><code>array</code></td>
     <td>A short description of the tunnels in an Amazon Web Services account.</td>
 </tr>
@@ -216,17 +216,17 @@ Gets information about a tunnel identified by the unique tunnel id. Requires per
 
 ```sql
 SELECT
-createdAt,
+created_at,
 description,
-destinationConfig,
-destinationConnectionState,
-lastUpdatedAt,
-sourceConnectionState,
+destination_config,
+destination_connection_state,
+last_updated_at,
+source_connection_state,
 status,
 tags,
-timeoutConfig,
-tunnelArn,
-tunnelId
+timeout_config,
+tunnel_arn,
+tunnel_id
 FROM aws.iotsecuretunneling.tunnels
 WHERE region = '{{ region }}' -- required
 ;
@@ -238,8 +238,8 @@ List all tunnels for an Amazon Web Services account. Tunnels are listed by creat
 
 ```sql
 SELECT
-nextToken,
-tunnelSummaries
+next_token,
+tunnel_summaries
 FROM aws.iotsecuretunneling.tunnels
 WHERE region = '{{ region }}' -- required
 ;

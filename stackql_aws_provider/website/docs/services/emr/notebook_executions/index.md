@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EditorId" /></td>
+    <td><CopyableCode code="editor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Amazon EMR Notebook that is used for the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when notebook execution ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>The environment variables associated with the notebook execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionEngine" /></td>
+    <td><CopyableCode code="execution_engine" /></td>
     <td><code>object</code></td>
     <td>The execution engine, such as an Amazon EMR cluster, used to run the Amazon EMR notebook and perform the notebook execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastStateChangeReason" /></td>
+    <td><CopyableCode code="last_state_change_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the latest status change of the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookExecutionId" /></td>
+    <td><CopyableCode code="notebook_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of a notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookExecutionName" /></td>
+    <td><CopyableCode code="notebook_execution_name" /></td>
     <td><code>string</code></td>
     <td>A name for the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookInstanceSecurityGroupId" /></td>
+    <td><CopyableCode code="notebook_instance_security_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Amazon EC2 security group associated with the Amazon EMR Notebook instance. For more information see Specifying Amazon EC2 Security Groups for Amazon EMR Notebooks in the Amazon EMR Management Guide. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookParams" /></td>
+    <td><CopyableCode code="notebook_params" /></td>
     <td><code>string</code></td>
     <td>Input parameters in JSON format passed to the Amazon EMR Notebook at runtime for execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookS3Location" /></td>
+    <td><CopyableCode code="notebook_s3_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location that stores the notebook execution input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputNotebookFormat" /></td>
+    <td><CopyableCode code="output_notebook_format" /></td>
     <td><code>string</code></td>
     <td>The output format for the notebook execution. (HTML)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputNotebookS3Location" /></td>
+    <td><CopyableCode code="output_notebook_s3_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location for the notebook execution output.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputNotebookURI" /></td>
+    <td><CopyableCode code="output_notebook_uri" /></td>
     <td><code>string</code></td>
     <td>The location of the notebook execution's output file in Amazon S3. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when notebook execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the notebook execution. START_PENDING indicates that the cluster has received the execution request but execution has not begun. STARTING indicates that the execution is starting on the cluster. RUNNING indicates that the execution is being processed by the cluster. FINISHING indicates that execution processing is in the final stages. FINISHED indicates that the execution has completed without error. FAILING indicates that the execution is failing and will not finish successfully. FAILED indicates that the execution failed. STOP_PENDING indicates that the cluster has received a StopNotebookExecution request and the stop is pending. STOPPING indicates that the cluster is in the process of stopping the execution as a result of a StopNotebookExecution request. STOPPED indicates that the execution stopped because of a StopNotebookExecution request. (START_PENDING, STARTING, RUNNING, FINISHING, FINISHED, FAILING, FAILED, STOP_PENDING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags associated with a notebook execution. Tags are user-defined key-value pairs that consist of a required key string with a maximum of 128 characters and an optional value string with a maximum of 256 characters.</td>
 </tr>
@@ -150,42 +150,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EditorId" /></td>
+    <td><CopyableCode code="editor_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the editor associated with the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when notebook execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionEngineId" /></td>
+    <td><CopyableCode code="execution_engine_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the execution engine for the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookExecutionId" /></td>
+    <td><CopyableCode code="notebook_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookExecutionName" /></td>
+    <td><CopyableCode code="notebook_execution_name" /></td>
     <td><code>string</code></td>
     <td>The name of the notebook execution. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotebookS3Location" /></td>
+    <td><CopyableCode code="notebook_s3_location" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location that stores the notebook execution input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when notebook execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the notebook execution. START_PENDING indicates that the cluster has received the execution request but execution has not begun. STARTING indicates that the execution is starting on the cluster. RUNNING indicates that the execution is being processed by the cluster. FINISHING indicates that execution processing is in the final stages. FINISHED indicates that the execution has completed without error. FAILING indicates that the execution is failing and will not finish successfully. FAILED indicates that the execution failed. STOP_PENDING indicates that the cluster has received a StopNotebookExecution request and the stop is pending. STOPPING indicates that the cluster is in the process of stopping the execution as a result of a StopNotebookExecution request. STOPPED indicates that the execution stopped because of a StopNotebookExecution request. (START_PENDING, STARTING, RUNNING, FINISHING, FINISHED, FAILING, FAILED, STOP_PENDING, STOPPING, STOPPED)</td>
 </tr>
@@ -262,23 +262,23 @@ Provides details of a notebook execution.
 
 ```sql
 SELECT
-Arn,
-EditorId,
-EndTime,
-EnvironmentVariables,
-ExecutionEngine,
-LastStateChangeReason,
-NotebookExecutionId,
-NotebookExecutionName,
-NotebookInstanceSecurityGroupId,
-NotebookParams,
-NotebookS3Location,
-OutputNotebookFormat,
-OutputNotebookS3Location,
-OutputNotebookURI,
-StartTime,
-Status,
-Tags
+arn,
+editor_id,
+end_time,
+environment_variables,
+execution_engine,
+last_state_change_reason,
+notebook_execution_id,
+notebook_execution_name,
+notebook_instance_security_group_id,
+notebook_params,
+notebook_s3_location,
+output_notebook_format,
+output_notebook_s3_location,
+output_notebook_uri,
+start_time,
+status,
+tags
 FROM aws.emr.notebook_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -290,14 +290,14 @@ Provides summaries of all notebook executions. You can filter the list based on 
 
 ```sql
 SELECT
-EditorId,
-EndTime,
-ExecutionEngineId,
-NotebookExecutionId,
-NotebookExecutionName,
-NotebookS3Location,
-StartTime,
-Status
+editor_id,
+end_time,
+execution_engine_id,
+notebook_execution_id,
+notebook_execution_name,
+notebook_s3_location,
+start_time,
+status
 FROM aws.emr.notebook_executions
 WHERE region = '{{ region }}' -- required
 ;

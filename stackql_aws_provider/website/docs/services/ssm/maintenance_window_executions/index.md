@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the execution finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the execution started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the execution. (PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, CANCELLED, SKIPPED_OVERLAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>The details explaining the status. Not available for all status values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowExecutionId" /></td>
+    <td><CopyableCode code="window_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window execution. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowId" /></td>
+    <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the maintenance window finished running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the maintenance window started running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the maintenance window execution. (PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, CANCELLED, SKIPPED_OVERLAPPING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusDetails" /></td>
+    <td><CopyableCode code="status_details" /></td>
     <td><code>string</code></td>
     <td>The details explaining the status. Not available for all status values.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskIds" /></td>
+    <td><CopyableCode code="task_ids" /></td>
     <td><code>array</code></td>
     <td>The ID of the task executions from the maintenance window execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowExecutionId" /></td>
+    <td><CopyableCode code="window_execution_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the maintenance window execution. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;4&#125;\-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -197,12 +197,12 @@ Lists the executions of a maintenance window. This includes information about wh
 
 ```sql
 SELECT
-EndTime,
-StartTime,
-Status,
-StatusDetails,
-WindowExecutionId,
-WindowId
+end_time,
+start_time,
+status,
+status_details,
+window_execution_id,
+window_id
 FROM aws.ssm.maintenance_window_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -214,12 +214,12 @@ Retrieves details about a specific a maintenance window execution.
 
 ```sql
 SELECT
-EndTime,
-StartTime,
-Status,
-StatusDetails,
-TaskIds,
-WindowExecutionId
+end_time,
+start_time,
+status,
+status_details,
+task_ids,
+window_execution_id
 FROM aws.ssm.maintenance_window_executions
 WHERE region = '{{ region }}' -- required
 ;

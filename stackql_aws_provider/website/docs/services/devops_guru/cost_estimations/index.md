@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Cost" /></td>
+    <td><CopyableCode code="cost" /></td>
     <td><code>number (double)</code></td>
     <td>The total estimated monthly cost to analyze the active resources for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>The number of active resources analyzed for this service to create a monthly cost estimate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the resource. The resource is ACTIVE if it produces metrics, events, or logs within an hour, otherwise it is INACTIVE. You pay for the number of active Amazon Web Services resource hours analyzed for each resource. Inactive resources are not charged. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the Amazon Web Services resource. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+&#91;a-zA-Z0-9-_:&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnitCost" /></td>
+    <td><CopyableCode code="unit_cost" /></td>
     <td><code>number (double)</code></td>
     <td>The price per hour to analyze the resources in the service. For more information, see Estimate your Amazon DevOps Guru costs and Amazon DevOps Guru pricing.</td>
 </tr>
@@ -144,11 +144,11 @@ Returns an estimate of the monthly cost for DevOps Guru to analyze your Amazon W
 
 ```sql
 SELECT
-Cost,
-Count,
-State,
-Type,
-UnitCost
+cost,
+count,
+state,
+type,
+unit_cost
 FROM aws.devops_guru.cost_estimations
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'

@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="additionalInfo" /></td>
+    <td><CopyableCode code="additional_info" /></td>
     <td><code>object</code></td>
     <td>Links to sources that provide additional context on the insight.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>The category of the insight. (UPGRADE_READINESS, MISCONFIGURATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="categorySpecificSummary" /></td>
+    <td><CopyableCode code="category_specific_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information that relates to the category of the insight. Currently only returned with certain insights having category UPGRADE_READINESS.</td>
 </tr>
@@ -81,22 +81,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the insight which includes alert criteria, remediation recommendation, and additional resources (contains Markdown).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="insightStatus" /></td>
+    <td><CopyableCode code="insight_status" /></td>
     <td><code>object</code></td>
     <td>An object containing more detail on the status of the insight resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kubernetesVersion" /></td>
+    <td><CopyableCode code="kubernetes_version" /></td>
     <td><code>string</code></td>
     <td>The Kubernetes minor version associated with an insight if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRefreshTime" /></td>
+    <td><CopyableCode code="last_refresh_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time Amazon EKS last successfully completed a refresh of this insight check on the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastTransitionTime" /></td>
+    <td><CopyableCode code="last_transition_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the status of the insight last changed.</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the insight which includes alert criteria, remediation recommendation, and additional resources (contains Markdown).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="insightStatus" /></td>
+    <td><CopyableCode code="insight_status" /></td>
     <td><code>object</code></td>
     <td>An object containing more detail on the status of the insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kubernetesVersion" /></td>
+    <td><CopyableCode code="kubernetes_version" /></td>
     <td><code>string</code></td>
     <td>The Kubernetes minor version associated with an insight if applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastRefreshTime" /></td>
+    <td><CopyableCode code="last_refresh_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time Amazon EKS last successfully completed a refresh of this insight check on the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastTransitionTime" /></td>
+    <td><CopyableCode code="last_transition_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the status of the insight last changed.</td>
 </tr>
@@ -256,14 +256,14 @@ Returns details about an insight that you specify using its ID.
 SELECT
 id,
 name,
-additionalInfo,
+additional_info,
 category,
-categorySpecificSummary,
+category_specific_summary,
 description,
-insightStatus,
-kubernetesVersion,
-lastRefreshTime,
-lastTransitionTime,
+insight_status,
+kubernetes_version,
+last_refresh_time,
+last_transition_time,
 recommendation,
 resources
 FROM aws.eks.insights
@@ -283,10 +283,10 @@ id,
 name,
 category,
 description,
-insightStatus,
-kubernetesVersion,
-lastRefreshTime,
-lastTransitionTime
+insight_status,
+kubernetes_version,
+last_refresh_time,
+last_transition_time
 FROM aws.eks.insights
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required

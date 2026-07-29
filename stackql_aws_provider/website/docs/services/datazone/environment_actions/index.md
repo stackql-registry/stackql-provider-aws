@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the environment action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain in which the environment action lives. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The environment ID of the environment action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The environment action description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone domain ID of the environment action. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The environment ID of the environment action. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -246,8 +246,8 @@ SELECT
 id,
 name,
 description,
-domainId,
-environmentId,
+domain_id,
+environment_id,
 parameters
 FROM aws.datazone.environment_actions
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -266,8 +266,8 @@ SELECT
 id,
 name,
 description,
-domainId,
-environmentId,
+domain_id,
+environment_id,
 parameters
 FROM aws.datazone.environment_actions
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -314,8 +314,8 @@ RETURNING
 id,
 name,
 description,
-domainId,
-environmentId,
+domain_id,
+environment_id,
 parameters
 ;
 ```
@@ -377,8 +377,8 @@ RETURNING
 id,
 name,
 description,
-domainId,
-environmentId,
+domain_id,
+environment_id,
 parameters;
 ```
 </TabItem>

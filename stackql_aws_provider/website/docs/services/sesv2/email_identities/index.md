@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConfigurationSetName" /></td>
+    <td><CopyableCode code="configuration_set_name" /></td>
     <td><code>string</code></td>
     <td>The name of a configuration set. Configuration sets are groups of rules that you can apply to the emails you send. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DkimAttributes" /></td>
+    <td><CopyableCode code="dkim_attributes" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the DKIM attributes for the identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeedbackForwardingStatus" /></td>
+    <td><CopyableCode code="feedback_forwarding_status" /></td>
     <td><code>boolean</code></td>
     <td>The feedback forwarding configuration for the identity. If the value is true, you receive email notifications when bounce or complaint events occur. These notifications are sent to the address that you specified in the Return-Path header of the original email. You're required to have a method of tracking bounces and complaints. If you haven't set up another mechanism for receiving bounce or complaint notifications (for example, by setting up an event destination), you receive an email notification when these events occur (even if this setting is disabled).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityType" /></td>
+    <td><CopyableCode code="identity_type" /></td>
     <td><code>string</code></td>
     <td>The email identity type. Note: the MANAGED_DOMAIN identity type is not supported. (EMAIL_ADDRESS, DOMAIN, MANAGED_DOMAIN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MailFromAttributes" /></td>
+    <td><CopyableCode code="mail_from_attributes" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the Mail-From attributes for the email identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policies" /></td>
+    <td><CopyableCode code="policies" /></td>
     <td><code>object</code></td>
     <td>A map of policy names to policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) that are associated with the email identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationInfo" /></td>
+    <td><CopyableCode code="verification_info" /></td>
     <td><code>object</code></td>
     <td>An object that contains additional information about the verification status for the identity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerificationStatus" /></td>
+    <td><CopyableCode code="verification_status" /></td>
     <td><code>string</code></td>
     <td>The verification status of the identity. The status can be one of the following: PENDING – The verification process was initiated, but Amazon SES hasn't yet been able to verify the identity. SUCCESS – The verification process completed successfully. FAILED – The verification process failed. TEMPORARY_FAILURE – A temporary issue is preventing Amazon SES from determining the verification status of the identity. NOT_STARTED – The verification process hasn't been initiated for the identity. (PENDING, SUCCESS, FAILED, TEMPORARY_FAILURE, NOT_STARTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VerifiedForSendingStatus" /></td>
+    <td><CopyableCode code="verified_for_sending_status" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether or not the identity is verified. You can only send email from verified email addresses or domains. For more information about verifying identities, see the Amazon Pinpoint User Guide.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EmailIdentities" /></td>
+    <td><CopyableCode code="email_identities" /></td>
     <td><code>array</code></td>
     <td>An array that includes all of the email identities associated with your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there are additional configuration sets to list. To view additional configuration sets, issue another request to ListEmailIdentities, and pass this token in the NextToken parameter.</td>
 </tr>
@@ -261,16 +261,16 @@ Provides information about a specific identity, including the identity's verific
 
 ```sql
 SELECT
-ConfigurationSetName,
-DkimAttributes,
-FeedbackForwardingStatus,
-IdentityType,
-MailFromAttributes,
-Policies,
-Tags,
-VerificationInfo,
-VerificationStatus,
-VerifiedForSendingStatus
+configuration_set_name,
+dkim_attributes,
+feedback_forwarding_status,
+identity_type,
+mail_from_attributes,
+policies,
+tags,
+verification_info,
+verification_status,
+verified_for_sending_status
 FROM aws.sesv2.email_identities
 WHERE email_identity = '{{ email_identity }}' -- required
 AND region = '{{ region }}' -- required
@@ -283,8 +283,8 @@ Returns a list of all of the email identities that are associated with your Amaz
 
 ```sql
 SELECT
-EmailIdentities,
-NextToken
+email_identities,
+next_token
 FROM aws.sesv2.email_identities
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -323,9 +323,9 @@ SELECT
 '{{ ConfigurationSetName }}',
 '{{ region }}'
 RETURNING
-DkimAttributes,
-IdentityType,
-VerifiedForSendingStatus
+dkim_attributes,
+identity_type,
+verified_for_sending_status
 ;
 ```
 </TabItem>
@@ -384,9 +384,9 @@ email_identity = '{{ email_identity }}' --required
 AND region = '{{ region }}' --required
 AND SigningAttributesOrigin = '{{ SigningAttributesOrigin }}' --required
 RETURNING
-DkimStatus,
-DkimTokens,
-SigningHostedZone;
+dkim_status,
+dkim_tokens,
+signing_hosted_zone;
 ```
 </TabItem>
 <TabItem value="put_email_identity_configuration_set_attributes">

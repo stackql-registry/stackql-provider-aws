@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the account that usage data was retrieved for. (pattern: &lt;code&gt;.*&#91;0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
@@ -124,7 +124,7 @@ Lists the Amazon Inspector usage totals over the last 30 days.
 
 ```sql
 SELECT
-accountId,
+account_id,
 usage
 FROM aws.inspector2.usage_totals
 WHERE region = '{{ region }}' -- required

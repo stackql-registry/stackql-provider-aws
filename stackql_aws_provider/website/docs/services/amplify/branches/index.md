@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeJobId" /></td>
+    <td><CopyableCode code="active_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the active job for a branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedResources" /></td>
+    <td><CopyableCode code="associated_resources" /></td>
     <td><code>array</code></td>
     <td>A list of custom resources that are linked to this branch.</td>
 </tr>
@@ -66,42 +66,42 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the backend associated with an Amplify Branch. This property is available to Amplify Gen 2 apps only. When you deploy an application with Amplify Gen 2, you provision the app's backend infrastructure using Typescript code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backendEnvironmentArn" /></td>
+    <td><CopyableCode code="backend_environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a backend environment that is part of an Amplify app. This property is available to Amplify Gen 1 apps only. When you deploy an application with Amplify Gen 2, you provision the app's backend infrastructure using Typescript code. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="basicAuthCredentials" /></td>
+    <td><CopyableCode code="basic_auth_credentials" /></td>
     <td><code>string</code></td>
     <td>The basic authorization credentials for a branch of an Amplify app. You must base64-encode the authorization credentials and provide them in the format user:password. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchArn" /></td>
+    <td><CopyableCode code="branch_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a branch that is part of an Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchName" /></td>
+    <td><CopyableCode code="branch_name" /></td>
     <td><code>string</code></td>
     <td>The name for the branch that is part of an Amplify app. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildSpec" /></td>
+    <td><CopyableCode code="build_spec" /></td>
     <td><code>string</code></td>
     <td>The build specification (build spec) file for an Amplify app build. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeRoleArn" /></td>
+    <td><CopyableCode code="compute_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role for a branch of an SSR app. The Compute role allows the Amplify Hosting compute service to securely access specific Amazon Web Services resources based on the role's permissions. For more information about the SSR Compute role, see Adding an SSR Compute role in the Amplify User Guide. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify created the branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomains" /></td>
+    <td><CopyableCode code="custom_domains" /></td>
     <td><code>array</code></td>
     <td>The custom domains for a branch of an Amplify app.</td>
 </tr>
@@ -111,47 +111,47 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the branch that is part of an Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationBranch" /></td>
+    <td><CopyableCode code="destination_branch" /></td>
     <td><code>string</code></td>
     <td>The destination branch if the branch is a pull request branch. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name for the branch. This is used as the default domain prefix. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableAutoBuild" /></td>
+    <td><CopyableCode code="enable_auto_build" /></td>
     <td><code>boolean</code></td>
     <td>Enables auto-building on push for a branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBasicAuth" /></td>
+    <td><CopyableCode code="enable_basic_auth" /></td>
     <td><code>boolean</code></td>
     <td>Enables basic authorization for a branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableNotification" /></td>
+    <td><CopyableCode code="enable_notification" /></td>
     <td><code>boolean</code></td>
     <td>Enables notifications for a branch that is part of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enablePerformanceMode" /></td>
+    <td><CopyableCode code="enable_performance_mode" /></td>
     <td><code>boolean</code></td>
     <td>Enables performance mode for the branch. Performance mode optimizes for faster hosting performance by keeping content cached at the edge for a longer interval. When performance mode is enabled, hosting configuration or code changes can take up to 10 minutes to roll out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enablePullRequestPreview" /></td>
+    <td><CopyableCode code="enable_pull_request_preview" /></td>
     <td><code>boolean</code></td>
     <td>Enables pull request previews for the branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableSkewProtection" /></td>
+    <td><CopyableCode code="enable_skew_protection" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the skew protection feature is enabled for the branch. Deployment skew protection is available to Amplify applications to eliminate version skew issues between client and servers in web applications. When you apply skew protection to a branch, you can ensure that your clients always interact with the correct version of server-side assets, regardless of when a deployment occurs. For more information about skew protection, see Skew protection for Amplify deployments in the Amplify User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>The environment variables specific to a branch of an Amplify app.</td>
 </tr>
@@ -161,12 +161,12 @@ The following fields are returned by `SELECT` queries:
     <td>The framework for a branch of an Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestEnvironmentName" /></td>
+    <td><CopyableCode code="pull_request_environment_name" /></td>
     <td><code>string</code></td>
     <td>The Amplify environment name for the pull request. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceBranch" /></td>
+    <td><CopyableCode code="source_branch" /></td>
     <td><code>string</code></td>
     <td>The source branch if the branch is a pull request branch. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
@@ -181,12 +181,12 @@ The following fields are returned by `SELECT` queries:
     <td>The tag for the branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thumbnailUrl" /></td>
+    <td><CopyableCode code="thumbnail_url" /></td>
     <td><code>string</code></td>
     <td>The thumbnail URL for the branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalNumberOfJobs" /></td>
+    <td><CopyableCode code="total_number_of_jobs" /></td>
     <td><code>string</code></td>
     <td>The total number of jobs that are part of an Amplify app.</td>
 </tr>
@@ -196,7 +196,7 @@ The following fields are returned by `SELECT` queries:
     <td>The content Time to Live (TTL) for the website in seconds. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp for the last updated time for a branch.</td>
 </tr>
@@ -215,12 +215,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activeJobId" /></td>
+    <td><CopyableCode code="active_job_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the active job for a branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedResources" /></td>
+    <td><CopyableCode code="associated_resources" /></td>
     <td><code>array</code></td>
     <td>A list of custom resources that are linked to this branch.</td>
 </tr>
@@ -230,42 +230,42 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the backend associated with an Amplify Branch. This property is available to Amplify Gen 2 apps only. When you deploy an application with Amplify Gen 2, you provision the app's backend infrastructure using Typescript code.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="backendEnvironmentArn" /></td>
+    <td><CopyableCode code="backend_environment_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a backend environment that is part of an Amplify app. This property is available to Amplify Gen 1 apps only. When you deploy an application with Amplify Gen 2, you provision the app's backend infrastructure using Typescript code. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="basicAuthCredentials" /></td>
+    <td><CopyableCode code="basic_auth_credentials" /></td>
     <td><code>string</code></td>
     <td>The basic authorization credentials for a branch of an Amplify app. You must base64-encode the authorization credentials and provide them in the format user:password. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchArn" /></td>
+    <td><CopyableCode code="branch_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for a branch that is part of an Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branchName" /></td>
+    <td><CopyableCode code="branch_name" /></td>
     <td><code>string</code></td>
     <td>The name for the branch that is part of an Amplify app. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildSpec" /></td>
+    <td><CopyableCode code="build_spec" /></td>
     <td><code>string</code></td>
     <td>The build specification (build spec) file for an Amplify app build. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computeRoleArn" /></td>
+    <td><CopyableCode code="compute_role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role for a branch of an SSR app. The Compute role allows the Amplify Hosting compute service to securely access specific Amazon Web Services resources based on the role's permissions. For more information about the SSR Compute role, see Adding an SSR Compute role in the Amplify User Guide. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp of when Amplify created the branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customDomains" /></td>
+    <td><CopyableCode code="custom_domains" /></td>
     <td><code>array</code></td>
     <td>The custom domains for a branch of an Amplify app.</td>
 </tr>
@@ -275,47 +275,47 @@ The following fields are returned by `SELECT` queries:
     <td>The description for the branch that is part of an Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="destinationBranch" /></td>
+    <td><CopyableCode code="destination_branch" /></td>
     <td><code>string</code></td>
     <td>The destination branch if the branch is a pull request branch. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name for the branch. This is used as the default domain prefix. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableAutoBuild" /></td>
+    <td><CopyableCode code="enable_auto_build" /></td>
     <td><code>boolean</code></td>
     <td>Enables auto-building on push for a branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableBasicAuth" /></td>
+    <td><CopyableCode code="enable_basic_auth" /></td>
     <td><code>boolean</code></td>
     <td>Enables basic authorization for a branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableNotification" /></td>
+    <td><CopyableCode code="enable_notification" /></td>
     <td><code>boolean</code></td>
     <td>Enables notifications for a branch that is part of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enablePerformanceMode" /></td>
+    <td><CopyableCode code="enable_performance_mode" /></td>
     <td><code>boolean</code></td>
     <td>Enables performance mode for the branch. Performance mode optimizes for faster hosting performance by keeping content cached at the edge for a longer interval. When performance mode is enabled, hosting configuration or code changes can take up to 10 minutes to roll out.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enablePullRequestPreview" /></td>
+    <td><CopyableCode code="enable_pull_request_preview" /></td>
     <td><code>boolean</code></td>
     <td>Enables pull request previews for the branch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="enableSkewProtection" /></td>
+    <td><CopyableCode code="enable_skew_protection" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the skew protection feature is enabled for the branch. Deployment skew protection is available to Amplify applications to eliminate version skew issues between client and servers in web applications. When you apply skew protection to a branch, you can ensure that your clients always interact with the correct version of server-side assets, regardless of when a deployment occurs. For more information about skew protection, see Skew protection for Amplify deployments in the Amplify User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>The environment variables specific to a branch of an Amplify app.</td>
 </tr>
@@ -325,12 +325,12 @@ The following fields are returned by `SELECT` queries:
     <td>The framework for a branch of an Amplify app. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pullRequestEnvironmentName" /></td>
+    <td><CopyableCode code="pull_request_environment_name" /></td>
     <td><code>string</code></td>
     <td>The Amplify environment name for the pull request. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceBranch" /></td>
+    <td><CopyableCode code="source_branch" /></td>
     <td><code>string</code></td>
     <td>The source branch if the branch is a pull request branch. (pattern: &lt;code&gt;(?s).+&lt;/code&gt;)</td>
 </tr>
@@ -345,12 +345,12 @@ The following fields are returned by `SELECT` queries:
     <td>The tag for the branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thumbnailUrl" /></td>
+    <td><CopyableCode code="thumbnail_url" /></td>
     <td><code>string</code></td>
     <td>The thumbnail URL for the branch of an Amplify app.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalNumberOfJobs" /></td>
+    <td><CopyableCode code="total_number_of_jobs" /></td>
     <td><code>string</code></td>
     <td>The total number of jobs that are part of an Amplify app.</td>
 </tr>
@@ -360,7 +360,7 @@ The following fields are returned by `SELECT` queries:
     <td>The content Time to Live (TTL) for the website in seconds. (pattern: &lt;code&gt;\d*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp for the last updated time for a branch.</td>
 </tr>
@@ -511,36 +511,36 @@ Returns a branch for an Amplify app.
 
 ```sql
 SELECT
-activeJobId,
-associatedResources,
+active_job_id,
+associated_resources,
 backend,
-backendEnvironmentArn,
-basicAuthCredentials,
-branchArn,
-branchName,
-buildSpec,
-computeRoleArn,
-createTime,
-customDomains,
+backend_environment_arn,
+basic_auth_credentials,
+branch_arn,
+branch_name,
+build_spec,
+compute_role_arn,
+create_time,
+custom_domains,
 description,
-destinationBranch,
-displayName,
-enableAutoBuild,
-enableBasicAuth,
-enableNotification,
-enablePerformanceMode,
-enablePullRequestPreview,
-enableSkewProtection,
-environmentVariables,
+destination_branch,
+display_name,
+enable_auto_build,
+enable_basic_auth,
+enable_notification,
+enable_performance_mode,
+enable_pull_request_preview,
+enable_skew_protection,
+environment_variables,
 framework,
-pullRequestEnvironmentName,
-sourceBranch,
+pull_request_environment_name,
+source_branch,
 stage,
 tags,
-thumbnailUrl,
-totalNumberOfJobs,
+thumbnail_url,
+total_number_of_jobs,
 ttl,
-updateTime
+update_time
 FROM aws.amplify.branches
 WHERE app_id = '{{ app_id }}' -- required
 AND branch_name = '{{ branch_name }}' -- required
@@ -554,36 +554,36 @@ Lists the branches of an Amplify app.
 
 ```sql
 SELECT
-activeJobId,
-associatedResources,
+active_job_id,
+associated_resources,
 backend,
-backendEnvironmentArn,
-basicAuthCredentials,
-branchArn,
-branchName,
-buildSpec,
-computeRoleArn,
-createTime,
-customDomains,
+backend_environment_arn,
+basic_auth_credentials,
+branch_arn,
+branch_name,
+build_spec,
+compute_role_arn,
+create_time,
+custom_domains,
 description,
-destinationBranch,
-displayName,
-enableAutoBuild,
-enableBasicAuth,
-enableNotification,
-enablePerformanceMode,
-enablePullRequestPreview,
-enableSkewProtection,
-environmentVariables,
+destination_branch,
+display_name,
+enable_auto_build,
+enable_basic_auth,
+enable_notification,
+enable_performance_mode,
+enable_pull_request_preview,
+enable_skew_protection,
+environment_variables,
 framework,
-pullRequestEnvironmentName,
-sourceBranch,
+pull_request_environment_name,
+source_branch,
 stage,
 tags,
-thumbnailUrl,
-totalNumberOfJobs,
+thumbnail_url,
+total_number_of_jobs,
 ttl,
-updateTime
+update_time
 FROM aws.amplify.branches
 WHERE app_id = '{{ app_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -679,9 +679,9 @@ SELECT
 '{{ branch_name }}',
 '{{ region }}'
 RETURNING
-fileUploadUrls,
-jobId,
-zipUploadUrl
+file_upload_urls,
+job_id,
+zip_upload_url
 ;
 ```
 </TabItem>

@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>The invocation's idempotency token. (pattern: &lt;code&gt;&#91;!-~&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the invocation ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>An error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invocationArn" /></td>
+    <td><CopyableCode code="invocation_arn" /></td>
     <td><code>string</code></td>
     <td>The invocation's ARN. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:async-invoke/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The invocation's last modified time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The invocation's model ARN. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:bedrock:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;*:(provisioned-model|foundation-model)/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>Output data settings.</td>
 </tr>
@@ -91,7 +91,7 @@ The following fields are returned by `SELECT` queries:
     <td>The invocation's status. (InProgress, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the invocation request was submitted.</td>
 </tr>
@@ -110,37 +110,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="clientRequestToken" /></td>
+    <td><CopyableCode code="client_request_token" /></td>
     <td><code>string</code></td>
     <td>The invocation's idempotency token. (pattern: &lt;code&gt;&#91;!-~&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the invocation ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>An error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="invocationArn" /></td>
+    <td><CopyableCode code="invocation_arn" /></td>
     <td><code>string</code></td>
     <td>The invocation's ARN. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:async-invoke/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the invocation was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The invoked model's ARN. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:bedrock:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;*:(provisioned-model|foundation-model)/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>The invocation's output data settings.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The invocation's status. (InProgress, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the invocation was submitted.</td>
 </tr>
@@ -267,15 +267,15 @@ Retrieve information about an asynchronous invocation.
 
 ```sql
 SELECT
-clientRequestToken,
-endTime,
-failureMessage,
-invocationArn,
-lastModifiedTime,
-modelArn,
-outputDataConfig,
+client_request_token,
+end_time,
+failure_message,
+invocation_arn,
+last_modified_time,
+model_arn,
+output_data_config,
 status,
-submitTime
+submit_time
 FROM aws.bedrock_runtime.async_invokes
 WHERE invocation_arn = '{{ invocation_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -288,15 +288,15 @@ Lists asynchronous invocations.
 
 ```sql
 SELECT
-clientRequestToken,
-endTime,
-failureMessage,
-invocationArn,
-lastModifiedTime,
-modelArn,
-outputDataConfig,
+client_request_token,
+end_time,
+failure_message,
+invocation_arn,
+last_modified_time,
+model_arn,
+output_data_config,
 status,
-submitTime
+submit_time
 FROM aws.bedrock_runtime.async_invokes
 WHERE region = '{{ region }}' -- required
 AND submitTimeAfter = '{{ submitTimeAfter }}'

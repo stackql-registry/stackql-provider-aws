@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationTarget" /></td>
+    <td><CopyableCode code="association_target" /></td>
     <td><code>string</code></td>
     <td>One or more targets associated with the event window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CronExpression" /></td>
+    <td><CopyableCode code="cron_expression" /></td>
     <td><code>string</code></td>
     <td>The cron expression defined for the event window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceEventWindowId" /></td>
+    <td><CopyableCode code="instance_event_window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the event window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the event window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the event window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The instance tags associated with the event window.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeRanges" /></td>
+    <td><CopyableCode code="time_ranges" /></td>
     <td><code>string</code></td>
     <td>One or more time ranges defined for the event window.</td>
 </tr>
@@ -244,13 +244,13 @@ Describes the specified event windows or all event windows. If you specify event
 
 ```sql
 SELECT
-AssociationTarget,
-CronExpression,
-InstanceEventWindowId,
-Name,
-State,
-Tags,
-TimeRanges
+association_target,
+cron_expression,
+instance_event_window_id,
+name,
+state,
+tags,
+time_ranges
 FROM aws.ec2.instance_event_windows
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -294,13 +294,13 @@ SELECT
 '{{ CronExpression }}',
 '{{ TagSpecification }}'
 RETURNING
-AssociationTarget,
-CronExpression,
-InstanceEventWindowId,
-Name,
-State,
-Tags,
-TimeRanges
+association_target,
+cron_expression,
+instance_event_window_id,
+name,
+state,
+tags,
+time_ranges
 ;
 ```
 </TabItem>
@@ -361,13 +361,13 @@ AND AssociationTarget = '{{ AssociationTarget }}' --required
 AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
-AssociationTarget,
-CronExpression,
-InstanceEventWindowId,
-Name,
-State,
-Tags,
-TimeRanges;
+association_target,
+cron_expression,
+instance_event_window_id,
+name,
+state,
+tags,
+time_ranges;
 ```
 </TabItem>
 <TabItem value="modify_instance_event_window">
@@ -386,13 +386,13 @@ AND Name = '{{ Name}}'
 AND TimeRange = '{{ TimeRange}}'
 AND CronExpression = '{{ CronExpression}}'
 RETURNING
-AssociationTarget,
-CronExpression,
-InstanceEventWindowId,
-Name,
-State,
-Tags,
-TimeRanges;
+association_target,
+cron_expression,
+instance_event_window_id,
+name,
+state,
+tags,
+time_ranges;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="connectorProfileDetails" /></td>
+    <td><CopyableCode code="connector_profile_details" /></td>
     <td><code>array</code></td>
     <td>Returns information about the connector profiles associated with the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The pagination token for the next page of data. If nextToken=null, this means that all records have been fetched. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -145,8 +145,8 @@ Returns a list of connector-profile details matching the provided connector-prof
 
 ```sql
 SELECT
-connectorProfileDetails,
-nextToken
+connector_profile_details,
+next_token
 FROM aws.appflow.connector_profiles
 WHERE region = '{{ region }}' -- required
 ;
@@ -189,7 +189,7 @@ SELECT
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
-connectorProfileArn
+connector_profile_arn
 ;
 ```
 </TabItem>
@@ -437,7 +437,7 @@ AND connectorProfileName = '{{ connectorProfileName }}' --required
 AND connectionMode = '{{ connectionMode }}' --required
 AND connectorProfileConfig = '{{ connectorProfileConfig }}' --required
 RETURNING
-connectorProfileArn;
+connector_profile_arn;
 ```
 </TabItem>
 </Tabs>

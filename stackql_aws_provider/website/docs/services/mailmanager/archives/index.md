@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArchiveArn" /></td>
+    <td><CopyableCode code="archive_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveId" /></td>
+    <td><CopyableCode code="archive_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveName" /></td>
+    <td><CopyableCode code="archive_name" /></td>
     <td><code>string</code></td>
     <td>The unique name assigned to the archive. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveState" /></td>
+    <td><CopyableCode code="archive_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the archive: ACTIVE – The archive is ready and available for use. PENDING_DELETION – The archive has been marked for deletion and will be permanently deleted in 30 days. No further modifications can be made in this state. (ACTIVE, PENDING_DELETION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the archive was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt the archive. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov|-eusc):kms:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:(key|alias)/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the archive was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Retention" /></td>
+    <td><CopyableCode code="retention" /></td>
     <td><code>object</code></td>
     <td>The retention period for emails in this archive.</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArchiveId" /></td>
+    <td><CopyableCode code="archive_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the archive.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveName" /></td>
+    <td><CopyableCode code="archive_name" /></td>
     <td><code>string</code></td>
     <td>The unique name assigned to the archive. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_-&#93;*&#91;a-zA-Z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ArchiveState" /></td>
+    <td><CopyableCode code="archive_state" /></td>
     <td><code>string</code></td>
     <td>The current state of the archive: ACTIVE – The archive is ready and available for use. PENDING_DELETION – The archive has been marked for deletion and will be permanently deleted in 30 days. No further modifications can be made in this state. (ACTIVE, PENDING_DELETION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the archive was last updated.</td>
 </tr>
@@ -246,14 +246,14 @@ Retrieves the full details and current state of a specified email archive.
 
 ```sql
 SELECT
-ArchiveArn,
-ArchiveId,
-ArchiveName,
-ArchiveState,
-CreatedTimestamp,
-KmsKeyArn,
-LastUpdatedTimestamp,
-Retention
+archive_arn,
+archive_id,
+archive_name,
+archive_state,
+created_timestamp,
+kms_key_arn,
+last_updated_timestamp,
+retention
 FROM aws.mailmanager.archives
 WHERE region = '{{ region }}' -- required
 ;
@@ -265,10 +265,10 @@ Returns a list of all email archives in your account.
 
 ```sql
 SELECT
-ArchiveId,
-ArchiveName,
-ArchiveState,
-LastUpdatedTimestamp
+archive_id,
+archive_name,
+archive_state,
+last_updated_timestamp
 FROM aws.mailmanager.archives
 WHERE region = '{{ region }}' -- required
 ;
@@ -307,7 +307,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ArchiveId
+archive_id
 ;
 ```
 </TabItem>

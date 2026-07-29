@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the Automated Reasoning policy. (pattern: &lt;code&gt;&#91;0-9a-zA-Z-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="annotationSetHash" /></td>
+    <td><CopyableCode code="annotation_set_hash" /></td>
     <td><code>string</code></td>
     <td>A hash value representing the current state of the annotations. This is used for optimistic concurrency control when updating annotations. (pattern: &lt;code&gt;&#91;0-9a-z&#93;&#123;128&#125;&lt;/code&gt;)</td>
 </tr>
@@ -65,17 +65,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current set of annotations containing rules, variables, and types extracted from the source documents. These can be modified before finalizing the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildWorkflowId" /></td>
+    <td><CopyableCode code="build_workflow_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the build workflow. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-?&#91;a-f0-9&#93;&#123;4&#125;-?4&#91;a-f0-9&#93;&#123;3&#125;-?&#91;89ab&#93;&#91;a-f0-9&#93;&#123;3&#125;-?&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Automated Reasoning policy. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:automated-reasoning-policy/&#91;a-z0-9&#93;&#123;12&#125;(:(&#91;1-9&#93;&#91;0-9&#93;&#123;0,11&#125;))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the annotations were last updated.</td>
 </tr>
@@ -162,11 +162,11 @@ Retrieves the current annotations for an Automated Reasoning policy build workfl
 ```sql
 SELECT
 name,
-annotationSetHash,
+annotation_set_hash,
 annotations,
-buildWorkflowId,
-policyArn,
-updatedAt
+build_workflow_id,
+policy_arn,
+updated_at
 FROM aws.bedrock.automated_reasoning_policy_annotations
 WHERE policy_arn = '{{ policy_arn }}' -- required
 AND build_workflow_id = '{{ build_workflow_id }}' -- required
@@ -201,10 +201,10 @@ AND region = '{{ region }}' --required
 AND annotations = '{{ annotations }}' --required
 AND lastUpdatedAnnotationSetHash = '{{ lastUpdatedAnnotationSetHash }}' --required
 RETURNING
-annotationSetHash,
-buildWorkflowId,
-policyArn,
-updatedAt;
+annotation_set_hash,
+build_workflow_id,
+policy_arn,
+updated_at;
 ```
 </TabItem>
 </Tabs>

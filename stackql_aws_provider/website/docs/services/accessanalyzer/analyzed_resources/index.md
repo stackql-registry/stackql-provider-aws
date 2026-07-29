@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The actions that an external principal is granted permission to use by the policy that generated the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="analyzedAt" /></td>
+    <td><CopyableCode code="analyzed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the resource was analyzed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the finding was created.</td>
 </tr>
@@ -71,27 +71,27 @@ The following fields are returned by `SELECT` queries:
     <td>An error message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isPublic" /></td>
+    <td><CopyableCode code="is_public" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the policy that generated the finding grants public access to the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource that was analyzed. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceOwnerAccount" /></td>
+    <td><CopyableCode code="resource_owner_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of the resource that was analyzed. (AWS::S3::Bucket, AWS::IAM::Role, AWS::SQS::Queue, AWS::Lambda::Function, AWS::Lambda::LayerVersion, AWS::KMS::Key, AWS::SecretsManager::Secret, AWS::EFS::FileSystem, AWS::EC2::Snapshot, AWS::ECR::Repository, AWS::RDS::DBSnapshot, AWS::RDS::DBClusterSnapshot, AWS::SNS::Topic, AWS::S3Express::DirectoryBucket, AWS::DynamoDB::Table, AWS::DynamoDB::Stream, AWS::IAM::User)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sharedVia" /></td>
+    <td><CopyableCode code="shared_via" /></td>
     <td><code>array</code></td>
     <td>Indicates how the access that generated the finding is granted. This is populated for Amazon S3 bucket findings.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the finding generated from the analyzed resource. (ACTIVE, ARCHIVED, RESOLVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the finding was updated.</td>
 </tr>
@@ -120,17 +120,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the analyzed resource. (pattern: &lt;code&gt;arn:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:&#91;^:&#93;*:.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceOwnerAccount" /></td>
+    <td><CopyableCode code="resource_owner_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource that was analyzed. (AWS::S3::Bucket, AWS::IAM::Role, AWS::SQS::Queue, AWS::Lambda::Function, AWS::Lambda::LayerVersion, AWS::KMS::Key, AWS::SecretsManager::Secret, AWS::EFS::FileSystem, AWS::EC2::Snapshot, AWS::ECR::Repository, AWS::RDS::DBSnapshot, AWS::RDS::DBClusterSnapshot, AWS::SNS::Topic, AWS::S3Express::DirectoryBucket, AWS::DynamoDB::Table, AWS::DynamoDB::Stream, AWS::IAM::User)</td>
 </tr>
@@ -218,16 +218,16 @@ Retrieves information about a resource that was analyzed. This action is support
 ```sql
 SELECT
 actions,
-analyzedAt,
-createdAt,
+analyzed_at,
+created_at,
 error,
-isPublic,
-resourceArn,
-resourceOwnerAccount,
-resourceType,
-sharedVia,
+is_public,
+resource_arn,
+resource_owner_account,
+resource_type,
+shared_via,
 status,
-updatedAt
+updated_at
 FROM aws.accessanalyzer.analyzed_resources
 WHERE analyzerArn = '{{ analyzerArn }}' -- required
 AND resourceArn = '{{ resourceArn }}' -- required
@@ -241,9 +241,9 @@ Retrieves a list of resources of the specified type that have been analyzed by t
 
 ```sql
 SELECT
-resourceArn,
-resourceOwnerAccount,
-resourceType
+resource_arn,
+resource_owner_account,
+resource_type
 FROM aws.accessanalyzer.analyzed_resources
 WHERE region = '{{ region }}' -- required
 ;

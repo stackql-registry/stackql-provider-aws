@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="metadataLocation" /></td>
+    <td><CopyableCode code="metadata_location" /></td>
     <td><code>string</code></td>
     <td>The metadata location.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionToken" /></td>
+    <td><CopyableCode code="version_token" /></td>
     <td><code>string</code></td>
     <td>The version token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warehouseLocation" /></td>
+    <td><CopyableCode code="warehouse_location" /></td>
     <td><code>string</code></td>
     <td>The warehouse location.</td>
 </tr>
@@ -151,9 +151,9 @@ Gets the location of the table metadata. Permissions You must have the s3tables:
 
 ```sql
 SELECT
-metadataLocation,
-versionToken,
-warehouseLocation
+metadata_location,
+version_token,
+warehouse_location
 FROM aws.s3tables.table_metadata_locations
 WHERE table_bucket_arn = '{{ table_bucket_arn }}' -- required
 AND namespace = '{{ namespace }}' -- required
@@ -191,10 +191,10 @@ AND versionToken = '{{ versionToken }}' --required
 AND metadataLocation = '{{ metadataLocation }}' --required
 RETURNING
 name,
-metadataLocation,
+metadata_location,
 namespace,
-tableARN,
-versionToken;
+table_arn,
+version_token;
 ```
 </TabItem>
 </Tabs>

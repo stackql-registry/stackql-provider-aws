@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisFirehoseConfig" /></td>
+    <td><CopyableCode code="kinesis_firehose_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Kinesis Firehose delivery stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisStreamConfig" /></td>
+    <td><CopyableCode code="kinesis_stream_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Kinesis data stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisVideoStreamConfig" /></td>
+    <td><CopyableCode code="kinesis_video_stream_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Kinesis video stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Config" /></td>
+    <td><CopyableCode code="s3_config" /></td>
     <td><code>object</code></td>
     <td>The S3 bucket configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>A valid storage type. (S3, KINESIS_VIDEO_STREAM, KINESIS_STREAM, KINESIS_FIREHOSE)</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociationId" /></td>
+    <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisFirehoseConfig" /></td>
+    <td><CopyableCode code="kinesis_firehose_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Kinesis Firehose delivery stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisStreamConfig" /></td>
+    <td><CopyableCode code="kinesis_stream_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Kinesis data stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KinesisVideoStreamConfig" /></td>
+    <td><CopyableCode code="kinesis_video_stream_config" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Kinesis video stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3Config" /></td>
+    <td><CopyableCode code="s3_config" /></td>
     <td><code>object</code></td>
     <td>The S3 bucket configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>A valid storage type. (S3, KINESIS_VIDEO_STREAM, KINESIS_STREAM, KINESIS_FIREHOSE)</td>
 </tr>
@@ -248,12 +248,12 @@ This API is in preview release for Amazon Connect and is subject to change. Retr
 
 ```sql
 SELECT
-AssociationId,
-KinesisFirehoseConfig,
-KinesisStreamConfig,
-KinesisVideoStreamConfig,
-S3Config,
-StorageType
+association_id,
+kinesis_firehose_config,
+kinesis_stream_config,
+kinesis_video_stream_config,
+s3_config,
+storage_type
 FROM aws.connect.instance_storage_configs
 WHERE instance_id = '{{ instance_id }}' -- required
 AND association_id = '{{ association_id }}' -- required
@@ -268,12 +268,12 @@ This API is in preview release for Amazon Connect and is subject to change. Retu
 
 ```sql
 SELECT
-AssociationId,
-KinesisFirehoseConfig,
-KinesisStreamConfig,
-KinesisVideoStreamConfig,
-S3Config,
-StorageType
+association_id,
+kinesis_firehose_config,
+kinesis_stream_config,
+kinesis_video_stream_config,
+s3_config,
+storage_type
 FROM aws.connect.instance_storage_configs
 WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -312,7 +312,7 @@ AND region = '{{ region }}' --required
 AND ResourceType = '{{ ResourceType }}' --required
 AND StorageConfig = '{{ StorageConfig }}' --required
 RETURNING
-AssociationId;
+association_id;
 ```
 </TabItem>
 <TabItem value="update_instance_storage_config">

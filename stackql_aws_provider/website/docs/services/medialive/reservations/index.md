@@ -51,97 +51,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>Units for duration, e.g. 'MONTHS' (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="End" /></td>
+    <td><CopyableCode code="end" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>Offering type, e.g. 'NO_UPFRONT' (NO_UPFRONT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RenewalSettings" /></td>
+    <td><CopyableCode code="renewal_settings" /></td>
     <td><code>object</code></td>
     <td>Renewal settings for the reservation</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationId" /></td>
+    <td><CopyableCode code="reservation_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>Resource configuration details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Start" /></td>
+    <td><CopyableCode code="start" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Current state of reservation, e.g. 'ACTIVE' (ACTIVE, EXPIRED, CANCELED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
@@ -160,97 +160,97 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>Placeholder documentation for __integer</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>Units for duration, e.g. 'MONTHS' (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="End" /></td>
+    <td><CopyableCode code="end" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FixedPrice" /></td>
+    <td><CopyableCode code="fixed_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingType" /></td>
+    <td><CopyableCode code="offering_type" /></td>
     <td><code>string</code></td>
     <td>Offering type, e.g. 'NO_UPFRONT' (NO_UPFRONT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Region" /></td>
+    <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RenewalSettings" /></td>
+    <td><CopyableCode code="renewal_settings" /></td>
     <td><code>object</code></td>
     <td>The Renewal settings for Reservations</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationId" /></td>
+    <td><CopyableCode code="reservation_id" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>Resource configuration details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Start" /></td>
+    <td><CopyableCode code="start" /></td>
     <td><code>string</code></td>
     <td>Placeholder documentation for __string</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Current state of reservation, e.g. 'ACTIVE' (ACTIVE, EXPIRED, CANCELED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>A collection of key-value pairs</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsagePrice" /></td>
+    <td><CopyableCode code="usage_price" /></td>
     <td><code>number (double)</code></td>
     <td>Placeholder documentation for __double</td>
 </tr>
@@ -396,25 +396,25 @@ Get details for a reservation.
 
 ```sql
 SELECT
-Arn,
-Count,
-CurrencyCode,
-Duration,
-DurationUnits,
-End,
-FixedPrice,
-Name,
-OfferingDescription,
-OfferingId,
-OfferingType,
-Region,
-RenewalSettings,
-ReservationId,
-ResourceSpecification,
-Start,
-State,
-Tags,
-UsagePrice
+arn,
+count,
+currency_code,
+duration,
+duration_units,
+end,
+fixed_price,
+name,
+offering_description,
+offering_id,
+offering_type,
+region,
+renewal_settings,
+reservation_id,
+resource_specification,
+start,
+state,
+tags,
+usage_price
 FROM aws.medialive.reservations
 WHERE reservation_id = '{{ reservation_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -427,25 +427,25 @@ List purchased reservations.
 
 ```sql
 SELECT
-Arn,
-Count,
-CurrencyCode,
-Duration,
-DurationUnits,
-End,
-FixedPrice,
-Name,
-OfferingDescription,
-OfferingId,
-OfferingType,
-Region,
-RenewalSettings,
-ReservationId,
-ResourceSpecification,
-Start,
-State,
-Tags,
-UsagePrice
+arn,
+count,
+currency_code,
+duration,
+duration_units,
+end,
+fixed_price,
+name,
+offering_description,
+offering_id,
+offering_type,
+region,
+renewal_settings,
+reservation_id,
+resource_specification,
+start,
+state,
+tags,
+usage_price
 FROM aws.medialive.reservations
 WHERE region = '{{ region }}' -- required
 AND channelClass = '{{ channelClass }}'
@@ -485,7 +485,7 @@ WHERE
 reservation_id = '{{ reservation_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Reservation;
+reservation;
 ```
 </TabItem>
 </Tabs>

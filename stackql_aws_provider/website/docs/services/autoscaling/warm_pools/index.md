@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the instance is running.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone ID where the instance was launched.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthStatus" /></td>
+    <td><CopyableCode code="health_status" /></td>
     <td><code>string</code></td>
     <td>The last reported health status of the instance. Healthy means that the instance is healthy and should remain in service. Unhealthy means that the instance is unhealthy and that Amazon EC2 Auto Scaling should terminate and replace it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageId" /></td>
+    <td><CopyableCode code="image_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Machine Image (AMI) used for the instance's current root volume. This value reflects the most recent AMI applied to the instance, including updates made through root volume replacement operations. This field appears for: Instances with root volume replacements through Instance Refresh Instances launched with AMI overrides This field won't appear for: Existing instances launched from Launch Templates without overrides Existing instances that didn’t have their root volume replaced through Instance Refresh</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type of the EC2 instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchConfigurationName" /></td>
+    <td><CopyableCode code="launch_configuration_name" /></td>
     <td><code>string</code></td>
     <td>The launch configuration associated with the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LaunchTemplate" /></td>
+    <td><CopyableCode code="launch_template" /></td>
     <td><code>string</code></td>
     <td>The launch template for the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleState" /></td>
+    <td><CopyableCode code="lifecycle_state" /></td>
     <td><code>string</code></td>
     <td>A description of the current lifecycle state. The Quarantined state is not used. For more information, see Amazon EC2 Auto Scaling instance lifecycle in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectedFromScaleIn" /></td>
+    <td><CopyableCode code="protected_from_scale_in" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WeightedCapacity" /></td>
+    <td><CopyableCode code="weighted_capacity" /></td>
     <td><code>string</code></td>
     <td>The number of capacity units contributed by the instance based on its instance type. Valid Range: Minimum value of 1. Maximum value of 999.</td>
 </tr>
@@ -223,17 +223,17 @@ Gets information about a warm pool and its instances. For more information, see 
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-HealthStatus,
-ImageId,
-InstanceId,
-InstanceType,
-LaunchConfigurationName,
-LaunchTemplate,
-LifecycleState,
-ProtectedFromScaleIn,
-WeightedCapacity
+availability_zone,
+availability_zone_id,
+health_status,
+image_id,
+instance_id,
+instance_type,
+launch_configuration_name,
+launch_template,
+lifecycle_state,
+protected_from_scale_in,
+weighted_capacity
 FROM aws.autoscaling.warm_pools
 WHERE AutoScalingGroupName = '{{ AutoScalingGroupName }}' -- required
 AND region = '{{ region }}' -- required

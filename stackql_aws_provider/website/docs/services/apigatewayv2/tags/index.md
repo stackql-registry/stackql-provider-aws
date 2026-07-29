@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -143,7 +143,7 @@ Gets a collection of Tag resources.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.apigatewayv2.tags
 WHERE `resource-arn` = '{{ resource-arn }}' -- required
 AND region = '{{ region }}' -- required

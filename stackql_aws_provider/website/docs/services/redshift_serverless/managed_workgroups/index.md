@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date of the managed workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedWorkgroupId" /></td>
+    <td><CopyableCode code="managed_workgroup_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the managed workgroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="managedWorkgroupName" /></td>
+    <td><CopyableCode code="managed_workgroup_name" /></td>
     <td><code>string</code></td>
     <td>The name of the managed workgroup. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_:\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the managed workgroup in the Glue Data Catalog. (pattern: &lt;code&gt;^arn:aws&#91;a-z-&#93;*:glue:&#91;a-z0-9-&#93;+:\d+:(database|catalog)&#91;a-z0-9-:&#93;*(?:/&#91;A-Za-z0-9-_&#93;&#123;1,255&#125;)*$&lt;/code&gt;)</td>
 </tr>
@@ -139,10 +139,10 @@ Returns information about a list of specified managed workgroups in your account
 
 ```sql
 SELECT
-creationDate,
-managedWorkgroupId,
-managedWorkgroupName,
-sourceArn,
+creation_date,
+managed_workgroup_id,
+managed_workgroup_name,
+source_arn,
 status
 FROM aws.redshift_serverless.managed_workgroups
 WHERE region = '{{ region }}' -- required

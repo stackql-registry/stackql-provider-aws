@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DestinationLicenseContext" /></td>
+    <td><CopyableCode code="destination_license_context" /></td>
     <td><code>object</code></td>
     <td>Information about the license type converted to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time at which the license type conversion task was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseConversionTaskId" /></td>
+    <td><CopyableCode code="license_conversion_task_id" /></td>
     <td><code>string</code></td>
     <td>ID of the license type conversion task. (pattern: &lt;code&gt;^lct-&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseConversionTime" /></td>
+    <td><CopyableCode code="license_conversion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Amount of time to complete the license type conversion.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Names (ARN) of the resources the license conversion task is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceLicenseContext" /></td>
+    <td><CopyableCode code="source_license_context" /></td>
     <td><code>object</code></td>
     <td>Information about the license type converted from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time at which the license type conversion task was started .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the license type conversion task. (IN_PROGRESS, SUCCEEDED, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>The status message for the conversion task.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LicenseConversionTasks" /></td>
+    <td><CopyableCode code="license_conversion_tasks" /></td>
     <td><code>array</code></td>
     <td>Information about the license configuration tasks for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -199,15 +199,15 @@ Gets information about the specified license type conversion task.
 
 ```sql
 SELECT
-DestinationLicenseContext,
-EndTime,
-LicenseConversionTaskId,
-LicenseConversionTime,
-ResourceArn,
-SourceLicenseContext,
-StartTime,
-Status,
-StatusMessage
+destination_license_context,
+end_time,
+license_conversion_task_id,
+license_conversion_time,
+resource_arn,
+source_license_context,
+start_time,
+status,
+status_message
 FROM aws.license_manager.license_conversion_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -219,8 +219,8 @@ Lists the license type conversion tasks for your account.
 
 ```sql
 SELECT
-LicenseConversionTasks,
-NextToken
+license_conversion_tasks,
+next_token
 FROM aws.license_manager.license_conversion_tasks
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,7 +255,7 @@ SELECT
 '{{ DestinationLicenseContext }}' /* required */,
 '{{ region }}'
 RETURNING
-LicenseConversionTaskId
+license_conversion_task_id
 ;
 ```
 </TabItem>

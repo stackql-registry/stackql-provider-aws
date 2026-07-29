@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO 8601 date format, for example 2012-03-20T17:03:43.221Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastInventoryDate" /></td>
+    <td><CopyableCode code="last_inventory_date" /></td>
     <td><code>string</code></td>
     <td>The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example 2012-03-20T17:03:43.221Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfArchives" /></td>
+    <td><CopyableCode code="number_of_archives" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of archives in the vault as of the last inventory date. This field will return null if an inventory has not yet run on the vault, for example if you just created the vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if an inventory has not yet run on the vault, for example if you just created the vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultARN" /></td>
+    <td><CopyableCode code="vault_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultName" /></td>
+    <td><CopyableCode code="vault_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vault.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO 8601 date format, for example 2012-03-20T17:03:43.221Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastInventoryDate" /></td>
+    <td><CopyableCode code="last_inventory_date" /></td>
     <td><code>string</code></td>
     <td>The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example 2012-03-20T17:03:43.221Z.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfArchives" /></td>
+    <td><CopyableCode code="number_of_archives" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of archives in the vault as of the last inventory date. This field will return null if an inventory has not yet run on the vault, for example if you just created the vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeInBytes" /></td>
+    <td><CopyableCode code="size_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if an inventory has not yet run on the vault, for example if you just created the vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultARN" /></td>
+    <td><CopyableCode code="vault_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the vault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VaultName" /></td>
+    <td><CopyableCode code="vault_name" /></td>
     <td><code>string</code></td>
     <td>The name of the vault.</td>
 </tr>
@@ -341,12 +341,12 @@ This operation returns information about a vault, including the vault's Amazon R
 
 ```sql
 SELECT
-CreationDate,
-LastInventoryDate,
-NumberOfArchives,
-SizeInBytes,
-VaultARN,
-VaultName
+creation_date,
+last_inventory_date,
+number_of_archives,
+size_in_bytes,
+vault_arn,
+vault_name
 FROM aws.glacier.vaults
 WHERE account_id = '{{ account_id }}' -- required
 AND vault_name = '{{ vault_name }}' -- required
@@ -360,12 +360,12 @@ This operation lists all vaults owned by the calling user's account. The list re
 
 ```sql
 SELECT
-CreationDate,
-LastInventoryDate,
-NumberOfArchives,
-SizeInBytes,
-VaultARN,
-VaultName
+creation_date,
+last_inventory_date,
+number_of_archives,
+size_in_bytes,
+vault_arn,
+vault_name
 FROM aws.glacier.vaults
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required

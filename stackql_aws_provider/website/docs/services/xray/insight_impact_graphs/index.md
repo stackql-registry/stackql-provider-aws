@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The provided end time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InsightId" /></td>
+    <td><CopyableCode code="insight_id" /></td>
     <td><code>string</code></td>
     <td>The insight's unique identifier. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;1-5&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;89abAB&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceGraphEndTime" /></td>
+    <td><CopyableCode code="service_graph_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in Unix seconds, at which the service graph ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceGraphStartTime" /></td>
+    <td><CopyableCode code="service_graph_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, in Unix seconds, at which the service graph started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Services" /></td>
+    <td><CopyableCode code="services" /></td>
     <td><code>array</code></td>
     <td>The Amazon Web Services instrumented services related to the insight.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The provided start time.</td>
 </tr>
@@ -149,13 +149,13 @@ Retrieves a service graph structure filtered by the specified insight. The servi
 
 ```sql
 SELECT
-EndTime,
-InsightId,
-NextToken,
-ServiceGraphEndTime,
-ServiceGraphStartTime,
-Services,
-StartTime
+end_time,
+insight_id,
+next_token,
+service_graph_end_time,
+service_graph_start_time,
+services,
+start_time
 FROM aws.xray.insight_impact_graphs
 WHERE region = '{{ region }}' -- required
 ;

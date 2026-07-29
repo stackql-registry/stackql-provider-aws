@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Diff" /></td>
+    <td><CopyableCode code="diff" /></td>
     <td><code>string</code></td>
     <td>The difference between schemas as a string in JsonPatch format. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -119,7 +119,7 @@ Fetches the schema version difference in the specified difference type between t
 
 ```sql
 SELECT
-Diff
+diff
 FROM aws.glue.schema_versions_diffs
 WHERE region = '{{ region }}' -- required
 ;

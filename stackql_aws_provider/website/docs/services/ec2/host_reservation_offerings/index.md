@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The currency of the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The duration of the offering (in seconds).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HourlyPrice" /></td>
+    <td><CopyableCode code="hourly_price" /></td>
     <td><code>string</code></td>
     <td>The hourly price of the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceFamily" /></td>
+    <td><CopyableCode code="instance_family" /></td>
     <td><code>string</code></td>
     <td>The instance family of the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingId" /></td>
+    <td><CopyableCode code="offering_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PaymentOption" /></td>
+    <td><CopyableCode code="payment_option" /></td>
     <td><code>string</code></td>
     <td>The available payment option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpfrontPrice" /></td>
+    <td><CopyableCode code="upfront_price" /></td>
     <td><code>string</code></td>
     <td>The upfront price of the offering. Does not apply to No Upfront offerings.</td>
 </tr>
@@ -179,13 +179,13 @@ Describes the Dedicated Host reservations that are available to purchase. The re
 
 ```sql
 SELECT
-CurrencyCode,
-Duration,
-HourlyPrice,
-InstanceFamily,
-OfferingId,
-PaymentOption,
-UpfrontPrice
+currency_code,
+duration,
+hourly_price,
+instance_family,
+offering_id,
+payment_option,
+upfront_price
 FROM aws.ec2.host_reservation_offerings
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

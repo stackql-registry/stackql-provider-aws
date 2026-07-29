@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DaysBeforeExpiry" /></td>
+    <td><CopyableCode code="days_before_expiry" /></td>
     <td><code>integer</code></td>
     <td>Specifies the number of days prior to certificate expiration when ACM starts generating EventBridge events. ACM sends one event per day per certificate until the certificate expires. By default, accounts receive events starting 45 days before certificate expiration.</td>
 </tr>
@@ -126,7 +126,7 @@ Returns the account configuration options associated with an Amazon Web Services
 
 ```sql
 SELECT
-DaysBeforeExpiry
+days_before_expiry
 FROM aws.acm.account_configurations
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The type of currency that is used for billing. The currencyCode used for your reservation is US dollars.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The length of time that this reservation is active. MediaConnect defines this value in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement for the duration of the reservation. MediaConnect defines this value in the offering. (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="End" /></td>
+    <td><CopyableCode code="end" /></td>
     <td><code>string</code></td>
     <td>The day and time that this reservation expires. This value is calculated based on the start date and time that you set and the offering's duration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingArn" /></td>
+    <td><CopyableCode code="offering_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>A description of the offering. MediaConnect defines this value in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricePerUnit" /></td>
+    <td><CopyableCode code="price_per_unit" /></td>
     <td><code>string</code></td>
     <td>The cost of a single unit. This value, in combination with priceUnits, makes up the rate. MediaConnect defines this value in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriceUnits" /></td>
+    <td><CopyableCode code="price_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement that is used for billing. This value, in combination with pricePerUnit, makes up the rate. MediaConnect defines this value in the offering. (HOURLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationArn" /></td>
+    <td><CopyableCode code="reservation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when you purchase an offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationName" /></td>
+    <td><CopyableCode code="reservation_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assigned to the reservation when you purchased the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationState" /></td>
+    <td><CopyableCode code="reservation_state" /></td>
     <td><code>string</code></td>
     <td>The status of your reservation. (ACTIVE, EXPIRED, PROCESSING, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>A definition of the amount of outbound bandwidth that you would be reserving if you purchase the offering. MediaConnect defines the values that make up the resourceSpecification in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Start" /></td>
+    <td><CopyableCode code="start" /></td>
     <td><code>string</code></td>
     <td>The day and time that the reservation becomes active. You set this value when you purchase the offering.</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><CopyableCode code="currency_code" /></td>
     <td><code>string</code></td>
     <td>The type of currency that is used for billing. The currencyCode used for your reservation is US dollars.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Duration" /></td>
+    <td><CopyableCode code="duration" /></td>
     <td><code>integer</code></td>
     <td>The length of time that this reservation is active. MediaConnect defines this value in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurationUnits" /></td>
+    <td><CopyableCode code="duration_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement for the duration of the reservation. MediaConnect defines this value in the offering. (MONTHS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="End" /></td>
+    <td><CopyableCode code="end" /></td>
     <td><code>string</code></td>
     <td>The day and time that this reservation expires. This value is calculated based on the start date and time that you set and the offering's duration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingArn" /></td>
+    <td><CopyableCode code="offering_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OfferingDescription" /></td>
+    <td><CopyableCode code="offering_description" /></td>
     <td><code>string</code></td>
     <td>A description of the offering. MediaConnect defines this value in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricePerUnit" /></td>
+    <td><CopyableCode code="price_per_unit" /></td>
     <td><code>string</code></td>
     <td>The cost of a single unit. This value, in combination with priceUnits, makes up the rate. MediaConnect defines this value in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PriceUnits" /></td>
+    <td><CopyableCode code="price_units" /></td>
     <td><code>string</code></td>
     <td>The unit of measurement that is used for billing. This value, in combination with pricePerUnit, makes up the rate. MediaConnect defines this value in the offering. (HOURLY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationArn" /></td>
+    <td><CopyableCode code="reservation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when you purchase an offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationName" /></td>
+    <td><CopyableCode code="reservation_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assigned to the reservation when you purchased the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReservationState" /></td>
+    <td><CopyableCode code="reservation_state" /></td>
     <td><code>string</code></td>
     <td>The status of your reservation. (ACTIVE, EXPIRED, PROCESSING, CANCELED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceSpecification" /></td>
+    <td><CopyableCode code="resource_specification" /></td>
     <td><code>object</code></td>
     <td>A definition of the amount of outbound bandwidth that you would be reserving if you purchase the offering. MediaConnect defines the values that make up the resourceSpecification in the offering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Start" /></td>
+    <td><CopyableCode code="start" /></td>
     <td><code>string</code></td>
     <td>The day and time that the reservation becomes active. You set this value when you purchase the offering.</td>
 </tr>
@@ -294,19 +294,19 @@ Displays the details of a reservation. The response includes the reservation nam
 
 ```sql
 SELECT
-CurrencyCode,
-Duration,
-DurationUnits,
-End,
-OfferingArn,
-OfferingDescription,
-PricePerUnit,
-PriceUnits,
-ReservationArn,
-ReservationName,
-ReservationState,
-ResourceSpecification,
-Start
+currency_code,
+duration,
+duration_units,
+end,
+offering_arn,
+offering_description,
+price_per_unit,
+price_units,
+reservation_arn,
+reservation_name,
+reservation_state,
+resource_specification,
+start
 FROM aws.mediaconnect.reservations
 WHERE reservation_arn = '{{ reservation_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -319,19 +319,19 @@ Displays a list of all reservations that have been purchased by this account in 
 
 ```sql
 SELECT
-CurrencyCode,
-Duration,
-DurationUnits,
-End,
-OfferingArn,
-OfferingDescription,
-PricePerUnit,
-PriceUnits,
-ReservationArn,
-ReservationName,
-ReservationState,
-ResourceSpecification,
-Start
+currency_code,
+duration,
+duration_units,
+end,
+offering_arn,
+offering_description,
+price_per_unit,
+price_units,
+reservation_arn,
+reservation_name,
+reservation_state,
+resource_specification,
+start
 FROM aws.mediaconnect.reservations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

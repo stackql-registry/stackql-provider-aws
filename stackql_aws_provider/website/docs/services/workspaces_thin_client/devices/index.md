@@ -66,47 +66,47 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the device. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the device was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentSoftwareSetId" /></td>
+    <td><CopyableCode code="current_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set currently installed on the device. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentSoftwareSetVersion" /></td>
+    <td><CopyableCode code="current_software_set_version" /></td>
     <td><code>string</code></td>
     <td>The version of the software set currently installed on the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredSoftwareSetId" /></td>
+    <td><CopyableCode code="desired_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set which the device has been set to. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment the device is associated with. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Key Management Service key used to encrypt the device. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:kms:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:key\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastConnectedAt" /></td>
+    <td><CopyableCode code="last_connected_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the most recent session on the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastPostureAt" /></td>
+    <td><CopyableCode code="last_posture_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the most recent check-in of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUserId" /></td>
+    <td><CopyableCode code="last_user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID of the most recent session on the device.</td>
 </tr>
@@ -116,32 +116,32 @@ The following fields are returned by `SELECT` queries:
     <td>The model number of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSoftwareSetId" /></td>
+    <td><CopyableCode code="pending_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set that is pending to be installed on the device. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSoftwareSetVersion" /></td>
+    <td><CopyableCode code="pending_software_set_version" /></td>
     <td><code>string</code></td>
     <td>The version of the software set that is pending to be installed on the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The hardware serial number of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetComplianceStatus" /></td>
+    <td><CopyableCode code="software_set_compliance_status" /></td>
     <td><code>string</code></td>
     <td>Describes if the software currently installed on the device is a supported version. (NONE, COMPLIANT, NOT_COMPLIANT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetUpdateSchedule" /></td>
+    <td><CopyableCode code="software_set_update_schedule" /></td>
     <td><code>string</code></td>
     <td>An option to define if software updates should be applied within a maintenance window. (USE_MAINTENANCE_WINDOW, APPLY_IMMEDIATELY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetUpdateStatus" /></td>
+    <td><CopyableCode code="software_set_update_status" /></td>
     <td><code>string</code></td>
     <td>Describes if the device has a supported version of software installed. (AVAILABLE, IN_PROGRESS, UP_TO_DATE)</td>
 </tr>
@@ -151,7 +151,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the device. (REGISTERED, DEREGISTERING, DEREGISTERED, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the device was updated.</td>
 </tr>
@@ -185,37 +185,37 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the device. (pattern: &lt;code&gt;arn:&#91;\w+=\/,.@-&#93;+:&#91;a-zA-Z0-9\-&#93;+:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;0,12&#125;:&#91;a-zA-Z0-9\-\/\._&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the device was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="currentSoftwareSetId" /></td>
+    <td><CopyableCode code="current_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set currently installed on the device. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="desiredSoftwareSetId" /></td>
+    <td><CopyableCode code="desired_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set which the device has been set to. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment the device is associated with. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastConnectedAt" /></td>
+    <td><CopyableCode code="last_connected_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the most recent session on the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastPostureAt" /></td>
+    <td><CopyableCode code="last_posture_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the most recent check-in of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUserId" /></td>
+    <td><CopyableCode code="last_user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID of the most recent session on the device.</td>
 </tr>
@@ -225,17 +225,17 @@ The following fields are returned by `SELECT` queries:
     <td>The model number of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pendingSoftwareSetId" /></td>
+    <td><CopyableCode code="pending_software_set_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the software set that is pending to be installed on the device. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;1,9&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serialNumber" /></td>
+    <td><CopyableCode code="serial_number" /></td>
     <td><code>string</code></td>
     <td>The hardware serial number of the device.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="softwareSetUpdateSchedule" /></td>
+    <td><CopyableCode code="software_set_update_schedule" /></td>
     <td><code>string</code></td>
     <td>An option to define if software updates should be applied within a maintenance window. (USE_MAINTENANCE_WINDOW, APPLY_IMMEDIATELY)</td>
 </tr>
@@ -245,7 +245,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the device. (REGISTERED, DEREGISTERING, DEREGISTERED, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the device was updated.</td>
 </tr>
@@ -366,24 +366,24 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-currentSoftwareSetId,
-currentSoftwareSetVersion,
-desiredSoftwareSetId,
-environmentId,
-kmsKeyArn,
-lastConnectedAt,
-lastPostureAt,
-lastUserId,
+created_at,
+current_software_set_id,
+current_software_set_version,
+desired_software_set_id,
+environment_id,
+kms_key_arn,
+last_connected_at,
+last_posture_at,
+last_user_id,
 model,
-pendingSoftwareSetId,
-pendingSoftwareSetVersion,
-serialNumber,
-softwareSetComplianceStatus,
-softwareSetUpdateSchedule,
-softwareSetUpdateStatus,
+pending_software_set_id,
+pending_software_set_version,
+serial_number,
+software_set_compliance_status,
+software_set_update_schedule,
+software_set_update_status,
 status,
-updatedAt
+updated_at
 FROM aws.workspaces_thin_client.devices
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -399,19 +399,19 @@ SELECT
 id,
 name,
 arn,
-createdAt,
-currentSoftwareSetId,
-desiredSoftwareSetId,
-environmentId,
-lastConnectedAt,
-lastPostureAt,
-lastUserId,
+created_at,
+current_software_set_id,
+desired_software_set_id,
+environment_id,
+last_connected_at,
+last_posture_at,
+last_user_id,
 model,
-pendingSoftwareSetId,
-serialNumber,
-softwareSetUpdateSchedule,
+pending_software_set_id,
+serial_number,
+software_set_update_schedule,
 status,
-updatedAt
+updated_at
 FROM aws.workspaces_thin_client.devices
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

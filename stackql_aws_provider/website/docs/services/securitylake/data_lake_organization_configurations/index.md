@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="autoEnableNewAccount" /></td>
+    <td><CopyableCode code="auto_enable_new_account" /></td>
     <td><code>array</code></td>
     <td>The configuration used for new accounts in Security Lake.</td>
 </tr>
@@ -133,7 +133,7 @@ Retrieves the configuration that will be automatically set up for accounts added
 
 ```sql
 SELECT
-autoEnableNewAccount
+auto_enable_new_account
 FROM aws.securitylake.data_lake_organization_configurations
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,82 +50,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaseImage" /></td>
+    <td><CopyableCode code="base_image" /></td>
     <td><code>string</code></td>
     <td>The registry path of the container image on which this image version is based. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContainerImage" /></td>
+    <td><CopyableCode code="container_image" /></td>
     <td><code>string</code></td>
     <td>The registry path of the container image that contains this image version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>When a create or delete operation fails, the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Horovod" /></td>
+    <td><CopyableCode code="horovod" /></td>
     <td><code>boolean</code></td>
     <td>Indicates Horovod compatibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageArn" /></td>
+    <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the image the version is based on. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:sagemaker:.+:&#91;0-9&#93;&#123;12&#125;:image/&#91;a-zA-Z0-9&#93;(&#91;-.&#93;?&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageVersionArn" /></td>
+    <td><CopyableCode code="image_version_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the version. (pattern: &lt;code&gt;(arn:aws(-&#91;\w&#93;+)*:sagemaker:.+:&#91;0-9&#93;&#123;12&#125;:image-version/&#91;a-z0-9&#93;(&#91;-.&#93;?&#91;a-z0-9&#93;)*/&#91;0-9&#93;+|None)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageVersionStatus" /></td>
+    <td><CopyableCode code="image_version_status" /></td>
     <td><code>string</code></td>
     <td>The status of the version. (CREATING, CREATED, CREATE_FAILED, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobType" /></td>
+    <td><CopyableCode code="job_type" /></td>
     <td><code>string</code></td>
     <td>Indicates SageMaker AI job type compatibility. TRAINING: The image version is compatible with SageMaker AI training jobs. INFERENCE: The image version is compatible with SageMaker AI inference jobs. NOTEBOOK_KERNEL: The image version is compatible with SageMaker AI notebook kernels. (TRAINING, INFERENCE, NOTEBOOK_KERNEL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the version was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MLFramework" /></td>
+    <td><CopyableCode code="ml_framework" /></td>
     <td><code>string</code></td>
     <td>The machine learning framework vended in the image version. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+ ?\d+\.\d+(\.\d+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Processor" /></td>
+    <td><CopyableCode code="processor" /></td>
     <td><code>string</code></td>
     <td>Indicates CPU or GPU compatibility. CPU: The image version is compatible with CPU. GPU: The image version is compatible with GPU. (CPU, GPU)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgrammingLang" /></td>
+    <td><CopyableCode code="programming_lang" /></td>
     <td><code>string</code></td>
     <td>The supported programming language and its version. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+ ?\d+\.\d+(\.\d+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReleaseNotes" /></td>
+    <td><CopyableCode code="release_notes" /></td>
     <td><code>string</code></td>
     <td>The maintainer description of the image version. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VendorGuidance" /></td>
+    <td><CopyableCode code="vendor_guidance" /></td>
     <td><code>string</code></td>
     <td>The stability of the image version specified by the maintainer. NOT_PROVIDED: The maintainers did not provide a status for image version stability. STABLE: The image version is stable. TO_BE_ARCHIVED: The image version is set to be archived. Custom image versions that are set to be archived are automatically archived after three months. ARCHIVED: The image version is archived. Archived image versions are not searchable and are no longer actively supported. (NOT_PROVIDED, STABLE, TO_BE_ARCHIVED, ARCHIVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer</code></td>
     <td>The version number.</td>
 </tr>
@@ -222,22 +222,22 @@ Describes a version of a SageMaker AI image.
 
 ```sql
 SELECT
-BaseImage,
-ContainerImage,
-CreationTime,
-FailureReason,
-Horovod,
-ImageArn,
-ImageVersionArn,
-ImageVersionStatus,
-JobType,
-LastModifiedTime,
-MLFramework,
-Processor,
-ProgrammingLang,
-ReleaseNotes,
-VendorGuidance,
-Version
+base_image,
+container_image,
+creation_time,
+failure_reason,
+horovod,
+image_arn,
+image_version_arn,
+image_version_status,
+job_type,
+last_modified_time,
+ml_framework,
+processor,
+programming_lang,
+release_notes,
+vendor_guidance,
+version
 FROM aws.sagemaker.image_versions
 WHERE region = '{{ region }}' -- required
 ;
@@ -288,7 +288,7 @@ SELECT
 '{{ ReleaseNotes }}',
 '{{ region }}'
 RETURNING
-ImageVersionArn
+image_version_arn
 ;
 ```
 </TabItem>
@@ -385,7 +385,7 @@ WHERE
 region = '{{ region }}' --required
 AND ImageName = '{{ ImageName }}' --required
 RETURNING
-ImageVersionArn;
+image_version_arn;
 ```
 </TabItem>
 </Tabs>

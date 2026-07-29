@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveDate" /></td>
+    <td><CopyableCode code="active_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>An optional date that specifies when the certificate becomes active. If you do not specify a value, ActiveDate takes the same value as NotBeforeDate, which is specified by the CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The unique Amazon Resource Name (ARN) for the certificate. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Certificate" /></td>
+    <td><CopyableCode code="certificate" /></td>
     <td><code>string</code></td>
     <td>The file name for the certificate. (pattern: &lt;code&gt;&#91;\t\n\r\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateChain" /></td>
+    <td><CopyableCode code="certificate_chain" /></td>
     <td><code>string</code></td>
     <td>The list of certificates that make up the chain for the certificate. (pattern: &lt;code&gt;&#91;\t\n\r\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateId" /></td>
+    <td><CopyableCode code="certificate_id" /></td>
     <td><code>string</code></td>
     <td>An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles. (pattern: &lt;code&gt;cert-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The name or description that's used to identity the certificate. (pattern: &lt;code&gt;&#91;\u0021-\u007E&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InactiveDate" /></td>
+    <td><CopyableCode code="inactive_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>An optional date that specifies when the certificate becomes inactive. If you do not specify a value, InactiveDate takes the same value as NotAfterDate, which is specified by the CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotAfterDate" /></td>
+    <td><CopyableCode code="not_after_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The final date that the certificate is valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotBeforeDate" /></td>
+    <td><CopyableCode code="not_before_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The earliest date that the certificate is valid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Serial" /></td>
+    <td><CopyableCode code="serial" /></td>
     <td><code>string</code></td>
     <td>The serial number for the certificate. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#123;&#125;:?&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A certificate's status can be either ACTIVE or INACTIVE. You can set ActiveDate and InactiveDate in the UpdateCertificate call. If you set values for these parameters, those values are used to determine whether the certificate has a status of ACTIVE or INACTIVE. If you don't set values for ActiveDate and InactiveDate, we use the NotBefore and NotAfter date as specified on the X509 certificate to determine when a certificate is active and when it is inactive. (ACTIVE, PENDING_ROTATION, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>Key-value pairs that can be used to group and search for certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>If a private key has been specified for the certificate, its type is CERTIFICATE_WITH_PRIVATE_KEY. If there is no private key, the type is CERTIFICATE. (CERTIFICATE, CERTIFICATE_WITH_PRIVATE_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Usage" /></td>
+    <td><CopyableCode code="usage" /></td>
     <td><code>string</code></td>
     <td>Specifies how this certificate is used. It can be used in the following ways: SIGNING: For signing AS2 messages ENCRYPTION: For encrypting AS2 messages TLS: For securing AS2 communications sent over HTTPS (SIGNING, ENCRYPTION, TLS)</td>
 </tr>
@@ -135,42 +135,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveDate" /></td>
+    <td><CopyableCode code="active_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>An optional date that specifies when the certificate becomes active. If you do not specify a value, ActiveDate takes the same value as NotBeforeDate, which is specified by the CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified certificate. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateId" /></td>
+    <td><CopyableCode code="certificate_id" /></td>
     <td><code>string</code></td>
     <td>An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles. (pattern: &lt;code&gt;cert-(&#91;0-9a-f&#93;&#123;17&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The name or short description that's used to identify the certificate. (pattern: &lt;code&gt;&#91;\u0021-\u007E&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InactiveDate" /></td>
+    <td><CopyableCode code="inactive_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>An optional date that specifies when the certificate becomes inactive. If you do not specify a value, InactiveDate takes the same value as NotAfterDate, which is specified by the CA.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The certificate can be either ACTIVE, PENDING_ROTATION, or INACTIVE. PENDING_ROTATION means that this certificate will replace the current certificate when it expires. (ACTIVE, PENDING_ROTATION, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type for the certificate. If a private key has been specified for the certificate, its type is CERTIFICATE_WITH_PRIVATE_KEY. If there is no private key, the type is CERTIFICATE. (CERTIFICATE, CERTIFICATE_WITH_PRIVATE_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Usage" /></td>
+    <td><CopyableCode code="usage" /></td>
     <td><code>string</code></td>
     <td>Specifies how this certificate is used. It can be used in the following ways: SIGNING: For signing AS2 messages ENCRYPTION: For encrypting AS2 messages TLS: For securing AS2 communications sent over HTTPS (SIGNING, ENCRYPTION, TLS)</td>
 </tr>
@@ -261,20 +261,20 @@ Describes the certificate that's identified by the CertificateId. Transfer Famil
 
 ```sql
 SELECT
-ActiveDate,
-Arn,
-Certificate,
-CertificateChain,
-CertificateId,
-Description,
-InactiveDate,
-NotAfterDate,
-NotBeforeDate,
-Serial,
-Status,
-Tags,
-Type,
-Usage
+active_date,
+arn,
+certificate,
+certificate_chain,
+certificate_id,
+description,
+inactive_date,
+not_after_date,
+not_before_date,
+serial,
+status,
+tags,
+type,
+usage
 FROM aws.transfer.certificates
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,14 +286,14 @@ Returns a list of the current certificates that have been imported into Transfer
 
 ```sql
 SELECT
-ActiveDate,
-Arn,
-CertificateId,
-Description,
-InactiveDate,
-Status,
-Type,
-Usage
+active_date,
+arn,
+certificate_id,
+description,
+inactive_date,
+status,
+type,
+usage
 FROM aws.transfer.certificates
 WHERE region = '{{ region }}' -- required
 ;
@@ -325,7 +325,7 @@ WHERE
 region = '{{ region }}' --required
 AND CertificateId = '{{ CertificateId }}' --required
 RETURNING
-CertificateId;
+certificate_id;
 ```
 </TabItem>
 </Tabs>

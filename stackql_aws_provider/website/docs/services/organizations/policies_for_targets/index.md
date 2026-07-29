@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy. For more information about ARNs in Organizations, see ARN Formats Supported by Organizations in the Amazon Web Services Service Authorization Reference. (pattern: &lt;code&gt;^(arn:aws:organizations::\d&#123;12&#125;:policy\/o-&#91;a-z0-9&#93;&#123;10,32&#125;\/&#91;0-9a-z_&#93;+\/p-&#91;0-9a-z&#93;&#123;10,32&#125;)|(arn:aws:organizations::aws:policy\/&#91;0-9a-z_&#93;+\/p-&#91;0-9a-zA-Z_&#93;&#123;10,128&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsManaged" /></td>
+    <td><CopyableCode code="aws_managed" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value that indicates whether the specified policy is an Amazon Web Services managed policy. If true, then you can attach the policy to roots, OUs, or accounts, but you cannot edit it.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the policy. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the policy. The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_). (pattern: &lt;code&gt;^p-&#91;0-9a-zA-Z_&#93;&#123;8,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the policy. The regex pattern that is used to validate this parameter is a string of any of the characters in the ASCII character range. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of policy. (SERVICE_CONTROL_POLICY, RESOURCE_CONTROL_POLICY, TAG_POLICY, BACKUP_POLICY, AISERVICES_OPT_OUT_POLICY, CHATBOT_POLICY, DECLARATIVE_POLICY_EC2, SECURITYHUB_POLICY, INSPECTOR_POLICY, UPGRADE_ROLLOUT_POLICY, BEDROCK_POLICY, S3_POLICY, NETWORK_SECURITY_DIRECTOR_POLICY)</td>
 </tr>
@@ -144,12 +144,12 @@ Lists the policies that are directly attached to the specified target root, orga
 
 ```sql
 SELECT
-Arn,
-AwsManaged,
-Description,
-Id,
-Name,
-Type
+arn,
+aws_managed,
+description,
+id,
+name,
+type
 FROM aws.organizations.policies_for_targets
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a restore testing plan was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatorRequestId" /></td>
+    <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>This identifies the request and allows failed requests to be retried without the risk of running the operation twice. If the request includes a CreatorRequestId that matches an existing backup plan, that plan is returned. This parameter is optional. If used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionTime" /></td>
+    <td><CopyableCode code="last_execution_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time a restore test was run with the specified restore testing plan. A date and time, in Unix format and Coordinated Universal Time (UTC). The value of LastExecutionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the restore testing plan was updated. This update is in Unix format and Coordinated Universal Time (UTC). The value of LastUpdateTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryPointSelection" /></td>
+    <td><CopyableCode code="recovery_point_selection" /></td>
     <td><code>object</code></td>
     <td>The specified criteria to assign a set of resources, such as recovery point types or backup vaults.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingPlanArn" /></td>
+    <td><CopyableCode code="restore_testing_plan_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifies a restore testing plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingPlanName" /></td>
+    <td><CopyableCode code="restore_testing_plan_name" /></td>
     <td><code>string</code></td>
     <td>The restore testing plan name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>A CRON expression in specified timezone when a restore testing plan is executed. When no CRON expression is provided, Backup will use the default expression cron(0 5 ? * * *).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpressionTimezone" /></td>
+    <td><CopyableCode code="schedule_expression_timezone" /></td>
     <td><code>string</code></td>
     <td>Optional. This is the timezone in which the schedule expression is set. By default, ScheduleExpressions are in UTC. You can modify this to a specified timezone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartWindowHours" /></td>
+    <td><CopyableCode code="start_window_hours" /></td>
     <td><code>integer</code></td>
     <td>Defaults to 24 hours. A value in hours after a restore test is scheduled before a job will be canceled if it doesn't start successfully. This value is optional. If this value is included, this parameter has a maximum value of 168 hours (one week).</td>
 </tr>
@@ -115,42 +115,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a restore testing plan was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastExecutionTime" /></td>
+    <td><CopyableCode code="last_execution_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time a restore test was run with the specified restore testing plan. A date and time, in Unix format and Coordinated Universal Time (UTC). The value of LastExecutionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the restore testing plan was updated. This update is in Unix format and Coordinated Universal Time (UTC). The value of LastUpdateTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingPlanArn" /></td>
+    <td><CopyableCode code="restore_testing_plan_arn" /></td>
     <td><code>string</code></td>
     <td>An Amazon Resource Name (ARN) that uniquely identifiesa restore testing plan.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreTestingPlanName" /></td>
+    <td><CopyableCode code="restore_testing_plan_name" /></td>
     <td><code>string</code></td>
     <td>The restore testing plan name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpression" /></td>
+    <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>A CRON expression in specified timezone when a restore testing plan is executed. When no CRON expression is provided, Backup will use the default expression cron(0 5 ? * * *).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduleExpressionTimezone" /></td>
+    <td><CopyableCode code="schedule_expression_timezone" /></td>
     <td><code>string</code></td>
     <td>Optional. This is the timezone in which the schedule expression is set. By default, ScheduleExpressions are in UTC. You can modify this to a specified timezone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartWindowHours" /></td>
+    <td><CopyableCode code="start_window_hours" /></td>
     <td><code>integer</code></td>
     <td>Defaults to 24 hours. A value in hours after a restore test is scheduled before a job will be canceled if it doesn't start successfully. This value is optional. If this value is included, this parameter has a maximum value of 168 hours (one week).</td>
 </tr>
@@ -263,16 +263,16 @@ Returns RestoreTestingPlan details for the specified RestoreTestingPlanName. The
 
 ```sql
 SELECT
-CreationTime,
-CreatorRequestId,
-LastExecutionTime,
-LastUpdateTime,
-RecoveryPointSelection,
-RestoreTestingPlanArn,
-RestoreTestingPlanName,
-ScheduleExpression,
-ScheduleExpressionTimezone,
-StartWindowHours
+creation_time,
+creator_request_id,
+last_execution_time,
+last_update_time,
+recovery_point_selection,
+restore_testing_plan_arn,
+restore_testing_plan_name,
+schedule_expression,
+schedule_expression_timezone,
+start_window_hours
 FROM aws.backup.restore_testing_plans
 WHERE restore_testing_plan_name = '{{ restore_testing_plan_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -285,14 +285,14 @@ Returns a list of restore testing plans.
 
 ```sql
 SELECT
-CreationTime,
-LastExecutionTime,
-LastUpdateTime,
-RestoreTestingPlanArn,
-RestoreTestingPlanName,
-ScheduleExpression,
-ScheduleExpressionTimezone,
-StartWindowHours
+creation_time,
+last_execution_time,
+last_update_time,
+restore_testing_plan_arn,
+restore_testing_plan_name,
+schedule_expression,
+schedule_expression_timezone,
+start_window_hours
 FROM aws.backup.restore_testing_plans
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -329,9 +329,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreationTime,
-RestoreTestingPlanArn,
-RestoreTestingPlanName
+creation_time,
+restore_testing_plan_arn,
+restore_testing_plan_name
 ;
 ```
 </TabItem>
@@ -391,10 +391,10 @@ restore_testing_plan_name = '{{ restore_testing_plan_name }}' --required
 AND region = '{{ region }}' --required
 AND RestoreTestingPlan = '{{ RestoreTestingPlan }}' --required
 RETURNING
-CreationTime,
-RestoreTestingPlanArn,
-RestoreTestingPlanName,
-UpdateTime;
+creation_time,
+restore_testing_plan_arn,
+restore_testing_plan_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

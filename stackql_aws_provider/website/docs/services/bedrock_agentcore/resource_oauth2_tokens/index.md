@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessToken" /></td>
+    <td><CopyableCode code="access_token" /></td>
     <td><code>string</code></td>
     <td>The OAuth 2.0 access token to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizationUrl" /></td>
+    <td><CopyableCode code="authorization_url" /></td>
     <td><code>string</code></td>
     <td>The URL to initiate the authorization process, provided when the access token requires user authorization.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionStatus" /></td>
+    <td><CopyableCode code="session_status" /></td>
     <td><code>string</code></td>
     <td>Status indicating whether the user's authorization session is in progress or has failed. This helps determine the next steps in the OAuth2 authentication flow. (IN_PROGRESS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionUri" /></td>
+    <td><CopyableCode code="session_uri" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for the user's authorization session for retrieving OAuth2 tokens. This matches the sessionId from the request and can be used to track the session state. (pattern: &lt;code&gt;urn:ietf:params:oauth:request_uri:&#91;a-zA-Z0-9-._~&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the OAuth 2.0 token of the provided resource.
 
 ```sql
 SELECT
-accessToken,
-authorizationUrl,
-sessionStatus,
-sessionUri
+access_token,
+authorization_url,
+session_status,
+session_uri
 FROM aws.bedrock_agentcore.resource_oauth2_tokens
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FindingComponents" /></td>
+    <td><CopyableCode code="finding_components" /></td>
     <td><code>string</code></td>
     <td>The finding components.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingId" /></td>
+    <td><CopyableCode code="finding_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the finding.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeAnalysisId" /></td>
+    <td><CopyableCode code="network_insights_access_scope_analysis_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Network Access Scope analysis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkInsightsAccessScopeId" /></td>
+    <td><CopyableCode code="network_insights_access_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Network Access Scope.</td>
 </tr>
@@ -154,10 +154,10 @@ Gets the findings for the specified Network Access Scope analysis.
 
 ```sql
 SELECT
-FindingComponents,
-FindingId,
-NetworkInsightsAccessScopeAnalysisId,
-NetworkInsightsAccessScopeId
+finding_components,
+finding_id,
+network_insights_access_scope_analysis_id,
+network_insights_access_scope_id
 FROM aws.ec2.network_insights_access_scope_analysis_findings
 WHERE NetworkInsightsAccessScopeAnalysisId = '{{ NetworkInsightsAccessScopeAnalysisId }}' -- required
 AND region = '{{ region }}' -- required

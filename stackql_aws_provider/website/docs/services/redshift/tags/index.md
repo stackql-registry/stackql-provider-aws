@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceName" /></td>
+    <td><CopyableCode code="resource_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) with which the tag is associated, for example: arn:aws:redshift:us-east-2:123456789:cluster:t1.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The type of resource with which the tag is associated. Valid resource types are: Cluster CIDR/IP EC2 security group Snapshot Cluster security group Subnet group HSM connection HSM certificate Parameter group For more information about Amazon Redshift resource types and constructing ARNs, go to Constructing an Amazon Redshift Amazon Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tag" /></td>
+    <td><CopyableCode code="tag" /></td>
     <td><code>string</code></td>
     <td>The tag for the resource.</td>
 </tr>
@@ -188,9 +188,9 @@ Returns a list of tags. You can return tags from a specific resource by specifyi
 
 ```sql
 SELECT
-ResourceName,
-ResourceType,
-Tag
+resource_name,
+resource_type,
+tag
 FROM aws.redshift.tags
 WHERE region = '{{ region }}' -- required
 AND ResourceName = '{{ ResourceName }}'

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>array</code></td>
     <td>An array of metrics available to query. Each array element contains the full name, description, and unit of the metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that indicates the response didn’t return all available records because MaxRecords was specified in the previous request. To get the remaining records, specify NextToken in a separate request with this value. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_=-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieve metrics of the specified types that can be queried for a specified DB i
 
 ```sql
 SELECT
-Metrics,
-NextToken
+metrics,
+next_token
 FROM aws.pi.available_resource_metrics
 WHERE region = '{{ region }}' -- required
 ;

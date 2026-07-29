@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupCreationDate" /></td>
+    <td><CopyableCode code="backup_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a backup was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupVaultArn" /></td>
+    <td><CopyableCode code="backup_vault_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies the backup vault where the recovery point index is stored. For example, arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>This specifies the IAM role ARN used for this operation. For example, arn:aws:iam::123456789012:role/S3Access</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexCreationDate" /></td>
+    <td><CopyableCode code="index_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a backup index was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatus" /></td>
+    <td><CopyableCode code="index_status" /></td>
     <td><code>string</code></td>
     <td>This is the current status for the backup index associated with the specified recovery point. Statuses are: PENDING | ACTIVE | FAILED | DELETING A recovery point with an index that has the status of ACTIVE can be included in a search. (PENDING, ACTIVE, FAILED, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IndexStatusMessage" /></td>
+    <td><CopyableCode code="index_status_message" /></td>
     <td><code>string</code></td>
     <td>A string in the form of a detailed message explaining the status of a backup index associated with the recovery point.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RecoveryPointArn" /></td>
+    <td><CopyableCode code="recovery_point_arn" /></td>
     <td><code>string</code></td>
     <td>An ARN that uniquely identifies a recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The resource type of the indexed recovery point. EBS for Amazon Elastic Block Store S3 for Amazon Simple Storage Service (Amazon S3) (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_\.&#93;&#123;1,50&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceResourceArn" /></td>
+    <td><CopyableCode code="source_resource_arn" /></td>
     <td><code>string</code></td>
     <td>A string of the Amazon Resource Name (ARN) that uniquely identifies the source resource.</td>
 </tr>
@@ -194,15 +194,15 @@ This operation returns a list of recovery points that have an associated index, 
 
 ```sql
 SELECT
-BackupCreationDate,
-BackupVaultArn,
-IamRoleArn,
-IndexCreationDate,
-IndexStatus,
-IndexStatusMessage,
-RecoveryPointArn,
-ResourceType,
-SourceResourceArn
+backup_creation_date,
+backup_vault_arn,
+iam_role_arn,
+index_creation_date,
+index_status,
+index_status_message,
+recovery_point_arn,
+resource_type,
+source_resource_arn
 FROM aws.backup.indexed_recovery_points
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

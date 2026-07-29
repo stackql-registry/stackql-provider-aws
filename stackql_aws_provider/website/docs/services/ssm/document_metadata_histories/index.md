@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Author" /></td>
+    <td><CopyableCode code="author" /></td>
     <td><code>string</code></td>
     <td>The user ID of the person in the organization who requested the review of the change template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><CopyableCode code="document_version" /></td>
     <td><code>string</code></td>
     <td>The version of the change template. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the response to the change template approval request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the change template. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</td>
 </tr>
@@ -139,11 +139,11 @@ Amazon Web Services Systems Manager Change Manager is no longer open to new cust
 
 ```sql
 SELECT
-Author,
-DocumentVersion,
-Metadata,
-Name,
-NextToken
+author,
+document_version,
+metadata,
+name,
+next_token
 FROM aws.ssm.document_metadata_histories
 WHERE region = '{{ region }}' -- required
 ;

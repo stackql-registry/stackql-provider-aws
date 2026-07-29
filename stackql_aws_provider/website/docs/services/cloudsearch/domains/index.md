@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the search domain. See Identifiers for IAM Entities in Using AWS Identity and Access Management for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>boolean</code></td>
     <td>True if the search domain is created. It can take several minutes to initialize a domain when CreateDomain is called. Newly created search domains are returned from DescribeDomains with a false value for Created until domain creation is complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Deleted" /></td>
+    <td><CopyableCode code="deleted" /></td>
     <td><code>boolean</code></td>
     <td>True if the search domain has been deleted. The system must clean up resources dedicated to the search domain when DeleteDomain is called. Newly deleted search domains are returned from DescribeDomains with a true value for IsDeleted for several minutes until resource cleanup is complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DocService" /></td>
+    <td><CopyableCode code="doc_service" /></td>
     <td><code>string</code></td>
     <td>The service endpoint for updating documents in a search domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>An internally generated unique identifier for a domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Limits" /></td>
+    <td><CopyableCode code="limits" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="Processing" /></td>
+    <td><CopyableCode code="processing" /></td>
     <td><code>boolean</code></td>
     <td>True if processing is being done to activate the current domain configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequiresIndexDocuments" /></td>
+    <td><CopyableCode code="requires_index_documents" /></td>
     <td><code>boolean</code></td>
     <td>True if IndexDocuments needs to be called to activate the current domain configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchInstanceCount" /></td>
+    <td><CopyableCode code="search_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of search instances that are available to process search requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchInstanceType" /></td>
+    <td><CopyableCode code="search_instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type that is being used to process search requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchPartitionCount" /></td>
+    <td><CopyableCode code="search_partition_count" /></td>
     <td><code>integer</code></td>
     <td>The number of partitions across which the search index is spread.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SearchService" /></td>
+    <td><CopyableCode code="search_service" /></td>
     <td><code>string</code></td>
     <td>The service endpoint for requesting search results from a search domain.</td>
 </tr>
@@ -258,19 +258,19 @@ Gets information about the search domains owned by this account. Can be limited 
 
 ```sql
 SELECT
-ARN,
-Created,
-Deleted,
-DocService,
-DomainId,
-DomainName,
-Limits,
-Processing,
-RequiresIndexDocuments,
-SearchInstanceCount,
-SearchInstanceType,
-SearchPartitionCount,
-SearchService
+arn,
+created,
+deleted,
+doc_service,
+domain_id,
+domain_name,
+limits,
+processing,
+requires_index_documents,
+search_instance_count,
+search_instance_type,
+search_partition_count,
+search_service
 FROM aws.cloudsearch.domains
 WHERE region = '{{ region }}' -- required
 AND DomainNames = '{{ DomainNames }}'
@@ -302,19 +302,19 @@ SELECT
 '{{ DomainName }}',
 '{{ region }}'
 RETURNING
-ARN,
-Created,
-Deleted,
-DocService,
-DomainId,
-DomainName,
-Limits,
-Processing,
-RequiresIndexDocuments,
-SearchInstanceCount,
-SearchInstanceType,
-SearchPartitionCount,
-SearchService
+arn,
+created,
+deleted,
+doc_service,
+domain_id,
+domain_name,
+limits,
+processing,
+requires_index_documents,
+search_instance_count,
+search_instance_type,
+search_partition_count,
+search_service
 ;
 ```
 </TabItem>

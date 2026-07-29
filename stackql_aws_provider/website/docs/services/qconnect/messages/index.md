@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="messageId" /></td>
+    <td><CopyableCode code="message_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a message. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -183,7 +183,7 @@ Lists messages on an Amazon Q in Connect session.
 
 ```sql
 SELECT
-messageId,
+message_id,
 participant,
 timestamp,
 value

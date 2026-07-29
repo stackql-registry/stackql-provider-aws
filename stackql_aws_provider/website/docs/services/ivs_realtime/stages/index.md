@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>Stage name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activeSessionId" /></td>
+    <td><CopyableCode code="active_session_id" /></td>
     <td><code>string</code></td>
     <td>ID of the active session within the stage. (pattern: &lt;code&gt;st-&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>Stage ARN. (pattern: &lt;code&gt;arn:aws:ivs:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:stage/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="autoParticipantRecordingConfiguration" /></td>
+    <td><CopyableCode code="auto_participant_recording_configuration" /></td>
     <td><code>object</code></td>
     <td>Object specifying a configuration for individual participant recording.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If there are more stages than maxResults, use nextToken in the request to get the next set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9+/=_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -199,9 +199,9 @@ Gets information for the specified stage.
 ```sql
 SELECT
 name,
-activeSessionId,
+active_session_id,
 arn,
-autoParticipantRecordingConfiguration,
+auto_participant_recording_configuration,
 endpoints,
 tags
 FROM aws.ivs_realtime.stages
@@ -215,7 +215,7 @@ Gets summary information about all stages in your account, in the AWS region whe
 
 ```sql
 SELECT
-nextToken,
+next_token,
 stages
 FROM aws.ivs_realtime.stages
 WHERE region = '{{ region }}' -- required
@@ -253,7 +253,7 @@ SELECT
 '{{ autoParticipantRecordingConfiguration }}',
 '{{ region }}'
 RETURNING
-participantTokens,
+participant_tokens,
 stage
 ;
 ```

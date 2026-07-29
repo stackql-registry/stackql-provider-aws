@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the Application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application. This identifier is displayed as the Project ID on the Amazon Pinpoint console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the application. This name is displayed as the Project name on the Amazon Pinpoint console.</td>
 </tr>
@@ -90,12 +90,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each application that was returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -201,10 +201,10 @@ Retrieves information about an application.
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-Id,
-Name,
+arn,
+creation_date,
+id,
+name,
 tags
 FROM aws.pinpoint.apps
 WHERE `application-id` = '{{ application-id }}' -- required
@@ -218,8 +218,8 @@ Retrieves information about all the applications that are associated with your A
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.apps
 WHERE region = '{{ region }}' -- required
 AND `page-size` = '{{ page-size }}'
@@ -252,7 +252,7 @@ SELECT
 '{{ CreateApplicationRequest }}' /* required */,
 '{{ region }}'
 RETURNING
-ApplicationResponse
+application_response
 ;
 ```
 </TabItem>

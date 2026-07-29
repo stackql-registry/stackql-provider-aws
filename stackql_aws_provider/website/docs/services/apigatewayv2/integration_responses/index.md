@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentHandlingStrategy" /></td>
+    <td><CopyableCode code="content_handling_strategy" /></td>
     <td><code>string</code></td>
     <td>Specifies how to handle response payload content type conversions. Supported only for WebSocket APIs. (CONVERT_TO_BINARY, CONVERT_TO_TEXT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationResponseId" /></td>
+    <td><CopyableCode code="integration_response_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationResponseKey" /></td>
+    <td><CopyableCode code="integration_response_key" /></td>
     <td><code>string</code></td>
     <td>After evaluating a selection expression, the result is compared against one or more selection keys to find a matching key. See Selection Expressions for a list of expressions and each expression's associated selection key type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>A key-value map specifying response parameters that are passed to the method response from the backend. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of method.response.header.&#123;name&#125;, where name is a valid and unique header name. The mapped non-static value must match the pattern of integration.response.header.&#123;name&#125; or integration.response.body.&#123;JSON-expression&#125;, where name is a valid and unique response header name and JSON-expression is a valid JSON expression without the $ prefix.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseTemplates" /></td>
+    <td><CopyableCode code="response_templates" /></td>
     <td><code>object</code></td>
     <td>The collection of response templates for the integration response as a string-to-string map of key-value pairs. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateSelectionExpression" /></td>
+    <td><CopyableCode code="template_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ContentHandlingStrategy" /></td>
+    <td><CopyableCode code="content_handling_strategy" /></td>
     <td><code>string</code></td>
     <td>Specifies how to handle response payload content type conversions. Supported only for WebSocket APIs. (CONVERT_TO_BINARY, CONVERT_TO_TEXT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationResponseId" /></td>
+    <td><CopyableCode code="integration_response_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IntegrationResponseKey" /></td>
+    <td><CopyableCode code="integration_response_key" /></td>
     <td><code>string</code></td>
     <td>After evaluating a selection expression, the result is compared against one or more selection keys to find a matching key. See Selection Expressions for a list of expressions and each expression's associated selection key type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseParameters" /></td>
+    <td><CopyableCode code="response_parameters" /></td>
     <td><code>object</code></td>
     <td>A key-value map specifying response parameters that are passed to the method response from the backend. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of method.response.header.&#123;name&#125;, where name is a valid and unique header name. The mapped non-static value must match the pattern of integration.response.header.&#123;name&#125; or integration.response.body.&#123;JSON-expression&#125;, where name is a valid and unique response header name and JSON-expression is a valid JSON expression without the $ prefix.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponseTemplates" /></td>
+    <td><CopyableCode code="response_templates" /></td>
     <td><code>object</code></td>
     <td>The collection of response templates for the integration response as a string-to-string map of key-value pairs. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateSelectionExpression" /></td>
+    <td><CopyableCode code="template_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
@@ -243,12 +243,12 @@ Gets an IntegrationResponses.
 
 ```sql
 SELECT
-ContentHandlingStrategy,
-IntegrationResponseId,
-IntegrationResponseKey,
-ResponseParameters,
-ResponseTemplates,
-TemplateSelectionExpression
+content_handling_strategy,
+integration_response_id,
+integration_response_key,
+response_parameters,
+response_templates,
+template_selection_expression
 FROM aws.apigatewayv2.integration_responses
 WHERE api_id = '{{ api_id }}' -- required
 AND integration_id = '{{ integration_id }}' -- required
@@ -263,12 +263,12 @@ Gets the IntegrationResponses for an Integration.
 
 ```sql
 SELECT
-ContentHandlingStrategy,
-IntegrationResponseId,
-IntegrationResponseKey,
-ResponseParameters,
-ResponseTemplates,
-TemplateSelectionExpression
+content_handling_strategy,
+integration_response_id,
+integration_response_key,
+response_parameters,
+response_templates,
+template_selection_expression
 FROM aws.apigatewayv2.integration_responses
 WHERE api_id = '{{ api_id }}' -- required
 AND integration_id = '{{ integration_id }}' -- required
@@ -315,12 +315,12 @@ SELECT
 '{{ integration_id }}',
 '{{ region }}'
 RETURNING
-ContentHandlingStrategy,
-IntegrationResponseId,
-IntegrationResponseKey,
-ResponseParameters,
-ResponseTemplates,
-TemplateSelectionExpression
+content_handling_strategy,
+integration_response_id,
+integration_response_key,
+response_parameters,
+response_templates,
+template_selection_expression
 ;
 ```
 </TabItem>
@@ -391,12 +391,12 @@ AND integration_id = '{{ integration_id }}' --required
 AND integration_response_id = '{{ integration_response_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ContentHandlingStrategy,
-IntegrationResponseId,
-IntegrationResponseKey,
-ResponseParameters,
-ResponseTemplates,
-TemplateSelectionExpression;
+content_handling_strategy,
+integration_response_id,
+integration_response_key,
+response_parameters,
+response_templates,
+template_selection_expression;
 ```
 </TabItem>
 </Tabs>

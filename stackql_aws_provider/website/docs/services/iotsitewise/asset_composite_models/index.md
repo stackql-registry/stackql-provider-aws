@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionDefinitions" /></td>
+    <td><CopyableCode code="action_definitions" /></td>
     <td><code>array</code></td>
     <td>The available actions for a composite model on this asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelDescription" /></td>
+    <td><CopyableCode code="asset_composite_model_description" /></td>
     <td><code>string</code></td>
     <td>A description for the composite model. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelExternalId" /></td>
+    <td><CopyableCode code="asset_composite_model_external_id" /></td>
     <td><code>string</code></td>
     <td>An external ID to assign to the asset model. If the composite model is a component-based composite model, or one nested inside a component model, you can only set the external ID using UpdateAssetModelCompositeModel and specifying the derived ID of the model or property from the created model it's a part of. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;&#91;a-zA-Z_\-0-9.:&#93;*&#91;a-zA-Z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelId" /></td>
+    <td><CopyableCode code="asset_composite_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a composite model on this asset. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelName" /></td>
+    <td><CopyableCode code="asset_composite_model_name" /></td>
     <td><code>string</code></td>
     <td>The unique, friendly name for the composite model. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelPath" /></td>
+    <td><CopyableCode code="asset_composite_model_path" /></td>
     <td><code>array</code></td>
     <td>The path to the composite model listing the parent composite models.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelProperties" /></td>
+    <td><CopyableCode code="asset_composite_model_properties" /></td>
     <td><code>array</code></td>
     <td>The property definitions of the composite model that was used to create the asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelSummaries" /></td>
+    <td><CopyableCode code="asset_composite_model_summaries" /></td>
     <td><code>array</code></td>
     <td>The list of composite model summaries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetCompositeModelType" /></td>
+    <td><CopyableCode code="asset_composite_model_type" /></td>
     <td><code>string</code></td>
     <td>The composite model type. Valid values are AWS/ALARM, CUSTOM, or AWS/L4E_ANOMALY. (pattern: &lt;code&gt;&#91;^\u0000-\u001F\u007F&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assetId" /></td>
+    <td><CopyableCode code="asset_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the asset, in UUID format. This ID uniquely identifies the asset within IoT SiteWise and can be used with other IoT SiteWise APIs. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -174,16 +174,16 @@ Retrieves information about an asset composite model (also known as an asset com
 
 ```sql
 SELECT
-actionDefinitions,
-assetCompositeModelDescription,
-assetCompositeModelExternalId,
-assetCompositeModelId,
-assetCompositeModelName,
-assetCompositeModelPath,
-assetCompositeModelProperties,
-assetCompositeModelSummaries,
-assetCompositeModelType,
-assetId
+action_definitions,
+asset_composite_model_description,
+asset_composite_model_external_id,
+asset_composite_model_id,
+asset_composite_model_name,
+asset_composite_model_path,
+asset_composite_model_properties,
+asset_composite_model_summaries,
+asset_composite_model_type,
+asset_id
 FROM aws.iotsitewise.asset_composite_models
 WHERE asset_id = '{{ asset_id }}' -- required
 AND asset_composite_model_id = '{{ asset_composite_model_id }}' -- required

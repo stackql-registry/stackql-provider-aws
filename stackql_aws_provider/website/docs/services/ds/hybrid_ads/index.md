@@ -114,7 +114,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DirectoryId
+directory_id
 ;
 ```
 </TabItem>
@@ -168,8 +168,8 @@ WHERE
 region = '{{ region }}' --required
 AND DirectoryId = '{{ DirectoryId }}' --required
 RETURNING
-AssessmentId,
-DirectoryId;
+assessment_id,
+directory_id;
 ```
 </TabItem>
 </Tabs>

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentSpace" /></td>
+    <td><CopyableCode code="agent_space" /></td>
     <td><code>object</code></td>
     <td>Represents a complete AgentSpace with all its properties, timestamps, encryption settings, and unique identifier.</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
     <td>Agent space name field (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;P&#125;\p&#123;S&#125;\p&#123;Z&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentSpaceId" /></td>
+    <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for an agent space (allows alphanumeric characters and hyphens; 1-64 characters) (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the resource was created.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>Description field (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;P&#125;\p&#123;S&#125;\p&#123;Z&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AWS Key Management Service (AWS KMS) customer managed key that's used to encrypt resources. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:kms:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>A BCP 47 locale identifier for configuring the language used in agent responses. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#123;2,3&#125;(-&#91;a-zA-Z0-9&#93;&#123;2,8&#125;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the resource was last updated.</td>
 </tr>
@@ -244,7 +244,7 @@ Retrieves detailed information about a specific AgentSpace.
 
 ```sql
 SELECT
-agentSpace,
+agent_space,
 tags
 FROM aws.devops_agent.agent_spaces
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
@@ -259,12 +259,12 @@ Lists all AgentSpaces with optional pagination.
 ```sql
 SELECT
 name,
-agentSpaceId,
-createdAt,
+agent_space_id,
+created_at,
 description,
-kmsKeyArn,
+kms_key_arn,
 locale,
-updatedAt
+updated_at
 FROM aws.devops_agent.agent_spaces
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -307,7 +307,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-agentSpace,
+agent_space,
 tags
 ;
 ```
@@ -370,7 +370,7 @@ WHERE
 agent_space_id = '{{ agent_space_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-agentSpace;
+agent_space;
 ```
 </TabItem>
 </Tabs>

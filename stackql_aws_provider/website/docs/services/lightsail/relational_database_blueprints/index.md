@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="blueprintId" /></td>
+    <td><CopyableCode code="blueprint_id" /></td>
     <td><code>string</code></td>
     <td>The ID for the database blueprint.</td>
 </tr>
@@ -60,22 +60,22 @@ The following fields are returned by `SELECT` queries:
     <td>The database software of the database blueprint (for example, MySQL). (mysql)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineDescription" /></td>
+    <td><CopyableCode code="engine_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine for the database blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The database engine version for the database blueprint (for example, 5.7.23).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="engineVersionDescription" /></td>
+    <td><CopyableCode code="engine_version_description" /></td>
     <td><code>string</code></td>
     <td>The description of the database engine version for the database blueprint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isEngineDefault" /></td>
+    <td><CopyableCode code="is_engine_default" /></td>
     <td><code>boolean</code></td>
     <td>A Boolean value indicating whether the engine version is the default for the database blueprint.</td>
 </tr>
@@ -144,12 +144,12 @@ Returns a list of available database blueprints in Amazon Lightsail. A blueprint
 
 ```sql
 SELECT
-blueprintId,
+blueprint_id,
 engine,
-engineDescription,
-engineVersion,
-engineVersionDescription,
-isEngineDefault
+engine_description,
+engine_version,
+engine_version_description,
+is_engine_default
 FROM aws.lightsail.relational_database_blueprints
 WHERE region = '{{ region }}' -- required
 ;

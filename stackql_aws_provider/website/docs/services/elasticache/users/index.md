@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccessString" /></td>
+    <td><CopyableCode code="access_string" /></td>
     <td><code>string</code></td>
     <td>Access permissions string used for this user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Authentication" /></td>
+    <td><CopyableCode code="authentication" /></td>
     <td><code>string</code></td>
     <td>Denotes whether the user requires a password to authenticate.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The options are valkey or redis.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The minimum engine version required, which is Redis OSS 6.0</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the user status. Can be "active", "modifying" or "deleting".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserGroupIds" /></td>
+    <td><CopyableCode code="user_group_ids" /></td>
     <td><code>string</code></td>
     <td>Returns a list of the user group IDs the user belongs to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserName" /></td>
+    <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The username of the user.</td>
 </tr>
@@ -250,15 +250,15 @@ Returns a list of users.
 
 ```sql
 SELECT
-ARN,
-AccessString,
-Authentication,
-Engine,
-MinimumEngineVersion,
-Status,
-UserGroupIds,
-UserId,
-UserName
+arn,
+access_string,
+authentication,
+engine,
+minimum_engine_version,
+status,
+user_group_ids,
+user_id,
+user_name
 FROM aws.elasticache.users
 WHERE region = '{{ region }}' -- required
 AND Engine = '{{ Engine }}'
@@ -308,15 +308,15 @@ SELECT
 '{{ Tags }}',
 '{{ AuthenticationMode }}'
 RETURNING
-ARN,
-AccessString,
-Authentication,
-Engine,
-MinimumEngineVersion,
-Status,
-UserGroupIds,
-UserId,
-UserName
+arn,
+access_string,
+authentication,
+engine,
+minimum_engine_version,
+status,
+user_group_ids,
+user_id,
+user_name
 ;
 ```
 </TabItem>
@@ -389,15 +389,15 @@ AND NoPasswordRequired = {{ NoPasswordRequired}}
 AND AuthenticationMode = '{{ AuthenticationMode}}'
 AND Engine = '{{ Engine}}'
 RETURNING
-ARN,
-AccessString,
-Authentication,
-Engine,
-MinimumEngineVersion,
-Status,
-UserGroupIds,
-UserId,
-UserName;
+arn,
+access_string,
+authentication,
+engine,
+minimum_engine_version,
+status,
+user_group_ids,
+user_id,
+user_name;
 ```
 </TabItem>
 </Tabs>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="indexPolicies" /></td>
+    <td><CopyableCode code="index_policies" /></td>
     <td><code>array</code></td>
     <td>An array containing the field index policies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
@@ -138,8 +138,8 @@ Returns the field index policies of the specified log group. For more informatio
 
 ```sql
 SELECT
-indexPolicies,
-nextToken
+index_policies,
+next_token
 FROM aws.logs.index_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -170,7 +170,7 @@ region = '{{ region }}' --required
 AND logGroupIdentifier = '{{ logGroupIdentifier }}' --required
 AND policyDocument = '{{ policyDocument }}' --required
 RETURNING
-indexPolicy;
+index_policy;
 ```
 </TabItem>
 </Tabs>

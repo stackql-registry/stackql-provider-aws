@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateConnector. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityArn" /></td>
+    <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate authority being used. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:acm-pca:&#91;\w-&#93;+:&#91;0-9&#93;+:certificate-authority\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateEnrollmentPolicyServerEndpoint" /></td>
+    <td><CopyableCode code="certificate_enrollment_policy_server_endpoint" /></td>
     <td><code>string</code></td>
     <td>Certificate enrollment endpoint for Active Directory domain-joined objects reach out to when requesting certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Active Directory. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the connector. Status can be creating, active, deleting, or failed. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the connector status if the status is failed. (CA_CERTIFICATE_REGISTRATION_FAILED, DIRECTORY_ACCESS_DENIED, INTERNAL_FAILURE, INSUFFICIENT_FREE_ADDRESSES, INVALID_SUBNET_IP_PROTOCOL, PRIVATECA_ACCESS_DENIED, PRIVATECA_RESOURCE_NOT_FOUND, SECURITY_GROUP_NOT_IN_VPC, VPC_ACCESS_DENIED, VPC_ENDPOINT_LIMIT_EXCEEDED, VPC_RESOURCE_NOT_FOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcInformation" /></td>
+    <td><CopyableCode code="vpc_information" /></td>
     <td><code>object</code></td>
     <td>Information about your VPC and security groups used with the connector.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that was returned when you called CreateConnector. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:pca-connector-ad:&#91;\w-&#93;+:&#91;0-9&#93;+:connector\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateAuthorityArn" /></td>
+    <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate authority being used. (pattern: &lt;code&gt;^arn:&#91;\w-&#93;+:acm-pca:&#91;\w-&#93;+:&#91;0-9&#93;+:certificate-authority\/&#91;0-9a-f&#93;&#123;8&#125;(-&#91;0-9a-f&#93;&#123;4&#125;)&#123;3&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CertificateEnrollmentPolicyServerEndpoint" /></td>
+    <td><CopyableCode code="certificate_enrollment_policy_server_endpoint" /></td>
     <td><code>string</code></td>
     <td>Certificate enrollment endpoint for Active Directory domain-joined objects to request certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DirectoryId" /></td>
+    <td><CopyableCode code="directory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Active Directory. (pattern: &lt;code&gt;^d-&#91;0-9a-f&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Status of the connector. Status can be creating, active, deleting, or failed. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>Additional information about the connector status if the status is failed. (CA_CERTIFICATE_REGISTRATION_FAILED, DIRECTORY_ACCESS_DENIED, INTERNAL_FAILURE, INSUFFICIENT_FREE_ADDRESSES, INVALID_SUBNET_IP_PROTOCOL, PRIVATECA_ACCESS_DENIED, PRIVATECA_RESOURCE_NOT_FOUND, SECURITY_GROUP_NOT_IN_VPC, VPC_ACCESS_DENIED, VPC_ENDPOINT_LIMIT_EXCEEDED, VPC_RESOURCE_NOT_FOUND)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the connector was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcInformation" /></td>
+    <td><CopyableCode code="vpc_information" /></td>
     <td><code>object</code></td>
     <td>Information about your VPC and security groups used with the connector.</td>
 </tr>
@@ -256,15 +256,15 @@ Lists information about your connector. You specify the connector on input by it
 
 ```sql
 SELECT
-Arn,
-CertificateAuthorityArn,
-CertificateEnrollmentPolicyServerEndpoint,
-CreatedAt,
-DirectoryId,
-Status,
-StatusReason,
-UpdatedAt,
-VpcInformation
+arn,
+certificate_authority_arn,
+certificate_enrollment_policy_server_endpoint,
+created_at,
+directory_id,
+status,
+status_reason,
+updated_at,
+vpc_information
 FROM aws.pca_connector_ad.connectors
 WHERE connector_arn = '{{ connector_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,15 +277,15 @@ Lists the connectors that you created by using the https://docs.aws.amazon.com/p
 
 ```sql
 SELECT
-Arn,
-CertificateAuthorityArn,
-CertificateEnrollmentPolicyServerEndpoint,
-CreatedAt,
-DirectoryId,
-Status,
-StatusReason,
-UpdatedAt,
-VpcInformation
+arn,
+certificate_authority_arn,
+certificate_enrollment_policy_server_endpoint,
+created_at,
+directory_id,
+status,
+status_reason,
+updated_at,
+vpc_information
 FROM aws.pca_connector_ad.connectors
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -326,7 +326,7 @@ SELECT
 '{{ VpcInformation }}' /* required */,
 '{{ region }}'
 RETURNING
-ConnectorArn
+connector_arn
 ;
 ```
 </TabItem>

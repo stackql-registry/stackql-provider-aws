@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token to be used in subsequent requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ruleDetails" /></td>
+    <td><CopyableCode code="rule_details" /></td>
     <td><code>array</code></td>
     <td>The details of the requested rule.</td>
 </tr>
@@ -152,8 +152,8 @@ Get all rules for a detector (paginated) if ruleId and ruleVersion are not speci
 
 ```sql
 SELECT
-nextToken,
-ruleDetails
+next_token,
+rule_details
 FROM aws.frauddetector.rules
 WHERE region = '{{ region }}' -- required
 ;

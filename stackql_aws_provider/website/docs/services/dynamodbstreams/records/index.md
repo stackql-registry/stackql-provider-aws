@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextShardIterator" /></td>
+    <td><CopyableCode code="next_shard_iterator" /></td>
     <td><code>string</code></td>
     <td>The next position in the shard from which to start sequentially reading stream records. If set to null, the shard has been closed and the requested iterator will not return any more data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Records" /></td>
+    <td><CopyableCode code="records" /></td>
     <td><code>array</code></td>
     <td>The stream records from the shard, which were retrieved using the shard iterator.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the stream records from a given shard. Specify a shard iterator using 
 
 ```sql
 SELECT
-NextShardIterator,
-Records
+next_shard_iterator,
+records
 FROM aws.dynamodbstreams.records
 WHERE region = '{{ region }}' -- required
 ;

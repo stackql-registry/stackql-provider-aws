@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeMapping" /></td>
+    <td><CopyableCode code="attribute_mapping" /></td>
     <td><code>object</code></td>
     <td>A mapping of IdP attributes to standard and custom user pool attributes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdpIdentifiers" /></td>
+    <td><CopyableCode code="idp_identifiers" /></td>
     <td><code>array</code></td>
     <td>A list of IdP identifiers. IdP identifiers are strings that represent friendly names or domain names of IdPs, for example MyIdP or auth.example.com. You can choose to route user authorization requests to the right IdP with either IdP identifiers or IdP names. For more information, see identity_provider and idp_identifier at Authorize endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderDetails" /></td>
+    <td><CopyableCode code="provider_details" /></td>
     <td><code>object</code></td>
     <td>The scopes, URLs, and identifiers for your external identity provider. The following examples describe the provider detail keys for each IdP type. These values and their schema are subject to change. Social IdP authorize_scopes values must match the values listed here. OpenID Connect (OIDC) Amazon Cognito accepts the following elements when it can't discover endpoint URLs from oidc_issuer: attributes_url, authorize_url, jwks_uri, token_url. Create or update request: "ProviderDetails": &#123; "attributes_request_method": "GET", "attributes_url": "https:​//auth.example.com/userInfo", "authorize_scopes": "openid profile email", "authorize_url": "https:​//auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https:​//auth.example.com/.well-known/jwks.json", "oidc_issuer": "https:​//auth.example.com", "token_url": "https:​//example.com/token" &#125; Describe response: "ProviderDetails": &#123; "attributes_request_method": "GET", "attributes_url": "https:​//auth.example.com/userInfo", "attributes_url_add_attributes": "false", "authorize_scopes": "openid profile email", "authorize_url": "https:​//auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https:​//auth.example.com/.well-known/jwks.json", "oidc_issuer": "https:​//auth.example.com", "token_url": "https:​//example.com/token" &#125; SAML Create or update request with Metadata URL: "ProviderDetails": &#123; "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataURL": "https:​//auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256" &#125; Create or update request with Metadata file: "ProviderDetails": &#123; "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataFile": "&#91;metadata XML&#93;", "RequestSigningAlgorithm": "rsa-sha256" &#125; The value of MetadataFile must be the plaintext metadata document with all quote (") characters escaped by backslashes. Describe response: "ProviderDetails": &#123; "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "ActiveEncryptionCertificate": "&#91;certificate&#93;", "MetadataURL": "https:​//auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256", "SLORedirectBindingURI": "https:​//auth.example.com/slo/saml", "SSORedirectBindingURI": "https:​//auth.example.com/sso/saml" &#125; LoginWithAmazon Create or update request: "ProviderDetails": &#123; "authorize_scopes": "profile postal_code", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret" Describe response: "ProviderDetails": &#123; "attributes_url": "https:​//api.amazon.com/user/profile", "attributes_url_add_attributes": "false", "authorize_scopes": "profile postal_code", "authorize_url": "https:​//www.amazon.com/ap/oa", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "POST", "token_url": "https:​//api.amazon.com/auth/o2/token" &#125; Google Create or update request: "ProviderDetails": &#123; "authorize_scopes": "email profile openid", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret" &#125; Describe response: "ProviderDetails": &#123; "attributes_url": "https:​//people.googleapis.com/v1/people/me?personFields=", "attributes_url_add_attributes": "true", "authorize_scopes": "email profile openid", "authorize_url": "https:​//accounts.google.com/o/oauth2/v2/auth", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret", "oidc_issuer": "https:​//accounts.google.com", "token_request_method": "POST", "token_url": "https:​//www.googleapis.com/oauth2/v4/token" &#125; SignInWithApple Create or update request: "ProviderDetails": &#123; "authorize_scopes": "email name", "client_id": "com.example.cognito", "private_key": "1EXAMPLE", "key_id": "2EXAMPLE", "team_id": "3EXAMPLE" &#125; Describe response: "ProviderDetails": &#123; "attributes_url_add_attributes": "false", "authorize_scopes": "email name", "authorize_url": "https:​//appleid.apple.com/auth/authorize", "client_id": "com.example.cognito", "key_id": "1EXAMPLE", "oidc_issuer": "https:​//appleid.apple.com", "team_id": "2EXAMPLE", "token_request_method": "POST", "token_url": "https:​//appleid.apple.com/auth/token" &#125; Facebook Create or update request: "ProviderDetails": &#123; "api_version": "v17.0", "authorize_scopes": "public_profile, email", "client_id": "1example23456789", "client_secret": "provider-app-client-secret" &#125; Describe response: "ProviderDetails": &#123; "api_version": "v17.0", "attributes_url": "https:​//graph.facebook.com/v17.0/me?fields=", "attributes_url_add_attributes": "true", "authorize_scopes": "public_profile, email", "authorize_url": "https:​//www.facebook.com/v17.0/dialog/oauth", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "GET", "token_url": "https:​//graph.facebook.com/v17.0/oauth/access_token" &#125;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>A friendly name for the IdP. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\p&#123;Z&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of IdP. Either SAML, OIDC, or a named social identity provider. (SAML, Facebook, Google, LoginWithAmazon, SignInWithApple, OIDC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserPoolId" /></td>
+    <td><CopyableCode code="user_pool_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the user pool associated with the IdP. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -105,22 +105,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderName" /></td>
+    <td><CopyableCode code="provider_name" /></td>
     <td><code>string</code></td>
     <td>The name of the IdP, for example MySAMLProvider. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\p&#123;Z&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProviderType" /></td>
+    <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of the provider, for example SAML. Amazon Cognito supports SAML 2.0, OIDC, and social IdPs. User pools list supported social IdPs by name in this response parameter: Facebook, Google, Login with Amazon, and Sign in with Apple. (SAML, Facebook, Google, LoginWithAmazon, SignInWithApple, OIDC)</td>
 </tr>
@@ -218,14 +218,14 @@ Given a user pool ID and identity provider (IdP) name, returns details about the
 
 ```sql
 SELECT
-AttributeMapping,
-CreationDate,
-IdpIdentifiers,
-LastModifiedDate,
-ProviderDetails,
-ProviderName,
-ProviderType,
-UserPoolId
+attribute_mapping,
+creation_date,
+idp_identifiers,
+last_modified_date,
+provider_details,
+provider_name,
+provider_type,
+user_pool_id
 FROM aws.cognito_idp.identity_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -237,10 +237,10 @@ Given a user pool ID, returns information about configured identity providers (I
 
 ```sql
 SELECT
-CreationDate,
-LastModifiedDate,
-ProviderName,
-ProviderType
+creation_date,
+last_modified_date,
+provider_name,
+provider_type
 FROM aws.cognito_idp.identity_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -281,7 +281,7 @@ SELECT
 '{{ IdpIdentifiers }}',
 '{{ region }}'
 RETURNING
-IdentityProvider
+identity_provider
 ;
 ```
 </TabItem>
@@ -350,7 +350,7 @@ region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 AND ProviderName = '{{ ProviderName }}' --required
 RETURNING
-IdentityProvider;
+identity_provider;
 ```
 </TabItem>
 </Tabs>

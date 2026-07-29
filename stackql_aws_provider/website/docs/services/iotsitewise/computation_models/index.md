@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionDefinitions" /></td>
+    <td><CopyableCode code="action_definitions" /></td>
     <td><code>array</code></td>
     <td>The available actions for this computation model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelArn" /></td>
+    <td><CopyableCode code="computation_model_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the computation model, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:computation-model/$&#123;ComputationModelId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelConfiguration" /></td>
+    <td><CopyableCode code="computation_model_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for the computation model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelCreationDate" /></td>
+    <td><CopyableCode code="computation_model_creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The model creation date, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelDataBinding" /></td>
+    <td><CopyableCode code="computation_model_data_binding" /></td>
     <td><code>object</code></td>
     <td>The data binding for the computation model. Key is a variable name defined in configuration. Value is a ComputationModelDataBindingValue referenced by the variable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelDescription" /></td>
+    <td><CopyableCode code="computation_model_description" /></td>
     <td><code>string</code></td>
     <td>The description of the computation model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelId" /></td>
+    <td><CopyableCode code="computation_model_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the computation model. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelLastUpdateDate" /></td>
+    <td><CopyableCode code="computation_model_last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the model was last updated, in Unix epoch time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelName" /></td>
+    <td><CopyableCode code="computation_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the computation model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelStatus" /></td>
+    <td><CopyableCode code="computation_model_status" /></td>
     <td><code>object</code></td>
     <td>The current status of the asset model, which contains a state and an error message if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="computationModelVersion" /></td>
+    <td><CopyableCode code="computation_model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the computation model. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the computation model, which has the following format. arn:$&#123;Partition&#125;:iotsitewise:$&#123;Region&#125;:$&#123;Account&#125;:computation-model/$&#123;ComputationModelId&#125; (pattern: &lt;code&gt;^arn:aws(-cn|-us-gov)?:&#91;a-zA-Z0-9-:\/_\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The model creation date, in Unix epoch time.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the computation model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateDate" /></td>
+    <td><CopyableCode code="last_update_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the model was last updated, in Unix epoch time.</td>
 </tr>
@@ -288,17 +288,17 @@ Retrieves information about a computation model.
 
 ```sql
 SELECT
-actionDefinitions,
-computationModelArn,
-computationModelConfiguration,
-computationModelCreationDate,
-computationModelDataBinding,
-computationModelDescription,
-computationModelId,
-computationModelLastUpdateDate,
-computationModelName,
-computationModelStatus,
-computationModelVersion
+action_definitions,
+computation_model_arn,
+computation_model_configuration,
+computation_model_creation_date,
+computation_model_data_binding,
+computation_model_description,
+computation_model_id,
+computation_model_last_update_date,
+computation_model_name,
+computation_model_status,
+computation_model_version
 FROM aws.iotsitewise.computation_models
 WHERE computation_model_id = '{{ computation_model_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -315,9 +315,9 @@ SELECT
 id,
 name,
 arn,
-creationDate,
+creation_date,
 description,
-lastUpdateDate,
+last_update_date,
 status,
 type_,
 version
@@ -364,9 +364,9 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-computationModelArn,
-computationModelId,
-computationModelStatus
+computation_model_arn,
+computation_model_id,
+computation_model_status
 ;
 ```
 </TabItem>
@@ -428,7 +428,7 @@ AND computationModelName = '{{ computationModelName }}' --required
 AND computationModelConfiguration = '{{ computationModelConfiguration }}' --required
 AND computationModelDataBinding = '{{ computationModelDataBinding }}' --required
 RETURNING
-computationModelStatus;
+computation_model_status;
 ```
 </TabItem>
 </Tabs>

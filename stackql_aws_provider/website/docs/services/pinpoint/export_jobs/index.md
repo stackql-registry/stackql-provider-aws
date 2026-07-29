@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that's associated with the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedPieces" /></td>
+    <td><CopyableCode code="completed_pieces" /></td>
     <td><code>integer</code></td>
     <td>The number of pieces that were processed successfully (completed) by the export job, as of the time of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletionDate" /></td>
+    <td><CopyableCode code="completion_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the export job was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Definition" /></td>
+    <td><CopyableCode code="definition" /></td>
     <td><code>object</code></td>
     <td>The resource settings that apply to the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailedPieces" /></td>
+    <td><CopyableCode code="failed_pieces" /></td>
     <td><code>integer</code></td>
     <td>The number of pieces that weren't processed successfully (failed) by the export job, as of the time of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Failures" /></td>
+    <td><CopyableCode code="failures" /></td>
     <td><code>array</code></td>
     <td>An array of entries, one for each of the first 100 entries that weren't processed successfully (failed) by the export job, if any.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the export job. The job status is FAILED if Amazon Pinpoint wasn't able to process one or more pieces in the job. (CREATED, PREPARING_FOR_INITIALIZATION, INITIALIZING, PROCESSING, PENDING_JOB, COMPLETING, COMPLETED, FAILING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalFailures" /></td>
+    <td><CopyableCode code="total_failures" /></td>
     <td><code>integer</code></td>
     <td>The total number of endpoint definitions that weren't processed successfully (failed) by the export job, typically because an error, such as a syntax error, occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalPieces" /></td>
+    <td><CopyableCode code="total_pieces" /></td>
     <td><code>integer</code></td>
     <td>The total number of pieces that must be processed to complete the export job. Each piece consists of an approximately equal portion of the endpoint definitions that are part of the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalProcessed" /></td>
+    <td><CopyableCode code="total_processed" /></td>
     <td><code>integer</code></td>
     <td>The total number of endpoint definitions that were processed by the export job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The job type. This value is EXPORT for export jobs.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each export job that's associated with the application (Export Jobs resource) or segment (Segment Export Jobs resource).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -239,19 +239,19 @@ Retrieves information about the status and settings of a specific export job for
 
 ```sql
 SELECT
-ApplicationId,
-CompletedPieces,
-CompletionDate,
-CreationDate,
-Definition,
-FailedPieces,
-Failures,
-Id,
-JobStatus,
-TotalFailures,
-TotalPieces,
-TotalProcessed,
-Type
+application_id,
+completed_pieces,
+completion_date,
+creation_date,
+definition,
+failed_pieces,
+failures,
+id,
+job_status,
+total_failures,
+total_pieces,
+total_processed,
+type
 FROM aws.pinpoint.export_jobs
 WHERE `application-id` = '{{ application-id }}' -- required
 AND `job-id` = '{{ job-id }}' -- required
@@ -265,8 +265,8 @@ Retrieves information about the status and settings of all the export jobs for a
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.export_jobs
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -302,7 +302,7 @@ SELECT
 '{{ application-id }}',
 '{{ region }}'
 RETURNING
-ExportJobResponse
+export_job_response
 ;
 ```
 </TabItem>

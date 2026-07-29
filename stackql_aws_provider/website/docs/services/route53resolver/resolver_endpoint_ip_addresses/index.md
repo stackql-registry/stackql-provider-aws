@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the IP address was created, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ip" /></td>
+    <td><CopyableCode code="ip" /></td>
     <td><code>string</code></td>
     <td>One IPv4 address that the Resolver endpoint uses for DNS queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpId" /></td>
+    <td><CopyableCode code="ip_id" /></td>
     <td><code>string</code></td>
     <td>The ID of one IP address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Ipv6" /></td>
+    <td><CopyableCode code="ipv_6" /></td>
     <td><code>string</code></td>
     <td>One IPv6 address that the Resolver endpoint uses for DNS queries.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModificationTime" /></td>
+    <td><CopyableCode code="modification_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the IP address was last modified, in Unix time format and Coordinated Universal Time (UTC).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>A status code that gives the current status of the request. (CREATING, FAILED_CREATION, ATTACHING, ATTACHED, REMAP_DETACHING, REMAP_ATTACHING, DETACHING, FAILED_RESOURCE_GONE, DELETING, DELETE_FAILED_FAS_EXPIRED, UPDATING, UPDATE_FAILED, ISOLATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>A message that provides additional information about the status of the request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetId" /></td>
+    <td><CopyableCode code="subnet_id" /></td>
     <td><code>string</code></td>
     <td>The ID of one subnet.</td>
 </tr>
@@ -154,14 +154,14 @@ Gets the IP addresses for a specified Resolver endpoint.
 
 ```sql
 SELECT
-CreationTime,
-Ip,
-IpId,
-Ipv6,
-ModificationTime,
-Status,
-StatusMessage,
-SubnetId
+creation_time,
+ip,
+ip_id,
+ipv_6,
+modification_time,
+status,
+status_message,
+subnet_id
 FROM aws.route53resolver.resolver_endpoint_ip_addresses
 WHERE region = '{{ region }}' -- required
 ;

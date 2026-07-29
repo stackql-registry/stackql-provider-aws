@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when you created the optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentInstanceType" /></td>
+    <td><CopyableCode code="deployment_instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of instance that hosts the optimized model that you create with the optimization job. (ml.p4d.24xlarge, ml.p4de.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.g5.xlarge, ml.g5.2xlarge, ml.g5.4xlarge, ml.g5.8xlarge, ml.g5.12xlarge, ml.g5.16xlarge, ml.g5.24xlarge, ml.g5.48xlarge, ml.g6.xlarge, ml.g6.2xlarge, ml.g6.4xlarge, ml.g6.8xlarge, ml.g6.12xlarge, ml.g6.16xlarge, ml.g6.24xlarge, ml.g6.48xlarge, ml.g6e.xlarge, ml.g6e.2xlarge, ml.g6e.4xlarge, ml.g6e.8xlarge, ml.g6e.12xlarge, ml.g6e.16xlarge, ml.g6e.24xlarge, ml.g6e.48xlarge, ml.inf2.xlarge, ml.inf2.8xlarge, ml.inf2.24xlarge, ml.inf2.48xlarge, ml.trn1.2xlarge, ml.trn1.32xlarge, ml.trn1n.32xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If the optimization job status is FAILED, the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the optimization job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxInstanceCount" /></td>
+    <td><CopyableCode code="max_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of instances to use for the optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelSource" /></td>
+    <td><CopyableCode code="model_source" /></td>
     <td><code>object</code></td>
     <td>The location of the source model to optimize with an optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationConfigs" /></td>
+    <td><CopyableCode code="optimization_configs" /></td>
     <td><code>array</code></td>
     <td>Settings for each of the optimization techniques that the job applies.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationEndTime" /></td>
+    <td><CopyableCode code="optimization_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the optimization job finished processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationEnvironment" /></td>
+    <td><CopyableCode code="optimization_environment" /></td>
     <td><code>object</code></td>
     <td>The environment variables to set in the model container.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationJobArn" /></td>
+    <td><CopyableCode code="optimization_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the optimization job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:optimization-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationJobName" /></td>
+    <td><CopyableCode code="optimization_job_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assigned to the optimization job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationJobStatus" /></td>
+    <td><CopyableCode code="optimization_job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the optimization job. (INPROGRESS, COMPLETED, FAILED, STARTING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationOutput" /></td>
+    <td><CopyableCode code="optimization_output" /></td>
     <td><code>object</code></td>
     <td>Output values produced by an optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationStartTime" /></td>
+    <td><CopyableCode code="optimization_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the optimization job started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutputConfig" /></td>
+    <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>Details for where to store the optimized model that you create with the optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that you assigned to the optimization job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StoppingCondition" /></td>
+    <td><CopyableCode code="stopping_condition" /></td>
     <td><code>object</code></td>
     <td>Specifies a limit to how long a job can run. When the job reaches the time limit, SageMaker ends the job. Use this API to cap costs. To stop a training job, SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. The training algorithms provided by SageMaker automatically save the intermediate results of a model training job when possible. This attempt to save artifacts is only a best effort case as model might not be in a state from which it can be saved. For example, if training has just started, the model might not be ready to save. When saved, this intermediate data is a valid model artifact. You can use it to create a model with CreateModel. The Neural Topic Model (NTM) currently does not support saving intermediate model artifacts. When training NTMs, make sure that the maximum runtime is sufficient for the training job to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>A VPC in Amazon VPC that your optimized model has access to.</td>
 </tr>
@@ -155,52 +155,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when you created the optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentInstanceType" /></td>
+    <td><CopyableCode code="deployment_instance_type" /></td>
     <td><code>string</code></td>
     <td>The type of instance that hosts the optimized model that you create with the optimization job. (ml.p4d.24xlarge, ml.p4de.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.g5.xlarge, ml.g5.2xlarge, ml.g5.4xlarge, ml.g5.8xlarge, ml.g5.12xlarge, ml.g5.16xlarge, ml.g5.24xlarge, ml.g5.48xlarge, ml.g6.xlarge, ml.g6.2xlarge, ml.g6.4xlarge, ml.g6.8xlarge, ml.g6.12xlarge, ml.g6.16xlarge, ml.g6.24xlarge, ml.g6.48xlarge, ml.g6e.xlarge, ml.g6e.2xlarge, ml.g6e.4xlarge, ml.g6e.8xlarge, ml.g6e.12xlarge, ml.g6e.16xlarge, ml.g6e.24xlarge, ml.g6e.48xlarge, ml.inf2.xlarge, ml.inf2.8xlarge, ml.inf2.24xlarge, ml.inf2.48xlarge, ml.trn1.2xlarge, ml.trn1.32xlarge, ml.trn1n.32xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the optimization job was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxInstanceCount" /></td>
+    <td><CopyableCode code="max_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of instances to use for the optimization job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationEndTime" /></td>
+    <td><CopyableCode code="optimization_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the optimization job finished processing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationJobArn" /></td>
+    <td><CopyableCode code="optimization_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the optimization job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:optimization-job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationJobName" /></td>
+    <td><CopyableCode code="optimization_job_name" /></td>
     <td><code>string</code></td>
     <td>The name that you assigned to the optimization job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationJobStatus" /></td>
+    <td><CopyableCode code="optimization_job_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the optimization job. (INPROGRESS, COMPLETED, FAILED, STARTING, STOPPING, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationStartTime" /></td>
+    <td><CopyableCode code="optimization_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the optimization job started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationTypes" /></td>
+    <td><CopyableCode code="optimization_types" /></td>
     <td><code>array</code></td>
     <td>The optimization techniques that are applied by the optimization job.</td>
 </tr>
@@ -298,24 +298,24 @@ Provides the properties of the specified optimization job.
 
 ```sql
 SELECT
-CreationTime,
-DeploymentInstanceType,
-FailureReason,
-LastModifiedTime,
-MaxInstanceCount,
-ModelSource,
-OptimizationConfigs,
-OptimizationEndTime,
-OptimizationEnvironment,
-OptimizationJobArn,
-OptimizationJobName,
-OptimizationJobStatus,
-OptimizationOutput,
-OptimizationStartTime,
-OutputConfig,
-RoleArn,
-StoppingCondition,
-VpcConfig
+creation_time,
+deployment_instance_type,
+failure_reason,
+last_modified_time,
+max_instance_count,
+model_source,
+optimization_configs,
+optimization_end_time,
+optimization_environment,
+optimization_job_arn,
+optimization_job_name,
+optimization_job_status,
+optimization_output,
+optimization_start_time,
+output_config,
+role_arn,
+stopping_condition,
+vpc_config
 FROM aws.sagemaker.optimization_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -327,16 +327,16 @@ Lists the optimization jobs in your account and their properties.
 
 ```sql
 SELECT
-CreationTime,
-DeploymentInstanceType,
-LastModifiedTime,
-MaxInstanceCount,
-OptimizationEndTime,
-OptimizationJobArn,
-OptimizationJobName,
-OptimizationJobStatus,
-OptimizationStartTime,
-OptimizationTypes
+creation_time,
+deployment_instance_type,
+last_modified_time,
+max_instance_count,
+optimization_end_time,
+optimization_job_arn,
+optimization_job_name,
+optimization_job_status,
+optimization_start_time,
+optimization_types
 FROM aws.sagemaker.optimization_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -387,7 +387,7 @@ SELECT
 '{{ VpcConfig }}',
 '{{ region }}'
 RETURNING
-OptimizationJobArn
+optimization_job_arn
 ;
 ```
 </TabItem>

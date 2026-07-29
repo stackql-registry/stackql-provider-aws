@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="OverrideParameters" /></td>
+    <td><CopyableCode code="override_parameters" /></td>
     <td><code>object</code></td>
     <td>Parameters that were overridden for this specific workflow run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunDetail" /></td>
+    <td><CopyableCode code="run_detail" /></td>
     <td><code>object</code></td>
     <td>Detailed information about the workflow run execution, including timing, status, and task instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of this workflow run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunType" /></td>
+    <td><CopyableCode code="run_type" /></td>
     <td><code>string</code></td>
     <td>The type of workflow run. Values are ON_DEMAND (manually triggered) or SCHEDULED (automatically triggered by schedule). (ON_DEMAND, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow that contains this run. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:airflow-serverless:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;):(&#91;0-9&#93;&#123;12&#125;):workflow/(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\.\-_&#93;&#123;0,254&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowVersion" /></td>
+    <td><CopyableCode code="workflow_version" /></td>
     <td><code>string</code></td>
     <td>The version of the workflow that is used for this run. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -95,27 +95,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RunDetailSummary" /></td>
+    <td><CopyableCode code="run_detail_summary" /></td>
     <td><code>object</code></td>
     <td>Summary details about the workflow run execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunId" /></td>
+    <td><CopyableCode code="run_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the workflow run. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9\.\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RunType" /></td>
+    <td><CopyableCode code="run_type" /></td>
     <td><code>string</code></td>
     <td>The type of workflow run. (ON_DEMAND, SCHEDULED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowArn" /></td>
+    <td><CopyableCode code="workflow_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the workflow that contains this run. (pattern: &lt;code&gt;arn:aws(?:-(?:cn|us-gov|iso|iso-b|iso-e|iso-f))?:airflow-serverless:(&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;):(&#91;0-9&#93;&#123;12&#125;):workflow/(&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\.\-_&#93;&#123;0,254&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkflowVersion" /></td>
+    <td><CopyableCode code="workflow_version" /></td>
     <td><code>string</code></td>
     <td>The version of the workflow used for this run. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -192,12 +192,12 @@ Retrieves detailed information about a specific workflow run, including its stat
 
 ```sql
 SELECT
-OverrideParameters,
-RunDetail,
-RunId,
-RunType,
-WorkflowArn,
-WorkflowVersion
+override_parameters,
+run_detail,
+run_id,
+run_type,
+workflow_arn,
+workflow_version
 FROM aws.mwaa_serverless.workflow_runs
 WHERE region = '{{ region }}' -- required
 ;
@@ -209,11 +209,11 @@ Lists all runs for a specified workflow, with optional pagination and filtering 
 
 ```sql
 SELECT
-RunDetailSummary,
-RunId,
-RunType,
-WorkflowArn,
-WorkflowVersion
+run_detail_summary,
+run_id,
+run_type,
+workflow_arn,
+workflow_version
 FROM aws.mwaa_serverless.workflow_runs
 WHERE region = '{{ region }}' -- required
 ;

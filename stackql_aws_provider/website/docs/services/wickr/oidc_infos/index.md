@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="openidConnectInfo" /></td>
+    <td><CopyableCode code="openid_connect_info" /></td>
     <td><code>object</code></td>
     <td>The OpenID Connect configuration information for the network, including issuer, client ID, scopes, and other SSO settings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tokenInfo" /></td>
+    <td><CopyableCode code="token_info" /></td>
     <td><code>object</code></td>
     <td>OAuth token information including access token, refresh token, and expiration details (only present if token parameters were provided in the request).</td>
 </tr>
@@ -169,8 +169,8 @@ Retrieves the OpenID Connect (OIDC) configuration for a Wickr network, including
 
 ```sql
 SELECT
-openidConnectInfo,
-tokenInfo
+openid_connect_info,
+token_info
 FROM aws.wickr.oidc_infos
 WHERE network_id = '{{ network_id }}' -- required
 AND region = '{{ region }}' -- required

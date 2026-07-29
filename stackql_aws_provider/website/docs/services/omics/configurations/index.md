@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>Unique resource identifier for the configuration. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Configuration creation timestamp.</td>
 </tr>
@@ -71,7 +71,7 @@ The following fields are returned by `SELECT` queries:
     <td>Description for the configuration. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runConfigurations" /></td>
+    <td><CopyableCode code="run_configurations" /></td>
     <td><code>object</code></td>
     <td>Run-specific configurations.</td>
 </tr>
@@ -115,7 +115,7 @@ The following fields are returned by `SELECT` queries:
     <td>Unique resource identifier for the configuration. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Configuration creation timestamp.</td>
 </tr>
@@ -233,9 +233,9 @@ Retrieve configuration details for specified name.
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
-runConfigurations,
+run_configurations,
 status,
 tags,
 uuid
@@ -253,7 +253,7 @@ List all configurations for the account.
 SELECT
 name,
 arn,
-creationTime,
+creation_time,
 description,
 status
 FROM aws.omics.configurations
@@ -298,9 +298,9 @@ SELECT
 RETURNING
 name,
 arn,
-creationTime,
+creation_time,
 description,
-runConfigurations,
+run_configurations,
 status,
 tags,
 uuid

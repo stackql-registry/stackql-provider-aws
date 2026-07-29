@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiGatewayProxy" /></td>
+    <td><CopyableCode code="api_gateway_proxy" /></td>
     <td><code>object</code></td>
     <td>The endpoint URL of the API Gateway proxy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^app-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccountId" /></td>
+    <td><CopyableCode code="created_by_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the application creator. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the application is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the application resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the application was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. (pattern: &lt;code&gt;^(?!app-)&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9-_ &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the application owner (which is always the same as the environment owner account ID). (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProxyType" /></td>
+    <td><CopyableCode code="proxy_type" /></td>
     <td><code>string</code></td>
     <td>The proxy type of the proxy created within the application. (API_GATEWAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the application. (CREATING, ACTIVE, DELETING, FAILED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the application. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key-value pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC). (pattern: &lt;code&gt;^vpc-&#91;-a-f0-9&#93;&#123;8&#125;(&#91;-a-f0-9&#93;&#123;9&#125;)?$&lt;/code&gt;)</td>
 </tr>
@@ -135,72 +135,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiGatewayProxy" /></td>
+    <td><CopyableCode code="api_gateway_proxy" /></td>
     <td><code>object</code></td>
     <td>The endpoint URL of the Amazon API Gateway proxy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^app-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the application. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccountId" /></td>
+    <td><CopyableCode code="created_by_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the application creator. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the application is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the application resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the application was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. (pattern: &lt;code&gt;^(?!app-)&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9-_ &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the application owner (which is always the same as the environment owner account ID). (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProxyType" /></td>
+    <td><CopyableCode code="proxy_type" /></td>
     <td><code>string</code></td>
     <td>The proxy type of the proxy created within the application. (API_GATEWAY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the application. (CREATING, ACTIVE, DELETING, FAILED, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the virtual private cloud (VPC). (pattern: &lt;code&gt;^vpc-&#91;-a-f0-9&#93;&#123;8&#125;(&#91;-a-f0-9&#93;&#123;9&#125;)?$&lt;/code&gt;)</td>
 </tr>
@@ -311,20 +311,20 @@ Gets an Amazon Web Services Migration Hub Refactor Spaces application.
 
 ```sql
 SELECT
-ApiGatewayProxy,
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-EnvironmentId,
-Error,
-LastUpdatedTime,
-Name,
-OwnerAccountId,
-ProxyType,
-State,
-Tags,
-VpcId
+api_gateway_proxy,
+application_id,
+arn,
+created_by_account_id,
+created_time,
+environment_id,
+error,
+last_updated_time,
+name,
+owner_account_id,
+proxy_type,
+state,
+tags,
+vpc_id
 FROM aws.migration_hub_refactor_spaces.applications
 WHERE application_identifier = '{{ application_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required
@@ -338,20 +338,20 @@ Lists all the Amazon Web Services Migration Hub Refactor Spaces applications wit
 
 ```sql
 SELECT
-ApiGatewayProxy,
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-EnvironmentId,
-Error,
-LastUpdatedTime,
-Name,
-OwnerAccountId,
-ProxyType,
-State,
-Tags,
-VpcId
+api_gateway_proxy,
+application_id,
+arn,
+created_by_account_id,
+created_time,
+environment_id,
+error,
+last_updated_time,
+name,
+owner_account_id,
+proxy_type,
+state,
+tags,
+vpc_id
 FROM aws.migration_hub_refactor_spaces.applications
 WHERE environment_identifier = '{{ environment_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -397,19 +397,19 @@ SELECT
 '{{ environment_identifier }}',
 '{{ region }}'
 RETURNING
-ApiGatewayProxy,
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-EnvironmentId,
-LastUpdatedTime,
-Name,
-OwnerAccountId,
-ProxyType,
-State,
-Tags,
-VpcId
+api_gateway_proxy,
+application_id,
+arn,
+created_by_account_id,
+created_time,
+environment_id,
+last_updated_time,
+name,
+owner_account_id,
+proxy_type,
+state,
+tags,
+vpc_id
 ;
 ```
 </TabItem>

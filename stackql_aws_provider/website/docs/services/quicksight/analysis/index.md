@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Analysis" /></td>
+    <td><CopyableCode code="analysis" /></td>
     <td><code>object</code></td>
     <td>A metadata structure that contains summary information for the analysis that you're describing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -182,9 +182,9 @@ Provides a summary of the metadata for an analysis.
 
 ```sql
 SELECT
-Analysis,
-RequestId,
-Status
+analysis,
+request_id,
+status
 FROM aws.quicksight.analysis
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND analysis_id = '{{ analysis_id }}' -- required
@@ -237,11 +237,11 @@ SELECT
 '{{ analysis_id }}',
 '{{ region }}'
 RETURNING
-AnalysisId,
-Arn,
-CreationStatus,
-RequestId,
-Status
+analysis_id,
+arn,
+creation_status,
+request_id,
+status
 ;
 ```
 </TabItem>
@@ -530,11 +530,11 @@ AND analysis_id = '{{ analysis_id }}' --required
 AND region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 RETURNING
-AnalysisId,
-Arn,
-RequestId,
-Status,
-UpdateStatus;
+analysis_id,
+arn,
+request_id,
+status,
+update_status;
 ```
 </TabItem>
 </Tabs>

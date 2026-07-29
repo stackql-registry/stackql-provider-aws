@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectionState" /></td>
+    <td><CopyableCode code="connection_state" /></td>
     <td><code>string</code></td>
     <td>The connection state of the WorkSpace. The connection state is unknown if the WorkSpace is stopped. (CONNECTED, DISCONNECTED, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionStateCheckTimestamp" /></td>
+    <td><CopyableCode code="connection_state_check_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the connection status check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastKnownUserConnectionTimestamp" /></td>
+    <td><CopyableCode code="last_known_user_connection_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last known user connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkspaceId" /></td>
+    <td><CopyableCode code="workspace_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the WorkSpace. (pattern: &lt;code&gt;^ws-&#91;0-9a-z&#93;&#123;8,63&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Describes the connection status of the specified WorkSpaces.
 
 ```sql
 SELECT
-ConnectionState,
-ConnectionStateCheckTimestamp,
-LastKnownUserConnectionTimestamp,
-WorkspaceId
+connection_state,
+connection_state_check_timestamp,
+last_known_user_connection_timestamp,
+workspace_id
 FROM aws.workspaces.workspaces_connection_status
 WHERE region = '{{ region }}' -- required
 ;

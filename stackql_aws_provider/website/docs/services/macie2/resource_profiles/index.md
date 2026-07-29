@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="profileUpdatedAt" /></td>
+    <td><CopyableCode code="profile_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently recalculated sensitive data discovery statistics and details for the bucket. If the bucket's sensitivity score is calculated automatically, this includes the score.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sensitivityScore" /></td>
+    <td><CopyableCode code="sensitivity_score" /></td>
     <td><code>integer</code></td>
     <td>The current sensitivity score for the bucket, ranging from -1 (classification error) to 100 (sensitive). By default, this score is calculated automatically based on the amount of data that Amazon Macie has analyzed in the bucket and the amount of sensitive data that Macie has found in the bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sensitivityScoreOverridden" /></td>
+    <td><CopyableCode code="sensitivity_score_overridden" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the bucket's current sensitivity score was set manually. If this value is true, the score was manually changed to 100. If this value is false, the score was calculated automatically by Amazon Macie.</td>
 </tr>
@@ -146,9 +146,9 @@ Retrieves (queries) sensitive data discovery statistics and the sensitivity scor
 
 ```sql
 SELECT
-profileUpdatedAt,
-sensitivityScore,
-sensitivityScoreOverridden,
+profile_updated_at,
+sensitivity_score,
+sensitivity_score_overridden,
 statistics
 FROM aws.macie2.resource_profiles
 WHERE resourceArn = '{{ resourceArn }}' -- required

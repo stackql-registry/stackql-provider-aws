@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowPubliclyAccessibleConsumers" /></td>
+    <td><CopyableCode code="allow_publicly_accessible_consumers" /></td>
     <td><code>boolean</code></td>
     <td>A value that specifies whether the datashare can be shared to a publicly accessible cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataShareArn" /></td>
+    <td><CopyableCode code="data_share_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the datashare that the consumer is to use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataShareAssociations" /></td>
+    <td><CopyableCode code="data_share_associations" /></td>
     <td><code>string</code></td>
     <td>A value that specifies when the datashare has an association between producer and data consumers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataShareType" /></td>
+    <td><CopyableCode code="data_share_type" /></td>
     <td><code>string</code></td>
     <td>The type of the datashare created by RegisterNamespace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedBy" /></td>
+    <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
     <td>The identifier of a datashare to show its managing entity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProducerArn" /></td>
+    <td><CopyableCode code="producer_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the producer namespace.</td>
 </tr>
@@ -229,12 +229,12 @@ Shows the status of any inbound or outbound datashares available in the specifie
 
 ```sql
 SELECT
-AllowPubliclyAccessibleConsumers,
-DataShareArn,
-DataShareAssociations,
-DataShareType,
-ManagedBy,
-ProducerArn
+allow_publicly_accessible_consumers,
+data_share_arn,
+data_share_associations,
+data_share_type,
+managed_by,
+producer_arn
 FROM aws.redshift.data_shares
 WHERE region = '{{ region }}' -- required
 AND DataShareArn = '{{ DataShareArn }}'
@@ -269,12 +269,12 @@ AND ConsumerIdentifier = '{{ ConsumerIdentifier }}' --required
 AND region = '{{ region }}' --required
 AND AllowWrites = {{ AllowWrites}}
 RETURNING
-AllowPubliclyAccessibleConsumers,
-DataShareArn,
-DataShareAssociations,
-DataShareType,
-ManagedBy,
-ProducerArn;
+allow_publicly_accessible_consumers,
+data_share_arn,
+data_share_associations,
+data_share_type,
+managed_by,
+producer_arn;
 ```
 </TabItem>
 <TabItem value="associate_data_share_consumer">
@@ -293,12 +293,12 @@ AND ConsumerArn = '{{ ConsumerArn}}'
 AND ConsumerRegion = '{{ ConsumerRegion}}'
 AND AllowWrites = {{ AllowWrites}}
 RETURNING
-AllowPubliclyAccessibleConsumers,
-DataShareArn,
-DataShareAssociations,
-DataShareType,
-ManagedBy,
-ProducerArn;
+allow_publicly_accessible_consumers,
+data_share_arn,
+data_share_associations,
+data_share_type,
+managed_by,
+producer_arn;
 ```
 </TabItem>
 </Tabs>

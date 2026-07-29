@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedAt" /></td>
+    <td><CopyableCode code="associated_at" /></td>
     <td><code>string</code></td>
     <td>The time when the service role was associated with IoT Greengrass for your Amazon Web Services account in this Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the service role that is associated with IoT Greengrass for your Amazon Web Services account in this Amazon Web Services Region.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets the service role associated with IoT Greengrass for your Amazon Web Service
 
 ```sql
 SELECT
-associatedAt,
-roleArn
+associated_at,
+role_arn
 FROM aws.greengrassv2.service_role_for_accounts
 WHERE region = '{{ region }}' -- required
 ;

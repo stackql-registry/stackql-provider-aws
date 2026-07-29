@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tag key and value pairs that you want to attach to the specified view or index.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags that are attached to the specified resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.resource_explorer_2.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

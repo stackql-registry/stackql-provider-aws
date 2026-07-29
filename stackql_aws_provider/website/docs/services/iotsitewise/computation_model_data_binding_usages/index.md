@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="computationModelIds" /></td>
+    <td><CopyableCode code="computation_model_ids" /></td>
     <td><code>array</code></td>
     <td>The list of computation model IDs that use this data binding. This allows identification of all computation models affected by changes to the referenced data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="matchedDataBinding" /></td>
+    <td><CopyableCode code="matched_data_binding" /></td>
     <td><code>object</code></td>
     <td>The data binding matched by the filter criteria. Contains details about specific data binding values used by the computation models.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists all data binding usages for computation models. This allows to identify wh
 
 ```sql
 SELECT
-computationModelIds,
-matchedDataBinding
+computation_model_ids,
+matched_data_binding
 FROM aws.iotsitewise.computation_model_data_binding_usages
 WHERE region = '{{ region }}' -- required
 ;

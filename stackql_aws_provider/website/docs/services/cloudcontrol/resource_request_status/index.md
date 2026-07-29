@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HooksProgressEvent" /></td>
+    <td><CopyableCode code="hooks_progress_event" /></td>
     <td><code>array</code></td>
     <td>Lists Hook invocations for the specified target in the request. This is a list since the same target can invoke multiple Hooks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressEvent" /></td>
+    <td><CopyableCode code="progress_event" /></td>
     <td><code>object</code></td>
     <td>Represents the current status of a resource operation request. For more information, see Managing resource operation requests in the Amazon Web Services Cloud Control API User Guide.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns the current status of a resource operation request. For more information
 
 ```sql
 SELECT
-HooksProgressEvent,
-ProgressEvent
+hooks_progress_event,
+progress_event
 FROM aws.cloudcontrol.resource_request_status
 WHERE region = '{{ region }}' -- required
 ;

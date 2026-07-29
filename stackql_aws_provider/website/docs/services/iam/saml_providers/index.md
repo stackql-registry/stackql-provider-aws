@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssertionEncryptionMode" /></td>
+    <td><CopyableCode code="assertion_encryption_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies the encryption setting for the SAML provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the SAML provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateKeyList" /></td>
+    <td><CopyableCode code="private_key_list" /></td>
     <td><code>string</code></td>
     <td>The private key metadata for the SAML provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SAMLMetadataDocument" /></td>
+    <td><CopyableCode code="saml_metadata_document" /></td>
     <td><code>string</code></td>
     <td>The XML metadata document that includes information about an identity provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SAMLProviderUUID" /></td>
+    <td><CopyableCode code="saml_provider_uuid" /></td>
     <td><code>string</code></td>
     <td>The unique identifier assigned to the SAML provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the specified IAM SAML provider. The returned list of tags is sorted by tag key. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidUntil" /></td>
+    <td><CopyableCode code="valid_until" /></td>
     <td><code>string</code></td>
     <td>The expiration date and time for the SAML provider.</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the SAML provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDate" /></td>
+    <td><CopyableCode code="create_date" /></td>
     <td><code>string</code></td>
     <td>The date and time when the SAML provider was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValidUntil" /></td>
+    <td><CopyableCode code="valid_until" /></td>
     <td><code>string</code></td>
     <td>The expiration date and time for the SAML provider.</td>
 </tr>
@@ -248,13 +248,13 @@ Returns the SAML provider metadocument that was uploaded when the IAM SAML provi
 
 ```sql
 SELECT
-AssertionEncryptionMode,
-CreateDate,
-PrivateKeyList,
-SAMLMetadataDocument,
-SAMLProviderUUID,
-Tags,
-ValidUntil
+assertion_encryption_mode,
+create_date,
+private_key_list,
+saml_metadata_document,
+saml_provider_uuid,
+tags,
+valid_until
 FROM aws.iam.saml_providers
 WHERE SAMLProviderArn = '{{ SAMLProviderArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -267,9 +267,9 @@ Lists the SAML provider resource objects defined in IAM in the account. IAM reso
 
 ```sql
 SELECT
-Arn,
-CreateDate,
-ValidUntil
+arn,
+create_date,
+valid_until
 FROM aws.iam.saml_providers
 WHERE region = '{{ region }}' -- required
 ;
@@ -308,8 +308,8 @@ SELECT
 '{{ AssertionEncryptionMode }}',
 '{{ AddPrivateKey }}'
 RETURNING
-SAMLProviderArn,
-Tags
+saml_provider_arn,
+tags
 ;
 ```
 </TabItem>
@@ -369,7 +369,7 @@ AND AssertionEncryptionMode = '{{ AssertionEncryptionMode}}'
 AND AddPrivateKey = '{{ AddPrivateKey}}'
 AND RemovePrivateKey = '{{ RemovePrivateKey}}'
 RETURNING
-SAMLProviderArn;
+saml_provider_arn;
 ```
 </TabItem>
 </Tabs>

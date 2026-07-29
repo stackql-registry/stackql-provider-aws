@@ -50,287 +50,287 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="activityTaskCancelRequestedEventAttributes" /></td>
+    <td><CopyableCode code="activity_task_cancel_requested_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ActivityTaskcancelRequested then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityTaskCanceledEventAttributes" /></td>
+    <td><CopyableCode code="activity_task_canceled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ActivityTaskCanceled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityTaskCompletedEventAttributes" /></td>
+    <td><CopyableCode code="activity_task_completed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ActivityTaskCompleted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityTaskFailedEventAttributes" /></td>
+    <td><CopyableCode code="activity_task_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ActivityTaskFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityTaskScheduledEventAttributes" /></td>
+    <td><CopyableCode code="activity_task_scheduled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ActivityTaskScheduled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityTaskStartedEventAttributes" /></td>
+    <td><CopyableCode code="activity_task_started_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ActivityTaskStarted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="activityTaskTimedOutEventAttributes" /></td>
+    <td><CopyableCode code="activity_task_timed_out_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ActivityTaskTimedOut then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cancelTimerFailedEventAttributes" /></td>
+    <td><CopyableCode code="cancel_timer_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type CancelTimerFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cancelWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="cancel_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type CancelWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childWorkflowExecutionCanceledEventAttributes" /></td>
+    <td><CopyableCode code="child_workflow_execution_canceled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ChildWorkflowExecutionCanceled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childWorkflowExecutionCompletedEventAttributes" /></td>
+    <td><CopyableCode code="child_workflow_execution_completed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ChildWorkflowExecutionCompleted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="child_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ChildWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childWorkflowExecutionStartedEventAttributes" /></td>
+    <td><CopyableCode code="child_workflow_execution_started_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ChildWorkflowExecutionStarted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childWorkflowExecutionTerminatedEventAttributes" /></td>
+    <td><CopyableCode code="child_workflow_execution_terminated_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ChildWorkflowExecutionTerminated then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="childWorkflowExecutionTimedOutEventAttributes" /></td>
+    <td><CopyableCode code="child_workflow_execution_timed_out_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ChildWorkflowExecutionTimedOut then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="completeWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="complete_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type CompleteWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="continueAsNewWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="continue_as_new_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ContinueAsNewWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decisionTaskCompletedEventAttributes" /></td>
+    <td><CopyableCode code="decision_task_completed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type DecisionTaskCompleted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decisionTaskScheduledEventAttributes" /></td>
+    <td><CopyableCode code="decision_task_scheduled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type DecisionTaskScheduled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decisionTaskStartedEventAttributes" /></td>
+    <td><CopyableCode code="decision_task_started_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type DecisionTaskStarted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="decisionTaskTimedOutEventAttributes" /></td>
+    <td><CopyableCode code="decision_task_timed_out_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type DecisionTaskTimedOut then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>integer (int64)</code></td>
     <td>The system generated ID of the event. This ID uniquely identifies the event with in the workflow execution history.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventType" /></td>
+    <td><CopyableCode code="event_type" /></td>
     <td><code>string</code></td>
     <td>The type of the history event. (WorkflowExecutionStarted, WorkflowExecutionCancelRequested, WorkflowExecutionCompleted, CompleteWorkflowExecutionFailed, WorkflowExecutionFailed, FailWorkflowExecutionFailed, WorkflowExecutionTimedOut, WorkflowExecutionCanceled, CancelWorkflowExecutionFailed, WorkflowExecutionContinuedAsNew, ContinueAsNewWorkflowExecutionFailed, WorkflowExecutionTerminated, DecisionTaskScheduled, DecisionTaskStarted, DecisionTaskCompleted, DecisionTaskTimedOut, ActivityTaskScheduled, ScheduleActivityTaskFailed, ActivityTaskStarted, ActivityTaskCompleted, ActivityTaskFailed, ActivityTaskTimedOut, ActivityTaskCanceled, ActivityTaskCancelRequested, RequestCancelActivityTaskFailed, WorkflowExecutionSignaled, MarkerRecorded, RecordMarkerFailed, TimerStarted, StartTimerFailed, TimerFired, TimerCanceled, CancelTimerFailed, StartChildWorkflowExecutionInitiated, StartChildWorkflowExecutionFailed, ChildWorkflowExecutionStarted, ChildWorkflowExecutionCompleted, ChildWorkflowExecutionFailed, ChildWorkflowExecutionTimedOut, ChildWorkflowExecutionCanceled, ChildWorkflowExecutionTerminated, SignalExternalWorkflowExecutionInitiated, SignalExternalWorkflowExecutionFailed, ExternalWorkflowExecutionSignaled, RequestCancelExternalWorkflowExecutionInitiated, RequestCancelExternalWorkflowExecutionFailed, ExternalWorkflowExecutionCancelRequested, LambdaFunctionScheduled, LambdaFunctionStarted, LambdaFunctionCompleted, LambdaFunctionFailed, LambdaFunctionTimedOut, ScheduleLambdaFunctionFailed, StartLambdaFunctionFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalWorkflowExecutionCancelRequestedEventAttributes" /></td>
+    <td><CopyableCode code="external_workflow_execution_cancel_requested_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ExternalWorkflowExecutionCancelRequested then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="externalWorkflowExecutionSignaledEventAttributes" /></td>
+    <td><CopyableCode code="external_workflow_execution_signaled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ExternalWorkflowExecutionSignaled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="fail_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type FailWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionCompletedEventAttributes" /></td>
+    <td><CopyableCode code="lambda_function_completed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>Provides the details of the LambdaFunctionCompleted event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionFailedEventAttributes" /></td>
+    <td><CopyableCode code="lambda_function_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>Provides the details of the LambdaFunctionFailed event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionScheduledEventAttributes" /></td>
+    <td><CopyableCode code="lambda_function_scheduled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>Provides the details of the LambdaFunctionScheduled event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionStartedEventAttributes" /></td>
+    <td><CopyableCode code="lambda_function_started_event_attributes" /></td>
     <td><code>object</code></td>
     <td>Provides the details of the LambdaFunctionStarted event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lambdaFunctionTimedOutEventAttributes" /></td>
+    <td><CopyableCode code="lambda_function_timed_out_event_attributes" /></td>
     <td><code>object</code></td>
     <td>Provides the details of the LambdaFunctionTimedOut event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="markerRecordedEventAttributes" /></td>
+    <td><CopyableCode code="marker_recorded_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type MarkerRecorded then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recordMarkerFailedEventAttributes" /></td>
+    <td><CopyableCode code="record_marker_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type DecisionTaskFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestCancelActivityTaskFailedEventAttributes" /></td>
+    <td><CopyableCode code="request_cancel_activity_task_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type RequestCancelActivityTaskFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestCancelExternalWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="request_cancel_external_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type RequestCancelExternalWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestCancelExternalWorkflowExecutionInitiatedEventAttributes" /></td>
+    <td><CopyableCode code="request_cancel_external_workflow_execution_initiated_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type RequestCancelExternalWorkflowExecutionInitiated then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleActivityTaskFailedEventAttributes" /></td>
+    <td><CopyableCode code="schedule_activity_task_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type ScheduleActivityTaskFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="scheduleLambdaFunctionFailedEventAttributes" /></td>
+    <td><CopyableCode code="schedule_lambda_function_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>Provides the details of the ScheduleLambdaFunctionFailed event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalExternalWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="signal_external_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type SignalExternalWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="signalExternalWorkflowExecutionInitiatedEventAttributes" /></td>
+    <td><CopyableCode code="signal_external_workflow_execution_initiated_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type SignalExternalWorkflowExecutionInitiated then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startChildWorkflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="start_child_workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type StartChildWorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startChildWorkflowExecutionInitiatedEventAttributes" /></td>
+    <td><CopyableCode code="start_child_workflow_execution_initiated_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type StartChildWorkflowExecutionInitiated then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startLambdaFunctionFailedEventAttributes" /></td>
+    <td><CopyableCode code="start_lambda_function_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>Provides the details of the StartLambdaFunctionFailed event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTimerFailedEventAttributes" /></td>
+    <td><CopyableCode code="start_timer_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type StartTimerFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timerCanceledEventAttributes" /></td>
+    <td><CopyableCode code="timer_canceled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type TimerCanceled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timerFiredEventAttributes" /></td>
+    <td><CopyableCode code="timer_fired_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type TimerFired then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="timerStartedEventAttributes" /></td>
+    <td><CopyableCode code="timer_started_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type TimerStarted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionCancelRequestedEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_cancel_requested_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionCancelRequested then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionCanceledEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_canceled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionCanceled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionCompletedEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_completed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionCompleted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionContinuedAsNewEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_continued_as_new_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionContinuedAsNew then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionFailedEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_failed_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionFailed then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionSignaledEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_signaled_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionSignaled then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionStartedEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_started_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionStarted then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionTerminatedEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_terminated_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionTerminated then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowExecutionTimedOutEventAttributes" /></td>
+    <td><CopyableCode code="workflow_execution_timed_out_event_attributes" /></td>
     <td><code>object</code></td>
     <td>If the event is of type WorkflowExecutionTimedOut then this member is set and provides detailed information about the event. It isn't set for other event types.</td>
 </tr>
@@ -399,63 +399,63 @@ Returns the history of the specified workflow execution. The results may be spli
 
 ```sql
 SELECT
-activityTaskCancelRequestedEventAttributes,
-activityTaskCanceledEventAttributes,
-activityTaskCompletedEventAttributes,
-activityTaskFailedEventAttributes,
-activityTaskScheduledEventAttributes,
-activityTaskStartedEventAttributes,
-activityTaskTimedOutEventAttributes,
-cancelTimerFailedEventAttributes,
-cancelWorkflowExecutionFailedEventAttributes,
-childWorkflowExecutionCanceledEventAttributes,
-childWorkflowExecutionCompletedEventAttributes,
-childWorkflowExecutionFailedEventAttributes,
-childWorkflowExecutionStartedEventAttributes,
-childWorkflowExecutionTerminatedEventAttributes,
-childWorkflowExecutionTimedOutEventAttributes,
-completeWorkflowExecutionFailedEventAttributes,
-continueAsNewWorkflowExecutionFailedEventAttributes,
-decisionTaskCompletedEventAttributes,
-decisionTaskScheduledEventAttributes,
-decisionTaskStartedEventAttributes,
-decisionTaskTimedOutEventAttributes,
-eventId,
-eventTimestamp,
-eventType,
-externalWorkflowExecutionCancelRequestedEventAttributes,
-externalWorkflowExecutionSignaledEventAttributes,
-failWorkflowExecutionFailedEventAttributes,
-lambdaFunctionCompletedEventAttributes,
-lambdaFunctionFailedEventAttributes,
-lambdaFunctionScheduledEventAttributes,
-lambdaFunctionStartedEventAttributes,
-lambdaFunctionTimedOutEventAttributes,
-markerRecordedEventAttributes,
-recordMarkerFailedEventAttributes,
-requestCancelActivityTaskFailedEventAttributes,
-requestCancelExternalWorkflowExecutionFailedEventAttributes,
-requestCancelExternalWorkflowExecutionInitiatedEventAttributes,
-scheduleActivityTaskFailedEventAttributes,
-scheduleLambdaFunctionFailedEventAttributes,
-signalExternalWorkflowExecutionFailedEventAttributes,
-signalExternalWorkflowExecutionInitiatedEventAttributes,
-startChildWorkflowExecutionFailedEventAttributes,
-startChildWorkflowExecutionInitiatedEventAttributes,
-startLambdaFunctionFailedEventAttributes,
-startTimerFailedEventAttributes,
-timerCanceledEventAttributes,
-timerFiredEventAttributes,
-timerStartedEventAttributes,
-workflowExecutionCancelRequestedEventAttributes,
-workflowExecutionCanceledEventAttributes,
-workflowExecutionCompletedEventAttributes,
-workflowExecutionContinuedAsNewEventAttributes,
-workflowExecutionFailedEventAttributes,
-workflowExecutionSignaledEventAttributes,
-workflowExecutionStartedEventAttributes,
-workflowExecutionTerminatedEventAttributes,
-workflowExecutionTimedOutEventAttributes
+activity_task_cancel_requested_event_attributes,
+activity_task_canceled_event_attributes,
+activity_task_completed_event_attributes,
+activity_task_failed_event_attributes,
+activity_task_scheduled_event_attributes,
+activity_task_started_event_attributes,
+activity_task_timed_out_event_attributes,
+cancel_timer_failed_event_attributes,
+cancel_workflow_execution_failed_event_attributes,
+child_workflow_execution_canceled_event_attributes,
+child_workflow_execution_completed_event_attributes,
+child_workflow_execution_failed_event_attributes,
+child_workflow_execution_started_event_attributes,
+child_workflow_execution_terminated_event_attributes,
+child_workflow_execution_timed_out_event_attributes,
+complete_workflow_execution_failed_event_attributes,
+continue_as_new_workflow_execution_failed_event_attributes,
+decision_task_completed_event_attributes,
+decision_task_scheduled_event_attributes,
+decision_task_started_event_attributes,
+decision_task_timed_out_event_attributes,
+event_id,
+event_timestamp,
+event_type,
+external_workflow_execution_cancel_requested_event_attributes,
+external_workflow_execution_signaled_event_attributes,
+fail_workflow_execution_failed_event_attributes,
+lambda_function_completed_event_attributes,
+lambda_function_failed_event_attributes,
+lambda_function_scheduled_event_attributes,
+lambda_function_started_event_attributes,
+lambda_function_timed_out_event_attributes,
+marker_recorded_event_attributes,
+record_marker_failed_event_attributes,
+request_cancel_activity_task_failed_event_attributes,
+request_cancel_external_workflow_execution_failed_event_attributes,
+request_cancel_external_workflow_execution_initiated_event_attributes,
+schedule_activity_task_failed_event_attributes,
+schedule_lambda_function_failed_event_attributes,
+signal_external_workflow_execution_failed_event_attributes,
+signal_external_workflow_execution_initiated_event_attributes,
+start_child_workflow_execution_failed_event_attributes,
+start_child_workflow_execution_initiated_event_attributes,
+start_lambda_function_failed_event_attributes,
+start_timer_failed_event_attributes,
+timer_canceled_event_attributes,
+timer_fired_event_attributes,
+timer_started_event_attributes,
+workflow_execution_cancel_requested_event_attributes,
+workflow_execution_canceled_event_attributes,
+workflow_execution_completed_event_attributes,
+workflow_execution_continued_as_new_event_attributes,
+workflow_execution_failed_event_attributes,
+workflow_execution_signaled_event_attributes,
+workflow_execution_started_event_attributes,
+workflow_execution_terminated_event_attributes,
+workflow_execution_timed_out_event_attributes
 FROM aws.swf.workflow_execution_histories
 WHERE region = '{{ region }}' -- required
 ;

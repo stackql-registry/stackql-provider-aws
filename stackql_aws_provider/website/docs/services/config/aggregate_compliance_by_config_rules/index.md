@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account ID of the source account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The source region from where the data is aggregated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Compliance" /></td>
+    <td><CopyableCode code="compliance" /></td>
     <td><code>object</code></td>
     <td>Indicates whether an Amazon Web Services resource or Config rule is compliant and provides the number of contributors that affect the compliance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleName" /></td>
+    <td><CopyableCode code="config_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Config rule. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns a list of compliant and noncompliant rules with the number of resources 
 
 ```sql
 SELECT
-AccountId,
-AwsRegion,
-Compliance,
-ConfigRuleName
+account_id,
+aws_region,
+compliance,
+config_rule_name
 FROM aws.config.aggregate_compliance_by_config_rules
 WHERE region = '{{ region }}' -- required
 ;

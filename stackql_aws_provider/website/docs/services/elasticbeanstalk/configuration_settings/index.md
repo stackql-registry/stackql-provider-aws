@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationName" /></td>
+    <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
     <td>The name of the application associated with this configuration set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The date (in UTC time) when this configuration set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DateUpdated" /></td>
+    <td><CopyableCode code="date_updated" /></td>
     <td><code>string</code></td>
     <td>The date (in UTC time) when this configuration set was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>If this configuration set is associated with an environment, the DeploymentStatus parameter indicates the deployment status of this configuration set: null: This configuration is not associated with a running environment. pending: This is a draft configuration that is not deployed to the associated environment but is in the process of deploying. deployed: This is the configuration that is currently deployed to the associated running environment. failed: This is a draft configuration that failed to successfully deploy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Describes this configuration set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>If not null, the name of the environment for this configuration set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionSettings" /></td>
+    <td><CopyableCode code="option_settings" /></td>
     <td><code>string</code></td>
     <td>A list of the configuration options and their values in this configuration set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlatformArn" /></td>
+    <td><CopyableCode code="platform_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the platform version.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SolutionStackName" /></td>
+    <td><CopyableCode code="solution_stack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the solution stack this configuration set uses.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>If not null, the name of the configuration template for this configuration set.</td>
 </tr>
@@ -191,16 +191,16 @@ Returns a description of the settings for the specified configuration set, that 
 
 ```sql
 SELECT
-ApplicationName,
-DateCreated,
-DateUpdated,
-DeploymentStatus,
-Description,
-EnvironmentName,
-OptionSettings,
-PlatformArn,
-SolutionStackName,
-TemplateName
+application_name,
+date_created,
+date_updated,
+deployment_status,
+description,
+environment_name,
+option_settings,
+platform_arn,
+solution_stack_name,
+template_name
 FROM aws.elasticbeanstalk.configuration_settings
 WHERE ApplicationName = '{{ ApplicationName }}' -- required
 AND region = '{{ region }}' -- required

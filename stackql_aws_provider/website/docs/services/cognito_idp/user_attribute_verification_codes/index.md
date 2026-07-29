@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AttributeName" /></td>
+    <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
     <td>The name of the attribute that Amazon Cognito verifies with the code. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryMedium" /></td>
+    <td><CopyableCode code="delivery_medium" /></td>
     <td><code>string</code></td>
     <td>The method that Amazon Cognito used to send the code. (SMS, EMAIL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>string</code></td>
     <td>The email address or phone number destination where Amazon Cognito sent the code.</td>
 </tr>
@@ -129,9 +129,9 @@ Given an attribute name, sends a user attribute verification code for the specif
 
 ```sql
 SELECT
-AttributeName,
-DeliveryMedium,
-Destination
+attribute_name,
+delivery_medium,
+destination
 FROM aws.cognito_idp.user_attribute_verification_codes
 WHERE region = '{{ region }}' -- required
 ;

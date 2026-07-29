@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of test grid session artifacts for a TestGridSession.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Pagination token.</td>
 </tr>
@@ -125,7 +125,7 @@ Retrieves a list of artifacts created during the session.
 ```sql
 SELECT
 artifacts,
-nextToken
+next_token
 FROM aws.devicefarm.test_grid_session_artifacts
 WHERE region = '{{ region }}' -- required
 ;

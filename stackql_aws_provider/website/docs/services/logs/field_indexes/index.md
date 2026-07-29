@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="fieldIndexes" /></td>
+    <td><CopyableCode code="field_indexes" /></td>
     <td><code>array</code></td>
     <td>An array containing the field index information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. The token expires after 24 hours.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns a list of custom and default field indexes which are discovered in log d
 
 ```sql
 SELECT
-fieldIndexes,
-nextToken
+field_indexes,
+next_token
 FROM aws.logs.field_indexes
 WHERE region = '{{ region }}' -- required
 ;

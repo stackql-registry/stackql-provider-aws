@@ -50,207 +50,207 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalStorageVolumes" /></td>
+    <td><CopyableCode code="additional_storage_volumes" /></td>
     <td><code>string</code></td>
     <td>The additional storage volumes associated with the DB snapshot. RDS supports additional storage volumes for RDS for Oracle and RDS for SQL Server.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>Specifies the allocated storage size in gibibytes (GiB).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPeriod" /></td>
+    <td><CopyableCode code="backup_retention_period" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which automatic DB snapshots are retained.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBInstanceIdentifier" /></td>
+    <td><CopyableCode code="db_instance_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the DB instance identifier of the DB instance this DB snapshot was created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSnapshotArn" /></td>
+    <td><CopyableCode code="db_snapshot_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSnapshotIdentifier" /></td>
+    <td><CopyableCode code="db_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>Specifies the identifier for the DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBSystemId" /></td>
+    <td><CopyableCode code="db_system_id" /></td>
     <td><code>string</code></td>
     <td>The Oracle system identifier (SID), which is the name of the Oracle database instance that manages your database files. The Oracle SID is also the name of your CDB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DbiResourceId" /></td>
+    <td><CopyableCode code="dbi_resource_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the source DB instance, which can't be changed and which is unique to an Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DedicatedLogVolume" /></td>
+    <td><CopyableCode code="dedicated_log_volume" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB instance has a dedicated log volume (DLV) enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Encrypted" /></td>
+    <td><CopyableCode code="encrypted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the DB snapshot is encrypted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Specifies the version of the database engine.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IAMDatabaseAuthenticationEnabled" /></td>
+    <td><CopyableCode code="iam_database_authentication_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceCreateTime" /></td>
+    <td><CopyableCode code="instance_create_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the time in Coordinated Universal Time (UTC) when the DB instance, from which the snapshot was taken, was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Iops" /></td>
+    <td><CopyableCode code="iops" /></td>
     <td><code>integer</code></td>
     <td>Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>If Encrypted is true, the Amazon Web Services KMS key identifier for the encrypted DB snapshot. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseModel" /></td>
+    <td><CopyableCode code="license_model" /></td>
     <td><code>string</code></td>
     <td>License model information for the restored DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MasterUsername" /></td>
+    <td><CopyableCode code="master_username" /></td>
     <td><code>string</code></td>
     <td>Provides the master username for the DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MultiTenant" /></td>
+    <td><CopyableCode code="multi_tenant" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the snapshot is of a DB instance using the multi-tenant configuration (TRUE) or the single-tenant configuration (FALSE).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptionGroupName" /></td>
+    <td><CopyableCode code="option_group_name" /></td>
     <td><code>string</code></td>
     <td>Provides the option group name for the DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OriginalSnapshotCreateTime" /></td>
+    <td><CopyableCode code="original_snapshot_create_time" /></td>
     <td><code>string</code></td>
     <td>Specifies the time of the CreateDBSnapshot operation in Coordinated Universal Time (UTC). Doesn't change when the snapshot is copied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentProgress" /></td>
+    <td><CopyableCode code="percent_progress" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the estimated data that has been transferred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Port" /></td>
+    <td><CopyableCode code="port" /></td>
     <td><code>integer</code></td>
     <td>Specifies the port that the database engine was listening on at the time of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreferredBackupWindow" /></td>
+    <td><CopyableCode code="preferred_backup_window" /></td>
     <td><code>string</code></td>
     <td>The daily time range during which automated backups are created if automated backups are enabled, as determined by the BackupRetentionPeriod.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProcessorFeatures" /></td>
+    <td><CopyableCode code="processor_features" /></td>
     <td><code>string</code></td>
     <td>The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotAvailabilityZone" /></td>
+    <td><CopyableCode code="snapshot_availability_zone" /></td>
     <td><code>string</code></td>
     <td>Specifies the name of the Availability Zone where RDS stores the DB snapshot. This value is valid only for snapshots that RDS stores on a Dedicated Local Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCreateTime" /></td>
+    <td><CopyableCode code="snapshot_create_time" /></td>
     <td><code>string</code></td>
     <td>Specifies when the snapshot was taken in Coordinated Universal Time (UTC). Changes for the copy when the snapshot is copied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotDatabaseTime" /></td>
+    <td><CopyableCode code="snapshot_database_time" /></td>
     <td><code>string</code></td>
     <td>The timestamp of the most recent transaction applied to the database that you're backing up. Thus, if you restore a snapshot, SnapshotDatabaseTime is the most recent transaction in the restored DB instance. In contrast, originalSnapshotCreateTime specifies the system time that the snapshot completed. If you back up a read replica, you can determine the replica lag by comparing SnapshotDatabaseTime with originalSnapshotCreateTime. For example, if originalSnapshotCreateTime is two hours later than SnapshotDatabaseTime, then the replica lag is two hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotTarget" /></td>
+    <td><CopyableCode code="snapshot_target" /></td>
     <td><code>string</code></td>
     <td>Specifies where manual snapshots are stored: Dedicated Local Zones, Amazon Web Services Outposts or the Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotType" /></td>
+    <td><CopyableCode code="snapshot_type" /></td>
     <td><code>string</code></td>
     <td>Provides the type of the DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDBSnapshotIdentifier" /></td>
+    <td><CopyableCode code="source_db_snapshot_identifier" /></td>
     <td><code>string</code></td>
     <td>The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was copied from. It only has a value in the case of a cross-account or cross-Region copy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceRegion" /></td>
+    <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region that the DB snapshot was created in or copied from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies the status of this DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageEncryptionType" /></td>
+    <td><CopyableCode code="storage_encryption_type" /></td>
     <td><code>string</code></td>
     <td>The type of encryption used to protect data at rest in the DB snapshot. Possible values: none - The DB snapshot is not encrypted. sse-rds - The DB snapshot is encrypted using an Amazon Web Services owned KMS key. sse-kms - The DB snapshot is encrypted using a customer managed KMS key or Amazon Web Services managed KMS key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageThroughput" /></td>
+    <td><CopyableCode code="storage_throughput" /></td>
     <td><code>integer</code></td>
     <td>Specifies the storage throughput for the DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageType" /></td>
+    <td><CopyableCode code="storage_type" /></td>
     <td><code>string</code></td>
     <td>Specifies the storage type associated with DB snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>string</code></td>
     <td>A list of tags. For more information, see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS resources in the Amazon Aurora User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TdeCredentialArn" /></td>
+    <td><CopyableCode code="tde_credential_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN from the key store with which to associate the instance for TDE encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timezone" /></td>
+    <td><CopyableCode code="timezone" /></td>
     <td><code>string</code></td>
     <td>The time zone of the DB snapshot. In most cases, the Timezone element is empty. Timezone content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VPC ID associated with the DB snapshot.</td>
 </tr>
@@ -410,47 +410,47 @@ Returns information about DB snapshots. This API action supports pagination.
 
 ```sql
 SELECT
-AdditionalStorageVolumes,
-AllocatedStorage,
-AvailabilityZone,
-BackupRetentionPeriod,
-DBInstanceIdentifier,
-DBSnapshotArn,
-DBSnapshotIdentifier,
-DBSystemId,
-DbiResourceId,
-DedicatedLogVolume,
-Encrypted,
-Engine,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-MultiTenant,
-OptionGroupName,
-OriginalSnapshotCreateTime,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-ProcessorFeatures,
-SnapshotAvailabilityZone,
-SnapshotCreateTime,
-SnapshotDatabaseTime,
-SnapshotTarget,
-SnapshotType,
-SourceDBSnapshotIdentifier,
-SourceRegion,
-Status,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-TdeCredentialArn,
-Timezone,
-VpcId
+additional_storage_volumes,
+allocated_storage,
+availability_zone,
+backup_retention_period,
+db_instance_identifier,
+db_snapshot_arn,
+db_snapshot_identifier,
+db_system_id,
+dbi_resource_id,
+dedicated_log_volume,
+encrypted,
+engine,
+engine_version,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+kms_key_id,
+license_model,
+master_username,
+multi_tenant,
+option_group_name,
+original_snapshot_create_time,
+percent_progress,
+port,
+preferred_backup_window,
+processor_features,
+snapshot_availability_zone,
+snapshot_create_time,
+snapshot_database_time,
+snapshot_target,
+snapshot_type,
+source_db_snapshot_identifier,
+source_region,
+status,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+tde_credential_arn,
+timezone,
+vpc_id
 FROM aws.rds.db_snapshots
 WHERE region = '{{ region }}' -- required
 AND DBInstanceIdentifier = '{{ DBInstanceIdentifier }}'
@@ -494,47 +494,47 @@ SELECT
 '{{ region }}',
 '{{ Tags }}'
 RETURNING
-AdditionalStorageVolumes,
-AllocatedStorage,
-AvailabilityZone,
-BackupRetentionPeriod,
-DBInstanceIdentifier,
-DBSnapshotArn,
-DBSnapshotIdentifier,
-DBSystemId,
-DbiResourceId,
-DedicatedLogVolume,
-Encrypted,
-Engine,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-MultiTenant,
-OptionGroupName,
-OriginalSnapshotCreateTime,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-ProcessorFeatures,
-SnapshotAvailabilityZone,
-SnapshotCreateTime,
-SnapshotDatabaseTime,
-SnapshotTarget,
-SnapshotType,
-SourceDBSnapshotIdentifier,
-SourceRegion,
-Status,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-TdeCredentialArn,
-Timezone,
-VpcId
+additional_storage_volumes,
+allocated_storage,
+availability_zone,
+backup_retention_period,
+db_instance_identifier,
+db_snapshot_arn,
+db_snapshot_identifier,
+db_system_id,
+dbi_resource_id,
+dedicated_log_volume,
+encrypted,
+engine,
+engine_version,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+kms_key_id,
+license_model,
+master_username,
+multi_tenant,
+option_group_name,
+original_snapshot_create_time,
+percent_progress,
+port,
+preferred_backup_window,
+processor_features,
+snapshot_availability_zone,
+snapshot_create_time,
+snapshot_database_time,
+snapshot_target,
+snapshot_type,
+source_db_snapshot_identifier,
+source_region,
+status,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+tde_credential_arn,
+timezone,
+vpc_id
 ;
 ```
 </TabItem>
@@ -582,47 +582,47 @@ AND region = '{{ region }}' --required
 AND EngineVersion = '{{ EngineVersion}}'
 AND OptionGroupName = '{{ OptionGroupName}}'
 RETURNING
-AdditionalStorageVolumes,
-AllocatedStorage,
-AvailabilityZone,
-BackupRetentionPeriod,
-DBInstanceIdentifier,
-DBSnapshotArn,
-DBSnapshotIdentifier,
-DBSystemId,
-DbiResourceId,
-DedicatedLogVolume,
-Encrypted,
-Engine,
-EngineVersion,
-IAMDatabaseAuthenticationEnabled,
-InstanceCreateTime,
-Iops,
-KmsKeyId,
-LicenseModel,
-MasterUsername,
-MultiTenant,
-OptionGroupName,
-OriginalSnapshotCreateTime,
-PercentProgress,
-Port,
-PreferredBackupWindow,
-ProcessorFeatures,
-SnapshotAvailabilityZone,
-SnapshotCreateTime,
-SnapshotDatabaseTime,
-SnapshotTarget,
-SnapshotType,
-SourceDBSnapshotIdentifier,
-SourceRegion,
-Status,
-StorageEncryptionType,
-StorageThroughput,
-StorageType,
-TagList,
-TdeCredentialArn,
-Timezone,
-VpcId;
+additional_storage_volumes,
+allocated_storage,
+availability_zone,
+backup_retention_period,
+db_instance_identifier,
+db_snapshot_arn,
+db_snapshot_identifier,
+db_system_id,
+dbi_resource_id,
+dedicated_log_volume,
+encrypted,
+engine,
+engine_version,
+iam_database_authentication_enabled,
+instance_create_time,
+iops,
+kms_key_id,
+license_model,
+master_username,
+multi_tenant,
+option_group_name,
+original_snapshot_create_time,
+percent_progress,
+port,
+preferred_backup_window,
+processor_features,
+snapshot_availability_zone,
+snapshot_create_time,
+snapshot_database_time,
+snapshot_target,
+snapshot_type,
+source_db_snapshot_identifier,
+source_region,
+status,
+storage_encryption_type,
+storage_throughput,
+storage_type,
+tag_list,
+tde_credential_arn,
+timezone,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

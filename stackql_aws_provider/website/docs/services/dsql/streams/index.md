@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the retrieved stream. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:dsql:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;26&#125;/stream/&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the cluster. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the stream was created.</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the retrieved stream. (CREATING, ACTIVE, DELETING, DELETED, FAILED, IMPAIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>object</code></td>
     <td>Stream status reason with error code and timestamp (if applicable).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamIdentifier" /></td>
+    <td><CopyableCode code="stream_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the stream. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
@@ -96,7 +96,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of tags associated with the stream.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetDefinition" /></td>
+    <td><CopyableCode code="target_definition" /></td>
     <td><code>object</code></td>
     <td>Target definition for stream destination.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the stream. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:dsql:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;26&#125;/stream/&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clusterIdentifier" /></td>
+    <td><CopyableCode code="cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the cluster. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the stream was created.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the stream. (CREATING, ACTIVE, DELETING, DELETED, FAILED, IMPAIRED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamIdentifier" /></td>
+    <td><CopyableCode code="stream_identifier" /></td>
     <td><code>string</code></td>
     <td>The ID of the stream. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
 </tr>
@@ -252,15 +252,15 @@ Retrieves information about a stream.
 ```sql
 SELECT
 arn,
-clusterIdentifier,
-creationTime,
+cluster_identifier,
+creation_time,
 format_,
 ordering,
 status,
-statusReason,
-streamIdentifier,
+status_reason,
+stream_identifier,
 tags,
-targetDefinition
+target_definition
 FROM aws.dsql.streams
 WHERE cluster_identifier = '{{ cluster_identifier }}' -- required
 AND stream_identifier = '{{ stream_identifier }}' -- required
@@ -275,10 +275,10 @@ Retrieves information about a list of streams for a cluster.
 ```sql
 SELECT
 arn,
-clusterIdentifier,
-creationTime,
+cluster_identifier,
+creation_time,
 status,
-streamIdentifier
+stream_identifier
 FROM aws.dsql.streams
 WHERE cluster_identifier = '{{ cluster_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -323,12 +323,12 @@ SELECT
 '{{ region }}'
 RETURNING
 arn,
-clusterIdentifier,
-creationTime,
+cluster_identifier,
+creation_time,
 format_,
 ordering,
 status,
-streamIdentifier
+stream_identifier
 ;
 ```
 </TabItem>

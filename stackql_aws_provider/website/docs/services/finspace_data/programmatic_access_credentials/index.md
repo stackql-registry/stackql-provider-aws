@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the programmatic credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="durationInMinutes" /></td>
+    <td><CopyableCode code="duration_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>Returns the duration in which the credentials will remain valid.</td>
 </tr>
@@ -135,7 +135,7 @@ Request programmatic credentials to use with FinSpace SDK. For more information,
 ```sql
 SELECT
 credentials,
-durationInMinutes
+duration_in_minutes
 FROM aws.finspace_data.programmatic_access_credentials
 WHERE environmentId = '{{ environmentId }}' -- required
 AND region = '{{ region }}' -- required

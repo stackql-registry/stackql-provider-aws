@@ -51,122 +51,122 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlgorithmArn" /></td>
+    <td><CopyableCode code="algorithm_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the algorithm used for model training. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLAlgorithmArns" /></td>
+    <td><CopyableCode code="auto_ml_algorithm_arns" /></td>
     <td><code>array</code></td>
     <td>When PerformAutoML is specified, the ARN of the chosen algorithm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AutoMLOverrideStrategy" /></td>
+    <td><CopyableCode code="auto_ml_override_strategy" /></td>
     <td><code>string</code></td>
     <td>The LatencyOptimized AutoML override strategy is only available in private beta. Contact Amazon Web Services Support or your account manager to learn more about access privileges. The AutoML strategy used to train the predictor. Unless LatencyOptimized is specified, the AutoML strategy optimizes predictor accuracy. This parameter is only valid for predictors trained using AutoML. (LatencyOptimized, AccuracyOptimized)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the model training task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetImportJobArns" /></td>
+    <td><CopyableCode code="dataset_import_job_arns" /></td>
     <td><code>array</code></td>
     <td>An array of the ARNs of the dataset import jobs used to import training data for the predictor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionConfig" /></td>
+    <td><CopyableCode code="encryption_config" /></td>
     <td><code>object</code></td>
     <td>An Key Management Service (KMS) key and an Identity and Access Management (IAM) role that Amazon Forecast can assume to access the key. You can specify this optional object in the CreateDataset and CreatePredictor requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The estimated time remaining in minutes for the predictor training job to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EvaluationParameters" /></td>
+    <td><CopyableCode code="evaluation_parameters" /></td>
     <td><code>object</code></td>
     <td>Used to override the default evaluation parameters of the specified algorithm. Amazon Forecast evaluates a predictor by splitting a dataset into training data and testing data. The evaluation parameters define how to perform the split and the number of iterations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FeaturizationConfig" /></td>
+    <td><CopyableCode code="featurization_config" /></td>
     <td><code>object</code></td>
     <td>The featurization configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastHorizon" /></td>
+    <td><CopyableCode code="forecast_horizon" /></td>
     <td><code>integer</code></td>
     <td>The number of time-steps of the forecast. The forecast horizon is also called the prediction length.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ForecastTypes" /></td>
+    <td><CopyableCode code="forecast_types" /></td>
     <td><code>array</code></td>
     <td>The forecast types used during predictor training. Default value is &#91;"0.1","0.5","0.9"&#93;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HPOConfig" /></td>
+    <td><CopyableCode code="hpo_config" /></td>
     <td><code>object</code></td>
     <td>The hyperparameter override values for the algorithm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>Describes the dataset group that contains the data to use to train the predictor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsAutoPredictor" /></td>
+    <td><CopyableCode code="is_auto_predictor" /></td>
     <td><code>boolean</code></td>
     <td>Whether the predictor was created with CreateAutoPredictor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationMetric" /></td>
+    <td><CopyableCode code="optimization_metric" /></td>
     <td><code>string</code></td>
     <td>The accuracy metric used to optimize the predictor. (WAPE, RMSE, AverageWeightedQuantileLoss, MASE, MAPE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformAutoML" /></td>
+    <td><CopyableCode code="perform_auto_ml" /></td>
     <td><code>boolean</code></td>
     <td>Whether the predictor is set to perform AutoML.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PerformHPO" /></td>
+    <td><CopyableCode code="perform_hpo" /></td>
     <td><code>boolean</code></td>
     <td>Whether the predictor is set to perform hyperparameter optimization (HPO).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorArn" /></td>
+    <td><CopyableCode code="predictor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the predictor. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorExecutionDetails" /></td>
+    <td><CopyableCode code="predictor_execution_details" /></td>
     <td><code>object</code></td>
     <td>Details on the the status and results of the backtests performed to evaluate the accuracy of the predictor. You specify the number of backtests to perform when you call the operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorName" /></td>
+    <td><CopyableCode code="predictor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the predictor. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the predictor. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED CREATE_STOPPING, CREATE_STOPPED The Status of the predictor must be ACTIVE before you can use the predictor to create a forecast.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingParameters" /></td>
+    <td><CopyableCode code="training_parameters" /></td>
     <td><code>object</code></td>
     <td>The default training parameters or overrides selected during model training. When running AutoML or choosing HPO with CNN-QR or DeepAR+, the optimized values for the chosen hyperparameters are returned. For more information, see aws-forecast-choosing-recipes.</td>
 </tr>
@@ -185,47 +185,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the model training task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetGroupArn" /></td>
+    <td><CopyableCode code="dataset_group_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset group that contains the data used to train the predictor. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsAutoPredictor" /></td>
+    <td><CopyableCode code="is_auto_predictor" /></td>
     <td><code>boolean</code></td>
     <td>Whether AutoPredictor was used to create the predictor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorArn" /></td>
+    <td><CopyableCode code="predictor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the predictor. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorName" /></td>
+    <td><CopyableCode code="predictor_name" /></td>
     <td><code>string</code></td>
     <td>The name of the predictor. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReferencePredictorSummary" /></td>
+    <td><CopyableCode code="reference_predictor_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the reference predictor used if the predictor was retrained or upgraded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the predictor. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED CREATE_STOPPING, CREATE_STOPPED The Status of the predictor must be ACTIVE before you can use the predictor to create a forecast.</td>
 </tr>
@@ -316,30 +316,30 @@ This operation is only valid for legacy predictors created with CreatePredictor.
 
 ```sql
 SELECT
-AlgorithmArn,
-AutoMLAlgorithmArns,
-AutoMLOverrideStrategy,
-CreationTime,
-DatasetImportJobArns,
-EncryptionConfig,
-EstimatedTimeRemainingInMinutes,
-EvaluationParameters,
-FeaturizationConfig,
-ForecastHorizon,
-ForecastTypes,
-HPOConfig,
-InputDataConfig,
-IsAutoPredictor,
-LastModificationTime,
-Message,
-OptimizationMetric,
-PerformAutoML,
-PerformHPO,
-PredictorArn,
-PredictorExecutionDetails,
-PredictorName,
-Status,
-TrainingParameters
+algorithm_arn,
+auto_ml_algorithm_arns,
+auto_ml_override_strategy,
+creation_time,
+dataset_import_job_arns,
+encryption_config,
+estimated_time_remaining_in_minutes,
+evaluation_parameters,
+featurization_config,
+forecast_horizon,
+forecast_types,
+hpo_config,
+input_data_config,
+is_auto_predictor,
+last_modification_time,
+message,
+optimization_metric,
+perform_auto_ml,
+perform_hpo,
+predictor_arn,
+predictor_execution_details,
+predictor_name,
+status,
+training_parameters
 FROM aws.forecast.predictors
 WHERE region = '{{ region }}' -- required
 ;
@@ -351,15 +351,15 @@ Returns a list of predictors created using the CreateAutoPredictor or CreatePred
 
 ```sql
 SELECT
-CreationTime,
-DatasetGroupArn,
-IsAutoPredictor,
-LastModificationTime,
-Message,
-PredictorArn,
-PredictorName,
-ReferencePredictorSummary,
-Status
+creation_time,
+dataset_group_arn,
+is_auto_predictor,
+last_modification_time,
+message,
+predictor_arn,
+predictor_name,
+reference_predictor_summary,
+status
 FROM aws.forecast.predictors
 WHERE region = '{{ region }}' -- required
 ;
@@ -418,7 +418,7 @@ SELECT
 '{{ OptimizationMetric }}',
 '{{ region }}'
 RETURNING
-PredictorArn
+predictor_arn
 ;
 ```
 </TabItem>

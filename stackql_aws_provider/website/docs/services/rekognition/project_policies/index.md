@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix datetime for the creation of the project policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix datetime for when the project policy was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The JSON document for the project policy. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project policy. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PolicyRevisionId" /></td>
+    <td><CopyableCode code="policy_revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision ID of the project policy. (pattern: &lt;code&gt;&#91;0-9A-Fa-f&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectArn" /></td>
+    <td><CopyableCode code="project_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the project to which the project policy is attached. (pattern: &lt;code&gt;(^arn:&#91;a-z\d-&#93;+:rekognition:&#91;a-z\d-&#93;+:\d&#123;12&#125;:project\/&#91;a-zA-Z0-9_.\-&#93;&#123;1,255&#125;\/&#91;0-9&#93;+$)&lt;/code&gt;)</td>
 </tr>
@@ -158,12 +158,12 @@ This operation applies only to Amazon Rekognition Custom Labels. Gets a list of 
 
 ```sql
 SELECT
-CreationTimestamp,
-LastUpdatedTimestamp,
-PolicyDocument,
-PolicyName,
-PolicyRevisionId,
-ProjectArn
+creation_timestamp,
+last_updated_timestamp,
+policy_document,
+policy_name,
+policy_revision_id,
+project_arn
 FROM aws.rekognition.project_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,7 +197,7 @@ AND ProjectArn = '{{ ProjectArn }}' --required
 AND PolicyName = '{{ PolicyName }}' --required
 AND PolicyDocument = '{{ PolicyDocument }}' --required
 RETURNING
-PolicyRevisionId;
+policy_revision_id;
 ```
 </TabItem>
 </Tabs>

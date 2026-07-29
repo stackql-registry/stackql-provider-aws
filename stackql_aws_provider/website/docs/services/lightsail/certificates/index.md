@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>An object that describes certificates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextPageToken" /></td>
+    <td><CopyableCode code="next_page_token" /></td>
     <td><code>string</code></td>
     <td>If NextPageToken is returned there are more results available. The value of NextPageToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged.</td>
 </tr>
@@ -139,7 +139,7 @@ Returns information about one or more Amazon Lightsail SSL/TLS certificates. To 
 ```sql
 SELECT
 certificates,
-nextPageToken
+next_page_token
 FROM aws.lightsail.certificates
 WHERE region = '{{ region }}' -- required
 ;

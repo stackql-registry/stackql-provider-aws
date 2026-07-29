@@ -51,92 +51,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppendSourcePath" /></td>
+    <td><CopyableCode code="append_source_path" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, this option appends the source path to the service URL endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application that the route belongs to. (pattern: &lt;code&gt;^app-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the route. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccountId" /></td>
+    <td><CopyableCode code="created_by_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the route creator. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the route is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the route resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeChildPaths" /></td>
+    <td><CopyableCode code="include_child_paths" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether to match all subpaths of the given source path. If this value is false, requests must match the source path exactly before they are forwarded to this route's service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the route was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Methods" /></td>
+    <td><CopyableCode code="methods" /></td>
     <td><code>array</code></td>
     <td>A list of HTTP methods to match. An empty list matches all values. If a method is present, only HTTP requests using that method are forwarded to this route’s service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the route owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PathResourceToId" /></td>
+    <td><CopyableCode code="path_resource_to_id" /></td>
     <td><code>object</code></td>
     <td>A mapping of Amazon API Gateway path resources to resource IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteId" /></td>
+    <td><CopyableCode code="route_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the route. DEFAULT: All traffic that does not match another route is forwarded to the default route. Applications must have a default route before any other routes can be created. URI_PATH: A route that is based on a URI path. (pattern: &lt;code&gt;^rte-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteType" /></td>
+    <td><CopyableCode code="route_type" /></td>
     <td><code>string</code></td>
     <td>The type of route. (DEFAULT, URI_PATH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the service. (pattern: &lt;code&gt;^svc-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourcePath" /></td>
+    <td><CopyableCode code="source_path" /></td>
     <td><code>string</code></td>
     <td>This is the path that Refactor Spaces uses to match traffic. Paths must start with / and are relative to the base of the application. To use path parameters in the source path, add a variable in curly braces. For example, the resource path &#123;user&#125; represents a path parameter called 'user'. (pattern: &lt;code&gt;^(/(&#91;a-zA-Z0-9._:-&#93;+|\&#123;&#91;a-zA-Z0-9._:-&#93;+\&#125;))+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the route. (CREATING, ACTIVE, DELETING, FAILED, UPDATING, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the route. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key-value pair.</td>
 </tr>
@@ -155,92 +155,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppendSourcePath" /></td>
+    <td><CopyableCode code="append_source_path" /></td>
     <td><code>boolean</code></td>
     <td>If set to true, this option appends the source path to the service URL endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the application. (pattern: &lt;code&gt;^app-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the route. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedByAccountId" /></td>
+    <td><CopyableCode code="created_by_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the route creator. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the route is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the route resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IncludeChildPaths" /></td>
+    <td><CopyableCode code="include_child_paths" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether to match all subpaths of the given source path. If this value is false, requests must match the source path exactly before they are forwarded to this route's service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the route was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Methods" /></td>
+    <td><CopyableCode code="methods" /></td>
     <td><code>array</code></td>
     <td>A list of HTTP methods to match. An empty list matches all values. If a method is present, only HTTP requests using that method are forwarded to this route’s service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the route owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PathResourceToId" /></td>
+    <td><CopyableCode code="path_resource_to_id" /></td>
     <td><code>object</code></td>
     <td>A mapping of Amazon API Gateway path resources to resource IDs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteId" /></td>
+    <td><CopyableCode code="route_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the route. (pattern: &lt;code&gt;^rte-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteType" /></td>
+    <td><CopyableCode code="route_type" /></td>
     <td><code>string</code></td>
     <td>The route type of the route. (DEFAULT, URI_PATH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the service. (pattern: &lt;code&gt;^svc-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourcePath" /></td>
+    <td><CopyableCode code="source_path" /></td>
     <td><code>string</code></td>
     <td>This is the path that Refactor Spaces uses to match traffic. Paths must start with / and are relative to the base of the application. To use path parameters in the source path, add a variable in curly braces. For example, the resource path &#123;user&#125; represents a path parameter called 'user'. (pattern: &lt;code&gt;^(/(&#91;a-zA-Z0-9._:-&#93;+|\&#123;&#91;a-zA-Z0-9._:-&#93;+\&#125;))+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the route. (CREATING, ACTIVE, DELETING, FAILED, UPDATING, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the route.</td>
 </tr>
@@ -363,24 +363,24 @@ Gets an Amazon Web Services Migration Hub Refactor Spaces route.
 
 ```sql
 SELECT
-AppendSourcePath,
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-EnvironmentId,
-Error,
-IncludeChildPaths,
-LastUpdatedTime,
-Methods,
-OwnerAccountId,
-PathResourceToId,
-RouteId,
-RouteType,
-ServiceId,
-SourcePath,
-State,
-Tags
+append_source_path,
+application_id,
+arn,
+created_by_account_id,
+created_time,
+environment_id,
+error,
+include_child_paths,
+last_updated_time,
+methods,
+owner_account_id,
+path_resource_to_id,
+route_id,
+route_type,
+service_id,
+source_path,
+state,
+tags
 FROM aws.migration_hub_refactor_spaces.routes
 WHERE application_identifier = '{{ application_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required
@@ -395,24 +395,24 @@ Lists all the Amazon Web Services Migration Hub Refactor Spaces routes within an
 
 ```sql
 SELECT
-AppendSourcePath,
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-EnvironmentId,
-Error,
-IncludeChildPaths,
-LastUpdatedTime,
-Methods,
-OwnerAccountId,
-PathResourceToId,
-RouteId,
-RouteType,
-ServiceId,
-SourcePath,
-State,
-Tags
+append_source_path,
+application_id,
+arn,
+created_by_account_id,
+created_time,
+environment_id,
+error,
+include_child_paths,
+last_updated_time,
+methods,
+owner_account_id,
+path_resource_to_id,
+route_id,
+route_type,
+service_id,
+source_path,
+state,
+tags
 FROM aws.migration_hub_refactor_spaces.routes
 WHERE application_identifier = '{{ application_identifier }}' -- required
 AND environment_identifier = '{{ environment_identifier }}' -- required
@@ -461,18 +461,18 @@ SELECT
 '{{ environment_identifier }}',
 '{{ region }}'
 RETURNING
-ApplicationId,
-Arn,
-CreatedByAccountId,
-CreatedTime,
-LastUpdatedTime,
-OwnerAccountId,
-RouteId,
-RouteType,
-ServiceId,
-State,
-Tags,
-UriPathRoute
+application_id,
+arn,
+created_by_account_id,
+created_time,
+last_updated_time,
+owner_account_id,
+route_id,
+route_type,
+service_id,
+state,
+tags,
+uri_path_route
 ;
 ```
 </TabItem>
@@ -545,12 +545,12 @@ AND route_identifier = '{{ route_identifier }}' --required
 AND region = '{{ region }}' --required
 AND ActivationState = '{{ ActivationState }}' --required
 RETURNING
-ApplicationId,
-Arn,
-LastUpdatedTime,
-RouteId,
-ServiceId,
-State;
+application_id,
+arn,
+last_updated_time,
+route_id,
+service_id,
+state;
 ```
 </TabItem>
 </Tabs>

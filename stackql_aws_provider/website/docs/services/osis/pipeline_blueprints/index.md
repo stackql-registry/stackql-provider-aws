@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blueprint" /></td>
+    <td><CopyableCode code="blueprint" /></td>
     <td><code>object</code></td>
     <td>The requested blueprint in YAML format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format of the blueprint.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Blueprints" /></td>
+    <td><CopyableCode code="blueprints" /></td>
     <td><code>array</code></td>
     <td>A list of available blueprints for Data Prepper.</td>
 </tr>
@@ -162,8 +162,8 @@ Retrieves information about a specific blueprint for OpenSearch Ingestion. Bluep
 
 ```sql
 SELECT
-Blueprint,
-Format
+blueprint,
+format
 FROM aws.osis.pipeline_blueprints
 WHERE blueprint_name = '{{ blueprint_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -177,7 +177,7 @@ Retrieves a list of all available blueprints for Data Prepper. For more informat
 
 ```sql
 SELECT
-Blueprints
+blueprints
 FROM aws.osis.pipeline_blueprints
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The capabilities enabled for the integrated resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="integrationId" /></td>
+    <td><CopyableCode code="integration_id" /></td>
     <td><code>string</code></td>
     <td>Unique identifier for an integration.</td>
 </tr>
@@ -137,7 +137,7 @@ Lists the integrated resources for an agent space, optionally filtered by integr
 ```sql
 SELECT
 capabilities,
-integrationId,
+integration_id,
 resource
 FROM aws.securityagent.integrated_resources
 WHERE region = '{{ region }}' -- required

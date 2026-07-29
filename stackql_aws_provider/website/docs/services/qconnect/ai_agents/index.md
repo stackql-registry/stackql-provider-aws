@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aiAgent" /></td>
+    <td><CopyableCode code="ai_agent" /></td>
     <td><code>object</code></td>
     <td>The data of the AI Agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the AI Agent version (returned if an AI Agent version was specified via use of a qualifier for the aiAgentId on the request).</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the AI Agent. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aiAgentArn" /></td>
+    <td><CopyableCode code="ai_agent_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AI agent. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aiAgentId" /></td>
+    <td><CopyableCode code="ai_agent_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the AI Agent. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q in Connect assistant. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q in Connect assistant. Can be either the ID or the ARN. URLs cannot contain the ARN. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,7 +110,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the AI Agent. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedTime" /></td>
+    <td><CopyableCode code="modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the AI Agent was last modified.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of the AI Agent. (MANUAL_SEARCH, ANSWER_RECOMMENDATION, SELF_SERVICE, EMAIL_RESPONSE, EMAIL_OVERVIEW, EMAIL_GENERATIVE_ANSWER, ORCHESTRATION, NOTE_TAKING, CASE_SUMMARIZATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibilityStatus" /></td>
+    <td><CopyableCode code="visibility_status" /></td>
     <td><code>string</code></td>
     <td>The visibility status of the AI Agent. (SAVED, PUBLISHED)</td>
 </tr>
@@ -282,8 +282,8 @@ Gets an Amazon Q in Connect AI Agent.
 
 ```sql
 SELECT
-aiAgent,
-versionNumber
+ai_agent,
+version_number
 FROM aws.qconnect.ai_agents
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND ai_agent_id = '{{ ai_agent_id }}' -- required
@@ -298,18 +298,18 @@ Lists AI Agents.
 ```sql
 SELECT
 name,
-aiAgentArn,
-aiAgentId,
-assistantArn,
-assistantId,
+ai_agent_arn,
+ai_agent_id,
+assistant_arn,
+assistant_id,
 configuration,
 description,
-modifiedTime,
+modified_time,
 origin,
 status,
 tags,
 type_,
-visibilityStatus
+visibility_status
 FROM aws.qconnect.ai_agents
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -358,7 +358,7 @@ SELECT
 '{{ assistant_id }}',
 '{{ region }}'
 RETURNING
-aiAgent
+ai_agent
 ;
 ```
 </TabItem>
@@ -523,7 +523,7 @@ AND ai_agent_id = '{{ ai_agent_id }}' --required
 AND region = '{{ region }}' --required
 AND visibilityStatus = '{{ visibilityStatus }}' --required
 RETURNING
-aiAgent;
+ai_agent;
 ```
 </TabItem>
 <TabItem value="update_assistant_ai_agent">

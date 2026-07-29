@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackfillFrom" /></td>
+    <td><CopyableCode code="backfill_from" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackfillStatus" /></td>
+    <td><CopyableCode code="backfill_status" /></td>
     <td><code>string</code></td>
     <td>The status of the cost allocation tag backfill request. (SUCCEEDED, PROCESSING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CompletedAt" /></td>
+    <td><CopyableCode code="completed_at" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestedAt" /></td>
+    <td><CopyableCode code="requested_at" /></td>
     <td><code>string</code></td>
     <td>The period of time that you want the usage and costs for. (pattern: &lt;code&gt;^\d&#123;4&#125;-\d\d-\d\dT\d\d:\d\d:\d\d((&#91;+-&#93;\d\d:\d\d)|Z)$&lt;/code&gt;)</td>
 </tr>
@@ -139,11 +139,11 @@ Retrieves a list of your historical cost allocation tag backfill requests.
 
 ```sql
 SELECT
-BackfillFrom,
-BackfillStatus,
-CompletedAt,
-LastUpdatedAt,
-RequestedAt
+backfill_from,
+backfill_status,
+completed_at,
+last_updated_at,
+requested_at
 FROM aws.ce.cost_allocation_tag_backfill_histories
 WHERE region = '{{ region }}' -- required
 ;

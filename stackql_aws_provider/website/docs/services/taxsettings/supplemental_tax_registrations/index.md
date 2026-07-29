@@ -55,22 +55,22 @@ The following fields are returned by `SELECT` queries:
     <td>The details of the address associated with the TRN information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorityId" /></td>
+    <td><CopyableCode code="authority_id" /></td>
     <td><code>string</code></td>
     <td>Unique authority ID for the supplemental TRN. (pattern: &lt;code&gt;^&#91;\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="legalName" /></td>
+    <td><CopyableCode code="legal_name" /></td>
     <td><code>string</code></td>
     <td>The legal name associated with your TRN registration. (pattern: &lt;code&gt;^(?!\s*$)&#91;\s\S&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationId" /></td>
+    <td><CopyableCode code="registration_id" /></td>
     <td><code>string</code></td>
     <td>The supplemental TRN unique identifier. (pattern: &lt;code&gt;^(?!\s*$)&#91;\s\S&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="registrationType" /></td>
+    <td><CopyableCode code="registration_type" /></td>
     <td><code>string</code></td>
     <td>Type of supplemental TRN. Currently, this can only be VAT. (VAT)</td>
 </tr>
@@ -159,10 +159,10 @@ Retrieves supplemental tax registrations for a single account.
 ```sql
 SELECT
 address,
-authorityId,
-legalName,
-registrationId,
-registrationType,
+authority_id,
+legal_name,
+registration_id,
+registration_type,
 status
 FROM aws.taxsettings.supplemental_tax_registrations
 WHERE region = '{{ region }}' -- required
@@ -192,7 +192,7 @@ WHERE
 region = '{{ region }}' --required
 AND taxRegistrationEntry = '{{ taxRegistrationEntry }}' --required
 RETURNING
-authorityId,
+authority_id,
 status;
 ```
 </TabItem>

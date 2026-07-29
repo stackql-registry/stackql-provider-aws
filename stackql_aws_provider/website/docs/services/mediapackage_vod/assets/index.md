@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time the Asset was initially submitted for Ingest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EgressEndpoints" /></td>
+    <td><CopyableCode code="egress_endpoints" /></td>
     <td><code>array</code></td>
     <td>The list of egress endpoints available for the Asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackagingGroupId" /></td>
+    <td><CopyableCode code="packaging_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the PackagingGroup for the Asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID to include in SPEKE key requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the source object in S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceRoleArn" /></td>
+    <td><CopyableCode code="source_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role_arn used to access the source S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -110,42 +110,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string</code></td>
     <td>The time the Asset was initially submitted for Ingest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the Asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackagingGroupId" /></td>
+    <td><CopyableCode code="packaging_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the PackagingGroup for the Asset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The resource ID to include in SPEKE key requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceArn" /></td>
+    <td><CopyableCode code="source_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the source object in S3.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceRoleArn" /></td>
+    <td><CopyableCode code="source_role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN used to access the source S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
@@ -256,15 +256,15 @@ Returns a description of a MediaPackage VOD Asset resource.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-EgressEndpoints,
-Id,
-PackagingGroupId,
-ResourceId,
-SourceArn,
-SourceRoleArn,
-Tags
+arn,
+created_at,
+egress_endpoints,
+id,
+packaging_group_id,
+resource_id,
+source_arn,
+source_role_arn,
+tags
 FROM aws.mediapackage_vod.assets
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,14 +277,14 @@ Returns a collection of MediaPackage VOD Asset resources.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Id,
-PackagingGroupId,
-ResourceId,
-SourceArn,
-SourceRoleArn,
-Tags
+arn,
+created_at,
+id,
+packaging_group_id,
+resource_id,
+source_arn,
+source_role_arn,
+tags
 FROM aws.mediapackage_vod.assets
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -328,15 +328,15 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedAt,
-EgressEndpoints,
-Id,
-PackagingGroupId,
-ResourceId,
-SourceArn,
-SourceRoleArn,
-Tags
+arn,
+created_at,
+egress_endpoints,
+id,
+packaging_group_id,
+resource_id,
+source_arn,
+source_role_arn,
+tags
 ;
 ```
 </TabItem>

@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DurableExecutionArn" /></td>
+    <td><CopyableCode code="durable_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the durable execution. (pattern: &lt;code&gt;arn:(&#91;a-zA-Z0-9-&#93;+):lambda:(&#91;a-zA-Z0-9-&#93;+):(\d&#123;12&#125;):function:(&#91;a-zA-Z0-9_-&#93;+):(\$LATEST(?:\.PUBLISHED)?|&#91;0-9&#93;+)/durable-execution/(&#91;a-zA-Z0-9_-&#93;+)/(&#91;a-zA-Z0-9_-&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DurableExecutionName" /></td>
+    <td><CopyableCode code="durable_execution_name" /></td>
     <td><code>string</code></td>
     <td>The name of the durable execution. This is either the name you provided when invoking the function, or a system-generated unique identifier if no name was provided. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the durable execution ended, in Unix timestamp format. This field is only present if the execution has completed (status is SUCCEEDED, FAILED, TIMED_OUT, or STOPPED).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Error information if the durable execution failed. This field is only present when the execution status is FAILED, TIMED_OUT, or STOPPED. The combined size of all error fields is limited to 256 KB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FunctionArn" /></td>
+    <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Lambda function that was invoked to start this durable execution. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputPayload" /></td>
+    <td><CopyableCode code="input_payload" /></td>
     <td><code>string</code></td>
     <td>The JSON input payload that was provided when the durable execution was started. For asynchronous invocations, this is limited to 256 KB. For synchronous invocations, this can be up to 6 MB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Result" /></td>
+    <td><CopyableCode code="result" /></td>
     <td><code>string</code></td>
     <td>The JSON result returned by the durable execution if it completed successfully. This field is only present when the execution status is SUCCEEDED. The result is limited to 256 KB.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the durable execution started, in Unix timestamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the durable execution. Valid values are RUNNING, SUCCEEDED, FAILED, TIMED_OUT, and STOPPED. (RUNNING, SUCCEEDED, FAILED, TIMED_OUT, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TraceHeader" /></td>
+    <td><CopyableCode code="trace_header" /></td>
     <td><code>object</code></td>
     <td>The trace headers associated with the durable execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of the Lambda function that was invoked for this durable execution. This ensures that all replays during the execution use the same function version. (pattern: &lt;code&gt;(\$LATEST(\.PUBLISHED)?|&#91;0-9&#93;+)&lt;/code&gt;)</td>
 </tr>
@@ -214,17 +214,17 @@ Retrieves detailed information about a specific durable execution, including its
 
 ```sql
 SELECT
-DurableExecutionArn,
-DurableExecutionName,
-EndTimestamp,
-Error,
-FunctionArn,
-InputPayload,
-Result,
-StartTimestamp,
-Status,
-TraceHeader,
-Version
+durable_execution_arn,
+durable_execution_name,
+end_timestamp,
+error,
+function_arn,
+input_payload,
+result,
+start_timestamp,
+status,
+trace_header,
+version
 FROM aws.lambda.durable_executions
 WHERE durable_execution_arn = '{{ durable_execution_arn }}' -- required
 AND region = '{{ region }}' -- required

@@ -53,3 +53,9 @@ tests/nosetests.xml
 
 # vendored shared docusaurus config (cloned at build time, embedded git repo)
 .shared-config/
+
+# node dependencies (any level)
+node_modules/
+
+# Local Netlify folder
+.netlify

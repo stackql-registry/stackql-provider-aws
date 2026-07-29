@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Payload containing the property graph summary response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>integer</code></td>
     <td>The HTTP return code of the request. If the request succeeded, the code is 200.</td>
 </tr>
@@ -130,7 +130,7 @@ Gets a graph summary for a property graph. When invoking this operation in a Nep
 ```sql
 SELECT
 payload,
-statusCode
+status_code
 FROM aws.neptunedata.propertygraph_summaries
 WHERE region = '{{ region }}' -- required
 AND mode = '{{ mode }}'

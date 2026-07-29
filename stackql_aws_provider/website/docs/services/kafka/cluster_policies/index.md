@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CurrentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The version of cluster policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The cluster policy.</td>
 </tr>
@@ -143,8 +143,8 @@ Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the re
 
 ```sql
 SELECT
-CurrentVersion,
-Policy
+current_version,
+policy
 FROM aws.kafka.cluster_policies
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -175,7 +175,7 @@ WHERE
 cluster_arn = '{{ cluster_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CurrentVersion;
+current_version;
 ```
 </TabItem>
 </Tabs>

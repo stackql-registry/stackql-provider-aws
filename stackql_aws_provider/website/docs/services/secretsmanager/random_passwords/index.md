@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="RandomPassword" /></td>
+    <td><CopyableCode code="random_password" /></td>
     <td><code>string</code></td>
     <td>A string with the password.</td>
 </tr>
@@ -119,7 +119,7 @@ Generates a random password. We recommend that you specify the maximum length an
 
 ```sql
 SELECT
-RandomPassword
+random_password
 FROM aws.secretsmanager.random_passwords
 WHERE region = '{{ region }}' -- required
 ;

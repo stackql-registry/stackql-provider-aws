@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The display name for a public registry. This appears on the Amazon ECR Public Gallery. Only accounts that have the verified account badge can have a registry display name.</td>
 </tr>
@@ -126,7 +126,7 @@ Retrieves catalog metadata for a public registry.
 
 ```sql
 SELECT
-displayName
+display_name
 FROM aws.ecr_public.registry_catalog_datas
 WHERE region = '{{ region }}' -- required
 ;
@@ -154,7 +154,7 @@ displayName = '{{ displayName }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-registryCatalogData;
+registry_catalog_data;
 ```
 </TabItem>
 </Tabs>

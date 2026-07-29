@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccepterTgwInfo" /></td>
+    <td><CopyableCode code="accepter_tgw_info" /></td>
     <td><code>string</code></td>
     <td>Information about the accepter transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccepterTransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="accepter_transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the accepter transit gateway attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The time the transit gateway peering attachment was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Options" /></td>
+    <td><CopyableCode code="options" /></td>
     <td><code>string</code></td>
     <td>Details about the transit gateway peering attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequesterTgwInfo" /></td>
+    <td><CopyableCode code="requester_tgw_info" /></td>
     <td><code>string</code></td>
     <td>Information about the requester transit gateway.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the transit gateway peering attachment. Note that the initiating state has been deprecated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the transit gateway peering attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the transit gateway peering attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><CopyableCode code="transit_gateway_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the transit gateway peering attachment.</td>
 </tr>
@@ -233,15 +233,15 @@ Describes your transit gateway peering attachments.
 
 ```sql
 SELECT
-AccepterTgwInfo,
-AccepterTransitGatewayAttachmentId,
-CreationTime,
-Options,
-RequesterTgwInfo,
-State,
-Status,
-Tags,
-TransitGatewayAttachmentId
+accepter_tgw_info,
+accepter_transit_gateway_attachment_id,
+creation_time,
+options,
+requester_tgw_info,
+state,
+status,
+tags,
+transit_gateway_attachment_id
 FROM aws.ec2.transit_gateway_peering_attachments
 WHERE region = '{{ region }}' -- required
 AND TransitGatewayAttachmentIds = '{{ TransitGatewayAttachmentIds }}'
@@ -289,15 +289,15 @@ SELECT
 '{{ TagSpecification }}',
 '{{ DryRun }}'
 RETURNING
-AccepterTgwInfo,
-AccepterTransitGatewayAttachmentId,
-CreationTime,
-Options,
-RequesterTgwInfo,
-State,
-Status,
-Tags,
-TransitGatewayAttachmentId
+accepter_tgw_info,
+accepter_transit_gateway_attachment_id,
+creation_time,
+options,
+requester_tgw_info,
+state,
+status,
+tags,
+transit_gateway_attachment_id
 ;
 ```
 </TabItem>

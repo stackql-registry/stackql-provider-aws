@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Marker" /></td>
+    <td><CopyableCode code="marker" /></td>
     <td><code>string</code></td>
     <td>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationConfigs" /></td>
+    <td><CopyableCode code="replication_configs" /></td>
     <td><code>array</code></td>
     <td>Returned configuration parameters that describe each provisioned DMS Serverless replication.</td>
 </tr>
@@ -166,8 +166,8 @@ Returns one or more existing DMS Serverless replication configurations as a list
 
 ```sql
 SELECT
-Marker,
-ReplicationConfigs
+marker,
+replication_configs
 FROM aws.dms.replication_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -216,7 +216,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ReplicationConfig
+replication_config
 ;
 ```
 </TabItem>
@@ -316,7 +316,7 @@ WHERE
 region = '{{ region }}' --required
 AND ReplicationConfigArn = '{{ ReplicationConfigArn }}' --required
 RETURNING
-ReplicationConfig;
+replication_config;
 ```
 </TabItem>
 </Tabs>

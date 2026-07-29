@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BillingViewArn" /></td>
+    <td><CopyableCode code="billing_view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies a specific billing view. The ARN is used to specify which particular billing view you want to interact with or retrieve information from when making API calls related to Amazon Web Services Billing and Cost Management features. The BillingViewArn can be retrieved by calling the ListBillingViews API. (pattern: &lt;code&gt;^arn:aws&#91;a-z-&#93;*:(billing)::&#91;0-9&#93;&#123;12&#125;:billingview/&#91;a-zA-Z0-9/:_\+=\.\-@&#93;&#123;0,75&#125;&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BudgetName" /></td>
+    <td><CopyableCode code="budget_name" /></td>
     <td><code>string</code></td>
     <td>A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BudgetType" /></td>
+    <td><CopyableCode code="budget_type" /></td>
     <td><code>string</code></td>
     <td>The type of a budget. It must be one of the following types: COST, USAGE, RI_UTILIZATION, RI_COVERAGE, SAVINGS_PLANS_UTILIZATION, or SAVINGS_PLANS_COVERAGE. (USAGE, COST, RI_UTILIZATION, RI_COVERAGE, SAVINGS_PLANS_UTILIZATION, SAVINGS_PLANS_COVERAGE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BudgetedAndActualAmountsList" /></td>
+    <td><CopyableCode code="budgeted_and_actual_amounts_list" /></td>
     <td><code>array</code></td>
     <td>A list of amounts of cost or usage that you created budgets for, which are compared to your actual costs or usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CostFilters" /></td>
+    <td><CopyableCode code="cost_filters" /></td>
     <td><code>object</code></td>
     <td>The history of the cost filters for a budget during the specified time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CostTypes" /></td>
+    <td><CopyableCode code="cost_types" /></td>
     <td><code>object</code></td>
     <td>The history of the cost types for a budget during the specified time period.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilterExpression" /></td>
+    <td><CopyableCode code="filter_expression" /></td>
     <td><code>object</code></td>
     <td>Use Expression to filter in various Budgets APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metrics" /></td>
+    <td><CopyableCode code="metrics" /></td>
     <td><code>array</code></td>
     <td>The definition for how the budget data is aggregated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeUnit" /></td>
+    <td><CopyableCode code="time_unit" /></td>
     <td><code>string</code></td>
     <td>The time unit of the budget, such as MONTHLY or QUARTERLY. (DAILY, MONTHLY, QUARTERLY, ANNUALLY, CUSTOM)</td>
 </tr>
@@ -159,15 +159,15 @@ Describes the history for DAILY, MONTHLY, and QUARTERLY budgets. Budget history 
 
 ```sql
 SELECT
-BillingViewArn,
-BudgetName,
-BudgetType,
-BudgetedAndActualAmountsList,
-CostFilters,
-CostTypes,
-FilterExpression,
-Metrics,
-TimeUnit
+billing_view_arn,
+budget_name,
+budget_type,
+budgeted_and_actual_amounts_list,
+cost_filters,
+cost_types,
+filter_expression,
+metrics,
+time_unit
 FROM aws.budgets.budget_performance_histories
 WHERE region = '{{ region }}' -- required
 ;

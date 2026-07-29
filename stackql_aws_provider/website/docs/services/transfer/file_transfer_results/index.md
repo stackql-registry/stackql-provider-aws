@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FailureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>For transfers that fail, this parameter contains a code indicating the reason. For example, RETRIEVE_FILE_NOT_FOUND</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>For transfers that fail, this parameter describes the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FilePath" /></td>
+    <td><CopyableCode code="file_path" /></td>
     <td><code>string</code></td>
     <td>The filename and path to where the file was sent to or retrieved from. (pattern: &lt;code&gt;(.)+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusCode" /></td>
+    <td><CopyableCode code="status_code" /></td>
     <td><code>string</code></td>
     <td>The current status for the transfer. (QUEUED, IN_PROGRESS, COMPLETED, FAILED)</td>
 </tr>
@@ -134,10 +134,10 @@ Returns real-time updates and detailed information on the status of each individ
 
 ```sql
 SELECT
-FailureCode,
-FailureMessage,
-FilePath,
-StatusCode
+failure_code,
+failure_message,
+file_path,
+status_code
 FROM aws.transfer.file_transfer_results
 WHERE region = '{{ region }}' -- required
 ;

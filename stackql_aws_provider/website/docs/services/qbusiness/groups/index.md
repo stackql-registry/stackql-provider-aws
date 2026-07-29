@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusHistory" /></td>
+    <td><CopyableCode code="status_history" /></td>
     <td><code>array</code></td>
     <td>The status history of the group.</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="groupName" /></td>
+    <td><CopyableCode code="group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the group the summary information is for. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
@@ -202,7 +202,7 @@ Describes a group by group name.
 ```sql
 SELECT
 status,
-statusHistory
+status_history
 FROM aws.qbusiness.groups
 WHERE application_id = '{{ application_id }}' -- required
 AND index_id = '{{ index_id }}' -- required
@@ -218,7 +218,7 @@ Provides a list of groups that are mapped to users.
 
 ```sql
 SELECT
-groupName
+group_name
 FROM aws.qbusiness.groups
 WHERE application_id = '{{ application_id }}' -- required
 AND index_id = '{{ index_id }}' -- required

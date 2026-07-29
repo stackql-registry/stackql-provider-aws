@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account ID of a member account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigRuleName" /></td>
+    <td><CopyableCode code="config_rule_name" /></td>
     <td><code>string</code></td>
     <td>The name of Config rule deployed in the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorCode" /></td>
+    <td><CopyableCode code="error_code" /></td>
     <td><code>string</code></td>
     <td>An error code that is returned when Config rule creation or deletion failed in the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>An error message indicating that Config rule account creation or deletion has failed due to an error in the member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last status update.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberAccountRuleStatus" /></td>
+    <td><CopyableCode code="member_account_rule_status" /></td>
     <td><code>string</code></td>
     <td>Indicates deployment status for Config rule in the member account. When management account calls PutOrganizationConfigRule action for the first time, Config rule status is created in the member account. When management account calls PutOrganizationConfigRule action for the second time, Config rule status is updated in the member account. Config rule status is deleted when the management account deletes OrganizationConfigRule and disables service access for config-multiaccountsetup.amazonaws.com. Config sets the state of the rule to: CREATE_SUCCESSFUL when Config rule has been created in the member account. CREATE_IN_PROGRESS when Config rule is being created in the member account. CREATE_FAILED when Config rule creation has failed in the member account. DELETE_FAILED when Config rule deletion has failed in the member account. DELETE_IN_PROGRESS when Config rule is being deleted in the member account. DELETE_SUCCESSFUL when Config rule has been deleted in the member account. UPDATE_SUCCESSFUL when Config rule has been updated in the member account. UPDATE_IN_PROGRESS when Config rule is being updated in the member account. UPDATE_FAILED when Config rule deletion has failed in the member account. (CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_IN_PROGRESS, UPDATE_FAILED)</td>
 </tr>
@@ -144,12 +144,12 @@ Returns detailed status for each member account within an organization for a giv
 
 ```sql
 SELECT
-AccountId,
-ConfigRuleName,
-ErrorCode,
-ErrorMessage,
-LastUpdateTime,
-MemberAccountRuleStatus
+account_id,
+config_rule_name,
+error_code,
+error_message,
+last_update_time,
+member_account_rule_status
 FROM aws.config.organization_config_rule_detailed_status
 WHERE region = '{{ region }}' -- required
 ;

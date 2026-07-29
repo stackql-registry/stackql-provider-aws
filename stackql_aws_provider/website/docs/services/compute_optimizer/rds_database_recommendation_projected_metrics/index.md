@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="recommendedOptionProjectedMetrics" /></td>
+    <td><CopyableCode code="recommended_option_projected_metrics" /></td>
     <td><code>array</code></td>
     <td>An array of objects that describes the projected metrics.</td>
 </tr>
@@ -119,7 +119,7 @@ Returns the projected metrics of Aurora and RDS database recommendations.
 
 ```sql
 SELECT
-recommendedOptionProjectedMetrics
+recommended_option_projected_metrics
 FROM aws.compute_optimizer.rds_database_recommendation_projected_metrics
 WHERE region = '{{ region }}' -- required
 ;

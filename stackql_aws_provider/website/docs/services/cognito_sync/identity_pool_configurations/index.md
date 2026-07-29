@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CognitoStreams" /></td>
+    <td><CopyableCode code="cognito_streams" /></td>
     <td><code>object</code></td>
     <td>Options to apply to this identity pool for Amazon Cognito streams.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityPoolId" /></td>
+    <td><CopyableCode code="identity_pool_id" /></td>
     <td><code>string</code></td>
     <td>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PushSync" /></td>
+    <td><CopyableCode code="push_sync" /></td>
     <td><code>object</code></td>
     <td>Options to apply to this identity pool for push synchronization.</td>
 </tr>
@@ -141,9 +141,9 @@ Gets the configuration settings of an identity pool. This API can only be called
 
 ```sql
 SELECT
-CognitoStreams,
-IdentityPoolId,
-PushSync
+cognito_streams,
+identity_pool_id,
+push_sync
 FROM aws.cognito_sync.identity_pool_configurations
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -174,9 +174,9 @@ WHERE
 identity_pool_id = '{{ identity_pool_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-CognitoStreams,
-IdentityPoolId,
-PushSync;
+cognito_streams,
+identity_pool_id,
+push_sync;
 ```
 </TabItem>
 </Tabs>

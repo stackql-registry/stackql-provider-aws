@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the pipeline was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PipelineDefinition" /></td>
+    <td><CopyableCode code="pipeline_definition" /></td>
     <td><code>string</code></td>
     <td>The JSON pipeline definition. (pattern: &lt;code&gt;.*(?:&#91; \r\n\t&#93;.*)*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Describes the details of an execution's pipeline definition.
 
 ```sql
 SELECT
-CreationTime,
-PipelineDefinition
+creation_time,
+pipeline_definition
 FROM aws.sagemaker.pipeline_definition_for_executions
 WHERE region = '{{ region }}' -- required
 ;

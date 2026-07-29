@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="hierarchyInfo" /></td>
+    <td><CopyableCode code="hierarchy_info" /></td>
     <td><code>object</code></td>
     <td>The assets that are related through an asset hierarchy. This object is present if the relationshipType is HIERARCHY.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="relationshipType" /></td>
+    <td><CopyableCode code="relationship_type" /></td>
     <td><code>string</code></td>
     <td>The relationship type of the assets in this relationship. This value is one of the following: HIERARCHY – The assets are related through an asset hierarchy. If you specify this relationship type, this asset relationship includes the hierarchyInfo object. (HIERARCHY)</td>
 </tr>
@@ -144,8 +144,8 @@ Retrieves a paginated list of asset relationships for an asset. You can use this
 
 ```sql
 SELECT
-hierarchyInfo,
-relationshipType
+hierarchy_info,
+relationship_type
 FROM aws.iotsitewise.asset_relationships
 WHERE asset_id = '{{ asset_id }}' -- required
 AND traversalType = '{{ traversalType }}' -- required

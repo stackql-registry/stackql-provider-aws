@@ -61,22 +61,22 @@ The following fields are returned by `SELECT` queries:
     <td> (pattern: &lt;code&gt;arn:aws:health-agent:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:domain/(hai-|dom-)&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;(hai-|dom-)&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionContext" /></td>
+    <td><CopyableCode code="encryption_context" /></td>
     <td><code>object</code></td>
     <td>Encryption context for a Domain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyArn" /></td>
+    <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td> (pattern: &lt;code&gt;arn:aws:kms:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-f0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>Tags associated with the Domain</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webAppConfiguration" /></td>
+    <td><CopyableCode code="web_app_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for the Domain web application, including Identity Center settings. If provided, all fields are required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="webAppUrl" /></td>
+    <td><CopyableCode code="web_app_url" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
     <td> (pattern: &lt;code&gt;arn:aws:health-agent:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:domain/(hai-|dom-)&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the Domain was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Domain. (pattern: &lt;code&gt;(hai-|dom-)&#91;a-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -255,14 +255,14 @@ Retrieves information about a Domain.
 SELECT
 name,
 arn,
-createdAt,
-domainId,
-encryptionContext,
-kmsKeyArn,
+created_at,
+domain_id,
+encryption_context,
+kms_key_arn,
 status,
 tags,
-webAppConfiguration,
-webAppUrl
+web_app_configuration,
+web_app_url
 FROM aws.connecthealth.domains
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -277,8 +277,8 @@ Lists Domains for a given account.
 SELECT
 name,
 arn,
-createdAt,
-domainId,
+created_at,
+domain_id,
 status
 FROM aws.connecthealth.domains
 WHERE region = '{{ region }}' -- required
@@ -321,13 +321,13 @@ SELECT
 RETURNING
 name,
 arn,
-createdAt,
-domainId,
-encryptionContext,
-kmsKeyArn,
+created_at,
+domain_id,
+encryption_context,
+kms_key_arn,
 status,
-webAppConfiguration,
-webAppUrl
+web_app_configuration,
+web_app_url
 ;
 ```
 </TabItem>

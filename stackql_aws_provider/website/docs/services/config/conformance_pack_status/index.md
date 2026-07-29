@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConformancePackArn" /></td>
+    <td><CopyableCode code="conformance_pack_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of comformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackId" /></td>
+    <td><CopyableCode code="conformance_pack_id" /></td>
     <td><code>string</code></td>
     <td>ID of the conformance pack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackName" /></td>
+    <td><CopyableCode code="conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>Name of the conformance pack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackState" /></td>
+    <td><CopyableCode code="conformance_pack_state" /></td>
     <td><code>string</code></td>
     <td>Indicates deployment status of conformance pack. Config sets the state of the conformance pack to: CREATE_IN_PROGRESS when a conformance pack creation is in progress for an account. CREATE_COMPLETE when a conformance pack has been successfully created in your account. CREATE_FAILED when a conformance pack creation failed in your account. DELETE_IN_PROGRESS when a conformance pack deletion is in progress. DELETE_FAILED when a conformance pack deletion failed in your account. (CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, DELETE_IN_PROGRESS, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackStatusReason" /></td>
+    <td><CopyableCode code="conformance_pack_status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason of conformance pack creation failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateCompletedTime" /></td>
+    <td><CopyableCode code="last_update_completed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last time when conformation pack creation and update was successful.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateRequestedTime" /></td>
+    <td><CopyableCode code="last_update_requested_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Last time when conformation pack creation and update was requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StackArn" /></td>
+    <td><CopyableCode code="stack_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of CloudFormation stack.</td>
 </tr>
@@ -154,14 +154,14 @@ Provides one or more conformance packs deployment status. If there are no confor
 
 ```sql
 SELECT
-ConformancePackArn,
-ConformancePackId,
-ConformancePackName,
-ConformancePackState,
-ConformancePackStatusReason,
-LastUpdateCompletedTime,
-LastUpdateRequestedTime,
-StackArn
+conformance_pack_arn,
+conformance_pack_id,
+conformance_pack_name,
+conformance_pack_state,
+conformance_pack_status_reason,
+last_update_completed_time,
+last_update_requested_time,
+stack_arn
 FROM aws.config.conformance_pack_status
 WHERE region = '{{ region }}' -- required
 ;

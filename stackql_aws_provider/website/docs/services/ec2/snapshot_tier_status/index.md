@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ArchivalCompleteTime" /></td>
+    <td><CopyableCode code="archival_complete_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the last archive process was completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastTieringOperationStatus" /></td>
+    <td><CopyableCode code="last_tiering_operation_status" /></td>
     <td><code>string</code></td>
     <td>The status of the last archive or restore process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastTieringOperationStatusDetail" /></td>
+    <td><CopyableCode code="last_tiering_operation_status_detail" /></td>
     <td><code>string</code></td>
     <td>A message describing the status of the last archive or restore process.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastTieringProgress" /></td>
+    <td><CopyableCode code="last_tiering_progress" /></td>
     <td><code>integer</code></td>
     <td>The progress of the last archive or restore process, as a percentage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastTieringStartTime" /></td>
+    <td><CopyableCode code="last_tiering_start_time" /></td>
     <td><code>string</code></td>
     <td>The date and time when the last archive or restore process was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that owns the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestoreExpiryTime" /></td>
+    <td><CopyableCode code="restore_expiry_time" /></td>
     <td><code>string</code></td>
     <td>Only for archived snapshots that are temporarily restored. Indicates the date and time when a temporarily restored snapshot will be automatically re-archived.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The state of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageTier" /></td>
+    <td><CopyableCode code="storage_tier" /></td>
     <td><code>string</code></td>
     <td>The storage tier in which the snapshot is stored. standard indicates that the snapshot is stored in the standard snapshot storage tier and that it is ready for use. archive indicates that the snapshot is currently archived and that it must be restored before it can be used.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags that are assigned to the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VolumeId" /></td>
+    <td><CopyableCode code="volume_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the volume from which the snapshot was created.</td>
 </tr>
@@ -194,18 +194,18 @@ Describes the storage tier status of one or more Amazon EBS snapshots.
 
 ```sql
 SELECT
-ArchivalCompleteTime,
-LastTieringOperationStatus,
-LastTieringOperationStatusDetail,
-LastTieringProgress,
-LastTieringStartTime,
-OwnerId,
-RestoreExpiryTime,
-SnapshotId,
-Status,
-StorageTier,
-Tags,
-VolumeId
+archival_complete_time,
+last_tiering_operation_status,
+last_tiering_operation_status_detail,
+last_tiering_progress,
+last_tiering_start_time,
+owner_id,
+restore_expiry_time,
+snapshot_id,
+status,
+storage_tier,
+tags,
+volume_id
 FROM aws.ec2.snapshot_tier_status
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

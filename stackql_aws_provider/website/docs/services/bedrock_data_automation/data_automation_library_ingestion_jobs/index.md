@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="completionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityType" /></td>
+    <td><CopyableCode code="entity_type" /></td>
     <td><code>string</code></td>
     <td>Entity types supported in DataAutomationLibraries (VOCABULARY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorType" /></td>
+    <td><CopyableCode code="error_type" /></td>
     <td><code>string</code></td>
     <td>Error type</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the DataAutomationLibraryIngestionJob (pattern: &lt;code&gt;arn:aws(|-cn|-iso|-iso-&#91;a-z&#93;|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:data-automation-library-ingestion-job/&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>The status of the DataAutomationLibraryIngestionJob (IN_PROGRESS, COMPLETED, COMPLETED_WITH_ERRORS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>The operation associated with DataAutomationLibraryIngestionJob (UPSERT, DELETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputConfiguration" /></td>
+    <td><CopyableCode code="output_configuration" /></td>
     <td><code>object</code></td>
     <td>Output configuration of DataAutomationLibraryIngestionJob</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="completionTime" /></td>
+    <td><CopyableCode code="completion_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Time Stamp</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entityType" /></td>
+    <td><CopyableCode code="entity_type" /></td>
     <td><code>string</code></td>
     <td>Entity types supported in DataAutomationLibraries (VOCABULARY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of the DataAutomationLibraryIngestionJob (pattern: &lt;code&gt;arn:aws(|-cn|-iso|-iso-&#91;a-z&#93;|-us-gov):bedrock:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:data-automation-library-ingestion-job/&#91;a-zA-Z0-9-&#93;&#123;12,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobStatus" /></td>
+    <td><CopyableCode code="job_status" /></td>
     <td><code>string</code></td>
     <td>Status of DataAutomationLibraryIngestionJob (IN_PROGRESS, COMPLETED, COMPLETED_WITH_ERRORS, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="operationType" /></td>
+    <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
     <td>DataAutomationLibraryIngestionJob operation type (UPSERT, DELETE)</td>
 </tr>
@@ -222,15 +222,15 @@ API used to get status of data automation library ingestion job
 
 ```sql
 SELECT
-completionTime,
-creationTime,
-entityType,
-errorMessage,
-errorType,
-jobArn,
-jobStatus,
-operationType,
-outputConfiguration
+completion_time,
+creation_time,
+entity_type,
+error_message,
+error_type,
+job_arn,
+job_status,
+operation_type,
+output_configuration
 FROM aws.bedrock_data_automation.data_automation_library_ingestion_jobs
 WHERE library_arn = '{{ library_arn }}' -- required
 AND job_arn = '{{ job_arn }}' -- required
@@ -244,12 +244,12 @@ Lists all data automation library ingestion jobs
 
 ```sql
 SELECT
-completionTime,
-creationTime,
-entityType,
-jobArn,
-jobStatus,
-operationType
+completion_time,
+creation_time,
+entity_type,
+job_arn,
+job_status,
+operation_type
 FROM aws.bedrock_data_automation.data_automation_library_ingestion_jobs
 WHERE library_arn = '{{ library_arn }}' -- required
 AND region = '{{ region }}' -- required

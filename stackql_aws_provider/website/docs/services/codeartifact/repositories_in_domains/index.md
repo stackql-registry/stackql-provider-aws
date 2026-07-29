@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the repository. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9._\-&#93;&#123;1,99&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="administratorAccount" /></td>
+    <td><CopyableCode code="administrator_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that manages the repository. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the repository. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that represents the date and time the repository was created.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the repository. (pattern: &lt;code&gt;\P&#123;C&#125;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain that contains the repository. (pattern: &lt;code&gt;&#91;a-z&#93;&#91;a-z0-9\-&#93;&#123;0,48&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainOwner" /></td>
+    <td><CopyableCode code="domain_owner" /></td>
     <td><code>string</code></td>
     <td>The 12-digit account number of the Amazon Web Services account that owns the domain. It does not include dashes or spaces. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -180,12 +180,12 @@ Returns a list of RepositorySummary objects. Each RepositorySummary contains inf
 ```sql
 SELECT
 name,
-administratorAccount,
+administrator_account,
 arn,
-createdTime,
+created_time,
 description,
-domainName,
-domainOwner
+domain_name,
+domain_owner
 FROM aws.codeartifact.repositories_in_domains
 WHERE domain = '{{ domain }}' -- required
 AND region = '{{ region }}' -- required

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionMetadata" /></td>
+    <td><CopyableCode code="action_metadata" /></td>
     <td><code>object</code></td>
     <td>Metadata about the action performed by the quantum task, including information about the type of action and program counts.</td>
 </tr>
@@ -61,62 +61,62 @@ The following fields are returned by `SELECT` queries:
     <td>The list of Amazon Braket resources associated with the quantum task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the quantum task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device the quantum task was run on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceParameters" /></td>
+    <td><CopyableCode code="device_parameters" /></td>
     <td><code>string</code></td>
     <td>The parameters for the device on which the quantum task ran.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the quantum task ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="experimentalCapabilities" /></td>
+    <td><CopyableCode code="experimental_capabilities" /></td>
     <td><code>object</code></td>
     <td>Enabled experimental capabilities for quantum hardware. Note that the use of these features may impact device capabilities and performance beyond its standard specifications.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that a quantum task failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Braket job associated with the quantum task. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:braket:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:job/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="numSuccessfulShots" /></td>
+    <td><CopyableCode code="num_successful_shots" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of successful shots for the quantum task. This is available after a successfully completed quantum task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputS3Bucket" /></td>
+    <td><CopyableCode code="output_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket where quantum task results are stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputS3Directory" /></td>
+    <td><CopyableCode code="output_s3_directory" /></td>
     <td><code>string</code></td>
     <td>The folder in the S3 bucket where quantum task results are stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quantumTaskArn" /></td>
+    <td><CopyableCode code="quantum_task_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the quantum task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="queueInfo" /></td>
+    <td><CopyableCode code="queue_info" /></td>
     <td><code>object</code></td>
     <td>Queue information for the requested quantum task. Only returned if QueueInfo is specified in the additionalAttributeNames" field in the GetQuantumTask API request.</td>
 </tr>
@@ -150,32 +150,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the quantum task was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deviceArn" /></td>
+    <td><CopyableCode code="device_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the device the quantum task ran on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endedAt" /></td>
+    <td><CopyableCode code="ended_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the quantum task finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputS3Bucket" /></td>
+    <td><CopyableCode code="output_s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The S3 bucket where the quantum task result file is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputS3Directory" /></td>
+    <td><CopyableCode code="output_s3_directory" /></td>
     <td><code>string</code></td>
     <td>The folder in the S3 bucket where the quantum task result file is stored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="quantumTaskArn" /></td>
+    <td><CopyableCode code="quantum_task_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the quantum task.</td>
 </tr>
@@ -291,20 +291,20 @@ Retrieves the specified quantum task.
 
 ```sql
 SELECT
-actionMetadata,
+action_metadata,
 associations,
-createdAt,
-deviceArn,
-deviceParameters,
-endedAt,
-experimentalCapabilities,
-failureReason,
-jobArn,
-numSuccessfulShots,
-outputS3Bucket,
-outputS3Directory,
-quantumTaskArn,
-queueInfo,
+created_at,
+device_arn,
+device_parameters,
+ended_at,
+experimental_capabilities,
+failure_reason,
+job_arn,
+num_successful_shots,
+output_s3_bucket,
+output_s3_directory,
+quantum_task_arn,
+queue_info,
 shots,
 status,
 tags
@@ -321,12 +321,12 @@ Searches for tasks that match the specified filter values.
 
 ```sql
 SELECT
-createdAt,
-deviceArn,
-endedAt,
-outputS3Bucket,
-outputS3Directory,
-quantumTaskArn,
+created_at,
+device_arn,
+ended_at,
+output_s3_bucket,
+output_s3_directory,
+quantum_task_arn,
 shots,
 status,
 tags
@@ -380,7 +380,7 @@ SELECT
 '{{ experimentalCapabilities }}',
 '{{ region }}'
 RETURNING
-quantumTaskArn
+quantum_task_arn
 ;
 ```
 </TabItem>

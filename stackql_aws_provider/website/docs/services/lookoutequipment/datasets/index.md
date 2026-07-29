@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the time the dataset was created in Lookout for Equipment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataEndTime" /></td>
+    <td><CopyableCode code="data_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the latest timestamp corresponding to data that was successfully ingested during the most recent ingestion of this particular dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataQualitySummary" /></td>
+    <td><CopyableCode code="data_quality_summary" /></td>
     <td><code>object</code></td>
     <td>Gives statistics associated with the given dataset for the latest successful associated ingestion job id. These statistics primarily relate to quantifying incorrect data such as MissingCompleteSensorData, MissingSensorData, UnsupportedDateFormats, InsufficientSensorData, and DuplicateTimeStamps.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataStartTime" /></td>
+    <td><CopyableCode code="data_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Indicates the earliest timestamp corresponding to data that was successfully ingested during the most recent ingestion of this particular dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset being described. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:dataset\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset being described. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestedFilesSummary" /></td>
+    <td><CopyableCode code="ingested_files_summary" /></td>
     <td><code>object</code></td>
     <td>Gives statistics about how many files have been ingested, and which files have not been ingested, for a particular ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IngestionInputConfiguration" /></td>
+    <td><CopyableCode code="ingestion_input_configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the S3 location configuration for the data input for the data ingestion job.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Specifies the time the dataset was last updated, if it was.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that you are using for this the data ingestion job. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schema" /></td>
+    <td><CopyableCode code="schema" /></td>
     <td><code>string</code></td>
     <td>A JSON description of the data that is in each time series dataset, including names, column names, and data types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSideKmsKeyId" /></td>
+    <td><CopyableCode code="server_side_kms_key_id" /></td>
     <td><code>string</code></td>
     <td>Provides the identifier of the KMS key used to encrypt dataset data by Amazon Lookout for Equipment. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:kms:&#91;a-z0-9\-&#93;*:\d&#123;12&#125;:&#91;\w\-\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceDatasetArn" /></td>
+    <td><CopyableCode code="source_dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the source dataset from which the current data being described was imported from. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:lookoutequipment:&#91;a-zA-Z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:dataset\/&#91;0-9a-zA-Z_-&#93;&#123;1,200&#125;\/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates the status of the dataset. (CREATED, INGESTION_IN_PROGRESS, ACTIVE, IMPORT_IN_PROGRESS)</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DatasetSummaries" /></td>
+    <td><CopyableCode code="dataset_summaries" /></td>
     <td><code>array</code></td>
     <td>Provides information about the specified dataset, including creation time, dataset ARN, and status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>An opaque pagination token indicating where to continue the listing of datasets. (pattern: &lt;code&gt;\p&#123;ASCII&#125;&#123;0,8192&#125;&lt;/code&gt;)</td>
 </tr>
@@ -238,20 +238,20 @@ Provides a JSON description of the data in each time series dataset, including n
 
 ```sql
 SELECT
-CreatedAt,
-DataEndTime,
-DataQualitySummary,
-DataStartTime,
-DatasetArn,
-DatasetName,
-IngestedFilesSummary,
-IngestionInputConfiguration,
-LastUpdatedAt,
-RoleArn,
-Schema,
-ServerSideKmsKeyId,
-SourceDatasetArn,
-Status
+created_at,
+data_end_time,
+data_quality_summary,
+data_start_time,
+dataset_arn,
+dataset_name,
+ingested_files_summary,
+ingestion_input_configuration,
+last_updated_at,
+role_arn,
+schema,
+server_side_kms_key_id,
+source_dataset_arn,
+status
 FROM aws.lookoutequipment.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -263,8 +263,8 @@ Lists all datasets currently available in your account, filtering on the dataset
 
 ```sql
 SELECT
-DatasetSummaries,
-NextToken
+dataset_summaries,
+next_token
 FROM aws.lookoutequipment.datasets
 WHERE region = '{{ region }}' -- required
 ;
@@ -303,9 +303,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-DatasetArn,
-DatasetName,
-Status
+dataset_arn,
+dataset_name,
+status
 ;
 ```
 </TabItem>

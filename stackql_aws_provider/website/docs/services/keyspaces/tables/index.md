@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="capacitySpecification" /></td>
+    <td><CopyableCode code="capacity_specification" /></td>
     <td><code>object</code></td>
     <td>The read/write throughput capacity mode for a table. The options are: throughputMode:PAY_PER_REQUEST throughputMode:PROVISIONED</td>
 </tr>
 <tr>
-    <td><CopyableCode code="cdcSpecification" /></td>
+    <td><CopyableCode code="cdc_specification" /></td>
     <td><code>object</code></td>
     <td>The CDC stream settings of the table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientSideTimestamps" /></td>
+    <td><CopyableCode code="client_side_timestamps" /></td>
     <td><code>object</code></td>
     <td>The client-side timestamps setting of the table.</td>
 </tr>
@@ -71,47 +71,47 @@ The following fields are returned by `SELECT` queries:
     <td>The the description of the specified table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTimestamp" /></td>
+    <td><CopyableCode code="creation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation timestamp of the specified table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultTimeToLive" /></td>
+    <td><CopyableCode code="default_time_to_live" /></td>
     <td><code>integer</code></td>
     <td>The default Time to Live settings in seconds of the specified table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionSpecification" /></td>
+    <td><CopyableCode code="encryption_specification" /></td>
     <td><code>object</code></td>
     <td>The encryption settings of the specified table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="keyspaceName" /></td>
+    <td><CopyableCode code="keyspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the keyspace that the specified table is stored in. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestStreamArn" /></td>
+    <td><CopyableCode code="latest_stream_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the stream. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):cassandra:.+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pointInTimeRecovery" /></td>
+    <td><CopyableCode code="point_in_time_recovery" /></td>
     <td><code>object</code></td>
     <td>The point-in-time recovery status of the specified table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replicaSpecifications" /></td>
+    <td><CopyableCode code="replica_specifications" /></td>
     <td><code>array</code></td>
     <td>Returns the Amazon Web Services Region specific settings of all Regions a multi-Region table is replicated in.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the specified table. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):cassandra:.+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaDefinition" /></td>
+    <td><CopyableCode code="schema_definition" /></td>
     <td><code>object</code></td>
     <td>The schema definition of the specified table.</td>
 </tr>
@@ -121,7 +121,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the specified table. (ACTIVE, CREATING, UPDATING, DELETING, DELETED, RESTORING, INACCESSIBLE_ENCRYPTION_CREDENTIALS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the specified table. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
@@ -131,7 +131,7 @@ The following fields are returned by `SELECT` queries:
     <td>The custom Time to Live settings of the specified table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="warmThroughputSpecification" /></td>
+    <td><CopyableCode code="warm_throughput_specification" /></td>
     <td><code>object</code></td>
     <td>The warm throughput settings for the table, including the current status and configured read and write capacity units.</td>
 </tr>
@@ -150,17 +150,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="keyspaceName" /></td>
+    <td><CopyableCode code="keyspace_name" /></td>
     <td><code>string</code></td>
     <td>The name of the keyspace that the table is stored in. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the table in the format of an Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):cassandra:.+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tableName" /></td>
+    <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
     <td>The name of the table. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
@@ -258,23 +258,23 @@ Returns information about the table, including the table's name and current stat
 
 ```sql
 SELECT
-capacitySpecification,
-cdcSpecification,
-clientSideTimestamps,
+capacity_specification,
+cdc_specification,
+client_side_timestamps,
 comment,
-creationTimestamp,
-defaultTimeToLive,
-encryptionSpecification,
-keyspaceName,
-latestStreamArn,
-pointInTimeRecovery,
-replicaSpecifications,
-resourceArn,
-schemaDefinition,
+creation_timestamp,
+default_time_to_live,
+encryption_specification,
+keyspace_name,
+latest_stream_arn,
+point_in_time_recovery,
+replica_specifications,
+resource_arn,
+schema_definition,
 status,
-tableName,
+table_name,
 ttl,
-warmThroughputSpecification
+warm_throughput_specification
 FROM aws.keyspaces.tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -286,9 +286,9 @@ The ListTables operation returns a list of tables for a specified keyspace. To r
 
 ```sql
 SELECT
-keyspaceName,
-resourceArn,
-tableName
+keyspace_name,
+resource_arn,
+table_name
 FROM aws.keyspaces.tables
 WHERE region = '{{ region }}' -- required
 ;
@@ -347,7 +347,7 @@ SELECT
 '{{ warmThroughputSpecification }}',
 '{{ region }}'
 RETURNING
-resourceArn
+resource_arn
 ;
 ```
 </TabItem>
@@ -519,7 +519,7 @@ region = '{{ region }}' --required
 AND keyspaceName = '{{ keyspaceName }}' --required
 AND tableName = '{{ tableName }}' --required
 RETURNING
-resourceArn;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

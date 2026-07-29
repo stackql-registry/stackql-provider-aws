@@ -51,72 +51,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScaling" /></td>
+    <td><CopyableCode code="auto_scaling" /></td>
     <td><code>object</code></td>
     <td>The current autoscaling configuration and status for the autoscaler.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SageMaker HyperPod cluster. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterRole" /></td>
+    <td><CopyableCode code="cluster_role" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM role that HyperPod uses for cluster autoscaling operations. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterStatus" /></td>
+    <td><CopyableCode code="cluster_status" /></td>
     <td><code>string</code></td>
     <td>The status of the SageMaker HyperPod cluster. (Creating, Deleting, Failed, InService, RollingBack, SystemUpdating, Updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the SageMaker Cluster is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>The failure message of the SageMaker HyperPod cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceGroups" /></td>
+    <td><CopyableCode code="instance_groups" /></td>
     <td><code>array</code></td>
     <td>The instance groups of the SageMaker HyperPod cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeProvisioningMode" /></td>
+    <td><CopyableCode code="node_provisioning_mode" /></td>
     <td><code>string</code></td>
     <td>The mode used for provisioning nodes in the cluster. (Continuous)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeRecovery" /></td>
+    <td><CopyableCode code="node_recovery" /></td>
     <td><code>string</code></td>
     <td>The node recovery mode configured for the SageMaker HyperPod cluster. (Automatic, None)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Orchestrator" /></td>
+    <td><CopyableCode code="orchestrator" /></td>
     <td><code>object</code></td>
     <td>The type of orchestrator used for the SageMaker HyperPod cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RestrictedInstanceGroups" /></td>
+    <td><CopyableCode code="restricted_instance_groups" /></td>
     <td><code>array</code></td>
     <td>The specialized instance groups for training models like Amazon Nova to be created in the SageMaker HyperPod cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TieredStorageConfig" /></td>
+    <td><CopyableCode code="tiered_storage_config" /></td>
     <td><code>object</code></td>
     <td>The current configuration for managed tier checkpointing on the HyperPod cluster. For example, this shows whether the feature is enabled and the percentage of cluster memory allocated for checkpoint storage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConfig" /></td>
+    <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC. For more information, see Give SageMaker Access to Resources in your Amazon VPC.</td>
 </tr>
@@ -135,27 +135,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:cluster/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the SageMaker HyperPod cluster. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterStatus" /></td>
+    <td><CopyableCode code="cluster_status" /></td>
     <td><code>string</code></td>
     <td>The status of the SageMaker HyperPod cluster. (Creating, Deleting, Failed, InService, RollingBack, SystemUpdating, Updating)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the SageMaker HyperPod cluster is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrainingPlanArns" /></td>
+    <td><CopyableCode code="training_plan_arns" /></td>
     <td><code>array</code></td>
     <td>A list of Amazon Resource Names (ARNs) of the training plans associated with this cluster. For more information about how to reserve GPU capacity for your SageMaker HyperPod clusters using Amazon SageMaker Training Plan, see CreateTrainingPlan .</td>
 </tr>
@@ -267,20 +267,20 @@ Retrieves information of a SageMaker HyperPod cluster.
 
 ```sql
 SELECT
-AutoScaling,
-ClusterArn,
-ClusterName,
-ClusterRole,
-ClusterStatus,
-CreationTime,
-FailureMessage,
-InstanceGroups,
-NodeProvisioningMode,
-NodeRecovery,
-Orchestrator,
-RestrictedInstanceGroups,
-TieredStorageConfig,
-VpcConfig
+auto_scaling,
+cluster_arn,
+cluster_name,
+cluster_role,
+cluster_status,
+creation_time,
+failure_message,
+instance_groups,
+node_provisioning_mode,
+node_recovery,
+orchestrator,
+restricted_instance_groups,
+tiered_storage_config,
+vpc_config
 FROM aws.sagemaker.clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -292,11 +292,11 @@ Retrieves the list of SageMaker HyperPod clusters.
 
 ```sql
 SELECT
-ClusterArn,
-ClusterName,
-ClusterStatus,
-CreationTime,
-TrainingPlanArns
+cluster_arn,
+cluster_name,
+cluster_status,
+creation_time,
+training_plan_arns
 FROM aws.sagemaker.clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -347,7 +347,7 @@ SELECT
 '{{ AutoScaling }}',
 '{{ region }}'
 RETURNING
-ClusterArn
+cluster_arn
 ;
 ```
 </TabItem>
@@ -534,7 +534,7 @@ WHERE
 region = '{{ region }}' --required
 AND ClusterName = '{{ ClusterName }}' --required
 RETURNING
-ClusterArn;
+cluster_arn;
 ```
 </TabItem>
 </Tabs>

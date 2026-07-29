@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the encrypted symmetric key in Amazon Web Services KMS to which Amazon Redshift is granted permission.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotCopyGrantName" /></td>
+    <td><CopyableCode code="snapshot_copy_grant_name" /></td>
     <td><code>string</code></td>
     <td>The name of the snapshot copy grant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tag instances.</td>
 </tr>
@@ -183,9 +183,9 @@ Returns a list of snapshot copy grants owned by the Amazon Web Services account 
 
 ```sql
 SELECT
-KmsKeyId,
-SnapshotCopyGrantName,
-Tags
+kms_key_id,
+snapshot_copy_grant_name,
+tags
 FROM aws.redshift.snapshot_copy_grants
 WHERE region = '{{ region }}' -- required
 AND SnapshotCopyGrantName = '{{ SnapshotCopyGrantName }}'
@@ -225,9 +225,9 @@ SELECT
 '{{ KmsKeyId }}',
 '{{ Tags }}'
 RETURNING
-KmsKeyId,
-SnapshotCopyGrantName,
-Tags
+kms_key_id,
+snapshot_copy_grant_name,
+tags
 ;
 ```
 </TabItem>

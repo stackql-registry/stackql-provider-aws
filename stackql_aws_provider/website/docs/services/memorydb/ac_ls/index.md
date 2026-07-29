@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ACL</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Clusters" /></td>
+    <td><CopyableCode code="clusters" /></td>
     <td><code>array</code></td>
     <td>A list of clusters associated with the ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The minimum engine version supported for the ACL</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Access Control List</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PendingChanges" /></td>
+    <td><CopyableCode code="pending_changes" /></td>
     <td><code>object</code></td>
     <td>A list of updates being applied to the ACL.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Indicates ACL status. Can be "creating", "active", "modifying", "deleting".</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserNames" /></td>
+    <td><CopyableCode code="user_names" /></td>
     <td><code>array</code></td>
     <td>The list of user names that belong to the ACL.</td>
 </tr>
@@ -149,13 +149,13 @@ Returns a list of ACLs.
 
 ```sql
 SELECT
-ARN,
-Clusters,
-MinimumEngineVersion,
-Name,
-PendingChanges,
-Status,
-UserNames
+arn,
+clusters,
+minimum_engine_version,
+name,
+pending_changes,
+status,
+user_names
 FROM aws.memorydb.ac_ls
 WHERE region = '{{ region }}' -- required
 ;

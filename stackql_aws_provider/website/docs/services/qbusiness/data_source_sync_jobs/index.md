@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="dataSourceErrorCode" /></td>
+    <td><CopyableCode code="data_source_error_code" /></td>
     <td><code>string</code></td>
     <td>If the reason that the synchronization failed is due to an error with the underlying data source, this field contains a code that identifies the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix timestamp when the synchronization job completed.</td>
 </tr>
@@ -65,7 +65,7 @@ The following fields are returned by `SELECT` queries:
     <td>Provides information about a Amazon Q Business request error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="executionId" /></td>
+    <td><CopyableCode code="execution_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of a data source synchronization job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-&#93;&#123;35&#125;&lt;/code&gt;)</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>Maps a batch delete document request to a specific data source sync job. This is optional and should only be supplied when documents are deleted by a data source connector.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix time stamp when the data source synchronization job started.</td>
 </tr>
@@ -189,12 +189,12 @@ Get information about an Amazon Q Business data source connector synchronization
 
 ```sql
 SELECT
-dataSourceErrorCode,
-endTime,
+data_source_error_code,
+end_time,
 error,
-executionId,
+execution_id,
 metrics,
-startTime,
+start_time,
 status
 FROM aws.qbusiness.data_source_sync_jobs
 WHERE data_source_id = '{{ data_source_id }}' -- required

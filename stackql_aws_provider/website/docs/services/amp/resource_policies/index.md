@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The JSON policy document for the resource-based policy attached to the workspace.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyStatus" /></td>
+    <td><CopyableCode code="policy_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the resource-based policy. (CREATING, ACTIVE, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>The revision ID of the current resource-based policy.</td>
 </tr>
@@ -158,9 +158,9 @@ Returns information about the resource-based policy attached to an Amazon Manage
 
 ```sql
 SELECT
-policyDocument,
-policyStatus,
-revisionId
+policy_document,
+policy_status,
+revision_id
 FROM aws.amp.resource_policies
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -193,8 +193,8 @@ workspace_id = '{{ workspace_id }}' --required
 AND region = '{{ region }}' --required
 AND policyDocument = '{{ policyDocument }}' --required
 RETURNING
-policyStatus,
-revisionId;
+policy_status,
+revision_id;
 ```
 </TabItem>
 </Tabs>

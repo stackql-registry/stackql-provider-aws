@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChapCredentials" /></td>
+    <td><CopyableCode code="chap_credentials" /></td>
     <td><code>array</code></td>
     <td>An array of ChapInfo objects that represent CHAP credentials. Each object in the array contains CHAP credential information for one target-initiator pair. If no CHAP credentials are set, an empty array is returned. CHAP credential information is provided in a JSON object with the following fields: InitiatorName: The iSCSI initiator that connects to the target. SecretToAuthenticateInitiator: The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target. SecretToAuthenticateTarget: The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client). TargetARN: The Amazon Resource Name (ARN) of the storage volume.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentia
 
 ```sql
 SELECT
-ChapCredentials
+chap_credentials
 FROM aws.storagegateway.chap_credentials
 WHERE region = '{{ region }}' -- required
 ;
@@ -167,8 +167,8 @@ AND TargetARN = '{{ TargetARN }}' --required
 AND SecretToAuthenticateInitiator = '{{ SecretToAuthenticateInitiator }}' --required
 AND InitiatorName = '{{ InitiatorName }}' --required
 RETURNING
-InitiatorName,
-TargetARN;
+initiator_name,
+target_arn;
 ```
 </TabItem>
 </Tabs>

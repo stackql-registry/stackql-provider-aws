@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MemberDataSourceConfigurations" /></td>
+    <td><CopyableCode code="member_data_source_configurations" /></td>
     <td><code>array</code></td>
     <td>An object that describes which data sources are enabled for a member account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedAccounts" /></td>
+    <td><CopyableCode code="unprocessed_accounts" /></td>
     <td><code>array</code></td>
     <td>A list of member account IDs that were unable to be processed along with an explanation for why they were not processed.</td>
 </tr>
@@ -136,8 +136,8 @@ Describes which data sources are enabled for the member account's detector. Ther
 
 ```sql
 SELECT
-MemberDataSourceConfigurations,
-UnprocessedAccounts
+member_data_source_configurations,
+unprocessed_accounts
 FROM aws.guardduty.member_detectors
 WHERE detector_id = '{{ detector_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -170,7 +170,7 @@ detector_id = '{{ detector_id }}' --required
 AND region = '{{ region }}' --required
 AND AccountIds = '{{ AccountIds }}' --required
 RETURNING
-UnprocessedAccounts;
+unprocessed_accounts;
 ```
 </TabItem>
 </Tabs>

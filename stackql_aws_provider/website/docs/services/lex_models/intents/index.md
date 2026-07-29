@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>Checksum of the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="conclusionStatement" /></td>
+    <td><CopyableCode code="conclusion_statement" /></td>
     <td><code>object</code></td>
     <td>After the Lambda function specified in the fulfillmentActivity element fulfills the intent, Amazon Lex conveys this statement to the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="confirmationPrompt" /></td>
+    <td><CopyableCode code="confirmation_prompt" /></td>
     <td><code>object</code></td>
     <td>If defined in the bot, Amazon Lex uses prompt to confirm the intent before fulfilling the user's request. For more information, see PutIntent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the intent was created.</td>
 </tr>
@@ -81,52 +81,52 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dialogCodeHook" /></td>
+    <td><CopyableCode code="dialog_code_hook" /></td>
     <td><code>object</code></td>
     <td>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for each user input. For more information, see PutIntent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="followUpPrompt" /></td>
+    <td><CopyableCode code="follow_up_prompt" /></td>
     <td><code>object</code></td>
     <td>If defined in the bot, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled. For more information, see PutIntent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fulfillmentActivity" /></td>
+    <td><CopyableCode code="fulfillment_activity" /></td>
     <td><code>object</code></td>
     <td>Describes how the intent is fulfilled. For more information, see PutIntent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputContexts" /></td>
+    <td><CopyableCode code="input_contexts" /></td>
     <td><code>array</code></td>
     <td>An array of InputContext objects that lists the contexts that must be active for Amazon Lex to choose the intent in a conversation with the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kendraConfiguration" /></td>
+    <td><CopyableCode code="kendra_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration information, if any, to connect to an Amazon Kendra index with the AMAZON.KendraSearchIntent intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the intent was updated. When you create a resource, the creation date and the last updated date are the same.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputContexts" /></td>
+    <td><CopyableCode code="output_contexts" /></td>
     <td><code>array</code></td>
     <td>An array of OutputContext objects that lists the contexts that the intent activates when the intent is fulfilled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parentIntentSignature" /></td>
+    <td><CopyableCode code="parent_intent_signature" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for a built-in intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="rejectionStatement" /></td>
+    <td><CopyableCode code="rejection_statement" /></td>
     <td><code>object</code></td>
     <td>If the user answers "no" to the question defined in confirmationPrompt, Amazon Lex responds with this statement to acknowledge that the intent was canceled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sampleUtterances" /></td>
+    <td><CopyableCode code="sample_utterances" /></td>
     <td><code>array</code></td>
     <td>An array of sample utterances configured for the intent.</td>
 </tr>
@@ -160,7 +160,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the intent. (pattern: &lt;code&gt;^(&#91;A-Za-z&#93;_?)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the intent was created.</td>
 </tr>
@@ -170,7 +170,7 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the intent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDate" /></td>
+    <td><CopyableCode code="last_updated_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date that the intent was updated. When you create an intent, the creation date and last updated date are the same.</td>
 </tr>
@@ -293,20 +293,20 @@ Returns information about an intent. In addition to the intent name, you must sp
 SELECT
 name,
 checksum,
-conclusionStatement,
-confirmationPrompt,
-createdDate,
+conclusion_statement,
+confirmation_prompt,
+created_date,
 description,
-dialogCodeHook,
-followUpPrompt,
-fulfillmentActivity,
-inputContexts,
-kendraConfiguration,
-lastUpdatedDate,
-outputContexts,
-parentIntentSignature,
-rejectionStatement,
-sampleUtterances,
+dialog_code_hook,
+follow_up_prompt,
+fulfillment_activity,
+input_contexts,
+kendra_configuration,
+last_updated_date,
+output_contexts,
+parent_intent_signature,
+rejection_statement,
+sample_utterances,
 slots,
 version
 FROM aws.lex_models.intents
@@ -323,9 +323,9 @@ Returns intent information as follows: If you specify the nameContains field, re
 ```sql
 SELECT
 name,
-createdDate,
+created_date,
 description,
-lastUpdatedDate,
+last_updated_date,
 version
 FROM aws.lex_models.intents
 WHERE region = '{{ region }}' -- required
@@ -374,21 +374,21 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 checksum,
-conclusionStatement,
-confirmationPrompt,
-createVersion,
-createdDate,
+conclusion_statement,
+confirmation_prompt,
+create_version,
+created_date,
 description,
-dialogCodeHook,
-followUpPrompt,
-fulfillmentActivity,
-inputContexts,
-kendraConfiguration,
-lastUpdatedDate,
-outputContexts,
-parentIntentSignature,
-rejectionStatement,
-sampleUtterances,
+dialog_code_hook,
+follow_up_prompt,
+fulfillment_activity,
+input_contexts,
+kendra_configuration,
+last_updated_date,
+output_contexts,
+parent_intent_signature,
+rejection_statement,
+sample_utterances,
 slots,
 version;
 ```

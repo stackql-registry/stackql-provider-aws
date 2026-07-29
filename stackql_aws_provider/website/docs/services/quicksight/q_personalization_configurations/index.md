@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PersonalizationMode" /></td>
+    <td><CopyableCode code="personalization_mode" /></td>
     <td><code>string</code></td>
     <td>A value that indicates whether personalization is enabled or not. (ENABLED, DISABLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -141,9 +141,9 @@ Describes a personalization configuration.
 
 ```sql
 SELECT
-PersonalizationMode,
-RequestId,
-Status
+personalization_mode,
+request_id,
+status
 FROM aws.quicksight.q_personalization_configurations
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -174,9 +174,9 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND region = '{{ region }}' --required
 AND PersonalizationMode = '{{ PersonalizationMode }}' --required
 RETURNING
-PersonalizationMode,
-RequestId,
-Status;
+personalization_mode,
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

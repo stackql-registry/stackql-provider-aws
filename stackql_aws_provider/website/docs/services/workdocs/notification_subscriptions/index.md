@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="EndPoint" /></td>
+    <td><CopyableCode code="end_point" /></td>
     <td><code>string</code></td>
     <td>The endpoint of the subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Protocol" /></td>
+    <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
     <td>The protocol of the subscription. (HTTPS, SQS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionId" /></td>
+    <td><CopyableCode code="subscription_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the subscription. (pattern: &lt;code&gt;&#91;&\w+-.@&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -163,9 +163,9 @@ Lists the specified notification subscriptions.
 
 ```sql
 SELECT
-EndPoint,
-Protocol,
-SubscriptionId
+end_point,
+protocol,
+subscription_id
 FROM aws.workdocs.notification_subscriptions
 WHERE organization_id = '{{ organization_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -205,7 +205,7 @@ SELECT
 '{{ organization_id }}',
 '{{ region }}'
 RETURNING
-Subscription
+subscription
 ;
 ```
 </TabItem>

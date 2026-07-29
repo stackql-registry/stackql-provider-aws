@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PythonScript" /></td>
+    <td><CopyableCode code="python_script" /></td>
     <td><code>string</code></td>
     <td>A Python script to perform the mapping.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalaCode" /></td>
+    <td><CopyableCode code="scala_code" /></td>
     <td><code>string</code></td>
     <td>The Scala code to perform the mapping.</td>
 </tr>
@@ -124,8 +124,8 @@ Gets code to perform a specified mapping.
 
 ```sql
 SELECT
-PythonScript,
-ScalaCode
+python_script,
+scala_code
 FROM aws.glue.plans
 WHERE region = '{{ region }}' -- required
 ;

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration of the Connect peer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectAttachmentId" /></td>
+    <td><CopyableCode code="connect_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the attachment to connect. (pattern: &lt;code&gt;^attachment-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectPeerId" /></td>
+    <td><CopyableCode code="connect_peer_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Connect peer. (pattern: &lt;code&gt;^connect-peer-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a core network. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the Connect peer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeLocation" /></td>
+    <td><CopyableCode code="edge_location" /></td>
     <td><code>string</code></td>
     <td>The Connect peer Regions where edges are located. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationErrors" /></td>
+    <td><CopyableCode code="last_modification_errors" /></td>
     <td><code>array</code></td>
     <td>Describes the error associated with the attachment request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the Connect peer. (CREATING, FAILED, AVAILABLE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetArn" /></td>
+    <td><CopyableCode code="subnet_arn" /></td>
     <td><code>string</code></td>
     <td>The subnet ARN for the Connect peer. This only applies only when the protocol is NO_ENCAP. (pattern: &lt;code&gt;^arn:&#91;^:&#93;&#123;1,63&#125;:ec2:&#91;^:&#93;&#123;0,63&#125;:&#91;^:&#93;&#123;0,63&#125;:subnet\/subnet-&#91;0-9a-f&#93;&#123;8,17&#125;$|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of key-value tags associated with the Connect peer.</td>
 </tr>
@@ -115,42 +115,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConnectAttachmentId" /></td>
+    <td><CopyableCode code="connect_attachment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a Connect peer attachment. (pattern: &lt;code&gt;^attachment-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectPeerId" /></td>
+    <td><CopyableCode code="connect_peer_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a Connect peer. (pattern: &lt;code&gt;^connect-peer-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectPeerState" /></td>
+    <td><CopyableCode code="connect_peer_state" /></td>
     <td><code>string</code></td>
     <td>The state of a Connect peer. (CREATING, FAILED, AVAILABLE, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CoreNetworkId" /></td>
+    <td><CopyableCode code="core_network_id" /></td>
     <td><code>string</code></td>
     <td>The ID of a core network. (pattern: &lt;code&gt;^core-network-(&#91;0-9a-f&#93;&#123;8,17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when a Connect peer was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EdgeLocation" /></td>
+    <td><CopyableCode code="edge_location" /></td>
     <td><code>string</code></td>
     <td>The Region where the edge is located. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetArn" /></td>
+    <td><CopyableCode code="subnet_arn" /></td>
     <td><code>string</code></td>
     <td>The subnet ARN for the Connect peer summary. (pattern: &lt;code&gt;^arn:&#91;^:&#93;&#123;1,63&#125;:ec2:&#91;^:&#93;&#123;0,63&#125;:&#91;^:&#93;&#123;0,63&#125;:subnet\/subnet-&#91;0-9a-f&#93;&#123;8,17&#125;$|^$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The list of key-value tags associated with the Connect peer summary.</td>
 </tr>
@@ -304,16 +304,16 @@ Returns information about a core network Connect peer.
 
 ```sql
 SELECT
-Configuration,
-ConnectAttachmentId,
-ConnectPeerId,
-CoreNetworkId,
-CreatedAt,
-EdgeLocation,
-LastModificationErrors,
-State,
-SubnetArn,
-Tags
+configuration,
+connect_attachment_id,
+connect_peer_id,
+core_network_id,
+created_at,
+edge_location,
+last_modification_errors,
+state,
+subnet_arn,
+tags
 FROM aws.networkmanager.connect_peers
 WHERE connect_peer_id = '{{ connect_peer_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -326,14 +326,14 @@ Returns a list of core network Connect peers.
 
 ```sql
 SELECT
-ConnectAttachmentId,
-ConnectPeerId,
-ConnectPeerState,
-CoreNetworkId,
-CreatedAt,
-EdgeLocation,
-SubnetArn,
-Tags
+connect_attachment_id,
+connect_peer_id,
+connect_peer_state,
+core_network_id,
+created_at,
+edge_location,
+subnet_arn,
+tags
 FROM aws.networkmanager.connect_peers
 WHERE region = '{{ region }}' -- required
 AND coreNetworkId = '{{ coreNetworkId }}'
@@ -382,7 +382,7 @@ SELECT
 '{{ SubnetArn }}',
 '{{ region }}'
 RETURNING
-ConnectPeer
+connect_peer
 ;
 ```
 </TabItem>
@@ -449,7 +449,7 @@ AND region = '{{ region }}' --required
 AND ConnectPeerId = '{{ ConnectPeerId }}' --required
 AND DeviceId = '{{ DeviceId }}' --required
 RETURNING
-ConnectPeerAssociation;
+connect_peer_association;
 ```
 </TabItem>
 <TabItem value="associate_transit_gateway_connect_peer">
@@ -468,7 +468,7 @@ AND region = '{{ region }}' --required
 AND TransitGatewayConnectPeerArn = '{{ TransitGatewayConnectPeerArn }}' --required
 AND DeviceId = '{{ DeviceId }}' --required
 RETURNING
-TransitGatewayConnectPeerAssociation;
+transit_gateway_connect_peer_association;
 ```
 </TabItem>
 <TabItem value="disassociate_connect_peer">
@@ -484,7 +484,7 @@ global_network_id = '{{ global_network_id }}' --required
 AND connect_peer_id = '{{ connect_peer_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ConnectPeerAssociation;
+connect_peer_association;
 ```
 </TabItem>
 <TabItem value="disassociate_transit_gateway_connect_peer">
@@ -500,7 +500,7 @@ global_network_id = '{{ global_network_id }}' --required
 AND transit_gateway_connect_peer_arn = '{{ transit_gateway_connect_peer_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-TransitGatewayConnectPeerAssociation;
+transit_gateway_connect_peer_association;
 ```
 </TabItem>
 </Tabs>

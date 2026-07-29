@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Groups" /></td>
+    <td><CopyableCode code="groups" /></td>
     <td><code>string</code></td>
     <td>The security groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>Any tags assigned to the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the VPC.</td>
 </tr>
@@ -159,10 +159,10 @@ This action is deprecated. Describes your linked EC2-Classic instances. This req
 
 ```sql
 SELECT
-Groups,
-InstanceId,
-Tags,
-VpcId
+groups,
+instance_id,
+tags,
+vpc_id
 FROM aws.ec2.classic_link_instances
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'

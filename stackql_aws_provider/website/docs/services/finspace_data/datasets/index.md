@@ -56,27 +56,27 @@ The following fields are returned by `SELECT` queries:
     <td>The unique resource identifier for a Dataset. (pattern: &lt;code&gt;^alias\/\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the Dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetDescription" /></td>
+    <td><CopyableCode code="dataset_description" /></td>
     <td><code>string</code></td>
     <td>Description of a dataset (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetId" /></td>
+    <td><CopyableCode code="dataset_id" /></td>
     <td><code>string</code></td>
     <td>ID for a given Dataset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetTitle" /></td>
+    <td><CopyableCode code="dataset_title" /></td>
     <td><code>string</code></td>
     <td>Title for a given Dataset (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -86,12 +86,12 @@ The following fields are returned by `SELECT` queries:
     <td>Dataset Kind (TABULAR, NON_TABULAR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaDefinition" /></td>
+    <td><CopyableCode code="schema_definition" /></td>
     <td><code>object</code></td>
     <td>A union of schema types.</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
     <td>The unique resource identifier for a Dataset. (pattern: &lt;code&gt;^alias\/\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN identifier of the Dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetDescription" /></td>
+    <td><CopyableCode code="dataset_description" /></td>
     <td><code>string</code></td>
     <td>Description of a dataset (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetId" /></td>
+    <td><CopyableCode code="dataset_id" /></td>
     <td><code>string</code></td>
     <td>ID for a given Dataset</td>
 </tr>
 <tr>
-    <td><CopyableCode code="datasetTitle" /></td>
+    <td><CopyableCode code="dataset_title" /></td>
     <td><code>string</code></td>
     <td>Title for a given Dataset (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -150,17 +150,17 @@ The following fields are returned by `SELECT` queries:
     <td>Dataset Kind (TABULAR, NON_TABULAR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>Milliseconds since UTC epoch</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerInfo" /></td>
+    <td><CopyableCode code="owner_info" /></td>
     <td><code>object</code></td>
     <td>A structure for Dataset owner info.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaDefinition" /></td>
+    <td><CopyableCode code="schema_definition" /></td>
     <td><code>object</code></td>
     <td>A union of schema types.</td>
 </tr>
@@ -279,14 +279,14 @@ Returns information about a Dataset.
 ```sql
 SELECT
 alias,
-createTime,
-datasetArn,
-datasetDescription,
-datasetId,
-datasetTitle,
+create_time,
+dataset_arn,
+dataset_description,
+dataset_id,
+dataset_title,
 kind,
-lastModifiedTime,
-schemaDefinition,
+last_modified_time,
+schema_definition,
 status
 FROM aws.finspace_data.datasets
 WHERE dataset_id = '{{ dataset_id }}' -- required
@@ -301,15 +301,15 @@ Lists all of the active Datasets that a user has access to.
 ```sql
 SELECT
 alias,
-createTime,
-datasetArn,
-datasetDescription,
-datasetId,
-datasetTitle,
+create_time,
+dataset_arn,
+dataset_description,
+dataset_id,
+dataset_title,
 kind,
-lastModifiedTime,
-ownerInfo,
-schemaDefinition
+last_modified_time,
+owner_info,
+schema_definition
 FROM aws.finspace_data.datasets
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -356,7 +356,7 @@ SELECT
 '{{ schemaDefinition }}',
 '{{ region }}'
 RETURNING
-datasetId
+dataset_id
 ;
 ```
 </TabItem>
@@ -445,7 +445,7 @@ AND region = '{{ region }}' --required
 AND datasetTitle = '{{ datasetTitle }}' --required
 AND kind = '{{ kind }}' --required
 RETURNING
-datasetId;
+dataset_id;
 ```
 </TabItem>
 </Tabs>

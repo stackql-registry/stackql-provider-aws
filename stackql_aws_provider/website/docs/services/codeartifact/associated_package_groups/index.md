@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associationType" /></td>
+    <td><CopyableCode code="association_type" /></td>
     <td><code>string</code></td>
     <td>Describes the strength of the association between the package and package group. A strong match is also known as an exact match, and a weak match is known as a relative match. (STRONG, WEAK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="packageGroup" /></td>
+    <td><CopyableCode code="package_group" /></td>
     <td><code>object</code></td>
     <td>The package group that is associated with the requested package.</td>
 </tr>
@@ -149,8 +149,8 @@ Returns the most closely associated package group to the specified package. This
 
 ```sql
 SELECT
-associationType,
-packageGroup
+association_type,
+package_group
 FROM aws.codeartifact.associated_package_groups
 WHERE domain = '{{ domain }}' -- required
 AND format = '{{ format }}' -- required

@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedItems" /></td>
+    <td><CopyableCode code="failed_items" /></td>
     <td><code>object</code></td>
     <td>Finding details that cannot be described. An error code is provided for each failed item.</td>
 </tr>
@@ -166,7 +166,7 @@ Describes the findings that are specified by the ARNs of the findings.
 
 ```sql
 SELECT
-failedItems,
+failed_items,
 findings
 FROM aws.inspector.findings
 WHERE region = '{{ region }}' -- required
@@ -211,7 +211,7 @@ region = '{{ region }}' --required
 AND findingArns = '{{ findingArns }}' --required
 AND attributes = '{{ attributes }}' --required
 RETURNING
-failedItems;
+failed_items;
 ```
 </TabItem>
 <TabItem value="remove_attributes_from_findings">
@@ -228,7 +228,7 @@ region = '{{ region }}' --required
 AND findingArns = '{{ findingArns }}' --required
 AND attributeKeys = '{{ attributeKeys }}' --required
 RETURNING
-failedItems;
+failed_items;
 ```
 </TabItem>
 </Tabs>

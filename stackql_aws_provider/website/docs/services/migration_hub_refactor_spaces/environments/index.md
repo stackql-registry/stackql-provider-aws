@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the environment. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the environment is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_\s\.\!\*\#\@\'&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the environment resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the environment was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment. (pattern: &lt;code&gt;^(?!env-)&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9-_ &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkFabricType" /></td>
+    <td><CopyableCode code="network_fabric_type" /></td>
     <td><code>string</code></td>
     <td>The network fabric type of the environment. (TRANSIT_GATEWAY, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the environment owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the environment. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags to assign to the environment. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key-value pair.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Transit Gateway set up by the environment, if applicable. (pattern: &lt;code&gt;^tgw-&#91;-a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the environment. (pattern: &lt;code&gt;^arn:aws:refactor-spaces:&#91;a-zA-Z0-9\-&#93;+:\w&#123;12&#125;:&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the environment is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the environment. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-_\s\.\!\*\#\@\'&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnvironmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the environment. (pattern: &lt;code&gt;^env-&#91;0-9A-Za-z&#93;&#123;10&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Error" /></td>
+    <td><CopyableCode code="error" /></td>
     <td><code>object</code></td>
     <td>Any error associated with the environment resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the environment was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment. (pattern: &lt;code&gt;^(?!env-)&#91;a-zA-Z0-9&#93;+&#91;a-zA-Z0-9-_ &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkFabricType" /></td>
+    <td><CopyableCode code="network_fabric_type" /></td>
     <td><code>string</code></td>
     <td>The network fabric type of the environment. (TRANSIT_GATEWAY, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the environment owner. (pattern: &lt;code&gt;^\d&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the environment. (CREATING, ACTIVE, DELETING, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TransitGatewayId" /></td>
+    <td><CopyableCode code="transit_gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Transit Gateway set up by the environment. (pattern: &lt;code&gt;^tgw-&#91;-a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -286,18 +286,18 @@ Gets an Amazon Web Services Migration Hub Refactor Spaces environment.
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Description,
-EnvironmentId,
-Error,
-LastUpdatedTime,
-Name,
-NetworkFabricType,
-OwnerAccountId,
-State,
-Tags,
-TransitGatewayId
+arn,
+created_time,
+description,
+environment_id,
+error,
+last_updated_time,
+name,
+network_fabric_type,
+owner_account_id,
+state,
+tags,
+transit_gateway_id
 FROM aws.migration_hub_refactor_spaces.environments
 WHERE environment_identifier = '{{ environment_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -310,18 +310,18 @@ Lists Amazon Web Services Migration Hub Refactor Spaces environments owned by a 
 
 ```sql
 SELECT
-Arn,
-CreatedTime,
-Description,
-EnvironmentId,
-Error,
-LastUpdatedTime,
-Name,
-NetworkFabricType,
-OwnerAccountId,
-State,
-Tags,
-TransitGatewayId
+arn,
+created_time,
+description,
+environment_id,
+error,
+last_updated_time,
+name,
+network_fabric_type,
+owner_account_id,
+state,
+tags,
+transit_gateway_id
 FROM aws.migration_hub_refactor_spaces.environments
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -362,16 +362,16 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-CreatedTime,
-Description,
-EnvironmentId,
-LastUpdatedTime,
-Name,
-NetworkFabricType,
-OwnerAccountId,
-State,
-Tags
+arn,
+created_time,
+description,
+environment_id,
+last_updated_time,
+name,
+network_fabric_type,
+owner_account_id,
+state,
+tags
 ;
 ```
 </TabItem>

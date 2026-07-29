@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasName" /></td>
+    <td><CopyableCode code="alias_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the template alias. (pattern: &lt;code&gt;&#91;\w\-&#93;+|(\$LATEST)|(\$PUBLISHED)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the template alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateVersionNumber" /></td>
+    <td><CopyableCode code="template_version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the template alias.</td>
 </tr>
@@ -149,9 +149,9 @@ Lists all the aliases of a template.
 
 ```sql
 SELECT
-AliasName,
-Arn,
-TemplateVersionNumber
+alias_name,
+arn,
+template_version_number
 FROM aws.quicksight.template_aliases
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND template_id = '{{ template_id }}' -- required

@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Ip" /></td>
+    <td><CopyableCode code="ip" /></td>
     <td><code>string</code></td>
     <td>An IPv4 address.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolName" /></td>
+    <td><CopyableCode code="pool_name" /></td>
     <td><code>string</code></td>
     <td>The name of a dedicated IP pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmupPercentage" /></td>
+    <td><CopyableCode code="warmup_percentage" /></td>
     <td><code>integer</code></td>
     <td>Indicates the progress of your dedicated IP warm-up: 0-100 – For standard dedicated IP addresses, this shows the warm-up completion percentage. A value of 100 means the IP address is fully warmed up and ready for use. -1 – Appears for IP addresses in managed dedicated pools where Amazon SES automatically handles the warm-up process, making the percentage not applicable.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WarmupStatus" /></td>
+    <td><CopyableCode code="warmup_status" /></td>
     <td><code>string</code></td>
     <td>The warm-up status of a dedicated IP address. The status can have one of the following values: IN_PROGRESS – The IP address isn't ready to use because the dedicated IP warm-up process is ongoing. DONE – The dedicated IP warm-up process is complete, and the IP address is ready to use. NOT_APPLICABLE – The warm-up status doesn't apply to this IP address. This status is used for IP addresses in managed dedicated IP pools, where Amazon SES automatically handles the warm-up process. (IN_PROGRESS, DONE, NOT_APPLICABLE)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DedicatedIps" /></td>
+    <td><CopyableCode code="dedicated_ips" /></td>
     <td><code>array</code></td>
     <td>A list of dedicated IP addresses that are associated with your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token that indicates that there are additional dedicated IP addresses to list. To view additional addresses, issue another request to GetDedicatedIps, passing this token in the NextToken parameter.</td>
 </tr>
@@ -201,10 +201,10 @@ Get information about a dedicated IP address, including the name of the dedicate
 
 ```sql
 SELECT
-Ip,
-PoolName,
-WarmupPercentage,
-WarmupStatus
+ip,
+pool_name,
+warmup_percentage,
+warmup_status
 FROM aws.sesv2.dedicated_ips
 WHERE ip = '{{ ip }}' -- required
 AND region = '{{ region }}' -- required
@@ -217,8 +217,8 @@ List the dedicated IP addresses that are associated with your Amazon Web Service
 
 ```sql
 SELECT
-DedicatedIps,
-NextToken
+dedicated_ips,
+next_token
 FROM aws.sesv2.dedicated_ips
 WHERE region = '{{ region }}' -- required
 AND PoolName = '{{ PoolName }}'

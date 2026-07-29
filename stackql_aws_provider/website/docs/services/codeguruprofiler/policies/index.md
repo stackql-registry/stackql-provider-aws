@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The JSON-formatted resource-based policy attached to the ProfilingGroup.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="revisionId" /></td>
+    <td><CopyableCode code="revision_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the current revision of the returned policy. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -130,7 +130,7 @@ Returns the JSON-formatted resource-based policy on a profiling group.
 ```sql
 SELECT
 policy,
-revisionId
+revision_id
 FROM aws.codeguruprofiler.policies
 WHERE profiling_group_name = '{{ profiling_group_name }}' -- required
 AND region = '{{ region }}' -- required

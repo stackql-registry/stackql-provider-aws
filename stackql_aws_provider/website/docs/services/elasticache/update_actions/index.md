@@ -50,87 +50,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CacheClusterId" /></td>
+    <td><CopyableCode code="cache_cluster_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the cache cluster</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheNodeUpdateStatus" /></td>
+    <td><CopyableCode code="cache_node_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the service update on the cache node</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The Elasticache engine to which the update applies. Either Valkey, Redis OSS or Memcached.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedUpdateTime" /></td>
+    <td><CopyableCode code="estimated_update_time" /></td>
     <td><code>string</code></td>
     <td>The estimated length of time for the update to complete</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodeGroupUpdateStatus" /></td>
+    <td><CopyableCode code="node_group_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the service update on the node group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NodesUpdated" /></td>
+    <td><CopyableCode code="nodes_updated" /></td>
     <td><code>string</code></td>
     <td>The progress of the service update on the replication group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReplicationGroupId" /></td>
+    <td><CopyableCode code="replication_group_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the replication group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateName" /></td>
+    <td><CopyableCode code="service_update_name" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateRecommendedApplyByDate" /></td>
+    <td><CopyableCode code="service_update_recommended_apply_by_date" /></td>
     <td><code>string</code></td>
     <td>The recommended date to apply the service update to ensure compliance. For information on compliance, see Self-Service Security Updates for Compliance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateReleaseDate" /></td>
+    <td><CopyableCode code="service_update_release_date" /></td>
     <td><code>string</code></td>
     <td>The date the update is first available</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateSeverity" /></td>
+    <td><CopyableCode code="service_update_severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateStatus" /></td>
+    <td><CopyableCode code="service_update_status" /></td>
     <td><code>string</code></td>
     <td>The status of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUpdateType" /></td>
+    <td><CopyableCode code="service_update_type" /></td>
     <td><code>string</code></td>
     <td>Reflects the nature of the service update</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlaMet" /></td>
+    <td><CopyableCode code="sla_met" /></td>
     <td><code>string</code></td>
     <td>If yes, all nodes in the replication group have been updated by the recommended apply-by date. If no, at least one node in the replication group have not been updated by the recommended apply-by date. If N/A, the replication group was created after the recommended apply-by date.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateActionAvailableDate" /></td>
+    <td><CopyableCode code="update_action_available_date" /></td>
     <td><code>string</code></td>
     <td>The date that the service update is available to a replication group</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateActionStatus" /></td>
+    <td><CopyableCode code="update_action_status" /></td>
     <td><code>string</code></td>
     <td>The status of the update action</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateActionStatusModifiedDate" /></td>
+    <td><CopyableCode code="update_action_status_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date when the UpdateActionStatus was last modified</td>
 </tr>
@@ -249,23 +249,23 @@ Returns details of the update actions
 
 ```sql
 SELECT
-CacheClusterId,
-CacheNodeUpdateStatus,
-Engine,
-EstimatedUpdateTime,
-NodeGroupUpdateStatus,
-NodesUpdated,
-ReplicationGroupId,
-ServiceUpdateName,
-ServiceUpdateRecommendedApplyByDate,
-ServiceUpdateReleaseDate,
-ServiceUpdateSeverity,
-ServiceUpdateStatus,
-ServiceUpdateType,
-SlaMet,
-UpdateActionAvailableDate,
-UpdateActionStatus,
-UpdateActionStatusModifiedDate
+cache_cluster_id,
+cache_node_update_status,
+engine,
+estimated_update_time,
+node_group_update_status,
+nodes_updated,
+replication_group_id,
+service_update_name,
+service_update_recommended_apply_by_date,
+service_update_release_date,
+service_update_severity,
+service_update_status,
+service_update_type,
+sla_met,
+update_action_available_date,
+update_action_status,
+update_action_status_modified_date
 FROM aws.elasticache.update_actions
 WHERE region = '{{ region }}' -- required
 AND ServiceUpdateName = '{{ ServiceUpdateName }}'

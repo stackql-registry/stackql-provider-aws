@@ -51,242 +51,242 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AdditionalEmailRecipients" /></td>
+    <td><CopyableCode code="additional_email_recipients" /></td>
     <td><code>object</code></td>
     <td>List of additional email addresses for an email contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AgentInfo" /></td>
+    <td><CopyableCode code="agent_info" /></td>
     <td><code>object</code></td>
     <td>Information about the agent who accepted the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AnsweringMachineDetectionStatus" /></td>
+    <td><CopyableCode code="answering_machine_detection_status" /></td>
     <td><code>string</code></td>
     <td>Indicates how an outbound campaign call is actually disposed if the contact is connected to Amazon Connect. (ANSWERED, UNDETECTED, ERROR, HUMAN_ANSWERED, SIT_TONE_DETECTED, SIT_TONE_BUSY, SIT_TONE_INVALID_NUMBER, FAX_MACHINE_DETECTED, VOICEMAIL_BEEP, VOICEMAIL_NO_BEEP, AMD_UNRESOLVED, AMD_UNANSWERED, AMD_ERROR, AMD_NOT_APPLICABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Attributes" /></td>
+    <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
     <td>The attributes of the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Campaign" /></td>
+    <td><CopyableCode code="campaign" /></td>
     <td><code>object</code></td>
     <td>Information associated with a campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Channel" /></td>
+    <td><CopyableCode code="channel" /></td>
     <td><code>string</code></td>
     <td>How the contact reached your contact center. (VOICE, CHAT, TASK, EMAIL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChatMetrics" /></td>
+    <td><CopyableCode code="chat_metrics" /></td>
     <td><code>object</code></td>
     <td>Information about how agent, bot, and customer interact in a chat contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectedToSystemTimestamp" /></td>
+    <td><CopyableCode code="connected_to_system_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when customer endpoint connected to Amazon Connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactAssociationId" /></td>
+    <td><CopyableCode code="contact_association_id" /></td>
     <td><code>string</code></td>
     <td>This is the root contactId which is used as a unique identifier for all subsequent contacts in a contact tree.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactDetails" /></td>
+    <td><CopyableCode code="contact_details" /></td>
     <td><code>object</code></td>
     <td>A map of string key/value pairs that contain user-defined attributes which are lightly typed within the contact. This object is used only for task contacts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContactEvaluations" /></td>
+    <td><CopyableCode code="contact_evaluations" /></td>
     <td><code>object</code></td>
     <td>Information about the contact evaluations where the key is the FormId, which is a unique identifier for the form.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Customer" /></td>
+    <td><CopyableCode code="customer" /></td>
     <td><code>object</code></td>
     <td>Information about the Customer on the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerEndpoint" /></td>
+    <td><CopyableCode code="customer_endpoint" /></td>
     <td><code>object</code></td>
     <td>The customer or external third party participant endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerId" /></td>
+    <td><CopyableCode code="customer_id" /></td>
     <td><code>string</code></td>
     <td>The customer's identification number. For example, the CustomerId may be a customer number from your CRM. You can create a Lambda function to pull the unique customer ID of the caller from your CRM system. If you enable Amazon Connect Voice ID capability, this attribute is populated with the CustomerSpeakerId of the caller.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerVoiceActivity" /></td>
+    <td><CopyableCode code="customer_voice_activity" /></td>
     <td><code>object</code></td>
     <td>Information about customer’s voice activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisconnectDetails" /></td>
+    <td><CopyableCode code="disconnect_details" /></td>
     <td><code>object</code></td>
     <td>Information about the call disconnect experience.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisconnectReason" /></td>
+    <td><CopyableCode code="disconnect_reason" /></td>
     <td><code>string</code></td>
     <td>The disconnect reason for the contact. For a list and description of all the possible disconnect reasons by channel, see DisconnectReason under ContactTraceRecord in the Amazon Connect Administrator Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisconnectTimestamp" /></td>
+    <td><CopyableCode code="disconnect_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the customer endpoint disconnected from the current contact, in UTC time. In transfer scenarios, the DisconnectTimestamp of the previous contact indicates the date and time when that contact ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalResiliencyMetadata" /></td>
+    <td><CopyableCode code="global_resiliency_metadata" /></td>
     <td><code>object</code></td>
     <td>Information about the global resiliency configuration for the contact, including traffic distribution details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitialContactId" /></td>
+    <td><CopyableCode code="initial_contact_id" /></td>
     <td><code>string</code></td>
     <td>If this contact is related to other contacts, this is the ID of the initial contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiationMethod" /></td>
+    <td><CopyableCode code="initiation_method" /></td>
     <td><code>string</code></td>
     <td>Indicates how the contact was initiated. (INBOUND, OUTBOUND, TRANSFER, QUEUE_TRANSFER, CALLBACK, API, DISCONNECT, MONITOR, EXTERNAL_OUTBOUND, WEBRTC_API, AGENT_REPLY, FLOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiationTimestamp" /></td>
+    <td><CopyableCode code="initiation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time this contact was initiated, in UTC time. For INBOUND, this is when the contact arrived. For OUTBOUND, this is when the agent began dialing. For CALLBACK, this is when the callback contact was created. For TRANSFER and QUEUE_TRANSFER, this is when the transfer was initiated. For API, this is when the request arrived. For EXTERNAL_OUTBOUND, this is when the agent started dialing the external participant. For MONITOR, this is when the supervisor started listening to a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastPausedTimestamp" /></td>
+    <td><CopyableCode code="last_paused_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the contact was last paused.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastResumedTimestamp" /></td>
+    <td><CopyableCode code="last_resumed_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the contact was last resumed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdateTimestamp" /></td>
+    <td><CopyableCode code="last_update_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when contact was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextContacts" /></td>
+    <td><CopyableCode code="next_contacts" /></td>
     <td><code>array</code></td>
     <td>List of next contact entries for the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutboundStrategy" /></td>
+    <td><CopyableCode code="outbound_strategy" /></td>
     <td><code>object</code></td>
     <td>Information about the outbound strategy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousContactId" /></td>
+    <td><CopyableCode code="previous_contact_id" /></td>
     <td><code>string</code></td>
     <td>If this contact is not the first contact, this is the ID of the previous contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QualityMetrics" /></td>
+    <td><CopyableCode code="quality_metrics" /></td>
     <td><code>object</code></td>
     <td>Information about the quality of the participant's media connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueInfo" /></td>
+    <td><CopyableCode code="queue_info" /></td>
     <td><code>object</code></td>
     <td>If this contact was queued, this contains information about the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueuePriority" /></td>
+    <td><CopyableCode code="queue_priority" /></td>
     <td><code>integer (int64)</code></td>
     <td>An integer that represents the queue priority to be applied to the contact (lower priorities are routed preferentially). Cannot be specified if the QueueTimeAdjustmentSeconds is specified. Must be statically defined, must be larger than zero, and a valid integer value. Default Value is 5.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueTimeAdjustmentSeconds" /></td>
+    <td><CopyableCode code="queue_time_adjustment_seconds" /></td>
     <td><code>integer</code></td>
     <td>An integer that represents the queue time adjust to be applied to the contact, in seconds (longer / larger queue time are routed preferentially). Cannot be specified if the QueuePriority is specified. Must be statically defined and a valid integer value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recordings" /></td>
+    <td><CopyableCode code="recordings" /></td>
     <td><code>array</code></td>
     <td>If recording was enabled, this is information about the recordings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedContactId" /></td>
+    <td><CopyableCode code="related_contact_id" /></td>
     <td><code>string</code></td>
     <td>The contactId that is related to this contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RingStartTimestamp" /></td>
+    <td><CopyableCode code="ring_start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when ringing started for a campaign call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingCriteria" /></td>
+    <td><CopyableCode code="routing_criteria" /></td>
     <td><code>object</code></td>
     <td>Latest routing criteria on the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledTimestamp" /></td>
+    <td><CopyableCode code="scheduled_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, in Unix epoch time format, at which to start running the inbound flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentAttributes" /></td>
+    <td><CopyableCode code="segment_attributes" /></td>
     <td><code>object</code></td>
     <td>A set of system defined key-value pairs stored on individual contact segments using an attribute map. The attributes are standard Amazon Connect attributes and can be accessed in flows. Attribute keys can include only alphanumeric, -, and _ characters. This field can be used to show channel subtype. For example, connect:Guide or connect:SMS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SystemEndpoint" /></td>
+    <td><CopyableCode code="system_endpoint" /></td>
     <td><code>object</code></td>
     <td>The system endpoint. For INBOUND, this is the phone number or email address that the customer dialed. For OUTBOUND and EXTERNAL_OUTBOUND, this is the outbound caller ID number assigned to the outbound queue that is used to dial the customer. For callback, this shows up as Softphone for calls handled by agents with softphone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the contact. This contains both Amazon Web Services generated and user-defined tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskTemplateInfo" /></td>
+    <td><CopyableCode code="task_template_info" /></td>
     <td><code>object</code></td>
     <td>If this contact was created using a task template, this contains information about the task template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalPauseCount" /></td>
+    <td><CopyableCode code="total_pause_count" /></td>
     <td><code>integer</code></td>
     <td>Total pause count for a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalPauseDurationInSeconds" /></td>
+    <td><CopyableCode code="total_pause_duration_in_seconds" /></td>
     <td><code>integer</code></td>
     <td>Total pause duration for a contact in seconds.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WisdomInfo" /></td>
+    <td><CopyableCode code="wisdom_info" /></td>
     <td><code>object</code></td>
     <td>Information about Amazon Connect Wisdom.</td>
 </tr>
@@ -305,82 +305,82 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AgentInfo" /></td>
+    <td><CopyableCode code="agent_info" /></td>
     <td><code>object</code></td>
     <td>Information about the agent who accepted the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Channel" /></td>
+    <td><CopyableCode code="channel" /></td>
     <td><code>string</code></td>
     <td>How the contact reached your contact center. (VOICE, CHAT, TASK, EMAIL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisconnectTimestamp" /></td>
+    <td><CopyableCode code="disconnect_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the customer endpoint disconnected from Amazon Connect.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GlobalResiliencyMetadata" /></td>
+    <td><CopyableCode code="global_resiliency_metadata" /></td>
     <td><code>object</code></td>
     <td>Additional routing information for contacts created in ACGR instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the contact summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitialContactId" /></td>
+    <td><CopyableCode code="initial_contact_id" /></td>
     <td><code>string</code></td>
     <td>If this contact is related to other contacts, this is the ID of the initial contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiationMethod" /></td>
+    <td><CopyableCode code="initiation_method" /></td>
     <td><code>string</code></td>
     <td>Indicates how the contact was initiated. (INBOUND, OUTBOUND, TRANSFER, QUEUE_TRANSFER, CALLBACK, API, DISCONNECT, MONITOR, EXTERNAL_OUTBOUND, WEBRTC_API, AGENT_REPLY, FLOW)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InitiationTimestamp" /></td>
+    <td><CopyableCode code="initiation_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time this contact was initiated, in UTC time. For INBOUND, this is when the contact arrived. For OUTBOUND, this is when the agent began dialing. For CALLBACK, this is when the callback contact was created. For TRANSFER and QUEUE_TRANSFER, this is when the transfer was initiated. For API, this is when the request arrived. For EXTERNAL_OUTBOUND, this is when the agent started dialing the external participant. For MONITOR, this is when the supervisor started listening to a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Indicates name of the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreviousContactId" /></td>
+    <td><CopyableCode code="previous_contact_id" /></td>
     <td><code>string</code></td>
     <td>If this contact is not the first contact, this is the ID of the previous contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueInfo" /></td>
+    <td><CopyableCode code="queue_info" /></td>
     <td><code>object</code></td>
     <td>If this contact was queued, this contains information about the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingCriteria" /></td>
+    <td><CopyableCode code="routing_criteria" /></td>
     <td><code>object</code></td>
     <td>Latest routing criteria on the contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScheduledTimestamp" /></td>
+    <td><CopyableCode code="scheduled_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp, in Unix epoch time format, at which to start running the inbound flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SegmentAttributes" /></td>
+    <td><CopyableCode code="segment_attributes" /></td>
     <td><code>object</code></td>
     <td>Set of segment attributes for a contact.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the contact. This contains both Amazon Web Services generated and user-defined tags.</td>
 </tr>
@@ -575,54 +575,54 @@ This API is in preview release for Amazon Connect and is subject to change. Desc
 
 ```sql
 SELECT
-AdditionalEmailRecipients,
-AgentInfo,
-AnsweringMachineDetectionStatus,
-Arn,
-Attributes,
-Campaign,
-Channel,
-ChatMetrics,
-ConnectedToSystemTimestamp,
-ContactAssociationId,
-ContactDetails,
-ContactEvaluations,
-Customer,
-CustomerEndpoint,
-CustomerId,
-CustomerVoiceActivity,
-Description,
-DisconnectDetails,
-DisconnectReason,
-DisconnectTimestamp,
-GlobalResiliencyMetadata,
-Id,
-InitialContactId,
-InitiationMethod,
-InitiationTimestamp,
-LastPausedTimestamp,
-LastResumedTimestamp,
-LastUpdateTimestamp,
-Name,
-NextContacts,
-OutboundStrategy,
-PreviousContactId,
-QualityMetrics,
-QueueInfo,
-QueuePriority,
-QueueTimeAdjustmentSeconds,
-Recordings,
-RelatedContactId,
-RingStartTimestamp,
-RoutingCriteria,
-ScheduledTimestamp,
-SegmentAttributes,
-SystemEndpoint,
-Tags,
-TaskTemplateInfo,
-TotalPauseCount,
-TotalPauseDurationInSeconds,
-WisdomInfo
+additional_email_recipients,
+agent_info,
+answering_machine_detection_status,
+arn,
+attributes,
+campaign,
+channel,
+chat_metrics,
+connected_to_system_timestamp,
+contact_association_id,
+contact_details,
+contact_evaluations,
+customer,
+customer_endpoint,
+customer_id,
+customer_voice_activity,
+description,
+disconnect_details,
+disconnect_reason,
+disconnect_timestamp,
+global_resiliency_metadata,
+id,
+initial_contact_id,
+initiation_method,
+initiation_timestamp,
+last_paused_timestamp,
+last_resumed_timestamp,
+last_update_timestamp,
+name,
+next_contacts,
+outbound_strategy,
+previous_contact_id,
+quality_metrics,
+queue_info,
+queue_priority,
+queue_time_adjustment_seconds,
+recordings,
+related_contact_id,
+ring_start_timestamp,
+routing_criteria,
+scheduled_timestamp,
+segment_attributes,
+system_endpoint,
+tags,
+task_template_info,
+total_pause_count,
+total_pause_duration_in_seconds,
+wisdom_info
 FROM aws.connect.contacts
 WHERE instance_id = '{{ instance_id }}' -- required
 AND contact_id = '{{ contact_id }}' -- required
@@ -636,22 +636,22 @@ Searches contacts in an Amazon Connect instance.
 
 ```sql
 SELECT
-AgentInfo,
-Arn,
-Channel,
-DisconnectTimestamp,
-GlobalResiliencyMetadata,
-Id,
-InitialContactId,
-InitiationMethod,
-InitiationTimestamp,
-Name,
-PreviousContactId,
-QueueInfo,
-RoutingCriteria,
-ScheduledTimestamp,
-SegmentAttributes,
-Tags
+agent_info,
+arn,
+channel,
+disconnect_timestamp,
+global_resiliency_metadata,
+id,
+initial_contact_id,
+initiation_method,
+initiation_timestamp,
+name,
+previous_contact_id,
+queue_info,
+routing_criteria,
+scheduled_timestamp,
+segment_attributes,
+tags
 FROM aws.connect.contacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -708,8 +708,8 @@ SELECT
 '{{ PreviousContactId }}',
 '{{ region }}'
 RETURNING
-ContactArn,
-ContactId
+contact_arn,
+contact_id
 ;
 ```
 </TabItem>

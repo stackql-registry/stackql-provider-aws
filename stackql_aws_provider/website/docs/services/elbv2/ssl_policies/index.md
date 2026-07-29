@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Ciphers" /></td>
+    <td><CopyableCode code="ciphers" /></td>
     <td><code>string</code></td>
     <td>The ciphers.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SslProtocols" /></td>
+    <td><CopyableCode code="ssl_protocols" /></td>
     <td><code>string</code></td>
     <td>The protocols.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedLoadBalancerTypes" /></td>
+    <td><CopyableCode code="supported_load_balancer_types" /></td>
     <td><code>string</code></td>
     <td>The supported load balancers.</td>
 </tr>
@@ -154,10 +154,10 @@ Describes the specified policies or all policies used for SSL negotiation. For m
 
 ```sql
 SELECT
-Ciphers,
-Name,
-SslProtocols,
-SupportedLoadBalancerTypes
+ciphers,
+name,
+ssl_protocols,
+supported_load_balancer_types
 FROM aws.elbv2.ssl_policies
 WHERE region = '{{ region }}' -- required
 AND Names = '{{ Names }}'

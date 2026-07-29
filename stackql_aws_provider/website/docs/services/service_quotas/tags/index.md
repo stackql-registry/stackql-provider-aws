@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A complex data type that contains zero or more tag elements.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a list of the tags assigned to the specified applied quota.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.service_quotas.tags
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Versions" /></td>
+    <td><CopyableCode code="versions" /></td>
     <td><code>array</code></td>
     <td>List of engine versions that are available for this AWS account.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves an array of all the encoder engine versions that are available in this
 
 ```sql
 SELECT
-Versions
+versions
 FROM aws.medialive.versions
 WHERE region = '{{ region }}' -- required
 ;

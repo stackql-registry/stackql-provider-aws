@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>The value that you specified for CallerReference when you created the reusable delegation set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID that Amazon Route 53 assigns to a reusable delegation set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NameServers" /></td>
+    <td><CopyableCode code="name_servers" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains a list of the authoritative name servers for a hosted zone or for a reusable delegation set.</td>
 </tr>
@@ -80,17 +80,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallerReference" /></td>
+    <td><CopyableCode code="caller_reference" /></td>
     <td><code>string</code></td>
     <td>The value that you specified for CallerReference when you created the reusable delegation set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID that Amazon Route 53 assigns to a reusable delegation set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NameServers" /></td>
+    <td><CopyableCode code="name_servers" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains a list of the authoritative name servers for a hosted zone or for a reusable delegation set.</td>
 </tr>
@@ -196,9 +196,9 @@ Retrieves information about a specified reusable delegation set, including the f
 
 ```sql
 SELECT
-CallerReference,
-Id,
-NameServers
+caller_reference,
+id,
+name_servers
 FROM aws.route53.reusable_delegation_sets
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -211,9 +211,9 @@ Retrieves a list of the reusable delegation sets that are associated with the cu
 
 ```sql
 SELECT
-CallerReference,
-Id,
-NameServers
+caller_reference,
+id,
+name_servers
 FROM aws.route53.reusable_delegation_sets
 WHERE region = '{{ region }}' -- required
 AND marker = '{{ marker }}'
@@ -248,8 +248,8 @@ SELECT
 '{{ HostedZoneId }}',
 '{{ region }}'
 RETURNING
-DelegationSet,
-Location
+delegation_set,
+location
 ;
 ```
 </TabItem>

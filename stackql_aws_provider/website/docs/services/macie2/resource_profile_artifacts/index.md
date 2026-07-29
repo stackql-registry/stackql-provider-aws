@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="classificationResultStatus" /></td>
+    <td><CopyableCode code="classification_result_status" /></td>
     <td><code>string</code></td>
     <td>The status of the analysis. Possible values are: COMPLETE - Amazon Macie successfully completed its analysis of the object. PARTIAL - Macie analyzed only a subset of data in the object. For example, the object is an archive file that contains files in an unsupported format. SKIPPED - Macie wasn't able to analyze the object. For example, the object is a malformed file.</td>
 </tr>
@@ -140,7 +140,7 @@ Retrieves information about objects that Amazon Macie selected from an S3 bucket
 ```sql
 SELECT
 arn,
-classificationResultStatus,
+classification_result_status,
 sensitive
 FROM aws.macie2.resource_profile_artifacts
 WHERE resourceArn = '{{ resourceArn }}' -- required

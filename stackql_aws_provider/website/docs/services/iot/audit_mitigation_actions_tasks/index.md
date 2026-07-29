@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the audit mitigation actions task was started.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the task. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>The current state of the audit mitigation actions task. (IN_PROGRESS, COMPLETED, FAILED, CANCELED)</td>
 </tr>
@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actionsDefinition" /></td>
+    <td><CopyableCode code="actions_definition" /></td>
     <td><code>array</code></td>
     <td>Specifies the mitigation actions and their parameters that are applied as part of this task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="auditCheckToActionsMapping" /></td>
+    <td><CopyableCode code="audit_check_to_actions_mapping" /></td>
     <td><code>object</code></td>
     <td>Specifies the mitigation actions that should be applied to specific audit checks.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the task was completed or canceled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the task was started.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
     <td>Identifies the findings to which the mitigation actions are applied. This can be by audit checks, by audit task, or a set of findings.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatistics" /></td>
+    <td><CopyableCode code="task_statistics" /></td>
     <td><code>object</code></td>
     <td>Aggregate counts of the results when the mitigation tasks were applied to the findings for this audit mitigation actions task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskStatus" /></td>
+    <td><CopyableCode code="task_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the task. (IN_PROGRESS, COMPLETED, FAILED, CANCELED)</td>
 </tr>
@@ -227,9 +227,9 @@ Gets a list of audit mitigation action tasks that match the specified filters. R
 
 ```sql
 SELECT
-startTime,
-taskId,
-taskStatus
+start_time,
+task_id,
+task_status
 FROM aws.iot.audit_mitigation_actions_tasks
 WHERE startTime = '{{ startTime }}' -- required
 AND endTime = '{{ endTime }}' -- required
@@ -248,13 +248,13 @@ Gets information about an audit mitigation task that is used to apply mitigation
 
 ```sql
 SELECT
-actionsDefinition,
-auditCheckToActionsMapping,
-endTime,
-startTime,
+actions_definition,
+audit_check_to_actions_mapping,
+end_time,
+start_time,
 target,
-taskStatistics,
-taskStatus
+task_statistics,
+task_status
 FROM aws.iot.audit_mitigation_actions_tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required

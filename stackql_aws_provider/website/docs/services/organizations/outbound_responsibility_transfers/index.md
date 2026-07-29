@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If present, indicates that more output is available than is included in the current response. Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the NextToken response element comes back as null. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResponsibilityTransfers" /></td>
+    <td><CopyableCode code="responsibility_transfers" /></td>
     <td><code>array</code></td>
     <td>An array of ResponsibilityTransfer objects. Contains details for a transfer.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists transfers that allow an account outside your organization to manage the sp
 
 ```sql
 SELECT
-NextToken,
-ResponsibilityTransfers
+next_token,
+responsibility_transfers
 FROM aws.organizations.outbound_responsibility_transfers
 WHERE region = '{{ region }}' -- required
 ;

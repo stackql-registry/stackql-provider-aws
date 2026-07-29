@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the accessor. For more information about ARNs and their format, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:.+:.+:.+:.+:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingToken" /></td>
+    <td><CopyableCode code="billing_token" /></td>
     <td><code>string</code></td>
     <td>The billing token is a property of the Accessor. Use this token to when making calls to the blockchain network. The billing token is used to track your accessor token for billing requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time of the accessor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the accessor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The blockchain network that the Accessor token is created for. (ETHEREUM_GOERLI, ETHEREUM_MAINNET, ETHEREUM_MAINNET_AND_GOERLI, POLYGON_MAINNET, POLYGON_MUMBAI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the accessor. (AVAILABLE, PENDING_DELETION, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the Accessor. For more information about tags, see Tagging Resources in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the accessor. Currently, accessor type is restricted to BILLING_TOKEN. (BILLING_TOKEN)</td>
 </tr>
@@ -105,32 +105,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the accessor. For more information about ARNs and their format, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;^arn:.+:.+:.+:.+:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date and time of the accessor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the accessor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The blockchain network that the Accessor token is created for. (ETHEREUM_GOERLI, ETHEREUM_MAINNET, ETHEREUM_MAINNET_AND_GOERLI, POLYGON_MAINNET, POLYGON_MUMBAI)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the accessor. (AVAILABLE, PENDING_DELETION, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of the accessor. Currently accessor type is restricted to BILLING_TOKEN. (BILLING_TOKEN)</td>
 </tr>
@@ -241,14 +241,14 @@ Returns detailed information about an accessor. An accessor object is a containe
 
 ```sql
 SELECT
-Arn,
-BillingToken,
-CreationDate,
-Id,
-NetworkType,
-Status,
-Tags,
-Type
+arn,
+billing_token,
+creation_date,
+id,
+network_type,
+status,
+tags,
+type
 FROM aws.managedblockchain.accessors
 WHERE accessor_id = '{{ accessor_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -261,12 +261,12 @@ Returns a list of the accessors and their properties. Accessor objects are conta
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-Id,
-NetworkType,
-Status,
-Type
+arn,
+creation_date,
+id,
+network_type,
+status,
+type
 FROM aws.managedblockchain.accessors
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -306,9 +306,9 @@ SELECT
 '{{ NetworkType }}',
 '{{ region }}'
 RETURNING
-AccessorId,
-BillingToken,
-NetworkType
+accessor_id,
+billing_token,
+network_type
 ;
 ```
 </TabItem>

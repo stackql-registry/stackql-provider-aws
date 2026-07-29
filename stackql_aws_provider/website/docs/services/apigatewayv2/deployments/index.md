@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoDeployed" /></td>
+    <td><CopyableCode code="auto_deployed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a deployment was automatically released.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Deployment resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment: PENDING, FAILED, or SUCCEEDED. (PENDING, FAILED, DEPLOYED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>May contain additional feedback on the status of an API deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
@@ -95,32 +95,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoDeployed" /></td>
+    <td><CopyableCode code="auto_deployed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a deployment was automatically released.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the Deployment resource was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentId" /></td>
+    <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment: PENDING, FAILED, or SUCCEEDED. (PENDING, FAILED, DEPLOYED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>May contain additional feedback on the status of an API deployment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;0-1024&#93;.</td>
 </tr>
@@ -238,12 +238,12 @@ Gets a Deployment.
 
 ```sql
 SELECT
-AutoDeployed,
-CreatedDate,
-DeploymentId,
-DeploymentStatus,
-DeploymentStatusMessage,
-Description
+auto_deployed,
+created_date,
+deployment_id,
+deployment_status,
+deployment_status_message,
+description
 FROM aws.apigatewayv2.deployments
 WHERE api_id = '{{ api_id }}' -- required
 AND deployment_id = '{{ deployment_id }}' -- required
@@ -257,12 +257,12 @@ Gets the Deployments for an API.
 
 ```sql
 SELECT
-AutoDeployed,
-CreatedDate,
-DeploymentId,
-DeploymentStatus,
-DeploymentStatusMessage,
-Description
+auto_deployed,
+created_date,
+deployment_id,
+deployment_status,
+deployment_status_message,
+description
 FROM aws.apigatewayv2.deployments
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -300,12 +300,12 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-AutoDeployed,
-CreatedDate,
-DeploymentId,
-DeploymentStatus,
-DeploymentStatusMessage,
-Description
+auto_deployed,
+created_date,
+deployment_id,
+deployment_status,
+deployment_status_message,
+description
 ;
 ```
 </TabItem>
@@ -355,12 +355,12 @@ api_id = '{{ api_id }}' --required
 AND deployment_id = '{{ deployment_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AutoDeployed,
-CreatedDate,
-DeploymentId,
-DeploymentStatus,
-DeploymentStatusMessage,
-Description;
+auto_deployed,
+created_date,
+deployment_id,
+deployment_status,
+deployment_status_message,
+description;
 ```
 </TabItem>
 </Tabs>

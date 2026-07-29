@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="capabilityConfiguration" /></td>
+    <td><CopyableCode code="capability_configuration" /></td>
     <td><code>string</code></td>
     <td>The JSON document that defines the gateway capability's configuration. For more information, see Configuring data sources (CLI) in the IoT SiteWise User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilityNamespace" /></td>
+    <td><CopyableCode code="capability_namespace" /></td>
     <td><code>string</code></td>
     <td>The namespace of the gateway capability. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+:&#91;a-zA-Z&#93;+:&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="capabilitySyncStatus" /></td>
+    <td><CopyableCode code="capability_sync_status" /></td>
     <td><code>string</code></td>
     <td>The synchronization status of the gateway capability configuration. The sync status can be one of the following: IN_SYNC - The gateway is running with the latest configuration. OUT_OF_SYNC - The gateway hasn't received the latest configuration. SYNC_FAILED - The gateway rejected the latest configuration. UNKNOWN - The gateway hasn't reported its sync status. NOT_APPLICABLE - The gateway doesn't support this capability. This is most common when integrating partner data sources, because the data integration is handled externally by the partner. (IN_SYNC, OUT_OF_SYNC, SYNC_FAILED, UNKNOWN, NOT_APPLICABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="gatewayId" /></td>
+    <td><CopyableCode code="gateway_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the gateway that defines the capability configuration. (pattern: &lt;code&gt;^(?!00000000-0000-0000-0000-000000000000)&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -151,10 +151,10 @@ Each gateway capability defines data sources for a gateway. This is the namespac
 
 ```sql
 SELECT
-capabilityConfiguration,
-capabilityNamespace,
-capabilitySyncStatus,
-gatewayId
+capability_configuration,
+capability_namespace,
+capability_sync_status,
+gateway_id
 FROM aws.iotsitewise.gateway_capability_configurations
 WHERE gateway_id = '{{ gateway_id }}' -- required
 AND capability_namespace = '{{ capability_namespace }}' -- required
@@ -188,8 +188,8 @@ AND region = '{{ region }}' --required
 AND capabilityNamespace = '{{ capabilityNamespace }}' --required
 AND capabilityConfiguration = '{{ capabilityConfiguration }}' --required
 RETURNING
-capabilityNamespace,
-capabilitySyncStatus;
+capability_namespace,
+capability_sync_status;
 ```
 </TabItem>
 </Tabs>

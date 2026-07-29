@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CatalogId" /></td>
+    <td><CopyableCode code="catalog_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the Data Catalog. By default, the account ID in which the LF-Tag expression is saved. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description with information about the LF-Tag expression. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Expression" /></td>
+    <td><CopyableCode code="expression" /></td>
     <td><code>array</code></td>
     <td>The body of the LF-Tag expression. It is composed of one or more LF-Tag key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name for the LF-Tag expression. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -162,10 +162,10 @@ Returns the details about the LF-Tag expression. The caller must be a data lake 
 
 ```sql
 SELECT
-CatalogId,
-Description,
-Expression,
-Name
+catalog_id,
+description,
+expression,
+name
 FROM aws.lakeformation.lf_tag_expressions
 WHERE region = '{{ region }}' -- required
 ;

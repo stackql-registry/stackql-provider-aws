@@ -55,37 +55,37 @@ The following fields are returned by `SELECT` queries:
     <td>The abilities granted to the collaboration member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used to reference members of the collaboration. Currently only supports Amazon Web Services account ID. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the member was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The member's display name. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipArn" /></td>
+    <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the member's associated membership, if present. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="membershipId" /></td>
+    <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the member's associated membership, if present. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mlAbilities" /></td>
+    <td><CopyableCode code="ml_abilities" /></td>
     <td><code>object</code></td>
     <td>The ML member abilities for a collaboration member.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentConfiguration" /></td>
+    <td><CopyableCode code="payment_configuration" /></td>
     <td><code>object</code></td>
     <td>An object representing the collaboration member's payment responsibilities set by the collaboration creator.</td>
 </tr>
@@ -95,7 +95,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the member. (INVITED, ACTIVE, LEFT, REMOVED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the member metadata was last updated.</td>
 </tr>
@@ -192,15 +192,15 @@ Lists all members within a collaboration.
 ```sql
 SELECT
 abilities,
-accountId,
-createTime,
-displayName,
-membershipArn,
-membershipId,
-mlAbilities,
-paymentConfiguration,
+account_id,
+create_time,
+display_name,
+membership_arn,
+membership_id,
+ml_abilities,
+payment_configuration,
 status,
-updateTime
+update_time
 FROM aws.cleanrooms.members
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required

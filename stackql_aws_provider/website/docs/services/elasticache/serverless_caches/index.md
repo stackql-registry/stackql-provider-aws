@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the serverless cache.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CacheUsageLimits" /></td>
+    <td><CopyableCode code="cache_usage_limits" /></td>
     <td><code>string</code></td>
     <td>The cache usage limit for the serverless cache.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string</code></td>
     <td>When the serverless cache was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DailySnapshotTime" /></td>
+    <td><CopyableCode code="daily_snapshot_time" /></td>
     <td><code>string</code></td>
     <td>The daily time that a cache snapshot will be created. Default is NULL, i.e. snapshots will not be created at a specific time on a daily basis. Available for Valkey, Redis OSS and Serverless Memcached only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the serverless cache.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>Represents the information required for client programs to connect to a cache node. This value is read-only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Engine" /></td>
+    <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The engine the serverless cache is compatible with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FullEngineVersion" /></td>
+    <td><CopyableCode code="full_engine_version" /></td>
     <td><code>string</code></td>
     <td>The name and version number of the engine the serverless cache is compatible with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><CopyableCode code="kms_key_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services Key Management Service (KMS) key that is used to encrypt data at rest in the serverless cache.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MajorEngineVersion" /></td>
+    <td><CopyableCode code="major_engine_version" /></td>
     <td><code>string</code></td>
     <td>The version number of the engine the serverless cache is compatible with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The type of IP address protocol used by the serverless cache. Must be either ipv4 | ipv6 | dual_stack. ipv6 is only supported with IPv6-only subnets. If not specified, defaults to ipv4, unless all provided subnets are IPv6-only, in which case it defaults to ipv6.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReaderEndpoint" /></td>
+    <td><CopyableCode code="reader_endpoint" /></td>
     <td><code>string</code></td>
     <td>Represents the information required for client programs to connect to a cache node. This value is read-only.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroupIds" /></td>
+    <td><CopyableCode code="security_group_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the EC2 security groups associated with the serverless cache.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerlessCacheName" /></td>
+    <td><CopyableCode code="serverless_cache_name" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the serverless cache.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotRetentionLimit" /></td>
+    <td><CopyableCode code="snapshot_retention_limit" /></td>
     <td><code>integer</code></td>
     <td>The number of days for which ElastiCache retains automatic snapshots before deleting them. Available for Valkey, Redis OSS and Serverless Memcached only. The maximum value allowed is 35 days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the serverless cache. The allowed values are CREATING, AVAILABLE, DELETING, CREATE-FAILED and MODIFYING.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetIds" /></td>
+    <td><CopyableCode code="subnet_ids" /></td>
     <td><code>string</code></td>
     <td>If no subnet IDs are given and your VPC is in us-west-1, then ElastiCache will select 2 default subnets across AZs in your VPC. For all other Regions, if no subnet IDs are given then ElastiCache will select 3 default subnets across AZs in your default VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserGroupId" /></td>
+    <td><CopyableCode code="user_group_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the user group associated with the serverless cache. Available for Valkey and Redis OSS only. Default is NULL.</td>
 </tr>
@@ -354,24 +354,24 @@ Returns information about a specific serverless cache. If no identifier is speci
 
 ```sql
 SELECT
-ARN,
-CacheUsageLimits,
-CreateTime,
-DailySnapshotTime,
-Description,
-Endpoint,
-Engine,
-FullEngineVersion,
-KmsKeyId,
-MajorEngineVersion,
-NetworkType,
-ReaderEndpoint,
-SecurityGroupIds,
-ServerlessCacheName,
-SnapshotRetentionLimit,
-Status,
-SubnetIds,
-UserGroupId
+arn,
+cache_usage_limits,
+create_time,
+daily_snapshot_time,
+description,
+endpoint,
+engine,
+full_engine_version,
+kms_key_id,
+major_engine_version,
+network_type,
+reader_endpoint,
+security_group_ids,
+serverless_cache_name,
+snapshot_retention_limit,
+status,
+subnet_ids,
+user_group_id
 FROM aws.elasticache.serverless_caches
 WHERE region = '{{ region }}' -- required
 AND ServerlessCacheName = '{{ ServerlessCacheName }}'
@@ -431,24 +431,24 @@ SELECT
 '{{ DailySnapshotTime }}',
 '{{ NetworkType }}'
 RETURNING
-ARN,
-CacheUsageLimits,
-CreateTime,
-DailySnapshotTime,
-Description,
-Endpoint,
-Engine,
-FullEngineVersion,
-KmsKeyId,
-MajorEngineVersion,
-NetworkType,
-ReaderEndpoint,
-SecurityGroupIds,
-ServerlessCacheName,
-SnapshotRetentionLimit,
-Status,
-SubnetIds,
-UserGroupId
+arn,
+cache_usage_limits,
+create_time,
+daily_snapshot_time,
+description,
+endpoint,
+engine,
+full_engine_version,
+kms_key_id,
+major_engine_version,
+network_type,
+reader_endpoint,
+security_group_ids,
+serverless_cache_name,
+snapshot_retention_limit,
+status,
+subnet_ids,
+user_group_id
 ;
 ```
 </TabItem>
@@ -550,24 +550,24 @@ AND DailySnapshotTime = '{{ DailySnapshotTime}}'
 AND Engine = '{{ Engine}}'
 AND MajorEngineVersion = '{{ MajorEngineVersion}}'
 RETURNING
-ARN,
-CacheUsageLimits,
-CreateTime,
-DailySnapshotTime,
-Description,
-Endpoint,
-Engine,
-FullEngineVersion,
-KmsKeyId,
-MajorEngineVersion,
-NetworkType,
-ReaderEndpoint,
-SecurityGroupIds,
-ServerlessCacheName,
-SnapshotRetentionLimit,
-Status,
-SubnetIds,
-UserGroupId;
+arn,
+cache_usage_limits,
+create_time,
+daily_snapshot_time,
+description,
+endpoint,
+engine,
+full_engine_version,
+kms_key_id,
+major_engine_version,
+network_type,
+reader_endpoint,
+security_group_ids,
+serverless_cache_name,
+snapshot_retention_limit,
+status,
+subnet_ids,
+user_group_id;
 ```
 </TabItem>
 </Tabs>

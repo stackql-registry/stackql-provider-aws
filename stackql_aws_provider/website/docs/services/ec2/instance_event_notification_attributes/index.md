@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IncludeAllTagsOfInstance" /></td>
+    <td><CopyableCode code="include_all_tags_of_instance" /></td>
     <td><code>boolean</code></td>
     <td>Indicates wheter all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceTagKeys" /></td>
+    <td><CopyableCode code="instance_tag_keys" /></td>
     <td><code>string</code></td>
     <td>The registered tag keys.</td>
 </tr>
@@ -148,8 +148,8 @@ Describes the tag keys that are registered to appear in scheduled event notifica
 
 ```sql
 SELECT
-IncludeAllTagsOfInstance,
-InstanceTagKeys
+include_all_tags_of_instance,
+instance_tag_keys
 FROM aws.ec2.instance_event_notification_attributes
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -183,8 +183,8 @@ SELECT
 '{{ region }}',
 '{{ DryRun }}'
 RETURNING
-IncludeAllTagsOfInstance,
-InstanceTagKeys
+include_all_tags_of_instance,
+instance_tag_keys
 ;
 ```
 </TabItem>

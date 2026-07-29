@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or null if there are no more results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestId" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services request ID for this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Services" /></td>
+    <td><CopyableCode code="services" /></td>
     <td><code>array</code></td>
     <td>A list of services and their authorized targets that the Quick Sight IAM Identity Center application can access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
 </tr>
@@ -168,10 +168,10 @@ Lists all services and authorized targets that the Quick Sight IAM Identity Cent
 
 ```sql
 SELECT
-NextToken,
-RequestId,
-Services,
-Status
+next_token,
+request_id,
+services,
+status
 FROM aws.quicksight.identity_propagation_configs
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -204,8 +204,8 @@ aws_account_id = '{{ aws_account_id }}' --required
 AND service = '{{ service }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-RequestId,
-Status;
+request_id,
+status;
 ```
 </TabItem>
 </Tabs>

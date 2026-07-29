@@ -118,8 +118,8 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 AND ClientToken = '{{ ClientToken}}'
 RETURNING
-CapacityManagerStatus,
-OrganizationsAccess;
+capacity_manager_status,
+organizations_access;
 ```
 </TabItem>
 </Tabs>

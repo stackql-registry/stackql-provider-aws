@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The arn of the multicast group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>Created at timestamp for the resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the new resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the multicast group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoRaWAN" /></td>
+    <td><CopyableCode code="lo_ra_wan" /></td>
     <td><code>object</code></td>
     <td>The LoRaWAN information that is to be returned from getting multicast group information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the multicast group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the multicast group.</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MulticastGroupList" /></td>
+    <td><CopyableCode code="multicast_group_list" /></td>
     <td><code>array</code></td>
     <td>List of multicast groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>To retrieve the next set of results, the nextToken value from a previous response; otherwise null to receive the first set of results.</td>
 </tr>
@@ -251,13 +251,13 @@ Gets information about a multicast group.
 
 ```sql
 SELECT
-Arn,
-CreatedAt,
-Description,
-Id,
-LoRaWAN,
-Name,
-Status
+arn,
+created_at,
+description,
+id,
+lo_ra_wan,
+name,
+status
 FROM aws.iotwireless.multicast_groups
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
@@ -270,8 +270,8 @@ Lists the multicast groups registered to your AWS account.
 
 ```sql
 SELECT
-MulticastGroupList,
-NextToken
+multicast_group_list,
+next_token
 FROM aws.iotwireless.multicast_groups
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -312,8 +312,8 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-Id
+arn,
+id
 ;
 ```
 </TabItem>

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthenticationProfileContent" /></td>
+    <td><CopyableCode code="authentication_profile_content" /></td>
     <td><code>string</code></td>
     <td>The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationProfileName" /></td>
+    <td><CopyableCode code="authentication_profile_name" /></td>
     <td><code>string</code></td>
     <td>The name of the authentication profile.</td>
 </tr>
@@ -160,8 +160,8 @@ Describes an authentication profile.
 
 ```sql
 SELECT
-AuthenticationProfileContent,
-AuthenticationProfileName
+authentication_profile_content,
+authentication_profile_name
 FROM aws.redshift.authentication_profiles
 WHERE region = '{{ region }}' -- required
 AND AuthenticationProfileName = '{{ AuthenticationProfileName }}'
@@ -195,8 +195,8 @@ SELECT
 '{{ AuthenticationProfileContent }}',
 '{{ region }}'
 RETURNING
-AuthenticationProfileContent,
-AuthenticationProfileName
+authentication_profile_content,
+authentication_profile_name
 ;
 ```
 </TabItem>
@@ -241,8 +241,8 @@ AuthenticationProfileName = '{{ AuthenticationProfileName }}' --required
 AND AuthenticationProfileContent = '{{ AuthenticationProfileContent }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-AuthenticationProfileContent,
-AuthenticationProfileName;
+authentication_profile_content,
+authentication_profile_name;
 ```
 </TabItem>
 </Tabs>

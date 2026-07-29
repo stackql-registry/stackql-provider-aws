@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustSubscriptionId" /></td>
+    <td><CopyableCode code="cust_subscription_id" /></td>
     <td><code>string</code></td>
     <td>The name of the Amazon Redshift event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerAwsId" /></td>
+    <td><CopyableCode code="customer_aws_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account associated with the Amazon Redshift event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Enabled" /></td>
+    <td><CopyableCode code="enabled" /></td>
     <td><code>boolean</code></td>
     <td>A boolean value indicating whether the subscription is enabled; true indicates that the subscription is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventCategoriesList" /></td>
+    <td><CopyableCode code="event_categories_list" /></td>
     <td><code>string</code></td>
     <td>The list of Amazon Redshift event categories specified in the event notification subscription. Values: Configuration, Management, Monitoring, Security, Pending</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The event severity specified in the Amazon Redshift event notification subscription. Values: ERROR, INFO</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon SNS topic used by the event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceIdsList" /></td>
+    <td><CopyableCode code="source_ids_list" /></td>
     <td><code>string</code></td>
     <td>A list of the sources that publish events to the Amazon Redshift event notification subscription.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceType" /></td>
+    <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
     <td>The source type of the events returned by the Amazon Redshift event notification, such as cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, or scheduled-action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the Amazon Redshift event notification subscription. Constraints: Can be one of the following: active | no-permission | topic-not-exist The status "no-permission" indicates that Amazon Redshift no longer has permission to post to the Amazon SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubscriptionCreationTime" /></td>
+    <td><CopyableCode code="subscription_creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time the Amazon Redshift event notification subscription was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the event subscription.</td>
 </tr>
@@ -260,17 +260,17 @@ Lists descriptions of all the Amazon Redshift event notification subscriptions f
 
 ```sql
 SELECT
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-Severity,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime,
-Tags
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+severity,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time,
+tags
 FROM aws.redshift.event_subscriptions
 WHERE region = '{{ region }}' -- required
 AND SubscriptionName = '{{ SubscriptionName }}'
@@ -320,17 +320,17 @@ SELECT
 '{{ Enabled }}',
 '{{ Tags }}'
 RETURNING
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-Severity,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime,
-Tags
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+severity,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time,
+tags
 ;
 ```
 </TabItem>
@@ -404,17 +404,17 @@ AND EventCategories = '{{ EventCategories}}'
 AND Severity = '{{ Severity}}'
 AND Enabled = {{ Enabled}}
 RETURNING
-CustSubscriptionId,
-CustomerAwsId,
-Enabled,
-EventCategoriesList,
-Severity,
-SnsTopicArn,
-SourceIdsList,
-SourceType,
-Status,
-SubscriptionCreationTime,
-Tags;
+cust_subscription_id,
+customer_aws_id,
+enabled,
+event_categories_list,
+severity,
+sns_topic_arn,
+source_ids_list,
+source_type,
+status,
+subscription_creation_time,
+tags;
 ```
 </TabItem>
 </Tabs>

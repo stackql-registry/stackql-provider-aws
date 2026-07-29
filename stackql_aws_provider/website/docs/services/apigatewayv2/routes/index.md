@@ -51,67 +51,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a route is managed by API Gateway. If you created an API using quick create, the $default route is managed by API Gateway. You can't modify the $default route key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiKeyRequired" /></td>
+    <td><CopyableCode code="api_key_required" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether an API key is required for this route. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizationScopes" /></td>
+    <td><CopyableCode code="authorization_scopes" /></td>
     <td><code>array</code></td>
     <td>A list of authorization scopes configured on a route. The scopes are used with a JWT authorizer to authorize the method invocation. The authorization works by matching the route scopes against the scopes parsed from the access token in the incoming request. The method invocation is authorized if any route scope matches a claimed scope in the access token. Otherwise, the invocation is not authorized. When the route scope is configured, the client must provide an access token instead of an identity token for authorization purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizationType" /></td>
+    <td><CopyableCode code="authorization_type" /></td>
     <td><code>string</code></td>
     <td>The authorization type. For WebSocket APIs, valid values are NONE for open access, AWS_IAM for using AWS IAM permissions, and CUSTOM for using a Lambda authorizer. For HTTP APIs, valid values are NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using AWS IAM permissions, and CUSTOM for using a Lambda authorizer. (NONE, AWS_IAM, CUSTOM, JWT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerId" /></td>
+    <td><CopyableCode code="authorizer_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelSelectionExpression" /></td>
+    <td><CopyableCode code="model_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationName" /></td>
+    <td><CopyableCode code="operation_name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestModels" /></td>
+    <td><CopyableCode code="request_models" /></td>
     <td><code>object</code></td>
     <td>The request models for the route. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestParameters" /></td>
+    <td><CopyableCode code="request_parameters" /></td>
     <td><code>object</code></td>
     <td>The request parameters for the route. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteId" /></td>
+    <td><CopyableCode code="route_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteKey" /></td>
+    <td><CopyableCode code="route_key" /></td>
     <td><code>string</code></td>
     <td>After evaluating a selection expression, the result is compared against one or more selection keys to find a matching key. See Selection Expressions for a list of expressions and each expression's associated selection key type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteResponseSelectionExpression" /></td>
+    <td><CopyableCode code="route_response_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
@@ -130,67 +130,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApiGatewayManaged" /></td>
+    <td><CopyableCode code="api_gateway_managed" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether a route is managed by API Gateway. If you created an API using quick create, the $default route is managed by API Gateway. You can't modify the $default route key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApiKeyRequired" /></td>
+    <td><CopyableCode code="api_key_required" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether an API key is required for this route. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizationScopes" /></td>
+    <td><CopyableCode code="authorization_scopes" /></td>
     <td><code>array</code></td>
     <td>A list of authorization scopes configured on a route. The scopes are used with a JWT authorizer to authorize the method invocation. The authorization works by matching the route scopes against the scopes parsed from the access token in the incoming request. The method invocation is authorized if any route scope matches a claimed scope in the access token. Otherwise, the invocation is not authorized. When the route scope is configured, the client must provide an access token instead of an identity token for authorization purposes.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizationType" /></td>
+    <td><CopyableCode code="authorization_type" /></td>
     <td><code>string</code></td>
     <td>The authorization type. For WebSocket APIs, valid values are NONE for open access, AWS_IAM for using AWS IAM permissions, and CUSTOM for using a Lambda authorizer. For HTTP APIs, valid values are NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using AWS IAM permissions, and CUSTOM for using a Lambda authorizer. (NONE, AWS_IAM, CUSTOM, JWT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizerId" /></td>
+    <td><CopyableCode code="authorizer_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelSelectionExpression" /></td>
+    <td><CopyableCode code="model_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationName" /></td>
+    <td><CopyableCode code="operation_name" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-64&#93;.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestModels" /></td>
+    <td><CopyableCode code="request_models" /></td>
     <td><code>object</code></td>
     <td>The request models for the route. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestParameters" /></td>
+    <td><CopyableCode code="request_parameters" /></td>
     <td><code>object</code></td>
     <td>The request parameters for the route. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteId" /></td>
+    <td><CopyableCode code="route_id" /></td>
     <td><code>string</code></td>
     <td>The identifier.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteKey" /></td>
+    <td><CopyableCode code="route_key" /></td>
     <td><code>string</code></td>
     <td>After evaluating a selection expression, the result is compared against one or more selection keys to find a matching key. See Selection Expressions for a list of expressions and each expression's associated selection key type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RouteResponseSelectionExpression" /></td>
+    <td><CopyableCode code="route_response_selection_expression" /></td>
     <td><code>string</code></td>
     <td>An expression used to extract information at runtime. See Selection Expressions for more information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Target" /></td>
+    <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>A string with a length between &#91;1-128&#93;.</td>
 </tr>
@@ -337,19 +337,19 @@ Gets a Route.
 
 ```sql
 SELECT
-ApiGatewayManaged,
-ApiKeyRequired,
-AuthorizationScopes,
-AuthorizationType,
-AuthorizerId,
-ModelSelectionExpression,
-OperationName,
-RequestModels,
-RequestParameters,
-RouteId,
-RouteKey,
-RouteResponseSelectionExpression,
-Target
+api_gateway_managed,
+api_key_required,
+authorization_scopes,
+authorization_type,
+authorizer_id,
+model_selection_expression,
+operation_name,
+request_models,
+request_parameters,
+route_id,
+route_key,
+route_response_selection_expression,
+target
 FROM aws.apigatewayv2.routes
 WHERE api_id = '{{ api_id }}' -- required
 AND route_id = '{{ route_id }}' -- required
@@ -363,19 +363,19 @@ Gets the Routes for an API.
 
 ```sql
 SELECT
-ApiGatewayManaged,
-ApiKeyRequired,
-AuthorizationScopes,
-AuthorizationType,
-AuthorizerId,
-ModelSelectionExpression,
-OperationName,
-RequestModels,
-RequestParameters,
-RouteId,
-RouteKey,
-RouteResponseSelectionExpression,
-Target
+api_gateway_managed,
+api_key_required,
+authorization_scopes,
+authorization_type,
+authorizer_id,
+model_selection_expression,
+operation_name,
+request_models,
+request_parameters,
+route_id,
+route_key,
+route_response_selection_expression,
+target
 FROM aws.apigatewayv2.routes
 WHERE api_id = '{{ api_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -431,19 +431,19 @@ SELECT
 '{{ api_id }}',
 '{{ region }}'
 RETURNING
-ApiGatewayManaged,
-ApiKeyRequired,
-AuthorizationScopes,
-AuthorizationType,
-AuthorizerId,
-ModelSelectionExpression,
-OperationName,
-RequestModels,
-RequestParameters,
-RouteId,
-RouteKey,
-RouteResponseSelectionExpression,
-Target
+api_gateway_managed,
+api_key_required,
+authorization_scopes,
+authorization_type,
+authorizer_id,
+model_selection_expression,
+operation_name,
+request_models,
+request_parameters,
+route_id,
+route_key,
+route_response_selection_expression,
+target
 ;
 ```
 </TabItem>
@@ -539,19 +539,19 @@ api_id = '{{ api_id }}' --required
 AND route_id = '{{ route_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ApiGatewayManaged,
-ApiKeyRequired,
-AuthorizationScopes,
-AuthorizationType,
-AuthorizerId,
-ModelSelectionExpression,
-OperationName,
-RequestModels,
-RequestParameters,
-RouteId,
-RouteKey,
-RouteResponseSelectionExpression,
-Target;
+api_gateway_managed,
+api_key_required,
+authorization_scopes,
+authorization_type,
+authorizer_id,
+model_selection_expression,
+operation_name,
+request_models,
+request_parameters,
+route_id,
+route_key,
+route_response_selection_expression,
+target;
 ```
 </TabItem>
 </Tabs>

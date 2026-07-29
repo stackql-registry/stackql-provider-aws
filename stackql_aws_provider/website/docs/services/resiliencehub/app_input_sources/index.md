@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appInputSources" /></td>
+    <td><CopyableCode code="app_input_sources" /></td>
     <td><code>array</code></td>
     <td>The list of Resilience Hub application input sources.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results, or null if there are no more results. (pattern: &lt;code&gt;^\S&#123;1,2000&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -131,8 +131,8 @@ Lists all the input sources of the Resilience Hub application. For more informat
 
 ```sql
 SELECT
-appInputSources,
-nextToken
+app_input_sources,
+next_token
 FROM aws.resiliencehub.app_input_sources
 WHERE region = '{{ region }}' -- required
 ;

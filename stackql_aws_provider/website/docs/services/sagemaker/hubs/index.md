@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the hub was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason if importing hub content failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubArn" /></td>
+    <td><CopyableCode code="hub_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the hub. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubDescription" /></td>
+    <td><CopyableCode code="hub_description" /></td>
     <td><code>string</code></td>
     <td>A description of the hub. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubDisplayName" /></td>
+    <td><CopyableCode code="hub_display_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the hub. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubName" /></td>
+    <td><CopyableCode code="hub_name" /></td>
     <td><code>string</code></td>
     <td>The name of the hub. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubSearchKeywords" /></td>
+    <td><CopyableCode code="hub_search_keywords" /></td>
     <td><code>array</code></td>
     <td>The searchable keywords for the hub.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HubStatus" /></td>
+    <td><CopyableCode code="hub_status" /></td>
     <td><code>string</code></td>
     <td>The status of the hub. (InService, Creating, Updating, Deleting, CreateFailed, UpdateFailed, DeleteFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the hub was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3StorageConfig" /></td>
+    <td><CopyableCode code="s3_storage_config" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 storage configuration for the hub.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HubSummaries" /></td>
+    <td><CopyableCode code="hub_summaries" /></td>
     <td><code>array</code></td>
     <td>The summaries of the listed hubs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the response is truncated, SageMaker returns this token. To retrieve the next set of hubs, use it in the subsequent request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -225,16 +225,16 @@ Describes a hub.
 
 ```sql
 SELECT
-CreationTime,
-FailureReason,
-HubArn,
-HubDescription,
-HubDisplayName,
-HubName,
-HubSearchKeywords,
-HubStatus,
-LastModifiedTime,
-S3StorageConfig
+creation_time,
+failure_reason,
+hub_arn,
+hub_description,
+hub_display_name,
+hub_name,
+hub_search_keywords,
+hub_status,
+last_modified_time,
+s3_storage_config
 FROM aws.sagemaker.hubs
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,8 +246,8 @@ List all existing hubs.
 
 ```sql
 SELECT
-HubSummaries,
-NextToken
+hub_summaries,
+next_token
 FROM aws.sagemaker.hubs
 WHERE region = '{{ region }}' -- required
 ;
@@ -288,7 +288,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-HubArn
+hub_arn
 ;
 ```
 </TabItem>
@@ -357,7 +357,7 @@ WHERE
 region = '{{ region }}' --required
 AND HubName = '{{ HubName }}' --required
 RETURNING
-HubArn;
+hub_arn;
 ```
 </TabItem>
 </Tabs>

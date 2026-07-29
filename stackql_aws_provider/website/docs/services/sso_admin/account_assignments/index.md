@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Web Services account. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PermissionSetArn" /></td>
+    <td><CopyableCode code="permission_set_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the permission set. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the Amazon Web Services General Reference. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso:::permissionSet/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/ps-&#91;a-zA-Z0-9-./&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalId" /></td>
+    <td><CopyableCode code="principal_id" /></td>
     <td><code>string</code></td>
     <td>An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the IAM Identity Center Identity Store API Reference. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalType" /></td>
+    <td><CopyableCode code="principal_type" /></td>
     <td><code>string</code></td>
     <td>The entity type for which the assignment will be created. (USER, GROUP)</td>
 </tr>
@@ -148,10 +148,10 @@ Lists the assignee of the specified Amazon Web Services account with the specifi
 
 ```sql
 SELECT
-AccountId,
-PermissionSetArn,
-PrincipalId,
-PrincipalType
+account_id,
+permission_set_arn,
+principal_id,
+principal_type
 FROM aws.sso_admin.account_assignments
 WHERE region = '{{ region }}' -- required
 ;
@@ -192,7 +192,7 @@ SELECT
 '{{ PrincipalId }}' /* required */,
 '{{ region }}'
 RETURNING
-AccountAssignmentCreationStatus
+account_assignment_creation_status
 ;
 ```
 </TabItem>

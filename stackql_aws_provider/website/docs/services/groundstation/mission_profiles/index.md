@@ -56,32 +56,32 @@ The following fields are returned by `SELECT` queries:
     <td>Name of a mission profile. (pattern: &lt;code&gt;&#91; a-zA-Z0-9_:-&#93;&#123;1,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contactPostPassDurationSeconds" /></td>
+    <td><CopyableCode code="contact_post_pass_duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>Amount of time after a contact ends that you'd like to receive a CloudWatch event indicating the pass has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contactPrePassDurationSeconds" /></td>
+    <td><CopyableCode code="contact_pre_pass_duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>Amount of time prior to contact start you'd like to receive a CloudWatch event indicating an upcoming pass.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataflowEdges" /></td>
+    <td><CopyableCode code="dataflow_edges" /></td>
     <td><code>array</code></td>
     <td>A list of lists of ARNs. Each list of ARNs is an edge, with a from Config and a to Config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minimumViableContactDurationSeconds" /></td>
+    <td><CopyableCode code="minimum_viable_contact_duration_seconds" /></td>
     <td><code>integer</code></td>
     <td>Smallest amount of time in seconds that you'd like to see for an available contact. AWS Ground Station will not present you with contacts shorter than this duration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="missionProfileArn" /></td>
+    <td><CopyableCode code="mission_profile_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a mission profile. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:mission-profile/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="missionProfileId" /></td>
+    <td><CopyableCode code="mission_profile_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a mission profile. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -91,12 +91,12 @@ The following fields are returned by `SELECT` queries:
     <td>Region of a mission profile. (pattern: &lt;code&gt;&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamsKmsKey" /></td>
+    <td><CopyableCode code="streams_kms_key" /></td>
     <td><code>object</code></td>
     <td>KMS key info.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="streamsKmsRole" /></td>
+    <td><CopyableCode code="streams_kms_role" /></td>
     <td><code>string</code></td>
     <td>Role to use for encrypting streams with KMS key. (pattern: &lt;code&gt;arn:&#91;a-z0-9-.&#93;&#123;1,63&#125;:iam::&#91;0-9&#93;&#123;12&#125;:role/&#91;\w+=,.@-&#93;&#123;1,64&#125;&lt;/code&gt;)</td>
 </tr>
@@ -106,12 +106,12 @@ The following fields are returned by `SELECT` queries:
     <td>Tags assigned to a mission profile.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="telemetrySinkConfigArn" /></td>
+    <td><CopyableCode code="telemetry_sink_config_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a telemetry sink Config. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:config/&#91;a-z0-9&#93;+(-&#91;a-z0-9&#93;+)&#123;0,4&#125;/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(/.&#123;1,256&#125;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trackingConfigArn" /></td>
+    <td><CopyableCode code="tracking_config_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a tracking Config. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:config/&#91;a-z0-9&#93;+(-&#91;a-z0-9&#93;+)&#123;0,4&#125;/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(/.&#123;1,256&#125;)?&lt;/code&gt;)</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
     <td>Name of a mission profile. (pattern: &lt;code&gt;&#91; a-zA-Z0-9_:-&#93;&#123;1,256&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="missionProfileArn" /></td>
+    <td><CopyableCode code="mission_profile_arn" /></td>
     <td><code>string</code></td>
     <td>ARN of a mission profile. (pattern: &lt;code&gt;arn:aws:groundstation:&#91;-a-z0-9&#93;&#123;1,50&#125;:&#91;0-9&#93;&#123;12&#125;:mission-profile/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="missionProfileId" /></td>
+    <td><CopyableCode code="mission_profile_id" /></td>
     <td><code>string</code></td>
     <td>UUID of a mission profile. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -266,18 +266,18 @@ Returns a mission profile.
 ```sql
 SELECT
 name,
-contactPostPassDurationSeconds,
-contactPrePassDurationSeconds,
-dataflowEdges,
-minimumViableContactDurationSeconds,
-missionProfileArn,
-missionProfileId,
+contact_post_pass_duration_seconds,
+contact_pre_pass_duration_seconds,
+dataflow_edges,
+minimum_viable_contact_duration_seconds,
+mission_profile_arn,
+mission_profile_id,
 region,
-streamsKmsKey,
-streamsKmsRole,
+streams_kms_key,
+streams_kms_role,
 tags,
-telemetrySinkConfigArn,
-trackingConfigArn
+telemetry_sink_config_arn,
+tracking_config_arn
 FROM aws.groundstation.mission_profiles
 WHERE mission_profile_id = '{{ mission_profile_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -291,8 +291,8 @@ Returns a list of mission profiles.
 ```sql
 SELECT
 name,
-missionProfileArn,
-missionProfileId,
+mission_profile_arn,
+mission_profile_id,
 region
 FROM aws.groundstation.mission_profiles
 WHERE region = '{{ region }}' -- required
@@ -344,7 +344,7 @@ SELECT
 '{{ streamsKmsRole }}',
 '{{ region }}'
 RETURNING
-missionProfileId
+mission_profile_id
 ;
 ```
 </TabItem>
@@ -416,7 +416,7 @@ WHERE
 mission_profile_id = '{{ mission_profile_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-missionProfileId;
+mission_profile_id;
 ```
 </TabItem>
 </Tabs>

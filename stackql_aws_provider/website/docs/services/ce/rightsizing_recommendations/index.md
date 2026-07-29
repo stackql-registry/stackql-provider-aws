@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account that this recommendation is for. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentInstance" /></td>
+    <td><CopyableCode code="current_instance" /></td>
     <td><code>object</code></td>
     <td>Context regarding the current instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FindingReasonCodes" /></td>
+    <td><CopyableCode code="finding_reason_codes" /></td>
     <td><code>array</code></td>
     <td>The list of possible reasons why the recommendation is generated, such as under- or over-utilization of specific metrics (for example, CPU, Memory, Network).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifyRecommendationDetail" /></td>
+    <td><CopyableCode code="modify_recommendation_detail" /></td>
     <td><code>object</code></td>
     <td>The details for the modification recommendations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RightsizingType" /></td>
+    <td><CopyableCode code="rightsizing_type" /></td>
     <td><code>string</code></td>
     <td>A recommendation to either terminate or modify the resource. (TERMINATE, MODIFY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TerminateRecommendationDetail" /></td>
+    <td><CopyableCode code="terminate_recommendation_detail" /></td>
     <td><code>object</code></td>
     <td>The details for termination recommendations.</td>
 </tr>
@@ -144,12 +144,12 @@ Creates recommendations that help you save cost by identifying idle and underuti
 
 ```sql
 SELECT
-AccountId,
-CurrentInstance,
-FindingReasonCodes,
-ModifyRecommendationDetail,
-RightsizingType,
-TerminateRecommendationDetail
+account_id,
+current_instance,
+finding_reason_codes,
+modify_recommendation_detail,
+rightsizing_type,
+terminate_recommendation_detail
 FROM aws.ce.rightsizing_recommendations
 WHERE region = '{{ region }}' -- required
 ;

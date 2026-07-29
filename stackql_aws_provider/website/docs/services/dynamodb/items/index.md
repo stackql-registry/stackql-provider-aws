@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConsumedCapacity" /></td>
+    <td><CopyableCode code="consumed_capacity" /></td>
     <td><code>object</code></td>
     <td>The capacity units consumed by an operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. ConsumedCapacity is only returned if the request asked for it. For more information, see Provisioned capacity mode in the Amazon DynamoDB Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>object</code></td>
     <td>A map of attribute names to AttributeValue objects, as specified by ProjectionExpression.</td>
 </tr>
@@ -75,17 +75,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConsumedCapacity" /></td>
+    <td><CopyableCode code="consumed_capacity" /></td>
     <td><code>array</code></td>
     <td>The read capacity units consumed by the entire BatchGetItem operation. Each element consists of: TableName - The table that consumed the provisioned throughput. CapacityUnits - The total number of capacity units consumed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Responses" /></td>
+    <td><CopyableCode code="responses" /></td>
     <td><code>object</code></td>
     <td>A map of table name or table ARN to a list of items. Each object in Responses consists of a table name or ARN, along with a map of attribute data consisting of the data type and attribute value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedKeys" /></td>
+    <td><CopyableCode code="unprocessed_keys" /></td>
     <td><code>object</code></td>
     <td>A map of tables and their respective keys that were not processed with the current response. The UnprocessedKeys value is in the same form as RequestItems, so the value can be provided directly to a subsequent BatchGetItem operation. For more information, see RequestItems in the Request Parameters section. Each element consists of: Keys - An array of primary key attribute values that define specific items in the table. ProjectionExpression - One or more attributes to be retrieved from the table or index. By default, all attributes are returned. If a requested attribute is not found, it does not appear in the result. ConsistentRead - The consistency of a read operation. If set to true, then a strongly consistent read is used; otherwise, an eventually consistent read is used. If there are no unprocessed keys remaining, the response contains an empty UnprocessedKeys map.</td>
 </tr>
@@ -197,8 +197,8 @@ The GetItem operation returns a set of attributes for the item with the given pr
 
 ```sql
 SELECT
-ConsumedCapacity,
-Item
+consumed_capacity,
+item
 FROM aws.dynamodb.items
 WHERE region = '{{ region }}' -- required
 ;
@@ -210,9 +210,9 @@ The BatchGetItem operation returns the attributes of one or more items from one 
 
 ```sql
 SELECT
-ConsumedCapacity,
-Responses,
-UnprocessedKeys
+consumed_capacity,
+responses,
+unprocessed_keys
 FROM aws.dynamodb.items
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,9 +254,9 @@ region = '{{ region }}' --required
 AND TableName = '{{ TableName }}' --required
 AND Key = '{{ Key }}' --required
 RETURNING
-Attributes,
-ConsumedCapacity,
-ItemCollectionMetrics;
+attributes,
+consumed_capacity,
+item_collection_metrics;
 ```
 </TabItem>
 </Tabs>
@@ -292,9 +292,9 @@ WHERE
 region = '{{ region }}' --required
 AND TableName = '{{ TableName }}' --required
 RETURNING
-Attributes,
-ConsumedCapacity,
-ItemCollectionMetrics;
+attributes,
+consumed_capacity,
+item_collection_metrics;
 ```
 </TabItem>
 </Tabs>

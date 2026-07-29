@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseModelArn" /></td>
+    <td><CopyableCode code="base_model_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the base model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customizationConfig" /></td>
+    <td><CopyableCode code="customization_config" /></td>
     <td><code>object</code></td>
     <td>A model customization configuration</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customizationType" /></td>
+    <td><CopyableCode code="customization_type" /></td>
     <td><code>string</code></td>
     <td>The type of model customization. (FINE_TUNING, CONTINUED_PRE_TRAINING, DISTILLATION, REINFORCEMENT_FINE_TUNING, IMPORTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureMessage" /></td>
+    <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
     <td>A failure message for any issues that occurred when creating the custom model. This is included for only a failed CreateCustomModel operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="hyperParameters" /></td>
+    <td><CopyableCode code="hyper_parameters" /></td>
     <td><code>object</code></td>
     <td>Hyperparameter values associated with this model. For details on the format for different models, see Custom model hyperparameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobArn" /></td>
+    <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>Job Amazon Resource Name (ARN) associated with this model. For models that you create with the CreateCustomModel API operation, this is NULL. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:model-customization-job/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="jobName" /></td>
+    <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
     <td>Job name associated with this model. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9\+\-\.&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) associated with this model. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelKmsKeyArn" /></td>
+    <td><CopyableCode code="model_kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The custom model is encrypted at rest using this key. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>Model name associated with this model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelStatus" /></td>
+    <td><CopyableCode code="model_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the custom model. Possible values include: Creating - The model is being created and validated. Active - The model has been successfully created and is ready for use. Failed - The model creation process failed. Check the failureMessage field for details. (Active, Creating, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="outputDataConfig" /></td>
+    <td><CopyableCode code="output_data_config" /></td>
     <td><code>object</code></td>
     <td>S3 Location of the output data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingDataConfig" /></td>
+    <td><CopyableCode code="training_data_config" /></td>
     <td><code>object</code></td>
     <td>S3 Location of the training data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trainingMetrics" /></td>
+    <td><CopyableCode code="training_metrics" /></td>
     <td><code>object</code></td>
     <td>Contains training metrics from the job creation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationDataConfig" /></td>
+    <td><CopyableCode code="validation_data_config" /></td>
     <td><code>object</code></td>
     <td>Array of up to 10 validators.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validationMetrics" /></td>
+    <td><CopyableCode code="validation_metrics" /></td>
     <td><code>array</code></td>
     <td>The validation metrics from the job creation.</td>
 </tr>
@@ -150,42 +150,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="baseModelArn" /></td>
+    <td><CopyableCode code="base_model_arn" /></td>
     <td><code>string</code></td>
     <td>The base model Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:((&#91;0-9&#93;&#123;12&#125;:custom-model/((imported)|(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;))((&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)?/&#91;a-z0-9&#93;&#123;12&#125;)|(:foundation-model/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="baseModelName" /></td>
+    <td><CopyableCode code="base_model_name" /></td>
     <td><code>string</code></td>
     <td>The base model name. (pattern: &lt;code&gt;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Creation time of the model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customizationType" /></td>
+    <td><CopyableCode code="customization_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether to carry out continued pre-training of a model or whether to fine-tune it. For more information, see Custom models. (FINE_TUNING, CONTINUED_PRE_TRAINING, DISTILLATION, REINFORCEMENT_FINE_TUNING, IMPORTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the custom model. (pattern: &lt;code&gt;arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:custom-model/(imported|&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;)/&#91;a-z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom model. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,63&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelStatus" /></td>
+    <td><CopyableCode code="model_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the custom model. Possible values include: Creating - The model is being created and validated. Active - The model has been successfully created and is ready for use. Failed - The model creation process failed. (Active, Creating, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerAccountId" /></td>
+    <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the account that owns the model. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -336,23 +336,23 @@ Get the properties associated with a Amazon Bedrock custom model that you have c
 
 ```sql
 SELECT
-baseModelArn,
-creationTime,
-customizationConfig,
-customizationType,
-failureMessage,
-hyperParameters,
-jobArn,
-jobName,
-modelArn,
-modelKmsKeyArn,
-modelName,
-modelStatus,
-outputDataConfig,
-trainingDataConfig,
-trainingMetrics,
-validationDataConfig,
-validationMetrics
+base_model_arn,
+creation_time,
+customization_config,
+customization_type,
+failure_message,
+hyper_parameters,
+job_arn,
+job_name,
+model_arn,
+model_kms_key_arn,
+model_name,
+model_status,
+output_data_config,
+training_data_config,
+training_metrics,
+validation_data_config,
+validation_metrics
 FROM aws.bedrock.custom_models
 WHERE model_identifier = '{{ model_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -365,14 +365,14 @@ Returns a list of the custom models that you have created with the CreateModelCu
 
 ```sql
 SELECT
-baseModelArn,
-baseModelName,
-creationTime,
-customizationType,
-modelArn,
-modelName,
-modelStatus,
-ownerAccountId
+base_model_arn,
+base_model_name,
+creation_time,
+customization_type,
+model_arn,
+model_name,
+model_status,
+owner_account_id
 FROM aws.bedrock.custom_models
 WHERE region = '{{ region }}' -- required
 AND creationTimeBefore = '{{ creationTimeBefore }}'
@@ -424,7 +424,7 @@ SELECT
 '{{ clientRequestToken }}',
 '{{ region }}'
 RETURNING
-modelArn
+model_arn
 ;
 ```
 </TabItem>

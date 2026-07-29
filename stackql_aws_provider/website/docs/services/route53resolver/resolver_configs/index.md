@@ -51,22 +51,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutodefinedReverse" /></td>
+    <td><CopyableCode code="autodefined_reverse" /></td>
     <td><code>string</code></td>
     <td>The status of whether or not the Resolver will create autodefined rules for reverse DNS lookups. This is enabled by default. The status can be one of following: ENABLING: Autodefined rules for reverse DNS lookups are being enabled but are not complete. ENABLED: Autodefined rules for reverse DNS lookups are enabled. DISABLING: Autodefined rules for reverse DNS lookups are being disabled but are not complete. DISABLED: Autodefined rules for reverse DNS lookups are disabled. (ENABLING, ENABLED, DISABLING, DISABLED, UPDATING_TO_USE_LOCAL_RESOURCE_SETTING, USE_LOCAL_RESOURCE_SETTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID for the Resolver configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The owner account ID of the Amazon Virtual Private Cloud VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Virtual Private Cloud VPC or a Route 53 Profile that you're configuring Resolver for.</td>
 </tr>
@@ -85,22 +85,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutodefinedReverse" /></td>
+    <td><CopyableCode code="autodefined_reverse" /></td>
     <td><code>string</code></td>
     <td>The status of whether or not the Resolver will create autodefined rules for reverse DNS lookups. This is enabled by default. The status can be one of following: ENABLING: Autodefined rules for reverse DNS lookups are being enabled but are not complete. ENABLED: Autodefined rules for reverse DNS lookups are enabled. DISABLING: Autodefined rules for reverse DNS lookups are being disabled but are not complete. DISABLED: Autodefined rules for reverse DNS lookups are disabled. (ENABLING, ENABLED, DISABLING, DISABLED, UPDATING_TO_USE_LOCAL_RESOURCE_SETTING, USE_LOCAL_RESOURCE_SETTING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>ID for the Resolver configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The owner account ID of the Amazon Virtual Private Cloud VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceId" /></td>
+    <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Virtual Private Cloud VPC or a Route 53 Profile that you're configuring Resolver for.</td>
 </tr>
@@ -184,10 +184,10 @@ Retrieves the behavior configuration of Route 53 Resolver behavior for a single 
 
 ```sql
 SELECT
-AutodefinedReverse,
-Id,
-OwnerId,
-ResourceId
+autodefined_reverse,
+id,
+owner_id,
+resource_id
 FROM aws.route53resolver.resolver_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -199,10 +199,10 @@ Retrieves the Resolver configurations that you have defined. Route 53 Resolver u
 
 ```sql
 SELECT
-AutodefinedReverse,
-Id,
-OwnerId,
-ResourceId
+autodefined_reverse,
+id,
+owner_id,
+resource_id
 FROM aws.route53resolver.resolver_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,7 +233,7 @@ region = '{{ region }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
 AND AutodefinedReverseFlag = '{{ AutodefinedReverseFlag }}' --required
 RETURNING
-ResolverConfig;
+resolver_config;
 ```
 </TabItem>
 </Tabs>

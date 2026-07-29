@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the predictor backtest export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The destination for an export job. Provide an S3 path, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the location, and an Key Management Service (KMS) key (optional).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format of the exported data, CSV or PARQUET. (pattern: &lt;code&gt;^CSV|PARQUET$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Information about any errors that may have occurred during the backtest export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorArn" /></td>
+    <td><CopyableCode code="predictor_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the predictor. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorBacktestExportJobArn" /></td>
+    <td><CopyableCode code="predictor_backtest_export_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the predictor backtest export job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorBacktestExportJobName" /></td>
+    <td><CopyableCode code="predictor_backtest_export_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the predictor backtest export job. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the predictor backtest export job. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
@@ -110,37 +110,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the predictor backtest export job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Destination" /></td>
+    <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>The destination for an export job. Provide an S3 path, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the location, and an Key Management Service (KMS) key (optional).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>Information about any errors that may have occurred during the backtest export.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorBacktestExportJobArn" /></td>
+    <td><CopyableCode code="predictor_backtest_export_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the predictor backtest export job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorBacktestExportJobName" /></td>
+    <td><CopyableCode code="predictor_backtest_export_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the predictor backtest export job. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the predictor backtest export job. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED CREATE_STOPPING, CREATE_STOPPED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED</td>
 </tr>
@@ -231,15 +231,15 @@ Describes a predictor backtest export job created using the CreatePredictorBackt
 
 ```sql
 SELECT
-CreationTime,
-Destination,
-Format,
-LastModificationTime,
-Message,
-PredictorArn,
-PredictorBacktestExportJobArn,
-PredictorBacktestExportJobName,
-Status
+creation_time,
+destination,
+format,
+last_modification_time,
+message,
+predictor_arn,
+predictor_backtest_export_job_arn,
+predictor_backtest_export_job_name,
+status
 FROM aws.forecast.predictor_backtest_export_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,13 +251,13 @@ Returns a list of predictor backtest export jobs created using the CreatePredict
 
 ```sql
 SELECT
-CreationTime,
-Destination,
-LastModificationTime,
-Message,
-PredictorBacktestExportJobArn,
-PredictorBacktestExportJobName,
-Status
+creation_time,
+destination,
+last_modification_time,
+message,
+predictor_backtest_export_job_arn,
+predictor_backtest_export_job_name,
+status
 FROM aws.forecast.predictor_backtest_export_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,7 +296,7 @@ SELECT
 '{{ Format }}',
 '{{ region }}'
 RETURNING
-PredictorBacktestExportJobArn
+predictor_backtest_export_job_arn
 ;
 ```
 </TabItem>

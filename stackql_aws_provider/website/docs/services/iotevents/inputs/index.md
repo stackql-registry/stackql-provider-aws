@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="inputConfiguration" /></td>
+    <td><CopyableCode code="input_configuration" /></td>
     <td><code>object</code></td>
     <td>Information about the configuration of an input.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inputDefinition" /></td>
+    <td><CopyableCode code="input_definition" /></td>
     <td><code>object</code></td>
     <td>The definition of the input.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="inputSummaries" /></td>
+    <td><CopyableCode code="input_summaries" /></td>
     <td><code>array</code></td>
     <td>Summary information about the inputs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can use to return the next set of results, or null if there are no more results.</td>
 </tr>
@@ -193,8 +193,8 @@ Describes an input.
 
 ```sql
 SELECT
-inputConfiguration,
-inputDefinition
+input_configuration,
+input_definition
 FROM aws.iotevents.inputs
 WHERE input_name = '{{ input_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -207,8 +207,8 @@ Lists the inputs you have created.
 
 ```sql
 SELECT
-inputSummaries,
-nextToken
+input_summaries,
+next_token
 FROM aws.iotevents.inputs
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
@@ -247,7 +247,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-inputConfiguration
+input_configuration
 ;
 ```
 </TabItem>
@@ -301,7 +301,7 @@ input_name = '{{ input_name }}' --required
 AND region = '{{ region }}' --required
 AND inputDefinition = '{{ inputDefinition }}' --required
 RETURNING
-inputConfiguration;
+input_configuration;
 ```
 </TabItem>
 </Tabs>

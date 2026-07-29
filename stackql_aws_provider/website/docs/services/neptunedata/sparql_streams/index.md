@@ -55,12 +55,12 @@ The following fields are returned by `SELECT` queries:
     <td>Serialization format for the change records being returned. Currently, the only supported value is NQUADS.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastEventId" /></td>
+    <td><CopyableCode code="last_event_id" /></td>
     <td><code>object</code></td>
     <td>Sequence identifier of the last change in the stream response. An event ID is composed of two fields: a commitNum, which identifies a transaction that changed the graph, and an opNum, which identifies a specific operation within that transaction:</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastTrxTimestampInMillis" /></td>
+    <td><CopyableCode code="last_trx_timestamp_in_millis" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time at which the commit for the transaction was requested, in milliseconds from the Unix epoch.</td>
 </tr>
@@ -70,7 +70,7 @@ The following fields are returned by `SELECT` queries:
     <td>An array of serialized change-log stream records included in the response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalRecords" /></td>
+    <td><CopyableCode code="total_records" /></td>
     <td><code>integer</code></td>
     <td>The total number of records in the response.</td>
 </tr>
@@ -165,10 +165,10 @@ Gets a stream for an RDF graph. With the Neptune Streams feature, you can genera
 ```sql
 SELECT
 format_,
-lastEventId,
-lastTrxTimestampInMillis,
+last_event_id,
+last_trx_timestamp_in_millis,
 records,
-totalRecords
+total_records
 FROM aws.neptunedata.sparql_streams
 WHERE region = '{{ region }}' -- required
 AND limit = '{{ limit }}'

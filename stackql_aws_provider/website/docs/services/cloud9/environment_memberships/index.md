@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="environmentId" /></td>
+    <td><CopyableCode code="environment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the environment for the environment member. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;8,32&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAccess" /></td>
+    <td><CopyableCode code="last_access" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time, expressed in epoch time format, when the environment member last opened the environment.</td>
 </tr>
@@ -65,12 +65,12 @@ The following fields are returned by `SELECT` queries:
     <td>The type of environment member permissions associated with this environment member. Available values include: owner: Owns the environment. read-only: Has read-only access to the environment. read-write: Has read-write access to the environment. (owner, read-write, read-only)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userArn" /></td>
+    <td><CopyableCode code="user_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the environment member. (pattern: &lt;code&gt;^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/&#91;\w+=/:,.@-&#93;&#123;1,64&#125;|federated-user\/&#91;\w+=/:,.@-&#93;&#123;2,32&#125;|assumed-role\/&#91;\w+=:,.@-&#93;&#123;1,64&#125;\/&#91;\w+=,.@-&#93;&#123;1,64&#125;))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="userId" /></td>
+    <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
     <td>The user ID in Identity and Access Management (IAM) of the environment member.</td>
 </tr>
@@ -160,11 +160,11 @@ Gets information about environment members for an Cloud9 development environment
 
 ```sql
 SELECT
-environmentId,
-lastAccess,
+environment_id,
+last_access,
 permissions,
-userArn,
-userId
+user_arn,
+user_id
 FROM aws.cloud9.environment_memberships
 WHERE region = '{{ region }}' -- required
 ;

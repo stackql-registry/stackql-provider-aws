@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>Wave ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string</code></td>
     <td>Wave creation dateTime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
@@ -70,12 +70,12 @@ The following fields are returned by `SELECT` queries:
     <td>Wave description. (pattern: &lt;code&gt;&#91;^\x00&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isArchived" /></td>
+    <td><CopyableCode code="is_archived" /></td>
     <td><code>boolean</code></td>
     <td>Wave archival status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDateTime" /></td>
+    <td><CopyableCode code="last_modified_date_time" /></td>
     <td><code>string</code></td>
     <td>Wave last modified dateTime. (pattern: &lt;code&gt;&#91;1-9&#93;&#91;0-9&#93;*-(0&#91;1-9&#93;|1&#91;0-2&#93;)-(0&#91;1-9&#93;|&#91;12&#93;&#91;0-9&#93;|3&#91;01&#93;)T(&#91;0-1&#93;&#91;0-9&#93;|2&#91;0-3&#93;):&#91;0-5&#93;&#91;0-9&#93;:&#91;0-5&#93;&#91;0-9&#93;(\.&#91;0-9&#93;+)?Z&lt;/code&gt;)</td>
 </tr>
@@ -85,12 +85,12 @@ The following fields are returned by `SELECT` queries:
     <td>Wave tags.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="waveAggregatedStatus" /></td>
+    <td><CopyableCode code="wave_aggregated_status" /></td>
     <td><code>object</code></td>
     <td>Wave aggregated status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="waveID" /></td>
+    <td><CopyableCode code="wave_id" /></td>
     <td><code>string</code></td>
     <td>Wave ID. (pattern: &lt;code&gt;wave-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
@@ -196,13 +196,13 @@ Retrieves all waves or multiple waves by ID.
 SELECT
 name,
 arn,
-creationDateTime,
+creation_date_time,
 description,
-isArchived,
-lastModifiedDateTime,
+is_archived,
+last_modified_date_time,
 tags,
-waveAggregatedStatus,
-waveID
+wave_aggregated_status,
+wave_id
 FROM aws.mgn.waves
 WHERE region = '{{ region }}' -- required
 ;
@@ -241,13 +241,13 @@ SELECT
 RETURNING
 name,
 arn,
-creationDateTime,
+creation_date_time,
 description,
-isArchived,
-lastModifiedDateTime,
+is_archived,
+last_modified_date_time,
 tags,
-waveAggregatedStatus,
-waveID
+wave_aggregated_status,
+wave_id
 ;
 ```
 </TabItem>
@@ -298,13 +298,13 @@ AND waveID = '{{ waveID }}' --required
 RETURNING
 name,
 arn,
-creationDateTime,
+creation_date_time,
 description,
-isArchived,
-lastModifiedDateTime,
+is_archived,
+last_modified_date_time,
 tags,
-waveAggregatedStatus,
-waveID;
+wave_aggregated_status,
+wave_id;
 ```
 </TabItem>
 </Tabs>

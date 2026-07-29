@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AreRoutesPersisted" /></td>
+    <td><CopyableCode code="are_routes_persisted" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether routes are being persisted in the routing database.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Routes" /></td>
+    <td><CopyableCode code="routes" /></td>
     <td><code>string</code></td>
     <td>The collection of routes in the route server's routing database.</td>
 </tr>
@@ -154,9 +154,9 @@ Gets the routing database for the specified route server. The Routing Informatio
 
 ```sql
 SELECT
-AreRoutesPersisted,
-NextToken,
-Routes
+are_routes_persisted,
+next_token,
+routes
 FROM aws.ec2.route_server_routing_databases
 WHERE RouteServerId = '{{ RouteServerId }}' -- required
 AND region = '{{ region }}' -- required

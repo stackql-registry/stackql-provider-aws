@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="analysisResults" /></td>
+    <td><CopyableCode code="analysis_results" /></td>
     <td><code>array</code></td>
     <td>Contains information about one or more analysis results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can use to return the next set of results, or null if there are no more results.</td>
 </tr>
@@ -139,8 +139,8 @@ Retrieves one or more analysis results of the detector model. After AWS IoT Even
 
 ```sql
 SELECT
-analysisResults,
-nextToken
+analysis_results,
+next_token
 FROM aws.iotevents.detector_model_analysis_results
 WHERE analysis_id = '{{ analysis_id }}' -- required
 AND region = '{{ region }}' -- required

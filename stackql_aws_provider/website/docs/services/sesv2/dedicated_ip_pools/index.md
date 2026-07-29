@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="PoolName" /></td>
+    <td><CopyableCode code="pool_name" /></td>
     <td><code>string</code></td>
     <td>The name of a dedicated IP pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ScalingMode" /></td>
+    <td><CopyableCode code="scaling_mode" /></td>
     <td><code>string</code></td>
     <td>The type of the dedicated IP pool. STANDARD – A dedicated IP pool where you can control which IPs are part of the pool. MANAGED – A dedicated IP pool where the reputation and number of IPs are automatically managed by Amazon SES. (STANDARD, MANAGED)</td>
 </tr>
@@ -188,8 +188,8 @@ Retrieve information about the dedicated pool.
 
 ```sql
 SELECT
-PoolName,
-ScalingMode
+pool_name,
+scaling_mode
 FROM aws.sesv2.dedicated_ip_pools
 WHERE pool_name = '{{ pool_name }}' -- required
 AND region = '{{ region }}' -- required

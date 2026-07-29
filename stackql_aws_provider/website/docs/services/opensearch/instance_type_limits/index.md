@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LimitsByRole" /></td>
+    <td><CopyableCode code="limits_by_role" /></td>
     <td><code>object</code></td>
     <td>Map that contains all applicable instance type limits.data refers to data nodes.master refers to dedicated master nodes.</td>
 </tr>
@@ -134,7 +134,7 @@ Describes the instance count, storage, and master node limits for a given OpenSe
 
 ```sql
 SELECT
-LimitsByRole
+limits_by_role
 FROM aws.opensearch.instance_type_limits
 WHERE instance_type = '{{ instance_type }}' -- required
 AND engine_version = '{{ engine_version }}' -- required

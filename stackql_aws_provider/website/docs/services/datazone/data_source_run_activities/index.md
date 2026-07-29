@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when data source run activity was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataAssetId" /></td>
+    <td><CopyableCode code="data_asset_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the asset included in the data source run activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataAssetStatus" /></td>
+    <td><CopyableCode code="data_asset_status" /></td>
     <td><code>string</code></td>
     <td>The status of the asset included in the data source run activity. (FAILED, PUBLISHING_FAILED, SUCCEEDED_CREATED, SUCCEEDED_UPDATED, SKIPPED_ALREADY_IMPORTED, SKIPPED_ARCHIVED, SKIPPED_NO_ACCESS, UNCHANGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceRunId" /></td>
+    <td><CopyableCode code="data_source_run_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the data source for the data source run activity. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -75,32 +75,32 @@ The following fields are returned by `SELECT` queries:
     <td>The database included in the data source run activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="errorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>object</code></td>
     <td>The details of the error message that is returned if the operation cannot be successfully completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lineageSummary" /></td>
+    <td><CopyableCode code="lineage_summary" /></td>
     <td><code>object</code></td>
     <td>The data lineage summary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The project ID included in the data source run activity. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="technicalDescription" /></td>
+    <td><CopyableCode code="technical_description" /></td>
     <td><code>string</code></td>
     <td>The technical description included in the data source run activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="technicalName" /></td>
+    <td><CopyableCode code="technical_name" /></td>
     <td><code>string</code></td>
     <td>The technical name included in the data source run activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when data source run activity was updated.</td>
 </tr>
@@ -194,17 +194,17 @@ Lists data source run activities.
 
 ```sql
 SELECT
-createdAt,
-dataAssetId,
-dataAssetStatus,
-dataSourceRunId,
+created_at,
+data_asset_id,
+data_asset_status,
+data_source_run_id,
 database,
-errorMessage,
-lineageSummary,
-projectId,
-technicalDescription,
-technicalName,
-updatedAt
+error_message,
+lineage_summary,
+project_id,
+technical_description,
+technical_name,
+updated_at
 FROM aws.datazone.data_source_run_activities
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required

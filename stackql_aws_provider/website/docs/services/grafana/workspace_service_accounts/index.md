@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the service account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="grafanaRole" /></td>
+    <td><CopyableCode code="grafana_role" /></td>
     <td><code>string</code></td>
     <td>The role of the service account, which sets the permission level used when calling Grafana APIs. (ADMIN, EDITOR, VIEWER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isDisabled" /></td>
+    <td><CopyableCode code="is_disabled" /></td>
     <td><code>string</code></td>
     <td>Returns true if the service account is disabled. Service accounts can be disabled and enabled in the Amazon Managed Grafana console.</td>
 </tr>
@@ -170,8 +170,8 @@ Returns a list of service accounts for a workspace. Service accounts are only av
 SELECT
 id,
 name,
-grafanaRole,
-isDisabled
+grafana_role,
+is_disabled
 FROM aws.grafana.workspace_service_accounts
 WHERE workspace_id = '{{ workspace_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -211,8 +211,8 @@ SELECT
 RETURNING
 id,
 name,
-grafanaRole,
-workspaceId
+grafana_role,
+workspace_id
 ;
 ```
 </TabItem>

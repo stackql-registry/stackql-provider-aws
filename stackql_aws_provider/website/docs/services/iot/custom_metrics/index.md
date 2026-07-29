@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation date of the custom metric in milliseconds since epoch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="displayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>Field represents a friendly name in the console for the custom metric; doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. Can be updated. (pattern: &lt;code&gt;&#91;\p&#123;Graph&#125;\x20&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the custom metric was last modified in milliseconds since epoch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricArn" /></td>
+    <td><CopyableCode code="metric_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Number (ARN) of the custom metric.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricName" /></td>
+    <td><CopyableCode code="metric_name" /></td>
     <td><code>string</code></td>
     <td>The name of the custom metric. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metricType" /></td>
+    <td><CopyableCode code="metric_type" /></td>
     <td><code>string</code></td>
     <td>The type of the custom metric. The type number only takes a single metric value as an input, but while submitting the metrics value in the DeviceMetrics report, it must be passed as an array with a single value. (string-list, ip-address-list, number-list, number)</td>
 </tr>
@@ -208,12 +208,12 @@ Gets information about a Device Defender detect custom metric. Requires permissi
 
 ```sql
 SELECT
-creationDate,
-displayName,
-lastModifiedDate,
-metricArn,
-metricName,
-metricType
+creation_date,
+display_name,
+last_modified_date,
+metric_arn,
+metric_name,
+metric_type
 FROM aws.iot.custom_metrics
 WHERE metric_name = '{{ metric_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -267,8 +267,8 @@ SELECT
 '{{ metric_name }}',
 '{{ region }}'
 RETURNING
-metricArn,
-metricName
+metric_arn,
+metric_name
 ;
 ```
 </TabItem>
@@ -321,12 +321,12 @@ metric_name = '{{ metric_name }}' --required
 AND region = '{{ region }}' --required
 AND displayName = '{{ displayName }}' --required
 RETURNING
-creationDate,
-displayName,
-lastModifiedDate,
-metricArn,
-metricName,
-metricType;
+creation_date,
+display_name,
+last_modified_date,
+metric_arn,
+metric_name,
+metric_type;
 ```
 </TabItem>
 </Tabs>

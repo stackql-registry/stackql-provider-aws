@@ -51,87 +51,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSize" /></td>
+    <td><CopyableCode code="data_size" /></td>
     <td><code>number (double)</code></td>
     <td>The size of the dataset in gigabytes (GB) after the import job has finished.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>The source of your data, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the data and, optionally, an Key Management Service (KMS) key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetArn" /></td>
+    <td><CopyableCode code="dataset_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset that the training data was imported to. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetImportJobArn" /></td>
+    <td><CopyableCode code="dataset_import_job_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the dataset import job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetImportJobName" /></td>
+    <td><CopyableCode code="dataset_import_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset import job. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EstimatedTimeRemainingInMinutes" /></td>
+    <td><CopyableCode code="estimated_time_remaining_in_minutes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The estimated time remaining in minutes for the dataset import job to complete.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FieldStatistics" /></td>
+    <td><CopyableCode code="field_statistics" /></td>
     <td><code>object</code></td>
     <td>Statistical information about each field in the input data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format of the imported data, CSV or PARQUET. (pattern: &lt;code&gt;^CSV|PARQUET$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GeolocationFormat" /></td>
+    <td><CopyableCode code="geolocation_format" /></td>
     <td><code>string</code></td>
     <td>The format of the geolocation attribute. Valid Values:"LAT_LONG" and "CC_POSTALCODE". (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportMode" /></td>
+    <td><CopyableCode code="import_mode" /></td>
     <td><code>string</code></td>
     <td>The import mode of the dataset import job, FULL or INCREMENTAL. (FULL, INCREMENTAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the dataset import job. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED CREATE_STOPPING, CREATE_STOPPED</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimeZone" /></td>
+    <td><CopyableCode code="time_zone" /></td>
     <td><code>string</code></td>
     <td>The single time zone applied to every item in the dataset (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\/\+\-\_&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimestampFormat" /></td>
+    <td><CopyableCode code="timestamp_format" /></td>
     <td><code>string</code></td>
     <td>The format of timestamps in the dataset. The format that you specify depends on the DataFrequency specified when the dataset was created. The following formats are supported "yyyy-MM-dd" For the following data frequencies: Y, M, W, and D "yyyy-MM-dd HH:mm:ss" For the following data frequencies: H, 30min, 15min, and 1min; and optionally, for: Y, M, W, and D (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\:\.\,\'\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UseGeolocationForTimeZone" /></td>
+    <td><CopyableCode code="use_geolocation_for_time_zone" /></td>
     <td><code>boolean</code></td>
     <td>Whether TimeZone is automatically derived from the geolocation attribute.</td>
 </tr>
@@ -150,42 +150,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the dataset import job was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
     <td>The source of your data, an Identity and Access Management (IAM) role that allows Amazon Forecast to access the data and, optionally, an Key Management Service (KMS) key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetImportJobArn" /></td>
+    <td><CopyableCode code="dataset_import_job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the dataset import job. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):forecast:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetImportJobName" /></td>
+    <td><CopyableCode code="dataset_import_job_name" /></td>
     <td><code>string</code></td>
     <td>The name of the dataset import job. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImportMode" /></td>
+    <td><CopyableCode code="import_mode" /></td>
     <td><code>string</code></td>
     <td>The import mode of the dataset import job, FULL or INCREMENTAL. (FULL, INCREMENTAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationTime" /></td>
+    <td><CopyableCode code="last_modification_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>If an error occurred, an informational message about the error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the dataset import job. States include: ACTIVE CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED CREATE_STOPPING, CREATE_STOPPED</td>
 </tr>
@@ -276,23 +276,23 @@ Describes a dataset import job created using the CreateDatasetImportJob operatio
 
 ```sql
 SELECT
-CreationTime,
-DataSize,
-DataSource,
-DatasetArn,
-DatasetImportJobArn,
-DatasetImportJobName,
-EstimatedTimeRemainingInMinutes,
-FieldStatistics,
-Format,
-GeolocationFormat,
-ImportMode,
-LastModificationTime,
-Message,
-Status,
-TimeZone,
-TimestampFormat,
-UseGeolocationForTimeZone
+creation_time,
+data_size,
+data_source,
+dataset_arn,
+dataset_import_job_arn,
+dataset_import_job_name,
+estimated_time_remaining_in_minutes,
+field_statistics,
+format,
+geolocation_format,
+import_mode,
+last_modification_time,
+message,
+status,
+time_zone,
+timestamp_format,
+use_geolocation_for_time_zone
 FROM aws.forecast.dataset_import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -304,14 +304,14 @@ Returns a list of dataset import jobs created using the CreateDatasetImportJob o
 
 ```sql
 SELECT
-CreationTime,
-DataSource,
-DatasetImportJobArn,
-DatasetImportJobName,
-ImportMode,
-LastModificationTime,
-Message,
-Status
+creation_time,
+data_source,
+dataset_import_job_arn,
+dataset_import_job_name,
+import_mode,
+last_modification_time,
+message,
+status
 FROM aws.forecast.dataset_import_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -360,7 +360,7 @@ SELECT
 '{{ ImportMode }}',
 '{{ region }}'
 RETURNING
-DatasetImportJobArn
+dataset_import_job_arn
 ;
 ```
 </TabItem>

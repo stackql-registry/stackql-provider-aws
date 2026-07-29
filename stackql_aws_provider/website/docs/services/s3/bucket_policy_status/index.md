@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="IsPublic" /></td>
+    <td><CopyableCode code="is_public" /></td>
     <td><code>boolean</code></td>
     <td>The policy status for this bucket. TRUE indicates that this bucket is public. FALSE indicates that the bucket is not public.</td>
 </tr>
@@ -129,7 +129,7 @@ This operation is not supported for directory buckets. Retrieves the policy stat
 
 ```sql
 SELECT
-IsPublic
+is_public
 FROM aws.s3.bucket_policy_status
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

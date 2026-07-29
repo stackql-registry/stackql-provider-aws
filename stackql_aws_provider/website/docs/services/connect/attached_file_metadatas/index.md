@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Errors" /></td>
+    <td><CopyableCode code="errors" /></td>
     <td><code>array</code></td>
     <td>List of errors of attached files that could not be retrieved.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Files" /></td>
+    <td><CopyableCode code="files" /></td>
     <td><code>array</code></td>
     <td>List of attached files that were successfully retrieved.</td>
 </tr>
@@ -134,8 +134,8 @@ Allows you to retrieve metadata about multiple attached files on an associated r
 
 ```sql
 SELECT
-Errors,
-Files
+errors,
+files
 FROM aws.connect.attached_file_metadatas
 WHERE instance_id = '{{ instance_id }}' -- required
 AND associatedResourceArn = '{{ associatedResourceArn }}' -- required

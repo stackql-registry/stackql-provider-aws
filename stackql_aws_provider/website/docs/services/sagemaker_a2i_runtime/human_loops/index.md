@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time when Amazon Augmented AI created the human loop.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureCode" /></td>
+    <td><CopyableCode code="failure_code" /></td>
     <td><code>string</code></td>
     <td>A failure code that identifies the type of failure. Possible values: ValidationError, Expired, InternalError</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason why a human loop failed. The failure reason is returned when the status of the human loop is Failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionArn" /></td>
+    <td><CopyableCode code="flow_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow definition. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:flow-definition/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopArn" /></td>
+    <td><CopyableCode code="human_loop_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the human loop. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:human-loop/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopName" /></td>
+    <td><CopyableCode code="human_loop_name" /></td>
     <td><code>string</code></td>
     <td>The name of the human loop. The name must be lowercase, unique within the Region in your account, and can have up to 63 characters. Valid characters: a-z, 0-9, and - (hyphen). (pattern: &lt;code&gt;^&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopOutput" /></td>
+    <td><CopyableCode code="human_loop_output" /></td>
     <td><code>object</code></td>
     <td>An object that contains information about the output of the human loop.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopStatus" /></td>
+    <td><CopyableCode code="human_loop_status" /></td>
     <td><code>string</code></td>
     <td>The status of the human loop. (InProgress, Failed, Completed, Stopped, Stopping)</td>
 </tr>
@@ -105,27 +105,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When Amazon Augmented AI created the human loop.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason why the human loop failed. A failure reason is returned when the status of the human loop is Failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FlowDefinitionArn" /></td>
+    <td><CopyableCode code="flow_definition_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the flow definition used to configure the human loop. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:flow-definition/.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopName" /></td>
+    <td><CopyableCode code="human_loop_name" /></td>
     <td><code>string</code></td>
     <td>The name of the human loop. (pattern: &lt;code&gt;^&#91;a-z0-9&#93;(-*&#91;a-z0-9&#93;)*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HumanLoopStatus" /></td>
+    <td><CopyableCode code="human_loop_status" /></td>
     <td><code>string</code></td>
     <td>The status of the human loop. (InProgress, Failed, Completed, Stopped, Stopping)</td>
 </tr>
@@ -258,14 +258,14 @@ Returns information about the specified human loop. If the human loop was delete
 
 ```sql
 SELECT
-CreationTime,
-FailureCode,
-FailureReason,
-FlowDefinitionArn,
-HumanLoopArn,
-HumanLoopName,
-HumanLoopOutput,
-HumanLoopStatus
+creation_time,
+failure_code,
+failure_reason,
+flow_definition_arn,
+human_loop_arn,
+human_loop_name,
+human_loop_output,
+human_loop_status
 FROM aws.sagemaker_a2i_runtime.human_loops
 WHERE human_loop_name = '{{ human_loop_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,11 +278,11 @@ Returns information about human loops, given the specified parameters. If a huma
 
 ```sql
 SELECT
-CreationTime,
-FailureReason,
-FlowDefinitionArn,
-HumanLoopName,
-HumanLoopStatus
+creation_time,
+failure_reason,
+flow_definition_arn,
+human_loop_name,
+human_loop_status
 FROM aws.sagemaker_a2i_runtime.human_loops
 WHERE FlowDefinitionArn = '{{ FlowDefinitionArn }}' -- required
 AND region = '{{ region }}' -- required

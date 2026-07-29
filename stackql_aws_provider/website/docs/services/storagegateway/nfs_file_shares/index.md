@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NFSFileShareInfoList" /></td>
+    <td><CopyableCode code="nfs_file_share_info_list" /></td>
     <td><code>array</code></td>
     <td>An array containing a description for each requested file share.</td>
 </tr>
@@ -133,7 +133,7 @@ Gets a description for one or more Network File System (NFS) file shares from an
 
 ```sql
 SELECT
-NFSFileShareInfoList
+nfs_file_share_info_list
 FROM aws.storagegateway.nfs_file_shares
 WHERE region = '{{ region }}' -- required
 ;
@@ -206,7 +206,7 @@ SELECT
 '{{ AuditDestinationARN }}',
 '{{ region }}'
 RETURNING
-FileShareARN
+file_share_arn
 ;
 ```
 </TabItem>
@@ -357,7 +357,7 @@ WHERE
 region = '{{ region }}' --required
 AND FileShareARN = '{{ FileShareARN }}' --required
 RETURNING
-FileShareARN;
+file_share_arn;
 ```
 </TabItem>
 </Tabs>

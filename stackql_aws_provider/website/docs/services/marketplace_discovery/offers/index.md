@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agreementProposalId" /></td>
+    <td><CopyableCode code="agreement_proposal_id" /></td>
     <td><code>string</code></td>
     <td>An encoded string to be passed by the acceptor of the terms when creating an agreement. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="associatedEntities" /></td>
+    <td><CopyableCode code="associated_entities" /></td>
     <td><code>array</code></td>
     <td>The products and offer sets associated with this offer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availableFromTime" /></td>
+    <td><CopyableCode code="available_from_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the offer became available to the buyer.</td>
 </tr>
@@ -75,32 +75,32 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the catalog that the offer belongs to. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expirationTime" /></td>
+    <td><CopyableCode code="expiration_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time until when the offer can be procured. This value is null for offers that never expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offerId" /></td>
+    <td><CopyableCode code="offer_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the offer. (pattern: &lt;code&gt;&#91;\w\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="offerName" /></td>
+    <td><CopyableCode code="offer_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the offer. This is free-form text provided by the seller.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="pricingModel" /></td>
+    <td><CopyableCode code="pricing_model" /></td>
     <td><code>object</code></td>
     <td>A pricing model that determines how buyers are charged for a listing, such as usage-based, contract, BYOL, or free.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="replacementAgreementId" /></td>
+    <td><CopyableCode code="replacement_agreement_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the existing agreement that this offer would replace. Enables agreement-based offer functionality. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sellerOfRecord" /></td>
+    <td><CopyableCode code="seller_of_record" /></td>
     <td><code>object</code></td>
     <td>The entity responsible for selling the product under this offer.</td>
 </tr>
@@ -169,17 +169,17 @@ Provides details about an offer, such as the pricing model, seller of record, av
 
 ```sql
 SELECT
-agreementProposalId,
-associatedEntities,
-availableFromTime,
+agreement_proposal_id,
+associated_entities,
+available_from_time,
 badges,
 catalog,
-expirationTime,
-offerId,
-offerName,
-pricingModel,
-replacementAgreementId,
-sellerOfRecord
+expiration_time,
+offer_id,
+offer_name,
+pricing_model,
+replacement_agreement_id,
+seller_of_record
 FROM aws.marketplace_discovery.offers
 WHERE region = '{{ region }}' -- required
 ;

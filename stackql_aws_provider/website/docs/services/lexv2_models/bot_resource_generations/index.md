@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot for which the generation request was made. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot for which the generation request was made. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the item was generated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>A list of reasons why the generation of bot resources through natural language description failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generatedBotLocaleUrl" /></td>
+    <td><CopyableCode code="generated_bot_locale_url" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 location of the generated bot locale configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generationId" /></td>
+    <td><CopyableCode code="generation_id" /></td>
     <td><code>string</code></td>
     <td>The generation ID for which to return the generation details. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generationInputPrompt" /></td>
+    <td><CopyableCode code="generation_input_prompt" /></td>
     <td><code>string</code></td>
     <td>The prompt used in the generation request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generationStatus" /></td>
+    <td><CopyableCode code="generation_status" /></td>
     <td><code>string</code></td>
     <td>The status of the generation request. (Failed, Complete, InProgress)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time at which the generated item was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The locale of the bot for which the generation request was made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelArn" /></td>
+    <td><CopyableCode code="model_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the model used to generate the bot resources. (pattern: &lt;code&gt;^arn:aws(-&#91;^:&#93;+)?:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;::foundation-model\/&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;&#123;1&#125;(&#91;a-z0-9-&#93;&#123;1,63&#125;&#91;.&#93;)&#123;0,2&#125;&#91;a-z0-9-&#93;&#123;1,63&#125;(&#91;:&#93;&#91;a-z0-9-&#93;&#123;1,63&#125;)&#123;0,2&#125;$&lt;/code&gt;)</td>
 </tr>
@@ -120,27 +120,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot for which the generation requests were made. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot for which the generation requests were made. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generationSummaries" /></td>
+    <td><CopyableCode code="generation_summaries" /></td>
     <td><code>array</code></td>
     <td>A list of objects, each containing information about a generation request for the bot locale.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The locale of the bot for which the generation requests were made.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the total number of results is greater than the number specified in the maxResults, the response returns a token in the nextToken field. Use this token when making a request to return the next batch of results.</td>
 </tr>
@@ -237,17 +237,17 @@ Returns information about a request to generate a bot through natural language d
 
 ```sql
 SELECT
-botId,
-botVersion,
-creationDateTime,
-failureReasons,
-generatedBotLocaleUrl,
-generationId,
-generationInputPrompt,
-generationStatus,
-lastUpdatedDateTime,
-localeId,
-modelArn
+bot_id,
+bot_version,
+creation_date_time,
+failure_reasons,
+generated_bot_locale_url,
+generation_id,
+generation_input_prompt,
+generation_status,
+last_updated_date_time,
+locale_id,
+model_arn
 FROM aws.lexv2_models.bot_resource_generations
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required
@@ -263,11 +263,11 @@ Lists the generation requests made for a bot locale.
 
 ```sql
 SELECT
-botId,
-botVersion,
-generationSummaries,
-localeId,
-nextToken
+bot_id,
+bot_version,
+generation_summaries,
+locale_id,
+next_token
 FROM aws.lexv2_models.bot_resource_generations
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required

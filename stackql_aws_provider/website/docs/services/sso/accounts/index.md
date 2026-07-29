@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the AWS account that is assigned to the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accountName" /></td>
+    <td><CopyableCode code="account_name" /></td>
     <td><code>string</code></td>
     <td>The display name of the AWS account that is assigned to the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="emailAddress" /></td>
+    <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
     <td>The email address of the AWS account that is assigned to the user.</td>
 </tr>
@@ -144,9 +144,9 @@ Lists all AWS accounts assigned to the user. These AWS accounts are assigned by 
 
 ```sql
 SELECT
-accountId,
-accountName,
-emailAddress
+account_id,
+account_name,
+email_address
 FROM aws.sso.accounts
 WHERE `x-amz-sso_bearer_token` = '{{ x-amz-sso_bearer_token }}' -- required
 AND region = '{{ region }}' -- required

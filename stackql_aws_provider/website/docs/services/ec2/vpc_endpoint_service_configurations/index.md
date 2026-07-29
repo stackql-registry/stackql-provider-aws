@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AcceptanceRequired" /></td>
+    <td><CopyableCode code="acceptance_required" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether requests from other Amazon Web Services accounts to create an endpoint to the service must first be accepted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneIds" /></td>
+    <td><CopyableCode code="availability_zone_ids" /></td>
     <td><code>string</code></td>
     <td>The IDs of the Availability Zones in which the service is available. Either AvailabilityZone or AvailabilityZoneId can be specified, but not both</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZones" /></td>
+    <td><CopyableCode code="availability_zones" /></td>
     <td><code>string</code></td>
     <td>The Availability Zones in which the service is available. Either AvailabilityZone or AvailabilityZoneId can be specified, but not both</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BaseEndpointDnsNames" /></td>
+    <td><CopyableCode code="base_endpoint_dns_names" /></td>
     <td><code>string</code></td>
     <td>The DNS names for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayLoadBalancerArns" /></td>
+    <td><CopyableCode code="gateway_load_balancer_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARNs) of the Gateway Load Balancers for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagesVpcEndpoints" /></td>
+    <td><CopyableCode code="manages_vpc_endpoints" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the service manages its VPC endpoints. Management of the service VPC endpoints using the VPC endpoint API is restricted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkLoadBalancerArns" /></td>
+    <td><CopyableCode code="network_load_balancer_arns" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Names (ARNs) of the Network Load Balancers for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PayerResponsibility" /></td>
+    <td><CopyableCode code="payer_responsibility" /></td>
     <td><code>string</code></td>
     <td>The payer responsibility.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsName" /></td>
+    <td><CopyableCode code="private_dns_name" /></td>
     <td><code>string</code></td>
     <td>The private DNS name for the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrivateDnsNameConfiguration" /></td>
+    <td><CopyableCode code="private_dns_name_configuration" /></td>
     <td><code>string</code></td>
     <td>Information about the endpoint service private DNS name configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RemoteAccessEnabled" /></td>
+    <td><CopyableCode code="remote_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether consumers can access the service from a Region other than the Region where the service is hosted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceState" /></td>
+    <td><CopyableCode code="service_state" /></td>
     <td><code>string</code></td>
     <td>The service state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceType" /></td>
+    <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>The type of service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedIpAddressTypes" /></td>
+    <td><CopyableCode code="supported_ip_address_types" /></td>
     <td><code>string</code></td>
     <td>The supported IP address types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedRegions" /></td>
+    <td><CopyableCode code="supported_regions" /></td>
     <td><code>string</code></td>
     <td>The supported Regions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the service.</td>
 </tr>
@@ -340,24 +340,24 @@ Describes the VPC endpoint service configurations in your account (your services
 
 ```sql
 SELECT
-AcceptanceRequired,
-AvailabilityZoneIds,
-AvailabilityZones,
-BaseEndpointDnsNames,
-GatewayLoadBalancerArns,
-ManagesVpcEndpoints,
-NetworkLoadBalancerArns,
-PayerResponsibility,
-PrivateDnsName,
-PrivateDnsNameConfiguration,
-RemoteAccessEnabled,
-ServiceId,
-ServiceName,
-ServiceState,
-ServiceType,
-SupportedIpAddressTypes,
-SupportedRegions,
-Tags
+acceptance_required,
+availability_zone_ids,
+availability_zones,
+base_endpoint_dns_names,
+gateway_load_balancer_arns,
+manages_vpc_endpoints,
+network_load_balancer_arns,
+payer_responsibility,
+private_dns_name,
+private_dns_name_configuration,
+remote_access_enabled,
+service_id,
+service_name,
+service_state,
+service_type,
+supported_ip_address_types,
+supported_regions,
+tags
 FROM aws.ec2.vpc_endpoint_service_configurations
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -409,8 +409,8 @@ SELECT
 '{{ ClientToken }}',
 '{{ TagSpecification }}'
 RETURNING
-ClientToken,
-ServiceConfiguration
+client_token,
+service_configuration
 ;
 ```
 </TabItem>
@@ -496,7 +496,7 @@ AND RemoveSupportedIpAddressType = '{{ RemoveSupportedIpAddressType}}'
 AND AddSupportedRegion = '{{ AddSupportedRegion}}'
 AND RemoveSupportedRegion = '{{ RemoveSupportedRegion}}'
 RETURNING
-Return;
+return;
 ```
 </TabItem>
 </Tabs>

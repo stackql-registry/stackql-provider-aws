@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) used to uniquely identify a pricing rule. (pattern: &lt;code&gt;(arn:aws(-cn)?:billingconductor::&#91;0-9&#93;&#123;12&#125;:pricingrule/)?&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AssociatedPricingPlanCount" /></td>
+    <td><CopyableCode code="associated_pricing_plan_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The pricing plans count that this pricing rule is associated with.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BillingEntity" /></td>
+    <td><CopyableCode code="billing_entity" /></td>
     <td><code>string</code></td>
     <td>The seller of services provided by Amazon Web Services, their affiliates, or third-party providers selling services via Amazon Web Services Marketplace. (pattern: &lt;code&gt;&#91;a-zA-Z0-9() &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The time when the pricing rule was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The pricing rule description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>integer (int64)</code></td>
     <td>The most recent time when the pricing rule was modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModifierPercentage" /></td>
+    <td><CopyableCode code="modifier_percentage" /></td>
     <td><code>number (double)</code></td>
     <td>A percentage modifier applied on the public pricing rates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of a pricing rule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\+=\.\-@&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Operation" /></td>
+    <td><CopyableCode code="operation" /></td>
     <td><code>string</code></td>
     <td>Operation is the specific Amazon Web Services action covered by this line item. This describes the specific usage of the line item. If the Scope attribute is set to SKU, this attribute indicates which operation the PricingRule is modifying. For example, a value of RunInstances:0202 indicates the operation of running an Amazon EC2 instance. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Scope" /></td>
+    <td><CopyableCode code="scope" /></td>
     <td><code>string</code></td>
     <td>The scope of pricing rule that indicates if it is globally applicable, or if it is service-specific. (GLOBAL, SERVICE, BILLING_ENTITY, SKU)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Service" /></td>
+    <td><CopyableCode code="service" /></td>
     <td><code>string</code></td>
     <td>If the Scope attribute is SERVICE, this attribute indicates which service the PricingRule is applicable for. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tiering" /></td>
+    <td><CopyableCode code="tiering" /></td>
     <td><code>object</code></td>
     <td>The set of tiering configurations for the pricing rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of pricing rule. (MARKUP, DISCOUNT, TIERING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UsageType" /></td>
+    <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
     <td>Usage type is the unit that each service uses to measure the usage of a specific type of resource. If the Scope attribute is set to SKU, this attribute indicates which usage type the PricingRule is modifying. For example, USW2-BoxUsage:m2.2xlarge describes an M2 High Memory Double Extra Large instance in the US West (Oregon) Region. (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -224,20 +224,20 @@ Describes a pricing rule that can be associated to a pricing plan, or set of pri
 
 ```sql
 SELECT
-Arn,
-AssociatedPricingPlanCount,
-BillingEntity,
-CreationTime,
-Description,
-LastModifiedTime,
-ModifierPercentage,
-Name,
-Operation,
-Scope,
-Service,
-Tiering,
-Type,
-UsageType
+arn,
+associated_pricing_plan_count,
+billing_entity,
+creation_time,
+description,
+last_modified_time,
+modifier_percentage,
+name,
+operation,
+scope,
+service,
+tiering,
+type,
+usage_type
 FROM aws.billingconductor.pricing_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -290,7 +290,7 @@ SELECT
 '{{ region }}',
 '{{ X-Amzn-Client-Token }}'
 RETURNING
-Arn
+arn
 ;
 ```
 </TabItem>
@@ -362,7 +362,7 @@ WHERE
 region = '{{ region }}' --required
 AND PricingRuleArns = '{{ PricingRuleArns }}' --required
 RETURNING
-Arn;
+arn;
 ```
 </TabItem>
 <TabItem value="update_pricing_rule">
@@ -381,19 +381,19 @@ Tiering = '{{ Tiering }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Arn,
-AssociatedPricingPlanCount,
-BillingEntity,
-Description,
-LastModifiedTime,
-ModifierPercentage,
-Name,
-Operation,
-Scope,
-Service,
-Tiering,
-Type,
-UsageType;
+arn,
+associated_pricing_plan_count,
+billing_entity,
+description,
+last_modified_time,
+modifier_percentage,
+name,
+operation,
+scope,
+service,
+tiering,
+type,
+usage_type;
 ```
 </TabItem>
 </Tabs>

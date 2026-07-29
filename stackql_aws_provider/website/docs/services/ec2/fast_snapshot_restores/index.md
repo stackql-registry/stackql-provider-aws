@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisabledTime" /></td>
+    <td><CopyableCode code="disabled_time" /></td>
     <td><code>string</code></td>
     <td>The time at which fast snapshot restores entered the disabled state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisablingTime" /></td>
+    <td><CopyableCode code="disabling_time" /></td>
     <td><code>string</code></td>
     <td>The time at which fast snapshot restores entered the disabling state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnabledTime" /></td>
+    <td><CopyableCode code="enabled_time" /></td>
     <td><code>string</code></td>
     <td>The time at which fast snapshot restores entered the enabled state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnablingTime" /></td>
+    <td><CopyableCode code="enabling_time" /></td>
     <td><code>string</code></td>
     <td>The time at which fast snapshot restores entered the enabling state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizingTime" /></td>
+    <td><CopyableCode code="optimizing_time" /></td>
     <td><code>string</code></td>
     <td>The time at which fast snapshot restores entered the optimizing state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerAlias" /></td>
+    <td><CopyableCode code="owner_alias" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services owner alias that enabled fast snapshot restores on the snapshot. This is intended for future use.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account that enabled fast snapshot restores on the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnapshotId" /></td>
+    <td><CopyableCode code="snapshot_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the snapshot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of fast snapshot restores.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateTransitionReason" /></td>
+    <td><CopyableCode code="state_transition_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for the state transition. The possible values are as follows: Client.UserInitiated - The state successfully transitioned to enabling or disabling. Client.UserInitiated - Lifecycle state transition - The state successfully transitioned to optimizing, enabled, or disabled.</td>
 </tr>
@@ -223,18 +223,18 @@ Describes the state of fast snapshot restores for your snapshots.
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-DisabledTime,
-DisablingTime,
-EnabledTime,
-EnablingTime,
-OptimizingTime,
-OwnerAlias,
-OwnerId,
-SnapshotId,
-State,
-StateTransitionReason
+availability_zone,
+availability_zone_id,
+disabled_time,
+disabling_time,
+enabled_time,
+enabling_time,
+optimizing_time,
+owner_alias,
+owner_id,
+snapshot_id,
+state,
+state_transition_reason
 FROM aws.ec2.fast_snapshot_restores
 WHERE region = '{{ region }}' -- required
 AND Filter = '{{ Filter }}'

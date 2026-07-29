@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ResourceType" /></td>
+    <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the resource type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Service" /></td>
+    <td><CopyableCode code="service" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services service that is associated with the resource type. This is the primary service that lets you create and interact with resources of this type.</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves a list of all resource types currently supported by Amazon Web Service
 
 ```sql
 SELECT
-ResourceType,
-Service
+resource_type,
+service
 FROM aws.resource_explorer_2.supported_resource_types
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CapacityBlockId" /></td>
+    <td><CopyableCode code="capacity_block_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CapacityReservationStatuses" /></td>
+    <td><CopyableCode code="capacity_reservation_statuses" /></td>
     <td><code>string</code></td>
     <td>The availability of capacity for the Capacity Block reservations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InterconnectStatus" /></td>
+    <td><CopyableCode code="interconnect_status" /></td>
     <td><code>string</code></td>
     <td>The status of the high-bandwidth accelerator interconnect. Possible states include: ok the accelerator interconnect is healthy. impaired - accelerator interconnect communication is impaired. insufficient-data - insufficient data to determine accelerator interconnect status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalAvailableCapacity" /></td>
+    <td><CopyableCode code="total_available_capacity" /></td>
     <td><code>integer</code></td>
     <td>The remaining capacity. Indicates the number of resources that can be launched into the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalCapacity" /></td>
+    <td><CopyableCode code="total_capacity" /></td>
     <td><code>integer</code></td>
     <td>The combined amount of Available and Unavailable capacity in the Capacity Block.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalUnavailableCapacity" /></td>
+    <td><CopyableCode code="total_unavailable_capacity" /></td>
     <td><code>integer</code></td>
     <td>The unavailable capacity. Indicates the instance capacity that is unavailable for use due to a system status check failure.</td>
 </tr>
@@ -169,12 +169,12 @@ Describes the availability of capacity for the specified Capacity blocks, or all
 
 ```sql
 SELECT
-CapacityBlockId,
-CapacityReservationStatuses,
-InterconnectStatus,
-TotalAvailableCapacity,
-TotalCapacity,
-TotalUnavailableCapacity
+capacity_block_id,
+capacity_reservation_statuses,
+interconnect_status,
+total_available_capacity,
+total_capacity,
+total_unavailable_capacity
 FROM aws.ec2.capacity_block_status
 WHERE region = '{{ region }}' -- required
 AND CapacityBlockId = '{{ CapacityBlockId }}'

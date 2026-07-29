@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accessKeyId" /></td>
+    <td><CopyableCode code="access_key_id" /></td>
     <td><code>string</code></td>
     <td>The identifier used for the temporary security credentials. For more information, see Using Temporary Security Credentials to Request Access to AWS Resources in the AWS IAM User Guide.</td>
 </tr>
@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The date on which temporary security credentials expire.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="secretAccessKey" /></td>
+    <td><CopyableCode code="secret_access_key" /></td>
     <td><code>string</code></td>
     <td>The key that is used to sign the request. For more information, see Using Temporary Security Credentials to Request Access to AWS Resources in the AWS IAM User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionToken" /></td>
+    <td><CopyableCode code="session_token" /></td>
     <td><code>string</code></td>
     <td>The token used for temporary credentials. For more information, see Using Temporary Security Credentials to Request Access to AWS Resources in the AWS IAM User Guide.</td>
 </tr>
@@ -149,10 +149,10 @@ Returns the STS short-term credentials for a given role name that is assigned to
 
 ```sql
 SELECT
-accessKeyId,
+access_key_id,
 expiration,
-secretAccessKey,
-sessionToken
+secret_access_key,
+session_token
 FROM aws.sso.role_credentials
 WHERE role_name = '{{ role_name }}' -- required
 AND account_id = '{{ account_id }}' -- required

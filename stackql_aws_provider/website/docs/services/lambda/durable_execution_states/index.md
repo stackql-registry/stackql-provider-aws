@@ -50,72 +50,72 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CallbackDetails" /></td>
+    <td><CopyableCode code="callback_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a callback operation in a durable execution, including the callback token and timeout configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChainedInvokeDetails" /></td>
+    <td><CopyableCode code="chained_invoke_details" /></td>
     <td><code>object</code></td>
     <td>Contains details about a chained function invocation in a durable execution, including the target function and invocation parameters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ContextDetails" /></td>
+    <td><CopyableCode code="context_details" /></td>
     <td><code>object</code></td>
     <td>Details about the context, if this operation represents a context.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTimestamp" /></td>
+    <td><CopyableCode code="end_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the operation ended, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExecutionDetails" /></td>
+    <td><CopyableCode code="execution_details" /></td>
     <td><code>object</code></td>
     <td>Details about the execution, if this operation represents an execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this operation. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The customer-provided name for this operation. (pattern: &lt;code&gt;&#91;\x20-\x7E&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParentId" /></td>
+    <td><CopyableCode code="parent_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the parent operation, if this operation is running within a child context. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTimestamp" /></td>
+    <td><CopyableCode code="start_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the operation started, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the operation. (STARTED, PENDING, READY, SUCCEEDED, FAILED, CANCELLED, TIMED_OUT, STOPPED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StepDetails" /></td>
+    <td><CopyableCode code="step_details" /></td>
     <td><code>object</code></td>
     <td>Details about the step, if this operation represents a step.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubType" /></td>
+    <td><CopyableCode code="sub_type" /></td>
     <td><code>string</code></td>
     <td>The subtype of the operation, providing additional categorization. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of operation. (EXECUTION, CONTEXT, STEP, WAIT, CALLBACK, CHAINED_INVOKE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WaitDetails" /></td>
+    <td><CopyableCode code="wait_details" /></td>
     <td><code>object</code></td>
     <td>Details about the wait operation, if this operation represents a wait.</td>
 </tr>
@@ -204,20 +204,20 @@ Retrieves the current execution state required for the replay process during dur
 
 ```sql
 SELECT
-CallbackDetails,
-ChainedInvokeDetails,
-ContextDetails,
-EndTimestamp,
-ExecutionDetails,
-Id,
-Name,
-ParentId,
-StartTimestamp,
-Status,
-StepDetails,
-SubType,
-Type,
-WaitDetails
+callback_details,
+chained_invoke_details,
+context_details,
+end_timestamp,
+execution_details,
+id,
+name,
+parent_id,
+start_timestamp,
+status,
+step_details,
+sub_type,
+type,
+wait_details
 FROM aws.lambda.durable_execution_states
 WHERE durable_execution_arn = '{{ durable_execution_arn }}' -- required
 AND CheckpointToken = '{{ CheckpointToken }}' -- required

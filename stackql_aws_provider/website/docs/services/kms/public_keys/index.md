@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomerMasterKeySpec" /></td>
+    <td><CopyableCode code="customer_master_key_spec" /></td>
     <td><code>string</code></td>
     <td>Instead, use the KeySpec field in the GetPublicKey response. The KeySpec and CustomerMasterKeySpec fields have the same value. We recommend that you use the KeySpec field in your code. However, to avoid breaking changes, KMS supports both fields. (RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, ECC_SECG_P256K1, SYMMETRIC_DEFAULT, HMAC_224, HMAC_256, HMAC_384, HMAC_512, SM2)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionAlgorithms" /></td>
+    <td><CopyableCode code="encryption_algorithms" /></td>
     <td><code>array</code></td>
     <td>The encryption algorithms that KMS supports for this key. This information is critical. If a public key encrypts data outside of KMS by using an unsupported encryption algorithm, the ciphertext cannot be decrypted. This field appears in the response only when the KeyUsage of the public key is ENCRYPT_DECRYPT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyAgreementAlgorithms" /></td>
+    <td><CopyableCode code="key_agreement_algorithms" /></td>
     <td><code>array</code></td>
     <td>The key agreement algorithm used to derive a shared secret. This field is present only when the KMS key has a KeyUsage value of KEY_AGREEMENT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (key ARN) of the asymmetric KMS key from which the public key was downloaded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeySpec" /></td>
+    <td><CopyableCode code="key_spec" /></td>
     <td><code>string</code></td>
     <td>The type of the of the public key that was downloaded. (RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, ECC_SECG_P256K1, SYMMETRIC_DEFAULT, HMAC_224, HMAC_256, HMAC_384, HMAC_512, SM2, ML_DSA_44, ML_DSA_65, ML_DSA_87, ECC_NIST_EDWARDS25519)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyUsage" /></td>
+    <td><CopyableCode code="key_usage" /></td>
     <td><code>string</code></td>
     <td>The permitted use of the public key. Valid values for asymmetric key pairs are ENCRYPT_DECRYPT, SIGN_VERIFY, and KEY_AGREEMENT. This information is critical. For example, if a public key with SIGN_VERIFY key usage encrypts data outside of KMS, the ciphertext cannot be decrypted. (SIGN_VERIFY, ENCRYPT_DECRYPT, GENERATE_VERIFY_MAC, KEY_AGREEMENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKey" /></td>
+    <td><CopyableCode code="public_key" /></td>
     <td><code>string (byte)</code></td>
     <td>The exported public key. The value is a DER-encoded X.509 public key, also known as SubjectPublicKeyInfo (SPKI), as defined in RFC 5280. When you use the HTTP API or the Amazon Web Services CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigningAlgorithms" /></td>
+    <td><CopyableCode code="signing_algorithms" /></td>
     <td><code>array</code></td>
     <td>The signing algorithms that KMS supports for this key. This field appears in the response only when the KeyUsage of the public key is SIGN_VERIFY.</td>
 </tr>
@@ -154,14 +154,14 @@ Returns the public key of an asymmetric KMS key. Unlike the private key of a asy
 
 ```sql
 SELECT
-CustomerMasterKeySpec,
-EncryptionAlgorithms,
-KeyAgreementAlgorithms,
-KeyId,
-KeySpec,
-KeyUsage,
-PublicKey,
-SigningAlgorithms
+customer_master_key_spec,
+encryption_algorithms,
+key_agreement_algorithms,
+key_id,
+key_spec,
+key_usage,
+public_key,
+signing_algorithms
 FROM aws.kms.public_keys
 WHERE region = '{{ region }}' -- required
 ;

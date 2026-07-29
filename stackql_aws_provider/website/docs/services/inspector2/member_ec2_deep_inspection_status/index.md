@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountIds" /></td>
+    <td><CopyableCode code="account_ids" /></td>
     <td><code>array</code></td>
     <td>An array of objects that provide details on the activation status of Amazon Inspector deep inspection for each of the requested accounts.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedAccountIds" /></td>
+    <td><CopyableCode code="failed_account_ids" /></td>
     <td><code>array</code></td>
     <td>An array of objects that provide details on any accounts that failed to activate Amazon Inspector deep inspection and why.</td>
 </tr>
@@ -131,8 +131,8 @@ Retrieves Amazon Inspector deep inspection activation status of multiple member 
 
 ```sql
 SELECT
-accountIds,
-failedAccountIds
+account_ids,
+failed_account_ids
 FROM aws.inspector2.member_ec2_deep_inspection_status
 WHERE region = '{{ region }}' -- required
 ;

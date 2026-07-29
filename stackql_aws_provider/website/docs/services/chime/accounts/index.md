@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountStatus" /></td>
+    <td><CopyableCode code="account_status" /></td>
     <td><code>string</code></td>
     <td>The status of the account. (Suspended, Active)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountType" /></td>
+    <td><CopyableCode code="account_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account type. For more information about different account types, see Managing Your Amazon Chime Accounts in the Amazon Chime Administration Guide. (Team, EnterpriseDirectory, EnterpriseLWA, EnterpriseOIDC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Amazon Chime account creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultLicense" /></td>
+    <td><CopyableCode code="default_license" /></td>
     <td><code>string</code></td>
     <td>The default license for the Amazon Chime account. (Basic, Plus, Pro, ProTrial)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigninDelegateGroups" /></td>
+    <td><CopyableCode code="signin_delegate_groups" /></td>
     <td><code>array</code></td>
     <td>The sign-in delegate groups associated with the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedLicenses" /></td>
+    <td><CopyableCode code="supported_licenses" /></td>
     <td><code>array</code></td>
     <td>Supported licenses for the Amazon Chime account.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountStatus" /></td>
+    <td><CopyableCode code="account_status" /></td>
     <td><code>string</code></td>
     <td>The status of the account. (Suspended, Active)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AccountType" /></td>
+    <td><CopyableCode code="account_type" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account type. For more information about different account types, see Managing Your Amazon Chime Accounts in the Amazon Chime Administration Guide. (Team, EnterpriseDirectory, EnterpriseLWA, EnterpriseOIDC)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsAccountId" /></td>
+    <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
     <td>The AWS account ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Amazon Chime account creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultLicense" /></td>
+    <td><CopyableCode code="default_license" /></td>
     <td><code>string</code></td>
     <td>The default license for the Amazon Chime account. (Basic, Plus, Pro, ProTrial)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Chime account name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SigninDelegateGroups" /></td>
+    <td><CopyableCode code="signin_delegate_groups" /></td>
     <td><code>array</code></td>
     <td>The sign-in delegate groups associated with the account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedLicenses" /></td>
+    <td><CopyableCode code="supported_licenses" /></td>
     <td><code>array</code></td>
     <td>Supported licenses for the Amazon Chime account.</td>
 </tr>
@@ -375,15 +375,15 @@ Retrieves details for the specified Amazon Chime account, such as account type a
 
 ```sql
 SELECT
-AccountId,
-AccountStatus,
-AccountType,
-AwsAccountId,
-CreatedTimestamp,
-DefaultLicense,
-Name,
-SigninDelegateGroups,
-SupportedLicenses
+account_id,
+account_status,
+account_type,
+aws_account_id,
+created_timestamp,
+default_license,
+name,
+signin_delegate_groups,
+supported_licenses
 FROM aws.chime.accounts
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -396,15 +396,15 @@ Lists the Amazon Chime accounts under the administrator's AWS account. You can f
 
 ```sql
 SELECT
-AccountId,
-AccountStatus,
-AccountType,
-AwsAccountId,
-CreatedTimestamp,
-DefaultLicense,
-Name,
-SigninDelegateGroups,
-SupportedLicenses
+account_id,
+account_status,
+account_type,
+aws_account_id,
+created_timestamp,
+default_license,
+name,
+signin_delegate_groups,
+supported_licenses
 FROM aws.chime.accounts
 WHERE region = '{{ region }}' -- required
 AND name = '{{ name }}'
@@ -439,7 +439,7 @@ SELECT
 '{{ Name }}',
 '{{ region }}'
 RETURNING
-Account
+account
 ;
 ```
 </TabItem>
@@ -510,7 +510,7 @@ WHERE
 account_id = '{{ account_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Account;
+account;
 ```
 </TabItem>
 </Tabs>

@@ -115,12 +115,12 @@ SELECT
 '{{ entitledApplicationArn }}',
 '{{ region }}'
 RETURNING
-authorizationEndpoint,
-clientId,
-clientIdIssuedAt,
-clientSecret,
-clientSecretExpiresAt,
-tokenEndpoint
+authorization_endpoint,
+client_id,
+client_id_issued_at,
+client_secret,
+client_secret_expires_at,
+token_endpoint
 ;
 ```
 </TabItem>

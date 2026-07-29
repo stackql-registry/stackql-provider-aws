@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="byolPricingTerm" /></td>
+    <td><CopyableCode code="byol_pricing_term" /></td>
     <td><code>object</code></td>
     <td>Defines a Bring Your Own License (BYOL) pricing term, where buyers use their existing license for the product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurableUpfrontPricingTerm" /></td>
+    <td><CopyableCode code="configurable_upfront_pricing_term" /></td>
     <td><code>object</code></td>
     <td>Defines a configurable upfront pricing term with selectable rate cards, where buyers choose from predefined pricing configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="fixedUpfrontPricingTerm" /></td>
+    <td><CopyableCode code="fixed_upfront_pricing_term" /></td>
     <td><code>object</code></td>
     <td>Defines a fixed upfront pricing term with a pre-paid amount and granted entitlements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="freeTrialPricingTerm" /></td>
+    <td><CopyableCode code="free_trial_pricing_term" /></td>
     <td><code>object</code></td>
     <td>Defines a free trial pricing term that enables customers to try the product before purchasing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="legalTerm" /></td>
+    <td><CopyableCode code="legal_term" /></td>
     <td><code>object</code></td>
     <td>Defines a legal term containing documents proposed to buyers, such as EULAs and data subscription agreements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="paymentScheduleTerm" /></td>
+    <td><CopyableCode code="payment_schedule_term" /></td>
     <td><code>object</code></td>
     <td>Defines a payment schedule term with installment payments at specified dates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="recurringPaymentTerm" /></td>
+    <td><CopyableCode code="recurring_payment_term" /></td>
     <td><code>object</code></td>
     <td>Defines a recurring payment term with fixed charges at regular billing intervals.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="renewalTerm" /></td>
+    <td><CopyableCode code="renewal_term" /></td>
     <td><code>object</code></td>
     <td>Defines a renewal term that enables automatic agreement renewal.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="supportTerm" /></td>
+    <td><CopyableCode code="support_term" /></td>
     <td><code>object</code></td>
     <td>Defines a support term that includes the refund policy for the offer.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="usageBasedPricingTerm" /></td>
+    <td><CopyableCode code="usage_based_pricing_term" /></td>
     <td><code>object</code></td>
     <td>Defines a usage-based pricing term (typically pay-as-you-go), where buyers are charged based on product usage.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="validityTerm" /></td>
+    <td><CopyableCode code="validity_term" /></td>
     <td><code>object</code></td>
     <td>Defines a validity term that specifies the duration or date range of an agreement.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="variablePaymentTerm" /></td>
+    <td><CopyableCode code="variable_payment_term" /></td>
     <td><code>object</code></td>
     <td>Defines a variable payment term with a maximum total charge amount.</td>
 </tr>
@@ -174,18 +174,18 @@ Returns the terms attached to an offer, such as pricing terms (usage-based, cont
 
 ```sql
 SELECT
-byolPricingTerm,
-configurableUpfrontPricingTerm,
-fixedUpfrontPricingTerm,
-freeTrialPricingTerm,
-legalTerm,
-paymentScheduleTerm,
-recurringPaymentTerm,
-renewalTerm,
-supportTerm,
-usageBasedPricingTerm,
-validityTerm,
-variablePaymentTerm
+byol_pricing_term,
+configurable_upfront_pricing_term,
+fixed_upfront_pricing_term,
+free_trial_pricing_term,
+legal_term,
+payment_schedule_term,
+recurring_payment_term,
+renewal_term,
+support_term,
+usage_based_pricing_term,
+validity_term,
+variable_payment_term
 FROM aws.marketplace_discovery.offer_terms
 WHERE region = '{{ region }}' -- required
 ;

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowedValues" /></td>
+    <td><CopyableCode code="allowed_values" /></td>
     <td><code>string</code></td>
     <td>The valid range of values for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChangeType" /></td>
+    <td><CopyableCode code="change_type" /></td>
     <td><code>string</code></td>
     <td>Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see Rebooting a Cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The valid data type for the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsModifiable" /></td>
+    <td><CopyableCode code="is_modifiable" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether (true) or not (false) the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinimumEngineVersion" /></td>
+    <td><CopyableCode code="minimum_engine_version" /></td>
     <td><code>string</code></td>
     <td>The earliest cache engine version to which the parameter can apply.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterName" /></td>
+    <td><CopyableCode code="parameter_name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParameterValue" /></td>
+    <td><CopyableCode code="parameter_value" /></td>
     <td><code>string</code></td>
     <td>The value of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The source of the parameter.</td>
 </tr>
@@ -196,15 +196,15 @@ Returns the detailed parameter list for a particular cache parameter group.
 
 ```sql
 SELECT
-AllowedValues,
-ChangeType,
-DataType,
-Description,
-IsModifiable,
-MinimumEngineVersion,
-ParameterName,
-ParameterValue,
-Source
+allowed_values,
+change_type,
+data_type,
+description,
+is_modifiable,
+minimum_engine_version,
+parameter_name,
+parameter_value,
+source
 FROM aws.elasticache.cache_parameters
 WHERE CacheParameterGroupName = '{{ CacheParameterGroupName }}' -- required
 AND region = '{{ region }}' -- required

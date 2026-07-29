@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImageAncestryEntries" /></td>
+    <td><CopyableCode code="image_ancestry_entries" /></td>
     <td><code>string</code></td>
     <td>A list of entries in the AMI ancestry chain, from the specified AMI to the root AMI.</td>
 </tr>
@@ -129,7 +129,7 @@ Retrieves the ancestry chain of the specified AMI, tracing its lineage back to t
 
 ```sql
 SELECT
-ImageAncestryEntries
+image_ancestry_entries
 FROM aws.ec2.image_ancestries
 WHERE ImageId = '{{ ImageId }}' -- required
 AND region = '{{ region }}' -- required

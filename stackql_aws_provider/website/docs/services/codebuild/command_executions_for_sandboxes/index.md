@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The command that needs to be executed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="endTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the command execution process ended, expressed in Unix time format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exitCode" /></td>
+    <td><CopyableCode code="exit_code" /></td>
     <td><code>string</code></td>
     <td>The exit code to return upon completion.</td>
 </tr>
@@ -75,27 +75,27 @@ The following fields are returned by `SELECT` queries:
     <td>Information about build logs in CloudWatch Logs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sandboxArn" /></td>
+    <td><CopyableCode code="sandbox_arn" /></td>
     <td><code>string</code></td>
     <td>A sandboxArn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sandboxId" /></td>
+    <td><CopyableCode code="sandbox_id" /></td>
     <td><code>string</code></td>
     <td>A sandboxId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="standardErrContent" /></td>
+    <td><CopyableCode code="standard_err_content" /></td>
     <td><code>string</code></td>
     <td>The text written by the command to stderr.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="standardOutputContent" /></td>
+    <td><CopyableCode code="standard_output_content" /></td>
     <td><code>string</code></td>
     <td>The text written by the command to stdout.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="startTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the command execution process started, expressed in Unix time format.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the command execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submitTime" /></td>
+    <td><CopyableCode code="submit_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the command execution process was initially submitted, expressed in Unix time format.</td>
 </tr>
@@ -181,16 +181,16 @@ Gets a list of command executions for a sandbox.
 SELECT
 id,
 command,
-endTime,
-exitCode,
+end_time,
+exit_code,
 logs,
-sandboxArn,
-sandboxId,
-standardErrContent,
-standardOutputContent,
-startTime,
+sandbox_arn,
+sandbox_id,
+standard_err_content,
+standard_output_content,
+start_time,
 status,
-submitTime,
+submit_time,
 type_
 FROM aws.codebuild.command_executions_for_sandboxes
 WHERE region = '{{ region }}' -- required

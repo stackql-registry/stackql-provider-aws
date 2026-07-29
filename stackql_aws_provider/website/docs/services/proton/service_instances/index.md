@@ -61,52 +61,52 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The service instance deployment status. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>The message associated with the service instance deployment status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment that the service instance was deployed into. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment of this service instance. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastClientRequestToken" /></td>
+    <td><CopyableCode code="last_client_request_token" /></td>
     <td><code>string</code></td>
     <td>The last client request token received.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentAttemptedAt" /></td>
+    <td><CopyableCode code="last_deployment_attempted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a deployment of the service instance was last attempted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentSucceededAt" /></td>
+    <td><CopyableCode code="last_deployment_succeeded_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service instance was last deployed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment of this service instance. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service that the service instance belongs to. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -116,17 +116,17 @@ The following fields are returned by `SELECT` queries:
     <td>The service spec that was used to create the service instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMajorVersion" /></td>
+    <td><CopyableCode code="template_major_version" /></td>
     <td><code>string</code></td>
     <td>The major version of the service template that was used to create the service instance. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMinorVersion" /></td>
+    <td><CopyableCode code="template_minor_version" /></td>
     <td><code>string</code></td>
     <td>The minor version of the service template that was used to create the service instance. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service template that was used to create the service instance. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -155,62 +155,62 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the service instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service instance was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The service instance deployment status. (IN_PROGRESS, FAILED, SUCCEEDED, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, CANCELLING, CANCELLED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentStatusMessage" /></td>
+    <td><CopyableCode code="deployment_status_message" /></td>
     <td><code>string</code></td>
     <td>A service instance deployment status message.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment that the service instance was deployed into. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastAttemptedDeploymentId" /></td>
+    <td><CopyableCode code="last_attempted_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last attempted deployment of this service instance. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentAttemptedAt" /></td>
+    <td><CopyableCode code="last_deployment_attempted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when a deployment of the service was last attempted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastDeploymentSucceededAt" /></td>
+    <td><CopyableCode code="last_deployment_succeeded_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the service was last deployed successfully.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastSucceededDeploymentId" /></td>
+    <td><CopyableCode code="last_succeeded_deployment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the last successful deployment of this service instance. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serviceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service that the service instance belongs to. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMajorVersion" /></td>
+    <td><CopyableCode code="template_major_version" /></td>
     <td><code>string</code></td>
     <td>The service instance template major version. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateMinorVersion" /></td>
+    <td><CopyableCode code="template_minor_version" /></td>
     <td><code>string</code></td>
     <td>The service instance template minor version. (pattern: &lt;code&gt;^(0|(&#91;1-9&#93;&#123;1&#125;\d*))$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the service template. (pattern: &lt;code&gt;^&#91;0-9A-Za-z&#93;+&#91;0-9A-Za-z_\-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -310,20 +310,20 @@ Get detailed data for a service instance. A service instance is an instantiation
 SELECT
 name,
 arn,
-createdAt,
-deploymentStatus,
-deploymentStatusMessage,
-environmentName,
-lastAttemptedDeploymentId,
-lastClientRequestToken,
-lastDeploymentAttemptedAt,
-lastDeploymentSucceededAt,
-lastSucceededDeploymentId,
-serviceName,
+created_at,
+deployment_status,
+deployment_status_message,
+environment_name,
+last_attempted_deployment_id,
+last_client_request_token,
+last_deployment_attempted_at,
+last_deployment_succeeded_at,
+last_succeeded_deployment_id,
+service_name,
 spec,
-templateMajorVersion,
-templateMinorVersion,
-templateName
+template_major_version,
+template_minor_version,
+template_name
 FROM aws.proton.service_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -337,18 +337,18 @@ List service instances with summary data. This action lists service instances of
 SELECT
 name,
 arn,
-createdAt,
-deploymentStatus,
-deploymentStatusMessage,
-environmentName,
-lastAttemptedDeploymentId,
-lastDeploymentAttemptedAt,
-lastDeploymentSucceededAt,
-lastSucceededDeploymentId,
-serviceName,
-templateMajorVersion,
-templateMinorVersion,
-templateName
+created_at,
+deployment_status,
+deployment_status_message,
+environment_name,
+last_attempted_deployment_id,
+last_deployment_attempted_at,
+last_deployment_succeeded_at,
+last_succeeded_deployment_id,
+service_name,
+template_major_version,
+template_minor_version,
+template_name
 FROM aws.proton.service_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -391,7 +391,7 @@ SELECT
 '{{ templateMinorVersion }}',
 '{{ region }}'
 RETURNING
-serviceInstance
+service_instance
 ;
 ```
 </TabItem>
@@ -467,7 +467,7 @@ AND deploymentType = '{{ deploymentType }}' --required
 AND name = '{{ name }}' --required
 AND serviceName = '{{ serviceName }}' --required
 RETURNING
-serviceInstance;
+service_instance;
 ```
 </TabItem>
 </Tabs>

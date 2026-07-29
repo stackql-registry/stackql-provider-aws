@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoMLOverrideStrategy" /></td>
+    <td><CopyableCode code="auto_ml_override_strategy" /></td>
     <td><code>string</code></td>
     <td>The LatencyOptimized AutoML override strategy is only available in private beta. Contact Amazon Web Services Support or your account manager to learn more about access privileges. The AutoML strategy used to train the predictor. Unless LatencyOptimized is specified, the AutoML strategy optimizes predictor accuracy. This parameter is only valid for predictors trained using AutoML. (LatencyOptimized, AccuracyOptimized)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsAutoPredictor" /></td>
+    <td><CopyableCode code="is_auto_predictor" /></td>
     <td><code>boolean</code></td>
     <td>Whether the predictor was created with CreateAutoPredictor.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OptimizationMetric" /></td>
+    <td><CopyableCode code="optimization_metric" /></td>
     <td><code>string</code></td>
     <td>The accuracy metric used to optimize the predictor. (WAPE, RMSE, AverageWeightedQuantileLoss, MASE, MAPE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PredictorEvaluationResults" /></td>
+    <td><CopyableCode code="predictor_evaluation_results" /></td>
     <td><code>array</code></td>
     <td>An array of results from evaluating the predictor.</td>
 </tr>
@@ -134,10 +134,10 @@ Provides metrics on the accuracy of the models that were trained by the CreatePr
 
 ```sql
 SELECT
-AutoMLOverrideStrategy,
-IsAutoPredictor,
-OptimizationMetric,
-PredictorEvaluationResults
+auto_ml_override_strategy,
+is_auto_predictor,
+optimization_metric,
+predictor_evaluation_results
 FROM aws.forecast.accuracy_metrics
 WHERE region = '{{ region }}' -- required
 ;

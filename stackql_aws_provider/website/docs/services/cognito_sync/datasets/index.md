@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date on which the dataset was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataStorage" /></td>
+    <td><CopyableCode code="data_storage" /></td>
     <td><code>integer (int64)</code></td>
     <td>Total size in bytes of the records in this dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetName" /></td>
+    <td><CopyableCode code="dataset_name" /></td>
     <td><code>string</code></td>
     <td>A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot). (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.:-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityId" /></td>
+    <td><CopyableCode code="identity_id" /></td>
     <td><code>string</code></td>
     <td>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The device that made the last change to this dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date when the dataset was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumRecords" /></td>
+    <td><CopyableCode code="num_records" /></td>
     <td><code>integer (int64)</code></td>
     <td>Number of records in this dataset.</td>
 </tr>
@@ -100,17 +100,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Count" /></td>
+    <td><CopyableCode code="count" /></td>
     <td><code>integer</code></td>
     <td>Number of datasets returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Datasets" /></td>
+    <td><CopyableCode code="datasets" /></td>
     <td><code>array</code></td>
     <td>A set of datasets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token for obtaining the next page of results.</td>
 </tr>
@@ -238,13 +238,13 @@ Gets meta data about a dataset by identity and dataset name. With Amazon Cognito
 
 ```sql
 SELECT
-CreationDate,
-DataStorage,
-DatasetName,
-IdentityId,
-LastModifiedBy,
-LastModifiedDate,
-NumRecords
+creation_date,
+data_storage,
+dataset_name,
+identity_id,
+last_modified_by,
+last_modified_date,
+num_records
 FROM aws.cognito_sync.datasets
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND identity_id = '{{ identity_id }}' -- required
@@ -259,9 +259,9 @@ Lists datasets for an identity. With Amazon Cognito Sync, each identity has acce
 
 ```sql
 SELECT
-Count,
-Datasets,
-NextToken
+count,
+datasets,
+next_token
 FROM aws.cognito_sync.datasets
 WHERE identity_pool_id = '{{ identity_pool_id }}' -- required
 AND identity_id = '{{ identity_id }}' -- required

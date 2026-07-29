@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>A list of detailed field information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
@@ -66,7 +66,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of of key-value pairs that represent tags on a resource. Tags are used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of a template.</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="caseId" /></td>
+    <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of the case.</td>
 </tr>
@@ -100,7 +100,7 @@ The following fields are returned by `SELECT` queries:
     <td>A map of of key-value pairs that represent tags on a resource. Tags are used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateId" /></td>
+    <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of a template.</td>
 </tr>
@@ -209,9 +209,9 @@ Returns information about a specific case if it exists.
 ```sql
 SELECT
 fields,
-nextToken,
+next_token,
 tags,
-templateId
+template_id
 FROM aws.connectcases.cases
 WHERE case_id = '{{ case_id }}' -- required
 AND domain_id = '{{ domain_id }}' -- required
@@ -225,10 +225,10 @@ Searches for cases within their associated Cases domain. Search results are retu
 
 ```sql
 SELECT
-caseId,
+case_id,
 fields,
 tags,
-templateId
+template_id
 FROM aws.connectcases.cases
 WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -270,8 +270,8 @@ SELECT
 '{{ domain_id }}',
 '{{ region }}'
 RETURNING
-caseArn,
-caseId
+case_arn,
+case_id
 ;
 ```
 </TabItem>

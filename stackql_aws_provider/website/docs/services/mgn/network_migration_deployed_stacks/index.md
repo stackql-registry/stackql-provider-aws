@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="failedResources" /></td>
+    <td><CopyableCode code="failed_resources" /></td>
     <td><code>array</code></td>
     <td>A list of resources that failed to deploy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="segmentID" /></td>
+    <td><CopyableCode code="segment_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the segment that this stack was deployed for. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stackLogicalID" /></td>
+    <td><CopyableCode code="stack_logical_id" /></td>
     <td><code>string</code></td>
     <td>The logical ID of the stack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stackPhysicalID" /></td>
+    <td><CopyableCode code="stack_physical_id" /></td>
     <td><code>string</code></td>
     <td>The physical ID of the CloudFormation stack. (pattern: &lt;code&gt;arn:aws:cloudformation:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:stack/&#91;a-zA-Z0-9-&#93;+/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -75,7 +75,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the deployed stack. (CREATE_COMPLETE, CREATE_FAILED, CREATE_STARTED, DELETE_COMPLETE, DELETE_FAILED, DELETE_STARTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="targetAccount" /></td>
+    <td><CopyableCode code="target_account" /></td>
     <td><code>string</code></td>
     <td>The target AWS account where the stack was deployed. (pattern: &lt;code&gt;.*&#91;0-9&#93;&#123;12,&#125;.*&lt;/code&gt;)</td>
 </tr>
@@ -144,12 +144,12 @@ Lists CloudFormation stacks that have been deployed as part of the network migra
 
 ```sql
 SELECT
-failedResources,
-segmentID,
-stackLogicalID,
-stackPhysicalID,
+failed_resources,
+segment_id,
+stack_logical_id,
+stack_physical_id,
 status,
-targetAccount
+target_account
 FROM aws.mgn.network_migration_deployed_stacks
 WHERE region = '{{ region }}' -- required
 ;

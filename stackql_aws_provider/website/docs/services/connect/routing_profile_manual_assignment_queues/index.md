@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Channel" /></td>
+    <td><CopyableCode code="channel" /></td>
     <td><code>string</code></td>
     <td>The channels this queue supports. Valid Values: CHAT | TASK | EMAIL VOICE is not supported. The information shown below is incorrect. We're working to correct it. (VOICE, CHAT, TASK, EMAIL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueArn" /></td>
+    <td><CopyableCode code="queue_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueId" /></td>
+    <td><CopyableCode code="queue_id" /></td>
     <td><code>string</code></td>
     <td>The identifier for the queue.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueueName" /></td>
+    <td><CopyableCode code="queue_name" /></td>
     <td><code>string</code></td>
     <td>The name of the queue.</td>
 </tr>
@@ -154,10 +154,10 @@ Lists the manual assignment queues associated with a routing profile. Use cases 
 
 ```sql
 SELECT
-Channel,
-QueueArn,
-QueueId,
-QueueName
+channel,
+queue_arn,
+queue_id,
+queue_name
 FROM aws.connect.routing_profile_manual_assignment_queues
 WHERE instance_id = '{{ instance_id }}' -- required
 AND routing_profile_id = '{{ routing_profile_id }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time and date of creation for the test set discrepancy report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>The failure report for the test set discrepancy report generation action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDataTime" /></td>
+    <td><CopyableCode code="last_updated_data_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time of the last update for the test set discrepancy report.</td>
 </tr>
@@ -70,27 +70,27 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about the resource used for the test set discrepancy report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetDiscrepancyRawOutputUrl" /></td>
+    <td><CopyableCode code="test_set_discrepancy_raw_output_url" /></td>
     <td><code>string</code></td>
     <td>Pre-signed Amazon S3 URL to download the test set discrepancy report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetDiscrepancyReportId" /></td>
+    <td><CopyableCode code="test_set_discrepancy_report_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the test set discrepancy report to describe. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetDiscrepancyReportStatus" /></td>
+    <td><CopyableCode code="test_set_discrepancy_report_status" /></td>
     <td><code>string</code></td>
     <td>The status for the test set discrepancy report. (InProgress, Completed, Failed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetDiscrepancyTopErrors" /></td>
+    <td><CopyableCode code="test_set_discrepancy_top_errors" /></td>
     <td><code>object</code></td>
     <td>The top 200 error results from the test set discrepancy report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="testSetId" /></td>
+    <td><CopyableCode code="test_set_id" /></td>
     <td><code>string</code></td>
     <td>The test set Id for the test set discrepancy report. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -176,15 +176,15 @@ Gets metadata information about the test set discrepancy report.
 
 ```sql
 SELECT
-creationDateTime,
-failureReasons,
-lastUpdatedDataTime,
+creation_date_time,
+failure_reasons,
+last_updated_data_time,
 target,
-testSetDiscrepancyRawOutputUrl,
-testSetDiscrepancyReportId,
-testSetDiscrepancyReportStatus,
-testSetDiscrepancyTopErrors,
-testSetId
+test_set_discrepancy_raw_output_url,
+test_set_discrepancy_report_id,
+test_set_discrepancy_report_status,
+test_set_discrepancy_top_errors,
+test_set_id
 FROM aws.lexv2_models.test_set_discrepancy_reports
 WHERE test_set_discrepancy_report_id = '{{ test_set_discrepancy_report_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -218,10 +218,10 @@ SELECT
 '{{ test_set_id }}',
 '{{ region }}'
 RETURNING
-creationDateTime,
+creation_date_time,
 target,
-testSetDiscrepancyReportId,
-testSetId
+test_set_discrepancy_report_id,
+test_set_id
 ;
 ```
 </TabItem>

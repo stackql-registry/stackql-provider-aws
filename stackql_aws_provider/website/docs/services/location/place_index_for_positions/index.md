@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>Returns a list of Places closest to the specified position. Each result contains additional information about the Places returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Summary" /></td>
+    <td><CopyableCode code="summary" /></td>
     <td><code>object</code></td>
     <td>Contains a summary of the request. Echoes the input values for Position, Language, MaxResults, and the DataSource of the place index.</td>
 </tr>
@@ -134,8 +134,8 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-Results,
-Summary
+results,
+summary
 FROM aws.location.place_index_for_positions
 WHERE index_name = '{{ index_name }}' -- required
 AND region = '{{ region }}' -- required

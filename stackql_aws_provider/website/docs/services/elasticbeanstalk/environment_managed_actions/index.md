@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionDescription" /></td>
+    <td><CopyableCode code="action_description" /></td>
     <td><code>string</code></td>
     <td>A description of the managed action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionId" /></td>
+    <td><CopyableCode code="action_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the managed action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActionType" /></td>
+    <td><CopyableCode code="action_type" /></td>
     <td><code>string</code></td>
     <td>The type of managed action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the managed action. If the action is Scheduled, you can apply it immediately with ApplyEnvironmentManagedAction.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WindowStartTime" /></td>
+    <td><CopyableCode code="window_start_time" /></td>
     <td><code>string</code></td>
     <td>The start time of the maintenance window in which the managed action will execute.</td>
 </tr>
@@ -154,11 +154,11 @@ Lists an environment's upcoming and in-progress managed actions.
 
 ```sql
 SELECT
-ActionDescription,
-ActionId,
-ActionType,
-Status,
-WindowStartTime
+action_description,
+action_id,
+action_type,
+status,
+window_start_time
 FROM aws.elasticbeanstalk.environment_managed_actions
 WHERE region = '{{ region }}' -- required
 AND EnvironmentName = '{{ EnvironmentName }}'

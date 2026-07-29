@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The assigned description for an invoice unit. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceReceiver" /></td>
+    <td><CopyableCode code="invoice_receiver" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID chosen to be the receiver of an invoice unit. All invoices generated for that invoice unit will be sent to this account ID. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceUnitArn" /></td>
+    <td><CopyableCode code="invoice_unit_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN to identify an invoice unit. This information can't be modified or deleted. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;-a-zA-Z0-9/:_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The most recent date the invoice unit response was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the invoice unit that is shown on the generated invoice. (pattern: &lt;code&gt;(?! )&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;Z&#125;-_&#93;*(?&lt;! )&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rule" /></td>
+    <td><CopyableCode code="rule" /></td>
     <td><code>object</code></td>
     <td>This is used to categorize the invoice unit. Values are Amazon Web Services account IDs. Currently, the only supported rule is LINKED_ACCOUNT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaxInheritanceDisabled" /></td>
+    <td><CopyableCode code="tax_inheritance_disabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether the invoice unit based tax inheritance is/ should be enabled or disabled.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The assigned description for an invoice unit. This information can't be modified or deleted. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceReceiver" /></td>
+    <td><CopyableCode code="invoice_receiver" /></td>
     <td><code>string</code></td>
     <td>The account that receives invoices related to the invoice unit. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvoiceUnitArn" /></td>
+    <td><CopyableCode code="invoice_unit_arn" /></td>
     <td><code>string</code></td>
     <td>ARN to identify an invoice unit. This information can't be modified or deleted. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:&#91;a-z0-9&#93;+:&#91;-a-z0-9&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;-a-zA-Z0-9/:_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModified" /></td>
+    <td><CopyableCode code="last_modified" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last time the invoice unit was updated. This is important to determine the version of invoice unit configuration used to create the invoices. Any invoice created after this modified time will use this invoice unit configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A unique name that is distinctive within your Amazon Web Services. (pattern: &lt;code&gt;(?! )&#91;\p&#123;L&#125;\p&#123;N&#125;\p&#123;Z&#125;-_&#93;*(?&lt;! )&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rule" /></td>
+    <td><CopyableCode code="rule" /></td>
     <td><code>object</code></td>
     <td>This is used to categorize the invoice unit. Values are Amazon Web Services account IDs. Currently, the only supported rule is LINKED_ACCOUNT.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaxInheritanceDisabled" /></td>
+    <td><CopyableCode code="tax_inheritance_disabled" /></td>
     <td><code>boolean</code></td>
     <td>Whether the invoice unit based tax inheritance is/ should be enabled or disabled.</td>
 </tr>
@@ -228,13 +228,13 @@ This retrieves the invoice unit definition.
 
 ```sql
 SELECT
-Description,
-InvoiceReceiver,
-InvoiceUnitArn,
-LastModified,
-Name,
-Rule,
-TaxInheritanceDisabled
+description,
+invoice_receiver,
+invoice_unit_arn,
+last_modified,
+name,
+rule,
+tax_inheritance_disabled
 FROM aws.invoicing.invoice_units
 WHERE region = '{{ region }}' -- required
 ;
@@ -246,13 +246,13 @@ This fetches a list of all invoice unit definitions for a given account, as of t
 
 ```sql
 SELECT
-Description,
-InvoiceReceiver,
-InvoiceUnitArn,
-LastModified,
-Name,
-Rule,
-TaxInheritanceDisabled
+description,
+invoice_receiver,
+invoice_unit_arn,
+last_modified,
+name,
+rule,
+tax_inheritance_disabled
 FROM aws.invoicing.invoice_units
 WHERE region = '{{ region }}' -- required
 ;
@@ -293,7 +293,7 @@ SELECT
 '{{ ResourceTags }}',
 '{{ region }}'
 RETURNING
-InvoiceUnitArn
+invoice_unit_arn
 ;
 ```
 </TabItem>
@@ -364,7 +364,7 @@ WHERE
 region = '{{ region }}' --required
 AND InvoiceUnitArn = '{{ InvoiceUnitArn }}' --required
 RETURNING
-InvoiceUnitArn;
+invoice_unit_arn;
 ```
 </TabItem>
 </Tabs>

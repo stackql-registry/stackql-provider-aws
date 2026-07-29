@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MetricWidgetImage" /></td>
+    <td><CopyableCode code="metric_widget_image" /></td>
     <td><code>string (byte)</code></td>
     <td>The image of the graph, in the output format specified. The output is base64-encoded.</td>
 </tr>
@@ -119,7 +119,7 @@ You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or 
 
 ```sql
 SELECT
-MetricWidgetImage
+metric_widget_image
 FROM aws.cloudwatch.metric_widget_images
 WHERE region = '{{ region }}' -- required
 ;

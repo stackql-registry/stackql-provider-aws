@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="accountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the AWS account assigned to the user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleName" /></td>
+    <td><CopyableCode code="role_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name of the role that is assigned to the user.</td>
 </tr>
@@ -144,8 +144,8 @@ Lists all roles that are assigned to the user for a given AWS account.
 
 ```sql
 SELECT
-accountId,
-roleName
+account_id,
+role_name
 FROM aws.sso.account_roles
 WHERE `x-amz-sso_bearer_token` = '{{ x-amz-sso_bearer_token }}' -- required
 AND account_id = '{{ account_id }}' -- required

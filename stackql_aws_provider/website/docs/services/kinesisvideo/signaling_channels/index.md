@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChannelARN" /></td>
+    <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the signaling channel. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelName" /></td>
+    <td><CopyableCode code="channel_name" /></td>
     <td><code>string</code></td>
     <td>The name of the signaling channel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelStatus" /></td>
+    <td><CopyableCode code="channel_status" /></td>
     <td><code>string</code></td>
     <td>Current status of the signaling channel. (CREATING, ACTIVE, UPDATING, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ChannelType" /></td>
+    <td><CopyableCode code="channel_type" /></td>
     <td><code>string</code></td>
     <td>The type of the signaling channel. (SINGLE_MASTER, FULL_MESH)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the signaling channel was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SingleMasterConfiguration" /></td>
+    <td><CopyableCode code="single_master_configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains the configuration for the SINGLE_MASTER channel type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The current version of the signaling channel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -177,13 +177,13 @@ Returns the most current information about the signaling channel. You must speci
 
 ```sql
 SELECT
-ChannelARN,
-ChannelName,
-ChannelStatus,
-ChannelType,
-CreationTime,
-SingleMasterConfiguration,
-Version
+channel_arn,
+channel_name,
+channel_status,
+channel_type,
+creation_time,
+single_master_configuration,
+version
 FROM aws.kinesisvideo.signaling_channels
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,7 +220,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ChannelARN
+channel_arn
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="InstanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Output" /></td>
+    <td><CopyableCode code="output" /></td>
     <td><code>string</code></td>
     <td>The console output, base64-encoded. If you are using a command line tool, the tool decodes the output for you.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Timestamp" /></td>
+    <td><CopyableCode code="timestamp" /></td>
     <td><code>string</code></td>
     <td>The time at which the output was last updated.</td>
 </tr>
@@ -144,9 +144,9 @@ Gets the console output for the specified instance. For Linux instances, the ins
 
 ```sql
 SELECT
-InstanceId,
-Output,
-Timestamp
+instance_id,
+output,
+timestamp
 FROM aws.ec2.console_outputs
 WHERE InstanceId = '{{ InstanceId }}' -- required
 AND region = '{{ region }}' -- required

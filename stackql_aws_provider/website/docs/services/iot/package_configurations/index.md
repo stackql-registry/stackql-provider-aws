@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the Job is enabled or not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the role that grants permission to the IoT jobs service to update the reserved named shadow when the job successfully completes.</td>
 </tr>
@@ -137,7 +137,7 @@ Gets information about the specified software package's configuration. Requires 
 ```sql
 SELECT
 enabled,
-roleArn
+role_arn
 FROM aws.iot.package_configurations
 WHERE region = '{{ region }}' -- required
 ;

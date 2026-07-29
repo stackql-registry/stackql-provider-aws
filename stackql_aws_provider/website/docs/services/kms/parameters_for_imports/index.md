@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ImportToken" /></td>
+    <td><CopyableCode code="import_token" /></td>
     <td><code>string (byte)</code></td>
     <td>The import token to send in a subsequent ImportKeyMaterial request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KeyId" /></td>
+    <td><CopyableCode code="key_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (key ARN) of the KMS key to use in a subsequent ImportKeyMaterial request. This is the same KMS key specified in the GetParametersForImport request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ParametersValidTo" /></td>
+    <td><CopyableCode code="parameters_valid_to" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the import token and public key are no longer valid. After this time, you cannot use them to make an ImportKeyMaterial request and you must send another GetParametersForImport request to get new ones.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PublicKey" /></td>
+    <td><CopyableCode code="public_key" /></td>
     <td><code>string (byte)</code></td>
     <td>The public key to use to encrypt the key material before importing it with ImportKeyMaterial.</td>
 </tr>
@@ -134,10 +134,10 @@ Returns the public key and an import token you need to import or reimport key ma
 
 ```sql
 SELECT
-ImportToken,
-KeyId,
-ParametersValidTo,
-PublicKey
+import_token,
+key_id,
+parameters_valid_to,
+public_key
 FROM aws.kms.parameters_for_imports
 WHERE region = '{{ region }}' -- required
 ;

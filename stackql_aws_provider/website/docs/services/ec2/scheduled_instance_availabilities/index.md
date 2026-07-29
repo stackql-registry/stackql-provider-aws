@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailableInstanceCount" /></td>
+    <td><CopyableCode code="available_instance_count" /></td>
     <td><code>integer</code></td>
     <td>The number of available instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FirstSlotStartTime" /></td>
+    <td><CopyableCode code="first_slot_start_time" /></td>
     <td><code>string</code></td>
     <td>The time period for the first schedule to start.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HourlyPrice" /></td>
+    <td><CopyableCode code="hourly_price" /></td>
     <td><code>string</code></td>
     <td>The hourly price for a single instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceType" /></td>
+    <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
     <td>The instance type. You can specify one of the C3, C4, M4, or R3 instance types.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxTermDurationInDays" /></td>
+    <td><CopyableCode code="max_term_duration_in_days" /></td>
     <td><code>integer</code></td>
     <td>The maximum term. The only possible value is 365 days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinTermDurationInDays" /></td>
+    <td><CopyableCode code="min_term_duration_in_days" /></td>
     <td><code>integer</code></td>
     <td>The minimum term. The only possible value is 365 days.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkPlatform" /></td>
+    <td><CopyableCode code="network_platform" /></td>
     <td><code>string</code></td>
     <td>The network platform.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Platform" /></td>
+    <td><CopyableCode code="platform" /></td>
     <td><code>string</code></td>
     <td>The platform (Linux/UNIX or Windows).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PurchaseToken" /></td>
+    <td><CopyableCode code="purchase_token" /></td>
     <td><code>string</code></td>
     <td>The purchase token. This token expires in two hours.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recurrence" /></td>
+    <td><CopyableCode code="recurrence" /></td>
     <td><code>string</code></td>
     <td>The schedule recurrence.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SlotDurationInHours" /></td>
+    <td><CopyableCode code="slot_duration_in_hours" /></td>
     <td><code>integer</code></td>
     <td>The number of hours in the schedule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalScheduledInstanceHours" /></td>
+    <td><CopyableCode code="total_scheduled_instance_hours" /></td>
     <td><code>integer</code></td>
     <td>The total number of hours for a single instance for the entire term.</td>
 </tr>
@@ -219,19 +219,19 @@ Finds available schedules that meet the specified criteria. You can search for a
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailableInstanceCount,
-FirstSlotStartTime,
-HourlyPrice,
-InstanceType,
-MaxTermDurationInDays,
-MinTermDurationInDays,
-NetworkPlatform,
-Platform,
-PurchaseToken,
-Recurrence,
-SlotDurationInHours,
-TotalScheduledInstanceHours
+availability_zone,
+available_instance_count,
+first_slot_start_time,
+hourly_price,
+instance_type,
+max_term_duration_in_days,
+min_term_duration_in_days,
+network_platform,
+platform,
+purchase_token,
+recurrence,
+slot_duration_in_hours,
+total_scheduled_instance_hours
 FROM aws.ec2.scheduled_instance_availabilities
 WHERE FirstSlotStartTimeRange = '{{ FirstSlotStartTimeRange }}' -- required
 AND region = '{{ region }}' -- required

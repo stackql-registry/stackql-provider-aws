@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Accuracy" /></td>
+    <td><CopyableCode code="accuracy" /></td>
     <td><code>object</code></td>
     <td>The accuracy of the device position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeviceId" /></td>
+    <td><CopyableCode code="device_id" /></td>
     <td><code>string</code></td>
     <td>The device whose position you retrieved. (pattern: &lt;code&gt;&#91;-._\p&#123;L&#125;\p&#123;N&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Position" /></td>
+    <td><CopyableCode code="position" /></td>
     <td><code>array</code></td>
     <td>The last known device position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PositionProperties" /></td>
+    <td><CopyableCode code="position_properties" /></td>
     <td><code>object</code></td>
     <td>The properties associated with the position.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReceivedTime" /></td>
+    <td><CopyableCode code="received_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the tracker resource received the device position in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SampleTime" /></td>
+    <td><CopyableCode code="sample_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the device's position was determined. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -154,12 +154,12 @@ Retrieves the device position history from a tracker resource within a specified
 
 ```sql
 SELECT
-Accuracy,
-DeviceId,
-Position,
-PositionProperties,
-ReceivedTime,
-SampleTime
+accuracy,
+device_id,
+position,
+position_properties,
+received_time,
+sample_time
 FROM aws.location.device_position_histories
 WHERE tracker_name = '{{ tracker_name }}' -- required
 AND device_id = '{{ device_id }}' -- required

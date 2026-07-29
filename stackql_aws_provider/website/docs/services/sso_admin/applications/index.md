@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationAccount" /></td>
+    <td><CopyableCode code="application_account" /></td>
     <td><code>string</code></td>
     <td>The account ID. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>Specifies the ARN of the application. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::\d&#123;12&#125;:application/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/apl-&#91;a-zA-Z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationProviderArn" /></td>
+    <td><CopyableCode code="application_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the application provider under which the operation will run. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::aws:applicationProvider/&#91;a-zA-Z0-9-/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the application was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedFrom" /></td>
+    <td><CopyableCode code="created_from" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the application was created in IAM Identity Center. (pattern: &lt;code&gt;(&#91;a-z&#93;+-)&#123;2,3&#125;\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreArn" /></td>
+    <td><CopyableCode code="identity_store_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the identity store that is connected to the instance of IAM Identity Center.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM Identity Center application under which the operation will run. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the Amazon Web Services General Reference. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso:::instance/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The application name. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalOptions" /></td>
+    <td><CopyableCode code="portal_options" /></td>
     <td><code>object</code></td>
     <td>A structure that describes the options for the portal associated with an application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the application is enabled or disabled. (ENABLED, DISABLED)</td>
 </tr>
@@ -120,57 +120,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationAccount" /></td>
+    <td><CopyableCode code="application_account" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID number of the application. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationArn" /></td>
+    <td><CopyableCode code="application_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the application. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::\d&#123;12&#125;:application/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/apl-&#91;a-zA-Z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationProviderArn" /></td>
+    <td><CopyableCode code="application_provider_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the application provider for this application. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::aws:applicationProvider/&#91;a-zA-Z0-9-/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedDate" /></td>
+    <td><CopyableCode code="created_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the application was originally created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedFrom" /></td>
+    <td><CopyableCode code="created_from" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region where the application was created in IAM Identity Center. (pattern: &lt;code&gt;(&#91;a-z&#93;+-)&#123;2,3&#125;\d&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IdentityStoreArn" /></td>
+    <td><CopyableCode code="identity_store_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the identity store that is connected to the instance of IAM Identity Center.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceArn" /></td>
+    <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the instance of IAM Identity Center that is configured with this application. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso:::instance/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the application. (pattern: &lt;code&gt;&#91;\S\s&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PortalOptions" /></td>
+    <td><CopyableCode code="portal_options" /></td>
     <td><code>object</code></td>
     <td>A structure that describes the options for the access portal associated with this application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the application in this instance of IAM Identity Center. (ENABLED, DISABLED)</td>
 </tr>
@@ -268,17 +268,17 @@ Retrieves the details of an application associated with an instance of IAM Ident
 
 ```sql
 SELECT
-ApplicationAccount,
-ApplicationArn,
-ApplicationProviderArn,
-CreatedDate,
-CreatedFrom,
-Description,
-IdentityStoreArn,
-InstanceArn,
-Name,
-PortalOptions,
-Status
+application_account,
+application_arn,
+application_provider_arn,
+created_date,
+created_from,
+description,
+identity_store_arn,
+instance_arn,
+name,
+portal_options,
+status
 FROM aws.sso_admin.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -290,17 +290,17 @@ Lists all applications associated with the instance of IAM Identity Center. When
 
 ```sql
 SELECT
-ApplicationAccount,
-ApplicationArn,
-ApplicationProviderArn,
-CreatedDate,
-CreatedFrom,
-Description,
-IdentityStoreArn,
-InstanceArn,
-Name,
-PortalOptions,
-Status
+application_account,
+application_arn,
+application_provider_arn,
+created_date,
+created_from,
+description,
+identity_store_arn,
+instance_arn,
+name,
+portal_options,
+status
 FROM aws.sso_admin.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -345,9 +345,9 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-ApplicationArn,
-IdentityStoreArn,
-InstanceArn
+application_arn,
+identity_store_arn,
+instance_arn
 ;
 ```
 </TabItem>

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="appliedFor" /></td>
+    <td><CopyableCode code="applied_for" /></td>
     <td><code>array</code></td>
     <td>A list of enumerable Strings representing the repository creation scenarios that this template will apply towards. The supported scenarios are PULL_THROUGH_CACHE, REPLICATION, and CREATE_ON_PUSH</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in JavaScript date format, when the repository creation template was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="customRoleArn" /></td>
+    <td><CopyableCode code="custom_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the role to be assumed by Amazon ECR. Amazon ECR will assume your supplied role when the customRoleArn is specified. When this field isn't specified, Amazon ECR will use the service-linked role for the repository creation template.</td>
 </tr>
@@ -70,22 +70,22 @@ The following fields are returned by `SELECT` queries:
     <td>The description associated with the repository creation template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="encryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration associated with the repository creation template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTagMutability" /></td>
+    <td><CopyableCode code="image_tag_mutability" /></td>
     <td><code>string</code></td>
     <td>The tag mutability setting for the repository. If this parameter is omitted, the default setting of MUTABLE will be used which will allow image tags to be overwritten. If IMMUTABLE is specified, all image tags within the repository will be immutable which will prevent them from being overwritten. (MUTABLE, IMMUTABLE, IMMUTABLE_WITH_EXCLUSION, MUTABLE_WITH_EXCLUSION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTagMutabilityExclusionFilters" /></td>
+    <td><CopyableCode code="image_tag_mutability_exclusion_filters" /></td>
     <td><code>array</code></td>
     <td>A list of filters that specify which image tags are excluded from the repository creation template's image tag mutability setting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecyclePolicy" /></td>
+    <td><CopyableCode code="lifecycle_policy" /></td>
     <td><code>string</code></td>
     <td>The lifecycle policy to use for repositories created using the template.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
     <td>The repository namespace prefix associated with the repository creation template. (pattern: &lt;code&gt;^(&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*(\/&#91;a-z0-9&#93;+((\.|_|__|-+)&#91;a-z0-9&#93;+)*)*\/?|ROOT)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="repositoryPolicy" /></td>
+    <td><CopyableCode code="repository_policy" /></td>
     <td><code>string</code></td>
     <td>The repository policy to apply to repositories created using the template. A repository policy is a permissions policy associated with a repository to control access permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceTags" /></td>
+    <td><CopyableCode code="resource_tags" /></td>
     <td><code>array</code></td>
     <td>The metadata to apply to the repository to help you categorize and organize. Each tag consists of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in JavaScript date format, when the repository creation template was last updated.</td>
 </tr>
@@ -195,18 +195,18 @@ Returns details about the repository creation templates in a registry. The prefi
 
 ```sql
 SELECT
-appliedFor,
-createdAt,
-customRoleArn,
+applied_for,
+created_at,
+custom_role_arn,
 description,
-encryptionConfiguration,
-imageTagMutability,
-imageTagMutabilityExclusionFilters,
-lifecyclePolicy,
+encryption_configuration,
+image_tag_mutability,
+image_tag_mutability_exclusion_filters,
+lifecycle_policy,
 prefix,
-repositoryPolicy,
-resourceTags,
-updatedAt
+repository_policy,
+resource_tags,
+updated_at
 FROM aws.ecr.repository_creation_templates
 WHERE region = '{{ region }}' -- required
 ;
@@ -255,8 +255,8 @@ SELECT
 '{{ customRoleArn }}',
 '{{ region }}'
 RETURNING
-registryId,
-repositoryCreationTemplate
+registry_id,
+repository_creation_template
 ;
 ```
 </TabItem>
@@ -351,8 +351,8 @@ WHERE
 region = '{{ region }}' --required
 AND prefix = '{{ prefix }}' --required
 RETURNING
-registryId,
-repositoryCreationTemplate;
+registry_id,
+repository_creation_template;
 ```
 </TabItem>
 </Tabs>

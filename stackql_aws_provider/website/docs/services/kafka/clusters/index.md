@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveOperationArn" /></td>
+    <td><CopyableCode code="active_operation_arn" /></td>
     <td><code>string</code></td>
     <td>Arn of active cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerNodeGroupInfo" /></td>
+    <td><CopyableCode code="broker_node_group_info" /></td>
     <td><code>object</code></td>
     <td>Describes the setup to be used for Apache Kafka broker nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientAuthentication" /></td>
+    <td><CopyableCode code="client_authentication" /></td>
     <td><code>object</code></td>
     <td>Includes all client authentication information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentBrokerSoftwareInfo" /></td>
+    <td><CopyableCode code="current_broker_software_info" /></td>
     <td><code>object</code></td>
     <td>Information about the version of software currently deployed on the Apache Kafka brokers in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The current version of the MSK cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerActionStatus" /></td>
+    <td><CopyableCode code="customer_action_status" /></td>
     <td><code>string</code></td>
     <td>Determines if there is an action required from the customer. (CRITICAL_ACTION_REQUIRED, ACTION_RECOMMENDED, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionInfo" /></td>
+    <td><CopyableCode code="encryption_info" /></td>
     <td><code>object</code></td>
     <td>Includes encryption-related information, such as the AWS KMS key used for encrypting data at rest and whether you want MSK to encrypt your data in transit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnhancedMonitoring" /></td>
+    <td><CopyableCode code="enhanced_monitoring" /></td>
     <td><code>string</code></td>
     <td>Specifies which metrics are gathered for the MSK cluster. This property has the following possible values: DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the metrics associated with each of these levels of monitoring, see Monitoring. (DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, PER_TOPIC_PER_PARTITION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingInfo" /></td>
+    <td><CopyableCode code="logging_info" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfBrokerNodes" /></td>
+    <td><CopyableCode code="number_of_broker_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of broker nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenMonitoring" /></td>
+    <td><CopyableCode code="open_monitoring" /></td>
     <td><code>object</code></td>
     <td>Settings for open monitoring using Prometheus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rebalancing" /></td>
+    <td><CopyableCode code="rebalancing" /></td>
     <td><code>object</code></td>
     <td>Specifies whether or not intelligent rebalancing is turned on for a newly created MSK Provisioned cluster with Express brokers. Intelligent rebalancing performs automatic partition balancing operations when you scale your clusters up or down. By default, intelligent rebalancing is ACTIVE for all new Express-based clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the cluster. The possible states are ACTIVE, CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and UPDATING. (ACTIVE, CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateInfo" /></td>
+    <td><CopyableCode code="state_info" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageMode" /></td>
+    <td><CopyableCode code="storage_mode" /></td>
     <td><code>string</code></td>
     <td>Controls storage mode for various supported storage tiers. (LOCAL, TIERED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags attached to the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZookeeperConnectString" /></td>
+    <td><CopyableCode code="zookeeper_connect_string" /></td>
     <td><code>string</code></td>
     <td>The connection string to use to connect to the Apache ZooKeeper cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZookeeperConnectStringTls" /></td>
+    <td><CopyableCode code="zookeeper_connect_string_tls" /></td>
     <td><code>string</code></td>
     <td>The connection string to use to connect to zookeeper cluster on Tls port.</td>
 </tr>
@@ -170,107 +170,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActiveOperationArn" /></td>
+    <td><CopyableCode code="active_operation_arn" /></td>
     <td><code>string</code></td>
     <td>Arn of active cluster operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BrokerNodeGroupInfo" /></td>
+    <td><CopyableCode code="broker_node_group_info" /></td>
     <td><code>object</code></td>
     <td>Describes the setup to be used for Apache Kafka broker nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClientAuthentication" /></td>
+    <td><CopyableCode code="client_authentication" /></td>
     <td><code>object</code></td>
     <td>Includes all client authentication information.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterArn" /></td>
+    <td><CopyableCode code="cluster_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterName" /></td>
+    <td><CopyableCode code="cluster_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentBrokerSoftwareInfo" /></td>
+    <td><CopyableCode code="current_broker_software_info" /></td>
     <td><code>object</code></td>
     <td>Information about the version of software currently deployed on the Apache Kafka brokers in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CurrentVersion" /></td>
+    <td><CopyableCode code="current_version" /></td>
     <td><code>string</code></td>
     <td>The current version of the MSK cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CustomerActionStatus" /></td>
+    <td><CopyableCode code="customer_action_status" /></td>
     <td><code>string</code></td>
     <td>Determines if there is an action required from the customer. (CRITICAL_ACTION_REQUIRED, ACTION_RECOMMENDED, NONE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionInfo" /></td>
+    <td><CopyableCode code="encryption_info" /></td>
     <td><code>object</code></td>
     <td>Includes encryption-related information, such as the AWS KMS key used for encrypting data at rest and whether you want MSK to encrypt your data in transit.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnhancedMonitoring" /></td>
+    <td><CopyableCode code="enhanced_monitoring" /></td>
     <td><code>string</code></td>
     <td>Specifies which metrics are gathered for the MSK cluster. This property has the following possible values: DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the metrics associated with each of these levels of monitoring, see Monitoring. (DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, PER_TOPIC_PER_PARTITION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingInfo" /></td>
+    <td><CopyableCode code="logging_info" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfBrokerNodes" /></td>
+    <td><CopyableCode code="number_of_broker_nodes" /></td>
     <td><code>integer</code></td>
     <td>The number of broker nodes in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenMonitoring" /></td>
+    <td><CopyableCode code="open_monitoring" /></td>
     <td><code>object</code></td>
     <td>Settings for open monitoring using Prometheus.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Rebalancing" /></td>
+    <td><CopyableCode code="rebalancing" /></td>
     <td><code>object</code></td>
     <td>Specifies whether or not intelligent rebalancing is turned on for a newly created MSK Provisioned cluster with Express brokers. Intelligent rebalancing performs automatic partition balancing operations when you scale your clusters up or down. By default, intelligent rebalancing is ACTIVE for all new Express-based clusters.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the cluster. The possible states are ACTIVE, CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and UPDATING. (ACTIVE, CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, UPDATING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateInfo" /></td>
+    <td><CopyableCode code="state_info" /></td>
     <td><code>object</code></td>
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageMode" /></td>
+    <td><CopyableCode code="storage_mode" /></td>
     <td><code>string</code></td>
     <td>Controls storage mode for various supported storage tiers. (LOCAL, TIERED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags attached to the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZookeeperConnectString" /></td>
+    <td><CopyableCode code="zookeeper_connect_string" /></td>
     <td><code>string</code></td>
     <td>The connection string to use to connect to the Apache ZooKeeper cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ZookeeperConnectStringTls" /></td>
+    <td><CopyableCode code="zookeeper_connect_string_tls" /></td>
     <td><code>string</code></td>
     <td>The connection string to use to connect to zookeeper cluster on Tls port.</td>
 </tr>
@@ -463,27 +463,27 @@ Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is spe
 
 ```sql
 SELECT
-ActiveOperationArn,
-BrokerNodeGroupInfo,
-ClientAuthentication,
-ClusterArn,
-ClusterName,
-CreationTime,
-CurrentBrokerSoftwareInfo,
-CurrentVersion,
-CustomerActionStatus,
-EncryptionInfo,
-EnhancedMonitoring,
-LoggingInfo,
-NumberOfBrokerNodes,
-OpenMonitoring,
-Rebalancing,
-State,
-StateInfo,
-StorageMode,
-Tags,
-ZookeeperConnectString,
-ZookeeperConnectStringTls
+active_operation_arn,
+broker_node_group_info,
+client_authentication,
+cluster_arn,
+cluster_name,
+creation_time,
+current_broker_software_info,
+current_version,
+customer_action_status,
+encryption_info,
+enhanced_monitoring,
+logging_info,
+number_of_broker_nodes,
+open_monitoring,
+rebalancing,
+state,
+state_info,
+storage_mode,
+tags,
+zookeeper_connect_string,
+zookeeper_connect_string_tls
 FROM aws.kafka.clusters
 WHERE cluster_arn = '{{ cluster_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -496,27 +496,27 @@ Returns a list of all the MSK clusters in the current Region.
 
 ```sql
 SELECT
-ActiveOperationArn,
-BrokerNodeGroupInfo,
-ClientAuthentication,
-ClusterArn,
-ClusterName,
-CreationTime,
-CurrentBrokerSoftwareInfo,
-CurrentVersion,
-CustomerActionStatus,
-EncryptionInfo,
-EnhancedMonitoring,
-LoggingInfo,
-NumberOfBrokerNodes,
-OpenMonitoring,
-Rebalancing,
-State,
-StateInfo,
-StorageMode,
-Tags,
-ZookeeperConnectString,
-ZookeeperConnectStringTls
+active_operation_arn,
+broker_node_group_info,
+client_authentication,
+cluster_arn,
+cluster_name,
+creation_time,
+current_broker_software_info,
+current_version,
+customer_action_status,
+encryption_info,
+enhanced_monitoring,
+logging_info,
+number_of_broker_nodes,
+open_monitoring,
+rebalancing,
+state,
+state_info,
+storage_mode,
+tags,
+zookeeper_connect_string,
+zookeeper_connect_string_tls
 FROM aws.kafka.clusters
 WHERE region = '{{ region }}' -- required
 AND clusterNameFilter = '{{ clusterNameFilter }}'
@@ -574,9 +574,9 @@ SELECT
 '{{ StorageMode }}',
 '{{ region }}'
 RETURNING
-ClusterArn,
-ClusterName,
-State
+cluster_arn,
+cluster_name,
+state
 ;
 ```
 </TabItem>
@@ -724,8 +724,8 @@ AND region = '{{ region }}' --required
 AND CurrentVersion = '{{ CurrentVersion }}' --required
 AND TargetNumberOfBrokerNodes = '{{ TargetNumberOfBrokerNodes }}' --required
 RETURNING
-ClusterArn,
-ClusterOperationArn;
+cluster_arn,
+cluster_operation_arn;
 ```
 </TabItem>
 <TabItem value="update_broker_storage">
@@ -743,8 +743,8 @@ AND region = '{{ region }}' --required
 AND CurrentVersion = '{{ CurrentVersion }}' --required
 AND TargetBrokerEBSVolumeInfo = '{{ TargetBrokerEBSVolumeInfo }}' --required
 RETURNING
-ClusterArn,
-ClusterOperationArn;
+cluster_arn,
+cluster_operation_arn;
 ```
 </TabItem>
 <TabItem value="update_broker_type">
@@ -762,8 +762,8 @@ AND region = '{{ region }}' --required
 AND CurrentVersion = '{{ CurrentVersion }}' --required
 AND TargetInstanceType = '{{ TargetInstanceType }}' --required
 RETURNING
-ClusterArn,
-ClusterOperationArn;
+cluster_arn,
+cluster_operation_arn;
 ```
 </TabItem>
 <TabItem value="update_connectivity">
@@ -781,8 +781,8 @@ cluster_arn = '{{ cluster_arn }}' --required
 AND region = '{{ region }}' --required
 AND CurrentVersion = '{{ CurrentVersion }}' --required
 RETURNING
-ClusterArn,
-ClusterOperationArn;
+cluster_arn,
+cluster_operation_arn;
 ```
 </TabItem>
 </Tabs>

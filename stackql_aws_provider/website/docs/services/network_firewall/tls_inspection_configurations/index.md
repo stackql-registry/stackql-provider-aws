@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TLSInspectionConfiguration" /></td>
+    <td><CopyableCode code="tls_inspection_configuration" /></td>
     <td><code>object</code></td>
     <td>The object that defines a TLS inspection configuration. This, along with TLSInspectionConfigurationResponse, define the TLS inspection configuration. You can retrieve all objects for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration. Network Firewall uses a TLS inspection configuration to decrypt traffic. Network Firewall re-encrypts the traffic before sending it to its destination. To use a TLS inspection configuration, you add it to a new Network Firewall firewall policy, then you apply the firewall policy to a firewall. Network Firewall acts as a proxy service to decrypt and inspect the traffic traveling through your firewalls. You can reference a TLS inspection configuration from more than one firewall policy, and you can use a firewall policy in more than one firewall. For more information about using TLS inspection configurations, see Inspecting SSL/TLS traffic with TLS inspection configurations in the Network Firewall Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TLSInspectionConfigurationResponse" /></td>
+    <td><CopyableCode code="tls_inspection_configuration_response" /></td>
     <td><code>object</code></td>
     <td>The high-level properties of a TLS inspection configuration. This, along with the TLSInspectionConfiguration, define the TLS inspection configuration. You can retrieve all objects for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateToken" /></td>
+    <td><CopyableCode code="update_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the TLS inspection configuration. The token marks the state of the TLS inspection configuration resource at the time of the request. To make changes to the TLS inspection configuration, you provide the token in your request. Network Firewall uses the token to ensure that the TLS inspection configuration hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the TLS inspection configuration again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the TLS inspection configuration. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The descriptive name of the TLS inspection configuration. You can't change the name of a TLS inspection configuration after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
@@ -183,9 +183,9 @@ Returns the data objects for the specified TLS inspection configuration.
 
 ```sql
 SELECT
-TLSInspectionConfiguration,
-TLSInspectionConfigurationResponse,
-UpdateToken
+tls_inspection_configuration,
+tls_inspection_configuration_response,
+update_token
 FROM aws.network_firewall.tls_inspection_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -197,8 +197,8 @@ Retrieves the metadata for the TLS inspection configurations that you have defin
 
 ```sql
 SELECT
-Arn,
-Name
+arn,
+name
 FROM aws.network_firewall.tls_inspection_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -237,8 +237,8 @@ SELECT
 '{{ EncryptionConfiguration }}',
 '{{ region }}'
 RETURNING
-TLSInspectionConfigurationResponse,
-UpdateToken
+tls_inspection_configuration_response,
+update_token
 ;
 ```
 </TabItem>
@@ -313,8 +313,8 @@ region = '{{ region }}' --required
 AND TLSInspectionConfiguration = '{{ TLSInspectionConfiguration }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
-TLSInspectionConfigurationResponse,
-UpdateToken;
+tls_inspection_configuration_response,
+update_token;
 ```
 </TabItem>
 </Tabs>

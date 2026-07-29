@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ProactiveInsights" /></td>
+    <td><CopyableCode code="proactive_insights" /></td>
     <td><code>integer</code></td>
     <td>An integer that specifies the number of open proactive insights in your Amazon Web Services account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReactiveInsights" /></td>
+    <td><CopyableCode code="reactive_insights" /></td>
     <td><code>integer</code></td>
     <td>An integer that specifies the number of open reactive insights in your Amazon Web Services account.</td>
 </tr>
@@ -124,8 +124,8 @@ Returns an overview of your organization's history based on the specified time r
 
 ```sql
 SELECT
-ProactiveInsights,
-ReactiveInsights
+proactive_insights,
+reactive_insights
 FROM aws.devops_guru.organization_overviews
 WHERE region = '{{ region }}' -- required
 ;

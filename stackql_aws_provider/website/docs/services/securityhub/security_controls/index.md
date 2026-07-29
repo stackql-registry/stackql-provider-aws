@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="SecurityControls" /></td>
+    <td><CopyableCode code="security_controls" /></td>
     <td><code>array</code></td>
     <td>An array that returns the identifier, Amazon Resource Name (ARN), and other details about a security control. The same information is returned whether the request includes SecurityControlId or SecurityControlArn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UnprocessedIds" /></td>
+    <td><CopyableCode code="unprocessed_ids" /></td>
     <td><code>array</code></td>
     <td>A security control (identified with SecurityControlId, SecurityControlArn, or a mix of both parameters) for which details cannot be returned.</td>
 </tr>
@@ -131,8 +131,8 @@ Provides details about a batch of security controls for the current Amazon Web S
 
 ```sql
 SELECT
-SecurityControls,
-UnprocessedIds
+security_controls,
+unprocessed_ids
 FROM aws.securityhub.security_controls
 WHERE region = '{{ region }}' -- required
 ;

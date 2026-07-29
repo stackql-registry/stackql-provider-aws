@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the image was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the image. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the image as displayed. (pattern: &lt;code&gt;\S(.*\S)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>When a create, update, or delete operation fails, the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageArn" /></td>
+    <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the image. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:sagemaker:.+:&#91;0-9&#93;&#123;12&#125;:image/&#91;a-zA-Z0-9&#93;(&#91;-.&#93;?&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageName" /></td>
+    <td><CopyableCode code="image_name" /></td>
     <td><code>string</code></td>
     <td>The name of the image. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-.&#93;?&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageStatus" /></td>
+    <td><CopyableCode code="image_status" /></td>
     <td><code>string</code></td>
     <td>The status of the image. (CREATING, CREATED, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the image was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that enables Amazon SageMaker AI to perform tasks on your behalf. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -110,42 +110,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the image was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the image. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DisplayName" /></td>
+    <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
     <td>The name of the image as displayed. (pattern: &lt;code&gt;\S(.*\S)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>When a create, update, or delete operation fails, the reason for the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageArn" /></td>
+    <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the image. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:sagemaker:.+:&#91;0-9&#93;&#123;12&#125;:image/&#91;a-zA-Z0-9&#93;(&#91;-.&#93;?&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageName" /></td>
+    <td><CopyableCode code="image_name" /></td>
     <td><code>string</code></td>
     <td>The name of the image. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;-.&#93;?&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ImageStatus" /></td>
+    <td><CopyableCode code="image_status" /></td>
     <td><code>string</code></td>
     <td>The status of the image. (CREATING, CREATED, CREATE_FAILED, UPDATING, UPDATE_FAILED, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the image was last modified.</td>
 </tr>
@@ -243,15 +243,15 @@ Describes a SageMaker AI image.
 
 ```sql
 SELECT
-CreationTime,
-Description,
-DisplayName,
-FailureReason,
-ImageArn,
-ImageName,
-ImageStatus,
-LastModifiedTime,
-RoleArn
+creation_time,
+description,
+display_name,
+failure_reason,
+image_arn,
+image_name,
+image_status,
+last_modified_time,
+role_arn
 FROM aws.sagemaker.images
 WHERE region = '{{ region }}' -- required
 ;
@@ -263,14 +263,14 @@ Lists the images in your account and their properties. The list can be filtered 
 
 ```sql
 SELECT
-CreationTime,
-Description,
-DisplayName,
-FailureReason,
-ImageArn,
-ImageName,
-ImageStatus,
-LastModifiedTime
+creation_time,
+description,
+display_name,
+failure_reason,
+image_arn,
+image_name,
+image_status,
+last_modified_time
 FROM aws.sagemaker.images
 WHERE region = '{{ region }}' -- required
 ;
@@ -309,7 +309,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-ImageArn
+image_arn
 ;
 ```
 </TabItem>
@@ -373,7 +373,7 @@ WHERE
 region = '{{ region }}' --required
 AND ImageName = '{{ ImageName }}' --required
 RETURNING
-ImageArn;
+image_arn;
 ```
 </TabItem>
 </Tabs>

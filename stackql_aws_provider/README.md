@@ -187,9 +187,24 @@ npm run generate-docs -- \
   --provider-dir ./provider-dev/openapi/src/aws/v00.00.00000 \
   --output-dir ./website \
   --provider-data-dir ./provider-dev/docgen/provider-data
+node website/scripts/snake-case-docs.mjs
 node website/scripts/sanitize-docs.mjs
 node website/scripts/scrub-docs.mjs
 ```
+
+The snake-case pass (idempotent, safe to re-run) rewrites RESPONSE COLUMN
+names from the spec's native Pascal casing to the snake_case the casing
+engine renders at the SQL surface (`snake_case_aliases: true`): the
+`## Fields` tables, the projection list in `SELECT` examples, and
+`RETURNING` clauses in `INSERT`/`UPDATE`/`REPLACE` examples. It uses the
+same algorithm as any-sdk's `casing.ToSnake` (botocore `xform_name` plus
+the digit rule: `Ipv6Native` -> `ipv_6_native`) so docs match the wire
+output exactly. WHERE parameters, Parameters tables and INSERT column
+lists keep their wire (Pascal) form - the router accepts both casings for
+inputs, and wire casing is canonical there. Because it is idempotent it
+also runs automatically before `yarn start` / `yarn build` (via the
+`prestart` / `prebuild` hooks) as a guard - a regen that skips it would
+otherwise ship Pascal-cased columns silently.
 
 The sanitizer is REQUIRED after every docgen run (it is one-shot, not
 idempotent - always regenerate then sanitize once): AWS descriptions carry
@@ -199,7 +214,8 @@ fails the Docusaurus build. It escapes description table cells and
 method-description prose only; generated structure (tables, Tabs,
 CodeBlock examples) is untouched.
 
-The scrub pass (idempotent, safe to re-run) then removes `X-Amz-Target`
+The scrub pass (idempotent, safe to re-run - it also auto-runs before
+`yarn start` / `yarn build`, like the snake-case pass) then removes `X-Amz-Target`
 from everything user-facing (it is the aws-json protocol discriminator -
 stackql defaults it from the spec, users never supply it) and
 backtick-quotes hyphenated identifiers (`` `x-amz-acl` ``) in SQL samples;
@@ -210,20 +226,40 @@ Then build / serve locally:
 ```bash
 cd website
 yarn
-yarn sanitize-docs   # if not already run from the repo root
-yarn scrub-docs
-yarn build
+yarn sanitize-docs   # ONLY if not already run - one-shot, never re-run
+yarn build           # prebuild runs snake-case-docs + scrub-docs automatically
 yarn serve
 ```
 
 ### Deploying
 
-The site is hosted on Netlify; build configuration, deploy webhooks and
-the custom hostname are all managed on the Netlify side (no `netlify.toml`
-in this repo). Memory note for the Netlify build settings: the site is
-6,400+ SSG pages - if the build environment is memory-constrained, cap
-the SSG fan-out with `DOCUSAURUS_SSG_WORKER_THREAD_COUNT=2` (and
-`NODE_OPTIONS=--max-old-space-size=4096`).
+The site is hosted on Netlify but is NOT built there: bundling 6,400+
+SSG pages exceeds the memory of standard hosted build containers, so
+managed builds are stopped in the Netlify project settings and deploys
+ship the locally built and verified `build/` directory via the Netlify
+CLI. The CLI uploads by content digest, so after the first deploy only
+changed files transfer.
+
+One-time setup:
+
+```bash
+cd website
+npx netlify-cli login                          # browser auth
+npx netlify-cli link --name stackql-aws-provider
+```
+
+Deploy (from WSL / Linux, same environment as the build):
+
+```bash
+yarn build
+npx netlify-cli deploy --prod --dir build --no-build
+```
+
+`--no-build` matters: without it the CLI re-runs the project's build
+command itself instead of shipping the `build/` you just verified.
+
+The custom hostname (aws-provider.stackql.io) is configured in Netlify
+Domain management, with DNS in the stackql.io zone on Cloudflare.
 
 ## Notes on the verb-prefix heuristic
 

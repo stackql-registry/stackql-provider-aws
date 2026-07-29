@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LastAuditTimestamp" /></td>
+    <td><CopyableCode code="last_audit_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that a recovery group was last assessed for recommendations, in UTC ISO-8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that identifies which batch of results you want to see.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Recommendations" /></td>
+    <td><CopyableCode code="recommendations" /></td>
     <td><code>array</code></td>
     <td>A list of the recommendations for the customer's application.</td>
 </tr>
@@ -144,9 +144,9 @@ Gets recommendations about architecture designs for improving resiliency for an 
 
 ```sql
 SELECT
-LastAuditTimestamp,
-NextToken,
-Recommendations
+last_audit_timestamp,
+next_token,
+recommendations
 FROM aws.route53_recovery_readiness.architecture_recommendations
 WHERE recovery_group_name = '{{ recovery_group_name }}' -- required
 AND region = '{{ region }}' -- required

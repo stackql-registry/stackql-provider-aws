@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>The content of a resource policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ResourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The resources that a policy is attached to.</td>
 </tr>
@@ -148,8 +148,8 @@ Get the resource policy for a specified resource.
 
 ```sql
 SELECT
-Policy,
-ResourceArn
+policy,
+resource_arn
 FROM aws.redshift.resource_policies
 WHERE ResourceArn = '{{ ResourceArn }}' -- required
 AND region = '{{ region }}' -- required
@@ -180,8 +180,8 @@ ResourceArn = '{{ ResourceArn }}' --required
 AND region = '{{ region }}' --required
 AND Policy = '{{ Policy}}'
 RETURNING
-Policy,
-ResourceArn;
+policy,
+resource_arn;
 ```
 </TabItem>
 </Tabs>

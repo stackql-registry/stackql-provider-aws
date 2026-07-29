@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BuildArn" /></td>
+    <td><CopyableCode code="build_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers build resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift build ARN, the resource ID matches the BuildId value. (pattern: &lt;code&gt;^arn:.*:build\/build-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuildId" /></td>
+    <td><CopyableCode code="build_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the build. (pattern: &lt;code&gt;^build-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with a build. Build names do not need to be unique. It can be set using CreateBuild or UpdateBuild.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. Amazon Linux 2 (AL2) will reach end of support on 6/30/2026. See more details in the Amazon Linux 2 FAQs. For game servers that are hosted on AL2 and use server SDK version 4.x for Amazon GameLift Servers, first update the game server build to server SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK version 5. (WINDOWS_2012, AMAZON_LINUX, AMAZON_LINUX_2, WINDOWS_2016, AMAZON_LINUX_2023, WINDOWS_2022)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSdkVersion" /></td>
+    <td><CopyableCode code="server_sdk_version" /></td>
     <td><code>string</code></td>
     <td>The Amazon GameLift Servers Server SDK version used to develop your game server. (pattern: &lt;code&gt;^\d+\.\d+\.\d+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeOnDisk" /></td>
+    <td><CopyableCode code="size_on_disk" /></td>
     <td><code>integer (int64)</code></td>
     <td>File size of the uploaded game build, expressed in bytes. When the build status is INITIALIZED or when using a custom Amazon S3 storage location, this value is 0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current status of the build. Possible build statuses include the following: INITIALIZED -- A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. READY -- The game build has been successfully uploaded. You can now create new fleets for this build. FAILED -- The game build upload failed. You cannot create new fleets for this build. (INITIALIZED, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>Version information that is associated with a build or script. Version strings do not need to be unique.</td>
 </tr>
@@ -110,47 +110,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BuildArn" /></td>
+    <td><CopyableCode code="build_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers build resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift build ARN, the resource ID matches the BuildId value. (pattern: &lt;code&gt;^arn:.*:build\/build-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BuildId" /></td>
+    <td><CopyableCode code="build_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the build. (pattern: &lt;code&gt;^build-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with a build. Build names do not need to be unique. It can be set using CreateBuild or UpdateBuild.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperatingSystem" /></td>
+    <td><CopyableCode code="operating_system" /></td>
     <td><code>string</code></td>
     <td>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. Amazon Linux 2 (AL2) will reach end of support on 6/30/2026. See more details in the Amazon Linux 2 FAQs. For game servers that are hosted on AL2 and use server SDK version 4.x for Amazon GameLift Servers, first update the game server build to server SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK version 5. (WINDOWS_2012, AMAZON_LINUX, AMAZON_LINUX_2, WINDOWS_2016, AMAZON_LINUX_2023, WINDOWS_2022)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServerSdkVersion" /></td>
+    <td><CopyableCode code="server_sdk_version" /></td>
     <td><code>string</code></td>
     <td>The Amazon GameLift Servers Server SDK version used to develop your game server. (pattern: &lt;code&gt;^\d+\.\d+\.\d+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SizeOnDisk" /></td>
+    <td><CopyableCode code="size_on_disk" /></td>
     <td><code>integer (int64)</code></td>
     <td>File size of the uploaded game build, expressed in bytes. When the build status is INITIALIZED or when using a custom Amazon S3 storage location, this value is 0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>Current status of the build. Possible build statuses include the following: INITIALIZED -- A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. READY -- The game build has been successfully uploaded. You can now create new fleets for this build. FAILED -- The game build upload failed. You cannot create new fleets for this build. (INITIALIZED, READY, FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>Version information that is associated with a build or script. Version strings do not need to be unique.</td>
 </tr>
@@ -255,15 +255,15 @@ This API works with the following fleet types: EC2 Retrieves properties for a cu
 
 ```sql
 SELECT
-BuildArn,
-BuildId,
-CreationTime,
-Name,
-OperatingSystem,
-ServerSdkVersion,
-SizeOnDisk,
-Status,
-Version
+build_arn,
+build_id,
+creation_time,
+name,
+operating_system,
+server_sdk_version,
+size_on_disk,
+status,
+version
 FROM aws.gamelift.builds
 WHERE region = '{{ region }}' -- required
 ;
@@ -275,15 +275,15 @@ This API works with the following fleet types: EC2 Retrieves build resources for
 
 ```sql
 SELECT
-BuildArn,
-BuildId,
-CreationTime,
-Name,
-OperatingSystem,
-ServerSdkVersion,
-SizeOnDisk,
-Status,
-Version
+build_arn,
+build_id,
+creation_time,
+name,
+operating_system,
+server_sdk_version,
+size_on_disk,
+status,
+version
 FROM aws.gamelift.builds
 WHERE region = '{{ region }}' -- required
 ;
@@ -324,9 +324,9 @@ SELECT
 '{{ ServerSdkVersion }}',
 '{{ region }}'
 RETURNING
-Build,
-StorageLocation,
-UploadCredentials
+build,
+storage_location,
+upload_credentials
 ;
 ```
 </TabItem>
@@ -397,7 +397,7 @@ WHERE
 region = '{{ region }}' --required
 AND BuildId = '{{ BuildId }}' --required
 RETURNING
-Build;
+build;
 ```
 </TabItem>
 </Tabs>

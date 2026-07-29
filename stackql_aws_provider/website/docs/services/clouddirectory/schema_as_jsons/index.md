@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Document" /></td>
+    <td><CopyableCode code="document" /></td>
     <td><code>string</code></td>
     <td>The JSON representation of the schema document.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the retrieved schema. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9._-&#93;*$&lt;/code&gt;)</td>
 </tr>
@@ -129,8 +129,8 @@ Retrieves a JSON representation of the schema. See JSON Schema Format for more i
 
 ```sql
 SELECT
-Document,
-Name
+document,
+name
 FROM aws.clouddirectory.schema_as_jsons
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN of the run batch. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultRunSetting" /></td>
+    <td><CopyableCode code="default_run_setting" /></td>
     <td><code>object</code></td>
     <td>The shared configuration applied to all runs in the batch. See DefaultRunSetting.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failedTime" /></td>
+    <td><CopyableCode code="failed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch transitioned to a FAILED status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>A description of the batch failure. Present only when status is FAILED.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="processedTime" /></td>
+    <td><CopyableCode code="processed_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when all run executions completed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="runSummary" /></td>
+    <td><CopyableCode code="run_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of run execution states. Run execution counts are eventually consistent and may lag behind actual run states. Final counts are accurate once the batch reaches PROCESSED status. See RunSummary.</td>
 </tr>
@@ -101,12 +101,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the run batch. Possible values: CREATING (initial setup), PENDING (ready to submit runs), SUBMITTING (submitting runs), INPROGRESS (runs executing), STOPPING (cancellation in progress), PROCESSED (all runs completed), CANCELLED (batch cancelled), FAILED (batch failed), RUNS_DELETING (deleting runs), RUNS_DELETED (runs deleted). (CREATING, PENDING, SUBMITTING, INPROGRESS, STOPPING, CANCELLED, FAILED, PROCESSED, RUNS_DELETING, RUNS_DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submissionSummary" /></td>
+    <td><CopyableCode code="submission_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of run submission outcomes. See SubmissionSummary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="submittedTime" /></td>
+    <td><CopyableCode code="submitted_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when all run submissions completed.</td>
 </tr>
@@ -116,7 +116,7 @@ The following fields are returned by `SELECT` queries:
     <td>AWS tags associated with the run batch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalRuns" /></td>
+    <td><CopyableCode code="total_runs" /></td>
     <td><code>integer</code></td>
     <td>The total number of runs in the batch.</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The batch name. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch was created.</td>
 </tr>
@@ -160,12 +160,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current batch status. (CREATING, PENDING, SUBMITTING, INPROGRESS, STOPPING, CANCELLED, FAILED, PROCESSED, RUNS_DELETING, RUNS_DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalRuns" /></td>
+    <td><CopyableCode code="total_runs" /></td>
     <td><code>integer</code></td>
     <td>The total number of runs in the batch.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workflowId" /></td>
+    <td><CopyableCode code="workflow_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the workflow used for the batch. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -301,17 +301,17 @@ SELECT
 id,
 name,
 arn,
-creationTime,
-defaultRunSetting,
-failedTime,
-failureReason,
-processedTime,
-runSummary,
+creation_time,
+default_run_setting,
+failed_time,
+failure_reason,
+processed_time,
+run_summary,
 status,
-submissionSummary,
-submittedTime,
+submission_summary,
+submitted_time,
 tags,
-totalRuns,
+total_runs,
 uuid
 FROM aws.omics.batches
 WHERE batch_id = '{{ batch_id }}' -- required
@@ -327,10 +327,10 @@ Returns a list of run batches in your account, with optional filtering by status
 SELECT
 id,
 name,
-createdAt,
+created_at,
 status,
-totalRuns,
-workflowId
+total_runs,
+workflow_id
 FROM aws.omics.batches
 WHERE region = '{{ region }}' -- required
 AND maxItems = '{{ maxItems }}'

@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ObjectIdentifier" /></td>
+    <td><CopyableCode code="object_identifier" /></td>
     <td><code>string</code></td>
     <td>The ObjectIdentifier of the specified object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SchemaFacets" /></td>
+    <td><CopyableCode code="schema_facets" /></td>
     <td><code>array</code></td>
     <td>The facets attached to the specified object. Although the response does not include minor version information, the most recently applied minor version of each Facet is in effect. See GetAppliedSchemaVersion for details.</td>
 </tr>
@@ -134,8 +134,8 @@ Retrieves metadata about an object.
 
 ```sql
 SELECT
-ObjectIdentifier,
-SchemaFacets
+object_identifier,
+schema_facets
 FROM aws.clouddirectory.object_informations
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' -- required
 AND region = '{{ region }}' -- required

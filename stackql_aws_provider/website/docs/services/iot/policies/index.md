@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="creationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the policy was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="defaultVersionId" /></td>
+    <td><CopyableCode code="default_version_id" /></td>
     <td><code>string</code></td>
     <td>The default policy version ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="generationId" /></td>
+    <td><CopyableCode code="generation_id" /></td>
     <td><code>string</code></td>
     <td>The generation ID of the policy.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date the policy was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The policy ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyDocument" /></td>
+    <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The JSON document that describes the policy. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The policy name. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -100,12 +100,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The policy ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The policy name. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -230,13 +230,13 @@ Gets information about the specified policy with the policy document of the defa
 
 ```sql
 SELECT
-creationDate,
-defaultVersionId,
-generationId,
-lastModifiedDate,
-policyArn,
-policyDocument,
-policyName
+creation_date,
+default_version_id,
+generation_id,
+last_modified_date,
+policy_arn,
+policy_document,
+policy_name
 FROM aws.iot.policies
 WHERE policy_name = '{{ policy_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -249,8 +249,8 @@ Lists your policies. Requires permission to access the ListPolicies action.
 
 ```sql
 SELECT
-policyArn,
-policyName
+policy_arn,
+policy_name
 FROM aws.iot.policies
 WHERE region = '{{ region }}' -- required
 AND marker = '{{ marker }}'
@@ -288,10 +288,10 @@ SELECT
 '{{ policy_name }}',
 '{{ region }}'
 RETURNING
-policyArn,
-policyDocument,
-policyName,
-policyVersionId
+policy_arn,
+policy_document,
+policy_name,
+policy_version_id
 ;
 ```
 </TabItem>

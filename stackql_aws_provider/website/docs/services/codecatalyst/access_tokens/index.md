@@ -60,7 +60,7 @@ The following fields are returned by `SELECT` queries:
     <td>The friendly name of the personal access token.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiresTime" /></td>
+    <td><CopyableCode code="expires_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the personal access token will expire, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.</td>
 </tr>
@@ -150,7 +150,7 @@ Lists all personal access tokens (PATs) associated with the user who calls the A
 SELECT
 id,
 name,
-expiresTime
+expires_time
 FROM aws.codecatalyst.access_tokens
 WHERE region = '{{ region }}' -- required
 ;
@@ -184,8 +184,8 @@ SELECT
 '{{ region }}'
 RETURNING
 name,
-accessTokenId,
-expiresTime,
+access_token_id,
+expires_time,
 secret
 ;
 ```

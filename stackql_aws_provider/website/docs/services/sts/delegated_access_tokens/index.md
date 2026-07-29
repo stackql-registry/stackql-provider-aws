@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssumedPrincipal" /></td>
+    <td><CopyableCode code="assumed_principal" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the principal that was assumed when obtaining the delegated access token. This ARN identifies the IAM entity whose permissions are granted by the temporary credentials.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Credentials" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>string</code></td>
     <td>Amazon Web Services credentials for API authentication.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PackedPolicySize" /></td>
+    <td><CopyableCode code="packed_policy_size" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the maximum policy size that is used by the session policy. The policy size is calculated as the sum of all the session policies and permission boundaries attached to the session. If the packed size exceeds 100%, the request fails.</td>
 </tr>
@@ -134,9 +134,9 @@ Exchanges a trade-in token for temporary Amazon Web Services credentials with th
 
 ```sql
 SELECT
-AssumedPrincipal,
-Credentials,
-PackedPolicySize
+assumed_principal,
+credentials,
+packed_policy_size
 FROM aws.sts.delegated_access_tokens
 WHERE TradeInToken = '{{ TradeInToken }}' -- required
 AND region = '{{ region }}' -- required

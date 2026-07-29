@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AlignedEndTime" /></td>
+    <td><CopyableCode code="aligned_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The end time for the returned dimension keys, after alignment to a granular boundary (as specified by PeriodInSeconds). AlignedEndTime will be greater than or equal to the value of the user-specified Endtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AlignedStartTime" /></td>
+    <td><CopyableCode code="aligned_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The start time for the returned dimension keys, after alignment to a granular boundary (as specified by PeriodInSeconds). AlignedStartTime will be less than or equal to the value of the user-specified StartTime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Keys" /></td>
+    <td><CopyableCode code="keys" /></td>
     <td><code>array</code></td>
     <td>The dimension keys that were requested.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token that indicates the response didn’t return all available records because MaxRecords was specified in the previous request. To get the remaining records, specify NextToken in a separate request with this value. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_=-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PartitionKeys" /></td>
+    <td><CopyableCode code="partition_keys" /></td>
     <td><code>array</code></td>
     <td>If PartitionBy was present in the request, PartitionKeys contains the breakdown of dimension keys by the specified partitions.</td>
 </tr>
@@ -139,11 +139,11 @@ For a specific time period, retrieve the top N dimension keys for a metric. Each
 
 ```sql
 SELECT
-AlignedEndTime,
-AlignedStartTime,
-Keys,
-NextToken,
-PartitionKeys
+aligned_end_time,
+aligned_start_time,
+keys,
+next_token,
+partition_keys
 FROM aws.pi.dimension_keys
 WHERE region = '{{ region }}' -- required
 ;

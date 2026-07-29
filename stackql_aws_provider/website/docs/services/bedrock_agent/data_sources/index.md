@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data source. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the data source was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataDeletionPolicy" /></td>
+    <td><CopyableCode code="data_deletion_policy" /></td>
     <td><code>string</code></td>
     <td>The data deletion policy for the data source. (RETAIN, DELETE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceConfiguration" /></td>
+    <td><CopyableCode code="data_source_configuration" /></td>
     <td><code>object</code></td>
     <td>The connection configuration for the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data source. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -81,17 +81,17 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReasons" /></td>
+    <td><CopyableCode code="failure_reasons" /></td>
     <td><code>array</code></td>
     <td>The detailed reasons on the failure to delete a data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the knowledge base to which the data source belongs. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="serverSideEncryptionConfiguration" /></td>
+    <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains the configuration for server-side encryption.</td>
 </tr>
@@ -101,12 +101,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the data source. The following statuses are possible: Available – The data source has been created and is ready for ingestion into the knowledge base. Deleting – The data source is being deleted. (AVAILABLE, DELETING, DELETE_UNSUCCESSFUL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the data source was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vectorIngestionConfiguration" /></td>
+    <td><CopyableCode code="vector_ingestion_configuration" /></td>
     <td><code>object</code></td>
     <td>Contains details about how to ingest the documents in a data source.</td>
 </tr>
@@ -130,7 +130,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the data source. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataSourceId" /></td>
+    <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the data source. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the data source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="knowledgeBaseId" /></td>
+    <td><CopyableCode code="knowledge_base_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the knowledge base to which the data source belongs. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -150,7 +150,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the data source. (AVAILABLE, DELETING, DELETE_UNSUCCESSFUL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the data source was last updated.</td>
 </tr>
@@ -259,17 +259,17 @@ Gets information about a data source.
 ```sql
 SELECT
 name,
-createdAt,
-dataDeletionPolicy,
-dataSourceConfiguration,
-dataSourceId,
+created_at,
+data_deletion_policy,
+data_source_configuration,
+data_source_id,
 description,
-failureReasons,
-knowledgeBaseId,
-serverSideEncryptionConfiguration,
+failure_reasons,
+knowledge_base_id,
+server_side_encryption_configuration,
 status,
-updatedAt,
-vectorIngestionConfiguration
+updated_at,
+vector_ingestion_configuration
 FROM aws.bedrock_agent.data_sources
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND data_source_id = '{{ data_source_id }}' -- required
@@ -284,11 +284,11 @@ Lists the data sources in a knowledge base and information about each one.
 ```sql
 SELECT
 name,
-dataSourceId,
+data_source_id,
 description,
-knowledgeBaseId,
+knowledge_base_id,
 status,
-updatedAt
+updated_at
 FROM aws.bedrock_agent.data_sources
 WHERE knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -334,7 +334,7 @@ SELECT
 '{{ knowledge_base_id }}',
 '{{ region }}'
 RETURNING
-dataSource
+data_source
 ;
 ```
 </TabItem>
@@ -499,7 +499,7 @@ AND region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 AND dataSourceConfiguration = '{{ dataSourceConfiguration }}' --required
 RETURNING
-dataSource;
+data_source;
 ```
 </TabItem>
 </Tabs>

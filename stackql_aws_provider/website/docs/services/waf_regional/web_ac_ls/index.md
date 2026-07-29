@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>If you have more WebACL objects than the number that you specified for Limit in the request, the response includes a NextMarker value. To list more WebACL objects, submit another ListWebACLs request, and specify the NextMarker value from the response in the NextMarker value in the next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebACLs" /></td>
+    <td><CopyableCode code="web_acls" /></td>
     <td><code>array</code></td>
     <td>An array of WebACLSummary objects.</td>
 </tr>
@@ -124,8 +124,8 @@ This is AWS WAF Classic documentation. For more information, see AWS WAF Classic
 
 ```sql
 SELECT
-NextMarker,
-WebACLs
+next_marker,
+web_acls
 FROM aws.waf_regional.web_ac_ls
 WHERE region = '{{ region }}' -- required
 ;

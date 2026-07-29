@@ -50,57 +50,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChangeSeverity" /></td>
+    <td><CopyableCode code="change_severity" /></td>
     <td><code>string</code></td>
     <td>An indication of which action is required if the value for this configuration option changes: NoInterruption : There is no interruption to the environment or application availability. RestartEnvironment : The environment is entirely restarted, all AWS resources are deleted and recreated, and the environment is unavailable during the process. RestartApplicationServer : The environment is available the entire time. However, a short application outage occurs when the application servers on the running Amazon EC2 instances are restarted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultValue" /></td>
+    <td><CopyableCode code="default_value" /></td>
     <td><code>string</code></td>
     <td>The default value for this configuration option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxLength" /></td>
+    <td><CopyableCode code="max_length" /></td>
     <td><code>integer</code></td>
     <td>If specified, the configuration option must be a string value no longer than this value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxValue" /></td>
+    <td><CopyableCode code="max_value" /></td>
     <td><code>integer</code></td>
     <td>If specified, the configuration option must be a numeric value less than this value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MinValue" /></td>
+    <td><CopyableCode code="min_value" /></td>
     <td><code>integer</code></td>
     <td>If specified, the configuration option must be a numeric value greater than this value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration option.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Namespace" /></td>
+    <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
     <td>A unique namespace identifying the option's associated AWS resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Regex" /></td>
+    <td><CopyableCode code="regex" /></td>
     <td><code>string</code></td>
     <td>If specified, the configuration option must be a string value that satisfies this regular expression.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UserDefined" /></td>
+    <td><CopyableCode code="user_defined" /></td>
     <td><code>boolean</code></td>
     <td>An indication of whether the user defined this configuration option: true : This configuration option was defined by the user. It is a valid choice for specifying if this as an Option to Remove when updating configuration settings. false : This configuration was not defined by the user. Constraint: You can remove only UserDefined options from a configuration. Valid Values: true | false</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueOptions" /></td>
+    <td><CopyableCode code="value_options" /></td>
     <td><code>string</code></td>
     <td>If specified, values for the configuration option are selected from this list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ValueType" /></td>
+    <td><CopyableCode code="value_type" /></td>
     <td><code>string</code></td>
     <td>An indication of which type of values this option has and whether it is allowable to select one or more than one of the possible values: Scalar : Values for this option are a single selection from the possible values, or an unformatted string, or numeric value governed by the MIN/MAX/Regex constraints. List : Values for this option are multiple selections from the possible values. Boolean : Values for this option are either true or false . Json : Values for this option are a JSON representation of a ConfigDocument.</td>
 </tr>
@@ -199,17 +199,17 @@ Describes the configuration options that are used in a particular configuration 
 
 ```sql
 SELECT
-ChangeSeverity,
-DefaultValue,
-MaxLength,
-MaxValue,
-MinValue,
-Name,
-Namespace,
-Regex,
-UserDefined,
-ValueOptions,
-ValueType
+change_severity,
+default_value,
+max_length,
+max_value,
+min_value,
+name,
+namespace,
+regex,
+user_defined,
+value_options,
+value_type
 FROM aws.elasticbeanstalk.configuration_options
 WHERE region = '{{ region }}' -- required
 AND ApplicationName = '{{ ApplicationName }}'

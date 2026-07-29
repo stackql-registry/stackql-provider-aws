@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schedule group. (pattern: &lt;code&gt;^arn:aws(-&#91;a-z&#93;+)?:scheduler:&#91;a-z0-9\-&#93;+:\d&#123;12&#125;:schedule-group\/&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationDate" /></td>
+    <td><CopyableCode code="last_modification_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule group was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule group. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Specifies the state of the schedule group. (ACTIVE, DELETING)</td>
 </tr>
@@ -90,27 +90,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the schedule group. (pattern: &lt;code&gt;^arn:aws(-&#91;a-z&#93;+)?:scheduler:&#91;a-z0-9\-&#93;+:\d&#123;12&#125;:schedule-group\/&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule group was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModificationDate" /></td>
+    <td><CopyableCode code="last_modification_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the schedule group was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the schedule group. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z-_.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Specifies the state of the schedule group. (ACTIVE, DELETING)</td>
 </tr>
@@ -226,11 +226,11 @@ Retrieves the specified schedule group.
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-LastModificationDate,
-Name,
-State
+arn,
+creation_date,
+last_modification_date,
+name,
+state
 FROM aws.scheduler.schedule_groups
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -243,11 +243,11 @@ Returns a paginated list of your schedule groups.
 
 ```sql
 SELECT
-Arn,
-CreationDate,
-LastModificationDate,
-Name,
-State
+arn,
+creation_date,
+last_modification_date,
+name,
+state
 FROM aws.scheduler.schedule_groups
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -285,7 +285,7 @@ SELECT
 '{{ name }}',
 '{{ region }}'
 RETURNING
-ScheduleGroupArn
+schedule_group_arn
 ;
 ```
 </TabItem>

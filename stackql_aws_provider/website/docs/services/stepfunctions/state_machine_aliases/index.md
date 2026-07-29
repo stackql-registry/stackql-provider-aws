@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="stateMachineAliases" /></td>
+    <td><CopyableCode code="state_machine_aliases" /></td>
     <td><code>array</code></td>
     <td>Aliases for the state machine.</td>
 </tr>
@@ -124,8 +124,8 @@ Lists aliases for a specified state machine ARN. Results are sorted by time, wit
 
 ```sql
 SELECT
-nextToken,
-stateMachineAliases
+next_token,
+state_machine_aliases
 FROM aws.stepfunctions.state_machine_aliases
 WHERE region = '{{ region }}' -- required
 ;

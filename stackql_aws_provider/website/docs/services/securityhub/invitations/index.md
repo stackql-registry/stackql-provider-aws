@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountId" /></td>
+    <td><CopyableCode code="account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the Security Hub CSPM administrator account that the invitation was sent from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitationId" /></td>
+    <td><CopyableCode code="invitation_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the invitation sent to the member account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvitedAt" /></td>
+    <td><CopyableCode code="invited_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the invitation was sent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MemberStatus" /></td>
+    <td><CopyableCode code="member_status" /></td>
     <td><code>string</code></td>
     <td>The current status of the association between the member and administrator accounts. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -172,10 +172,10 @@ We recommend using Organizations instead of Security Hub CSPM invitations to man
 
 ```sql
 SELECT
-AccountId,
-InvitationId,
-InvitedAt,
-MemberStatus
+account_id,
+invitation_id,
+invited_at,
+member_status
 FROM aws.securityhub.invitations
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'

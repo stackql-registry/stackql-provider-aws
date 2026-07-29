@@ -51,27 +51,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the over-the-air (OTA) task configuration was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the over-the-air (OTA) task configuration. (pattern: &lt;code&gt;&#91;0-9A-Za-z_\- &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the over-the-air (OTA) task configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PushConfig" /></td>
+    <td><CopyableCode code="push_config" /></td>
     <td><code>object</code></td>
     <td>Structure representing a push config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskConfigurationId" /></td>
+    <td><CopyableCode code="task_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The over-the-air (OTA) task configuration id. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -90,17 +90,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp value of when the over-the-air (OTA) task configuration was created at.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the over-the-air (OTA) task configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_ &#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TaskConfigurationId" /></td>
+    <td><CopyableCode code="task_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The id of the over-the-air (OTA) task configuration (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -206,11 +206,11 @@ Get a configuraiton for the over-the-air (OTA) task.
 
 ```sql
 SELECT
-CreatedAt,
-Description,
-Name,
-PushConfig,
-TaskConfigurationId
+created_at,
+description,
+name,
+push_config,
+task_configuration_id
 FROM aws.iot_managed_integrations.ota_task_configurations
 WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -223,9 +223,9 @@ List all of the over-the-air (OTA) task configurations.
 
 ```sql
 SELECT
-CreatedAt,
-Name,
-TaskConfigurationId
+created_at,
+name,
+task_configuration_id
 FROM aws.iot_managed_integrations.ota_task_configurations
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -264,7 +264,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-TaskConfigurationId
+task_configuration_id
 ;
 ```
 </TabItem>

@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="serviceMetadata" /></td>
+    <td><CopyableCode code="service_metadata" /></td>
     <td><code>array</code></td>
     <td>The metadata that's associated with the Amazon Web Services service.</td>
 </tr>
@@ -119,7 +119,7 @@ Gets a list of the Amazon Web Services services from which Audit Manager can col
 
 ```sql
 SELECT
-serviceMetadata
+service_metadata
 FROM aws.auditmanager.services_in_scopes
 WHERE region = '{{ region }}' -- required
 ;

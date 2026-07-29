@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The customer-supplied name that uniquely identifies the DB instance when interacting with the Amazon Timestream for InfluxDB API and CLI commands. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9&#93;*(-&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage allocated for your DB storage type (in gibibytes).</td>
 </tr>
@@ -71,32 +71,32 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="availabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the DB instance resides.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbClusterId" /></td>
+    <td><CopyableCode code="db_cluster_id" /></td>
     <td><code>string</code></td>
     <td>Specifies the DbCluster to which this DbInstance belongs to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbInstanceType" /></td>
+    <td><CopyableCode code="db_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB instance type that InfluxDB runs on. (db.influx.medium, db.influx.large, db.influx.xlarge, db.influx.2xlarge, db.influx.4xlarge, db.influx.8xlarge, db.influx.12xlarge, db.influx.16xlarge, db.influx.24xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbParameterGroupIdentifier" /></td>
+    <td><CopyableCode code="db_parameter_group_identifier" /></td>
     <td><code>string</code></td>
     <td>The id of the DB parameter group assigned to your DB instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbStorageType" /></td>
+    <td><CopyableCode code="db_storage_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB DB storage type that InfluxDB stores data on. (InfluxIOIncludedT1, InfluxIOIncludedT2, InfluxIOIncludedT3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the Timestream for InfluxDB is deployed as Single-AZ or with a MultiAZ Standby for High availability. (SINGLE_AZ, WITH_MULTIAZ_STANDBY)</td>
 </tr>
@@ -106,42 +106,42 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint used to connect to InfluxDB. The default InfluxDB port is 8086.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="influxAuthParametersSecretArn" /></td>
+    <td><CopyableCode code="influx_auth_parameters_secret_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Secrets Manager secret containing the initial InfluxDB authorization parameters. The secret value is a JSON formatted key-value pair holding InfluxDB authorization values: organization, bucket, username, and password.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceMode" /></td>
+    <td><CopyableCode code="instance_mode" /></td>
     <td><code>string</code></td>
     <td>Specifies the DbInstance's role in the cluster. (PRIMARY, STANDBY, REPLICA, INGEST, QUERY, COMPACT, PROCESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceModes" /></td>
+    <td><CopyableCode code="instance_modes" /></td>
     <td><code>array</code></td>
     <td>Specifies the DbInstance's roles in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastMaintenanceTime" /></td>
+    <td><CopyableCode code="last_maintenance_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last completed maintenance operation on the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="logDeliveryConfiguration" /></td>
+    <td><CopyableCode code="log_delivery_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for sending InfluxDB engine logs to send to specified S3 bucket.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="maintenanceSchedule" /></td>
+    <td><CopyableCode code="maintenance_schedule" /></td>
     <td><code>object</code></td>
     <td>The maintenance schedule for the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the networkType of the Timestream for InfluxDB instance is IPV4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols. (IPV4, DUAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextMaintenanceTime" /></td>
+    <td><CopyableCode code="next_maintenance_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the next scheduled maintenance operation on the DB instance.</td>
 </tr>
@@ -151,12 +151,12 @@ The following fields are returned by `SELECT` queries:
     <td>The port number on which InfluxDB accepts connections.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="publiclyAccessible" /></td>
+    <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if the DB instance has a public IP to facilitate access.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="secondaryAvailabilityZone" /></td>
+    <td><CopyableCode code="secondary_availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the standby instance is located when deploying with a MultiAZ standby instance.</td>
 </tr>
@@ -166,12 +166,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the DB instance. (CREATING, AVAILABLE, DELETING, MODIFYING, UPDATING, DELETED, FAILED, UPDATING_DEPLOYMENT_TYPE, UPDATING_INSTANCE_TYPE, MAINTENANCE, REBOOTING, REBOOT_FAILED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSecurityGroupIds" /></td>
+    <td><CopyableCode code="vpc_security_group_ids" /></td>
     <td><code>array</code></td>
     <td>A list of VPC security group IDs associated with the DB instance.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="vpcSubnetIds" /></td>
+    <td><CopyableCode code="vpc_subnet_ids" /></td>
     <td><code>array</code></td>
     <td>A list of VPC subnet IDs associated with the DB instance.</td>
 </tr>
@@ -200,7 +200,7 @@ The following fields are returned by `SELECT` queries:
     <td>This customer-supplied name uniquely identifies the DB instance when interacting with the Amazon Timestream for InfluxDB API and CLI commands. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9&#93;*(-&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="allocatedStorage" /></td>
+    <td><CopyableCode code="allocated_storage" /></td>
     <td><code>integer</code></td>
     <td>The amount of storage to allocate for your DbStorageType in GiB (gibibytes).</td>
 </tr>
@@ -210,17 +210,17 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbInstanceType" /></td>
+    <td><CopyableCode code="db_instance_type" /></td>
     <td><code>string</code></td>
     <td>The Timestream for InfluxDB instance type to run InfluxDB on. (db.influx.medium, db.influx.large, db.influx.xlarge, db.influx.2xlarge, db.influx.4xlarge, db.influx.8xlarge, db.influx.12xlarge, db.influx.16xlarge, db.influx.24xlarge)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dbStorageType" /></td>
+    <td><CopyableCode code="db_storage_type" /></td>
     <td><code>string</code></td>
     <td>The storage type for your DB instance. (InfluxIOIncludedT1, InfluxIOIncludedT2, InfluxIOIncludedT3)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>Single-Instance or with a MultiAZ Standby for High availability. (SINGLE_AZ, WITH_MULTIAZ_STANDBY)</td>
 </tr>
@@ -230,7 +230,7 @@ The following fields are returned by `SELECT` queries:
     <td>The endpoint used to connect to InfluxDB. The default InfluxDB port is 8086.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the networkType of the Timestream for InfluxDB instance is IPV4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols. (IPV4, DUAL)</td>
 </tr>
@@ -340,29 +340,29 @@ Returns a Timestream for InfluxDB DB instance.
 SELECT
 id,
 name,
-allocatedStorage,
+allocated_storage,
 arn,
-availabilityZone,
-dbClusterId,
-dbInstanceType,
-dbParameterGroupIdentifier,
-dbStorageType,
-deploymentType,
+availability_zone,
+db_cluster_id,
+db_instance_type,
+db_parameter_group_identifier,
+db_storage_type,
+deployment_type,
 endpoint,
-influxAuthParametersSecretArn,
-instanceMode,
-instanceModes,
-lastMaintenanceTime,
-logDeliveryConfiguration,
-maintenanceSchedule,
-networkType,
-nextMaintenanceTime,
+influx_auth_parameters_secret_arn,
+instance_mode,
+instance_modes,
+last_maintenance_time,
+log_delivery_configuration,
+maintenance_schedule,
+network_type,
+next_maintenance_time,
 port,
-publiclyAccessible,
-secondaryAvailabilityZone,
+publicly_accessible,
+secondary_availability_zone,
 status,
-vpcSecurityGroupIds,
-vpcSubnetIds
+vpc_security_group_ids,
+vpc_subnet_ids
 FROM aws.timestream_influxdb.db_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -376,13 +376,13 @@ Returns a list of Timestream for InfluxDB DB instances.
 SELECT
 id,
 name,
-allocatedStorage,
+allocated_storage,
 arn,
-dbInstanceType,
-dbStorageType,
-deploymentType,
+db_instance_type,
+db_storage_type,
+deployment_type,
 endpoint,
-networkType,
+network_type,
 port,
 status
 FROM aws.timestream_influxdb.db_instances
@@ -451,29 +451,29 @@ SELECT
 RETURNING
 id,
 name,
-allocatedStorage,
+allocated_storage,
 arn,
-availabilityZone,
-dbClusterId,
-dbInstanceType,
-dbParameterGroupIdentifier,
-dbStorageType,
-deploymentType,
+availability_zone,
+db_cluster_id,
+db_instance_type,
+db_parameter_group_identifier,
+db_storage_type,
+deployment_type,
 endpoint,
-influxAuthParametersSecretArn,
-instanceMode,
-instanceModes,
-lastMaintenanceTime,
-logDeliveryConfiguration,
-maintenanceSchedule,
-networkType,
-nextMaintenanceTime,
+influx_auth_parameters_secret_arn,
+instance_mode,
+instance_modes,
+last_maintenance_time,
+log_delivery_configuration,
+maintenance_schedule,
+network_type,
+next_maintenance_time,
 port,
-publiclyAccessible,
-secondaryAvailabilityZone,
+publicly_accessible,
+secondary_availability_zone,
 status,
-vpcSecurityGroupIds,
-vpcSubnetIds
+vpc_security_group_ids,
+vpc_subnet_ids
 ;
 ```
 </TabItem>
@@ -604,29 +604,29 @@ AND identifier = '{{ identifier }}' --required
 RETURNING
 id,
 name,
-allocatedStorage,
+allocated_storage,
 arn,
-availabilityZone,
-dbClusterId,
-dbInstanceType,
-dbParameterGroupIdentifier,
-dbStorageType,
-deploymentType,
+availability_zone,
+db_cluster_id,
+db_instance_type,
+db_parameter_group_identifier,
+db_storage_type,
+deployment_type,
 endpoint,
-influxAuthParametersSecretArn,
-instanceMode,
-instanceModes,
-lastMaintenanceTime,
-logDeliveryConfiguration,
-maintenanceSchedule,
-networkType,
-nextMaintenanceTime,
+influx_auth_parameters_secret_arn,
+instance_mode,
+instance_modes,
+last_maintenance_time,
+log_delivery_configuration,
+maintenance_schedule,
+network_type,
+next_maintenance_time,
 port,
-publiclyAccessible,
-secondaryAvailabilityZone,
+publicly_accessible,
+secondary_availability_zone,
 status,
-vpcSecurityGroupIds,
-vpcSubnetIds;
+vpc_security_group_ids,
+vpc_subnet_ids;
 ```
 </TabItem>
 </Tabs>

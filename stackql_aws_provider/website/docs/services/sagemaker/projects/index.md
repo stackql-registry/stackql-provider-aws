@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the project was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when project was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectArn" /></td>
+    <td><CopyableCode code="project_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the project. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;&#123;9,16&#125;:&#91;0-9&#93;&#123;12&#125;:project/&#91;\S&#93;&#123;1,2048&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectDescription" /></td>
+    <td><CopyableCode code="project_description" /></td>
     <td><code>string</code></td>
     <td>The description of the project. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectId" /></td>
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the project. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectName" /></td>
+    <td><CopyableCode code="project_name" /></td>
     <td><code>string</code></td>
     <td>The name of the project. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,31&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectStatus" /></td>
+    <td><CopyableCode code="project_status" /></td>
     <td><code>string</code></td>
     <td>The status of the project. (Pending, CreateInProgress, CreateCompleted, CreateFailed, DeleteInProgress, DeleteFailed, DeleteCompleted, UpdateInProgress, UpdateCompleted, UpdateFailed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCatalogProvisionedProductDetails" /></td>
+    <td><CopyableCode code="service_catalog_provisioned_product_details" /></td>
     <td><code>object</code></td>
     <td>Information about a provisioned service catalog product.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceCatalogProvisioningDetails" /></td>
+    <td><CopyableCode code="service_catalog_provisioning_details" /></td>
     <td><code>object</code></td>
     <td>Information used to provision a service catalog product. For information, see What is Amazon Web Services Service Catalog.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateProviderDetails" /></td>
+    <td><CopyableCode code="template_provider_details" /></td>
     <td><code>array</code></td>
     <td>An array of template providers associated with the project.</td>
 </tr>
@@ -125,12 +125,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If the result of the previous ListCompilationJobs request was truncated, the response includes a NextToken. To retrieve the next set of model compilation jobs, use the token in the next request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProjectSummaryList" /></td>
+    <td><CopyableCode code="project_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of summaries of projects.</td>
 </tr>
@@ -228,18 +228,18 @@ Describes the details of a project.
 
 ```sql
 SELECT
-CreatedBy,
-CreationTime,
-LastModifiedBy,
-LastModifiedTime,
-ProjectArn,
-ProjectDescription,
-ProjectId,
-ProjectName,
-ProjectStatus,
-ServiceCatalogProvisionedProductDetails,
-ServiceCatalogProvisioningDetails,
-TemplateProviderDetails
+created_by,
+creation_time,
+last_modified_by,
+last_modified_time,
+project_arn,
+project_description,
+project_id,
+project_name,
+project_status,
+service_catalog_provisioned_product_details,
+service_catalog_provisioning_details,
+template_provider_details
 FROM aws.sagemaker.projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -251,8 +251,8 @@ Gets a list of the projects in an Amazon Web Services account.
 
 ```sql
 SELECT
-NextToken,
-ProjectSummaryList
+next_token,
+project_summary_list
 FROM aws.sagemaker.projects
 WHERE region = '{{ region }}' -- required
 ;
@@ -291,8 +291,8 @@ SELECT
 '{{ TemplateProviders }}',
 '{{ region }}'
 RETURNING
-ProjectArn,
-ProjectId
+project_arn,
+project_id
 ;
 ```
 </TabItem>
@@ -369,7 +369,7 @@ WHERE
 region = '{{ region }}' --required
 AND ProjectName = '{{ ProjectName }}' --required
 RETURNING
-ProjectArn;
+project_arn;
 ```
 </TabItem>
 </Tabs>

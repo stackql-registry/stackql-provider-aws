@@ -60,17 +60,17 @@ The following fields are returned by `SELECT` queries:
     <td>Connector arn.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectorID" /></td>
+    <td><CopyableCode code="connector_id" /></td>
     <td><code>string</code></td>
     <td>Connector ID. (pattern: &lt;code&gt;connector-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ssmCommandConfig" /></td>
+    <td><CopyableCode code="ssm_command_config" /></td>
     <td><code>object</code></td>
     <td>Connector SSM command config.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ssmInstanceID" /></td>
+    <td><CopyableCode code="ssm_instance_id" /></td>
     <td><code>string</code></td>
     <td>Connector SSM instance ID. (pattern: &lt;code&gt;.*(^i-&#91;0-9a-zA-Z&#93;&#123;17&#125;$)|(^mi-&#91;0-9a-zA-Z&#93;&#123;17&#125;$).*&lt;/code&gt;)</td>
 </tr>
@@ -167,9 +167,9 @@ List Connectors.
 SELECT
 name,
 arn,
-connectorID,
-ssmCommandConfig,
-ssmInstanceID,
+connector_id,
+ssm_command_config,
+ssm_instance_id,
 tags
 FROM aws.mgn.connectors
 WHERE region = '{{ region }}' -- required
@@ -209,9 +209,9 @@ SELECT
 RETURNING
 name,
 arn,
-connectorID,
-ssmCommandConfig,
-ssmInstanceID,
+connector_id,
+ssm_command_config,
+ssm_instance_id,
 tags
 ;
 ```
@@ -268,9 +268,9 @@ AND connectorID = '{{ connectorID }}' --required
 RETURNING
 name,
 arn,
-connectorID,
-ssmCommandConfig,
-ssmInstanceID,
+connector_id,
+ssm_command_config,
+ssm_instance_id,
 tags;
 ```
 </TabItem>

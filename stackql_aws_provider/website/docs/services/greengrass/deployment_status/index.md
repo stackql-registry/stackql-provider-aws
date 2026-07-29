@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeploymentStatus" /></td>
+    <td><CopyableCode code="deployment_status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment: ''InProgress'', ''Building'', ''Success'', or ''Failure''.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeploymentType" /></td>
+    <td><CopyableCode code="deployment_type" /></td>
     <td><code>string</code></td>
     <td>The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid. (NewDeployment, Redeployment, ResetDeployment, ForceResetDeployment)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>array</code></td>
     <td>Error details</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>Error message</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string</code></td>
     <td>The time, in milliseconds since the epoch, when the deployment status was updated.</td>
 </tr>
@@ -149,11 +149,11 @@ Returns the status of a deployment.
 
 ```sql
 SELECT
-DeploymentStatus,
-DeploymentType,
-ErrorDetails,
-ErrorMessage,
-UpdatedAt
+deployment_status,
+deployment_type,
+error_details,
+error_message,
+updated_at
 FROM aws.greengrass.deployment_status
 WHERE deployment_id = '{{ deployment_id }}' -- required
 AND group_id = '{{ group_id }}' -- required

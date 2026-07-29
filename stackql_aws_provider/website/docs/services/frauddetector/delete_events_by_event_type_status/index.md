@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="eventTypeName" /></td>
+    <td><CopyableCode code="event_type_name" /></td>
     <td><code>string</code></td>
     <td>The event type name. (pattern: &lt;code&gt;^&#91;0-9a-z_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventsDeletionStatus" /></td>
+    <td><CopyableCode code="events_deletion_status" /></td>
     <td><code>string</code></td>
     <td>The deletion status. (IN_PROGRESS_INITIALIZING, IN_PROGRESS, CANCEL_IN_PROGRESS, CANCELED, COMPLETE, FAILED)</td>
 </tr>
@@ -124,8 +124,8 @@ Retrieves the status of a DeleteEventsByEventType action.
 
 ```sql
 SELECT
-eventTypeName,
-eventsDeletionStatus
+event_type_name,
+events_deletion_status
 FROM aws.frauddetector.delete_events_by_event_type_status
 WHERE region = '{{ region }}' -- required
 ;

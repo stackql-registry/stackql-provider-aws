@@ -55,17 +55,17 @@ The following fields are returned by `SELECT` queries:
     <td>The current activity being performed in the execution. (MAPPING, MAPPING_UPDATE, CODE_GENERATION, DEPLOY, DEPLOYED_STACKS_DELETION, ANALYZE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the execution was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationDefinitionID" /></td>
+    <td><CopyableCode code="network_migration_definition_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the network migration definition used by this execution. (pattern: &lt;code&gt;nmd-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkMigrationExecutionID" /></td>
+    <td><CopyableCode code="network_migration_execution_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the execution. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -85,7 +85,7 @@ The following fields are returned by `SELECT` queries:
     <td>Tags assigned to the execution.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the execution was last updated.</td>
 </tr>
@@ -155,13 +155,13 @@ Lists network migration execution instances for a given definition, showing the 
 ```sql
 SELECT
 activity,
-createdAt,
-networkMigrationDefinitionID,
-networkMigrationExecutionID,
+created_at,
+network_migration_definition_id,
+network_migration_execution_id,
 stage,
 status,
 tags,
-updatedAt
+updated_at
 FROM aws.mgn.network_migration_executions
 WHERE region = '{{ region }}' -- required
 ;

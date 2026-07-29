@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="alarmModelName" /></td>
+    <td><CopyableCode code="alarm_model_name" /></td>
     <td><code>string</code></td>
     <td>The name of the alarm model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmModelVersion" /></td>
+    <td><CopyableCode code="alarm_model_version" /></td>
     <td><code>string</code></td>
     <td>The version of the alarm model.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="alarmState" /></td>
+    <td><CopyableCode code="alarm_state" /></td>
     <td><code>object</code></td>
     <td>Contains information about the current state of the alarm.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the alarm was created, in the Unix epoch format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="keyValue" /></td>
+    <td><CopyableCode code="key_value" /></td>
     <td><code>string</code></td>
     <td>The value of the key used as a filter to select only the alarms associated with the key. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-_:&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdateTime" /></td>
+    <td><CopyableCode code="last_update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the alarm was last updated, in the Unix epoch format.</td>
 </tr>
@@ -176,12 +176,12 @@ Retrieves information about an alarm.
 
 ```sql
 SELECT
-alarmModelName,
-alarmModelVersion,
-alarmState,
-creationTime,
-keyValue,
-lastUpdateTime,
+alarm_model_name,
+alarm_model_version,
+alarm_state,
+creation_time,
+key_value,
+last_update_time,
 severity
 FROM aws.iotevents_data.alarms
 WHERE alarm_model_name = '{{ alarm_model_name }}' -- required

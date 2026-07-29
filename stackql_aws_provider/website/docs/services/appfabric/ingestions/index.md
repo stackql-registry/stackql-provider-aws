@@ -56,7 +56,7 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appBundleArn" /></td>
+    <td><CopyableCode code="app_bundle_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the app bundle for the ingestion. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
@@ -66,12 +66,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the ingestion. (pattern: &lt;code&gt;arn:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ingestion was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ingestionType" /></td>
+    <td><CopyableCode code="ingestion_type" /></td>
     <td><code>string</code></td>
     <td>The type of the ingestion. (auditLog)</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the ingestion. (enabled, disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application tenant.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the ingestion was last updated.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the ingestion. (enabled, disabled)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="tenantId" /></td>
+    <td><CopyableCode code="tenant_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the application tenant.</td>
 </tr>
@@ -232,13 +232,13 @@ Returns information about an ingestion.
 ```sql
 SELECT
 app,
-appBundleArn,
+app_bundle_arn,
 arn,
-createdAt,
-ingestionType,
+created_at,
+ingestion_type,
 state,
-tenantId,
-updatedAt
+tenant_id,
+updated_at
 FROM aws.appfabric.ingestions
 WHERE app_bundle_identifier = '{{ app_bundle_identifier }}' -- required
 AND ingestion_identifier = '{{ ingestion_identifier }}' -- required
@@ -255,7 +255,7 @@ SELECT
 app,
 arn,
 state,
-tenantId
+tenant_id
 FROM aws.appfabric.ingestions
 WHERE app_bundle_identifier = '{{ app_bundle_identifier }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComponentConfiguration" /></td>
+    <td><CopyableCode code="component_configuration" /></td>
     <td><code>string</code></td>
     <td>The configuration settings of the component. The value is the escaped JSON of the configuration. (pattern: &lt;code&gt;&#91;\S\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Monitor" /></td>
+    <td><CopyableCode code="monitor" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the application component is monitored.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tier" /></td>
+    <td><CopyableCode code="tier" /></td>
     <td><code>string</code></td>
     <td>The tier of the application component. Supported tiers include DOT_NET_CORE, DOT_NET_WORKER, DOT_NET_WEB, SQL_SERVER, and DEFAULT (CUSTOM, DEFAULT, DOT_NET_CORE, DOT_NET_WORKER, DOT_NET_WEB_TIER, DOT_NET_WEB, SQL_SERVER, SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP, MYSQL, POSTGRESQL, JAVA_JMX, ORACLE, SAP_HANA_MULTI_NODE, SAP_HANA_SINGLE_NODE, SAP_HANA_HIGH_AVAILABILITY, SAP_ASE_SINGLE_NODE, SAP_ASE_HIGH_AVAILABILITY, SQL_SERVER_FAILOVER_CLUSTER_INSTANCE, SHAREPOINT, ACTIVE_DIRECTORY, SAP_NETWEAVER_STANDARD, SAP_NETWEAVER_DISTRIBUTED, SAP_NETWEAVER_HIGH_AVAILABILITY)</td>
 </tr>
@@ -136,9 +136,9 @@ Describes the monitoring configuration of the component.
 
 ```sql
 SELECT
-ComponentConfiguration,
-Monitor,
-Tier
+component_configuration,
+monitor,
+tier
 FROM aws.application_insights.component_configurations
 WHERE region = '{{ region }}' -- required
 ;

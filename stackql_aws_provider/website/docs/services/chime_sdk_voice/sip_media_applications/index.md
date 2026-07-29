@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The AWS Region in which the SIP media application is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The SIP media application creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>array</code></td>
     <td>List of endpoints for a SIP media application. Currently, only one endpoint per SIP media application is permitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The SIP media application's name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9 _.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SipMediaApplicationArn" /></td>
+    <td><CopyableCode code="sip_media_application_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the SIP media application. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SipMediaApplicationId" /></td>
+    <td><CopyableCode code="sip_media_application_id" /></td>
     <td><code>string</code></td>
     <td>A SIP media application's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the SIP media application was updated.</td>
 </tr>
@@ -100,37 +100,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AwsRegion" /></td>
+    <td><CopyableCode code="aws_region" /></td>
     <td><code>string</code></td>
     <td>The AWS Region in which the SIP media application is created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The SIP media application creation timestamp, in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoints" /></td>
+    <td><CopyableCode code="endpoints" /></td>
     <td><code>array</code></td>
     <td>List of endpoints for a SIP media application. Currently, only one endpoint per SIP media application is permitted.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The SIP media application's name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9 _.-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SipMediaApplicationArn" /></td>
+    <td><CopyableCode code="sip_media_application_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the SIP media application. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SipMediaApplicationId" /></td>
+    <td><CopyableCode code="sip_media_application_id" /></td>
     <td><code>string</code></td>
     <td>A SIP media application's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedTimestamp" /></td>
+    <td><CopyableCode code="updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the SIP media application was updated.</td>
 </tr>
@@ -262,13 +262,13 @@ Retrieves the information for a SIP media application, including name, AWS Regio
 
 ```sql
 SELECT
-AwsRegion,
-CreatedTimestamp,
-Endpoints,
-Name,
-SipMediaApplicationArn,
-SipMediaApplicationId,
-UpdatedTimestamp
+aws_region,
+created_timestamp,
+endpoints,
+name,
+sip_media_application_arn,
+sip_media_application_id,
+updated_timestamp
 FROM aws.chime_sdk_voice.sip_media_applications
 WHERE sip_media_application_id = '{{ sip_media_application_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -281,13 +281,13 @@ Lists the SIP media applications under the administrator's AWS account.
 
 ```sql
 SELECT
-AwsRegion,
-CreatedTimestamp,
-Endpoints,
-Name,
-SipMediaApplicationArn,
-SipMediaApplicationId,
-UpdatedTimestamp
+aws_region,
+created_timestamp,
+endpoints,
+name,
+sip_media_application_arn,
+sip_media_application_id,
+updated_timestamp
 FROM aws.chime_sdk_voice.sip_media_applications
 WHERE region = '{{ region }}' -- required
 AND `max-results` = '{{ max-results }}'
@@ -329,7 +329,7 @@ SELECT
 '{{ sip_media_application_id }}',
 '{{ region }}'
 RETURNING
-SipMediaApplicationCall
+sip_media_application_call
 ;
 ```
 </TabItem>
@@ -352,7 +352,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-SipMediaApplication
+sip_media_application
 ;
 ```
 </TabItem>
@@ -415,7 +415,7 @@ AND transaction_id = '{{ transaction_id }}' --required
 AND region = '{{ region }}' --required
 AND Arguments = '{{ Arguments }}' --required
 RETURNING
-SipMediaApplicationCall;
+sip_media_application_call;
 ```
 </TabItem>
 <TabItem value="update_sip_media_application">
@@ -431,7 +431,7 @@ WHERE
 sip_media_application_id = '{{ sip_media_application_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-SipMediaApplication;
+sip_media_application;
 ```
 </TabItem>
 </Tabs>

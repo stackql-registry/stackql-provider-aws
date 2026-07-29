@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="awsSso" /></td>
+    <td><CopyableCode code="aws_sso" /></td>
     <td><code>object</code></td>
     <td>A structure containing information about how this workspace works with IAM Identity Center.</td>
 </tr>
@@ -141,7 +141,7 @@ Displays information about the authentication methods used in one Amazon Managed
 
 ```sql
 SELECT
-awsSso,
+aws_sso,
 providers,
 saml
 FROM aws.grafana.workspace_authentications

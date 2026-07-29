@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="GameSession" /></td>
+    <td><CopyableCode code="game_session" /></td>
     <td><code>object</code></td>
     <td>Object that describes a game session.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProtectionPolicy" /></td>
+    <td><CopyableCode code="protection_policy" /></td>
     <td><code>string</code></td>
     <td>Current status of protection for the game session. NoProtection -- The game session can be terminated during a scale-down event. FullProtection -- If the game session is in an ACTIVE status, it cannot be terminated during a scale-down event. (NoProtection, FullProtection)</td>
 </tr>
@@ -124,8 +124,8 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-GameSession,
-ProtectionPolicy
+game_session,
+protection_policy
 FROM aws.gamelift.game_session_details
 WHERE region = '{{ region }}' -- required
 ;

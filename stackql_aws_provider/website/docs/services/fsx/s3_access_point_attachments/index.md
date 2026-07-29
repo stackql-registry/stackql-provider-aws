@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the resource was created, in seconds (since 1970-01-01T00:00:00Z), also known as Unix time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lifecycle" /></td>
+    <td><CopyableCode code="lifecycle" /></td>
     <td><code>string</code></td>
     <td>The lifecycle status of the S3 access point attachment. The lifecycle can have the following values: AVAILABLE - the S3 access point attachment is available for use CREATING - Amazon FSx is creating the S3 access point and attachment DELETING - Amazon FSx is deleting the S3 access point and attachment FAILED - The S3 access point attachment is in a failed state. Delete and detach the S3 access point attachment, and create a new one. UPDATING - Amazon FSx is updating the S3 access point attachment (AVAILABLE, CREATING, DELETING, UPDATING, FAILED, MISCONFIGURED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifecycleTransitionReason" /></td>
+    <td><CopyableCode code="lifecycle_transition_reason" /></td>
     <td><code>object</code></td>
     <td>Describes why a resource lifecycle state changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the S3 access point attachment; also used for the name of the S3 access point. (pattern: &lt;code&gt;^(?=&#91;a-z0-9&#93;)&#91;a-z0-9-&#93;&#123;1,48&#125;&#91;a-z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OntapConfiguration" /></td>
+    <td><CopyableCode code="ontap_configuration" /></td>
     <td><code>object</code></td>
     <td>The ONTAP configuration of the S3 access point attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenZFSConfiguration" /></td>
+    <td><CopyableCode code="open_zfs_configuration" /></td>
     <td><code>object</code></td>
     <td>The OpenZFSConfiguration of the S3 access point attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3AccessPoint" /></td>
+    <td><CopyableCode code="s3_access_point" /></td>
     <td><code>object</code></td>
     <td>The S3 access point configuration of the S3 access point attachment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of Amazon FSx volume that the S3 access point is attached to. (OPENZFS, ONTAP)</td>
 </tr>
@@ -154,14 +154,14 @@ Describes one or more S3 access points attached to Amazon FSx volumes. The reque
 
 ```sql
 SELECT
-CreationTime,
-Lifecycle,
-LifecycleTransitionReason,
-Name,
-OntapConfiguration,
-OpenZFSConfiguration,
-S3AccessPoint,
-Type
+creation_time,
+lifecycle,
+lifecycle_transition_reason,
+name,
+ontap_configuration,
+open_zfs_configuration,
+s3_access_point,
+type
 FROM aws.fsx.s3_access_point_attachments
 WHERE region = '{{ region }}' -- required
 ;

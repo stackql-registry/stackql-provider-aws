@@ -56,42 +56,42 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the campaign. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="campaignArn" /></td>
+    <td><CopyableCode code="campaign_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the campaign. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="campaignConfig" /></td>
+    <td><CopyableCode code="campaign_config" /></td>
     <td><code>object</code></td>
     <td>The configuration details of a campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the campaign was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a campaign fails, the reason behind the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix format) that the campaign was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="latestCampaignUpdate" /></td>
+    <td><CopyableCode code="latest_campaign_update" /></td>
     <td><code>object</code></td>
     <td>Provides a summary of the properties of a campaign update. For a complete listing, call the DescribeCampaign API. The latestCampaignUpdate field is only returned when the campaign has had at least one UpdateCampaign call.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="minProvisionedTPS" /></td>
+    <td><CopyableCode code="min_provisioned_tps" /></td>
     <td><code>integer</code></td>
     <td>Specifies the requested minimum provisioned transactions (recommendations) per second. A high minProvisionedTPS will increase your bill. We recommend starting with 1 for minProvisionedTPS (the default). Track your usage using Amazon CloudWatch metrics, and increase the minProvisionedTPS as necessary.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="solutionVersionArn" /></td>
+    <td><CopyableCode code="solution_version_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the solution version the campaign uses. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
@@ -120,22 +120,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the campaign. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9\-_&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="campaignArn" /></td>
+    <td><CopyableCode code="campaign_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the campaign. (pattern: &lt;code&gt;arn:(&#91;a-z\d-&#93;+):personalize:.*:.*:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="creationDateTime" /></td>
+    <td><CopyableCode code="creation_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the campaign was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If a campaign fails, the reason behind the failure.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedDateTime" /></td>
+    <td><CopyableCode code="last_updated_date_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time (in Unix time) that the campaign was last updated.</td>
 </tr>
@@ -239,14 +239,14 @@ Describes the given campaign, including its status. A campaign can be in one of 
 ```sql
 SELECT
 name,
-campaignArn,
-campaignConfig,
-creationDateTime,
-failureReason,
-lastUpdatedDateTime,
-latestCampaignUpdate,
-minProvisionedTPS,
-solutionVersionArn,
+campaign_arn,
+campaign_config,
+creation_date_time,
+failure_reason,
+last_updated_date_time,
+latest_campaign_update,
+min_provisioned_tps,
+solution_version_arn,
 status
 FROM aws.personalize.campaigns
 WHERE region = '{{ region }}' -- required
@@ -260,10 +260,10 @@ Returns a list of campaigns that use the given solution. When a solution is not 
 ```sql
 SELECT
 name,
-campaignArn,
-creationDateTime,
-failureReason,
-lastUpdatedDateTime,
+campaign_arn,
+creation_date_time,
+failure_reason,
+last_updated_date_time,
 status
 FROM aws.personalize.campaigns
 WHERE region = '{{ region }}' -- required
@@ -303,7 +303,7 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-campaignArn
+campaign_arn
 ;
 ```
 </TabItem>
@@ -370,7 +370,7 @@ WHERE
 region = '{{ region }}' --required
 AND campaignArn = '{{ campaignArn }}' --required
 RETURNING
-campaignArn;
+campaign_arn;
 ```
 </TabItem>
 </Tabs>

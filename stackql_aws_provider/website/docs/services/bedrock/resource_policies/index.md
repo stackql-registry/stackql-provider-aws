@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="resourcePolicy" /></td>
+    <td><CopyableCode code="resource_policy" /></td>
     <td><code>string</code></td>
     <td>The JSON string representing the Bedrock resource policy. (pattern: &lt;code&gt;&#91;    -ÿ&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -138,7 +138,7 @@ Gets the resource policy document for a Bedrock resource
 
 ```sql
 SELECT
-resourcePolicy
+resource_policy
 FROM aws.bedrock.resource_policies
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -170,7 +170,7 @@ region = '{{ region }}' --required
 AND resourceArn = '{{ resourceArn }}' --required
 AND resourcePolicy = '{{ resourcePolicy }}' --required
 RETURNING
-resourceArn;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

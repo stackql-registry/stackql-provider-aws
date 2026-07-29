@@ -51,57 +51,57 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The review template description. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.,:/()@!&?#+'’\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Lenses" /></td>
+    <td><CopyableCode code="lenses" /></td>
     <td><code>array</code></td>
     <td>The lenses applied to the review template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notes" /></td>
+    <td><CopyableCode code="notes" /></td>
     <td><code>string</code></td>
     <td>The notes associated with the workload. For a review template, these are the notes that will be associated with the workload when the template is applied.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Owner" /></td>
+    <td><CopyableCode code="owner" /></td>
     <td><code>string</code></td>
     <td>An Amazon Web Services account ID. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuestionCounts" /></td>
+    <td><CopyableCode code="question_counts" /></td>
     <td><code>object</code></td>
     <td>A count of how many total questions are answered and unanswered in the review template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ShareInvitationId" /></td>
+    <td><CopyableCode code="share_invitation_id" /></td>
     <td><code>string</code></td>
     <td>The ID assigned to the template share invitation. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the review template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateArn" /></td>
+    <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
     <td>The review template ARN. (pattern: &lt;code&gt;arn:aws(-us-gov|-iso(-&#91;a-z&#93;)?|-cn)?:wellarchitected:&#91;a-z&#93;&#123;2&#125;(-gov|-iso(&#91;a-z&#93;)?)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:(review-template)/&#91;a-f0-9&#93;&#123;32&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TemplateName" /></td>
+    <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
     <td>The name of the review template. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.,:/()@!&?#+'’\s&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateStatus" /></td>
+    <td><CopyableCode code="update_status" /></td>
     <td><code>string</code></td>
     <td>The latest status of a review template. (CURRENT, LENS_NOT_CURRENT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time recorded.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReviewTemplates" /></td>
+    <td><CopyableCode code="review_templates" /></td>
     <td><code>array</code></td>
     <td>List of review templates.</td>
 </tr>
@@ -243,17 +243,17 @@ Get review template.
 
 ```sql
 SELECT
-Description,
-Lenses,
-Notes,
-Owner,
-QuestionCounts,
-ShareInvitationId,
-Tags,
-TemplateArn,
-TemplateName,
-UpdateStatus,
-UpdatedAt
+description,
+lenses,
+notes,
+owner,
+question_counts,
+share_invitation_id,
+tags,
+template_arn,
+template_name,
+update_status,
+updated_at
 FROM aws.wellarchitected.review_templates
 WHERE template_arn = '{{ template_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -266,8 +266,8 @@ List review templates.
 
 ```sql
 SELECT
-NextToken,
-ReviewTemplates
+next_token,
+review_templates
 FROM aws.wellarchitected.review_templates
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -310,7 +310,7 @@ SELECT
 '{{ ClientRequestToken }}' /* required */,
 '{{ region }}'
 RETURNING
-TemplateArn
+template_arn
 ;
 ```
 </TabItem>
@@ -369,7 +369,7 @@ WHERE
 template_arn = '{{ template_arn }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-ReviewTemplate;
+review_template;
 ```
 </TabItem>
 </Tabs>

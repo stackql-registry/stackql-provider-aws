@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BaseModelName" /></td>
+    <td><CopyableCode code="base_model_name" /></td>
     <td><code>string</code></td>
     <td>The Amazon Transcribe standard language model, or base model, used to create your custom language model. (NarrowBand, WideBand)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified custom language model was created. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.761000-07:00 represents 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="FailureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>If ModelStatus is FAILED, FailureReason contains information about why the custom language model request failed. See also: Common Errors.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><CopyableCode code="input_data_config" /></td>
     <td><code>object</code></td>
     <td>The Amazon S3 location of the input files used to train and tune your custom language model, in addition to the data access role ARN (Amazon Resource Name) that has permissions to access these data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LanguageCode" /></td>
+    <td><CopyableCode code="language_code" /></td>
     <td><code>string</code></td>
     <td>The language code used to create your custom language model. Each custom language model must contain terms in only one language, and the language you select for your custom language model must match the language of your training and tuning data. For a list of supported languages and their associated language codes, refer to the Supported languages table. Note that US English (en-US) is the only language supported with Amazon Transcribe Medical. (en-US, hi-IN, es-US, en-GB, en-AU, de-DE, ja-JP)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the specified custom language model was last modified. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC. For example, 2022-05-04T12:32:58.761000-07:00 represents 12:32 PM UTC-7 on May 4, 2022.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelName" /></td>
+    <td><CopyableCode code="model_name" /></td>
     <td><code>string</code></td>
     <td>A unique name, chosen by you, for your custom language model. This name is case sensitive, cannot contain spaces, and must be unique within an Amazon Web Services account. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ModelStatus" /></td>
+    <td><CopyableCode code="model_status" /></td>
     <td><code>string</code></td>
     <td>The status of the specified custom language model. When the status displays as COMPLETED the model is ready for use. (IN_PROGRESS, FAILED, COMPLETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpgradeAvailability" /></td>
+    <td><CopyableCode code="upgrade_availability" /></td>
     <td><code>boolean</code></td>
     <td>Shows if a more current base model is available for use with the specified custom language model. If false, your custom language model is using the most up-to-date base model. If true, there is a newer base model available than the one your language model is using. Note that to update a base model, you must recreate the custom language model using the new base model. Base model upgrades for existing custom language models are not supported.</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Models" /></td>
+    <td><CopyableCode code="models" /></td>
     <td><code>array</code></td>
     <td>Provides information about the custom language models that match the criteria specified in your request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>If NextToken is present in your response, it indicates that not all results are displayed. To view the next set of results, copy the string associated with the NextToken parameter in your results output, then run your request again including NextToken with the value of the copied string. Repeat as needed to view all your results. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
 </tr>
@@ -206,15 +206,15 @@ Provides information about the specified custom language model. This operation a
 
 ```sql
 SELECT
-BaseModelName,
-CreateTime,
-FailureReason,
-InputDataConfig,
-LanguageCode,
-LastModifiedTime,
-ModelName,
-ModelStatus,
-UpgradeAvailability
+base_model_name,
+create_time,
+failure_reason,
+input_data_config,
+language_code,
+last_modified_time,
+model_name,
+model_status,
+upgrade_availability
 FROM aws.transcribe.language_models
 WHERE region = '{{ region }}' -- required
 ;
@@ -226,8 +226,8 @@ Provides a list of custom language models that match the specified criteria. If 
 
 ```sql
 SELECT
-Models,
-NextToken
+models,
+next_token
 FROM aws.transcribe.language_models
 WHERE region = '{{ region }}' -- required
 ;
@@ -266,11 +266,11 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-BaseModelName,
-InputDataConfig,
-LanguageCode,
-ModelName,
-ModelStatus
+base_model_name,
+input_data_config,
+language_code,
+model_name,
+model_status
 ;
 ```
 </TabItem>

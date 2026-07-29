@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PathStatistics" /></td>
+    <td><CopyableCode code="path_statistics" /></td>
     <td><code>array</code></td>
     <td>The list of path statistics, ordered by request count. Each entry includes the path, request count, percentage of total traffic, and the top bots accessing that path.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TopCategories" /></td>
+    <td><CopyableCode code="top_categories" /></td>
     <td><code>array</code></td>
     <td>Category-level aggregations for visualizing bot category to path relationships. This field is only populated when no bot filters are applied to the request. Each entry includes the bot category and the paths accessed by bots in that category.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TotalRequestCount" /></td>
+    <td><CopyableCode code="total_request_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of requests that match the query criteria within the specified time window.</td>
 </tr>
@@ -134,10 +134,10 @@ Retrieves aggregated statistics about the top URI paths accessed by bot traffic 
 
 ```sql
 SELECT
-NextMarker,
-PathStatistics,
-TopCategories,
-TotalRequestCount
+next_marker,
+path_statistics,
+top_categories,
+total_request_count
 FROM aws.wafv2.top_path_statistics_by_traffics
 WHERE region = '{{ region }}' -- required
 ;

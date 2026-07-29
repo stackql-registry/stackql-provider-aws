@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AllowExternalDataFiltering" /></td>
+    <td><CopyableCode code="allow_external_data_filtering" /></td>
     <td><code>boolean</code></td>
     <td>Whether to allow Amazon EMR clusters to access data managed by Lake Formation. If true, you allow Amazon EMR clusters to access data in Amazon S3 locations that are registered with Lake Formation. If false or null, no Amazon EMR clusters will be able to access data in Amazon S3 locations that are registered with Lake Formation. For more information, see (Optional) Allow external data filtering.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AllowFullTableExternalDataAccess" /></td>
+    <td><CopyableCode code="allow_full_table_external_data_access" /></td>
     <td><code>boolean</code></td>
     <td>Whether to allow a third-party query engine to get data access credentials without session tags when a caller has full data access permissions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizedSessionTagValueList" /></td>
+    <td><CopyableCode code="authorized_session_tag_value_list" /></td>
     <td><code>array</code></td>
     <td>Lake Formation relies on a privileged process secured by Amazon EMR or the third party integrator to tag the user's role while assuming it. Lake Formation will publish the acceptable key-value pair, for example key = "LakeFormationTrustedCaller" and value = "TRUE" and the third party integrator must properly tag the temporary security credentials that will be used to call Lake Formation's administrative APIs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateDatabaseDefaultPermissions" /></td>
+    <td><CopyableCode code="create_database_default_permissions" /></td>
     <td><code>array</code></td>
     <td>Specifies whether access control on newly created database is managed by Lake Formation permissions or exclusively by IAM permissions. A null value indicates access control by Lake Formation permissions. A value that assigns ALL to IAM_ALLOWED_PRINCIPALS indicates access control by IAM permissions. This is referred to as the setting "Use only IAM access control," and is for backward compatibility with the Glue permission model implemented by IAM permissions. The only permitted values are an empty array or an array that contains a single JSON object that grants ALL to IAM_ALLOWED_PRINCIPALS. For more information, see Changing the Default Security Settings for Your Data Lake.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTableDefaultPermissions" /></td>
+    <td><CopyableCode code="create_table_default_permissions" /></td>
     <td><code>array</code></td>
     <td>Specifies whether access control on newly created table is managed by Lake Formation permissions or exclusively by IAM permissions. A null value indicates access control by Lake Formation permissions. A value that assigns ALL to IAM_ALLOWED_PRINCIPALS indicates access control by IAM permissions. This is referred to as the setting "Use only IAM access control," and is for backward compatibility with the Glue permission model implemented by IAM permissions. The only permitted values are an empty array or an array that contains a single JSON object that grants ALL to IAM_ALLOWED_PRINCIPALS. For more information, see Changing the Default Security Settings for Your Data Lake.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataLakeAdmins" /></td>
+    <td><CopyableCode code="data_lake_admins" /></td>
     <td><code>array</code></td>
     <td>A list of Lake Formation principals. Supported principals are IAM users or IAM roles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalDataFilteringAllowList" /></td>
+    <td><CopyableCode code="external_data_filtering_allow_list" /></td>
     <td><code>array</code></td>
     <td>A list of the account IDs of Amazon Web Services accounts with Amazon EMR clusters that are to perform data filtering.&gt;</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Parameters" /></td>
+    <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
     <td>A key-value map that provides an additional configuration on your data lake. The following key-value pairs are supported: CROSS_ACCOUNT_VERSION - Accepted values are 1, 2, 3, 4, and 5. SET_SOURCE_IDENTITY - Accepted values are TRUE and FALSE. When set to TRUE, Lake Formation includes the IAM role identifier that was used to query in the S3 data event CloudTrail logs for s3:GetObject calls. For more information, see Tracking query engine IAM roles in S3 data events.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ReadOnlyAdmins" /></td>
+    <td><CopyableCode code="read_only_admins" /></td>
     <td><code>array</code></td>
     <td>A list of Lake Formation principals with only view access to the resources, without the ability to make changes. Supported principals are IAM users or IAM roles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TrustedResourceOwners" /></td>
+    <td><CopyableCode code="trusted_resource_owners" /></td>
     <td><code>array</code></td>
     <td>A list of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs). The user ARNs can be logged in the resource owner's CloudTrail log. You may want to specify this property when you are in a high-trust boundary, such as the same team or company.</td>
 </tr>
@@ -171,16 +171,16 @@ Retrieves the list of the data lake administrators of a Lake Formation-managed d
 
 ```sql
 SELECT
-AllowExternalDataFiltering,
-AllowFullTableExternalDataAccess,
-AuthorizedSessionTagValueList,
-CreateDatabaseDefaultPermissions,
-CreateTableDefaultPermissions,
-DataLakeAdmins,
-ExternalDataFilteringAllowList,
-Parameters,
-ReadOnlyAdmins,
-TrustedResourceOwners
+allow_external_data_filtering,
+allow_full_table_external_data_access,
+authorized_session_tag_value_list,
+create_database_default_permissions,
+create_table_default_permissions,
+data_lake_admins,
+external_data_filtering_allow_list,
+parameters,
+read_only_admins,
+trusted_resource_owners
 FROM aws.lakeformation.data_lake_settings
 WHERE region = '{{ region }}' -- required
 ;

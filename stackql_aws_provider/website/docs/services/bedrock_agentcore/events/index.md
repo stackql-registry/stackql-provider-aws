@@ -51,7 +51,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actorId" /></td>
+    <td><CopyableCode code="actor_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the actor associated with the event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_/&#93;*(?::&#91;a-zA-Z0-9-_/&#93;+)*&#91;a-zA-Z0-9-_/&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -61,17 +61,17 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about a branch in an AgentCore Memory resource. Branches allow for organizing events into different conversation threads or paths.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the event. (pattern: &lt;code&gt;&#91;0-9&#93;+#&#91;a-fA-F0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryId" /></td>
+    <td><CopyableCode code="memory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the AgentCore Memory resource containing the event. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The content payload of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the session containing the event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="actorId" /></td>
+    <td><CopyableCode code="actor_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the actor associated with the event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_/&#93;*(?::&#91;a-zA-Z0-9-_/&#93;+)*&#91;a-zA-Z0-9-_/&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
     <td>Contains information about a branch in an AgentCore Memory resource. Branches allow for organizing events into different conversation threads or paths.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventId" /></td>
+    <td><CopyableCode code="event_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the event. (pattern: &lt;code&gt;&#91;0-9&#93;+#&#91;a-fA-F0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="eventTimestamp" /></td>
+    <td><CopyableCode code="event_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the event occurred.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="memoryId" /></td>
+    <td><CopyableCode code="memory_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the AgentCore Memory resource containing the event. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -140,7 +140,7 @@ The following fields are returned by `SELECT` queries:
     <td>The content payload of the event.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sessionId" /></td>
+    <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the session containing the event. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9-_&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -251,14 +251,14 @@ Retrieves information about a specific event in an AgentCore Memory resource. To
 
 ```sql
 SELECT
-actorId,
+actor_id,
 branch,
-eventId,
-eventTimestamp,
-memoryId,
+event_id,
+event_timestamp,
+memory_id,
 metadata,
 payload,
-sessionId
+session_id
 FROM aws.bedrock_agentcore.events
 WHERE memory_id = '{{ memory_id }}' -- required
 AND session_id = '{{ session_id }}' -- required
@@ -274,14 +274,14 @@ Lists events in an AgentCore Memory resource based on specified criteria. We rec
 
 ```sql
 SELECT
-actorId,
+actor_id,
 branch,
-eventId,
-eventTimestamp,
-memoryId,
+event_id,
+event_timestamp,
+memory_id,
 metadata,
 payload,
-sessionId
+session_id
 FROM aws.bedrock_agentcore.events
 WHERE memory_id = '{{ memory_id }}' -- required
 AND session_id = '{{ session_id }}' -- required

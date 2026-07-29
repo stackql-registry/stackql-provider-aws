@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of what the sub-check validates.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the sub-check result. (pattern: &lt;code&gt;&#91;&#123;&#93;?&#91;0-9a-fA-F&#93;&#123;8&#125;-(&#91;0-9a-fA-F&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-fA-F&#93;&#123;12&#125;&#91;&#125;&#93;?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the sub-check.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="References" /></td>
+    <td><CopyableCode code="references" /></td>
     <td><code>array</code></td>
     <td>A list of references or documentation links related to the sub-check.</td>
 </tr>
@@ -134,10 +134,10 @@ Lists the sub-check results of a specified configuration check operation.
 
 ```sql
 SELECT
-Description,
-Id,
-Name,
-References
+description,
+id,
+name,
+references
 FROM aws.ssm_sap.sub_check_results
 WHERE region = '{{ region }}' -- required
 ;

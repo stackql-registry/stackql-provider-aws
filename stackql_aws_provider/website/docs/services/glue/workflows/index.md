@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="MissingWorkflows" /></td>
+    <td><CopyableCode code="missing_workflows" /></td>
     <td><code>array</code></td>
     <td>A list of names of workflows not found.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Workflows" /></td>
+    <td><CopyableCode code="workflows" /></td>
     <td><code>array</code></td>
     <td>A list of workflow resource metadata.</td>
 </tr>
@@ -75,47 +75,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BlueprintDetails" /></td>
+    <td><CopyableCode code="blueprint_details" /></td>
     <td><code>object</code></td>
     <td>This structure indicates the details of the blueprint that this particular workflow is created from.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedOn" /></td>
+    <td><CopyableCode code="created_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workflow was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DefaultRunProperties" /></td>
+    <td><CopyableCode code="default_run_properties" /></td>
     <td><code>object</code></td>
     <td>A collection of properties to be used as part of each execution of the workflow. The run properties are made available to each job in the workflow. A job can modify the properties for the next jobs in the flow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A description of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Graph" /></td>
+    <td><CopyableCode code="graph" /></td>
     <td><code>object</code></td>
     <td>The graph representing all the Glue components that belong to the workflow as nodes and directed connections between them as edges.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedOn" /></td>
+    <td><CopyableCode code="last_modified_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the workflow was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastRun" /></td>
+    <td><CopyableCode code="last_run" /></td>
     <td><code>object</code></td>
     <td>The information about the last execution of the workflow.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxConcurrentRuns" /></td>
+    <td><CopyableCode code="max_concurrent_runs" /></td>
     <td><code>integer</code></td>
     <td>You can use this parameter to prevent unwanted multiple updates to data, to control costs, or in some cases, to prevent exceeding the maximum number of concurrent runs of any of the component jobs. If you leave this parameter blank, there is no limit to the number of concurrent workflow runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -241,8 +241,8 @@ Returns a list of resource metadata for a given list of workflow names. After ca
 
 ```sql
 SELECT
-MissingWorkflows,
-Workflows
+missing_workflows,
+workflows
 FROM aws.glue.workflows
 WHERE region = '{{ region }}' -- required
 ;
@@ -254,15 +254,15 @@ Retrieves resource metadata for a workflow.
 
 ```sql
 SELECT
-BlueprintDetails,
-CreatedOn,
-DefaultRunProperties,
-Description,
-Graph,
-LastModifiedOn,
-LastRun,
-MaxConcurrentRuns,
-Name
+blueprint_details,
+created_on,
+default_run_properties,
+description,
+graph,
+last_modified_on,
+last_run,
+max_concurrent_runs,
+name
 FROM aws.glue.workflows
 WHERE region = '{{ region }}' -- required
 ;
@@ -301,7 +301,7 @@ SELECT
 {{ MaxConcurrentRuns }},
 '{{ region }}'
 RETURNING
-Name
+name
 ;
 ```
 </TabItem>
@@ -361,7 +361,7 @@ MaxConcurrentRuns = {{ MaxConcurrentRuns }}
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-Name;
+name;
 ```
 </TabItem>
 </Tabs>

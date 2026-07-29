@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="contentEncoding" /></td>
+    <td><CopyableCode code="content_encoding" /></td>
     <td><code>string</code></td>
     <td>The compression format in which image set metadata attributes are returned.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="contentType" /></td>
+    <td><CopyableCode code="content_type" /></td>
     <td><code>string</code></td>
     <td>The format in which the study metadata is returned to the customer. Default is text/plain.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageSetMetadataBlob" /></td>
+    <td><CopyableCode code="image_set_metadata_blob" /></td>
     <td><code>string (byte)</code></td>
     <td>The blob containing the aggregated metadata information for the image set.</td>
 </tr>
@@ -166,9 +166,9 @@ Get metadata attributes for an image set.
 
 ```sql
 SELECT
-contentEncoding,
-contentType,
-imageSetMetadataBlob
+content_encoding,
+content_type,
+image_set_metadata_blob
 FROM aws.medical_imaging.image_set_metadatas
 WHERE datastore_id = '{{ datastore_id }}' -- required
 AND image_set_id = '{{ image_set_id }}' -- required
@@ -205,14 +205,14 @@ AND updateImageSetMetadataUpdates = '{{ updateImageSetMetadataUpdates }}' --requ
 AND force = {{ force}}
 AND includeStudyImageSets = {{ includeStudyImageSets}}
 RETURNING
-createdAt,
-datastoreId,
-imageSetId,
-imageSetState,
-imageSetWorkflowStatus,
-latestVersionId,
+created_at,
+datastore_id,
+image_set_id,
+image_set_state,
+image_set_workflow_status,
+latest_version_id,
 message,
-updatedAt;
+updated_at;
 ```
 </TabItem>
 </Tabs>

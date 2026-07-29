@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A continuation token, if this is not the first call to retrieve this list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrincipalResourcePermissions" /></td>
+    <td><CopyableCode code="principal_resource_permissions" /></td>
     <td><code>array</code></td>
     <td>A list of principals and their permissions on the resource for the specified principal and resource types.</td>
 </tr>
@@ -152,8 +152,8 @@ Returns a list of the principal permissions on the resource, filtered by the per
 
 ```sql
 SELECT
-NextToken,
-PrincipalResourcePermissions
+next_token,
+principal_resource_permissions
 FROM aws.lakeformation.permissions
 WHERE region = '{{ region }}' -- required
 ;

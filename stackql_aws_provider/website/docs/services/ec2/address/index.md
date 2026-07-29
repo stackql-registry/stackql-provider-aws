@@ -204,14 +204,14 @@ AND TagSpecification = '{{ TagSpecification}}'
 AND IpamPoolId = '{{ IpamPoolId}}'
 AND DryRun = {{ DryRun}}
 RETURNING
-AllocationId,
-CarrierIp,
-CustomerOwnedIp,
-CustomerOwnedIpv4Pool,
-Domain,
-NetworkBorderGroup,
-PublicIp,
-PublicIpv4Pool;
+allocation_id,
+carrier_ip,
+customer_owned_ip,
+customer_owned_ipv_4_pool,
+domain,
+network_border_group,
+public_ip,
+public_ipv_4_pool;
 ```
 </TabItem>
 </Tabs>

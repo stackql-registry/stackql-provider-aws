@@ -51,37 +51,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentRuntimeArn" /></td>
+    <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AgentCore Runtime. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeArtifact" /></td>
+    <td><CopyableCode code="agent_runtime_artifact" /></td>
     <td><code>object</code></td>
     <td>The artifact of the agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeId" /></td>
+    <td><CopyableCode code="agent_runtime_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the AgentCore Runtime. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeName" /></td>
+    <td><CopyableCode code="agent_runtime_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AgentCore Runtime. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeVersion" /></td>
+    <td><CopyableCode code="agent_runtime_version" /></td>
     <td><code>string</code></td>
     <td>The version of the AgentCore Runtime. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="authorizerConfiguration" /></td>
+    <td><CopyableCode code="authorizer_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents inbound authorization configuration options used to authenticate incoming requests.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the AgentCore Runtime was created.</td>
 </tr>
@@ -91,52 +91,52 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the AgentCore Runtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentVariables" /></td>
+    <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
     <td>Environment variables set in the AgentCore Runtime environment.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="failureReason" /></td>
+    <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The reason for failure if the AgentCore Runtime is in a failed state.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="filesystemConfigurations" /></td>
+    <td><CopyableCode code="filesystem_configurations" /></td>
     <td><code>array</code></td>
     <td>The filesystem configurations mounted into the AgentCore Runtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the AgentCore Runtime was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lifecycleConfiguration" /></td>
+    <td><CopyableCode code="lifecycle_configuration" /></td>
     <td><code>object</code></td>
     <td>LifecycleConfiguration lets you manage the lifecycle of runtime sessions and resources in AgentCore Runtime. This configuration helps optimize resource utilization by automatically cleaning up idle sessions and preventing long-running instances from consuming resources indefinitely.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="metadataConfiguration" /></td>
+    <td><CopyableCode code="metadata_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for microVM Metadata Service (MMDS) settings for the AgentCore Runtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="networkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>SecurityConfig for the Agent.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="protocolConfiguration" /></td>
+    <td><CopyableCode code="protocol_configuration" /></td>
     <td><code>object</code></td>
     <td>The protocol configuration for an agent runtime. This structure defines how the agent runtime communicates with clients.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="requestHeaderConfiguration" /></td>
+    <td><CopyableCode code="request_header_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for HTTP request headers that will be passed through to the runtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The IAM role ARN that provides permissions for the AgentCore Runtime. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
@@ -146,7 +146,7 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the AgentCore Runtime. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="workloadIdentityDetails" /></td>
+    <td><CopyableCode code="workload_identity_details" /></td>
     <td><code>object</code></td>
     <td>The information about the workload identity.</td>
 </tr>
@@ -165,22 +165,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="agentRuntimeArn" /></td>
+    <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the agent runtime. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeId" /></td>
+    <td><CopyableCode code="agent_runtime_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the agent runtime. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeName" /></td>
+    <td><CopyableCode code="agent_runtime_name" /></td>
     <td><code>string</code></td>
     <td>The name of the agent runtime. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="agentRuntimeVersion" /></td>
+    <td><CopyableCode code="agent_runtime_version" /></td>
     <td><code>string</code></td>
     <td>The version of the agent runtime. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
@@ -190,7 +190,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the agent runtime.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastUpdatedAt" /></td>
+    <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the agent runtime was last updated.</td>
 </tr>
@@ -318,26 +318,26 @@ Gets an Amazon Bedrock AgentCore Runtime.
 
 ```sql
 SELECT
-agentRuntimeArn,
-agentRuntimeArtifact,
-agentRuntimeId,
-agentRuntimeName,
-agentRuntimeVersion,
-authorizerConfiguration,
-createdAt,
+agent_runtime_arn,
+agent_runtime_artifact,
+agent_runtime_id,
+agent_runtime_name,
+agent_runtime_version,
+authorizer_configuration,
+created_at,
 description,
-environmentVariables,
-failureReason,
-filesystemConfigurations,
-lastUpdatedAt,
-lifecycleConfiguration,
-metadataConfiguration,
-networkConfiguration,
-protocolConfiguration,
-requestHeaderConfiguration,
-roleArn,
+environment_variables,
+failure_reason,
+filesystem_configurations,
+last_updated_at,
+lifecycle_configuration,
+metadata_configuration,
+network_configuration,
+protocol_configuration,
+request_header_configuration,
+role_arn,
 status,
-workloadIdentityDetails
+workload_identity_details
 FROM aws.bedrock_agentcore_control.agent_runtimes
 WHERE agent_runtime_id = '{{ agent_runtime_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -351,12 +351,12 @@ Lists all Amazon Secure Agents in your account.
 
 ```sql
 SELECT
-agentRuntimeArn,
-agentRuntimeId,
-agentRuntimeName,
-agentRuntimeVersion,
+agent_runtime_arn,
+agent_runtime_id,
+agent_runtime_name,
+agent_runtime_version,
 description,
-lastUpdatedAt,
+last_updated_at,
 status
 FROM aws.bedrock_agentcore_control.agent_runtimes
 WHERE region = '{{ region }}' -- required
@@ -414,12 +414,12 @@ SELECT
 '{{ tags }}',
 '{{ region }}'
 RETURNING
-agentRuntimeArn,
-agentRuntimeId,
-agentRuntimeVersion,
-createdAt,
+agent_runtime_arn,
+agent_runtime_id,
+agent_runtime_version,
+created_at,
 status,
-workloadIdentityDetails
+workload_identity_details
 ;
 ```
 </TabItem>
@@ -580,13 +580,13 @@ AND agentRuntimeArtifact = '{{ agentRuntimeArtifact }}' --required
 AND roleArn = '{{ roleArn }}' --required
 AND networkConfiguration = '{{ networkConfiguration }}' --required
 RETURNING
-agentRuntimeArn,
-agentRuntimeId,
-agentRuntimeVersion,
-createdAt,
-lastUpdatedAt,
+agent_runtime_arn,
+agent_runtime_id,
+agent_runtime_version,
+created_at,
+last_updated_at,
 status,
-workloadIdentityDetails;
+workload_identity_details;
 ```
 </TabItem>
 </Tabs>

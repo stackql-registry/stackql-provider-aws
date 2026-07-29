@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="mediaBytes" /></td>
+    <td><CopyableCode code="media_bytes" /></td>
     <td><code>string (byte)</code></td>
     <td>The base64-encoded bytes of the media object.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="mediaMimeType" /></td>
+    <td><CopyableCode code="media_mime_type" /></td>
     <td><code>string</code></td>
     <td>The MIME type of the media object (image/png).</td>
 </tr>
@@ -144,8 +144,8 @@ Returns the image bytes corresponding to a media object. If you have implemented
 
 ```sql
 SELECT
-mediaBytes,
-mediaMimeType
+media_bytes,
+media_mime_type
 FROM aws.qbusiness.medias
 WHERE application_id = '{{ application_id }}' -- required
 AND conversation_id = '{{ conversation_id }}' -- required

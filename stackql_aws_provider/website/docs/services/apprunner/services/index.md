@@ -51,77 +51,77 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingConfigurationSummary" /></td>
+    <td><CopyableCode code="auto_scaling_configuration_summary" /></td>
     <td><code>object</code></td>
     <td>Summary information for the App Runner automatic scaling configuration resource that's associated with this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the App Runner service was created. It's in the Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the App Runner service was deleted. It's in the Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EncryptionConfiguration" /></td>
+    <td><CopyableCode code="encryption_configuration" /></td>
     <td><code>object</code></td>
     <td>The encryption key that App Runner uses to encrypt the service logs and the copy of the source repository that App Runner maintains for the service. It can be either a customer-provided encryption key or an Amazon Web Services managed key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HealthCheckConfiguration" /></td>
+    <td><CopyableCode code="health_check_configuration" /></td>
     <td><code>object</code></td>
     <td>The settings for the health check that App Runner performs to monitor the health of this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceConfiguration" /></td>
+    <td><CopyableCode code="instance_configuration" /></td>
     <td><code>object</code></td>
     <td>The runtime configuration of instances (scaling units) of this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkConfiguration" /></td>
+    <td><CopyableCode code="network_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration settings related to network traffic of the web application that this service runs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ObservabilityConfiguration" /></td>
+    <td><CopyableCode code="observability_configuration" /></td>
     <td><code>object</code></td>
     <td>The observability configuration of this service.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceArn" /></td>
+    <td><CopyableCode code="service_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of this service. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:(\w|\/|-)&#123;1,1011&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceId" /></td>
+    <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>An ID that App Runner generated for this service. It's unique within the Amazon Web Services Region. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;1-5&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;89abAB&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceName" /></td>
+    <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
     <td>The customer-provided service name. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9-_&#93;&#123;3,39&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceUrl" /></td>
+    <td><CopyableCode code="service_url" /></td>
     <td><code>string</code></td>
     <td>A subdomain URL that App Runner generated for this service. You can use this URL to access your service web application. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceConfiguration" /></td>
+    <td><CopyableCode code="source_configuration" /></td>
     <td><code>object</code></td>
     <td>The source deployed to the App Runner service. It can be a code or an image repository.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the App Runner service. These particular values mean the following. CREATE_FAILED – The service failed to create. The failed service isn't usable, and still counts towards your service quota. To troubleshoot this failure, read the failure events and logs, change any parameters that need to be fixed, and rebuild your service using UpdateService. DELETE_FAILED – The service failed to delete and can't be successfully recovered. Retry the service deletion call to ensure that all related resources are removed. (CREATE_FAILED, RUNNING, DELETED, DELETE_FAILED, PAUSED, OPERATION_IN_PROGRESS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the App Runner service was last updated at. It's in the Unix time stamp format.</td>
 </tr>
@@ -140,12 +140,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceSummaryList" /></td>
+    <td><CopyableCode code="service_summary_list" /></td>
     <td><code>array</code></td>
     <td>A list of service summary information records. In a paginated request, the request returns up to MaxResults records for each call.</td>
 </tr>
@@ -264,21 +264,21 @@ Return a full description of an App Runner service.
 
 ```sql
 SELECT
-AutoScalingConfigurationSummary,
-CreatedAt,
-DeletedAt,
-EncryptionConfiguration,
-HealthCheckConfiguration,
-InstanceConfiguration,
-NetworkConfiguration,
-ObservabilityConfiguration,
-ServiceArn,
-ServiceId,
-ServiceName,
-ServiceUrl,
-SourceConfiguration,
-Status,
-UpdatedAt
+auto_scaling_configuration_summary,
+created_at,
+deleted_at,
+encryption_configuration,
+health_check_configuration,
+instance_configuration,
+network_configuration,
+observability_configuration,
+service_arn,
+service_id,
+service_name,
+service_url,
+source_configuration,
+status,
+updated_at
 FROM aws.apprunner.services
 WHERE region = '{{ region }}' -- required
 ;
@@ -290,8 +290,8 @@ Returns a list of running App Runner services in your Amazon Web Services accoun
 
 ```sql
 SELECT
-NextToken,
-ServiceSummaryList
+next_token,
+service_summary_list
 FROM aws.apprunner.services
 WHERE region = '{{ region }}' -- required
 ;
@@ -338,8 +338,8 @@ SELECT
 '{{ ObservabilityConfiguration }}',
 '{{ region }}'
 RETURNING
-OperationId,
-Service
+operation_id,
+service
 ;
 ```
 </TabItem>
@@ -466,8 +466,8 @@ WHERE
 region = '{{ region }}' --required
 AND ServiceArn = '{{ ServiceArn }}' --required
 RETURNING
-OperationId,
-Service;
+operation_id,
+service;
 ```
 </TabItem>
 </Tabs>

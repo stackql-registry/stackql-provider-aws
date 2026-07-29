@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><CopyableCode code="auto_scaling_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the Auto Scaling group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DesiredConfiguration" /></td>
+    <td><CopyableCode code="desired_configuration" /></td>
     <td><code>string</code></td>
     <td>Describes the desired configuration for the instance refresh.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndTime" /></td>
+    <td><CopyableCode code="end_time" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the instance refresh ended.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstanceRefreshId" /></td>
+    <td><CopyableCode code="instance_refresh_id" /></td>
     <td><code>string</code></td>
     <td>The instance refresh ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InstancesToUpdate" /></td>
+    <td><CopyableCode code="instances_to_update" /></td>
     <td><code>integer</code></td>
     <td>The number of instances remaining to update before the instance refresh is complete. If you roll back the instance refresh, InstancesToUpdate shows you the number of instances that were not yet updated by the instance refresh. Therefore, these instances don't need to be replaced as part of the rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PercentageComplete" /></td>
+    <td><CopyableCode code="percentage_complete" /></td>
     <td><code>integer</code></td>
     <td>The percentage of the instance refresh that is complete. For each instance replacement, Amazon EC2 Auto Scaling tracks the instance's health status and warm-up time. When the instance's health status changes to healthy and the specified warm-up time passes, the instance is considered updated and is added to the percentage complete. PercentageComplete does not include instances that are replaced during a rollback. This value gradually goes back down to zero during a rollback.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Preferences" /></td>
+    <td><CopyableCode code="preferences" /></td>
     <td><code>string</code></td>
     <td>The preferences for an instance refresh.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ProgressDetails" /></td>
+    <td><CopyableCode code="progress_details" /></td>
     <td><code>string</code></td>
     <td>Additional progress details for an Auto Scaling group that has a warm pool.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RollbackDetails" /></td>
+    <td><CopyableCode code="rollback_details" /></td>
     <td><code>string</code></td>
     <td>The rollback details.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartTime" /></td>
+    <td><CopyableCode code="start_time" /></td>
     <td><code>string</code></td>
     <td>The date and time at which the instance refresh began.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status for the instance refresh operation: Pending - The request was created, but the instance refresh has not started. InProgress - An instance refresh is in progress. Successful - An instance refresh completed successfully. Failed - An instance refresh failed to complete. You can troubleshoot using the status reason and the scaling activities. Cancelling - An ongoing instance refresh is being cancelled. Cancelled - The instance refresh is cancelled. RollbackInProgress - An instance refresh is being rolled back. RollbackFailed - The rollback failed to complete. You can troubleshoot using the status reason and the scaling activities. RollbackSuccessful - The rollback completed successfully. Baking - Waiting the specified bake time after an instance refresh has finished updating instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The explanation for the specific status assigned to this operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Strategy" /></td>
+    <td><CopyableCode code="strategy" /></td>
     <td><code>string</code></td>
     <td>The strategy to use for the instance refresh. This determines how instances in the Auto Scaling group are updated. Default is Rolling. Rolling – Terminates instances and launches replacements in batches ReplaceRootVolume – Updates instances by replacing only the root volume without terminating the instance</td>
 </tr>
@@ -199,19 +199,19 @@ Gets information about the instance refreshes for the specified Auto Scaling gro
 
 ```sql
 SELECT
-AutoScalingGroupName,
-DesiredConfiguration,
-EndTime,
-InstanceRefreshId,
-InstancesToUpdate,
-PercentageComplete,
-Preferences,
-ProgressDetails,
-RollbackDetails,
-StartTime,
-Status,
-StatusReason,
-Strategy
+auto_scaling_group_name,
+desired_configuration,
+end_time,
+instance_refresh_id,
+instances_to_update,
+percentage_complete,
+preferences,
+progress_details,
+rollback_details,
+start_time,
+status,
+status_reason,
+strategy
 FROM aws.autoscaling.instance_refreshes
 WHERE AutoScalingGroupName = '{{ AutoScalingGroupName }}' -- required
 AND region = '{{ region }}' -- required

@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DomainName" /></td>
+    <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The unique name of the domain. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfMatchesInSample" /></td>
+    <td><CopyableCode code="number_of_matches_in_sample" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of match groups in the domain that have been reviewed in this preview dry run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfProfilesInSample" /></td>
+    <td><CopyableCode code="number_of_profiles_in_sample" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of profiles found in this preview dry run.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NumberOfProfilesWillBeMerged" /></td>
+    <td><CopyableCode code="number_of_profiles_will_be_merged" /></td>
     <td><code>integer (int64)</code></td>
     <td>The number of profiles that would be merged if this wasn't a preview dry run.</td>
 </tr>
@@ -139,10 +139,10 @@ Tests the auto-merging settings of your Identity Resolution Job without merging 
 
 ```sql
 SELECT
-DomainName,
-NumberOfMatchesInSample,
-NumberOfProfilesInSample,
-NumberOfProfilesWillBeMerged
+domain_name,
+number_of_matches_in_sample,
+number_of_profiles_in_sample,
+number_of_profiles_will_be_merged
 FROM aws.customer_profiles.auto_merging_previews
 WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required

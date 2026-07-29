@@ -61,7 +61,7 @@ The following fields are returned by `SELECT` queries:
     <td>The arn of the dataset. (pattern: &lt;code&gt;arn:aws:scn(?::(&#91;a-z0-9-&#93;+):(&#91;0-9&#93;+):instance)?/(&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#91;-_./A-Za-z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the dataset.</td>
 </tr>
@@ -71,12 +71,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of the dataset.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The namespace of the dataset, besides the custom defined namespace, every instance comes with below pre-defined namespaces: asc - For information on the Amazon Web Services Supply Chain supported datasets see https:​//docs.aws.amazon.com/aws-supply-chain/latest/userguide/data-model-asc.html. default - For datasets with custom user-defined schemas. (pattern: &lt;code&gt;&#91;a-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partitionSpec" /></td>
+    <td><CopyableCode code="partition_spec" /></td>
     <td><code>object</code></td>
     <td>The partition specification for a dataset.</td>
 </tr>
@@ -120,7 +120,7 @@ The following fields are returned by `SELECT` queries:
     <td>The arn of the dataset. (pattern: &lt;code&gt;arn:aws:scn(?::(&#91;a-z0-9-&#93;+):(&#91;0-9&#93;+):instance)?/(&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#91;-_./A-Za-z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The creation time of the dataset.</td>
 </tr>
@@ -130,12 +130,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the dataset.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="instanceId" /></td>
+    <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Supply Chain instance identifier. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="lastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The last modified time of the dataset.</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The namespace of the dataset, besides the custom defined namespace, every instance comes with below pre-defined namespaces: asc - For information on the Amazon Web Services Supply Chain supported datasets see https:​//docs.aws.amazon.com/aws-supply-chain/latest/userguide/data-model-asc.html. default - For datasets with custom user-defined schemas. (pattern: &lt;code&gt;&#91;a-z0-9_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="partitionSpec" /></td>
+    <td><CopyableCode code="partition_spec" /></td>
     <td><code>object</code></td>
     <td>The partition specification for a dataset.</td>
 </tr>
@@ -275,12 +275,12 @@ Enables you to programmatically view an Amazon Web Services Supply Chain data la
 SELECT
 name,
 arn,
-createdTime,
+created_time,
 description,
-instanceId,
-lastModifiedTime,
+instance_id,
+last_modified_time,
 namespace,
-partitionSpec,
+partition_spec,
 schema
 FROM aws.supplychain.data_lake_datasets
 WHERE instance_id = '{{ instance_id }}' -- required
@@ -298,12 +298,12 @@ Enables you to programmatically view the list of Amazon Web Services Supply Chai
 SELECT
 name,
 arn,
-createdTime,
+created_time,
 description,
-instanceId,
-lastModifiedTime,
+instance_id,
+last_modified_time,
 namespace,
-partitionSpec,
+partition_spec,
 schema
 FROM aws.supplychain.data_lake_datasets
 WHERE instance_id = '{{ instance_id }}' -- required

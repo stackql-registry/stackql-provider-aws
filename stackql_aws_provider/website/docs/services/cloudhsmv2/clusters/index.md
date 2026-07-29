@@ -50,92 +50,92 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="BackupPolicy" /></td>
+    <td><CopyableCode code="backup_policy" /></td>
     <td><code>string</code></td>
     <td>The cluster's backup policy. (DEFAULT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="BackupRetentionPolicy" /></td>
+    <td><CopyableCode code="backup_retention_policy" /></td>
     <td><code>object</code></td>
     <td>A policy that defines how the service retains backups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Certificates" /></td>
+    <td><CopyableCode code="certificates" /></td>
     <td><code>object</code></td>
     <td>Contains one or more certificates or a certificate signing request (CSR).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClusterId" /></td>
+    <td><CopyableCode code="cluster_id" /></td>
     <td><code>string</code></td>
     <td>The cluster's identifier (ID). (pattern: &lt;code&gt;cluster-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTimestamp" /></td>
+    <td><CopyableCode code="create_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the cluster was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmType" /></td>
+    <td><CopyableCode code="hsm_type" /></td>
     <td><code>string</code></td>
     <td>The type of HSM that the cluster contains. (pattern: &lt;code&gt;((p|)hsm&#91;0-9&#93;&#91;a-z.&#93;*\.&#91;a-zA-Z&#93;+)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="HsmTypeRollbackExpiration" /></td>
+    <td><CopyableCode code="hsm_type_rollback_expiration" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp until when the cluster can be rolled back to its original HSM type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Hsms" /></td>
+    <td><CopyableCode code="hsms" /></td>
     <td><code>array</code></td>
     <td>Contains information about the HSMs in the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Mode" /></td>
+    <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>The mode of the cluster. (FIPS, NON_FIPS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NetworkType" /></td>
+    <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
     <td>The cluster's NetworkType can be IPv4 (the default) or DUALSTACK. The IPv4 NetworkType restricts communication between your application and the hardware security modules (HSMs) to the IPv4 protocol only. The DUALSTACK NetworkType enables communication over both IPv4 and IPv6 protocols. To use DUALSTACK, configure your virtual private cloud (VPC) and subnets to support both IPv4 and IPv6. This configuration involves adding IPv6 Classless Inter-Domain Routing (CIDR) blocks to the existing IPv4 CIDR blocks in your subnets. The NetworkType you choose affects the network addressing options for your cluster. DUALSTACK provides more flexibility by supporting both IPv4 and IPv6 communication. (IPV4, DUALSTACK)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PreCoPassword" /></td>
+    <td><CopyableCode code="pre_co_password" /></td>
     <td><code>string</code></td>
     <td>The default password for the cluster's Pre-Crypto Officer (PRECO) user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroup" /></td>
+    <td><CopyableCode code="security_group" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the cluster's security group. (pattern: &lt;code&gt;sg-&#91;0-9a-fA-F&#93;&#123;8,17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceBackupId" /></td>
+    <td><CopyableCode code="source_backup_id" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the backup used to create the cluster. This value exists only when the cluster was created from a backup. (pattern: &lt;code&gt;backup-&#91;2-7a-zA-Z&#93;&#123;11,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The cluster's state. (CREATE_IN_PROGRESS, UNINITIALIZED, INITIALIZE_IN_PROGRESS, INITIALIZED, ACTIVE, UPDATE_IN_PROGRESS, MODIFY_IN_PROGRESS, ROLLBACK_IN_PROGRESS, DELETE_IN_PROGRESS, DELETED, DEGRADED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateMessage" /></td>
+    <td><CopyableCode code="state_message" /></td>
     <td><code>string</code></td>
     <td>A description of the cluster's state. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetMapping" /></td>
+    <td><CopyableCode code="subnet_mapping" /></td>
     <td><code>object</code></td>
     <td>A map from availability zone to the cluster’s subnet in that availability zone.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TagList" /></td>
+    <td><CopyableCode code="tag_list" /></td>
     <td><code>array</code></td>
     <td>The list of tags for the cluster.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The identifier (ID) of the virtual private cloud (VPC) that contains the cluster. (pattern: &lt;code&gt;vpc-&#91;0-9a-fA-F&#93;&lt;/code&gt;)</td>
 </tr>
@@ -246,24 +246,24 @@ Gets information about CloudHSM clusters. This is a paginated operation, which m
 
 ```sql
 SELECT
-BackupPolicy,
-BackupRetentionPolicy,
-Certificates,
-ClusterId,
-CreateTimestamp,
-HsmType,
-HsmTypeRollbackExpiration,
-Hsms,
-Mode,
-NetworkType,
-PreCoPassword,
-SecurityGroup,
-SourceBackupId,
-State,
-StateMessage,
-SubnetMapping,
-TagList,
-VpcId
+backup_policy,
+backup_retention_policy,
+certificates,
+cluster_id,
+create_timestamp,
+hsm_type,
+hsm_type_rollback_expiration,
+hsms,
+mode,
+network_type,
+pre_co_password,
+security_group,
+source_backup_id,
+state,
+state_message,
+subnet_mapping,
+tag_list,
+vpc_id
 FROM aws.cloudhsmv2.clusters
 WHERE region = '{{ region }}' -- required
 ;
@@ -307,7 +307,7 @@ SELECT
 '{{ Mode }}',
 '{{ region }}'
 RETURNING
-Cluster
+cluster
 ;
 ```
 </TabItem>
@@ -328,7 +328,7 @@ SELECT
 '{{ IpAddress }}',
 '{{ region }}'
 RETURNING
-Hsm
+hsm
 ;
 ```
 </TabItem>
@@ -415,7 +415,7 @@ WHERE
 region = '{{ region }}' --required
 AND ClusterId = '{{ ClusterId }}' --required
 RETURNING
-Cluster;
+cluster;
 ```
 </TabItem>
 </Tabs>

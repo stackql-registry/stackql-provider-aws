@@ -80,22 +80,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="errorEntries" /></td>
+    <td><CopyableCode code="error_entries" /></td>
     <td><code>array</code></td>
     <td>A list of the errors (if any) associated with the batch request. Each error entry contains the entryId of the entry that failed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or null if there are no additional results. (pattern: &lt;code&gt;&#91;A-Za-z0-9+/=&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="skippedEntries" /></td>
+    <td><CopyableCode code="skipped_entries" /></td>
     <td><code>array</code></td>
     <td>A list of entries that were not processed by this batch request. because these entries had been completely processed by previous paginated requests. Each skipped entry contains the entryId of the entry that skipped.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="successEntries" /></td>
+    <td><CopyableCode code="success_entries" /></td>
     <td><code>array</code></td>
     <td>A list of entries that were processed successfully by this batch request. Each success entry contains the entryId of the entry that succeeded and the latest query result.</td>
 </tr>
@@ -252,10 +252,10 @@ Gets aggregated values (for example, average, minimum, and maximum) for one or m
 
 ```sql
 SELECT
-errorEntries,
-nextToken,
-skippedEntries,
-successEntries
+error_entries,
+next_token,
+skipped_entries,
+success_entries
 FROM aws.iotsitewise.asset_property_aggregates
 WHERE region = '{{ region }}' -- required
 ;

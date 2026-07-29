@@ -50,27 +50,27 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ComparisonOperator" /></td>
+    <td><CopyableCode code="comparison_operator" /></td>
     <td><code>string</code></td>
     <td>The comparison that's used for this notification. (GREATER_THAN, LESS_THAN, EQUAL_TO)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationState" /></td>
+    <td><CopyableCode code="notification_state" /></td>
     <td><code>string</code></td>
     <td>Specifies whether this notification is in alarm. If a budget notification is in the ALARM state, you passed the set threshold for the budget. (OK, ALARM)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationType" /></td>
+    <td><CopyableCode code="notification_type" /></td>
     <td><code>string</code></td>
     <td>Specifies whether the notification is for how much you have spent (ACTUAL) or for how much that you're forecasted to spend (FORECASTED). (ACTUAL, FORECASTED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Threshold" /></td>
+    <td><CopyableCode code="threshold" /></td>
     <td><code>number (double)</code></td>
     <td>The threshold that's associated with a notification. Thresholds are always a percentage, and many customers find value being alerted between 50% - 200% of the budgeted amount. The maximum limit for your threshold is 1,000,000% above the budgeted amount.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ThresholdType" /></td>
+    <td><CopyableCode code="threshold_type" /></td>
     <td><code>string</code></td>
     <td>The type of threshold for a notification. For ABSOLUTE_VALUE thresholds, Amazon Web Services notifies you when you go over or are forecasted to go over your total cost threshold. For PERCENTAGE thresholds, Amazon Web Services notifies you when you go over or are forecasted to go over a certain percentage of your forecasted spend. For example, if you have a budget for 200 dollars and you have a PERCENTAGE threshold of 80%, Amazon Web Services notifies you when you go over 160 dollars. (PERCENTAGE, ABSOLUTE_VALUE)</td>
 </tr>
@@ -139,11 +139,11 @@ Lists the notifications that are associated with a budget.
 
 ```sql
 SELECT
-ComparisonOperator,
-NotificationState,
-NotificationType,
-Threshold,
-ThresholdType
+comparison_operator,
+notification_state,
+notification_type,
+threshold,
+threshold_type
 FROM aws.budgets.notifications_for_budgets
 WHERE region = '{{ region }}' -- required
 ;

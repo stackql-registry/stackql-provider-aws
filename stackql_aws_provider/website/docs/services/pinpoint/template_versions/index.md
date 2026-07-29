@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each version of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Message" /></td>
+    <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
     <td>The message that's returned from the API for the request to retrieve information about all the versions of the message template.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RequestID" /></td>
+    <td><CopyableCode code="request_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the request to retrieve information about all the versions of the message template.</td>
 </tr>
@@ -154,10 +154,10 @@ Retrieves information about all the versions of a specific message template.
 
 ```sql
 SELECT
-Item,
-Message,
-NextToken,
-RequestID
+item,
+message,
+next_token,
+request_id
 FROM aws.pinpoint.template_versions
 WHERE `template-name` = '{{ template-name }}' -- required
 AND `template-type` = '{{ template-type }}' -- required

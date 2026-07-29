@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="TargetBucket" /></td>
+    <td><CopyableCode code="target_bucket" /></td>
     <td><code>string</code></td>
     <td>Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets to deliver their logs to the same target bucket. In this case, you should choose a different TargetPrefix for each source bucket so that the delivered log files can be distinguished by key.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetGrants" /></td>
+    <td><CopyableCode code="target_grants" /></td>
     <td><code>string</code></td>
     <td>Container for granting information. Buckets that use the bucket owner enforced setting for Object Ownership don't support target grants. For more information, see Permissions for server access log delivery in the Amazon S3 User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetObjectKeyFormat" /></td>
+    <td><CopyableCode code="target_object_key_format" /></td>
     <td><code>string</code></td>
     <td>Amazon S3 key format for log objects.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TargetPrefix" /></td>
+    <td><CopyableCode code="target_prefix" /></td>
     <td><code>string</code></td>
     <td>A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.</td>
 </tr>
@@ -161,10 +161,10 @@ This operation is not supported for directory buckets. Returns the logging statu
 
 ```sql
 SELECT
-TargetBucket,
-TargetGrants,
-TargetObjectKeyFormat,
-TargetPrefix
+target_bucket,
+target_grants,
+target_object_key_format,
+target_prefix
 FROM aws.s3.bucket_loggings
 WHERE bucket = '{{ bucket }}' -- required
 AND region = '{{ region }}' -- required

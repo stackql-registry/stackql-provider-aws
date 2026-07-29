@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the certificate revocation list (CRL).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the certificate revocation list (CRL) was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crlArn" /></td>
+    <td><CopyableCode code="crl_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the certificate revocation list (CRL).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crlData" /></td>
+    <td><CopyableCode code="crl_data" /></td>
     <td><code>string (byte)</code></td>
     <td>The state of the certificate revocation list (CRL) after a read or write operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crlId" /></td>
+    <td><CopyableCode code="crl_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the certificate revocation list (CRL). (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
@@ -81,12 +81,12 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the certificate revocation list (CRL) is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustAnchorArn" /></td>
+    <td><CopyableCode code="trust_anchor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the TrustAnchor the certificate revocation list (CRL) will provide revocation for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the certificate revocation list (CRL) was last updated.</td>
 </tr>
@@ -110,22 +110,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the certificate revocation list (CRL).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the certificate revocation list (CRL) was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crlArn" /></td>
+    <td><CopyableCode code="crl_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the certificate revocation list (CRL).</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crlData" /></td>
+    <td><CopyableCode code="crl_data" /></td>
     <td><code>string (byte)</code></td>
     <td>The state of the certificate revocation list (CRL) after a read or write operation.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="crlId" /></td>
+    <td><CopyableCode code="crl_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the certificate revocation list (CRL). (pattern: &lt;code&gt;.*&#91;a-f0-9&#93;&#123;8&#125;-(&#91;a-z0-9&#93;&#123;4&#125;-)&#123;3&#125;&#91;a-z0-9&#93;&#123;12&#125;.*&lt;/code&gt;)</td>
 </tr>
@@ -135,12 +135,12 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether the certificate revocation list (CRL) is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="trustAnchorArn" /></td>
+    <td><CopyableCode code="trust_anchor_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the TrustAnchor the certificate revocation list (CRL) will provide revocation for.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The ISO-8601 timestamp when the certificate revocation list (CRL) was last updated.</td>
 </tr>
@@ -247,13 +247,13 @@ Gets a certificate revocation list (CRL). Required permissions: rolesanywhere:Ge
 ```sql
 SELECT
 name,
-createdAt,
-crlArn,
-crlData,
-crlId,
+created_at,
+crl_arn,
+crl_data,
+crl_id,
 enabled,
-trustAnchorArn,
-updatedAt
+trust_anchor_arn,
+updated_at
 FROM aws.rolesanywhere.crls
 WHERE crl_id = '{{ crl_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -267,13 +267,13 @@ Lists all certificate revocation lists (CRL) in the authenticated account and Am
 ```sql
 SELECT
 name,
-createdAt,
-crlArn,
-crlData,
-crlId,
+created_at,
+crl_arn,
+crl_data,
+crl_id,
 enabled,
-trustAnchorArn,
-updatedAt
+trust_anchor_arn,
+updated_at
 FROM aws.rolesanywhere.crls
 WHERE region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'

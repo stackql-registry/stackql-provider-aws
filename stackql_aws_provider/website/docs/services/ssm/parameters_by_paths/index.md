@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ARN" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataType" /></td>
+    <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
     <td>The data type of the parameter, such as text or aws:ec2:image. The default is text.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>Date the parameter was last changed or updated and the parameter version was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the parameter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Selector" /></td>
+    <td><CopyableCode code="selector" /></td>
     <td><code>string</code></td>
     <td>Either the version number or the label used to retrieve the parameter value. Specify selectors by using one of the following formats: parameter_name:version parameter_name:label</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SourceResult" /></td>
+    <td><CopyableCode code="source_result" /></td>
     <td><code>string</code></td>
     <td>Applies to parameters that reference information in other Amazon Web Services services. SourceResult is the raw result or response from the source.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Type" /></td>
+    <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
     <td>The type of parameter. Valid values include the following: String, StringList, and SecureString. If type is StringList, the system returns a comma-separated string with no spaces between commas in the Value field. (String, StringList, SecureString)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>The parameter value. If type is StringList, the system returns a comma-separated string with no spaces between commas in the Value field.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>integer (int64)</code></td>
     <td>The parameter version.</td>
 </tr>
@@ -159,15 +159,15 @@ Retrieve information about one or more parameters under a specified level in a h
 
 ```sql
 SELECT
-ARN,
-DataType,
-LastModifiedDate,
-Name,
-Selector,
-SourceResult,
-Type,
-Value,
-Version
+arn,
+data_type,
+last_modified_date,
+name,
+selector,
+source_result,
+type,
+value,
+version
 FROM aws.ssm.parameters_by_paths
 WHERE region = '{{ region }}' -- required
 ;

@@ -60,12 +60,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the workflow resource. (pattern: &lt;code&gt;^arn:aws(?:-&#91;a-z&#93;+)*:imagebuilder:&#91;a-z&#93;&#123;2,&#125;(?:-&#91;a-z&#93;+)+-&#91;0-9&#93;+:(?:&#91;0-9&#93;&#123;12&#125;|aws(?:-&#91;a-z-&#93;+)?):workflow/(build|test|distribution)/&#91;a-z0-9-_&#93;+/x\.x\.x$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="changeDescription" /></td>
+    <td><CopyableCode code="change_description" /></td>
     <td><code>string</code></td>
     <td>The change description for the current version of the workflow resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dateCreated" /></td>
+    <td><CopyableCode code="date_created" /></td>
     <td><code>string</code></td>
     <td>The original creation date of the workflow resource.</td>
 </tr>
@@ -166,8 +166,8 @@ Returns a list of build versions for a specific workflow resource.
 SELECT
 name,
 arn,
-changeDescription,
-dateCreated,
+change_description,
+date_created,
 description,
 owner,
 state,

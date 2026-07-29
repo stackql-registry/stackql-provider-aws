@@ -50,42 +50,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CrossRegionDiscoveryHomeRegion" /></td>
+    <td><CopyableCode code="cross_region_discovery_home_region" /></td>
     <td><code>string</code></td>
     <td>Cross region discovery home region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CrossRegionDiscoverySourceRegions" /></td>
+    <td><CopyableCode code="cross_region_discovery_source_regions" /></td>
     <td><code>array</code></td>
     <td>Cross region discovery source regions.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EnableCrossAccountsDiscovery" /></td>
+    <td><CopyableCode code="enable_cross_accounts_discovery" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether cross-account discovery is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseManagerResourceShareArn" /></td>
+    <td><CopyableCode code="license_manager_resource_share_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the resource share. The License Manager management account provides member accounts with access to this share.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OrganizationConfiguration" /></td>
+    <td><CopyableCode code="organization_configuration" /></td>
     <td><code>object</code></td>
     <td>Indicates whether Organizations is integrated with License Manager for cross-account discovery.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="S3BucketArn" /></td>
+    <td><CopyableCode code="s3_bucket_arn" /></td>
     <td><code>string</code></td>
     <td>Regional S3 bucket path for storing reports, license trail event data, discovery data, and so on.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ServiceStatus" /></td>
+    <td><CopyableCode code="service_status" /></td>
     <td><code>object</code></td>
     <td>Service status.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArn" /></td>
+    <td><CopyableCode code="sns_topic_arn" /></td>
     <td><code>string</code></td>
     <td>SNS topic configured to receive notifications from License Manager.</td>
 </tr>
@@ -161,14 +161,14 @@ Gets the License Manager settings for the current Region.
 
 ```sql
 SELECT
-CrossRegionDiscoveryHomeRegion,
-CrossRegionDiscoverySourceRegions,
-EnableCrossAccountsDiscovery,
-LicenseManagerResourceShareArn,
-OrganizationConfiguration,
-S3BucketArn,
-ServiceStatus,
-SnsTopicArn
+cross_region_discovery_home_region,
+cross_region_discovery_source_regions,
+enable_cross_accounts_discovery,
+license_manager_resource_share_arn,
+organization_configuration,
+s3_bucket_arn,
+service_status,
+sns_topic_arn
 FROM aws.license_manager.service_settings
 WHERE region = '{{ region }}' -- required
 ;

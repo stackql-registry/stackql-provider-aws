@@ -50,52 +50,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CustomEndpointType" /></td>
+    <td><CopyableCode code="custom_endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type associated with a custom endpoint. One of: READER, WRITER, ANY.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterEndpointArn" /></td>
+    <td><CopyableCode code="db_cluster_endpoint_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterEndpointIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_endpoint_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier associated with the endpoint. This parameter is stored as a lowercase string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterEndpointResourceIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_endpoint_resource_identifier" /></td>
     <td><code>string</code></td>
     <td>A unique system-generated identifier for an endpoint. It remains the same for the whole life of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DBClusterIdentifier" /></td>
+    <td><CopyableCode code="db_cluster_identifier" /></td>
     <td><code>string</code></td>
     <td>The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored as a lowercase string.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Endpoint" /></td>
+    <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The DNS address of the endpoint.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EndpointType" /></td>
+    <td><CopyableCode code="endpoint_type" /></td>
     <td><code>string</code></td>
     <td>The type of the endpoint. One of: READER, WRITER, CUSTOM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExcludedMembers" /></td>
+    <td><CopyableCode code="excluded_members" /></td>
     <td><code>string</code></td>
     <td>List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StaticMembers" /></td>
+    <td><CopyableCode code="static_members" /></td>
     <td><code>string</code></td>
     <td>List of DB instance identifiers that are part of the custom endpoint group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the endpoint. One of: creating, available, deleting, inactive, modifying. The inactive state applies to an endpoint that cannot be used for a certain kind of cluster, such as a writer endpoint for a read-only secondary cluster in a global database.</td>
 </tr>
@@ -245,16 +245,16 @@ Returns information about endpoints for an Amazon Neptune DB cluster. This opera
 
 ```sql
 SELECT
-CustomEndpointType,
-DBClusterEndpointArn,
-DBClusterEndpointIdentifier,
-DBClusterEndpointResourceIdentifier,
-DBClusterIdentifier,
-Endpoint,
-EndpointType,
-ExcludedMembers,
-StaticMembers,
-Status
+custom_endpoint_type,
+db_cluster_endpoint_arn,
+db_cluster_endpoint_identifier,
+db_cluster_endpoint_resource_identifier,
+db_cluster_identifier,
+endpoint,
+endpoint_type,
+excluded_members,
+static_members,
+status
 FROM aws.neptune.db_cluster_endpoints
 WHERE region = '{{ region }}' -- required
 AND DBClusterIdentifier = '{{ DBClusterIdentifier }}'

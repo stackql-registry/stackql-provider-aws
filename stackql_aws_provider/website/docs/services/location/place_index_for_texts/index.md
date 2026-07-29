@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Results" /></td>
+    <td><CopyableCode code="results" /></td>
     <td><code>array</code></td>
     <td>A list of Places matching the input text. Each result contains additional information about the specific point of interest. Not all response properties are included with all responses. Some properties may only be returned by specific data partners.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Summary" /></td>
+    <td><CopyableCode code="summary" /></td>
     <td><code>object</code></td>
     <td>Contains a summary of the request. Echoes the input values for BiasPosition, FilterBBox, FilterCountries, Language, MaxResults, and Text. Also includes the DataSource of the place index and the bounding box, ResultBBox, which surrounds the search results.</td>
 </tr>
@@ -134,8 +134,8 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-Results,
-Summary
+results,
+summary
 FROM aws.location.place_index_for_texts
 WHERE index_name = '{{ index_name }}' -- required
 AND region = '{{ region }}' -- required

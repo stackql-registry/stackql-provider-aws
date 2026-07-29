@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LockToken" /></td>
+    <td><CopyableCode code="lock_token" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation. (pattern: &lt;code&gt;^&#91;0-9a-f&#93;&#123;8&#125;-(?:&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedRuleSet" /></td>
+    <td><CopyableCode code="managed_rule_set" /></td>
     <td><code>object</code></td>
     <td>The managed rule set that you requested.</td>
 </tr>
@@ -75,12 +75,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ManagedRuleSets" /></td>
+    <td><CopyableCode code="managed_rule_sets" /></td>
     <td><code>array</code></td>
     <td>Your managed rule sets. If you specified a Limit in your request, this might not be the full list.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextMarker" /></td>
+    <td><CopyableCode code="next_marker" /></td>
     <td><code>string</code></td>
     <td>When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -171,8 +171,8 @@ Retrieves the specified managed rule set. This is intended for use only by vendo
 
 ```sql
 SELECT
-LockToken,
-ManagedRuleSet
+lock_token,
+managed_rule_set
 FROM aws.wafv2.managed_rule_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -184,8 +184,8 @@ Retrieves the managed rule sets that you own. This is intended for use only by v
 
 ```sql
 SELECT
-ManagedRuleSets,
-NextMarker
+managed_rule_sets,
+next_marker
 FROM aws.wafv2.managed_rule_sets
 WHERE region = '{{ region }}' -- required
 ;
@@ -224,9 +224,9 @@ AND LockToken = '{{ LockToken }}' --required
 AND VersionToExpire = '{{ VersionToExpire }}' --required
 AND ExpiryTimestamp = '{{ ExpiryTimestamp }}' --required
 RETURNING
-ExpiringVersion,
-ExpiryTimestamp,
-NextLockToken;
+expiring_version,
+expiry_timestamp,
+next_lock_token;
 ```
 </TabItem>
 </Tabs>
@@ -260,7 +260,7 @@ AND Scope = '{{ Scope }}' --required
 AND Id = '{{ Id }}' --required
 AND LockToken = '{{ LockToken }}' --required
 RETURNING
-NextLockToken;
+next_lock_token;
 ```
 </TabItem>
 </Tabs>

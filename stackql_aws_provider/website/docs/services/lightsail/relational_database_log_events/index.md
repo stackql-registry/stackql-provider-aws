@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextBackwardToken" /></td>
+    <td><CopyableCode code="next_backward_token" /></td>
     <td><code>string</code></td>
     <td>A token used for advancing to the previous page of results from your get relational database log events request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextForwardToken" /></td>
+    <td><CopyableCode code="next_forward_token" /></td>
     <td><code>string</code></td>
     <td>A token used for advancing to the next page of results from your get relational database log events request.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceLogEvents" /></td>
+    <td><CopyableCode code="resource_log_events" /></td>
     <td><code>array</code></td>
     <td>An object describing the result of your get relational database log events request.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns a list of log events for a database in Amazon Lightsail.
 
 ```sql
 SELECT
-nextBackwardToken,
-nextForwardToken,
-resourceLogEvents
+next_backward_token,
+next_forward_token,
+resource_log_events
 FROM aws.lightsail.relational_database_log_events
 WHERE region = '{{ region }}' -- required
 ;

@@ -55,7 +55,7 @@ The following fields are returned by `SELECT` queries:
     <td>The resource policy formatted in JSON. (pattern: &lt;code&gt;&#91;\P&#123;C&#125;\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="resourceArn" /></td>
+    <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the resource associated with the resource policy (pattern: &lt;code&gt;\S+&lt;/code&gt;)</td>
 </tr>
@@ -159,7 +159,7 @@ Returns the resource policy attached to the specified domain. The policy is a re
 ```sql
 SELECT
 document,
-resourceArn,
+resource_arn,
 revision
 FROM aws.codeartifact.domain_permissions_policies
 WHERE domain = '{{ domain }}' -- required

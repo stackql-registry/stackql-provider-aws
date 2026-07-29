@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the associated trusted entity set was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorDetails" /></td>
+    <td><CopyableCode code="error_details" /></td>
     <td><code>string</code></td>
     <td>The error details when the status is shown as ERROR.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpectedBucketOwner" /></td>
+    <td><CopyableCode code="expected_bucket_owner" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID that owns the Amazon S3 bucket specified in the location parameter. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Format" /></td>
+    <td><CopyableCode code="format" /></td>
     <td><code>string</code></td>
     <td>The format of the file that contains the trusted entity set. (TXT, STIX, OTX_CSV, ALIEN_VAULT, PROOF_POINT, FIRE_EYE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Location" /></td>
+    <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
     <td>The URI of the file that contains the trusted entity set.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the threat entity set associated with the specified trustedEntitySetId.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the associated trusted entity set. (INACTIVE, ACTIVATING, ACTIVE, DEACTIVATING, ERROR, DELETE_PENDING, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags associated with trusted entity set resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the associated trusted entity set was updated.</td>
 </tr>
@@ -228,15 +228,15 @@ Retrieves the trusted entity set associated with the specified trustedEntitySetI
 
 ```sql
 SELECT
-CreatedAt,
-ErrorDetails,
-ExpectedBucketOwner,
-Format,
-Location,
-Name,
-Status,
-Tags,
-UpdatedAt
+created_at,
+error_details,
+expected_bucket_owner,
+format,
+location,
+name,
+status,
+tags,
+updated_at
 FROM aws.guardduty.trusted_entity_sets
 WHERE detector_id = '{{ detector_id }}' -- required
 AND trusted_entity_set_id = '{{ trusted_entity_set_id }}' -- required
@@ -298,7 +298,7 @@ SELECT
 '{{ detector_id }}',
 '{{ region }}'
 RETURNING
-TrustedEntitySetId
+trusted_entity_set_id
 ;
 ```
 </TabItem>

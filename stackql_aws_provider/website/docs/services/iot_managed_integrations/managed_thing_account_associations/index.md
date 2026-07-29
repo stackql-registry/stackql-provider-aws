@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountAssociationId" /></td>
+    <td><CopyableCode code="account_association_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the account association in the association. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedThingAssociationStatus" /></td>
+    <td><CopyableCode code="managed_thing_association_status" /></td>
     <td><code>string</code></td>
     <td>The status of the registration between the managed thing and the account association. Indicates whether the device is pre-associated or fully associated with the account association. (PRE_ASSOCIATED, ASSOCIATED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ManagedThingId" /></td>
+    <td><CopyableCode code="managed_thing_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the managed thing in the association. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -149,9 +149,9 @@ Lists all account associations for a specific managed thing.
 
 ```sql
 SELECT
-AccountAssociationId,
-ManagedThingAssociationStatus,
-ManagedThingId
+account_association_id,
+managed_thing_association_status,
+managed_thing_id
 FROM aws.iot_managed_integrations.managed_thing_account_associations
 WHERE region = '{{ region }}' -- required
 AND ManagedThingId = '{{ ManagedThingId }}'

@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The custom description of the filter.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="findingCriteria" /></td>
+    <td><CopyableCode code="finding_criteria" /></td>
     <td><code>object</code></td>
     <td>Specifies, as a map, one or more property-based conditions that filter the results of a query for findings.</td>
 </tr>
@@ -243,7 +243,7 @@ name,
 action,
 arn,
 description,
-findingCriteria,
+finding_criteria,
 position,
 tags
 FROM aws.macie2.findings_filters

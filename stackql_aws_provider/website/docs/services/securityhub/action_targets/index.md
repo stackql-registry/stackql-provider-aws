@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActionTargetArn" /></td>
+    <td><CopyableCode code="action_target_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN for the target action. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the target action. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the action target. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
@@ -155,9 +155,9 @@ Returns a list of the custom action targets in Security Hub CSPM in your account
 
 ```sql
 SELECT
-ActionTargetArn,
-Description,
-Name
+action_target_arn,
+description,
+name
 FROM aws.securityhub.action_targets
 WHERE region = '{{ region }}' -- required
 ;
@@ -192,7 +192,7 @@ SELECT
 '{{ Id }}' /* required */,
 '{{ region }}'
 RETURNING
-ActionTargetArn
+action_target_arn
 ;
 ```
 </TabItem>

@@ -56,22 +56,22 @@ The following fields are returned by `SELECT` queries:
     <td>The name for the analysis rule. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_&#93;((&#91;a-zA-Z0-9_ &#93;+-)*(&#91;a-zA-Z0-9_ &#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationId" /></td>
+    <td><CopyableCode code="collaboration_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the associated collaboration. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collaborationPolicy" /></td>
+    <td><CopyableCode code="collaboration_policy" /></td>
     <td><code>object</code></td>
     <td>Controls on the query specifications that can be run on an associated configured table.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="consolidatedPolicy" /></td>
+    <td><CopyableCode code="consolidated_policy" /></td>
     <td><code>object</code></td>
     <td>The consolidated policy for the analysis rule.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the analysis rule was created.</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of analysis rule. (AGGREGATION, LIST, CUSTOM, ID_MAPPING_TABLE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the analysis rule was last updated.</td>
 </tr>
@@ -105,7 +105,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="analysisRules" /></td>
+    <td><CopyableCode code="analysis_rules" /></td>
     <td><code>array</code></td>
     <td>The retrieved list of analysis rules.</td>
 </tr>
@@ -203,13 +203,13 @@ Retrieves a schema analysis rule.
 ```sql
 SELECT
 name,
-collaborationId,
-collaborationPolicy,
-consolidatedPolicy,
-createTime,
+collaboration_id,
+collaboration_policy,
+consolidated_policy,
+create_time,
 policy,
 type_,
-updateTime
+update_time
 FROM aws.cleanrooms.schema_analysis_rules
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND name = '{{ name }}' -- required
@@ -224,7 +224,7 @@ Retrieves multiple analysis rule schemas.
 
 ```sql
 SELECT
-analysisRules,
+analysis_rules,
 errors
 FROM aws.cleanrooms.schema_analysis_rules
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required

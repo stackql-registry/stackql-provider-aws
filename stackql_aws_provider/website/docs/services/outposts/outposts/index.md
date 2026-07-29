@@ -51,62 +51,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone. (pattern: &lt;code&gt;^(&#91;a-zA-Z&#93;+-)&#123;1,3&#125;(&#91;a-zA-Z&#93;+)?(\d+&#91;a-zA-Z&#93;?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+\d-&#91;a-zA-Z&#93;+\d$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the Outpost. (pattern: &lt;code&gt;^&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycleStatus" /></td>
+    <td><CopyableCode code="life_cycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status. (pattern: &lt;code&gt;^&#91; A-Za-z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Outpost. (pattern: &lt;code&gt;^&#91;\S &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/)?op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Outpost owner. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteArn" /></td>
+    <td><CopyableCode code="site_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the site. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the site. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/)?(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedHardwareType" /></td>
+    <td><CopyableCode code="supported_hardware_type" /></td>
     <td><code>string</code></td>
     <td>The hardware type. (RACK, SERVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The Outpost tags.</td>
 </tr>
@@ -125,62 +125,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AvailabilityZone" /></td>
+    <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone. (pattern: &lt;code&gt;^(&#91;a-zA-Z&#93;+-)&#123;1,3&#125;(&#91;a-zA-Z&#93;+)?(\d+&#91;a-zA-Z&#93;?)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AvailabilityZoneId" /></td>
+    <td><CopyableCode code="availability_zone_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Availability Zone. (pattern: &lt;code&gt;^&#91;a-zA-Z&#93;+\d-&#91;a-zA-Z&#93;+\d$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the Outpost. (pattern: &lt;code&gt;^&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LifeCycleStatus" /></td>
+    <td><CopyableCode code="life_cycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status. (pattern: &lt;code&gt;^&#91; A-Za-z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the Outpost. (pattern: &lt;code&gt;^&#91;\S &#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostArn" /></td>
+    <td><CopyableCode code="outpost_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Outpost. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OutpostId" /></td>
+    <td><CopyableCode code="outpost_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Outpost. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:outpost/)?op-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Outpost owner. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteArn" /></td>
+    <td><CopyableCode code="site_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the site. (pattern: &lt;code&gt;^arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SiteId" /></td>
+    <td><CopyableCode code="site_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the site. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:site/)?(os-&#91;a-f0-9&#93;&#123;17&#125;)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedHardwareType" /></td>
+    <td><CopyableCode code="supported_hardware_type" /></td>
     <td><code>string</code></td>
     <td>The hardware type. (RACK, SERVER)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The Outpost tags.</td>
 </tr>
@@ -341,18 +341,18 @@ Gets information about the specified Outpost.
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-Description,
-LifeCycleStatus,
-Name,
-OutpostArn,
-OutpostId,
-OwnerId,
-SiteArn,
-SiteId,
-SupportedHardwareType,
-Tags
+availability_zone,
+availability_zone_id,
+description,
+life_cycle_status,
+name,
+outpost_arn,
+outpost_id,
+owner_id,
+site_arn,
+site_id,
+supported_hardware_type,
+tags
 FROM aws.outposts.outposts
 WHERE outpost_id = '{{ outpost_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -365,18 +365,18 @@ Lists the Outposts for your Amazon Web Services account. Use filters to return s
 
 ```sql
 SELECT
-AvailabilityZone,
-AvailabilityZoneId,
-Description,
-LifeCycleStatus,
-Name,
-OutpostArn,
-OutpostId,
-OwnerId,
-SiteArn,
-SiteId,
-SupportedHardwareType,
-Tags
+availability_zone,
+availability_zone_id,
+description,
+life_cycle_status,
+name,
+outpost_arn,
+outpost_id,
+owner_id,
+site_arn,
+site_id,
+supported_hardware_type,
+tags
 FROM aws.outposts.outposts
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
@@ -419,11 +419,11 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
-MonthlyRecurringPrice,
-OutpostId,
-PaymentOption,
-PaymentTerm,
-UpfrontPrice
+monthly_recurring_price,
+outpost_id,
+payment_option,
+payment_term,
+upfront_price
 ;
 ```
 </TabItem>
@@ -452,7 +452,7 @@ SELECT
 '{{ SupportedHardwareType }}',
 '{{ region }}'
 RETURNING
-Outpost
+outpost
 ;
 ```
 </TabItem>
@@ -527,7 +527,7 @@ WHERE
 outpost_id = '{{ outpost_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-Outpost;
+outpost;
 ```
 </TabItem>
 </Tabs>

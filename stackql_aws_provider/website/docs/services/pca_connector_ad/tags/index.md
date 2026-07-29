@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags, if any, that are associated with your resource.</td>
 </tr>
@@ -143,7 +143,7 @@ Lists the tags, if any, that are associated with your resource.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.pca_connector_ad.tags
 WHERE resource_arn = '{{ resource_arn }}' -- required
 AND region = '{{ region }}' -- required

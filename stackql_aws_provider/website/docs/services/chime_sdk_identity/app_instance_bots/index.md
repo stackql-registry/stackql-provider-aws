@@ -51,17 +51,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstanceArn" /></td>
+    <td><CopyableCode code="app_instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AppInstance. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AppInstanceBots" /></td>
+    <td><CopyableCode code="app_instance_bots" /></td>
     <td><code>array</code></td>
     <td>The information for each requested AppInstanceBot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token passed by previous API calls until all requested bots are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -80,32 +80,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AppInstanceBotArn" /></td>
+    <td><CopyableCode code="app_instance_bot_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AppInstanceBot. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>A structure that contains configuration data.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTimestamp" /></td>
+    <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the AppInstanceBot was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTimestamp" /></td>
+    <td><CopyableCode code="last_updated_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the AppInstanceBot was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Metadata" /></td>
+    <td><CopyableCode code="metadata" /></td>
     <td><code>string</code></td>
     <td>The metadata for an AppInstanceBot. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the AppInstanceBot. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u007E\u0085\u00A0-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -223,9 +223,9 @@ Lists all AppInstanceBots created under a single AppInstance.
 
 ```sql
 SELECT
-AppInstanceArn,
-AppInstanceBots,
-NextToken
+app_instance_arn,
+app_instance_bots,
+next_token
 FROM aws.chime_sdk_identity.app_instance_bots
 WHERE `app-instance-arn` = '{{ app-instance-arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -240,12 +240,12 @@ The AppInstanceBot's information.
 
 ```sql
 SELECT
-AppInstanceBotArn,
-Configuration,
-CreatedTimestamp,
-LastUpdatedTimestamp,
-Metadata,
-Name
+app_instance_bot_arn,
+configuration,
+created_timestamp,
+last_updated_timestamp,
+metadata,
+name
 FROM aws.chime_sdk_identity.app_instance_bots
 WHERE app_instance_bot_arn = '{{ app_instance_bot_arn }}' -- required
 AND region = '{{ region }}' -- required
@@ -287,7 +287,7 @@ SELECT
 '{{ Configuration }}' /* required */,
 '{{ region }}'
 RETURNING
-AppInstanceBotArn
+app_instance_bot_arn
 ;
 ```
 </TabItem>
@@ -353,7 +353,7 @@ AND region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required
 AND Metadata = '{{ Metadata }}' --required
 RETURNING
-AppInstanceBotArn;
+app_instance_bot_arn;
 ```
 </TabItem>
 </Tabs>

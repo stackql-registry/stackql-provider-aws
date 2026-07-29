@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amplify app associated with the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="bindingProperties" /></td>
+    <td><CopyableCode code="binding_properties" /></td>
     <td><code>object</code></td>
     <td>The information to connect a component's properties to data at runtime. You can't specify tags as a valid property for bindingProperties.</td>
 </tr>
@@ -76,22 +76,22 @@ The following fields are returned by `SELECT` queries:
     <td>A list of the component's ComponentChild instances.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="collectionProperties" /></td>
+    <td><CopyableCode code="collection_properties" /></td>
     <td><code>object</code></td>
     <td>The data binding configuration for the component's properties. Use this for a collection component. You can't specify tags as a valid property for collectionProperties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentType" /></td>
+    <td><CopyableCode code="component_type" /></td>
     <td><code>string</code></td>
     <td>The type of the component. This can be an Amplify custom UI component or another custom component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the component was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment that is a part of the Amplify app.</td>
 </tr>
@@ -101,7 +101,7 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the events that can be raised on the component. Use for the workflow feature in Amplify Studio that allows you to bind events and actions to components.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedAt" /></td>
+    <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the component was modified.</td>
 </tr>
@@ -116,12 +116,12 @@ The following fields are returned by `SELECT` queries:
     <td>Describes the component's properties. You can't specify tags as a valid property for properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="schemaVersion" /></td>
+    <td><CopyableCode code="schema_version" /></td>
     <td><code>string</code></td>
     <td>The schema version of the component when it was imported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="sourceId" /></td>
+    <td><CopyableCode code="source_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the component in its original source system, such as Figma.</td>
 </tr>
@@ -160,17 +160,17 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="appId" /></td>
+    <td><CopyableCode code="app_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of the Amplify app associated with the component.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="componentType" /></td>
+    <td><CopyableCode code="component_type" /></td>
     <td><code>string</code></td>
     <td>The component type.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="environmentName" /></td>
+    <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the backend environment that is a part of the Amplify app.</td>
 </tr>
@@ -307,19 +307,19 @@ Returns an existing component for an Amplify app.
 SELECT
 id,
 name,
-appId,
-bindingProperties,
+app_id,
+binding_properties,
 children,
-collectionProperties,
-componentType,
-createdAt,
-environmentName,
+collection_properties,
+component_type,
+created_at,
+environment_name,
 events,
-modifiedAt,
+modified_at,
 overrides,
 properties_,
-schemaVersion,
-sourceId,
+schema_version,
+source_id,
 tags,
 variants
 FROM aws.amplifyuibuilder.components
@@ -338,9 +338,9 @@ Retrieves a list of components for a specified Amplify app and backend environme
 SELECT
 id,
 name,
-appId,
-componentType,
-environmentName
+app_id,
+component_type,
+environment_name
 FROM aws.amplifyuibuilder.components
 WHERE app_id = '{{ app_id }}' -- required
 AND environment_name = '{{ environment_name }}' -- required

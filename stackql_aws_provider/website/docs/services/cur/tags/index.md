@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags assigned to the report definition resource.</td>
 </tr>
@@ -133,7 +133,7 @@ Lists the tags associated with the specified report definition.
 
 ```sql
 SELECT
-Tags
+tags
 FROM aws.cur.tags
 WHERE region = '{{ region }}' -- required
 ;

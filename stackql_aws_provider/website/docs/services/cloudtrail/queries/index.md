@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A token you can use to get the next page of results. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Queries" /></td>
+    <td><CopyableCode code="queries" /></td>
     <td><code>array</code></td>
     <td>Lists matching query results, and shows query ID, status, and creation time of each query.</td>
 </tr>
@@ -75,47 +75,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DeliveryS3Uri" /></td>
+    <td><CopyableCode code="delivery_s3_uri" /></td>
     <td><code>string</code></td>
     <td>The URI for the S3 bucket where CloudTrail delivered query results, if applicable. (pattern: &lt;code&gt;s3:​//&#91;a-z0-9&#93;&#91;\.\-a-z0-9&#93;&#123;1,61&#125;&#91;a-z0-9&#93;(/.*)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeliveryStatus" /></td>
+    <td><CopyableCode code="delivery_status" /></td>
     <td><code>string</code></td>
     <td>The delivery status. (SUCCESS, FAILED, FAILED_SIGNING_FILE, PENDING, RESOURCE_NOT_FOUND, ACCESS_DENIED, ACCESS_DENIED_SIGNING_FILE, CANCELLED, UNKNOWN)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><CopyableCode code="error_message" /></td>
     <td><code>string</code></td>
     <td>The error message returned if a query failed. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EventDataStoreOwnerAccountId" /></td>
+    <td><CopyableCode code="event_data_store_owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The account ID of the event data store owner. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Prompt" /></td>
+    <td><CopyableCode code="prompt" /></td>
     <td><code>string</code></td>
     <td>The prompt used for a generated query. For information about generated queries, see Create CloudTrail Lake queries from natural language prompts in the CloudTrail user guide. (pattern: &lt;code&gt;^&#91; -~\n&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryId" /></td>
+    <td><CopyableCode code="query_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the query. (pattern: &lt;code&gt;^&#91;a-f0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryStatistics" /></td>
+    <td><CopyableCode code="query_statistics" /></td>
     <td><code>object</code></td>
     <td>Metadata about a query, including the number of events that were matched, the total number of events scanned, the query run time in milliseconds, and the query's creation time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryStatus" /></td>
+    <td><CopyableCode code="query_status" /></td>
     <td><code>string</code></td>
     <td>The status of a query. Values for QueryStatus include QUEUED, RUNNING, FINISHED, FAILED, TIMED_OUT, or CANCELLED (QUEUED, RUNNING, FINISHED, FAILED, CANCELLED, TIMED_OUT)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QueryString" /></td>
+    <td><CopyableCode code="query_string" /></td>
     <td><code>string</code></td>
     <td>The SQL code of a query. (pattern: &lt;code&gt;(?s).*&lt;/code&gt;)</td>
 </tr>
@@ -192,8 +192,8 @@ Returns a list of queries and query statuses for the past seven days. You must s
 
 ```sql
 SELECT
-NextToken,
-Queries
+next_token,
+queries
 FROM aws.cloudtrail.queries
 WHERE region = '{{ region }}' -- required
 ;
@@ -205,15 +205,15 @@ Returns metadata about a query, including query run time in milliseconds, number
 
 ```sql
 SELECT
-DeliveryS3Uri,
-DeliveryStatus,
-ErrorMessage,
-EventDataStoreOwnerAccountId,
-Prompt,
-QueryId,
-QueryStatistics,
-QueryStatus,
-QueryString
+delivery_s3_uri,
+delivery_status,
+error_message,
+event_data_store_owner_account_id,
+prompt,
+query_id,
+query_statistics,
+query_status,
+query_string
 FROM aws.cloudtrail.queries
 WHERE region = '{{ region }}' -- required
 ;

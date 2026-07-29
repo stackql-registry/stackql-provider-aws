@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Media" /></td>
+    <td><CopyableCode code="media" /></td>
     <td><code>array</code></td>
     <td>A list of media assets for the workspace.</td>
 </tr>
@@ -141,7 +141,7 @@ Lists media assets (such as logos) associated with a workspace.
 
 ```sql
 SELECT
-Media
+media
 FROM aws.connect.workspace_medias
 WHERE instance_id = '{{ instance_id }}' -- required
 AND workspace_id = '{{ workspace_id }}' -- required

@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AccountLevel" /></td>
+    <td><CopyableCode code="account_level" /></td>
     <td><code>string</code></td>
     <td>A container for all the account-level configurations of your S3 Storage Lens configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AwsOrg" /></td>
+    <td><CopyableCode code="aws_org" /></td>
     <td><code>string</code></td>
     <td>A container for the Amazon Web Services organization for this S3 Storage Lens configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataExport" /></td>
+    <td><CopyableCode code="data_export" /></td>
     <td><code>string</code></td>
     <td>A container to specify the properties of your S3 Storage Lens metrics export including, the destination, schema and format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Exclude" /></td>
+    <td><CopyableCode code="exclude" /></td>
     <td><code>string</code></td>
     <td>A container for what is excluded in this configuration. This container can only be valid if there is no Include container submitted, and it's not empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExpandedPrefixesDataExport" /></td>
+    <td><CopyableCode code="expanded_prefixes_data_export" /></td>
     <td><code>string</code></td>
     <td>A container that configures your S3 Storage Lens expanded prefixes metrics report.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A container for the Amazon S3 Storage Lens configuration ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Include" /></td>
+    <td><CopyableCode code="include" /></td>
     <td><code>string</code></td>
     <td>A container for what is included in this configuration. This container can only be valid if there is no Exclude container submitted, and it's not empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsEnabled" /></td>
+    <td><CopyableCode code="is_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A container for whether the S3 Storage Lens configuration is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PrefixDelimiter" /></td>
+    <td><CopyableCode code="prefix_delimiter" /></td>
     <td><code>string</code></td>
     <td>A container for all prefix delimiters that are used for object keys in this S3 Storage Lens configuration. The prefix delimiters determine how S3 Storage Lens counts prefix depth, by separating the hierarchical levels in object keys. If either a prefix delimiter or existing delimiter is undefined, Amazon S3 uses the delimiter that’s defined. If both the prefix delimiter and existing delimiter are undefined, S3 uses / as the default delimiter. When custom delimiters are used, both the prefix delimiter and existing delimiter must specify the same special character. Otherwise, your request results in an error.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageLensArn" /></td>
+    <td><CopyableCode code="storage_lens_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the S3 Storage Lens configuration. This property is read-only and follows the following format: arn:aws:s3:us-east-1:example-account-id:storage-lens/your-dashboard-name</td>
 </tr>
@@ -115,22 +115,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="HomeRegion" /></td>
+    <td><CopyableCode code="home_region" /></td>
     <td><code>string</code></td>
     <td>A container for the S3 Storage Lens home Region. Your metrics data is stored and retained in your designated S3 Storage Lens home Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>A container for the S3 Storage Lens configuration ID.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsEnabled" /></td>
+    <td><CopyableCode code="is_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A container for whether the S3 Storage Lens configuration is enabled. This property is required.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StorageLensArn" /></td>
+    <td><CopyableCode code="storage_lens_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the S3 Storage Lens configuration. This property is read-only.</td>
 </tr>
@@ -236,16 +236,16 @@ This operation is not supported by directory buckets. Gets the Amazon S3 Storage
 
 ```sql
 SELECT
-AccountLevel,
-AwsOrg,
-DataExport,
-Exclude,
-ExpandedPrefixesDataExport,
-Id,
-Include,
-IsEnabled,
-PrefixDelimiter,
-StorageLensArn
+account_level,
+aws_org,
+data_export,
+exclude,
+expanded_prefixes_data_export,
+id,
+include,
+is_enabled,
+prefix_delimiter,
+storage_lens_arn
 FROM aws.s3control.storage_lens_configurations
 WHERE storagelensid = '{{ storagelensid }}' -- required
 AND `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
@@ -259,10 +259,10 @@ This operation is not supported by directory buckets. Gets a list of Amazon S3 S
 
 ```sql
 SELECT
-HomeRegion,
-Id,
-IsEnabled,
-StorageLensArn
+home_region,
+id,
+is_enabled,
+storage_lens_arn
 FROM aws.s3control.storage_lens_configurations
 WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
 AND region = '{{ region }}' -- required

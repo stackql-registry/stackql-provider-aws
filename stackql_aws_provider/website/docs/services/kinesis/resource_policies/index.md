@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Policy" /></td>
+    <td><CopyableCode code="policy" /></td>
     <td><code>string</code></td>
     <td>Details of the resource policy. This is formatted as a JSON string.</td>
 </tr>
@@ -133,7 +133,7 @@ Returns a policy attached to the specified data stream or consumer. Request patt
 
 ```sql
 SELECT
-Policy
+policy
 FROM aws.kinesis.resource_policies
 WHERE region = '{{ region }}' -- required
 ;

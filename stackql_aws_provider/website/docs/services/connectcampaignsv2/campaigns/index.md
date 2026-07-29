@@ -66,32 +66,32 @@ The following fields are returned by `SELECT` queries:
     <td>The resource name of an Amazon Connect campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelSubtypeConfig" /></td>
+    <td><CopyableCode code="channel_subtype_config" /></td>
     <td><code>object</code></td>
     <td>Campaign Channel Subtype config</td>
 </tr>
 <tr>
-    <td><CopyableCode code="communicationLimitsOverride" /></td>
+    <td><CopyableCode code="communication_limits_override" /></td>
     <td><code>object</code></td>
     <td>Communication limits config</td>
 </tr>
 <tr>
-    <td><CopyableCode code="communicationTimeConfig" /></td>
+    <td><CopyableCode code="communication_time_config" /></td>
     <td><code>object</code></td>
     <td>Campaign communication time config</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectCampaignFlowArn" /></td>
+    <td><CopyableCode code="connect_campaign_flow_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Names(ARN) (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;+:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-\d&#123;1,2&#125;:&#91;a-zA-Z0-9-&#93;+:&#91;^:&#93;+(?:/&#91;^:&#93;+)*(?:/&#91;^:&#93;+)?(?:\:&#91;^:&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectInstanceId" /></td>
+    <td><CopyableCode code="connect_instance_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Connect Instance Id (pattern: &lt;code&gt;&#91;-_.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entryLimitsConfig" /></td>
+    <td><CopyableCode code="entry_limits_config" /></td>
     <td><code>object</code></td>
     <td>Campaign entry limits config</td>
 </tr>
@@ -145,22 +145,22 @@ The following fields are returned by `SELECT` queries:
     <td>The resource name of an Amazon Connect campaign.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="channelSubtypes" /></td>
+    <td><CopyableCode code="channel_subtypes" /></td>
     <td><code>array</code></td>
     <td>Channel subtype list</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectCampaignFlowArn" /></td>
+    <td><CopyableCode code="connect_campaign_flow_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Names(ARN) (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:&#91;a-zA-Z0-9-&#93;+:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-\d&#123;1,2&#125;:&#91;a-zA-Z0-9-&#93;+:&#91;^:&#93;+(?:/&#91;^:&#93;+)*(?:/&#91;^:&#93;+)?(?:\:&#91;^:&#93;+)?&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectInstanceId" /></td>
+    <td><CopyableCode code="connect_instance_id" /></td>
     <td><code>string</code></td>
     <td>Amazon Connect Instance Id (pattern: &lt;code&gt;&#91;-_.a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="entryLimitsConfig" /></td>
+    <td><CopyableCode code="entry_limits_config" /></td>
     <td><code>object</code></td>
     <td>Campaign entry limits config</td>
 </tr>
@@ -363,12 +363,12 @@ SELECT
 id,
 name,
 arn,
-channelSubtypeConfig,
-communicationLimitsOverride,
-communicationTimeConfig,
-connectCampaignFlowArn,
-connectInstanceId,
-entryLimitsConfig,
+channel_subtype_config,
+communication_limits_override,
+communication_time_config,
+connect_campaign_flow_arn,
+connect_instance_id,
+entry_limits_config,
 schedule,
 source,
 tags,
@@ -388,10 +388,10 @@ SELECT
 id,
 name,
 arn,
-channelSubtypes,
-connectCampaignFlowArn,
-connectInstanceId,
-entryLimitsConfig,
+channel_subtypes,
+connect_campaign_flow_arn,
+connect_instance_id,
+entry_limits_config,
 schedule,
 type_
 FROM aws.connectcampaignsv2.campaigns

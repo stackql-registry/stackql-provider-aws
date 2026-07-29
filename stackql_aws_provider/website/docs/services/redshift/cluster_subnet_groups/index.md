@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ClusterSubnetGroupName" /></td>
+    <td><CopyableCode code="cluster_subnet_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the cluster subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the cluster subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SubnetGroupStatus" /></td>
+    <td><CopyableCode code="subnet_group_status" /></td>
     <td><code>string</code></td>
     <td>The status of the cluster subnet group. Possible values are Complete, Incomplete and Invalid.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>string</code></td>
     <td>A list of the VPC Subnet elements.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SupportedClusterIpAddressTypes" /></td>
+    <td><CopyableCode code="supported_cluster_ip_address_types" /></td>
     <td><code>string</code></td>
     <td>The IP address types supported by this cluster subnet group. Possible values are ipv4 and dualstack.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The list of tags for the cluster subnet group.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcId" /></td>
+    <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>The VPC ID of the cluster subnet group.</td>
 </tr>
@@ -215,13 +215,13 @@ Returns one or more cluster subnet group objects, which contain metadata about y
 
 ```sql
 SELECT
-ClusterSubnetGroupName,
-Description,
-SubnetGroupStatus,
-Subnets,
-SupportedClusterIpAddressTypes,
-Tags,
-VpcId
+cluster_subnet_group_name,
+description,
+subnet_group_status,
+subnets,
+supported_cluster_ip_address_types,
+tags,
+vpc_id
 FROM aws.redshift.cluster_subnet_groups
 WHERE region = '{{ region }}' -- required
 AND ClusterSubnetGroupName = '{{ ClusterSubnetGroupName }}'
@@ -263,13 +263,13 @@ SELECT
 '{{ Description }}',
 '{{ Tags }}'
 RETURNING
-ClusterSubnetGroupName,
-Description,
-SubnetGroupStatus,
-Subnets,
-SupportedClusterIpAddressTypes,
-Tags,
-VpcId
+cluster_subnet_group_name,
+description,
+subnet_group_status,
+subnets,
+supported_cluster_ip_address_types,
+tags,
+vpc_id
 ;
 ```
 </TabItem>
@@ -323,13 +323,13 @@ AND SubnetIds = '{{ SubnetIds }}' --required
 AND region = '{{ region }}' --required
 AND Description = '{{ Description}}'
 RETURNING
-ClusterSubnetGroupName,
-Description,
-SubnetGroupStatus,
-Subnets,
-SupportedClusterIpAddressTypes,
-Tags,
-VpcId;
+cluster_subnet_group_name,
+description,
+subnet_group_status,
+subnets,
+supported_cluster_ip_address_types,
+tags,
+vpc_id;
 ```
 </TabItem>
 </Tabs>

@@ -50,47 +50,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ChatConfigurationArn" /></td>
+    <td><CopyableCode code="chat_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ChimeWebhookConfiguration. (pattern: &lt;code&gt;arn:aws:(wheatley|chatbot):&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConfigurationName" /></td>
+    <td><CopyableCode code="configuration_name" /></td>
     <td><code>string</code></td>
     <td>The name of the configuration. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IamRoleArn" /></td>
+    <td><CopyableCode code="iam_role_arn" /></td>
     <td><code>string</code></td>
     <td>A user-defined role that AWS Chatbot assumes. This is not the service-linked role. For more information, see IAM policies for AWS Chatbot in the AWS Chatbot Administrator Guide. (pattern: &lt;code&gt;arn:aws:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LoggingLevel" /></td>
+    <td><CopyableCode code="logging_level" /></td>
     <td><code>string</code></td>
     <td>Logging levels include ERROR, INFO, or NONE. (pattern: &lt;code&gt;(ERROR|INFO|NONE)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SnsTopicArns" /></td>
+    <td><CopyableCode code="sns_topic_arns" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Names (ARNs) of the SNS topics that deliver notifications to AWS Chatbot.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>Either ENABLED or DISABLED. The resource returns DISABLED if the organization's AWS Chatbot policy has explicitly denied that configuration. For example, if Amazon Chime is disabled. (pattern: &lt;code&gt;(ENABLED|DISABLED)&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>Provided if State is DISABLED. Provides context as to why the resource is disabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>A map of tags assigned to a resource. A tag is a string-to-string map of key-value pairs.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WebhookDescription" /></td>
+    <td><CopyableCode code="webhook_description" /></td>
     <td><code>string</code></td>
     <td>A description of the webhook. We recommend using the convention RoomName/WebhookName. For more information, see Tutorial: Get started with Amazon Chime in the AWS Chatbot Administrator Guide.</td>
 </tr>
@@ -180,15 +180,15 @@ Lists Amazon Chime webhook configurations optionally filtered by ChatConfigurati
 
 ```sql
 SELECT
-ChatConfigurationArn,
-ConfigurationName,
-IamRoleArn,
-LoggingLevel,
-SnsTopicArns,
-State,
-StateReason,
-Tags,
-WebhookDescription
+chat_configuration_arn,
+configuration_name,
+iam_role_arn,
+logging_level,
+sns_topic_arns,
+state,
+state_reason,
+tags,
+webhook_description
 FROM aws.chatbot.chime_webhook_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -231,7 +231,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-WebhookConfiguration
+webhook_configuration
 ;
 ```
 </TabItem>
@@ -291,7 +291,7 @@ WHERE
 region = '{{ region }}' --required
 AND ChatConfigurationArn = '{{ ChatConfigurationArn }}' --required
 RETURNING
-WebhookConfiguration;
+webhook_configuration;
 ```
 </TabItem>
 </Tabs>

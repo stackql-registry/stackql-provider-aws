@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next set of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NotificationSummaries" /></td>
+    <td><CopyableCode code="notification_summaries" /></td>
     <td><code>array</code></td>
     <td>List of lens notification summaries in a workload.</td>
 </tr>
@@ -124,8 +124,8 @@ List lens notifications.
 
 ```sql
 SELECT
-NextToken,
-NotificationSummaries
+next_token,
+notification_summaries
 FROM aws.wellarchitected.notifications
 WHERE region = '{{ region }}' -- required
 ;

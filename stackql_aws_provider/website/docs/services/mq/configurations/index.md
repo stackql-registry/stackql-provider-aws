@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Arn" /></td>
+    <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>Required. The ARN of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthenticationStrategy" /></td>
+    <td><CopyableCode code="authentication_strategy" /></td>
     <td><code>string</code></td>
     <td>Optional. The authentication strategy used to secure the broker. The default is SIMPLE. (SIMPLE, LDAP, CONFIG_MANAGED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Created" /></td>
+    <td><CopyableCode code="created" /></td>
     <td><code>string (date-time)</code></td>
     <td>Required. The date and time of the configuration revision.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Required. The description of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineType" /></td>
+    <td><CopyableCode code="engine_type" /></td>
     <td><code>string</code></td>
     <td>The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ. (ACTIVEMQ, RABBITMQ)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="EngineVersion" /></td>
+    <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The broker engine version. Defaults to the latest available version for the specified broker engine type. For a list of supported engine versions, see the ActiveMQ version management and the RabbitMQ version management sections in the Amazon MQ Developer Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>Required. The unique ID that Amazon MQ generates for the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestRevision" /></td>
+    <td><CopyableCode code="latest_revision" /></td>
     <td><code>object</code></td>
     <td>Required. The latest revision of the configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The list of all tags associated with this configuration.</td>
 </tr>
@@ -115,17 +115,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configurations" /></td>
+    <td><CopyableCode code="configurations" /></td>
     <td><code>array</code></td>
     <td>The list of all revisions for the specified configuration.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MaxResults" /></td>
+    <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
     <td>The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.</td>
 </tr>
@@ -238,16 +238,16 @@ Returns information about the specified configuration.
 
 ```sql
 SELECT
-Arn,
-AuthenticationStrategy,
-Created,
-Description,
-EngineType,
-EngineVersion,
-Id,
-LatestRevision,
-Name,
-Tags
+arn,
+authentication_strategy,
+created,
+description,
+engine_type,
+engine_version,
+id,
+latest_revision,
+name,
+tags
 FROM aws.mq.configurations
 WHERE `configuration-id` = '{{ configuration-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -260,9 +260,9 @@ Returns a list of all configurations.
 
 ```sql
 SELECT
-Configurations,
-MaxResults,
-NextToken
+configurations,
+max_results,
+next_token
 FROM aws.mq.configurations
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
@@ -303,12 +303,12 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Arn,
-AuthenticationStrategy,
-Created,
-Id,
-LatestRevision,
-Name
+arn,
+authentication_strategy,
+created,
+id,
+latest_revision,
+name
 ;
 ```
 </TabItem>
@@ -364,12 +364,12 @@ WHERE
 AND region = '{{ region }}' --required
 AND Data = '{{ Data }}' --required
 RETURNING
-Arn,
-Created,
-Id,
-LatestRevision,
-Name,
-Warnings;
+arn,
+created,
+id,
+latest_revision,
+name,
+warnings;
 ```
 </TabItem>
 </Tabs>

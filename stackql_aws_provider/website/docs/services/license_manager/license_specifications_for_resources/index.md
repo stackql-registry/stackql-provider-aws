@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AmiAssociationScope" /></td>
+    <td><CopyableCode code="ami_association_scope" /></td>
     <td><code>string</code></td>
     <td>Scope of AMI associations. The possible value is cross-account.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseConfigurationArn" /></td>
+    <td><CopyableCode code="license_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the license configuration.</td>
 </tr>
@@ -131,8 +131,8 @@ Describes the license configurations for the specified resource.
 
 ```sql
 SELECT
-AmiAssociationScope,
-LicenseConfigurationArn
+ami_association_scope,
+license_configuration_arn
 FROM aws.license_manager.license_specifications_for_resources
 WHERE region = '{{ region }}' -- required
 ;

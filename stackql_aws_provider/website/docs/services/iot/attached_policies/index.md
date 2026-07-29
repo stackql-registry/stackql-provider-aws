@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="policyArn" /></td>
+    <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The policy ARN.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="policyName" /></td>
+    <td><CopyableCode code="policy_name" /></td>
     <td><code>string</code></td>
     <td>The policy name. (pattern: &lt;code&gt;&#91;\w+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
@@ -144,8 +144,8 @@ Lists the policies attached to the specified thing group. Requires permission to
 
 ```sql
 SELECT
-policyArn,
-policyName
+policy_arn,
+policy_name
 FROM aws.iot.attached_policies
 WHERE target = '{{ target }}' -- required
 AND region = '{{ region }}' -- required

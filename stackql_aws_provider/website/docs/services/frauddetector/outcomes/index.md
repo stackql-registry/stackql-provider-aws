@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The next page token for subsequent requests.</td>
 </tr>
@@ -138,7 +138,7 @@ Gets one or more outcomes. This is a paginated API. If you provide a null maxRes
 
 ```sql
 SELECT
-nextToken,
+next_token,
 outcomes
 FROM aws.frauddetector.outcomes
 WHERE region = '{{ region }}' -- required

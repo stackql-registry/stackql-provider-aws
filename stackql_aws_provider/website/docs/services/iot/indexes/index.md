@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="indexName" /></td>
+    <td><CopyableCode code="index_name" /></td>
     <td><code>string</code></td>
     <td>The index name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="indexStatus" /></td>
+    <td><CopyableCode code="index_status" /></td>
     <td><code>string</code></td>
     <td>The index status. (ACTIVE, BUILDING, REBUILDING)</td>
 </tr>
@@ -80,12 +80,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="nextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token used to get the next set of results, or null if there are no additional results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="thingGroups" /></td>
+    <td><CopyableCode code="thing_groups" /></td>
     <td><code>array</code></td>
     <td>The thing groups that match the search query.</td>
 </tr>
@@ -172,8 +172,8 @@ Describes a search index. Requires permission to access the DescribeIndex action
 
 ```sql
 SELECT
-indexName,
-indexStatus,
+index_name,
+index_status,
 schema
 FROM aws.iot.indexes
 WHERE index_name = '{{ index_name }}' -- required
@@ -187,8 +187,8 @@ The query search index. Requires permission to access the SearchIndex action.
 
 ```sql
 SELECT
-nextToken,
-thingGroups,
+next_token,
+thing_groups,
 things
 FROM aws.iot.indexes
 WHERE region = '{{ region }}' -- required

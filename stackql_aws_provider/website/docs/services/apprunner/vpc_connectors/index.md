@@ -51,42 +51,42 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreatedAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the VPC connector was created. It's in Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DeletedAt" /></td>
+    <td><CopyableCode code="deleted_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the VPC connector was deleted. It's in Unix time stamp format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>A list of IDs of security groups that App Runner uses for access to Amazon Web Services resources under the specified subnets. If not specified, App Runner uses the default security group of the Amazon VPC. The default security group allows all outbound traffic.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current state of the VPC connector. If the status of a connector revision is INACTIVE, it was deleted and can't be used. Inactive connector revisions are permanently removed some time after they are deleted. (ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Subnets" /></td>
+    <td><CopyableCode code="subnets" /></td>
     <td><code>array</code></td>
     <td>A list of IDs of subnets that App Runner uses for your service. All IDs are of subnets of a single Amazon VPC.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectorArn" /></td>
+    <td><CopyableCode code="vpc_connector_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of this VPC connector. (pattern: &lt;code&gt;arn:aws(-&#91;\w&#93;+)*:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:(\w|\/|-)&#123;1,1011&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectorName" /></td>
+    <td><CopyableCode code="vpc_connector_name" /></td>
     <td><code>string</code></td>
     <td>The customer-provided VPC connector name. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-_&#93;&#123;3,39&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectorRevision" /></td>
+    <td><CopyableCode code="vpc_connector_revision" /></td>
     <td><code>integer</code></td>
     <td>The revision of this VPC connector. It's unique among all the active connectors ("Status": "ACTIVE") that share the same Name. At this time, App Runner supports only one revision per name.</td>
 </tr>
@@ -105,12 +105,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="VpcConnectors" /></td>
+    <td><CopyableCode code="vpc_connectors" /></td>
     <td><code>array</code></td>
     <td>A list of information records for VPC connectors. In a paginated request, the request returns up to MaxResults records for each call.</td>
 </tr>
@@ -201,14 +201,14 @@ Return a description of an App Runner VPC connector resource.
 
 ```sql
 SELECT
-CreatedAt,
-DeletedAt,
-SecurityGroups,
-Status,
-Subnets,
-VpcConnectorArn,
-VpcConnectorName,
-VpcConnectorRevision
+created_at,
+deleted_at,
+security_groups,
+status,
+subnets,
+vpc_connector_arn,
+vpc_connector_name,
+vpc_connector_revision
 FROM aws.apprunner.vpc_connectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,8 +220,8 @@ Returns a list of App Runner VPC connectors in your Amazon Web Services account.
 
 ```sql
 SELECT
-NextToken,
-VpcConnectors
+next_token,
+vpc_connectors
 FROM aws.apprunner.vpc_connectors
 WHERE region = '{{ region }}' -- required
 ;
@@ -258,7 +258,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-VpcConnector
+vpc_connector
 ;
 ```
 </TabItem>

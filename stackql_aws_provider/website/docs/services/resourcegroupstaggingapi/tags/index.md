@@ -111,7 +111,7 @@ region = '{{ region }}' --required
 AND ResourceARNList = '{{ ResourceARNList }}' --required
 AND Tags = '{{ Tags }}' --required
 RETURNING
-FailedResourcesMap;
+failed_resources_map;
 ```
 </TabItem>
 <TabItem value="untag_resources">
@@ -128,7 +128,7 @@ region = '{{ region }}' --required
 AND ResourceARNList = '{{ ResourceARNList }}' --required
 AND TagKeys = '{{ TagKeys }}' --required
 RETURNING
-FailedResourcesMap;
+failed_resources_map;
 ```
 </TabItem>
 </Tabs>

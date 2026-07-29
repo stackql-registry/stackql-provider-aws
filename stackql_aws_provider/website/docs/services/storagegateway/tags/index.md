@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Key" /></td>
+    <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>Tag key. The key can't start with aws:. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Value" /></td>
+    <td><CopyableCode code="value" /></td>
     <td><code>string</code></td>
     <td>Value of the tag key.</td>
 </tr>
@@ -138,8 +138,8 @@ Lists the tags that have been added to the specified resource. This operation is
 
 ```sql
 SELECT
-Key,
-Value
+key,
+value
 FROM aws.storagegateway.tags
 WHERE region = '{{ region }}' -- required
 ;
@@ -171,7 +171,7 @@ region = '{{ region }}' --required
 AND ResourceARN = '{{ ResourceARN }}' --required
 AND Tags = '{{ Tags }}' --required
 RETURNING
-ResourceARN;
+resource_arn;
 ```
 </TabItem>
 <TabItem value="remove_tags_from_resource">
@@ -188,7 +188,7 @@ region = '{{ region }}' --required
 AND ResourceARN = '{{ ResourceARN }}' --required
 AND TagKeys = '{{ TagKeys }}' --required
 RETURNING
-ResourceARN;
+resource_arn;
 ```
 </TabItem>
 </Tabs>

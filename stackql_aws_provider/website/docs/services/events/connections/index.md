@@ -50,67 +50,67 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AuthParameters" /></td>
+    <td><CopyableCode code="auth_parameters" /></td>
     <td><code>object</code></td>
     <td>The parameters to use for authorization for the connection.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AuthorizationType" /></td>
+    <td><CopyableCode code="authorization_type" /></td>
     <td><code>string</code></td>
     <td>The type of authorization specified for the connection. (BASIC, OAUTH_CLIENT_CREDENTIALS, API_KEY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionArn" /></td>
+    <td><CopyableCode code="connection_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the connection retrieved. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:events:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:connection\/&#91;\.\-_A-Za-z0-9&#93;+\/&#91;\-A-Za-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConnectionState" /></td>
+    <td><CopyableCode code="connection_state" /></td>
     <td><code>string</code></td>
     <td>The state of the connection retrieved. (CREATING, UPDATING, DELETING, AUTHORIZED, DEAUTHORIZED, AUTHORIZING, DEAUTHORIZING, ACTIVE, FAILED_CONNECTIVITY)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp for the time that the connection was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the connection retrieved. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="InvocationConnectivityParameters" /></td>
+    <td><CopyableCode code="invocation_connectivity_parameters" /></td>
     <td><code>object</code></td>
     <td>For connections to private APIs The parameters EventBridge uses to invoke the resource endpoint. For more information, see Connecting to private APIs in the Amazon EventBridge User Guide .</td>
 </tr>
 <tr>
-    <td><CopyableCode code="KmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The identifier of the KMS customer managed key for EventBridge to use to encrypt the connection, if one has been specified. For more information, see Encrypting connections in the Amazon EventBridge User Guide. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-/:&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastAuthorizedTime" /></td>
+    <td><CopyableCode code="last_authorized_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp for the time that the connection was last authorized.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp for the time that the connection was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the connection retrieved. (pattern: &lt;code&gt;&#91;\.\-_A-Za-z0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SecretArn" /></td>
+    <td><CopyableCode code="secret_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the secret created from the authorization parameters specified for the connection. (pattern: &lt;code&gt;^arn:aws(&#91;a-z&#93;|\-)*:secretsmanager:(&#91;a-z&#93;|\d|\-)*:(&#91;0-9&#93;&#123;12&#125;)?:secret:&#91;\/_+=\.@\-A-Za-z0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StateReason" /></td>
+    <td><CopyableCode code="state_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the connection is in the current connection state. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
@@ -207,19 +207,19 @@ Retrieves details about a connection.
 
 ```sql
 SELECT
-AuthParameters,
-AuthorizationType,
-ConnectionArn,
-ConnectionState,
-CreationTime,
-Description,
-InvocationConnectivityParameters,
-KmsKeyIdentifier,
-LastAuthorizedTime,
-LastModifiedTime,
-Name,
-SecretArn,
-StateReason
+auth_parameters,
+authorization_type,
+connection_arn,
+connection_state,
+creation_time,
+description,
+invocation_connectivity_parameters,
+kms_key_identifier,
+last_authorized_time,
+last_modified_time,
+name,
+secret_arn,
+state_reason
 FROM aws.events.connections
 WHERE region = '{{ region }}' -- required
 ;
@@ -260,10 +260,10 @@ SELECT
 '{{ KmsKeyIdentifier }}',
 '{{ region }}'
 RETURNING
-ConnectionArn,
-ConnectionState,
-CreationTime,
-LastModifiedTime
+connection_arn,
+connection_state,
+creation_time,
+last_modified_time
 ;
 ```
 </TabItem>
@@ -373,11 +373,11 @@ KmsKeyIdentifier = '{{ KmsKeyIdentifier }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-ConnectionArn,
-ConnectionState,
-CreationTime,
-LastAuthorizedTime,
-LastModifiedTime;
+connection_arn,
+connection_state,
+creation_time,
+last_authorized_time,
+last_modified_time;
 ```
 </TabItem>
 </Tabs>

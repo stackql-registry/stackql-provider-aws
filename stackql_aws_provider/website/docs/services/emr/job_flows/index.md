@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="JobFlows" /></td>
+    <td><CopyableCode code="job_flows" /></td>
     <td><code>array</code></td>
     <td>A list of job flows matching the parameters supplied.</td>
 </tr>
@@ -147,7 +147,7 @@ This API is no longer supported and will eventually be removed. We recommend you
 
 ```sql
 SELECT
-JobFlows
+job_flows
 FROM aws.emr.job_flows
 WHERE region = '{{ region }}' -- required
 ;

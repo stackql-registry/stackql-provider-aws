@@ -51,47 +51,47 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Configuration" /></td>
+    <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>Specifies the map tile style selected from an available provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>Specifies the data provider for the associated map tiles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The optional description for the map resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MapArn" /></td>
+    <td><CopyableCode code="map_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:map/ExampleMap (pattern: &lt;code&gt;arn(:&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*):geo(:(&#91;a-z0-9&#93;+(&#91;.-&#93;&#91;a-z0-9&#93;+)*))(:&#91;0-9&#93;+):((\*)|(&#91;-a-z&#93;+&#91;/&#93;&#91;*-._\w&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MapName" /></td>
+    <td><CopyableCode code="map_name" /></td>
     <td><code>string</code></td>
     <td>The map style selected from an available provider. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags associated with the map resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the map resource was last update in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -110,32 +110,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="CreateTime" /></td>
+    <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DataSource" /></td>
+    <td><CopyableCode code="data_source" /></td>
     <td><code>string</code></td>
     <td>Specifies the data provider for the associated map tiles.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description for the map resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="MapName" /></td>
+    <td><CopyableCode code="map_name" /></td>
     <td><code>string</code></td>
     <td>The name of the associated map resource. (pattern: &lt;code&gt;&#91;-._\w&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PricingPlan" /></td>
+    <td><CopyableCode code="pricing_plan" /></td>
     <td><code>string</code></td>
     <td>No longer used. Always returns RequestBasedUsage. (RequestBasedUsage, MobileAssetTracking, MobileAssetManagement)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="UpdateTime" /></td>
+    <td><CopyableCode code="update_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp for when the map resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
 </tr>
@@ -238,15 +238,15 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-Configuration,
-CreateTime,
-DataSource,
-Description,
-MapArn,
-MapName,
-PricingPlan,
-Tags,
-UpdateTime
+configuration,
+create_time,
+data_source,
+description,
+map_arn,
+map_name,
+pricing_plan,
+tags,
+update_time
 FROM aws.location.maps
 WHERE map_name = '{{ map_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -259,12 +259,12 @@ This operation is no longer current and may be deprecated in the future. We reco
 
 ```sql
 SELECT
-CreateTime,
-DataSource,
-Description,
-MapName,
-PricingPlan,
-UpdateTime
+create_time,
+data_source,
+description,
+map_name,
+pricing_plan,
+update_time
 FROM aws.location.maps
 WHERE region = '{{ region }}' -- required
 ;
@@ -303,9 +303,9 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-CreateTime,
-MapArn,
-MapName
+create_time,
+map_arn,
+map_name
 ;
 ```
 </TabItem>
@@ -362,9 +362,9 @@ WHERE
 map_name = '{{ map_name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
-MapArn,
-MapName,
-UpdateTime;
+map_arn,
+map_name,
+update_time;
 ```
 </TabItem>
 </Tabs>

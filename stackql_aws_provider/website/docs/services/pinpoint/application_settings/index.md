@@ -50,32 +50,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application. This identifier is displayed as the Project ID on the Amazon Pinpoint console.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CampaignHook" /></td>
+    <td><CopyableCode code="campaign_hook" /></td>
     <td><code>object</code></td>
     <td>The settings for the AWS Lambda function to invoke by default as a code hook for campaigns in the application. You can use this hook to customize segments that are used by campaigns in the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JourneyLimits" /></td>
+    <td><CopyableCode code="journey_limits" /></td>
     <td><code>object</code></td>
     <td>The default sending limits for journeys in the application. These limits apply to each journey for the application but can be overridden, on a per journey basis, with the JourneyLimits resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date and time, in ISO 8601 format, when the application's settings were last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Limits" /></td>
+    <td><CopyableCode code="limits" /></td>
     <td><code>object</code></td>
     <td>The default sending limits for campaigns in the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuietTime" /></td>
+    <td><CopyableCode code="quiet_time" /></td>
     <td><code>object</code></td>
     <td>The default quiet time for campaigns in the application. Quiet time is a specific time range when messages aren't sent to endpoints, if all the following conditions are met: The EndpointDemographic.Timezone property of the endpoint is set to a valid value. The current time in the endpoint's time zone is later than or equal to the time specified by the QuietTime.Start property for the application (or a campaign or journey that has custom quiet time settings). The current time in the endpoint's time zone is earlier than or equal to the time specified by the QuietTime.End property for the application (or a campaign or journey that has custom quiet time settings). If any of the preceding conditions isn't met, the endpoint will receive messages from a campaign or journey, even if quiet time is enabled.</td>
 </tr>
@@ -156,12 +156,12 @@ Retrieves information about the settings for an application.
 
 ```sql
 SELECT
-ApplicationId,
-CampaignHook,
-JourneyLimits,
-LastModifiedDate,
-Limits,
-QuietTime
+application_id,
+campaign_hook,
+journey_limits,
+last_modified_date,
+limits,
+quiet_time
 FROM aws.pinpoint.application_settings
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -192,7 +192,7 @@ WHERE
 AND region = '{{ region }}' --required
 AND WriteApplicationSettingsRequest = '{{ WriteApplicationSettingsRequest }}' --required
 RETURNING
-ApplicationSettingsResource;
+application_settings_resource;
 ```
 </TabItem>
 </Tabs>

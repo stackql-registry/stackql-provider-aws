@@ -51,32 +51,32 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AIWorkloadConfigArn" /></td>
+    <td><CopyableCode code="ai_workload_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AI workload configuration. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:ai-workload-config/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIWorkloadConfigName" /></td>
+    <td><CopyableCode code="ai_workload_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AI workload configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIWorkloadConfigs" /></td>
+    <td><CopyableCode code="ai_workload_configs" /></td>
     <td><code>object</code></td>
     <td>The benchmark tool configuration and workload specification.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the AI workload configuration was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="DatasetConfig" /></td>
+    <td><CopyableCode code="dataset_config" /></td>
     <td><code>object</code></td>
     <td>The dataset configuration for the workload.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>The tags associated with the AI workload configuration.</td>
 </tr>
@@ -95,17 +95,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AIWorkloadConfigArn" /></td>
+    <td><CopyableCode code="ai_workload_config_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AI workload configuration. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:ai-workload-config/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AIWorkloadConfigName" /></td>
+    <td><CopyableCode code="ai_workload_config_name" /></td>
     <td><code>string</code></td>
     <td>The name of the AI workload configuration. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A timestamp that indicates when the configuration was created.</td>
 </tr>
@@ -196,12 +196,12 @@ Returns details of an AI workload configuration, including the dataset configura
 
 ```sql
 SELECT
-AIWorkloadConfigArn,
-AIWorkloadConfigName,
-AIWorkloadConfigs,
-CreationTime,
-DatasetConfig,
-Tags
+ai_workload_config_arn,
+ai_workload_config_name,
+ai_workload_configs,
+creation_time,
+dataset_config,
+tags
 FROM aws.sagemaker.ai_workload_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -213,9 +213,9 @@ Returns a list of AI workload configurations in your account. You can filter the
 
 ```sql
 SELECT
-AIWorkloadConfigArn,
-AIWorkloadConfigName,
-CreationTime
+ai_workload_config_arn,
+ai_workload_config_name,
+creation_time
 FROM aws.sagemaker.ai_workload_configs
 WHERE region = '{{ region }}' -- required
 ;
@@ -252,7 +252,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-AIWorkloadConfigArn
+ai_workload_config_arn
 ;
 ```
 </TabItem>

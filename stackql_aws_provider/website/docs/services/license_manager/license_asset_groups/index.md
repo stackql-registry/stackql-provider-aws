@@ -51,52 +51,52 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AssociatedLicenseAssetRulesetARNs" /></td>
+    <td><CopyableCode code="associated_license_asset_ruleset_arns" /></td>
     <td><code>array</code></td>
     <td>ARNs of associated license asset rulesets.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>License asset group description.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestResourceDiscoveryTime" /></td>
+    <td><CopyableCode code="latest_resource_discovery_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Latest resource discovery time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LatestUsageAnalysisTime" /></td>
+    <td><CopyableCode code="latest_usage_analysis_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>Latest usage analysis time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseAssetGroupArn" /></td>
+    <td><CopyableCode code="license_asset_group_arn" /></td>
     <td><code>string</code></td>
     <td>Amazon Resource Name (ARN) of the license asset group. (pattern: &lt;code&gt;^arn:aws&#91;a-zA-Z-&#93;*:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9_/.-&#93;&#123;0,63&#125;:&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9:_/+=,@.-&#93;&#123;0,1023&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LicenseAssetGroupConfigurations" /></td>
+    <td><CopyableCode code="license_asset_group_configurations" /></td>
     <td><code>array</code></td>
     <td>License asset group configurations.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>License asset group name.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Properties" /></td>
+    <td><CopyableCode code="properties" /></td>
     <td><code>array</code></td>
     <td>License asset group properties.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>License asset group status. (ACTIVE, DISABLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StatusMessage" /></td>
+    <td><CopyableCode code="status_message" /></td>
     <td><code>string</code></td>
     <td>License asset group status message.</td>
 </tr>
@@ -115,12 +115,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="LicenseAssetGroups" /></td>
+    <td><CopyableCode code="license_asset_groups" /></td>
     <td><code>array</code></td>
     <td>License asset groups.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>Token for the next set of results.</td>
 </tr>
@@ -218,16 +218,16 @@ Gets a license asset group.
 
 ```sql
 SELECT
-AssociatedLicenseAssetRulesetARNs,
-Description,
-LatestResourceDiscoveryTime,
-LatestUsageAnalysisTime,
-LicenseAssetGroupArn,
-LicenseAssetGroupConfigurations,
-Name,
-Properties,
-Status,
-StatusMessage
+associated_license_asset_ruleset_arns,
+description,
+latest_resource_discovery_time,
+latest_usage_analysis_time,
+license_asset_group_arn,
+license_asset_group_configurations,
+name,
+properties,
+status,
+status_message
 FROM aws.license_manager.license_asset_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -239,8 +239,8 @@ Lists license asset groups.
 
 ```sql
 SELECT
-LicenseAssetGroups,
-NextToken
+license_asset_groups,
+next_token
 FROM aws.license_manager.license_asset_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -283,8 +283,8 @@ SELECT
 '{{ ClientToken }}' /* required */,
 '{{ region }}'
 RETURNING
-LicenseAssetGroupArn,
-Status
+license_asset_group_arn,
+status
 ;
 ```
 </TabItem>
@@ -365,8 +365,8 @@ AND AssociatedLicenseAssetRulesetARNs = '{{ AssociatedLicenseAssetRulesetARNs }}
 AND LicenseAssetGroupArn = '{{ LicenseAssetGroupArn }}' --required
 AND ClientToken = '{{ ClientToken }}' --required
 RETURNING
-LicenseAssetGroupArn,
-Status;
+license_asset_group_arn,
+status;
 ```
 </TabItem>
 </Tabs>

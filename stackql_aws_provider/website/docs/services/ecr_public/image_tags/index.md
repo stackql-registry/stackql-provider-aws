@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time stamp that indicates when the image tag was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageDetail" /></td>
+    <td><CopyableCode code="image_detail" /></td>
     <td><code>object</code></td>
     <td>An object that describes the details of an image.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="imageTag" /></td>
+    <td><CopyableCode code="image_tag" /></td>
     <td><code>string</code></td>
     <td>The tag that's associated with the image.</td>
 </tr>
@@ -129,9 +129,9 @@ Returns the image tag details for a repository in a public registry.
 
 ```sql
 SELECT
-createdAt,
-imageDetail,
-imageTag
+created_at,
+image_detail,
+image_tag
 FROM aws.ecr_public.image_tags
 WHERE region = '{{ region }}' -- required
 ;

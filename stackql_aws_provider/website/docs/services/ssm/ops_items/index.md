@@ -51,112 +51,112 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActualEndTime" /></td>
+    <td><CopyableCode code="actual_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a runbook workflow ended. Currently reported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActualStartTime" /></td>
+    <td><CopyableCode code="actual_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a runbook workflow started. Currently reported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>An OpsItem category. Category options include: Availability, Cost, Performance, Recovery, Security. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Web Services account that created the OpsItem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the OpsItem was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The OpsItem description. (pattern: &lt;code&gt;&#91;\s\S&#93;*\S&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The ARN of the Amazon Web Services account that last updated the OpsItem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the OpsItem was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Notifications" /></td>
+    <td><CopyableCode code="notifications" /></td>
     <td><code>array</code></td>
     <td>The Amazon Resource Name (ARN) of an Amazon Simple Notification Service (Amazon SNS) topic where notifications are sent when this OpsItem is edited or changed.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationalData" /></td>
+    <td><CopyableCode code="operational_data" /></td>
     <td><code>object</code></td>
     <td>Operational data is custom data that provides useful reference details about the OpsItem. For example, you can specify log files, error strings, license keys, troubleshooting tips, or other relevant data. You enter operational data as key-value pairs. The key has a maximum length of 128 characters. The value has a maximum size of 20 KB. Operational data keys can't begin with the following: amazon, aws, amzn, ssm, /amazon, /aws, /amzn, /ssm. You can choose to make the data searchable by other users in the account or you can restrict search access. Searchable data means that all users with access to the OpsItem Overview page (as provided by the DescribeOpsItems API operation) can view and search on the specified data. Operational data that isn't searchable is only viewable by users who have access to the OpsItem (as provided by the GetOpsItem API operation). Use the /aws/resources key in OperationalData to specify a related resource in the request. Use the /aws/automations key in OperationalData to associate an Automation runbook with the OpsItem. To view Amazon Web Services CLI example commands that use these keys, see Creating OpsItems manually in the Amazon Web Services Systems Manager User Guide.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemArn" /></td>
+    <td><CopyableCode code="ops_item_arn" /></td>
     <td><code>string</code></td>
     <td>The OpsItem Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:ssm:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;0-9&#93;&#123;12&#125;:opsitem.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemId" /></td>
+    <td><CopyableCode code="ops_item_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OpsItem. (pattern: &lt;code&gt;^(oi)-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemType" /></td>
+    <td><CopyableCode code="ops_item_type" /></td>
     <td><code>string</code></td>
     <td>The type of OpsItem. Systems Manager supports the following types of OpsItems: /aws/issue This type of OpsItem is used for default OpsItems created by OpsCenter. /aws/changerequest This type of OpsItem is used by Change Manager for reviewing and approving or rejecting change requests. /aws/insight This type of OpsItem is used by OpsCenter for aggregating and reporting on duplicate OpsItems.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlannedEndTime" /></td>
+    <td><CopyableCode code="planned_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time specified in a change request for a runbook workflow to end. Currently supported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlannedStartTime" /></td>
+    <td><CopyableCode code="planned_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time specified in a change request for a runbook workflow to start. Currently supported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The importance of this OpsItem in relation to other OpsItems in the system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RelatedOpsItems" /></td>
+    <td><CopyableCode code="related_ops_items" /></td>
     <td><code>array</code></td>
     <td>One or more OpsItems that share something in common with the current OpsItem. For example, related OpsItems can include OpsItems with similar error messages, impacted resources, or statuses for the impacted resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>The severity of the OpsItem. Severity options range from 1 to 4. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The origin of the OpsItem, such as Amazon EC2 or Systems Manager. The impacted resource is a subset of source. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The OpsItem status. For more information, see Editing OpsItem details in the Amazon Web Services Systems Manager User Guide. (Open, InProgress, Resolved, Pending, TimedOut, Cancelling, Cancelled, Failed, CompletedWithSuccess, CompletedWithFailure, Scheduled, RunbookInProgress, PendingChangeCalendarOverride, ChangeCalendarOverrideApproved, ChangeCalendarOverrideRejected, PendingApproval, Approved, Revoked, Rejected, Closed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>A short heading that describes the nature of the OpsItem and the impacted resource. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Version" /></td>
+    <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
     <td>The version of this OpsItem. Each time the OpsItem is edited the version number increments by one.</td>
 </tr>
@@ -175,87 +175,87 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ActualEndTime" /></td>
+    <td><CopyableCode code="actual_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a runbook workflow ended. Currently reported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ActualStartTime" /></td>
+    <td><CopyableCode code="actual_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time a runbook workflow started. Currently reported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Category" /></td>
+    <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
     <td>A list of OpsItems by category. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM entity that created the OpsItem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreatedTime" /></td>
+    <td><CopyableCode code="created_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the OpsItem was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedBy" /></td>
+    <td><CopyableCode code="last_modified_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the IAM entity that created the OpsItem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the OpsItem was last updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OperationalData" /></td>
+    <td><CopyableCode code="operational_data" /></td>
     <td><code>object</code></td>
     <td>Operational data is custom data that provides useful reference details about the OpsItem.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemId" /></td>
+    <td><CopyableCode code="ops_item_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the OpsItem. (pattern: &lt;code&gt;^(oi)-&#91;0-9a-f&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpsItemType" /></td>
+    <td><CopyableCode code="ops_item_type" /></td>
     <td><code>string</code></td>
     <td>The type of OpsItem. Systems Manager supports the following types of OpsItems: /aws/issue This type of OpsItem is used for default OpsItems created by OpsCenter. /aws/changerequest This type of OpsItem is used by Change Manager for reviewing and approving or rejecting change requests. /aws/insight This type of OpsItem is used by OpsCenter for aggregating and reporting on duplicate OpsItems.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlannedEndTime" /></td>
+    <td><CopyableCode code="planned_end_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time specified in a change request for a runbook workflow to end. Currently supported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PlannedStartTime" /></td>
+    <td><CopyableCode code="planned_start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time specified in a change request for a runbook workflow to start. Currently supported only for the OpsItem type /aws/changerequest.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Priority" /></td>
+    <td><CopyableCode code="priority" /></td>
     <td><code>integer</code></td>
     <td>The importance of this OpsItem in relation to other OpsItems in the system.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Severity" /></td>
+    <td><CopyableCode code="severity" /></td>
     <td><code>string</code></td>
     <td>A list of OpsItems by severity. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Source" /></td>
+    <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
     <td>The impacted Amazon Web Services resource. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Status" /></td>
+    <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The OpsItem status. (Open, InProgress, Resolved, Pending, TimedOut, Cancelling, Cancelled, Failed, CompletedWithSuccess, CompletedWithFailure, Scheduled, RunbookInProgress, PendingChangeCalendarOverride, ChangeCalendarOverrideApproved, ChangeCalendarOverrideRejected, PendingApproval, Approved, Revoked, Rejected, Closed)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Title" /></td>
+    <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
     <td>A short heading that describes the nature of the OpsItem and the impacted resource. (pattern: &lt;code&gt;^(?!\s*$).+&lt;/code&gt;)</td>
 </tr>
@@ -353,28 +353,28 @@ Get information about an OpsItem by using the ID. You must have permission in Id
 
 ```sql
 SELECT
-ActualEndTime,
-ActualStartTime,
-Category,
-CreatedBy,
-CreatedTime,
-Description,
-LastModifiedBy,
-LastModifiedTime,
-Notifications,
-OperationalData,
-OpsItemArn,
-OpsItemId,
-OpsItemType,
-PlannedEndTime,
-PlannedStartTime,
-Priority,
-RelatedOpsItems,
-Severity,
-Source,
-Status,
-Title,
-Version
+actual_end_time,
+actual_start_time,
+category,
+created_by,
+created_time,
+description,
+last_modified_by,
+last_modified_time,
+notifications,
+operational_data,
+ops_item_arn,
+ops_item_id,
+ops_item_type,
+planned_end_time,
+planned_start_time,
+priority,
+related_ops_items,
+severity,
+source,
+status,
+title,
+version
 FROM aws.ssm.ops_items
 WHERE region = '{{ region }}' -- required
 ;
@@ -386,23 +386,23 @@ Query a set of OpsItems. You must have permission in Identity and Access Managem
 
 ```sql
 SELECT
-ActualEndTime,
-ActualStartTime,
-Category,
-CreatedBy,
-CreatedTime,
-LastModifiedBy,
-LastModifiedTime,
-OperationalData,
-OpsItemId,
-OpsItemType,
-PlannedEndTime,
-PlannedStartTime,
-Priority,
-Severity,
-Source,
-Status,
-Title
+actual_end_time,
+actual_start_time,
+category,
+created_by,
+created_time,
+last_modified_by,
+last_modified_time,
+operational_data,
+ops_item_id,
+ops_item_type,
+planned_end_time,
+planned_start_time,
+priority,
+severity,
+source,
+status,
+title
 FROM aws.ssm.ops_items
 WHERE region = '{{ region }}' -- required
 ;
@@ -463,8 +463,8 @@ SELECT
 '{{ AccountId }}',
 '{{ region }}'
 RETURNING
-OpsItemArn,
-OpsItemId
+ops_item_arn,
+ops_item_id
 ;
 ```
 </TabItem>

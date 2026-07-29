@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="AliasArn" /></td>
+    <td><CopyableCode code="alias_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers alias resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::alias/alias-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift alias ARN, the resource ID matches the alias ID value. (pattern: &lt;code&gt;^arn:.*:alias\/alias-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="AliasId" /></td>
+    <td><CopyableCode code="alias_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the alias. Alias IDs are unique within a Region. (pattern: &lt;code&gt;^alias-\S+&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationTime" /></td>
+    <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>A time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A human-readable description of an alias.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><CopyableCode code="last_updated_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that this data object was last modified. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>A descriptive label that is associated with an alias. Alias names do not need to be unique. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RoutingStrategy" /></td>
+    <td><CopyableCode code="routing_strategy" /></td>
     <td><code>object</code></td>
     <td>The routing configuration, including routing type and fleet target, for the alias.</td>
 </tr>
@@ -177,13 +177,13 @@ This API works with the following fleet types: EC2, Anywhere, Container Retrieve
 
 ```sql
 SELECT
-AliasArn,
-AliasId,
-CreationTime,
-Description,
-LastUpdatedTime,
-Name,
-RoutingStrategy
+alias_arn,
+alias_id,
+creation_time,
+description,
+last_updated_time,
+name,
+routing_strategy
 FROM aws.gamelift.alias
 WHERE region = '{{ region }}' -- required
 ;
@@ -220,7 +220,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-Alias
+alias
 ;
 ```
 </TabItem>
@@ -282,7 +282,7 @@ WHERE
 region = '{{ region }}' --required
 AND AliasId = '{{ AliasId }}' --required
 RETURNING
-Alias;
+alias;
 ```
 </TabItem>
 </Tabs>

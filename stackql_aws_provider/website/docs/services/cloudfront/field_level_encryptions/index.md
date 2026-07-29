@@ -50,17 +50,17 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="FieldLevelEncryptionConfig" /></td>
+    <td><CopyableCode code="field_level_encryption_config" /></td>
     <td><code>string</code></td>
     <td>A complex data type that includes the profile configurations specified for field-level encryption.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The configuration ID for a field-level encryption configuration which includes a set of profiles that specify certain selected data fields to be encrypted by specific public keys.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedTime" /></td>
+    <td><CopyableCode code="last_modified_time" /></td>
     <td><code>string</code></td>
     <td>The last time the field-level encryption configuration was changed.</td>
 </tr>
@@ -134,9 +134,9 @@ Get the field-level encryption configuration information.
 
 ```sql
 SELECT
-FieldLevelEncryptionConfig,
-Id,
-LastModifiedTime
+field_level_encryption_config,
+id,
+last_modified_time
 FROM aws.cloudfront.field_level_encryptions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

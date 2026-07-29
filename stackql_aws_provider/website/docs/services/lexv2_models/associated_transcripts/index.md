@@ -50,37 +50,37 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="associatedTranscripts" /></td>
+    <td><CopyableCode code="associated_transcripts" /></td>
     <td><code>array</code></td>
     <td>The object that contains the associated transcript that meet the criteria you specified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botId" /></td>
+    <td><CopyableCode code="bot_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot associated with the transcripts that you are searching. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botRecommendationId" /></td>
+    <td><CopyableCode code="bot_recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the bot recommendation associated with the transcripts to search. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="botVersion" /></td>
+    <td><CopyableCode code="bot_version" /></td>
     <td><code>string</code></td>
     <td>The version of the bot containing the transcripts that you are searching. (pattern: &lt;code&gt;^(DRAFT|&#91;0-9&#93;+)$&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="localeId" /></td>
+    <td><CopyableCode code="locale_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the language and locale of the transcripts to search. The string must match one of the supported locales. For more information, see Supported languages</td>
 </tr>
 <tr>
-    <td><CopyableCode code="nextIndex" /></td>
+    <td><CopyableCode code="next_index" /></td>
     <td><code>integer</code></td>
     <td>A index that indicates whether there are more results to return in a response to the SearchAssociatedTranscripts operation. If the nextIndex field is present, you send the contents as the nextIndex parameter of a SearchAssociatedTranscriptsRequest operation to get the next page of results.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="totalResults" /></td>
+    <td><CopyableCode code="total_results" /></td>
     <td><code>integer</code></td>
     <td>The total number of transcripts returned by the search.</td>
 </tr>
@@ -169,13 +169,13 @@ Search for associated transcripts that meet the specified criteria.
 
 ```sql
 SELECT
-associatedTranscripts,
-botId,
-botRecommendationId,
-botVersion,
-localeId,
-nextIndex,
-totalResults
+associated_transcripts,
+bot_id,
+bot_recommendation_id,
+bot_version,
+locale_id,
+next_index,
+total_results
 FROM aws.lexv2_models.associated_transcripts
 WHERE bot_id = '{{ bot_id }}' -- required
 AND bot_version = '{{ bot_version }}' -- required

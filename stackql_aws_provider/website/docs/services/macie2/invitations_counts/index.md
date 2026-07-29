@@ -50,7 +50,7 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="invitationsCount" /></td>
+    <td><CopyableCode code="invitations_count" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total number of invitations that were received by the account, not including the currently accepted invitation.</td>
 </tr>
@@ -119,7 +119,7 @@ Retrieves the count of Amazon Macie membership invitations that were received by
 
 ```sql
 SELECT
-invitationsCount
+invitations_count
 FROM aws.macie2.invitations_counts
 WHERE region = '{{ region }}' -- required
 ;

@@ -56,12 +56,12 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon S3 URI of the export task where data will be exported.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportFilter" /></td>
+    <td><CopyableCode code="export_filter" /></td>
     <td><code>object</code></td>
     <td>The export filter of the export task.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="exportTaskDetails" /></td>
+    <td><CopyableCode code="export_task_details" /></td>
     <td><code>object</code></td>
     <td>The details of the export task.</td>
 </tr>
@@ -71,22 +71,22 @@ The following fields are returned by `SELECT` queries:
     <td>The format of the export task. (PARQUET, CSV)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="graphId" /></td>
+    <td><CopyableCode code="graph_id" /></td>
     <td><code>string</code></td>
     <td>The source graph identifier of the export task. (pattern: &lt;code&gt;g-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The KMS key identifier of the export task. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parquetType" /></td>
+    <td><CopyableCode code="parquet_type" /></td>
     <td><code>string</code></td>
     <td>The parquet type of the export task. (COLUMNAR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that will allow data to be exported to the destination. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:(role|role/service-role)(/&#91;\w+=,.@-&#93;+)+&lt;/code&gt;)</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the export task. (INITIALIZING, EXPORTING, SUCCEEDED, FAILED, CANCELLING, CANCELLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the export task has this status value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the export task. (pattern: &lt;code&gt;t-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -130,22 +130,22 @@ The following fields are returned by `SELECT` queries:
     <td>The format of the export task. (PARQUET, CSV)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="graphId" /></td>
+    <td><CopyableCode code="graph_id" /></td>
     <td><code>string</code></td>
     <td>The source graph identifier of the export task. (pattern: &lt;code&gt;g-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="kmsKeyIdentifier" /></td>
+    <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
     <td>The KMS key identifier of the export task. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="parquetType" /></td>
+    <td><CopyableCode code="parquet_type" /></td>
     <td><code>string</code></td>
     <td>The parquet type of the export task. (COLUMNAR)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="roleArn" /></td>
+    <td><CopyableCode code="role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that will allow the data to be exported to the destination. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:iam::\d&#123;12&#125;:(role|role/service-role)(/&#91;\w+=,.@-&#93;+)+&lt;/code&gt;)</td>
 </tr>
@@ -155,12 +155,12 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the export task. (INITIALIZING, EXPORTING, SUCCEEDED, FAILED, CANCELLING, CANCELLED, DELETED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="statusReason" /></td>
+    <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
     <td>The reason that the export task has this status value.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="taskId" /></td>
+    <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the export task. (pattern: &lt;code&gt;t-&#91;a-z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
@@ -258,16 +258,16 @@ Retrieves a specified export task.
 ```sql
 SELECT
 destination,
-exportFilter,
-exportTaskDetails,
+export_filter,
+export_task_details,
 format_,
-graphId,
-kmsKeyIdentifier,
-parquetType,
-roleArn,
+graph_id,
+kms_key_identifier,
+parquet_type,
+role_arn,
 status,
-statusReason,
-taskId
+status_reason,
+task_id
 FROM aws.neptune_graph.export_tasks
 WHERE task_identifier = '{{ task_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -282,13 +282,13 @@ Retrieves a list of export tasks.
 SELECT
 destination,
 format_,
-graphId,
-kmsKeyIdentifier,
-parquetType,
-roleArn,
+graph_id,
+kms_key_identifier,
+parquet_type,
+role_arn,
 status,
-statusReason,
-taskId
+status_reason,
+task_id
 FROM aws.neptune_graph.export_tasks
 WHERE region = '{{ region }}' -- required
 AND graphIdentifier = '{{ graphIdentifier }}'

@@ -61,12 +61,12 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the listing was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdBy" /></td>
+    <td><CopyableCode code="created_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who created the listing.</td>
 </tr>
@@ -76,7 +76,7 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="domainId" /></td>
+    <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Amazon DataZone domain. (pattern: &lt;code&gt;dzd&#91;-_&#93;&#91;a-zA-Z0-9_-&#93;&#123;1,36&#125;&lt;/code&gt;)</td>
 </tr>
@@ -86,7 +86,7 @@ The following fields are returned by `SELECT` queries:
     <td>The details of a listing.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="listingRevision" /></td>
+    <td><CopyableCode code="listing_revision" /></td>
     <td><code>string</code></td>
     <td>The revision of a listing.</td>
 </tr>
@@ -96,12 +96,12 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the listing. (CREATING, ACTIVE, INACTIVE)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the listing was updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedBy" /></td>
+    <td><CopyableCode code="updated_by" /></td>
     <td><code>string</code></td>
     <td>The Amazon DataZone user who updated the listing.</td>
 </tr>
@@ -120,12 +120,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="assetListing" /></td>
+    <td><CopyableCode code="asset_listing" /></td>
     <td><code>object</code></td>
     <td>The asset listing included in the results of the SearchListings action.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="dataProductListing" /></td>
+    <td><CopyableCode code="data_product_listing" /></td>
     <td><code>object</code></td>
     <td>The data product listing.</td>
 </tr>
@@ -233,15 +233,15 @@ Gets a listing (a record of an asset at a given time). If you specify a listing 
 SELECT
 id,
 name,
-createdAt,
-createdBy,
+created_at,
+created_by,
 description,
-domainId,
+domain_id,
 item,
-listingRevision,
+listing_revision,
 status,
-updatedAt,
-updatedBy
+updated_at,
+updated_by
 FROM aws.datazone.listings
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
@@ -256,8 +256,8 @@ Searches listings in Amazon DataZone. SearchListings is a powerful capability th
 
 ```sql
 SELECT
-assetListing,
-dataProductListing
+asset_listing,
+data_product_listing
 FROM aws.datazone.listings
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND region = '{{ region }}' -- required
@@ -299,8 +299,8 @@ SELECT
 '{{ domain_identifier }}',
 '{{ region }}'
 RETURNING
-listingId,
-listingRevision,
+listing_id,
+listing_revision,
 status
 ;
 ```

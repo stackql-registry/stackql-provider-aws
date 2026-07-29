@@ -50,22 +50,22 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="DiskIds" /></td>
+    <td><CopyableCode code="disk_ids" /></td>
     <td><code>array</code></td>
     <td>An array of the gateway's local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="GatewayARN" /></td>
+    <td><CopyableCode code="gateway_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the gateway. Use the ListGateways operation to return a list of gateways for your account and Amazon Web Services Region.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkingStorageAllocatedInBytes" /></td>
+    <td><CopyableCode code="working_storage_allocated_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total working storage in bytes allocated for the gateway. If no working storage is configured for the gateway, this field returns 0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WorkingStorageUsedInBytes" /></td>
+    <td><CopyableCode code="working_storage_used_in_bytes" /></td>
     <td><code>integer (int64)</code></td>
     <td>The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.</td>
 </tr>
@@ -141,10 +141,10 @@ Returns information about the working storage of a gateway. This operation is on
 
 ```sql
 SELECT
-DiskIds,
-GatewayARN,
-WorkingStorageAllocatedInBytes,
-WorkingStorageUsedInBytes
+disk_ids,
+gateway_arn,
+working_storage_allocated_in_bytes,
+working_storage_used_in_bytes
 FROM aws.storagegateway.working_storages
 WHERE region = '{{ region }}' -- required
 ;
@@ -175,7 +175,7 @@ region = '{{ region }}' --required
 AND GatewayARN = '{{ GatewayARN }}' --required
 AND DiskIds = '{{ DiskIds }}' --required
 RETURNING
-GatewayARN;
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

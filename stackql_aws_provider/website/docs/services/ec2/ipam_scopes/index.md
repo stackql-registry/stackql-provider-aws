@@ -50,62 +50,62 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Description" /></td>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ExternalAuthorityConfiguration" /></td>
+    <td><CopyableCode code="external_authority_configuration" /></td>
     <td><code>string</code></td>
     <td>The external authority configuration for this IPAM scope, if configured. The configuration that links an Amazon VPC IPAM scope to an external authority system. It specifies the type of external system and the external resource identifier that identifies your account or instance in that system. In IPAM, an external authority is a third-party IP address management system that provides CIDR blocks when you provision address space for top-level IPAM pools. This allows you to use your existing IP management system to control which address ranges are allocated to Amazon Web Services while using Amazon VPC IPAM to manage subnets within those ranges.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamArn" /></td>
+    <td><CopyableCode code="ipam_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IPAM.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamRegion" /></td>
+    <td><CopyableCode code="ipam_region" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services Region of the IPAM scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamScopeArn" /></td>
+    <td><CopyableCode code="ipam_scope_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamScopeId" /></td>
+    <td><CopyableCode code="ipam_scope_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IpamScopeType" /></td>
+    <td><CopyableCode code="ipam_scope_type" /></td>
     <td><code>string</code></td>
     <td>The type of the scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="IsDefault" /></td>
+    <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
     <td>Defines if the scope is the default scope or not.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OwnerId" /></td>
+    <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the owner of the scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="PoolCount" /></td>
+    <td><CopyableCode code="pool_count" /></td>
     <td><code>integer</code></td>
     <td>The number of pools in the scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the IPAM scope.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.</td>
 </tr>
@@ -255,18 +255,18 @@ Get information about your IPAM scopes.
 
 ```sql
 SELECT
-Description,
-ExternalAuthorityConfiguration,
-IpamArn,
-IpamRegion,
-IpamScopeArn,
-IpamScopeId,
-IpamScopeType,
-IsDefault,
-OwnerId,
-PoolCount,
-State,
-Tags
+description,
+external_authority_configuration,
+ipam_arn,
+ipam_region,
+ipam_scope_arn,
+ipam_scope_id,
+ipam_scope_type,
+is_default,
+owner_id,
+pool_count,
+state,
+tags
 FROM aws.ec2.ipam_scopes
 WHERE region = '{{ region }}' -- required
 AND DryRun = '{{ DryRun }}'
@@ -312,18 +312,18 @@ SELECT
 '{{ ClientToken }}',
 '{{ ExternalAuthorityConfiguration }}'
 RETURNING
-Description,
-ExternalAuthorityConfiguration,
-IpamArn,
-IpamRegion,
-IpamScopeArn,
-IpamScopeId,
-IpamScopeType,
-IsDefault,
-OwnerId,
-PoolCount,
-State,
-Tags
+description,
+external_authority_configuration,
+ipam_arn,
+ipam_region,
+ipam_scope_arn,
+ipam_scope_id,
+ipam_scope_type,
+is_default,
+owner_id,
+pool_count,
+state,
+tags
 ;
 ```
 </TabItem>
@@ -388,18 +388,18 @@ AND Description = '{{ Description}}'
 AND ExternalAuthorityConfiguration = '{{ ExternalAuthorityConfiguration}}'
 AND RemoveExternalAuthorityConfiguration = {{ RemoveExternalAuthorityConfiguration}}
 RETURNING
-Description,
-ExternalAuthorityConfiguration,
-IpamArn,
-IpamRegion,
-IpamScopeArn,
-IpamScopeId,
-IpamScopeType,
-IsDefault,
-OwnerId,
-PoolCount,
-State,
-Tags;
+description,
+external_authority_configuration,
+ipam_arn,
+ipam_region,
+ipam_scope_arn,
+ipam_scope_id,
+ipam_scope_type,
+is_default,
+owner_id,
+pool_count,
+state,
+tags;
 ```
 </TabItem>
 </Tabs>

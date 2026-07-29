@@ -51,107 +51,107 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Activities" /></td>
+    <td><CopyableCode code="activities" /></td>
     <td><code>object</code></td>
     <td>A map that contains a set of Activity objects, one object for each activity in the journey. For each Activity object, the key is the unique identifier (string) for an activity and the value is the settings for the activity.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ApplicationId" /></td>
+    <td><CopyableCode code="application_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the application that the journey applies to.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ClosedDays" /></td>
+    <td><CopyableCode code="closed_days" /></td>
     <td><code>object</code></td>
     <td>The time when a journey will not send messages. QuietTime should be configured first and SendingSchedule should be set to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="CreationDate" /></td>
+    <td><CopyableCode code="creation_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the journey was created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Id" /></td>
+    <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="JourneyChannelSettings" /></td>
+    <td><CopyableCode code="journey_channel_settings" /></td>
     <td><code>object</code></td>
     <td>The channel-specific configurations for the journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LastModifiedDate" /></td>
+    <td><CopyableCode code="last_modified_date" /></td>
     <td><code>string</code></td>
     <td>The date, in ISO 8601 format, when the journey was last modified.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Limits" /></td>
+    <td><CopyableCode code="limits" /></td>
     <td><code>object</code></td>
     <td>The messaging and entry limits for the journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="LocalTime" /></td>
+    <td><CopyableCode code="local_time" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether the journey's scheduled start and end times use each participant's local time. If this value is true, the schedule uses each participant's local time.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Name" /></td>
+    <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="OpenHours" /></td>
+    <td><CopyableCode code="open_hours" /></td>
     <td><code>object</code></td>
     <td>The time when a journey can send messages. QuietTime should be configured first and SendingSchedule should be set to true.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="QuietTime" /></td>
+    <td><CopyableCode code="quiet_time" /></td>
     <td><code>object</code></td>
     <td>The quiet time settings for the journey. Quiet time is a specific time range when a journey doesn't send messages to participants, if all the following conditions are met: The EndpointDemographic.Timezone property of the endpoint for the participant is set to a valid value. The current time in the participant's time zone is later than or equal to the time specified by the QuietTime.Start property for the journey. The current time in the participant's time zone is earlier than or equal to the time specified by the QuietTime.End property for the journey. If any of the preceding conditions isn't met, the participant will receive messages from the journey, even if quiet time is enabled.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshFrequency" /></td>
+    <td><CopyableCode code="refresh_frequency" /></td>
     <td><code>string</code></td>
     <td>The frequency with which Amazon Pinpoint evaluates segment and event data for the journey, as a duration in ISO 8601 format.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="RefreshOnSegmentUpdate" /></td>
+    <td><CopyableCode code="refresh_on_segment_update" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the journey participants should be refreshed when a segment is updated.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="Schedule" /></td>
+    <td><CopyableCode code="schedule" /></td>
     <td><code>object</code></td>
     <td>The schedule settings for the journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="SendingSchedule" /></td>
+    <td><CopyableCode code="sending_schedule" /></td>
     <td><code>boolean</code></td>
     <td>Indicates if journey has Advance Quiet Time enabled. This flag should be set to true in order to allow using OpenHours and ClosedDays.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartActivity" /></td>
+    <td><CopyableCode code="start_activity" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for the first activity in the journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="StartCondition" /></td>
+    <td><CopyableCode code="start_condition" /></td>
     <td><code>object</code></td>
     <td>The segment that defines which users are participants in the journey.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="State" /></td>
+    <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current status of the journey. Possible values are: DRAFT - The journey is being developed and hasn't been published yet. ACTIVE - The journey has been developed and published. Depending on the journey's schedule, the journey may currently be running or scheduled to start running at a later time. If a journey's status is ACTIVE, you can't add, change, or remove activities from it. COMPLETED - The journey has been published and has finished running. All participants have entered the journey and no participants are waiting to complete the journey or any activities in the journey. CANCELLED - The journey has been stopped. If a journey's status is CANCELLED, you can't add, change, or remove activities or segment settings from the journey. CLOSED - The journey has been published and has started running. It may have also passed its scheduled end time, or passed its scheduled start time and a refresh frequency hasn't been specified for it. If a journey's status is CLOSED, you can't add participants to it, and no existing participants can enter the journey for the first time. However, any existing participants who are currently waiting to start an activity may continue the journey. (DRAFT, ACTIVE, COMPLETED, CANCELLED, CLOSED, PAUSED)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="TimezoneEstimationMethods" /></td>
+    <td><CopyableCode code="timezone_estimation_methods" /></td>
     <td><code>array</code></td>
     <td>An array of time zone estimation methods, if any, to use for determining an Endpoints time zone if the Endpoint does not have a value for the Demographic.Timezone attribute. PHONE_NUMBER - A time zone is determined based on the Endpoint.Address and Endpoint.Location.Country. POSTAL_CODE - A time zone is determined based on the Endpoint.Location.PostalCode and Endpoint.Location.Country. POSTAL_CODE detection is only supported in the United States, United Kingdom, Australia, New Zealand, Canada, France, Italy, Spain, Germany and in regions where Amazon Pinpoint is available.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="WaitForQuietTime" /></td>
+    <td><CopyableCode code="wait_for_quiet_time" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether endpoints in quiet hours should enter a wait activity until quiet hours have elapsed.</td>
 </tr>
@@ -175,12 +175,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Item" /></td>
+    <td><CopyableCode code="item" /></td>
     <td><code>array</code></td>
     <td>An array of responses, one for each journey that's associated with the application.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="NextToken" /></td>
+    <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.</td>
 </tr>
@@ -305,27 +305,27 @@ Retrieves information about the status, configuration, and other settings for a 
 
 ```sql
 SELECT
-Activities,
-ApplicationId,
-ClosedDays,
-CreationDate,
-Id,
-JourneyChannelSettings,
-LastModifiedDate,
-Limits,
-LocalTime,
-Name,
-OpenHours,
-QuietTime,
-RefreshFrequency,
-RefreshOnSegmentUpdate,
-Schedule,
-SendingSchedule,
-StartActivity,
-StartCondition,
-State,
-TimezoneEstimationMethods,
-WaitForQuietTime,
+activities,
+application_id,
+closed_days,
+creation_date,
+id,
+journey_channel_settings,
+last_modified_date,
+limits,
+local_time,
+name,
+open_hours,
+quiet_time,
+refresh_frequency,
+refresh_on_segment_update,
+schedule,
+sending_schedule,
+start_activity,
+start_condition,
+state,
+timezone_estimation_methods,
+wait_for_quiet_time,
 tags
 FROM aws.pinpoint.journeys
 WHERE `application-id` = '{{ application-id }}' -- required
@@ -340,8 +340,8 @@ Retrieves information about the status, configuration, and other settings for al
 
 ```sql
 SELECT
-Item,
-NextToken
+item,
+next_token
 FROM aws.pinpoint.journeys
 WHERE `application-id` = '{{ application-id }}' -- required
 AND region = '{{ region }}' -- required
@@ -377,7 +377,7 @@ SELECT
 '{{ application-id }}',
 '{{ region }}'
 RETURNING
-JourneyResponse
+journey_response
 ;
 ```
 </TabItem>
@@ -496,7 +496,7 @@ AND `journey-id` = '{{ journey-id }}' --required
 AND region = '{{ region }}' --required
 AND WriteJourneyRequest = '{{ WriteJourneyRequest }}' --required
 RETURNING
-JourneyResponse;
+journey_response;
 ```
 </TabItem>
 <TabItem value="update_journey_state">
@@ -513,7 +513,7 @@ AND `journey-id` = '{{ journey-id }}' --required
 AND region = '{{ region }}' --required
 AND JourneyStateRequest = '{{ JourneyStateRequest }}' --required
 RETURNING
-JourneyResponse;
+journey_response;
 ```
 </TabItem>
 </Tabs>

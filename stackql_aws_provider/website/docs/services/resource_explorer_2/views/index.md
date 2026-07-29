@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="Tags" /></td>
+    <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tag key and value pairs that are attached to the view.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="View" /></td>
+    <td><CopyableCode code="view" /></td>
     <td><code>object</code></td>
     <td>A view is a structure that defines a set of filters that provide a view into the information in the Amazon Web Services Resource Explorer index. The filters specify which information from the index is visible to the users of the view. For example, you can specify filters that include only resources that are tagged with the key "ENV" and the value "DEVELOPMENT" in the results returned by this view. You could also create a second view that includes only resources that are tagged with "ENV" and "PRODUCTION".</td>
 </tr>
@@ -180,8 +180,8 @@ Retrieves details of the specified view.
 
 ```sql
 SELECT
-Tags,
-View
+tags,
+view
 FROM aws.resource_explorer_2.views
 WHERE region = '{{ region }}' -- required
 ;
@@ -234,7 +234,7 @@ SELECT
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
-View
+view
 ;
 ```
 </TabItem>
@@ -290,7 +290,7 @@ WHERE
 region = '{{ region }}' --required
 AND ViewArn = '{{ ViewArn }}' --required
 RETURNING
-View;
+view;
 ```
 </TabItem>
 </Tabs>

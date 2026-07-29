@@ -50,12 +50,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="ConformancePackComplianceStatus" /></td>
+    <td><CopyableCode code="conformance_pack_compliance_status" /></td>
     <td><code>string</code></td>
     <td>The status of the conformance pack. (COMPLIANT, NON_COMPLIANT, INSUFFICIENT_DATA)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ConformancePackName" /></td>
+    <td><CopyableCode code="conformance_pack_name" /></td>
     <td><code>string</code></td>
     <td>The name of the conformance pack name. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
 </tr>
@@ -124,8 +124,8 @@ Returns compliance details for the conformance pack based on the cumulative comp
 
 ```sql
 SELECT
-ConformancePackComplianceStatus,
-ConformancePackName
+conformance_pack_compliance_status,
+conformance_pack_name
 FROM aws.config.conformance_pack_compliance_summaries
 WHERE region = '{{ region }}' -- required
 ;

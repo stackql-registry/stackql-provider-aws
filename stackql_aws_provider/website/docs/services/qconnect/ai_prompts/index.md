@@ -51,12 +51,12 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="aiPrompt" /></td>
+    <td><CopyableCode code="ai_prompt" /></td>
     <td><code>object</code></td>
     <td>The data of the AI Prompt.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="versionNumber" /></td>
+    <td><CopyableCode code="version_number" /></td>
     <td><code>integer (int64)</code></td>
     <td>The version number of the AI Prompt version (returned if an AI Prompt version was specified via use of a qualifier for the aiPromptId on the request).</td>
 </tr>
@@ -80,27 +80,27 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the AI Prompt. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aiPromptArn" /></td>
+    <td><CopyableCode code="ai_prompt_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the AI Prompt. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aiPromptId" /></td>
+    <td><CopyableCode code="ai_prompt_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q in Connect AI prompt. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="apiFormat" /></td>
+    <td><CopyableCode code="api_format" /></td>
     <td><code>string</code></td>
     <td>The API format used for this AI Prompt. (ANTHROPIC_CLAUDE_MESSAGES, ANTHROPIC_CLAUDE_TEXT_COMPLETIONS, MESSAGES, TEXT_COMPLETIONS)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantArn" /></td>
+    <td><CopyableCode code="assistant_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the Amazon Q in Connect assistant. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;*?:wisdom:&#91;a-z0-9-&#93;*?:&#91;0-9&#93;&#123;12&#125;:&#91;a-z-&#93;*?/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;(?:/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;)&#123;0,2&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="assistantId" /></td>
+    <td><CopyableCode code="assistant_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the Amazon Q in Connect assistant. Can be either the ID or the ARN. URLs cannot contain the ARN. (pattern: &lt;code&gt;&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
@@ -110,12 +110,12 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the AI Prompt. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s_.,-&#93;+.*&lt;/code&gt;)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modelId" /></td>
+    <td><CopyableCode code="model_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the model used for this AI Prompt. Model Ids supported are: anthropic.claude-3-haiku-20240307-v1:0.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="modifiedTime" /></td>
+    <td><CopyableCode code="modified_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the AI Prompt was last modified.</td>
 </tr>
@@ -135,7 +135,7 @@ The following fields are returned by `SELECT` queries:
     <td>The tags used to organize, track, or control access for this resource.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="templateType" /></td>
+    <td><CopyableCode code="template_type" /></td>
     <td><code>string</code></td>
     <td>The type of the prompt template for this AI Prompt. (TEXT)</td>
 </tr>
@@ -145,7 +145,7 @@ The following fields are returned by `SELECT` queries:
     <td>The type of this AI Prompt. (ANSWER_GENERATION, INTENT_LABELING_GENERATION, QUERY_REFORMULATION, SELF_SERVICE_PRE_PROCESSING, SELF_SERVICE_ANSWER_GENERATION, EMAIL_RESPONSE, EMAIL_OVERVIEW, EMAIL_GENERATIVE_ANSWER, EMAIL_QUERY_REFORMULATION, ORCHESTRATION, NOTE_TAKING, CASE_SUMMARIZATION)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="visibilityStatus" /></td>
+    <td><CopyableCode code="visibility_status" /></td>
     <td><code>string</code></td>
     <td>The visibility status of the AI Prompt. (SAVED, PUBLISHED)</td>
 </tr>
@@ -268,8 +268,8 @@ Gets and Amazon Q in Connect AI Prompt.
 
 ```sql
 SELECT
-aiPrompt,
-versionNumber
+ai_prompt,
+version_number
 FROM aws.qconnect.ai_prompts
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND ai_prompt_id = '{{ ai_prompt_id }}' -- required
@@ -284,20 +284,20 @@ Lists the AI Prompts available on the Amazon Q in Connect assistant.
 ```sql
 SELECT
 name,
-aiPromptArn,
-aiPromptId,
-apiFormat,
-assistantArn,
-assistantId,
+ai_prompt_arn,
+ai_prompt_id,
+api_format,
+assistant_arn,
+assistant_id,
 description,
-modelId,
-modifiedTime,
+model_id,
+modified_time,
 origin,
 status,
 tags,
-templateType,
+template_type,
 type_,
-visibilityStatus
+visibility_status
 FROM aws.qconnect.ai_prompts
 WHERE assistant_id = '{{ assistant_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -354,7 +354,7 @@ SELECT
 '{{ assistant_id }}',
 '{{ region }}'
 RETURNING
-aiPrompt
+ai_prompt
 ;
 ```
 </TabItem>
@@ -438,7 +438,7 @@ AND ai_prompt_id = '{{ ai_prompt_id }}' --required
 AND region = '{{ region }}' --required
 AND visibilityStatus = '{{ visibilityStatus }}' --required
 RETURNING
-aiPrompt;
+ai_prompt;
 ```
 </TabItem>
 </Tabs>
